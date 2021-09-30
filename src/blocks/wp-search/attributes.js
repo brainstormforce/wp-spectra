@@ -100,8 +100,9 @@ const attributes = {
 	inputFontWeight: {
 		type: 'string',
 	},
-	inputFontSubset: {
+	inputFontStyle: {
 		type: 'string',
+		default: 'normal',
 	},
 	inputFontSize: {
 		type: 'number',
@@ -176,8 +177,9 @@ const attributes = {
 	buttonFontWeight: {
 		type: 'string',
 	},
-	buttonFontSubset: {
+	buttonFontStyle: {
 		type: 'string',
+		default: 'normal',
 	},
 	buttonFontSize: {
 		type: 'number',

@@ -6,7 +6,15 @@ import generateCSS from '@Controls/generateCSS';
 import generateCSSUnit from '@Controls/generateCSSUnit';
 
 function styling( props ) {
-	const { fontFamily, fontWeight, gap, stack, align } = props.attributes;
+	const { 
+		fontFamily,
+		fontWeight,
+		gap,
+		stack,
+		align,
+		fontStyle,
+		fontTransform,
+		fontDecoration, } = props.attributes;
 
 	const selectors = {};
 	const tabletSelectors = {};
@@ -14,6 +22,9 @@ function styling( props ) {
 
 	selectors[ ' .uagb-buttons-repeater:not(.wp-block-button__link)' ] = {
 		'font-family': fontFamily,
+		'font-style' : fontStyle,
+		'text-decoration': fontDecoration,
+		'text-transform': fontTransform,
 		'font-weight': fontWeight,
 	};
 

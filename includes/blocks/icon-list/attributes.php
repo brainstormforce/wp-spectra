@@ -49,8 +49,10 @@ return array(
 	'lineHeightTablet' => '',
 	'fontFamily'       => '',
 	'fontWeight'       => '',
-	'fontSubset'       => '',
 	'loadGoogleFonts'  => false,
 	'icon_layout'      => 'vertical',
 	'stack'            => 'none',
+	'fontStyle'        => '',
+	'fontTransform'    => '',
+	'fontDecoration'   => '',
 );

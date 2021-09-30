@@ -33,6 +33,7 @@ function styling( props ) {
 		titleTransform,
 		titleDecoration,
 		titleBottomSpaceUnit,
+		titleFontStyle,
 
 		metaFontSize,
 		metaFontSizeType,
@@ -46,9 +47,10 @@ function styling( props ) {
 		metaLineHeightMobile,
 		metaColor,
 		metaBottomSpace,
-		metaLinkTransform,
-		metaLinkDecoration,
+		metaTransform,
+		metaDecoration,
 		metaBottomSpaceUnit,
+		metaFontStyle,
 
 		excerptFontSize,
 		excerptFontSizeType,
@@ -56,6 +58,7 @@ function styling( props ) {
 		excerptFontSizeMobile,
 		excerptFontFamily,
 		excerptFontWeight,
+		excerptFontStyle,
 		excerptLineHeightType,
 		excerptLineHeight,
 		excerptLineHeightTablet,
@@ -73,6 +76,7 @@ function styling( props ) {
 		ctaFontSizeTablet,
 		ctaFontSizeMobile,
 		ctaFontFamily,
+		ctaFontStyle,
 		ctaFontWeight,
 		ctaLineHeightType,
 		ctaLineHeight,
@@ -271,6 +275,7 @@ function styling( props ) {
 			),
 			'text-transform': titleTransform,
 			'text-decoration': titleDecoration,
+			'font-style': titleFontStyle,
 		};
 		selectors[ ' .uagb-post__title a' ] = {
 			'color': titleColor,
@@ -291,8 +296,9 @@ function styling( props ) {
 				metaLineHeight,
 				metaLineHeightType
 			),
-			'text-transform': metaLinkTransform,
-			'text-decoration': metaLinkDecoration,
+			'text-transform': metaTransform,
+			'text-decoration': metaDecoration,
+			'font-style': metaFontStyle,
 		};
 		selectors[ ' .uagb-post-grid-byline .uagb-post__author' ] = {
 			'color': metaColor,
@@ -303,6 +309,8 @@ function styling( props ) {
 				metaLineHeight,
 				metaLineHeightType
 			),
+			'text-transform': metaTransform,
+			'text-decoration': metaDecoration,
 		};
 		selectors[ ' .uagb-post-grid-byline .uagb-post__author a' ] = {
 			'color': metaColor,
@@ -313,6 +321,8 @@ function styling( props ) {
 				metaLineHeight,
 				metaLineHeightType
 			),
+			'text-transform': metaTransform,
+			'text-decoration': metaDecoration,
 		};
 		selectors[ ' .uagb-post__excerpt' ] = {
 			'color': excerptColor,
@@ -326,6 +336,7 @@ function styling( props ) {
 				excerptLineHeight,
 				excerptLineHeightType
 			),
+			'font-style': excerptFontStyle,
 			'text-transform': excerptTransform,
 			'text-decoration': excerptDecoration,
 		};
@@ -335,9 +346,8 @@ function styling( props ) {
 			'font-size': generateCSSUnit( ctaFontSize, ctaFontSizeType ),
 			'font-family': ctaFontFamily,
 			'font-weight': ctaFontWeight,
+			'font-style': ctaFontStyle,
 			'line-height': generateCSSUnit( ctaLineHeight, ctaLineHeightType ),
-			'text-transform': ctaTransform,
-			'text-decoration': ctaDecoration,
 			'background': ctaBgColor,
 			'border-width': generateCSSUnit( borderWidth, 'px' ),
 			'border-radius': generateCSSUnit( borderRadius, 'px' ),
@@ -352,6 +362,8 @@ function styling( props ) {
 				paddingBtnBottom,
 				paddingBtnUnit
 			),
+			'text-transform': ctaTransform,
+			'text-decoration': ctaDecoration,
 			'padding-left': generateCSSUnit( paddingBtnLeft, paddingBtnUnit ),
 			'padding-right': generateCSSUnit( paddingBtnRight, paddingBtnUnit ),
 		};

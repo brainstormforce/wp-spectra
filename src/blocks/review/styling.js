@@ -64,6 +64,15 @@ function styling( props ) {
 		starActiveColor,
 		starOutlineColor,
 		overallAlignment,
+		headTransform,
+		headDecoration,
+		subHeadTransform,
+		subHeadDecoration,
+		contentTransform,
+		contentDecoration,
+		headFontStyle,
+		subHeadFontStyle,
+		contentFontStyle,
 	} = props.attributes;
 
 	let tabletSelectors = {};
@@ -80,6 +89,9 @@ function styling( props ) {
 			'font-size': generateCSSUnit( headFontSize, headFontSizeType ),
 			'font-weight': headFontWeight,
 			'font-family': headFontFamily,
+			'font-style' : headFontStyle,
+			'text-decoration': headDecoration,
+			'text-transform': headTransform,
 			'line-height': generateCSSUnit(
 				headLineHeight,
 				headLineHeightType
@@ -90,6 +102,9 @@ function styling( props ) {
 			'font-size': generateCSSUnit( headFontSize, headFontSizeType ),
 			'font-weight': headFontWeight,
 			'font-family': headFontFamily,
+			'font-style' : headFontStyle,
+			'text-decoration': headDecoration,
+			'text-transform': headTransform,
 			'line-height': generateCSSUnit(
 				headLineHeight,
 				headLineHeightType
@@ -102,6 +117,9 @@ function styling( props ) {
 			),
 			'font-weight': subHeadFontWeight,
 			'font-family': subHeadFontFamily,
+			'font-style' : subHeadFontStyle,
+			'text-decoration': subHeadDecoration,
+			'text-transform': subHeadTransform,
 			'line-height': generateCSSUnit(
 				subHeadLineHeight,
 				subHeadLineHeightType
@@ -115,6 +133,9 @@ function styling( props ) {
 			),
 			'font-weight': subHeadFontWeight,
 			'font-family': subHeadFontFamily,
+			'font-style' : subHeadFontStyle,
+			'text-decoration': subHeadDecoration,
+			'text-transform': subHeadTransform,
 			'line-height': generateCSSUnit(
 				subHeadLineHeight,
 				subHeadLineHeightType
@@ -128,6 +149,9 @@ function styling( props ) {
 			),
 			'font-weight': subHeadFontWeight,
 			'font-family': subHeadFontFamily,
+			'font-style' : subHeadFontStyle,
+			'text-decoration': subHeadDecoration,
+			'text-transform': subHeadTransform,
 			'line-height': generateCSSUnit(
 				subHeadLineHeight,
 				subHeadLineHeightType
@@ -148,6 +172,9 @@ function styling( props ) {
 			),
 			'font-weight': contentFontWeight,
 			'font-family': contentFontFamily,
+			'font-style' : contentFontStyle,
+			'text-decoration': contentDecoration,
+			'text-transform': contentTransform,
 			'line-height': generateCSSUnit(
 				contentLineHeight,
 				contentLineHeightType

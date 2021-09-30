@@ -63,6 +63,15 @@ function styling( props ) {
 		imageMarginUnit,
 		tabletImageMarginUnit,
 		mobileImageMarginUnit,
+		titleTransform,
+		titleDecoration,
+		descTransform,
+		descDecoration,
+		prefixTransform,
+		prefixDecoration,
+		titleFontStyle,
+		descFontStyle,
+		prefixFontStyle,
 	} = props.attributes;
 
 	let tabletSelectors = {};
@@ -101,12 +110,18 @@ function styling( props ) {
 				descLineHeightType
 			),
 			'font-family': descFontFamily,
+			'font-style' : descFontStyle,
+			'text-decoration': descDecoration,
+			'text-transform': descTransform,
 			'font-weight': descFontWeight,
 			'color': descColor,
 			'margin-bottom': generateCSSUnit( descSpace, 'px' ),
 		},
 		' .rich-text.block-editor-rich-text__editable.uagb-team__prefix': {
 			'font-family': prefixFontFamily,
+			'font-style' : prefixFontStyle,
+			'text-decoration': prefixDecoration,
+			'text-transform': prefixTransform,
 			'font-weight': prefixFontWeight,
 			'font-size': generateCSSUnit( prefixFontSize, prefixFontSizeType ),
 			'line-height': generateCSSUnit(
@@ -183,6 +198,9 @@ function styling( props ) {
 			'.rich-text.block-editor-rich-text__editable.uagb-team__title'
 	] = {
 		'font-family': titleFontFamily,
+		'font-style' : titleFontStyle,
+		'text-decoration': titleDecoration,
+		'text-transform': titleTransform,
 		'font-weight': titleFontWeight,
 		'font-size': generateCSSUnit( titleFontSize, titleFontSizeType ),
 		'line-height': generateCSSUnit( titleLineHeight, titleLineHeightType ),

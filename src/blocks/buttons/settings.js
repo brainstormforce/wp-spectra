@@ -25,7 +25,9 @@ const Settings = ( props ) => {
 		loadGoogleFonts,
 		fontFamily,
 		fontWeight,
-		fontSubset,
+		fontStyle,
+		fontTransform,
+		fontDecoration,
 	} = attributes;
 
 	let loadBtnGoogleFonts;
@@ -184,7 +186,18 @@ const Settings = ( props ) => {
 					} }
 					fontFamily={ { value: fontFamily, label: 'fontFamily' } }
 					fontWeight={ { value: fontWeight, label: 'fontWeight' } }
-					fontSubset={ { value: fontSubset, label: 'fontSubset' } }
+					fontStyle={ {
+						value: fontStyle,
+						label: 'fontStyle',
+					} }
+					transform={ {
+						value: fontTransform,
+						label: 'fontTransform',
+					} }
+					decoration={ {
+						value: fontDecoration,
+						label: 'fontDecoration',
+					} }
 					disableFontSize={ true }
 					disableLineHeight={ true }
 				/>

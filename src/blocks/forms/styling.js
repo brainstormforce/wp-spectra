@@ -82,8 +82,8 @@ function styling( props ) {
 		tabletPaddingBtnUnit,
 		submitTextTransform,
 		submitTextDecoration,
-		labelTextTransform,
-		labelTextDecoration,
+		labelTransform,
+		labelDecoration,
 		inputTransform,
 		inputDecoration,
 		fieldGapType,
@@ -103,6 +103,9 @@ function styling( props ) {
 		paddingFieldUnitmobile,
 		paddingFieldUnitTablet,
 		toggleSizeType,
+		submitTextFontStyle,
+		labelFontStyle,
+		inputFontStyle,
 	} = props.attributes;
 
 	let selectors = {};
@@ -124,8 +127,9 @@ function styling( props ) {
 				labelLineHeightType
 			),
 			'font-family': labelFontFamily,
-			'text-transform': labelTextTransform,
-			'text-decoration': labelTextDecoration,
+			'font-style': labelFontStyle,
+			'text-transform': labelTransform,
+			'text-decoration': labelDecoration,
 			'font-weight': labelFontWeight,
 			'color': labelColor,
 		},
@@ -136,6 +140,7 @@ function styling( props ) {
 				inputLineHeightType
 			),
 			'font-family': inputFontFamily,
+			'font-style': inputFontStyle,
 			'text-transform': inputTransform,
 			'text-decoration': inputDecoration,
 			'font-weight': inputFontWeight,
@@ -148,6 +153,7 @@ function styling( props ) {
 				inputLineHeightType
 			),
 			'font-family': inputFontFamily,
+			'font-style': inputFontStyle,
 			'text-transform': inputTransform,
 			'text-decoration': inputDecoration,
 			'font-weight': inputFontWeight,
@@ -160,6 +166,7 @@ function styling( props ) {
 				inputLineHeightType
 			),
 			'font-family': inputFontFamily,
+			'font-style': inputFontStyle,
 			'text-transform': inputTransform,
 			'text-decoration': inputDecoration,
 			'font-weight': inputFontWeight,
@@ -184,6 +191,7 @@ function styling( props ) {
 				submitTextLineHeightType
 			),
 			'font-family': submitTextFontFamily,
+			'font-style': submitTextFontStyle,
 			'text-transform': submitTextTransform,
 			'text-decoration': submitTextDecoration,
 			'font-weight': submitTextFontWeight,

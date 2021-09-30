@@ -49,7 +49,7 @@ const Settings = ( props ) => {
 		titleFontSizeMobile,
 		titleFontFamily,
 		titleFontWeight,
-		titleFontSubset,
+		titleFontStyle,
 		titleLineHeightType,
 		titleLineHeight,
 		titleLineHeightTablet,
@@ -60,7 +60,7 @@ const Settings = ( props ) => {
 		priceFontSizeMobile,
 		priceFontFamily,
 		priceFontWeight,
-		priceFontSubset,
+		priceFontStyle,
 		priceLineHeightType,
 		priceLineHeight,
 		priceLineHeightTablet,
@@ -71,7 +71,7 @@ const Settings = ( props ) => {
 		descFontSizeMobile,
 		descFontFamily,
 		descFontWeight,
-		descFontSubset,
+		descFontStyle,
 		descLineHeightType,
 		descLineHeight,
 		descLineHeightTablet,
@@ -544,9 +544,9 @@ const Settings = ( props ) => {
 						value: descFontWeight,
 						label: 'descFontWeight',
 					} }
-					fontSubset={ {
-						value: descFontSubset,
-						label: 'descFontSubset',
+					fontStyle={ {
+						value: descFontStyle,
+						label: 'descFontStyle',
 					} }
 					fontSizeType={ {
 						value: descFontSizeType,
@@ -712,9 +712,9 @@ const Settings = ( props ) => {
 						value: priceFontWeight,
 						label: 'priceFontWeight',
 					} }
-					fontSubset={ {
-						value: priceFontSubset,
-						label: 'priceFontSubset',
+					fontStyle={ {
+						value: priceFontStyle,
+						label: 'priceFontStyle',
 					} }
 					fontSizeType={ {
 						value: priceFontSizeType,
@@ -788,9 +788,9 @@ const Settings = ( props ) => {
 						value: titleFontWeight,
 						label: 'titleFontWeight',
 					} }
-					fontSubset={ {
-						value: titleFontSubset,
-						label: 'titleFontSubset',
+					fontStyle={ {
+						value: titleFontStyle,
+						label: 'titleFontStyle',
 					} }
 					fontSizeType={ {
 						value: titleFontSizeType,

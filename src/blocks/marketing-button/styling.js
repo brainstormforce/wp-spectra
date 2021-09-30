@@ -74,6 +74,12 @@ function styling( props ) {
 		paddingBtnRightMobile,
 		paddingBtnBottomMobile,
 		paddingBtnLeftMobile,
+		titleTransform,
+		titleDecoration,
+		prefixTransform,
+		prefixDecoration,
+		titleFontStyle,
+		prefixFontStyle
 	} = props.attributes;
 
 	let selectors = {};
@@ -96,6 +102,9 @@ function styling( props ) {
 			),
 			'font-family': titleFontFamily,
 			'font-weight': titleFontWeight,
+			'font-style': titleFontStyle,
+			'text-transform': titleTransform,
+			'text-decoration': titleDecoration,
 			'color': titleColor,
 		},
 		' .uagb-marketing-btn__icon-wrap svg': {
@@ -114,6 +123,9 @@ function styling( props ) {
 			'font-family': prefixFontFamily,
 			'font-weight': prefixFontWeight,
 			'color': prefixColor,
+			'font-style': prefixFontStyle,
+			'text-transform': prefixTransform,
+			'text-decoration': prefixDecoration,
 		},
 		' .uagb-marketing-btn__link:hover .block-editor-rich-text__editable.uagb-marketing-btn__title': {
 			'color': titleHoverColor,

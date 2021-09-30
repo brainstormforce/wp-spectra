@@ -114,8 +114,11 @@ if ( 'full' === $attr['align'] ) {
 }
 if ( $attr['childMigrate'] ) {
 		$selectors[' .uagb-buttons-repeater:not(.wp-block-button__link)'] = array(
-			'font-family' => $attr['fontFamily'],
-			'font-weight' => $attr['fontWeight'],
+			'font-family'     => $attr['fontFamily'],
+			'text-transform'  => $attr['fontTransform'],
+			'text-decoration' => $attr['fontDecoration'] . '!important',
+			'font-style'      => $attr['fontStyle'],
+			'font-weight'     => $attr['fontWeight'],
 		);
 }
 
@@ -134,8 +137,11 @@ if ( ! $attr['childMigrate'] ) {
 		$wrapper = ( ! $attr['childMigrate'] ) ? ' .uagb-buttons-repeater-' . $key . '.uagb-button__wrapper' : ' .uagb-buttons-repeater';
 
 		$selectors[ $wrapper ] = array(
-			'font-family' => $attr['fontFamily'],
-			'font-weight' => $attr['fontWeight'],
+			'font-family'     => $attr['fontFamily'],
+			'text-transform'  => $attr['fontTransform'],
+			'text-decoration' => $attr['fontDecoration'] . '!important',
+			'font-style'      => $attr['fontStyle'],
+			'font-weight'     => $attr['fontWeight'],
 		);
 
 		$child_selectors = UAGB_Block_Helper::get_buttons_child_selectors( $button, $key, $attr['childMigrate'] );

@@ -111,7 +111,6 @@ const Settings = ( props ) => {
 		loadGoogleFonts,
 		fontFamily,
 		fontWeight,
-		fontSubset,
 		fontSize,
 		fontSizeType,
 		fontSizeTablet,
@@ -123,7 +122,6 @@ const Settings = ( props ) => {
 		headingLoadGoogleFonts,
 		headingFontFamily,
 		headingFontWeight,
-		headingFontSubset,
 		headingFontSize,
 		headingFontSizeType,
 		headingFontSizeTablet,
@@ -134,6 +132,12 @@ const Settings = ( props ) => {
 		headingLineHeightMobile,
 		mappingHeaders,
 		headingAlignment,
+		fontStyle,
+		fontTransform,
+		fontDecoration,
+		headingFontStyle,
+		headingTransform,
+		headingDecoration,
 	} = attributes;
 
 	let loadGFonts;
@@ -304,9 +308,17 @@ const Settings = ( props ) => {
 						value: headingFontWeight,
 						label: 'headingFontWeight',
 					} }
-					fontSubset={ {
-						value: headingFontSubset,
-						label: 'headingFontSubset',
+					fontStyle={ {
+						value: headingFontStyle,
+						label: 'headingFontStyle',
+					} }
+					transform={ {
+						value: headingTransform,
+						label: 'headingTransform',
+					} }
+					decoration={ {
+						value: headingDecoration,
+						label: 'headingDecoration',
 					} }
 					fontSizeType={ {
 						value: headingFontSizeType,
@@ -723,9 +735,17 @@ const Settings = ( props ) => {
 						value: fontWeight,
 						label: 'fontWeight',
 					} }
-					fontSubset={ {
-						value: fontSubset,
-						label: 'fontSubset',
+					fontStyle={ {
+						value: fontStyle,
+						label: 'fontStyle',
+					} }
+					transform={ {
+						value: fontTransform,
+						label: 'fontTransform',
+					} }
+					decoration={ {
+						value: fontDecoration,
+						label: 'fontDecoration',
 					} }
 					fontSizeType={ {
 						value: fontSizeType,

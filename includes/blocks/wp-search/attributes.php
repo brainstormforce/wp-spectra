@@ -35,7 +35,6 @@ return array(
 	'inputloadGoogleFonts'    => false,
 	'inputFontFamily'         => 'Default',
 	'inputFontWeight'         => '',
-	'inputFontSubset'         => '',
 	'inputFontSize'           => '',
 	'inputFontSizeType'       => 'px',
 	'inputFontSizeTablet'     => '',
@@ -56,7 +55,6 @@ return array(
 	'buttonloadGoogleFonts'   => 'false',
 	'buttonFontFamily'        => 'Default',
 	'buttonFontWeight'        => '',
-	'buttonFontSubset'        => '',
 	'buttonFontSize'          => '',
 	'buttonFontSizeType'      => 'px',
 	'buttonFontSizeTablet'    => '',
@@ -79,4 +77,6 @@ return array(
 	'borderHColor'            => '',
 	'buttonIconSizeType'      => 'px',
 	'buttonWidthType'         => 'px',
+	'inputFontStyle'          => '',
+	'buttonFontStyle'         => '',
 );

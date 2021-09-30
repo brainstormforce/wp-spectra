@@ -176,7 +176,7 @@ const attributes = {
 	titleFontWeight: {
 		type: 'string',
 	},
-	titleFontSubset: {
+	titleFontStyle: {
 		type: 'string',
 	},
 	// Title Font Size
@@ -226,7 +226,7 @@ const attributes = {
 	prefixFontWeight: {
 		type: 'string',
 	},
-	prefixFontSubset: {
+	prefixFontStyle: {
 		type: 'string',
 	},
 	// Prefix Font Size
@@ -328,6 +328,18 @@ const attributes = {
 	},
 	paddingBtnLeftMobile: {
 		type: 'number',
+	},
+	titleTransform: {
+		type: 'string'
+	},
+	titleDecoration: {
+		type: 'string'
+	},
+	prefixTransform: {
+		type: 'string'
+	},
+	prefixDecoration: {
+		type: 'string'
 	},
 };
 

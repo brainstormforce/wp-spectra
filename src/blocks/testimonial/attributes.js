@@ -81,7 +81,7 @@ const attributes = {
 	nameFontWeight: {
 		type: 'string',
 	},
-	nameFontSubset: {
+	nameFontStyle: {
 		type: 'string',
 	},
 	nameLineHeightType: {
@@ -122,7 +122,7 @@ const attributes = {
 	companyFontWeight: {
 		type: 'string',
 	},
-	companyFontSubset: {
+	companyFontStyle: {
 		type: 'string',
 	},
 	companyLineHeightType: {
@@ -163,7 +163,7 @@ const attributes = {
 	descFontWeight: {
 		type: 'string',
 	},
-	descFontSubset: {
+	descFontStyle: {
 		type: 'string',
 	},
 	descLineHeightType: {

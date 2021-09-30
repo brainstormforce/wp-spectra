@@ -90,15 +90,13 @@ function FontFamilyControl( props ) {
 	];
 
 	let fontWeight = '';
-	let fontSubset = '';
-
+	
 	//Push Google Fonts into stytem fonts object
 	Object.keys( googleFonts ).map( ( k ) => {  // eslint-disable-line array-callback-return
 		fonts.push( { value: k, label: k, weight: googleFonts[ k ].weight } );
 
 		if ( k === props.fontFamily.value ) {
 			fontWeight = googleFonts[ k ].weight;
-			fontSubset = googleFonts[ k ].subset;
 		}
 	} );
 
@@ -113,35 +111,21 @@ function FontFamilyControl( props ) {
 		fontWeightObj.push( { value: item, label: item } );
 	} );
 
-	let fontSubsetObj = [
-		{
-			value: 'test',
-			label: __( 'Latin', 'ultimate-addons-for-gutenberg' ),
-		},
-	];
-
-	if ( typeof fontSubset === 'object' ) {
-		fontSubsetObj = [];
-		fontSubset.forEach( function ( item ) {
-			fontSubsetObj.push( { value: item, label: item } );
-		} );
-	}
-
+	
 	const onFontfamilyChange = ( value ) => {
-		const { loadGoogleFonts, fontFamily, fontWeight, fontSubset } = props; // eslint-disable-line no-shadow
+		const { loadGoogleFonts, fontFamily, fontWeight } = props; // eslint-disable-line no-shadow
 		props.setAttributes( { [ fontFamily.label ]: value } );
 		onLoadGoogleFonts( loadGoogleFonts, value );
-		onFontChange( fontWeight, fontSubset, value );
+		onFontChange( fontWeight, value );
 	};
 
-	const onFontChange = ( fontWeight, fontSubset, fontFamily ) => { // eslint-disable-line no-shadow
+	const onFontChange = ( fontWeight, fontFamily ) => { // eslint-disable-line no-shadow
 		let font_flag;  // eslint-disable-line no-unused-vars
 		let new_value;
 
 		if ( typeof googleFonts[ fontFamily ] === 'object' ) {
 			const gfontsObj = googleFonts[ fontFamily ].weight;
-			const gfontSubsetObj = googleFonts[ fontFamily ].subset;
-
+			
 			if ( typeof gfontsObj === 'object' ) {
 				gfontsObj.forEach( function ( item ) {
 					if ( fontWeight.value === item ) {
@@ -151,18 +135,6 @@ function FontFamilyControl( props ) {
 						font_flag = true;
 						props.setAttributes( {
 							[ props.fontWeight.label ]: new_value,
-						} );
-					}
-				} );
-
-				gfontSubsetObj.forEach( function ( item ) {
-					if ( fontSubset.value === item ) {
-						font_flag = false;
-					} else {
-						new_value = item;
-						font_flag = true;
-						props.setAttributes( {
-							[ props.fontSubset.label ]: new_value,
 						} );
 					}
 				} );
@@ -196,7 +168,7 @@ function FontFamilyControl( props ) {
 					className="react-select-container"
 				/>
 			</div>
-			<div className="uag-typography-weight-subset-wrap">
+			<div className="uag-typography-weight-style-wrap">
 				<div className="uag-typography-font-family-weight">
 					<SelectControl
 						label={ __(
@@ -213,25 +185,42 @@ function FontFamilyControl( props ) {
 						className="react-select-container"
 					/>
 				</div>
-				<div className="uag-typography-font-family-subset">
-					<SelectControl
-						label={ __(
-							'Subset',
-							'ultimate-addons-for-gutenberg'
-						) }
-						value={ props.fontSubset.value }
-						onChange={ ( value ) =>
-							props.setAttributes( {
-								[ props.fontSubset.label ]: value,
-							} )
-						}
-						options={ fontSubsetObj }
-						className="react-select-container"
-						disabled={
-							! props.fontSubset.label || ! props.fontSubset.value
-						}
-					/>
-				</div>
+				{ props.fontStyle && 
+					<div className="uag-typography-style">
+						<SelectControl
+							label={ __( 'Style', 'ultimate-addons-for-gutenberg' ) }
+							value={ props.fontStyle.value }
+							onChange={ ( value ) =>
+								props.setAttributes( {
+									[ props.fontStyle.label ]: value,
+								} )
+							}
+							options={ [
+								{
+									value: 'normal',
+									label: __(
+										'Normal',
+										'ultimate-addons-for-gutenberg'
+									),
+								},
+								{
+									value: 'italic',
+									label: __(
+										'Italic',
+										'ultimate-addons-for-gutenberg'
+									),
+								},
+								{
+									value: 'oblique',
+									label: __(
+										'Oblique',
+										'ultimate-addons-for-gutenberg'
+									),
+								},
+							] }
+						/>
+					</div>
+				}
 			</div>
 		</div>
 	);

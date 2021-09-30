@@ -170,7 +170,7 @@ const attributes = {
 	titleFontWeight: {
 		type: 'string',
 	},
-	titleFontSubset: {
+	titleFontStyle: {
 		type: 'string',
 	},
 	titleLineHeightType: {
@@ -211,7 +211,7 @@ const attributes = {
 	priceFontWeight: {
 		type: 'string',
 	},
-	priceFontSubset: {
+	priceFontStyle: {
 		type: 'string',
 	},
 	priceLineHeightType: {
@@ -252,7 +252,7 @@ const attributes = {
 	descFontWeight: {
 		type: 'string',
 	},
-	descFontSubset: {
+	descFontStyle: {
 		type: 'string',
 	},
 	descLineHeightType: {

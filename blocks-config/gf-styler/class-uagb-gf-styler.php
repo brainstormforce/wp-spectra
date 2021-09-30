@@ -224,9 +224,6 @@ if ( ! class_exists( 'UAGB_GF_Styler' ) ) {
 						'labelFontWeight'               => array(
 							'type' => 'string',
 						),
-						'labelFontSubset'               => array(
-							'type' => 'string',
-						),
 						'labelLineHeightType'           => array(
 							'type'    => 'string',
 							'default' => 'em',
@@ -263,9 +260,6 @@ if ( ! class_exists( 'UAGB_GF_Styler' ) ) {
 							'default' => 'Default',
 						),
 						'inputFontWeight'               => array(
-							'type' => 'string',
-						),
-						'inputFontSubset'               => array(
 							'type' => 'string',
 						),
 						'inputLineHeightType'           => array(
@@ -307,9 +301,6 @@ if ( ! class_exists( 'UAGB_GF_Styler' ) ) {
 							'default' => 'Default',
 						),
 						'buttonFontWeight'              => array(
-							'type' => 'string',
-						),
-						'buttonFontSubset'              => array(
 							'type' => 'string',
 						),
 						'buttonLineHeightType'          => array(
@@ -382,9 +373,6 @@ if ( ! class_exists( 'UAGB_GF_Styler' ) ) {
 						'radioCheckFontWeight'          => array(
 							'type' => 'string',
 						),
-						'radioCheckFontSubset'          => array(
-							'type' => 'string',
-						),
 						'radioCheckLineHeightType'      => array(
 							'type'    => 'string',
 							'default' => 'em',
@@ -437,9 +425,6 @@ if ( ! class_exists( 'UAGB_GF_Styler' ) ) {
 							'default' => 'Default',
 						),
 						'validationMsgFontWeight'       => array(
-							'type' => 'string',
-						),
-						'validationMsgFontSubset'       => array(
 							'type' => 'string',
 						),
 						'validationMsgLineHeightType'   => array(
@@ -512,9 +497,6 @@ if ( ! class_exists( 'UAGB_GF_Styler' ) ) {
 						'msgFontWeight'                 => array(
 							'type' => 'string',
 						),
-						'msgFontSubset'                 => array(
-							'type' => 'string',
-						),
 						'msgLineHeightType'             => array(
 							'type'    => 'string',
 							'default' => 'em',
@@ -567,9 +549,6 @@ if ( ! class_exists( 'UAGB_GF_Styler' ) ) {
 							'default' => 'Default',
 						),
 						'successMsgFontWeight'          => array(
-							'type' => 'string',
-						),
-						'successMsgFontSubset'          => array(
 							'type' => 'string',
 						),
 						'successMsgLineHeightType'      => array(
@@ -780,6 +759,69 @@ if ( ! class_exists( 'UAGB_GF_Styler' ) ) {
 						'fieldpaddingLink'              => array(
 							'type'    => 'boolean',
 							'default' => false,
+						),
+						'labelTransform'                => array(
+							'type' => 'string',
+						),
+						'labelDecoration'               => array(
+							'type' => 'string',
+						),
+						'labelFontStyle'                => array(
+							'type' => 'string',
+						),
+						'inputTransform'                => array(
+							'type' => 'string',
+						),
+						'inputDecoration'               => array(
+							'type' => 'string',
+						),
+						'inputFontStyle'                => array(
+							'type' => 'string',
+						),
+						'buttonTransform'               => array(
+							'type' => 'string',
+						),
+						'buttonDecoration'              => array(
+							'type' => 'string',
+						),
+						'buttonFontStyle'               => array(
+							'type' => 'string',
+						),
+						'radioCheckTransform'           => array(
+							'type' => 'string',
+						),
+						'radioCheckDecoration'          => array(
+							'type' => 'string',
+						),
+						'radioCheckFontStyle'           => array(
+							'type' => 'string',
+						),
+						'validationMsgTransform'        => array(
+							'type' => 'string',
+						),
+						'validationMsgDecoration'       => array(
+							'type' => 'string',
+						),
+						'validationMsgFontStyle'        => array(
+							'type' => 'string',
+						),
+						'msgTransform'                  => array(
+							'type' => 'string',
+						),
+						'msgDecoration'                 => array(
+							'type' => 'string',
+						),
+						'msgFontStyle'                  => array(
+							'type' => 'string',
+						),
+						'successMsgTransform'           => array(
+							'type' => 'string',
+						),
+						'successMsgDecoration'          => array(
+							'type' => 'string',
+						),
+						'successMsgFontStyle'           => array(
+							'type' => 'string',
 						),
 					),
 					'render_callback' => array( $this, 'render_html' ),

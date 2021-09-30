@@ -119,6 +119,9 @@ function styling( props ) {
 		quoteRightMarginMobile,
 		quotemobileUnit,
 		quotetabletUnit,
+		descFontStyle,
+		authorFontStyle,
+		tweetBtnFontStyle
 	} = props.attributes;
 
 	let tmpAuthorSpace = authorSpace;
@@ -142,6 +145,7 @@ function styling( props ) {
 				descLineHeight,
 				descLineHeightType
 			),
+			'font-style': descFontStyle,
 			'text-decoration': descDecoration,
 			'text-transform': descTransform,
 			'color': descColor,
@@ -156,6 +160,7 @@ function styling( props ) {
 				authorLineHeight,
 				authorLineHeightType
 			),
+			'font-style': authorFontStyle,
 			'text-decoration': authorDecoration,
 			'text-transform': authorTransform,
 			'color': authorColor,
@@ -233,6 +238,7 @@ function styling( props ) {
 				tweetBtnLineHeight,
 				tweetBtnLineHeightType
 			),
+			'font-style': tweetBtnFontStyle,
 			'text-decoration': tweetBtnDecoration,
 			'text-transform': tweetBtnTransform,
 		};

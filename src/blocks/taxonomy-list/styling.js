@@ -85,6 +85,15 @@ function styling( props ) {
 		borderColor,
 		borderRadius,
 		borderHoverColor,
+		titleFontStyle,
+		countFontStyle,
+		listFontStyle,
+		titleTransform,
+		countTransform,
+		listTransform,
+		titleDecoration,
+		countDecoration,
+		listDecoration,
 	} = props.attributes;
 
 	let selectors = {};
@@ -148,6 +157,9 @@ function styling( props ) {
 				titleLineHeight,
 				titleLineHeightType
 			),
+			'font-style': titleFontStyle,
+			'text-decoration': titleDecoration,
+			'text-transform': titleTransform,
 		},
 		' .uagb-layout-grid .uagb-tax-count': {
 			'color': countColor,
@@ -158,6 +170,9 @@ function styling( props ) {
 				countLineHeight,
 				countLineHeightType
 			),
+			'font-style': countFontStyle,
+			'text-decoration': countDecoration,
+			'text-transform': countTransform,
 		},
 
 		//List layout styling
@@ -171,6 +186,9 @@ function styling( props ) {
 				listLineHeight,
 				listLineHeightType
 			),
+			'font-style': listFontStyle,
+			'text-decoration': listDecoration,
+			'text-transform': listTransform,
 		},
 		' .uagb-layout-list .uagb-tax-list:hover': {
 			'color': hoverlistStyleColor,

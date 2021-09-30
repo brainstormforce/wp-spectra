@@ -203,7 +203,14 @@ const attributes = {
 	questionFontWeight: {
 		type: 'string',
 	},
-	questionFontSubset: {
+	questionFontStyle: {
+		type: 'string',
+		default: 'normal',
+	},
+	questionTransform: {
+		type: 'string',
+	},
+	questionDecoration: {
 		type: 'string',
 	},
 	questionFontSize: {
@@ -239,7 +246,14 @@ const attributes = {
 	answerFontWeight: {
 		type: 'string',
 	},
-	answerFontSubset: {
+	answerFontStyle: {
+		type: 'string',
+		default: 'normal',
+	},
+	answerTransform: {
+		type: 'string',
+	},
+	answerDecoration: {
 		type: 'string',
 	},
 	answerFontSize: {

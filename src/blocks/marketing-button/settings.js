@@ -78,7 +78,7 @@ const Settings = ( props ) => {
 		//Typography
 		titleFontFamily,
 		titleFontWeight,
-		titleFontSubset,
+		titleFontStyle,
 		titleFontSize,
 		titleFontSizeType,
 		titleFontSizeTablet,
@@ -90,7 +90,7 @@ const Settings = ( props ) => {
 		titleTag,
 		prefixFontFamily,
 		prefixFontWeight,
-		prefixFontSubset,
+		prefixFontStyle,
 		prefixFontSize,
 		prefixFontSizeType,
 		prefixFontSizeTablet,
@@ -116,7 +116,11 @@ const Settings = ( props ) => {
 		paddingBtnBottomMobile,
 		paddingBtnLeftMobile,
 		titleLoadGoogleFonts,
-		prefixLoadGoogleFonts
+		prefixLoadGoogleFonts,
+		titleTransform,
+		titleDecoration,
+		prefixTransform,
+		prefixDecoration,
 	} = attributes;
 
 	const onChangeOpensInNewTab = ( value ) => {
@@ -434,9 +438,9 @@ const Settings = ( props ) => {
 						value: titleFontWeight,
 						label: 'titleFontWeight',
 					} }
-					fontSubset={ {
-						value: titleFontSubset,
-						label: 'titleFontSubset',
+					fontStyle={ {
+						value: titleFontStyle,
+						label: 'titleFontStyle',
 					} }
 					fontSizeType={ {
 						value: titleFontSizeType,
@@ -469,6 +473,14 @@ const Settings = ( props ) => {
 					lineHeightTablet={ {
 						value: titleLineHeightTablet,
 						label: 'titleLineHeightTablet',
+					} }
+					transform={ {
+						value: titleTransform,
+						label: 'titleTransform',
+					} }
+					decoration={ {
+						value: titleDecoration,
+						label: 'titleDecoration',
 					} }
 				/>
 				<UAGTabsControl
@@ -545,9 +557,9 @@ const Settings = ( props ) => {
 						value: prefixFontWeight,
 						label: 'prefixFontWeight',
 					} }
-					fontSubset={ {
-						value: prefixFontSubset,
-						label: 'prefixFontSubset',
+					fontStyle={ {
+						value: prefixFontStyle,
+						label: 'prefixFontStyle',
 					} }
 					fontSizeType={ {
 						value: prefixFontSizeType,
@@ -580,6 +592,14 @@ const Settings = ( props ) => {
 					lineHeightTablet={ {
 						value: prefixLineHeightTablet,
 						label: 'prefixLineHeightTablet',
+					} }
+					transform={ {
+						value: prefixTransform,
+						label: 'prefixTransform',
+					} }
+					decoration={ {
+						value: prefixDecoration,
+						label: 'prefixDecoration',
 					} }
 				/>
 				<UAGTabsControl

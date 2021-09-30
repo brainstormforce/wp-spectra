@@ -93,7 +93,7 @@
 
 
 	/* Font options common */
-	.uag-typography-weight-subset-wrap,
+	.uag-typography-weight-style-wrap,
 	.uag-typography-transform-decoration-wrap {
 		display: flex;
 		justify-content: space-between;
@@ -118,7 +118,7 @@
 		}
 
 		.uag-typography-font-family,
-		.uag-typography-weight-subset-wrap {
+		.uag-typography-weight-style-wrap {
 			margin: 0 0 16px;
 		}
 	}
@@ -149,7 +149,7 @@
 	.uag-typography-transform,
 	.uag-typography-decoration,
 	.uag-typography-font-family-weight,
-	.uag-typography-font-family-subset {
+	.uag-typography-style {
 		display: flex;
 		width: 48%;
 	}

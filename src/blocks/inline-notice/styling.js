@@ -67,6 +67,12 @@ function styling( props ) {
 		noticeAlignment,
 		layout,
 		highlightWidth,
+		titleTransform,
+		titleDecoration,
+		descTransform,
+		descDecoration,
+		titleFontStyle,
+		descFontStyle,
 	} = props.attributes;
 
 	let lPadding;
@@ -109,6 +115,9 @@ function styling( props ) {
 			'font-size': generateCSSUnit( titleFontSize, titleFontSizeType ),
 			'font-weight': titleFontWeight,
 			'font-family': titleFontFamily,
+			'font-style' : titleFontStyle,
+			'text-decoration': titleDecoration,
+			'text-transform': titleTransform,
 			'line-height': generateCSSUnit(
 				titleLineHeight,
 				titleLineHeightType
@@ -146,6 +155,9 @@ function styling( props ) {
 			'font-size': generateCSSUnit( descFontSize, descFontSizeType ),
 			'font-weight': descFontWeight,
 			'font-family': descFontFamily,
+			'font-style' : descFontStyle,
+			'text-decoration': descDecoration,
+			'text-transform': descTransform,
 			'line-height': generateCSSUnit(
 				descLineHeight,
 				descLineHeightType

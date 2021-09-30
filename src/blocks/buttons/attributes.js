@@ -74,7 +74,14 @@ const attributes = {
 	fontWeight: {
 		type: 'string',
 	},
-	fontSubset: {
+	fontStyle: {
+		type: 'string',
+		default: 'normal',
+	},
+	fontTransform: {
+		type: 'string',
+	},
+	fontDecoration: {
 		type: 'string',
 	},
 };

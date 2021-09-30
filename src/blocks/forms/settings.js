@@ -54,7 +54,6 @@ const Settings = ( props ) => {
 		submitTextloadGoogleFonts,
 		submitTextFontFamily,
 		submitTextFontWeight,
-		submitTextFontSubset,
 		submitTextFontSize,
 		submitTextFontSizeType,
 		submitTextFontSizeTablet,
@@ -66,7 +65,6 @@ const Settings = ( props ) => {
 		labelloadGoogleFonts,
 		labelFontFamily,
 		labelFontWeight,
-		labelFontSubset,
 		labelFontSize,
 		labelFontSizeType,
 		labelFontSizeTablet,
@@ -78,7 +76,6 @@ const Settings = ( props ) => {
 		inputloadGoogleFonts,
 		inputFontFamily,
 		inputFontWeight,
-		inputFontSubset,
 		inputFontSize,
 		inputFontSizeType,
 		inputFontSizeTablet,
@@ -144,8 +141,8 @@ const Settings = ( props ) => {
 		paddingspacingLink,
 		submitTextTransform,
 		submitTextDecoration,
-		labelTextTransform,
-		labelTextDecoration,
+		labelTransform,
+		labelDecoration,
 		inputTransform,
 		inputDecoration,
 		fieldGapType,
@@ -166,6 +163,9 @@ const Settings = ( props ) => {
 		paddingFieldUnitTablet,
 		paddingFieldLink,
 		toggleSizeType,
+		submitTextFontStyle,
+		labelFontStyle,
+		inputFontStyle,
 	} = attributes;
 
 	const generalSettings = () => {
@@ -783,87 +783,51 @@ const Settings = ( props ) => {
 					setAttributes={ setAttributes }
 					loadGoogleFonts={ {
 						value: submitTextloadGoogleFonts,
-						label: __(
-							'submitTextloadGoogleFonts',
-							'ultimate-addons-for-gutenberg'
-						),
+						label: 'submitTextloadGoogleFonts',
 					} }
 					fontFamily={ {
 						value: submitTextFontFamily,
-						label: __(
-							'submitTextFontFamily',
-							'ultimate-addons-for-gutenberg'
-						),
+						label: 'submitTextFontFamily',
 					} }
 					fontWeight={ {
 						value: submitTextFontWeight,
-						label: __(
-							'submitTextFontWeight',
-							'ultimate-addons-for-gutenberg'
-						),
+						label: 'submitTextFontWeight',
 					} }
-					fontSubset={ {
-						value: submitTextFontSubset,
-						label: __(
-							'submitTextFontSubset',
-							'ultimate-addons-for-gutenberg'
-						),
+					fontStyle={ {
+						value: submitTextFontStyle,
+						label: 'submitTextFontStyle',
 					} }
 					fontSizeType={ {
 						value: submitTextFontSizeType,
-						label: __(
-							'submitTextFontSizeType',
-							'ultimate-addons-for-gutenberg'
-						),
+						label: 'submitTextFontSizeType',
 					} }
 					fontSize={ {
 						value: submitTextFontSize,
-						label: __(
-							'submitTextFontSize',
-							'ultimate-addons-for-gutenberg'
-						),
+						label: 'submitTextFontSize',
 					} }
 					fontSizeMobile={ {
 						value: submitTextFontSizeMobile,
-						label: __(
-							'submitTextFontSizeMobile',
-							'ultimate-addons-for-gutenberg'
-						),
+						label: 'submitTextFontSizeMobile',
 					} }
 					fontSizeTablet={ {
 						value: submitTextFontSizeTablet,
-						label: __(
-							'submitTextFontSizeTablet',
-							'ultimate-addons-for-gutenberg'
-						),
+						label: 'submitTextFontSizeTablet',
 					} }
 					lineHeightType={ {
 						value: submitTextLineHeightType,
-						label: __(
-							'submitTextLineHeightType',
-							'ultimate-addons-for-gutenberg'
-						),
+						label: 'submitTextLineHeightType',
 					} }
 					lineHeight={ {
 						value: submitTextLineHeight,
-						label: __(
-							'submitTextLineHeight',
-							'ultimate-addons-for-gutenberg'
-						),
+						label: 'submitTextLineHeight',
 					} }
 					lineHeightMobile={ {
 						value: submitTextLineHeightMobile,
-						label: __(
-							'submitTextLineHeightMobile',
-							'ultimate-addons-for-gutenberg'
-						),
+						label: 'submitTextLineHeightMobile',
 					} }
 					lineHeightTablet={ {
 						value: submitTextLineHeightTablet,
-						label: __(
-							'submitTextLineHeightTablet',
-							'ultimate-addons-for-gutenberg'
-						),
+						label: 'submitTextLineHeightTablet',
 					} }
 					transform={ {
 						value: submitTextTransform,
@@ -1044,95 +1008,59 @@ const Settings = ( props ) => {
 					setAttributes={ setAttributes }
 					loadGoogleFonts={ {
 						value: labelloadGoogleFonts,
-						label: __(
-							'labelloadGoogleFonts',
-							'ultimate-addons-for-gutenberg'
-						),
+						label: 'labelloadGoogleFonts',
 					} }
 					fontFamily={ {
 						value: labelFontFamily,
-						label: __(
-							'labelFontFamily',
-							'ultimate-addons-for-gutenberg'
-						),
+						label: 'labelFontFamily',
 					} }
 					fontWeight={ {
 						value: labelFontWeight,
-						label: __(
-							'labelFontWeight',
-							'ultimate-addons-for-gutenberg'
-						),
+						label: 'labelFontWeight',
 					} }
-					fontSubset={ {
-						value: labelFontSubset,
-						label: __(
-							'labelFontSubset',
-							'ultimate-addons-for-gutenberg'
-						),
+					fontStyle={ {
+						value: labelFontStyle,
+						label: 'labelFontStyle',
 					} }
 					fontSizeType={ {
 						value: labelFontSizeType,
-						label: __(
-							'labelFontSizeType',
-							'ultimate-addons-for-gutenberg'
-						),
+						label: 'labelFontSizeType',
 					} }
 					fontSize={ {
 						value: labelFontSize,
-						label: __(
-							'labelFontSize',
-							'ultimate-addons-for-gutenberg'
-						),
+						label: 'labelFontSize',
 					} }
 					fontSizeMobile={ {
 						value: labelFontSizeMobile,
-						label: __(
-							'labelFontSizeMobile',
-							'ultimate-addons-for-gutenberg'
-						),
+						label: 'labelFontSizeMobile',
 					} }
 					fontSizeTablet={ {
 						value: labelFontSizeTablet,
-						label: __(
-							'labelFontSizeTablet',
-							'ultimate-addons-for-gutenberg'
-						),
+						label: 'labelFontSizeTablet',
 					} }
 					lineHeightType={ {
 						value: labelLineHeightType,
-						label: __(
-							'labelLineHeightType',
-							'ultimate-addons-for-gutenberg'
-						),
+						label: 'labelLineHeightType',
 					} }
 					lineHeight={ {
 						value: labelLineHeight,
-						label: __(
-							'labelLineHeight',
-							'ultimate-addons-for-gutenberg'
-						),
+						label: 'labelLineHeight',
 					} }
 					lineHeightMobile={ {
 						value: labelLineHeightMobile,
-						label: __(
-							'labelLineHeightMobile',
-							'ultimate-addons-for-gutenberg'
-						),
+						label: 'labelLineHeightMobile',
 					} }
 					lineHeightTablet={ {
 						value: labelLineHeightTablet,
-						label: __(
-							'labelLineHeightTablet',
-							'ultimate-addons-for-gutenberg'
-						),
+						label: 'labelLineHeightTablet',
 					} }
 					transform={ {
-						value: labelTextTransform,
-						label: 'labelTextTransform',
+						value: labelTransform,
+						label: 'labelTransform',
 					} }
 					decoration={ {
-						value: labelTextDecoration,
-						label: 'labelTextDecoration',
+						value: labelDecoration,
+						label: 'labelDecoration',
 					} }
 				/>
 			</PanelBody>
@@ -1193,87 +1121,51 @@ const Settings = ( props ) => {
 					setAttributes={ setAttributes }
 					loadGoogleFonts={ {
 						value: inputloadGoogleFonts,
-						label: __(
-							'inputloadGoogleFonts',
-							'ultimate-addons-for-gutenberg'
-						),
+						label: 'inputloadGoogleFonts',
 					} }
 					fontFamily={ {
 						value: inputFontFamily,
-						label: __(
-							'inputFontFamily',
-							'ultimate-addons-for-gutenberg'
-						),
+						label: 'inputFontFamily',
 					} }
 					fontWeight={ {
 						value: inputFontWeight,
-						label: __(
-							'inputFontWeight',
-							'ultimate-addons-for-gutenberg'
-						),
+						label: 'inputFontWeight',
 					} }
-					fontSubset={ {
-						value: inputFontSubset,
-						label: __(
-							'inputFontSubset',
-							'ultimate-addons-for-gutenberg'
-						),
+					fontStyle={ {
+						value: inputFontStyle,
+						label: 'inputFontStyle',
 					} }
 					fontSizeType={ {
 						value: inputFontSizeType,
-						label: __(
-							'inputFontSizeType',
-							'ultimate-addons-for-gutenberg'
-						),
+						label: 'inputFontSizeType',
 					} }
 					fontSize={ {
 						value: inputFontSize,
-						label: __(
-							'inputFontSize',
-							'ultimate-addons-for-gutenberg'
-						),
+						label: 'inputFontSize',
 					} }
 					fontSizeMobile={ {
 						value: inputFontSizeMobile,
-						label: __(
-							'inputFontSizeMobile',
-							'ultimate-addons-for-gutenberg'
-						),
+						label: 'inputFontSizeMobile',
 					} }
 					fontSizeTablet={ {
 						value: inputFontSizeTablet,
-						label: __(
-							'inputFontSizeTablet',
-							'ultimate-addons-for-gutenberg'
-						),
+						label: 'inputFontSizeTablet',
 					} }
 					lineHeightType={ {
 						value: inputLineHeightType,
-						label: __(
-							'inputLineHeightType',
-							'ultimate-addons-for-gutenberg'
-						),
+						label: 'inputLineHeightType',
 					} }
 					lineHeight={ {
 						value: inputLineHeight,
-						label: __(
-							'inputLineHeight',
-							'ultimate-addons-for-gutenberg'
-						),
+						label: 'inputLineHeight',
 					} }
 					lineHeightMobile={ {
 						value: inputLineHeightMobile,
-						label: __(
-							'inputLineHeightMobile',
-							'ultimate-addons-for-gutenberg'
-						),
+						label: 'inputLineHeightMobile',
 					} }
 					lineHeightTablet={ {
 						value: inputLineHeightTablet,
-						label: __(
-							'inputLineHeightTablet',
-							'ultimate-addons-for-gutenberg'
-						),
+						label: 'inputLineHeightTablet',
 					} }
 					transform={ {
 						value: inputTransform,

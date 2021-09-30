@@ -65,7 +65,6 @@ const Settings = ( props ) => {
 		questionloadGoogleFonts,
 		questionFontFamily,
 		questionFontWeight,
-		questionFontSubset,
 		questionFontSizeType,
 		questionFontSize,
 		questionFontSizeMobile,
@@ -77,7 +76,6 @@ const Settings = ( props ) => {
 		answerloadGoogleFonts,
 		answerFontFamily,
 		answerFontWeight,
-		answerFontSubset,
 		answerFontSizeType,
 		answerFontSize,
 		answerFontSizeMobile,
@@ -125,6 +123,12 @@ const Settings = ( props ) => {
 		answerRightPaddingMobile,
 		answerBottomPaddingMobile,
 		answerLeftPaddingMobile,
+		answerFontStyle,
+		answerTransform,
+		answerDecoration,
+		questionFontStyle,
+		questionTransform,
+		questionDecoration,
 	} = attributes;
 
 	const onchangeIcon = ( value ) => {
@@ -488,9 +492,17 @@ const Settings = ( props ) => {
 						value: questionFontWeight,
 						label: 'questionFontWeight',
 					} }
-					fontSubset={ {
-						value: questionFontSubset,
-						label: 'questionFontSubset',
+					fontStyle={ {
+						value: questionFontStyle,
+						label: 'questionFontStyle',
+					} }
+					transform={ {
+						value: questionTransform,
+						label: 'questionTransform',
+					} }
+					decoration={ {
+						value: questionDecoration,
+						label: 'questionDecoration',
 					} }
 					fontSizeType={ {
 						value: questionFontSizeType,
@@ -691,9 +703,17 @@ const Settings = ( props ) => {
 						value: answerFontWeight,
 						label: 'answerFontWeight',
 					} }
-					fontSubset={ {
-						value: answerFontSubset,
-						label: 'answerFontSubset',
+					fontStyle={ {
+						value: answerFontStyle,
+						label: 'answerFontStyle',
+					} }
+					transform={ {
+						value: answerTransform,
+						label: 'answerTransform',
+					} }
+					decoration={ {
+						value: answerDecoration,
+						label: 'answerDecoration',
 					} }
 					fontSizeType={ {
 						value: answerFontSizeType,

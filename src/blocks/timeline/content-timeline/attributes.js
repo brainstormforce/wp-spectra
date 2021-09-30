@@ -126,7 +126,13 @@ const attributes = {
 	headFontWeight: {
 		type: 'string',
 	},
-	headFontSubset: {
+	headFontStyle: {
+		type: 'string',
+	},
+	headTransform: {
+		type: 'string',
+	},
+	headDecoration: {
 		type: 'string',
 	},
 	headLineHeightType: {
@@ -174,7 +180,13 @@ const attributes = {
 	subHeadFontWeight: {
 		type: 'string',
 	},
-	subHeadFontSubset: {
+	subHeadFontStyle: {
+		type: 'string',
+	},
+	subHeadTransform: {
+		type: 'string',
+	},
+	subHeadDecoration: {
 		type: 'string',
 	},
 	subHeadLineHeightType: {
@@ -242,7 +254,13 @@ const attributes = {
 	dateFontWeight: {
 		type: 'string',
 	},
-	dateFontSubset: {
+	dateFontStyle: {
+		type: 'string',
+	},
+	dateTransform: {
+		type: 'string',
+	},
+	dateDecoration: {
 		type: 'string',
 	},
 	dateLineHeightType: {

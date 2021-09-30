@@ -245,7 +245,7 @@ const UAGBPostCarousel = ( props ) => {
 		titleFontSizeTablet,
 		titleFontFamily,
 		titleFontWeight,
-		titleFontSubset,
+		titleFontStyle,
 		titleLineHeightType,
 		titleLineHeight,
 		titleLineHeightTablet,
@@ -257,7 +257,7 @@ const UAGBPostCarousel = ( props ) => {
 		metaFontSizeTablet,
 		metaFontFamily,
 		metaFontWeight,
-		metaFontSubset,
+		metaFontStyle,
 		metaLineHeightType,
 		metaLineHeight,
 		metaLineHeightTablet,
@@ -269,7 +269,7 @@ const UAGBPostCarousel = ( props ) => {
 		excerptFontSizeMobile,
 		excerptFontFamily,
 		excerptFontWeight,
-		excerptFontSubset,
+		excerptFontStyle,
 		excerptLineHeightType,
 		excerptLineHeight,
 		excerptLineHeightTablet,
@@ -281,7 +281,7 @@ const UAGBPostCarousel = ( props ) => {
 		ctaFontSizeMobile,
 		ctaFontFamily,
 		ctaFontWeight,
-		ctaFontSubset,
+		ctaFontStyle,
 		ctaLineHeightType,
 		ctaLineHeight,
 		ctaLineHeightTablet,
@@ -320,11 +320,11 @@ const UAGBPostCarousel = ( props ) => {
 		displayPostContentRadio,
 		excludeCurrentPost,
 		titleTransform,
-		metaLinkTransform,
+		metaTransform,
 		excerptTransform,
 		ctaTransform,
 		titleDecoration,
-		metaLinkDecoration,
+		metaDecoration,
 		excerptDecoration,
 		ctaDecoration,
 		paddingBtnTop,
@@ -1195,9 +1195,9 @@ const UAGBPostCarousel = ( props ) => {
 								value: titleFontWeight,
 								label: 'titleFontWeight',
 							} }
-							fontSubset={ {
-								value: titleFontSubset,
-								label: 'titleFontSubset',
+							fontStyle={ {
+								value: titleFontStyle,
+								label: 'titleFontStyle',
 							} }
 							fontSizeType={ {
 								value: titleFontSizeType,
@@ -1295,9 +1295,9 @@ const UAGBPostCarousel = ( props ) => {
 						value: metaFontWeight,
 						label: 'metaFontWeight',
 					} }
-					fontSubset={ {
-						value: metaFontSubset,
-						label: 'metaFontSubset',
+					fontStyle={ {
+						value: metaFontStyle,
+						label: 'metaFontStyle',
 					} }
 					fontSizeType={ {
 						value: metaFontSizeType,
@@ -1332,12 +1332,12 @@ const UAGBPostCarousel = ( props ) => {
 						label: 'metaLineHeightTablet',
 					} }
 					transform={ {
-						value: metaLinkTransform,
-						label: 'metaLinkTransform',
+						value: metaTransform,
+						label: 'metaTransform',
 					} }
 					decoration={ {
-						value: metaLinkDecoration,
-						label: 'metaLinkDecoration',
+						value: metaDecoration,
+						label: 'metaDecoration',
 					} }
 				/>
 
@@ -1393,9 +1393,9 @@ const UAGBPostCarousel = ( props ) => {
 						value: excerptFontWeight,
 						label: 'excerptFontWeight',
 					} }
-					fontSubset={ {
-						value: excerptFontSubset,
-						label: 'excerptFontSubset',
+					fontStyle={ {
+						value: excerptFontStyle,
+						label: 'excerptFontStyle',
 					} }
 					fontSizeType={ {
 						value: excerptFontSizeType,
@@ -1553,9 +1553,9 @@ const UAGBPostCarousel = ( props ) => {
 						value: ctaFontWeight,
 						label: 'ctaFontWeight',
 					} }
-					fontSubset={ {
-						value: ctaFontSubset,
-						label: 'ctaFontSubset',
+					fontStyle={ {
+						value: ctaFontStyle,
+						label: 'ctaFontStyle',
 					} }
 					fontSizeType={ {
 						value: ctaFontSizeType,

@@ -29,6 +29,9 @@ function styling( props ) {
 		border,
 		bgSize,
 		borderRadius,
+		fontStyle,
+		fontTransform,
+		fontDecoration,
 	} = props.attributes;
 
 	let selectors = {};
@@ -218,6 +221,9 @@ function styling( props ) {
 	selectors[ ' .uagb-icon-list-repeater .uagb-icon-list__label' ] = {
 		'font-size': generateCSSUnit( fontSize, fontSizeType ),
 		'font-family': fontFamily,
+		'font-style' : fontStyle,
+		'text-decoration': fontDecoration,
+		'text-transform': fontTransform,
 		'font-weight': fontWeight,
 		'line-height': generateCSSUnit( lineHeight, lineHeightType ),
 	};

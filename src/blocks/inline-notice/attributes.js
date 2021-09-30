@@ -70,7 +70,14 @@ const attributes = {
 	titleFontWeight: {
 		type: 'string',
 	},
-	titleFontSubset: {
+	titleFontStyle: {
+		type: 'string',
+		default: 'normal',
+	},
+	titleTransform: {
+		type: 'string',
+	},
+	titleDecoration: {
 		type: 'string',
 	},
 	titleFontSizeType: {
@@ -106,7 +113,14 @@ const attributes = {
 	descFontWeight: {
 		type: 'string',
 	},
-	descFontSubset: {
+	descFontStyle: {
+		type: 'string',
+		default: 'normal',
+	},
+	descTransform: {
+		type: 'string',
+	},
+	descDecoration: {
 		type: 'string',
 	},
 	descFontSize: {

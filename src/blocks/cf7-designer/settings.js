@@ -63,7 +63,6 @@ const Settings = ( props ) => {
 		labelFontSizeMobile,
 		labelFontFamily,
 		labelFontWeight,
-		labelFontSubset,
 		labelLineHeightType,
 		labelLineHeight,
 		labelLineHeightTablet,
@@ -75,7 +74,6 @@ const Settings = ( props ) => {
 		inputFontSizeMobile,
 		inputFontFamily,
 		inputFontWeight,
-		inputFontSubset,
 		inputLineHeightType,
 		inputLineHeight,
 		inputLineHeightTablet,
@@ -87,7 +85,6 @@ const Settings = ( props ) => {
 		buttonFontSizeMobile,
 		buttonFontFamily,
 		buttonFontWeight,
-		buttonFontSubset,
 		buttonLineHeightType,
 		buttonLineHeight,
 		buttonLineHeightTablet,
@@ -107,7 +104,6 @@ const Settings = ( props ) => {
 		radioCheckFontSizeMobile,
 		radioCheckFontFamily,
 		radioCheckFontWeight,
-		radioCheckFontSubset,
 		radioCheckLineHeightType,
 		radioCheckLineHeight,
 		radioCheckLineHeightTablet,
@@ -124,7 +120,6 @@ const Settings = ( props ) => {
 		validationMsgFontSizeMobile,
 		validationMsgFontFamily,
 		validationMsgFontWeight,
-		validationMsgFontSubset,
 		validationMsgLineHeightType,
 		validationMsgLineHeight,
 		validationMsgLineHeightTablet,
@@ -144,7 +139,6 @@ const Settings = ( props ) => {
 		msgFontSizeMobile,
 		msgFontFamily,
 		msgFontWeight,
-		msgFontSubset,
 		msgLineHeightType,
 		msgLineHeight,
 		msgLineHeightTablet,
@@ -202,6 +196,24 @@ const Settings = ( props ) => {
 		fieldPaddingTypeMobile,
 		fieldPaddingTypeTablet,
 		fieldSpacingLink,
+		labelFontStyle,
+		labelTransform,
+		labelDecoration,
+		inputFontStyle,
+		inputTransform,
+		inputDecoration,
+		buttonFontStyle,
+		buttonTransform,
+		buttonDecoration,
+		radioCheckFontStyle,
+		radioCheckTransform,
+		radioCheckDecoration,
+		validationMsgFontStyle,
+		validationMsgTransform,
+		validationMsgDecoration,
+		msgFontStyle,
+		msgTransform,
+		msgDecoration,
 	} = attributes;
 
 	let loadInputGoogleFonts;
@@ -563,9 +575,17 @@ const Settings = ( props ) => {
 					value: labelFontWeight,
 					label: 'labelFontWeight',
 				} }
-				fontSubset={ {
-					value: labelFontSubset,
-					label: 'labelFontSubset',
+				fontStyle={ {
+					value: labelFontStyle,
+					label: 'labelFontStyle',
+				} }
+				transform={ {
+					value: labelTransform,
+					label: 'labelTransform',
+				} }
+				decoration={ {
+					value: labelDecoration,
+					label: 'labelDecoration',
 				} }
 				fontSizeType={ {
 					value: labelFontSizeType,
@@ -623,9 +643,17 @@ const Settings = ( props ) => {
 					value: inputFontWeight,
 					label: 'inputFontWeight',
 				} }
-				fontSubset={ {
-					value: inputFontSubset,
-					label: 'inputFontSubset',
+				fontStyle={ {
+					value: inputFontStyle,
+					label: 'inputFontStyle',
+				} }
+				transform={ {
+					value: inputTransform,
+					label: 'inputTransform',
+				} }
+				decoration={ {
+					value: inputDecoration,
+					label: 'inputDecoration',
 				} }
 				fontSizeType={ {
 					value: inputFontSizeType,
@@ -848,9 +876,17 @@ const Settings = ( props ) => {
 					value: radioCheckFontWeight,
 					label: 'radioCheckFontWeight',
 				} }
-				fontSubset={ {
-					value: radioCheckFontSubset,
-					label: 'radioCheckFontSubset',
+				fontStyle={ {
+					value: radioCheckFontStyle,
+					label: 'radioCheckFontStyle',
+				} }
+				transform={ {
+					value: radioCheckTransform,
+					label: 'radioCheckTransform',
+				} }
+				decoration={ {
+					value: radioCheckDecoration,
+					label: 'radioCheckDecoration',
 				} }
 				fontSizeType={ {
 					value: radioCheckFontSizeType,
@@ -1048,9 +1084,17 @@ const Settings = ( props ) => {
 					value: buttonFontWeight,
 					label: 'buttonFontWeight',
 				} }
-				fontSubset={ {
-					value: buttonFontSubset,
-					label: 'buttonFontSubset',
+				fontStyle={ {
+					value: buttonFontStyle,
+					label: 'buttonFontStyle',
+				} }
+				transform={ {
+					value: buttonTransform,
+					label: 'buttonTransform',
+				} }
+				decoration={ {
+					value: buttonDecoration,
+					label: 'buttonDecoration',
 				} }
 				fontSizeType={ {
 					value: buttonFontSizeType,
@@ -1200,9 +1244,17 @@ const Settings = ( props ) => {
 					value: validationMsgFontWeight,
 					label: 'validationMsgFontWeight',
 				} }
-				fontSubset={ {
-					value: validationMsgFontSubset,
-					label: 'validationMsgFontSubset',
+				fontStyle={ {
+					value: validationMsgFontStyle,
+					label: 'validationMsgFontStyle',
+				} }
+				transform={ {
+					value: validationMsgTransform,
+					label: 'validationMsgTransform',
+				} }
+				decoration={ {
+					value: validationMsgDecoration,
+					label: 'validationMsgDecoration',
 				} }
 				fontSizeType={ {
 					value: validationMsgFontSizeType,
@@ -1287,7 +1339,18 @@ const Settings = ( props ) => {
 				} }
 				fontFamily={ { value: msgFontFamily, label: 'msgFontFamily' } }
 				fontWeight={ { value: msgFontWeight, label: 'msgFontWeight' } }
-				fontSubset={ { value: msgFontSubset, label: 'msgFontSubset' } }
+				fontStyle={ {
+					value: msgFontStyle,
+					label: 'msgFontStyle',
+				} }
+				transform={ {
+					value: msgTransform,
+					label: 'msgTransform',
+				} }
+				decoration={ {
+					value: msgDecoration,
+					label: 'msgDecoration',
+				} }
 				fontSizeType={ {
 					value: msgFontSizeType,
 					label: 'msgFontSizeType',

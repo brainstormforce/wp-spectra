@@ -93,7 +93,7 @@ const Settings = ( props ) => {
 		titleFontSizeTablet,
 		titleFontFamily,
 		titleFontWeight,
-		titleFontSubset,
+		titleFontStyle,
 		titleLineHeightType,
 		titleLineHeight,
 		titleLineHeightTablet,
@@ -105,7 +105,7 @@ const Settings = ( props ) => {
 		countFontSizeTablet,
 		countFontFamily,
 		countFontWeight,
-		countFontSubset,
+		countFontStyle,
 		countLineHeightType,
 		countLineHeight,
 		countLineHeightTablet,
@@ -117,7 +117,7 @@ const Settings = ( props ) => {
 		listFontSizeTablet,
 		listFontFamily,
 		listFontWeight,
-		listFontSubset,
+		listFontStyle,
 		listLineHeightType,
 		listLineHeight,
 		listLineHeightTablet,
@@ -132,6 +132,12 @@ const Settings = ( props ) => {
 		listDisplayStyle,
 		showhierarchy,
 		titleTag,
+		titleTransform,
+		countTransform,
+		listTransform,
+		titleDecoration,
+		countDecoration,
+		listDecoration,
 	} = attributes;
 
 	const taxonomy_list_setting = showEmptyTaxonomy ? taxonomyList : termsList;
@@ -662,9 +668,9 @@ const Settings = ( props ) => {
 						value: titleFontWeight,
 						label: 'titleFontWeight',
 					} }
-					fontSubset={ {
-						value: titleFontSubset,
-						label: 'titleFontSubset',
+					fontStyle={ {
+						value: titleFontStyle,
+						label: 'titleFontStyle',
 					} }
 					fontSizeType={ {
 						value: titleFontSizeType,
@@ -697,6 +703,14 @@ const Settings = ( props ) => {
 					lineHeightTablet={ {
 						value: titleLineHeightTablet,
 						label: 'titleLineHeightTablet',
+					} }
+					transform={ {
+						value: titleTransform,
+						label: 'titleTransform',
+					} }
+					decoration={ {
+						value: titleDecoration,
+						label: 'titleDecoration',
 					} }
 				/>
 			</PanelBody>
@@ -734,9 +748,9 @@ const Settings = ( props ) => {
 						value: countFontWeight,
 						label: 'countFontWeight',
 					} }
-					fontSubset={ {
-						value: countFontSubset,
-						label: 'countFontSubset',
+					fontStyle={ {
+						value: countFontStyle,
+						label: 'countFontStyle',
 					} }
 					fontSizeType={ {
 						value: countFontSizeType,
@@ -769,6 +783,14 @@ const Settings = ( props ) => {
 					lineHeightTablet={ {
 						value: countLineHeightTablet,
 						label: 'countLineHeightTablet',
+					} }
+					transform={ {
+						value: countTransform,
+						label: 'countTransform',
+					} }
+					decoration={ {
+						value: countDecoration,
+						label: 'countDecoration',
 					} }
 				/>
 			</PanelBody>
@@ -1003,9 +1025,9 @@ const Settings = ( props ) => {
 						value: listFontWeight,
 						label: 'listFontWeight',
 					} }
-					fontSubset={ {
-						value: listFontSubset,
-						label: 'listFontSubset',
+					fontStyle={ {
+						value: listFontStyle,
+						label: 'listFontStyle',
 					} }
 					fontSizeType={ {
 						value: listFontSizeType,
@@ -1038,6 +1060,14 @@ const Settings = ( props ) => {
 					lineHeightTablet={ {
 						value: listLineHeightTablet,
 						label: 'listLineHeightTablet',
+					} }
+					transform={ {
+						value: listTransform,
+						label: 'listTransform',
+					} }
+					decoration={ {
+						value: listDecoration,
+						label: 'listDecoration',
 					} }
 				/>
 				<UAGTabsControl

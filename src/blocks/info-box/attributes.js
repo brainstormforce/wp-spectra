@@ -92,7 +92,7 @@ const attributes = {
 	prefixFontWeight: {
 		type: 'string',
 	},
-	prefixFontSubset: {
+	prefixFontStyle: {
 		type: 'string',
 	},
 	prefixLineHeightType: {
@@ -105,13 +105,11 @@ const attributes = {
 	prefixLineHeightTablet: {
 		type: 'number',
 	},
-	prefixTextTransform: {
+	prefixTransform: {
 		type: 'string',
-		default: 'normal',
 	},
-	prefixTextDecoration: {
+	prefixDecoration: {
 		type: 'string',
-		default: 'none',
 	},
 	prefixLineHeightMobile: {
 		type: 'number',
@@ -144,24 +142,20 @@ const attributes = {
 	headFontWeight: {
 		type: 'string',
 	},
-	headFontSubset: {
+	headFontStyle: {
 		type: 'string',
 	},
-	headLineTransform: {
+	headTransform: {
 		type: 'string',
-		default: 'normal',
 	},
-	headLineDecoration: {
-		type: 'string',
-		default: 'none',
+	headDecoration: {
+		type: 'string'
 	},
-	subHeadLineTransform: {
+	subHeadTransform: {
 		type: 'string',
-		default: 'normal',
 	},
-	subHeadLineDecoration: {
-		type: 'string',
-		default: 'none',
+	subHeadDecoration: {
+		type: 'string'
 	},
 	headLineHeightType: {
 		type: 'string',
@@ -200,7 +194,7 @@ const attributes = {
 	subHeadFontWeight: {
 		type: 'string',
 	},
-	subHeadFontSubset: {
+	subHeadFontStyle: {
 		type: 'string',
 	},
 	subHeadLineHeightType: {
@@ -330,13 +324,11 @@ const attributes = {
 		type: 'string',
 		default: '#333',
 	},
-	ctaTextTransform: {
+	ctaTransform: {
 		type: 'string',
-		default: 'normal',
 	},
-	ctaTextDecoration: {
-		type: 'string',
-		default: 'none',
+	ctaDecoration: {
+		type: 'string'
 	},
 	ctaFontSize: {
 		type: 'number',
@@ -358,7 +350,7 @@ const attributes = {
 	ctaFontWeight: {
 		type: 'string',
 	},
-	ctaFontSubset: {
+	ctaFontStyle: {
 		type: 'string',
 	},
 	ctaLoadGoogleFonts: {

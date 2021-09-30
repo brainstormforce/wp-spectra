@@ -115,6 +115,9 @@ function testimonialStyle( props ) {
 		imgpaddingUnit,
 		imgmobilePaddingUnit,
 		imgtabletPaddingUnit,
+		nameFontStyle,
+		companyFontStyle,
+		descFontStyle,
 	} = props.attributes;
 
 	let imgAlign = 'center';
@@ -162,6 +165,7 @@ function testimonialStyle( props ) {
 			'font-size': generateCSSUnit( nameFontSize, nameFontSizeType ),
 			'font-family': nameFontFamily,
 			'font-weight': nameFontWeight,
+			'font-style': nameFontStyle,
 			'text-decoration': nameDecoration,
 			'text-transform': nameTransform,
 			'line-height': generateCSSUnit(
@@ -179,6 +183,7 @@ function testimonialStyle( props ) {
 			),
 			'font-family': companyFontFamily,
 			'font-weight': companyFontWeight,
+			'font-style': companyFontStyle,
 			'text-decoration': companyDecoration,
 			'text-transform': companyTransform,
 			'line-height': generateCSSUnit(
@@ -191,6 +196,7 @@ function testimonialStyle( props ) {
 		' .uagb-tm__desc': {
 			'font-size': generateCSSUnit( descFontSize, descFontSizeType ),
 			'font-family': descFontFamily,
+			'font-style': descFontStyle,
 			'text-decoration': descDecoration,
 			'text-transform': descTransform,
 			'font-weight': descFontWeight,

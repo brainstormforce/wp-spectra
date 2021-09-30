@@ -32,7 +32,7 @@ const Settings = ( props ) => {
 		headingTag,
 		headFontFamily,
 		headFontWeight,
-		headFontSubset,
+		headFontStyle,
 		headFontSizeType,
 		headFontSize,
 		headFontSizeMobile,
@@ -43,7 +43,7 @@ const Settings = ( props ) => {
 		headLineHeightTablet,
 		subHeadFontFamily,
 		subHeadFontWeight,
-		subHeadFontSubset,
+		subHeadFontStyle,
 		subHeadFontSize,
 		subHeadFontSizeType,
 		subHeadFontSizeMobile,
@@ -52,6 +52,10 @@ const Settings = ( props ) => {
 		subHeadLineHeightType,
 		subHeadLineHeightMobile,
 		subHeadLineHeightTablet,
+		headTransform,
+		headDecoration,
+		subHeadTransform,
+		subHeadDecoration,
 		separatorWidth,
 		separatorWidthType,
 		seperatorStyle,
@@ -177,9 +181,17 @@ const Settings = ( props ) => {
 							value: headFontWeight,
 							label: 'headFontWeight',
 						} }
-						fontSubset={ {
-							value: headFontSubset,
-							label: 'headFontSubset',
+						fontStyle={ {
+							value: headFontStyle,
+							label: 'headFontStyle',
+						} }
+						transform={ {
+							value: headTransform,
+							label: 'headTransform',
+						} }
+						decoration={ {
+							value: headDecoration,
+							label: 'headDecoration',
 						} }
 						fontSizeType={ {
 							value: headFontSizeType,
@@ -266,9 +278,17 @@ const Settings = ( props ) => {
 							value: subHeadFontWeight,
 							label: 'subHeadFontWeight',
 						} }
-						fontSubset={ {
-							value: subHeadFontSubset,
-							label: 'subHeadFontSubset',
+						fontStyle={ {
+							value: subHeadFontStyle,
+							label: 'subHeadFontStyle',
+						} }
+						transform={ {
+							value: subHeadTransform,
+							label: 'subHeadTransform',
+						} }
+						decoration={ {
+							value: subHeadDecoration,
+							label: 'subHeadDecoration',
 						} }
 						fontSizeType={ {
 							value: subHeadFontSizeType,

@@ -53,7 +53,6 @@ const Settings = ( props ) => {
 		descColor,
 		titleFontFamily,
 		titleFontWeight,
-		titleFontSubset,
 		titleFontSizeType,
 		titleFontSize,
 		titleFontSizeMobile,
@@ -64,7 +63,6 @@ const Settings = ( props ) => {
 		titleLineHeightTablet,
 		prefixFontFamily,
 		prefixFontWeight,
-		prefixFontSubset,
 		prefixFontSizeType,
 		prefixFontSize,
 		prefixFontSizeMobile,
@@ -75,7 +73,6 @@ const Settings = ( props ) => {
 		prefixLineHeightTablet,
 		descFontFamily,
 		descFontWeight,
-		descFontSubset,
 		descFontSizeType,
 		descFontSize,
 		descFontSizeMobile,
@@ -130,6 +127,15 @@ const Settings = ( props ) => {
 		tabletImageMarginUnit,
 		mobileImageMarginUnit,
 		spacingLink,
+		titleTransform,
+		titleDecoration,
+		descTransform,
+		descDecoration,
+		prefixTransform,
+		prefixDecoration,
+		titleFontStyle,
+		descFontStyle,
+		prefixFontStyle,
 	} = attributes;
 
 	/*
@@ -715,9 +721,17 @@ const Settings = ( props ) => {
 						value: titleFontWeight,
 						label: 'titleFontWeight',
 					} }
-					fontSubset={ {
-						value: titleFontSubset,
-						label: 'titleFontSubset',
+					fontStyle={ {
+						value: titleFontStyle,
+						label: 'titleFontStyle',
+					} }
+					transform={ {
+						value: titleTransform,
+						label: 'titleTransform',
+					} }
+					decoration={ {
+						value: titleDecoration,
+						label: 'titleDecoration',
 					} }
 					fontSizeType={ {
 						value: titleFontSizeType,
@@ -804,9 +818,17 @@ const Settings = ( props ) => {
 						value: prefixFontWeight,
 						label: 'prefixFontWeight',
 					} }
-					fontSubset={ {
-						value: prefixFontSubset,
-						label: 'prefixFontSubset',
+					fontStyle={ {
+						value: prefixFontStyle,
+						label: 'prefixFontStyle',
+					} }
+					transform={ {
+						value: prefixTransform,
+						label: 'prefixTransform',
+					} }
+					decoration={ {
+						value: prefixDecoration,
+						label: 'prefixDecoration',
 					} }
 					fontSizeType={ {
 						value: prefixFontSizeType,
@@ -893,9 +915,17 @@ const Settings = ( props ) => {
 						value: descFontWeight,
 						label: 'descFontWeight',
 					} }
-					fontSubset={ {
-						value: descFontSubset,
-						label: 'descFontSubset',
+					fontStyle={ {
+						value: descFontStyle,
+						label: 'descFontStyle',
+					} }
+					transform={ {
+						value: descTransform,
+						label: 'descTransform',
+					} }
+					decoration={ {
+						value: descDecoration,
+						label: 'descDecoration',
 					} }
 					fontSizeType={ {
 						value: descFontSizeType,

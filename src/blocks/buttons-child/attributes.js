@@ -33,9 +33,6 @@ const attributes = {
 	fontWeight: {
 		type: 'string',
 	},
-	fontSubset: {
-		type: 'string',
-	},
 	label: {
 		type: 'html',
 		default: '#Click Here',

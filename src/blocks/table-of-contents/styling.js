@@ -96,6 +96,12 @@ function styling( props ) {
 		disableBullets,
 		headingAlignment,
 		borderHoverColor,
+		fontStyle,
+		fontTransform,
+		fontDecoration,
+		headingFontStyle,
+		headingTransform,
+		headingDecoration,
 	} = props.attributes;
 
 	let selectors = {};
@@ -117,6 +123,9 @@ function styling( props ) {
 			'font-size': generateCSSUnit( fontSize, fontSizeType ),
 			'line-height': generateCSSUnit( lineHeight, lineHeightType ),
 			'font-family': fontFamily,
+			'font-style' : fontStyle,
+			'text-decoration': fontDecoration,
+			'text-transform': fontTransform,
 			'font-weight': fontWeight,
 			'color': linkColor,
 		},
@@ -134,6 +143,9 @@ function styling( props ) {
 				headingLineHeightType
 			),
 			'font-family': headingFontFamily,
+			'font-style' : headingFontStyle,
+			'text-decoration': headingDecoration,
+			'text-transform': headingTransform,
 			'font-weight': headingFontWeight,
 			'color': headingColor,
 		},

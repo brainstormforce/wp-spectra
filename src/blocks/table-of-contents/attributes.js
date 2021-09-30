@@ -406,9 +406,6 @@ const attributes = {
 	fontWeight: {
 		type: 'string',
 	},
-	fontSubset: {
-		type: 'string',
-	},
 	// Link Font Size
 	fontSize: {
 		type: 'number',
@@ -451,9 +448,6 @@ const attributes = {
 		type: 'string',
 		default: '500',
 	},
-	headingFontSubset: {
-		type: 'string',
-	},
 	// Link Font Size
 	headingFontSize: {
 		type: 'number',
@@ -493,6 +487,28 @@ const attributes = {
 			'Add a header to begin generating the table of contents',
 			'ultimate-addons-for-gutenberg'
 		),
+	},
+
+	fontStyle: {
+		type: 'string',
+		default: 'normal',
+	},
+	fontTransform: {
+		type: 'string',
+	},
+	fontDecoration: {
+		type: 'string',
+	},
+
+	headingFontStyle: {
+		type: 'string',
+		default: 'normal',
+	},
+	headingTransform: {
+		type: 'string',
+	},
+	headingDecoration: {
+		type: 'string',
 	},
 };
 

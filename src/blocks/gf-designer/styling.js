@@ -174,6 +174,27 @@ function styling( props ) {
 		msgpaddingUnit,
 		msgmobilePaddingUnit,
 		msgtabletPaddingUnit,
+		labelFontStyle,
+		labelTransform,
+		labelDecoration,
+		inputFontStyle,
+		inputTransform,
+		inputDecoration,
+		buttonFontStyle,
+		buttonTransform,
+		buttonDecoration,
+		radioCheckFontStyle,
+		radioCheckTransform,
+		radioCheckDecoration,
+		validationMsgFontStyle,
+		validationMsgTransform,
+		validationMsgDecoration,
+		msgFontStyle,
+		msgTransform,
+		msgDecoration,
+		successMsgDecoration,
+		successMsgFontStyle,
+		successMsgTransform,
 	} = props.attributes;
 
 	const selectors = {
@@ -213,6 +234,9 @@ function styling( props ) {
 			'margin-bottom': generateCSSUnit( fieldSpacing, 'px' ),
 			'font-size': generateCSSUnit( inputFontSize, inputFontSizeType ),
 			'font-family': inputFontFamily,
+			'font-style' : inputFontStyle,
+			'text-decoration': inputDecoration,
+			'text-transform': inputTransform,
 			'font-weight': inputFontWeight,
 			'line-height': generateCSSUnit(
 				inputLineHeight,
@@ -225,6 +249,9 @@ function styling( props ) {
 			'background-color': buttonBgColor,
 			'font-size': generateCSSUnit( buttonFontSize, buttonFontSizeType ),
 			'font-family': buttonFontFamily,
+			'font-style' : buttonFontStyle,
+			'text-decoration': buttonDecoration,
+			'text-transform': buttonTransform,
 			'font-weight': buttonFontWeight,
 			'line-height': generateCSSUnit(
 				buttonLineHeight,
@@ -268,6 +295,9 @@ function styling( props ) {
 			'color': fieldInputColor,
 			'font-size': generateCSSUnit( inputFontSize, inputFontSizeType ),
 			'font-family': inputFontFamily,
+			'font-style' : inputFontStyle,
+			'text-decoration': inputDecoration,
+			'text-transform': inputTransform,
 			'font-weight': inputFontWeight,
 			'line-height': generateCSSUnit(
 				inputLineHeight,
@@ -302,6 +332,9 @@ function styling( props ) {
 			'color': fieldInputColor,
 			'font-size': generateCSSUnit( inputFontSize, inputFontSizeType ),
 			'font-family': inputFontFamily,
+			'font-style' : inputFontStyle,
+			'text-decoration': inputDecoration,
+			'text-transform': inputTransform,
 			'font-weight': inputFontWeight,
 			'line-height': generateCSSUnit(
 				inputLineHeight,
@@ -382,6 +415,9 @@ function styling( props ) {
 			'margin-bottom': generateCSSUnit( fieldSpacing, 'px' ),
 			'font-size': generateCSSUnit( inputFontSize, inputFontSizeType ),
 			'font-family': inputFontFamily,
+			'font-style' : inputFontStyle,
+			'text-decoration': inputDecoration,
+			'text-transform': inputTransform,
 			'font-weight': inputFontWeight,
 			'line-height': generateCSSUnit(
 				inputLineHeight,
@@ -405,6 +441,9 @@ function styling( props ) {
 			'color': fieldLabelColor,
 			'font-size': generateCSSUnit( labelFontSize, labelFontSizeType ),
 			'font-family': labelFontFamily,
+			'font-style' : labelFontStyle,
+			'text-decoration': labelDecoration,
+			'text-transform': labelTransform,
 			'font-weight': labelFontWeight,
 			'line-height': generateCSSUnit(
 				labelLineHeight,
@@ -415,6 +454,9 @@ function styling( props ) {
 			'color': fieldLabelColor,
 			'font-size': generateCSSUnit( labelFontSize, labelFontSizeType ),
 			'font-family': labelFontFamily,
+			'font-style' : labelFontStyle,
+			'text-decoration': labelDecoration,
+			'text-transform': labelTransform,
 			'font-weight': labelFontWeight,
 			'line-height': generateCSSUnit(
 				labelLineHeight,
@@ -425,6 +467,9 @@ function styling( props ) {
 			'color': fieldLabelColor,
 			'font-size': generateCSSUnit( labelFontSize, labelFontSizeType ),
 			'font-family': labelFontFamily,
+			'font-style' : labelFontStyle,
+			'text-decoration': labelDecoration,
+			'text-transform': labelTransform,
 			'font-weight': labelFontWeight,
 			'line-height': generateCSSUnit(
 				labelLineHeight,
@@ -452,6 +497,9 @@ function styling( props ) {
 			'background-color': buttonBgColor,
 			'font-size': generateCSSUnit( buttonFontSize, buttonFontSizeType ),
 			'font-family': buttonFontFamily,
+			'font-style' : buttonFontStyle,
+			'text-decoration': buttonDecoration,
+			'text-transform': buttonTransform,
 			'font-weight': buttonFontWeight,
 			'line-height': generateCSSUnit(
 				buttonLineHeight,
@@ -598,6 +646,9 @@ function styling( props ) {
 				radioCheckFontSizeType
 			),
 			'font-family': radioCheckFontFamily,
+			'font-style' : radioCheckFontStyle,
+			'text-decoration': radioCheckDecoration,
+			'text-transform': radioCheckTransform,
 			'font-weight': radioCheckFontWeight,
 			'line-height': generateCSSUnit(
 				radioCheckLineHeight,
@@ -611,6 +662,9 @@ function styling( props ) {
 				radioCheckFontSizeType
 			),
 			'font-family': radioCheckFontFamily,
+			'font-style' : radioCheckFontStyle,
+			'text-decoration': radioCheckDecoration,
+			'text-transform': radioCheckTransform,
 			'font-weight': radioCheckFontWeight,
 			'line-height': generateCSSUnit(
 				radioCheckLineHeight,
@@ -628,6 +682,9 @@ function styling( props ) {
 				validationMsgFontSizeType
 			),
 			'font-family': validationMsgFontFamily,
+			'font-style' : validationMsgFontStyle,
+			'text-decoration': validationMsgDecoration,
+			'text-transform': validationMsgTransform,
 			'font-weight': validationMsgFontWeight,
 			'line-height': generateCSSUnit(
 				validationMsgLineHeight,
@@ -708,6 +765,9 @@ function styling( props ) {
 			),
 			'font-size': msgFontSize.msgFontSizeType,
 			'font-family': msgFontFamily,
+			'font-style' : msgFontStyle,
+			'text-decoration': msgDecoration,
+			'text-transform': msgTransform,
 			'font-weight': msgFontWeight,
 			'line-height': generateCSSUnit( msgLineHeight, msgLineHeightType ),
 		},
@@ -719,6 +779,9 @@ function styling( props ) {
 				successMsgFontSizeType
 			),
 			'font-family': successMsgFontFamily,
+			'font-style' : successMsgFontStyle,
+			'text-decoration': successMsgDecoration,
+			'text-transform': successMsgTransform,
 			'font-weight': successMsgFontWeight,
 			'line-height': generateCSSUnit(
 				successMsgLineHeight,

@@ -398,7 +398,14 @@ const attributes = {
 	headFontWeight: {
 		type: 'string',
 	},
-	headFontSubset: {
+	headFontStyle: {
+		type: 'string',
+		default: 'normal',
+	},
+	headTransform: {
+		type: 'string',
+	},
+	headDecoration: {
 		type: 'string',
 	},
 	headFontSizeType: {
@@ -434,7 +441,14 @@ const attributes = {
 	subHeadFontWeight: {
 		type: 'string',
 	},
-	subHeadFontSubset: {
+	subHeadFontStyle: {
+		type: 'string',
+		default: 'normal',
+	},
+	subHeadTransform: {
+		type: 'string',
+	},
+	subHeadDecoration: {
 		type: 'string',
 	},
 	subHeadFontSize: {
@@ -486,7 +500,14 @@ const attributes = {
 	contentFontWeight: {
 		type: 'string',
 	},
-	contentFontSubset: {
+	contentFontStyle: {
+		type: 'string',
+		default: 'normal',
+	},
+	contentTransform: {
+		type: 'string',
+	},
+	contentDecoration: {
 		type: 'string',
 	},
 	contentFontSize: {

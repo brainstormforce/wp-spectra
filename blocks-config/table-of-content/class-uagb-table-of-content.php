@@ -719,9 +719,6 @@ if ( ! class_exists( 'UAGB_Table_Of_Content' ) ) {
 									'fontWeight'           => array(
 										'type' => 'string',
 									),
-									'fontSubset'           => array(
-										'type' => 'string',
-									),
 									// Link Font Size.
 									'fontSize'             => array(
 										'type' => 'number',
@@ -763,9 +760,6 @@ if ( ! class_exists( 'UAGB_Table_Of_Content' ) ) {
 									'headingFontWeight'    => array(
 										'type'    => 'string',
 										'default' => '500',
-									),
-									'headingFontSubset'    => array(
-										'type' => 'string',
 									),
 									// Link Font Size.
 									'headingFontSize'      => array(

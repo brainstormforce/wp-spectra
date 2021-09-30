@@ -45,5 +45,7 @@ return array(
 	'fontFamily'      => '',
 	'fontWeight'      => '',
 	'loadGoogleFonts' => false,
-	'fontSubset'      => '',
+	'fontStyle'       => '',
+	'fontTransform'   => '',
+	'fontDecoration'  => '',
 );

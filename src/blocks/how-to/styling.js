@@ -47,6 +47,15 @@ function styling( props ) {
 		costSpace,
 		row_gap,
 		step_gap,
+		priceFontStyle,
+		priceTransform,
+		priceDecoration,
+		headFontStyle,
+		headTransform,
+		headDecoration,
+		subHeadFontStyle,
+		subHeadTransform,
+		subHeadDecoration,
 	} = props.attributes;
 
 	let tabletSelectors = {};
@@ -58,6 +67,9 @@ function styling( props ) {
 	const selectors = {
 		' .block-editor-rich-text__editable.uagb-howto-desc-text': {
 			'font-family': subHeadFontFamily,
+			'font-style' : subHeadFontStyle,
+			'text-decoration': subHeadDecoration,
+			'text-transform': subHeadTransform,
 			'font-weight': subHeadFontWeight,
 			'font-size': generateCSSUnit(
 				subHeadFontSize,
@@ -97,6 +109,9 @@ function styling( props ) {
 		},
 		' .block-editor-rich-text__editable.uagb-howto-timeNeeded-text': {
 			'font-family': priceFontFamily,
+			'font-style' : priceFontStyle,
+			'text-decoration': priceDecoration,
+			'text-transform': priceTransform,
 			'font-weight': priceFontWeight,
 			'font-size': generateCSSUnit( priceFontSize, priceFontSizeType ),
 			'line-height': generateCSSUnit(
@@ -107,6 +122,9 @@ function styling( props ) {
 		},
 		' .uagb-howto-timeNeeded-value': {
 			'font-family': subHeadFontFamily,
+			'font-style' : subHeadFontStyle,
+			'text-decoration': subHeadDecoration,
+			'text-transform': subHeadTransform,
 			'font-weight': subHeadFontWeight,
 			'font-size': generateCSSUnit(
 				subHeadFontSize,
@@ -121,6 +139,9 @@ function styling( props ) {
 		},
 		' .uagb-howto-timeINmin-text ': {
 			'font-family': subHeadFontFamily,
+			'font-style' : subHeadFontStyle,
+			'text-decoration': subHeadDecoration,
+			'text-transform': subHeadTransform,
 			'font-weight': subHeadFontWeight,
 			'font-size': generateCSSUnit(
 				subHeadFontSize,
@@ -134,6 +155,9 @@ function styling( props ) {
 		},
 		' .block-editor-rich-text__editable.uagb-howto-estcost-text': {
 			'font-family': priceFontFamily,
+			'font-style' : priceFontStyle,
+			'text-decoration': priceDecoration,
+			'text-transform': priceTransform,
 			'font-weight': priceFontWeight,
 			'font-size': generateCSSUnit( priceFontSize, priceFontSizeType ),
 			'line-height': generateCSSUnit(
@@ -144,6 +168,9 @@ function styling( props ) {
 		},
 		' .block-editor-rich-text__editable.uagb-howto-estcost-value': {
 			'font-family': subHeadFontFamily,
+			'font-style' : subHeadFontStyle,
+			'text-decoration': subHeadDecoration,
+			'text-transform': subHeadTransform,
 			'font-weight': subHeadFontWeight,
 			'font-size': generateCSSUnit(
 				subHeadFontSize,
@@ -159,6 +186,9 @@ function styling( props ) {
 
 		' h4.block-editor-rich-text__editable': {
 			'font-family': priceFontFamily,
+			'font-style' : priceFontStyle,
+			'text-decoration': priceDecoration,
+			'text-transform': priceTransform,
 			'font-weight': priceFontWeight,
 			'font-size': generateCSSUnit( priceFontSize, priceFontSizeType ),
 			'line-height': generateCSSUnit(
@@ -168,6 +198,9 @@ function styling( props ) {
 		},
 		' p.block-editor-rich-text__editable': {
 			'font-family': subHeadFontFamily,
+			'font-style' : subHeadFontStyle,
+			'text-decoration': subHeadDecoration,
+			'text-transform': subHeadTransform,
 			'font-weight': subHeadFontWeight,
 			'font-size': generateCSSUnit(
 				subHeadFontSize,
@@ -181,6 +214,9 @@ function styling( props ) {
 
 		' .block-editor-rich-text__editable.uagb-howto-estcost-type': {
 			'font-family': subHeadFontFamily,
+			'font-style' : subHeadFontStyle,
+			'text-decoration': subHeadDecoration,
+			'text-transform': subHeadTransform,
 			'font-weight': subHeadFontWeight,
 			'font-size': generateCSSUnit(
 				subHeadFontSize,
@@ -195,6 +231,9 @@ function styling( props ) {
 
 		' .block-editor-rich-text__editable.uagb-howto-req-tools-text': {
 			'font-family': priceFontFamily,
+			'font-style' : priceFontStyle,
+			'text-decoration': priceDecoration,
+			'text-transform': priceTransform,
 			'font-weight': priceFontWeight,
 			'font-size': generateCSSUnit( priceFontSize, priceFontSizeType ),
 			'line-height': generateCSSUnit(
@@ -206,6 +245,9 @@ function styling( props ) {
 
 		'  .block-editor-rich-text__editable.uagb-tools__label': {
 			'font-family': subHeadFontFamily,
+			'font-style' : subHeadFontStyle,
+			'text-decoration': subHeadDecoration,
+			'text-transform': subHeadTransform,
 			'font-weight': subHeadFontWeight,
 			'font-size': generateCSSUnit(
 				subHeadFontSize,
@@ -220,6 +262,9 @@ function styling( props ) {
 
 		' .block-editor-rich-text__editable.uagb-howto-req-materials-text': {
 			'font-family': priceFontFamily,
+			'font-style' : priceFontStyle,
+			'text-decoration': priceDecoration,
+			'text-transform': priceTransform,
 			'font-weight': priceFontWeight,
 			'font-size': generateCSSUnit( priceFontSize, priceFontSizeType ),
 			'line-height': generateCSSUnit(
@@ -231,6 +276,9 @@ function styling( props ) {
 
 		' .block-editor-rich-text__editable.uagb-howto-req-steps-text': {
 			'font-family': priceFontFamily,
+			'font-style' : priceFontStyle,
+			'text-decoration': priceDecoration,
+			'text-transform': priceTransform,
 			'font-weight': priceFontWeight,
 			'font-size': generateCSSUnit( priceFontSize, priceFontSizeType ),
 			'line-height': generateCSSUnit(
@@ -242,6 +290,9 @@ function styling( props ) {
 
 		' .block-editor-rich-text__editable.uagb-materials__label': {
 			'font-family': subHeadFontFamily,
+			'font-style' : subHeadFontStyle,
+			'text-decoration': subHeadDecoration,
+			'text-transform': subHeadTransform,
 			'font-weight': subHeadFontWeight,
 			'font-size': generateCSSUnit(
 				subHeadFontSize,
@@ -266,6 +317,9 @@ function styling( props ) {
 			'.block-editor-rich-text__editable.uagb-howto-heading-text'
 	] = {
 		'font-family': headFontFamily,
+		'font-style' : headFontStyle,
+		'text-decoration': headDecoration,
+		'text-transform': headTransform,
 		'font-weight': headFontWeight,
 		'font-size': generateCSSUnit( headFontSize, headFontSizeType ),
 		'line-height': generateCSSUnit( headLineHeight, headLineHeightType ),

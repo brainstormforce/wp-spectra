@@ -272,7 +272,6 @@ const Settings = ( props ) => {
 							setAttributes={ setAttributes }
 							disableFontFamily={ true }
 							disableFontWeight={ true }
-							disableFontSubset={ true }
 							fontSizeType={ {
 								value: sizeType,
 								label: 'sizeType',

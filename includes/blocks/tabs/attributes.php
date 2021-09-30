@@ -93,7 +93,7 @@ return array(
 	'titleFontSizeMobile'         => '',
 	'titleFontFamily'             => 'Default',
 	'titleFontWeight'             => '',
-	'titleFontSubset'             => '',
+	'titleFontStyle'              => '',
 	'titleLineHeightType'         => 'em',
 	'titleLineHeight'             => '',
 	'titleLineHeightTablet'       => '',

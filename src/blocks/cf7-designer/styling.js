@@ -115,6 +115,18 @@ function styling( props ) {
 		fieldPaddingTypeDesktop,
 		fieldPaddingTypeTablet,
 		fieldPaddingTypeMobile,
+		labelFontStyle,
+		labelTransform,
+		labelDecoration,
+		inputFontStyle,
+		inputTransform,
+		inputDecoration,
+		buttonFontStyle,
+		buttonTransform,
+		buttonDecoration,
+		radioCheckFontStyle,
+		radioCheckTransform,
+		radioCheckDecoration,
 	} = props.attributes;
 
 	const selectors = {
@@ -154,6 +166,9 @@ function styling( props ) {
 			'margin-bottom': generateCSSUnit( fieldSpacing, 'px' ),
 			'font-size': generateCSSUnit( inputFontSize, inputFontSizeType ),
 			'font-family': inputFontFamily,
+			'font-style' : inputFontStyle,
+			'text-decoration': inputDecoration,
+			'text-transform': inputTransform,
 			'font-weight': inputFontWeight,
 			'line-height': generateCSSUnit(
 				inputLineHeight,
@@ -266,6 +281,9 @@ function styling( props ) {
 		' .wpcf7 form label': {
 			'font-size': generateCSSUnit( labelFontSize, labelFontSizeType ),
 			'font-family': labelFontFamily,
+			'font-style' : labelFontStyle,
+			'text-decoration': labelDecoration,
+			'text-transform': labelTransform,
 			'font-weight': labelFontWeight,
 			'line-height': generateCSSUnit(
 				labelLineHeight,
@@ -275,6 +293,9 @@ function styling( props ) {
 		' .wpcf7 form .wpcf7-list-item-label': {
 			'font-size': generateCSSUnit( labelFontSize, labelFontSizeType ),
 			'font-family': labelFontFamily,
+			'font-style' : labelFontStyle,
+			'text-decoration': labelDecoration,
+			'text-transform': labelTransform,
 			'font-weight': labelFontWeight,
 			'line-height': generateCSSUnit(
 				labelLineHeight,
@@ -299,6 +320,9 @@ function styling( props ) {
 			'background-color': buttonBgColor,
 			'font-size': generateCSSUnit( buttonFontSize, buttonFontSizeType ),
 			'font-family': buttonFontFamily,
+			'font-style' : buttonFontStyle,
+			'text-decoration': buttonDecoration,
+			'text-transform': buttonTransform,
 			'font-weight': buttonFontWeight,
 			'line-height': generateCSSUnit(
 				buttonLineHeight,
@@ -489,6 +513,9 @@ function styling( props ) {
 				radioCheckFontSizeType
 			),
 			'font-family': radioCheckFontFamily,
+			'font-style' : radioCheckFontStyle,
+			'text-decoration': radioCheckDecoration,
+			'text-transform': radioCheckTransform,
 			'font-weight': radioCheckFontWeight,
 			'line-height': generateCSSUnit(
 				radioCheckLineHeight,

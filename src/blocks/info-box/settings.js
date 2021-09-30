@@ -55,13 +55,13 @@ const Settings = ( props ) => {
 		prefixFontSizeMobile,
 		prefixFontFamily,
 		prefixFontWeight,
-		prefixFontSubset,
+		prefixFontStyle,
 		prefixLineHeightType,
 		prefixLineHeight,
 		prefixLineHeightTablet,
 		prefixLineHeightMobile,
-		prefixTextTransform,
-		prefixTextDecoration,
+		prefixTransform,
+		prefixDecoration,
 		prefixLoadGoogleFonts,
 		headingTag,
 		headFontSize,
@@ -70,7 +70,7 @@ const Settings = ( props ) => {
 		headFontSizeMobile,
 		headFontFamily,
 		headFontWeight,
-		headFontSubset,
+		headFontStyle,
 		headLineHeightType,
 		headLineHeight,
 		headLineHeightTablet,
@@ -82,13 +82,13 @@ const Settings = ( props ) => {
 		subHeadFontSizeMobile,
 		subHeadFontFamily,
 		subHeadFontWeight,
-		subHeadFontSubset,
+		subHeadFontStyle,
 		subHeadLineHeightType,
 		subHeadLineHeight,
 		subHeadLineHeightTablet,
 		subHeadLineHeightMobile,
-		subHeadLineTransform,
-		subHeadLineDecoration,
+		subHeadTransform,
+		subHeadDecoration,
 		subHeadLoadGoogleFonts,
 		separatorWidthType,
 		seperatorSpace,
@@ -127,11 +127,11 @@ const Settings = ( props ) => {
 		ctaFontSizeType,
 		ctaFontSizeMobile,
 		ctaFontSizeTablet,
-		ctaTextTransform,
-		ctaTextDecoration,
+		ctaTransform,
+		ctaDecoration,
 		ctaFontFamily,
 		ctaFontWeight,
-		ctaFontSubset,
+		ctaFontStyle,
 		ctaLoadGoogleFonts,
 		ctaBtnLinkColor,
 		ctaLinkHoverColor,
@@ -189,8 +189,8 @@ const Settings = ( props ) => {
 		inheritFromTheme,
 		spacingLink,
 		paddingspacingLink,
-		headLineTransform,
-		headLineDecoration,
+		headTransform,
+		headDecoration,
 		prefixSpaceUnit,
 		headSpaceUnit,
 		seperatorSpaceUnit,
@@ -1092,9 +1092,9 @@ const Settings = ( props ) => {
 									value: prefixFontWeight,
 									label: 'prefixFontWeight',
 								} }
-								fontSubset={ {
-									value: prefixFontSubset,
-									label: 'prefixFontSubset',
+								fontStyle={ {
+									value: prefixFontStyle,
+									label: 'prefixFontStyle',
 								} }
 								fontSizeType={ {
 									value: prefixFontSizeType,
@@ -1129,12 +1129,12 @@ const Settings = ( props ) => {
 									label: 'prefixLineHeightTablet',
 								} }
 								transform={ {
-									value: prefixTextTransform,
-									label: 'prefixTextTransform',
+									value: prefixTransform,
+									label: 'prefixTransform',
 								} }
 								decoration={ {
-									value: prefixTextDecoration,
-									label: 'prefixTextDecoration',
+									value: prefixDecoration,
+									label: 'prefixDecoration',
 								} }
 							/>
 							<ResponsiveSlider
@@ -1199,9 +1199,9 @@ const Settings = ( props ) => {
 									value: headFontWeight,
 									label: 'headFontWeight',
 								} }
-								fontSubset={ {
-									value: headFontSubset,
-									label: 'headFontSubset',
+								fontStyle={ {
+									value: headFontStyle,
+									label: 'headFontStyle',
 								} }
 								fontSizeType={ {
 									value: headFontSizeType,
@@ -1236,12 +1236,12 @@ const Settings = ( props ) => {
 									label: 'headLineHeightTablet',
 								} }
 								transform={ {
-									value: headLineTransform,
-									label: 'headLineTransform',
+									value: headTransform,
+									label: 'headTransform',
 								} }
 								decoration={ {
-									value: headLineDecoration,
-									label: 'headLineDecoration',
+									value: headDecoration,
+									label: 'headDecoration',
 								} }
 							/>
 							<ResponsiveSlider
@@ -1422,9 +1422,9 @@ const Settings = ( props ) => {
 									value: subHeadFontWeight,
 									label: 'subHeadFontWeight',
 								} }
-								fontSubset={ {
-									value: subHeadFontSubset,
-									label: 'subHeadFontSubset',
+								fontStyle={ {
+									value: subHeadFontStyle,
+									label: 'subHeadFontStyle',
 								} }
 								fontSizeType={ {
 									value: subHeadFontSizeType,
@@ -1459,12 +1459,12 @@ const Settings = ( props ) => {
 									label: 'subHeadLineHeightTablet',
 								} }
 								transform={ {
-									value: subHeadLineTransform,
-									label: 'subHeadLineTransform',
+									value: subHeadTransform,
+									label: 'subHeadTransform',
 								} }
 								decoration={ {
-									value: subHeadLineDecoration,
-									label: 'subHeadLineDecoration',
+									value: subHeadDecoration,
+									label: 'subHeadDecoration',
 								} }
 							/>
 							<ResponsiveSlider
@@ -1545,9 +1545,9 @@ const Settings = ( props ) => {
 									value: ctaFontWeight,
 									label: 'ctaFontWeight',
 								} }
-								fontSubset={ {
-									value: ctaFontSubset,
-									label: 'ctaFontSubset',
+								fontStyle={ {
+									value: ctaFontStyle,
+									label: 'ctaFontStyle',
 								} }
 								fontSizeType={ {
 									value: ctaFontSizeType,
@@ -1566,12 +1566,12 @@ const Settings = ( props ) => {
 									label: 'ctaFontSizeTablet',
 								} }
 								transform={ {
-									value: ctaTextTransform,
-									label: 'ctaTextTransform',
+									value: ctaTransform,
+									label: 'ctaTransform',
 								} }
 								decoration={ {
-									value: ctaTextDecoration,
-									label: 'ctaTextDecoration',
+									value: ctaDecoration,
+									label: 'ctaDecoration',
 								} }
 								disableLineHeight={ true }
 							/>
@@ -1703,9 +1703,9 @@ const Settings = ( props ) => {
 											value: ctaFontWeight,
 											label: 'ctaFontWeight',
 										} }
-										fontSubset={ {
-											value: ctaFontSubset,
-											label: 'ctaFontSubset',
+										fontStyle={ {
+											value: ctaFontStyle,
+											label: 'ctaFontStyle',
 										} }
 										fontSizeType={ {
 											value: ctaFontSizeType,
@@ -1724,12 +1724,12 @@ const Settings = ( props ) => {
 											label: 'ctaFontSizeTablet',
 										} }
 										transform={ {
-											value: ctaTextTransform,
-											label: 'ctaTextTransform',
+											value: ctaTransform,
+											label: 'ctaTransform',
 										} }
 										decoration={ {
-											value: ctaTextDecoration,
-											label: 'ctaTextDecoration',
+											value: ctaDecoration,
+											label: 'ctaDecoration',
 										} }
 										disableLineHeight={ true }
 									/>
@@ -1754,9 +1754,9 @@ const Settings = ( props ) => {
 											value: ctaFontWeight,
 											label: 'ctaFontWeight',
 										} }
-										fontSubset={ {
-											value: ctaFontSubset,
-											label: 'ctaFontSubset',
+										fontStyle={ {
+											value: ctaFontStyle,
+											label: 'ctaFontStyle',
 										} }
 										fontSizeType={ {
 											value: ctaFontSizeType,
@@ -1775,12 +1775,12 @@ const Settings = ( props ) => {
 											label: 'ctaFontSizeTablet',
 										} }
 										transform={ {
-											value: ctaTextTransform,
-											label: 'ctaTextTransform',
+											value: ctaTransform,
+											label: 'ctaTransform',
 										} }
 										decoration={ {
-											value: ctaTextDecoration,
-											label: 'ctaTextDecoration',
+											value: ctaDecoration,
+											label: 'ctaDecoration',
 										} }
 										disableLineHeight={ true }
 									/>

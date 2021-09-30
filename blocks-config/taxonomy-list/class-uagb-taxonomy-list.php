@@ -289,7 +289,7 @@ if ( ! class_exists( 'UAGB_Taxonomy_List' ) ) {
 						'titleFontWeight'            => array(
 							'type' => 'string',
 						),
-						'titleFontSubset'            => array(
+						'titleFontStyle'             => array(
 							'type' => 'string',
 						),
 						'titleLineHeightType'        => array(
@@ -329,7 +329,7 @@ if ( ! class_exists( 'UAGB_Taxonomy_List' ) ) {
 						'countFontWeight'            => array(
 							'type' => 'string',
 						),
-						'countFontSubset'            => array(
+						'countFontStyle'             => array(
 							'type' => 'string',
 						),
 						'countLineHeightType'        => array(
@@ -370,7 +370,7 @@ if ( ! class_exists( 'UAGB_Taxonomy_List' ) ) {
 						'listFontWeight'             => array(
 							'type' => 'string',
 						),
-						'listFontSubset'             => array(
+						'listFontStyle'              => array(
 							'type' => 'string',
 						),
 						'listLineHeightType'         => array(
@@ -441,6 +441,24 @@ if ( ! class_exists( 'UAGB_Taxonomy_List' ) ) {
 						'contentPaddingLink'         => array(
 							'type'    => 'boolean',
 							'default' => false,
+						),
+						'titleTransform'             => array(
+							'type' => 'string',
+						),
+						'countTransform'             => array(
+							'type' => 'string',
+						),
+						'listTransform'              => array(
+							'type' => 'string',
+						),
+						'titleDecoration'            => array(
+							'type' => 'string',
+						),
+						'countDecoration'            => array(
+							'type' => 'string',
+						),
+						'listDecoration'             => array(
+							'type' => 'string',
 						),
 					),
 					'render_callback' => array( $this, 'render_html' ),

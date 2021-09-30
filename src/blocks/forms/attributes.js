@@ -133,9 +133,6 @@ const attributes = {
 	submitTextFontWeight: {
 		type: 'string',
 	},
-	submitTextFontSubset: {
-		type: 'string',
-	},
 	// submitText Font Size
 	submitTextFontSize: {
 		type: 'number',
@@ -181,9 +178,6 @@ const attributes = {
 	labelFontWeight: {
 		type: 'string',
 	},
-	labelFontSubset: {
-		type: 'string',
-	},
 	// label Font Size
 	labelFontSize: {
 		type: 'number',
@@ -227,9 +221,6 @@ const attributes = {
 		default: 'Default',
 	},
 	inputFontWeight: {
-		type: 'string',
-	},
-	inputFontSubset: {
 		type: 'string',
 	},
 	// input Font Size
@@ -470,10 +461,10 @@ const attributes = {
 	submitTextDecoration: {
 		type: 'string',
 	},
-	labelTextTransform: {
+	labelTransform: {
 		type: 'string',
 	},
-	labelTextDecoration: {
+	labelDecoration: {
 		type: 'string',
 	},
 	inputTransform: {
@@ -541,6 +532,18 @@ const attributes = {
 	toggleSizeType: {
 		type: 'string',
 		default: 'px',
+	},
+	submitTextFontStyle: {
+		type: 'string',
+		default: 'normal',
+	},
+	labelFontStyle: {
+		type: 'string',
+		default: 'normal',
+	},
+	inputFontStyle: {
+		type: 'string',
+		default: 'normal',
 	},
 };
 export default attributes;

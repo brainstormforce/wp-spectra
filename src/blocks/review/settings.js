@@ -72,7 +72,6 @@ const Settings = ( props ) => {
 		contentColor,
 		headFontFamily,
 		headFontWeight,
-		headFontSubset,
 		headFontSizeType,
 		headFontSize,
 		headFontSizeMobile,
@@ -84,7 +83,6 @@ const Settings = ( props ) => {
 		headLoadGoogleFonts,
 		subHeadFontFamily,
 		subHeadFontWeight,
-		subHeadFontSubset,
 		subHeadFontSize,
 		subHeadFontSizeType,
 		subHeadFontSizeMobile,
@@ -97,7 +95,6 @@ const Settings = ( props ) => {
 		contentLoadGoogleFonts,
 		contentFontFamily,
 		contentFontWeight,
-		contentFontSubset,
 		contentFontSizeType,
 		contentLineHeightType,
 		contentFontSize,
@@ -139,6 +136,15 @@ const Settings = ( props ) => {
 		operatingSystem,
 		datecreated,
 		directorname,
+		headTransform,
+		headDecoration,
+		subHeadTransform,
+		subHeadDecoration,
+		contentTransform,
+		contentDecoration,
+		headFontStyle,
+		subHeadFontStyle,
+		contentFontStyle,
 	} = attributes;
 
 	/*
@@ -298,9 +304,17 @@ const Settings = ( props ) => {
 						value: contentFontWeight,
 						label: 'contentFontWeight',
 					} }
-					fontSubset={ {
-						value: contentFontSubset,
-						label: 'contentFontSubset',
+					fontStyle={ {
+						value: contentFontStyle,
+						label: 'contentFontStyle',
+					} }
+					transform={ {
+						value: contentTransform,
+						label: 'contentTransform',
+					} }
+					decoration={ {
+						value: contentDecoration,
+						label: 'contentDecoration',
 					} }
 					fontSizeType={ {
 						value: contentFontSizeType,
@@ -411,9 +425,17 @@ const Settings = ( props ) => {
 						value: headFontWeight,
 						label: 'headFontWeight',
 					} }
-					fontSubset={ {
-						value: headFontSubset,
-						label: 'headFontSubset',
+					fontStyle={ {
+						value: headFontStyle,
+						label: 'headFontStyle',
+					} }
+					transform={ {
+						value: headTransform,
+						label: 'headTransform',
+					} }
+					decoration={ {
+						value: headDecoration,
+						label: 'headDecoration',
 					} }
 					fontSizeType={ {
 						value: headFontSizeType,
@@ -486,9 +508,17 @@ const Settings = ( props ) => {
 								value: subHeadFontWeight,
 								label: 'subHeadFontWeight',
 							} }
-							fontSubset={ {
-								value: subHeadFontSubset,
-								label: 'subHeadFontSubset',
+							fontStyle={ {
+								value: subHeadFontStyle,
+								label: 'subHeadFontStyle',
+							} }
+							transform={ {
+								value: subHeadTransform,
+								label: 'subHeadTransform',
+							} }
+							decoration={ {
+								value: subHeadDecoration,
+								label: 'subHeadDecoration',
 							} }
 							fontSizeType={ {
 								value: subHeadFontSizeType,

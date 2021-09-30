@@ -26,6 +26,9 @@ function styling( props ) {
 		lineHeightTablet,
 		titleColor,
 		titleGap,
+		fontStyle,
+		fontTransform,
+		fontDecoration,
 	} = props.attributes;
 
 	let alignment = 'flex-start';
@@ -58,6 +61,9 @@ function styling( props ) {
 		' .uag-star-rating__title.block-editor-rich-text__editable': {
 			'font-size': generateCSSUnit( fontSize, fontSizeType ),
 			'font-family': fontFamily,
+			'font-style' : fontStyle,
+			'text-decoration': fontDecoration,
+			'text-transform': fontTransform,
 			'font-weight': fontWeight,
 			'line-height': generateCSSUnit( lineHeight, lineHeightType ),
 			'color': titleColor,

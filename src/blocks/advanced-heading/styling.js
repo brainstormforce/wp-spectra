@@ -19,6 +19,7 @@ function styling( props ) {
 		separatorSpace,
 		subHeadingColor,
 		headFontFamily,
+		headFontStyle, 
 		headFontWeight,
 		headFontSize,
 		headFontSizeType,
@@ -29,6 +30,7 @@ function styling( props ) {
 		headLineHeightMobile,
 		headLineHeightTablet,
 		subHeadFontFamily,
+		subHeadFontStyle,
 		subHeadFontWeight,
 		subHeadFontSize,
 		subHeadFontSizeType,
@@ -38,6 +40,10 @@ function styling( props ) {
 		subHeadLineHeightType,
 		subHeadLineHeightMobile,
 		subHeadLineHeightTablet,
+		headTransform,
+		headDecoration,
+		subHeadTransform,
+		subHeadDecoration,
 	} = props.attributes;
 
 	const tablet_selectors = {};
@@ -48,6 +54,9 @@ function styling( props ) {
 			'margin': 0,
 			'text-align': headingAlign,
 			'font-family': subHeadFontFamily,
+			'font-style' : subHeadFontStyle,
+			'text-decoration': subHeadDecoration,
+			'text-transform': subHeadTransform,
 			'font-weight': subHeadFontWeight,
 			'font-size': generateCSSUnit(
 				subHeadFontSize,
@@ -67,6 +76,9 @@ function styling( props ) {
 	selectors[ ' ' + headingTag + '.uagb-heading-text' ] = {
 		'text-align': headingAlign,
 		'font-family': headFontFamily,
+		'font-style' : headFontStyle,
+		'text-decoration': headDecoration,
+		'text-transform': headTransform,
 		'font-weight': headFontWeight,
 		'font-size': generateCSSUnit( headFontSize, headFontSizeType ),
 		'line-height': generateCSSUnit( headLineHeight, headLineHeightType ),

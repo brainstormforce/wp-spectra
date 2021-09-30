@@ -49,7 +49,7 @@ const Settings = ( props ) => {
 		descFontSizeMobile,
 		descFontFamily,
 		descFontWeight,
-		descFontSubset,
+		descFontStyle,
 		descLineHeightType,
 		descLineHeight,
 		descLineHeightTablet,
@@ -61,7 +61,7 @@ const Settings = ( props ) => {
 		authorFontSizeMobile,
 		authorFontFamily,
 		authorFontWeight,
-		authorFontSubset,
+		authorFontStyle,
 		authorLineHeightType,
 		authorLineHeight,
 		authorLineHeightTablet,
@@ -99,7 +99,7 @@ const Settings = ( props ) => {
 		tweetBtnFontSizeMobile,
 		tweetBtnFontFamily,
 		tweetBtnFontWeight,
-		tweetBtnFontSubset,
+		tweetBtnFontStyle,
 		tweetBtnLineHeightType,
 		tweetBtnLineHeight,
 		tweetBtnLineHeightTablet,
@@ -566,9 +566,9 @@ const Settings = ( props ) => {
 					value: descFontWeight,
 					label: 'descFontWeight',
 				} }
-				fontSubset={ {
-					value: descFontSubset,
-					label: 'descFontSubset',
+				fontStyle={ {
+					value: descFontStyle,
+					label: 'descFontStyle',
 				} }
 				fontSizeType={ {
 					value: descFontSizeType,
@@ -634,9 +634,9 @@ const Settings = ( props ) => {
 					value: authorFontWeight,
 					label: 'authorFontWeight',
 				} }
-				fontSubset={ {
-					value: authorFontSubset,
-					label: 'authorFontSubset',
+				fontStyle={ {
+					value: authorFontStyle,
+					label: 'authorFontStyle',
 				} }
 				fontSizeType={ {
 					value: authorFontSizeType,
@@ -1344,9 +1344,9 @@ const Settings = ( props ) => {
 							value: tweetBtnFontWeight,
 							label: 'tweetBtnFontWeight',
 						} }
-						fontSubset={ {
-							value: tweetBtnFontSubset,
-							label: 'tweetBtnFontSubset',
+						fontStyle={ {
+							value: tweetBtnFontStyle,
+							label: 'tweetBtnFontStyle',
 						} }
 						fontSizeType={ {
 							value: tweetBtnFontSizeType,

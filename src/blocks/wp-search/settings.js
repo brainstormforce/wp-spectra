@@ -52,7 +52,6 @@ const Settings = ( props ) => {
 		inputloadGoogleFonts,
 		inputFontFamily,
 		inputFontWeight,
-		inputFontSubset,
 		inputFontSize,
 		inputFontSizeType,
 		inputFontSizeTablet,
@@ -67,7 +66,6 @@ const Settings = ( props ) => {
 		buttonloadGoogleFonts,
 		buttonFontFamily,
 		buttonFontWeight,
-		buttonFontSubset,
 		buttonFontSize,
 		buttonFontSizeType,
 		buttonFontSizeTablet,
@@ -99,6 +97,8 @@ const Settings = ( props ) => {
 		iconSizeType,
 		inputTransform,
 		inputDecoration,
+		inputFontStyle,
+		buttonFontStyle,
 	} = attributes;
 
 	const generalSettings = () => {
@@ -380,9 +380,9 @@ const Settings = ( props ) => {
 						value: inputFontWeight,
 						label: 'inputFontWeight',
 					} }
-					fontSubset={ {
-						value: inputFontSubset,
-						label: 'inputFontSubset',
+					fontStyle={ {
+						value: inputFontStyle,
+						label: 'inputFontStyle',
 					} }
 					fontSizeType={ {
 						value: inputFontSizeType,
@@ -641,9 +641,9 @@ const Settings = ( props ) => {
 							value: buttonFontWeight,
 							label: 'buttonFontWeight',
 						} }
-						fontSubset={ {
-							value: buttonFontSubset,
-							label: 'buttonFontSubset',
+						fontStyle={ {
+							value: buttonFontStyle,
+							label: 'buttonFontStyle',
 						} }
 						fontSizeType={ {
 							value: buttonFontSizeType,

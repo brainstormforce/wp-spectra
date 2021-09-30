@@ -60,7 +60,6 @@ const Settings = ( props ) => {
 			headingTag,
 			headFontFamily,
 			headFontWeight,
-			headFontSubset,
 			headFontSizeType,
 			headFontSize,
 			headFontSizeMobile,
@@ -71,7 +70,6 @@ const Settings = ( props ) => {
 			headLineHeightTablet,
 			subHeadFontFamily,
 			subHeadFontWeight,
-			subHeadFontSubset,
 			subHeadFontSize,
 			subHeadFontSizeType,
 			subHeadFontSizeMobile,
@@ -89,7 +87,6 @@ const Settings = ( props ) => {
 			priceFontSizeMobile,
 			priceFontFamily,
 			priceFontWeight,
-			priceFontSubset,
 			priceLineHeightType,
 			priceLineHeight,
 			priceLineHeightTablet,
@@ -105,6 +102,15 @@ const Settings = ( props ) => {
 			timeInYears,
 			timeInMins,
 			time,
+			priceFontStyle,
+			priceTransform,
+			priceDecoration,
+			headFontStyle,
+			headTransform,
+			headDecoration,
+			subHeadFontStyle,
+			subHeadTransform,
+			subHeadDecoration,
 		},
 	} = props;
 
@@ -569,9 +575,17 @@ const Settings = ( props ) => {
 						value: headFontWeight,
 						label: 'headFontWeight',
 					} }
-					fontSubset={ {
-						value: headFontSubset,
-						label: 'headFontSubset',
+					fontStyle={ {
+						value: headFontStyle,
+						label: 'headFontStyle',
+					} }
+					transform={ {
+						value: headTransform,
+						label: 'headTransform',
+					} }
+					decoration={ {
+						value: headDecoration,
+						label: 'headDecoration',
 					} }
 					fontSizeType={ {
 						value: headFontSizeType,
@@ -641,9 +655,17 @@ const Settings = ( props ) => {
 						value: priceFontWeight,
 						label: 'priceFontWeight',
 					} }
-					fontSubset={ {
-						value: priceFontSubset,
-						label: 'priceFontSubset',
+					fontStyle={ {
+						value: priceFontStyle,
+						label: 'priceFontStyle',
+					} }
+					transform={ {
+						value: priceTransform,
+						label: 'priceTransform',
+					} }
+					decoration={ {
+						value: priceDecoration,
+						label: 'priceDecoration',
 					} }
 					fontSizeType={ {
 						value: priceFontSizeType,
@@ -713,9 +735,17 @@ const Settings = ( props ) => {
 						value: subHeadFontWeight,
 						label: 'subHeadFontWeight',
 					} }
-					fontSubset={ {
-						value: subHeadFontSubset,
-						label: 'subHeadFontSubset',
+					fontStyle={ {
+						value: subHeadFontStyle,
+						label: 'subHeadFontStyle',
+					} }
+					transform={ {
+						value: subHeadTransform,
+						label: 'subHeadTransform',
+					} }
+					decoration={ {
+						value: subHeadDecoration,
+						label: 'subHeadDecoration',
 					} }
 					fontSizeType={ {
 						value: subHeadFontSizeType,

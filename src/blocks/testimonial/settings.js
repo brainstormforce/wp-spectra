@@ -42,7 +42,7 @@ const Settings = ( props ) => {
 		nameFontSizeMobile,
 		nameFontFamily,
 		nameFontWeight,
-		nameFontSubset,
+		nameFontStyle,
 		nameLineHeightType,
 		nameLineHeight,
 		nameLineHeightTablet,
@@ -54,7 +54,7 @@ const Settings = ( props ) => {
 		companyFontSizeMobile,
 		companyFontFamily,
 		companyFontWeight,
-		companyFontSubset,
+		companyFontStyle,
 		companyLineHeightType,
 		companyLineHeight,
 		companyLineHeightTablet,
@@ -66,7 +66,7 @@ const Settings = ( props ) => {
 		descFontSizeMobile,
 		descFontFamily,
 		descFontWeight,
-		descFontSubset,
+		descFontStyle,
 		descLineHeightType,
 		descLineHeight,
 		descLineHeightTablet,
@@ -597,9 +597,9 @@ const Settings = ( props ) => {
 						value: nameFontWeight,
 						label: 'nameFontWeight',
 					} }
-					fontSubset={ {
-						value: nameFontSubset,
-						label: 'nameFontSubset',
+					fontStyle={ {
+						value: nameFontStyle,
+						label: 'nameFontStyle',
 					} }
 					fontSizeType={ {
 						value: nameFontSizeType,
@@ -696,9 +696,9 @@ const Settings = ( props ) => {
 						value: descFontWeight,
 						label: 'descFontWeight',
 					} }
-					fontSubset={ {
-						value: descFontSubset,
-						label: 'descFontSubset',
+					fontStyle={ {
+						value: descFontStyle,
+						label: 'descFontStyle',
 					} }
 					fontSizeType={ {
 						value: descFontSizeType,
@@ -883,9 +883,9 @@ const Settings = ( props ) => {
 						value: companyFontWeight,
 						label: 'companyFontWeight',
 					} }
-					fontSubset={ {
-						value: companyFontSubset,
-						label: 'companyFontSubset',
+					fontStyle={ {
+						value: companyFontStyle,
+						label: 'companyFontStyle',
 					} }
 					fontSizeType={ {
 						value: companyFontSizeType,

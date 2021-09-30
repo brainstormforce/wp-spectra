@@ -225,24 +225,19 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 		 * @param array $load_google_font the blocks attr.
 		 * @param array $font_family the blocks attr.
 		 * @param array $font_weight the blocks attr.
-		 * @param array $font_subset the blocks attr.
 		 */
-		public static function blocks_google_font( $load_google_font, $font_family, $font_weight, $font_subset ) {
+		public static function blocks_google_font( $load_google_font, $font_family, $font_weight ) {
 
 			if ( true === $load_google_font ) {
 				if ( ! array_key_exists( $font_family, self::$gfonts ) ) {
 					$add_font                     = array(
 						'fontfamily'   => $font_family,
 						'fontvariants' => ( isset( $font_weight ) && ! empty( $font_weight ) ? array( $font_weight ) : array() ),
-						'fontsubsets'  => ( isset( $font_subset ) && ! empty( $font_subset ) ? array( $font_subset ) : array() ),
 					);
 					self::$gfonts[ $font_family ] = $add_font;
 				} else {
 					if ( isset( $font_weight ) && ! empty( $font_weight ) && ! in_array( $font_weight, self::$gfonts[ $font_family ]['fontvariants'], true ) ) {
 						array_push( self::$gfonts[ $font_family ]['fontvariants'], $font_weight );
-					}
-					if ( isset( $font_subset ) && ! empty( $font_subset ) && ! in_array( $font_subset, self::$gfonts[ $font_family ]['fontsubsets'], true ) ) {
-						array_push( self::$gfonts[ $font_family ]['fontsubsets'], $font_subset );
 					}
 				}
 			}
@@ -944,7 +939,8 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 			$family_slug     = ( '' === $slug ) ? 'fontFamily' : $slug . 'FontFamily';
 			$weight_slug     = ( '' === $slug ) ? 'fontWeight' : $slug . 'FontWeight';
 			$transform_slug  = ( '' === $slug ) ? 'fontTransform' : $slug . 'Transform';
-			$decoration_slug = ( '' === $slug ) ? 'fontTransform' : $slug . 'Decoration';
+			$decoration_slug = ( '' === $slug ) ? 'fontDecoration' : $slug . 'Decoration';
+			$style_slug      = ( '' === $slug ) ? 'fontStyle' : $slug . 'FontStyle';
 
 			$l_ht_slug      = ( '' === $slug ) ? 'lineHeight' : $slug . 'LineHeight';
 			$f_sz_slug      = ( '' === $slug ) ? 'fontSize' : $slug . 'FontSize';
@@ -953,11 +949,13 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 
 			$text_transform  = isset( $attr[ $transform_slug ] ) ? $attr[ $transform_slug ] : 'normal';
 			$text_decoration = isset( $attr[ $decoration_slug ] ) ? $attr[ $decoration_slug ] : 'none';
+			$font_style      = isset( $attr[ $style_slug ] ) ? $attr[ $style_slug ] : 'normal';
 
 			$typo_css_desktop[ $selector ] = array(
 				'font-family'     => $attr[ $family_slug ],
 				'text-transform'  => $text_transform,
-				'text-decoration' => $text_decoration,
+				'text-decoration' => $text_decoration . '!important',
+				'font-style'      => $font_style,
 				'font-weight'     => $attr[ $weight_slug ],
 				'font-size'       => ( isset( $attr[ $f_sz_slug ] ) ) ? self::get_css_value( $attr[ $f_sz_slug ], $attr[ $f_sz_type_slug ] ) : '',
 				'line-height'     => ( isset( $attr[ $l_ht_slug ] ) ) ? self::get_css_value( $attr[ $l_ht_slug ], $attr[ $l_ht_type_slug ] ) : '',

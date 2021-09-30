@@ -478,8 +478,8 @@ class UAGB_Post_Assets {
 		if ( ! $show_google_fonts ) {
 			return;
 		}
-		$link    = '';
-		$subsets = array();
+		$link = '';
+
 		foreach ( $this->gfonts as $key => $gfont_values ) {
 			if ( ! empty( $link ) ) {
 				$link .= '%7C'; // Append a new font to the string.
@@ -489,17 +489,8 @@ class UAGB_Post_Assets {
 				$link .= ':';
 				$link .= implode( ',', $gfont_values['fontvariants'] );
 			}
-			if ( ! empty( $gfont_values['fontsubsets'] ) ) {
-				foreach ( $gfont_values['fontsubsets'] as $subset ) {
-					if ( ! in_array( $subset, $subsets, true ) ) {
-						array_push( $subsets, $subset );
-					}
-				}
-			}
 		}
-		if ( ! empty( $subsets ) ) {
-			$link .= '&amp;subset=' . implode( ',', $subsets );
-		}
+
 		if ( isset( $link ) && ! empty( $link ) ) {
 			echo '<link href="//fonts.googleapis.com/css?family=' . esc_attr( str_replace( '|', '%7C', $link ) ) . '" rel="stylesheet">'; //phpcs:ignore WordPress.WP.EnqueuedResources.NonEnqueuedStylesheet
 		}

@@ -60,7 +60,14 @@ const attributes = {
 	titleFontWeight: {
 		type: 'string',
 	},
-	titleFontSubset: {
+	titleFontStyle: {
+		type: 'string',
+		default: 'normal',
+	},
+	titleTransform: {
+		type: 'string',
+	},
+	titleDecoration: {
 		type: 'string',
 	},
 	titleLineHeightType: {
@@ -100,7 +107,14 @@ const attributes = {
 	descFontWeight: {
 		type: 'string',
 	},
-	descFontSubset: {
+	descFontStyle: {
+		type: 'string',
+		default: 'normal',
+	},
+	descTransform: {
+		type: 'string',
+	},
+	descDecoration: {
 		type: 'string',
 	},
 	descLineHeightType: {
@@ -184,7 +198,14 @@ const attributes = {
 	ctaFontWeight: {
 		type: 'string',
 	},
-	ctaFontSubset: {
+	ctaFontStyle: {
+		type: 'string',
+		default: 'normal',
+	},
+	ctaTransform: {
+		type: 'string',
+	},
+	ctaDecoration: {
 		type: 'string',
 	},
 	ctaLoadGoogleFonts: {

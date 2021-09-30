@@ -10,10 +10,6 @@
 // Adds Fonts.
 UAGB_Block_JS::blocks_how_to_gfont( $attr );
 
-$defaults = UAGB_Helper::$block_list['uagb/how-to']['attributes'];
-
-$attr = array_merge( $defaults, $attr );
-
 $t_selectors = array();
 $m_selectors = array();
 

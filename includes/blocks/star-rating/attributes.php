@@ -19,7 +19,6 @@ return array(
 	'color'            => '#f0ad4e',
 	'fontFamily'       => 'Default',
 	'fontWeight'       => '',
-	'fontSubset'       => '',
 	'fontSizeType'     => 'px',
 	'fontSize'         => '',
 	'fontSizeMobile'   => '',
@@ -30,4 +29,7 @@ return array(
 	'lineHeightTablet' => '',
 	'titleColor'       => '',
 	'titleGap'         => '10',
+	'fontStyle'        => '',
+	'fontTransform'    => '',
+	'fontDecoration'   => '',
 );

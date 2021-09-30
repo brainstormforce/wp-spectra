@@ -68,6 +68,15 @@ function CtaStyle( props ) {
 		ctaRightSpace,
 		contentWidth,
 		ctaType,
+		titleTransform,
+		titleDecoration,
+		descTransform,
+		descDecoration,
+		ctaTransform,
+		ctaDecoration,
+		titleFontStyle,
+		descFontStyle,
+		ctaFontStyle,
 	} = props.attributes;
 
 	const selectors = {
@@ -79,6 +88,9 @@ function CtaStyle( props ) {
 		' .uagb-cta__button-wrapper a.uagb-cta-typeof-text': {
 			'font-size': generateCSSUnit( ctaFontSize, ctaFontSizeType ),
 			'font-family': ctaFontFamily,
+			'font-style' : ctaFontStyle,
+			'text-decoration': ctaDecoration,
+			'text-transform': ctaTransform,
 			'font-weight': ctaFontWeight,
 			'color': ctaBtnLinkColor,
 		},
@@ -89,6 +101,9 @@ function CtaStyle( props ) {
 		' .uagb-cta__button-wrapper a.uagb-cta-typeof-button': {
 			'font-size': generateCSSUnit( ctaFontSize, ctaFontSizeType ),
 			'font-family': ctaFontFamily,
+			'font-style' : ctaFontStyle,
+			'text-decoration': ctaDecoration,
+			'text-transform': ctaTransform,
 			'font-weight': ctaFontWeight,
 			'color': ctaBtnLinkColor,
 			'background-color': ctaBgColor,
@@ -130,6 +145,9 @@ function CtaStyle( props ) {
 		' .block-editor-rich-text__editable.uagb-cta__title': {
 			'font-size': generateCSSUnit( titleFontSize, titleFontSizeType ),
 			'font-family': titleFontFamily,
+			'font-style' : titleFontStyle,
+			'text-decoration': titleDecoration,
+			'text-transform': titleTransform,
 			'font-weight': titleFontWeight,
 			'line-height': generateCSSUnit(
 				titleLineHeight,
@@ -143,6 +161,9 @@ function CtaStyle( props ) {
 		' .block-editor-rich-text__editable.uagb-cta__desc': {
 			'font-size': generateCSSUnit( descFontSize, descFontSizeType ),
 			'font-family': descFontFamily,
+			'font-style' : descFontStyle,
+			'text-decoration': descDecoration,
+			'text-transform': descTransform,
 			'font-weight': descFontWeight,
 			'line-height': generateCSSUnit(
 				descLineHeight,

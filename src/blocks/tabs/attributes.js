@@ -314,9 +314,6 @@ const attributes = {
 	titleFontWeight: {
 		type: 'string',
 	},
-	titleFontSubset: {
-		type: 'string',
-	},
 	titleLineHeightType: {
 		type: 'string',
 		default: 'em',
@@ -374,6 +371,10 @@ const attributes = {
 	},
 	activeiconColor: {
 		type: 'string',
+	},
+	titleFontStyle: {
+		type: 'string',
+		default: 'normal',
 	},
 };
 

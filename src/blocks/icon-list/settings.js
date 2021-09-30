@@ -44,12 +44,14 @@ const Settings = ( props ) => {
 		fontSizeTablet,
 		fontFamily,
 		fontWeight,
-		fontSubset,
 		lineHeight,
 		lineHeightType,
 		lineHeightMobile,
 		lineHeightTablet,
 		loadGoogleFonts,
+		fontStyle,
+		fontTransform,
+		fontDecoration,
 	} = attributes;
 
 	let googleFonts;
@@ -299,9 +301,17 @@ const Settings = ( props ) => {
 						value: fontWeight,
 						label: 'fontWeight',
 					} }
-					fontSubset={ {
-						value: fontSubset,
-						label: 'fontSubset',
+					fontStyle={ {
+						value: fontStyle,
+						label: 'fontStyle',
+					} }
+					transform={ {
+						value: fontTransform,
+						label: 'fontTransform',
+					} }
+					decoration={ {
+						value: fontDecoration,
+						label: 'fontDecoration',
 					} }
 					fontSizeType={ {
 						value: fontSizeType,

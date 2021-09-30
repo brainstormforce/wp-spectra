@@ -37,7 +37,6 @@ const Settings = ( props ) => {
 		noticeAlignment,
 		titleFontFamily,
 		titleFontWeight,
-		titleFontSubset,
 		titleFontSizeType,
 		titleLineHeightType,
 		titleFontSize,
@@ -48,7 +47,6 @@ const Settings = ( props ) => {
 		titleLineHeightMobile,
 		descFontFamily,
 		descFontWeight,
-		descFontSubset,
 		descFontSize,
 		descFontSizeType,
 		descFontSizeTablet,
@@ -94,6 +92,12 @@ const Settings = ( props ) => {
 		mobileContentPaddingUnit,
 		tabletContentPaddingUnit,
 		contentPaddingLink,
+		titleTransform,
+		titleDecoration,
+		descTransform,
+		descDecoration,
+		titleFontStyle,
+		descFontStyle,
 	} = attributes;
 	let loadTitleGoogleFonts;
 	let loadDescriptionGoogleFonts;
@@ -365,9 +369,17 @@ const Settings = ( props ) => {
 						value: titleFontWeight,
 						label: 'titleFontWeight',
 					} }
-					fontSubset={ {
-						value: titleFontSubset,
-						label: 'titleFontSubset',
+					fontStyle={ {
+						value: titleFontStyle,
+						label: 'titleFontStyle',
+					} }
+					transform={ {
+						value: titleTransform,
+						label: 'titleTransform',
+					} }
+					decoration={ {
+						value: titleDecoration,
+						label: 'titleDecoration',
 					} }
 					fontSizeType={ {
 						value: titleFontSizeType,
@@ -518,9 +530,17 @@ const Settings = ( props ) => {
 						value: descFontWeight,
 						label: 'descFontWeight',
 					} }
-					fontSubset={ {
-						value: descFontSubset,
-						label: 'descFontSubset',
+					fontStyle={ {
+						value: descFontStyle,
+						label: 'descFontStyle',
+					} }
+					transform={ {
+						value: descTransform,
+						label: 'descTransform',
+					} }
+					decoration={ {
+						value: descDecoration,
+						label: 'descDecoration',
 					} }
 					fontSizeType={ {
 						value: descFontSizeType,

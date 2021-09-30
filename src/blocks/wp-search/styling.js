@@ -75,6 +75,8 @@ function styling( props ) {
 		borderHColor,
 		buttonIconSizeType,
 		buttonWidthType,
+		inputFontStyle,
+		buttonFontStyle,
 	} = props.attributes;
 
 	let boxShadowPositionCSS = boxShadowPosition;
@@ -99,6 +101,7 @@ function styling( props ) {
 		'font-size': generateCSSUnit( inputFontSize, inputFontSizeType ),
 		'line-height': generateCSSUnit( inputLineHeight, inputLineHeightType ),
 		'font-family': inputFontFamily,
+		'font-style' : inputFontStyle,
 		'font-weight': inputFontWeight,
 		'text-decoration': inputDecoration,
 		'text-transform': inputTransform,
@@ -178,6 +181,7 @@ function styling( props ) {
 				buttonLineHeightType
 			),
 			'font-family': buttonFontFamily,
+			'font-style' : buttonFontStyle,
 			'font-weight': buttonFontWeight,
 			'text-decoration': buttonDecoration,
 			'text-transform': buttonTransform,

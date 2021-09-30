@@ -47,7 +47,7 @@ const attributes = {
 	descFontWeight: {
 		type: 'string',
 	},
-	descFontSubset: {
+	descFontStyle: {
 		type: 'string',
 	},
 	descLineHeightType: {
@@ -104,7 +104,7 @@ const attributes = {
 	authorFontWeight: {
 		type: 'string',
 	},
-	authorFontSubset: {
+	authorFontStyle: {
 		type: 'string',
 	},
 	authorLineHeightType: {
@@ -234,13 +234,7 @@ const attributes = {
 	tweetBtnFontWeight: {
 		type: 'string',
 	},
-	tweetBtnTransform: {
-		type: 'string',
-	},
-	tweetBtnDecoration: {
-		type: 'string',
-	},
-	tweetBtnFontSubset: {
+	tweetBtnFontStyle: {
 		type: 'string',
 	},
 	tweetBtnLineHeightType: {
@@ -469,6 +463,24 @@ const attributes = {
 	spacingLink: {
 		type: 'boolean',
 		default: false,
+	},
+	descTransform:{
+		type: 'string'
+	},
+	authorTransform:{
+		type: 'string'
+	},
+	tweetBtnTransform:{
+		type: 'string'
+	},
+	descDecoration:{
+		type: 'string'
+	},
+	authorDecoration:{
+		type: 'string'
+	},
+	tweetBtnDecoration:{
+		type: 'string'
 	},
 };
 

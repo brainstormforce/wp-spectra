@@ -84,10 +84,13 @@ $selectors = array(
 
 if ( $attr['childMigrate'] ) {
 	$selectors[' .uagb-icon-list-repeater'] = array(
-		'font-family' => $attr['fontFamily'],
-		'font-weight' => $attr['fontWeight'],
-		'font-size'   => UAGB_Helper::get_css_value( $attr['fontSize'], $attr['fontSizeType'] ),
-		'line-height' => $attr['lineHeight'] . $attr['lineHeightType'],
+		'font-family'     => $attr['fontFamily'],
+		'text-transform'  => $attr['fontTransform'],
+		'text-decoration' => $attr['fontDecoration'] . '!important',
+		'font-style'      => $attr['fontStyle'],
+		'font-weight'     => $attr['fontWeight'],
+		'font-size'       => UAGB_Helper::get_css_value( $attr['fontSize'], $attr['fontSizeType'] ),
+		'line-height'     => $attr['lineHeight'] . $attr['lineHeightType'],
 	);
 }
 
@@ -147,10 +150,13 @@ $t_selectors = array(
 );
 // Tablet Icon Size CSS ends.
 $selectors[' .uagb-icon-list-repeater .uagb-icon-list__label'] = array(
-	'font-size'   => UAGB_Helper::get_css_value( $attr['fontSize'], $attr['fontSizeType'] ),
-	'font-family' => $attr['fontFamily'],
-	'font-weight' => $attr['fontWeight'],
-	'line-height' => $attr['lineHeight'] . $attr['lineHeightType'],
+	'font-size'       => UAGB_Helper::get_css_value( $attr['fontSize'], $attr['fontSizeType'] ),
+	'font-family'     => $attr['fontFamily'],
+	'text-transform'  => $attr['fontTransform'],
+	'text-decoration' => $attr['fontDecoration'] . '!important',
+	'font-style'      => $attr['fontStyle'],
+	'font-weight'     => $attr['fontWeight'],
+	'line-height'     => $attr['lineHeight'] . $attr['lineHeightType'],
 );
 
 $m_selectors[' .uagb-icon-list-repeater .uagb-icon-list__label'] = array(
@@ -207,22 +213,31 @@ if ( ! $attr['childMigrate'] ) {
 		$wrapper = ( ! $attr['childMigrate'] ) ? ' .uagb-icon-list-repeater-' . $key . '.uagb-icon-list__wrapper' : ' .uagb-icon-list-repeater';
 
 		$selectors[ $wrapper ]                                     = array(
-			'font-family' => $attr['fontFamily'],
-			'font-weight' => $attr['fontWeight'],
-			'font-size'   => UAGB_Helper::get_css_value( $attr['fontSize'], $attr['sizeType'] ),
-			'line-height' => $attr['lineHeight'] . $attr['lineHeightType'],
+			'font-family'     => $attr['fontFamily'],
+			'text-transform'  => $attr['fontTransform'],
+			'text-decoration' => $attr['fontDecoration'] . '!important',
+			'font-style'      => $attr['fontStyle'],
+			'font-weight'     => $attr['fontWeight'],
+			'font-size'       => UAGB_Helper::get_css_value( $attr['fontSize'], $attr['sizeType'] ),
+			'line-height'     => $attr['lineHeight'] . $attr['lineHeightType'],
 		);
 		$m_selectors_child[ $wrapper . ' .uagb-icon-list__label' ] = array(
-			'font-family' => $attr['fontFamily'],
-			'font-weight' => $attr['fontWeight'],
-			'font-size'   => UAGB_Helper::get_css_value( $attr['fontSizeMobile'], $attr['sizeType'] ),
-			'line-height' => $attr['lineHeightMobile'] . $attr['lineHeightType'],
+			'font-family'     => $attr['fontFamily'],
+			'text-transform'  => $attr['fontTransform'],
+			'text-decoration' => $attr['fontDecoration'] . '!important',
+			'font-style'      => $attr['fontStyle'],
+			'font-weight'     => $attr['fontWeight'],
+			'font-size'       => UAGB_Helper::get_css_value( $attr['fontSizeMobile'], $attr['sizeType'] ),
+			'line-height'     => $attr['lineHeightMobile'] . $attr['lineHeightType'],
 		);
 		$t_selectors_child[ $wrapper . ' .uagb-icon-list__label' ] = array(
-			'font-family' => $attr['fontFamily'],
-			'font-weight' => $attr['fontWeight'],
-			'font-size'   => UAGB_Helper::get_css_value( $attr['fontSizeTablet'], $attr['sizeType'] ),
-			'line-height' => $attr['lineHeightTablet'] . $attr['lineHeightType'],
+			'font-family'     => $attr['fontFamily'],
+			'text-transform'  => $attr['fontTransform'],
+			'text-decoration' => $attr['fontDecoration'] . '!important',
+			'font-style'      => $attr['fontStyle'],
+			'font-weight'     => $attr['fontWeight'],
+			'font-size'       => UAGB_Helper::get_css_value( $attr['fontSizeTablet'], $attr['sizeType'] ),
+			'line-height'     => $attr['lineHeightTablet'] . $attr['lineHeightType'],
 		);
 
 		if ( $attr['icon_count'] <= $key ) {

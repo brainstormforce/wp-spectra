@@ -99,6 +99,7 @@ function styling( props ) {
 		tabBodyBottomMarginMobile,
 		mobiletabBodyPaddingUnit,
 		mobiletabBodyMarginUnit,
+		titleFontStyle
 	} = props.attributes;
 
 	let selectors = {};
@@ -152,6 +153,7 @@ function styling( props ) {
 			),
 			'text-transform': titleTransform,
 			'text-decoration': titleDecoration,
+			'font-style' : titleFontStyle,
 		},
 		' > .uagb-tabs__panel .uagb-tab.uagb-tabs__active ': {
 			'background': activeTabBgColor,

@@ -58,7 +58,7 @@ const Settings = ( props ) => {
 			headFontSizeMobile,
 			headFontFamily,
 			headFontWeight,
-			headFontSubset,
+			headFontStyle,
 			headLineHeightType,
 			headLineHeight,
 			headLineHeightTablet,
@@ -72,7 +72,7 @@ const Settings = ( props ) => {
 			subHeadFontSizeMobile,
 			subHeadFontFamily,
 			subHeadFontWeight,
-			subHeadFontSubset,
+			subHeadFontStyle,
 			subHeadLineHeightType,
 			subHeadLineHeight,
 			subHeadLineHeightTablet,
@@ -92,7 +92,7 @@ const Settings = ( props ) => {
 			dateFontsizeMobile,
 			dateFontFamily,
 			dateFontWeight,
-			dateFontSubset,
+			dateFontStyle,
 			dateLineHeightType,
 			dateLineHeight,
 			dateLineHeightTablet,
@@ -137,6 +137,12 @@ const Settings = ( props ) => {
 			mobilePaddingUnit,
 			tabletPaddingUnit,
 			paddingLink,
+			headTransform,
+			subHeadTransform,
+			dateTransform,
+			headDecoration,
+			subHeadDecoration,
+			dateDecoration,
 		},
 	} = props;
 
@@ -777,9 +783,9 @@ const Settings = ( props ) => {
 						value: headFontWeight,
 						label: 'headFontWeight',
 					} }
-					fontSubset={ {
-						value: headFontSubset,
-						label: 'headFontSubset',
+					fontStyle={ {
+						value: headFontStyle,
+						label: 'headFontStyle',
 					} }
 					fontSizeType={ {
 						value: headFontSizeType,
@@ -809,6 +815,14 @@ const Settings = ( props ) => {
 					lineHeightTablet={ {
 						value: headLineHeightTablet,
 						label: 'headLineHeightTablet',
+					} }
+					transform={ {
+						value: headTransform,
+						label: 'headTransform',
+					} }
+					decoration={ {
+						value: headDecoration,
+						label: 'headDecoration',
 					} }
 				/>
 				<Range
@@ -860,9 +874,9 @@ const Settings = ( props ) => {
 						value: subHeadFontWeight,
 						label: 'subHeadFontWeight',
 					} }
-					fontSubset={ {
-						value: subHeadFontSubset,
-						label: 'subHeadFontSubset',
+					fontStyle={ {
+						value: subHeadFontStyle,
+						label: 'subHeadFontStyle',
 					} }
 					fontSizeType={ {
 						value: subHeadFontSizeType,
@@ -895,6 +909,14 @@ const Settings = ( props ) => {
 					lineHeightTablet={ {
 						value: subHeadLineHeightTablet,
 						label: 'subHeadLineHeightTablet',
+					} }
+					transform={ {
+						value: subHeadTransform,
+						label: 'subHeadTransform',
+					} }
+					decoration={ {
+						value: subHeadDecoration,
+						label: 'subHeadDecoration',
 					} }
 				/>
 			</PanelBody>
@@ -932,9 +954,9 @@ const Settings = ( props ) => {
 						value: dateFontWeight,
 						label: 'dateFontWeight',
 					} }
-					fontSubset={ {
-						value: dateFontSubset,
-						label: 'dateFontSubset',
+					fontStyle={ {
+						value: dateFontStyle,
+						label: 'dateFontStyle',
 					} }
 					fontSizeType={ {
 						value: dateFontsizeType,
@@ -967,6 +989,14 @@ const Settings = ( props ) => {
 					lineHeightTablet={ {
 						value: dateLineHeightTablet,
 						label: 'dateLineHeightTablet',
+					} }
+					transform={ {
+						value: dateTransform,
+						label: 'dateTransform',
+					} }
+					decoration={ {
+						value: dateDecoration,
+						label: 'dateDecoration',
 					} }
 				/>
 				{ timelinAlignment !== 'center' && (

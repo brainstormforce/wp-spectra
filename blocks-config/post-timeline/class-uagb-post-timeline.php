@@ -144,7 +144,7 @@ if ( ! class_exists( 'UAGB_Post_Timeline' ) ) {
 						'subHeadFontWeight'       => array(
 							'type' => 'string',
 						),
-						'subHeadFontSubset'       => array(
+						'subHeadFontStyle'        => array(
 							'type' => 'string',
 						),
 						'subHeadLineHeightType'   => array(
@@ -221,7 +221,7 @@ if ( ! class_exists( 'UAGB_Post_Timeline' ) ) {
 						'authorFontWeight'        => array(
 							'type' => 'string',
 						),
-						'authorFontSubset'        => array(
+						'authorFontStyle'         => array(
 							'type' => 'string',
 						),
 						'authorLineHeightType'    => array(
@@ -262,7 +262,7 @@ if ( ! class_exists( 'UAGB_Post_Timeline' ) ) {
 						'ctaFontWeight'           => array(
 							'type' => 'string',
 						),
-						'ctaFontSubset'           => array(
+						'ctaFontStyle'            => array(
 							'type' => 'string',
 						),
 						'ctaLineHeightType'       => array(
@@ -307,7 +307,7 @@ if ( ! class_exists( 'UAGB_Post_Timeline' ) ) {
 						'dateFontWeight'          => array(
 							'type' => 'string',
 						),
-						'dateFontSubset'          => array(
+						'dateFontStyle'           => array(
 							'type' => 'string',
 						),
 						'dateLineHeightType'      => array(
@@ -355,7 +355,7 @@ if ( ! class_exists( 'UAGB_Post_Timeline' ) ) {
 						'headFontWeight'          => array(
 							'type' => 'string',
 						),
-						'headFontSubset'          => array(
+						'headFontStyle'           => array(
 							'type' => 'string',
 						),
 						'headLineHeightType'      => array(
@@ -594,6 +594,36 @@ if ( ! class_exists( 'UAGB_Post_Timeline' ) ) {
 						'paddingLink'             => array(
 							'type'    => 'boolean',
 							'default' => false,
+						),
+						'headTransform'           => array(
+							'type' => 'string',
+						),
+						'authorTransform'         => array(
+							'type' => 'string',
+						),
+						'subHeadTransform'        => array(
+							'type' => 'string',
+						),
+						'dateTransform'           => array(
+							'type' => 'string',
+						),
+						'ctaTransform'            => array(
+							'type' => 'string',
+						),
+						'headDecoration'          => array(
+							'type' => 'string',
+						),
+						'authorDecoration'        => array(
+							'type' => 'string',
+						),
+						'subHeadDecoration'       => array(
+							'type' => 'string',
+						),
+						'dateDecoration'          => array(
+							'type' => 'string',
+						),
+						'ctaDecoration'           => array(
+							'type' => 'string',
 						),
 					),
 					'render_callback' => array( $this, 'post_timeline_callback' ),

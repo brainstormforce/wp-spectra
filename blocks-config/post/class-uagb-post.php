@@ -230,6 +230,30 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 								'type'    => 'string',
 								'default' => 'px',
 							),
+							'titleTransform'              => array(
+								'type' => 'string',
+							),
+							'metaTransform'               => array(
+								'type' => 'string',
+							),
+							'excerptTransform'            => array(
+								'type' => 'string',
+							),
+							'ctaTransform'                => array(
+								'type' => 'string',
+							),
+							'titleDecoration'             => array(
+								'type' => 'string',
+							),
+							'metaDecoration'              => array(
+								'type' => 'string',
+							),
+							'excerptDecoration'           => array(
+								'type' => 'string',
+							),
+							'ctaDecoration'               => array(
+								'type' => 'string',
+							),
 						)
 					),
 					'render_callback' => array( $this, 'post_grid_callback' ),
@@ -775,7 +799,7 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 				'titleFontWeight'         => array(
 					'type' => 'string',
 				),
-				'titleFontSubset'         => array(
+				'titleFontStyle'          => array(
 					'type' => 'string',
 				),
 				'titleLineHeightType'     => array(
@@ -822,7 +846,7 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 				'metaFontWeight'          => array(
 					'type' => 'string',
 				),
-				'metaFontSubset'          => array(
+				'metaFontStyle'           => array(
 					'type' => 'string',
 				),
 				'metaLineHeightType'      => array(
@@ -869,7 +893,7 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 				'excerptFontWeight'       => array(
 					'type' => 'string',
 				),
-				'excerptFontSubset'       => array(
+				'excerptFontStyle'        => array(
 					'type' => 'string',
 				),
 				'excerptLineHeightType'   => array(
@@ -930,7 +954,7 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 				'ctaFontWeight'           => array(
 					'type' => 'string',
 				),
-				'ctaFontSubset'           => array(
+				'ctaFontStyle'            => array(
 					'type' => 'string',
 				),
 				'ctaLineHeightType'       => array(

@@ -113,7 +113,6 @@ const Settings = ( props ) => {
 		titleLoadGoogleFonts,
 		titleFontFamily,
 		titleFontWeight,
-		titleFontSubset,
 		titleFontSizeType,
 		titleFontSize,
 		titleFontSizeMobile,
@@ -133,6 +132,7 @@ const Settings = ( props ) => {
 		iconSpacing,
 		iconSize,
 		activeiconColor,
+		titleFontStyle
 	} = attributes;
 
 	const tabStyleSettings = () => {
@@ -903,9 +903,9 @@ const Settings = ( props ) => {
 						value: titleFontWeight,
 						label: 'titleFontWeight',
 					} }
-					fontSubset={ {
-						value: titleFontSubset,
-						label: 'titleFontSubset',
+					fontStyle={ {
+						value: titleFontStyle,
+						label: 'titleFontStyle',
 					} }
 					fontSizeType={ {
 						value: titleFontSizeType,

@@ -84,6 +84,12 @@ function styling( props ) {
 		questionBottomPaddingDesktop,
 		questionLeftPaddingMobile,
 		questionBottomPaddingMobile,
+		answerFontStyle,
+		answerTransform,
+		answerDecoration,
+		questionFontStyle,
+		questionTransform,
+		questionDecoration,
 	} = props.attributes;
 
 	let selectors = {};
@@ -196,6 +202,9 @@ function styling( props ) {
 				questionLineHeightType
 			),
 			'font-family': questionFontFamily,
+			'font-style' : questionFontStyle,
+			'text-decoration': questionDecoration,
+			'text-transform': questionTransform,
 			'font-weight': questionFontWeight,
 		},
 		' .uagb-faq-item .uagb-faq-content p': {
@@ -205,6 +214,9 @@ function styling( props ) {
 				answerLineHeightType
 			),
 			'font-family': answerFontFamily,
+			'font-style' : answerFontStyle,
+			'text-decoration': answerDecoration,
+			'text-transform': answerTransform,
 			'font-weight': answerFontWeight,
 			'color': answerTextColor,
 		},

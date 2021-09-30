@@ -204,7 +204,6 @@ const TypographyControl = ( props ) => {
 			</div>
 		);
 	}
-
 	if ( true !== disableFontFamily && true !== disableFontSize ) {
 		fontAdvancedControls = (
 			<Button

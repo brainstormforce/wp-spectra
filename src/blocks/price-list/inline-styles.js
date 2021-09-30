@@ -89,10 +89,13 @@ function RestMenuStyle( props ) {
 		imgPaddingUnit,
 		imgMobilePaddingUnit,
 		imgTabletPaddingUnit,
+		titleFontStyle,
 		titleTransform,
 		titleDecoration,
+		descFontStyle,
 		descTransform,
 		descDecoration,
+		priceFontStyle,
 		priceTransform,
 		priceDecoration,
 	} = props.attributes;
@@ -155,6 +158,7 @@ function RestMenuStyle( props ) {
 			'color': titleColor,
 			'margin-bottom': generateCSSUnit( titleSpace, titleSpaceType ),
 			'font-family': titleFontFamily,
+			'font-style': titleFontStyle,
 			'text-transform': titleTransform,
 			'text-decoration': titleDecoration,
 			'font-weight': titleFontWeight,
@@ -169,6 +173,7 @@ function RestMenuStyle( props ) {
 			'font-family': priceFontFamily,
 			'text-transform': priceTransform,
 			'text-decoration': priceDecoration,
+			'font-style': priceFontStyle,
 			'font-weight': priceFontWeight,
 			'line-height': generateCSSUnit(
 				priceLineHeight,
@@ -182,6 +187,7 @@ function RestMenuStyle( props ) {
 			'font-family': descFontFamily,
 			'text-transform': descTransform,
 			'text-decoration': descDecoration,
+			'font-style': descFontStyle,
 			'font-weight': descFontWeight,
 			'line-height': generateCSSUnit(
 				descLineHeight,

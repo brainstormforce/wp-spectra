@@ -38,7 +38,6 @@ const Settings = ( props ) => {
 		titleFontSizeTablet,
 		titleFontFamily,
 		titleFontWeight,
-		titleFontSubset,
 		titleLineHeightType,
 		titleLineHeight,
 		titleLineHeightTablet,
@@ -50,7 +49,6 @@ const Settings = ( props ) => {
 		descFontSizeTablet,
 		descFontFamily,
 		descFontWeight,
-		descFontSubset,
 		descLineHeightType,
 		descLineHeight,
 		descLineHeightTablet,
@@ -73,7 +71,6 @@ const Settings = ( props ) => {
 		ctaFontSizeTablet,
 		ctaFontFamily,
 		ctaFontWeight,
-		ctaFontSubset,
 		ctaLoadGoogleFonts,
 		contentWidth,
 		ctaBtnLinkColor,
@@ -105,6 +102,15 @@ const Settings = ( props ) => {
 		ctaRightSpace,
 		ctaLinkHoverColor,
 		inheritFromTheme,
+		titleTransform,
+		titleDecoration,
+		descTransform,
+		descDecoration,
+		ctaTransform,
+		ctaDecoration,
+		titleFontStyle,
+		descFontStyle,
+		ctaFontStyle,
 	} = attributes;
 
 	let loadCtaGoogleFonts;
@@ -378,9 +384,17 @@ const Settings = ( props ) => {
 										value: ctaFontWeight,
 										label: 'ctaFontWeight',
 									} }
-									fontSubset={ {
-										value: ctaFontSubset,
-										label: 'ctaFontSubset',
+									fontStyle={ {
+										value: ctaFontStyle,
+										label: 'ctaFontStyle',
+									} }
+									transform={ {
+										value: ctaTransform,
+										label: 'ctaTransform',
+									} }
+									decoration={ {
+										value: ctaDecoration,
+										label: 'ctaDecoration',
 									} }
 									fontSizeType={ {
 										value: ctaFontSizeType,
@@ -671,9 +685,17 @@ const Settings = ( props ) => {
 						value: titleFontWeight,
 						label: 'titleFontWeight',
 					} }
-					fontSubset={ {
-						value: titleFontSubset,
-						label: 'titleFontSubset',
+					fontStyle={ {
+						value: titleFontStyle,
+						label: 'titleFontStyle',
+					} }
+					transform={ {
+						value: titleTransform,
+						label: 'titleTransform',
+					} }
+					decoration={ {
+						value: titleDecoration,
+						label: 'titleDecoration',
 					} }
 					fontSizeType={ {
 						value: titleFontSizeType,
@@ -743,9 +765,17 @@ const Settings = ( props ) => {
 						value: descFontWeight,
 						label: 'descFontWeight',
 					} }
-					fontSubset={ {
-						value: descFontSubset,
-						label: 'descFontSubset',
+					fontStyle={ {
+						value: descFontStyle,
+						label: 'descFontStyle',
+					} }
+					transform={ {
+						value: descTransform,
+						label: 'descTransform',
+					} }
+					decoration={ {
+						value: descDecoration,
+						label: 'descDecoration',
 					} }
 					fontSizeType={ {
 						value: descFontSizeType,
