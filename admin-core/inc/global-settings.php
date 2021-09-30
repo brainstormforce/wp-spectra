@@ -64,7 +64,7 @@ class Global_Settings {
 					'enable_masonry_gallery' => array(
 						'type'  => 'toggle',
 						'name'  => 'enable_masonry_gallery',
-						'label' => __( 'Masonry Extension', 'ultimate-addons-for-gutenberg' ),
+						'label' => __( 'Masonry Gallery', 'ultimate-addons-for-gutenberg' ),
 						/* translators: %1$s: link html start, %2$s: link html end*/
 					),
 				),
