@@ -230,30 +230,6 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 								'type'    => 'string',
 								'default' => 'px',
 							),
-							'titleTransform'              => array(
-								'type' => 'string',
-							),
-							'metaTransform'               => array(
-								'type' => 'string',
-							),
-							'excerptTransform'            => array(
-								'type' => 'string',
-							),
-							'ctaTransform'                => array(
-								'type' => 'string',
-							),
-							'titleDecoration'             => array(
-								'type' => 'string',
-							),
-							'metaDecoration'              => array(
-								'type' => 'string',
-							),
-							'excerptDecoration'           => array(
-								'type' => 'string',
-							),
-							'ctaDecoration'               => array(
-								'type' => 'string',
-							),
 						)
 					),
 					'render_callback' => array( $this, 'post_grid_callback' ),
@@ -1007,6 +983,30 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 				'excludeCurrentPost'      => array(
 					'type'    => 'boolean',
 					'default' => false,
+				),
+				'titleTransform'          => array(
+					'type' => 'string',
+				),
+				'metaTransform'           => array(
+					'type' => 'string',
+				),
+				'excerptTransform'        => array(
+					'type' => 'string',
+				),
+				'ctaTransform'            => array(
+					'type' => 'string',
+				),
+				'titleDecoration'         => array(
+					'type' => 'string',
+				),
+				'metaDecoration'          => array(
+					'type' => 'string',
+				),
+				'excerptDecoration'       => array(
+					'type' => 'string',
+				),
+				'ctaDecoration'           => array(
+					'type' => 'string',
 				),
 			);
 		}
