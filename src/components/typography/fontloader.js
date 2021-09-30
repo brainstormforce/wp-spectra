@@ -20,6 +20,17 @@ const WebfontLoader = ( props ) => {
 		loadFonts();
 	}, [] );
 
+	useEffect( () => {
+		const { onStatus, config } = props;
+
+		if ( status !== value.status ) {
+			onStatus( value.status );
+		}
+		if ( config !== value.config ) {
+			loadFonts();
+		}
+	}, [ props ] );
+	
 	const handleLoading = () => {
 		setValue( { status: statuses.loading } );
 	};
@@ -49,17 +60,6 @@ const WebfontLoader = ( props ) => {
 			addFont( props.config.google.families[ 0 ] );
 		}
 	};
-
-	useEffect( () => {
-		const { onStatus, config } = props;
-
-		if ( status !== value.status ) {
-			onStatus( value.status );
-		}
-		if ( config !== value.config ) {
-			loadFonts();
-		}
-	}, [ status ] );
 
 	const { children } = props;
 	return children || null;
