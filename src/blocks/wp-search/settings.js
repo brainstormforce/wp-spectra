@@ -621,7 +621,10 @@ const Settings = ( props ) => {
 						] }
 						normal={ tabOutputNormal }
 						hover={ tabOutputHover }
+						disableBottomSeparator={ true }
 					/>
+					{ 'text' === buttonType && (
+						<>
 					<TypographyControl
 						label={ __(
 							'Typography',
@@ -686,6 +689,9 @@ const Settings = ( props ) => {
 							label: 'buttonDecoration',
 						} }
 					/>
+					</>
+					)
+				}
 				</PanelBody>
 			);
 		}
