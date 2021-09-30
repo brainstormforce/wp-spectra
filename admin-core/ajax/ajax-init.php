@@ -22,14 +22,14 @@ class Ajax_Init {
 	 *
 	 * @access private
 	 * @var object Class object.
-	 * @since x.x.x
+	 * @since 2.0.0
 	 */
 	private static $instance;
 
 	/**
 	 * Initiator
 	 *
-	 * @since x.x.x
+	 * @since 2.0.0
 	 * @return object initialized object of class.
 	 */
 	public static function get_instance() {
@@ -42,7 +42,7 @@ class Ajax_Init {
 	/**
 	 * Constructor
 	 *
-	 * @since x.x.x
+	 * @since 2.0.0
 	 */
 	public function __construct() {
 
@@ -52,7 +52,7 @@ class Ajax_Init {
 	/**
 	 * Init Hooks.
 	 *
-	 * @since x.x.x
+	 * @since 2.0.0
 	 * @return void
 	 */
 	public function initialize_hooks() {

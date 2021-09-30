@@ -569,7 +569,7 @@ if ( ! class_exists( 'UAGB_Block_JS' ) ) {
 		/**
 		 * Adds Google fonts for Star Rating block.
 		 *
-		 * @since x.x.x
+		 * @since 2.0.0
 		 * @param array $attr the blocks attr.
 		 */
 		public static function blocks_star_rating_gfont( $attr ) {
@@ -583,7 +583,7 @@ if ( ! class_exists( 'UAGB_Block_JS' ) ) {
 		/**
 		 * Adds Google fonts for Tabs block.
 		 *
-		 * @since x.x.x
+		 * @since 2.0.0
 		 * @param array $attr the blocks attr.
 		 */
 		public static function blocks_tabs_gfont( $attr ) {

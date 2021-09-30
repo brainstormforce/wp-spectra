@@ -22,7 +22,7 @@ class Ajax_Errors {
 	 *
 	 * @access private
 	 * @var object Class object.
-	 * @since x.x.x
+	 * @since 2.0.0
 	 */
 	private static $instance;
 
@@ -31,14 +31,14 @@ class Ajax_Errors {
 	 *
 	 * @access private
 	 * @var array Errors strings.
-	 * @since x.x.x
+	 * @since 2.0.0
 	 */
 	private static $errors = array();
 
 	/**
 	 * Initiator
 	 *
-	 * @since x.x.x
+	 * @since 2.0.0
 	 * @return object initialized object of class.
 	 */
 	public static function get_instance() {
@@ -51,7 +51,7 @@ class Ajax_Errors {
 	/**
 	 * Constructor
 	 *
-	 * @since x.x.x
+	 * @since 2.0.0
 	 */
 	public function __construct() {
 

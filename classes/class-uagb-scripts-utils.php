@@ -176,7 +176,7 @@ final class UAGB_Scripts_Utils {
 	/**
 	 * Get JS url from to assets.
 	 *
-	 * @since x.x.x
+	 * @since 2.0.0
 	 *
 	 * @param string $file_name File name.
 	 *
