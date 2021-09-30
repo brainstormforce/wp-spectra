@@ -1,4 +1,4 @@
-.astra-notice .notice-container{
+.astra-notice .notice-container {
 	padding-top: 10px;
 	padding-bottom: 10px;
 	display: block;
@@ -6,15 +6,15 @@
 	align-items: center;
 }
 
-#uagb-admin-rating .notice-container{
-    display:flex;
+#uagb-admin-rating .notice-container {
+	display: flex;
 }
 
 .astra-notice .notice-content {
 	margin-left: 15px;
 }
 
-.astra-notice .notice-image img{
+.astra-notice .notice-image img {
 	max-width: 70px;
 }
 

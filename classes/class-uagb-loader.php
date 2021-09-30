@@ -80,6 +80,8 @@ if ( ! class_exists( 'UAGB_Loader' ) ) {
 			}
 
 			define( 'UAGB_ASSET_VER', get_option( '__uagb_asset_version', UAGB_VER ) );
+			define( 'UAGB_CSS_EXT', defined( 'WP_DEBUG' ) && WP_DEBUG ? '.css' : '.min.css' );
+			define( 'UAGB_JS_EXT', defined( 'WP_DEBUG' ) && WP_DEBUG ? '.js' : '.min.js' );
 		}
 
 		/**
@@ -90,13 +92,22 @@ if ( ! class_exists( 'UAGB_Loader' ) ) {
 		 * @return void
 		 */
 		public function loader() {
+
 			require_once UAGB_DIR . 'classes/class-uagb-admin-helper.php';
+			require_once UAGB_DIR . 'classes/class-uagb-block-module.php';
 			require_once UAGB_DIR . 'classes/class-uagb-helper.php';
 			require_once UAGB_DIR . 'classes/class-uagb-scripts-utils.php';
 			require_once UAGB_DIR . 'classes/class-uagb-filesystem.php';
 			require_once UAGB_DIR . 'classes/class-uagb-update.php';
 			require_once UAGB_DIR . 'admin/bsf-analytics/class-bsf-analytics.php';
-			require_once UAGB_DIR . 'lib/class-uagb-ast-block-templates.php';
+
+			$enable_templates_button = UAGB_Admin_Helper::get_admin_settings_option( 'uag_enable_templates_button', 'yes' );
+
+			if ( 'yes' === $enable_templates_button ) {
+				require_once UAGB_DIR . 'lib/class-uagb-ast-block-templates.php';
+			} else {
+				add_filter( 'ast_block_templates_disable', '__return_true' );
+			}
 
 			if ( is_admin() ) {
 				require_once UAGB_DIR . 'classes/class-uagb-beta-updates.php';
@@ -130,6 +141,8 @@ if ( ! class_exists( 'UAGB_Loader' ) ) {
 			if ( 'twentyseventeen' === get_template() ) {
 				require_once UAGB_DIR . 'classes/class-uagb-twenty-seventeen-compatibility.php';
 			}
+
+			require_once UAGB_DIR . 'admin-core/admin-loader.php';
 		}
 
 		/**

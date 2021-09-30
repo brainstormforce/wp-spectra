@@ -2,280 +2,414 @@
  * BLOCK: Price List - Attributes
  */
 import { __ } from '@wordpress/i18n';
-const ITEM_COUNT = 4
+const itemCount = 4;
 
-const rest_menu_block = []
+const restMenuBlock = [];
 
-for ( var i = 1; i <= ITEM_COUNT; i++ ) {
-	var desc_text     = __("Lorem ipsum dolor sit amet, consectetur adipiscing elit.")
-	var title_text    = __("Menu Item "+i)
-	var price_text    = __("$9")
-	rest_menu_block.push(
-		{
-			"description": desc_text,
-			"title": title_text,
-			"price": price_text,
-			"image": "",
-		}
-	)
+for ( let i = 1; i <= itemCount; i++ ) {
+	const descText = __( 
+		'Lorem ipsum dolor sit amet, consectetur adipiscing elit.'
+	);
+	const titleText = ( 'Menu Item ' + i );
+	const priceText = __( '$9' );
+	restMenuBlock.push( {
+		description: descText,
+		title: titleText,
+		price: priceText,
+		image: '',
+	} );
 }
 
 const attributes = {
 	classMigrate: {
-		type: "boolean",
-		default: false
+		type: 'boolean',
+		default: false,
 	},
 	childMigrate: {
-		type: "boolean",
-		default: false
+		type: 'boolean',
+		default: false,
 	},
 	menu_item_count: {
-		type: "number",
-		default: ITEM_COUNT
+		type: 'number',
+		default: itemCount,
 	},
 	rest_menu_item_arr: {
-		type: "array",
-		default : rest_menu_block,
+		type: 'array',
+		default: restMenuBlock,
 	},
 	headingAlign: {
-		type: "string",
-		default: "left",
+		type: 'string',
+		default: 'left',
 	},
 	priceSpace: {
-		type: "number",
-		default : 5
+		type: 'number',
+		default: 5,
 	},
 	descSpace: {
-		type: "number",
-		default : 15
+		type: 'number',
+		default: 15,
 	},
-	titleSpace :{
-		type: "number",
+	titleSpace: {
+		type: 'number',
 		default: 10,
 	},
-	block_id :{
-		type : "string",
-		default : "not_set"
+	block_id: {
+		type: 'string',
+		default: 'not_set',
 	},
-	imgVrPadding :{
-		type: "number",
+	imgVrPadding: {
+		type: 'number',
 		default: 0,
 	},
-	imgHrPadding :{
-		type: "number",
+	imgHrPadding: {
+		type: 'number',
 		default: 0,
 	},
-	imgTopPadding :{
-		type: "number",
-		default: 0,
+	imgPaddingTop: {
+		type: 'number',
 	},
-	imgBottomPadding :{
-		type: "number",
-		default: 0,
+	imgPaddingRight: {
+		type: 'number',
 	},
-	columns :{
-		type: "number",
+	imgPaddingBottom: {
+		type: 'number',
+	},
+	imgPaddingLeft: {
+		type: 'number',
+	},
+	contentPaddingTop:{
+		type:'number'
+	},
+	contentPaddingRight:{
+		type:'number'
+	},
+	contentPaddingBottom:{
+		type:'number'
+	},
+	contentPaddingLeft:{
+		type:'number'
+	},
+	columns: {
+		type: 'number',
+		default: 1,
+	},
+	tcolumns: {
+		type: 'number',
 		default: 2,
 	},
-	tcolumns :{
-		type: "number",
-		default: 2,
-	},
-	mcolumns :{
-		type: "number",
+	mcolumns: {
+		type: 'number',
 		default: 1,
 	},
 	rowGap: {
-		type: "number",
-		default : 10
+		type: 'number',
+		default: 10,
 	},
 	columnGap: {
-		type: "number",
-		default : 10
+		type: 'number',
+		default: 10,
 	},
 	contentVrPadding: {
-		type: "number",
-		default : 5
+		type: 'number',
+		default: 5,
 	},
 	contentHrPadding: {
-		type: "number",
-		default : 5
+		type: 'number',
+		default: 5,
 	},
-	
+
 	stack: {
-		type: "string",
-		default: "tablet"
+		type: 'string',
+		default: 'tablet',
 	},
-	seperatorStyle : {
-		type: "string",
-		default: "dashed"
+	seperatorStyle: {
+		type: 'string',
+		default: 'dashed',
 	},
-	seperatorWidth : {
-		type: "number",
-		default: "100"
+	seperatorWidth: {
+		type: 'number',
+		default: '100',
 	},
-	seperatorThickness : {
-		type: "number",
-		default: "1"
+	seperatorThickness: {
+		type: 'number',
+		default: '1',
 	},
-	seperatorColor : {
-		type: "string",
-		default: "#b2b4b5",
+	seperatorColor: {
+		type: 'string',
+		default: '#dddddd',
 	},
 	descColor: {
-		type: "string",
-		default: "#333"
+		type: 'string',
+		default: '#333',
 	},
 	priceColor: {
-		type: "string",
-		default: "#888888"
+		type: 'string',
+		default: '#888888',
 	},
 	titleColor: {
-		type: "string",
-		default: "#333"
+		type: 'string',
+		default: '#333',
 	},
 	titleFontSizeType: {
-		type: "string",
-		default: "px"
+		type: 'string',
+		default: 'px',
 	},
 	titleFontSize: {
-		type: "number",
+		type: 'number',
 	},
 	titleFontSizeTablet: {
-		type: "number",
+		type: 'number',
 	},
 	titleFontSizeMobile: {
-		type: "number",
+		type: 'number',
 	},
 	titleFontFamily: {
-		type: "string",
-		default: "Default",
+		type: 'string',
+		default: 'Default',
 	},
 	titleFontWeight: {
-		type: "string",
+		type: 'string',
 	},
-	titleFontSubset: {
-		type: "string",
+	titleFontStyle: {
+		type: 'string',
 	},
 	titleLineHeightType: {
-		type: "string",
-		default: "em"
+		type: 'string',
+		default: 'em',
 	},
 	titleLineHeight: {
-		type: "number",
+		type: 'number',
 	},
 	titleLineHeightTablet: {
-		type: "number",
+		type: 'number',
 	},
 	titleLineHeightMobile: {
-		type: "number",
+		type: 'number',
 	},
 	titleLoadGoogleFonts: {
-		type: "boolean",
-		default: false	
+		type: 'boolean',
+		default: false,
 	},
 
 	priceFontSizeType: {
-		type: "string",
-		default: "px"
+		type: 'string',
+		default: 'px',
 	},
 	priceFontSize: {
-		type: "number",
+		type: 'number',
 	},
 	priceFontSizeTablet: {
-		type: "number",
+		type: 'number',
 	},
 	priceFontSizeMobile: {
-		type: "number",
+		type: 'number',
 	},
 	priceFontFamily: {
-		type: "string",
-		default: "Default",
+		type: 'string',
+		default: 'Default',
 	},
 	priceFontWeight: {
-		type: "string",
+		type: 'string',
 	},
-	priceFontSubset: {
-		type: "string",
+	priceFontStyle: {
+		type: 'string',
 	},
 	priceLineHeightType: {
-		type: "string",
-		default: "em"
+		type: 'string',
+		default: 'em',
 	},
 	priceLineHeight: {
-		type: "number",
+		type: 'number',
 	},
 	priceLineHeightTablet: {
-		type: "number",
+		type: 'number',
 	},
 	priceLineHeightMobile: {
-		type: "number",
+		type: 'number',
 	},
 	priceLoadGoogleFonts: {
-		type: "boolean",
-		default: false	
+		type: 'boolean',
+		default: false,
 	},
 
 	descFontSizeType: {
-		type: "string",
-		default: "px"
+		type: 'string',
+		default: 'px',
 	},
 	descFontSize: {
-		type: "number",
+		type: 'number',
 	},
 	descFontSizeTablet: {
-		type: "number",
+		type: 'number',
 	},
 	descFontSizeMobile: {
-		type: "number",
+		type: 'number',
 	},
 	descFontFamily: {
-		type: "string",
-		default: "Default",
+		type: 'string',
+		default: 'Default',
 	},
 	descFontWeight: {
-		type: "string",
+		type: 'string',
 	},
-	descFontSubset: {
-		type: "string",
+	descFontStyle: {
+		type: 'string',
 	},
 	descLineHeightType: {
-		type: "string",
-		default: "em"
+		type: 'string',
+		default: 'em',
 	},
 	descLineHeight: {
-		type: "number",
+		type: 'number',
 	},
 	descLineHeightTablet: {
-		type: "number",
+		type: 'number',
 	},
 	descLineHeightMobile: {
-		type: "number",
+		type: 'number',
 	},
 	descLoadGoogleFonts: {
-		type: "boolean",
-		default: false	
+		type: 'boolean',
+		default: false,
 	},
 	headingTag: {
-		type: "string",
-		default: "h4"
+		type: 'string',
+		default: 'h4',
 	},
-	imagePosition:{
-		type: "string",
-		default: "top"
+	imagePosition: {
+		type: 'string',
+		default: 'left',
 	},
-	imageAlignment:{
-		type: "string",
-		default: "top"
+	imageAlignment: {
+		type: 'string',
+		default: 'top',
 	},
-	imageSize:{
-		type: "string",
-		default: "medium",
+	imageSize: {
+		type: 'string',
+		default: 'medium',
 	},
-	imageWidth :{
-		type: "number",
-		default: "",
+	imageWidth: {
+		type: 'number',
+		default: 100,
 	},
-}
+	imageWidthType: {
+		type: 'string',
+		default: 'px',
+	},
+	seperatorWidthType: {
+		type: 'string',
+		default: '%',
+	},
+	rowGapType: {
+		type: 'string',
+		default: 'px',
+	},
+	columnGapType: {
+		type: 'string',
+		default: 'px',
+	},
+	titleSpaceType: {
+		type: 'string',
+		default: 'px',
+	},
+	contentPaddingTopTablet: {
+		type: 'number',
+	},
+	contentPaddingRightTablet: {
+		type: 'number',
+	},
+	contentPaddingBottomTablet: {
+		type: 'number',
+	},
+	contentPaddingLeftTablet: {
+		type: 'number',
+	},
+	contentPaddingTopMobile: {
+		type: 'number',
+	},
+	contentPaddingRightMobile: {
+		type: 'number',
+	},
+	contentPaddingBottomMobile: {
+		type: 'number',
+	},
+	contentPaddingLeftMobile: {
+		type: 'number',
+	},
+	contentPaddingUnit: {
+		type: 'string',
+		default: 'px',
+	},
+	contentMobilePaddingUnit: {
+		type: 'string',
+		default: 'px',
+	},
+	contentTabletPaddingUnit: {
+		type: 'string',
+		default: 'px',
+	},
+	contentSpacingLink: {
+		type: 'boolean',
+		default: false,
+	},
+	imgPaddingTopTablet: {
+		type: 'number',
+	},
+	imgPaddingRightTablet: {
+		type: 'number',
+	},
+	imgPaddingBottomTablet: {
+		type: 'number',
+	},
+	imgPaddingLeftTablet: {
+		type: 'number',
+	},
+	imgPaddingTopMobile: {
+		type: 'number',
+	},
+	imgPaddingRightMobile: {
+		type: 'number',
+	},
+	imgPaddingBottomMobile: {
+		type: 'number',
+	},
+	imgPaddingLeftMobile: {
+		type: 'number',
+	},
+	imgPaddingUnit: {
+		type: 'string',
+		default: 'px',
+	},
+	imgMobilePaddingUnit: {
+		type: 'string',
+		default: 'px',
+	},
+	imgTabletPaddingUnit: {
+		type: 'string',
+		default: 'px',
+	},
+	imgSpacingLink: {
+		type: 'boolean',
+		default: false,
+	},
+	titleTransform: {
+		type: 'string',
+	},
+	titleDecoration: {
+		type: 'string',
+	},
+	descTransform: {
+		type: 'string',
+	},
+	descDecoration: {
+		type: 'string',
+	},
+	priceTransform: {
+		type: 'string',
+	},
+	priceDecoration: {
+		type: 'string',
+	},
+};
 
-export default attributes
+export default attributes;

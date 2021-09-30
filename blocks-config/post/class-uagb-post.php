@@ -158,6 +158,102 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 								'type'    => 'string',
 								'default' => 'grid',
 							),
+							'displayPostContentRadio'     => array(
+								'type'    => 'string',
+								'default' => 'excerpt',
+							),
+							'excludeCurrentPost'          => array(
+								'type'    => 'string',
+								'default' => '',
+							),
+							'rowGapUnit'                  => array(
+								'type'    => 'string',
+								'default' => 'px',
+							),
+							'columnGapUnit'               => array(
+								'type'    => 'string',
+								'default' => 'px',
+							),
+							'contentPaddingUnit'          => array(
+								'type'    => 'string',
+								'default' => 'px',
+							),
+							'excerptBottomSpaceUnit'      => array(
+								'type'    => 'string',
+								'default' => 'px',
+							),
+							'paginationSpacingUnit'       => array(
+								'type'    => 'string',
+								'default' => 'px',
+							),
+							'imageBottomSpaceUnit'        => array(
+								'type'    => 'string',
+								'default' => 'px',
+							),
+							'titleBottomSpaceUnit'        => array(
+								'type'    => 'string',
+								'default' => 'px',
+							),
+							'metaBottomSpaceUnit'         => array(
+								'type'    => 'string',
+								'default' => 'px',
+							),
+							'ctaBottomSpaceUnit'          => array(
+								'type'    => 'string',
+								'default' => 'px',
+							),
+							'paddingBtnUnit'              => array(
+								'type'    => 'string',
+								'default' => 'px',
+							),
+							'mobilePaddingBtnUnit'        => array(
+								'type'    => 'string',
+								'default' => 'px',
+							),
+							'tabletPaddingBtnUnit'        => array(
+								'type'    => 'string',
+								'default' => 'px',
+							),
+							'contentPaddingUnit'          => array(
+								'type'    => 'string',
+								'default' => 'px',
+							),
+							'paddingUnit'                 => array(
+								'type'    => 'string',
+								'default' => 'px',
+							),
+							'mobilePaddingUnit'           => array(
+								'type'    => 'string',
+								'default' => 'px',
+							),
+							'tabletPaddingUnit'           => array(
+								'type'    => 'string',
+								'default' => 'px',
+							),
+							'titleTransform'              => array(
+								'type' => 'string',
+							),
+							'metaTransform'               => array(
+								'type' => 'string',
+							),
+							'excerptTransform'            => array(
+								'type' => 'string',
+							),
+							'ctaTransform'                => array(
+								'type' => 'string',
+							),
+							'titleDecoration'             => array(
+								'type' => 'string',
+							),
+							'metaDecoration'              => array(
+								'type' => 'string',
+							),
+							'excerptDecoration'           => array(
+								'type' => 'string',
+							),
+							'ctaDecoration'               => array(
+								'type' => 'string',
+							),
 						)
 					),
 					'render_callback' => array( $this, 'post_grid_callback' ),
@@ -170,51 +266,51 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 					'attributes'      => array_merge(
 						$common_attributes,
 						array(
-							'pauseOnHover'      => array(
+							'pauseOnHover'            => array(
 								'type'    => 'boolean',
 								'default' => true,
 							),
-							'infiniteLoop'      => array(
+							'infiniteLoop'            => array(
 								'type'    => 'boolean',
 								'default' => true,
 							),
-							'transitionSpeed'   => array(
+							'transitionSpeed'         => array(
 								'type'    => 'number',
 								'default' => 500,
 							),
-							'arrowDots'         => array(
+							'arrowDots'               => array(
 								'type'    => 'string',
 								'default' => 'arrows_dots',
 							),
-							'autoplay'          => array(
+							'autoplay'                => array(
 								'type'    => 'boolean',
 								'default' => true,
 							),
-							'autoplaySpeed'     => array(
+							'autoplaySpeed'           => array(
 								'type'    => 'number',
 								'default' => 2000,
 							),
-							'arrowSize'         => array(
+							'arrowSize'               => array(
 								'type'    => 'number',
 								'default' => 20,
 							),
-							'arrowBorderSize'   => array(
+							'arrowBorderSize'         => array(
 								'type'    => 'number',
 								'default' => 1,
 							),
-							'arrowBorderRadius' => array(
+							'arrowBorderRadius'       => array(
 								'type'    => 'number',
 								'default' => 0,
 							),
-							'arrowColor'        => array(
+							'arrowColor'              => array(
 								'type'    => 'string',
 								'default' => '#aaaaaa',
 							),
-							'equalHeight'       => array(
+							'equalHeight'             => array(
 								'type'    => 'boolean',
 								'default' => false,
 							),
-							'layoutConfig'      => array(
+							'layoutConfig'            => array(
 								'type'    => 'array',
 								'default' => array(
 									array( 'uagb/post-image' ),
@@ -224,9 +320,81 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 									array( 'uagb/post-button' ),
 								),
 							),
-							'post_type'         => array(
+							'post_type'               => array(
 								'type'    => 'string',
 								'default' => 'carousel',
+							),
+							'displayPostContentRadio' => array(
+								'type'    => 'string',
+								'default' => 'excerpt',
+							),
+							'excludeCurrentPost'      => array(
+								'type'    => 'string',
+								'default' => '',
+							),
+							'rowGapUnit'              => array(
+								'type'    => 'string',
+								'default' => 'px',
+							),
+							'columnGapUnit'           => array(
+								'type'    => 'string',
+								'default' => 'px',
+							),
+							'contentPaddingUnit'      => array(
+								'type'    => 'string',
+								'default' => 'px',
+							),
+							'excerptBottomSpaceUnit'  => array(
+								'type'    => 'string',
+								'default' => 'px',
+							),
+							'paginationSpacingUnit'   => array(
+								'type'    => 'string',
+								'default' => 'px',
+							),
+							'imageBottomSpaceUnit'    => array(
+								'type'    => 'string',
+								'default' => 'px',
+							),
+							'titleBottomSpaceUnit'    => array(
+								'type'    => 'string',
+								'default' => 'px',
+							),
+							'metaBottomSpaceUnit'     => array(
+								'type'    => 'string',
+								'default' => 'px',
+							),
+							'ctaBottomSpaceUnit'      => array(
+								'type'    => 'string',
+								'default' => 'px',
+							),
+							'paddingBtnUnit'          => array(
+								'type'    => 'string',
+								'default' => 'px',
+							),
+							'mobilePaddingBtnUnit'    => array(
+								'type'    => 'string',
+								'default' => 'px',
+							),
+							'tabletPaddingBtnUnit'    => array(
+								'type'    => 'string',
+								'default' => 'px',
+							),
+							'contentPaddingUnit'      => array(
+								'type'    => 'string',
+								'default' => 'px',
+							),
+							'paddingUnit'             => array(
+								'type'    => 'string',
+								'default' => 'px',
+							),
+							'mobilePaddingUnit'       => array(
+								'type'    => 'string',
+								'default' => 'px',
+							),
+							'tabletPaddingUnit'       => array(
+								'type'    => 'string',
+								'default' => 'px',
 							),
 						)
 					),
@@ -286,6 +454,10 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 								'type'    => 'string',
 								'default' => '',
 							),
+							'paginationMasonryBorderHColor' => array(
+								'type'    => 'string',
+								'default' => '',
+							),
 							'paginationFontSize'           => array(
 								'type'    => 'number',
 								'default' => 13,
@@ -340,6 +512,90 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 								'type'    => 'string',
 								'default' => 'masonry',
 							),
+							'mobilepaginationButtonPaddingType' => array(
+								'type'    => 'string',
+								'default' => 'px',
+							),
+							'tabletpaginationButtonPaddingType' => array(
+								'type'    => 'string',
+								'default' => 'px',
+							),
+							'paginationButtonPaddingType'  => array(
+								'type'    => 'string',
+								'default' => 'px',
+							),
+							'displayPostContentRadio'      => array(
+								'type'    => 'string',
+								'default' => 'excerpt',
+							),
+							'excludeCurrentPost'           => array(
+								'type'    => 'string',
+								'default' => '',
+							),
+							'rowGapUnit'                   => array(
+								'type'    => 'string',
+								'default' => 'px',
+							),
+							'columnGapUnit'                => array(
+								'type'    => 'string',
+								'default' => 'px',
+							),
+							'contentPaddingUnit'           => array(
+								'type'    => 'string',
+								'default' => 'px',
+							),
+							'excerptBottomSpaceUnit'       => array(
+								'type'    => 'string',
+								'default' => 'px',
+							),
+							'paginationSpacingUnit'        => array(
+								'type'    => 'string',
+								'default' => 'px',
+							),
+							'imageBottomSpaceUnit'         => array(
+								'type'    => 'string',
+								'default' => 'px',
+							),
+							'titleBottomSpaceUnit'         => array(
+								'type'    => 'string',
+								'default' => 'px',
+							),
+							'metaBottomSpaceUnit'          => array(
+								'type'    => 'string',
+								'default' => 'px',
+							),
+							'ctaBottomSpaceUnit'           => array(
+								'type'    => 'string',
+								'default' => 'px',
+							),
+							'paddingBtnUnit'               => array(
+								'type'    => 'string',
+								'default' => 'px',
+							),
+							'mobilePaddingBtnUnit'         => array(
+								'type'    => 'string',
+								'default' => 'px',
+							),
+							'tabletPaddingBtnUnit'         => array(
+								'type'    => 'string',
+								'default' => 'px',
+							),
+							'contentPaddingUnit'           => array(
+								'type'    => 'string',
+								'default' => 'px',
+							),
+							'paddingUnit'                  => array(
+								'type'    => 'string',
+								'default' => 'px',
+							),
+							'mobilePaddingUnit'            => array(
+								'type'    => 'string',
+								'default' => 'px',
+							),
+							'tabletPaddingUnit'            => array(
+								'type'    => 'string',
+								'default' => 'px',
+							),
 						)
 					),
 					'render_callback' => array( $this, 'post_masonry_callback' ),
@@ -392,7 +648,7 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 				),
 				'excerptLength'           => array(
 					'type'    => 'number',
-					'default' => 25,
+					'default' => 15,
 				),
 				'displayPostAuthor'       => array(
 					'type'    => 'boolean',
@@ -510,7 +766,7 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 				),
 				'bgColor'                 => array(
 					'type'    => 'string',
-					'default' => '#e4e4e4',
+					'default' => '#f5f5f5',
 				),
 
 				// Title Attributes.
@@ -520,7 +776,7 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 				),
 				'titleTag'                => array(
 					'type'    => 'string',
-					'default' => 'h3',
+					'default' => 'h4',
 				),
 				'titleFontSize'           => array(
 					'type'    => 'number',
@@ -543,7 +799,7 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 				'titleFontWeight'         => array(
 					'type' => 'string',
 				),
-				'titleFontSubset'         => array(
+				'titleFontStyle'          => array(
 					'type' => 'string',
 				),
 				'titleLineHeightType'     => array(
@@ -590,7 +846,7 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 				'metaFontWeight'          => array(
 					'type' => 'string',
 				),
-				'metaFontSubset'          => array(
+				'metaFontStyle'           => array(
 					'type' => 'string',
 				),
 				'metaLineHeightType'      => array(
@@ -637,7 +893,7 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 				'excerptFontWeight'       => array(
 					'type' => 'string',
 				),
-				'excerptFontSubset'       => array(
+				'excerptFontStyle'        => array(
 					'type' => 'string',
 				),
 				'excerptLineHeightType'   => array(
@@ -698,7 +954,7 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 				'ctaFontWeight'           => array(
 					'type' => 'string',
 				),
-				'ctaFontSubset'           => array(
+				'ctaFontStyle'            => array(
 					'type' => 'string',
 				),
 				'ctaLineHeightType'       => array(
@@ -1452,7 +1708,7 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 
 			global $post;
 
-			$length = ( isset( $attributes['excerptLength'] ) ) ? $attributes['excerptLength'] : 25;
+			$length = ( isset( $attributes['excerptLength'] ) ) ? $attributes['excerptLength'] : 15;
 
 			if ( 'full_post' === $attributes['displayPostContentRadio'] ) {
 				$excerpt = get_the_content();

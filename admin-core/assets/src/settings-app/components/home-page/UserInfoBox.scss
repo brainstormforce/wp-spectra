@@ -1,0 +1,97 @@
+.uag-user-info {
+	background: var(--background-light-color);
+	box-shadow: none;
+	padding: 35px;
+	display: -ms-grid;
+	display: grid;
+	-ms-grid-columns: 66% 33%;
+	grid-template-columns: 66% 32%;
+	row-gap: 25px;
+	column-gap: 25px;
+	box-sizing: border-box;
+
+	h3 {
+		font-size: 20px;
+	}
+
+	.uag-metabox {
+		background-color: var(--metabox-background-color);
+		box-shadow: 0 3px 20px rgba(190, 190, 190, 0.15);
+		border-radius: 2px;
+	}
+
+	p {
+		line-height: 1.7;
+		max-width: 800px;
+		width: 100%;
+	}
+
+	.uag-metabox__header {
+		flex: 1 0 0%;
+		display: flex;
+		flex-direction: column;
+		padding: 4%;
+
+		p {
+			margin-bottom: 0;
+			display: inline-block;
+		}
+
+		.uag-field {
+			padding-top: 15px;
+			display: flex;
+			justify-content: space-between;
+			margin-top: auto;
+		}
+	}
+
+	.uag-metabox__element {
+		flex: 1 0 0%;
+		display: flex;
+		flex-direction: column;
+		padding: 8%;
+
+		.uag-field {
+			display: flex;
+			justify-content: space-between;
+			margin-top: auto;
+		}
+	}
+
+	.uag-starter-site__elements {
+		display: grid;
+		grid-template-columns: 40% 60%;
+
+		img {
+			height: auto;
+			max-width: 100%;
+			width: 100%;
+		}
+
+		.uag-starter-tmp__details {
+			padding: 6%;
+		}
+
+		.uag-starter-tmp__img {
+			background-image: url(./../../../../images/astra-starter-sites.jpg);
+			background-position: center;
+			background-repeat: no-repeat;
+			background-size: cover;
+		}
+	}
+
+	.uag-theme__metabox {
+		padding: 4%;
+
+		.uag-theme__cta {
+			display: flex;
+			flex-wrap: wrap;
+			column-gap: 15px;
+			row-gap: 10px;
+		}
+
+		p {
+			display: inline-block;
+		}
+	}
+}

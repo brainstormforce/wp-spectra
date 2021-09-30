@@ -1,0 +1,15 @@
+.uag-tools-nav__contents {
+	display: grid;
+	grid-template-columns: auto auto;
+	row-gap: 20px;
+	column-gap: 20px;
+}
+
+.uag-tools-page-heading {
+	margin: 30px 0;
+}
+
+.uag-tools-nav__content {
+	padding: 25px;
+	background: var(--metabox-background-color);
+}

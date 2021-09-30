@@ -6,6 +6,7 @@ on:
       - master
       - dev
       - next-release
+      - milestone
 env:
   ZIP_URL: https://dev.ultimategutenberg.com/wp-content/uploads/uag-gh/
   PLUGIN_SLUG: ${{ github.event.repository.name }}

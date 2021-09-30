@@ -144,7 +144,7 @@ if ( ! class_exists( 'UAGB_Post_Timeline' ) ) {
 						'subHeadFontWeight'       => array(
 							'type' => 'string',
 						),
-						'subHeadFontSubset'       => array(
+						'subHeadFontStyle'        => array(
 							'type' => 'string',
 						),
 						'subHeadLineHeightType'   => array(
@@ -221,7 +221,7 @@ if ( ! class_exists( 'UAGB_Post_Timeline' ) ) {
 						'authorFontWeight'        => array(
 							'type' => 'string',
 						),
-						'authorFontSubset'        => array(
+						'authorFontStyle'         => array(
 							'type' => 'string',
 						),
 						'authorLineHeightType'    => array(
@@ -262,7 +262,7 @@ if ( ! class_exists( 'UAGB_Post_Timeline' ) ) {
 						'ctaFontWeight'           => array(
 							'type' => 'string',
 						),
-						'ctaFontSubset'           => array(
+						'ctaFontStyle'            => array(
 							'type' => 'string',
 						),
 						'ctaLineHeightType'       => array(
@@ -307,7 +307,7 @@ if ( ! class_exists( 'UAGB_Post_Timeline' ) ) {
 						'dateFontWeight'          => array(
 							'type' => 'string',
 						),
-						'dateFontSubset'          => array(
+						'dateFontStyle'           => array(
 							'type' => 'string',
 						),
 						'dateLineHeightType'      => array(
@@ -355,7 +355,7 @@ if ( ! class_exists( 'UAGB_Post_Timeline' ) ) {
 						'headFontWeight'          => array(
 							'type' => 'string',
 						),
-						'headFontSubset'          => array(
+						'headFontStyle'           => array(
 							'type' => 'string',
 						),
 						'headLineHeightType'      => array(
@@ -491,6 +491,140 @@ if ( ! class_exists( 'UAGB_Post_Timeline' ) ) {
 							'type'    => 'boolean',
 							'default' => false,
 						),
+						'leftMargin'              => array(
+							'type' => 'number',
+						),
+						'rightMargin'             => array(
+							'type' => 'number',
+						),
+						'topMargin'               => array(
+							'type' => 'number',
+						),
+						'bottomMargin'            => array(
+							'type' => 'number',
+						),
+						'leftMarginTablet'        => array(
+							'type' => 'number',
+						),
+						'rightMarginTablet'       => array(
+							'type' => 'number',
+						),
+						'topMarginTablet'         => array(
+							'type' => 'number',
+						),
+						'bottomMarginTablet'      => array(
+							'type' => 'number',
+						),
+						'leftMarginMobile'        => array(
+							'type' => 'number',
+						),
+						'rightMarginMobile'       => array(
+							'type' => 'number',
+						),
+						'topMarginMobile'         => array(
+							'type' => 'number',
+						),
+						'bottomMarginMobile'      => array(
+							'type' => 'number',
+						),
+						'marginUnit'              => array(
+							'type'    => 'string',
+							'default' => 'px',
+						),
+						'mobileMarginUnit'        => array(
+							'type'    => 'string',
+							'default' => 'px',
+						),
+						'tabletMarginUnit'        => array(
+							'type'    => 'string',
+							'default' => 'px',
+						),
+						'marginLink'              => array(
+							'type'    => 'boolean',
+							'default' => false,
+						),
+						'leftPadding'             => array(
+							'type' => 'number',
+						),
+						'rightPadding'            => array(
+							'type' => 'number',
+						),
+						'topPadding'              => array(
+							'type' => 'number',
+						),
+						'bottomPadding'           => array(
+							'type' => 'number',
+						),
+						'leftPaddingTablet'       => array(
+							'type' => 'number',
+						),
+						'rightPaddingTablet'      => array(
+							'type' => 'number',
+						),
+						'topPaddingTablet'        => array(
+							'type' => 'number',
+						),
+						'bottomPaddingTablet'     => array(
+							'type' => 'number',
+						),
+						'leftPaddingMobile'       => array(
+							'type' => 'number',
+						),
+						'rightPaddingMobile'      => array(
+							'type' => 'number',
+						),
+						'topPaddingMobile'        => array(
+							'type' => 'number',
+						),
+						'bottomPaddingMobile'     => array(
+							'type' => 'number',
+						),
+						'paddingUnit'             => array(
+							'type'    => 'string',
+							'default' => 'px',
+						),
+						'mobilePaddingUnit'       => array(
+							'type'    => 'string',
+							'default' => 'px',
+						),
+						'tabletPaddingUnit'       => array(
+							'type'    => 'string',
+							'default' => 'px',
+						),
+						'paddingLink'             => array(
+							'type'    => 'boolean',
+							'default' => false,
+						),
+						'headTransform'           => array(
+							'type' => 'string',
+						),
+						'authorTransform'         => array(
+							'type' => 'string',
+						),
+						'subHeadTransform'        => array(
+							'type' => 'string',
+						),
+						'dateTransform'           => array(
+							'type' => 'string',
+						),
+						'ctaTransform'            => array(
+							'type' => 'string',
+						),
+						'headDecoration'          => array(
+							'type' => 'string',
+						),
+						'authorDecoration'        => array(
+							'type' => 'string',
+						),
+						'subHeadDecoration'       => array(
+							'type' => 'string',
+						),
+						'dateDecoration'          => array(
+							'type' => 'string',
+						),
+						'ctaDecoration'           => array(
+							'type' => 'string',
+						),
 					),
 					'render_callback' => array( $this, 'post_timeline_callback' ),
 				)
@@ -536,21 +670,25 @@ if ( ! class_exists( 'UAGB_Post_Timeline' ) ) {
 
 			ob_start();
 			?>
-			<div class = "<?php echo esc_attr( implode( ' ', $main_classes ) ); ?>" >
-				<div  class = "<?php echo esc_html( $this->get_classes( $attributes ) ); ?>" >
-					<div class = "uagb-timeline-wrapper">
-						<div class = "uagb-timeline__main">
-							<?php
-							if ( empty( $recent_posts ) ) {
-								esc_html_e( 'No posts found', 'ultimate-addons-for-gutenberg' );
-							} else {
-								$this->get_post_html( $attributes, $recent_posts );
-							}
-							?>
-							<div class = "uagb-timeline__line" >
-								<div class = "uagb-timeline__line__inner"></div>
-							</div>
-						</div>
+			<div class = "
+			<?php
+			echo esc_attr( implode( ' ', $main_classes ) );
+			echo esc_html( $this->get_classes( $attributes ) );
+			?>
+			<?php
+			echo esc_html( $this->get_classes( $attributes ) );
+			?>
+			" >
+				<div class = "uagb-timeline__main">
+					<?php
+					if ( empty( $recent_posts ) ) {
+						esc_html_e( 'No posts found', 'ultimate-addons-for-gutenberg' );
+					} else {
+						$this->get_post_html( $attributes, $recent_posts );
+					}
+					?>
+					<div class = "uagb-timeline__line" >
+						<div class = "uagb-timeline__line__inner"></div>
 					</div>
 				</div>
 			</div>
@@ -603,23 +741,21 @@ if ( ! class_exists( 'UAGB_Post_Timeline' ) ) {
 				<div class = "<?php echo esc_html( $content_align_class ); ?>">
 					<?php $this->get_icon( $attributes ); ?>
 					<div class = "<?php echo esc_html( $day_align_class ); ?>" >
-						<div class = "uagb-timeline__events-new">
-							<div class ="uagb-timeline__events-inner-new">
-								<div class = "uagb-timeline__date-hide uagb-timeline__date-inner" >
-									<?php $this->get_date( $attributes, 'uagb-timeline__inner-date-new' ); ?>
-								</div>
+						<div class ="uagb-timeline__events-inner-new">
+							<div class = "uagb-timeline__date-hide uagb-timeline__date-inner" >
+								<?php $this->get_date( $attributes, 'uagb-timeline__inner-date-new' ); ?>
+							</div>
 
-								<?php ( $attributes['displayPostImage'] ) ? $this->get_image( $attributes ) : ''; ?>
+							<?php ( $attributes['displayPostImage'] ) ? $this->get_image( $attributes ) : ''; ?>
 
-								<div class = "uagb-content" >
-									<?php
-										$this->get_title( $attributes );
-										$this->get_author( $attributes, $post->post_author );
-										$this->get_excerpt( $attributes );
-										$this->get_cta( $attributes );
-									?>
-									<div class = "uagb-timeline__arrow"></div>
-								</div>
+							<div class = "uagb-content" >
+								<?php
+									$this->get_title( $attributes );
+									$this->get_author( $attributes, $post->post_author );
+									$this->get_excerpt( $attributes );
+									$this->get_cta( $attributes );
+								?>
+								<div class = "uagb-timeline__arrow"></div>
 							</div>
 						</div>
 					</div>
