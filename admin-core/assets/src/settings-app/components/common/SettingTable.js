@@ -10,7 +10,7 @@ function SettingTable( props ) {
 
 	return (
 		<>
-			{ Object.keys( settings.fields ).map( ( field ) => {
+			{ Object.keys( settings.fields ).map( ( field, key ) => {
 				const data = settings.fields[ field ];
 				const inputType = data.type;
 				let component = '';
@@ -28,6 +28,7 @@ function SettingTable( props ) {
 								value={ value }
 								label={ data.label }
 								desc={ data.desc }
+								key = {key}
 							/>
 						);
 						break;
@@ -41,6 +42,7 @@ function SettingTable( props ) {
 								options={ data.options }
 								desc={ data.desc }
 								tooltip={ data.tooltip }
+								key = {key}
 							/>
 						);
 						break;

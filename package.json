@@ -62,6 +62,7 @@
     "build:assets": "wp-scripts build && node scripts/generate-assets-files.js",
     "build:sass": "node scripts/generate-assets-files.js",
     "build:placeholder": "node scripts/generate-blocks-placeholder.js",
+    "build:admin": "cd admin-core && npm run build && grunt minify",
     "build": "wp-scripts build && npm run build:sass && grunt minify && npm run build:placeholder",
     "format:js": "wp-scripts format-js",
     "lint-js": "wp-scripts lint-js",

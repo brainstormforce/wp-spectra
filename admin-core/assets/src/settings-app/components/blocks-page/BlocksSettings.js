@@ -113,8 +113,8 @@ function BlocksSettings() {
 			<div className="uag-bulk-blocks-settings-wrap">
 				<ul className="uag-block-cat-list">
 				<span className='uag-block-cat-label'>Filter By:</span>
-					{ categories.map( ( cat ) => (
-						<li key={cat} className={`uag-block-cat ${cat === 'seo' ? 'uag-uppercase-cat' : ''} ${cat === checkCategory ? 'uag-cat-active' : ''}`}>
+					{ categories.map( ( cat , key ) => (
+						<li key={key} className={`uag-block-cat ${cat === 'seo' ? 'uag-uppercase-cat' : ''} ${cat === checkCategory ? 'uag-cat-active' : ''}`}>
 							<a onClick={() => setCategory( cat ) } role = "button" onKeyDown={() => setCategory( cat )} tabIndex={0} // eslint-disable-line jsx-a11y/anchor-is-valid
 							>{cat} </a>
 						</li>

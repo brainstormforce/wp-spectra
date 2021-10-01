@@ -8,15 +8,23 @@
 	<rule ref="WordPress-Docs" />
 	<rule ref="WordPress-Extra" />
 	<rule ref="WordPress.Security.EscapeOutput" />
+
 	<!-- Check all PHP files in directory tree by default. -->
 	<arg name="extensions" value="php"/>
 	<file>.</file>
+
 	<!-- Skip classname issues in admin-core dir-->
 	<rule ref="WordPress.Files.FileName.InvalidClassFileName">
 		<exclude-pattern>*/admin-core/*</exclude-pattern>
 	</rule>
-	<!-- Show sniff codes in all reports -->
+
+	<!-- Arguments - extension, parallel, colors, show porgress, Show sniff codes in all reports -->
+	<arg name="extensions" value="php"/>
+	<arg name="parallel" value="20"/>
+	<arg name="colors"/>
+	<arg value="sp"/>
 	<arg value="s"/>
+
 	<exclude-pattern>*/src/*</exclude-pattern>
 	<exclude-pattern>*/dist/*</exclude-pattern>
 	<exclude-pattern>*/node_modules/*</exclude-pattern>

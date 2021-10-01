@@ -55,8 +55,9 @@ function NavMenu() {
 				</Link>
 			</div>
 			<div className="uag-global-nav__items">
-				{ menus.map( ( menu ) => (
+				{ menus.map( ( menu , key ) => (
 					<Link
+					    index = {key}
 						key={ `?page=${ menu.slug }&path=${ menu.path }` }
 						to={ {
 							pathname: 'options-general.php',
