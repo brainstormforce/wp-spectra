@@ -226,6 +226,10 @@ const SpacingControl = ( props ) => {
 			name: __( 'Em', 'ultimate-addons-for-gutenberg' ),
 			unitValue: 'em',
 		},
+		{
+			name: __( '%', 'ultimate-addons-for-gutenberg' ),
+			unitValue: '%',
+		},
 	];
 	if ( props.units ) {
 		unitSizes = props.units;
