@@ -137,7 +137,7 @@ if ( 'modern' === $attr['layout'] ) {
 	$selectors[' .uagb-notice-title']['border-top-left-radius']  = '3px';
 
 	$selectors[' .uagb-notice-text']['background-color']           = $attr['contentBgColor'];
-	$selectors[' .uagb-notice-text']['border']                     = '2px solid' . $attr['noticeColor'];
+	$selectors[' .uagb-notice-text']['border']                     = '2px solid ' . $attr['noticeColor'];
 	$selectors[' .uagb-notice-text']['border-bottom-left-radius']  = '3px';
 	$selectors[' .uagb-notice-text']['border-bottom-right-radius'] = '3px';
 } elseif ( 'simple' === $attr['layout'] ) {

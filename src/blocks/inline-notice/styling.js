@@ -186,7 +186,7 @@ function styling( props ) {
 		][ 'background-color' ] = contentBgColor;
 		selectors[
 			' .rich-text.block-editor-rich-text__editable.uagb-notice-text'
-		].border = '2px solid' + noticeColor;
+		].border = '2px solid ' + noticeColor;
 		selectors[
 			' .rich-text.block-editor-rich-text__editable.uagb-notice-text'
 		][ 'border-bottom-left-radius' ] = '3px';
