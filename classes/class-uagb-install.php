@@ -48,11 +48,6 @@ class UAGB_Install {
 		$files = array(
 			array(
 				'base'    => UAGB_UPLOAD_DIR,
-				'file'    => '.htaccess',
-				'content' => 'deny from all',
-			),
-			array(
-				'base'    => UAGB_UPLOAD_DIR,
 				'file'    => 'index.html',
 				'content' => '',
 			),

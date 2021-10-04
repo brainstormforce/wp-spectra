@@ -150,6 +150,14 @@ class UAGB_Post_Assets {
 	public $preview = false;
 
 	/**
+	 * Load UAG Fonts Flag.
+	 *
+	 * @since x.x.x
+	 * @var preview
+	 */
+	public $load_uag_fonts = true;
+
+	/**
 	 * Constructor
 	 *
 	 * @param int $post_id Post ID.
@@ -159,6 +167,8 @@ class UAGB_Post_Assets {
 		$this->post_id = intval( $post_id );
 
 		$this->preview = isset( $_GET['preview'] ); //phpcs:ignore WordPress.Security.NonceVerification.Recommended
+
+		$this->load_uag_fonts = apply_filters( 'uagb_enqueue_google_fonts', $this->load_uag_fonts );
 
 		if ( $this->preview ) {
 			$this->file_generation              = 'disabled';
@@ -284,8 +294,10 @@ class UAGB_Post_Assets {
 			// RTL Styles Suppport.
 			UAGB_Scripts_Utils::enqueue_blocks_rtl_styles();
 
-			// Print google fonts.
-			add_action( 'wp_head', array( $this, 'print_google_fonts' ), 120 );
+			if ( $this->load_uag_fonts ) {
+				// Print google fonts.
+				add_action( 'wp_head', array( $this, 'print_google_fonts' ), 120 );
+			}
 
 			if ( 'enabled' === $this->file_generation ) {
 				// Enqueue File Generation Assets Files.
@@ -303,7 +315,17 @@ class UAGB_Post_Assets {
 			}
 		}
 	}
+	/**
+	 * Get saved fonts.
+	 *
+	 * @since x.x.x
+	 *
+	 * @return array
+	 */
+	public function get_fonts() {
 
+		return $this->gfonts;
+	}
 
 	/**
 	 * This function updates the Page assets in the Page Meta Key.
