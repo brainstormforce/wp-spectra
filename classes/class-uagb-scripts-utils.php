@@ -166,8 +166,8 @@ final class UAGB_Scripts_Utils {
 		);
 
 		if ( ! empty( $file_name ) ) {
-			$info[ $path ] = $uploads_dir['path'] . $file_name;
-			$info[ $url ]  = $uploads_dir['url'] . $file_name;
+			$info[ $path ] = $uploads_dir['path'] . 'assets/' . $type . '/' . $file_name;
+			$info[ $url ]  = $uploads_dir['url'] . 'assets/' . $type . '/' . $file_name;
 		}
 
 		return $info;

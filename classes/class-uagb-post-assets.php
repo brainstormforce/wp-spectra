@@ -790,7 +790,7 @@ class UAGB_Post_Assets {
 		}
 
 		// Create a new file.
-		$result = $file_system->put_contents( $uploads_dir['path'] . $file_name, $file_data, FS_CHMOD_FILE );
+		$result = $file_system->put_contents( $uploads_dir['path'] . 'assets/' . $type . '/' . $file_name, $file_data, FS_CHMOD_FILE );
 
 		if ( $result ) {
 			// Update meta with current timestamp.

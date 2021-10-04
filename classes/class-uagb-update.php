@@ -72,6 +72,9 @@ if ( ! class_exists( 'UAGB_Update' ) ) :
 				return;
 			}
 
+			// Create file if not present.
+			uagb_install()->create_files();
+
 			/* Create activated blocks stylesheet */
 			UAGB_Admin_Helper::create_specific_stylesheet();
 
@@ -91,6 +94,8 @@ if ( ! class_exists( 'UAGB_Update' ) ) :
 		 * @return void
 		 */
 		public function fresh_install_update_asset_generation_option() {
+
+			uagb_install()->create_files();
 
 			if ( UAGB_Helper::is_uag_dir_has_write_permissions() ) {
 				update_option( '_uagb_allow_file_generation', 'enabled' );

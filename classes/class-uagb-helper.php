@@ -683,21 +683,16 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 				$wp_info['baseurl'] = str_ireplace( 'http://', 'https://', $wp_info['baseurl'] );
 			}
 
-			$dir_name = 'uag-plugin';
-
 			// Build the paths.
 			$dir_info = array(
-				'path' => trailingslashit( trailingslashit( $wp_info['basedir'] ) . $dir_name ),
-				'url'  => trailingslashit( trailingslashit( $wp_info['baseurl'] ) . $dir_name ),
+				'path' => trailingslashit( trailingslashit( $wp_info['basedir'] ) . UAGB_UPLOAD_DIR_NAME ),
+				'url'  => trailingslashit( trailingslashit( $wp_info['baseurl'] ) . UAGB_UPLOAD_DIR_NAME ),
 			);
 
 			// Create the upload dir if it doesn't exist.
 			if ( ! file_exists( $dir_info['path'] ) ) {
-				// Create the directory.
-				$wp_filesystem = uagb_filesystem();
-				$wp_filesystem->mkdir( $dir_info['path'] );
-				// Add an index file for security.
-				$wp_filesystem->put_contents( $dir_info['path'] . 'index.html', '', FS_CHMOD_FILE );
+
+				uagb_install()->create_files();
 			}
 
 			return apply_filters( 'uag_get_upload_dir', $dir_info );
@@ -711,20 +706,20 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 		 */
 		public static function delete_upload_dir() {
 
-			$wp_info  = wp_upload_dir( null, false );
-			$dir_name = 'uag-plugin';
+			$wp_info = wp_upload_dir( null, false );
 
 			// Build the paths.
 			$dir_info = array(
-				'path' => trailingslashit( trailingslashit( $wp_info['basedir'] ) . $dir_name ),
+				'path' => trailingslashit( trailingslashit( $wp_info['basedir'] ) . UAGB_UPLOAD_DIR_NAME ),
 			);
 
 			// Check the upload dir if it doesn't exist or not.
-			if ( file_exists( $dir_info['path'] . 'index.html' ) ) {
+			if ( file_exists( $dir_info['path'] ) ) {
 				// Remove the directory.
 				$wp_filesystem = uagb_filesystem();
 				return $wp_filesystem->rmdir( $dir_info['path'], true );
 			}
+
 			return false;
 		}
 
