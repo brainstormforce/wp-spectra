@@ -475,8 +475,10 @@ if ( ! class_exists( 'Ast_Block_Templates' ) ) :
 						foreach ( $current_page_data as $site_id => $site_data ) {
 
 							// Replace `astra-sites-tag` with `tag`.
-							$site_data['tag'] = $site_data['astra-sites-tag'];
-							unset( $site_data['astra-sites-tag'] );
+							if ( isset( $site_data['astra-sites-tag'] ) ) {
+								$site_data['tag'] = $site_data['astra-sites-tag'];
+								unset( $site_data['astra-sites-tag'] );
+							}
 
 							// Replace `id-` from the site ID.
 							$site_data['ID'] = str_replace( 'id-', '', $site_id );
@@ -487,8 +489,10 @@ if ( ! class_exists( 'Ast_Block_Templates' ) ) :
 									$single_page = $page_data;
 
 									// Replace `astra-sites-tag` with `tag`.
-									$single_page['tag'] = $single_page['astra-sites-tag'];
-									unset( $single_page['astra-sites-tag'] );
+									if ( isset( $single_page['astra-sites-tag'] ) ) {
+										$single_page['tag'] = $single_page['astra-sites-tag'];
+										unset( $single_page['astra-sites-tag'] );
+									}
 
 									// Replace `id-` from the site ID.
 									$single_page['ID'] = str_replace( 'id-', '', $page_id );
