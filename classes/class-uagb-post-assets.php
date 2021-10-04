@@ -491,6 +491,12 @@ class UAGB_Post_Assets {
 			}
 		}
 
+		$subsets = apply_filters( 'uag_font_subset', array() );
+
+		if ( ! empty( $subsets ) ) {
+			$link .= '&amp;subset=' . implode( ',', $subsets );
+		}
+
 		if ( isset( $link ) && ! empty( $link ) ) {
 			echo '<link href="//fonts.googleapis.com/css?family=' . esc_attr( str_replace( '|', '%7C', $link ) ) . '" rel="stylesheet">'; //phpcs:ignore WordPress.WP.EnqueuedResources.NonEnqueuedStylesheet
 		}
