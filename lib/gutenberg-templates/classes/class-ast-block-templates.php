@@ -365,8 +365,15 @@ if ( ! class_exists( 'Ast_Block_Templates' ) ) :
 		 */
 		public function template_assets() {
 
-			// Avoided to load scripts in customizer.
-			if ( is_customize_preview() ) {
+			$post_types = get_post_types( array( 'public' => true ), 'names' );
+
+			$current_screen = get_current_screen();
+
+			if ( ! is_object( $current_screen ) && is_null( $current_screen ) ) {
+				return false;
+			}
+
+			if ( ! array_key_exists( $current_screen->post_type, $post_types ) ) {
 				return;
 			}
 
@@ -382,6 +389,8 @@ if ( ! class_exists( 'Ast_Block_Templates' ) ) :
 					'ast_block_templates_localize_vars',
 					array(
 						'popup_class'             => defined( 'UAGB_PLUGIN_SHORT_NAME' ) ? 'uag-block-templates-lightbox' : 'ast-block-templates-lightbox',
+						'api_url'                 => AST_BLOCK_TEMPLATES_LIBRARY_URL,
+						'site_url'                => site_url(),
 						'ajax_url'                => admin_url( 'admin-ajax.php' ),
 						'uri'                     => AST_BLOCK_TEMPLATES_URI,
 						'white_label_name'        => $this->get_white_label(),
@@ -466,8 +475,10 @@ if ( ! class_exists( 'Ast_Block_Templates' ) ) :
 						foreach ( $current_page_data as $site_id => $site_data ) {
 
 							// Replace `astra-sites-tag` with `tag`.
-							$site_data['tag'] = $site_data['astra-sites-tag'];
-							unset( $site_data['astra-sites-tag'] );
+							if ( isset( $site_data['astra-sites-tag'] ) ) {
+								$site_data['tag'] = $site_data['astra-sites-tag'];
+								unset( $site_data['astra-sites-tag'] );
+							}
 
 							// Replace `id-` from the site ID.
 							$site_data['ID'] = str_replace( 'id-', '', $site_id );
@@ -478,8 +489,10 @@ if ( ! class_exists( 'Ast_Block_Templates' ) ) :
 									$single_page = $page_data;
 
 									// Replace `astra-sites-tag` with `tag`.
-									$single_page['tag'] = $single_page['astra-sites-tag'];
-									unset( $single_page['astra-sites-tag'] );
+									if ( isset( $single_page['astra-sites-tag'] ) ) {
+										$single_page['tag'] = $single_page['astra-sites-tag'];
+										unset( $single_page['astra-sites-tag'] );
+									}
 
 									// Replace `id-` from the site ID.
 									$single_page['ID'] = str_replace( 'id-', '', $page_id );
