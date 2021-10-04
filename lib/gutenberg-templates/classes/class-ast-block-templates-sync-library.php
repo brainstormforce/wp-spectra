@@ -16,6 +16,15 @@ if ( ! class_exists( 'Ast_Block_Templates_Sync_Library' ) ) :
 	class Ast_Block_Templates_Sync_Library {
 
 		/**
+		 * Catch the latest checksums
+		 *
+		 * @since 1.1.0
+		 * @access public
+		 * @var string Last checksums.
+		 */
+		public $last_export_checksums;
+
+		/**
 		 * Instance
 		 *
 		 * @since 1.0.0
@@ -533,6 +542,7 @@ if ( ! class_exists( 'Ast_Block_Templates_Sync_Library' ) ) :
 				'ast_block_templates_get_blocks_count_args',
 				array(
 					'page_builder' => 'gutenberg',
+					'wireframe'    => 'yes',
 				)
 			);
 
@@ -694,6 +704,7 @@ if ( ! class_exists( 'Ast_Block_Templates_Sync_Library' ) ) :
 					'page_builder' => 'gutenberg',
 					'per_page'     => 100,
 					'page'         => $page,
+					'wireframe'    => 'yes',
 				)
 			);
 
