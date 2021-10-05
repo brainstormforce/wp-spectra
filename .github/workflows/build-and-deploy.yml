@@ -6,6 +6,9 @@ on:
     branches:
       - react-admin
 
+env:
+  PLUGIN_PATH: ${{ secrets.SSH_RC_PATH }}/wp-content/plugins/${{ github.event.repository.name }}/
+
 jobs:
   deploy:
     runs-on: ubuntu-latest
@@ -35,9 +38,10 @@ jobs:
     - name: Rsync Deployment
       uses: burnett01/rsync-deployments@4.1
       with:
-        switches: -avzr --delete
+        # switches: -avzr --delete
+        switches: -avzr
         path: ultimate-addons-for-gutenberg/
-        remote_path: ${{ secrets.SSH_RC_PATH }}
+        remote_path: ${{ env.PLUGIN_PATH }}
         remote_host: ${{ secrets.SSH_HOST }}
         remote_user: ${{ secrets.SSH_USER }}
         remote_key: ${{ secrets.SSH_KEY }}
