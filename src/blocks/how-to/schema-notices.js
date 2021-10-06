@@ -34,11 +34,22 @@ function SchemaNotices( props ) {
 	let steps_empty_item_flag = false;
 	steps.forEach( ( step ) => {
 		if (
-			'' === step.attributes.ctaLink ||
+			'uagb/how-to-step' !== step.name &&
+			( '' === step.attributes.ctaLink ||
 			'#' === step.attributes.ctaLink ||
 			'' === step.attributes.infoBoxTitle ||
 			'' === step.attributes.headingDesc ||
-			'' === step.attributes.iconImage?.url
+			'' === step.attributes.iconImage?.url )
+		) {
+			steps_empty_item_flag = true;
+		}
+
+		if ( 'uagb/how-to-step' === step.name &&
+		( '' === step.attributes.url ||
+		'#' === step.attributes.url ||
+		'' === step.attributes.name ||
+		'' === step.attributes.description ||
+		'' === step.attributes?.image?.url )
 		) {
 			steps_empty_item_flag = true;
 		}
@@ -113,7 +124,7 @@ function SchemaNotices( props ) {
 	}
 	if ( true === steps_empty_item_flag ) {
 		emptyItems.push(
-			'The Info Box Heading, Description, Image, Call To Action Link are required for each Step. '
+			'The Heading, Description, Image & Link are required for each Step. '
 		);
 	}
 	const listItems = emptyItems.map( ( item ) => (

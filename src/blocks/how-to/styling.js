@@ -107,6 +107,9 @@ function styling( props ) {
 		' .wp-block-uagb-info-box': {
 			'margin-bottom': generateCSSUnit( sGap, 'px' ),
 		},
+		' .uagb-how-to-step-wrap': {
+			'margin-bottom': generateCSSUnit( sGap, 'px' ),
+		},
 		' .block-editor-rich-text__editable.uagb-howto-timeNeeded-text': {
 			'font-family': priceFontFamily,
 			'font-style' : priceFontStyle,

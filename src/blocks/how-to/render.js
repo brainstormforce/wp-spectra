@@ -6,7 +6,7 @@ import { RichText, InnerBlocks } from '@wordpress/block-editor';
 import React, { useLayoutEffect } from 'react';
 import styles from './editor.lazy.scss';
 
-const ALLOWED_BLOCKS = [ 'uagb/info-box' ];
+const ALLOWED_BLOCKS = [ 'uagb/info-box', 'uagb/how-to-step' ];
 
 const Render = ( props ) => {
 	// Add and remove the CSS on the drop and remove of the component.
@@ -54,6 +54,7 @@ const Render = ( props ) => {
 			timeInYears,
 		},
 	} = props;
+	
 	const splitBlock = ( before, after, ...blocks ) => {
 		if ( after ) {
 			// Append "After" content as a new paragraph block to the end of
@@ -146,41 +147,26 @@ const Render = ( props ) => {
 
 	const minsValue = timeInMins ? timeInMins : time;
 
-	const getInfoBoxAsChild = [
+	const getStepAsChild = [
 		[
-			'uagb/info-box',
+			'uagb/how-to-step',
 			{
-				infoBoxTitle: 'Step 1',
-				iconimgPosition: 'left',
-				source_type: 'image',
-				showPrefix: false,
-				seperatorStyle: 'none',
-				ctaType: 'all',
-				headingTag: 'h4',
+				name: 'Step 1',
+				description:  __( 'Click here to change this text. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.', 'ultimate-addons-for-gutenberg' ),
 			},
 		],
 		[
-			'uagb/info-box',
+			'uagb/how-to-step',
 			{
-				infoBoxTitle: 'Step 2',
-				iconimgPosition: 'left',
-				source_type: 'image',
-				showPrefix: false,
-				seperatorStyle: 'none',
-				ctaType: 'all',
-				headingTag: 'h4',
+				name: 'Step 2',
+				description:  __( 'Click here to change this text. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.', 'ultimate-addons-for-gutenberg' ),
 			},
 		],
 		[
-			'uagb/info-box',
+			'uagb/how-to-step',
 			{
-				infoBoxTitle: 'Step 3',
-				iconimgPosition: 'left',
-				source_type: 'image',
-				showPrefix: false,
-				seperatorStyle: 'none',
-				ctaType: 'all',
-				headingTag: 'h4',
+				name: 'Step 3',
+				description:  __( 'Click here to change this text. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.', 'ultimate-addons-for-gutenberg' ),
 			},
 		],
 	];
@@ -525,7 +511,7 @@ const Render = ( props ) => {
 					onRemove={ () => onReplace( [] ) }
 				/>
 				<InnerBlocks
-					template={ getInfoBoxAsChild }
+					template={ getStepAsChild }
 					allowedBlocks={ ALLOWED_BLOCKS }
 				/>
 			</div>

@@ -56,6 +56,9 @@ class UAGB_Block_Module {
 		'how-to'             => array(
 			'dir' => 'how-to',
 		),
+		'how-to-step'        => array(
+			'dir' => 'how-to-step',
+		),
 		'icon-list'          => array(
 			'dir' => 'icon-list',
 		),

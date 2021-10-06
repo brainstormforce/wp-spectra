@@ -21,3 +21,56 @@
 		margin-left: 5px;
 	}
 }
+
+.uagb-step-link-all {
+	height: 100%;
+	width: 100%;
+	top: 0;
+	left: 0;
+	position: absolute;
+	z-index: 3;
+	box-shadow: none;
+	text-decoration: none;
+	color: inherit;
+}
+
+.uagb-how-to-step-wrap {
+	position: relative;
+	margin-top: 25px;
+}
+
+.uagb-step-image-content-wrap {
+
+	&.uag-image-position-left-title {
+		display: flex;
+
+		.uagb-how-to-step-image {
+			margin-right: 20px;
+		}
+	}
+
+	&.uag-image-position-right-title {
+		display: flex;
+		flex-direction: row-reverse;
+
+		.uagb-how-to-step-image {
+			margin-left: 20px;
+		}
+	}
+
+	&.uag-image-position-above-title {
+		display: block;
+
+		.uagb-how-to-step-image {
+			margin-bottom: 20px;
+		}
+	}
+
+	.uagb-step-link {
+		text-decoration: none !important;
+	}
+
+	.uagb-step-link:hover {
+		text-decoration: none !important;
+	}
+}

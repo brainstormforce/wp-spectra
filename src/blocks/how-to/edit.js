@@ -8,7 +8,8 @@ import './style.scss';
 import { compose } from '@wordpress/compose';
 import { withSelect } from '@wordpress/data';
 import lazyLoader from '@Controls/lazy-loader';
-import React, { useEffect, lazy, Suspense } from 'react';
+import React, { lazy, Suspense } from 'react';
+import { useState, useEffect } from '@wordpress/element';
 
 const Settings = lazy( () =>
 	import( /* webpackChunkName: "chunks/how-to/settings" */ './settings' )
@@ -17,9 +18,10 @@ const Render = lazy( () =>
 	import( /* webpackChunkName: "chunks/how-to/render" */ './render' )
 );
 
-let prevState;
-
 const HowToComponent = ( props ) => {
+
+	const [ prevState, setPrevState ] = useState( '' );
+
 	useEffect( () => {
 		// Replacement for componentDidMount.
 
@@ -38,12 +40,11 @@ const HowToComponent = ( props ) => {
 		);
 		document.head.appendChild( $style );
 
-		prevState = props.schemaJsonData;
+		setPrevState( props.schemaJsonData );
 	}, [] );
 
 	useEffect( () => {
 		// Replacement for componentDidUpdate.
-
 		if (
 			JSON.stringify( props.schemaJsonData ) !==
 			JSON.stringify( prevState )
@@ -52,7 +53,7 @@ const HowToComponent = ( props ) => {
 				schema: JSON.stringify( props.schemaJsonData ),
 			} );
 
-			prevState = props.schemaJsonData;
+			setPrevState( props.schemaJsonData );
 		}
 		const element = document.getElementById(
 			'uagb-how-to-schema-style-' + props.clientId.substr( 0, 8 )
@@ -201,22 +202,22 @@ export default compose(
 				jsonData.supply[ key ] = materialsData;
 			} );
 		}
-
+		
 		const getChildBlocks = select( 'core/block-editor' ).getBlocks(
 			ownProps.clientId
 		);
 
 		getChildBlocks.forEach( ( steps, key ) => {
-			stepsData = {
-				'@type': 'HowToStep',
-				'url': steps.attributes.ctaLink,
-				'name': steps.attributes.infoBoxTitle,
-				'text': steps.attributes.headingDesc,
-				'image': steps.attributes.iconImage.url,
-			};
-			jsonData.step[ key ] = stepsData;
-		} );
-
+			stepsData = {	
+					'@type': 'HowToStep',
+					'url': steps.attributes?.ctaLink || steps.attributes?.url,
+					'name': steps.attributes?.infoBoxTitle || steps.attributes?.name,
+					'text': steps.attributes?.headingDesc || steps.attributes?.description,
+					'image': steps.attributes?.iconImage?.url || steps.attributes?.image?.url
+			}
+			jsonData.step[key] = stepsData;
+		} );	
+		
 		return {
 			schemaJsonData: jsonData,
 			deviceType,

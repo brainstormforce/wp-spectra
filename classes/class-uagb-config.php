@@ -207,6 +207,9 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 					'uagb/how-to'                 => array(
 						'name' => 'how-to',
 					),
+					'uagb/how-to-step'            => array(
+						'name' => 'how-to-step',
+					),
 					'uagb/icon-list-child'        => array(
 						'name' => 'icon-list-child',
 					),

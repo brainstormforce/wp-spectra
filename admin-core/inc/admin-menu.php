@@ -261,6 +261,7 @@ class Admin_Menu {
 					'restaurant-menu-child',
 					'content-timeline-child',
 					'tabs-child',
+					'how-to-step',
 				);
 
 				if ( array_key_exists( 'extension', $info ) && $info['extension'] ) {

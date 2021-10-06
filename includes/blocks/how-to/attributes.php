@@ -73,13 +73,10 @@ return array(
 	'row_gap'                 => 20,
 	'step_gap'                => '',
 	'schema'                  => '',
-
 	'headTransform'           => '',
 	'headDecoration'          => '',
-
 	'subHeadTransform'        => '',
 	'subHeadDecoration'       => '',
-
 	'priceTransform'          => '',
 	'priceDecoration'         => '',
 );
