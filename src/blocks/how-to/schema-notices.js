@@ -67,7 +67,7 @@ function SchemaNotices( props ) {
 		mainimage.url === 'null' ||
 		mainimage.url === ''
 	) {
-		emptyItems.push( 'Image' );
+		emptyItems.push( 'Main Image' );
 	}
 	if (
 		true === showTotaltime &&

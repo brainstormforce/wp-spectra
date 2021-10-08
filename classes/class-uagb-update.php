@@ -72,6 +72,9 @@ if ( ! class_exists( 'UAGB_Update' ) ) :
 				return;
 			}
 
+			// Update How-To Block Old User Version.
+			$this->update_how_to_old_user_option();
+
 			// Create file if not present.
 			uagb_install()->create_files();
 
@@ -99,6 +102,18 @@ if ( ! class_exists( 'UAGB_Update' ) ) :
 
 			if ( UAGB_Helper::is_uag_dir_has_write_permissions() ) {
 				update_option( '_uagb_allow_file_generation', 'enabled' );
+			}
+		}
+
+		/**
+		 * Update How-to old user option by checking condition.
+		 *
+		 * @since x.x.x
+		 * @return void
+		 */
+		public function update_how_to_old_user_option() {
+			if ( version_compare( UAGB_VER, '2.0.0', '<' ) ) {
+				update_option( 'uagb-how-to-old-user', 'yes' );
 			}
 		}
 	}

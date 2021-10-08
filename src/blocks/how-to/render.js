@@ -6,7 +6,12 @@ import { RichText, InnerBlocks } from '@wordpress/block-editor';
 import React, { useLayoutEffect } from 'react';
 import styles from './editor.lazy.scss';
 
-const ALLOWED_BLOCKS = [ 'uagb/info-box', 'uagb/how-to-step' ];
+var ALLOWED_BLOCKS = [ 'uagb/how-to-step' ]; // eslint-disable-line no-var
+
+if ( 'yes' === uagb_blocks_info.uagb_how_to_old_user ) {
+
+	ALLOWED_BLOCKS = [ 'uagb/info-box', 'uagb/how-to-step' ];
+}
 
 const Render = ( props ) => {
 	// Add and remove the CSS on the drop and remove of the component.
