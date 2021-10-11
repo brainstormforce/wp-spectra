@@ -73,11 +73,11 @@ $selectors = array(
 	' .wp-block-uagb-info-box:last-child'                  => array(
 		'margin-bottom' => '0px',
 	),
-	' .uagb-how-to-step-wrap'                             => array(
+	' .uagb-how-to-step-wrap'                              => array(
 		'margin-bottom' => UAGB_Helper::get_css_value( $attr['step_gap'], 'px' ),
 	),
 
-	' .uagb-how-to-step-wrap:last-child'                  => array(
+	' .uagb-how-to-step-wrap:last-child'                   => array(
 		'margin-bottom' => '0px',
 	),
 	' span.uagb-howto__time-wrap .uagb-howto-timeNeeded-value' => array(

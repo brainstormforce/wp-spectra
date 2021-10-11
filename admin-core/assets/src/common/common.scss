@@ -28,6 +28,9 @@
 			text-decoration: none;
 			font-size: 14px;
 			margin: 0;
+			font-weight: var(--heading-weight-400);
+			font-family: var(--heading-font-family);
+			font-style: var(--heading-font-style);
 			padding: 10px 16px;
 			cursor: pointer;
 			-webkit-appearance: none;
@@ -38,33 +41,26 @@
 		}
 
 	}
-	// Headings CSS.
-	h1 {
-		font-family: var(--heading-font-family);
-		color: var(--heading-color);
-		font-weight: var(--heading-weight-500);
-		margin-bottom: 10px;
-		margin-top: 0;
-		line-height: normal;
-		text-transform: capitalize;
-	}
 
 	h2 {
 		font-family: var(--heading-font-family);
 		font-weight: var(--heading-weight-500);
 		font-size: 24px;
-		margin: 0 0 15px 0;
-		color: var(--heading-color);
-		line-height: 1.3em;
+		margin-bottom: 20px;
+		margin-top: 0;
+		color: var(--content-color);
+		line-height: 32px;
+
 	}
 
 	h3 {
 		margin: 0;
 		margin-bottom: 10px;
-		color: var(--heading-color);
+		color: var(--content-color);
 		font-family: var(--heading-font-family);
 		font-weight: var(--heading-weight-500);
 		font-size: 18px;
+		font-style: var(--heading-font-style);
 		line-height: 1.3em;
 	}
 
@@ -75,6 +71,7 @@
 	p {
 		color: var(--content-color);
 		font-family: var(--heading-font-family);
+		font-weight: var(--heading-weight-400);
 		font-size: 14px;
 		margin-top: 0;
 		margin-bottom: 20px;
@@ -87,8 +84,17 @@
 	}
 }
 
-a[href=""] {
-	display: none;
+.uag-user-info {
+	background: var(--background-light-color);
+	padding: 35px 0;
+	box-sizing: border-box;
+	width: 1200px;
+	margin: 0 auto;
+	max-width: 100%;
+
+	a[href=""] {
+		display: none;
+	}
 }
 
 .uag-button--primary:hover,
@@ -100,6 +106,7 @@ a[href=""] {
 
 .uag-button--primary {
 	border-width: 0;
+	border: 1px solid var(--accent-color);
 	background: var(--accent-color);
 	color: var(--background-light-color);
 }
@@ -107,7 +114,7 @@ a[href=""] {
 .uag-button--secondary {
 	color: var(--accent-color);
 	border: 1px solid var(--accent-color);
-	background: #f6f7f7;
+	background: #fff;
 	vertical-align: top;
 }
 
@@ -123,7 +130,9 @@ a[href=""] {
 	display: inline-flex;
 	color: #639102;
 	align-items: center;
-	font-weight: 500;
+	font-weight: var(--heading-weight-400);
+	font-family: var(--heading-font-family);
+	font-style: var(--heading-font-style);
 
 	img {
 		margin-left: 5px;
@@ -134,7 +143,9 @@ a[href=""] {
 .uag-control__status-no,
 .uag-control__status-disabled {
 	color: #f00;
-	font-weight: 500;
+	font-weight: var(--heading-weight-400);
+	font-family: var(--heading-font-family);
+	font-style: var(--heading-font-style);
 	display: inline-flex;
 	align-items: center;
 

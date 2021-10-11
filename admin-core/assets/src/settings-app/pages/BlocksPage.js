@@ -1,6 +1,5 @@
 import React from 'react';
 import { useStateValue } from '@Utils/StateProvider';
-import './BlocksPage.scss';
 import BlocksSettings from '@SettingsApp/components/blocks-page/BlocksSettings';
 import SettingPageSkeleton from '@Admin/settings-app/components/blocks-page/BlocksPageSkeleton';
 
@@ -15,14 +14,14 @@ function BlocksPage() {
 
 	if ( loading ) {
 		return (
-			<div className="uag-blocks-settings-metabox">
+			<div className="uag-user-info">
 				<SettingPageSkeleton />
 			</div>
 		);
 	}
 	return (
 		<>
-			<div className="uag-blocks-settings-metabox">
+			<div className="uag-user-info">
 				<BlocksSettings />
 			</div>
 		</>

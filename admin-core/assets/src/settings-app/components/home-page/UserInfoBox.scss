@@ -1,97 +1,131 @@
 .uag-user-info {
-	background: var(--background-light-color);
-	box-shadow: none;
-	padding: 35px;
-	display: -ms-grid;
-	display: grid;
-	-ms-grid-columns: 66% 33%;
-	grid-template-columns: 66% 32%;
-	row-gap: 25px;
-	column-gap: 25px;
-	box-sizing: border-box;
 
-	h3 {
-		font-size: 20px;
+	.uag-main-metabox {
+		display: -ms-grid;
+		display: grid;
+		-ms-grid-columns: 66% 33%;
+		grid-template-columns: 66% 32%;
+		row-gap: 25px;
+		column-gap: 25px;
+		margin-bottom: 25px;
 	}
 
 	.uag-metabox {
-		background-color: var(--metabox-background-color);
-		box-shadow: 0 3px 20px rgba(190, 190, 190, 0.15);
 		border-radius: 2px;
+		padding: 30px;
+		background-color: var(--metabox-background-color);
+
+		.uag-metabox__buttons {
+			column-gap: 25px;
+			display: flex;
+			justify-content: center;
+		}
+
+		h2 {
+			font-family: var(--heading-font-family);
+			font-style: var(--heading-font-style);
+			font-weight: var(--heading-weight-500);
+			font-size: 24px;
+			line-height: 32px;
+		}
+
+		iframe {
+			margin-bottom: 25px;
+		}
+	}
+
+	.uag-metabox__elements {
+		display: flex;
+		flex-direction: column;
+		row-gap: 25px;
+
+		.uag-metabox__element {
+			padding: 25px;
+			background-color: var(--metabox-background-color);
+
+			.uag-field {
+				display: flex;
+				justify-content: space-between;
+				margin-top: auto;
+			}
+
+			p {
+				font-style: var(--heading-font-style);
+				font-size: 13px;
+				line-height: 22px;
+				margin-bottom: 20px;
+			}
+
+			h3 {
+				margin-bottom: 5px;
+				line-height: 1.5;
+			}
+
+			a {
+				font-family: var(--heading-font-family);
+				font-style: var(--heading-font-style);
+				font-weight: var(--heading-weight-400);
+				font-size: 14px;
+				line-height: 13px;
+			}
+		}
+	}
+}
+
+.uag-metabox__wp-themes {
+	border-radius: 2px;
+	padding: 35px;
+	background-color: var(--metabox-background-color);
+	display: grid;
+	grid-template-columns: 37% 60%;
+	column-gap: 3%;
+
+	.uag-metabox__wp-theme-img {
+		background-image: url(./../../../../images/astra-starter-sites.jpg);
+		background-position: center;
+		background-repeat: no-repeat;
+		background-size: cover;
+		width: 100%;
+		height: 250px;
+	}
+
+	h2 {
+		font-family: var(--heading-font-family);
+		font-style: var(--heading-font-style);
+		font-weight: var(--heading-weight-500);
+		font-size: 24px;
+		line-height: 32px;
+		margin-bottom: 10px;
 	}
 
 	p {
-		line-height: 1.7;
-		max-width: 800px;
-		width: 100%;
+		font-family: var(--heading-font-family);
+		font-style: var(--heading-font-style);
+		font-weight: var(--heading-weight-400);
+		line-height: 26px;
+		margin-bottom: 30px;
+		font-size: 14px;
 	}
 
-	.uag-metabox__header {
-		flex: 1 0 0%;
-		display: flex;
-		flex-direction: column;
-		padding: 4%;
-
-		p {
-			margin-bottom: 0;
-			display: inline-block;
-		}
-
-		.uag-field {
-			padding-top: 15px;
-			display: flex;
-			justify-content: space-between;
-			margin-top: auto;
-		}
-	}
-
-	.uag-metabox__element {
-		flex: 1 0 0%;
-		display: flex;
-		flex-direction: column;
-		padding: 8%;
-
-		.uag-field {
-			display: flex;
-			justify-content: space-between;
-			margin-top: auto;
-		}
-	}
-
-	.uag-starter-site__elements {
+	.uag-metabox__stats {
+		width: 80%;
 		display: grid;
-		grid-template-columns: 40% 60%;
+		grid-template-columns: auto auto auto;
+		padding-bottom: 35px;
 
-		img {
-			height: auto;
-			max-width: 100%;
-			width: 100%;
-		}
+		.uag-metabox__stat {
 
-		.uag-starter-tmp__details {
-			padding: 6%;
-		}
+			span:not(:last-child) {
+				font-weight: var(--heading-weight-500);
+				font-size: 20px;
+				line-height: 33px;
+			}
 
-		.uag-starter-tmp__img {
-			background-image: url(./../../../../images/astra-starter-sites.jpg);
-			background-position: center;
-			background-repeat: no-repeat;
-			background-size: cover;
-		}
-	}
-
-	.uag-theme__metabox {
-		padding: 4%;
-
-		.uag-theme__cta {
-			display: flex;
-			flex-wrap: wrap;
-			column-gap: 15px;
-			row-gap: 10px;
-		}
-
-		p {
-			display: inline-block;
+			span {
+				font-weight: var(--heading-weight-400);
+				font-family: var(--heading-font-family);
+				font-style: var(--heading-font-style);
+			}
 		}
 	}
 }

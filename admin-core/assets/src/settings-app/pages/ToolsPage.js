@@ -1,4 +1,3 @@
-import './ToolsPage.scss';
 import ToolsPageSkeleton from '@Admin/settings-app/components/tools-page/ToolsPageSkeleton';
 import React from 'react';
 import { useStateValue } from '@Utils/StateProvider';
@@ -17,14 +16,14 @@ function ToolsPage() {
 
 	if ( loading ) {
 		return (
-			<div className="uag-global-settings-metabox">
+			<div className="uag-user-info">
 				<ToolsPageSkeleton />
 			</div>
 		);
 	}
 	currentTab = <VersionControl />;
 
-	return <div className="uag-global-settings-metabox">{ currentTab }</div>;
+	return <div className="uag-user-info">{ currentTab }</div>;
 }
 
 export default ToolsPage;

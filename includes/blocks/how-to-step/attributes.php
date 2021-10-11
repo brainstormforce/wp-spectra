@@ -31,15 +31,15 @@ return array(
 	'descriptionColor'          => '',
 	'urlColor'                  => '',
 
-	'urlFontStyle'          => '',
-	'urlTransform'          => '',
-	'urlDecoration'         => '',
+	'urlFontStyle'              => '',
+	'urlTransform'              => '',
+	'urlDecoration'             => '',
 
-	'titleFontStyle'          => '',
-	'titleTransform'          => '',
-	'titleDecoration'         => '',
+	'titleFontStyle'            => '',
+	'titleTransform'            => '',
+	'titleDecoration'           => '',
 
-	'descriptionFontStyle'          => '',
-	'descriptionTransform'          => '',
-	'descriptionDecoration'         => '',
+	'descriptionFontStyle'      => '',
+	'descriptionTransform'      => '',
+	'descriptionDecoration'     => '',
 );

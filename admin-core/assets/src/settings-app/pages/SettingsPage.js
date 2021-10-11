@@ -15,7 +15,7 @@ function SettingsPage() {
 
 	if ( loading ) {
 		return (
-			<div className="uag-global-settings-metabox">
+			<div className="uag-user-info">
 				<SettingsPageSkeleton />
 			</div>
 		);
@@ -23,7 +23,7 @@ function SettingsPage() {
 
 
 	return (
-		<div className="uag-global-settings-metabox">
+		<div className="uag-user-info">
 			<AssetsGeneration />
 			<TemplatesButton />
 		</div>

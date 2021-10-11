@@ -174,7 +174,7 @@ class Admin_Menu {
 
 		$admin_slug  = 'uag-admin';
 		$blocks_info = $this->get_blocks_info_for_activation_deactivation();
-		wp_enqueue_style( $admin_slug . '-font', 'https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap', array(), UAGB_VER );
+		wp_enqueue_style( $admin_slug . '-font', 'https://fonts.googleapis.com/css2?family=Inter:wght@400;500&display=swap', array(), UAGB_VER );
 		// Styles.
 
 		wp_enqueue_style( 'wp-components' );
@@ -184,24 +184,18 @@ class Admin_Menu {
 		$localize = apply_filters(
 			'uag_react_admin_localize',
 			array(
-				'current_user'              => ! empty( wp_get_current_user()->user_firstname ) ? wp_get_current_user()->user_firstname : wp_get_current_user()->display_name,
-				'admin_base_slug'           => $this->menu_slug,
-				'admin_base_url'            => admin_url(),
-				'current_theme'             => $theme->name,
-				'theme_file'                => file_exists( get_theme_root() . '/astra/functions.php' ),
-				'starter_template_activate' => is_plugin_active( 'astra-sites/astra-sites.php' ),
-				'starter_template_path'     => file_exists( ABSPATH . 'wp-content/plugins/astra-sites/astra-sites.php' ),
-				'plugin_dir'                => UAGB_URL,
-				'plugin_ver'                => UAGB_VER,
-				'logo_url'                  => UAGB_URL . 'admin-core/assets/images/uagb_logo.svg',
-				'admin_url'                 => admin_url( 'admin.php' ),
-				'ajax_url'                  => admin_url( 'admin-ajax.php' ),
-				'wp_pages_url'              => admin_url( 'post-new.php?post_type=page' ),
-				'home_slug'                 => $this->menu_slug,
-				'rollback_url'              => esc_url( add_query_arg( 'version', 'VERSION', wp_nonce_url( admin_url( 'admin-post.php?action=uag_rollback' ), 'uag_rollback' ) ) ),
-				'blocks_info'               => $blocks_info,
-				'reusable_url'              => esc_url( admin_url( 'edit.php?post_type=wp_block' ) ),
-				'is_main_site'              => is_main_site(),
+				'current_user'   => ! empty( wp_get_current_user()->user_firstname ) ? wp_get_current_user()->user_firstname : wp_get_current_user()->display_name,
+				'admin_base_url' => admin_url(),
+				'plugin_dir'     => UAGB_URL,
+				'plugin_ver'     => UAGB_VER,
+				'logo_url'       => UAGB_URL . 'admin-core/assets/images/uagb_logo.svg',
+				'admin_url'      => admin_url( 'admin.php' ),
+				'ajax_url'       => admin_url( 'admin-ajax.php' ),
+				'wp_pages_url'   => admin_url( 'post-new.php?post_type=page' ),
+				'home_slug'      => $this->menu_slug,
+				'rollback_url'   => esc_url( add_query_arg( 'version', 'VERSION', wp_nonce_url( admin_url( 'admin-post.php?action=uag_rollback' ), 'uag_rollback' ) ) ),
+				'blocks_info'    => $blocks_info,
+				'reusable_url'   => esc_url( admin_url( 'edit.php?post_type=wp_block' ) ),
 			)
 		);
 
