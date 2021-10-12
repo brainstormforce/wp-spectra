@@ -136,7 +136,7 @@ function UserInfoBox() {
 			<div className="uag-metabox__wp-themes">
 				<div className="uag-metabox__wp-theme-img"></div>
 				<div className="uag-metabox__wp-theme-info">
-					<h2>{__( 'Looking for a Customizable Wordpress theme?', 'ultimate-addons-for-gutenberg' )}</h2>
+					<h2>{__( 'Looking for a Customizable WordPress theme?', 'ultimate-addons-for-gutenberg' )}</h2>
 					<p>
 					{__( 'With 1 million+ installs, Astra is the most popular free WordPress theme. It is a Gutenberg compatible and offers plenty of customization options & features without affecting the speed and performance!',
 					'ultimate-addons-for-gutenberg' )}

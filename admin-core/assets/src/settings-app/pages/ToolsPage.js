@@ -2,7 +2,7 @@ import ToolsPageSkeleton from '@Admin/settings-app/components/tools-page/ToolsPa
 import React from 'react';
 import { useStateValue } from '@Utils/StateProvider';
 import VersionControl from '@SettingsApp/components/tools-page/VersionControl';
-
+import LoadFonts from '@SettingsApp/components/tools-page/LoadFonts';
 function ToolsPage() {
 	const [ { globaldata } ] = useStateValue();
 
@@ -12,8 +12,6 @@ function ToolsPage() {
 		loading = false;
 	}	
 
-	let currentTab = <p>Default Tab</p>;
-
 	if ( loading ) {
 		return (
 			<div className="uag-user-info">
@@ -21,9 +19,11 @@ function ToolsPage() {
 			</div>
 		);
 	}
-	currentTab = <VersionControl />;
 
-	return <div className="uag-user-info">{ currentTab }</div>;
+	return <div className="uag-user-info">
+				<VersionControl />
+				<LoadFonts/>
+			</div>;
 }
 
 export default ToolsPage;

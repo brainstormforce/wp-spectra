@@ -63,7 +63,7 @@ class UAGB_Install {
 				'base' => UAGB_UPLOAD_DIR . 'assets/css',
 			),
 			array(
-				'base' => UAGB_UPLOAD_DIR . 'fonts',
+				'base' => UAGB_UPLOAD_DIR . 'assets/fonts',
 			),
 		);
 

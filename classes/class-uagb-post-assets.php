@@ -118,6 +118,35 @@ class UAGB_Post_Assets {
 	public $gfonts = array();
 
 	/**
+	 * Google fonts preload files
+	 *
+	 * @var array
+	 */
+	public $gfonts_files = array();
+
+	/**
+	 * Google fonts url to enqueue
+	 *
+	 * @var string
+	 */
+	public $gfonts_url = '';
+
+
+	/**
+	 * Load Google fonts locally
+	 *
+	 * @var string
+	 */
+	public $load_gfonts_locally = '';
+
+	/**
+	 * Preload google fonts files from local
+	 *
+	 * @var string
+	 */
+	public $preload_local_fonts = '';
+
+	/**
 	 * Static CSS Added Array
 	 *
 	 * @since 1.23.0
@@ -177,6 +206,10 @@ class UAGB_Post_Assets {
 			$this->file_generation              = UAGB_Helper::$file_generation;
 			$this->is_allowed_assets_generation = $this->allow_assets_generation();
 		}
+
+		// Set other options.
+		$this->load_gfonts_locally = UAGB_Admin_Helper::get_admin_settings_option( 'uag_load_gfonts_locally', 'disabled' );
+		$this->preload_local_fonts = UAGB_Admin_Helper::get_admin_settings_option( 'uag_preload_local_fonts', 'disabled' );
 
 		if ( $this->is_allowed_assets_generation ) {
 			global $post;
@@ -258,6 +291,8 @@ class UAGB_Post_Assets {
 		$this->stylesheet          = $page_assets['css'];
 		$this->script              = $page_assets['js'];
 		$this->gfonts              = $page_assets['gfonts'];
+		$this->gfonts_files        = $page_assets['gfonts_files'];
+		$this->gfonts_url          = $page_assets['gfonts_url'];
 		$this->uag_faq_layout      = $page_assets['uag_faq_layout'];
 		$this->assets_file_handler = array_merge( $css_asset_info, $js_asset_info );
 
@@ -279,6 +314,10 @@ class UAGB_Post_Assets {
 
 		// UAG Flag specific.
 		if ( $this->is_allowed_assets_generation ) {
+
+			// Prepare font css and files.
+			$this->generate_fonts();
+
 			$this->generate_assets();
 			$this->generate_asset_files();
 		}
@@ -291,12 +330,12 @@ class UAGB_Post_Assets {
 			// Enqueue all dependency assets.
 			$this->enqueue_blocks_dependency_frontend();
 
-			// RTL Styles Suppport.
+			// RTL Styles Support.
 			UAGB_Scripts_Utils::enqueue_blocks_rtl_styles();
 
 			if ( $this->load_uag_fonts ) {
-				// Print google fonts.
-				add_action( 'wp_head', array( $this, 'print_google_fonts' ), 120 );
+				// Render google fonts.
+				$this->render_google_fonts();
 			}
 
 			if ( 'enabled' === $this->file_generation ) {
@@ -345,6 +384,8 @@ class UAGB_Post_Assets {
 			'uag_flag'           => $this->uag_flag,
 			'uag_version'        => UAGB_ASSET_VER,
 			'gfonts'             => $this->gfonts,
+			'gfonts_url'         => $this->gfonts_url,
+			'gfonts_files'       => $this->gfonts_files,
 			'uag_faq_layout'     => $this->uag_faq_layout,
 		);
 
@@ -486,6 +527,130 @@ class UAGB_Post_Assets {
 
 	}
 
+	/**
+	 * Generate google fonts link and font files
+	 *
+	 * @since x.x.x
+	 *
+	 * @return void
+	 */
+	public function generate_fonts() {
+
+		if ( ! $this->load_uag_fonts || empty( $this->gfonts ) ) {
+			return;
+		}
+
+		$fonts_link = '';
+		$fonts_attr = '';
+		$extra_attr = '';
+		$fonts_slug = array();
+
+		// Sort key for same md5 id while loading native fonts.
+		ksort( $this->gfonts );
+
+		foreach ( $this->gfonts as $key => $gfont_values ) {
+			if ( ! empty( $fonts_attr ) ) {
+				$fonts_attr .= '|'; // Append a new font to the string.
+			}
+			$fonts_attr  .= str_replace( ' ', '+', $gfont_values['fontfamily'] );
+			$fonts_slug[] = sanitize_key( str_replace( ' ', '-', strtolower( $gfont_values['fontfamily'] ) ) );
+
+			if ( ! empty( $gfont_values['fontvariants'] ) ) {
+				$fonts_attr .= ':';
+				$fonts_attr .= implode( ',', $gfont_values['fontvariants'] );
+			}
+		}
+
+		$subsets = apply_filters( 'uag_font_subset', array() );
+
+		if ( ! empty( $subsets ) ) {
+			$extra_attr .= '&subset=' . implode( ',', $subsets );
+		} else {
+			$extra_attr .= '&subset=latin';
+		}
+
+		$display = apply_filters( 'uag_font_disaply', 'fallback' );
+
+		if ( ! empty( $display ) ) {
+			$extra_attr .= '&display=' . $display;
+		}
+
+		if ( isset( $fonts_attr ) && ! empty( $fonts_attr ) ) {
+
+			// link without https protocol.
+			$fonts_link = '//fonts.googleapis.com/css?family=' . esc_attr( $fonts_attr ) . $extra_attr;
+
+			if ( 'enabled' === $this->load_gfonts_locally ) {
+
+				// Include the font loader file.
+				require_once UAGB_DIR . 'lib/uagb-webfont/uagb-webfont-loader.php';
+
+				// link with https protocol to download fonts.
+				$fonts_link = 'https:' . $fonts_link;
+
+				$fonts_data = uagb_get_webfont_remote_styles( $fonts_link );
+
+				$this->stylesheet = $fonts_data . $this->stylesheet;
+
+				if ( 'enabled' === $this->preload_local_fonts ) {
+
+					$font_files = uagb_get_preload_local_fonts( $fonts_link );
+
+					if ( is_array( $font_files ) && ! empty( $font_files ) ) {
+						foreach ( $font_files as $file_data ) {
+
+							if ( isset( $file_data['font_family'] ) && in_array( $file_data['font_family'], $fonts_slug, true ) ) {
+
+								$this->gfonts_files[ $file_data['font_family'] ] = $file_data['font_url'];
+							}
+						}
+					}
+				}
+			}
+
+			// Set fonts url.
+			$this->gfonts_url = $fonts_link;
+		}
+
+		/* Update page assets */
+		$this->update_page_assets();
+	}
+
+	/**
+	 * Load the Google Fonts.
+	 */
+	public function render_google_fonts() {
+
+		if ( empty( $this->gfonts ) || empty( $this->gfonts_url ) ) {
+			return;
+		}
+
+		$show_google_fonts = apply_filters( 'uagb_blocks_show_google_fonts', true );
+
+		if ( ! $show_google_fonts ) {
+			return;
+		}
+
+		// Load remote google fonts if local font is disabled.
+		if ( 'disabled' === $this->load_gfonts_locally ) {
+
+			// Enqueue google fonts.
+			wp_enqueue_style( 'uag-google-fonts', $this->gfonts_url, array(), UAGB_VER, 'all' );
+
+		} else {
+
+			// Preload woff files local font preload is enabled.
+			if ( 'enabled' === $this->preload_local_fonts ) {
+
+				if ( is_array( $this->gfonts_files ) && ! empty( $this->gfonts_files ) ) {
+
+					foreach ( $this->gfonts_files as $gfont_file_url ) {
+						echo '<link rel="preload" href="' . esc_url( $gfont_file_url ) . '" as="font" type="font/woff2">'; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+					}
+				}
+			}
+		}
+	}
 
 	/**
 	 * Load the front end Google Fonts.
@@ -811,12 +976,20 @@ class UAGB_Post_Assets {
 			$file_name = $old_file_name;
 		}
 
-		// Create a new file.
-		$result = $file_system->put_contents( $uploads_dir['path'] . 'assets/' . $type . '/' . $file_name, $file_data, FS_CHMOD_FILE );
+		$base_file_path = $uploads_dir['path'] . 'assets/' . $type . '/';
+		$file_path      = $uploads_dir['path'] . 'assets/' . $type . '/' . $file_name;
 
-		if ( $result ) {
-			// Update meta with current timestamp.
-			update_post_meta( $this->post_id, '_uag_' . $type . '_file_name', $file_name );
+		$result = false;
+
+		if ( wp_mkdir_p( $base_file_path ) ) {
+
+			// Create a new file.
+			$result = $file_system->put_contents( $file_path, $file_data, FS_CHMOD_FILE );
+
+			if ( $result ) {
+				// Update meta with current timestamp.
+				update_post_meta( $this->post_id, '_uag_' . $type . '_file_name', $file_name );
+			}
 		}
 
 		return $result;

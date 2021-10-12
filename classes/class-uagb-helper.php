@@ -757,26 +757,34 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 		 * @since 1.23.0
 		 * @return string
 		 */
-		public static function delete_all_uag_dir_files() {
+		public static function delete_uag_asset_dir() {
 
-			$dir           = self::get_uag_upload_dir_path();
-			$wp_filesystem = uagb_filesystem();
-			$filelist      = $wp_filesystem->dirlist( $dir, true );
-			$retval        = true;
+			// Build the paths.
+			$base_path = self::get_uag_upload_dir_path();
 
-			if ( is_array( $filelist ) ) {
+			$paths_to_delete = array(
+				$base_path . 'assets/fonts',
+				$base_path . 'assets/css',
+				$base_path . 'assets/js',
 
-				unset( $filelist['index.html'] );
-				unset( $filelist['custom-style-blocks.css'] );
+			);
 
-				foreach ( $filelist as $filename => $fileinfo ) {
-					if ( ! $wp_filesystem->delete( $dir . $filename, true, $fileinfo['type'] ) ) {
-						$retval = false;
-					}
+			foreach ( $paths_to_delete as $path ) {
+
+				// Check the dir if it exists or not.
+				if ( file_exists( $path ) ) {
+
+					$wp_filesystem = uagb_filesystem();
+
+					// Remove the directory.
+					$wp_filesystem->rmdir( $path, true );
 				}
 			}
 
-			return $retval;
+			// Create empty files.
+			uagb_install()->create_files();
+
+			return true;
 		}
 
 		/**

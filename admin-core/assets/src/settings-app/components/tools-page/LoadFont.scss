@@ -1,0 +1,64 @@
+.uag-font-setting__elements {
+	display: grid;
+	grid-template-columns: 49% 49%;
+	row-gap: 25px;
+	column-gap: 25px;
+	margin-bottom: 35px;
+
+	.uag-font-setting__element {
+		box-shadow: 0 3px 20px rgba(190, 190, 190, 0.15);
+		display: flex;
+		flex-direction: column;
+		border-radius: 2px;
+		background: var(--metabox-background-color);
+
+		.uag-field {
+			padding: 25px 25px 15px 25px;
+		}
+
+		p {
+			padding: 0 25px;
+		}
+
+		.uag-local-font-settings {
+			background: var(--metabox-background-color);
+			display: flex;
+			margin-top: auto;
+			padding: 20px 25px;
+			column-gap: 20px;
+			justify-content: space-between;
+			align-items: center;
+
+			h3 {
+				margin-bottom: 0;
+			}
+
+			.uag-field {
+				padding: 0;
+			}
+		}
+
+		.uag-font-setting-button.disable {
+			pointer-events: none;
+			opacity: 0.4;
+			border-top: 1px solid #dfe3e7;
+		}
+
+		.uag-font-setting-button {
+			border-top: 1px solid #eee;
+			background-color: #f6f7f7;
+			margin-top: auto;
+			column-gap: 20px;
+			justify-content: space-between;
+			padding: 20px 25px;
+
+			.uag-field {
+				padding: 0;
+			}
+
+			h3 {
+				margin-bottom: 0;
+			}
+		}
+	}
+}

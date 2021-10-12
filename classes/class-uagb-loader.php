@@ -92,9 +92,14 @@ if ( ! class_exists( 'UAGB_Loader' ) ) {
 				define( 'UAGB_UPLOAD_DIR_NAME', 'uag-plugin' );
 			}
 
+			$upload_dir = wp_upload_dir( null, false );
+
 			if ( ! defined( 'UAGB_UPLOAD_DIR' ) ) {
-				$upload_dir = wp_upload_dir( null, false );
 				define( 'UAGB_UPLOAD_DIR', $upload_dir['basedir'] . '/' . UAGB_UPLOAD_DIR_NAME . '/' );
+			}
+
+			if ( ! defined( 'UAGB_UPLOAD_URL' ) ) {
+				define( 'UAGB_UPLOAD_URL', $upload_dir['baseurl'] . '/' . UAGB_UPLOAD_DIR_NAME . '/' );
 			}
 
 			define( 'UAGB_ASSET_VER', get_option( '__uagb_asset_version', UAGB_VER ) );

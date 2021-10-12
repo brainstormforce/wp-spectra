@@ -76,7 +76,6 @@
 			font-style: var(--heading-font-style);
 			font-weight: var(--heading-weight-500);
 			font-size: 14px;
-			line-height: 13px;
 		}
 
 		.uag-block-cat {
@@ -96,8 +95,8 @@
 			text-transform: uppercase;
 		}
 
-		.uag-block-cat a:active,
-		.uag-block-cat a:hover {
+		.uag-block-cat:active,
+		.uag-block-cat:hover {
 			color: var(--link-color);
 		}
 
@@ -131,6 +130,7 @@
 			color: #3c434a;
 			padding: 25px 15px;
 			width: 100%;
+			font-weight: var(--heading-weight-500);
 
 			&.disabled {
 				color: #666;
