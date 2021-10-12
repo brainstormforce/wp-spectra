@@ -139,7 +139,7 @@ const Settings = ( props ) => {
 		countDecoration,
 		listDecoration,
 	} = attributes;
-
+	
 	const taxonomy_list_setting = showEmptyTaxonomy ? taxonomyList : termsList;
 	const taxonomyListOptions = [
 		{
@@ -264,9 +264,21 @@ const Settings = ( props ) => {
 	);
 
 	const onSelectPostType = ( value ) => {
-		setAttributes( { postType: value } );
-		setAttributes( { categories: '' } );
-		setAttributes( { taxonomyType: '' } );
+		jQuery.ajax( {
+			url: uagb_blocks_info.ajax_url,
+			data: {
+				action: 'uagb_get_taxonomy',
+				nonce: uagb_blocks_info.uagb_ajax_nonce
+			},
+			dataType: 'json',
+			type: 'POST',
+			success( data ) {
+				setAttributes( { listInJson: data } );
+				setAttributes( { postType: value } );
+				setAttributes( { categories: '' } );
+				setAttributes( { taxonomyType: '' } );
+			},
+		} )
 	};
 
 	const onSelectTaxonomyType = ( value ) => {
@@ -286,7 +298,7 @@ const Settings = ( props ) => {
 		return (
 			<PanelBody
 				title={ __( 'Layout', 'ultimate-addons-for-gutenberg' ) }
-				initialOpen={ true }
+				initialOpen={ false }
 			>
 				<MultiButtonsControl
 					setAttributes={ setAttributes }
@@ -549,7 +561,7 @@ const Settings = ( props ) => {
 		return (
 			<PanelBody
 				title={ __( 'Query', 'ultimate-addons-for-gutenberg' ) }
-				initialOpen={ false }
+				initialOpen={ true }
 			>
 				<SelectControl
 					label={ __( 'Post Type', 'ultimate-addons-for-gutenberg' ) }
@@ -1198,8 +1210,8 @@ const Settings = ( props ) => {
 		<InspectorControls>
 			<InspectorTabs>
 				<InspectorTab { ...UAGTabs.general }>
-					{ generalPanel() }
 					{ postQueryPanel() }
+					{ generalPanel() }
 				</InspectorTab>
 				<InspectorTab { ...UAGTabs.style }>
 					{ 'grid' === layout &&

@@ -69,6 +69,10 @@ if ( ! class_exists( 'UAGB_Taxonomy_List' ) ) {
 						'block_id'                   => array(
 							'type' => 'string',
 						),
+						'listInJson'                 => array(
+							'type'    => 'object',
+							'default' => null,
+						),
 						'postType'                   => array(
 							'type'    => 'string',
 							'default' => 'post',

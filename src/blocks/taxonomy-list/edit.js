@@ -4,7 +4,7 @@
 
 import styling from './styling';
 import React, { lazy, Suspense, useEffect } from 'react';
-
+import jQuery from 'jquery';
 import lazyLoader from '@Controls/lazy-loader';
 
 const Settings = lazy( () =>
@@ -106,6 +106,20 @@ const UAGBTaxonomyList = ( props ) => {
 				} );
 			}
 		}
+
+		jQuery.ajax( {
+			url: uagb_blocks_info.ajax_url,
+			data: {
+				action: 'uagb_get_taxonomy',
+				nonce: uagb_blocks_info.uagb_ajax_nonce
+			},
+			dataType: 'json',
+			type: 'POST',
+			success( data ) {
+				props.setAttributes( { listInJson: data } );
+			},
+		} )
+
 	}, [] );
 
 	useEffect( () => {
@@ -129,6 +143,7 @@ const UAGBTaxonomyList = ( props ) => {
 };
 
 export default withSelect( ( select, props ) => {
+	
 	const {
 		postsToShow,
 		order,
@@ -136,45 +151,46 @@ export default withSelect( ( select, props ) => {
 		postType,
 		taxonomyType,
 		showEmptyTaxonomy,
+		listInJson
 	} = props.attributes;
-	const { getEntityRecords } = select( 'core' );
+	
 	const { __experimentalGetPreviewDeviceType = null } = select(
 		'core/edit-post'
 	);
-
 	const deviceType = __experimentalGetPreviewDeviceType
 		? __experimentalGetPreviewDeviceType()
 		: null;
+	
+		const allTaxonomy = ( null !== listInJson ) ? listInJson.data : '';
+		const currentTax = ( '' !== allTaxonomy ) ? allTaxonomy[ postType ] : 'undefined';
 
-	const allTaxonomy = uagb_blocks_info.taxonomy_list;
-	const currentTax = allTaxonomy[ postType ];
+		const listToShowTaxonomy = showEmptyTaxonomy
+			? 'with_empty_taxonomy'
+			: 'without_empty_taxonomy';
 
-	const listToShowTaxonomy = showEmptyTaxonomy
-		? 'with_empty_taxonomy'
-		: 'without_empty_taxonomy';
-
-	let categoriesList = [];
-	if ( 'undefined' !== typeof currentTax ) {
-		if (
-			'undefined' !== typeof currentTax[ listToShowTaxonomy ] &&
-			'undefined' !==
-				typeof currentTax[ listToShowTaxonomy ][ taxonomyType ]
-		) {
-			categoriesList = currentTax[ listToShowTaxonomy ][ taxonomyType ];
+		let categoriesList = [];
+		if ( 'undefined' !== typeof currentTax ) {
+			if (
+				'undefined' !== typeof currentTax[ listToShowTaxonomy ] &&
+				'undefined' !==
+					typeof currentTax[ listToShowTaxonomy ][ taxonomyType ]
+			) {
+				categoriesList = currentTax[ listToShowTaxonomy ][ taxonomyType ];
+			}
 		}
-	}
-	const latestPostsQuery = {
-		order,
-		orderby: orderBy,
-		per_page: postsToShow,
-	};
-
-	return {
-		latestPosts: getEntityRecords( 'postType', postType, latestPostsQuery ),
-		categoriesList,
-		taxonomyList:
-			'undefined' !== typeof currentTax ? currentTax.taxonomy : [],
-		termsList: 'undefined' !== typeof currentTax ? currentTax.terms : [],
-		deviceType,
-	};
+	
+		const latestPostsQuery = {
+			order,
+			orderby: orderBy,
+			per_page: postsToShow,
+		};
+		const { getEntityRecords } = select( 'core' );
+		return {
+			latestPosts: getEntityRecords( 'postType', postType, latestPostsQuery ),
+			categoriesList,
+			taxonomyList:
+				'undefined' !== typeof currentTax ? currentTax.taxonomy : [],
+			termsList: 'undefined' !== typeof currentTax ? currentTax.terms : [],
+			deviceType,
+		};
 } )( UAGBTaxonomyList );
