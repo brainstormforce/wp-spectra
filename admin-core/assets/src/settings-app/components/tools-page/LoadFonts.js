@@ -109,7 +109,7 @@ function LoadFonts() {
 						/>
 					</div>
 					<p>{ __( 'Enable the "Load Google Fonts Locally" option to serve Google fonts from your server (locally). It will simply download the selected Google fonts and host those Google fonts locally on your WordPress site.', 'ultimate-addons-for-gutenberg' ) }</p>
-					<p>{ __( 'Also, enable "Preload Local Fonts" to preload font files. It will load the fonts file right away on page load.', 'ultimate-addons-for-gutenberg' ) }</p>
+					<p>{ __( 'Also, enable "Preload Local Fonts" to preload font files. It will load the font files right away on page load.', 'ultimate-addons-for-gutenberg' ) }</p>
 					<div className={`uag-font-setting-button ${'disabled' === options.load_gfonts_locally ? 'disable' : ''}`}>
 						<SettingTable settings={ enablePreloadLocalFonts } />
 					</div>

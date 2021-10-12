@@ -78,6 +78,7 @@ $selectors = array(
 	),
 	' .uagb-testimonial__wrap.uagb-tm__bg-type-image .uagb-tm__overlay' => array(
 		'background-color' => $attr['backgroundImageColor'],
+		'opacity'          => ( isset( $attr['backgroundOpacity'] ) && '' !== $attr['backgroundOpacity'] && 101 !== $attr['backgroundOpacity'] ) ? ( ( 100 - $attr['backgroundOpacity'] ) / 100 ) : '',
 	),
 	' .uagb-testimonial__wrap .uagb-tm__content'       => array(
 		'border-color'  => $attr['borderColor'],

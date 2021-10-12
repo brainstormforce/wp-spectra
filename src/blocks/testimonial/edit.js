@@ -12,12 +12,19 @@ const Render = lazy( () =>
 );
 import { withSelect } from '@wordpress/data';
 
+import hexToRGBA from '@Controls/hexToRgba';
+
+import maybeGetColorForVariable from '@Controls/maybeGetColorForVariable';
+
 const UAGBtestimonial = ( props ) => {
 	useEffect( () => {
-		// Assigning block_id in the attribute.
-		props.setAttributes( { block_id: props.clientId.substr( 0, 8 ) } );
 
-		props.setAttributes( { classMigrate: true } );
+		const { setAttributes, attributes } = props;
+
+		// Assigning block_id in the attribute.
+		setAttributes( { block_id: props.clientId.substr( 0, 8 ) } );
+
+		setAttributes( { classMigrate: true } );
 
 		// Pushing Style tag for this block css.
 		const $style = document.createElement( 'style' );
@@ -38,38 +45,47 @@ const UAGBtestimonial = ( props ) => {
 			paddingBottom,
 			paddingLeft,
 			paddingRight,
-		} = props.attributes;
+			backgroundOpacity,
+			backgroundImageColor
+		} = attributes;
 
 		if ( imgVrPadding ) {
 			if ( ! imgpaddingTop ) {
-				props.setAttributes( { imgpaddingTop: imgVrPadding } );
+				setAttributes( { imgpaddingTop: imgVrPadding } );
 			}
 			if ( ! imgpaddingBottom ) {
-				props.setAttributes( { imgpaddingBottom: imgVrPadding } );
+				setAttributes( { imgpaddingBottom: imgVrPadding } );
 			}
 		}
 		if ( imgHrPadding ) {
 			if ( ! imgpaddingRight ) {
-				props.setAttributes( { imgpaddingRight: imgHrPadding } );
+				setAttributes( { imgpaddingRight: imgHrPadding } );
 			}
 			if ( ! imgpaddingLeft ) {
-				props.setAttributes( { imgpaddingLeft: imgHrPadding } );
+				setAttributes( { imgpaddingLeft: imgHrPadding } );
 			}
 		}
 		if ( contentPadding ) {
 			if ( ! paddingTop ) {
-				props.setAttributes( { paddingTop: contentPadding } );
+				setAttributes( { paddingTop: contentPadding } );
 			}
 			if ( ! paddingBottom ) {
-				props.setAttributes( { paddingBottom: contentPadding } );
+				setAttributes( { paddingBottom: contentPadding } );
 			}
 			if ( ! paddingLeft ) {
-				props.setAttributes( { paddingLeft: contentPadding } );
+				setAttributes( { paddingLeft: contentPadding } );
 			}
 			if ( ! paddingRight ) {
-				props.setAttributes( { paddingRight: contentPadding } );
+				setAttributes( { paddingRight: contentPadding } );
 			}
 		}
+
+		if ( 101 !== backgroundOpacity ) {
+			const color = hexToRGBA( maybeGetColorForVariable( backgroundImageColor ), backgroundOpacity );
+			setAttributes( { backgroundImageColor: color } );
+			setAttributes( { backgroundOpacity: 101 } );
+		}
+
 	}, [] );
 
 	useEffect( () => {

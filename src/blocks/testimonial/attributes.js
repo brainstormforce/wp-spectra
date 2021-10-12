@@ -335,7 +335,6 @@ const attributes = {
 	},
 	backgroundOpacity: {
 		type: 'number',
-		default: 50,
 	},
 	stack: {
 		type: 'string',
@@ -370,6 +369,7 @@ const attributes = {
 	},
 	overlayType: {
 		type: 'string',
+		default: 'color',
 	},
 	backgroundAttachment: {
 		type: 'string',

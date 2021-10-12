@@ -508,6 +508,7 @@ const Settings = ( props ) => {
 		);
 	};
 	const backgroundStyle = () => {
+		
 		return (
 			<PanelBody
 				title={ __( 'Background', 'ultimate-addons-for-gutenberg' ) }

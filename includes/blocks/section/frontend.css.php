@@ -94,10 +94,15 @@ if ( isset( $attr['contentWidth'] ) ) {
 	}
 }
 
+$video_opacity = 0.5;
+if ( isset( $attr['backgroundVideoOpacity'] ) && '' !== $attr['backgroundVideoOpacity'] ) {
+	$video_opacity = ( 1 < $attr['backgroundVideoOpacity'] ) ? ( ( 100 - $attr['backgroundVideoOpacity'] ) / 100 ) : ( ( 1 - $attr['backgroundVideoOpacity'] ) );
+}
+
 $selectors = array(
 	'.uagb-section__wrap'          => $style,
 	' > .uagb-section__video-wrap' => array(
-		'opacity' => ( isset( $attr['backgroundVideoOpacity'] ) && '' !== $attr['backgroundVideoOpacity'] ) ? ( ( 100 - $attr['backgroundVideoOpacity'] ) / 100 ) : 0.5,
+		'opacity' => $video_opacity,
 	),
 	' > .uagb-section__inner-wrap' => array(
 		'max-width' => $inner_width,
@@ -119,6 +124,7 @@ if ( 'video' === $bg_type ) {
 	if ( 'color' === $overlay_type ) {
 		$selectors[' > .uagb-section__overlay'] = array(
 			'background-color' => $attr['backgroundImageColor'],
+			'opacity'          => ( isset( $attr['backgroundOpacity'] ) && '' !== $attr['backgroundOpacity'] && 101 !== $attr['backgroundOpacity'] ) ? $attr['backgroundOpacity'] / 100 : '',
 		);
 	} else {
 		$selectors[' > .uagb-section__overlay']['background-color'] = 'transparent';

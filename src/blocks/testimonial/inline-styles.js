@@ -53,7 +53,6 @@ function testimonialStyle( props ) {
 		backgroundSize,
 		backgroundRepeat,
 		backgroundImageColor,
-		backgroundOpacity,
 		gradientColor1,
 		gradientColor2,
 		gradientLocation1,
@@ -220,10 +219,6 @@ function testimonialStyle( props ) {
 		},
 		' .uagb-testimonial__wrap.uagb-tm__bg-type-image .uagb-tm__overlay': {
 			'background-color': backgroundImageColor,
-			'opacity':
-				typeof backgroundOpacity !== 'undefined'
-					? ( 100 - backgroundOpacity ) / 100
-					: 0.5,
 		},
 		' ul.slick-dots li button:before': {
 			'color': arrowColor,
@@ -412,11 +407,7 @@ function testimonialStyle( props ) {
 	};
 	if ( 'gradient' === backgroundType ) {
 		selectors[ ' .uagb-tm__content' ][ 'background-color' ] = 'transparent';
-		selectors[ ' .uagb-tm__content' ].opacity =
-			typeof backgroundOpacity !== 'undefined'
-				? backgroundOpacity / 100
-				: '';
-
+		
 		if ( gradientValue ) {
 			selectors[ ' .uagb-tm__content' ][
 				'background-image'

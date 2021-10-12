@@ -1,5 +1,4 @@
 import { __ } from '@wordpress/i18n';
-import Range from '@Components/range/Range.js';
 import AdvancedPopColorControl from '@Components/color-control/advanced-pop-color-control.js';
 import { SelectControl } from '@wordpress/components';
 import styles from './editor.lazy.scss';
@@ -29,8 +28,8 @@ const Background = ( props ) => {
 		backgroundVideoType,
 		backgroundType,
 		backgroundVideo,
-		backgroundVideoOpacity,
 		backgroundVideoColor,
+		onOpacityChange
 	} = props;
 
 	const onRemoveImage = () => {
@@ -414,29 +413,7 @@ const Background = ( props ) => {
 									[ backgroundVideoColor.label ]: value,
 								} )
 							}
-						/>
-					</div>
-				) }
-			{ 'video' === backgroundType.value &&
-				backgroundVideo.value &&
-				backgroundVideoType.value && (
-					<div className="uag-background-video-opacity">
-						<Range
-							label={ __(
-								'Opacity',
-								'ultimate-addons-for-gutenberg'
-							) }
-							value={ backgroundVideoOpacity.value }
-							onChange={ ( val ) =>
-								setAttributes( {
-									[ backgroundVideoOpacity.label ]: parseInt(
-										val
-									),
-								} )
-							}
-							min={ 0 }
-							max={ 100 }
-							displayUnit={ false }
+							onOpacityChange={onOpacityChange}
 						/>
 					</div>
 				) }

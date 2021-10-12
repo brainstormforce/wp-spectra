@@ -15,6 +15,10 @@ const Render = lazy( () =>
 
 import { withSelect } from '@wordpress/data';
 
+import hexToRGBA from '@Controls/hexToRgba';
+
+import maybeGetColorForVariable from '@Controls/maybeGetColorForVariable';
+
 const UAGBSectionEdit = ( props ) => {
 	useEffect( () => {
 		const element = document.getElementById(
@@ -27,10 +31,15 @@ const UAGBSectionEdit = ( props ) => {
 	}, [ props ] );
 
 	useEffect( () => {
-		// Assigning block_id in the attribute.
-		props.setAttributes( { block_id: props.clientId.substr( 0, 8 ) } );
 
-		props.setAttributes( { classMigrate: true } );
+		const { setAttributes, attributes } = props;
+
+		const { backgroundOpacity, backgroundImageColor } = attributes;
+
+		// Assigning block_id in the attribute.
+		setAttributes( { block_id: props.clientId.substr( 0, 8 ) } );
+
+		setAttributes( { classMigrate: true } );
 
 		// Pushing Style tag for this block css.
 		const $style = document.createElement( 'style' );
@@ -39,6 +48,13 @@ const UAGBSectionEdit = ( props ) => {
 			'uagb-section-style-' + props.clientId.substr( 0, 8 )
 		);
 		document.head.appendChild( $style );
+		
+		if ( 101 !== backgroundOpacity ) {
+			const color = hexToRGBA( maybeGetColorForVariable( backgroundImageColor ), backgroundOpacity );
+			setAttributes( { backgroundImageColor: color } );
+			setAttributes( { backgroundOpacity: 101 } );
+		}
+		
 	}, [] );
 
 	return (

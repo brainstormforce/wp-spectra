@@ -12,7 +12,6 @@ function styling( props ) {
 		backgroundVideoColor,
 		backgroundImageColor,
 		backgroundColor,
-		backgroundVideoOpacity,
 		innerWidth,
 		innerWidthType,
 		contentWidth,
@@ -64,6 +63,7 @@ function styling( props ) {
 		borderWidth,
 		borderColor,
 		borderHoverColor,
+		backgroundVideoOpacity
 	} = props.attributes;
 
 	let inner_width = '100%';
@@ -83,13 +83,14 @@ function styling( props ) {
 	if ( 'outset' === boxShadowPosition ) {
 		boxShadowPositionCSS = '';
 	}
+	let videoOpacity = 0.5;
+	if ( typeof backgroundVideoOpacity !== 'undefined' ) {
+		videoOpacity = ( 1 < backgroundVideoOpacity ) ? ( ( 100 - backgroundVideoOpacity ) / 100 ) : ( ( 1 - backgroundVideoOpacity ) ); 
+	}
 	const selectors = {
 		'.uagb-section__wrap': inlineStyles( props ),
 		' .uagb-section__video-wrap': {
-			'opacity':
-				typeof backgroundVideoOpacity !== 'undefined'
-					? ( 100 - backgroundVideoOpacity ) / 100
-					: 0.5,
+			'opacity' : videoOpacity
 		},
 		' .uagb-section__inner-wrap': {
 			'max-width': inner_width,
@@ -117,7 +118,7 @@ function styling( props ) {
 
 	if ( 'video' === backgroundType ) {
 		selectors[ ' > .uagb-section__overlay' ] = {
-			'opacity': 1,
+			'opacity' : 1,
 			'background-color': backgroundVideoColor,
 		};
 	} else if ( 'image' === backgroundType ) {

@@ -59,6 +59,7 @@ if ( 'image' === $bg_type ) {
 	if ( 'color' === $overlay_type ) {
 		$selectors[' > .uagb-column__overlay'] = array(
 			'background-color' => $attr['backgroundImageColor'],
+			'opacity'          => ( isset( $attr['backgroundOpacity'] ) && '' !== $attr['backgroundOpacity'] && 101 !== $attr['backgroundOpacity'] ) ? $attr['backgroundOpacity'] / 100 : '',
 		);
 	} else {
 		$selectors[' > .uagb-column__overlay']['background-color'] = 'transparent';

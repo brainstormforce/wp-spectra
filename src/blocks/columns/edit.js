@@ -26,16 +26,33 @@ import { withNotices } from '@wordpress/components';
 
 import { createBlock } from '@wordpress/blocks';
 
+import hexToRGBA from '@Controls/hexToRgba';
+
+import maybeGetColorForVariable from '@Controls/maybeGetColorForVariable';
+
 const ColumnsComponent = ( props ) => {
 	useEffect( () => {
+
+		const { attributes, setAttributes } = props;
+
+		const {
+			topMargin,
+			bottomMargin,
+			topMarginDesktop,
+			bottomMarginDesktop,
+			vAlign,
+			backgroundOpacity,
+			backgroundImageColor
+		} = attributes
+
 		// Replacement for componentDidMount.
 		// Assigning block_id in the attribute.
-		props.setAttributes( { block_id: props.clientId.substr( 0, 8 ) } );
+		setAttributes( { block_id: props.clientId.substr( 0, 8 ) } );
 
-		props.setAttributes( { classMigrate: true } );
+		setAttributes( { classMigrate: true } );
 
-		if ( 'middle' === props.attributes.vAlign ) {
-			props.setAttributes( { vAlign: 'center' } );
+		if ( 'middle' === vAlign ) {
+			setAttributes( { vAlign: 'center' } );
 		}
 		// Pushing Style tag for this block css.
 		const $style = document.createElement( 'style' );
@@ -45,13 +62,7 @@ const ColumnsComponent = ( props ) => {
 		);
 		document.head.appendChild( $style );
 
-		const { attributes, setAttributes } = props;
-		const {
-			topMargin,
-			bottomMargin,
-			topMarginDesktop,
-			bottomMarginDesktop,
-		} = attributes;
+		;
 
 		//Margin
 		if ( topMargin ) {
@@ -65,9 +76,17 @@ const ColumnsComponent = ( props ) => {
 				setAttributes( { bottomMarginDesktop: bottomMargin } );
 			}
 		}
+
+		if ( 101 !== backgroundOpacity ) {
+			const color = hexToRGBA( maybeGetColorForVariable( backgroundImageColor ), backgroundOpacity );
+			setAttributes( { backgroundImageColor: color } );
+			setAttributes( { backgroundOpacity: 101 } );
+		}
+
 	}, [] );
 
 	useEffect( () => {
+
 		// Replacement for componentDidUpdate.
 		const element = document.getElementById(
 			'uagb-columns-style-' + props.clientId.substr( 0, 8 )
@@ -76,6 +95,7 @@ const ColumnsComponent = ( props ) => {
 		if ( null !== element && undefined !== element ) {
 			element.innerHTML = styling( props );
 		}
+
 	}, [ props ] );
 
 	const blockVariationPickerOnSelect = (
