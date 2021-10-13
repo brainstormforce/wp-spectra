@@ -10,7 +10,7 @@
 .components-toggle-control__label {
 	font-family: var(--heading-font-family);
 	font-weight: var(--heading-weight-500);
-	font-size: 16px;
+	font-size: 14px;
 	line-height: 1.5em;
 	font-style: var(--heading-font-style);
 }
@@ -30,10 +30,11 @@
 
 	a {
 		text-decoration: none;
-		padding-right: 25px;
+		padding-right: 15px;
 		font-weight: var(--heading-weight-400);
 		font-family: var(--heading-font-family);
 		font-style: var(--heading-font-style);
+		font-size: 13px;
 	}
 
 	a:not(:last-child)::after {
@@ -41,13 +42,13 @@
 		border: 1px solid #ddd;
 		border-width: 1px 1px 0 0;
 		position: relative;
-		right: -25px;
+		right: -15px;
 		top: 0;
 		height: 65%;
 	}
 
 	a:last-child {
-		padding-left: 25px;
+		padding-left: 15px;
 	}
 }
 
@@ -71,7 +72,7 @@
 		align-items: center;
 
 		.uag-block-cat-label {
-			padding: 25px 15px;
+			padding: 20px 13px;
 			font-family: var(--heading-font-family);
 			font-style: var(--heading-font-style);
 			font-weight: var(--heading-weight-500);
@@ -86,9 +87,10 @@
 			clear: both;
 			overflow: hidden;
 			white-space: nowrap;
-			padding: 25px 13px;
+			padding: 20px 13px;
 			text-decoration: none;
 			color: #3c434a;
+			font-weight: var(--heading-weight-400);
 		}
 
 		.uag-uppercase-cat {
@@ -103,7 +105,8 @@
 		.uag-cat-active {
 			box-shadow: inset 0 -4px 0 -2px #2271b1;
 			color: var(--link-color);
-			font-weight: var(--heading-weight-500);
+			font-weight: var(--heading-weight-400);
+			padding: 20px 13px;
 		}
 
 		.uag-block-cat:not(:last-child)::after {
@@ -128,9 +131,9 @@
 			border: none;
 			background-color: #fff;
 			color: #3c434a;
-			padding: 25px 15px;
+			padding: 20px 13px;
 			width: 100%;
-			font-weight: var(--heading-weight-500);
+			font-weight: var(--heading-weight-400);
 
 			&.disabled {
 				color: #666;
@@ -153,7 +156,7 @@
 			border: 1px solid #ddd;
 			border-width: 1px 1px 0 0;
 			position: relative;
-			top: 25px;
+			top: 20px;
 		}
 	}
 

@@ -2,12 +2,12 @@
 	display: inline-flex;
 	z-index: 2;
 	width: 100%;
-	height: 70px;
+	height: 60px;
 	background: var(--metabox-background-color);
 	box-shadow: 0 5px 20px rgba(190, 190, 190, 0.1);
 
 	.uag-global-nav__title {
-		padding: 16px 27px;
+		padding: 11px;
 
 		a:focus,
 		a:hover {
@@ -32,14 +32,13 @@
 	.uag-global-nav-menu__tab {
 		display: flex;
 		align-items: center;
-		padding: 27px;
+		padding: 1.2rem;
 		color: #444;
 		margin-bottom: -1px;
 		cursor: pointer;
 		font-size: 14px;
 		line-height: 1em;
-		letter-spacing: 0.225px;
-		font-weight: var(--heading-weight-500);
+		font-weight: var(--heading-weight-400);
 		text-decoration: none;
 	}
 
@@ -52,6 +51,7 @@
 .uag-menu-page-wrapper a.uag-global-nav-menu__tab.uag-global-nav-menu__tab--active:active {
 	color: #135e96;
 	box-shadow: inset 0 -4px 0 -2px #135e96;
+	font-weight: var(--heading-weight-500);
 }
 
 /* New FIxed header */
