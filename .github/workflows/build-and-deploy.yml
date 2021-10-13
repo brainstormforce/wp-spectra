@@ -4,7 +4,7 @@ name: Build and Deploy
 on:
   push:
     branches:
-      - gfont-option
+      - next-release
 
 env:
   PLUGIN_PATH: ${{ secrets.SSH_RC_PATH }}/wp-content/plugins/${{ github.event.repository.name }}/
