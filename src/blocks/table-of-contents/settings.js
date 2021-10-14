@@ -244,7 +244,7 @@ const Settings = ( props ) => {
 						/>
 						<Range
 							label={ __(
-								'Smooth Scroll Offset (px)',
+								'Scroll Animation Delay (ms)',
 								'ultimate-addons-for-gutenberg'
 							) }
 							setAttributes={ setAttributes }
