@@ -147,11 +147,10 @@ const ColumnsComponent = ( props ) => {
 					icon={ UAGB_Block_Icons.columns }
 					label={ uagb_blocks_info.blocks[ 'uagb/columns' ].title }
 					instructions={ __(
-						'Select a Structure',
+						'Select a variation to start with.',
 						'ultimate-addons-for-gutenberg'
 					) }
 					variations={ variations }
-					allowSkip
 					onSelect={ ( nextVariation ) =>
 						blockVariationPickerOnSelect( nextVariation )
 					}
