@@ -278,7 +278,7 @@ if ( ! class_exists( 'UAGB_Block_JS' ) ) {
 		}
 
 		/**
-		 * Adds Google fonts for Testimonial block.
+		 * Adds Google fonts for Testimonials block.
 		 *
 		 * @since 1.9.1
 		 * @param array $attr the blocks attr.

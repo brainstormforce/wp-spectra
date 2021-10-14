@@ -13,7 +13,7 @@ import { __ } from '@wordpress/i18n';
 import { registerBlockType } from '@wordpress/blocks';
 
 registerBlockType( 'uagb/testimonial', {
-	title: __( 'Testimonial', 'ultimate-addons-for-gutenberg' ), // Block title.
+	title: __( 'Testimonials', 'ultimate-addons-for-gutenberg' ), // Block title.
 	description: __( 'This block helps your display some amazing client feedback within your website.', 'ultimate-addons-for-gutenberg' ), // Block description.
 	icon: UAGB_Block_Icons.testimonial, // Block icon from Dashicons → https://developer.wordpress.org/resource/dashicons/.
 	keywords: [

@@ -506,7 +506,7 @@ class UAGB_Init_Blocks {
 				'enableMasonryGallery'              => apply_filters( 'uag_enable_masonry_gallery', UAGB_Admin_Helper::get_admin_settings_option( 'uag_enable_masonry_gallery', 'enabled' ) ),
 				'uagb_svg_icons'                    => UAGB_Helper::backend_load_font_awesome_icons(),
 				'uagb_enable_extensions_for_blocks' => apply_filters( 'uagb_enable_extensions_for_blocks', array() ),
-				'uagb_how_to_old_user'              => get_option( 'uagb-how-to-old-user' ),
+				'uagb_old_user_less_than_2'         => get_option( 'uagb-old-user-less-than-2' ),
 			)
 		);
 		// To match the editor with frontend.

@@ -212,13 +212,19 @@ class Admin_Menu {
 		array_multisort(
 			array_map(
 				function( $element ) {
-					return $element['title'];
+					if ( isset( $element['priority'] ) ) {
+						return $element['priority'];
+					}
+					return;
 				},
 				$blocks
 			),
 			SORT_ASC,
 			$blocks
 		);
+
+		$cf7_status = $this->get_plugin_status( 'contact-form-7/wp-contact-form-7.php' );
+		$gf_status  = $this->get_plugin_status( 'gravityforms/gravityforms.php' );
 
 		if ( is_array( $blocks ) && ! empty( $blocks ) ) {
 
@@ -228,7 +234,7 @@ class Admin_Menu {
 
 				$addon = str_replace( 'uagb/', '', $addon );
 
-				$child_blocks = array(
+				$exclude_blocks = array(
 					'column',
 					'icon-list-child',
 					'social-share-child',
@@ -258,11 +264,15 @@ class Admin_Menu {
 					'how-to-step',
 				);
 
+				if ( ( 'cf7-styler' === $addon && 'active' !== $cf7_status ) || ( 'gf-styler' === $addon && 'active' !== $gf_status ) ) {
+					$exclude_blocks[] = $addon;
+				}
+
 				if ( array_key_exists( 'extension', $info ) && $info['extension'] ) {
 					continue;
 				}
 
-				if ( in_array( $addon, $child_blocks, true ) ) {
+				if ( in_array( $addon, $exclude_blocks, true ) ) {
 					continue;
 				}
 				$info['slug']   = $addon;
@@ -275,6 +285,27 @@ class Admin_Menu {
 
 		return array();
 
+	}
+
+	/**
+	 * Get plugin status
+	 *
+	 * @since x.x.x
+	 *
+	 * @param  string $plugin_init_file Plguin init file.
+	 * @return mixed
+	 */
+	public function get_plugin_status( $plugin_init_file ) {
+
+		$installed_plugins = get_plugins();
+
+		if ( ! isset( $installed_plugins[ $plugin_init_file ] ) ) {
+			return 'not-installed';
+		} elseif ( is_plugin_active( $plugin_init_file ) ) {
+			return 'active';
+		} else {
+			return 'inactive';
+		}
 	}
 
 	/**

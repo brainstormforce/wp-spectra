@@ -143,15 +143,15 @@ function UserInfoBox() {
 					</p>
 					<div className="uag-metabox__stats">
 						<div className="uag-metabox__stat">
-							<span>{__( '1,000,000+','ultimate-addons-for-gutenberg' )}</span> <br/>
+							<span>{__( '1,653,898+','ultimate-addons-for-gutenberg' )}</span> <br/>
 							<span>{__( 'Websites Powered','ultimate-addons-for-gutenberg' )}</span>
 						</div>
 						<div className="uag-metabox__stat">
-							<span>{__( '5,102+','ultimate-addons-for-gutenberg' )}</span><br/>
+							<span>{__( '5,678+','ultimate-addons-for-gutenberg' )}</span><br/>
 							{stars}
 						</div>
 						<div className="uag-metabox__stat">
-							<span>{__( '5000+','ultimate-addons-for-gutenberg' )}</span><br/>
+							<span>{__( '5,589+','ultimate-addons-for-gutenberg' )}</span><br/>
 							<span>{__( 'Daily Downloads','ultimate-addons-for-gutenberg' )}</span>
 						</div>
 					</div>

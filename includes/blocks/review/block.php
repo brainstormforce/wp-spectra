@@ -13,8 +13,9 @@ $block_data = array(
 	'slug'             => '',
 	'admin_categories' => array( 'seo' ),
 	'link'             => 'review-schema',
-	'title'            => __( 'Review Schema', 'ultimate-addons-for-gutenberg' ),
+	'title'            => __( 'Review', 'ultimate-addons-for-gutenberg' ),
 	'description'      => __( 'This block helps you to add a review for various items with schema support.', 'ultimate-addons-for-gutenberg' ),
 	'default'          => true,
 	'extension'        => false,
+	'priority'         => 4,
 );

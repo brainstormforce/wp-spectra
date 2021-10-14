@@ -17,4 +17,5 @@ $block_data = array(
 	'description'      => __( 'This block allows you to place a Marketing Button with small description.', 'ultimate-addons-for-gutenberg' ),
 	'default'          => true,
 	'extension'        => false,
+	'priority'         => 3,
 );

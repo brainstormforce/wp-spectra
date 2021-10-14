@@ -73,7 +73,7 @@ if ( ! class_exists( 'UAGB_Update' ) ) :
 			}
 
 			// Update How-To Block Old User Version.
-			$this->update_how_to_old_user_option();
+			$this->update_uag_old_user_less_than_2_option();
 
 			// Create file if not present.
 			uagb_install()->create_files();
@@ -111,9 +111,9 @@ if ( ! class_exists( 'UAGB_Update' ) ) :
 		 * @since x.x.x
 		 * @return void
 		 */
-		public function update_how_to_old_user_option() {
+		public function update_uag_old_user_less_than_2_option() {
 			if ( version_compare( UAGB_VER, '2.0.0', '<' ) ) {
-				update_option( 'uagb-how-to-old-user', 'yes' );
+				update_option( 'uagb-old-user-less-than-2', 'yes' );
 			}
 		}
 	}

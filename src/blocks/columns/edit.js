@@ -6,7 +6,7 @@ import styling from './styling';
 import UAGB_Block_Icons from '@Controls/block-icons';
 import { __ } from '@wordpress/i18n';
 
-import React, { useEffect, lazy, Suspense } from 'react';
+import React, { useEffect, lazy, Suspense, useLayoutEffect } from 'react';
 import lazyLoader from '@Controls/lazy-loader';
 
 const Settings = lazy( () =>
@@ -20,7 +20,9 @@ import { withSelect, useDispatch } from '@wordpress/data';
 
 import { compose } from '@wordpress/compose';
 
-import { __experimentalBlockVariationPicker } from '@wordpress/block-editor';
+import {
+	__experimentalBlockVariationPicker as BlockVariationPicker,
+} from '@wordpress/block-editor';
 
 import { withNotices } from '@wordpress/components';
 
@@ -30,7 +32,18 @@ import hexToRGBA from '@Controls/hexToRgba';
 
 import maybeGetColorForVariable from '@Controls/maybeGetColorForVariable';
 
+import styles from './editor.lazy.scss';
+
 const ColumnsComponent = ( props ) => {
+
+	// Add and remove the CSS on the drop and remove of the component.
+	useLayoutEffect( () => {
+		styles.use();
+		return () => {
+			styles.unuse();
+		};
+	}, [] );
+
 	useEffect( () => {
 
 		const { attributes, setAttributes } = props;
@@ -127,20 +140,23 @@ const ColumnsComponent = ( props ) => {
 	const { variations, hasInnerBlocks } = props;
 
 	if ( ! hasInnerBlocks ) {
+		
 		return (
-			<__experimentalBlockVariationPicker
-				icon={ UAGB_Block_Icons.columns }
-				label={ uagb_blocks_info.blocks[ 'uagb/columns' ].title }
-				instructions={ __(
-					'Select a variation to start with.',
-					'ultimate-addons-for-gutenberg'
-				) }
-				variations={ variations }
-				allowSkip
-				onSelect={ ( nextVariation ) =>
-					blockVariationPickerOnSelect( nextVariation )
-				}
-			/>
+			<div className='uagb-columns-variation-picker'>
+				<BlockVariationPicker
+					icon={ UAGB_Block_Icons.columns }
+					label={ uagb_blocks_info.blocks[ 'uagb/columns' ].title }
+					instructions={ __(
+						'Select a Structure',
+						'ultimate-addons-for-gutenberg'
+					) }
+					variations={ variations }
+					allowSkip
+					onSelect={ ( nextVariation ) =>
+						blockVariationPickerOnSelect( nextVariation )
+					}
+				/>
+			</div>
 		);
 	}
 

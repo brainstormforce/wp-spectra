@@ -53,7 +53,7 @@ class Global_Settings {
 					'enable_block_condition' => array(
 						'type'  => 'toggle',
 						'name'  => 'enable_block_condition',
-						'label' => __( 'Display Condition', 'ultimate-addons-for-gutenberg' ),
+						'label' => __( 'Display Conditions', 'ultimate-addons-for-gutenberg' ),
 
 					),
 				),
@@ -105,8 +105,8 @@ class Global_Settings {
 					'enable_templates_button' => array(
 						'type'  => 'button',
 						'name'  => 'enable_templates_button',
-						'label' => __( 'Enable UAG Templates Button', 'ultimate-addons-for-gutenberg' ),
-						'desc'  => __( 'Ultimate Addons for Gutenberg comes with a stunning library of page templates and block patterns. This library is accessible with the UAG Templates button while editing the page or post. Manage the visibility of that button with this option. ', 'ultimate-addons-for-gutenberg' ),
+						'label' => __( 'Enable Templates Button', 'ultimate-addons-for-gutenberg' ),
+						'desc'  => __( 'Ultimate Addons for Gutenberg comes with a stunning library of page templates and block patterns. This library is accessible with the Templates button while editing the page or post. Manage the visibility of that button with this option. ', 'ultimate-addons-for-gutenberg' ),
 					),
 				),
 			),

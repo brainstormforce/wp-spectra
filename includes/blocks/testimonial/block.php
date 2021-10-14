@@ -13,10 +13,11 @@ $block_data = array(
 	'slug'             => '',
 	'admin_categories' => array( 'content', 'social' ),
 	'link'             => 'testimonials',
-	'title'            => __( 'Testimonial', 'ultimate-addons-for-gutenberg' ),
+	'title'            => __( 'Testimonials', 'ultimate-addons-for-gutenberg' ),
 	'description'      => __( 'This block helps your display some amazing client feedback within your website.', 'ultimate-addons-for-gutenberg' ),
 	'default'          => true,
 	'extension'        => false,
 	'js_assets'        => array( 'uagb-slick-js' ),
 	'css_assets'       => array( 'uagb-slick-css' ),
+	'priority'         => 3,
 );

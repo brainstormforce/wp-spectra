@@ -11,7 +11,7 @@ import MasonryExtension from './MasonryExtension';
 const blocksInfo = uag_react.blocks_info;
 
 function BlocksSettings() {
-	
+
 	const [ checkCategory , setcheckCategory ] = useState( 'all' );
 	const [ status , setstatus ] = useState( true );
 	const [ { options }, dispatch ] = useStateValue();
@@ -25,38 +25,38 @@ function BlocksSettings() {
 	const categories = [
 							{
 								slug: 'all',
-								label: __( 'All Blocks', 'ultimate-addons-for-gutenberg' )
+								label: __( 'All', 'ultimate-addons-for-gutenberg' )
 							},
-							{ 
+							{
 								slug:'creative',
-								label:__( 'Creative Blocks', 'ultimate-addons-for-gutenberg' )
+								label:__( 'Creative', 'ultimate-addons-for-gutenberg' )
 							},
-							{ 
+							{
 								slug:'content',
-								label:__( 'Content Blocks', 'ultimate-addons-for-gutenberg' )
+								label:__( 'Content', 'ultimate-addons-for-gutenberg' )
 							},
-							{ 
+							{
 								slug:'post',
 								label:__( 'Post', 'ultimate-addons-for-gutenberg' )
 							},
-							{ 
+							{
 								slug:'social',
-								label:__( 'Social Blocks', 'ultimate-addons-for-gutenberg' )
+								label:__( 'Social', 'ultimate-addons-for-gutenberg' )
 							},
-							{ 
+							{
 								slug:'forms',
-								label:__( 'Form Styler', 'ultimate-addons-for-gutenberg' )
+								label:__( 'Form', 'ultimate-addons-for-gutenberg' )
 							},
-							{ 
+							{
 								slug:'seo',
 								label:__( 'SEO', 'ultimate-addons-for-gutenberg' )
 							},
-							{ 
+							{
 								slug:'extensions',
 								label:__( 'Extensions', 'ultimate-addons-for-gutenberg' )
 							},
 						];
-	
+
 	const setCategory = ( data ) => {
 		setcheckCategory( data );
 	};
@@ -140,7 +140,7 @@ function BlocksSettings() {
 		} );
 	};
 	const disabledClass = checkCategory !== 'all' ? 'disabled' : '';
-	
+
 	return (
 		<>
 			<div className="uag-bulk-blocks-settings-wrap">

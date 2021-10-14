@@ -3,7 +3,6 @@ import { useLocation } from 'react-router-dom';
 
 import HomePage from '@SettingsApp/pages/HomePage';
 import BlocksPage from '@SettingsApp/pages/BlocksPage';
-import ToolsPage from '@SettingsApp/pages/ToolsPage';
 import SettingsPage from '@SettingsApp/pages/SettingsPage';
 
 function SettingsRoute() {
@@ -21,9 +20,6 @@ function SettingsRoute() {
 			switch ( path ) {
 				case 'blocks':
 					routePage = <BlocksPage />;
-					break;
-				case 'tools':
-					routePage = <ToolsPage />;
 					break;
 				case 'settings':
 					routePage = <SettingsPage />;

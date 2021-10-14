@@ -15,7 +15,7 @@ import { registerBlockType } from '@wordpress/blocks';
 
 if ( uagb_blocks_info.blocks[ 'uagb/cf7-styler' ].is_active ) {
 	registerBlockType( 'uagb/cf7-styler', {
-		title: __( 'Contact Form 7 Styler', 'ultimate-addons-for-gutenberg' ), // Block title.
+		title: __( 'Contact Form 7 Designer', 'ultimate-addons-for-gutenberg' ), // Block title.
 		description: __( 'This block allows you to add and style your Contact Form 7 forms right in the Gutenberg editor.', 'ultimate-addons-for-gutenberg' ), // Block description.
 		icon: UAGB_Block_Icons.cf7_styler,
 		keywords: [

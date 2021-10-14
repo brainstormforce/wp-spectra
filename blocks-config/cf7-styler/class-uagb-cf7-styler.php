@@ -1,6 +1,6 @@
 <?php
 /**
- * UAGB - Contact Form 7 Styler.
+ * UAGB - Contact Form 7 Designer.
  *
  * @package UAGB
  */

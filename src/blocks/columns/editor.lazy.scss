@@ -269,3 +269,24 @@
 		height: 16px;
 	}
 }
+
+.uagb-columns-variation-picker {
+
+	.components-button {
+		box-shadow: none;
+		outline: none;
+		width: 100%;
+		color: #d5dadf;
+	}
+
+	.block-editor-block-variation-picker__variations > li {
+		width: 93px;
+	}
+
+	.block-editor-block-variation-picker__skip {
+
+		.components-button {
+			color: #0073aa;
+		}
+	}
+}

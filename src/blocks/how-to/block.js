@@ -12,8 +12,8 @@ import { __ } from '@wordpress/i18n';
 import { registerBlockType } from '@wordpress/blocks';
 
 registerBlockType( 'uagb/how-to', {
-	title: __( 'How-to Schema', 'ultimate-addons-for-gutenberg' ),
-	description: __( 'This block allows you to design attractive How-to pages or articles with automatically adding How-to Schema to your page.', 'ultimate-addons-for-gutenberg' ),
+	title: __( 'How-to', 'ultimate-addons-for-gutenberg' ),
+	description: __( 'This block allows you to design attractive How-to pages or articles with automatically adding How-to to your page.', 'ultimate-addons-for-gutenberg' ),
 	icon: UAGB_Block_Icons.how_to,
 	category: uagb_blocks_info.category,
 	keywords: [

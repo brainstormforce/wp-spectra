@@ -13,8 +13,9 @@ $block_data = array(
 	'admin_categories' => array( 'forms' ),
 	'link'             => 'forms',
 	'doc'              => 'uag-forms-block',
-	'title'            => __( 'Forms', 'ultimate-addons-for-gutenberg' ),
+	'title'            => __( 'Form', 'ultimate-addons-for-gutenberg' ),
 	'description'      => __( 'This block allow you to create interactive contact form, newsletter, suggestion, etc easily.', 'ultimate-addons-for-gutenberg' ),
 	'default'          => true,
 	'js_assets'        => array( 'uagb-forms-js' ),
+	'priority'         => 2,
 );

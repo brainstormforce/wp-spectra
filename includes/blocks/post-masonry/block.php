@@ -18,4 +18,5 @@ $block_data = array(
 	'default'          => true,
 	'extension'        => false,
 	'js_assets'        => array( 'uagb-masonry', 'uagb-imagesloaded', 'uagb-post-js' ),
+	'priority'         => 1,
 );

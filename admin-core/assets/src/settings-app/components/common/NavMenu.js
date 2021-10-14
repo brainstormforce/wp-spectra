@@ -21,11 +21,6 @@ function NavMenu() {
 			slug: uag_react.home_slug,
 			path: 'settings',
 		},
-		{
-			name: __( 'Tools', 'ultimate-addons-for-gutenberg' ),
-			slug: uag_react.home_slug,
-			path: 'tools',
-		},
 	];
 
 	const query = new URLSearchParams( useLocation()?.search );

@@ -46,10 +46,6 @@
 		top: 0;
 		height: 65%;
 	}
-
-	a:last-child {
-		padding-left: 15px;
-	}
 }
 
 .uag-extension__metabox.uag-individual-block-settings-metabox a:last-child {
@@ -136,14 +132,14 @@
 			font-weight: var(--heading-weight-400);
 
 			&.disabled {
-				color: #666;
+				color: #beb9b9;
 				cursor: not-allowed;
 			}
 
 			&.disabled:hover,
 			&.disabled:focus,
 			&.disabled:active {
-				color: #666;
+				color: #beb9b9;
 			}
 		}
 

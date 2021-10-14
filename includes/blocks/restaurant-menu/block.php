@@ -17,4 +17,5 @@ $block_data = array(
 	'description'      => __( 'This block allows you to add attractive Price List.', 'ultimate-addons-for-gutenberg' ),
 	'default'          => true,
 	'extension'        => false,
+	'priority'         => 4,
 );

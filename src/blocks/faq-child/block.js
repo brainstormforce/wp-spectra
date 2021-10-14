@@ -12,7 +12,7 @@ import { registerBlockType } from '@wordpress/blocks';
 import { __ } from '@wordpress/i18n';
 
 registerBlockType( 'uagb/faq-child', {
-	title: __( 'FAQ - Schema Child', 'ultimate-addons-for-gutenberg' ),
+	title: __( 'FAQ Child', 'ultimate-addons-for-gutenberg' ),
 	description: __( 'This block helps you add single FAQ.', 'ultimate-addons-for-gutenberg' ),
 	icon: UAGB_Block_Icons.faq,
 	category: uagb_blocks_info.category,

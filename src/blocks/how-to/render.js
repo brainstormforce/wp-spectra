@@ -8,7 +8,7 @@ import styles from './editor.lazy.scss';
 
 var ALLOWED_BLOCKS = [ 'uagb/how-to-step' ]; // eslint-disable-line no-var
 
-if ( 'yes' === uagb_blocks_info.uagb_how_to_old_user ) {
+if ( 'yes' === uagb_blocks_info.uagb_old_user_less_than_2 ) {
 
 	ALLOWED_BLOCKS = [ 'uagb/info-box', 'uagb/how-to-step' ];
 }
@@ -238,7 +238,7 @@ const Render = ( props ) => {
 			<RichText
 				tagName="p"
 				placeholder={ __(
-					'So to get started, you will just need to drag-n-drop the How-to Schema block in the Gutenberg editor. The How-to Schema block can be used on pages which contain a How-to in their title and describe steps to achieve certain requirements.',
+					'So to get started, you will just need to drag-n-drop the How-to block in the Gutenberg editor. The How-to block can be used on pages which contain a How-to in their title and describe steps to achieve certain requirements.',
 					'ultimate-addons-for-gutenberg'
 				) }
 				value={ headingDesc }

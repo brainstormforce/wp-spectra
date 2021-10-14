@@ -68,13 +68,6 @@ function IndividualBlockSetting( props ) {
 				>
 					{ __( 'Live Demo', 'ultimate-addons-for-gutenberg' ) }
 				</a>
-				<a
-					href={ `https://ultimategutenberg.com/docs/${ props.blockInfo.doc }` }
-					target="_blank"
-					rel="noreferrer"
-				>
-					{ __( 'Documentation', 'ultimate-addons-for-gutenberg' ) }
-				</a>
 			</div>
 		);
 	}
