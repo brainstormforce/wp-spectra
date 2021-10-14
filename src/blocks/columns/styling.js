@@ -91,10 +91,11 @@ function styling( props ) {
 		' .uagb-columns__video-wrap': {
 			'opacity' : videoOpacity
 		},
-		' > .uagb-columns__inner-wrap': {
+		' > .block-editor-inner-blocks > .block-editor-block-list__layout': {
+
 			'max-width' : max_width
 		},
-		' .uagb-column__inner-wrap' : {
+		' > .block-editor-inner-blocks > .block-editor-block-list__layout > [data-type="uagb/column"]' : {
 			'padding' : generateCSSUnit( columnGap, 'px' )
 		},
 		' .uagb-columns__shape-top svg' : {
