@@ -140,13 +140,13 @@ const attributes = {
 	// Label and Sub Label
 	heading: {
 		source: 'html',
-		selector: 'h1,h2,h3,h4,h5,h6,p,span',
-		default: 'Subscribe Now',
+		selector: 'h1,h2,h3,h4,h5,h6,span,p',
+		default: 'Subscribe Now'
 	},
 	prefix: {
 		source: 'html',
-		selector: 'p',
-		default: 'Get access to Premium Features for FREE for a year!',
+		selector: '.uagb-marketing-btn__prefix',
+		default: 'Get access to Premium Features for FREE for a year!'
 	},
 
 	// Icon attributes
