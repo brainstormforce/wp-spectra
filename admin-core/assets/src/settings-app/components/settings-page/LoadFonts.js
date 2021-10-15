@@ -6,6 +6,7 @@ import apiFetch from '@wordpress/api-fetch';
 import ReactHtmlParser from 'react-html-parser';
 import './LoadFont.scss'
 import SettingTable from '../common/SettingTable';
+import SelectFont from './SelectFont';
 let enablePreloadCachedValue;
 
 function LoadFonts() {
@@ -82,13 +83,14 @@ function LoadFonts() {
 			}
 		} );
 	};
-
+	
 	return (
 		<>
 			<h2>
-				{ __( 'Performance', 'ultimate-addons-for-gutenberg' ) }
+				{ __( 'Font Family and Performance', 'ultimate-addons-for-gutenberg' ) }
 			</h2>
 			<div className="uag-font-setting__elements">
+				<SelectFont/>
 				<div className="uag-font-setting__element">
 					<div className="uag-local-font-settings">
 						<h3>{ ReactHtmlParser( loadGFontsLocallylabel ) }</h3>

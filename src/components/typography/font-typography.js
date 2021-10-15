@@ -3,94 +3,16 @@
  */
 import { __ } from '@wordpress/i18n';
 import { SelectControl } from '@wordpress/components';
-import googleFonts from './fonts';
+import googleFonts from '@Controls/fonts';
+
+const { uag_select_font_globally , uag_load_select_font_globally } = uagb_blocks_info;
 
 function FontFamilyControl( props ) {
-	const fonts = [
-		{
-			value: '',
-			label: __( 'Default', 'ultimate-addons-for-gutenberg' ),
-			weight: [
-				'100',
-				'200',
-				'300',
-				'400',
-				'500',
-				'600',
-				'700',
-				'800',
-				'900',
-			],
-			google: false,
-		},
-		{
-			value: 'Arial',
-			label: 'Arial',
-			weight: [
-				'100',
-				'200',
-				'300',
-				'400',
-				'500',
-				'600',
-				'700',
-				'800',
-				'900',
-			],
-			google: false,
-		},
-		{
-			value: 'Helvetica',
-			label: 'Helvetica',
-			weight: [
-				'100',
-				'200',
-				'300',
-				'400',
-				'500',
-				'600',
-				'700',
-				'800',
-				'900',
-			],
-			google: false,
-		},
-		{
-			value: 'Times New Roman',
-			label: 'Times New Roman',
-			weight: [
-				'100',
-				'200',
-				'300',
-				'400',
-				'500',
-				'600',
-				'700',
-				'800',
-				'900',
-			],
-			google: false,
-		},
-		{
-			value: 'Georgia',
-			label: 'Georgia',
-			weight: [
-				'100',
-				'200',
-				'300',
-				'400',
-				'500',
-				'600',
-				'700',
-				'800',
-				'900',
-			],
-			google: false,
-		},
-	];
+
+	const fonts = [];
 
 	let fontWeight = '';
-	
+
 	//Push Google Fonts into stytem fonts object
 	Object.keys( googleFonts ).map( ( k ) => {  // eslint-disable-line array-callback-return
 		fonts.push( { value: k, label: k, weight: googleFonts[ k ].weight } );
@@ -111,7 +33,7 @@ function FontFamilyControl( props ) {
 		fontWeightObj.push( { value: item, label: item } );
 	} );
 
-	
+
 	const onFontfamilyChange = ( value ) => {
 		const { loadGoogleFonts, fontFamily, fontWeight } = props; // eslint-disable-line no-shadow
 		props.setAttributes( { [ fontFamily.label ]: value } );
@@ -125,7 +47,7 @@ function FontFamilyControl( props ) {
 
 		if ( typeof googleFonts[ fontFamily ] === 'object' ) {
 			const gfontsObj = googleFonts[ fontFamily ].weight;
-			
+
 			if ( typeof gfontsObj === 'object' ) {
 				gfontsObj.forEach( function ( item ) {
 					if ( fontWeight.value === item ) {
@@ -156,13 +78,15 @@ function FontFamilyControl( props ) {
 
 		props.setAttributes( { [ loadGoogleFonts.label ]: value } );
 	};
-	
+
+	const gFonts = uag_load_select_font_globally === 'enabled' && uag_select_font_globally !== 0 ? uag_select_font_globally : fonts;
+
 	return (
 		<div className="uag-typography-font-family-options">
 			<div className="uag-typography-font-family">
 				<SelectControl
 					label={ __( 'Family', 'ultimate-addons-for-gutenberg' ) }
-					options={ fonts }
+					options={ gFonts }
 					value={ props.fontFamily.value }
 					onChange={ onFontfamilyChange }
 					className="react-select-container"
@@ -185,7 +109,7 @@ function FontFamilyControl( props ) {
 						className="react-select-container"
 					/>
 				</div>
-				{ props.fontStyle && 
+				{ props.fontStyle &&
 					<div className="uag-typography-style">
 						<SelectControl
 							label={ __( 'Style', 'ultimate-addons-for-gutenberg' ) }

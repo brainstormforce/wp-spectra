@@ -110,6 +110,24 @@ class Global_Settings {
 					),
 				),
 			),
+			'select_font_globally'         => array(
+				'fields' => array(
+					'select_font_globally' => array(
+						'type'  => 'button',
+						'name'  => 'select_font_globally',
+						'label' => __( 'Select Font Globally', 'ultimate-addons-for-gutenberg' ),
+					),
+				),
+			),
+			'load_select_font_globally'    => array(
+				'fields' => array(
+					'load_select_font_globally' => array(
+						'type'  => 'toggle',
+						'name'  => 'load_select_font_globally',
+						'label' => __( 'Display Selected Font Families', 'ultimate-addons-for-gutenberg' ),
+					),
+				),
+			),
 			'enable_file_regeneration'     => array(
 				'fields' => array(
 					'enable_file_regeneration' => array(

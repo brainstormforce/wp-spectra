@@ -482,6 +482,36 @@ class UAGB_Init_Blocks {
 		);
 		$displayCondition = UAGB_Admin_Helper::get_admin_settings_option( 'uag_enable_block_condition', 'enabled' );
 
+		$enable_selected_fonts = UAGB_Admin_Helper::get_admin_settings_option( 'uag_load_select_font_globally', 'disabled' );
+		$selected_fonts        = array();
+
+		if ( 'enabled' === $enable_selected_fonts ) {
+
+			/**
+			 * Selected fonts variable
+			 *
+			 * @var array
+			 */
+			$selected_fonts = UAGB_Admin_Helper::get_admin_settings_option( 'uag_select_font_globally', array() );
+
+			if ( ! empty( $selected_fonts ) ) {
+				usort(
+					$selected_fonts,
+					function( $a, $b ) {
+						return strcmp( $a['label'], $b['label'] );
+					}
+				);
+
+				$default_selected = array(
+					array(
+						'value' => 'Default',
+						'label' => __( 'Default', 'ultimate-addons-for-gutenberg' ),
+					),
+				);
+				$selected_fonts   = array_merge( $default_selected, $selected_fonts );
+			}
+		}
+
 		wp_localize_script(
 			'uagb-block-editor-js',
 			'uagb_blocks_info',
@@ -506,6 +536,8 @@ class UAGB_Init_Blocks {
 				'enableMasonryGallery'              => apply_filters( 'uag_enable_masonry_gallery', UAGB_Admin_Helper::get_admin_settings_option( 'uag_enable_masonry_gallery', 'enabled' ) ),
 				'uagb_svg_icons'                    => UAGB_Helper::backend_load_font_awesome_icons(),
 				'uagb_enable_extensions_for_blocks' => apply_filters( 'uagb_enable_extensions_for_blocks', array() ),
+				'uag_load_select_font_globally'     => $enable_selected_fonts,
+				'uag_select_font_globally'          => $selected_fonts,
 				'uagb_old_user_less_than_2'         => get_option( 'uagb-old-user-less-than-2' ),
 			)
 		);

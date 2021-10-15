@@ -1,6 +1,7 @@
 // Load the default @wordpress/scripts config object
 const path = require( 'path' );
 const defaultConfig = require( '@wordpress/scripts/config/webpack.config' );
+const newPath = path.join( __dirname, '../' );
 
 // Use the defaultConfig but replace the entry and output properties
 module.exports = {
@@ -27,6 +28,10 @@ module.exports = {
 			'@SettingsApp': path.resolve(
 				__dirname,
 				'assets/src/settings-app/'
+			),
+			'@Controls': path.resolve(
+				newPath,
+				'blocks-config/uagb-controls/'
 			),
 		},
 	},
