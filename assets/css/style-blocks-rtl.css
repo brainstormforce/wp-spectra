@@ -1,5 +1,13 @@
-.rtl .uagb-blockquote__skin-border blockquote.uagb-blockquote {
+.rtl.block-editor-page #wpwrap .wp-block-uagb-blockquote .uagb-blockquote__skin-border blockquote.uagb-blockquote,
+.rtl .wp-block-uagb-blockquote .uagb-blockquote__skin-border blockquote.uagb-blockquote {
+	border-left-style: none;
 	border-left-width: 0;
+	padding-right: 15px;
+}
+
+.rtl.block-editor-page #wpwrap .wp-block-uagb-blockquote .uagb-blockquote__content.block-editor-rich-text__editable,
+.rtl .wp-block-uagb-blockquote .uagb-blockquote__content.block-editor-rich-text__editable {
+	text-align: right;
 }
 
 .rtl .uagb_review_block .uagb_review_entry {

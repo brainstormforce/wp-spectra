@@ -157,9 +157,14 @@
 
 		&.uagb-slick-carousel {
 
-			.slick-next {
-				left: -45px;
+			.slick-prev {
 				right: auto;
+				left: -45px;
+			}
+
+			.slick-next {
+				left: auto;
+				right: -45px;
 			}
 		}
 	}
