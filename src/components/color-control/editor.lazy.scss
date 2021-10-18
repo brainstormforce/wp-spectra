@@ -39,6 +39,17 @@
 		margin: 0;
 	}
 
+	.uagb-advanced-color-indicate.uag-global-indicator::before {
+		content: "\f11f";
+		color: #fff;
+		font-family: dashicons; // stylelint-disable-line font-family-no-missing-generic-family-keyword
+		font-size: 16px;
+		position: absolute;
+		top: 6px;
+		left: 7px;
+		mix-blend-mode: difference;
+	}
+
 }
 
 .uagb-popover-color {

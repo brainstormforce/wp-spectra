@@ -142,6 +142,8 @@ const AdvancedPopColorControl = ( props ) => {
 
 	const colorVal = value.currentColor ? value.currentColor : props.colorValue;
 
+	const globalIndicator = ( colorVal && colorVal.includes( 'var' ) ) ? 'uag-global-indicator' : '';
+
 	return (
 		<div className="uagb-color-popover-container components-base-control new-uagb-advanced-colors">
 			<div className="uagb-advanced-color-settings-container">
@@ -215,7 +217,7 @@ const AdvancedPopColorControl = ( props ) => {
 								onClick={ toggleClose }
 							>	
 								<ColorIndicator
-									className="uagb-advanced-color-indicate"
+									className={`uagb-advanced-color-indicate ${globalIndicator}`}
 									colorValue={ colorVal }
 								/>
 								{ '' === colorVal && value.inherit && (
@@ -245,7 +247,7 @@ const AdvancedPopColorControl = ( props ) => {
 								onClick={ toggleVisible }
 							>
 								<ColorIndicator
-									className="uagb-advanced-color-indicate"
+									className={`uagb-advanced-color-indicate ${globalIndicator}`}
 									colorValue={ colorVal }
 								/>
 								{ '' === colorVal && value.inherit && (
