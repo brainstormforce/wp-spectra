@@ -87,18 +87,24 @@ const Render = ( props ) => {
 
 	const active = isSelected ? 'active' : 'not-active';
 
+	const bgType = ( undefined !== backgroundType ) ? `uagb-columns__background-${ backgroundType }` : '';
+
+	const verticalAlign = ( undefined !== vAlign ) ? `uagb-columns__valign-${ vAlign }` : '';
+
+	const alignType = ( undefined !== align ) ? `align${ align }` : '';
+
 	return (
 		<CustomTag
 			className={ classnames(
 				className,
 				'uagb-columns__wrap',
-				`uagb-columns__background-${ backgroundType }`,
+				`${ bgType }`,
 				`uagb-columns__edit-${ active }`,
 				`uagb-editor-preview-mode-${ deviceType.toLowerCase() }`,
 				`uagb-columns__stack-${ stack }`,
-				`uagb-columns__valign-${ vAlign }`,
+				`${ verticalAlign }`,
 				`uagb-columns__gap-${ columnGap }`,
-				`align${ align }`,
+				`${ alignType }`,
 				reverseTabletClass,
 				reverseMobileClass,
 				`uagb-block-${ props.parentProps.clientId.substr( 0, 8 ) }`,

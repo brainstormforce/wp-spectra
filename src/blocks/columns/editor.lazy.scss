@@ -175,8 +175,8 @@
 		display: flex;
 		flex-wrap: nowrap;
 		justify-content: space-between;
-		margin-left: 0;
-		margin-right: 0;
+		margin-left: auto;
+		margin-right: auto;
 
 		> [data-type="uagb/column"] {
 			display: flex;
