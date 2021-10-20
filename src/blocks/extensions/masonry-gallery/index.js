@@ -6,12 +6,23 @@ import { addFilter } from '@wordpress/hooks';
 const { enableMasonryGallery } = uagb_blocks_info;
 import generateCSSUnit from '@Controls/generateCSSUnit';
 import generateCSS from '@Controls/generateCSS';
+import styles from './../editor.lazy.scss';
+import React, { useLayoutEffect } from 'react';
+
 
 const MasonryGallery = createHigherOrderComponent( ( BlockEdit ) => {
+
 	return ( props ) => {
 		const { attributes, setAttributes, isSelected } = props;
 		const blockName = props.name;
 		const blockType = [ 'core/gallery' ];
+
+		useLayoutEffect( () => {
+			styles.use();
+			return () => {
+				styles.unuse();
+			};
+		}, [] );
 
 		/**
 		 * Generates CSS for the given values for editor.
