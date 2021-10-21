@@ -97,10 +97,6 @@
 	.uag-typography-transform-decoration-wrap {
 		display: flex;
 		justify-content: space-between;
-
-		/*.components-base-control__field {
-			margin-bottom: 0;
-		}*/
 	}
 
 	/* Font options - family width subset */
@@ -111,6 +107,41 @@
 		.uag-typography-font-family {
 			display: flex;
 			width: 100%;
+			flex-direction: column;
+
+			& > label {
+				padding-bottom: 4px;
+			}
+
+			.uag-font-family-select__input input {
+				box-shadow: none;
+				border: none;
+				min-height: 22px;
+			}
+
+			.uag-font-family-select__control:hover {
+				border: 1px solid #757575;
+			}
+
+			.uag-font-family-select__menu {
+				z-index: 99999;
+			}
+
+			.uag-font-family-select__indicators {
+				height: 30px;
+			}
+
+			.uag-font-family-select__dropdown-indicator {
+
+				svg {
+					height: 14px;
+					width: 14px;
+				}
+			}
+
+			.uag-font-family-select__dropdown-indicator:hover {
+				color: #000;
+			}
 		}
 
 		.uag-typography-font-family-subset {
@@ -123,28 +154,11 @@
 		}
 	}
 
-	/*.components-toggle-control
-		.components-base-control__field
-		.components-form-toggle {
-		padding: 0;
-		margin: 0;
-	}*/
-
 	/* Range options */
 	.uag-typography-range-options {
 
 		margin-bottom: 16px;
-
-		/*.components-base-control__label {
-			width: auto;
-			display: block;
-			margin-bottom: 8px;
-		}*/
 	}
-
-	/*.components-button-group.uagb-size-type-field {
-		padding-right: 26px;
-	}*/
 
 	.uag-typography-transform,
 	.uag-typography-decoration,
@@ -153,11 +167,4 @@
 		display: flex;
 		width: 48%;
 	}
-}
-
-.uag-typography-options.active {
-
-	/*.uag-typography-option-actions {
-		margin: unset;
-	}*/
 }
