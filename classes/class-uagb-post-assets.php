@@ -558,6 +558,9 @@ class UAGB_Post_Assets {
 			if ( ! empty( $gfont_values['fontvariants'] ) ) {
 				$fonts_attr .= ':';
 				$fonts_attr .= implode( ',', $gfont_values['fontvariants'] );
+				foreach ( $gfont_values['fontvariants'] as $key => $font_variants ) {
+					$fonts_attr .= ',' . $font_variants . 'italic';
+				}
 			}
 		}
 
@@ -657,7 +660,7 @@ class UAGB_Post_Assets {
 	 */
 	public function print_google_fonts() {
 
-		if ( empty( $this->gfonts ) ) {
+		if ( empty( $this->gfonts_url ) ) {
 			return;
 		}
 
@@ -665,27 +668,9 @@ class UAGB_Post_Assets {
 		if ( ! $show_google_fonts ) {
 			return;
 		}
-		$link = '';
 
-		foreach ( $this->gfonts as $key => $gfont_values ) {
-			if ( ! empty( $link ) ) {
-				$link .= '%7C'; // Append a new font to the string.
-			}
-			$link .= $gfont_values['fontfamily'];
-			if ( ! empty( $gfont_values['fontvariants'] ) ) {
-				$link .= ':';
-				$link .= implode( ',', $gfont_values['fontvariants'] );
-			}
-		}
-
-		$subsets = apply_filters( 'uag_font_subset', array() );
-
-		if ( ! empty( $subsets ) ) {
-			$link .= '&amp;subset=' . implode( ',', $subsets );
-		}
-
-		if ( isset( $link ) && ! empty( $link ) ) {
-			echo '<link href="//fonts.googleapis.com/css?family=' . esc_attr( str_replace( '|', '%7C', $link ) ) . '" rel="stylesheet">'; //phpcs:ignore WordPress.WP.EnqueuedResources.NonEnqueuedStylesheet
+		if ( ! empty( $this->gfonts_url ) ) {
+			echo '<link href="' . esc_url( $this->gfonts_url ) . '" rel="stylesheet">'; //phpcs:ignore WordPress.WP.EnqueuedResources.NonEnqueuedStylesheet
 		}
 	}
 
