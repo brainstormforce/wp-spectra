@@ -60,7 +60,7 @@ const UAGBTeam = ( props ) => {
 				props.setAttributes( { imageBottomMargin: imgBottomMargin } );
 			}
 		}
-
+	
 		if ( imgLeftMargin ) {
 			if ( ! imageLeftMargin ) {
 				props.setAttributes( { imageLeftMargin: imgLeftMargin } );
