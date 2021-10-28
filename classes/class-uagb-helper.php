@@ -1288,6 +1288,41 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 				}
 			}
 		}
+
+		/**
+		 * Get the excerpt.
+		 *
+		 * @param int    $post_id for the block.
+		 * @param string $content for post content.
+		 * @param int    $length for excerpt.
+		 *
+		 * @since 2.0.0
+		 */
+		public static function uagb_get_excerpt( $post_id, $content, $length ) {
+
+			// If there's an excerpt provided from meta, use it.
+			$excerpt = get_post_field( 'post_excerpt', $post_id );
+
+			if ( empty( $excerpt ) ) { // If no excerpt provided from meta.
+				$max_excerpt = 100;
+				// If the content present on post, then trim it and use that.
+				if ( ! empty( $content ) ) {
+					$excerpt = apply_filters( 'the_excerpt', wp_trim_words( $content, $max_excerpt ) );
+				}
+			}
+			// Trim the excerpt.
+			if ( ! empty( $excerpt ) ) {
+				$excerpt        = explode( ' ', $excerpt );
+				$trim_to_length = ( isset( $length ) ) ? $length : 15;
+				if ( count( $excerpt ) > $trim_to_length ) {
+					$excerpt = implode( ' ', array_slice( $excerpt, 0, $trim_to_length ) ) . '...';
+				} else {
+					$excerpt = implode( ' ', $excerpt );
+				}
+			}
+
+			return empty( $excerpt ) ? '' : $excerpt;
+		}
 	}
 
 	/**

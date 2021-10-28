@@ -1,7 +1,7 @@
 export const PostExcerpt = ( props ) => {
 	const { post, attributes } = props;
-
-	if ( post.uagb_excerpt == undefined ) {  // eslint-disable-line eqeqeq
+	
+	if ( null === post.uagb_excerpt ) {
 		return null;
 	}
 

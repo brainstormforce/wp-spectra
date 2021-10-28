@@ -176,6 +176,7 @@ The awesome React FontIconPicker is developed by [Alessandro Benoit](http://code
 * Improvement: Refactored the UAG blocks' code & improved editor performance drastically.
 * Improvement: Typography control - Added text-transform, text-decoration and font-style options.
 * Fix: Call to undefined function `twentyseventeen_panel_count()` when previewing another theme from the customizer.
+* Fix: Posts - Excerpt Layout Strips Shortcodes on Frontend.
 * Fix: Marketing Button - Validation issue when Title Tag set to p.
 * Fix: Table of contents - Removed empty li tags from Table of contents markup.
 

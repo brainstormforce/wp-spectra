@@ -895,7 +895,10 @@ if ( ! class_exists( 'UAGB_Post_Timeline' ) ) {
 				return;
 			}
 
-			$excerpt = wp_trim_words( get_the_excerpt(), $attributes['exerptLength'] );
+			global $post;
+
+			$excerpt = UAGB_Helper::uagb_get_excerpt( $post->ID, $post->post_content, $attributes['exerptLength'] );
+
 			if ( ! $excerpt ) {
 				$excerpt = null;
 			}
