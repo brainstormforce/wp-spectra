@@ -778,7 +778,7 @@
 	.uagb-tabs__wrap.uagb-tabs__stack3-mobile,
 	.uagb-tabs__wrap.uagb-tabs__stack4-mobile {
 		border-style: none;
-		display: grid;
+		display: block;
 
 		ul.uagb-tabs__panel {
 			margin: 0;
@@ -803,7 +803,7 @@
 
 	.uagb-tabs__wrap.uagb-tabs__stack1-mobile {
 		border-style: none;
-		display: grid;
+		display: block;
 
 		ul.uagb-tabs__panel {
 			margin: 0;

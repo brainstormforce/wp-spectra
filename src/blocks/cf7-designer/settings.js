@@ -1032,7 +1032,7 @@ const Settings = ( props ) => {
 					value: buttonBorderStyle,
 					label: 'buttonBorderStyle',
 					title: __(
-						'Border Style',
+						'Style',
 						'ultimate-addons-for-gutenberg'
 					),
 				} }

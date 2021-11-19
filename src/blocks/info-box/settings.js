@@ -15,15 +15,13 @@ import Range from '@Components/range/Range.js';
 import ResponsiveSlider from '@Components/responsive-slider';
 import UAGImage from '@Components/image';
 import MultiButtonsControl from '@Components/multi-buttons-control';
-import jQuery from 'jquery';
 import UAGTabsControl from '@Components/tabs';
-
 import {
 	AlignmentToolbar,
 	BlockControls,
 	InspectorControls,
 } from '@wordpress/block-editor';
-
+import { getImageSize } from '@Utils/Helpers';
 import {
 	PanelBody,
 	SelectControl,
@@ -218,16 +216,6 @@ const Settings = ( props ) => {
 			imageSizeOptions = new_img;
 		}
 		setAttributes( { iconImage: media } );
-	};
-
-	const getImageSize = ( sizes ) => {
-		const sizeArr = [];
-		jQuery.each( sizes, function ( index ) {
-			const name = index;
-			const p = { value: name, label: name };
-			sizeArr.push( p );
-		} );
-		return sizeArr;
 	};
 
 	/*
@@ -895,7 +883,7 @@ const Settings = ( props ) => {
 												}
 											/>
 										}
-										hover={ 
+										hover={
 											<AdvancedPopColorControl
 												label={ __(
 													'Color',
@@ -911,7 +899,7 @@ const Settings = ( props ) => {
 												}
 											/>
 										 }
-										disableBottomSeparator={ true }
+										disableBottomSeparator={ false }
 									/>
 									<Range
 										label={ __(
@@ -1555,7 +1543,7 @@ const Settings = ( props ) => {
 										}
 									/>
 								}
-								hover={ 
+								hover={
 									<AdvancedPopColorControl
 										label={ __(
 											'Text Color',
@@ -1571,7 +1559,7 @@ const Settings = ( props ) => {
 										}
 									/>
 									}
-								disableBottomSeparator={ true }
+								// disableBottomSeparator={ true }
 							/>
 							<TypographyControl
 								label={ __(
@@ -1632,8 +1620,8 @@ const Settings = ( props ) => {
 							<>
 								{ ! inheritFromTheme && ctaType === 'button' && (
 									<>
-										
-										
+
+
 										<UAGTabsControl
 								tabs={ [
 									{
@@ -1683,7 +1671,7 @@ const Settings = ( props ) => {
 											}
 										/>
 								}
-								hover={ 
+								hover={
 									<AdvancedPopColorControl
 											label={ __(
 												'Button Text Color',
@@ -1717,7 +1705,7 @@ const Settings = ( props ) => {
 											}
 										/>
 									}
-								disableBottomSeparator={ true }
+								// disableBottomSeparator={ true }
 							/>
 									</>
 								) }
@@ -1805,7 +1793,7 @@ const Settings = ( props ) => {
 													}
 												/>
 										}
-										hover={ 
+										hover={
 											<AdvancedPopColorControl
 													label={ __(
 														'Text Color',
@@ -1823,7 +1811,7 @@ const Settings = ( props ) => {
 													}
 												/>
 											}
-										disableBottomSeparator={ true }
+										// disableBottomSeparator={ true }
 									/>
 									</>
 								) }
@@ -1961,7 +1949,7 @@ const Settings = ( props ) => {
 											value: ctaBorderStyle,
 											label: 'ctaBorderStyle',
 											title: __(
-												'Border Style',
+												'Style',
 												'ultimate-addons-for-gutenberg'
 											),
 										} }
@@ -1997,6 +1985,7 @@ const Settings = ( props ) => {
 												'ultimate-addons-for-gutenberg'
 											),
 										} }
+										disableBottomSeparator={ true }
 									/>
 								) }
 							</>

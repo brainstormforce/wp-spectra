@@ -14,7 +14,6 @@ const Settings = lazy( () =>
 const Render = lazy( () =>
 	import( /* webpackChunkName: "chunks/review/render" */ './render' )
 );
-import jQuery from 'jquery';
 let prevState;
 
 const ReviewComponent = ( props ) => {
@@ -84,10 +83,12 @@ const ReviewComponent = ( props ) => {
 		if ( null !== element && undefined !== element ) {
 			element.innerHTML = styling( props );
 		}
-
-		jQuery( '.uagb-rating-link-wrapper' ).on( 'click', function ( event ) {
-			event.preventDefault();
-		} );
+		const ratingLinkWrapper = document.querySelector( '.uagb-rating-link-wrapper' );
+		if( ratingLinkWrapper !== null ){
+			ratingLinkWrapper.addEventListener( 'click', function ( event ) {
+				event.preventDefault();
+			} );
+		}
 	}, [ props ] );
 
 	// Setup the attributes
@@ -239,6 +240,7 @@ export default compose(
 			'reviewRating': {
 				'@type': 'Rating',
 				'ratingValue': newAverage,
+				'worstRating': '0',
 				'bestRating': ownProps.attributes.starCount,
 			},
 			'author': {

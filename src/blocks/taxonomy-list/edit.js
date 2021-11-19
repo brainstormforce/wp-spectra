@@ -4,7 +4,7 @@
 
 import styling from './styling';
 import React, { lazy, Suspense, useEffect } from 'react';
-import jQuery from 'jquery';
+import apiFetch from '@wordpress/api-fetch';
 import lazyLoader from '@Controls/lazy-loader';
 
 const Settings = lazy( () =>
@@ -106,19 +106,20 @@ const UAGBTaxonomyList = ( props ) => {
 				} );
 			}
 		}
+		const formData = new window.FormData();
 
-		jQuery.ajax( {
+		formData.append( 'action', 'uagb_get_taxonomy' );
+		formData.append(
+			'nonce',
+			uagb_blocks_info.uagb_ajax_nonce
+		);
+		apiFetch( {
 			url: uagb_blocks_info.ajax_url,
-			data: {
-				action: 'uagb_get_taxonomy',
-				nonce: uagb_blocks_info.uagb_ajax_nonce
-			},
-			dataType: 'json',
-			type: 'POST',
-			success( data ) {
-				props.setAttributes( { listInJson: data } );
-			},
-		} )
+			method: 'POST',
+			body: formData,
+		} ).then( ( data ) => {  
+			props.setAttributes( { listInJson: data } );
+		} );
 
 	}, [] );
 

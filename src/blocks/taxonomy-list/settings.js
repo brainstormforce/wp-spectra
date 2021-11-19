@@ -24,7 +24,7 @@ import {
 	ToggleControl,
 } from '@wordpress/components';
 import { InspectorControls } from '@wordpress/block-editor';
-
+import apiFetch from '@wordpress/api-fetch';
 const Settings = ( props ) => {
 	props = props.parentProps;
 
@@ -264,21 +264,23 @@ const Settings = ( props ) => {
 	);
 
 	const onSelectPostType = ( value ) => {
-		jQuery.ajax( {
+		const formData = new window.FormData();
+
+		formData.append( 'action', 'uagb_get_taxonomy' );
+		formData.append(
+			'nonce',
+			uagb_blocks_info.uagb_ajax_nonce
+		);
+		apiFetch( {
 			url: uagb_blocks_info.ajax_url,
-			data: {
-				action: 'uagb_get_taxonomy',
-				nonce: uagb_blocks_info.uagb_ajax_nonce
-			},
-			dataType: 'json',
-			type: 'POST',
-			success( data ) {
-				setAttributes( { listInJson: data } );
-				setAttributes( { postType: value } );
-				setAttributes( { categories: '' } );
-				setAttributes( { taxonomyType: '' } );
-			},
-		} )
+			method: 'POST',
+			body: formData,
+		} ).then( ( data ) => { 
+			setAttributes( { listInJson: data } );
+			setAttributes( { postType: value } );
+			setAttributes( { categories: '' } );
+			setAttributes( { taxonomyType: '' } );
+		} );
 	};
 
 	const onSelectTaxonomyType = ( value ) => {

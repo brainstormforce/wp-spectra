@@ -4,11 +4,10 @@ import InspectorTabs from '@Components/inspector-tabs/InspectorTabs.js';
 import InspectorTab, { UAGTabs } from '@Components/inspector-tabs/InspectorTab.js';
 import UAGImage from '@Components/image';
 import { InspectorControls } from '@wordpress/block-editor';
-import jQuery from 'jquery';
 import TypographyControl from '@Components/typography';
 import WebfontLoader from '@Components/typography/fontloader';
 import AdvancedPopColorControl from '@Components/color-control/advanced-pop-color-control.js';
-
+import { getImageSize } from '@Utils/Helpers';
 import {
 	PanelBody,
 	SelectControl,
@@ -93,15 +92,7 @@ const Settings = ( props ) => {
 		}
 		setAttributes( { image: media } );
 	};
-	const getImageSize = ( sizes ) => {
-		const sizeArr = [];
-		jQuery.each( sizes, function ( index ) {
-			const name = index;
-			const p = { value: name, label: name };
-			sizeArr.push( p );
-		} );
-		return sizeArr;
-	};
+	
 	/*
 	 * Event to set Image as null while removing.
 	 */

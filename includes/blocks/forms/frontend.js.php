@@ -28,7 +28,7 @@ $js_attr  = array(
 );
 ob_start();
 ?>
-jQuery( document ).ready(function() {
+window.addEventListener("DOMContentLoaded", function(){
 	UAGBForms.init( <?php echo wp_json_encode( $js_attr ); ?>, '<?php echo esc_attr( $selector ); ?>' );
 });
 <?php

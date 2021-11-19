@@ -16,8 +16,8 @@ import InspectorTab, {
 import UAGImage from '@Components/image';
 import SpacingControl from '@Components/spacing-control';
 import MultiButtonsControl from '@Components/multi-buttons-control';
+import { getImageSize } from '@Utils/Helpers';
 
-import jQuery from 'jquery';
 import {
 	PanelBody,
 	SelectControl,
@@ -222,16 +222,6 @@ const Settings = ( props ) => {
 
 	const toggleTarget = () => {
 		setAttributes( { ctaTarget: ! ctaTarget } );
-	};
-
-	const getImageSize = ( sizes ) => {
-		const sizeArr = [];
-		jQuery.each( sizes, function ( index ) {
-			const name = index;
-			const p = { value: name, label: name };
-			sizeArr.push( p );
-		} );
-		return sizeArr;
 	};
 
 	const authorSettings = () => {

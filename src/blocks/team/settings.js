@@ -15,8 +15,7 @@ import SpacingControl from '@Components/spacing-control';
 import MultiButtonsControl from '@Components/multi-buttons-control';
 import UAGImage from '@Components/image';
 import UAGTabsControl from '@Components/tabs';
-import jQuery from 'jquery';
-
+import { getImageSize } from '@Utils/Helpers';
 let imageSizeOptions = [
 	{
 		value: 'thumbnail',
@@ -156,16 +155,6 @@ const Settings = ( props ) => {
 			imageSizeOptions = new_img;
 		}
 		setAttributes( { image: media } );
-	};
-
-	const getImageSize = ( sizes ) => {
-		const sizeArr = [];
-		jQuery.each( sizes, function ( index ) {
-			const name = index;
-			const p = { value: name, label: name };
-			sizeArr.push( p );
-		} );
-		return sizeArr;
 	};
 
 	/*

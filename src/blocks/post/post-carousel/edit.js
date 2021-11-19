@@ -1616,13 +1616,13 @@ const UAGBPostCarousel = ( props ) => {
 					} }
 				/>
 				<Border
-					disableBottomSeparator={ true }
+					disableBottomSeparator={ false }
 					setAttributes={ setAttributes }
 					borderStyle={ {
 						value: borderStyle,
 						label: 'borderStyle',
 						title: __(
-							'Border Style',
+							'Style',
 							'ultimate-addons-for-gutenberg'
 						),
 					} }
@@ -1630,7 +1630,7 @@ const UAGBPostCarousel = ( props ) => {
 						value: borderWidth,
 						label: 'borderWidth',
 						title: __(
-							'Border Width',
+							'Width',
 							'ultimate-addons-for-gutenberg'
 						),
 					} }
@@ -1638,7 +1638,7 @@ const UAGBPostCarousel = ( props ) => {
 						value: borderRadius,
 						label: 'borderRadius',
 						title: __(
-							'Border Radius',
+							'Radius',
 							'ultimate-addons-for-gutenberg'
 						),
 					} }
@@ -1646,7 +1646,7 @@ const UAGBPostCarousel = ( props ) => {
 						value: borderColor,
 						label: 'borderColor',
 						title: __(
-							'Border Color',
+							'Color',
 							'ultimate-addons-for-gutenberg'
 						),
 					} }
@@ -1654,7 +1654,7 @@ const UAGBPostCarousel = ( props ) => {
 						value: borderHColor,
 						label: 'borderHColor',
 						title: __(
-							'Border Hover Color',
+							'Hover Color',
 							'ultimate-addons-for-gutenberg'
 						),
 					} }

@@ -47,6 +47,7 @@ const Border = ( props ) => {
 	);
 	const advancedControls = (
 		<>
+			<h2>{ __( 'Border', 'ultimate-addons-for-gutenberg' ) }</h2>
 			<div className="uag-border-type">
 				<SelectControl
 					label={ borderStyle.title }

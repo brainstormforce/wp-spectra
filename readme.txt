@@ -179,6 +179,7 @@ The awesome React FontIconPicker is developed by [Alessandro Benoit](http://code
 * Fix: Posts - Excerpt Layout Strips Shortcodes on Frontend.
 * Fix: Marketing Button - Validation issue when Title Tag set to p.
 * Fix: Table of contents - Removed empty li tags from Table of contents markup.
+* Fix: Blockquote - Tweet content not shown in tweet box when double and single quotes are used.
 
 = 1.25.0 – MONDAY, 4TH OCTOBER 2021 =
 * New: Introduced Wireframe Blocks.

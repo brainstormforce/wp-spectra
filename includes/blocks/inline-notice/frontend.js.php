@@ -18,8 +18,8 @@ $js_attr       = array(
 
 ob_start();
 ?>
-jQuery( document ).ready(function() {
-	UAGBInlineNotice._run( <?php echo wp_json_encode( $js_attr ); ?>, '<?php echo esc_attr( $selector ); ?>' );
+window.addEventListener( 'DOMContentLoaded', function() {
+	UAGBInlineNotice.init( <?php echo wp_json_encode( $js_attr ); ?>, '<?php echo esc_attr( $selector ); ?>' );
 });
 <?php
 return ob_get_clean();

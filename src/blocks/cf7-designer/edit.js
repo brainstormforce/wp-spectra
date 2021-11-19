@@ -1,7 +1,7 @@
 import styling from './styling';
 import React, { lazy, useEffect, Suspense } from 'react';
 import lazyLoader from '@Controls/lazy-loader';
-import jQuery from 'jquery';
+import apiFetch from '@wordpress/api-fetch';
 const Settings = lazy( () =>
 	import( /* webpackChunkName: "chunks/cf7-styler/settings" */ './settings' )
 );
@@ -101,9 +101,12 @@ const UAGBCF7 = ( props ) => {
 	}, [] );
 
 	useEffect( () => {
-		jQuery( '.wpcf7-submit' ).click( function ( event ) {
-			event.preventDefault();
-		} );
+		const submitButton = document.querySelector( '.wpcf7-submit' );
+		if( submitButton !== null ){
+			submitButton.addEventListener( 'click', function ( event ) {
+				event.preventDefault();
+			} );
+		}
 		const element = document.getElementById(
 			'uagb-cf7-styler-' + props.clientId.substr( 0, 8 )
 		);
@@ -127,20 +130,23 @@ export default withSelect( ( select, props ) => {
 	let jsonData = '';
 
 	if ( formId && -1 !== formId && 0 !== formId && ! isHtml ) {
-		jQuery.ajax( {
+		const formData = new window.FormData();
+
+		formData.append( 'action', 'uagb_cf7_shortcode' );
+		formData.append(
+			'nonce',
+			uagb_blocks_info.uagb_ajax_nonce
+		);
+		formData.append( 'formId', formId );
+
+		apiFetch( {
 			url: uagb_blocks_info.ajax_url,
-			data: {
-				action: 'uagb_cf7_shortcode',
-				formId,
-				nonce: uagb_blocks_info.uagb_ajax_nonce,
-			},
-			dataType: 'json',
-			type: 'POST',
-			success( data ) {
-				setAttributes( { isHtml: true } );
-				setAttributes( { formJson: data } );
-				jsonData = data;
-			},
+			method: 'POST',
+			body: formData,
+		} ).then( ( data ) => {  
+			setAttributes( { isHtml: true } );
+			setAttributes( { formJson: data } );
+			jsonData = data;
 		} );
 	}
 

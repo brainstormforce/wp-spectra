@@ -65,9 +65,8 @@ if ( ! class_exists( 'UAGB_Forms' ) ) {
 		 */
 		public function process_forms() {
 			check_ajax_referer( 'uagb_forms_ajax_nonce', 'nonce' );
-
 			// Google recaptcha secret key verification starts.
-			$uagb_google_recaptcha_verify = isset( $_POST['uagab_captcha_keys'] ) ? 1 : 0;
+			$uagb_google_recaptcha_verify = isset( $_POST['uagab_captcha_keys'] ) && '' !== $_POST['uagab_captcha_keys'] ? 1 : 0;
 
 			if ( $uagb_google_recaptcha_verify ) {
 
@@ -93,7 +92,7 @@ if ( ! class_exists( 'UAGB_Forms' ) ) {
 				}
 			}
 
-			$form_data = $_POST['form_data'];
+			$form_data = isset( $_POST['form_data'] ) ? json_decode( stripslashes( $_POST['form_data'] ), true ) : array(); // phpcs:ignore
 
 			$body  = '';
 			$body .= '<div style="border: 50px solid #f6f6f6;">';
@@ -120,7 +119,6 @@ if ( ! class_exists( 'UAGB_Forms' ) ) {
 			$body .= '<p style="text-align:center;">This e-mail was sent from a ' . get_bloginfo( 'name' ) . ' ( ' . site_url() . ' )</p>';
 			$body .= '</div>';
 			$body .= '</div>';
-
 			$this->send_email( $body );
 
 		}
@@ -134,8 +132,9 @@ if ( ! class_exists( 'UAGB_Forms' ) ) {
 		 * @since 1.22.0
 		 */
 		public function send_email( $body ) {
+
 			check_ajax_referer( 'uagb_forms_ajax_nonce', 'nonce' );
-			$after_submit_data = isset( $_POST['after_submit_data'] ) ? $_POST['after_submit_data'] : '';
+			$after_submit_data = isset( $_POST['after_submit_data'] ) ? json_decode( stripslashes( $_POST['after_submit_data'] ), true ) : array(); // phpcs:ignore
 
 			$to      = isset( $after_submit_data['to'] ) ? sanitize_email( $after_submit_data['to'] ) : sanitize_email( get_option( 'admin_email' ) );
 			$cc      = isset( $after_submit_data['cc'] ) ? sanitize_email( $after_submit_data['cc'] ) : '';
@@ -164,11 +163,6 @@ if ( ! class_exists( 'UAGB_Forms' ) ) {
 			}
 
 		}
-
-
-
-
-
 	}
 
 	/**
@@ -177,3 +171,4 @@ if ( ! class_exists( 'UAGB_Forms' ) ) {
 	 */
 	UAGB_Forms::get_instance();
 }
+

@@ -981,7 +981,7 @@ const UAGBPostMasonry = ( props ) => {
 										/>
 									</>
 								}
-								disableBottomSeparator={ true }
+								disableBottomSeparator={ false }
 							/>
 							<Border
 								setAttributes={ setAttributes }
@@ -990,7 +990,7 @@ const UAGBPostMasonry = ( props ) => {
 									value: paginationMasonryBorderStyle,
 									label: 'paginationMasonryBorderStyle',
 									title: __(
-										'Border Style',
+										'Style',
 										'ultimate-addons-for-gutenberg'
 									),
 								} }
@@ -998,7 +998,7 @@ const UAGBPostMasonry = ( props ) => {
 									value: paginationMasonryBorderWidth,
 									label: 'paginationMasonryBorderWidth',
 									title: __(
-										'Border Width',
+										'Width',
 										'ultimate-addons-for-gutenberg'
 									),
 								} }
@@ -1006,7 +1006,7 @@ const UAGBPostMasonry = ( props ) => {
 									value: paginationMasonryBorderRadius,
 									label: 'paginationMasonryBorderRadius',
 									title: __(
-										'Border Radius',
+										'Radius',
 										'ultimate-addons-for-gutenberg'
 									),
 								} }
@@ -1014,7 +1014,7 @@ const UAGBPostMasonry = ( props ) => {
 									value: paginationMasonryBorderColor,
 									label: 'paginationMasonryBorderColor',
 									title: __(
-										'Border Color',
+										'Color',
 										'ultimate-addons-for-gutenberg'
 									),
 								} }
@@ -1022,7 +1022,7 @@ const UAGBPostMasonry = ( props ) => {
 									value: paginationMasonryBorderHColor,
 									label: 'paginationMasonryBorderHColor',
 									title: __(
-										'Border Hover Color',
+										'Hover Color',
 										'ultimate-addons-for-gutenberg'
 									),
 								} }
@@ -1983,12 +1983,12 @@ const UAGBPostMasonry = ( props ) => {
 				/>
 				<Border
 					setAttributes={ setAttributes }
-					disableBottomSeparator={ true }
+					disableBottomSeparator={ false }
 					borderStyle={ {
 						value: borderStyle,
 						label: 'borderStyle',
 						title: __(
-							'Border Style',
+							'Style',
 							'ultimate-addons-for-gutenberg'
 						),
 					} }
@@ -1996,7 +1996,7 @@ const UAGBPostMasonry = ( props ) => {
 						value: borderWidth,
 						label: 'borderWidth',
 						title: __(
-							'Border Width',
+							'Width',
 							'ultimate-addons-for-gutenberg'
 						),
 					} }
@@ -2004,7 +2004,7 @@ const UAGBPostMasonry = ( props ) => {
 						value: borderRadius,
 						label: 'borderRadius',
 						title: __(
-							'Border Radius',
+							'Radius',
 							'ultimate-addons-for-gutenberg'
 						),
 					} }
@@ -2012,7 +2012,7 @@ const UAGBPostMasonry = ( props ) => {
 						value: borderColor,
 						label: 'borderColor',
 						title: __(
-							'Border Color',
+							'Color',
 							'ultimate-addons-for-gutenberg'
 						),
 					} }
@@ -2020,7 +2020,7 @@ const UAGBPostMasonry = ( props ) => {
 						value: borderHColor,
 						label: 'borderHColor',
 						title: __(
-							'Border Hover Color',
+							'Hover Color',
 							'ultimate-addons-for-gutenberg'
 						),
 					} }

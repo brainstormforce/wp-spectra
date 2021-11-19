@@ -951,6 +951,42 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 				),
 
 				// Spacing Attributes.
+				'paddingTop'              => array(
+					'type' => 'number',
+				),
+				'paddingBottom'           => array(
+					'type' => 'number',
+				),
+				'paddingRight'            => array(
+					'type' => 'number',
+				),
+				'paddingLeft'             => array(
+					'type' => 'number',
+				),
+				'paddingTopMobile'        => array(
+					'type' => 'number',
+				),
+				'paddingBottomMobile'     => array(
+					'type' => 'number',
+				),
+				'paddingRightMobile'      => array(
+					'type' => 'number',
+				),
+				'paddingLeftMobile'       => array(
+					'type' => 'number',
+				),
+				'paddingBtnTop'           => array(
+					'type' => 'number',
+				),
+				'paddingBtnBottom'        => array(
+					'type' => 'number',
+				),
+				'paddingBtnRight'         => array(
+					'type' => 'number',
+				),
+				'paddingBtnLeft'          => array(
+					'type' => 'number',
+				),
 				'contentPadding'          => array(
 					'type'    => 'number',
 					'default' => 20,
@@ -1254,17 +1290,47 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 
 			check_ajax_referer( 'uagb_ajax_nonce', 'nonce' );
 
+			$post_attribute_array = array();
+
 			if ( isset( $_POST['attributes'] ) ) {
 
-				$query = UAGB_Helper::get_query( $_POST['attributes'], 'grid' );
+				$attr = isset( $_POST['attributes'] ) ? json_decode( stripslashes( $_POST['attributes'] ), true ) : array();
 
-				$pagination_markup = $this->render_pagination( $query, $_POST['attributes'] );
+				$post_attribute_array = $this->required_attribute_for_query( $attr );
+
+				$query = UAGB_Helper::get_query( $post_attribute_array, 'grid' );
+
+				$pagination_markup = $this->render_pagination( $query, $attr );
 
 				wp_send_json_success( $pagination_markup );
 			}
 
 			wp_send_json_error( ' No attributes recieved' );
 		}
+
+		/**
+		 * Required attribute for query.
+		 *
+		 * @param array $attributes plugin.
+		 * @return array of requred query attributes.
+		 * @since x.x.x
+		 */
+		public function required_attribute_for_query( $attributes ) {
+
+			return array(
+				'postsToShow'        => ( isset( $attributes['postsToShow'] ) ) ? sanitize_text_field( $attributes['postsToShow'] ) : 6,
+				'postType'           => ( isset( $attributes['postType'] ) ) ? sanitize_text_field( $attributes['postType'] ) : 'post',
+				'order'              => ( isset( $attributes['order'] ) ) ? sanitize_text_field( $attributes['order'] ) : 'desc',
+				'orderBy'            => ( isset( $attributes['orderBy'] ) ) ? sanitize_text_field( $attributes['orderBy'] ) : 'date',
+				'excludeCurrentPost' => ( ! empty( $attr['excludeCurrentPost'] ) ) ? sanitize_text_field( $attributes['excludeCurrentPost'] ) : false,
+				'categories'         => ( isset( $attributes['categories'] ) && '' !== $attributes['categories'] ) ? sanitize_text_field( $attributes['categories'] ) : '',
+				'taxonomyType'       => ( isset( $attributes['taxonomyType'] ) ) ? sanitize_text_field( $attributes['taxonomyType'] ) : 'category',
+				'postPagination'     => ( isset( $attributes['postPagination'] ) && true === $attributes['postPagination'] ) ? sanitize_text_field( $attributes['postPagination'] ) : false,
+				'paginationType'     => ( isset( $attributes['paginationType'] ) && 'none' !== $attributes['paginationType'] ) ? sanitize_text_field( $attributes['paginationType'] ) : 'none',
+				'paged'              => ( isset( $attributes['paged'] ) ) ? sanitize_text_field( $attributes['paged'] ) : '',
+			);
+		}
+
 		/**
 		 * Sends the Posts to Masonry AJAX.
 		 *
@@ -1274,11 +1340,15 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 
 			check_ajax_referer( 'uagb_masonry_ajax_nonce', 'nonce' );
 
-			$attr = $_POST['attr'];
+			$post_attribute_array = array();
+
+			$attr = isset( $_POST['attr'] ) ? json_decode( stripslashes( $_POST['attr'] ), true ) : array();
 
 			$attr['paged'] = $_POST['page_number'];
 
-			$query = UAGB_Helper::get_query( $attr, 'masonry' );
+			$post_attribute_array = $this->required_attribute_for_query( $attr );
+
+			$query = UAGB_Helper::get_query( $post_attribute_array, 'masonry' );
 
 			foreach ( $attr as $key => $attribute ) {
 				$attr[ $key ] = ( 'false' === $attribute ) ? false : ( ( 'true' === $attribute ) ? true : $attribute );
@@ -1301,6 +1371,7 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 		public function posts_articles_markup( $query, $attributes ) {
 
 			while ( $query->have_posts() ) {
+
 				$query->the_post();
 				// Filter to modify the attributes based on content requirement.
 				$attributes         = apply_filters( 'uagb_post_alter_attributes', $attributes, get_the_ID() );
@@ -1374,20 +1445,16 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 					?>
 					<script type="text/javascript" id="uagb-post-masonry-script-<?php echo esc_html( $key ); ?>">
 						document.addEventListener("DOMContentLoaded", function(){
-							( function( $ ) {
-
-								var $scope = $( '.uagb-block-<?php echo esc_html( $key ); ?>' );
-								$scope.imagesLoaded( function() {
-									$scope.find( '.is-masonry' ).isotope();
-								});
-
-								$( window ).resize( function() {
-									$scope.find( '.is-masonry' ).isotope();
+							let scope = document.querySelector( '.uagb-block-<?php echo esc_html( $key ); ?>' );
+							const element = scope.querySelector( '.is-masonry' );
+							const isotope = new Isotope( element, { // eslint-disable-line no-undef
+									itemSelector: 'article',
 								} );
-							} )( jQuery );
+							imagesLoaded( element, function() { isotope	});
+							window.addEventListener( 'resize', function() {	isotope	});
 						});
 						<?php $selector = '.uagb-block-' . $key; ?>
-						jQuery( document ).ready(function() {
+						window.addEventListener( 'DOMContentLoaded', function() {
 							UAGBPostMasonry._init( <?php echo wp_json_encode( $value ); ?>, '<?php echo esc_attr( $selector ); ?>' );
 						});
 					</script>
@@ -1411,7 +1478,6 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 							( function( $ ) {
 								var cols = parseInt( '<?php echo esc_html( $value['columns'] ); ?>' );
 								var $scope = $( '.uagb-block-<?php echo esc_html( $key ); ?>' ).find( '.is-carousel' );
-
 								if ( cols >= $scope.children().length ) {
 									return;
 								}
@@ -1448,11 +1514,12 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 
 								$scope.imagesLoaded( function() {
 									$scope.slick( slider_options );
+
 								});
 
 								var enableEqualHeight = ( '<?php echo esc_html( $equal_height ); ?>' )
 
-								if( enableEqualHeight ){
+								if( enableEqualHeight ){	
 									$scope.imagesLoaded( function() {
 										UAGBPostCarousel._setHeight( $scope );
 									});
@@ -1514,7 +1581,7 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 			$target = ( $attributes['newTab'] ) ? '_blank' : '_self';
 			do_action( "uagb_single_post_before_title_{$attributes['post_type']}", get_the_ID(), $attributes );
 			?>
-			<div class='uagb-post__text'> 
+			<div class='uagb-post__text'>
 				<<?php echo esc_html( $attributes['titleTag'] ); ?> class="uagb-post__title">
 					<a href="<?php echo esc_url( apply_filters( "uagb_single_post_link_{$attributes['post_type']}", get_the_permalink(), get_the_ID(), $attributes ) ); ?>" target="<?php echo esc_html( $target ); ?>" rel="bookmark noopener noreferrer"><?php the_title(); ?></a>
 				</<?php echo esc_html( $attributes['titleTag'] ); ?>>
@@ -1637,7 +1704,7 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 			$meta_sequence = array( 'author', 'date', 'comment', 'taxonomy' );
 			$meta_sequence = apply_filters( "uagb_single_post_meta_sequence_{$attributes['post_type']}", $meta_sequence, get_the_ID(), $attributes );
 			?>
-			<div class='uagb-post__text'> 
+			<div class='uagb-post__text'>
 			<div class="uagb-post-grid-byline">
 				<?php
 				foreach ( $meta_sequence as $key => $sequence ) {
@@ -1700,7 +1767,7 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 			$excerpt = apply_filters( "uagb_single_post_excerpt_{$attributes['post_type']}", $excerpt, get_the_ID(), $attributes );
 			do_action( "uagb_single_post_before_excerpt_{$attributes['post_type']}", get_the_ID(), $attributes );
 			?>
-				<div class='uagb-post__text'> 
+				<div class='uagb-post__text'>
 					<div class="uagb-post__excerpt">
 						<?php echo wp_kses_post( $excerpt ); ?>
 					</div>
@@ -1726,7 +1793,7 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 			$wrap_classes = ( true === $attributes['inheritFromTheme'] ) ? 'uagb-post__cta wp-block-button' : 'uagb-post__cta';
 			$link_classes = ( false === $attributes['inheritFromTheme'] ) ? 'uagb-post__link uagb-text-link' : 'wp-block-button__link uagb-text-link';
 			?>
-			<div class='uagb-post__text'> 
+			<div class='uagb-post__text'>
 				<div class="<?php echo esc_html( $wrap_classes ); ?>">
 					<a class="<?php echo esc_html( $link_classes ); ?>" href="<?php echo esc_url( apply_filters( "uagb_single_post_link_{$attributes['post_type']}", get_the_permalink(), get_the_ID(), $attributes ) ); ?>" target="<?php echo esc_html( $target ); ?>" rel="bookmark noopener noreferrer"><?php echo esc_html( $cta_text ); ?></a>
 				</div>

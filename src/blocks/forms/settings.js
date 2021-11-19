@@ -390,7 +390,7 @@ const Settings = ( props ) => {
 								value: successMessageBorderStyle,
 								label: 'successMessageBorderStyle',
 								title: __(
-									'Border Style',
+									'Style',
 									'ultimate-addons-for-gutenberg'
 								),
 							} }
@@ -476,7 +476,7 @@ const Settings = ( props ) => {
 								value: failedMessageBorderStyle,
 								label: 'failedMessageBorderStyle',
 								title: __(
-									'Border Style',
+									'Style',
 									'ultimate-addons-for-gutenberg'
 								),
 							} }
@@ -774,6 +774,41 @@ const Settings = ( props ) => {
 						</>
 					}
 				/>
+				<Border
+					setAttributes={ setAttributes }
+					borderStyle={ {
+						value: submitborderStyle,
+						label: 'submitborderStyle',
+						title: __(
+							'Style',
+							'ultimate-addons-for-gutenberg'
+						),
+					} }
+					borderWidth={ {
+						value: submitborderWidth,
+						label: 'submitborderWidth',
+						title: __( 'Width', 'ultimate-addons-for-gutenberg' ),
+					} }
+					borderRadius={ {
+						value: submitborderRadius,
+						label: 'submitborderRadius',
+						title: __( 'Radius', 'ultimate-addons-for-gutenberg' ),
+					} }
+					borderColor={ {
+						value: submitborderColor,
+						label: 'submitborderColor',
+						title: __( 'Color', 'ultimate-addons-for-gutenberg' ),
+					} }
+					borderHoverColor={ {
+						value: submitborderHoverColor,
+						label: 'submitborderHoverColor',
+						title: __(
+							'Hover Color',
+							'ultimate-addons-for-gutenberg'
+						),
+					} }
+					disableBottomSeparator={ false }
+				/>
 				<TypographyControl
 					label={ __(
 						'Typography',
@@ -837,41 +872,6 @@ const Settings = ( props ) => {
 						value: submitTextDecoration,
 						label: 'submitTextDecoration',
 					} }
-				/>
-				<Border
-					setAttributes={ setAttributes }
-					borderStyle={ {
-						value: submitborderStyle,
-						label: 'submitborderStyle',
-						title: __(
-							'Border Style',
-							'ultimate-addons-for-gutenberg'
-						),
-					} }
-					borderWidth={ {
-						value: submitborderWidth,
-						label: 'submitborderWidth',
-						title: __( 'Width', 'ultimate-addons-for-gutenberg' ),
-					} }
-					borderRadius={ {
-						value: submitborderRadius,
-						label: 'submitborderRadius',
-						title: __( 'Radius', 'ultimate-addons-for-gutenberg' ),
-					} }
-					borderColor={ {
-						value: submitborderColor,
-						label: 'submitborderColor',
-						title: __( 'Color', 'ultimate-addons-for-gutenberg' ),
-					} }
-					borderHoverColor={ {
-						value: submitborderHoverColor,
-						label: 'submitborderHoverColor',
-						title: __(
-							'Hover Color',
-							'ultimate-addons-for-gutenberg'
-						),
-					} }
-					disableBottomSeparator={ true }
 				/>
 			</PanelBody>
 		);
@@ -1182,7 +1182,7 @@ const Settings = ( props ) => {
 						value: inputborderStyle,
 						label: 'inputborderStyle',
 						title: __(
-							'Border Style',
+							'Style',
 							'ultimate-addons-for-gutenberg'
 						),
 					} }
