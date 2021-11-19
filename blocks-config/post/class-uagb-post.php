@@ -1517,7 +1517,7 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 
 								});
 
-								var enableEqualHeight = ( '<?php echo esc_html( $equal_height ); ?>' )
+								var enableEqualHeight = ( '<?php echo esc_html( $equal_height ); ?>' );
 
 								if( enableEqualHeight ){	
 									$scope.imagesLoaded( function() {
