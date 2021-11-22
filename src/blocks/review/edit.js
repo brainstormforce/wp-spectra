@@ -44,19 +44,19 @@ const ReviewComponent = ( props ) => {
 		} = attributes;
 
 		if ( contentVrPadding ) {
-			if ( ! topPadding ) {
+			if ( undefined === topPadding ) {
 				setAttributes( { topPadding: contentVrPadding } );
 			}
-			if ( ! bottomPadding ) {
+			if ( undefined === bottomPadding ) {
 				setAttributes( { bottomPadding: contentVrPadding } );
 			}
 		}
 
 		if ( contentHrPadding ) {
-			if ( ! rightPadding ) {
+			if ( undefined === rightPadding ) {
 				setAttributes( { rightPadding: contentHrPadding } );
 			}
-			if ( ! leftPadding ) {
+			if ( undefined === leftPadding ) {
 				setAttributes( { leftPadding: contentHrPadding } );
 			}
 		}

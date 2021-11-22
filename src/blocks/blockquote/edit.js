@@ -39,18 +39,18 @@ const UAGBBlockQuote = ( props ) => {
 		} = props.attributes;
 
 		if ( tweetBtnVrPadding ) {
-			if ( ! paddingBtnTop ) {
+			if ( undefined === paddingBtnTop ) {
 				props.setAttributes( { paddingBtnTop: tweetBtnVrPadding } );
 			}
-			if ( ! paddingBtnBottom ) {
+			if ( undefined === paddingBtnBottom ) {
 				props.setAttributes( { paddingBtnBottom: tweetBtnVrPadding } );
 			}
 		}
 		if ( tweetBtnHrPadding ) {
-			if ( ! paddingBtnRight ) {
+			if ( undefined === paddingBtnRight ) {
 				props.setAttributes( { paddingBtnRight: tweetBtnHrPadding } );
 			}
-			if ( ! paddingBtnLeft ) {
+			if ( undefined === paddingBtnLeft ) {
 				props.setAttributes( { paddingBtnLeft: tweetBtnHrPadding } );
 			}
 		}

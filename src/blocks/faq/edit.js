@@ -121,41 +121,41 @@ const FaqComponent = ( props ) => {
 		}
 
 		if ( vanswerPaddingDesktop ) {
-			if ( ! answerTopPadding ) {
+			if ( undefined === answerTopPadding ) {
 				setAttributes( { answerTopPadding: vanswerPaddingDesktop } );
 			}
-			if ( ! answerBottomPadding ) {
+			if ( undefined === answerBottomPadding ) {
 				setAttributes( { answerBottomPadding: vanswerPaddingDesktop } );
 			}
 		}
 		if ( hanswerPaddingDesktop ) {
-			if ( ! answerRightPadding ) {
+			if ( undefined === answerRightPadding ) {
 				setAttributes( { answerRightPadding: hanswerPaddingDesktop } );
 			}
-			if ( ! answerLeftPadding ) {
+			if ( undefined === answerLeftPadding ) {
 				setAttributes( { answerLeftPadding: hanswerPaddingDesktop } );
 			}
 		}
 
 		if ( vanswerPaddingTablet ) {
-			if ( ! answerTopPaddingTablet ) {
+			if ( undefined === answerTopPaddingTablet ) {
 				setAttributes( {
 					answerTopPaddingTablet: vanswerPaddingTablet,
 				} );
 			}
-			if ( ! answerBottomPaddingTablet ) {
+			if ( undefined === answerBottomPaddingTablet ) {
 				setAttributes( {
 					answerBottomPaddingTablet: vanswerPaddingTablet,
 				} );
 			}
 		}
 		if ( hanswerPaddingTablet ) {
-			if ( ! answerRightPaddingTablet ) {
+			if ( undefined === answerRightPaddingTablet ) {
 				setAttributes( {
 					answerRightPaddingTablet: hanswerPaddingTablet,
 				} );
 			}
-			if ( ! answerLeftPaddingTablet ) {
+			if ( undefined === answerLeftPaddingTablet ) {
 				setAttributes( {
 					answerLeftPaddingTablet: hanswerPaddingTablet,
 				} );
@@ -163,24 +163,24 @@ const FaqComponent = ( props ) => {
 		}
 
 		if ( vanswerPaddingMobile ) {
-			if ( ! answerTopPaddingMobile ) {
+			if ( undefined === answerTopPaddingMobile ) {
 				setAttributes( {
 					answerTopPaddingMobile: vanswerPaddingMobile,
 				} );
 			}
-			if ( ! answerBottomPaddingMobile ) {
+			if ( undefined === answerBottomPaddingMobile ) {
 				setAttributes( {
 					answerBottomPaddingMobile: vanswerPaddingMobile,
 				} );
 			}
 		}
 		if ( hanswerPaddingMobile ) {
-			if ( ! answerRightPaddingMobile ) {
+			if ( undefined === answerRightPaddingMobile ) {
 				setAttributes( {
 					answerRightPaddingMobile: hanswerPaddingMobile,
 				} );
 			}
-			if ( ! answerLeftPaddingMobile ) {
+			if ( undefined === answerLeftPaddingMobile ) {
 				setAttributes( {
 					answerLeftPaddingMobile: hanswerPaddingMobile,
 				} );

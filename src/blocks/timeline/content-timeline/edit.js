@@ -47,33 +47,33 @@ const ContentTimelineComponent = ( props ) => {
 		} = attributes;
 
 		if ( bgPadding ) {
-			if ( ! topPadding ) {
+			if ( undefined === topPadding ) {
 				setAttributes( { topPadding: bgPadding } );
 			}
-			if ( ! bottomPadding ) {
+			if ( undefined === bottomPadding ) {
 				setAttributes( { bottomPadding: bgPadding } );
 			}
-			if ( ! rightPadding ) {
+			if ( undefined === rightPadding ) {
 				setAttributes( { rightPadding: bgPadding } );
 			}
-			if ( ! leftPadding ) {
+			if ( undefined === leftPadding ) {
 				setAttributes( { leftPadding: bgPadding } );
 			}
 		}
 
 		if ( verticalSpace ) {
-			if ( ! topMargin ) {
+			if ( undefined === topMargin ) {
 				setAttributes( { topMargin: verticalSpace } );
 			}
-			if ( ! bottomMargin ) {
+			if ( undefined === bottomMargin ) {
 				setAttributes( { bottomMargin: verticalSpace } );
 			}
 		}
 		if ( horizontalSpace ) {
-			if ( ! rightMargin ) {
+			if ( undefined === rightMargin ) {
 				setAttributes( { rightMargin: horizontalSpace } );
 			}
-			if ( ! leftMargin ) {
+			if ( undefined === leftMargin ) {
 				setAttributes( { leftMargin: horizontalSpace } );
 			}
 		}

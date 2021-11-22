@@ -64,37 +64,37 @@ const UAGBCF7 = ( props ) => {
 		}
 
 		if ( buttonVrPadding ) {
-			if ( ! buttonTopPaddingDesktop ) {
+			if ( undefined === buttonTopPaddingDesktop ) {
 				setAttributes( { buttonTopPaddingDesktop: buttonVrPadding } );
 			}
-			if ( ! buttonBottomPaddingDesktop ) {
+			if ( undefined === buttonBottomPaddingDesktop ) {
 				setAttributes( {
 					buttonBottomPaddingDesktop: buttonVrPadding,
 				} );
 			}
 		}
 		if ( buttonHrPadding ) {
-			if ( ! buttonRightPaddingDesktop ) {
+			if ( undefined === buttonRightPaddingDesktop ) {
 				setAttributes( { buttonRightPaddingDesktop: buttonHrPadding } );
 			}
-			if ( ! buttonLeftPaddingDesktop ) {
+			if ( undefined === buttonLeftPaddingDesktop ) {
 				setAttributes( { buttonLeftPaddingDesktop: buttonHrPadding } );
 			}
 		}
 
 		if ( fieldVrPadding ) {
-			if ( ! fieldTopPaddingDesktop ) {
+			if ( undefined === fieldTopPaddingDesktop ) {
 				setAttributes( { fieldTopPaddingDesktop: fieldVrPadding } );
 			}
-			if ( ! fieldBottomPaddingDesktop ) {
+			if ( undefined === fieldBottomPaddingDesktop ) {
 				setAttributes( { fieldBottomPaddingDesktop: fieldVrPadding } );
 			}
 		}
 		if ( fieldHrPadding ) {
-			if ( ! fieldRightPaddingDesktop ) {
+			if ( undefined === fieldRightPaddingDesktop ) {
 				setAttributes( { fieldRightPaddingDesktop: fieldHrPadding } );
 			}
-			if ( ! fieldLeftPaddingDesktop ) {
+			if ( undefined === fieldLeftPaddingDesktop ) {
 				setAttributes( { fieldLeftPaddingDesktop: fieldHrPadding } );
 			}
 		}

@@ -49,58 +49,58 @@ const UAGBTaxonomyList = ( props ) => {
 		} = props.attributes;
 
 		if ( contentPadding ) {
-			if ( ! contentTopPadding ) {
+			if ( undefined === contentTopPadding ) {
 				props.setAttributes( { contentTopPadding: contentPadding } );
 			}
-			if ( ! contentBottomPadding ) {
+			if ( undefined === contentBottomPadding ) {
 				props.setAttributes( { contentBottomPadding: contentPadding } );
 			}
-			if ( ! contentLeftPadding ) {
+			if ( undefined === contentLeftPadding ) {
 				props.setAttributes( { contentLeftPadding: contentPadding } );
 			}
-			if ( ! contentRightPadding ) {
+			if ( undefined === contentRightPadding ) {
 				props.setAttributes( { contentRightPadding: contentPadding } );
 			}
 		}
 		if ( contentPaddingMobile ) {
-			if ( ! contentTopPaddingMobile ) {
+			if ( undefined === contentTopPaddingMobile ) {
 				props.setAttributes( {
 					contentTopPaddingMobile: contentPaddingMobile,
 				} );
 			}
-			if ( ! contentBottomPaddingMobile ) {
+			if ( undefined === contentBottomPaddingMobile ) {
 				props.setAttributes( {
 					contentBottomPaddingMobile: contentPaddingMobile,
 				} );
 			}
-			if ( ! contentLeftPaddingMobile ) {
+			if ( undefined === contentLeftPaddingMobile ) {
 				props.setAttributes( {
 					contentLeftPaddingMobile: contentPaddingMobile,
 				} );
 			}
-			if ( ! contentRightPaddingMobile ) {
+			if ( undefined === contentRightPaddingMobile ) {
 				props.setAttributes( {
 					contentRightPaddingMobile: contentPaddingMobile,
 				} );
 			}
 		}
 		if ( contentPaddingTablet ) {
-			if ( ! contentTopPaddingTablet ) {
+			if ( undefined === contentTopPaddingTablet ) {
 				props.setAttributes( {
 					contentTopPaddingTablet: contentPaddingTablet,
 				} );
 			}
-			if ( ! contentBottomPaddingTablet ) {
+			if ( undefined === contentBottomPaddingTablet ) {
 				props.setAttributes( {
 					contentBottomPaddingTablet: contentPaddingTablet,
 				} );
 			}
-			if ( ! contentLeftPaddingTablet ) {
+			if ( undefined === contentLeftPaddingTablet ) {
 				props.setAttributes( {
 					contentLeftPaddingTablet: contentPaddingTablet,
 				} );
 			}
-			if ( ! contentRightPaddingTablet ) {
+			if ( undefined === contentRightPaddingTablet ) {
 				props.setAttributes( {
 					contentRightPaddingTablet: contentPaddingTablet,
 				} );

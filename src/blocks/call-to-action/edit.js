@@ -40,18 +40,18 @@ const UAGBCallToAction = ( props ) => {
 		} = props.attributes;
 
 		if ( ctaBtnVertPadding ) {
-			if ( ! ctaTopPadding ) {
+			if ( undefined === ctaTopPadding ) {
 				props.setAttributes( { ctaTopPadding: ctaBtnVertPadding } );
 			}
-			if ( ! ctaBottomPadding ) {
+			if ( undefined === ctaBottomPadding ) {
 				props.setAttributes( { ctaBottomPadding: ctaBtnVertPadding } );
 			}
 		}
 		if ( ctaBtnHrPadding ) {
-			if ( ! ctaRightPadding ) {
+			if ( undefined === ctaRightPadding ) {
 				props.setAttributes( { ctaRightPadding: ctaBtnHrPadding } );
 			}
-			if ( ! ctaLeftPadding ) {
+			if ( undefined === ctaLeftPadding ) {
 				props.setAttributes( { ctaLeftPadding: ctaBtnHrPadding } );
 			}
 		}

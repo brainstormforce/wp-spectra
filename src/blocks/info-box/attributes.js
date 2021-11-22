@@ -526,19 +526,15 @@ const attributes = {
 	},
 	paddingBtnTop: {
 		type: 'number',
-		default: 10,
 	},
 	paddingBtnBottom: {
 		type: 'number',
-		default: 10,
 	},
 	paddingBtnLeft: {
 		type: 'number',
-		default: 14,
 	},
 	paddingBtnRight: {
 		type: 'number',
-		default: 14,
 	},
 	paddingBtnTopTablet: {
 		type: 'number',

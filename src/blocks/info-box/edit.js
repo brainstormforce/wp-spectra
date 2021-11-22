@@ -39,18 +39,18 @@ const UAGBInfoBox = ( props ) => {
 		} = props.attributes;
 
 		if ( ctaBtnVertPadding ) {
-			if ( ! paddingBtnTop ) {
+			if ( undefined === paddingBtnTop ) {
 				props.setAttributes( { paddingBtnTop: ctaBtnVertPadding } );
 			}
-			if ( ! paddingBtnBottom ) {
+			if ( undefined === paddingBtnBottom ) {
 				props.setAttributes( { paddingBtnBottom: ctaBtnVertPadding } );
 			}
 		}
 		if ( ctaBtnHrPadding ) {
-			if ( ! paddingBtnRight ) {
+			if ( undefined === paddingBtnRight ) {
 				props.setAttributes( { paddingBtnRight: ctaBtnHrPadding } );
 			}
-			if ( ! paddingBtnLeft ) {
+			if ( undefined === paddingBtnLeft ) {
 				props.setAttributes( { paddingBtnLeft: ctaBtnHrPadding } );
 			}
 		}

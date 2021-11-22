@@ -50,32 +50,32 @@ const UAGBtestimonial = ( props ) => {
 		} = attributes;
 
 		if ( imgVrPadding ) {
-			if ( ! imgpaddingTop ) {
+			if ( undefined === imgpaddingTop ) {
 				setAttributes( { imgpaddingTop: imgVrPadding } );
 			}
-			if ( ! imgpaddingBottom ) {
+			if ( undefined === imgpaddingBottom ) {
 				setAttributes( { imgpaddingBottom: imgVrPadding } );
 			}
 		}
 		if ( imgHrPadding ) {
-			if ( ! imgpaddingRight ) {
+			if ( undefined === imgpaddingRight ) {
 				setAttributes( { imgpaddingRight: imgHrPadding } );
 			}
-			if ( ! imgpaddingLeft ) {
+			if ( undefined === imgpaddingLeft ) {
 				setAttributes( { imgpaddingLeft: imgHrPadding } );
 			}
 		}
 		if ( contentPadding ) {
-			if ( ! paddingTop ) {
+			if ( undefined === paddingTop ) {
 				setAttributes( { paddingTop: contentPadding } );
 			}
-			if ( ! paddingBottom ) {
+			if ( undefined === paddingBottom ) {
 				setAttributes( { paddingBottom: contentPadding } );
 			}
-			if ( ! paddingLeft ) {
+			if ( undefined === paddingLeft ) {
 				setAttributes( { paddingLeft: contentPadding } );
 			}
-			if ( ! paddingRight ) {
+			if ( undefined === paddingRight ) {
 				setAttributes( { paddingRight: contentPadding } );
 			}
 		}

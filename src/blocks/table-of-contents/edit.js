@@ -95,52 +95,53 @@ const UAGBTableOfContentsEdit = ( props ) => {
 
 		//Padding
 		if ( vPaddingDesktop ) {
-			if ( ! topPadding ) {
+			if ( undefined === topPadding ) {
 				setAttributes( { topPadding: vPaddingDesktop } );
 			}
-			if ( ! bottomPadding ) {
+			if ( undefined === bottomPadding ) {
 				setAttributes( { bottomPadding: vPaddingDesktop } );
 			}
 		}
+		
 		if ( hPaddingDesktop ) {
-			if ( ! rightPadding ) {
+			if ( undefined === rightPadding ) {
 				setAttributes( { rightPadding: hPaddingDesktop } );
 			}
-			if ( ! leftPadding ) {
+			if ( undefined === leftPadding ) {
 				setAttributes( { leftPadding: hPaddingDesktop } );
 			}
 		}
 
 		if ( vPaddingMobile ) {
-			if ( ! topPaddingMobile ) {
+			if ( undefined === topPaddingMobile ) {
 				setAttributes( { topPaddingMobile: vPaddingMobile } );
 			}
-			if ( ! bottomPaddingMobile ) {
+			if ( undefined === bottomPaddingMobile ) {
 				setAttributes( { bottomPaddingMobile: vPaddingMobile } );
 			}
 		}
 		if ( hPaddingMobile ) {
-			if ( ! rightPaddingMobile ) {
+			if ( undefined === rightPaddingMobile ) {
 				setAttributes( { rightPaddingMobile: hPaddingMobile } );
 			}
-			if ( ! leftPaddingMobile ) {
+			if ( undefined === leftPaddingMobile ) {
 				setAttributes( { leftPaddingMobile: hPaddingMobile } );
 			}
 		}
 
 		if ( vPaddingTablet ) {
-			if ( ! topPaddingTablet ) {
+			if ( undefined === topPaddingTablet ) {
 				setAttributes( { topPaddingTablet: vPaddingTablet } );
 			}
-			if ( ! bottomPaddingTablet ) {
+			if ( undefined === bottomPaddingTablet ) {
 				setAttributes( { bottomPaddingTablet: vPaddingTablet } );
 			}
 		}
 		if ( hPaddingTablet ) {
-			if ( ! rightPaddingTablet ) {
+			if ( undefined === rightPaddingTablet ) {
 				setAttributes( { rightPaddingTablet: hPaddingTablet } );
 			}
-			if ( ! leftPaddingTablet ) {
+			if ( undefined === leftPaddingTablet ) {
 				setAttributes( { leftPaddingTablet: hPaddingTablet } );
 			}
 		}

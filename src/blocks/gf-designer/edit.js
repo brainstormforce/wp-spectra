@@ -48,19 +48,19 @@ const UAGBGF = ( props ) => {
 		} = props.attributes;
 
 		if ( buttonVrPadding ) {
-			if ( ! buttontopPadding ) {
+			if ( undefined === buttontopPadding ) {
 				props.setAttributes( { buttontopPadding: buttonVrPadding } );
 			}
-			if ( ! buttonbottomPadding ) {
+			if ( undefined === buttonbottomPadding ) {
 				props.setAttributes( { buttonbottomPadding: buttonVrPadding } );
 			}
 		}
 
 		if ( buttonHrPadding ) {
-			if ( ! buttonrightPadding ) {
+			if ( undefined === buttonrightPadding ) {
 				props.setAttributes( { buttonrightPadding: buttonHrPadding } );
 			}
-			if ( ! buttonleftPadding ) {
+			if ( undefined === buttonleftPadding ) {
 				props.setAttributes( { buttonleftPadding: buttonHrPadding } );
 			}
 		}
@@ -84,19 +84,19 @@ const UAGBGF = ( props ) => {
 		}
 
 		if ( fieldVrPadding ) {
-			if ( ! fieldtopPadding ) {
+			if ( undefined === fieldtopPadding ) {
 				props.setAttributes( { fieldtopPadding: fieldVrPadding } );
 			}
-			if ( ! fieldbottomPadding ) {
+			if ( undefined === fieldbottomPadding ) {
 				props.setAttributes( { fieldbottomPadding: fieldVrPadding } );
 			}
 		}
 
 		if ( fieldHrPadding ) {
-			if ( ! fieldrightPadding ) {
+			if ( undefined === fieldrightPadding ) {
 				props.setAttributes( { fieldrightPadding: fieldHrPadding } );
 			}
-			if ( ! fieldleftPadding ) {
+			if ( undefined === fieldleftPadding ) {
 				props.setAttributes( { fieldleftPadding: fieldHrPadding } );
 			}
 		}

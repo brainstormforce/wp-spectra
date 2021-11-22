@@ -56,60 +56,60 @@ const UAGBMarketingButtonEdit = ( props ) => {
 		} = props.attributes;
 
 		if ( vPadding ) {
-			if ( ! paddingBtnTop ) {
+			if ( undefined === paddingBtnTop ) {
 				props.setAttributes( { paddingBtnTop: vPadding } );
 			}
-			if ( ! paddingBtnBottom ) {
+			if ( undefined === paddingBtnBottom ) {
 				props.setAttributes( { paddingBtnBottom: vPadding } );
 			}
 		}
 		if ( hPadding ) {
-			if ( ! paddingBtnRight ) {
+			if ( undefined === paddingBtnRight ) {
 				props.setAttributes( { paddingBtnRight: hPadding } );
 			}
-			if ( ! paddingBtnLeft ) {
+			if ( undefined === paddingBtnLeft ) {
 				props.setAttributes( { paddingBtnLeft: hPadding } );
 			}
 		}
 
 		if ( vPaddingMobile ) {
-			if ( ! paddingBtnTopMobile ) {
+			if ( undefined === paddingBtnTopMobile ) {
 				props.setAttributes( { paddingBtnTopMobile: vPaddingMobile } );
 			}
-			if ( ! paddingBtnBottomMobile ) {
+			if ( undefined === paddingBtnBottomMobile ) {
 				props.setAttributes( {
 					paddingBtnBottomMobile: vPaddingMobile,
 				} );
 			}
 		}
 		if ( hPaddingMobile ) {
-			if ( ! paddingBtnRightMobile ) {
+			if ( undefined === paddingBtnRightMobile ) {
 				props.setAttributes( {
 					paddingBtnRightMobile: hPaddingMobile,
 				} );
 			}
-			if ( ! paddingBtnLeftMobile ) {
+			if ( undefined === paddingBtnLeftMobile ) {
 				props.setAttributes( { paddingBtnLeftMobile: hPaddingMobile } );
 			}
 		}
 
 		if ( vPaddingTablet ) {
-			if ( ! paddingBtnTopTablet ) {
+			if ( undefined === paddingBtnTopTablet ) {
 				props.setAttributes( { paddingBtnTopTablet: vPaddingTablet } );
 			}
-			if ( ! paddingBtnBottomTablet ) {
+			if ( undefined === paddingBtnBottomTablet ) {
 				props.setAttributes( {
 					paddingBtnBottomTablet: vPaddingTablet,
 				} );
 			}
 		}
 		if ( hPaddingTablet ) {
-			if ( ! paddingBtnRightTablet ) {
+			if ( undefined === paddingBtnRightTablet ) {
 				props.setAttributes( {
 					paddingBtnRightTablet: hPaddingTablet,
 				} );
 			}
-			if ( ! paddingBtnLeftTablet ) {
+			if ( undefined === paddingBtnLeftTablet ) {
 				props.setAttributes( { paddingBtnLeftTablet: hPaddingTablet } );
 			}
 		}

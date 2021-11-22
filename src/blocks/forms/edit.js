@@ -48,34 +48,34 @@ const UAGBFormsEdit = ( props ) => {
 		} = props.attributes;
 
 		if ( vPaddingSubmit ) {
-			if ( ! paddingBtnTop ) {
+			if ( undefined === paddingBtnTop ) {
 				setAttributes( { paddingBtnTop: vPaddingSubmit } );
 			}
-			if ( ! paddingBtnBottom ) {
+			if ( undefined === paddingBtnBottom ) {
 				setAttributes( { paddingBtnBottom: vPaddingSubmit } );
 			}
 		}
 		if ( hPaddingSubmit ) {
-			if ( ! paddingBtnRight ) {
+			if ( undefined === paddingBtnRight ) {
 				setAttributes( { paddingBtnRight: hPaddingSubmit } );
 			}
-			if ( ! paddingBtnLeft ) {
+			if ( undefined === paddingBtnLeft ) {
 				setAttributes( { paddingBtnLeft: hPaddingSubmit } );
 			}
 		}
 		if ( vPaddingField ) {
-			if ( ! paddingFieldTop ) {
+			if ( undefined === paddingFieldTop ) {
 				setAttributes( { paddingFieldTop: vPaddingField } );
 			}
-			if ( ! paddingFieldBottom ) {
+			if ( undefined === paddingFieldBottom ) {
 				setAttributes( { paddingFieldBottom: vPaddingField } );
 			}
 		}
 		if ( hPaddingField ) {
-			if ( ! paddingFieldRight ) {
+			if ( undefined === paddingFieldRight ) {
 				setAttributes( { paddingFieldRight: hPaddingField } );
 			}
-			if ( ! paddingFieldLeft ) {
+			if ( undefined === paddingFieldLeft ) {
 				setAttributes( { paddingFieldLeft: hPaddingField } );
 			}
 		}

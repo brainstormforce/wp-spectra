@@ -634,19 +634,15 @@ if ( ! class_exists( 'UAGB_GF_Styler' ) ) {
 						),
 						'buttonleftPadding'             => array(
 							'type'    => 'number',
-							'default' => '',
 						),
 						'buttonrightPadding'            => array(
 							'type'    => 'number',
-							'default' => '',
 						),
 						'buttontopPadding'              => array(
 							'type'    => 'number',
-							'default' => '',
 						),
 						'buttonbottomPadding'           => array(
 							'type'    => 'number',
-							'default' => '',
 						),
 						'buttonleftMobilePadding'       => array(
 							'type'    => 'number',
@@ -698,19 +694,15 @@ if ( ! class_exists( 'UAGB_GF_Styler' ) ) {
 						),
 						'fieldleftPadding'              => array(
 							'type'    => 'number',
-							'default' => '',
 						),
 						'fieldrightPadding'             => array(
 							'type'    => 'number',
-							'default' => '',
 						),
 						'fieldtopPadding'               => array(
 							'type'    => 'number',
-							'default' => '',
 						),
 						'fieldbottomPadding'            => array(
 							'type'    => 'number',
-							'default' => '',
 						),
 						'fieldleftMobilePadding'        => array(
 							'type'    => 'number',
