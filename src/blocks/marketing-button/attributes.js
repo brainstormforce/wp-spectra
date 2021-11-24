@@ -146,7 +146,7 @@ const attributes = {
 	},
 	prefix: {
 		source: "html",
-		selector: "p",
+		selector: ".uagb-marketing-btn__prefix",
 		default: "Get access to Premium Features for FREE for a year!"
 	},
 

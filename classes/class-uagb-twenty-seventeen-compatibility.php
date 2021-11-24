@@ -47,6 +47,9 @@ if ( ! class_exists( 'UAGB_Twenty_Seventeen_Compatibility' ) ) {
 		 */
 		public function generate_stylesheet() {
 
+			if ( ! function_exists( 'twentyseventeen_panel_count' ) ) {
+				return;
+			}
 			$panel_count     = twentyseventeen_panel_count();
 			$post_assets_obj = uagb_get_front_post_assets();
 			$all_posts       = array();

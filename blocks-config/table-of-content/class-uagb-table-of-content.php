@@ -286,9 +286,10 @@ if ( ! class_exists( 'UAGB_Table_Of_Content' ) ) {
 
 			foreach ( $nested_heading_list as $anchor => $heading ) {
 
-				$level = $heading['heading']['level'];
-				$title = $heading['heading']['content'];
-				$id    = $heading['heading']['id'];
+				$level    = $heading['heading']['level'];
+				$title    = $heading['heading']['content'];
+				$id       = $heading['heading']['id'];
+				$li_added = false;
 
 				if ( 0 === $anchor ) {
 					$first_level = $level;
@@ -314,6 +315,7 @@ if ( ! class_exists( 'UAGB_Table_Of_Content' ) ) {
 
 						$toc                  .= '<li class="uagb-toc__list">';
 						$depth_array[ $level ] = $current_depth;
+						$li_added              = true;
 
 					} elseif ( $level < $last_level ) {
 
@@ -332,7 +334,11 @@ if ( ! class_exists( 'UAGB_Table_Of_Content' ) ) {
 					}
 				}
 
-				$toc       .= sprintf( '<li class="uagb-toc__list"><a href="#%s">%s</a>', esc_attr( $id ), $title );
+				if ( $li_added ) {
+					$toc .= sprintf( '<a href="#%s">%s</a>', esc_attr( $id ), $title );
+				} else {
+					$toc .= sprintf( '<li class="uagb-toc__list"><a href="#%s">%s</a>', esc_attr( $id ), $title );
+				}
 				$last_level = $level;
 			}
 
