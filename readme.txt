@@ -5,7 +5,7 @@ Tags: gutenberg, blocks, gutenberg blocks, editor, block
 Requires at least: 4.7
 Requires PHP: 5.6
 Tested up to: 5.8
-Stable tag: 1.25.0
+Stable tag: 1.25.1
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -168,6 +168,12 @@ The awesome React FontIconPicker is developed by [Alessandro Benoit](http://code
 1. /assets/screenshots/1.png
 
 == Changelog ==
+
+= 1.25.1 – WEDNESDAY, 24TH NOVEMBER 2021 =
+* Fix: Block condition - Conflicting with WP Recipe Maker and Gravity Forms plugins.
+* Fix: Call to undefined function `twentyseventeen_panel_count()` when previewing another theme from the customizer.
+* Fix: Marketing Button - Validation issue when Title Tag set to p.
+* Fix: Table of contents - Removed empty li tags from Table of contents markup.
 
 = 1.25.0 – MONDAY, 4TH OCTOBER 2021 =
 * New: Introduced Wireframe Blocks.
