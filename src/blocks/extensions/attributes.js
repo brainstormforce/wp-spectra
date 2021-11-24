@@ -1,6 +1,7 @@
 const { enableMasonryGallery } = uagb_blocks_info;
 
 function addAttributes( settings ) {
+
 	const excludeBlock = [
 		'wpforms/form-selector',
 		'formidable/simple-form',
@@ -15,9 +16,15 @@ function addAttributes( settings ) {
 		'core/tag-cloud',
 		'core/rss',
 		'real-media-library/gallery',
+		'gravityforms/form', 
+		'wp-recipe-maker/recipe-part', 
+		'wp-recipe-maker/recipe', 
+		'wp-recipe-maker/recipe-snippet', 
+		'wp-recipe-maker/recipe-roundup-item',
 	];
 
 	if ( ! excludeBlock.includes( settings.name ) ) {
+
 		if ( settings.attributes ) {
 			settings.attributes = Object.assign( settings.attributes, {
 				UAGUserRole: {

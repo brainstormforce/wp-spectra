@@ -335,7 +335,6 @@ if ( ! class_exists( 'UAGB_Table_Of_Content' ) ) {
 				}
 
 				if ( $li_added ) {
-
 					$toc .= sprintf( '<a href="#%s">%s</a>', esc_attr( $id ), $title );
 				} else {
 					$toc .= sprintf( '<li class="uagb-toc__list"><a href="#%s">%s</a>', esc_attr( $id ), $title );
