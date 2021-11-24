@@ -16,10 +16,10 @@ function addAttributes( settings ) {
 		'core/tag-cloud',
 		'core/rss',
 		'real-media-library/gallery',
-		'gravityforms/form', 
-		'wp-recipe-maker/recipe-part', 
-		'wp-recipe-maker/recipe', 
-		'wp-recipe-maker/recipe-snippet', 
+		'gravityforms/form',
+		'wp-recipe-maker/recipe-part',
+		'wp-recipe-maker/recipe',
+		'wp-recipe-maker/recipe-snippet',
 		'wp-recipe-maker/recipe-roundup-item',
 	];
 

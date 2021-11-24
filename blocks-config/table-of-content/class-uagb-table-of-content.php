@@ -440,7 +440,7 @@ if ( ! class_exists( 'UAGB_Table_Of_Content' ) ) {
 
 			ob_start();
 			?>
-				<div class="<?php echo esc_html( implode( ' ', $wrap ) ); ?>" 
+				<div class="<?php echo esc_html( implode( ' ', $wrap ) ); ?>"
 					data-scroll= "<?php echo esc_attr( $attributes['smoothScroll'] ); ?>"
 					data-offset= "<?php echo esc_attr( $attributes['smoothScrollOffset'] ); ?>"
 					data-delay= "<?php echo esc_attr( $attributes['smoothScrollDelay'] ); ?>"
@@ -470,7 +470,7 @@ if ( ! class_exists( 'UAGB_Table_Of_Content' ) ) {
 							);
 						?>
 					</div>
-					<?php } else { ?> 
+					<?php } else { ?>
 						<p class='uagb_table-of-contents-placeholder'>
 						<?php echo esc_html( $attributes['emptyHeadingTeaxt'] ); ?>
 						</p>

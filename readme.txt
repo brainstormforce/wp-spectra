@@ -5,7 +5,11 @@ Tags: gutenberg, blocks, gutenberg blocks, editor, block
 Requires at least: 4.7
 Requires PHP: 5.6
 Tested up to: 5.8
+<<<<<<< HEAD
 Stable tag: 2.0.0-beta.1
+=======
+Stable tag: 1.25.1
+>>>>>>> 857f38a506dd20b9bffb20c1bdd6c5717fb829b9
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
