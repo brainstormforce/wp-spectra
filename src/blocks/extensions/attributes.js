@@ -2,26 +2,7 @@ const { enableMasonryGallery } = uagb_blocks_info;
 
 function addAttributes( settings ) {
 
-	const excludeBlock = [
-		'wpforms/form-selector',
-		'formidable/simple-form',
-		'formidable/calculator',
-		'llms/lesson-navigation',
-		'llms/pricing-table',
-		'llms/course-syllabus',
-		'llms/instructors',
-		'core/archives',
-		'core/calendar',
-		'core/latest-comments',
-		'core/tag-cloud',
-		'core/rss',
-		'real-media-library/gallery',
-		'gravityforms/form',
-		'wp-recipe-maker/recipe-part',
-		'wp-recipe-maker/recipe',
-		'wp-recipe-maker/recipe-snippet',
-		'wp-recipe-maker/recipe-roundup-item',
-	];
+	const excludeBlock = uagb_blocks_info.uagb_exclude_blocks_from_extension;
 
 	if ( ! excludeBlock.includes( settings.name ) ) {
 
