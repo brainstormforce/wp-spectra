@@ -176,6 +176,15 @@ The awesome React FontIconPicker is developed by [Alessandro Benoit](http://code
 * Improvement: Refactored the UAG blocks' code & improved editor performance drastically.
 * Improvement: Typography control - Added text-transform, text-decoration and font-style options.
 
+### 1.25.2 - TUESDAY, 30TH NOVEMBER 2021 ###
+* Fix: Block condition - Conflicting with plugin using REST API block preview.
+
+### 1.25.1 – WEDNESDAY, 24TH NOVEMBER 2021 ###
+* Fix: Block condition - Conflicting with WP Recipe Maker and Gravity Forms plugins.
+* Fix: Call to undefined function `twentyseventeen_panel_count()` when previewing another theme from the customizer.
+* Fix: Marketing Button - Validation issue when Title Tag set to p.
+* Fix: Table of contents - Removed empty li tags from Table of contents markup.
+
 ### 1.25.0 – MONDAY, 4TH OCTOBER 2021 ###
 * New: Introduced Wireframe Blocks.
 
