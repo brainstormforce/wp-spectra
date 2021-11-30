@@ -66,7 +66,7 @@ if ( ! class_exists( 'UAGB_Loader' ) ) {
 			define( 'UAGB_BASE', plugin_basename( UAGB_FILE ) );
 			define( 'UAGB_DIR', plugin_dir_path( UAGB_FILE ) );
 			define( 'UAGB_URL', plugins_url( '/', UAGB_FILE ) );
-			define( 'UAGB_VER', '1.25.1' );
+			define( 'UAGB_VER', '1.25.2' );
 			define( 'UAGB_MODULES_DIR', UAGB_DIR . 'modules/' );
 			define( 'UAGB_MODULES_URL', UAGB_URL . 'modules/' );
 			define( 'UAGB_SLUG', 'uag' );
@@ -130,6 +130,67 @@ if ( ! class_exists( 'UAGB_Loader' ) ) {
 			if ( 'twentyseventeen' === get_template() ) {
 				require_once UAGB_DIR . 'classes/class-uagb-twenty-seventeen-compatibility.php';
 			}
+			add_filter( 'rest_pre_dispatch', array( $this, 'rest_pre_dispatch' ), 10, 3 );
+		}
+
+		/**
+		 * Fix REST API issue with blocks registered via PHP register_block_type.
+		 *
+		 * @since 1.25.2
+		 *
+		 * @param mixed  $result  Response to replace the requested version with.
+		 * @param object $server  Server instance.
+		 * @param object $request Request used to generate the response.
+		 *
+		 * @return array Returns updated results.
+		 */
+		public function rest_pre_dispatch( $result, $server, $request ) {
+
+			if ( strpos( $request->get_route(), '/wp/v2/block-renderer' ) !== false && isset( $request['attributes'] ) ) {
+
+					$attributes = $request['attributes'];
+
+				if ( isset( $attributes['UAGUserRole'] ) ) {
+					unset( $attributes['UAGUserRole'] );
+				}
+
+				if ( isset( $attributes['UAGBrowser'] ) ) {
+					unset( $attributes['UAGBrowser'] );
+				}
+
+				if ( isset( $attributes['UAGSystem'] ) ) {
+					unset( $attributes['UAGSystem'] );
+				}
+
+				if ( isset( $attributes['UAGDisplayConditions'] ) ) {
+					unset( $attributes['UAGDisplayConditions'] );
+				}
+
+				if ( isset( $attributes['UAGHideDesktop'] ) ) {
+					unset( $attributes['UAGHideDesktop'] );
+				}
+
+				if ( isset( $attributes['UAGHideMob'] ) ) {
+					unset( $attributes['UAGHideMob'] );
+				}
+
+				if ( isset( $attributes['UAGHideTab'] ) ) {
+					unset( $attributes['UAGHideTab'] );
+				}
+
+				if ( isset( $attributes['UAGLoggedIn'] ) ) {
+					unset( $attributes['UAGLoggedIn'] );
+				}
+
+				if ( isset( $attributes['UAGLoggedOut'] ) ) {
+					unset( $attributes['UAGLoggedOut'] );
+				}
+
+					$request['attributes'] = $attributes;
+
+			}
+
+			return $result;
 		}
 
 		/**

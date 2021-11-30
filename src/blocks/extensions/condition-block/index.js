@@ -132,7 +132,7 @@ const AdvancedControlsBlock = createHigherOrderComponent((BlockEdit) => {
 		
 		const blockName = props.name;
 		
-		const blockType = ['uagb/buttons-child','uagb/faq-child', 'uagb/icon-list-child', 'uagb/social-share-child', 'uagb/restaurant-menu-child', 'wpforms/form-selector','formidable/simple-form','formidable/calculator','llms/lesson-navigation','llms/pricing-table','llms/course-syllabus','llms/instructors','core/archives','core/calendar','core/latest-comments','core/tag-cloud','core/rss','real-media-library/gallery', 'gravityforms/form', 'wp-recipe-maker/recipe-part', 'wp-recipe-maker/recipe', 'wp-recipe-maker/recipe-snippet', 'wp-recipe-maker/recipe-roundup-item'];
+		const blockType = ['uagb/buttons-child','uagb/faq-child', 'uagb/icon-list-child', 'uagb/social-share-child', 'uagb/restaurant-menu-child', 'wpforms/form-selector','formidable/simple-form','formidable/calculator','llms/lesson-navigation','llms/pricing-table','llms/course-syllabus','llms/instructors','core/archives','core/calendar','core/latest-comments','core/tag-cloud','core/rss','real-media-library/gallery'];
 		return (
 			<Fragment>
 				<BlockEdit {...props} />
