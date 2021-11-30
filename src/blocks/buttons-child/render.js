@@ -17,7 +17,6 @@ const Render = ( props ) => {
 	const {
 		className,
 		label,
-		inheritFromTheme,
 		icon,
 		iconPosition,
 	} = attributes;
@@ -45,14 +44,14 @@ const Render = ( props ) => {
 				'uagb-buttons__outer-wrap',
 				`uagb-editor-preview-mode-${ deviceType.toLowerCase() }`,
 				`uagb-block-${ props.clientId.substr( 0, 8 ) }`,
-				inheritFromTheme ? 'wp-block-button' : null
+				'wp-block-button'
 			) }
 		>
 			<div className="uagb-button__wrapper">
 				<div
 					className={ classnames(
 						'uagb-buttons-repeater',
-						inheritFromTheme ? 'wp-block-button__link' : null
+						'wp-block-button__link'
 					) }
 				>
 					{ iconHtml( 'before' ) }

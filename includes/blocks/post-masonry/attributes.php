@@ -10,11 +10,10 @@
 return array(
 	'post_type'                         => 'masonry',
 	'postType'                          => 'post',
-	'inheritFromTheme'                  => false,
 	'align'                             => 'left',
 	'rowGap'                            => '20',
 	'columnGap'                         => '20',
-	'bgColor'                           => '#e4e4e4',
+	'bgColor'                           => '#f6f6f6',
 	'titleColor'                        => '#3b3b3b',
 	'titleTag'                          => 'h3',
 	'titleFontSize'                     => '',

@@ -34,26 +34,26 @@ const attributes = {
 			'ultimate-addons-for-gutenberg'
 		),
 	},
-	failedMessageTextColor    : { 
+	failedMessageTextColor    : {
 		type: 'string',
-		default: '#000000'
+		default: ''
 	},
-	failedMessageBorderColor  : { 
+	failedMessageBorderColor  : {
 		type: 'string',
-		default: 'red'
+		default: ''
 	},
-	failedMessageBGColor      : { 
+	failedMessageBGColor      : {
 		type: 'string',
-		default: '#f5f5f'
+		default: ''
 	},
-	failedMessageBorderStyle  : { 
+	failedMessageBorderStyle  : {
 		type: 'string',
 		default: 'solid'
 	},
-	failedMessageBorderWidth  : { 
+	failedMessageBorderWidth  : {
 		type: 'number',
 		default: 2,
-	},     
+	},
 	confirmationUrl: {
 		type: 'string',
 	},
@@ -79,19 +79,19 @@ const attributes = {
 	},
 	submitColor: {
 		type: 'string',
-		default: '#ffffff',
+		default: '',
 	},
 	submitColorHover: {
 		type: 'string',
-		default: '#000000',
+		default: '',
 	},
 	submitBgColor: {
 		type: 'string',
-		default: '#000000',
+		default: '',
 	},
 	submitBgColorHover: {
 		type: 'string',
-		default: '#ffffff',
+		default: '',
 	},
 	buttonSize: {
 		type: 'string',
@@ -257,7 +257,7 @@ const attributes = {
 	},
 	toggleActiveColor: {
 		type: 'string',
-		default: '#000000',
+		default: '',
 	},
 	toggleHeightSize: {
 		type: 'number',
@@ -273,11 +273,11 @@ const attributes = {
 	//Color.
 	labelColor: {
 		type: 'string',
-		default: '#000000',
+		default: '',
 	},
 	inputColor: {
 		type: 'string',
-		default: '#000000',
+		default: '',
 	},
 	bgColor: {
 		type: 'string',
@@ -288,7 +288,7 @@ const attributes = {
 	},
 	inputactiveColor: {
 		type: 'string',
-		default: '#000000',
+		default: '',
 	},
 
 	// InputBorder
@@ -306,7 +306,7 @@ const attributes = {
 	},
 	inputborderColor: {
 		type: 'string',
-		default: '#BDBDBD',
+		default: '',
 	},
 	inputborderHoverColor: {
 		type: 'string',
@@ -365,11 +365,11 @@ const attributes = {
 	//message attributes
 	successMessageTextColor: {
 		type: 'string',
-		default: '#000000',
+		default: '',
 	},
 	successMessageBGColor: {
 		type: 'string',
-		default: '#00800030',
+		default: '',
 	},
 	successMessageBorderColor: {
 		type: 'string',

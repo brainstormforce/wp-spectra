@@ -292,11 +292,11 @@
 
 	.components-placeholder {
 		align-items: center;
-	}
 
-	.components-placeholder__label {
-		font-size: 22px;
-		font-weight: 500;
+		.components-placeholder__label {
+			font-size: 22px;
+			font-weight: 500;
+		}
 	}
 
 	.block-editor-block-variation-picker__variation::before {
@@ -309,6 +309,7 @@
 
 	.block-editor-block-variation-picker__variations {
 		justify-content: center;
+		width: 50%;
 
 		> li {
 			margin: 8px 30px 0 0;

@@ -315,7 +315,6 @@ const UAGBPostCarousel = ( props ) => {
 		postType,
 		taxonomyType,
 		equalHeight,
-		inheritFromTheme,
 		postDisplaytext,
 		displayPostContentRadio,
 		excludeCurrentPost,
@@ -574,22 +573,6 @@ const UAGBPostCarousel = ( props ) => {
 					onChange={ ( value ) =>
 						setAttributes( { postDisplaytext: value } )
 					}
-				/>
-				<ToggleControl
-					label={ __(
-						'Inherit Styling from Theme',
-						'ultimate-addons-for-gutenberg'
-					) }
-					checked={ inheritFromTheme }
-					onChange={ () =>
-						setAttributes( {
-							inheritFromTheme: ! inheritFromTheme,
-						} )
-					}
-					help={ __(
-						'This will inherit all the Typography and colors for Title, Meta, Excerpt and Read More button from the theme.',
-						'ultimate-addons-for-gutenberg'
-					) }
 				/>
 			</PanelBody>
 		);
@@ -1063,7 +1046,7 @@ const UAGBPostCarousel = ( props ) => {
 			<PanelBody
 				title={ __( 'Image', 'ultimate-addons-for-gutenberg' ) }
 				initialOpen={ false }
-			> 
+			>
 			{imgPosition === 'background' && (
 				<>
 					<AdvancedPopColorControl
@@ -1164,101 +1147,98 @@ const UAGBPostCarousel = ( props ) => {
 						},
 					] }
 				/>
-				{ ! inheritFromTheme && (
-					<>
-						<AdvancedPopColorControl
-							label={ __(
-								'Color',
-								'ultimate-addons-for-gutenberg'
-							) }
-							colorValue={ titleColor }
-							onColorChange={ ( value ) =>
-								setAttributes( { titleColor: value } )
-							}
-						/>
-						<TypographyControl
-							label={ __(
-								'Typography',
-								'ultimate-addons-for-gutenberg'
-							) }
-							attributes={ attributes }
-							setAttributes={ setAttributes }
-							loadGoogleFonts={ {
-								value: titleLoadGoogleFonts,
-								label: 'titleLoadGoogleFonts',
-							} }
-							fontFamily={ {
-								value: titleFontFamily,
-								label: 'titleFontFamily',
-							} }
-							fontWeight={ {
-								value: titleFontWeight,
-								label: 'titleFontWeight',
-							} }
-							fontStyle={ {
-								value: titleFontStyle,
-								label: 'titleFontStyle',
-							} }
-							fontSizeType={ {
-								value: titleFontSizeType,
-								label: 'titleFontSizeType',
-							} }
-							fontSize={ {
-								value: titleFontSize,
-								label: 'titleFontSize',
-							} }
-							fontSizeMobile={ {
-								value: titleFontSizeMobile,
-								label: 'titleFontSizeMobile',
-							} }
-							fontSizeTablet={ {
-								value: titleFontSizeTablet,
-								label: 'titleFontSizeTablet',
-							} }
-							lineHeightType={ {
-								value: titleLineHeightType,
-								label: 'titleLineHeightType',
-							} }
-							lineHeight={ {
-								value: titleLineHeight,
-								label: 'titleLineHeight',
-							} }
-							lineHeightMobile={ {
-								value: titleLineHeightMobile,
-								label: 'titleLineHeightMobile',
-							} }
-							lineHeightTablet={ {
-								value: titleLineHeightTablet,
-								label: 'titleLineHeightTablet',
-							} }
-							transform={ {
-								value: titleTransform,
-								label: 'titleTransform',
-							} }
-							decoration={ {
-								value: titleDecoration,
-								label: 'titleDecoration',
-							} }
-						/>
-						<Range
-							label={ __(
-								'Bottom Spacing',
-								'ultimate-addons-for-gutenberg'
-							) }
-							setAttributes={ setAttributes }
-							value={ titleBottomSpace }
-							onChange={ ( value ) =>
-								setAttributes( { titleBottomSpace: value } )
-							}
-							min={ 0 }
-							max={ 50 }
-							unit={ {
-								value: titleBottomSpaceUnit,
-								label: 'titleBottomSpaceUnit',
-							} }
-						/>
-					</>
-				) }
+				<AdvancedPopColorControl
+					label={ __(
+						'Color',
+						'ultimate-addons-for-gutenberg'
+					) }
+					colorValue={ titleColor }
+					onColorChange={ ( value ) =>
+						setAttributes( { titleColor: value } )
+					}
+				/>
+				<TypographyControl
+					label={ __(
+						'Typography',
+						'ultimate-addons-for-gutenberg'
+					) }
+					attributes={ attributes }
+					setAttributes={ setAttributes }
+					loadGoogleFonts={ {
+						value: titleLoadGoogleFonts,
+						label: 'titleLoadGoogleFonts',
+					} }
+					fontFamily={ {
+						value: titleFontFamily,
+						label: 'titleFontFamily',
+					} }
+					fontWeight={ {
+						value: titleFontWeight,
+						label: 'titleFontWeight',
+					} }
+					fontStyle={ {
+						value: titleFontStyle,
+						label: 'titleFontStyle',
+					} }
+					fontSizeType={ {
+						value: titleFontSizeType,
+						label: 'titleFontSizeType',
+					} }
+					fontSize={ {
+						value: titleFontSize,
+						label: 'titleFontSize',
+					} }
+					fontSizeMobile={ {
+						value: titleFontSizeMobile,
+						label: 'titleFontSizeMobile',
+					} }
+					fontSizeTablet={ {
+						value: titleFontSizeTablet,
+						label: 'titleFontSizeTablet',
+					} }
+					lineHeightType={ {
+						value: titleLineHeightType,
+						label: 'titleLineHeightType',
+					} }
+					lineHeight={ {
+						value: titleLineHeight,
+						label: 'titleLineHeight',
+					} }
+					lineHeightMobile={ {
+						value: titleLineHeightMobile,
+						label: 'titleLineHeightMobile',
+					} }
+					lineHeightTablet={ {
+						value: titleLineHeightTablet,
+						label: 'titleLineHeightTablet',
+					} }
+					transform={ {
+						value: titleTransform,
+						label: 'titleTransform',
+					} }
+					decoration={ {
+						value: titleDecoration,
+						label: 'titleDecoration',
+					} }
+				/>
+				<Range
+					label={ __(
+						'Bottom Spacing',
+						'ultimate-addons-for-gutenberg'
+					) }
+					setAttributes={ setAttributes }
+					value={ titleBottomSpace }
+					onChange={ ( value ) =>
+						setAttributes( { titleBottomSpace: value } )
+					}
+					min={ 0 }
+					max={ 50 }
+					unit={ {
+						value: titleBottomSpaceUnit,
+						label: 'titleBottomSpaceUnit',
+					} }
+				/>
+
 			</PanelBody>
 		);
 	};
@@ -1749,7 +1729,7 @@ const UAGBPostCarousel = ( props ) => {
 						setAttributes( { arrowColor: value } )
 					}
 				/>
-			{ 'dots' !== arrowDots && 
+			{ 'dots' !== arrowDots &&
 				<>
 				<Range
 					label={ __( 'Size', 'ultimate-addons-for-gutenberg' ) }
@@ -1808,18 +1788,14 @@ const UAGBPostCarousel = ( props ) => {
 					{ getReadMoreLinkPanelBody() }
 				</InspectorTab>
 				<InspectorTab { ...UAGTabs.style }>
-					{ ! inheritFromTheme && (
-						<>
-							{ displayPostTitle && titleStyle() }
-							{ ( displayPostAuthor ||
-								displayPostDate ||
-								displayPostComment ||
-								displayPostTaxonomy ) &&
-								metaStyle() }
-							{ displayPostExcerpt && excerptStyle() }
-							{ displayPostLink && readMoreLinkStyleSettings() }
-						</>
-					) }
+					{ displayPostTitle && titleStyle() }
+					{ ( displayPostAuthor ||
+						displayPostDate ||
+						displayPostComment ||
+						displayPostTaxonomy ) &&
+						metaStyle() }
+					{ displayPostExcerpt && excerptStyle() }
+					{ displayPostLink && readMoreLinkStyleSettings() }
 					{ displayPostImage  && imageStyle() }
 					{ spacingSettings() }
 					{ carouselStyle() }

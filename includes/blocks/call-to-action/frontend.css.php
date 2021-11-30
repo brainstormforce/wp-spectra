@@ -61,7 +61,7 @@ if ( 'text' === $attr['ctaType'] ) {
 	);
 }
 
-if ( ! $attr['inheritFromTheme'] && 'button' === $attr['ctaType'] ) {
+if ( 'button' === $attr['ctaType'] ) {
 	$selectors[' .uagb-cta__button-wrapper a.uagb-cta-typeof-button']       = array(
 		'color'            => $attr['ctaBtnLinkColor'],
 		'background-color' => $attr['ctaBgColor'],
@@ -149,7 +149,7 @@ if ( 'text' === $attr['ctaType'] ) {
 	$combined_selectors = UAGB_Helper::get_typography_css( $attr, 'cta', ' .uagb-cta__button-wrapper a.uagb-cta-typeof-text', $combined_selectors );
 }
 
-if ( ! $attr['inheritFromTheme'] && 'button' === $attr['ctaType'] ) {
+if ( 'button' === $attr['ctaType'] ) {
 	$combined_selectors = UAGB_Helper::get_typography_css( $attr, 'cta', ' .uagb-cta__button-wrapper a.uagb-cta-typeof-button', $combined_selectors );
 }
 $combined_selectors = UAGB_Helper::get_typography_css( $attr, 'title', ' .uagb-cta__title', $combined_selectors );

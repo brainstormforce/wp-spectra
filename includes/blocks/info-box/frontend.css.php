@@ -94,7 +94,7 @@ $selectors = array(
 	),
 );
 
-if ( ! ( $attr['inheritFromTheme'] && 'button' === $attr['ctaType'] ) ) {
+if ( 'button' === $attr['ctaType'] ) {
 	$selectors[' .uagb-infobox-cta-link']                          = array(
 		'color' => $attr['ctaLinkColor'],
 	);

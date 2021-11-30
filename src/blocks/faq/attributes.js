@@ -36,7 +36,6 @@ const attributes = {
 	},
 	boxBgColor: {
 		type: 'string',
-		default: '#FFFFFF',
 	},
 	boxPaddingTypeMobile: {
 		type: 'string',
@@ -88,19 +87,17 @@ const attributes = {
 	},
 	borderColor: {
 		type: 'string',
-		default: '#D2D2D2',
+		default: '',
 	},
 	borderHoverColor: {
 		type: 'string',
-		default: '#D2D2D2',
+		default: '',
 	},
 	questionTextColor: {
 		type: 'string',
-		default: '#313131',
 	},
 	questionTextActiveColor: {
 		type: 'string',
-		default: '#656565',
 	},
 	questionPaddingTypeDesktop: {
 		type: 'string',
@@ -140,7 +137,6 @@ const attributes = {
 	},
 	answerTextColor: {
 		type: 'string',
-		default: '#313131',
 	},
 	answerPaddingTypeDesktop: {
 		type: 'string',

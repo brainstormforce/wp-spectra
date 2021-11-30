@@ -14,7 +14,6 @@ export default function save( props ) {
 		target,
 		link,
 		label,
-		inheritFromTheme,
 		icon,
 		iconPosition,
 	} = attributes;
@@ -41,14 +40,14 @@ export default function save( props ) {
 				className,
 				'uagb-buttons__outer-wrap',
 				`uagb-block-${ block_id }`,
-				inheritFromTheme ? 'wp-block-button' : null
+				'wp-block-button'
 			) }
 		>
 			<div className="uagb-button__wrapper">
 				<a
 					className={ classnames(
 						'uagb-buttons-repeater',
-						inheritFromTheme ? 'wp-block-button__link' : null
+						'wp-block-button__link'
 					) }
 					href={ link }
 					rel="noopener noreferrer"

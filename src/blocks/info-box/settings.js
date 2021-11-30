@@ -185,7 +185,6 @@ const Settings = ( props ) => {
 		showPrefix,
 		showTitle,
 		showDesc,
-		inheritFromTheme,
 		spacingLink,
 		paddingspacingLink,
 		headTransform,
@@ -811,20 +810,6 @@ const Settings = ( props ) => {
 							} }
 						/>
 					</>
-				) }
-				{ ctaType === 'button' && (
-					<ToggleControl
-						checked={ inheritFromTheme }
-						onChange={ () =>
-							setAttributes( {
-								inheritFromTheme: ! inheritFromTheme,
-							} )
-						}
-						label={ __(
-							'Inherit from Theme',
-							'ultimate-addons-for-gutenberg'
-						) }
-					/>
 				) }
 				{ ctaType !== 'none' && (
 					<ToggleControl
@@ -1509,7 +1494,7 @@ const Settings = ( props ) => {
 						</>
 					</PanelBody>
 				) }
-				{ inheritFromTheme && ctaType === 'text' && (
+				{ ctaType === 'text' && (
 					<PanelBody title="CTA" initialOpen={ false }>
 						<>
 								<UAGTabsControl
@@ -1613,12 +1598,12 @@ const Settings = ( props ) => {
 						</>
 					</PanelBody>
 				) }
-				{ ! inheritFromTheme &&
+				{
 					'none' !== ctaType &&
 					'all' !== ctaType && (
 						<PanelBody title="CTA" initialOpen={ false }>
 							<>
-								{ ! inheritFromTheme && ctaType === 'button' && (
+								{  ctaType === 'button' && (
 									<>
 
 
@@ -1815,7 +1800,7 @@ const Settings = ( props ) => {
 									/>
 									</>
 								) }
-								{ ! inheritFromTheme && ctaType === 'button' && (
+								{ ctaType === 'button' && (
 									<TypographyControl
 										label={ __(
 											'Typography',
@@ -1866,7 +1851,7 @@ const Settings = ( props ) => {
 										disableLineHeight={ true }
 									/>
 								) }
-								{ ! inheritFromTheme && ctaType === 'button' && (
+								{ ctaType === 'button' && (
 									<SpacingControl
 										{ ...props }
 										label={ __(
@@ -1942,7 +1927,7 @@ const Settings = ( props ) => {
 										} }
 									/>
 								) }
-								{ ! inheritFromTheme && ctaType === 'button' && (
+								{ ctaType === 'button' && (
 									<Border
 										setAttributes={ setAttributes }
 										borderStyle={ {

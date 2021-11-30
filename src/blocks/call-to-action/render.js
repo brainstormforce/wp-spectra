@@ -4,7 +4,7 @@ import lazyLoader from '@Controls/lazy-loader';
 import CtaPositionClasses from './classes';
 import Title from './components/Title';
 import Description from './components/Description';
-import CTA from './components/CTA';
+import CTA from './components/CallToActionNew';
 import styles from './editor.lazy.scss';
 
 const Render = ( props ) => {

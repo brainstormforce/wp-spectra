@@ -9,7 +9,7 @@ import classnames from 'classnames';
 import Title from './components/Title';
 import Description from './components/Description';
 import CtaPositionClasses from './classes';
-import CTA from './components/CTA';
+import CTA from './components/CallToActionNew';
 
 export default function save( props ) {
 	const {

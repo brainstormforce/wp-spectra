@@ -13,7 +13,7 @@ return array(
 	'headingColor'            => '',
 	'subHeadingColor'         => '',
 	'separatorColor'          => '',
-	'seperatorStyle'          => 'solid',
+	'seperatorStyle'          => 'none',
 	'separatorHeight'         => '',
 	'separatorWidth'          => '',
 	'separatorWidthType'      => '%',

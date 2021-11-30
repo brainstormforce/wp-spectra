@@ -39,7 +39,7 @@ const attributes = {
 	},
 	headerTextColor: {
 		type: 'string',
-		default: '#007cba',
+		default: '',
 	},
 	bodyBgColor: {
 		type: 'string',
@@ -67,11 +67,11 @@ const attributes = {
 	},
 	activeTabBgColor: {
 		type: 'string',
-		default: '#007cba',
+		default: '',
 	},
 	activeTabTextColor: {
 		type: 'string',
-		default: '#fff',
+		default: '',
 	},
 	tabTitleLeftMargin: {
 		type: 'number',

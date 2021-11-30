@@ -119,11 +119,10 @@ const attributes = {
 	// Color
 	backgroundColor: {
 		type: 'string',
-		default: '#f4f4f4',
 	},
 	linkColor: {
 		type: 'string',
-		default: '#333',
+		default: '#54595F'
 	},
 	linkHoverColor: {
 		type: 'string',
@@ -373,24 +372,20 @@ const attributes = {
 
 	// Border
 	borderStyle: {
-		type: 'string',
-		default: 'solid',
+		type: 'string'
 	},
 	borderWidth: {
-		type: 'number',
-		default: 1,
+		type: 'number'
 	},
 	borderRadius: {
 		type: 'number',
 		default: 6,
 	},
 	borderColor: {
-		type: 'string',
-		default: '#ddd',
+		type: 'string'
 	},
 	borderHoverColor: {
-		type: 'string',
-		default: '#333',
+		type: 'string'
 	},
 
 	// Typography
@@ -498,6 +493,7 @@ const attributes = {
 	},
 	fontDecoration: {
 		type: 'string',
+		default: 'underline'
 	},
 
 	headingFontStyle: {

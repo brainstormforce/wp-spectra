@@ -92,7 +92,7 @@
 }
 
 .uagb-slick-carousel {
-	padding: 45px;
+	padding: 30px;
 }
 
 .uagb-slick-carousel .slick-prev,
@@ -109,10 +109,9 @@
 	transform: translate(0, -50%);
 	cursor: pointer;
 	color: #aaa;
-	border: 1px solid #aaa;
+	border-color: #aaa;
 	outline: none;
 	background: transparent;
-	border-radius: 0;
 }
 
 .uagb-slick-carousel .slick-prev::before,
@@ -220,7 +219,7 @@
 	content: "•";
 	text-align: center;
 	opacity: 0.25;
-	color: #000f;
+	color: #000;
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
 }

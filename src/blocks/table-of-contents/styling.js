@@ -178,9 +178,6 @@ function styling( props ) {
 			'margin-top': generateCSSUnit( topMargin, marginTypeDesktop ),
 			'margin-bottom': generateCSSUnit( bottomMargin, marginTypeDesktop ),
 		},
-		' .uagb-toc__list-wrap > ol.uagb-toc__list > li:first-child': {
-			'padding-top': 0,
-		},
 		' .uagb-toc__list-wrap > ol.uagb-toc__list li': {
 			'color': bulletColor,
 		},

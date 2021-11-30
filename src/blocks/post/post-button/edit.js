@@ -26,18 +26,13 @@ export const PostButton = ( props ) => {
 				<div
 					className={ classnames(
 						'uagb-post__cta',
-						attributes.inheritFromTheme ? 'wp-block-button' : null
+						'wp-block-button'
 					) }
 				>
 					<a
 						className={ classnames(
-							! attributes.inheritFromTheme
-								? 'uagb-post__link '
-								: null,
 							'uagb-text-link',
-							attributes.inheritFromTheme
-								? 'wp-block-button__link'
-								: null
+							'wp-block-button__link'
 						) }
 						href={ post.link }
 						target={ target }

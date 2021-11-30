@@ -267,11 +267,11 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 							),
 							'arrowSize'               => array(
 								'type'    => 'number',
-								'default' => 20,
+								'default' => 24,
 							),
 							'arrowBorderSize'         => array(
 								'type'    => 'number',
-								'default' => 1,
+								'default' => 0,
 							),
 							'arrowBorderRadius'       => array(
 								'type'    => 'number',
@@ -279,7 +279,7 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 							),
 							'arrowColor'              => array(
 								'type'    => 'string',
-								'default' => '#aaaaaa',
+								'default' => '#000',
 							),
 							'equalHeight'             => array(
 								'type'    => 'boolean',
@@ -588,7 +588,7 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 			return array(
 				'inheritFromTheme'        => array(
 					'type'    => 'boolean',
-					'default' => false,
+					'default' => true,
 				),
 				'block_id'                => array(
 					'type'    => 'string',
@@ -627,7 +627,7 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 				),
 				'displayPostAuthor'       => array(
 					'type'    => 'boolean',
-					'default' => true,
+					'default' => false,
 				),
 				'displayPostTitle'        => array(
 					'type'    => 'boolean',
@@ -741,13 +741,12 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 				),
 				'bgColor'                 => array(
 					'type'    => 'string',
-					'default' => '#f5f5f5',
+					'default' => '#f6f6f6',
 				),
 
 				// Title Attributes.
 				'titleColor'              => array(
-					'type'    => 'string',
-					'default' => '#3b3b3b',
+					'type' => 'string',
 				),
 				'titleTag'                => array(
 					'type'    => 'string',
@@ -895,12 +894,10 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 
 				// CTA attributes.
 				'ctaColor'                => array(
-					'type'    => 'string',
-					'default' => '#ffffff',
+					'type' => 'string',
 				),
 				'ctaBgColor'              => array(
-					'type'    => 'string',
-					'default' => '#333333',
+					'type' => 'string',
 				),
 				'ctaHColor'               => array(
 					'type' => 'string',
@@ -1519,7 +1516,7 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 
 								var enableEqualHeight = ( '<?php echo esc_html( $equal_height ); ?>' );
 
-								if( enableEqualHeight ){	
+								if( enableEqualHeight ){
 									$scope.imagesLoaded( function() {
 										UAGBPostCarousel._setHeight( $scope );
 									});
@@ -1790,8 +1787,8 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 			$target   = ( $attributes['newTab'] ) ? '_blank' : '_self';
 			$cta_text = ( $attributes['ctaText'] ) ? $attributes['ctaText'] : __( 'Read More', 'ultimate-addons-for-gutenberg' );
 			do_action( "uagb_single_post_before_cta_{$attributes['post_type']}", get_the_ID(), $attributes );
-			$wrap_classes = ( true === $attributes['inheritFromTheme'] ) ? 'uagb-post__cta wp-block-button' : 'uagb-post__cta';
-			$link_classes = ( false === $attributes['inheritFromTheme'] ) ? 'uagb-post__link uagb-text-link' : 'wp-block-button__link uagb-text-link';
+			$wrap_classes = 'uagb-post__cta wp-block-button';
+			$link_classes = 'wp-block-button__link uagb-text-link';
 			?>
 			<div class='uagb-post__text'>
 				<div class="<?php echo esc_html( $wrap_classes ); ?>">

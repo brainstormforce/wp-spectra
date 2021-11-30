@@ -12,7 +12,7 @@ for ( let i = 1; i <= itemCount; i++ ) {
 		image_icon: 'icon',
 		icon: 'fab fa-arrow-circle-right',
 		image: '',
-		icon_color: '#3a3a3a',
+		icon_color: '',
 		label_color: '',
 		icon_hover_color: '',
 		label_hover_color: '',

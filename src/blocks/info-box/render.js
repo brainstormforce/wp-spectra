@@ -3,7 +3,7 @@ import InfoBoxPositionClasses from './classes';
 import React, { useLayoutEffect } from 'react';
 import Title from './components/Title';
 import InfoBoxDesc from './components/InfoBoxDesc';
-import CallToAction from './components/CallToAction';
+import CallToAction from './components/CTA';
 import InfoBoxSeparator from './components/InfoBoxSeparator';
 import Icon from './components/Icon';
 import InfoBoxIconImage from './components/InfoBoxIconImage';

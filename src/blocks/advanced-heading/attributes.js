@@ -44,7 +44,7 @@ const attributes = {
 	},
 	seperatorStyle: {
 		type: 'string',
-		default: 'solid',
+		default: 'none',
 	},
 	separatorHeight: {
 		type: 'number',

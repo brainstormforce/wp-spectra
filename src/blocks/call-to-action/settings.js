@@ -101,7 +101,6 @@ const Settings = ( props ) => {
 		ctaLeftSpace,
 		ctaRightSpace,
 		ctaLinkHoverColor,
-		inheritFromTheme,
 		titleTransform,
 		titleDecoration,
 		descTransform,
@@ -262,22 +261,6 @@ const Settings = ( props ) => {
 						/>
 					</>
 				) }
-				{ ctaType === 'button' && (
-					<>
-						<ToggleControl
-							label={ __(
-								'Inherit from Theme',
-								'ultimate-addons-for-gutenberg'
-							) }
-							checked={ inheritFromTheme }
-							onChange={ () =>
-								setAttributes( {
-									inheritFromTheme: ! inheritFromTheme,
-								} )
-							}
-						/>
-					</>
-				) }
 				{ ctaType !== 'all' && ctaType !== 'none' && (
 					<>
 						<UAGIconPicker
@@ -362,60 +345,55 @@ const Settings = ( props ) => {
 				initialOpen={ false }
 			>
 				{ ( ctaType === 'text' || ctaType === 'button' ) && (
-					<>
-						{ ( ! inheritFromTheme && ctaType === 'button' ) ||
-							( ctaType === 'text' && (
-								<TypographyControl
-									label={ __(
-										'Typography',
-										'ultimate-addons-for-gutenberg'
-									) }
-									attributes={ attributes }
-									setAttributes={ setAttributes }
-									loadGoogleFonts={ {
-										value: ctaLoadGoogleFonts,
-										label: 'ctaLoadGoogleFonts',
-									} }
-									fontFamily={ {
-										value: ctaFontFamily,
-										label: 'ctaFontFamily',
-									} }
-									fontWeight={ {
-										value: ctaFontWeight,
-										label: 'ctaFontWeight',
-									} }
-									fontStyle={ {
-										value: ctaFontStyle,
-										label: 'ctaFontStyle',
-									} }
-									transform={ {
-										value: ctaTransform,
-										label: 'ctaTransform',
-									} }
-									decoration={ {
-										value: ctaDecoration,
-										label: 'ctaDecoration',
-									} }
-									fontSizeType={ {
-										value: ctaFontSizeType,
-										label: 'ctaFontSizeType',
-									} }
-									fontSize={ {
-										value: ctaFontSize,
-										label: 'ctaFontSize',
-									} }
-									fontSizeMobile={ {
-										value: ctaFontSizeMobile,
-										label: 'ctaFontSizeMobile',
-									} }
-									fontSizeTablet={ {
-										value: ctaFontSizeTablet,
-										label: 'ctaFontSizeTablet',
-									} }
-									disableLineHeight={ true }
-								/>
-							) ) }
-					</>
+					<TypographyControl
+						label={ __(
+							'Typography',
+							'ultimate-addons-for-gutenberg'
+						) }
+						attributes={ attributes }
+						setAttributes={ setAttributes }
+						loadGoogleFonts={ {
+							value: ctaLoadGoogleFonts,
+							label: 'ctaLoadGoogleFonts',
+						} }
+						fontFamily={ {
+							value: ctaFontFamily,
+							label: 'ctaFontFamily',
+						} }
+						fontWeight={ {
+							value: ctaFontWeight,
+							label: 'ctaFontWeight',
+						} }
+						fontStyle={ {
+							value: ctaFontStyle,
+							label: 'ctaFontStyle',
+						} }
+						transform={ {
+							value: ctaTransform,
+							label: 'ctaTransform',
+						} }
+						decoration={ {
+							value: ctaDecoration,
+							label: 'ctaDecoration',
+						} }
+						fontSizeType={ {
+							value: ctaFontSizeType,
+							label: 'ctaFontSizeType',
+						} }
+						fontSize={ {
+							value: ctaFontSize,
+							label: 'ctaFontSize',
+						} }
+						fontSizeMobile={ {
+							value: ctaFontSizeMobile,
+							label: 'ctaFontSizeMobile',
+						} }
+						fontSizeTablet={ {
+							value: ctaFontSizeTablet,
+							label: 'ctaFontSizeTablet',
+						} }
+						disableLineHeight={ true }
+					/>
 				) }
 				{ ctaType === 'text' && (
 					<UAGTabsControl
@@ -440,7 +418,7 @@ const Settings = ( props ) => {
 						disableBottomSeparator={ true }
 					/>
 				) }
-				{ ctaType === 'button' && ! inheritFromTheme && (
+				{ ctaType === 'button' && (
 					<>
 						<UAGTabsControl
 							tabs={ [
@@ -841,7 +819,7 @@ const Settings = ( props ) => {
 					max={ 500 }
 					displayUnit={ false }
 				/>
-				{ ctaPosition !== 'right' && 
+				{ ctaPosition !== 'right' &&
 					<Range
 						label={ __(
 							'Description Bottom Margin (px)',
@@ -1120,10 +1098,9 @@ const Settings = ( props ) => {
 					<InspectorTab { ...UAGTabs.style }>
 						{ headingSettings() }
 						{ descriptionSettings() }
-						{ ! inheritFromTheme &&
-							ctaType !== 'all' &&
-							ctaType !== 'none' &&
-							ctaStyleSettings() }
+						{ ctaType !== 'all' &&
+						  ctaType !== 'none' &&
+						  ctaStyleSettings() }
 						{ marginSettings() }
 					</InspectorTab>
 					<InspectorTab

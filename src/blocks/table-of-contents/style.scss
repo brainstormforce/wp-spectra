@@ -10,8 +10,13 @@
 		display: inline-block;
 	}
 
+	li.uagb-toc__list {
+		padding-top: 10px;
+	}
+
 	ul.uagb-toc__list,
 	ol.uagb-toc__list {
+
 		padding-left: 0;
 		margin-bottom: 0;
 		margin-left: 2.2em;

@@ -5,7 +5,7 @@
 const attributes = {
 	inheritFromTheme: {
 		type: 'boolean',
-		default: false,
+		default: true,
 	},
 	prefixTitle: {
 		source: 'html',
@@ -286,15 +286,13 @@ const attributes = {
 	},
 	seperatorStyle: {
 		type: 'string',
-		default: 'solid',
+		default: 'none',
 	},
 	seperatorColor: {
 		type: 'string',
-		default: '#333',
 	},
 	seperatorWidth: {
 		type: 'number',
-		default: 30,
 	},
 	separatorWidthType: {
 		type: 'string',
@@ -321,8 +319,7 @@ const attributes = {
 		default: '#',
 	},
 	ctaLinkColor: {
-		type: 'string',
-		default: '#333',
+		type: 'string'
 	},
 	ctaTransform: {
 		type: 'string',
@@ -359,47 +356,38 @@ const attributes = {
 	},
 	ctaBtnLinkColor: {
 		type: 'string',
-		default: '#333',
 	},
 	ctaLinkHoverColor: {
 		type: 'string',
 		default: '',
 	},
 	ctaBgColor: {
-		type: 'string',
-		default: 'transparent',
+		type: 'string'
 	},
 	ctaBgHoverColor: {
-		type: 'string',
-		default: 'transparent',
+		type: 'string'
 	},
 	ctaBorderColor: {
-		type: 'string',
-		default: '#333',
+		type: 'string'
 	},
 	ctaBorderhoverColor: {
 		type: 'string',
 		default: '',
 	},
 	ctaBorderStyle: {
-		type: 'string',
-		default: 'solid',
+		type: 'string'
 	},
 	ctaBtnVertPadding: {
-		type: 'number',
-		default: 10,
+		type: 'number'
 	},
 	ctaBtnHrPadding: {
-		type: 'number',
-		default: 14,
+		type: 'number'
 	},
 	ctaBorderWidth: {
-		type: 'number',
-		default: 1,
+		type: 'number'
 	},
 	ctaBorderRadius: {
-		type: 'number',
-		default: 0,
+		type: 'number'
 	},
 	prefixSpace: {
 		type: 'number',
@@ -458,7 +446,7 @@ const attributes = {
 	},
 	showPrefix: {
 		type: 'boolean',
-		default: true,
+		default: false,
 	},
 	showTitle: {
 		type: 'boolean',
