@@ -22,11 +22,14 @@ import {
 } from '@wordpress/block-editor';
 
 import {
-	PanelBody,
 	SelectControl,
 	ToggleControl,
 	Icon,
 } from '@wordpress/components';
+
+
+
+import UAGAdvancedPanelBody from '@Components/advanced-panel-body';
 
 const Settings = ( props ) => {
 	props = props.parentProps;
@@ -383,18 +386,18 @@ const Settings = ( props ) => {
 	};
 
 	const generalSettings = (
-		<PanelBody title={ __( 'General', 'ultimate-addons-for-gutenberg' ) }>
+		<UAGAdvancedPanelBody title={ __( 'General', 'ultimate-addons-for-gutenberg' ) }>
 			<SelectControl
 				label={ __( 'Select Form', 'ultimate-addons-for-gutenberg' ) }
 				value={ formId }
 				onChange={ onSelectForm }
 				options={ uagb_blocks_info.cf7_forms }
 			/>
-		</PanelBody>
+		</UAGAdvancedPanelBody>
 	);
 
 	const fieldSetting = (
-		<PanelBody
+		<UAGAdvancedPanelBody
 			title={ __( 'Field', 'ultimate-addons-for-gutenberg' ) }
 			initialOpen={ false }
 		>
@@ -419,11 +422,11 @@ const Settings = ( props ) => {
 					},
 				] }
 			/>
-		</PanelBody>
+		</UAGAdvancedPanelBody>
 	);
 
 	const radioCheckSetting = (
-		<PanelBody
+		<UAGAdvancedPanelBody
 			title={ __( 'Radio & Checkbox', 'ultimate-addons-for-gutenberg' ) }
 			initialOpen={ false }
 		>
@@ -437,11 +440,11 @@ const Settings = ( props ) => {
 					setAttributes( { enableOveride: ! enableOveride } )
 				}
 			/>
-		</PanelBody>
+		</UAGAdvancedPanelBody>
 	);
 
 	const msgSettings = (
-		<PanelBody
+		<UAGAdvancedPanelBody
 			title={ __(
 				'Success / Error Message',
 				'ultimate-addons-for-gutenberg'
@@ -490,10 +493,10 @@ const Settings = ( props ) => {
 					} )
 				}
 			/>
-		</PanelBody>
+		</UAGAdvancedPanelBody>
 	);
 	const btnSetting = (
-		<PanelBody
+		<UAGAdvancedPanelBody
 			title={ __( 'Submit Button', 'ultimate-addons-for-gutenberg' ) }
 			initialOpen={ false }
 		>
@@ -541,11 +544,11 @@ const Settings = ( props ) => {
 				] }
 				showIcons={ true }
 			/>
-		</PanelBody>
+		</UAGAdvancedPanelBody>
 	);
 
 	const labelInputStyling = (
-		<PanelBody
+		<UAGAdvancedPanelBody
 			title={ __( 'Label & Input', 'ultimate-addons-for-gutenberg' ) }
 			initialOpen={ false }
 		>
@@ -708,11 +711,11 @@ const Settings = ( props ) => {
 				max={ 50 }
 				displayUnit={ false }
 			/>
-		</PanelBody>
+		</UAGAdvancedPanelBody>
 	);
 
 	const fieldStyling = (
-		<PanelBody
+		<UAGAdvancedPanelBody
 			title={ __( 'Field', 'ultimate-addons-for-gutenberg' ) }
 			initialOpen={ false }
 		>
@@ -832,10 +835,10 @@ const Settings = ( props ) => {
 					label: 'fieldSpacingLink',
 				} }
 			/>
-		</PanelBody>
+		</UAGAdvancedPanelBody>
 	);
 	const radioCheckStyling = (
-		<PanelBody
+		<UAGAdvancedPanelBody
 			title={ __( 'Radio & Checkbox', 'ultimate-addons-for-gutenberg' ) }
 			initialOpen={ false }
 		>
@@ -1005,10 +1008,10 @@ const Settings = ( props ) => {
 					/>
 				</>
 			) }
-		</PanelBody>
+		</UAGAdvancedPanelBody>
 	);
 	const buttonStyling = (
-		<PanelBody
+		<UAGAdvancedPanelBody
 			title={ __( 'Submit Button', 'ultimate-addons-for-gutenberg' ) }
 			initialOpen={ false }
 		>
@@ -1196,11 +1199,11 @@ const Settings = ( props ) => {
 					label: 'buttonSpacingLink',
 				} }
 			/>
-		</PanelBody>
+		</UAGAdvancedPanelBody>
 	);
 
 	const messageStyling = (
-		<PanelBody
+		<UAGAdvancedPanelBody
 			title={ __(
 				'Success / Error Message',
 				'ultimate-addons-for-gutenberg'
@@ -1556,7 +1559,7 @@ const Settings = ( props ) => {
 					label: 'messageSpacingLink',
 				} }
 			/>
-		</PanelBody>
+		</UAGAdvancedPanelBody>
 	);
 	return (
 		<Suspense fallback={ lazyLoader() }>

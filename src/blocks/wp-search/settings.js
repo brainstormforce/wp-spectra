@@ -13,9 +13,13 @@ import InspectorTab, {
 	UAGTabs,
 } from '@Components/inspector-tabs/InspectorTab.js';
 import AdvancedPopColorControl from '@Components/color-control/advanced-pop-color-control.js';
-import { PanelBody, TextControl } from '@wordpress/components';
+import { TextControl } from '@wordpress/components';
 
 import { InspectorControls } from '@wordpress/block-editor';
+
+
+
+import UAGAdvancedPanelBody from '@Components/advanced-panel-body';
 
 const Settings = ( props ) => {
 	props = props.parentProps;
@@ -103,7 +107,7 @@ const Settings = ( props ) => {
 
 	const generalSettings = () => {
 		return (
-			<PanelBody initialOpen={ true }>
+			<UAGAdvancedPanelBody initialOpen={ true }>
 				<MultiButtonsControl
 					setAttributes={ setAttributes }
 					label={ __( 'Layout', 'ultimate-addons-for-gutenberg' ) }
@@ -208,13 +212,13 @@ const Settings = ( props ) => {
 						/>
 					</>
 				) }
-			</PanelBody>
+			</UAGAdvancedPanelBody>
 		);
 	};
 
 	const inputSettings = () => {
 		return (
-			<PanelBody
+			<UAGAdvancedPanelBody
 				title={ __( 'Input Box', 'ultimate-addons-for-gutenberg' ) }
 				initialOpen={ false }
 				className="uagb__url-panel-body"
@@ -471,7 +475,7 @@ const Settings = ( props ) => {
 						),
 					} }
 				/>
-			</PanelBody>
+			</UAGAdvancedPanelBody>
 		);
 	};
 
@@ -558,7 +562,7 @@ const Settings = ( props ) => {
 		);
 		if ( 'input-button' === layout ) {
 			return (
-				<PanelBody
+				<UAGAdvancedPanelBody
 					title={ __( 'Button', 'ultimate-addons-for-gutenberg' ) }
 					initialOpen={ false }
 					className="uagb__url-panel-body"
@@ -692,7 +696,7 @@ const Settings = ( props ) => {
 					</>
 					)
 				}
-				</PanelBody>
+				</UAGAdvancedPanelBody>
 			);
 		}
 
@@ -702,7 +706,7 @@ const Settings = ( props ) => {
 	const iconSettings = () => {
 		if ( 'input' === layout ) {
 			return (
-				<PanelBody
+				<UAGAdvancedPanelBody
 					title={ __( 'Icon', 'ultimate-addons-for-gutenberg' ) }
 					initialOpen={ false }
 					className="uagb__url-panel-body"
@@ -738,7 +742,7 @@ const Settings = ( props ) => {
 							}
 						/>
 					</>
-				</PanelBody>
+				</UAGAdvancedPanelBody>
 			);
 		}
 

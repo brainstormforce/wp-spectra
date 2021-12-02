@@ -1,12 +1,16 @@
 import React from 'react';
 import { __ } from '@wordpress/i18n';
-import { PanelBody, ToggleControl, TextControl } from '@wordpress/components';
+import { ToggleControl, TextControl } from '@wordpress/components';
 import InspectorTabs from '@Components/inspector-tabs/InspectorTabs.js';
 import InspectorTab, {
 	UAGTabs,
 } from '@Components/inspector-tabs/InspectorTab.js';
 import MultiButtonsControl from '@Components/multi-buttons-control';
 import { InspectorControls } from '@wordpress/block-editor';
+
+
+
+import UAGAdvancedPanelBody from '@Components/advanced-panel-body';
 
 const Settings = ( props ) => {
 	props = props.parentProps;
@@ -23,7 +27,7 @@ const Settings = ( props ) => {
 
 	const toggleInspectorControls = () => {
 		return (
-			<PanelBody initialOpen={ true }>
+			<UAGAdvancedPanelBody initialOpen={ true }>
 				<p className="uagb-settings-notice">
 					{ __(
 						'Leaving the toggle in On/Off state will set it as a default value on page load for the user.',
@@ -89,7 +93,7 @@ const Settings = ( props ) => {
 					] }
 					showIcons={ false }
 				/>
-			</PanelBody>
+			</UAGAdvancedPanelBody>
 		);
 	};
 

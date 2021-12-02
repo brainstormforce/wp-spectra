@@ -5,9 +5,13 @@ import InspectorTab, {
 	UAGTabs,
 } from '@Components/inspector-tabs/InspectorTab.js';
 
-import { PanelBody, ToggleControl } from '@wordpress/components';
+import { ToggleControl } from '@wordpress/components';
 
 import { InspectorControls } from '@wordpress/block-editor';
+
+
+
+import UAGAdvancedPanelBody from '@Components/advanced-panel-body';
 
 const Settings = ( props ) => {
 	props = props.parentProps;
@@ -18,7 +22,7 @@ const Settings = ( props ) => {
 
 	const radioInspectorControls = () => {
 		return (
-			<PanelBody initialOpen={ true }>
+			<UAGAdvancedPanelBody initialOpen={ true }>
 				<ToggleControl
 					label={ __( 'Required', 'ultimate-addons-for-gutenberg' ) }
 					checked={ radioRequired }
@@ -26,7 +30,7 @@ const Settings = ( props ) => {
 						setAttributes( { radioRequired: ! radioRequired } )
 					}
 				/>
-			</PanelBody>
+			</UAGAdvancedPanelBody>
 		);
 	};
 

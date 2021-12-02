@@ -19,6 +19,8 @@ import ResponsiveSlider from '@Components/responsive-slider';
 import UAGTabsControl from '@Components/tabs';
 import renderSVG from '@Controls/renderIcon';
 import MultiButtonsControl from '@Components/multi-buttons-control';
+import UAGAdvancedPanelBody from '@Components/advanced-panel-body';
+
 const Settings = lazy( () =>
 	import(
 		/* webpackChunkName: "chunks/post-masonry/settings" */ './settings'
@@ -32,7 +34,6 @@ const Render = lazy( () =>
 const MAX_POSTS_COLUMNS = 8;
 
 import {
-	PanelBody,
 	Placeholder,
 	SelectControl,
 	Spinner,
@@ -495,7 +496,7 @@ const UAGBPostMasonry = ( props ) => {
 
 	const generalSettings = () => {
 		return (
-			<PanelBody
+			<UAGAdvancedPanelBody
 				title={ __( 'General', 'ultimate-addons-for-gutenberg' ) }
 				initialOpen={ true }
 			>
@@ -720,13 +721,13 @@ const UAGBPostMasonry = ( props ) => {
 						setAttributes( { postDisplaytext: value } )
 					}
 				/>
-			</PanelBody>
+			</UAGAdvancedPanelBody>
 		);
 	};
 	const paginationSettings = () => {
 		if ( 'infinite' === paginationType ) {
 			return (
-				<PanelBody
+				<UAGAdvancedPanelBody
 					title={ __(
 						'Pagination',
 						'ultimate-addons-for-gutenberg'
@@ -1040,7 +1041,7 @@ const UAGBPostMasonry = ( props ) => {
 							/>
 						</>
 					) }
-				</PanelBody>
+				</UAGAdvancedPanelBody>
 			);
 		}
 
@@ -1048,7 +1049,7 @@ const UAGBPostMasonry = ( props ) => {
 	};
 	const imageSettings = () => {
 		return (
-			<PanelBody
+			<UAGAdvancedPanelBody
 				title={ __( 'Image', 'ultimate-addons-for-gutenberg' ) }
 				initialOpen={ false }
 			>
@@ -1115,12 +1116,12 @@ const UAGBPostMasonry = ( props ) => {
 						}
 					/>
 				) }
-			</PanelBody>
+			</UAGAdvancedPanelBody>
 		);
 	};
 	const contentSettings = () => {
 		return (
-			<PanelBody
+			<UAGAdvancedPanelBody
 				title={ __( 'Content', 'ultimate-addons-for-gutenberg' ) }
 				initialOpen={ false }
 			>
@@ -1235,12 +1236,12 @@ const UAGBPostMasonry = ( props ) => {
 							displayUnit={ false }
 						/>
 					) }
-			</PanelBody>
+			</UAGAdvancedPanelBody>
 		);
 	};
 	const readMoreLinkSettings = () => {
 		return (
-			<PanelBody
+			<UAGAdvancedPanelBody
 				title={ __(
 					'Read More Link',
 					'ultimate-addons-for-gutenberg'
@@ -1281,12 +1282,12 @@ const UAGBPostMasonry = ( props ) => {
 						/>
 					</>
 				) }
-			</PanelBody>
+			</UAGAdvancedPanelBody>
 		);
 	};
 	const spacingSettings = () => {
 		return (
-			<PanelBody
+			<UAGAdvancedPanelBody
 				title={ __( 'Blog Settings', 'ultimate-addons-for-gutenberg' ) }
 				initialOpen={ false }
 			>
@@ -1403,13 +1404,13 @@ const UAGBPostMasonry = ( props ) => {
 						label: 'spacingLinkPadding',
 					} }
 				/>
-			</PanelBody>
+			</UAGAdvancedPanelBody>
 		);
 	};
 
 	const imageStyle = () => {
 		return (
-			<PanelBody
+			<UAGAdvancedPanelBody
 				title={ __( 'Image', 'ultimate-addons-for-gutenberg' ) }
 				initialOpen={ false }
 			>
@@ -1459,12 +1460,12 @@ const UAGBPostMasonry = ( props ) => {
 						} }
 					/>
 				}
-			</PanelBody>
+			</UAGAdvancedPanelBody>
 		);
 	};
 	const titleStyle = () => {
 		return (
-			<PanelBody
+			<UAGAdvancedPanelBody
 				title={ __( 'Title', 'ultimate-addons-for-gutenberg' ) }
 				initialOpen={ false }
 			>
@@ -1605,12 +1606,12 @@ const UAGBPostMasonry = ( props ) => {
 					} }
 				/>
 
-			</PanelBody>
+			</UAGAdvancedPanelBody>
 		);
 	};
 	const metaStyle = () => {
 		return (
-			<PanelBody
+			<UAGAdvancedPanelBody
 				title={ __( 'Meta', 'ultimate-addons-for-gutenberg' ) }
 				initialOpen={ false }
 			>
@@ -1704,12 +1705,12 @@ const UAGBPostMasonry = ( props ) => {
 						label: 'metaBottomSpaceUnit',
 					} }
 				/>
-			</PanelBody>
+			</UAGAdvancedPanelBody>
 		);
 	};
 	const excerptStyle = () => {
 		return (
-			<PanelBody
+			<UAGAdvancedPanelBody
 				title={ __( 'Excerpt', 'ultimate-addons-for-gutenberg' ) }
 				initialOpen={ false }
 			>
@@ -1801,12 +1802,12 @@ const UAGBPostMasonry = ( props ) => {
 						label: 'excerptBottomSpaceUnit',
 					} }
 				/>
-			</PanelBody>
+			</UAGAdvancedPanelBody>
 		);
 	};
 	const readMoreLinkStyleSettings = () => {
 		return (
-			<PanelBody
+			<UAGAdvancedPanelBody
 				title={ __(
 					'Read More Link',
 					'ultimate-addons-for-gutenberg'
@@ -2079,7 +2080,7 @@ const UAGBPostMasonry = ( props ) => {
 						label: 'spacingLink',
 					} }
 				/>
-			</PanelBody>
+			</UAGAdvancedPanelBody>
 		);
 	};
 

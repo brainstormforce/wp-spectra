@@ -19,11 +19,14 @@ import {
 } from '@wordpress/block-editor';
 
 import {
-	PanelBody,
 	ToggleControl,
 	ToolbarGroup,
 	Icon,
 } from '@wordpress/components';
+
+
+
+import UAGAdvancedPanelBody from '@Components/advanced-panel-body';
 
 const Settings = ( props ) => {
 	const { loopLottie, reverseDirection } = props;
@@ -51,7 +54,7 @@ const Settings = ( props ) => {
 	} = attributes;
 
 	const controlsSettings = (
-		<PanelBody 
+		<UAGAdvancedPanelBody 
 			title={ __( 'Content', 'ultimate-addons-for-gutenberg' ) }
 			initialOpen={ true }
 		>
@@ -171,11 +174,11 @@ const Settings = ( props ) => {
 					) }
 				/>
 			) }
-		</PanelBody>
+		</UAGAdvancedPanelBody>
 	);
 
 	const styleSettings = (
-		<PanelBody
+		<UAGAdvancedPanelBody
 			title={ __( 'Background', 'ultimate-addons-for-gutenberg' ) }
 			initialOpen={ true }
 		>
@@ -252,7 +255,7 @@ const Settings = ( props ) => {
 				}
 				disableBottomSeparator={ true }
 			/>
-		</PanelBody>
+		</UAGAdvancedPanelBody>
 	);
 
 	const onSelectLottieJSON = ( media ) => {

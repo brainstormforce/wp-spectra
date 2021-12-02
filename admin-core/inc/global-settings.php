@@ -67,6 +67,15 @@ class Global_Settings {
 					),
 				),
 			),
+			'collapse_panels'              => array(
+				'fields' => array(
+					'collapse_panels' => array(
+						'type'  => 'toggle',
+						'name'  => 'collapse_panels',
+						'label' => __( 'Load Google Fonts Locally', 'ultimate-addons-for-gutenberg' ),
+					),
+				),
+			),
 			'preload_local_fonts'          => array(
 				'fields' => array(
 					'preload_local_fonts' => array(

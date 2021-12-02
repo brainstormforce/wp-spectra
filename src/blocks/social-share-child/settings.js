@@ -7,7 +7,7 @@ import UAGIconPicker from '@Components/icon-picker';
 import { __ } from '@wordpress/i18n';
 import React from 'react';
 import { InspectorControls } from '@wordpress/block-editor';
-import { PanelBody, SelectControl } from '@wordpress/components';
+import { SelectControl } from '@wordpress/components';
 import AdvancedPopColorControl from '@Components/color-control/advanced-pop-color-control.js';
 import InspectorTabs from '@Components/inspector-tabs/InspectorTabs.js';
 import InspectorTab, {
@@ -16,6 +16,10 @@ import InspectorTab, {
 import MultiButtonsControl from '@Components/multi-buttons-control';
 import UAGTabsControl from '@Components/tabs';
 import UAGImage from '@Components/image';
+
+
+
+import UAGAdvancedPanelBody from '@Components/advanced-panel-body';
 
 const Settings = ( props ) => {
 	props = props.parentProps;
@@ -88,7 +92,7 @@ const Settings = ( props ) => {
 
 	const generalSettings = () => {
 		return (
-			<PanelBody initialOpen={ true }>
+			<UAGAdvancedPanelBody initialOpen={ true }>
 				<SelectControl
 					label={ __( 'Type' ) }
 					value={ type }
@@ -293,7 +297,7 @@ const Settings = ( props ) => {
 						/>
 					</>
 				) }
-			</PanelBody>
+			</UAGAdvancedPanelBody>
 		);
 	};
 	const iconColorSettings = () => {
@@ -378,7 +382,7 @@ const Settings = ( props ) => {
 			);
 		}
 		return (
-			<PanelBody
+			<UAGAdvancedPanelBody
 				title={ __( 'Icon Color', 'ultimate-addons-for-gutenberg' ) }
 			>
 				<UAGTabsControl
@@ -402,7 +406,7 @@ const Settings = ( props ) => {
 					hover={ colorControlHover }
 					disableBottomSeparator={ true }
 				/>
-			</PanelBody>
+			</UAGAdvancedPanelBody>
 		);
 	};
 	return (

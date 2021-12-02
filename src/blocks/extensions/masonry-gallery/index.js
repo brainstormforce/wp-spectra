@@ -1,6 +1,6 @@
 import { __ } from '@wordpress/i18n';
 import { InspectorControls } from '@wordpress/block-editor';
-import { ToggleControl, PanelBody, RangeControl } from '@wordpress/components';
+import { ToggleControl, RangeControl } from '@wordpress/components';
 import { createHigherOrderComponent } from '@wordpress/compose';
 import { addFilter } from '@wordpress/hooks';
 const { enableMasonryGallery } = uagb_blocks_info;
@@ -8,7 +8,7 @@ import generateCSSUnit from '@Controls/generateCSSUnit';
 import generateCSS from '@Controls/generateCSS';
 import styles from './../editor.lazy.scss';
 import React, { useLayoutEffect } from 'react';
-
+import UAGAdvancedPanelBody from '@Components/advanced-panel-body';
 
 const MasonryGallery = createHigherOrderComponent( ( BlockEdit ) => {
 
@@ -107,7 +107,7 @@ const MasonryGallery = createHigherOrderComponent( ( BlockEdit ) => {
 					attributes.ids &&
 					attributes.ids.length !== 0 && (
 						<InspectorControls>
-							<PanelBody
+							<UAGAdvancedPanelBody
 								title={ __(
 									'Masonry Gallery',
 									'ultimate-addons-for-gutenberg'
@@ -134,7 +134,7 @@ const MasonryGallery = createHigherOrderComponent( ( BlockEdit ) => {
 										allowReset
 									/>
 								) }
-							</PanelBody>
+							</UAGAdvancedPanelBody>
 						</InspectorControls>
 					) }
 			</>

@@ -6,7 +6,11 @@ import InspectorTabs from '@Components/inspector-tabs/InspectorTabs.js';
 import InspectorTab, {
 	UAGTabs,
 } from '@Components/inspector-tabs/InspectorTab.js';
-import { PanelBody, TextControl, SelectControl } from '@wordpress/components';
+import { TextControl, SelectControl } from '@wordpress/components';
+
+
+
+import UAGAdvancedPanelBody from '@Components/advanced-panel-body';
 
 const Settings = ( props ) => {
 	props = props.parentProps;
@@ -20,7 +24,7 @@ const Settings = ( props ) => {
 		<InspectorControls>
 			<InspectorTabs tabs={ [ 'general', 'advance' ] }>
 				<InspectorTab { ...UAGTabs.general }>
-					<PanelBody initialOpen={ true }>
+					<UAGAdvancedPanelBody initialOpen={ true }>
 						<p className="uagb-settings-notice">
 							{ __(
 								"This block uses Ultimate Addon for Gutenberg's API key to display the map. You don't need to create your own API key or worry about renewing it.",
@@ -585,7 +589,7 @@ const Settings = ( props ) => {
 								},
 							] }
 						/>
-					</PanelBody>
+					</UAGAdvancedPanelBody>
 				</InspectorTab>
 				<InspectorTab
 					{ ...UAGTabs.advance }

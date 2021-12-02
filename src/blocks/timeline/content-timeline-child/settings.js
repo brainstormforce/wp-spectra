@@ -6,7 +6,11 @@ import InspectorTab, {
 	UAGTabs,
 } from '@Components/inspector-tabs/InspectorTab.js';
 
-import { PanelBody, TextControl } from '@wordpress/components';
+import { TextControl } from '@wordpress/components';
+
+
+
+import UAGAdvancedPanelBody from '@Components/advanced-panel-body';
 
 const Settings = ( props ) => {
 	props = props.parentProps;
@@ -23,13 +27,13 @@ const Settings = ( props ) => {
 		}
 
 		return (
-			<PanelBody initialOpen={ true }>
+			<UAGAdvancedPanelBody initialOpen={ true }>
 				<TextControl
 					label={ __( 'Date', 'ultimate-addons-for-gutenberg' ) }
 					value={ t_date }
 					onChange={ ( value ) => setAttributes( { t_date: value } ) }
 				/>
-			</PanelBody>
+			</UAGAdvancedPanelBody>
 		);
 	};
 	return (

@@ -1,8 +1,9 @@
-import { ToggleControl, SelectControl, PanelBody } from '@wordpress/components';
+import { ToggleControl, SelectControl } from '@wordpress/components';
 import { __ } from '@wordpress/i18n';
 import { createHigherOrderComponent } from '@wordpress/compose';
 import { addFilter } from '@wordpress/hooks';
 import { InspectorControls } from '@wordpress/block-editor';
+import UAGAdvancedPanelBody from '@Components/advanced-panel-body';
 
 const { enableConditions } = uagb_blocks_info;
 
@@ -169,14 +170,14 @@ const AdvancedControlsBlock = createHigherOrderComponent( ( BlockEdit ) => {
 				<BlockEdit {...props} />
 				{isSelected && ! blockName.includes( 'uagb/' ) && ( blockName.includes( 'core/' ) || ( Array.isArray( customBlocks ) && 0 !== customBlocks.length && ( customBlocks.includes( blockName ) || customBlocks.includes( blockPrefix ) ) ) ) && ! excludeBlocks.includes( blockName ) &&
 				<InspectorControls>
-					<PanelBody
+					<UAGAdvancedPanelBody
 						title={ __( 'Display Conditions', 'ultimate-addons-for-gutenberg' ) }
 						initialOpen={ false }
 						className="block-editor-block-inspector__advanced uagb-extention-tab"
 					>
 						<p className="components-base-control__help">{ __( "Below UAG settings will only take effect once you are on the live page, and not while you're editing.", 'ultimate-addons-for-gutenberg' ) }</p>
 						{ UserConditionOptions( props ) }
-					</PanelBody>
+					</UAGAdvancedPanelBody>
 				</InspectorControls>
 				}
 			</>
@@ -225,7 +226,7 @@ if ( 'enabled' === enableConditions ) {
 
 			if( isSelected && ! excludeBlocks.includes( name ) ) {
 				return (
-					<PanelBody
+					<UAGAdvancedPanelBody
 						title={ __(
 							'Display Conditions',
 							'ultimate-addons-for-gutenberg'
@@ -240,7 +241,7 @@ if ( 'enabled' === enableConditions ) {
 							) }
 						</p>
 						{ UserConditionOptions( props ) }
-					</PanelBody>
+					</UAGAdvancedPanelBody>
 				);
 			}
 		}

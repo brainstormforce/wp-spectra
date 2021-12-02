@@ -5,9 +5,13 @@ import InspectorTab, {
 	UAGTabs,
 } from '@Components/inspector-tabs/InspectorTab.js';
 
-import { PanelBody, ToggleControl, SelectControl } from '@wordpress/components';
+import { ToggleControl, SelectControl } from '@wordpress/components';
 
 import { InspectorControls } from '@wordpress/block-editor';
+
+
+
+import UAGAdvancedPanelBody from '@Components/advanced-panel-body';
 
 const Settings = ( props ) => {
 	props = props.parentProps;
@@ -18,7 +22,7 @@ const Settings = ( props ) => {
 
 	const phoneInspectorControls = () => {
 		return (
-			<PanelBody initialOpen={ true }>
+			<UAGAdvancedPanelBody initialOpen={ true }>
 				<ToggleControl
 					label={ __( 'Required', 'ultimate-addons-for-gutenberg' ) }
 					checked={ phoneRequired }
@@ -50,7 +54,7 @@ const Settings = ( props ) => {
 						setAttributes( { pattern: value } )
 					}
 				/>
-			</PanelBody>
+			</UAGAdvancedPanelBody>
 		);
 	};
 

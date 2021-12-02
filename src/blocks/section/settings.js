@@ -16,7 +16,11 @@ import {
 	BlockAlignmentToolbar,
 	InspectorControls,
 } from '@wordpress/block-editor';
-import { PanelBody, SelectControl, ToggleControl } from '@wordpress/components';
+import { SelectControl, ToggleControl } from '@wordpress/components';
+
+
+
+import UAGAdvancedPanelBody from '@Components/advanced-panel-body';
 
 const Settings = ( props ) => {
 	props = props.parentProps;
@@ -96,7 +100,7 @@ const Settings = ( props ) => {
 
 	const getLayoutPanelBody = () => {
 		return (
-			<PanelBody initialOpen={ true }>
+			<UAGAdvancedPanelBody initialOpen={ true }>
 				<MultiButtonsControl
 					setAttributes={ setAttributes }
 					label={ __(
@@ -244,13 +248,13 @@ const Settings = ( props ) => {
 						},
 					] }
 				/>
-			</PanelBody>
+			</UAGAdvancedPanelBody>
 		);
 	};
 
 	const getSpacingPanelBody = () => {
 		return (
-			<PanelBody title="Spacing" initialOpen={ false }>
+			<UAGAdvancedPanelBody title="Spacing" initialOpen={ false }>
 				<SpacingControl
 					{ ...props }
 					label={ __( 'Margin', 'ultimate-addons-for-gutenberg' ) }
@@ -393,13 +397,13 @@ const Settings = ( props ) => {
 						label: 'spacingLink',
 					} }
 				/>
-			</PanelBody>
+			</UAGAdvancedPanelBody>
 		);
 	};
 
 	const getBackgroundPanelBody = () => {
 		return (
-			<PanelBody
+			<UAGAdvancedPanelBody
 				title={ __( 'Background', 'ultimate-addons-for-gutenberg' ) }
 				initialOpen={ false }
 			>
@@ -463,14 +467,14 @@ const Settings = ( props ) => {
 					onOpacityChange = { ( opacity ) => setAttributes( { backgroundVideoOpacity: opacity } ) }
 					{ ...props }
 				/>
-			</PanelBody>
+			</UAGAdvancedPanelBody>
 		);
 	};
 
 	const getBorderPanelBody = () => {
 		return (
 			<>
-				<PanelBody
+				<UAGAdvancedPanelBody
 					title={ __( 'Border', 'ultimate-addons-for-gutenberg' ) }
 					initialOpen={ false }
 				>
@@ -518,8 +522,8 @@ const Settings = ( props ) => {
 						} }
 						disableBottomSeparator={ true }
 					/>
-				</PanelBody>
-				<PanelBody title="Box Shadow" initialOpen={ false }>
+				</UAGAdvancedPanelBody>
+				<UAGAdvancedPanelBody title="Box Shadow" initialOpen={ false }>
 					<BoxShadowControl
 						setAttributes={ setAttributes }
 						label={ __(
@@ -575,7 +579,7 @@ const Settings = ( props ) => {
 							),
 						} }
 					/>
-				</PanelBody>
+				</UAGAdvancedPanelBody>
 			</>
 		);
 	};

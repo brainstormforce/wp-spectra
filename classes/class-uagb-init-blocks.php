@@ -542,6 +542,7 @@ class UAGB_Init_Blocks {
 				'uag_load_select_font_globally'      => $enable_selected_fonts,
 				'uag_select_font_globally'           => $selected_fonts,
 				'uagb_old_user_less_than_2'          => get_option( 'uagb-old-user-less-than-2' ),
+				'collapse_panels'                    => UAGB_Admin_Helper::get_admin_settings_option( 'uag_collapse_panels', 'enabled' ),
 			)
 		);
 		// To match the editor with frontend.

@@ -11,7 +11,8 @@ import InspectorTabs from '@Components/inspector-tabs/InspectorTabs.js';
 import InspectorTab, {
 	UAGTabs,
 } from '@Components/inspector-tabs/InspectorTab.js';
-import { PanelBody } from '@wordpress/components';
+
+import UAGAdvancedPanelBody from '@Components/advanced-panel-body';
 
 const Settings = ( props ) => {
 	props = props.parentProps;
@@ -69,7 +70,7 @@ const Settings = ( props ) => {
 			<InspectorControls>
 				<InspectorTabs tabs={ [ 'general', 'advance' ] }>
 					<InspectorTab { ...UAGTabs.general }>
-						<PanelBody initialOpen={ true }>
+						<UAGAdvancedPanelBody initialOpen={ true }>
 							<p className="uagb-settings-notice">
 								{ __(
 									'For the common styling options please select the Parent Block of this Price List Item.'
@@ -80,7 +81,7 @@ const Settings = ( props ) => {
 								backgroundImage={ image }
 								onRemoveImage={ onRemoveRestImage }
 							/>
-						</PanelBody>
+						</UAGAdvancedPanelBody>
 					</InspectorTab>
 					<InspectorTab { ...UAGTabs.advance }></InspectorTab>
 				</InspectorTabs>

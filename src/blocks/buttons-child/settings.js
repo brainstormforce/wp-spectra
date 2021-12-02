@@ -26,11 +26,13 @@ import {
 } from '@wordpress/block-editor';
 
 import {
-	PanelBody,
 	Popover,
 	ToolbarButton,
 	ToolbarGroup,
 } from '@wordpress/components';
+
+
+import UAGAdvancedPanelBody from '@Components/advanced-panel-body';
 
 const Settings = ( props ) => {
 	const state = props.state;
@@ -105,7 +107,7 @@ const Settings = ( props ) => {
 
 	const buttonSettings = () => {
 		return (
-			<PanelBody
+			<UAGAdvancedPanelBody
 				title={ __( 'Button', 'ultimate-addons-for-gutenberg' ) }
 				initialOpen={ true }
 			>
@@ -163,13 +165,13 @@ const Settings = ( props ) => {
 						/>
 					</>
 				) }
-			</PanelBody>
+			</UAGAdvancedPanelBody>
 		);
 	};
 
 	const textSettings = () => {
 		return (
-			<PanelBody
+			<UAGAdvancedPanelBody
 				title={ __( 'Text', 'ultimate-addons-for-gutenberg' ) }
 				initialOpen={ true }
 			>
@@ -290,13 +292,13 @@ const Settings = ( props ) => {
 					} }
 				/>
 
-			</PanelBody>
+			</UAGAdvancedPanelBody>
 		);
 	};
 
 	const IconSettings = () => {
 		return (
-			<PanelBody
+			<UAGAdvancedPanelBody
 				title={ __( 'Icon', 'ultimate-addons-for-gutenberg' ) }
 				initialOpen={ true }
 			>
@@ -312,13 +314,13 @@ const Settings = ( props ) => {
 						label: 'sizeType',
 					} }
 				/>
-			</PanelBody>
+			</UAGAdvancedPanelBody>
 		);
 	};
 
 	const borderSettings = () => {
 		return (
-			<PanelBody
+			<UAGAdvancedPanelBody
 				title={ __( 'Border', 'ultimate-addons-for-gutenberg' ) }
 				initialOpen={ false }
 			>
@@ -354,13 +356,13 @@ const Settings = ( props ) => {
 					} }
 					disableBottomSeparator={ true }
 				/>
-			</PanelBody>
+			</UAGAdvancedPanelBody>
 		);
 	};
 
 	const spacingSettings = () => {
 		return (
-			<PanelBody
+			<UAGAdvancedPanelBody
 				title={ __( 'Spacing', 'ultimate-addons-for-gutenberg' ) }
 				initialOpen={ false }
 			>
@@ -434,7 +436,7 @@ const Settings = ( props ) => {
 						label: 'paddingLink',
 					} }
 				/>
-			</PanelBody>
+			</UAGAdvancedPanelBody>
 		);
 	};
 

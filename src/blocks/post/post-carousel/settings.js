@@ -5,6 +5,7 @@ import WebfontLoader from '@Components/typography/fontloader';
 import { BlockAlignmentToolbar, BlockControls } from '@wordpress/block-editor';
 import { ToolbarGroup } from '@wordpress/components';
 
+
 const Settings = ( props ) => {
 	const { state, inspectorControls, togglePreview } = props;
 

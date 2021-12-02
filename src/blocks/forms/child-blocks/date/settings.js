@@ -1,7 +1,7 @@
 import React from 'react';
 import { __ } from '@wordpress/i18n';
 
-import { PanelBody, SelectControl, ToggleControl } from '@wordpress/components';
+import { SelectControl, ToggleControl } from '@wordpress/components';
 import InspectorTabs from '@Components/inspector-tabs/InspectorTabs.js';
 import InspectorTab, {
 	UAGTabs,
@@ -28,6 +28,10 @@ for ( index = 1; index <= 31; index++ ) {
 	const twoDigitDate = index < 10 ? `0${ index }` : `${ index }`;
 	dateDefaults.push( { label: twoDigitDate, value: twoDigitDate } );
 }
+
+
+
+import UAGAdvancedPanelBody from '@Components/advanced-panel-body';
 
 const Settings = ( props ) => {
 	props = props.parentProps;
@@ -73,7 +77,7 @@ const Settings = ( props ) => {
 
 	const dateInspectorControls = () => {
 		return (
-			<PanelBody initialOpen={ true }>
+			<UAGAdvancedPanelBody initialOpen={ true }>
 				<ToggleControl
 					label={ __( 'Required', 'ultimate-addons-for-gutenberg' ) }
 					checked={ dateRequired }
@@ -161,7 +165,7 @@ const Settings = ( props ) => {
 						{ invalidDateErrorMsg }
 					</>
 				) }
-			</PanelBody>
+			</UAGAdvancedPanelBody>
 		);
 	};
 

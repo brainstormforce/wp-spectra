@@ -126,7 +126,8 @@
 	color: var(--accent-hv-color);
 }
 
-.uag-control__status-yes {
+.uag-control__status-yes,
+.uag-control__status-enabled {
 	display: inline-flex;
 	color: #639102;
 	align-items: center;

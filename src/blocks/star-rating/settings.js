@@ -4,7 +4,7 @@ import TypographyControl from '@Components/typography';
 import WebfontLoader from '@Components/typography/fontloader';
 import { __ } from '@wordpress/i18n';
 import { InspectorControls } from '@wordpress/block-editor';
-import { PanelBody, Icon } from '@wordpress/components';
+import { Icon } from '@wordpress/components';
 import InspectorTabs from '@Components/inspector-tabs/InspectorTabs.js';
 import InspectorTab, {
 	UAGTabs,
@@ -14,6 +14,10 @@ import Range from '@Components/range/Range.js';
 import MultiButtonsControl from '@Components/multi-buttons-control';
 import renderSVG from '@Controls/renderIcon';
 import React from 'react';
+
+
+
+import UAGAdvancedPanelBody from '@Components/advanced-panel-body';
 
 const Settings = ( props ) => {
 	props = props.parentProps;
@@ -107,7 +111,7 @@ const Settings = ( props ) => {
 	}
 
 	const generalSettings = (
-		<PanelBody title={ __( 'General', 'ultimate-addons-for-gutenberg' ) }>
+		<UAGAdvancedPanelBody title={ __( 'General', 'ultimate-addons-for-gutenberg' ) }>
 			<MultiButtonsControl
 				setAttributes={ setAttributes }
 				label={ __( 'Range', 'ultimate-addons-for-gutenberg' ) }
@@ -164,10 +168,10 @@ const Settings = ( props ) => {
 				options={ alignmentOptions }
 				showIcons={ true }
 			/>
-		</PanelBody>
+		</UAGAdvancedPanelBody>
 	);
 	const titleStyling = (
-		<PanelBody
+		<UAGAdvancedPanelBody
 			title={ __( 'Title', 'ultimate-addons-for-gutenberg' ) }
 			initialOpen={ false }
 		>
@@ -233,10 +237,10 @@ const Settings = ( props ) => {
 				max={ 50 }
 				displayUnit={ false }
 			/>
-		</PanelBody>
+		</UAGAdvancedPanelBody>
 	);
 	const starStyling = (
-		<PanelBody
+		<UAGAdvancedPanelBody
 			title={ __( 'Star', 'ultimate-addons-for-gutenberg' ) }
 			initialOpen={ true }
 		>
@@ -273,7 +277,7 @@ const Settings = ( props ) => {
 				max={ 50 }
 				displayUnit={ false }
 			/>
-		</PanelBody>
+		</UAGAdvancedPanelBody>
 	);
 	return (
 		<>

@@ -18,7 +18,11 @@ const maxColumns = 3;
 
 import { InspectorControls } from '@wordpress/block-editor';
 
-import { PanelBody, SelectControl, Icon } from '@wordpress/components';
+import { SelectControl, Icon } from '@wordpress/components';
+
+
+
+import UAGAdvancedPanelBody from '@Components/advanced-panel-body';
 
 const Settings = ( props ) => {
 	props = props.parentProps;
@@ -190,7 +194,7 @@ const Settings = ( props ) => {
 	// Margin Settings.
 	const marginSettings = () => {
 		return (
-			<PanelBody title={ __( 'Spacing' ) } initialOpen={ false }>
+			<UAGAdvancedPanelBody title={ __( 'Spacing' ) } initialOpen={ false }>
 				<Range
 					label={ __( 'Row Gap' ) }
 					setAttributes={ setAttributes }
@@ -291,7 +295,7 @@ const Settings = ( props ) => {
 						label: 'contentSpacingLink',
 					} }
 				/>
-			</PanelBody>
+			</UAGAdvancedPanelBody>
 		);
 	};
 
@@ -304,7 +308,7 @@ const Settings = ( props ) => {
 	//Image Setting
 	const imageSettings = () => {
 		return (
-			<PanelBody title={ __( 'Image' ) } initialOpen={ false }>
+			<UAGAdvancedPanelBody title={ __( 'Image' ) } initialOpen={ false }>
 				<MultiButtonsControl
 					setAttributes={ setAttributes }
 					label={ __(
@@ -433,13 +437,13 @@ const Settings = ( props ) => {
 						label: 'imageWidthType',
 					} }
 				/>
-			</PanelBody>
+			</UAGAdvancedPanelBody>
 		);
 	};
 	//Image Setting
 	const imageStyles = () => {
 		return (
-			<PanelBody title={ __( 'Image' ) } initialOpen={ false }>
+			<UAGAdvancedPanelBody title={ __( 'Image' ) } initialOpen={ false }>
 				<SpacingControl
 					{ ...props }
 					label={ __( 'Padding', 'ultimate-addons-for-gutenberg' ) }
@@ -511,14 +515,14 @@ const Settings = ( props ) => {
 						label: 'imgSpacingLink',
 					} }
 				/>
-			</PanelBody>
+			</UAGAdvancedPanelBody>
 		);
 	};
 
 	//Color settings
 	const contentSettings = () => {
 		return (
-			<PanelBody title={ __( 'Content' ) } initialOpen={ false }>
+			<UAGAdvancedPanelBody title={ __( 'Content' ) } initialOpen={ false }>
 				<AdvancedPopColorControl
 					label={ __( 'Color', 'ultimate-addons-for-gutenberg' ) }
 					colorValue={ descColor ? descColor : '' }
@@ -589,14 +593,14 @@ const Settings = ( props ) => {
 						label: 'descDecoration',
 					} }
 				/>
-			</PanelBody>
+			</UAGAdvancedPanelBody>
 		);
 	};
 
 	//seperator setting
 	const separatorSettings = () => {
 		return (
-			<PanelBody title={ __( 'Separator' ) } initialOpen={ false }>
+			<UAGAdvancedPanelBody title={ __( 'Separator' ) } initialOpen={ false }>
 				<SelectControl
 					label={ __( 'Style' ) }
 					value={ seperatorStyle }
@@ -679,14 +683,14 @@ const Settings = ( props ) => {
 						/>
 					</>
 				) }
-			</PanelBody>
+			</UAGAdvancedPanelBody>
 		);
 	};
 
 	// Typography settings.
 	const priceSettings = () => {
 		return (
-			<PanelBody title={ __( 'Price' ) } initialOpen={ false }>
+			<UAGAdvancedPanelBody title={ __( 'Price' ) } initialOpen={ false }>
 				<AdvancedPopColorControl
 					label={ __( 'Color', 'ultimate-addons-for-gutenberg' ) }
 					colorValue={ priceColor ? priceColor : '' }
@@ -757,12 +761,12 @@ const Settings = ( props ) => {
 						label: 'priceDecoration',
 					} }
 				/>
-			</PanelBody>
+			</UAGAdvancedPanelBody>
 		);
 	};
 	const titleSettings = () => {
 		return (
-			<PanelBody title={ __( 'Title' ) } initialOpen={ false }>
+			<UAGAdvancedPanelBody title={ __( 'Title' ) } initialOpen={ false }>
 				<AdvancedPopColorControl
 					label={ __( 'Color', 'ultimate-addons-for-gutenberg' ) }
 					colorValue={ titleColor ? titleColor : '' }
@@ -847,7 +851,7 @@ const Settings = ( props ) => {
 						label: 'titleSpaceType',
 					} }
 				/>
-			</PanelBody>
+			</UAGAdvancedPanelBody>
 		);
 	};
 	const inspectControl = () => {
@@ -855,7 +859,7 @@ const Settings = ( props ) => {
 			<InspectorControls>
 				<InspectorTabs>
 					<InspectorTab { ...UAGTabs.general }>
-						<PanelBody
+						<UAGAdvancedPanelBody
 							title={ __( 'General' ) }
 							initialOpen={ true }
 						>
@@ -952,7 +956,7 @@ const Settings = ( props ) => {
 									},
 								] }
 							/>
-						</PanelBody>
+						</UAGAdvancedPanelBody>
 						{ imageSettings() }
 					</InspectorTab>
 					<InspectorTab { ...UAGTabs.style }>

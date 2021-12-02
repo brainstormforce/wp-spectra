@@ -22,7 +22,11 @@ import {
 	InspectorControls,
 } from '@wordpress/block-editor';
 
-import { PanelBody, SelectControl, ToggleControl } from '@wordpress/components';
+import { SelectControl, ToggleControl } from '@wordpress/components';
+
+
+
+import UAGAdvancedPanelBody from '@Components/advanced-panel-body';
 
 const Settings = ( props ) => {
 	props = props.parentProps;
@@ -287,7 +291,7 @@ const Settings = ( props ) => {
 
 	const carousalSettings = () => {
 		return (
-			<PanelBody
+			<UAGAdvancedPanelBody
 				title={ __( 'Carousel', 'ultimate-addons-for-gutenberg' ) }
 				initialOpen={ false }
 			>
@@ -376,14 +380,14 @@ const Settings = ( props ) => {
 						},
 					] }
 				/>
-			</PanelBody>
+			</UAGAdvancedPanelBody>
 		);
 	};
 
 	// Margin Settings.
 	const carouselStyle = () => {
 		return (
-			<PanelBody
+			<UAGAdvancedPanelBody
 				title={ __( 'Arrow & Dots', 'ultimate-addons-for-gutenberg' ) }
 				initialOpen={ false }
 			>
@@ -460,12 +464,12 @@ const Settings = ( props ) => {
 						} )
 					}
 				/>
-			</PanelBody>
+			</UAGAdvancedPanelBody>
 		);
 	};
 	const borderSetting = () => {
 		return (
-			<PanelBody
+			<UAGAdvancedPanelBody
 				title={ __( 'Border', 'ultimate-addons-for-gutenberg' ) }
 				initialOpen={ false }
 			>
@@ -504,13 +508,13 @@ const Settings = ( props ) => {
 					} }
 					disableBottomSeparator={ true }
 				/>
-			</PanelBody>
+			</UAGAdvancedPanelBody>
 		);
 	};
 	const backgroundStyle = () => {
 		
 		return (
-			<PanelBody
+			<UAGAdvancedPanelBody
 				title={ __( 'Background', 'ultimate-addons-for-gutenberg' ) }
 				initialOpen={ false }
 			>
@@ -561,12 +565,12 @@ const Settings = ( props ) => {
 					} }
 					{ ...props }
 				/>
-			</PanelBody>
+			</UAGAdvancedPanelBody>
 		);
 	};
 	const nameStyle = () => {
 		return (
-			<PanelBody
+			<UAGAdvancedPanelBody
 				title={ __( 'Name', 'ultimate-addons-for-gutenberg' ) }
 				initialOpen={ false }
 			>
@@ -660,12 +664,12 @@ const Settings = ( props ) => {
 					} }
 					setAttributes={ setAttributes }
 				/>
-			</PanelBody>
+			</UAGAdvancedPanelBody>
 		);
 	};
 	const contentStyle = () => {
 		return (
-			<PanelBody
+			<UAGAdvancedPanelBody
 				title={ __( 'Content', 'ultimate-addons-for-gutenberg' ) }
 				initialOpen={ false }
 			>
@@ -847,12 +851,12 @@ const Settings = ( props ) => {
 						label: 'spacingLink',
 					} }
 				/>
-			</PanelBody>
+			</UAGAdvancedPanelBody>
 		);
 	};
 	const companyStyle = () => {
 		return (
-			<PanelBody
+			<UAGAdvancedPanelBody
 				title={ __( 'Company', 'ultimate-addons-for-gutenberg' ) }
 				initialOpen={ false }
 			>
@@ -929,12 +933,12 @@ const Settings = ( props ) => {
 						label: 'companyDecoration',
 					} }
 				/>
-			</PanelBody>
+			</UAGAdvancedPanelBody>
 		);
 	};
 	const imageStyle = () => {
 		return (
-			<PanelBody
+			<UAGAdvancedPanelBody
 				title={ __( 'Image', 'ultimate-addons-for-gutenberg' ) }
 				initialOpen={ false }
 			>
@@ -1009,7 +1013,7 @@ const Settings = ( props ) => {
 						label: 'imgspacingLink',
 					} }
 				/>
-			</PanelBody>
+			</UAGAdvancedPanelBody>
 		);
 	};
 	// Set testinomial image panel
@@ -1053,7 +1057,7 @@ const Settings = ( props ) => {
 			<InspectorControls>
 				<InspectorTabs>
 					<InspectorTab { ...UAGTabs.general }>
-						<PanelBody
+						<UAGAdvancedPanelBody
 							title={ __( 'General' ) }
 							initialOpen={ true }
 						>
@@ -1129,8 +1133,8 @@ const Settings = ( props ) => {
 								displayUnit={ false }
 								setAttributes={ setAttributes }
 							/>
-						</PanelBody>
-						<PanelBody
+						</UAGAdvancedPanelBody>
+						<UAGAdvancedPanelBody
 							title={ __(
 								'Image',
 								'ultimate-addons-for-gutenberg'
@@ -1315,7 +1319,7 @@ const Settings = ( props ) => {
 									/>
 								</>
 							) }
-						</PanelBody>
+						</UAGAdvancedPanelBody>
 						{ carousalSettings() }
 					</InspectorTab>
 					<InspectorTab { ...UAGTabs.style }>
