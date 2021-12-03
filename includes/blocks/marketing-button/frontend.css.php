@@ -32,15 +32,13 @@ $icon_color       = ( '' === $attr['iconColor'] ) ? $attr['titleColor'] : $attr[
 $icon_hover_color = ( '' === $attr['iconHoverColor'] ) ? $attr['titleHoverColor'] : $attr['iconHoverColor'];
 
 $selectors = array(
-	' .uagb-marketing-btn__title-wrap'    => array(
-		'margin-bottom' => UAGB_Helper::get_css_value( $attr['titleSpace'], 'px' ),
+	' .uagb-marketing-btn__prefix'    => array(
+		'margin-top' => UAGB_Helper::get_css_value( $attr['titleSpace'], 'px' ),
 	),
-	' .uagb-marketing-btn__icon-wrap'     => array(
+	' svg' => array(
+		'fill' => $icon_color,
 		'width'  => UAGB_Helper::get_css_value( $attr['iconFontSize'], $attr['iconFontSizeType'] ),
 		'height' => UAGB_Helper::get_css_value( $attr['iconFontSize'], $attr['iconFontSizeType'] ),
-	),
-	' .uagb-marketing-btn__icon-wrap svg' => array(
-		'fill' => $icon_color,
 	),
 	' p.uagb-marketing-btn__prefix'       => array(
 		'color' => $attr['prefixColor'],
@@ -48,7 +46,7 @@ $selectors = array(
 	' .uagb-marketing-btn__link:hover p.uagb-marketing-btn__prefix' => array(
 		'color' => $attr['prefixHoverColor'],
 	),
-	' .uagb-marketing-btn__link:hover .uagb-marketing-btn__icon-wrap svg' => array(
+	' .uagb-marketing-btn__link:hover svg' => array(
 		'fill' => $icon_hover_color,
 	),
 	' .uagb-marketing-btn__link'          => array(
@@ -100,10 +98,10 @@ if ( 'transparent' === $attr['backgroundType'] ) {
 
 $margin_type = ( 'after' === $attr['iconPosition'] ) ? 'margin-left' : 'margin-right';
 
-$selectors[' .uagb-marketing-btn__icon-wrap'][ $margin_type ] = UAGB_Helper::get_css_value( $attr['iconSpace'], 'px' );
+$selectors[' svg'][ $margin_type ] = UAGB_Helper::get_css_value( $attr['iconSpace'], 'px' );
 
 $m_selectors = array(
-	' .uagb-marketing-btn__icon-wrap' => array(
+	' svg' => array(
 		'width'  => UAGB_Helper::get_css_value( $attr['iconFontSizeMobile'], $attr['iconFontSizeType'] ),
 		'height' => UAGB_Helper::get_css_value( $attr['iconFontSizeMobile'], $attr['iconFontSizeType'] ),
 	),
@@ -117,7 +115,7 @@ $m_selectors = array(
 );
 
 $t_selectors = array(
-	' .uagb-marketing-btn__icon-wrap' => array(
+	' svg' => array(
 		'width'  => UAGB_Helper::get_css_value( $attr['iconFontSizeTablet'], $attr['iconFontSizeType'] ),
 		'height' => UAGB_Helper::get_css_value( $attr['iconFontSizeTablet'], $attr['iconFontSizeType'] ),
 	),
