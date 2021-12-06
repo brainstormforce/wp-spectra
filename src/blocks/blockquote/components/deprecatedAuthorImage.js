@@ -1,4 +1,4 @@
-const AuthorImage = ( { attributes } ) => {
+const deprecatedAuthorImage = ( { attributes } ) => {
 	let urlChk = '';
 
 	if (
@@ -22,15 +22,17 @@ const AuthorImage = ( { attributes } ) => {
 				: urlChk;
 
 		return (
+			<div className="uagb-blockquote__author-image">
 				<img
 					className=""
 					src={ url }
 					alt={ attributes.authorImage.alt }
 				/>
+			</div>
 		);
 	}
 
 	return null;
 };
 
-export default AuthorImage;
+export default deprecatedAuthorImage;

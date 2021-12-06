@@ -166,7 +166,7 @@ function styling( props ) {
 			'color': authorColor,
 			'text-align': textAlign,
 		},
-		' .uagb-blockquote__skin-border blockquote.uagb-blockquote': {
+		'.uagb-blockquote__skin-border blockquote.uagb-blockquote': {
 			'border-color': borderColor,
 			'border-left-style': borderStyle,
 			'border-left-width': generateCSSUnit(
@@ -183,10 +183,10 @@ function styling( props ) {
 				verticalPaddingUnit
 			),
 		},
-		' .uagb-blockquote__skin-border blockquote.uagb-blockquote:hover': {
+		'.uagb-blockquote__skin-border blockquote.uagb-blockquote:hover': {
 			'border-left-color': borderHoverColor,
 		},
-		' .uagb-blockquote__skin-quotation .uagb-blockquote__icon-wrap': {
+		'.uagb-blockquote__skin-quotation .uagb-blockquote__icon': {
 			'background': quoteBgColor,
 			'border-radius': generateCSSUnit(
 				quoteBorderRadius,
@@ -198,26 +198,24 @@ function styling( props ) {
 			'margin-right': generateCSSUnit( quoteRightMargin, quoteUnit ),
 			'padding': generateCSSUnit( quotePadding, quotePaddingType ),
 		},
-		' .uagb-blockquote__skin-quotation .uagb-blockquote__icon': {
+		'.uagb-blockquote__skin-quotation .uagb-blockquote__icon svg': {
 			'width': generateCSSUnit( quoteSize, quoteSizeType ),
 			'height': generateCSSUnit( quoteSize, quoteSizeType ),
-		},
-		' .uagb-blockquote__skin-quotation .uagb-blockquote__icon svg': {
 			'fill': quoteColor,
 		},
-		' .uagb-blockquote__skin-quotation .uagb-blockquote__icon-wrap:hover': {
+		'.uagb-blockquote__skin-quotation .uagb-blockquote__icon:hover': {
 			'background': quoteBgHoverColor,
 		},
-		' .uagb-blockquote__skin-quotation .uagb-blockquote__icon-wrap:hover .uagb-blockquote__icon svg': {
+		'.uagb-blockquote__skin-quotation .uagb-blockquote__icon:hover .uagb-blockquote__icon svg': {
 			'fill': quoteHoverColor,
 		},
-		' .uagb-blockquote__style-style_1 .uagb-blockquote': {
+		'.uagb-blockquote__style-style_1 .uagb-blockquote': {
 			'text-align': align,
 		},
 		' .uagb-blockquote__author-wrap': {
 			'margin-bottom': generateCSSUnit( tmpAuthorSpace, authorSpaceUnit ),
 		},
-		' .uagb-blockquote__author-image img': {
+		' .uagb-blockquote__author-wrap img': {
 			'width': generateCSSUnit( authorImageWidth, authorImageWidthUnit ),
 			'height': generateCSSUnit( authorImageWidth, authorImageWidthUnit ),
 			'border-radius': generateCSSUnit(
@@ -243,19 +241,19 @@ function styling( props ) {
 			'text-transform': tweetBtnTransform,
 		};
 		selectors[
-			' .uagb-blockquote__tweet-style-link a.uagb-blockquote__tweet-button'
+			'.uagb-blockquote__tweet-style-link a.uagb-blockquote__tweet-button'
 		] = {
 			'color': tweetLinkColor,
 		};
 
 		selectors[
-			' .uagb-blockquote__tweet-style-link a.uagb-blockquote__tweet-button svg'
+			'.uagb-blockquote__tweet-style-link a.uagb-blockquote__tweet-button svg'
 		] = {
 			'fill': tweetLinkColor,
 		};
 
 		selectors[
-			' .uagb-blockquote__tweet-style-classic a.uagb-blockquote__tweet-button'
+			'.uagb-blockquote__tweet-style-classic a.uagb-blockquote__tweet-button'
 		] = {
 			'color': tweetBtnColor,
 			'background-color': tweetBtnBgColor,
@@ -268,7 +266,7 @@ function styling( props ) {
 			),
 		};
 		selectors[
-			' .uagb-blockquote__tweet-style-bubble a.uagb-blockquote__tweet-button'
+			'.uagb-blockquote__tweet-style-bubble a.uagb-blockquote__tweet-button'
 		] = {
 			'color': tweetBtnColor,
 			'background-color': tweetBtnBgColor,
@@ -281,18 +279,18 @@ function styling( props ) {
 			),
 		};
 		selectors[
-			' .uagb-blockquote__tweet-style-classic a.uagb-blockquote__tweet-button svg'
+			'.uagb-blockquote__tweet-style-classic a.uagb-blockquote__tweet-button svg'
 		] = {
 			'fill': tweetBtnColor,
 		};
 		selectors[
-			' .uagb-blockquote__tweet-style-bubble a.uagb-blockquote__tweet-button svg'
+			'.uagb-blockquote__tweet-style-bubble a.uagb-blockquote__tweet-button svg'
 		] = {
 			'fill': tweetBtnColor,
 		};
 
 		selectors[
-			' .uagb-blockquote__tweet-style-bubble a.uagb-blockquote__tweet-button:before'
+			'.uagb-blockquote__tweet-style-bubble a.uagb-blockquote__tweet-button:before'
 		] = {
 			'border-right-color': tweetBtnBgColor,
 		};
@@ -303,7 +301,7 @@ function styling( props ) {
 		};
 
 		selectors[
-			' .uagb-blockquote__tweet-icon_text a.uagb-blockquote__tweet-button svg'
+			'.uagb-blockquote__tweet-icon_text a.uagb-blockquote__tweet-button svg'
 		] = {
 			'margin-right': generateCSSUnit(
 				tweetIconSpacing,
@@ -313,53 +311,53 @@ function styling( props ) {
 
 		// Hover CSS
 		selectors[
-			' .uagb-blockquote__tweet-style-link a.uagb-blockquote__tweet-button:hover'
+			'.uagb-blockquote__tweet-style-link a.uagb-blockquote__tweet-button:hover'
 		] = {
 			'color': tweetBtnHoverColor,
 		};
 
 		selectors[
-			' .uagb-blockquote__tweet-style-link a.uagb-blockquote__tweet-button:hover svg'
+			'.uagb-blockquote__tweet-style-link a.uagb-blockquote__tweet-button:hover svg'
 		] = {
 			'fill': tweetBtnHoverColor,
 		};
 
 		selectors[
-			' .uagb-blockquote__tweet-style-classic a.uagb-blockquote__tweet-button:hover'
-		] = {
-			'color': tweetBtnHoverColor,
-			'background-color': tweetBtnBgHoverColor,
-		};
-
-		selectors[
-			' .uagb-blockquote__tweet-style-classic a.uagb-blockquote__tweet-button:hover svg'
-		] = {
-			'fill': tweetBtnHoverColor,
-			'background-color': tweetBtnBgHoverColor,
-		};
-
-		selectors[
-			' .uagb-blockquote__tweet-style-bubble a.uagb-blockquote__tweet-button:hover '
+			'.uagb-blockquote__tweet-style-classic a.uagb-blockquote__tweet-button:hover'
 		] = {
 			'color': tweetBtnHoverColor,
 			'background-color': tweetBtnBgHoverColor,
 		};
 
 		selectors[
-			' .uagb-blockquote__tweet-style-bubble a.uagb-blockquote__tweet-button:hover svg'
+			'.uagb-blockquote__tweet-style-classic a.uagb-blockquote__tweet-button:hover svg'
 		] = {
 			'fill': tweetBtnHoverColor,
 			'background-color': tweetBtnBgHoverColor,
 		};
 
 		selectors[
-			' .uagb-blockquote__tweet-style-bubble a.uagb-blockquote__tweet-button:hover:before'
+			'.uagb-blockquote__tweet-style-bubble a.uagb-blockquote__tweet-button:hover '
+		] = {
+			'color': tweetBtnHoverColor,
+			'background-color': tweetBtnBgHoverColor,
+		};
+
+		selectors[
+			'.uagb-blockquote__tweet-style-bubble a.uagb-blockquote__tweet-button:hover svg'
+		] = {
+			'fill': tweetBtnHoverColor,
+			'background-color': tweetBtnBgHoverColor,
+		};
+
+		selectors[
+			'.uagb-blockquote__tweet-style-bubble a.uagb-blockquote__tweet-button:hover:before'
 		] = {
 			'border-right-color': tweetBtnBgHoverColor,
 		};
 	}
 	const tabletSelectors = {
-		' .uagb-blockquote__skin-quotation .uagb-blockquote__icon-wrap': {
+		'.uagb-blockquote__skin-quotation .uagb-blockquote__icon': {
 			'margin-top': generateCSSUnit(
 				quoteTopMarginTablet,
 				quotetabletUnit
@@ -418,11 +416,11 @@ function styling( props ) {
 				tweetBtnFontSizeType
 			),
 		},
-		' .uagb-blockquote__skin-quotation .uagb-blockquote__icon': {
+		'.uagb-blockquote__skin-quotation .uagb-blockquote__icon svg': {
 			'width': generateCSSUnit( quoteSizeTablet, quoteSizeType ),
 			'height': generateCSSUnit( quoteSizeTablet, quoteSizeType ),
 		},
-		' .uagb-blockquote__tweet-style-classic a.uagb-blockquote__tweet-button': {
+		'.uagb-blockquote__tweet-style-classic a.uagb-blockquote__tweet-button': {
 			'padding-left': generateCSSUnit(
 				paddingBtnLeftTablet,
 				tabletPaddingBtnUnit
@@ -442,7 +440,7 @@ function styling( props ) {
 		},
 	};
 	const mobileSelectors = {
-		' .uagb-blockquote__skin-quotation .uagb-blockquote__icon-wrap': {
+		'.uagb-blockquote__skin-quotation .uagb-blockquote__icon': {
 			'margin-top': generateCSSUnit(
 				quoteTopMarginMobile,
 				quotemobileUnit
@@ -501,11 +499,11 @@ function styling( props ) {
 				tweetBtnFontSizeType
 			),
 		},
-		' .uagb-blockquote__skin-quotation .uagb-blockquote__icon': {
+		'.uagb-blockquote__skin-quotation .uagb-blockquote__icon svg': {
 			'width': generateCSSUnit( quoteSizeMobile, quoteSizeType ),
 			'height': generateCSSUnit( quoteSizeMobile, quoteSizeType ),
 		},
-		' .uagb-blockquote__tweet-style-classic a.uagb-blockquote__tweet-button': {
+		'.uagb-blockquote__tweet-style-classic a.uagb-blockquote__tweet-button': {
 			'padding-left': generateCSSUnit(
 				paddingBtnLeftMobile,
 				mobilePaddingBtnUnit

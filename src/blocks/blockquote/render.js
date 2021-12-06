@@ -33,17 +33,11 @@ const Render = ( props ) => {
 	} = attributes;
 
 	return (
-		<div
-			className={ classnames(
-				className,
-				'uagb-blockquote__outer-wrap',
-				`uagb-block-${ props.clientId.substr( 0, 8 ) }`,
-				`uagb-editor-preview-mode-${ deviceType.toLowerCase() }`
-			) }
-		>
 			<div
 				className={ classnames(
-					'uagb-blockquote__wrap',
+					className,
+					`uagb-block-${ props.clientId.substr( 0, 8 ) }`,
+					`uagb-editor-preview-mode-${ deviceType.toLowerCase() }`,
 					`uagb-blockquote__skin-${ skinStyle }`,
 					skinStyle !== 'border'
 						? `uagb-blockquote__align-${ align }`
@@ -59,13 +53,10 @@ const Render = ( props ) => {
 			>
 				<blockquote className="uagb-blockquote">
 					{ skinStyle === 'quotation' && (
-						<div className="uagb-blockquote__icon-wrap">
-							<span className="uagb-blockquote__icon">
+						<span className="uagb-blockquote__icon">
 								{ UAGB_Block_Icons.quote_inline_icon }
-							</span>{ ' ' }
-						</div>
+						</span>
 					) }
-					<div className="uagb-blockquote__content-wrap">
 						{
 							<Description
 								attributes={ attributes }
@@ -96,10 +87,8 @@ const Render = ( props ) => {
 								<TweetButtonCTA attributes={ attributes } />
 							) }
 						</footer>
-					</div>
 				</blockquote>
 			</div>
-		</div>
 	);
 };
 

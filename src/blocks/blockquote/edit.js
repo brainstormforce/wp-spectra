@@ -36,7 +36,16 @@ const UAGBBlockQuote = ( props ) => {
 			paddingBtnBottom,
 			paddingBtnRight,
 			paddingBtnLeft,
+			authorImageWidthUnit,
+			authorImgBorderRadiusUnit,
 		} = props.attributes;
+		
+		if( undefined ===  authorImageWidthUnit ){
+			props.setAttributes( { authorImageWidthUnit: 'px' } );
+		} 
+		if( undefined ===  authorImgBorderRadiusUnit ){
+			props.setAttributes( { authorImgBorderRadiusUnit: '%' } );
+		} 
 
 		if ( tweetBtnVrPadding ) {
 			if ( undefined === paddingBtnTop ) {

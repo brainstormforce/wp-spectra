@@ -5,10 +5,10 @@
 import classnames from 'classnames';
 import UAGB_Block_Icons from '@Controls/block-icons';
 import TweetButton from './components/TweetButton';
-import TweetButtonCTA from './components/TweetButtonCTA';
 import Description from './components/Description';
 import AuthorText from './components/AuthorText';
-import AuthorImage from './components/AuthorImage';
+import AuthorImage from './components/deprecatedAuthorImage';
+
 
 /**
  * BLOCK: UAGB Quote Block Attributes
@@ -571,7 +571,7 @@ const deprecated = [
 										) }
 									</div>
 									{ enableTweet && (
-										<TweetButtonCTA
+										<TweetButton
 											attributes={ props.attributes }
 										/>
 									) }
@@ -664,7 +664,7 @@ const deprecated = [
 										) }
 									</div>
 									{ enableTweet && (
-										<TweetButtonCTA
+										<TweetButton
 											attributes={ props.attributes }
 										/>
 									) }

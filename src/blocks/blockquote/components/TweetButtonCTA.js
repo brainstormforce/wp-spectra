@@ -14,9 +14,7 @@ function TweetButtonCTA( props ) {
 			{ attributes.iconView === 'icon_text' && (
 				<>
 					{ UAGB_Block_Icons.quote_tweet_icon }
-					<span className="uagb-blockquote__tweet-label">
-						{ attributes.iconLabel }
-					</span>
+					{ attributes.iconLabel }
 				</>
 			) }
 
@@ -26,9 +24,7 @@ function TweetButtonCTA( props ) {
 
 			{ attributes.iconView === 'text' && (
 				<>
-					<span className="uagb-blockquote__tweet-label">
-						{ attributes.iconLabel }
-					</span>
+					{ attributes.iconLabel }
 				</>
 			) }
 		</a>
