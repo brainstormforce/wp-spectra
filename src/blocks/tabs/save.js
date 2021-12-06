@@ -56,7 +56,6 @@ export default function save( props ) {
 									</span>
 								) }
 							<RichText.Content
-								tagName={ 'span' }
 								value={ header }
 							/>
 							{ showIcon &&

@@ -93,6 +93,21 @@ $selectors = array(
 		'margin-bottom' => UAGB_Helper::get_css_value( $attr['iconSpacing'], 'px' ),
 	),
 );
+if ( 'left' === $attr['tabAlign'] ) {
+	$selectors[' .uagb-tabs__panel'] = array(
+		'margin-right' => 'auto',
+		'margin-left'  => 0,
+	);
+} elseif ( 'right' === $attr['tabAlign'] ) {
+	$selectors[' .uagb-tabs__panel'] = array(
+		'margin-left'  => 'auto',
+		'margin-right' => 0,
+	);
+} else {
+	$selectors[' .uagb-tabs__panel'] = array(
+		'margin' => 'auto',
+	);
+}
 $m_selectors = array(
 	' .uagb-tabs__panel .uagb-tab ' => array(
 		'padding-top'    => UAGB_Helper::get_css_value( $attr['tabTitleTopPaddingMobile'], $attr['mobiletabTitlePaddingUnit'] ),

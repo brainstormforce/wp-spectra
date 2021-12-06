@@ -5,7 +5,7 @@ UAGBTabs = { // eslint-disable-line no-undef
 		const tabLi = tabsWrap.querySelectorAll(
 			'.uagb-tabs__panel > li.uagb-tab'
 		);
-		const tabBody = tabsWrap.querySelectorAll( '.uagb-tabs__inner-tab' );
+		const tabBody = tabsWrap.querySelectorAll( '.uagb-tabs__body-container' );
 
 		// Set initial active class to Tabs body.
 		tabBody[ tabActive ].classList.add( 'uagb-tabs-body__active' );

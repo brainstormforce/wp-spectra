@@ -99,7 +99,8 @@ function styling( props ) {
 		tabBodyBottomMarginMobile,
 		mobiletabBodyPaddingUnit,
 		mobiletabBodyMarginUnit,
-		titleFontStyle
+		titleFontStyle,
+		tabAlign
 	} = props.attributes;
 
 	let selectors = {};
@@ -238,6 +239,23 @@ function styling( props ) {
 			'margin-top': generateCSSUnit( iconSpacing, 'px' ),
 		},
 	};
+
+	if( 'left' === tabAlign ){
+		selectors[ ' .uagb-tabs__panel'] = {
+			'margin-right': 'auto',
+			'margin-left': 0
+		}
+	}else if( 'right' === tabAlign ){
+		selectors[ ' .uagb-tabs__panel'] = {
+			'margin-left': 'auto',
+			'margin-right': 0
+		}
+	}else{
+		selectors[ ' .uagb-tabs__panel'] = {
+			'margin': 'auto'
+		}
+	}
+
 	tabletSelectors = {
 		' > .uagb-tabs__panel .uagb-tab p': {
 			'font-size': generateCSSUnit(

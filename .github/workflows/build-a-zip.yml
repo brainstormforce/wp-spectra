@@ -7,6 +7,14 @@ on:
       - dev
       - next-release
       - milestone
+
+# Cancels all previous workflow runs for pull requests that have not completed.
+concurrency:
+    # The concurrency group contains the workflow name and the branch name for pull requests
+    # or the commit hash for any other events.
+    group: ${{ github.workflow }}-${{ github.event_name == 'pull_request' && github.head_ref || github.sha }}
+    cancel-in-progress: true
+
 env:
   ZIP_URL: https://dev.ultimategutenberg.com/wp-content/uploads/uag-gh/
   PLUGIN_SLUG: ${{ github.event.repository.name }}
@@ -22,6 +30,11 @@ jobs:
     steps:
       - name: "Checkout"
         uses: actions/checkout@master
+
+      - name: Use desired version of NodeJS
+        uses: actions/setup-node@v2
+        with:
+            node-version: 14.17
 
       - name: Extract current branch name
         id: get_current_branch
