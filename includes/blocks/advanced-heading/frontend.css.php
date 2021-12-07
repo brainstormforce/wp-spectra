@@ -15,15 +15,13 @@ $t_selectors = array();
 
 $selectors = array(
 	' .uagb-heading-text'                                  => array(
-		'text-align'    => $attr['headingAlign'],
 		'color'         => $attr['headingColor'],
 		'margin-bottom' => UAGB_Helper::get_css_value( $attr['headSpace'], 'px' ),
 	),
-	'.wp-block-uagb-advanced-heading .uagb-separator-wrap' => array(
+	'.wp-block-uagb-advanced-heading ' => array(
 		'text-align' => $attr['headingAlign'],
 	),
 	' .uagb-desc-text'                                     => array(
-		'text-align' => $attr['headingAlign'],
 		'color'      => $attr['subHeadingColor'],
 	),
 
