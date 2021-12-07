@@ -10,21 +10,21 @@ function uagbTimelineInit() {
 		return;
 	}
 	for ( const content of timeline ) {
-		
+
 		const lineInner = content.querySelector( '.uagb-timeline__line__inner' );
 		const lineOuter = content.querySelector( '.uagb-timeline__line' );
-		
+
 		const iconClass = content.querySelectorAll( '.uagb-timeline__marker' );
 		const cardLast = content.querySelector( '.uagb-timeline__field:last-child' );
-		
+
 		const timelineStartIcon = iconClass[0];
 		const timelineEndIcon = iconClass[iconClass.length - 1];
-		
+
 		lineOuter.style.top = timelineStartIcon.offsetTop + 'px';
 		const timelineCardHeight = cardLast.offsetHeight;
-		
+
 		const lastItemTop = cardLast.offsetTop;
-		
+
 		let lastItem, parentTop;
 
 		if ( content.classList.contains( 'uagb-timeline__arrow-center' ) ) {
@@ -34,13 +34,13 @@ function uagbTimelineInit() {
 			lastItem = parentTop + timelineEndIcon.offsetTop;
 
 		} else if ( content.classList.contains( 'uagb-timeline__arrow-top' ) ) {
-			
+
 			const topHeight = timelineCardHeight - timelineEndIcon.offsetTop;
 			lineOuter.style.bottom = topHeight + 'px';
 			lastItem = lastItemTop;
 
 		} else if ( content.classList.contains( 'uagb-timeline__arrow-bottom' ) ) {
-			
+
 			const bottomHeight = timelineCardHeight - timelineEndIcon.offsetTop;
 			lineOuter.style.bottom = bottomHeight + 'px';
 			parentTop = lastItemTop - timelineStartIcon.offsetTop;
@@ -54,7 +54,7 @@ function uagbTimelineInit() {
 
 		const viewportHeightHalf = viewportHeight / 2 + connectorHeight;
 		const elementPos = content.offsetTop;
-		
+
 		const newElementPos = elementPos + timelineStartIcon.offsetTop;
 
 		let photoViewportOffsetTop = newElementPos - window.pageYOffset;
@@ -98,11 +98,11 @@ function uagbTimelineInit() {
 		}
 
 		// Icon bg color and icon color
-		
+
 		let timelineIconPos, timelineCardPos;
 		let timelineIconTop, timelineCardTop;
 		const timelineIcon = content.querySelectorAll( '.uagb-timeline__marker' );
-		
+
 		let animateBorder = content.querySelectorAll( '.uagb-timeline__field-wrap' );
 
 		if ( animateBorder.length === 0 ) {

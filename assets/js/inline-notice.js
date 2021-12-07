@@ -6,7 +6,7 @@ UAGBInlineNotice = { // eslint-disable-line no-undef
 		if( main.length === 0 ){
 			return;
 		}
-		
+
 		const uniqueId = attr.c_id;
 		const isCookie = attr.cookies;
 		const cookiesDays = attr.close_cookie_days;

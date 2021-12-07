@@ -143,7 +143,7 @@ export default withSelect( ( select, props ) => {
 			url: uagb_blocks_info.ajax_url,
 			method: 'POST',
 			body: formData,
-		} ).then( ( data ) => {  
+		} ).then( ( data ) => {
 			setAttributes( { isHtml: true } );
 			setAttributes( { formJson: data } );
 			jsonData = data;

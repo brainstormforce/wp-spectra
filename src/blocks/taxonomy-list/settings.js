@@ -141,7 +141,7 @@ const Settings = ( props ) => {
 		countDecoration,
 		listDecoration,
 	} = attributes;
-	
+
 	const taxonomy_list_setting = showEmptyTaxonomy ? taxonomyList : termsList;
 	const taxonomyListOptions = [
 		{
@@ -277,7 +277,7 @@ const Settings = ( props ) => {
 			url: uagb_blocks_info.ajax_url,
 			method: 'POST',
 			body: formData,
-		} ).then( ( data ) => { 
+		} ).then( ( data ) => {
 			setAttributes( { listInJson: data } );
 			setAttributes( { postType: value } );
 			setAttributes( { categories: '' } );

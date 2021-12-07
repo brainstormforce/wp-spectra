@@ -95,7 +95,7 @@ const Settings = ( props ) => {
 		}
 		setAttributes( { image: media } );
 	};
-	
+
 	/*
 	 * Event to set Image as null while removing.
 	 */
@@ -199,7 +199,7 @@ const Settings = ( props ) => {
 						/>
 					</>
 					)
-					
+
 				}
 			</UAGAdvancedPanelBody>
 		);
