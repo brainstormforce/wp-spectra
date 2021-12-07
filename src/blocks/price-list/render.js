@@ -35,7 +35,6 @@ const Render = ( props ) => {
 		<div
 			className={ classnames(
 				className,
-				'uagb-rest_menu__outer-wrap',
 				`uagb-editor-preview-mode-${ deviceType.toLowerCase() }`,
 				`uagb-block-${ props.clientId.substr( 0, 8 ) }`,
 				...PositionClasses( attributes )

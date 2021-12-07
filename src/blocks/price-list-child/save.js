@@ -18,7 +18,6 @@ export default function save( props ) {
 			<div
 				className={ classnames(
 					'uagb-rest_menu__wrap',
-					'uagb-rest_menu_repeater',
 					...PositionClasses( props.attributes )
 				) }
 			>
@@ -26,42 +25,56 @@ export default function save( props ) {
 					{ ( imagePosition === 'top' || imagePosition === 'left' ) && (
 						<RestMenuImage attributes={ props.attributes } />
 					) }
-					<div className="uagb-rm__text-wrap">
 						{
 							<>
-								<div className="uagb-rm-details">
-									<div className="uagb-rm__title-wrap">
-										<Title
-											attributes={ props.attributes }
-											setAttributes="not_set"
-											props={ props }
-										/>
-										<div className="uagb-rest-menu-text-wrap">
-											<Description
-												attributes={ props.attributes }
-												setAttributes="not_set"
-												props={ props }
-											/>
-										</div>
-									</div>
-									<div className="uagb-rm__price-wrap">
-										<Price
-											attributes={ props.attributes }
-											setAttributes="not_set"
-											props={ props }
-										/>
-									</div>
-								</div>
+							<div className="uagb-rm-details">
+							{ imagePosition === 'right' && (
+								<>
+								<Price
+									attributes={ props.attributes }
+									setAttributes="not_set"
+									props={ props }
+								/>
+								<Title
+									attributes={ props.attributes }
+									setAttributes="not_set"
+									props={ props }
+								/>
+								<Description
+									attributes={ props.attributes }
+									setAttributes="not_set"
+									props={ props }
+								/>
+								</>
+							) }
+							{ ( imagePosition === 'top' || imagePosition === 'left' ) && (
+								<>
+								<Title
+									attributes={ props.attributes }
+									setAttributes="not_set"
+									props={ props }
+								/>
+								<Description
+									attributes={ props.attributes }
+									setAttributes="not_set"
+									props={ props }
+								/>
+								<Price
+									attributes={ props.attributes }
+									setAttributes="not_set"
+									props={ props }
+								/>
+								</>
+							)}
+							</div>
+							
 							</>
 						}
-					</div>
 					{ imagePosition === 'right' && (
 						<RestMenuImage attributes={ props.attributes } />
 					) }
 				</div>
-				<div className="uagb-rm__separator-parent">
 					<div className="uagb-rm__separator"></div>
-				</div>
 			</div>
 		</>
 	);

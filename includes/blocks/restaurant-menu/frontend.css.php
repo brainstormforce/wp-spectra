@@ -30,39 +30,37 @@ $contentPaddingBottom = isset( $attr['contentPaddingBottom'] ) ? $attr['contentP
 $contentPaddingLeft   = isset( $attr['contentPaddingLeft'] ) ? $attr['contentPaddingLeft'] : $attr['contentHrPadding'];
 
 $selectors = array(
-	' .uagb-rest_menu__wrap'                         => array(
+	' .uagb-rest_menu__wrap'      => array(
 		'padding-left'  => UAGB_Helper::get_css_value( ( $attr['columnGap'] / 2 ), $attr['columnGapType'] ),
 		'padding-right' => UAGB_Helper::get_css_value( ( $attr['columnGap'] / 2 ), $attr['columnGapType'] ),
 		'margin-bottom' => UAGB_Helper::get_css_value( $attr['rowGap'], $attr['rowGapType'] ),
 	),
-	' .uagb-rest_menu__wrap .uagb-rm__image-content' => array(
+	' .uagb-rest_menu__wrap img'  => array(
 		'padding-left'   => UAGB_Helper::get_css_value( $imgPaddingLeft, $attr['imgPaddingUnit'] ),
 		'padding-right'  => UAGB_Helper::get_css_value( $imgPaddingRight, $attr['imgPaddingUnit'] ),
 		'padding-top'    => UAGB_Helper::get_css_value( $imgPaddingTop, $attr['imgPaddingUnit'] ),
 		'padding-bottom' => UAGB_Helper::get_css_value( $imgPaddingBottom, $attr['imgPaddingUnit'] ),
+		'width'          => UAGB_Helper::get_css_value( $attr['imageWidth'], $attr['imageWidthType'] ),
+		'max-width'      => UAGB_Helper::get_css_value( $attr['imageWidth'], $attr['imageWidthType'] ),
 	),
-	' .uagb-rm__image img'                           => array(
-		'width'     => UAGB_Helper::get_css_value( $attr['imageWidth'], $attr['imageWidthType'] ),
-		'max-width' => UAGB_Helper::get_css_value( $attr['imageWidth'], $attr['imageWidthType'] ),
-	),
-	' .uagb-rm__separator-parent'                    => array(
+	' .uagb-rm__separator-parent' => array(
 		'justify-content' => $align,
 	),
-	' .uagb-rm__content'                             => array(
+	' .uagb-rm__content'          => array(
 		'text-align'     => $attr['headingAlign'],
 		'padding-left'   => UAGB_Helper::get_css_value( $contentPaddingLeft, $attr['contentPaddingUnit'] ),
 		'padding-right'  => UAGB_Helper::get_css_value( $contentPaddingRight, $attr['contentPaddingUnit'] ),
 		'padding-top'    => UAGB_Helper::get_css_value( $contentPaddingTop, $attr['contentPaddingUnit'] ),
 		'padding-bottom' => UAGB_Helper::get_css_value( $contentPaddingBottom, $attr['contentPaddingUnit'] ),
 	),
-	' .uagb-rm-details .uagb-rm__title'              => array(
+	' .uagb-rest_menu__wrap .uagb-rm__content .uagb-rm-details .uagb-rm__title' => array(
 		'color'         => $attr['titleColor'],
 		'margin-bottom' => UAGB_Helper::get_css_value( $attr['titleSpace'], $attr['titleSpaceType'] ),
 	),
-	' .uagb-rm__price'                               => array(
+	' .uagb-rm__price'            => array(
 		'color' => $attr['priceColor'],
 	),
-	' .uagb-rm__desc'                                => array(
+	' .uagb-rm__desc'             => array(
 		'color'         => $attr['descColor'],
 		'margin-bottom' => UAGB_Helper::get_css_value( $attr['descSpace'], 'px' ),
 	),
@@ -91,13 +89,13 @@ $t_selectors = array(
 		'margin-left' => '0',
 		'clear'       => 'left',
 	),
-	' .uagb-rest_menu__wrap .uagb-rm__image-content' => array(
+	' .uagb-rest_menu__wrap img' => array(
 		'padding-left'   => UAGB_Helper::get_css_value( $attr['imgPaddingLeftTablet'], $attr['imgTabletPaddingUnit'] ),
 		'padding-right'  => UAGB_Helper::get_css_value( $attr['imgPaddingRightTablet'], $attr['imgTabletPaddingUnit'] ),
 		'padding-top'    => UAGB_Helper::get_css_value( $attr['imgPaddingTopTablet'], $attr['imgTabletPaddingUnit'] ),
 		'padding-bottom' => UAGB_Helper::get_css_value( $attr['imgPaddingBottomTablet'], $attr['imgTabletPaddingUnit'] ),
 	),
-	' .uagb-rm__content'                             => array(
+	' .uagb-rm__content'         => array(
 		'padding-left'   => UAGB_Helper::get_css_value( $attr['contentPaddingLeftTablet'], $attr['contentTabletPaddingUnit'] ),
 		'padding-right'  => UAGB_Helper::get_css_value( $attr['contentPaddingRightTablet'], $attr['contentTabletPaddingUnit'] ),
 		'padding-top'    => UAGB_Helper::get_css_value( $attr['contentPaddingTopTablet'], $attr['contentTabletPaddingUnit'] ),
@@ -114,13 +112,13 @@ $m_selectors = array(
 		'margin-left' => '0',
 		'clear'       => 'left',
 	),
-	' .uagb-rest_menu__wrap .uagb-rm__image-content' => array(
+	' .uagb-rest_menu__wrap img' => array(
 		'padding-left'   => UAGB_Helper::get_css_value( $attr['imgPaddingLeftMobile'], $attr['imgMobilePaddingUnit'] ),
 		'padding-right'  => UAGB_Helper::get_css_value( $attr['imgPaddingRightMobile'], $attr['imgMobilePaddingUnit'] ),
 		'padding-top'    => UAGB_Helper::get_css_value( $attr['imgPaddingTopMobile'], $attr['imgMobilePaddingUnit'] ),
 		'padding-bottom' => UAGB_Helper::get_css_value( $attr['imgPaddingBottomMobile'], $attr['imgMobilePaddingUnit'] ),
 	),
-	' .uagb-rm__content'                             => array(
+	' .uagb-rm__content'         => array(
 		'padding-left'   => UAGB_Helper::get_css_value( $attr['contentPaddingLeftMobile'], $attr['contentMobilePaddingUnit'] ),
 		'padding-right'  => UAGB_Helper::get_css_value( $attr['contentPaddingRightMobile'], $attr['contentMobilePaddingUnit'] ),
 		'padding-top'    => UAGB_Helper::get_css_value( $attr['contentPaddingTopMobile'], $attr['contentMobilePaddingUnit'] ),
@@ -138,6 +136,6 @@ $combined_selectors = UAGB_Helper::get_typography_css( $attr, 'title', ' .uagb-r
 $combined_selectors = UAGB_Helper::get_typography_css( $attr, 'price', ' .uagb-rm__price', $combined_selectors );
 $combined_selectors = UAGB_Helper::get_typography_css( $attr, 'desc', ' .uagb-rm__desc', $combined_selectors );
 
-$base_selector = ( $attr['classMigrate'] ) ? '.uagb-block-' : '#uagb-rm-';
+$base_selector = ( $attr['classMigrate'] ) ? '.wp-block-uagb-restaurant-menu.uagb-block-' : '#uagb-rm-';
 
 return UAGB_Helper::generate_all_css( $combined_selectors, $base_selector . $id );

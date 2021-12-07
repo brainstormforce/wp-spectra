@@ -116,7 +116,7 @@ function RestMenuStyle( props ) {
 			'padding-right': generateCSSUnit( columnGap / 2, columnGapType ),
 			'margin-bottom': generateCSSUnit( rowGap, rowGapType ),
 		},
-		" [data-type='uagb/restaurant-menu-child'] .uagb-rm__image-content": {
+		" [data-type='uagb/restaurant-menu-child'] img": {
 			'padding-left': generateCSSUnit( imgPaddingLeft, imgPaddingUnit ),
 			'padding-right': generateCSSUnit( imgPaddingRight, imgPaddingUnit ),
 			'padding-top': generateCSSUnit( imgPaddingTop, imgPaddingUnit ),
@@ -126,11 +126,11 @@ function RestMenuStyle( props ) {
 			),
 		},
 		// Image
-		' .uagb-rm__image img': {
+		' img': {
 			'width': generateCSSUnit( imageWidth, imageWidthType ),
 			'max-width': generateCSSUnit( imageWidth, imageWidthType ),
 		},
-		' .uagb-rm__separator-parent': {
+		' .uagb-rm__separator': {
 			'justify-content': align,
 		},
 		' .uagb-rm__content': {
@@ -249,7 +249,7 @@ function RestMenuStyle( props ) {
 				priceLineHeightType
 			),
 		},
-		" [data-type='uagb/restaurant-menu-child'] .uagb-rm__image-content": {
+		" [data-type='uagb/restaurant-menu-child'] img": {
 			'padding-left': generateCSSUnit(
 				imgPaddingLeftTablet,
 				imgTabletPaddingUnit
@@ -340,7 +340,7 @@ function RestMenuStyle( props ) {
 				priceLineHeightType
 			),
 		},
-		" [data-type='uagb/restaurant-menu-child'] .uagb-rm__image-content": {
+		" [data-type='uagb/restaurant-menu-child'] img": {
 			'padding-left': generateCSSUnit(
 				imgPaddingLeftMobile,
 				imgMobilePaddingUnit

@@ -30,7 +30,7 @@ const Render = ( props ) => {
 		<div
 			className={ classnames(
 				className,
-				'uagb-rest_menu__outer-wrap',
+				'uagb-rest_menu__wrap',
 				`uagb-block-${ props.clientId.substr( 0, 8 ) }`,
 				...PositionClasses( attributes )
 			) }
@@ -40,43 +40,56 @@ const Render = ( props ) => {
 					{ ( position === 'top' || position === 'left' ) && (
 						<RestMenuImage attributes={ attributes } />
 					) }
-					<div className="uagb-rm__text-wrap">
 						{
 							<>
-								<div className="uagb-rm-details">
-									<div className="uagb-rm__title-wrap">
-										<Title
-											attributes={ attributes }
-											setAttributes={ setAttributes }
-											props={ props }
-										/>
-										<div className="uagb-rest-menu-text-wrap">
-											<Description
-												attributes={ attributes }
-												setAttributes={ setAttributes }
-												props={ props }
-											/>
-										</div>
-									</div>
-									<div className="uagb-rm__price-wrap">
-										<Price
-											attributes={ attributes }
-											setAttributes={ setAttributes }
-											props={ props }
-										/>
-									</div>
-								</div>
+							<div className="uagb-rm-details">
+							{ position === 'right' && (
+								<>
+								<Price
+									attributes={ attributes }
+									setAttributes={ setAttributes }
+									props={ props }
+								/>
+								<Title
+									attributes={ attributes }
+									setAttributes={ setAttributes }
+									props={ props }
+								/>
+								<Description
+									attributes={ attributes }
+									setAttributes={ setAttributes }
+									props={ props }
+								/>
+								</>
+							) }
+							{ ( position === 'top' || position === 'left' ) && (
+								<>
+								<Title
+									attributes={ attributes }
+									setAttributes={ setAttributes }
+									props={ props }
+								/>
+								<Description
+									attributes={ attributes }
+									setAttributes={ setAttributes }
+									props={ props }
+								/>
+								<Price
+									attributes={ attributes }
+									setAttributes={ setAttributes }
+									props={ props }
+								/>
+								</>
+							)}
+							</div>
 							</>
 						}
-					</div>
 					{ position === 'right' && (
 						<RestMenuImage attributes={ attributes } />
 					) }
 				</div>
 			</Suspense>
-			<div className="uagb-rm__separator-parent">
 				<div className="uagb-rm__separator"></div>
-			</div>
 		</div>
 	);
 };

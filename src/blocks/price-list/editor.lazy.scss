@@ -5,54 +5,54 @@
  * which makes it higher in priority.
  */
 
-#wpwrap .edit-post-visual-editor {
+.block-editor-page #wpwrap .wp-block-uagb-restaurant-menu {
+	padding: 15px;
+	margin: 0;
+	max-width: unset;
 
 	.uagb-rm__title {
 		margin-top: 0;
 	}
-}
 
-.uagb-rm__desk-column-3 [data-type="uagb/restaurant-menu-child"],
-.uagb-rm__desk-column-2 [data-type="uagb/restaurant-menu-child"],
-.uagb-rm__desk-column-1 [data-type="uagb/restaurant-menu-child"] {
-	display: inline-block;
-	padding-right: 10px;
-	padding-left: 10px;
-}
+	.uagb-rm__price.rich-text {
+		display: table-cell;
+		text-align: right;
+	}
 
-.uagb-rm__desk-column-3 [data-type="uagb/restaurant-menu-child"] {
-	width: calc(100% / 3);
-	display: inline-flex;
-}
+	.uagb-rm__separator {
+		margin-bottom: 10px;
+	}
 
-.uagb-rm__desk-column-2 [data-type="uagb/restaurant-menu-child"] {
-	width: calc(100% / 2);
-	display: inline-flex;
-}
+	&.uagb-rm__desk-column-3 [data-type="uagb/restaurant-menu-child"],
+	&.uagb-rm__desk-column-2 [data-type="uagb/restaurant-menu-child"],
+	&.uagb-rm__desk-column-1 [data-type="uagb/restaurant-menu-child"] {
+		display: inline-block;
+		padding-right: 10px;
+		padding-left: 10px;
+	}
 
-.uagb-rm__desk-column-1 [data-type="uagb/restaurant-menu-child"] {
-	width: 100%;
-}
+	&.uagb-rm__desk-column-3 [data-type="uagb/restaurant-menu-child"] {
+		width: calc(100% / 3);
+		display: inline-flex;
 
-.uagb-rm__desc,
-.editor-block-list__layout .uagb-rm__desc.block-editor-rich-text__editable {
-	margin-bottom: 15px;
-}
+		.wp-block-uagb-restaurant-menu-child.uagb-rest_menu__wrap.uagb-rm__desk-column-3 {
+			width: unset;
+		}
+	}
 
-.block-editor-page #wpwrap .uagb-rm__separator-parent {
-	margin-bottom: 10px;
-}
+	&.uagb-rm__desk-column-2 [data-type="uagb/restaurant-menu-child"] {
+		width: calc(100% / 2);
+		display: inline-flex;
+	}
 
-.uagb-editor_imgpos_group {
+	&.uagb-rm__desk-column-1 [data-type="uagb/restaurant-menu-child"] {
+		width: 100%;
+	}
 
-	&.components-button-group {
+	.uagb-rm__desc,
+	.uagb-rm__desc.block-editor-rich-text__editable {
 		margin-bottom: 15px;
 	}
-}
-
-.block-editor-page #wpwrap .wp-block-uagb-restaurant-menu .block-editor-block-list__block {
-	margin-top: 0;
-	margin-bottom: 0;
 }
 
 /*

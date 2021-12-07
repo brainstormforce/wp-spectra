@@ -91,7 +91,7 @@ const attributes = {
 	},
 	columns: {
 		type: 'number',
-		default: 1,
+		default: 2,
 	},
 	tcolumns: {
 		type: 'number',
@@ -278,7 +278,7 @@ const attributes = {
 	},
 	imagePosition: {
 		type: 'string',
-		default: 'left',
+		default: 'top',
 	},
 	imageAlignment: {
 		type: 'string',
