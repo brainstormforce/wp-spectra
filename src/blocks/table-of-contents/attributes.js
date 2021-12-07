@@ -79,7 +79,7 @@ const attributes = {
 	},
 	customWidth: {
 		type: 'boolean',
-		default: true,
+		default: false,
 	},
 	widthTypeDesktop: {
 		type: 'string',
@@ -372,7 +372,8 @@ const attributes = {
 
 	// Border
 	borderStyle: {
-		type: 'string'
+		type: 'string',
+		default: 'solid',
 	},
 	borderWidth: {
 		type: 'number'
@@ -471,10 +472,6 @@ const attributes = {
 	},
 	headingLineHeightMobile: {
 		type: 'number',
-	},
-	headingAlignment: {
-		type: 'string',
-		default: 'left',
 	},
 	emptyHeadingTeaxt: {
 		type: 'string',

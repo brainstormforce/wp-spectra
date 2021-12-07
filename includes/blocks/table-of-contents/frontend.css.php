@@ -43,8 +43,6 @@ $tablet_bottom_margin = isset( $attr['bottomMarginTablet'] ) ? $attr['bottomMarg
 $tablet_left_margin   = isset( $attr['leftMarginTablet'] ) ? $attr['leftMarginTablet'] : $attr['hMarginTablet'];
 $tablet_right_margin  = isset( $attr['rightMarginTablet'] ) ? $attr['rightMarginTablet'] : $attr['hMarginTablet'];
 
-$alignment = ( 'left' === $attr['headingAlignment'] ) ? 'flex-start' : ( ( 'right' === $attr['headingAlignment'] ) ? 'flex-end' : 'center' );
-
 $selectors = array(
 	' .uagb-toc__list-wrap li a:hover'                    => array(
 		'color' => $attr['linkHoverColor'],
@@ -53,7 +51,11 @@ $selectors = array(
 		'color' => $attr['linkColor'],
 	),
 	' .uagb-toc__title-wrap'                              => array(
-		'justify-content' => $alignment,
+		'justify-content' => $attr['align'],
+		'margin-bottom'   => UAGB_Helper::get_css_value( $attr['headingBottom'], 'px' ),
+	),
+	' .uagb-toc__title'                                   => array(
+		'justify-content' => $attr['align'],
 		'margin-bottom'   => UAGB_Helper::get_css_value( $attr['headingBottom'], 'px' ),
 	),
 	' .uagb-toc__title'                                   => array(
@@ -96,6 +98,11 @@ $selectors = array(
 		'padding-bottom' => 0,
 	),
 	' .uag-toc__collapsible-wrap svg'                     => array(
+		'width'  => UAGB_Helper::get_css_value( $attr['iconSize'], 'px' ),
+		'height' => UAGB_Helper::get_css_value( $attr['iconSize'], 'px' ),
+		'fill'   => $attr['iconColor'],
+	),
+	' svg'                                                => array(
 		'width'  => UAGB_Helper::get_css_value( $attr['iconSize'], 'px' ),
 		'height' => UAGB_Helper::get_css_value( $attr['iconSize'], 'px' ),
 		'fill'   => $attr['iconColor'],

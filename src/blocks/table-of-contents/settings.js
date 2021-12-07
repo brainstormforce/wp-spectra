@@ -3,7 +3,6 @@ import React, { Suspense } from 'react';
 import lazyLoader from '@Controls/lazy-loader';
 import TypographyControl from '@Components/typography';
 import UAGIconPicker from '@Components/icon-picker';
-import renderSVG from '@Controls/renderIcon';
 import WebfontLoader from '@Components/typography/fontloader';
 import AdvancedPopColorControl from '@Components/color-control/advanced-pop-color-control.js';
 import ResponsiveSlider from '@Components/responsive-slider';
@@ -14,7 +13,6 @@ import InspectorTabs from '@Components/inspector-tabs/InspectorTabs.js';
 import InspectorTab, {
 	UAGTabs,
 } from '@Components/inspector-tabs/InspectorTab.js';
-import MultiButtonsControl from '@Components/multi-buttons-control';
 import UAGTabsControl from '@Components/tabs';
 
 import {
@@ -26,7 +24,6 @@ import {
 import {
 	PanelRow,
 	ToggleControl,
-	Icon,
 } from '@wordpress/components';
 
 
@@ -134,7 +131,6 @@ const Settings = ( props ) => {
 		headingLineHeightTablet,
 		headingLineHeightMobile,
 		mappingHeaders,
-		headingAlignment,
 		fontStyle,
 		fontTransform,
 		fontDecoration,
@@ -380,57 +376,6 @@ const Settings = ( props ) => {
 				title={ __( 'Content', 'ultimate-addons-for-gutenberg' ) }
 				initialOpen={ false }
 			>
-				<MultiButtonsControl
-					setAttributes={ setAttributes }
-					label={ __(
-						'Title Alignment',
-						'ultimate-addons-for-gutenberg'
-					) }
-					data={ {
-						value: headingAlignment,
-						label: 'headingAlignment',
-					} }
-					className="uagb-multi-button-alignment-control"
-					options={ [
-						{
-							value: 'left',
-							icon: (
-								<Icon
-									icon={ renderSVG( 'fa fa-align-left' ) }
-								/>
-							),
-							tooltip: __(
-								'Left',
-								'ultimate-addons-for-gutenberg'
-							),
-						},
-						{
-							value: 'center',
-							icon: (
-								<Icon
-									icon={ renderSVG( 'fa fa-align-center' ) }
-								/>
-							),
-							tooltip: __(
-								'Center',
-								'ultimate-addons-for-gutenberg'
-							),
-						},
-						{
-							value: 'right',
-							icon: (
-								<Icon
-									icon={ renderSVG( 'fa fa-align-right' ) }
-								/>
-							),
-							tooltip: __(
-								'Right',
-								'ultimate-addons-for-gutenberg'
-							),
-						},
-					] }
-					showIcons={ true }
-				/>
 				<ResponsiveSlider
 					label={ __( 'Columns', 'ultimate-addons-for-gutenberg' ) }
 					data={ {
@@ -1035,15 +980,17 @@ const Settings = ( props ) => {
 
 	return (
 		<Suspense fallback={ lazyLoader() }>
-			<BlockControls>
-				<BlockAlignmentToolbar
-					value={ align }
-					onChange={ ( value ) => {
-						setAttributes( { align: value } );
-					} }
-					controls={ [ 'left', 'center', 'right' ] }
-				/>
-			</BlockControls>
+			{ ! customWidth && (
+				<BlockControls>
+					<BlockAlignmentToolbar
+						value={ align }
+						onChange={ ( value ) => {
+							setAttributes( { align: value } );
+						} }
+						controls={ [ 'left', 'center', 'right' ] }
+					/>
+				</BlockControls>
+			)}
 			<InspectorControls>
 				<InspectorTabs>
 					<InspectorTab { ...UAGTabs.general }>

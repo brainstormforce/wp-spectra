@@ -47,6 +47,11 @@
 		align-items: center;
 	}
 
+	.uagb-toc__title {
+		display: inline-block;
+		align-items: center;
+	}
+
 	.uagb-toc__is-collapsible.uagb-toc__title-wrap {
 		cursor: pointer;
 	}
@@ -54,6 +59,14 @@
 	.uag-toc__collapsible-wrap svg {
 		width: 20px;
 		height: 20px;
+	}
+
+	svg {
+		width: 20px;
+		height: 20px;
+		display: inline-block;
+		margin-left: 10px;
+		cursor: pointer;
 	}
 
 	.uag-toc__collapsible-wrap {
