@@ -1,12 +1,12 @@
 import classnames from 'classnames';
-import InfoBoxPositionClasses from './classes';
+import InfoBoxPositionClasses from './style-classes';
 import React, { useLayoutEffect } from 'react';
 import Title from './components/Title';
 import InfoBoxDesc from './components/InfoBoxDesc';
 import CallToAction from './components/CTA';
-import InfoBoxSeparator from './components/InfoBoxSeparator';
-import Icon from './components/Icon';
-import InfoBoxIconImage from './components/InfoBoxIconImage';
+import InfoBoxSeparator from './components/Separator';
+import Icon from './components/Icons';
+import InfoBoxIconImage from './components/IconImages';
 import Prefix from './components/Prefix';
 import styles from './editor.lazy.scss';
 
@@ -20,7 +20,7 @@ const Render = ( props ) => {
 	}, [] );
 
 	props = props.parentProps;
-	const { className, attributes, setAttributes, deviceType } = props;
+	const { attributes, setAttributes, deviceType } = props;
 
 	// Setup the attributes.
 	const {
@@ -89,7 +89,6 @@ const Render = ( props ) => {
 				seperatorPos === 'after_title' &&
 				showSeperator &&
 				seperatorHtml }
-			<div className="uagb-ifb-text-wrap">
 				{ showDesc && (
 					<InfoBoxDesc
 						attributes={ attributes }
@@ -104,99 +103,89 @@ const Render = ( props ) => {
 					attributes={ attributes }
 					setAttributes={ setAttributes }
 				/>
-			</div>
 		</>
 	);
 
 	// Get Title and Prefix components.
 	const titleText = (
-		<>
-			<div className="uagb-ifb-title-wrap">
-				{ showPrefix && (
-					<Prefix
-						attributes={ attributes }
-						setAttributes={ setAttributes }
-						props={ props }
-					/>
-				) }
-				{ 'none' !== seperatorStyle &&
-					seperatorPos === 'after_prefix' &&
-					seperatorHtml }
-				{ showTitle && (
-					<Title
-						attributes={ attributes }
-						setAttributes={ setAttributes }
-						props={ props }
-					/>
-				) }
-			</div>
-		</>
+		<div className="uagb-ifb-title-wrap">
+			{ showPrefix && (
+				<Prefix
+					attributes={ attributes }
+					setAttributes={ setAttributes }
+					props={ props }
+				/>
+			) }
+			{ 'none' !== seperatorStyle &&
+				seperatorPos === 'after_prefix' &&
+				seperatorHtml }
+			{ showTitle && (
+				<Title
+					attributes={ attributes }
+					setAttributes={ setAttributes }
+					props={ props }
+				/>
+			) }
+		</div>
 	);
 
 	const output = (
-		<div
-			className={ classnames(
-				'uagb-infobox__content-wrap',
-				ctaType === 'all' ? ' uagb-infobox_cta-type-all' : '',
-				...InfoBoxPositionClasses( attributes )
-			) }
-		>
-			<div className="uagb-ifb-left-right-wrap">
-				{ iconimgPosition === 'left' && iconImageHtml }
-				<div className="uagb-ifb-content">
-					{ iconimgPosition === 'above-title' && iconImageHtml }
+		<>
+			{ iconimgPosition === 'left' && iconImageHtml }
+			<div className="uagb-ifb-content">
+				{ iconimgPosition === 'above-title' && iconImageHtml }
 
-					{ ( iconimgPosition === 'above-title' ||
-						iconimgPosition === 'below-title' ) &&
-						titleText }
+				{ ( iconimgPosition === 'above-title' ||
+					iconimgPosition === 'below-title' ) &&
+					titleText }
 
-					{ iconimgPosition === 'below-title' && iconImageHtml }
+				{ iconimgPosition === 'below-title' && iconImageHtml }
 
-					{ ( iconimgPosition === 'above-title' ||
-						iconimgPosition === 'below-title' ) &&
-						desc }
+				{ ( iconimgPosition === 'above-title' ||
+					iconimgPosition === 'below-title' ) &&
+					desc }
 
-					{ iconimgPosition === 'left-title' && (
-						<>
-							<div className="uagb-ifb-left-title-image">
-								{ iconImageHtml }
-								{ titleText }
-							</div>
-							{ desc }
-						</>
-					) }
-
-					{ iconimgPosition === 'right-title' && (
-						<>
-							<div className="uagb-ifb-right-title-image">
-								{ titleText }
-								{ iconImageHtml }
-							</div>
-							{ desc }
-						</>
-					) }
-
-					{ ( iconimgPosition === 'left' ||
-						iconimgPosition === 'right' ) && (
-						<>
+				{ iconimgPosition === 'left-title' && (
+					<>
+						<div className="uagb-ifb-left-title-image">
+							{ iconImageHtml }
 							{ titleText }
-							{ desc }
-						</>
-					) }
-				</div>
+						</div>
+						{ desc }
+					</>
+				) }
 
-				{ iconimgPosition === 'right' && iconImageHtml }
+				{ iconimgPosition === 'right-title' && (
+					<>
+						<div className="uagb-ifb-right-title-image">
+							{ titleText }
+							{ iconImageHtml }
+						</div>
+						{ desc }
+					</>
+				) }
+
+				{ ( iconimgPosition === 'left' ||
+					iconimgPosition === 'right' ) && (
+					<>
+						{ titleText }
+						{ desc }
+					</>
+				) }
 			</div>
-		</div>
+
+			{ iconimgPosition === 'right' && iconImageHtml }
+		</>
 	);
 
 	return (
 		<div
 			className={ classnames(
-				className,
-				'uagb-infobox__outer-wrap',
 				`uagb-block-${ block_id }`,
-				`uagb-editor-preview-mode-${ deviceType.toLowerCase() }`
+				`uagb-editor-preview-mode-${ deviceType.toLowerCase() }`,
+				'uagb-infobox__content-wrap',
+				ctaType === 'all' ? ' uagb-infobox_cta-type-all' : '',
+				...InfoBoxPositionClasses( attributes )
 			) }
 		>
 			{ ctaType === 'all' && (

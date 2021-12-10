@@ -64,9 +64,9 @@ return array(
 	'block_id'                => '',
 	'iconHover'               => '',
 	'iconimgBorderRadius'     => '0',
-	'seperatorStyle'          => 'solid',
+	'seperatorStyle'          => 'none',
 	'seperatorWidth'          => '30',
-	'seperatorColor'          => '',
+	'seperatorColor'          => '#333',
 	'seperatorThickness'      => '2',
 	'thicknessUnit'           => 'px',
 	'ctaType'                 => 'none',
@@ -148,4 +148,5 @@ return array(
 	'prefixMobileSpace'       => '',
 	'imageWidthMobile'        => '',
 	'imageWidthTablet'        => '',
+	'ctaIconPosition'         => 'after',
 );

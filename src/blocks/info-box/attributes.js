@@ -290,9 +290,11 @@ const attributes = {
 	},
 	seperatorColor: {
 		type: 'string',
+		default: '#333',
 	},
 	seperatorWidth: {
 		type: 'number',
+		default : 30
 	},
 	separatorWidthType: {
 		type: 'string',

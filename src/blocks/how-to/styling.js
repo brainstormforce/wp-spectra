@@ -104,7 +104,7 @@ function styling( props ) {
 		'.uagb-how-to-main-wrap .uagb-how-to-materials-child__wrapper:last-child': {
 			'margin-bottom': generateCSSUnit( row_gap, 'px' ),
 		},
-		' .wp-block-uagb-info-box': {
+		' .uagb-infobox__content-wrap': {
 			'margin-bottom': generateCSSUnit( sGap, 'px' ),
 		},
 		' .uagb-how-to-step-wrap': {

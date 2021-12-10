@@ -15,6 +15,7 @@ import InfoBoxCta from './components/InfoBoxCta';
 import CallToAction from './components/CallToAction';
 import InfoBoxStyle from './inline-styles';
 import InfoBoxIconImage from './components/InfoBoxIconImage';
+import IconImage from './components/IconImage';
 
 const attributes = {
 	inheritFromTheme: {
@@ -68,6 +69,82 @@ const attributes = {
 	iconHover : {
 		type : "string",
 		default : ""
+	},
+	iconSizeType: {
+		type: 'String',
+		default: 'px',
+	},
+	prefixFontSizeType: {
+		type: 'string',
+		default: 'px',
+	},
+	headFontSizeType: {
+		type: 'string',
+		default: 'px',
+	},
+	subHeadFontSizeType: {
+		type: 'string',
+		default: 'px',
+	},
+	ctaIconSpaceType: {
+		type: 'string',
+		default: 'px',
+	},
+	thicknessUnit: {
+		type: 'string',
+		default: 'px',
+	},
+	ctaFontSizeType: {
+		type: 'string',
+		default: 'px',
+	},
+	iconMarginUnit: {
+		type: 'string',
+		default: 'px',
+	},
+	iconMobilePaddingUnit: {
+		type: 'string',
+		default: 'px',
+	},
+	iconTabletPaddingUnit: {
+		type: 'string',
+		default: 'px',
+	},
+	paddingBtnUnit: {
+		type: 'string',
+		default: 'px',
+	},
+	mobilePaddingBtnUnit: {
+		type: 'string',
+		default: 'px',
+	},
+	tabletPaddingBtnUnit: {
+		type: 'string',
+		default: 'px',
+	},
+	prefixSpaceUnit: {
+		type: 'string',
+		default: 'px',
+	},
+	headSpaceUnit: {
+		type: 'string',
+		default: 'px',
+	},
+	seperatorSpaceUnit: {
+		type: 'string',
+		default: 'px',
+	},
+	subHeadSpaceUnit: {
+		type: 'string',
+		default: 'px',
+	},
+	imageWidthUnit: {
+		type: 'string',
+		default: 'px',
+	},
+	iconimgBorderRadiusUnit: {
+		type: 'string',
+		default: 'px',
 	},
 	iconBgHover : {
 		type : "string",
@@ -1752,7 +1829,7 @@ const deprecated = [
 			if ( source_type === 'icon' && icon !== '' ) {
 				isImage = <Icon attributes={ props.attributes } />;
 			} else {
-				isImage = <InfoBoxIconImage attributes={ props.attributes } />;
+				isImage = <IconImage attributes={ props.attributes } />;
 			}
 
 			let iconImageHtml = isImage;

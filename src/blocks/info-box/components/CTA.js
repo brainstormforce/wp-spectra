@@ -4,7 +4,7 @@ import renderSVG from '@Controls/renderIcon';
 const InfoBoxCta = ( props ) => {
 	const { attributes, setAttributes = 'not_set' } = props;
 
-	const ctaBtnClass = 'uagb-infobox-cta-link uagb-ifb-cta-button wp-block-button__link';
+	const ctaBtnClass = 'uagb-infobox-cta-link wp-block-button__link';
 
 	let target = '_self';
 	const rel = 'noopener noreferrer';
@@ -14,34 +14,21 @@ const InfoBoxCta = ( props ) => {
 
 	let ctaIconOutput = '';
 	if ( attributes.ctaIcon !== '' ) {
-		ctaIconOutput = (
-			<span
-				className={ classnames(
-					`uagb-ifb-${ attributes.ctaType }-icon`,
-					`uagb-ifb-align-icon-${ attributes.ctaIconPosition }`
-				) }
-			>
-				{ renderSVG( attributes.ctaIcon ) }
-			</span>
-		);
+		ctaIconOutput = renderSVG( attributes.ctaIcon );
 	}
 
 	if ( setAttributes !== 'not_set' ) {
 		return (
-			<div className="uagb-ifb-cta uagb-infobox-cta-link-style">
+			<div className="uagb-ifb-cta">
 				{ attributes.ctaType === 'text' && (
 					<a // eslint-disable-line jsx-a11y/anchor-is-valid
 						target={ target }
 						className="uagb-infobox-cta-link"
 						rel={ rel }
 					>
-						{ attributes.ctaIconPosition === 'before' &&
-							ctaIconOutput }
-						<span className="uagb-inline-editing">
-							{ attributes.ctaText }
-						</span>
-						{ attributes.ctaIconPosition === 'after' &&
-							ctaIconOutput }
+						{ attributes.ctaIconPosition === 'before' && ctaIconOutput }
+						{ attributes.ctaText }
+						{ attributes.ctaIconPosition === 'after' && ctaIconOutput }
 					</a>
 				) }
 
@@ -57,12 +44,10 @@ const InfoBoxCta = ( props ) => {
 							target={ target }
 							rel={ rel }
 						>
-							{ ctaIconOutput }
-							<span className="uagb-ifb-cta-content-wrapper">
-								<span className="uagb-inline-editing ">
-									{ attributes.ctaText }
-								</span>
-							</span>
+
+							{ attributes.ctaIconPosition === 'before' && ctaIconOutput }
+							{ attributes.ctaText }
+							{ attributes.ctaIconPosition === 'after' && ctaIconOutput }
 						</a>
 					</div>
 				) }
@@ -70,47 +55,36 @@ const InfoBoxCta = ( props ) => {
 		);
 	}
 	return (
-		<div className="uagb-ifb-cta uagb-infobox-cta-link-style">
-			{ attributes.ctaType === 'text' && (
-				<a
-					href={ attributes.ctaLink }
-					target={ target }
-					className="uagb-infobox-cta-link"
-					rel={ rel }
-					alt=""
-				>
-					{ attributes.ctaIconPosition === 'before' && ctaIconOutput }
-					<span className="uagb-inline-editing">
-						{ attributes.ctaText }
-					</span>
-					{ attributes.ctaIconPosition === 'after' && ctaIconOutput }
-				</a>
-			) }
-
-			{ attributes.ctaType === 'button' && (
-				<div
-					className={ classnames(
-						'uagb-ifb-button-wrapper',
-						'wp-block-button'
-					) }
-				>
+			<>
+				{ attributes.ctaType === 'text' && (
 					<a
 						href={ attributes.ctaLink }
-						className={ ctaBtnClass }
 						target={ target }
+						className="uagb-infobox-cta-link"
 						rel={ rel }
 						alt=""
 					>
-						{ ctaIconOutput }
-						<span className="uagb-ifb-cta-content-wrapper">
-							<span className="uagb-inline-editing ">
-								{ attributes.ctaText }
-							</span>
-						</span>
+						{ attributes.ctaIconPosition === 'before' && ctaIconOutput }
+						{ attributes.ctaText }
+						{ attributes.ctaIconPosition === 'after' && ctaIconOutput }
 					</a>
+				) }
+				<div className= 'uagb-ifb-button-wrapper wp-block-button' >
+					{ attributes.ctaType === 'button' && (
+						<a
+							href={ attributes.ctaLink }
+							className={ ctaBtnClass }
+							target={ target }
+							rel={ rel }
+							alt=""
+						>
+							{ attributes.ctaIconPosition === 'before' && ctaIconOutput }
+							{ attributes.ctaText }
+							{ attributes.ctaIconPosition === 'after' && ctaIconOutput }
+						</a>
+					) }
 				</div>
-			) }
-		</div>
+		</>
 	);
 };
 export default InfoBoxCta;

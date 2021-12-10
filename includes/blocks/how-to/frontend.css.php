@@ -66,11 +66,11 @@ $selectors = array(
 		'margin-bottom' => UAGB_Helper::get_css_value( $attr['row_gap'], 'px' ),
 	),
 
-	' .wp-block-uagb-info-box'                             => array(
+	' .uagb-infobox__content-wrap'                         => array(
 		'margin-bottom' => UAGB_Helper::get_css_value( $attr['step_gap'], 'px' ),
 	),
 
-	' .wp-block-uagb-info-box:last-child'                  => array(
+	' .uagb-infobox__content-wrap:last-child'              => array(
 		'margin-bottom' => '0px',
 	),
 	' .uagb-how-to-step-wrap'                              => array(
