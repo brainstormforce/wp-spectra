@@ -106,6 +106,7 @@
 
 .uagb-columns__valign-center,
 .uagb-columns__valign-middle {
+	align-items: center;
 
 	.uagb-column__wrap {
 		-webkit-box-align: center;
@@ -116,6 +117,7 @@
 }
 
 .uagb-columns__valign-top {
+	align-items: flex-start;
 
 	.uagb-column__wrap {
 		-webkit-box-align: flex-start;
@@ -126,6 +128,7 @@
 }
 
 .uagb-columns__valign-bottom {
+	align-items: flex-end;
 
 	.uagb-column__wrap {
 		-webkit-box-align: flex-end;
