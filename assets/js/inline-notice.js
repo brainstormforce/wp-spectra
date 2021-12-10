@@ -16,7 +16,8 @@ UAGBInlineNotice = { // eslint-disable-line no-undef
 			if ( 'undefined' === typeof currentCookie && true === isCookie ) {
 				mainWrap.style.display = 'block';
 			}
-			const closeBtn = mainWrap.querySelector( '.uagb-notice-dismiss' );
+			const noticeDismissClass = mainWrap.querySelector( '.uagb-notice-dismiss' );
+			const closeBtn = noticeDismissClass ? noticeDismissClass : mainWrap.querySelector( 'svg' );
 
 			if ( attr.noticeDismiss !== '' ) {
 				closeBtn.addEventListener( 'click', function () {

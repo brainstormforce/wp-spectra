@@ -77,23 +77,25 @@ if ( $attr['noticeDismiss'] ) {
 }
 
 $selectors = array(
-	' .uagb-notice-title'                                => array(
+	' .uagb-notice-title'           => array(
 		'padding-left'   => UAGB_Helper::get_css_value( $left_padding, $attr['titlePaddingUnit'] ),
 		'padding-right'  => UAGB_Helper::get_css_value( $right_padding, $attr['titlePaddingUnit'] ),
 		'padding-top'    => UAGB_Helper::get_css_value( $title_top_padding, $attr['titlePaddingUnit'] ),
 		'padding-bottom' => UAGB_Helper::get_css_value( $title_bottom_padding, $attr['titlePaddingUnit'] ),
+		'color'          => $attr['titleColor'],
 	),
-	'.uagb-inline_notice__outer-wrap .uagb-notice-title' => array(
-		'color' => $attr['titleColor'],
-	),
-	' .uagb-notice-text'                                 => array(
+	' .uagb-notice-text'            => array(
 		'color'          => $attr['textColor'],
 		'padding-left'   => UAGB_Helper::get_css_value( $content_left_padding, $attr['contentPaddingUnit'] ),
 		'padding-right'  => UAGB_Helper::get_css_value( $content_right_padding, $attr['contentPaddingUnit'] ),
 		'padding-top'    => UAGB_Helper::get_css_value( $content_top_padding, $attr['contentPaddingUnit'] ),
 		'padding-bottom' => UAGB_Helper::get_css_value( $content_bottom_padding, $attr['contentPaddingUnit'] ),
 	),
-	' span.uagb-notice-dismiss svg'                      => array(
+	' span.uagb-notice-dismiss svg' => array( // For Backward.
+		'fill'  => $attr['noticeDismissColor'],
+		'color' => $attr['noticeDismissColor'],
+	),
+	' svg' => array(
 		'fill'  => $attr['noticeDismissColor'],
 		'color' => $attr['noticeDismissColor'],
 	),

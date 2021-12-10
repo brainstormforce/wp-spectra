@@ -35,15 +35,12 @@ const Render = ( props ) => {
 	let imageIconHtml = '';
 
 	if ( noticeDismiss ) {
-		imageIconHtml = (
-			<span className="uagb-notice-dismiss">{ renderSVG( icon ) }</span>
-		);
+		imageIconHtml = ( renderSVG( icon ) );
 	}
 	return (
 		<div
 			className={ classnames(
 				className,
-				'uagb-inline_notice__outer-wrap',
 				`${ noticeDismiss }`,
 				`uagb-inline_notice__align-${ noticeAlignment }`,
 				`uagb-block-${ block_id }`,

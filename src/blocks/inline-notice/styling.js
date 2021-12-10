@@ -131,7 +131,6 @@ function styling( props ) {
 				titlePaddingUnit
 			),
 		},
-
 		' .rich-text.block-editor-rich-text__editable.uagb-notice-text': {
 			'padding-left': generateCSSUnit(
 				contentLeftPadding,
@@ -165,7 +164,10 @@ function styling( props ) {
 			'color': textColor,
 		},
 
-		' span.uagb-notice-dismiss': {
+		' span.uagb-notice-dismiss': { // For Backward.
+			'fill': noticeDismissColor,
+		},
+		' svg': {
 			'fill': noticeDismissColor,
 		},
 	};
@@ -180,7 +182,6 @@ function styling( props ) {
 		selectors[
 			' .rich-text.block-editor-rich-text__editable.uagb-notice-title'
 		][ 'border-top-left-radius' ] = '3px';
-
 		selectors[
 			' .rich-text.block-editor-rich-text__editable.uagb-notice-text'
 		][ 'background-color' ] = contentBgColor;
@@ -193,6 +194,7 @@ function styling( props ) {
 		selectors[
 			' .rich-text.block-editor-rich-text__editable.uagb-notice-text'
 		][ 'border-bottom-right-radius' ] = '3px';
+		
 	} else if ( 'simple' === layout ) {
 		selectors[
 			' .rich-text.block-editor-rich-text__editable.uagb-notice-title'
@@ -201,7 +203,6 @@ function styling( props ) {
 			' .rich-text.block-editor-rich-text__editable.uagb-notice-title'
 		][ 'border-left' ] =
 			generateCSSUnit( highlightWidth, 'px' ) + ' solid ' + noticeColor;
-
 		selectors[
 			' .rich-text.block-editor-rich-text__editable.uagb-notice-text'
 		][ 'background-color' ] = contentBgColor;
@@ -248,7 +249,7 @@ function styling( props ) {
 				descLineHeightType
 			),
 		},
-		' .rich-text.block-editor-rich-text__editable.uagb-notice-text': {
+		' .rich-text.block-editor-rich-text__editable.uagb-notice-text': { 
 			'padding-left': generateCSSUnit(
 				contentLeftPaddingMobile,
 				mobileContentPaddingUnit
@@ -296,7 +297,7 @@ function styling( props ) {
 			),
 		},
 
-		' .rich-text.block-editor-rich-text__editable.uagb-notice-text p': {
+		' .rich-text.block-editor-rich-text__editable.uagb-notice-text p': { 
 			'font-size': generateCSSUnit(
 				descFontSizeTablet,
 				descFontSizeType
@@ -307,7 +308,7 @@ function styling( props ) {
 			),
 		},
 
-		' .rich-text.block-editor-rich-text__editable.uagb-notice-text': {
+		' .rich-text.block-editor-rich-text__editable.uagb-notice-text': { 
 			'padding-left': generateCSSUnit(
 				contentLeftPaddingTablet,
 				tabletContentPaddingUnit

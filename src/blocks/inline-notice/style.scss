@@ -1,17 +1,22 @@
-.uagb-inline_notice__outer-wrap {
+
+.wp-block-uagb-inline-notice {
+	position: relative;
 
 	&.uagb-inline_notice__align-right {
 		text-align: right;
 
-		span.uagb-notice-dismiss {
+		span.uagb-notice-dismiss,
+		svg {
 			left: 13px;
 		}
+
 	}
 
 	&.uagb-inline_notice__align-center {
 		text-align: center;
 
-		span.uagb-notice-dismiss {
+		span.uagb-notice-dismiss,
+		svg {
 			right: 13px;
 		}
 	}
@@ -19,18 +24,16 @@
 	&.uagb-inline_notice__align-left {
 		text-align: left;
 
-		span.uagb-notice-dismiss {
+		span.uagb-notice-dismiss,
+		svg {
 			right: 13px;
 		}
 	}
-}
-
-.wp-block-uagb-inline-notice {
 
 	&.uagb-notice__active {
 		display: none;
 	}
-	position: relative;
+
 
 	.uagb-notice-title {
 		margin: 0;
@@ -38,12 +41,25 @@
 		display: inline-block;
 	}
 
-	span.uagb-notice-dismiss svg {
-		width: 16px;
-		height: 16px;
+	span.uagb-notice-dismiss {
+
+		svg {
+			width: 16px;
+			height: 16px;
+		}
+		position: absolute;
+		cursor: pointer;
+		top: 13px;
+		opacity: 0.8;
+		padding: 0;
+		background: none;
+		transition: 0.3s ease;
 	}
 
-	span.uagb-notice-dismiss {
+	svg {
+
+		width: 16px;
+		height: 16px;
 		position: absolute;
 		cursor: pointer;
 		top: 13px;
