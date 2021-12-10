@@ -8,6 +8,7 @@ import edit from './edit';
 import save from './save';
 import './style.scss';
 import { __ } from '@wordpress/i18n';
+import deprecated from './deprecated';
 import { registerBlockType } from '@wordpress/blocks';
 
 registerBlockType( 'uagb/star-rating', {
@@ -34,4 +35,5 @@ registerBlockType( 'uagb/star-rating', {
 	attributes,
 	edit,
 	save,
+	deprecated
 } );

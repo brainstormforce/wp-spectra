@@ -95,7 +95,7 @@ $selectors = array(
 		'fill'  => $attr['noticeDismissColor'],
 		'color' => $attr['noticeDismissColor'],
 	),
-	' svg' => array(
+	' svg'                          => array(
 		'fill'  => $attr['noticeDismissColor'],
 		'color' => $attr['noticeDismissColor'],
 	),

@@ -4,13 +4,8 @@
  * CSS for both Frontend+Backend.
  */
 
-.uag-star-rating__wrapper {
+.wp-block-uagb-star-rating {
 	display: flex;
-	align-items: center;
-
-	&.uag-star-rating__layout-stack {
-		display: block;
-	}
 
 	.uag-star-rating__title {
 		margin: 0;

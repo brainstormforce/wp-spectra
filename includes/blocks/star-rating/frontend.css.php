@@ -30,24 +30,24 @@ if ( '' !== $attr['align'] ) {
 }
 
 $selectors = array(
-	' .uag-star-rating'         => array(
+	' .uag-star-rating'           => array(
 		'font-size' => UAGB_Helper::get_css_value( $attr['size'], 'px' ),
 	),
-	' .uag-star-rating > span'  => array(
+	' .uag-star-rating > span'    => array(
 		'margin-right' => UAGB_Helper::get_css_value( $attr['gap'], 'px' ),
 		'color'        => $attr['unmarkedColor'],
 	),
 	' .uag-star:nth-child(-n+' . floor( $attr['rating'] ) . ')' => array(
 		'color' => $attr['color'],
 	),
-	' .uag-star-rating__title'  => array(
+	' .uag-star-rating__title'    => array(
 		'font-size'   => UAGB_Helper::get_css_value( $attr['fontSize'], $attr['fontSizeType'] ),
 		'font-family' => $attr['fontFamily'],
 		'font-weight' => $attr['fontWeight'],
 		'line-height' => UAGB_Helper::get_css_value( $attr['lineHeight'], $attr['lineHeightType'] ),
 		'color'       => $attr['titleColor'],
 	),
-	'.uag-star-rating__wrapper' => array(
+	'.wp-block-uagb-star-rating ' => array(
 		'justify-content' => $alignment,
 		'text-align'      => $stack_alignment,
 	),
@@ -55,7 +55,11 @@ $selectors = array(
 
 $index = 'margin-right';
 if ( 'stack' === $attr['layout'] ) {
-	$index = 'margin-bottom';
+	$index                                    = 'margin-bottom';
+	$selectors['.wp-block-uagb-star-rating '] = array(
+		'display'    => 'block',
+		'text-align' => $stack_alignment,
+	);
 }
 
 $selectors[' .uag-star-rating__title'][ $index ] = UAGB_Helper::get_css_value( $attr['titleGap'], 'px' );
@@ -70,10 +74,6 @@ if ( 0 !== $width ) {
 		'position' => 'absolute',
 		'content'  => "'★'",
 		'overflow' => 'hidden',
-	);
-
-	$selectors[ ' .uag-star:nth-child(' . ceil( $attr['rating'] ) . ')' ] = array(
-		'position' => 'relative',
 	);
 }
 

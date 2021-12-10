@@ -68,17 +68,20 @@ function styling( props ) {
 			'line-height': generateCSSUnit( lineHeight, lineHeightType ),
 			'color': titleColor,
 		},
-		'.uag-star-rating__wrapper': {
+		'.wp-block-uagb-star-rating ': {
 			'justify-content': alignment,
 			'text-align': stackAlignment,
 		},
 	};
-
 	let index = 'margin-right';
 	if ( 'stack' === layout ) {
 		index = 'margin-bottom';
+		selectors[ '.wp-block-uagb-star-rating ' ] = {
+			'display' : 'block',
+			'text-align': stackAlignment,
+		};
 	}
-	
+
 	selectors[ ' .uag-star-rating__title.block-editor-rich-text__editable' ][
 		index
 	] = generateCSSUnit( titleGap, 'px' );
@@ -116,7 +119,7 @@ function styling( props ) {
 		},
 	};
 
-	const baseSelector = `.uagb-block-${ props.clientId.substr( 0, 8 ) }.uag-star-rating__wrapper`;
+	const baseSelector = `.uagb-block-${ props.clientId.substr( 0, 8 ) }`;
 
 	let stylingCss = generateCSS( selectors, baseSelector );
 
