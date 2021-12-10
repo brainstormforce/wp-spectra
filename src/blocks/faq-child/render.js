@@ -41,7 +41,7 @@ const Render = ( props ) => {
 
 	const faqRenderHtml = () => {
 		return (
-			<div className="uagb-faq-item" role="tab" tabIndex="0">
+			<>
 				<div className="uagb-faq-questions-button uagb-faq-questions">
 					{ 'accordion' === layout && faqRenderIcon() }
 					<RichText
@@ -60,26 +60,23 @@ const Render = ( props ) => {
 						] }
 					/>
 				</div>
-				<div className="uagb-faq-content">
-					<span>
-						<RichText
-							tagName="p"
-							placeholder={ __( 'Answer' ) }
-							value={ answer }
-							onChange={ ( value ) =>
-								setAttributes( { answer: value } )
-							}
-							multiline={ false }
-							allowedFormats={ [
-								'core/bold',
-								'core/italic',
-								'core/strikethrough',
-								'core/link',
-							] }
-						/>
-					</span>
-				</div>
-			</div>
+				<RichText
+					className="uagb-faq-content"
+					tagName="p"
+					placeholder={ __( 'Answer' ) }
+					value={ answer }
+					onChange={ ( value ) =>
+						setAttributes( { answer: value } )
+					}
+					multiline={ false }
+					allowedFormats={ [
+						'core/bold',
+						'core/italic',
+						'core/strikethrough',
+						'core/link',
+					] }
+				/>
+			</>
 		);
 	};
 
@@ -87,11 +84,14 @@ const Render = ( props ) => {
 		<div
 			className={ classnames(
 				'uagb-faq-child__outer-wrap',
+				'uagb-faq-item',
 				`uagb-block-${ props.clientId.substr( 0, 8 ) }`,
 				props.isSelected && false !== state.isFocused
 					? 'uagb-faq__active'
 					: ''
 			) }
+			role="tab"
+			tabIndex="0"
 		>
 			{ faqRenderHtml() }
 		</div>

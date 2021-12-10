@@ -162,20 +162,20 @@ function styling( props ) {
 				questionPaddingTypeDesktop
 			),
 		},
-		' .uagb-faq-content span': {
-			'margin-top': generateCSSUnit(
+		' .uagb-faq-content': {
+			'padding-top': generateCSSUnit(
 				answerTopPadding,
 				answerPaddingTypeDesktop
 			),
-			'margin-bottom': generateCSSUnit(
+			'padding-bottom': generateCSSUnit(
 				answerBottomPadding,
 				answerPaddingTypeDesktop
 			),
-			'margin-right': generateCSSUnit(
+			'padding-right': generateCSSUnit(
 				answerRightPadding,
 				answerPaddingTypeDesktop
 			),
-			'margin-left': generateCSSUnit(
+			'padding-left': generateCSSUnit(
 				answerLeftPadding,
 				answerPaddingTypeDesktop
 			),
@@ -207,7 +207,7 @@ function styling( props ) {
 			'text-transform': questionTransform,
 			'font-weight': questionFontWeight,
 		},
-		' .uagb-faq-item .uagb-faq-content p': {
+		' .uagb-faq-item .uagb-faq-content': {
 			'font-size': generateCSSUnit( answerFontSize, answerFontSizeType ),
 			'line-height': generateCSSUnit(
 				answerLineHeight,
@@ -241,20 +241,20 @@ function styling( props ) {
 				questionPaddingTypeTablet
 			),
 		},
-		' .uagb-faq-content span': {
-			'margin-top': generateCSSUnit(
+		' .uagb-faq-content': {
+			'padding-top': generateCSSUnit(
 				answerTopPaddingTablet,
 				answerPaddingTypeTablet
 			),
-			'margin-bottom': generateCSSUnit(
+			'padding-bottom': generateCSSUnit(
 				answerBottomPaddingTablet,
 				answerPaddingTypeTablet
 			),
-			'margin-right': generateCSSUnit(
+			'padding-right': generateCSSUnit(
 				answerRightPaddingTablet,
 				answerPaddingTypeTablet
 			),
-			'margin-left': generateCSSUnit(
+			'padding-left': generateCSSUnit(
 				answerLeftPaddingTablet,
 				answerPaddingTypeTablet
 			),
@@ -269,7 +269,7 @@ function styling( props ) {
 				questionLineHeightType
 			),
 		},
-		' .uagb-faq-item .uagb-faq-content p': {
+		' .uagb-faq-item .uagb-faq-content': {
 			'font-size': generateCSSUnit(
 				answerFontSizeTablet,
 				answerFontSizeType
@@ -310,20 +310,20 @@ function styling( props ) {
 				questionPaddingTypeMobile
 			),
 		},
-		' .uagb-faq-content span': {
-			'margin-top': generateCSSUnit(
+		' .uagb-faq-content': {
+			'padding-top': generateCSSUnit(
 				answerTopPaddingMobile,
 				answerPaddingTypeMobile
 			),
-			'margin-bottom': generateCSSUnit(
+			'padding-bottom': generateCSSUnit(
 				answerBottomPaddingMobile,
 				answerPaddingTypeMobile
 			),
-			'margin-right': generateCSSUnit(
+			'padding-right': generateCSSUnit(
 				answerRightPaddingMobile,
 				answerPaddingTypeMobile
 			),
-			'margin-left': generateCSSUnit(
+			'padding-left': generateCSSUnit(
 				answerLeftPaddingMobile,
 				answerPaddingTypeMobile
 			),
@@ -338,7 +338,7 @@ function styling( props ) {
 				questionLineHeightType
 			),
 		},
-		' .uagb-faq-item .uagb-faq-content p': {
+		' .uagb-faq-item .uagb-faq-content': {
 			'font-size': generateCSSUnit(
 				answerFontSizeMobile,
 				answerFontSizeType
@@ -369,12 +369,12 @@ function styling( props ) {
 	}
 	if ( 'accordion' === layout && false === inactiveOtherItems ) {
 		selectors[
-			' .block-editor-inner-blocks .uagb-faq-child__outer-wrap .uagb-faq-item .uagb-faq-questions-button .uagb-icon-active'
+			' .block-editor-inner-blocks .uagb-faq-child__outer-wrap.uagb-faq-item .uagb-faq-questions-button .uagb-icon-active'
 		] = {
 			'display': 'inline-block',
 		};
 		selectors[
-			' .block-editor-inner-blocks .uagb-faq-child__outer-wrap .uagb-faq-item .uagb-faq-questions-button .uagb-icon'
+			' .block-editor-inner-blocks .uagb-faq-child__outer-wrap.uagb-faq-item .uagb-faq-questions-button .uagb-icon'
 		] = {
 			'display': 'none',
 		};
@@ -386,12 +386,12 @@ function styling( props ) {
 			'display': 'block',
 		};
 		selectors[
-			' .block-editor-block-list__layout > div:first-child > .uagb-faq-child__outer-wrap .uagb-faq-item .uagb-faq-questions-button .uagb-icon-active '
+			' .block-editor-block-list__layout > div:first-child > .uagb-faq-child__outer-wrap.uagb-faq-item .uagb-faq-questions-button .uagb-icon-active '
 		] = {
 			'display': 'inline-block',
 		};
 		selectors[
-			' .block-editor-block-list__layout > div:first-child > .uagb-faq-child__outer-wrap .uagb-faq-item .uagb-faq-questions-button .uagb-icon '
+			' .block-editor-block-list__layout > div:first-child > .uagb-faq-child__outer-wrap.uagb-faq-item .uagb-faq-questions-button .uagb-icon '
 		] = {
 			'display': 'none',
 		};

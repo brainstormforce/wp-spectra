@@ -35,15 +35,15 @@ export default function save( props ) {
 				`uagb-faq-layout-${ props.attributes.layout }`,
 				`uagb-faq-expand-first-${ props.attributes.expandFirstItem }`,
 				`uagb-faq-inactive-other-${ props.attributes.inactiveOtherItems }`,
+				'uagb-faq__wrap',
+				'uagb-buttons-layout-wrap',
 				equalHeightClass
 			) }
 			data-faqtoggle={ props.attributes.enableToggle }
 			role="tablist"
 		>
 			{ renderSchema() }
-			<div className="uagb-faq__wrap uagb-buttons-layout-wrap">
-				<InnerBlocks.Content />
-			</div>
+			<InnerBlocks.Content />
 		</div>
 	);
 }

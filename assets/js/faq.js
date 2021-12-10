@@ -73,14 +73,12 @@ function setupFAQ() {
 	) {
 		const elementToOpen = document.getElementById( hashval );
 		if (
-			elementToOpen.getElementsByClassName( 'uagb-faq-item' )[ 0 ] !==
+			elementToOpen !==
 			undefined
 		) {
 			elementToOpen
-				.getElementsByClassName( 'uagb-faq-item' )[ 0 ]
 				.classList.add( 'uagb-faq-item-active' );
 			elementToOpen
-				.getElementsByClassName( 'uagb-faq-item' )[ 0 ]
 				.setAttribute( 'aria-expanded', true );
 			slideDown(
 				elementToOpen.getElementsByClassName( 'uagb-faq-content' )[ 0 ],
@@ -95,18 +93,19 @@ function setupFAQ() {
 					'uagb-faq-layout-accordion'
 				)
 			) {
-				expandFirstelements[ item ]
-					.querySelectorAll( '.uagb-faq-child__outer-wrap' )[ 0 ]
-					.getElementsByClassName( 'uagb-faq-item' )[ 0 ]
-					.classList.add( 'uagb-faq-item-active' );
-				expandFirstelements[ item ]
-					.querySelectorAll( '.uagb-faq-child__outer-wrap' )[ 0 ]
-					.getElementsByClassName( 'uagb-faq-item' )[ 0 ]
-					.setAttribute( 'aria-expanded', true );
-				expandFirstelements[ item ]
-					.querySelectorAll( '.uagb-faq-child__outer-wrap' )[ 0 ]
-					.getElementsByClassName( 'uagb-faq-item' )[ 0 ]
-					.querySelectorAll(
+				let faqItem = expandFirstelements[ item ]
+				.querySelectorAll( '.uagb-faq-child__outer-wrap.uagb-faq-item' )[ 0 ];
+
+				if ( ! faqItem ) {
+					faqItem = expandFirstelements[ item ]
+					.querySelectorAll( '.uagb-faq-child__outer-wrap .uagb-faq-item' )[ 0 ];
+				}
+	
+				
+				faqItem.classList.add( 'uagb-faq-item-active' );
+
+				faqItem.setAttribute( 'aria-expanded', true );
+				faqItem.querySelectorAll(
 						'.uagb-faq-content'
 					)[ 0 ].style.display = 'block';
 			}
@@ -119,9 +118,15 @@ function setupFAQ() {
 				'uagb-faq-layout-accordion'
 			)
 		) {
-			const otherItems = inactiveOtherelements[ item ].querySelectorAll(
-				'.uagb-faq-child__outer-wrap'
+			let otherItems = inactiveOtherelements[ item ].querySelectorAll(
+				'.uagb-faq-child__outer-wrap.uagb-faq-item'
 			);
+			
+			if( ! otherItems || 0 === otherItems.length ) {
+				otherItems = inactiveOtherelements[ item ].querySelectorAll(
+					'.uagb-faq-child__outer-wrap .uagb-faq-item'
+				);
+			}
 
 			for (
 				let childItem = 0;
@@ -129,13 +134,10 @@ function setupFAQ() {
 				childItem++
 			) {
 				otherItems[ childItem ]
-					.getElementsByClassName( 'uagb-faq-item' )[ 0 ]
 					.classList.add( 'uagb-faq-item-active' );
 				otherItems[ childItem ]
-					.getElementsByClassName( 'uagb-faq-item' )[ 0 ]
 					.setAttribute( 'aria-expanded', true );
 				otherItems[ childItem ]
-					.getElementsByClassName( 'uagb-faq-item' )[ 0 ]
 					.querySelectorAll(
 						'.uagb-faq-content'
 					)[ 0 ].style.display = 'block';
