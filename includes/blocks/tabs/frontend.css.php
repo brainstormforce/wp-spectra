@@ -40,14 +40,14 @@ $selectors = array(
 	' .uagb-tabs__panel .uagb-tab:hover '                  => array(
 		'border-color' => $attr['borderHoverColor'],
 	),
-	' .uagb-tabs__panel .uagb-tab span'                    => array(
+	' .uagb-tabs__panel .uagb-tab a'                    => array(
 		'color' => $attr['headerTextColor'],
 	),
 	' .uagb-tabs__panel .uagb-tab.uagb-tabs__active'       => array(
 		'background' => $attr['activeTabBgColor'],
 	),
 
-	' .uagb-tabs__panel .uagb-tab.uagb-tabs__active  span' => array(
+	' .uagb-tabs__panel .uagb-tab.uagb-tabs__active a' => array(
 		'color' => $attr['activeTabTextColor'],
 	),
 	' .uagb-tabs__panel .uagb-tab.uagb-tabs__active .uagb-tabs__icon svg' => array(
@@ -245,6 +245,6 @@ $combined_selectors = array(
 	'mobile'  => $m_selectors,
 	'tablet'  => $t_selectors,
 );
-$combined_selectors = UAGB_Helper::get_typography_css( $attr, 'title', '  .uagb-tabs__panel .uagb-tab span', $combined_selectors );
+$combined_selectors = UAGB_Helper::get_typography_css( $attr, 'title', '  .uagb-tabs__panel .uagb-tab a', $combined_selectors );
 
 return UAGB_Helper::generate_all_css( $combined_selectors, '.uagb-block-' . $id );
