@@ -511,11 +511,9 @@ if ( ! class_exists( 'UAGB_Taxonomy_List' ) ) {
 							<<?php echo esc_html( $titleTag ); ?> class="uagb-tax-title"><?php echo esc_attr( $value->name ); ?>
 							</<?php echo esc_html( $titleTag ); ?>>
 							<?php if ( $showCount ) { ?>
-								<div class="uagb-tax-count">
 									<?php echo esc_attr( $value->count ); ?>
 									<?php $countName = ( $value->count > 1 ) ? esc_attr( $singular_name ) . 's' : esc_attr( $singular_name ); ?>
 									<?php echo esc_attr( apply_filters( 'uagb_taxonomy_count_text', $countName, $value->count ) ); ?>
-									</div>
 							<?php } ?>
 						</a>
 					</div>
@@ -575,7 +573,7 @@ if ( ! class_exists( 'UAGB_Taxonomy_List' ) ) {
 								<<?php echo esc_html( $titleTag ); ?> class="uagb-tax-link-wrap">
 									<a class="uagb-tax-link" href="<?php echo esc_url( get_term_link( $value->slug, $attributes['taxonomyType'] ) ); ?>"><?php echo esc_attr( $value->name ); ?></a>
 										<?php if ( $showCount ) { ?>
-											<span class="uagb-tax-list-count"><?php echo ' (' . esc_attr( $value->count ) . ')'; ?></span>
+											<?php echo ' (' . esc_attr( $value->count ) . ')'; ?>
 										<?php } ?>
 										<?php if ( $attributes['showhierarchy'] && ! empty( $newcategoriesList[ $key ]->children ) ) { ?>	
 											<ul class="uagb-taxonomy-list-children">	
@@ -583,7 +581,7 @@ if ( ! class_exists( 'UAGB_Taxonomy_List' ) ) {
 													<li class="uagb-tax-list">
 													<a class="uagb-tax-link" href="<?php echo esc_url( get_term_link( $value->slug, $attributes['taxonomyType'] ) ); ?>"><?php echo esc_attr( $value->name ); ?></a>	
 													<?php if ( $showCount ) { ?>
-														<span class="uagb-tax-list-count"><?php echo ' (' . esc_attr( $value->count ) . ')'; ?></span>
+														<?php echo ' (' . esc_attr( $value->count ) . ')'; ?>
 													<?php } ?>												
 													</li>
 												<?php } ?>
@@ -591,9 +589,7 @@ if ( ! class_exists( 'UAGB_Taxonomy_List' ) ) {
 										<?php } ?>										
 								</<?php echo esc_html( $titleTag ); ?>>
 								<?php if ( 'none' !== $seperatorStyle ) { ?>
-									<div class="uagb-tax-separator-wrap">
 										<div class="uagb-tax-separator"></div>
-									</div>
 								<?php } ?>
 							</li>
 						<?php } ?>
@@ -655,17 +651,14 @@ if ( ! class_exists( 'UAGB_Taxonomy_List' ) ) {
 
 			$main_classes = array(
 				'uagb-taxonomy__outer-wrap',
+				'uagb-layout-' . $layout,
 				'uagb-block-' . $block_id,
 				$desktop_class,
 				$tab_class,
 				$mob_class,
 			);
 
-			$inner_classes = array(
-				'uagb-taxonomy-wrap',
-				'uagb-layout-' . $layout,
-			);
-			$args          = array(
+			$args = array(
 				'hide_empty' => ! $attributes['showEmptyTaxonomy'],
 			);
 
@@ -678,10 +671,8 @@ if ( ! class_exists( 'UAGB_Taxonomy_List' ) ) {
 			?>
 				<div class = "<?php echo esc_attr( implode( ' ', $main_classes ) ); ?>">
 					<?php if ( ! empty( $newcategoriesList ) ) { ?>
-						<div class = "<?php echo esc_attr( implode( ' ', $inner_classes ) ); ?>">
 							<?php $this->grid_html( $attributes ); ?>
 							<?php $this->list_html( $attributes ); ?>							
-						</div>
 					<?php } else { ?>
 							<div class="uagb-tax-not-available"><?php echo esc_attr( $noTaxDisplaytext ); ?></div>
 					<?php } ?>					
