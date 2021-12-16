@@ -6,6 +6,7 @@ import classnames from 'classnames';
 import attributes from './attributes';
 import { __ } from '@wordpress/i18n';
 import { RichText } from '@wordpress/block-editor';
+import renderSVG from '@Controls/renderIcon';
 
 const deprecated = [
 	{
