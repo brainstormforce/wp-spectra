@@ -14,6 +14,9 @@ $t_selectors = array();
 $m_selectors = array();
 
 $selectors = array(
+	' .uagb-how-to-main-wrap'                              => array( // For Backword.
+		'text-align' => $attr['overallAlignment'],
+	),
 	'.uagb-how-to-main-wrap'                               => array(
 		'text-align' => $attr['overallAlignment'],
 	),
@@ -21,7 +24,10 @@ $selectors = array(
 		'margin-bottom' => UAGB_Helper::get_css_value( $attr['row_gap'], 'px' ),
 	),
 
-	'.uagb-how-to-main-wrap .uagb-howto__source-wrap'      => array(
+	'.uagb-how-to-main-wrap .uagb-howto__source-wrap'      => array( // For Backword.
+		'margin-bottom' => UAGB_Helper::get_css_value( $attr['row_gap'], 'px' ),
+	),
+	'.uagb-how-to-main-wrap .uagb-howto__source-image'     => array(
 		'margin-bottom' => UAGB_Helper::get_css_value( $attr['row_gap'], 'px' ),
 	),
 
@@ -34,6 +40,10 @@ $selectors = array(
 	),
 
 	'.uagb-how-to-main-wrap .uagb-how-to-tools-child__wrapper:last-child' => array(
+		'margin-bottom' => UAGB_Helper::get_css_value( $attr['row_gap'], 'px' ),
+	),
+
+	'.uagb-how-to-main-wrap .uagb-how-to-tools__wrap'      => array(
 		'margin-bottom' => UAGB_Helper::get_css_value( $attr['row_gap'], 'px' ),
 	),
 
@@ -61,8 +71,14 @@ $selectors = array(
 	' .uagb-how-to-main-wrap p.uagb-howto-desc-text'       => array(
 		'margin-bottom' => UAGB_Helper::get_css_value( $attr['row_gap'], 'px' ),
 	),
+	'.uagb-how-to-main-wrap p'                             => array(
+		'margin-bottom' => UAGB_Helper::get_css_value( $attr['row_gap'], 'px' ),
+	),
 
-	' .uagb-howto__source-wrap'                            => array(
+	' .uagb-howto__source-wrap'                            => array( // For Backword.
+		'margin-bottom' => UAGB_Helper::get_css_value( $attr['row_gap'], 'px' ),
+	),
+	' .uagb-howto__source-image'                           => array(
 		'margin-bottom' => UAGB_Helper::get_css_value( $attr['row_gap'], 'px' ),
 	),
 
@@ -112,7 +128,10 @@ $selectors = array(
 		'color' => $attr['showTotaltimecolor'],
 	),
 
-	' .uagb-how-to-tools__wrap .uagb-howto-req-tools-text' => array(
+	' .uagb-how-to-tools__wrap .uagb-howto-req-tools-text' => array( // For Backword.
+		'color' => $attr['showTotaltimecolor'],
+	),
+	' .uagb-howto-req-tools-text'                          => array(
 		'color' => $attr['showTotaltimecolor'],
 	),
 
@@ -125,11 +144,11 @@ $selectors = array(
 	),
 );
 
-$selectors[' .uagb-how-to-tools-child__wrapper'] = array(
+$selectors[' .uagb-tools__label'] = array(
 	'color' => $attr['subHeadingColor'],
 );
 
-$selectors[' .uagb-how-to-materials-child__wrapper'] = array(
+$selectors[' .uagb-materials__label'] = array(
 	'color' => $attr['subHeadingColor'],
 );
 

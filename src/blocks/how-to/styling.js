@@ -84,11 +84,16 @@ function styling( props ) {
 		'.uagb-how-to-main-wrap p': {
 			'margin-bottom': generateCSSUnit( row_gap, 'px' ),
 		},
-
-		'.uagb-how-to-main-wrap .uagb-howto__source-wrap': {
+		'.uagb-how-to-main-wrap .uagb-how-to-tools__wrap': {
 			'margin-bottom': generateCSSUnit( row_gap, 'px' ),
 		},
 
+		'.uagb-how-to-main-wrap .uagb-howto__source-wrap': { // For Backward
+			'margin-bottom': generateCSSUnit( row_gap, 'px' ),
+		},
+		'.uagb-how-to-main-wrap .uagb-howto__source-image': {
+			'margin-bottom': generateCSSUnit( row_gap, 'px' ),
+		},
 		'.uagb-how-to-main-wrap span.uagb-howto__time-wrap': {
 			'margin-bottom': generateCSSUnit( row_gap, 'px' ),
 		},
