@@ -1,7 +1,5 @@
 import classnames from 'classnames';
-import React, { Suspense, useLayoutEffect } from 'react';
-import lazyLoader from '@Controls/lazy-loader';
-import CtaPositionClasses from './classes';
+import React, { useLayoutEffect } from 'react';
 import Title from './components/Title';
 import Description from './components/Description';
 import CTA from './components/CallToActionNew';
@@ -17,96 +15,78 @@ const Render = ( props ) => {
 	}, [] );
 
 	props = props.parentProps;
-	const { className, setAttributes, attributes, deviceType } = props;
+	const { setAttributes, attributes, deviceType } = props;
 
 	// Setup the attributes.
-	const { block_id, ctaPosition, ctaType } = attributes;
+	const { block_id, ctaPosition, ctaType, stack  } = attributes;
 
-	const isCta = (
-		<CTA attributes={ attributes } setAttributes={ setAttributes } />
-	);
+	const isCta = <CTA attributes={ attributes } setAttributes={ setAttributes } />;
 
 	// Get description components.
 	const descText = (
-		<div className="uagb-cta-text-wrap">
-			{
-				<Description
-					attributes={ attributes }
-					setAttributes={ setAttributes }
-					props={ props }
-				/>
-			}
-		</div>
+		<Description
+			attributes={ attributes }
+			setAttributes={ setAttributes }
+			props={ props }
+		/>
 	);
 
 	// Get Title components.
 	const titleText = (
-		<div className="uagb-cta__title-wrap">
-			{
-				<Title
-					attributes={ attributes }
-					setAttributes={ setAttributes }
-					props={ props }
-				/>
-			}
-		</div>
+		<Title
+			attributes={ attributes }
+			setAttributes={ setAttributes }
+			props={ props }
+		/>
 	);
 
 	const output = () => {
 		return (
-			<div
-				className={ classnames(
-					'uagb-cta__content-wrap',
-					...CtaPositionClasses( attributes )
-				) }
-			>
-				<div className="uagb-cta__left-right-wrap">
-					<div className="uagb-cta__content">
-						{ ctaPosition === 'below-title' && (
-							<>
+			<>
+					{ ctaPosition === 'below-title' && (
+						<>
+							{ titleText }
+							{ descText }
+							{ isCta }
+						</>
+					) }
+					{ ctaPosition === 'right' && (
+						<>
+							<div className="uagb-cta__wrap">
 								{ titleText }
 								{ descText }
-								{ isCta }
-							</>
-						) }
-						{ ctaPosition === 'right' && (
-							<>
-								{ titleText }
-								{ descText }
-							</>
-						) }
-					</div>
-					{ ctaPosition === 'right' && isCta }
-				</div>
-			</div>
+							</div>
+							{isCta}
+						</>
+					) }
+			</>
 		);
 	};
-
+	let iconimgStyleClass;
+	if ( ctaPosition === 'right' && stack !== 'none' ) {
+		iconimgStyleClass = 'uagb-cta__content-stacked-' + stack + ' ';
+	}
 	return (
-		<Suspense fallback={ lazyLoader() }>
 			<div
 				className={ classnames(
-					className,
-					'uagb-cta__outer-wrap',
 					`uagb-block-${ block_id }`,
-					`uagb-editor-preview-mode-${ deviceType.toLowerCase() }`
+					`uagb-editor-preview-mode-${ deviceType.toLowerCase() }`,
+					'uagb-cta__outer-wrap',
+					'button' === ctaType ? 'wp-block-button' : '',
+					iconimgStyleClass
 				) }
 			>
 				{ ctaType === 'all' && (
-					<>
-						<a
-							href="/"
-							className="uagb-cta__block-link-wrap uagb-cta__link-to-all"
-							rel="noopener noreferrer"
-						>
-							{ ' ' }
-						</a>
-						{ output() }
-					</>
+					<a
+						href="/"
+						className="uagb-cta__link-to-all"
+						rel="noopener noreferrer"
+					>
+						{ ' ' }
+					</a>
 				) }
-				{ ctaType !== 'all' && output() }
+				{ output() }
 			</div>
-		</Suspense>
 	);
 };
 

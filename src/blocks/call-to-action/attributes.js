@@ -180,6 +180,7 @@ const attributes = {
 	},
 	ctaFontSize: {
 		type: 'number',
+		default: 14
 	},
 	ctaFontSizeType: {
 		type: 'string',
@@ -217,8 +218,7 @@ const attributes = {
 		default: '70',
 	},
 	ctaBtnLinkColor: {
-		type: 'string',
-		default: '#333',
+		type: 'string'
 	},
 	ctaLinkHoverColor: {
 		type: 'string',
@@ -233,16 +233,14 @@ const attributes = {
 		default: '',
 	},
 	ctaBorderColor: {
-		type: 'string',
-		default: '#333',
+		type: 'string'
 	},
 	ctaBorderhoverColor: {
 		type: 'string',
 		default: '',
 	},
 	ctaBorderStyle: {
-		type: 'string',
-		default: 'solid',
+		type: 'string'
 	},
 	ctaBtnVertPadding: {
 		type: 'number',
