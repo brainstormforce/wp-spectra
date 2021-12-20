@@ -78,27 +78,29 @@ function Blog( props ) {
 						`uagb-post__columns-${ columns }`,
 						`uagb-post__columns-tablet-${ tcolumns }`,
 						`uagb-post__columns-mobile-${ mcolumns }`,
-						'uagb-post__items'
+						'uagb-post__items',
+						className,
+						'uagb-post-grid',
+						'uagb-post__arrow-outside',
+						`uagb-post__image-position-${ imgPosition }`,
+						`uagb-editor-preview-mode-${ deviceType.toLowerCase() }`,
+						`uagb-block-${ block_id }`
 					) }
+					data-blog-id={ block_id }
 				>
 					<InnerBlockLayoutContextProvider
 						parentName="uagb/post-masonry"
 						parentClassName="uagb-block-grid"
 					>
 						{ displayPosts.map( ( post, i ) => (
-							<article key={ i }>
-								<div
-									key={ i }
-									className="uagb-post__inner-wrap"
-								>
-									{ renderPostLayout(
-										'uagb/post-masonry',
-										post,
-										layoutConfig,
-										props.attributes,
-										props.categoriesList
-									) }
-								</div>
+							<article key={ i } className="uagb-post__inner-wrap">
+								{ renderPostLayout(
+									'uagb/post-masonry',
+									post,
+									layoutConfig,
+									props.attributes,
+									props.categoriesList
+								) }
 							</article>
 						) ) }
 					</InnerBlockLayoutContextProvider>

@@ -1178,19 +1178,18 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 					break;
 			}
 
+			$common_classes = array_merge( $outerwrap, $wrap );
+
 			$total = $query->max_num_pages;
+
 			?>
 
-			<div class="<?php echo esc_html( implode( ' ', $outerwrap ) ); ?>" data-total="<?php echo esc_attr( $total ); ?>">
-
-				<div class="<?php echo esc_html( implode( ' ', $wrap ) ); ?>">
+			<div class="<?php echo esc_html( implode( ' ', $common_classes ) ); ?>" data-total="<?php echo esc_attr( $total ); ?>">
 
 				<?php
 
-					$this->posts_articles_markup( $query, $attributes );
-				?>
-				</div>
-				<?php
+				$this->posts_articles_markup( $query, $attributes );
+
 				$post_not_found = $query->found_posts;
 
 				if ( 0 === $post_not_found ) {
@@ -1377,14 +1376,12 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 				do_action( "uagb_post_before_article_{$attributes['post_type']}", get_the_ID(), $attributes );
 
 				?>
-				<article <?php ( $post_class_enabled ) ? post_class() : ''; ?>>
-					<?php do_action( "uagb_post_before_inner_wrap_{$attributes['post_type']}", get_the_ID(), $attributes ); ?>
-					<div class="uagb-post__inner-wrap">
-						<?php $this->render_complete_box_link( $attributes ); ?>
-						<?php $this->render_innerblocks( $attributes ); ?>
-					</div>
-					<?php do_action( "uagb_post_after_inner_wrap_{$attributes['post_type']}", get_the_ID(), $attributes ); ?>
+				<?php do_action( "uagb_post_before_inner_wrap_{$attributes['post_type']}", get_the_ID(), $attributes ); ?>
+				<article <?php ( $post_class_enabled ) ? post_class( 'uagb-post__inner-wrap' ) : esc_html_e( 'class=uagb-post__inner-wrap' ); ?>>
+					<?php $this->render_complete_box_link( $attributes ); ?>
+					<?php $this->render_innerblocks( $attributes ); ?>
 				</article>
+				<?php do_action( "uagb_post_after_inner_wrap_{$attributes['post_type']}", get_the_ID(), $attributes ); ?>
 				<?php
 
 				do_action( "uagb_post_after_article_{$attributes['post_type']}", get_the_ID(), $attributes );
@@ -1443,12 +1440,15 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 					<script type="text/javascript" id="uagb-post-masonry-script-<?php echo esc_html( $key ); ?>">
 						document.addEventListener("DOMContentLoaded", function(){
 							let scope = document.querySelector( '.uagb-block-<?php echo esc_html( $key ); ?>' );
-							const element = scope.querySelector( '.is-masonry' );
-							const isotope = new Isotope( element, { // eslint-disable-line no-undef
-									itemSelector: 'article',
-								} );
-							imagesLoaded( element, function() { isotope	});
-							window.addEventListener( 'resize', function() {	isotope	});
+							if (scope.classList.contains( 'is-masonry' )) {
+
+								const isotope = new Isotope( scope, { // eslint-disable-line no-undef
+										itemSelector: 'article',
+									} );
+								imagesLoaded( scope, function() { isotope	});
+								window.addEventListener( 'resize', function() {	isotope	});
+							}
+
 						});
 						<?php $selector = '.uagb-block-' . $key; ?>
 						window.addEventListener( 'DOMContentLoaded', function() {
@@ -1474,8 +1474,8 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 						document.addEventListener("DOMContentLoaded", function(){
 							( function( $ ) {
 								var cols = parseInt( '<?php echo esc_html( $value['columns'] ); ?>' );
-								var $scope = $( '.uagb-block-<?php echo esc_html( $key ); ?>' ).find( '.is-carousel' );
-								if ( cols >= $scope.children().length ) {
+								var $scope = $( '.uagb-block-<?php echo esc_html( $key ); ?>' );
+								if ( ! $scope.hasClass('is-carousel') || cols >= $scope.children().length ) {
 									return;
 								}
 								var slider_options = {
@@ -1578,11 +1578,9 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 			$target = ( $attributes['newTab'] ) ? '_blank' : '_self';
 			do_action( "uagb_single_post_before_title_{$attributes['post_type']}", get_the_ID(), $attributes );
 			?>
-			<div class='uagb-post__text'>
-				<<?php echo esc_html( $attributes['titleTag'] ); ?> class="uagb-post__title">
-					<a href="<?php echo esc_url( apply_filters( "uagb_single_post_link_{$attributes['post_type']}", get_the_permalink(), get_the_ID(), $attributes ) ); ?>" target="<?php echo esc_html( $target ); ?>" rel="bookmark noopener noreferrer"><?php the_title(); ?></a>
-				</<?php echo esc_html( $attributes['titleTag'] ); ?>>
-			</div>
+			<<?php echo esc_html( $attributes['titleTag'] ); ?> class="uagb-post__title uagb-post__text">
+				<a href="<?php echo esc_url( apply_filters( "uagb_single_post_link_{$attributes['post_type']}", get_the_permalink(), get_the_ID(), $attributes ) ); ?>" target="<?php echo esc_html( $target ); ?>" rel="bookmark noopener noreferrer"><?php the_title(); ?></a>
+			</<?php echo esc_html( $attributes['titleTag'] ); ?>>
 			<?php
 			do_action( "uagb_single_post_after_title_{$attributes['post_type']}", get_the_ID(), $attributes );
 		}
@@ -1701,8 +1699,7 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 			$meta_sequence = array( 'author', 'date', 'comment', 'taxonomy' );
 			$meta_sequence = apply_filters( "uagb_single_post_meta_sequence_{$attributes['post_type']}", $meta_sequence, get_the_ID(), $attributes );
 			?>
-			<div class='uagb-post__text'>
-			<div class="uagb-post-grid-byline">
+			<div class='uagb-post__text uagb-post-grid-byline'>
 				<?php
 				foreach ( $meta_sequence as $key => $sequence ) {
 					switch ( $sequence ) {
@@ -1727,7 +1724,6 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 					}
 				}
 				?>
-			</div>
 			</div>
 			<?php
 			do_action( "uagb_single_post_after_meta_{$attributes['post_type']}", get_the_ID(), $attributes );
@@ -1764,11 +1760,9 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 			$excerpt = apply_filters( "uagb_single_post_excerpt_{$attributes['post_type']}", $excerpt, get_the_ID(), $attributes );
 			do_action( "uagb_single_post_before_excerpt_{$attributes['post_type']}", get_the_ID(), $attributes );
 			?>
-				<div class='uagb-post__text'>
-					<div class="uagb-post__excerpt">
-						<?php echo wp_kses_post( $excerpt ); ?>
-					</div>
-			</div>
+				<div class='uagb-post__text uagb-post__excerpt'>
+					<?php echo wp_kses_post( $excerpt ); ?>
+				</div>
 			<?php
 			do_action( "uagb_single_post_after_excerpt_{$attributes['post_type']}", get_the_ID(), $attributes );
 		}
@@ -1787,13 +1781,11 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 			$target   = ( $attributes['newTab'] ) ? '_blank' : '_self';
 			$cta_text = ( $attributes['ctaText'] ) ? $attributes['ctaText'] : __( 'Read More', 'ultimate-addons-for-gutenberg' );
 			do_action( "uagb_single_post_before_cta_{$attributes['post_type']}", get_the_ID(), $attributes );
-			$wrap_classes = 'uagb-post__cta wp-block-button';
+			$wrap_classes = 'uagb-post__text uagb-post__cta wp-block-button';
 			$link_classes = 'wp-block-button__link uagb-text-link';
 			?>
-			<div class='uagb-post__text'>
-				<div class="<?php echo esc_html( $wrap_classes ); ?>">
-					<a class="<?php echo esc_html( $link_classes ); ?>" href="<?php echo esc_url( apply_filters( "uagb_single_post_link_{$attributes['post_type']}", get_the_permalink(), get_the_ID(), $attributes ) ); ?>" target="<?php echo esc_html( $target ); ?>" rel="bookmark noopener noreferrer"><?php echo esc_html( $cta_text ); ?></a>
-				</div>
+			<div class="<?php echo esc_html( $wrap_classes ); ?>">
+				<a class="<?php echo esc_html( $link_classes ); ?>" href="<?php echo esc_url( apply_filters( "uagb_single_post_link_{$attributes['post_type']}", get_the_permalink(), get_the_ID(), $attributes ) ); ?>" target="<?php echo esc_html( $target ); ?>" rel="bookmark noopener noreferrer"><?php echo esc_html( $cta_text ); ?></a>
 			</div>
 			<?php
 			do_action( "uagb_single_post_after_cta_{$attributes['post_type']}", get_the_ID(), $attributes );

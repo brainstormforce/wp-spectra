@@ -40,14 +40,14 @@ $selectors = array(
 	' .uagb-tabs__panel .uagb-tab:hover '                  => array(
 		'border-color' => $attr['borderHoverColor'],
 	),
-	' .uagb-tabs__panel .uagb-tab a'                    => array(
+	' .uagb-tabs__panel .uagb-tab a'                       => array(
 		'color' => $attr['headerTextColor'],
 	),
 	' .uagb-tabs__panel .uagb-tab.uagb-tabs__active'       => array(
 		'background' => $attr['activeTabBgColor'],
 	),
 
-	' .uagb-tabs__panel .uagb-tab.uagb-tabs__active a' => array(
+	' .uagb-tabs__panel .uagb-tab.uagb-tabs__active a'     => array(
 		'color' => $attr['activeTabTextColor'],
 	),
 	' .uagb-tabs__panel .uagb-tab.uagb-tabs__active .uagb-tabs__icon svg' => array(

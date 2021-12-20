@@ -1,7 +1,7 @@
 import { __ } from '@wordpress/i18n';
 export default function save() {
 	return (
-		<div className="uagb-post-grid-byline">
+		<>
 			<span className="uagb-post__author">
 				<span className="dashicons-admin-users dashicons"></span>
 				{ __( 'Author Name' ) }
@@ -19,6 +19,6 @@ export default function save() {
 				<span className="dashicons-tag dashicons"></span>
 				{ __( 'Category' ) }
 			</span>
-		</div>
+		</>
 	);
 }

@@ -1,5 +1,6 @@
 
 let loadStatus = true;
+
 window.UAGBPostCarousel = {
 	_setHeight( scope ) {
 
@@ -78,8 +79,14 @@ window.UAGBPostMasonry = {
 		if ( 'scroll' === $attr.paginationEventType ) {
 
 			window.addEventListener( 'scroll', function() {
+				
+				let postItems = $scope.querySelector( '.uagb-post__items' );
 
-				const boundingClientRect = $scope.querySelector( '.uagb-post__items' ).lastElementChild.getBoundingClientRect();
+				if ( ! postItems ) {
+					postItems = $scope
+				}
+
+				const boundingClientRect = postItems.lastElementChild.getBoundingClientRect();
 
 				const offsetTop = boundingClientRect.top + window.scrollY;
 
@@ -169,7 +176,12 @@ window.UAGBPostMasonry = {
 		  .then( ( resp ) => resp.json() )
 		  .then( function( data ) {
 
-				const element = $scope.querySelector( '.is-masonry' )
+				let element = $scope.querySelector( '.is-masonry' );
+
+				if ( ! element ) {
+					element = $scope;
+				}
+
 				const isotope = new Isotope( element, { // eslint-disable-line no-undef
 					itemSelector: 'article',
 				} );
@@ -197,18 +209,16 @@ window.UAGBPostMasonry = {
 
 // Set Carousel Height for Customiser.
 function uagb_carousel_height( id ) { // eslint-disable-line no-unused-vars
-	const wrap = document.querySelector( '#wpwrap .uagb-block-' + id );
+	const wrap = document.querySelector( '#wpwrap .is-carousel.uagb-block-' + id );
 	if( wrap ){
-		const scope = wrap.querySelectorAll( '.is-carousel' );
-		window.UAGBPostCarousel._setHeight( scope );
+		window.UAGBPostCarousel._setHeight( wrap );
 	}
 }
 
 // Unset Carousel Height for Customiser.
 function uagb_carousel_unset_height( id ) { // eslint-disable-line no-unused-vars
-	const wrap = document.querySelector( '#wpwrap .uagb-block-' + id );
+	const wrap = document.querySelector( '#wpwrap .is-carousel.uagb-block-' + id );
 	if( wrap ){
-		const scope = wrap.querySelectorAll( '.is-carousel' );
-		window.UAGBPostCarousel._unSetHeight( scope );
+		window.UAGBPostCarousel._unSetHeight( wrap );
 	}
 }

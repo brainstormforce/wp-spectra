@@ -10,7 +10,6 @@ import generateCSSUnit from '@Controls/generateCSSUnit';
 
 function styling( props ) {
 	const {
-		imgPosition,
 		borderWidth,
 		borderStyle,
 		borderColor,
@@ -145,7 +144,6 @@ function styling( props ) {
 		paddingLeftMobile,
 		mobilePaddingUnit,
 		tabletPaddingUnit,
-		contentPadding,
 		contentPaddingUnit,
 		arrowColor,
 		arrowSize,
@@ -185,28 +183,34 @@ function styling( props ) {
 	let tabletSelectors = {};
 
 	const selectors = {
-		' .uagb-post__items': {
+		'.uagb-post__items': {
 			'margin-right': generateCSSUnit( -rowGap / 2, rowGapUnit ),
 			'margin-left': generateCSSUnit( -rowGap / 2, rowGapUnit ),
 		},
-		' .uagb-post__items article': {
+		'.uagb-post__items article': {
 			'padding-right': generateCSSUnit( rowGap / 2, rowGapUnit ),
 			'padding-left': generateCSSUnit( rowGap / 2, rowGapUnit ),
 			'margin-bottom': generateCSSUnit( columnGap, columnGapUnit ),
 		},
 		' .uagb-post__inner-wrap': {
 			'background': bgColor,
-			'padding-top': generateCSSUnit( paddingTop, contentPaddingUnit ),
-			'padding-bottom': generateCSSUnit(
-				paddingBottom,
-				contentPaddingUnit
-			),
-			'padding-left': generateCSSUnit( paddingLeft, contentPaddingUnit ),
-			'padding-right': generateCSSUnit(
+			'text-align': align,
+		},
+		' .uagb-post__inner-wrap .uagb-post__text': {
+			'margin-left': generateCSSUnit( paddingLeft, contentPaddingUnit ),
+			'margin-right': generateCSSUnit(
 				paddingRight,
 				contentPaddingUnit
 			),
-			'text-align': align,
+		},
+		' .uagb-post__inner-wrap .uagb-post__text:first-child': {
+			'margin-top': generateCSSUnit( paddingTop, contentPaddingUnit ),
+		},
+		' .uagb-post__inner-wrap .uagb-post__text:last-child': {
+			'margin-bottom': generateCSSUnit(
+				paddingBottom,
+				contentPaddingUnit
+			),
 		},
 		' .uagb-post__inner-wrap .uagb-post__cta': {
 			'margin-bottom': generateCSSUnit(
@@ -247,20 +251,14 @@ function styling( props ) {
 				paginationSpacing,
 				paginationSpacingUnit
 			),
-			'text-align': paginationAlignment,
+			'justify-content': paginationAlignment,
 		},
 	};
-	if ( imgPosition !== 'background' ) {
-		selectors[
-			' .uagb-post__inner-wrap  > .uagb-post__image:first-child'
-		] = {
-			'margin-top': generateCSSUnit( -paddingTop, contentPaddingUnit ),
-			'margin-left': generateCSSUnit( -paddingLeft, contentPaddingUnit ),
-			'margin-right': generateCSSUnit(
-				-paddingRight,
-				contentPaddingUnit
-			),
-		};
+
+	if ( 'left' === paginationAlignment ) {
+		selectors[' .uagb-post-pagination-wrap']['margin-left'] = generateCSSUnit( rowGap / 2, rowGapUnit );
+	} else if ( 'right' === paginationAlignment ) {
+		selectors[' .uagb-post-pagination-wrap']['margin-right'] = generateCSSUnit( rowGap / 2, rowGapUnit );
 	}
 
 	selectors[ ' .uagb-post__title' ] = {
@@ -339,7 +337,7 @@ function styling( props ) {
 		'text-transform': excerptTransform,
 		'text-decoration': excerptDecoration,
 	};
-	selectors[ ' .uagb-post__cta' ] = {
+	selectors[ ' .uagb-post__cta .uagb-text-link' ] = {
 		'pointer-events': 'visible',
 		'color': ctaColor,
 		'font-size': generateCSSUnit( ctaFontSize, ctaFontSizeType ),
@@ -352,29 +350,30 @@ function styling( props ) {
 		'border-radius': generateCSSUnit( borderRadius, 'px' ),
 		'border-color': borderColor,
 		'border-style': borderStyle,
+	};
+	selectors[ ' .uagb-post__cta a' ] = {
+		'color': ctaColor,
+		'font-size': generateCSSUnit( ctaFontSize, ctaFontSizeType ),
 		'padding-top': generateCSSUnit( paddingBtnTop, paddingBtnUnit ),
 		'padding-bottom': generateCSSUnit(
 			paddingBtnBottom,
 			paddingBtnUnit
 		),
+		'text-transform': ctaTransform,
+		'text-decoration': ctaDecoration,
 		'padding-left': generateCSSUnit( paddingBtnLeft, paddingBtnUnit ),
 		'padding-right': generateCSSUnit( paddingBtnRight, paddingBtnUnit ),
 	};
-	selectors[ ' .uagb-post__cta a' ] = {
-		'color': ctaColor,
-		'font-size': generateCSSUnit( ctaFontSize, ctaFontSizeType ),
-		'text-transform': ctaTransform,
-		'text-decoration': ctaDecoration,
-	};
-	selectors[ ' .uagb-post__text .uagb-post__cta:hover' ] = {
+	selectors[ ' .uagb-post__text.uagb-post__cta:hover' ] = {
 		'color': ctaHColor,
 		'background': ctaBgHColor,
 		'border-color': borderHColor,
 	};
-	selectors[ ' .uagb-post__text .uagb-post__cta:hover a' ] = {
+	selectors[ ' .uagb-post__text.uagb-post__cta:hover a' ] = {
 		'color': ctaHColor,
+		'background': ctaBgHColor,
+		'border-color': borderHColor,
 	};
-
 
 	if ( true === postPagination ) {
 		if ( 'filled' === paginationLayout ) {
@@ -808,13 +807,7 @@ function styling( props ) {
 			mobilePaddingUnit
 		),
 	};
-	mobileSelectors[
-		'.uagb-post__inner-wrap  > .uagb-post__image:first-child'
-	] = {
-		'margin-top': -contentPadding + contentPaddingUnit,
-		'margin-left': -contentPadding + contentPaddingUnit,
-		'margin-right': -contentPadding + contentPaddingUnit,
-	};
+	
 	let stylingCss = '';
 
 	stylingCss = generateCSS(

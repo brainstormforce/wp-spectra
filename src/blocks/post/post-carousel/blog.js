@@ -126,16 +126,14 @@ function Blog( props ) {
 	};
 
 	const all_posts = displayPosts.map( ( post, i ) => (
-		<article key={ i }>
-			<div className="uagb-post__inner-wrap">
-				{ renderPostLayout(
-					'uagb/post-carousel',
-					post,
-					layoutConfig,
-					props.attributes,
-					props.categoriesList
-				) }
-			</div>
+		<article key={ i } className="uagb-post__inner-wrap">
+			{ renderPostLayout(
+				'uagb/post-carousel',
+				post,
+				layoutConfig,
+				props.attributes,
+				props.categoriesList
+			) }
 		</article>
 	) );
 
@@ -143,6 +141,11 @@ function Blog( props ) {
 		return (
 			<div
 				className={ classnames(
+					'is-carousel',
+					`uagb-post__columns-${ columns }`,
+					`uagb-post__columns-tablet-${ tcolumns }`,
+					`uagb-post__columns-mobile-${ mcolumns }`,
+					'uagb-post__items',
 					className,
 					'uagb-post-grid',
 					'uagb-post__arrow-outside',
@@ -153,53 +156,38 @@ function Blog( props ) {
 				) }
 				data-blog-id={ block_id }
 			>
-				<div
-					className={ classnames(
-						'is-carousel',
-						`uagb-post__columns-${ columns }`,
-						`uagb-post__columns-tablet-${ tcolumns }`,
-						`uagb-post__columns-mobile-${ mcolumns }`,
-						'uagb-post__items'
-					) }
+				<InnerBlockLayoutContextProvider
+					parentName="uagb/post-carousel"
+					parentClassName="uagb-block-grid"
 				>
-					<InnerBlockLayoutContextProvider
-						parentName="uagb/post-carousel"
-						parentClassName="uagb-block-grid"
-					>
-						{ all_posts }
-					</InnerBlockLayoutContextProvider>
-				</div>
+					{ all_posts }
+				</InnerBlockLayoutContextProvider>
 			</div>
 		);
 	}
 
 	return (
-		<div
-			className={ classnames(
-				className,
-				'uagb-post-grid',
-				'uagb-post__arrow-outside',
-				'uagb-slick-carousel',
-				`uagb-post__image-position-${ imgPosition }`,
-				`${ equalHeightClass }`,
-				`uagb-block-${ block_id }`
-			) }
-			data-blog-id={ block_id }
-			style={ 'dots' === arrowDots ? { padding: '0 0 35px 0' } : {} }
-		>
-			<Suspense fallback={ lazyLoader() }>
-				<Slider
-					className={ classnames(
-						'is-carousel',
-						`uagb-post__columns-${ columns }`,
-						'uagb-post__items'
-					) }
-					{ ...settings }
-				>
-					{ all_posts }
-				</Slider>
-			</Suspense>
-		</div>
+		<Suspense fallback={ lazyLoader() }>
+			<Slider
+				className={ classnames(
+					'is-carousel',
+					`uagb-post__columns-${ columns }`,
+					'uagb-post__items',
+					className,
+					'uagb-post-grid',
+					'uagb-post__arrow-outside',
+					'uagb-slick-carousel',
+					`uagb-post__image-position-${ imgPosition }`,
+					`${ equalHeightClass }`,
+					`uagb-block-${ block_id }`
+				) }
+				data-blog-id={ block_id }
+				style={ 'dots' === arrowDots ? { padding: '0 0 35px 0' } : {} }
+				{ ...settings }
+			>
+				{ all_posts }
+			</Slider>
+		</Suspense>
 	);
 }
 

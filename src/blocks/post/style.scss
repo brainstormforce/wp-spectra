@@ -7,8 +7,14 @@
 	margin: 0 auto;
 	position: relative;
 
+	.uagb-post__inner-wrap {
+		background-clip: content-box !important;
+	}
+
 	.uagb-post__load-more-wrap {
 		width: 100%;
+		position: absolute;
+		bottom: -30px;
 
 		.uagb-post-pagination-button {
 			cursor: pointer;
@@ -19,7 +25,7 @@
 		}
 	}
 
-	.is-grid {
+	&.is-grid {
 
 		article {
 			float: left;
@@ -32,18 +38,22 @@
 		}
 	}
 
-	.uagb-post__items {
+	&.uagb-post__items {
 		display: flex;
 		-ms-flex-wrap: wrap;
 		-webkit-flex-wrap: wrap;
 		flex-wrap: wrap;
 	}
 
-	.is-grid.uagb-post__equal-height .uagb-post__inner-wrap {
+	&.is-grid .uagb-post__inner-wrap {
 		height: 100%;
 	}
 
-	.is-masonry .uagb-post__inner-wrap {
+	&.is-grid.uagb-post__equal-height .uagb-post__inner-wrap {
+		height: auto;
+	}
+
+	&.is-masonry .uagb-post__inner-wrap {
 		height: auto;
 	}
 
@@ -63,35 +73,35 @@
 		vertical-align: bottom;
 	}
 
-	.uagb-post__columns-8 article {
+	&.uagb-post__columns-8 article {
 		width: 12.5%;
 	}
 
-	.uagb-post__columns-7 article {
+	&.uagb-post__columns-7 article {
 		width: 14.28%;
 	}
 
-	.uagb-post__columns-6 article {
+	&.uagb-post__columns-6 article {
 		width: 16.66%;
 	}
 
-	.uagb-post__columns-5 article {
+	&.uagb-post__columns-5 article {
 		width: 20%;
 	}
 
-	.uagb-post__columns-4 article {
+	&.uagb-post__columns-4 article {
 		width: 25%;
 	}
 
-	.uagb-post__columns-3 article {
-		width: 33.2%;
+	&.uagb-post__columns-3 article {
+		width: 31%;
 	}
 
-	.uagb-post__columns-2 article {
+	&.uagb-post__columns-2 article {
 		width: 50%;
 	}
 
-	.uagb-post__columns-1 article {
+	&.uagb-post__columns-1 article {
 		width: 100%;
 	}
 
@@ -139,11 +149,8 @@
 	.uagb-post-grid-byline {
 		text-transform: capitalize;
 		font-size: 11px;
+		letter-spacing: 1px;
 		margin-bottom: 15px;
-	}
-
-	.uagb-post-grid-byline > * {
-		margin-right: 10px;
 	}
 
 	.uagb-post-grid-byline a,
@@ -168,6 +175,7 @@
 		&:not(:last-child)::after {
 			content: "\B7";
 			vertical-align: middle;
+			align-self: center;
 			margin: 0 5px;
 			line-height: 1;
 		}
@@ -326,9 +334,9 @@
 	right: auto;
 }
 
-.uagb-post-grid .is-grid article,
-.uagb-post-grid .is-masonry article,
-.uagb-post-grid .is-carousel article {
+.uagb-post-grid.is-grid article,
+.uagb-post-grid.is-masonry article,
+.uagb-post-grid.is-carousel article {
 	box-sizing: border-box;
 }
 
@@ -358,23 +366,23 @@
 		right: auto;
 	}
 
-	.uagb-post-grid .uagb-post__columns-tablet-1 article {
+	.uagb-post-grid.uagb-post__columns-tablet-1 article {
 		width: 100%;
 	}
 
-	.uagb-post-grid .uagb-post__columns-tablet-2 article {
+	.uagb-post-grid.uagb-post__columns-tablet-2 article {
 		width: 50%;
 	}
 
-	.uagb-post-grid .uagb-post__columns-tablet-3 article {
-		width: 33.2%;
+	.uagb-post-grid.uagb-post__columns-tablet-3 article {
+		width: 31%;
 	}
 
-	.uagb-post-grid .uagb-post__columns-tablet-4 article {
+	.uagb-post-grid.uagb-post__columns-tablet-4 article {
 		width: 25%;
 	}
 
-	.uagb-post-grid .uagb-post__columns-tablet-5 article {
+	.uagb-post-grid.uagb-post__columns-tablet-5 article {
 		width: 20%;
 	}
 
@@ -393,35 +401,35 @@
 
 @media (max-width: 767px) {
 
-	.uagb-post-grid .uagb-post__columns-mobile-1 article {
+	.uagb-post-grid.uagb-post__columns-mobile-1 article {
 		width: 100%;
 	}
 
-	.uagb-post-grid .uagb-post__columns-mobile-2 article {
+	.uagb-post-grid.uagb-post__columns-mobile-2 article {
 		width: 50%;
 	}
 
-	.uagb-post-grid .uagb-post__columns-mobile-3 article {
-		width: 33.2%;
+	.uagb-post-grid.uagb-post__columns-mobile-3 article {
+		width: 31%;
 	}
 
-	.uagb-post-grid .uagb-post__columns-mobile-4 article {
+	.uagb-post-grid.uagb-post__columns-mobile-4 article {
 		width: 25%;
 	}
 
-	.uagb-post-grid .uagb-post__columns-mobile-5 article {
+	.uagb-post-grid.uagb-post__columns-mobile-5 article {
 		width: 20%;
 	}
 
-	.uagb-post-grid .uagb-post__columns-mobile-6 article {
+	.uagb-post-grid.uagb-post__columns-mobile-6 article {
 		width: 16.66%;
 	}
 
-	.uagb-post-grid .uagb-post__columns-tablet-7 article {
+	.uagb-post-grid.uagb-post__columns-tablet-7 article {
 		width: 14.28%;
 	}
 
-	.uagb-post-grid .uagb-post__columns-tablet-8 article {
+	.uagb-post-grid.uagb-post__columns-tablet-8 article {
 		width: 12.5%;
 	}
 }
@@ -435,11 +443,15 @@
 
 .uagb-post-pagination-wrap {
 
+	display: flex;
+	width: 100%;
+
 	a.page-numbers,
 	span.page-numbers.current {
 		padding: 5px 10px;
 		margin: 0;
-		display: inline-block;
+		display: flex;
+		margin-right: 4px;
 	}
 }
 

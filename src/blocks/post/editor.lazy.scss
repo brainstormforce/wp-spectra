@@ -4,6 +4,10 @@
 
 .uagb-post-grid {
 
+	.uagb-post__inner-wrap {
+		background-clip: content-box !important;
+	}
+
 	h2 a {
 		text-decoration: none;
 	}
@@ -94,6 +98,13 @@
 		.uagb-post__columns-tablet-8 article {
 			width: 12.5%;
 		}
+	}
+
+	&.uagb-post__items {
+		display: flex;
+		-ms-flex-wrap: wrap;
+		-webkit-flex-wrap: wrap;
+		flex-wrap: wrap;
 	}
 }
 

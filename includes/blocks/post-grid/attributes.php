@@ -66,7 +66,7 @@ return array(
 	'metaColor'                   => '',
 	'excerptColor'                => '',
 	'ctaColor'                    => '',
-	'ctaBgColor'                  => '#333333',
+	'ctaBgColor'                  => '',
 	'ctaHColor'                   => '',
 	'ctaBgHColor'                 => '',
 	'contentPadding'              => '20',
