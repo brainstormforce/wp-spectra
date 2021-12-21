@@ -24,6 +24,18 @@ $btnPaddingLeft   = isset( $attr['paddingBtnLeft'] ) ? $attr['paddingBtnLeft'] :
 $btnPaddingRight  = isset( $attr['paddingBtnRight'] ) ? $attr['paddingBtnRight'] : $attr['ctaBtnHrPadding'];
 
 $selectors = array(
+	' .uagb-ifb-icon'                       => array(
+		'height'      => $icon_size,
+		'width'       => $icon_size,
+		'line-height' => $icon_size,
+	),
+	' .uagb-ifb-icon > span'                => array(
+		'font-size'   => $icon_size,
+		'height'      => $icon_size,
+		'width'       => $icon_size,
+		'line-height' => $icon_size,
+		'color'       => $attr['iconColor'],
+	),
 	'.uagb-infobox__content-wrap > svg'                    => array(
 		'height'        => $icon_size,
 		'width'         => $icon_size,
@@ -88,6 +100,12 @@ $selectors = array(
 		'fill' => $attr['iconHover'],
 	),
 	// Img Style.
+	' .uagb-infobox__content-wrap .uagb-ifb-imgicon-wrap' => array(
+		'margin-left'   => UAGB_Helper::get_css_value( $attr['iconLeftMargin'], 'px' ),
+		'margin-right'  => UAGB_Helper::get_css_value( $attr['iconRightMargin'], 'px' ),
+		'margin-top'    => UAGB_Helper::get_css_value( $attr['iconTopMargin'], 'px' ),
+		'margin-bottom' => UAGB_Helper::get_css_value( $attr['iconBottomMargin'], 'px' ),
+	),
 	'.uagb-infobox__content-wrap img'                      => array(
 		'margin-left'   => UAGB_Helper::get_css_value( $attr['iconLeftMargin'], 'px' ),
 		'margin-right'  => UAGB_Helper::get_css_value( $attr['iconRightMargin'], 'px' ),
@@ -134,6 +152,12 @@ $selectors = array(
 	),
 	// Seperator.
 	'.uagb-infobox__content-wrap .uagb-ifb-separator'      => array(
+		'width'            => UAGB_Helper::get_css_value( $attr['seperatorWidth'], $attr['separatorWidthType'] ),
+		'border-top-width' => UAGB_Helper::get_css_value( $attr['seperatorThickness'], $attr['thicknessUnit'] ),
+		'border-top-color' => $attr['seperatorColor'],
+		'border-top-style' => $attr['seperatorStyle'],
+	),
+	' .uagb-infobox__content-wrap .uagb-ifb-separator'      => array(
 		'width'            => UAGB_Helper::get_css_value( $attr['seperatorWidth'], $attr['separatorWidthType'] ),
 		'border-top-width' => UAGB_Helper::get_css_value( $attr['seperatorThickness'], $attr['thicknessUnit'] ),
 		'border-top-color' => $attr['seperatorColor'],
@@ -252,8 +276,8 @@ if ( 'above-title' === $attr['iconimgPosition'] || 'below-title' === $attr['icon
 	$selectors['.uagb-infobox__content-wrap']                         = array(
 		'text-align' => $attr['headingAlign'],
 	);
-	$selectors['.uagb-infobox__content-wrap .uagb-ifb-content > svg'] = array(
-		'width' => '100%',
+	$selectors[' .uagb-infobox__content-wrap']                         = array(
+		'text-align' => $attr['headingAlign'],
 	);
 }
 $m_selectors = array(

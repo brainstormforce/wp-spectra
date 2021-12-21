@@ -411,9 +411,6 @@ function InfoBoxStyle( props ) {
 		selectors[ '.uagb-infobox__content-wrap' ] = {
 			'text-align': headingAlign,
 		};
-		selectors[ '.uagb-infobox__content-wrap .uagb-ifb-content > svg' ] = {
-			'width': '100%',
-		};
 	}
 
 	const tabletSelectors = {

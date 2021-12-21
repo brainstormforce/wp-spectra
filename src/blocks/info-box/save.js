@@ -43,7 +43,7 @@ export default function save( props ) {
 
 	let iconImageHtml = isImage;
 	let position = seperatorPosition;
-	const seperatorHtml = <InfoBoxSeparator attributes={ props.attributes } />;
+	const seperatorHtml = <InfoBoxSeparator attributes={ props.attributes } />
 	let showSeperator = true;
 
 	if (

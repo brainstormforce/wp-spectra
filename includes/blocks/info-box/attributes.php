@@ -64,7 +64,7 @@ return array(
 	'block_id'                => '',
 	'iconHover'               => '',
 	'iconimgBorderRadius'     => '0',
-	'seperatorStyle'          => 'none',
+	'seperatorStyle'          => 'solid',
 	'seperatorWidth'          => '30',
 	'seperatorColor'          => '#333',
 	'seperatorThickness'      => '2',

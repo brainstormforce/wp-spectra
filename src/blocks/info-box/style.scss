@@ -261,6 +261,36 @@ a.uagb-infobox-link-wrap {
 	font-style: normal;
 }
 
+/* Left/Right of Title */
+.uagb-infobox-icon-left-title .uagb-ifb-icon-wrap,
+.uagb-infobox-icon-left .uagb-ifb-icon-wrap {
+	margin-right: 10px;
+}
+
+.uagb-infobox-icon-right-title .uagb-ifb-icon-wrap,
+.uagb-infobox-icon-right .uagb-ifb-icon-wrap {
+	margin-left: 10px;
+}
+
+/* Left/Right */
+.uagb-infobox-icon-left .uagb-ifb-left-right-wrap,
+.uagb-infobox-icon-right .uagb-ifb-left-right-wrap,
+.uagb-infobox-icon-left-title .uagb-ifb-left-title-image,
+.uagb-infobox-icon-right-title .uagb-ifb-right-title-image {
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: flex;
+}
+
+.uagb-infobox-icon-right .uagb-ifb-left-right-wrap,
+.uagb-infobox-icon-right-title .uagb-ifb-right-title-image {
+	-webkit-box-pack: end;
+	-ms-flex-pack: end;
+	-webkit-justify-content: flex-end;
+	-moz-box-pack: end;
+	justify-content: flex-end;
+}
+
 a.uagb-infbox__link-to-all {
 	position: absolute;
 	top: 0;
@@ -404,4 +434,10 @@ a.uagb-infbox__link-to-all {
 	.uagb-infobox-icon-left-title .uagb-ifb-separator {
 		margin: 10px 0;
 	}
+}
+
+.uagb-ifb-icon svg {
+	width: inherit;
+	height: inherit;
+	vertical-align: middle;
 }
