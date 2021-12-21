@@ -7,8 +7,7 @@
 		list-style-type: none;
 		display: inherit;
 
-		li.uagb-tab {
-			float: left;
+		li.uagb-tab a {
 			position: relative;
 			padding: 6px 12px;
 		}
@@ -18,8 +17,10 @@
 		}
 
 		.uagb-tabs__icon-position-left {
-			display: inline-flex;
+			display: flex;
+			display: -webkit-flex;
 			align-items: center;
+			justify-content: center;
 
 			.uagb-tabs__icon {
 				margin-top: 3px;

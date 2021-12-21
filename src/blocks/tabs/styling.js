@@ -110,6 +110,8 @@ function styling( props ) {
 		' > .uagb-tabs__panel .uagb-tab': {
 			'background': headerBgColor,
 			'text-align': titleAlign,
+		},
+		' > .uagb-tabs__panel .uagb-tab a': {
 			'padding-top': generateCSSUnit(
 				tabTitleTopPadding,
 				tabTitlePaddingUnit
@@ -267,7 +269,7 @@ function styling( props ) {
 				titleLineHeightType
 			),
 		},
-		' > .uagb-tabs__panel .uagb-tab': {
+		' > .uagb-tabs__panel .uagb-tab a': {
 			'padding-top': generateCSSUnit(
 				tabTitleTopPaddingTablet,
 				tablettabTitlePaddingUnit
@@ -347,7 +349,7 @@ function styling( props ) {
 				titleLineHeightType
 			),
 		},
-		' > .uagb-tabs__panel .uagb-tab': {
+		' > .uagb-tabs__panel .uagb-tab a': {
 			'padding-top': generateCSSUnit(
 				tabTitleTopPaddingMobile,
 				mobiletabTitlePaddingUnit
