@@ -25,16 +25,6 @@
 	/* for backward */
 	.uagb-blockquote__skin-quotation {
 
-		.uagb-blockquote__icon-wrap {
-			position: relative;
-			display: inline-block;
-			z-index: 1;
-			background: #333;
-			padding: 10px;
-			border-radius: 100%;
-			margin-right: 10px;
-		}
-
 		blockquote.uagb-blockquote {
 			margin: 0;
 			padding: 0;
@@ -49,6 +39,11 @@
 			border-top: 0 none;
 			border-bottom: 0 none;
 			font-style: normal;
+		}
+
+		&.uagb-blockquote__style-style_2 .uagb-blockquote__icon-wrap {
+			display: inline-block;
+			float: left;
 		}
 	}
 
@@ -90,15 +85,23 @@
 		align-self: center;
 	}
 
-	.uagb-blockquote__with-tweet .uagb-blockquote footer {
-		display: -webkit-box;
-		display: -webkit-flex;
-		display: -ms-flexbox;
-		display: flex;
-		-webkit-box-pack: justify;
-		-webkit-justify-content: space-between;
-		-ms-flex-pack: justify;
-		justify-content: space-between;
+	.uagb-blockquote__with-tweet {
+
+		.uagb-blockquote footer {
+			display: -webkit-box;
+			display: -webkit-flex;
+			display: -ms-flexbox;
+			display: flex;
+			-webkit-box-pack: justify;
+			-webkit-justify-content: space-between;
+			-ms-flex-pack: justify;
+			justify-content: space-between;
+		}
+
+		.uagb-blockquote__author-wrap.uagb-blockquote__author-at-top {
+			width: auto;
+			align-items: center;
+		}
 	}
 
 	/* end backward */
@@ -301,6 +304,7 @@
 		display: flex;
 		flex-direction: row;
 		align-self: center;
+		align-items: center;
 
 		img {
 			width: 50px;
@@ -363,19 +367,25 @@
 	}
 
 	/* Left Image */
-	.uagb-blockquote__author-wrap.uagb-blockquote__author-at-right {
-		-webkit-flex-direction: row-reverse;
-		-ms-flex-direction: row-reverse;
-		flex-direction: row-reverse;
-	}
 
 	&.uagb-blockquote__align-right .uagb-blockquote__author-wrap.uagb-blockquote__author-at-top {
 		text-align: right;
 	}
 
-	.uagb-blockquote__author-wrap.uagb-blockquote__author-at-right .uagb-blockquote__author-wrap img {
-		margin-right: 0;
-		margin-left: 10px;
+	.uagb-blockquote__author-wrap.uagb-blockquote__author-at-right {
+		-webkit-flex-direction: row-reverse;
+		-ms-flex-direction: row-reverse;
+		flex-direction: row-reverse;
+
+		.uagb-blockquote__author-image img {
+			margin-right: 0;
+			margin-left: 10px;
+		}
+
+		img {
+			margin-right: 0;
+			margin-left: 10px;
+		}
 	}
 }
 

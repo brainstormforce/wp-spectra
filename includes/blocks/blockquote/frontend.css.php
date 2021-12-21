@@ -56,6 +56,20 @@ $selectors = array(
 		'padding-bottom'    => UAGB_Helper::get_css_value( $attr['verticalPadding'], $attr['verticalPaddingUnit'] ),
 	),
 
+	' .uagb-blockquote__skin-quotation .uagb-blockquote__icon-wrap' => array( // For Backword.
+		'background'    => $attr['quoteBgColor'],
+		'border-radius' => UAGB_Helper::get_css_value( $attr['quoteBorderRadius'], '%' ),
+		'margin-top'    => UAGB_Helper::get_css_value( $attr['quoteTopMargin'], 'px' ),
+		'margin-bottom' => UAGB_Helper::get_css_value( $attr['quoteBottomMargin'], 'px' ),
+		'margin-left'   => UAGB_Helper::get_css_value( $attr['quoteLeftMargin'], 'px' ),
+		'margin-right'  => UAGB_Helper::get_css_value( $attr['quoteRightMargin'], 'px' ),
+		'padding'       => UAGB_Helper::get_css_value( $attr['quotePadding'], $attr['quotePaddingType'] ),
+	),
+	' .uagb-blockquote__skin-quotation .uagb-blockquote__icon' => array( // For Backword.
+		'width'  => UAGB_Helper::get_css_value( $attr['quoteSize'], $attr['quoteSizeType'] ),
+		'height' => UAGB_Helper::get_css_value( $attr['quoteSize'], $attr['quoteSizeType'] ),
+	),
+
 	'.uagb-blockquote__skin-quotation .uagb-blockquote__icon' => array(
 		'background'    => $attr['quoteBgColor'],
 		'border-radius' => UAGB_Helper::get_css_value( $attr['quoteBorderRadius'], $attr['quoteBorderRadiusUnit'] ),
@@ -64,10 +78,6 @@ $selectors = array(
 		'margin-left'   => UAGB_Helper::get_css_value( $attr['quoteLeftMargin'], $attr['quoteUnit'] ),
 		'margin-right'  => UAGB_Helper::get_css_value( $attr['quoteRightMargin'], $attr['quoteUnit'] ),
 		'padding'       => UAGB_Helper::get_css_value( $attr['quotePadding'], $attr['quotePaddingType'] ),
-	),
-	'  .uagb-blockquote__skin-quotation .uagb-blockquote__icon' => array(
-		'width'  => UAGB_Helper::get_css_value( $attr['quoteSize'], $attr['quoteSizeType'] ),
-		'height' => UAGB_Helper::get_css_value( $attr['quoteSize'], $attr['quoteSizeType'] ),
 	),
 	'.uagb-blockquote__skin-quotation .uagb-blockquote__icon svg' => array(
 		'width'  => UAGB_Helper::get_css_value( $attr['quoteSize'], $attr['quoteSizeType'] ),
