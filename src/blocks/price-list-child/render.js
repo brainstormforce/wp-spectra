@@ -21,10 +21,8 @@ const Render = ( props ) => {
 	const parentAttributes = select( 'core/block-editor' ).getBlockAttributes(
 		parentClientId
 	);
-
-	const position = parentAttributes
-		? parentAttributes.imagePosition
-		: imagePosition;
+	
+	const position = ( parentAttributes ) ? ( ( parentAttributes.imagePosition ) ?  parentAttributes.imagePosition : imagePosition ) : imagePosition; // eslint-disable-line no-nested-ternary
 
 	return (
 		<div
