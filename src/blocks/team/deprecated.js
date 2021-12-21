@@ -287,14 +287,6 @@ const attributes = {
 		type: 'string',
 		default: 'px',
 	},
-	imageLeftMargin: {
-		type: 'string',
-		default: 'auto',
-	},
-	imageRightMargin: {
-		type: 'string',
-		default: 'auto',
-	},
 }
 
 function social_html( icon, link, target ) {

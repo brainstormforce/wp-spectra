@@ -305,11 +305,9 @@ const attributes = {
 	},
 	imageLeftMargin: {
 		type: 'number',
-		default: 'auto',
 	},
 	imageRightMargin: {
 		type: 'number',
-		default: 'auto',
 	},
 	imageTopMargin: {
 		type: 'number',

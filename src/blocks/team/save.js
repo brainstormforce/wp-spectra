@@ -64,18 +64,11 @@ export default function save( props ) {
 
 	if ( '' !== img_url ) {
 		image_html = (
-			<div
-				className={ classnames(
-					'uagb-team__image-wrap',
-					`uagb-team__image-crop-${ imgStyle }`
-				) }
-			>
 				<img
-					className=""
+					className={`uagb-team__image-crop-${ imgStyle }`}
 					src={ img_url }
 					alt={ image.alt ? image.alt : '' }
 				/>
-			</div>
 		);
 	}
 
@@ -83,21 +76,16 @@ export default function save( props ) {
 		<div
 			className={ classnames(
 				props.className,
-				'uagb-team',
-				'uagb-team__outer-wrap',
 				`uagb-team__image-position-${ imgPosition }`,
 				`uagb-team__align-${ align }`,
 				`uagb-team__stack-${ stack }`,
 				`uagb-block-${ block_id }`
 			) }
 		>
-			<div className="uagb-team__wrap">
 				{ imgPosition === 'left' && image_html }
 
 				<div className="uagb-team__content">
 					{ imgPosition === 'above' && image_html }
-
-					<div className="uagb-team__title-wrap">
 						<RichText.Content
 							tagName={ tag }
 							value={ title }
@@ -108,17 +96,12 @@ export default function save( props ) {
 							value={ prefix }
 							className="uagb-team__prefix"
 						/>
-					</div>
-
-					<div className="uagb-team__desc-wrap">
 						<RichText.Content
 							tagName="p"
 							value={ description_text }
 							className="uagb-team__desc"
 						/>
-					</div>
 					{ socialEnable && (
-						<div className="uagb-team__social-icon-wrap">
 							<ul className="uagb-team__social-list">
 								{ '' !== twitterIcon &&
 									social_html(
@@ -145,12 +128,10 @@ export default function save( props ) {
 										socialTarget
 									) }
 							</ul>
-						</div>
 					) }
 				</div>
 
 				{ imgPosition === 'right' && image_html }
-			</div>
 		</div>
 	);
 }

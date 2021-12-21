@@ -8,6 +8,7 @@ import generateCSSUnit from '@Controls/generateCSSUnit';
 function styling( props ) {
 	const {
 		tag,
+		align,
 		titleColor,
 		prefixColor,
 		descColor,
@@ -77,31 +78,6 @@ function styling( props ) {
 	let tabletSelectors = {};
 	let mobileSelectors = {};
 
-	const autoImageLeftMargin =
-	undefined === imageLeftMargin || 'auto' === imageLeftMargin 
-			? 'auto'
-			: generateCSSUnit( imageLeftMargin, imageMarginUnit );
-	const autoImageRightMargin =
-	undefined === imageRightMargin || 'auto' === imageRightMargin
-			? 'auto'
-			: generateCSSUnit( imageRightMargin, imageMarginUnit );
-	const autoImageLeftMarginMobile =
-	undefined === imageMarginLeftMobile || 'auto' === imageMarginLeftMobile
-			? 'auto'
-			: generateCSSUnit( imageMarginLeftMobile, mobileImageMarginUnit );
-	const autoImageRightMarginMobile =
-	undefined === imageMarginRightMobile || 'auto' === imageMarginRightMobile
-			? 'auto'
-			: generateCSSUnit( imageMarginRightMobile, mobileImageMarginUnit );
-	const autoImageLeftMarginTablet =
-	undefined === imageMarginLeftTablet || 'auto' === imageMarginLeftTablet
-			? 'auto'
-			: generateCSSUnit( imageMarginLeftTablet, tabletImageMarginUnit );
-	const autoImageRightMarginTablet =
-	undefined === imageMarginRightTablet || 'auto' === imageMarginRightTablet
-			? 'auto'
-			: generateCSSUnit( imageMarginRightTablet, tabletImageMarginUnit );
-
 	const selectors = {
 		' p.uagb-team__desc.block-editor-rich-text__editable': {
 			'font-size': generateCSSUnit( descFontSize, descFontSizeType ),
@@ -116,6 +92,7 @@ function styling( props ) {
 			'font-weight': descFontWeight,
 			'color': descColor,
 			'margin-bottom': generateCSSUnit( descSpace, 'px' ),
+			'margin-top': generateCSSUnit( prefixSpace, 'px' ),
 		},
 		' .rich-text.block-editor-rich-text__editable.uagb-team__prefix': {
 			'font-family': prefixFontFamily,
@@ -129,9 +106,6 @@ function styling( props ) {
 				prefixLineHeightType
 			),
 			'color': prefixColor,
-		},
-		' .uagb-team__desc-wrap': {
-			'margin-top': generateCSSUnit( prefixSpace, 'px' ),
 		},
 		' .uagb-team__social-icon a': {
 			'color': socialColor,
@@ -174,21 +148,44 @@ function styling( props ) {
 			'margin-left': generateCSSUnit( socialSpace, 'px' ),
 			'margin-right': '0',
 		},
-		' .uagb-team__image-wrap': {
+		' .uagb-team__image-wrap': { // For Backword.
 			'margin-top': generateCSSUnit( imageTopMargin, imageMarginUnit ),
 			'margin-bottom': generateCSSUnit(
 				imageBottomMargin,
 				imageMarginUnit
 			),
-			'margin-left': autoImageLeftMargin,
-			'margin-right': autoImageRightMargin,
+			'margin-left': generateCSSUnit( imageLeftMargin, imageMarginUnit ),
+			'margin-right': generateCSSUnit( imageRightMargin, imageMarginUnit ),
+			'width': generateCSSUnit( imgWidth, 'px' ),
+		},
+		' img': { 
+			'margin-top': generateCSSUnit( imageTopMargin, imageMarginUnit ),
+			'margin-bottom': generateCSSUnit(
+				imageBottomMargin,
+				imageMarginUnit
+			),
+			'margin-left': generateCSSUnit( imageLeftMargin, imageMarginUnit ),
+			'margin-right': generateCSSUnit( imageRightMargin, imageMarginUnit ),
 			'width': generateCSSUnit( imgWidth, 'px' ),
 		},
 	};
 
+	if ( 'above' === imgPosition ) {
+		if ( 'center' === align ) {
+			selectors[' img']['margin-left'] = 'auto';
+			selectors[' img']['margin-right'] = 'auto';
+		} else if ( 'left' === align ) {
+			selectors[' img']['margin-right'] = 'auto';
+		} else if ( 'right' === align ) {
+			selectors[' img']['margin-left'] = 'auto';
+		}
+	}
+
 	if ( 'above' !== imgPosition ) {
 		if ( 'middle' === imgAlign ) {
-			selectors[ ' .uagb-team__image-wrap' ][ 'align-self' ] = 'center';
+			selectors[ ' img' ][ 'align-self' ] = 'center';
+		} else {
+			selectors[ ' img' ][ 'align-self' ] = 'flex-start';
 		}
 	}
 
@@ -246,8 +243,8 @@ function styling( props ) {
 				imageMarginBottomMobile,
 				mobileImageMarginUnit
 			),
-			'margin-left': autoImageLeftMarginMobile,
-			'margin-right': autoImageRightMarginMobile,
+			'margin-left': generateCSSUnit( imageMarginLeftMobile, mobileImageMarginUnit ),
+			'margin-right': generateCSSUnit( imageMarginRightMobile, mobileImageMarginUnit ),
 		},
 	};
 
@@ -289,8 +286,8 @@ function styling( props ) {
 				imageMarginBottomTablet,
 				tabletImageMarginUnit
 			),
-			'margin-left': autoImageLeftMarginTablet,
-			'margin-right': autoImageRightMarginTablet,
+			'margin-left': generateCSSUnit( imageMarginLeftTablet, tabletImageMarginUnit ),
+			'margin-right': generateCSSUnit( imageMarginRightTablet, tabletImageMarginUnit ),
 		},
 	};
 
