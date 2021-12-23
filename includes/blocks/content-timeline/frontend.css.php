@@ -27,23 +27,19 @@ $right_padding  = isset( $attr['rightPadding'] ) ? $attr['rightPadding'] : $attr
 $connector_size = UAGB_Helper::get_css_value( $attr['connectorBgsize'], 'px' );
 
 $selectors = array(
-	' .uagb-timeline-content .uagb-timeline__heading'      => array(
-		'text-align' => $attr['align'],
-		'color'      => $attr['headingColor'],
-	),
-	' .uagb-timeline__heading-text'                        => array(
+	' .uagb-timeline__heading'                             => array(
+		'text-align'    => $attr['align'],
+		'color'         => $attr['headingColor'],
 		'margin-bottom' => UAGB_Helper::get_css_value( $attr['headSpace'], 'px' ),
 	),
-	' .uagb-timeline__main .uagb-timeline__marker.uagb-timeline__in-view-icon .uagb-timeline__icon-new' => array(
+	' .uagb-timeline__marker.uagb-timeline__in-view-icon svg' => array(
+		'fill'  => $attr['iconFocus'],
 		'color' => $attr['iconFocus'],
 	),
-	' .uagb-timeline__main .uagb-timeline__marker.uagb-timeline__in-view-icon .uagb-timeline__icon-new svg' => array(
-		'fill' => $attr['iconFocus'],
-	),
 	' .uagb-timeline__heading-text'                        => array(
 		'margin-bottom' => UAGB_Helper::get_css_value( $attr['headSpace'], 'px' ),
 	),
-	' .uagb-timeline-content .uagb-timeline-desc-content'  => array(
+	' .uagb-timeline-desc-content'                         => array(
 		'text-align' => $attr['align'],
 		'color'      => $attr['subHeadingColor'],
 	),
@@ -174,16 +170,14 @@ $selectors = array(
 		'padding-top'      => UAGB_Helper::get_css_value( $top_padding, $attr['paddingUnit'] ),
 		'padding-bottom'   => UAGB_Helper::get_css_value( $bottom_padding, $attr['paddingUnit'] ),
 	),
-	' .uagb-timeline__main .uagb-timeline__icon-new'       => array(
+	' .uagb-timeline__marker svg'                          => array(
 		'color' => $attr['iconColor'],
 		'width' => UAGB_Helper::get_css_value( $attr['iconSize'], 'px' ),
+		'fill'  => $attr['iconColor'],
 	),
-	' .uagb-timeline__main .uagb-timeline__marker.uagb-timeline__in-view-icon' => array(
+	' .uagb-timeline__marker.uagb-timeline__in-view-icon'  => array(
 		'background'   => $attr['iconBgFocus'],
 		'border-color' => $attr['borderFocus'],
-	),
-	' .uagb-timeline__main .uagb-timeline__icon-new svg'   => array(
-		'fill' => $attr['iconColor'],
 	),
 );
 
@@ -254,4 +248,4 @@ $selectors = array(
 	$combined_selectors = UAGB_Helper::get_typography_css( $attr, 'date', ' .uagb-timeline__date-new', $combined_selectors );
 	$combined_selectors = UAGB_Helper::get_typography_css( $attr, 'date', ' .uagb-timeline__date-hide.uagb-timeline__date-inner', $combined_selectors );
 	$combined_selectors = UAGB_Helper::get_typography_css( $attr, 'subHead', ' .uagb-timeline-desc-content', $combined_selectors );
-	return UAGB_Helper::generate_all_css( $combined_selectors, $base_selector . $id );
+	return UAGB_Helper::generate_all_css( $combined_selectors, $base_selector . $id . '.uagb-timeline__outer-wrap' );

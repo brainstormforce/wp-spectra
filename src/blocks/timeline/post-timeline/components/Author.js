@@ -10,7 +10,7 @@ const Author = ( props ) => {
 		<>
 			{ attributes.displayPostAuthor &&
 				undefined !== post.uagb_author_info && (
-					<div className="uagb-timeline__author">
+					<>
 						<span className="dashicons-admin-users dashicons"></span>
 						<a
 							className="uagb-timeline__author-link"
@@ -20,7 +20,7 @@ const Author = ( props ) => {
 						>
 							{ post.uagb_author_info.display_name }
 						</a>
-					</div>
+					</>
 				) }
 		</>
 	);

@@ -16,18 +16,18 @@ $selectors = array(
 	' .uagb-timeline__heading'                 => array(
 		'text-align' => $attr['align'],
 	),
-	' .uagb-timeline__author'                  => array(
-		'text-align'    => $attr['align'],
-		'margin-bottom' => UAGB_Helper::get_css_value( $attr['authorSpace'], 'px' ),
-	),
 	' .uagb-timeline__link_parent'             => array(
 		'text-align' => $attr['align'],
 	),
 	' .uagb-timeline__image a'                 => array(
 		'text-align' => $attr['align'],
 	),
+	' a.uagb-timeline__image'                  => array(
+		'text-align' => $attr['align'],
+	),
 	' .uagb-timeline__author-link'             => array(
-		'color' => $attr['authorColor'],
+		'color'      => $attr['authorColor'],
+		'text-align' => $attr['align'],
 	),
 	' .dashicons-admin-users'                  => array(
 		'color'       => $attr['authorColor'],
@@ -38,8 +38,13 @@ $selectors = array(
 	' .uagb-timeline__link'                    => array(
 		'color'            => $attr['ctaColor'],
 		'background-color' => $attr['ctaBackground'],
+		'text-align'       => $attr['align'],
 	),
 	' .uagb-content .uagb-timeline__heading a' => array(
+		'text-align' => $attr['align'],
+		'color'      => $attr['headingColor'],
+	),
+	' .uagb-timeline__heading a'               => array(
 		'text-align' => $attr['align'],
 		'color'      => $attr['headingColor'],
 	),
@@ -48,6 +53,7 @@ $selectors = array(
 	),
 	'.uagb_timeline__cta-enable .uagb-timeline-desc-content' => array(
 		'margin-bottom' => UAGB_Helper::get_css_value( $attr['contentSpace'], 'px' ),
+		'margin-top'    => UAGB_Helper::get_css_value( $attr['authorSpace'], 'px' ),
 	),
 	' .uagb-content'                           => array(
 		'padding' => UAGB_Helper::get_css_value( $attr['contentPadding'], 'px' ),
@@ -62,13 +68,19 @@ $t_selectors = array(
 		'font-size'   => UAGB_Helper::get_css_value( $attr['authorFontSizeTablet'], $attr['authorFontSizeType'] ),
 		'line-height' => UAGB_Helper::get_css_value( $attr['authorLineHeightTablet'], $attr['authorLineHeightType'] ),
 	),
-	'.uagb-timeline__center-block.uagb-timeline__responsive-tablet .uagb-timeline__author' => array(
+	'.uagb-timeline__center-block.uagb-timeline__responsive-tablet .uagb-timeline__author-link' => array(
 		'text-align' => 'left',
 	),
 	'.uagb-timeline__center-block.uagb-timeline__responsive-tablet .uagb-timeline__link_parent' => array(
 		'text-align' => 'left',
 	),
+	'.uagb-timeline__center-block.uagb-timeline__responsive-tablet .uagb-timeline__link' => array(
+		'text-align' => 'left',
+	),
 	'.uagb-timeline__center-block.uagb-timeline__responsive-tablet .uagb-timeline__image a' => array(
+		'text-align' => 'left',
+	),
+	'.uagb-timeline__center-block.uagb-timeline__responsive-tablet a.uagb-timeline__image' => array(
 		'text-align' => 'left',
 	),
 );
@@ -85,13 +97,19 @@ $m_selectors = array(
 	' .uagb-timeline__heading' => array(
 		'text-align' => $attr['align'],
 	),
-	'.uagb-timeline__center-block.uagb-timeline__responsive-tablet .uagb-timeline__author' => array(
+	'.uagb-timeline__center-block.uagb-timeline__responsive-tablet .uagb-timeline__author-link' => array(
 		'text-align' => 'left',
 	),
 	'.uagb-timeline__center-block.uagb-timeline__responsive-tablet .uagb-timeline__link_parent' => array(
 		'text-align' => 'left',
 	),
+	'.uagb-timeline__center-block.uagb-timeline__responsive-tablet .uagb-timeline__link' => array(
+		'text-align' => 'left',
+	),
 	'.uagb-timeline__center-block.uagb-timeline__responsive-mobile .uagb-timeline__image a' => array(
+		'text-align' => 'left',
+	),
+	'.uagb-timeline__center-block.uagb-timeline__responsive-mobile a.uagb-timeline__image' => array(
 		'text-align' => 'left',
 	),
 );
@@ -112,4 +130,4 @@ $combined_selectors = UAGB_Helper::get_typography_css( $attr, 'author', ' .uagb-
 $combined_selectors = UAGB_Helper::get_typography_css( $attr, 'cta', ' .uagb-timeline__link', $combined_selectors );
 $combined_selectors = UAGB_Helper::get_typography_css( $attr, 'head', ' .uagb-timeline__heading a', $combined_selectors );
 
-return UAGB_Helper::generate_all_css( $combined_selectors, '.uagb-block-' . $id );
+return UAGB_Helper::generate_all_css( $combined_selectors, '.uagb-block-' . $id . '.uagb-timeline__outer-wrap' );

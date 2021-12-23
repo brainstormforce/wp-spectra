@@ -1,61 +1,61 @@
-// Listen for events.
-window.addEventListener( 'load', uagbTimelineInit );
+window.addEventListener( 'DOMContentLoaded', uagbTimelineInit );
 window.addEventListener( 'resize', uagbTimelineInit );
 window.addEventListener( 'scroll', uagbTimelineInit );
-
+document.addEventListener( 'UAGTimelineEditor', uagbTimelineInit );
 // Callback function for all event listeners.
 function uagbTimelineInit() {
+
 	const timeline = document.querySelectorAll( '.uagb-timeline' );
 	if ( timeline.length === 0 ) {
 		return;
 	}
+	
 	for ( const content of timeline ) {
-
+		
 		const lineInner = content.querySelector( '.uagb-timeline__line__inner' );
 		const lineOuter = content.querySelector( '.uagb-timeline__line' );
-
 		const iconClass = content.querySelectorAll( '.uagb-timeline__marker' );
-		const cardLast = content.querySelector( '.uagb-timeline__field:last-child' );
-
+		const timelineField = content.querySelector( '.uagb-timeline__field:nth-last-child(2)' );
+		const cardLast =  timelineField ? timelineField : content.querySelector( '.block-editor-block-list__layout:last-child' );
 		const timelineStartIcon = iconClass[0];
 		const timelineEndIcon = iconClass[iconClass.length - 1];
 
-		lineOuter.style.top = timelineStartIcon.offsetTop + 'px';
-		const timelineCardHeight = cardLast.offsetHeight;
+		lineOuter.style.top = timelineStartIcon?.offsetTop + 'px';
+		const timelineCardHeight = cardLast?.offsetHeight;
 
-		const lastItemTop = cardLast.offsetTop;
+		const lastItemTop = cardLast?.offsetTop;
 
 		let lastItem, parentTop;
 
 		if ( content.classList.contains( 'uagb-timeline__arrow-center' ) ) {
 
-			lineOuter.style.bottom = timelineEndIcon.offsetTop + 'px';
-			parentTop = lastItemTop - timelineStartIcon.offsetTop;
-			lastItem = parentTop + timelineEndIcon.offsetTop;
+			lineOuter.style.bottom = timelineEndIcon?.offsetTop + 'px';
+			parentTop = lastItemTop - timelineStartIcon?.offsetTop;
+			lastItem = parentTop + timelineEndIcon?.offsetTop;
 
 		} else if ( content.classList.contains( 'uagb-timeline__arrow-top' ) ) {
 
-			const topHeight = timelineCardHeight - timelineEndIcon.offsetTop;
+			const topHeight = timelineCardHeight - timelineEndIcon?.offsetTop;
 			lineOuter.style.bottom = topHeight + 'px';
 			lastItem = lastItemTop;
 
 		} else if ( content.classList.contains( 'uagb-timeline__arrow-bottom' ) ) {
 
-			const bottomHeight = timelineCardHeight - timelineEndIcon.offsetTop;
+			const bottomHeight = timelineCardHeight - timelineEndIcon?.offsetTop;
 			lineOuter.style.bottom = bottomHeight + 'px';
-			parentTop = lastItemTop - timelineStartIcon.offsetTop;
-			lastItem = parentTop + timelineEndIcon.offsetTop;
+			parentTop = lastItemTop - timelineStartIcon?.offsetTop;
+			lastItem = parentTop + timelineEndIcon?.offsetTop;
 		}
 		const elementEnd = lastItem + 20;
 
-		const connectorHeight = 3 * iconClass[0].offsetHeight;
+		const connectorHeight = 3 * iconClass[0]?.offsetHeight;
 
 		const viewportHeight = document.documentElement.clientHeight;
 
 		const viewportHeightHalf = viewportHeight / 2 + connectorHeight;
 		const elementPos = content.offsetTop;
 
-		const newElementPos = elementPos + timelineStartIcon.offsetTop;
+		const newElementPos = elementPos + timelineStartIcon?.offsetTop;
 
 		let photoViewportOffsetTop = newElementPos - window.pageYOffset;
 
@@ -103,21 +103,20 @@ function uagbTimelineInit() {
 		let timelineIconTop, timelineCardTop;
 		const timelineIcon = content.querySelectorAll( '.uagb-timeline__marker' );
 
-		let animateBorder = content.querySelectorAll( '.uagb-timeline__field-wrap' );
-
+		let animateBorder = content.querySelectorAll( '.uagb-timeline__field' );
+		
 		if ( animateBorder.length === 0 ) {
 			animateBorder = content.querySelectorAll( '.uagb-timeline__animate-border' );
 		}
 
 		for ( let j = 0; j < timelineIcon.length; j++ ) {
-			timelineIconPos = timelineIcon[j].offsetTop;
+			timelineIconPos = timelineIcon[j].lastElementChild.getBoundingClientRect().top + window.scrollY;
+			timelineCardPos = animateBorder[j].lastElementChild.getBoundingClientRect().top + window.scrollY;
+			
+			timelineIconTop = timelineIconPos - window.pageYOffset;
+			timelineCardTop = timelineCardPos - window.pageYOffset;
 
-			timelineCardPos = animateBorder[j].offsetTop;
-
-			timelineIconTop = timelineIconPos;
-			timelineCardTop = timelineCardPos;
-
-			if ( timelineCardTop < viewportHeightHalf ) {
+			if ( ( timelineCardTop ) < ( viewportHeightHalf ) ) {
 				animateBorder[j].classList.remove( 'out-view' );
 				animateBorder[j].classList.add( 'in-view' );
 			} else {

@@ -19,11 +19,17 @@ const Render = lazy( () =>
 const ContentTimelineChildComponent = ( props ) => {
 	useEffect( () => {
 		// Replacement for componentDidMount.
-
 		//Store client id.
 		props.setAttributes( { block_id: props.clientId } );
 	}, [] );
 
+	useEffect( () => {
+		const loadContentTimelineEditor = new CustomEvent( 'UAGTimelineEditor', { // eslint-disable-line no-undef
+			detail: {},
+		} );
+		document.dispatchEvent( loadContentTimelineEditor );
+	}, [ props ] );
+	
 	return (
 		<Suspense fallback={ lazyLoader() }>
 			<Settings parentProps={ props } />
@@ -31,4 +37,5 @@ const ContentTimelineChildComponent = ( props ) => {
 		</Suspense>
 	);
 };
+
 export default ContentTimelineChildComponent;

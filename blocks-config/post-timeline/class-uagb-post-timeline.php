@@ -661,6 +661,7 @@ if ( ! class_exists( 'UAGB_Post_Timeline' ) ) {
 			$outer_class = 'uagb-timeline__outer-wrap';
 
 			$main_classes = array(
+				'wp-block-uagb-post-timeline',
 				$outer_class,
 				$block_id,
 				$desktop_class,
@@ -679,17 +680,15 @@ if ( ! class_exists( 'UAGB_Post_Timeline' ) ) {
 			echo esc_html( $this->get_classes( $attributes ) );
 			?>
 			" >
-				<div class = "uagb-timeline__main">
-					<?php
-					if ( empty( $recent_posts ) ) {
-						esc_html_e( 'No posts found', 'ultimate-addons-for-gutenberg' );
-					} else {
-						$this->get_post_html( $attributes, $recent_posts );
-					}
-					?>
-					<div class = "uagb-timeline__line" >
-						<div class = "uagb-timeline__line__inner"></div>
-					</div>
+				<?php
+				if ( empty( $recent_posts ) ) {
+					esc_html_e( 'No posts found', 'ultimate-addons-for-gutenberg' );
+				} else {
+					$this->get_post_html( $attributes, $recent_posts );
+				}
+				?>
+				<div class = "uagb-timeline__line" >
+					<div class = "uagb-timeline__line__inner"></div>
 				</div>
 			</div>
 			<?php
@@ -706,7 +705,6 @@ if ( ! class_exists( 'UAGB_Post_Timeline' ) ) {
 		 */
 		public function get_post_html( $attributes, $query ) {
 			?>
-			<div class = "uagb-timeline__days">
 				<?php
 				$index = 0;
 				while ( $query->have_posts() ) {
@@ -717,7 +715,6 @@ if ( ! class_exists( 'UAGB_Post_Timeline' ) ) {
 				}
 				wp_reset_postdata();
 				?>
-			</div>
 			<?php
 		}
 
@@ -737,18 +734,11 @@ if ( ! class_exists( 'UAGB_Post_Timeline' ) ) {
 			$day_align_class     = $this->get_day_align_classes( $attributes, $index );
 
 			?>
-			<article class = "uagb-timeline__field uagb-timeline__field-wrap">
-				<div class = "<?php echo esc_html( $content_align_class ); ?>">
+			<article class = "uagb-timeline__field <?php echo esc_html( $content_align_class ); ?>">
 					<?php $this->get_icon( $attributes ); ?>
-					<div class = "<?php echo esc_html( $day_align_class ); ?>" >
-						<div class ="uagb-timeline__events-inner-new">
-							<div class = "uagb-timeline__date-hide uagb-timeline__date-inner" >
-								<?php $this->get_date( $attributes, 'uagb-timeline__inner-date-new' ); ?>
-							</div>
-
+					<div class = "<?php echo esc_html( $day_align_class ); ?> uagb-timeline__events-inner-new" >
+								<?php $this->get_date( $attributes, 'uagb-timeline__date-hide uagb-timeline__inner-date-new' ); ?>
 							<?php ( $attributes['displayPostImage'] ) ? $this->get_image( $attributes ) : ''; ?>
-
-							<div class = "uagb-content" >
 								<?php
 									$this->get_title( $attributes );
 									$this->get_author( $attributes, $post->post_author );
@@ -756,15 +746,10 @@ if ( ! class_exists( 'UAGB_Post_Timeline' ) ) {
 									$this->get_cta( $attributes );
 								?>
 								<div class = "uagb-timeline__arrow"></div>
-							</div>
-						</div>
 					</div>
 					<?php if ( $display_inner_date ) { ?>
-						<div class = "uagb-timeline__date-new" >
 						<?php $this->get_date( $attributes, 'uagb-timeline__date-new' ); ?>
-						</div>
 					<?php } ?>
-				</div>
 			</article>
 			<?php
 		}
@@ -777,7 +762,7 @@ if ( ! class_exists( 'UAGB_Post_Timeline' ) ) {
 		public function get_icon( $attributes ) {
 			?>
 			<div class = "uagb-timeline__marker uagb-timeline__out-view-icon" >
-				<span class = "uagb-timeline__icon-new uagb-timeline__out-view-icon" ><?php UAGB_Helper::render_svg_html( $attributes['icon'] ); ?></span>
+				<?php UAGB_Helper::render_svg_html( $attributes['icon'] ); ?>
 			</div>
 			<?php
 		}
@@ -796,10 +781,8 @@ if ( ! class_exists( 'UAGB_Post_Timeline' ) ) {
 			$target = ( isset( $attributes['linkTarget'] ) && ( true === $attributes['linkTarget'] ) ) ? '_blank' : '_self';
 			do_action( "uagb_single_post_before_featured_image_{$attributes['post_type']}", get_the_ID(), $attributes );
 			?>
-			<div class='uagb-timeline__image'>
-				<a href="<?php echo esc_url( apply_filters( "uagb_single_post_link_{$attributes['post_type']}", get_the_permalink(), get_the_ID(), $attributes ) ); ?>" target="<?php echo esc_html( $target ); ?>" rel="noopener noreferrer"><?php echo wp_get_attachment_image( get_post_thumbnail_id(), $attributes['imageSize'] ); ?>
+				<a class='uagb-timeline__image' href="<?php echo esc_url( apply_filters( "uagb_single_post_link_{$attributes['post_type']}", get_the_permalink(), get_the_ID(), $attributes ) ); ?>" target="<?php echo esc_html( $target ); ?>" rel="noopener noreferrer"><?php echo wp_get_attachment_image( get_post_thumbnail_id(), $attributes['imageSize'] ); ?>
 				</a>
-			</div>
 			<?php
 			do_action( "uagb_single_post_after_featured_image_{$attributes['post_type']}", get_the_ID(), $attributes );
 		}
@@ -833,13 +816,11 @@ if ( ! class_exists( 'UAGB_Post_Timeline' ) ) {
 			$tag = $attributes['headingTag'];
 			global $post;
 			?>
-			<div class = "uagb-timeline__heading-text" >
 				<?php do_action( "uagb_single_post_before_title_{$attributes['post_type']}", get_the_ID(), $attributes ); ?>
 				<<?php echo esc_html( $tag ); ?> class="uagb-timeline__heading" >
 					<a href="<?php echo esc_url( apply_filters( "uagb_single_post_link_{$attributes['post_type']}", get_the_permalink(), get_the_ID(), $attributes ) ); ?>" target="<?php echo esc_html( $target ); ?>" rel="noopener noreferrer"><?php ( '' !== get_the_title( $post->ID ) ) ? the_title() : esc_html_e( 'Untitled', 'ultimate-addons-for-gutenberg' ); ?></a>
 				</<?php echo esc_html( $tag ); ?>>
 				<?php do_action( "uagb_single_post_after_title_{$attributes['post_type']}", get_the_ID(), $attributes ); ?>
-			</div>
 			<?php
 		}
 
@@ -856,9 +837,7 @@ if ( ! class_exists( 'UAGB_Post_Timeline' ) ) {
 			$target = ( isset( $attributes['linkTarget'] ) && ( true === $attributes['linkTarget'] ) ) ? '_blank' : '_self';
 			do_action( "uagb_single_post_before_cta_{$attributes['post_type']}", get_the_ID(), $attributes );
 			?>
-			<div class="uagb-timeline__link_parent">
 				<a class="uagb-timeline__link" href="<?php echo esc_url( apply_filters( "uagb_single_post_link_{$attributes['post_type']}", get_the_permalink(), get_the_ID(), $attributes ) ); ?>" target="<?php echo esc_html( $target ); ?>" rel=" noopener noreferrer"><?php echo esc_html( $attributes['readMoreText'] ); ?></a>
-			</div>
 			<?php
 			do_action( "uagb_single_post_after_cta_{$attributes['post_type']}", get_the_ID(), $attributes );
 		}
@@ -875,10 +854,8 @@ if ( ! class_exists( 'UAGB_Post_Timeline' ) ) {
 			do_action( "uagb_single_post_before_meta_{$attributes['post_type']}", get_the_ID(), $attributes );
 			if ( isset( $attributes['displayPostAuthor'] ) && $attributes['displayPostAuthor'] ) {
 				?>
-			<div class="uagb-timeline__author">
 				<span class="dashicons-admin-users dashicons"></span>
 				<a class="uagb-timeline__author-link" href="<?php echo esc_url( get_author_posts_url( $author ) ); ?>"><?php echo esc_html( get_the_author_meta( 'display_name', $author ) ); ?></a>
-			</div>
 				<?php
 			}
 			do_action( "uagb_single_post_after_meta_{$attributes['post_type']}", get_the_ID(), $attributes );
@@ -952,7 +929,7 @@ if ( ! class_exists( 'UAGB_Post_Timeline' ) ) {
 		public function get_align_classes( $attributes, $index_val ) {
 
 			$classes   = array();
-			$classes[] = 'uagb-timeline__widget';
+			$classes[] = '';
 			if ( isset( $attributes['timelinAlignment'] ) && '' !== $attributes['timelinAlignment'] ) {
 				if ( 'center' !== $attributes['timelinAlignment'] ) {
 					$classes[] = 'uagb-timeline__' . $attributes['timelinAlignment'];

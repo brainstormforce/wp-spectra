@@ -8,7 +8,6 @@ const CtaLink = ( props ) => {
 
 	if ( attributes.displayPostLink ) {
 		return (
-			<div className="uagb-timeline__link_parent">
 				<a
 					className="uagb-timeline__link"
 					href={ post.link }
@@ -17,7 +16,6 @@ const CtaLink = ( props ) => {
 				>
 					{ attributes.readMoreText }
 				</a>
-			</div>
 		);
 	}
 	return null;

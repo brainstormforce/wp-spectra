@@ -1,6 +1,28 @@
 /*
   Content Timeline.
 */
-#wpwrap .edit-post-visual-editor .block-editor-block-list__block[data-type="uagb/content-timeline"] {
+.block-editor-inner-blocks {
 	padding: 15px;
+
+	.block-editor-block-list__layout .block-editor-block-list__block {
+		padding: 0;
+		margin: 0;
+		max-width: unset;
+	}
+}
+
+.edit-post-visual-editor .block-editor-block-list__block {
+
+	.uagb-timeline__outer-wrap {
+
+		&.uagb-timeline__left-block .uagb-timeline__line {
+			right: auto;
+			left: 34px;
+		}
+
+		&.uagb-timeline__right-block .uagb-timeline__line {
+			right: 31px;
+			left: auto;
+		}
+	}
 }

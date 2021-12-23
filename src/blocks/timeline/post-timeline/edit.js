@@ -15,7 +15,9 @@ const Render = lazy( () =>
 import { withSelect } from '@wordpress/data';
 
 const PostTimelineComponent = ( props ) => {
+	
 	useEffect( () => {
+		
 		// Replacement for componentDidMount.
 		//Store Client id.
 		props.setAttributes( { block_id: props.clientId } );
@@ -72,6 +74,15 @@ const PostTimelineComponent = ( props ) => {
 		}
 	}, [] );
 
+	useEffect( () => {
+		// Replacement for componentDidUpdate.
+		const loadPostTimelineEditor = new CustomEvent( 'UAGTimelineEditor', { // eslint-disable-line no-undef
+			detail: {},
+		} );
+		document.dispatchEvent( loadPostTimelineEditor );
+	}, [ props ] );
+	
+	
 	return (
 		<Suspense fallback={ lazyLoader() }>
 			<Settings parentProps={ props } />

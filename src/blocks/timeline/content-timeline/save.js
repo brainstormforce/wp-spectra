@@ -20,13 +20,9 @@ export default function save( props ) {
 				...ContentTmClasses( props.attributes )
 			) }
 		>
-			<div className="uagb-timeline__main">
-				<div className="uagb-timeline__days">
-					<InnerBlocks.Content />
-				</div>
-				<div className="uagb-timeline__line">
-					<div className="uagb-timeline__line__inner"></div>
-				</div>
+			<InnerBlocks.Content />
+			<div className="uagb-timeline__line">
+				<div className="uagb-timeline__line__inner"></div>
 			</div>
 		</div>
 	);

@@ -35,7 +35,6 @@ const Render = ( props ) => {
 		displayPostLink,
 		timelinAlignment,
 		postsToShow,
-		contentPadding,
 	} = attributes;
 
 	/* Render output at backend */
@@ -78,7 +77,7 @@ const Render = ( props ) => {
 		let displayInnerDate = false;
 
 		return (
-			<div className="uagb-timeline__days">
+			<>
 				{ displayPosts.map( ( post, index ) => {
 					if ( timelinAlignment === 'center' ) {
 						displayInnerDate = true;
@@ -94,80 +93,62 @@ const Render = ( props ) => {
 
 					return (
 						<article
-							className="uagb-timeline__field uagb-timeline__field-wrap"
+							className={ classnames( 'uagb-timeline__field ', contentAlignClass ) }
 							key={ index }
 						>
-							<div className={ contentAlignClass }>
-								{ <Icon attributes={ attributes } /> }
+							{ <Icon attributes={ attributes } /> }
+							<div className={ classnames( dayAlignClass, 'uagb-timeline__events-inner-new' ) }>
+								<PostDate
+									post={ post }
+									attributes={ attributes }
+									dateClass="uagb-timeline__date-hide uagb-timeline__inner-date-new"
+								/>
+								{
+									<FeaturedImage
+										post={ post }
+										attributes={ attributes }
+									/>
+								}
+									{
+										<Title
+											post={ post }
+											attributes={ attributes }
+										/>
+									}
+									{
+										<Author
+											post={ post }
+											attributes={ attributes }
+										/>
+									}
+									{
+										<Excerpt
+											post={ post }
+											attributes={ attributes }
+										/>
+									}
+									{
+										<CtaLink
+											post={ post }
+											attributes={ attributes }
+										/>
+									}
 
-								<div className={ dayAlignClass }>
-									<div className="uagb-timeline__events-inner-new">
-										<div className="uagb-timeline__date-hide uagb-timeline__date-inner">
-											{
-												<PostDate
-													post={ post }
-													attributes={ attributes }
-													dateClass="uagb-timeline__inner-date-new"
-												/>
-											}
-										</div>
-										{
-											<FeaturedImage
-												post={ post }
-												attributes={ attributes }
-											/>
-										}
-										<div
-											className="uagb-content"
-											style={ {
-												padding: contentPadding + 'px',
-											} }
-										>
-											{
-												<Title
-													post={ post }
-													attributes={ attributes }
-												/>
-											}
-											{
-												<Author
-													post={ post }
-													attributes={ attributes }
-												/>
-											}
-											{
-												<Excerpt
-													post={ post }
-													attributes={ attributes }
-												/>
-											}
-											{
-												<CtaLink
-													post={ post }
-													attributes={ attributes }
-												/>
-											}
-
-											<div className="uagb-timeline__arrow"></div>
-										</div>
-									</div>
-								</div>
-								{ displayInnerDate && (
-									<div className="uagb-timeline__date-new">
-										{
-											<PostDate
-												post={ post }
-												attributes={ attributes }
-												dateClass="uagb-timeline__date-new"
-											/>
-										}
-									</div>
-								) }
+									<div className="uagb-timeline__arrow"></div>
 							</div>
+							{ displayInnerDate && (
+								<>
+									<PostDate
+										post={ post }
+										attributes={ attributes }
+										dateClass="uagb-timeline__date-new"
+									/>
+								</>
+							) }
 						</article>
 					);
 				} ) }
-			</div>
+			</>
 		);
 	};
 
@@ -189,11 +170,9 @@ const Render = ( props ) => {
 				...ContentTmClasses( props.attributes )
 			) }
 		>
-			<div className="uagb-timeline__main">
-				{ getContent() }
-				<div className="uagb-timeline__line">
-					<div className="uagb-timeline__line__inner"></div>
-				</div>
+			{ getContent() }
+			<div className="uagb-timeline__line">
+				<div className="uagb-timeline__line__inner"></div>
 			</div>
 		</div>
 	);
