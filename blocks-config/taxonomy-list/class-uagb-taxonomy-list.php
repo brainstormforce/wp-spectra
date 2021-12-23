@@ -650,6 +650,7 @@ if ( ! class_exists( 'UAGB_Taxonomy_List' ) ) {
 			}
 
 			$main_classes = array(
+				'wp-block-uagb-taxonomy-list',
 				'uagb-taxonomy__outer-wrap',
 				'uagb-layout-' . $layout,
 				'uagb-block-' . $block_id,

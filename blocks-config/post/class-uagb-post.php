@@ -1142,6 +1142,7 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 			}
 
 			$outerwrap = array(
+				'wp-block-uagb-post-' . $layout,
 				'uagb-post-grid',
 				( isset( $attributes['className'] ) ) ? $attributes['className'] : '',
 				'uagb-post__image-position-' . $attributes['imgPosition'],
