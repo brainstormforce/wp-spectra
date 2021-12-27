@@ -240,23 +240,24 @@ const attributes = {
 		default: '',
 	},
 	ctaBorderStyle: {
-		type: 'string'
+		type: 'string',
+		default: 'none'
 	},
 	ctaBtnVertPadding: {
 		type: 'number',
-		default: 10,
+		default: '',
 	},
 	ctaBtnHrPadding: {
 		type: 'number',
-		default: 14,
+		default: '',
 	},
 	ctaBorderWidth: {
 		type: 'number',
-		default: 1,
+		default: '',
 	},
 	ctaBorderRadius: {
 		type: 'number',
-		default: 0,
+		default: '',
 	},
 	stack: {
 		type: 'string',

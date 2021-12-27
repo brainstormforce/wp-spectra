@@ -96,7 +96,7 @@ return array(
 	'paddingBtnLeftMobile'    => '',
 	'ctaBorderStyle'          => '',
 	'ctaBorderColor'          => '',
-	'ctaBorderWidth'          => '',
+	'ctaBorderWidth'          => '2',
 	'ctaBorderRadius'         => '',
 	'prefixSpace'             => '5',
 	'iconLeftMargin'          => '5',

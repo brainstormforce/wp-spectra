@@ -1676,41 +1676,6 @@ const Settings = ( props ) => {
 									max={ 50 }
 									displayUnit={ false }
 								/>
-								<Range
-									label={ __(
-										'Radius',
-										'ultimate-addons-for-gutenberg'
-									) }
-									setAttributes={ setAttributes }
-									value={ radioCheckBorderRadius }
-									onChange={ ( value ) =>
-										setAttributes( {
-											radioCheckBorderRadius: value,
-										} )
-									}
-									min={ 0 }
-									max={ 100 }
-									unit={ {
-										value: radioCheckBorderRadiusType,
-										label: 'radioCheckBorderRadiusType',
-									} }
-									units={ [
-										{
-											name: __(
-												'Pixel',
-												'ultimate-addons-for-gutenberg'
-											),
-											unitValue: 'px',
-										},
-										{
-											name: __(
-												'%',
-												'ultimate-addons-for-gutenberg'
-											),
-											unitValue: '%',
-										},
-									] }
-								/>
 								<AdvancedPopColorControl
 									label={ __(
 										'Color',
@@ -1729,6 +1694,41 @@ const Settings = ( props ) => {
 								/>
 							</>
 						) }
+						<Range
+							label={ __(
+								'Radius',
+								'ultimate-addons-for-gutenberg'
+							) }
+							setAttributes={ setAttributes }
+							value={ radioCheckBorderRadius }
+							onChange={ ( value ) =>
+								setAttributes( {
+									radioCheckBorderRadius: value,
+								} )
+							}
+							min={ 0 }
+							max={ 100 }
+							unit={ {
+								value: radioCheckBorderRadiusType,
+								label: 'radioCheckBorderRadiusType',
+							} }
+							units={ [
+								{
+									name: __(
+										'Pixel',
+										'ultimate-addons-for-gutenberg'
+									),
+									unitValue: 'px',
+								},
+								{
+									name: __(
+										'%',
+										'ultimate-addons-for-gutenberg'
+									),
+									unitValue: '%',
+								},
+							] }
+						/>
 					</>
 				) }
 			</UAGAdvancedPanelBody>

@@ -49,22 +49,23 @@ export default function save( props ) {
 				`uagb-marketing-btn__align-${ align }`,
 				`uagb-marketing-btn__align-text-${ textAlign }`,
 				`uagb-marketing-btn__icon-${ iconPosition }`,
-				`uagb-block-${ block_id }`
+				`uagb-block-${ block_id }`,
+				'wp-block-button'
 			) }
 		>
 				<a
 					href={ link }
-					className="uagb-marketing-btn__link"
+					className="uagb-marketing-btn__link wp-block-button__link"
 					target={ target }
 					rel="noopener noreferrer"
 				>
-						{ 'before' === iconPosition && 
+						{ 'before' === iconPosition &&
 							<>
 							{ iconHTML }
 							{ titleHTML }
 							</>
 						}
-						{ 'after' === iconPosition && 
+						{ 'after' === iconPosition &&
 							<>
 							{ titleHTML }
 							{ iconHTML }

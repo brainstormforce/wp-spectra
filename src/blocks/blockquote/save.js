@@ -24,7 +24,6 @@ export default function save( props ) {
 		authorImgPosition,
 		stack,
 	} = props.attributes;
-
 	return (
 			<div
 				className={ classnames(
@@ -56,7 +55,9 @@ export default function save( props ) {
 								props={ props }
 							/>
 						) }
+						{ author !== '' || authorImage.url !== '' || enableTweet && (
 						<footer>
+							{ author !== '' || authorImage.url !== '' && (
 							<div
 								className={ classnames(
 									'uagb-blockquote__author-wrap',
@@ -65,11 +66,9 @@ export default function save( props ) {
 										: ''
 								) }
 							>
-								{
-									<AuthorImage
-										attributes={ props.attributes }
-									/>
-								}
+								<AuthorImage
+									attributes={ props.attributes }
+								/>
 								{ author !== '' && (
 									<AuthorText
 										attributes={ props.attributes }
@@ -78,12 +77,14 @@ export default function save( props ) {
 									/>
 								) }
 							</div>
+							)}
 							{ enableTweet && (
 								<TweetButtonCTA
 									attributes={ props.attributes }
 								/>
 							) }
 						</footer>
+						)}
 				</blockquote>
 			</div>
 	);

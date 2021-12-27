@@ -30,18 +30,18 @@ const attributes = {
 	// Border
 	borderStyle: {
 		type: 'string',
-		default: 'solid',
+		default: 'none',
 	},
 	borderWidth: {
 		type: 'number',
-		default: 1,
+		default: '',
 	},
 	borderRadius: {
 		type: 'number',
 	},
 	borderColor: {
 		type: 'string',
-		default: '#333',
+		default: '',
 	},
 	borderHoverColor: {
 		type: 'string',
@@ -50,11 +50,11 @@ const attributes = {
 	// Background
 	vPadding: {
 		type: 'number',
-		default: 8,
+		default: '',
 	},
 	hPadding: {
 		type: 'number',
-		default: 20,
+		default: '',
 	},
 	vPaddingTablet: {
 		type: 'number',
@@ -78,7 +78,7 @@ const attributes = {
 	},
 	backgroundColor: {
 		type: 'string',
-		default: '#eeeeee',
+		default: '',
 	},
 	backgroundHoverColor: {
 		type: 'string',
@@ -117,7 +117,7 @@ const attributes = {
 	//Colors
 	titleColor: {
 		type: 'string',
-		default: '#333',
+		default: '',
 	},
 	titleHoverColor: {
 		type: 'string',

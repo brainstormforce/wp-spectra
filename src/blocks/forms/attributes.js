@@ -100,13 +100,14 @@ const attributes = {
 	// Border
 	submitborderStyle: {
 		type: 'string',
+		default: 'none'
 	},
 	submitborderWidth: {
 		type: 'number',
 	},
 	submitborderRadius: {
 		type: 'number',
-		default: 3,
+		default: '',
 	},
 	submitborderColor: {
 		type: 'string',
@@ -294,7 +295,7 @@ const attributes = {
 	// InputBorder
 	inputborderStyle: {
 		type: 'string',
-		default: 'solid',
+		default: 'none',
 	},
 	inputborderWidth: {
 		type: 'number',

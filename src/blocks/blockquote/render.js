@@ -57,14 +57,11 @@ const Render = ( props ) => {
 								{ UAGB_Block_Icons.quote_inline_icon }
 						</span>
 					) }
-						{
-							<Description
-								attributes={ attributes }
-								setAttributes={ setAttributes }
-								props={ props }
-							/>
-						}
-
+						<Description
+							attributes={ attributes }
+							setAttributes={ setAttributes }
+							props={ props }
+						/>
 						<footer>
 							<div
 								className={ classnames(
@@ -74,14 +71,13 @@ const Render = ( props ) => {
 										: ''
 								) }
 							>
-								{ <AuthorImage attributes={ attributes } /> }
-								{
-									<AuthorText
+								<AuthorImage attributes={ attributes } />
+
+								<AuthorText
 										attributes={ attributes }
 										setAttributes={ setAttributes }
 										props={ props }
 									/>
-								}
 							</div>
 							{ enableTweet && (
 								<TweetButtonCTA attributes={ attributes } />

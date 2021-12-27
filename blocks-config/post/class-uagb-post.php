@@ -678,15 +678,15 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 				),
 				'borderWidth'             => array(
 					'type'    => 'number',
-					'default' => 1,
+					'default' => '',
 				),
 				'btnHPadding'             => array(
 					'type'    => 'number',
-					'default' => 10,
+					'default' => '',
 				),
 				'btnVPadding'             => array(
 					'type'    => 'number',
-					'default' => 5,
+					'default' => '',
 				),
 				'borderStyle'             => array(
 					'type'    => 'string',
@@ -694,14 +694,14 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 				),
 				'borderColor'             => array(
 					'type'    => 'string',
-					'default' => '#3b3b3b',
+					'default' => '',
 				),
 				'borderHColor'            => array(
 					'type' => 'string',
 				),
 				'borderRadius'            => array(
 					'type'    => 'number',
-					'default' => 0,
+					'default' => '',
 				),
 				'columns'                 => array(
 					'type'    => 'number',

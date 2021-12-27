@@ -170,6 +170,7 @@ const Settings = ( props ) => {
 		quoteBottomMarginMobile,
 		quoteLeftMarginMobile,
 		quoteRightMarginMobile,
+		author
 	} = attributes;
 	let loadDescGoogleFonts;
 	let loadAuthorGoogleFonts;
@@ -618,77 +619,81 @@ const Settings = ( props ) => {
 					setAttributes( { descColor: value } )
 				}
 			/>
-			<TypographyControl
-				label={ __(
-					'Author Typography',
-					'ultimate-addons-for-gutenberg'
-				) }
-				attributes={ attributes }
-				setAttributes={ setAttributes }
-				loadGoogleFonts={ {
-					value: authorLoadGoogleFonts,
-					label: 'authorLoadGoogleFonts',
-				} }
-				fontFamily={ {
-					value: authorFontFamily,
-					label: 'authorFontFamily',
-				} }
-				fontWeight={ {
-					value: authorFontWeight,
-					label: 'authorFontWeight',
-				} }
-				fontStyle={ {
-					value: authorFontStyle,
-					label: 'authorFontStyle',
-				} }
-				fontSizeType={ {
-					value: authorFontSizeType,
-					label: 'authorFontSizeType',
-				} }
-				fontSize={ {
-					value: authorFontSize,
-					label: 'authorFontSize',
-				} }
-				fontSizeMobile={ {
-					value: authorFontSizeMobile,
-					label: 'authorFontSizeMobile',
-				} }
-				fontSizeTablet={ {
-					value: authorFontSizeTablet,
-					label: 'authorFontSizeTablet',
-				} }
-				lineHeightType={ {
-					value: authorLineHeightType,
-					label: 'authorLineHeightType',
-				} }
-				lineHeight={ {
-					value: authorLineHeight,
-					label: 'authorLineHeight',
-				} }
-				lineHeightMobile={ {
-					value: authorLineHeightMobile,
-					label: 'authorLineHeightMobile',
-				} }
-				lineHeightTablet={ {
-					value: authorLineHeightTablet,
-					label: 'authorLineHeightTablet',
-				} }
-				transform={ {
-					value: authorTransform,
-					label: 'authorTransform',
-				} }
-				decoration={ {
-					value: authorDecoration,
-					label: 'authorDecoration',
-				} }
-			/>
-			<AdvancedPopColorControl
-				label={ __( 'Author Color', 'ultimate-addons-for-gutenberg' ) }
-				colorValue={ authorColor ? authorColor : '' }
-				onColorChange={ ( value ) =>
-					setAttributes( { authorColor: value } )
-				}
-			/>
+			{ author !== '' && (
+				<>
+					<TypographyControl
+						label={ __(
+							'Author Typography',
+							'ultimate-addons-for-gutenberg'
+						) }
+						attributes={ attributes }
+						setAttributes={ setAttributes }
+						loadGoogleFonts={ {
+							value: authorLoadGoogleFonts,
+							label: 'authorLoadGoogleFonts',
+						} }
+						fontFamily={ {
+							value: authorFontFamily,
+							label: 'authorFontFamily',
+						} }
+						fontWeight={ {
+							value: authorFontWeight,
+							label: 'authorFontWeight',
+						} }
+						fontStyle={ {
+							value: authorFontStyle,
+							label: 'authorFontStyle',
+						} }
+						fontSizeType={ {
+							value: authorFontSizeType,
+							label: 'authorFontSizeType',
+						} }
+						fontSize={ {
+							value: authorFontSize,
+							label: 'authorFontSize',
+						} }
+						fontSizeMobile={ {
+							value: authorFontSizeMobile,
+							label: 'authorFontSizeMobile',
+						} }
+						fontSizeTablet={ {
+							value: authorFontSizeTablet,
+							label: 'authorFontSizeTablet',
+						} }
+						lineHeightType={ {
+							value: authorLineHeightType,
+							label: 'authorLineHeightType',
+						} }
+						lineHeight={ {
+							value: authorLineHeight,
+							label: 'authorLineHeight',
+						} }
+						lineHeightMobile={ {
+							value: authorLineHeightMobile,
+							label: 'authorLineHeightMobile',
+						} }
+						lineHeightTablet={ {
+							value: authorLineHeightTablet,
+							label: 'authorLineHeightTablet',
+						} }
+						transform={ {
+							value: authorTransform,
+							label: 'authorTransform',
+						} }
+						decoration={ {
+							value: authorDecoration,
+							label: 'authorDecoration',
+						} }
+					/>
+					<AdvancedPopColorControl
+						label={ __( 'Author Color', 'ultimate-addons-for-gutenberg' ) }
+						colorValue={ authorColor ? authorColor : '' }
+						onColorChange={ ( value ) =>
+							setAttributes( { authorColor: value } )
+						}
+					/>
+				</>
+			)}
 		</UAGAdvancedPanelBody>
 	);
 

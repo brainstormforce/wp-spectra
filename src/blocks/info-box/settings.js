@@ -1274,118 +1274,112 @@ const Settings = ( props ) => {
 						</>
 					</UAGAdvancedPanelBody>
 				) }
-				{ 'null' !== seperatorStyle && (
+				{ 'none' !== seperatorStyle && (
 					<UAGAdvancedPanelBody title="Separator" initialOpen={ false }>
-						<>
-							{ 'none' !== seperatorStyle && (
-								<>
-									<Range
-										label={ __(
-											'Width',
-											'ultimate-addons-for-gutenberg'
-										) }
-										setAttributes={ setAttributes }
-										value={ seperatorWidth }
-										onChange={ ( value ) =>
-											setAttributes( {
-												seperatorWidth: value,
-											} )
-										}
-										min={ 0 }
-										max={
-											'%' === separatorWidthType
-												? 100
-												: 500
-										}
-										unit={ {
-											value: separatorWidthType,
-											label: 'separatorWidthType',
-										} }
-										units={ [
-											{
-												name: __(
-													'Pixel',
-													'ultimate-addons-for-gutenberg'
-												),
-												unitValue: 'px',
-											},
-											{
-												name: __(
-													'Em',
-													'ultimate-addons-for-gutenberg'
-												),
-												unitValue: 'em',
-											},
-											{
-												name: __(
-													'%',
-													'ultimate-addons-for-gutenberg'
-												),
-												unitValue: '%',
-											},
-										] }
-									/>
-									<Range
-										label={ __(
-											'Thickness',
-											'ultimate-addons-for-gutenberg'
-										) }
-										setAttributes={ setAttributes }
-										value={ seperatorThickness }
-										onChange={ ( value ) =>
-											setAttributes( {
-												seperatorThickness: value,
-											} )
-										}
-										min={ 0 }
-										max={ 10 }
-										unit={ {
-											value: thicknessUnit,
-											label: 'thicknessUnit',
-										} }
-									/>
-								</>
+						<Range
+							label={ __(
+								'Width',
+								'ultimate-addons-for-gutenberg'
 							) }
-							<AdvancedPopColorControl
-								label={ __(
-									'Color',
-									'ultimate-addons-for-gutenberg'
-								) }
-								colorValue={
-									seperatorColor ? seperatorColor : ''
-								}
-								onColorChange={ ( value ) =>
-									setAttributes( { seperatorColor: value } )
-								}
-							/>
-							<ResponsiveSlider
-								label={ __(
-									'Bottom Margin',
-									'ultimate-addons-for-gutenberg'
-								) }
-								data={ {
-									desktop: {
-										value: seperatorSpace,
-										label: 'seperatorSpace',
-									},
-									tablet: {
-										value: seperatorTabletSpace,
-										label: 'seperatorTabletSpace',
-									},
-									mobile: {
-										value: seperatorMobileSpace,
-										label: 'seperatorMobileSpace',
-									},
-								} }
-								min={ 0 }
-								max={ 50 }
-								unit={ {
-									value: seperatorSpaceUnit,
-									label: 'seperatorSpaceUnit',
-								} }
-								setAttributes={ setAttributes }
-							/>
-						</>
+							setAttributes={ setAttributes }
+							value={ seperatorWidth }
+							onChange={ ( value ) =>
+								setAttributes( {
+									seperatorWidth: value,
+								} )
+							}
+							min={ 0 }
+							max={
+								'%' === separatorWidthType
+									? 100
+									: 500
+							}
+							unit={ {
+								value: separatorWidthType,
+								label: 'separatorWidthType',
+							} }
+							units={ [
+								{
+									name: __(
+										'Pixel',
+										'ultimate-addons-for-gutenberg'
+									),
+									unitValue: 'px',
+								},
+								{
+									name: __(
+										'Em',
+										'ultimate-addons-for-gutenberg'
+									),
+									unitValue: 'em',
+								},
+								{
+									name: __(
+										'%',
+										'ultimate-addons-for-gutenberg'
+									),
+									unitValue: '%',
+								},
+							] }
+						/>
+						<Range
+							label={ __(
+								'Thickness',
+								'ultimate-addons-for-gutenberg'
+							) }
+							setAttributes={ setAttributes }
+							value={ seperatorThickness }
+							onChange={ ( value ) =>
+								setAttributes( {
+									seperatorThickness: value,
+								} )
+							}
+							min={ 0 }
+							max={ 10 }
+							unit={ {
+								value: thicknessUnit,
+								label: 'thicknessUnit',
+							} }
+						/>
+						<AdvancedPopColorControl
+							label={ __(
+								'Color',
+								'ultimate-addons-for-gutenberg'
+							) }
+							colorValue={
+								seperatorColor ? seperatorColor : ''
+							}
+							onColorChange={ ( value ) =>
+								setAttributes( { seperatorColor: value } )
+							}
+						/>
+						<ResponsiveSlider
+							label={ __(
+								'Bottom Margin',
+								'ultimate-addons-for-gutenberg'
+							) }
+							data={ {
+								desktop: {
+									value: seperatorSpace,
+									label: 'seperatorSpace',
+								},
+								tablet: {
+									value: seperatorTabletSpace,
+									label: 'seperatorTabletSpace',
+								},
+								mobile: {
+									value: seperatorMobileSpace,
+									label: 'seperatorMobileSpace',
+								},
+							} }
+							min={ 0 }
+							max={ 50 }
+							unit={ {
+								value: seperatorSpaceUnit,
+								label: 'seperatorSpaceUnit',
+							} }
+							setAttributes={ setAttributes }
+						/>
 					</UAGAdvancedPanelBody>
 				) }
 				{ showDesc && (
@@ -1500,7 +1494,7 @@ const Settings = ( props ) => {
 				{
 					'none' !== ctaType &&
 					'all' !== ctaType && (
-						<UAGAdvancedPanelBody title="CTA" initialOpen={ false }>
+						<UAGAdvancedPanelBody title="Call to Action" initialOpen={ false }>
 							<>
 								{ ctaType === 'text' && (
 									<>
@@ -1623,6 +1617,7 @@ const Settings = ( props ) => {
 												},
 											] }
 											normal={
+												<>
 												<AdvancedPopColorControl
 														label={ __(
 															'Button Text Color',
@@ -1638,7 +1633,7 @@ const Settings = ( props ) => {
 																ctaBtnLinkColor: value,
 															} )
 														}
-													/>,
+													/>
 													<AdvancedPopColorControl
 														label={ __(
 															'Background Color',
@@ -1653,8 +1648,10 @@ const Settings = ( props ) => {
 															} )
 														}
 													/>
+													</>
 											}
 											hover={
+												<>
 												<AdvancedPopColorControl
 														label={ __(
 															'Button Text Color',
@@ -1670,7 +1667,7 @@ const Settings = ( props ) => {
 																ctaLinkHoverColor: value,
 															} )
 														}
-													/>,
+													/>
 													<AdvancedPopColorControl
 														label={ __(
 															'Background Color',
@@ -1687,6 +1684,7 @@ const Settings = ( props ) => {
 															} )
 														}
 													/>
+													</>
 												}
 										/>
 										<SpacingControl

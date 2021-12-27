@@ -114,7 +114,7 @@ function styling( props ) {
 			'grid-column-gap': generateCSSUnit( columnGap, 'px' ),
 			'grid-row-gap': generateCSSUnit( rowGap, 'px' ),
 		},
-		
+
 		'.uagb-layout-grid .uagb-taxomony-box': {
 			'padding-top': generateCSSUnit(
 				contentTopPadding,
@@ -147,7 +147,7 @@ function styling( props ) {
 				' ' +
 				boxShadowPositionCSS,
 		},
-		
+
 		'.uagb-layout-grid .uagb-tax-title': {
 			'color': titleColor,
 			'margin-top': '0',
@@ -334,12 +334,14 @@ function styling( props ) {
 				borderStyle +
 				' ' +
 				borderColor,
-			'border-radius': generateCSSUnit( borderRadius, 'px' ),
 		};
 		selectors[ ' .uagb-taxomony-box:hover' ] = {
 			'border-color': borderHoverColor,
 		};
 	}
+	selectors[ ' .uagb-taxomony-box' ] = {
+		'border-radius': generateCSSUnit( borderRadius, 'px' ),
+	};
 
 	mobileSelectors = {
 		'.uagb-taxonomy__outer-wrap.uagb-layout-grid': {
@@ -394,7 +396,7 @@ function styling( props ) {
 			),
 		},
 		/* For Backword */
-		' .uagb-taxonomy-wrap.uagb-layout-grid': { 
+		' .uagb-taxonomy-wrap.uagb-layout-grid': {
 			'grid-template-columns': 'repeat(' + mcolumns + ', 1fr)',
 		},
 		' .uagb-layout-grid .uagb-taxomony-box': {
@@ -501,7 +503,7 @@ function styling( props ) {
 			),
 		},
 		/* For Backword. */
-		' .uagb-taxonomy-wrap.uagb-layout-grid': { 
+		' .uagb-taxonomy-wrap.uagb-layout-grid': {
 			'grid-template-columns': 'repeat(' + tcolumns + ', 1fr)',
 		},
 		' .uagb-layout-grid .uagb-taxomony-box': {

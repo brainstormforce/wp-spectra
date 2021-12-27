@@ -244,16 +244,14 @@ function testimonialStyle( props ) {
 			'border-color': borderColor,
 			'border-style': borderStyle,
 			'border-width': generateCSSUnit( borderWidth, 'px' ),
-			'border-radius': generateCSSUnit( borderRadius, 'px' ),
 		};
 		selectors[ ' .uagb-testimonial__wrap .uagb-tm__content:hover' ] = {
 			'border-color': borderHoverColor,
 		};
-	} else {
-		selectors[ ' .uagb-testimonial__wrap .uagb-tm__content' ] = {
-			'border-radius': generateCSSUnit( borderRadius, 'px' ),
-		};
 	}
+	selectors[ ' .uagb-testimonial__wrap .uagb-tm__content' ] = {
+		'border-radius': generateCSSUnit( borderRadius, 'px' ),
+	};
 
 	if ( arrowDots === 'dots' ) {
 		selectors[ ' .uagb-slick-carousel.uagb-tm__arrow-outside' ] = {
@@ -407,7 +405,7 @@ function testimonialStyle( props ) {
 	};
 	if ( 'gradient' === backgroundType ) {
 		selectors[ ' .uagb-tm__content' ][ 'background-color' ] = 'transparent';
-		
+
 		if ( gradientValue ) {
 			selectors[ ' .uagb-tm__content' ][
 				'background-image'

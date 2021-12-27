@@ -110,27 +110,27 @@ const attributes = {
 	},
 	borderWidth: {
 		type: 'number',
-		default: 1,
+		default: '',
 	},
 	borderRadius: {
 		type: 'number',
-		default: 2,
+		default: '',
 	},
 	borderStyle: {
 		type: 'string',
-		default: 'solid',
+		default: 'none',
 	},
 	borderColor: {
 		type: 'string',
-		default: '#333',
+		default: '',
 	},
 	borderHColor: {
 		type: 'string',
-		default: '#333',
+		default: '',
 	},
 	color: {
 		type: 'string',
-		default: '#333',
+		default: '',
 	},
 	background: {
 		type: 'string',
@@ -138,7 +138,7 @@ const attributes = {
 	},
 	hColor: {
 		type: 'string',
-		default: '#333',
+		default: '',
 	},
 	hBackground: {
 		type: 'string',

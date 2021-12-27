@@ -337,6 +337,12 @@ function styling( props ) {
 		'text-transform': excerptTransform,
 		'text-decoration': excerptDecoration,
 	};
+	selectors[ ' .uagb-post__cta ' ] = {
+		'border-width': generateCSSUnit( borderWidth, 'px' ),
+		'border-radius': generateCSSUnit( borderRadius, 'px' ),
+		'border-color': borderColor,
+		'border-style': borderStyle,
+	};
 	selectors[ ' .uagb-post__cta .uagb-text-link' ] = {
 		'pointer-events': 'visible',
 		'color': ctaColor,
@@ -346,14 +352,6 @@ function styling( props ) {
 		'font-style': ctaFontStyle,
 		'line-height': generateCSSUnit( ctaLineHeight, ctaLineHeightType ),
 		'background': ctaBgColor,
-		'border-width': generateCSSUnit( borderWidth, 'px' ),
-		'border-radius': generateCSSUnit( borderRadius, 'px' ),
-		'border-color': borderColor,
-		'border-style': borderStyle,
-	};
-	selectors[ ' .uagb-post__cta a' ] = {
-		'color': ctaColor,
-		'font-size': generateCSSUnit( ctaFontSize, ctaFontSizeType ),
 		'padding-top': generateCSSUnit( paddingBtnTop, paddingBtnUnit ),
 		'padding-bottom': generateCSSUnit(
 			paddingBtnBottom,
@@ -363,6 +361,10 @@ function styling( props ) {
 		'text-decoration': ctaDecoration,
 		'padding-left': generateCSSUnit( paddingBtnLeft, paddingBtnUnit ),
 		'padding-right': generateCSSUnit( paddingBtnRight, paddingBtnUnit ),
+		'border-width': generateCSSUnit( borderWidth, 'px' ),
+		'border-radius': generateCSSUnit( borderRadius, 'px' ),
+		'border-color': borderColor,
+		'border-style': borderStyle,
 	};
 	selectors[ ' .uagb-post__text.uagb-post__cta:hover' ] = {
 		'color': ctaHColor,
@@ -807,7 +809,7 @@ function styling( props ) {
 			mobilePaddingUnit
 		),
 	};
-	
+
 	let stylingCss = '';
 
 	stylingCss = generateCSS(

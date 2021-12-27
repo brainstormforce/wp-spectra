@@ -144,15 +144,16 @@ if ( 'none' !== $attr['seperatorStyle'] ) {
 
 if ( 'none' !== $attr['borderStyle'] ) {
 	$selectors[' .uagb-taxomony-box']       = array(
-		'border'        => UAGB_Helper::get_css_value( $attr['borderThickness'], 'px' ) . ' ' . $attr['borderStyle'] . ' ' . $attr['borderColor'],
-		'border-radius' => UAGB_Helper::get_css_value( $attr['borderRadius'], 'px' ),
+		'border' => UAGB_Helper::get_css_value( $attr['borderThickness'], 'px' ) . ' ' . $attr['borderStyle'] . ' ' . $attr['borderColor'],
 	);
 	$selectors[' .uagb-taxomony-box:hover'] = array(
 		'border-color' => $attr['borderHoverColor'],
 	);
 }
-
-$t_selectors = array(
+$selectors[' .uagb-taxomony-box'] = array(
+	'border-radius' => UAGB_Helper::get_css_value( $attr['borderRadius'], 'px' ),
+);
+$t_selectors                      = array(
 	'.uagb-taxonomy-wrap.uagb-layout-grid' => array( // For Backword.
 		'grid-template-columns' => 'repeat(' . $attr['tcolumns'] . ', 1fr)',
 	),
