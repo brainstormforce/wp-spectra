@@ -43,7 +43,6 @@ $selectors = array(
 	' .uagb-tabs__panel .uagb-tab:hover '                  => array(
 		'border-color' => $attr['borderHoverColor'],
 	),
-
 	' .uagb-tabs__panel .uagb-tab.uagb-tabs__active'       => array(
 		'background' => $attr['activeTabBgColor'],
 	),

@@ -166,22 +166,15 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 		 */
 		public static function get_icon_list_child_selectors( $attr, $id, $childMigrate ) {
 
-			$wrapper = ( ! $childMigrate ) ? ' .uagb-icon-list-repeater-' . $id : '.uagb-icon-list-repeater';
+			$wrapper = ( ! $childMigrate ) ? ' .uagb-icon-list-repeater-' . $id : '.wp-block-uagb-icon-list-child';
 
-			$selectors[ $wrapper . ' .uagb-icon-list__source-icon' ]           = array(
+			$selectors[ $wrapper . ' .uagb-icon-list__source-wrap svg' ]       = array(
+				'fill'  => $attr['icon_color'],
 				'color' => $attr['icon_color'],
 			);
-			$selectors[ $wrapper . ' .uagb-icon-list__source-icon' ]           = array(
-				'color' => $attr['icon_color'],
-			);
-			$selectors[ $wrapper . ' .uagb-icon-list__source-icon svg' ]       = array(
-				'fill' => $attr['icon_color'],
-			);
-			$selectors[ $wrapper . ':hover .uagb-icon-list__source-icon' ]     = array(
+			$selectors[ $wrapper . ':hover .uagb-icon-list__source-wrap svg' ] = array(
+				'fill'  => $attr['icon_hover_color'],
 				'color' => $attr['icon_hover_color'],
-			);
-			$selectors[ $wrapper . ':hover .uagb-icon-list__source-icon svg' ] = array(
-				'fill' => $attr['icon_hover_color'],
 			);
 			$selectors[ $wrapper . ' .uagb-icon-list__label' ]                 = array(
 				'color' => $attr['label_color'],

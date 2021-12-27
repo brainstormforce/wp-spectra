@@ -354,7 +354,7 @@ const Settings = ( props ) => {
 	const iconSetting = () => {
 		return (
 			<UAGAdvancedPanelBody
-				title={ __( 'Icon', 'ultimate-addons-for-gutenberg' ) }
+				title={ __( 'Icon/Image', 'ultimate-addons-for-gutenberg' ) }
 				initialOpen={ false }
 			>
 				<ResponsiveSlider

@@ -55,4 +55,6 @@ return array(
 	'fontStyle'        => '',
 	'fontTransform'    => '',
 	'fontDecoration'   => '',
+	'hideLabel'        => true,
+	'iconPosition'     => 'middle',
 );

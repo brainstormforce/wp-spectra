@@ -23,30 +23,30 @@ $m_icon_size = UAGB_Helper::get_css_value( $attr['socialFontSizeMobile'], $attr[
 $t_icon_size = UAGB_Helper::get_css_value( $attr['socialFontSizeTablet'], $attr['socialFontSizeType'] );
 
 $selectors = array(
-	' p.uagb-team__desc'                 => array(
+	' p.uagb-team__desc'                    => array(
 		'color'         => $attr['descColor'],
 		'margin-bottom' => UAGB_Helper::get_css_value( $attr['descSpace'], 'px' ),
 		'margin-top'    => UAGB_Helper::get_css_value( $attr['prefixSpace'], 'px' ),
 	),
-	' .uagb-team__prefix'                => array(
+	' .uagb-team__prefix'                   => array(
 		'color' => $attr['prefixColor'],
 	),
-	' .uagb-team__social-icon a'         => array(
+	' .uagb-team__social-icon a'            => array(
 		'color'       => $attr['socialColor'],
 		'font-size'   => $icon_size,
 		'width'       => $icon_size,
 		'height'      => $icon_size,
 		'line-height' => $icon_size,
 	),
-	' .uagb-team__social-icon svg'       => array(
+	' .uagb-team__social-icon svg'          => array(
 		'fill'   => $attr['socialColor'],
 		'width'  => $icon_size,
 		'height' => $icon_size,
 	),
-	' .uagb-team__social-icon:hover a'   => array(
+	' .uagb-team__social-icon:hover a'      => array(
 		'color' => $attr['socialHoverColor'],
 	),
-	' .uagb-team__social-icon:hover svg' => array(
+	' .uagb-team__social-icon:hover svg'    => array(
 		'fill' => $attr['socialHoverColor'],
 	),
 	'.uagb-team__image-position-left .uagb-team__social-icon' => array(
@@ -69,28 +69,28 @@ $selectors = array(
 		'margin-left'  => UAGB_Helper::get_css_value( $attr['socialSpace'], 'px' ),
 		'margin-right' => UAGB_Helper::get_css_value( 0, 'px' ),
 	),
-	' .uagb-team__image-wrap'            => array( // For Backword.
+	' .uagb-team__image-wrap'               => array( // For Backword.
 		'margin-top'    => UAGB_Helper::get_css_value( $image_top_margin, $attr['imageMarginUnit'] ),
 		'margin-bottom' => UAGB_Helper::get_css_value( $image_bottom_margin, $attr['imageMarginUnit'] ),
 		'margin-left'   => UAGB_Helper::get_css_value( $image_left_margin, $attr['imageMarginUnit'] ),
 		'margin-right'  => UAGB_Helper::get_css_value( $image_right_margin, $attr['imageMarginUnit'] ),
 		'width'         => UAGB_Helper::get_css_value( $attr['imgWidth'], 'px' ),
 	),
-	'.uagb-team__image-position-left > img'                             => array( // When Image position is left.
+	'.uagb-team__image-position-left > img' => array( // When Image position is left.
 		'margin-top'    => UAGB_Helper::get_css_value( $image_top_margin, $attr['imageMarginUnit'] ),
 		'margin-bottom' => UAGB_Helper::get_css_value( $image_bottom_margin, $attr['imageMarginUnit'] ),
 		'margin-left'   => UAGB_Helper::get_css_value( $image_left_margin, $attr['imageMarginUnit'] ),
 		'margin-right'  => UAGB_Helper::get_css_value( $image_right_margin, $attr['imageMarginUnit'] ),
 		'width'         => UAGB_Helper::get_css_value( $attr['imgWidth'], 'px' ),
 	),
-	'.uagb-team__image-position-right .uagb-team__content + img'         => array( // When Image position is right.
+	'.uagb-team__image-position-right .uagb-team__content + img' => array( // When Image position is right.
 		'margin-top'    => UAGB_Helper::get_css_value( $image_top_margin, $attr['imageMarginUnit'] ),
 		'margin-bottom' => UAGB_Helper::get_css_value( $image_bottom_margin, $attr['imageMarginUnit'] ),
 		'margin-left'   => UAGB_Helper::get_css_value( $image_left_margin, $attr['imageMarginUnit'] ),
 		'margin-right'  => UAGB_Helper::get_css_value( $image_right_margin, $attr['imageMarginUnit'] ),
 		'width'         => UAGB_Helper::get_css_value( $attr['imgWidth'], 'px' ),
 	),
-	'.uagb-team__image-position-above img'         => array( // When Image position is above.
+	'.uagb-team__image-position-above img'  => array( // When Image position is above.
 		'margin-top'    => UAGB_Helper::get_css_value( $image_top_margin, $attr['imageMarginUnit'] ),
 		'margin-bottom' => UAGB_Helper::get_css_value( $image_bottom_margin, $attr['imageMarginUnit'] ),
 		'margin-left'   => UAGB_Helper::get_css_value( $image_left_margin, $attr['imageMarginUnit'] ),

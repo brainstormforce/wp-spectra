@@ -17,29 +17,25 @@ function styling( props ) {
 	} = props.attributes;
 
 	const selectors = {
-		'.uagb-icon-list-repeater .uagb-icon-list__source-icon': {
+		'.wp-block-uagb-icon-list-child .uagb-icon-list__source-wrap svg': {
 			'color': icon_color,
-		},
-		'.uagb-icon-list-repeater .uagb-icon-list__source-icon svg': {
 			'fill': icon_color,
 		},
-		'.uagb-icon-list-repeater:hover .uagb-icon-list__source-icon': {
+		'.wp-block-uagb-icon-list-child:hover .uagb-icon-list__source-wrap svg': {
 			'color': icon_hover_color,
-		},
-		'.uagb-icon-list-repeater:hover .uagb-icon-list__source-icon svg': {
 			'fill': icon_hover_color,
 		},
-		'.uagb-icon-list-repeater .uagb-icon-list__label': {
+		'.wp-block-uagb-icon-list-child .uagb-icon-list__label': {
 			'color': label_color,
 		},
-		'.uagb-icon-list-repeater:hover .uagb-icon-list__label': {
+		'.wp-block-uagb-icon-list-child:hover .uagb-icon-list__label': {
 			'color': label_hover_color,
 		},
-		'.uagb-icon-list-repeater .uagb-icon-list__source-wrap': {
+		'.wp-block-uagb-icon-list-child .uagb-icon-list__source-wrap': {
 			'background': icon_bg_color,
 			'border-color': icon_border_color,
 		},
-		'.uagb-icon-list-repeater:hover .uagb-icon-list__source-wrap': {
+		'.wp-block-uagb-icon-list-child:hover .uagb-icon-list__source-wrap': {
 			'background': icon_bg_hover_color,
 			'border-color': icon_border_hover_color,
 		},

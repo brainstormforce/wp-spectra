@@ -24,12 +24,12 @@ $btnPaddingLeft   = isset( $attr['paddingBtnLeft'] ) ? $attr['paddingBtnLeft'] :
 $btnPaddingRight  = isset( $attr['paddingBtnRight'] ) ? $attr['paddingBtnRight'] : $attr['ctaBtnHrPadding'];
 
 $selectors = array(
-	' .uagb-ifb-icon'                       => array(
+	' .uagb-ifb-icon'                                      => array(
 		'height'      => $icon_size,
 		'width'       => $icon_size,
 		'line-height' => $icon_size,
 	),
-	' .uagb-ifb-icon > span'                => array(
+	' .uagb-ifb-icon > span'                               => array(
 		'font-size'   => $icon_size,
 		'height'      => $icon_size,
 		'width'       => $icon_size,
@@ -100,7 +100,7 @@ $selectors = array(
 		'fill' => $attr['iconHover'],
 	),
 	// Img Style.
-	' .uagb-infobox__content-wrap .uagb-ifb-imgicon-wrap' => array(
+	' .uagb-infobox__content-wrap .uagb-ifb-imgicon-wrap'  => array(
 		'margin-left'   => UAGB_Helper::get_css_value( $attr['iconLeftMargin'], 'px' ),
 		'margin-right'  => UAGB_Helper::get_css_value( $attr['iconRightMargin'], 'px' ),
 		'margin-top'    => UAGB_Helper::get_css_value( $attr['iconTopMargin'], 'px' ),
@@ -157,7 +157,7 @@ $selectors = array(
 		'border-top-color' => $attr['seperatorColor'],
 		'border-top-style' => $attr['seperatorStyle'],
 	),
-	' .uagb-infobox__content-wrap .uagb-ifb-separator'      => array(
+	' .uagb-infobox__content-wrap .uagb-ifb-separator'     => array(
 		'width'            => UAGB_Helper::get_css_value( $attr['seperatorWidth'], $attr['separatorWidthType'] ),
 		'border-top-width' => UAGB_Helper::get_css_value( $attr['seperatorThickness'], $attr['thicknessUnit'] ),
 		'border-top-color' => $attr['seperatorColor'],
@@ -273,10 +273,10 @@ if ( $attr['imageWidthType'] ) {
 }
 
 if ( 'above-title' === $attr['iconimgPosition'] || 'below-title' === $attr['iconimgPosition'] ) {
-	$selectors['.uagb-infobox__content-wrap']                         = array(
+	$selectors['.uagb-infobox__content-wrap']  = array(
 		'text-align' => $attr['headingAlign'],
 	);
-	$selectors[' .uagb-infobox__content-wrap']                         = array(
+	$selectors[' .uagb-infobox__content-wrap'] = array(
 		'text-align' => $attr['headingAlign'],
 	);
 }

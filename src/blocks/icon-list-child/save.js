@@ -9,7 +9,7 @@ import renderSVG from '@Controls/renderIcon';
 import { RichText } from '@wordpress/block-editor';
 
 export default function save( props ) {
-	const { attributes, className } = props;
+	const { attributes , className } = props;
 
 	const {
 		label,
@@ -27,11 +27,7 @@ export default function save( props ) {
 
 	if ( image_icon === 'icon' ) {
 		if ( icon ) {
-			imageIconHtml = (
-				<span className="uagb-icon-list__source-icon">
-					{ renderSVG( icon ) }
-				</span>
-			);
+			imageIconHtml = renderSVG( icon )
 		}
 	} else if ( image && image.url ) {
 		imageIconHtml = (
@@ -44,18 +40,16 @@ export default function save( props ) {
 	}
 
 	const targetVal = target ? '_blank' : '_self';
-	const linkUrl = ! disableLink ? link : '/';
+	const linkUrl = disableLink ? link : '/';
 
 	return (
 		<div
 			className={ classnames(
-				'uagb-icon-list-repeater',
-				'uagb-icon-list__wrapper',
 				className,
 				`uagb-block-${ block_id }`
 			) }
 		>
-			{ ! disableLink && (
+			{ disableLink && (
 				<a
 					target={ targetVal }
 					aria-label={ label }
@@ -65,20 +59,16 @@ export default function save( props ) {
 					{ ' ' }
 				</a>
 			) }
-			<div className="uagb-icon-list__content-wrap">
-				<span className="uagb-icon-list__source-wrap">
-					{ imageIconHtml }
-				</span>
-				{ ! hideLabel && '' !== label && (
-					<div className="uagb-icon-list__label-wrap">
-						<RichText.Content
-							tagName="span"
-							value={ label }
-							className="uagb-icon-list__label"
-						/>
-					</div>
-				) }
-			</div>
+			<span className="uagb-icon-list__source-wrap">
+				{ imageIconHtml }
+			</span>
+			{ ! hideLabel && '' !== label && (
+				<RichText.Content
+					tagName="span"
+					value={ label }
+					className="uagb-icon-list__label"
+				/>
+			) }
 		</div>
 	);
 }
