@@ -218,31 +218,13 @@ const attributes = {
 		type: 'number',
 		default: 10,
 	},
-	headTabletSpace: {
-		type: 'number',
-	},
-	headMobileSpace: {
-		type: 'number',
-	},
 	subHeadSpace: {
 		type: 'number',
 		default: 10,
 	},
-	subHeadTabletSpace: {
-		type: 'number',
-	},
-	subHeadMobileSpace: {
-		type: 'number',
-	},
 	seperatorSpace: {
 		type: 'number',
 		default: 10,
-	},
-	seperatorTabletSpace: {
-		type: 'number',
-	},
-	seperatorMobileSpace: {
-		type: 'number',
 	},
 	iconimgBorderRadius: {
 		type: 'number',
@@ -393,16 +375,6 @@ const attributes = {
 	ctaBorderRadius: {
 		type: 'number'
 	},
-	prefixSpace: {
-		type: 'number',
-		default: 5,
-	},
-	prefixTabletSpace: {
-		type: 'number',
-	},
-	prefixMobileSpace: {
-		type: 'number',
-	},
 	iconLeftMargin: {
 		type: 'number',
 		default: 10,
@@ -488,11 +460,11 @@ const attributes = {
 		type: 'string',
 		default: 'px',
 	},
-	iconMobilePaddingUnit: {
+	iconMobileMarginUnit: {
 		type: 'string',
 		default: 'px',
 	},
-	iconTabletPaddingUnit: {
+	iconTabletMarginUnit: {
 		type: 'string',
 		default: 'px',
 	},
@@ -552,22 +524,6 @@ const attributes = {
 	paddingBtnLeftMobile: {
 		type: 'number',
 	},
-	prefixSpaceUnit: {
-		type: 'string',
-		default: 'px',
-	},
-	headSpaceUnit: {
-		type: 'string',
-		default: 'px',
-	},
-	seperatorSpaceUnit: {
-		type: 'string',
-		default: 'px',
-	},
-	subHeadSpaceUnit: {
-		type: 'string',
-		default: 'px',
-	},
 	imageWidthUnit: {
 		type: 'string',
 		default: 'px',
@@ -576,6 +532,195 @@ const attributes = {
 		type: 'string',
 		default: 'px',
 	},
+
+	prefixTopMargin : {
+		type: 'number'
+	},
+	prefixRightMargin : {
+		type: 'number'
+	},
+	prefixSpace : {
+		type: 'number',
+		default : 5
+	},
+	prefixLeftMargin : {
+		type: 'number'
+	},
+	prefixMarginTopTablet : {
+		type: 'number'
+	},
+	prefixMarginRightTablet : {
+		type: 'number'
+	},
+	prefixTabletSpace : {
+		type: 'number'
+	},
+	prefixMarginLeftTablet : {
+		type: 'number'
+	},
+	prefixMarginTopMobile : {
+		type: 'number'
+	},
+	prefixMarginRightMobile : {
+		type: 'number'
+	},
+	prefixMobileSpace : {
+		type: 'number'
+	},
+	prefixMarginLeftMobile : {
+		type: 'number'
+	},
+	prefixSpaceUnit : {
+		type: 'number',
+		default: 'px',
+	},
+	prefixMobileMarginUnit : {
+		type: 'number',
+		default: 'px',
+	},
+	prefixTabletMarginUnit : {
+		type: 'number',
+		default: 'px',
+	},
+
+	headTopMargin : {
+		type: 'number'
+	},
+	headRightMargin : {
+		type: 'number'
+	},
+	headLeftMargin : {
+		type: 'number'
+	},
+	headMarginTopTablet : {
+		type: 'number'
+	},
+	headMarginRightTablet : {
+		type: 'number'
+	},
+	headTabletSpace : {
+		type: 'number'
+	},
+	headMarginLeftTablet : {
+		type: 'number'
+	},
+	headMarginTopMobile : {
+		type: 'number'
+	},
+	headMarginRightMobile : {
+		type: 'number'
+	},
+	headMobileSpace : {
+		type: 'number'
+	},
+	headMarginLeftMobile : {
+		type: 'number'
+	},
+	headSpaceUnit : {
+		type: 'number',
+		default: 'px',
+	},
+	headMobileMarginUnit : {
+		type: 'number',
+		default: 'px',
+	},
+	headTabletMarginUnit : {
+		type: 'number',
+		default: 'px',
+	},
+
+	separatorTopMargin : {
+		type: 'number'
+	},
+	separatorRightMargin : {
+		type: 'number'
+	},
+	separatorLeftMargin : {
+		type: 'number'
+	},
+	separatorMarginTopTablet : {
+		type: 'number'
+	},
+	separatorMarginRightTablet : {
+		type: 'number'
+	},
+	seperatorTabletSpace : {
+		type: 'number'
+	},
+	separatorMarginLeftTablet : {
+		type: 'number'
+	},
+	separatorMarginTopMobile : {
+		type: 'number'
+	},
+	separatorMarginRightMobile : {
+		type: 'number'
+	},
+	seperatorMobileSpace : {
+		type: 'number'
+	},
+	separatorMarginLeftMobile : {
+		type: 'number'
+	},
+	seperatorSpaceUnit : {
+		type: 'number',
+		default: 'px',
+	},
+	separatorMobileMarginUnit : {
+		type: 'number',
+		default: 'px',
+	},
+	separatorTabletMarginUnit : {
+		type: 'number',
+		default: 'px',
+	},
+
+	subHeadTopMargin : {
+		type: 'number'
+	},
+	subHeadRightMargin : {
+		type: 'number'
+	},
+	subHeadLeftMargin : {
+		type: 'number'
+	},
+	subHeadMarginTopTablet : {
+		type: 'number'
+	},
+	subHeadMarginRightTablet : {
+		type: 'number'
+	},
+	subHeadTabletSpace : {
+		type: 'number'
+	},
+	subHeadMarginLeftTablet : {
+		type: 'number'
+	},
+	subHeadMarginTopMobile : {
+		type: 'number'
+	},
+	subHeadMarginRightMobile : {
+		type: 'number'
+	},
+	subHeadMobileSpace : {
+		type: 'number'
+	},
+	subHeadMarginLeftMobile : {
+		type: 'number'
+	},
+	subHeadSpaceUnit : {
+		type: 'number',
+		default: 'px',
+	},
+	subHeadMobileMarginUnit : {
+		type: 'number',
+		default: 'px',
+	},
+	subHeadTabletMarginUnit : {
+		type: 'number',
+		default: 'px',
+	},
+
 };
 
 export default attributes;

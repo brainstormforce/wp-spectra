@@ -93,13 +93,6 @@ const Settings = ( props ) => {
 		subHeadDecoration,
 		subHeadLoadGoogleFonts,
 		separatorWidthType,
-		seperatorSpace,
-		seperatorTabletSpace,
-		seperatorMobileSpace,
-		headSpace,
-		headTabletSpace,
-		headMobileSpace,
-		subHeadSpace,
 		icon,
 		iconColor,
 		iconSize,
@@ -159,9 +152,6 @@ const Settings = ( props ) => {
 		ctaBorderhoverColor,
 		ctaBorderWidth,
 		ctaBorderRadius,
-		prefixSpace,
-		prefixTabletSpace,
-		prefixMobileSpace,
 		iconLeftMargin,
 		iconRightMargin,
 		iconTopMargin,
@@ -175,8 +165,8 @@ const Settings = ( props ) => {
 		iconMarginBottomMobile,
 		iconMarginLeftMobile,
 		iconMarginUnit,
-		iconMobilePaddingUnit,
-		iconTabletPaddingUnit,
+		iconMobileMarginUnit,
+		iconTabletMarginUnit,
 		iconImage,
 		imageSize,
 		imageWidth,
@@ -192,12 +182,74 @@ const Settings = ( props ) => {
 		paddingspacingLink,
 		headTransform,
 		headDecoration,
+
+		prefixTopMargin,
+		prefixRightMargin,
+		prefixSpace,
+		prefixLeftMargin,
+		prefixMarginTopTablet,
+		prefixMarginRightTablet,
+		prefixTabletSpace,
+		prefixMarginLeftTablet,
+		prefixMarginTopMobile,
+		prefixMarginRightMobile,
+		prefixMobileSpace,
+		prefixMarginLeftMobile,
 		prefixSpaceUnit,
+		prefixMobileMarginUnit,
+		prefixTabletMarginUnit,
+		spacingPrefixLink,
+
+		headTopMargin,
+		headRightMargin,
+		headSpace,
+		headLeftMargin,
+		headMarginTopTablet,
+		headMarginRightTablet,
+		headTabletSpace,
+		headMarginLeftTablet,
+		headMarginTopMobile,
+		headMarginRightMobile,
+		headMobileSpace,
+		headMarginLeftMobile,
 		headSpaceUnit,
+		headMobilePaddingUnit,
+		headTabletPaddingUnit,
+		spacingHeadLink,
+
+		separatorTopMargin,
+		separatorRightMargin,
+		seperatorSpace,
+		separatorLeftMargin,
+		separatorMarginTopTablet,
+		separatorMarginRightTablet,
+		seperatorTabletSpace,
+		separatorMarginLeftTablet,
+		separatorMarginTopMobile,
+		separatorMarginRightMobile,
+		seperatorMobileSpace,
+		separatorMarginLeftMobile,
 		seperatorSpaceUnit,
-		subHeadSpaceUnit,
+		separatorMobileMarginUnit,
+		separatorTabletMarginUnit,
+		spacingSeparatorLink,
+
+		subHeadTopMargin,
+		subHeadRightMargin,
+		subHeadSpace,
+		subHeadLeftMargin,
+		subHeadMarginTopTablet,
+		subHeadMarginRightTablet,
 		subHeadTabletSpace,
+		subHeadMarginLeftTablet,
+		subHeadMarginTopMobile,
+		subHeadMarginRightMobile,
 		subHeadMobileSpace,
+		subHeadMarginLeftMobile,
+		subHeadSpaceUnit,
+		subHeadMobileMarginUnit,
+		subHeadTabletMarginUnit,
+		spacingSubheadLink,
 	} = attributes;
 
 	/*
@@ -1042,12 +1094,12 @@ const Settings = ( props ) => {
 									label: 'iconMarginUnit',
 								} }
 								mUnit={ {
-									value: iconMobilePaddingUnit,
-									label: 'iconMobilePaddingUnit',
+									value: iconMobileMarginUnit,
+									label: 'iconMobileMarginUnit',
 								} }
 								tUnit={ {
-									value: iconTabletPaddingUnit,
-									label: 'iconTabletPaddingUnit',
+									value: iconTabletMarginUnit,
+									label: 'iconTabletMarginUnit',
 								} }
 								deviceType={ deviceType }
 								attributes={ attributes }
@@ -1137,32 +1189,79 @@ const Settings = ( props ) => {
 									label: 'prefixDecoration',
 								} }
 							/>
-							<ResponsiveSlider
+							<SpacingControl
+								{ ...props }
 								label={ __(
-									'Bottom Margin',
+									'Margin',
 									'ultimate-addons-for-gutenberg'
 								) }
-								data={ {
-									desktop: {
-										value: prefixSpace,
-										label: 'prefixSpace',
-									},
-									tablet: {
-										value: prefixTabletSpace,
-										label: 'prefixTabletSpace',
-									},
-									mobile: {
-										value: prefixMobileSpace,
-										label: 'prefixMobileSpace',
-									},
+								valueTop={ {
+									value: prefixTopMargin,
+									label: 'prefixTopMargin',
 								} }
-								min={ 0 }
-								max={ 50 }
+								valueRight={ {
+									value: prefixRightMargin,
+									label: 'prefixRightMargin',
+								} }
+								valueBottom={ {
+									value: prefixSpace,
+									label: 'prefixSpace',
+								} }
+								valueLeft={ {
+									value: prefixLeftMargin,
+									label: 'prefixLeftMargin',
+								} }
+								valueTopTablet={ {
+									value: prefixMarginTopTablet,
+									label: 'prefixMarginTopTablet',
+								} }
+								valueRightTablet={ {
+									value: prefixMarginRightTablet,
+									label: 'prefixMarginRightTablet',
+								} }
+								valueBottomTablet={ {
+									value: prefixTabletSpace,
+									label: 'prefixTabletSpace',
+								} }
+								valueLeftTablet={ {
+									value: prefixMarginLeftTablet,
+									label: 'prefixMarginLeftTablet',
+								} }
+								valueTopMobile={ {
+									value: prefixMarginTopMobile,
+									label: 'prefixMarginTopMobile',
+								} }
+								valueRightMobile={ {
+									value: prefixMarginRightMobile,
+									label: 'prefixMarginRightMobile',
+								} }
+								valueBottomMobile={ {
+									value: prefixMobileSpace,
+									label: 'prefixMobileSpace',
+								} }
+								valueLeftMobile={ {
+									value: prefixMarginLeftMobile,
+									label: 'prefixMarginLeftMobile',
+								} }
 								unit={ {
 									value: prefixSpaceUnit,
 									label: 'prefixSpaceUnit',
 								} }
+								mUnit={ {
+									value: prefixMobileMarginUnit,
+									label: 'prefixMobileMarginUnit',
+								} }
+								tUnit={ {
+									value: prefixTabletMarginUnit,
+									label: 'prefixTabletMarginUnit',
+								} }
+								deviceType={ deviceType }
+								attributes={ attributes }
 								setAttributes={ setAttributes }
+								link={ {
+									value: spacingPrefixLink,
+									label: 'spacingPrefixLink',
+								} }
 							/>
 						</>
 					</UAGAdvancedPanelBody>
@@ -1244,32 +1343,79 @@ const Settings = ( props ) => {
 									label: 'headDecoration',
 								} }
 							/>
-							<ResponsiveSlider
+							<SpacingControl
+								{ ...props }
 								label={ __(
-									'Bottom Margin',
+									'Margin',
 									'ultimate-addons-for-gutenberg'
 								) }
-								data={ {
-									desktop: {
-										value: headSpace,
-										label: 'headSpace',
-									},
-									tablet: {
-										value: headTabletSpace,
-										label: 'headTabletSpace',
-									},
-									mobile: {
-										value: headMobileSpace,
-										label: 'headMobileSpace',
-									},
+								valueTop={ {
+									value: headTopMargin,
+									label: 'headTopMargin',
 								} }
-								min={ 0 }
-								max={ 50 }
+								valueRight={ {
+									value: headRightMargin,
+									label: 'headRightMargin',
+								} }
+								valueBottom={ {
+									value: headSpace,
+									label: 'headSpace',
+								} }
+								valueLeft={ {
+									value: headLeftMargin,
+									label: 'headLeftMargin',
+								} }
+								valueTopTablet={ {
+									value: headMarginTopTablet,
+									label: 'headMarginTopTablet',
+								} }
+								valueRightTablet={ {
+									value: headMarginRightTablet,
+									label: 'headMarginRightTablet',
+								} }
+								valueBottomTablet={ {
+									value: headTabletSpace,
+									label: 'headTabletSpace',
+								} }
+								valueLeftTablet={ {
+									value: headMarginLeftTablet,
+									label: 'headMarginLeftTablet',
+								} }
+								valueTopMobile={ {
+									value: headMarginTopMobile,
+									label: 'headMarginTopMobile',
+								} }
+								valueRightMobile={ {
+									value: headMarginRightMobile,
+									label: 'headMarginRightMobile',
+								} }
+								valueBottomMobile={ {
+									value: headMobileSpace,
+									label: 'headMobileSpace',
+								} }
+								valueLeftMobile={ {
+									value: headMarginLeftMobile,
+									label: 'headMarginLeftMobile',
+								} }
 								unit={ {
 									value: headSpaceUnit,
 									label: 'headSpaceUnit',
 								} }
+								mUnit={ {
+									value: headMobilePaddingUnit,
+									label: 'headMobilePaddingUnit',
+								} }
+								tUnit={ {
+									value: headTabletPaddingUnit,
+									label: 'headTabletPaddingUnit',
+								} }
+								deviceType={ deviceType }
+								attributes={ attributes }
 								setAttributes={ setAttributes }
+								link={ {
+									value: spacingHeadLink,
+									label: 'spacingHeadLink',
+								} }
 							/>
 						</>
 					</UAGAdvancedPanelBody>
@@ -1353,33 +1499,80 @@ const Settings = ( props ) => {
 								setAttributes( { seperatorColor: value } )
 							}
 						/>
-						<ResponsiveSlider
-							label={ __(
-								'Bottom Margin',
-								'ultimate-addons-for-gutenberg'
-							) }
-							data={ {
-								desktop: {
+						<SpacingControl
+								{ ...props }
+								label={ __(
+									'Margin',
+									'ultimate-addons-for-gutenberg'
+								) }
+								valueTop={ {
+									value: separatorTopMargin,
+									label: 'separatorTopMargin',
+								} }
+								valueRight={ {
+									value: separatorRightMargin,
+									label: 'separatorRightMargin',
+								} }
+								valueBottom={ {
 									value: seperatorSpace,
 									label: 'seperatorSpace',
-								},
-								tablet: {
+								} }
+								valueLeft={ {
+									value: separatorLeftMargin,
+									label: 'separatorLeftMargin',
+								} }
+								valueTopTablet={ {
+									value: separatorMarginTopTablet,
+									label: 'separatorMarginTopTablet',
+								} }
+								valueRightTablet={ {
+									value: separatorMarginRightTablet,
+									label: 'separatorMarginRightTablet',
+								} }
+								valueBottomTablet={ {
 									value: seperatorTabletSpace,
 									label: 'seperatorTabletSpace',
-								},
-								mobile: {
+								} }
+								valueLeftTablet={ {
+									value: separatorMarginLeftTablet,
+									label: 'separatorMarginLeftTablet',
+								} }
+								valueTopMobile={ {
+									value: separatorMarginTopMobile,
+									label: 'separatorMarginTopMobile',
+								} }
+								valueRightMobile={ {
+									value: separatorMarginRightMobile,
+									label: 'separatorMarginRightMobile',
+								} }
+								valueBottomMobile={ {
 									value: seperatorMobileSpace,
 									label: 'seperatorMobileSpace',
-								},
-							} }
-							min={ 0 }
-							max={ 50 }
-							unit={ {
-								value: seperatorSpaceUnit,
-								label: 'seperatorSpaceUnit',
-							} }
-							setAttributes={ setAttributes }
-						/>
+								} }
+								valueLeftMobile={ {
+									value: separatorMarginLeftMobile,
+									label: 'separatorMarginLeftMobile',
+								} }
+								unit={ {
+									value: seperatorSpaceUnit,
+									label: 'seperatorSpaceUnit',
+								} }
+								mUnit={ {
+									value: separatorMobileMarginUnit,
+									label: 'separatorMobileMarginUnit',
+								} }
+								tUnit={ {
+									value: separatorTabletMarginUnit,
+									label: 'separatorTabletMarginUnit',
+								} }
+								deviceType={ deviceType }
+								attributes={ attributes }
+								setAttributes={ setAttributes }
+								link={ {
+									value: spacingSeparatorLink,
+									label: 'spacingSeparatorLink',
+								} }
+							/>
 					</UAGAdvancedPanelBody>
 				) }
 				{ showDesc && (
@@ -1461,32 +1654,79 @@ const Settings = ( props ) => {
 									label: 'subHeadDecoration',
 								} }
 							/>
-							<ResponsiveSlider
+							<SpacingControl
+								{ ...props }
 								label={ __(
-									'Bottom Margin',
+									'Margin',
 									'ultimate-addons-for-gutenberg'
 								) }
-								data={ {
-									desktop: {
-										value: subHeadSpace,
-										label: 'subHeadSpace',
-									},
-									tablet: {
-										value: subHeadTabletSpace,
-										label: 'subHeadTabletSpace',
-									},
-									mobile: {
-										value: subHeadMobileSpace,
-										label: 'subHeadMobileSpace',
-									},
+								valueTop={ {
+									value: subHeadTopMargin,
+									label: 'subHeadTopMargin',
 								} }
-								min={ 0 }
-								max={ 50 }
+								valueRight={ {
+									value: subHeadRightMargin,
+									label: 'subHeadRightMargin',
+								} }
+								valueBottom={ {
+									value: subHeadSpace,
+									label: 'subHeadSpace',
+								} }
+								valueLeft={ {
+									value: subHeadLeftMargin,
+									label: 'subHeadLeftMargin',
+								} }
+								valueTopTablet={ {
+									value: subHeadMarginTopTablet,
+									label: 'subHeadMarginTopTablet',
+								} }
+								valueRightTablet={ {
+									value: subHeadMarginRightTablet,
+									label: 'subHeadMarginRightTablet',
+								} }
+								valueBottomTablet={ {
+									value: subHeadTabletSpace,
+									label: 'subHeadTabletSpace',
+								} }
+								valueLeftTablet={ {
+									value: subHeadMarginLeftTablet,
+									label: 'subHeadMarginLeftTablet',
+								} }
+								valueTopMobile={ {
+									value: subHeadMarginTopMobile,
+									label: 'subHeadMarginTopMobile',
+								} }
+								valueRightMobile={ {
+									value: subHeadMarginRightMobile,
+									label: 'subHeadMarginRightMobile',
+								} }
+								valueBottomMobile={ {
+									value: subHeadMobileSpace,
+									label: 'subHeadMobileSpace',
+								} }
+								valueLeftMobile={ {
+									value: subHeadMarginLeftMobile,
+									label: 'subHeadMarginLeftMobile',
+								} }
 								unit={ {
 									value: subHeadSpaceUnit,
 									label: 'subHeadSpaceUnit',
 								} }
+								mUnit={ {
+									value: subHeadMobileMarginUnit,
+									label: 'subHeadMobileMarginUnit',
+								} }
+								tUnit={ {
+									value: subHeadTabletMarginUnit,
+									label: 'subHeadTabletMarginUnit',
+								} }
+								deviceType={ deviceType }
+								attributes={ attributes }
 								setAttributes={ setAttributes }
+								link={ {
+									value: spacingSubheadLink,
+									label: 'spacingSubheadLink',
+								} }
 							/>
 						</>
 					</UAGAdvancedPanelBody>
