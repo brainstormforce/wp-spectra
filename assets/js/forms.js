@@ -189,7 +189,7 @@ UAGBForms = { // eslint-disable-line no-undef
 		const originalSerialized = window.UAGBForms._serializeIt( form );
 
 		const postData = {};
-
+		postData.id = attr.block_id;
 		for ( let i = 0; i < originalSerialized.length; i++ ) {
 			const inputname = document.getElementById( originalSerialized[ i ].name );
 			if ( originalSerialized[ i ].name.endsWith( '[]' ) ) {

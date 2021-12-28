@@ -119,7 +119,7 @@ if ( ! class_exists( 'UAGB_Forms' ) ) {
 			$body .= '<p style="text-align:center;">This e-mail was sent from a ' . get_bloginfo( 'name' ) . ' ( ' . site_url() . ' )</p>';
 			$body .= '</div>';
 			$body .= '</div>';
-			$this->send_email( $body );
+			$this->send_email( $body, $form_data );
 
 		}
 
@@ -129,10 +129,10 @@ if ( ! class_exists( 'UAGB_Forms' ) ) {
 		 * Trigger Mail.
 		 *
 		 * @param object $body Email Body.
+		 * @param object $form_data Email Body Array.
 		 * @since 1.22.0
 		 */
-		public function send_email( $body ) {
-
+		public function send_email( $body, $form_data ) {
 			check_ajax_referer( 'uagb_forms_ajax_nonce', 'nonce' );
 			$after_submit_data = isset( $_POST['after_submit_data'] ) ? json_decode( stripslashes( $_POST['after_submit_data'] ), true ) : array(); // phpcs:ignore
 
@@ -155,14 +155,15 @@ if ( ! class_exists( 'UAGB_Forms' ) ) {
 					wp_mail( sanitize_email( trim( $bcc_email ) ), $subject, $body, $headers );
 				}
 			}
-
 			if ( $succefull_mail ) {
+				do_action( 'uagb_form_success', $form_data );
 				wp_send_json_success( 200 );
 			} else {
 				wp_send_json_success( 400 );
 			}
 
 		}
+
 	}
 
 	/**
