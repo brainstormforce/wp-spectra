@@ -1,8 +1,7 @@
 import React, { Suspense, useLayoutEffect } from 'react';
 import classnames from 'classnames';
 import lazyLoader from '@Controls/lazy-loader';
-
-import Lottie from 'react-lottie';
+import { Player } from '@lottiefiles/react-lottie-player';
 import styles from './editor.lazy.scss';
 
 const Render = ( props ) => {
@@ -22,24 +21,20 @@ const Render = ( props ) => {
 
 	const { loop, speed, reverse, lottieURl, playOn, align } = attributes;
 
+	const reversedir = reverse && loop ? -1 : 1;
+
 	const handleLottieMouseEnter = () => {
-		lottieplayer.current.anim.play();
+		lottieplayer.current.setPlayerDirection( reversedir );
+		lottieplayer.current.play();
 	};
 
 	const handleLottieMouseLeave = () => {
-		lottieplayer.current.anim.stop();
+		lottieplayer.current.setPlayerDirection( reversedir );
+		lottieplayer.current.stop();
 	};
 
-	const reversedir = reverse && loop ? -1 : 1;
-
-	let play_animation = true;
-
-	if (
-		'none' === playOn ||
-		'scroll' === playOn ||
-		'undefined' === typeof playOn
-	) {
-		play_animation = false;
+	const toStopPlayAnimation = () => {
+		lottieplayer.current.stop();
 	}
 
 	return (
@@ -53,36 +48,28 @@ const Render = ( props ) => {
 			onMouseEnter={
 				'hover' === playOn
 					? handleLottieMouseEnter
-					: () => ( play_animation = true )
+					: toStopPlayAnimation
 			}
 			onMouseLeave={
 				'hover' === playOn
 					? handleLottieMouseLeave
-					: () => ( play_animation = true )
+					: toStopPlayAnimation
 			}
 			onClick={
 				'click' === playOn
 					? handleLottieMouseEnter
-					: () => ( play_animation = true )
+					: toStopPlayAnimation
 			}
 		>
 			<Suspense fallback={ lazyLoader() }>
-				<Lottie
-					key={ lottieURl }
+				<Player
+				    autoplay={ true }
 					ref={ lottieplayer }
-					options={ {
-						loop,
-						path: lottieURl,
-						rendererSettings: {
-							preserveAspectRatio: 'xMidYMid',
-							className: 'uagb-lottie-inner-wrap',
-						},
-					} }
-					isStopped={ play_animation }
+					src={ lottieURl }
+        			loop={loop}
 					speed={ speed }
-					isClickToPauseDisabled={ true }
-					direction={ reversedir }
-				/>
+				>
+				</Player>
 			</Suspense>
 		</div>
 	);

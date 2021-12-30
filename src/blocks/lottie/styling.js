@@ -29,6 +29,9 @@ function styling( props ) {
 		'.uagb-lottie__outer-wrap:hover': {
 			'background': backgroundHColor,
 		},
+		' .lf-player-container #lottie': {
+			'height': generateCSSUnit( height, 'px' ),
+		},
 	};
 
 	tablet_selectors[ '.uagb-lottie__outer-wrap' ] = {
