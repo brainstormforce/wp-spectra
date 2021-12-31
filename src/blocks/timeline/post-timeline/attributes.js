@@ -680,3 +680,5 @@ const attributes = { // eslint-disable-line no-unused-vars
 		isUAGStyle: true,
 	},
 }
+
+export default attributes;

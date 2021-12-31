@@ -21,9 +21,9 @@ import iconListAttribute from './../../icon-list/attributes';
 import iconListChildAttribute from './../../icon-list-child/attributes';
 import priceListAttribute from './../../price-list/attributes';
 import priceListChildAttribute from './../../price-list-child/attributes';
-import timelineAttribute from './../../timeline/post-timeline/attributes';
 import contentAttribute from './../../timeline/content-timeline/attributes';
 import contentChildAttribute from './../../timeline/content-timeline-child/attributes';
+import postTimelineAttribute from './../../timeline/post-timeline/attributes';
 import callToActionAttribute from './../../call-to-action/attributes';
 import columnAttribute from './../../column/attributes';
 import columnsAttribute from './../../columns/attributes';
@@ -33,6 +33,7 @@ import blockquoteAttribute from './../../blockquote/attributes';
 import marketingBtnAttribute from './../../marketing-button/attributes';
 import tableofContentAttribute from './../../table-of-contents/attributes';
 import howToAttribute from './../../how-to/attributes';
+import howToStepAttribute from './../../how-to/child-blocks/step/attributes';
 import faqAttribute from './../../faq/attributes';
 import faqChildAttribute from './../../faq-child/attributes';
 import inlineNoticeAttribute from './../../inline-notice/attributes';
@@ -67,9 +68,8 @@ const blocksAttributes = {
 	'google-map' : googleMapAttribute,
 	'icon-list' : iconListAttribute,
 	'icon-list-child' : iconListChildAttribute,
-	'price-list' : priceListAttribute,
-	'price-list-child' : priceListChildAttribute,
-	'timeline' : timelineAttribute,
+	'restaurant-menu' : priceListAttribute,
+	'restaurant-menu-child' : priceListChildAttribute,
 	'call-to-action' : callToActionAttribute,
 	'column' : columnAttribute,
 	'columns' : columnsAttribute,
@@ -91,7 +91,8 @@ const blocksAttributes = {
 	'star-rating' : starRatingAttribute,
 	'content-timeline' : contentAttribute,
 	'content-timeline-child' : contentChildAttribute,
-
+    'post-timeline' : postTimelineAttribute,
+    'how-to-step' : howToStepAttribute,
 };
 
 const UAGCopyPasteStyles = () => {
@@ -395,9 +396,11 @@ const displayUAGCopyPasteSettingConditionally = compose(
         }
     } ),
     ifCondition( function( props ) {
+        const excludeBlocks = [ 'core/missing', 'uagb/faq-child', 'uagb/restaurant-menu-child', 'uagb/google-map', 'uagb/content-timeline-child' ];
+
         return (
             props.selectedBlock &&
-           ( props.selectedBlock.name.includes( 'uagb/' ) || props.selectedBlock.name.includes( 'core/' ) ) && 'core/missing' !== props.selectedBlock.name
+           ( props.selectedBlock.name.includes( 'uagb/' ) || props.selectedBlock.name.includes( 'core/' ) ) && 'core/missing' !== props.selectedBlock.name && ! excludeBlocks.includes( props.selectedBlock.name )
         );
     } )
 )( UAGCopyPasteStyles );

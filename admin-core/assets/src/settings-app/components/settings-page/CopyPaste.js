@@ -47,6 +47,9 @@ const CopyPaste = () => {
 		<div className="uag-global__element">
 			<div className="uag-collapse-panel-settings">
 				<h3>{ __( 'Copy Paste Styles', 'ultimate-addons-for-gutenberg' ) }</h3>
+			</div>
+			<p>{ __( 'Enable the "Copy Paste Styles" option to have the ability to Copy & Paste UAG & Core Gutenberg Blocks Styles.', 'ultimate-addons-for-gutenberg' ) }</p>
+			<div className="uag-global-control-button">
 				<NormalButton
 					buttonText={
 						copyPaste === 'enabled'
@@ -62,27 +65,26 @@ const CopyPaste = () => {
 					onClick={ copyPasteClick }
 					saving={ savingState }
 				/>
+				<span
+						className={ `uag-control__status-${ copyPaste } uag-copy-paste-status uag-field` }
+				>
+					{ copyPaste === 'enabled'
+						? __(
+								'Enabled ',
+								'ultimate-addons-for-gutenberg'
+							)
+						: __(
+								'Disabled',
+								'ultimate-addons-for-gutenberg'
+							) }
+					<img
+						src={
+							uag_react.plugin_dir +
+							'admin-core/assets/images/check.svg'
+						} alt = ''
+					/>
+				</span>
 			</div>
-			<p>{ __( 'Enable the "Copy Paste Styles" option to have the ability to Copy & Paste UAG & Core Gutenberg Blocks Styles.', 'ultimate-addons-for-gutenberg' ) }</p>
-			<span
-					className={ `uag-control__status-${ copyPaste } uag-copy-paste-status` }
-			>
-				{ copyPaste === 'enabled'
-					? __(
-							'Enabled ',
-							'ultimate-addons-for-gutenberg'
-						)
-					: __(
-							'Disabled',
-							'ultimate-addons-for-gutenberg'
-						) }
-				<img
-					src={
-						uag_react.plugin_dir +
-						'admin-core/assets/images/check.svg'
-					} alt = ''
-				/>
-			</span>
 		</div>
 	);
 }

@@ -33,8 +33,22 @@
 		.uag-collapse-status,
 		.uag-copy-paste-status {
 			display: flex;
-			align-self: flex-end;
+			align-self: center;
 			margin: 0 25px 25px 25px;
+		}
+
+		.uag-global-control-button {
+			border-top: 1px solid #eee;
+			background-color: #f6f7f7;
+			display: flex;
+			margin-top: auto;
+			padding: 20px 25px;
+			column-gap: 20px;
+			justify-content: space-between;
+
+			.uag-field {
+				margin: 0;
+			}
 		}
 	}
 }
