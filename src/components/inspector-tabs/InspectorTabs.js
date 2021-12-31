@@ -53,6 +53,15 @@ const InspectorTabs = ( props ) => {
 		if ( container ) {
 			observer.observe( container );
 		}
+		
+		// Inspector Tabs Priority Rendering Code. (COnflicts with 3rd Party plugin panels in Inspector Panel)
+		const tabsContainer = document.querySelector( '.uagb-inspector-tabs-container' );
+		const tabsGeneralContainer = document.querySelector( '.uagb-tab-content-general' );
+		const tabsStyleContainer = document.querySelector( '.uagb-tab-content-style' );
+		const tabsAdvanceContainer = document.querySelector( '.uagb-tab-content-advance' );
+		const tabsParent = tabsContainer.parentElement;
+
+		tabsParent.prepend( tabsContainer,tabsGeneralContainer,tabsStyleContainer,tabsAdvanceContainer );
 
 		// component will unmount
 		return () => {
@@ -67,6 +76,8 @@ const InspectorTabs = ( props ) => {
 				}
 			}
 		};
+
+
 	}, [] );
 
 	useEffect( () => {

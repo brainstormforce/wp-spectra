@@ -6,7 +6,8 @@ $border-color: #d6d9dd;
 	&:not([data-uagb-tab="advance"]) {
 
 		.components-panel__body.block-editor-block-inspector__advanced,
-		.components-panel__body.editor-block-inspector__advanced.block-editor-block-inspector__advanced {
+		.components-panel__body.editor-block-inspector__advanced.block-editor-block-inspector__advanced,
+		.block-editor-block-inspector > div > .components-panel__body {
 			display: none;
 		}
 	}
