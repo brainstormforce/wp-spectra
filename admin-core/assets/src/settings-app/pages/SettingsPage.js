@@ -5,7 +5,7 @@ import TemplatesButton from '@SettingsApp/components/settings-page/TemplatesButt
 import AssetsGeneration from '@SettingsApp/components/settings-page/AssetsGeneration';
 import VersionControl from '@SettingsApp/components/settings-page/VersionControl';
 import LoadFonts from '@SettingsApp/components/settings-page/LoadFonts';
-import CollapsePanels from '@SettingsApp/components/settings-page/CollapsePanels';
+import GlobalSettings from '@SettingsApp/components/settings-page/GlobalSettings';
 
 function SettingsPage() {
 	const [ { globaldata } ] = useStateValue();
@@ -31,7 +31,7 @@ function SettingsPage() {
 			<TemplatesButton />
 			<VersionControl />
 			<LoadFonts/>
-			<CollapsePanels/>
+			<GlobalSettings/>
 		</div>
 	);
 }

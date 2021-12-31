@@ -29,6 +29,7 @@ const attributes = {
 	align: {
 		type: 'string',
 		default: 'center',
+		isUAGStyle: true,
 	},
 	headingTag: {
 		type: 'string',
@@ -37,10 +38,12 @@ const attributes = {
 	timelinAlignment: {
 		type: 'string',
 		default: 'center',
+		isUAGStyle: true,
 	},
 	arrowlinAlignment: {
 		type: 'string',
 		default: 'center',
+		isUAGStyle: true,
 	},
 	block_id: {
 		type: 'string',
@@ -57,6 +60,7 @@ const attributes = {
 	iconSize: {
 		type: 'number',
 		default: 12,
+		isUAGStyle: true,
 	},
 	icon: {
 		type: 'string',

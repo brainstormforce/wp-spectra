@@ -21,7 +21,8 @@
 			margin-bottom: 0;
 		}
 
-		.uag-collapse-panel-settings {
+		.uag-collapse-panel-settings,
+		.uag-copy-paste-settings {
 			display: flex;
 			column-gap: 20px;
 			justify-content: space-between;
@@ -29,7 +30,8 @@
 			padding: 20px 25px;
 		}
 
-		.uag-collapse-status {
+		.uag-collapse-status,
+		.uag-copy-paste-status {
 			display: flex;
 			align-self: flex-end;
 			margin: 0 25px 25px 25px;

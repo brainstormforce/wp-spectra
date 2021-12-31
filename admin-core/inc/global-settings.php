@@ -72,7 +72,16 @@ class Global_Settings {
 					'collapse_panels' => array(
 						'type'  => 'toggle',
 						'name'  => 'collapse_panels',
-						'label' => __( 'Load Google Fonts Locally', 'ultimate-addons-for-gutenberg' ),
+						'label' => __( 'Collapse Panel', 'ultimate-addons-for-gutenberg' ),
+					),
+				),
+			),
+			'copy_paste'                   => array(
+				'fields' => array(
+					'copy_paste' => array(
+						'type'  => 'toggle',
+						'name'  => 'copy_paste',
+						'label' => __( 'Copy Paste Styles', 'ultimate-addons-for-gutenberg' ),
 					),
 				),
 			),

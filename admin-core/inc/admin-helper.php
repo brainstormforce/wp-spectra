@@ -52,6 +52,7 @@ class Admin_Helper {
 			'load_select_font_globally'          => \UAGB_Admin_Helper::get_admin_settings_option( 'uag_load_select_font_globally', 'disabled' ),
 			'load_gfonts_locally'                => \UAGB_Admin_Helper::get_admin_settings_option( 'uag_load_gfonts_locally', 'disabled' ),
 			'collapse_panels'                    => \UAGB_Admin_Helper::get_admin_settings_option( 'uag_collapse_panels', 'enabled' ),
+			'copy_paste'                         => \UAGB_Admin_Helper::get_admin_settings_option( 'uag_copy_paste', 'enabled' ),
 			'preload_local_fonts'                => \UAGB_Admin_Helper::get_admin_settings_option( 'uag_preload_local_fonts', 'disabled' ),
 		);
 

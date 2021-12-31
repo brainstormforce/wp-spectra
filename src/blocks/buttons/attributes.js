@@ -54,6 +54,7 @@ const attributes = {
 	align: {
 		type: 'string',
 		default: 'center',
+		isUAGStyle: true,
 	},
 	gap: {
 		type: 'number',
@@ -66,23 +67,29 @@ const attributes = {
 	loadGoogleFonts: {
 		type: 'boolean',
 		default: false,
+		isUAGStyle: true,
 	},
 	fontFamily: {
 		type: 'string',
 		default: 'Default',
+		isUAGStyle: true,
 	},
 	fontWeight: {
 		type: 'string',
+		isUAGStyle: true,
 	},
 	fontStyle: {
 		type: 'string',
 		default: 'normal',
+		isUAGStyle: true,
 	},
 	fontTransform: {
 		type: 'string',
+		isUAGStyle: true,
 	},
 	fontDecoration: {
 		type: 'string',
+		isUAGStyle: true,
 	},
 };
 

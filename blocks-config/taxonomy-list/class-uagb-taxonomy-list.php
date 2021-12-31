@@ -575,18 +575,18 @@ if ( ! class_exists( 'UAGB_Taxonomy_List' ) ) {
 										<?php if ( $showCount ) { ?>
 											<?php echo ' (' . esc_attr( $value->count ) . ')'; ?>
 										<?php } ?>
-										<?php if ( $attributes['showhierarchy'] && ! empty( $newcategoriesList[ $key ]->children ) ) { ?>	
-											<ul class="uagb-taxonomy-list-children">	
+										<?php if ( $attributes['showhierarchy'] && ! empty( $newcategoriesList[ $key ]->children ) ) { ?>
+											<ul class="uagb-taxonomy-list-children">
 												<?php foreach ( $newcategoriesList[ $key ]->children as $value ) { ?>
 													<li class="uagb-tax-list">
-													<a class="uagb-tax-link" href="<?php echo esc_url( get_term_link( $value->slug, $attributes['taxonomyType'] ) ); ?>"><?php echo esc_attr( $value->name ); ?></a>	
+													<a class="uagb-tax-link" href="<?php echo esc_url( get_term_link( $value->slug, $attributes['taxonomyType'] ) ); ?>"><?php echo esc_attr( $value->name ); ?></a>
 													<?php if ( $showCount ) { ?>
 														<?php echo ' (' . esc_attr( $value->count ) . ')'; ?>
 													<?php } ?>												
 													</li>
 												<?php } ?>
-											</ul>			
-										<?php } ?>										
+											</ul>
+										<?php } ?>
 								</<?php echo esc_html( $titleTag ); ?>>
 								<?php if ( 'none' !== $seperatorStyle ) { ?>
 										<div class="uagb-tax-separator"></div>
@@ -607,14 +607,14 @@ if ( ! class_exists( 'UAGB_Taxonomy_List' ) ) {
 						<?php } ?>
 					</select>
 					<script type="text/javascript">
-						function redirectToTaxonomyLink( selectedOption ) {       
+						function redirectToTaxonomyLink( selectedOption ) {
 							var selectedValue = selectedOption.value;
 							if ( selectedValue ) {
 								location.href = selectedValue;
-							}						
+							}
 						}
-					</script>					
-				<?php } ?>	
+					</script>
+				<?php } ?>
 				<?php
 			}
 		}
@@ -676,7 +676,7 @@ if ( ! class_exists( 'UAGB_Taxonomy_List' ) ) {
 							<?php $this->list_html( $attributes ); ?>							
 					<?php } else { ?>
 							<div class="uagb-tax-not-available"><?php echo esc_attr( $noTaxDisplaytext ); ?></div>
-					<?php } ?>					
+					<?php } ?>
 				</div>
 
 			<?php
