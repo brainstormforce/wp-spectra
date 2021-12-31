@@ -175,6 +175,7 @@ The awesome React FontIconPicker is developed by [Alessandro Benoit](http://code
 * Improvement: Display Condition – an UAG extensions will be enabled for Core Gutenberg blocks & UAG blocks by default, Also added a filter to enable UAG extension for third-party blocks.
 * Improvement: Refactored the UAG blocks' code & improved editor performance drastically.
 * Improvement: Typography control - Added text-transform, text-decoration and font-style options.
+* Improvement: Team Block - Span and Div tag support for Title.
 * Fix: Posts - Excerpt Layout Strips Shortcodes on Frontend.
 * Fix: Blockquote - Tweet content not shown in tweet box when double and single quotes are used.
 

@@ -20,7 +20,7 @@ const attributes = {
 		default: 'h3',
 	},
 	title: {
-		selector: 'h1,h2,h3,h4,h5,h6',
+		selector: 'h1,h2,h3,h4,h5,h6,span,div',
 		default: 'John Doe',
 	},
 	prefix: {
