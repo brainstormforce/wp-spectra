@@ -1,4 +1,5 @@
 .uagb-slick-carousel .slick-list,
+.uagb-slick-carousel .slick-slider,
 .uagb-slick-carousel.slick-slider,
 .uagb-slick-carousel .slick-track {
 	position: relative;
@@ -52,6 +53,11 @@
 
 .uagb-slick-carousel .slick-track::after {
 	clear: both;
+}
+
+/* For testimonial */
+.uagb-slick-carousel .slick-initialized .slick-slide {
+	display: block;
 }
 
 .uagb-slick-carousel .slick-slide {
