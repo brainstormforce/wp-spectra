@@ -68,7 +68,7 @@ export class Stars extends Component {
 			>
 				{ [ ...Array( limit ).keys() ].map( ( i ) => (
 					<svg
-						xmlns="http://www.w3.org/2000/svg"
+						xmlns="https://www.w3.org/2000/svg"
 						key={ i }
 						height="20"
 						width="20"

@@ -225,7 +225,7 @@ export default compose(
 		}
 
 		const jsonData = {
-			'@context': 'http://schema.org/',
+			'@context': 'https://schema.org/',
 			'@type': 'Review',
 			'reviewBody': ownProps.attributes.summaryDescription,
 			'description': ownProps.attributes.rContent,

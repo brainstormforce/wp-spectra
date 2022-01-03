@@ -1,7 +1,7 @@
 const cIcons = {};
 cIcons.inherit = (
 	<svg
-		xmlns="http://www.w3.org/2000/svg"
+		xmlns="https://www.w3.org/2000/svg"
 		fillRule="evenodd"
 		width="24"
 		height="24"

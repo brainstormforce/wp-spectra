@@ -13,6 +13,7 @@ const ResponsiveSelectControl = ( props ) => {
 
 	const deviceType = useDeviceType();
 
+
 	const output = {};
 	output.Desktop = (
 		<SelectControl

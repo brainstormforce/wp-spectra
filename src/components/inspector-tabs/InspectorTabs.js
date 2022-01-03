@@ -116,7 +116,7 @@ const InspectorTabs = ( props ) => {
 							onClick={ () => _onTabChange( LAYOUT ) }
 						>
 							<svg
-								xmlns="http://www.w3.org/2000/svg"
+								xmlns="https://www.w3.org/2000/svg"
 								width="16"
 								height="15"
 							>
@@ -137,7 +137,7 @@ const InspectorTabs = ( props ) => {
 							onClick={ () => _onTabChange( STYLE ) }
 						>
 							<svg
-								xmlns="http://www.w3.org/2000/svg"
+								xmlns="https://www.w3.org/2000/svg"
 								width="18"
 								height="21"
 							>
@@ -157,7 +157,7 @@ const InspectorTabs = ( props ) => {
 							onClick={ () => _onTabChange( ADVANCE ) }
 						>
 							<svg
-								xmlns="http://www.w3.org/2000/svg"
+								xmlns="https://www.w3.org/2000/svg"
 								width="17"
 								height="16"
 							>

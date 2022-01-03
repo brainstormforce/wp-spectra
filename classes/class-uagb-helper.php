@@ -287,7 +287,7 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 				$view = implode( ' ', $view );
 			}
 			?>
-			<svg xmlns="http://www.w3.org/2000/svg" viewBox= "<?php echo esc_html( $view ); ?>"><path d="<?php echo esc_html( $path ); ?>"></path></svg>
+			<svg xmlns="https://www.w3.org/2000/svg" viewBox= "<?php echo esc_html( $view ); ?>"><path d="<?php echo esc_html( $path ); ?>"></path></svg>
 			<?php
 		}
 

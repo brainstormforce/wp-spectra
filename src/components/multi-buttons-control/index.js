@@ -31,6 +31,7 @@ const MultiButtonsControl = ( props ) => {
 
 	const deviceType = useDeviceType();
 	const iconsClass = showIcons ? 'uag-multibutton-icons' : '';
+
 	if ( ! options ) {
 		return __(
 			'Please add a option props to MultiButtonsControl',

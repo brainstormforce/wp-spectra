@@ -24,7 +24,7 @@ function renderSVG( svg ) {
 		switch ( svg ) {
 			case 'align-center':
 				return (
-					<svg viewBox="0 0 18 12" xmlns="http://www.w3.org/2000/svg">
+					<svg viewBox="0 0 18 12" xmlns="https://www.w3.org/2000/svg">
 						<path
 							fillRule="evenodd"
 							clipRule="evenodd"
@@ -34,7 +34,7 @@ function renderSVG( svg ) {
 				);
 			case 'align-left':
 				return (
-					<svg viewBox="0 0 18 12" xmlns="http://www.w3.org/2000/svg">
+					<svg viewBox="0 0 18 12" xmlns="https://www.w3.org/2000/svg">
 						<path
 							fillRule="evenodd"
 							clipRule="evenodd"
@@ -44,7 +44,7 @@ function renderSVG( svg ) {
 				);
 			case 'align-right':
 				return (
-					<svg viewBox="0 0 18 12" xmlns="http://www.w3.org/2000/svg">
+					<svg viewBox="0 0 18 12" xmlns="https://www.w3.org/2000/svg">
 						<path
 							fillRule="evenodd"
 							clipRule="evenodd"
@@ -55,7 +55,7 @@ function renderSVG( svg ) {
 		}
 
 		return (
-			<svg xmlns="http://www.w3.org/2000/svg" viewBox={ viewBox }>
+			<svg xmlns="https://www.w3.org/2000/svg" viewBox={ viewBox }>
 				<path d={ path }></path>
 			</svg>
 		);

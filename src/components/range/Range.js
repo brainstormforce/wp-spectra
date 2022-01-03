@@ -70,7 +70,7 @@ const Range = ( props ) => {
 			setCacheValue( cachedValueUpdate );
 		}
 	}, [ props.unit ] );
-	
+
 	let unitSizes = [
 		{
 			name: __( 'Pixel', 'ultimate-addons-for-gutenberg' ),
