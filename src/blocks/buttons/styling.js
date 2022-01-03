@@ -20,7 +20,15 @@ function styling( props ) {
 	const tabletSelectors = {};
 	const mobileSelectors = {};
 
-	selectors[ ' .uagb-buttons-repeater:not(.wp-block-button__link)' ] = {
+	selectors[ ' .uagb-buttons-repeater:not(.wp-block-button__link)' ] = { // For Backword user.
+		'font-family': fontFamily,
+		'font-style' : fontStyle,
+		'text-decoration': fontDecoration,
+		'text-transform': fontTransform,
+		'font-weight': fontWeight,
+	};
+
+	selectors[ ' .uagb-buttons-repeater' ] = { // For new user.
 		'font-family': fontFamily,
 		'font-style' : fontStyle,
 		'text-decoration': fontDecoration,

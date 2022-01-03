@@ -113,7 +113,14 @@ if ( 'full' === $attr['align'] ) {
 	}
 }
 if ( $attr['childMigrate'] ) {
-		$selectors[' .uagb-buttons-repeater:not(.wp-block-button__link)'] = array(
+		$selectors[' .uagb-buttons-repeater:not(.wp-block-button__link)'] = array( // For Backword user.
+			'font-family'     => $attr['fontFamily'],
+			'text-transform'  => $attr['fontTransform'],
+			'text-decoration' => $attr['fontDecoration'] . '!important',
+			'font-style'      => $attr['fontStyle'],
+			'font-weight'     => $attr['fontWeight'],
+		);
+		$selectors[' .uagb-buttons-repeater']                             = array( // For New User.
 			'font-family'     => $attr['fontFamily'],
 			'text-transform'  => $attr['fontTransform'],
 			'text-decoration' => $attr['fontDecoration'] . '!important',
