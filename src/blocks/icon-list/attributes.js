@@ -2,7 +2,7 @@
  * BLOCK: Icon List - Attributes
  */
 
-const itemCount = 1;
+const itemCount = 3;
 
 const icons = [];
 
