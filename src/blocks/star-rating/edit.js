@@ -4,7 +4,6 @@
 
 // Import block dependencies and components.
 import styling from './styling';
-import { withSelect } from '@wordpress/data';
 import React, { useEffect, lazy, Suspense } from 'react';
 import lazyLoader from '@Controls/lazy-loader';
 const Settings = lazy( () =>
@@ -48,15 +47,4 @@ const UAGStarRating = ( props ) => {
 	);
 };
 
-export default withSelect( ( select ) => {
-	const { __experimentalGetPreviewDeviceType = null } = select(
-		'core/edit-post'
-	);
-	const deviceType = __experimentalGetPreviewDeviceType
-		? __experimentalGetPreviewDeviceType()
-		: null;
-
-	return {
-		deviceType,
-	};
-} )( UAGStarRating );
+export default UAGStarRating;

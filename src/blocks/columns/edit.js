@@ -175,13 +175,6 @@ const applyWithSelect = withSelect( ( select, props ) => {
 	} = select( 'core/blocks' );
 	const innerBlocks = getBlocks( props.clientId );
 	const { replaceInnerBlocks } = useDispatch( 'core/block-editor' );
-	const { __experimentalGetPreviewDeviceType = null } = select(
-		'core/edit-post'
-	);
-
-	const deviceType = __experimentalGetPreviewDeviceType
-		? __experimentalGetPreviewDeviceType()
-		: null;
 
 	return {
 		// Subscribe to changes of the innerBlocks to control the display of the layout selection placeholder.
@@ -200,7 +193,6 @@ const applyWithSelect = withSelect( ( select, props ) => {
 				? null
 				: getBlockVariations( props.name ),
 		replaceInnerBlocks,
-		deviceType,
 	};
 } );
 

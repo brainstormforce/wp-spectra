@@ -13,8 +13,6 @@ const Render = lazy( () =>
 	import( /* webpackChunkName: "chunks/column/render" */ './render' )
 );
 
-import { withSelect } from '@wordpress/data';
-
 import hexToRGBA from '@Controls/hexToRgba';
 
 import maybeGetColorForVariable from '@Controls/maybeGetColorForVariable';
@@ -68,15 +66,4 @@ const ColumnComponent = ( props ) => {
 	);
 };
 
-export default withSelect( ( select ) => {
-	const { __experimentalGetPreviewDeviceType = null } = select(
-		'core/edit-post'
-	);
-	const deviceType = __experimentalGetPreviewDeviceType
-		? __experimentalGetPreviewDeviceType()
-		: null;
-
-	return {
-		deviceType,
-	};
-} )( ColumnComponent );
+export default ColumnComponent;

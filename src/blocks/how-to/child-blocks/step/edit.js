@@ -5,8 +5,6 @@
 import React, { lazy, useEffect, Suspense } from 'react';
 import lazyLoader from '@Controls/lazy-loader';
 import styling from './styling';
-import { compose } from '@wordpress/compose';
-import { withSelect } from '@wordpress/data';
 
 const Settings = lazy( () =>
 	import( /* webpackChunkName: "chunks/how-to/step-settings" */ './settings' )
@@ -52,17 +50,4 @@ const UAGBHowToStepEdit = ( props ) => {
 	);
 };
 
-export default compose(
-	withSelect( ( select ) => {
-		const { __experimentalGetPreviewDeviceType = null } = select(
-			'core/edit-post'
-		);
-		const deviceType = __experimentalGetPreviewDeviceType
-			? __experimentalGetPreviewDeviceType()
-			: null;
-
-		return {
-			deviceType,
-		};
-	} )
-)( UAGBHowToStepEdit );
+export default UAGBHowToStepEdit;

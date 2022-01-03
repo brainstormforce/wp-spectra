@@ -3,11 +3,11 @@ import {
 	InnerBlockLayoutContextProvider,
 	renderPostLayout,
 } from '.././function';
-
+import { useDeviceType } from '@Controls/getPreviewType';
 import React from 'react';
 const Blog = ( props ) => {
-	const { attributes, className, latestPosts, block_id, deviceType } = props;
-
+	const { attributes, className, latestPosts, block_id } = props;
+	const deviceType = useDeviceType();
 	const {
 		columns,
 		tcolumns,

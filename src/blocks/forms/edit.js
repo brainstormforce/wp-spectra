@@ -232,12 +232,7 @@ const applyWithSelect = withSelect( ( select, props ) => {
 		getBlockVariations,
 		getDefaultBlockVariation,
 	} = select( 'core/blocks' );
-	const { __experimentalGetPreviewDeviceType = null } = select(
-		'core/edit-post'
-	);
-	const deviceType = __experimentalGetPreviewDeviceType
-		? __experimentalGetPreviewDeviceType()
-		: null;
+
 	const innerBlocks = getBlocks( props.clientId );
 	const { replaceInnerBlocks } = useDispatch( 'core/block-editor' );
 
@@ -258,7 +253,6 @@ const applyWithSelect = withSelect( ( select, props ) => {
 				? null
 				: getBlockVariations( props.name ),
 		replaceInnerBlocks,
-		deviceType,
 	};
 } );
 

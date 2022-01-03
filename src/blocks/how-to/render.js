@@ -5,6 +5,7 @@ import { createBlock } from '@wordpress/blocks';
 import { RichText, InnerBlocks } from '@wordpress/block-editor';
 import React, { useLayoutEffect } from 'react';
 import styles from './editor.lazy.scss';
+import { useDeviceType } from '@Controls/getPreviewType';
 
 var ALLOWED_BLOCKS = [ 'uagb/how-to-step' ]; // eslint-disable-line no-var
 
@@ -24,6 +25,8 @@ const Render = ( props ) => {
 
 	props = props.parentProps;
 
+	const deviceType = useDeviceType();
+
 	// Setup the attributes
 	const {
 		className,
@@ -32,7 +35,6 @@ const Render = ( props ) => {
 		insertBlocksAfter,
 		mergeBlocks,
 		onReplace,
-		deviceType,
 		attributes: {
 			currencyType,
 			showEstcost,

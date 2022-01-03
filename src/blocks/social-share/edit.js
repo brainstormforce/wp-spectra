@@ -4,7 +4,6 @@
 import styling from './styling';
 import lazyLoader from '@Controls/lazy-loader';
 import React, { useEffect, lazy, Suspense } from 'react';
-import { withSelect } from '@wordpress/data';
 
 const Settings = lazy( () =>
 	import(
@@ -49,15 +48,4 @@ const SocialShareComponent = ( props ) => {
 	);
 };
 
-export default withSelect( ( select ) => {
-	const { __experimentalGetPreviewDeviceType = null } = select(
-		'core/edit-post'
-	);
-	const deviceType = __experimentalGetPreviewDeviceType
-		? __experimentalGetPreviewDeviceType()
-		: null;
-
-	return {
-		deviceType,
-	};
-} )( SocialShareComponent );
+export default SocialShareComponent;

@@ -8,11 +8,14 @@ import renderSVG from '@Controls/renderIcon';
 import { __ } from '@wordpress/i18n';
 import { RichText } from '@wordpress/block-editor';
 import React from 'react';
+import { useDeviceType } from '@Controls/getPreviewType';
 
 const Render = ( props ) => {
 	props = props.parentProps;
 
-	const { attributes, setAttributes, deviceType } = props;
+	const { attributes, setAttributes } = props;
+
+	const deviceType = useDeviceType();
 
 	const {
 		className,

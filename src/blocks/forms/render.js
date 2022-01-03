@@ -2,6 +2,7 @@ import classnames from 'classnames';
 import React, { useCallback, useLayoutEffect } from 'react';
 import { __ } from '@wordpress/i18n';
 import styles from './editor.lazy.scss';
+import { useDeviceType } from '@Controls/getPreviewType';
 
 const ALLOWED_BLOCKS = [
 	'uagb/forms-name',
@@ -31,7 +32,9 @@ const Render = ( props ) => {
 
 	props = props.parentProps;
 
-	const { attributes, setAttributes, deviceType } = props;
+	const deviceType = useDeviceType();
+
+	const { attributes, setAttributes } = props;
 	const {
 		block_id,
 		submitButtonText,

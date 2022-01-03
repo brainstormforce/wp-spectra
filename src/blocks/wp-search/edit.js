@@ -13,8 +13,6 @@ const Render = lazy( () =>
 	import( /* webpackChunkName: "chunks/wp-search/render" */ './render' )
 );
 
-import { withSelect } from '@wordpress/data';
-
 const UAGBWpSearchEdit = ( props ) => {
 	const initState = {
 		isFocused: 'false',
@@ -160,16 +158,4 @@ const UAGBWpSearchEdit = ( props ) => {
 	);
 };
 
-export default withSelect( ( select ) => {
-	const { __experimentalGetPreviewDeviceType = null } = select(
-		'core/edit-post'
-	);
-
-	const deviceType = __experimentalGetPreviewDeviceType
-		? __experimentalGetPreviewDeviceType()
-		: null;
-
-	return {
-		deviceType,
-	};
-} )( UAGBWpSearchEdit );
+export default UAGBWpSearchEdit;

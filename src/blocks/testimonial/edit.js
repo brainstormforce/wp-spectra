@@ -10,7 +10,6 @@ const Settings = lazy( () =>
 const Render = lazy( () =>
 	import( /* webpackChunkName: "chunks/testimonial/render" */ './render' )
 );
-import { withSelect } from '@wordpress/data';
 
 import hexToRGBA from '@Controls/hexToRgba';
 
@@ -106,16 +105,4 @@ const UAGBtestimonial = ( props ) => {
 	);
 };
 
-export default withSelect( ( select ) => {
-	const { __experimentalGetPreviewDeviceType = null } = select(
-		'core/edit-post'
-	);
-
-	const deviceType = __experimentalGetPreviewDeviceType
-		? __experimentalGetPreviewDeviceType()
-		: null;
-
-	return {
-		deviceType,
-	};
-} )( UAGBtestimonial );
+export default UAGBtestimonial;

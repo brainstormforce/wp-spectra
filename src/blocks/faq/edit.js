@@ -232,13 +232,6 @@ const FaqComponent = ( props ) => {
 export default compose(
 	withSelect( ( ownProps ) => {
 		const page_url = select( 'core/editor' ).getPermalink();
-		const { __experimentalGetPreviewDeviceType = null } = select(
-			'core/edit-post'
-		);
-
-		const deviceType = __experimentalGetPreviewDeviceType
-			? __experimentalGetPreviewDeviceType()
-			: null;
 
 		let faq_data = {};
 		const json_data = {
@@ -264,7 +257,6 @@ export default compose(
 		} );
 
 		return {
-			deviceType,
 			schemaJsonData: json_data,
 		};
 	} )

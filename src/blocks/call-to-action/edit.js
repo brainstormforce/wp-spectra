@@ -2,7 +2,6 @@
  * BLOCK: Call To Action
  */
 
-import { withSelect } from '@wordpress/data';
 import CtaStyle from './inline-styles';
 import React, { useEffect, lazy, Suspense } from 'react';
 import lazyLoader from '@Controls/lazy-loader';
@@ -76,16 +75,4 @@ const UAGBCallToAction = ( props ) => {
 	);
 };
 
-export default withSelect( ( select ) => {
-	const { __experimentalGetPreviewDeviceType = null } = select(
-		'core/edit-post'
-	);
-
-	const deviceType = __experimentalGetPreviewDeviceType
-		? __experimentalGetPreviewDeviceType()
-		: null;
-
-	return {
-		deviceType,
-	};
-} )( UAGBCallToAction );
+export default UAGBCallToAction;

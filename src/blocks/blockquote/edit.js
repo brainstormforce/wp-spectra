@@ -3,7 +3,6 @@ import styling from './styling';
 import React, { lazy, useEffect, Suspense } from 'react';
 import lazyLoader from '@Controls/lazy-loader';
 
-import { withSelect } from '@wordpress/data';
 const Settings = lazy( () =>
 	import( /* webpackChunkName: "chunks/blockquote/settings" */ './settings' )
 );
@@ -80,16 +79,4 @@ const UAGBBlockQuote = ( props ) => {
 	);
 };
 
-export default withSelect( ( select ) => {
-	const { __experimentalGetPreviewDeviceType = null } = select(
-		'core/edit-post'
-	);
-
-	const deviceType = __experimentalGetPreviewDeviceType
-		? __experimentalGetPreviewDeviceType()
-		: null;
-
-	return {
-		deviceType,
-	};
-} )( UAGBBlockQuote );
+export default UAGBBlockQuote;

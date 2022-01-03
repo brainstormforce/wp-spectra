@@ -122,6 +122,11 @@
 	button span.dashicon.dashicons {
 		font-size: 15px;
 	}
+
+	button.active-tab svg,
+	button.active-tab svg:focus {
+		color: #007cba;
+	}
 }
 
 .uagb-size-type-field-tabs .components-tab-panel__tabs button svg,
@@ -595,6 +600,10 @@ button.components-button.uagb-review-select-btn.is-secondary {
 	margin: 0;
 	line-height: 0;
 	margin-left: 5px;
+
+	svg {
+		color: #007cba;
+	}
 }
 
 .uag-responsive-common-button .dashicon {

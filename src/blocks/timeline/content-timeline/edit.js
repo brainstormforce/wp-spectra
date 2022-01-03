@@ -5,7 +5,7 @@
 import contentTimelineStyle from './styling';
 import React, { useEffect, lazy, Suspense } from 'react';
 import lazyLoader from '@Controls/lazy-loader';
-import { dispatch, select, withSelect } from '@wordpress/data';
+import { dispatch, select } from '@wordpress/data';
 
 const Settings = lazy( () =>
     import (
@@ -162,15 +162,4 @@ const ContentTimelineComponent = ( props ) => {
     );
 };
 
-export default withSelect( () => {
-    const { __experimentalGetPreviewDeviceType = null } = select(
-        'core/edit-post'
-    );
-    const deviceType = __experimentalGetPreviewDeviceType ?
-        __experimentalGetPreviewDeviceType() :
-        null;
-
-    return {
-        deviceType,
-    };
-} )( ContentTimelineComponent );
+export default ContentTimelineComponent;

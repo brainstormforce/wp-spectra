@@ -3,7 +3,7 @@ import React, { useLayoutEffect } from 'react';
 import renderSVG from '@Controls/renderIcon';
 import { __ } from '@wordpress/i18n';
 import styles from './editor.lazy.scss';
-
+import { useDeviceType } from '@Controls/getPreviewType';
 import { RichText } from '@wordpress/block-editor';
 
 const Render = ( props ) => {
@@ -16,8 +16,8 @@ const Render = ( props ) => {
 	}, [] );
 
 	props = props.parentProps;
-
-	const { attributes, setAttributes, deviceType } = props;
+	const deviceType = useDeviceType();
+	const { attributes, setAttributes } = props;
 
 	const {
 		block_id,

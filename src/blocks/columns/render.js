@@ -5,14 +5,14 @@
 import classnames from 'classnames';
 import shapes from './shapes';
 import React, { useMemo } from 'react';
-
+import { useDeviceType } from '@Controls/getPreviewType';
 const ALLOWED_BLOCKS = [ 'uagb/column' ];
 import { InnerBlocks } from '@wordpress/block-editor';
 
 const Render = ( props ) => {
 	
-	const { attributes, isSelected, className, deviceType } = props.parentProps;
-
+	const { attributes, isSelected, className } = props.parentProps;
+	const deviceType = useDeviceType();
 	const {
 		stack,
 		align,

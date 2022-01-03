@@ -3,7 +3,7 @@
  */
 
 import RestMenuStyle from './inline-styles';
-import { select, withSelect } from '@wordpress/data';
+import { select } from '@wordpress/data';
 import React, { lazy, Suspense, useEffect } from 'react';
 import lazyLoader from '@Controls/lazy-loader';
 const Settings = lazy( () =>
@@ -122,16 +122,4 @@ const UAGBRestaurantMenu = ( props ) => {
 	);
 };
 
-export default withSelect( () => {
-	const { __experimentalGetPreviewDeviceType = null } = select(
-		'core/edit-post'
-	);
-
-	const deviceType = __experimentalGetPreviewDeviceType
-		? __experimentalGetPreviewDeviceType()
-		: null;
-
-	return {
-		deviceType,
-	};
-} )( UAGBRestaurantMenu );
+export default UAGBRestaurantMenu;

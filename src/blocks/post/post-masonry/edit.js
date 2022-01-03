@@ -2163,14 +2163,6 @@ export default compose(
 		} = props.attributes;
 		const { getEntityRecords } = select( 'core' );
 
-		const { __experimentalGetPreviewDeviceType = null } = select(
-			'core/edit-post'
-		);
-
-		const deviceType = __experimentalGetPreviewDeviceType
-			? __experimentalGetPreviewDeviceType()
-			: null;
-
 		const allTaxonomy = uagb_blocks_info.all_taxonomy;
 		const currentTax = allTaxonomy[ postType ];
 		let categoriesList = [];
@@ -2233,7 +2225,6 @@ export default compose(
 				latestPostsQuery
 			),
 			categoriesList,
-			deviceType,
 			taxonomyList:
 				'undefined' !== typeof currentTax ? currentTax.taxonomy : [],
 			block: getBlocks( props.clientId ),

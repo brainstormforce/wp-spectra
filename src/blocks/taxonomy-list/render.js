@@ -2,6 +2,7 @@ import classnames from 'classnames';
 import React, { useLayoutEffect } from 'react';
 import styles from './editor.lazy.scss';
 import { decodeEntities } from '@wordpress/html-entities';
+import { useDeviceType } from '@Controls/getPreviewType';
 
 const Render = ( props ) => {
 	// Add and remove the CSS on the drop and remove of the component.
@@ -13,9 +14,9 @@ const Render = ( props ) => {
 	}, [] );
 
 	props = props.parentProps;
-
+	const deviceType = useDeviceType();
 	// Caching all Props.
-	const { attributes, categoriesList, deviceType } = props;
+	const { attributes, categoriesList } = props;
 
 	// Caching all attributes.
 	const {

@@ -15,9 +15,6 @@ const Render = lazy( () =>
 		/* webpackChunkName: "chunks/marketing-button/render" */ './render'
 	)
 );
-import { withSelect } from '@wordpress/data';
-
-import { compose } from '@wordpress/compose';
 
 const UAGBMarketingButtonEdit = ( props ) => {
 	useEffect( () => {
@@ -133,18 +130,4 @@ const UAGBMarketingButtonEdit = ( props ) => {
 		</Suspense>
 	);
 };
-
-const applyWithSelect = withSelect( ( select ) => {
-	const { __experimentalGetPreviewDeviceType = null } = select(
-		'core/edit-post'
-	);
-	const deviceType = __experimentalGetPreviewDeviceType
-		? __experimentalGetPreviewDeviceType()
-		: null;
-
-	return {
-		deviceType,
-	};
-} );
-
-export default compose( applyWithSelect )( UAGBMarketingButtonEdit );
+export default UAGBMarketingButtonEdit;

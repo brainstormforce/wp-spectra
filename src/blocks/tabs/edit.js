@@ -13,7 +13,7 @@ const Settings = lazy( () =>
 
 import { compose } from '@wordpress/compose';
 
-import { withDispatch, withSelect, dispatch, select } from '@wordpress/data';
+import { withDispatch, dispatch, select } from '@wordpress/data';
 
 const UAGBTabsEdit = ( props ) => {
 	useEffect( () => {
@@ -112,17 +112,6 @@ const UAGBTabsEdit = ( props ) => {
 };
 
 export default compose(
-	withSelect( ( select ) => { // eslint-disable-line no-shadow
-		const { __experimentalGetPreviewDeviceType = null } = select(
-			'core/edit-post'
-		);
-		const deviceType = __experimentalGetPreviewDeviceType
-			? __experimentalGetPreviewDeviceType()
-			: null;
-		return {
-			deviceType,
-		};
-	} ),
 	withDispatch( ( dispatch, { clientId }, { select } ) => { // eslint-disable-line no-shadow
 		const { getBlock } = select( 'core/block-editor' );
 		const { updateBlockAttributes, moveBlockToPosition } = dispatch(

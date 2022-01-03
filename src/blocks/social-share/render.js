@@ -6,6 +6,7 @@ import classnames from 'classnames';
 import { InnerBlocks } from '@wordpress/block-editor';
 import React, { useLayoutEffect, useMemo } from 'react';
 import styles from './editor.lazy.scss';
+import { useDeviceType } from '@Controls/getPreviewType';
 
 const ALLOWED_BLOCKS = [ 'uagb/social-share-child' ];
 
@@ -19,8 +20,8 @@ const Render = ( props ) => {
 	}, [] );
 
 	props = props.parentProps;
-
-	const { attributes, deviceType } = props;
+	const deviceType = useDeviceType();
+	const { attributes } = props;
 
 	const { className, social_count, socials, social_layout } = attributes;
 

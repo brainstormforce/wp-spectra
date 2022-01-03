@@ -3,6 +3,7 @@ import ContentTmClasses from '.././classes';
 import React, { useMemo, useLayoutEffect } from 'react';
 import { InnerBlocks } from '@wordpress/block-editor';
 import styles from './editor.lazy.scss';
+import { useDeviceType } from '@Controls/getPreviewType';
 
 const ALLOWED_BLOCKS = [ 'uagb/content-timeline-child' ];
 
@@ -16,11 +17,10 @@ const Render = ( props ) => {
 	}, [] );
 
 	props = props.parentProps;
-
+	const deviceType = useDeviceType();
 	// Setup the attributes.
 	const {
 		className,
-		deviceType,
 		attributes: { tm_content, timelineItem },
 	} = props;
 

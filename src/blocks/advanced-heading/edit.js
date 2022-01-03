@@ -19,10 +19,6 @@ const Render = lazy( () =>
 //  Import CSS.
 import './style.scss';
 
-import { withSelect } from '@wordpress/data';
-
-import { compose } from '@wordpress/compose';
-
 const UAGBAdvancedHeading = ( props ) => {
 	useEffect( () => {
 
@@ -63,16 +59,4 @@ const UAGBAdvancedHeading = ( props ) => {
 		</>
 	);
 };
-const applyWithSelect = withSelect( ( select ) => {
-	const { __experimentalGetPreviewDeviceType = null } = select(
-		'core/edit-post'
-	);
-	const deviceType = __experimentalGetPreviewDeviceType
-		? __experimentalGetPreviewDeviceType()
-		: null;
-
-	return {
-		deviceType,
-	};
-} );
-export default compose( applyWithSelect )( UAGBAdvancedHeading );
+export default UAGBAdvancedHeading;

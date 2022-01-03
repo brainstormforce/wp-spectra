@@ -155,13 +155,6 @@ export default withSelect( ( select, props ) => {
 		listInJson
 	} = props.attributes;
 	
-	const { __experimentalGetPreviewDeviceType = null } = select(
-		'core/edit-post'
-	);
-	const deviceType = __experimentalGetPreviewDeviceType
-		? __experimentalGetPreviewDeviceType()
-		: null;
-	
 		const allTaxonomy = ( null !== listInJson ) ? listInJson.data : '';
 		const currentTax = ( '' !== allTaxonomy ) ? allTaxonomy[ postType ] : 'undefined';
 
@@ -192,6 +185,5 @@ export default withSelect( ( select, props ) => {
 			taxonomyList:
 				'undefined' !== typeof currentTax ? currentTax.taxonomy : [],
 			termsList: 'undefined' !== typeof currentTax ? currentTax.terms : [],
-			deviceType,
 		};
 } )( UAGBTaxonomyList );

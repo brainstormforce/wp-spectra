@@ -1,12 +1,9 @@
 
 import Range from '@Components/range/Range.js';
-// Extend component
-import { useSelect } from '@wordpress/data';
+import { useDeviceType } from '@Controls/getPreviewType';
 
 const ResponsiveSlider = ( props ) => {
-	const deviceType = useSelect( ( select ) => {
-		return select( 'core/edit-post' ).__experimentalGetPreviewDeviceType();
-	}, [] );
+	const deviceType = useDeviceType();
 
 	const output = {};
 

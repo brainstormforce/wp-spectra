@@ -3,7 +3,7 @@ import PositionClasses from './classes';
 import React, { useLayoutEffect, useMemo } from 'react';
 import { InnerBlocks } from '@wordpress/block-editor';
 import styles from './editor.lazy.scss';
-
+import { useDeviceType } from '@Controls/getPreviewType';
 const ALLOWED_BLOCKS = [ 'uagb/restaurant-menu-child' ];
 
 const Render = ( props ) => {
@@ -16,7 +16,8 @@ const Render = ( props ) => {
 	}, [] );
 
 	props = props.parentProps;
-	const { className, attributes, deviceType } = props;
+	const deviceType = useDeviceType();
+	const { className, attributes } = props;
 
 	// Setup the attributes.
 	const { menu_item_count } = attributes;

@@ -103,13 +103,6 @@ export default withSelect( ( select, props ) => {
 	} = props.attributes;
 	const { getEntityRecords } = select( 'core' );
 
-	const { __experimentalGetPreviewDeviceType = null } = select(
-		'core/edit-post'
-	);
-	const deviceType = __experimentalGetPreviewDeviceType
-		? __experimentalGetPreviewDeviceType()
-		: null;
-
 	const allTaxonomy = uagb_blocks_info.all_taxonomy;
 	const currentTax = allTaxonomy[ postType ];
 
@@ -160,7 +153,6 @@ export default withSelect( ( select, props ) => {
 				: category;
 	}
 	return {
-		deviceType,
 		latestPosts: getEntityRecords( 'postType', postType, latestPostsQuery ),
 		categoriesList,
 		taxonomyList:

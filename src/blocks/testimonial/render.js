@@ -8,6 +8,7 @@ import AuthorName from './components/AuthorName';
 import Company from './components/Company';
 import Description from './components/Description';
 import styles from './editor.lazy.scss';
+import { useDeviceType } from '@Controls/getPreviewType';
 
 const Slider = lazy( () =>
 	import(
@@ -24,7 +25,8 @@ const Render = ( props ) => {
 	}, [] );
 
 	props = props.parentProps;
-	const { className, setAttributes, attributes, deviceType } = props;
+	const deviceType = useDeviceType();
+	const { className, setAttributes, attributes } = props;
 
 	// Setup the attributes.
 	const {

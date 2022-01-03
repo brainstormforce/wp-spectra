@@ -117,12 +117,6 @@ const HowToComponent = ( props ) => {
 
 export default compose(
 	withSelect( ( select, ownProps ) => {
-		const { __experimentalGetPreviewDeviceType = null } = select(
-			'core/edit-post'
-		);
-		const deviceType = __experimentalGetPreviewDeviceType
-			? __experimentalGetPreviewDeviceType()
-			: null;
 		let urlChk = '';
 
 		if (
@@ -220,7 +214,6 @@ export default compose(
 		
 		return {
 			schemaJsonData: jsonData,
-			deviceType,
 		};
 	} )
 )( HowToComponent );

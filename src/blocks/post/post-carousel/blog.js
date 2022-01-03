@@ -4,7 +4,7 @@ import {
 	InnerBlockLayoutContextProvider,
 	renderPostLayout,
 } from '.././function';
-
+import { useDeviceType } from '@Controls/getPreviewType';
 import React, { lazy, Suspense } from 'react';
 import lazyLoader from '@Controls/lazy-loader';
 
@@ -15,7 +15,8 @@ const Slider = lazy( () =>
 );
 
 function Blog( props ) {
-	const { attributes, className, latestPosts, block_id, deviceType } = props;
+	const { attributes, className, latestPosts, block_id } = props;
+	const deviceType = useDeviceType();
 
 	const {
 		columns,

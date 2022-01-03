@@ -229,14 +229,7 @@ const UAGBTableOfContentsEdit = ( props ) => {
 };
 
 export default compose(
-	withSelect( ( select ) => {
-		const { __experimentalGetPreviewDeviceType = null } = select(
-			'core/edit-post'
-		);
-
-		const deviceType = __experimentalGetPreviewDeviceType
-			? __experimentalGetPreviewDeviceType()
-			: null;
+	withSelect( () => {
 
 		const parseTocSlug = ( slug ) => {
 			// If not have the element then return false!
@@ -319,7 +312,6 @@ export default compose(
 		}
 
 		return {
-			deviceType,
 			headers,
 		};
 	} )

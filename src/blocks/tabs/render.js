@@ -13,7 +13,7 @@ const { updateBlockAttributes, insertBlock, removeBlock } = ! wp.blockEditor
 const { getBlockOrder } = ! wp.blockEditor
 	? select( 'core/editor' )
 	: select( 'core/block-editor' );
-
+import { useDeviceType } from '@Controls/getPreviewType';
 const Render = ( props ) => {
 	// Add and remove the CSS on the drop and remove of the component.
 	useLayoutEffect( () => {
@@ -27,7 +27,6 @@ const Render = ( props ) => {
 	const {
 		attributes,
 		setAttributes,
-		deviceType,
 		clientId,
 	} = props;
 	const {
@@ -41,6 +40,8 @@ const Render = ( props ) => {
 		icon,
 		iconPosition
 	} = attributes;
+
+	const deviceType = useDeviceType()
 
 	const onMoveForward = ( oldIndex, realTabsCount ) => {
 		return () => {

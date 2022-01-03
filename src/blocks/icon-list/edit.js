@@ -12,8 +12,6 @@ const Render = lazy( () =>
 	import( /* webpackChunkName: "chunks/icon-list/render" */ './render' )
 );
 
-import { withSelect } from '@wordpress/data';
-
 const UAGBIconList = ( props ) => {
 	useEffect( () => {
 		// Assigning block_id in the attribute.
@@ -48,16 +46,4 @@ const UAGBIconList = ( props ) => {
 	);
 };
 
-export default withSelect( ( select ) => {
-	const { __experimentalGetPreviewDeviceType = null } = select(
-		'core/edit-post'
-	);
-
-	const deviceType = __experimentalGetPreviewDeviceType
-		? __experimentalGetPreviewDeviceType()
-		: null;
-
-	return {
-		deviceType,
-	};
-} )( UAGBIconList );
+export default UAGBIconList;

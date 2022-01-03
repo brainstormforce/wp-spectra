@@ -3,6 +3,7 @@ import classnames from 'classnames';
 import ReviewBody from './review-body';
 import React, { useLayoutEffect, useState } from 'react';
 import styles from './editor.lazy.scss';
+import { useDeviceType } from '@Controls/getPreviewType';
 const Render = ( props ) => {
 	// Add and remove the CSS on the drop and remove of the component.
 	useLayoutEffect( () => {
@@ -13,6 +14,7 @@ const Render = ( props ) => {
 	}, [] );
 
 	props = props.parentProps;
+	const deviceType = useDeviceType();
 	const {
 		attributes: {
 			block_id,
@@ -42,7 +44,6 @@ const Render = ( props ) => {
 		setAttributes,
 		isSelected,
 		className,
-		deviceType,
 	} = props;
 	const bodyInitialState = {
 		average:

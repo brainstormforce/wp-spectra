@@ -1,7 +1,7 @@
 import classnames from 'classnames';
 import { lazy, Suspense } from 'react';
 import lazyLoader from '@Controls/lazy-loader';
-
+import { useDeviceType } from '@Controls/getPreviewType';
 const Masonry = lazy( () =>
 	import(
 		/* webpackChunkName: "chunks/post-masonry/react-masonry-component" */ 'react-masonry-component'
@@ -14,8 +14,8 @@ import {
 } from '.././function';
 
 function Blog( props ) {
-	const { attributes, className, latestPosts, block_id, deviceType } = props;
-
+	const { attributes, className, latestPosts, block_id } = props;
+	const deviceType = useDeviceType();
 	const {
 		columns,
 		tcolumns,

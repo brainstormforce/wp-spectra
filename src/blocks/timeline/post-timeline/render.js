@@ -12,7 +12,7 @@ import CtaLink from './components/CtaLink';
 import Author from './components/Author';
 import PostDate from './components/PostDate';
 import Icon from './components/Icon';
-
+import { useDeviceType } from '@Controls/getPreviewType';
 import { __ } from '@wordpress/i18n';
 import { Placeholder, Spinner } from '@wordpress/components';
 import React, { useLayoutEffect } from 'react';
@@ -28,8 +28,8 @@ const Render = ( props ) => {
 	}, [] );
 
 	props = props.parentProps;
-
-	const { attributes, className, deviceType, latestPosts } = props;
+	const deviceType = useDeviceType();
+	const { attributes, className, latestPosts } = props;
 
 	const {
 		displayPostLink,

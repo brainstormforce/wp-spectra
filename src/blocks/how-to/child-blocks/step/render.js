@@ -4,6 +4,7 @@ import { __ } from '@wordpress/i18n';
 import styles from './editor.lazy.scss';
 import { RichText } from '@wordpress/block-editor';
 import { createBlock } from '@wordpress/blocks';
+import { useDeviceType } from '@Controls/getPreviewType';
 
 const Render = ( props ) => {
 	// Add and remove the CSS on the drop and remove of the component.
@@ -16,7 +17,9 @@ const Render = ( props ) => {
 
 	props = props.parentProps;
 
-	const { attributes, setAttributes, mergeBlocks, insertBlocksAfter, deviceType, onReplace } = props;
+	const deviceType = useDeviceType();
+
+	const { attributes, setAttributes, mergeBlocks, insertBlocksAfter, onReplace } = props;
 
 	const { 
 		block_id,
