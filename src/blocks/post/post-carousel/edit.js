@@ -193,6 +193,7 @@ const UAGBPostCarousel = ( props ) => {
 
 		setAttributes( { postType: value } );
 		setAttributes( { categories: '' } );
+		setAttributes( { taxonomyType: 'category' } );
 	};
 
 	const onSelectTaxonomyType = ( value ) => {

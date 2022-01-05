@@ -220,6 +220,7 @@ const Settings = ( props ) => {
 	const onSelectPostType = ( value ) => {
 		setAttributes( { postType: value } );
 		setAttributes( { categories: '' } );
+		setAttributes( { taxonomyType: 'category' } );
 	};
 	const onSelectTaxonomyType = ( value ) => {
 		setAttributes( { taxonomyType: value } );
