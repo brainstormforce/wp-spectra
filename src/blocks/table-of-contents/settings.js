@@ -430,12 +430,11 @@ const Settings = ( props ) => {
 					} }
 					min={ 0 }
 					max={ 100 }
+					limitMin={ { 'px': 0, '%': 0 } }
+					limitMax={ { 'px': 1500, '%': 100 } }
 					units={ [
 						{
-							name: __(
-								'Pixel',
-								'ultimate-addons-for-gutenberg'
-							),
+							name: __( 'Pixel', 'ultimate-addons-for-gutenberg' ),
 							unitValue: 'px',
 						},
 						{
@@ -494,6 +493,8 @@ const Settings = ( props ) => {
 								max: maxMob,
 							},
 						} }
+						min={ 0 }
+						max={ 100 }
 						units={ [
 							{
 								name: __(

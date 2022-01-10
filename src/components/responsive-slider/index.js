@@ -1,28 +1,18 @@
 
 import Range from '@Components/range/Range.js';
 import { useDeviceType } from '@Controls/getPreviewType';
+import { limitMax, limitMin } from '@Controls/unitWiseMinMaxOption';
 
 const ResponsiveSlider = ( props ) => {
 	const deviceType = useDeviceType();
-
 	const output = {};
-
-	const maxDesk =
-		undefined !== props.data.desktop.max
-			? props.data.desktop.max
-			: props.max;
-	const maxTab =
-		undefined !== props.data.tablet.max ? props.data.tablet.max : props.max;
-	const maxMob =
-		undefined !== props.data.mobile.max ? props.data.mobile.max : props.max;
-	const minDesk =
-		undefined !== props.data.desktop.min
-			? props.data.desktop.min
-			: props.min;
-	const minTab =
-		undefined !== props.data.tablet.min ? props.data.tablet.min : props.min;
-	const minMob =
-		undefined !== props.data.mobile.min ? props.data.mobile.min : props.min;
+	const maxDesk = limitMax( props.data.desktop.unit?.value, props, true );
+	const maxTab = limitMax( props.data.tablet.unit?.value, props, true );
+	const maxMob = limitMax( props.data.mobile.unit?.value, props, true );
+	const minDesk =	limitMin( props.data.desktop.unit?.value, props, true );
+	const minTab = limitMin( props.data.tablet.unit?.value, props, true );
+	const minMob = limitMin( props.data.mobile.unit?.value, props, true );
+	
 
 	output.Desktop = (
 		<>

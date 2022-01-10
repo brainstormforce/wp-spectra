@@ -345,6 +345,8 @@ const Settings = ( props ) => {
 								max: 2,
 							},
 						} }
+						min={ 1 }
+						max={ 6 }
 						displayUnit={ false }
 						setAttributes={ setAttributes }
 					/>

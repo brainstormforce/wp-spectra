@@ -11,6 +11,7 @@ import ResponsiveToggle from '../responsive-toggle';
 import { __, sprintf } from '@wordpress/i18n';
 import styles from './editor.lazy.scss';
 import React, { useLayoutEffect } from 'react';
+import { limitMax, limitMin } from '@Controls/unitWiseMinMaxOption';
 
 const isNumberControlSupported = !! NumberControl;
 
@@ -141,6 +142,9 @@ const Range = ( props ) => {
 		return items;
 	};
 
+	const max = limitMax( props.unit?.value, props ); 
+	const min = limitMin( props.unit?.value, props );
+	
 	return (
 		<div className="components-base-control uag-range-control uagb-size-type-field-tabs">
 			<div className="uagb-control__header">
@@ -180,8 +184,8 @@ const Range = ( props ) => {
 					onChange={ handleOnChange }
 					withInputField={ false }
 					allowReset={ false }
-					max={ props.max }
-					min={ props.min }
+					max={ max }
+					min={ min }
 					initialPosition={ 0 }
 					step={ props.step || 1 }
 				/>
@@ -189,8 +193,8 @@ const Range = ( props ) => {
 					<NumberControl
 						disabled={ props.disabled }
 						isShiftStepEnabled={ isShiftStepEnabled }
-						max={ props.max }
-						min={ props.min }
+						max={ max }
+						min={ min }
 						onChange={ handleOnChange }
 						value={ props.value || '' }
 						step={ props.step || 1 }
