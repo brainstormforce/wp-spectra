@@ -80,7 +80,7 @@
 			width: calc(100% / 3);
 		}
 
-		&.uagb-rm__desk-column-2:not(.wp-block-uagb-restaurant-menu-child) {
+		&.uagb-rm__desk-column-2 {
 			width: 49%;
 		}
 
@@ -88,8 +88,17 @@
 			width: 100%;
 		}
 
-		&.uagb-rm__align-center .uagb-rm__price {
-			text-align: center;
+		&.uagb-rm__align-center {
+			display: flex;
+			flex-direction: column;
+
+			.uagb-rm__separator {
+				align-self: center;
+			}
+
+			.uagb-rm__price {
+				text-align: center;
+			}
 		}
 
 		&.uagb-rm__align-right .uagb-rm-details {

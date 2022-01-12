@@ -38,6 +38,10 @@
 	&.uagb-rm__desk-column-2 [data-type="uagb/restaurant-menu-child"] {
 		width: calc(100% / 2);
 		display: inline-flex;
+
+		.uagb-rm__desk-column-2 {
+			width: unset;
+		}
 	}
 
 	&.uagb-rm__desk-column-1 [data-type="uagb/restaurant-menu-child"] {
