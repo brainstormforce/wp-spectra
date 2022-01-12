@@ -3,8 +3,7 @@
 	.uagb-tabs-editor-controls {
 		left: 0;
 		background-color: #000;
-		position: absolute;
-		top: -21px;
+		position: relative;
 		display: none;
 		width: -webkit-fit-content;
 		width: -moz-fit-content;
@@ -33,7 +32,7 @@
 	}
 
 	li.uagb-tab:hover .uagb-tabs-editor-controls {
-		display: inline-flex;
+		display: flex;
 	}
 
 	.uagb-tab.uagb-tabs__add-tab {

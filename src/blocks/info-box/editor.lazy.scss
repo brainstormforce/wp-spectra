@@ -11,17 +11,12 @@
 		z-index: -1;
 		color: inherit;
 	}
-
-	.uagb-ifb-title-wrap {
-
-		h1,
-		h2,
-		h3,
-		h4,
-		h5,
-		h6 {
-			margin-top: 0;
-		}
-	}
 }
 
+.uagb-infobox__content-wrap .uagb-ifb-title-wrap {
+
+	.block-editor-rich-text__editable.uagb-ifb-title.rich-text {
+		margin: 0;
+		line-height: inherit;
+	}
+}

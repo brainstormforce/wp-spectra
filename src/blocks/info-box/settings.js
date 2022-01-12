@@ -1270,156 +1270,154 @@ const Settings = ( props ) => {
 				) }
 				{ showTitle && (
 					<UAGAdvancedPanelBody title="Title" initialOpen={ false }>
-						<>
-							<AdvancedPopColorControl
-								label={ __(
-									'Color',
-									'ultimate-addons-for-gutenberg'
-								) }
-								colorValue={ headingColor ? headingColor : '' }
-								onColorChange={ ( value ) =>
-									setAttributes( { headingColor: value } )
-								}
-							/>
-							<TypographyControl
-								label={ __(
-									'Typography',
-									'ultimate-addons-for-gutenberg'
-								) }
-								attributes={ attributes }
-								setAttributes={ setAttributes }
-								loadGoogleFonts={ {
-									value: headLoadGoogleFonts,
-									label: 'headLoadGoogleFonts',
-								} }
-								fontFamily={ {
-									value: headFontFamily,
-									label: 'headFontFamily',
-								} }
-								fontWeight={ {
-									value: headFontWeight,
-									label: 'headFontWeight',
-								} }
-								fontStyle={ {
-									value: headFontStyle,
-									label: 'headFontStyle',
-								} }
-								fontSizeType={ {
-									value: headFontSizeType,
-									label: 'headFontSizeType',
-								} }
-								fontSize={ {
-									value: headFontSize,
-									label: 'headFontSize',
-								} }
-								fontSizeMobile={ {
-									value: headFontSizeMobile,
-									label: 'headFontSizeMobile',
-								} }
-								fontSizeTablet={ {
-									value: headFontSizeTablet,
-									label: 'headFontSizeTablet',
-								} }
-								lineHeightType={ {
-									value: headLineHeightType,
-									label: 'headLineHeightType',
-								} }
-								lineHeight={ {
-									value: headLineHeight,
-									label: 'headLineHeight',
-								} }
-								lineHeightMobile={ {
-									value: headLineHeightMobile,
-									label: 'headLineHeightMobile',
-								} }
-								lineHeightTablet={ {
-									value: headLineHeightTablet,
-									label: 'headLineHeightTablet',
-								} }
-								transform={ {
-									value: headTransform,
-									label: 'headTransform',
-								} }
-								decoration={ {
-									value: headDecoration,
-									label: 'headDecoration',
-								} }
-							/>
-							<SpacingControl
-								{ ...props }
-								label={ __(
-									'Margin',
-									'ultimate-addons-for-gutenberg'
-								) }
-								valueTop={ {
-									value: headTopMargin,
-									label: 'headTopMargin',
-								} }
-								valueRight={ {
-									value: headRightMargin,
-									label: 'headRightMargin',
-								} }
-								valueBottom={ {
-									value: headSpace,
-									label: 'headSpace',
-								} }
-								valueLeft={ {
-									value: headLeftMargin,
-									label: 'headLeftMargin',
-								} }
-								valueTopTablet={ {
-									value: headMarginTopTablet,
-									label: 'headMarginTopTablet',
-								} }
-								valueRightTablet={ {
-									value: headMarginRightTablet,
-									label: 'headMarginRightTablet',
-								} }
-								valueBottomTablet={ {
-									value: headTabletSpace,
-									label: 'headTabletSpace',
-								} }
-								valueLeftTablet={ {
-									value: headMarginLeftTablet,
-									label: 'headMarginLeftTablet',
-								} }
-								valueTopMobile={ {
-									value: headMarginTopMobile,
-									label: 'headMarginTopMobile',
-								} }
-								valueRightMobile={ {
-									value: headMarginRightMobile,
-									label: 'headMarginRightMobile',
-								} }
-								valueBottomMobile={ {
-									value: headMobileSpace,
-									label: 'headMobileSpace',
-								} }
-								valueLeftMobile={ {
-									value: headMarginLeftMobile,
-									label: 'headMarginLeftMobile',
-								} }
-								unit={ {
-									value: headSpaceUnit,
-									label: 'headSpaceUnit',
-								} }
-								mUnit={ {
-									value: headMobilePaddingUnit,
-									label: 'headMobilePaddingUnit',
-								} }
-								tUnit={ {
-									value: headTabletPaddingUnit,
-									label: 'headTabletPaddingUnit',
-								} }
-								deviceType={ deviceType }
-								attributes={ attributes }
-								setAttributes={ setAttributes }
-								link={ {
-									value: spacingHeadLink,
-									label: 'spacingHeadLink',
-								} }
-							/>
-						</>
+						<AdvancedPopColorControl
+							label={ __(
+								'Color',
+								'ultimate-addons-for-gutenberg'
+							) }
+							colorValue={ headingColor ? headingColor : '' }
+							onColorChange={ ( value ) =>
+								setAttributes( { headingColor: value } )
+							}
+						/>
+						<TypographyControl
+							label={ __(
+								'Typography',
+								'ultimate-addons-for-gutenberg'
+							) }
+							attributes={ attributes }
+							setAttributes={ setAttributes }
+							loadGoogleFonts={ {
+								value: headLoadGoogleFonts,
+								label: 'headLoadGoogleFonts',
+							} }
+							fontFamily={ {
+								value: headFontFamily,
+								label: 'headFontFamily',
+							} }
+							fontWeight={ {
+								value: headFontWeight,
+								label: 'headFontWeight',
+							} }
+							fontStyle={ {
+								value: headFontStyle,
+								label: 'headFontStyle',
+							} }
+							fontSizeType={ {
+								value: headFontSizeType,
+								label: 'headFontSizeType',
+							} }
+							fontSize={ {
+								value: headFontSize,
+								label: 'headFontSize',
+							} }
+							fontSizeMobile={ {
+								value: headFontSizeMobile,
+								label: 'headFontSizeMobile',
+							} }
+							fontSizeTablet={ {
+								value: headFontSizeTablet,
+								label: 'headFontSizeTablet',
+							} }
+							lineHeightType={ {
+								value: headLineHeightType,
+								label: 'headLineHeightType',
+							} }
+							lineHeight={ {
+								value: headLineHeight,
+								label: 'headLineHeight',
+							} }
+							lineHeightMobile={ {
+								value: headLineHeightMobile,
+								label: 'headLineHeightMobile',
+							} }
+							lineHeightTablet={ {
+								value: headLineHeightTablet,
+								label: 'headLineHeightTablet',
+							} }
+							transform={ {
+								value: headTransform,
+								label: 'headTransform',
+							} }
+							decoration={ {
+								value: headDecoration,
+								label: 'headDecoration',
+							} }
+						/>
+						<SpacingControl
+							{ ...props }
+							label={ __(
+								'Margin',
+								'ultimate-addons-for-gutenberg'
+							) }
+							valueTop={ {
+								value: headTopMargin,
+								label: 'headTopMargin',
+							} }
+							valueRight={ {
+								value: headRightMargin,
+								label: 'headRightMargin',
+							} }
+							valueBottom={ {
+								value: headSpace,
+								label: 'headSpace',
+							} }
+							valueLeft={ {
+								value: headLeftMargin,
+								label: 'headLeftMargin',
+							} }
+							valueTopTablet={ {
+								value: headMarginTopTablet,
+								label: 'headMarginTopTablet',
+							} }
+							valueRightTablet={ {
+								value: headMarginRightTablet,
+								label: 'headMarginRightTablet',
+							} }
+							valueBottomTablet={ {
+								value: headTabletSpace,
+								label: 'headTabletSpace',
+							} }
+							valueLeftTablet={ {
+								value: headMarginLeftTablet,
+								label: 'headMarginLeftTablet',
+							} }
+							valueTopMobile={ {
+								value: headMarginTopMobile,
+								label: 'headMarginTopMobile',
+							} }
+							valueRightMobile={ {
+								value: headMarginRightMobile,
+								label: 'headMarginRightMobile',
+							} }
+							valueBottomMobile={ {
+								value: headMobileSpace,
+								label: 'headMobileSpace',
+							} }
+							valueLeftMobile={ {
+								value: headMarginLeftMobile,
+								label: 'headMarginLeftMobile',
+							} }
+							unit={ {
+								value: headSpaceUnit,
+								label: 'headSpaceUnit',
+							} }
+							mUnit={ {
+								value: headMobilePaddingUnit,
+								label: 'headMobilePaddingUnit',
+							} }
+							tUnit={ {
+								value: headTabletPaddingUnit,
+								label: 'headTabletPaddingUnit',
+							} }
+							deviceType={ deviceType }
+							attributes={ attributes }
+							setAttributes={ setAttributes }
+							link={ {
+								value: spacingHeadLink,
+								label: 'spacingHeadLink',
+							} }
+						/>
 					</UAGAdvancedPanelBody>
 				) }
 				{ 'none' !== seperatorStyle && (

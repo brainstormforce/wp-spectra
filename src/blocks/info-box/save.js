@@ -99,7 +99,7 @@ export default function save( props ) {
 	);
 
 	// Get Title and Prefix components.
-	const title_text = (
+	const titleText = (
 		<div className="uagb-ifb-title-wrap">
 			{ showPrefix && '' !== prefixTitle && (
 				<Prefix
@@ -121,13 +121,13 @@ export default function save( props ) {
 
 	const output = (
 		<>
-			{ iconimgPosition === 'left' && isImage }
+			{ iconimgPosition === 'left' && iconImageHtml }
 			<div className="uagb-ifb-content">
 				{ iconimgPosition === 'above-title' && iconImageHtml }
 
 				{ ( iconimgPosition === 'above-title' ||
 					iconimgPosition === 'below-title' ) &&
-					title_text }
+					titleText }
 
 				{ iconimgPosition === 'below-title' && iconImageHtml }
 
@@ -139,7 +139,7 @@ export default function save( props ) {
 					<>
 						<div className="uagb-ifb-left-title-image">
 							{ iconImageHtml }
-							{ title_text }
+							{ titleText }
 						</div>
 						{ desc }
 					</>
@@ -148,7 +148,7 @@ export default function save( props ) {
 				{ iconimgPosition === 'right-title' && (
 					<>
 						<div className="uagb-ifb-right-title-image">
-							{ title_text }
+							{ titleText }
 							{ iconImageHtml }
 						</div>
 						{ desc }
@@ -158,7 +158,7 @@ export default function save( props ) {
 				{ ( iconimgPosition === 'left' ||
 					iconimgPosition === 'right' ) && (
 					<>
-						{ title_text }
+						{ titleText }
 						{ desc }
 					</>
 				) }

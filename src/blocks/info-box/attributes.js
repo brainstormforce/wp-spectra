@@ -441,7 +441,6 @@ const attributes = {
 	ctaBorderStyle: {
 		type: 'string',
 		isUAGStyle: true,
-		default: 'none'
 	},
 	ctaBtnVertPadding: {
 		type: 'number',

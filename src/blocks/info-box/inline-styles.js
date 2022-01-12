@@ -341,10 +341,7 @@ function InfoBoxStyle( props ) {
 		' .uagb-ifb-button-wrapper .uagb-infobox-cta-link': {
 			'color': ctaBtnLinkColor,
 			'background-color': ctaBgColor,
-			'border-style': ctaBorderStyle,
-			'border-color': ctaBorderColor,
 			'border-radius': generateCSSUnit( ctaBorderRadius, 'px' ),
-			'border-width': generateCSSUnit( ctaBorderWidth, 'px' ),
 			'padding-top': generateCSSUnit( paddingBtnTop, paddingBtnUnit ),
 			'padding-bottom': generateCSSUnit(
 				paddingBtnBottom,
@@ -443,6 +440,13 @@ function InfoBoxStyle( props ) {
 			'margin-right': generateCSSUnit( separatorRightMargin, seperatorSpaceUnit ),
 		}
 	};
+	if( 'none' !== ctaBorderStyle ){
+		selectors[' .uagb-ifb-button-wrapper .uagb-infobox-cta-link'] = {
+			'border-style': ctaBorderStyle,
+			'border-color': ctaBorderColor,
+			'border-width': generateCSSUnit( ctaBorderWidth, 'px' ),
+		};
+	}
 	if( 'after' === ctaIconPosition ){
 		selectors[ '.uagb-infobox__content-wrap .uagb-infobox-cta-link > svg'] = {
 			'margin-left': generateCSSUnit( ctaIconSpace, ctaIconSpaceType ),

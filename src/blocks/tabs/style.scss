@@ -17,10 +17,8 @@
 		}
 
 		.uagb-tabs__icon-position-left {
-			display: flex;
-			display: -webkit-flex;
+			display: inline-flex;
 			align-items: center;
-			justify-content: center;
 
 			.uagb-tabs__icon {
 				margin-top: 3px;
@@ -32,7 +30,6 @@
 
 			.uagb-tabs__icon {
 				display: block;
-				text-align: center;
 			}
 		}
 
@@ -41,13 +38,11 @@
 
 			.uagb-tabs__icon {
 				display: block;
-				text-align: center;
 			}
 		}
 
 		.uagb-tabs__icon-position-right {
 			display: inline-flex;
-			align-items: center;
 
 			.uagb-tabs__icon {
 				margin-top: 3px;
