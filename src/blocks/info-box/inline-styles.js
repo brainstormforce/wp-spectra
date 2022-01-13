@@ -339,6 +339,9 @@ function InfoBoxStyle( props ) {
 			'fill': ctaLinkHoverColor,
 		},
 		' .uagb-ifb-button-wrapper .uagb-infobox-cta-link': {
+			'border-style': ctaBorderStyle,
+			'border-color': ctaBorderColor,
+			'border-width': generateCSSUnit( ctaBorderWidth, 'px' ),
 			'color': ctaBtnLinkColor,
 			'background-color': ctaBgColor,
 			'border-radius': generateCSSUnit( ctaBorderRadius, 'px' ),
@@ -440,13 +443,6 @@ function InfoBoxStyle( props ) {
 			'margin-right': generateCSSUnit( separatorRightMargin, seperatorSpaceUnit ),
 		}
 	};
-	if( 'none' !== ctaBorderStyle ){
-		selectors[' .uagb-ifb-button-wrapper .uagb-infobox-cta-link'] = {
-			'border-style': ctaBorderStyle,
-			'border-color': ctaBorderColor,
-			'border-width': generateCSSUnit( ctaBorderWidth, 'px' ),
-		};
-	}
 	if( 'after' === ctaIconPosition ){
 		selectors[ '.uagb-infobox__content-wrap .uagb-infobox-cta-link > svg'] = {
 			'margin-left': generateCSSUnit( ctaIconSpace, ctaIconSpaceType ),
