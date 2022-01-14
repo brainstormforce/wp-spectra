@@ -52,7 +52,14 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 
 				self::$block_attributes = array();
 
-				$block_files = glob( UAGB_DIR . 'includes/blocks/*/block.php' );
+				$lite_block_files = glob( UAGB_DIR . 'includes/blocks/*/block.php' );
+				$pro_block_files  = array();
+
+				if ( defined( UAG_PRO_DIR ) ) {
+					$pro_block_files = glob( UAG_PRO_DIR . 'includes/blocks/*/block.php' );
+				}
+
+				$block_files = array_merge( $lite_block_files, $pro_block_files );
 
 				foreach ( $block_files as $block_file ) {
 					$block_slug = '';
