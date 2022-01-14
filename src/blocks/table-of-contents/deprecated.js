@@ -7,7 +7,7 @@ import TableOfContents from './deprecated/components';
 import TOC from './deprecated/table-of-contents';
 import TableOfContent from './deprecated/toc';
 import attributes from "./attributes"
-import renderSVG from "@Controls/renderIcon"
+import renderSVG from '@Controls/deprecatedRenderIcon';
 
 import { RichText } from '@wordpress/block-editor';
 

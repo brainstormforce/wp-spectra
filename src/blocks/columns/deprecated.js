@@ -4,7 +4,7 @@
 
 // Import block dependencies and components.
 import classnames from 'classnames';
-import shapes from './shapes';
+import shapes from './deprecatedShapes';
 // Import icon.
 import attributes from './attributes';
 

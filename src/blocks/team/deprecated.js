@@ -3,7 +3,7 @@
  */
 
 import classnames from 'classnames';
-import renderSVG from '@Controls/renderIcon';
+import renderSVG from '@Controls/deprecatedRenderIcon';
 import { RichText } from '@wordpress/block-editor';
 
 const attributes = {
@@ -107,7 +107,7 @@ const attributes = {
 	},
 	prefixFontSize: {
 		type: "number",
-		default: 15	
+		default: 15
 	},
 	prefixFontSizeTablet: {
 		type: "number",
@@ -273,15 +273,15 @@ const attributes = {
 	},
 	titleLoadGoogleFonts: {
 		type: "boolean",
-		default: false	
+		default: false
 	},
 	prefixLoadGoogleFonts: {
 		type: "boolean",
-		default: false	
+		default: false
 	},
 	descLoadGoogleFonts: {
 		type: "boolean",
-		default: false	
+		default: false
 	},
 	imageMarginUnit: {
 		type: 'string',
@@ -744,7 +744,7 @@ const deprecated = [
 	{
 		attributes,
 		save( props ) {
-	
+
 			const {
 				block_id,
 				align,
@@ -768,10 +768,10 @@ const deprecated = [
 				socialEnable,
 				stack
 			} = props.attributes
-		
+
 			let size = ""
 			let img_url = ""
-		
+
 			if ( image ) {
 				size = image.sizes
 				if ( image.sizes ) {
@@ -780,9 +780,9 @@ const deprecated = [
 					img_url = image.url
 				}
 			}
-		
+
 			let image_html = ""
-		
+
 			if ( "" != img_url ) {
 				image_html = (
 					<div
@@ -798,7 +798,7 @@ const deprecated = [
 					</div>
 				)
 			}
-		
+
 			return (
 				<div
 					className = { classnames(
@@ -811,13 +811,13 @@ const deprecated = [
 						`uagb-block-${ block_id }`
 					) }>
 					<div className = "uagb-team__wrap">
-		
+
 						{ ( imgPosition == "left") && image_html }
-		
+
 						<div className = "uagb-team__content">
-		
+
 							{  imgPosition == "above" && image_html }
-		
+
 							<div className = "uagb-team__title-wrap">
 								<RichText.Content
 									tagName= { tag }
@@ -830,7 +830,7 @@ const deprecated = [
 									className='uagb-team__prefix'
 								/>
 							</div>
-		
+
 							<div className = "uagb-team__desc-wrap">
 								<RichText.Content
 									tagName='p'
@@ -848,9 +848,9 @@ const deprecated = [
 									</ul>
 								</div>
 							}
-		
+
 						</div>
-		
+
 						{ ( imgPosition == "right") && image_html }
 					</div>
 				</div>

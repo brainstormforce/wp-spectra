@@ -5,7 +5,7 @@
 // Import block dependencies and components.
 import classnames from 'classnames';
 import attributes from './attributes';
-import renderSVG from '@Controls/renderIcon';
+import renderSVG from '@Controls/deprecatedRenderIcon';
 
 import { RichText } from '@wordpress/block-editor';
 
@@ -134,7 +134,7 @@ const deprecated = [
 		save( props ) {
 
 			const { attributes, className } = props
-		
+
 			const {
 				block_id,
 				align,
@@ -147,9 +147,9 @@ const deprecated = [
 				linkTarget,
 				titleTag
 			} = props.attributes
-		
+
 			let target = ( linkTarget ) ? "_blank" : ""
-		
+
 			return (
 				<div className={ classnames(
 					className,

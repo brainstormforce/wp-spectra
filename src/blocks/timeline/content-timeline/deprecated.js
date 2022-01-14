@@ -8,7 +8,7 @@ import contentTimelineStyle from '.././inline-styles';
 import ContentTmClasses from '.././classes';
 import AlignClass from '.././align-classes';
 import DayAlignClass from '.././day-align-classes';
-import renderSVG from '@Controls/renderIcon';
+import renderSVG from '@Controls/deprecatedRenderIcon';
 import { InnerBlocks, RichText } from '@wordpress/block-editor';
 import { dateI18n, __experimentalGetSettings } from '@wordpress/date';
 
