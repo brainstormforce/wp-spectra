@@ -733,8 +733,8 @@ class UAGB_Post_Assets {
 
 		if ( strpos( $name, 'uagb/' ) !== false ) {
 			$_block_slug = str_replace( 'uagb/', '', $name );
-			$_block_css  = UAGB_Block_Module::get_frontend_css( $_block_slug, $blockattr, $block_id );
-			$_block_js   = UAGB_Block_Module::get_frontend_js( $_block_slug, $blockattr, $block_id );
+			$_block_css  = UAGB_Block_Module::get_frontend_assets( $_block_slug, $blockattr, $block_id );
+			$_block_js   = UAGB_Block_Module::get_frontend_assets( $_block_slug, $blockattr, $block_id, 'js' );
 			$css         = array_merge( $css, $_block_css );
 			if ( ! empty( $_block_js ) ) {
 				$js .= $_block_js;

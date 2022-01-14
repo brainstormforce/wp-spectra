@@ -134,27 +134,31 @@ class UAGB_Block_Module {
 	);
 
 	/**
-	 * Get frontend css.
+	 * Get frontend Assets.
 	 *
 	 * @since 2.0.0
 	 *
 	 * @param string $slug Block slug.
 	 * @param array  $attr Block attributes.
 	 * @param string $id   Block id.
-	 *
+	 * @param string $type Asset Type.
 	 * @return array
 	 */
-	public static function get_frontend_css( $slug, $attr, $id ) {
+	public static function get_frontend_assets( $slug, $attr, $id, $type = 'css' ) {
 
-		$css = array();
+		$assets = array();
+
+		if ( 'js' === $type ) {
+			$assets = '';
+		}
 
 		if ( isset( self::$blocks[ $slug ] ) ) {
 
 			$block_dir = UAGB_DIR . 'includes/blocks/' . self::$blocks[ $slug ]['dir'];
 
-			$css_file = $block_dir . '/frontend.css.php';
+			$assets_file = $block_dir . '/frontend.' . $type . '.php';
 
-			if ( file_exists( $css_file ) ) {
+			if ( file_exists( $assets_file ) ) {
 
 				// Set default attributes.
 				$attr_file = $block_dir . '/attributes.php';
@@ -166,51 +170,11 @@ class UAGB_Block_Module {
 					$attr = array_merge( $default_attr, $attr );
 				}
 
-				// Get CSS.
-				$css = include $css_file;
+				// Get Assets.
+				$assets = include $assets_file;
 			}
 		}
 
-		return $css;
-	}
-	/**
-	 * Get frontend JS.
-	 *
-	 * @since 2.0.0
-	 *
-	 * @param string $slug Block slug.
-	 * @param array  $attr Block attributes.
-	 * @param string $id   Block id.
-	 *
-	 * @return array
-	 */
-	public static function get_frontend_js( $slug, $attr, $id ) {
-
-		$js = '';
-
-		if ( isset( self::$blocks[ $slug ] ) ) {
-
-			$block_dir = UAGB_DIR . 'includes/blocks/' . self::$blocks[ $slug ]['dir'];
-
-			$js_file = $block_dir . '/frontend.js.php';
-
-			if ( file_exists( $js_file ) ) {
-
-				// Set default attributes.
-				$attr_file = $block_dir . '/attributes.php';
-
-				if ( file_exists( $attr_file ) ) {
-
-					$default_attr = include $attr_file;
-
-					$attr = array_merge( $default_attr, $attr );
-				}
-
-				// Get JS.
-				$js = include $js_file;
-			}
-		}
-
-		return $js;
+		return $assets;
 	}
 }
