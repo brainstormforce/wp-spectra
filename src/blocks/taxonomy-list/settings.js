@@ -22,7 +22,7 @@ import {
 	Icon,
 	ToggleControl,
 } from '@wordpress/components';
-import { InspectorControls } from '@wordpress/block-editor';
+import { InspectorControls, AlignmentToolbar, BlockControls } from '@wordpress/block-editor';
 
 import UAGAdvancedPanelBody from '@Components/advanced-panel-body';
 
@@ -1263,6 +1263,14 @@ const Settings = ( props ) => {
 	return (
 		<>
 			<Suspense fallback={ lazyLoader() }>
+				<BlockControls key="controls">
+					<AlignmentToolbar
+						value={ alignment }
+						onChange={ ( value ) =>
+							setAttributes( { alignment: value } )
+						}
+					/>
+				</BlockControls>
 				{ inspectorControlsSettings }
 				{ loadTitleGoogleFonts }
 				{ loadCountGoogleFonts }

@@ -17,11 +17,12 @@ import InspectorTab, {
 import Range from '@Components/range/Range.js';
 import UAGImage from '@Components/image';
 import { getImageSize } from '@Utils/Helpers';
-
+import renderSVG from '@Controls/renderIcon';
 import {
 	SelectControl,
 	ToggleControl,
 	ExternalLink,
+	Icon
 } from '@wordpress/components';
 import MultiButtonsControl from '@Components/multi-buttons-control';
 
@@ -235,6 +236,61 @@ const Settings = ( props ) => {
 							label: __( 'H6', 'ultimate-addons-for-gutenberg' ),
 						},
 					] }
+				/>
+				<MultiButtonsControl
+					setAttributes={ setAttributes }
+					label={ __(
+						'Text Alignment',
+						'ultimate-addons-for-gutenberg'
+					) }
+					data={ {
+						value: overallAlignment,
+						label: 'overallAlignment',
+					} }
+					className="uagb-multi-button-alignment-control"
+					options={ [
+						{
+							value: 'left',
+							icon: (
+								<Icon
+									icon={ renderSVG( 'fa fa-align-left' ) }
+								/>
+							),
+							tooltip: __(
+								'Left',
+								'ultimate-addons-for-gutenberg'
+							),
+						},
+						{
+							value: 'center',
+							icon: (
+								<Icon
+									icon={ renderSVG(
+										'fa fa-align-center'
+									) }
+								/>
+							),
+							tooltip: __(
+								'Center',
+								'ultimate-addons-for-gutenberg'
+							),
+						},
+						{
+							value: 'right',
+							icon: (
+								<Icon
+									icon={ renderSVG(
+										'fa fa-align-right'
+									) }
+								/>
+							),
+							tooltip: __(
+								'Right',
+								'ultimate-addons-for-gutenberg'
+							),
+						},
+					] }
+					showIcons={ true }
 				/>
 			</UAGAdvancedPanelBody>
 		);

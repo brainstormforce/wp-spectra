@@ -1,7 +1,7 @@
 import lazyLoader from '@Controls/lazy-loader';
 import React, { Suspense } from 'react';
 import { __ } from '@wordpress/i18n';
-import { InspectorControls } from '@wordpress/block-editor';
+import { InspectorControls, BlockControls, BlockAlignmentToolbar } from '@wordpress/block-editor';
 import { Icon } from '@wordpress/components';
 import TypographyControl from '@Components/typography';
 import WebfontLoader from '@Components/typography/fontloader';
@@ -208,8 +208,23 @@ const Settings = ( props ) => {
 		);
 	};
 
+	const blockControls = () => {
+		return (
+			<BlockControls>
+				<BlockAlignmentToolbar
+					value={ align }
+					onChange={ ( value ) => {
+						setAttributes( { align: value } );
+					} }
+					controls={ [ 'left', 'center', 'right', 'full' ] }
+				/>
+			</BlockControls>
+		);
+	};
+
 	return (
 		<Suspense fallback={ lazyLoader() }>
+			{ blockControls() }
 			<InspectorControls>
 				<InspectorTabs>
 					<InspectorTab { ...UAGTabs.general }>

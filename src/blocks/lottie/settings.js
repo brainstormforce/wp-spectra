@@ -16,6 +16,7 @@ import {
 	MediaPlaceholder,
 	BlockControls,
 	MediaReplaceFlow,
+	AlignmentToolbar
 } from '@wordpress/block-editor';
 
 import {
@@ -343,6 +344,12 @@ const Settings = ( props ) => {
 						onSelect={ onSelectLottieJSON }
 					/>
 				</ToolbarGroup>
+				<AlignmentToolbar
+					value={ align }
+					onChange={ ( value ) =>
+						setAttributes( { align: value } )
+					}
+				/>
 			</BlockControls>
 		);
 	};

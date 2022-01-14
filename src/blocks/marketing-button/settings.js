@@ -23,6 +23,7 @@ import {
 	BlockAlignmentToolbar,
 	InspectorControls,
 	__experimentalLinkControl,
+	AlignmentToolbar
 } from '@wordpress/block-editor';
 
 import {
@@ -30,6 +31,8 @@ import {
 	ToolbarButton,
 	ToolbarGroup,
 	Icon,
+	ToggleControl,
+	TextControl
 } from '@wordpress/components';
 
 
@@ -174,6 +177,13 @@ const Settings = ( props ) => {
 					} }
 					controls={ [ 'left', 'center', 'right', 'full' ] }
 				/>
+				<AlignmentToolbar
+					value={ textAlign }
+					onChange={ ( value ) => {
+						setAttributes( { textAlign: value } );
+					} }
+					controls={ [ 'left', 'center', 'right' ] }
+				/>
 				<ToolbarGroup>
 					<ToolbarButton
 						icon="admin-links"
@@ -208,7 +218,67 @@ const Settings = ( props ) => {
 				<UAGAdvancedPanelBody title={ __( 'Content' ) } initialOpen={ true }>
 					<MultiButtonsControl
 						setAttributes={ setAttributes }
-						label={ __( 'Alignment', 'ultimate-addons-for-gutenberg' ) }
+						label={ __( 'Button Alignment', 'ultimate-addons-for-gutenberg' ) }
+						data={ {
+							value: align,
+							label: 'align',
+						} }
+						className="uagb-multi-button-alignment-control"
+						options={ [
+							{
+								value: 'left',
+								icon: (
+									<Icon
+										icon={ renderSVG( 'fa fa-align-left' ) }
+									/>
+								),
+								tooltip: __(
+									'Left',
+									'ultimate-addons-for-gutenberg'
+								),
+							},
+							{
+								value: 'center',
+								icon: (
+									<Icon
+										icon={ renderSVG( 'fa fa-align-center' ) }
+									/>
+								),
+								tooltip: __(
+									'Center',
+									'ultimate-addons-for-gutenberg'
+								),
+							},
+							{
+								value: 'right',
+								icon: (
+									<Icon
+										icon={ renderSVG( 'fa fa-align-right' ) }
+									/>
+								),
+								tooltip: __(
+									'Right',
+									'ultimate-addons-for-gutenberg'
+								),
+							},
+							{
+								value: 'full',
+								icon: (
+									<Icon
+										icon={ renderSVG( 'fa fa-align-justify' ) }
+									/>
+								),
+								tooltip: __(
+									'Full Width',
+									'ultimate-addons-for-gutenberg'
+								),
+							},
+						] }
+						showIcons={ true }
+					/>
+					<MultiButtonsControl
+						setAttributes={ setAttributes }
+						label={ __( 'Text Alignment', 'ultimate-addons-for-gutenberg' ) }
 						data={ {
 							value: textAlign,
 							label: 'textAlign',
@@ -253,6 +323,26 @@ const Settings = ( props ) => {
 							},
 						] }
 						showIcons={ true }
+					/>
+					<TextControl
+						label={ __(
+							'Link',
+							'ultimate-addons-for-gutenberg'
+						) }
+						value={ link }
+						onChange={ ( value ) =>
+							setAttributes( { link: value } )
+						}
+					/>
+					<ToggleControl
+						label={ __(
+							'Open in new Window',
+							'ultimate-addons-for-gutenberg'
+						) }
+						checked={ linkTarget }
+						onChange={ () =>
+							setAttributes( { linkTarget: ! linkTarget } )
+						}
 					/>
 				</UAGAdvancedPanelBody>
 				<UAGAdvancedPanelBody title={ __( 'Heading' ) } initialOpen={ false }>

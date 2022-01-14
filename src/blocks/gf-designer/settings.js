@@ -830,7 +830,61 @@ const Settings = ( props ) => {
 						},
 					] }
 				/>
-
+				<MultiButtonsControl
+						setAttributes={ setAttributes }
+						label={ __(
+							'Field & Input Label Alignment',
+							'ultimate-addons-for-gutenberg'
+						) }
+						data={ {
+							value: align,
+							label: 'align',
+						} }
+						className="uagb-multi-button-alignment-control"
+						options={ [
+							{
+								value: 'left',
+								icon: (
+									<Icon
+										icon={ renderSVG( 'fa fa-align-left' ) }
+									/>
+								),
+								tooltip: __(
+									'Left',
+									'ultimate-addons-for-gutenberg'
+								),
+							},
+							{
+								value: 'center',
+								icon: (
+									<Icon
+										icon={ renderSVG(
+											'fa fa-align-center'
+										) }
+									/>
+								),
+								tooltip: __(
+									'Center',
+									'ultimate-addons-for-gutenberg'
+								),
+							},
+							{
+								value: 'right',
+								icon: (
+									<Icon
+										icon={ renderSVG(
+											'fa fa-align-right'
+										) }
+									/>
+								),
+								tooltip: __(
+									'Right',
+									'ultimate-addons-for-gutenberg'
+								),
+							},
+						] }
+						showIcons={ true }
+					/>
 				{ titleDescStyle !== 'none' && (
 					<MultiButtonsControl
 						setAttributes={ setAttributes }

@@ -16,7 +16,7 @@ import UAGTabsControl from '@Components/tabs';
 import React from 'react';
 import { __ } from '@wordpress/i18n';
 
-import { InspectorControls } from '@wordpress/block-editor';
+import { InspectorControls, BlockAlignmentToolbar, AlignmentToolbar, BlockControls } from '@wordpress/block-editor';
 
 import {
 	SelectControl,
@@ -1169,6 +1169,22 @@ const Settings = ( props ) => {
 	};
 	return (
 		<InspectorControls>
+			<BlockControls key="controls">
+				<BlockAlignmentToolbar
+					value={ tabAlign }
+					onChange={ ( value ) =>
+						setAttributes( { tabAlign: value } )
+					}
+					controls={ [ 'left', 'center', 'right' ] }
+				/>
+				<AlignmentToolbar
+					value={ titleAlign }
+					onChange={ ( value ) =>
+						setAttributes( { titleAlign: value } )
+					}
+					controls={ [ 'left', 'center', 'right' ] }
+				/>
+			</BlockControls>
 			<InspectorTabs>
 				<InspectorTab { ...UAGTabs.general }>
 					{ tabStyleSettings() }

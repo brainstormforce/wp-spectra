@@ -29,6 +29,8 @@ import {
 	Popover,
 	ToolbarButton,
 	ToolbarGroup,
+	ToggleControl,
+	TextControl
 } from '@wordpress/components';
 
 
@@ -165,6 +167,26 @@ const Settings = ( props ) => {
 						/>
 					</>
 				) }
+				<TextControl
+					label={ __(
+						'Link',
+						'ultimate-addons-for-gutenberg'
+					) }
+					value={ link }
+					onChange={ ( value ) =>
+						setAttributes( { link: value } )
+					}
+				/>
+				<ToggleControl
+					label={ __(
+						'Open in new Window',
+						'ultimate-addons-for-gutenberg'
+					) }
+					checked={ opensInNewTab }
+					onChange={ () =>
+						setAttributes( { opensInNewTab: ! opensInNewTab } )
+					}
+				/>
 			</UAGAdvancedPanelBody>
 		);
 	};

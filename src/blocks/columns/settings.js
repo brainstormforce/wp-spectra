@@ -17,14 +17,14 @@ import InspectorTab, {
 } from '@Components/inspector-tabs/InspectorTab.js';
 import ResponsiveSlider from '@Components/responsive-slider';
 import UAGTabsControl from '@Components/tabs';
-
+import renderSVG from '@Controls/renderIcon';
 import {
 	BlockControls,
 	BlockAlignmentToolbar,
 	BlockVerticalAlignmentToolbar,
 	InspectorControls,
 } from '@wordpress/block-editor';
-import { SelectControl, ToggleControl } from '@wordpress/components';
+import { SelectControl, ToggleControl, Icon } from '@wordpress/components';
 
 import UAGAdvancedPanelBody from '@Components/advanced-panel-body';
 
@@ -154,6 +154,84 @@ const Settings = ( props ) => {
 					min={ 0 }
 					max={ 6 }
 					displayUnit={ false }
+				/>
+				<MultiButtonsControl
+					setAttributes={ setAttributes }
+					label={ __(
+						'Content Width',
+						'ultimate-addons-for-gutenberg'
+					) }
+					data={ {
+						value: align,
+						label: 'align',
+					} }
+					className="uagb-multi-button-alignment-control"
+					options={ [
+						{
+							value: 'wide',
+							label: 'Wide',
+						},
+						{
+							value: 'full',
+							label: 'Full Width',
+						},
+					] }
+					showIcons={ false }
+				/>
+				<MultiButtonsControl
+					setAttributes={ setAttributes }
+					label={ __(
+						'Vertical Alignment',
+						'ultimate-addons-for-gutenberg'
+					) }
+					data={ {
+						value: vAlign,
+						label: 'vAlign',
+					} }
+					className="uagb-multi-button-alignment-control"
+					options={ [
+						{
+							value: 'left',
+							icon: (
+								<Icon
+									icon={ renderSVG( 'fa fa-align-left' ) }
+								/>
+							),
+							tooltip: __(
+								'Left',
+								'ultimate-addons-for-gutenberg'
+							),
+						},
+						{
+							value: 'center',
+							icon: (
+								<Icon
+									icon={ renderSVG(
+										'fa fa-align-center'
+									) }
+								/>
+							),
+							tooltip: __(
+								'Center',
+								'ultimate-addons-for-gutenberg'
+							),
+						},
+						{
+							value: 'right',
+							icon: (
+								<Icon
+									icon={ renderSVG(
+										'fa fa-align-right'
+									) }
+								/>
+							),
+							tooltip: __(
+								'Right',
+								'ultimate-addons-for-gutenberg'
+							),
+						},
+					] }
+					showIcons={ true }
 				/>
 				<MultiButtonsControl
 					setAttributes={ setAttributes }

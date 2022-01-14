@@ -39,6 +39,7 @@ $selectors = array(
 		'margin-bottom' => UAGB_Helper::get_css_value( $attr['rowGap'], $attr['rowGapType'] ),
 	),
 	' .uagb-tm__content'                               => array(
+		'text-align'     => $attr['headingAlign'],
 		'padding-top'    => UAGB_Helper::get_css_value( $paddingTop, $attr['paddingUnit'] ),
 		'padding-bottom' => UAGB_Helper::get_css_value( $paddingBottom, $attr['paddingUnit'] ),
 		'padding-left'   => UAGB_Helper::get_css_value( $paddingLeft, $attr['paddingUnit'] ),

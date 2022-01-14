@@ -17,8 +17,8 @@ import {
 	BlockControls,
 	InspectorControls,
 } from '@wordpress/block-editor';
-
-import { SelectControl } from '@wordpress/components';
+import renderSVG from '@Controls/renderIcon';
+import { SelectControl, Icon } from '@wordpress/components';
 
 // Extend component
 
@@ -119,6 +119,54 @@ const Settings = ( props ) => {
 	const generalPanel = () => {
 		return (
 			<UAGAdvancedPanelBody>
+				<MultiButtonsControl
+					setAttributes={ setAttributes }
+					label={ __( 'Alignment', 'ultimate-addons-for-gutenberg' ) }
+					data={ {
+						value: headingAlign,
+						label: 'headingAlign',
+					} }
+					className="uagb-multi-button-alignment-control"
+					options={ [
+						{
+							value: 'left',
+							icon: (
+								<Icon
+									icon={ renderSVG( 'fa fa-align-left' ) }
+								/>
+							),
+							tooltip: __(
+								'Left',
+								'ultimate-addons-for-gutenberg'
+							),
+						},
+						{
+							value: 'center',
+							icon: (
+								<Icon
+									icon={ renderSVG( 'fa fa-align-center' ) }
+								/>
+							),
+							tooltip: __(
+								'Center',
+								'ultimate-addons-for-gutenberg'
+							),
+						},
+						{
+							value: 'right',
+							icon: (
+								<Icon
+									icon={ renderSVG( 'fa fa-align-right' ) }
+								/>
+							),
+							tooltip: __(
+								'Right',
+								'ultimate-addons-for-gutenberg'
+							),
+						},
+					] }
+					showIcons={ true }
+				/>
 				<MultiButtonsControl
 					setAttributes={ setAttributes }
 					label={ __(

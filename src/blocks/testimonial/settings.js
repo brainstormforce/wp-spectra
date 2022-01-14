@@ -12,7 +12,7 @@ import SpacingControl from '@Components/spacing-control';
 import InspectorTabs from '@Components/inspector-tabs/InspectorTabs.js';
 import UAGImage from '@Components/image';
 import MultiButtonsControl from '@Components/multi-buttons-control';
-
+import renderSVG from '@Controls/renderIcon';
 import InspectorTab, {
 	UAGTabs,
 } from '@Components/inspector-tabs/InspectorTab.js';
@@ -22,7 +22,7 @@ import {
 	InspectorControls,
 } from '@wordpress/block-editor';
 
-import { SelectControl, ToggleControl } from '@wordpress/components';
+import { SelectControl, ToggleControl, Icon } from '@wordpress/components';
 
 
 
@@ -1132,6 +1132,61 @@ const Settings = ( props ) => {
 								max={ test_item_count }
 								displayUnit={ false }
 								setAttributes={ setAttributes }
+							/>
+							<MultiButtonsControl
+								setAttributes={ setAttributes }
+								label={ __(
+									'Alignment',
+									'ultimate-addons-for-gutenberg'
+								) }
+								data={ {
+									value: headingAlign,
+									label: 'headingAlign',
+								} }
+								className="uagb-multi-button-alignment-control"
+								options={ [
+									{
+										value: 'left',
+										icon: (
+											<Icon
+												icon={ renderSVG( 'fa fa-align-left' ) }
+											/>
+										),
+										tooltip: __(
+											'Left',
+											'ultimate-addons-for-gutenberg'
+										),
+									},
+									{
+										value: 'center',
+										icon: (
+											<Icon
+												icon={ renderSVG(
+													'fa fa-align-center'
+												) }
+											/>
+										),
+										tooltip: __(
+											'Center',
+											'ultimate-addons-for-gutenberg'
+										),
+									},
+									{
+										value: 'right',
+										icon: (
+											<Icon
+												icon={ renderSVG(
+													'fa fa-align-right'
+												) }
+											/>
+										),
+										tooltip: __(
+											'Right',
+											'ultimate-addons-for-gutenberg'
+										),
+									},
+								] }
+								showIcons={ true }
 							/>
 						</UAGAdvancedPanelBody>
 						<UAGAdvancedPanelBody
