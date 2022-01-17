@@ -54,10 +54,8 @@ export default function save( props ) {
 								setAttributes="not_set"
 								props={ props }
 							/>
-						) }
-						{ author !== '' || authorImage.url !== '' || enableTweet && (
+						) }					
 						<footer>
-							{ author !== '' || authorImage.url !== '' && (
 							<div
 								className={ classnames(
 									'uagb-blockquote__author-wrap',
@@ -77,14 +75,12 @@ export default function save( props ) {
 									/>
 								) }
 							</div>
-							)}
 							{ enableTweet && (
 								<TweetButtonCTA
 									attributes={ props.attributes }
 								/>
 							) }
 						</footer>
-						)}
 				</blockquote>
 			</div>
 	);
