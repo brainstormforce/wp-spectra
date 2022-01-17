@@ -34,148 +34,112 @@ class UAGB_Block_Module {
 			'uag_frontent_assets_blocks',
 			array(
 				'star-rating'        => array(
-					'dir'    => 'star-rating',
-					'is-pro' => false,
+					'dir' => 'star-rating',
 				),
 				'advanced-heading'   => array(
-					'dir'    => 'advanced-heading',
-					'is-pro' => false,
+					'dir' => 'advanced-heading',
 				),
 				'columns'            => array(
-					'dir'    => 'columns',
-					'is-pro' => false,
+					'dir' => 'columns',
 				),
 				'column'             => array(
-					'dir'    => 'column',
-					'is-pro' => false,
+					'dir' => 'column',
 				),
 				'blockquote'         => array(
-					'dir'    => 'blockquote',
-					'is-pro' => false,
+					'dir' => 'blockquote',
 				),
 				'call-to-action'     => array(
-					'dir'    => 'call-to-action',
-					'is-pro' => false,
+					'dir' => 'call-to-action',
 				),
 				'cf7-styler'         => array(
-					'dir'    => 'cf7-styler',
-					'is-pro' => false,
+					'dir' => 'cf7-styler',
 				),
 				'content-timeline'   => array(
-					'dir'    => 'content-timeline',
-					'is-pro' => false,
+					'dir' => 'content-timeline',
 				),
 				'faq'                => array(
-					'dir'    => 'faq',
-					'is-pro' => false,
+					'dir' => 'faq',
 				),
 				'gf-styler'          => array(
-					'dir'    => 'gf-styler',
-					'is-pro' => false,
+					'dir' => 'gf-styler',
 				),
 				'how-to'             => array(
-					'dir'    => 'how-to',
-					'is-pro' => false,
+					'dir' => 'how-to',
 				),
 				'how-to-step'        => array(
-					'dir'    => 'how-to-step',
-					'is-pro' => false,
+					'dir' => 'how-to-step',
 				),
 				'icon-list'          => array(
-					'dir'    => 'icon-list',
-					'is-pro' => false,
+					'dir' => 'icon-list',
 				),
 				'icon-list-child'    => array(
-					'dir'    => 'icon-list-child',
-					'is-pro' => false,
+					'dir' => 'icon-list-child',
 				),
 				'info-box'           => array(
-					'dir'    => 'info-box',
-					'is-pro' => false,
+					'dir' => 'info-box',
 				),
 				'inline-notice'      => array(
-					'dir'    => 'inline-notice',
-					'is-pro' => false,
+					'dir' => 'inline-notice',
 				),
 				'marketing-button'   => array(
-					'dir'    => 'marketing-button',
-					'is-pro' => false,
+					'dir' => 'marketing-button',
 				),
 				'buttons'            => array(
-					'dir'    => 'buttons',
-					'is-pro' => false,
+					'dir' => 'buttons',
 				),
 				'buttons-child'      => array(
-					'dir'    => 'buttons-child',
-					'is-pro' => false,
+					'dir' => 'buttons-child',
 				),
 				'post-carousel'      => array(
-					'dir'    => 'post-carousel',
-					'is-pro' => false,
+					'dir' => 'post-carousel',
 				),
 				'post-grid'          => array(
-					'dir'    => 'post-grid',
-					'is-pro' => false,
+					'dir' => 'post-grid',
 				),
 				'post-masonry'       => array(
-					'dir'    => 'post-masonry',
-					'is-pro' => false,
+					'dir' => 'post-masonry',
 				),
 				'post-timeline'      => array(
-					'dir'    => 'post-timeline',
-					'is-pro' => false,
+					'dir' => 'post-timeline',
 				),
 				'restaurant-menu'    => array(
-					'dir'    => 'restaurant-menu',
-					'is-pro' => false,
+					'dir' => 'restaurant-menu',
 				),
 				'review'             => array(
-					'dir'    => 'review',
-					'is-pro' => false,
+					'dir' => 'review',
 				),
 				'section'            => array(
-					'dir'    => 'section',
-					'is-pro' => false,
+					'dir' => 'section',
 				),
 				'social-share'       => array(
-					'dir'    => 'social-share',
-					'is-pro' => false,
+					'dir' => 'social-share',
 				),
 				'social-share-child' => array(
-					'dir'    => 'social-share-child',
-					'is-pro' => false,
+					'dir' => 'social-share-child',
 				),
 				'tabs'               => array(
-					'dir'    => 'tabs',
-					'is-pro' => false,
+					'dir' => 'tabs',
 				),
 				'table-of-contents'  => array(
-					'dir'    => 'table-of-contents',
-					'is-pro' => false,
+					'dir' => 'table-of-contents',
 				),
 				'team'               => array(
-					'dir'    => 'team',
-					'is-pro' => false,
+					'dir' => 'team',
 				),
 				'testimonial'        => array(
-					'dir'    => 'testimonial',
-					'is-pro' => false,
+					'dir' => 'testimonial',
 				),
 				'wp-search'          => array(
-					'dir'    => 'wp-search',
-					'is-pro' => false,
+					'dir' => 'wp-search',
 				),
 				'taxonomy-list'      => array(
-					'dir'    => 'taxonomy-list',
-					'is-pro' => false,
+					'dir' => 'taxonomy-list',
 				),
 				'forms'              => array(
-					'dir'    => 'forms',
-					'is-pro' => false,
+					'dir' => 'forms',
 				),
 				'lottie'             => array(
-					'dir'    => 'lottie',
-					'is-pro' => false,
+					'dir' => 'lottie',
 				),
 			)
 		);
@@ -188,7 +152,11 @@ class UAGB_Block_Module {
 
 		if ( isset( $blocks[ $slug ] ) ) {
 
-			$main_dir = $blocks[ $slug ]['is-pro'] ? UAG_PRO_DIR : UAGB_DIR;
+			$main_dir = UAGB_DIR;
+
+			if ( isset( $blocks[ $slug ]['plugin-dir'] ) ) {
+				$main_dir = $blocks[ $slug ]['plugin-dir'];
+			}
 
 			$block_dir = $main_dir . 'includes/blocks/' . $blocks[ $slug ]['dir'];
 
