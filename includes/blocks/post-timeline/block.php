@@ -17,6 +17,13 @@ $block_data = array(
 	'description'      => __( 'The Timeline block lets you create beautiful timelines of Posts on your website.', 'ultimate-addons-for-gutenberg' ),
 	'default'          => true,
 	'extension'        => false,
-	'js_assets'        => array( 'uagb-timeline-js' ),
+	'static_assets'    => array(
+		'uagb-timeline-js' => array(
+			'src'  => UAGB_Scripts_Utils::get_js_url( 'timeline' ),
+			'dep'  => array( 'jquery' ),
+			'type' => 'js',
+		),
+	),
 	'priority'         => 3,
+	'static_css'       => 'timeline',
 );

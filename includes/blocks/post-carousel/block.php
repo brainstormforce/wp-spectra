@@ -17,7 +17,22 @@ $block_data = array(
 	'description'      => __( 'This block fetches the blog posts you may have on your website and displays them in a carousel layout.', 'ultimate-addons-for-gutenberg' ),
 	'default'          => true,
 	'extension'        => false,
-	'js_assets'        => array( 'uagb-slick-js', 'uagb-post-js', 'uagb-imagesloaded' ),
-	'css_assets'       => array( 'uagb-slick-css' ),
+	'static_assets'    => array(
+		'uagb-post-js'      => array(
+			'src'  => UAGB_Scripts_Utils::get_js_url( 'post' ),
+			'dep'  => array( 'jquery', 'uagb-slick-js' ),
+			'type' => 'js',
+		),
+		'uagb-imagesloaded' => array(
+			'type' => 'js',
+		),
+		'uagb-slick-js'     => array(
+			'type' => 'js',
+		),
+		'uagb-slick-css'    => array(
+			'type' => 'css',
+		),
+	),
 	'priority'         => 1,
+	'static_css'       => 'post',
 );

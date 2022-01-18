@@ -453,11 +453,11 @@ class UAGB_Init_Blocks {
 
 				$_slug = 'uagb/' . $slug;
 
-				if ( ! isset( UAGB_Config::$block_attributes[ $_slug ] ) ) {
+				if ( ! isset( UAGB_Block_Module::$block_attributes[ $_slug ] ) ) {
 					continue;
 				}
 
-				$current_block = UAGB_Config::$block_attributes[ $_slug ];
+				$current_block = UAGB_Block_Module::$block_attributes[ $_slug ];
 
 				if ( isset( $current_block['is_child'] ) && $current_block['is_child'] ) {
 					continue;
@@ -520,7 +520,7 @@ class UAGB_Init_Blocks {
 			'uagb-block-editor-js',
 			'uagb_blocks_info',
 			array(
-				'blocks'                             => UAGB_Config::get_block_attributes(),
+				'blocks'                             => UAGB_Block_Module::get_block_info(),
 				'category'                           => 'uagb',
 				'ajax_url'                           => admin_url( 'admin-ajax.php' ),
 				'cf7_forms'                          => $this->get_cf7_forms(),

@@ -18,4 +18,5 @@ $block_data = array(
 	'default'          => true,
 	'extension'        => false,
 	'priority'         => 1,
+	'static_css'       => 'post',
 );

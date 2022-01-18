@@ -16,6 +16,12 @@ $block_data = array(
 	'title'            => __( 'Form', 'ultimate-addons-for-gutenberg' ),
 	'description'      => __( 'This block allow you to create interactive contact form, newsletter, suggestion, etc easily.', 'ultimate-addons-for-gutenberg' ),
 	'default'          => true,
-	'js_assets'        => array( 'uagb-forms-js' ),
+	'static_assets'    => array(
+		'uagb-forms-js' => array(
+			'src'  => UAGB_Scripts_Utils::get_js_url( 'forms' ),
+			'dep'  => array( 'jquery' ),
+			'type' => 'js',
+		),
+	),
 	'priority'         => 2,
 );

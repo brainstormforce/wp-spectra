@@ -199,7 +199,7 @@ if ( ! class_exists( 'UAGB_Admin_Helper' ) ) {
 			$is_already_button    = false;
 			$is_already_faq       = false;
 
-			foreach ( UAGB_Config::$block_attributes as $key => $block ) {
+			foreach ( UAGB_Block_Module::$block_attributes as $key => $block ) {
 
 				$block_name = str_replace( 'uagb/', '', $key );
 

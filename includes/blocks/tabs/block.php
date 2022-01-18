@@ -17,6 +17,12 @@ $block_data = array(
 	'description'      => __( 'This block allows you to display your content in tabs layout.', 'ultimate-addons-for-gutenberg' ),
 	'default'          => true,
 	'extension'        => false,
-	'js_assets'        => array( 'uagb-tabs-js' ),
+	'static_assets'    => array(
+		'uagb-tabs-js' => array(
+			'src'  => UAGB_Scripts_Utils::get_js_url( 'tabs' ),
+			'dep'  => array( 'jquery' ),
+			'type' => 'js',
+		),
+	),
 	'priority'         => 2,
 );

@@ -17,6 +17,13 @@ $block_data = array(
 	'description'      => __( 'This block helps you add FAQ or Accordion with automatically adding FAQ Schema to your page.', 'ultimate-addons-for-gutenberg' ),
 	'default'          => true,
 	'extension'        => false,
-	'js_assets'        => array( 'uagb-faq-js' ),
+	'static_assets'    => array(
+		'uagb-faq-js' => array(
+			'src'        => UAGB_Scripts_Utils::get_js_url( 'faq' ),
+			'dep'        => array(),
+			'skipEditor' => true,
+			'type'       => 'js',
+		),
+	),
 	'priority'         => 1,
 );

@@ -18,4 +18,5 @@ $block_data = array(
 	'default'          => true,
 	'extension'        => false,
 	'priority'         => 4,
+	'static_css'       => 'price-list',
 );

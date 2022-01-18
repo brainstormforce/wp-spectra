@@ -14,6 +14,5 @@ $block_data = array(
 	'description' => __( 'This block fetches the Core Gallery and displays them in a masonry layout.', 'ultimate-addons-for-gutenberg' ),
 	'default'     => true,
 	'extension'   => true,
-	'js_assets'   => array(),
 	'attributes'  => array(),
 );

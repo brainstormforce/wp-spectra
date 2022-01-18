@@ -17,6 +17,19 @@ $block_data = array(
 	'description'      => __( 'This block fetches the blog posts you may have on your website and displays them in a masonry layout.', 'ultimate-addons-for-gutenberg' ),
 	'default'          => true,
 	'extension'        => false,
-	'js_assets'        => array( 'uagb-masonry', 'uagb-imagesloaded', 'uagb-post-js' ),
+	'static_assets'    => array(
+		'uagb-post-js'      => array(
+			'src'  => UAGB_Scripts_Utils::get_js_url( 'post' ),
+			'dep'  => array( 'jquery' ),
+			'type' => 'js',
+		),
+		'uagb-masonry'      => array(
+			'type' => 'js',
+		),
+		'uagb-imagesloaded' => array(
+			'type' => 'js',
+		),
+	),
 	'priority'         => 1,
+	'static_css'       => 'post',
 );

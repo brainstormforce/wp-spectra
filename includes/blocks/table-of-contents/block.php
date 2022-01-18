@@ -17,6 +17,12 @@ $block_data = array(
 	'description'      => __( 'This block allows you to place a Table of Contents for Pages/Posts.', 'ultimate-addons-for-gutenberg' ),
 	'default'          => true,
 	'extension'        => false,
-	'js_assets'        => array( 'uagb-table-of-contents' ),
+	'static_assets'    => array(
+		'uagb-table-of-contents' => array(
+			'src'  => UAGB_Scripts_Utils::get_js_url( 'table-of-contents' ),
+			'dep'  => array( 'jquery' ),
+			'type' => 'js',
+		),
+	),
 	'priority'         => 2,
 );

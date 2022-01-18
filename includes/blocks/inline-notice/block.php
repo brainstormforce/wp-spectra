@@ -17,6 +17,16 @@ $block_data = array(
 	'description'      => __( 'This block helps you add an inline notice.', 'ultimate-addons-for-gutenberg' ),
 	'default'          => true,
 	'extension'        => false,
-	'js_assets'        => array( 'uagb-inline-notice-js', 'uagb-cookie-lib' ),
+	'static_assets'    => array(
+		'uagb-inline-notice-js' => array(
+			'src'        => UAGB_Scripts_Utils::get_js_url( 'inline-notice' ),
+			'dep'        => array( 'jquery', 'uagb-cookie-lib' ),
+			'skipEditor' => true,
+			'type'       => 'js',
+		),
+		'uagb-cookie-lib'       => array(
+			'type' => 'js',
+		),
+	),
 	'priority'         => 5,
 );
