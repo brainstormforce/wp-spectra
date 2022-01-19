@@ -126,14 +126,13 @@
 	}
 }
 
-.wp-block-uagb-columns.uagb-columns__valign-center {
-	width: 100%;
+.wp-block-uagb-columns.uagb-columns__valign-center > .block-editor-inner-blocks > .block-editor-block-list__layout > [data-type="uagb/column"] {
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
 }
 
-.wp-block-uagb-columns.uagb-columns__valign-bottom {
+.wp-block-uagb-columns.uagb-columns__valign-bottom > .block-editor-inner-blocks > .block-editor-block-list__layout > [data-type="uagb/column"] {
 	display: flex;
 	flex-direction: column;
 	justify-content: flex-end;

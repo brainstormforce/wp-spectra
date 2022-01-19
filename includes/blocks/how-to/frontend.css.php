@@ -142,6 +142,9 @@ $selectors = array(
 	' .uagb-how-to-steps__wrap .uagb-howto-req-steps-text' => array(
 		'color' => $attr['showTotaltimecolor'],
 	),
+	' .uagb-howto-req-steps-text'                          => array(
+		'color' => $attr['showTotaltimecolor'],
+	),
 );
 
 $selectors[' .uagb-tools__label'] = array(
