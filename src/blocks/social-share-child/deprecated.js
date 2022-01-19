@@ -6,7 +6,7 @@
 import classnames from 'classnames';
 import attributes from './attributes';
 import renderSVG from '@Controls/deprecatedRenderIcon';
-import links from './links';
+import links from './deprecatedLinks';
 
 const deprecated = [
 	{

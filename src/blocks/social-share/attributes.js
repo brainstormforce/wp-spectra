@@ -2,7 +2,7 @@
  * BLOCK: UAGB Social Share Attributes
  */
 
-const itemCount = 1;
+const itemCount = 3;
 
 const socials = [];
 

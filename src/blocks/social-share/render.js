@@ -4,7 +4,7 @@
 
 import classnames from 'classnames';
 import { InnerBlocks } from '@wordpress/block-editor';
-import React, { useLayoutEffect, useMemo } from 'react';
+import React, { useLayoutEffect } from 'react';
 import styles from './editor.lazy.scss';
 import { useDeviceType } from '@Controls/getPreviewType';
 
@@ -23,20 +23,49 @@ const Render = ( props ) => {
 	const deviceType = useDeviceType();
 	const { attributes } = props;
 
-	const { className, social_count, socials, social_layout } = attributes;
+	const { className, social_layout } = attributes;
 
-	const getSocialShareTemplate = useMemo( () => {
-		const childSocialShare = [];
-
-		for ( let i = 0; i < social_count; i++ ) {
-			childSocialShare.push( [
-				'uagb/social-share-child',
-				socials[ i ],
-			] );
-		}
-
-		return childSocialShare;
-	}, [ social_count, socials ] );
+	const getSocialShareTemplate = [
+		[
+			'uagb/social-share-child',
+			{
+				type: 'facebook',
+				image_icon: 'icon',
+				icon: 'fab fa-facebook',
+				image: '',
+				icon_color: '#3a3a3a',
+				icon_hover_color: '',
+				icon_bg_color: '',
+				icon_bg_hover_color: '',
+			},
+		],
+		[
+			'uagb/social-share-child',
+			{
+				type: 'twitter',
+				image_icon: 'icon',
+				icon: 'fab fa-twitter-square',
+				image: '',
+				icon_color: '#3a3a3a',
+				icon_hover_color: '',
+				icon_bg_color: '',
+				icon_bg_hover_color: '',
+			},
+		],
+		[
+			'uagb/social-share-child',
+			{
+				type: 'pinterest',
+				image_icon: 'icon',
+				icon: 'fab fa-pinterest-square',
+				image: '',
+				icon_color: '#3a3a3a',
+				icon_hover_color: '',
+				icon_bg_color: '',
+				icon_bg_hover_color: '',
+			},
+		],
+	];
 
 	return (
 		<div
