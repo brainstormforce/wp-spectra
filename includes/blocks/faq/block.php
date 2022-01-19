@@ -26,4 +26,7 @@ $block_data = array(
 		),
 	),
 	'priority'         => 1,
+	'dynamic_assets'   => array(
+		'dir' => 'faq',
+	),
 );

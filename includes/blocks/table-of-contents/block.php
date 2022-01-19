@@ -25,4 +25,7 @@ $block_data = array(
 		),
 	),
 	'priority'         => 2,
+	'dynamic_assets'   => array(
+		'dir' => 'table-of-contents',
+	),
 );

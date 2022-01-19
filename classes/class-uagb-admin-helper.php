@@ -198,8 +198,9 @@ if ( ! class_exists( 'UAGB_Admin_Helper' ) ) {
 			$is_already_icon_list = false;
 			$is_already_button    = false;
 			$is_already_faq       = false;
+			$blocks_info          = UAGB_Block_Module::get_blocks_info();
 
-			foreach ( UAGB_Block_Module::$block_attributes as $key => $block ) {
+			foreach ( $blocks_info as $key => $block ) {
 
 				$block_name = str_replace( 'uagb/', '', $key );
 

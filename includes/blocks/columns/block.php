@@ -18,4 +18,7 @@ $block_data = array(
 	'default'          => true,
 	'extension'        => false,
 	'priority'         => 2,
+	'dynamic_assets'   => array(
+		'dir' => 'columns',
+	),
 );

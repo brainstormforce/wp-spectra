@@ -19,4 +19,7 @@ $block_data = array(
 	'extension'        => false,
 	'priority'         => 4,
 	'static_css'       => 'price-list',
+	'dynamic_assets'   => array(
+		'dir' => 'restaurant-menu',
+	),
 );

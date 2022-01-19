@@ -21,7 +21,7 @@ final class UAGB_Scripts_Utils {
 	 */
 	public static function enqueue_blocks_dependency_both() {
 
-		$blocks       = UAGB_Block_Module::get_block_info();
+		$blocks       = UAGB_Block_Module::get_blocks_info();
 		$saved_blocks = UAGB_Admin_Helper::get_admin_settings_option( '_uagb_blocks', array() );
 		$block_assets = UAGB_Block_Module::get_block_assets();
 

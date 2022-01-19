@@ -139,7 +139,7 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 			require UAGB_DIR . 'classes/class-uagb-block-helper.php';
 			require UAGB_DIR . 'classes/class-uagb-block-js.php';
 
-			self::$block_list      = UAGB_Block_Module::get_block_info();
+			self::$block_list      = UAGB_Block_Module::get_blocks_info();
 			self::$file_generation = self::allow_file_generation();
 		}
 

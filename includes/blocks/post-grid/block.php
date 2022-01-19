@@ -19,4 +19,7 @@ $block_data = array(
 	'extension'        => false,
 	'priority'         => 1,
 	'static_css'       => 'post',
+	'dynamic_assets'   => array(
+		'dir' => 'post-grid',
+	),
 );

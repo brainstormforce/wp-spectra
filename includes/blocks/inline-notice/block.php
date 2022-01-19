@@ -29,4 +29,7 @@ $block_data = array(
 		),
 	),
 	'priority'         => 5,
+	'dynamic_assets'   => array(
+		'dir' => 'inline-notice',
+	),
 );

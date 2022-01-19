@@ -26,4 +26,7 @@ $block_data = array(
 	),
 	'priority'         => 3,
 	'static_css'       => 'timeline',
+	'dynamic_assets'   => array(
+		'dir' => 'content-timeline',
+	),
 );

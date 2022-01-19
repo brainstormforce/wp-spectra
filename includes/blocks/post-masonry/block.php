@@ -32,4 +32,7 @@ $block_data = array(
 	),
 	'priority'         => 1,
 	'static_css'       => 'post',
+	'dynamic_assets'   => array(
+		'dir' => 'post-masonry',
+	),
 );

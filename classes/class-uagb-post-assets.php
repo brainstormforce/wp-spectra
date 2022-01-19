@@ -417,7 +417,7 @@ class UAGB_Post_Assets {
 
 		$block_list_for_assets = $this->current_block_list;
 
-		$blocks = UAGB_Block_Module::get_block_info();
+		$blocks = UAGB_Block_Module::get_blocks_info();
 
 		$block_assets = UAGB_Block_Module::get_block_assets();
 
@@ -725,7 +725,7 @@ class UAGB_Post_Assets {
 		}
 
 		// Add static css here.
-		$blocks = UAGB_Block_Module::get_block_info();
+		$blocks = UAGB_Block_Module::get_blocks_info();
 
 		$block_css_file_name = ( isset( $blocks[ $name ] ) && isset( $blocks[ $name ]['static_css'] ) ) ? $blocks[ $name ]['static_css'] : str_replace( 'uagb/', '', $name );
 

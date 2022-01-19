@@ -27,13 +27,6 @@ if ( ! class_exists( 'UAGB_Block_Module' ) ) {
 		private static $instance;
 
 		/**
-		 * Blocks Info.
-		 *
-		 * @var block_attributes
-		 */
-		public static $blocks = null;
-
-		/**
 		 * Block Attributes
 		 *
 		 * @var block_attributes
@@ -74,7 +67,7 @@ if ( ! class_exists( 'UAGB_Block_Module' ) ) {
 		 */
 		public static function uag_add_block_static_assets( $block_assets ) {
 
-			$blocks = ( null === self::$blocks ) ? self::get_block_info() : self::$blocks;
+			$blocks = self::get_blocks_info();
 
 			foreach ( $blocks as $block ) {
 				if ( isset( $block['static_assets'] ) ) {
@@ -103,125 +96,21 @@ if ( ! class_exists( 'UAGB_Block_Module' ) ) {
 		 */
 		public static function get_frontend_assets( $slug, $attr, $id, $type = 'css' ) {
 
-			$blocks = apply_filters(
-				'uag_frontend_assets_blocks',
-				array(
-					'star-rating'        => array(
-						'dir' => 'star-rating',
-					),
-					'advanced-heading'   => array(
-						'dir' => 'advanced-heading',
-					),
-					'columns'            => array(
-						'dir' => 'columns',
-					),
-					'column'             => array(
-						'dir' => 'column',
-					),
-					'blockquote'         => array(
-						'dir' => 'blockquote',
-					),
-					'call-to-action'     => array(
-						'dir' => 'call-to-action',
-					),
-					'cf7-styler'         => array(
-						'dir' => 'cf7-styler',
-					),
-					'content-timeline'   => array(
-						'dir' => 'content-timeline',
-					),
-					'faq'                => array(
-						'dir' => 'faq',
-					),
-					'gf-styler'          => array(
-						'dir' => 'gf-styler',
-					),
-					'how-to'             => array(
-						'dir' => 'how-to',
-					),
-					'how-to-step'        => array(
-						'dir' => 'how-to-step',
-					),
-					'icon-list'          => array(
-						'dir' => 'icon-list',
-					),
-					'icon-list-child'    => array(
-						'dir' => 'icon-list-child',
-					),
-					'info-box'           => array(
-						'dir' => 'info-box',
-					),
-					'inline-notice'      => array(
-						'dir' => 'inline-notice',
-					),
-					'marketing-button'   => array(
-						'dir' => 'marketing-button',
-					),
-					'buttons'            => array(
-						'dir' => 'buttons',
-					),
-					'buttons-child'      => array(
-						'dir' => 'buttons-child',
-					),
-					'post-carousel'      => array(
-						'dir' => 'post-carousel',
-					),
-					'post-grid'          => array(
-						'dir' => 'post-grid',
-					),
-					'post-masonry'       => array(
-						'dir' => 'post-masonry',
-					),
-					'post-timeline'      => array(
-						'dir' => 'post-timeline',
-					),
-					'restaurant-menu'    => array(
-						'dir' => 'restaurant-menu',
-					),
-					'review'             => array(
-						'dir' => 'review',
-					),
-					'section'            => array(
-						'dir' => 'section',
-					),
-					'social-share'       => array(
-						'dir' => 'social-share',
-					),
-					'social-share-child' => array(
-						'dir' => 'social-share-child',
-					),
-					'tabs'               => array(
-						'dir' => 'tabs',
-					),
-					'table-of-contents'  => array(
-						'dir' => 'table-of-contents',
-					),
-					'team'               => array(
-						'dir' => 'team',
-					),
-					'testimonial'        => array(
-						'dir' => 'testimonial',
-					),
-					'wp-search'          => array(
-						'dir' => 'wp-search',
-					),
-					'taxonomy-list'      => array(
-						'dir' => 'taxonomy-list',
-					),
-					'forms'              => array(
-						'dir' => 'forms',
-					),
-					'lottie'             => array(
-						'dir' => 'lottie',
-					),
-				)
-			);
-
 			$assets = array();
 
 			if ( 'js' === $type ) {
 				$assets = '';
 			}
+
+			$blocks_info = self::get_blocks_info();
+
+			if ( ! isset( $blocks_info[ 'uagb/' . $slug ] ) || ! isset( $blocks_info[ 'uagb/' . $slug ]['dynamic_assets'] ) ) {
+				return $assets;
+			}
+
+			$blocks = array(
+				$slug => $blocks_info[ 'uagb/' . $slug ]['dynamic_assets'],
+			);
 
 			if ( isset( $blocks[ $slug ] ) ) {
 
@@ -263,7 +152,7 @@ if ( ! class_exists( 'UAGB_Block_Module' ) ) {
 		 *
 		 * @return array The Widget List.
 		 */
-		public static function get_block_info() {
+		public static function get_blocks_info() {
 
 			if ( null === self::$block_attributes ) {
 

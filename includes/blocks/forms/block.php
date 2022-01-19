@@ -24,4 +24,7 @@ $block_data = array(
 		),
 	),
 	'priority'         => 2,
+	'dynamic_assets'   => array(
+		'dir' => 'forms',
+	),
 );
