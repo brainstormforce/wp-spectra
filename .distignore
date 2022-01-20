@@ -14,6 +14,9 @@
 .prettierrc.js
 .prettierignore
 .browserslistrc
+.babelrc
+.stylelintignore
+.stylelintrc
 Thumbs.db
 behat.yml
 bin
@@ -43,3 +46,4 @@ eslintrc.json
 scripts
 config
 artifact
+webpack.config.js

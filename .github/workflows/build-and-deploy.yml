@@ -15,10 +15,10 @@ jobs:
     steps:
     - uses: actions/checkout@v2
 
-    - name: Use Node.js 12.x
+    - name: Use Node.js 14.x
       uses: actions/setup-node@v1
       with:
-        node-version: 12.x
+        node-version: 14.x
 
     - name: Get npm cache directory
       id: npm-cache
@@ -32,19 +32,22 @@ jobs:
         restore-keys: |
           ${{ runner.os }}-npm-
 
-    - name: Build
-      run: npm install && grunt release-no-clean
+    - name: Install Dependencies & Build
+      run: npm ci && npm run build
+
+    - name: Build a package
+      run: bash ./bin/build-zip.sh
 
     - name: Rsync Deployment
       uses: burnett01/rsync-deployments@4.1
       with:
         # switches: -avzr --delete
         switches: -avzr
-        path: ultimate-addons-for-gutenberg/
-        remote_path: ${{ env.PLUGIN_PATH }}
+        path: artifact/ultimate-addons-for-gutenberg/
+        remote_path: ${{ secrets.SSH_TEST_PATH }}
         remote_host: ${{ secrets.SSH_HOST }}
         remote_user: ${{ secrets.SSH_USER }}
         remote_key: ${{ secrets.SSH_KEY }}
 
     - name: Cleanup
-      run: rm -rf ultimate-addons-for-gutenberg/
+      run: rm -rf artifact
