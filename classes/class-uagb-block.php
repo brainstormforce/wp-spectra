@@ -31,7 +31,7 @@ if ( ! class_exists( 'UAGB_Block' ) ) {
 		 *
 		 * @var block_attributes
 		 */
-		public static $blocks = null;
+		private static $blocks = null;
 
 		/**
 		 *  Initiator
@@ -43,6 +43,12 @@ if ( ! class_exists( 'UAGB_Block' ) ) {
 			return self::$instance;
 		}
 
+		/**
+		 * Register a Block.
+		 *
+		 * @since x.x.x
+		 * @param string $block_file Block File Path.
+		 */
 		public function register( $block_file ) {
 
 			$block_slug = '';
@@ -55,6 +61,11 @@ if ( ! class_exists( 'UAGB_Block' ) ) {
 			}
 		}
 
+		/**
+		 * Register all UAG Lite Blocks.
+		 *
+		 * @since x.x.x
+		 */
 		public function register_blocks() {
 
 			self::$blocks = array();
@@ -65,7 +76,22 @@ if ( ! class_exists( 'UAGB_Block' ) ) {
 				$this->register( $block_file );
 			}
 
-			do_action( 'uag_add_block', $this );
+			do_action( 'uag_register_block', $this );
+		}
+
+		/**
+		 * Gives all Blocks.
+		 *
+		 * @since x.x.x
+		 */
+		public function get_blocks() {
+
+			if ( null === self::$blocks ) {
+
+				$this->register_blocks();
+			}
+
+			return self::$blocks;
 		}
 	}
 

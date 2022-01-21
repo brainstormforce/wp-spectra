@@ -54,7 +54,7 @@ if ( ! class_exists( 'UAGB_Block_Module' ) ) {
 		 * Constructor
 		 */
 		public function __construct() {
-			add_filter( 'uag_add_block_static_dependencies', array( __CLASS__, 'uag_add_block_static_dependencies' ) );
+			add_filter( 'uag_register_block_static_dependencies', array( __CLASS__, 'uag_register_block_static_dependencies' ) );
 		}
 
 		/**
@@ -65,7 +65,7 @@ if ( ! class_exists( 'UAGB_Block_Module' ) ) {
 		 * @param string $block_assets Block Assets.
 		 * @return array
 		 */
-		public static function uag_add_block_static_dependencies( $block_assets ) {
+		public static function uag_register_block_static_dependencies( $block_assets ) {
 
 			$blocks = self::get_blocks_info();
 
@@ -154,11 +154,7 @@ if ( ! class_exists( 'UAGB_Block_Module' ) ) {
 		 */
 		public static function get_blocks_info() {
 
-			if ( null === uagb_block()::$blocks ) {
-
-				uagb_block()->register_blocks();
-			}
-			return uagb_block()::$blocks;
+			return uagb_block()->get_blocks();
 		}
 
 		/**
@@ -210,7 +206,7 @@ if ( ! class_exists( 'UAGB_Block_Module' ) ) {
 				);
 			}
 
-			return apply_filters( 'uag_add_block_static_dependencies', self::$block_assets );
+			return apply_filters( 'uag_register_block_static_dependencies', self::$block_assets );
 		}
 	}
 }
