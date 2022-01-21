@@ -95,6 +95,7 @@ function contentTimelineStyle( props ) {
 		headDecoration,
 		subHeadDecoration,
 		dateDecoration,
+		iconFocus,
 	} = props.attributes;
 
 	const respSelectors = 'left';
@@ -278,7 +279,7 @@ function contentTimelineStyle( props ) {
 			'border-color': borderFocus,
 		},
 		' .uagb-timeline__marker.uagb-timeline__in-view-icon svg': {
-			'fill': iconColor,
+			'fill': iconFocus,
 		},
 	};
 

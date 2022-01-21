@@ -79,6 +79,7 @@ const Render = ( props ) => {
 				) }
 			>
 				{ ctaType === 'all' && (
+					<>
 					<a
 						href="/"
 						className="uagb-cta__link-to-all"
@@ -86,8 +87,10 @@ const Render = ( props ) => {
 					>
 						{ ' ' }
 					</a>
+					{ output() }
+					</>
 				) }
-				{ output() }
+				{ ctaType !== 'all' && output() }
 			</div>
 	);
 };

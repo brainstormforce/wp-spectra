@@ -94,7 +94,7 @@ if ( ! class_exists( 'UAGB_Post_Timeline' ) ) {
 						),
 						'separatorFillColor'      => array(
 							'type'    => 'string',
-							'default' => '#61ce70',
+							'default' => '#0693e3',
 						),
 						'separatorBorder'         => array(
 							'type'    => 'string',
@@ -194,7 +194,7 @@ if ( ! class_exists( 'UAGB_Post_Timeline' ) ) {
 						),
 						'iconBgFocus'             => array(
 							'type'    => 'string',
-							'default' => '#61ce70',
+							'default' => '#0693e3',
 						),
 						'authorColor'             => array(
 							'type'    => 'string',

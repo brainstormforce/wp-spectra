@@ -351,7 +351,7 @@ const attributes = {
 	// InputBorder
 	inputborderStyle: {
 		type: 'string',
-		default: 'none',
+		default: 'solid',
 		isUAGStyle: true,
 	},
 	inputborderWidth: {

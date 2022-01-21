@@ -119,6 +119,13 @@ const UAGBRestaurantMenu = ( props ) => {
 			props.clientId
 		);
 
+		if( 'side' === props.attributes.imgAlign && 'right' !== props.attributes.imagePosition ){
+			props.setAttributes( { imagePosition : 'left' } );
+			props.setAttributes( { headingAlign : 'left' } );
+		} 
+		if( 'top' === props.attributes.imgAlign ){
+			props.setAttributes( { imagePosition : 'top' } );
+		}
 		getChildBlocks.forEach( ( pricelistChild ) => {
 			pricelistChild.attributes.imagePosition =props.attributes.imagePosition;
 			pricelistChild.attributes.columns = props.attributes.columns;

@@ -186,6 +186,15 @@
 	}
 }
 
+.wp-block-uagb-call-to-action a.uagb-cta__link-to-all {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	z-index: 11;
+}
+
 @media only screen and (max-width: 976px) {
 
 	.uagb-cta__content-stacked-tablet,
