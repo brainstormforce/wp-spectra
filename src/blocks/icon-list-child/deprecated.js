@@ -3,7 +3,7 @@
  */
 
 import classnames from 'classnames';
-import renderSVG from '@Controls/renderIcon';
+import renderSVG from '@Controls/deprecatedRenderIcon';
 import attributes from './attributes';
 
 import { RichText } from '@wordpress/block-editor';

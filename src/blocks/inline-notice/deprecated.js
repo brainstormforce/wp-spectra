@@ -4,7 +4,7 @@
 
 // Import block dependencies and components.
 import classnames from 'classnames';
-import renderSVG from '@Controls/renderIcon';
+import renderSVG from '@Controls/deprecatedRenderIcon';
 import { RichText } from '@wordpress/block-editor';
 import attributes from './attributes';
 
@@ -12,7 +12,7 @@ const deprecated = [
 	{
 		attributes,
         save( props ) {
-            
+
             const { attributes, className } = props
 
             const {
@@ -27,7 +27,7 @@ const deprecated = [
                 cookies,
                 close_cookie_days
             } = attributes
-            
+
             let image_icon_html = ''
 
             if ( noticeDismiss ) {

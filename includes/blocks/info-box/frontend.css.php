@@ -36,6 +36,9 @@ $selectors = array(
 		'line-height' => $icon_size,
 		'color'       => $attr['iconColor'],
 	),
+	' .uagb-ifb-icon svg'                                  => array( // For Backword.
+		'fill' => $attr['iconColor'],
+	),
 	'.uagb-infobox__content-wrap > svg'                    => array(
 		'height'        => $icon_size,
 		'width'         => $icon_size,

@@ -52,10 +52,23 @@ const ColumnsComponent = ( props ) => {
 			bottomMargin,
 			topMarginDesktop,
 			bottomMarginDesktop,
-			vAlign,
 			backgroundOpacity,
+			align,
+			vAlign,
 			backgroundImageColor
 		} = attributes
+
+		if ( 'middle' === vAlign ) {
+			setAttributes( { vAlign: 'center' } );
+		}
+
+		if ( undefined === align ){
+			setAttributes( { align: 'wide' } );
+		}
+
+		if ( undefined === vAlign ){
+			setAttributes( { vAlign: 'top' } );
+		}
 
 		// Replacement for componentDidMount.
 		// Assigning block_id in the attribute.
@@ -63,9 +76,6 @@ const ColumnsComponent = ( props ) => {
 
 		setAttributes( { classMigrate: true } );
 
-		if ( 'middle' === vAlign ) {
-			setAttributes( { vAlign: 'center' } );
-		}
 		// Pushing Style tag for this block css.
 		const $style = document.createElement( 'style' );
 		$style.setAttribute(

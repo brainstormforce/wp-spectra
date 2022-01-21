@@ -511,6 +511,10 @@ const attributes = {
 		type: 'string',
 		isUAGStyle: true,
 	},
+	imgAlign: {
+		type: 'string',
+		isUAGStyle: true,
+	},
 };
 
 export default attributes;

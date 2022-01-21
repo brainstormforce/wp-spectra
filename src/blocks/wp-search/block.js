@@ -7,7 +7,7 @@ import save from './save';
 import edit from './edit';
 import attributes from './attributes';
 import UAGB_Block_Icons from '@Controls/block-icons';
-
+import deprecated from './deprecated';
 import { __ } from '@wordpress/i18n';
 
 import { registerBlockType } from '@wordpress/blocks';
@@ -30,5 +30,6 @@ if ( 'yes' === uagb_blocks_info.uagb_old_user_less_than_2 ) {
 		edit,
 		save,
 		example: {},
+		deprecated
 	} );
 }

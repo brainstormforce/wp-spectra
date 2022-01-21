@@ -261,14 +261,14 @@ $selectors = array(
 	),
 
 	// Underline border.
-	' .uagb-gf-styler__field-style-underline input:not([type=submit])' => array(
+	' .uagb-gf-styler__field-style-underline .gform_wrapper.gravity-theme input:not([type=submit])' => array(
 		'border-style'        => 'none',
 		'border-bottom-color' => $attr['fieldBorderColor'],
 		'border-bottom-style' => 'solid',
 		'border-bottom-width' => UAGB_Helper::get_css_value( $attr['fieldBorderWidth'], 'px' ),
 		'border-radius'       => UAGB_Helper::get_css_value( $attr['fieldBorderRadius'], $attr['fieldBorderRadiusType'] ),
 	),
-	' .uagb-gf-styler__field-style-underline textarea'     => array(
+	' .uagb-gf-styler__field-style-underline .gform_wrapper.gravity-theme .gfield textarea' => array(
 		'border-style'        => 'none',
 		'border-bottom-color' => $attr['fieldBorderColor'],
 		'border-bottom-style' => 'solid',

@@ -1,6 +1,6 @@
 import classnames from 'classnames';
 
-import renderSVG from '@Controls/renderIcon';
+import renderSVG from '@Controls/deprecatedRenderIcon';
 
 const CTA = ( props ) => {
 	const { attributes, setAttributes } = props;

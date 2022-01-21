@@ -4,7 +4,7 @@
 
 // Import block dependencies and components.
 import classnames from 'classnames';
-import renderSVG from '@Controls/renderIcon';
+import renderSVG from '@Controls/deprecatedRenderIcon';
 import { InnerBlocks } from '@wordpress/block-editor';
 
 // Import icon.

@@ -61,7 +61,7 @@ return array(
 	'imgBottomPadding'           => 0,
 	'iconImage'                  => '',
 	'imageSize'                  => 'medium',
-	'imageWidth'                 => '',
+	'imageWidth'                 => 100,
 	'columns'                    => 2,
 	'tcolumns'                   => 2,
 	'mcolumns'                   => 1,

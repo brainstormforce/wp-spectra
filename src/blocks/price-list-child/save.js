@@ -11,7 +11,7 @@ import PositionClasses from '../price-list/classes';
 import RestMenuImage from './components/RestMenuImage';
 
 export default function save( props ) {
-	const { imagePosition } = props.attributes;
+	const { imagePosition, headingAlign } = props.attributes;
 
 	return (
 		<>
@@ -49,6 +49,13 @@ export default function save( props ) {
 							) }
 							{ ( imagePosition === 'top' || imagePosition === 'left' ) && (
 								<>
+								{ ( headingAlign === 'right' ) && (
+								<Price
+									attributes={ props.attributes }
+									setAttributes="not_set"
+									props={ props }
+								/>
+								)}
 								<Title
 									attributes={ props.attributes }
 									setAttributes="not_set"
@@ -59,11 +66,13 @@ export default function save( props ) {
 									setAttributes="not_set"
 									props={ props }
 								/>
+								{ ( headingAlign !== 'right' ) && (
 								<Price
 									attributes={ props.attributes }
 									setAttributes="not_set"
 									props={ props }
 								/>
+								)}
 								</>
 							)}
 							</div>

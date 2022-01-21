@@ -32,6 +32,7 @@ const UAGBRestaurantMenu = ( props ) => {
 			imgPaddingRight,
 			imgPaddingBottom,
 			imgPaddingLeft,
+			imagePosition
 		} = props.attributes;
 
 		if ( imgVrPadding ) {
@@ -70,6 +71,21 @@ const UAGBRestaurantMenu = ( props ) => {
 				props.setAttributes( { contentPaddingLeft: contentHrPadding } );
 			}
 		}
+		if( imagePosition ){
+			if( 'left' === imagePosition ){
+				props.setAttributes( { imgAlign: 'side' } );
+				props.setAttributes( { imagePosition: 'left' } );
+			}
+			if( 'right' === imagePosition ){
+				props.setAttributes( { imgAlign: 'side' } );
+				props.setAttributes( { imagePosition: 'right' } );
+			}
+			if( 'top' === imagePosition ){
+				props.setAttributes( { imgAlign: 'top' } );
+				props.setAttributes( { imagePosition: 'top' } );
+			}
+		}
+
 		// Pushing Style tag for this block css.
 		const $style = document.createElement( 'style' );
 		$style.setAttribute(
@@ -86,6 +102,7 @@ const UAGBRestaurantMenu = ( props ) => {
 			pricelistChild.attributes.imageAlignment =
 				props.attributes.imageAlignment;
 		} );
+		
 	
 	}, [] );
 
@@ -109,7 +126,10 @@ const UAGBRestaurantMenu = ( props ) => {
 			pricelistChild.attributes.mcolumns = props.attributes.mcolumns;
 			pricelistChild.attributes.headingTag = props.attributes.headingTag;
 			pricelistChild.attributes.imageSize = props.attributes.imageSize;
+			pricelistChild.attributes.headingAlign = props.attributes.headingAlign;
 		} );
+
+	
 	}, [ props ] );
 
 	return (
