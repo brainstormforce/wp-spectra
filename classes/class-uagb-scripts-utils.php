@@ -23,7 +23,7 @@ final class UAGB_Scripts_Utils {
 
 		$blocks       = UAGB_Block_Module::get_blocks_info();
 		$saved_blocks = UAGB_Admin_Helper::get_admin_settings_option( '_uagb_blocks', array() );
-		$block_assets = UAGB_Block_Module::get_block_assets();
+		$block_assets = UAGB_Block_Module::get_block_dependencies();
 
 		foreach ( $blocks as $slug => $value ) {
 			$_slug = str_replace( 'uagb/', '', $slug );

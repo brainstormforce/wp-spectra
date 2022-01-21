@@ -54,7 +54,7 @@ if ( ! class_exists( 'UAGB_Block_Module' ) ) {
 		 * Constructor
 		 */
 		public function __construct() {
-			add_filter( 'uag_add_block_static_assets', array( __CLASS__, 'uag_add_block_static_assets' ) );
+			add_filter( 'uag_add_block_static_dependencies', array( __CLASS__, 'uag_add_block_static_dependencies' ) );
 		}
 
 		/**
@@ -65,16 +65,16 @@ if ( ! class_exists( 'UAGB_Block_Module' ) ) {
 		 * @param string $block_assets Block Assets.
 		 * @return array
 		 */
-		public static function uag_add_block_static_assets( $block_assets ) {
+		public static function uag_add_block_static_dependencies( $block_assets ) {
 
 			$blocks = self::get_blocks_info();
 
 			foreach ( $blocks as $block ) {
-				if ( isset( $block['static_assets'] ) ) {
+				if ( isset( $block['static_dependencies'] ) ) {
 
-					foreach ( $block['static_assets'] as $key => $static_assets ) {
-						if ( isset( $static_assets ) && is_array( $static_assets ) && isset( $static_assets['src'] ) ) {
-							$block_assets[ $key ] = $static_assets;
+					foreach ( $block['static_dependencies'] as $key => $static_dependencies ) {
+						if ( isset( $static_dependencies ) && is_array( $static_dependencies ) && isset( $static_dependencies['src'] ) ) {
+							$block_assets[ $key ] = $static_dependencies;
 						}
 					}
 				}
@@ -181,7 +181,7 @@ if ( ! class_exists( 'UAGB_Block_Module' ) ) {
 		 *
 		 * @return array The Asset List.
 		 */
-		public static function get_block_assets() {
+		public static function get_block_dependencies() {
 
 			$blocks = UAGB_Admin_Helper::get_block_options();
 
@@ -223,7 +223,7 @@ if ( ! class_exists( 'UAGB_Block_Module' ) ) {
 				);
 			}
 
-			return apply_filters( 'uag_add_block_static_assets', self::$block_assets );
+			return apply_filters( 'uag_add_block_static_dependencies', self::$block_assets );
 		}
 	}
 }

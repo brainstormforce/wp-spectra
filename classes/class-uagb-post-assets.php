@@ -419,13 +419,13 @@ class UAGB_Post_Assets {
 
 		$blocks = UAGB_Block_Module::get_blocks_info();
 
-		$block_assets = UAGB_Block_Module::get_block_assets();
+		$block_assets = UAGB_Block_Module::get_block_dependencies();
 
 		foreach ( $block_list_for_assets as $key => $curr_block_name ) {
 
-			$static_assets = ( isset( $blocks[ $curr_block_name ]['static_assets'] ) ) ? $blocks[ $curr_block_name ]['static_assets'] : array();
+			$static_dependencies = ( isset( $blocks[ $curr_block_name ]['static_dependencies'] ) ) ? $blocks[ $curr_block_name ]['static_dependencies'] : array();
 
-			foreach ( $static_assets as $asset_handle => $asset_info ) {
+			foreach ( $static_dependencies as $asset_handle => $asset_info ) {
 
 				if ( 'js' === $asset_info['type'] ) {
 					// Scripts.

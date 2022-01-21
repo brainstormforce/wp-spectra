@@ -17,7 +17,7 @@ $block_data = array(
 	'description'      => __( 'This block helps your display some amazing client feedback within your website.', 'ultimate-addons-for-gutenberg' ),
 	'default'          => true,
 	'extension'        => false,
-	'static_assets'    => array(
+	'static_dependencies'    => array(
 		'uagb-slick-js'  => array(
 			'type' => 'js',
 		),
