@@ -9,15 +9,15 @@
 
 $block_slug = 'uagb/post-carousel';
 $block_data = array(
-	'doc'              => 'post-carousel',
-	'slug'             => '',
-	'admin_categories' => array( 'content', 'post' ),
-	'link'             => 'post-layouts',
-	'title'            => __( 'Post Carousel', 'ultimate-addons-for-gutenberg' ),
-	'description'      => __( 'This block fetches the blog posts you may have on your website and displays them in a carousel layout.', 'ultimate-addons-for-gutenberg' ),
-	'default'          => true,
-	'extension'        => false,
-	'static_dependencies'    => array(
+	'doc'                 => 'post-carousel',
+	'slug'                => '',
+	'admin_categories'    => array( 'content', 'post' ),
+	'link'                => 'post-layouts',
+	'title'               => __( 'Post Carousel', 'ultimate-addons-for-gutenberg' ),
+	'description'         => __( 'This block fetches the blog posts you may have on your website and displays them in a carousel layout.', 'ultimate-addons-for-gutenberg' ),
+	'default'             => true,
+	'extension'           => false,
+	'static_dependencies' => array(
 		'uagb-post-js'      => array(
 			'src'  => UAGB_Scripts_Utils::get_js_url( 'post' ),
 			'dep'  => array( 'jquery', 'uagb-slick-js' ),
@@ -33,9 +33,9 @@ $block_data = array(
 			'type' => 'css',
 		),
 	),
-	'priority'         => 1,
-	'static_css'       => 'post',
-	'dynamic_assets'   => array(
+	'priority'            => 1,
+	'static_css'          => 'post',
+	'dynamic_assets'      => array(
 		'dir' => 'post-carousel',
 	),
 );

@@ -9,15 +9,15 @@
 
 $block_slug = 'uagb/inline-notice';
 $block_data = array(
-	'doc'              => 'inline-notice',
-	'slug'             => '',
-	'admin_categories' => array( 'content' ),
-	'link'             => 'inline-notice',
-	'title'            => __( 'Inline Notice', 'ultimate-addons-for-gutenberg' ),
-	'description'      => __( 'This block helps you add an inline notice.', 'ultimate-addons-for-gutenberg' ),
-	'default'          => true,
-	'extension'        => false,
-	'static_dependencies'    => array(
+	'doc'                 => 'inline-notice',
+	'slug'                => '',
+	'admin_categories'    => array( 'content' ),
+	'link'                => 'inline-notice',
+	'title'               => __( 'Inline Notice', 'ultimate-addons-for-gutenberg' ),
+	'description'         => __( 'This block helps you add an inline notice.', 'ultimate-addons-for-gutenberg' ),
+	'default'             => true,
+	'extension'           => false,
+	'static_dependencies' => array(
 		'uagb-inline-notice-js' => array(
 			'src'        => UAGB_Scripts_Utils::get_js_url( 'inline-notice' ),
 			'dep'        => array( 'jquery', 'uagb-cookie-lib' ),
@@ -28,8 +28,8 @@ $block_data = array(
 			'type' => 'js',
 		),
 	),
-	'priority'         => 5,
-	'dynamic_assets'   => array(
+	'priority'            => 5,
+	'dynamic_assets'      => array(
 		'dir' => 'inline-notice',
 	),
 );

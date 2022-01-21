@@ -154,24 +154,11 @@ if ( ! class_exists( 'UAGB_Block_Module' ) ) {
 		 */
 		public static function get_blocks_info() {
 
-			if ( null === self::$block_attributes ) {
+			if ( null === uagb_block()::$blocks ) {
 
-				self::$block_attributes = array();
-
-				$block_files = apply_filters( 'uag_add_new_block', glob( UAGB_DIR . 'includes/blocks/*/block.php' ) );
-
-				foreach ( $block_files as $block_file ) {
-					$block_slug = '';
-					$block_data = array();
-
-					include $block_file;
-
-					if ( ! empty( $block_slug ) && ! empty( $block_data ) ) {
-						self::$block_attributes[ $block_slug ] = $block_data;
-					}
-				}
+				uagb_block()->register_blocks();
 			}
-			return self::$block_attributes;
+			return uagb_block()::$blocks;
 		}
 
 		/**

@@ -117,22 +117,11 @@ if ( ! class_exists( 'UAGB_Loader' ) ) {
 		public function loader() {
 
 			require_once UAGB_DIR . 'classes/utils.php';
-			require_once UAGB_DIR . 'classes/class-uagb-scripts-utils.php';
 			require_once UAGB_DIR . 'classes/class-uagb-install.php';
-			require_once UAGB_DIR . 'classes/class-uagb-block-module.php';
-			require_once UAGB_DIR . 'classes/class-uagb-admin-helper.php';
-			require_once UAGB_DIR . 'classes/class-uagb-helper.php';
 			require_once UAGB_DIR . 'classes/class-uagb-filesystem.php';
 			require_once UAGB_DIR . 'classes/class-uagb-update.php';
 			require_once UAGB_DIR . 'admin/bsf-analytics/class-bsf-analytics.php';
-
-			$enable_templates_button = UAGB_Admin_Helper::get_admin_settings_option( 'uag_enable_templates_button', 'yes' );
-
-			if ( 'yes' === $enable_templates_button ) {
-				require_once UAGB_DIR . 'lib/class-uagb-ast-block-templates.php';
-			} else {
-				add_filter( 'ast_block_templates_disable', '__return_true' );
-			}
+			require_once UAGB_DIR . 'classes/class-uagb-block.php';
 
 			if ( is_admin() ) {
 				require_once UAGB_DIR . 'classes/class-uagb-beta-updates.php';
@@ -151,6 +140,10 @@ if ( ! class_exists( 'UAGB_Loader' ) ) {
 
 			$this->load_textdomain();
 
+			require_once UAGB_DIR . 'classes/class-uagb-scripts-utils.php';
+			require_once UAGB_DIR . 'classes/class-uagb-block-module.php';
+			require_once UAGB_DIR . 'classes/class-uagb-admin-helper.php';
+			require_once UAGB_DIR . 'classes/class-uagb-helper.php';
 			require_once UAGB_DIR . 'blocks-config/blocks-config.php';
 			require_once UAGB_DIR . 'lib/astra-notices/class-astra-notices.php';
 
@@ -169,7 +162,18 @@ if ( ! class_exists( 'UAGB_Loader' ) ) {
 
 			require_once UAGB_DIR . 'admin-core/admin-loader.php';
 
+			// Register all UAG Lite Blocks.
+			uagb_block()->register_blocks();
+
 			add_filter( 'rest_pre_dispatch', array( $this, 'rest_pre_dispatch' ), 10, 3 );
+
+			$enable_templates_button = UAGB_Admin_Helper::get_admin_settings_option( 'uag_enable_templates_button', 'yes' );
+
+			if ( 'yes' === $enable_templates_button ) {
+				require_once UAGB_DIR . 'lib/class-uagb-ast-block-templates.php';
+			} else {
+				add_filter( 'ast_block_templates_disable', '__return_true' );
+			}
 		}
 
 		/**
