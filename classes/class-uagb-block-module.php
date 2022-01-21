@@ -84,6 +84,34 @@ if ( ! class_exists( 'UAGB_Block_Module' ) ) {
 		}
 
 		/**
+		 * Get frontend CSS.
+		 *
+		 * @since 2.0.0
+		 *
+		 * @param string $slug Block slug.
+		 * @param array  $attr Block attributes.
+		 * @param string $id   Block id.
+		 * @return array
+		 */
+		public static function get_frontend_css( $slug, $attr, $id ) {
+			return self::get_frontend_assets( $slug, $attr, $id, 'css' );
+		}
+
+		/**
+		 * Get frontend JS.
+		 *
+		 * @since 2.0.0
+		 *
+		 * @param string $slug Block slug.
+		 * @param array  $attr Block attributes.
+		 * @param string $id   Block id.
+		 * @return array
+		 */
+		public static function get_frontend_js( $slug, $attr, $id ) {
+			return self::get_frontend_assets( $slug, $attr, $id, 'js' );
+		}
+
+		/**
 		 * Get frontend Assets.
 		 *
 		 * @since 2.0.0
