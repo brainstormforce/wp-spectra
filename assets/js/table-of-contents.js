@@ -16,20 +16,16 @@ UAGBTableOfContents = { // eslint-disable-line no-undef
 				UAGBTableOfContents._scrollTop// eslint-disable-line no-undef
 			);
 		}
-		if( document.querySelector( '.uagb-toc__title-wrap' ) !== null ){
-			document.querySelector( '.uagb-toc__title-wrap' ).addEventListener( 'click', function(){
+		if( document.querySelector( '.uagb-toc__wrap svg' ) !== null ){
 
-				const collapsible = this.querySelector( '.uag-toc__collapsible-wrap' );
+			document.querySelector( '.uagb-toc__wrap svg' ).addEventListener( 'click', function(){
 
-				if ( collapsible !== null ) {
+				const $root = this.closest( '.wp-block-uagb-table-of-contents' );
 
-					const $root = this.closest( '.wp-block-uagb-table-of-contents' );
-
-					if ( $root.classList.contains( 'uagb-toc__collapse' ) ) {
-						$root.classList.remove( 'uagb-toc__collapse' );
-					} else {
-						$root.classList.add( 'uagb-toc__collapse' );
-					}
+				if ( $root.classList.contains( 'uagb-toc__collapse' ) ) {
+					$root.classList.remove( 'uagb-toc__collapse' );
+				} else {
+					$root.classList.add( 'uagb-toc__collapse' );
 				}
 			} );
 		}
