@@ -1,0 +1,45 @@
+.uagb-presets-radio-image-wrap {
+	width: 100%;
+	display: flex;
+	flex-wrap: wrap;
+
+	.uag-presets-radio-input {
+		display: none;
+	}
+
+	.uag-presets-radio-input-label {
+		position: relative;
+		display: flex;
+	}
+
+	svg {
+		width: 72px;
+		height: 70px;
+		margin-right: 10px;
+		margin-bottom: 10px;
+		border: 1px solid #4b596c;
+		border-radius: 4px;
+		fill: #4b596c;
+		color: #4b596c;
+	}
+
+	.uag-presets-radio-input:checked + .uag-presets-radio-input-label svg {
+		background: #4b596c;
+		color: #fff;
+		fill: #fff;
+	}
+
+	.uag-presets-radio-image-clickable {
+		position: absolute;
+		top: 0;
+		bottom: 0;
+		left: 0;
+		right: 0;
+		width: 100%;
+		height: 100%;
+	}
+}
+
+.uagb-inspector-tab .components-panel__body .uag-presets-label {
+	line-height: 2.4;
+}

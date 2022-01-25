@@ -44,6 +44,7 @@ const attributes = {
 	borderRadius: {
 		type: 'number',
 		isUAGStyle: true,
+		default: 2
 	},
 	borderColor: {
 		type: 'string',
@@ -94,7 +95,7 @@ const attributes = {
 	},
 	backgroundColor: {
 		type: 'string',
-		default: '',
+		default: '#0170B9',
 		isUAGStyle: true,
 	},
 	backgroundHoverColor: {
@@ -143,7 +144,7 @@ const attributes = {
 	//Colors
 	titleColor: {
 		type: 'string',
-		default: '',
+		default: '#fff',
 		isUAGStyle: true,
 	},
 	titleHoverColor: {
@@ -152,7 +153,7 @@ const attributes = {
 	},
 	iconColor: {
 		type: 'string',
-		default: '#333',
+		default: '#fff',
 		isUAGStyle: true,
 	},
 	iconHoverColor: {
@@ -161,7 +162,7 @@ const attributes = {
 	},
 	prefixColor: {
 		type: 'string',
-		default: '#333',
+		default: '#fff',
 		isUAGStyle: true,
 	},
 	prefixHoverColor: {
@@ -188,7 +189,7 @@ const attributes = {
 	},
 	iconPosition: {
 		type: 'string',
-		default: 'before',
+		default: 'after',
 	},
 	iconSpace: {
 		type: 'number',
@@ -320,7 +321,7 @@ const attributes = {
 	// Icon Font Size
 	iconFontSize: {
 		type: 'number',
-		default: 20,
+		default: 16,
 		isUAGStyle: true,
 	},
 	iconFontSizeType: {
@@ -330,13 +331,12 @@ const attributes = {
 	},
 	iconFontSizeTablet: {
 		type: 'number',
-		isUAGStyle: true,
-		default: 20,
+		default: 16,
 	},
 	iconFontSizeMobile: {
 		type: 'number',
+		default: 16,
 		isUAGStyle: true,
-		default: 20,
 	},
 	spacingLink: {
 		type: 'boolean',
@@ -359,18 +359,22 @@ const attributes = {
 	},
 	paddingBtnTop: {
 		type: 'number',
+		default: 10,
 		isUAGStyle: true,
 	},
 	paddingBtnBottom: {
 		type: 'number',
+		default: 10,
 		isUAGStyle: true,
 	},
 	paddingBtnLeft: {
 		type: 'number',
+		default: 35,
 		isUAGStyle: true,
 	},
 	paddingBtnRight: {
 		type: 'number',
+		default: 35,
 		isUAGStyle: true,
 	},
 	paddingBtnTopTablet: {

@@ -16,6 +16,8 @@ import ResponsiveSlider from '@Components/responsive-slider';
 import UAGImage from '@Components/image';
 import MultiButtonsControl from '@Components/multi-buttons-control';
 import UAGTabsControl from '@Components/tabs';
+import presets from './presets';
+import UAGPresets from '@Components/presets';
 import {
 	AlignmentToolbar,
 	BlockControls,
@@ -629,7 +631,7 @@ const Settings = ( props ) => {
 					] }
 					showIcons={ true }
 				/>
-				
+
 				<ToggleControl
 					checked={ showPrefix }
 					onChange={ () =>
@@ -2110,6 +2112,18 @@ const Settings = ( props ) => {
 			</>
 		);
 	};
+	const presetSettings = () => {
+		return <UAGAdvancedPanelBody
+					title={ __( 'Presets', 'ultimate-addons-for-gutenberg' ) }
+					initialOpen={ true }
+				>
+					<UAGPresets
+						setAttributes = { setAttributes }
+						presets = { presets }
+						presetInputType = 'radioImage'
+					/>
+				</UAGAdvancedPanelBody>
+	};
 	return (
 		<>
 			{ ( iconimgPosition === 'above-title' ||
@@ -2118,6 +2132,7 @@ const Settings = ( props ) => {
 			<InspectorControls>
 				<InspectorTabs>
 					<InspectorTab { ...UAGTabs.general }>
+						{ presetSettings() }
 						{ imageIconPanel() }
 						{ typographySettings() }
 						{ seperatorSettings() }

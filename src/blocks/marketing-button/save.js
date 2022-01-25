@@ -49,13 +49,12 @@ export default function save( props ) {
 				`uagb-marketing-btn__align-${ align }`,
 				`uagb-marketing-btn__align-text-${ textAlign }`,
 				`uagb-marketing-btn__icon-${ iconPosition }`,
-				`uagb-block-${ block_id }`,
-				'wp-block-button'
+				`uagb-block-${ block_id }`
 			) }
 		>
 				<a
 					href={ link }
-					className="uagb-marketing-btn__link wp-block-button__link"
+					className="uagb-marketing-btn__link"
 					target={ target }
 					rel="noopener noreferrer"
 				>
