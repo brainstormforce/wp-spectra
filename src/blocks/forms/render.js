@@ -54,7 +54,7 @@ const Render = ( props ) => {
 		return (
 			<button
 				onClick={ onSubmitClick }
-				className="uagb-forms-main-submit-button"
+				className="uagb-forms-main-submit-button wp-block-button__link"
 			>
 				<RichText
 					tagName="div"
@@ -130,7 +130,7 @@ const Render = ( props ) => {
 							</>
 						) }
 
-					<div className="uagb-forms-main-submit-button-wrap">
+					<div className="uagb-forms-main-submit-button-wrap wp-block-button">
 						{ renderButtonHtml() }
 					</div>
 				</form>

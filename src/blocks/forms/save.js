@@ -25,7 +25,7 @@ export default function save( props ) {
 
 	const renderButtonHtml = () => {
 		return (
-			<button className="uagb-forms-main-submit-button">
+			<button className="uagb-forms-main-submit-button wp-block-button__link">
 				<RichText.Content
 					tagName="div"
 					value={ submitButtonText }
@@ -82,7 +82,7 @@ export default function save( props ) {
 							></div>
 						</>
 					) }
-				<div className="uagb-forms-main-submit-button-wrap">
+				<div className="uagb-forms-main-submit-button-wrap wp-block-button">
 					{ renderButtonHtml() }
 				</div>
 			</form>

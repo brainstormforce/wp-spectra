@@ -119,12 +119,13 @@ const attributes = {
 	},
 	submitborderRadius: {
 		type: 'number',
-		default: '',
+		default: 3,
 		isUAGStyle: true,
 	},
 	submitborderColor: {
 		type: 'string',
 		isUAGStyle: true,
+		default: '',
 	},
 	submitborderHoverColor: {
 		type: 'string',
@@ -530,6 +531,7 @@ const attributes = {
 	paddingBtnUnit: {
 		type: 'string',
 		isUAGStyle: true,
+		default: 'px',
 	},
 	mobilePaddingBtnUnit: {
 		type: 'string',

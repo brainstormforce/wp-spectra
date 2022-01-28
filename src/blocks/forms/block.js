@@ -8,7 +8,7 @@ import edit from './edit';
 import save from './save';
 import './style.scss';
 import variations from './variations';
-
+import deprecated from './deprecated';
 import { __ } from '@wordpress/i18n';
 
 import { registerBlockType } from '@wordpress/blocks';
@@ -29,5 +29,6 @@ registerBlockType( 'uagb/forms', {
 	supports: {
 		anchor: true,
 	},
+	deprecated,
 	save,
 } );
