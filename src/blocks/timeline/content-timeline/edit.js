@@ -142,6 +142,7 @@ const ContentTimelineComponent = ( props ) => {
         );
         getChildBlocks.forEach( ( ctChild ) => {
             ctChild.attributes.headingTag = props.attributes.headingTag;
+            ctChild.attributes.dateFormat = props.attributes.dateFormat;
         } );
     }, [props] );
 
