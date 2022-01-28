@@ -5619,10 +5619,19 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				$selectors = array();
 				if ( isset( $attr['masonryGutter'] ) && '' !== $attr['masonryGutter'] ) {
 					$selectors = array(
-						'.wp-block-gallery.columns-' . $col_count . ' ul.blocks-gallery-grid' => array(
+						'.wp-block-gallery.has-nested-images.columns-' . $col_count => array(
 							'column-gap' => UAGB_Helper::get_css_value( $attr['masonryGutter'], 'px' ),
 						),
-						'.wp-block-gallery ul.blocks-gallery-grid li.blocks-gallery-item' => array(
+						'.wp-block-gallery.has-nested-images.columns-default' => array(
+							'column-gap' => UAGB_Helper::get_css_value( $attr['masonryGutter'], 'px' ),
+						),
+						'.wp-block-gallery.has-nested-images figure.wp-block-image:not(#individual-image) img' => array(
+							'margin-bottom' => UAGB_Helper::get_css_value( $attr['masonryGutter'], 'px' ),
+						),
+						'.wp-block-gallery.columns-' . $col_count . ' ul.blocks-gallery-grid' => array(  // For Backword.
+							'column-gap' => UAGB_Helper::get_css_value( $attr['masonryGutter'], 'px' ),
+						),
+						'.wp-block-gallery ul.blocks-gallery-grid li.blocks-gallery-item' => array( // For Backword.
 							'margin-bottom' => UAGB_Helper::get_css_value( $attr['masonryGutter'], 'px' ),
 						),
 					);
@@ -5653,6 +5662,55 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 		public static function get_masonry_gallery_css() {
 
 			$selectors = array(
+				'.wp-block-gallery.has-nested-images'    => array(
+					'display'      => 'block',
+					'column-count' => '3',
+					'column-gap'   => '1em',
+				),
+				'.wp-block-gallery.has-nested-images figure.wp-block-image:not(#individual-image)' => array(
+					'margin'             => 0,
+					'display'            => 'block',
+					'grid-template-rows' => '1fr auto',
+					'margin-bottom'      => '1em',
+					'break-inside'       => 'avoid',
+					'width'              => 'unset',
+				),
+				'.columns-default.wp-block-gallery.has-nested-images' => array(
+					'column-count' => '3',
+					'width'        => 'unset',
+				),
+				'.columns-1.wp-block-gallery.has-nested-images' => array(
+					'column-count' => '1',
+					'width'        => 'unset',
+				),
+				'.columns-2.wp-block-gallery.has-nested-images' => array(
+					'column-count' => '2',
+				),
+				'.columns-3.wp-block-gallery.has-nested-images' => array(
+					'column-count' => '3',
+					'width'        => 'unset',
+				),
+				'.columns-4.wp-block-gallery.has-nested-images' => array(
+					'column-count' => '4',
+					'width'        => 'unset',
+				),
+				'.columns-5.wp-block-gallery.has-nested-images' => array(
+					'column-count' => '5',
+					'width'        => 'unset',
+				),
+				'.columns-6.wp-block-gallery.has-nested-images' => array(
+					'column-count' => '6',
+					'width'        => 'unset',
+				),
+				'.columns-7.wp-block-gallery.has-nested-images' => array(
+					'column-count' => '7',
+					'width'        => 'unset',
+				),
+				'.columns-8.wp-block-gallery.has-nested-images' => array(
+					'column-count' => '8',
+					'width'        => 'unset',
+				),
+				/* Start Backword */
 				' .blocks-gallery-grid .blocks-gallery-item' => array(
 					'margin'             => 0,
 					'display'            => 'block',
@@ -5689,9 +5747,19 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				'.columns-8 .blocks-gallery-grid'        => array(
 					'column-count' => '8',
 				),
+				/* End Backword */
 			);
 
 			$m_selectors = array(
+				'.wp-block-gallery[class*="columns-"].blocks-gallery-grid' => array(
+					'column-count' => '2',
+					'column-gap'   => '1em',
+					'display'      => 'unset',
+				),
+				'.wp-block-gallery.columns-1.blocks-gallery-grid'        => array(
+					'column-count' => '1',
+				),
+				/* For Backword */
 				'.wp-block-gallery[class*="columns-"] .blocks-gallery-grid' => array(
 					'column-count' => '2',
 					'column-gap'   => '1em',
@@ -5700,6 +5768,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				'.wp-block-gallery.columns-1 .blocks-gallery-grid'        => array(
 					'column-count' => '1',
 				),
+				/* End Backword */
 			);
 
 			$combined_selectors = array(
