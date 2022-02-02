@@ -1,9 +1,8 @@
-function getDocumentContent( $style ) {
-
-	var theFrame = document.getElementsByTagName("iframe")[0];
-		
-    if( theFrame ){
-        var theFrameDocument = theFrame.contentDocument || theFrame.contentWindow.document;
+function getDocumentContent( $style, deviceType ) {
+    
+    if( 'Mobile' === deviceType || 'Tablet' === deviceType ){
+        let theFrame = document.getElementsByTagName('iframe')['editor-canvas'];
+        let theFrameDocument = theFrame.contentDocument || theFrame.contentWindow.document;
         theFrameDocument.head.appendChild( $style );
     } else {
         document.head.appendChild( $style )

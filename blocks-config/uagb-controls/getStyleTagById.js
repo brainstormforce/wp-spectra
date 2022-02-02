@@ -1,10 +1,9 @@
-function getStyleTagById( $ID ) {
-    var element;
+function getStyleTagById( $ID, deviceType ) {
+    let element;
     
-    var theFrame = document.getElementsByTagName("iframe")[0];
-
-    if( theFrame && 'editor-canvas' === theFrame.name ){
-        var theFrameDocument = theFrame.contentWindow.document || theFrame.contentDocument;
+    if( 'Mobile' === deviceType || 'Tablet' === deviceType ){
+        let theFrame = document.getElementsByTagName('iframe')['editor-canvas'];
+        let theFrameDocument = theFrame.contentDocument || theFrame.contentWindow.document;
         element = theFrameDocument.getElementById( $ID );
     } else {
         element = document.getElementById( $ID );

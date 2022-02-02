@@ -66,11 +66,11 @@ class UAGBAdvancedHeading extends Component {
 		// Pushing Style tag for this block css.
 		const $style = document.createElement( "style" )
 		$style.setAttribute( "id", "uagb-adv-heading-style-" + this.props.clientId.substr( 0, 8 ) )
-		getDocumentContent( $style );
+		getDocumentContent( $style, this.props.deviceType );
 	}
 
 	componentDidUpdate(prevProps, prevState) {
-		var element = getStyleTagById( "uagb-adv-heading-style-" + this.props.clientId.substr( 0, 8 ) );
+		var element = getStyleTagById( "uagb-adv-heading-style-" + this.props.clientId.substr( 0, 8 ),  this.props.deviceType );
 
 		if( null !== element && undefined !== element ) {
 			element.innerHTML = styling( this.props )
