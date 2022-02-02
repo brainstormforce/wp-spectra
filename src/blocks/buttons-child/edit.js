@@ -588,7 +588,7 @@ class UAGBButtonsChild extends Component {
 				</BlockControls>
 				{ linkControl }
 				<InspectorControls>
-					{ buttonControls }
+					{ buttonControls() }
 				</InspectorControls>
 				<div className={ classnames(
 					className,

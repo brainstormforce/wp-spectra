@@ -169,6 +169,10 @@ The awesome React FontIconPicker is developed by [Alessandro Benoit](http://code
 
 == Changelog ==
 
+= 1.25.4 =
+* Fix: CSS not applying on responsive devices.
+* Fix: Multi Buttons - Child setting are not visible in editor.
+
 = 1.25.3 - THURSDAY, 27TH JANUARY 2022 =
 * Improvement: Added compatibility with WordPress v5.9.
 * Fix: Masonry option - Not visible for core/gallery.

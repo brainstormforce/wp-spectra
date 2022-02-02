@@ -17,6 +17,9 @@ import "./style.scss"
 
 import { __ } from '@wordpress/i18n';
 
+import getDocumentContent from "../../../blocks-config/uagb-controls/getDocumentContent";
+import getStyleTagById from "../../../blocks-config/uagb-controls/getStyleTagById";
+
 const {
 	createBlock
 } = wp.blocks
@@ -63,11 +66,11 @@ class UAGBAdvancedHeading extends Component {
 		// Pushing Style tag for this block css.
 		const $style = document.createElement( "style" )
 		$style.setAttribute( "id", "uagb-adv-heading-style-" + this.props.clientId.substr( 0, 8 ) )
-		document.head.appendChild( $style )
+		getDocumentContent( $style );
 	}
 
 	componentDidUpdate(prevProps, prevState) {
-		var element = document.getElementById( "uagb-adv-heading-style-" + this.props.clientId.substr( 0, 8 ) )
+		var element = getStyleTagById( "uagb-adv-heading-style-" + this.props.clientId.substr( 0, 8 ) );
 
 		if( null !== element && undefined !== element ) {
 			element.innerHTML = styling( this.props )
