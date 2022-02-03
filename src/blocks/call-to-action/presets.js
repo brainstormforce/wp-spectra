@@ -17,11 +17,11 @@ const presets = [
 			{ label: 'contentWidth' , value: ''},
 			{ label: 'textAlign' , value: 'center'}
         ],
-        icon: '<svg width="72" height="72" viewBox="0 0 72 72" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="21.418" y="21.417" width="30" height="3" rx="1.5" /><rect x="26.418" y="44.7407" width="19.5735" height="5.59242" rx="2.79621" /><rect x="6.41797" y="30.1997" width="58.7204" height="1.11848" rx="0.559242" /><rect x="6.41797" y="34.1142" width="58.7204" height="1.11848" rx="0.559242" /><rect x="13.6914" y="38.0293" width="44.1801" height="1.11848" rx="0.559242" /></svg>',
+        icon: '<svg width="72" height="72" viewBox="0 0 72 72" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="7" y="21" width="30" height="2" rx="1" /><rect x="7" y="44" width="20" height="6" rx="2" /><rect x="7" y="29" width="58" height="1" rx="0.5" /><rect x="7" y="33" width="58" height="1" rx="0.5" /><rect x="7" y="37" width="44" height="1" rx="0.5" /></svg>',
     },
     {
-        value: 'preset-3',
-        label: __( 'Preset 3', 'ultimate-addons-for-gutenberg' ),
+        value: 'preset-2',
+        label: __( 'Preset 2', 'ultimate-addons-for-gutenberg' ),
 		attributes: [
             { label: 'titleSpace', value: 20 },
 			{ label: 'ctaPosition', value: 'below-title' },
@@ -34,7 +34,7 @@ const presets = [
 			{ label: 'contentWidth' , value: ''},
 			{ label: 'textAlign' , value: 'left'}
         ],
-        icon: '<svg width="72" height="72" viewBox="0 0 72 72" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="7" y="21.417" width="30" height="3" rx="1.5" /><rect x="6.70703" y="44.7407" width="19.5735" height="5.59242" rx="2.79621" /><rect x="6.70703" y="30.1997" width="58.7204" height="1.11848" rx="0.559242" /><rect x="6.70703" y="34.1142" width="58.7204" height="1.11848" rx="0.559242" /><rect x="6.70703" y="38.0292" width="44.1801" height="1.11848" rx="0.559242" /></svg>',
+        icon: '<svg width="72" height="72" viewBox="0 0 72 72" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="21" y="21" width="30" height="2" rx="1" /><rect x="26" y="44" width="20" height="6" rx="2" /><rect x="7" y="29" width="58" height="1" rx="0.5" /><rect x="7" y="33" width="58" height="1" rx="0.5" /><rect x="14" y="37" width="44" height="1" rx="0.5" /></svg>',
     }
 ];
 

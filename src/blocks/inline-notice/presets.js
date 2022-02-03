@@ -3,8 +3,8 @@ import { applyFilters } from '@wordpress/hooks';
 
 const presets = [
     {
-        value: 'default',
-        label: __( 'Default', 'ultimate-addons-for-gutenberg' ),
+        value: 'preset-1',
+        label: __( 'Preset 1', 'ultimate-addons-for-gutenberg' ),
         attributes: [
             { label: 'noticeDismiss', value: 'uagb-dismissable' },
 			{ label: 'titleTopPadding', value: 15 },
@@ -22,8 +22,8 @@ const presets = [
         icon: '<svg width="72" height="72" viewBox="0 0 72 72" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="15" y="30" width="43" height="3" rx="1.5" fill=""/><rect x="30.1973" y="12.8633" width="11.7441" height="11.1848" rx="2" fill=""/><rect x="26.2812" y="53.1289" width="19.5735" height="5.59242" rx="2.79621" fill=""/><rect x="6.70703" y="38.5879" width="58.7204" height="1.11848" rx="0.559242" fill=""/><rect x="6.70703" y="42.5024" width="58.7204" height="1.11848" rx="0.559242" fill=""/><rect x="13.9805" y="46.4175" width="44.1801" height="1.11848" rx="0.559242" fill=""/></svg>',
     },
     {
-        value: 'preset-1',
-        label: __( 'Preset 1', 'ultimate-addons-for-gutenberg' ),
+        value: 'preset-2',
+        label: __( 'Preset 2', 'ultimate-addons-for-gutenberg' ),
 		attributes: [
             { label: 'noticeDismiss', value: '' },
 			{ label: 'titleTopPadding', value: 15 },

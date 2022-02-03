@@ -24,8 +24,8 @@ import {
 	Icon,
 } from '@wordpress/components';
 
-
-
+import presets from './presets';
+import UAGPresets from '@Components/presets';
 import UAGAdvancedPanelBody from '@Components/advanced-panel-body';
 
 const Settings = ( props ) => {
@@ -170,7 +170,18 @@ const Settings = ( props ) => {
 		labelFontStyle,
 		inputFontStyle,
 	} = attributes;
-
+	const presetSettings = () => {
+		return <UAGAdvancedPanelBody
+					title={ __( 'Presets', 'ultimate-addons-for-gutenberg' ) }
+					initialOpen={ true }
+				>
+					<UAGPresets
+						setAttributes = { setAttributes }
+						presets = { presets }
+						presetInputType = 'radioImage'
+					/>
+				</UAGAdvancedPanelBody>
+	};
 	const generalSettings = () => {
 		return (
 			<UAGAdvancedPanelBody
@@ -1607,6 +1618,7 @@ const Settings = ( props ) => {
 			<InspectorControls>
 				<InspectorTabs>
 					<InspectorTab { ...UAGTabs.general }>
+						{ presetSettings() }
 						{ generalSettings() }
 						{ afterSubmitActions() }
 						{ googleReCaptcha() }

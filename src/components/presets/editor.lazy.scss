@@ -17,16 +17,16 @@
 		height: 70px;
 		margin-right: 10px;
 		margin-bottom: 10px;
-		border: 1px solid #4b596c;
-		border-radius: 4px;
-		fill: #4b596c;
-		color: #4b596c;
+		border: 1px solid #898e95;
+		border-radius: 6px;
+		fill: #898e95;
+		color: #898e95;
 	}
 
 	.uag-presets-radio-input:checked + .uag-presets-radio-input-label svg {
-		background: #4b596c;
-		color: #fff;
-		fill: #fff;
+		border: 1px solid #21759b;
+		fill: #21759b;
+		color: #21759b;
 	}
 
 	.uag-presets-radio-image-clickable {

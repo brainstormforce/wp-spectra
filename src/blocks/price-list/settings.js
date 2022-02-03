@@ -14,6 +14,9 @@ import InspectorTab, {
 	UAGTabs,
 } from '@Components/inspector-tabs/InspectorTab.js';
 import renderSVG from '@Controls/renderIcon';
+import presets from './presets';
+import UAGPresets from '@Components/presets';
+
 const maxColumns = 3;
 
 import { InspectorControls } from '@wordpress/block-editor';
@@ -132,7 +135,7 @@ const Settings = ( props ) => {
 		headingAlign,
 		imgAlign
 	} = attributes;
-	
+
 	const setimageSize = ( value ) => {
 		const getChildBlocks = select( 'core/block-editor' ).getBlocks(
 			props.clientId
@@ -920,11 +923,24 @@ const Settings = ( props ) => {
 			</UAGAdvancedPanelBody>
 		);
 	};
+	const presetSettings = () => {
+		return <UAGAdvancedPanelBody
+					title={ __( 'Presets', 'ultimate-addons-for-gutenberg' ) }
+					initialOpen={ true }
+				>
+					<UAGPresets
+						setAttributes = { setAttributes }
+						presets = { presets }
+						presetInputType = 'radioImage'
+					/>
+				</UAGAdvancedPanelBody>
+	};
 	const inspectControl = () => {
 		return (
 			<InspectorControls>
 				<InspectorTabs>
 					<InspectorTab { ...UAGTabs.general }>
+						{ presetSettings() }
 						<UAGAdvancedPanelBody
 							title={ __( 'General' ) }
 							initialOpen={ true }

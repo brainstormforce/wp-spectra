@@ -21,6 +21,8 @@ import UAGTabsControl from '@Components/tabs';
 import MultiButtonsControl from '@Components/multi-buttons-control';
 import UAGAdvancedPanelBody from '@Components/advanced-panel-body';
 import renderSVG from '@Controls/renderIcon';
+import presets from './presets';
+import UAGPresets from '@Components/presets';
 const MAX_POSTS_COLUMNS = 8;
 
 const Settings = lazy( () =>
@@ -393,7 +395,18 @@ const UAGBPostCarousel = ( props ) => {
 			} );
 		} );
 	}
-
+	const presetSettings = () => {
+		return <UAGAdvancedPanelBody
+					title={ __( 'Presets', 'ultimate-addons-for-gutenberg' ) }
+					initialOpen={ true }
+				>
+					<UAGPresets
+						setAttributes = { setAttributes }
+						presets = { presets }
+						presetInputType = 'radioImage'
+					/>
+				</UAGAdvancedPanelBody>
+	};
 	const togglePreview = () => {
 		setState( { isEditing: ! state.isEditing } );
 		if ( ! state.isEditing ) {
@@ -1833,6 +1846,7 @@ const UAGBPostCarousel = ( props ) => {
 		<InspectorControls>
 			<InspectorTabs>
 				<InspectorTab { ...UAGTabs.general }>
+					{ presetSettings() }
 					{ getGeneralPanelBody() }
 					{ getCarouselPanelBody() }
 					{ getImagePanelBody() }
