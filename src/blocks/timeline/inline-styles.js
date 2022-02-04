@@ -412,7 +412,7 @@ function contentTimelineStyle( props ) {
 	}
 
 	var styling_css = ""
-	var id = `.block-editor-page #wpwrap .uagb-block-${ props.clientId }`
+	var id = `.editor-styles-wrapper .uagb-block-${ props.clientId }`
 
 	styling_css = generateCSS( selectors, id )
 

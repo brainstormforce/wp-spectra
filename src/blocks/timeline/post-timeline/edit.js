@@ -8,7 +8,7 @@ import classnames from "classnames"
 import UAGBIcon from "@Controls/UAGBIcon.json"
 import FontIconPicker from "@fonticonpicker/react-fonticonpicker"
 import renderSVG from "@Controls/renderIcon"
-
+import addBlockEditorDynamicStyles from "../../../../blocks-config/uagb-controls/addBlockEditorDynamicStyles";
 // Import css for timeline.
 import contentTimelineStyle from ".././inline-styles"
 import ContentTmClasses from ".././classes"
@@ -978,13 +978,10 @@ class UAGBTimeline extends Component {
 			time.timelineContent_back(id)
 		})
 
-		// Pushing Style tag for this block css.
-		const $style = document.createElement( "style" )
-		$style.setAttribute( "id", "uagb-timeline-style-" + this.props.clientId )
-		document.head.appendChild( $style )
 	}
 
 	componentDidUpdate(){
+		addBlockEditorDynamicStyles( 'uagb-timeline-style-' + this.props.clientId, contentTimelineStyle( this.props ) );
 		var id = this.props.clientId
 		window.addEventListener("load", this.timelineContent_back(id))
 		window.addEventListener("resize", this.timelineContent_back(id))
@@ -1136,13 +1133,6 @@ class UAGBTimeline extends Component {
 			align,
 		} = attributes
 
-
-		// Add CSS.
-		var element = document.getElementById( "uagb-timeline-style-" + this.props.clientId )
-		if( null != element && "undefined" != typeof element ) {
-			element.innerHTML = contentTimelineStyle( this.props )
-		}
-
 		const hasPosts = Array.isArray( latestPosts ) && latestPosts.length
 
 		if ( ! hasPosts ) {
@@ -1276,7 +1266,11 @@ export default withSelect( ( select, props ) => {
 		deviceType: deviceType,
 		latestPosts: getEntityRecords( "postType", postType, latestPostsQuery ),
 		categoriesList: categoriesList,
-		taxonomyList: ( "undefined" != typeof currentTax ) ? currentTax["taxonomy"] : []
+		taxonomyList: ( "undefined" != typeof currentTax ) ? currentTax["taxonomy"] : [],
+		attributes: {
+			...props.attributes,
+			deviceType: deviceType
+		}
 	}
 
 } )( UAGBTimeline )
