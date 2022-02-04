@@ -765,7 +765,16 @@ class UAGBcontentTimeline extends Component {
 
 	/*  Js for timeline line and inner line filler*/
 	timelineContent_back(id){
-		var timeline            = $(".uagb-timeline").parents("#block-"+id)
+		const iframeEl = $( `iframe[name='editor-canvas']` ).contents();
+		var mainDiv;
+		if( iframeEl ){
+			mainDiv = iframeEl.find('.uagb-timeline' ).parents("#block-"+id);
+		} 
+		if( 0 !== $(".uagb-timeline").length ){
+			mainDiv = $(".uagb-timeline").parents("#block-"+id);
+		}
+		
+		var timeline            = mainDiv;
 		var tm_item             = timeline.find(".uagb-timeline")
 		var line_inner          = timeline.find(".uagb-timeline__line__inner")
 		var line_outer          = timeline.find(".uagb-timeline__line")
