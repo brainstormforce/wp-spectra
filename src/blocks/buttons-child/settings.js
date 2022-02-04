@@ -179,7 +179,7 @@ const Settings = ( props ) => {
 				/>
 				<ToggleControl
 					label={ __(
-						'Open in new Window',
+						'Open in new window',
 						'ultimate-addons-for-gutenberg'
 					) }
 					checked={ opensInNewTab }

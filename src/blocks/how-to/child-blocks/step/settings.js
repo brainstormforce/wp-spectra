@@ -238,7 +238,7 @@ const Settings = ( props ) => {
 							}
 						/>
 						<ToggleControl
-							label={__( 'Open in new Window' )}
+							label={__( 'Open in new window' )}
 							checked={urlTarget}
 							onChange={() =>
 								setAttributes( { urlTarget: !urlTarget } )
