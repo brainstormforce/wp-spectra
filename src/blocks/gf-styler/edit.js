@@ -13,7 +13,7 @@ import map from "lodash/map"
 import styling from "./styling"
 
 import { __ } from '@wordpress/i18n';
-
+import addBlockEditorDynamicStyles from "../../../blocks-config/uagb-controls/addBlockEditorDynamicStyles";
 const {
 	AlignmentToolbar,
 	BlockControls,
@@ -1133,10 +1133,6 @@ class UAGBGF extends Component {
 		// Assigning block_id in the attribute.
 		this.props.setAttributes( { isHtml: false } )
 		this.props.setAttributes( { block_id: this.props.clientId.substr( 0, 8 ) } )
-		// Pushing Style tag for this block css.
-		const $style = document.createElement( "style" )
-		$style.setAttribute( "id", "uagb-gf-styler-" + this.props.clientId.substr( 0, 8 ) )
-		document.head.appendChild( $style )
 	}
 
 	componentDidUpdate(){				
@@ -1144,11 +1140,7 @@ class UAGBGF extends Component {
 			event.preventDefault()
 		})
 
-		var element = document.getElementById( "uagb-gf-styler-" + this.props.clientId.substr( 0, 8 ) )
-
-		if( null !== element && undefined !== element ) {
-			element.innerHTML = styling( this.props )
-		}
+		addBlockEditorDynamicStyles( 'uagb-gf-styler-' + this.props.clientId.substr( 0, 8 ), styling( this.props ) );
 	}
 
 }
@@ -1156,7 +1148,10 @@ class UAGBGF extends Component {
 export default withSelect( ( select, props ) => {
 	const { setAttributes } = props
 	const { formId, isHtml } = props.attributes
-	let json_data = ""
+	let json_data = "";
+	const { __experimentalGetPreviewDeviceType = null } = select( 'core/edit-post' );
+
+	let deviceType = __experimentalGetPreviewDeviceType ? __experimentalGetPreviewDeviceType() : null;
 
 	if ( formId && -1 != formId && 0 != formId && ! isHtml ) {
 
@@ -1178,6 +1173,10 @@ export default withSelect( ( select, props ) => {
 	}
 
 	return {
-		formHTML: json_data
+		formHTML: json_data,
+		attributes: {
+			...props.attributes,
+			deviceType: deviceType
+		}
 	}
 } )( UAGBGF )

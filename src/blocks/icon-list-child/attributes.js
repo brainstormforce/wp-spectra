@@ -62,6 +62,10 @@ const attributes = {
 	disableLink: {
 		type: "boolean",
 		default: true
+	},
+	deviceType: {
+		type: "string",
+		default: 'Desktop'
 	}
 }
 

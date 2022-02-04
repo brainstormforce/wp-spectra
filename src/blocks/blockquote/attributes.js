@@ -331,7 +331,11 @@ const attributes = {
 	},
 	borderHoverColor: {
 		type: "string",
-	},			
+	},
+	deviceType: {
+		type: "string",
+		default: 'Desktop'
+	}			
 }
 
 export default attributes

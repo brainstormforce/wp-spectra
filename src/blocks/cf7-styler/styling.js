@@ -436,11 +436,11 @@ function styling( props ) {
 		},
 	}	
 
-	var styling_css = generateCSS( selectors, `.block-editor-page #wpwrap .uagb-block-${ props.clientId.substr( 0, 8 ) }` )
+	var styling_css = generateCSS( selectors, `.editor-styles-wrapper .uagb-block-${ props.clientId.substr( 0, 8 ) }` )
 
-	styling_css += generateCSS( tablet_selectors, `.block-editor-page #wpwrap .uagb-block-${ props.clientId.substr( 0, 8 ) }`, true, "tablet" )
+	styling_css += generateCSS( tablet_selectors, `.editor-styles-wrapper .uagb-block-${ props.clientId.substr( 0, 8 ) }`, true, "tablet" )
 
-	styling_css += generateCSS( mobile_selectors, `.block-editor-page #wpwrap .uagb-block-${ props.clientId.substr( 0, 8 ) }`, true, "mobile" )
+	styling_css += generateCSS( mobile_selectors, `.editor-styles-wrapper .uagb-block-${ props.clientId.substr( 0, 8 ) }`, true, "mobile" )
 
 	return styling_css
 }

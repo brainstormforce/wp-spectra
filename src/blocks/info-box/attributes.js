@@ -401,6 +401,10 @@ const attributes = {
 		type: "boolean",
 		default: true,
 	},
+	deviceType: {
+		type: "string",
+		default: 'Desktop'
+	}
 }
 
 export default attributes

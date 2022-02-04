@@ -168,6 +168,10 @@
 		type: "number",
 		default : 10
 	},
+	deviceType: {
+		type: "string",
+		default: 'Desktop'
+	}
 }
 
 export default attributes

@@ -7,7 +7,7 @@ import UAGB_Block_Icons from "@Controls/block-icons"
 import styling from "./styling"
 import GradientSettings from "../../components/gradient-settings"
 import Columnresponsive from "../../components/typography/column-responsive"
-
+import addBlockEditorDynamicStyles from "../../../blocks-config/uagb-controls/addBlockEditorDynamicStyles";
 import { __ } from '@wordpress/i18n';
 
 const {
@@ -52,18 +52,10 @@ class UAGBColumnEdit extends Component {
 
 		this.props.setAttributes( { classMigrate: true } )
 
-		// Pushing Style tag for this block css.
-		const $style = document.createElement( "style" )
-		$style.setAttribute( "id", "uagb-column-style-" + this.props.clientId.substr( 0, 8 ) )
-		document.head.appendChild( $style )
 	}
 
 	componentDidUpdate( prevProps ) {
-		var element = document.getElementById( "uagb-column-style-" + this.props.clientId.substr( 0, 8 ) )
-
-		if( null !== element && undefined !== element ) {
-			element.innerHTML = styling( this.props )
-		}
+		addBlockEditorDynamicStyles( 'uagb-column-style-' + this.props.clientId.substr( 0, 8 ), styling( this.props ) );
 	}
 
 	/*
@@ -796,5 +788,9 @@ export default withSelect( ( select, props ) => {
 
 	return {
 		deviceType: deviceType,
+		attributes: {
+			...props.attributes,
+			deviceType: deviceType
+		}
 	}
 } )( UAGBColumnEdit )

@@ -81,6 +81,10 @@ const attributes = {
 	loadGoogleFonts: {
 		type: "boolean",
 		default: false	
+	},
+	deviceType: {
+		type: "string",
+		default: 'Desktop'
 	}
 }
 

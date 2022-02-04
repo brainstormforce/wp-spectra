@@ -339,6 +339,10 @@ const attributes = {
 		type: "string",
 		default: __( 'Add a header to begin generating the table of contents', 'ultimate-addons-for-gutenberg' ),
 	},
+	deviceType: {
+		type: "string",
+		default: 'Desktop'
+	}
 }
 
 export default attributes

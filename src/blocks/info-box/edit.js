@@ -16,10 +16,10 @@ import InfoBoxStyle from "./inline-styles"
 import InfoBoxIconImage from "./components/IconImage"
 import renderSVG from "@Controls/renderIcon"
 import UAGB_Block_Icons from "@Controls/block-icons"
-
+import addBlockEditorDynamicStyles from "../../../blocks-config/uagb-controls/addBlockEditorDynamicStyles";
 // Import all of our Text Options requirements.
 import TypographyControl from "../../components/typography"
-
+const { withSelect } = wp.data
 // Import Web font loader for google fonts.
 import WebfontLoader from "../../components/typography/fontloader"
 
@@ -1234,11 +1234,8 @@ class UAGBinfoBox extends Component {
 	}
 
 	componentDidUpdate( prevProps ) {
-		var element = document.getElementById( "uagb-info-box-style-" + this.props.clientId.substr( 0, 8 ) )
 
-		if( null !== element && undefined !== element ) {
-			element.innerHTML = InfoBoxStyle( this.props )
-		}
+		addBlockEditorDynamicStyles( 'uagb-info-box-style-' + this.props.clientId.substr( 0, 8 ), InfoBoxStyle( this.props ) );
 	}
 
 	componentDidMount() {
@@ -1248,11 +1245,19 @@ class UAGBinfoBox extends Component {
 
 		this.props.setAttributes( { classMigrate: true } )
 
-		// Pushing Style tag for this block css.
-		const $style = document.createElement( "style" )
-		$style.setAttribute( "id", "uagb-info-box-style-" + this.props.clientId.substr( 0, 8 ) )
-		document.head.appendChild( $style )
 	}
 }
+export default withSelect( ( select, props ) => { 
 
-export default UAGBinfoBox
+	const { __experimentalGetPreviewDeviceType = null } = select( 'core/edit-post' );
+
+	let deviceType = __experimentalGetPreviewDeviceType ? __experimentalGetPreviewDeviceType() : null;
+
+	return {
+		deviceType: deviceType,
+		attributes: {
+			...props.attributes,
+			deviceType: deviceType
+		}
+	}
+})(UAGBinfoBox);

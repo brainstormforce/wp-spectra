@@ -66,7 +66,7 @@ class UAGBAdvancedHeading extends Component {
 
 	componentDidUpdate(prevProps, prevState) {
 		
-		addBlockEditorDynamicStyles( 'uagb-adv-heading-style-' + this.props.clientId.substr( 0, 8 ), this.props.attributes, styling( this.props ) );
+		addBlockEditorDynamicStyles( 'uagb-adv-heading-style-' + this.props.clientId.substr( 0, 8 ), styling( this.props ) );
 
 	}
 

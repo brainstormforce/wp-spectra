@@ -21,7 +21,9 @@ import TypographyControl from "../../components/typography"
 import WebfontLoader from "../../components/typography/fontloader"
 
 import { __ } from '@wordpress/i18n';
+import addBlockEditorDynamicStyles from "../../../blocks-config/uagb-controls/addBlockEditorDynamicStyles";
 
+const { withSelect } = wp.data
 
 const {
 	AlignmentToolbar,
@@ -740,11 +742,7 @@ class UAGBCallToAction extends Component {
 	}
 
 	componentDidUpdate( prevProps ) {
-		var element = document.getElementById( "uagb-cta-style-" + this.props.clientId.substr( 0, 8 ) )
-
-		if( null !== element && undefined !== element ) {
-			element.innerHTML = CtaStyle( this.props )
-		}
+		addBlockEditorDynamicStyles( 'uagb-cta-style-' + this.props.clientId.substr( 0, 8 ), CtaStyle( this.props ) );
 	}
 
 	componentDidMount() {
@@ -753,12 +751,18 @@ class UAGBCallToAction extends Component {
 		this.props.setAttributes( { block_id: this.props.clientId.substr( 0, 8 ) } )
 
 		this.props.setAttributes( { classMigrate: true } )
-
-		// Pushing Style tag for this block css.
-		const $style = document.createElement( "style" )
-		$style.setAttribute( "id", "uagb-cta-style-" + this.props.clientId.substr( 0, 8 ) )
-		document.head.appendChild( $style )
 	}
-}
+} export default withSelect( ( select, props ) => { 
 
-export default UAGBCallToAction
+	const { __experimentalGetPreviewDeviceType = null } = select( 'core/edit-post' );
+
+	let deviceType = __experimentalGetPreviewDeviceType ? __experimentalGetPreviewDeviceType() : null;
+
+	return {
+		deviceType: deviceType,
+		attributes: {
+			...props.attributes,
+			deviceType: deviceType
+		}
+	}
+})( UAGBCallToAction )

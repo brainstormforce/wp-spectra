@@ -305,7 +305,10 @@ const attributes = {
 	timeInYears: {
 		type: "number",		
 	},
-	
+	deviceType: {
+		type: "string",
+		default: 'Desktop'
+	}
 }
 
 export default attributes

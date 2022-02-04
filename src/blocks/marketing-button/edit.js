@@ -9,7 +9,7 @@ import UAGB_Block_Icons from "@Controls/block-icons"
 import UAGBIcon from "@Controls/UAGBIcon.json"
 import renderSVG from "@Controls/renderIcon"
 import Columnresponsive from "../../components/typography/column-responsive"
-
+import addBlockEditorDynamicStyles from "../../../blocks-config/uagb-controls/addBlockEditorDynamicStyles";
 // Import all of our Text Options requirements.
 import TypographyControl from "../../components/typography"
 
@@ -70,20 +70,12 @@ class UAGBMarketingButtonEdit extends Component {
 
 		this.props.setAttributes( { classMigrate: true } )
 
-		// Pushing Style tag for this block css.
-		const $style = document.createElement( "style" )
-		$style.setAttribute( "id", "uagb-style-marketing-btn-" + this.props.clientId.substr( 0, 8 ) )
-		document.head.appendChild( $style )
-
 	}
 	
 
 	componentDidUpdate( prevProps ) {
-		var element = document.getElementById( "uagb-style-marketing-btn-" + this.props.clientId.substr( 0, 8 ) )
 
-		if( null !== element && undefined !== element ) {
-			element.innerHTML = styling( this.props )
-		}
+		addBlockEditorDynamicStyles( 'uagb-style-marketing-btn-' + this.props.clientId.substr( 0, 8 ), styling( this.props ) );
 	}
 
 	onClickLinkSettings () {
@@ -783,5 +775,9 @@ export default withSelect( ( select, props ) => {
 
 	return {
 		deviceType: deviceType,
+		attributes: {
+			...props.attributes,
+			deviceType: deviceType
+		}
 	}
 })( UAGBMarketingButtonEdit )

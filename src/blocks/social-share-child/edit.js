@@ -8,7 +8,7 @@ import UAGBIcon from "@Controls/UAGBIcon.json"
 import FontIconPicker from "@fonticonpicker/react-fonticonpicker"
 import styling from "./styling"
 import renderSVG from "@Controls/renderIcon"
-
+import addBlockEditorDynamicStyles from "../../../blocks-config/uagb-controls/addBlockEditorDynamicStyles";
 import { __ } from '@wordpress/i18n';
 
 const {
@@ -28,7 +28,7 @@ const {
 	Button,
 	TabPanel,
 } = wp.components
-
+const { withSelect } = wp.data
 let svg_icons = Object.keys( UAGBIcon )
 
 class UAGBSocialShareChild extends Component {
@@ -47,18 +47,11 @@ class UAGBSocialShareChild extends Component {
 		this.props.setAttributes( { block_id: this.props.clientId.substr( 0, 8 ) } )
 		this.props.setAttributes( { current_url: wp.data.select("core/editor").getPermalink() } )
 
-		// Pushing Style tag for this block css.
-		const $style = document.createElement( "style" )
-		$style.setAttribute( "id", "uagb-style-social-share-child-" + this.props.clientId.substr( 0, 8 ) )
-		document.head.appendChild( $style )
 	}
 
 	componentDidUpdate( prevProps ) {
-		var element = document.getElementById( "uagb-style-social-share-child-" + this.props.clientId.substr( 0, 8 ) )
 
-		if( null !== element && undefined !== element ) {
-			element.innerHTML = styling( this.props )
-		}
+		addBlockEditorDynamicStyles( 'uagb-style-social-share-child-' + this.props.clientId.substr( 0, 8 ), styling( this.props ) );
 	}
 
 	/*
@@ -343,5 +336,15 @@ class UAGBSocialShareChild extends Component {
 		)
 	}
 }
+export default withSelect( ( select, props ) => {
+	const { __experimentalGetPreviewDeviceType = null } = select( 'core/edit-post' );
+	let deviceType = __experimentalGetPreviewDeviceType ? __experimentalGetPreviewDeviceType() : null;
 
-export default UAGBSocialShareChild
+	return {
+		deviceType: deviceType,
+		attributes: {
+			...props.attributes,
+			deviceType: deviceType
+		}
+	}
+} )( UAGBSocialShareChild )

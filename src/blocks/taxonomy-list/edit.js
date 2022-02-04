@@ -7,7 +7,7 @@ import BoxShadowControl from "../../components/box-shadow"
 import TypographyControl from "../../components/typography"
 import WebfontLoader from "../../components/typography/fontloader"
 import Columnresponsive from "../../components/typography/column-responsive"
-
+import addBlockEditorDynamicStyles from "../../../blocks-config/uagb-controls/addBlockEditorDynamicStyles";
 
 import { __ } from '@wordpress/i18n';
 const {
@@ -59,19 +59,11 @@ class UAGBTaxonomyList extends Component {
 
 		// Assigning block_id in the attribute.
 		this.props.setAttributes( { block_id: this.props.clientId.substr( 0, 8 ) } )
-		// Pushing Style tag for this block css.
-		const $style = document.createElement( "style" )
-		$style.setAttribute( "id", "uagb-style-taxonomy-list-" + this.props.clientId.substr( 0, 8 ) )
-		document.head.appendChild( $style )
 	}
 
 	componentDidUpdate(prevProps, prevState) {		
-        
-        var element = document.getElementById( "uagb-style-taxonomy-list-" + this.props.clientId.substr( 0, 8 ) )
 
-		if( null != element && "undefined" != typeof element ) {
-			element.innerHTML = styling( this.props )
-        }
+		addBlockEditorDynamicStyles( 'uagb-style-taxonomy-list-' + this.props.clientId.substr( 0, 8 ), styling( this.props ) );
 	}
 
     render() {
@@ -926,7 +918,10 @@ export default withSelect( ( select, props ) => {
 		taxonomyList: ( "undefined" != typeof currentTax ) ? currentTax["taxonomy"] : [] ,
 		termsList: ( "undefined" != typeof currentTax ) ? currentTax["terms"] : [],
 		deviceType: deviceType,
-
+		attributes: {
+			...props.attributes,
+			deviceType: deviceType
+		}
 	}
 
 } )( UAGBTaxonomyList )

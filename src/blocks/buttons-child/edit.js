@@ -14,7 +14,7 @@ import Columnresponsive from "../../components/typography/column-responsive"
 let svg_icons = Object.keys( UAGBIcon )
 
 import { __ } from '@wordpress/i18n';
-
+import addBlockEditorDynamicStyles from "../../../blocks-config/uagb-controls/addBlockEditorDynamicStyles";
 
 const {
 	Component,
@@ -60,18 +60,10 @@ class UAGBButtonsChild extends Component {
 		
 		// Assigning block_id in the attribute.
 		this.props.setAttributes( { block_id: this.props.clientId.substr( 0, 8 ) } )
-		// Pushing Style tag for this block css.
-		const $style = document.createElement( "style" )
-		$style.setAttribute( "id", "uagb-style-button-" + this.props.clientId.substr( 0, 8 ) )
-		document.head.appendChild( $style )
 	}
 
 	componentDidUpdate( prevProps ) {
-		var element = document.getElementById( "uagb-style-button-" + this.props.clientId.substr( 0, 8 ) )
-
-		if( null !== element && undefined !== element ) {
-			element.innerHTML = styling( this.props )
-		}
+		addBlockEditorDynamicStyles( 'uagb-style-button-' + this.props.clientId.substr( 0, 8 ), styling( this.props ) );
 	}
 
 	onClickLinkSettings () {
@@ -628,5 +620,9 @@ export default withSelect( ( select, props ) => {
 
 	return {
 		deviceType: deviceType,
+		attributes: {
+			...props.attributes,
+			deviceType: deviceType
+		}
 	}
 })( UAGBButtonsChild )

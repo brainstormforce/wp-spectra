@@ -14,7 +14,7 @@ import TypographyControl from "../../components/typography"
 // Import Web font loader for google fonts.
 import WebfontLoader from "../../components/typography/fontloader"
 
-
+import addBlockEditorDynamicStyles from "../../../blocks-config/uagb-controls/addBlockEditorDynamicStyles";
 //  Import CSS.
 import "./style.scss"
 
@@ -73,11 +73,6 @@ class UAGBHowTo extends Component {
 		this.props.setAttributes( { block_id: this.props.clientId.substr( 0, 8 ) } )
 
 		this.props.setAttributes({ schema: JSON.stringify(this.props.schemaJsonData) });
-
-		// Pushing Style tag for this block css.
-		const $style = document.createElement( "style" )
-		$style.setAttribute( "id", "uagb-how-to-schema-style-" + this.props.clientId.substr( 0, 8 ) )
-		document.head.appendChild( $style )
 	}
 
 	componentDidUpdate(prevProps, prevState) {
@@ -90,11 +85,8 @@ class UAGBHowTo extends Component {
 				schema: JSON.stringify(this.props.schemaJsonData)
 			});
 		}
-		var element = document.getElementById( "uagb-how-to-schema-style-" + this.props.clientId.substr( 0, 8 ) )
-
-		if( null !== element && undefined !== element ) {
-			element.innerHTML = styling( this.props )
-		}
+		
+		addBlockEditorDynamicStyles( 'uagb-how-to-schema-style-' + this.props.clientId.substr( 0, 8 ), styling( this.props ) );
 	}
 
 	savematerials( value, index ) {
@@ -1045,6 +1037,10 @@ export default compose(
 		return {
 			schemaJsonData: json_data,
 			deviceType: deviceType,
+			attributes: {
+				...ownProps.attributes,
+				deviceType: deviceType
+			}
 		};
 	} )
 ) ( UAGBHowTo )

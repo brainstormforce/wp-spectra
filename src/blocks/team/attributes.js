@@ -278,6 +278,10 @@ const attributes = {
 	descLoadGoogleFonts: {
 		type: "boolean",
 		default: false	
+	},
+	deviceType: {
+		type: "string",
+		default: 'Desktop'
 	}
 }
 

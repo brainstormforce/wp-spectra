@@ -17,7 +17,7 @@ import GradientSettings from "../../components/gradient-settings"
 import rowIcons from './icons';
 import Columnresponsive from "../../components/typography/column-responsive"
 const ALLOWED_BLOCKS = [ "uagb/column" ]
-
+import addBlockEditorDynamicStyles from "../../../blocks-config/uagb-controls/addBlockEditorDynamicStyles";
 import { __ } from '@wordpress/i18n';
 const {
 	withSelect,
@@ -91,18 +91,10 @@ class UAGBColumns extends Component {
 		if ( 'middle' === this.props.attributes.vAlign ) {
 			this.props.setAttributes( { vAlign: 'center' } )
 		}
-		// Pushing Style tag for this block css.
-		const $style = document.createElement( "style" )
-		$style.setAttribute( "id", "uagb-columns-style-" + this.props.clientId.substr( 0, 8 ) )
-		document.head.appendChild( $style )
 	}
 
 	componentDidUpdate( prevProps ) {
-		var element = document.getElementById( "uagb-columns-style-" + this.props.clientId.substr( 0, 8 ) )
-
-		if( null !== element && undefined !== element ) {
-			element.innerHTML = styling( this.props )
-		}
+		addBlockEditorDynamicStyles( 'uagb-columns-style-' + this.props.clientId.substr( 0, 8 ), styling( this.props ) );
 	}
 
 	/*
@@ -1163,6 +1155,10 @@ const applyWithSelect = withSelect( ( select, props ) => {
 		variations: typeof getBlockVariations === 'undefined' ? null : getBlockVariations( props.name ),
 		replaceInnerBlocks,
 		deviceType:deviceType,
+		attributes: {
+			...props.attributes,
+			deviceType: deviceType
+		}
 	};
 } );
 

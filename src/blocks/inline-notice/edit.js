@@ -9,7 +9,7 @@ import renderSVG from "@Controls/renderIcon"
 import FontIconPicker from "@fonticonpicker/react-fonticonpicker"
 import UAGBIcon from "@Controls/UAGBIcon.json"
 import UAGB_Block_Icons from "@Controls/block-icons"
-
+import addBlockEditorDynamicStyles from "../../../blocks-config/uagb-controls/addBlockEditorDynamicStyles";
 // Import all of our Text Options requirements.
 import TypographyControl from "../../components/typography"
 
@@ -39,7 +39,7 @@ const {
 	Component,
 	Fragment,
 } = wp.element
-
+const { withSelect } = wp.data
 let svg_icons = Object.keys( UAGBIcon )
 
 class UAGBInlineNoticeEdit extends Component {
@@ -63,18 +63,11 @@ class UAGBInlineNoticeEdit extends Component {
 		// Assigning block_id in the attribute.
 		this.props.setAttributes( { block_id: this.props.clientId.substr( 0, 8 ) } )
 
-		// Pushing Style tag for this block css.
-		const $style = document.createElement( "style" )
-		$style.setAttribute( "id", "uagb-inline-notice-style-" + this.props.clientId.substr( 0, 8 ) )
-		document.head.appendChild( $style )
 	}
 
 	componentDidUpdate( prevProps ) {
-		var element = document.getElementById( "uagb-inline-notice-style-" + this.props.clientId.substr( 0, 8 ) )
 
-		if( null !== element && undefined !== element ) {
-			element.innerHTML = styling( this.props )
-		}
+		addBlockEditorDynamicStyles( 'uagb-inline-notice-style-' + this.props.clientId.substr( 0, 8 ), styling( this.props ) );
 	}
 
 	render() {
@@ -432,5 +425,17 @@ class UAGBInlineNoticeEdit extends Component {
 		)
 	}
 }
+export default withSelect( ( select, props ) => { 
 
-export default UAGBInlineNoticeEdit
+	const { __experimentalGetPreviewDeviceType = null } = select( 'core/edit-post' );
+
+	let deviceType = __experimentalGetPreviewDeviceType ? __experimentalGetPreviewDeviceType() : null;
+
+	return {
+		deviceType: deviceType,
+		attributes: {
+			...props.attributes,
+			deviceType: deviceType
+		}
+	}
+})(UAGBInlineNoticeEdit);

@@ -5,7 +5,7 @@ import UAGB_Block_Icons from "@Controls/block-icons"
 // Import all of our Text Options requirements.
 import TypographyControl from "../../../components/typography"
 import Columnresponsive from "../../../components/typography/column-responsive"
-
+import addBlockEditorDynamicStyles from "../../../../blocks-config/uagb-controls/addBlockEditorDynamicStyles";
 // Import Web font loader for google fonts.
 import WebfontLoader from "../../../components/typography/fontloader"
 // Import Post Components
@@ -109,17 +109,11 @@ class UAGBPostMasonry extends Component {
 
 		this.props.setAttributes( { block_id: this.props.clientId.substr( 0, 8 ) } )
 
-		const $style = document.createElement( "style" )
-		$style.setAttribute( "id", "uagb-post-masonry-style-" + this.props.clientId.substr( 0, 8 ) )
-		document.head.appendChild( $style )
 	}
 
 	componentDidUpdate(prevProps, prevState) {
-		var element = document.getElementById( "uagb-post-masonry-style-" + this.props.clientId.substr( 0, 8 ) )
 
-		if( null !== element && undefined !== element ) {
-			element.innerHTML = styling( this.props )
-		}
+		addBlockEditorDynamicStyles( 'uagb-post-masonry-style-' + this.props.clientId.substr( 0, 8 ), styling( this.props ) );
 	}
 	renderEditMode() {
 		const onDone = () => {
@@ -1418,6 +1412,10 @@ export default compose(
 		deviceType: deviceType,
 		taxonomyList: ( "undefined" != typeof currentTax ) ? currentTax["taxonomy"] : [],
 		block: getBlocks( props.clientId ),
+		attributes: {
+			...props.attributes,
+			deviceType: deviceType
+		}
 	}
 
 } ),

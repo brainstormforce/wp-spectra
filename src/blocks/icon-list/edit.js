@@ -12,12 +12,11 @@ import styling from "./styling"
 // Import all of our Text Options requirements.
 import TypographyControl from "../../components/typography"
 import Columnresponsive from "../../components/typography/column-responsive"
-
+import addBlockEditorDynamicStyles from "../../../blocks-config/uagb-controls/addBlockEditorDynamicStyles";
 // Import Web font loader for google fonts.
 import WebfontLoader from "../../components/typography/fontloader"
 
 import { __ } from '@wordpress/i18n';
-const { select } = wp.data;
 
 const {
 	Component,
@@ -42,7 +41,7 @@ const {
 	Dashicon
 } = wp.components
 
-const { useDispatch , withSelect } = wp.data
+const { select, withSelect } = wp.data
 
 const ALLOWED_BLOCKS = [ "uagb/icon-list-child" ]
 
@@ -62,20 +61,12 @@ class UAGBIconList extends Component {
 		this.props.setAttributes( { classMigrate : true } )
 		this.props.setAttributes( { childMigrate : true } )
 
-		// Pushing Style tag for this block css.
-		const $style = document.createElement( "style" )
-		$style.setAttribute( "id", "uagb-style-icon-list-" + this.props.clientId.substr( 0, 8 ) )
-		document.head.appendChild( $style )
-
 		this.changeChildAttr( this.props.attributes.hideLabel )
 	}
 
 	componentDidUpdate( prevProps ) {
-		var element = document.getElementById( "uagb-style-icon-list-" + this.props.clientId.substr( 0, 8 ) )
 
-		if( null !== element && undefined !== element ) {
-			element.innerHTML = styling( this.props )
-		}
+		addBlockEditorDynamicStyles( 'uagb-style-icon-list-' + this.props.clientId.substr( 0, 8 ), styling( this.props ) );
 	}
 
 	changeChildAttr ( value ) {
@@ -359,5 +350,9 @@ export default withSelect( ( select, props ) => {
 
 	return {
 		deviceType: deviceType,
+		attributes: {
+			...props.attributes,
+			deviceType: deviceType
+		}
 	}
 })(UAGBIconList);

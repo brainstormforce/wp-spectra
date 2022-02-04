@@ -6,7 +6,7 @@
 import classnames from "classnames"
 import styling from "./styling"
 import UAGB_Block_Icons from "@Controls/block-icons"
-
+import addBlockEditorDynamicStyles from "../../../blocks-config/uagb-controls/addBlockEditorDynamicStyles";
 import UAGBIcon from "@Controls/UAGBIcon.json"
 import FontIconPicker from "@fonticonpicker/react-fonticonpicker"
 import renderSVG from "@Controls/renderIcon"
@@ -64,11 +64,7 @@ class UAGBTableOfContentsEdit extends Component {
 
 	componentDidUpdate(prevProps, prevState) {
 
-		var element = document.getElementById( "uagb-style-toc-" + this.props.clientId.substr( 0, 8 ) )
-
-		if( null !== element && undefined !== element ) {
-			element.innerHTML = styling( this.props )
-		}
+		addBlockEditorDynamicStyles( 'uagb-style-toc-' + this.props.clientId.substr( 0, 8 ), styling( this.props ) );
 
 	}
 
@@ -88,13 +84,6 @@ class UAGBTableOfContentsEdit extends Component {
 			jQuery( "body" ).append( "<div class=\"uagb-toc__scroll-top\"> " + scrollToTopSvg + "</div>" );
 		}
 
-		// Pushing Style tag for this block css.
-		const $style = document.createElement( "style" )
-		$style.setAttribute( "id", "uagb-style-toc-" + this.props.clientId.substr( 0, 8 ) )
-		document.head.appendChild( $style )
-		if( this.props.attributes.heading && '' !== this.props.attributes.heading ){
-			this.props.setAttributes( { headingTitle: this.props.attributes.heading } )
-		}
 		
 	}
 
@@ -895,8 +884,17 @@ export default compose(
 		}
 
 		var level = 0;
+		const iframeEl = $( `iframe[name='editor-canvas']` ).contents();
+		var mainDiv;
+		if( iframeEl ){
+			mainDiv = iframeEl.find('.is-root-container' ).find('h1, h2, h3, h4, h5, h6' );
+		} 
 		
-		var headerArray = $( 'div.is-root-container' ).find('h1, h2, h3, h4, h5, h6' )
+		if(  0 !== $( '.is-root-container' ).length ) {
+			mainDiv = $( '.is-root-container' ).find('h1, h2, h3, h4, h5, h6' )
+		}
+		
+		var headerArray = mainDiv
 		let headers = [];
 		if( headerArray != 'undefined' ) {
 
@@ -955,7 +953,11 @@ export default compose(
 
 		return {
 			deviceType: deviceType,
-			headers: headers
+			headers: headers,
+			attributes: {
+				...ownProps.attributes,
+				deviceType: deviceType
+			}
 		};
 	} )
 ) ( UAGBTableOfContentsEdit )

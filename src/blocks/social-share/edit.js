@@ -9,7 +9,7 @@ import memoize from "memize"
 import UAGBIcon from "@Controls/UAGBIcon.json"
 import styling from "./styling"
 import Columnresponsive from "../../components/typography/column-responsive"
-
+import addBlockEditorDynamicStyles from "../../../blocks-config/uagb-controls/addBlockEditorDynamicStyles";
 import { __ } from '@wordpress/i18n';
 
 const {
@@ -49,18 +49,11 @@ class UAGBSocialShare extends Component {
 		this.props.setAttributes( { classMigrate: true } )
 		this.props.setAttributes( { childMigrate : true } )
 
-		// Pushing Style tag for this block css.
-		const $style = document.createElement( "style" )
-		$style.setAttribute( "id", "uagb-style-social-share-" + this.props.clientId.substr( 0, 8 ) )
-		document.head.appendChild( $style )
 	}
 
 	componentDidUpdate( prevProps ) {
-		var element = document.getElementById( "uagb-style-social-share-" + this.props.clientId.substr( 0, 8 ) )
 
-		if( null !== element && undefined !== element ) {
-			element.innerHTML = styling( this.props )
-		}
+		addBlockEditorDynamicStyles( 'uagb-style-social-share-' + this.props.clientId.substr( 0, 8 ), styling( this.props ) );
 	}
 
 	render() {
@@ -263,6 +256,10 @@ export default withSelect( ( select, props ) => {
 	let deviceType = __experimentalGetPreviewDeviceType ? __experimentalGetPreviewDeviceType() : null;
 
 	return {
-		deviceType: deviceType
+		deviceType: deviceType,
+		attributes: {
+			...props.attributes,
+			deviceType: deviceType
+		}
 	}
 } )( UAGBSocialShare )

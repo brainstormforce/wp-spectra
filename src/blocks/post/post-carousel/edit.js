@@ -6,7 +6,7 @@ import get from "lodash/get"
 import map from "lodash/map"
 import UAGB_Block_Icons from "@Controls/block-icons"
 import Columnresponsive from "../../../components/typography/column-responsive"
-
+import addBlockEditorDynamicStyles from "../../../../blocks-config/uagb-controls/addBlockEditorDynamicStyles";
 // Import all of our Text Options requirements.
 import TypographyControl from "../../../components/typography"
 
@@ -92,9 +92,6 @@ class UAGBPostCarousel extends Component {
 		const { block } = this.props;
 		this.setState( { innerBlocks: block } );
 		this.props.setAttributes( { block_id: this.props.clientId.substr( 0, 8 ) } )
-		const $style = document.createElement( "style" )
-		$style.setAttribute( "id", "uagb-post-carousel-style-" + this.props.clientId.substr( 0, 8 ) )
-		document.head.appendChild( $style )
 	}
 
 	componentDidUpdate() {
@@ -105,15 +102,7 @@ class UAGBPostCarousel extends Component {
 		} else {
 			uagb_carousel_unset_height(this.props.clientId.substr( 0, 8 ))
 		}
-
-		var element = document.getElementById( "uagb-post-carousel-style-" + this.props.clientId.substr( 0, 8 ) )
-		let css = ""
-
-		if( null !== element && undefined !== element ) {
-			css = styling( this.props )
-			css += ".uagb-block-" + this.props.clientId.substr( 0, 8 ) + ".uagb-post-grid ul.slick-dots li.slick-active button:before, .uagb-block-" + this.props.clientId.substr( 0, 8 ) + ".uagb-slick-carousel ul.slick-dots li button:before { color: " + this.props.attributes.arrowColor + "; }"
-			element.innerHTML = css
-		}
+		addBlockEditorDynamicStyles( 'uagb-post-carousel-style-' + this.props.clientId.substr( 0, 8 ), styling( this.props ) );
 		
 	}
 	togglePreview() {
@@ -1197,6 +1186,10 @@ export default compose(
 		deviceType: deviceType,
 		taxonomyList: ( "undefined" != typeof currentTax ) ? currentTax["taxonomy"] : [],
 		block: getBlocks( props.clientId ),
+		attributes: {
+			...props.attributes,
+			deviceType: deviceType
+		}
 	}
 
 } ),

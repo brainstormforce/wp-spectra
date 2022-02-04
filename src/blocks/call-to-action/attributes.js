@@ -250,6 +250,10 @@ const attributes = {
 		type: "number",
 		default: 5,
 	},
+	deviceType: {
+		type: "string",
+		default: 'Desktop'
+	}
 }
 
 export default attributes

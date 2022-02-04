@@ -10,7 +10,7 @@ import times from "lodash/times"
 import UAGB_Block_Icons from "@Controls/block-icons"
 import memoize from "memize"
 import Columnresponsive from "../../components/typography/column-responsive"
-
+import addBlockEditorDynamicStyles from "../../../blocks-config/uagb-controls/addBlockEditorDynamicStyles";
 
 // Import all of our Text Options requirements.
 import TypographyControl from "../../components/typography"
@@ -664,11 +664,8 @@ class UAGBRestaurantMenu extends Component {
 														}
 														
 														componentDidUpdate( prevProps ) {
-															var element = document.getElementById( "uagb-restaurant-menu-style-" + this.props.clientId.substr( 0, 8 ) )
 															
-															if( null !== element && undefined !== element ) {
-																element.innerHTML = RestMenuStyle( this.props )
-															}
+															addBlockEditorDynamicStyles( 'uagb-restaurant-menu-style-' + this.props.clientId.substr( 0, 8 ), RestMenuStyle( this.props ) );
 
 															const getChildBlocks = select('core/block-editor').getBlocks( this.props.clientId );
 
@@ -688,11 +685,6 @@ class UAGBRestaurantMenu extends Component {
 															this.props.setAttributes( { classMigrate: true } )
 															this.props.setAttributes( { childMigrate: true } )
 															
-															
-															// Pushing Style tag for this block css.
-															const $style = document.createElement( "style" )
-															$style.setAttribute( "id", "uagb-restaurant-menu-style-" + this.props.clientId.substr( 0, 8 ) )
-															document.head.appendChild( $style )
 
 															const getChildBlocks = select('core/block-editor').getBlocks( this.props.clientId );
 
@@ -710,6 +702,10 @@ class UAGBRestaurantMenu extends Component {
 													
 														return {
 															deviceType: deviceType,
+															attributes: {
+																...props.attributes,
+																deviceType: deviceType
+															}
 														}
 													})( UAGBRestaurantMenu )
 													

@@ -1,4 +1,4 @@
-function addBlockEditorDynamicStyles ( styleTagId, attribute, styling ) {
+function addBlockEditorDynamicStyles ( styleTagId, styling ) {
 	
     	// Desktop.
 		let element = document.getElementById(

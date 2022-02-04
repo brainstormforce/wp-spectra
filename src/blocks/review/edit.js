@@ -12,7 +12,7 @@ import { ReviewBody } from "./components";
 import TypographyControl from "../../components/typography"
 // Import Web font loader for google fonts.
 import WebfontLoader from "../../components/typography/fontloader"
-
+import addBlockEditorDynamicStyles from "../../../blocks-config/uagb-controls/addBlockEditorDynamicStyles";
 
 import { __ } from '@wordpress/i18n';
 
@@ -84,10 +84,6 @@ class UAGBRatingEdit extends Component {
 
 		this.props.setAttributes({ schema: JSON.stringify(this.props.schemaJsonData) });
 
-		// Pushing Style tag for this block css.
-		const $style = document.createElement( "style" )
-		$style.setAttribute( "id", "uagb-ratings-style-" + this.props.clientId.substr( 0, 8 ) )
-		document.head.appendChild( $style )
 	}
 
 	componentDidUpdate( prevProps ) {
@@ -101,11 +97,7 @@ class UAGBRatingEdit extends Component {
 			});
 		}
 
-		var element = document.getElementById( "uagb-ratings-style-" + this.props.clientId.substr( 0, 8 ) )
-
-		if( null !== element && undefined !== element ) {
-			element.innerHTML = styling( this.props )
-		}
+		addBlockEditorDynamicStyles( 'uagb-ratings-style-' + this.props.clientId.substr( 0, 8 ), styling( this.props ) );
 
 		$(".uagb-rating-link-wrapper").on( "click", function(event) {
 			event.preventDefault()
@@ -980,6 +972,10 @@ class UAGBRatingEdit extends Component {
 				itemtype = ownProps.attributes.itemType
 			}
 
+			const { __experimentalGetPreviewDeviceType = null } = select( 'core/edit-post' );
+													
+			let deviceType = __experimentalGetPreviewDeviceType ? __experimentalGetPreviewDeviceType() : null;
+
 				var json_data = {
 					"@context": "http://schema.org/",
 					"@type": "Review",
@@ -1085,7 +1081,11 @@ class UAGBRatingEdit extends Component {
 				}
 				
 			return {
-				schemaJsonData: json_data
+				schemaJsonData: json_data,
+				attributes: {
+					...ownProps.attributes,
+					deviceType: deviceType
+				}
 			};
 		} )
 	) ( UAGBRatingEdit )

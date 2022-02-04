@@ -8,7 +8,7 @@ import FontIconPicker from "@fonticonpicker/react-fonticonpicker"
 import styling from "./styling"
 import renderSVG from "@Controls/renderIcon"
 import UAGB_Block_Icons from "@Controls/block-icons"
-
+import addBlockEditorDynamicStyles from "../../../blocks-config/uagb-controls/addBlockEditorDynamicStyles";
 // Import all of our Text Options requirements.
 import TypographyControl from "../../components/typography"
 
@@ -784,11 +784,8 @@ class UAGBTeam extends Component {
 	}
 
 	componentDidUpdate(prevProps, prevState) {
-		var element = document.getElementById( "uagb-team-style-" + this.props.clientId.substr( 0, 8 ) )
 
-		if( null !== element && undefined !== element ) {
-			element.innerHTML = styling( this.props )
-		}
+		addBlockEditorDynamicStyles( 'uagb-team-style-' + this.props.clientId.substr( 0, 8 ), styling( this.props ) );
 	}
 
 	componentDidMount() {
@@ -797,10 +794,6 @@ class UAGBTeam extends Component {
 		this.props.setAttributes( { block_id: this.props.clientId.substr( 0, 8 ) } )
 		this.props.setAttributes( { classMigrate: true } )
 
-		// Pushing Style tag for this block css.
-		const $style = document.createElement( "style" )
-		$style.setAttribute( "id", "uagb-team-style-" + this.props.clientId.substr( 0, 8 ) )
-		document.head.appendChild( $style )
 	}
 }
 
@@ -810,5 +803,9 @@ export default withSelect( ( select, props ) => {
 
 	return {
 		deviceType: deviceType,
+		attributes: {
+			...props.attributes,
+			deviceType: deviceType
+		}
 	}
 } )( UAGBTeam )

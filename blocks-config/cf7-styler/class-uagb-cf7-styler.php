@@ -533,6 +533,10 @@ if ( ! class_exists( 'UAGB_CF7_Styler' ) ) {
 							'type'    => 'string',
 							'default' => 'px',
 						),
+						'deviceType'        => array(
+							'type'    => 'string',
+							'default' => 'Desktop',
+						),
 					),
 					'render_callback' => array( $this, 'render_html' ),
 				)

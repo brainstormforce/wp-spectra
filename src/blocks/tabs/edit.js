@@ -4,7 +4,7 @@
 import classnames from "classnames"
 import times from "lodash/times"
 import styling from "./styling"
-
+import addBlockEditorDynamicStyles from "../../../blocks-config/uagb-controls/addBlockEditorDynamicStyles";
 // Import all of our Text Options requirements.
 import TypographyControl from "../../components/typography"
 
@@ -67,19 +67,12 @@ class UAGBTabsEdit extends Component {
 	
 	componentDidMount() {
 		this.props.setAttributes( { block_id: this.props.clientId.substr( 0, 8 ) } )
-		const $style = document.createElement( "style" )
-		$style.setAttribute( "id", "uagb-style-tab-" + this.props.clientId.substr( 0, 8 ) )
-		document.head.appendChild( $style );
 		this.updateTabTitle();
 		this.props.resetTabOrder();
 	}
 	componentDidUpdate() {
 
-		var element = document.getElementById( "uagb-style-tab-" + this.props.clientId.substr( 0, 8 ) )
-
-		if( null !== element && undefined !== element ) {
-			element.innerHTML = styling( this.props )
-		}
+		addBlockEditorDynamicStyles( 'uagb-style-tab-' + this.props.clientId.substr( 0, 8 ), styling( this.props ) );
 	}
 	onMove( oldIndex, newIndex ) {
 		const { attributes, setAttributes, clientId } = this.props;
@@ -684,6 +677,10 @@ export default compose(
 		let deviceType = __experimentalGetPreviewDeviceType ? __experimentalGetPreviewDeviceType() : null;
 		return {
 			deviceType: deviceType,
+			attributes: {
+				...props.attributes,
+				deviceType: deviceType
+			}
 		}
 	}),
 	withDispatch( (dispatch, { clientId }, { select }) => {

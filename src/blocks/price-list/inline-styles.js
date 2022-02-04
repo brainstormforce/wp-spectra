@@ -190,7 +190,7 @@ function RestMenuStyle( props ) {
 	}
 
 	var styling_css = ""
-	var id = `#wpwrap .uagb-block-${ props.clientId.substr( 0, 8 ) }`
+	var id = `.editor-styles-wrapper .uagb-block-${ props.clientId.substr( 0, 8 ) }`
 
 	styling_css = generateCSS( selectors, id )
 

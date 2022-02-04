@@ -11,7 +11,7 @@ import FontIconPicker from "@fonticonpicker/react-fonticonpicker"
 import contentTimelineStyle from "./styling"
 import ContentTmClasses from ".././classes"
 import renderSVG from "@Controls/renderIcon"
-
+import addBlockEditorDynamicStyles from "../../../../blocks-config/uagb-controls/addBlockEditorDynamicStyles";
 // Import all of our Text Options requirements.
 import TypographyControl from "../../../components/typography"
 
@@ -227,12 +227,6 @@ class UAGBcontentTimeline extends Component {
 				dateFormat 
 			},
 		} = this.props
-		
-		var element = document.getElementById( "uagb-content-timeline-style-" + this.props.clientId )
-
-		if( element ) {
-				element.innerHTML = contentTimelineStyle( this.props )
-			}
 		
 		// Parameters for FontIconPicker
 		const icon_props = {
@@ -721,14 +715,10 @@ class UAGBcontentTimeline extends Component {
 			time.timelineContent_back(id)
 		})
 
-		// Pushing Style tag for this block css.
-		const $style = document.createElement( "style" )
-		$style.setAttribute( "id", "uagb-content-timeline-style-" + this.props.clientId )
-		document.head.appendChild( $style )
 	}
 
 	componentDidUpdate(){
-
+		addBlockEditorDynamicStyles( 'uagb-content-timeline-style-' + this.props.clientId.substr( 0, 8 ), contentTimelineStyle( this.props ) );
 		select('core/block-editor').getBlocksByClientId(this.props.clientId)[0].innerBlocks.forEach(function (block,key) {
 			let align_class = ""
 			if( "left" == block.attributes.timelinAlignment ){

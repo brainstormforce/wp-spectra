@@ -5,9 +5,9 @@
 import classnames from "classnames"
 import styling from "./styling"
 import Lottie from 'react-lottie';
-
+import addBlockEditorDynamicStyles from "../../../blocks-config/uagb-controls/addBlockEditorDynamicStyles";
 import { __ } from '@wordpress/i18n';
-
+const { withSelect } = wp.data
 const {
 	BlockAlignmentToolbar,
 	InspectorControls,
@@ -47,18 +47,11 @@ class UAGBLottie extends Component {
         this.props.setAttributes( { block_id: this.props.clientId.substr( 0, 8 ) } )
         this.props.setAttributes( { classMigrate: true } );
 
-        // Pushing Style tag for this block css.
-		const $style = document.createElement( "style" )
-		$style.setAttribute( "id", "uagb-lottie-style-" + this.props.clientId.substr( 0, 8 ) )
-		document.head.appendChild( $style )
     }
 
     componentDidUpdate(prevProps, prevState) {
-		var element = document.getElementById( "uagb-lottie-style-" + this.props.clientId.substr( 0, 8 ) )
 
-		if( null !== element && undefined !== element ) {
-			element.innerHTML = styling( this.props )
-		}
+		addBlockEditorDynamicStyles( 'uagb-lottie-style-' + this.props.clientId.substr( 0, 8 ), styling( this.props ) );
 	}
 
     onSelectLottieJSON( media ) {
@@ -424,5 +417,17 @@ class UAGBLottie extends Component {
         );
     }
 }
+export default withSelect( ( select, props ) => { 
 
-export default UAGBLottie
+	const { __experimentalGetPreviewDeviceType = null } = select( 'core/edit-post' );
+
+	let deviceType = __experimentalGetPreviewDeviceType ? __experimentalGetPreviewDeviceType() : null;
+
+	return {
+		deviceType: deviceType,
+		attributes: {
+			...props.attributes,
+			deviceType: deviceType
+		}
+	}
+})(UAGBLottie);

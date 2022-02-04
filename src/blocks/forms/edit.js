@@ -9,7 +9,7 @@ import map from 'lodash/map'
 import UAGB_Block_Icons from "@Controls/block-icons"
 // Import all of our Text Options requirements.
 import TypographyControl from "../../components/typography"
-
+import addBlockEditorDynamicStyles from "../../../blocks-config/uagb-controls/addBlockEditorDynamicStyles";
 // Import Web font loader for google fonts.
 import WebfontLoader from "../../components/typography/fontloader"
 
@@ -1058,10 +1058,7 @@ class UAGBFormsEdit extends Component {
 
 		
 
-		// Pushing Style tag for this block css.
-		const $style = document.createElement( "style" )
-		$style.setAttribute( "id", "uagb-style-forms-" + this.props.clientId.substr( 0, 8 ) )
-		document.head.appendChild( $style )
+
 		
 		var id = this.props.clientId
 		window.addEventListener("load", this.renderReadyClasses(id))
@@ -1070,17 +1067,21 @@ class UAGBFormsEdit extends Component {
 
 	componentDidUpdate(prevProps, prevState) {
 
-		var element = document.getElementById( "uagb-style-forms-" + this.props.clientId.substr( 0, 8 ) )
-
-		if( null !== element && undefined !== element ) {
-			element.innerHTML = styling( this.props )
-		}
+		addBlockEditorDynamicStyles( 'uagb-style-forms-' + this.props.clientId.substr( 0, 8 ), styling( this.props ) );
 
 	}
 	
 	renderReadyClasses(id){
-		var mainDiv = document.getElementById( "block-" + id )
-		var formscope = mainDiv.getElementsByClassName('uagb-forms__outer-wrap')
+		const iframeEl = document.querySelector( `iframe[name='editor-canvas']` );
+		var mainDiv;
+		var formscope;
+		if( iframeEl ){
+			mainDiv = iframeEl.contentDocument.getElementById( "block-" + id )
+			formscope = mainDiv.getElementsByClassName('uagb-forms__outer-wrap')
+		} else {
+			mainDiv = document.getElementById( "block-" + id )
+			formscope = mainDiv.getElementsByClassName('uagb-forms__outer-wrap')
+		}
 		
 		if( null !== formscope[0] && undefined !== formscope[0] ) {
 			
@@ -1129,7 +1130,9 @@ const applyWithSelect = withSelect( ( select, props ) => {
 	const { getBlockType, getBlockVariations, getDefaultBlockVariation } = select( 'core/blocks' );
 	const innerBlocks = getBlocks( props.clientId );
 	const { replaceInnerBlocks } = useDispatch( 'core/block-editor' );
+	const { __experimentalGetPreviewDeviceType = null } = select( 'core/edit-post' );
 
+	let deviceType = __experimentalGetPreviewDeviceType ? __experimentalGetPreviewDeviceType() : null;
 	return {
 		// Subscribe to changes of the innerBlocks to control the display of the layout selection placeholder.
 		innerBlocks,
@@ -1139,6 +1142,10 @@ const applyWithSelect = withSelect( ( select, props ) => {
 		defaultVariation: typeof getDefaultBlockVariation === 'undefined' ? null : getDefaultBlockVariation( props.name ),
 		variations: typeof getBlockVariations === 'undefined' ? null : getBlockVariations( props.name ),
 		replaceInnerBlocks,
+		attributes: {
+			...props.attributes,
+			deviceType: deviceType
+		}
 	};
 } );
 

@@ -279,6 +279,10 @@ const attributes = {
 	iconFontSizeMobile: {
 		type: "number",
 		default: 20
+	},
+	deviceType: {
+		type: "string",
+		default: 'Desktop'
 	}
 }
 

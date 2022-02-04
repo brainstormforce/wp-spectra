@@ -127,6 +127,10 @@ if ( ! class_exists( 'UAGB_Lottie' ) ) {
 							'type'    => 'string',
 							'default' => '',
 						),
+						'deviceType' => array(
+							'type'    => 'string',
+							'default' => 'Desktop',
+						),
 					),
 					'render_callback' => array( $this, 'render_html' ),
 				)

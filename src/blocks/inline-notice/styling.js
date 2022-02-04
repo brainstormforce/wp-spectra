@@ -145,7 +145,7 @@ function styling( props ) {
 			},
 	}
 
-	var base_selector = `.block-editor-page #wpwrap .uagb-block-${ block_id }`
+	var base_selector = `.editor-styles-wrapper .uagb-block-${ block_id }`
 
 	var styling_css = generateCSS( selectors, base_selector )
 

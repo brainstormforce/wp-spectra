@@ -14,7 +14,7 @@ import times from "lodash/times"
 import Slider from "react-slick"
 import UAGB_Block_Icons from "@Controls/block-icons"
 import Columnresponsive from "../../components/typography/column-responsive"
-
+import addBlockEditorDynamicStyles from "../../../blocks-config/uagb-controls/addBlockEditorDynamicStyles";
 // Import all of our Text Options requirements.
 import TypographyControl from "../../components/typography"
 
@@ -1036,11 +1036,7 @@ class UAGBtestimonial extends Component {
 	}
 
 	componentDidUpdate(prevProps, prevState) {
-		var element = document.getElementById( "uagb-testinomial-style-" + this.props.clientId.substr( 0, 8 ) )
-
-		if( null !== element && undefined !== element ) {
-			element.innerHTML = TestimonialStyle( this.props )
-		}
+		addBlockEditorDynamicStyles( 'uagb-testinomial-style-' + this.props.clientId.substr( 0, 8 ), TestimonialStyle( this.props ) );
 	}
 
 	componentDidMount() {
@@ -1050,10 +1046,6 @@ class UAGBtestimonial extends Component {
 
 		this.props.setAttributes( { classMigrate: true } )
 
-		// Pushing Style tag for this block css.
-		const $style = document.createElement( "style" )
-		$style.setAttribute( "id", "uagb-testinomial-style-" + this.props.clientId.substr( 0, 8 ) )
-		document.head.appendChild( $style )
 	}
 }
 
@@ -1065,5 +1057,9 @@ export default withSelect( ( select, props ) => {
 
 	return {
 		deviceType: deviceType,
+		attributes: {
+			...props.attributes,
+			deviceType: deviceType
+		}
 	}
 })( UAGBtestimonial )

@@ -8,14 +8,14 @@ import UAGBIcon from "@Controls/UAGBIcon.json"
 import FontIconPicker from "@fonticonpicker/react-fonticonpicker"
 import styling from "./styling"
 import renderSVG from "@Controls/renderIcon"
-
+import addBlockEditorDynamicStyles from "../../../blocks-config/uagb-controls/addBlockEditorDynamicStyles";
 import { __ } from '@wordpress/i18n';
 
 const {
 	Component,
 	Fragment,
 } = wp.element
-
+const { withSelect } = wp.data
 const {
 	InspectorControls,
 	MediaUpload,
@@ -48,18 +48,11 @@ class UAGBIconListChild extends Component {
 		// Assigning block_id in the attribute.
 		this.props.setAttributes( { block_id: this.props.clientId.substr( 0, 8 ) } )
 
-		// Pushing Style tag for this block css.
-		const $style = document.createElement( "style" )
-		$style.setAttribute( "id", "uagb-style-icon-list-child-" + this.props.clientId.substr( 0, 8 ) )
-		document.head.appendChild( $style )
 	}
 
 	componentDidUpdate( prevProps ) {
-		var element = document.getElementById( "uagb-style-icon-list-child-" + this.props.clientId.substr( 0, 8 ) )
 
-		if( null !== element && undefined !== element ) {
-			element.innerHTML = styling( this.props )
-		}
+		addBlockEditorDynamicStyles( 'uagb-style-icon-list-child-' + this.props.clientId.substr( 0, 8 ), styling( this.props ) );
 	}
 
 	/*
@@ -381,5 +374,17 @@ class UAGBIconListChild extends Component {
 		)
 	}
 }
+export default withSelect( ( select, props ) => { 
 
-export default UAGBIconListChild
+	const { __experimentalGetPreviewDeviceType = null } = select( 'core/edit-post' );
+
+	let deviceType = __experimentalGetPreviewDeviceType ? __experimentalGetPreviewDeviceType() : null;
+
+	return {
+		deviceType: deviceType,
+		attributes: {
+			...props.attributes,
+			deviceType: deviceType
+		}
+	}
+})(UAGBIconListChild);

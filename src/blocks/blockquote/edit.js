@@ -16,8 +16,8 @@ import TypographyControl from "../../components/typography"
 import WebfontLoader from "../../components/typography/fontloader"
 
 import { __ } from '@wordpress/i18n';
-
-
+import addBlockEditorDynamicStyles from "../../../blocks-config/uagb-controls/addBlockEditorDynamicStyles";
+const { withSelect } = wp.data
 const {
 	AlignmentToolbar,
 	BlockControls,
@@ -1153,11 +1153,8 @@ class UAGBBlockQuote extends Component {
 	}
 
 	componentDidUpdate(prevProps, prevState) {
-		var element = document.getElementById( "uagb-blockquote-style-" + this.props.clientId.substr( 0, 8 ) )
 
-		if( null !== element && undefined !== element ) {
-			element.innerHTML = styling( this.props )
-		}
+		addBlockEditorDynamicStyles( 'uagb-blockquote-style-' + this.props.clientId.substr( 0, 8 ), styling( this.props ) );
 	}
 
 	componentDidMount() {
@@ -1168,11 +1165,19 @@ class UAGBBlockQuote extends Component {
 		// Assigning block_id in the attribute.
 		this.props.setAttributes( { classMigrate: true } )
 
-		// Pushing Style tag for this block css.
-		const $style = document.createElement( "style" )
-		$style.setAttribute( "id", "uagb-blockquote-style-" + this.props.clientId.substr( 0, 8 ) )
-		document.head.appendChild( $style )
 	}
 }
 
-export default UAGBBlockQuote
+export default withSelect( ( select, props ) => {
+	
+	const { __experimentalGetPreviewDeviceType = null } = select( 'core/edit-post' );
+	let deviceType = __experimentalGetPreviewDeviceType ? __experimentalGetPreviewDeviceType() : null;
+
+	return {
+		deviceType: deviceType,
+		attributes: {
+			...props.attributes,
+			deviceType: deviceType
+		}
+	}
+} )( UAGBBlockQuote )

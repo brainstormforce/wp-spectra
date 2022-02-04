@@ -17,7 +17,7 @@ import {
 	RichText,
 	ColorPalette,
 } from "@wordpress/block-editor"
-
+import addBlockEditorDynamicStyles from "../../../blocks-config/uagb-controls/addBlockEditorDynamicStyles";
 import {
 	PanelBody,
 	SelectControl,
@@ -41,19 +41,11 @@ class UAGBStarRating extends Component {
 
 		// Assigning block_id in the attribute.
 		this.props.setAttributes( { block_id: this.props.clientId.substr( 0, 8 ) } )
-
-		// Pushing Style tag for this block css.
-		const style = document.createElement( "style" )
-		style.setAttribute( "id", "uagb-star-rating-style-" + this.props.clientId.substr( 0, 8 ) )
-		document.head.appendChild( style )
 	}
 
 	componentDidUpdate(prevProps, prevState) {
-		var element = document.getElementById( "uagb-star-rating-style-" + this.props.clientId.substr( 0, 8 ) )
 
-		if( null !== element && undefined !== element ) {
-			element.innerHTML = styling( this.props )
-		}
+		addBlockEditorDynamicStyles( 'uagb-star-rating-style-' + this.props.clientId.substr( 0, 8 ), styling( this.props ) );
 	}
 
 	render() {
@@ -309,6 +301,10 @@ export default withSelect( ( select, props ) => {
 	let deviceType = __experimentalGetPreviewDeviceType ? __experimentalGetPreviewDeviceType() : null;
 
 	return {
-		deviceType: deviceType
+		deviceType: deviceType,
+		attributes: {
+			...props.attributes,
+			deviceType: deviceType
+		}
 	}
 } )( UAGBStarRating )

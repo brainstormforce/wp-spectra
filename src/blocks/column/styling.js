@@ -131,7 +131,7 @@ function styling( props ) {
 
 	var styling_css = ""
 
-	var id = `#wpwrap .edit-post-visual-editor #block-${ props.clientId }`
+	var id = `.editor-styles-wrapper #block-${ props.clientId }`
 
 	styling_css = generateCSS( selectors, id )
 

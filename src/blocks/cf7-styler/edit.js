@@ -11,7 +11,7 @@ import WebfontLoader from "../../components/typography/fontloader"
 // Import icon.
 import styling from "./styling"
 import { __ } from '@wordpress/i18n';
-
+import addBlockEditorDynamicStyles from "../../../blocks-config/uagb-controls/addBlockEditorDynamicStyles";
 const {
 	AlignmentToolbar,
 	BlockControls,
@@ -1054,28 +1054,23 @@ class UAGBCF7 extends Component {
 		// Assigning block_id in the attribute.
 		this.props.setAttributes( { isHtml: false } )
 		this.props.setAttributes( { block_id: this.props.clientId.substr( 0, 8 ) } )
-		// Pushing Style tag for this block css.
-		const $style = document.createElement( "style" )
-		$style.setAttribute( "id", "uagb-cf7-styler-" + this.props.clientId.substr( 0, 8 ) )
-		document.head.appendChild( $style )
 	}
 
 	componentDidUpdate(){				
 		$(".wpcf7-submit").click( function(event) {
 			event.preventDefault()
 		})
-		var element = document.getElementById( "uagb-cf7-styler-" + this.props.clientId.substr( 0, 8 ) )
-
-		if( null !== element && undefined !== element ) {
-			element.innerHTML = styling( this.props )
-		}
+		addBlockEditorDynamicStyles( 'uagb-cf7-style-' + this.props.clientId.substr( 0, 8 ), styling( this.props ) );
 	}
 }
 
 export default withSelect( ( select, props ) => {
 	const { setAttributes } = props
 	const { formId, isHtml } = props.attributes
-	let json_data = ""
+	let json_data = "";
+	const { __experimentalGetPreviewDeviceType = null } = select( 'core/edit-post' );
+
+	let deviceType = __experimentalGetPreviewDeviceType ? __experimentalGetPreviewDeviceType() : null;
 
 	if ( formId && -1 != formId && 0 != formId && ! isHtml ) {
 
@@ -1097,6 +1092,10 @@ export default withSelect( ( select, props ) => {
 	}
 
 	return {
-		formHTML: json_data
+		formHTML: json_data,
+		attributes: {
+			...props.attributes,
+			deviceType: deviceType
+		}
 	}
 } )( UAGBCF7 )

@@ -9,7 +9,7 @@ import UAGB_Block_Icons from "@Controls/block-icons"
 import BoxShadowControl from "../../components/box-shadow"
 import GradientSettings from "../../components/gradient-settings"
 import Columnresponsive from "../../components/typography/column-responsive"
-
+import addBlockEditorDynamicStyles from "../../../blocks-config/uagb-controls/addBlockEditorDynamicStyles";
 import { __ } from '@wordpress/i18n';
 
 const {
@@ -54,11 +54,9 @@ class UAGBSectionEdit extends Component {
 	}
 
 	componentDidUpdate( prevProps ) {
-		var element = document.getElementById( "uagb-section-style-" + this.props.clientId.substr( 0, 8 ) )
 
-		if( null !== element && undefined !== element ) {
-			element.innerHTML = styling( this.props )
-		}
+		addBlockEditorDynamicStyles( 'uagb-section-style-' + this.props.clientId.substr( 0, 8 ), styling( this.props ) );
+		
 	}
 
 	componentDidMount() {
@@ -914,5 +912,9 @@ export default withSelect( ( select, props ) => {
 
 	return {
 		deviceType: deviceType,
+		attributes: {
+			...props.attributes,
+			deviceType: deviceType
+		}
 	}
 })( UAGBSectionEdit )

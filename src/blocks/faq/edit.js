@@ -11,7 +11,7 @@ import styling from "./styling"
 import memoize from "memize"
 import UAGB_Block_Icons from "@Controls/block-icons"
 import Columnresponsive from "../../components/typography/column-responsive"
-
+import addBlockEditorDynamicStyles from "../../../blocks-config/uagb-controls/addBlockEditorDynamicStyles";
 // Import all of our Text Options requirements.
 import TypographyControl from "../../components/typography"
 
@@ -81,10 +81,6 @@ class UAGBFaqEdit extends Component {
 		setAttributes( { block_id: this.props.clientId.substr( 0, 8 ) } )
 
 		setAttributes( { schema: JSON.stringify( this.props.schemaJsonData ) } )
-		// Pushing Style tag for this block css.
-		const $style = document.createElement( "style" )
-		$style.setAttribute( "id", "uagb-style-faq-" + this.props.clientId.substr( 0, 8 ) )
-		document.head.appendChild( $style )
 		
 		for ( var i = 1; i <= 2; i++ ) {		
 			faq.push(	
@@ -132,11 +128,8 @@ class UAGBFaqEdit extends Component {
 				schema: JSON.stringify(this.props.schemaJsonData)
 			});
 		}
-		var element = document.getElementById( "uagb-style-faq-" + this.props.clientId.substr( 0, 8 ) )
 
-		if( null !== element && undefined !== element ) {
-			element.innerHTML = styling( this.props )
-		}
+		addBlockEditorDynamicStyles( 'uagb-style-faq-' + this.props.clientId.substr( 0, 8 ), styling( this.props ) );
 
 		const getChildBlocks = select('core/block-editor').getBlocks( this.props.clientId );
 
@@ -1025,7 +1018,11 @@ export default compose(
 
 		return {
 			deviceType: deviceType,
-			schemaJsonData: json_data
+			schemaJsonData: json_data,
+			attributes: {
+				...ownProps.attributes,
+				deviceType: deviceType
+			}
 		};
 	} )
 ) ( UAGBFaqEdit )

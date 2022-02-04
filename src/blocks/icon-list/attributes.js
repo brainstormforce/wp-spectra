@@ -142,6 +142,10 @@ const attributes = {
 	stack: {
 		type: "string",
 		default: "none"
+	},
+	deviceType: {
+		type: "string",
+		default: 'Desktop'
 	}
 }
 

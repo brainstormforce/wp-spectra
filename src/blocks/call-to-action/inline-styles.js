@@ -210,7 +210,7 @@ function CtaStyle( props ) {
 		},
 	}
 
-	var id = `.block-editor-page #wpwrap .uagb-block-${ props.clientId.substr( 0, 8 ) }`
+	var id = `.editor-styles-wrapper .uagb-block-${ props.clientId.substr( 0, 8 ) }`
 
 	var styling_css = generateCSS( selectors, id )
 
