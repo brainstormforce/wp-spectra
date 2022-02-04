@@ -17,8 +17,7 @@ import "./style.scss"
 
 import { __ } from '@wordpress/i18n';
 
-import getDocumentContent from "../../../blocks-config/uagb-controls/getDocumentContent";
-import getStyleTagById from "../../../blocks-config/uagb-controls/getStyleTagById";
+import addBlockEditorDynamicStyles from "../../../blocks-config/uagb-controls/addBlockEditorDynamicStyles";
 
 const {
 	createBlock
@@ -63,18 +62,12 @@ class UAGBAdvancedHeading extends Component {
 		let level_val = parseInt( this.props.attributes.headingTag.replace( 'h' , '' ) )
 		this.props.setAttributes( { level: level_val } )
 
-		// Pushing Style tag for this block css.
-		const $style = document.createElement( "style" )
-		$style.setAttribute( "id", "uagb-adv-heading-style-" + this.props.clientId.substr( 0, 8 ) )
-		getDocumentContent( $style, this.props.deviceType );
 	}
 
 	componentDidUpdate(prevProps, prevState) {
-		var element = getStyleTagById( "uagb-adv-heading-style-" + this.props.clientId.substr( 0, 8 ),  this.props.deviceType );
+		
+		addBlockEditorDynamicStyles( 'uagb-adv-heading-style-' + this.props.clientId.substr( 0, 8 ), this.props.attributes, styling( this.props ) );
 
-		if( null !== element && undefined !== element ) {
-			element.innerHTML = styling( this.props )
-		}
 	}
 
 	/*
