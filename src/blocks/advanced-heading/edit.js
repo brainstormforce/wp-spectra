@@ -402,6 +402,10 @@ export default withSelect( ( select, props ) => {
 
 	return {
 		anchor: attributes.headingId,
-		deviceType: deviceType
+		deviceType: deviceType,
+		attributes: {
+			...props.attributes,
+			deviceType: deviceType
+		}
 	}
 } )( UAGBAdvancedHeading )

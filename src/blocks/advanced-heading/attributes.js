@@ -140,6 +140,10 @@ const attributes = {
 	subHeadLoadGoogleFonts: {
 		type: "boolean",
 		default: false	
+	},
+	deviceType: {
+		type: "string",
+		default: 'Desktop'
 	}
 }
 
