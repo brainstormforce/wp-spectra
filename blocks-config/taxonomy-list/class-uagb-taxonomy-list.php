@@ -382,7 +382,7 @@ if ( ! class_exists( 'UAGB_Taxonomy_List' ) ) {
 							'type'    => 'boolean',
 							'default' => false,
 						),
-						'deviceType' => array(
+						'deviceType'            => array(
 							'type'    => 'string',
 							'default' => 'Desktop',
 						),

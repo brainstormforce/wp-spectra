@@ -752,7 +752,7 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 					'type'    => 'boolean',
 					'default' => false,
 				),
-				'deviceType' => array(
+				'deviceType'              => array(
 					'type'    => 'string',
 					'default' => 'Desktop',
 				),

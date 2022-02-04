@@ -810,7 +810,7 @@ if ( ! class_exists( 'UAGB_Table_Of_Content' ) ) {
 										'type'    => 'string',
 										'default' => __( 'Add a header to begin generating the table of contents', 'ultimate-addons-for-gutenberg' ),
 									),
-									'deviceType' => array(
+									'deviceType'           => array(
 										'type'    => 'string',
 										'default' => 'Desktop',
 									),
