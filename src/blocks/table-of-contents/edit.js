@@ -856,7 +856,7 @@ class UAGBTableOfContentsEdit extends Component {
 }
 
 export default compose(
-	withSelect( ( select, ownProps ) => {
+	withSelect( ( select, props ) => {
 		const { __experimentalGetPreviewDeviceType = null } = select( 'core/edit-post' );
 
 		let deviceType = __experimentalGetPreviewDeviceType ? __experimentalGetPreviewDeviceType() : null;
@@ -955,7 +955,7 @@ export default compose(
 			deviceType: deviceType,
 			headers: headers,
 			attributes: {
-				...ownProps.attributes,
+				...props.attributes,
 				deviceType: deviceType
 			}
 		};
