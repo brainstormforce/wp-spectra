@@ -854,6 +854,10 @@ class UAGBcontentTimeline extends Component {
 	let deviceType = __experimentalGetPreviewDeviceType ? __experimentalGetPreviewDeviceType() : null;
 
 	return {
-		deviceType: deviceType
+		deviceType: deviceType,
+		attributes: {
+			...props.attributes,
+			deviceType: deviceType
+		}
 	}
 } )( UAGBcontentTimeline )

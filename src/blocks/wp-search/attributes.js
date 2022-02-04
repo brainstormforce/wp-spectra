@@ -215,6 +215,10 @@ const attributes = {
 	inputSizeType : {
 		type:"string",
 		default: "%"
+	},
+	deviceType: {
+		type: "string",
+		default: 'Desktop'
 	}
 }
 
