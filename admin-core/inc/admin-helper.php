@@ -54,6 +54,7 @@ class Admin_Helper {
 			'collapse_panels'                    => \UAGB_Admin_Helper::get_admin_settings_option( 'uag_collapse_panels', 'enabled' ),
 			'copy_paste'                         => \UAGB_Admin_Helper::get_admin_settings_option( 'uag_copy_paste', 'enabled' ),
 			'preload_local_fonts'                => \UAGB_Admin_Helper::get_admin_settings_option( 'uag_preload_local_fonts', 'disabled' ),
+			'uag_previous_versions'              => $uag_versions,
 		);
 
 		return $options;

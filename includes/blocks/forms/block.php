@@ -10,7 +10,7 @@
 $block_slug = 'uagb/forms';
 $block_data = array(
 	'slug'             => '',
-	'admin_categories' => array( 'forms' ),
+	'admin_categories' => array( 'form' ),
 	'link'             => 'forms',
 	'doc'              => 'uag-forms-block',
 	'title'            => __( 'Form', 'ultimate-addons-for-gutenberg' ),

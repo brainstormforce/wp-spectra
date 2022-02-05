@@ -82,13 +82,9 @@ class Common_Settings extends Api_Base {
 	 */
 	public function get_common_settings( $request ) {
 
-		$settings = Global_Settings::get_global_settings_fields();
-		$options  = Admin_Helper::get_options();
+		$options = Admin_Helper::get_options();
 
-		return array(
-			'settings' => $settings,
-			'options'  => $options,
-		);
+		return $options;
 	}
 
 	/**

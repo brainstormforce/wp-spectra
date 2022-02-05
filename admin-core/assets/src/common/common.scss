@@ -15,7 +15,11 @@
 	outline: none;
 }
 
-.uag-menu-page-wrapper {
+.settings_page_uag #wpcontent {
+	padding-left: 0;
+}
+
+.uag-menu-page-wrapper .uag-settings-app {
 	font-family: var(--heading-font-family);
 	left: -20px;
 	position: relative;
@@ -159,3 +163,24 @@
 	background: var(--background-light-color);
 }
 
+.uag-font-select-disabled {
+	pointer-events: none;
+	opacity: 0.4;
+}
+
+.uag-menu-page-wrapper {
+	font-family: Inter, sans-serif;
+
+	p {
+		font-size: 14px;
+		line-height: 22.4px;
+	}
+
+	h2 {
+		font-size: 2rem;
+	}
+
+	h3 {
+		font-size: 1.125rem;
+	}
+}

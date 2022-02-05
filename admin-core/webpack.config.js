@@ -7,9 +7,9 @@ const newPath = path.join( __dirname, '../' );
 module.exports = {
 	...defaultConfig,
 	entry: {
-		'settings-app': path.resolve(
+		'dashboard-app': path.resolve(
 			__dirname,
-			'assets/src/SettingsApp.js'
+			'assets/src/DashboardApp.js'
 		),
 	},
 	resolve: {
@@ -29,9 +29,17 @@ module.exports = {
 				__dirname,
 				'assets/src/settings-app/'
 			),
+			'@DashboardApp': path.resolve(
+				__dirname,
+				'assets/src/dashboard-app/'
+			),
 			'@Controls': path.resolve(
 				newPath,
 				'blocks-config/uagb-controls/'
+			),
+			'@Common': path.resolve(
+				__dirname,
+				'assets/src/common/'
 			),
 		},
 	},
