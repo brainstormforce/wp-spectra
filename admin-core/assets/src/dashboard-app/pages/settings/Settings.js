@@ -33,7 +33,7 @@ const Settings = () => {
       ];
 
     return (
-        <main className="max-w-[77rem] mx-auto my-[2.43rem] bg-white rounded-lg shadow overflow-hidden h-[33rem]">
+        <main className="max-w-[77rem] mx-auto my-[2.43rem] bg-white rounded-[0.2rem] shadow overflow-hidden h-[33rem]">
             <div className="lg:grid lg:grid-cols-12 lg:gap-x-5 pb-8 h-full">
                 <aside className="py-6 px-2 ml-8 sm:px-6 lg:py-6 lg:px-0 lg:col-span-3 border-r">
                     <nav className="space-y-1">
@@ -42,9 +42,9 @@ const Settings = () => {
                             key={item.name}
                             className={classNames(
                             activeSettingsNavigationTab === item.slug
-                            ? 'bg-gray-50 text-wpcolor fill-wpcolor hover:bg-white'
+                            ? 'bg-gray-50 text-wpcolor hover:text-wphovercolor fill-wpcolor hover:bg-white'
                             : 'text-gray-900 fill-gray-900 hover:text-gray-900 hover:bg-gray-50',
-                            'group cursor-pointer rounded-md px-3 py-2 flex items-center text-sm font-medium'
+                            'group cursor-pointer rounded-[0.2rem] px-3 py-2 flex items-center text-sm font-medium'
                             )}
                             onClick={ () => dispatch( {type:'UPDATE_SETTINGS_ACTIVE_NAVIGATION_TAB', payload: item.slug} ) }
                         >

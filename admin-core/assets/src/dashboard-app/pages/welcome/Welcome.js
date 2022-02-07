@@ -28,14 +28,14 @@ const Welcome = () => {
                 <h2 className="sr-only" id="section-1-title">
                   Section title
                 </h2>
-                <div className="rounded-lg bg-white overflow-hidden shadow h-full">
+                <div className="rounded-[0.2rem] bg-white overflow-hidden shadow h-full">
                   <div className="p-6">
                         <h3 className='text-xl pb-3 font-medium'>{__( 'Powerful Blocks & Beautiful Templates for any kind of website.', 'ultimate-addons-for-gutenberg' )}</h3>
                         <iframe width="100%" height="380px" src="https://www.youtube.com/embed/N-MLUplUoZc?showinfo=0&autoplay=1&mute=1" allow="autoplay" title="YouTube video player" frameBorder="0" allowFullScreen></iframe>
-                        <span className="relative z-0 inline-flex rounded-md pt-6 justify-center w-full">
+                        <span className="relative z-0 inline-flex rounded-[0.2rem] pt-6 justify-center w-full">
                           <button
                               type="button"
-                              className="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-wpcolor hover:bg-wphovercolor focus:outline-none mr-4"
+                              className="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-[0.2rem] shadow-sm text-white bg-wpcolor hover:bg-wphovercolor focus:outline-none mr-4"
                               onClick={ onCreateNewPageClick }
                           >
                               {__( 'Create New Page', 'ultimate-addons-for-gutenberg' )}
@@ -43,7 +43,7 @@ const Welcome = () => {
                           </button>
                           <button
                               type="button"
-                              className="inline-flex items-center px-4 py-2 border border-gray-300 shadow-sm text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 focus:outline-none"
+                              className="inline-flex items-center px-4 py-2 border border-gray-300 shadow-sm text-sm font-medium rounded-[0.2rem] text-gray-700 bg-white hover:bg-gray-50 focus:outline-none"
                               onClick={ onReadFullGuideClick }
                           >
                               {__( 'Read Full Guide', 'ultimate-addons-for-gutenberg' )}
@@ -61,7 +61,7 @@ const Welcome = () => {
                 <h2 className="sr-only" id="section-2-title">
                   Section title
                 </h2>
-                <div className="rounded-lg bg-white overflow-hidden shadow">
+                <div className="rounded-[0.2rem] bg-white overflow-hidden shadow">
                   <div className="p-6">
                     <h3 className='text-xl font-medium pb-2'>
                       { __(
@@ -81,6 +81,7 @@ const Welcome = () => {
                         'ultimate-addons-for-gutenberg'
                       ) }
                     </a>
+                    <a className='text-base text-wpcolor hover:text-wphovercolor no-underline' href='https://ultimategutenberg.com/docs/' target='_blank' rel="noreferrer"> → </a>
                   </div>
                 </div>
               </section>
@@ -88,7 +89,7 @@ const Welcome = () => {
                 <h2 className="sr-only" id="section-2-title">
                   Section title
                 </h2>
-                <div className="rounded-lg bg-white overflow-hidden shadow">
+                <div className="rounded-[0.2rem] bg-white overflow-hidden shadow">
                   <div className="p-6">
                     <h3 className='text-xl font-medium pb-2'>
                       { __(
@@ -108,6 +109,7 @@ const Welcome = () => {
                         'ultimate-addons-for-gutenberg'
                       ) }
                     </a>
+                    <a className='text-base text-wpcolor hover:text-wphovercolor no-underline' href='https://ultimategutenberg.com/support/' target='_blank' rel="noreferrer"> → </a>
                   </div>
                 </div>
               </section>
@@ -115,7 +117,7 @@ const Welcome = () => {
                 <h2 className="sr-only" id="section-2-title">
                   Section title
                 </h2>
-                <div className="rounded-lg bg-white overflow-hidden shadow">
+                <div className="rounded-[0.2rem] bg-white overflow-hidden shadow">
                   <div className="p-6">
                     <h3 className='text-xl font-medium pb-2'>
                       { __(
@@ -135,6 +137,7 @@ const Welcome = () => {
                         'ultimate-addons-for-gutenberg'
                       ) }
                     </a>
+                    <a className='text-base text-wpcolor hover:text-wphovercolor no-underline' href='https://www.facebook.com/groups/wpastra/' target='_blank' rel="noreferrer"> → </a>
                   </div>
                 </div>
               </section>

@@ -44,7 +44,7 @@ const AssetsGeneration = () => {
 
     return (
         <section className='flex border-b border-solid border-slate-200'>
-            <div className='pr-16 pb-8 w-4/5'>
+            <div className='pr-16 pb-8 w-[78%]'>
                 <h3 className="text-lg leading-6 font-medium text-gray-900">
                     {__( 'File Generation', 'ultimate-addons-for-gutenberg' )}
                 </h3>
@@ -60,14 +60,14 @@ const AssetsGeneration = () => {
                     onChange={updateFileGenerationStatus}
                     className={classNames(
                         fileGenerationStatus ? 'bg-wpcolor' : 'bg-gray-200',
-                        'relative inline-flex flex-shrink-0 h-6 w-11 border-2 border-transparent rounded-full cursor-pointer transition-colors ease-in-out duration-200 focus:outline-none'
+                        'relative inline-flex flex-shrink-0 h-5 w-10 items-center border-2 border-transparent rounded-full cursor-pointer transition-colors ease-in-out duration-200 focus:outline-none'
                     )}
                     >
                     <span
                         aria-hidden="true"
                         className={classNames(
                         fileGenerationStatus ? 'translate-x-5' : 'translate-x-0',
-                        'pointer-events-none inline-block h-5 w-5 rounded-full bg-white shadow transform ring-0 transition ease-in-out duration-200'
+                        'pointer-events-none inline-block h-3.5 w-3.5 rounded-full bg-white shadow transform ring-0 transition ease-in-out duration-200'
                         )}
                     />
                 </Switch>

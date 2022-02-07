@@ -41,7 +41,7 @@ const CopyPasteStyles = () => {
 
     return (
         <section className='flex'>
-            <div className='pr-16 pb-8 w-4/5'>
+            <div className='pr-16 pb-8 w-[78%]'>
                 <h3 className="text-lg leading-6 font-medium text-gray-900">
                     {__( 'Copy Paste Styles', 'ultimate-addons-for-gutenberg' )}
                 </h3>
@@ -55,14 +55,14 @@ const CopyPasteStyles = () => {
                     onChange={updateEnableCopyPasteStylesStatus}
                     className={classNames(
                         enableCopyPasteStylesStatus ? 'bg-wpcolor' : 'bg-gray-200',
-                        'relative inline-flex flex-shrink-0 h-6 w-11 border-2 border-transparent rounded-full cursor-pointer transition-colors ease-in-out duration-200 focus:outline-none'
+                        'relative inline-flex flex-shrink-0 h-5 w-10 items-center border-2 border-transparent rounded-full cursor-pointer transition-colors ease-in-out duration-200 focus:outline-none'
                     )}
                     >
                     <span
                         aria-hidden="true"
                         className={classNames(
                         enableCopyPasteStylesStatus ? 'translate-x-5' : 'translate-x-0',
-                        'pointer-events-none inline-block h-5 w-5 rounded-full bg-white shadow transform ring-0 transition ease-in-out duration-200'
+                        'pointer-events-none inline-block h-3.5 w-3.5 rounded-full bg-white shadow transform ring-0 transition ease-in-out duration-200'
                         )}
                     />
                 </Switch>

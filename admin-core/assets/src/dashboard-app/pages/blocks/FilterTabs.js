@@ -128,7 +128,7 @@ const FilterTabs = () => {
 	};
 
     return (
-        <div className="max-w-3xl mx-auto p-[1.3rem] lg:max-w-[77rem] bg-white mt-[2.43rem] mb-[2.43rem] rounded-md">
+        <div className="max-w-3xl mx-auto p-[1.3rem] lg:max-w-[77rem] bg-white mt-[2.43rem] mb-[2.43rem] rounded-[0.2rem]">
             <div className="sm:hidden">
             <label htmlFor="tabs" className="sr-only">
                 Select a tab
@@ -137,7 +137,7 @@ const FilterTabs = () => {
             <select
                 id="tabs"
                 name="tabs"
-                className="block w-full focus:ring-indigo-500 focus:border-indigo-500 border-gray-300 rounded-md"
+                className="block w-full focus:ring-indigo-500 focus:border-indigo-500 border-gray-300 rounded-[0.2rem]"
             >
                 {tabs.map( ( tab ) => (
                 <option key={tab.name}>{tab.name}</option>
@@ -151,7 +151,7 @@ const FilterTabs = () => {
                         key={tab.name}
                         className={classNames(
                         tab.slug === activeBlocksFilterTab ? 'bg-wphoverbgcolor text-wpcolor' : ' hover:text-wphovercolor',
-                        'px-3 py-2 font-medium text-sm rounded-md cursor-pointer'
+                        'px-3 py-2 font-medium text-sm rounded-[0.2rem] cursor-pointer'
                         )}
                         onClick={ () => dispatch( {type:'UPDATE_BLOCKS_ACTIVE_FILTER_TAB', payload: tab.slug} ) }
                     >
@@ -159,7 +159,7 @@ const FilterTabs = () => {
                     </a>
                     ) )}
                 </nav>
-                <span className="z-0 flex shadow-sm rounded-md justify-center">
+                <span className="z-0 flex shadow-sm rounded-[0.2rem] justify-center">
                     <button
                         type="button"
                         className="-ml-px relative inline-flex items-center px-4 py-2 border border-gray-300 bg-white text-sm font-medium text-gray-70 focus:z-10 focus:outline-none rounded-l-md"

@@ -1,8 +1,10 @@
 import { Disclosure } from '@headlessui/react'
 import { Link, useLocation } from 'react-router-dom';
 import { __ } from '@wordpress/i18n';
+import ChangeLogPopup from './ChangeLogPopup';
 
 export default function MainNav() {
+
   const menus = [
     {
         name: __( 'Welcome', 'ultimate-addons-for-gutenberg' ),
@@ -27,13 +29,6 @@ export default function MainNav() {
 		: uag_react.home_slug;
 	const activePath = query.get( 'path' ) ? query.get( 'path' ) : '';
 
-  const onVisitWebsiteClick = () => {
-		window.open(
-			'https://ultimategutenberg.com',
-			'_blank'
-		);
-	};
-
   return (
     <Disclosure as="nav" className="bg-white shadow">
           <div className="max-w-3xl mx-auto px-6 lg:max-w-7xl">
@@ -41,7 +36,7 @@ export default function MainNav() {
               <div className="flex-1 flex items-center justify-center sm:items-stretch sm:justify-start">
                 <div className="flex-shrink-0 flex items-center">
                   <img
-                    className="lg:block h-[2.4rem] w-auto"
+                    className="lg:block h-[2.6rem] w-auto"
                     src={ uag_react.logo_url }
                     alt="Workflow"
                   />
@@ -59,8 +54,8 @@ export default function MainNav() {
                             } }
                             className={ `${
                                 activePage === menu.slug && activePath === menu.path
-                                    ? ' border-wpcolor text-gray-900 inline-flex items-center px-1 border-b-2 text-sm font-medium'
-                                    : 'border-transparent  hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 border-b-2 text-sm font-medium'
+                                    ? ' border-wpcolor text-gray-900 inline-flex items-center px-1 border-b-2 text-[0.940rem] font-medium'
+                                    : 'border-transparent  hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 border-b-2 text-[0.940rem] font-medium'
                             }` }
                         >
                             { menu.name }
@@ -69,13 +64,7 @@ export default function MainNav() {
                 </div>
               </div>
               <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
-                <button
-                    type="button"
-                    className="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-wpcolor hover:bg-wphovercolor focus:outline-none"
-                    onClick={ onVisitWebsiteClick }
-                >
-                    {__( 'Visit Website', 'ultimate-addons-for-gutenberg' )}
-                </button>
+                <ChangeLogPopup/>
               </div>
             </div>
           </div>
