@@ -2,6 +2,8 @@ import styling from './styling';
 import React, { lazy, useEffect, Suspense } from 'react';
 import lazyLoader from '@Controls/lazy-loader';
 import apiFetch from '@wordpress/api-fetch';
+import { useDeviceType } from '@Controls/getPreviewType';
+import addBlockEditorDynamicStyles from '@Controls/addBlockEditorDynamicStyles';
 const Settings = lazy( () =>
 	import( /* webpackChunkName: "chunks/cf7-styler/settings" */ './settings' )
 );
@@ -12,17 +14,13 @@ const Render = lazy( () =>
 import { withSelect } from '@wordpress/data';
 
 const UAGBCF7 = ( props ) => {
+
+	const deviceType = useDeviceType();
+
 	useEffect( () => {
 		// Assigning block_id in the attribute.
 		props.setAttributes( { isHtml: false } );
 		props.setAttributes( { block_id: props.clientId.substr( 0, 8 ) } );
-		// Pushing Style tag for this block css.
-		const $style = document.createElement( 'style' );
-		$style.setAttribute(
-			'id',
-			'uagb-cf7-styler-' + props.clientId.substr( 0, 8 )
-		);
-		document.head.appendChild( $style );
 
 		const { attributes, setAttributes } = props;
 		const {
@@ -107,14 +105,18 @@ const UAGBCF7 = ( props ) => {
 				event.preventDefault();
 			} );
 		}
-		const element = document.getElementById(
-			'uagb-cf7-styler-' + props.clientId.substr( 0, 8 )
-		);
 
-		if ( null !== element && undefined !== element ) {
-			element.innerHTML = styling( props );
-		}
+		const blockStyling = styling( props );
+
+		addBlockEditorDynamicStyles( 'uagb-cf7-styler-' + props.clientId.substr( 0, 8 ), blockStyling );
 	}, [ props ] );
+
+	useEffect( () => {
+		// Replacement for componentDidUpdate.
+		const blockStyling = styling( props );
+
+		addBlockEditorDynamicStyles( 'uagb-cf7-styler-' + props.clientId.substr( 0, 8 ), blockStyling );
+	}, [deviceType] );
 
 	return (
 		<Suspense fallback={ lazyLoader() }>

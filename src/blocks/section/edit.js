@@ -5,7 +5,8 @@
 import styling from './styling';
 import React, { lazy, Suspense, useEffect } from 'react';
 import lazyLoader from '@Controls/lazy-loader';
-
+import addBlockEditorDynamicStyles from '@Controls/addBlockEditorDynamicStyles';
+import { useDeviceType } from '@Controls/getPreviewType';
 const Settings = lazy( () =>
 	import( /* webpackChunkName: "chunks/section/settings" */ './settings' )
 );
@@ -18,15 +19,19 @@ import hexToRGBA from '@Controls/hexToRgba';
 import maybeGetColorForVariable from '@Controls/maybeGetColorForVariable';
 
 const UAGBSectionEdit = ( props ) => {
+	const deviceType = useDeviceType();
 	useEffect( () => {
-		const element = document.getElementById(
-			'uagb-section-style-' + props.clientId.substr( 0, 8 )
-		);
+		const blockStyling = styling( props );
 
-		if ( null !== element && undefined !== element ) {
-			element.innerHTML = styling( props );
-		}
+        addBlockEditorDynamicStyles( 'uagb-section-style-' + props.clientId.substr( 0, 8 ), blockStyling );
 	}, [ props ] );
+
+	useEffect( () => {
+		// Replacement for componentDidUpdate.
+	    const blockStyling = styling( props );
+
+        addBlockEditorDynamicStyles( 'uagb-section-style-' + props.clientId.substr( 0, 8 ), blockStyling );
+	}, [deviceType] );
 
 	useEffect( () => {
 
@@ -39,13 +44,6 @@ const UAGBSectionEdit = ( props ) => {
 
 		setAttributes( { classMigrate: true } );
 
-		// Pushing Style tag for this block css.
-		const $style = document.createElement( 'style' );
-		$style.setAttribute(
-			'id',
-			'uagb-section-style-' + props.clientId.substr( 0, 8 )
-		);
-		document.head.appendChild( $style );
 		
 		if ( 101 !== backgroundOpacity ) {
 			const color = hexToRGBA( maybeGetColorForVariable( backgroundImageColor ), backgroundOpacity );

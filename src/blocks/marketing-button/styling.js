@@ -269,7 +269,7 @@ function styling( props ) {
 		},
 	};
 
-	const id = `.uagb-block-${ props.clientId.substr( 0, 8 ) }`;
+	const id = `.editor-styles-wrapper .uagb-block-${ props.clientId.substr( 0, 8 ) }`;
 
 	let stylingCss = generateCSS( selectors, id );
 

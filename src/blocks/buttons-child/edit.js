@@ -6,7 +6,8 @@
 import styling from './styling';
 import lazyLoader from '@Controls/lazy-loader';
 import React, { useEffect, useState, lazy, Suspense } from 'react';
-
+import { useDeviceType } from '@Controls/getPreviewType';
+import addBlockEditorDynamicStyles from '@Controls/addBlockEditorDynamicStyles';
 const Settings = lazy( () =>
 	import(
 		/* webpackChunkName: "chunks/buttons-child/settings" */ './settings'
@@ -17,6 +18,7 @@ const Render = lazy( () =>
 );
 
 const ButtonsChildComponent = ( props ) => {
+	const deviceType = useDeviceType();
 	const initialState = {
 		isURLPickerOpen: false,
 	};
@@ -28,13 +30,6 @@ const ButtonsChildComponent = ( props ) => {
 
 		// Assigning block_id in the attribute.
 		props.setAttributes( { block_id: props.clientId.substr( 0, 8 ) } );
-		// Pushing Style tag for this block css.
-		const $style = document.createElement( 'style' );
-		$style.setAttribute(
-			'id',
-			'uagb-style-button-' + props.clientId.substr( 0, 8 )
-		);
-		document.head.appendChild( $style );
 
 		const { attributes, setAttributes } = props;
 		const {
@@ -66,15 +61,18 @@ const ButtonsChildComponent = ( props ) => {
 	}, [] );
 
 	useEffect( () => {
-		// Replacement for componentDidUpdate.
-		const element = document.getElementById(
-			'uagb-style-button-' + props.clientId.substr( 0, 8 )
-		);
 
-		if ( null !== element && undefined !== element ) {
-			element.innerHTML = styling( props );
-		}
+		const blockStyling = styling( props );
+
+		addBlockEditorDynamicStyles( 'uagb-style-button-' + props.clientId.substr( 0, 8 ), blockStyling );
 	}, [ props ] );
+
+	useEffect( () => {
+		// Replacement for componentDidUpdate.
+		const blockStyling = styling( props );
+
+		addBlockEditorDynamicStyles( 'uagb-style-button-' + props.clientId.substr( 0, 8 ), blockStyling );
+	}, [deviceType] );
 
 	return (
 		<Suspense fallback={ lazyLoader() }>

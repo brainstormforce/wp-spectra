@@ -5,7 +5,7 @@
 import generateCSS from '@Controls/generateCSS';
 import generateCSSUnit from '@Controls/generateCSSUnit';
 
-function InfoBoxStyle( props ) {
+function styling( props ) {
 	const {
 		headingAlign,
 		headingColor,
@@ -878,7 +878,7 @@ function InfoBoxStyle( props ) {
 		},
 	};
 
-	const id = `.block-editor-page #wpwrap .uagb-block-${ props.clientId.substr(
+	const id = `.editor-styles-wrapper .uagb-block-${ props.clientId.substr(
 		0,
 		8
 	) }`;
@@ -900,4 +900,4 @@ function InfoBoxStyle( props ) {
 	return stylingCss;
 }
 
-export default InfoBoxStyle;
+export default styling;

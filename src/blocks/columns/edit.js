@@ -4,7 +4,8 @@
 
 import styling from './styling';
 import { __ } from '@wordpress/i18n';
-
+import addBlockEditorDynamicStyles from '@Controls/addBlockEditorDynamicStyles';
+import { useDeviceType } from '@Controls/getPreviewType';
 import React, { useEffect, lazy, Suspense, useLayoutEffect } from 'react';
 import lazyLoader from '@Controls/lazy-loader';
 
@@ -34,7 +35,7 @@ import maybeGetColorForVariable from '@Controls/maybeGetColorForVariable';
 import styles from './editor.lazy.scss';
 
 const ColumnsComponent = ( props ) => {
-
+	const deviceType = useDeviceType();
 	// Add and remove the CSS on the drop and remove of the component.
 	useLayoutEffect( () => {
 		styles.use();
@@ -76,15 +77,6 @@ const ColumnsComponent = ( props ) => {
 
 		setAttributes( { classMigrate: true } );
 
-		// Pushing Style tag for this block css.
-		const $style = document.createElement( 'style' );
-		$style.setAttribute(
-			'id',
-			'uagb-columns-style-' + props.clientId.substr( 0, 8 )
-		);
-		document.head.appendChild( $style );
-
-		;
 
 		//Margin
 		if ( topMargin ) {
@@ -110,15 +102,18 @@ const ColumnsComponent = ( props ) => {
 	useEffect( () => {
 
 		// Replacement for componentDidUpdate.
-		const element = document.getElementById(
-			'uagb-columns-style-' + props.clientId.substr( 0, 8 )
-		);
+		const blockStyling = styling( props );
 
-		if ( null !== element && undefined !== element ) {
-			element.innerHTML = styling( props );
-		}
+        addBlockEditorDynamicStyles( 'uagb-columns-style-' + props.clientId.substr( 0, 8 ), blockStyling );
 
 	}, [ props ] );
+
+	useEffect( () => {
+		// Replacement for componentDidUpdate.
+	    const blockStyling = styling( props );
+
+        addBlockEditorDynamicStyles( 'uagb-columns-style-' + props.clientId.substr( 0, 8 ), blockStyling );
+	}, [deviceType] );
 
 	const blockVariationPickerOnSelect = (
 		nextVariation = props.defaultVariation

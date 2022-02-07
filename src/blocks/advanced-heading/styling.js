@@ -130,7 +130,7 @@ function styling( props ) {
 		),
 	};
 
-	const base_selector = `.block-editor-page #wpwrap .uagb-block-${ props.clientId.substr(
+	const base_selector = `.editor-styles-wrapper .uagb-block-${ props.clientId.substr(
 		0,
 		8
 	) }`;

@@ -4,6 +4,9 @@
 import styling from './styling';
 import React, { useEffect, lazy, Suspense } from 'react';
 import lazyLoader from '@Controls/lazy-loader';
+import { useDeviceType } from '@Controls/getPreviewType';
+import addBlockEditorDynamicStyles from '@Controls/addBlockEditorDynamicStyles';
+
 const Render = lazy( () =>
 	import( /* webpackChunkName: "chunks/tabs/render" */ './render' )
 );
@@ -16,14 +19,11 @@ import { compose } from '@wordpress/compose';
 import { withDispatch, dispatch, select } from '@wordpress/data';
 
 const UAGBTabsEdit = ( props ) => {
+
+	const deviceType = useDeviceType();
+
 	useEffect( () => {
 		props.setAttributes( { block_id: props.clientId.substr( 0, 8 ) } );
-		const $style = document.createElement( 'style' );
-		$style.setAttribute(
-			'id',
-			'uagb-style-tab-' + props.clientId.substr( 0, 8 )
-		);
-		document.head.appendChild( $style );
 
 		const { attributes, setAttributes } = props;
 		const {
@@ -92,16 +92,23 @@ const UAGBTabsEdit = ( props ) => {
 	};
 
 	useEffect( () => {
-		const element = document.getElementById(
-			'uagb-style-tab-' + props.clientId.substr( 0, 8 )
-		);
+		
+		// Replacement for componentDidUpdate.
+		const blockStyling = styling( props );
 
-		if ( null !== element && undefined !== element ) {
-			element.innerHTML = styling( props );
-		}
+		addBlockEditorDynamicStyles( 'uagb-style-tab-' + props.clientId.substr( 0, 8 ), blockStyling );
+
 		updateTabTitle();
 		props.resetTabOrder();
 	}, [ props ] );
+
+	useEffect( () => {
+		// Replacement for componentDidUpdate.
+		const blockStyling = styling( props );
+
+		addBlockEditorDynamicStyles( 'uagb-style-tab-' + props.clientId.substr( 0, 8 ), blockStyling );
+		
+	}, [ deviceType ] );
 
 	return (
 		<Suspense fallback={ lazyLoader() }>

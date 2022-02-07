@@ -405,7 +405,7 @@ function RestMenuStyle( props ) {
 	};
 
 	let stylingCss = '';
-	const id = `#wpwrap .uagb-block-${ props.clientId.substr( 0, 8 ) }`;
+	const id = `.editor-styles-wrapper .uagb-block-${ props.clientId.substr( 0, 8 ) }`;
 
 	stylingCss = generateCSS( selectors, id );
 

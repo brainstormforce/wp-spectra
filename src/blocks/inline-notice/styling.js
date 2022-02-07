@@ -194,7 +194,7 @@ function styling( props ) {
 		selectors[
 			' .rich-text.block-editor-rich-text__editable.uagb-notice-text'
 		][ 'border-bottom-right-radius' ] = '3px';
-		
+
 	} else if ( 'simple' === layout ) {
 		selectors[
 			' .rich-text.block-editor-rich-text__editable.uagb-notice-title'
@@ -249,7 +249,7 @@ function styling( props ) {
 				descLineHeightType
 			),
 		},
-		' .rich-text.block-editor-rich-text__editable.uagb-notice-text': { 
+		' .rich-text.block-editor-rich-text__editable.uagb-notice-text': {
 			'padding-left': generateCSSUnit(
 				contentLeftPaddingMobile,
 				mobileContentPaddingUnit
@@ -297,7 +297,7 @@ function styling( props ) {
 			),
 		},
 
-		' .rich-text.block-editor-rich-text__editable.uagb-notice-text p': { 
+		' .rich-text.block-editor-rich-text__editable.uagb-notice-text p': {
 			'font-size': generateCSSUnit(
 				descFontSizeTablet,
 				descFontSizeType
@@ -308,7 +308,7 @@ function styling( props ) {
 			),
 		},
 
-		' .rich-text.block-editor-rich-text__editable.uagb-notice-text': { 
+		' .rich-text.block-editor-rich-text__editable.uagb-notice-text': {
 			'padding-left': generateCSSUnit(
 				contentLeftPaddingTablet,
 				tabletContentPaddingUnit
@@ -328,7 +328,7 @@ function styling( props ) {
 		},
 	};
 
-	const baseSelector = `.block-editor-page #wpwrap .uagb-block-${ block_id }`;
+	const baseSelector = `.editor-styles-wrapper .uagb-block-${ block_id }`;
 
 	let stylingCss = generateCSS( selectors, baseSelector );
 

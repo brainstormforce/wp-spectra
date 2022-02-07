@@ -6,6 +6,8 @@
 import styling from './styling';
 import React, { useEffect, lazy, Suspense } from 'react';
 import lazyLoader from '@Controls/lazy-loader';
+import { useDeviceType } from '@Controls/getPreviewType';
+import addBlockEditorDynamicStyles from '@Controls/addBlockEditorDynamicStyles';
 const Settings = lazy( () =>
 	import( /* webpackChunkName: "chunks/star-rating/settings" */ './settings' )
 );
@@ -13,31 +15,28 @@ const Render = lazy( () =>
 	import( /* webpackChunkName: "chunks/star-rating/render" */ './render' )
 );
 const UAGStarRating = ( props ) => {
+
+	const deviceType = useDeviceType();
+
 	useEffect( () => {
-		// Replacement for componentDidMount.
 
 		// Assigning block_id in the attribute.
 		props.setAttributes( { block_id: props.clientId.substr( 0, 8 ) } );
 
-		// Pushing Style tag for this block css.
-		const style = document.createElement( 'style' );
-		style.setAttribute(
-			'id',
-			'uagb-star-rating-style-' + props.clientId.substr( 0, 8 )
-		);
-		document.head.appendChild( style );
 	}, [] );
 
 	useEffect( () => {
-		// Replacement for componentDidUpdate.
-		const element = document.getElementById(
-			'uagb-star-rating-style-' + props.clientId.substr( 0, 8 )
-		);
+		const blockStyling = styling( props );
 
-		if ( null !== element && undefined !== element ) {
-			element.innerHTML = styling( props );
-		}
+		addBlockEditorDynamicStyles( 'uagb-star-rating-style-' + props.clientId.substr( 0, 8 ), blockStyling );
 	}, [ props ] );
+
+	useEffect( () => {
+		// Replacement for componentDidUpdate.
+		const blockStyling = styling( props );
+
+		addBlockEditorDynamicStyles( 'uagb-star-rating-style-' + props.clientId.substr( 0, 8 ), blockStyling );
+	}, [deviceType] );
 
 	return (
 		<Suspense fallback={ lazyLoader() }>

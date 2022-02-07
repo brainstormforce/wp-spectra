@@ -6,6 +6,8 @@ import styling from './styling';
 import jQuery from 'jquery';
 import React, { lazy, useEffect, Suspense } from 'react';
 import lazyLoader from '@Controls/lazy-loader';
+import { useDeviceType } from '@Controls/getPreviewType';
+import addBlockEditorDynamicStyles from '@Controls/addBlockEditorDynamicStyles';
 
 const Settings = lazy( () =>
 	import(
@@ -22,6 +24,9 @@ import { withSelect } from '@wordpress/data';
 import { compose } from '@wordpress/compose';
 
 const UAGBTableOfContentsEdit = ( props ) => {
+
+	const deviceType = useDeviceType();
+
 	useEffect( () => {
 		// Assigning block_id in the attribute.
 		props.setAttributes( { block_id: props.clientId.substr( 0, 8 ) } );
@@ -43,12 +48,6 @@ const UAGBTableOfContentsEdit = ( props ) => {
 		}
 
 		// Pushing Style tag for this block css.
-		const $style = document.createElement( 'style' );
-		$style.setAttribute(
-			'id',
-			'uagb-style-toc-' + props.clientId.substr( 0, 8 )
-		);
-		document.head.appendChild( $style );
 		if ( props.attributes.heading && '' !== props.attributes.heading ) {
 			props.setAttributes( { headingTitle: props.attributes.heading } );
 		}
@@ -200,14 +199,20 @@ const UAGBTableOfContentsEdit = ( props ) => {
 	}, [] );
 
 	useEffect( () => {
-		const element = document.getElementById(
-			'uagb-style-toc-' + props.clientId.substr( 0, 8 )
-		);
+		// Replacement for componentDidUpdate.
+		const blockStyling = styling( props );
 
-		if ( null !== element && undefined !== element ) {
-			element.innerHTML = styling( props );
-		}
+		addBlockEditorDynamicStyles( 'uagb-style-toc-' + props.clientId.substr( 0, 8 ), blockStyling );
+		
 	}, [ props ] );
+
+	useEffect( () => {
+		// Replacement for componentDidUpdate.
+		const blockStyling = styling( props );
+
+		addBlockEditorDynamicStyles( 'uagb-style-toc-' + props.clientId.substr( 0, 8 ), blockStyling );
+		
+	}, [ deviceType ] );
 
 	const { scrollToTop } = props.attributes;
 

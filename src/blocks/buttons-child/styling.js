@@ -156,7 +156,7 @@ function styling( props ) {
 		'height': generateCSSUnit( sizeTablet, sizeType ),
 	};
 
-	const id = `.uagb-block-${ props.clientId.substr( 0, 8 ) }`;
+	const id = `.editor-styles-wrapper .uagb-block-${ props.clientId.substr( 0, 8 ) }`;
 	let stylingCss = generateCSS( selectors, id );
 
 	stylingCss += generateCSS(

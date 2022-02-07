@@ -5,7 +5,14 @@ document.addEventListener( 'UAGTimelineEditor', uagbTimelineInit );
 // Callback function for all event listeners.
 function uagbTimelineInit() {
 
-	const timeline = document.querySelectorAll( '.uagb-timeline' );
+	const iframeEl = document.querySelector( `iframe[name='editor-canvas']` );
+	let mainDiv;
+	if( iframeEl ){
+		mainDiv = iframeEl.contentDocument.querySelectorAll( '.uagb-timeline' );
+	} else {
+		mainDiv = document.querySelectorAll( '.uagb-timeline' );
+	}
+	const timeline = mainDiv;
 	if ( timeline.length === 0 ) {
 		return;
 	}

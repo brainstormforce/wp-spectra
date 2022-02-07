@@ -555,7 +555,7 @@ function contentTimelineStyle( props ) {
 	};
 
 	let stylingCss = '';
-	const id = `.uagb-block-${ props.clientId }.uagb-timeline__outer-wrap`;
+	const id = `.editor-styles-wrapper .uagb-block-${ props.clientId }.uagb-timeline__outer-wrap`;
 
 	stylingCss = generateCSS( selectors, id );
 

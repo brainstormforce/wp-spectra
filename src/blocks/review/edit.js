@@ -8,6 +8,8 @@ import React, { lazy, useEffect, Suspense } from 'react';
 import lazyLoader from '@Controls/lazy-loader';
 import { withState, compose } from '@wordpress/compose';
 import { withSelect } from '@wordpress/data';
+import { useDeviceType } from '@Controls/getPreviewType';
+import addBlockEditorDynamicStyles from '@Controls/addBlockEditorDynamicStyles';
 const Settings = lazy( () =>
 	import( /* webpackChunkName: "chunks/review/settings" */ './settings' )
 );
@@ -17,6 +19,9 @@ const Render = lazy( () =>
 let prevState;
 
 const ReviewComponent = ( props ) => {
+
+	const deviceType = useDeviceType();
+
 	useEffect( () => {
 		// Assigning block_id in the attribute.
 		props.setAttributes( { block_id: props.clientId.substr( 0, 8 ) } );
@@ -25,13 +30,6 @@ const ReviewComponent = ( props ) => {
 			schema: JSON.stringify( props.schemaJsonData ),
 		} );
 
-		// Pushing Style tag for this block css.
-		const $style = document.createElement( 'style' );
-		$style.setAttribute(
-			'id',
-			'uagb-ratings-style-' + props.clientId.substr( 0, 8 )
-		);
-		document.head.appendChild( $style );
 		prevState = props.schemaJsonData;
 		const { attributes, setAttributes } = props;
 		const {
@@ -76,13 +74,10 @@ const ReviewComponent = ( props ) => {
 			prevState = props.schemaJsonData;
 		}
 
-		const element = document.getElementById(
-			'uagb-ratings-style-' + props.clientId.substr( 0, 8 )
-		);
+		const blockStyling = styling( props );
 
-		if ( null !== element && undefined !== element ) {
-			element.innerHTML = styling( props );
-		}
+		addBlockEditorDynamicStyles( 'uagb-ratings-style-' + props.clientId.substr( 0, 8 ), blockStyling );
+
 		const ratingLinkWrapper = document.querySelector( '.uagb-rating-link-wrapper' );
 		if( ratingLinkWrapper !== null ){
 			ratingLinkWrapper.addEventListener( 'click', function ( event ) {
@@ -90,6 +85,13 @@ const ReviewComponent = ( props ) => {
 			} );
 		}
 	}, [ props ] );
+
+	useEffect( () => {
+		// Replacement for componentDidUpdate.
+		const blockStyling = styling( props );
+
+		addBlockEditorDynamicStyles( 'uagb-ratings-style-' + props.clientId.substr( 0, 8 ), blockStyling );
+	}, [deviceType] );
 
 	// Setup the attributes
 	const { attributes, setAttributes } = props;

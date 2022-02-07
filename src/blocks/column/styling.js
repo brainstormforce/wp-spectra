@@ -92,6 +92,7 @@ function styling( props ) {
 
 	const selectors = {
 		':before': inlineStyles( props ),
+		':after': inlineStyles( props ),
 		'': style,
 	};
 
@@ -189,7 +190,7 @@ function styling( props ) {
 
 	let stylingCss = '';
 
-	const id = `#wpwrap .edit-post-visual-editor #block-${ props.clientId }`;
+	const id = `#block-${ props.clientId }`;
 
 	stylingCss = generateCSS( selectors, id );
 

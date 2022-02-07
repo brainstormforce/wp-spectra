@@ -5,6 +5,8 @@
 import styling from './styling';
 import React, { useEffect, lazy, Suspense } from 'react';
 import lazyLoader from '@Controls/lazy-loader';
+import { useDeviceType } from '@Controls/getPreviewType';
+import addBlockEditorDynamicStyles from '@Controls/addBlockEditorDynamicStyles';
 
 const Settings = lazy( () =>
 	import( /* webpackChunkName: "chunks/faq/settings" */ './settings' )
@@ -19,6 +21,9 @@ import { select, withSelect } from '@wordpress/data';
 let prevState;
 
 const FaqComponent = ( props ) => {
+
+	const deviceType = useDeviceType();
+
 	useEffect( () => {
 		// Replacement for componentDidMount.
 
@@ -61,14 +66,7 @@ const FaqComponent = ( props ) => {
 		setAttributes( { block_id: props.clientId.substr( 0, 8 ) } );
 
 		setAttributes( { schema: JSON.stringify( props.schemaJsonData ) } );
-		// Pushing Style tag for this block css.
-		const $style = document.createElement( 'style' );
-		$style.setAttribute(
-			'id',
-			'uagb-style-faq-' + props.clientId.substr( 0, 8 )
-		);
-		document.head.appendChild( $style );
-
+		
 		if (
 			10 === questionBottomPaddingDesktop &&
 			10 !== vquestionPaddingDesktop
@@ -191,16 +189,11 @@ const FaqComponent = ( props ) => {
 	}, [] );
 
 	useEffect( () => {
-		// Replacement for componentDidUpdate.
+		
+		const blockStyling = styling( props );
 
-		const element = document.getElementById(
-			'uagb-style-faq-' + props.clientId.substr( 0, 8 )
-		);
-
-		if ( null !== element && undefined !== element ) {
-			element.innerHTML = styling( props );
-		}
-
+		addBlockEditorDynamicStyles( 'uagb-style-faq-' + props.clientId.substr( 0, 8 ), blockStyling );
+		
 		const getChildBlocks = select( 'core/block-editor' ).getBlocks(
 			props.clientId
 		);
@@ -221,6 +214,13 @@ const FaqComponent = ( props ) => {
 		}
 	}, [ props ] );
 
+	useEffect( () => {
+		// Replacement for componentDidUpdate.
+		const blockStyling = styling( props );
+
+		addBlockEditorDynamicStyles( 'uagb-style-faq-' + props.clientId.substr( 0, 8 ), blockStyling );
+	}, [deviceType] );
+	
 	return (
 		<Suspense fallback={ lazyLoader() }>
 			<Settings parentProps={ props } />

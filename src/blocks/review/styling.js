@@ -295,10 +295,7 @@ function styling( props ) {
 		},
 	};
 
-	const baseSelector = `.block-editor-page #wpwrap .uagb-block-${ block_id.substr(
-		0,
-		8
-	) }`;
+	const baseSelector = `.editor-styles-wrapper .uagb-block-${ block_id.substr( 0 , 8 ) }`;
 
 	let stylingCss = generateCSS( selectors, baseSelector );
 

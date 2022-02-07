@@ -188,7 +188,7 @@ function styling( props ) {
 	}
 
 	let styling_css = ''
-	const id = `.uagb-block-${ props.clientId.substr( 0, 8 ) }`
+	const id = `.editor-styles-wrapper .uagb-block-${ props.clientId.substr( 0, 8 ) }`
 
 	styling_css = generateCSS( selectors, id )
 

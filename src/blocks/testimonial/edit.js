@@ -10,12 +10,14 @@ const Settings = lazy( () =>
 const Render = lazy( () =>
 	import( /* webpackChunkName: "chunks/testimonial/render" */ './render' )
 );
-
+import { useDeviceType } from '@Controls/getPreviewType';
+import addBlockEditorDynamicStyles from '@Controls/addBlockEditorDynamicStyles';
 import hexToRGBA from '@Controls/hexToRgba';
 
 import maybeGetColorForVariable from '@Controls/maybeGetColorForVariable';
 
 const UAGBtestimonial = ( props ) => {
+	const deviceType = useDeviceType();
 	useEffect( () => {
 
 		const { setAttributes, attributes } = props;
@@ -25,13 +27,6 @@ const UAGBtestimonial = ( props ) => {
 
 		setAttributes( { classMigrate: true } );
 
-		// Pushing Style tag for this block css.
-		const $style = document.createElement( 'style' );
-		$style.setAttribute(
-			'id',
-			'uagb-testinomial-style-' + props.clientId.substr( 0, 8 )
-		);
-		document.head.appendChild( $style );
 		const {
 			imgVrPadding,
 			imgHrPadding,
@@ -88,15 +83,17 @@ const UAGBtestimonial = ( props ) => {
 	}, [] );
 
 	useEffect( () => {
-		const element = document.getElementById(
-			'uagb-testinomial-style-' + props.clientId.substr( 0, 8 )
-		);
+		const blockStyling = TestimonialStyle( props );
 
-		if ( null !== element && undefined !== element ) {
-			element.innerHTML = TestimonialStyle( props );
-		}
+		addBlockEditorDynamicStyles( 'uagb-testinomial-style-' + props.clientId.substr( 0, 8 ), blockStyling );
 	}, [ props ] );
 
+	useEffect( () => {
+		// Replacement for componentDidUpdate.
+		const blockStyling = TestimonialStyle( props );
+
+		addBlockEditorDynamicStyles( 'uagb-testinomial-style-' + props.clientId.substr( 0, 8 ), blockStyling );
+	}, [deviceType] );
 	return (
 		<Suspense fallback={ lazyLoader() }>
 			<Settings parentProps={ props } />
