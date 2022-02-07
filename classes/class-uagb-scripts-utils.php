@@ -145,6 +145,23 @@ final class UAGB_Scripts_Utils {
 	}
 
 	/**
+	 * Get folder name by post id.
+	 *
+	 * @param int $post_id post id.
+	 * @since x.x.x
+	 */
+	public static function get_asset_folder_name( $post_id ) {
+
+		$folder_name = 0;
+
+		if ( ! empty( $post_id ) ) {
+			$folder_name = absint( round( $post_id, -3 ) );
+		}
+
+		return $folder_name;
+	}
+
+	/**
 	 * Returns an array of paths for the CSS and JS assets
 	 * of the current post.
 	 *
@@ -156,6 +173,7 @@ final class UAGB_Scripts_Utils {
 	public static function get_asset_info( $type, $post_id ) {
 
 		$uploads_dir = UAGB_Helper::get_upload_dir();
+		$folder_name = self::get_asset_folder_name( $post_id );
 		$file_name   = get_post_meta( $post_id, '_uag_' . $type . '_file_name', true );
 		$path        = $type;
 		$url         = $type . '_url';
@@ -166,8 +184,8 @@ final class UAGB_Scripts_Utils {
 		);
 
 		if ( ! empty( $file_name ) ) {
-			$info[ $path ] = $uploads_dir['path'] . 'assets/' . $type . '/' . $file_name;
-			$info[ $url ]  = $uploads_dir['url'] . 'assets/' . $type . '/' . $file_name;
+			$info[ $path ] = $uploads_dir['path'] . 'assets/' . $folder_name . '/' . $file_name;
+			$info[ $url ]  = $uploads_dir['url'] . 'assets/' . $folder_name . '/' . $file_name;
 		}
 
 		return $info;

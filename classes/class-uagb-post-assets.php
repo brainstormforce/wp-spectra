@@ -961,8 +961,9 @@ class UAGB_Post_Assets {
 			$file_name = $old_file_name;
 		}
 
-		$base_file_path = $uploads_dir['path'] . 'assets/' . $type . '/';
-		$file_path      = $uploads_dir['path'] . 'assets/' . $type . '/' . $file_name;
+		$folder_name    = UAGB_Scripts_Utils::get_asset_folder_name( $this->post_id );
+		$base_file_path = $uploads_dir['path'] . 'assets/' . $folder_name . '/';
+		$file_path      = $uploads_dir['path'] . 'assets/' . $folder_name . '/' . $file_name;
 
 		$result = false;
 

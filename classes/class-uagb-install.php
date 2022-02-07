@@ -57,12 +57,6 @@ class UAGB_Install {
 				'content' => '',
 			),
 			array(
-				'base' => UAGB_UPLOAD_DIR . 'assets/js',
-			),
-			array(
-				'base' => UAGB_UPLOAD_DIR . 'assets/css',
-			),
-			array(
 				'base' => UAGB_UPLOAD_DIR . 'assets/fonts',
 			),
 		);

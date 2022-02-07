@@ -646,13 +646,10 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 			// Build the paths.
 			$base_path = self::get_uag_upload_dir_path();
 
-			$paths_to_delete = array(
-				$base_path . 'assets/fonts',
-				$base_path . 'assets/css',
-				$base_path . 'assets/js',
-			);
+			// Get all files.
+			$paths = glob( $base_path . 'assets/*' );
 
-			foreach ( $paths_to_delete as $path ) {
+			foreach ( $paths as $path ) {
 
 				// Check the dir if it exists or not.
 				if ( file_exists( $path ) ) {
