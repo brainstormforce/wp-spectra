@@ -12,6 +12,7 @@ registerBlockType( 'uagb/buttons', { title: __( 'Multi Buttons', 'ultimate-addon
 registerBlockType( 'uagb/call-to-action', { title: __( 'Call To Action', 'ultimate-addons-for-gutenberg' ) } );
 registerBlockType( 'uagb/cf7-styler', { title: __( 'Contact Form 7 Designer', 'ultimate-addons-for-gutenberg' ) } );
 registerBlockType( 'uagb/columns', { title: __( 'Advanced Columns', 'ultimate-addons-for-gutenberg' ) } );
+registerBlockType( 'uagb/container', { title: __( 'Container', 'ultimate-addons-for-gutenberg' ) } );
 registerBlockType( 'uagb/faq', { title: __( 'FAQ', 'ultimate-addons-for-gutenberg' ) } );
 registerBlockType( 'uagb/forms', { title: __( 'Form', 'ultimate-addons-for-gutenberg' ) } );
 registerBlockType( 'uagb/gf-styler', { title: __( 'Gravity Form Designer', 'ultimate-addons-for-gutenberg' ) } );

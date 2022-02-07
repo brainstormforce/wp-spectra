@@ -791,5 +791,77 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 
 			return $desktop . $tab_styling_css . $mob_styling_css;
 		}
+		/**
+		 * Background Control CSS Generator Function.
+		 *
+		 * @param  array $bg_obj   Color code in HEX.
+		 *
+		 * @return array         Color code in HEX.
+		 */
+		public static function uag_get_background_obj( $bg_obj ) {
+
+			$gen_bg_css = array();
+
+			$bg_type        = isset( $bg_obj['backgroundType'] ) ? $bg_obj['backgroundType'] : '';
+			$bg_img         = isset( $bg_obj['backgroundImage'] ) ? $bg_obj['backgroundImage'] : '';
+			$bg_color       = isset( $bg_obj['backgroundColor'] ) ? $bg_obj['backgroundColor'] : '';
+			$gradient_value = isset( $bg_obj['gradientValue'] ) ? $bg_obj['gradientValue'] : '';
+			$repeat         = isset( $bg_obj['backgroundRepeat'] ) ? $bg_obj['backgroundRepeat'] : '';
+			$position       = isset( $bg_obj['backgroundPosition'] ) ? $bg_obj['backgroundPosition'] : '';
+			$size           = isset( $bg_obj['backgroundSize'] ) ? $bg_obj['backgroundSize'] : '';
+			$attachment     = isset( $bg_obj['backgroundAttachment'] ) ? $bg_obj['backgroundAttachment'] : '';
+
+			if ( '' !== $bg_type ) {
+				switch ( $bg_type ) {
+					case 'color':
+						if ( '' !== $bg_img && '' !== $bg_color ) {
+							$gen_bg_css['background-image'] = 'linear-gradient(to right, ' . $bg_color . ', ' . $bg_color . '), url(' . $bg_img . ');';
+						} elseif ( '' === $bg_img ) {
+							$gen_bg_css['background-color'] = $bg_color . ';';
+						}
+						break;
+
+					case 'image':
+						if ( '' !== $bg_img && '' !== $bg_color && ( ! is_numeric( strpos( $bg_color, 'linear-gradient' ) ) && ! is_numeric( strpos( $bg_color, 'radial-gradient' ) ) ) ) {
+							$gen_bg_css['background-image'] = 'linear-gradient(to right, ' . $bg_color . ', ' . $bg_color . '), url(' . $bg_img . ');';
+						}
+						if ( '' === $bg_color || is_numeric( strpos( $bg_color, 'linear-gradient' ) ) || is_numeric( strpos( $bg_color, 'radial-gradient' ) ) && '' !== $bg_img ) {
+							$gen_bg_css['background-image'] = 'url(' . $bg_img . ');';
+						}
+						break;
+
+					case 'gradient':
+						if ( isset( $gradient_value ) ) {
+							$gen_bg_css['background-image'] = $gradient_value . ';';
+						}
+						break;
+
+					default:
+						break;
+				}
+			} elseif ( '' !== $bg_color ) {
+				$gen_bg_css['background-color'] = $bg_color . ';';
+			}
+
+			if ( '' !== $bg_img ) {
+				if ( isset( $repeat ) ) {
+					$gen_bg_css['background-repeat'] = esc_attr( $repeat );
+				}
+
+				if ( isset( $position ) ) {
+					$gen_bg_css['background-position'] = esc_attr( $position );
+				}
+
+				if ( isset( $size ) ) {
+					$gen_bg_css['background-size'] = esc_attr( $size );
+				}
+
+				if ( isset( $battachment ) ) {
+					$gen_bg_css['background-attachment'] = esc_attr( $battachment );
+				}
+			}
+
+			return $gen_bg_css;
+		}
 	}
 }

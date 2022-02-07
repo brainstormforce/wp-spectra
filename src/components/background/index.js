@@ -318,64 +318,68 @@ const Background = ( props ) => {
 									] }
 								/>
 							</div>
-							<div className="uag-background-image-overlay-type">
-								<SelectControl
-									label={ __(
-										'Overlay Type',
-										'ultimate-addons-for-gutenberg'
+							{ overlayType &&
+								<>
+									<div className="uag-background-image-overlay-type">
+										<SelectControl
+											label={ __(
+												'Overlay Type',
+												'ultimate-addons-for-gutenberg'
+											) }
+											value={ overlayType.value }
+											onChange={ ( value ) =>
+												setAttributes( {
+													[ overlayType.label ]: value,
+												} )
+											}
+											options={ [
+												{
+													value: 'color',
+													label: __(
+														'Color',
+														'ultimate-addons-for-gutenberg'
+													),
+												},
+												{
+													value: 'gradient',
+													label: __(
+														'Gradient',
+														'ultimate-addons-for-gutenberg'
+													),
+												},
+											] }
+										/>
+									</div>
+									{ 'color' === overlayType.value && (
+										<div className="uag-background-image-overlay-color">
+											<AdvancedPopColorControl
+												label={ __(
+													'Image Overlay Color',
+													'ultimate-addons-for-gutenberg'
+												) }
+												colorValue={
+													backgroundImageColor.value
+												}
+												onColorChange={ ( value ) =>
+													setAttributes( {
+														[ backgroundImageColor.label ]: value,
+													} )
+												}
+											/>
+										</div>
 									) }
-									value={ overlayType.value }
-									onChange={ ( value ) =>
-										setAttributes( {
-											[ overlayType.label ]: value,
-										} )
-									}
-									options={ [
-										{
-											value: 'color',
-											label: __(
-												'Color',
-												'ultimate-addons-for-gutenberg'
-											),
-										},
-										{
-											value: 'gradient',
-											label: __(
-												'Gradient',
-												'ultimate-addons-for-gutenberg'
-											),
-										},
-									] }
-								/>
-							</div>
-							{ 'color' === overlayType.value && (
-								<div className="uag-background-image-overlay-color">
-									<AdvancedPopColorControl
-										label={ __(
-											'Image Overlay Color',
-											'ultimate-addons-for-gutenberg'
-										) }
-										colorValue={
-											backgroundImageColor.value
-										}
-										onColorChange={ ( value ) =>
-											setAttributes( {
-												[ backgroundImageColor.label ]: value,
-											} )
-										}
-									/>
-								</div>
-							) }
-							{ 'gradient' === overlayType.value && (
-								<div className="uag-background-image-overlay-gradient">
-									<GradientSettings
-										backgroundGradient={
-											props.backgroundGradient
-										}
-										setAttributes={ setAttributes }
-									/>
-								</div>
-							) }
+									{ 'gradient' === overlayType.value && (
+										<div className="uag-background-image-overlay-gradient">
+											<GradientSettings
+												backgroundGradient={
+													props.backgroundGradient
+												}
+												setAttributes={ setAttributes }
+											/>
+										</div>
+									) }
+								</>
+							}
 						</>
 					) }
 				</div>

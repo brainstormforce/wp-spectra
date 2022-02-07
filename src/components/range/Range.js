@@ -118,6 +118,7 @@ const Range = ( props ) => {
 						__( '%s units', 'ultimate-addons-for-gutenberg' ),
 						key.name
 					) }
+					key={key.name}
 				>
 					<Button
 						key={ key.unitValue }

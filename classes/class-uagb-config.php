@@ -165,6 +165,9 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 					'uagb/table-of-contents'      => array(
 						'name' => 'table-of-contents',
 					),
+					'uagb/container'      => array(
+						'name' => 'container',
+					),
 					'uagb/advanced-heading'       => array(
 						'name' => 'advanced-heading',
 					),
