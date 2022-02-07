@@ -1,4 +1,14 @@
 function addBlockEditorDynamicStyles ( styleTagId, styling ) {
+
+
+		// Slick CSS.
+		const slickStaticCSSStylesTag = document.getElementById( 'uagb-slick-css-css' );
+		let cloneSlickStaticCSSStylesTag = false;
+	
+		if ( slickStaticCSSStylesTag ) {
+	
+			cloneSlickStaticCSSStylesTag = slickStaticCSSStylesTag.cloneNode( true );
+		}
 	
     	// Desktop.
 		let element = document.getElementById(
@@ -44,6 +54,11 @@ function addBlockEditorDynamicStyles ( styleTagId, styling ) {
 					
 				iframeDocument.head.appendChild( $style );
 			}
+
+			// Slick CSS.
+            if ( cloneSlickStaticCSSStylesTag ) {
+                iframeDocument.head.appendChild( cloneSlickStaticCSSStylesTag );
+            }
 
 			element = iframeDocument.getElementById(
 				styleTagId
