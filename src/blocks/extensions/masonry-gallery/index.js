@@ -7,6 +7,7 @@ import { addFilter } from "@wordpress/hooks";
 const { enableMasonryGallery } = uagb_blocks_info;
 import generateCSSUnit from "@Controls/generateCSSUnit"
 import generateCSS from "@Controls/generateCSS"
+import { select } from '@wordpress/data';
 
 const MasonryGallery = createHigherOrderComponent((BlockEdit) => {
 
@@ -21,12 +22,27 @@ const MasonryGallery = createHigherOrderComponent((BlockEdit) => {
 		const applyCSS = () => {
 			const colCount = ( attributes.columns ) ? attributes.columns : 3;
 			const selectors = {
+				/* Start Backword */
 				".wp-block-gallery ul.blocks-gallery-grid" : {
 					"column-gap" : generateCSSUnit( attributes.masonryGutter, 'px' ),
 					"column-count" : colCount
 				},
 				".wp-block-gallery ul.blocks-gallery-grid li.blocks-gallery-item" : {
 					"margin-bottom" : generateCSSUnit( attributes.masonryGutter, 'px' )
+				},
+				/* End Backword */
+				'.wp-block-gallery.blocks-gallery-grid.has-nested-images.uag-masonry.blocks-gallery-grid': {
+					'column-gap': generateCSSUnit(
+						attributes.masonryGutter,
+						'px'
+					),
+					'column-count': colCount,
+				},
+				'.wp-block-gallery.blocks-gallery-grid.has-nested-images.uag-masonry.blocks-gallery-grid figure.wp-block-image:not(#individual-image)': {
+					'margin-bottom': generateCSSUnit(
+						attributes.masonryGutter,
+						'px'
+					),
 				},
 			}
 			const styling = generateCSS( selectors, '#block-' + props.clientId );
@@ -72,11 +88,11 @@ const MasonryGallery = createHigherOrderComponent((BlockEdit) => {
 		}
 
 		applyCSS();
-		
+		const imagesID = ( undefined !== attributes.ids ) ? attributes.ids.length : select( 'core/block-editor' ).getBlocks( props.clientId ).length;
 		return (
 			<Fragment>
 				<BlockEdit {...props} />
-				{isSelected && blockType.includes(blockName) && attributes.ids && attributes.ids.length !== 0 &&
+				{isSelected && blockType.includes(blockName) && ( imagesID.length !== 0 ) &&
 					<InspectorControls>
 						<PanelBody title={ __( "Masonry Gallery", 'ultimate-addons-for-gutenberg' ) } initialOpen={ false }>
 							<ToggleControl
