@@ -7,7 +7,7 @@
 # checkin and prevent conversion to CRLF when they are checked out
 # (this is required in order to prevent newline related issues like,
 # for example, after the build script is run)
-.*		text eol=lf
+# .*		text eol=lf
 *.css	text eol=lf
 *.html	text eol=lf
 *.js	text eol=lf
@@ -31,8 +31,17 @@
 *.gif binary
 *.jar binary
 *.jpg binary
+*.jpeg binary
 *.png binary
 *.ttf binary
+*.gif binary
+*.ico binary
+*.mov binary
+*.mp4 binary
+*.mp3 binary
+*.zip binary
+*.7z binary
+*.pyc binary
 
 # Ignore Git Commands
 package-lock.json 	-diff
