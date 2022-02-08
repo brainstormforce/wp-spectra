@@ -108,7 +108,7 @@ function FontFamilyControl( props ) {
 			...provided,
 			color: '#000',
 			top: '50%',
-			transform: 'translateY(-61%);',
+			transform: 'translateY(-50%);',
 		} ),
 		indicatorSeparator: ( provided ) => ( {
 			...provided,
