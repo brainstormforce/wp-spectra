@@ -17,14 +17,14 @@ const MasonryGallery = createHigherOrderComponent( ( BlockEdit ) => {
 		const { attributes, setAttributes, isSelected } = props;
 		const blockName = props.name;
 		const blockType = [ 'core/gallery' ];
-	
+
 		useLayoutEffect( () => {
 			styles.use();
 			return () => {
 				styles.unuse();
 			};
 		}, [] );
-		
+
 		/**
 		 * Generates CSS for the given values for editor.
 		 */
@@ -116,7 +116,7 @@ const MasonryGallery = createHigherOrderComponent( ( BlockEdit ) => {
 		applyCSS();
 
 		const imagesID = ( undefined !== attributes.ids ) ? attributes.ids.length : select( 'core/block-editor' ).getBlocks( props.clientId ).length;
-		
+
 		return (
 			<>
 				<BlockEdit { ...props } />
