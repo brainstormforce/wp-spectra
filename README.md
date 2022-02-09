@@ -4,8 +4,13 @@
 **Tags:** gutenberg, blocks, gutenberg blocks, editor, block  
 **Requires at least:** 4.7  
 **Requires PHP:** 5.6  
+<<<<<<< HEAD
 **Tested up to:** 5.8  
 **Stable tag:** 2.0.0-beta.1  
+=======
+**Tested up to:** 5.9  
+**Stable tag:** 1.25.3  
+>>>>>>> 9d7c6fb93f9ecd061409367de4db7aaa0a1df560
 **License:** GPLv2 or later  
 **License URI:** https://www.gnu.org/licenses/gpl-2.0.html  
 
@@ -169,12 +174,18 @@ The awesome React FontIconPicker is developed by [Alessandro Benoit](http://code
 
 ## Changelog ##
 
+<<<<<<< HEAD
 ### 2.0.0-beta.1 - THURSDAY, 30TH SEPTEMBER 2021 ###
 * New: Redesigned UI/UX controls of UAG blocks.
 * New: Introduced new, beautiful & fast UAG admin dashboard powered by React.
 * Improvement: Display Condition – an UAG extensions will be enabled for Core Gutenberg blocks & UAG blocks by default, Also added a filter to enable UAG extension for third-party blocks.
 * Improvement: Refactored the UAG blocks' code & improved editor performance drastically.
 * Improvement: Typography control - Added text-transform, text-decoration and font-style options.
+=======
+### 1.25.3 - THURSDAY, 27TH JANUARY 2022 ###
+* Improvement: Added compatibility with WordPress v5.9.
+* Fix: Masonry option - Not visible for core/gallery.
+>>>>>>> 9d7c6fb93f9ecd061409367de4db7aaa0a1df560
 
 ### 1.25.2 - TUESDAY, 30TH NOVEMBER 2021 ###
 * Fix: Block condition - Conflicting with plugin using REST API block preview.
