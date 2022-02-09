@@ -54,7 +54,6 @@ if ( ! class_exists( 'UAGB_Rest_API' ) ) {
 		 * @since 1.23.0
 		 */
 		public function delete_page_assets( $post_id ) {
-			error_log('in delete_page_assets ');
 
 			if ( 'enabled' === UAGB_Helper::$file_generation ) {
 
