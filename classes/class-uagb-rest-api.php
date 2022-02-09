@@ -46,9 +46,6 @@ if ( ! class_exists( 'UAGB_Rest_API' ) ) {
 			// We have added this action here to support both the ways of post updations, Rest API & Normal.
 			add_action( 'save_post', array( $this, 'delete_page_assets' ), 10, 1 );
 
-			add_action( 'ast_after_widget_save', function() {
-				error_log('in ast_after_widget_save ');
-			});
 		}
 		/**
 		 * This function deletes the Page assets from the Page Meta Key.
