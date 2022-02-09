@@ -15,7 +15,7 @@ jobs:
 
     strategy:
       matrix:
-        node: ['14.17']
+        node: [ 14.17 ]
 
     steps:
       - name: Checkout
@@ -33,6 +33,9 @@ jobs:
             path: ~/.npm
             key: ${{ runner.os }}-node-${{ matrix.node }}-npm-cache-${{ hashFiles('**/package-lock.json') }}
 
+      - name: Install npm dependencies
+        run: npm install
+
       - name: Setup PHP
         uses: shivammathur/setup-php@v2
         with:
@@ -40,8 +43,8 @@ jobs:
           coverage: none
           tools: composer
 
-      - name: Install dependencies
-        run: composer config github-oauth.github.com ${{ secrets.PRIVATE_ACCESS_TOKEN }} && composer install --prefer-dist --no-suggest --no-progress && npm install
+      - name: Install composer dependencies
+        run: composer config github-oauth.github.com ${{ secrets.PRIVATE_ACCESS_TOKEN }} && composer install --prefer-dist --no-suggest --no-progress
 
       - name: PHPCS check
         if: always()

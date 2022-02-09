@@ -53,7 +53,6 @@ $selectors = array(
 	),
 	' .uagb-ifb-content > svg'                             => array(
 		'height'        => $icon_size,
-		'width'         => $icon_size,
 		'line-height'   => $icon_size,
 		'font-size'     => $icon_size,
 		'color'         => $attr['iconColor'],

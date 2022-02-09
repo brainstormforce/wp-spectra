@@ -192,7 +192,6 @@ function styling( props ) {
 			'height': generateCSSUnit( iconSize, iconSizeType ),
 			'color': iconColor,
 			'fill': iconColor,
-			'width': generateCSSUnit( iconSize, iconSizeType ),
 			'line-height': generateCSSUnit( iconSize, iconSizeType ),
 			'margin-left': generateCSSUnit( iconLeftMargin, iconMarginUnit ),
 			'margin-right': generateCSSUnit( iconRightMargin, iconMarginUnit ),
