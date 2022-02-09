@@ -77,15 +77,12 @@ const UAGBRestaurantMenu = ( props ) => {
 		if( imagePosition ){
 			if( 'left' === imagePosition ){
 				props.setAttributes( { imgAlign: 'side' } );
-				props.setAttributes( { imagePosition: 'left' } );
 			}
 			if( 'right' === imagePosition ){
 				props.setAttributes( { imgAlign: 'side' } );
-				props.setAttributes( { imagePosition: 'right' } );
 			}
 			if( 'top' === imagePosition ){
 				props.setAttributes( { imgAlign: 'top' } );
-				props.setAttributes( { imagePosition: 'top' } );
 			}
 		}
 
@@ -97,8 +94,8 @@ const UAGBRestaurantMenu = ( props ) => {
 			pricelistChild.attributes.imageAlignment =
 				props.attributes.imageAlignment;
 		} );
-		
-	
+
+
 	}, [] );
 
 	useEffect( () => {
@@ -114,7 +111,7 @@ const UAGBRestaurantMenu = ( props ) => {
 		if( 'side' === props.attributes.imgAlign && 'right' !== props.attributes.imagePosition ){
 			props.setAttributes( { imagePosition : 'left' } );
 			props.setAttributes( { headingAlign : 'left' } );
-		} 
+		}
 		if( 'top' === props.attributes.imgAlign ){
 			props.setAttributes( { imagePosition : 'top' } );
 		}
@@ -128,7 +125,7 @@ const UAGBRestaurantMenu = ( props ) => {
 			pricelistChild.attributes.headingAlign = props.attributes.headingAlign;
 		} );
 
-	
+
 	}, [ props ] );
 
 	useEffect( () => {

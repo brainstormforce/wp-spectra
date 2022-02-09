@@ -157,12 +157,12 @@
 		}
 	}
 
-	&.uagb-rm__image-aligned-middle img {
+	&.uagb-rm__image-aligned-middle .uagb-rm__content img {
 		-ms-flex-item-align: center;
 		align-self: center;
 	}
 
-	&.uagb-rm__image-aligned-top img {
+	&.uagb-rm__image-aligned-top .uagb-rm__content img {
 		-ms-flex-item-align: flex-start;
 		align-self: flex-start;
 	}
