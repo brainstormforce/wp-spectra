@@ -425,6 +425,10 @@ class UAGB_Init_Blocks {
 		} else {
 			$script_dep = $script_info['dependencies'];
 		}
+
+		$js_ext = ( SCRIPT_DEBUG ) ? '.js' : '.min.js';
+		wp_enqueue_script( 'uagb-cross-site-cp-helper-js', UAGB_URL . 'assets/js/cross-site-cp-helper' . $js_ext, array(), UAGB_VER, true ); // 3rd Party Library JS for Cross-Domain Local Storage usage for the Copy/Paste styles feature.
+
 		// Scripts.
 		wp_enqueue_script(
 			'uagb-block-editor-js', // Handle.
