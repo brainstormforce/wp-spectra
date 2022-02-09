@@ -837,7 +837,7 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 			$typo_css_desktop[ $selector ] = array(
 				'font-family'     => $attr[ $family_slug ],
 				'text-transform'  => $text_transform,
-				'text-decoration' => $text_decoration . '!important',
+				'text-decoration' => $text_decoration,
 				'font-style'      => $font_style,
 				'font-weight'     => $attr[ $weight_slug ],
 				'font-size'       => ( isset( $attr[ $f_sz_slug ] ) ) ? self::get_css_value( $attr[ $f_sz_slug ], $attr[ $f_sz_type_slug ] ) : '',
