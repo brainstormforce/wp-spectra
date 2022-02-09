@@ -38,7 +38,7 @@ const attributes = {
 	},
 	borderWidth: {
 		type: 'number',
-		default: '',
+		default: 1,
 		isUAGStyle: true,
 	},
 	borderRadius: {
@@ -144,7 +144,7 @@ const attributes = {
 	//Colors
 	titleColor: {
 		type: 'string',
-		default: '#fff',
+		default: '#333',
 		isUAGStyle: true,
 	},
 	titleHoverColor: {
@@ -153,7 +153,7 @@ const attributes = {
 	},
 	iconColor: {
 		type: 'string',
-		default: '#fff',
+		default: '#333',
 		isUAGStyle: true,
 	},
 	iconHoverColor: {
@@ -162,7 +162,7 @@ const attributes = {
 	},
 	prefixColor: {
 		type: 'string',
-		default: '#fff',
+		default: '#333',
 		isUAGStyle: true,
 	},
 	prefixHoverColor: {
@@ -321,7 +321,7 @@ const attributes = {
 	// Icon Font Size
 	iconFontSize: {
 		type: 'number',
-		default: 16,
+		default: 20,
 		isUAGStyle: true,
 	},
 	iconFontSizeType: {
@@ -331,11 +331,11 @@ const attributes = {
 	},
 	iconFontSizeTablet: {
 		type: 'number',
-		default: 16,
+		default: 20,
 	},
 	iconFontSizeMobile: {
 		type: 'number',
-		default: 16,
+		default: 20,
 		isUAGStyle: true,
 	},
 	spacingLink: {
