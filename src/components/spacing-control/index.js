@@ -106,7 +106,7 @@ const SpacingControl = ( props ) => {
 	const onChangeTopValue = ( event, device, value = '' ) => {
 		let newValue = value;
 
-		if ( '' === value ) {
+		if ( '' === value && '' !== event ) {
 			newValue =
 				event.target.value === ''
 					? undefined
@@ -132,7 +132,7 @@ const SpacingControl = ( props ) => {
 	const onChangeRightValue = ( event, device, value = '' ) => {
 		let newValue = value;
 
-		if ( '' === value ) {
+		if ( '' === value && '' !== event ) {
 			newValue =
 				event.target.value === ''
 					? undefined
@@ -158,7 +158,7 @@ const SpacingControl = ( props ) => {
 	const onChangeBottomValue = ( event, device, value = '' ) => {
 		let newValue = value;
 
-		if ( '' === value ) {
+		if ( '' === value && '' !== event ) {
 			newValue =
 				event.target.value === ''
 					? undefined
@@ -184,7 +184,7 @@ const SpacingControl = ( props ) => {
 	const onChangeLeftValue = ( event, device, value = '' ) => {
 		let newValue = value;
 
-		if ( '' === value ) {
+		if ( '' === value && '' !== event ) {
 			newValue =
 				event.target.value === ''
 					? undefined
@@ -434,65 +434,65 @@ const SpacingControl = ( props ) => {
 
 		switch ( device ) {
 			case 'desktop':
-				onChangeTopValue( '', 'desktop', cachedValue.valueTop.value );
+				onChangeTopValue( '', 'desktop', cachedValue?.valueTop?.value );
 				onChangeRightValue(
 					'',
 					'desktop',
-					cachedValue.valueRight.value
+					cachedValue?.valueRight?.value
 				);
 				onChangeBottomValue(
 					'',
 					'desktop',
-					cachedValue.valueBottom.value
+					cachedValue?.valueBottom?.value
 				);
-				onChangeLeftValue( '', 'desktop', cachedValue.valueLeft.value );
-				setAttributes( { [ unit.label ]: cachedValue.unit.value } );
+				onChangeLeftValue( '', 'desktop', cachedValue?.valueLeft?.value );
+				setAttributes( { [ unit?.label ]: cachedValue?.unit?.value } );
 				break;
 			case 'tablet':
 				onChangeTopValue(
 					'',
 					'tablet',
-					cachedValue.valueTopTablet.value
+					cachedValue?.valueTopTablet?.value
 				);
 				onChangeRightValue(
 					'',
 					'tablet',
-					cachedValue.valueRightTablet.value
+					cachedValue?.valueRightTablet?.value
 				);
 				onChangeBottomValue(
 					'',
 					'tablet',
-					cachedValue.valueBottomTablet.value
+					cachedValue?.valueBottomTablet?.value
 				);
 				onChangeLeftValue(
 					'',
 					'tablet',
-					cachedValue.valueLeftTablet.value
+					cachedValue?.valueLeftTablet?.value
 				);
-				setAttributes( { [ tUnit.label ]: cachedValue.tUnit.value } );
+				setAttributes( { [ tUnit?.label ]: cachedValue?.tUnit?.value } );
 				break;
 			case 'mobile':
 				onChangeTopValue(
 					'',
 					'mobile',
-					cachedValue.valueTopMobile.value
+					cachedValue?.valueTopMobile?.value
 				);
 				onChangeRightValue(
 					'',
 					'mobile',
-					cachedValue.valueRightMobile.value
+					cachedValue?.valueRightMobile?.value
 				);
 				onChangeBottomValue(
 					'',
 					'mobile',
-					cachedValue.valueBottomMobile.value
+					cachedValue?.valueBottomMobile?.value
 				);
 				onChangeLeftValue(
 					'',
 					'mobile',
-					cachedValue.valueLeftMobile.value
+					cachedValue?.valueLeftMobile?.value
 				);
-				setAttributes( { [ mUnit.label ]: cachedValue.mUnit.value } );
+				setAttributes( { [ mUnit?.label ]: cachedValue?.mUnit?.value } );
 				break;
 		}
 	};
