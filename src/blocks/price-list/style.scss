@@ -212,12 +212,15 @@
 			margin-right: 10px;
 		}
 	}
-	.uagb-rm__image-aligned-middle .uagb-rm__content img {
+
+	.uagb-rm__image-aligned-middle .uagb-rm__content img,
+	.uagb-rm__image-aligned-middle .uagb-rm__content .uagb-rm__image-content {
 		-ms-flex-item-align: center;
 		align-self: center;
 	}
 
-	.uagb-rm__image-aligned-top .uagb-rm__content img {
+	.uagb-rm__image-aligned-top .uagb-rm__content img,
+	.uagb-rm__image-aligned-top .uagb-rm__content .uagb-rm__image-content {
 		-ms-flex-item-align: flex-start;
 		align-self: flex-start;
 	}
