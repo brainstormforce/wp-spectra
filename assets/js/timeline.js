@@ -41,15 +41,12 @@ function uagbTimelineInit() {
 			lastItem = parentTop + timelineEndIcon?.getBoundingClientRect().top;
 
 		} else if ( content.classList.contains( 'uagb-timeline__arrow-top' ) ) {
-
-			const topHeight = timelineCardHeight - + timelineEndIcon?.getBoundingClientRect().top;
-			lineOuter.style.bottom = topHeight + 'px';
+			lineOuter.style.bottom = timelineCardHeight + 'px';
 			lastItem = lastItemTop + timelineEndIcon?.getBoundingClientRect().top;
 
 		} else if ( content.classList.contains( 'uagb-timeline__arrow-bottom' ) ) {
 
-			const bottomHeight = timelineCardHeight - + timelineEndIcon?.getBoundingClientRect().top;
-			lineOuter.style.bottom = bottomHeight + 'px';
+			lineOuter.style.bottom = '0px';
 			parentTop = lastItemTop - timelineStartIcon?.offsetTop;
 			lastItem = parentTop + + timelineEndIcon?.getBoundingClientRect().top;
 		}
