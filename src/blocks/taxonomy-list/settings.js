@@ -660,13 +660,6 @@ const Settings = ( props ) => {
 				title={ __( 'Title', 'ultimate-addons-for-gutenberg' ) }
 				initialOpen={ false }
 			>
-				<AdvancedPopColorControl
-					label={ __( 'Color', 'ultimate-addons-for-gutenberg' ) }
-					colorValue={ titleColor ? titleColor : '' }
-					onColorChange={ ( value ) =>
-						setAttributes( { titleColor: value } )
-					}
-				/>
 				<TypographyControl
 					label={ __(
 						'Typography',
@@ -731,6 +724,29 @@ const Settings = ( props ) => {
 						label: 'titleDecoration',
 					} }
 				/>
+				<AdvancedPopColorControl
+					label={ __( 'Color', 'ultimate-addons-for-gutenberg' ) }
+					colorValue={ titleColor ? titleColor : '' }
+					onColorChange={ ( value ) =>
+						setAttributes( { titleColor: value } )
+					}
+				/>
+				{ showCount && (
+					<Range
+						label={ __(
+							'Bottom Spacing',
+							'ultimate-addons-for-gutenberg'
+						) }
+						setAttributes={ setAttributes }
+						value={ titleBottomSpace }
+						onChange={ ( value ) =>
+							setAttributes( { titleBottomSpace: value } )
+						}
+						min={ 0 }
+						max={ 50 }
+						displayUnit={ false }
+					/>
+				) }
 			</UAGAdvancedPanelBody>
 		);
 	};
@@ -866,22 +882,6 @@ const Settings = ( props ) => {
 							max={ 50 }
 							displayUnit={ false }
 						/>
-						{ showCount && (
-							<Range
-								label={ __(
-									'Bottom Spacing',
-									'ultimate-addons-for-gutenberg'
-								) }
-								setAttributes={ setAttributes }
-								value={ titleBottomSpace }
-								onChange={ ( value ) =>
-									setAttributes( { titleBottomSpace: value } )
-								}
-								min={ 0 }
-								max={ 50 }
-								displayUnit={ false }
-							/>
-						) }
 						<SpacingControl
 							{ ...props }
 							label={ __(

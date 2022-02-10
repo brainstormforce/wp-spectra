@@ -29,7 +29,7 @@ const attributes = {
 	},
 	rowsGap: {
 		type: 'number',
-		default: 15,
+		default: 10,
 		isUAGStyle: true,
 	},
 	columnsGap: {

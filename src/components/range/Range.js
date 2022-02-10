@@ -98,7 +98,9 @@ const Range = ( props ) => {
 
 		setValue( cachedValueUpdate.value );
 		props.onChange( cachedValueUpdate.value );
-		onChangeUnits( cachedValueUpdate.unit );
+		if( cachedValueUpdate.unit ){
+			onChangeUnits( cachedValueUpdate.unit );
+		}
 
 		cachedValueUpdate.resetDisabled = true;
 		setCacheValue( cachedValueUpdate );

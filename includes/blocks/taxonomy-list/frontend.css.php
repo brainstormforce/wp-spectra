@@ -142,53 +142,51 @@ if ( 'none' !== $attr['seperatorStyle'] ) {
 	);
 }
 
-if ( 'none' !== $attr['borderStyle'] ) {
+
 	$selectors[' .uagb-taxomony-box']       = array(
-		'border' => UAGB_Helper::get_css_value( $attr['borderThickness'], 'px' ) . ' ' . $attr['borderStyle'] . ' ' . $attr['borderColor'],
+		'border'        => UAGB_Helper::get_css_value( $attr['borderThickness'], 'px' ) . ' ' . $attr['borderStyle'] . ' ' . $attr['borderColor'],
+		'border-radius' => UAGB_Helper::get_css_value( $attr['borderRadius'], 'px' ),
 	);
 	$selectors[' .uagb-taxomony-box:hover'] = array(
 		'border-color' => $attr['borderHoverColor'],
 	);
-}
-$selectors[' .uagb-taxomony-box'] = array(
-	'border-radius' => UAGB_Helper::get_css_value( $attr['borderRadius'], 'px' ),
-);
-$t_selectors                      = array(
-	'.uagb-taxonomy-wrap.uagb-layout-grid' => array( // For Backword.
-		'grid-template-columns' => 'repeat(' . $attr['tcolumns'] . ', 1fr)',
-	),
-	'.uagb-layout-grid .uagb-taxomony-box' => array(
-		'padding-left'   => UAGB_Helper::get_css_value( $left_padding_tablet, $attr['tabletContentPaddingUnit'] ),
-		'padding-right'  => UAGB_Helper::get_css_value( $right_padding_tablet, $attr['tabletContentPaddingUnit'] ),
-		'padding-top'    => UAGB_Helper::get_css_value( $top_padding_tablet, $attr['tabletContentPaddingUnit'] ),
-		'padding-bottom' => UAGB_Helper::get_css_value( $bottom_padding_tablet, $attr['tabletContentPaddingUnit'] ),
-	),
-);
 
-$m_selectors = array(
-	'.uagb-taxonomy__outer-wrap.uagb-layout-grid' => array(
-		'grid-template-columns' => 'repeat(' . $attr['mcolumns'] . ', 1fr)',
-	),
-	'.uagb-layout-grid .uagb-taxomony-box'        => array(
-		'padding-left'   => UAGB_Helper::get_css_value( $left_padding_mobile, $attr['mobileContentPaddingUnit'] ),
-		'padding-right'  => UAGB_Helper::get_css_value( $right_padding_mobile, $attr['mobileContentPaddingUnit'] ),
-		'padding-top'    => UAGB_Helper::get_css_value( $top_padding_mobile, $attr['mobileContentPaddingUnit'] ),
-		'padding-bottom' => UAGB_Helper::get_css_value( $bottom_padding_mobile, $attr['mobileContentPaddingUnit'] ),
-	),
-);
+	$t_selectors = array(
+		'.uagb-taxonomy-wrap.uagb-layout-grid' => array( // For Backword.
+			'grid-template-columns' => 'repeat(' . $attr['tcolumns'] . ', 1fr)',
+		),
+		'.uagb-layout-grid .uagb-taxomony-box' => array(
+			'padding-left'   => UAGB_Helper::get_css_value( $left_padding_tablet, $attr['tabletContentPaddingUnit'] ),
+			'padding-right'  => UAGB_Helper::get_css_value( $right_padding_tablet, $attr['tabletContentPaddingUnit'] ),
+			'padding-top'    => UAGB_Helper::get_css_value( $top_padding_tablet, $attr['tabletContentPaddingUnit'] ),
+			'padding-bottom' => UAGB_Helper::get_css_value( $bottom_padding_tablet, $attr['tabletContentPaddingUnit'] ),
+		),
+	);
 
-$combined_selectors = array(
-	'desktop' => $selectors,
-	'tablet'  => $t_selectors,
-	'mobile'  => $m_selectors,
-);
-/* For Backword */
-$combined_selectors = UAGB_Helper::get_typography_css( $attr, 'title', ' .uagb-layout-grid .uagb-tax-title', $combined_selectors );
-$combined_selectors = UAGB_Helper::get_typography_css( $attr, 'count', ' .uagb-layout-grid .uagb-tax-link', $combined_selectors );
-$combined_selectors = UAGB_Helper::get_typography_css( $attr, 'list', ' .uagb-layout-list .uagb-tax-list', $combined_selectors );
-/* End Backword */
-$combined_selectors = UAGB_Helper::get_typography_css( $attr, 'title', '.uagb-layout-grid .uagb-tax-title', $combined_selectors );
-$combined_selectors = UAGB_Helper::get_typography_css( $attr, 'count', '.uagb-layout-grid .uagb-tax-link', $combined_selectors );
-$combined_selectors = UAGB_Helper::get_typography_css( $attr, 'list', '.uagb-layout-list .uagb-tax-list', $combined_selectors );
+	$m_selectors = array(
+		'.uagb-taxonomy__outer-wrap.uagb-layout-grid' => array(
+			'grid-template-columns' => 'repeat(' . $attr['mcolumns'] . ', 1fr)',
+		),
+		'.uagb-layout-grid .uagb-taxomony-box'        => array(
+			'padding-left'   => UAGB_Helper::get_css_value( $left_padding_mobile, $attr['mobileContentPaddingUnit'] ),
+			'padding-right'  => UAGB_Helper::get_css_value( $right_padding_mobile, $attr['mobileContentPaddingUnit'] ),
+			'padding-top'    => UAGB_Helper::get_css_value( $top_padding_mobile, $attr['mobileContentPaddingUnit'] ),
+			'padding-bottom' => UAGB_Helper::get_css_value( $bottom_padding_mobile, $attr['mobileContentPaddingUnit'] ),
+		),
+	);
 
-return UAGB_Helper::generate_all_css( $combined_selectors, '.uagb-block-' . $id );
+	$combined_selectors = array(
+		'desktop' => $selectors,
+		'tablet'  => $t_selectors,
+		'mobile'  => $m_selectors,
+	);
+	/* For Backword */
+	$combined_selectors = UAGB_Helper::get_typography_css( $attr, 'title', ' .uagb-layout-grid .uagb-tax-title', $combined_selectors );
+	$combined_selectors = UAGB_Helper::get_typography_css( $attr, 'count', ' .uagb-layout-grid .uagb-tax-link', $combined_selectors );
+	$combined_selectors = UAGB_Helper::get_typography_css( $attr, 'list', ' .uagb-layout-list .uagb-tax-list', $combined_selectors );
+	/* End Backword */
+	$combined_selectors = UAGB_Helper::get_typography_css( $attr, 'title', '.uagb-layout-grid .uagb-tax-title', $combined_selectors );
+	$combined_selectors = UAGB_Helper::get_typography_css( $attr, 'count', '.uagb-layout-grid .uagb-tax-link', $combined_selectors );
+	$combined_selectors = UAGB_Helper::get_typography_css( $attr, 'list', '.uagb-layout-list .uagb-tax-list', $combined_selectors );
+
+	return UAGB_Helper::generate_all_css( $combined_selectors, '.uagb-block-' . $id );

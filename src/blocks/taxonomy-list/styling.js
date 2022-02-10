@@ -326,7 +326,6 @@ function styling( props ) {
 		};
 	}
 
-	if ( borderStyle !== 'none' ) {
 		selectors[ ' .uagb-taxomony-box' ] = {
 			'border':
 				generateCSSUnit( borderThickness, 'px' ) +
@@ -334,14 +333,11 @@ function styling( props ) {
 				borderStyle +
 				' ' +
 				borderColor,
+			'border-radius': generateCSSUnit( borderRadius, 'px' ),
 		};
 		selectors[ ' .uagb-taxomony-box:hover' ] = {
 			'border-color': borderHoverColor,
 		};
-	}
-	selectors[ ' .uagb-taxomony-box' ] = {
-		'border-radius': generateCSSUnit( borderRadius, 'px' ),
-	};
 
 	mobileSelectors = {
 		'.uagb-taxonomy__outer-wrap.uagb-layout-grid': {
