@@ -163,7 +163,7 @@ const UAGCopyPasteStyles = () => {
 				character: 'u',
 			},
 		} );
-        
+
 	}, [] );
 
     const copyStylesHandler = () => {
@@ -346,7 +346,7 @@ const UAGCopyPasteStyles = () => {
             setdisablePaste( false );
 
         } );
-        
+
     };
 
     let stylesText = __( 'Style', 'ultimate-addons-for-gutenberg' );
@@ -402,7 +402,7 @@ const displayUAGCopyPasteSettingConditionally = createHigherOrderComponent( ( Bl
         const multiSelectedBlock = getMultiSelectedBlocks();
         let singleSelectBlockFlag = false;
         let multiSelectBlockFlag = false;
-        
+
         if ( selectedBlock ) {
             const singleSelectedBlockName = selectedBlock.name;
 
@@ -411,7 +411,7 @@ const displayUAGCopyPasteSettingConditionally = createHigherOrderComponent( ( Bl
                 singleSelectBlockFlag = true
             }
         }
-        
+
         if ( multiSelectedBlock && 0 !== multiSelectedBlock.length ) {
             multiSelectedBlock.map( ( value ) => {
                 const singleSelectedBlockName = value.name;

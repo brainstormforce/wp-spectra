@@ -690,6 +690,9 @@ function styling( props ) {
 
 	if ( 'infinite' === paginationType ) {
 		if ( 'button' === paginationEventType ) {
+			selectors['.uagb-post__items'] = {
+				'margin-bottom': '40px',
+			};
 			selectors[ ' .uagb-post__load-more-wrap' ] = {
 				'text-align': paginationAlign,
 			};
