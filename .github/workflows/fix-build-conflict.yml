@@ -1,0 +1,89 @@
+name: Fix build conflict - Run build commands
+on:
+  pull_request:
+    types: [ labeled ]
+
+jobs:
+  build-run:
+    if: ${{ github.event.label.name == 'conflict' }}
+    runs-on: ubuntu-latest
+    name: 'Run npm build commands'
+    steps:
+      - name: 'Checkout'
+        uses: actions/checkout@master
+
+      - name: Use desired version of NodeJS
+        uses: actions/setup-node@v2
+        with:
+          node-version: 14.17
+
+      - name: Cache node modules
+        id: cache-node
+        uses: actions/cache@v2
+        env:
+          cache-name: cache-node-modules
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/package-lock.json') }}
+
+      - name: Initialize mandatory git config
+        run: |
+          git config user.name "GitHub Actions"
+          git config user.email "noreply@github.com"
+
+      # - name: Dump GitHub context
+      #   env:
+      #     GITHUB_CONTEXT: ${{ toJson(github) }}
+      #   run: echo "$GITHUB_CONTEXT"
+
+      - name: Get PR number
+        id: get_pr_number
+        run: echo "::set-output name=pr_number::${{ github.event.pull_request.number }}"
+
+      - name: Extract current branch name
+        id: extract_branch
+        run: echo "::set-output name=branch::$(echo $GITHUB_HEAD_REF)"
+
+      - name: Branch name
+        run: |
+          echo "${{ steps.extract_branch.outputs.branch }}"
+          echo "${{ github.head_ref }}"
+          echo "$GITHUB_HEAD_REF"
+
+      - name: Install dependencies and build
+        run: npm ci && npm run build
+
+      - name: Create Pull Request
+        id: cpr
+        uses: peter-evans/create-pull-request@v3
+        with:
+          commit-message: Auto build generated
+          base: ${{ github.head_ref }}
+          branch: ${{ github.head_ref }}-build
+          delete-branch: true
+          title: Updated the build files - \#${{ steps.get_pr_number.outputs.pr_number }}
+          body: |
+            Update report
+            Hi!
+              This PR was created in response workflow running.
+              I've updated the build files.
+
+      - name: Check outputs
+        run: |
+          echo "Pull Request Number - ${{ steps.cpr.outputs.pull-request-number }}"
+          echo "Pull Request URL - ${{ steps.cpr.outputs.pull-request-url }}"
+
+      - name: Create a new comment with a new PR url
+        uses: sandeshjangam/comment-actions@v1
+        with:
+          type: create
+          number: ${{ steps.get_pr_number.outputs.pr_number }}
+          body: |
+            Hi, I have fixed the conflict.
+            Pull Request Number - ${{ steps.cpr.outputs.pull-request-number }}
+            Pull Request URL - ${{ steps.cpr.outputs.pull-request-url }}
+          reactions: hooray
+
+      - uses: andymckay/labeler@1.0.4
+        with:
+          remove-labels: "conflict"
