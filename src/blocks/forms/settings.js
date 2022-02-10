@@ -1116,6 +1116,7 @@ const Settings = ( props ) => {
 						setAttributes( { inputactiveColor: value } )
 					}
 				/>
+				{ 'underlined' !== formStyle && (
 				<AdvancedPopColorControl
 					label={ __(
 						'Background Color',
@@ -1126,6 +1127,7 @@ const Settings = ( props ) => {
 						setAttributes( { bgColor: value } )
 					}
 				/>
+				)}
 				<TypographyControl
 					label={ __(
 						'Typography',
