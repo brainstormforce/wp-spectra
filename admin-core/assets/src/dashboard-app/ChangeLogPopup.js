@@ -2,7 +2,6 @@
 import { Fragment } from 'react'
 import { Popover, Transition } from '@headlessui/react'
 import { ChevronDownIcon } from '@heroicons/react/solid'
-import staticUAGChangelogRSSFeed from '@Utils/staticUAGChangelogRSSFeed';
 import { __ } from '@wordpress/i18n';
 
 function classNames( ...classes ) {
@@ -10,6 +9,8 @@ function classNames( ...classes ) {
 }
 
 const ChangeLogPopup = () =>{
+
+	const dynamicUAGChangelogRSSFeed = uag_react.global_data.changelog_data;
 
     return (
         <Popover className="relative">
@@ -27,7 +28,7 @@ const ChangeLogPopup = () =>{
                   aria-hidden="true"
                 />
               </Popover.Button>
-    
+
               <Transition
                 as={Fragment}
                 enter="transition ease-out duration-200"
@@ -38,17 +39,15 @@ const ChangeLogPopup = () =>{
                 leaveTo="opacity-0 translate-y-1"
               >
                 <Popover.Panel className="absolute z-10 left-0 transform -translate-x-1/2 mt-3 px-2 w-screen max-w-xs sm:px-0">
-                  <div className="rounded-[0.2rem] shadow-lg ring-1 ring-black ring-opacity-5 overflow-hidden">
+                  <div className="rounded-[0.2rem] shadow-lg ring-1 ring-black ring-opacity-5 overflow-y-auto max-h-screen">
                     <div className="relative grid gap-6 bg-white px-5 py-6 sm:gap-8 sm:p-8">
-                      {staticUAGChangelogRSSFeed.map( ( item, index ) => {
-                          const title = staticUAGChangelogRSSFeed[index].title;
-                          const description = staticUAGChangelogRSSFeed[index].description.__cdata;
-                          const link = staticUAGChangelogRSSFeed[index].link;
-                          let pubDate = staticUAGChangelogRSSFeed[index].pubDate;
-                          const tempDateSplit = pubDate.split( ' ' );
-                          tempDateSplit.splice( 4, 2 )
-                          pubDate = tempDateSplit.join( ' ' );
-                        return ( 
+                      {dynamicUAGChangelogRSSFeed.map( ( item, index ) => {
+                          const title = dynamicUAGChangelogRSSFeed[index].title;
+                          const description = dynamicUAGChangelogRSSFeed[index].description;
+                          const link = dynamicUAGChangelogRSSFeed[index].link;
+                          const pubDate = dynamicUAGChangelogRSSFeed[index].date;
+
+                        return (
                             <a
                             key={title}
                             href={link}
