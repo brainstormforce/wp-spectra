@@ -29,7 +29,6 @@
 			display: table;
 			width: 100%;
 			padding: 15px;
-			padding: 5px;
 			border-radius: inherit;
 			text-align: left;
 			word-break: break-word;
@@ -171,7 +170,11 @@
 		display: table-cell;
 		text-align: right;
 	}
-
+	.uagb-rm__text-wrap {
+		position: relative;
+		display: block;
+		width: 100%;
+	}
 	.uagb-rm__image-position-center {
 
 		&.uagb-rm__align-center .uagb-rm-details,
@@ -191,7 +194,9 @@
 			display: flex;
 			-js-display: flex;
 		}
-
+		&.uagb-rm__align-left .uagb-rm-details{
+    		flex-direction: unset;
+		}
 		&.uagb-rm__align-left .uagb-rm__price,
 		&.uagb-rm__align-right .uagb-rm__price,
 		&.uagb-rm__align-center .uagb-rm__price {
@@ -238,7 +243,10 @@
 		&.uagb-rm__align-center .uagb-rm-details {
 			text-align: right;
 		}
-
+		&.uagb-rm__align-left .uagb-rm-details{
+			display: flex;
+    		flex-direction: row-reverse;
+		}
 		&.uagb-rm__align-left .uagb-rm__price,
 		&.uagb-rm__align-right .uagb-rm__price,
 		&.uagb-rm__align-center .uagb-rm__price {
