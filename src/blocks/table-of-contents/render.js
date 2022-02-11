@@ -49,14 +49,13 @@ const Render = ( props ) => {
 				) }
 			>
 				<div className="uagb-toc__wrap">
+					<div className="uagb-toc__title">
 						<RichText
-							tagName={ 'div' }
 							placeholder={ __(
 								'Table Of Contents',
 								'ultimate-addons-for-gutenberg'
 							) }
 							value={ headingTitle }
-							className="uagb-toc__title"
 							onChange={ ( value ) =>
 								setAttributes( { headingTitle: value } )
 							}
@@ -64,6 +63,7 @@ const Render = ( props ) => {
 							onRemove={ () => props.onReplace( [] ) }
 						/>
 						{ iconHtml }
+						</div>
 					<TableOfContents
 						mappingHeaders={ mappingHeaders }
 						headers={ headers }

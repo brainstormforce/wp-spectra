@@ -447,15 +447,15 @@ if ( ! class_exists( 'UAGB_Table_Of_Content' ) ) {
 				>
 				<div class="uagb-toc__wrap">
 						<div class="uagb-toc__title">
-							<?php echo wp_kses_post( $attributes['headingTitle'] ); ?>
-						</div>
-						<?php
-						if ( $attributes['makeCollapsible'] && $attributes['icon'] ) {
-							?>
-								<?php UAGB_Helper::render_svg_html( $attributes['icon'] ); ?>
 							<?php
-						}
-						?>
+								echo wp_kses_post( $attributes['headingTitle'] );
+							if ( $attributes['makeCollapsible'] && $attributes['icon'] ) {
+								?>
+									<?php UAGB_Helper::render_svg_html( $attributes['icon'] ); ?>
+									<?php
+							}
+							?>
+						</div>
 					<?php if ( $uagb_toc_heading_content && count( $uagb_toc_heading_content ) > 0 && count( array_filter( $attributes['mappingHeaders'], $mapping_header_func ) ) > 0 ) { ?>
 					<div class="uagb-toc__list-wrap">
 						<?php
@@ -535,6 +535,10 @@ if ( ! class_exists( 'UAGB_Table_Of_Content' ) ) {
 										'type' => 'string',
 									),
 									'align'                => array(
+										'type'    => 'string',
+										'default' => 'left',
+									),
+									'headingAlignment'     => array(
 										'type'    => 'string',
 										'default' => 'left',
 									),

@@ -55,11 +55,9 @@ $selectors            = array(
 		'margin-bottom'   => UAGB_Helper::get_css_value( $attr['headingBottom'], 'px' ),
 	),
 	' .uagb-toc__title'                                   => array(
-		'justify-content' => $attr['align'],
+		'color'           => $attr['headingColor'],
+		'justify-content' => $attr['headingAlignment'],
 		'margin-bottom'   => UAGB_Helper::get_css_value( $attr['headingBottom'], 'px' ),
-	),
-	' .uagb-toc__title'                                   => array(
-		'color' => $attr['headingColor'],
 	),
 	' .uagb-toc__wrap'                                    => array(
 		'border-style'   => $attr['borderStyle'],
