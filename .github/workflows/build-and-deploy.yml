@@ -5,6 +5,7 @@ on:
   push:
     branches:
       - next-release
+      - development
 
 env:
   PLUGIN_PATH: ${{ secrets.SSH_RC_PATH }}/wp-content/plugins/${{ github.event.repository.name }}/
@@ -38,13 +39,24 @@ jobs:
     - name: Build a package
       run: bash ./bin/build-zip.sh
 
+    - name: Set environment name
+      run: |
+          if [ '${{github.ref}}' = 'refs/heads/development' ]
+          then
+            echo "ENVIRONMENT=DEVELOPMENT" >> $GITHUB_ENV
+          fi
+          if [ '${{github.ref}}' = 'refs/heads/next-release' ]
+          then
+            echo "ENVIRONMENT=RELEASE_CANDIDATE" >> $GITHUB_ENV
+          fi
+
     - name: Rsync Deployment
       uses: burnett01/rsync-deployments@4.1
       with:
         # switches: -avzr --delete
         switches: -avzr
         path: artifact/ultimate-addons-for-gutenberg/
-        remote_path: ${{ secrets.SSH_TEST_PATH }}
+        remote_path: ${{ secrets[format('SSH_PATH_{0}', env.ENVIRONMENT)] }}
         remote_host: ${{ secrets.SSH_HOST }}
         remote_user: ${{ secrets.SSH_USER }}
         remote_key: ${{ secrets.SSH_KEY }}
