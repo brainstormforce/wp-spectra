@@ -156,16 +156,6 @@
 		}
 	}
 
-	&.uagb-rm__image-aligned-middle .uagb-rm__content img {
-		-ms-flex-item-align: center;
-		align-self: center;
-	}
-
-	&.uagb-rm__image-aligned-top .uagb-rm__content img {
-		-ms-flex-item-align: flex-start;
-		align-self: flex-start;
-	}
-
 	.uagb-rm__align-left .uagb-rm__content span.uagb-rm__price {
 		display: table-cell;
 		text-align: right;
@@ -226,6 +216,16 @@
 
 	.uagb-rm__image-aligned-top .uagb-rm__content img,
 	.uagb-rm__image-aligned-top .uagb-rm__content .uagb-rm__image-content {
+		-ms-flex-item-align: flex-start;
+		align-self: flex-start;
+	}
+
+	&.uagb-rm__image-aligned-middle .uagb-rm__content img {
+		-ms-flex-item-align: center;
+		align-self: center;
+	}
+
+	&.uagb-rm__image-aligned-top .uagb-rm__content img {
 		-ms-flex-item-align: flex-start;
 		align-self: flex-start;
 	}

@@ -123,6 +123,7 @@ const UAGBRestaurantMenu = ( props ) => {
 			pricelistChild.attributes.headingTag = props.attributes.headingTag;
 			pricelistChild.attributes.imageSize = props.attributes.imageSize;
 			pricelistChild.attributes.headingAlign = props.attributes.headingAlign;
+			pricelistChild.attributes.imageAlignment = props.attributes.imageAlignment;
 		} );
 
 
