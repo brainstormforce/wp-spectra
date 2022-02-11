@@ -28,14 +28,14 @@ const SelectedFontFamilies = () => {
 	} );
 
     const updateEnableSelectedFontFamilies = () => {
-        
+
         let assetStatus;
 		if ( enableSelectedFontFamilies === 'disabled' ) {
             assetStatus = 'enabled';
 		} else {
             assetStatus = 'disabled';
 		}
-        
+
         dispatch( {type: 'UPDATE_ENABLE_SELECTED_FONT_FAMILIES', payload: assetStatus } );
 
 		const formData = new window.FormData();
@@ -53,7 +53,7 @@ const SelectedFontFamilies = () => {
     };
 
     const updateSelectedFontFamilies = ( font ) => {
-		
+
         dispatch( {type: 'UPDATE_SELECTED_FONT_FAMILIES', payload: font } );
 
 		const action = 'uag_select_font_globally',
@@ -94,7 +94,14 @@ const SelectedFontFamilies = () => {
                     maxMenuHeight={ 140 }
                     minMenuHeight = { 70 }
                     isSearchable={true}
-                    className={`mt-4 uag-font-select-${enableSelectedFontFamilies}`}
+                    className={`mt-4 focus:ring-wpcolor uag-font-select-${enableSelectedFontFamilies}`}
+					theme={( theme ) => ( {
+						...theme,
+						colors: {
+						  ...theme.colors,
+						  primary: '#6104ff',
+						},
+					  } )}
                 />
             </div>
             <div>
@@ -103,7 +110,7 @@ const SelectedFontFamilies = () => {
                     onChange={updateEnableSelectedFontFamilies}
                     className={classNames(
                         enableSelectedFontFamiliesStatus ? 'bg-wpcolor' : 'bg-gray-200',
-                        'relative inline-flex flex-shrink-0 h-5 w-10 items-center border-2 border-transparent rounded-full cursor-pointer transition-colors ease-in-out duration-200 focus:outline-none'
+                        'relative inline-flex flex-shrink-0 h-5 w-[2.4rem] items-center border-2 border-transparent rounded-full cursor-pointer transition-colors ease-in-out duration-200 focus:outline-none'
                     )}
                     >
                     <span

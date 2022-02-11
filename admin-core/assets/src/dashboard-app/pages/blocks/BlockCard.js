@@ -18,7 +18,7 @@ const BlockCard = ( props ) => {
 
     const dispatch = useDispatch();
 
-    const blocksStatuses = useSelector( ( state ) => state.blocksStatuses ); 
+    const blocksStatuses = useSelector( ( state ) => state.blocksStatuses );
 
     const blockActivationStatus = 'disabled' === blocksStatuses[slug] ? false : true;
 
@@ -34,7 +34,7 @@ const BlockCard = ( props ) => {
         optionsClone[ slug ] = status;
 
         dispatch( {type:'UPDATE_BLOCK_STATUSES', payload: optionsClone} );
-       
+
         const formData = new window.FormData();
 
         formData.append(
@@ -60,7 +60,7 @@ const BlockCard = ( props ) => {
         key={slug}
         className="relative rounded-[0.2rem] border border-gray-300 bg-white px-6 py-5 shadow-sm flex items-center space-x-4"
         >
-            <div className="flex-shrink-0">
+            <div className="flex-shrink-0 opacity-80">
                 { UAGB_Block_Icons[slug] }
             </div>
             <div className="flex-1 min-w-0">
@@ -72,7 +72,7 @@ const BlockCard = ( props ) => {
                 onChange={updateBlockStatus}
                 className={classNames(
                     blockActivationStatus ? 'bg-wpcolor' : 'bg-gray-200',
-                    'relative inline-flex flex-shrink-0 h-5 w-10 items-center border-2 border-transparent rounded-full cursor-pointer transition-colors ease-in-out duration-200 focus:outline-none'
+                    'relative inline-flex flex-shrink-0 h-5 w-[2.4rem] items-center border-2 border-transparent rounded-full cursor-pointer transition-colors ease-in-out duration-200 focus:outline-none'
                 )}
                 >
                 <span

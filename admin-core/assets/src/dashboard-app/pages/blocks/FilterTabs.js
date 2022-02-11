@@ -35,18 +35,18 @@ const FilterTabs = () => {
 		blocksInfo.map( ( block ) => {
 
             const blockCategories = block.admin_categories;
-            
+
             blockCategories.map( ( category ) => {
-    
+
                 if ( ! categoriesBlocksTemp [ category ] ) {
                     categoriesBlocksTemp [ category ] = [];
                 }
-        
+
                 categoriesBlocksTemp [ category ].push( block.slug );
 
                 return category;
             } );
-    
+
             return block;
         } );
 
@@ -55,7 +55,7 @@ const FilterTabs = () => {
 	}, [] );
 
     const activateAllBlocks = () => {
-		
+
 		const value = { ...blocksStatuses };
 
 		for ( const block in blocksStatuses ) {
@@ -91,7 +91,7 @@ const FilterTabs = () => {
 	};
 
 	const deactivateAllBlocks = () => {
-		
+
 		const value = { ...blocksStatuses };
 
 		for ( const block in blocksStatuses ) {
@@ -150,7 +150,7 @@ const FilterTabs = () => {
                     <a // eslint-disable-line
                         key={tab.name}
                         className={classNames(
-                        tab.slug === activeBlocksFilterTab ? 'bg-wphoverbgcolor text-wpcolor' : ' hover:text-wphovercolor',
+                        tab.slug === activeBlocksFilterTab ? 'bg-wphoverbgcolor text-wpcolor hover:text-wphovercolor' : ' hover:text-wphovercolor',
                         'px-3 py-2 font-medium text-sm rounded-[0.2rem] cursor-pointer'
                         )}
                         onClick={ () => dispatch( {type:'UPDATE_BLOCKS_ACTIVE_FILTER_TAB', payload: tab.slug} ) }

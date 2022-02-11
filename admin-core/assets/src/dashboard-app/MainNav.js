@@ -54,7 +54,7 @@ export default function MainNav() {
                             } }
                             className={ `${
                                 activePage === menu.slug && activePath === menu.path
-                                    ? ' border-wpcolor text-gray-900 inline-flex items-center px-1 border-b-2 text-[0.940rem] font-medium'
+                                    ? ' border-wpcolor hover:text-wphovercolor text-gray-900 inline-flex items-center px-1 border-b-2 text-[0.940rem] font-medium'
                                     : 'border-transparent  hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 border-b-2 text-[0.940rem] font-medium'
                             }` }
                         >

@@ -15,14 +15,14 @@ const LoadFontsLocally = () => {
     const enableLoadFontsLocallyStatus = 'disabled' === enableLoadFontsLocally ? false : true;
 
     const updateLoadFontsLocallyStatus = () => {
-        
+
         let assetStatus;
 		if ( enableLoadFontsLocally === 'disabled' ) {
             assetStatus = 'enabled';
 		} else {
             assetStatus = 'disabled';
 		}
-        
+
         dispatch( {type: 'UPDATE_ENABLE_LOAD_FONTS_LOCALLY', payload: assetStatus } );
 
 		const formData = new window.FormData();
@@ -33,7 +33,7 @@ const LoadFontsLocally = () => {
 			uag_react.load_gfonts_locally_nonce
 		);
 		formData.append( 'value', assetStatus );
-		
+
 		apiFetch( {
 			url: uag_react.ajax_url,
 			method: 'POST',
@@ -58,7 +58,7 @@ const LoadFontsLocally = () => {
                     onChange={updateLoadFontsLocallyStatus}
                     className={classNames(
                         enableLoadFontsLocallyStatus ? 'bg-wpcolor' : 'bg-gray-200',
-                        'relative inline-flex flex-shrink-0 h-5 w-10 items-center border-2 border-transparent rounded-full cursor-pointer transition-colors ease-in-out duration-200 focus:outline-none'
+                        'relative inline-flex flex-shrink-0 h-5 w-[2.4rem] items-center border-2 border-transparent rounded-full cursor-pointer transition-colors ease-in-out duration-200 focus:outline-none'
                     )}
                     >
                     <span

@@ -19,7 +19,7 @@ function classNames( ...classes ) {
 }
 
 const Settings = () => {
-    
+
     const dispatch = useDispatch();
 
     const activeSettingsNavigationTab = useSelector( ( state ) => state.activeSettingsNavigationTab );
@@ -34,7 +34,7 @@ const Settings = () => {
 
     return (
         <main className="max-w-[77rem] mx-auto my-[2.43rem] bg-white rounded-[0.2rem] shadow overflow-hidden h-[33rem]">
-            <div className="lg:grid lg:grid-cols-12 lg:gap-x-5 pb-8 h-full">
+            <div className="lg:grid lg:grid-cols-12 lg:gap-x-5 h-full">
                 <aside className="py-6 px-2 ml-8 sm:px-6 lg:py-6 lg:px-0 lg:col-span-3 border-r">
                     <nav className="space-y-1">
                         {navigation.map( ( item ) => (
@@ -42,7 +42,7 @@ const Settings = () => {
                             key={item.name}
                             className={classNames(
                             activeSettingsNavigationTab === item.slug
-                            ? 'bg-gray-50 text-wpcolor hover:text-wphovercolor fill-wpcolor hover:bg-white'
+                            ? 'bg-gray-50 text-wpcolor hover:text-wphovercolor fill-wpcolor'
                             : 'text-gray-900 fill-gray-900 hover:text-gray-900 hover:bg-gray-50',
                             'group cursor-pointer rounded-[0.2rem] px-3 py-2 flex items-center text-sm font-medium'
                             )}
@@ -55,16 +55,16 @@ const Settings = () => {
                     </nav>
                 </aside>
                 <div className='space-y-6 mt-8 mb-0 mr-8 sm:px-6 lg:px-0 lg:col-span-9'>
-                    { 'asset-generation' === activeSettingsNavigationTab && 
+                    { 'asset-generation' === activeSettingsNavigationTab &&
                         <>
                             <AssetsGeneration/>
                             <RegenerateAssets/>
                         </>
                     }
-                    { 'templates' === activeSettingsNavigationTab && 
+                    { 'templates' === activeSettingsNavigationTab &&
                         <TemplatesButton/>
                     }
-                    { 'version-control' === activeSettingsNavigationTab && 
+                    { 'version-control' === activeSettingsNavigationTab &&
                         <>
                             <RollBack/>
                             <BetaUpdates/>

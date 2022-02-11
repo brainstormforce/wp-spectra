@@ -15,14 +15,14 @@ const TemplatesButton = () => {
     const enableTemplatesStatus = 'no' === enableTemplates ? false : true;
 
     const updateEnableTemplatesStatus = () => {
-        
+
         let assetStatus;
 		if ( enableTemplates === 'no' ) {
             assetStatus = 'yes';
 		} else {
             assetStatus = 'no';
 		}
-        
+
         dispatch( {type: 'UPDATE_TEMPLATES_BUTTON', payload: assetStatus } );
 
 		const action = 'uag_enable_templates_button',
@@ -58,7 +58,7 @@ const TemplatesButton = () => {
                     onChange={updateEnableTemplatesStatus}
                     className={classNames(
                         enableTemplatesStatus ? 'bg-wpcolor' : 'bg-gray-200',
-                        'relative inline-flex flex-shrink-0 h-5 w-10 items-center border-2 border-transparent rounded-full cursor-pointer transition-colors ease-in-out duration-200 focus:outline-none'
+                        'relative inline-flex flex-shrink-0 h-5 w-[2.4rem] items-center border-2 border-transparent rounded-full cursor-pointer transition-colors ease-in-out duration-200 focus:outline-none'
                     )}
                     >
                     <span

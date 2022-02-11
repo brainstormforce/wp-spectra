@@ -15,14 +15,14 @@ const AssetsGeneration = () => {
     const fileGenerationStatus = 'disabled' === enableFileGeneration ? false : true;
 
     const updateFileGenerationStatus = () => {
-        
+
         let assetStatus;
 		if ( enableFileGeneration === 'disabled' ) {
             assetStatus = 'enabled';
 		} else {
             assetStatus = 'disabled';
 		}
-        
+
         dispatch( {type: 'UPDATE_FILE_GENERATION', payload: assetStatus } );
 
 		const action = 'uag_enable_file_generation',
@@ -60,7 +60,7 @@ const AssetsGeneration = () => {
                     onChange={updateFileGenerationStatus}
                     className={classNames(
                         fileGenerationStatus ? 'bg-wpcolor' : 'bg-gray-200',
-                        'relative inline-flex flex-shrink-0 h-5 w-10 items-center border-2 border-transparent rounded-full cursor-pointer transition-colors ease-in-out duration-200 focus:outline-none'
+                        'relative inline-flex flex-shrink-0 h-5 w-[2.4rem] items-center border-2 border-transparent rounded-full cursor-pointer transition-colors ease-in-out duration-200 focus:outline-none'
                     )}
                     >
                     <span
