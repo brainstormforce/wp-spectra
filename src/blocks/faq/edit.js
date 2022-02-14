@@ -231,7 +231,7 @@ const FaqComponent = ( props ) => {
 
 export default compose(
 	withSelect( ( ownProps ) => {
-		const page_url = select( 'core/editor' ).getPermalink();
+		const page_url = select( 'core/block-editor' ).getPermalink();
 
 		let faq_data = {};
 		const json_data = {

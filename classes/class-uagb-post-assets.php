@@ -215,7 +215,29 @@ class UAGB_Post_Assets {
 			global $post;
 			$this_post = $this->preview ? $post : get_post( $this->post_id );
 			$this->prepare_assets( $this_post );
+			$content = get_option( 'widget_block' );
+			$this->prepare_widget_area_assets( $content );
 		}
+	}
+
+	/**
+	 * Generates stylesheet for widget area.
+	 *
+	 * @param object $content Current Post Object.
+	 * @since x.x.x
+	 */
+	public function prepare_widget_area_assets( $content ) {
+
+		if ( empty( $content ) ) {
+			return;
+		}
+
+		foreach ( $content as $key => $value ) {
+			if ( is_array( $value ) && has_blocks( $value['content'] ) && isset( $value['content'] ) ) {
+				$this->common_function_for_assets_preparation( $value['content'] );
+			}
+		}
+
 	}
 
 	/**
@@ -321,7 +343,6 @@ class UAGB_Post_Assets {
 			$this->generate_assets();
 			$this->generate_asset_files();
 		}
-
 		if ( $this->uag_flag ) {
 
 			// Register Assets for Frontend & Enqueue for Editor.
@@ -829,22 +850,31 @@ class UAGB_Post_Assets {
 		}
 
 		if ( has_blocks( $this_post->ID ) && isset( $this_post->post_content ) ) {
-
-			$blocks            = $this->parse_blocks( $this_post->post_content );
-			$this->page_blocks = $blocks;
-
-			if ( ! is_array( $blocks ) || empty( $blocks ) ) {
-				return;
-			}
-
-			$assets = $this->get_blocks_assets( $blocks );
-
-			$this->stylesheet .= $assets['css'];
-			$this->script     .= $assets['js'];
-
-			// Update fonts.
-			$this->gfonts = array_merge( $this->gfonts, UAGB_Helper::$gfonts );
+			$this->common_function_for_assets_preparation( $this_post->post_content );
 		}
+	}
+
+	/**
+	 * Common function to generate stylesheet.
+	 *
+	 * @param array $post_content Current Post Object.
+	 * @since x.x.x
+	 */
+	public function common_function_for_assets_preparation( $post_content ) {
+		$blocks            = $this->parse_blocks( $post_content );
+		$this->page_blocks = $blocks;
+
+		if ( ! is_array( $blocks ) || empty( $blocks ) ) {
+			return;
+		}
+
+		$assets = $this->get_blocks_assets( $blocks );
+
+		$this->stylesheet .= $assets['css'];
+		$this->script     .= $assets['js'];
+
+		// Update fonts.
+		$this->gfonts = array_merge( $this->gfonts, UAGB_Helper::$gfonts );
 	}
 
 	/**
