@@ -55,6 +55,16 @@ a.uagb-infobox-link-wrap:hover,
 	align-self: center;
 }
 
+.uagb-infobox-icon-left-title.uagb-infobox-image-valign-top .uagb-ifb-title-wrap,
+.uagb-infobox-icon-right-title.uagb-infobox-image-valign-top .uagb-ifb-title-wrap,
+.uagb-infobox-image-valign-top svg,
+.uagb-infobox-image-valign-top img,
+.uagb-infobox-icon-left.uagb-infobox-image-valign-top .uagb-ifb-content,
+.uagb-infobox-icon-right.uagb-infobox-image-valign-top .uagb-ifb-content {
+	-webkit-align-self: self-start;
+	align-self: self-start;
+}
+
 .uagb-infobox-left {
 	justify-content: flex-start;
 	text-align: left;
