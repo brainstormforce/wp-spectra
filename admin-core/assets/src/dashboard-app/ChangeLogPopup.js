@@ -1,66 +1,87 @@
 /* This example requires Tailwind CSS v2.0+ */
-import { Fragment } from 'react'
-import { Popover, Transition } from '@headlessui/react'
-
-function classNames( ...classes ) {
-  return classes.filter( Boolean ).join( ' ' )
-}
+import { Fragment, useState } from 'react'
+import { Transition, Dialog } from '@headlessui/react'
+import { XIcon } from '@heroicons/react/outline'
 
 const ChangeLogPopup = () =>{
 
-	const dynamicUAGChangelogRSSFeed = uag_react.global_data.changelog_data;
+const dynamicUAGChangelogRSSFeed = uag_react.global_data.changelog_data;
+const [open, setOpen] = useState( false )
 
-    return (
-        <Popover className="relative">
-          {( { open } ) => (
-            <>
-              <Popover.Button
-                className={classNames(
-                  open ? 'text-gray-900' : 'text-gray-500',
-                  'group bg-white rounded-[0.2rem] inline-flex items-center text-base font-medium hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500'
-                )}
-              >
-                <svg className={classNames( open ? 'text-gray-600' : 'text-gray-400', ' h-11 w-11 group-hover:text-gray-500' )} viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path fillRule="evenodd" clipRule="evenodd" d="M1.6665 10.0001C1.6665 5.40008 5.39984 1.66675 9.99984 1.66675C14.5998 1.66675 18.3332 5.40008 18.3332 10.0001C18.3332 14.6001 14.5998 18.3334 9.99984 18.3334C5.39984 18.3334 1.6665 14.6001 1.6665 10.0001ZM10.8332 13.3334V15.0001H9.1665V13.3334H10.8332ZM9.99984 16.6667C6.32484 16.6667 3.33317 13.6751 3.33317 10.0001C3.33317 6.32508 6.32484 3.33341 9.99984 3.33341C13.6748 3.33341 16.6665 6.32508 16.6665 10.0001C16.6665 13.6751 13.6748 16.6667 9.99984 16.6667ZM6.6665 8.33341C6.6665 6.49175 8.15817 5.00008 9.99984 5.00008C11.8415 5.00008 13.3332 6.49175 13.3332 8.33341C13.3332 9.40251 12.6748 9.97785 12.0338 10.538C11.4257 11.0695 10.8332 11.5873 10.8332 12.5001H9.1665C9.1665 10.9824 9.9516 10.3806 10.6419 9.85148C11.1834 9.43642 11.6665 9.06609 11.6665 8.33341C11.6665 7.41675 10.9165 6.66675 9.99984 6.66675C9.08317 6.66675 8.33317 7.41675 8.33317 8.33341H6.6665Z" fill="currentColor"></path></svg>
-              </Popover.Button>
+return (
+	<>
+		<button
+			onClick={() => setOpen( true )}
+		>
+			<svg width="30" height="30" viewBox="0 0 50 50" fill="none" xmlns="http://www.w3.org/2000/svg">
+			<path d="M25 46.875C19.1984 46.875 13.6344 44.5703 9.53204 40.468C5.42968 36.3656 3.125 30.8016 3.125 25C3.125 19.1984 5.42968 13.6344 9.53204 9.53204C13.6344 5.42968 19.1984 3.125 25 3.125C30.8016 3.125 36.3656 5.42968 40.468 9.53204C44.5703 13.6344 46.875 19.1984 46.875 25C46.875 30.8016 44.5703 36.3656 40.468 40.468C36.3656 44.5703 30.8016 46.875 25 46.875ZM25 50C31.6304 50 37.9893 47.3661 42.6777 42.6777C47.3661 37.9893 50 31.6304 50 25C50 18.3696 47.3661 12.0107 42.6777 7.32233C37.9893 2.63392 31.6304 0 25 0C18.3696 0 12.0107 2.63392 7.32233 7.32233C2.63392 12.0107 0 18.3696 0 25C0 31.6304 2.63392 37.9893 7.32233 42.6777C12.0107 47.3661 18.3696 50 25 50Z" fill="black"/>
+			<path d="M27.9063 20.5875L20.75 21.4844L20.4938 22.6719L21.9 22.9313C22.8188 23.15 23 23.4813 22.8 24.3969L20.4938 35.2344C19.8875 38.0375 20.8219 39.3563 23.0188 39.3563C24.7219 39.3563 26.7 38.5688 27.5969 37.4875L27.8719 36.1875C27.2469 36.7375 26.3344 36.9563 25.7281 36.9563C24.8688 36.9563 24.5563 36.3531 24.7781 35.2906L27.9063 20.5875ZM28.125 14.0625C28.125 14.8913 27.7958 15.6862 27.2097 16.2722C26.6237 16.8583 25.8288 17.1875 25 17.1875C24.1712 17.1875 23.3763 16.8583 22.7903 16.2722C22.2042 15.6862 21.875 14.8913 21.875 14.0625C21.875 13.2337 22.2042 12.4388 22.7903 11.8528C23.3763 11.2667 24.1712 10.9375 25 10.9375C25.8288 10.9375 26.6237 11.2667 27.2097 11.8528C27.7958 12.4388 28.125 13.2337 28.125 14.0625Z" fill="black"/>
+		</svg>
+		</button>
+		<Transition.Root show={open} as={Fragment}>
+			<Dialog as="div" className="fixed inset-0 overflow-hidden" onClose={setOpen}>
+				<div className="absolute inset-0 overflow-hidden">
+				<Dialog.Overlay className="absolute inset-0" />
 
-              <Transition
-                as={Fragment}
-                enter="transition ease-out duration-200"
-                enterFrom="opacity-0 translate-y-1"
-                enterTo="opacity-100 translate-y-0"
-                leave="transition ease-in duration-150"
-                leaveFrom="opacity-100 translate-y-0"
-                leaveTo="opacity-0 translate-y-1"
-              >
-                <Popover.Panel className="absolute z-10 left-[-4rem] transform -translate-x-1/2 mt-3 px-2 w-screen max-w-xs sm:px-0">
-                  <div className="rounded-[0.2rem] shadow-lg ring-1 ring-black ring-opacity-5 overflow-y-auto max-h-screen">
-                    <div className="relative grid gap-6 bg-white px-5 py-6 sm:gap-8 sm:p-8">
-                      {dynamicUAGChangelogRSSFeed.map( ( item, index ) => {
-                          const title = dynamicUAGChangelogRSSFeed[index].title;
-                          const description = dynamicUAGChangelogRSSFeed[index].description;
-                          const link = dynamicUAGChangelogRSSFeed[index].link;
-                          const pubDate = dynamicUAGChangelogRSSFeed[index].date;
+				<div className="fixed inset-y-0 right-0 pl-10 max-w-full flex sm:mt-[2rem]">
+					<Transition.Child
+					as={Fragment}
+					enter="transform transition ease-in-out duration-500 sm:duration-700"
+					enterFrom="translate-x-full"
+					enterTo="translate-x-0"
+					leave="transform transition ease-in-out duration-500 sm:duration-700"
+					leaveFrom="translate-x-0"
+					leaveTo="translate-x-full"
+					>
+					<div className="w-screen max-w-md">
+						<div className="h-full flex flex-col py-6 bg-white shadow-xl overflow-y-scroll">
+						<div className="px-4 sm:px-6">
+							<div className="flex items-start justify-between">
+							<div className="h-7 flex items-center">
+								<button
+								type="button"
+								className="bg-white rounded-md text-gray-400 hover:text-gray-500 focus:outline-none"
+								onClick={() => setOpen( false )}
+								>
+								<span className="sr-only">Close panel</span>
+								<XIcon className="h-6 w-6" aria-hidden="true" />
+								</button>
+							</div>
+							</div>
+						</div>
+						<div className="mt-6 relative flex-1 px-4 sm:px-6">
+							{/* Replace with your content */}
+							<div className="relative grid bg-white">
+								{dynamicUAGChangelogRSSFeed.map( ( item, index ) => {
+									const title = dynamicUAGChangelogRSSFeed[index].title;
+									const description = dynamicUAGChangelogRSSFeed[index].description;
+									const link = dynamicUAGChangelogRSSFeed[index].link;
+									const pubDate = dynamicUAGChangelogRSSFeed[index].date;
 
-                        return (
-                            <a
-                            key={title}
-                            href={link}
-                            className="-m-3 p-3 block rounded-[0.2rem] hover:bg-gray-50 transition ease-in-out duration-150"
-                            >
-                            <p className="text-base font-medium text-gray-900" dangerouslySetInnerHTML={{__html: title}}></p>
-                            <p className="mt-1 text-sm text-gray-500" dangerouslySetInnerHTML={{__html: pubDate}}></p>
-                            <p className="mt-3 text-sm text-gray-500" dangerouslySetInnerHTML={{__html: description}}></p>
-                            </a>
-                        );
-                     } )}
-                    </div>
-                  </div>
-                </Popover.Panel>
-              </Transition>
-            </>
-          )}
-        </Popover>
-      )
+									return (
+										<a
+											key={title}
+											href={link}
+											className="-m-3 p-3 block rounded-[0.2rem] transition ease-in-out duration-150 mb-1"
+										>
+										<p className="text-base font-medium text-gray-900" dangerouslySetInnerHTML={{__html: title}}></p>
+										<p className="mt-1 text-sm text-gray-500" dangerouslySetInnerHTML={{__html: pubDate}}></p>
+										<p className="mt-3 text-sm text-gray-500" dangerouslySetInnerHTML={{__html: description}}></p>
+										</a>
+									);
+								} )}
+							</div>
+							{/* /End replace */}
+						</div>
+						</div>
+					</div>
+					</Transition.Child>
+				</div>
+				</div>
+			</Dialog>
+		</Transition.Root>
+	</>
+	)
 };
 
 export default ChangeLogPopup;
