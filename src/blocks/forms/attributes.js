@@ -337,6 +337,7 @@ const attributes = {
 	bgColor: {
 		type: 'string',
 		isUAGStyle: true,
+		default: '',
 	},
 	inputplaceholderColor: {
 		type: 'string',
@@ -578,18 +579,22 @@ const attributes = {
 	},
 	paddingFieldTop: {
 		type: 'number',
+		default: 12,
 		isUAGStyle: true,
 	},
 	paddingFieldRight: {
 		type: 'number',
+		default: 12,
 		isUAGStyle: true,
 	},
 	paddingFieldBottom: {
 		type: 'number',
+		default: 12,
 		isUAGStyle: true,
 	},
 	paddingFieldLeft: {
 		type: 'number',
+		default: 12,
 		isUAGStyle: true,
 	},
 	paddingFieldTopTablet: {

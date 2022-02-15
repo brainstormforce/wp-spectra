@@ -40,6 +40,7 @@ const attributes = {
 	boxBgColor: {
 		type: 'string',
 		isUAGStyle: true,
+		default: ''
 	},
 	boxPaddingTypeMobile: {
 		type: 'string',

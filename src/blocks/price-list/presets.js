@@ -1,7 +1,15 @@
 import { __ } from '@wordpress/i18n';
 import { applyFilters } from '@wordpress/hooks';
+import defaultAttributes from './attributes';
+import defaultChildAttributes from '../price-list-child/attributes';
 
 const presets = [
+	{
+		defaultAttributes
+	},
+	{
+		defaultChildAttributes
+	},
     {
         value: 'preset-1',
         label: __( 'Preset 1', 'ultimate-addons-for-gutenberg' ),

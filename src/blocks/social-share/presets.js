@@ -1,7 +1,15 @@
 import { __ } from '@wordpress/i18n';
 import { applyFilters } from '@wordpress/hooks';
+import defaultAttributes from './attributes';
+import defaultChildAttributes from '../social-share-child/attributes';
 
 const presets = [
+	{
+		defaultAttributes
+	},
+	{
+		defaultChildAttributes
+	},
     {
         value: 'preset-1',
         label: __( 'Preset 1', 'ultimate-addons-for-gutenberg' ),
@@ -26,7 +34,6 @@ const presets = [
             { label: 'bgSize', value: 15 },
             { label: 'size', value: 15 },
 			{ label: 'borderRadius', value: 5 },
-			{ label: 'border', value: 0 },
         ],
         childAttributes: [
 			{ label: 'icon_color', value: '#fff' },
@@ -42,7 +49,6 @@ const presets = [
             { label: 'bgSize', value: 15 },
             { label: 'size', value: 15 },
 			{ label: 'borderRadius', value: 100 },
-			{ label: 'border', value: 0 },
         ],
         childAttributes: [
 			{ label: 'icon_color', value: '#fff' },
