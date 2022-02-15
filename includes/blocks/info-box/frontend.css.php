@@ -177,6 +177,13 @@ $selectors = array(
 		'border-top-color' => $attr['seperatorColor'],
 		'border-top-style' => $attr['seperatorStyle'],
 	),
+	// CTA icon space for Backword compatibility.
+	' .uagb-ifb-align-icon-after'                          => array(
+		'margin-left' => UAGB_Helper::get_css_value( $attr['ctaIconSpace'], 'px' ),
+	),
+	' .uagb-ifb-align-icon-before'                         => array(
+		'margin-right' => UAGB_Helper::get_css_value( $attr['ctaIconSpace'], 'px' ),
+	),
 );
 if ( 'after' === $attr['ctaIconPosition'] ) {
 	$selectors['.uagb-infobox__content-wrap .uagb-infobox-cta-link > svg '] = array(

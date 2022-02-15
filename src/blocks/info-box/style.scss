@@ -441,3 +441,15 @@ a.uagb-infbox__link-to-all {
 	height: inherit;
 	vertical-align: middle;
 }
+
+/* For Backword */
+.uagb-ifb-button-icon {
+	height: 15px;
+	width: 15px;
+	font-size: 15px;
+	vertical-align: middle;
+
+	&.uagb-ifb-align-icon-after {
+		float: right;
+	}
+}
