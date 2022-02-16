@@ -459,6 +459,12 @@ a.uagb-infbox__link-to-all {
 	font-size: 15px;
 	vertical-align: middle;
 
+	svg {
+		height: inherit;
+		width: inherit;
+		display: inline-block;
+	}
+
 	&.uagb-ifb-align-icon-after {
 		float: right;
 	}
