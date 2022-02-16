@@ -3,7 +3,7 @@
  */
 
 import RestMenuStyle from './inline-styles';
-import { select } from '@wordpress/data';
+import { select, dispatch } from '@wordpress/data';
 import React, { lazy, Suspense, useEffect } from 'react';
 import lazyLoader from '@Controls/lazy-loader';
 import { useDeviceType } from '@Controls/getPreviewType';
@@ -97,8 +97,8 @@ const UAGBRestaurantMenu = ( props ) => {
 			pricelistChild.attributes.imageAlignment =
 				props.attributes.imageAlignment;
 		} );
-		
-	
+
+
 	}, [] );
 
 	useEffect( () => {
@@ -114,21 +114,57 @@ const UAGBRestaurantMenu = ( props ) => {
 		if( 'side' === props.attributes.imgAlign && 'right' !== props.attributes.imagePosition ){
 			props.setAttributes( { imagePosition : 'left' } );
 			props.setAttributes( { headingAlign : 'left' } );
-		} 
+		}
 		if( 'top' === props.attributes.imgAlign ){
 			props.setAttributes( { imagePosition : 'top' } );
 		}
-		getChildBlocks.forEach( ( pricelistChild ) => {
-			pricelistChild.attributes.imagePosition =props.attributes.imagePosition;
-			pricelistChild.attributes.columns = props.attributes.columns;
-			pricelistChild.attributes.tcolumns = props.attributes.tcolumns;
-			pricelistChild.attributes.mcolumns = props.attributes.mcolumns;
-			pricelistChild.attributes.headingTag = props.attributes.headingTag;
-			pricelistChild.attributes.imageSize = props.attributes.imageSize;
-			pricelistChild.attributes.headingAlign = props.attributes.headingAlign;
-		} );
 
-	
+		const { getSelectedBlock, getBlockAttributes } = select( 'core/block-editor' );
+
+        let childBlocks = [];
+
+        if ( getSelectedBlock()?.innerBlocks ) {
+            childBlocks = getSelectedBlock().innerBlocks;
+        }
+
+        const childBlocksClientIds = [];
+
+        childBlocks.map( ( childBlock ) => {
+            if ( childBlock.clientId ) {
+                childBlocksClientIds.push( childBlock.clientId );
+            }
+            return childBlock;
+        } );
+
+        childBlocksClientIds.map( ( clientId ) => {
+			let attrs = getBlockAttributes(clientId);
+			if (
+				attrs.imagePosition !== props.attributes.imagePosition ||
+				attrs.columns !== props.attributes.columns ||
+				attrs.tcolumns !== props.attributes.tcolumns ||
+				attrs.mcolumns !== props.attributes.mcolumns ||
+				attrs.headingTag !== props.attributes.headingTag ||
+				attrs.imageSize !== props.attributes.imageSize ||
+				attrs.headingAlign !== props.attributes.headingAlign ||
+				attrs.stack !== props.attributes.stack ||
+				attrs.imageAlignment !== props.attributes.imageAlignment
+			) {
+				let childAttrs = {
+					imagePosition : props.attributes.imagePosition,
+					columns : props.attributes.columns,
+					tcolumns : props.attributes.tcolumns,
+					mcolumns : props.attributes.mcolumns,
+					headingTag : props.attributes.headingTag,
+					imageSize : props.attributes.imageSize,
+					headingAlign : props.attributes.headingAlign,
+					stack : props.attributes.stack,
+					imageAlignment : props.attributes.imageAlignment,
+				}
+				dispatch( 'core/block-editor' ).updateBlockAttributes( clientId, childAttrs );
+				return clientId;
+			}
+        } );
+
 	}, [ props ] );
 
 	useEffect( () => {
