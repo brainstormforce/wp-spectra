@@ -158,7 +158,8 @@
 		}
 	}
 
-	&.uagb-rm__image-aligned-middle img {
+	&.uagb-rm__image-aligned-middle img,
+	.uagb-rm__image-aligned-middle .uagb-rm__image-content {
 		-ms-flex-item-align: center;
 		align-self: center;
 	}
