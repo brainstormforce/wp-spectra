@@ -146,7 +146,7 @@ const UAGBRestaurantMenu = ( props ) => {
         } );
 
         childBlocksClientIds.map( ( clientId ) => {
-			let attrs = getBlockAttributes(clientId);
+			const attrs = getBlockAttributes( clientId );
 			if (
 				attrs.imagePosition !== imagePosition ||
 				attrs.columns !== columns ||
@@ -158,20 +158,20 @@ const UAGBRestaurantMenu = ( props ) => {
 				attrs.stack !== stack ||
 				attrs.imageAlignment !== imageAlignment
 			) {
-				let childAttrs = {
-					imagePosition : imagePosition,
-					columns : columns,
-					tcolumns : tcolumns,
-					mcolumns : mcolumns,
-					headingTag : headingTag,
-					imageSize : imageSize,
-					headingAlign : headingAlign,
-					stack : stack,
-					imageAlignment : imageAlignment,
+				const childAttrs = {
+					imagePosition,
+					columns,
+					tcolumns,
+					mcolumns,
+					headingTag,
+					imageSize,
+					headingAlign,
+					stack,
+					imageAlignment,
 				}
 				dispatch( 'core/block-editor' ).updateBlockAttributes( clientId, childAttrs );
-				return clientId;
 			}
+			return clientId;
         } );
 
 	}, [ props ] );
