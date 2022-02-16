@@ -107,15 +107,24 @@ const UAGBRestaurantMenu = ( props ) => {
 
 		addBlockEditorDynamicStyles( 'uagb-restaurant-menu-style-' + props.clientId.substr( 0, 8 ), blockStyling );
 
-		const getChildBlocks = select( 'core/block-editor' ).getBlocks(
-			props.clientId
-		);
+		const {
+			imgAlign,
+			imagePosition,
+			columns,
+			tcolumns,
+			mcolumns,
+			headingTag,
+			imageSize,
+			headingAlign,
+			stack,
+			imageAlignment
+		} = props.attributes;
 
-		if( 'side' === props.attributes.imgAlign && 'right' !== props.attributes.imagePosition ){
+		if( 'side' === imgAlign && 'right' !== imagePosition ){
 			props.setAttributes( { imagePosition : 'left' } );
 			props.setAttributes( { headingAlign : 'left' } );
 		}
-		if( 'top' === props.attributes.imgAlign ){
+		if( 'top' === imgAlign ){
 			props.setAttributes( { imagePosition : 'top' } );
 		}
 
@@ -139,26 +148,26 @@ const UAGBRestaurantMenu = ( props ) => {
         childBlocksClientIds.map( ( clientId ) => {
 			let attrs = getBlockAttributes(clientId);
 			if (
-				attrs.imagePosition !== props.attributes.imagePosition ||
-				attrs.columns !== props.attributes.columns ||
-				attrs.tcolumns !== props.attributes.tcolumns ||
-				attrs.mcolumns !== props.attributes.mcolumns ||
-				attrs.headingTag !== props.attributes.headingTag ||
-				attrs.imageSize !== props.attributes.imageSize ||
-				attrs.headingAlign !== props.attributes.headingAlign ||
-				attrs.stack !== props.attributes.stack ||
-				attrs.imageAlignment !== props.attributes.imageAlignment
+				attrs.imagePosition !== imagePosition ||
+				attrs.columns !== columns ||
+				attrs.tcolumns !== tcolumns ||
+				attrs.mcolumns !== mcolumns ||
+				attrs.headingTag !== headingTag ||
+				attrs.imageSize !== imageSize ||
+				attrs.headingAlign !== headingAlign ||
+				attrs.stack !== stack ||
+				attrs.imageAlignment !== imageAlignment
 			) {
 				let childAttrs = {
-					imagePosition : props.attributes.imagePosition,
-					columns : props.attributes.columns,
-					tcolumns : props.attributes.tcolumns,
-					mcolumns : props.attributes.mcolumns,
-					headingTag : props.attributes.headingTag,
-					imageSize : props.attributes.imageSize,
-					headingAlign : props.attributes.headingAlign,
-					stack : props.attributes.stack,
-					imageAlignment : props.attributes.imageAlignment,
+					imagePosition : imagePosition,
+					columns : columns,
+					tcolumns : tcolumns,
+					mcolumns : mcolumns,
+					headingTag : headingTag,
+					imageSize : imageSize,
+					headingAlign : headingAlign,
+					stack : stack,
+					imageAlignment : imageAlignment,
 				}
 				dispatch( 'core/block-editor' ).updateBlockAttributes( clientId, childAttrs );
 				return clientId;
