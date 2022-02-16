@@ -4,7 +4,8 @@
  * CSS for both Frontend+Backend.
  */
 
-.wp-block-uagb-restaurant-menu {
+.wp-block-uagb-restaurant-menu,
+.uagb-rest_menu__wrap {
 	position: relative;
 
 	&::after {
