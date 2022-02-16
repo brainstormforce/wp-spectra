@@ -34,8 +34,9 @@
 
 .editor-styles-wrapper {
 
-	.wp-block-uagb-call-to-action a.uagb-cta__button-link-wrapper {
+	.uagb-cta__outer-wrap a.uagb-cta__button-link-wrapper {
 		text-decoration: none;
+		fill: currentColor;
 	}
 
 	.uagb-editor-preview-mode-tablet {

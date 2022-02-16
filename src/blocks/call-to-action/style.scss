@@ -12,12 +12,12 @@
 	display: inline-block;
 }
 
+.wp-block-uagb-call-to-action .wp-block-button__link {
+	fill: currentColor;
+}
+
 .uagb-cta__outer-wrap {
 	position: relative;
-
-	.wp-block-button__link svg {
-		fill: currentColor;
-	}
 
 	.uagb-cta__content-right .uagb-cta__button-wrapper {
 		float: right;
