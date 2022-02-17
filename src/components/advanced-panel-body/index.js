@@ -36,13 +36,13 @@ const UAGAdvancedPanelBody = ( props ) => {
         return siblings;
 
     };
-
+	const panelTitle = props?.title ? props?.title.toLowerCase() : '';
     return (
         <PanelBody
             { ...props }
             onToggle={onPanelToggle}
             ref={panelRef}
-			className={`uag-advance-panel-body-${props?.title.toLowerCase()}`}
+			className={`uag-advance-panel-body-${panelTitle}`}
         >
             { children }
         </PanelBody>
