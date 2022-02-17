@@ -142,63 +142,63 @@ const Background = ( props ) => {
 									}
 									options={ [
 										{
-											value: 'top-left',
+											value: 'left top',
 											label: __(
 												'Top Left',
 												'ultimate-addons-for-gutenberg'
 											),
 										},
 										{
-											value: 'top-center',
+											value: 'center top',
 											label: __(
 												'Top Center',
 												'ultimate-addons-for-gutenberg'
 											),
 										},
 										{
-											value: 'top-right',
+											value: 'right top',
 											label: __(
 												'Top Right',
 												'ultimate-addons-for-gutenberg'
 											),
 										},
 										{
-											value: 'center-left',
+											value: 'center top',
 											label: __(
-												'Center Left',
+												'Center Top',
 												'ultimate-addons-for-gutenberg'
 											),
 										},
 										{
-											value: 'center-center',
+											value: 'center center',
 											label: __(
 												'Center Center',
 												'ultimate-addons-for-gutenberg'
 											),
 										},
 										{
-											value: 'center-right',
+											value: 'center bottom',
 											label: __(
-												'Center Right',
+												'Center Bottom',
 												'ultimate-addons-for-gutenberg'
 											),
 										},
 										{
-											value: 'bottom-left',
+											value: 'left bottom',
 											label: __(
 												'Bottom Left',
 												'ultimate-addons-for-gutenberg'
 											),
 										},
 										{
-											value: 'bottom-center',
+											value: 'center bottom',
 											label: __(
 												'Bottom Center',
 												'ultimate-addons-for-gutenberg'
 											),
 										},
 										{
-											value: 'bottom-right',
+											value: 'right bottom',
 											label: __(
 												'Bottom Right',
 												'ultimate-addons-for-gutenberg'
