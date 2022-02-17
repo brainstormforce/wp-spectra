@@ -1354,8 +1354,8 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 									$scope.slick( slider_options );
 
 								});
-
-								let articles = document.getElementsByClassName( 'uagb-post__inner-wrap' );
+								// This CSS is for Post BG Image Spacing
+								let articles = document.querySelectorAll( '.uagb-post__image-position-background .uagb-post__inner-wrap' );
 
 								for( let article of articles ) {
 									let articleWidth = article.offsetWidth;
