@@ -1355,6 +1355,20 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 
 								});
 
+								let articles = document.getElementsByClassName( 'uagb-post__inner-wrap' );
+
+								for( let article of articles ) {
+									let articleWidth = article.offsetWidth;
+									let rowGap = <?php echo esc_html($value['rowGap'] ); ?>;
+									let imageWidth = 100 - ( rowGap / articleWidth ) * 100;
+									let image = article.getElementsByClassName('uagb-post__image');
+									if ( image[0] ) {
+										image[0].style.width = imageWidth + '%';
+										image[0].style.marginLeft = rowGap / 2 + 'px';
+
+									}
+
+								}
 								var enableEqualHeight = ( '<?php echo esc_html( $equal_height ); ?>' );
 
 								if( enableEqualHeight ){
