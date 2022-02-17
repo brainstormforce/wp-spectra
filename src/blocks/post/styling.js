@@ -206,6 +206,9 @@ function styling( props ) {
 		' .uagb-post__inner-wrap .uagb-post__text:first-child': {
 			'margin-top': generateCSSUnit( paddingTop, contentPaddingUnit ),
 		},
+		' .uagb-post__inner-wrap .uagb-post__text.uagb-post__title': {
+			'margin-top': generateCSSUnit( paddingTop, contentPaddingUnit ),
+		},
 		' .uagb-post__inner-wrap .uagb-post__text:last-child': {
 			'margin-bottom': generateCSSUnit(
 				paddingBottom,
