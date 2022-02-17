@@ -47,23 +47,23 @@ const UAGBTeam = ( props ) => {
 		} = props.attributes;
 
 		if ( imgTopMargin ) {
-			if ( ! imageTopMargin ) {
+			if ( null === imageTopMargin || undefined === imageTopMargin ) {
 				props.setAttributes( { imageTopMargin: imgTopMargin } );
 			}
 		}
 		if ( imgBottomMargin ) {
-			if ( ! imageBottomMargin ) {
+			if ( null === imageBottomMargin || undefined === imageBottomMargin ) {
 				props.setAttributes( { imageBottomMargin: imgBottomMargin } );
 			}
 		}
 
 		if ( imgLeftMargin ) {
-			if ( ! imageLeftMargin ) {
+			if ( null === imageLeftMargin || undefined === imageLeftMargin ) {
 				props.setAttributes( { imageLeftMargin: imgLeftMargin } );
 			}
 		}
 		if ( imgRightMargin ) {
-			if ( ! imageRightMargin ) {
+			if ( null === imageRightMargin || undefined === imageRightMargin ) {
 				props.setAttributes( { imageRightMargin: imgRightMargin } );
 			}
 		}

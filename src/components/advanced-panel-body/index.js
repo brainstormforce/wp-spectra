@@ -1,9 +1,9 @@
 import { PanelBody } from '@wordpress/components';
-import { useRef  } from '@wordpress/element';
+import { useRef } from '@wordpress/element';
 import React from 'react';
 
 const UAGAdvancedPanelBody = ( props ) => {
-    
+
     const {
         children
     } = props;
@@ -11,7 +11,7 @@ const UAGAdvancedPanelBody = ( props ) => {
     const panelRef = useRef( null );
 
     const onPanelToggle = () => {
-        
+
         if ( 'enabled' === uagb_blocks_info.collapse_panels ) {
             const siblings = getSiblings( panelRef.current );
 
@@ -25,16 +25,16 @@ const UAGAdvancedPanelBody = ( props ) => {
 
         const siblings = [];
         let sibling = elem.parentNode.firstChild;
-    
+
         while ( sibling ) {
             if ( sibling.nodeType === 1 && sibling !== elem && sibling.classList.contains( 'is-opened' ) ) {
                 siblings.push( sibling );
             }
             sibling = sibling.nextSibling
         }
-    
+
         return siblings;
-    
+
     };
 
     return (
@@ -42,6 +42,7 @@ const UAGAdvancedPanelBody = ( props ) => {
             { ...props }
             onToggle={onPanelToggle}
             ref={panelRef}
+			className={`uag-advance-panel-body-${props?.title.toLowerCase()}`}
         >
             { children }
         </PanelBody>

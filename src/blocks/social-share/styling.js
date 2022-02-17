@@ -71,14 +71,21 @@ function styling( props ) {
 		alignment = 'flex-start';
 	}else if( align === 'right' ){
 		alignment = 'flex-end'
-	}else{ 
+	}else{
 		alignment = 'center';
 	}
 
 	selectors[ '.uagb-social-share__outer-wrap .block-editor-inner-blocks' ] = {
 		'text-align': align,
 	};
-
+	selectors[ '.uagb-social-share__outer-wrap .block-editor-inner-blocks .block-editor-block-list__layout' ] = {
+		'justify-content': alignment,
+		'-webkit-box-pack': alignment,
+		'-ms-flex-pack': alignment,
+		'-webkit-box-align': alignment,
+		'-ms-flex-align': alignment,
+		'align-items': alignment,
+	};
 	selectors[
 		'.uagb-social-share__outer-wrap'
 	] = {
