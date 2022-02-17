@@ -22,7 +22,7 @@ return array(
 	'submitBgColorHover'             => '',
 	'submitborderStyle'              => '',
 	'toggleSize'                     => 15,
-	'toggleActiveColor'              => '',
+	'toggleActiveColor'              => '#000000',
 	'toggleWidthSize'                => 0,
 	'toggleHeightSize'               => 0,
 	'submitborderWidth'              => 0,
