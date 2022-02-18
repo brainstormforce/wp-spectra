@@ -1164,7 +1164,7 @@ const Settings = ( props ) => {
 	const btnSetting = () => {
 		return (
 			<UAGAdvancedPanelBody
-				title={ __( 'Submit Button', 'ultimate-addons-for-gutenberg' ) }
+				title={ __( 'Submit', 'ultimate-addons-for-gutenberg' ) }
 				initialOpen={ false }
 			>
 				<MultiButtonsControl
