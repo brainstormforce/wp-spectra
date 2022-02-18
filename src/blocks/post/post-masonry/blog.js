@@ -2,6 +2,8 @@ import classnames from 'classnames';
 import { lazy, Suspense } from 'react';
 import lazyLoader from '@Controls/lazy-loader';
 import { useDeviceType } from '@Controls/getPreviewType';
+import React, { useRef, useEffect } from 'react';
+
 const Masonry = lazy( () =>
 	import(
 		/* webpackChunkName: "chunks/post-masonry/react-masonry-component" */ 'react-masonry-component'
@@ -14,6 +16,7 @@ import {
 } from '.././function';
 
 function Blog( props ) {
+	const article = useRef();
 	const { attributes, className, latestPosts, block_id } = props;
 	const deviceType = useDeviceType();
 	const {
@@ -26,7 +29,30 @@ function Blog( props ) {
 		buttonText,
 		paginationType,
 		layoutConfig,
+		rowGap
 	} = attributes;
+
+	useEffect( () => {
+		setTimeout( () => {
+
+			if(article?.current){
+
+				let articleWidth  = article?.current?.offsetWidth;
+				let imageWidth = 100 - ( rowGap / articleWidth ) * 100;
+				let images = article?.current?.parentNode?.getElementsByClassName('uagb-post__image');
+
+				for( let image of images ) {
+					if ( image ) {
+						image.style.width = imageWidth + '%';
+						image.style.marginLeft = rowGap / 2 + 'px';
+
+					}
+				}
+			}
+
+		}, 100)
+
+    }, [article]);
 
 	// Removing posts from display should be instant.
 	const displayPosts =
@@ -93,7 +119,7 @@ function Blog( props ) {
 						parentClassName="uagb-block-grid"
 					>
 						{ displayPosts.map( ( post, i ) => (
-							<article key={ i } className="uagb-post__inner-wrap">
+							<article ref={article} key={ i } className="uagb-post__inner-wrap">
 								{ renderPostLayout(
 									'uagb/post-masonry',
 									post,

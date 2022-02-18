@@ -5,7 +5,7 @@ import {
 	renderPostLayout,
 } from '.././function';
 import { useDeviceType } from '@Controls/getPreviewType';
-import React, { lazy, Suspense } from 'react';
+import React, { lazy, Suspense, useRef, useEffect } from 'react';
 import lazyLoader from '@Controls/lazy-loader';
 
 const Slider = lazy( () =>
@@ -15,6 +15,7 @@ const Slider = lazy( () =>
 );
 
 function Blog( props ) {
+	const article = useRef();
 	const { attributes, className, latestPosts, block_id } = props;
 	const deviceType = useDeviceType();
 
@@ -35,7 +36,29 @@ function Blog( props ) {
 		arrowDots,
 		equalHeight,
 		layoutConfig,
+		rowGap
 	} = attributes;
+
+	useEffect( () => {
+		setTimeout( () => {
+
+			if(article?.current){
+				let articleWidth  = article?.current?.offsetWidth;
+				let imageWidth = 100 - ( rowGap / articleWidth ) * 100;
+				let images = article?.current?.closest('.slick-list').getElementsByClassName('uagb-post__image');
+
+				for( let image of images ) {
+					if ( image ) {
+						image.style.width = imageWidth + '%';
+						image.style.marginLeft = rowGap / 2 + 'px';
+
+					}
+				}
+			}
+
+		}, 100)
+
+    }, [article]);
 
 	// Removing posts from display should be instant.
 	const displayPosts =
@@ -127,7 +150,7 @@ function Blog( props ) {
 	};
 
 	const all_posts = displayPosts.map( ( post, i ) => (
-		<article key={ i } className="uagb-post__inner-wrap">
+		<article ref={article} key={ i } className="uagb-post__inner-wrap">
 			{ renderPostLayout(
 				'uagb/post-carousel',
 				post,
