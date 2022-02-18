@@ -39,26 +39,37 @@ function Blog( props ) {
 		rowGap
 	} = attributes;
 
-	useEffect( () => {
+	const updateImageBgWidth = () => {
+
 		setTimeout( () => {
 
 			if(article?.current){
 				let articleWidth  = article?.current?.offsetWidth;
 				let imageWidth = 100 - ( rowGap / articleWidth ) * 100;
-				let images = article?.current?.closest('.slick-list').getElementsByClassName('uagb-post__image');
+				let parent = article?.current?.closest('.uagb-post__image-position-background');
 
-				for( let image of images ) {
-					if ( image ) {
-						image.style.width = imageWidth + '%';
-						image.style.marginLeft = rowGap / 2 + 'px';
+				if ( parent ) {
+					let images = parent?.getElementsByClassName('uagb-post__image');
+					for( let image of images ) {
+						if ( image ) {
+							image.style.width = imageWidth + '%';
+							image.style.marginLeft = rowGap / 2 + 'px';
 
+						}
 					}
 				}
 			}
 
 		}, 100)
+	};
 
+	useEffect( () => {
+		updateImageBgWidth();
     }, [article]);
+
+	useEffect( () => {
+		updateImageBgWidth();
+    }, [imgPosition]);
 
 	// Removing posts from display should be instant.
 	const displayPosts =
