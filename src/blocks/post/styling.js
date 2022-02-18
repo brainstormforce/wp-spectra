@@ -340,12 +340,6 @@ function styling( props ) {
 		'text-transform': excerptTransform,
 		'text-decoration': excerptDecoration,
 	};
-	selectors[ ' .uagb-post__cta ' ] = {
-		'border-width': generateCSSUnit( borderWidth, 'px' ),
-		'border-radius': generateCSSUnit( borderRadius, 'px' ),
-		'border-color': borderColor,
-		'border-style': borderStyle,
-	};
 	selectors[ ' .uagb-post__cta .uagb-text-link' ] = {
 		'pointer-events': 'visible',
 		'color': ctaColor,
