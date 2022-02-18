@@ -95,15 +95,13 @@ $selectors = array(
 	'.wp-block-uagb-columns'           => array(
 		'box-shadow' => UAGB_Helper::get_css_value( $attr['boxShadowHOffset'], 'px' ) . ' ' . UAGB_Helper::get_css_value( $attr['boxShadowVOffset'], 'px' ) . ' ' . UAGB_Helper::get_css_value( $attr['boxShadowBlur'], 'px' ) . ' ' . UAGB_Helper::get_css_value( $attr['boxShadowSpread'], 'px' ) . ' ' . $attr['boxShadowColor'] . ' ' . $boxShadowPositionCSS,
 	),
-	' .uagb-columns__overlay'          => array(
-		'border-radius' => UAGB_Helper::get_css_value( $attr['borderRadius'], $attr['desktopMarginType'] ),
-	),
 );
 if ( 'none' !== $attr['borderStyle'] ) {
-	$selectors[' .uagb-columns__overlay']['border-style']       = $attr['borderStyle'];
-	$selectors[' .uagb-columns__overlay']['border-width']       = UAGB_Helper::get_css_value( $attr['borderWidth'], 'px' );
-	$selectors[' .uagb-columns__overlay']['border-color']       = $attr['borderColor'];
-	$selectors[' .uagb-columns__overlay:hover']['border-color'] = $attr['borderHoverColor'];
+	$selectors['.uagb-columns__wrap']['border-style']       = $attr['borderStyle'];
+	$selectors['.uagb-columns__wrap']['border-width']       = UAGB_Helper::get_css_value( $attr['borderWidth'], 'px' );
+	$selectors['.uagb-columns__wrap']['border-color']       = $attr['borderColor'];
+	$selectors['.uagb-columns__wrap']['border-radius']      = UAGB_Helper::get_css_value( $attr['borderRadius'], $attr['desktopMarginType'] );
+	$selectors['.uagb-columns__wrap:hover']['border-color'] = $attr['borderHoverColor'];
 }
 if ( '' !== $attr['topWidth'] ) {
 	$selectors[' .uagb-columns__shape-top svg']['width'] = 'calc( ' . $attr['topWidth'] . '% + 1.3px )';
