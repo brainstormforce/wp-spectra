@@ -244,43 +244,6 @@ function styling( props ) {
 			),
 			'text-align': align,
 		},
-		' input.gform_button': {
-			'color': buttonTextColor,
-			'background-color': buttonBgColor,
-			'font-size': generateCSSUnit( buttonFontSize, buttonFontSizeType ),
-			'font-family': buttonFontFamily,
-			'font-style' : buttonFontStyle,
-			'text-decoration': buttonDecoration,
-			'text-transform': buttonTransform,
-			'font-weight': buttonFontWeight,
-			'line-height': generateCSSUnit(
-				buttonLineHeight,
-				buttonLineHeightType
-			),
-			'border-color': buttonBorderColor,
-			'border-style': buttonBorderStyle,
-			'border-width': generateCSSUnit( buttonBorderWidth, 'px' ),
-			'border-radius': generateCSSUnit(
-				buttonBorderRadius,
-				buttonBorderRadiusType
-			),
-			'padding-left': generateCSSUnit(
-				buttonleftPadding,
-				buttonpaddingUnit
-			),
-			'padding-right': generateCSSUnit(
-				buttonrightPadding,
-				buttonpaddingUnit
-			),
-			'padding-top': generateCSSUnit(
-				buttontopPadding,
-				buttonpaddingUnit
-			),
-			'padding-bottom': generateCSSUnit(
-				buttonbottomPadding,
-				buttonpaddingUnit
-			),
-		},
 		' select': {
 			'background-color': fieldBgColor,
 			'border-style': fieldBorderStyle,
