@@ -110,6 +110,9 @@ $selectors = array(
 		'border-left-color' => $attr['borderHoverColor'],
 	),
 	// Backword css.
+	' .uagb-blockquote__skin-quotation .uagb-blockquote__icon svg' => array(
+		'fill' => $attr['quoteColor'],
+	),
 	' .uagb-blockquote__skin-quotation .uagb-blockquote__icon:hover svg' => array(
 		'fill' => $attr['quoteHoverColor'],
 	),

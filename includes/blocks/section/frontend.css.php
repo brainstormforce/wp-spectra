@@ -115,6 +115,10 @@ $selectors = array(
 	),
 );
 
+$selectors[' .uagb-section__overlay'] = array(
+	'border-radius' => UAGB_Helper::get_css_value( $attr['borderRadius'], 'px' ),
+);
+
 if ( 'video' === $bg_type ) {
 	$selectors[' > .uagb-section__overlay'] = array(
 		'opacity'          => 1,

@@ -94,17 +94,17 @@ $selectors = array(
 	),
 );
 if ( 'left' === $attr['tabAlign'] ) {
-	$selectors[' .uagb-tabs__panel'] = array(
+	$selectors[' ul.uagb-tabs__panel'] = array(
 		'margin-right' => 'auto',
 		'margin-left'  => 0,
 	);
 } elseif ( 'right' === $attr['tabAlign'] ) {
-	$selectors[' .uagb-tabs__panel'] = array(
+	$selectors[' ul.uagb-tabs__panel'] = array(
 		'margin-left'  => 'auto',
 		'margin-right' => 0,
 	);
 } else {
-	$selectors[' .uagb-tabs__panel'] = array(
+	$selectors[' ul.uagb-tabs__panel'] = array(
 		'margin' => 'auto',
 	);
 }
