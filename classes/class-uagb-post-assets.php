@@ -233,7 +233,7 @@ class UAGB_Post_Assets {
 		}
 
 		foreach ( $content as $key => $value ) {
-			if ( is_array( $value ) && has_blocks( $value['content'] ) && isset( $value['content'] ) ) {
+			if ( isset( $value['content'] ) && is_array( $value ) && has_blocks( $value['content'] ) ) {
 				$this->common_function_for_assets_preparation( $value['content'] );
 			}
 		}
