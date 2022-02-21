@@ -61,6 +61,10 @@ const attributes = {
 		default: 'left',
 		isUAGStyle: true,
 	},
+	stack: {
+		type: 'string',
+		default: 'tablet',
+	},
 };
 
 export default attributes;
