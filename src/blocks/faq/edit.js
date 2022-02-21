@@ -66,7 +66,7 @@ const FaqComponent = ( props ) => {
 		setAttributes( { block_id: props.clientId.substr( 0, 8 ) } );
 
 		setAttributes( { schema: JSON.stringify( props.schemaJsonData ) } );
-		
+
 		if (
 			10 === questionBottomPaddingDesktop &&
 			10 !== vquestionPaddingDesktop
@@ -189,11 +189,11 @@ const FaqComponent = ( props ) => {
 	}, [] );
 
 	useEffect( () => {
-		
+
 		const blockStyling = styling( props );
 
 		addBlockEditorDynamicStyles( 'uagb-style-faq-' + props.clientId.substr( 0, 8 ), blockStyling );
-		
+
 		const getChildBlocks = select( 'core/block-editor' ).getBlocks(
 			props.clientId
 		);
@@ -220,7 +220,7 @@ const FaqComponent = ( props ) => {
 
 		addBlockEditorDynamicStyles( 'uagb-style-faq-' + props.clientId.substr( 0, 8 ), blockStyling );
 	}, [deviceType] );
-	
+
 	return (
 		<Suspense fallback={ lazyLoader() }>
 			<Settings parentProps={ props } />
@@ -231,7 +231,10 @@ const FaqComponent = ( props ) => {
 
 export default compose(
 	withSelect( ( ownProps ) => {
-		const page_url = select( 'core/block-editor' ).getPermalink();
+		let page_url = '';
+		if ( select( 'core/editor' ) ) {
+			page_url = select( 'core/editor' ).getPermalink();
+		}
 
 		let faq_data = {};
 		const json_data = {
