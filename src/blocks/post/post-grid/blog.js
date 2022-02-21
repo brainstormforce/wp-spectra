@@ -27,15 +27,15 @@ const Blog = ( props ) => {
 
 		setTimeout( () => {
 
-			if(article?.current){
-				let articleWidth  = article?.current?.offsetWidth;
-				let imageWidth = 100 - ( rowGap / articleWidth ) * 100;
-				let parent = article?.current?.parentNode;
+			if( article?.current ){
+				const articleWidth  = article?.current?.offsetWidth;
+				const imageWidth = 100 - ( rowGap / articleWidth ) * 100;
+				const parent = article?.current?.parentNode;
 
-				if ( parent && parent.classList.contains('uagb-post__image-position-background')) {
-					let images = parent?.getElementsByClassName('uagb-post__image');
+				if ( parent && parent.classList.contains( 'uagb-post__image-position-background' ) ) {
+					const images = parent?.getElementsByClassName( 'uagb-post__image' );
 
-					for( let image of images ) {
+					for( const image of images ) {
 						if ( image ) {
 							image.style.width = imageWidth + '%';
 							image.style.marginLeft = rowGap / 2 + 'px';
@@ -45,16 +45,16 @@ const Blog = ( props ) => {
 				}
 			}
 
-		}, 100)
+		}, 100 )
 	};
 
     useEffect( () => {
 		updateImageBgWidth();
-    }, [article]);
+    }, [article] );
 
 	useEffect( () => {
 		updateImageBgWidth();
-    }, [imgPosition]);
+    }, [imgPosition] );
 
 	const equalHeightClass = equalHeight ? 'uagb-post__equal-height' : '';
 	// Removing posts from display should be instant.

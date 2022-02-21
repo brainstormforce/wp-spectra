@@ -43,14 +43,14 @@ function Blog( props ) {
 
 		setTimeout( () => {
 
-			if(article?.current){
-				let articleWidth  = article?.current?.offsetWidth;
-				let imageWidth = 100 - ( rowGap / articleWidth ) * 100;
-				let parent = article?.current?.closest('.uagb-post__image-position-background');
+			if( article?.current ){
+				const articleWidth  = article?.current?.offsetWidth;
+				const imageWidth = 100 - ( rowGap / articleWidth ) * 100;
+				const parent = article?.current?.closest( '.uagb-post__image-position-background' );
 
 				if ( parent ) {
-					let images = parent?.getElementsByClassName('uagb-post__image');
-					for( let image of images ) {
+					const images = parent?.getElementsByClassName( 'uagb-post__image' );
+					for( const image of images ) {
 						if ( image ) {
 							image.style.width = imageWidth + '%';
 							image.style.marginLeft = rowGap / 2 + 'px';
@@ -60,16 +60,16 @@ function Blog( props ) {
 				}
 			}
 
-		}, 100)
+		}, 100 )
 	};
 
 	useEffect( () => {
 		updateImageBgWidth();
-    }, [article]);
+    }, [article] );
 
 	useEffect( () => {
 		updateImageBgWidth();
-    }, [imgPosition]);
+    }, [imgPosition] );
 
 	// Removing posts from display should be instant.
 	const displayPosts =

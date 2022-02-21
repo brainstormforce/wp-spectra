@@ -1276,7 +1276,7 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 		public function add_post_dynamic_script() {
 			if ( isset( self::$settings['grid'] ) && ! empty( self::$settings['grid'] ) ) {
 				foreach ( self::$settings['grid'] as $key => $value ) {
-			?>
+					?>
 				<script type="text/javascript" id="uagb-post-grid-<?php echo esc_html( $key ); ?>">
 					document.addEventListener("DOMContentLoaded", function(){
 						// This CSS is for Post BG Image Spacing
@@ -1284,7 +1284,7 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 
 						for( let article of articles ) {
 							let articleWidth = article.offsetWidth;
-							let rowGap = <?php echo esc_html($value['rowGap'] ); ?>;
+							let rowGap = <?php echo esc_html( $value['rowGap'] ); ?>;
 							let imageWidth = 100 - ( rowGap / articleWidth ) * 100;
 							let image = article.getElementsByClassName('uagb-post__image');
 							if ( image[0] ) {
@@ -1296,9 +1296,9 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 						}
 					});
 				</script>
-			<?php
+					<?php
+				}
 			}
-		}
 			if ( isset( self::$settings['masonry'] ) && ! empty( self::$settings['masonry'] ) ) {
 				foreach ( self::$settings['masonry'] as $key => $value ) {
 					?>
@@ -1318,7 +1318,7 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 
 							for( let article of articles ) {
 								let articleWidth = article.offsetWidth;
-								let rowGap = <?php echo esc_html($value['rowGap'] ); ?>;
+								let rowGap = <?php echo esc_html( $value['rowGap'] ); ?>;
 								let imageWidth = 100 - ( rowGap / articleWidth ) * 100;
 								let image = article.getElementsByClassName('uagb-post__image');
 								if ( image[0] ) {
@@ -1397,7 +1397,7 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 
 								for( let article of articles ) {
 									let articleWidth = article.offsetWidth;
-									let rowGap = <?php echo esc_html($value['rowGap'] ); ?>;
+									let rowGap = <?php echo esc_html( $value['rowGap'] ); ?>;
 									let imageWidth = 100 - ( rowGap / articleWidth ) * 100;
 									let image = article.getElementsByClassName('uagb-post__image');
 									if ( image[0] ) {

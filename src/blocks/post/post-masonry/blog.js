@@ -1,8 +1,7 @@
 import classnames from 'classnames';
-import { lazy, Suspense } from 'react';
 import lazyLoader from '@Controls/lazy-loader';
 import { useDeviceType } from '@Controls/getPreviewType';
-import React, { useRef, useEffect } from 'react';
+import React, { useRef, useEffect, lazy, Suspense } from 'react';
 
 const Masonry = lazy( () =>
 	import(
@@ -36,15 +35,15 @@ function Blog( props ) {
 
 		setTimeout( () => {
 
-			if(article?.current){
+			if( article?.current ){
 
-				let articleWidth  = article?.current?.offsetWidth;
-				let imageWidth = 100 - ( rowGap / articleWidth ) * 100;
-				let parent = article?.current?.parentNode;
+				const articleWidth  = article?.current?.offsetWidth;
+				const imageWidth = 100 - ( rowGap / articleWidth ) * 100;
+				const parent = article?.current?.parentNode;
 
-				if ( parent && parent.classList.contains('uagb-post__image-position-background')) {
-					let images = parent?.getElementsByClassName('uagb-post__image');
-					for( let image of images ) {
+				if ( parent && parent.classList.contains( 'uagb-post__image-position-background' ) ) {
+					const images = parent?.getElementsByClassName( 'uagb-post__image' );
+					for( const image of images ) {
 						if ( image ) {
 							image.style.width = imageWidth + '%';
 							image.style.marginLeft = rowGap / 2 + 'px';
@@ -54,16 +53,16 @@ function Blog( props ) {
 				}
 			}
 
-		}, 100)
+		}, 100 )
 	};
 
 	useEffect( () => {
 		updateImageBgWidth();
-    }, [article]);
+    }, [article] );
 
 	useEffect( () => {
 		updateImageBgWidth();
-    }, [imgPosition]);
+    }, [imgPosition] );
 
 	// Removing posts from display should be instant.
 	const displayPosts =
