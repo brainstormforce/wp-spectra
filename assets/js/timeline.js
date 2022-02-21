@@ -30,26 +30,18 @@ function uagbTimelineInit() {
 		lineOuter.style.top = timelineStartIcon?.offsetTop + 'px';
 		const timelineCardHeight = cardLast?.offsetHeight;
 
-		const lastItemTop = cardLast?.getBoundingClientRect().top;
-
-		let lastItem, parentTop;
 		if ( content.classList.contains( 'uagb-timeline__arrow-center' ) ) {
 
 			lineOuter.style.bottom = timelineEndIcon?.offsetTop + 'px';
-			parentTop = lastItemTop - timelineStartIcon?.offsetTop;
-			lastItem = parentTop;
 		} else if ( content.classList.contains( 'uagb-timeline__arrow-top' ) ) {
 
 			const topHeight = timelineCardHeight - timelineEndIcon?.offsetTop;
 			lineOuter.style.bottom = topHeight + 'px';
-			lastItem = lastItemTop;
 
 		} else if ( content.classList.contains( 'uagb-timeline__arrow-bottom' ) ) {
 
 			const bottomHeight = timelineCardHeight - timelineEndIcon?.offsetTop;
 			lineOuter.style.bottom = bottomHeight + 'px';
-			parentTop = lastItemTop - timelineStartIcon?.offsetTop;
-			lastItem = parentTop + timelineEndIcon?.offsetTop;
 		}
 
 		const connectorHeight = 3 * iconClass[0]?.offsetHeight;
