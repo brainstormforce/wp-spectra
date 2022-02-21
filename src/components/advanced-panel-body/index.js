@@ -36,7 +36,9 @@ const UAGAdvancedPanelBody = ( props ) => {
         return siblings;
 
     };
+
 	const panelTitle = props?.title ? props?.title.toLowerCase() : '';
+
     return (
         <PanelBody
             { ...props }
