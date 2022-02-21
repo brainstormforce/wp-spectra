@@ -36,7 +36,7 @@ return array(
 	'backgroundImage'       => '',
 	'backgroundPosition'    => '',
 	'backgroundSize'        => '',
-	'backgroundRepeat'      => '',
+	'backgroundRepeat'      => 'no-repeat',
 	'backgroundAttachment'  => '',
 	'backgroundColor'       => '',
 	'backgroundOpacity'     => '',

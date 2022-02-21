@@ -32,7 +32,7 @@ const presets = [
             { label: 'titleSpace', value: 5 },
 			{ label: 'prefixSpace', value: 13 },
 			{ label: 'descSpace', value: 20 },
-			{ label: 'align', value: 'left' },
+			{ label: 'align', value: 'center' },
 			{ label: 'imgPosition', value: 'above' },
 			{ label: 'imgAlign', value: '' },
 			{ label: 'twitterIcon', value: '' },
