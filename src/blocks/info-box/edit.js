@@ -16,8 +16,9 @@ const Settings = lazy( () =>
 
 const UAGBInfoBox = ( props ) => {
 	const deviceType = useDeviceType();
-	
+
 	useEffect( () => {
+
 		const { setAttributes } = props;
 		// Assigning block_id in the attribute.
 		setAttributes( { block_id: props.clientId.substr( 0, 8 ) } );
@@ -53,19 +54,21 @@ const UAGBInfoBox = ( props ) => {
 	}, [] );
 
 	useEffect( () => {
+
 		// Replacement for componentDidUpdate.
 		const blockStyling = styling( props );
 
 		addBlockEditorDynamicStyles( 'uagb-info-box-style-' + props.clientId.substr( 0, 8 ), blockStyling );
-		
+
 	}, [ props ] );
 
 	useEffect( () => {
+
 		// Replacement for componentDidUpdate.
 		const blockStyling = styling( props );
 
 		addBlockEditorDynamicStyles( 'uagb-info-box-style-' + props.clientId.substr( 0, 8 ), blockStyling );
-		
+
 	}, [ deviceType ] );
 
 	return (

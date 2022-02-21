@@ -15,7 +15,6 @@ const presets = [
 			{ label: 'separatorWidth', value: '' },
 			{ label: 'separatorHeight', value: '' },
 			{ label: 'separatorColor', value: '' },
-			{ label: 'separatorWidthType' , value: ''},
         ],
         icon: '<svg width="72" height="72" viewBox="0 0 72 72" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="7" y="27" width="42" height="2" rx="1" /><rect x="7" y="35" width="58" height="1" rx="0.5" /><rect x="7" y="39" width="58" height="1" rx="0.5" /><path d="M7 43.5C7 43.2239 7.22386 43 7.5 43H50.5C50.7761 43 51 43.2239 51 43.5C51 43.7761 50.7761 44 50.5 44H7.5C7.22386 44 7 43.7761 7 43.5Z" /></svg>',
     },

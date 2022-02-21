@@ -2124,6 +2124,7 @@ const Settings = ( props ) => {
 					/>
 				</UAGAdvancedPanelBody>
 	};
+
 	return (
 		<>
 			{ ( iconimgPosition === 'above-title' ||

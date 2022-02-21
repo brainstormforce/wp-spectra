@@ -517,6 +517,12 @@ class Common_Settings extends Ajax_Base {
 			wp_send_json_error( $response_data );
 		}
 
+		$wp_upload_dir = \UAGB_Helper::get_uag_upload_dir_path();
+
+		if ( file_exists( $wp_upload_dir . 'custom-style-blocks.css' ) ) {
+			wp_delete_file( $wp_upload_dir . 'custom-style-blocks.css' );
+		}
+
 		if ( isset( $_POST['value'] ) && $_POST['value'] ) {
 
 			$file_generation = \UAGB_Helper::allow_file_generation();
