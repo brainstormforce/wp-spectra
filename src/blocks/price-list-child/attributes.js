@@ -20,6 +20,7 @@ const attributes = {
 	},
 	image: {
 		type: 'object',
+		default: null
 	},
 	imagePosition: {
 		type: 'string',

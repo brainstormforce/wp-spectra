@@ -46,6 +46,7 @@ const attributes = {
 	icon_bg_color: {
 		type: 'string',
 		isUAGStyle: true,
+		default: '',
 	},
 	icon_bg_hover_color: {
 		type: 'string',
@@ -54,6 +55,7 @@ const attributes = {
 	icon_border_color: {
 		type: 'string',
 		isUAGStyle: true,
+		default: '',
 	},
 	icon_border_hover_color: {
 		type: 'string',

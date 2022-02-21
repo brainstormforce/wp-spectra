@@ -10,6 +10,8 @@ import {
 	useEffect,
 } from '@wordpress/element';
 
+import getUAGEditorStateLocalStorage from '@Controls/getUAGEditorStateLocalStorage';
+
 const LAYOUT = 'general',
 	STYLE = 'style',
 	ADVANCE = 'advance';
@@ -23,8 +25,8 @@ const InspectorTabs = ( props ) => {
 		};
 	}, [] );
 
+	const uagLastOpenedState = getUAGEditorStateLocalStorage( 'uagLastOpenedState' );
 	const { defaultTab, children, tabs } = props;
-
 	const [ currentTab, setCurrentTab ] = useState( defaultTab ? defaultTab : tabs[ 0 ] );
 
 	const tabContainer = useRef();
@@ -43,7 +45,7 @@ const InspectorTabs = ( props ) => {
 			),
 		{ threshold: [ 1 ] }
 	);
-	
+
 	const renderUAGTabsSettingsInOrder = () => {
 
 		// Inspector Tabs Priority Rendering Code. (Conflicts with 3rd Party plugin panels in Inspector Panel)
@@ -74,6 +76,12 @@ const InspectorTabs = ( props ) => {
 			observer.observe( container );
 		}
 		renderUAGTabsSettingsInOrder();
+
+		// This code is to fix the side-effect of the editor responsive click settings panel refresh issue.
+		if ( uagLastOpenedState && uagLastOpenedState?.inspectorTabName && currentTab !== uagLastOpenedState?.inspectorTabName ) {
+			setCurrentTab( uagLastOpenedState?.inspectorTabName )
+		}
+		// Above Section Ends.
 		// component will unmount
 		return () => {
 
@@ -88,7 +96,6 @@ const InspectorTabs = ( props ) => {
 			}
 		};
 
-
 	}, [] );
 
 	useEffect( () => {
@@ -100,7 +107,7 @@ const InspectorTabs = ( props ) => {
 	const _onTabChange = ( tab ) => {
 		renderUAGTabsSettingsInOrder();
 		setCurrentTab( tab );
-		
+
 		if ( sidebarPanel ) {
 			sidebarPanel.setAttribute( 'data-uagb-tab', tab );
 		}
