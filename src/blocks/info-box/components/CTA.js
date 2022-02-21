@@ -56,20 +56,20 @@ const InfoBoxCta = ( props ) => {
 	}
 	return (
 			<>
-				{ attributes.ctaType === 'text' && (
-					<a
-						href={ attributes.ctaLink }
-						target={ target }
-						className="uagb-infobox-cta-link"
-						rel={ rel }
-						alt=""
-					>
-						{ attributes.ctaIconPosition === 'before' && ctaIconOutput }
-						{ attributes.ctaText }
-						{ attributes.ctaIconPosition === 'after' && ctaIconOutput }
-					</a>
-				) }
 				<div className= 'uagb-ifb-button-wrapper wp-block-button' >
+					{ attributes.ctaType === 'text' && (
+						<a
+							href={ attributes.ctaLink }
+							target={ target }
+							className="uagb-infobox-cta-link"
+							rel={ rel }
+							alt=""
+						>
+							{ attributes.ctaIconPosition === 'before' && ctaIconOutput }
+							{ attributes.ctaText }
+							{ attributes.ctaIconPosition === 'after' && ctaIconOutput }
+						</a>
+					) }
 					{ attributes.ctaType === 'button' && (
 						<a
 							href={ attributes.ctaLink }
