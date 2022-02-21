@@ -1,74 +1,88 @@
 
 
 .uagb-inline_notice__align-right {
-	text-align:right;
+	text-align: right;
+
 	span.uagb-notice-dismiss {
 		left: 13px;
 	}
 }
+
 .uagb-inline_notice__align-center {
-	text-align:center;
+	text-align: center;
+
 	span.uagb-notice-dismiss {
 		right: 13px;
 	}
 }
+
 .uagb-inline_notice__align-left {
-	text-align:left;
+	text-align: left;
+
 	span.uagb-notice-dismiss {
 		right: 13px;
 	}
 }
 
-.wp-block-uagb-inline-notice{
-    &.uagb-notice__active {
-        display: none;
-    }
-    position: relative;
-    .uagb-notice-title {
-        margin: 0;
-        width: -webkit-fill-available;
-       display: inline-block
-    }
+.wp-block-uagb-inline-notice {
 
-    span.uagb-notice-dismiss svg{
-        width: 16px;
-        height: 16px;
-    }
-    span.uagb-notice-dismiss {
-        position: absolute;
-        cursor: pointer;
-        top: 13px;
-        opacity: .8;
-        padding: 0;
-        background: none;
-        transition: .3s ease;
-    }
-	&.uagb-dismissable > svg{
+	&.uagb-notice__active {
+		display: none;
+	}
+	position: relative;
+
+	.uagb-notice-title {
+		margin: 0;
+		width: -webkit-fill-available;
+		display: inline-block;
+	}
+
+	span.uagb-notice-dismiss svg {
 		width: 16px;
-        height: 16px;
+		height: 16px;
+	}
+
+	span.uagb-notice-dismiss {
 		position: absolute;
-        cursor: pointer;
-        top: 13px;
-        opacity: .8;
-        padding: 0;
-        background: none;
-        transition: .3s ease;
+		cursor: pointer;
+		top: 13px;
+		opacity: 0.8;
+		padding: 0;
+		background: none;
+		transition: 0.3s ease;
+	}
+
+	&.uagb-dismissable > svg {
+		width: 16px;
+		height: 16px;
+		position: absolute;
+		cursor: pointer;
+		top: 13px;
+		opacity: 0.8;
+		padding: 0;
+		background: none;
+		transition: 0.3s ease;
 	}
 
 	&.uagb-inline_notice__align-right {
-		text-align:right;
+		text-align: right;
+
 		svg {
 			left: 13px;
 		}
 	}
+
 	&.uagb-inline_notice__align-center {
-		text-align:center;
+		text-align: center;
+
 		svg {
 			right: 13px;
 		}
 	}
+
 	&.uagb-inline_notice__align-left {
-		text-align:left;
+		text-align: left;
+
 		svg {
 			right: 13px;
 		}
