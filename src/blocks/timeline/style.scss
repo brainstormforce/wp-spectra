@@ -176,7 +176,7 @@
 		display: none;
 	}
 
-	.uagb-timeline__right-block .uagb-timeline__line {
+	&.uagb-timeline__right-block .uagb-timeline__line {
 		position: absolute;
 		transform: translateX(50%);
 		-webkit-transform: translateX(50%);
