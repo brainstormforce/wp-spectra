@@ -1,5 +1,5 @@
 import classnames from 'classnames';
-import renderSVG from '@Controls/renderIcon';
+import renderSVG from '@Controls/deprecatedRenderIcon';
 
 const InfoBoxCta = ( props ) => {
 	const { attributes, setAttributes = 'not_set' } = props;
