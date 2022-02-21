@@ -211,6 +211,7 @@
 	.uagb-post__cta {
 		border: none;
 		display: inline-block;
+		background: none;
 	}
 
 	.uagb-post__excerpt div + p {
@@ -238,7 +239,6 @@
 		position: relative;
 		z-index: 10;
 		overflow: hidden;
-		width: 100%;
 	}
 
 	.uagb-post__inner-wrap {
