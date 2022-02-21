@@ -51,22 +51,22 @@ function uagbTimelineInit() {
 		const viewportHeightHalf = viewportHeight / 2 + connectorHeight;
 
 
-		let body = document.body;
-    	let html = document.documentElement;
+		const body = document.body;
+    	const html = document.documentElement;
 
-		var height = Math.max( body.scrollHeight, body.offsetHeight,
+		const height = Math.max( body.scrollHeight, body.offsetHeight,
                        html.clientHeight, html.scrollHeight, html.offsetHeight );
 
 
-		let timelineEndIconOffsetBottom = height - timelineEndIcon.getBoundingClientRect().top;
+		const timelineEndIconOffsetBottom = height - timelineEndIcon.getBoundingClientRect().top;
 
-		let totalTimelineLineHeight = height - timelineStartIcon.getBoundingClientRect().top - timelineEndIconOffsetBottom;
+		const totalTimelineLineHeight = height - timelineStartIcon.getBoundingClientRect().top - timelineEndIconOffsetBottom;
 
-		let startFlag = timelineStartIcon.getBoundingClientRect().top +  window.scrollY - ( window.innerHeight - ( window.innerHeight / 3 ) );
+		const startFlag = timelineStartIcon.getBoundingClientRect().top +  window.scrollY - ( window.innerHeight - ( window.innerHeight / 3 ) );
 
 		if ( startFlag <  document.documentElement.scrollTop ) {
-			let tscrollPerc = (((document.documentElement.scrollTop - startFlag) / totalTimelineLineHeight ) * 100);
-			let percHeight = (totalTimelineLineHeight / 100) * tscrollPerc;
+			const tscrollPerc = ( ( ( document.documentElement.scrollTop - startFlag ) / totalTimelineLineHeight ) * 100 );
+			const percHeight = ( totalTimelineLineHeight / 100 ) * tscrollPerc;
 
 			if ( percHeight < totalTimelineLineHeight + 60 ) {
 				lineInner.style.height = percHeight + 'px';
