@@ -36,6 +36,7 @@ module.exports = {
 		uagb_forms_data: true,
 		define: true,
 		Cookies: true,
+		UAGBTableOfContents: true,
 		localStorage: true
 	},
 };
