@@ -30,7 +30,7 @@ const WebfontLoader = ( props ) => {
 			loadFonts();
 		}
 	}, [ props ] );
-	
+
 	const handleLoading = () => {
 		setValue( { status: statuses.loading } );
 	};
@@ -66,9 +66,9 @@ const WebfontLoader = ( props ) => {
 };
 
 WebfontLoader.propTypes = {
-	config: PropTypes.object.isRequired,
+	config: PropTypes.object?.isRequired,
 	children: PropTypes.element,
-	onStatus: PropTypes.func.isRequired,
+	onStatus: PropTypes.func?.isRequired,
 };
 
 WebfontLoader.defaultProps = {

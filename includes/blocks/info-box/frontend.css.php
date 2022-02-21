@@ -108,6 +108,9 @@ $selectors = array(
 		'margin-top'    => UAGB_Helper::get_css_value( $attr['iconTopMargin'], 'px' ),
 		'margin-bottom' => UAGB_Helper::get_css_value( $attr['iconBottomMargin'], 'px' ),
 	),
+	' .uagb-infobox .uagb-ifb-image-content img'  => array(
+		'border-radius' => UAGB_Helper::get_css_value( $attr['iconimgBorderRadius'], $attr['iconimgBorderRadiusUnit'] ),
+	),
 	'.uagb-infobox__content-wrap img'                      => array(
 		'margin-left'   => UAGB_Helper::get_css_value( $attr['iconLeftMargin'], 'px' ),
 		'margin-right'  => UAGB_Helper::get_css_value( $attr['iconRightMargin'], 'px' ),
