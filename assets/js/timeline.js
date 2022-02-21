@@ -16,9 +16,9 @@ function uagbTimelineInit() {
 	if ( timeline.length === 0 ) {
 		return;
 	}
-	
+
 	for ( const content of timeline ) {
-		
+
 		const lineInner = content.querySelector( '.uagb-timeline__line__inner' );
 		const lineOuter = content.querySelector( '.uagb-timeline__line' );
 		const iconClass = content.querySelectorAll( '.uagb-timeline__marker' );
@@ -30,16 +30,14 @@ function uagbTimelineInit() {
 		lineOuter.style.top = timelineStartIcon?.offsetTop + 'px';
 		const timelineCardHeight = cardLast?.offsetHeight;
 
-		const lastItemTop = cardLast?.offsetTop;
+		const lastItemTop = cardLast?.getBoundingClientRect().top;
 
 		let lastItem, parentTop;
-
 		if ( content.classList.contains( 'uagb-timeline__arrow-center' ) ) {
 
 			lineOuter.style.bottom = timelineEndIcon?.offsetTop + 'px';
 			parentTop = lastItemTop - timelineStartIcon?.offsetTop;
-			lastItem = parentTop + timelineEndIcon?.getBoundingClientRect().top;
-
+			lastItem = parentTop;
 		} else if ( content.classList.contains( 'uagb-timeline__arrow-top' ) ) {
 
 			const topHeight = timelineCardHeight - timelineEndIcon?.offsetTop;
@@ -53,55 +51,34 @@ function uagbTimelineInit() {
 			parentTop = lastItemTop - timelineStartIcon?.offsetTop;
 			lastItem = parentTop + timelineEndIcon?.offsetTop;
 		}
-		const elementEnd = lastItem + 20;
 
 		const connectorHeight = 3 * iconClass[0]?.offsetHeight;
 
 		const viewportHeight = document.documentElement.clientHeight;
 
 		const viewportHeightHalf = viewportHeight / 2 + connectorHeight;
-		const elementPos = ( content.getBoundingClientRect().top + document.documentElement.scrollTop + content.offsetTop );
 
-		const newElementPos = elementPos + timelineStartIcon?.offsetTop;
 
-		let photoViewportOffsetTop = newElementPos - document.documentElement.scrollTop;
+		let body = document.body;
+    	let html = document.documentElement;
 
-		if ( photoViewportOffsetTop < 0 ) {
-			photoViewportOffsetTop = Math.abs( photoViewportOffsetTop );
+		var height = Math.max( body.scrollHeight, body.offsetHeight,
+                       html.clientHeight, html.scrollHeight, html.offsetHeight );
 
-		} else {
-			photoViewportOffsetTop = -Math.abs(
-				photoViewportOffsetTop
-			);
-		}
 
-		if ( elementPos < viewportHeightHalf ) {
-			if (
-				viewportHeightHalf +
-				Math.abs( photoViewportOffsetTop ) <
-				elementEnd
-			) {
-				lineInner.style.height = ( viewportHeightHalf + photoViewportOffsetTop ) + 'px';
+		let timelineEndIconOffsetBottom = height - timelineEndIcon.getBoundingClientRect().top;
 
-			} else if (
-				photoViewportOffsetTop + viewportHeightHalf >=
-				elementEnd
-			) {
-				lineInner.style.height = elementEnd + 'px';
+		let totalTimelineLineHeight = height - timelineStartIcon.getBoundingClientRect().top - timelineEndIconOffsetBottom;
+
+		let startFlag = timelineStartIcon.getBoundingClientRect().top +  window.scrollY - ( window.innerHeight - ( window.innerHeight / 3 ) );
+
+		if ( startFlag <  document.documentElement.scrollTop ) {
+			let tscrollPerc = (((document.documentElement.scrollTop - startFlag) / totalTimelineLineHeight ) * 100);
+			let percHeight = (totalTimelineLineHeight / 100) * tscrollPerc;
+
+			if ( percHeight < totalTimelineLineHeight + 60 ) {
+				lineInner.style.height = percHeight + 'px';
 			}
-		} else if (
-			photoViewportOffsetTop + viewportHeightHalf <
-			elementEnd
-		) {
-			if ( 0 > photoViewportOffsetTop ) {
-				lineInner.style.height = ( viewportHeightHalf - Math.abs( photoViewportOffsetTop ) ) + 'px';	
-			} else {
-				lineInner.style.height = ( viewportHeightHalf + photoViewportOffsetTop ) + 'px';
-			}
-		} else if (
-			photoViewportOffsetTop + viewportHeightHalf >= elementEnd
-		) {
-			lineInner.style.height = elementEnd + 'px';
 		}
 
 		// Icon bg color and icon color
@@ -111,7 +88,7 @@ function uagbTimelineInit() {
 		const timelineIcon = content.querySelectorAll( '.uagb-timeline__marker' );
 
 		let animateBorder = content.querySelectorAll( '.uagb-timeline__field' );
-		
+
 		if ( animateBorder.length === 0 ) {
 			animateBorder = content.querySelectorAll( '.uagb-timeline__animate-border' );
 		}
@@ -119,7 +96,7 @@ function uagbTimelineInit() {
 		for ( let j = 0; j < timelineIcon.length; j++ ) {
 			timelineIconPos = timelineIcon[j].lastElementChild.getBoundingClientRect().top + window.scrollY;
 			timelineCardPos = animateBorder[j].lastElementChild.getBoundingClientRect().top + window.scrollY;
-			
+
 			timelineIconTop = timelineIconPos - document.documentElement.scrollTop;
 			timelineCardTop = timelineCardPos - document.documentElement.scrollTop;
 
