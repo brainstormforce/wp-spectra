@@ -23,7 +23,7 @@ function uagbTimelineInit() {
 		const lineOuter = content.querySelector( '.uagb-timeline__line' );
 		const iconClass = content.querySelectorAll( '.uagb-timeline__marker' );
 		const timelineField = content.querySelector( '.uagb-timeline__field:nth-last-child(2)' );
-		const cardLast =  timelineField ? timelineField : content.querySelector( '.block-editor-block-list__layout:last-child' );
+		const cardLast =  timelineField ? timelineField : content.querySelector( '.block-editor-block-list__block:last-child' );
 		const timelineStartIcon = iconClass[0];
 		const timelineEndIcon = iconClass[iconClass.length - 1];
 
