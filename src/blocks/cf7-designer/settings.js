@@ -501,7 +501,7 @@ const Settings = ( props ) => {
 	const msgSettings = (
 		<UAGAdvancedPanelBody
 			title={ __(
-				'Success / Error Message',
+				'Success/Error Message',
 				'ultimate-addons-for-gutenberg'
 			) }
 			initialOpen={ false }
@@ -552,7 +552,7 @@ const Settings = ( props ) => {
 	);
 	const btnSetting = (
 		<UAGAdvancedPanelBody
-			title={ __( 'Submit Button', 'ultimate-addons-for-gutenberg' ) }
+			title={ __( 'Submit', 'ultimate-addons-for-gutenberg' ) }
 			initialOpen={ false }
 		>
 			<MultiButtonsControl
@@ -1067,7 +1067,7 @@ const Settings = ( props ) => {
 	);
 	const buttonStyling = (
 		<UAGAdvancedPanelBody
-			title={ __( 'Submit Button', 'ultimate-addons-for-gutenberg' ) }
+			title={ __( 'Submit', 'ultimate-addons-for-gutenberg' ) }
 			initialOpen={ false }
 		>
 			<UAGTabsControl
@@ -1260,7 +1260,7 @@ const Settings = ( props ) => {
 	const messageStyling = (
 		<UAGAdvancedPanelBody
 			title={ __(
-				'Success / Error Message',
+				'Success/Error Message',
 				'ultimate-addons-for-gutenberg'
 			) }
 			initialOpen={ false }
@@ -1383,7 +1383,7 @@ const Settings = ( props ) => {
 			<hr className="uagb-editor__separator" />
 			<h2>
 				{ __(
-					'Form Success / Error Message',
+					'Success/Error Message',
 					'ultimate-addons-for-gutenberg'
 				) }
 			</h2>
