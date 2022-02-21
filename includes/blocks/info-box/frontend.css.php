@@ -194,12 +194,15 @@ if ( 'after' === $attr['ctaIconPosition'] ) {
 		'margin-right' => UAGB_Helper::get_css_value( $attr['ctaIconSpace'], $attr['ctaIconSpaceType'] ),
 	);
 }
-if ( 'button' === $attr['ctaType'] ) {
+if ( 'text' === $attr['ctaType'] ) {
 	$selectors[' .uagb-infobox-cta-link']                          = array(
 		'color' => $attr['ctaLinkColor'],
 	);
 	$selectors[' .uagb-infobox-cta-link:hover']                    = array(
 		'color' => $attr['ctaLinkHoverColor'],
+	);
+	$selectors[' .uagb-infobox-cta-link:hover svg']                = array(
+		'fill' => $attr['ctaLinkHoverColor'],
 	);
 	$selectors[' .uagb-infobox-cta-link svg']                      = array(
 		'font-size'   => $cta_icon_size,
@@ -208,8 +211,13 @@ if ( 'button' === $attr['ctaType'] ) {
 		'line-height' => $cta_icon_size,
 		'fill'        => $attr['ctaLinkColor'],
 	);
-	$selectors[' .uagb-infobox-cta-link:hover svg']                = array(
-		'fill' => $attr['ctaLinkHoverColor'],
+}
+if ( 'button' === $attr['ctaType'] ) {
+	$selectors[' .uagb-infobox-cta-link svg']                      = array(
+		'font-size'   => $cta_icon_size,
+		'height'      => $cta_icon_size,
+		'width'       => $cta_icon_size,
+		'line-height' => $cta_icon_size,
 	);
 	$selectors[' .uagb-ifb-button-wrapper .uagb-infobox-cta-link'] = array(
 		'color'            => $attr['ctaBtnLinkColor'],
