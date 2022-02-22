@@ -72,7 +72,13 @@ const SelectedFontFamilies = () => {
 		} ).then( () => {
 		} );
 	};
+	let customStyles = {
+		control: (provided) => ({
+		  ...provided,
+		  cursor: 'pointer',
+		}),
 
+	}
     return (
         <section className='flex border-b border-solid border-slate-200'>
             <div className='pr-16 pb-8 w-[78%]'>
@@ -94,14 +100,15 @@ const SelectedFontFamilies = () => {
                     maxMenuHeight={ 140 }
                     minMenuHeight = { 70 }
                     isSearchable={true}
-                    className={`mt-4 focus:ring-wpcolor uag-font-select-${enableSelectedFontFamilies}`}
+                    className={`mt-4 cursor-pointer focus:ring-wpcolor uag-font-select-${enableSelectedFontFamilies}`}
 					theme={( theme ) => ( {
 						...theme,
 						colors: {
 						  ...theme.colors,
 						  primary: '#6104ff',
 						},
-					  } )}
+					} )}
+					styles={customStyles}
                 />
             </div>
             <div>

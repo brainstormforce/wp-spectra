@@ -34,7 +34,7 @@ export default function MainNav() {
           <div className="max-w-3xl mx-auto px-6 lg:max-w-7xl">
             <div className="relative flex justify-between h-16">
               <div className="flex-1 flex items-center justify-center sm:items-stretch sm:justify-start">
-                <a href="https://ultimategutenberg.com" target='_blank' rel="noreferrer" className="flex-shrink-0 flex items-center">
+                <a href={uag_react.uag_base_url} className="flex-shrink-0 flex items-center">
                   <img
                     className="lg:block h-[2.6rem] w-auto"
                     src={ uag_react.logo_url }
