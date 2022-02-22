@@ -454,6 +454,11 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				'.uagb-timeline__field:not(:last-child)' => array(
 					'margin-bottom' => UAGB_Helper::get_css_value( $bottom_margin, $attr['marginUnit'] ),
 				),
+				' .uagb-timeline__date-hide.uagb-timeline__inner-date-new' => array( // For New User.
+					'margin-bottom' => UAGB_Helper::get_css_value( $attr['dateBottomspace'], 'px' ),
+					'color'         => $attr['dateColor'],
+					'text-align'    => $attr['align'],
+				),
 				' .uagb-timeline__date-hide.uagb-timeline__date-inner' => array(
 					'margin-bottom' => UAGB_Helper::get_css_value( $attr['dateBottomspace'], 'px' ),
 					'color'         => $attr['dateColor'],
