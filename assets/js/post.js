@@ -149,7 +149,6 @@ window.UAGBPostMasonry = {
 							loadStatus = false;
 						}
 					}
-
 				};
 			}
 		}
@@ -201,6 +200,22 @@ window.UAGBPostMasonry = {
 
 				if ( count === parseInt( $obj.total ) ) {
 					$scope.querySelector( '.uagb-post__load-more-wrap' ).style.display='none';
+				}
+				// This CSS is for Post BG Image Spacing
+				let articles = document.querySelectorAll( '.uagb-post__image-position-background .uagb-post__inner-wrap' );
+
+				for( let article of articles ) {
+
+					let articleWidth = article.offsetWidth;
+					let rowGap = $attr.rowGap;
+					let imageWidth = 100 - ( rowGap / articleWidth ) * 100;
+					let image = article.getElementsByClassName('uagb-post__image');
+					if ( image[0] ) {
+						image[0].style.width = imageWidth + '%';
+						image[0].style.marginLeft = rowGap / 2 + 'px';
+
+					}
+
 				}
 		  } )
 		  .catch( function( error ) {
