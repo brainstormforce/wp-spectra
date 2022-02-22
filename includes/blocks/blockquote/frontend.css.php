@@ -110,6 +110,11 @@ $selectors = array(
 		'border-left-color' => $attr['borderHoverColor'],
 	),
 	// Backword css.
+	' .uagb-blockquote__skin-quotation .uagb-blockquote__icon svg' => array(
+		'fill'   => $attr['quoteColor'],
+		'width'  => UAGB_Helper::get_css_value( $attr['quoteSize'], $attr['quoteSizeType'] ),
+		'height' => UAGB_Helper::get_css_value( $attr['quoteSize'], $attr['quoteSizeType'] ),
+	),
 	' .uagb-blockquote__skin-quotation .uagb-blockquote__icon:hover svg' => array(
 		'fill' => $attr['quoteHoverColor'],
 	),
@@ -287,6 +292,11 @@ $t_selectors = array(
 		'padding-top'    => UAGB_Helper::get_css_value( $attr['paddingBtnTopTablet'], $attr['tabletPaddingBtnUnit'] ),
 		'padding-bottom' => UAGB_Helper::get_css_value( $attr['paddingBtnBottomTablet'], $attr['tabletPaddingBtnUnit'] ),
 	),
+	// Backword css.
+	' .uagb-blockquote__skin-quotation .uagb-blockquote__icon svg' => array(
+		'width'  => UAGB_Helper::get_css_value( $attr['quoteSizeTablet'], $attr['quoteSizeType'] ),
+		'height' => UAGB_Helper::get_css_value( $attr['quoteSizeTablet'], $attr['quoteSizeType'] ),
+	),
 );
 
 $m_selectors = array(
@@ -316,6 +326,10 @@ $m_selectors = array(
 		'padding-right'  => UAGB_Helper::get_css_value( $attr['paddingBtnRightMobile'], $attr['mobilePaddingBtnUnit'] ),
 		'padding-top'    => UAGB_Helper::get_css_value( $attr['paddingBtnTopMobile'], $attr['mobilePaddingBtnUnit'] ),
 		'padding-bottom' => UAGB_Helper::get_css_value( $attr['paddingBtnBottomMobile'], $attr['mobilePaddingBtnUnit'] ),
+	),
+	' .uagb-blockquote__skin-quotation .uagb-blockquote__icon svg' => array(
+		'width'  => UAGB_Helper::get_css_value( $attr['quoteSizeMobile'], $attr['quoteSizeType'] ),
+		'height' => UAGB_Helper::get_css_value( $attr['quoteSizeMobile'], $attr['quoteSizeType'] ),
 	),
 );
 

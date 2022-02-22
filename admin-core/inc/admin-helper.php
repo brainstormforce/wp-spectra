@@ -68,7 +68,7 @@ class Admin_Helper {
 	 * @return array $changelog_data Changelog Data.
 	 */
 	public static function get_changelog_feed_data() {
-		$posts          = json_decode( wp_remote_retrieve_body( wp_remote_get( 'https://ultimategutenberg.com/wp-json/wp/v2/changelog?per_page=10' ) ) );
+		$posts          = json_decode( wp_remote_retrieve_body( wp_remote_get( 'https://ultimategutenberg.com/wp-json/wp/v2/changelog?per_page=3' ) ) );
 		$changelog_data = array();
 
 		if ( isset( $posts ) && is_array( $posts ) ) {

@@ -1,6 +1,6 @@
 import classnames from 'classnames';
 import TableOfContents from './toc';
-import React, { useLayoutEffect } from 'react';
+import React, { useLayoutEffect, useEffect } from 'react';
 import { __ } from '@wordpress/i18n';
 import renderSVG from '@Controls/renderIcon';
 import { RichText } from '@wordpress/block-editor';
@@ -14,6 +14,12 @@ const Render = ( props ) => {
 		return () => {
 			styles.unuse();
 		};
+	}, [] );
+
+	useEffect( () => {
+		if ( UAGBTableOfContents ) {
+			UAGBTableOfContents.init();
+		}
 	}, [] );
 
 	props = props.parentProps;
