@@ -72,11 +72,11 @@ const SelectedFontFamilies = () => {
 		} ).then( () => {
 		} );
 	};
-	let customStyles = {
-		control: (provided) => ({
+	const customStyles = {
+		control: ( provided ) => ( {
 		  ...provided,
 		  cursor: 'pointer',
-		}),
+		} ),
 
 	}
     return (
