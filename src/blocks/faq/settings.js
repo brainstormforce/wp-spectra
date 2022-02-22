@@ -29,9 +29,8 @@ import {
 	ToggleControl,
 	Icon,
 } from '@wordpress/components';
-
-
-
+import presets from './presets';
+import UAGPresets from '@Components/presets';
 import UAGAdvancedPanelBody from '@Components/advanced-panel-body';
 
 const Settings = ( props ) => {
@@ -899,7 +898,6 @@ const Settings = ( props ) => {
 					</>
 				) }
 				<hr className="uagb-editor__separator" />
-				<h2>{ __( 'Border', 'ultimate-addons-for-gutenberg' ) }</h2>
 				<Border
 					setAttributes={ setAttributes }
 					borderStyle={ {
@@ -926,7 +924,7 @@ const Settings = ( props ) => {
 						value: borderHoverColor,
 						label: 'borderHoverColor',
 						title: __(
-							'Hover Color',
+							'Color',
 							'ultimate-addons-for-gutenberg'
 						),
 					} }
@@ -1052,12 +1050,25 @@ const Settings = ( props ) => {
 			<WebfontLoader config={ aconfig }></WebfontLoader>
 		);
 	}
+	const presetSettings = () => {
+		return <UAGAdvancedPanelBody
+					title={ __( 'Presets', 'ultimate-addons-for-gutenberg' ) }
+					initialOpen={ true }
+				>
+					<UAGPresets
+						setAttributes = { setAttributes }
+						presets = { presets }
+						presetInputType = 'radioImage'
+					/>
+				</UAGAdvancedPanelBody>
+	};
 
 	return (
 		<Suspense fallback={ lazyLoader() }>
 			<InspectorControls>
 				<InspectorTabs>
 					<InspectorTab { ...UAGTabs.general }>
+						{ presetSettings() }
 						{ faqGeneralSettings() }
 						{ 'accordion' === layout && faqIconSettings() }
 					</InspectorTab>

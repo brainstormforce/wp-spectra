@@ -445,7 +445,7 @@ const attributes = {
 	},
 	quoteRightMargin: {
 		type: 'number',
-		default: 0,
+		default: 20,
 		isUAGStyle: true,
 	},
 	quoteTopMarginTablet: {

@@ -90,16 +90,18 @@ export default function save( props ) {
 			) }
 		>
 			{ ctaType === 'all' && (
+				<>
 				<a
 					href={ ctaLink }
 					className="uagb-cta__link-to-all"
 					target={ target }
 					rel="noopener noreferrer"
 				>
-					{ ' ' }
 				</a>
+				{ output }
+				</>
 			) }
-			{ output }
+			{ ctaType !== 'all' && output }
 		</div>
 	);
 }

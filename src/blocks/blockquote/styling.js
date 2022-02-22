@@ -522,7 +522,7 @@ function styling( props ) {
 			),
 		},
 	};
-	const baseSelector = `.block-editor-page #wpwrap .uagb-block-${ props.clientId.substr(
+	const baseSelector = `.editor-styles-wrapper .uagb-block-${ props.clientId.substr(
 		0,
 		8
 	) }`;

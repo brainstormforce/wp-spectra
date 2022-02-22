@@ -94,7 +94,7 @@ if ( ! class_exists( 'UAGB_Post_Timeline' ) ) {
 						),
 						'separatorFillColor'      => array(
 							'type'    => 'string',
-							'default' => '#61ce70',
+							'default' => '#0693e3',
 						),
 						'separatorBorder'         => array(
 							'type'    => 'string',
@@ -194,7 +194,7 @@ if ( ! class_exists( 'UAGB_Post_Timeline' ) ) {
 						),
 						'iconBgFocus'             => array(
 							'type'    => 'string',
-							'default' => '#61ce70',
+							'default' => '#0693e3',
 						),
 						'authorColor'             => array(
 							'type'    => 'string',
@@ -797,11 +797,15 @@ if ( ! class_exists( 'UAGB_Post_Timeline' ) ) {
 
 			global $post;
 			$post_id = $post->ID;
-			if ( isset( $attributes['displayPostDate'] ) && $attributes['displayPostDate'] ) {
-				?>
-				<div datetime="<?php echo esc_attr( get_the_date( 'c', $post_id ) ); ?>" class="<?php echo esc_html( $classname ); ?>"><?php echo esc_html( get_the_date( $attributes['dateFormat'], $post_id ) ); ?></div>
+			?>
+			<div datetime="<?php echo esc_attr( get_the_date( 'c', $post_id ) ); ?>" class="<?php echo esc_html( $classname ); ?>">
 				<?php
-			}
+				if ( isset( $attributes['displayPostDate'] ) && $attributes['displayPostDate'] ) {
+					echo esc_html( get_the_date( $attributes['dateFormat'], $post_id ) );
+				}
+				?>
+			</div>
+			<?php
 		}
 
 		/**

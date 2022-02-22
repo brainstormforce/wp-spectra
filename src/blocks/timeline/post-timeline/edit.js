@@ -3,6 +3,10 @@
  */
 import React, { useEffect, lazy, Suspense } from 'react';
 import lazyLoader from '@Controls/lazy-loader';
+import addBlockEditorDynamicStyles from '@Controls/addBlockEditorDynamicStyles';
+import { useDeviceType } from '@Controls/getPreviewType';
+// Import css for timeline.
+import contentTimelineStyle from '.././inline-styles';
 const Settings = lazy( () =>
 	import(
 		/* webpackChunkName: "chunks/post-timeline/settings" */ './settings'
@@ -15,17 +19,12 @@ const Render = lazy( () =>
 import { withSelect } from '@wordpress/data';
 
 const PostTimelineComponent = ( props ) => {
-	
+	const deviceType = useDeviceType();
 	useEffect( () => {
 		
 		// Replacement for componentDidMount.
 		//Store Client id.
 		props.setAttributes( { block_id: props.clientId } );
-
-		// Pushing Style tag for this block css.
-		const style = document.createElement( 'style' );
-		style.setAttribute( 'id', 'uagb-timeline-style-' + props.clientId );
-		document.head.appendChild( style );
 
 		const {
 			verticalSpace,
@@ -76,13 +75,23 @@ const PostTimelineComponent = ( props ) => {
 
 	useEffect( () => {
 		// Replacement for componentDidUpdate.
+		const blockStyling = contentTimelineStyle( props );
+
+        addBlockEditorDynamicStyles( 'uagb-timeline-style-' + props.clientId, blockStyling );
 		const loadPostTimelineEditor = new CustomEvent( 'UAGTimelineEditor', { // eslint-disable-line no-undef
 			detail: {},
 		} );
 		document.dispatchEvent( loadPostTimelineEditor );
 	}, [ props ] );
 	
-	
+		
+	useEffect( () => {
+		// Replacement for componentDidUpdate.
+	    const blockStyling = contentTimelineStyle( props );
+
+        addBlockEditorDynamicStyles( 'uagb-timeline-style-' + props.clientId, blockStyling );
+	}, [deviceType] );
+
 	return (
 		<Suspense fallback={ lazyLoader() }>
 			<Settings parentProps={ props } />
@@ -131,7 +140,7 @@ export default withSelect( ( select, props ) => {
 	};
 
 	if ( excludeCurrentPost ) {
-		latestPostsQuery.exclude = select( 'core/editor' ).getCurrentPostId();
+		latestPostsQuery.exclude = select( 'core/block-editor' ).getCurrentPostId();
 	}
 	const category = [];
 	const temp = parseInt( categories );

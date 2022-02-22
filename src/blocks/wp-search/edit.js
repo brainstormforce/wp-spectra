@@ -5,7 +5,8 @@
 import styling from './styling';
 import React, { useState, useEffect, lazy, Suspense } from 'react';
 import lazyLoader from '@Controls/lazy-loader';
-
+import { useDeviceType } from '@Controls/getPreviewType';
+import addBlockEditorDynamicStyles from '@Controls/addBlockEditorDynamicStyles';
 const Settings = lazy( () =>
 	import( /* webpackChunkName: "chunks/wp-search/settings" */ './settings' )
 );
@@ -14,6 +15,7 @@ const Render = lazy( () =>
 );
 
 const UAGBWpSearchEdit = ( props ) => {
+	const deviceType = useDeviceType();
 	const initState = {
 		isFocused: 'false',
 	};
@@ -25,14 +27,8 @@ const UAGBWpSearchEdit = ( props ) => {
 		// Assigning block_id in the attribute.
 		props.setAttributes( {
 			block_id: props.clientId.substr( 0, 8 ),
-		} ); // Pushing Style tag for this block css.
+		} );
 
-		const $style = document.createElement( 'style' );
-		$style.setAttribute(
-			'id',
-			'uagb-style-wp-search-' + props.clientId.substr( 0, 8 )
-		);
-		document.head.appendChild( $style );
 	}, [] );
 
 	// componentDidUpdate.
@@ -141,14 +137,18 @@ const UAGBWpSearchEdit = ( props ) => {
 				} );
 			}
 		}
-		const element = document.getElementById(
-			'uagb-style-wp-search-' + props.clientId.substr( 0, 8 )
-		);
 
-		if ( null !== element && 'undefined' !== typeof element ) {
-			element.innerHTML = styling( props );
-		}
+		const blockStyling = styling( props );
+
+		addBlockEditorDynamicStyles( 'uagb-style-wp-search-' + props.clientId.substr( 0, 8 ), blockStyling );
 	}, [ props ] );
+
+	useEffect( () => {
+		// Replacement for componentDidUpdate.
+		const blockStyling = styling( props );
+
+		addBlockEditorDynamicStyles( 'uagb-style-wp-search-' + props.clientId.substr( 0, 8 ), blockStyling );
+	}, [deviceType] );
 
 	return (
 		<Suspense fallback={ lazyLoader() }>

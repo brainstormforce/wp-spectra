@@ -29,7 +29,7 @@ const attributes = {
 	},
 	rowsGap: {
 		type: 'number',
-		default: 15,
+		default: 10,
 		isUAGStyle: true,
 	},
 	columnsGap: {
@@ -40,6 +40,7 @@ const attributes = {
 	boxBgColor: {
 		type: 'string',
 		isUAGStyle: true,
+		default: ''
 	},
 	boxPaddingTypeMobile: {
 		type: 'string',

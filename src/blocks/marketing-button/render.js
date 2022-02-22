@@ -94,11 +94,10 @@ const Render = ( props ) => {
 				`uagb-marketing-btn__icon-${ iconPosition }`,
 				`uagb-editor-preview-mode-${ deviceType.toLowerCase() }`,
 				`uagb-block-${ block_id }`,
-				'wp-block-button'
 			) }
 		>
 				<a // eslint-disable-line jsx-a11y/anchor-is-valid
-				 className="uagb-marketing-btn__link wp-block-button__link">
+				 className="uagb-marketing-btn__link">
 						{ 'before' === iconPosition &&
 							<>
 							{ iconHTML }

@@ -35,6 +35,8 @@ module.exports = {
 		bodymovin: true,
 		uagb_forms_data: true,
 		define: true,
-		Cookies: true
+		Cookies: true,
+		UAGBTableOfContents: true,
+		localStorage: true
 	},
 };

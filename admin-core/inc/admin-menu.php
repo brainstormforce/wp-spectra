@@ -161,7 +161,7 @@ class Admin_Menu {
 	public function render_content( $menu_page_slug, $page_action ) {
 
 		if ( $this->menu_slug === $menu_page_slug ) {
-			include_once UAG_ADMIN_DIR . 'views/settings-app.php';
+			include_once UAG_ADMIN_DIR . 'views/dashboard-app.php';
 		}
 	}
 
@@ -196,6 +196,7 @@ class Admin_Menu {
 				'rollback_url'   => esc_url( add_query_arg( 'version', 'VERSION', wp_nonce_url( admin_url( 'admin-post.php?action=uag_rollback' ), 'uag_rollback' ) ) ),
 				'blocks_info'    => $blocks_info,
 				'reusable_url'   => esc_url( admin_url( 'edit.php?post_type=wp_block' ) ),
+				'global_data'    => Admin_Helper::get_options(),
 			)
 		);
 
@@ -322,7 +323,7 @@ class Admin_Menu {
 		$handle            = 'uag-admin-settings';
 		$build_path        = UAG_ADMIN_DIR . 'assets/build/';
 		$build_url         = UAG_ADMIN_URL . 'assets/build/';
-		$script_asset_path = $build_path . 'settings-app.asset.php';
+		$script_asset_path = $build_path . 'dashboard-app.asset.php';
 		$script_info       = file_exists( $script_asset_path )
 			? include $script_asset_path
 			: array(
@@ -334,7 +335,7 @@ class Admin_Menu {
 
 		wp_register_script(
 			$handle,
-			$build_url . 'settings-app.js',
+			$build_url . 'dashboard-app.js',
 			$script_dep,
 			$script_info['version'],
 			true
@@ -342,7 +343,14 @@ class Admin_Menu {
 
 		wp_register_style(
 			$handle,
-			$build_url . 'settings-app.css',
+			$build_url . 'dashboard-app.css',
+			array(),
+			UAGB_VER
+		);
+
+		wp_register_style(
+			'uag-admin-google-fonts',
+			'https://fonts.googleapis.com/css2?family=Inter:wght@200&display=swap',
 			array(),
 			UAGB_VER
 		);
@@ -350,7 +358,7 @@ class Admin_Menu {
 		wp_enqueue_script( $handle );
 
 		wp_set_script_translations( $handle, 'ultimate-addons-for-gutenberg' );
-
+		wp_enqueue_style( 'uag-admin-google-fonts' );
 		wp_enqueue_style( $handle );
 		wp_style_add_data( $handle, 'rtl', 'replace' );
 		wp_localize_script( $handle, 'uag_admin_react', $localize );

@@ -42,6 +42,7 @@ return array(
 	'bulletColor'               => '',
 	'iconSize'                  => '',
 	'align'                     => 'left',
+	'headingAlignment'          => 'left',
 	'linkColor'                 => '#54595F',
 	'vPaddingDesktop'           => 30,
 	'vPaddingTablet'            => '',

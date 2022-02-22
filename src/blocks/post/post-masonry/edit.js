@@ -20,6 +20,7 @@ import UAGTabsControl from '@Components/tabs';
 import renderSVG from '@Controls/renderIcon';
 import MultiButtonsControl from '@Components/multi-buttons-control';
 import UAGAdvancedPanelBody from '@Components/advanced-panel-body';
+import addBlockEditorDynamicStyles from '@Controls/addBlockEditorDynamicStyles';
 
 const Settings = lazy( () =>
 	import(
@@ -48,6 +49,7 @@ import { InspectorControls } from '@wordpress/block-editor';
 import { withSelect, withDispatch } from '@wordpress/data';
 
 const UAGBPostMasonry = ( props ) => {
+
 	const [ state, setState ] = useState( {
 		isEditing: false,
 		innerBlocks: [],
@@ -242,23 +244,23 @@ const UAGBPostMasonry = ( props ) => {
 				} );
 			}
 		}
-		const $style = document.createElement( 'style' );
-		$style.setAttribute(
-			'id',
-			'uagb-post-masonry-style-' + props.clientId.substr( 0, 8 )
-		);
-		document.head.appendChild( $style );
 	}, [] );
 
 	useEffect( () => {
-		const element = document.getElementById(
-			'uagb-post-masonry-style-' + props.clientId.substr( 0, 8 )
-		);
+		// Replacement for componentDidUpdate.
+		const blockStyling = styling( props );
 
-		if ( null !== element && undefined !== element ) {
-			element.innerHTML = styling( props );
-		}
+		addBlockEditorDynamicStyles( 'uagb-post-masonry-style-' + props.clientId.substr( 0, 8 ), blockStyling );
+		
 	}, [ props ] );
+
+	useEffect( () => {
+		// Replacement for componentDidUpdate.
+		const blockStyling = styling( props );
+
+		addBlockEditorDynamicStyles( 'uagb-post-masonry-style-' + props.clientId.substr( 0, 8 ), blockStyling );
+		
+	}, [ props.deviceType ] );
 
 	const togglePreview = () => {
 		setState( { isEditing: ! state.isEditing } );
@@ -2245,7 +2247,7 @@ export default compose(
 
 		if ( excludeCurrentPost ) {
 			latestPostsQuery.exclude = select(
-				'core/editor'
+				'core/block-editor'
 			).getCurrentPostId();
 		}
 		const category = [];

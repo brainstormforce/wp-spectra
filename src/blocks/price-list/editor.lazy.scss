@@ -44,6 +44,11 @@
 		}
 	}
 
+	.uagb-rest_menu__wrap.uagb-rm__align-left .uagb-rm__price {
+		display: table-cell;
+		text-align: right;
+	}
+
 	&.uagb-rm__desk-column-1 [data-type="uagb/restaurant-menu-child"] {
 		width: 100%;
 	}

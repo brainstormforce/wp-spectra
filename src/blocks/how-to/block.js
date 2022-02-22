@@ -27,39 +27,24 @@ registerBlockType( 'uagb/how-to', {
 	example: {
 		innerBlocks: [
 			{
-				name: 'uagb/info-box',
+				name: 'uagb/how-to-step',
 				attributes: {
-					infoBoxTitle: 'Step 1',
-					iconimgPosition: 'left',
-					source_type: 'image',
-					showPrefix: false,
-					seperatorStyle: 'none',
-					ctaType: 'all',
-					headingTag: 'h4',
+					name: 'Step 1',
+					imgPosition: 'left'
 				},
 			},
 			{
-				name: 'uagb/info-box',
+				name: 'uagb/how-to-step',
 				attributes: {
-					infoBoxTitle: 'Step 2',
-					iconimgPosition: 'left',
-					source_type: 'image',
-					showPrefix: false,
-					seperatorStyle: 'none',
-					ctaType: 'all',
-					headingTag: 'h4',
+					name: 'Step 2',
+					imgPosition: 'left'
 				},
 			},
 			{
-				name: 'uagb/info-box',
+				name: 'uagb/how-to-step',
 				attributes: {
-					infoBoxTitle: 'Step 3',
-					iconimgPosition: 'left',
-					source_type: 'image',
-					showPrefix: false,
-					seperatorStyle: 'none',
-					ctaType: 'all',
-					headingTag: 'h4',
+					name: 'Step 3',
+					imgPosition: 'left'
 				},
 			},
 		],

@@ -89,7 +89,6 @@ function styling( props ) {
 	const setIconColor = '' === iconColor ? titleColor : iconColor;
 	const setIconHoverColor =
 		'' === iconHoverColor ? titleHoverColor : iconHoverColor;
-
 	selectors = {
 		' .uagb-marketing-btn__prefix': {
 			'margin-top': generateCSSUnit( titleSpace, 'px' ),
@@ -270,7 +269,7 @@ function styling( props ) {
 		},
 	};
 
-	const id = `.uagb-block-${ props.clientId.substr( 0, 8 ) }`;
+	const id = `.editor-styles-wrapper .uagb-block-${ props.clientId.substr( 0, 8 ) }`;
 
 	let stylingCss = generateCSS( selectors, id );
 

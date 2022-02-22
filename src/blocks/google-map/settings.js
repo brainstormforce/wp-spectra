@@ -8,8 +8,6 @@ import InspectorTab, {
 } from '@Components/inspector-tabs/InspectorTab.js';
 import { TextControl, SelectControl } from '@wordpress/components';
 
-
-
 import UAGAdvancedPanelBody from '@Components/advanced-panel-body';
 
 const Settings = ( props ) => {

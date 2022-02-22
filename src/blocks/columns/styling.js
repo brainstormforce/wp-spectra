@@ -16,7 +16,7 @@ function styling( props ) {
 		backgroundOpacity,
 		backgroundColor,
 		backgroundVideoOpacity,
-		borderRadius,
+		borderHoverColor,
 		contentWidth,
 		width,
 		widthType,
@@ -77,13 +77,13 @@ function styling( props ) {
 	if ( 'outset' === boxShadowPosition ) {
 		boxShadowPositionCSS = '';
 	}
-	
+
 	let tablet_selectors = {}
 	let mobile_selectors = {}
 
 	let videoOpacity = 0.5;
 	if ( typeof backgroundVideoOpacity !== 'undefined' ) {
-		videoOpacity = ( 1 < backgroundVideoOpacity ) ? ( ( 100 - backgroundVideoOpacity ) / 100 ) : ( ( 1 - backgroundVideoOpacity ) ); 
+		videoOpacity = ( 1 < backgroundVideoOpacity ) ? ( ( 100 - backgroundVideoOpacity ) / 100 ) : ( ( 1 - backgroundVideoOpacity ) );
 	}
 
 	const selectors = {
@@ -113,8 +113,11 @@ function styling( props ) {
 			'fill': hexToRgba( bottomColor, ( typeof bottomDividerOpacity !== 'undefined' ) ? bottomDividerOpacity : 100 ),
 		},
 		'.wp-block-uagb-columns': {
-			'box-shadow': generateCSSUnit( boxShadowHOffset, 'px' ) + ' ' + generateCSSUnit( boxShadowVOffset, 'px' ) + ' ' + generateCSSUnit( boxShadowBlur, 'px' ) + ' ' + generateCSSUnit( boxShadowSpread, 'px' ) + ' ' + boxShadowColor + ' ' + boxShadowPositionCSS  
+			'box-shadow': generateCSSUnit( boxShadowHOffset, 'px' ) + ' ' + generateCSSUnit( boxShadowVOffset, 'px' ) + ' ' + generateCSSUnit( boxShadowBlur, 'px' ) + ' ' + generateCSSUnit( boxShadowSpread, 'px' ) + ' ' + boxShadowColor + ' ' + boxShadowPositionCSS
 		},
+		'.uagb-columns__wrap:hover': {
+			'border-color': borderHoverColor,
+		}
 	}
 
 	selectors[' > .uagb-columns__overlay'] = {}
@@ -145,13 +148,11 @@ function styling( props ) {
 
 				selectors[' > .uagb-columns__overlay']['background-image'] = `linear-gradient(${ gradientAngle }deg, ${ gradientColor1 } ${ gradientLocation1 }%, ${ gradientColor2 } ${ gradientLocation2 }%)`
 			} else {
-	
+
 				selectors[' > .uagb-columns__overlay']['background-image'] = `radial-gradient( at ${ gradientPosition }, ${ gradientColor1 } ${ gradientLocation1 }%, ${ gradientColor2 } ${ gradientLocation2 }%)`
 			}
-		
-	}
 
-	selectors[' > .uagb-columns__overlay']['border-radius'] = generateCSSUnit( borderRadius, 'px' )
+	}
 
 	tablet_selectors = {
 		'.uagb-columns__wrap' : {
@@ -188,7 +189,7 @@ function styling( props ) {
 	}
 
 	let styling_css = ''
-	const id = `.uagb-block-${ props.clientId.substr( 0, 8 ) }`
+	const id = `.editor-styles-wrapper .uagb-block-${ props.clientId.substr( 0, 8 ) }`
 
 	styling_css = generateCSS( selectors, id )
 

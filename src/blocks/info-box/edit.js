@@ -3,7 +3,9 @@
  */
 import React, { lazy, Suspense, useEffect } from 'react';
 import lazyLoader from '@Controls/lazy-loader';
-import InfoBoxStyle from './inline-styles';
+import styling from './styling';
+import { useDeviceType } from '@Controls/getPreviewType';
+import addBlockEditorDynamicStyles from '@Controls/addBlockEditorDynamicStyles';
 
 const Render = lazy( () =>
 	import( /* webpackChunkName: "chunks/info-box/render" */ './render' )
@@ -13,6 +15,8 @@ const Settings = lazy( () =>
 );
 
 const UAGBInfoBox = ( props ) => {
+	const deviceType = useDeviceType();
+
 	useEffect( () => {
 
 		const { setAttributes } = props;
@@ -20,14 +24,6 @@ const UAGBInfoBox = ( props ) => {
 		setAttributes( { block_id: props.clientId.substr( 0, 8 ) } );
 
 		setAttributes( { classMigrate: true } );
-
-		// Pushing Style tag for this block css.
-		const $style = document.createElement( 'style' );
-		$style.setAttribute(
-			'id',
-			'uagb-info-box-style-' + props.clientId.substr( 0, 8 )
-		);
-		document.head.appendChild( $style );
 
 		const {
 			ctaBtnVertPadding,
@@ -58,15 +54,22 @@ const UAGBInfoBox = ( props ) => {
 	}, [] );
 
 	useEffect( () => {
-		// Replacement for componentDidUpdate.
-		const element = document.getElementById(
-			'uagb-info-box-style-' + props.clientId.substr( 0, 8 )
-		);
 
-		if ( null !== element && undefined !== element ) {
-			element.innerHTML = InfoBoxStyle( props );
-		}
+		// Replacement for componentDidUpdate.
+		const blockStyling = styling( props );
+
+		addBlockEditorDynamicStyles( 'uagb-info-box-style-' + props.clientId.substr( 0, 8 ), blockStyling );
+
 	}, [ props ] );
+
+	useEffect( () => {
+
+		// Replacement for componentDidUpdate.
+		const blockStyling = styling( props );
+
+		addBlockEditorDynamicStyles( 'uagb-info-box-style-' + props.clientId.substr( 0, 8 ), blockStyling );
+
+	}, [ deviceType ] );
 
 	return (
 		<>

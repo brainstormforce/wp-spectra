@@ -102,6 +102,7 @@ function styling( props ) {
 		headingFontStyle,
 		headingTransform,
 		headingDecoration,
+		headingAlignment
 	} = props.attributes;
 
 	let selectors = {};
@@ -124,7 +125,7 @@ function styling( props ) {
 			'margin-bottom': generateCSSUnit( headingBottom, 'px' ),
 		},
 		' .uagb-toc__title': {
-			'justify-content': align,
+			'justify-content': headingAlignment,
 			'margin-bottom': generateCSSUnit( headingBottom, 'px' ),
 			'font-size': generateCSSUnit(
 				headingFontSize,

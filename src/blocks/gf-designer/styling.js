@@ -1181,7 +1181,7 @@ function styling( props ) {
 
 	let stylingCss = generateCSS(
 		selectors,
-		`.block-editor-page #wpwrap .edit-post-visual-editor .wp-block-uagb-gf-styler.uagb-block-${ props.clientId.substr(
+		`.editor-styles-wrapper .wp-block-uagb-gf-styler.uagb-block-${ props.clientId.substr(
 			0,
 			8
 		) }`
@@ -1189,7 +1189,7 @@ function styling( props ) {
 
 	stylingCss += generateCSS(
 		tabletSelectors,
-		`.block-editor-page #wpwrap .uagb-block-${ props.clientId.substr(
+		`.editor-styles-wrapper .uagb-block-${ props.clientId.substr(
 			0,
 			8
 		) }`,
@@ -1199,7 +1199,7 @@ function styling( props ) {
 
 	stylingCss += generateCSS(
 		mobileSelectors,
-		`.block-editor-page #wpwrap .uagb-block-${ props.clientId.substr(
+		`.editor-styles-wrapper .uagb-block-${ props.clientId.substr(
 			0,
 			8
 		) }`,

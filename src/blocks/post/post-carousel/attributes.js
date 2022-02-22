@@ -236,6 +236,7 @@ const attributes = {
 	titleColor              : {
 		type : 'string',
 		isUAGStyle: true,
+		default: '',
 	},
 	titleTag                : {
 		type    : 'string',

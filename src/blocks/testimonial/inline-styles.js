@@ -231,6 +231,16 @@ function testimonialStyle( props ) {
 			'height': generateCSSUnit( arrowSize, arrowSizeType ),
 			'width': generateCSSUnit( arrowSize, arrowSizeType ),
 		},
+		' .uagb-testimonial__wrap .uagb-tm__content': {
+			'border-color': borderColor,
+			'border-style': borderStyle,
+			'border-width': generateCSSUnit( borderWidth, 'px' ),
+			'border-radius': generateCSSUnit( borderRadius, 'px' ),
+		},
+		' .uagb-testimonial__wrap .uagb-tm__content:hover': {
+			'border-color': borderHoverColor,
+		}
+
 	};
 
 	if ( test_item_count === columns ) {
@@ -238,20 +248,6 @@ function testimonialStyle( props ) {
 			'padding': '0',
 		};
 	}
-
-	if ( borderStyle !== 'none' ) {
-		selectors[ ' .uagb-testimonial__wrap .uagb-tm__content' ] = {
-			'border-color': borderColor,
-			'border-style': borderStyle,
-			'border-width': generateCSSUnit( borderWidth, 'px' ),
-		};
-		selectors[ ' .uagb-testimonial__wrap .uagb-tm__content:hover' ] = {
-			'border-color': borderHoverColor,
-		};
-	}
-	selectors[ ' .uagb-testimonial__wrap .uagb-tm__content' ] = {
-		'border-radius': generateCSSUnit( borderRadius, 'px' ),
-	};
 
 	if ( arrowDots === 'dots' ) {
 		selectors[ ' .uagb-slick-carousel.uagb-tm__arrow-outside' ] = {

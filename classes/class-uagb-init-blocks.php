@@ -46,9 +46,9 @@ class UAGB_Init_Blocks {
 		add_action( 'enqueue_block_editor_assets', array( $this, 'editor_assets' ) );
 
 		if ( version_compare( get_bloginfo( 'version' ), '5.8', '>=' ) ) {
-			add_filter( 'block_categories_all', array( $this, 'register_block_category' ), 10, 2 );
+			add_filter( 'block_categories_all', array( $this, 'register_block_category' ), 999999, 2 );
 		} else {
-			add_filter( 'block_categories', array( $this, 'register_block_category' ), 10, 2 );
+			add_filter( 'block_categories', array( $this, 'register_block_category' ), 999999, 2 );
 		}
 
 		add_action( 'wp_ajax_uagb_get_taxonomy', array( $this, 'get_taxonomy' ) );
@@ -394,13 +394,13 @@ class UAGB_Init_Blocks {
 	 */
 	public function register_block_category( $categories, $post ) {
 		return array_merge(
-			$categories,
 			array(
 				array(
 					'slug'  => 'uagb',
 					'title' => __( 'Ultimate Addons Blocks', 'ultimate-addons-for-gutenberg' ),
 				),
-			)
+			),
+			$categories
 		);
 	}
 
@@ -420,9 +420,14 @@ class UAGB_Init_Blocks {
 				'dependencies' => array(),
 				'version'      => UAGB_VER,
 			);
-		$script_dep      = array_merge( $script_info['dependencies'], array( 'wp-blocks', 'wp-i18n', 'wp-element', 'wp-components', 'wp-editor', 'wp-api-fetch', 'uagb-cross-site-cp-helper-js' ) );
+		global $pagenow;
+		$script_dep = array_merge( $script_info['dependencies'], array( 'wp-blocks', 'wp-i18n', 'wp-element', 'wp-components', 'wp-api-fetch', 'uagb-cross-site-cp-helper-js' ) );
+		if ( 'widgets.php' !== $pagenow ) {
+			$script_dep = array_merge( $script_info['dependencies'], array( 'wp-editor' ) );
+		}
 
-		wp_enqueue_script( 'uagb-cross-site-cp-helper-js', UAGB_URL . 'assets/js/cross-site-cp-helper.js', array(), UAGB_VER, true ); // 3rd Party Library JS for Cross-Domain Local Storage usage for the Copy/Paste styles feature.
+		$js_ext = ( SCRIPT_DEBUG ) ? '.js' : '.min.js';
+		wp_enqueue_script( 'uagb-cross-site-cp-helper-js', UAGB_URL . 'assets/js/cross-site-cp-helper' . $js_ext, array(), UAGB_VER, true ); // 3rd Party Library JS for Cross-Domain Local Storage usage for the Copy/Paste styles feature.
 
 		// Scripts.
 		wp_enqueue_script(

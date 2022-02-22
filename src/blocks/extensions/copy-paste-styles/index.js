@@ -1,8 +1,7 @@
 import { __ } from '@wordpress/i18n';
-import { registerPlugin } from '@wordpress/plugins';
-import { select, dispatch, useDispatch, withSelect } from '@wordpress/data';
+import { select, dispatch, useDispatch } from '@wordpress/data';
 import { store as keyboardShortcutsStore, useShortcut } from '@wordpress/keyboard-shortcuts';
-import { compose, ifCondition } from '@wordpress/compose';
+import { createHigherOrderComponent } from '@wordpress/compose';
 // Import Blocks Attributes.
 import advancedHeadingAttribute from './../../advanced-heading/attributes';
 import postGridAttribute from './../../post/post-grid/attributes';
@@ -47,10 +46,11 @@ import starRatingAttribute from './../../star-rating/attributes';
 import {
 	BlockControls,
 } from '@wordpress/block-editor';
-import { Toolbar, ToolbarButton, Popover, MenuItem } from '@wordpress/components';
+import { ToolbarGroup, ToolbarButton, Popover, MenuItem } from '@wordpress/components';
 import { useState, useEffect } from '@wordpress/element';
 import editorStyles from './../editor.lazy.scss';
 import { useLayoutEffect } from 'react';
+import { addFilter } from '@wordpress/hooks';
 
 const blocksAttributes = {
 	'advanced-heading' : advancedHeadingAttribute,
@@ -102,6 +102,7 @@ const UAGCopyPasteStyles = () => {
 
     const [ showPopup, setshowPopup ] = useState( false );
     const [ disablePaste, setdisablePaste ] = useState( false );
+    const { hasMultiSelection } = select( 'core/block-editor' );
 
 	useLayoutEffect( () => {
 		editorStyles.use();
@@ -162,13 +163,13 @@ const UAGCopyPasteStyles = () => {
 				character: 'u',
 			},
 		} );
-        
+
 	}, [] );
 
     const copyStylesHandler = () => {
 
         setshowPopup( false );
-
+        /* eslint-disable no-shadow */
         const { getSelectedBlock, hasMultiSelection, getMultiSelectedBlocks } = select( 'core/block-editor' );
 
         if ( hasMultiSelection() ) {
@@ -345,12 +346,18 @@ const UAGCopyPasteStyles = () => {
             setdisablePaste( false );
 
         } );
-        
+
     };
-    
+
+    let stylesText = __( 'Style', 'ultimate-addons-for-gutenberg' );
+
+    if ( hasMultiSelection() ) {
+        stylesText = __( 'Styles', 'ultimate-addons-for-gutenberg' );
+    }
+
     return (
-        <BlockControls>
-            <Toolbar className="uag-copy-paste-styles">
+        <BlockControls group="block">
+            <ToolbarGroup className="uag-copy-paste-styles">
                 <ToolbarButton
                     icon="admin-appearance"
                     label={ __( 'UAG Copy/Paste', 'ultimate-addons-for-gutenberg' ) }
@@ -358,7 +365,7 @@ const UAGCopyPasteStyles = () => {
                         openPopup();
                     }}
                 />
-            </Toolbar>
+            </ToolbarGroup>
             { showPopup && (
                 <Popover
                     position="bottom center"
@@ -371,16 +378,14 @@ const UAGCopyPasteStyles = () => {
 
                     <MenuItem
                         onClick={copyStylesHandler}
-                        shortcut='[ CTRL + SHIFT + S ]'
                     >
-                        { __( 'UAG Copy Styles', 'ultimate-addons-for-gutenberg' ) }
+                        { __( 'Copy ', 'ultimate-addons-for-gutenberg' ) + stylesText }
                     </MenuItem>
                     <MenuItem
                         onClick={pasteStylesHandler}
-                        shortcut='[ CTRL + SHIFT + F ]'
                         disabled = {disablePaste}
                     >
-                        { __( 'UAG Paste Styles', 'ultimate-addons-for-gutenberg' ) }
+                        { __( 'Paste ', 'ultimate-addons-for-gutenberg' ) + stylesText }
                     </MenuItem>
                 </Popover>
             )}
@@ -388,25 +393,62 @@ const UAGCopyPasteStyles = () => {
     );
 };
 
-const displayUAGCopyPasteSettingConditionally = compose(
-    /* eslint-disable no-shadow */
-    withSelect( function( select ) {
-        return {
-            selectedBlock: select( 'core/editor' ).getSelectedBlock()
-        }
-    } ),
-    ifCondition( function( props ) {
-        const excludeBlocks = [ 'core/missing', 'uagb/faq-child', 'uagb/restaurant-menu-child', 'uagb/google-map', 'uagb/content-timeline-child' ];
+const displayUAGCopyPasteSettingConditionally = createHigherOrderComponent( ( BlockEdit ) => {
+	return ( props ) => {
 
-        return (
-            props.selectedBlock &&
-           ( props.selectedBlock.name.includes( 'uagb/' ) || props.selectedBlock.name.includes( 'core/' ) ) && 'core/missing' !== props.selectedBlock.name && ! excludeBlocks.includes( props.selectedBlock.name )
-        );
-    } )
-)( UAGCopyPasteStyles );
+        const { getSelectedBlock, getMultiSelectedBlocks } = select( 'core/block-editor' );
+        const excludeBlocks = [ 'core/missing', 'uagb/faq-child', 'uagb/restaurant-menu-child', 'uagb/google-map', 'uagb/content-timeline-child' ];
+        const selectedBlock = getSelectedBlock();
+        const multiSelectedBlock = getMultiSelectedBlocks();
+        let singleSelectBlockFlag = false;
+        let multiSelectBlockFlag = false;
+
+        if ( selectedBlock ) {
+            const singleSelectedBlockName = selectedBlock.name;
+
+            if ( ( singleSelectedBlockName.includes( 'uagb/' ) || singleSelectedBlockName.includes( 'core/' ) ) && 'core/missing' !== singleSelectedBlockName && ! excludeBlocks.includes( singleSelectedBlockName ) ) {
+
+                singleSelectBlockFlag = true
+            }
+        }
+
+        if ( multiSelectedBlock && 0 !== multiSelectedBlock.length ) {
+            multiSelectedBlock.map( ( value ) => {
+                const singleSelectedBlockName = value.name;
+
+                if ( ( singleSelectedBlockName.includes( 'uagb/' ) || singleSelectedBlockName.includes( 'core/' ) ) && 'core/missing' !== singleSelectedBlockName && ! excludeBlocks.includes( singleSelectedBlockName ) ) {
+
+                    multiSelectBlockFlag = true;
+                }
+
+                return value;
+            } );
+        }
+
+        if ( singleSelectBlockFlag || multiSelectBlockFlag ) {
+            return (
+                <>
+                    <BlockEdit { ...props } />
+                    <UAGCopyPasteStyles/>
+                </>
+            );
+        }
+
+        if ( ! singleSelectBlockFlag && ! multiSelectBlockFlag ) {
+            return (
+                <>
+                    <BlockEdit { ...props } />
+                </>
+            );
+        }
+	};
+}, 'displayUAGCopyPasteSettingConditionally' );
 
 if ( 'enabled' === uagb_blocks_info.copy_paste ) {
-    registerPlugin( 'uag-copy-paste', {
-        render: displayUAGCopyPasteSettingConditionally,
-    } );
+    addFilter(
+        'editor.BlockEdit',
+        'uag-copy-paste',
+        displayUAGCopyPasteSettingConditionally
+    );
 }
+

@@ -20,9 +20,6 @@ import {
 import { select } from '@wordpress/data';
 import renderSVG from '@Controls/renderIcon';
 import { ToggleControl, Icon } from '@wordpress/components';
-
-
-
 import UAGAdvancedPanelBody from '@Components/advanced-panel-body';
 
 const Settings = ( props ) => {
@@ -137,7 +134,7 @@ const Settings = ( props ) => {
 	}
 
 	const updateCookieId = ( value ) => {
-		const { getCurrentPostId } = select( 'core/editor' );
+		const { getCurrentPostId } = select( 'core/block-editor' );
 		const post_id = getCurrentPostId().toString();
 		const timestamp = new Date().getTime();
 

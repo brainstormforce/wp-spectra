@@ -15,7 +15,6 @@ import UAGTabsControl from '@Components/tabs';
 
 import React from 'react';
 import { __ } from '@wordpress/i18n';
-
 import { InspectorControls, BlockAlignmentToolbar, AlignmentToolbar, BlockControls } from '@wordpress/block-editor';
 
 import {
@@ -24,8 +23,8 @@ import {
 	Icon,
 } from '@wordpress/components';
 
-
-
+import presets from './presets';
+import UAGPresets from '@Components/presets';
 import UAGAdvancedPanelBody from '@Components/advanced-panel-body';
 
 const Settings = ( props ) => {
@@ -812,7 +811,18 @@ const Settings = ( props ) => {
 			</UAGAdvancedPanelBody>
 		);
 	};
-
+	const presetSettings = () => {
+		return <UAGAdvancedPanelBody
+					title={ __( 'Presets', 'ultimate-addons-for-gutenberg' ) }
+					initialOpen={ true }
+				>
+					<UAGPresets
+						setAttributes = { setAttributes }
+						presets = { presets }
+						presetInputType = 'radioImage'
+					/>
+				</UAGAdvancedPanelBody>
+	};
 	const tabTitleStyle = () => {
 		const tabOutputNormal = (
 			<>
@@ -1187,6 +1197,7 @@ const Settings = ( props ) => {
 			</BlockControls>
 			<InspectorTabs>
 				<InspectorTab { ...UAGTabs.general }>
+					{ presetSettings() }
 					{ tabStyleSettings() }
 					{ tabTitleSettings() }
 				</InspectorTab>

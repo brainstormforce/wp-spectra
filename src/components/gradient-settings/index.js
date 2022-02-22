@@ -1,7 +1,7 @@
 
-import { __experimentalGradientPicker } from '@wordpress/components';
+import { GradientPicker } from '@wordpress/components';
 
-function GradientSettings( props ) {
+const GradientSettings = ( props ) => {
 	const { setAttributes, backgroundGradient } = props;
 
 	const onGradientChange = ( value ) => {
@@ -9,7 +9,7 @@ function GradientSettings( props ) {
 	};
 
 	return (
-		<__experimentalGradientPicker
+		<GradientPicker
 			value={ backgroundGradient.value }
 			onChange={ onGradientChange }
 		/>

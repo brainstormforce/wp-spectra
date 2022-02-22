@@ -2,6 +2,8 @@ import styling from './styling';
 
 import React, { lazy, useEffect, Suspense } from 'react';
 import lazyLoader from '@Controls/lazy-loader';
+import { useDeviceType } from '@Controls/getPreviewType';
+import addBlockEditorDynamicStyles from '@Controls/addBlockEditorDynamicStyles';
 
 const Settings = lazy( () =>
 	import( /* webpackChunkName: "chunks/blockquote/settings" */ './settings' )
@@ -11,16 +13,8 @@ const Render = lazy( () =>
 );
 
 const UAGBBlockQuote = ( props ) => {
-	useEffect( () => {
-		
-		const element = document.getElementById(
-			'uagb-blockquote-style-' + props.clientId.substr( 0, 8 )
-		);
 
-		if ( null !== element && undefined !== element ) {
-			element.innerHTML = styling( props );
-		}
-	}, [ props ] );
+	const deviceType = useDeviceType();
 
 	useEffect( () => {
 		// Assigning block_id in the attribute.
@@ -62,14 +56,23 @@ const UAGBBlockQuote = ( props ) => {
 				props.setAttributes( { paddingBtnLeft: tweetBtnHrPadding } );
 			}
 		}
-		// Pushing Style tag for this block css.
-		const $style = document.createElement( 'style' );
-		$style.setAttribute(
-			'id',
-			'uagb-blockquote-style-' + props.clientId.substr( 0, 8 )
-		);
-		document.head.appendChild( $style );
 	}, [] );
+
+	useEffect( () => {
+		// Replacement for componentDidUpdate.
+		const blockStyling = styling( props );
+
+		addBlockEditorDynamicStyles( 'uagb-blockquote-style-' + props.clientId.substr( 0, 8 ), blockStyling );
+		
+	}, [ props ] );
+
+	useEffect( () => {
+		// Replacement for componentDidUpdate.
+		const blockStyling = styling( props );
+
+		addBlockEditorDynamicStyles( 'uagb-blockquote-style-' + props.clientId.substr( 0, 8 ), blockStyling );
+		
+	}, [ deviceType ] );
 
 	return (
 		<Suspense fallback={ lazyLoader() }>

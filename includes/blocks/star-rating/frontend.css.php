@@ -75,6 +75,9 @@ if ( 0 !== $width ) {
 		'content'  => "'★'",
 		'overflow' => 'hidden',
 	);
+	$selectors[ ' .uag-star:nth-child(' . ceil( $attr['rating'] ) . ')' ]        = array(
+		'position' => 'relative',
+	);
 }
 
 $combined_selectors = array(

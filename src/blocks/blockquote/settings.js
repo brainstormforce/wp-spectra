@@ -286,48 +286,18 @@ const Settings = ( props ) => {
 							options={ [
 								{
 									value: 'left',
-									icon: (
-										<Icon
-											icon={ renderSVG(
-												'fa fa-align-left'
-											) }
-										/>
-									),
-									tooltip: __(
-										'Left',
-										'ultimate-addons-for-gutenberg'
-									),
+									label: 'Left',
 								},
 								{
 									value: 'top',
-									icon: (
-										<Icon
-											icon={ renderSVG(
-												'fa fa-align-center'
-											) }
-										/>
-									),
-									tooltip: __(
-										'Top',
-										'ultimate-addons-for-gutenberg'
-									),
+									label: 'Top',
 								},
 								{
 									value: 'right',
-									icon: (
-										<Icon
-											icon={ renderSVG(
-												'fa fa-align-right'
-											) }
-										/>
-									),
-									tooltip: __(
-										'Right',
-										'ultimate-addons-for-gutenberg'
-									),
+									label: 'Right',
 								},
 							] }
-							showIcons={ true }
+							showIcons={ false }
 						/>
 						<SelectControl
 							label={ __(

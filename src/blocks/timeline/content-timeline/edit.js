@@ -6,7 +6,8 @@ import contentTimelineStyle from './styling';
 import React, { useEffect, lazy, Suspense } from 'react';
 import lazyLoader from '@Controls/lazy-loader';
 import { dispatch, select } from '@wordpress/data';
-
+import { useDeviceType } from '@Controls/getPreviewType';
+import addBlockEditorDynamicStyles from '@Controls/addBlockEditorDynamicStyles';
 const Settings = lazy( () =>
     import (
         /* webpackChunkName: "chunks/content-timeline/settings" */
@@ -21,6 +22,7 @@ const Render = lazy( () =>
 );
 
 const ContentTimelineComponent = ( props ) => {
+    const deviceType = useDeviceType();
     useEffect( () => {
         const { setAttributes, clientId, attributes } = props;
         // Replacement for componentDidMount.
@@ -29,10 +31,6 @@ const ContentTimelineComponent = ( props ) => {
         setAttributes( { classMigrate: true } );
         setAttributes( { childMigrate: true } );
 
-        // Pushing Style tag for this block css.
-        const $style = document.createElement( 'style' );
-        $style.setAttribute( 'id', 'uagb-content-timeline-style-' + clientId );
-        document.head.appendChild( $style );
 
         const {
             verticalSpace,
@@ -83,6 +81,9 @@ const ContentTimelineComponent = ( props ) => {
 
     useEffect( () => {
         // Replacement for componentDidUpdate.
+        const blockStyling = contentTimelineStyle( props );
+
+        addBlockEditorDynamicStyles( 'uagb-content-timeline-style-' + props.clientId.substr( 0, 8 ), blockStyling );
         if (
             null ===
             select( 'core/block-editor' ).getBlocksByClientId(
@@ -142,17 +143,17 @@ const ContentTimelineComponent = ( props ) => {
         );
         getChildBlocks.forEach( ( ctChild ) => {
             ctChild.attributes.headingTag = props.attributes.headingTag;
+            ctChild.attributes.dateFormat = props.attributes.dateFormat;
         } );
     }, [props] );
 
 
-    const element = document.getElementById(
-        'uagb-content-timeline-style-' + props.clientId
-    );
+    useEffect( () => {
+		// Replacement for componentDidUpdate.
+	    const blockStyling = contentTimelineStyle( props );
 
-    if ( element ) {
-        element.innerHTML = contentTimelineStyle( props );
-    }
+        addBlockEditorDynamicStyles( 'uagb-content-timeline-style-' + props.clientId.substr( 0, 8 ), blockStyling );
+	}, [deviceType] );
 
     return ( 
 		<Suspense fallback = { lazyLoader() }>

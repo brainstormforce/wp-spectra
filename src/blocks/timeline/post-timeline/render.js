@@ -1,7 +1,5 @@
 import classnames from 'classnames';
 
-// Import css for timeline.
-import contentTimelineStyle from '.././inline-styles';
 import ContentTmClasses from '.././classes';
 import AlignClass from '.././align-classes';
 import DayAlignClass from '.././day-align-classes';
@@ -39,13 +37,6 @@ const Render = ( props ) => {
 
 	/* Render output at backend */
 	const getContent = () => {
-		// Add CSS.
-		const element = document.getElementById(
-			'uagb-timeline-style-' + props.clientId
-		);
-		if ( null !== element && 'undefined' !== typeof element ) {
-			element.innerHTML = contentTimelineStyle( props );
-		}
 
 		const hasPosts = Array.isArray( latestPosts ) && latestPosts.length;
 

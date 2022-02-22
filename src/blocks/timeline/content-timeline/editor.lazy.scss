@@ -2,7 +2,6 @@
   Content Timeline.
 */
 .block-editor-inner-blocks {
-	padding: 15px;
 
 	.block-editor-block-list__layout .block-editor-block-list__block {
 		padding: 0;
@@ -12,6 +11,15 @@
 }
 
 .edit-post-visual-editor .block-editor-block-list__block {
+
+	&[data-type="uagb/content-timeline"] {
+		padding: 15px;
+
+		.components-button svg {
+			fill: #fff;
+			width: 24px;
+		}
+	}
 
 	.uagb-timeline__outer-wrap {
 

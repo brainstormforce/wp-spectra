@@ -54,10 +54,12 @@ const attributes = {
 	separatorHeight: {
 		type: 'number',
 		isUAGStyle: true,
+		default: 2
 	},
 	separatorWidth: {
 		type: 'number',
 		isUAGStyle: true,
+		default: 5
 	},
 	separatorWidthType: {
 		type: 'string',

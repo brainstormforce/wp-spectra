@@ -98,7 +98,9 @@ const Range = ( props ) => {
 
 		setValue( cachedValueUpdate.value );
 		props.onChange( cachedValueUpdate.value );
-		onChangeUnits( cachedValueUpdate.unit );
+		if( cachedValueUpdate.unit ){
+			onChangeUnits( cachedValueUpdate.unit );
+		}
 
 		cachedValueUpdate.resetDisabled = true;
 		setCacheValue( cachedValueUpdate );
@@ -118,6 +120,7 @@ const Range = ( props ) => {
 						__( '%s units', 'ultimate-addons-for-gutenberg' ),
 						key.name
 					) }
+					key={key.name}
 				>
 					<Button
 						key={ key.unitValue }

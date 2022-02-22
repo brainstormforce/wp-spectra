@@ -4,8 +4,8 @@ Donate link: https://www.paypal.me/BrainstormForce
 Tags: gutenberg, blocks, gutenberg blocks, editor, block
 Requires at least: 4.7
 Requires PHP: 5.6
-Tested up to: 5.8
-Stable tag: 1.25.2
+Tested up to: 5.9
+Stable tag: 1.25.3
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -178,6 +178,10 @@ The awesome React FontIconPicker is developed by [Alessandro Benoit](http://code
 * Improvement: Team Block - Span and Div tag support for Title.
 * Fix: Posts - Excerpt Layout Strips Shortcodes on Frontend.
 * Fix: Blockquote - Tweet content not shown in tweet box when double and single quotes are used.
+
+= 1.25.3 - THURSDAY, 27TH JANUARY 2022 =
+* Improvement: Added compatibility with WordPress v5.9.
+* Fix: Masonry option - Not visible for core/gallery.
 
 = 1.25.2 - TUESDAY, 30TH NOVEMBER 2021 =
 * Fix: Block condition - Conflicting with plugin using REST API block preview.

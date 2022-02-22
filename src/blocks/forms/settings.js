@@ -24,8 +24,8 @@ import {
 	Icon,
 } from '@wordpress/components';
 
-
-
+import presets from './presets';
+import UAGPresets from '@Components/presets';
 import UAGAdvancedPanelBody from '@Components/advanced-panel-body';
 
 const Settings = ( props ) => {
@@ -170,7 +170,18 @@ const Settings = ( props ) => {
 		labelFontStyle,
 		inputFontStyle,
 	} = attributes;
-
+	const presetSettings = () => {
+		return <UAGAdvancedPanelBody
+					title={ __( 'Presets', 'ultimate-addons-for-gutenberg' ) }
+					initialOpen={ true }
+				>
+					<UAGPresets
+						setAttributes = { setAttributes }
+						presets = { presets }
+						presetInputType = 'radioImage'
+					/>
+				</UAGAdvancedPanelBody>
+	};
 	const generalSettings = () => {
 		return (
 			<UAGAdvancedPanelBody
@@ -525,7 +536,7 @@ const Settings = ( props ) => {
 	const submitButtonStyle = () => {
 		return (
 			<UAGAdvancedPanelBody
-				title={ __( 'Submit Button', 'ultimate-addons-for-gutenberg' ) }
+				title={ __( 'Submit', 'ultimate-addons-for-gutenberg' ) }
 				initialOpen={ false }
 				className="uagb__url-panel-body"
 			>
@@ -883,7 +894,7 @@ const Settings = ( props ) => {
 	const afterSubmitActions = () => {
 		return (
 			<UAGAdvancedPanelBody
-				title={ __( 'After Submit Actions' ) }
+				title={ __( 'Actions' ) }
 				initialOpen={ false }
 				className="uagb__url-panel-body"
 			>
@@ -1105,6 +1116,7 @@ const Settings = ( props ) => {
 						setAttributes( { inputactiveColor: value } )
 					}
 				/>
+				{ 'underlined' !== formStyle && (
 				<AdvancedPopColorControl
 					label={ __(
 						'Background Color',
@@ -1115,6 +1127,7 @@ const Settings = ( props ) => {
 						setAttributes( { bgColor: value } )
 					}
 				/>
+				)}
 				<TypographyControl
 					label={ __(
 						'Typography',
@@ -1607,6 +1620,7 @@ const Settings = ( props ) => {
 			<InspectorControls>
 				<InspectorTabs>
 					<InspectorTab { ...UAGTabs.general }>
+						{ presetSettings() }
 						{ generalSettings() }
 						{ afterSubmitActions() }
 						{ googleReCaptcha() }

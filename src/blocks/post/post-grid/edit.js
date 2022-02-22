@@ -1,3 +1,4 @@
+
 /**
  * BLOCK: Post Grid - Edit
  */
@@ -6,6 +7,9 @@ import React, { useEffect, useState, lazy, Suspense } from 'react';
 import lazyLoader from '@Controls/lazy-loader';
 import { __ } from '@wordpress/i18n';
 import apiFetch from '@wordpress/api-fetch';
+import { useDeviceType } from '@Controls/getPreviewType';
+import addBlockEditorDynamicStyles from '@Controls/addBlockEditorDynamicStyles';
+
 const Settings = lazy( () =>
 	import( /* webpackChunkName: "chunks/post-grid/settings" */ './settings' )
 );
@@ -18,6 +22,9 @@ import { compose } from '@wordpress/compose';
 import { Placeholder, Spinner } from '@wordpress/components';
 
 const PostGridComponent = ( props ) => {
+
+	const deviceType = useDeviceType();
+
 	const initialState = {
 		isEditing: false,
 		innerBlocks: [],
@@ -102,24 +109,24 @@ const PostGridComponent = ( props ) => {
 				} );
 			}
 		}
-		const $style = document.createElement( 'style' );
-		$style.setAttribute(
-			'id',
-			'uagb-post-grid-style-' + props.clientId.substr( 0, 8 )
-		);
-		document.head.appendChild( $style );
+
 	}, [] );
 
 	useEffect( () => {
 		// Replacement for componentDidUpdate.
+		const blockStyling = styling( props );
 
-		const element = document.getElementById(
-			'uagb-post-grid-style-' + props.clientId.substr( 0, 8 )
-		);
-		if ( null !== element && undefined !== element ) {
-			element.innerHTML = styling( props );
-		}
+		addBlockEditorDynamicStyles( 'uagb-post-grid-style-' + props.clientId.substr( 0, 8 ), blockStyling );
+
 	}, [ props ] );
+
+	useEffect( () => {
+		// Replacement for componentDidUpdate.
+		const blockStyling = styling( props );
+
+		addBlockEditorDynamicStyles( 'uagb-post-grid-style-' + props.clientId.substr( 0, 8 ), blockStyling );
+
+	}, [ deviceType ] );
 
 	const togglePreview = () => {
 		setStateValue( { isEditing: ! state.isEditing } );
@@ -197,7 +204,7 @@ export default compose(
 		const currentTax = allTaxonomy[ postType ];
 		let categoriesList = [];
 		let rest_base = '';
-		
+
 		if ( true === postPagination && 'empty' === paginationMarkup ) {
 			const formData = new window.FormData();
 
@@ -207,12 +214,12 @@ export default compose(
 				uagb_blocks_info.uagb_ajax_nonce
 			);
 			formData.append( 'attributes', JSON.stringify( props.attributes ) );
-	
+
 			apiFetch( {
 				url: uagb_blocks_info.ajax_url,
 				method: 'POST',
 				body: formData,
-			} ).then( ( data ) => {  
+			} ).then( ( data ) => {
 				setAttributes( { paginationMarkup: data.data } );
 			} );
 		}
@@ -282,3 +289,4 @@ export default compose(
 		};
 	} )
 )( PostGridComponent );
+

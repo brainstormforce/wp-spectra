@@ -23,6 +23,7 @@ const attributes = {
 	},
 	image: {
 		type: 'object',
+		default: null
 	},
 	icon_color: {
 		type: 'string',
@@ -32,14 +33,17 @@ const attributes = {
 	icon_hover_color: {
 		type: 'string',
 		isUAGStyle: true,
+		default: '',
 	},
 	icon_bg_color: {
 		type: 'string',
 		isUAGStyle: true,
+		default: '',
 	},
 	icon_bg_hover_color: {
 		type: 'string',
 		isUAGStyle: true,
+		default: '',
 	},
 };
 

@@ -8,6 +8,15 @@
  * All blocks should be included here since this is the file that
  * Webpack is compiling as the input file.
  */
+
+ import getUAGEditorStateLocalStorage from '@Controls/getUAGEditorStateLocalStorage';
+
+// Delete the local storage on every refresh.
+const uagLocalStorage = getUAGEditorStateLocalStorage();
+if ( uagLocalStorage ) {
+	uagLocalStorage.removeItem( 'uagLastOpenedState' );
+}
+
 __webpack_public_path__ = uagb_blocks_info.uagb_url + 'dist/';
 
 import './blocks/extensions/attributes.js';
@@ -61,6 +70,7 @@ import './blocks/tabs/block.js';
 import './blocks/tabs-child/block.js';
 import './blocks/lottie/block.js';
 import './blocks/star-rating/block.js';
+import './blocks/container/block.js';
 
 wp.UAGBSvgIcons = Object.keys( uagb_blocks_info.uagb_svg_icons );
 

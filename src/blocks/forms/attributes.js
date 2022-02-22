@@ -119,12 +119,13 @@ const attributes = {
 	},
 	submitborderRadius: {
 		type: 'number',
-		default: '',
+		default: 3,
 		isUAGStyle: true,
 	},
 	submitborderColor: {
 		type: 'string',
 		isUAGStyle: true,
+		default: '',
 	},
 	submitborderHoverColor: {
 		type: 'string',
@@ -163,6 +164,7 @@ const attributes = {
 	submitTextFontSizeType: {
 		type: 'string',
 		isUAGStyle: true,
+		default: 'px'
 	},
 	submitTextFontSizeTablet: {
 		type: 'number',
@@ -218,6 +220,7 @@ const attributes = {
 	labelFontSizeType: {
 		type: 'string',
 		isUAGStyle: true,
+		default: 'px'
 	},
 	labelFontSizeTablet: {
 		type: 'number',
@@ -272,6 +275,7 @@ const attributes = {
 	inputFontSizeType: {
 		type: 'string',
 		isUAGStyle: true,
+		default: 'px'
 	},
 	inputFontSizeTablet: {
 		type: 'number',
@@ -305,7 +309,7 @@ const attributes = {
 	},
 	toggleActiveColor: {
 		type: 'string',
-		default: '',
+		default: '#000000',
 		isUAGStyle: true,
 	},
 	toggleHeightSize: {
@@ -336,6 +340,7 @@ const attributes = {
 	bgColor: {
 		type: 'string',
 		isUAGStyle: true,
+		default: '',
 	},
 	inputplaceholderColor: {
 		type: 'string',
@@ -345,13 +350,13 @@ const attributes = {
 	inputactiveColor: {
 		type: 'string',
 		isUAGStyle: true,
-		default: '',
+		default: '#000000',
 	},
 
 	// InputBorder
 	inputborderStyle: {
 		type: 'string',
-		default: 'none',
+		default: 'solid',
 		isUAGStyle: true,
 	},
 	inputborderWidth: {
@@ -366,7 +371,7 @@ const attributes = {
 	},
 	inputborderColor: {
 		type: 'string',
-		default: '',
+		default: '#BDBDBD',
 		isUAGStyle: true,
 	},
 	inputborderHoverColor: {
@@ -530,6 +535,7 @@ const attributes = {
 	paddingBtnUnit: {
 		type: 'string',
 		isUAGStyle: true,
+		default: 'px',
 	},
 	mobilePaddingBtnUnit: {
 		type: 'string',
@@ -576,18 +582,22 @@ const attributes = {
 	},
 	paddingFieldTop: {
 		type: 'number',
+		default: 12,
 		isUAGStyle: true,
 	},
 	paddingFieldRight: {
 		type: 'number',
+		default: 12,
 		isUAGStyle: true,
 	},
 	paddingFieldBottom: {
 		type: 'number',
+		default: 12,
 		isUAGStyle: true,
 	},
 	paddingFieldLeft: {
 		type: 'number',
+		default: 12,
 		isUAGStyle: true,
 	},
 	paddingFieldTopTablet: {

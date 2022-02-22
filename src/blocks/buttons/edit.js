@@ -5,7 +5,8 @@
 import styling from './styling';
 import lazyLoader from '@Controls/lazy-loader';
 import React, { useEffect, useState, lazy, Suspense } from 'react';
-
+import { useDeviceType } from '@Controls/getPreviewType';
+import addBlockEditorDynamicStyles from '@Controls/addBlockEditorDynamicStyles';
 const Settings = lazy( () =>
 	import( /* webpackChunkName: "chunks/buttons/settings" */ './settings' )
 );
@@ -16,6 +17,9 @@ const Render = lazy( () =>
 let prevState;
 
 const ButtonsComponent = ( props ) => {
+
+	const deviceType = useDeviceType();
+
 	const initialState = {
 		isFocused: 'false',
 		isHovered: 'false',
@@ -33,14 +37,6 @@ const ButtonsComponent = ( props ) => {
 		props.setAttributes( { classMigrate: true } );
 		props.setAttributes( { childMigrate: true } );
 
-		// Pushing Style tag for this block css.
-		const $style = document.createElement( 'style' );
-		$style.setAttribute(
-			'id',
-			'uagb-style-buttons-' + props.clientId.substr( 0, 8 )
-		);
-		document.head.appendChild( $style );
-
 		prevState = props.isSelected;
 	}, [] );
 
@@ -52,16 +48,19 @@ const ButtonsComponent = ( props ) => {
 			} );
 		}
 
-		const element = document.getElementById(
-			'uagb-style-buttons-' + props.clientId.substr( 0, 8 )
-		);
+		const blockStyling = styling( props );
 
-		if ( null !== element && undefined !== element ) {
-			element.innerHTML = styling( props );
-		}
+		addBlockEditorDynamicStyles( 'uagb-style-buttons-' + props.clientId.substr( 0, 8 ), blockStyling );
 
 		prevState = props.isSelected;
 	}, [ props ] );
+
+	useEffect( () => {
+		// Replacement for componentDidUpdate.
+		const blockStyling = styling( props );
+
+		addBlockEditorDynamicStyles( 'uagb-style-buttons-' + props.clientId.substr( 0, 8 ), blockStyling );
+	}, [deviceType] );
 
 	return (
 		<Suspense fallback={ lazyLoader() }>

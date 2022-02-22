@@ -4,7 +4,8 @@
 import styling from './styling';
 import React, { lazy, Suspense, useEffect } from 'react';
 import lazyLoader from '@Controls/lazy-loader';
-
+import addBlockEditorDynamicStyles from '@Controls/addBlockEditorDynamicStyles';
+import { useDeviceType } from '@Controls/getPreviewType';
 const Settings = lazy( () =>
 	import(
 		/* webpackChunkName: "chunks/advanced-heading/settings" */ './settings'
@@ -20,6 +21,7 @@ const Render = lazy( () =>
 import './style.scss';
 
 const UAGBAdvancedHeading = ( props ) => {
+	const deviceType = useDeviceType();
 	useEffect( () => {
 
 		const { setAttributes } = props;
@@ -29,26 +31,22 @@ const UAGBAdvancedHeading = ( props ) => {
 
 		setAttributes( { classMigrate: true } );
 
-		// Pushing Style tag for this block css.
-		const $style = document.createElement( 'style' );
-		$style.setAttribute(
-			'id',
-			'uagb-adv-heading-style-' + props.clientId.substr( 0, 8 )
-		);
-		document.head.appendChild( $style );
 
 	}, [] );
 
 	useEffect( () => {
 		// Replacement for componentDidUpdate.
-		const element = document.getElementById(
-			'uagb-adv-heading-style-' + props.clientId.substr( 0, 8 )
-		);
+		const blockStyling = styling( props );
 
-		if ( null !== element && undefined !== element ) {
-			element.innerHTML = styling( props );
-		}
+        addBlockEditorDynamicStyles( 'uagb-adv-heading-style-' + props.clientId.substr( 0, 8 ), blockStyling );
 	}, [ props ] );
+
+	useEffect( () => {
+		// Replacement for componentDidUpdate.
+	    const blockStyling = styling( props );
+
+        addBlockEditorDynamicStyles( 'uagb-adv-heading-style-' + props.clientId.substr( 0, 8 ), blockStyling );
+	}, [deviceType] );
 
 	return (
 		<>

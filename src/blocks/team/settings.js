@@ -16,6 +16,8 @@ import MultiButtonsControl from '@Components/multi-buttons-control';
 import UAGImage from '@Components/image';
 import UAGTabsControl from '@Components/tabs';
 import { getImageSize } from '@Utils/Helpers';
+import presets from './presets';
+import UAGPresets from '@Components/presets';
 let imageSizeOptions = [
 	{
 		value: 'thumbnail',
@@ -37,9 +39,6 @@ import {
 	ToggleControl,
 	Icon,
 } from '@wordpress/components';
-
-
-
 import UAGAdvancedPanelBody from '@Components/advanced-panel-body';
 
 const Settings = ( props ) => {
@@ -159,7 +158,18 @@ const Settings = ( props ) => {
 		}
 		setAttributes( { image: media } );
 	};
-
+	const presetSettings = () => {
+		return <UAGAdvancedPanelBody
+					title={ __( 'Presets', 'ultimate-addons-for-gutenberg' ) }
+					initialOpen={ true }
+				>
+					<UAGPresets
+						setAttributes = { setAttributes }
+						presets = { presets }
+						presetInputType = 'radioImage'
+					/>
+				</UAGAdvancedPanelBody>
+	};
 	/*
 	 * Event to set Image as null while removing.
 	 */
@@ -1221,6 +1231,7 @@ const Settings = ( props ) => {
 			<InspectorControls>
 				<InspectorTabs>
 					<InspectorTab { ...UAGTabs.general }>
+						{ presetSettings() }
 						{ getImagePanelBody() }
 						{ getSocialLinksPanelBody() }
 					</InspectorTab>
