@@ -62,10 +62,10 @@ $selectors = array(
 	' .uagb-marketing-btn__link:hover'     => array(
 		'border-color' => $attr['borderHoverColor'],
 	),
-	'.uagb-marketing-btn__icon-after .uagb-marketing-btn__icon-wrap svg'     => array(
+	'.uagb-marketing-btn__icon-after .uagb-marketing-btn__icon-wrap svg' => array(
 		'margin-left' => UAGB_Helper::get_css_value( $attr['iconSpace'], 'px' ),
 	),
-	'.uagb-marketing-btn__icon-before .uagb-marketing-btn__icon-wrap svg'     => array(
+	'.uagb-marketing-btn__icon-before .uagb-marketing-btn__icon-wrap svg' => array(
 		'margin-right' => UAGB_Helper::get_css_value( $attr['iconSpace'], 'px' ),
 	),
 );

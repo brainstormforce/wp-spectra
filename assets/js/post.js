@@ -202,14 +202,14 @@ window.UAGBPostMasonry = {
 					$scope.querySelector( '.uagb-post__load-more-wrap' ).style.display='none';
 				}
 				// This CSS is for Post BG Image Spacing
-				let articles = document.querySelectorAll( '.uagb-post__image-position-background .uagb-post__inner-wrap' );
+				const articles = document.querySelectorAll( '.uagb-post__image-position-background .uagb-post__inner-wrap' );
 
-				for( let article of articles ) {
+				for( const article of articles ) {
 
-					let articleWidth = article.offsetWidth;
-					let rowGap = $attr.rowGap;
-					let imageWidth = 100 - ( rowGap / articleWidth ) * 100;
-					let image = article.getElementsByClassName('uagb-post__image');
+					const articleWidth = article.offsetWidth;
+					const rowGap = $attr.rowGap;
+					const imageWidth = 100 - ( rowGap / articleWidth ) * 100;
+					const image = article.getElementsByClassName( 'uagb-post__image' );
 					if ( image[0] ) {
 						image[0].style.width = imageWidth + '%';
 						image[0].style.marginLeft = rowGap / 2 + 'px';
