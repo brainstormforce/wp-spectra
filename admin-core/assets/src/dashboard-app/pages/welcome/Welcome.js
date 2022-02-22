@@ -28,7 +28,7 @@ const Welcome = () => {
                 <h2 className="sr-only" id="section-1-title">
                   Section title
                 </h2>
-                <div className="rounded-[0.2rem] bg-white overflow-hidden shadow h-full">
+                <div className="rounded-[0.2rem] bg-white overflow-hidden shadow">
                   <div className="p-6">
                         <h3 className='text-xl pb-3 font-medium'>{__( 'Powerful Blocks & Beautiful Templates for any kind of website.', 'ultimate-addons-for-gutenberg' )}</h3>
                         <iframe width="100%" height="380px" src="https://www.youtube.com/embed/N-MLUplUoZc?showinfo=0&autoplay=1&mute=1" allow="autoplay" title="YouTube video player" frameBorder="0" allowFullScreen></iframe>
@@ -39,7 +39,7 @@ const Welcome = () => {
                               onClick={ onCreateNewPageClick }
                           >
                               {__( 'Create New Page', 'ultimate-addons-for-gutenberg' )}
-                              
+
                           </button>
                           <button
                               type="button"
@@ -47,7 +47,7 @@ const Welcome = () => {
                               onClick={ onReadFullGuideClick }
                           >
                               {__( 'Read Full Guide', 'ultimate-addons-for-gutenberg' )}
-                              
+
                           </button>
                       </span>
                   </div>
