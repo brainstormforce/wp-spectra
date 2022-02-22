@@ -111,7 +111,7 @@ $selectors = array(
 	),
 	// Backword css.
 	' .uagb-blockquote__skin-quotation .uagb-blockquote__icon svg' => array(
-		'fill' => $attr['quoteColor'],
+		'fill'   => $attr['quoteColor'],
 		'width'  => UAGB_Helper::get_css_value( $attr['quoteSize'], $attr['quoteSizeType'] ),
 		'height' => UAGB_Helper::get_css_value( $attr['quoteSize'], $attr['quoteSizeType'] ),
 	),
