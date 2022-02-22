@@ -18,7 +18,7 @@ function generateBackgroundCSS ( backgroundAttributes ) {
         if ( 'color' === backgroundType ) {
 
             if ( backgroundImage && '' !== backgroundImage && '' !== backgroundColor && undefined !== backgroundColor && 'unset' !== backgroundColor ) {
-                bgCSS['background-image'] = 'linear-gradient(to right, ' + backgroundColor + ', ' + backgroundColor + '), url(' + backgroundImage.url + ');';
+                bgCSS['background-image'] = 'linear-gradient(to right, ' + backgroundColor + ', ' + backgroundColor + '), url(' + backgroundImage?.url + ');';
             }  else if ( undefined === backgroundImage || '' === backgroundImage || 'unset' === backgroundImage ) {
                 bgCSS['background-color'] = backgroundColor;
             }
@@ -26,7 +26,7 @@ function generateBackgroundCSS ( backgroundAttributes ) {
 
             if ( '' !== backgroundImage && '' !== backgroundColor && undefined !== backgroundColor && 'unset' !== backgroundColor && ! backgroundColor.includes( 'linear-gradient' ) && ! backgroundColor.includes( 'radial-gradient' ) ) {
 
-                bgCSS['background-image'] = 'linear-gradient(to right, ' + backgroundColor + ', ' + backgroundColor + '), url(' + backgroundImage.url + ');';
+                bgCSS['background-image'] = 'linear-gradient(to right, ' + backgroundColor + ', ' + backgroundColor + '), url(' + backgroundImage?.url + ');';
             }
             if ( ( undefined === backgroundColor || '' === backgroundColor || 'unset' === backgroundColor || backgroundColor.includes( 'linear-gradient' ) || backgroundColor.includes( 'radial-gradient' ) ) && '' !== backgroundImage && backgroundImage ) {
                 bgCSS['background-image'] = 'url(' + backgroundImage?.url + ');';

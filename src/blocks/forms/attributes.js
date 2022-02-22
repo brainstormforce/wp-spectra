@@ -164,6 +164,7 @@ const attributes = {
 	submitTextFontSizeType: {
 		type: 'string',
 		isUAGStyle: true,
+		default: 'px'
 	},
 	submitTextFontSizeTablet: {
 		type: 'number',
@@ -219,6 +220,7 @@ const attributes = {
 	labelFontSizeType: {
 		type: 'string',
 		isUAGStyle: true,
+		default: 'px'
 	},
 	labelFontSizeTablet: {
 		type: 'number',
@@ -273,6 +275,7 @@ const attributes = {
 	inputFontSizeType: {
 		type: 'string',
 		isUAGStyle: true,
+		default: 'px'
 	},
 	inputFontSizeTablet: {
 		type: 'number',
@@ -306,7 +309,7 @@ const attributes = {
 	},
 	toggleActiveColor: {
 		type: 'string',
-		default: '',
+		default: '#000000',
 		isUAGStyle: true,
 	},
 	toggleHeightSize: {
@@ -347,7 +350,7 @@ const attributes = {
 	inputactiveColor: {
 		type: 'string',
 		isUAGStyle: true,
-		default: '',
+		default: '#000000',
 	},
 
 	// InputBorder
@@ -368,7 +371,7 @@ const attributes = {
 	},
 	inputborderColor: {
 		type: 'string',
-		default: '',
+		default: '#BDBDBD',
 		isUAGStyle: true,
 	},
 	inputborderHoverColor: {

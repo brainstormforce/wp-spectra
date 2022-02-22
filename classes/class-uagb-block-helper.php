@@ -233,7 +233,10 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				' .uagb-post__inner-wrap .uagb-post__text:first-child' => array(
 					'margin-top' => UAGB_Helper::get_css_value( $paddingTop, $attr['contentPaddingUnit'] ),
 				),
-				' .uagb-post__inner-wrap .uagb-post__text.uagb-post__cta:last-child'                         => array(
+				' .uagb-post__inner-wrap .uagb-post__text.uagb-post__title' => array(
+					'margin-top' => UAGB_Helper::get_css_value( $paddingTop, $attr['contentPaddingUnit'] ),
+				),
+				' .uagb-post__inner-wrap .uagb-post__text.uagb-post__cta:last-child' => array(
 					'margin-bottom' => UAGB_Helper::get_css_value( $attr['ctaBottomSpace'], $attr['ctaBottomSpaceUnit'] ),
 				),
 				' .uagb-post__inner-wrap .uagb-post__text:last-child' => array(
@@ -450,6 +453,11 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				),
 				'.uagb-timeline__field:not(:last-child)' => array(
 					'margin-bottom' => UAGB_Helper::get_css_value( $bottom_margin, $attr['marginUnit'] ),
+				),
+				' .uagb-timeline__date-hide.uagb-timeline__inner-date-new' => array( // For New User.
+					'margin-bottom' => UAGB_Helper::get_css_value( $attr['dateBottomspace'], 'px' ),
+					'color'         => $attr['dateColor'],
+					'text-align'    => $attr['align'],
 				),
 				' .uagb-timeline__date-hide.uagb-timeline__date-inner' => array(
 					'margin-bottom' => UAGB_Helper::get_css_value( $attr['dateBottomspace'], 'px' ),
@@ -803,7 +811,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 			$gen_bg_css = array();
 
 			$bg_type        = isset( $bg_obj['backgroundType'] ) ? $bg_obj['backgroundType'] : '';
-			$bg_img         = isset( $bg_obj['backgroundImage'] ) ? $bg_obj['backgroundImage'] : '';
+			$bg_img         = isset( $bg_obj['backgroundImage'] ) && isset( $bg_obj['backgroundImage']['url'] ) ? $bg_obj['backgroundImage']['url'] : '';
 			$bg_color       = isset( $bg_obj['backgroundColor'] ) ? $bg_obj['backgroundColor'] : '';
 			$gradient_value = isset( $bg_obj['gradientValue'] ) ? $bg_obj['gradientValue'] : '';
 			$repeat         = isset( $bg_obj['backgroundRepeat'] ) ? $bg_obj['backgroundRepeat'] : '';

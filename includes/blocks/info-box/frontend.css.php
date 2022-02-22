@@ -39,7 +39,7 @@ $selectors = array(
 	' .uagb-ifb-icon svg'                                  => array( // For Backword.
 		'fill' => $attr['iconColor'],
 	),
-	'.uagb-infobox__content-wrap > svg'                    => array(
+	'.uagb-infobox__content-wrap .uagb-ifb-icon-wrap > svg' => array(
 		'height'        => $icon_size,
 		'width'         => $icon_size,
 		'line-height'   => $icon_size,
@@ -51,7 +51,7 @@ $selectors = array(
 		'margin-top'    => UAGB_Helper::get_css_value( $attr['iconTopMargin'], 'px' ),
 		'margin-bottom' => UAGB_Helper::get_css_value( $attr['iconBottomMargin'], 'px' ),
 	),
-	' .uagb-ifb-content > svg'                             => array(
+	' .uagb-ifb-content .uagb-ifb-icon-wrap > svg'         => array(
 		'height'        => $icon_size,
 		'line-height'   => $icon_size,
 		'font-size'     => $icon_size,
@@ -86,15 +86,15 @@ $selectors = array(
 		'margin-top'    => UAGB_Helper::get_css_value( $attr['iconTopMargin'], 'px' ),
 		'margin-bottom' => UAGB_Helper::get_css_value( $attr['iconBottomMargin'], 'px' ),
 	),
-	' .uagb-ifb-content:hover svg'                         => array(
+	' .uagb-ifb-content .uagb-ifb-icon-wrap:hover svg'     => array(
 		'fill'  => $attr['iconHover'],
 		'color' => $attr['iconHover'],
 	),
-	' .uagb-infobox-icon-right:hover > svg'                => array(
+	'.uagb-infobox-icon-right .uagb-ifb-icon-wrap > svg:hover' => array(
 		'fill'  => $attr['iconHover'],
 		'color' => $attr['iconHover'],
 	),
-	' .uagb-infobox-icon-left:hover > svg'                 => array(
+	'.uagb-infobox-icon-left .uagb-ifb-icon-wrap > svg:hover' => array(
 		'fill'  => $attr['iconHover'],
 		'color' => $attr['iconHover'],
 	),
@@ -107,6 +107,9 @@ $selectors = array(
 		'margin-right'  => UAGB_Helper::get_css_value( $attr['iconRightMargin'], 'px' ),
 		'margin-top'    => UAGB_Helper::get_css_value( $attr['iconTopMargin'], 'px' ),
 		'margin-bottom' => UAGB_Helper::get_css_value( $attr['iconBottomMargin'], 'px' ),
+	),
+	' .uagb-infobox .uagb-ifb-image-content img'  => array(
+		'border-radius' => UAGB_Helper::get_css_value( $attr['iconimgBorderRadius'], $attr['iconimgBorderRadiusUnit'] ),
 	),
 	'.uagb-infobox__content-wrap img'                      => array(
 		'margin-left'   => UAGB_Helper::get_css_value( $attr['iconLeftMargin'], 'px' ),
@@ -177,6 +180,13 @@ $selectors = array(
 		'border-top-color' => $attr['seperatorColor'],
 		'border-top-style' => $attr['seperatorStyle'],
 	),
+	// CTA icon space for Backword compatibility.
+	' .uagb-ifb-align-icon-after'                          => array(
+		'margin-left' => UAGB_Helper::get_css_value( $attr['ctaIconSpace'], 'px' ),
+	),
+	' .uagb-ifb-align-icon-before'                         => array(
+		'margin-right' => UAGB_Helper::get_css_value( $attr['ctaIconSpace'], 'px' ),
+	),
 );
 if ( 'after' === $attr['ctaIconPosition'] ) {
 	$selectors['.uagb-infobox__content-wrap .uagb-infobox-cta-link > svg '] = array(
@@ -187,12 +197,15 @@ if ( 'after' === $attr['ctaIconPosition'] ) {
 		'margin-right' => UAGB_Helper::get_css_value( $attr['ctaIconSpace'], $attr['ctaIconSpaceType'] ),
 	);
 }
-if ( 'button' === $attr['ctaType'] ) {
+if ( 'text' === $attr['ctaType'] ) {
 	$selectors[' .uagb-infobox-cta-link']                          = array(
 		'color' => $attr['ctaLinkColor'],
 	);
 	$selectors[' .uagb-infobox-cta-link:hover']                    = array(
 		'color' => $attr['ctaLinkHoverColor'],
+	);
+	$selectors[' .uagb-infobox-cta-link:hover svg']                = array(
+		'fill' => $attr['ctaLinkHoverColor'],
 	);
 	$selectors[' .uagb-infobox-cta-link svg']                      = array(
 		'font-size'   => $cta_icon_size,
@@ -201,8 +214,13 @@ if ( 'button' === $attr['ctaType'] ) {
 		'line-height' => $cta_icon_size,
 		'fill'        => $attr['ctaLinkColor'],
 	);
-	$selectors[' .uagb-infobox-cta-link:hover svg']                = array(
-		'fill' => $attr['ctaLinkHoverColor'],
+}
+if ( 'button' === $attr['ctaType'] ) {
+	$selectors[' .uagb-infobox-cta-link svg']                      = array(
+		'font-size'   => $cta_icon_size,
+		'height'      => $cta_icon_size,
+		'width'       => $cta_icon_size,
+		'line-height' => $cta_icon_size,
 	);
 	$selectors[' .uagb-ifb-button-wrapper .uagb-infobox-cta-link'] = array(
 		'color'            => $attr['ctaBtnLinkColor'],
@@ -232,51 +250,51 @@ if ( 'button' === $attr['ctaType'] ) {
 
 if ( $attr['imageWidthType'] ) {
 	// Image.
-	$selectors[' .uagb-ifb-content > img']                               = array(
+	$selectors[' .uagb-ifb-content .uagb-ifb-image-content > img']            = array(
 		'width'     => UAGB_Helper::get_css_value( $attr['imageWidth'], $attr['imageWidthUnit'] ),
 		'max-width' => UAGB_Helper::get_css_value( $attr['imageWidth'], $attr['imageWidthUnit'] ),
 	);
-	$selectors['.uagb-infobox__content-wrap > img']                      = array(
+	$selectors['.uagb-infobox__content-wrap .uagb-ifb-image-content > img']   = array(
 		'width'     => UAGB_Helper::get_css_value( $attr['imageWidth'], $attr['imageWidthUnit'] ),
 		'max-width' => UAGB_Helper::get_css_value( $attr['imageWidth'], $attr['imageWidthUnit'] ),
 	);
-	$selectors[' .uagb-ifb-content .uagb-ifb-left-title-image > img']    = array(
+	$selectors[' .uagb-ifb-content .uagb-ifb-left-title-image > img']         = array(
 		'width'     => UAGB_Helper::get_css_value( $attr['imageWidth'], $attr['imageWidthUnit'] ),
 		'max-width' => UAGB_Helper::get_css_value( $attr['imageWidth'], $attr['imageWidthUnit'] ),
 	);
-	$selectors[' .uagb-ifb-content .uagb-ifb-right-title-image > img']   = array(
+	$selectors[' .uagb-ifb-content .uagb-ifb-right-title-image > img']        = array(
 		'width'     => UAGB_Helper::get_css_value( $attr['imageWidth'], $attr['imageWidthUnit'] ),
 		'max-width' => UAGB_Helper::get_css_value( $attr['imageWidth'], $attr['imageWidthUnit'] ),
 	);
-	$m_selectors[' .uagb-ifb-content > img']                             = array(
+	$m_selectors[' .uagb-ifb-content .uagb-ifb-image-content > img']          = array(
 		'width'     => UAGB_Helper::get_css_value( $attr['imageWidthMobile'], $attr['imageWidthUnit'] ),
 		'max-width' => UAGB_Helper::get_css_value( $attr['imageWidthMobile'], $attr['imageWidthUnit'] ),
 	);
-	$m_selectors['.uagb-infobox__content-wrap > img']                    = array(
+	$m_selectors['.uagb-infobox__content-wrap .uagb-ifb-image-content > img'] = array(
 		'width'     => UAGB_Helper::get_css_value( $attr['imageWidthMobile'], $attr['imageWidthUnit'] ),
 		'max-width' => UAGB_Helper::get_css_value( $attr['imageWidthMobile'], $attr['imageWidthUnit'] ),
 	);
-	$m_selectors[' .uagb-ifb-content .uagb-ifb-left-title-image > img']  = array(
+	$m_selectors[' .uagb-ifb-content .uagb-ifb-left-title-image > img']       = array(
 		'width'     => UAGB_Helper::get_css_value( $attr['imageWidthMobile'], $attr['imageWidthUnit'] ),
 		'max-width' => UAGB_Helper::get_css_value( $attr['imageWidthMobile'], $attr['imageWidthUnit'] ),
 	);
-	$m_selectors[' .uagb-ifb-content .uagb-ifb-right-title-image > img'] = array(
+	$m_selectors[' .uagb-ifb-content .uagb-ifb-right-title-image > img']      = array(
 		'width'     => UAGB_Helper::get_css_value( $attr['imageWidthMobile'], $attr['imageWidthUnit'] ),
 		'max-width' => UAGB_Helper::get_css_value( $attr['imageWidthMobile'], $attr['imageWidthUnit'] ),
 	);
-	$t_selectors[' .uagb-ifb-content > img']                             = array(
+	$t_selectors[' .uagb-ifb-content .uagb-ifb-image-content > img']          = array(
 		'width'     => UAGB_Helper::get_css_value( $attr['imageWidthTablet'], $attr['imageWidthUnit'] ),
 		'max-width' => UAGB_Helper::get_css_value( $attr['imageWidthTablet'], $attr['imageWidthUnit'] ),
 	);
-	$t_selectors['.uagb-infobox__content-wrap > img']                    = array(
+	$t_selectors['.uagb-infobox__content-wrap .uagb-ifb-image-content > img'] = array(
 		'width'     => UAGB_Helper::get_css_value( $attr['imageWidthTablet'], $attr['imageWidthUnit'] ),
 		'max-width' => UAGB_Helper::get_css_value( $attr['imageWidthTablet'], $attr['imageWidthUnit'] ),
 	);
-	$t_selectors[' .uagb-ifb-content .uagb-ifb-left-title-image > img']  = array(
+	$t_selectors[' .uagb-ifb-content .uagb-ifb-left-title-image > img']       = array(
 		'width'     => UAGB_Helper::get_css_value( $attr['imageWidthTablet'], $attr['imageWidthUnit'] ),
 		'max-width' => UAGB_Helper::get_css_value( $attr['imageWidthTablet'], $attr['imageWidthUnit'] ),
 	);
-	$t_selectors[' .uagb-ifb-content .uagb-ifb-right-title-image > img'] = array(
+	$t_selectors[' .uagb-ifb-content .uagb-ifb-right-title-image > img']      = array(
 		'width'     => UAGB_Helper::get_css_value( $attr['imageWidthTablet'], $attr['imageWidthUnit'] ),
 		'max-width' => UAGB_Helper::get_css_value( $attr['imageWidthTablet'], $attr['imageWidthUnit'] ),
 	);
