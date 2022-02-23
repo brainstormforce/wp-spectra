@@ -221,6 +221,21 @@ function contentTimelineStyle( props ) {
 			'margin-top': generateCSSUnit( topMargin, marginUnit ),
 			'margin-bottom': generateCSSUnit( bottomMargin, marginUnit ),
 		},
+		' .uagb-timeline__date-hide.uagb-timeline__inner-date-new': {
+			'margin-bottom': generateCSSUnit( dateBottomspace, 'px' ),
+			'color': dateColor,
+			'font-size': generateCSSUnit( dateFontsize, dateFontsizeType ),
+			'font-family': dateFontFamily,
+			'font-weight': dateFontWeight,
+			'line-height': generateCSSUnit(
+				dateLineHeight,
+				dateLineHeightType
+			),
+			'text-align': align,
+			'font-style': dateFontStyle,
+			'text-decoration': dateDecoration,
+			'text-transform': dateTransform,
+		},
 		' .uagb-timeline__date-hide.uagb-timeline__date-inner': {
 			'margin-bottom': generateCSSUnit( dateBottomspace, 'px' ),
 			'color': dateColor,

@@ -242,6 +242,21 @@ function contentTimelineStyle( props ) {
 		' .uagb-timeline__field:not(:last-child)': {
 			'margin-bottom': generateCSSUnit( bottomMargin, marginUnit ),
 		},
+		' .uagb-timeline__date-hide.uagb-timeline__inner-date-new': {
+			'margin-bottom': generateCSSUnit( dateBottomspace, 'px' ),
+			'color': dateColor,
+			'font-size': generateCSSUnit( dateFontsize, dateFontsizeType ),
+			'font-family': dateFontFamily,
+			'font-weight': dateFontWeight,
+			'line-height': generateCSSUnit(
+				dateLineHeight,
+				dateLineHeightType
+			),
+			'font-style': dateFontStyle,
+			'text-decoration': dateDecoration,
+			'text-transform': dateTransform,
+			'text-align': align,
+		},
 		' .uagb-timeline__date-hide.uagb-timeline__date-inner': {
 			'margin-bottom': generateCSSUnit( dateBottomspace, 'px' ),
 			'color': dateColor,
