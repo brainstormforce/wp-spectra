@@ -120,7 +120,7 @@ $combined_selectors = array(
 	'tablet'  => $t_selectors,
 	'mobile'  => $m_selectors,
 );
-//.uagb-timeline__date-hide.uagb-timeline__inner-date-new
+// .uagb-timeline__date-hide.uagb-timeline__inner-date-new
 $combined_selectors = UAGB_Helper::get_typography_css( $attr, 'date', ' .uagb-timeline__date-hide.uagb-timeline__inner-date-new', $combined_selectors );
 $combined_selectors = UAGB_Helper::get_typography_css( $attr, 'date', ' .uagb-timeline__date-hide.uagb-timeline__date-inner', $combined_selectors );
 $combined_selectors = UAGB_Helper::get_typography_css( $attr, 'date', ' .uagb-timeline__date-new', $combined_selectors );
