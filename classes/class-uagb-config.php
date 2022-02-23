@@ -258,9 +258,6 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 					'uagb/social-share'           => array(
 						'name' => 'social-share',
 					),
-					'uagb/table-of-contents'      => array(
-						'name' => 'table-of-contents',
-					),
 					'uagb/tabs-child'             => array(
 						'name' => 'tabs-child',
 					),
