@@ -140,6 +140,11 @@ $selectors = array(
 		'color'         => $attr['dateColor'],
 		'text-align'    => $attr['align'],
 	),
+	' .uagb-timeline__date-hide.uagb-timeline__inner-date-new' => array(
+		'margin-bottom' => UAGB_Helper::get_css_value( $attr['dateBottomspace'], 'px' ),
+		'color'         => $attr['dateColor'],
+		'text-align'    => $attr['align'],
+	),
 	'.uagb-timeline__right-block .uagb-timeline__day-new.uagb-timeline__day-left' => array(
 		'margin-right' => UAGB_Helper::get_css_value( $right_margin, $attr['marginUnit'] ),
 	),
@@ -246,6 +251,7 @@ $selectors = array(
 	$base_selector      = ( $attr['classMigrate'] ) ? '.uagb-block-' : '#uagb-ctm-';
 	$combined_selectors = UAGB_Helper::get_typography_css( $attr, 'head', ' .uagb-timeline__heading', $combined_selectors );
 	$combined_selectors = UAGB_Helper::get_typography_css( $attr, 'date', ' .uagb-timeline__date-new', $combined_selectors );
+	$combined_selectors = UAGB_Helper::get_typography_css( $attr, 'date', ' .uagb-timeline__date-hide.uagb-timeline__inner-date-new', $combined_selectors );
 	$combined_selectors = UAGB_Helper::get_typography_css( $attr, 'date', ' .uagb-timeline__date-hide.uagb-timeline__date-inner', $combined_selectors );
 	$combined_selectors = UAGB_Helper::get_typography_css( $attr, 'subHead', ' .uagb-timeline-desc-content', $combined_selectors );
 	return UAGB_Helper::generate_all_css( $combined_selectors, $base_selector . $id . '.uagb-timeline__outer-wrap' );
