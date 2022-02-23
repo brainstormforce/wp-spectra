@@ -388,9 +388,14 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 			$left_padding   = isset( $attr['leftPadding'] ) ? $attr['leftPadding'] : $attr['bgPadding'];
 			$right_padding  = isset( $attr['rightPadding'] ) ? $attr['rightPadding'] : $attr['bgPadding'];
 
+			$ctaBottomSpace = isset( $attr['contentPadding'] ) ? $attr['contentPadding'] : $attr['ctaBottomSpacing'];
+			$headTopSpace   = isset( $attr['contentPadding'] ) ? $attr['contentPadding'] : $attr['headTopSpacing'];
+
 			$connector_size = UAGB_Helper::get_css_value( $attr['connectorBgsize'], 'px' );
-			$selectors      = array(
+
+			$selectors = array(
 				' .uagb-timeline__heading'               => array(
+					'margin-top'    => UAGB_Helper::get_css_value( $headTopSpace, 'px' ),
 					'margin-bottom' => UAGB_Helper::get_css_value( $attr['headSpace'], 'px' ),
 				),
 				' .uagb-timeline-desc-content'           => array(

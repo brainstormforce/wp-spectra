@@ -12,54 +12,50 @@ UAGB_Block_JS::blocks_post_timeline_gfont( $attr );
 
 $t_selectors = array();
 
-$ctaBottomSpace    = isset( $attr['contentPadding'] ) ? $attr['contentPadding'] : $attr['ctaBottomSpacing'];
-$headTopSpace = isset( $attr['contentPadding'] ) ? $attr['contentPadding'] : $attr['headTopSpacing'];
+$ctaBottomSpace = isset( $attr['contentPadding'] ) ? $attr['contentPadding'] : $attr['ctaBottomSpacing'];
+$headTopSpace   = isset( $attr['contentPadding'] ) ? $attr['contentPadding'] : $attr['headTopSpacing'];
 
 $selectors = array(
-	' .uagb-timeline__heading'                 => array(
+	' .uagb-timeline__heading'      => array(
 		'text-align' => $attr['align'],
 	),
-	' .uagb-timeline__link_parent'             => array(
+	' .uagb-timeline__link_parent'  => array(
 		'text-align' => $attr['align'],
 	),
-	' .uagb-timeline__image a'                 => array(
+	' .uagb-timeline__image a'      => array(
 		'text-align' => $attr['align'],
 	),
-	' a.uagb-timeline__image'                  => array(
+	' a.uagb-timeline__image'       => array(
 		'text-align' => $attr['align'],
 	),
-	' .uagb-timeline__author-link'             => array(
+	' .uagb-timeline__author-link'  => array(
 		'color'      => $attr['authorColor'],
 		'text-align' => $attr['align'],
 	),
-	' .dashicons-admin-users'                  => array(
+	' .dashicons-admin-users'       => array(
 		'color'       => $attr['authorColor'],
 		'font-size'   => UAGB_Helper::get_css_value( $attr['authorFontSize'], $attr['authorFontSizeType'] ),
 		'font-weight' => $attr['authorFontWeight'],
 		'line-height' => UAGB_Helper::get_css_value( $attr['authorLineHeight'], $attr['authorLineHeightType'] ),
 	),
-	' .uagb-timeline__link'                    => array(
+	' .uagb-timeline__link'         => array(
 		'color'            => $attr['ctaColor'],
 		'background-color' => $attr['ctaBackground'],
 		'text-align'       => $attr['align'],
-		'margin-bottom' => UAGB_Helper::get_css_value( $ctaBottomSpace , 'px' ),
+		'margin-bottom'    => UAGB_Helper::get_css_value( $ctaBottomSpace, 'px' ),
 	),
-	' .uagb-timeline__heading a' => array(
+	' .uagb-timeline__heading a'    => array(
 		'text-align' => $attr['align'],
 		'color'      => $attr['headingColor'],
 	),
-	' .uagb-timeline__heading a'               => array(
-		'text-align' => $attr['align'],
-		'color'      => $attr['headingColor'],
-	),
-	' .uagb-timeline__heading-text'            => array(
+	' .uagb-timeline__heading-text' => array(
 		'margin-bottom' => UAGB_Helper::get_css_value( $attr['headSpace'], 'px' ),
-		'margin-top' => UAGB_Helper::get_css_value( $headTopSpace , 'px' ),
+		'margin-top'    => UAGB_Helper::get_css_value( $headTopSpace, 'px' ),
 	),
 	'.uagb_timeline__cta-enable .uagb-timeline-desc-content' => array(
 		'margin-bottom' => UAGB_Helper::get_css_value( $attr['contentSpace'], 'px' ),
 		'margin-top'    => UAGB_Helper::get_css_value( $attr['authorSpace'], 'px' ),
-	)
+	),
 );
 
 $desktop_selectors = UAGB_Block_Helper::get_timeline_selectors( $attr );
