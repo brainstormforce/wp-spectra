@@ -5,6 +5,8 @@
 import styling from './styling';
 import React, { useEffect, lazy, Suspense } from 'react';
 import lazyLoader from '@Controls/lazy-loader';
+import { useDeviceType } from '@Controls/getPreviewType';
+import addBlockEditorDynamicStyles from '@Controls/addBlockEditorDynamicStyles';
 
 const Settings = lazy( () =>
 	import( /* webpackChunkName: "chunks/faq/settings" */ './settings' )
@@ -19,6 +21,9 @@ import { select, withSelect } from '@wordpress/data';
 let prevState;
 
 const FaqComponent = ( props ) => {
+
+	const deviceType = useDeviceType();
+
 	useEffect( () => {
 		// Replacement for componentDidMount.
 
@@ -37,19 +42,30 @@ const FaqComponent = ( props ) => {
 			vquestionPaddingMobile,
 			questionLeftPaddingMobile,
 			hquestionPaddingMobile,
+			answerTopPadding,
+			answerBottomPadding,
+			answerRightPadding,
+			answerLeftPadding,
+			answerTopPaddingTablet,
+			answerBottomPaddingTablet,
+			answerRightPaddingTablet,
+			answerLeftPaddingTablet,
+			answerTopPaddingMobile,
+			answerBottomPaddingMobile,
+			answerRightPaddingMobile,
+			answerLeftPaddingMobile,
+			vanswerPaddingDesktop,
+			hanswerPaddingDesktop,
+			vanswerPaddingTablet,
+			hanswerPaddingTablet,
+			vanswerPaddingMobile,
+			hanswerPaddingMobile,
 		} = attributes;
 
 		// Assigning block_id in the attribute.
 		setAttributes( { block_id: props.clientId.substr( 0, 8 ) } );
 
 		setAttributes( { schema: JSON.stringify( props.schemaJsonData ) } );
-		// Pushing Style tag for this block css.
-		const $style = document.createElement( 'style' );
-		$style.setAttribute(
-			'id',
-			'uagb-style-faq-' + props.clientId.substr( 0, 8 )
-		);
-		document.head.appendChild( $style );
 
 		if (
 			10 === questionBottomPaddingDesktop &&
@@ -101,19 +117,82 @@ const FaqComponent = ( props ) => {
 				questionLeftPaddingMobile: hquestionPaddingMobile,
 			} );
 		}
+
+		if ( vanswerPaddingDesktop ) {
+			if ( undefined === answerTopPadding ) {
+				setAttributes( { answerTopPadding: vanswerPaddingDesktop } );
+			}
+			if ( undefined === answerBottomPadding ) {
+				setAttributes( { answerBottomPadding: vanswerPaddingDesktop } );
+			}
+		}
+		if ( hanswerPaddingDesktop ) {
+			if ( undefined === answerRightPadding ) {
+				setAttributes( { answerRightPadding: hanswerPaddingDesktop } );
+			}
+			if ( undefined === answerLeftPadding ) {
+				setAttributes( { answerLeftPadding: hanswerPaddingDesktop } );
+			}
+		}
+
+		if ( vanswerPaddingTablet ) {
+			if ( undefined === answerTopPaddingTablet ) {
+				setAttributes( {
+					answerTopPaddingTablet: vanswerPaddingTablet,
+				} );
+			}
+			if ( undefined === answerBottomPaddingTablet ) {
+				setAttributes( {
+					answerBottomPaddingTablet: vanswerPaddingTablet,
+				} );
+			}
+		}
+		if ( hanswerPaddingTablet ) {
+			if ( undefined === answerRightPaddingTablet ) {
+				setAttributes( {
+					answerRightPaddingTablet: hanswerPaddingTablet,
+				} );
+			}
+			if ( undefined === answerLeftPaddingTablet ) {
+				setAttributes( {
+					answerLeftPaddingTablet: hanswerPaddingTablet,
+				} );
+			}
+		}
+
+		if ( vanswerPaddingMobile ) {
+			if ( undefined === answerTopPaddingMobile ) {
+				setAttributes( {
+					answerTopPaddingMobile: vanswerPaddingMobile,
+				} );
+			}
+			if ( undefined === answerBottomPaddingMobile ) {
+				setAttributes( {
+					answerBottomPaddingMobile: vanswerPaddingMobile,
+				} );
+			}
+		}
+		if ( hanswerPaddingMobile ) {
+			if ( undefined === answerRightPaddingMobile ) {
+				setAttributes( {
+					answerRightPaddingMobile: hanswerPaddingMobile,
+				} );
+			}
+			if ( undefined === answerLeftPaddingMobile ) {
+				setAttributes( {
+					answerLeftPaddingMobile: hanswerPaddingMobile,
+				} );
+			}
+		}
+
 		prevState = props.schemaJsonData;
 	}, [] );
 
 	useEffect( () => {
-		// Replacement for componentDidUpdate.
 
-		const element = document.getElementById(
-			'uagb-style-faq-' + props.clientId.substr( 0, 8 )
-		);
+		const blockStyling = styling( props );
 
-		if ( null !== element && undefined !== element ) {
-			element.innerHTML = styling( props );
-		}
+		addBlockEditorDynamicStyles( 'uagb-style-faq-' + props.clientId.substr( 0, 8 ), blockStyling );
 
 		const getChildBlocks = select( 'core/block-editor' ).getBlocks(
 			props.clientId
@@ -135,6 +214,13 @@ const FaqComponent = ( props ) => {
 		}
 	}, [ props ] );
 
+	useEffect( () => {
+		// Replacement for componentDidUpdate.
+		const blockStyling = styling( props );
+
+		addBlockEditorDynamicStyles( 'uagb-style-faq-' + props.clientId.substr( 0, 8 ), blockStyling );
+	}, [deviceType] );
+
 	return (
 		<Suspense fallback={ lazyLoader() }>
 			<Settings parentProps={ props } />
@@ -145,21 +231,17 @@ const FaqComponent = ( props ) => {
 
 export default compose(
 	withSelect( ( ownProps ) => {
-		const page_url = select( 'core/editor' ).getPermalink();
-		const { __experimentalGetPreviewDeviceType = null } = select(
-			'core/edit-post'
-		);
-
-		const deviceType = __experimentalGetPreviewDeviceType
-			? __experimentalGetPreviewDeviceType()
-			: null;
+		let page_url = '';
+		if ( select( 'core/editor' ) ) {
+			page_url = select( 'core/editor' ).getPermalink();
+		}
 
 		let faq_data = {};
 		const json_data = {
 			'@context': 'https://schema.org',
 			'@type': 'FAQPage',
 			'@id': page_url,
-			mainEntity: [],
+			'mainEntity': [],
 		};
 		const faqChildBlocks = select( 'core/block-editor' ).getBlocks(
 			ownProps.clientId
@@ -168,17 +250,16 @@ export default compose(
 		faqChildBlocks.forEach( ( faqChild, key ) => {
 			faq_data = {
 				'@type': 'Question',
-				name: faqChild.attributes.question,
-				acceptedAnswer: {
+				'name': faqChild.attributes.question,
+				'acceptedAnswer': {
 					'@type': 'Answer',
-					text: faqChild.attributes.answer,
+					'text': faqChild.attributes.answer,
 				},
 			};
 			json_data.mainEntity[ key ] = faq_data;
 		} );
 
 		return {
-			deviceType,
 			schemaJsonData: json_data,
 		};
 	} )

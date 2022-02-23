@@ -43,20 +43,61 @@ function RestMenuStyle( props ) {
 		descLineHeightMobile,
 		descSpace,
 		titleSpace,
-		imgVrPadding,
-		imgHrPadding,
 		imageWidth,
 		rowGap,
 		columnGap,
 		columns,
 		tcolumns,
 		mcolumns,
-		contentVrPadding,
-		contentHrPadding,
 		seperatorStyle,
 		seperatorWidth,
 		seperatorThickness,
 		seperatorColor,
+
+		imageWidthType,
+		seperatorWidthType,
+		rowGapType,
+		columnGapType,
+		titleSpaceType,
+		contentPaddingTop,
+		contentPaddingRight,
+		contentPaddingBottom,
+		contentPaddingLeft,
+		contentPaddingTopTablet,
+		contentPaddingRightTablet,
+		contentPaddingBottomTablet,
+		contentPaddingLeftTablet,
+		contentPaddingTopMobile,
+		contentPaddingRightMobile,
+		contentPaddingBottomMobile,
+		contentPaddingLeftMobile,
+		contentPaddingUnit,
+		contentMobilePaddingUnit,
+		contentTabletPaddingUnit,
+		imgPaddingTop,
+		imgPaddingRight,
+		imgPaddingBottom,
+		imgPaddingLeft,
+		imgPaddingTopTablet,
+		imgPaddingRightTablet,
+		imgPaddingBottomTablet,
+		imgPaddingLeftTablet,
+		imgPaddingTopMobile,
+		imgPaddingRightMobile,
+		imgPaddingBottomMobile,
+		imgPaddingLeftMobile,
+		imgPaddingUnit,
+		imgMobilePaddingUnit,
+		imgTabletPaddingUnit,
+		titleFontStyle,
+		titleTransform,
+		titleDecoration,
+		descFontStyle,
+		descTransform,
+		descDecoration,
+		priceFontStyle,
+		priceTransform,
+		priceDecoration,
 	} = props.attributes;
 
 	let tabletSelectors = {};
@@ -71,37 +112,59 @@ function RestMenuStyle( props ) {
 
 	const selectors = {
 		" [data-type='uagb/restaurant-menu-child'] .wp-block-uagb-restaurant-menu-child": {
-			'padding-left': generateCSSUnit( columnGap / 2, 'px' ),
-			'padding-right': generateCSSUnit( columnGap / 2, 'px' ),
-			'margin-bottom': generateCSSUnit( rowGap, 'px' ),
+			'padding-left': generateCSSUnit( columnGap / 2, columnGapType ),
+			'padding-right': generateCSSUnit( columnGap / 2, columnGapType ),
+			'margin-bottom': generateCSSUnit( rowGap, rowGapType ),
 		},
-		" [data-type='uagb/restaurant-menu-child'] .uagb-rm__image-content": {
-			'padding-left': generateCSSUnit( imgHrPadding, 'px' ),
-			'padding-right': generateCSSUnit( imgHrPadding, 'px' ),
-			'padding-top': generateCSSUnit( imgVrPadding, 'px' ),
-			'padding-bottom': generateCSSUnit( imgVrPadding, 'px' ),
+		" [data-type='uagb/restaurant-menu-child'] img": {
+			'padding-left': generateCSSUnit( imgPaddingLeft, imgPaddingUnit ),
+			'padding-right': generateCSSUnit( imgPaddingRight, imgPaddingUnit ),
+			'padding-top': generateCSSUnit( imgPaddingTop, imgPaddingUnit ),
+			'padding-bottom': generateCSSUnit(
+				imgPaddingBottom,
+				imgPaddingUnit
+			),
 		},
 		// Image
-		' .uagb-rm__image img': {
-			width: generateCSSUnit( imageWidth, 'px' ),
-			'max-width': generateCSSUnit( imageWidth, 'px' ),
+		' img': {
+			'width': generateCSSUnit( imageWidth, imageWidthType ),
+			'max-width': generateCSSUnit( imageWidth, imageWidthType ),
 		},
-		' .uagb-rm__separator-parent': {
+		' .uagb-rm__separator': {
 			'justify-content': align,
 		},
 		' .uagb-rm__content': {
 			'text-align': headingAlign,
-			'padding-left': generateCSSUnit( contentHrPadding, 'px' ),
-			'padding-right': generateCSSUnit( contentHrPadding, 'px' ),
-			'padding-top': generateCSSUnit( contentVrPadding, 'px' ),
-			'padding-bottom': generateCSSUnit( contentVrPadding, 'px' ),
+			'padding-left': generateCSSUnit(
+				contentPaddingLeft,
+				contentPaddingUnit
+			),
+			'padding-right': generateCSSUnit(
+				contentPaddingRight,
+				contentPaddingUnit
+			),
+			'padding-top': generateCSSUnit(
+				contentPaddingTop,
+				contentPaddingUnit
+			),
+			'padding-bottom': generateCSSUnit(
+				contentPaddingBottom,
+				contentPaddingUnit
+			),
+		},
+		'.uagb-rm__align-center  .uagb-rest_menu__wrap .uagb-rm__content .uagb-rm__price': {
+			'text-align': headingAlign,
+			'display': 'inline-table',
 		},
 		// Prefix Style
 		' .uagb-rm__title': {
 			'font-size': generateCSSUnit( titleFontSize, titleFontSizeType ),
-			color: titleColor,
-			'margin-bottom': generateCSSUnit( titleSpace, 'px' ),
+			'color': titleColor,
+			'margin-bottom': generateCSSUnit( titleSpace, titleSpaceType ),
 			'font-family': titleFontFamily,
+			'font-style': titleFontStyle,
+			'text-transform': titleTransform,
+			'text-decoration': titleDecoration,
 			'font-weight': titleFontWeight,
 			'line-height': generateCSSUnit(
 				titleLineHeight,
@@ -112,23 +175,29 @@ function RestMenuStyle( props ) {
 		' .uagb-rm__price': {
 			'font-size': generateCSSUnit( priceFontSize, priceFontSizeType ),
 			'font-family': priceFontFamily,
+			'text-transform': priceTransform,
+			'text-decoration': priceDecoration,
+			'font-style': priceFontStyle,
 			'font-weight': priceFontWeight,
 			'line-height': generateCSSUnit(
 				priceLineHeight,
 				priceLineHeightType
 			),
-			color: priceColor,
+			'color': priceColor,
 		},
 		// Description Style
 		' .uagb-rm__desc': {
 			'font-size': generateCSSUnit( descFontSize, descFontSizeType ),
 			'font-family': descFontFamily,
+			'text-transform': descTransform,
+			'text-decoration': descDecoration,
+			'font-style': descFontStyle,
 			'font-weight': descFontWeight,
 			'line-height': generateCSSUnit(
 				descLineHeight,
 				descLineHeightType
 			),
-			color: descColor,
+			'color': descColor,
 			'margin-bottom': generateCSSUnit( descSpace, 'px' ),
 		},
 	};
@@ -138,7 +207,7 @@ function RestMenuStyle( props ) {
 			'border-top-color': seperatorColor,
 			'border-top-style': seperatorStyle,
 			'border-top-width': generateCSSUnit( seperatorThickness, 'px' ),
-			width: generateCSSUnit( seperatorWidth, '%' ),
+			'width': generateCSSUnit( seperatorWidth, seperatorWidthType ),
 		};
 	}
 
@@ -150,7 +219,7 @@ function RestMenuStyle( props ) {
 			'n+1)'
 	] = {
 		'margin-left': 0,
-		clear: 'left',
+		'clear': 'left',
 	};
 
 	tabletSelectors = {
@@ -184,6 +253,42 @@ function RestMenuStyle( props ) {
 				priceLineHeightType
 			),
 		},
+		" [data-type='uagb/restaurant-menu-child'] img": {
+			'padding-left': generateCSSUnit(
+				imgPaddingLeftTablet,
+				imgTabletPaddingUnit
+			),
+			'padding-right': generateCSSUnit(
+				imgPaddingRightTablet,
+				imgTabletPaddingUnit
+			),
+			'padding-top': generateCSSUnit(
+				imgPaddingTopTablet,
+				imgTabletPaddingUnit
+			),
+			'padding-bottom': generateCSSUnit(
+				imgPaddingBottomTablet,
+				imgTabletPaddingUnit
+			),
+		},
+		' .uagb-rm__content': {
+			'padding-left': generateCSSUnit(
+				contentPaddingLeftTablet,
+				contentTabletPaddingUnit
+			),
+			'padding-right': generateCSSUnit(
+				contentPaddingRightTablet,
+				contentTabletPaddingUnit
+			),
+			'padding-top': generateCSSUnit(
+				contentPaddingTopTablet,
+				contentTabletPaddingUnit
+			),
+			'padding-bottom': generateCSSUnit(
+				contentPaddingBottomTablet,
+				contentTabletPaddingUnit
+			),
+		},
 	};
 
 	tabletSelectors[
@@ -194,7 +299,7 @@ function RestMenuStyle( props ) {
 			'n+1)'
 	] = {
 		'margin-left': 'unset',
-		clear: 'unset',
+		'clear': 'unset',
 	};
 
 	tabletSelectors[
@@ -205,7 +310,7 @@ function RestMenuStyle( props ) {
 			'n+1)'
 	] = {
 		'margin-left': 0,
-		clear: 'left',
+		'clear': 'left',
 	};
 
 	mobileSelectors = {
@@ -239,6 +344,42 @@ function RestMenuStyle( props ) {
 				priceLineHeightType
 			),
 		},
+		" [data-type='uagb/restaurant-menu-child'] img": {
+			'padding-left': generateCSSUnit(
+				imgPaddingLeftMobile,
+				imgMobilePaddingUnit
+			),
+			'padding-right': generateCSSUnit(
+				imgPaddingRightMobile,
+				imgMobilePaddingUnit
+			),
+			'padding-top': generateCSSUnit(
+				imgPaddingTopMobile,
+				imgMobilePaddingUnit
+			),
+			'padding-bottom': generateCSSUnit(
+				imgPaddingBottomMobile,
+				imgMobilePaddingUnit
+			),
+		},
+		' .uagb-rm__content': {
+			'padding-left': generateCSSUnit(
+				contentPaddingLeftMobile,
+				contentMobilePaddingUnit
+			),
+			'padding-right': generateCSSUnit(
+				contentPaddingRightMobile,
+				contentMobilePaddingUnit
+			),
+			'padding-top': generateCSSUnit(
+				contentPaddingTopMobile,
+				contentMobilePaddingUnit
+			),
+			'padding-bottom': generateCSSUnit(
+				contentPaddingBottomMobile,
+				contentMobilePaddingUnit
+			),
+		},
 	};
 
 	mobileSelectors[
@@ -249,7 +390,7 @@ function RestMenuStyle( props ) {
 			'n+1)'
 	] = {
 		'margin-left': 'unset',
-		clear: 'unset',
+		'clear': 'unset',
 	};
 
 	mobileSelectors[
@@ -260,11 +401,11 @@ function RestMenuStyle( props ) {
 			'n+1)'
 	] = {
 		'margin-left': 0,
-		clear: 'left',
+		'clear': 'left',
 	};
 
 	let stylingCss = '';
-	const id = `#wpwrap .uagb-block-${ props.clientId.substr( 0, 8 ) }`;
+	const id = `.editor-styles-wrapper .uagb-block-${ props.clientId.substr( 0, 8 ) }`;
 
 	stylingCss = generateCSS( selectors, id );
 

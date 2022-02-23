@@ -5,7 +5,8 @@
 import React, { useEffect, useCallback, Suspense, lazy } from 'react';
 import styling from './styling';
 import UAGB_Block_Icons from '@Controls/block-icons';
-
+import addBlockEditorDynamicStyles from '@Controls/addBlockEditorDynamicStyles';
+import { useDeviceType } from '@Controls/getPreviewType';
 const Settings = lazy( () =>
 	import( /* webpackChunkName: "chunks/form/settings" */ './settings' )
 );
@@ -27,19 +28,59 @@ import { __ } from '@wordpress/i18n';
 import lazyLoader from '@Controls/lazy-loader';
 
 const UAGBFormsEdit = ( props ) => {
+	const deviceType = useDeviceType();
 	useEffect( () => {
 		const { setAttributes } = props;
 
 		// Assigning block_id in the attribute.
 		setAttributes( { block_id: props.clientId.substr( 0, 8 ) } );
+		const {
+			vPaddingSubmit,
+			hPaddingSubmit,
+			vPaddingField,
+			hPaddingField,
+			paddingFieldTop,
+			paddingFieldRight,
+			paddingFieldBottom,
+			paddingFieldLeft,
+			paddingBtnTop,
+			paddingBtnRight,
+			paddingBtnBottom,
+			paddingBtnLeft,
+		} = props.attributes;
 
-		// Pushing Style tag for this block css.
-		const $style = document.createElement( 'style' );
-		$style.setAttribute(
-			'id',
-			'uagb-style-forms-' + props.clientId.substr( 0, 8 )
-		);
-		document.head.appendChild( $style );
+		if ( vPaddingSubmit ) {
+			if ( undefined === paddingBtnTop ) {
+				setAttributes( { paddingBtnTop: vPaddingSubmit } );
+			}
+			if ( undefined === paddingBtnBottom ) {
+				setAttributes( { paddingBtnBottom: vPaddingSubmit } );
+			}
+		}
+		if ( hPaddingSubmit ) {
+			if ( undefined === paddingBtnRight ) {
+				setAttributes( { paddingBtnRight: hPaddingSubmit } );
+			}
+			if ( undefined === paddingBtnLeft ) {
+				setAttributes( { paddingBtnLeft: hPaddingSubmit } );
+			}
+		}
+		if ( vPaddingField ) {
+			if ( undefined === paddingFieldTop ) {
+				setAttributes( { paddingFieldTop: vPaddingField } );
+			}
+			if ( undefined === paddingFieldBottom ) {
+				setAttributes( { paddingFieldBottom: vPaddingField } );
+			}
+		}
+		if ( hPaddingField ) {
+			if ( undefined === paddingFieldRight ) {
+				setAttributes( { paddingFieldRight: hPaddingField } );
+			}
+			if ( undefined === paddingFieldLeft ) {
+				setAttributes( { paddingFieldLeft: hPaddingField } );
+			}
+		}
 
 		const id = props.clientId;
 
@@ -47,31 +88,17 @@ const UAGBFormsEdit = ( props ) => {
 	}, [] );
 
 	useEffect( () => {
-		const element = document.getElementById(
-			'uagb-style-forms-' + props.clientId.substr( 0, 8 )
-		);
+		const blockStyling = styling( props );
 
-		if ( null !== element && undefined !== element ) {
-			element.innerHTML = styling( props );
-		}
+        addBlockEditorDynamicStyles( 'uagb-style-forms-' + props.clientId.substr( 0, 8 ), blockStyling );
 	}, [ props ] );
 
 	useEffect( () => {
-		const { setAttributes } = props; // Assigning block_id in the attribute.
+		// Replacement for componentDidUpdate.
+	    const blockStyling = styling( props );
 
-		setAttributes( {
-			block_id: props.clientId.substr( 0, 8 ),
-		} ); // Pushing Style tag for this block css.
-
-		const $style = document.createElement( 'style' );
-		$style.setAttribute(
-			'id',
-			'uagb-style-forms-' + props.clientId.substr( 0, 8 )
-		);
-		document.head.appendChild( $style );
-		const id = props.clientId;
-		window.addEventListener( 'load', renderReadyClasses( id ) );
-	}, [] );
+        addBlockEditorDynamicStyles( 'uagb-style-forms-' + props.clientId.substr( 0, 8 ), blockStyling );
+	}, [deviceType] );
 
 	const blockVariationPickerOnSelect = useCallback(
 		( nextVariation = props.defaultVariation ) => {
@@ -104,10 +131,16 @@ const UAGBFormsEdit = ( props ) => {
 	const { variations, hasInnerBlocks } = props;
 
 	const renderReadyClasses = useCallback( ( id ) => {
-		const mainDiv = document.getElementById( 'block-' + id );
-		const formscope = mainDiv.getElementsByClassName(
-			'uagb-forms__outer-wrap'
-		);
+		const iframeEl = document.querySelector( `iframe[name='editor-canvas']` );
+		let mainDiv;
+		let formscope;
+		if( iframeEl ){
+			mainDiv = iframeEl.contentDocument.getElementById( 'block-' + id )
+			formscope = mainDiv.getElementsByClassName( 'uagb-forms__outer-wrap' )
+		} else {
+			mainDiv = document.getElementById( 'block-' + id )
+			formscope = mainDiv.getElementsByClassName( 'uagb-forms__outer-wrap' )
+		}
 
 		if ( null !== formscope[ 0 ] && undefined !== formscope[ 0 ] ) {
 			const editorwrap = formscope[ 0 ].children;
@@ -203,6 +236,7 @@ const applyWithSelect = withSelect( ( select, props ) => {
 		getBlockVariations,
 		getDefaultBlockVariation,
 	} = select( 'core/blocks' );
+
 	const innerBlocks = getBlocks( props.clientId );
 	const { replaceInnerBlocks } = useDispatch( 'core/block-editor' );
 

@@ -11,8 +11,6 @@ function styling( props ) {
 	const {
 		align,
 		titleDescAlignment,
-		fieldHrPadding,
-		fieldVrPadding,
 		fieldBgColor,
 		fieldLabelColor,
 		fieldInputColor,
@@ -21,8 +19,6 @@ function styling( props ) {
 		fieldBorderRadius,
 		fieldBorderColor,
 		fieldBorderFocusColor,
-		buttonVrPadding,
-		buttonHrPadding,
 		buttonTextColor,
 		buttonBgColor,
 		buttonTextHoverColor,
@@ -124,9 +120,81 @@ function styling( props ) {
 		msgBorderSize,
 		msgBorderRadius,
 		msgBorderRadiusType,
-		msgVrPadding,
-		msgHrPadding,
 		successMsgColor,
+		fieldtopPadding,
+		fieldrightPadding,
+		fieldbottomPadding,
+		fieldleftPadding,
+		//Mobile
+		fieldtopMobilePadding,
+		fieldrightMobilePadding,
+		fieldbottomMobilePadding,
+		fieldleftMobilePadding,
+		//Tablet
+		fieldtopTabletPadding,
+		fieldrightTabletPadding,
+		fieldbottomTabletPadding,
+		fieldleftTabletPadding,
+		fieldpaddingUnit,
+		fieldmobilePaddingUnit,
+		fieldtabletPaddingUnit,
+
+		buttontopPadding,
+		buttonrightPadding,
+		buttonbottomPadding,
+		buttonleftPadding,
+		//Mobile
+		buttontopMobilePadding,
+		buttonrightMobilePadding,
+		buttonbottomMobilePadding,
+		buttonleftMobilePadding,
+		//Tablet
+		buttontopTabletPadding,
+		buttonrightTabletPadding,
+		buttonbottomTabletPadding,
+		buttonleftTabletPadding,
+		buttonpaddingUnit,
+		buttonmobilePaddingUnit,
+		buttontabletPaddingUnit,
+
+		msgtopPadding,
+		msgrightPadding,
+		msgbottomPadding,
+		msgleftPadding,
+		//Mobile
+		msgtopMobilePadding,
+		msgrightMobilePadding,
+		msgbottomMobilePadding,
+		msgleftMobilePadding,
+		//Tablet
+		msgtopTabletPadding,
+		msgrightTabletPadding,
+		msgbottomTabletPadding,
+		msgleftTabletPadding,
+		msgpaddingUnit,
+		msgmobilePaddingUnit,
+		msgtabletPaddingUnit,
+		labelFontStyle,
+		labelTransform,
+		labelDecoration,
+		inputFontStyle,
+		inputTransform,
+		inputDecoration,
+		buttonFontStyle,
+		buttonTransform,
+		buttonDecoration,
+		radioCheckFontStyle,
+		radioCheckTransform,
+		radioCheckDecoration,
+		validationMsgFontStyle,
+		validationMsgTransform,
+		validationMsgDecoration,
+		msgFontStyle,
+		msgTransform,
+		msgDecoration,
+		successMsgDecoration,
+		successMsgFontStyle,
+		successMsgTransform,
 	} = props.attributes;
 
 	const selectors = {
@@ -134,14 +202,14 @@ function styling( props ) {
 			'text-align': align,
 		},
 		' .wp-block-uagb-gf-styler form:not(input)': {
-			color: fieldLabelColor,
+			'color': fieldLabelColor,
 		},
 		' .gform_heading': {
 			'text-align': titleDescAlignment,
 		},
 		' input:not([type=submit])': {
 			'background-color': fieldBgColor,
-			color: fieldInputColor,
+			'color': fieldInputColor,
 			'border-style': fieldBorderStyle,
 			'border-color': fieldBorderColor,
 			'border-width': generateCSSUnit( fieldBorderWidth, 'px' ),
@@ -149,42 +217,32 @@ function styling( props ) {
 				fieldBorderRadius,
 				fieldBorderRadiusType
 			),
-			'padding-left': generateCSSUnit( fieldHrPadding, 'px' ),
-			'padding-right': generateCSSUnit( fieldHrPadding, 'px' ),
-			'padding-top': generateCSSUnit( fieldVrPadding, 'px' ),
-			'padding-bottom': generateCSSUnit( fieldVrPadding, 'px' ),
+			'padding-left': generateCSSUnit(
+				fieldleftPadding,
+				fieldpaddingUnit
+			),
+			'padding-right': generateCSSUnit(
+				fieldrightPadding,
+				fieldpaddingUnit
+			),
+			'padding-top': generateCSSUnit( fieldtopPadding, fieldpaddingUnit ),
+			'padding-bottom': generateCSSUnit(
+				fieldbottomPadding,
+				fieldpaddingUnit
+			),
 			'margin-top': generateCSSUnit( fieldLabelSpacing, 'px' ),
 			'margin-bottom': generateCSSUnit( fieldSpacing, 'px' ),
 			'font-size': generateCSSUnit( inputFontSize, inputFontSizeType ),
 			'font-family': inputFontFamily,
+			'font-style' : inputFontStyle,
+			'text-decoration': inputDecoration,
+			'text-transform': inputTransform,
 			'font-weight': inputFontWeight,
 			'line-height': generateCSSUnit(
 				inputLineHeight,
 				inputLineHeightType
 			),
 			'text-align': align,
-		},
-		' input[type=button]': {
-			color: buttonTextColor,
-			'background-color': buttonBgColor,
-			'font-size': generateCSSUnit( buttonFontSize, buttonFontSizeType ),
-			'font-family': buttonFontFamily,
-			'font-weight': buttonFontWeight,
-			'line-height': generateCSSUnit(
-				buttonLineHeight,
-				buttonLineHeightType
-			),
-			'border-color': buttonBorderColor,
-			'border-style': buttonBorderStyle,
-			'border-width': generateCSSUnit( buttonBorderWidth, 'px' ),
-			'border-radius': generateCSSUnit(
-				buttonBorderRadius,
-				buttonBorderRadiusType
-			),
-			'padding-left': generateCSSUnit( buttonHrPadding, 'px' ),
-			'padding-right': generateCSSUnit( buttonHrPadding, 'px' ),
-			'padding-top': generateCSSUnit( buttonVrPadding, 'px' ),
-			'padding-bottom': generateCSSUnit( buttonVrPadding, 'px' ),
 		},
 		' select': {
 			'background-color': fieldBgColor,
@@ -197,19 +255,31 @@ function styling( props ) {
 			),
 			'margin-top': generateCSSUnit( fieldLabelSpacing, 'px' ),
 			'margin-bottom': generateCSSUnit( fieldSpacing, 'px' ),
-			color: fieldInputColor,
+			'color': fieldInputColor,
 			'font-size': generateCSSUnit( inputFontSize, inputFontSizeType ),
 			'font-family': inputFontFamily,
+			'font-style' : inputFontStyle,
+			'text-decoration': inputDecoration,
+			'text-transform': inputTransform,
 			'font-weight': inputFontWeight,
 			'line-height': generateCSSUnit(
 				inputLineHeight,
 				inputLineHeightType
 			),
 			'text-align': align,
-			'padding-left': generateCSSUnit( fieldHrPadding, 'px' ),
-			'padding-right': generateCSSUnit( fieldHrPadding, 'px' ),
-			'padding-top': generateCSSUnit( fieldVrPadding, 'px' ),
-			'padding-bottom': generateCSSUnit( fieldVrPadding, 'px' ),
+			'padding-left': generateCSSUnit(
+				fieldleftPadding,
+				fieldpaddingUnit
+			),
+			'padding-right': generateCSSUnit(
+				fieldrightPadding,
+				fieldpaddingUnit
+			),
+			'padding-top': generateCSSUnit( fieldtopPadding, fieldpaddingUnit ),
+			'padding-bottom': generateCSSUnit(
+				fieldbottomPadding,
+				fieldpaddingUnit
+			),
 		},
 		' .chosen-container-single span': {
 			'background-color': fieldBgColor,
@@ -222,38 +292,68 @@ function styling( props ) {
 			),
 			'margin-top': generateCSSUnit( fieldLabelSpacing, 'px' ),
 			'margin-bottom': generateCSSUnit( fieldSpacing, 'px' ),
-			color: fieldInputColor,
+			'color': fieldInputColor,
 			'font-size': generateCSSUnit( inputFontSize, inputFontSizeType ),
 			'font-family': inputFontFamily,
+			'font-style' : inputFontStyle,
+			'text-decoration': inputDecoration,
+			'text-transform': inputTransform,
 			'font-weight': inputFontWeight,
 			'line-height': generateCSSUnit(
 				inputLineHeight,
 				inputLineHeightType
 			),
 			'text-align': align,
-			'padding-left': generateCSSUnit( fieldHrPadding, 'px' ),
-			'padding-right': generateCSSUnit( fieldHrPadding, 'px' ),
-			'padding-top': generateCSSUnit( fieldVrPadding, 'px' ),
-			'padding-bottom': generateCSSUnit( fieldVrPadding, 'px' ),
+			'padding-left': generateCSSUnit(
+				fieldleftPadding,
+				fieldpaddingUnit
+			),
+			'padding-right': generateCSSUnit(
+				fieldrightPadding,
+				fieldpaddingUnit
+			),
+			'padding-top': generateCSSUnit( fieldtopPadding, fieldpaddingUnit ),
+			'padding-bottom': generateCSSUnit(
+				fieldbottomPadding,
+				fieldpaddingUnit
+			),
 		},
 		' .chosen-container-single.chosen-container-active .chosen-single span': {
 			'margin-bottom': 0,
 		},
 		" select.wpgf-form-control.wpgf-select:not([multiple='multiple'])": {
-			'padding-left': generateCSSUnit( fieldHrPadding, 'px' ),
-			'padding-right': generateCSSUnit( fieldHrPadding, 'px' ),
-			'padding-top': generateCSSUnit( fieldVrPadding, 'px' ),
-			'padding-bottom': generateCSSUnit( fieldVrPadding, 'px' ),
+			'padding-left': generateCSSUnit(
+				fieldleftPadding,
+				fieldpaddingUnit
+			),
+			'padding-right': generateCSSUnit(
+				fieldrightPadding,
+				fieldpaddingUnit
+			),
+			'padding-top': generateCSSUnit( fieldtopPadding, fieldpaddingUnit ),
+			'padding-bottom': generateCSSUnit(
+				fieldbottomPadding,
+				fieldpaddingUnit
+			),
 		},
 		" select.wpgf-select[multiple='multiple'] option": {
-			'padding-left': generateCSSUnit( fieldHrPadding, 'px' ),
-			'padding-right': generateCSSUnit( fieldHrPadding, 'px' ),
-			'padding-top': generateCSSUnit( fieldVrPadding, 'px' ),
-			'padding-bottom': generateCSSUnit( fieldVrPadding, 'px' ),
+			'padding-left': generateCSSUnit(
+				fieldleftPadding,
+				fieldpaddingUnit
+			),
+			'padding-right': generateCSSUnit(
+				fieldrightPadding,
+				fieldpaddingUnit
+			),
+			'padding-top': generateCSSUnit( fieldtopPadding, fieldpaddingUnit ),
+			'padding-bottom': generateCSSUnit(
+				fieldbottomPadding,
+				fieldpaddingUnit
+			),
 		},
 		' textarea': {
 			'background-color': fieldBgColor,
-			color: fieldInputColor,
+			'color': fieldInputColor,
 			'border-color': fieldBorderColor,
 			'border-width': generateCSSUnit( fieldBorderWidth, 'px' ),
 			'border-radius': generateCSSUnit(
@@ -261,37 +361,52 @@ function styling( props ) {
 				fieldBorderRadiusType
 			),
 			'border-style': fieldBorderStyle,
-			'padding-left': generateCSSUnit( fieldHrPadding, 'px' ),
-			'padding-right': generateCSSUnit( fieldHrPadding, 'px' ),
-			'padding-top': generateCSSUnit( fieldVrPadding, 'px' ),
-			'padding-bottom': generateCSSUnit( fieldVrPadding, 'px' ),
+			'padding-left': generateCSSUnit(
+				fieldleftPadding,
+				fieldpaddingUnit
+			),
+			'padding-right': generateCSSUnit(
+				fieldrightPadding,
+				fieldpaddingUnit
+			),
+			'padding-top': generateCSSUnit( fieldtopPadding, fieldpaddingUnit ),
+			'padding-bottom': generateCSSUnit(
+				fieldbottomPadding,
+				fieldpaddingUnit
+			),
 			'margin-top': generateCSSUnit( fieldLabelSpacing, 'px' ),
 			'margin-bottom': generateCSSUnit( fieldSpacing, 'px' ),
 			'font-size': generateCSSUnit( inputFontSize, inputFontSizeType ),
 			'font-family': inputFontFamily,
+			'font-style' : inputFontStyle,
+			'text-decoration': inputDecoration,
+			'text-transform': inputTransform,
 			'font-weight': inputFontWeight,
 			'line-height': generateCSSUnit(
 				inputLineHeight,
 				inputLineHeightType
 			),
 			'text-align': align,
-			height:
+			'height':
 				'auto' === textAreaHeight
 					? textAreaHeight
 					: textAreaHeight + 'px',
 		},
 		' textarea::placeholder': {
-			color: fieldInputColor,
+			'color': fieldInputColor,
 			'text-align': align,
 		},
 		' input::placeholder': {
-			color: fieldInputColor,
+			'color': fieldInputColor,
 			'text-align': align,
 		},
-		' form label.gfield_label': {
-			color: fieldLabelColor,
+		' form .gfield_label': {
+			'color': fieldLabelColor,
 			'font-size': generateCSSUnit( labelFontSize, labelFontSizeType ),
 			'font-family': labelFontFamily,
+			'font-style' : labelFontStyle,
+			'text-decoration': labelDecoration,
+			'text-transform': labelTransform,
 			'font-weight': labelFontWeight,
 			'line-height': generateCSSUnit(
 				labelLineHeight,
@@ -299,9 +414,12 @@ function styling( props ) {
 			),
 		},
 		' form .gfield_radio label.gfield_label': {
-			color: fieldLabelColor,
+			'color': fieldLabelColor,
 			'font-size': generateCSSUnit( labelFontSize, labelFontSizeType ),
 			'font-family': labelFontFamily,
+			'font-style' : labelFontStyle,
+			'text-decoration': labelDecoration,
+			'text-transform': labelTransform,
 			'font-weight': labelFontWeight,
 			'line-height': generateCSSUnit(
 				labelLineHeight,
@@ -309,9 +427,12 @@ function styling( props ) {
 			),
 		},
 		' form .gfield_checkbox label.gfield_label': {
-			color: fieldLabelColor,
+			'color': fieldLabelColor,
 			'font-size': generateCSSUnit( labelFontSize, labelFontSizeType ),
 			'font-family': labelFontFamily,
+			'font-style' : labelFontStyle,
+			'text-decoration': labelDecoration,
+			'text-transform': labelTransform,
 			'font-weight': labelFontWeight,
 			'line-height': generateCSSUnit(
 				labelLineHeight,
@@ -335,10 +456,13 @@ function styling( props ) {
 
 		// Submit button.
 		' input.gform_button': {
-			color: buttonTextColor,
+			'color': buttonTextColor,
 			'background-color': buttonBgColor,
 			'font-size': generateCSSUnit( buttonFontSize, buttonFontSizeType ),
 			'font-family': buttonFontFamily,
+			'font-style' : buttonFontStyle,
+			'text-decoration': buttonDecoration,
+			'text-transform': buttonTransform,
 			'font-weight': buttonFontWeight,
 			'line-height': generateCSSUnit(
 				buttonLineHeight,
@@ -351,18 +475,30 @@ function styling( props ) {
 				buttonBorderRadius,
 				buttonBorderRadiusType
 			),
-			'padding-left': generateCSSUnit( buttonHrPadding, 'px' ),
-			'padding-right': generateCSSUnit( buttonHrPadding, 'px' ),
-			'padding-top': generateCSSUnit( buttonVrPadding, 'px' ),
-			'padding-bottom': generateCSSUnit( buttonVrPadding, 'px' ),
+			'padding-left': generateCSSUnit(
+				buttonleftPadding,
+				buttonpaddingUnit
+			),
+			'padding-right': generateCSSUnit(
+				buttonrightPadding,
+				buttonpaddingUnit
+			),
+			'padding-top': generateCSSUnit(
+				buttontopPadding,
+				buttonpaddingUnit
+			),
+			'padding-bottom': generateCSSUnit(
+				buttonbottomPadding,
+				buttonpaddingUnit
+			),
 		},
-		' input.gform_button:hover': {
-			color: buttonTextHoverColor,
+		':hover input.gform_button': {
+			'color': buttonTextHoverColor,
 			'background-color': buttonBgHoverColor,
 			'border-color': buttonBorderHoverColor,
 		},
-		' input.gform_next_button:hover': {
-			color: buttonTextHoverColor,
+		':hover input.gform_next_button': {
+			'color': buttonTextHoverColor,
 			'background-color': buttonBgHoverColor,
 			'border-color': buttonBorderHoverColor,
 		},
@@ -426,9 +562,9 @@ function styling( props ) {
 		// Override check box.
 		" .uagb-gf-styler__check-style-enabled .gfield_checkbox input[type='checkbox'] + label:before": {
 			'background-color': radioCheckBgColor,
-			color: radioCheckSelectColor,
-			height: generateCSSUnit( radioCheckSize, 'px' ),
-			width: generateCSSUnit( radioCheckSize, 'px' ),
+			'color': radioCheckSelectColor,
+			'height': generateCSSUnit( radioCheckSize, 'px' ),
+			'width': generateCSSUnit( radioCheckSize, 'px' ),
 			'font-size': 'calc( ' + radioCheckSize + 'px / 1.2 )',
 			'border-color': radioCheckBorderColor,
 			'border-style': 'solid',
@@ -443,9 +579,9 @@ function styling( props ) {
 		},
 		" .uagb-gf-styler__check-style-enabled input[type='checkbox'] + label:before": {
 			'background-color': radioCheckBgColor,
-			color: radioCheckSelectColor,
-			height: generateCSSUnit( radioCheckSize, 'px' ),
-			width: generateCSSUnit( radioCheckSize, 'px' ),
+			'color': radioCheckSelectColor,
+			'height': generateCSSUnit( radioCheckSize, 'px' ),
+			'width': generateCSSUnit( radioCheckSize, 'px' ),
 			'font-size': 'calc( ' + radioCheckSize + 'px / 1.2 )',
 			'border-color': radioCheckBorderColor,
 			'border-width': generateCSSUnit( radioCheckBorderWidth, 'px' ),
@@ -457,9 +593,9 @@ function styling( props ) {
 		},
 		" .uagb-gf-styler__check-style-enabled .gfield_radio input[type='radio'] + label:before": {
 			'background-color': radioCheckBgColor,
-			color: radioCheckSelectColor,
-			height: generateCSSUnit( radioCheckSize, 'px' ),
-			width: generateCSSUnit( radioCheckSize, 'px' ),
+			'color': radioCheckSelectColor,
+			'height': generateCSSUnit( radioCheckSize, 'px' ),
+			'width': generateCSSUnit( radioCheckSize, 'px' ),
 			'font-size': 'calc( ' + radioCheckSize + 'px / 1.2 )',
 			'border-color': radioCheckBorderColor,
 			'border-width': generateCSSUnit( radioCheckBorderWidth, 'px' ),
@@ -473,12 +609,15 @@ function styling( props ) {
 				radioCheckFontSizeType
 			),
 			'font-family': radioCheckFontFamily,
+			'font-style' : radioCheckFontStyle,
+			'text-decoration': radioCheckDecoration,
+			'text-transform': radioCheckTransform,
 			'font-weight': radioCheckFontWeight,
 			'line-height': generateCSSUnit(
 				radioCheckLineHeight,
 				radioCheckLineHeightType
 			),
-			color: radioCheckLableColor,
+			'color': radioCheckLableColor,
 		},
 		' .uagb-gf-styler__check-style-enabled form .gfield_checkbox label': {
 			'font-size': generateCSSUnit(
@@ -486,16 +625,19 @@ function styling( props ) {
 				radioCheckFontSizeType
 			),
 			'font-family': radioCheckFontFamily,
+			'font-style' : radioCheckFontStyle,
+			'text-decoration': radioCheckDecoration,
+			'text-transform': radioCheckTransform,
 			'font-weight': radioCheckFontWeight,
 			'line-height': generateCSSUnit(
 				radioCheckLineHeight,
 				radioCheckLineHeightType
 			),
-			color: radioCheckLableColor,
+			'color': radioCheckLableColor,
 		},
 
 		' .gform_wrapper .gfield_description.validation_message': {
-			color: validationMsgColor,
+			'color': validationMsgColor,
 		},
 		' .gform_wrapper .validation_message': {
 			'font-size': generateCSSUnit(
@@ -503,6 +645,9 @@ function styling( props ) {
 				validationMsgFontSizeType
 			),
 			'font-family': validationMsgFontFamily,
+			'font-style' : validationMsgFontStyle,
+			'text-decoration': validationMsgDecoration,
+			'text-transform': validationMsgTransform,
 			'font-weight': validationMsgFontWeight,
 			'line-height': generateCSSUnit(
 				validationMsgLineHeight,
@@ -565,7 +710,7 @@ function styling( props ) {
 		},
 
 		' .gform_wrapper div.validation_error': {
-			color: errorMsgColor,
+			'color': errorMsgColor,
 			'background-color': errorMsgBgColor,
 			'border-color': errorMsgBorderColor,
 			'border-style': 'solid',
@@ -574,20 +719,32 @@ function styling( props ) {
 				msgBorderRadius,
 				msgBorderRadiusType
 			),
-			padding: msgVrPadding + 'px ' + msgHrPadding + 'px',
+			'padding-left': generateCSSUnit( msgleftPadding, msgpaddingUnit ),
+			'padding-right': generateCSSUnit( msgrightPadding, msgpaddingUnit ),
+			'padding-top': generateCSSUnit( msgtopPadding, msgpaddingUnit ),
+			'padding-bottom': generateCSSUnit(
+				msgbottomPadding,
+				msgpaddingUnit
+			),
 			'font-size': msgFontSize.msgFontSizeType,
 			'font-family': msgFontFamily,
+			'font-style' : msgFontStyle,
+			'text-decoration': msgDecoration,
+			'text-transform': msgTransform,
 			'font-weight': msgFontWeight,
 			'line-height': generateCSSUnit( msgLineHeight, msgLineHeightType ),
 		},
 
 		' .gform_confirmation_message': {
-			color: successMsgColor,
+			'color': successMsgColor,
 			'font-size': generateCSSUnit(
 				successMsgFontSize,
 				successMsgFontSizeType
 			),
 			'font-family': successMsgFontFamily,
+			'font-style' : successMsgFontStyle,
+			'text-decoration': successMsgDecoration,
+			'text-transform': successMsgTransform,
 			'font-weight': successMsgFontWeight,
 			'line-height': generateCSSUnit(
 				successMsgLineHeight,
@@ -605,6 +762,22 @@ function styling( props ) {
 			'line-height': generateCSSUnit(
 				inputLineHeightTablet,
 				inputLineHeightType
+			),
+			'padding-left': generateCSSUnit(
+				fieldleftTabletPadding,
+				fieldtabletPaddingUnit
+			),
+			'padding-right': generateCSSUnit(
+				fieldrightTabletPadding,
+				fieldtabletPaddingUnit
+			),
+			'padding-top': generateCSSUnit(
+				fieldtopTabletPadding,
+				fieldtabletPaddingUnit
+			),
+			'padding-bottom': generateCSSUnit(
+				fieldbottomTabletPadding,
+				fieldtabletPaddingUnit
 			),
 		},
 		' select': {
@@ -625,6 +798,22 @@ function styling( props ) {
 			'line-height': generateCSSUnit(
 				inputLineHeightTablet,
 				inputLineHeightType
+			),
+			'padding-left': generateCSSUnit(
+				fieldleftTabletPadding,
+				fieldtabletPaddingUnit
+			),
+			'padding-right': generateCSSUnit(
+				fieldrightTabletPadding,
+				fieldtabletPaddingUnit
+			),
+			'padding-top': generateCSSUnit(
+				fieldtopTabletPadding,
+				fieldtabletPaddingUnit
+			),
+			'padding-bottom': generateCSSUnit(
+				fieldbottomTabletPadding,
+				fieldtabletPaddingUnit
 			),
 		},
 		' form label': {
@@ -666,6 +855,22 @@ function styling( props ) {
 			'line-height': generateCSSUnit(
 				buttonLineHeightTablet,
 				buttonLineHeightType
+			),
+			'padding-left': generateCSSUnit(
+				buttonleftTabletPadding,
+				buttontabletPaddingUnit
+			),
+			'padding-right': generateCSSUnit(
+				buttonrightTabletPadding,
+				buttontabletPaddingUnit
+			),
+			'padding-top': generateCSSUnit(
+				buttontopTabletPadding,
+				buttontabletPaddingUnit
+			),
+			'padding-bottom': generateCSSUnit(
+				buttonbottomTabletPadding,
+				buttontabletPaddingUnit
 			),
 		},
 		' .uagb-gf-styler__check-style-enabled form .gfield_radio label': {
@@ -714,6 +919,22 @@ function styling( props ) {
 				msgLineHeightTablet,
 				msgLineHeightType
 			),
+			'padding-left': generateCSSUnit(
+				msgleftTabletPadding,
+				msgtabletPaddingUnit
+			),
+			'padding-right': generateCSSUnit(
+				msgrightTabletPadding,
+				msgtabletPaddingUnit
+			),
+			'padding-top': generateCSSUnit(
+				msgtopTabletPadding,
+				msgtabletPaddingUnit
+			),
+			'padding-bottom': generateCSSUnit(
+				msgbottomTabletPadding,
+				msgtabletPaddingUnit
+			),
 		},
 		' .gform_confirmation_message': {
 			'font-size': generateCSSUnit(
@@ -736,6 +957,22 @@ function styling( props ) {
 			'line-height': generateCSSUnit(
 				inputLineHeightMobile,
 				inputLineHeightType
+			),
+			'padding-left': generateCSSUnit(
+				fieldleftMobilePadding,
+				fieldmobilePaddingUnit
+			),
+			'padding-right': generateCSSUnit(
+				fieldrightMobilePadding,
+				fieldmobilePaddingUnit
+			),
+			'padding-top': generateCSSUnit(
+				fieldtopMobilePadding,
+				fieldmobilePaddingUnit
+			),
+			'padding-bottom': generateCSSUnit(
+				fieldbottomMobilePadding,
+				fieldmobilePaddingUnit
 			),
 		},
 		' select': {
@@ -767,6 +1004,22 @@ function styling( props ) {
 				inputLineHeightMobile,
 				inputLineHeightType
 			),
+			'padding-left': generateCSSUnit(
+				fieldleftMobilePadding,
+				fieldmobilePaddingUnit
+			),
+			'padding-right': generateCSSUnit(
+				fieldrightMobilePadding,
+				fieldmobilePaddingUnit
+			),
+			'padding-top': generateCSSUnit(
+				fieldtopMobilePadding,
+				fieldmobilePaddingUnit
+			),
+			'padding-bottom': generateCSSUnit(
+				fieldbottomMobilePadding,
+				fieldmobilePaddingUnit
+			),
 		},
 		' form .gfield_radio label': {
 			'font-size': generateCSSUnit(
@@ -796,6 +1049,22 @@ function styling( props ) {
 			'line-height': generateCSSUnit(
 				buttonLineHeightMobile,
 				buttonLineHeightType
+			),
+			'padding-left': generateCSSUnit(
+				buttonleftMobilePadding,
+				buttonmobilePaddingUnit
+			),
+			'padding-right': generateCSSUnit(
+				buttonrightMobilePadding,
+				buttonmobilePaddingUnit
+			),
+			'padding-top': generateCSSUnit(
+				buttontopMobilePadding,
+				buttonmobilePaddingUnit
+			),
+			'padding-bottom': generateCSSUnit(
+				buttonbottomMobilePadding,
+				buttonmobilePaddingUnit
 			),
 		},
 		' .uagb-gf-styler__check-style-enabled form .gfield_radio label': {
@@ -844,6 +1113,22 @@ function styling( props ) {
 				msgLineHeightMobile,
 				msgLineHeightType
 			),
+			'padding-left': generateCSSUnit(
+				msgleftMobilePadding,
+				msgmobilePaddingUnit
+			),
+			'padding-right': generateCSSUnit(
+				msgrightMobilePadding,
+				msgmobilePaddingUnit
+			),
+			'padding-top': generateCSSUnit(
+				msgtopMobilePadding,
+				msgmobilePaddingUnit
+			),
+			'padding-bottom': generateCSSUnit(
+				msgbottomMobilePadding,
+				msgmobilePaddingUnit
+			),
 		},
 		' .gform_confirmation_message': {
 			'font-size': generateCSSUnit(
@@ -859,7 +1144,7 @@ function styling( props ) {
 
 	let stylingCss = generateCSS(
 		selectors,
-		`.block-editor-page #wpwrap .edit-post-visual-editor .wp-block-uagb-gf-styler.uagb-block-${ props.clientId.substr(
+		`#wpwrap .editor-styles-wrapper .wp-block-uagb-gf-styler.uagb-block-${ props.clientId.substr(
 			0,
 			8
 		) }`
@@ -867,7 +1152,7 @@ function styling( props ) {
 
 	stylingCss += generateCSS(
 		tabletSelectors,
-		`.block-editor-page #wpwrap .uagb-block-${ props.clientId.substr(
+		`.editor-styles-wrapper .uagb-block-${ props.clientId.substr(
 			0,
 			8
 		) }`,
@@ -877,7 +1162,7 @@ function styling( props ) {
 
 	stylingCss += generateCSS(
 		mobileSelectors,
-		`.block-editor-page #wpwrap .uagb-block-${ props.clientId.substr(
+		`.editor-styles-wrapper .uagb-block-${ props.clientId.substr(
 			0,
 			8
 		) }`,

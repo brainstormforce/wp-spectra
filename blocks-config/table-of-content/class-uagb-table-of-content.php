@@ -94,15 +94,10 @@ if ( ! class_exists( 'UAGB_Table_Of_Content' ) ) {
 		 * @access public
 		 *
 		 * @param string $content       The post content to extract headings from.
-		 * @param int    $mapping_headers_array The page of the post where the headings are
-		 *                              located.
 		 *
 		 * @return array The list of headings.
 		 */
-		public function table_of_contents_get_headings_from_content(
-			$content,
-			$mapping_headers_array
-		) {
+		public function table_of_contents_get_headings_from_content( $content ) {
 
 			/* phpcs:disable WordPress.NamingConventions.ValidVariableName.UsedPropertyNotSnakeCase */
 			// Disabled because of PHP DOMDocument and DOMXPath APIs using camelCase.
@@ -161,7 +156,7 @@ if ( ! class_exists( 'UAGB_Table_Of_Content' ) ) {
 			);
 
 			return array_map(
-				function ( $heading ) use ( $mapping_headers_array ) {
+				function ( $heading ) {
 
 					$exclude_heading = null;
 
@@ -176,26 +171,15 @@ if ( ! class_exists( 'UAGB_Table_Of_Content' ) ) {
 
 					if ( 'uagb-toc-hide-heading' !== $exclude_heading ) {
 
-						foreach ( $mapping_headers_array as $key => $value ) {
-
-							if ( $mapping_headers_array[ $key ] ) {
-
-								$mapping_header = ( $key + 1 );
-							}
-
-							if ( strval( $mapping_header ) === $heading->nodeName[1] ) {
-
-								return array(
-									// A little hacky, but since we know at this point that the tag will
-									// be an h1-h6, we can just grab the 2nd character of the tag name
-									// and convert it to an integer. Should be faster than conditionals.
-									'level'   => (int) $heading->nodeName[1],
-									'id'      => $this->clean( $heading->textContent ),
-									'content' => wp_strip_all_tags( $heading->textContent ),
-									'depth'   => intval( substr( $heading->tagName, 1 ) ),
-								);
-							}
-						}
+						return array(
+							// A little hacky, but since we know at this point that the tag will
+							// be an h1-h6, we can just grab the 2nd character of the tag name
+							// and convert it to an integer. Should be faster than conditionals.
+							'level'   => (int) $heading->nodeName[1],
+							'id'      => $this->clean( $heading->textContent ),
+							'content' => wp_strip_all_tags( $heading->textContent ),
+							'depth'   => intval( substr( $heading->tagName, 1 ) ),
+						);
 					}
 				},
 				$headings
@@ -233,33 +217,6 @@ if ( ! class_exists( 'UAGB_Table_Of_Content' ) ) {
 			}
 
 			return strtolower( $string ); // Replaces multiple hyphens with single one.
-		}
-
-		/**
-		 * Gets the content, anchor, level, and page of headings from a post. Returns
-		 * data from all headings in a paginated post if $current_page_only is false;
-		 * otherwise, returns only data from headings on the current page being
-		 * rendered.
-		 *
-		 * @since 1.23.0
-		 * @access public
-		 *
-		 * @param int  $post_id           Id of the post to extract headings from.
-		 * @param bool $current_page_only Whether to include headings from the entire
-		 *                                post, or just those from the current page (if
-		 *                                the post is paginated).
-		 *
-		 * @return array The list of headings.
-		 */
-		public function table_of_contents_get_headings(
-			$post_id,
-			$current_page_only
-		) {
-
-			return $this->table_of_contents_get_headings_from_content(
-				get_post( $post_id )->post_content,
-				$current_page_only['mappingHeaders']
-			);
 		}
 
 		/**
@@ -329,9 +286,10 @@ if ( ! class_exists( 'UAGB_Table_Of_Content' ) ) {
 
 			foreach ( $nested_heading_list as $anchor => $heading ) {
 
-				$level = $heading['heading']['level'];
-				$title = $heading['heading']['content'];
-				$id    = $heading['heading']['id'];
+				$level    = $heading['heading']['level'];
+				$title    = $heading['heading']['content'];
+				$id       = $heading['heading']['id'];
+				$li_added = false;
 
 				if ( 0 === $anchor ) {
 					$first_level = $level;
@@ -357,6 +315,7 @@ if ( ! class_exists( 'UAGB_Table_Of_Content' ) ) {
 
 						$toc                  .= '<li class="uagb-toc__list">';
 						$depth_array[ $level ] = $current_depth;
+						$li_added              = true;
 
 					} elseif ( $level < $last_level ) {
 
@@ -375,15 +334,58 @@ if ( ! class_exists( 'UAGB_Table_Of_Content' ) ) {
 					}
 				}
 
-				$toc       .= sprintf( '<li class="uagb-toc__list"><a href="#%s">%s</a>', esc_attr( $id ), $title );
+				if ( $li_added ) {
+					$toc .= sprintf( '<a href="#%s">%s</a>', esc_attr( $id ), $title );
+				} else {
+					$toc .= sprintf( '<li class="uagb-toc__list"><a href="#%s">%s</a>', esc_attr( $id ), $title );
+				}
+
 				$last_level = $level;
 			}
 
 			$toc .= str_repeat( '</li></ul>', $current_depth );
 			$toc .= '</ol>';
+
 			return $toc;
 		}
 
+		/**
+		 * Filters the Headings according to Mapping Headers Array.
+		 *
+		 * @since 1.24.0
+		 * @access public
+		 *
+		 * @param  array $headings Headings.
+		 * @param  array $mapping_headers_array    Mapping Headers.
+		 *
+		 * @return array FIltered Headings Array..
+		 */
+		public function filter_headings_by_mapping_headers( $headings, $mapping_headers_array ) {
+
+			$filtered_headings = array();
+
+			foreach ( $headings as $heading ) {
+
+				$mapping_header = 0;
+
+				foreach ( $mapping_headers_array as $key => $value ) {
+
+					if ( $mapping_headers_array[ $key ] ) {
+
+						$mapping_header = ( $key + 1 );
+					}
+
+					if ( isset( $heading ) && $mapping_header === $heading['level'] ) {
+
+						$filtered_headings[] = $heading;
+						break;
+					}
+				}
+			}
+
+			return $filtered_headings;
+
+		}
 		/**
 		 * Renders the UAGB Table Of Contents block.
 		 *
@@ -410,10 +412,7 @@ if ( ! class_exists( 'UAGB_Table_Of_Content' ) ) {
 
 			if ( empty( $uagb_toc_heading_content ) || UAGB_ASSET_VER !== $uagb_toc_version ) {
 
-				$uagb_toc_heading_content = $this->table_of_contents_get_headings(
-					$post->ID,
-					$attributes
-				);
+				$uagb_toc_heading_content = $this->table_of_contents_get_headings_from_content( get_post( $post->ID )->post_content );
 
 				$meta_array = array(
 					'_uagb_toc_version'  => UAGB_ASSET_VER,
@@ -423,6 +422,8 @@ if ( ! class_exists( 'UAGB_Table_Of_Content' ) ) {
 				update_post_meta( $post->ID, '_uagb_toc_options', $meta_array );
 
 			}
+
+			$uagb_toc_heading_content = $this->filter_headings_by_mapping_headers( $uagb_toc_heading_content, $attributes['mappingHeaders'] );
 
 			$mapping_header_func = function( $value ) {
 				return $value;
@@ -439,24 +440,22 @@ if ( ! class_exists( 'UAGB_Table_Of_Content' ) ) {
 
 			ob_start();
 			?>
-				<div class="<?php echo esc_html( implode( ' ', $wrap ) ); ?>" 
+				<div class="<?php echo esc_html( implode( ' ', $wrap ) ); ?>"
 					data-scroll= "<?php echo esc_attr( $attributes['smoothScroll'] ); ?>"
 					data-offset= "<?php echo esc_attr( $attributes['smoothScrollOffset'] ); ?>"
 					data-delay= "<?php echo esc_attr( $attributes['smoothScrollDelay'] ); ?>"
 				>
 				<div class="uagb-toc__wrap">
-					<div class="uagb-toc__title-wrap">
 						<div class="uagb-toc__title">
-							<?php echo wp_kses_post( $attributes['headingTitle'] ); ?>
-						</div>
-						<?php
-						if ( $attributes['makeCollapsible'] && $attributes['icon'] ) {
-							?>
-							<span class="uag-toc__collapsible-wrap"><?php UAGB_Helper::render_svg_html( $attributes['icon'] ); ?></span>
 							<?php
-						}
-						?>
-					</div>
+								echo wp_kses_post( $attributes['headingTitle'] );
+							if ( $attributes['makeCollapsible'] && $attributes['icon'] ) {
+								?>
+									<?php UAGB_Helper::render_svg_html( $attributes['icon'] ); ?>
+									<?php
+							}
+							?>
+						</div>
 					<?php if ( $uagb_toc_heading_content && count( $uagb_toc_heading_content ) > 0 && count( array_filter( $attributes['mappingHeaders'], $mapping_header_func ) ) > 0 ) { ?>
 					<div class="uagb-toc__list-wrap">
 						<?php
@@ -469,7 +468,7 @@ if ( ! class_exists( 'UAGB_Table_Of_Content' ) ) {
 							);
 						?>
 					</div>
-					<?php } else { ?> 
+					<?php } else { ?>
 						<p class='uagb_table-of-contents-placeholder'>
 						<?php echo esc_html( $attributes['emptyHeadingTeaxt'] ); ?>
 						</p>
@@ -536,6 +535,10 @@ if ( ! class_exists( 'UAGB_Table_Of_Content' ) ) {
 										'type' => 'string',
 									),
 									'align'                => array(
+										'type'    => 'string',
+										'default' => 'left',
+									),
+									'headingAlignment'     => array(
 										'type'    => 'string',
 										'default' => 'left',
 									),
@@ -727,9 +730,6 @@ if ( ! class_exists( 'UAGB_Table_Of_Content' ) ) {
 									'fontWeight'           => array(
 										'type' => 'string',
 									),
-									'fontSubset'           => array(
-										'type' => 'string',
-									),
 									// Link Font Size.
 									'fontSize'             => array(
 										'type' => 'number',
@@ -772,9 +772,6 @@ if ( ! class_exists( 'UAGB_Table_Of_Content' ) ) {
 										'type'    => 'string',
 										'default' => '500',
 									),
-									'headingFontSubset'    => array(
-										'type' => 'string',
-									),
 									// Link Font Size.
 									'headingFontSize'      => array(
 										'type'    => 'number',
@@ -803,10 +800,6 @@ if ( ! class_exists( 'UAGB_Table_Of_Content' ) ) {
 									),
 									'headingLineHeightMobile' => array(
 										'type' => 'number',
-									),
-									'headingAlignment'     => array(
-										'type'    => 'string',
-										'default' => 'left',
 									),
 									'emptyHeadingTeaxt'    => array(
 										'type'    => 'string',

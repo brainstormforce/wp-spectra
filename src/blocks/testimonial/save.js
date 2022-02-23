@@ -46,8 +46,8 @@ export default function save( props ) {
 							key={ 'tm_content-' + index }
 						>
 							<div className="uagb-tm__overlay"></div>
-							{ ( imagePosition == 'top' ||
-								imagePosition == 'left' ) && (
+							{ ( imagePosition === 'top' ||
+								imagePosition === 'left' ) && (
 								<TestimonialImage
 									attributes={ props.attributes }
 									index_value={ index }
@@ -67,7 +67,7 @@ export default function save( props ) {
 									</>
 								}
 								<div className="uagb-tm__meta-inner">
-									{ imagePosition == 'bottom' && (
+									{ imagePosition === 'bottom' && (
 										<TestimonialImage
 											attributes={ props.attributes }
 											index_value={ index }
@@ -102,7 +102,7 @@ export default function save( props ) {
 									}
 								</div>
 							</div>
-							{ imagePosition == 'right' && (
+							{ imagePosition === 'right' && (
 								<TestimonialImage
 									attributes={ props.attributes }
 									index_value={ index }

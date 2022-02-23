@@ -22,26 +22,29 @@ function styling( props ) {
 
 	const selectors = {
 		'.uagb-lottie__outer-wrap': {
-			width: generateCSSUnit( width, 'px' ),
-			height: generateCSSUnit( height, 'px' ),
-			background: backgroundColor,
+			'width': generateCSSUnit( width, 'px' ),
+			'height': generateCSSUnit( height, 'px' ),
+			'background': backgroundColor,
 		},
 		'.uagb-lottie__outer-wrap:hover': {
-			background: backgroundHColor,
+			'background': backgroundHColor,
+		},
+		' .lf-player-container #lottie': {
+			'height': generateCSSUnit( height, 'px' ),
 		},
 	};
 
 	tablet_selectors[ '.uagb-lottie__outer-wrap' ] = {
-		width: generateCSSUnit( widthTablet, 'px' ),
-		height: generateCSSUnit( heightTablet, 'px' ),
+		'width': generateCSSUnit( widthTablet, 'px' ),
+		'height': generateCSSUnit( heightTablet, 'px' ),
 	};
 
 	mobile_selectors[ '.uagb-lottie__outer-wrap' ] = {
-		width: generateCSSUnit( widthMob, 'px' ),
-		height: generateCSSUnit( heightMob, 'px' ),
+		'width': generateCSSUnit( widthMob, 'px' ),
+		'height': generateCSSUnit( heightMob, 'px' ),
 	};
 
-	const base_selector = `.block-editor-page #wpwrap .uagb-block-${ props.clientId.substr(
+	const base_selector = `.editor-styles-wrapper .uagb-block-${ props.clientId.substr(
 		0,
 		8
 	) }`;

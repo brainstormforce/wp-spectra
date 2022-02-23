@@ -4,7 +4,8 @@
 
 import styling from './styling';
 import React, { useEffect, lazy, Suspense } from 'react';
-
+import { useDeviceType } from '@Controls/getPreviewType';
+import addBlockEditorDynamicStyles from '@Controls/addBlockEditorDynamicStyles';
 import lazyLoader from '@Controls/lazy-loader';
 
 const Settings = lazy( () =>
@@ -14,31 +15,59 @@ const Render = lazy( () =>
 	import( /* webpackChunkName: "chunks/team/render" */ './render' )
 );
 
-import { withSelect } from '@wordpress/data';
-
 const UAGBTeam = ( props ) => {
+	const deviceType = useDeviceType();
 	useEffect( () => {
-		const element = document.getElementById(
-			'uagb-team-style-' + props.clientId.substr( 0, 8 )
-		);
 
-		if ( null !== element && undefined !== element ) {
-			element.innerHTML = styling( props );
-		}
+		const blockStyling = styling( props );
+
+		addBlockEditorDynamicStyles( 'uagb-team-style-' + props.clientId.substr( 0, 8 ), blockStyling );
 	}, [ props ] );
+	useEffect( () => {
+
+		const blockStyling = styling( props );
+
+		addBlockEditorDynamicStyles( 'uagb-team-style-' + props.clientId.substr( 0, 8 ), blockStyling );
+	}, [ deviceType ] );
 
 	useEffect( () => {
 		// Assigning block_id in the attribute.
 		props.setAttributes( { block_id: props.clientId.substr( 0, 8 ) } );
 		props.setAttributes( { classMigrate: true } );
 
-		// Pushing Style tag for this block css.
-		const $style = document.createElement( 'style' );
-		$style.setAttribute(
-			'id',
-			'uagb-team-style-' + props.clientId.substr( 0, 8 )
-		);
-		document.head.appendChild( $style );
+		const {
+			imgLeftMargin,
+			imgRightMargin,
+			imgTopMargin,
+			imgBottomMargin,
+			imageLeftMargin,
+			imageRightMargin,
+			imageTopMargin,
+			imageBottomMargin,
+		} = props.attributes;
+
+		if ( imgTopMargin ) {
+			if ( null === imageTopMargin || undefined === imageTopMargin ) {
+				props.setAttributes( { imageTopMargin: imgTopMargin } );
+			}
+		}
+		if ( imgBottomMargin ) {
+			if ( null === imageBottomMargin || undefined === imageBottomMargin ) {
+				props.setAttributes( { imageBottomMargin: imgBottomMargin } );
+			}
+		}
+
+		if ( imgLeftMargin ) {
+			if ( null === imageLeftMargin || undefined === imageLeftMargin ) {
+				props.setAttributes( { imageLeftMargin: imgLeftMargin } );
+			}
+		}
+		if ( imgRightMargin ) {
+			if ( null === imageRightMargin || undefined === imageRightMargin ) {
+				props.setAttributes( { imageRightMargin: imgRightMargin } );
+			}
+		}
+
 	}, [] );
 
 	return (
@@ -49,15 +78,4 @@ const UAGBTeam = ( props ) => {
 	);
 };
 
-export default withSelect( ( select ) => {
-	const { __experimentalGetPreviewDeviceType = null } = select(
-		'core/edit-post'
-	);
-	const deviceType = __experimentalGetPreviewDeviceType
-		? __experimentalGetPreviewDeviceType()
-		: null;
-
-	return {
-		deviceType,
-	};
-} )( UAGBTeam );
+export default UAGBTeam;

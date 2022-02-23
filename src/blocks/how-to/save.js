@@ -102,10 +102,8 @@ export default function save( props ) {
 				value={ headingDesc }
 				tagName="p"
 				className="uagb-howto-desc-text"
-			/>
-			{ mainimage.url && (
-				<div className="uagb-howto__source-wrap">{ imageIconHtml }</div>
-			) }
+			/>		
+					{ imageIconHtml }
 			{ showTotaltime && (
 				<span className="uagb-howto__time-wrap">
 					<RichText.Content
@@ -189,33 +187,23 @@ export default function save( props ) {
 				</span>
 			) }
 			{ showTools && (
-				<div className="uagb-how-to-tools__wrap">
+				
 					<RichText.Content
 						value={ toolsTitle }
 						tagName="h4"
 						className="uagb-howto-req-tools-text"
 					/>
-				</div>
 			) }
 			{ showTools && (
 				<>
 					{ tools.map( ( tool, index ) => {
 						return (
-							<div
-								className={ classnames(
-									`uagb-how-to-tools-${ index }`,
-									'uagb-how-to-tools-child__wrapper'
-								) }
-								key={ index }
-							>
-								<div className="uagb-tools">
 									<RichText.Content
 										tagName="div"
 										value={ tool.add_required_tools }
-										className="uagb-tools__label"
+										className={ `uagb-tools__label ${ index }` }
+										key={ index }
 									/>
-								</div>
-							</div>
 						);
 					} ) }
 				</>
@@ -231,35 +219,24 @@ export default function save( props ) {
 				<>
 					{ materials.map( ( material, index ) => {
 						return (
-							<div
-								key={ index }
-								className={ classnames(
-									`uagb-how-to-materials-${ index }`,
-									'uagb-how-to-materials-child__wrapper'
-								) }
-							>
-								<div className="uagb-materials">
 									<RichText.Content
 										tagName="div"
 										value={
 											material.add_required_materials
 										}
-										className="uagb-materials__label"
+										className={ `uagb-materials__label ${ index }` }
+										key={ index }
 									/>
-								</div>
-							</div>
 						);
 					} ) }
 				</>
 			) }
-			<div className="uagb-how-to-steps__wrap">
 				<RichText.Content
 					value={ stepsTitle }
 					tagName="h4"
 					className="uagb-howto-req-steps-text"
 				/>
 				<InnerBlocks.Content />
-			</div>
 		</div>
 	);
 }

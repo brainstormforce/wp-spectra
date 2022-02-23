@@ -2,6 +2,7 @@ import classnames from 'classnames';
 import { RichText } from '@wordpress/block-editor';
 import { __ } from '@wordpress/i18n';
 import React from 'react';
+import { useDeviceType } from '@Controls/getPreviewType';
 
 const Render = ( props ) => {
 	props = props.parentProps;
@@ -15,9 +16,9 @@ const Render = ( props ) => {
 		},
 		setAttributes,
 		className,
-		deviceType,
 	} = props;
 
+	const deviceType = useDeviceType();
 	const headingText = (
 		<RichText
 			tagName={ headingTag }

@@ -17,8 +17,8 @@ import { registerBlockType } from '@wordpress/blocks';
 
 // Register the block
 registerBlockType( 'uagb/post-carousel', {
-	title: uagb_blocks_info.blocks[ 'uagb/post-carousel' ].title,
-	description: uagb_blocks_info.blocks[ 'uagb/post-carousel' ].description,
+	title: __( 'Post Carousel', 'ultimate-addons-for-gutenberg' ),
+	description: __( 'This block fetches the blog posts you may have on your website and displays them in a carousel layout.', 'ultimate-addons-for-gutenberg' ),
 	icon: UAGB_Block_Icons.post_carousel,
 	category: uagb_blocks_info.category,
 	keywords: [

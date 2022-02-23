@@ -10,8 +10,13 @@
 		display: inline-block;
 	}
 
+	li.uagb-toc__list {
+		padding-top: 10px;
+	}
+
 	ul.uagb-toc__list,
 	ol.uagb-toc__list {
+
 		padding-left: 0;
 		margin-bottom: 0;
 		margin-left: 2.2em;
@@ -42,6 +47,11 @@
 		align-items: center;
 	}
 
+	.uagb-toc__title {
+		display: flex;
+		align-items: center;
+	}
+
 	.uagb-toc__is-collapsible.uagb-toc__title-wrap {
 		cursor: pointer;
 	}
@@ -49,6 +59,14 @@
 	.uag-toc__collapsible-wrap svg {
 		width: 20px;
 		height: 20px;
+	}
+
+	svg {
+		width: 20px;
+		height: 20px;
+		display: inline-block;
+		margin-left: 10px;
+		cursor: pointer;
 	}
 
 	.uag-toc__collapsible-wrap {

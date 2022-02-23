@@ -1,0 +1,18 @@
+/**
+ * #.# Styles
+ *
+ * CSS for both Frontend+Backend.
+ */
+
+.wp-block-uagb-star-rating {
+	display: flex;
+
+	.uag-star-rating__title {
+		margin: 0;
+	}
+
+	.uag-star {
+		color: #ccd6df;
+		display: inline-block;
+	}
+}

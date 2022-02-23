@@ -14,8 +14,8 @@ import { __ } from '@wordpress/i18n';
 import { registerBlockType } from '@wordpress/blocks';
 
 registerBlockType( 'uagb/icon-list', {
-	title: uagb_blocks_info.blocks[ 'uagb/icon-list' ].title,
-	description: uagb_blocks_info.blocks[ 'uagb/icon-list' ].description,
+	title: __( 'Icon List', 'ultimate-addons-for-gutenberg' ),
+	description: __( 'This block allows you to place an image or icon in a list format.', 'ultimate-addons-for-gutenberg' ),
 	icon: UAGB_Block_Icons.icon_list,
 	category: uagb_blocks_info.category,
 	keywords: [
@@ -30,12 +30,7 @@ registerBlockType( 'uagb/icon-list', {
 		innerBlocks: [
 			{
 				name: 'uagb/icon-list-child',
-				innerBlocks: [
-					{
-						name: 'uagb/icon-list-child',
-						attributes: { label: '#Label' },
-					},
-				],
+				attributes: { label: '#Label' },
 			},
 		],
 	},

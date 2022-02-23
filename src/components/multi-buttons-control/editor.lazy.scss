@@ -1,0 +1,74 @@
+/* Multi Button Gap */
+.uagb-multi-button-button-group {
+	display: flex;
+	width: 100%;
+
+	.uagb-multi-button {
+		width: 100%;
+		justify-content: center;
+		height: unset;
+		padding: 6px;
+		line-height: 14px;
+	}
+
+	button.uagb-multi-button.is-secondary {
+		box-shadow: inset 0 0 0 1px #8f9395;
+	}
+
+	.uagb-multi-button.is-secondary:hover:not(:disabled),
+	.uagb-multi-button-grou[aria-label="Gap"]
+	.uagb-multi-button.is-tertiary:hover:not(:disabled) {
+		color: #000;
+		box-shadow: inset 0 0 0 1px #8f9395;
+	}
+
+	.uagb-multi-button.is-secondary,
+	.uagb-multi-button.is-tertiary {
+		color: #000;
+	}
+
+	.uagb-multi-button.is-primary:focus:not(:disabled) {
+		box-shadow: unset;
+	}
+
+	.uagb-multi-button.is-secondary:active:not(:disabled),
+	.uagb-multi-button-grou[aria-label="Gap"]
+	.uagb-multi-button.is-tertiary:active:not(:disabled) {
+		background: #fff;
+		box-shadow: inset 0 0 0 1px #8f9395;
+	}
+
+	button.uagb-multi-button.is-primary.is-primary {
+		color: #fff;
+		background-color: #0085ba;
+		border-color: #0085ba;
+		box-shadow: inset 0 0 0 1px #0085ba;
+
+		svg {
+			fill: #fff;
+		}
+	}
+
+	button.uagb-multi-button {
+		font-size: 13px;
+		font-weight: 400;
+	}
+
+	svg {
+		width: 18px;
+		fill: #585858;
+	}
+}
+
+.uagb-multi-buttons-control {
+
+	.uagb-multi-buttons-control__label {
+		line-height: 1.4;
+		display: inline-block;
+		padding-bottom: 8px;
+	}
+
+	&.uag-multibutton-icons .uagb-multi-button {
+		padding: 3px;
+	}
+}

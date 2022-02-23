@@ -1,10 +1,10 @@
-const el = wp.element.createElement;
+import { createElement as el } from '@wordpress/element';
 
 const shapes = {
 	triangle: el(
 		'svg',
 		{
-			xmlns: 'http://www.w3.org/2000/svg',
+			xmlns: 'https://www.w3.org/2000/svg',
 			viewBox: '0 0 1000 100',
 			preserveAspectRatio: 'none',
 		},
@@ -16,7 +16,7 @@ const shapes = {
 	wave_brush: el(
 		'svg',
 		{
-			xmlns: 'http://www.w3.org/2000/svg',
+			xmlns: 'https://www.w3.org/2000/svg',
 			viewBox: '0 0 283.5 27.8',
 			preserveAspectRatio: 'none',
 		},
@@ -69,7 +69,7 @@ const shapes = {
 	tilt: el(
 		'svg',
 		{
-			xmlns: 'http://www.w3.org/2000/svg',
+			xmlns: 'https://www.w3.org/2000/svg',
 			viewBox: '0 0 1000 100',
 			preserveAspectRatio: 'none',
 		},
@@ -81,7 +81,7 @@ const shapes = {
 	mountains: el(
 		'svg',
 		{
-			xmlns: 'http://www.w3.org/2000/svg',
+			xmlns: 'https://www.w3.org/2000/svg',
 			viewBox: '0 0 1000 100',
 			preserveAspectRatio: 'none',
 		},
@@ -106,7 +106,7 @@ const shapes = {
 	waves: el(
 		'svg',
 		{
-			xmlns: 'http://www.w3.org/2000/svg',
+			xmlns: 'https://www.w3.org/2000/svg',
 			viewBox: '0 0 1000 100',
 			preserveAspectRatio: 'none',
 		},
@@ -119,7 +119,7 @@ const shapes = {
 	wave_pattern: el(
 		'svg',
 		{
-			xmlns: 'http://www.w3.org/2000/svg',
+			xmlns: 'https://www.w3.org/2000/svg',
 			viewBox: '0 0 1047.1 3.7',
 			preserveAspectRatio: 'xMidYMin slice',
 		},
@@ -132,7 +132,7 @@ const shapes = {
 	drops: el(
 		'svg',
 		{
-			xmlns: 'http://www.w3.org/2000/svg',
+			xmlns: 'https://www.w3.org/2000/svg',
 			viewBox: '0 0 283.5 27.8',
 			preserveAspectRatio: 'xMidYMax slice',
 		},
@@ -145,7 +145,7 @@ const shapes = {
 	clouds: el(
 		'svg',
 		{
-			xmlns: 'http://www.w3.org/2000/svg',
+			xmlns: 'https://www.w3.org/2000/svg',
 			viewBox: '0 0 283.5 27.8',
 			preserveAspectRatio: 'xMidYMax slice',
 		},
@@ -158,7 +158,7 @@ const shapes = {
 	zigzag: el(
 		'svg',
 		{
-			xmlns: 'http://www.w3.org/2000/svg',
+			xmlns: 'https://www.w3.org/2000/svg',
 			viewBox: '0 0 1800 5.8',
 			preserveAspectRatio: 'none',
 		},
@@ -171,7 +171,7 @@ const shapes = {
 	pyramids: el(
 		'svg',
 		{
-			xmlns: 'http://www.w3.org/2000/svg',
+			xmlns: 'https://www.w3.org/2000/svg',
 			viewBox: '0 0 1000 100',
 			preserveAspectRatio: 'none',
 		},
@@ -183,7 +183,7 @@ const shapes = {
 	triangle_asymmetrical: el(
 		'svg',
 		{
-			xmlns: 'http://www.w3.org/2000/svg',
+			xmlns: 'https://www.w3.org/2000/svg',
 			viewBox: '0 0 1000 100',
 			preserveAspectRatio: 'none',
 		},
@@ -195,7 +195,7 @@ const shapes = {
 	tilt_opacity: el(
 		'svg',
 		{
-			xmlns: 'http://www.w3.org/2000/svg',
+			xmlns: 'https://www.w3.org/2000/svg',
 			viewBox: '0 0 2600 131.1',
 			preserveAspectRatio: 'none',
 		},
@@ -217,7 +217,7 @@ const shapes = {
 	fan_opacity: el(
 		'svg',
 		{
-			xmlns: 'http://www.w3.org/2000/svg',
+			xmlns: 'https://www.w3.org/2000/svg',
 			viewBox: '0 0 283.5 19.6',
 			preserveAspectRatio: 'none',
 		},
@@ -244,7 +244,7 @@ const shapes = {
 	curve: el(
 		'svg',
 		{
-			xmlns: 'http://www.w3.org/2000/svg',
+			xmlns: 'https://www.w3.org/2000/svg',
 			viewBox: '0 0 1000 100',
 			preserveAspectRatio: 'none',
 		},
@@ -257,7 +257,7 @@ const shapes = {
 	curve_asymmetrical: el(
 		'svg',
 		{
-			xmlns: 'http://www.w3.org/2000/svg',
+			xmlns: 'https://www.w3.org/2000/svg',
 			viewBox: '0 0 1000 100',
 			preserveAspectRatio: 'none',
 		},
@@ -270,7 +270,7 @@ const shapes = {
 	arrow: el(
 		'svg',
 		{
-			xmlns: 'http://www.w3.org/2000/svg',
+			xmlns: 'https://www.w3.org/2000/svg',
 			viewBox: '0 0 700 10',
 			preserveAspectRatio: 'none',
 		},
@@ -282,7 +282,7 @@ const shapes = {
 	arrow_split: el(
 		'svg',
 		{
-			xmlns: 'http://www.w3.org/2000/svg',
+			xmlns: 'https://www.w3.org/2000/svg',
 			viewBox: '0 0 1000 20',
 			preserveAspectRatio: 'none',
 		},
@@ -295,7 +295,7 @@ const shapes = {
 	book: el(
 		'svg',
 		{
-			xmlns: 'http://www.w3.org/2000/svg',
+			xmlns: 'https://www.w3.org/2000/svg',
 			viewBox: '0 0 1000 100',
 			preserveAspectRatio: 'none',
 		},
@@ -308,7 +308,7 @@ const shapes = {
 	curve_reverse: el(
 		'svg',
 		{
-			xmlns: 'http://www.w3.org/2000/svg',
+			xmlns: 'https://www.w3.org/2000/svg',
 			viewBox: '0 0 937.5 120',
 			preserveAspectRatio: 'none',
 		},
@@ -321,7 +321,7 @@ const shapes = {
 	curve_asym_reverse: el(
 		'svg',
 		{
-			xmlns: 'http://www.w3.org/2000/svg',
+			xmlns: 'https://www.w3.org/2000/svg',
 			viewBox: '0 0 937.5 120',
 			preserveAspectRatio: 'none',
 		},

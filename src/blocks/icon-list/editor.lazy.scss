@@ -6,12 +6,8 @@
 	color: #3a3a3a;
 }
 
-#wpwrap .uagb-icon-list__outer-wrap .uagb-icon-list__label-wrap {
+#wpwrap .wp-block-uagb-icon-list .wp-block-uagb-icon-list-child  span {
 	cursor: text;
-}
-
-[data-type="uagb/icon-list"] .uagb-icon-list__layout-horizontal .block-editor-inner-blocks > .block-editor-block-list__layout {
-	display: flex;
 }
 
 [data-type="uagb/icon-list"] .block-editor-inner-blocks > .block-editor-block-list__layout > .wp-block {

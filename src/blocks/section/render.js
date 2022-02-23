@@ -2,6 +2,7 @@ import classnames from 'classnames';
 import React, { useLayoutEffect } from 'react';
 import { InnerBlocks } from '@wordpress/block-editor';
 import styles from './editor.lazy.scss';
+import { useDeviceType } from '@Controls/getPreviewType';
 
 const Render = ( props ) => {
 	// Add and remove the CSS on the drop and remove of the component.
@@ -13,8 +14,8 @@ const Render = ( props ) => {
 	}, [] );
 
 	props = props.parentProps;
-
-	const { attributes, isSelected, className, deviceType } = props;
+	const deviceType = useDeviceType();
+	const { attributes, isSelected, className } = props;
 
 	const {
 		align,
@@ -29,8 +30,8 @@ const Render = ( props ) => {
 	const active = isSelected ? 'active' : 'not-active';
 
 	let blockControlsClass = '';
-	if ( 'full_width' == contentWidth ) {
-		if ( align == 'wide' || align == 'full' ) {
+	if ( 'full_width' === contentWidth ) {
+		if ( align === 'wide' || align === 'full' ) {
 			blockControlsClass = 'align' + align;
 		}
 	}
@@ -49,7 +50,7 @@ const Render = ( props ) => {
 				) }
 			>
 				<div className="uagb-section__overlay"></div>
-				{ 'video' == backgroundType && (
+				{ 'video' === backgroundType && (
 					<div className="uagb-section__video-wrap">
 						{ backgroundVideo && (
 							<video autoPlay loop muted playsinline>

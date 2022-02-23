@@ -3,9 +3,11 @@
  */
 
 import styling from './styling';
-$ = jQuery;
+import jQuery from 'jquery';
 import React, { lazy, useEffect, Suspense } from 'react';
 import lazyLoader from '@Controls/lazy-loader';
+import { useDeviceType } from '@Controls/getPreviewType';
+import addBlockEditorDynamicStyles from '@Controls/addBlockEditorDynamicStyles';
 
 const Settings = lazy( () =>
 	import(
@@ -22,6 +24,9 @@ import { withSelect } from '@wordpress/data';
 import { compose } from '@wordpress/compose';
 
 const UAGBTableOfContentsEdit = ( props ) => {
+
+	const deviceType = useDeviceType();
+
 	useEffect( () => {
 		// Assigning block_id in the attribute.
 		props.setAttributes( { block_id: props.clientId.substr( 0, 8 ) } );
@@ -32,9 +37,9 @@ const UAGBTableOfContentsEdit = ( props ) => {
 
 		// Pushing Scroll To Top div
 		const scrollToTopSvg =
-			'<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Layer_1" x="0px" y="0px" width="26px" height="16.043px" viewBox="57 35.171 26 16.043" enable-background="new 57 35.171 26 16.043" xml:space="preserve"><path d="M57.5,38.193l12.5,12.5l12.5-12.5l-2.5-2.5l-10,10l-10-10L57.5,38.193z"/></svg>';
+			'<svg xmlns="https://www.w3.org/2000/svg" xmlns:xlink="https://www.w3.org/1999/xlink" version="1.1" id="Layer_1" x="0px" y="0px" width="26px" height="16.043px" viewBox="57 35.171 26 16.043" enable-background="new 57 35.171 26 16.043" xml:space="preserve"><path d="M57.5,38.193l12.5,12.5l12.5-12.5l-2.5-2.5l-10,10l-10-10L57.5,38.193z"/></svg>';
 
-		if ( 0 == scroll_element.length ) {
+		if ( 0 === scroll_element.length ) {
 			jQuery( 'body' ).append(
 				'<div class="uagb-toc__scroll-top"> ' +
 					scrollToTopSvg +
@@ -43,31 +48,176 @@ const UAGBTableOfContentsEdit = ( props ) => {
 		}
 
 		// Pushing Style tag for this block css.
-		const $style = document.createElement( 'style' );
-		$style.setAttribute(
-			'id',
-			'uagb-style-toc-' + props.clientId.substr( 0, 8 )
-		);
-		document.head.appendChild( $style );
 		if ( props.attributes.heading && '' !== props.attributes.heading ) {
 			props.setAttributes( { headingTitle: props.attributes.heading } );
+		}
+
+		const { attributes, setAttributes } = props;
+		const {
+			vPaddingDesktop,
+			vPaddingTablet,
+			vPaddingMobile,
+			hPaddingDesktop,
+			hPaddingTablet,
+			hPaddingMobile,
+			vMarginDesktop,
+			vMarginTablet,
+			vMarginMobile,
+			hMarginDesktop,
+			hMarginTablet,
+			hMarginMobile,
+			topMargin,
+			rightMargin,
+			bottomMargin,
+			leftMargin,
+			topMarginTablet,
+			rightMarginTablet,
+			bottomMarginTablet,
+			leftMarginTablet,
+			topMarginMobile,
+			rightMarginMobile,
+			bottomMarginMobile,
+			leftMarginMobile,
+			topPadding,
+			rightPadding,
+			bottomPadding,
+			leftPadding,
+			topPaddingTablet,
+			rightPaddingTablet,
+			bottomPaddingTablet,
+			leftPaddingTablet,
+			topPaddingMobile,
+			rightPaddingMobile,
+			bottomPaddingMobile,
+			leftPaddingMobile,
+		} = attributes;
+
+		//Padding
+		if ( vPaddingDesktop ) {
+			if ( undefined === topPadding ) {
+				setAttributes( { topPadding: vPaddingDesktop } );
+			}
+			if ( undefined === bottomPadding ) {
+				setAttributes( { bottomPadding: vPaddingDesktop } );
+			}
+		}
+		
+		if ( hPaddingDesktop ) {
+			if ( undefined === rightPadding ) {
+				setAttributes( { rightPadding: hPaddingDesktop } );
+			}
+			if ( undefined === leftPadding ) {
+				setAttributes( { leftPadding: hPaddingDesktop } );
+			}
+		}
+
+		if ( vPaddingMobile ) {
+			if ( undefined === topPaddingMobile ) {
+				setAttributes( { topPaddingMobile: vPaddingMobile } );
+			}
+			if ( undefined === bottomPaddingMobile ) {
+				setAttributes( { bottomPaddingMobile: vPaddingMobile } );
+			}
+		}
+		if ( hPaddingMobile ) {
+			if ( undefined === rightPaddingMobile ) {
+				setAttributes( { rightPaddingMobile: hPaddingMobile } );
+			}
+			if ( undefined === leftPaddingMobile ) {
+				setAttributes( { leftPaddingMobile: hPaddingMobile } );
+			}
+		}
+
+		if ( vPaddingTablet ) {
+			if ( undefined === topPaddingTablet ) {
+				setAttributes( { topPaddingTablet: vPaddingTablet } );
+			}
+			if ( undefined === bottomPaddingTablet ) {
+				setAttributes( { bottomPaddingTablet: vPaddingTablet } );
+			}
+		}
+		if ( hPaddingTablet ) {
+			if ( undefined === rightPaddingTablet ) {
+				setAttributes( { rightPaddingTablet: hPaddingTablet } );
+			}
+			if ( undefined === leftPaddingTablet ) {
+				setAttributes( { leftPaddingTablet: hPaddingTablet } );
+			}
+		}
+
+		//Margin
+		if ( vMarginDesktop ) {
+			if ( ! topMargin ) {
+				setAttributes( { topMargin: vMarginDesktop } );
+			}
+			if ( ! bottomMargin ) {
+				setAttributes( { bottomMargin: vMarginDesktop } );
+			}
+		}
+		if ( hMarginDesktop ) {
+			if ( ! rightMargin ) {
+				setAttributes( { rightMargin: hMarginDesktop } );
+			}
+			if ( ! leftMargin ) {
+				setAttributes( { leftMargin: hMarginDesktop } );
+			}
+		}
+
+		if ( vMarginMobile ) {
+			if ( ! topMarginMobile ) {
+				setAttributes( { topMarginMobile: vMarginMobile } );
+			}
+			if ( ! bottomMarginMobile ) {
+				setAttributes( { bottomMarginMobile: vMarginMobile } );
+			}
+		}
+		if ( hMarginMobile ) {
+			if ( ! rightMarginMobile ) {
+				setAttributes( { rightMarginMobile: hMarginMobile } );
+			}
+			if ( ! leftMarginMobile ) {
+				setAttributes( { leftMarginMobile: hMarginMobile } );
+			}
+		}
+
+		if ( vMarginTablet ) {
+			if ( ! topMarginTablet ) {
+				setAttributes( { topMarginTablet: vMarginTablet } );
+			}
+			if ( ! bottomMarginTablet ) {
+				setAttributes( { bottomMarginTablet: vMarginTablet } );
+			}
+		}
+		if ( hMarginTablet ) {
+			if ( ! rightMarginTablet ) {
+				setAttributes( { rightMarginTablet: hMarginTablet } );
+			}
+			if ( ! leftMarginTablet ) {
+				setAttributes( { leftMarginTablet: hMarginTablet } );
+			}
 		}
 	}, [] );
 
 	useEffect( () => {
-		const element = document.getElementById(
-			'uagb-style-toc-' + props.clientId.substr( 0, 8 )
-		);
+		// Replacement for componentDidUpdate.
+		const blockStyling = styling( props );
 
-		if ( null !== element && undefined !== element ) {
-			element.innerHTML = styling( props );
-		}
+		addBlockEditorDynamicStyles( 'uagb-style-toc-' + props.clientId.substr( 0, 8 ), blockStyling );
+		
 	}, [ props ] );
+
+	useEffect( () => {
+		// Replacement for componentDidUpdate.
+		const blockStyling = styling( props );
+
+		addBlockEditorDynamicStyles( 'uagb-style-toc-' + props.clientId.substr( 0, 8 ), blockStyling );
+		
+	}, [ deviceType ] );
 
 	const { scrollToTop } = props.attributes;
 
 	const scrollElement = jQuery( '.uagb-toc__scroll-top' );
-	if ( null != scrollElement && 'undefined' !== scrollElement ) {
+	if ( null !== scrollElement && 'undefined' !== scrollElement ) {
 		if ( scrollToTop ) {
 			scrollElement.addClass( 'uagb-toc__show-scroll' );
 		} else {
@@ -84,14 +234,7 @@ const UAGBTableOfContentsEdit = ( props ) => {
 };
 
 export default compose(
-	withSelect( ( select ) => {
-		const { __experimentalGetPreviewDeviceType = null } = select(
-			'core/edit-post'
-		);
-
-		const deviceType = __experimentalGetPreviewDeviceType
-			? __experimentalGetPreviewDeviceType()
-			: null;
+	withSelect( () => {
 
 		const parseTocSlug = ( slug ) => {
 			// If not have the element then return false!
@@ -118,13 +261,13 @@ export default compose(
 
 		let level = 0;
 
-		const headerArray = $( 'div.is-root-container' ).find(
+		const headerArray = jQuery( 'div.is-root-container' ).find(
 			'h1, h2, h3, h4, h5, h6'
 		);
 		const headers = [];
-		if ( headerArray != 'undefined' ) {
+		if ( headerArray !== 'undefined' ) {
 			headerArray.each( function ( index, value ) {
-				const header = $( this );
+				const header = jQuery( this );
 				let excludeHeading;
 
 				if ( value.className.includes( 'uagb-toc-hide-heading' ) ) {
@@ -174,7 +317,6 @@ export default compose(
 		}
 
 		return {
-			deviceType,
 			headers,
 		};
 	} )

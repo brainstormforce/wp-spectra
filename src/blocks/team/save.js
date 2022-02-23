@@ -62,20 +62,13 @@ export default function save( props ) {
 
 	let image_html = '';
 
-	if ( '' != img_url ) {
+	if ( '' !== img_url ) {
 		image_html = (
-			<div
-				className={ classnames(
-					'uagb-team__image-wrap',
-					`uagb-team__image-crop-${ imgStyle }`
-				) }
-			>
 				<img
-					className=""
+					className={`uagb-team__image-crop-${ imgStyle }`}
 					src={ img_url }
 					alt={ image.alt ? image.alt : '' }
 				/>
-			</div>
 		);
 	}
 
@@ -83,21 +76,16 @@ export default function save( props ) {
 		<div
 			className={ classnames(
 				props.className,
-				'uagb-team',
-				'uagb-team__outer-wrap',
 				`uagb-team__image-position-${ imgPosition }`,
 				`uagb-team__align-${ align }`,
 				`uagb-team__stack-${ stack }`,
 				`uagb-block-${ block_id }`
 			) }
 		>
-			<div className="uagb-team__wrap">
-				{ imgPosition == 'left' && image_html }
+				{ imgPosition === 'left' && image_html }
 
 				<div className="uagb-team__content">
-					{ imgPosition == 'above' && image_html }
-
-					<div className="uagb-team__title-wrap">
+					{ imgPosition === 'above' && image_html }
 						<RichText.Content
 							tagName={ tag }
 							value={ title }
@@ -108,49 +96,42 @@ export default function save( props ) {
 							value={ prefix }
 							className="uagb-team__prefix"
 						/>
-					</div>
-
-					<div className="uagb-team__desc-wrap">
 						<RichText.Content
 							tagName="p"
 							value={ description_text }
 							className="uagb-team__desc"
 						/>
-					</div>
 					{ socialEnable && (
-						<div className="uagb-team__social-icon-wrap">
 							<ul className="uagb-team__social-list">
-								{ '' != twitterIcon &&
+								{ '' !== twitterIcon &&
 									social_html(
 										twitterIcon,
 										twitterLink,
 										socialTarget
 									) }
-								{ '' != fbIcon &&
+								{ '' !== fbIcon &&
 									social_html(
 										fbIcon,
 										fbLink,
 										socialTarget
 									) }
-								{ '' != linkedinIcon &&
+								{ '' !== linkedinIcon &&
 									social_html(
 										linkedinIcon,
 										linkedinLink,
 										socialTarget
 									) }
-								{ '' != pinIcon &&
+								{ '' !== pinIcon &&
 									social_html(
 										pinIcon,
 										pinLink,
 										socialTarget
 									) }
 							</ul>
-						</div>
 					) }
 				</div>
 
-				{ imgPosition == 'right' && image_html }
-			</div>
+				{ imgPosition === 'right' && image_html }
 		</div>
 	);
 }

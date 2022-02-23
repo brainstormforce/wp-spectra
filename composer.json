@@ -6,10 +6,32 @@
     "wp-coding-standards/wpcs": "^2.2",
     "dealerdirect/phpcodesniffer-composer-installer": "^0.7.1",
     "phpcompatibility/php-compatibility": "^9.3",
-    "wp-cli/wp-cli-bundle": "^2.5"
+    "wp-cli/wp-cli-bundle": "^2.5",
+    "phpunit/phpunit": "^8",
+    "yoast/phpunit-polyfills": "^1"
   },
   "scripts": {
     "format": "phpcbf",
-    "lint": "phpcs"
+    "lint": "phpcs",
+    "test": "vendor/bin/phpunit"
+  },
+  "require": {
+    "brainstormforce/astra-notices": "^1.1",
+    "brainstormforce/gutenberg-templates": "^1"
+  },
+	"repositories": [
+		{
+      "name": "brainstormforce/gutenberg-templates",
+		  "type": "vcs",
+		  "url": "git@github.com:brainstormforce/gutenberg-templates.git"
+		}
+	],
+  "extra": {
+    "installer-paths": {
+        "lib/{$name}/": [
+            "brainstormforce/astra-notices",
+            "brainstormforce/gutenberg-templates"
+        ]
+    }
   }
 }

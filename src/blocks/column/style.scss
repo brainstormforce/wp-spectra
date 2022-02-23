@@ -18,8 +18,9 @@
 	overflow: hidden;
 
 	> * {
-		z-index: 2;
-		padding: 5px;
+		z-index: 1;
+		width: 100%;
+		position: relative;
 	}
 
 	&.uagb-column__align-left {

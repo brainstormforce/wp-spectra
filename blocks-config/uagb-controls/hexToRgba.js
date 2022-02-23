@@ -6,11 +6,11 @@
  */
 
 function hexToRgba( color, opacity ) {
-	if ( undefined == color ) {
+	if ( ! color ) {
 		return '';
 	}
 
-	if ( undefined == opacity || '' == opacity ) {
+	if ( ! opacity || '' === opacity ) {
 		opacity = 100;
 	}
 
@@ -33,18 +33,22 @@ function hexToRgba( color, opacity ) {
 				b: parseInt( result[ 3 ], 16 ),
 		  }
 		: null;
+	
+	if ( parsed_color ) {
+		return (
+			'rgba(' +
+			parsed_color.r +
+			',' +
+			parsed_color.g +
+			',' +
+			parsed_color.b +
+			',' +
+			opacity +
+			')'
+		);
+	}
 
-	return (
-		'rgba(' +
-		parsed_color.r +
-		',' +
-		parsed_color.g +
-		',' +
-		parsed_color.b +
-		',' +
-		opacity +
-		')'
-	);
+	return '';
 }
 
 export default hexToRgba;

@@ -1,7 +1,7 @@
 export const PostExcerpt = ( props ) => {
 	const { post, attributes } = props;
-
-	if ( post.uagb_excerpt == undefined ) {
+	
+	if ( null === post.uagb_excerpt ) {
 		return null;
 	}
 
@@ -21,28 +21,24 @@ export const PostExcerpt = ( props ) => {
 
 	if (
 		attributes.displayPostExcerpt &&
-		attributes.displayPostContentRadio == 'excerpt'
+		attributes.displayPostContentRadio === 'excerpt'
 	) {
 		return (
-			<div className="uagb-post__text">
-				<div className="uagb-post__excerpt">
-					<div dangerouslySetInnerHTML={ { __html: excerpt } } />
-				</div>
+			<div className="uagb-post__excerpt uagb-post__text">
+				<div dangerouslySetInnerHTML={ { __html: excerpt } } />
 			</div>
 		);
 	} else if (
 		attributes.displayPostExcerpt &&
-		attributes.displayPostContentRadio == 'full_post'
+		attributes.displayPostContentRadio === 'full_post'
 	) {
 		return (
-			<div className="uagb-post__text">
-				<div className="uagb-post__excerpt uagb-full_post">
-					<div
-						dangerouslySetInnerHTML={ {
-							__html: post.content.raw.trim(),
-						} }
-					/>
-				</div>
+			<div className="uagb-post__excerpt uagb-full_post uagb-post__text">
+				<div
+					dangerouslySetInnerHTML={ {
+						__html: post.content.raw.trim(),
+					} }
+				/>
 			</div>
 		);
 	}

@@ -16,7 +16,6 @@ const FeaturedImage = ( props ) => {
 			target = '_blank';
 		}
 		return (
-			<div className="uagb-timeline__image">
 				<a
 					href={ post.link }
 					target={ target }
@@ -24,6 +23,7 @@ const FeaturedImage = ( props ) => {
 					style={ {
 						textAlign: attributes.align,
 					} }
+					className="uagb-timeline__image"
 				>
 					<img
 						src={ src[ 0 ] }
@@ -33,7 +33,6 @@ const FeaturedImage = ( props ) => {
 						}
 					/>
 				</a>
-			</div>
 		);
 	}
 	return null;

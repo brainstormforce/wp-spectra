@@ -25,16 +25,20 @@ const attributes = {
 	textAlign: {
 		type: 'string',
 		default: 'left',
+		isUAGStyle: true,
 	},
 	titleColor: {
 		type: 'string',
+		isUAGStyle: true,
 	},
 	descColor: {
 		type: 'string',
+		isUAGStyle: true,
 	},
 	ctaPosition: {
 		type: 'string',
 		default: 'right',
+		isUAGStyle: true,
 	},
 	titleTag: {
 		type: 'string',
@@ -42,91 +46,135 @@ const attributes = {
 	},
 	titleFontSize: {
 		type: 'number',
+		isUAGStyle: true,
 	},
 	titleFontSizeType: {
 		type: 'string',
 		default: 'px',
+		isUAGStyle: true,
 	},
 	titleFontSizeMobile: {
 		type: 'number',
+		isUAGStyle: true,
 	},
 	titleFontSizeTablet: {
 		type: 'number',
+		isUAGStyle: true,
 	},
 	titleFontFamily: {
 		type: 'string',
+		isUAGStyle: true,
 		default: 'Default',
 	},
 	titleFontWeight: {
 		type: 'string',
+		isUAGStyle: true,
 	},
-	titleFontSubset: {
+	titleFontStyle: {
 		type: 'string',
+		default: 'normal',
+		isUAGStyle: true,
+	},
+	titleTransform: {
+		type: 'string',
+		isUAGStyle: true,
+	},
+	titleDecoration: {
+		type: 'string',
+		isUAGStyle: true,
 	},
 	titleLineHeightType: {
 		type: 'string',
 		default: 'em',
+		isUAGStyle: true,
 	},
 	titleLineHeight: {
 		type: 'number',
+		isUAGStyle: true,
 	},
 	titleLineHeightTablet: {
 		type: 'number',
+		isUAGStyle: true,
 	},
 	titleLineHeightMobile: {
 		type: 'number',
+		isUAGStyle: true,
 	},
 	titleLoadGoogleFonts: {
 		type: 'boolean',
 		default: false,
+		isUAGStyle: true,
 	},
 	descFontSize: {
 		type: 'number',
+		isUAGStyle: true,
 	},
 	descFontSizeType: {
 		type: 'string',
 		default: 'px',
+		isUAGStyle: true,
 	},
 	descFontSizeMobile: {
 		type: 'number',
+		isUAGStyle: true,
 	},
 	descFontSizeTablet: {
 		type: 'number',
+		isUAGStyle: true,
 	},
 	descFontFamily: {
 		type: 'string',
 		default: 'Default',
+		isUAGStyle: true,
 	},
 	descFontWeight: {
 		type: 'string',
+		isUAGStyle: true,
 	},
-	descFontSubset: {
+	descFontStyle: {
 		type: 'string',
+		default: 'normal',
+		isUAGStyle: true,
+	},
+	descTransform: {
+		type: 'string',
+		isUAGStyle: true,
+	},
+	descDecoration: {
+		type: 'string',
+		isUAGStyle: true,
 	},
 	descLineHeightType: {
 		type: 'string',
 		default: 'em',
+		isUAGStyle: true,
 	},
 	descLineHeight: {
 		type: 'number',
+		isUAGStyle: true,
 	},
 	descLineHeightTablet: {
 		type: 'number',
+		isUAGStyle: true,
 	},
 	descLineHeightMobile: {
 		type: 'number',
+		isUAGStyle: true,
 	},
 	descLoadGoogleFonts: {
 		type: 'boolean',
 		default: false,
+		isUAGStyle: true,
 	},
 	titleSpace: {
 		type: 'number',
 		default: 10,
+		isUAGStyle: true,
 	},
 	descSpace: {
 		type: 'number',
 		default: 10,
+		isUAGStyle: true,
 	},
 	block_id: {
 		type: 'string',
@@ -135,6 +183,7 @@ const attributes = {
 	buttonAlign: {
 		type: 'string',
 		default: 'middle',
+		isUAGStyle: true,
 	},
 	ctaTarget: {
 		type: 'boolean',
@@ -151,6 +200,7 @@ const attributes = {
 	ctaIconSpace: {
 		type: 'number',
 		default: 5,
+		isUAGStyle: true,
 	},
 	ctaType: {
 		type: 'string',
@@ -166,78 +216,106 @@ const attributes = {
 	},
 	ctaFontSize: {
 		type: 'number',
+		isUAGStyle: true,
+		default: 14
 	},
 	ctaFontSizeType: {
 		type: 'string',
 		default: 'px',
+		isUAGStyle: true,
 	},
 	ctaFontSizeMobile: {
 		type: 'number',
+		isUAGStyle: true,
 	},
 	ctaFontSizeTablet: {
 		type: 'number',
+		isUAGStyle: true,
 	},
 	ctaFontFamily: {
 		type: 'string',
+		isUAGStyle: true,
 		default: 'Default',
 	},
 	ctaFontWeight: {
 		type: 'string',
+		isUAGStyle: true,
 	},
-	ctaFontSubset: {
+	ctaFontStyle: {
 		type: 'string',
+		isUAGStyle: true,
+		default: 'normal',
+	},
+	ctaTransform: {
+		type: 'string',
+		isUAGStyle: true,
+	},
+	ctaDecoration: {
+		type: 'string',
+		isUAGStyle: true,
 	},
 	ctaLoadGoogleFonts: {
 		type: 'boolean',
 		default: false,
+		isUAGStyle: true,
 	},
 	contentWidth: {
 		type: 'number',
 		default: '70',
+		isUAGStyle: true,
 	},
 	ctaBtnLinkColor: {
 		type: 'string',
-		default: '#333',
+		isUAGStyle: true,
 	},
 	ctaLinkHoverColor: {
 		type: 'string',
 		default: '',
+		isUAGStyle: true,
 	},
 	ctaBgColor: {
 		type: 'string',
-		default: 'transparent',
+		default: '',
+		isUAGStyle: true,
 	},
 	ctaBgHoverColor: {
 		type: 'string',
-		default: 'transparent',
+		default: '',
+		isUAGStyle: true,
 	},
 	ctaBorderColor: {
 		type: 'string',
-		default: '#333',
+		isUAGStyle: true,
 	},
 	ctaBorderhoverColor: {
 		type: 'string',
+		isUAGStyle: true,
 		default: '',
 	},
 	ctaBorderStyle: {
 		type: 'string',
-		default: 'solid',
+		isUAGStyle: true,
+		default: 'none',
 	},
 	ctaBtnVertPadding: {
 		type: 'number',
-		default: 10,
+		isUAGStyle: true,
+		default: '',
 	},
 	ctaBtnHrPadding: {
 		type: 'number',
-		default: 14,
+		isUAGStyle: true,
+		default: '',
 	},
 	ctaBorderWidth: {
 		type: 'number',
-		default: 1,
+		isUAGStyle: true,
+		default: '',
 	},
 	ctaBorderRadius: {
 		type: 'number',
-		default: 0,
+		isUAGStyle: true,
+		default: '',
 	},
 	stack: {
 		type: 'string',
@@ -245,11 +323,80 @@ const attributes = {
 	},
 	ctaLeftSpace: {
 		type: 'number',
+		isUAGStyle: true,
 		default: 5,
 	},
 	ctaRightSpace: {
 		type: 'number',
 		default: 5,
+		isUAGStyle: true,
+	},
+	ctaTopPadding: {
+		type: 'number',
+		isUAGStyle: true,
+	},
+	ctaBottomPadding: {
+		type: 'number',
+		isUAGStyle: true,
+	},
+	ctaLeftPadding: {
+		type: 'number',
+		isUAGStyle: true,
+	},
+	ctaRightPadding: {
+		type: 'number',
+		isUAGStyle: true,
+	},
+	ctaLeftPaddingTablet: {
+		type: 'number',
+		isUAGStyle: true,
+	},
+	ctaRightPaddingTablet: {
+		type: 'number',
+		isUAGStyle: true,
+	},
+	ctaTopPaddingTablet: {
+		type: 'number',
+		isUAGStyle: true,
+	},
+	ctaBottomPaddingTablet: {
+		type: 'number',
+		isUAGStyle: true,
+	},
+	ctaLeftPaddingMobile: {
+		type: 'number',
+		isUAGStyle: true,
+	},
+	ctaRightPaddingMobile: {
+		type: 'number',
+		isUAGStyle: true,
+	},
+	ctaTopPaddingMobile: {
+		type: 'number',
+		isUAGStyle: true,
+	},
+	ctaBottomPaddingMobile: {
+		type: 'number',
+		isUAGStyle: true,
+	},
+	ctaPaddingUnit: {
+		type: 'string',
+		default: 'px',
+		isUAGStyle: true,
+	},
+	mobileCTAPaddingUnit: {
+		type: 'string',
+		default: 'px',
+		isUAGStyle: true,
+	},
+	tabletCTAPaddingUnit: {
+		type: 'string',
+		default: 'px',
+		isUAGStyle: true,
+	},
+	ctaPaddingLink: {
+		type: 'boolean',
+		default: false,
 	},
 };
 

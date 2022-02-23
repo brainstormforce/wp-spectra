@@ -33,7 +33,7 @@ const Settings = ( props ) => {
 	let loadExcerptGoogleFonts;
 	let loadCtaGoogleFonts;
 
-	if ( titleLoadGoogleFonts == true ) {
+	if ( titleLoadGoogleFonts === true ) {
 		const titleconfig = {
 			google: {
 				families: [
@@ -48,7 +48,7 @@ const Settings = ( props ) => {
 		);
 	}
 
-	if ( metaLoadGoogleFonts == true ) {
+	if ( metaLoadGoogleFonts === true ) {
 		const metaconfig = {
 			google: {
 				families: [
@@ -63,7 +63,7 @@ const Settings = ( props ) => {
 		);
 	}
 
-	if ( excerptLoadGoogleFonts == true ) {
+	if ( excerptLoadGoogleFonts === true ) {
 		const excerptconfig = {
 			google: {
 				families: [
@@ -78,7 +78,7 @@ const Settings = ( props ) => {
 		);
 	}
 
-	if ( ctaLoadGoogleFonts == true ) {
+	if ( ctaLoadGoogleFonts === true ) {
 		const ctaconfig = {
 			google: {
 				families: [
@@ -116,7 +116,7 @@ const Settings = ( props ) => {
 		{ value: '', label: __( 'All', 'ultimate-addons-for-gutenberg' ) },
 	];
 
-	if ( '' != taxonomyList ) {
+	if ( '' !== taxonomyList ) {
 		Object.keys( taxonomyList ).map( ( item ) => {
 			return taxonomyListOptions.push( {
 				value: taxonomyList[ item ].name,
@@ -125,7 +125,7 @@ const Settings = ( props ) => {
 		} );
 	}
 
-	if ( '' != categoriesList ) {
+	if ( '' !== categoriesList ) {
 		Object.keys( categoriesList ).map( ( item ) => {
 			return categoryListOptions.push( {
 				value: categoriesList[ item ].id,

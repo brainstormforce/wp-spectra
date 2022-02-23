@@ -2,6 +2,7 @@ import classnames from 'classnames';
 import React, { useCallback, useLayoutEffect } from 'react';
 import { __ } from '@wordpress/i18n';
 import styles from './editor.lazy.scss';
+import { useDeviceType } from '@Controls/getPreviewType';
 
 const ALLOWED_BLOCKS = [
 	'uagb/forms-name',
@@ -31,6 +32,8 @@ const Render = ( props ) => {
 
 	props = props.parentProps;
 
+	const deviceType = useDeviceType();
+
 	const { attributes, setAttributes } = props;
 	const {
 		block_id,
@@ -51,7 +54,7 @@ const Render = ( props ) => {
 		return (
 			<button
 				onClick={ onSubmitClick }
-				className="uagb-forms-main-submit-button"
+				className="uagb-forms-main-submit-button wp-block-button__link"
 			>
 				<RichText
 					tagName="div"
@@ -83,7 +86,8 @@ const Render = ( props ) => {
 				className={ classnames(
 					'uagb-forms__outer-wrap',
 					`uagb-block-${ block_id }`,
-					`uagb-forms__${ buttonSize }-btn`
+					`uagb-forms__${ buttonSize }-btn`,
+					`uagb-editor-preview-mode-${ deviceType.toLowerCase() }`
 				) }
 			>
 				<form
@@ -126,7 +130,7 @@ const Render = ( props ) => {
 							</>
 						) }
 
-					<div className="uagb-forms-main-submit-button-wrap">
+					<div className="uagb-forms-main-submit-button-wrap wp-block-button">
 						{ renderButtonHtml() }
 					</div>
 				</form>

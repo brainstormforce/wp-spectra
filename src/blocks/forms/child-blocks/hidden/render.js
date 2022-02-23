@@ -39,11 +39,12 @@ const Render = ( props ) => {
 					<>
 						<label
 							className={ `uagb-forms-hidden-label uagb-form-hidden-${ hidden_field_label }` }
-							id=""
+							htmlFor={ hidden_field_label }
 						>
 							{ hidden_field_name }
 						</label>
 						<input
+						    id={ hidden_field_label }
 							type="hidden"
 							className="uagb-forms-hidden-input"
 							value={ hidden_field_value }

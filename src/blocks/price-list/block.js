@@ -48,8 +48,8 @@ const withPriceList = createHigherOrderComponent( ( BlockEdit ) => {
 
 registerBlockType( 'uagb/restaurant-menu', {
 	// Block name. Block names must be string that contains a namespace prefix. Example: my-plugin/my-custom-block.
-	title: uagb_blocks_info.blocks[ 'uagb/restaurant-menu' ].title, // Block title.
-	description: uagb_blocks_info.blocks[ 'uagb/restaurant-menu' ].description, // Block description.
+	title: __( 'Price List', 'ultimate-addons-for-gutenberg' ), // Block title.
+	description: __( 'This block allows you to add attractive Price List.', 'ultimate-addons-for-gutenberg' ), // Block description.
 	icon: UAGB_Block_Icons.restaurant_menu, // Block icon from Dashicons → https://developer.wordpress.org/resource/dashicons/.
 	keywords: [ __( 'pricelist' ), __( 'menu' ), __( 'uag' ) ],
 	example: {},

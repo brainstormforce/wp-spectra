@@ -8,8 +8,7 @@ import classnames from 'classnames';
 // Import icon.
 import Title from './components/Title';
 import Description from './components/Description';
-import CtaPositionClasses from './classes';
-import CTA from './components/CTA';
+import CTA from './components/CallToActionNew';
 
 export default function save( props ) {
 	const {
@@ -18,11 +17,10 @@ export default function save( props ) {
 		ctaType,
 		ctaLink,
 		ctaTarget,
-		className,
 		ctaTitle,
 		description,
+		stack
 	} = props.attributes;
-
 	const isCta = (
 		<CTA attributes={ props.attributes } setAttributes="not_set" />
 	);
@@ -31,12 +29,10 @@ export default function save( props ) {
 	const desc = (
 		<>
 			{ '' !== description && (
-				<div className="uagb-cta-text-wrap">
-					<Description
-						attributes={ props.attributes }
-						setAttributes="not_set"
-					/>
-				</div>
+				<Description
+					attributes={ props.attributes }
+					setAttributes="not_set"
+				/>
 			) }
 		</>
 	);
@@ -45,53 +41,34 @@ export default function save( props ) {
 	const titleText = (
 		<>
 			{ '' !== ctaTitle && (
-				<div className="uagb-cta__title-wrap">
-					<Title
-						attributes={ props.attributes }
-						setAttributes="not_set"
-					/>
-				</div>
+				<Title
+					attributes={ props.attributes }
+					setAttributes="not_set"
+				/>
 			) }
 		</>
 	);
 
 	const output = (
-		<div
-			className={ classnames(
-				'uagb-cta__content-wrap',
-				...CtaPositionClasses( props.attributes )
+		<>
+			{ ctaPosition === 'below-title' && (
+				<>
+					{ titleText }
+					{ desc }
+					{ isCta }
+				</>
 			) }
-		>
-			<div className="uagb-cta__left-right-wrap">
-				{ ctaPosition == 'left' && isCta }
-				<div className="uagb-cta__content">
-					{ ctaPosition == 'above-title' && (
-						<>
-							{ isCta }
-							{ titleText }
-							{ desc }
-						</>
-					) }
 
-					{ ctaPosition == 'below-title' && (
-						<>
-							{ titleText }
-							{ desc }
-							{ isCta }
-						</>
-					) }
-
-					{ ( ctaPosition == 'left' || ctaPosition == 'right' ) && (
-						<>
-							{ titleText }
-							{ desc }
-						</>
-					) }
-				</div>
-
-				{ ctaPosition == 'right' && isCta }
-			</div>
-		</div>
+			{ ( ctaPosition === 'right' ) && (
+				<>
+					<div className="uagb-cta__wrap">
+						{ titleText }
+						{ desc }
+					</div>
+					{isCta}
+				</>
+			) }
+		</>
 	);
 
 	let target = '';
@@ -99,25 +76,29 @@ export default function save( props ) {
 		target = '_blank';
 	}
 
+	let stackContent;
+	if ( ctaPosition === 'right' && stack !== 'none' ) {
+		stackContent = 'uagb-cta__content-stacked-' + stack + ' ';
+	}
+
 	return (
 		<div
 			className={ classnames(
-				className,
-				'uagb-cta__outer-wrap',
-				`uagb-block-${ block_id }`
+				`uagb-block-${ block_id }`,
+				'button' === ctaType ? 'wp-block-button' : '',
+				stackContent
 			) }
 		>
-			{ ctaType == 'all' && (
+			{ ctaType === 'all' && (
 				<>
-					<a
-						href={ ctaLink }
-						className="uagb-cta__block-link-wrap uagb-cta__link-to-all"
-						target={ target }
-						rel="noopener noreferrer"
-					>
-						{ ' ' }
-					</a>
-					{ output }
+				<a
+					href={ ctaLink }
+					className="uagb-cta__link-to-all"
+					target={ target }
+					rel="noopener noreferrer"
+				>
+				</a>
+				{ output }
 				</>
 			) }
 			{ ctaType !== 'all' && output }

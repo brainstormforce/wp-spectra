@@ -33,7 +33,6 @@
 
 	.uagb-blockquote a {
 		box-shadow: none;
-		color: #1da1f2;
 		text-decoration: none;
 		-webkit-box-shadow: none;
 	}
@@ -47,23 +46,29 @@
 		margin: 0 auto;
 	}
 }
-.uagb-editor-preview-mode-tablet{
-	.uagb-blockquote__stack-img-tablet footer{
-			-webkit-flex-direction: column;
-			-ms-flex-direction: column;
-			flex-direction: column;
-			.uagb-blockquote__tweet-button{
-				align-self: flex-start;
-			}
+
+.uagb-editor-preview-mode-tablet {
+
+	.uagb-blockquote__stack-img-tablet footer {
+		-webkit-flex-direction: column;
+		-ms-flex-direction: column;
+		flex-direction: column;
+
+		.uagb-blockquote__tweet-button {
+			align-self: flex-start;
 		}
+	}
 }
-.uagb-editor-preview-mode-mobile{
-	.uagb-blockquote__stack-img-mobile footer{
-			-webkit-flex-direction: column;
-			-ms-flex-direction: column;
-			flex-direction: column;
-			.uagb-blockquote__tweet-button{
-				align-self: flex-start;
-			}
+
+.uagb-editor-preview-mode-mobile {
+
+	.uagb-blockquote__stack-img-mobile footer {
+		-webkit-flex-direction: column;
+		-ms-flex-direction: column;
+		flex-direction: column;
+
+		.uagb-blockquote__tweet-button {
+			align-self: flex-start;
 		}
+	}
 }

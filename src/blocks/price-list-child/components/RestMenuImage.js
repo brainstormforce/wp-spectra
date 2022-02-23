@@ -38,11 +38,7 @@ const RestMenuImage = ( props ) => {
 			}
 
 			return (
-				<div className="uagb-rm__image-content">
-					<div className="uagb-rm__image">
-						<img className="" src={ url } alt={ image.alt } />
-					</div>
-				</div>
+				<img className="" src={ url } alt={ image.alt } />
 			);
 		}
 		return null;

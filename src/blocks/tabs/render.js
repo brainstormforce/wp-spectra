@@ -3,16 +3,17 @@ import styles from './editor.lazy.scss';
 import renderSVG from '@Controls/renderIcon';
 import { __ } from '@wordpress/i18n';
 import React, { useLayoutEffect } from 'react';
-import {
-	InnerBlocks,
-	RichText
-} from '@wordpress/block-editor';
+import { InnerBlocks, RichText } from '@wordpress/block-editor';
 import { Tooltip, Dashicon } from '@wordpress/components';
 import { createBlock } from '@wordpress/blocks';
 import { select, dispatch } from '@wordpress/data';
-const { updateBlockAttributes, insertBlock, removeBlock } = !wp.blockEditor ? dispatch( 'core/editor' ) : dispatch( 'core/block-editor' );
-const { getBlockOrder } = !wp.blockEditor ? select( 'core/editor' ) : select( 'core/block-editor' );
-
+const { updateBlockAttributes, insertBlock, removeBlock } = ! wp.blockEditor
+	? dispatch( 'core/editor' )
+	: dispatch( 'core/block-editor' );
+const { getBlockOrder } = ! wp.blockEditor
+	? select( 'core/editor' )
+	: select( 'core/block-editor' );
+import { useDeviceType } from '@Controls/getPreviewType';
 const Render = ( props ) => {
 	// Add and remove the CSS on the drop and remove of the component.
 	useLayoutEffect( () => {
@@ -26,8 +27,6 @@ const Render = ( props ) => {
 	const {
 		attributes,
 		setAttributes,
-		className,
-		deviceType,
 		clientId,
 	} = props;
 	const {
@@ -39,8 +38,10 @@ const Render = ( props ) => {
 		tabAlign,
 		showIcon,
 		icon,
-		iconPosition,
+		iconPosition
 	} = attributes;
+
+	const deviceType = useDeviceType()
 
 	const onMoveForward = ( oldIndex, realTabsCount ) => {
 		return () => {
@@ -109,7 +110,6 @@ const Render = ( props ) => {
 		props.resetTabOrder();
 	};
 	const removeTab = ( index ) => {
-
 		const childBlocks = getBlockOrder( clientId );
 
 		removeBlock( childBlocks[ index ], false );
@@ -133,10 +133,9 @@ const Render = ( props ) => {
 		<>
 			<div
 				className={ classnames(
-					className,
 					`uagb-editor-preview-mode-${ deviceType.toLowerCase() }`,
 					`uagb-block-${ props.clientId.substr( 0, 8 ) }`,
-					`uagb-tabs__wrap`,
+					'uagb-tabs__wrap',
 					`uagb-tabs__${ tabsStyleD }-desktop`,
 					`uagb-tabs__${ tabsStyleT }-tablet`,
 					`uagb-tabs__${ tabsStyleM }-mobile`
@@ -162,7 +161,8 @@ const Render = ( props ) => {
 												'ultimate-addons-for-gutenberg'
 											) }
 										>
-											<span
+											<span // eslint-disable-line jsx-a11y/click-events-have-key-events
+												role='button'
 												className="uagb-tab-item__move-back"
 												onClick={
 													index === 0
@@ -190,7 +190,8 @@ const Render = ( props ) => {
 												'ultimate-addons-for-gutenberg'
 											) }
 										>
-											<span
+											<span // eslint-disable-line jsx-a11y/click-events-have-key-events
+												role='button'
 												className="uagb-tab-item__move-forward"
 												onClick={
 													index === tabHeaders.length
@@ -217,7 +218,9 @@ const Render = ( props ) => {
 											'ultimate-addons-for-gutenberg'
 										) }
 									>
-										<span
+										<span // eslint-disable-line jsx-a11y/click-events-have-key-events
+											role='button'
+											tabIndex={ index }
 											className="uagb-tabs__remove"
 											onClick={ () => removeTab( index ) }
 										>
@@ -226,7 +229,9 @@ const Render = ( props ) => {
 									</Tooltip>
 								</div>
 							) }
-							<a
+							<a // eslint-disable-line jsx-a11y/anchor-is-valid, jsx-a11y/click-events-have-key-events
+								role='button'
+								tabIndex={ index }
 								className={ `uagb-tabs__icon-position-${ iconPosition } uagb-tabs-list` }
 								onClick={ () => {
 									props.updateActiveTab( index );
@@ -271,7 +276,11 @@ const Render = ( props ) => {
 								'ultimate-addons-for-gutenberg'
 							) }
 						>
-							<span onClick={ () => addTab() }>
+							<span // eslint-disable-line jsx-a11y/click-events-have-key-events
+								role='button'
+								tabIndex='0'
+								onClick={ () => addTab() }
+							>
 								<Dashicon icon="plus" />
 							</span>
 						</Tooltip>

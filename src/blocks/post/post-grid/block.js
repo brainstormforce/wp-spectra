@@ -16,8 +16,8 @@ import { registerBlockType } from '@wordpress/blocks';
 
 // Register the block
 registerBlockType( 'uagb/post-grid', {
-	title: uagb_blocks_info.blocks[ 'uagb/post-grid' ].title,
-	description: uagb_blocks_info.blocks[ 'uagb/post-grid' ].description,
+	title: __( 'Post Grid', 'ultimate-addons-for-gutenberg' ),
+	description: __( 'This block fetches the blog posts you may have on your website and displays them in a grid layout.', 'ultimate-addons-for-gutenberg' ),
 	icon: UAGB_Block_Icons.post_grid,
 	category: uagb_blocks_info.category,
 	keywords: [

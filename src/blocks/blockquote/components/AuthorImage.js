@@ -22,13 +22,11 @@ const AuthorImage = ( { attributes } ) => {
 				: urlChk;
 
 		return (
-			<div className="uagb-blockquote__author-image">
 				<img
 					className=""
 					src={ url }
 					alt={ attributes.authorImage.alt }
 				/>
-			</div>
 		);
 	}
 

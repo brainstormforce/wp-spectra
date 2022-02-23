@@ -25,10 +25,19 @@ module.exports = function ( grunt ) {
 					'!composer.json',
 					'!composer.lock',
 					'!phpcs.xml.dist',
+					'!phpunit.xml.dist',
 					'!vendor/**',
 					'!src/**',
 					'!scripts/**',
 					'!config/**',
+					'!tests/**',
+					'!bin/**',
+					'!webpack.config.js',
+					'!admin-core/node_modules/**',
+					'!admin-core/src/**',
+					'!admin-core/webpack.config.js',
+					'!admin-core/package.json',
+					'!admin-core/package-lock.json',
 				],
 				dest: 'ultimate-addons-for-gutenberg/',
 			},
@@ -59,7 +68,7 @@ module.exports = function ( grunt ) {
 					potFilename: 'languages/ultimate-addons-for-gutenberg.pot',
 					exclude: [ 'admin/bsf-core' ],
 					potHeaders: {
-						poedit: true,
+						'poedit': true,
 						'x-poedit-keywordslist': true,
 					},
 					type: 'wp-plugin',
@@ -148,12 +157,78 @@ module.exports = function ( grunt ) {
 				},
 			},
 		},
+		rtlcss: {
+            options: {
+                // rtlcss options
+                config: {
+                    preserveComments: true,
+                    greedy: true
+                },
+                // generate source maps
+                map: false
+            },
+            dist: {
+                files: [
+                    {
+                        expand: true,
+                        cwd: 'admin-core/assets/build',
+                        src: [
+                            '*.css',
+                            '!*-rtl.css',
+                        ],
+                        dest: 'admin-core/assets/build',
+                        ext: '-rtl.css'
+
+                    },
+                ]
+            }
+        },
+
+		// Minified CSS.
+		cssmin: {
+			options: {
+				keepSpecialComments: 0,
+			},
+			css: {
+				files: [
+					{
+						expand: true,
+						cwd: 'assets/css',
+						src: [ '*.css', '!*.min.css', '!blocks/*.css' ],
+						dest: 'assets/css',
+						ext: '.min.css',
+					},
+				],
+			},
+		},
+
+		// Minified JS.
+		uglify: {
+			js: {
+				options: {
+					compress: {
+						drop_console: true, // <-
+					},
+				},
+				files: [
+					{
+						expand: true,
+						cwd: 'assets/js',
+						src: [ '*.js', '!*.min.js' ],
+						dest: 'assets/js',
+						ext: '.min.js',
+					},
+				],
+			},
+		},
 	} );
 
 	/* Load Tasks */
 	grunt.loadNpmTasks( 'grunt-contrib-copy' );
 	grunt.loadNpmTasks( 'grunt-contrib-compress' );
 	grunt.loadNpmTasks( 'grunt-contrib-clean' );
+	grunt.loadNpmTasks( 'grunt-contrib-cssmin' );
+	grunt.loadNpmTasks( 'grunt-contrib-uglify' );
 
 	grunt.loadNpmTasks( 'grunt-wp-i18n' );
 
@@ -163,6 +238,7 @@ module.exports = function ( grunt ) {
 
 	/* Read File Generation task */
 	grunt.loadNpmTasks( 'grunt-wp-readme-to-markdown' );
+	grunt.loadNpmTasks( 'grunt-rtlcss' );
 
 	/* Register task started */
 	grunt.registerTask( 'release', [
@@ -171,6 +247,8 @@ module.exports = function ( grunt ) {
 		'compress',
 		'clean:main',
 	] );
+	grunt.registerTask( 'release-no-clean', [ 'clean:zip', 'copy' ] );
+	grunt.registerTask( 'textdomain', [ 'addtextdomain' ] );
 	grunt.registerTask( 'i18n', [ 'addtextdomain', 'makepot' ] );
 
 	// Default
@@ -197,8 +275,8 @@ module.exports = function ( grunt ) {
 		request(
 			'https://raw.githubusercontent.com/FortAwesome/Font-Awesome/master/metadata/icons.json',
 			function ( error, response, body ) {
-				if ( response && response.statusCode == 200 ) {
-					console.log( 'Fonts successfully fetched!' );
+				if ( response && response.statusCode === 200 ) {
+					console.log( 'Fonts successfully fetched!' ); // eslint-disable-line
 
 					const fonts = JSON.parse( body );
 
@@ -207,7 +285,7 @@ module.exports = function ( grunt ) {
 						JSON.stringify( fonts, null, 4 ),
 						function ( err ) {
 							if ( ! err ) {
-								console.log( 'Font-Awesome library updated!' );
+								console.log( 'Font-Awesome library updated!' ); // eslint-disable-line
 							}
 						}
 					);
@@ -218,4 +296,9 @@ module.exports = function ( grunt ) {
 
 	// Generate Read me file
 	grunt.registerTask( 'readme', [ 'wp_readme_to_markdown' ] );
+
+	// rtlcss, you will still need to install ruby and sass on your system manually to run this
+	grunt.registerTask( 'rtl', ['rtlcss'] );
+
+	grunt.registerTask( 'minify', [ 'rtlcss', 'cssmin', 'uglify' ] );
 };

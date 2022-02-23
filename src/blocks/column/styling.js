@@ -55,6 +55,7 @@ function styling( props ) {
 		mobilePaddingType,
 		tabletPaddingType,
 		desktopPaddingType,
+		borderHoverColor,
 	} = props.attributes;
 
 	const position = backgroundPosition.replace( '-', ' ' );
@@ -73,7 +74,7 @@ function styling( props ) {
 		'border-radius': generateCSSUnit( borderRadius, desktopMarginType ),
 	};
 
-	if ( borderStyle != 'none' ) {
+	if ( borderStyle !== 'none' ) {
 		style[ 'border-style' ] = borderStyle;
 		style[ 'border-width' ] = generateCSSUnit( borderWidth, 'px' );
 		style[ 'border-color' ] = borderColor;
@@ -91,6 +92,7 @@ function styling( props ) {
 
 	const selectors = {
 		':before': inlineStyles( props ),
+		':after': inlineStyles( props ),
 		'': style,
 	};
 
@@ -162,27 +164,33 @@ function styling( props ) {
 		},
 	};
 
-	if ( colWidth != '' && colWidth != 0 ) {
+	if ( colWidth !== '' && colWidth !== 0 ) {
 		selectors[ '.block-editor-block-list__block' ] = {
-			width: colWidth + '%',
+			'width': colWidth + '%',
 		};
 	}
 
-	if ( colWidthTablet != '' && colWidthTablet != 0 ) {
+	if ( colWidthTablet !== '' && colWidthTablet !== 0 ) {
 		tabletSelectors[ '.block-editor-block-list__block' ] = {
-			width: colWidthTablet + '%',
+			'width': colWidthTablet + '%',
 		};
 	}
 
-	if ( colWidthMobile != '' && colWidthMobile != 0 ) {
+	if ( colWidthMobile !== '' && colWidthMobile !== 0 ) {
 		mobileSelectors[ '.block-editor-block-list__block' ] = {
-			width: colWidthMobile + '%',
+			'width': colWidthMobile + '%',
+		};
+	}
+
+	if ( 'none' !== borderStyle ) {
+		selectors[ '.block-editor-block-list__block:hover' ] = {
+			'border-color': borderHoverColor,
 		};
 	}
 
 	let stylingCss = '';
 
-	const id = `#wpwrap .edit-post-visual-editor #block-${ props.clientId }`;
+	const id = `#block-${ props.clientId }`;
 
 	stylingCss = generateCSS( selectors, id );
 

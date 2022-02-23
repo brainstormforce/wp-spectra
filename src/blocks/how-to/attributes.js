@@ -26,6 +26,7 @@ const attributes = {
 	overallAlignment: {
 		type: 'string',
 		default: 'left',
+		isUAGStyle: true,
 	},
 	toolsTitle: {
 		type: 'html',
@@ -96,14 +97,17 @@ const attributes = {
 	imgSize: {
 		type: 'string',
 		default: 'thumbnail',
+		isUAGStyle: true,
 	},
 	timeSpace: {
 		type: 'number',
 		default: 5,
+		isUAGStyle: true,
 	},
 	costSpace: {
 		type: 'number',
 		default: 5,
+		isUAGStyle: true,
 	},
 	time: {
 		type: 'string',
@@ -136,23 +140,29 @@ const attributes = {
 	headingAlign: {
 		type: 'string',
 		default: 'left',
+		isUAGStyle: true,
 	},
 	descriptionAlign: {
 		type: 'string',
 		default: 'left',
+		isUAGStyle: true,
 	},
 	headingColor: {
 		type: 'string',
+		isUAGStyle: true,
 	},
 	showEstcostcolor: {
 		type: 'string',
+		isUAGStyle: true,
 	},
 	showTotaltimecolor: {
 		type: 'string',
+		isUAGStyle: true,
 		default: '',
 	},
 	subHeadingColor: {
 		type: 'string',
+		isUAGStyle: true,
 		default: '',
 	},
 	headingTag: {
@@ -162,134 +172,200 @@ const attributes = {
 	headSpace: {
 		type: 'number',
 		default: 15,
+		isUAGStyle: true,
 	},
 	headFontFamily: {
 		type: 'string',
 		default: 'Default',
+		isUAGStyle: true,
 	},
 	headFontWeight: {
 		type: 'string',
+		isUAGStyle: true,
 	},
-	headFontSubset: {
+	headFontStyle: {
 		type: 'string',
+		isUAGStyle: true,
+		default: 'normal',
+	},
+	headTransform: {
+		type: 'string',
+		isUAGStyle: true,
+	},
+	headDecoration: {
+		type: 'string',
+		isUAGStyle: true,
 	},
 	headFontSizeType: {
 		type: 'string',
+		isUAGStyle: true,
 		default: 'px',
 	},
 	headLineHeightType: {
 		type: 'string',
+		isUAGStyle: true,
 		default: 'em',
 	},
 	headFontSize: {
 		type: 'number',
+		isUAGStyle: true,
 	},
 	headFontSizeTablet: {
 		type: 'number',
+		isUAGStyle: true,
 	},
 	headFontSizeMobile: {
 		type: 'number',
+		isUAGStyle: true,
 	},
 	headLineHeight: {
 		type: 'number',
+		isUAGStyle: true,
 	},
 	headLineHeightTablet: {
 		type: 'number',
+		isUAGStyle: true,
 	},
 	headLineHeightMobile: {
 		type: 'number',
+		isUAGStyle: true,
 	},
 	subHeadFontFamily: {
 		type: 'string',
+		isUAGStyle: true,
 		default: 'Default',
 	},
 	subHeadFontWeight: {
 		type: 'string',
+		isUAGStyle: true,
 	},
-	subHeadFontSubset: {
+	subHeadFontStyle: {
 		type: 'string',
+		isUAGStyle: true,
+		default: 'normal',
+	},
+	subHeadTransform: {
+		type: 'string',
+		isUAGStyle: true,
+	},
+	subHeadDecoration: {
+		type: 'string',
+		isUAGStyle: true,
 	},
 	subHeadFontSize: {
 		type: 'number',
+		isUAGStyle: true,
 	},
 	subHeadFontSizeType: {
 		type: 'string',
+		isUAGStyle: true,
 		default: 'px',
 	},
 	subHeadFontSizeTablet: {
 		type: 'number',
+		isUAGStyle: true,
 	},
 	subHeadFontSizeMobile: {
 		type: 'number',
+		isUAGStyle: true,
 	},
 	subHeadLineHeight: {
 		type: 'number',
+		isUAGStyle: true,
 	},
 	subHeadLineHeightType: {
 		type: 'string',
 		default: 'em',
+		isUAGStyle: true,
 	},
 	subHeadLineHeightTablet: {
 		type: 'number',
+		isUAGStyle: true,
 	},
 	subHeadLineHeightMobile: {
 		type: 'number',
+		isUAGStyle: true,
 	},
 	separatorSpace: {
 		type: 'number',
+		isUAGStyle: true,
 		default: 15,
 	},
 	headLoadGoogleFonts: {
 		type: 'boolean',
+		isUAGStyle: true,
 		default: false,
 	},
 	subHeadLoadGoogleFonts: {
 		type: 'boolean',
+		isUAGStyle: true,
 		default: false,
 	},
 	priceFontSizeType: {
 		type: 'string',
+		isUAGStyle: true,
 		default: 'px',
 	},
 	priceFontSize: {
 		type: 'number',
+		isUAGStyle: true,
 	},
 	priceFontSizeTablet: {
 		type: 'number',
+		isUAGStyle: true,
 	},
 	priceFontSizeMobile: {
 		type: 'number',
+		isUAGStyle: true,
 	},
 	priceFontFamily: {
 		type: 'string',
+		isUAGStyle: true,
 		default: 'Default',
 	},
 	priceFontWeight: {
 		type: 'string',
+		isUAGStyle: true,
 	},
-	priceFontSubset: {
+	priceFontStyle: {
 		type: 'string',
+		default: 'normal',
+		isUAGStyle: true,
+	},
+	priceTransform: {
+		type: 'string',
+		isUAGStyle: true,
+	},
+	priceDecoration: {
+		type: 'string',
+		isUAGStyle: true,
 	},
 	priceLineHeightType: {
 		type: 'string',
+		isUAGStyle: true,
 		default: 'em',
 	},
 	priceLineHeight: {
 		type: 'number',
+		isUAGStyle: true,
 	},
 	priceLineHeightTablet: {
 		type: 'number',
+		isUAGStyle: true,
 	},
 	priceLineHeightMobile: {
 		type: 'number',
+		isUAGStyle: true,
 	},
 	priceLoadGoogleFonts: {
 		type: 'boolean',
+		isUAGStyle: true,
 		default: false,
 	},
 	row_gap: {
 		type: 'number',
 		default: 20,
+		isUAGStyle: true,
 	},
 	step_gap: {
 		type: 'number',

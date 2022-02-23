@@ -11,6 +11,7 @@ const wp_rules = defaultConfig.module.rules.filter( function ( item ) {
 		item.exclude = [ /node_modules/, /editor/ ];
 		return true;
 	}
+	return false;
 } );
 
 module.exports = {
@@ -30,6 +31,7 @@ module.exports = {
 				'blocks-config/uagb-controls/'
 			),
 			'@Components': path.resolve( __dirname, 'src/components/' ),
+			'@Utils': path.resolve( __dirname, 'blocks-config/utils/' ),
 		},
 	},
 	module: {

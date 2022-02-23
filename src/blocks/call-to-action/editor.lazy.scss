@@ -10,34 +10,44 @@
 	text-align: center;
 }
 
-.block-editor-page #wpwrap .edit-post-visual-editor a.uagb-cta__block-link-wrap {
+.editor-styles-wrapper .edit-post-visual-editor a.uagb-cta__block-link-wrap {
 	color: inherit;
 }
 
-.block-editor-page #wpwrap .uagb-cta__title,
-.block-editor-page #wpwrap .uagb-cta-separator-parent,
-.block-editor-page #wpwrap .uagb-cta__desc {
+.editor-styles-wrapper .uagb-cta__title,
+.editor-styles-wrapper .uagb-cta-separator-parent,
+.editor-styles-wrapper .uagb-cta__desc {
 	margin-bottom: 10px;
 }
 
-.block-editor-page #wpwrap .uagb-cta__desc {
+.editor-styles-wrapper .uagb-cta__desc {
 	margin: 0;
 }
 
-.block-editor-page #wpwrap .uagb-cta__block-link i {
+.editor-styles-wrapper .uagb-cta__block-link i {
 	font-style: normal;
 }
 
 .wp-block-uagb-call-to-action.uagb-cta__outer-wrap a.uagb-cta__link-to-all {
 	z-index: 0;
 }
-.block-editor-page #wpwrap{
-	.uagb-editor-preview-mode-tablet{
+
+.editor-styles-wrapper {
+
+	.uagb-cta__outer-wrap a.uagb-cta__button-link-wrapper {
+		text-decoration: none;
+		fill: currentColor;
+	}
+
+	.uagb-editor-preview-mode-tablet {
+
 		.uagb-cta__content-stacked-tablet .uagb-cta__left-right-wrap {
 			flex-direction: column;
 			text-align: center;
-			.uagb-cta__link-wrapper{
+
+			.uagb-cta__link-wrapper {
 				width: 100%;
+
 				.uagb-cta__button-wrapper {
 					float: none;
 					margin: 0 auto;
@@ -45,23 +55,30 @@
 			}
 		}
 	}
-	.uagb-editor-preview-mode-mobile{
+
+	.uagb-editor-preview-mode-mobile {
+
 		.uagb-cta__content-stacked-mobile .uagb-cta__left-right-wrap {
 			flex-direction: column;
 			text-align: center;
-			.uagb-cta__link-wrapper{
+
+			.uagb-cta__link-wrapper {
 				width: 100%;
+
 				.uagb-cta__button-wrapper {
 					float: none;
 					margin: 0 auto;
 				}
 			}
 		}
+
 		.uagb-cta__content-stacked-tablet .uagb-cta__left-right-wrap {
 			flex-direction: column;
 			text-align: center;
-			.uagb-cta__link-wrapper{
+
+			.uagb-cta__link-wrapper {
 				width: 100%;
+
 				.uagb-cta__button-wrapper {
 					float: none;
 					margin: 0 auto;

@@ -29,27 +29,37 @@ const attributes = {
 	icon_color: {
 		type: 'string',
 		default: '#3a3a3a',
+		isUAGStyle: true,
 	},
 	label_color: {
 		type: 'string',
+		isUAGStyle: true,
 	},
 	icon_hover_color: {
 		type: 'string',
+		isUAGStyle: true,
 	},
 	label_hover_color: {
 		type: 'string',
+		isUAGStyle: true,
 	},
 	icon_bg_color: {
 		type: 'string',
+		isUAGStyle: true,
+		default: '',
 	},
 	icon_bg_hover_color: {
 		type: 'string',
+		isUAGStyle: true,
 	},
 	icon_border_color: {
 		type: 'string',
+		isUAGStyle: true,
+		default: '',
 	},
 	icon_border_hover_color: {
 		type: 'string',
+		isUAGStyle: true,
 	},
 	link: {
 		type: 'string',

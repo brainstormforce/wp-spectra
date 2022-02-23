@@ -77,6 +77,41 @@ const variations = [
 		scope: [ 'block' ],
 	},
 	{
+		name: 'three-columns-equal',
+		label: __(
+			'Three columns; equal split',
+			'ultimate-addons-for-gutenberg'
+		),
+		icon: rowIcons.layout333333,
+		attributes: {
+			columns: 3,
+		},
+		innerBlocks: [
+			[ 'uagb/column', { colWidth: 33.33 } ],
+			[ 'uagb/column', { colWidth: 33.33 } ],
+			[ 'uagb/column', { colWidth: 33.33 } ],
+		],
+		scope: [ 'block' ],
+	},
+	{
+		name: 'three-column-first-half',
+		label: __(
+			'Three columns; equal split',
+			'ultimate-addons-for-gutenberg'
+		),
+		icon: rowIcons.layout252550,
+		attributes: {
+			columns: 3,
+			layout: '25-25-50',
+		},
+		innerBlocks: [
+			[ 'uagb/column', { colWidth: 25 } ],
+			[ 'uagb/column', { colWidth: 25 } ],
+			[ 'uagb/column', { colWidth: 50 } ],
+		],
+		scope: [ 'block' ],
+	},
+	{
 		name: 'three-column',
 		label: __(
 			'Three columns; equal split',
@@ -91,23 +126,6 @@ const variations = [
 			[ 'uagb/column', { colWidth: 50 } ],
 			[ 'uagb/column', { colWidth: 25 } ],
 			[ 'uagb/column', { colWidth: 25 } ],
-		],
-		scope: [ 'block' ],
-	},
-	{
-		name: 'three-columns-equal',
-		label: __(
-			'Three columns; equal split',
-			'ultimate-addons-for-gutenberg'
-		),
-		icon: rowIcons.layout333333,
-		attributes: {
-			columns: 3,
-		},
-		innerBlocks: [
-			[ 'uagb/column', { colWidth: 33.33 } ],
-			[ 'uagb/column', { colWidth: 33.33 } ],
-			[ 'uagb/column', { colWidth: 33.33 } ],
 		],
 		scope: [ 'block' ],
 	},
@@ -140,6 +158,26 @@ const variations = [
 			layout: '25-25-25-25',
 		},
 		innerBlocks: [
+			[ 'uagb/column', { colWidth: 25 } ],
+			[ 'uagb/column', { colWidth: 25 } ],
+			[ 'uagb/column', { colWidth: 25 } ],
+			[ 'uagb/column', { colWidth: 25 } ],
+		],
+		scope: [ 'block' ],
+	},
+	{
+		name: 'five-column',
+		label: __(
+			'Five columns; equal split',
+			'ultimate-addons-for-gutenberg'
+		),
+		icon: rowIcons.layout2525252525,
+		attributes: {
+			columns: 5,
+			layout: '25-25-25-25-25',
+		},
+		innerBlocks: [
+			[ 'uagb/column', { colWidth: 25 } ],
 			[ 'uagb/column', { colWidth: 25 } ],
 			[ 'uagb/column', { colWidth: 25 } ],
 			[ 'uagb/column', { colWidth: 25 } ],

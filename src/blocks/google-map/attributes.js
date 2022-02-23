@@ -9,6 +9,7 @@ const attributes = {
 	height: {
 		type: 'number',
 		default: 300,
+		isUAGStyle: true,
 	},
 	zoom: {
 		type: 'number',

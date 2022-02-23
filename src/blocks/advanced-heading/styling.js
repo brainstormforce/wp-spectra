@@ -19,6 +19,7 @@ function styling( props ) {
 		separatorSpace,
 		subHeadingColor,
 		headFontFamily,
+		headFontStyle,
 		headFontWeight,
 		headFontSize,
 		headFontSizeType,
@@ -29,6 +30,7 @@ function styling( props ) {
 		headLineHeightMobile,
 		headLineHeightTablet,
 		subHeadFontFamily,
+		subHeadFontStyle,
 		subHeadFontWeight,
 		subHeadFontSize,
 		subHeadFontSizeType,
@@ -38,16 +40,25 @@ function styling( props ) {
 		subHeadLineHeightType,
 		subHeadLineHeightMobile,
 		subHeadLineHeightTablet,
+		headTransform,
+		headDecoration,
+		subHeadTransform,
+		subHeadDecoration,
 	} = props.attributes;
 
 	const tablet_selectors = {};
 	const mobile_selectors = {};
 
 	const selectors = {
+		'.wp-block-uagb-advanced-heading ':{
+			'text-align': headingAlign,
+		},
 		' .uagb-desc-text': {
 			'margin': 0,
-			'text-align': headingAlign,
 			'font-family': subHeadFontFamily,
+			'font-style' : subHeadFontStyle,
+			'text-decoration': subHeadDecoration,
+			'text-transform': subHeadTransform,
 			'font-weight': subHeadFontWeight,
 			'font-size': generateCSSUnit(
 				subHeadFontSize,
@@ -57,20 +68,19 @@ function styling( props ) {
 				subHeadLineHeight,
 				subHeadLineHeightType
 			),
-			color: subHeadingColor,
-		},
-		' .uagb-separator-wrap': {
-			'text-align': headingAlign,
-		},
+			'color': subHeadingColor,
+		}
 	};
 
 	selectors[ ' ' + headingTag + '.uagb-heading-text' ] = {
-		'text-align': headingAlign,
 		'font-family': headFontFamily,
+		'font-style' : headFontStyle,
+		'text-decoration': headDecoration,
+		'text-transform': headTransform,
 		'font-weight': headFontWeight,
 		'font-size': generateCSSUnit( headFontSize, headFontSizeType ),
 		'line-height': generateCSSUnit( headLineHeight, headLineHeightType ),
-		color: headingColor,
+		'color': headingColor,
 		'margin-bottom': generateCSSUnit( headSpace, 'px' ),
 	};
 
@@ -78,7 +88,7 @@ function styling( props ) {
 		selectors[ ' .uagb-separator' ] = {
 			'border-top-style': seperatorStyle,
 			'border-top-width': generateCSSUnit( separatorHeight, 'px' ),
-			width: generateCSSUnit( separatorWidth, separatorWidthType ),
+			'width': generateCSSUnit( separatorWidth, separatorWidthType ),
 			'border-color': separatorColor,
 			'margin-bottom': generateCSSUnit( separatorSpace, 'px' ),
 		};
@@ -120,7 +130,7 @@ function styling( props ) {
 		),
 	};
 
-	const base_selector = `.block-editor-page #wpwrap .uagb-block-${ props.clientId.substr(
+	const base_selector = `.editor-styles-wrapper .uagb-block-${ props.clientId.substr(
 		0,
 		8
 	) }`;

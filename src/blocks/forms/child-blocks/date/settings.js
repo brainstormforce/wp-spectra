@@ -1,7 +1,11 @@
 import React from 'react';
 import { __ } from '@wordpress/i18n';
 
-import { PanelBody, SelectControl, ToggleControl } from '@wordpress/components';
+import { SelectControl, ToggleControl } from '@wordpress/components';
+import InspectorTabs from '@Components/inspector-tabs/InspectorTabs.js';
+import InspectorTab, {
+	UAGTabs,
+} from '@Components/inspector-tabs/InspectorTab.js';
 
 import { InspectorControls } from '@wordpress/block-editor';
 
@@ -24,6 +28,10 @@ for ( index = 1; index <= 31; index++ ) {
 	const twoDigitDate = index < 10 ? `0${ index }` : `${ index }`;
 	dateDefaults.push( { label: twoDigitDate, value: twoDigitDate } );
 }
+
+
+
+import UAGAdvancedPanelBody from '@Components/advanced-panel-body';
 
 const Settings = ( props ) => {
 	props = props.parentProps;
@@ -69,11 +77,7 @@ const Settings = ( props ) => {
 
 	const dateInspectorControls = () => {
 		return (
-			<PanelBody
-				title={ __( 'General', 'ultimate-addons-for-gutenberg' ) }
-				initialOpen={ true }
-				className="uagb__url-panel-body"
-			>
+			<UAGAdvancedPanelBody initialOpen={ true }>
 				<ToggleControl
 					label={ __( 'Required', 'ultimate-addons-for-gutenberg' ) }
 					checked={ dateRequired }
@@ -109,7 +113,6 @@ const Settings = ( props ) => {
 								setAttributes( { newMinYear } )
 							}
 						/>
-						<b> - </b>
 						<SelectControl
 							className={ 'minDate' }
 							label="Month"
@@ -119,7 +122,6 @@ const Settings = ( props ) => {
 								setAttributes( { newMinMonth } )
 							}
 						/>
-						<b> - </b>
 						<SelectControl
 							className={ 'minDate' }
 							label="Date"
@@ -129,7 +131,10 @@ const Settings = ( props ) => {
 								setAttributes( { newMinDay } )
 							}
 						/>
-						<p>To :</p>
+						<p>
+							{ ' ' }
+							{ __( 'To', 'ultimate-addons-for-gutenberg' ) } :
+						</p>
 						<SelectControl
 							className={ 'maxDate' }
 							label="Year"
@@ -139,7 +144,6 @@ const Settings = ( props ) => {
 								setAttributes( { newMaxYear } )
 							}
 						/>
-						<b> - </b>
 						<SelectControl
 							className={ 'maxDate' }
 							label="Month"
@@ -149,7 +153,6 @@ const Settings = ( props ) => {
 								setAttributes( { newMaxMonth } )
 							}
 						/>
-						<b> - </b>
 						<SelectControl
 							className={ 'maxDate' }
 							label="Date"
@@ -162,13 +165,20 @@ const Settings = ( props ) => {
 						{ invalidDateErrorMsg }
 					</>
 				) }
-			</PanelBody>
+			</UAGAdvancedPanelBody>
 		);
 	};
 
 	return (
 		<>
-			<InspectorControls>{ dateInspectorControls() }</InspectorControls>
+			<InspectorControls>
+				<InspectorTabs tabs={ [ 'general', 'advance' ] }>
+					<InspectorTab { ...UAGTabs.general }>
+						{ dateInspectorControls() }
+					</InspectorTab>
+					<InspectorTab { ...UAGTabs.advance }></InspectorTab>
+				</InspectorTabs>
+			</InspectorControls>
 		</>
 	);
 };

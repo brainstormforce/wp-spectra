@@ -26,7 +26,7 @@ export default function save( props ) {
 			className={ classnames(
 				className,
 				`uagb-block-${ block_id }`,
-				`uagb-tabs__wrap`,
+				'uagb-tabs__wrap',
 				`uagb-tabs__${ tabsStyleD }-desktop`,
 				`uagb-tabs__${ tabsStyleT }-tablet`,
 				`uagb-tabs__${ tabsStyleM }-mobile`
@@ -38,7 +38,7 @@ export default function save( props ) {
 					<li
 						key={ index }
 						className={ `uagb-tab ${
-							tabActiveFrontend == index
+							tabActiveFrontend === index
 								? 'uagb-tabs__active'
 								: ''
 						}` }
@@ -56,7 +56,6 @@ export default function save( props ) {
 									</span>
 								) }
 							<RichText.Content
-								tagName={ 'span' }
 								value={ header }
 							/>
 							{ showIcon &&

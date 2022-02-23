@@ -2,7 +2,7 @@
  * BLOCK: UAGB Social Share Attributes
  */
 
-const itemCount = 1;
+const itemCount = 3;
 
 const socials = [];
 
@@ -37,6 +37,7 @@ const attributes = {
 	align: {
 		type: 'string',
 		default: 'center',
+		isUAGStyle: true,
 	},
 	social_count: {
 		type: 'number',
@@ -49,37 +50,47 @@ const attributes = {
 	gap: {
 		type: 'number',
 		default: 10,
+		isUAGStyle: true,
 	},
 	size: {
 		type: 'number',
-		default: 40,
+		default: 25,
+		isUAGStyle: true,
 	},
 	sizeType: {
 		type: 'string',
 		default: 'px',
+		isUAGStyle: true,
 	},
 	sizeMobile: {
 		type: 'number',
+		isUAGStyle: true,
 	},
 	sizeTablet: {
 		type: 'number',
+		isUAGStyle: true,
 	},
 	bgSize: {
 		type: 'number',
 		default: 0,
+		isUAGStyle: true,
 	},
 	bgSizeType: {
 		type: 'string',
 		default: 'px',
+		isUAGStyle: true,
 	},
 	bgSizeMobile: {
 		type: 'number',
+		isUAGStyle: true,
 	},
 	bgSizeTablet: {
 		type: 'number',
+		isUAGStyle: true,
 	},
 	borderRadius: {
 		type: 'number',
+		isUAGStyle: true,
 		default: 0,
 	},
 	social_layout: {

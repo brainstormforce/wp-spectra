@@ -78,11 +78,9 @@ const Render = ( props ) => {
 						parentName="uagb/post-grid"
 						parentClassName="uagb-block-grid"
 					>
-						<article>
-							<div className="uagb-post__inner-wrap uagb-post__edit-mode">
-								<div className="uagb-post__text">
-									<InnerBlocks { ...InnerBlockProps } />
-								</div>
+						<article className="uagb-post__inner-wrap uagb-post__edit-mode">
+							<div className="uagb-post__text">
+								<InnerBlocks { ...InnerBlockProps } />
 							</div>
 						</article>
 					</InnerBlockLayoutContextProvider>
@@ -112,7 +110,7 @@ const Render = ( props ) => {
 			</Placeholder>
 		);
 	};
-
+	
 	const renderViewMode = (
 		<Disabled>
 			<Blog

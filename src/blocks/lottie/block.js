@@ -10,8 +10,8 @@ import { __ } from '@wordpress/i18n';
 import { registerBlockType } from '@wordpress/blocks';
 
 registerBlockType( 'uagb/lottie', {
-	title: uagb_blocks_info.blocks[ 'uagb/lottie' ].title,
-	description: uagb_blocks_info.blocks[ 'uagb/lottie' ].description,
+	title: __( 'Lottie Animation', 'ultimate-addons-for-gutenberg' ),
+	description: __( 'This block helps you add Lottie animation and customize it as required.', 'ultimate-addons-for-gutenberg' ),
 	icon: UAGB_Block_Icons.lottie,
 	keywords: [
 		__( 'lottie', 'ultimate-addons-for-gutenberg' ),

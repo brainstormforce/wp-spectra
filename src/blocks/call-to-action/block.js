@@ -17,8 +17,8 @@ import { __ } from '@wordpress/i18n';
 import { registerBlockType } from '@wordpress/blocks';
 
 registerBlockType( 'uagb/call-to-action', {
-	title: uagb_blocks_info.blocks[ 'uagb/call-to-action' ].title,
-	description: uagb_blocks_info.blocks[ 'uagb/call-to-action' ].description,
+	title: __( 'Call To Action', 'ultimate-addons-for-gutenberg' ),
+	description:__( 'This block allows you to place an CTA along with a heading and description within a single block.', 'ultimate-addons-for-gutenberg' ),
 	icon: UAGB_Block_Icons.call_to_action,
 	keywords: [
 		__( 'cta', 'ultimate-addons-for-gutenberg' ),

@@ -1,14 +1,21 @@
 import React from 'react';
 import { __ } from '@wordpress/i18n';
+import InspectorTabs from '@Components/inspector-tabs/InspectorTabs.js';
+import InspectorTab, {
+	UAGTabs,
+} from '@Components/inspector-tabs/InspectorTab.js';
 
 import {
-	PanelBody,
 	ToggleControl,
 	TextControl,
 	TextareaControl,
 } from '@wordpress/components';
 
 import { InspectorControls } from '@wordpress/block-editor';
+
+
+
+import UAGAdvancedPanelBody from '@Components/advanced-panel-body';
 
 const Settings = ( props ) => {
 	props = props.parentProps;
@@ -26,11 +33,7 @@ const Settings = ( props ) => {
 
 	const acceptInspectorControls = () => {
 		return (
-			<PanelBody
-				title={ __( 'General', 'ultimate-addons-for-gutenberg' ) }
-				initialOpen={ true }
-				className="uagb__url-panel-body"
-			>
+			<UAGAdvancedPanelBody initialOpen={ true }>
 				<ToggleControl
 					label={ __( 'Required', 'ultimate-addons-for-gutenberg' ) }
 					checked={ acceptRequired }
@@ -60,7 +63,6 @@ const Settings = ( props ) => {
 
 				{ showLink && (
 					<>
-						<hr className="uagb-editor__separator" />
 						<TextControl
 							label={ __(
 								'Link Label',
@@ -104,13 +106,20 @@ const Settings = ( props ) => {
 						/>
 					</>
 				) }
-			</PanelBody>
+			</UAGAdvancedPanelBody>
 		);
 	};
 
 	return (
 		<>
-			<InspectorControls>{ acceptInspectorControls() }</InspectorControls>
+			<InspectorControls>
+				<InspectorTabs tabs={ [ 'general', 'advance' ] }>
+					<InspectorTab { ...UAGTabs.general }>
+						{ acceptInspectorControls() }
+					</InspectorTab>
+					<InspectorTab { ...UAGTabs.advance }></InspectorTab>
+				</InspectorTabs>
+			</InspectorControls>
 		</>
 	);
 };

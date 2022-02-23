@@ -28,7 +28,7 @@ const CallToAction = ( props ) => {
 	}
 
 	let link = 'javascript:void(0)';
-	if ( setAttributes == 'not_set' ) {
+	if ( setAttributes === 'not_set' ) {
 		link = attributes.ctaLink;
 	}
 	return (

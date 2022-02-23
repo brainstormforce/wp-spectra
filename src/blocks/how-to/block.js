@@ -12,8 +12,8 @@ import { __ } from '@wordpress/i18n';
 import { registerBlockType } from '@wordpress/blocks';
 
 registerBlockType( 'uagb/how-to', {
-	title: uagb_blocks_info.blocks[ 'uagb/how-to' ].title,
-	description: uagb_blocks_info.blocks[ 'uagb/how-to' ].description,
+	title: __( 'How-to', 'ultimate-addons-for-gutenberg' ),
+	description: __( 'This block allows you to design attractive How-to pages or articles with automatically adding How-to to your page.', 'ultimate-addons-for-gutenberg' ),
 	icon: UAGB_Block_Icons.how_to,
 	category: uagb_blocks_info.category,
 	keywords: [
@@ -27,39 +27,24 @@ registerBlockType( 'uagb/how-to', {
 	example: {
 		innerBlocks: [
 			{
-				name: 'uagb/info-box',
+				name: 'uagb/how-to-step',
 				attributes: {
-					infoBoxTitle: 'Step 1',
-					iconimgPosition: 'left',
-					source_type: 'image',
-					showPrefix: false,
-					seperatorStyle: 'none',
-					ctaType: 'all',
-					headingTag: 'h4',
+					name: 'Step 1',
+					imgPosition: 'left'
 				},
 			},
 			{
-				name: 'uagb/info-box',
+				name: 'uagb/how-to-step',
 				attributes: {
-					infoBoxTitle: 'Step 2',
-					iconimgPosition: 'left',
-					source_type: 'image',
-					showPrefix: false,
-					seperatorStyle: 'none',
-					ctaType: 'all',
-					headingTag: 'h4',
+					name: 'Step 2',
+					imgPosition: 'left'
 				},
 			},
 			{
-				name: 'uagb/info-box',
+				name: 'uagb/how-to-step',
 				attributes: {
-					infoBoxTitle: 'Step 3',
-					iconimgPosition: 'left',
-					source_type: 'image',
-					showPrefix: false,
-					seperatorStyle: 'none',
-					ctaType: 'all',
-					headingTag: 'h4',
+					name: 'Step 3',
+					imgPosition: 'left'
 				},
 			},
 		],

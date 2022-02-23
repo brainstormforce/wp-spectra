@@ -1,84 +1,74 @@
 if ( googlefonts === undefined ) {
-	var googlefonts = [];
+	var googlefonts = []; // eslint-disable-line no-var
 }
-import { Component } from '@wordpress/element';
 import PropTypes from 'prop-types';
 import WebFont from 'webfontloader';
+import { useState, useEffect } from '@wordpress/element';
 const statuses = {
 	inactive: 'inactive',
 	active: 'active',
 	loading: 'loading',
 };
-
 const noop = () => {};
 
-class WebfontLoader extends Component {
-	constructor( props ) {
-		super( props );
+const WebfontLoader = ( props ) => {
+	const [ value, setValue ] = useState( [] );
 
-		this.state = {
-			status: undefined,
-		};
+	const status = undefined;
 
-		this.handleLoading = () => {
-			this.setState( { status: statuses.loading } );
-		};
+	useEffect( () => {
+		loadFonts();
+	}, [] );
 
-		this.addFont = ( font ) => {
-			if ( ! googlefonts.includes( font ) ) {
-				googlefonts.push( font );
-			}
-		};
+	useEffect( () => {
+		const { onStatus, config } = props;
 
-		this.handleActive = () => {
-			this.setState( { status: statuses.active } );
-		};
-
-		this.handleInactive = () => {
-			this.setState( { status: statuses.inactive } );
-		};
-
-		this.loadFonts = () => {
-			//if ( ! this.state.fonts.includes( this.props.config.google.families[ 0 ] ) ) {
-			if (
-				! googlefonts.includes( this.props.config.google.families[ 0 ] )
-			) {
-				WebFont.load( {
-					...this.props.config,
-					loading: this.handleLoading,
-					active: this.handleActive,
-					inactive: this.handleInactive,
-				} );
-				this.addFont( this.props.config.google.families[ 0 ] );
-			}
-		};
-	}
-
-	componentDidMount() {
-		this.loadFonts();
-	}
-
-	componentDidUpdate( prevProps, prevState ) {
-		const { onStatus, config } = this.props;
-
-		if ( prevState.status !== this.state.status ) {
-			onStatus( this.state.status );
+		if ( status !== value.status ) {
+			onStatus( value.status );
 		}
-		if ( prevProps.config !== config ) {
-			this.loadFonts();
+		if ( config !== value.config ) {
+			loadFonts();
 		}
-	}
+	}, [ props ] );
 
-	render() {
-		const { children } = this.props;
-		return children || null;
-	}
-}
+	const handleLoading = () => {
+		setValue( { status: statuses.loading } );
+	};
+
+	const addFont = ( font ) => {
+		if ( ! googlefonts.includes( font ) ) {
+			googlefonts.push( font );
+		}
+	};
+
+	const handleActive = () => {
+		setValue( { status: statuses.active } );
+	};
+
+	const handleInactive = () => {
+		setValue( { status: statuses.inactive } );
+	};
+
+	const loadFonts = () => {
+		if ( ! googlefonts.includes( props.config.google.families[ 0 ] ) ) {
+			WebFont.load( {
+				...props.config,
+				loading: handleLoading,
+				active: handleActive,
+				inactive: handleInactive,
+			} );
+			addFont( props.config.google.families[ 0 ] );
+		}
+	};
+
+	const { children } = props;
+	return children || null;
+};
 
 WebfontLoader.propTypes = {
-	config: PropTypes.object.isRequired,
+	config: PropTypes.object?.isRequired,
 	children: PropTypes.element,
-	onStatus: PropTypes.func.isRequired,
+	onStatus: PropTypes.func?.isRequired,
 };
 
 WebfontLoader.defaultProps = {

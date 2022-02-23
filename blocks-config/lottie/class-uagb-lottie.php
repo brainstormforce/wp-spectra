@@ -149,6 +149,7 @@ if ( ! class_exists( 'UAGB_Lottie' ) ) {
 			}
 
 			$main_classes = array(
+				'wp-block-uagb-lottie',
 				'uagb-block-' . $block_id,
 				'uagb-lottie__outer-wrap',
 				'uagb-lottie__' . $attributes['align'],

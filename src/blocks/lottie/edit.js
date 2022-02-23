@@ -5,7 +5,8 @@
 import styling from './styling';
 import React, { useState, useEffect, lazy, Suspense } from 'react';
 import lazyLoader from '@Controls/lazy-loader';
-
+import { useDeviceType } from '@Controls/getPreviewType';
+import addBlockEditorDynamicStyles from '@Controls/addBlockEditorDynamicStyles';
 const Settings = lazy( () =>
 	import( /* webpackChunkName: "chunks/lottie/settings" */ './settings' )
 );
@@ -14,6 +15,7 @@ const Render = lazy( () =>
 );
 
 const UAGBLottie = ( props ) => {
+	const deviceType = useDeviceType();
 	const lottieplayer = React.createRef();
 	const [ state, setState ] = useState( { direction: 1, loopState: true } );
 
@@ -22,24 +24,20 @@ const UAGBLottie = ( props ) => {
 		props.setAttributes( { block_id: props.clientId.substr( 0, 8 ) } );
 		props.setAttributes( { classMigrate: true } );
 
-		// Pushing Style tag for this block css.
-		const $style = document.createElement( 'style' );
-		$style.setAttribute(
-			'id',
-			'uagb-lottie-style-' + props.clientId.substr( 0, 8 )
-		);
-		document.head.appendChild( $style );
 	}, [] );
 
 	useEffect( () => {
-		const element = document.getElementById(
-			'uagb-lottie-style-' + props.clientId.substr( 0, 8 )
-		);
+		const blockStyling = styling( props );
 
-		if ( null !== element && undefined !== element ) {
-			element.innerHTML = styling( props );
-		}
+		addBlockEditorDynamicStyles( 'uagb-lottie-style-' + props.clientId.substr( 0, 8 ), blockStyling );
 	}, [ props ] );
+
+	useEffect( () => {
+		// Replacement for componentDidUpdate.
+		const blockStyling = styling( props );
+
+		addBlockEditorDynamicStyles( 'uagb-lottie-style-' + props.clientId.substr( 0, 8 ), blockStyling );
+	}, [deviceType] );
 
 	const loopLottie = () => {
 		const { setAttributes } = props;

@@ -12,9 +12,8 @@ import { __ } from '@wordpress/i18n';
 import { registerBlockType } from '@wordpress/blocks';
 
 registerBlockType( 'uagb/social-share-child', {
-	title: uagb_blocks_info.blocks[ 'uagb/social-share-child' ].title,
-	description:
-		uagb_blocks_info.blocks[ 'uagb/social-share-child' ].description,
+	title: __( 'Social Share Child', 'ultimate-addons-for-gutenberg' ),
+	description: __( 'This block allows you to place an image or icon in a list format.', 'ultimate-addons-for-gutenberg' ),
 	icon: UAGB_Block_Icons.social_share_child,
 	category: uagb_blocks_info.category,
 	parent: [ 'uagb/social-share' ],

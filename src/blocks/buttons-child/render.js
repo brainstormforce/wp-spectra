@@ -8,16 +8,18 @@ import renderSVG from '@Controls/renderIcon';
 import { __ } from '@wordpress/i18n';
 import { RichText } from '@wordpress/block-editor';
 import React from 'react';
+import { useDeviceType } from '@Controls/getPreviewType';
 
 const Render = ( props ) => {
 	props = props.parentProps;
 
-	const { attributes, setAttributes, deviceType } = props;
+	const { attributes, setAttributes } = props;
+
+	const deviceType = useDeviceType();
 
 	const {
 		className,
 		label,
-		inheritFromTheme,
 		icon,
 		iconPosition,
 	} = attributes;
@@ -27,7 +29,7 @@ const Render = ( props ) => {
 			return (
 				<span
 					className={ classnames(
-						`uagb-button__icon`,
+						'uagb-button__icon',
 						`uagb-button__icon-position-${ iconPosition }`
 					) }
 				>
@@ -45,14 +47,14 @@ const Render = ( props ) => {
 				'uagb-buttons__outer-wrap',
 				`uagb-editor-preview-mode-${ deviceType.toLowerCase() }`,
 				`uagb-block-${ props.clientId.substr( 0, 8 ) }`,
-				inheritFromTheme ? 'wp-block-button' : null
+				'wp-block-button'
 			) }
 		>
 			<div className="uagb-button__wrapper">
 				<div
 					className={ classnames(
 						'uagb-buttons-repeater',
-						inheritFromTheme ? 'wp-block-button__link' : null
+						'wp-block-button__link'
 					) }
 				>
 					{ iconHtml( 'before' ) }

@@ -15,8 +15,8 @@ import { registerBlockType } from '@wordpress/blocks';
 
 // Register the block
 registerBlockType( 'uagb/post-meta', {
-	title: uagb_blocks_info.blocks[ 'uagb/post-meta' ].title,
-	description: uagb_blocks_info.blocks[ 'uagb/post-meta' ].description,
+	title: __( 'Post Meta', 'ultimate-addons-for-gutenberg' ),
+	description: __( 'This block fetches post comments, author, publish date and categories data.', 'ultimate-addons-for-gutenberg' ),
 	icon: UAGB_Block_Icons.post_grid,
 	category: uagb_blocks_info.category,
 	parent: [ 'uagb/post-grid', 'uagb/post-masonry', 'uagb/post-carousel' ],

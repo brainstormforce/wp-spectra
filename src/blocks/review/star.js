@@ -44,7 +44,7 @@ const Stars = ( props ) => {
 		>
 			{ [ ...Array( limit ).keys() ].map( ( i ) => (
 				<svg
-					xmlns="http://www.w3.org/2000/svg"
+					xmlns="https://www.w3.org/2000/svg"
 					key={ i }
 					height="20"
 					width="20"
@@ -58,7 +58,7 @@ const Stars = ( props ) => {
 							<rect
 								height="150"
 								width={
-									( value - i > 0
+									( value - i > 0 // eslint-disable-line no-nested-ternary
 										? value - i < 1
 											? value - i
 											: 1

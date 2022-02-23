@@ -4,14 +4,14 @@
 	padding: 20px;
 }
 
-.uagb-timeline__icon-new svg {
-	fill: #333;
-}
+.wp-block-uagb-content-timeline {
 
-.uagb-timeline__main .uagb-timeline__icon-new {
-	color: #333;
-	font-size: 15px;
-	width: 15px;
+	svg {
+		fill: #333;
+		color: #333;
+		font-size: 15px;
+		width: 15px;
+	}
 }
 
 .uagb-timeline__field {

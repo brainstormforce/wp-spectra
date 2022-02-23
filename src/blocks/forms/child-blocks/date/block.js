@@ -8,10 +8,10 @@ import edit from './edit';
 import save from './save';
 
 import { registerBlockType } from '@wordpress/blocks';
-
+import { __ } from '@wordpress/i18n';
 registerBlockType( 'uagb/forms-date', {
-	title: uagb_blocks_info.blocks[ 'uagb/forms-date' ].title,
-	description: uagb_blocks_info.blocks[ 'uagb/forms-date' ].description,
+	title: __( 'Datepicker', 'ultimate-addons-for-gutenberg' ),
+	description: __( 'This block helps to add Datepicker field.', 'ultimate-addons-for-gutenberg' ),
 	icon: UAGB_Block_Icons.datepicker,
 	category: uagb_blocks_info.category,
 	parent: [ 'uagb/forms' ],

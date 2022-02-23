@@ -1,6 +1,6 @@
 <?php
 /**
- * UAGB - Contact Form 7 Styler.
+ * UAGB - Contact Form 7 Designer.
  *
  * @package UAGB
  */
@@ -200,9 +200,6 @@ if ( ! class_exists( 'UAGB_CF7_Styler' ) ) {
 						'labelFontWeight'               => array(
 							'type' => 'string',
 						),
-						'labelFontSubset'               => array(
-							'type' => 'string',
-						),
 						'labelLineHeightType'           => array(
 							'type'    => 'string',
 							'default' => 'em',
@@ -241,9 +238,6 @@ if ( ! class_exists( 'UAGB_CF7_Styler' ) ) {
 						'inputFontWeight'               => array(
 							'type' => 'string',
 						),
-						'inputFontSubset'               => array(
-							'type' => 'string',
-						),
 						'inputLineHeightType'           => array(
 							'type'    => 'string',
 							'default' => 'em',
@@ -280,9 +274,6 @@ if ( ! class_exists( 'UAGB_CF7_Styler' ) ) {
 							'default' => 'Default',
 						),
 						'buttonFontWeight'              => array(
-							'type' => 'string',
-						),
-						'buttonFontSubset'              => array(
 							'type' => 'string',
 						),
 						'buttonLineHeightType'          => array(
@@ -355,9 +346,6 @@ if ( ! class_exists( 'UAGB_CF7_Styler' ) ) {
 						'radioCheckFontWeight'          => array(
 							'type' => 'string',
 						),
-						'radioCheckFontSubset'          => array(
-							'type' => 'string',
-						),
 						'radioCheckLineHeightType'      => array(
 							'type'    => 'string',
 							'default' => 'em',
@@ -414,9 +402,6 @@ if ( ! class_exists( 'UAGB_CF7_Styler' ) ) {
 							'default' => 'Default',
 						),
 						'validationMsgFontWeight'       => array(
-							'type' => 'string',
-						),
-						'validationMsgFontSubset'       => array(
 							'type' => 'string',
 						),
 						'validationMsgLineHeightType'   => array(
@@ -497,9 +482,6 @@ if ( ! class_exists( 'UAGB_CF7_Styler' ) ) {
 						'msgFontWeight'                 => array(
 							'type' => 'string',
 						),
-						'msgFontSubset'                 => array(
-							'type' => 'string',
-						),
 						'msgLineHeightType'             => array(
 							'type'    => 'string',
 							'default' => 'em',
@@ -532,6 +514,216 @@ if ( ! class_exists( 'UAGB_CF7_Styler' ) ) {
 						'buttonBorderRadiusType'        => array(
 							'type'    => 'string',
 							'default' => 'px',
+						),
+						'messageTopPaddingDesktop'      => array(
+							'type' => 'number',
+						),
+						'messageBottomPaddingDesktop'   => array(
+							'type' => 'number',
+						),
+						'messageLeftPaddingDesktop'     => array(
+							'type' => 'number',
+						),
+						'messageRightPaddingDesktop'    => array(
+							'type' => 'number',
+						),
+
+						'messageTopPaddingTablet'       => array(
+							'type' => 'number',
+						),
+						'messageBottomPaddingTablet'    => array(
+							'type' => 'number',
+						),
+						'messageLeftPaddingTablet'      => array(
+							'type' => 'number',
+						),
+						'messageRightPaddingTablet'     => array(
+							'type' => 'number',
+						),
+
+						'messageTopPaddingMobile'       => array(
+							'type' => 'number',
+						),
+						'messageBottomPaddingMobile'    => array(
+							'type' => 'number',
+						),
+						'messageLeftPaddingMobile'      => array(
+							'type' => 'number',
+						),
+						'messageRightPaddingMobile'     => array(
+							'type' => 'number',
+						),
+						'messagePaddingTypeDesktop'     => array(
+							'type'    => 'string',
+							'default' => 'px',
+						),
+						'messageSpacingLink'            => array(
+							'type'    => 'boolean',
+							'default' => false,
+						),
+
+						'buttonTopPaddingDesktop'       => array(
+							'type' => 'number',
+						),
+						'buttonBottomPaddingDesktop'    => array(
+							'type' => 'number',
+						),
+						'buttonLeftPaddingDesktop'      => array(
+							'type' => 'number',
+						),
+						'buttonRightPaddingDesktop'     => array(
+							'type' => 'number',
+						),
+
+						'buttonTopPaddingTablet'        => array(
+							'type' => 'number',
+						),
+						'buttonBottomPaddingTablet'     => array(
+							'type' => 'number',
+						),
+						'buttonLeftPaddingTablet'       => array(
+							'type' => 'number',
+						),
+						'buttonRightPaddingTablet'      => array(
+							'type' => 'number',
+						),
+
+						'buttonTopPaddingMobile'        => array(
+							'type' => 'number',
+						),
+						'buttonBottomPaddingMobile'     => array(
+							'type' => 'number',
+						),
+						'buttonLeftPaddingMobile'       => array(
+							'type' => 'number',
+						),
+						'buttonRightPaddingMobile'      => array(
+							'type' => 'number',
+						),
+						'buttonPaddingTypeDesktop'      => array(
+							'type'    => 'string',
+							'default' => 'px',
+						),
+						'buttonPaddingTypeTablet'       => array(
+							'type'    => 'string',
+							'default' => 'px',
+						),
+						'buttonPaddingTypeMobile'       => array(
+							'type'    => 'string',
+							'default' => 'px',
+						),
+						'buttonSpacingLink'             => array(
+							'type'    => 'boolean',
+							'default' => false,
+						),
+
+						'fieldTopPaddingDesktop'        => array(
+							'type' => 'number',
+						),
+						'fieldBottomPaddingDesktop'     => array(
+							'type' => 'number',
+						),
+						'fieldLeftPaddingDesktop'       => array(
+							'type' => 'number',
+						),
+						'fieldRightPaddingDesktop'      => array(
+							'type' => 'number',
+						),
+
+						'fieldTopPaddingTablet'         => array(
+							'type' => 'number',
+						),
+						'fieldBottomPaddingTablet'      => array(
+							'type' => 'number',
+						),
+						'fieldLeftPaddingTablet'        => array(
+							'type' => 'number',
+						),
+						'fieldRightPaddingTablet'       => array(
+							'type' => 'number',
+						),
+
+						'fieldTopPaddingMobile'         => array(
+							'type' => 'number',
+						),
+						'fieldBottomPaddingMobile'      => array(
+							'type' => 'number',
+						),
+						'fieldLeftPaddingMobile'        => array(
+							'type' => 'number',
+						),
+						'fieldRightPaddingMobile'       => array(
+							'type' => 'number',
+						),
+						'fieldPaddingTypeDesktop'       => array(
+							'type'    => 'string',
+							'default' => 'px',
+						),
+						'fieldPaddingTypeTablet'        => array(
+							'type'    => 'string',
+							'default' => 'px',
+						),
+						'fieldPaddingTypeMobile'        => array(
+							'type'    => 'string',
+							'default' => 'px',
+						),
+						'fieldSpacingLink'              => array(
+							'type'    => 'boolean',
+							'default' => false,
+						),
+						'labelTransform'                => array(
+							'type' => 'string',
+						),
+						'labelDecoration'               => array(
+							'type' => 'string',
+						),
+						'labelFontStyle'                => array(
+							'type' => 'string',
+						),
+						'inputTransform'                => array(
+							'type' => 'string',
+						),
+						'inputDecoration'               => array(
+							'type' => 'string',
+						),
+						'inputFontStyle'                => array(
+							'type' => 'string',
+						),
+						'buttonTransform'               => array(
+							'type' => 'string',
+						),
+						'buttonDecoration'              => array(
+							'type' => 'string',
+						),
+						'buttonFontStyle'               => array(
+							'type' => 'string',
+						),
+						'radioCheckTransform'           => array(
+							'type' => 'string',
+						),
+						'radioCheckDecoration'          => array(
+							'type' => 'string',
+						),
+						'radioCheckFontStyle'           => array(
+							'type' => 'string',
+						),
+						'validationMsgTransform'        => array(
+							'type' => 'string',
+						),
+						'validationMsgDecoration'       => array(
+							'type' => 'string',
+						),
+						'validationMsgFontStyle'        => array(
+							'type' => 'string',
+						),
+						'msgTransform'                  => array(
+							'type' => 'string',
+						),
+						'msgDecoration'                 => array(
+							'type' => 'string',
+						),
+						'msgFontStyle'                  => array(
+							'type' => 'string',
 						),
 					),
 					'render_callback' => array( $this, 'render_html' ),

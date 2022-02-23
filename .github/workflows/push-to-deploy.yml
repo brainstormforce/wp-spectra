@@ -1,8 +1,7 @@
 name: Deploy to WordPress.org
 on:
-  push:
-    tags:
-    - "*"
+  release:
+    types: [published]
 jobs:
   tag:
     name: New tag
@@ -10,7 +9,7 @@ jobs:
     steps:
     - uses: actions/checkout@master
     - name: WordPress Plugin Deploy
-      uses: Nikschavan/action-wordpress-plugin-deploy@develop
+      uses: 10up/action-wordpress-plugin-deploy@master
       env:
-        SVN_PASSWORD: ${{ secrets.SVN_PASSWORD }}
         SVN_USERNAME: ${{ secrets.SVN_USERNAME }}
+        SVN_PASSWORD: ${{ secrets.SVN_PASSWORD }}

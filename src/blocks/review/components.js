@@ -1,4 +1,4 @@
-const { RichText } = wp.blockEditor || wp.editor;
+import { RichText } from '@wordpress/block-editor';
 import { __ } from '@wordpress/i18n';
 import { Component } from 'react';
 
@@ -68,7 +68,7 @@ export class Stars extends Component {
 			>
 				{ [ ...Array( limit ).keys() ].map( ( i ) => (
 					<svg
-						xmlns="http://www.w3.org/2000/svg"
+						xmlns="https://www.w3.org/2000/svg"
 						key={ i }
 						height="20"
 						width="20"
@@ -84,7 +84,7 @@ export class Stars extends Component {
 								<rect
 									height="150"
 									width={
-										( displayValue - i > 0
+										( displayValue - i > 0 // eslint-disable-line no-nested-ternary
 											? displayValue - i < 1
 												? displayValue - i
 												: 1
@@ -254,7 +254,7 @@ export class ReviewBody extends Component {
 									} }
 								>
 									{ items.length > 1 && (
-										<div
+										<div // eslint-disable-line jsx-a11y/click-events-have-key-events, jsx-a11y/no-static-element-interactions
 											className="dashicons dashicons-trash"
 											onClick={ () => {
 												const newItems = items
@@ -316,7 +316,7 @@ export class ReviewBody extends Component {
 						)
 				) }
 				{ showfeature === true && (
-					<div
+					<div // eslint-disable-line jsx-a11y/click-events-have-key-events, jsx-a11y/no-static-element-interactions
 						title={ __( 'Insert new review entry' ) }
 						onClick={ () => {
 							setItems( [ ...items, { label: '', value: 0 } ] );

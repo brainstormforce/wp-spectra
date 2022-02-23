@@ -10,15 +10,15 @@ import save from './save';
 import deprecated from './deprecated';
 import { __ } from '@wordpress/i18n';
 
-const { registerBlockType } = wp.blocks;
+import { registerBlockType } from '@wordpress/blocks';
 
 registerBlockType( 'uagb/section', {
-	title: uagb_blocks_info.blocks[ 'uagb/section' ].title,
-	description: uagb_blocks_info.blocks[ 'uagb/section' ].description,
+	title: __( 'Advanced Row', 'ultimate-addons-for-gutenberg' ),
+	description: __( 'This block is an outer wrap section that allows you to add other blocks within it.', 'ultimate-addons-for-gutenberg' ),
 	icon: UAGB_Block_Icons.section,
 	category: uagb_blocks_info.category,
 	keywords: [
-		__( 'section', 'ultimate-addons-for-gutenberg' ),
+		__( 'advanced row', 'ultimate-addons-for-gutenberg' ),
 		__( 'wrapper', 'ultimate-addons-for-gutenberg' ),
 		__( 'uag', 'ultimate-addons-for-gutenberg' ),
 	],
@@ -35,7 +35,7 @@ registerBlockType( 'uagb/section', {
 			'wide' === align ||
 			'full' === align
 		) {
-			if ( 'full_width' == contentWidth ) {
+			if ( 'full_width' === contentWidth ) {
 				return { 'data-align': align };
 			}
 		}

@@ -41,6 +41,7 @@ function styling( props ) {
 		borderWidth,
 		borderGap,
 		verticalPadding,
+		verticalPaddingUnit,
 		quoteColor,
 		quoteSize,
 		quoteSizeType,
@@ -63,10 +64,10 @@ function styling( props ) {
 		tweetBtnBgColor,
 		tweetBtnHoverColor,
 		tweetBtnBgHoverColor,
-		tweetBtnHrPadding,
-		tweetBtnVrPadding,
 		tweetIconSpacing,
+		tweetIconSpacingUnit,
 		authorImageWidth,
+		authorImageWidthUnit,
 		authorImgBorderRadius,
 		quoteBorderRadius,
 		quoteTopMargin,
@@ -80,6 +81,47 @@ function styling( props ) {
 		quotePaddingType,
 		quotePaddingTablet,
 		quotePaddingMobile,
+		authorImgBorderRadiusUnit,
+		borderWidthUnit,
+		quoteBorderRadiusUnit,
+		quoteUnit,
+		borderGapUnit,
+		descSpaceUnit,
+		authorSpaceUnit,
+		paddingBtnTop,
+		paddingBtnBottom,
+		paddingBtnLeft,
+		paddingBtnRight,
+		paddingBtnTopTablet,
+		paddingBtnRightTablet,
+		paddingBtnBottomTablet,
+		paddingBtnLeftTablet,
+		paddingBtnTopMobile,
+		paddingBtnRightMobile,
+		paddingBtnBottomMobile,
+		paddingBtnLeftMobile,
+		paddingBtnUnit,
+		mobilePaddingBtnUnit,
+		tabletPaddingBtnUnit,
+		descTransform,
+		authorTransform,
+		tweetBtnTransform,
+		descDecoration,
+		authorDecoration,
+		tweetBtnDecoration,
+		quoteTopMarginTablet,
+		quoteBottomMarginTablet,
+		quoteLeftMarginTablet,
+		quoteRightMarginTablet,
+		quoteTopMarginMobile,
+		quoteBottomMarginMobile,
+		quoteLeftMarginMobile,
+		quoteRightMarginMobile,
+		quotemobileUnit,
+		quotetabletUnit,
+		descFontStyle,
+		authorFontStyle,
+		tweetBtnFontStyle
 	} = props.attributes;
 
 	let tmpAuthorSpace = authorSpace;
@@ -103,8 +145,11 @@ function styling( props ) {
 				descLineHeight,
 				descLineHeightType
 			),
-			color: descColor,
-			'margin-bottom': generateCSSUnit( descSpace, 'px' ),
+			'font-style': descFontStyle,
+			'text-decoration': descDecoration,
+			'text-transform': descTransform,
+			'color': descColor,
+			'margin-bottom': generateCSSUnit( descSpace, descSpaceUnit ),
 			'text-align': textAlign,
 		},
 		' .uagb-blockquote__author.block-editor-rich-text__editable': {
@@ -115,55 +160,70 @@ function styling( props ) {
 				authorLineHeight,
 				authorLineHeightType
 			),
-			color: authorColor,
+			'font-style': authorFontStyle,
+			'text-decoration': authorDecoration,
+			'text-transform': authorTransform,
+			'color': authorColor,
 			'text-align': textAlign,
 		},
-		' .uagb-blockquote__skin-border blockquote.uagb-blockquote': {
+		'.uagb-blockquote__skin-border blockquote.uagb-blockquote': {
 			'border-color': borderColor,
 			'border-left-style': borderStyle,
-			'border-left-width': generateCSSUnit( borderWidth, 'px' ),
-			'padding-left': generateCSSUnit( borderGap, 'px' ),
-			'padding-top': generateCSSUnit( verticalPadding, 'px' ),
-			'padding-bottom': generateCSSUnit( verticalPadding, 'px' ),
+			'border-left-width': generateCSSUnit(
+				borderWidth,
+				borderWidthUnit
+			),
+			'padding-left': generateCSSUnit( borderGap, borderGapUnit ),
+			'padding-top': generateCSSUnit(
+				verticalPadding,
+				verticalPaddingUnit
+			),
+			'padding-bottom': generateCSSUnit(
+				verticalPadding,
+				verticalPaddingUnit
+			),
 		},
-		' .uagb-blockquote__skin-border blockquote.uagb-blockquote:hover': {
+		'.uagb-blockquote__skin-border blockquote.uagb-blockquote:hover': {
 			'border-left-color': borderHoverColor,
 		},
-		' .uagb-blockquote__skin-quotation .uagb-blockquote__icon-wrap': {
-			background: quoteBgColor,
-			'border-radius': generateCSSUnit( quoteBorderRadius, '%' ),
-			'margin-top': generateCSSUnit( quoteTopMargin, 'px' ),
-			'margin-bottom': generateCSSUnit( quoteBottomMargin, 'px' ),
-			'margin-left': generateCSSUnit( quoteLeftMargin, 'px' ),
-			'margin-right': generateCSSUnit( quoteRightMargin, 'px' ),
-			padding: generateCSSUnit( quotePadding, quotePaddingType ),
+		'.uagb-blockquote__skin-quotation .uagb-blockquote__icon': {
+			'background': quoteBgColor,
+			'border-radius': generateCSSUnit(
+				quoteBorderRadius,
+				quoteBorderRadiusUnit
+			),
+			'margin-top': generateCSSUnit( quoteTopMargin, quoteUnit ),
+			'margin-bottom': generateCSSUnit( quoteBottomMargin, quoteUnit ),
+			'margin-left': generateCSSUnit( quoteLeftMargin, quoteUnit ),
+			'margin-right': generateCSSUnit( quoteRightMargin, quoteUnit ),
+			'padding': generateCSSUnit( quotePadding, quotePaddingType ),
 		},
-		' .uagb-blockquote__skin-quotation .uagb-blockquote__icon': {
-			width: generateCSSUnit( quoteSize, quoteSizeType ),
-			height: generateCSSUnit( quoteSize, quoteSizeType ),
+		'.uagb-blockquote__skin-quotation .uagb-blockquote__icon svg': {
+			'width': generateCSSUnit( quoteSize, quoteSizeType ),
+			'height': generateCSSUnit( quoteSize, quoteSizeType ),
+			'fill': quoteColor,
 		},
-		' .uagb-blockquote__skin-quotation .uagb-blockquote__icon svg': {
-			fill: quoteColor,
+		'.uagb-blockquote__skin-quotation .uagb-blockquote__icon:hover': {
+			'background': quoteBgHoverColor,
 		},
-		' .uagb-blockquote__skin-quotation .uagb-blockquote__icon-wrap:hover': {
-			background: quoteBgHoverColor,
+		'.uagb-blockquote__skin-quotation .uagb-blockquote__icon:hover .uagb-blockquote__icon svg': {
+			'fill': quoteHoverColor,
 		},
-		' .uagb-blockquote__skin-quotation .uagb-blockquote__icon-wrap:hover .uagb-blockquote__icon svg': {
-			fill: quoteHoverColor,
-		},
-		' .uagb-blockquote__style-style_1 .uagb-blockquote': {
+		'.uagb-blockquote__style-style_1 .uagb-blockquote': {
 			'text-align': align,
 		},
 		' .uagb-blockquote__author-wrap': {
-			'margin-bottom': generateCSSUnit( tmpAuthorSpace, 'px' ),
+			'margin-bottom': generateCSSUnit( tmpAuthorSpace, authorSpaceUnit ),
 		},
-		' .uagb-blockquote__author-image img': {
-			width: generateCSSUnit( authorImageWidth, 'px' ),
-			height: generateCSSUnit( authorImageWidth, 'px' ),
-			'border-radius': generateCSSUnit( authorImgBorderRadius, '%' ),
+		' .uagb-blockquote__author-wrap img': {
+			'width': generateCSSUnit( authorImageWidth, authorImageWidthUnit ),
+			'height': generateCSSUnit( authorImageWidth, authorImageWidthUnit ),
+			'border-radius': generateCSSUnit(
+				authorImgBorderRadius,
+				authorImgBorderRadiusUnit
+			),
 		},
 	};
-
 	if ( enableTweet ) {
 		selectors[ ' a.uagb-blockquote__tweet-button' ] = {
 			'font-size': generateCSSUnit(
@@ -176,118 +236,146 @@ function styling( props ) {
 				tweetBtnLineHeight,
 				tweetBtnLineHeightType
 			),
+			'font-style': tweetBtnFontStyle,
+			'text-decoration': tweetBtnDecoration,
+			'text-transform': tweetBtnTransform,
 		};
 		selectors[
-			' .uagb-blockquote__tweet-style-link a.uagb-blockquote__tweet-button'
+			'.uagb-blockquote__tweet-style-link a.uagb-blockquote__tweet-button'
 		] = {
-			color: tweetLinkColor,
-		};
-
-		selectors[
-			' .uagb-blockquote__tweet-style-link a.uagb-blockquote__tweet-button svg'
-		] = {
-			fill: tweetLinkColor,
+			'color': tweetLinkColor,
 		};
 
 		selectors[
-			' .uagb-blockquote__tweet-style-classic a.uagb-blockquote__tweet-button'
+			'.uagb-blockquote__tweet-style-link a.uagb-blockquote__tweet-button svg'
 		] = {
-			color: tweetBtnColor,
+			'fill': tweetLinkColor,
+		};
+
+		selectors[
+			'.uagb-blockquote__tweet-style-classic a.uagb-blockquote__tweet-button'
+		] = {
+			'color': tweetBtnColor,
 			'background-color': tweetBtnBgColor,
-			'padding-left': generateCSSUnit( tweetBtnHrPadding, 'px' ),
-			'padding-right': generateCSSUnit( tweetBtnHrPadding, 'px' ),
-			'padding-top': generateCSSUnit( tweetBtnVrPadding, 'px' ),
-			'padding-bottom': generateCSSUnit( tweetBtnVrPadding, 'px' ),
+			'padding-left': generateCSSUnit( paddingBtnLeft, paddingBtnUnit ),
+			'padding-right': generateCSSUnit( paddingBtnRight, paddingBtnUnit ),
+			'padding-top': generateCSSUnit( paddingBtnTop, paddingBtnUnit ),
+			'padding-bottom': generateCSSUnit(
+				paddingBtnBottom,
+				paddingBtnUnit
+			),
 		};
-
 		selectors[
-			' .uagb-blockquote__tweet-style-classic a.uagb-blockquote__tweet-button svg'
+			'.uagb-blockquote__tweet-style-bubble a.uagb-blockquote__tweet-button'
 		] = {
-			fill: tweetBtnColor,
-		};
-
-		selectors[
-			' .uagb-blockquote__tweet-style-bubble a.uagb-blockquote__tweet-button'
-		] = {
-			color: tweetBtnColor,
+			'color': tweetBtnColor,
 			'background-color': tweetBtnBgColor,
-			'padding-left': generateCSSUnit( tweetBtnHrPadding, 'px' ),
-			'padding-right': generateCSSUnit( tweetBtnHrPadding, 'px' ),
-			'padding-top': generateCSSUnit( tweetBtnVrPadding, 'px' ),
-			'padding-bottom': generateCSSUnit( tweetBtnVrPadding, 'px' ),
+			'padding-left': generateCSSUnit( paddingBtnLeft, paddingBtnUnit ),
+			'padding-right': generateCSSUnit( paddingBtnRight, paddingBtnUnit ),
+			'padding-top': generateCSSUnit( paddingBtnTop, paddingBtnUnit ),
+			'padding-bottom': generateCSSUnit(
+				paddingBtnBottom,
+				paddingBtnUnit
+			),
 		};
 		selectors[
-			' .uagb-blockquote__tweet-style-bubble a.uagb-blockquote__tweet-button svg'
+			'.uagb-blockquote__tweet-style-classic a.uagb-blockquote__tweet-button svg'
 		] = {
-			fill: tweetBtnColor,
+			'fill': tweetBtnColor,
+		};
+		selectors[
+			'.uagb-blockquote__tweet-style-bubble a.uagb-blockquote__tweet-button svg'
+		] = {
+			'fill': tweetBtnColor,
 		};
 
 		selectors[
-			' .uagb-blockquote__tweet-style-bubble a.uagb-blockquote__tweet-button:before'
+			'.uagb-blockquote__tweet-style-bubble a.uagb-blockquote__tweet-button:before'
 		] = {
 			'border-right-color': tweetBtnBgColor,
 		};
 
 		selectors[ ' a.uagb-blockquote__tweet-button svg' ] = {
-			width: generateCSSUnit( tweetBtnFontSize, tweetBtnFontSizeType ),
-			height: generateCSSUnit( tweetBtnFontSize, tweetBtnFontSizeType ),
+			'width': generateCSSUnit( tweetBtnFontSize, tweetBtnFontSizeType ),
+			'height': generateCSSUnit( tweetBtnFontSize, tweetBtnFontSizeType ),
 		};
 
 		selectors[
-			' .uagb-blockquote__tweet-icon_text a.uagb-blockquote__tweet-button svg'
+			'.uagb-blockquote__tweet-icon_text a.uagb-blockquote__tweet-button svg'
 		] = {
-			'margin-right': generateCSSUnit( tweetIconSpacing, 'px' ),
+			'margin-right': generateCSSUnit(
+				tweetIconSpacing,
+				tweetIconSpacingUnit
+			),
 		};
 
 		// Hover CSS
 		selectors[
-			' .uagb-blockquote__tweet-style-link a.uagb-blockquote__tweet-button:hover'
+			'.uagb-blockquote__tweet-style-link a.uagb-blockquote__tweet-button:hover'
 		] = {
-			color: tweetBtnHoverColor,
+			'color': tweetBtnHoverColor,
 		};
 
 		selectors[
-			' .uagb-blockquote__tweet-style-link a.uagb-blockquote__tweet-button:hover svg'
+			'.uagb-blockquote__tweet-style-link a.uagb-blockquote__tweet-button:hover svg'
 		] = {
-			fill: tweetBtnHoverColor,
+			'fill': tweetBtnHoverColor,
 		};
 
 		selectors[
-			' .uagb-blockquote__tweet-style-classic a.uagb-blockquote__tweet-button:hover'
+			'.uagb-blockquote__tweet-style-classic a.uagb-blockquote__tweet-button:hover'
 		] = {
-			color: tweetBtnHoverColor,
+			'color': tweetBtnHoverColor,
 			'background-color': tweetBtnBgHoverColor,
 		};
 
 		selectors[
-			' .uagb-blockquote__tweet-style-classic a.uagb-blockquote__tweet-button:hover svg'
+			'.uagb-blockquote__tweet-style-classic a.uagb-blockquote__tweet-button:hover svg'
 		] = {
-			fill: tweetBtnHoverColor,
+			'fill': tweetBtnHoverColor,
 			'background-color': tweetBtnBgHoverColor,
 		};
 
 		selectors[
-			' .uagb-blockquote__tweet-style-bubble a.uagb-blockquote__tweet-button:hover '
+			'.uagb-blockquote__tweet-style-bubble a.uagb-blockquote__tweet-button:hover '
 		] = {
-			color: tweetBtnHoverColor,
+			'color': tweetBtnHoverColor,
 			'background-color': tweetBtnBgHoverColor,
 		};
 
 		selectors[
-			' .uagb-blockquote__tweet-style-bubble a.uagb-blockquote__tweet-button:hover svg'
+			'.uagb-blockquote__tweet-style-bubble a.uagb-blockquote__tweet-button:hover svg'
 		] = {
-			fill: tweetBtnHoverColor,
+			'fill': tweetBtnHoverColor,
 			'background-color': tweetBtnBgHoverColor,
 		};
 
 		selectors[
-			' .uagb-blockquote__tweet-style-bubble a.uagb-blockquote__tweet-button:hover:before'
+			'.uagb-blockquote__tweet-style-bubble a.uagb-blockquote__tweet-button:hover:before'
 		] = {
 			'border-right-color': tweetBtnBgHoverColor,
 		};
 	}
-
 	const tabletSelectors = {
+		'.uagb-blockquote__skin-quotation .uagb-blockquote__icon': {
+			'margin-top': generateCSSUnit(
+				quoteTopMarginTablet,
+				quotetabletUnit
+			),
+			'margin-bottom': generateCSSUnit(
+				quoteBottomMarginTablet,
+				quotetabletUnit
+			),
+			'margin-left': generateCSSUnit(
+				quoteLeftMarginTablet,
+				quotetabletUnit
+			),
+			'margin-right': generateCSSUnit(
+				quoteRightMarginTablet,
+				quotetabletUnit
+			),
+			'padding': generateCSSUnit( quotePaddingTablet, quotePaddingType ),
+		},
 		' .uagb-blockquote__content.block-editor-rich-text__editable': {
 			'font-size': generateCSSUnit(
 				descFontSizeTablet,
@@ -319,25 +407,58 @@ function styling( props ) {
 			),
 		},
 		' a.uagb-blockquote__tweet-button svg': {
-			width: generateCSSUnit(
+			'width': generateCSSUnit(
 				tweetBtnFontSizeTablet,
 				tweetBtnFontSizeType
 			),
-			height: generateCSSUnit(
+			'height': generateCSSUnit(
 				tweetBtnFontSizeTablet,
 				tweetBtnFontSizeType
 			),
 		},
-		' .uagb-blockquote__skin-quotation .uagb-blockquote__icon-wrap': {
-			padding: generateCSSUnit( quotePaddingTablet, quotePaddingType ),
+		'.uagb-blockquote__skin-quotation .uagb-blockquote__icon svg': {
+			'width': generateCSSUnit( quoteSizeTablet, quoteSizeType ),
+			'height': generateCSSUnit( quoteSizeTablet, quoteSizeType ),
 		},
-		' .uagb-blockquote__skin-quotation .uagb-blockquote__icon': {
-			width: generateCSSUnit( quoteSizeTablet, quoteSizeType ),
-			height: generateCSSUnit( quoteSizeTablet, quoteSizeType ),
+		'.uagb-blockquote__tweet-style-classic a.uagb-blockquote__tweet-button': {
+			'padding-left': generateCSSUnit(
+				paddingBtnLeftTablet,
+				tabletPaddingBtnUnit
+			),
+			'padding-right': generateCSSUnit(
+				paddingBtnRightTablet,
+				tabletPaddingBtnUnit
+			),
+			'padding-top': generateCSSUnit(
+				paddingBtnTopTablet,
+				tabletPaddingBtnUnit
+			),
+			'padding-bottom': generateCSSUnit(
+				paddingBtnBottomTablet,
+				tabletPaddingBtnUnit
+			),
 		},
 	};
-
 	const mobileSelectors = {
+		'.uagb-blockquote__skin-quotation .uagb-blockquote__icon': {
+			'margin-top': generateCSSUnit(
+				quoteTopMarginMobile,
+				quotemobileUnit
+			),
+			'margin-bottom': generateCSSUnit(
+				quoteBottomMarginMobile,
+				quotemobileUnit
+			),
+			'margin-left': generateCSSUnit(
+				quoteLeftMarginMobile,
+				quotemobileUnit
+			),
+			'margin-right': generateCSSUnit(
+				quoteRightMarginMobile,
+				quotemobileUnit
+			),
+			'padding': generateCSSUnit( quotePaddingMobile, quotePaddingType ),
+		},
 		' .uagb-blockquote__content.block-editor-rich-text__editable': {
 			'font-size': generateCSSUnit(
 				descFontSizeMobile,
@@ -369,35 +490,58 @@ function styling( props ) {
 			),
 		},
 		' a.uagb-blockquote__tweet-button svg': {
-			width: generateCSSUnit(
+			'width': generateCSSUnit(
 				tweetBtnFontSizeMobile,
 				tweetBtnFontSizeType
 			),
-			height: generateCSSUnit(
+			'height': generateCSSUnit(
 				tweetBtnFontSizeMobile,
 				tweetBtnFontSizeType
 			),
 		},
-		' .uagb-blockquote__skin-quotation .uagb-blockquote__icon-wrap': {
-			padding: generateCSSUnit( quotePaddingMobile, quotePaddingType ),
+		'.uagb-blockquote__skin-quotation .uagb-blockquote__icon svg': {
+			'width': generateCSSUnit( quoteSizeMobile, quoteSizeType ),
+			'height': generateCSSUnit( quoteSizeMobile, quoteSizeType ),
 		},
-		' .uagb-blockquote__skin-quotation .uagb-blockquote__icon': {
-			width: generateCSSUnit( quoteSizeMobile, quoteSizeType ),
-			height: generateCSSUnit( quoteSizeMobile, quoteSizeType ),
+		'.uagb-blockquote__tweet-style-classic a.uagb-blockquote__tweet-button': {
+			'padding-left': generateCSSUnit(
+				paddingBtnLeftMobile,
+				mobilePaddingBtnUnit
+			),
+			'padding-right': generateCSSUnit(
+				paddingBtnRightMobile,
+				mobilePaddingBtnUnit
+			),
+			'padding-top': generateCSSUnit(
+				paddingBtnTopMobile,
+				mobilePaddingBtnUnit
+			),
+			'padding-bottom': generateCSSUnit(
+				paddingBtnBottomMobile,
+				mobilePaddingBtnUnit
+			),
 		},
 	};
-
-	const baseSelector = `.block-editor-page #wpwrap .uagb-block-${ props.clientId.substr(
+	const baseSelector = `.editor-styles-wrapper .uagb-block-${ props.clientId.substr(
 		0,
 		8
 	) }`;
 
 	let stylingCss = generateCSS( selectors, baseSelector );
 
-	stylingCss += generateCSS( tabletSelectors, baseSelector, true, 'tablet' );
+	stylingCss += generateCSS(
+		tabletSelectors,
+		`${ baseSelector }.uagb-editor-preview-mode-tablet`,
+		true,
+		'tablet'
+	);
 
-	stylingCss += generateCSS( mobileSelectors, baseSelector, true, 'mobile' );
-
+	stylingCss += generateCSS(
+		mobileSelectors,
+		`${ baseSelector }.uagb-editor-preview-mode-mobile`,
+		true,
+		'mobile'
+	);
 	return stylingCss;
 }
 

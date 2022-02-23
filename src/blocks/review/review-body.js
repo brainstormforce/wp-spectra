@@ -123,7 +123,7 @@ const ReviewBody = ( props ) => {
 								} }
 							>
 								{ items.length > 1 && (
-									<div
+									<div // eslint-disable-line jsx-a11y/click-events-have-key-events, jsx-a11y/no-static-element-interactions
 										className="dashicons dashicons-trash"
 										onClick={ () => {
 											const newItems = items
@@ -182,7 +182,7 @@ const ReviewBody = ( props ) => {
 					)
 			) }
 			{ showfeature === true && (
-				<div
+				<div // eslint-disable-line jsx-a11y/click-events-have-key-events, jsx-a11y/no-static-element-interactions
 					title={ __( 'Insert new review entry' ) }
 					onClick={ () => {
 						setItems( [ ...items, { label: '', value: 0 } ] );

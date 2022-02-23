@@ -45,7 +45,13 @@ class UAGB_Init_Blocks {
 		// Hook: Editor assets.
 		add_action( 'enqueue_block_editor_assets', array( $this, 'editor_assets' ) );
 
-		add_filter( 'block_categories', array( $this, 'register_block_category' ), 10, 2 );
+		if ( version_compare( get_bloginfo( 'version' ), '5.8', '>=' ) ) {
+			add_filter( 'block_categories_all', array( $this, 'register_block_category' ), 999999, 2 );
+		} else {
+			add_filter( 'block_categories', array( $this, 'register_block_category' ), 999999, 2 );
+		}
+
+		add_action( 'wp_ajax_uagb_get_taxonomy', array( $this, 'get_taxonomy' ) );
 
 		add_action( 'wp_ajax_uagb_gf_shortcode', array( $this, 'gf_shortcode' ) );
 		add_action( 'wp_ajax_nopriv_uagb_gf_shortcode', array( $this, 'gf_shortcode' ) );
@@ -225,6 +231,123 @@ class UAGB_Init_Blocks {
 	}
 
 	/**
+	 * Ajax call to get Taxonomy List.
+	 *
+	 * @since x.x.x
+	 */
+	public function get_taxonomy() {
+
+		check_ajax_referer( 'uagb_ajax_nonce', 'nonce' );
+
+			$post_types = UAGB_Helper::get_post_types();
+
+			$return_array = array();
+
+		foreach ( $post_types as $key => $value ) {
+			$post_type = $value['value'];
+
+			$taxonomies = get_object_taxonomies( $post_type, 'objects' );
+			$data       = array();
+
+			$get_singular_name = get_post_type_object( $post_type );
+			foreach ( $taxonomies as $tax_slug => $tax ) {
+				if ( ! $tax->public || ! $tax->show_ui || ! $tax->show_in_rest ) {
+					continue;
+				}
+
+				$data[ $tax_slug ] = $tax;
+
+				$terms = get_terms( $tax_slug );
+
+				$related_tax_terms = array();
+
+				if ( ! empty( $terms ) ) {
+					foreach ( $terms as $t_index => $t_obj ) {
+						$related_tax_terms[] = array(
+							'id'            => $t_obj->term_id,
+							'name'          => $t_obj->name,
+							'count'         => $t_obj->count,
+							'link'          => get_term_link( $t_obj->term_id ),
+							'singular_name' => $get_singular_name->labels->singular_name,
+						);
+					}
+
+					$return_array[ $post_type ]['terms'][ $tax_slug ] = $related_tax_terms;
+				}
+
+				$newcategoriesList = get_terms(
+					$tax_slug,
+					array(
+						'hide_empty' => true,
+						'parent'     => 0,
+					)
+				);
+
+				$related_tax = array();
+
+				if ( ! empty( $newcategoriesList ) ) {
+					foreach ( $newcategoriesList as $t_index => $t_obj ) {
+						$child_arg     = array(
+							'hide_empty' => true,
+							'parent'     => $t_obj->term_id,
+						);
+						$child_cat     = get_terms( $tax_slug, $child_arg );
+						$child_cat_arr = $child_cat ? $child_cat : null;
+						$related_tax[] = array(
+							'id'            => $t_obj->term_id,
+							'name'          => $t_obj->name,
+							'count'         => $t_obj->count,
+							'link'          => get_term_link( $t_obj->term_id ),
+							'singular_name' => $get_singular_name->labels->singular_name,
+							'children'      => $child_cat_arr,
+						);
+
+					}
+
+					$return_array[ $post_type ]['without_empty_taxonomy'][ $tax_slug ] = $related_tax;
+
+				}
+
+				$newcategoriesList_empty_tax = get_terms(
+					$tax_slug,
+					array(
+						'hide_empty' => false,
+						'parent'     => 0,
+					)
+				);
+
+				$related_tax_empty_tax = array();
+
+				if ( ! empty( $newcategoriesList_empty_tax ) ) {
+					foreach ( $newcategoriesList_empty_tax as $t_index => $t_obj ) {
+						$child_arg_empty_tax     = array(
+							'hide_empty' => false,
+							'parent'     => $t_obj->term_id,
+						);
+						$child_cat_empty_tax     = get_terms( $tax_slug, $child_arg_empty_tax );
+						$child_cat_empty_tax_arr = $child_cat_empty_tax ? $child_cat_empty_tax : null;
+						$related_tax_empty_tax[] = array(
+							'id'            => $t_obj->term_id,
+							'name'          => $t_obj->name,
+							'count'         => $t_obj->count,
+							'link'          => get_term_link( $t_obj->term_id ),
+							'singular_name' => $get_singular_name->labels->singular_name,
+							'children'      => $child_cat_empty_tax_arr,
+						);
+					}
+
+					$return_array[ $post_type ]['with_empty_taxonomy'][ $tax_slug ] = $related_tax_empty_tax;
+
+				}
+			}
+			$return_array[ $post_type ]['taxonomy'] = $data;
+
+		}
+
+		wp_send_json_success( apply_filters( 'uagb_taxonomies_list', $return_array ) );
+	}
+
+	/**
 	 * Renders the Gravity Form shortcode.
 	 *
 	 * @since 1.12.0
@@ -271,13 +394,13 @@ class UAGB_Init_Blocks {
 	 */
 	public function register_block_category( $categories, $post ) {
 		return array_merge(
-			$categories,
 			array(
 				array(
 					'slug'  => 'uagb',
 					'title' => __( 'Ultimate Addons Blocks', 'ultimate-addons-for-gutenberg' ),
 				),
-			)
+			),
+			$categories
 		);
 	}
 
@@ -297,7 +420,14 @@ class UAGB_Init_Blocks {
 				'dependencies' => array(),
 				'version'      => UAGB_VER,
 			);
-		$script_dep      = array_merge( $script_info['dependencies'], array( 'wp-blocks', 'wp-i18n', 'wp-element', 'wp-components', 'wp-editor', 'wp-api-fetch' ) );
+		global $pagenow;
+		$script_dep = array_merge( $script_info['dependencies'], array( 'wp-blocks', 'wp-i18n', 'wp-element', 'wp-components', 'wp-api-fetch', 'uagb-cross-site-cp-helper-js' ) );
+		if ( 'widgets.php' !== $pagenow ) {
+			$script_dep = array_merge( $script_info['dependencies'], array( 'wp-editor' ) );
+		}
+
+		$js_ext = ( SCRIPT_DEBUG ) ? '.js' : '.min.js';
+		wp_enqueue_script( 'uagb-cross-site-cp-helper-js', UAGB_URL . 'assets/js/cross-site-cp-helper' . $js_ext, array(), UAGB_VER, true ); // 3rd Party Library JS for Cross-Domain Local Storage usage for the Copy/Paste styles feature.
 
 		// Scripts.
 		wp_enqueue_script(
@@ -313,7 +443,7 @@ class UAGB_Init_Blocks {
 		// Common Editor style.
 		wp_enqueue_style(
 			'uagb-block-common-editor-css', // Handle.
-			UAGB_URL . 'admin/assets/common-block-editor.css', // Block editor CSS.
+			UAGB_URL . 'dist/common-editor.css', // Block editor CSS.
 			array( 'wp-edit-blocks' ), // Dependency to include the CSS after it.
 			UAGB_VER
 		);
@@ -325,7 +455,13 @@ class UAGB_Init_Blocks {
 
 		if ( is_array( $saved_blocks ) ) {
 			foreach ( $saved_blocks as $slug => $data ) {
-				$_slug         = 'uagb/' . $slug;
+
+				$_slug = 'uagb/' . $slug;
+
+				if ( ! isset( UAGB_Config::$block_attributes[ $_slug ] ) ) {
+					continue;
+				}
+
 				$current_block = UAGB_Config::$block_attributes[ $_slug ];
 
 				if ( isset( $current_block['is_child'] ) && $current_block['is_child'] ) {
@@ -351,33 +487,72 @@ class UAGB_Init_Blocks {
 				'deactivated_blocks' => $blocks,
 			)
 		);
+		$displayCondition = UAGB_Admin_Helper::get_admin_settings_option( 'uag_enable_block_condition', 'enabled' );
+
+		$enable_selected_fonts = UAGB_Admin_Helper::get_admin_settings_option( 'uag_load_select_font_globally', 'disabled' );
+		$selected_fonts        = array();
+
+		if ( 'enabled' === $enable_selected_fonts ) {
+
+			/**
+			 * Selected fonts variable
+			 *
+			 * @var array
+			 */
+			$selected_fonts = UAGB_Admin_Helper::get_admin_settings_option( 'uag_select_font_globally', array() );
+
+			if ( ! empty( $selected_fonts ) ) {
+				usort(
+					$selected_fonts,
+					function( $a, $b ) {
+						return strcmp( $a['label'], $b['label'] );
+					}
+				);
+
+				$default_selected = array(
+					array(
+						'value' => 'Default',
+						'label' => __( 'Default', 'ultimate-addons-for-gutenberg' ),
+					),
+				);
+				$selected_fonts   = array_merge( $default_selected, $selected_fonts );
+			}
+		}
+
+		$uagb_exclude_blocks_from_extension = array( 'core/archives', 'core/calendar', 'core/latest-comments', 'core/tag-cloud', 'core/rss' );
 
 		wp_localize_script(
 			'uagb-block-editor-js',
 			'uagb_blocks_info',
 			array(
-				'blocks'                 => UAGB_Config::get_block_attributes(),
-				'category'               => 'uagb',
-				'ajax_url'               => admin_url( 'admin-ajax.php' ),
-				'cf7_forms'              => $this->get_cf7_forms(),
-				'gf_forms'               => $this->get_gravity_forms(),
-				'tablet_breakpoint'      => UAGB_TABLET_BREAKPOINT,
-				'mobile_breakpoint'      => UAGB_MOBILE_BREAKPOINT,
-				'image_sizes'            => UAGB_Helper::get_image_sizes(),
-				'post_types'             => UAGB_Helper::get_post_types(),
-				'all_taxonomy'           => UAGB_Helper::get_related_taxonomy(),
-				'taxonomy_list'          => UAGB_Helper::get_taxonomy_list(),
-				'uagb_ajax_nonce'        => $uagb_ajax_nonce,
-				'uagb_home_url'          => home_url(),
-				'user_role'              => $this->get_user_role(),
-				'uagb_url'               => UAGB_URL,
-				'uagb_mime_type'         => UAGB_Helper::get_mime_type(),
-				'uagb_site_url'          => UAGB_URI,
-				'uagb_display_condition' => apply_filters( 'enable_block_condition', true ),
-				'uagb_svg_icons'         => UAGB_Helper::backend_load_font_awesome_icons(),
+				'blocks'                             => UAGB_Config::get_block_attributes(),
+				'category'                           => 'uagb',
+				'ajax_url'                           => admin_url( 'admin-ajax.php' ),
+				'cf7_forms'                          => $this->get_cf7_forms(),
+				'gf_forms'                           => $this->get_gravity_forms(),
+				'tablet_breakpoint'                  => UAGB_TABLET_BREAKPOINT,
+				'mobile_breakpoint'                  => UAGB_MOBILE_BREAKPOINT,
+				'image_sizes'                        => UAGB_Helper::get_image_sizes(),
+				'post_types'                         => UAGB_Helper::get_post_types(),
+				'all_taxonomy'                       => UAGB_Helper::get_related_taxonomy(),
+				'uagb_ajax_nonce'                    => $uagb_ajax_nonce,
+				'uagb_home_url'                      => home_url(),
+				'user_role'                          => $this->get_user_role(),
+				'uagb_url'                           => UAGB_URL,
+				'uagb_mime_type'                     => UAGB_Helper::get_mime_type(),
+				'uagb_site_url'                      => UAGB_URI,
+				'enableConditions'                   => apply_filters_deprecated( 'enable_block_condition', array( $displayCondition ), '1.23.4', 'uag_enable_block_condition' ),
+				'enableMasonryGallery'               => apply_filters( 'uag_enable_masonry_gallery', UAGB_Admin_Helper::get_admin_settings_option( 'uag_enable_masonry_gallery', 'enabled' ) ),
+				'uagb_svg_icons'                     => UAGB_Helper::backend_load_font_awesome_icons(),
+				'uagb_enable_extensions_for_blocks'  => apply_filters( 'uagb_enable_extensions_for_blocks', array() ),
+				'uagb_exclude_blocks_from_extension' => $uagb_exclude_blocks_from_extension,
+				'uag_load_select_font_globally'      => $enable_selected_fonts,
+				'uag_select_font_globally'           => $selected_fonts,
+				'uagb_old_user_less_than_2'          => get_option( 'uagb-old-user-less-than-2' ),
+				'collapse_panels'                    => UAGB_Admin_Helper::get_admin_settings_option( 'uag_collapse_panels', 'enabled' ),
+				'copy_paste'                         => UAGB_Admin_Helper::get_admin_settings_option( 'uag_copy_paste', 'enabled' ),
 			)
 		);
-
 		// To match the editor with frontend.
 		// Scripts Dependency.
 		UAGB_Scripts_Utils::enqueue_blocks_dependency_both();

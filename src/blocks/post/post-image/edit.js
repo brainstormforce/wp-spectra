@@ -1,10 +1,10 @@
 import { useLayoutEffect } from 'react';
-
-const { decodeEntities } = wp.htmlEntities;
+import { decodeEntities } from '@wordpress/html-entities';
 import { __ } from '@wordpress/i18n';
 import styles from './editor.lazy.scss';
 
 export const PostImage = ( props ) => {
+
 	// Add and remove the CSS on the drop and remove of the component.
 	useLayoutEffect( () => {
 		styles.use();

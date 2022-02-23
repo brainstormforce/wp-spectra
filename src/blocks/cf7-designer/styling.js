@@ -10,8 +10,6 @@ import generateCSSUnit from '@Controls/generateCSSUnit';
 function styling( props ) {
 	const {
 		align,
-		fieldHrPadding,
-		fieldVrPadding,
 		fieldBgColor,
 		fieldLabelColor,
 		fieldInputColor,
@@ -20,8 +18,6 @@ function styling( props ) {
 		fieldBorderRadius,
 		fieldBorderColor,
 		fieldBorderFocusColor,
-		buttonVrPadding,
-		buttonHrPadding,
 		buttonTextColor,
 		buttonBgColor,
 		buttonTextHoverColor,
@@ -89,6 +85,48 @@ function styling( props ) {
 		radioCheckBorderRadiusType,
 		fieldBorderRadiusType,
 		buttonBorderRadiusType,
+		buttonTopPaddingDesktop,
+		buttonRightPaddingDesktop,
+		buttonBottomPaddingDesktop,
+		buttonLeftPaddingDesktop,
+		buttonTopPaddingTablet,
+		buttonRightPaddingTablet,
+		buttonBottomPaddingTablet,
+		buttonLeftPaddingTablet,
+		buttonTopPaddingMobile,
+		buttonRightPaddingMobile,
+		buttonBottomPaddingMobile,
+		buttonLeftPaddingMobile,
+		buttonPaddingTypeDesktop,
+		buttonPaddingTypeTablet,
+		buttonPaddingTypeMobile,
+		fieldTopPaddingDesktop,
+		fieldRightPaddingDesktop,
+		fieldBottomPaddingDesktop,
+		fieldLeftPaddingDesktop,
+		fieldTopPaddingTablet,
+		fieldRightPaddingTablet,
+		fieldBottomPaddingTablet,
+		fieldLeftPaddingTablet,
+		fieldTopPaddingMobile,
+		fieldRightPaddingMobile,
+		fieldBottomPaddingMobile,
+		fieldLeftPaddingMobile,
+		fieldPaddingTypeDesktop,
+		fieldPaddingTypeTablet,
+		fieldPaddingTypeMobile,
+		labelFontStyle,
+		labelTransform,
+		labelDecoration,
+		inputFontStyle,
+		inputTransform,
+		inputDecoration,
+		buttonFontStyle,
+		buttonTransform,
+		buttonDecoration,
+		radioCheckFontStyle,
+		radioCheckTransform,
+		radioCheckDecoration,
 	} = props.attributes;
 
 	const selectors = {
@@ -96,11 +134,11 @@ function styling( props ) {
 			'text-align': align,
 		},
 		' .wpcf7 form.wpcf7-form:not(input)': {
-			color: fieldLabelColor,
+			'color': fieldLabelColor,
 		},
 		' .wpcf7 input:not([type=submit])': {
 			'background-color': fieldBgColor,
-			color: fieldInputColor,
+			'color': fieldInputColor,
 			'border-style': fieldBorderStyle,
 			'border-color': fieldBorderColor,
 			'border-width': generateCSSUnit( fieldBorderWidth, 'px' ),
@@ -108,14 +146,29 @@ function styling( props ) {
 				fieldBorderRadius,
 				fieldBorderRadiusType
 			),
-			'padding-left': generateCSSUnit( fieldHrPadding, 'px' ),
-			'padding-right': generateCSSUnit( fieldHrPadding, 'px' ),
-			'padding-top': generateCSSUnit( fieldVrPadding, 'px' ),
-			'padding-bottom': generateCSSUnit( fieldVrPadding, 'px' ),
+			'padding-left': generateCSSUnit(
+				fieldLeftPaddingDesktop,
+				fieldPaddingTypeDesktop
+			),
+			'padding-right': generateCSSUnit(
+				fieldRightPaddingDesktop,
+				fieldPaddingTypeDesktop
+			),
+			'padding-top': generateCSSUnit(
+				fieldTopPaddingDesktop,
+				fieldPaddingTypeDesktop
+			),
+			'padding-bottom': generateCSSUnit(
+				fieldBottomPaddingDesktop,
+				fieldPaddingTypeDesktop
+			),
 			'margin-top': generateCSSUnit( fieldLabelSpacing, 'px' ),
 			'margin-bottom': generateCSSUnit( fieldSpacing, 'px' ),
 			'font-size': generateCSSUnit( inputFontSize, inputFontSizeType ),
 			'font-family': inputFontFamily,
+			'font-style' : inputFontStyle,
+			'text-decoration': inputDecoration,
+			'text-transform': inputTransform,
 			'font-weight': inputFontWeight,
 			'line-height': generateCSSUnit(
 				inputLineHeight,
@@ -125,7 +178,7 @@ function styling( props ) {
 		},
 		' .wpcf7 select': {
 			'background-color': fieldBgColor,
-			color: fieldLabelColor,
+			'color': fieldLabelColor,
 			'border-style': fieldBorderStyle,
 			'border-color': fieldBorderColor,
 			'border-width': generateCSSUnit( fieldBorderWidth, 'px' ),
@@ -145,20 +198,44 @@ function styling( props ) {
 			'text-align': align,
 		},
 		" .wpcf7 select.wpcf7-form-control.wpcf7-select:not([multiple='multiple'])": {
-			'padding-left': generateCSSUnit( fieldHrPadding, 'px' ),
-			'padding-right': generateCSSUnit( fieldHrPadding, 'px' ),
-			'padding-top': generateCSSUnit( fieldVrPadding, 'px' ),
-			'padding-bottom': generateCSSUnit( fieldVrPadding, 'px' ),
+			'padding-left': generateCSSUnit(
+				fieldLeftPaddingDesktop,
+				fieldPaddingTypeDesktop
+			),
+			'padding-right': generateCSSUnit(
+				fieldRightPaddingDesktop,
+				fieldPaddingTypeDesktop
+			),
+			'padding-top': generateCSSUnit(
+				fieldTopPaddingDesktop,
+				fieldPaddingTypeDesktop
+			),
+			'padding-bottom': generateCSSUnit(
+				fieldBottomPaddingDesktop,
+				fieldPaddingTypeDesktop
+			),
 		},
 		" .wpcf7 select.wpcf7-select[multiple='multiple'] option": {
-			'padding-left': generateCSSUnit( fieldHrPadding, 'px' ),
-			'padding-right': generateCSSUnit( fieldHrPadding, 'px' ),
-			'padding-top': generateCSSUnit( fieldVrPadding, 'px' ),
-			'padding-bottom': generateCSSUnit( fieldVrPadding, 'px' ),
+			'padding-left': generateCSSUnit(
+				fieldLeftPaddingDesktop,
+				fieldPaddingTypeDesktop
+			),
+			'padding-right': generateCSSUnit(
+				fieldRightPaddingDesktop,
+				fieldPaddingTypeDesktop
+			),
+			'padding-top': generateCSSUnit(
+				fieldTopPaddingDesktop,
+				fieldPaddingTypeDesktop
+			),
+			'padding-bottom': generateCSSUnit(
+				fieldBottomPaddingDesktop,
+				fieldPaddingTypeDesktop
+			),
 		},
 		' .wpcf7 textarea': {
 			'background-color': fieldBgColor,
-			color: fieldInputColor,
+			'color': fieldInputColor,
 			'border-color': fieldBorderColor,
 			'border-width': generateCSSUnit( fieldBorderWidth, 'px' ),
 			'border-radius': generateCSSUnit(
@@ -166,10 +243,22 @@ function styling( props ) {
 				fieldBorderRadiusType
 			),
 			'border-style': fieldBorderStyle,
-			'padding-left': generateCSSUnit( fieldHrPadding, 'px' ),
-			'padding-right': generateCSSUnit( fieldHrPadding, 'px' ),
-			'padding-top': generateCSSUnit( fieldVrPadding, 'px' ),
-			'padding-bottom': generateCSSUnit( fieldVrPadding, 'px' ),
+			'padding-left': generateCSSUnit(
+				fieldLeftPaddingDesktop,
+				fieldPaddingTypeDesktop
+			),
+			'padding-right': generateCSSUnit(
+				fieldRightPaddingDesktop,
+				fieldPaddingTypeDesktop
+			),
+			'padding-top': generateCSSUnit(
+				fieldTopPaddingDesktop,
+				fieldPaddingTypeDesktop
+			),
+			'padding-bottom': generateCSSUnit(
+				fieldBottomPaddingDesktop,
+				fieldPaddingTypeDesktop
+			),
 			'margin-top': generateCSSUnit( fieldLabelSpacing, 'px' ),
 			'margin-bottom': generateCSSUnit( fieldSpacing, 'px' ),
 			'font-size': generateCSSUnit( inputFontSize, inputFontSizeType ),
@@ -182,16 +271,19 @@ function styling( props ) {
 			'text-align': align,
 		},
 		' .wpcf7 input::placeholder': {
-			color: fieldInputColor,
+			'color': fieldInputColor,
 			'text-align': align,
 		},
 		' .wpcf7 textarea::placeholder': {
-			color: fieldInputColor,
+			'color': fieldInputColor,
 			'text-align': align,
 		},
 		' .wpcf7 form label': {
 			'font-size': generateCSSUnit( labelFontSize, labelFontSizeType ),
 			'font-family': labelFontFamily,
+			'font-style' : labelFontStyle,
+			'text-decoration': labelDecoration,
+			'text-transform': labelTransform,
 			'font-weight': labelFontWeight,
 			'line-height': generateCSSUnit(
 				labelLineHeight,
@@ -201,6 +293,9 @@ function styling( props ) {
 		' .wpcf7 form .wpcf7-list-item-label': {
 			'font-size': generateCSSUnit( labelFontSize, labelFontSizeType ),
 			'font-family': labelFontFamily,
+			'font-style' : labelFontStyle,
+			'text-decoration': labelDecoration,
+			'text-transform': labelTransform,
 			'font-weight': labelFontWeight,
 			'line-height': generateCSSUnit(
 				labelLineHeight,
@@ -221,10 +316,13 @@ function styling( props ) {
 
 		//Submit button
 		' .wpcf7 input.wpcf7-form-control.wpcf7-submit': {
-			color: buttonTextColor,
+			'color': buttonTextColor,
 			'background-color': buttonBgColor,
 			'font-size': generateCSSUnit( buttonFontSize, buttonFontSizeType ),
 			'font-family': buttonFontFamily,
+			'font-style' : buttonFontStyle,
+			'text-decoration': buttonDecoration,
+			'text-transform': buttonTransform,
 			'font-weight': buttonFontWeight,
 			'line-height': generateCSSUnit(
 				buttonLineHeight,
@@ -237,14 +335,26 @@ function styling( props ) {
 				buttonBorderRadius,
 				buttonBorderRadiusType
 			),
-			'padding-left': generateCSSUnit( buttonHrPadding, 'px' ),
-			'padding-right': generateCSSUnit( buttonHrPadding, 'px' ),
-			'padding-top': generateCSSUnit( buttonVrPadding, 'px' ),
-			'padding-bottom': generateCSSUnit( buttonVrPadding, 'px' ),
+			'padding-left': generateCSSUnit(
+				buttonLeftPaddingDesktop,
+				buttonPaddingTypeDesktop
+			),
+			'padding-right': generateCSSUnit(
+				buttonRightPaddingDesktop,
+				buttonPaddingTypeDesktop
+			),
+			'padding-top': generateCSSUnit(
+				buttonTopPaddingDesktop,
+				buttonPaddingTypeDesktop
+			),
+			'padding-bottom': generateCSSUnit(
+				buttonBottomPaddingDesktop,
+				buttonPaddingTypeDesktop
+			),
 		},
 
 		' .wpcf7 input.wpcf7-form-control.wpcf7-submit:hover': {
-			color: buttonTextHoverColor,
+			'color': buttonTextHoverColor,
 			'background-color': buttonBgHoverColor,
 			'border-color': buttonBorderHoverColor,
 		},
@@ -252,17 +362,17 @@ function styling( props ) {
 		// Check box Radio.
 		" .wpcf7 .wpcf7-checkbox input[type='checkbox']:checked + span:before": {
 			'background-color': fieldBgColor,
-			color: fieldInputColor,
-			'font-size': 'calc( ' + fieldVrPadding + 'px / 1.2 )',
+			'color': fieldInputColor,
+			'font-size': 'calc( ' + fieldTopPaddingDesktop + 'px / 1.2 )',
 			'border-color': fieldBorderFocusColor,
 		},
 		" .wpcf7 .wpcf7-checkbox input[type='checkbox'] + span:before": {
 			'background-color': fieldBgColor,
-			color: fieldInputColor,
+			'color': fieldInputColor,
 			'display': 'inline-flex',
-			height: generateCSSUnit( fieldVrPadding, 'px' ),
-			width: generateCSSUnit( fieldVrPadding, 'px' ),
-			'font-size': 'calc( ' + fieldVrPadding + 'px / 1.2 )',
+			'height': generateCSSUnit( fieldTopPaddingDesktop, 'px' ),
+			'width': generateCSSUnit( fieldTopPaddingDesktop, 'px' ),
+			'font-size': 'calc( ' + fieldTopPaddingDesktop + 'px / 1.2 )',
 			'border-style': fieldBorderStyle,
 			'border-color': fieldBorderColor,
 			'border-width': generateCSSUnit( fieldBorderWidth, 'px' ),
@@ -273,15 +383,15 @@ function styling( props ) {
 		},
 		" .wpcf7 .wpcf7-acceptance input[type='checkbox']:checked + span:before": {
 			'background-color': fieldBgColor,
-			color: fieldInputColor,
+			'color': fieldInputColor,
 			'border-color': fieldBorderFocusColor,
 		},
 		" .wpcf7 .wpcf7-acceptance input[type='checkbox'] + span:before": {
 			'background-color': fieldBgColor,
-			color: fieldInputColor,
-			height: generateCSSUnit( fieldVrPadding, 'px' ),
-			width: generateCSSUnit( fieldVrPadding, 'px' ),
-			'font-size': 'calc( ' + fieldVrPadding + 'px / 1.2 )',
+			'color': fieldInputColor,
+			'height': generateCSSUnit( fieldTopPaddingDesktop, 'px' ),
+			'width': generateCSSUnit( fieldTopPaddingDesktop, 'px' ),
+			'font-size': 'calc( ' + fieldTopPaddingDesktop + 'px / 1.2 )',
 			'border-style': fieldBorderStyle,
 			'border-color': fieldBorderColor,
 			'border-width': generateCSSUnit( fieldBorderWidth, 'px' ),
@@ -292,14 +402,14 @@ function styling( props ) {
 		},
 		" .wpcf7 .wpcf7-radio input[type='radio'] + span:before": {
 			'background-color': fieldBgColor,
-			color: fieldInputColor,
-			'display':'inline-flex',
+			'color': fieldInputColor,
+			'display': 'inline-flex',
 			'border-radius': '100%',
 			'border-style': fieldBorderStyle,
 			'border-color': fieldBorderColor,
 			'border-width': generateCSSUnit( fieldBorderWidth, 'px' ),
-			height: 'calc( ' + fieldVrPadding + 'px / 1.2 )',
-			width: 'calc( ' + fieldVrPadding + 'px / 1.2 )',
+			'height': 'calc( ' + fieldTopPaddingDesktop + 'px / 1.2 )',
+			'width': 'calc( ' + fieldTopPaddingDesktop + 'px / 1.2 )',
 		},
 
 		// underline border
@@ -345,15 +455,15 @@ function styling( props ) {
 		" .wpcf7-radio input[type='radio']:checked + span:before": {
 			'background-color': fieldInputColor,
 			'border-color': fieldBorderFocusColor,
-			'display' : 'inline-flex',
+			'display': 'inline-flex',
 		},
 
 		// Override check box , Radio & acceptance.
 		" .uagb-cf7-styler__check-style-enabled .wpcf7 .wpcf7-checkbox input[type='checkbox'] + span:before": {
 			'background-color': radioCheckBgColor,
-			color: radioCheckSelectColor,
-			height: generateCSSUnit( radioCheckSize, 'px' ),
-			width: generateCSSUnit( radioCheckSize, 'px' ),
+			'color': radioCheckSelectColor,
+			'height': generateCSSUnit( radioCheckSize, 'px' ),
+			'width': generateCSSUnit( radioCheckSize, 'px' ),
 			'font-size': 'calc( ' + radioCheckSize + 'px / 1.2 )',
 			'border-color': radioCheckBorderColor,
 			'border-width': generateCSSUnit( radioCheckBorderWidth, 'px' ),
@@ -367,10 +477,10 @@ function styling( props ) {
 		},
 		" .uagb-cf7-styler__check-style-enabled .wpcf7 .wpcf7-acceptance input[type='checkbox'] + span:before": {
 			'background-color': radioCheckBgColor,
-			'display' : 'inline-flex',
-			color: radioCheckSelectColor,
-			height: generateCSSUnit( radioCheckSize, 'px' ),
-			width: generateCSSUnit( radioCheckSize, 'px' ),
+			'display': 'inline-flex',
+			'color': radioCheckSelectColor,
+			'height': generateCSSUnit( radioCheckSize, 'px' ),
+			'width': generateCSSUnit( radioCheckSize, 'px' ),
 			'font-size': 'calc( ' + radioCheckSize + 'px / 1.2 )',
 			'border-color': radioCheckBorderColor,
 			'border-width': generateCSSUnit( radioCheckBorderWidth, 'px' ),
@@ -385,9 +495,9 @@ function styling( props ) {
 
 		" .uagb-cf7-styler__check-style-enabled .wpcf7 input[type='radio'] + span:before": {
 			'background-color': radioCheckBgColor,
-			color: radioCheckSelectColor,
-			height: generateCSSUnit( radioCheckSize, 'px' ),
-			width: generateCSSUnit( radioCheckSize, 'px' ),
+			'color': radioCheckSelectColor,
+			'height': generateCSSUnit( radioCheckSize, 'px' ),
+			'width': generateCSSUnit( radioCheckSize, 'px' ),
 			'font-size': 'calc( ' + radioCheckSize + 'px / 1.2 )',
 			'border-color': radioCheckBorderColor,
 			'border-width': generateCSSUnit( radioCheckBorderWidth, 'px' ),
@@ -403,15 +513,36 @@ function styling( props ) {
 				radioCheckFontSizeType
 			),
 			'font-family': radioCheckFontFamily,
+			'font-style' : radioCheckFontStyle,
+			'text-decoration': radioCheckDecoration,
+			'text-transform': radioCheckTransform,
 			'font-weight': radioCheckFontWeight,
 			'line-height': generateCSSUnit(
 				radioCheckLineHeight,
 				radioCheckLineHeightType
 			),
-			color: radioCheckLableColor,
+			'color': radioCheckLableColor,
 		},
 	};
 
+	const fieldPaddingTablet = {
+		'padding-left': generateCSSUnit(
+			fieldLeftPaddingTablet,
+			fieldPaddingTypeTablet
+		),
+		'padding-right': generateCSSUnit(
+			fieldRightPaddingTablet,
+			fieldPaddingTypeTablet
+		),
+		'padding-top': generateCSSUnit(
+			fieldTopPaddingTablet,
+			fieldPaddingTypeTablet
+		),
+		'padding-bottom': generateCSSUnit(
+			fieldBottomPaddingTablet,
+			fieldPaddingTypeTablet
+		),
+	};
 	const tabletSelectors = {
 		' .wpcf7 input:not([type=submit])': {
 			'font-size': generateCSSUnit(
@@ -494,8 +625,47 @@ function styling( props ) {
 				validationMsgLineHeightType
 			),
 		},
+		' .wpcf7 input:not([type=submit])': fieldPaddingTablet, // eslint-disable-line no-dupe-keys
+		' .wpcf7 select.wpcf7-form-control.wpcf7-select:not([multiple="multiple"])': fieldPaddingTablet,
+		' .wpcf7 select.wpcf7-select[multiple="multiple"] option': fieldPaddingTablet,
+		' .wpcf7 textarea': fieldPaddingTablet, // eslint-disable-line no-dupe-keys
+		' .wpcf7 input.wpcf7-form-control.wpcf7-submit': { // eslint-disable-line no-dupe-keys
+			'padding-left': generateCSSUnit(
+				buttonLeftPaddingTablet,
+				buttonPaddingTypeTablet
+			),
+			'padding-right': generateCSSUnit(
+				buttonRightPaddingTablet,
+				buttonPaddingTypeTablet
+			),
+			'padding-top': generateCSSUnit(
+				buttonTopPaddingTablet,
+				buttonPaddingTypeTablet
+			),
+			'padding-bottom': generateCSSUnit(
+				buttonBottomPaddingTablet,
+				buttonPaddingTypeTablet
+			),
+		},
 	};
-
+	const fieldPaddingMobile = {
+		'padding-left': generateCSSUnit(
+			fieldLeftPaddingMobile,
+			fieldPaddingTypeMobile
+		),
+		'padding-right': generateCSSUnit(
+			fieldRightPaddingMobile,
+			fieldPaddingTypeMobile
+		),
+		'padding-top': generateCSSUnit(
+			fieldTopPaddingMobile,
+			fieldPaddingTypeMobile
+		),
+		'padding-bottom': generateCSSUnit(
+			fieldBottomPaddingMobile,
+			fieldPaddingTypeMobile
+		),
+	};
 	const mobileSelectors = {
 		' .wpcf7 input:not([type=submit])': {
 			'font-size': generateCSSUnit(
@@ -577,11 +747,33 @@ function styling( props ) {
 				validationMsgLineHeightType
 			),
 		},
+		' .wpcf7 input:not([type=submit])': fieldPaddingMobile, // eslint-disable-line no-dupe-keys
+		' .wpcf7 select.wpcf7-form-control.wpcf7-select:not([multiple="multiple"])': fieldPaddingMobile,
+		' .wpcf7 select.wpcf7-select[multiple="multiple"] option': fieldPaddingMobile,
+		' .wpcf7 textarea': fieldPaddingMobile, // eslint-disable-line no-dupe-keys
+		' .wpcf7 input.wpcf7-form-control.wpcf7-submit': { // eslint-disable-line no-dupe-keys
+			'padding-left': generateCSSUnit(
+				buttonLeftPaddingMobile,
+				buttonPaddingTypeMobile
+			),
+			'padding-right': generateCSSUnit(
+				buttonRightPaddingMobile,
+				buttonPaddingTypeMobile
+			),
+			'padding-top': generateCSSUnit(
+				buttonTopPaddingMobile,
+				buttonPaddingTypeMobile
+			),
+			'padding-bottom': generateCSSUnit(
+				buttonBottomPaddingMobile,
+				buttonPaddingTypeMobile
+			),
+		},
 	};
 
 	let stylingCss = generateCSS(
 		selectors,
-		`.block-editor-page #wpwrap .uagb-block-${ props.clientId.substr(
+		`.editor-styles-wrapper .uagb-block-${ props.clientId.substr(
 			0,
 			8
 		) }`
@@ -589,7 +781,7 @@ function styling( props ) {
 
 	stylingCss += generateCSS(
 		tabletSelectors,
-		`.block-editor-page #wpwrap .uagb-block-${ props.clientId.substr(
+		`.editor-styles-wrapper .uagb-block-${ props.clientId.substr(
 			0,
 			8
 		) }`,
@@ -599,7 +791,7 @@ function styling( props ) {
 
 	stylingCss += generateCSS(
 		mobileSelectors,
-		`.block-editor-page #wpwrap .uagb-block-${ props.clientId.substr(
+		`.editor-styles-wrapper .uagb-block-${ props.clientId.substr(
 			0,
 			8
 		) }`,

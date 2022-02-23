@@ -47,6 +47,15 @@ function styling( props ) {
 		costSpace,
 		row_gap,
 		step_gap,
+		priceFontStyle,
+		priceTransform,
+		priceDecoration,
+		headFontStyle,
+		headTransform,
+		headDecoration,
+		subHeadFontStyle,
+		subHeadTransform,
+		subHeadDecoration,
 	} = props.attributes;
 
 	let tabletSelectors = {};
@@ -58,6 +67,9 @@ function styling( props ) {
 	const selectors = {
 		' .block-editor-rich-text__editable.uagb-howto-desc-text': {
 			'font-family': subHeadFontFamily,
+			'font-style' : subHeadFontStyle,
+			'text-decoration': subHeadDecoration,
+			'text-transform': subHeadTransform,
 			'font-weight': subHeadFontWeight,
 			'font-size': generateCSSUnit(
 				subHeadFontSize,
@@ -67,16 +79,21 @@ function styling( props ) {
 				subHeadLineHeight,
 				subHeadLineHeightType
 			),
-			color: subHeadingColor,
+			'color': subHeadingColor,
 		},
 		'.uagb-how-to-main-wrap p': {
 			'margin-bottom': generateCSSUnit( row_gap, 'px' ),
 		},
-
-		'.uagb-how-to-main-wrap .uagb-howto__source-wrap': {
+		'.uagb-how-to-main-wrap .uagb-how-to-tools__wrap': {
 			'margin-bottom': generateCSSUnit( row_gap, 'px' ),
 		},
 
+		'.uagb-how-to-main-wrap .uagb-howto__source-wrap': { // For Backward
+			'margin-bottom': generateCSSUnit( row_gap, 'px' ),
+		},
+		'.uagb-how-to-main-wrap .uagb-howto__source-image': {
+			'margin-bottom': generateCSSUnit( row_gap, 'px' ),
+		},
 		'.uagb-how-to-main-wrap span.uagb-howto__time-wrap': {
 			'margin-bottom': generateCSSUnit( row_gap, 'px' ),
 		},
@@ -89,24 +106,33 @@ function styling( props ) {
 			'margin-bottom': generateCSSUnit( row_gap, 'px' ),
 		},
 
-		'.uagb-how-to-main-wrap .uagb-how-to-materials-child__wrapper': {
+		'.uagb-how-to-main-wrap .uagb-how-to-materials-child__wrapper:last-child': {
 			'margin-bottom': generateCSSUnit( row_gap, 'px' ),
 		},
-		' .wp-block-uagb-info-box': {
+		' .uagb-infobox__content-wrap': {
+			'margin-bottom': generateCSSUnit( sGap, 'px' ),
+		},
+		' .uagb-how-to-step-wrap': {
 			'margin-bottom': generateCSSUnit( sGap, 'px' ),
 		},
 		' .block-editor-rich-text__editable.uagb-howto-timeNeeded-text': {
 			'font-family': priceFontFamily,
+			'font-style' : priceFontStyle,
+			'text-decoration': priceDecoration,
+			'text-transform': priceTransform,
 			'font-weight': priceFontWeight,
 			'font-size': generateCSSUnit( priceFontSize, priceFontSizeType ),
 			'line-height': generateCSSUnit(
 				priceLineHeight,
 				priceLineHeightType
 			),
-			color: showTotaltimecolor,
+			'color': showTotaltimecolor,
 		},
 		' .uagb-howto-timeNeeded-value': {
 			'font-family': subHeadFontFamily,
+			'font-style' : subHeadFontStyle,
+			'text-decoration': subHeadDecoration,
+			'text-transform': subHeadTransform,
 			'font-weight': subHeadFontWeight,
 			'font-size': generateCSSUnit(
 				subHeadFontSize,
@@ -116,11 +142,14 @@ function styling( props ) {
 				subHeadLineHeight,
 				subHeadLineHeightType
 			),
-			color: subHeadingColor,
+			'color': subHeadingColor,
 			'margin-left': generateCSSUnit( timeSpace, 'px' ),
 		},
 		' .uagb-howto-timeINmin-text ': {
 			'font-family': subHeadFontFamily,
+			'font-style' : subHeadFontStyle,
+			'text-decoration': subHeadDecoration,
+			'text-transform': subHeadTransform,
 			'font-weight': subHeadFontWeight,
 			'font-size': generateCSSUnit(
 				subHeadFontSize,
@@ -130,20 +159,26 @@ function styling( props ) {
 				subHeadLineHeight,
 				subHeadLineHeightType
 			),
-			color: subHeadingColor,
+			'color': subHeadingColor,
 		},
 		' .block-editor-rich-text__editable.uagb-howto-estcost-text': {
 			'font-family': priceFontFamily,
+			'font-style' : priceFontStyle,
+			'text-decoration': priceDecoration,
+			'text-transform': priceTransform,
 			'font-weight': priceFontWeight,
 			'font-size': generateCSSUnit( priceFontSize, priceFontSizeType ),
 			'line-height': generateCSSUnit(
 				priceLineHeight,
 				priceLineHeightType
 			),
-			color: showTotaltimecolor,
+			'color': showTotaltimecolor,
 		},
 		' .block-editor-rich-text__editable.uagb-howto-estcost-value': {
 			'font-family': subHeadFontFamily,
+			'font-style' : subHeadFontStyle,
+			'text-decoration': subHeadDecoration,
+			'text-transform': subHeadTransform,
 			'font-weight': subHeadFontWeight,
 			'font-size': generateCSSUnit(
 				subHeadFontSize,
@@ -153,12 +188,15 @@ function styling( props ) {
 				subHeadLineHeight,
 				subHeadLineHeightType
 			),
-			color: subHeadingColor,
+			'color': subHeadingColor,
 			'margin-left': generateCSSUnit( costSpace, 'px' ),
 		},
 
 		' h4.block-editor-rich-text__editable': {
 			'font-family': priceFontFamily,
+			'font-style' : priceFontStyle,
+			'text-decoration': priceDecoration,
+			'text-transform': priceTransform,
 			'font-weight': priceFontWeight,
 			'font-size': generateCSSUnit( priceFontSize, priceFontSizeType ),
 			'line-height': generateCSSUnit(
@@ -168,6 +206,9 @@ function styling( props ) {
 		},
 		' p.block-editor-rich-text__editable': {
 			'font-family': subHeadFontFamily,
+			'font-style' : subHeadFontStyle,
+			'text-decoration': subHeadDecoration,
+			'text-transform': subHeadTransform,
 			'font-weight': subHeadFontWeight,
 			'font-size': generateCSSUnit(
 				subHeadFontSize,
@@ -181,6 +222,9 @@ function styling( props ) {
 
 		' .block-editor-rich-text__editable.uagb-howto-estcost-type': {
 			'font-family': subHeadFontFamily,
+			'font-style' : subHeadFontStyle,
+			'text-decoration': subHeadDecoration,
+			'text-transform': subHeadTransform,
 			'font-weight': subHeadFontWeight,
 			'font-size': generateCSSUnit(
 				subHeadFontSize,
@@ -190,22 +234,28 @@ function styling( props ) {
 				subHeadLineHeight,
 				subHeadLineHeightType
 			),
-			color: subHeadingColor,
+			'color': subHeadingColor,
 		},
 
 		' .block-editor-rich-text__editable.uagb-howto-req-tools-text': {
 			'font-family': priceFontFamily,
+			'font-style' : priceFontStyle,
+			'text-decoration': priceDecoration,
+			'text-transform': priceTransform,
 			'font-weight': priceFontWeight,
 			'font-size': generateCSSUnit( priceFontSize, priceFontSizeType ),
 			'line-height': generateCSSUnit(
 				priceLineHeight,
 				priceLineHeightType
 			),
-			color: showTotaltimecolor,
+			'color': showTotaltimecolor,
 		},
 
 		'  .block-editor-rich-text__editable.uagb-tools__label': {
 			'font-family': subHeadFontFamily,
+			'font-style' : subHeadFontStyle,
+			'text-decoration': subHeadDecoration,
+			'text-transform': subHeadTransform,
 			'font-weight': subHeadFontWeight,
 			'font-size': generateCSSUnit(
 				subHeadFontSize,
@@ -215,33 +265,42 @@ function styling( props ) {
 				subHeadLineHeight,
 				subHeadLineHeightType
 			),
-			color: subHeadingColor,
+			'color': subHeadingColor,
 		},
 
 		' .block-editor-rich-text__editable.uagb-howto-req-materials-text': {
 			'font-family': priceFontFamily,
+			'font-style' : priceFontStyle,
+			'text-decoration': priceDecoration,
+			'text-transform': priceTransform,
 			'font-weight': priceFontWeight,
 			'font-size': generateCSSUnit( priceFontSize, priceFontSizeType ),
 			'line-height': generateCSSUnit(
 				priceLineHeight,
 				priceLineHeightType
 			),
-			color: showTotaltimecolor,
+			'color': showTotaltimecolor,
 		},
 
 		' .block-editor-rich-text__editable.uagb-howto-req-steps-text': {
 			'font-family': priceFontFamily,
+			'font-style' : priceFontStyle,
+			'text-decoration': priceDecoration,
+			'text-transform': priceTransform,
 			'font-weight': priceFontWeight,
 			'font-size': generateCSSUnit( priceFontSize, priceFontSizeType ),
 			'line-height': generateCSSUnit(
 				priceLineHeight,
 				priceLineHeightType
 			),
-			color: showTotaltimecolor,
+			'color': showTotaltimecolor,
 		},
 
 		' .block-editor-rich-text__editable.uagb-materials__label': {
 			'font-family': subHeadFontFamily,
+			'font-style' : subHeadFontStyle,
+			'text-decoration': subHeadDecoration,
+			'text-transform': subHeadTransform,
 			'font-weight': subHeadFontWeight,
 			'font-size': generateCSSUnit(
 				subHeadFontSize,
@@ -251,13 +310,13 @@ function styling( props ) {
 				subHeadLineHeight,
 				subHeadLineHeightType
 			),
-			color: subHeadingColor,
+			'color': subHeadingColor,
 		},
 	};
 
 	selectors[ '.uagb-how-to-main-wrap' ] = {
 		'text-align': overallAlignment,
-		display: 'block',
+		'display': 'block',
 	};
 
 	selectors[
@@ -266,10 +325,13 @@ function styling( props ) {
 			'.block-editor-rich-text__editable.uagb-howto-heading-text'
 	] = {
 		'font-family': headFontFamily,
+		'font-style' : headFontStyle,
+		'text-decoration': headDecoration,
+		'text-transform': headTransform,
 		'font-weight': headFontWeight,
 		'font-size': generateCSSUnit( headFontSize, headFontSizeType ),
 		'line-height': generateCSSUnit( headLineHeight, headLineHeightType ),
-		color: headingColor,
+		'color': headingColor,
 		'margin-bottom': generateCSSUnit( headSpace, 'px' ),
 	};
 
@@ -519,7 +581,7 @@ function styling( props ) {
 		},
 	};
 
-	const baseSelector = `.block-editor-page #wpwrap .uagb-block-${ props.clientId.substr(
+	const baseSelector = `.editor-styles-wrapper .uagb-block-${ props.clientId.substr(
 		0,
 		8
 	) }`;

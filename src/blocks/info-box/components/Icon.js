@@ -1,4 +1,4 @@
-import renderSVG from '@Controls/renderIcon';
+import renderSVG from '@Controls/deprecatedRenderIcon';
 
 const Icon = ( props ) => {
 	const { attributes } = props;

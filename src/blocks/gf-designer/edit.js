@@ -3,6 +3,9 @@ import React, { lazy, Suspense, useEffect } from 'react';
 import lazyLoader from '@Controls/lazy-loader';
 import { __ } from '@wordpress/i18n';
 import { SelectControl, Placeholder } from '@wordpress/components';
+import apiFetch from '@wordpress/api-fetch';
+import { useDeviceType } from '@Controls/getPreviewType';
+import addBlockEditorDynamicStyles from '@Controls/addBlockEditorDynamicStyles';
 const Settings = lazy( () =>
 	import( /* webpackChunkName: "chunks/gf-styler/settings" */ './settings' )
 );
@@ -10,35 +13,109 @@ const Render = lazy( () =>
 	import( /* webpackChunkName: "chunks/gf-styler/render" */ './render' )
 );
 import { withSelect } from '@wordpress/data';
-$ = jQuery;
 
 const UAGBGF = ( props ) => {
+	const deviceType = useDeviceType();
 	useEffect( () => {
 		// Assigning block_id in the attribute.
 		props.setAttributes( { isHtml: false } );
 		props.setAttributes( { block_id: props.clientId.substr( 0, 8 ) } );
-		// Pushing Style tag for this block css.
-		const $style = document.createElement( 'style' );
-		$style.setAttribute(
-			'id',
-			'uagb-gf-styler-' + props.clientId.substr( 0, 8 )
-		);
-		document.head.appendChild( $style );
+
+		const {
+			msgVrPadding,
+			msgHrPadding,
+			buttonVrPadding,
+			buttonHrPadding,
+			fieldVrPadding,
+			fieldHrPadding,
+			buttontopPadding,
+			buttonrightPadding,
+			buttonbottomPadding,
+			buttonleftPadding,
+			fieldtopPadding,
+			fieldrightPadding,
+			fieldbottomPadding,
+			fieldleftPadding,
+			msgtopPadding,
+			msgrightPadding,
+			msgbottomPadding,
+			msgleftPadding,
+		} = props.attributes;
+
+		if ( buttonVrPadding ) {
+			if ( undefined === buttontopPadding ) {
+				props.setAttributes( { buttontopPadding: buttonVrPadding } );
+			}
+			if ( undefined === buttonbottomPadding ) {
+				props.setAttributes( { buttonbottomPadding: buttonVrPadding } );
+			}
+		}
+
+		if ( buttonHrPadding ) {
+			if ( undefined === buttonrightPadding ) {
+				props.setAttributes( { buttonrightPadding: buttonHrPadding } );
+			}
+			if ( undefined === buttonleftPadding ) {
+				props.setAttributes( { buttonleftPadding: buttonHrPadding } );
+			}
+		}
+
+		if ( msgVrPadding ) {
+			if ( ! msgtopPadding ) {
+				props.setAttributes( { msgtopPadding: msgVrPadding } );
+			}
+			if ( ! msgbottomPadding ) {
+				props.setAttributes( { msgbottomPadding: msgVrPadding } );
+			}
+		}
+
+		if ( msgHrPadding ) {
+			if ( ! msgrightPadding ) {
+				props.setAttributes( { msgrightPadding: msgHrPadding } );
+			}
+			if ( ! msgleftPadding ) {
+				props.setAttributes( { msgleftPadding: msgHrPadding } );
+			}
+		}
+
+		if ( fieldVrPadding ) {
+			if ( undefined === fieldtopPadding ) {
+				props.setAttributes( { fieldtopPadding: fieldVrPadding } );
+			}
+			if ( undefined === fieldbottomPadding ) {
+				props.setAttributes( { fieldbottomPadding: fieldVrPadding } );
+			}
+		}
+
+		if ( fieldHrPadding ) {
+			if ( undefined === fieldrightPadding ) {
+				props.setAttributes( { fieldrightPadding: fieldHrPadding } );
+			}
+			if ( undefined === fieldleftPadding ) {
+				props.setAttributes( { fieldleftPadding: fieldHrPadding } );
+			}
+		}
 	}, [] );
 
 	useEffect( () => {
-		$( '.wpgf-submit' ).click( function ( event ) {
-			event.preventDefault();
-		} );
-
-		const element = document.getElementById(
-			'uagb-gf-styler-' + props.clientId.substr( 0, 8 )
-		);
-
-		if ( null !== element && undefined !== element ) {
-			element.innerHTML = styling( props );
+		const submitButton = document.querySelector( '.wpgf-submit' );
+		if( submitButton !== null ){
+			submitButton.addEventListener( 'click', function ( event ) {
+				event.preventDefault();
+			} );
 		}
+
+		const blockStyling = styling( props );
+
+		addBlockEditorDynamicStyles( 'uagb-gf-styler-' + props.clientId.substr( 0, 8 ), blockStyling );
 	}, [ props ] );
+
+	useEffect( () => {
+		// Replacement for componentDidUpdate.
+		const blockStyling = styling( props );
+
+		addBlockEditorDynamicStyles( 'uagb-gf-styler-' + props.clientId.substr( 0, 8 ), blockStyling );
+	}, [deviceType] );
 
 	const { formId } = props.attributes;
 	/*
@@ -56,7 +133,7 @@ const UAGBGF = ( props ) => {
 		setAttributes( { isHtml: false } );
 		setAttributes( { formId: id } );
 	};
-	if ( formId == 0 ) {
+	if ( formId === 0 ) {
 		return (
 			<Placeholder
 				icon="admin-post"
@@ -86,21 +163,25 @@ export default withSelect( ( select, props ) => {
 	const { formId, isHtml } = props.attributes;
 	let jsonData = '';
 
-	if ( formId && -1 != formId && 0 != formId && ! isHtml ) {
-		$.ajax( {
+	if ( formId && -1 !== formId && 0 !== formId && ! isHtml ) {
+
+		const formData = new window.FormData();
+
+		formData.append( 'action', 'uagb_gf_shortcode' );
+		formData.append(
+			'nonce',
+			uagb_blocks_info.uagb_ajax_nonce
+		);
+		formData.append( 'formId', formId );
+
+		apiFetch( {
 			url: uagb_blocks_info.ajax_url,
-			data: {
-				action: 'uagb_gf_shortcode',
-				formId,
-				nonce: uagb_blocks_info.uagb_ajax_nonce,
-			},
-			dataType: 'json',
-			type: 'POST',
-			success( data ) {
-				setAttributes( { isHtml: true } );
-				setAttributes( { formJson: data } );
-				jsonData = data;
-			},
+			method: 'POST',
+			body: formData,
+		} ).then( ( data ) => {
+			setAttributes( { isHtml: true } );
+			setAttributes( { formJson: data } );
+			jsonData = data;
 		} );
 	}
 

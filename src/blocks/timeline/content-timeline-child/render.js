@@ -1,6 +1,7 @@
 import classnames from 'classnames';
 import renderSVG from '@Controls/renderIcon';
-import React from 'react';
+import React, { useLayoutEffect } from 'react';
+import styles from './editor.lazy.scss';
 import { dateI18n } from '@wordpress/date';
 
 import { __ } from '@wordpress/i18n';
@@ -10,6 +11,13 @@ import { createBlock } from '@wordpress/blocks';
 import { RichText } from '@wordpress/block-editor';
 
 const Render = ( props ) => {
+	// Add and remove the CSS on the drop and remove of the component.
+	useLayoutEffect( () => {
+		styles.use();
+		return () => {
+			styles.unuse();
+		};
+	}, [] );
 	props = props.parentProps;
 
 	// Setup the attributes.
@@ -56,40 +64,33 @@ const Render = ( props ) => {
 	let displayInnerDate = false;
 	const postDate = t_date;
 
-	if ( timelinAlignment == 'center' ) {
+	if ( timelinAlignment === 'center' ) {
 		displayInnerDate = true;
 	}
 
 	return (
 		<article
-			className={ classnames(
-				'uagb-timeline__field uagb-timeline__field-wrap',
-				`uagb-timeline-child-${ block_id }`
-			) }
+			className={ classnames( 
+				'wp-block-uagb-content-timeline-child uagb-timeline__field',
+				`uagb-timeline-child-${ block_id }`,
+				props.attributes.content_class
+			)}
 		>
-			<div className={ props.attributes.content_class }>
 				<div className="uagb-timeline__marker uagb-timeline__out-view-icon">
-					<span className="uagb-timeline__icon-new uagb-timeline__out-view-icon ">
 						{ renderSVG( icon ) }
-					</span>
 				</div>
-				<div className={ props.attributes.dayalign_class }>
-					<div className="uagb-timeline__events-inner-new">
-						<div className="uagb-timeline__date-hide uagb-timeline__date-inner">
-							{ displayPostDate != true && t_date && (
+				<div className={ classnames( props.attributes.dayalign_class, 'uagb-timeline__events-inner-new' ) } >
+							{ displayPostDate !== true && t_date && (
 								<div
 									className={
-										'uagb-timeline__inner-date-new'
+										'uagb-timeline__date-hide uagb-timeline__inner-date-new'
 									}
 								>
-									{ ( 'custom' != dateFormat &&
+									{ ( 'custom' !== dateFormat &&
 										dateI18n( dateFormat, postDate ) ) ||
 										postDate }
 								</div>
 							) }
-						</div>
-						<div className="uagb-content">
-							<div className="uagb-timeline__heading-text">
 								<RichText
 									tagName={ headingTag }
 									value={ time_heading }
@@ -120,7 +121,6 @@ const Render = ( props ) => {
 									}
 									onRemove={ () => onReplace( [] ) }
 								/>
-							</div>
 							<RichText
 								tagName="p"
 								value={ time_desc }
@@ -137,22 +137,19 @@ const Render = ( props ) => {
 								onRemove={ () => onReplace( [] ) }
 							/>
 							<div className="uagb-timeline__arrow"></div>
-						</div>
-					</div>
 				</div>
 				{ displayInnerDate && (
 					<div className="uagb-timeline__date-new">
-						{ displayPostDate != true && t_date && (
-							<div className={ 'uagb-timeline__date-new' }>
-								{ ( 'custom' != dateFormat &&
+						{ displayPostDate !== true && t_date && (
+							<>
+								{ ( 'custom' !== dateFormat &&
 									dateI18n( dateFormat, postDate ) ) ||
 									postDate }
-							</div>
+							</>
 						) }
 					</div>
 				) }
-			</div>
-		</article>
+		</article>	
 	);
 };
 

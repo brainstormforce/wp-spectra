@@ -8,16 +8,20 @@ import React, { lazy, useEffect, Suspense } from 'react';
 import lazyLoader from '@Controls/lazy-loader';
 import { withState, compose } from '@wordpress/compose';
 import { withSelect } from '@wordpress/data';
+import { useDeviceType } from '@Controls/getPreviewType';
+import addBlockEditorDynamicStyles from '@Controls/addBlockEditorDynamicStyles';
 const Settings = lazy( () =>
 	import( /* webpackChunkName: "chunks/review/settings" */ './settings' )
 );
 const Render = lazy( () =>
 	import( /* webpackChunkName: "chunks/review/render" */ './render' )
 );
-$ = jQuery;
 let prevState;
 
 const ReviewComponent = ( props ) => {
+
+	const deviceType = useDeviceType();
+
 	useEffect( () => {
 		// Assigning block_id in the attribute.
 		props.setAttributes( { block_id: props.clientId.substr( 0, 8 ) } );
@@ -26,15 +30,34 @@ const ReviewComponent = ( props ) => {
 			schema: JSON.stringify( props.schemaJsonData ),
 		} );
 
-		// Pushing Style tag for this block css.
-		const $style = document.createElement( 'style' );
-		$style.setAttribute(
-			'id',
-			'uagb-ratings-style-' + props.clientId.substr( 0, 8 )
-		);
-		document.head.appendChild( $style );
-
 		prevState = props.schemaJsonData;
+		const { attributes, setAttributes } = props;
+		const {
+			contentVrPadding,
+			contentHrPadding,
+			topPadding,
+			bottomPadding,
+			rightPadding,
+			leftPadding,
+		} = attributes;
+
+		if ( contentVrPadding ) {
+			if ( undefined === topPadding ) {
+				setAttributes( { topPadding: contentVrPadding } );
+			}
+			if ( undefined === bottomPadding ) {
+				setAttributes( { bottomPadding: contentVrPadding } );
+			}
+		}
+
+		if ( contentHrPadding ) {
+			if ( undefined === rightPadding ) {
+				setAttributes( { rightPadding: contentHrPadding } );
+			}
+			if ( undefined === leftPadding ) {
+				setAttributes( { leftPadding: contentHrPadding } );
+			}
+		}
 	}, [] );
 
 	useEffect( () => {
@@ -51,18 +74,24 @@ const ReviewComponent = ( props ) => {
 			prevState = props.schemaJsonData;
 		}
 
-		const element = document.getElementById(
-			'uagb-ratings-style-' + props.clientId.substr( 0, 8 )
-		);
+		const blockStyling = styling( props );
 
-		if ( null !== element && undefined !== element ) {
-			element.innerHTML = styling( props );
+		addBlockEditorDynamicStyles( 'uagb-ratings-style-' + props.clientId.substr( 0, 8 ), blockStyling );
+
+		const ratingLinkWrapper = document.querySelector( '.uagb-rating-link-wrapper' );
+		if( ratingLinkWrapper !== null ){
+			ratingLinkWrapper.addEventListener( 'click', function ( event ) {
+				event.preventDefault();
+			} );
 		}
-
-		$( '.uagb-rating-link-wrapper' ).on( 'click', function ( event ) {
-			event.preventDefault();
-		} );
 	}, [ props ] );
+
+	useEffect( () => {
+		// Replacement for componentDidUpdate.
+		const blockStyling = styling( props );
+
+		addBlockEditorDynamicStyles( 'uagb-ratings-style-' + props.clientId.substr( 0, 8 ), blockStyling );
+	}, [deviceType] );
 
 	// Setup the attributes
 	const { attributes, setAttributes } = props;
@@ -174,7 +203,8 @@ compose( [
 ] );
 
 export default compose(
-	withSelect( ( select, ownProps ) => {
+	withSelect( ( ownProps ) => {
+
 		const newAverage =
 			ownProps.attributes.parts
 				.map( ( i ) => i.value )
@@ -188,8 +218,8 @@ export default compose(
 			)
 		) {
 			itemtype =
-				ownProps.attributes.itemSubtype != 'None' &&
-				ownProps.attributes.itemSubtype != ''
+				ownProps.attributes.itemSubtype !== 'None' &&
+				ownProps.attributes.itemSubtype !== ''
 					? ownProps.attributes.itemSubtype
 					: ownProps.attributes.itemType;
 		} else {
@@ -197,70 +227,71 @@ export default compose(
 		}
 
 		const jsonData = {
-			'@context': 'http://schema.org/',
+			'@context': 'https://schema.org/',
 			'@type': 'Review',
-			reviewBody: ownProps.attributes.summaryDescription,
-			description: ownProps.attributes.rContent,
-			itemReviewed: [],
-			reviewRating: {
+			'reviewBody': ownProps.attributes.summaryDescription,
+			'description': ownProps.attributes.rContent,
+			'itemReviewed': [],
+			'reviewRating': {
 				'@type': 'Rating',
-				ratingValue: newAverage,
-				bestRating: ownProps.attributes.starCount,
+				'ratingValue': newAverage,
+				'worstRating': '0',
+				'bestRating': ownProps.attributes.starCount,
 			},
-			author: {
+			'author': {
 				'@type': 'Person',
-				name: ownProps.attributes.rAuthor,
+				'name': ownProps.attributes.rAuthor,
 			},
-			publisher: ownProps.attributes.reviewPublisher,
-			datePublished: ownProps.attributes.datepublish,
-			url: ownProps.attributes.ctaLink,
+			'publisher': ownProps.attributes.reviewPublisher,
+			'datePublished': ownProps.attributes.datepublish,
+			'url': ownProps.attributes.ctaLink,
 		};
 
 		switch ( ownProps.attributes.itemType ) {
 			case 'Book':
 				jsonData.itemReviewed = {
 					'@type': itemtype,
-					name: ownProps.attributes.rTitle,
-					description: ownProps.attributes.rContent,
-					image: [],
-					author: ownProps.attributes.rAuthor,
-					isbn: ownProps.attributes.isbn,
+					'name': ownProps.attributes.rTitle,
+					'description': ownProps.attributes.rContent,
+					'image': [],
+					'author': ownProps.attributes.rAuthor,
+					'isbn': ownProps.attributes.isbn,
 				};
 				break;
 
 			case 'Course':
 				jsonData.itemReviewed = {
 					'@type': ownProps.attributes.itemType,
-					name: ownProps.attributes.rTitle,
-					description: ownProps.attributes.rContent,
-					image: [],
-					provider: ownProps.attributes.provider,
+					'name': ownProps.attributes.rTitle,
+					'description': ownProps.attributes.rContent,
+					'image': [],
+					'provider': ownProps.attributes.provider,
 				};
 				break;
 
 			case 'Product':
 				jsonData.itemReviewed = {
 					'@type': itemtype,
-					name: ownProps.attributes.rTitle,
-					description: ownProps.attributes.rContent,
-					image: [],
-					sku: ownProps.attributes.sku,
-					brand: {
+					'name': ownProps.attributes.rTitle,
+					'description': ownProps.attributes.rContent,
+					'image': [],
+					'sku': ownProps.attributes.sku,
+					'brand': {
 						'@type': 'Brand',
-						name: ownProps.attributes.brand,
+						'name': ownProps.attributes.brand,
 					},
-					offers: [],
+					'offers': [],
 				};
 				break;
 
 			case 'Movie':
 				jsonData.itemReviewed = {
 					'@type': ownProps.attributes.itemType,
-					name: ownProps.attributes.rTitle,
-					dateCreated: ownProps.attributes.datecreated,
-					director: {
+					'name': ownProps.attributes.rTitle,
+					'dateCreated': ownProps.attributes.datecreated,
+					'director': {
 						'@type': 'Person',
-						name: ownProps.attributes.directorname,
+						'name': ownProps.attributes.directorname,
 					},
 				};
 				break;
@@ -268,14 +299,14 @@ export default compose(
 			case 'SoftwareApplication':
 				jsonData.itemReviewed = {
 					'@type': itemtype,
-					name: ownProps.attributes.rTitle,
-					applicationCategory: ownProps.attributes.appCategory,
-					operatingSystem: ownProps.attributes.operatingSystem,
-					offers: {
+					'name': ownProps.attributes.rTitle,
+					'applicationCategory': ownProps.attributes.appCategory,
+					'operatingSystem': ownProps.attributes.operatingSystem,
+					'offers': {
 						'@type': ownProps.attributes.offerType,
-						price: ownProps.attributes.offerPrice,
-						url: ownProps.attributes.ctaLink,
-						priceCurrency: ownProps.attributes.offerCurrency,
+						'price': ownProps.attributes.offerPrice,
+						'url': ownProps.attributes.ctaLink,
+						'priceCurrency': ownProps.attributes.offerCurrency,
 					},
 				};
 				break;
@@ -288,16 +319,16 @@ export default compose(
 			jsonData.itemReviewed.image = ownProps.attributes.mainimage.url;
 		}
 
-		if ( ownProps.attributes.itemType == 'Product' ) {
+		if ( ownProps.attributes.itemType === 'Product' ) {
 			jsonData.itemReviewed[ ownProps.attributes.identifierType ] =
 				ownProps.attributes.identifier;
 			jsonData.itemReviewed.offers = {
 				'@type': ownProps.attributes.offerType,
-				price: ownProps.attributes.offerPrice,
-				url: ownProps.attributes.ctaLink,
-				priceValidUntil: ownProps.attributes.offerExpiry,
-				priceCurrency: ownProps.attributes.offerCurrency,
-				availability: ownProps.attributes.offerStatus,
+				'price': ownProps.attributes.offerPrice,
+				'url': ownProps.attributes.ctaLink,
+				'priceValidUntil': ownProps.attributes.offerExpiry,
+				'priceCurrency': ownProps.attributes.offerCurrency,
+				'availability': ownProps.attributes.offerStatus,
 			};
 		}
 

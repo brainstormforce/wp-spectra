@@ -41,8 +41,8 @@ const withFaq = createHigherOrderComponent( ( BlockEdit ) => {
 }, 'withFaq' );
 
 registerBlockType( 'uagb/faq', {
-	title: uagb_blocks_info.blocks[ 'uagb/faq' ].title,
-	description: uagb_blocks_info.blocks[ 'uagb/faq' ].description,
+	title: __( 'FAQ', 'ultimate-addons-for-gutenberg' ),
+	description: __( 'This block helps you add FAQ or Accordion with automatically adding FAQ Schema to your page.', 'ultimate-addons-for-gutenberg' ),
 	icon: UAGB_Block_Icons.faq,
 	category: uagb_blocks_info.category,
 	keywords: [

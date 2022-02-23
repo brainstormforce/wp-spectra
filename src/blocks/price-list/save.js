@@ -14,7 +14,6 @@ export default function save( props ) {
 		<div
 			className={ classnames(
 				className,
-				'uagb-rest_menu__outer-wrap',
 				`uagb-block-${ block_id }`
 			) }
 		>

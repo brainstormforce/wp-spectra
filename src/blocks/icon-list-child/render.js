@@ -15,9 +15,8 @@ const Render = ( props ) => {
 	}, [] );
 
 	props = props.parentProps;
-	const { attributes, setAttributes } = props;
+	const { attributes, setAttributes , className } = props;
 	const {
-		className,
 		label,
 		image_icon,
 		icon,
@@ -31,13 +30,9 @@ const Render = ( props ) => {
 
 	let imageIconHtml = '';
 
-	if ( image_icon == 'icon' ) {
+	if ( image_icon === 'icon' ) {
 		if ( icon ) {
-			imageIconHtml = (
-				<span className="uagb-icon-list__source-icon">
-					{ renderSVG( icon ) }
-				</span>
-			);
+			imageIconHtml = renderSVG( icon );
 		}
 	} else if ( image && image.url ) {
 		imageIconHtml = (
@@ -50,18 +45,16 @@ const Render = ( props ) => {
 	}
 
 	const targetVal = target ? '_blank' : '_self';
-	const linkUrl = ! disableLink ? link : '/';
+	const linkUrl = disableLink ? link : '/';
 
 	return (
 		<div
 			className={ classnames(
-				`uagb-icon-list-repeater`,
-				'uagb-icon-list__wrapper',
 				className,
 				`uagb-block-${ block_id }`
 			) }
 		>
-			{ ! disableLink && (
+			{ disableLink && (
 				<a
 					target={ targetVal }
 					rel="noopener noreferrer"
@@ -71,34 +64,29 @@ const Render = ( props ) => {
 					{ ' ' }
 				</a>
 			) }
-			<div className="uagb-icon-list__content-wrap">
-				<span className="uagb-icon-list__source-wrap">
-					{ imageIconHtml }
-				</span>
-				{ ! hideLabel && '' != label && (
-					<div className="uagb-icon-list__label-wrap">
-						<RichText
-							tagName="div"
-							placeholder={ __(
-								'Label Name',
-								'ultimate-addons-for-gutenberg'
-							) }
-							value={ label }
-							onChange={ ( value ) =>
-								setAttributes( { label: value } )
-							}
-							className="uagb-icon-list__label"
-							placeholder={ __( 'Description' ) }
-							multiline={ false }
-							allowedFormats={ [
-								'core/bold',
-								'core/italic',
-								'core/strikethrough',
-							] }
-						/>
-					</div>
-				) }
-			</div>
+			<span className="uagb-icon-list__source-wrap">
+				{ imageIconHtml }
+			</span>
+			{ ! hideLabel && '' !== label && (
+				<RichText
+					tagName="span"
+					placeholder={ __(
+						'Label Name',
+						'ultimate-addons-for-gutenberg'
+					) }
+					value={ label }
+					onChange={ ( value ) =>
+						setAttributes( { label: value } )
+					}
+					className="uagb-icon-list__label"
+					multiline={ false }
+					allowedFormats={ [
+						'core/bold',
+						'core/italic',
+						'core/strikethrough',
+					] }
+				/>
+			) }
 		</div>
 	);
 };

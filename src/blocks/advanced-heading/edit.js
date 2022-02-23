@@ -4,7 +4,8 @@
 import styling from './styling';
 import React, { lazy, Suspense, useEffect } from 'react';
 import lazyLoader from '@Controls/lazy-loader';
-
+import addBlockEditorDynamicStyles from '@Controls/addBlockEditorDynamicStyles';
+import { useDeviceType } from '@Controls/getPreviewType';
 const Settings = lazy( () =>
 	import(
 		/* webpackChunkName: "chunks/advanced-heading/settings" */ './settings'
@@ -19,36 +20,33 @@ const Render = lazy( () =>
 //  Import CSS.
 import './style.scss';
 
-import { withSelect } from '@wordpress/data';
-
-import { compose } from '@wordpress/compose';
-
 const UAGBAdvancedHeading = ( props ) => {
+	const deviceType = useDeviceType();
 	useEffect( () => {
+
+		const { setAttributes } = props;
+
 		// Assigning block_id in the attribute.
-		props.setAttributes( { block_id: props.clientId.substr( 0, 8 ) } );
+		setAttributes( { block_id: props.clientId.substr( 0, 8 ) } );
 
-		props.setAttributes( { classMigrate: true } );
+		setAttributes( { classMigrate: true } );
 
-		// Pushing Style tag for this block css.
-		const $style = document.createElement( 'style' );
-		$style.setAttribute(
-			'id',
-			'uagb-adv-heading-style-' + props.clientId.substr( 0, 8 )
-		);
-		document.head.appendChild( $style );
+
 	}, [] );
 
 	useEffect( () => {
 		// Replacement for componentDidUpdate.
-		const element = document.getElementById(
-			'uagb-adv-heading-style-' + props.clientId.substr( 0, 8 )
-		);
+		const blockStyling = styling( props );
 
-		if ( null !== element && undefined !== element ) {
-			element.innerHTML = styling( props );
-		}
+        addBlockEditorDynamicStyles( 'uagb-adv-heading-style-' + props.clientId.substr( 0, 8 ), blockStyling );
 	}, [ props ] );
+
+	useEffect( () => {
+		// Replacement for componentDidUpdate.
+	    const blockStyling = styling( props );
+
+        addBlockEditorDynamicStyles( 'uagb-adv-heading-style-' + props.clientId.substr( 0, 8 ), blockStyling );
+	}, [deviceType] );
 
 	return (
 		<>
@@ -59,16 +57,4 @@ const UAGBAdvancedHeading = ( props ) => {
 		</>
 	);
 };
-const applyWithSelect = withSelect( ( select ) => {
-	const { __experimentalGetPreviewDeviceType = null } = select(
-		'core/edit-post'
-	);
-	const deviceType = __experimentalGetPreviewDeviceType
-		? __experimentalGetPreviewDeviceType()
-		: null;
-
-	return {
-		deviceType,
-	};
-} );
-export default compose( applyWithSelect )( UAGBAdvancedHeading );
+export default UAGBAdvancedHeading;

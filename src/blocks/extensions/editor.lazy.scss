@@ -1,0 +1,47 @@
+.edit-post-visual-editor .wp-block-gallery.uag-masonry {
+
+	/* For Backword */
+	ul.blocks-gallery-grid {
+		column-count: 4;
+		column-gap: 1em;
+		display: block;
+
+		li.blocks-gallery-item {
+			display: block;
+			grid-template-rows: 1fr auto;
+			margin: 0 0 1em 0;
+			break-inside: avoid;
+			width: unset;
+		}
+	}
+
+	/* End Backword */
+	&.blocks-gallery-grid {
+		column-count: 3;
+		column-gap: 1em;
+		display: block;
+
+		figure.wp-block-image:not(#individual-image) {
+			display: block;
+			grid-template-rows: 1fr auto;
+			margin: 0 0 1em 0;
+			break-inside: avoid;
+			width: unset;
+		}
+	}
+}
+
+.uag-copy-paste-styles-popover {
+
+	.components-menu-item__shortcut {
+		white-space: nowrap;
+	}
+}
+
+.uag-copy-paste-styles,
+.uag-copy-paste-styles-popover {
+
+	.components-button {
+		color: #4a01e0;
+	}
+}

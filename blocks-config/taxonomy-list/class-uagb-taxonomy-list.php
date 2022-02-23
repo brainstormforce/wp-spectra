@@ -66,321 +66,403 @@ if ( ! class_exists( 'UAGB_Taxonomy_List' ) ) {
 				array(
 					'attributes'      => array(
 
-						'block_id'              => array(
+						'block_id'                   => array(
 							'type' => 'string',
 						),
-						'postType'              => array(
+						'listInJson'                 => array(
+							'type'    => 'object',
+							'default' => null,
+						),
+						'postType'                   => array(
 							'type'    => 'string',
 							'default' => 'post',
 						),
-						'taxonomyType'          => array(
+						'taxonomyType'               => array(
 							'type'    => 'string',
 							'default' => 'category',
 						),
-						'categories'            => array(
+						'categories'                 => array(
 							'type' => 'string',
 						),
-						'order'                 => array(
+						'order'                      => array(
 							'type'    => 'string',
 							'default' => 'desc',
 						),
-						'orderBy'               => array(
+						'orderBy'                    => array(
 							'type'    => 'string',
 							'default' => 'date',
 						),
-						'postsToShow'           => array(
+						'postsToShow'                => array(
 							'type'    => 'number',
 							'default' => '8',
 						),
-						'layout'                => array(
+						'layout'                     => array(
 							'type'    => 'string',
 							'default' => 'grid',
 						),
-						'columns'               => array(
+						'columns'                    => array(
 							'type'    => 'number',
 							'default' => 3,
 						),
-						'tcolumns'              => array(
+						'tcolumns'                   => array(
 							'type'    => 'number',
 							'default' => 2,
 						),
-						'mcolumns'              => array(
+						'mcolumns'                   => array(
 							'type'    => 'number',
 							'default' => 1,
 						),
-						'noTaxDisplaytext'      => array(
+						'noTaxDisplaytext'           => array(
 							'type'    => 'string',
 							'default' => __( 'Taxonomy Not Available.', 'ultimate-addons-for-gutenberg' ),
 						),
-						'boxShadowColor'        => array(
+						'boxShadowColor'             => array(
 							'type' => 'string',
 						),
-						'boxShadowHOffset'      => array(
+						'boxShadowHOffset'           => array(
 							'type'    => 'number',
 							'default' => 0,
 						),
-						'boxShadowVOffset'      => array(
+						'boxShadowVOffset'           => array(
 							'type'    => 'number',
 							'default' => 0,
 						),
-						'boxShadowBlur'         => array(
+						'boxShadowBlur'              => array(
 							'type' => 'number',
 						),
-						'boxShadowSpread'       => array(
+						'boxShadowSpread'            => array(
 							'type' => 'number',
 						),
-						'boxShadowPosition'     => array(
+						'boxShadowPosition'          => array(
 							'type'    => 'string',
 							'default' => 'outset',
 						),
-						'showCount'             => array(
+						'showCount'                  => array(
 							'type'    => 'boolean',
 							'default' => true,
 						),
-						'showEmptyTaxonomy'     => array(
+						'showEmptyTaxonomy'          => array(
 							'type'    => 'boolean',
 							'default' => false,
 						),
-						'showhierarchy'         => array(
+						'showhierarchy'              => array(
 							'type'    => 'boolean',
 							'default' => false,
 						),
-						'titleTag'              => array(
+						'titleTag'                   => array(
 							'type'    => 'string',
 							'default' => '',
 						),
 						// Color Attributes.
-						'bgColor'               => array(
+						'bgColor'                    => array(
 							'type'    => 'string',
 							'default' => '#f5f5f5',
 						),
-						'titleColor'            => array(
+						'titleColor'                 => array(
 							'type'    => 'string',
 							'default' => '#3b3b3b',
 						),
-						'countColor'            => array(
+						'countColor'                 => array(
 							'type'    => 'string',
 							'default' => '#777777',
 						),
-						'listTextColor'         => array(
+						'listTextColor'              => array(
 							'type'    => 'string',
 							'default' => '#3b3b3b',
 						),
-						'hoverlistTextColor'    => array(
+						'hoverlistTextColor'         => array(
 							'type'    => 'string',
 							'default' => '#3b3b3b',
 						),
-						'listStyleColor'        => array(
+						'listStyleColor'             => array(
 							'type'    => 'string',
 							'default' => '#3b3b3b',
 						),
-						'hoverlistStyleColor'   => array(
+						'hoverlistStyleColor'        => array(
 							'type'    => 'string',
 							'default' => '#3b3b3b',
 						),
 
 						// Spacing Attributes.
-						'rowGap'                => array(
+						'rowGap'                     => array(
 							'type'    => 'number',
 							'default' => 20,
 						),
-						'columnGap'             => array(
+						'columnGap'                  => array(
 							'type'    => 'number',
 							'default' => 20,
 						),
-						'contentPadding'        => array(
+						'contentPadding'             => array(
 							'type'    => 'number',
 							'default' => 20,
 						),
-						'contentPaddingTablet'  => array(
+						'contentPaddingTablet'       => array(
 							'type'    => 'number',
 							'default' => 15,
 						),
-						'contentPaddingMobile'  => array(
+						'contentPaddingMobile'       => array(
 							'type'    => 'number',
 							'default' => 15,
 						),
-						'titleBottomSpace'      => array(
+						'titleBottomSpace'           => array(
 							'type'    => 'number',
-							'default' => 15,
+							'default' => 5,
 						),
-						'listBottomMargin'      => array(
+						'listBottomMargin'           => array(
 							'type'    => 'number',
 							'default' => 10,
 						),
 
 						// ALignment Attributes.
-						'alignment'             => array(
+						'alignment'                  => array(
 							'type'    => 'string',
 							'default' => 'center',
 						),
 
 						// List Attributes.
-						'listStyle'             => array(
+						'listStyle'                  => array(
 							'type'    => 'string',
 							'default' => 'disc',
 						),
-						'listDisplayStyle'      => array(
+						'listDisplayStyle'           => array(
 							'type'    => 'string',
 							'default' => 'list',
 						),
 
 						// Seperator Attributes.
-						'seperatorStyle'        => array(
+						'seperatorStyle'             => array(
 							'type'    => 'string',
 							'default' => 'none',
 						),
-						'seperatorWidth'        => array(
+						'seperatorWidth'             => array(
 							'type'    => 'number',
 							'default' => 100,
 						),
-						'seperatorThickness'    => array(
+						'seperatorThickness'         => array(
 							'type'    => 'number',
 							'default' => 1,
 						),
-						'seperatorColor'        => array(
+						'seperatorColor'             => array(
+							'type'    => 'string',
+							'default' => '#b2b4b5',
+						),
+						'seperatorHoverColor'        => array(
 							'type'    => 'string',
 							'default' => '#b2b4b5',
 						),
 
 						// Grid Border attributes.
-						'borderColor'           => array(
+						'borderColor'                => array(
 							'type'    => 'string',
 							'default' => '#E0E0E0',
 						),
-						'borderThickness'       => array(
+						'borderThickness'            => array(
 							'type'    => 'number',
 							'default' => 1,
 						),
-						'borderRadius'          => array(
+						'borderRadius'               => array(
 							'type'    => 'number',
-							'default' => 0,
+							'default' => 3,
 						),
-						'borderStyle'           => array(
+						'borderStyle'                => array(
 							'type'    => 'string',
 							'default' => 'solid',
 						),
+						'borderHoverColor'           => array(
+							'type'    => 'string',
+							'default' => '#E0E0E0',
+						),
 						// Typograpghy attributes.
-						'titleFontSize'         => array(
+						'titleFontSize'              => array(
 							'type' => 'number',
 						),
-						'titleFontSizeType'     => array(
+						'titleFontSizeType'          => array(
 							'type'    => 'string',
 							'default' => 'px',
 						),
-						'titleFontSizeMobile'   => array(
+						'titleFontSizeMobile'        => array(
 							'type' => 'number',
 						),
-						'titleFontSizeTablet'   => array(
+						'titleFontSizeTablet'        => array(
 							'type' => 'number',
 						),
-						'titleFontFamily'       => array(
+						'titleFontFamily'            => array(
 							'type'    => 'string',
 							'default' => 'Default',
 						),
-						'titleFontWeight'       => array(
+						'titleFontWeight'            => array(
 							'type' => 'string',
 						),
-						'titleFontSubset'       => array(
+						'titleFontStyle'             => array(
 							'type' => 'string',
 						),
-						'titleLineHeightType'   => array(
+						'titleLineHeightType'        => array(
 							'type'    => 'string',
 							'default' => 'em',
 						),
-						'titleLineHeight'       => array(
+						'titleLineHeight'            => array(
 							'type' => 'number',
 						),
-						'titleLineHeightTablet' => array(
+						'titleLineHeightTablet'      => array(
 							'type' => 'number',
 						),
-						'titleLineHeightMobile' => array(
+						'titleLineHeightMobile'      => array(
 							'type' => 'number',
 						),
-						'titleLoadGoogleFonts'  => array(
+						'titleLoadGoogleFonts'       => array(
 							'type'    => 'boolean',
 							'default' => false,
 						),
-						'countFontSize'         => array(
+						'countFontSize'              => array(
 							'type' => 'number',
 						),
-						'countFontSizeType'     => array(
+						'countFontSizeType'          => array(
 							'type'    => 'string',
 							'default' => 'px',
 						),
-						'countFontSizeMobile'   => array(
+						'countFontSizeMobile'        => array(
 							'type' => 'number',
 						),
-						'countFontSizeTablet'   => array(
+						'countFontSizeTablet'        => array(
 							'type' => 'number',
 						),
-						'countFontFamily'       => array(
+						'countFontFamily'            => array(
 							'type'    => 'string',
 							'default' => 'Default',
 						),
-						'countFontWeight'       => array(
+						'countFontWeight'            => array(
 							'type' => 'string',
 						),
-						'countFontSubset'       => array(
+						'countFontStyle'             => array(
 							'type' => 'string',
 						),
-						'countLineHeightType'   => array(
+						'countLineHeightType'        => array(
 							'type'    => 'string',
 							'default' => 'em',
 						),
-						'countLineHeight'       => array(
+						'countLineHeight'            => array(
 							'type' => 'number',
 						),
-						'countLineHeightTablet' => array(
+						'countLineHeightTablet'      => array(
 							'type' => 'number',
 						),
-						'countLineHeightMobile' => array(
+						'countLineHeightMobile'      => array(
 							'type' => 'number',
 						),
-						'countLoadGoogleFonts'  => array(
+						'countLoadGoogleFonts'       => array(
 							'type'    => 'boolean',
 							'default' => false,
 						),
 
-						'listFontSize'          => array(
+						'listFontSize'               => array(
 							'type' => 'number',
 						),
-						'listFontSizeType'      => array(
+						'listFontSizeType'           => array(
 							'type'    => 'string',
 							'default' => 'px',
 						),
-						'listFontSizeMobile'    => array(
+						'listFontSizeMobile'         => array(
 							'type' => 'number',
 						),
-						'listFontSizeTablet'    => array(
+						'listFontSizeTablet'         => array(
 							'type' => 'number',
 						),
-						'listFontFamily'        => array(
+						'listFontFamily'             => array(
 							'type'    => 'string',
 							'default' => 'Default',
 						),
-						'listFontWeight'        => array(
+						'listFontWeight'             => array(
 							'type' => 'string',
 						),
-						'listFontSubset'        => array(
+						'listFontStyle'              => array(
 							'type' => 'string',
 						),
-						'listLineHeightType'    => array(
+						'listLineHeightType'         => array(
 							'type'    => 'string',
 							'default' => 'em',
 						),
-						'listLineHeight'        => array(
+						'listLineHeight'             => array(
 							'type' => 'number',
 						),
-						'listLineHeightTablet'  => array(
+						'listLineHeightTablet'       => array(
 							'type' => 'number',
 						),
-						'listLineHeightMobile'  => array(
+						'listLineHeightMobile'       => array(
 							'type' => 'number',
 						),
-						'listLoadGoogleFonts'   => array(
+						'listLoadGoogleFonts'        => array(
 							'type'    => 'boolean',
 							'default' => false,
+						),
+						'contentLeftPadding'         => array(
+							'type' => 'number',
+						),
+						'contentRightPadding'        => array(
+							'type' => 'number',
+						),
+						'contentTopPadding'          => array(
+							'type' => 'number',
+						),
+						'contentBottomPadding'       => array(
+							'type' => 'number',
+						),
+						'contentLeftPaddingTablet'   => array(
+							'type' => 'number',
+						),
+						'contentRightPaddingTablet'  => array(
+							'type' => 'number',
+						),
+						'contentTopPaddingTablet'    => array(
+							'type' => 'number',
+						),
+						'contentBottomPaddingTablet' => array(
+							'type' => 'number',
+						),
+						'contentLeftPaddingMobile'   => array(
+							'type' => 'number',
+						),
+						'contentRightPaddingMobile'  => array(
+							'type' => 'number',
+						),
+						'contentTopPaddingMobile'    => array(
+							'type' => 'number',
+						),
+						'contentBottomPaddingMobile' => array(
+							'type' => 'number',
+						),
+						'contentPaddingUnit'         => array(
+							'type'    => 'string',
+							'default' => 'px',
+						),
+						'mobileContentPaddingUnit'   => array(
+							'type'    => 'string',
+							'default' => 'px',
+						),
+						'tabletContentPaddingUnit'   => array(
+							'type'    => 'string',
+							'default' => 'px',
+						),
+						'contentPaddingLink'         => array(
+							'type'    => 'boolean',
+							'default' => false,
+						),
+						'titleTransform'             => array(
+							'type' => 'string',
+						),
+						'countTransform'             => array(
+							'type' => 'string',
+						),
+						'listTransform'              => array(
+							'type' => 'string',
+						),
+						'titleDecoration'            => array(
+							'type' => 'string',
+						),
+						'countDecoration'            => array(
+							'type' => 'string',
+						),
+						'listDecoration'             => array(
+							'type' => 'string',
 						),
 					),
 					'render_callback' => array( $this, 'render_html' ),
@@ -429,11 +511,9 @@ if ( ! class_exists( 'UAGB_Taxonomy_List' ) ) {
 							<<?php echo esc_html( $titleTag ); ?> class="uagb-tax-title"><?php echo esc_attr( $value->name ); ?>
 							</<?php echo esc_html( $titleTag ); ?>>
 							<?php if ( $showCount ) { ?>
-								<div class="uagb-tax-count">
 									<?php echo esc_attr( $value->count ); ?>
 									<?php $countName = ( $value->count > 1 ) ? esc_attr( $singular_name ) . 's' : esc_attr( $singular_name ); ?>
 									<?php echo esc_attr( apply_filters( 'uagb_taxonomy_count_text', $countName, $value->count ) ); ?>
-									</div>
 							<?php } ?>
 						</a>
 					</div>
@@ -493,25 +573,23 @@ if ( ! class_exists( 'UAGB_Taxonomy_List' ) ) {
 								<<?php echo esc_html( $titleTag ); ?> class="uagb-tax-link-wrap">
 									<a class="uagb-tax-link" href="<?php echo esc_url( get_term_link( $value->slug, $attributes['taxonomyType'] ) ); ?>"><?php echo esc_attr( $value->name ); ?></a>
 										<?php if ( $showCount ) { ?>
-											<span class="uagb-tax-list-count"><?php echo ' (' . esc_attr( $value->count ) . ')'; ?></span>
+											<?php echo ' (' . esc_attr( $value->count ) . ')'; ?>
 										<?php } ?>
-										<?php if ( $attributes['showhierarchy'] && ! empty( $newcategoriesList[ $key ]->children ) ) { ?>	
-											<ul class="uagb-taxonomy-list-children">	
+										<?php if ( $attributes['showhierarchy'] && ! empty( $newcategoriesList[ $key ]->children ) ) { ?>
+											<ul class="uagb-taxonomy-list-children">
 												<?php foreach ( $newcategoriesList[ $key ]->children as $value ) { ?>
 													<li class="uagb-tax-list">
-													<a class="uagb-tax-link" href="<?php echo esc_url( get_term_link( $value->slug, $attributes['taxonomyType'] ) ); ?>"><?php echo esc_attr( $value->name ); ?></a>	
+													<a class="uagb-tax-link" href="<?php echo esc_url( get_term_link( $value->slug, $attributes['taxonomyType'] ) ); ?>"><?php echo esc_attr( $value->name ); ?></a>
 													<?php if ( $showCount ) { ?>
-														<span class="uagb-tax-list-count"><?php echo ' (' . esc_attr( $value->count ) . ')'; ?></span>
+														<?php echo ' (' . esc_attr( $value->count ) . ')'; ?>
 													<?php } ?>												
 													</li>
 												<?php } ?>
-											</ul>			
-										<?php } ?>										
+											</ul>
+										<?php } ?>
 								</<?php echo esc_html( $titleTag ); ?>>
 								<?php if ( 'none' !== $seperatorStyle ) { ?>
-									<div class="uagb-tax-separator-wrap">
 										<div class="uagb-tax-separator"></div>
-									</div>
 								<?php } ?>
 							</li>
 						<?php } ?>
@@ -529,14 +607,14 @@ if ( ! class_exists( 'UAGB_Taxonomy_List' ) ) {
 						<?php } ?>
 					</select>
 					<script type="text/javascript">
-						function redirectToTaxonomyLink( selectedOption ) {       
+						function redirectToTaxonomyLink( selectedOption ) {
 							var selectedValue = selectedOption.value;
 							if ( selectedValue ) {
 								location.href = selectedValue;
-							}						
+							}
 						}
-					</script>					
-				<?php } ?>	
+					</script>
+				<?php } ?>
 				<?php
 			}
 		}
@@ -572,18 +650,16 @@ if ( ! class_exists( 'UAGB_Taxonomy_List' ) ) {
 			}
 
 			$main_classes = array(
+				'wp-block-uagb-taxonomy-list',
 				'uagb-taxonomy__outer-wrap',
+				'uagb-layout-' . $layout,
 				'uagb-block-' . $block_id,
 				$desktop_class,
 				$tab_class,
 				$mob_class,
 			);
 
-			$inner_classes = array(
-				'uagb-taxonomy-wrap',
-				'uagb-layout-' . $layout,
-			);
-			$args          = array(
+			$args = array(
 				'hide_empty' => ! $attributes['showEmptyTaxonomy'],
 			);
 
@@ -596,13 +672,11 @@ if ( ! class_exists( 'UAGB_Taxonomy_List' ) ) {
 			?>
 				<div class = "<?php echo esc_attr( implode( ' ', $main_classes ) ); ?>">
 					<?php if ( ! empty( $newcategoriesList ) ) { ?>
-						<div class = "<?php echo esc_attr( implode( ' ', $inner_classes ) ); ?>">
 							<?php $this->grid_html( $attributes ); ?>
 							<?php $this->list_html( $attributes ); ?>							
-						</div>
 					<?php } else { ?>
 							<div class="uagb-tax-not-available"><?php echo esc_attr( $noTaxDisplaytext ); ?></div>
-					<?php } ?>					
+					<?php } ?>
 				</div>
 
 			<?php

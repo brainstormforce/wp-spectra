@@ -14,8 +14,8 @@ import { __ } from '@wordpress/i18n';
 import { registerBlockType } from '@wordpress/blocks';
 
 registerBlockType( 'uagb/info-box', {
-	title: uagb_blocks_info.blocks[ 'uagb/info-box' ].title,
-	description: uagb_blocks_info.blocks[ 'uagb/info-box' ].description,
+	title: __( 'Info Box', 'ultimate-addons-for-gutenberg' ),
+	description: __( 'This block allows you to place an image or icon along with a heading and description within a single block.', 'ultimate-addons-for-gutenberg' ),
 	icon: UAGB_Block_Icons.info_box,
 	keywords: [
 		__( 'info box', 'ultimate-addons-for-gutenberg' ),

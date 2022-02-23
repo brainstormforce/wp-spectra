@@ -4,6 +4,7 @@ import React, { useLayoutEffect } from 'react';
 import { __ } from '@wordpress/i18n';
 import { RichText } from '@wordpress/block-editor';
 import styles from './editor.lazy.scss';
+import { useDeviceType } from '@Controls/getPreviewType';
 
 const Render = ( props ) => {
 	// Add and remove the CSS on the drop and remove of the component.
@@ -15,11 +16,11 @@ const Render = ( props ) => {
 	}, [] );
 
 	props = props.parentProps;
+	const deviceType = useDeviceType();
 	const {
 		attributes,
 		setAttributes,
 		className,
-		deviceType,
 		mergeBlocks,
 		insertBlocksAfter,
 		createBlock,
@@ -37,63 +38,78 @@ const Render = ( props ) => {
 		titleTag,
 	} = attributes;
 
+	const iconHTML = (
+		<>
+			{ '' !== icon && (
+				renderSVG( icon )
+			) }
+		</>
+	);
+	const titleHTML = (
+		<>
+			<RichText
+				placeholder={ __(
+					'Add Button Title…',
+					'ultimate-addons-for-gutenberg'
+				) }
+				value={ heading }
+				tagName={ titleTag }
+				onChange={ ( value ) =>
+					setAttributes( { heading: value } )
+				}
+				allowedFormats={ [
+					'bold',
+					'italic',
+					'strikethrough',
+				] }
+				className="uagb-marketing-btn__title"
+				onRemove={ () => onReplace( [] ) }
+				multiline={ false }
+				onMerge={ mergeBlocks }
+				onSplit={
+					insertBlocksAfter
+						? ( before, after, ...blocks ) => {
+								setAttributes( {
+									content: before,
+								} );
+								insertBlocksAfter( [
+									...blocks,
+									createBlock( 'core/paragraph', {
+										content: after,
+									} ),
+								] );
+						  }
+						: undefined
+				}
+			/>
+		</>
+	);
+
 	return (
 		<div
 			className={ classnames(
 				className,
-				'uagb-marketing-btn__outer-wrap',
 				`uagb-marketing-btn__align-${ align }`,
 				`uagb-marketing-btn__align-text-${ textAlign }`,
 				`uagb-marketing-btn__icon-${ iconPosition }`,
 				`uagb-editor-preview-mode-${ deviceType.toLowerCase() }`,
-				`uagb-block-${ block_id }`
+				`uagb-block-${ block_id }`,
 			) }
 		>
-			<div className="uagb-marketing-btn__wrap">
-				<a className="uagb-marketing-btn__link">
-					<div className="uagb-marketing-btn__title-wrap">
-						{ '' !== icon && (
-							<div className="uagb-marketing-btn__icon-wrap">
-								{ renderSVG( icon ) }
-							</div>
-						) }
-						<RichText
-							placeholder={ __(
-								'Add Button Title…',
-								'ultimate-addons-for-gutenberg'
-							) }
-							value={ heading }
-							tagName={ titleTag }
-							onChange={ ( value ) =>
-								setAttributes( { heading: value } )
-							}
-							allowedFormats={ [
-								'bold',
-								'italic',
-								'strikethrough',
-							] }
-							className="uagb-marketing-btn__title"
-							onRemove={ () => onReplace( [] ) }
-							multiline={ false }
-							onMerge={ mergeBlocks }
-							onSplit={
-								insertBlocksAfter
-									? ( before, after, ...blocks ) => {
-											setAttributes( {
-												content: before,
-											} );
-											insertBlocksAfter( [
-												...blocks,
-												createBlock( 'core/paragraph', {
-													content: after,
-												} ),
-											] );
-									  }
-									: undefined
-							}
-						/>
-					</div>
-					<div className="uagb-marketing-btn__prefix-wrap">
+				<a // eslint-disable-line jsx-a11y/anchor-is-valid
+				 className="uagb-marketing-btn__link">
+						{ 'before' === iconPosition &&
+							<>
+							{ iconHTML }
+							{ titleHTML }
+							</>
+						}
+						{ 'after' === iconPosition &&
+							<>
+							{ titleHTML }
+							{ iconHTML }
+							</>
+						}
 						<RichText
 							placeholder={ __(
 								'Add Button Description…',
@@ -129,9 +145,7 @@ const Render = ( props ) => {
 									: undefined
 							}
 						/>
-					</div>
 				</a>
-			</div>
 		</div>
 	);
 };

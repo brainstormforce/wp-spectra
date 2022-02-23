@@ -8,8 +8,10 @@ import './style.scss';
 import { compose } from '@wordpress/compose';
 import { withSelect } from '@wordpress/data';
 import lazyLoader from '@Controls/lazy-loader';
-import React, { useEffect, lazy, Suspense } from 'react';
-
+import React, { lazy, Suspense } from 'react';
+import { useState, useEffect } from '@wordpress/element';
+import addBlockEditorDynamicStyles from '@Controls/addBlockEditorDynamicStyles';
+import { useDeviceType } from '@Controls/getPreviewType';
 const Settings = lazy( () =>
 	import( /* webpackChunkName: "chunks/how-to/settings" */ './settings' )
 );
@@ -17,9 +19,10 @@ const Render = lazy( () =>
 	import( /* webpackChunkName: "chunks/how-to/render" */ './render' )
 );
 
-let prevState;
-
 const HowToComponent = ( props ) => {
+	const deviceType = useDeviceType();
+	const [ prevState, setPrevState ] = useState( '' );
+
 	useEffect( () => {
 		// Replacement for componentDidMount.
 
@@ -30,20 +33,11 @@ const HowToComponent = ( props ) => {
 			schema: JSON.stringify( props.schemaJsonData ),
 		} );
 
-		// Pushing Style tag for this block css.
-		const $style = document.createElement( 'style' );
-		$style.setAttribute(
-			'id',
-			'uagb-how-to-schema-style-' + props.clientId.substr( 0, 8 )
-		);
-		document.head.appendChild( $style );
-
-		prevState = props.schemaJsonData;
+		setPrevState( props.schemaJsonData );
 	}, [] );
 
 	useEffect( () => {
 		// Replacement for componentDidUpdate.
-
 		if (
 			JSON.stringify( props.schemaJsonData ) !==
 			JSON.stringify( prevState )
@@ -52,16 +46,20 @@ const HowToComponent = ( props ) => {
 				schema: JSON.stringify( props.schemaJsonData ),
 			} );
 
-			prevState = props.schemaJsonData;
+			setPrevState( props.schemaJsonData );
 		}
-		const element = document.getElementById(
-			'uagb-how-to-schema-style-' + props.clientId.substr( 0, 8 )
-		);
+		const blockStyling = styling( props );
 
-		if ( null !== element && undefined !== element ) {
-			element.innerHTML = styling( props );
-		}
+        addBlockEditorDynamicStyles( 'uagb-how-to-schema-style-' + props.clientId.substr( 0, 8 ), blockStyling );
 	}, [ props ] );
+
+	
+	useEffect( () => {
+		// Replacement for componentDidUpdate.
+	    const blockStyling = styling( props );
+
+        addBlockEditorDynamicStyles( 'uagb-how-to-schema-style-' + props.clientId.substr( 0, 8 ), blockStyling );
+	}, [deviceType] );
 
 	// Setup the attributes
 	const {
@@ -116,12 +114,6 @@ const HowToComponent = ( props ) => {
 
 export default compose(
 	withSelect( ( select, ownProps ) => {
-		const { __experimentalGetPreviewDeviceType = null } = select(
-			'core/edit-post'
-		);
-		const deviceType = __experimentalGetPreviewDeviceType
-			? __experimentalGetPreviewDeviceType()
-			: null;
 		let urlChk = '';
 
 		if (
@@ -137,19 +129,19 @@ export default compose(
 		const jsonData = {
 			'@context': 'https://schema.org',
 			'@type': 'HowTo',
-			name: ownProps.attributes.headingTitle,
-			description: ownProps.attributes.headingDesc,
-			image: {
+			'name': ownProps.attributes.headingTitle,
+			'description': ownProps.attributes.headingDesc,
+			'image': {
 				'@type': 'ImageObject',
-				url: urlChk,
-				height: '406',
-				width: '305',
+				'url': urlChk,
+				'height': '406',
+				'width': '305',
 			},
-			totalTime: '',
-			estimatedCost: [],
-			tool: [],
-			supply: [],
-			step: [],
+			'totalTime': '',
+			'estimatedCost': [],
+			'tool': [],
+			'supply': [],
+			'step': [],
 		};
 
 		const y = ownProps.attributes.timeInYears
@@ -177,8 +169,8 @@ export default compose(
 		if ( ownProps.attributes.showEstcost ) {
 			jsonData.estimatedCost = {
 				'@type': 'MonetaryAmount',
-				currency: ownProps.attributes.currencyType,
-				value: ownProps.attributes.cost,
+				'currency': ownProps.attributes.currencyType,
+				'value': ownProps.attributes.cost,
 			};
 		}
 
@@ -186,7 +178,7 @@ export default compose(
 			ownProps.attributes.tools.forEach( ( tools, key ) => {
 				toolsData = {
 					'@type': 'HowToTool',
-					name: tools.add_required_tools,
+					'name': tools.add_required_tools,
 				};
 				jsonData.tool[ key ] = toolsData;
 			} );
@@ -196,30 +188,29 @@ export default compose(
 			ownProps.attributes.materials.forEach( ( materials, key ) => {
 				materialsData = {
 					'@type': 'HowToSupply',
-					name: materials.add_required_materials,
+					'name': materials.add_required_materials,
 				};
 				jsonData.supply[ key ] = materialsData;
 			} );
 		}
-
+		
 		const getChildBlocks = select( 'core/block-editor' ).getBlocks(
 			ownProps.clientId
 		);
 
 		getChildBlocks.forEach( ( steps, key ) => {
-			stepsData = {
-				'@type': 'HowToStep',
-				url: steps.attributes.ctaLink,
-				name: steps.attributes.infoBoxTitle,
-				text: steps.attributes.headingDesc,
-				image: steps.attributes.iconImage.url,
-			};
-			jsonData.step[ key ] = stepsData;
-		} );
-
+			stepsData = {	
+					'@type': 'HowToStep',
+					'url': steps.attributes?.ctaLink || steps.attributes?.url,
+					'name': steps.attributes?.infoBoxTitle || steps.attributes?.name,
+					'text': steps.attributes?.headingDesc || steps.attributes?.description,
+					'image': steps.attributes?.iconImage?.url || steps.attributes?.image?.url
+			}
+			jsonData.step[key] = stepsData;
+		} );	
+		
 		return {
 			schemaJsonData: jsonData,
-			deviceType,
 		};
 	} )
 )( HowToComponent );

@@ -1,191 +1,241 @@
-( function ( $ ) {
-	$ = jQuery;
-	let loadStatus = true;
-	UAGBPostCarousel = {
-		_setHeight( scope ) {
-			let post_wrapper = scope.find( '.slick-slide' ),
-				post_active = scope.find( '.slick-slide.slick-active' ),
-				max_height = -1,
-				wrapper_height = -1,
-				post_active_height = -1;
 
-			post_active.each( function ( i ) {
-				const this_height = $( this ).outerHeight(),
-					blog_post = $( this ).find( '.uagb-post__inner-wrap' ),
-					blog_post_height = blog_post.outerHeight();
+let loadStatus = true;
 
-				if ( max_height < blog_post_height ) {
-					max_height = blog_post_height;
-					post_active_height = max_height + 15;
+window.UAGBPostCarousel = {
+	_setHeight( scope ) {
+
+		if( scope.length > 0 ){
+			const postWrapper = scope[0].querySelectorAll( '.slick-slide' ),
+			postActive = scope[0].querySelectorAll( '.slick-slide.slick-active' );
+			let	maxHeight = -1,
+				wrapperHeight = -1,
+				postActiveHeight = -1;
+			Object.keys( postActive ).forEach( ( key ) => {
+				const thisHeight = postActive[key].offsetHeight,
+				blogPost = postActive[key].querySelector( '.uagb-post__inner-wrap' ),
+				blogPostHeight = blogPost.offsetHeight;
+
+				if ( maxHeight < blogPostHeight ) {
+					maxHeight = blogPostHeight;
+					postActiveHeight = maxHeight + 15;
 				}
 
-				if ( wrapper_height < this_height ) {
-					wrapper_height = this_height;
+				if ( wrapperHeight < thisHeight ) {
+					wrapperHeight = thisHeight;
 				}
 			} );
 
-			post_active.each( function ( i ) {
-				const selector = $( this ).find( '.uagb-post__inner-wrap' );
-				selector.animate(
-					{ height: max_height },
-					{ duration: 200, easing: 'linear' }
-				);
+			Object.keys( postActive ).forEach( ( key ) => {
+				const selector =  postActive[key].querySelector( '.uagb-post__inner-wrap' );
+				selector.style.height = maxHeight + 'px';
 			} );
 
-			scope
-				.find( '.slick-list' )
-				.animate(
-					{ height: post_active_height },
-					{ duration: 200, easing: 'linear' }
-				);
-
-			max_height = -1;
-			wrapper_height = -1;
-
-			post_wrapper.each( function () {
-				const $this = jQuery( this ),
-					selector = $this.find( '.uagb-post__inner-wrap' ),
-					blog_post_height = selector.outerHeight();
-
-				if ( $this.hasClass( 'slick-active' ) ) {
+			let selector = scope[0].querySelector( '.slick-list' );
+			selector.style.height = postActiveHeight + 'px';
+			maxHeight = -1;
+			wrapperHeight = -1;
+			Object.keys( postWrapper ).forEach( ( key ) => {
+				const $this = postWrapper[key];
+				if ( $this.classList.contains( 'slick-active' ) ) {
 					return true;
 				}
 
-				selector.css( 'height', blog_post_height );
-			} );
-		},
-		_unSetHeight( scope ) {
-			const post_wrapper = scope.find( '.slick-slide' ),
-				post_active = scope.find( '.slick-active' );
+				selector = $this.querySelector( '.uagb-post__inner-wrap' );
+				const blogPostHeight = selector.offsetHeight;
+				selector.style.height = blogPostHeight + 'px';
 
-			post_active.each( function ( i ) {
-				const selector = $( this ).find( '.uagb-post__inner-wrap' );
-				selector.css( 'height', 'auto' );
+			} );
+		}
+
+	},
+	_unSetHeight( scope ) {
+		if( scope.length > 0 ){
+		const postWrapper = scope[0].querySelectorAll( '.slick-slide' ),
+			postActive = scope[0].querySelectorAll( '.slick-slide.slick-active' );
+
+			Object.keys( postActive ).forEach( ( key ) => {
+				const selector = postActive[key].querySelector( '.uagb-post__inner-wrap' );
+				selector.style.height = 'auto';
 			} );
 
-			post_wrapper.each( function () {
-				const $this = jQuery( this ),
-					selector = $this.find( '.uagb-post__inner-wrap' );
-				if ( $this.hasClass( 'slick-active' ) ) {
+			Object.keys( postActive ).forEach( ( key ) => {
+				const $this = postWrapper[key];
+				if ( $this.classList.contains( 'slick-active' ) ) {
 					return true;
 				}
-				selector.css( 'height', 'auto' );
+				const  selector = $this.querySelector( '.uagb-post__inner-wrap' );
+				selector.style.height = 'auto';
 			} );
-		},
-	};
-	UAGBPostMasonry = {
-		_init( $attr, $selector ) {
-			let count = 2;
-			const windowHeight50 = jQuery( window ).outerHeight() / 1.25;
-			let $scope = $( $selector );
-			const loader = $scope.find( '.uagb-post-inf-loader' );
+		}
+	},
+}
 
-			$scope.find( '.is-masonry' ).isotope();
+window.UAGBPostMasonry = {
+	_init( $attr, $selector ) {
+		let count = 2;
+		const windowHeight50 = window.innerHeight / 1.25;
+		let $scope = document.querySelector( $selector );
+		const loader = $scope.querySelectorAll( '.uagb-post-inf-loader' )
+		if ( 'scroll' === $attr.paginationEventType ) {
 
-			if ( 'scroll' === $attr.paginationEventType ) {
-				$( window ).scroll( function () {
-					if (
-						$( window ).scrollTop() + windowHeight50 >=
-						$scope.find( '.uagb-post__items:last' ).offset().top
-					) {
-						const $args = {
-							page_number: count,
-						};
-						total = $scope.data( 'total' );
-						if ( true == loadStatus ) {
-							if ( count <= total ) {
-								loader.show();
-								UAGBPostMasonry._callAjax(
-									$scope,
-									$args,
-									$attr,
-									loader,
-									false,
-									count
-								);
-								count++;
-								loadStatus = false;
+			window.addEventListener( 'scroll', function() {
+
+				let postItems = $scope.querySelector( '.uagb-post__items' );
+
+				if ( ! postItems ) {
+					postItems = $scope
+				}
+
+				const boundingClientRect = postItems.lastElementChild.getBoundingClientRect();
+
+				const offsetTop = boundingClientRect.top + window.scrollY;
+
+				if ( window.pageYOffset + windowHeight50 >= offsetTop ) {
+					const $args = {
+						page_number: count,
+					};
+					const total = $scope.getAttribute( 'data-total' );
+					if ( true === loadStatus ) {
+						if ( count <= total ) {
+							if ( loader.length > 0 ){
+								loader[0].style.display='none';
 							}
+							window.UAGBPostMasonry._callAjax(
+								$scope,
+								$args,
+								$attr,
+								loader,
+								false,
+								count
+							);
+							count++;
+							loadStatus = false;
 						}
 					}
+				}
+			} );
+		}
+
+		if ( 'button' === $attr.paginationEventType ) {
+
+			if( $scope.querySelector( '.uagb-post-pagination-button' ) ){
+
+				$scope.style.marginBottom ='40px';
+
+				$scope.querySelector( '.uagb-post-pagination-button' ).onclick = function () {
+
+					$scope = this.closest( '.uagb-post-grid' );
+					const total = $scope.getAttribute( 'data-total' );
+					const $args = {
+						total,
+						page_number: count,
+					};
+					$scope.querySelector( '.uagb-post__load-more-wrap' ).style.display='none';
+					if ( true === loadStatus ) {
+						if ( count <= total ) {
+							if ( loader.length > 0 ){
+								loader[0].style.display='none';
+							}
+							$scope.querySelector( '.uagb-post__load-more-wrap' ).style.display='block';
+							window.UAGBPostMasonry._callAjax(
+								$scope,
+								$args,
+								$attr,
+								loader,
+								true,
+								count
+							);
+							count++;
+							loadStatus = false;
+						}
+					}
+				};
+			}
+		}
+	},
+	createElementFromHTML( htmlString ) {
+		const HTMLElement = document.createElement( 'div' );
+		HTMLElement.innerHTML = htmlString.trim();
+
+		// Change this to div.childNodes to support multiple top-level nodes
+		return HTMLElement;
+	},
+	_callAjax( $scope, $obj, $attr, loader, append = false, count ) {
+
+		const PostData = new FormData(); // eslint-disable-line no-undef
+
+		PostData.append( 'action', 'uagb_get_posts' );
+		PostData.append( 'nonce', uagb_data.uagb_masonry_ajax_nonce );
+		PostData.append( 'page_number', $obj.page_number );
+		PostData.append( 'attr', JSON.stringify( $attr ) );
+
+		fetch( uagb_data.ajax_url, { // eslint-disable-line no-undef
+			method: 'POST',
+			credentials: 'same-origin',
+			body: PostData,
+		  } )
+		  .then( ( resp ) => resp.json() )
+		  .then( function( data ) {
+
+				let element = $scope.querySelector( '.is-masonry' );
+
+				if ( ! element ) {
+					element = $scope;
+				}
+
+				const isotope = new Isotope( element, { // eslint-disable-line no-undef
+					itemSelector: 'article',
 				} );
-			}
-			if ( 'button' === $attr.paginationEventType ) {
-				$( document ).on(
-					'click',
-					'.uagb-post-pagination-button',
-					function ( e ) {
-						$scope = $( this ).closest( '.uagb-post-grid' );
-						total = $scope.data( 'total' );
-						const $args = {
-							total,
-							page_number: count,
-						};
-						$scope.find( '.uagb-post__load-more-wrap' ).hide();
-						if ( true == loadStatus ) {
-							if ( count <= total ) {
-								loader.show();
-								UAGBPostMasonry._callAjax(
-									$scope,
-									$args,
-									$attr,
-									loader,
-									true,
-									count
-								);
-								count++;
-								loadStatus = false;
-							}
-						}
-					}
-				);
-			}
-		},
-		_callAjax( $scope, $obj, $attr, loader, append = false, count ) {
-			$.ajax( {
-				url: uagb_data.ajax_url,
-				data: {
-					action: 'uagb_get_posts',
-					page_number: $obj.page_number,
-					attr: $attr,
-					nonce: uagb_data.uagb_masonry_ajax_nonce,
-				},
-				dataType: 'json',
-				type: 'POST',
-				success( data ) {
-					$scope
-						.find( '.is-masonry' )
-						.isotope( 'insert', $( data.data ) );
-					loadStatus = true;
-					loader.hide();
 
-					if ( true === append ) {
-						$scope.find( '.uagb-post__load-more-wrap' ).show();
+				isotope.insert( window.UAGBPostMasonry.createElementFromHTML( data.data ) )
+				loadStatus = true;
+
+				if ( loader.length > 0 ){
+					loader[0].style.display='none';
+				}
+
+				if ( true === append ) {
+					$scope.querySelector( '.uagb-post__load-more-wrap' ).style.display='block';
+				}
+
+				if ( count === parseInt( $obj.total ) ) {
+					$scope.querySelector( '.uagb-post__load-more-wrap' ).style.display='none';
+				}
+				// This CSS is for Post BG Image Spacing
+				const articles = document.querySelectorAll( '.uagb-post__image-position-background .uagb-post__inner-wrap' );
+
+				for( const article of articles ) {
+
+					const articleWidth = article.offsetWidth;
+					const rowGap = $attr.rowGap;
+					const imageWidth = 100 - ( rowGap / articleWidth ) * 100;
+					const image = article.getElementsByClassName( 'uagb-post__image' );
+					if ( image[0] ) {
+						image[0].style.width = imageWidth + '%';
+						image[0].style.marginLeft = rowGap / 2 + 'px';
+
 					}
 
-					if ( count == $obj.total ) {
-						$scope.find( '.uagb-post__load-more-wrap' ).hide();
-					}
-				},
-			} );
-		},
-	};
-} )( jQuery );
+				}
+		  } )
+		  .catch( function( error ) {
+			console.log( JSON.stringify( error ) ); // eslint-disable-line no-console
+		  } );
+	}
+};
 
 // Set Carousel Height for Customiser.
-function uagb_carousel_height( id ) {
-	const wrap = jQuery( '#block-' + id );
-	const scope = wrap
-		.find( '.wp-block-uagb-post-carousel' )
-		.find( '.is-carousel' );
-	UAGBPostCarousel._setHeight( scope );
+function uagb_carousel_height( id ) { // eslint-disable-line no-unused-vars
+	const wrap = document.querySelector( '#wpwrap .is-carousel.uagb-block-' + id );
+	if( wrap ){
+		window.UAGBPostCarousel._setHeight( wrap );
+	}
 }
 
 // Unset Carousel Height for Customiser.
-function uagb_carousel_unset_height( id ) {
-	const wrap = jQuery( '#block-' + id );
-	const scope = wrap
-		.find( '.wp-block-uagb-post-carousel' )
-		.find( '.is-carousel' );
-	UAGBPostCarousel._unSetHeight( scope );
+function uagb_carousel_unset_height( id ) { // eslint-disable-line no-unused-vars
+	const wrap = document.querySelector( '#wpwrap .is-carousel.uagb-block-' + id );
+	if( wrap ){
+		window.UAGBPostCarousel._unSetHeight( wrap );
+	}
 }

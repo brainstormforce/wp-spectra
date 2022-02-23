@@ -20,18 +20,22 @@ const attributes = {
 	},
 	image: {
 		type: 'object',
+		default: null
 	},
 	imagePosition: {
 		type: 'string',
 		default: 'top',
+		isUAGStyle: true,
 	},
 	imageAlignment: {
 		type: 'string',
 		default: 'top',
+		isUAGStyle: true,
 	},
 	imageSize: {
 		type: 'string',
 		default: 'medium',
+		isUAGStyle: true,
 	},
 	headingTag: {
 		type: 'string',
@@ -40,18 +44,26 @@ const attributes = {
 	columns: {
 		type: 'number',
 		default: 2,
+		isUAGStyle: true,
 	},
 	tcolumns: {
 		type: 'number',
 		default: 2,
+		isUAGStyle: true,
 	},
 	mcolumns: {
 		type: 'number',
 		default: 1,
+		isUAGStyle: true,
 	},
 	headingAlign: {
 		type: 'string',
 		default: 'left',
+		isUAGStyle: true,
+	},
+	stack: {
+		type: 'string',
+		default: 'tablet',
 	},
 };
 

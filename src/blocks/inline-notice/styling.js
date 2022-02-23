@@ -33,30 +33,78 @@ function styling( props ) {
 		descLineHeightType,
 		descLineHeightTablet,
 		descLineHeightMobile,
-		contentVrPadding,
-		contentHrPadding,
-		titleVrPadding,
-		titleHrPadding,
+		contentTopPadding,
+		contentRightPadding,
+		contentBottomPadding,
+		contentLeftPadding,
+		contentTopPaddingTablet,
+		contentRightPaddingTablet,
+		contentBottomPaddingTablet,
+		contentLeftPaddingTablet,
+		contentTopPaddingMobile,
+		contentRightPaddingMobile,
+		contentBottomPaddingMobile,
+		contentLeftPaddingMobile,
+		contentPaddingUnit,
+		mobileContentPaddingUnit,
+		tabletContentPaddingUnit,
+		titleTopPadding,
+		titleRightPadding,
+		titleBottomPadding,
+		titleLeftPadding,
+		titleTopPaddingTablet,
+		titleRightPaddingTablet,
+		titleBottomPaddingTablet,
+		titleLeftPaddingTablet,
+		titleTopPaddingMobile,
+		titleRightPaddingMobile,
+		titleBottomPaddingMobile,
+		titleLeftPaddingMobile,
+		titlePaddingUnit,
+		mobileTitlePaddingUnit,
+		tabletTitlePaddingUnit,
 		noticeDismiss,
 		noticeAlignment,
 		layout,
 		highlightWidth,
+		titleTransform,
+		titleDecoration,
+		descTransform,
+		descDecoration,
+		titleFontStyle,
+		descFontStyle,
 	} = props.attributes;
 
 	let lPadding;
 	let rPadding;
+	let lPaddingMobile;
+	let rPaddingMobile;
+	let lPaddingTablet;
+	let rPaddingTablet;
 
 	if ( noticeDismiss ) {
 		if ( 'left' === noticeAlignment || 'center' === noticeAlignment ) {
-			rPadding = titleHrPadding + 13;
-			lPadding = titleHrPadding;
+			rPadding = titleRightPadding + 13;
+			lPadding = titleLeftPadding;
+			lPaddingMobile = titleLeftPaddingMobile;
+			rPaddingMobile = titleRightPaddingMobile + 13;
+			lPaddingTablet = titleLeftPaddingTablet;
+			rPaddingTablet = titleRightPaddingTablet + 13;
 		} else {
-			lPadding = titleHrPadding + 13;
-			rPadding = titleHrPadding;
+			lPadding = titleLeftPadding + 13;
+			rPadding = titleRightPadding;
+			lPaddingMobile = titleLeftPaddingMobile + 13;
+			rPaddingMobile = titleRightPaddingMobile;
+			lPaddingTablet = titleLeftPaddingTablet + 13;
+			rPaddingTablet = titleRightPaddingTablet;
 		}
 	} else {
-		lPadding = titleHrPadding;
-		rPadding = titleHrPadding;
+		lPadding = titleLeftPadding;
+		rPadding = titleRightPadding;
+		lPaddingMobile = titleLeftPaddingMobile;
+		rPaddingMobile = titleRightPaddingMobile;
+		lPaddingTablet = titleLeftPaddingTablet;
+		rPaddingTablet = titleRightPaddingTablet;
 	}
 
 	let tabletSelectors = {};
@@ -67,41 +115,64 @@ function styling( props ) {
 			'font-size': generateCSSUnit( titleFontSize, titleFontSizeType ),
 			'font-weight': titleFontWeight,
 			'font-family': titleFontFamily,
+			'font-style' : titleFontStyle,
+			'text-decoration': titleDecoration,
+			'text-transform': titleTransform,
 			'line-height': generateCSSUnit(
 				titleLineHeight,
 				titleLineHeightType
 			),
-			color: titleColor,
-			'padding-left': generateCSSUnit( lPadding, 'px' ),
-			'padding-right': generateCSSUnit( rPadding, 'px' ),
-			'padding-top': generateCSSUnit( titleVrPadding, 'px' ),
-			'padding-bottom': generateCSSUnit( titleVrPadding, 'px' ),
+			'color': titleColor,
+			'padding-left': generateCSSUnit( lPadding, titlePaddingUnit ),
+			'padding-right': generateCSSUnit( rPadding, titlePaddingUnit ),
+			'padding-top': generateCSSUnit( titleTopPadding, titlePaddingUnit ),
+			'padding-bottom': generateCSSUnit(
+				titleBottomPadding,
+				titlePaddingUnit
+			),
 		},
-
 		' .rich-text.block-editor-rich-text__editable.uagb-notice-text': {
-			'padding-left': generateCSSUnit( contentHrPadding, 'px' ),
-			'padding-right': generateCSSUnit( contentHrPadding, 'px' ),
-			'padding-top': generateCSSUnit( contentVrPadding, 'px' ),
-			'padding-bottom': generateCSSUnit( contentVrPadding, 'px' ),
+			'padding-left': generateCSSUnit(
+				contentLeftPadding,
+				contentPaddingUnit
+			),
+			'padding-right': generateCSSUnit(
+				contentRightPadding,
+				contentPaddingUnit
+			),
+			'padding-top': generateCSSUnit(
+				contentTopPadding,
+				contentPaddingUnit
+			),
+			'padding-bottom': generateCSSUnit(
+				contentBottomPadding,
+				contentPaddingUnit
+			),
 		},
 
 		' .rich-text.block-editor-rich-text__editable.uagb-notice-text p': {
 			'font-size': generateCSSUnit( descFontSize, descFontSizeType ),
 			'font-weight': descFontWeight,
 			'font-family': descFontFamily,
+			'font-style' : descFontStyle,
+			'text-decoration': descDecoration,
+			'text-transform': descTransform,
 			'line-height': generateCSSUnit(
 				descLineHeight,
 				descLineHeightType
 			),
-			color: textColor,
+			'color': textColor,
 		},
 
-		' span.uagb-notice-dismiss': {
-			fill: noticeDismissColor,
+		' span.uagb-notice-dismiss': { // For Backward.
+			'fill': noticeDismissColor,
+		},
+		' svg': {
+			'fill': noticeDismissColor,
 		},
 	};
 
-	if ( 'modern' == layout ) {
+	if ( 'modern' === layout ) {
 		selectors[
 			' .rich-text.block-editor-rich-text__editable.uagb-notice-title'
 		][ 'background-color' ] = noticeColor;
@@ -111,20 +182,20 @@ function styling( props ) {
 		selectors[
 			' .rich-text.block-editor-rich-text__editable.uagb-notice-title'
 		][ 'border-top-left-radius' ] = '3px';
-
 		selectors[
 			' .rich-text.block-editor-rich-text__editable.uagb-notice-text'
 		][ 'background-color' ] = contentBgColor;
 		selectors[
 			' .rich-text.block-editor-rich-text__editable.uagb-notice-text'
-		].border = '2px solid' + noticeColor;
+		].border = '2px solid ' + noticeColor;
 		selectors[
 			' .rich-text.block-editor-rich-text__editable.uagb-notice-text'
 		][ 'border-bottom-left-radius' ] = '3px';
 		selectors[
 			' .rich-text.block-editor-rich-text__editable.uagb-notice-text'
 		][ 'border-bottom-right-radius' ] = '3px';
-	} else if ( 'simple' == layout ) {
+
+	} else if ( 'simple' === layout ) {
 		selectors[
 			' .rich-text.block-editor-rich-text__editable.uagb-notice-title'
 		][ 'background-color' ] = contentBgColor;
@@ -132,7 +203,6 @@ function styling( props ) {
 			' .rich-text.block-editor-rich-text__editable.uagb-notice-title'
 		][ 'border-left' ] =
 			generateCSSUnit( highlightWidth, 'px' ) + ' solid ' + noticeColor;
-
 		selectors[
 			' .rich-text.block-editor-rich-text__editable.uagb-notice-text'
 		][ 'background-color' ] = contentBgColor;
@@ -151,6 +221,22 @@ function styling( props ) {
 				titleLineHeightMobile,
 				titleLineHeightType
 			),
+			'padding-left': generateCSSUnit(
+				lPaddingMobile,
+				mobileTitlePaddingUnit
+			),
+			'padding-right': generateCSSUnit(
+				rPaddingMobile,
+				mobileTitlePaddingUnit
+			),
+			'padding-top': generateCSSUnit(
+				titleTopPaddingMobile,
+				mobileTitlePaddingUnit
+			),
+			'padding-bottom': generateCSSUnit(
+				titleBottomPaddingMobile,
+				mobileTitlePaddingUnit
+			),
 		},
 
 		' .rich-text.block-editor-rich-text__editable.uagb-notice-text p': {
@@ -161,6 +247,24 @@ function styling( props ) {
 			'line-height': generateCSSUnit(
 				descLineHeightMobile,
 				descLineHeightType
+			),
+		},
+		' .rich-text.block-editor-rich-text__editable.uagb-notice-text': {
+			'padding-left': generateCSSUnit(
+				contentLeftPaddingMobile,
+				mobileContentPaddingUnit
+			),
+			'padding-right': generateCSSUnit(
+				contentRightPaddingMobile,
+				mobileContentPaddingUnit
+			),
+			'padding-top': generateCSSUnit(
+				contentTopPaddingMobile,
+				mobileContentPaddingUnit
+			),
+			'padding-bottom': generateCSSUnit(
+				contentBottomPaddingMobile,
+				mobileContentPaddingUnit
 			),
 		},
 	};
@@ -175,6 +279,22 @@ function styling( props ) {
 				titleLineHeightTablet,
 				titleLineHeightType
 			),
+			'padding-left': generateCSSUnit(
+				lPaddingTablet,
+				tabletTitlePaddingUnit
+			),
+			'padding-right': generateCSSUnit(
+				rPaddingTablet,
+				tabletTitlePaddingUnit
+			),
+			'padding-top': generateCSSUnit(
+				titleTopPaddingTablet,
+				tabletTitlePaddingUnit
+			),
+			'padding-bottom': generateCSSUnit(
+				titleBottomPaddingTablet,
+				tabletTitlePaddingUnit
+			),
 		},
 
 		' .rich-text.block-editor-rich-text__editable.uagb-notice-text p': {
@@ -187,15 +307,44 @@ function styling( props ) {
 				descLineHeightType
 			),
 		},
+
+		' .rich-text.block-editor-rich-text__editable.uagb-notice-text': {
+			'padding-left': generateCSSUnit(
+				contentLeftPaddingTablet,
+				tabletContentPaddingUnit
+			),
+			'padding-right': generateCSSUnit(
+				contentRightPaddingTablet,
+				tabletContentPaddingUnit
+			),
+			'padding-top': generateCSSUnit(
+				contentTopPaddingTablet,
+				tabletContentPaddingUnit
+			),
+			'padding-bottom': generateCSSUnit(
+				contentBottomPaddingTablet,
+				tabletContentPaddingUnit
+			),
+		},
 	};
 
-	const baseSelector = `.block-editor-page #wpwrap .uagb-block-${ block_id }`;
+	const baseSelector = `.editor-styles-wrapper .uagb-block-${ block_id }`;
 
 	let stylingCss = generateCSS( selectors, baseSelector );
 
-	stylingCss += generateCSS( tabletSelectors, baseSelector, true, 'tablet' );
+	stylingCss += generateCSS(
+		tabletSelectors,
+		`${ baseSelector }.uagb-editor-preview-mode-tablet`,
+		true,
+		'tablet'
+	);
 
-	stylingCss += generateCSS( mobileSelectors, baseSelector, true, 'mobile' );
+	stylingCss += generateCSS(
+		mobileSelectors,
+		`${ baseSelector }.uagb-editor-preview-mode-mobile`,
+		true,
+		'mobile'
+	);
 
 	return stylingCss;
 }

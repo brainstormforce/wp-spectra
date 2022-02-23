@@ -12,3 +12,7 @@ node_modules
 vendor
 *.css
 *.scss
+
+assets/js/js_cookie.min.js
+
+**/deprecated/**

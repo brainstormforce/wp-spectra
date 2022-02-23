@@ -1,7 +1,7 @@
 .uagb-post__cta {
 	display: inline-block;
 	margin-bottom: 15px;
-	background: #333;
+	background: none;
 	border-color: #3b3b3b;
 	border-style: none;
 	border-width: 1px;
@@ -9,12 +9,3 @@
 	color: #fff;
 }
 
-.uagb-post__link {
-	display: inline-block;
-	padding: 5px 10px;
-	box-shadow: none;
-	color: inherit;
-	text-decoration: none;
-	font-weight: 700;
-	transition: 0.3s ease;
-}

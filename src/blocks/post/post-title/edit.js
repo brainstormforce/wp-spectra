@@ -1,6 +1,5 @@
 import { useLayoutEffect } from 'react';
-
-const { decodeEntities } = wp.htmlEntities;
+import { decodeEntities } from '@wordpress/html-entities';
 import { __ } from '@wordpress/i18n';
 import styles from './editor.lazy.scss';
 
@@ -19,24 +18,22 @@ export const PostTitle = ( props ) => {
 
 	const target = attributes.newTab ? '_blank' : '_self';
 
-	if ( undefined == post.title ) {
+	if ( undefined === post.title ) {
 		return null;
 	}
 
 	if ( attributes.displayPostTitle ) {
 		return (
-			<div className="uagb-post__text">
-				<Tag className={ 'uagb-post__title' }>
-					<a
-						href={ post.link }
-						target={ target }
-						rel="noopener noreferrer"
-					>
-						{ decodeEntities( post.title.rendered.trim() ) ||
-							__( '(Untitled)' ) }
-					</a>
-				</Tag>
-			</div>
+			<Tag className={ 'uagb-post__title uagb-post__text' }>
+				<a
+					href={ post.link }
+					target={ target }
+					rel="noopener noreferrer"
+				>
+					{ decodeEntities( post.title.rendered.trim() ) ||
+						__( '(Untitled)' ) }
+				</a>
+			</Tag>
 		);
 	}
 	return null;

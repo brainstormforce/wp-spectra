@@ -1,17 +1,26 @@
 import classnames from 'classnames';
 import ContentTmClasses from '.././classes';
-import React, { useMemo } from 'react';
+import React, { useMemo, useLayoutEffect } from 'react';
 import { InnerBlocks } from '@wordpress/block-editor';
+import styles from './editor.lazy.scss';
+import { useDeviceType } from '@Controls/getPreviewType';
 
 const ALLOWED_BLOCKS = [ 'uagb/content-timeline-child' ];
 
 const Render = ( props ) => {
-	props = props.parentProps;
+	// Add and remove the CSS on the drop and remove of the component.
+	useLayoutEffect( () => {
+		styles.use();
+		return () => {
+			styles.unuse();
+		};
+	}, [] );
 
+	props = props.parentProps;
+	const deviceType = useDeviceType();
 	// Setup the attributes.
 	const {
 		className,
-		deviceType,
 		attributes: { tm_content, timelineItem },
 	} = props;
 
@@ -39,17 +48,13 @@ const Render = ( props ) => {
 				...ContentTmClasses( props.attributes )
 			) }
 		>
-			<div className="uagb-timeline__main">
-				<div className="uagb-timeline__days">
-					<InnerBlocks
-						template={ getContentTimelineTemplate }
-						templateLock={ false }
-						allowedBlocks={ ALLOWED_BLOCKS }
-					/>
-				</div>
-				<div className="uagb-timeline__line">
-					<div className="uagb-timeline__line__inner"></div>
-				</div>
+			<InnerBlocks
+				template={ getContentTimelineTemplate }
+				templateLock={ false }
+				allowedBlocks={ ALLOWED_BLOCKS }
+			/>
+			<div className="uagb-timeline__line">
+				<div className="uagb-timeline__line__inner"></div>
 			</div>
 		</div>
 	);

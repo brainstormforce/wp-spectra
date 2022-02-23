@@ -4,8 +4,8 @@ import {
 	InnerBlockLayoutContextProvider,
 	renderPostLayout,
 } from '.././function';
-
-import React, { lazy, Suspense } from 'react';
+import { useDeviceType } from '@Controls/getPreviewType';
+import React, { lazy, Suspense, useRef, useEffect } from 'react';
 import lazyLoader from '@Controls/lazy-loader';
 
 const Slider = lazy( () =>
@@ -15,7 +15,9 @@ const Slider = lazy( () =>
 );
 
 function Blog( props ) {
-	const { attributes, className, latestPosts, block_id, deviceType } = props;
+	const article = useRef();
+	const { attributes, className, latestPosts, block_id } = props;
+	const deviceType = useDeviceType();
 
 	const {
 		columns,
@@ -34,7 +36,40 @@ function Blog( props ) {
 		arrowDots,
 		equalHeight,
 		layoutConfig,
+		rowGap
 	} = attributes;
+
+	const updateImageBgWidth = () => {
+
+		setTimeout( () => {
+
+			if( article?.current ){
+				const articleWidth  = article?.current?.offsetWidth;
+				const imageWidth = 100 - ( rowGap / articleWidth ) * 100;
+				const parent = article?.current?.closest( '.uagb-post__image-position-background' );
+
+				if ( parent ) {
+					const images = parent?.getElementsByClassName( 'uagb-post__image' );
+					for( const image of images ) {
+						if ( image ) {
+							image.style.width = imageWidth + '%';
+							image.style.marginLeft = rowGap / 2 + 'px';
+
+						}
+					}
+				}
+			}
+
+		}, 100 )
+	};
+
+	useEffect( () => {
+		updateImageBgWidth();
+    }, [article] );
+
+	useEffect( () => {
+		updateImageBgWidth();
+    }, [imgPosition] );
 
 	// Removing posts from display should be instant.
 	const displayPosts =
@@ -50,7 +85,6 @@ function Blog( props ) {
 				className="slick-next slick-arrow"
 				aria-label="Next"
 				tabIndex="0"
-				role="button"
 				style={ {
 					borderColor: arrowColor,
 					borderRadius: arrowBorderRadius,
@@ -70,7 +104,6 @@ function Blog( props ) {
 				className="slick-prev slick-arrow"
 				aria-label="Previous"
 				tabIndex="0"
-				role="button"
 				style={ {
 					borderColor: arrowColor,
 					borderRadius: arrowBorderRadius,
@@ -83,9 +116,9 @@ function Blog( props ) {
 	}
 
 	const dots =
-		'dots' == arrowDots || 'arrows_dots' == arrowDots ? true : false;
+		'dots' === arrowDots || 'arrows_dots' === arrowDots ? true : false;
 	const arrows =
-		'arrows' == arrowDots || 'arrows_dots' == arrowDots ? true : false;
+		'arrows' === arrowDots || 'arrows_dots' === arrowDots ? true : false;
 
 	const equalHeightClass = equalHeight
 		? 'uagb-post__carousel_equal-height'
@@ -104,7 +137,7 @@ function Blog( props ) {
 		rtl: false,
 		afterChange: () => {
 			if ( equalHeight ) {
-				uagb_carousel_height( block_id );
+				uagb_carousel_height( block_id ); // eslint-disable-line no-undef
 			}
 		},
 		nextArrow: <NextArrow arrowSize={ arrowSize } />,
@@ -128,16 +161,14 @@ function Blog( props ) {
 	};
 
 	const all_posts = displayPosts.map( ( post, i ) => (
-		<article key={ i }>
-			<div className="uagb-post__inner-wrap">
-				{ renderPostLayout(
-					'uagb/post-carousel',
-					post,
-					layoutConfig,
-					props.attributes,
-					props.categoriesList
-				) }
-			</div>
+		<article ref={article} key={ i } className="uagb-post__inner-wrap">
+			{ renderPostLayout(
+				'uagb/post-carousel',
+				post,
+				layoutConfig,
+				props.attributes,
+				props.categoriesList
+			) }
 		</article>
 	) );
 
@@ -145,6 +176,11 @@ function Blog( props ) {
 		return (
 			<div
 				className={ classnames(
+					'is-carousel',
+					`uagb-post__columns-${ columns }`,
+					`uagb-post__columns-tablet-${ tcolumns }`,
+					`uagb-post__columns-mobile-${ mcolumns }`,
+					'uagb-post__items',
 					className,
 					'uagb-post-grid',
 					'uagb-post__arrow-outside',
@@ -155,53 +191,38 @@ function Blog( props ) {
 				) }
 				data-blog-id={ block_id }
 			>
-				<div
-					className={ classnames(
-						'is-carousel',
-						`uagb-post__columns-${ columns }`,
-						`uagb-post__columns-tablet-${ tcolumns }`,
-						`uagb-post__columns-mobile-${ mcolumns }`,
-						'uagb-post__items'
-					) }
+				<InnerBlockLayoutContextProvider
+					parentName="uagb/post-carousel"
+					parentClassName="uagb-block-grid"
 				>
-					<InnerBlockLayoutContextProvider
-						parentName="uagb/post-carousel"
-						parentClassName="uagb-block-grid"
-					>
-						{ all_posts }
-					</InnerBlockLayoutContextProvider>
-				</div>
+					{ all_posts }
+				</InnerBlockLayoutContextProvider>
 			</div>
 		);
 	}
 
 	return (
-		<div
-			className={ classnames(
-				className,
-				'uagb-post-grid',
-				'uagb-post__arrow-outside',
-				'uagb-slick-carousel',
-				`uagb-post__image-position-${ imgPosition }`,
-				`${ equalHeightClass }`,
-				`uagb-block-${ block_id }`
-			) }
-			data-blog-id={ block_id }
-			style={ 'dots' == arrowDots ? { padding: '0 0 35px 0' } : {} }
-		>
-			<Suspense fallback={ lazyLoader() }>
-				<Slider
-					className={ classnames(
-						'is-carousel',
-						`uagb-post__columns-${ columns }`,
-						'uagb-post__items'
-					) }
-					{ ...settings }
-				>
-					{ all_posts }
-				</Slider>
-			</Suspense>
-		</div>
+		<Suspense fallback={ lazyLoader() }>
+			<Slider
+				className={ classnames(
+					'is-carousel',
+					`uagb-post__columns-${ columns }`,
+					'uagb-post__items',
+					className,
+					'uagb-post-grid',
+					'uagb-post__arrow-outside',
+					'uagb-slick-carousel',
+					`uagb-post__image-position-${ imgPosition }`,
+					`${ equalHeightClass }`,
+					`uagb-block-${ block_id }`
+				) }
+				data-blog-id={ block_id }
+				style={ 'dots' === arrowDots ? { padding: '0 0 35px 0' } : {} }
+				{ ...settings }
+			>
+				{ all_posts }
+			</Slider>
+		</Suspense>
 	);
 }
 

@@ -1,3 +1,4 @@
+
 /**
  * BLOCK: Post Grid - Edit
  */
@@ -5,6 +6,9 @@ import styling from '.././styling';
 import React, { useEffect, useState, lazy, Suspense } from 'react';
 import lazyLoader from '@Controls/lazy-loader';
 import { __ } from '@wordpress/i18n';
+import apiFetch from '@wordpress/api-fetch';
+import { useDeviceType } from '@Controls/getPreviewType';
+import addBlockEditorDynamicStyles from '@Controls/addBlockEditorDynamicStyles';
 
 const Settings = lazy( () =>
 	import( /* webpackChunkName: "chunks/post-grid/settings" */ './settings' )
@@ -18,6 +22,9 @@ import { compose } from '@wordpress/compose';
 import { Placeholder, Spinner } from '@wordpress/components';
 
 const PostGridComponent = ( props ) => {
+
+	const deviceType = useDeviceType();
+
 	const initialState = {
 		isEditing: false,
 		innerBlocks: [],
@@ -30,24 +37,96 @@ const PostGridComponent = ( props ) => {
 		const { block } = props;
 		setStateValue( { innerBlocks: block } );
 		props.setAttributes( { block_id: props.clientId.substr( 0, 8 ) } );
-		const $style = document.createElement( 'style' );
-		$style.setAttribute(
-			'id',
-			'uagb-post-grid-style-' + props.clientId.substr( 0, 8 )
-		);
-		document.head.appendChild( $style );
+		const {
+			btnVPadding,
+			btnHPadding,
+			paddingBtnTop,
+			paddingBtnBottom,
+			paddingBtnRight,
+			paddingBtnLeft,
+			contentPadding,
+			contentPaddingMobile,
+			paddingTop,
+			paddingBottom,
+			paddingLeft,
+			paddingRight,
+			paddingTopMobile,
+			paddingRightMobile,
+			paddingBottomMobile,
+			paddingLeftMobile,
+		} = props.attributes;
+
+		if ( btnVPadding ) {
+			if ( ! paddingBtnTop ) {
+				props.setAttributes( { paddingBtnTop: btnVPadding } );
+			}
+			if ( ! paddingBtnBottom ) {
+				props.setAttributes( { paddingBtnBottom: btnVPadding } );
+			}
+		}
+		if ( btnHPadding ) {
+			if ( ! paddingBtnRight ) {
+				props.setAttributes( { paddingBtnRight: btnHPadding } );
+			}
+			if ( ! paddingBtnLeft ) {
+				props.setAttributes( { paddingBtnLeft: btnHPadding } );
+			}
+		}
+		if ( contentPadding ) {
+			if ( ! paddingTop ) {
+				props.setAttributes( { paddingTop: contentPadding } );
+			}
+			if ( ! paddingBottom ) {
+				props.setAttributes( { paddingBottom: contentPadding } );
+			}
+			if ( ! paddingRight ) {
+				props.setAttributes( { paddingRight: contentPadding } );
+			}
+			if ( ! paddingLeft ) {
+				props.setAttributes( { paddingLeft: contentPadding } );
+			}
+		}
+
+		if ( contentPaddingMobile ) {
+			if ( ! paddingTopMobile ) {
+				props.setAttributes( {
+					paddingTopMobile: contentPaddingMobile,
+				} );
+			}
+			if ( ! paddingBottomMobile ) {
+				props.setAttributes( {
+					paddingBottomMobile: contentPaddingMobile,
+				} );
+			}
+			if ( ! paddingRightMobile ) {
+				props.setAttributes( {
+					paddingRightMobile: contentPaddingMobile,
+				} );
+			}
+			if ( ! paddingLeftMobile ) {
+				props.setAttributes( {
+					paddingLeftMobile: contentPaddingMobile,
+				} );
+			}
+		}
+
 	}, [] );
 
 	useEffect( () => {
 		// Replacement for componentDidUpdate.
+		const blockStyling = styling( props );
 
-		const element = document.getElementById(
-			'uagb-post-grid-style-' + props.clientId.substr( 0, 8 )
-		);
-		if ( null !== element && undefined !== element ) {
-			element.innerHTML = styling( props );
-		}
+		addBlockEditorDynamicStyles( 'uagb-post-grid-style-' + props.clientId.substr( 0, 8 ), blockStyling );
+
 	}, [ props ] );
+
+	useEffect( () => {
+		// Replacement for componentDidUpdate.
+		const blockStyling = styling( props );
+
+		addBlockEditorDynamicStyles( 'uagb-post-grid-style-' + props.clientId.substr( 0, 8 ), blockStyling );
+
+	}, [ deviceType ] );
 
 	const togglePreview = () => {
 		setStateValue( { isEditing: ! state.isEditing } );
@@ -121,41 +200,38 @@ export default compose(
 		} = props.attributes;
 		const { setAttributes } = props;
 		const { getEntityRecords } = select( 'core' );
-		const { __experimentalGetPreviewDeviceType = null } = select(
-			'core/edit-post'
-		);
-
-		const deviceType = __experimentalGetPreviewDeviceType
-			? __experimentalGetPreviewDeviceType()
-			: null;
 		const allTaxonomy = uagb_blocks_info.all_taxonomy;
 		const currentTax = allTaxonomy[ postType ];
 		let categoriesList = [];
 		let rest_base = '';
+
 		if ( true === postPagination && 'empty' === paginationMarkup ) {
-			jQuery.ajax( {
+			const formData = new window.FormData();
+
+			formData.append( 'action', 'uagb_post_pagination' );
+			formData.append(
+				'nonce',
+				uagb_blocks_info.uagb_ajax_nonce
+			);
+			formData.append( 'attributes', JSON.stringify( props.attributes ) );
+
+			apiFetch( {
 				url: uagb_blocks_info.ajax_url,
-				data: {
-					action: 'uagb_post_pagination',
-					attributes: props.attributes,
-					nonce: uagb_blocks_info.uagb_ajax_nonce,
-				},
-				dataType: 'json',
-				type: 'POST',
-				success( data ) {
-					setAttributes( { paginationMarkup: data.data } );
-				},
+				method: 'POST',
+				body: formData,
+			} ).then( ( data ) => {
+				setAttributes( { paginationMarkup: data.data } );
 			} );
 		}
 		if ( 'undefined' !== typeof currentTax ) {
 			if ( 'undefined' !== typeof currentTax.taxonomy[ taxonomyType ] ) {
 				rest_base =
-					currentTax.taxonomy[ taxonomyType ].rest_base == false ||
-					currentTax.taxonomy[ taxonomyType ].rest_base == null
+					currentTax.taxonomy[ taxonomyType ].rest_base === false ||
+					currentTax.taxonomy[ taxonomyType ].rest_base === null
 						? currentTax.taxonomy[ taxonomyType ].name
 						: currentTax.taxonomy[ taxonomyType ].rest_base;
 			}
-			if ( '' != taxonomyType ) {
+			if ( '' !== taxonomyType ) {
 				if (
 					'undefined' !== typeof currentTax.terms &&
 					'undefined' !== typeof currentTax.terms[ taxonomyType ]
@@ -179,7 +255,7 @@ export default compose(
 		category.push( temp );
 		const catlenght = categoriesList.length;
 		for ( let i = 0; i < catlenght; i++ ) {
-			if ( categoriesList[ i ].id == temp ) {
+			if ( categoriesList[ i ].id === temp ) {
 				if ( categoriesList[ i ].child.length !== 0 ) {
 					categoriesList[ i ].child.forEach( ( element ) => {
 						category.push( element );
@@ -201,7 +277,6 @@ export default compose(
 				latestPostsQuery
 			),
 			categoriesList,
-			deviceType,
 			taxonomyList:
 				'undefined' !== typeof currentTax ? currentTax.taxonomy : [],
 			block: getBlocks( props.clientId ),
@@ -214,3 +289,4 @@ export default compose(
 		};
 	} )
 )( PostGridComponent );
+

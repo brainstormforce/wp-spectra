@@ -42,6 +42,80 @@ if ( ! class_exists( 'UAGB_Rest_API' ) ) {
 			add_action( 'rest_api_init', array( $this, 'blocks_register_rest_fields' ) );
 			add_action( 'init', array( $this, 'register_rest_orderby_fields' ) );
 			add_filter( 'register_post_type_args', array( $this, 'add_cpts_to_api' ), 10, 2 );
+
+			// We have added this action here to support both the ways of post updations, Rest API & Normal.
+			add_action( 'save_post', array( $this, 'delete_page_assets' ), 10, 1 );
+			add_action( 'rest_after_save_widget', array( $this, 'after_widget_save_action' ) );
+		}
+
+		/**
+		 * This function updates the __uagb_asset_version when Widgets Editor is Updated.
+		 *
+		 * @since x.x.x
+		 */
+		public function after_widget_save_action() {
+			/* Update the asset version */
+			update_option( '__uagb_asset_version', time() );
+		}
+
+		/**
+		 * This function deletes the Page assets from the Page Meta Key.
+		 *
+		 * @param int $post_id Post Id.
+		 * @since 1.23.0
+		 */
+		public function delete_page_assets( $post_id ) {
+
+			if ( 'enabled' === UAGB_Helper::$file_generation ) {
+
+				$css_asset_info = UAGB_Scripts_Utils::get_asset_info( 'css', $post_id );
+				$js_asset_info  = UAGB_Scripts_Utils::get_asset_info( 'js', $post_id );
+
+				$css_file_path = $css_asset_info['css'];
+				$js_file_path  = $js_asset_info['js'];
+
+				if ( file_exists( $css_file_path ) ) {
+					wp_delete_file( $css_file_path );
+				}
+				if ( file_exists( $js_file_path ) ) {
+					wp_delete_file( $js_file_path );
+				}
+			}
+
+			delete_post_meta( $post_id, '_uag_page_assets' );
+			delete_post_meta( $post_id, '_uag_css_file_name' );
+			delete_post_meta( $post_id, '_uag_js_file_name' );
+
+			$does_post_contain_reusable_blocks = $this->does_post_contain_reusable_blocks( $post_id );
+
+			if ( true === $does_post_contain_reusable_blocks ) {
+
+				/* Update the asset version */
+				update_option( '__uagb_asset_version', time() );
+			}
+		}
+
+		/**
+		 * Does Post contains reusable blocks.
+		 *
+		 * @param int $post_id Post ID.
+		 *
+		 * @since 1.23.5
+		 *
+		 * @return boolean Wether the Post contains any Reusable blocks or not.
+		 */
+		public function does_post_contain_reusable_blocks( $post_id ) {
+
+			$post_content = get_post_field( 'post_content', $post_id, 'raw' );
+			$tag          = '<!-- wp:block';
+			$flag         = strpos( $post_content, $tag );
+
+			if ( false !== $flag ) {
+
+				return true;
+			}
+
+			return false;
 		}
 
 		/**

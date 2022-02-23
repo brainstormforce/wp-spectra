@@ -5,8 +5,8 @@
 // Import block dependencies and components.
 import classnames from 'classnames';
 import attributes from './attributes';
-import renderSVG from '@Controls/renderIcon';
-import links from './links';
+import renderSVG from '@Controls/deprecatedRenderIcon';
+import links from './deprecatedLinks';
 
 const deprecated = [
 	{

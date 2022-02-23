@@ -3,6 +3,7 @@ import classnames from 'classnames';
 import ReviewBody from './review-body';
 import React, { useLayoutEffect, useState } from 'react';
 import styles from './editor.lazy.scss';
+import { useDeviceType } from '@Controls/getPreviewType';
 const Render = ( props ) => {
 	// Add and remove the CSS on the drop and remove of the component.
 	useLayoutEffect( () => {
@@ -13,6 +14,7 @@ const Render = ( props ) => {
 	}, [] );
 
 	props = props.parentProps;
+	const deviceType = useDeviceType();
 	const {
 		attributes: {
 			block_id,
@@ -104,7 +106,8 @@ const Render = ( props ) => {
 			className={ classnames(
 				className,
 				'uagb-ratings__outer-wrap',
-				`uagb-block-${ block_id.substr( 0, 8 ) }`
+				`uagb-block-${ block_id.substr( 0, 8 ) }`,
+				`uagb-editor-preview-mode-${ deviceType.toLowerCase() }`
 			) }
 		>
 			<ReviewBody

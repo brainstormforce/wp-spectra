@@ -29,23 +29,23 @@ const enhance = compose(
 			selected: select( 'core/block-editor' ).getSelectedBlock(),
 		};
 	} )
-);
-/**
- * Add custom UAG attributes to selected blocks
- *
- * @param {Function} BlockEdit Original component.
- * @return {string} Wrapped component.
- */
-const withcontentTimeline = createHigherOrderComponent( ( BlockEdit ) => {
-	return enhance( ( { ...props } ) => {
-		return <BlockEdit { ...props } />;
-	} );
+	);
+	/**
+	 * Add custom UAG attributes to selected blocks
+	 *
+	 * @param {Function} BlockEdit Original component.
+	 * @return {string} Wrapped component.
+	 */
+	const withcontentTimeline = createHigherOrderComponent( ( BlockEdit ) => {
+		return enhance( ( { ...props } ) => {
+		 return <BlockEdit { ...props } />;
+	 } );
 }, 'withcontentTimeline' );
 
 registerBlockType( 'uagb/content-timeline', {
 	// Block name. Block names must be string that contains a namespace prefix. Example: my-plugin/my-custom-block.
-	title: uagb_blocks_info.blocks[ 'uagb/content-timeline' ].title, // Block title.
-	description: uagb_blocks_info.blocks[ 'uagb/content-timeline' ].description, // Block description.
+	title: __( 'Content Timeline', 'ultimate-addons-for-gutenberg' ), // Block title.
+	description: __( 'The Timeline block lets you create beautiful timelines on your website.', 'ultimate-addons-for-gutenberg' ), // Block description.
 	icon: UAGB_Block_Icons.content_timeline, // Block icon from Dashicons → https://developer.wordpress.org/resource/dashicons/.
 	category: uagb_blocks_info.category,
 	keywords: [
@@ -135,4 +135,5 @@ registerBlockType( 'uagb/content-timeline', {
 	},
 	deprecated,
 } );
+
 addFilter( 'editor.BlockEdit', 'uagb/content-timeline', withcontentTimeline );

@@ -7,7 +7,6 @@ import generateCSSUnit from '@Controls/generateCSSUnit';
 function inlineStyles( props ) {
 	const {
 		backgroundColor,
-		backgroundOpacity,
 		backgroundType,
 		gradientColor1,
 		gradientColor2,
@@ -31,19 +30,10 @@ function inlineStyles( props ) {
 
 	switch ( backgroundType ) {
 		case 'image':
-			if ( 'color' == overlayType ) {
-				style.opacity =
-					typeof backgroundOpacity !== 'undefined'
-						? backgroundOpacity / 100
-						: '';
+			if ( 'color' === overlayType ) {
 				style[ 'background-color' ] = backgroundImageColor;
 			} else {
 				style[ 'background-color' ] = 'transparent';
-				style.opacity =
-					typeof backgroundOpacity !== 'undefined'
-						? backgroundOpacity / 100
-						: '';
-
 				if ( 'linear' === gradientOverlayType ) {
 					style[
 						'background-image'
@@ -57,11 +47,6 @@ function inlineStyles( props ) {
 			break;
 		case 'gradient':
 			style[ 'background-color' ] = 'transparent';
-			style.opacity =
-				typeof backgroundOpacity !== 'undefined'
-					? backgroundOpacity / 100
-					: '';
-
 			if ( gradientValue ) {
 				style[ 'background-image' ] = gradientValue;
 			} else if ( 'linear' === gradientType ) {
@@ -75,10 +60,6 @@ function inlineStyles( props ) {
 			}
 			break;
 		case 'color':
-			style.opacity =
-				typeof backgroundOpacity !== 'undefined'
-					? backgroundOpacity / 100
-					: '';
 			style[ 'background-color' ] = backgroundColor;
 			break;
 	}

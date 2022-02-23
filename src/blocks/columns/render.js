@@ -4,23 +4,15 @@
 
 import classnames from 'classnames';
 import shapes from './shapes';
-import React, { useLayoutEffect, useMemo } from 'react';
-
+import React, { useMemo } from 'react';
+import { useDeviceType } from '@Controls/getPreviewType';
 const ALLOWED_BLOCKS = [ 'uagb/column' ];
 import { InnerBlocks } from '@wordpress/block-editor';
-import styles from './editor.lazy.scss';
 
 const Render = ( props ) => {
-	// Add and remove the CSS on the drop and remove of the component.
-	useLayoutEffect( () => {
-		styles.use();
-		return () => {
-			styles.unuse();
-		};
-	}, [] );
-
-	const { attributes, isSelected, className, deviceType } = props.parentProps;
-
+	
+	const { attributes, isSelected, className } = props.parentProps;
+	const deviceType = useDeviceType();
 	const {
 		stack,
 		align,
@@ -50,7 +42,7 @@ const Render = ( props ) => {
 		return childColumns;
 	}, [ columns ] );
 
-	const topDividerHtml = topType != 'none' && (
+	const topDividerHtml = topType !== 'none' && (
 		<div
 			className={ classnames(
 				'uagb-columns__shape',
@@ -66,7 +58,7 @@ const Render = ( props ) => {
 		</div>
 	);
 
-	const bottomDividerHtml = bottomType != 'none' && (
+	const bottomDividerHtml = bottomType !== 'none' && (
 		<div
 			className={ classnames(
 				'uagb-columns__shape',
@@ -95,18 +87,24 @@ const Render = ( props ) => {
 
 	const active = isSelected ? 'active' : 'not-active';
 
+	const bgType = ( undefined !== backgroundType ) ? `uagb-columns__background-${ backgroundType }` : '';
+
+	const verticalAlign = ( undefined !== vAlign ) ? `uagb-columns__valign-${ vAlign }` : '';
+
+	const alignType = ( undefined !== align ) ? `align${ align }` : '';
+
 	return (
 		<CustomTag
 			className={ classnames(
 				className,
 				'uagb-columns__wrap',
-				`uagb-columns__background-${ backgroundType }`,
+				`${ bgType }`,
 				`uagb-columns__edit-${ active }`,
 				`uagb-editor-preview-mode-${ deviceType.toLowerCase() }`,
 				`uagb-columns__stack-${ stack }`,
-				`uagb-columns__valign-${ vAlign }`,
+				`${ verticalAlign }`,
 				`uagb-columns__gap-${ columnGap }`,
-				`align${ align }`,
+				`${ alignType }`,
 				reverseTabletClass,
 				reverseMobileClass,
 				`uagb-block-${ props.parentProps.clientId.substr( 0, 8 ) }`,
@@ -115,7 +113,7 @@ const Render = ( props ) => {
 		>
 			<div className="uagb-columns__overlay"></div>
 			{ topDividerHtml }
-			{ 'video' == backgroundType && (
+			{ 'video' === backgroundType && (
 				<div className="uagb-columns__video-wrap">
 					{ backgroundVideo && (
 						<video autoPlay loop muted playsinline>

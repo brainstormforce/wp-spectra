@@ -1,56 +1,38 @@
-( function ( $ ) {
-	UAGBInlineNotice = {
-		_run( attr, id ) {
-			if ( $( id ).length === 0 ) {
-				return;
-			}
 
-			const unique_id = attr.c_id;
-			const is_cookie = attr.cookies;
-			const cookies_days = attr.close_cookie_days;
-			const current_cookie = Cookies.get( 'uagb-notice-' + unique_id );
+UAGBInlineNotice = { // eslint-disable-line no-undef
+	init( attr, id ) {
+		const main = document.querySelectorAll( id );
 
-			if ( 'undefined' === typeof current_cookie && true === is_cookie ) {
-				$( id ).show();
+		if( main.length === 0 ){
+			return;
+		}
+
+		const uniqueId = attr.c_id;
+		const isCookie = attr.cookies;
+		const cookiesDays = attr.close_cookie_days;
+		const currentCookie = Cookies.get( 'uagb-notice-' + uniqueId );
+
+		for ( const mainWrap of main ) {
+			if ( 'undefined' === typeof currentCookie && true === isCookie ) {
+				mainWrap.style.display = 'block';
 			}
+			const noticeDismissClass = mainWrap.querySelector( '.uagb-notice-dismiss' );
+			const closeBtn = noticeDismissClass ? noticeDismissClass : mainWrap.querySelector( 'svg' );
 
 			if ( attr.noticeDismiss !== '' ) {
-				$( id + ' .uagb-notice-dismiss' ).on( 'click', function () {
-					if (
-						true === is_cookie &&
-						'undefined' !== typeof current_cookie
-					) {
-						current_cookies = Cookies.set(
-							'uagb-notice-' + unique_id,
+				closeBtn.addEventListener( 'click', function () {
+					if ( true === isCookie && 'undefined' === typeof currentCookie ) {
+						Cookies.set(
+							'uagb-notice-' + uniqueId,
 							true,
-							{ expires: cookies_days }
+							{ expires: cookiesDays }
 						);
-						$( id )
-							.addClass( 'uagb-notice__active' )
-							.css( 'display', 'none' );
 					}
 
-					if (
-						'undefined' === typeof current_cookie &&
-						true === is_cookie
-					) {
-						current_cookies = Cookies.set(
-							'uagb-notice-' + unique_id,
-							true,
-							{ expires: cookies_days }
-						);
-						$( id )
-							.addClass( 'uagb-notice__active' )
-							.css( 'display', 'none' );
-					}
-
-					if ( false === is_cookie ) {
-						$( id )
-							.addClass( 'uagb-notice__active' )
-							.css( 'display', 'none' );
-					}
+					this.parentElement.classList.add( 'uagb-notice__active' );
+					this.parentElement.style.display = 'none';
 				} );
 			}
-		},
-	};
-} )( jQuery );
+		}
+	},
+};

@@ -85,6 +85,7 @@ const attributes = {
 	imgSize: {
 		type: 'string',
 		default: 'thumbnail',
+		isUAGStyle: true,
 	},
 	authorName: {
 		type: 'string',
@@ -144,34 +145,42 @@ const attributes = {
 	callToActionBackColor: {
 		type: 'string',
 		default: '#f63d3d',
+		isUAGStyle: true,
 	},
 	callToActionForeColor: {
 		type: 'string',
 		default: '#ffffff',
+		isUAGStyle: true,
 	},
 	inactiveStarColor: {
 		type: 'string',
 		default: '#888888',
+		isUAGStyle: true,
 	},
 	activeStarColor: {
 		type: 'string',
 		default: '#eeee00',
+		isUAGStyle: true,
 	},
 	authorColor: {
 		type: 'string',
 		default: '',
+		isUAGStyle: true,
 	},
 	summaryColor: {
 		type: 'string',
 		default: '',
+		isUAGStyle: true,
 	},
 	titleAlign: {
 		type: 'string',
 		default: 'left',
+		isUAGStyle: true,
 	},
 	authorAlign: {
 		type: 'string',
 		default: 'left',
+		isUAGStyle: true,
 	},
 	enableCTA: {
 		type: 'boolean',
@@ -203,14 +212,17 @@ const attributes = {
 	},
 	starOutlineColor: {
 		type: 'string',
+		isUAGStyle: true,
 		default: '#000000',
 	},
 	starActiveColor: {
 		type: 'string',
+		isUAGStyle: true,
 		default: '#000000',
 	},
 	imageSize: {
 		type: 'number',
+		isUAGStyle: true,
 		default: 100, //range: 0-200
 	},
 	brand: {
@@ -280,9 +292,11 @@ const attributes = {
 	starSize: {
 		type: 'number',
 		default: 20,
+		isUAGStyle: true,
 	},
 	starColor: {
 		type: 'string',
+		isUAGStyle: true,
 		default: '#ffff00',
 	},
 	selectedStars: {
@@ -291,14 +305,17 @@ const attributes = {
 	},
 	starAlign: {
 		type: 'string',
+		isUAGStyle: true,
 		default: 'left',
 	},
 	descColor: {
 		type: 'string',
+		isUAGStyle: true,
 		default: '',
 	},
 	titleColor: {
 		type: 'string',
+		isUAGStyle: true,
 		default: '',
 	},
 	pricevalue: {
@@ -319,19 +336,92 @@ const attributes = {
 	},
 	contentVrPadding: {
 		type: 'number',
+		isUAGStyle: true,
 		default: 15,
 	},
 	contentHrPadding: {
 		type: 'number',
 		default: 50,
+		isUAGStyle: true,
+	},
+	topPadding: {
+		type: 'number',
+		isUAGStyle: true,
+	},
+	bottomPadding: {
+		type: 'number',
+		isUAGStyle: true,
+	},
+	rightPadding: {
+		type: 'number',
+		isUAGStyle: true,
+	},
+	leftPadding: {
+		type: 'number',
+		isUAGStyle: true,
+	},
+	//Mobile
+	paddingTopMobile: {
+		type: 'number',
+		isUAGStyle: true,
+	},
+	paddingBottomMobile: {
+		type: 'number',
+		isUAGStyle: true,
+	},
+	paddingRightMobile: {
+		type: 'number',
+		isUAGStyle: true,
+	},
+	paddingLeftMobile: {
+		type: 'number',
+		isUAGStyle: true,
+	},
+	//Tablet
+	paddingTopTablet: {
+		type: 'number',
+		isUAGStyle: true,
+	},
+	paddingBottomTablet: {
+		type: 'number',
+		isUAGStyle: true,
+	},
+	paddingRightTablet: {
+		type: 'number',
+		isUAGStyle: true,
+	},
+	paddingLeftTablet: {
+		type: 'number',
+		isUAGStyle: true,
+	},
+	spacingLink: {
+		type: 'boolean',
+		default: false,
+	},
+	paddingUnit: {
+		type: 'string',
+		default: 'px',
+		isUAGStyle: true,
+	},
+	mobilePaddingUnit: {
+		type: 'string',
+		default: 'px',
+		isUAGStyle: true,
+	},
+	tabletPaddingUnit: {
+		type: 'string',
+		default: 'px',
+		isUAGStyle: true,
 	},
 	star_gap: {
 		type: 'number',
 		default: 100,
+		isUAGStyle: true,
 	},
 	contentColor: {
 		type: 'string',
 		default: '',
+		isUAGStyle: true,
 	},
 	author: {
 		type: 'string',
@@ -340,126 +430,190 @@ const attributes = {
 	headFontFamily: {
 		type: 'string',
 		default: 'Default',
+		isUAGStyle: true,
 	},
 	headFontWeight: {
 		type: 'string',
+		isUAGStyle: true,
 	},
-	headFontSubset: {
+	headFontStyle: {
 		type: 'string',
+		isUAGStyle: true,
+		default: 'normal',
+	},
+	headTransform: {
+		type: 'string',
+		isUAGStyle: true,
+	},
+	headDecoration: {
+		type: 'string',
+		isUAGStyle: true,
 	},
 	headFontSizeType: {
 		type: 'string',
 		default: 'px',
+		isUAGStyle: true,
 	},
 	headLineHeightType: {
 		type: 'string',
 		default: 'em',
+		isUAGStyle: true,
 	},
 	headFontSize: {
 		type: 'number',
+		isUAGStyle: true,
 	},
 	headFontSizeTablet: {
 		type: 'number',
+		isUAGStyle: true,
 	},
 	headFontSizeMobile: {
 		type: 'number',
+		isUAGStyle: true,
 	},
 	headLineHeight: {
 		type: 'number',
+		isUAGStyle: true,
 	},
 	headLineHeightTablet: {
 		type: 'number',
+		isUAGStyle: true,
 	},
 	headLineHeightMobile: {
 		type: 'number',
+		isUAGStyle: true,
 	},
 	subHeadFontFamily: {
 		type: 'string',
+		isUAGStyle: true,
 		default: '',
 	},
 	subHeadFontWeight: {
 		type: 'string',
+		isUAGStyle: true,
 	},
-	subHeadFontSubset: {
+	subHeadFontStyle: {
 		type: 'string',
+		isUAGStyle: true,
+		default: 'normal',
+	},
+	subHeadTransform: {
+		type: 'string',
+		isUAGStyle: true,
+	},
+	subHeadDecoration: {
+		type: 'string',
+		isUAGStyle: true,
 	},
 	subHeadFontSize: {
 		type: 'number',
+		isUAGStyle: true,
 	},
 	subHeadFontSizeType: {
 		type: 'string',
+		isUAGStyle: true,
 		default: 'px',
 	},
 	subHeadFontSizeTablet: {
 		type: 'number',
+		isUAGStyle: true,
 	},
 	subHeadFontSizeMobile: {
 		type: 'number',
+		isUAGStyle: true,
 	},
 	subHeadLineHeight: {
 		type: 'number',
+		isUAGStyle: true,
 	},
 	subHeadLineHeightType: {
 		type: 'string',
+		isUAGStyle: true,
 		default: 'em',
 	},
 	subHeadLineHeightTablet: {
 		type: 'number',
+		isUAGStyle: true,
 	},
 	subHeadLineHeightMobile: {
 		type: 'number',
+		isUAGStyle: true,
 	},
 	separatorSpace: {
 		type: 'number',
 		default: 15,
+		isUAGStyle: true,
 	},
 	headLoadGoogleFonts: {
 		type: 'boolean',
 		default: false,
+		isUAGStyle: true,
 	},
 	subHeadLoadGoogleFonts: {
 		type: 'boolean',
 		default: false,
+		isUAGStyle: true,
 	},
 	contentFontFamily: {
 		type: 'string',
+		isUAGStyle: true,
 		default: 'Default',
 	},
 	contentLoadGoogleFonts: {
 		type: 'boolean',
+		isUAGStyle: true,
 		default: false,
 	},
 	contentFontWeight: {
 		type: 'string',
+		isUAGStyle: true,
 	},
-	contentFontSubset: {
+	contentFontStyle: {
 		type: 'string',
+		isUAGStyle: true,
+		default: 'normal',
+	},
+	contentTransform: {
+		type: 'string',
+		isUAGStyle: true,
+	},
+	contentDecoration: {
+		type: 'string',
+		isUAGStyle: true,
 	},
 	contentFontSize: {
 		type: 'number',
+		isUAGStyle: true,
 	},
 	contentFontSizeType: {
 		type: 'string',
+		isUAGStyle: true,
 		default: 'px',
 	},
 	contentFontSizeTablet: {
 		type: 'number',
+		isUAGStyle: true,
 	},
 	contentFontSizeMobile: {
 		type: 'number',
+		isUAGStyle: true,
 	},
 	contentLineHeight: {
 		type: 'number',
+		isUAGStyle: true,
 	},
 	contentLineHeightType: {
 		type: 'string',
+		isUAGStyle: true,
 		default: 'em',
 	},
 	contentLineHeightTablet: {
 		type: 'number',
+		isUAGStyle: true,
 	},
 	contentLineHeightMobile: {
 		type: 'number',
+		isUAGStyle: true,
 	},
 };
 

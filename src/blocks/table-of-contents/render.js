@@ -1,10 +1,11 @@
 import classnames from 'classnames';
 import TableOfContents from './toc';
-import React, { useLayoutEffect } from 'react';
+import React, { useLayoutEffect, useEffect } from 'react';
 import { __ } from '@wordpress/i18n';
 import renderSVG from '@Controls/renderIcon';
 import { RichText } from '@wordpress/block-editor';
 import styles from './editor.lazy.scss';
+import { useDeviceType } from '@Controls/getPreviewType';
 
 const Render = ( props ) => {
 	// Add and remove the CSS on the drop and remove of the component.
@@ -15,9 +16,15 @@ const Render = ( props ) => {
 		};
 	}, [] );
 
-	props = props.parentProps;
+	useEffect( () => {
+		if ( UAGBTableOfContents ) {
+			UAGBTableOfContents.init();
+		}
+	}, [] );
 
-	const { attributes, setAttributes, className, headers, deviceType } = props;
+	props = props.parentProps;
+	const deviceType = useDeviceType();
+	const { attributes, setAttributes, className, headers } = props;
 
 	const {
 		align,
@@ -32,11 +39,7 @@ const Render = ( props ) => {
 	let iconHtml = '';
 
 	if ( makeCollapsible && icon ) {
-		iconHtml = (
-			<span className="uag-toc__collapsible-wrap">
-				{ renderSVG( icon ) }
-			</span>
-		);
+		iconHtml = renderSVG( icon );
 	}
 
 	return (
@@ -52,15 +55,13 @@ const Render = ( props ) => {
 				) }
 			>
 				<div className="uagb-toc__wrap">
-					<div className="uagb-toc__title-wrap">
+					<div className="uagb-toc__title">
 						<RichText
-							tagName={ 'div' }
 							placeholder={ __(
 								'Table Of Contents',
 								'ultimate-addons-for-gutenberg'
 							) }
 							value={ headingTitle }
-							className="uagb-toc__title"
 							onChange={ ( value ) =>
 								setAttributes( { headingTitle: value } )
 							}
@@ -68,7 +69,7 @@ const Render = ( props ) => {
 							onRemove={ () => props.onReplace( [] ) }
 						/>
 						{ iconHtml }
-					</div>
+						</div>
 					<TableOfContents
 						mappingHeaders={ mappingHeaders }
 						headers={ headers }

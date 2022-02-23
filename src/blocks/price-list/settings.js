@@ -2,27 +2,30 @@ import React, { Suspense } from 'react';
 import lazyLoader from '@Controls/lazy-loader';
 import TypographyControl from '@Components/typography';
 import WebfontLoader from '@Components/typography/fontloader';
-import ColumnResponsive from '@Components/typography/column-responsive';
-import UAGB_Block_Icons from '@Controls/block-icons';
 import { __ } from '@wordpress/i18n';
 import { select } from '@wordpress/data';
+import Range from '@Components/range/Range.js';
+import ResponsiveSlider from '@Components/responsive-slider';
+import AdvancedPopColorControl from '@Components/color-control/advanced-pop-color-control.js';
+import SpacingControl from '@Components/spacing-control';
+import MultiButtonsControl from '@Components/multi-buttons-control';
+import InspectorTabs from '@Components/inspector-tabs/InspectorTabs.js';
+import InspectorTab, {
+	UAGTabs,
+} from '@Components/inspector-tabs/InspectorTab.js';
+import renderSVG from '@Controls/renderIcon';
+import presets from './presets';
+import UAGPresets from '@Components/presets';
+
 const maxColumns = 3;
 
-import {
-	InspectorControls,
-	PanelColorSettings,
-	ColorPalette,
-} from '@wordpress/block-editor';
+import { InspectorControls } from '@wordpress/block-editor';
 
-import {
-	PanelBody,
-	RangeControl,
-	SelectControl,
-	Button,
-	ButtonGroup,
-	Path,
-	SVG,
-} from '@wordpress/components';
+import { SelectControl, Icon } from '@wordpress/components';
+
+
+
+import UAGAdvancedPanelBody from '@Components/advanced-panel-body';
 
 const Settings = ( props ) => {
 	props = props.parentProps;
@@ -32,15 +35,11 @@ const Settings = ( props ) => {
 	const {
 		menu_item_count,
 		titleSpace,
-		imgHrPadding,
-		imgVrPadding,
 		columns,
 		tcolumns,
 		mcolumns,
 		rowGap,
 		columnGap,
-		contentHrPadding,
-		contentVrPadding,
 		priceColor,
 		descColor,
 		titleColor,
@@ -57,7 +56,7 @@ const Settings = ( props ) => {
 		titleFontSizeMobile,
 		titleFontFamily,
 		titleFontWeight,
-		titleFontSubset,
+		titleFontStyle,
 		titleLineHeightType,
 		titleLineHeight,
 		titleLineHeightTablet,
@@ -68,7 +67,7 @@ const Settings = ( props ) => {
 		priceFontSizeMobile,
 		priceFontFamily,
 		priceFontWeight,
-		priceFontSubset,
+		priceFontStyle,
 		priceLineHeightType,
 		priceLineHeight,
 		priceLineHeightTablet,
@@ -79,7 +78,7 @@ const Settings = ( props ) => {
 		descFontSizeMobile,
 		descFontFamily,
 		descFontWeight,
-		descFontSubset,
+		descFontStyle,
 		descLineHeightType,
 		descLineHeight,
 		descLineHeightTablet,
@@ -90,38 +89,53 @@ const Settings = ( props ) => {
 		imageSize,
 		imageWidth,
 		stack,
+		imageWidthType,
+		seperatorWidthType,
+		rowGapType,
+		columnGapType,
+		titleSpaceType,
+		contentPaddingTop,
+		contentPaddingRight,
+		contentPaddingBottom,
+		contentPaddingLeft,
+		contentPaddingTopTablet,
+		contentPaddingRightTablet,
+		contentPaddingBottomTablet,
+		contentPaddingLeftTablet,
+		contentPaddingTopMobile,
+		contentPaddingRightMobile,
+		contentPaddingBottomMobile,
+		contentPaddingLeftMobile,
+		contentPaddingUnit,
+		contentMobilePaddingUnit,
+		contentTabletPaddingUnit,
+		contentSpacingLink,
+		imgPaddingTop,
+		imgPaddingRight,
+		imgPaddingBottom,
+		imgPaddingLeft,
+		imgPaddingTopTablet,
+		imgPaddingRightTablet,
+		imgPaddingBottomTablet,
+		imgPaddingLeftTablet,
+		imgPaddingTopMobile,
+		imgPaddingRightMobile,
+		imgPaddingBottomMobile,
+		imgPaddingLeftMobile,
+		imgPaddingUnit,
+		imgMobilePaddingUnit,
+		imgTabletPaddingUnit,
+		imgSpacingLink,
+		titleTransform,
+		titleDecoration,
+		descTransform,
+		descDecoration,
+		priceTransform,
+		priceDecoration,
+		headingAlign,
+		imgAlign
 	} = attributes;
 
-	const setcolumns = ( value ) => {
-		const getChildBlocks = select( 'core/block-editor' ).getBlocks(
-			props.clientId
-		);
-
-		getChildBlocks.forEach( ( pricelistChild ) => {
-			pricelistChild.attributes.columns = value;
-		} );
-		setAttributes( { columns: value } );
-	};
-	const setheadingTag = ( value ) => {
-		const getChildBlocks = select( 'core/block-editor' ).getBlocks(
-			props.clientId
-		);
-
-		getChildBlocks.forEach( ( pricelistChild ) => {
-			pricelistChild.attributes.headingTag = value;
-		} );
-		setAttributes( { headingTag: value } );
-	};
-	const setimagePosition = ( value ) => {
-		const getChildBlocks = select( 'core/block-editor' ).getBlocks(
-			props.clientId
-		);
-
-		getChildBlocks.forEach( ( pricelistChild ) => {
-			pricelistChild.attributes.imagePosition = value;
-		} );
-		setAttributes( { imagePosition: value } );
-	};
 	const setimageSize = ( value ) => {
 		const getChildBlocks = select( 'core/block-editor' ).getBlocks(
 			props.clientId
@@ -133,22 +147,11 @@ const Settings = ( props ) => {
 		setAttributes( { imageSize: value } );
 	};
 
-	const setimageAlignment = ( value ) => {
-		const getChildBlocks = select( 'core/block-editor' ).getBlocks(
-			props.clientId
-		);
-
-		getChildBlocks.forEach( ( pricelistChild ) => {
-			pricelistChild.attributes.imageAlignment = value;
-		} );
-		setAttributes( { imageAlignment: value } );
-	};
-
 	let loadTitleGoogleFonts;
 	let loadDescGoogleFonts;
 	let loadPriceGoogleFonts;
 
-	if ( titleLoadGoogleFonts == true ) {
+	if ( titleLoadGoogleFonts === true ) {
 		const titleconfig = {
 			google: {
 				families: [
@@ -163,7 +166,7 @@ const Settings = ( props ) => {
 		);
 	}
 
-	if ( descLoadGoogleFonts == true ) {
+	if ( descLoadGoogleFonts === true ) {
 		const descconfig = {
 			google: {
 				families: [
@@ -178,7 +181,7 @@ const Settings = ( props ) => {
 		);
 	}
 
-	if ( priceLoadGoogleFonts == true ) {
+	if ( priceLoadGoogleFonts === true ) {
 		const priceconfig = {
 			google: {
 				families: [
@@ -196,86 +199,108 @@ const Settings = ( props ) => {
 	// Margin Settings.
 	const marginSettings = () => {
 		return (
-			<PanelBody title={ __( 'Spacing' ) } initialOpen={ false }>
-				<RangeControl
+			<UAGAdvancedPanelBody title={ __( 'Spacing' ) } initialOpen={ false }>
+				<Range
 					label={ __( 'Row Gap' ) }
+					setAttributes={ setAttributes }
 					value={ rowGap }
 					onChange={ ( value ) => setAttributes( { rowGap: value } ) }
 					min={ 0 }
 					max={ 50 }
-					allowReset
+					unit={ {
+						value: rowGapType,
+						label: 'rowGapType',
+					} }
 				/>
-				<RangeControl
+				<Range
 					label={ __( 'Column Gap' ) }
+					setAttributes={ setAttributes }
 					value={ columnGap }
 					onChange={ ( value ) =>
 						setAttributes( { columnGap: value } )
 					}
 					min={ 0 }
 					max={ 50 }
-					allowReset
+					unit={ {
+						value: columnGapType,
+						label: 'columnGapType',
+					} }
 				/>
-				<RangeControl
-					label={ __( 'Title Bottom Margin' ) }
-					value={ titleSpace }
-					onChange={ ( value ) =>
-						setAttributes( { titleSpace: value } )
-					}
-					min={ 0 }
-					max={ 50 }
-					allowReset
+				<SpacingControl
+					{ ...props }
+					label={ __(
+						'Item Padding',
+						'ultimate-addons-for-gutenberg'
+					) }
+					valueTop={ {
+						value: contentPaddingTop,
+						label: 'contentPaddingTop',
+					} }
+					valueRight={ {
+						value: contentPaddingRight,
+						label: 'contentPaddingRight',
+					} }
+					valueBottom={ {
+						value: contentPaddingBottom,
+						label: 'contentPaddingBottom',
+					} }
+					valueLeft={ {
+						value: contentPaddingLeft,
+						label: 'contentPaddingLeft',
+					} }
+					valueTopTablet={ {
+						value: contentPaddingTopTablet,
+						label: 'contentPaddingTopTablet',
+					} }
+					valueRightTablet={ {
+						value: contentPaddingRightTablet,
+						label: 'contentPaddingRightTablet',
+					} }
+					valueBottomTablet={ {
+						value: contentPaddingBottomTablet,
+						label: 'contentPaddingBottomTablet',
+					} }
+					valueLeftTablet={ {
+						value: contentPaddingLeftTablet,
+						label: 'contentPaddingLeftTablet',
+					} }
+					valueTopMobile={ {
+						value: contentPaddingTopMobile,
+						label: 'contentPaddingTopMobile',
+					} }
+					valueRightMobile={ {
+						value: contentPaddingRightMobile,
+						label: 'contentPaddingRightMobile',
+					} }
+					valueBottomMobile={ {
+						value: contentPaddingBottomMobile,
+						label: 'contentPaddingBottomMobile',
+					} }
+					valueLeftMobile={ {
+						value: contentPaddingLeftMobile,
+						label: 'contentPaddingLeftMobile',
+					} }
+					unit={ {
+						value: contentPaddingUnit,
+						label: 'contentPaddingUnit',
+					} }
+					mUnit={ {
+						value: contentMobilePaddingUnit,
+						label: 'contentMobilePaddingUnit',
+					} }
+					tUnit={ {
+						value: contentTabletPaddingUnit,
+						label: 'contentTabletPaddingUnit',
+					} }
+					deviceType={ deviceType }
+					attributes={ attributes }
+					setAttributes={ setAttributes }
+					link={ {
+						value: contentSpacingLink,
+						label: 'contentSpacingLink',
+					} }
 				/>
-				<hr className="uagb-editor__separator" />
-				<h2>{ __( 'Item Padding (px)' ) }</h2>
-				<RangeControl
-					label={ UAGB_Block_Icons.vertical_spacing }
-					className={ 'uagb-margin-control' }
-					value={ contentVrPadding }
-					onChange={ ( value ) =>
-						setAttributes( { contentVrPadding: value } )
-					}
-					min={ 0 }
-					max={ 50 }
-					allowReset
-				/>
-				<RangeControl
-					label={ UAGB_Block_Icons.horizontal_spacing }
-					className={ 'uagb-margin-control' }
-					value={ contentHrPadding }
-					onChange={ ( value ) =>
-						setAttributes( { contentHrPadding: value } )
-					}
-					min={ 0 }
-					max={ 50 }
-					allowReset
-				/>
-				<>
-					<hr className="uagb-editor__separator" />
-					<h2>{ __( 'Image Padding (px)' ) }</h2>
-					<RangeControl
-						label={ UAGB_Block_Icons.vertical_spacing }
-						className={ 'uagb-margin-control' }
-						value={ imgVrPadding }
-						onChange={ ( value ) =>
-							setAttributes( { imgVrPadding: value } )
-						}
-						min={ 0 }
-						max={ 50 }
-						allowReset
-					/>
-					<RangeControl
-						label={ UAGB_Block_Icons.horizontal_spacing }
-						className={ 'uagb-margin-control' }
-						value={ imgHrPadding }
-						onChange={ ( value ) =>
-							setAttributes( { imgHrPadding: value } )
-						}
-						min={ 0 }
-						max={ 50 }
-						allowReset
-					/>
-				</>
-			</PanelBody>
+			</UAGAdvancedPanelBody>
 		);
 	};
 
@@ -286,133 +311,367 @@ const Settings = ( props ) => {
 		{ value: 'full', label: __( 'Large' ) },
 	];
 
-	const alignTop = (
-		<SVG xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-			<Path d="M9 20h6V9H9v11zM4 4v1.5h16V4H4z" />
-		</SVG>
-	);
-
 	//Image Setting
 	const imageSettings = () => {
 		return (
-			<>
-				<h2>
-					<strong>{ __( 'Image Settings' ) }</strong>
-				</h2>
-				<h2> { __( 'Image Position' ) }</h2>
-				<ButtonGroup className="uagb-editor_imgpos_group">
-					<Button
-						key={ 'left' }
-						icon="editor-alignleft"
-						label="Left"
-						onClick={ () => setimagePosition( 'left' ) }
-						aria-pressed={ 'left' === imagePosition }
-						isPrimary={ 'left' === imagePosition }
-					/>
-					<Button
-						key={ 'top' }
-						icon={ alignTop }
-						label="Top"
-						onClick={ () => setimagePosition( 'top' ) }
-						aria-pressed={ 'top' === imagePosition }
-						isPrimary={ 'top' === imagePosition }
-					/>
-					<Button
-						key={ 'right' }
-						icon="editor-alignright"
-						label="Right"
-						onClick={ () => setimagePosition( 'right' ) }
-						aria-pressed={ 'right' === imagePosition }
-						isPrimary={ 'right' === imagePosition }
-					/>
-				</ButtonGroup>
-				{ ( imagePosition == 'left' || imagePosition == 'right' ) && (
+			<UAGAdvancedPanelBody title={ __( 'Image' ) } initialOpen={ false }>
+				<MultiButtonsControl
+					setAttributes={ setAttributes }
+					label={ __(
+						'Position',
+						'ultimate-addons-for-gutenberg'
+					) }
+					data={ {
+						value: imgAlign,
+						label: 'imgAlign',
+					} }
+					className="uagb-multi-button-alignment-control"
+					options={ [
+						{
+							value: 'top',
+							label: 'Top',
+						},
+						{
+							value: 'side',
+							label: 'Side',
+						},
+					] }
+					showIcons={ false }
+				/>
+				{ ( imgAlign === 'side' ) && (
+					<MultiButtonsControl
+					setAttributes={ setAttributes }
+					label={ __(
+						'Alignment',
+						'ultimate-addons-for-gutenberg'
+					) }
+					data={ {
+						value: imagePosition,
+						label: 'imagePosition',
+					} }
+					className="uagb-multi-button-alignment-control"
+					options={ [
+						{
+							value: 'left',
+							icon: (
+								<Icon
+									icon={ renderSVG( 'fa fa-align-left' ) }
+								/>
+							),
+							tooltip: __(
+								'Left',
+								'ultimate-addons-for-gutenberg'
+							),
+						},
+						{
+							value: 'right',
+							icon: (
+								<Icon
+									icon={ renderSVG( 'fa fa-align-right' ) }
+								/>
+							),
+							tooltip: __(
+								'Right',
+								'ultimate-addons-for-gutenberg'
+							),
+						},
+					] }
+					showIcons={ true }
+				/>
+				)}
+				{ ( imgAlign === 'top' ) && (
+				<MultiButtonsControl
+					setAttributes={ setAttributes }
+					label={ __( 'Alignment', 'ultimate-addons-for-gutenberg' ) }
+					data={ {
+						value: headingAlign,
+						label: 'headingAlign',
+					} }
+					className="uagb-multi-button-alignment-control"
+					options={ [
+						{
+							value: 'left',
+							icon: (
+								<Icon
+									icon={ renderSVG( 'fa fa-align-left' ) }
+								/>
+							),
+							tooltip: __(
+								'Left',
+								'ultimate-addons-for-gutenberg'
+							),
+						},
+						{
+							value: 'center',
+							icon: (
+								<Icon
+									icon={ renderSVG( 'fa fa-align-center' ) }
+								/>
+							),
+							tooltip: __(
+								'Center',
+								'ultimate-addons-for-gutenberg'
+							),
+						},
+						{
+							value: 'right',
+							icon: (
+								<Icon
+									icon={ renderSVG( 'fa fa-align-right' ) }
+								/>
+							),
+							tooltip: __(
+								'Right',
+								'ultimate-addons-for-gutenberg'
+							),
+						},
+					] }
+					showIcons={ true }
+				/>
+				)}
+				{ ( imagePosition === 'left' || imagePosition === 'right' ) && (
 					<>
-						<SelectControl
-							label={ __( 'Vertical Alignment' ) }
-							value={ imageAlignment }
-							onChange={ setimageAlignment }
+						<MultiButtonsControl
+							setAttributes={ setAttributes }
+							label={ __(
+								'Stack on',
+								'ultimate-addons-for-gutenberg'
+							) }
+							data={ {
+								value: stack,
+								label: 'stack',
+							} }
+							className="uagb-multi-button-alignment-control"
 							options={ [
-								{ value: 'top', label: __( 'Top' ) },
-								{ value: 'middle', label: __( 'Middle' ) },
-							] }
-						/>
-						<SelectControl
-							label={ __( 'Stack on' ) }
-							value={ stack }
-							options={ [
-								{ value: 'none', label: __( 'None' ) },
-								{ value: 'tablet', label: __( 'Tablet' ) },
-								{ value: 'mobile', label: __( 'Mobile' ) },
+								{
+									value: 'none',
+									label: 'None',
+								},
+								{
+									value: 'tablet',
+									label: 'Tablet',
+								},
+								{
+									value: 'mobile',
+									label: 'Mobile',
+								},
 							] }
 							help={ __(
 								'Note: Choose on what breakpoint the Images will stack.'
 							) }
-							onChange={ ( value ) =>
-								setAttributes( { stack: value } )
-							}
+							showIcons={ false }
+						/>
+						<MultiButtonsControl
+							setAttributes={ setAttributes }
+							label={ __(
+								'Vertical Alignment',
+								'ultimate-addons-for-gutenberg'
+							) }
+							data={ {
+								value: imageAlignment,
+								label: 'imageAlignment',
+							} }
+							className="uagb-multi-button-alignment-control"
+							options={ [
+								{
+									value: 'top',
+									label: 'Top',
+								},
+								{
+									value: 'middle',
+									label: 'Middle',
+								},
+							] }
+							showIcons={ false }
 						/>
 					</>
 				) }
 				<SelectControl
-					label={ __( 'Image Size' ) }
+					label={ __( 'Size' ) }
 					options={ imageSizeOptions }
 					value={ imageSize }
 					onChange={ setimageSize }
 				/>
-				<RangeControl
+				<Range
 					label={ __( 'Width' ) }
 					value={ imageWidth }
+					setAttributes={ setAttributes }
 					onChange={ ( value ) =>
 						setAttributes( { imageWidth: value } )
 					}
 					min={ 0 }
 					max={ 500 }
-					allowReset
+					unit={ {
+						value: imageWidthType,
+						label: 'imageWidthType',
+					} }
 				/>
-			</>
+			</UAGAdvancedPanelBody>
+		);
+	};
+	//Image Setting
+	const imageStyles = () => {
+		return (
+			<UAGAdvancedPanelBody title={ __( 'Image' ) } initialOpen={ false }>
+				<SpacingControl
+					{ ...props }
+					label={ __( 'Padding', 'ultimate-addons-for-gutenberg' ) }
+					valueTop={ {
+						value: imgPaddingTop,
+						label: 'imgPaddingTop',
+					} }
+					valueRight={ {
+						value: imgPaddingRight,
+						label: 'imgPaddingRight',
+					} }
+					valueBottom={ {
+						value: imgPaddingBottom,
+						label: 'imgPaddingBottom',
+					} }
+					valueLeft={ {
+						value: imgPaddingLeft,
+						label: 'imgPaddingLeft',
+					} }
+					valueTopTablet={ {
+						value: imgPaddingTopTablet,
+						label: 'imgPaddingTopTablet',
+					} }
+					valueRightTablet={ {
+						value: imgPaddingRightTablet,
+						label: 'imgPaddingRightTablet',
+					} }
+					valueBottomTablet={ {
+						value: imgPaddingBottomTablet,
+						label: 'imgPaddingBottomTablet',
+					} }
+					valueLeftTablet={ {
+						value: imgPaddingLeftTablet,
+						label: 'imgPaddingLeftTablet',
+					} }
+					valueTopMobile={ {
+						value: imgPaddingTopMobile,
+						label: 'imgPaddingTopMobile',
+					} }
+					valueRightMobile={ {
+						value: imgPaddingRightMobile,
+						label: 'imgPaddingRightMobile',
+					} }
+					valueBottomMobile={ {
+						value: imgPaddingBottomMobile,
+						label: 'imgPaddingBottomMobile',
+					} }
+					valueLeftMobile={ {
+						value: imgPaddingLeftMobile,
+						label: 'imgPaddingLeftMobile',
+					} }
+					unit={ {
+						value: imgPaddingUnit,
+						label: 'imgPaddingUnit',
+					} }
+					mUnit={ {
+						value: imgMobilePaddingUnit,
+						label: 'imgMobilePaddingUnit',
+					} }
+					tUnit={ {
+						value: imgTabletPaddingUnit,
+						label: 'imgTabletPaddingUnit',
+					} }
+					deviceType={ deviceType }
+					attributes={ attributes }
+					setAttributes={ setAttributes }
+					link={ {
+						value: imgSpacingLink,
+						label: 'imgSpacingLink',
+					} }
+				/>
+			</UAGAdvancedPanelBody>
 		);
 	};
 
 	//Color settings
-	const colorSettings = () => {
+	const contentSettings = () => {
 		return (
-			<PanelColorSettings
-				title={ __( 'Color Settings' ) }
-				initialOpen={ false }
-				colorSettings={ [
-					{
-						value: titleColor,
-						onChange: ( value ) =>
-							setAttributes( { titleColor: value } ),
-						label: __( 'Title Color' ),
-					},
-					{
-						value: descColor,
-						onChange: ( value ) =>
-							setAttributes( { descColor: value } ),
-						label: __( 'Content Color' ),
-					},
-					{
-						value: priceColor,
-						onChange: ( value ) =>
-							setAttributes( { priceColor: value } ),
-						label: __( 'Price Color' ),
-					},
-				] }
-			></PanelColorSettings>
+			<UAGAdvancedPanelBody title={ __( 'Content' ) } initialOpen={ false }>
+				<AdvancedPopColorControl
+					label={ __( 'Color', 'ultimate-addons-for-gutenberg' ) }
+					colorValue={ descColor ? descColor : '' }
+					onColorChange={ ( value ) =>
+						setAttributes( {
+							descColor: value,
+						} )
+					}
+				/>
+				<TypographyControl
+					label={ __( 'Typography' ) }
+					attributes={ attributes }
+					setAttributes={ setAttributes }
+					loadGoogleFonts={ {
+						value: descLoadGoogleFonts,
+						label: 'descLoadGoogleFonts',
+					} }
+					fontFamily={ {
+						value: descFontFamily,
+						label: 'descFontFamily',
+					} }
+					fontWeight={ {
+						value: descFontWeight,
+						label: 'descFontWeight',
+					} }
+					fontStyle={ {
+						value: descFontStyle,
+						label: 'descFontStyle',
+					} }
+					fontSizeType={ {
+						value: descFontSizeType,
+						label: 'descFontSizeType',
+					} }
+					fontSize={ {
+						value: descFontSize,
+						label: 'descFontSize',
+					} }
+					fontSizeMobile={ {
+						value: descFontSizeMobile,
+						label: 'descFontSizeMobile',
+					} }
+					fontSizeTablet={ {
+						value: descFontSizeTablet,
+						label: 'descFontSizeTablet',
+					} }
+					lineHeightType={ {
+						value: descLineHeightType,
+						label: 'descLineHeightType',
+					} }
+					lineHeight={ {
+						value: descLineHeight,
+						label: 'descLineHeight',
+					} }
+					lineHeightMobile={ {
+						value: descLineHeightMobile,
+						label: 'descLineHeightMobile',
+					} }
+					lineHeightTablet={ {
+						value: descLineHeightTablet,
+						label: 'descLineHeightTablet',
+					} }
+					transform={ {
+						value: descTransform,
+						label: 'descTransform',
+					} }
+					decoration={ {
+						value: descDecoration,
+						label: 'descDecoration',
+					} }
+				/>
+			</UAGAdvancedPanelBody>
 		);
 	};
 
 	//seperator setting
 	const separatorSettings = () => {
 		return (
-			<>
-				<h2>
-					<strong>Separator Settings</strong>
-				</h2>
+			<UAGAdvancedPanelBody title={ __( 'Separator' ) } initialOpen={ false }>
 				<SelectControl
-					label={ __( 'Separator Style' ) }
+					label={ __( 'Style' ) }
 					value={ seperatorStyle }
 					onChange={ ( value ) =>
 						setAttributes( { seperatorStyle: value } )
@@ -429,295 +688,372 @@ const Settings = ( props ) => {
 						{ value: 'ridge', label: __( 'Ridge' ) },
 					] }
 				/>
-				{ 'none' != seperatorStyle && (
+				{ 'none' !== seperatorStyle && (
 					<>
-						<RangeControl
-							label={ __( 'Separator Width (%)' ) }
+						<Range
+							label={ __( 'Width' ) }
+							setAttributes={ setAttributes }
 							value={ seperatorWidth }
 							onChange={ ( value ) =>
 								setAttributes( { seperatorWidth: value } )
 							}
 							min={ 0 }
 							max={ 100 }
-							allowReset
+							unit={ {
+								value: seperatorWidthType,
+								label: 'seperatorWidthType',
+							} }
+							units={ [
+								{
+									name: __(
+										'Pixel',
+										'ultimate-addons-for-gutenberg'
+									),
+									unitValue: 'px',
+								},
+								{
+									name: __(
+										'Em',
+										'ultimate-addons-for-gutenberg'
+									),
+									unitValue: 'em',
+								},
+								{
+									name: __(
+										'%',
+										'ultimate-addons-for-gutenberg'
+									),
+									unitValue: '%',
+								},
+							] }
 						/>
-						<RangeControl
-							label={ __( 'Separator Thickness' ) }
+						<Range
+							label={ __( 'Thickness' ) }
+							setAttributes={ setAttributes }
 							value={ seperatorThickness }
 							onChange={ ( value ) =>
 								setAttributes( { seperatorThickness: value } )
 							}
 							min={ 0 }
 							max={ 20 }
-							allowReset
+							displayUnit={ false }
 						/>
-						<>
-							<p className="uagb-setting-label">
-								{ __( 'Separator Color' ) }
-								<span className="components-base-control__label">
-									<span
-										className="component-color-indicator"
-										style={ {
-											backgroundColor: seperatorColor,
-										} }
-									></span>
-								</span>
-							</p>
-							<ColorPalette
-								value={ seperatorColor }
-								onChange={ ( colorValue ) =>
-									setAttributes( {
-										seperatorColor: colorValue,
-									} )
-								}
-								allowReset
-							/>
-						</>
+						<AdvancedPopColorControl
+							label={ __(
+								'Color',
+								'ultimate-addons-for-gutenberg'
+							) }
+							colorValue={ seperatorColor ? seperatorColor : '' }
+							onColorChange={ ( value ) =>
+								setAttributes( {
+									seperatorColor: value,
+								} )
+							}
+						/>
 					</>
 				) }
-			</>
+			</UAGAdvancedPanelBody>
 		);
 	};
 
 	// Typography settings.
-	const typographySettings = () => {
+	const priceSettings = () => {
 		return (
-			<PanelBody title={ __( 'Typography' ) } initialOpen={ false }>
-				<h2>{ __( 'Title' ) }</h2>
-				<SelectControl
-					label={ __( 'Title Tag' ) }
-					value={ headingTag }
-					onChange={ setheadingTag }
-					options={ [
-						{ value: 'h1', label: __( 'H1' ) },
-						{ value: 'h2', label: __( 'H2' ) },
-						{ value: 'h3', label: __( 'H3' ) },
-						{ value: 'h4', label: __( 'H4' ) },
-						{ value: 'h5', label: __( 'H5' ) },
-						{ value: 'h6', label: __( 'H6' ) },
-						{ value: 'p', label: __( 'P' ) },
-						{ value: 'span', label: __( 'SPAN' ) },
-					] }
+			<UAGAdvancedPanelBody title={ __( 'Price' ) } initialOpen={ false }>
+				<AdvancedPopColorControl
+					label={ __( 'Color', 'ultimate-addons-for-gutenberg' ) }
+					colorValue={ priceColor ? priceColor : '' }
+					onColorChange={ ( value ) =>
+						setAttributes( {
+							priceColor: value,
+						} )
+					}
 				/>
-				<Suspense fallback={ lazyLoader() }>
-					<TypographyControl
-						label={ __( 'Typography' ) }
-						attributes={ attributes }
-						setAttributes={ setAttributes }
-						loadGoogleFonts={ {
-							value: titleLoadGoogleFonts,
-							label: 'titleLoadGoogleFonts',
-						} }
-						fontFamily={ {
-							value: titleFontFamily,
-							label: 'titleFontFamily',
-						} }
-						fontWeight={ {
-							value: titleFontWeight,
-							label: 'titleFontWeight',
-						} }
-						fontSubset={ {
-							value: titleFontSubset,
-							label: 'titleFontSubset',
-						} }
-						fontSizeType={ {
-							value: titleFontSizeType,
-							label: 'titleFontSizeType',
-						} }
-						fontSize={ {
-							value: titleFontSize,
-							label: 'titleFontSize',
-						} }
-						fontSizeMobile={ {
-							value: titleFontSizeMobile,
-							label: 'titleFontSizeMobile',
-						} }
-						fontSizeTablet={ {
-							value: titleFontSizeTablet,
-							label: 'titleFontSizeTablet',
-						} }
-						lineHeightType={ {
-							value: titleLineHeightType,
-							label: 'titleLineHeightType',
-						} }
-						lineHeight={ {
-							value: titleLineHeight,
-							label: 'titleLineHeight',
-						} }
-						lineHeightMobile={ {
-							value: titleLineHeightMobile,
-							label: 'titleLineHeightMobile',
-						} }
-						lineHeightTablet={ {
-							value: titleLineHeightTablet,
-							label: 'titleLineHeightTablet',
-						} }
-					/>
-					<hr className="uagb-editor__separator" />
-					<h2>{ __( 'Content' ) }</h2>
-					<TypographyControl
-						label={ __( 'Typography' ) }
-						attributes={ attributes }
-						setAttributes={ setAttributes }
-						loadGoogleFonts={ {
-							value: descLoadGoogleFonts,
-							label: 'descLoadGoogleFonts',
-						} }
-						fontFamily={ {
-							value: descFontFamily,
-							label: 'descFontFamily',
-						} }
-						fontWeight={ {
-							value: descFontWeight,
-							label: 'descFontWeight',
-						} }
-						fontSubset={ {
-							value: descFontSubset,
-							label: 'descFontSubset',
-						} }
-						fontSizeType={ {
-							value: descFontSizeType,
-							label: 'descFontSizeType',
-						} }
-						fontSize={ {
-							value: descFontSize,
-							label: 'descFontSize',
-						} }
-						fontSizeMobile={ {
-							value: descFontSizeMobile,
-							label: 'descFontSizeMobile',
-						} }
-						fontSizeTablet={ {
-							value: descFontSizeTablet,
-							label: 'descFontSizeTablet',
-						} }
-						lineHeightType={ {
-							value: descLineHeightType,
-							label: 'descLineHeightType',
-						} }
-						lineHeight={ {
-							value: descLineHeight,
-							label: 'descLineHeight',
-						} }
-						lineHeightMobile={ {
-							value: descLineHeightMobile,
-							label: 'descLineHeightMobile',
-						} }
-						lineHeightTablet={ {
-							value: descLineHeightTablet,
-							label: 'descLineHeightTablet',
-						} }
-					/>
-					<hr className="uagb-editor__separator" />
-					<h2>{ __( 'Price' ) }</h2>
-					<TypographyControl
-						label={ __( 'Typography' ) }
-						attributes={ attributes }
-						setAttributes={ setAttributes }
-						loadGoogleFonts={ {
-							value: priceLoadGoogleFonts,
-							label: 'priceLoadGoogleFonts',
-						} }
-						fontFamily={ {
-							value: priceFontFamily,
-							label: 'priceFontFamily',
-						} }
-						fontWeight={ {
-							value: priceFontWeight,
-							label: 'priceFontWeight',
-						} }
-						fontSubset={ {
-							value: priceFontSubset,
-							label: 'priceFontSubset',
-						} }
-						fontSizeType={ {
-							value: priceFontSizeType,
-							label: 'priceFontSizeType',
-						} }
-						fontSize={ {
-							value: priceFontSize,
-							label: 'priceFontSize',
-						} }
-						fontSizeMobile={ {
-							value: priceFontSizeMobile,
-							label: 'priceFontSizeMobile',
-						} }
-						fontSizeTablet={ {
-							value: priceFontSizeTablet,
-							label: 'priceFontSizeTablet',
-						} }
-						lineHeightType={ {
-							value: priceLineHeightType,
-							label: 'priceLineHeightType',
-						} }
-						lineHeight={ {
-							value: priceLineHeight,
-							label: 'priceLineHeight',
-						} }
-						lineHeightMobile={ {
-							value: priceLineHeightMobile,
-							label: 'priceLineHeightMobile',
-						} }
-						lineHeightTablet={ {
-							value: priceLineHeightTablet,
-							label: 'priceLineHeightTablet',
-						} }
-					/>
-				</Suspense>
-			</PanelBody>
+				<TypographyControl
+					label={ __( 'Typography' ) }
+					attributes={ attributes }
+					setAttributes={ setAttributes }
+					loadGoogleFonts={ {
+						value: priceLoadGoogleFonts,
+						label: 'priceLoadGoogleFonts',
+					} }
+					fontFamily={ {
+						value: priceFontFamily,
+						label: 'priceFontFamily',
+					} }
+					fontWeight={ {
+						value: priceFontWeight,
+						label: 'priceFontWeight',
+					} }
+					fontStyle={ {
+						value: priceFontStyle,
+						label: 'priceFontStyle',
+					} }
+					fontSizeType={ {
+						value: priceFontSizeType,
+						label: 'priceFontSizeType',
+					} }
+					fontSize={ {
+						value: priceFontSize,
+						label: 'priceFontSize',
+					} }
+					fontSizeMobile={ {
+						value: priceFontSizeMobile,
+						label: 'priceFontSizeMobile',
+					} }
+					fontSizeTablet={ {
+						value: priceFontSizeTablet,
+						label: 'priceFontSizeTablet',
+					} }
+					lineHeightType={ {
+						value: priceLineHeightType,
+						label: 'priceLineHeightType',
+					} }
+					lineHeight={ {
+						value: priceLineHeight,
+						label: 'priceLineHeight',
+					} }
+					lineHeightMobile={ {
+						value: priceLineHeightMobile,
+						label: 'priceLineHeightMobile',
+					} }
+					lineHeightTablet={ {
+						value: priceLineHeightTablet,
+						label: 'priceLineHeightTablet',
+					} }
+					transform={ {
+						value: priceTransform,
+						label: 'priceTransform',
+					} }
+					decoration={ {
+						value: priceDecoration,
+						label: 'priceDecoration',
+					} }
+				/>
+			</UAGAdvancedPanelBody>
 		);
 	};
-
+	const titleSettings = () => {
+		return (
+			<UAGAdvancedPanelBody title={ __( 'Title' ) } initialOpen={ false }>
+				<AdvancedPopColorControl
+					label={ __( 'Color', 'ultimate-addons-for-gutenberg' ) }
+					colorValue={ titleColor ? titleColor : '' }
+					onColorChange={ ( value ) =>
+						setAttributes( {
+							titleColor: value,
+						} )
+					}
+				/>
+				<TypographyControl
+					label={ __( 'Typography' ) }
+					attributes={ attributes }
+					setAttributes={ setAttributes }
+					loadGoogleFonts={ {
+						value: titleLoadGoogleFonts,
+						label: 'titleLoadGoogleFonts',
+					} }
+					fontFamily={ {
+						value: titleFontFamily,
+						label: 'titleFontFamily',
+					} }
+					fontWeight={ {
+						value: titleFontWeight,
+						label: 'titleFontWeight',
+					} }
+					fontStyle={ {
+						value: titleFontStyle,
+						label: 'titleFontStyle',
+					} }
+					fontSizeType={ {
+						value: titleFontSizeType,
+						label: 'titleFontSizeType',
+					} }
+					fontSize={ {
+						value: titleFontSize,
+						label: 'titleFontSize',
+					} }
+					fontSizeMobile={ {
+						value: titleFontSizeMobile,
+						label: 'titleFontSizeMobile',
+					} }
+					fontSizeTablet={ {
+						value: titleFontSizeTablet,
+						label: 'titleFontSizeTablet',
+					} }
+					lineHeightType={ {
+						value: titleLineHeightType,
+						label: 'titleLineHeightType',
+					} }
+					lineHeight={ {
+						value: titleLineHeight,
+						label: 'titleLineHeight',
+					} }
+					lineHeightMobile={ {
+						value: titleLineHeightMobile,
+						label: 'titleLineHeightMobile',
+					} }
+					lineHeightTablet={ {
+						value: titleLineHeightTablet,
+						label: 'titleLineHeightTablet',
+					} }
+					transform={ {
+						value: titleTransform,
+						label: 'titleTransform',
+					} }
+					decoration={ {
+						value: titleDecoration,
+						label: 'titleDecoration',
+					} }
+				/>
+				<Range
+					label={ __( 'Bottom Margin' ) }
+					value={ titleSpace }
+					setAttributes={ setAttributes }
+					onChange={ ( value ) =>
+						setAttributes( { titleSpace: value } )
+					}
+					min={ 0 }
+					max={ 50 }
+					unit={ {
+						value: titleSpaceType,
+						label: 'titleSpaceType',
+					} }
+				/>
+			</UAGAdvancedPanelBody>
+		);
+	};
+	const presetSettings = () => {
+		return <UAGAdvancedPanelBody
+					title={ __( 'Presets', 'ultimate-addons-for-gutenberg' ) }
+					initialOpen={ true }
+				>
+					<UAGPresets
+						setAttributes = { setAttributes }
+						presets = { presets }
+						presetInputType = 'radioImage'
+					/>
+				</UAGAdvancedPanelBody>
+	};
 	const inspectControl = () => {
 		return (
 			<InspectorControls>
-				<PanelBody title={ __( 'General' ) } initialOpen={ true }>
-					<ColumnResponsive />
-					{ 'Desktop' === deviceType && (
-						<>
-							<RangeControl
-								label={ __( 'Columns' ) }
-								value={ columns }
-								onChange={ setcolumns }
+				<InspectorTabs>
+					<InspectorTab { ...UAGTabs.general }>
+						{ presetSettings() }
+						<UAGAdvancedPanelBody
+							title={ __( 'General' ) }
+							initialOpen={ true }
+						>
+							<ResponsiveSlider
+								label={ __(
+									'Columns',
+									'ultimate-addons-for-gutenberg'
+								) }
+								data={ {
+									desktop: {
+										value: columns,
+										label: 'columns',
+									},
+									tablet: {
+										value: tcolumns,
+										label: 'tcolumns',
+									},
+									mobile: {
+										value: mcolumns,
+										label: 'mcolumns',
+									},
+								} }
 								min={ 1 }
 								max={ Math.min( maxColumns, menu_item_count ) }
+								displayUnit={ false }
+								setAttributes={ setAttributes }
 							/>
-						</>
-					) }
-					{ 'Tablet' === deviceType && (
-						<>
-							<RangeControl
-								label={ __( 'Columns' ) }
-								value={ tcolumns }
-								onChange={ ( value ) =>
-									setAttributes( { tcolumns: value } )
-								}
-								min={ 1 }
-								max={ Math.min( maxColumns, menu_item_count ) }
+							<MultiButtonsControl
+								setAttributes={ setAttributes }
+								label={ __(
+									'Heading Tag',
+									'ultimate-addons-for-gutenberg'
+								) }
+								data={ {
+									value: headingTag,
+									label: 'headingTag',
+								} }
+								options={ [
+									{
+										value: 'h1',
+										label: __(
+											'H1',
+											'ultimate-addons-for-gutenberg'
+										),
+									},
+									{
+										value: 'h2',
+										label: __(
+											'H2',
+											'ultimate-addons-for-gutenberg'
+										),
+									},
+									{
+										value: 'h3',
+										label: __(
+											'H3',
+											'ultimate-addons-for-gutenberg'
+										),
+									},
+									{
+										value: 'h4',
+										label: __(
+											'H4',
+											'ultimate-addons-for-gutenberg'
+										),
+									},
+									{
+										value: 'h5',
+										label: __(
+											'H5',
+											'ultimate-addons-for-gutenberg'
+										),
+									},
+									{
+										value: 'h6',
+										label: __(
+											'H6',
+											'ultimate-addons-for-gutenberg'
+										),
+									},
+									{
+										value: 'span',
+										label: __(
+											'Span',
+											'ultimate-addons-for-gutenberg'
+										),
+									},
+									{
+										value: 'p',
+										label: __(
+											'P',
+											'ultimate-addons-for-gutenberg'
+										),
+									},
+								] }
 							/>
-						</>
-					) }
-					{ 'Mobile' === deviceType && (
-						<>
-							<RangeControl
-								label={ __( 'Columns' ) }
-								value={ mcolumns }
-								onChange={ ( value ) =>
-									setAttributes( { mcolumns: value } )
-								}
-								min={ 1 }
-								max={ Math.min( maxColumns, menu_item_count ) }
-							/>
-						</>
-					) }
-					<hr className="uagb-editor__separator" />
-					{ imageSettings() }
-					<hr className="uagb-editor__separator" />
-					{ separatorSettings() }
-				</PanelBody>
-				{ marginSettings() }
-				{ colorSettings() }
-				{ typographySettings() }
+						</UAGAdvancedPanelBody>
+						{ imageSettings() }
+					</InspectorTab>
+					<InspectorTab { ...UAGTabs.style }>
+						{ titleSettings() }
+						{ separatorSettings() }
+						{ imageStyles() }
+						{ contentSettings() }
+						{ priceSettings() }
+						{ marginSettings() }
+					</InspectorTab>
+					<InspectorTab
+						{ ...UAGTabs.advance }
+						parentProps={ props }
+					></InspectorTab>
+				</InspectorTabs>
 			</InspectorControls>
 		);
 	};

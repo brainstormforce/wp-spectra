@@ -11,18 +11,16 @@ const Title = ( props ) => {
 		target = '_blank';
 	}
 	return (
-		<div className="uagb-timeline__heading-text">
-			<Tag className="uagb-timeline__heading">
-				<a
-					href={ post.link }
-					target={ target }
-					rel="noopener noreferrer"
-				>
-					{ decodeEntities( post.title.rendered.trim() ) ||
-						__( '(Untitled)' ) }
-				</a>
-			</Tag>
-		</div>
+		<Tag className="uagb-timeline__heading">
+			<a
+				href={ post.link }
+				target={ target }
+				rel="noopener noreferrer"
+			>
+				{ decodeEntities( post.title.rendered.trim() ) ||
+					__( '(Untitled)' ) }
+			</a>
+		</Tag>
 	);
 };
 

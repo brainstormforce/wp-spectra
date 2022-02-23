@@ -1,30 +1,35 @@
 import { __ } from '@wordpress/i18n';
-
-import UAGB_Block_Icons from '@Controls/block-icons';
-import renderSVG from '@Controls/renderIcon';
 import React, { Suspense } from 'react';
 import lazyLoader from '@Controls/lazy-loader';
 import TypographyControl from '@Components/typography';
-import FontIconPicker from '@fonticonpicker/react-fonticonpicker';
-import ColumnResponsive from '@Components/typography/column-responsive';
+import UAGIconPicker from '@Components/icon-picker';
 import WebfontLoader from '@Components/typography/fontloader';
-
+import AdvancedPopColorControl from '@Components/color-control/advanced-pop-color-control.js';
+import ResponsiveSlider from '@Components/responsive-slider';
+import Border from '@Components/border';
+import SpacingControl from '@Components/spacing-control';
+import Range from '@Components/range/Range.js';
+import InspectorTabs from '@Components/inspector-tabs/InspectorTabs.js';
+import InspectorTab, {
+	UAGTabs,
+} from '@Components/inspector-tabs/InspectorTab.js';
+import UAGTabsControl from '@Components/tabs';
+import renderSVG from '@Controls/renderIcon';
 import {
 	BlockControls,
-	BlockAlignmentToolbar,
+	AlignmentToolbar,
 	InspectorControls,
-	ColorPalette,
 } from '@wordpress/block-editor';
-
+import MultiButtonsControl from '@Components/multi-buttons-control';
 import {
-	Button,
-	ButtonGroup,
-	PanelBody,
 	PanelRow,
-	SelectControl,
-	RangeControl,
 	ToggleControl,
+	Icon
 } from '@wordpress/components';
+
+
+
+import UAGAdvancedPanelBody from '@Components/advanced-panel-body';
 
 const Settings = ( props ) => {
 	props = props.parentProps;
@@ -33,6 +38,7 @@ const Settings = ( props ) => {
 
 	const {
 		align,
+		headingAlignment,
 		disableBullets,
 		makeCollapsible,
 		initialCollapse,
@@ -60,24 +66,23 @@ const Settings = ( props ) => {
 		linkColor,
 		linkHoverColor,
 		headingColor,
-		vPaddingDesktop,
-		vPaddingTablet,
-		vPaddingMobile,
-		hPaddingDesktop,
-		hPaddingTablet,
-		hPaddingMobile,
 		paddingTypeMobile,
 		paddingTypeTablet,
 		paddingTypeDesktop,
-		vMarginDesktop,
-		vMarginTablet,
-		vMarginMobile,
-		hMarginDesktop,
-		hMarginTablet,
-		hMarginMobile,
-		marginTypeMobile,
-		marginTypeTablet,
-		marginTypeDesktop,
+		topPadding,
+		rightPadding,
+		bottomPadding,
+		leftPadding,
+		topPaddingTablet,
+		rightPaddingTablet,
+		bottomPaddingTablet,
+		leftPaddingTablet,
+		topPaddingMobile,
+		rightPaddingMobile,
+		bottomPaddingMobile,
+		leftPaddingMobile,
+		marginLink,
+		paddingLink,
 		headingBottom,
 		contentPaddingDesktop,
 		contentPaddingTablet,
@@ -85,14 +90,29 @@ const Settings = ( props ) => {
 		contentPaddingTypeMobile,
 		contentPaddingTypeTablet,
 		contentPaddingTypeDesktop,
+		topMargin,
+		rightMargin,
+		bottomMargin,
+		leftMargin,
+		topMarginTablet,
+		rightMarginTablet,
+		bottomMarginTablet,
+		leftMarginTablet,
+		topMarginMobile,
+		rightMarginMobile,
+		bottomMarginMobile,
+		leftMarginMobile,
+		marginTypeMobile,
+		marginTypeTablet,
+		marginTypeDesktop,
 		borderStyle,
 		borderWidth,
 		borderRadius,
 		borderColor,
+		borderHoverColor,
 		loadGoogleFonts,
 		fontFamily,
 		fontWeight,
-		fontSubset,
 		fontSize,
 		fontSizeType,
 		fontSizeTablet,
@@ -104,7 +124,6 @@ const Settings = ( props ) => {
 		headingLoadGoogleFonts,
 		headingFontFamily,
 		headingFontWeight,
-		headingFontSubset,
 		headingFontSize,
 		headingFontSizeType,
 		headingFontSizeTablet,
@@ -114,29 +133,18 @@ const Settings = ( props ) => {
 		headingLineHeightTablet,
 		headingLineHeightMobile,
 		mappingHeaders,
-		headingAlignment,
+		fontStyle,
+		fontTransform,
+		fontDecoration,
+		headingFontStyle,
+		headingTransform,
+		headingDecoration,
 	} = attributes;
-
-	const getIcon = ( value ) => {
-		props.setAttributes( { icon: value } );
-	};
-
-	const iconProps = {
-		icons: wp.UAGBSvgIcons,
-		value: icon,
-		onChange: getIcon,
-		isMulti: false,
-		renderFunc: renderSVG,
-		noSelectedPlaceholder: __(
-			'Select Icon',
-			'ultimate-addons-for-gutenberg'
-		),
-	};
 
 	let loadGFonts;
 	let headingloadGFonts;
 
-	if ( loadGoogleFonts == true ) {
+	if ( loadGoogleFonts === true ) {
 		const config = {
 			google: {
 				families: [
@@ -148,7 +156,7 @@ const Settings = ( props ) => {
 		loadGFonts = <WebfontLoader config={ config }></WebfontLoader>;
 	}
 
-	if ( headingLoadGoogleFonts == true ) {
+	if ( headingLoadGoogleFonts === true ) {
 		const headingconfig = {
 			google: {
 				families: [
@@ -165,13 +173,13 @@ const Settings = ( props ) => {
 
 	const getGeneralPanelBody = () => {
 		return (
-			<PanelBody
+			<UAGAdvancedPanelBody
 				title={ __( 'General', 'ultimate-addons-for-gutenberg' ) }
 				initialOpen={ true }
 			>
 				<h2>
 					{ __(
-						'Select the heading to consider when generating the table',
+						'Choose heading tags to generate table',
 						'ultimate-addons-for-gutenberg'
 					) }
 				</h2>
@@ -195,13 +203,13 @@ const Settings = ( props ) => {
 						/>
 					</PanelRow>
 				) ) }
-			</PanelBody>
+			</UAGAdvancedPanelBody>
 		);
 	};
 
 	const getScrollPanelBody = () => {
 		return (
-			<PanelBody
+			<UAGAdvancedPanelBody
 				title={ __( 'Scroll', 'ultimate-addons-for-gutenberg' ) }
 				initialOpen={ false }
 			>
@@ -212,7 +220,7 @@ const Settings = ( props ) => {
 					) }
 					checked={ smoothScroll }
 					help={ __(
-						'This will be in Action only in Front End.',
+						'This will be in action only in Front End.',
 						'ultimate-addons-for-gutenberg'
 					) }
 					onChange={ () =>
@@ -221,37 +229,36 @@ const Settings = ( props ) => {
 				/>
 				{ smoothScroll && (
 					<>
-						<RangeControl
+						<Range
 							label={ __(
 								'Smooth Scroll Offset (px)',
 								'ultimate-addons-for-gutenberg'
 							) }
+							setAttributes={ setAttributes }
 							value={ smoothScrollOffset }
 							onChange={ ( value ) =>
-								setAttributes( {
-									smoothScrollOffset: value,
-								} )
+								setAttributes( { smoothScrollOffset: value } )
 							}
 							min={ 0 }
 							max={ 1000 }
+							displayUnit={ false }
 						/>
-						<RangeControl
+						<Range
 							label={ __(
 								'Scroll Animation Delay (ms)',
 								'ultimate-addons-for-gutenberg'
 							) }
+							setAttributes={ setAttributes }
 							value={ smoothScrollDelay }
 							onChange={ ( value ) =>
-								setAttributes( {
-									smoothScrollDelay: value,
-								} )
+								setAttributes( { smoothScrollDelay: value } )
 							}
 							min={ 100 }
 							max={ 5000 }
+							displayUnit={ false }
 						/>
 					</>
 				) }
-				<hr className="uagb-editor__separator" />
 				<ToggleControl
 					label={ __(
 						'Show Scroll To Top',
@@ -259,116 +266,29 @@ const Settings = ( props ) => {
 					) }
 					checked={ scrollToTop }
 					help={ __(
-						'This will add a Scroll to Top arrow at the bottom of page.',
+						'This will add a scroll to top arrow at the bottom of page.',
 						'ultimate-addons-for-gutenberg'
 					) }
 					onChange={ () =>
 						setAttributes( { scrollToTop: ! scrollToTop } )
 					}
 				/>
-				{ scrollToTop && (
-					<>
-						<p className="uagb-setting-label">
-							{ __(
-								'Icon Color',
-								'ultimate-addons-for-gutenberg'
-							) }
-							<span className="components-base-control__label">
-								<span
-									className="component-color-indicator"
-									style={ {
-										backgroundColor: scrollToTopColor,
-									} }
-								></span>
-							</span>
-						</p>
-						<ColorPalette
-							value={ scrollToTopColor }
-							onChange={ ( colorValue ) =>
-								setAttributes( {
-									scrollToTopColor: colorValue,
-								} )
-							}
-							allowReset
-						/>
-						<p className="uagb-setting-label">
-							{ __(
-								'Background Color',
-								'ultimate-addons-for-gutenberg'
-							) }
-							<span className="components-base-control__label">
-								<span
-									className="component-color-indicator"
-									style={ {
-										backgroundColor: scrollToTopBgColor,
-									} }
-								></span>
-							</span>
-						</p>
-						<ColorPalette
-							value={ scrollToTopBgColor }
-							onChange={ ( colorValue ) =>
-								setAttributes( {
-									scrollToTopBgColor: colorValue,
-								} )
-							}
-							allowReset
-						/>
-					</>
-				) }
-			</PanelBody>
+			</UAGAdvancedPanelBody>
 		);
 	};
 
-	const getContentPanelBody = () => {
+	const getTitle = () => {
 		return (
-			<PanelBody
-				title={ __( 'Content', 'ultimate-addons-for-gutenberg' ) }
+			<UAGAdvancedPanelBody
+				title={ __( 'Title', 'ultimate-addons-for-gutenberg' ) }
 				initialOpen={ false }
 			>
-				<h2>{ __( 'Heading', 'ultimate-addons-for-gutenberg' ) }</h2>
-				<SelectControl
-					label={ __( 'Alignment', 'ultimate-addons-for-gutenberg' ) }
-					value={ headingAlignment }
-					onChange={ ( value ) =>
-						setAttributes( { headingAlignment: value } )
+				<AdvancedPopColorControl
+					label={ __( 'Color', 'ultimate-addons-for-gutenberg' ) }
+					colorValue={ headingColor ? headingColor : '' }
+					onColorChange={ ( value ) =>
+						setAttributes( { headingColor: value } )
 					}
-					options={ [
-						{
-							value: 'left',
-							label: __(
-								'Left',
-								'ultimate-addons-for-gutenberg'
-							),
-						},
-						{
-							value: 'center',
-							label: __(
-								'Center',
-								'ultimate-addons-for-gutenberg'
-							),
-						},
-						{
-							value: 'right',
-							label: __(
-								'Right',
-								'ultimate-addons-for-gutenberg'
-							),
-						},
-					] }
-				/>
-				<RangeControl
-					label={ __(
-						'Bottom Space',
-						'ultimate-addons-for-gutenberg'
-					) }
-					value={ headingBottom }
-					onChange={ ( value ) =>
-						setAttributes( { headingBottom: value } )
-					}
-					min={ 0 }
-					max={ 50 }
-					allowReset
 				/>
 				<TypographyControl
 					label={ __(
@@ -389,9 +309,17 @@ const Settings = ( props ) => {
 						value: headingFontWeight,
 						label: 'headingFontWeight',
 					} }
-					fontSubset={ {
-						value: headingFontSubset,
-						label: 'headingFontSubset',
+					fontStyle={ {
+						value: headingFontStyle,
+						label: 'headingFontStyle',
+					} }
+					transform={ {
+						value: headingTransform,
+						label: 'headingTransform',
+					} }
+					decoration={ {
+						value: headingDecoration,
+						label: 'headingDecoration',
 					} }
 					fontSizeType={ {
 						value: headingFontSizeType,
@@ -426,26 +354,290 @@ const Settings = ( props ) => {
 						label: 'headingLineHeightTablet',
 					} }
 				/>
-				<p className="uagb-setting-label">
-					{ __( 'Heading Color', 'ultimate-addons-for-gutenberg' ) }
-					<span className="components-base-control__label">
-						<span
-							className="component-color-indicator"
-							style={ { backgroundColor: headingColor } }
-						></span>
-					</span>
-				</p>
-				<ColorPalette
-					value={ headingColor }
-					onChange={ ( colorValue ) =>
-						setAttributes( { headingColor: colorValue } )
+				<Range
+					label={ __(
+						'Bottom Spacing',
+						'ultimate-addons-for-gutenberg'
+					) }
+					setAttributes={ setAttributes }
+					value={ headingBottom }
+					onChange={ ( value ) =>
+						setAttributes( { headingBottom: value } )
 					}
-					allowReset
+					min={ 0 }
+					max={ 50 }
+					displayUnit={ false }
 				/>
-				<hr className="uagb-editor__separator" />
-				<h2>
-					{ __( 'Collapsible', 'ultimate-addons-for-gutenberg' ) }
-				</h2>
+			</UAGAdvancedPanelBody>
+		);
+	};
+
+	const getContent = () => {
+		return (
+			<UAGAdvancedPanelBody
+				title={ __( 'Content', 'ultimate-addons-for-gutenberg' ) }
+				initialOpen={ false }
+			>
+				<MultiButtonsControl
+					setAttributes={ setAttributes }
+					label={ __(
+						'Title Alignment',
+						'ultimate-addons-for-gutenberg'
+					) }
+					data={ {
+						value: headingAlignment,
+						label: 'headingAlignment',
+					} }
+					className="uagb-multi-button-alignment-control"
+					options={ [
+						{
+							value: 'left',
+							icon: (
+								<Icon
+									icon={ renderSVG( 'fa fa-align-left' ) }
+								/>
+							),
+							tooltip: __(
+								'Left',
+								'ultimate-addons-for-gutenberg'
+							),
+						},
+						{
+							value: 'center',
+							icon: (
+								<Icon
+									icon={ renderSVG(
+										'fa fa-align-center'
+									) }
+								/>
+							),
+							tooltip: __(
+								'Center',
+								'ultimate-addons-for-gutenberg'
+							),
+						},
+						{
+							value: 'right',
+							icon: (
+								<Icon
+									icon={ renderSVG(
+										'fa fa-align-right'
+									) }
+								/>
+							),
+							tooltip: __(
+								'Right',
+								'ultimate-addons-for-gutenberg'
+							),
+						},
+					] }
+					showIcons={ true }
+				/>
+				<MultiButtonsControl
+					setAttributes={ setAttributes }
+					label={ __(
+						'Alignment',
+						'ultimate-addons-for-gutenberg'
+					) }
+					data={ {
+						value: align,
+						label: 'align',
+					} }
+					className="uagb-multi-button-alignment-control"
+					options={ [
+						{
+							value: 'left',
+							icon: (
+								<Icon
+									icon={ renderSVG( 'fa fa-align-left' ) }
+								/>
+							),
+							tooltip: __(
+								'Left',
+								'ultimate-addons-for-gutenberg'
+							),
+						},
+						{
+							value: 'center',
+							icon: (
+								<Icon
+									icon={ renderSVG(
+										'fa fa-align-center'
+									) }
+								/>
+							),
+							tooltip: __(
+								'Center',
+								'ultimate-addons-for-gutenberg'
+							),
+						},
+						{
+							value: 'right',
+							icon: (
+								<Icon
+									icon={ renderSVG(
+										'fa fa-align-right'
+									) }
+								/>
+							),
+							tooltip: __(
+								'Right',
+								'ultimate-addons-for-gutenberg'
+							),
+						},
+					] }
+					showIcons={ true }
+				/>
+				<ResponsiveSlider
+					label={ __( 'Columns', 'ultimate-addons-for-gutenberg' ) }
+					data={ {
+						desktop: {
+							value: tColumnsDesktop,
+							label: 'tColumnsDesktop',
+						},
+						tablet: {
+							value: tColumnsTablet,
+							label: 'tColumnsTablet',
+						},
+						mobile: {
+							value: tColumnsMobile,
+							label: 'tColumnsMobile',
+						},
+					} }
+					min={ 1 }
+					max={ 10 }
+					displayUnit={ false }
+					setAttributes={ setAttributes }
+				/>
+				<ResponsiveSlider
+					label={ __(
+						'Gap Between Lists',
+						'ultimate-addons-for-gutenberg'
+					) }
+					data={ {
+						desktop: {
+							value: contentPaddingDesktop,
+							label: 'contentPaddingDesktop',
+							unit: {
+								value: contentPaddingTypeDesktop,
+								label: 'contentPaddingTypeDesktop',
+							},
+						},
+						tablet: {
+							value: contentPaddingTablet,
+							label: 'contentPaddingTablet',
+							unit: {
+								value: contentPaddingTypeTablet,
+								label: 'contentPaddingTypeTablet',
+							},
+						},
+						mobile: {
+							value: contentPaddingMobile,
+							label: 'contentPaddingMobile',
+							unit: {
+								value: contentPaddingTypeMobile,
+								label: 'contentPaddingTypeMobile',
+							},
+						},
+					} }
+					min={ 0 }
+					max={ 100 }
+					limitMin={ { 'px': 0, '%': 0 } }
+					limitMax={ { 'px': 1500, '%': 100 } }
+					units={ [
+						{
+							name: __( 'Pixel', 'ultimate-addons-for-gutenberg' ),
+							unitValue: 'px',
+						},
+						{
+							name: __( '%', 'ultimate-addons-for-gutenberg' ),
+							unitValue: '%',
+						},
+					] }
+					setAttributes={ setAttributes }
+				/>
+				<ToggleControl
+					label={ __(
+						'Custom Width',
+						'ultimate-addons-for-gutenberg'
+					) }
+					checked={ customWidth }
+					onChange={ () =>
+						setAttributes( { customWidth: ! customWidth } )
+					}
+					help={ __(
+						"Table's width will be auto if this is kept off.",
+						'ultimate-addons-for-gutenberg'
+					) }
+				/>
+				{ customWidth && (
+					<ResponsiveSlider
+						label={ __( 'Width', 'ultimate-addons-for-gutenberg' ) }
+						data={ {
+							desktop: {
+								value: widthDesktop,
+								label: 'widthDesktop',
+								unit: {
+									value: widthTypeDesktop,
+									label: 'widthTypeDesktop',
+								},
+								min: 0,
+								max: maxDesk,
+							},
+							tablet: {
+								value: widthTablet,
+								label: 'widthTablet',
+								unit: {
+									value: widthTypeTablet,
+									label: 'widthTypeTablet',
+								},
+								min: 0,
+								max: maxTab,
+							},
+							mobile: {
+								value: widthMobile,
+								label: 'widthMobile',
+								unit: {
+									value: widthTypeMobile,
+									label: 'widthTypeMobile',
+								},
+								min: 0,
+								max: maxMob,
+							},
+						} }
+						min={ 0 }
+						max={ 100 }
+						units={ [
+							{
+								name: __(
+									'Pixel',
+									'ultimate-addons-for-gutenberg'
+								),
+								unitValue: 'px',
+							},
+							{
+								name: __(
+									'%',
+									'ultimate-addons-for-gutenberg'
+								),
+								unitValue: '%',
+							},
+						] }
+						setAttributes={ setAttributes }
+					/>
+				) }
+				<ToggleControl
+					label={ __(
+						'Disable Bullet Points',
+						'ultimate-addons-for-gutenberg'
+					) }
+					checked={ disableBullets }
+					onChange={ () =>
+						setAttributes( {
+							disableBullets: ! disableBullets,
+						} )
+					}
+				/>
 				<ToggleControl
 					label={ __(
 						'Make Content Collapsible',
@@ -472,240 +664,119 @@ const Settings = ( props ) => {
 								} )
 							}
 						/>
-						<FontIconPicker { ...iconProps } />
-						<RangeControl
+						<UAGIconPicker
+							label={ __(
+								'Icon',
+								'ultimate-addons-for-gutenberg'
+							) }
+							value={ icon }
+							onChange={ ( value ) =>
+								setAttributes( { icon: value } )
+							}
+						/>
+						<Range
 							label={ __(
 								'Icon Size',
 								'ultimate-addons-for-gutenberg'
 							) }
+							setAttributes={ setAttributes }
 							value={ iconSize }
 							onChange={ ( value ) =>
 								setAttributes( { iconSize: value } )
 							}
 							min={ 0 }
 							max={ 300 }
-							beforeIcon=""
-							allowReset
-						/>
-						<ColorPalette
-							value={ iconColor }
-							onChange={ ( colorValue ) =>
-								setAttributes( { iconColor: colorValue } )
-							}
-							allowReset
+							displayUnit={ false }
 						/>
 					</>
 				) }
-				<hr className="uagb-editor__separator" />
-				<h2>{ __( 'Content', 'ultimate-addons-for-gutenberg' ) }</h2>
-				<ToggleControl
-					label={ __(
-						'Disable Bullet Points',
-						'ultimate-addons-for-gutenberg'
-					) }
-					checked={ disableBullets }
-					onChange={ () =>
-						setAttributes( {
-							disableBullets: ! disableBullets,
-						} )
+			</UAGAdvancedPanelBody>
+		);
+	};
+
+	const getBulletStyle = () => {
+		return (
+			<UAGAdvancedPanelBody
+				title={ __( 'Bullet Points', 'ultimate-addons-for-gutenberg' ) }
+				initialOpen={ false }
+			>
+				<AdvancedPopColorControl
+					label={ __( 'Color', 'ultimate-addons-for-gutenberg' ) }
+					colorValue={ bulletColor ? bulletColor : '' }
+					onColorChange={ ( value ) =>
+						setAttributes( { bulletColor: value } )
 					}
 				/>
-				{ ! disableBullets && (
-					<>
-						<p className="uagb-setting-label">
-							{ __(
-								'Bullet Points Color',
+			</UAGAdvancedPanelBody>
+		);
+	};
+
+	const getIconStyle = () => {
+		return (
+			<UAGAdvancedPanelBody
+				title={ __( 'Icon', 'ultimate-addons-for-gutenberg' ) }
+				initialOpen={ false }
+			>
+				<AdvancedPopColorControl
+					label={ __( 'Color', 'ultimate-addons-for-gutenberg' ) }
+					colorValue={ iconColor ? iconColor : '' }
+					onColorChange={ ( value ) =>
+						setAttributes( { iconColor: value } )
+					}
+				/>
+			</UAGAdvancedPanelBody>
+		);
+	};
+
+	const getContentStyle = () => {
+		return (
+			<UAGAdvancedPanelBody
+				title={ __( 'Content', 'ultimate-addons-for-gutenberg' ) }
+				initialOpen={ false }
+			>
+				<UAGTabsControl
+					tabs={ [
+						{
+							name: 'normal',
+							title: __(
+								'Normal',
+								'ultimate-addons-for-gutenberg'
+							),
+						},
+						{
+							name: 'hover',
+							title: __(
+								'Hover',
+								'ultimate-addons-for-gutenberg'
+							),
+						},
+					] }
+					normal={
+						<AdvancedPopColorControl
+							label={ __(
+								'Color',
 								'ultimate-addons-for-gutenberg'
 							) }
-							<span className="components-base-control__label">
-								<span
-									className="component-color-indicator"
-									style={ {
-										backgroundColor: bulletColor,
-									} }
-								></span>
-							</span>
-						</p>
-						<ColorPalette
-							value={ bulletColor }
-							onChange={ ( colorValue ) =>
-								setAttributes( { bulletColor: colorValue } )
+							colorValue={ linkColor ? linkColor : '' }
+							onColorChange={ ( value ) =>
+								setAttributes( { linkColor: value } )
 							}
-							allowReset
 						/>
-					</>
-				) }
-
-				<ColumnResponsive />
-				{ 'Desktop' === deviceType && (
-					<>
-						<ButtonGroup
-							className="uagb-size-type-field"
-							aria-label={ __( 'Size Type' ) }
-						>
-							<Button
-								key={ 'px' }
-								className="uagb-size-btn"
-								isSmall
-								isPrimary={ contentPaddingTypeDesktop === 'px' }
-								aria-pressed={
-									contentPaddingTypeDesktop === 'px'
-								}
-								onClick={ () =>
-									setAttributes( {
-										contentPaddingTypeDesktop: 'px',
-									} )
-								}
-							>
-								{ 'px' }
-							</Button>
-							<Button
-								key={ '%' }
-								className="uagb-size-btn"
-								isSmall
-								isPrimary={ contentPaddingTypeDesktop === '%' }
-								aria-pressed={
-									contentPaddingTypeDesktop === '%'
-								}
-								onClick={ () =>
-									setAttributes( {
-										contentPaddingTypeDesktop: '%',
-									} )
-								}
-							>
-								{ '%' }
-							</Button>
-						</ButtonGroup>
-						<h2 className="uagb-light-font-weight">
-							{ __( 'Gap Between Lists' ) }
-						</h2>
-						<RangeControl
-							className={ 'uagb-gap-control' }
-							value={ contentPaddingDesktop }
-							onChange={ ( value ) =>
-								setAttributes( {
-									contentPaddingDesktop: value,
-								} )
+					}
+					hover={
+						<AdvancedPopColorControl
+							label={ __(
+								'Color',
+								'ultimate-addons-for-gutenberg'
+							) }
+							colorValue={ linkHoverColor ? linkHoverColor : '' }
+							onColorChange={ ( value ) =>
+								setAttributes( { linkHoverColor: value } )
 							}
-							min={ 0 }
-							max={ 100 }
-							allowReset
 						/>
-					</>
-				) }
-				{ 'Tablet' === deviceType && (
-					<>
-						<ButtonGroup
-							className="uagb-size-type-field"
-							aria-label={ __( 'Size Type' ) }
-						>
-							<Button
-								key={ 'px' }
-								className="uagb-size-btn"
-								isSmall
-								isPrimary={ contentPaddingTypeTablet === 'px' }
-								aria-pressed={
-									contentPaddingTypeTablet === 'px'
-								}
-								onClick={ () =>
-									setAttributes( {
-										contentPaddingTypeTablet: 'px',
-									} )
-								}
-							>
-								{ 'px' }
-							</Button>
-							<Button
-								key={ '%' }
-								className="uagb-size-btn"
-								isSmall
-								isPrimary={ contentPaddingTypeTablet === '%' }
-								aria-pressed={
-									contentPaddingTypeTablet === '%'
-								}
-								onClick={ () =>
-									setAttributes( {
-										contentPaddingTypeTablet: '%',
-									} )
-								}
-							>
-								{ '%' }
-							</Button>
-						</ButtonGroup>
-						<h2 className="uagb-lighter-font-weight">
-							{ __( 'Gap Between Lists' ) }
-						</h2>
-						<RangeControl
-							className={ 'uagb-margin-control' }
-							value={ contentPaddingTablet }
-							onChange={ ( value ) =>
-								setAttributes( {
-									contentPaddingTablet: value,
-								} )
-							}
-							min={ 0 }
-							max={ 100 }
-							allowReset
-						/>
-					</>
-				) }
-				{ 'Mobile' === deviceType && (
-					<>
-						<ButtonGroup
-							className="uagb-size-type-field"
-							aria-label={ __( 'Size Type' ) }
-						>
-							<Button
-								key={ 'px' }
-								className="uagb-size-btn"
-								isSmall
-								isPrimary={ contentPaddingTypeMobile === 'px' }
-								aria-pressed={
-									contentPaddingTypeMobile === 'px'
-								}
-								onClick={ () =>
-									setAttributes( {
-										contentPaddingTypeMobile: 'px',
-									} )
-								}
-							>
-								{ 'px' }
-							</Button>
-							<Button
-								key={ '%' }
-								className="uagb-size-btn"
-								isSmall
-								isPrimary={ contentPaddingTypeMobile === '%' }
-								aria-pressed={
-									contentPaddingTypeMobile === '%'
-								}
-								onClick={ () =>
-									setAttributes( {
-										contentPaddingTypeMobile: '%',
-									} )
-								}
-							>
-								{ '%' }
-							</Button>
-						</ButtonGroup>
-						<h2 className="uagb-light-font-weight">
-							{ __( 'Gap Between Lists' ) }
-						</h2>
-						<RangeControl
-							className={ 'uagb-margin-control' }
-							value={ contentPaddingMobile }
-							onChange={ ( value ) =>
-								setAttributes( {
-									contentPaddingMobile: value,
-								} )
-							}
-							min={ 0 }
-							max={ 100 }
-							allowReset
-						/>
-					</>
-				) }
-
+					}
+					disableBottomSeparator={ false }
+				/>
 				<TypographyControl
 					label={ __(
 						'Typography',
@@ -725,9 +796,17 @@ const Settings = ( props ) => {
 						value: fontWeight,
 						label: 'fontWeight',
 					} }
-					fontSubset={ {
-						value: fontSubset,
-						label: 'fontSubset',
+					fontStyle={ {
+						value: fontStyle,
+						label: 'fontStyle',
+					} }
+					transform={ {
+						value: fontTransform,
+						label: 'fontTransform',
+					} }
+					decoration={ {
+						value: fontDecoration,
+						label: 'fontDecoration',
 					} }
 					fontSizeType={ {
 						value: fontSizeType,
@@ -759,785 +838,294 @@ const Settings = ( props ) => {
 						label: 'lineHeightTablet',
 					} }
 				/>
-				<p className="uagb-setting-label">
-					{ __( 'Content Color', 'ultimate-addons-for-gutenberg' ) }
-					<span className="components-base-control__label">
-						<span
-							className="component-color-indicator"
-							style={ { backgroundColor: linkColor } }
-						></span>
-					</span>
-				</p>
-				<ColorPalette
-					value={ linkColor }
-					onChange={ ( colorValue ) =>
-						setAttributes( { linkColor: colorValue } )
-					}
-					allowReset
-				/>
-				<p className="uagb-setting-label">
-					{ __(
-						'Content Hover Color',
-						'ultimate-addons-for-gutenberg'
-					) }
-					<span className="components-base-control__label">
-						<span
-							className="component-color-indicator"
-							style={ { backgroundColor: linkHoverColor } }
-						></span>
-					</span>
-				</p>
-				<ColorPalette
-					value={ linkHoverColor }
-					onChange={ ( colorValue ) =>
-						setAttributes( { linkHoverColor: colorValue } )
-					}
-					allowReset
-				/>
-			</PanelBody>
+			</UAGAdvancedPanelBody>
 		);
 	};
 
-	const getStylePanelBody = () => {
+	const getScrollToTop = () => {
 		return (
-			<PanelBody
-				title={ __( 'Style', 'ultimate-addons-for-gutenberg' ) }
+			<UAGAdvancedPanelBody
+				title={ __( 'Scroll To Top', 'ultimate-addons-for-gutenberg' ) }
 				initialOpen={ false }
 			>
-				<h2>{ __( 'Background', 'ultimate-addons-for-gutenberg' ) }</h2>
-				<p className="uagb-setting-label">
-					{ __(
-						'Background Color',
-						'ultimate-addons-for-gutenberg'
-					) }
-					<span className="components-base-control__label">
-						<span
-							className="component-color-indicator"
-							style={ { backgroundColor } }
-						></span>
-					</span>
-				</p>
-				<ColorPalette
-					value={ backgroundColor }
-					onChange={ ( colorValue ) =>
-						setAttributes( { backgroundColor: colorValue } )
-					}
-					allowReset
-				/>
-				<hr className="uagb-editor__separator" />
-				<ToggleControl
-					label={ __(
-						'Custom Width',
-						'ultimate-addons-for-gutenberg'
-					) }
-					checked={ customWidth }
-					onChange={ () =>
-						setAttributes( { customWidth: ! customWidth } )
-					}
-					help={ __(
-						"Table's width will be auto if this is kept off.",
-						'ultimate-addons-for-gutenberg'
-					) }
-				/>
-				{ customWidth && <ColumnResponsive /> }
-				{ 'Desktop' === deviceType && customWidth && (
-					<>
-						<ButtonGroup
-							className="uagb-size-type-field"
-							aria-label={ __( 'Size Type' ) }
-						>
-							<Button
-								key={ 'px' }
-								className="uagb-size-btn"
-								isSmall
-								isPrimary={ widthTypeDesktop === 'px' }
-								aria-pressed={ widthTypeDesktop === 'px' }
-								onClick={ () =>
-									setAttributes( {
-										widthTypeDesktop: 'px',
-									} )
-								}
-							>
-								{ 'px' }
-							</Button>
-							<Button
-								key={ '%' }
-								className="uagb-size-btn"
-								isSmall
-								isPrimary={ widthTypeDesktop === '%' }
-								aria-pressed={ widthTypeDesktop === '%' }
-								onClick={ () =>
-									setAttributes( {
-										widthTypeDesktop: '%',
-									} )
-								}
-							>
-								{ '%' }
-							</Button>
-						</ButtonGroup>
-						<RangeControl
-							label={ __( 'Width' ) }
-							value={ widthDesktop }
-							onChange={ ( value ) =>
-								setAttributes( { widthDesktop: value } )
-							}
-							min={ 0 }
-							max={ '%' == widthTypeDesktop ? 100 : 1000 }
-							beforeIcon=""
-							allowReset
-						/>
-					</>
-				) }
-				{ 'Tablet' === deviceType && customWidth && (
-					<>
-						<ButtonGroup
-							className="uagb-size-type-field"
-							aria-label={ __( 'Size Type' ) }
-						>
-							<Button
-								key={ 'px' }
-								className="uagb-size-btn"
-								isSmall
-								isPrimary={ widthTypeTablet === 'px' }
-								aria-pressed={ widthTypeTablet === 'px' }
-								onClick={ () =>
-									setAttributes( {
-										widthTypeTablet: 'px',
-									} )
-								}
-							>
-								{ 'px' }
-							</Button>
-							<Button
-								key={ '%' }
-								className="uagb-size-btn"
-								isSmall
-								isPrimary={ widthTypeTablet === '%' }
-								aria-pressed={ widthTypeTablet === '%' }
-								onClick={ () =>
-									setAttributes( {
-										widthTypeTablet: '%',
-									} )
-								}
-							>
-								{ '%' }
-							</Button>
-						</ButtonGroup>
-						<RangeControl
-							label={ __( 'Width' ) }
-							value={ widthTablet }
-							onChange={ ( value ) =>
-								setAttributes( { widthTablet: value } )
-							}
-							min={ 0 }
-							max={ '%' == widthTypeTablet ? 100 : 1000 }
-							beforeIcon=""
-							allowReset
-						/>
-					</>
-				) }
-				{ 'Mobile' === deviceType && customWidth && (
-					<>
-						<ButtonGroup
-							className="uagb-size-type-field"
-							aria-label={ __( 'Size Type' ) }
-						>
-							<Button
-								key={ 'px' }
-								className="uagb-size-btn"
-								isSmall
-								isPrimary={ widthTypeMobile === 'px' }
-								aria-pressed={ widthTypeMobile === 'px' }
-								onClick={ () =>
-									setAttributes( {
-										widthTypeMobile: 'px',
-									} )
-								}
-							>
-								{ 'px' }
-							</Button>
-							<Button
-								key={ '%' }
-								className="uagb-size-btn"
-								isSmall
-								isPrimary={ widthTypeMobile === '%' }
-								aria-pressed={ widthTypeMobile === '%' }
-								onClick={ () =>
-									setAttributes( {
-										widthTypeMobile: '%',
-									} )
-								}
-							>
-								{ '%' }
-							</Button>
-						</ButtonGroup>
-						<RangeControl
-							label={ __( 'Width' ) }
-							value={ widthMobile }
-							onChange={ ( value ) =>
-								setAttributes( { widthMobile: value } )
-							}
-							min={ 0 }
-							max={ '%' == widthTypeMobile ? 100 : 1000 }
-							beforeIcon=""
-							allowReset
-						/>
-					</>
-				) }
-				<ColumnResponsive />
-				{ 'Desktop' === deviceType && (
-					<>
-						<RangeControl
-							label={ __( 'Columns' ) }
-							value={ tColumnsDesktop }
-							onChange={ ( value ) =>
-								setAttributes( { tColumnsDesktop: value } )
-							}
-							min={ 1 }
-							max={ 10 }
-						/>
-					</>
-				) }
-				{ 'Tablet' === deviceType && (
-					<>
-						<RangeControl
-							label={ __( 'Columns' ) }
-							value={ tColumnsTablet }
-							onChange={ ( value ) =>
-								setAttributes( { tColumnsTablet: value } )
-							}
-							min={ 1 }
-							max={ 10 }
-						/>
-					</>
-				) }
-				{ 'Mobile' === deviceType && (
-					<>
-						<RangeControl
-							label={ __( 'Columns' ) }
-							value={ tColumnsMobile }
-							onChange={ ( value ) =>
-								setAttributes( { tColumnsMobile: value } )
-							}
-							min={ 1 }
-							max={ 10 }
-						/>
-					</>
-				) }
-				<hr className="uagb-editor__separator" />
-				<ColumnResponsive />
-				{ 'Desktop' === deviceType && (
-					<>
-						<ButtonGroup
-							className="uagb-size-type-field"
-							aria-label={ __( 'Size Type' ) }
-						>
-							<Button
-								key={ 'px' }
-								className="uagb-size-btn"
-								isSmall
-								isPrimary={ paddingTypeDesktop === 'px' }
-								aria-pressed={ paddingTypeDesktop === 'px' }
-								onClick={ () =>
-									setAttributes( {
-										paddingTypeDesktop: 'px',
-									} )
-								}
-							>
-								{ 'px' }
-							</Button>
-							<Button
-								key={ '%' }
-								className="uagb-size-btn"
-								isSmall
-								isPrimary={ paddingTypeDesktop === '%' }
-								aria-pressed={ paddingTypeDesktop === '%' }
-								onClick={ () =>
-									setAttributes( {
-										paddingTypeDesktop: '%',
-									} )
-								}
-							>
-								{ '%' }
-							</Button>
-						</ButtonGroup>
-						<h2>{ __( 'Padding' ) }</h2>
-						<RangeControl
-							label={ UAGB_Block_Icons.vertical_spacing }
-							className={ 'uagb-margin-control' }
-							value={ vPaddingDesktop }
-							onChange={ ( value ) =>
-								setAttributes( { vPaddingDesktop: value } )
-							}
-							min={ 0 }
-							max={ 100 }
-							allowReset
-						/>
-						<RangeControl
-							label={ UAGB_Block_Icons.horizontal_spacing }
-							className={ 'uagb-margin-control' }
-							value={ hPaddingDesktop }
-							onChange={ ( value ) =>
-								setAttributes( { hPaddingDesktop: value } )
-							}
-							min={ 0 }
-							max={ 100 }
-							allowReset
-						/>
-					</>
-				) }
-				{ 'Tablet' === deviceType && (
-					<>
-						<ButtonGroup
-							className="uagb-size-type-field"
-							aria-label={ __( 'Size Type' ) }
-						>
-							<Button
-								key={ 'px' }
-								className="uagb-size-btn"
-								isSmall
-								isPrimary={ paddingTypeTablet === 'px' }
-								aria-pressed={ paddingTypeTablet === 'px' }
-								onClick={ () =>
-									setAttributes( {
-										paddingTypeTablet: 'px',
-									} )
-								}
-							>
-								{ 'px' }
-							</Button>
-							<Button
-								key={ '%' }
-								className="uagb-size-btn"
-								isSmall
-								isPrimary={ paddingTypeTablet === '%' }
-								aria-pressed={ paddingTypeTablet === '%' }
-								onClick={ () =>
-									setAttributes( {
-										paddingTypeTablet: '%',
-									} )
-								}
-							>
-								{ '%' }
-							</Button>
-						</ButtonGroup>
-						<h2>{ __( 'Padding' ) }</h2>
-						<RangeControl
-							label={ UAGB_Block_Icons.vertical_spacing }
-							className={ 'uagb-margin-control' }
-							value={ vPaddingTablet }
-							onChange={ ( value ) =>
-								setAttributes( { vPaddingTablet: value } )
-							}
-							min={ 0 }
-							max={ 100 }
-							allowReset
-						/>
-						<RangeControl
-							label={ UAGB_Block_Icons.horizontal_spacing }
-							className={ 'uagb-margin-control' }
-							value={ hPaddingTablet }
-							onChange={ ( value ) =>
-								setAttributes( { hPaddingTablet: value } )
-							}
-							min={ 0 }
-							max={ 100 }
-							allowReset
-						/>
-					</>
-				) }
-				{ 'Mobile' === deviceType && (
-					<>
-						<ButtonGroup
-							className="uagb-size-type-field"
-							aria-label={ __( 'Size Type' ) }
-						>
-							<Button
-								key={ 'px' }
-								className="uagb-size-btn"
-								isSmall
-								isPrimary={ paddingTypeMobile === 'px' }
-								aria-pressed={ paddingTypeMobile === 'px' }
-								onClick={ () =>
-									setAttributes( {
-										paddingTypeMobile: 'px',
-									} )
-								}
-							>
-								{ 'px' }
-							</Button>
-							<Button
-								key={ '%' }
-								className="uagb-size-btn"
-								isSmall
-								isPrimary={ paddingTypeMobile === '%' }
-								aria-pressed={ paddingTypeMobile === '%' }
-								onClick={ () =>
-									setAttributes( {
-										paddingTypeMobile: '%',
-									} )
-								}
-							>
-								{ '%' }
-							</Button>
-						</ButtonGroup>
-						<h2>{ __( 'Padding' ) }</h2>
-						<RangeControl
-							label={ UAGB_Block_Icons.vertical_spacing }
-							className={ 'uagb-margin-control' }
-							value={ vPaddingMobile }
-							onChange={ ( value ) =>
-								setAttributes( { vPaddingMobile: value } )
-							}
-							min={ 0 }
-							max={ 100 }
-							allowReset
-						/>
-						<RangeControl
-							label={ UAGB_Block_Icons.horizontal_spacing }
-							className={ 'uagb-margin-control' }
-							value={ hPaddingMobile }
-							onChange={ ( value ) =>
-								setAttributes( { hPaddingMobile: value } )
-							}
-							min={ 0 }
-							max={ 100 }
-							allowReset
-						/>
-					</>
-				) }
-				<ColumnResponsive />
-				{ 'Desktop' === deviceType && (
-					<>
-						<ButtonGroup
-							className="uagb-size-type-field"
-							aria-label={ __( 'Size Type' ) }
-						>
-							<Button
-								key={ 'px' }
-								className="uagb-size-btn"
-								isSmall
-								isPrimary={ marginTypeDesktop === 'px' }
-								aria-pressed={ marginTypeDesktop === 'px' }
-								onClick={ () =>
-									setAttributes( {
-										marginTypeDesktop: 'px',
-									} )
-								}
-							>
-								{ 'px' }
-							</Button>
-							<Button
-								key={ '%' }
-								className="uagb-size-btn"
-								isSmall
-								isPrimary={ marginTypeDesktop === '%' }
-								aria-pressed={ marginTypeDesktop === '%' }
-								onClick={ () =>
-									setAttributes( {
-										marginTypeDesktop: '%',
-									} )
-								}
-							>
-								{ '%' }
-							</Button>
-						</ButtonGroup>
-						<h2>{ __( 'List Margin' ) }</h2>
-						<RangeControl
-							label={ UAGB_Block_Icons.vertical_spacing }
-							className={ 'uagb-margin-control' }
-							value={ vMarginDesktop }
-							onChange={ ( value ) =>
-								setAttributes( { vMarginDesktop: value } )
-							}
-							min={ 0 }
-							max={ 100 }
-							allowReset
-						/>
-						<RangeControl
-							label={ UAGB_Block_Icons.horizontal_spacing }
-							className={ 'uagb-margin-control' }
-							value={ hMarginDesktop }
-							onChange={ ( value ) =>
-								setAttributes( { hMarginDesktop: value } )
-							}
-							min={ 0 }
-							max={ 100 }
-							allowReset
-						/>
-					</>
-				) }
-				{ 'Tablet' === deviceType && (
-					<>
-						<ButtonGroup
-							className="uagb-size-type-field"
-							aria-label={ __( 'Size Type' ) }
-						>
-							<Button
-								key={ 'px' }
-								className="uagb-size-btn"
-								isSmall
-								isPrimary={ marginTypeTablet === 'px' }
-								aria-pressed={ marginTypeTablet === 'px' }
-								onClick={ () =>
-									setAttributes( {
-										marginTypeTablet: 'px',
-									} )
-								}
-							>
-								{ 'px' }
-							</Button>
-							<Button
-								key={ '%' }
-								className="uagb-size-btn"
-								isSmall
-								isPrimary={ marginTypeTablet === '%' }
-								aria-pressed={ marginTypeTablet === '%' }
-								onClick={ () =>
-									setAttributes( {
-										marginTypeTablet: '%',
-									} )
-								}
-							>
-								{ '%' }
-							</Button>
-						</ButtonGroup>
-						<h2>{ __( 'List Margin' ) }</h2>
-						<RangeControl
-							label={ UAGB_Block_Icons.vertical_spacing }
-							className={ 'uagb-margin-control' }
-							value={ vMarginTablet }
-							onChange={ ( value ) =>
-								setAttributes( { vMarginTablet: value } )
-							}
-							min={ 0 }
-							max={ 100 }
-							allowReset
-						/>
-						<RangeControl
-							label={ UAGB_Block_Icons.horizontal_spacing }
-							className={ 'uagb-margin-control' }
-							value={ hMarginTablet }
-							onChange={ ( value ) =>
-								setAttributes( { hMarginTablet: value } )
-							}
-							min={ 0 }
-							max={ 100 }
-							allowReset
-						/>
-					</>
-				) }
-				{ 'Mobile' === deviceType && (
-					<>
-						<ButtonGroup
-							className="uagb-size-type-field"
-							aria-label={ __( 'Size Type' ) }
-						>
-							<Button
-								key={ 'px' }
-								className="uagb-size-btn"
-								isSmall
-								isPrimary={ marginTypeMobile === 'px' }
-								aria-pressed={ marginTypeMobile === 'px' }
-								onClick={ () =>
-									setAttributes( {
-										marginTypeMobile: 'px',
-									} )
-								}
-							>
-								{ 'px' }
-							</Button>
-							<Button
-								key={ '%' }
-								className="uagb-size-btn"
-								isSmall
-								isPrimary={ marginTypeMobile === '%' }
-								aria-pressed={ marginTypeMobile === '%' }
-								onClick={ () =>
-									setAttributes( {
-										marginTypeMobile: '%',
-									} )
-								}
-							>
-								{ '%' }
-							</Button>
-						</ButtonGroup>
-						<h2>{ __( 'List Margin' ) }</h2>
-						<RangeControl
-							label={ UAGB_Block_Icons.vertical_spacing }
-							className={ 'uagb-margin-control' }
-							value={ vMarginMobile }
-							onChange={ ( value ) =>
-								setAttributes( { vMarginMobile: value } )
-							}
-							min={ 0 }
-							max={ 100 }
-							allowReset
-						/>
-						<RangeControl
-							label={ UAGB_Block_Icons.horizontal_spacing }
-							className={ 'uagb-margin-control' }
-							value={ hMarginMobile }
-							onChange={ ( value ) =>
-								setAttributes( { hMarginMobile: value } )
-							}
-							min={ 0 }
-							max={ 100 }
-							allowReset
-						/>
-					</>
-				) }
-
-				<hr className="uagb-editor__separator" />
-				<h2>{ __( 'Border', 'ultimate-addons-for-gutenberg' ) }</h2>
-				<SelectControl
-					label={ __(
-						'Border Style',
-						'ultimate-addons-for-gutenberg'
-					) }
-					value={ borderStyle }
-					onChange={ ( value ) =>
-						setAttributes( { borderStyle: value } )
-					}
-					options={ [
-						{
-							value: 'none',
-							label: __(
-								'None',
-								'ultimate-addons-for-gutenberg'
-							),
-						},
-						{
-							value: 'solid',
-							label: __(
-								'Solid',
-								'ultimate-addons-for-gutenberg'
-							),
-						},
-						{
-							value: 'dotted',
-							label: __(
-								'Dotted',
-								'ultimate-addons-for-gutenberg'
-							),
-						},
-						{
-							value: 'dashed',
-							label: __(
-								'Dashed',
-								'ultimate-addons-for-gutenberg'
-							),
-						},
-						{
-							value: 'double',
-							label: __(
-								'Double',
-								'ultimate-addons-for-gutenberg'
-							),
-						},
-						{
-							value: 'groove',
-							label: __(
-								'Groove',
-								'ultimate-addons-for-gutenberg'
-							),
-						},
-						{
-							value: 'inset',
-							label: __(
-								'Inset',
-								'ultimate-addons-for-gutenberg'
-							),
-						},
-						{
-							value: 'outset',
-							label: __(
-								'Outset',
-								'ultimate-addons-for-gutenberg'
-							),
-						},
-						{
-							value: 'ridge',
-							label: __(
-								'Ridge',
-								'ultimate-addons-for-gutenberg'
-							),
-						},
-					] }
-				/>
-				{ 'none' != borderStyle && (
-					<RangeControl
+				<>
+					<AdvancedPopColorControl
 						label={ __(
-							'Border Width',
+							'Icon Color',
 							'ultimate-addons-for-gutenberg'
 						) }
-						value={ borderWidth }
-						onChange={ ( value ) =>
-							setAttributes( { borderWidth: value } )
+						colorValue={ scrollToTopColor ? scrollToTopColor : '' }
+						onColorChange={ ( value ) =>
+							setAttributes( { scrollToTopColor: value } )
 						}
-						min={ 0 }
-						max={ 50 }
-						allowReset
 					/>
-				) }
-				<RangeControl
-					label={ __(
-						'Border Radius',
-						'ultimate-addons-for-gutenberg'
-					) }
-					value={ borderRadius }
-					onChange={ ( value ) =>
-						setAttributes( { borderRadius: value } )
+					<AdvancedPopColorControl
+						label={ __(
+							'Background Color',
+							'ultimate-addons-for-gutenberg'
+						) }
+						colorValue={
+							scrollToTopBgColor ? scrollToTopBgColor : ''
+						}
+						onColorChange={ ( value ) =>
+							setAttributes( { scrollToTopBgColor: value } )
+						}
+					/>
+				</>
+			</UAGAdvancedPanelBody>
+		);
+	};
+
+	const maxDesk = '%' === widthTypeDesktop ? 100 : 1000;
+	const maxTab = '%' === widthTypeTablet ? 100 : 1000;
+	const maxMob = '%' === widthTypeMobile ? 100 : 1000;
+
+	const getBackground = () => {
+		return (
+			<UAGAdvancedPanelBody
+				title={ __( 'Background', 'ultimate-addons-for-gutenberg' ) }
+				initialOpen={ false }
+			>
+				<AdvancedPopColorControl
+					label={ __( 'Color', 'ultimate-addons-for-gutenberg' ) }
+					colorValue={ backgroundColor ? backgroundColor : '' }
+					onColorChange={ ( value ) =>
+						setAttributes( { backgroundColor: value } )
 					}
-					min={ 0 }
-					max={ 1000 }
-					allowReset
 				/>
-				{ 'none' != borderStyle && (
-					<>
-						<p className="uagb-setting-label">
-							{ __(
-								'Border Color',
-								'ultimate-addons-for-gutenberg'
-							) }
-							<span className="components-base-control__label">
-								<span
-									className="component-color-indicator"
-									style={ {
-										backgroundColor: borderColor,
-									} }
-								></span>
-							</span>
-						</p>
-						<ColorPalette
-							value={ borderColor }
-							onChange={ ( colorValue ) =>
-								setAttributes( { borderColor: colorValue } )
-							}
-							allowReset
-						/>
-					</>
-				) }
-			</PanelBody>
+			</UAGAdvancedPanelBody>
+		);
+	};
+
+	const getBorder = () => {
+		return (
+			<UAGAdvancedPanelBody
+				title={ __( 'Border', 'ultimate-addons-for-gutenberg' ) }
+				initialOpen={ false }
+			>
+				<Border
+					setAttributes={ setAttributes }
+					borderStyle={ {
+						value: borderStyle,
+						label: 'borderStyle',
+						title: __( 'Style', 'ultimate-addons-for-gutenberg' ),
+					} }
+					borderWidth={ {
+						value: borderWidth,
+						label: 'borderWidth',
+						title: __( 'Width', 'ultimate-addons-for-gutenberg' ),
+					} }
+					borderRadius={ {
+						value: borderRadius,
+						label: 'borderRadius',
+						title: __( 'Radius', 'ultimate-addons-for-gutenberg' ),
+					} }
+					borderColor={ {
+						value: borderColor,
+						label: 'borderColor',
+						title: __( 'Color', 'ultimate-addons-for-gutenberg' ),
+					} }
+					borderHoverColor={ {
+						value: borderHoverColor,
+						label: 'borderHoverColor',
+						title: __(
+							'Hover Color',
+							'ultimate-addons-for-gutenberg'
+						),
+					} }
+					disableBottomSeparator={ true }
+				/>
+			</UAGAdvancedPanelBody>
+		);
+	};
+
+	const getSpacing = () => {
+		return (
+			<UAGAdvancedPanelBody
+				title={ __( 'Spacing', 'ultimate-addons-for-gutenberg' ) }
+				initialOpen={ false }
+			>
+				<SpacingControl
+					{ ...props }
+					label={ __( 'Padding', 'ultimate-addons-for-gutenberg' ) }
+					valueTop={ {
+						value: topPadding,
+						label: 'topPadding',
+					} }
+					valueRight={ {
+						value: rightPadding,
+						label: 'rightPadding',
+					} }
+					valueBottom={ {
+						value: bottomPadding,
+						label: 'bottomPadding',
+					} }
+					valueLeft={ {
+						value: leftPadding,
+						label: 'leftPadding',
+					} }
+					valueTopTablet={ {
+						value: topPaddingTablet,
+						label: 'topPaddingTablet',
+					} }
+					valueRightTablet={ {
+						value: rightPaddingTablet,
+						label: 'rightPaddingTablet',
+					} }
+					valueBottomTablet={ {
+						value: bottomPaddingTablet,
+						label: 'bottomPaddingTablet',
+					} }
+					valueLeftTablet={ {
+						value: leftPaddingTablet,
+						label: 'leftPaddingTablet',
+					} }
+					valueTopMobile={ {
+						value: topPaddingMobile,
+						label: 'topPaddingMobile',
+					} }
+					valueRightMobile={ {
+						value: rightPaddingMobile,
+						label: 'rightPaddingMobile',
+					} }
+					valueBottomMobile={ {
+						value: bottomPaddingMobile,
+						label: 'bottomPaddingMobile',
+					} }
+					valueLeftMobile={ {
+						value: leftPaddingMobile,
+						label: 'leftPaddingMobile',
+					} }
+					unit={ {
+						value: paddingTypeDesktop,
+						label: 'paddingTypeDesktop',
+					} }
+					mUnit={ {
+						value: paddingTypeMobile,
+						label: 'paddingTypeMobile',
+					} }
+					tUnit={ {
+						value: paddingTypeTablet,
+						label: 'paddingTypeTablet',
+					} }
+					deviceType={ deviceType }
+					attributes={ attributes }
+					setAttributes={ setAttributes }
+					link={ {
+						value: paddingLink,
+						label: 'paddingLink',
+					} }
+				/>
+				<SpacingControl
+					{ ...props }
+					label={ __( 'Margin', 'ultimate-addons-for-gutenberg' ) }
+					valueTop={ {
+						value: topMargin,
+						label: 'topMargin',
+					} }
+					valueRight={ {
+						value: rightMargin,
+						label: 'rightMargin',
+					} }
+					valueBottom={ {
+						value: bottomMargin,
+						label: 'bottomMargin',
+					} }
+					valueLeft={ {
+						value: leftMargin,
+						label: 'leftMargin',
+					} }
+					valueTopTablet={ {
+						value: topMarginTablet,
+						label: 'topMarginTablet',
+					} }
+					valueRightTablet={ {
+						value: rightMarginTablet,
+						label: 'rightMarginTablet',
+					} }
+					valueBottomTablet={ {
+						value: bottomMarginTablet,
+						label: 'bottomMarginTablet',
+					} }
+					valueLeftTablet={ {
+						value: leftMarginTablet,
+						label: 'leftMarginTablet',
+					} }
+					valueTopMobile={ {
+						value: topMarginMobile,
+						label: 'topMarginMobile',
+					} }
+					valueRightMobile={ {
+						value: rightMarginMobile,
+						label: 'rightMarginMobile',
+					} }
+					valueBottomMobile={ {
+						value: bottomMarginMobile,
+						label: 'bottomMarginMobile',
+					} }
+					valueLeftMobile={ {
+						value: leftMarginMobile,
+						label: 'leftMarginMobile',
+					} }
+					unit={ {
+						value: marginTypeDesktop,
+						label: 'marginTypeDesktop',
+					} }
+					mUnit={ {
+						value: marginTypeMobile,
+						label: 'marginTypeMobile',
+					} }
+					tUnit={ {
+						value: marginTypeTablet,
+						label: 'marginTypeTablet',
+					} }
+					deviceType={ deviceType }
+					attributes={ attributes }
+					setAttributes={ setAttributes }
+					link={ {
+						value: marginLink,
+						label: 'marginLink',
+					} }
+				/>
+			</UAGAdvancedPanelBody>
 		);
 	};
 
 	return (
 		<Suspense fallback={ lazyLoader() }>
-			<BlockControls>
-				<BlockAlignmentToolbar
-					value={ align }
-					onChange={ ( value ) => {
-						setAttributes( { align: value } );
-					} }
-					controls={ [ 'left', 'center', 'right' ] }
-				/>
-			</BlockControls>
+			{ ! customWidth && (
+				<BlockControls>
+					<AlignmentToolbar
+						value={ align }
+						onChange={ ( value ) => {
+							setAttributes( { align: value } );
+						} }
+						controls={ [ 'left', 'center', 'right' ] }
+					/>
+				</BlockControls>
+			)}
 			<InspectorControls>
-				{ getGeneralPanelBody() }
-				{ getScrollPanelBody() }
-				{ getContentPanelBody() }
-				{ getStylePanelBody() }
+				<InspectorTabs>
+					<InspectorTab { ...UAGTabs.general }>
+						{ getGeneralPanelBody() }
+						{ getScrollPanelBody() }
+						{ getContent() }
+					</InspectorTab>
+					<InspectorTab { ...UAGTabs.style }>
+						{ getTitle() }
+						{ getContentStyle() }
+						{ ! disableBullets && getBulletStyle() }
+						{ makeCollapsible && getIconStyle() }
+						{ scrollToTop && getScrollToTop() }
+						{ getBackground() }
+						{ getBorder() }
+						{ getSpacing() }
+					</InspectorTab>
+					<InspectorTab
+						{ ...UAGTabs.advance }
+						parentProps={ props }
+					></InspectorTab>
+				</InspectorTabs>
 			</InspectorControls>
 			{ loadGFonts }
 			{ headingloadGFonts }

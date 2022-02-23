@@ -1,6 +1,6 @@
 import classnames from 'classnames';
 
-import renderSVG from '@Controls/renderIcon';
+import renderSVG from '@Controls/deprecatedRenderIcon';
 
 const CTA = ( props ) => {
 	const { attributes, setAttributes } = props;
@@ -27,7 +27,7 @@ const CTA = ( props ) => {
 	}
 
 	let link = '/';
-	if ( setAttributes == 'not_set' ) {
+	if ( setAttributes === 'not_set' ) {
 		link = attributes.ctaLink;
 	}
 	return (

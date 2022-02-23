@@ -1,7 +1,5 @@
 import classnames from 'classnames';
 
-// Import css for timeline.
-import contentTimelineStyle from '.././inline-styles';
 import ContentTmClasses from '.././classes';
 import AlignClass from '.././align-classes';
 import DayAlignClass from '.././day-align-classes';
@@ -12,7 +10,7 @@ import CtaLink from './components/CtaLink';
 import Author from './components/Author';
 import PostDate from './components/PostDate';
 import Icon from './components/Icon';
-
+import { useDeviceType } from '@Controls/getPreviewType';
 import { __ } from '@wordpress/i18n';
 import { Placeholder, Spinner } from '@wordpress/components';
 import React, { useLayoutEffect } from 'react';
@@ -28,25 +26,17 @@ const Render = ( props ) => {
 	}, [] );
 
 	props = props.parentProps;
-
-	const { attributes, className, deviceType, latestPosts } = props;
+	const deviceType = useDeviceType();
+	const { attributes, className, latestPosts } = props;
 
 	const {
 		displayPostLink,
 		timelinAlignment,
 		postsToShow,
-		contentPadding,
 	} = attributes;
 
 	/* Render output at backend */
 	const getContent = () => {
-		// Add CSS.
-		const element = document.getElementById(
-			'uagb-timeline-style-' + props.clientId
-		);
-		if ( null != element && 'undefined' !== typeof element ) {
-			element.innerHTML = contentTimelineStyle( props );
-		}
 
 		const hasPosts = Array.isArray( latestPosts ) && latestPosts.length;
 
@@ -78,9 +68,9 @@ const Render = ( props ) => {
 		let displayInnerDate = false;
 
 		return (
-			<div className="uagb-timeline__days">
+			<>
 				{ displayPosts.map( ( post, index ) => {
-					if ( timelinAlignment == 'center' ) {
+					if ( timelinAlignment === 'center' ) {
 						displayInnerDate = true;
 						contentAlignClass = AlignClass(
 							props.attributes,
@@ -94,80 +84,62 @@ const Render = ( props ) => {
 
 					return (
 						<article
-							className="uagb-timeline__field uagb-timeline__field-wrap"
+							className={ classnames( 'uagb-timeline__field ', contentAlignClass ) }
 							key={ index }
 						>
-							<div className={ contentAlignClass }>
-								{ <Icon attributes={ attributes } /> }
+							{ <Icon attributes={ attributes } /> }
+							<div className={ classnames( dayAlignClass, 'uagb-timeline__events-inner-new' ) }>
+								<PostDate
+									post={ post }
+									attributes={ attributes }
+									dateClass="uagb-timeline__date-hide uagb-timeline__inner-date-new"
+								/>
+								{
+									<FeaturedImage
+										post={ post }
+										attributes={ attributes }
+									/>
+								}
+									{
+										<Title
+											post={ post }
+											attributes={ attributes }
+										/>
+									}
+									{
+										<Author
+											post={ post }
+											attributes={ attributes }
+										/>
+									}
+									{
+										<Excerpt
+											post={ post }
+											attributes={ attributes }
+										/>
+									}
+									{
+										<CtaLink
+											post={ post }
+											attributes={ attributes }
+										/>
+									}
 
-								<div className={ dayAlignClass }>
-									<div className="uagb-timeline__events-inner-new">
-										<div className="uagb-timeline__date-hide uagb-timeline__date-inner">
-											{
-												<PostDate
-													post={ post }
-													attributes={ attributes }
-													dateClass="uagb-timeline__inner-date-new"
-												/>
-											}
-										</div>
-										{
-											<FeaturedImage
-												post={ post }
-												attributes={ attributes }
-											/>
-										}
-										<div
-											className="uagb-content"
-											style={ {
-												padding: contentPadding + 'px',
-											} }
-										>
-											{
-												<Title
-													post={ post }
-													attributes={ attributes }
-												/>
-											}
-											{
-												<Author
-													post={ post }
-													attributes={ attributes }
-												/>
-											}
-											{
-												<Excerpt
-													post={ post }
-													attributes={ attributes }
-												/>
-											}
-											{
-												<CtaLink
-													post={ post }
-													attributes={ attributes }
-												/>
-											}
-
-											<div className="uagb-timeline__arrow"></div>
-										</div>
-									</div>
-								</div>
-								{ displayInnerDate && (
-									<div className="uagb-timeline__date-new">
-										{
-											<PostDate
-												post={ post }
-												attributes={ attributes }
-												dateClass="uagb-timeline__date-new"
-											/>
-										}
-									</div>
-								) }
+									<div className="uagb-timeline__arrow"></div>
 							</div>
+							{ displayInnerDate && (
+								<>
+									<PostDate
+										post={ post }
+										attributes={ attributes }
+										dateClass="uagb-timeline__date-new"
+									/>
+								</>
+							) }
 						</article>
 					);
 				} ) }
-			</div>
+			</>
 		);
 	};
 
@@ -189,11 +161,9 @@ const Render = ( props ) => {
 				...ContentTmClasses( props.attributes )
 			) }
 		>
-			<div className="uagb-timeline__main">
-				{ getContent() }
-				<div className="uagb-timeline__line">
-					<div className="uagb-timeline__line__inner"></div>
-				</div>
+			{ getContent() }
+			<div className="uagb-timeline__line">
+				<div className="uagb-timeline__line__inner"></div>
 			</div>
 		</div>
 	);

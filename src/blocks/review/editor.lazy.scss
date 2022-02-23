@@ -26,18 +26,14 @@
 		}
 	}
 
-}
+	.uagb_review_add_entry.dashicons.dashicons-plus-alt {
+		left: 50%;
+		width: 100%;
+	}
 
-.dashicons.dashicons-plus-alt {
-	left: 50%;
-	width: 100%;
-}
-
-.dashicons.dashicons-trash {
-	margin-left: 50px;
-}
-
-.uagb_review_average_stars,
-.uagb_review_entry .dashicons-trash {
-	float: right;
+	.uagb_review_average_stars,
+	.uagb_review_entry .dashicons-trash {
+		float: right;
+		margin-left: 50px;
+	}
 }

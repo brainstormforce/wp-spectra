@@ -4,23 +4,21 @@
  * CSS for just Backend enqueued after style.scss
  * which makes it higher in priority.
  */
+.edit-post-visual-editor .block-editor-block-list__block {
 
-#wpwrap .edit-post-visual-editor .uagb-timeline__widget a {
-	color: inherit;
-	text-decoration: none;
+	.uagb-timeline__field {
+		margin: 0;
+
+		a {
+			color: inherit;
+			text-decoration: none;
+			font-size: inherit;
+			margin: 0;
+		}
+	}
+
+	a {
+		pointer-events: none;
+	}
 }
 
-#wpwrap .edit-post-visual-editor .uagb-timeline__heading a,
-.gutenberg-editor-page #wpwrap .edit-post-visual-editor a {
-	margin: 0;
-	color: inherit;
-	font-size: inherit;
-}
-
-#wpwrap .edit-post-visual-editor .uagb-timeline__heading {
-	margin: 0;
-}
-
-#wpwrap .edit-post-visual-editor a {
-	pointer-events: none;
-}

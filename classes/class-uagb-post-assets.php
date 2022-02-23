@@ -18,7 +18,7 @@ class UAGB_Post_Assets {
 	 * Current Block List
 	 *
 	 * @since 1.13.4
-	 * @var current_block_list
+	 * @var array
 	 */
 	public $current_block_list = array();
 
@@ -71,7 +71,7 @@ class UAGB_Post_Assets {
 	public $fallback_js = false;
 
 	/**
-	 * Enque Style and Script Variable
+	 * Enqueue Style and Script Variable
 	 *
 	 * @since 1.14.0
 	 * @var instance
@@ -82,7 +82,7 @@ class UAGB_Post_Assets {
 	 * Stylesheet
 	 *
 	 * @since 1.13.4
-	 * @var stylesheet
+	 * @var string
 	 */
 	public $stylesheet = '';
 
@@ -118,6 +118,35 @@ class UAGB_Post_Assets {
 	public $gfonts = array();
 
 	/**
+	 * Google fonts preload files
+	 *
+	 * @var array
+	 */
+	public $gfonts_files = array();
+
+	/**
+	 * Google fonts url to enqueue
+	 *
+	 * @var string
+	 */
+	public $gfonts_url = '';
+
+
+	/**
+	 * Load Google fonts locally
+	 *
+	 * @var string
+	 */
+	public $load_gfonts_locally = '';
+
+	/**
+	 * Preload google fonts files from local
+	 *
+	 * @var string
+	 */
+	public $preload_local_fonts = '';
+
+	/**
 	 * Static CSS Added Array
 	 *
 	 * @since 1.23.0
@@ -142,23 +171,73 @@ class UAGB_Post_Assets {
 	protected $post_id;
 
 	/**
+	 * Preview
+	 *
+	 * @since 1.24.2
+	 * @var preview
+	 */
+	public $preview = false;
+
+	/**
+	 * Load UAG Fonts Flag.
+	 *
+	 * @since x.x.x
+	 * @var preview
+	 */
+	public $load_uag_fonts = true;
+
+	/**
 	 * Constructor
 	 *
 	 * @param int $post_id Post ID.
 	 */
 	public function __construct( $post_id ) {
 
-		$this->post_id = $post_id;
+		$this->post_id = intval( $post_id );
 
-		$this->file_generation = UAGB_Helper::$file_generation;
+		$this->preview = isset( $_GET['preview'] ); //phpcs:ignore WordPress.Security.NonceVerification.Recommended
 
-		$this->is_allowed_assets_generation = $this->allow_assets_generation();
+		$this->load_uag_fonts = apply_filters( 'uagb_enqueue_google_fonts', $this->load_uag_fonts );
+
+		if ( $this->preview ) {
+			$this->file_generation              = 'disabled';
+			$this->is_allowed_assets_generation = true;
+		} else {
+			$this->file_generation              = UAGB_Helper::$file_generation;
+			$this->is_allowed_assets_generation = $this->allow_assets_generation();
+		}
+
+		// Set other options.
+		$this->load_gfonts_locally = UAGB_Admin_Helper::get_admin_settings_option( 'uag_load_gfonts_locally', 'disabled' );
+		$this->preload_local_fonts = UAGB_Admin_Helper::get_admin_settings_option( 'uag_preload_local_fonts', 'disabled' );
 
 		if ( $this->is_allowed_assets_generation ) {
-			$this_post = get_post( $this->post_id );
-
+			global $post;
+			$this_post = $this->preview ? $post : get_post( $this->post_id );
 			$this->prepare_assets( $this_post );
+			$content = get_option( 'widget_block' );
+			$this->prepare_widget_area_assets( $content );
 		}
+	}
+
+	/**
+	 * Generates stylesheet for widget area.
+	 *
+	 * @param object $content Current Post Object.
+	 * @since x.x.x
+	 */
+	public function prepare_widget_area_assets( $content ) {
+
+		if ( empty( $content ) ) {
+			return;
+		}
+
+		foreach ( $content as $key => $value ) {
+			if ( is_array( $value ) && isset( $value['content'] ) && has_blocks( $value['content'] ) ) {
+				$this->common_function_for_assets_preparation( $value['content'] );
+			}
+		}
+
 	}
 
 	/**
@@ -234,6 +313,8 @@ class UAGB_Post_Assets {
 		$this->stylesheet          = $page_assets['css'];
 		$this->script              = $page_assets['js'];
 		$this->gfonts              = $page_assets['gfonts'];
+		$this->gfonts_files        = $page_assets['gfonts_files'];
+		$this->gfonts_url          = $page_assets['gfonts_url'];
 		$this->uag_faq_layout      = $page_assets['uag_faq_layout'];
 		$this->assets_file_handler = array_merge( $css_asset_info, $js_asset_info );
 
@@ -255,10 +336,13 @@ class UAGB_Post_Assets {
 
 		// UAG Flag specific.
 		if ( $this->is_allowed_assets_generation ) {
+
+			// Prepare font css and files.
+			$this->generate_fonts();
+
 			$this->generate_assets();
 			$this->generate_asset_files();
 		}
-
 		if ( $this->uag_flag ) {
 
 			// Register Assets for Frontend & Enqueue for Editor.
@@ -267,11 +351,13 @@ class UAGB_Post_Assets {
 			// Enqueue all dependency assets.
 			$this->enqueue_blocks_dependency_frontend();
 
-			// RTL Styles Suppport.
+			// RTL Styles Support.
 			UAGB_Scripts_Utils::enqueue_blocks_rtl_styles();
 
-			// Print google fonts.
-			add_action( 'wp_head', array( $this, 'print_google_fonts' ), 120 );
+			if ( $this->load_uag_fonts ) {
+				// Render google fonts.
+				$this->render_google_fonts();
+			}
 
 			if ( 'enabled' === $this->file_generation ) {
 				// Enqueue File Generation Assets Files.
@@ -280,6 +366,7 @@ class UAGB_Post_Assets {
 
 			// Print Dynamic CSS.
 			if ( 'disabled' === $this->file_generation || $this->fallback_css ) {
+				UAGB_Scripts_Utils::enqueue_blocks_styles(); // Enqueue block styles.
 				add_action( 'wp_head', array( $this, 'print_stylesheet' ), 80 );
 			}
 			// Print Dynamic JS.
@@ -288,7 +375,17 @@ class UAGB_Post_Assets {
 			}
 		}
 	}
+	/**
+	 * Get saved fonts.
+	 *
+	 * @since x.x.x
+	 *
+	 * @return array
+	 */
+	public function get_fonts() {
 
+		return $this->gfonts;
+	}
 
 	/**
 	 * This function updates the Page assets in the Page Meta Key.
@@ -297,6 +394,10 @@ class UAGB_Post_Assets {
 	 */
 	public function update_page_assets() {
 
+		if ( $this->preview ) {
+			return;
+		}
+
 		$meta_array = array(
 			'css'                => wp_slash( $this->stylesheet ),
 			'js'                 => $this->script,
@@ -304,6 +405,8 @@ class UAGB_Post_Assets {
 			'uag_flag'           => $this->uag_flag,
 			'uag_version'        => UAGB_ASSET_VER,
 			'gfonts'             => $this->gfonts,
+			'gfonts_url'         => $this->gfonts_url,
+			'gfonts_files'       => $this->gfonts_files,
 			'uag_faq_layout'     => $this->uag_faq_layout,
 		);
 
@@ -435,19 +538,150 @@ class UAGB_Post_Assets {
 
 		$conditional_block_css = UAGB_Block_Helper::get_condition_block_css();
 
+		if ( in_array( 'uagb/masonry-gallery', $this->current_block_list, true ) ) {
+			$conditional_block_css .= UAGB_Block_Helper::get_masonry_gallery_css();
+		}
+
 		echo '<style id="uagb-style-conditional-extension">' . $conditional_block_css . '</style>'; //phpcs:ignore WordPress.XSS.EscapeOutput.OutputNotEscaped
 
 		self::$conditional_blocks_printed = true;
 
 	}
 
+	/**
+	 * Generate google fonts link and font files
+	 *
+	 * @since x.x.x
+	 *
+	 * @return void
+	 */
+	public function generate_fonts() {
+
+		if ( ! $this->load_uag_fonts || empty( $this->gfonts ) ) {
+			return;
+		}
+
+		$fonts_link = '';
+		$fonts_attr = '';
+		$extra_attr = '';
+		$fonts_slug = array();
+
+		// Sort key for same md5 id while loading native fonts.
+		ksort( $this->gfonts );
+
+		foreach ( $this->gfonts as $key => $gfont_values ) {
+			if ( ! empty( $fonts_attr ) ) {
+				$fonts_attr .= '|'; // Append a new font to the string.
+			}
+			$fonts_attr  .= str_replace( ' ', '+', $gfont_values['fontfamily'] );
+			$fonts_slug[] = sanitize_key( str_replace( ' ', '-', strtolower( $gfont_values['fontfamily'] ) ) );
+
+			if ( ! empty( $gfont_values['fontvariants'] ) ) {
+				$fonts_attr .= ':';
+				$fonts_attr .= implode( ',', $gfont_values['fontvariants'] );
+				foreach ( $gfont_values['fontvariants'] as $key => $font_variants ) {
+					$fonts_attr .= ',' . $font_variants . 'italic';
+				}
+			}
+		}
+
+		$subsets = apply_filters( 'uag_font_subset', array() );
+
+		if ( ! empty( $subsets ) ) {
+			$extra_attr .= '&subset=' . implode( ',', $subsets );
+		} else {
+			$extra_attr .= '&subset=latin';
+		}
+
+		$display = apply_filters( 'uag_font_disaply', 'fallback' );
+
+		if ( ! empty( $display ) ) {
+			$extra_attr .= '&display=' . $display;
+		}
+
+		if ( isset( $fonts_attr ) && ! empty( $fonts_attr ) ) {
+
+			// link without https protocol.
+			$fonts_link = '//fonts.googleapis.com/css?family=' . esc_attr( $fonts_attr ) . $extra_attr;
+
+			if ( 'enabled' === $this->load_gfonts_locally ) {
+
+				// Include the font loader file.
+				require_once UAGB_DIR . 'lib/uagb-webfont/uagb-webfont-loader.php';
+
+				// link with https protocol to download fonts.
+				$fonts_link = 'https:' . $fonts_link;
+
+				$fonts_data = uagb_get_webfont_remote_styles( $fonts_link );
+
+				$this->stylesheet = $fonts_data . $this->stylesheet;
+
+				if ( 'enabled' === $this->preload_local_fonts ) {
+
+					$font_files = uagb_get_preload_local_fonts( $fonts_link );
+
+					if ( is_array( $font_files ) && ! empty( $font_files ) ) {
+						foreach ( $font_files as $file_data ) {
+
+							if ( isset( $file_data['font_family'] ) && in_array( $file_data['font_family'], $fonts_slug, true ) ) {
+
+								$this->gfonts_files[ $file_data['font_family'] ] = $file_data['font_url'];
+							}
+						}
+					}
+				}
+			}
+
+			// Set fonts url.
+			$this->gfonts_url = $fonts_link;
+		}
+
+		/* Update page assets */
+		$this->update_page_assets();
+	}
+
+	/**
+	 * Load the Google Fonts.
+	 */
+	public function render_google_fonts() {
+
+		if ( empty( $this->gfonts ) || empty( $this->gfonts_url ) ) {
+			return;
+		}
+
+		$show_google_fonts = apply_filters( 'uagb_blocks_show_google_fonts', true );
+
+		if ( ! $show_google_fonts ) {
+			return;
+		}
+
+		// Load remote google fonts if local font is disabled.
+		if ( 'disabled' === $this->load_gfonts_locally ) {
+
+			// Enqueue google fonts.
+			wp_enqueue_style( 'uag-google-fonts', $this->gfonts_url, array(), UAGB_VER, 'all' );
+
+		} else {
+
+			// Preload woff files local font preload is enabled.
+			if ( 'enabled' === $this->preload_local_fonts ) {
+
+				if ( is_array( $this->gfonts_files ) && ! empty( $this->gfonts_files ) ) {
+
+					foreach ( $this->gfonts_files as $gfont_file_url ) {
+						echo '<link rel="preload" href="' . esc_url( $gfont_file_url ) . '" as="font" type="font/woff2">'; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+					}
+				}
+			}
+		}
+	}
 
 	/**
 	 * Load the front end Google Fonts.
 	 */
 	public function print_google_fonts() {
 
-		if ( empty( $this->gfonts ) ) {
+		if ( empty( $this->gfonts_url ) ) {
 			return;
 		}
 
@@ -455,30 +689,9 @@ class UAGB_Post_Assets {
 		if ( ! $show_google_fonts ) {
 			return;
 		}
-		$link    = '';
-		$subsets = array();
-		foreach ( $this->gfonts as $key => $gfont_values ) {
-			if ( ! empty( $link ) ) {
-				$link .= '%7C'; // Append a new font to the string.
-			}
-			$link .= $gfont_values['fontfamily'];
-			if ( ! empty( $gfont_values['fontvariants'] ) ) {
-				$link .= ':';
-				$link .= implode( ',', $gfont_values['fontvariants'] );
-			}
-			if ( ! empty( $gfont_values['fontsubsets'] ) ) {
-				foreach ( $gfont_values['fontsubsets'] as $subset ) {
-					if ( ! in_array( $subset, $subsets, true ) ) {
-						array_push( $subsets, $subset );
-					}
-				}
-			}
-		}
-		if ( ! empty( $subsets ) ) {
-			$link .= '&amp;subset=' . implode( ',', $subsets );
-		}
-		if ( isset( $link ) && ! empty( $link ) ) {
-			echo '<link href="//fonts.googleapis.com/css?family=' . esc_attr( str_replace( '|', '%7C', $link ) ) . '" rel="stylesheet">'; //phpcs:ignore WordPress.WP.EnqueuedResources.NonEnqueuedStylesheet
+
+		if ( ! empty( $this->gfonts_url ) ) {
+			echo '<link href="' . esc_url( $this->gfonts_url ) . '" rel="stylesheet">'; //phpcs:ignore WordPress.WP.EnqueuedResources.NonEnqueuedStylesheet
 		}
 	}
 
@@ -519,6 +732,12 @@ class UAGB_Post_Assets {
 
 		$this->current_block_list[] = $name;
 
+		if ( 'core/gallery' === $name && isset( $block['attrs']['masonry'] ) && true === $block['attrs']['masonry'] ) {
+			$this->current_block_list[] = 'uagb/masonry-gallery';
+			$this->uag_flag             = true;
+			$css                       += UAGB_Block_Helper::get_gallery_css( $blockattr, $block_id );
+		}
+
 		if ( strpos( $name, 'uagb/' ) !== false ) {
 			$this->uag_flag = true;
 		}
@@ -526,191 +745,25 @@ class UAGB_Post_Assets {
 		// Add static css here.
 		$block_css_arr = UAGB_Config::get_block_assets_css();
 
-		if ( isset( $block_css_arr[ $name ] ) && ! in_array( $block_css_arr[ $name ]['name'], $this->static_css_blocks, true ) ) {
+		if ( 'enabled' === $this->file_generation && isset( $block_css_arr[ $name ] ) && ! in_array( $block_css_arr[ $name ]['name'], $this->static_css_blocks, true ) ) {
 			$common_css = array(
 				'common' => $this->get_block_static_css( $block_css_arr[ $name ]['name'] ),
 			);
 			$css       += $common_css;
 		}
 
-		switch ( $name ) {
-			case 'uagb/review':
-				$css += UAGB_Block_Helper::get_review_css( $blockattr, $block_id );
-				UAGB_Block_JS::blocks_review_gfont( $blockattr );
-				break;
+		if ( strpos( $name, 'uagb/' ) !== false ) {
+			$_block_slug = str_replace( 'uagb/', '', $name );
+			$_block_css  = UAGB_Block_Module::get_frontend_css( $_block_slug, $blockattr, $block_id );
+			$_block_js   = UAGB_Block_Module::get_frontend_js( $_block_slug, $blockattr, $block_id );
+			$css         = array_merge( $css, $_block_css );
+			if ( ! empty( $_block_js ) ) {
+				$js .= $_block_js;
+			}
 
-			case 'uagb/inline-notice':
-				$css += UAGB_Block_Helper::get_inline_notice_css( $blockattr, $block_id );
-				UAGB_Block_JS::blocks_inline_notice_gfont( $blockattr );
-				$js .= UAGB_Block_JS::get_inline_notice_js( $blockattr, $block_id );
-				break;
-
-			case 'uagb/how-to':
-				$css += UAGB_Block_Helper::get_how_to_css( $blockattr, $block_id );
-				UAGB_Block_JS::blocks_how_to_gfont( $blockattr );
-				break;
-
-			case 'uagb/section':
-				$css += UAGB_Block_Helper::get_section_css( $blockattr, $block_id );
-				break;
-
-			case 'uagb/advanced-heading':
-				$css += UAGB_Block_Helper::get_adv_heading_css( $blockattr, $block_id );
-				UAGB_Block_JS::blocks_advanced_heading_gfont( $blockattr );
-				break;
-
-			case 'uagb/info-box':
-				$css += UAGB_Block_Helper::get_info_box_css( $blockattr, $block_id );
-				UAGB_Block_JS::blocks_info_box_gfont( $blockattr );
-				break;
-
-			case 'uagb/buttons':
-				$css += UAGB_Block_Helper::get_buttons_css( $blockattr, $block_id );
-				UAGB_Block_JS::blocks_buttons_gfont( $blockattr );
-				break;
-
-			case 'uagb/buttons-child':
-				$css += UAGB_Block_Helper::get_buttons_child_css( $blockattr, $block_id );
-				break;
-
-			case 'uagb/blockquote':
-				$css += UAGB_Block_Helper::get_blockquote_css( $blockattr, $block_id );
-				UAGB_Block_JS::blocks_blockquote_gfont( $blockattr );
-				$js .= UAGB_Block_JS::get_blockquote_js( $blockattr, $block_id );
-				break;
-
-			case 'uagb/tabs':
-				$css += UAGB_Block_Helper::get_tabs_css( $blockattr, $block_id );
-				break;
-
-			case 'uagb/testimonial':
-				$css += UAGB_Block_Helper::get_testimonial_css( $blockattr, $block_id );
-				UAGB_Block_JS::blocks_testimonial_gfont( $blockattr );
-				$js .= UAGB_Block_JS::get_testimonial_js( $blockattr, $block_id );
-				break;
-
-			case 'uagb/team':
-				$css += UAGB_Block_Helper::get_team_css( $blockattr, $block_id );
-				UAGB_Block_JS::blocks_team_gfont( $blockattr );
-				break;
-
-			case 'uagb/social-share':
-				$css += UAGB_Block_Helper::get_social_share_css( $blockattr, $block_id );
-				$js  .= UAGB_Block_JS::get_social_share_js( $blockattr, $block_id );
-				break;
-
-			case 'uagb/social-share-child':
-				$css += UAGB_Block_Helper::get_social_share_child_css( $blockattr, $block_id );
-				break;
-
-			case 'uagb/content-timeline':
-				$css += UAGB_Block_Helper::get_content_timeline_css( $blockattr, $block_id );
-				UAGB_Block_JS::blocks_content_timeline_gfont( $blockattr );
-				break;
-
-			case 'uagb/restaurant-menu':
-				$css += UAGB_Block_Helper::get_restaurant_menu_css( $blockattr, $block_id );
-				UAGB_Block_JS::blocks_restaurant_menu_gfont( $blockattr );
-				break;
-
-			case 'uagb/call-to-action':
-				$css += UAGB_Block_Helper::get_call_to_action_css( $blockattr, $block_id );
-				UAGB_Block_JS::blocks_call_to_action_gfont( $blockattr );
-				break;
-
-			case 'uagb/post-timeline':
-				$css += UAGB_Block_Helper::get_post_timeline_css( $blockattr, $block_id );
-				UAGB_Block_JS::blocks_post_timeline_gfont( $blockattr );
-				break;
-
-			case 'uagb/icon-list':
-				$css += UAGB_Block_Helper::get_icon_list_css( $blockattr, $block_id );
-				// We have used the same buttons gfont function because the inputs to these functions are same.
-				// If need be please add a new function for Info Box and go ahead.
-				UAGB_Block_JS::blocks_buttons_gfont( $blockattr );
-				break;
-
-			case 'uagb/icon-list-child':
-				$css += UAGB_Block_Helper::get_icon_list_child_css( $blockattr, $block_id );
-				break;
-
-			case 'uagb/post-grid':
-				$css += UAGB_Block_Helper::get_post_grid_css( $blockattr, $block_id );
-				UAGB_Block_JS::blocks_post_gfont( $blockattr );
-				break;
-
-			case 'uagb/post-carousel':
-				$css += UAGB_Block_Helper::get_post_carousel_css( $blockattr, $block_id );
-				UAGB_Block_JS::blocks_post_gfont( $blockattr );
-				break;
-
-			case 'uagb/post-masonry':
-				$css += UAGB_Block_Helper::get_post_masonry_css( $blockattr, $block_id );
-				UAGB_Block_JS::blocks_post_gfont( $blockattr );
-				break;
-
-			case 'uagb/columns':
-				$css += UAGB_Block_Helper::get_columns_css( $blockattr, $block_id );
-				break;
-
-			case 'uagb/column':
-				$css += UAGB_Block_Helper::get_column_css( $blockattr, $block_id );
-				break;
-
-			case 'uagb/cf7-styler':
-				$css += UAGB_Block_Helper::get_cf7_styler_css( $blockattr, $block_id );
-				UAGB_Block_JS::blocks_cf7_styler_gfont( $blockattr );
-				break;
-
-			case 'uagb/marketing-button':
-				$css += UAGB_Block_Helper::get_marketing_btn_css( $blockattr, $block_id );
-				UAGB_Block_JS::blocks_marketing_btn_gfont( $blockattr );
-				break;
-
-			case 'uagb/gf-styler':
-				$css += UAGB_Block_Helper::get_gf_styler_css( $blockattr, $block_id );
-				UAGB_Block_JS::blocks_gf_styler_gfont( $blockattr );
-				break;
-
-			case 'uagb/table-of-contents':
-				$css += UAGB_Block_Helper::get_table_of_contents_css( $blockattr, $block_id );
-				UAGB_Block_JS::blocks_table_of_contents_gfont( $blockattr );
-				$js .= UAGB_Block_JS::get_table_of_contents_js( $blockattr, $block_id );
-				break;
-
-			case 'uagb/faq':
-				$css += UAGB_Block_Helper::get_faq_css( $blockattr, $block_id );
-
-				if ( ! isset( $blockattr['layout'] ) ) {
-					$this->uag_faq_layout = true;
-				}
-				UAGB_Block_JS::blocks_faq_gfont( $blockattr );
-				break;
-
-			case 'uagb/wp-search':
-				$css += UAGB_Block_Helper::get_wp_search_css( $blockattr, $block_id );
-				UAGB_Block_JS::blocks_wp_search_gfont( $blockattr );
-				break;
-
-			case 'uagb/forms':
-				$css += UAGB_Block_Helper::get_forms_css( $blockattr, $block_id );
-				$js  .= UAGB_Block_JS::get_forms_js( $blockattr, $block_id );
-				UAGB_Block_JS::blocks_forms_gfont( $blockattr );
-				break;
-
-			case 'uagb/taxonomy-list':
-				$css += UAGB_Block_Helper::get_taxonomy_list_css( $blockattr, $block_id );
-				UAGB_Block_JS::blocks_taxonomy_list_gfont( $blockattr );
-				break;
-
-			case 'uagb/lottie':
-				$css += UAGB_Block_Helper::get_lottie_css( $blockattr, $block_id );
-				$js  .= UAGB_Block_JS::get_lottie_js( $blockattr, $block_id );
-				break;
-
-			default:
-				// Nothing to do here.
-				break;
+			if ( 'uagb/faq' === $name && ! isset( $blockattr['layout'] ) ) {
+				$this->uag_faq_layout = true;
+			}
 		}
 
 		if ( isset( $block['innerBlocks'] ) ) {
@@ -733,13 +786,15 @@ class UAGB_Post_Assets {
 					$inner_assets    = $this->get_block_css_and_js( $inner_block );
 					$inner_block_css = $inner_assets['css'];
 
-					$css_common  = ( isset( $css['common'] ) ? $css['common'] : '' );
 					$css_desktop = ( isset( $css['desktop'] ) ? $css['desktop'] : '' );
 					$css_tablet  = ( isset( $css['tablet'] ) ? $css['tablet'] : '' );
 					$css_mobile  = ( isset( $css['mobile'] ) ? $css['mobile'] : '' );
 
-					if ( isset( $inner_block_css['common'] ) ) {
-						$css['common'] = $css_common . $inner_block_css['common'];
+					if ( 'enabled' === $this->file_generation ) { // Get common CSS for the block when file generation is enabled.
+						$css_common = ( isset( $css['common'] ) ? $css['common'] : '' );
+						if ( isset( $inner_block_css['common'] ) ) {
+							$css['common'] = $css_common . $inner_block_css['common'];
+						}
 					}
 
 					if ( isset( $inner_block_css['desktop'] ) ) {
@@ -795,22 +850,31 @@ class UAGB_Post_Assets {
 		}
 
 		if ( has_blocks( $this_post->ID ) && isset( $this_post->post_content ) ) {
-
-			$blocks            = $this->parse_blocks( $this_post->post_content );
-			$this->page_blocks = $blocks;
-
-			if ( ! is_array( $blocks ) || empty( $blocks ) ) {
-				return;
-			}
-
-			$assets = $this->get_blocks_assets( $blocks );
-
-			$this->stylesheet .= $assets['css'];
-			$this->script     .= $assets['js'];
-
-			// Update fonts.
-			$this->gfonts = array_merge( $this->gfonts, UAGB_Helper::$gfonts );
+			$this->common_function_for_assets_preparation( $this_post->post_content );
 		}
+	}
+
+	/**
+	 * Common function to generate stylesheet.
+	 *
+	 * @param array $post_content Current Post Object.
+	 * @since x.x.x
+	 */
+	public function common_function_for_assets_preparation( $post_content ) {
+		$blocks            = $this->parse_blocks( $post_content );
+		$this->page_blocks = $blocks;
+
+		if ( ! is_array( $blocks ) || empty( $blocks ) ) {
+			return;
+		}
+
+		$assets = $this->get_blocks_assets( $blocks );
+
+		$this->stylesheet .= $assets['css'];
+		$this->script     .= $assets['js'];
+
+		// Update fonts.
+		$this->gfonts = array_merge( $this->gfonts, UAGB_Helper::$gfonts );
 	}
 
 	/**
@@ -927,12 +991,21 @@ class UAGB_Post_Assets {
 			$file_name = $old_file_name;
 		}
 
-		// Create a new file.
-		$result = $file_system->put_contents( $uploads_dir['path'] . $file_name, $file_data, FS_CHMOD_FILE );
+		$folder_name    = UAGB_Scripts_Utils::get_asset_folder_name( $this->post_id );
+		$base_file_path = $uploads_dir['path'] . 'assets/' . $folder_name . '/';
+		$file_path      = $uploads_dir['path'] . 'assets/' . $folder_name . '/' . $file_name;
 
-		if ( $result ) {
-			// Update meta with current timestamp.
-			update_post_meta( $this->post_id, '_uag_' . $type . '_file_name', $file_name );
+		$result = false;
+
+		if ( wp_mkdir_p( $base_file_path ) ) {
+
+			// Create a new file.
+			$result = $file_system->put_contents( $file_path, $file_data, FS_CHMOD_FILE );
+
+			if ( $result ) {
+				// Update meta with current timestamp.
+				update_post_meta( $this->post_id, '_uag_' . $type . '_file_name', $file_name );
+			}
 		}
 
 		return $result;
@@ -1067,4 +1140,3 @@ class UAGB_Post_Assets {
 		return $css;
 	}
 }
-
