@@ -77,15 +77,12 @@ const UAGBRestaurantMenu = ( props ) => {
 		if( imagePosition ){
 			if( 'left' === imagePosition ){
 				props.setAttributes( { imgAlign: 'side' } );
-				props.setAttributes( { imagePosition: 'left' } );
 			}
 			if( 'right' === imagePosition ){
 				props.setAttributes( { imgAlign: 'side' } );
-				props.setAttributes( { imagePosition: 'right' } );
 			}
 			if( 'top' === imagePosition ){
 				props.setAttributes( { imgAlign: 'top' } );
-				props.setAttributes( { imagePosition: 'top' } );
 			}
 		}
 
