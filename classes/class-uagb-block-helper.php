@@ -388,7 +388,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 			$left_padding   = isset( $attr['leftPadding'] ) ? $attr['leftPadding'] : $attr['bgPadding'];
 			$right_padding  = isset( $attr['rightPadding'] ) ? $attr['rightPadding'] : $attr['bgPadding'];
 
-			$headTopSpace   = isset( $attr['contentPadding'] ) ? $attr['contentPadding'] : $attr['headTopSpacing'];
+			$headTopSpace = isset( $attr['headTopSpacing'] ) ? $attr['headTopSpacing'] : $attr['contentPadding'];
 
 			$connector_size = UAGB_Helper::get_css_value( $attr['connectorBgsize'], 'px' );
 
