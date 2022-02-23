@@ -21,7 +21,7 @@ import { withSelect } from '@wordpress/data';
 const PostTimelineComponent = ( props ) => {
 	const deviceType = useDeviceType();
 	useEffect( () => {
-		
+
 		// Replacement for componentDidMount.
 		//Store Client id.
 		props.setAttributes( { block_id: props.clientId } );
@@ -38,6 +38,9 @@ const PostTimelineComponent = ( props ) => {
 			rightPadding,
 			bottomPadding,
 			leftPadding,
+			contentPadding,
+			ctaBottomSpacing,
+			headTopSpacing
 		} = props.attributes;
 
 		if ( bgPadding ) {
@@ -55,6 +58,14 @@ const PostTimelineComponent = ( props ) => {
 			}
 		}
 
+		if ( contentPadding ){
+			if ( ! ctaBottomSpacing ) {
+				props.setAttributes( { ctaBottomSpacing: contentPadding } );
+			}
+			if ( ! headTopSpacing ) {
+				props.setAttributes( { headTopSpacing: contentPadding } );
+			}
+		}
 		if ( verticalSpace ) {
 			if ( ! topMargin ) {
 				props.setAttributes( { topMargin: verticalSpace } );
@@ -83,8 +94,8 @@ const PostTimelineComponent = ( props ) => {
 		} );
 		document.dispatchEvent( loadPostTimelineEditor );
 	}, [ props ] );
-	
-		
+
+
 	useEffect( () => {
 		// Replacement for componentDidUpdate.
 	    const blockStyling = contentTimelineStyle( props );

@@ -12,6 +12,9 @@ UAGB_Block_JS::blocks_post_timeline_gfont( $attr );
 
 $t_selectors = array();
 
+$ctaBottomSpace    = isset( $attr['contentPadding'] ) ? $attr['contentPadding'] : $attr['ctaBottomSpacing'];
+$headTopSpace = isset( $attr['contentPadding'] ) ? $attr['contentPadding'] : $attr['headTopSpacing'];
+
 $selectors = array(
 	' .uagb-timeline__heading'                 => array(
 		'text-align' => $attr['align'],
@@ -39,8 +42,9 @@ $selectors = array(
 		'color'            => $attr['ctaColor'],
 		'background-color' => $attr['ctaBackground'],
 		'text-align'       => $attr['align'],
+		'margin-bottom' => UAGB_Helper::get_css_value( $ctaBottomSpace , 'px' ),
 	),
-	' .uagb-content .uagb-timeline__heading a' => array(
+	' .uagb-timeline__heading a' => array(
 		'text-align' => $attr['align'],
 		'color'      => $attr['headingColor'],
 	),
@@ -50,14 +54,12 @@ $selectors = array(
 	),
 	' .uagb-timeline__heading-text'            => array(
 		'margin-bottom' => UAGB_Helper::get_css_value( $attr['headSpace'], 'px' ),
+		'margin-top' => UAGB_Helper::get_css_value( $headTopSpace , 'px' ),
 	),
 	'.uagb_timeline__cta-enable .uagb-timeline-desc-content' => array(
 		'margin-bottom' => UAGB_Helper::get_css_value( $attr['contentSpace'], 'px' ),
 		'margin-top'    => UAGB_Helper::get_css_value( $attr['authorSpace'], 'px' ),
-	),
-	' .uagb-content'                           => array(
-		'padding' => UAGB_Helper::get_css_value( $attr['contentPadding'], 'px' ),
-	),
+	)
 );
 
 $desktop_selectors = UAGB_Block_Helper::get_timeline_selectors( $attr );

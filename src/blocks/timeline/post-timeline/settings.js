@@ -28,8 +28,6 @@ import {
 	BlockControls,
 } from '@wordpress/block-editor';
 
-
-
 import UAGAdvancedPanelBody from '@Components/advanced-panel-body';
 
 const Settings = ( props ) => {
@@ -137,7 +135,6 @@ const Settings = ( props ) => {
 		iconSize,
 		exerptLength,
 		borderRadius,
-		contentPadding,
 		iconFocus,
 		iconBgFocus,
 		stack,
@@ -187,7 +184,11 @@ const Settings = ( props ) => {
 		authorDecoration,
 		subHeadDecoration,
 		dateDecoration,
-		ctaDecoration
+		ctaDecoration,
+
+		contentPadding,
+		ctaBottomSpacing,
+		headTopSpacing
 	} = attributes;
 
 	const onSelectPostType = ( value ) => {
@@ -1155,6 +1156,20 @@ const Settings = ( props ) => {
 				/>
 				<Range
 					label={ __(
+						'Top Spacing',
+						'ultimate-addons-for-gutenberg'
+					) }
+					setAttributes={ setAttributes }
+					value={ headTopSpacing }
+					onChange={ ( value ) =>
+						setAttributes( { headTopSpacing: value } )
+					}
+					min={ 1 }
+					max={ 50 }
+					displayUnit={ false }
+				/>
+				<Range
+					label={ __(
 						'Bottom Spacing',
 						'ultimate-addons-for-gutenberg'
 					) }
@@ -1543,6 +1558,20 @@ const Settings = ( props ) => {
 						label: 'ctaDecoration',
 					} }
 				/>
+				<Range
+					label={ __(
+						'Bottom Spacing',
+						'ultimate-addons-for-gutenberg'
+					) }
+					setAttributes={ setAttributes }
+					value={ ctaBottomSpacing }
+					onChange={ ( value ) =>
+						setAttributes( { ctaBottomSpacing: value } )
+					}
+					min={ 1 }
+					max={ 50 }
+					displayUnit={ false }
+				/>
 			</UAGAdvancedPanelBody>
 		);
 	};
@@ -1568,20 +1597,6 @@ const Settings = ( props ) => {
 				title={ __( 'Spacing', 'ultimate-addons-for-gutenberg' ) }
 				initialOpen={ false }
 			>
-				<Range
-					label={ __(
-						'Content Padding',
-						'ultimate-addons-for-gutenberg'
-					) }
-					setAttributes={ setAttributes }
-					value={ contentPadding }
-					onChange={ ( value ) =>
-						setAttributes( { contentPadding: value } )
-					}
-					min={ 1 }
-					max={ 50 }
-					displayUnit={ false }
-				/>
 				<SpacingControl
 					{ ...props }
 					label={ __(

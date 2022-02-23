@@ -124,7 +124,10 @@ function contentTimelineStyle( props ) {
 		authorDecoration,
 		subHeadDecoration,
 		dateDecoration,
-		ctaDecoration
+		ctaDecoration,
+
+		ctaBottomSpacing,
+		headTopSpacing
 	} = props.attributes;
 
 	const respSelectors = 'left';
@@ -144,6 +147,7 @@ function contentTimelineStyle( props ) {
 			'text-align': align,
 			'color': headingColor,
 			'margin-bottom': generateCSSUnit( headSpace, 'px' ),
+			'margin-top': generateCSSUnit( headTopSpacing, 'px' ),
 		},
 		' .uagb-timeline__heading a': {
 			'font-size': generateCSSUnit( headFontSize, headFontSizeType ),
@@ -339,6 +343,7 @@ function contentTimelineStyle( props ) {
 			'font-style': ctaFontStyle,
 			'text-decoration': ctaDecoration,
 			'text-transform': ctaTransform,
+			'margin-bottom': generateCSSUnit( ctaBottomSpacing, 'px' ),
 		},
 	};
 
@@ -461,7 +466,7 @@ function contentTimelineStyle( props ) {
 		'.uagb-timeline__center-block.uagb-timeline__responsive-tablet a.uagb-timeline__image': {
 			'text-align': respSelectors,
 		},
-	
+
 
 		// CTA AUTHOR.
 		' .dashicons-admin-users': {
