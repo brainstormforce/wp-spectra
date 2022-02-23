@@ -679,6 +679,14 @@ const attributes = { // eslint-disable-line no-unused-vars
 		type : 'string',
 		isUAGStyle: true,
 	},
+	ctaBottomSpacing : {
+		type: 'number',
+		isUAGStyle: true
+	},
+	headTopSpacing : {
+		type: 'number',
+		isUAGStyle: true
+	},
 }
 
 export default attributes;
