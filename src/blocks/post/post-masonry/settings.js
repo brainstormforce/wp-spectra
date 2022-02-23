@@ -120,7 +120,7 @@ const Settings = ( props ) => {
 		Object.keys( taxonomyList ).map( ( item ) => {
 			return taxonomyListOptions.push( {
 				value: taxonomyList[ item ].name,
-				label: decodeEntities(taxonomyList[ item ].label),
+				label: decodeEntities( taxonomyList[ item ].label ),
 			} );
 		} );
 	}
@@ -129,7 +129,7 @@ const Settings = ( props ) => {
 		Object.keys( categoriesList ).map( ( item ) => {
 			return categoryListOptions.push( {
 				value: categoriesList[ item ].id,
-				label: decodeEntities(categoriesList[ item ].name),
+				label: decodeEntities( categoriesList[ item ].name ),
 			} );
 		} );
 	}
