@@ -3,6 +3,7 @@ import TypographyControl from '@Components/typography';
 import WebfontLoader from '@Components/typography/fontloader';
 import React from 'react';
 import { __ } from '@wordpress/i18n';
+import { decodeEntities } from '@wordpress/html-entities';
 import AdvancedPopColorControl from '@Components/color-control/advanced-pop-color-control.js';
 import Range from '@Components/range/Range.js';
 import InspectorTabs from '@Components/inspector-tabs/InspectorTabs.js';
@@ -214,7 +215,7 @@ const Settings = ( props ) => {
 		Object.keys( taxonomyList ).map( ( item ) => {
 			return taxonomyListOptions.push( {
 				value: taxonomyList[ item ].name,
-				label: taxonomyList[ item ].label,
+				label: decodeEntities( taxonomyList[ item ].label ),
 			} );
 		} );
 	}
@@ -223,7 +224,7 @@ const Settings = ( props ) => {
 		Object.keys( categoriesList ).map( ( item ) => {
 			return categoryListOptions.push( {
 				value: categoriesList[ item ].id,
-				label: categoriesList[ item ].name,
+				label: decodeEntities( categoriesList[ item ].name ),
 			} );
 		} );
 	}
