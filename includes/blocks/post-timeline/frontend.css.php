@@ -12,8 +12,8 @@ UAGB_Block_JS::blocks_post_timeline_gfont( $attr );
 
 $t_selectors = array();
 
-$ctaBottomSpace = isset( $attr['contentPadding'] ) ? $attr['contentPadding'] : $attr['ctaBottomSpacing'];
-$headTopSpace   = isset( $attr['contentPadding'] ) ? $attr['contentPadding'] : $attr['headTopSpacing'];
+$ctaBottomSpace = ( isset( $attr['ctaBottomSpacing'] ) && ! empty( $attr['headTopSpacing'] ) ) ? $attr['ctaBottomSpacing'] : $attr['contentPadding'];
+$headTopSpace   = ( isset( $attr['headTopSpacing'] ) && ! empty( $attr['headTopSpacing'] ) ) ? $attr['headTopSpacing'] : $attr['contentPadding'];
 
 $selectors = array(
 	' .uagb-timeline__heading'      => array(
