@@ -20,6 +20,7 @@ const attributes = {
 	},
 	image: {
 		type: 'object',
+		default: null
 	},
 	imagePosition: {
 		type: 'string',
@@ -59,6 +60,10 @@ const attributes = {
 		type: 'string',
 		default: 'left',
 		isUAGStyle: true,
+	},
+	stack: {
+		type: 'string',
+		default: 'tablet',
 	},
 };
 

@@ -15,14 +15,14 @@ const CopyPasteStyles = () => {
     const enableCopyPasteStylesStatus = 'disabled' === enableCopyPasteStyles ? false : true;
 
     const updateEnableCopyPasteStylesStatus = () => {
-        
+
         let assetStatus;
 		if ( enableCopyPasteStyles === 'disabled' ) {
             assetStatus = 'enabled';
 		} else {
             assetStatus = 'disabled';
 		}
-        
+
         dispatch( {type: 'UPDATE_ENABLE_COPY_PASTE_STYLES', payload: assetStatus } );
 
 		const formData = new window.FormData();
@@ -40,7 +40,7 @@ const CopyPasteStyles = () => {
     };
 
     return (
-        <section className='flex'>
+        <section className='flex mt-8'>
             <div className='pr-16 pb-8 w-[78%]'>
                 <h3 className="text-lg leading-6 font-medium text-gray-900">
                     {__( 'Copy Paste Styles', 'ultimate-addons-for-gutenberg' )}
@@ -55,7 +55,7 @@ const CopyPasteStyles = () => {
                     onChange={updateEnableCopyPasteStylesStatus}
                     className={classNames(
                         enableCopyPasteStylesStatus ? 'bg-wpcolor' : 'bg-gray-200',
-                        'relative inline-flex flex-shrink-0 h-5 w-10 items-center border-2 border-transparent rounded-full cursor-pointer transition-colors ease-in-out duration-200 focus:outline-none'
+                        'relative inline-flex flex-shrink-0 h-5 w-[2.4rem] items-center border-2 border-transparent rounded-full cursor-pointer transition-colors ease-in-out duration-200 focus:outline-none'
                     )}
                     >
                     <span

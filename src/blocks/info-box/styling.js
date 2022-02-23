@@ -187,7 +187,7 @@ function styling( props ) {
 
 	const selectors = {
 		// Icon css
-		' .uagb-ifb-content > svg': {
+		' .uagb-ifb-content .uagb-ifb-icon-wrap > svg': {
 			'font-size': generateCSSUnit( iconSize, iconSizeType ),
 			'height': generateCSSUnit( iconSize, iconSizeType ),
 			'color': iconColor,
@@ -231,7 +231,7 @@ function styling( props ) {
 				iconMarginUnit
 			),
 		},
-		'.uagb-infobox__content-wrap > svg': {
+		'.uagb-infobox__content-wrap .uagb-ifb-icon-wrap > svg': {
 			'font-size': generateCSSUnit( iconSize, iconSizeType ),
 			'height': generateCSSUnit( iconSize, iconSizeType ),
 			'color': iconColor,
@@ -246,23 +246,23 @@ function styling( props ) {
 				iconMarginUnit
 			),
 		},
-		' .uagb-ifb-content:hover > svg': {
+		' .uagb-ifb-content .uagb-ifb-icon-wrap:hover > svg': {
 			'fill': iconHover,
 		},
-		'.uagb-infobox-icon-left:hover > svg': {
+		'.uagb-infobox-icon-left .uagb-ifb-icon-wrap:hover > svg': {
 			'fill': iconHover,
 		},
-		'.uagb-infobox-icon-right:hover > svg': {
+		'.uagb-infobox-icon-right .uagb-ifb-icon-wrap:hover > svg': {
 			'fill': iconHover,
 		},
-		'.uagb-infobox__content-wrap:hover > svg': {
+		'.uagb-infobox__content-wrap .uagb-ifb-icon-wrap:hover > svg': {
 			'fill': iconHover,
 		},
 		'.uagb-infobox_cta-type-all:hover .uagb-infobox__content-wrap svg': {
 			'fill': iconHover,
 			'color': iconHover
 		},
-		'.uagb-infobox__content-wrap > img': {
+		'.uagb-infobox__content-wrap .uagb-ifb-image-content > img': {
 			'margin-left': generateCSSUnit( iconLeftMargin, iconMarginUnit ),
 			'margin-right': generateCSSUnit( iconRightMargin, iconMarginUnit ),
 			'margin-top': generateCSSUnit( iconTopMargin, iconMarginUnit ),
@@ -465,7 +465,7 @@ function styling( props ) {
 			'width': generateCSSUnit( imageWidth, imageWidthUnit ),
 			'max-width': generateCSSUnit( imageWidth, imageWidthUnit ),
 		};
-		selectors[ '.uagb-infobox__content-wrap .uagb-ifb-content > img' ] = {
+		selectors[ '.uagb-infobox__content-wrap .uagb-ifb-content .uagb-ifb-image-content > img' ] = {
 			'width': generateCSSUnit( imageWidth, imageWidthUnit ),
 			'max-width': generateCSSUnit( imageWidth, imageWidthUnit ),
 		};

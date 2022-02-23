@@ -1,3 +1,4 @@
+
 /**
  * BLOCK: Post Grid - Edit
  */
@@ -108,7 +109,7 @@ const PostGridComponent = ( props ) => {
 				} );
 			}
 		}
-		
+
 	}, [] );
 
 	useEffect( () => {
@@ -116,7 +117,7 @@ const PostGridComponent = ( props ) => {
 		const blockStyling = styling( props );
 
 		addBlockEditorDynamicStyles( 'uagb-post-grid-style-' + props.clientId.substr( 0, 8 ), blockStyling );
-		
+
 	}, [ props ] );
 
 	useEffect( () => {
@@ -124,7 +125,7 @@ const PostGridComponent = ( props ) => {
 		const blockStyling = styling( props );
 
 		addBlockEditorDynamicStyles( 'uagb-post-grid-style-' + props.clientId.substr( 0, 8 ), blockStyling );
-		
+
 	}, [ deviceType ] );
 
 	const togglePreview = () => {
@@ -203,7 +204,7 @@ export default compose(
 		const currentTax = allTaxonomy[ postType ];
 		let categoriesList = [];
 		let rest_base = '';
-		
+
 		if ( true === postPagination && 'empty' === paginationMarkup ) {
 			const formData = new window.FormData();
 
@@ -213,12 +214,12 @@ export default compose(
 				uagb_blocks_info.uagb_ajax_nonce
 			);
 			formData.append( 'attributes', JSON.stringify( props.attributes ) );
-	
+
 			apiFetch( {
 				url: uagb_blocks_info.ajax_url,
 				method: 'POST',
 				body: formData,
-			} ).then( ( data ) => {  
+			} ).then( ( data ) => {
 				setAttributes( { paginationMarkup: data.data } );
 			} );
 		}
@@ -288,3 +289,4 @@ export default compose(
 		};
 	} )
 )( PostGridComponent );
+

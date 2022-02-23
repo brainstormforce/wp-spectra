@@ -196,7 +196,7 @@ const UAGBPostCarousel = ( props ) => {
 				'; }';
 
 		addBlockEditorDynamicStyles( 'uagb-post-carousel-style-' + props.clientId.substr( 0, 8 ), blockStyling );
-		
+
 	}, [ props.deviceType ] );
 
 	const onSelectPostType = ( value ) => {
@@ -1008,7 +1008,7 @@ const UAGBPostCarousel = ( props ) => {
 					}
 				/>
 				<Range
-					label={ __( 'Column Gap', 'ultimate-addons-for-gutenberg' ) }
+					label={ __( 'Row Gap', 'ultimate-addons-for-gutenberg' ) }
 					setAttributes={ setAttributes }
 					value={ rowGap }
 					onChange={ ( value ) => setAttributes( { rowGap: value } ) }
@@ -1021,7 +1021,7 @@ const UAGBPostCarousel = ( props ) => {
 				/>
 				<Range
 					label={ __(
-						'Row Gap',
+						'Column Gap',
 						'ultimate-addons-for-gutenberg'
 					) }
 					setAttributes={ setAttributes }
@@ -1962,7 +1962,7 @@ export default compose(
 
 		if ( excludeCurrentPost ) {
 			latestPostsQuery.exclude = select(
-				'core/editor'
+				'core/block-editor'
 			).getCurrentPostId();
 		}
 		const category = [];

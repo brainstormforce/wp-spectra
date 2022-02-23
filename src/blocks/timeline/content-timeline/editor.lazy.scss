@@ -12,9 +12,13 @@
 
 .edit-post-visual-editor .block-editor-block-list__block {
 
-	&[data-type="uagb/content-timeline"] .components-button svg {
-		fill: #fff;
-		width: 24px;
+	&[data-type="uagb/content-timeline"] {
+		padding: 15px;
+
+		.components-button svg {
+			fill: #fff;
+			width: 24px;
+		}
 	}
 
 	.uagb-timeline__outer-wrap {

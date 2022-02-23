@@ -898,7 +898,6 @@ const Settings = ( props ) => {
 					</>
 				) }
 				<hr className="uagb-editor__separator" />
-				<h2>{ __( 'Border', 'ultimate-addons-for-gutenberg' ) }</h2>
 				<Border
 					setAttributes={ setAttributes }
 					borderStyle={ {
@@ -925,7 +924,7 @@ const Settings = ( props ) => {
 						value: borderHoverColor,
 						label: 'borderHoverColor',
 						title: __(
-							'Hover Color',
+							'Color',
 							'ultimate-addons-for-gutenberg'
 						),
 					} }

@@ -30,12 +30,7 @@ registerBlockType( 'uagb/icon-list', {
 		innerBlocks: [
 			{
 				name: 'uagb/icon-list-child',
-				innerBlocks: [
-					{
-						name: 'uagb/icon-list-child',
-						attributes: { label: '#Label' },
-					},
-				],
+				attributes: { label: '#Label' },
 			},
 		],
 	},

@@ -1,4 +1,4 @@
-import { SelectControl } from '@wordpress/components';
+import { SelectControl, Button, Dashicon } from '@wordpress/components';
 import { __ } from '@wordpress/i18n';
 import { useState } from '@wordpress/element';
 import styles from './editor.lazy.scss';
@@ -24,28 +24,33 @@ const UAGPresets = ( props ) => {
 
 	const [ selectedPresetState, setPreset ] = useState( '' );
 
+	const [ resetPreset, setResetPreset ] = useState( true );
+
     const updatePresets = ( selectedPreset ) => {
 
         setPreset( selectedPreset );
         if ( presets ) {
             presets.map( ( preset ) => {
-                if ( 'default' !== selectedPreset && 'default' === preset.value && preset.attributes ) {
-                    preset.attributes.map( ( presetItem ) => {
-                        setAttributes( { [presetItem.label]: presetItem.value } )
-                        return presetItem;
-                    } );
-                }
-                if ( preset.value && preset.value === selectedPreset && preset.attributes ) {
-                    preset.attributes.map( ( presetItem ) => {
-                        setAttributes( { [presetItem.label]: presetItem.value } )
-                        return presetItem;
-                    } );
+				if ( preset.value ) {
+					setResetPreset( false );
+					if ( 'default' !== selectedPreset && 'default' === preset.value && preset.attributes ) {
+						preset.attributes.map( ( presetItem ) => {
+							setAttributes( { [presetItem.label]: presetItem.value } )
+							return presetItem;
+						} );
+					}
+					if ( preset.value && preset.value === selectedPreset && preset.attributes ) {
+						preset.attributes.map( ( presetItem ) => {
+							setAttributes( { [presetItem.label]: presetItem.value } )
+							return presetItem;
+						} );
 
-                    if ( preset.childAttributes ) {
-                        updateChildBlockAttributes( preset );
-                    }
-                }  
-                return preset; 
+						if ( preset.childAttributes ) {
+							updateChildBlockAttributes( preset );
+						}
+					}
+				}
+				return preset;
             } );
         }
     }
@@ -53,9 +58,9 @@ const UAGPresets = ( props ) => {
     const updateChildBlockAttributes = ( preset ) => {
 
         const { getSelectedBlock } = select( 'core/block-editor' );
-        
+
         let childBlocks = [];
-        
+
         if ( getSelectedBlock().innerBlocks ) {
             childBlocks = getSelectedBlock().innerBlocks;
         }
@@ -82,7 +87,78 @@ const UAGPresets = ( props ) => {
         } );
     }
 
+	const resetValues = () => {
+		let defaultAttributes = null;
+		let defaultChildAttributes = null;
+
+		presets.map( ( preset ) => {
+
+			if ( preset.defaultAttributes ) {
+				defaultAttributes = preset.defaultAttributes;
+			}
+
+			if ( preset.defaultChildAttributes ) {
+				defaultChildAttributes = preset.defaultChildAttributes;
+			}
+
+			if ( defaultAttributes && preset.value && selectedPresetState === preset.value ) {
+				if ( preset.attributes ) {
+					preset.attributes.map( ( presetItem ) => {
+						if ( defaultAttributes[presetItem.label] && undefined !== defaultAttributes[presetItem.label].default ) {
+							setAttributes( { [presetItem.label]: defaultAttributes[presetItem.label].default } )
+						}
+						return presetItem;
+					} );
+				}
+
+				if ( preset.childAttributes && defaultChildAttributes ) {
+					resetChildBlockAttributes( preset, defaultChildAttributes );
+				}
+			}
+
+			return preset;
+		} );
+
+		setResetPreset( true );
+	};
+
+	const resetChildBlockAttributes = ( preset, defaultChildAttributes ) => {
+		const { getSelectedBlock } = select( 'core/block-editor' );
+
+        let childBlocks = [];
+
+        if ( getSelectedBlock().innerBlocks ) {
+            childBlocks = getSelectedBlock().innerBlocks;
+        }
+
+        const childBlocksClientIds = [];
+
+        childBlocks.map( ( childBlock ) => {
+            if ( childBlock.clientId ) {
+                childBlocksClientIds.push( childBlock.clientId );
+            }
+            return childBlock;
+        } );
+
+        const childBlocksAttributes = {};
+
+        preset.childAttributes.map( ( attr ) => {
+			if ( defaultChildAttributes[attr.label] && undefined !== defaultChildAttributes[attr.label].default ) {
+            	childBlocksAttributes[attr.label] = defaultChildAttributes[attr.label].default;
+			}
+            return attr;
+        } );
+
+        childBlocksClientIds.map( ( clientId ) => {
+            dispatch( 'core/block-editor' ).updateBlockAttributes( clientId, childBlocksAttributes );
+            return clientId;
+        } );
+	}
     const presetRadioImageOptions = presets.map( ( preset ) => {
+		if ( ! preset.value ) {
+			return '';
+		}
+
         const key = preset.value;
 		const checked = selectedPresetState === key ? true : false;
 		return (
@@ -94,11 +170,11 @@ const UAGPresets = ( props ) => {
                         __html: preset.icon
                     }}/>
                     <span className="uag-presets-radio-image-clickable" onClick={() => updatePresets( key )} title={preset.label}></span> { /* eslint-disable-line */ }
-                </label> 
+                </label>
             </>
         );
 	} );
-    
+
     const presetDropdown = (
         <SelectControl
             className='uagb-presets-dropdown'
@@ -107,10 +183,9 @@ const UAGPresets = ( props ) => {
             label={ label }
         />
     );
-    
+
     const presetRadioImage = (
         <>
-            <label htmlFor="uag-presets-label" className="uag-presets-label">{label}</label>
             <div className='uagb-presets-radio-image-wrap'>
                 {presetRadioImageOptions}
             </div>
@@ -118,7 +193,22 @@ const UAGPresets = ( props ) => {
     );
 
     return (
-        <div className="uagb-presets-main-wrap">
+		<div className="uagb-presets-main-wrap">
+			<div className='uagb-presets-label-reset-wrap'>
+				<label htmlFor="uag-presets-label" className="uag-presets-label">{label}</label>
+				<Button
+					className="uagb-reset"
+					disabled={ resetPreset }
+					isSecondary
+					isSmall
+					onClick={ ( e ) => {
+						e.preventDefault();
+						resetValues();
+					} }
+				>
+					<Dashicon icon="image-rotate" />
+				</Button>
+			</div>
             { 'dropdown' === presetInputType && presetDropdown }
             { 'radioImage' === presetInputType && presetRadioImage }
         </div>

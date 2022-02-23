@@ -53,7 +53,7 @@ const RollBackConfirmPopup = ( props ) => {
               >
                 <Dialog.Overlay className="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity" />
               </Transition.Child>
-    
+
               {/* This element is to trick the browser into centering the modal contents. */}
               <span className="hidden sm:inline-block sm:align-middle sm:h-screen" aria-hidden="true">
                 &#8203;
@@ -78,25 +78,25 @@ const RollBackConfirmPopup = ( props ) => {
                       </Dialog.Title>
                       <div className="mt-2">
                         <p className="text-sm ">
-                        { 
+                        {
                           // eslint-disable-next-line @wordpress/i18n-no-variables
-                          __( `Are you sure you want to rollback to UAG v${previousVersionSelect}?`, 'ultimate-addons-for-gutenberg' ) 
+                          __( `Are you sure you want to rollback to UAG v${previousVersionSelect}?`, 'ultimate-addons-for-gutenberg' )
                         }
                         </p>
                       </div>
                     </div>
                   </div>
-                  <div className="mt-5 sm:mt-4 sm:flex sm:flex-row-reverse">
+                  <div className="mt-5 sm:mt-4 sm:flex sm:flex-row ml-[3.45rem]">
                     <button
                       type="button"
-                      className="w-full inline-flex justify-center rounded-[0.2rem] border border-transparent shadow-sm px-4 py-2 bg-red-600 text-base font-medium text-white hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500 sm:ml-3 sm:w-auto sm:text-sm"
+                      className="w-full inline-flex justify-center rounded-[0.2rem] border border-transparent shadow-sm px-4 py-2 bg-red-600 text-base font-medium text-white hover:bg-red-700 focus:outline-none sm:mr-3 sm:w-auto sm:text-sm"
                       onClick={onContinueClick}
                     >
                       { __( 'Continue', 'ultimate-addons-for-gutenberg' ) }
                     </button>
                     <button
                       type="button"
-                      className="mt-3 w-full inline-flex justify-center rounded-[0.2rem] border border-gray-300 shadow-sm px-4 py-2 bg-white text-base font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 sm:mt-0 sm:w-auto sm:text-sm"
+                      className="mt-3 w-full inline-flex justify-center rounded-[0.2rem] border border-gray-300 shadow-sm px-4 py-2 bg-white text-base font-medium text-gray-700 hover:bg-gray-50 focus:outline-none sm:mt-0 sm:w-auto sm:text-sm"
                       onClick={onCancelClick}
                       ref={cancelButtonRef}
                     >

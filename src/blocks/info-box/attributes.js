@@ -444,16 +444,18 @@ const attributes = {
 	},
 	ctaBtnVertPadding: {
 		type: 'number',
+		default: 10,
 		isUAGStyle: true,
 	},
 	ctaBtnHrPadding: {
 		type: 'number',
+		default: 10,
 		isUAGStyle: true,
 	},
 	ctaBorderWidth: {
 		type: 'number',
 		isUAGStyle: true,
-		default: 2
+		default: ''
 	},
 	ctaBorderRadius: {
 		type: 'number',
