@@ -186,7 +186,6 @@ const Settings = ( props ) => {
 		dateDecoration,
 		ctaDecoration,
 
-		contentPadding,
 		ctaBottomSpacing,
 		headTopSpacing
 	} = attributes;
