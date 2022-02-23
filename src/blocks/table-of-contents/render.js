@@ -1,6 +1,6 @@
 import classnames from 'classnames';
 import TableOfContents from './toc';
-import React, { useLayoutEffect } from 'react';
+import React, { useLayoutEffect, useEffect } from 'react';
 import { __ } from '@wordpress/i18n';
 import renderSVG from '@Controls/renderIcon';
 import { RichText } from '@wordpress/block-editor';
@@ -14,6 +14,12 @@ const Render = ( props ) => {
 		return () => {
 			styles.unuse();
 		};
+	}, [] );
+
+	useEffect( () => {
+		if ( UAGBTableOfContents ) {
+			UAGBTableOfContents.init();
+		}
 	}, [] );
 
 	props = props.parentProps;
@@ -49,14 +55,13 @@ const Render = ( props ) => {
 				) }
 			>
 				<div className="uagb-toc__wrap">
+					<div className="uagb-toc__title">
 						<RichText
-							tagName={ 'div' }
 							placeholder={ __(
 								'Table Of Contents',
 								'ultimate-addons-for-gutenberg'
 							) }
 							value={ headingTitle }
-							className="uagb-toc__title"
 							onChange={ ( value ) =>
 								setAttributes( { headingTitle: value } )
 							}
@@ -64,6 +69,7 @@ const Render = ( props ) => {
 							onRemove={ () => props.onReplace( [] ) }
 						/>
 						{ iconHtml }
+						</div>
 					<TableOfContents
 						mappingHeaders={ mappingHeaders }
 						headers={ headers }

@@ -3,7 +3,7 @@
  */
 
 import RestMenuStyle from './inline-styles';
-import { select } from '@wordpress/data';
+import { select, dispatch } from '@wordpress/data';
 import React, { lazy, Suspense, useEffect } from 'react';
 import lazyLoader from '@Controls/lazy-loader';
 import { useDeviceType } from '@Controls/getPreviewType';
@@ -104,28 +104,72 @@ const UAGBRestaurantMenu = ( props ) => {
 
 		addBlockEditorDynamicStyles( 'uagb-restaurant-menu-style-' + props.clientId.substr( 0, 8 ), blockStyling );
 
-		const getChildBlocks = select( 'core/block-editor' ).getBlocks(
-			props.clientId
-		);
+		const {
+			imgAlign,
+			imagePosition,
+			columns,
+			tcolumns,
+			mcolumns,
+			headingTag,
+			imageSize,
+			headingAlign,
+			stack,
+			imageAlignment
+		} = props.attributes;
 
-		if( 'side' === props.attributes.imgAlign && 'right' !== props.attributes.imagePosition ){
+		if( 'side' === imgAlign && 'right' !== imagePosition ){
 			props.setAttributes( { imagePosition : 'left' } );
 			props.setAttributes( { headingAlign : 'left' } );
 		}
-		if( 'top' === props.attributes.imgAlign ){
+		if( 'top' === imgAlign ){
 			props.setAttributes( { imagePosition : 'top' } );
 		}
-		getChildBlocks.forEach( ( pricelistChild ) => {
-			pricelistChild.attributes.imagePosition =props.attributes.imagePosition;
-			pricelistChild.attributes.columns = props.attributes.columns;
-			pricelistChild.attributes.tcolumns = props.attributes.tcolumns;
-			pricelistChild.attributes.mcolumns = props.attributes.mcolumns;
-			pricelistChild.attributes.headingTag = props.attributes.headingTag;
-			pricelistChild.attributes.imageSize = props.attributes.imageSize;
-			pricelistChild.attributes.headingAlign = props.attributes.headingAlign;
-			pricelistChild.attributes.imageAlignment = props.attributes.imageAlignment;
-		} );
 
+		const { getSelectedBlock, getBlockAttributes } = select( 'core/block-editor' );
+
+        let childBlocks = [];
+
+        if ( getSelectedBlock()?.innerBlocks ) {
+            childBlocks = getSelectedBlock().innerBlocks;
+        }
+
+        const childBlocksClientIds = [];
+
+        childBlocks.map( ( childBlock ) => {
+            if ( childBlock.clientId ) {
+                childBlocksClientIds.push( childBlock.clientId );
+            }
+            return childBlock;
+        } );
+
+        childBlocksClientIds.map( ( clientId ) => {
+			const attrs = getBlockAttributes( clientId );
+			if (
+				attrs.imagePosition !== imagePosition ||
+				attrs.columns !== columns ||
+				attrs.tcolumns !== tcolumns ||
+				attrs.mcolumns !== mcolumns ||
+				attrs.headingTag !== headingTag ||
+				attrs.imageSize !== imageSize ||
+				attrs.headingAlign !== headingAlign ||
+				attrs.stack !== stack ||
+				attrs.imageAlignment !== imageAlignment
+			) {
+				const childAttrs = {
+					imagePosition,
+					columns,
+					tcolumns,
+					mcolumns,
+					headingTag,
+					imageSize,
+					headingAlign,
+					stack,
+					imageAlignment,
+				}
+				dispatch( 'core/block-editor' ).updateBlockAttributes( clientId, childAttrs );
+			}
+			return clientId;
+        } );
 
 	}, [ props ] );
 

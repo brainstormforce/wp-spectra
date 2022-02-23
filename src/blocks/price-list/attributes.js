@@ -514,6 +514,7 @@ const attributes = {
 	imgAlign: {
 		type: 'string',
 		isUAGStyle: true,
+		default: '',
 	},
 };
 

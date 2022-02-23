@@ -15,14 +15,14 @@ const BetaUpdates = () => {
     const enableBetaStatus = 'no' === enableBeta ? false : true;
 
     const updateEnableBetaStatus = () => {
-        
+
         let assetStatus;
 		if ( enableBeta === 'no' ) {
             assetStatus = 'yes';
 		} else {
             assetStatus = 'no';
 		}
-        
+
         dispatch( {type: 'UPDATE_BETA', payload: assetStatus } );
 
 		const formData = new window.FormData();
@@ -55,7 +55,7 @@ const BetaUpdates = () => {
                     onChange={updateEnableBetaStatus}
                     className={classNames(
                         enableBetaStatus ? 'bg-wpcolor' : 'bg-gray-200',
-                        'relative inline-flex flex-shrink-0 h-5 w-10 items-center border-2 border-transparent rounded-full cursor-pointer transition-colors ease-in-out duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500'
+                        'relative inline-flex flex-shrink-0 h-5 w-[2.4rem] items-center border-2 border-transparent rounded-full cursor-pointer transition-colors ease-in-out duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500'
                     )}
                     >
                     <span

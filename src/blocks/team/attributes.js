@@ -243,6 +243,7 @@ const attributes = {
 	},
 	image: {
 		type: 'object',
+		default: null
 	},
 	imgStyle: {
 		type: 'string',

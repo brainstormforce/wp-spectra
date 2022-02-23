@@ -17,7 +17,7 @@ const MasonryGalleryExtension = () => {
     const masonryGallerysStatus = 'disabled' === enableMasonryExtension ? false : true;
 
     useEffect( () => {
-    
+
         const formData = new window.FormData();
 
 		formData.append( 'action', 'uag_enable_masonry_gallery' );
@@ -54,15 +54,15 @@ const MasonryGalleryExtension = () => {
                 { UAGB_Block_Icons['masonry-gallery'] }
             </div>
             <div className="flex-1 min-w-0">
-                <p className="text-sm font-medium text-gray-900 mb-0">{__( 'Masonry Gallery', 'ultimate-addons-for-gutenberg' )}</p>
-                <a className="text-sm text-wpcolor hover:text-wphovercolor truncate" href='https://ultimategutenberg.com/docs/masonry-image-gallery/' target="_blank"rel="noreferrer">{__( 'Live Demo', 'ultimate-addons-for-gutenberg' )}</a>
+                <p className="text-sm font-medium text-gray-900 mb-[0.1875rem]">{__( 'Masonry Gallery', 'ultimate-addons-for-gutenberg' )}</p>
+                <a className="text-sm text-gray-900 hover:text-gray-700 truncate underline" href='https://ultimategutenberg.com/docs/masonry-image-gallery/' target="_blank"rel="noreferrer">{__( 'Documentation', 'ultimate-addons-for-gutenberg' )}</a>
             </div>
             <Switch
                 checked={masonryGallerysStatus}
                 onChange={updateMasonryGallerysStatus}
                 className={classNames(
                     masonryGallerysStatus ? 'bg-wpcolor' : 'bg-gray-200',
-                    'relative inline-flex flex-shrink-0 h-5 w-10 items-center border-2 border-transparent rounded-full cursor-pointer transition-colors ease-in-out duration-200 focus:outline-none'
+                    'relative inline-flex flex-shrink-0 h-5 w-[2.4rem] items-center border-2 border-transparent rounded-full cursor-pointer transition-colors ease-in-out duration-200 focus:outline-none'
                 )}
                 >
                 <span
@@ -73,7 +73,7 @@ const MasonryGalleryExtension = () => {
                     )}
                 />
             </Switch>
-        </div> 
+        </div>
     );
 };
 

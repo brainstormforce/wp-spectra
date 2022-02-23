@@ -622,6 +622,11 @@ const attributes = {
 		type: 'string',
 		isUAGStyle: true,
 	},
+	headingAlignment: {
+		type: 'string',
+		default: 'left',
+		isUAGStyle: true,
+	}
 };
 
 export default attributes;

@@ -1,7 +1,11 @@
 import { __ } from '@wordpress/i18n';
 import { applyFilters } from '@wordpress/hooks';
+import defaultAttributes from './attributes';
 
 const presets = [
+	{
+		defaultAttributes
+	},
     {
         value: 'preset-1',
         label: __( 'Preset 1', 'ultimate-addons-for-gutenberg' ),
@@ -28,7 +32,7 @@ const presets = [
             { label: 'titleSpace', value: 5 },
 			{ label: 'prefixSpace', value: 13 },
 			{ label: 'descSpace', value: 20 },
-			{ label: 'align', value: 'left' },
+			{ label: 'align', value: 'center' },
 			{ label: 'imgPosition', value: 'above' },
 			{ label: 'imgAlign', value: '' },
 			{ label: 'twitterIcon', value: '' },

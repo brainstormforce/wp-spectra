@@ -10,7 +10,7 @@ module.exports = {
       colors: {
         wpcolor : '#6104ff',
         wphovercolor : '#3a009f',
-        wphoverbgcolor : '#6104ff14'
+        wphoverbgcolor : '#9d62ff14'
       },
       fontFamily: {
         inter: ['"Inter"', 'sans-serif']

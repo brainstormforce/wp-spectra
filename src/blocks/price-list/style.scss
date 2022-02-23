@@ -4,7 +4,8 @@
  * CSS for both Frontend+Backend.
  */
 
-.wp-block-uagb-restaurant-menu {
+.wp-block-uagb-restaurant-menu,
+.uagb-rest_menu__wrap {
 	position: relative;
 
 	&::after {
@@ -154,6 +155,17 @@
 				align-self: center;
 			}
 		}
+	}
+
+	&.uagb-rm__image-aligned-middle img,
+	.uagb-rm__image-aligned-middle .uagb-rm__image-content {
+		-ms-flex-item-align: center;
+		align-self: center;
+	}
+
+	&.uagb-rm__image-aligned-top img {
+		-ms-flex-item-align: flex-start;
+		align-self: flex-start;
 	}
 
 	.uagb-rm__align-left .uagb-rm__content span.uagb-rm__price {

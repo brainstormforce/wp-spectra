@@ -164,7 +164,7 @@ $combined_selectors = array(
 $combined_selectors = UAGB_Helper::get_typography_css( $attr, 'subHead', ' p', $combined_selectors );
 $combined_selectors = UAGB_Helper::get_typography_css( $attr, 'price', ' h4', $combined_selectors );
 $combined_selectors = UAGB_Helper::get_typography_css( $attr, 'head', ' .uagb-howto-heading-text', $combined_selectors );
-$combined_selectors = UAGB_Helper::get_typography_css( $attr, 'subHead', ' .uagb-tools .uagb-tools__label', $combined_selectors );
-$combined_selectors = UAGB_Helper::get_typography_css( $attr, 'subHead', ' .uagb-materials .uagb-materials__label', $combined_selectors );
+$combined_selectors = UAGB_Helper::get_typography_css( $attr, 'subHead', ' .uagb-tools__label', $combined_selectors );
+$combined_selectors = UAGB_Helper::get_typography_css( $attr, 'subHead', ' .uagb-materials__label', $combined_selectors );
 
 return UAGB_Helper::generate_all_css( $combined_selectors, ' .uagb-block-' . $id );

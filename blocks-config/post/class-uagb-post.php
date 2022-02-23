@@ -1274,7 +1274,31 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 		 * @since 0.0.1
 		 */
 		public function add_post_dynamic_script() {
+			if ( isset( self::$settings['grid'] ) && ! empty( self::$settings['grid'] ) ) {
+				foreach ( self::$settings['grid'] as $key => $value ) {
+					?>
+				<script type="text/javascript" id="uagb-post-grid-<?php echo esc_html( $key ); ?>">
+					document.addEventListener("DOMContentLoaded", function(){
+						// This CSS is for Post BG Image Spacing
+						let articles = document.querySelectorAll( '.uagb-post__image-position-background .uagb-post__inner-wrap' );
 
+						for( let article of articles ) {
+							let articleWidth = article.offsetWidth;
+							let rowGap = <?php echo esc_html( $value['rowGap'] ); ?>;
+							let imageWidth = 100 - ( rowGap / articleWidth ) * 100;
+							let image = article.getElementsByClassName('uagb-post__image');
+							if ( image[0] ) {
+								image[0].style.width = imageWidth + '%';
+								image[0].style.marginLeft = rowGap / 2 + 'px';
+
+							}
+
+						}
+					});
+				</script>
+					<?php
+				}
+			}
 			if ( isset( self::$settings['masonry'] ) && ! empty( self::$settings['masonry'] ) ) {
 				foreach ( self::$settings['masonry'] as $key => $value ) {
 					?>
@@ -1289,7 +1313,21 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 								imagesLoaded( scope, function() { isotope	});
 								window.addEventListener( 'resize', function() {	isotope	});
 							}
+							// This CSS is for Post BG Image Spacing
+							let articles = document.querySelectorAll( '.uagb-post__image-position-background .uagb-post__inner-wrap' );
 
+							for( let article of articles ) {
+								let articleWidth = article.offsetWidth;
+								let rowGap = <?php echo esc_html( $value['rowGap'] ); ?>;
+								let imageWidth = 100 - ( rowGap / articleWidth ) * 100;
+								let image = article.getElementsByClassName('uagb-post__image');
+								if ( image[0] ) {
+									image[0].style.width = imageWidth + '%';
+									image[0].style.marginLeft = rowGap / 2 + 'px';
+
+								}
+
+							}
 						});
 						<?php $selector = '.uagb-block-' . $key; ?>
 						window.addEventListener( 'DOMContentLoaded', function() {
@@ -1354,7 +1392,21 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 									$scope.slick( slider_options );
 
 								});
+								// This CSS is for Post BG Image Spacing
+								let articles = document.querySelectorAll( '.uagb-post__image-position-background .uagb-post__inner-wrap' );
 
+								for( let article of articles ) {
+									let articleWidth = article.offsetWidth;
+									let rowGap = <?php echo esc_html( $value['rowGap'] ); ?>;
+									let imageWidth = 100 - ( rowGap / articleWidth ) * 100;
+									let image = article.getElementsByClassName('uagb-post__image');
+									if ( image[0] ) {
+										image[0].style.width = imageWidth + '%';
+										image[0].style.marginLeft = rowGap / 2 + 'px';
+
+									}
+
+								}
 								var enableEqualHeight = ( '<?php echo esc_html( $equal_height ); ?>' );
 
 								if( enableEqualHeight ){

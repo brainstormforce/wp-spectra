@@ -206,6 +206,9 @@ function styling( props ) {
 		' .uagb-post__inner-wrap .uagb-post__text:first-child': {
 			'margin-top': generateCSSUnit( paddingTop, contentPaddingUnit ),
 		},
+		' .uagb-post__inner-wrap .uagb-post__text.uagb-post__title': {
+			'margin-top': generateCSSUnit( paddingTop, contentPaddingUnit ),
+		},
 		' .uagb-post__inner-wrap .uagb-post__text:last-child': {
 			'margin-bottom': generateCSSUnit(
 				paddingBottom,
@@ -336,12 +339,6 @@ function styling( props ) {
 		'font-style': excerptFontStyle,
 		'text-transform': excerptTransform,
 		'text-decoration': excerptDecoration,
-	};
-	selectors[ ' .uagb-post__cta ' ] = {
-		'border-width': generateCSSUnit( borderWidth, 'px' ),
-		'border-radius': generateCSSUnit( borderRadius, 'px' ),
-		'border-color': borderColor,
-		'border-style': borderStyle,
 	};
 	selectors[ ' .uagb-post__cta .uagb-text-link' ] = {
 		'pointer-events': 'visible',
@@ -690,6 +687,9 @@ function styling( props ) {
 
 	if ( 'infinite' === paginationType ) {
 		if ( 'button' === paginationEventType ) {
+			selectors['.uagb-post__items'] = {
+				'margin-bottom': '40px',
+			};
 			selectors[ ' .uagb-post__load-more-wrap' ] = {
 				'text-align': paginationAlign,
 			};

@@ -79,7 +79,7 @@ window.UAGBPostMasonry = {
 		if ( 'scroll' === $attr.paginationEventType ) {
 
 			window.addEventListener( 'scroll', function() {
-				
+
 				let postItems = $scope.querySelector( '.uagb-post__items' );
 
 				if ( ! postItems ) {
@@ -119,6 +119,8 @@ window.UAGBPostMasonry = {
 		if ( 'button' === $attr.paginationEventType ) {
 
 			if( $scope.querySelector( '.uagb-post-pagination-button' ) ){
+
+				$scope.style.marginBottom ='40px';
 
 				$scope.querySelector( '.uagb-post-pagination-button' ).onclick = function () {
 

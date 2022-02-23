@@ -109,6 +109,24 @@ $selectors = array(
 	'.uagb-blockquote__skin-border blockquote.uagb-blockquote:hover' => array(
 		'border-left-color' => $attr['borderHoverColor'],
 	),
+	// Backword css.
+	' .uagb-blockquote__skin-quotation .uagb-blockquote__icon svg' => array(
+		'fill'   => $attr['quoteColor'],
+		'width'  => UAGB_Helper::get_css_value( $attr['quoteSize'], $attr['quoteSizeType'] ),
+		'height' => UAGB_Helper::get_css_value( $attr['quoteSize'], $attr['quoteSizeType'] ),
+	),
+	' .uagb-blockquote__skin-quotation .uagb-blockquote__icon:hover svg' => array(
+		'fill' => $attr['quoteHoverColor'],
+	),
+
+	' .uagb-blockquote__skin-quotation .uagb-blockquote__icon-wrap:hover' => array(
+		'background' => $attr['quoteBgHoverColor'],
+	),
+
+	' .uagb-blockquote__skin-border blockquote.uagb-blockquote:hover' => array(
+		'border-left-color' => $attr['borderHoverColor'],
+	),
+	// End backword.
 );
 
 if ( $attr['enableTweet'] ) {
@@ -150,6 +168,52 @@ if ( $attr['enableTweet'] ) {
 		'padding-top'      => UAGB_Helper::get_css_value( $tweetBtnPaddingTop, $attr['paddingBtnUnit'] ),
 		'padding-bottom'   => UAGB_Helper::get_css_value( $tweetBtnPaddingBottom, $attr['paddingBtnUnit'] ),
 	);
+
+	// Backword CSS.
+	$selectors[' .uagb-blockquote__tweet-style-bubble a.uagb-blockquote__tweet-button'] = array(
+		'color'            => $attr['tweetBtnColor'],
+		'background-color' => $attr['tweetBtnBgColor'],
+		'padding-left'     => UAGB_Helper::get_css_value( $tweetBtnPaddingLeft, $attr['paddingBtnUnit'] ),
+		'padding-right'    => UAGB_Helper::get_css_value( $tweetBtnPaddingRight, $attr['paddingBtnUnit'] ),
+		'padding-top'      => UAGB_Helper::get_css_value( $tweetBtnPaddingTop, $attr['paddingBtnUnit'] ),
+		'padding-bottom'   => UAGB_Helper::get_css_value( $tweetBtnPaddingBottom, $attr['paddingBtnUnit'] ),
+	);
+
+	$selectors[' .uagb-blockquote__tweet-style-bubble a.uagb-blockquote__tweet-button:before'] = array(
+		'border-right-color' => $attr['tweetBtnBgColor'],
+	);
+
+	$selectors[' .uagb-blockquote__tweet-style-link a.uagb-blockquote__tweet-button:hover'] = array(
+		'color' => $attr['tweetBtnHoverColor'],
+	);
+
+	$selectors[' .uagb-blockquote__tweet-style-link a.uagb-blockquote__tweet-button:hover svg'] = array(
+		'fill' => $attr['tweetBtnHoverColor'],
+	);
+
+	$selectors[' .uagb-blockquote__tweet-style-classic a.uagb-blockquote__tweet-button:hover'] = array(
+		'color'            => $attr['tweetBtnHoverColor'],
+		'background-color' => $attr['tweetBtnBgHoverColor'],
+	);
+
+	$selectors[' .uagb-blockquote__tweet-style-classic a.uagb-blockquote__tweet-button:hover svg'] = array(
+		'fill' => $attr['tweetBtnHoverColor'],
+	);
+
+	$selectors[' .uagb-blockquote__tweet-style-bubble a.uagb-blockquote__tweet-button:hover'] = array(
+		'color'            => $attr['tweetBtnHoverColor'],
+		'background-color' => $attr['tweetBtnBgHoverColor'],
+	);
+
+	$selectors[' .uagb-blockquote__tweet-style-bubble a.uagb-blockquote__tweet-button:hover svg'] = array(
+		'fill' => $attr['tweetBtnHoverColor'],
+	);
+
+	$selectors[' .uagb-blockquote__tweet-style-bubble a.uagb-blockquote__tweet-button:hover:before'] = array(
+		'border-right-color' => $attr['tweetBtnBgHoverColor'],
+	);
+
+	// End Backword.
 
 	$selectors['.uagb-blockquote__tweet-style-bubble a.uagb-blockquote__tweet-button svg'] = array(
 		'fill' => $attr['tweetBtnColor'],
@@ -228,6 +292,11 @@ $t_selectors = array(
 		'padding-top'    => UAGB_Helper::get_css_value( $attr['paddingBtnTopTablet'], $attr['tabletPaddingBtnUnit'] ),
 		'padding-bottom' => UAGB_Helper::get_css_value( $attr['paddingBtnBottomTablet'], $attr['tabletPaddingBtnUnit'] ),
 	),
+	// Backword css.
+	' .uagb-blockquote__skin-quotation .uagb-blockquote__icon svg' => array(
+		'width'  => UAGB_Helper::get_css_value( $attr['quoteSizeTablet'], $attr['quoteSizeType'] ),
+		'height' => UAGB_Helper::get_css_value( $attr['quoteSizeTablet'], $attr['quoteSizeType'] ),
+	),
 );
 
 $m_selectors = array(
@@ -257,6 +326,10 @@ $m_selectors = array(
 		'padding-right'  => UAGB_Helper::get_css_value( $attr['paddingBtnRightMobile'], $attr['mobilePaddingBtnUnit'] ),
 		'padding-top'    => UAGB_Helper::get_css_value( $attr['paddingBtnTopMobile'], $attr['mobilePaddingBtnUnit'] ),
 		'padding-bottom' => UAGB_Helper::get_css_value( $attr['paddingBtnBottomMobile'], $attr['mobilePaddingBtnUnit'] ),
+	),
+	' .uagb-blockquote__skin-quotation .uagb-blockquote__icon svg' => array(
+		'width'  => UAGB_Helper::get_css_value( $attr['quoteSizeMobile'], $attr['quoteSizeType'] ),
+		'height' => UAGB_Helper::get_css_value( $attr['quoteSizeMobile'], $attr['quoteSizeType'] ),
 	),
 );
 

@@ -109,6 +109,21 @@
 		}
 	}
 
+	.uagb-blockquote__tweet-style-bubble a.uagb-blockquote__tweet-button::before {
+		position: absolute;
+		top: 50%;
+		left: -0.8em;
+		border: solid 0.5em transparent;
+		border-right-color: #1da1f2;
+		transform: translateY(-50%) scale(1, 0.65);
+		transition: 0.2s;
+		content: "";
+		-webkit-transform: translateY(-50%) scale(1, 0.65);
+		-ms-transform: translateY(-50%) scale(1, 0.65);
+		-webkit-transition: 0.2s;
+		-o-transition: 0.2s;
+	}
+
 	/* end backward */
 
 	&.uagb-blockquote__skin-quotation {
@@ -222,7 +237,6 @@
 		vertical-align: middle;
 		width: 15px;
 		height: 15px;
-		margin-right: 5px;
 		fill: #fff;
 	}
 

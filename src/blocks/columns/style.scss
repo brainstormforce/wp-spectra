@@ -194,6 +194,10 @@
 
 	.uagb-columns__stack-tablet {
 		display: block;
+
+		> .uagb-columns__inner-wrap { // For Backword.
+			display: block;
+		}
 	}
 
 	.uagb-columns__stack-tablet.uagb-columns__reverse-tablet {
@@ -220,6 +224,10 @@
 
 	.uagb-columns__stack-mobile {
 		display: block;
+
+		> .uagb-columns__inner-wrap { // For Backword.
+			display: block;
+		}
 	}
 
 	.uagb-columns__stack-mobile.uagb-columns__reverse-mobile {

@@ -536,7 +536,7 @@ const Settings = ( props ) => {
 	const submitButtonStyle = () => {
 		return (
 			<UAGAdvancedPanelBody
-				title={ __( 'Submit Button', 'ultimate-addons-for-gutenberg' ) }
+				title={ __( 'Submit', 'ultimate-addons-for-gutenberg' ) }
 				initialOpen={ false }
 				className="uagb__url-panel-body"
 			>
@@ -894,7 +894,7 @@ const Settings = ( props ) => {
 	const afterSubmitActions = () => {
 		return (
 			<UAGAdvancedPanelBody
-				title={ __( 'After Submit Actions' ) }
+				title={ __( 'Actions' ) }
 				initialOpen={ false }
 				className="uagb__url-panel-body"
 			>
