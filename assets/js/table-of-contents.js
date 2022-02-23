@@ -191,10 +191,10 @@ UAGBTableOfContents = { // eslint-disable-line no-undef
 
 		if ( scrollElement === null ) {
 
-			const scrollToTopDiv = document.createElement('div');
-			scrollToTopDiv.classList.add('uagb-toc__scroll-top');
+			const scrollToTopDiv = document.createElement( 'div' );
+			scrollToTopDiv.classList.add( 'uagb-toc__scroll-top' );
 			scrollToTopDiv.innerHTML = scrollToTopSvg;
-			document.body.appendChild(scrollToTopDiv);
+			document.body.appendChild( scrollToTopDiv );
 		}
 
 		if ( scrollElement !== null ) {
