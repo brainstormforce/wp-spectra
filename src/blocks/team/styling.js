@@ -158,7 +158,7 @@ function styling( props ) {
 			'margin-right': generateCSSUnit( imageRightMargin, imageMarginUnit ),
 			'width': generateCSSUnit( imgWidth, 'px' ),
 		},
-		' img': { 
+		' img': {
 			'margin-top': generateCSSUnit( imageTopMargin, imageMarginUnit ),
 			'margin-bottom': generateCSSUnit(
 				imageBottomMargin,
@@ -167,6 +167,7 @@ function styling( props ) {
 			'margin-left': generateCSSUnit( imageLeftMargin, imageMarginUnit ),
 			'margin-right': generateCSSUnit( imageRightMargin, imageMarginUnit ),
 			'width': generateCSSUnit( imgWidth, 'px' ),
+			'height': generateCSSUnit( imgWidth, 'px' ),
 		},
 	};
 

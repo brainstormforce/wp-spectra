@@ -32,7 +32,7 @@
 	.uagb-team__image-wrap img {
 		display: inline;
 		width: inherit;
-		height: 100px;
+		height: auto !important;
 		max-width: 100%;
 		box-sizing: content-box;
 		border-radius: inherit;
@@ -182,7 +182,6 @@
 
 	img {
 		display: inline;
-		height: auto !important;
 		max-width: 100%;
 		width: inherit;
 		-webkit-box-sizing: content-box;
