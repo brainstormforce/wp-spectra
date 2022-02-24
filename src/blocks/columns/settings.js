@@ -125,7 +125,7 @@ const Settings = ( props ) => {
 					onChange={ ( value ) => {
 						setAttributes( { align: value } );
 					} }
-					controls={ [ 'wide', 'full' ] }
+					controls={ [ 'wide', 'full', '' ] }
 				/>
 				<BlockVerticalAlignmentToolbar
 					value={ vAlign }
@@ -166,6 +166,10 @@ const Settings = ( props ) => {
 					} }
 					className="uagb-multi-button-alignment-control"
 					options={ [
+						{
+							value: '',
+							label: 'None',
+						},
 						{
 							value: 'wide',
 							label: 'Wide',
