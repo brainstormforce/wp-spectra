@@ -400,7 +400,7 @@ const Settings = ( props ) => {
 							},
 						} }
 						min={ 0 }
-						limitMax={ { 'px': 1000, 'vh': 100 } }
+						limitMax={ { px: 1000, vh: 100 } }
 						unit={ {
 							value: minHeightType,
 							label: 'minHeightType',
