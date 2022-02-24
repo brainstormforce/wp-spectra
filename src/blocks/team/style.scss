@@ -6,7 +6,9 @@
 
 .wp-block-uagb-team {
 	display: flex;
-
+	.uagb-team__content{
+		width: 100%;
+	}
 	&.uagb-team__outer-wrap.uagb-team__image-position-left .uagb-team__wrap,
 	&.uagb-team__outer-wrap.uagb-team__image-position-right .uagb-team__wrap {
 		-js-display: flex;
@@ -30,7 +32,7 @@
 	.uagb-team__image-wrap img {
 		display: inline;
 		width: inherit;
-		height: auto !important;
+		height: 100px;
 		max-width: 100%;
 		box-sizing: content-box;
 		border-radius: inherit;
