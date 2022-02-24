@@ -180,7 +180,6 @@ function styling( props ) {
 			};
 		} else if ( 'left' === align ) {
 			selectors[' img']['margin-right'] = 'auto';
-			selectors[' img']['margin-right'] = 'auto';
 			selectors[ ' .uagb-team__social-list' ] = {
 				'justify-content': 'flex-start',
 			};
@@ -189,7 +188,6 @@ function styling( props ) {
 				'justify-content': 'flex-end',
 			};
 			selectors[' img']['margin-left'] = 'auto';
-			selectors[' img']['margin-right'] = 'auto';
 		}
 	}
 
