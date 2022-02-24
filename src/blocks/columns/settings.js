@@ -18,9 +18,6 @@ import InspectorTab, {
 import ResponsiveSlider from '@Components/responsive-slider';
 import UAGTabsControl from '@Components/tabs';
 import {
-	BlockControls,
-	BlockAlignmentToolbar,
-	BlockVerticalAlignmentToolbar,
 	InspectorControls,
 } from '@wordpress/block-editor';
 import { SelectControl, ToggleControl } from '@wordpress/components';
@@ -117,25 +114,6 @@ const Settings = ( props ) => {
 		boxShadowPosition,
 	} = attributes;
 
-	const blockControlSettings = () => {
-		return (
-			<BlockControls>
-				<BlockAlignmentToolbar
-					value={ align }
-					onChange={ ( value ) => {
-						setAttributes( { align: value } );
-					} }
-					controls={ [ 'wide', 'full', '' ] }
-				/>
-				<BlockVerticalAlignmentToolbar
-					value={ vAlign }
-					onChange={ ( value ) => {
-						setAttributes( { vAlign: value } );
-					} }
-				/>
-			</BlockControls>
-		);
-	};
 	const layoutSettings = () => {
 		return (
 			<UAGAdvancedPanelBody
@@ -1085,7 +1063,6 @@ const Settings = ( props ) => {
 
 	return (
 		<Suspense fallback={ lazyLoader() }>
-			{ blockControlSettings() }
 			<InspectorControls>
 				<InspectorTabs>
 					<InspectorTab { ...UAGTabs.general }>
