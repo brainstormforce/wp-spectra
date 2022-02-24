@@ -108,10 +108,13 @@ if ( 'above' === $attr['imgPosition'] ) {
 	if ( 'center' === $attr['align'] ) {
 		$selectors[' .uagb-team__image-wrap']['margin-left']  = 'auto';
 		$selectors[' .uagb-team__image-wrap']['margin-right'] = 'auto';
+		$selectors[' .uagb-team__social-list']['justify-content'] = 'center';
 	} elseif ( 'left' === $attr['align'] ) {
 		$selectors[' .uagb-team__image-wrap']['margin-right'] = 'auto';
+		$selectors[' .uagb-team__social-list']['justify-content'] = 'flex-start';
 	} elseif ( 'right' === $attr['align'] ) {
 		$selectors[' .uagb-team__image-wrap']['margin-left'] = 'auto';
+		$selectors[' .uagb-team__social-list']['justify-content'] = 'flex-end';
 	}
 }
 
