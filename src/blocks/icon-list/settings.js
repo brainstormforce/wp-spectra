@@ -428,7 +428,7 @@ const Settings = ( props ) => {
 						},
 					} }
 					min={ 0 }
-					max={ 500 }
+					max={ 200 }
 					unit={ {
 						value: sizeType,
 						label: 'sizeType',
@@ -457,7 +457,7 @@ const Settings = ( props ) => {
 					value={ bgSize }
 					onChange={ ( value ) => setAttributes( { bgSize: value } ) }
 					min={ 0 }
-					max={ 500 }
+					max={ 50 }
 					displayUnit={ false }
 					help={ __(
 						'Note: Background Size option is useful when one adds background color to the icons.',
@@ -491,7 +491,7 @@ const Settings = ( props ) => {
 						setAttributes( { borderRadius: value } )
 					}
 					min={ 0 }
-					max={ 500 }
+					max={ 100 }
 					displayUnit={ false }
 					help={ __(
 						'Note: Border Radius option is useful when one adds background color to the icons.',

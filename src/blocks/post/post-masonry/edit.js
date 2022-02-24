@@ -251,7 +251,7 @@ const UAGBPostMasonry = ( props ) => {
 		const blockStyling = styling( props );
 
 		addBlockEditorDynamicStyles( 'uagb-post-masonry-style-' + props.clientId.substr( 0, 8 ), blockStyling );
-		
+
 	}, [ props ] );
 
 	useEffect( () => {
@@ -259,7 +259,7 @@ const UAGBPostMasonry = ( props ) => {
 		const blockStyling = styling( props );
 
 		addBlockEditorDynamicStyles( 'uagb-post-masonry-style-' + props.clientId.substr( 0, 8 ), blockStyling );
-		
+
 	}, [ props.deviceType ] );
 
 	const togglePreview = () => {
@@ -2008,7 +2008,7 @@ const UAGBPostMasonry = ( props ) => {
 						setAttributes( { ctaBottomSpace: value } )
 					}
 					min={ 0 }
-					max={ 500 }
+					max={ 200 }
 					unit={ {
 						value: ctaBottomSpaceUnit,
 						label: 'ctaBottomSpaceUnit',

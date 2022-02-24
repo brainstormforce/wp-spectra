@@ -340,7 +340,7 @@ const Settings = ( props ) => {
 								} )
 							}
 							min={ 0 }
-							max={ 100 }
+							max={ 50 }
 							unit={ {
 								value: authorImgBorderRadiusUnit,
 								label: 'authorImgBorderRadiusUnit',
@@ -416,7 +416,7 @@ const Settings = ( props ) => {
 					},
 				} }
 				min={ 0 }
-				max={ 500 }
+				max={ 200 }
 				unit={ {
 					value: quotePaddingType,
 					label: 'quotePaddingType',
@@ -953,7 +953,7 @@ const Settings = ( props ) => {
 						setAttributes( { borderGap: value } )
 					}
 					min={ 0 }
-					max={ 500 }
+					max={ 200 }
 					unit={ {
 						value: borderGapUnit,
 						label: 'borderGapUnit',

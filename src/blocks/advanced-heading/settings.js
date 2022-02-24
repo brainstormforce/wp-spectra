@@ -341,7 +341,7 @@ const Settings = ( props ) => {
 						setAttributes( { headSpace: value } )
 					}
 					min={ 0 }
-					max={ 500 }
+					max={ 200 }
 					displayUnit={ false }
 				/>
 			</UAGAdvancedPanelBody>
@@ -514,7 +514,7 @@ const Settings = ( props ) => {
 						setAttributes( { separatorSpace: value } )
 					}
 					min={ 0 }
-					max={ 500 }
+					max={ 200 }
 					displayUnit={ false }
 				/>
 			</UAGAdvancedPanelBody>

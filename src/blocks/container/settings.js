@@ -400,7 +400,7 @@ const Settings = ( props ) => {
 							},
 						} }
 						min={ 0 }
-						max={ 1440 }
+						limitMax={ { 'px': 1000, 'vh': 100 } }
 						unit={ {
 							value: minHeightType,
 							label: 'minHeightType',
@@ -711,7 +711,7 @@ const Settings = ( props ) => {
 						},
 					} }
 					min={ 0 }
-					max={ 1600 }
+					max={ 200 }
 					unit={ {
 						value: rowGapType,
 						label: 'rowGapType',
@@ -752,7 +752,7 @@ const Settings = ( props ) => {
 						},
 					} }
 					min={ 0 }
-					max={ 1600 }
+					max={ 200 }
 					unit={ {
 						value: columnGapType,
 						label: 'columnGapType',
