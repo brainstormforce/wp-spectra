@@ -24,15 +24,12 @@ const UAGPresets = ( props ) => {
 
 	const [ selectedPresetState, setPreset ] = useState( '' );
 
-	const [ resetPreset, setResetPreset ] = useState( true );
-
     const updatePresets = ( selectedPreset ) => {
 
         setPreset( selectedPreset );
         if ( presets ) {
             presets.map( ( preset ) => {
 				if ( preset.value ) {
-					setResetPreset( false );
 					if ( 'default' !== selectedPreset && 'default' === preset.value && preset.attributes ) {
 						preset.attributes.map( ( presetItem ) => {
 							setAttributes( { [presetItem.label]: presetItem.value } )
@@ -119,7 +116,6 @@ const UAGPresets = ( props ) => {
 			return preset;
 		} );
 
-		setResetPreset( true );
 	};
 
 	const resetChildBlockAttributes = ( preset, defaultChildAttributes ) => {
@@ -198,7 +194,7 @@ const UAGPresets = ( props ) => {
 				<label htmlFor="uag-presets-label" className="uag-presets-label">{label}</label>
 				<Button
 					className="uagb-reset"
-					disabled={ resetPreset }
+					disabled={ false }
 					isSecondary
 					isSmall
 					onClick={ ( e ) => {

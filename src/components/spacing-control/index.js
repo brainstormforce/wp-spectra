@@ -23,7 +23,6 @@ const SpacingControl = ( props ) => {
 
 	const defaultCache = {
 		...props,
-		resetDisabled: true,
 	};
 
 	const [ cachedValue, setCacheValue ] = useState( defaultCache );
@@ -60,11 +59,10 @@ const SpacingControl = ( props ) => {
 
 	useEffect( () => {
 		const cachedValueUpdate = { ...cachedValue };
-		const propsValue = { ...props, resetDisabled: true };
+		const propsValue = { ...props };
 		if (
 			JSON.stringify( cachedValueUpdate ) !== JSON.stringify( propsValue )
 		) {
-			cachedValueUpdate.resetDisabled = false;
 			setCacheValue( cachedValueUpdate );
 		}
 	}, [ props ] );
@@ -429,7 +427,6 @@ const SpacingControl = ( props ) => {
 		const device = deviceType.toLowerCase();
 
 		const cachedValueUpdate = { ...cachedValue };
-		cachedValueUpdate.resetDisabled = true;
 		setCacheValue( cachedValueUpdate );
 
 		switch ( device ) {
@@ -507,7 +504,7 @@ const SpacingControl = ( props ) => {
 					<div className="uagb-control__actions">
 						<Button
 							className="uagb-reset"
-							disabled={ cachedValue.resetDisabled }
+							disabled={ false }
 							isSecondary
 							isSmall
 							onClick={ ( e ) => {

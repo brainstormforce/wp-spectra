@@ -29,7 +29,6 @@ const Range = ( props ) => {
 
 	const defaultCache = {
 		value: props.value,
-		resetDisabled: true,
 		unit: props.unit.value,
 	};
 
@@ -55,7 +54,6 @@ const Range = ( props ) => {
 			JSON.stringify( value ) !==
 			JSON.stringify( cachedValueUpdate.value )
 		) {
-			cachedValueUpdate.resetDisabled = false;
 			setCacheValue( cachedValueUpdate );
 		}
 	}, [ props.value ] );
@@ -67,7 +65,6 @@ const Range = ( props ) => {
 			JSON.stringify( props.unit.value ) !==
 			JSON.stringify( cachedValueUpdate.unit )
 		) {
-			cachedValueUpdate.resetDisabled = false;
 			setCacheValue( cachedValueUpdate );
 		}
 	}, [ props.unit ] );
@@ -102,7 +99,6 @@ const Range = ( props ) => {
 			onChangeUnits( cachedValueUpdate.unit );
 		}
 
-		cachedValueUpdate.resetDisabled = true;
 		setCacheValue( cachedValueUpdate );
 	};
 
@@ -145,9 +141,9 @@ const Range = ( props ) => {
 		return items;
 	};
 
-	const max = limitMax( props.unit?.value, props ); 
+	const max = limitMax( props.unit?.value, props );
 	const min = limitMin( props.unit?.value, props );
-	
+
 	return (
 		<div className="components-base-control uag-range-control uagb-size-type-field-tabs">
 			<div className="uagb-control__header">
@@ -158,7 +154,7 @@ const Range = ( props ) => {
 				<div className="uagb-range-control__actions">
 					<Button
 						className="uagb-reset"
-						disabled={ cachedValue.resetDisabled }
+						disabled={ false }
 						isSecondary
 						isSmall
 						onClick={ ( e ) => {

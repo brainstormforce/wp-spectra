@@ -46,7 +46,6 @@ const AdvancedPopColorControl = ( props ) => {
 
 	const defaultCache = {
 		value,
-		resetDisabled: true,
 	};
 
 	const [ cachedValue, setCacheValue ] = useState( defaultCache );
@@ -67,7 +66,6 @@ const AdvancedPopColorControl = ( props ) => {
 			JSON.stringify( value ) !==
 			JSON.stringify( cachedValueUpdate.value )
 		) {
-			cachedValueUpdate.resetDisabled = false;
 			setCacheValue( cachedValueUpdate );
 		}
 	}, [ value ] );
@@ -78,11 +76,11 @@ const AdvancedPopColorControl = ( props ) => {
 		if ( palette ) {
 			newColor = color;
 		} else if (	color.rgb && color.rgb.a && 1 !== color.rgb.a ) {
-			
+
 			if ( props.onOpacityChange ) {
 				opacity = color.rgb.a;
 			}
-			
+
 			newColor =
 				'rgba(' +
 				color.rgb.r +
@@ -93,7 +91,7 @@ const AdvancedPopColorControl = ( props ) => {
 				',' +
 				color.rgb.a +
 				')';
-			
+
 		} else if ( color.hex ) {
 			newColor = color.hex;
 		} else {
@@ -108,7 +106,7 @@ const AdvancedPopColorControl = ( props ) => {
 
 		if ( true === palette ) {
 			setValue( {
-				refresh: ! value.refresh, 
+				refresh: ! value.refresh,
 			} );
 		}
 
@@ -116,7 +114,7 @@ const AdvancedPopColorControl = ( props ) => {
 		if ( props.onOpacityChange ) {
 			props.onOpacityChange( opacity );
 		}
-		
+
 	};
 
 	const toggleVisible = () => {
@@ -136,7 +134,6 @@ const AdvancedPopColorControl = ( props ) => {
 
 		props.onColorChange( cachedValueUpdate.value.currentColor );
 
-		cachedValueUpdate.resetDisabled = true;
 		setCacheValue( cachedValueUpdate );
 	};
 
@@ -154,7 +151,7 @@ const AdvancedPopColorControl = ( props ) => {
 				) }
 				<Button
 					className="uagb-reset"
-					disabled={ cachedValue.resetDisabled }
+					disabled={ false }
 					isSecondary
 					isSmall
 					onClick={ ( e ) => {
@@ -170,7 +167,7 @@ const AdvancedPopColorControl = ( props ) => {
 							position="top left"
 							className="uagb-popover-color new-uagb-advanced-colors-pop"
 							onClose={ toggleClose }
-						>	
+						>
 							{ value.refresh && (
 								<>
 									<ColorPicker
@@ -215,7 +212,7 @@ const AdvancedPopColorControl = ( props ) => {
 										: 'uagb-no-alpha'
 								}` }
 								onClick={ toggleClose }
-							>	
+							>
 								<ColorIndicator
 									className={`uagb-advanced-color-indicate ${globalIndicator}`}
 									colorValue={ colorVal }
