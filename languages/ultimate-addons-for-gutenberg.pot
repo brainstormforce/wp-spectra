@@ -937,7 +937,7 @@ msgid "Please select a valid Contact Form 7."
 msgstr ""
 
 #: classes/class-uagb-init-blocks.php:282
-msgid "Ultimate Addons Blocks"
+msgid "Spectra"
 msgstr ""
 
 #: classes/class-uagb-init-blocks.php:417
