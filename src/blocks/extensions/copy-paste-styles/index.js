@@ -336,7 +336,7 @@ const UAGCopyPasteStyles = () => {
         xsLocalStorage.getItem( 'uag-copy-paste-styles', function ( loop_element ) {
 
             const uagLocalStorageObject = JSON.parse( loop_element.value );
-            setshowPopup( true );
+            setshowPopup( !showPopup );
 
             if( 0 === Object.keys( uagLocalStorageObject ).length ) {
                 setdisablePaste( true );
@@ -397,7 +397,7 @@ const displayUAGCopyPasteSettingConditionally = createHigherOrderComponent( ( Bl
 	return ( props ) => {
 
         const { getSelectedBlock, getMultiSelectedBlocks } = select( 'core/block-editor' );
-        const excludeBlocks = [ 'core/missing', 'uagb/faq-child', 'uagb/restaurant-menu-child', 'uagb/google-map', 'uagb/content-timeline-child' ];
+        const excludeBlocks = [ 'core/missing', 'uagb/faq-child', 'uagb/restaurant-menu-child', 'uagb/google-map', 'uagb/content-timeline-child', 'uagb/tabs-child' ];
         const selectedBlock = getSelectedBlock();
         const multiSelectedBlock = getMultiSelectedBlocks();
         let singleSelectBlockFlag = false;
