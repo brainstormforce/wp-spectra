@@ -194,7 +194,6 @@ const UAGPresets = ( props ) => {
 				<label htmlFor="uag-presets-label" className="uag-presets-label">{label}</label>
 				<Button
 					className="uagb-reset"
-					disabled={ false }
 					isSecondary
 					isSmall
 					onClick={ ( e ) => {

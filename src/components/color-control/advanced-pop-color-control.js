@@ -151,7 +151,6 @@ const AdvancedPopColorControl = ( props ) => {
 				) }
 				<Button
 					className="uagb-reset"
-					disabled={ false }
 					isSecondary
 					isSmall
 					onClick={ ( e ) => {

@@ -504,7 +504,6 @@ const SpacingControl = ( props ) => {
 					<div className="uagb-control__actions">
 						<Button
 							className="uagb-reset"
-							disabled={ false }
 							isSecondary
 							isSmall
 							onClick={ ( e ) => {
