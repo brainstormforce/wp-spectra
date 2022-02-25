@@ -7,7 +7,7 @@ import { InnerBlocks } from '@wordpress/block-editor';
 
 export default function save( props ) {
 	const {
-		block_id,
+		block_id
 	} = props.attributes;
 
 	return (

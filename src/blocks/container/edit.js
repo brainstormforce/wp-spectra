@@ -70,6 +70,7 @@ const UAGBContainer = ( props ) => {
 			element.classList.remove( `uagb-editor-preview-mode-tablet` );
 			element.classList.remove( `uagb-editor-preview-mode-mobile` );
 			element.classList.add( `uagb-editor-preview-mode-${ deviceType.toLowerCase() }` );
+			element.dataset.align = props.attributes.contentWidth;
 		}
 
 	}, [] );
@@ -83,12 +84,13 @@ const UAGBContainer = ( props ) => {
 		} else {
 			element = document.getElementById( 'block-' + props.clientId )
 		}
-		
+
 		if ( element ) {
 			element.classList.remove( `uagb-editor-preview-mode-desktop` );
 			element.classList.remove( `uagb-editor-preview-mode-tablet` );
 			element.classList.remove( `uagb-editor-preview-mode-mobile` );
 			element.classList.add( `uagb-editor-preview-mode-${deviceType.toLowerCase() }` );
+			element.dataset.align = props.attributes.contentWidth;
 		}
 
 		const blockStyling = styling( props );
@@ -104,7 +106,7 @@ const UAGBContainer = ( props ) => {
 		} else {
 			element = document.getElementById( 'block-' + props.clientId )
 		}
-		
+
 		if ( element ) {
 			element.classList.remove( `uagb-editor-preview-mode-desktop` );
 			element.classList.remove( `uagb-editor-preview-mode-tablet` );
@@ -115,7 +117,7 @@ const UAGBContainer = ( props ) => {
 		const blockStyling = styling( props );
 
         addBlockEditorDynamicStyles( 'uagb-container-style-' + props.clientId.substr( 0, 8 ), blockStyling );
-		
+
 	}, [ deviceType ] );
 
 	const blockVariationPickerOnSelect = (
@@ -149,7 +151,7 @@ const UAGBContainer = ( props ) => {
 	const { variationSelected } = props.attributes;
 
 	if ( ! variationSelected && 0 === select( 'core/block-editor' ).getBlockParents( props.clientId ).length ) {
-		
+
 		return (
 			<div className='uagb-container-variation-picker'>
 				<BlockVariationPicker

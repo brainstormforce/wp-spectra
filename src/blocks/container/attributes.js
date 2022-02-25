@@ -2,6 +2,10 @@ const attributes = {
 	block_id: {
 		type: 'string',
 	},
+	contentWidth: {
+		type: 'string',
+		default: 'alignwide',
+	},
 	widthDesktop: {
 		type: 'number',
 		default: 100,

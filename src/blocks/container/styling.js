@@ -145,7 +145,6 @@ function styling( props ) {
 	}
 	selectors['.block-editor-block-list__block'] = {
 		'width' : generateCSSUnit( widthDesktop, widthType ),
-		'max-width' : generateCSSUnit( widthDesktop, widthType ),
 		'min-height' : generateCSSUnit( minHeightDesktop, minHeightType ),
 		'flex-direction' : directionDesktop,
 		'align-items' : alignItemsDesktop,
@@ -177,7 +176,6 @@ function styling( props ) {
 		},
 		'.block-editor-block-list__block' : {
 			'width' : generateCSSUnit( widthTablet, widthType ),
-			'max-width' : generateCSSUnit( widthTablet, widthType ),
 			'min-height' : generateCSSUnit( minHeightTablet, minHeightType ),
 			'flex-direction' : directionTablet,
 			'align-items' : alignItemsTablet,
@@ -210,7 +208,6 @@ function styling( props ) {
 		},
 		'.block-editor-block-list__block' : {
 			'width' : generateCSSUnit( widthMobile, widthType ),
-			'max-width' : generateCSSUnit( widthMobile, widthType ),
 			'min-height' : generateCSSUnit( minHeightMobile, minHeightType ),
 			'flex-direction' : directionMobile,
 			'align-items' : alignItemsMobile,
