@@ -41,14 +41,17 @@
 
 	.uagb-advanced-color-indicate.uag-global-indicator::before {
 		content: "\f11f";
-		color: #d9e4ec;
 		font-family: dashicons; // stylelint-disable-line font-family-no-missing-generic-family-keyword
 		position: absolute;
-		left: 50%;
-		top: 50%;
-		transform: translate(-49%, -50%);
-		text-align: center;
-		font-size: 12px;
+		font-size: 16px;
+		top: 6px;
+		left: 7px;
+	}
+	.uag-global-icon-black::before {
+		color: #000;
+	}
+	.uag-global-icon-white::before {
+		color: #fff;
 	}
 
 }
