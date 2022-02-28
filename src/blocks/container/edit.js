@@ -54,6 +54,13 @@ const UAGBContainer = ( props ) => {
 	}
 
 	useEffect( () => {
+		let isBlockRootParent = 0 === select( 'core/block-editor' ).getBlockParents( props.clientId ).length;
+		let hasChildren = 0 !== select( 'core/block-editor' ).getBlocks(props.clientId).length;
+
+		if ( isBlockRootParent ) {
+			props.setAttributes( { isBlockRootParent: true } );
+		}
+
 		// Assigning block_id in the attribute.
 		props.setAttributes( { block_id: props.clientId.substr( 0, 8 ) } );
 
@@ -70,7 +77,15 @@ const UAGBContainer = ( props ) => {
 			element.classList.remove( `uagb-editor-preview-mode-tablet` );
 			element.classList.remove( `uagb-editor-preview-mode-mobile` );
 			element.classList.add( `uagb-editor-preview-mode-${ deviceType.toLowerCase() }` );
-			element.dataset.align = props.attributes.contentWidth;
+			if ( ! hasChildren ) {
+				element.classList.remove( 'uagb-container-has-children' );
+			}
+			if ( hasChildren ) {
+				element.classList.add( 'uagb-container-has-children' );
+			}
+			if ( props.attributes.isBlockRootParent || isBlockRootParent ) {
+				element.dataset.align = props.attributes.contentWidth;
+			}
 		}
 
 	}, [] );
@@ -78,6 +93,8 @@ const UAGBContainer = ( props ) => {
 	useEffect( () => {
 
 		const iframeEl = document.querySelector( `iframe[name='editor-canvas']` );
+		let hasChildren = 0 !== select( 'core/block-editor' ).getBlocks(props.clientId).length;
+		console.log(select( 'core/block-editor' ).getBlocks(props.clientId));
 		let element;
 		if( iframeEl ){
 			element = iframeEl.contentDocument.getElementById( 'block-' + props.clientId )
@@ -90,7 +107,15 @@ const UAGBContainer = ( props ) => {
 			element.classList.remove( `uagb-editor-preview-mode-tablet` );
 			element.classList.remove( `uagb-editor-preview-mode-mobile` );
 			element.classList.add( `uagb-editor-preview-mode-${deviceType.toLowerCase() }` );
-			element.dataset.align = props.attributes.contentWidth;
+			if ( ! hasChildren ) {
+				element.classList.remove( 'uagb-container-has-children' );
+			}
+			if ( hasChildren ) {
+				element.classList.add( 'uagb-container-has-children' );
+			}
+			if ( props.attributes.isBlockRootParent ) {
+				element.dataset.align = props.attributes.contentWidth;
+			}
 		}
 
 		const blockStyling = styling( props );
@@ -156,11 +181,11 @@ const UAGBContainer = ( props ) => {
 			<div className='uagb-container-variation-picker'>
 				<BlockVariationPicker
 					icon={ '' }
-					label={ uagb_blocks_info.blocks[ 'uagb/container' ].title }
-					instructions={ __(
-						'Select a variation to start with.',
+					label={ __(
+						'Select a Layout',
 						'ultimate-addons-for-gutenberg'
 					) }
+					instructions={ false }
 					variations={ variations }
 					onSelect={ ( nextVariation ) =>
 						blockVariationPickerOnSelect( nextVariation )
