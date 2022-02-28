@@ -142,7 +142,7 @@ const AdvancedPopColorControl = ( props ) => {
 
 	const colorVal = value.currentColor ? value.currentColor : props.colorValue;
 
-	const pickTextColorBasedOnBgColorAdvanced = ( color ) => {
+	const pickIconColorBasedOnBgColorAdvanced = ( color ) => {
 		const result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec( color );
 		const parsed_color = result
 		? {
@@ -159,7 +159,7 @@ const AdvancedPopColorControl = ( props ) => {
 			return textColour;
 		}
 	}
-	const globalIconColor = pickTextColorBasedOnBgColorAdvanced( maybeGetColorForVariable( colorVal ) );
+	const globalIconColor = pickIconColorBasedOnBgColorAdvanced( maybeGetColorForVariable( colorVal ) );
 
 	const globalIndicator = ( colorVal && colorVal.includes( 'var' ) ) ? `uag-global-indicator uag-global-icon-${globalIconColor}` : '';
 
