@@ -374,7 +374,7 @@ class Admin_Menu {
 
 		$logs_page_url = '#';
 
-		echo '<span id="footer-thankyou"> Thank you for using <a href="#">UAG.</a></span>';
+		echo '<span id="footer-thankyou"> Thank you for using <a href="#">Spectra.</a></span>';
 	}
 
 }

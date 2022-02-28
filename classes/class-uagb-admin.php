@@ -236,7 +236,7 @@ if ( ! class_exists( 'UAGB_Admin' ) ) {
 		 * @param array $plugins TOC plugins.
 		 */
 		public function toc_plugin( $plugins ) {
-			$plugins['ultimate-addons-for-gutenberg/ultimate-addons-for-gutenberg.php'] = 'Ultimate Addons for Gutenberg';
+			$plugins['ultimate-addons-for-gutenberg/ultimate-addons-for-gutenberg.php'] = 'Spectra';
 			return $plugins;
 		}
 
