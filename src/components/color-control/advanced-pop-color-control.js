@@ -152,9 +152,9 @@ const AdvancedPopColorControl = ( props ) => {
 		  }
 		: null;
 		if ( parsed_color ) {
-			const brightness = Math.round( ( ( parseInt( result[ 1 ], 16 ) * 299 ) +
-						( parseInt( result[ 2 ], 16 ) * 587 ) +
-						( parseInt( result[ 3 ], 16 ) * 114 ) ) / 1000 );
+			const brightness = Math.round( ( ( parsed_color.r * 299 ) +
+						( parsed_color.g * 587 ) +
+						( parsed_color.b * 114 ) ) / 1000 );
 			const textColour = ( brightness > 125 ) ? 'black' : 'white';
 			return textColour;
 		}
