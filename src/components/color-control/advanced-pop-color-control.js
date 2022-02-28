@@ -144,20 +144,21 @@ const AdvancedPopColorControl = ( props ) => {
 
 	const pickIconColorBasedOnBgColorAdvanced = ( color ) => {
 		const result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec( color );
-		const parsed_color = result
+		const parsedColor = result
 		? {
 				r: parseInt( result[ 1 ], 16 ),
 				g: parseInt( result[ 2 ], 16 ),
 				b: parseInt( result[ 3 ], 16 ),
 		  }
 		: null;
-		if ( parsed_color ) {
-			const brightness = Math.round( ( ( parsed_color.r * 299 ) +
-						( parsed_color.g * 587 ) +
-						( parsed_color.b * 114 ) ) / 1000 );
+		if ( parsedColor ) {
+			const brightness = Math.round( ( ( parsedColor.r * 299 ) +
+						( parsedColor.g * 587 ) +
+						( parsedColor.b * 114 ) ) / 1000 );
 			const textColour = ( brightness > 125 ) ? 'black' : 'white';
 			return textColour;
 		}
+		return 'white';
 	}
 	const globalIconColor = pickIconColorBasedOnBgColorAdvanced( maybeGetColorForVariable( colorVal ) );
 
