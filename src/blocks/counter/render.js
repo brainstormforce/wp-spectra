@@ -23,7 +23,18 @@ const Render = ( props ) => {
 
 	return (
 		<React.Fragment>
-			Render Mode
+			<div className={ classnames(
+				props.className,
+				`uagb-block-${ block_id }`,
+				'wp-block-uagb-counter'
+			) }>
+				<div className="wp-block-uagb-counter__number">
+					<span className="uagb-counter-block-prefix">Hello</span>
+					<span className="uagb-counter-block-number" data-duration="2000" data-to-value="10000" data-from-value="0" data-delimiter=".">10.000</span>
+					<span className="uagb-counter-block-suffix">World</span>
+				</div>
+				<div className="wp-block-uagb-counter__title">Cool Number</div>
+			</div>
 		</React.Fragment>
 	);
 }
