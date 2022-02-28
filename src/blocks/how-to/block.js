@@ -25,29 +25,9 @@ registerBlockType( 'uagb/how-to', {
 		anchor: true,
 	},
 	example: {
-		innerBlocks: [
-			{
-				name: 'uagb/how-to-step',
-				attributes: {
-					name: 'Step 1',
-					imgPosition: 'left'
-				},
-			},
-			{
-				name: 'uagb/how-to-step',
-				attributes: {
-					name: 'Step 2',
-					imgPosition: 'left'
-				},
-			},
-			{
-				name: 'uagb/how-to-step',
-				attributes: {
-					name: 'Step 3',
-					imgPosition: 'left'
-				},
-			},
-		],
+		attributes: {
+			isPreview: true,
+		}
 	},
 	attributes,
 	edit,

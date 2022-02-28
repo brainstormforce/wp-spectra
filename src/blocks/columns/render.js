@@ -10,10 +10,11 @@ const ALLOWED_BLOCKS = [ 'uagb/column' ];
 import { InnerBlocks } from '@wordpress/block-editor';
 
 const Render = ( props ) => {
-	
+
 	const { attributes, isSelected, className } = props.parentProps;
 	const deviceType = useDeviceType();
 	const {
+		isPreview,
 		stack,
 		align,
 		vAlign,
@@ -92,8 +93,10 @@ const Render = ( props ) => {
 	const verticalAlign = ( undefined !== vAlign ) ? `uagb-columns__valign-${ vAlign }` : '';
 
 	const alignType = ( undefined !== align ) ? `align${ align }` : '';
+	const previewImageData = '';
 
 	return (
+		isPreview ? <img width='100%' src={previewImageData}/> :
 		<CustomTag
 			className={ classnames(
 				className,

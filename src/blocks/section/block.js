@@ -41,6 +41,10 @@ registerBlockType( 'uagb/section', {
 		}
 	},
 	save,
-	example: {},
+	example: {
+		attributes: {
+			isPreview: true,
+		}
+	},
 	deprecated,
 } );

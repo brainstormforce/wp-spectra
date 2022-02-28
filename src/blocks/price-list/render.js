@@ -20,7 +20,7 @@ const Render = ( props ) => {
 	const { className, attributes } = props;
 
 	// Setup the attributes.
-	const { menu_item_count } = attributes;
+	const { isPreview, menu_item_count } = attributes;
 
 	const getPriceListTemplate = useMemo( () => {
 		const childList = [];
@@ -32,7 +32,10 @@ const Render = ( props ) => {
 		return childList;
 	}, [ menu_item_count ] );
 
+	const previewImageData = '';
+
 	return (
+		isPreview ? <img width='100%' src={previewImageData}/> :
 		<div
 			className={ classnames(
 				className,

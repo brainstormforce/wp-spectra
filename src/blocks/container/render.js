@@ -12,14 +12,18 @@ const Render = ( props ) => {
 	} = props;
 
 	const {
+		isPreview,
 		block_id
 	} = attributes;
 
 	const direction = attributes[ 'direction' + deviceType ];
-	
+
 	const moverDirection = 'row' === direction ? 'horizontal' : 'vertical';
 
+	const previewImageData = '';
+
 	return (
+		isPreview ? <img width='100%' src={previewImageData}/> :
 		<div
 			className={ classnames(
 				className,

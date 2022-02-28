@@ -31,5 +31,9 @@ registerBlockType( 'uagb/container', {
 	variations,
 	edit,
 	save,
-	example: {}
+	example: {
+		attributes: {
+			isPreview: true,
+		}
+	},
 } );

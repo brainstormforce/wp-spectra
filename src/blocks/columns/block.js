@@ -38,7 +38,11 @@ registerBlockType( 'uagb/columns', {
 		editorsKitBlockNavigator: true,
 		anchor: true,
 	},
-	example: {},
+	example: {
+		attributes: {
+			isPreview: true,
+		}
+	},
 	save,
 	deprecated,
 } );

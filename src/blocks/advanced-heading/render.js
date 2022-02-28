@@ -8,6 +8,7 @@ const Render = ( props ) => {
 	props = props.parentProps;
 	const {
 		attributes: {
+			isPreview,
 			block_id,
 			headingTitle,
 			headingDesc,
@@ -53,7 +54,9 @@ const Render = ( props ) => {
 			onChange={ ( value ) => setAttributes( { headingDesc: value } ) }
 		/>
 	);
+	const previewImageData = '';
 	return (
+		isPreview ? <img width='100%' src={previewImageData}/> :
 		<div
 			className={ classnames(
 				className,

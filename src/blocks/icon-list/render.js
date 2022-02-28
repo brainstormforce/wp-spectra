@@ -21,6 +21,7 @@ const Render = ( props ) => {
 	const { attributes } = props;
 
 	const {
+		isPreview,
 		className,
 		icon_count,
 		block_id,
@@ -36,7 +37,10 @@ const Render = ( props ) => {
 		return childIconList;
 	}, [ icon_count ] );
 
+	const previewImageData = '';
+
 	return (
+		isPreview ? <img width='100%' src={previewImageData}/> :
 		<div
 			className={ classnames(
 				className,

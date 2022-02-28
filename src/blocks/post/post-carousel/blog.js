@@ -20,6 +20,7 @@ function Blog( props ) {
 	const deviceType = useDeviceType();
 
 	const {
+		isPreview,
 		columns,
 		tcolumns,
 		mcolumns,
@@ -200,9 +201,11 @@ function Blog( props ) {
 			</div>
 		);
 	}
-
+	const previewImageData = '';
 	return (
 		<Suspense fallback={ lazyLoader() }>
+			<>
+			{ isPreview } ? <img width='100%' src={previewImageData}/> :
 			<Slider
 				className={ classnames(
 					'is-carousel',
@@ -222,6 +225,7 @@ function Blog( props ) {
 			>
 				{ all_posts }
 			</Slider>
+			</>
 		</Suspense>
 	);
 }

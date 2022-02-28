@@ -17,6 +17,7 @@ const Render = ( props ) => {
 	const { className, attributes, setAttributes } = props;
 	// Setup the attributes.
 	const {
+		isPreview,
 		formId,
 		align,
 		isHtml,
@@ -64,7 +65,9 @@ const Render = ( props ) => {
 			</Placeholder>
 		);
 	}
+	const previewImageData = '';
 	return (
+		isPreview ? <img width='100%' src={previewImageData}/> :
 		<div
 			className={ classnames(
 				className,

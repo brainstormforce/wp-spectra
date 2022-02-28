@@ -649,6 +649,10 @@ const attributes = {
 		isUAGStyle: true,
 		default: 'center center',
 	},
+	isPreview: {
+		type: 'boolean',
+		default: false,
+	}
 };
 
 export default attributes;

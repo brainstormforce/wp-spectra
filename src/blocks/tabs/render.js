@@ -30,6 +30,7 @@ const Render = ( props ) => {
 		clientId,
 	} = props;
 	const {
+		isPreview,
 		tabsStyleD,
 		tabsStyleM,
 		tabsStyleT,
@@ -129,8 +130,10 @@ const Render = ( props ) => {
 			updateBlockAttributes( childBlockId, attrs )
 		);
 	};
+	const previewImageData = '';
 	return (
 		<>
+		isPreview ? <img width='100%' src={previewImageData}/> :
 			<div
 				className={ classnames(
 					`uagb-editor-preview-mode-${ deviceType.toLowerCase() }`,

@@ -17,6 +17,7 @@ const Render = ( props ) => {
 	const deviceType = useDeviceType();
 	const {
 		attributes: {
+			isPreview,
 			block_id,
 			authorName,
 			itemName,
@@ -100,8 +101,9 @@ const Render = ( props ) => {
 			/>
 		);
 	}
-
+	const previewImageData = '';
 	return (
+		isPreview ? <img width='100%' src={previewImageData}/> :
 		<div
 			className={ classnames(
 				className,

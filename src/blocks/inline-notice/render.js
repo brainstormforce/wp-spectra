@@ -21,6 +21,7 @@ const Render = ( props ) => {
 	// Setup the attributes
 	const {
 		attributes: {
+			isPreview,
 			block_id,
 			icon,
 			noticeTitle,
@@ -38,7 +39,9 @@ const Render = ( props ) => {
 	if ( noticeDismiss ) {
 		imageIconHtml = ( renderSVG( icon ) );
 	}
+	const previewImageData = '';
 	return (
+		isPreview ? <img width='100%' src={previewImageData}/> :
 		<div
 			className={ classnames(
 				className,

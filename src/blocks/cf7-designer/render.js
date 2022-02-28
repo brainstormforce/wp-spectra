@@ -18,6 +18,7 @@ const Render = ( props ) => {
 	const { className, attributes } = props;
 
 	const {
+		isPreview,
 		formId,
 		align,
 		isHtml,
@@ -51,7 +52,7 @@ const Render = ( props ) => {
 		html = formJson.data.html;
 	}
 
-	if ( parseInt( formId ) === 0 ) { 
+	if ( parseInt( formId ) === 0 ) {
 		return (
 			<Placeholder
 				icon="admin-post"
@@ -69,7 +70,10 @@ const Render = ( props ) => {
 		);
 	}
 
+	const previewImageData = '';
+
 	return (
+		isPreview ? <img width='100%' src={previewImageData}/> :
 		<div
 			className={ classnames(
 				className,

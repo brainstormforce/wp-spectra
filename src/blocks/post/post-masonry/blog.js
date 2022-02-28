@@ -19,6 +19,7 @@ function Blog( props ) {
 	const { attributes, className, latestPosts, block_id } = props;
 	const deviceType = useDeviceType();
 	const {
+		isPreview,
 		columns,
 		tcolumns,
 		mcolumns,
@@ -95,7 +96,9 @@ function Blog( props ) {
 			}
 		}
 	};
+	const previewImageData = '';
 	return (
+		isPreview ? <img width='100%' src={previewImageData}/> :
 		<div
 			className={ classnames(
 				className,

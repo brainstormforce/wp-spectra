@@ -11,6 +11,7 @@ const Blog = ( props ) => {
 	const { attributes, className, latestPosts, block_id } = props;
 	const deviceType = useDeviceType();
 	const {
+		isPreview,
 		columns,
 		tcolumns,
 		mcolumns,
@@ -62,8 +63,9 @@ const Blog = ( props ) => {
 		latestPosts.length > postsToShow
 			? latestPosts.slice( 0, postsToShow )
 			: latestPosts;
-
+	const previewImageData = '';
 	return (
+		isPreview ? <img width='100%' src={previewImageData}/> :
 		<div
 			className={ classnames(
 				'is-grid',

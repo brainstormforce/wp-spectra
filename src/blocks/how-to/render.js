@@ -36,6 +36,7 @@ const Render = ( props ) => {
 		mergeBlocks,
 		onReplace,
 		attributes: {
+			isPreview,
 			currencyType,
 			showEstcost,
 			showTotaltime,
@@ -61,7 +62,7 @@ const Render = ( props ) => {
 			timeInYears,
 		},
 	} = props;
-	
+
 	const splitBlock = ( before, after, ...blocks ) => {
 		if ( after ) {
 			// Append "After" content as a new paragraph block to the end of
@@ -200,7 +201,10 @@ const Render = ( props ) => {
 			? __( ' Minutes ', 'ultimate-addons-for-gutenberg' )
 			: __( ' Minute ', 'ultimate-addons-for-gutenberg' );
 
+			const previewImageData = '';
+
 	return (
+		isPreview ? <img width='100%' src={previewImageData}/> :
 		<div
 			className={ classnames(
 				className,

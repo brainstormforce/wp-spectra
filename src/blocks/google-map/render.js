@@ -16,15 +16,16 @@ const Render = ( props ) => {
 
 	const {
 		className,
-		attributes: { height, zoom, address, language },
+		attributes: { isPreview, height, zoom, address, language },
 	} = props;
 
 	const encoded_address = encodeURI( address );
 	const lang_par = language ? language : 'en';
 
 	const url = `https://www.google.com/maps/embed/v1/place?key=${ wp.uagb_google_api_key }&q=${ encoded_address }&zoom=${ zoom }&language=${ lang_par }`;
-
+	const previewImageData = '';
 	return (
+		isPreview ? <img width='100%' src={previewImageData}/> :
 		<div
 			className={ classnames(
 				className,

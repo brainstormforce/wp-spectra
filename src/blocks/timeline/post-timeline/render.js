@@ -30,6 +30,7 @@ const Render = ( props ) => {
 	const { attributes, className, latestPosts } = props;
 
 	const {
+		isPreview,
 		displayPostLink,
 		timelinAlignment,
 		postsToShow,
@@ -66,9 +67,10 @@ const Render = ( props ) => {
 		let dayAlignClass = DayAlignClass( props.attributes, 0 ); // Get classname for day alignment.
 
 		let displayInnerDate = false;
-
+		const previewImageData = '';
 		return (
 			<>
+			isPreview ? <img width='100%' src={previewImageData}/> :
 				{ displayPosts.map( ( post, index ) => {
 					if ( timelinAlignment === 'center' ) {
 						displayInnerDate = true;

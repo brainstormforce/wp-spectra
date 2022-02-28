@@ -36,6 +36,7 @@ const Render = ( props ) => {
 
 	const { attributes, setAttributes } = props;
 	const {
+		isPreview,
 		block_id,
 		submitButtonText,
 		formLabel,
@@ -80,8 +81,11 @@ const Render = ( props ) => {
 		);
 	};
 
+	const previewImageData = '';
+
 	return (
 		<>
+		isPreview ? <img width='100%' src={previewImageData}/> :
 			<div
 				className={ classnames(
 					'uagb-forms__outer-wrap',

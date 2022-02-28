@@ -27,7 +27,11 @@ registerBlockType( 'uagb/post-masonry', {
 		__( 'uag', 'ultimate-addons-for-gutenberg' ),
 	],
 	edit,
-	example: {},
+	example: {
+		attributes: {
+			isPreview: true,
+		}
+	},
 	// Render via PHP
 	save() {
 		return null;

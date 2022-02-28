@@ -22,6 +22,7 @@ const Render = ( props ) => {
 	const { className, setAttributes, attributes } = props;
 
 	const {
+		isPreview,
 		skinStyle,
 		align,
 		stack,
@@ -34,8 +35,10 @@ const Render = ( props ) => {
 	} = attributes;
 
 	const deviceType = useDeviceType();
+	const previewImageData = '';
 
 	return (
+		isPreview ? <img width='100%' src={previewImageData}/> :
 			<div
 				className={ classnames(
 					className,

@@ -18,6 +18,7 @@ const Render = ( props ) => {
 	const { attributes, isSelected, className } = props;
 
 	const {
+		isPreview,
 		align,
 		contentWidth,
 		tag,
@@ -35,9 +36,10 @@ const Render = ( props ) => {
 			blockControlsClass = 'align' + align;
 		}
 	}
-
+	const previewImageData = '';
 	return (
 		<>
+		isPreview ? <img width='100%' src={previewImageData}/> :
 			<CustomTag
 				className={ classnames(
 					className,

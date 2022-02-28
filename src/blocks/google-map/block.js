@@ -28,7 +28,10 @@ registerBlockType( 'uagb/google-map', {
 	},
 	category: uagb_blocks_info.category,
 	attributes,
-	example: {},
+	isPreview: {
+		type: 'boolean',
+		default: false,
+	},
 	edit,
 	save,
 	deprecated,

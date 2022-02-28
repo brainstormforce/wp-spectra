@@ -19,7 +19,7 @@ const Render = ( props ) => {
 
 	const { className, attributes } = props;
 
-	const { loop, speed, reverse, lottieURl, playOn, align } = attributes;
+	const { isPreview, loop, speed, reverse, lottieURl, playOn, align } = attributes;
 
 	const reversedir = reverse && loop ? -1 : 1;
 
@@ -36,8 +36,10 @@ const Render = ( props ) => {
 	const toStopPlayAnimation = () => {
 		lottieplayer.current.stop();
 	}
+	const previewImageData = '';
 
 	return (
+		isPreview ? <img width='100%' src={previewImageData}/> :
 		<div // eslint-disable-line jsx-a11y/click-events-have-key-events, jsx-a11y/no-static-element-interactions
 			className={ classnames(
 				className,

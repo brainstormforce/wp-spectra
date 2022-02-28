@@ -21,7 +21,7 @@ const Render = ( props ) => {
 	const {
 		className,
 		setAttributes,
-		attributes: { rating, range, title },
+		attributes: { isPreview, rating, range, title },
 	} = props;
 
 	const rangeValue = parseInt( range );
@@ -33,8 +33,9 @@ const Render = ( props ) => {
 			</span>
 		);
 	}
-
+	const previewImageData = '';
 	return (
+		isPreview ? <img width='100%' src={previewImageData}/> :
 		<div
 			className={ classnames(
 				className,

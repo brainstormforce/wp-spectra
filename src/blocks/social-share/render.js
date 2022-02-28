@@ -23,7 +23,7 @@ const Render = ( props ) => {
 	const deviceType = useDeviceType();
 	const { attributes } = props;
 
-	const { className, social_layout } = attributes;
+	const { isPreview, className, social_layout } = attributes;
 
 	const getSocialShareTemplate = [
 		[
@@ -67,7 +67,10 @@ const Render = ( props ) => {
 		],
 	];
 
+	const previewImageData = '';
+
 	return (
+		isPreview ? <img width='100%' src={previewImageData}/> :
 		<div
 			className={ classnames(
 				className,

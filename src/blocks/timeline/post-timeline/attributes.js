@@ -687,6 +687,10 @@ const attributes = { // eslint-disable-line no-unused-vars
 		type: 'number',
 		isUAGStyle: true
 	},
+	isPreview: {
+		type: 'boolean',
+		default: false,
+	}
 }
 
 export default attributes;

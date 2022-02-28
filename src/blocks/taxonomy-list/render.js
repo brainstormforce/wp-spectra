@@ -20,6 +20,7 @@ const Render = ( props ) => {
 
 	// Caching all attributes.
 	const {
+		isPreview,
 		layout,
 		seperatorStyle,
 		noTaxDisplaytext,
@@ -35,9 +36,10 @@ const Render = ( props ) => {
 	} else if ( 'list' === layout ) {
 		Tag = titleTag ? titleTag : 'div';
 	}
-	
+	const previewImageData = '';
 		return (
 			<>
+			isPreview ? <img width='100%' src={previewImageData}/> :
 				<div
 					className={ classnames(
 						'uagb-taxonomy__outer-wrap',
@@ -81,7 +83,7 @@ const Render = ( props ) => {
 												} }
 											></a>
 											{ showCount && (
-												` (${ p.count })` 
+												` (${ p.count })`
 											) }
 											{ showhierarchy && p.children !== null && (
 												<ul className="uagb-taxonomy-list-children">

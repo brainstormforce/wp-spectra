@@ -28,6 +28,7 @@ const Render = ( props ) => {
 	} = props;
 
 	const {
+		isPreview,
 		align,
 		tag,
 		title,
@@ -190,9 +191,10 @@ const Render = ( props ) => {
 				/>
 		);
 	}
-
+	const previewImageData = '';
 	return (
 		<>
+		isPreview ? <img width='100%' src={previewImageData}/> :
 			<div
 				className={ classnames(
 					className,
