@@ -78,11 +78,11 @@ const AdvancedPopColorControl = ( props ) => {
 		if ( palette ) {
 			newColor = color;
 		} else if (	color.rgb && color.rgb.a && 1 !== color.rgb.a ) {
-			
+
 			if ( props.onOpacityChange ) {
 				opacity = color.rgb.a;
 			}
-			
+
 			newColor =
 				'rgba(' +
 				color.rgb.r +
@@ -93,7 +93,7 @@ const AdvancedPopColorControl = ( props ) => {
 				',' +
 				color.rgb.a +
 				')';
-			
+
 		} else if ( color.hex ) {
 			newColor = color.hex;
 		} else {
@@ -108,7 +108,7 @@ const AdvancedPopColorControl = ( props ) => {
 
 		if ( true === palette ) {
 			setValue( {
-				refresh: ! value.refresh, 
+				refresh: ! value.refresh,
 			} );
 		}
 
@@ -116,7 +116,7 @@ const AdvancedPopColorControl = ( props ) => {
 		if ( props.onOpacityChange ) {
 			props.onOpacityChange( opacity );
 		}
-		
+
 	};
 
 	const toggleVisible = () => {
@@ -142,7 +142,27 @@ const AdvancedPopColorControl = ( props ) => {
 
 	const colorVal = value.currentColor ? value.currentColor : props.colorValue;
 
-	const globalIndicator = ( colorVal && colorVal.includes( 'var' ) ) ? 'uag-global-indicator' : '';
+	const pickIconColorBasedOnBgColorAdvanced = ( color ) => {
+		const result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec( color );
+		const parsedColor = result
+		? {
+				r: parseInt( result[ 1 ], 16 ),
+				g: parseInt( result[ 2 ], 16 ),
+				b: parseInt( result[ 3 ], 16 ),
+		  }
+		: null;
+		if ( parsedColor ) {
+			const brightness = Math.round( ( ( parsedColor.r * 299 ) +
+						( parsedColor.g * 587 ) +
+						( parsedColor.b * 114 ) ) / 1000 );
+			const textColour = ( brightness > 125 ) ? 'black' : 'white';
+			return textColour;
+		}
+		return 'white';
+	}
+	const globalIconColor = pickIconColorBasedOnBgColorAdvanced( maybeGetColorForVariable( colorVal ) );
+
+	const globalIndicator = ( colorVal && colorVal.includes( 'var' ) ) ? `uag-global-indicator uag-global-icon-${globalIconColor}` : '';
 
 	return (
 		<div className="uagb-color-popover-container components-base-control new-uagb-advanced-colors">
@@ -170,7 +190,7 @@ const AdvancedPopColorControl = ( props ) => {
 							position="top left"
 							className="uagb-popover-color new-uagb-advanced-colors-pop"
 							onClose={ toggleClose }
-						>	
+						>
 							{ value.refresh && (
 								<>
 									<ColorPicker
@@ -215,7 +235,7 @@ const AdvancedPopColorControl = ( props ) => {
 										: 'uagb-no-alpha'
 								}` }
 								onClick={ toggleClose }
-							>	
+							>
 								<ColorIndicator
 									className={`uagb-advanced-color-indicate ${globalIndicator}`}
 									colorValue={ colorVal }
