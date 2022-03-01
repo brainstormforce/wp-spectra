@@ -288,7 +288,11 @@ function styling( props ) {
 		] = {
 			'fill': tweetBtnColor,
 		};
-
+		selectors[
+			'.uagb-blockquote__tweet-style-bubble a.uagb-blockquote__tweet-button'
+		] = {
+			'color': tweetBtnColor,
+		};
 		selectors[
 			'.uagb-blockquote__tweet-style-bubble a.uagb-blockquote__tweet-button:before'
 		] = {
