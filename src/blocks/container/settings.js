@@ -107,6 +107,8 @@ const Settings = ( props ) => {
 		columnGapTablet,
 		columnGapMobile,
 		columnGapType,
+		contentWidth,
+		isBlockRootParent
 	} = attributes;
 
 	let currentDirection = 'row';
@@ -316,11 +318,43 @@ const Settings = ( props ) => {
 			},
 		];
 
+		const contentWidthOptions = [
+			{
+				value: 'default',
+				tooltip: __( 'Default', 'ultimate-addons-for-gutenberg' ),
+				label: __( 'Default', 'ultimate-addons-for-gutenberg' ),
+			},
+			{
+				value: 'alignwide',
+				tooltip: __( 'Align Wide', 'ultimate-addons-for-gutenberg' ),
+				label: __( 'Align Wide', 'ultimate-addons-for-gutenberg' ),
+			},
+			{
+				value: 'alignfull',
+				tooltip: __( 'Full Width', 'ultimate-addons-for-gutenberg' ),
+				label: __( 'Full Width', 'ultimate-addons-for-gutenberg' ),
+			},
+		];
+
 		return (
 			<>
 				<UAGAdvancedPanelBody
 					title={ __( 'Size', 'ultimate-addons-for-gutenberg' ) }
+					initialOpen={ true }
 				>
+					{ isBlockRootParent &&
+						<MultiButtonsControl
+							setAttributes={ setAttributes }
+							label={ __( 'Content Width', 'ultimate-addons-for-gutenberg' ) }
+							data={ {
+								value: contentWidth,
+								label: 'contentWidth',
+							} }
+							options={ contentWidthOptions }
+							showIcons={ false }
+							responsive={false}
+						/>
+					}
 					<MultiButtonsControl
 						setAttributes={ setAttributes }
 						label={ __( 'Width', 'ultimate-addons-for-gutenberg' ) }
@@ -423,6 +457,7 @@ const Settings = ( props ) => {
 				</UAGAdvancedPanelBody>
 				<UAGAdvancedPanelBody
 					title={ __( 'Flex Properties', 'ultimate-addons-for-gutenberg' ) }
+					initialOpen={ false }
 				>
 					<MultiButtonsControl
 						setAttributes={ setAttributes }

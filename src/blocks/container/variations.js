@@ -69,28 +69,34 @@ const variations = [
 		scope: [ 'block' ],
 	},
 	{
-		name: 'three-column-first-half',
-		icon: rowIcons['25-25-50'],
+		name: '33-33-33_33-33-33',
+		icon: rowIcons['33-33-33_33-33-33'],
 		attributes: {
 			variationSelected: true,
+			wrapDesktop: 'wrap'
 		},
 		innerBlocks: [
-			[ 'uagb/container', { widthDesktop: 25 } ],
-			[ 'uagb/container', { widthDesktop: 25 } ],
-			[ 'uagb/container', { widthDesktop: 50 } ],
+			[ 'uagb/container', { widthDesktop: 33 } ],
+			[ 'uagb/container', { widthDesktop: 33 } ],
+			[ 'uagb/container', { widthDesktop: 33 } ],
+			[ 'uagb/container', { widthDesktop: 33 } ],
+			[ 'uagb/container', { widthDesktop: 33 } ],
+			[ 'uagb/container', { widthDesktop: 33 } ],
 		],
 		scope: [ 'block' ],
 	},
 	{
-		name: 'three-column',
-		icon: rowIcons['50-25-25'],
+		name: '50-50_50-50',
+		icon: rowIcons['50-50_50-50'],
 		attributes: {
 			variationSelected: true,
+			wrapDesktop: 'wrap'
 		},
 		innerBlocks: [
 			[ 'uagb/container', { widthDesktop: 50 } ],
-			[ 'uagb/container', { widthDesktop: 25 } ],
-			[ 'uagb/container', { widthDesktop: 25 } ],
+			[ 'uagb/container', { widthDesktop: 50 } ],
+			[ 'uagb/container', { widthDesktop: 50 } ],
+			[ 'uagb/container', { widthDesktop: 50 } ],
 		],
 		scope: [ 'block' ],
 	},
@@ -144,7 +150,7 @@ const variations = [
 		},
 		innerBlocks: [
 			[ 'uagb/container', { widthDesktop: 50 } ],
-			[ 
+			[
 				'uagb/container',
 				{ widthDesktop: 50, wrapDesktop: 'wrap' },
 				[
@@ -164,40 +170,14 @@ const variations = [
 		},
 		innerBlocks: [
 			[ 'uagb/container', { widthDesktop: 100 } ],
-			[ 
-				'uagb/container', 
+			[
+				'uagb/container',
 				{ widthDesktop: 100 },
 				[
 					[ 'uagb/container', { widthDesktop: 50 } ],
 					[ 'uagb/container', { widthDesktop: 50 } ],
 				]
 			],
-		],
-		scope: [ 'block' ],
-	},
-	{
-		name: '75+100_100+50-50-25',
-		icon: rowIcons['75+100_100+50-50-25'],
-		attributes: {
-			variationSelected: true,
-		},
-		innerBlocks: [
-			[ 
-				'uagb/container', 
-				{ widthDesktop: 75, wrapDesktop: 'wrap' }, 
-				[ 
-					[ 'uagb/container', { widthDesktop: 100 } ],
-					[ 
-						'uagb/container',
-						{ widthDesktop: 100 },
-						[
-							[ 'uagb/container', { widthDesktop: 50 } ],
-							[ 'uagb/container', { widthDesktop: 50 } ],
-						]
-					] 
-				] 
-			],
-			[ 'uagb/container', { widthDesktop: 25 } ],
 		],
 		scope: [ 'block' ],
 	},
@@ -218,52 +198,19 @@ const variations = [
 		scope: [ 'block' ],
 	},
 	{
-		name: '50+100_100+50-50-50+50-50',
-		icon: rowIcons['50+100_100+50-50-50+50-50'],
-		attributes: {
-			variationSelected: true,
-		},
-		innerBlocks: [
-			[ 
-				'uagb/container', 
-				{ widthDesktop: 50, wrapDesktop: 'wrap' }, 
-				[ 
-					[ 'uagb/container', { widthDesktop: 100 } ],
-					[ 
-						'uagb/container',
-						{ widthDesktop: 100 },
-						[
-							[ 'uagb/container', { widthDesktop: 50 } ],
-							[ 'uagb/container', { widthDesktop: 50 } ],
-						]
-					] 
-				] 
-			],
-			[ 
-				'uagb/container', 
-				{ widthDesktop: 50, wrapDesktop: 'wrap' }, 
-				[ 
-					[ 'uagb/container', { widthDesktop: 50 } ],
-					[ 'uagb/container', { widthDesktop: 50 } ], 
-				] 
-			],
-		],
-		scope: [ 'block' ],
-	},
-	{
 		name: '50+100_100-50',
 		icon: rowIcons['50+100_100-50'],
 		attributes: {
 			variationSelected: true,
 		},
 		innerBlocks: [
-			[ 
-				'uagb/container', 
+			[
+				'uagb/container',
 				{ widthDesktop: 50, wrapDesktop: 'wrap' },
 				[
 					[ 'uagb/container', { widthDesktop: 100 } ],
 					[ 'uagb/container', { widthDesktop: 100 } ],
-				] 
+				]
 			],
 			[ 'uagb/container', { widthDesktop: 50 } ],
 		],
@@ -277,30 +224,41 @@ const variations = [
 			wrapDesktop: 'wrap'
 		},
 		innerBlocks: [
-			[ 
-				'uagb/container', 
+			[
+				'uagb/container',
 				{ widthDesktop: 100 },
 				[
 					[ 'uagb/container', { widthDesktop: 50 } ],
 					[ 'uagb/container', { widthDesktop: 50 } ],
-				] 
+				]
 			],
 			[ 'uagb/container', { widthDesktop: 100 } ],
 		],
 		scope: [ 'block' ],
 	},
 	{
-		name: '50-50_50-50',
-		icon: rowIcons['50-50_50-50'],
+		name: 'three-column-first-half',
+		icon: rowIcons['25-25-50'],
 		attributes: {
 			variationSelected: true,
-			wrapDesktop: 'wrap'
+		},
+		innerBlocks: [
+			[ 'uagb/container', { widthDesktop: 25 } ],
+			[ 'uagb/container', { widthDesktop: 25 } ],
+			[ 'uagb/container', { widthDesktop: 50 } ],
+		],
+		scope: [ 'block' ],
+	},
+	{
+		name: 'three-column',
+		icon: rowIcons['50-25-25'],
+		attributes: {
+			variationSelected: true,
 		},
 		innerBlocks: [
 			[ 'uagb/container', { widthDesktop: 50 } ],
-			[ 'uagb/container', { widthDesktop: 50 } ],
-			[ 'uagb/container', { widthDesktop: 50 } ],
-			[ 'uagb/container', { widthDesktop: 50 } ],
+			[ 'uagb/container', { widthDesktop: 25 } ],
+			[ 'uagb/container', { widthDesktop: 25 } ],
 		],
 		scope: [ 'block' ],
 	},
@@ -312,13 +270,13 @@ const variations = [
 		},
 		innerBlocks: [
 			[ 'uagb/container', { widthDesktop: 33 } ],
-			[ 
-				'uagb/container', 
+			[
+				'uagb/container',
 				{ widthDesktop: 33, wrapDesktop: 'wrap' },
 				[
 					[ 'uagb/container', { widthDesktop: 100 } ],
 					[ 'uagb/container', { widthDesktop: 100 } ]
-				] 
+				]
 			],
 			[ 'uagb/container', { widthDesktop: 33 } ],
 		],
@@ -333,55 +291,12 @@ const variations = [
 		innerBlocks: [
 			[ 'uagb/container', { widthDesktop: 33 } ],
 			[ 'uagb/container', { widthDesktop: 33 } ],
-			[ 
-				'uagb/container', 
+			[
+				'uagb/container',
 				{ widthDesktop: 33, wrapDesktop: 'wrap' },
 				[
 					[ 'uagb/container', { widthDesktop: 100 } ],
 					[ 'uagb/container', { widthDesktop: 100 } ]
-				] 
-			],
-		],
-		scope: [ 'block' ],
-	},
-	{
-		name: '33-33-33_33-33-33',
-		icon: rowIcons['33-33-33_33-33-33'],
-		attributes: {
-			variationSelected: true,
-			wrapDesktop: 'wrap'
-		},
-		innerBlocks: [
-			[ 'uagb/container', { widthDesktop: 33 } ],
-			[ 'uagb/container', { widthDesktop: 33 } ],
-			[ 'uagb/container', { widthDesktop: 33 } ],
-			[ 'uagb/container', { widthDesktop: 33 } ],
-			[ 'uagb/container', { widthDesktop: 33 } ],
-			[ 'uagb/container', { widthDesktop: 33 } ],
-		],
-		scope: [ 'block' ],
-	},
-	{
-		name: '25-75+100+50-50_100',
-		icon: rowIcons['25-75+100+50-50_100'],
-		attributes: {
-			variationSelected: true,
-		},
-		innerBlocks: [
-			[ 'uagb/container', { widthDesktop: 25 } ],
-			[ 
-				'uagb/container', 
-				{ widthDesktop: 75, wrapDesktop: 'wrap' },
-				[
-					[ 
-						'uagb/container', 
-						{ widthDesktop: 100 },
-						[
-							[ 'uagb/container', { widthDesktop: 50 } ],
-							[ 'uagb/container', { widthDesktop: 50 } ],
-						]
-					],
-					[ 'uagb/container', { widthDesktop: 100 } ],
 				]
 			],
 		],

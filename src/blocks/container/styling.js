@@ -85,6 +85,7 @@ function styling( props ) {
 		columnGapTablet,
 		columnGapMobile,
 		columnGapType,
+		contentWidth
 	} = props.attributes;
 
 	const selectors = {};
@@ -144,8 +145,6 @@ function styling( props ) {
 		'column-gap' : generateCSSUnit( columnGapDesktop, columnGapType ),
 	}
 	selectors['.block-editor-block-list__block'] = {
-		'width' : generateCSSUnit( widthDesktop, widthType ),
-		'max-width' : generateCSSUnit( widthDesktop, widthType ),
 		'min-height' : generateCSSUnit( minHeightDesktop, minHeightType ),
 		'flex-direction' : directionDesktop,
 		'align-items' : alignItemsDesktop,
@@ -153,6 +152,27 @@ function styling( props ) {
 		'flex-wrap' : wrapDesktop,
 		'align-content' : alignContentDesktop,
 	}
+
+	const widthSelectorsDesktop = {
+		[`.is-root-container > .block-editor-block-list__block .block-editor-block-list__block#block-${ props.clientId } `] : {
+			'max-width' : generateCSSUnit( widthDesktop, widthType ),
+			'width' : generateCSSUnit( widthDesktop, widthType ),
+		},
+	};
+
+	const widthSelectorsTablet = {
+		[`.is-root-container > .block-editor-block-list__block .uagb-editor-preview-mode-tablet.block-editor-block-list__block#block-${ props.clientId } `] : {
+			'max-width' : generateCSSUnit( widthTablet, widthType ),
+			'width' : generateCSSUnit( widthTablet, widthType ),
+		},
+	};
+
+	const widthSelectorsMobile = {
+		[`.is-root-container > .block-editor-block-list__block .uagb-editor-preview-mode-mobile.block-editor-block-list__block#block-${ props.clientId } `] : {
+			'max-width' : generateCSSUnit( widthMobile, widthType ),
+			'width' : generateCSSUnit( widthMobile, widthType ),
+		},
+	};
 
 	const tablet_selectors = {
 		' > .wp-block-uagb-container' : {
@@ -176,8 +196,6 @@ function styling( props ) {
 			'column-gap' : generateCSSUnit( columnGapTablet, columnGapType ),
 		},
 		'.block-editor-block-list__block' : {
-			'width' : generateCSSUnit( widthTablet, widthType ),
-			'max-width' : generateCSSUnit( widthTablet, widthType ),
 			'min-height' : generateCSSUnit( minHeightTablet, minHeightType ),
 			'flex-direction' : directionTablet,
 			'align-items' : alignItemsTablet,
@@ -209,8 +227,6 @@ function styling( props ) {
 			'column-gap' : generateCSSUnit( columnGapMobile, columnGapType ),
 		},
 		'.block-editor-block-list__block' : {
-			'width' : generateCSSUnit( widthMobile, widthType ),
-			'max-width' : generateCSSUnit( widthMobile, widthType ),
 			'min-height' : generateCSSUnit( minHeightMobile, minHeightType ),
 			'flex-direction' : directionMobile,
 			'align-items' : alignItemsMobile,
@@ -220,9 +236,22 @@ function styling( props ) {
 		}
 	};
 
+	if ( 'default' === contentWidth ) {
+		selectors['.block-editor-block-list__block'].width = generateCSSUnit( widthDesktop, widthType );
+		selectors['.block-editor-block-list__block']['max-width'] = generateCSSUnit( widthDesktop, widthType );
+
+		tablet_selectors['.block-editor-block-list__block'].width = generateCSSUnit( widthTablet, widthType );
+		tablet_selectors['.block-editor-block-list__block']['max-width'] = generateCSSUnit( widthTablet, widthType );
+
+		mobile_selectors['.block-editor-block-list__block'].width = generateCSSUnit( widthMobile, widthType );
+		mobile_selectors['.block-editor-block-list__block']['max-width'] = generateCSSUnit( widthMobile, widthType );
+	}
+
 	const base_selector = `.editor-styles-wrapper #block-${ props.clientId }`;
 
 	let styling_css = generateCSS( selectors, base_selector );
+
+	styling_css += generateCSS( widthSelectorsDesktop, '.editor-styles-wrapper ' );
 
 	styling_css += generateCSS(
 		tablet_selectors,
@@ -232,8 +261,22 @@ function styling( props ) {
 	);
 
 	styling_css += generateCSS(
+		widthSelectorsTablet,
+		'.editor-styles-wrapper ',
+		true,
+		'tablet'
+	);
+
+	styling_css += generateCSS(
 		mobile_selectors,
 		`${ base_selector }.uagb-editor-preview-mode-mobile`,
+		true,
+		'mobile'
+	);
+
+	styling_css += generateCSS(
+		widthSelectorsMobile,
+		'.editor-styles-wrapper ',
 		true,
 		'mobile'
 	);
