@@ -175,8 +175,8 @@ const AdvancedControlsBlock = createHigherOrderComponent( ( BlockEdit ) => {
 						initialOpen={ false }
 						className="block-editor-block-inspector__advanced uagb-extention-tab"
 					>
-						<p className="components-base-control__help">{ __( "Below UAG settings will only take effect once you are on the live page, and not while you're editing.", 'ultimate-addons-for-gutenberg' ) }</p>
 						{ UserConditionOptions( props ) }
+						<p className="components-base-control__help">{ __( "Above UAG settings will only take effect once you are on the live page, and not while you're editing.", 'ultimate-addons-for-gutenberg' ) }</p>
 					</UAGAdvancedPanelBody>
 				</InspectorControls>
 				}
@@ -234,13 +234,13 @@ if ( 'enabled' === enableConditions ) {
 						initialOpen={ false }
 						className="block-editor-block-inspector__advanced uagb-extention-tab"
 					>
+						{ UserConditionOptions( props ) }
 						<p className="components-base-control__help">
 							{ __(
-								"Below setting will only take effect once you are on the live page, and not while you're editing.",
+								"Above setting will only take effect once you are on the live page, and not while you're editing.",
 								'ultimate-addons-for-gutenberg'
 							) }
 						</p>
-						{ UserConditionOptions( props ) }
 					</UAGAdvancedPanelBody>
 				);
 			}
