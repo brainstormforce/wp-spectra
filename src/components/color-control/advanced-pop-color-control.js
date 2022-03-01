@@ -46,7 +46,6 @@ const AdvancedPopColorControl = ( props ) => {
 
 	const defaultCache = {
 		value,
-		resetDisabled: true,
 	};
 
 	const [ cachedValue, setCacheValue ] = useState( defaultCache );
@@ -67,7 +66,6 @@ const AdvancedPopColorControl = ( props ) => {
 			JSON.stringify( value ) !==
 			JSON.stringify( cachedValueUpdate.value )
 		) {
-			cachedValueUpdate.resetDisabled = false;
 			setCacheValue( cachedValueUpdate );
 		}
 	}, [ value ] );
@@ -136,7 +134,6 @@ const AdvancedPopColorControl = ( props ) => {
 
 		props.onColorChange( cachedValueUpdate.value.currentColor );
 
-		cachedValueUpdate.resetDisabled = true;
 		setCacheValue( cachedValueUpdate );
 	};
 
@@ -174,7 +171,6 @@ const AdvancedPopColorControl = ( props ) => {
 				) }
 				<Button
 					className="uagb-reset"
-					disabled={ cachedValue.resetDisabled }
 					isSecondary
 					isSmall
 					onClick={ ( e ) => {
