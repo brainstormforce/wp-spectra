@@ -54,8 +54,8 @@ const UAGBContainer = ( props ) => {
 	}
 
 	useEffect( () => {
-		let isBlockRootParent = 0 === select( 'core/block-editor' ).getBlockParents( props.clientId ).length;
-		let hasChildren = 0 !== select( 'core/block-editor' ).getBlocks(props.clientId).length;
+		const isBlockRootParent = 0 === select( 'core/block-editor' ).getBlockParents( props.clientId ).length;
+		const hasChildren = 0 !== select( 'core/block-editor' ).getBlocks( props.clientId ).length;
 
 		if ( isBlockRootParent ) {
 			props.setAttributes( { isBlockRootParent: true } );
@@ -84,7 +84,7 @@ const UAGBContainer = ( props ) => {
 				element.classList.add( 'uagb-container-has-children' );
 			}
 			if ( props.attributes.isBlockRootParent || isBlockRootParent ) {
-				element.dataset.align = props.attributes.contentWidth;
+				element.dataset.align = props.attributes.contentWidth.split( 'align' )[1];
 			}
 		}
 
@@ -93,8 +93,8 @@ const UAGBContainer = ( props ) => {
 	useEffect( () => {
 
 		const iframeEl = document.querySelector( `iframe[name='editor-canvas']` );
-		let hasChildren = 0 !== select( 'core/block-editor' ).getBlocks(props.clientId).length;
-		console.log(select( 'core/block-editor' ).getBlocks(props.clientId));
+		const hasChildren = 0 !== select( 'core/block-editor' ).getBlocks( props.clientId ).length;
+
 		let element;
 		if( iframeEl ){
 			element = iframeEl.contentDocument.getElementById( 'block-' + props.clientId )
@@ -114,7 +114,7 @@ const UAGBContainer = ( props ) => {
 				element.classList.add( 'uagb-container-has-children' );
 			}
 			if ( props.attributes.isBlockRootParent ) {
-				element.dataset.align = props.attributes.contentWidth;
+				element.dataset.align = props.attributes.contentWidth.split( 'align' )[1];
 			}
 		}
 

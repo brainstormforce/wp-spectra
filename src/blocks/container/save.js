@@ -17,7 +17,8 @@ export default function save( props ) {
 			className={ classnames(
 				props.className,
 				`uagb-block-${ block_id }`,
-				isBlockRootParent ? contentWidth : ''
+				isBlockRootParent ? contentWidth : '',
+				isBlockRootParent ? 'uagb-is-root-container' : ''
 			) }
 		>
 			<InnerBlocks.Content />

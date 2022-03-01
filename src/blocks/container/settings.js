@@ -320,7 +320,7 @@ const Settings = ( props ) => {
 
 		const contentWidthOptions = [
 			{
-				value: '',
+				value: 'default',
 				tooltip: __( 'Default', 'ultimate-addons-for-gutenberg' ),
 				label: __( 'Default', 'ultimate-addons-for-gutenberg' ),
 			},
