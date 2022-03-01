@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import classnames from 'classnames';
 import { __ } from '@wordpress/i18n';
+import { RichText } from '@wordpress/block-editor';
 import { useDeviceType } from '@Controls/getPreviewType';
 
 const propTypes = {};
@@ -17,7 +18,8 @@ const Render = ( props ) => {
 	} = props.parentProps;
 
 	const {
-		block_id
+		block_id,
+		heading
 	} = attributes
 
 
@@ -33,7 +35,13 @@ const Render = ( props ) => {
 					<span className="uagb-counter-block-number" data-duration="2000" data-to-value="10000" data-from-value="0" data-delimiter=".">10.000</span>
 					<span className="uagb-counter-block-suffix">World</span>
 				</div>
-				<div className="wp-block-uagb-counter__title">Cool Number</div>
+				<RichText
+					tagName="div"
+					className="wp-block-uagb-counter__title"
+					value={ heading }
+					onChange={ ( value ) => setAttributes( { heading: value } ) }
+					placeholder={ __( 'Heading...' ) }
+				/>
 			</div>
 		</React.Fragment>
 	);
