@@ -14,13 +14,25 @@ const Render = ( props ) => {
 		setAttributes,
 		className,
 		isSelected,
-		clientId
+		clientId,
+		deviceType
 	} = props.parentProps;
 
 	const {
 		block_id,
-		heading
+		layout,
+		heading,
+		numberPrefix,
+		numberSuffix,
+		startNumber,
+		endNumber,
+		animationDuration,
+		thousandSeparator,
 	} = attributes
+
+	useEffect( () => {
+		UAGBCounter.init( '.uagb-block-' + block_id, props.attributes ) // eslint-disable-line no-undef
+	}, [props.attributes, deviceType] )
 
 
 	return (
@@ -28,12 +40,17 @@ const Render = ( props ) => {
 			<div className={ classnames(
 				props.className,
 				`uagb-block-${ block_id }`,
-				'wp-block-uagb-counter'
+				'wp-block-uagb-counter',
+				`wp-block-uagb-counter--${ layout }`,
 			) }>
 				<div className="wp-block-uagb-counter__number">
-					<span className="uagb-counter-block-prefix">Hello</span>
-					<span className="uagb-counter-block-number" data-duration="2000" data-to-value="10000" data-from-value="0" data-delimiter=".">10.000</span>
-					<span className="uagb-counter-block-suffix">World</span>
+					{
+						numberPrefix && (<span className="uagb-counter-block-prefix">{numberPrefix}</span>)
+					}
+					<span className="uagb-counter-block-number" data-duration={animationDuration} data-to-value={endNumber} data-from-value={startNumber} data-delimiter={thousandSeparator}></span>
+					{
+						numberSuffix && (<span className="uagb-counter-block-suffix">{numberSuffix}</span>)
+					}
 				</div>
 				<RichText
 					tagName="div"

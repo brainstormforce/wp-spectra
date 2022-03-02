@@ -2,12 +2,16 @@ const attributes = {
 	block_id: {
 		type: 'string',
 	},
+	layout: {
+		type: 'string',
+		default: 'number',
+	},
 	startNumber: {
 		type: 'number',
 		default: 0,
 	},
 	endNumber: {
-		type: 'number',
+		type: 'string',
 		default: 100,
 	},
 	numberPrefix: {
@@ -33,10 +37,6 @@ const attributes = {
 	headingTag: {
 		type: 'string',
 		default: '',
-	},
-	layout: {
-		type: 'string',
-		default: 'default',
 	},
 };
 

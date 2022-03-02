@@ -146,6 +146,10 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 						'dep'        => array( 'jquery', 'uagb-bodymovin-js' ),
 						'skipEditor' => true,
 					),
+					'uagb-counter-js'         => array(
+						'src'        => UAGB_Scripts_Utils::get_js_url( 'counter' ),
+						'dep'        => array( 'jquery' ),
+					),
 				);
 			}
 			return self::$block_assets;

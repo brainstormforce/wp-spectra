@@ -19,6 +19,16 @@ export default function Settings( props ) {
 			title={ __( 'General', 'ultimate-addons-for-gutenberg' ) }
 			initialOpen={ true }
 		>
+			<SelectControl
+				label={ __( 'Layout', 'ultimate-addons-for-gutenberg' ) }
+				value={ layout }
+				options={ [
+					{ label: __( 'Number Counter', 'ultimate-addons-for-gutenberg' ), value: 'number' },
+					{ label: __( 'Circle Counter', 'ultimate-addons-for-gutenberg' ), value: 'circle' },
+					{ label: __( 'Bars Counter', 'ultimate-addons-for-gutenberg' ), value: 'bars' },
+				] }
+				onChange={ ( value ) => setAttributes({layout: value}) }
+			/>
 			<TextControl
 				label={ __( 'Starting Number', 'ultimate-addons-for-gutenberg' ) }
 				value={ startNumber }
