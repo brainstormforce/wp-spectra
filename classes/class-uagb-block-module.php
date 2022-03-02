@@ -131,7 +131,6 @@ if ( ! class_exists( 'UAGB_Block_Module' ) ) {
 			}
 
 			$blocks_info = self::get_blocks_info();
-
 			if ( ! isset( $blocks_info[ 'uagb/' . $slug ] ) || ! isset( $blocks_info[ 'uagb/' . $slug ]['dynamic_assets'] ) ) {
 				return $assets;
 			}

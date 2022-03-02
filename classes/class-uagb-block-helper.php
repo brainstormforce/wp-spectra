@@ -871,5 +871,106 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 
 			return $gen_bg_css;
 		}
+		
+		/**
+		 * Get Matrix Alignment Value
+		 *
+		 * Syntax:
+		 *
+		 *  get_matrix_alignment( VALUE, POSITION, FORMAT );
+		 *
+		 * E.g.
+		 *
+		 *  get_matrix_alignment( VALUE, 2, 'flex' );
+		 *
+		 * @param string $value  Alignment Matrix value.
+		 * @param int $pos  Human readable position.
+		 * @param string $format  Response format.
+		 * @since 2.0.0
+		 */
+		public static function get_matrix_alignment( $value, $pos, $format='' ) {
+			$alignment_property = explode( ' ', esc_attr( $value ) )[ $pos - 1 ];
+			switch ( $format ) {
+				case 'flex':
+					switch ( $alignment_property ) {
+						case 'top':
+						case 'left':
+							$alignment_property = 'flex-start';
+							break;
+						case 'bottom':
+						case 'right':
+							$alignment_property = 'flex-end';
+							break;
+					}
+					break;
+			}
+			return $alignment_property;
+		}
+		
+		/**
+		 * Generate Border Radius
+		 *
+		 * Syntax:
+		 *
+		 *  generate_border_radius( UNIT, TOP_LEFT, TOP_RIGHT, BOTTOM_RIGHT, BOTTOM_LEFT );
+		 *
+		 * E.g.
+		 *
+		 *  generate_border_radius( 'em', 9, 7, 5, 3 );
+		 *
+		 * @param string $unit  Alignment Matrix value.
+		 * @param int $topLeft  Top Left Value.
+		 * @param int $topRight  Top Right Value.
+		 * @param int $bottomRight  Bottom Right Value.
+		 * @param int $bottomLeft  Bottom Left Value.
+		 * @since 2.0.0
+		 */
+		public static function generate_border_radius( $unit, $topLeft, $topRight=NAN, $bottomRight=NAN, $bottomLeft=NAN ){
+			$borderRadius =  ! is_nan( $topRight )
+				? (
+					! is_nan( $bottomRight )
+					? (
+						! is_nan( $bottomLeft )
+						? UAGB_Helper::get_css_value( $topLeft, $unit ) . ' ' . UAGB_Helper::get_css_value( $topRight, $unit ) . ' ' . UAGB_Helper::get_css_value( $bottomRight, $unit ) . ' ' . UAGB_Helper::get_css_value( $bottomLeft, $unit )
+						: UAGB_Helper::get_css_value( $topLeft, $unit ) . ' ' . UAGB_Helper::get_css_value( $topRight, $unit ) . ' ' . UAGB_Helper::get_css_value( $bottomRight, $unit )
+					)
+					: UAGB_Helper::get_css_value( $topLeft, $unit ) . ' ' . UAGB_Helper::get_css_value( $topRight, $unit )
+				)
+				: UAGB_Helper::get_css_value( $topLeft, $unit );
+			return $borderRadius;
+		}
+		
+		/**
+		 * Generate Spacing
+		 *
+		 * Syntax:
+		 *
+		 *  generate_spacing( UNIT, TOP, RIGHT, BOTTOM, LEFT );
+		 *
+		 * E.g.
+		 *
+		 *  generate_spacing( 'em', 9, 7, 5, 3 );
+		 *
+		 * @param string $unit  Alignment Matrix value.
+		 * @param int $top  Top Value.
+		 * @param int $right  Right Value.
+		 * @param int $bottom  Bottom Value.
+		 * @param int $left  Left Value.
+		 * @since 2.0.0
+		 */
+		public static function generate_spacing( $unit, $top, $right=NAN, $bottom=NAN, $left=NAN ){
+			$spacing =  ! is_nan( $top )
+				? (
+					! is_nan( $right )
+					? (
+						! is_nan( $bottom )
+						? UAGB_Helper::get_css_value( $top, $unit ) . ' ' . UAGB_Helper::get_css_value( $right, $unit ) . ' ' . UAGB_Helper::get_css_value( $bottom, $unit ) . ' ' . UAGB_Helper::get_css_value( $left, $unit )
+						: UAGB_Helper::get_css_value( $top, $unit ) . ' ' . UAGB_Helper::get_css_value( $right, $unit ) . ' ' . UAGB_Helper::get_css_value( $bottom, $unit )
+					)
+					: UAGB_Helper::get_css_value( $top, $unit ) . ' ' . UAGB_Helper::get_css_value( $right, $unit )
+				)
+				: UAGB_Helper::get_css_value( $top, $unit );
+			return $spacing;
+		}
 	}
 }

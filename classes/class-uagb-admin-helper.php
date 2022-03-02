@@ -381,6 +381,195 @@ if ( ! class_exists( 'UAGB_Admin_Helper' ) ) {
 			return 1;
 		}
 
+		/**
+		 * Set Transient
+		 *
+		 * @since 2.0.0
+		 * @return array
+		 * @access public
+		 */
+		public static function get_insta_media_transients( $specificUser = NULL ) {
+			if ( $specificUser !== NULL ){
+				$linked_users =  self::get_admin_settings_option( 'uag_insta_linked_accounts', array() );
+				$cur_user = NULL;
+				foreach ( $linked_users as $user ) {
+					if ( $user[ 'userName' ] === $specificUser ){
+						$cur_user = $user;
+						break;
+					}
+				}
+				if( ! $cur_user ){
+					return;
+				}
+				self::refreshUserToken( $cur_user );
+				$curUserMedia = array();
+				$transientName = 'ig_posts_of_' . $cur_user[ 'userName' ];
+				if ( false === ( $mediaFetched = get_transient( $transientName ) ) ){
+					$mediaFetched = wp_remote_get( 'https://graph.instagram.com/' . $cur_user[ 'userID' ] . '/media?fields=caption,id,media_type,media_url,permalink,thumbnail_url,timestamp&access_token=' . $cur_user[ 'token' ] );
+					if ( ! is_wp_error( $mediaFetched ) ) {
+						$curUserMedia = self::getParsedInstaMedia( $mediaFetched, $cur_user[ 'token' ] );
+						$transientExpiry = HOUR_IN_SECONDS;
+						switch ( $cur_user[ 'postRefreshRate' ] ){
+							case 'm-1':
+								$transientExpiry = MINUTE_IN_SECONDS;
+								break;
+							case 'm-5':
+								$transientExpiry = MINUTE_IN_SECONDS * 5;
+								break;
+							case 'm-10':
+								$transientExpiry = MINUTE_IN_SECONDS * 10;
+								break;
+							case 'm-15':
+								$transientExpiry = HOUR_IN_SECONDS / 4;
+								break;
+							case 'm-30':
+								$transientExpiry = HOUR_IN_SECONDS / 2;
+								break;
+							case 'H-1':
+								$transientExpiry = HOUR_IN_SECONDS;
+								break;
+							case 'H-2':
+								$transientExpiry = HOUR_IN_SECONDS * 2;
+								break;
+							case 'H-4':
+								$transientExpiry = HOUR_IN_SECONDS * 4;
+								break;
+							case 'H-8':
+								$transientExpiry = HOUR_IN_SECONDS * 8;
+								break;
+							case 'H-12':
+								$transientExpiry = DAY_IN_SECONDS / 2;
+								break;
+							case 'D-1':
+								$transientExpiry = DAY_IN_SECONDS;
+								break;
+							case 'W-1':
+								$transientExpiry = WEEK_IN_SECONDS;
+								break;
+							case 'W-2':
+								$transientExpiry = WEEK_IN_SECONDS * 2;
+								break;
+							case 'M-1':
+								$transientExpiry = MONTH_IN_SECONDS;
+								break;
+						}
+						set_transient( $transientName, $curUserMedia, $transientExpiry );
+					}
+					else return is_wp_error( $mediaFetched );
+				}
+				return get_transient( $transientName );
+			}
+			else{
+				$insta_user_transients = array();		
+				// Get all users.
+				$linked_users =  self::get_admin_settings_option( 'uag_insta_linked_accounts', array() );
+				// Set all transients for new users ( if any ) and refresh expired transients.
+				foreach ( $linked_users as $user ) {
+					if ( ! $user[ 'isCurrentlyActive' ] ){
+						continue;
+					}
+					self::refreshUserToken( $user );
+					$curUserMedia = array();
+					$transientName = 'ig_posts_of_' . $user[ 'userName' ];
+					// delete_transient( $transientName );
+					if ( false === ( $mediaFetched = get_transient( $transientName ) ) ){
+						$mediaFetched = wp_remote_get( 'https://graph.instagram.com/' . $user[ 'userID' ] . '/media?fields=caption,id,media_type,media_url,permalink,thumbnail_url,timestamp&access_token=' . $user[ 'token' ] );
+						if ( ! is_wp_error( $mediaFetched ) ) {
+							$curUserMedia = self::getParsedInstaMedia( $mediaFetched, $user[ 'token' ] );
+							$transientExpiry = HOUR_IN_SECONDS;
+							switch ( $user[ 'postRefreshRate' ] ){
+								case 'm-1':
+									$transientExpiry = MINUTE_IN_SECONDS;
+									break;
+								case 'm-5':
+									$transientExpiry = MINUTE_IN_SECONDS * 5;
+									break;
+								case 'm-10':
+									$transientExpiry = MINUTE_IN_SECONDS * 10;
+									break;
+								case 'm-15':
+									$transientExpiry = HOUR_IN_SECONDS / 4;
+									break;
+								case 'm-30':
+									$transientExpiry = HOUR_IN_SECONDS / 2;
+									break;
+								case 'H-1':
+									$transientExpiry = HOUR_IN_SECONDS;
+									break;
+								case 'H-2':
+									$transientExpiry = HOUR_IN_SECONDS * 2;
+									break;
+								case 'H-4':
+									$transientExpiry = HOUR_IN_SECONDS * 4;
+									break;
+								case 'H-8':
+									$transientExpiry = HOUR_IN_SECONDS * 8;
+									break;
+								case 'H-12':
+									$transientExpiry = DAY_IN_SECONDS / 2;
+									break;
+								case 'D-1':
+									$transientExpiry = DAY_IN_SECONDS;
+									break;
+								case 'W-1':
+									$transientExpiry = WEEK_IN_SECONDS;
+									break;
+								case 'W-2':
+									$transientExpiry = WEEK_IN_SECONDS * 2;
+									break;
+								case 'M-1':
+									$transientExpiry = MONTH_IN_SECONDS;
+									break;
+							}
+							set_transient( $transientName, $curUserMedia, $transientExpiry );
+						}
+						else return is_wp_error( $mediaFetched );
+					}
+					$insta_user_transients[ $user[ 'userName' ] ] = get_transient( $transientName );
+				}
+				self::update_admin_settings_option( 'uag_insta_all_users_media', $insta_user_transients );
+				return self::get_admin_settings_option( 'uag_insta_all_users_media', array() );
+			}
+		}
+
+		private static function getParsedInstaMedia( $fetchedMedia, $theUserToken ){
+			$builtMediaObjects = array();
+			do{
+				$thereIsMore = false;
+				$fetchedMedia = json_decode( $fetchedMedia[ 'body' ], true );
+				foreach ( $fetchedMedia[ 'data' ] as $mediaObject ) {
+					if ( $mediaObject[ 'media_type' ] === 'CAROUSEL_ALBUM' ){
+						$fetchedChildren = wp_remote_get( 'https://graph.instagram.com/' . $mediaObject[ 'id' ] . '/children?fields=id,media_type,media_url,permalink,thumbnail_url&access_token=' . $theUserToken );
+						! is_wp_error( $fetchedChildren )
+						? $mediaObject[ 'collection' ] = self::getParsedInstaMedia( $fetchedChildren, $theUserToken )
+						: $mediaObject[ 'collection' ] = $fetchedChildren;
+					}
+					array_push( $builtMediaObjects, json_encode( $mediaObject ) );
+				}
+				if ( isset( $fetchedMedia[ 'paging' ][ 'next' ] ) ){
+					$thereIsMore = true;
+					$fetchedMedia = wp_remote_get( $fetchedMedia[ 'paging' ][ 'next' ]  );
+				}
+			} while( $thereIsMore );
+			return $builtMediaObjects;
+		}
+
+		private static function refreshUserToken( $theUser ){
+			// Expiry Date Format: yyyy-mm-dd
+			if( ! $theUser ){
+				return;
+			}
+			$expiry = strtotime( $theUser[ 'expiryDate' ] );
+			$today = time();
+			$theGap = ceil( ( $expiry - $today ) / 86400 );
+			if ( $theGap < 60 ){
+				$refreshLink = wp_remote_get( 'https://graph.instagram.com/refresh_access_token?grant_type=ig_refresh_token&access_token=' . $theUser[ 'token' ] );
+				if ( is_wp_error( $refreshLink ) ){
+					$theUser[ 'isCurrentlyActive' ] = false;
+				}
+			}
+		}
+		
 	}
 
 	/**

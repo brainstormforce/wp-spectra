@@ -100,6 +100,18 @@ final class UAGB_Scripts_Utils {
 			)
 		);
 
+		$uagb_instagram_masonry_ajax_nonce = wp_create_nonce( 'uagb_instagram_masonry_ajax_nonce' );
+		$uagb_instagram_grid_pagination_ajax_nonce = wp_create_nonce( 'uagb_instagram_grid_pagination_ajax_nonce' );
+		wp_localize_script(
+			'uagb-instagram-feed-js',
+			'uagb_instagram_media',
+			array(
+				'ajax_url' => admin_url( 'admin-ajax.php' ),
+				'uagb_instagram_masonry_ajax_nonce' => $uagb_instagram_masonry_ajax_nonce,
+				'uagb_instagram_grid_pagination_ajax_nonce' => $uagb_instagram_grid_pagination_ajax_nonce,
+			)
+		);		
+
 	}
 
 	/**

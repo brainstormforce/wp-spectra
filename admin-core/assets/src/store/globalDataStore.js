@@ -16,7 +16,8 @@ const initialState = {
     enableCollapsePanels : '',
     enableCopyPasteStyles : '',
     enableDisplayConditions : '',
-    enableMasonryExtension : ''
+    enableMasonryExtension : '',
+    instaLinkedAccounts: '',
 };
 
 const globalDataStore = createStore(

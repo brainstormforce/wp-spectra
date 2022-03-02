@@ -13,6 +13,7 @@ import LoadFontsLocally from '@DashboardApp/pages/settings/LoadFontsLocally';
 import PreloadLocalFonts from '@DashboardApp/pages/settings/PreloadLocalFonts';
 import CollapsePanels from '@DashboardApp/pages/settings/CollapsePanels';
 import CopyPasteStyles from '@DashboardApp/pages/settings/CopyPasteStyles';
+import InstagramUsers from '@DashboardApp/pages/settings/block-settings/InstagramUsers';
 
 function classNames( ...classes ) {
     return classes.filter( Boolean ).join( ' ' )
@@ -24,13 +25,17 @@ const Settings = () => {
 
     const activeSettingsNavigationTab = useSelector( ( state ) => state.activeSettingsNavigationTab );
 
-    const navigation = [
+    let navigation = [
         { name: __( 'Asset Generation', 'ultimate-addons-for-gutenberg' ), slug: 'asset-generation', icon: SettingsIcons['asset-generation'] },
         { name: __( 'Templates', 'ultimate-addons-for-gutenberg' ), slug: 'templates', icon: SettingsIcons.templates },
         { name: __( 'Version Control', 'ultimate-addons-for-gutenberg' ), slug: 'version-control', icon: SettingsIcons['version-control'] },
         { name: __( 'Performance', 'ultimate-addons-for-gutenberg' ), slug: 'fonts-performance', icon: SettingsIcons['fonts-performance'] },
         { name: __( 'Global Settings', 'ultimate-addons-for-gutenberg' ), slug: 'global-settings', icon: SettingsIcons['global-settings'] },
       ];
+
+    uag_react.spectra_pro_status && navigation.push( 
+        { name: __( 'Block Settings', 'ultimate-addons-for-gutenberg' ), slug: 'block-settings', icon: SettingsIcons['global-settings'] }
+    );
 
     return (
         <main className="max-w-[77rem] mx-auto my-[2.43rem] bg-white rounded-[0.2rem] shadow overflow-hidden h-[33rem]">
@@ -81,6 +86,11 @@ const Settings = () => {
                         <>
                             <CollapsePanels/>
                             <CopyPasteStyles/>
+                        </>
+                    }
+                    { 'block-settings' === activeSettingsNavigationTab &&
+                        <>
+                                <InstagramUsers/>
                         </>
                     }
                 </div>

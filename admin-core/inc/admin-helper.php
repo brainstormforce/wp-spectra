@@ -57,6 +57,7 @@ class Admin_Helper {
 			'preload_local_fonts'                => \UAGB_Admin_Helper::get_admin_settings_option( 'uag_preload_local_fonts', 'disabled' ),
 			'uag_previous_versions'              => $uag_versions,
 			'changelog_data'                     => $changelog_data,
+			'insta_linked_accounts' => \UAGB_Admin_Helper::get_admin_settings_option( 'uag_insta_linked_accounts', array() ),
 		);
 
 		return $options;

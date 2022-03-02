@@ -552,6 +552,8 @@ class UAGB_Init_Blocks {
 				'uagb_old_user_less_than_2'          => get_option( 'uagb-old-user-less-than-2' ),
 				'collapse_panels'                    => UAGB_Admin_Helper::get_admin_settings_option( 'uag_collapse_panels', 'enabled' ),
 				'copy_paste'                         => UAGB_Admin_Helper::get_admin_settings_option( 'uag_copy_paste', 'enabled' ),
+				'insta_linked_accounts' => UAGB_Admin_Helper::get_admin_settings_option( 'uag_insta_linked_accounts', array() ),
+				'insta_all_users_media' => UAGB_Admin_Helper::get_insta_media_transients(),
 			)
 		);
 		// To match the editor with frontend.
