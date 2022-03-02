@@ -7,6 +7,9 @@ UAGBCounter = {
 	init(mainSelector, data = {}) {
 		this.elements = this.getDefaultElements(mainSelector);
 		if(typeof this.elements.counterWrapper !== 'undefined' && this.elements.counterWrapper){
+			if(data.layout === 'bars'){
+				this._triggerBar();
+			}
 			this._initCount();
 		}
 	},
@@ -42,14 +45,25 @@ UAGBCounter = {
 	},
 
 	_initCount(){
-
 		const el = this.elements.counterWrapper.querySelector('.uagb-counter-block-number')
-		// Start counting, typically you need to call this when the
-		// element becomes visible, or whenever you like.
-		this.numberCount( el, {
-			duration: 5000,
-			delay: 16,
-		} )
+		if(typeof el !== 'undefined' && el){
+			this.numberCount( el, {
+				duration: 5000,
+				delay: 16,
+			} )
+		}
+	},
+
+	_triggerBar(){
+		const that = this
+		const numberWrap = that.elements.counterWrapper.querySelector( '.wp-block-uagb-counter__number' );
+		jQuery(numberWrap).animate({
+			width: 100 + '%'
+		}, 2000);
+	},
+
+	_triggerCircle(){
+
 	},
 
 	numberCount( el, options = {} ){
