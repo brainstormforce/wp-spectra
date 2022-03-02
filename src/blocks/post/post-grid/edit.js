@@ -193,6 +193,7 @@ export default compose(
 			order,
 			orderBy,
 			postType,
+			postsOffset,
 			taxonomyType,
 			paginationMarkup,
 			postPagination,
@@ -244,6 +245,7 @@ export default compose(
 			order,
 			orderby: orderBy,
 			per_page: postsToShow,
+			offset: postsOffset
 		};
 		if ( excludeCurrentPost ) {
 			latestPostsQuery.exclude = select(

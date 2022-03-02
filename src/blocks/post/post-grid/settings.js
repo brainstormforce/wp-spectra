@@ -215,6 +215,7 @@ const Settings = ( props ) => {
 		paddingLeftMobile,
 		mobilePaddingUnit,
 		tabletPaddingUnit,
+		postsOffset
 	} = attributes;
 
 	const onSelectPostType = ( value ) => {
@@ -232,6 +233,10 @@ const Settings = ( props ) => {
 	};
 	const onChangePostsPerPage = ( value ) => {
 		setAttributes( { postsToShow: value } );
+		setAttributes( { paginationMarkup: 'empty' } );
+	};
+	const onChangePostsOffset = ( value ) => {
+		setAttributes( { postsOffset: value } );
 		setAttributes( { paginationMarkup: 'empty' } );
 	};
 	const onChangePageLimit = ( value ) => {
@@ -464,6 +469,18 @@ const Settings = ( props ) => {
 					setAttributes={ setAttributes }
 					value={ postsToShow }
 					onChange={ onChangePostsPerPage }
+					min={ 0 }
+					max={ 500 }
+					displayUnit={ false }
+				/>
+				<Range
+					label={ __(
+						'Offset Starting Post',
+						'ultimate-addons-for-gutenberg'
+					) }
+					setAttributes={ setAttributes }
+					value={ postsOffset }
+					onChange={ onChangePostsOffset }
 					min={ 0 }
 					max={ 500 }
 					displayUnit={ false }

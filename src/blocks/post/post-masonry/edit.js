@@ -470,6 +470,7 @@ const UAGBPostMasonry = ( props ) => {
 		tabletPaddingUnit,
 		excerptBottomSpaceUnit,
 		contentPaddingUnit,
+		postsOffset
 	} = attributes;
 
 	const taxonomyListOptions = [];
@@ -606,6 +607,20 @@ const UAGBPostMasonry = ( props ) => {
 					displayUnit={ false }
 					min={ 1 }
 					max={ 100 }
+				/>
+				<Range
+					label={ __(
+						'Offset Starting Post',
+						'ultimate-addons-for-gutenberg'
+					) }
+					setAttributes={ setAttributes }
+					value={ postsOffset }
+					onChange={ ( value ) =>
+						setAttributes( { postsOffset: value } )
+					}
+					min={ 0 }
+					max={ 100 }
+					displayUnit={ false }
 				/>
 				<MultiButtonsControl
 					setAttributes={ setAttributes }
@@ -2207,6 +2222,7 @@ export default compose(
 		const {
 			categories,
 			postsToShow,
+			postsOffset,
 			order,
 			orderBy,
 			postType,
@@ -2243,6 +2259,7 @@ export default compose(
 			order,
 			orderby: orderBy,
 			per_page: postsToShow,
+			offset: postsOffset
 		};
 
 		if ( excludeCurrentPost ) {
