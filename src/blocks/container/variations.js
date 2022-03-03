@@ -78,7 +78,9 @@ const variations = [
 		attributes: {
 			variationSelected: true,
 			directionDesktop: 'row',
-			wrapDesktop: 'wrap'
+			wrapDesktop: 'wrap',
+			rowGapDesktop: 0,
+			columnGapDesktop: 0
 		},
 		innerBlocks: [
 			[ 'uagb/container', { widthDesktop: 33 } ],
@@ -96,7 +98,9 @@ const variations = [
 		attributes: {
 			variationSelected: true,
 			directionDesktop: 'row',
-			wrapDesktop: 'wrap'
+			wrapDesktop: 'wrap',
+			rowGapDesktop: 0,
+			columnGapDesktop: 0
 		},
 		innerBlocks: [
 			[ 'uagb/container', { widthDesktop: 50 } ],
@@ -162,7 +166,7 @@ const variations = [
 			[ 'uagb/container', { widthDesktop: 50 } ],
 			[
 				'uagb/container',
-				{ widthDesktop: 50, wrapDesktop: 'wrap' },
+				{ widthDesktop: 50, wrapDesktop: 'wrap', rowGapDesktop: 0, columnGapDesktop: 0 },
 				[
 					[ 'uagb/container', { widthDesktop: 100 } ],
 					[ 'uagb/container', { widthDesktop: 100 } ],
@@ -177,13 +181,15 @@ const variations = [
 		attributes: {
 			variationSelected: true,
 			directionDesktop: 'row',
-			wrapDesktop: 'wrap'
+			wrapDesktop: 'wrap',
+			rowGapDesktop: 0,
+			columnGapDesktop: 0
 		},
 		innerBlocks: [
 			[ 'uagb/container', { widthDesktop: 100 } ],
 			[
 				'uagb/container',
-				{ widthDesktop: 100 },
+				{ widthDesktop: 100, directionDesktop: 'row' },
 				[
 					[ 'uagb/container', { widthDesktop: 50 } ],
 					[ 'uagb/container', { widthDesktop: 50 } ],
@@ -198,7 +204,9 @@ const variations = [
 		attributes: {
 			variationSelected: true,
 			directionDesktop: 'row',
-			wrapDesktop: 'wrap'
+			wrapDesktop: 'wrap',
+			rowGapDesktop: 0,
+			columnGapDesktop: 0
 		},
 		innerBlocks: [
 			[ 'uagb/container', { widthDesktop: 75 } ],
@@ -219,7 +227,7 @@ const variations = [
 		innerBlocks: [
 			[
 				'uagb/container',
-				{ widthDesktop: 50, wrapDesktop: 'wrap' },
+				{ widthDesktop: 50, wrapDesktop: 'wrap', rowGapDesktop: 0, columnGapDesktop: 0 },
 				[
 					[ 'uagb/container', { widthDesktop: 100 } ],
 					[ 'uagb/container', { widthDesktop: 100 } ],
@@ -235,7 +243,9 @@ const variations = [
 		attributes: {
 			variationSelected: true,
 			directionDesktop: 'row',
-			wrapDesktop: 'wrap'
+			wrapDesktop: 'wrap',
+			rowGapDesktop: 0,
+			columnGapDesktop: 0
 		},
 		innerBlocks: [
 			[
@@ -289,7 +299,7 @@ const variations = [
 			[ 'uagb/container', { widthDesktop: 33 } ],
 			[
 				'uagb/container',
-				{ widthDesktop: 33, wrapDesktop: 'wrap' },
+				{ widthDesktop: 33, wrapDesktop: 'wrap', rowGapDesktop: 0, columnGapDesktop: 0 },
 				[
 					[ 'uagb/container', { widthDesktop: 100 } ],
 					[ 'uagb/container', { widthDesktop: 100 } ]
@@ -311,7 +321,7 @@ const variations = [
 			[ 'uagb/container', { widthDesktop: 33 } ],
 			[
 				'uagb/container',
-				{ widthDesktop: 33, wrapDesktop: 'wrap' },
+				{ widthDesktop: 33, wrapDesktop: 'wrap', rowGapDesktop: 0, columnGapDesktop: 0 },
 				[
 					[ 'uagb/container', { widthDesktop: 100 } ],
 					[ 'uagb/container', { widthDesktop: 100 } ]
@@ -326,7 +336,9 @@ const variations = [
 		attributes: {
 			variationSelected: true,
 			directionDesktop: 'row',
-			wrapDesktop: 'wrap'
+			wrapDesktop: 'wrap',
+			rowGapDesktop: 0,
+			columnGapDesktop: 0
 		},
 		innerBlocks: [
 			[ 'uagb/container', { widthDesktop: 25 } ],
