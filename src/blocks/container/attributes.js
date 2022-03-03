@@ -173,20 +173,16 @@ const attributes = {
 	},
 
 	topPaddingDesktop: {
-		type: 'number',
-		default: 20,
+		type: 'number'
 	},
 	bottomPaddingDesktop: {
-		type: 'number',
-		default: 20,
+		type: 'number'
 	},
 	leftPaddingDesktop: {
-		type: 'number',
-		default: 20,
+		type: 'number'
 	},
 	rightPaddingDesktop: {
-		type: 'number',
-		default: 20,
+		type: 'number'
 	},
 	topPaddingTablet: {
 		type: 'number',
@@ -218,7 +214,7 @@ const attributes = {
 	},
 	paddingLink: {
 		type: 'boolean',
-		default: false,
+		default: true,
 	},
 
 	topMarginDesktop: {
@@ -263,7 +259,7 @@ const attributes = {
 	},
 	marginLink: {
 		type: 'boolean',
-		default: false,
+		default: true,
 	},
 	variationSelected: {
 		type: 'boolean',
