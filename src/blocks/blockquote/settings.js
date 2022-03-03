@@ -1,5 +1,4 @@
-import classnames from 'classnames';
-import UAGB_Block_Icons from '@Controls/block-icons';
+
 import React from 'react';
 import WebfontLoader from '@Components/typography/fontloader';
 import TypographyControl from '@Components/typography';
@@ -18,16 +17,12 @@ import MultiButtonsControl from '@Components/multi-buttons-control';
 import renderSVG from '@Controls/renderIcon';
 import {
 	SelectControl,
-	Button,
 	TextControl,
 	ToggleControl,
-	Toolbar,
-	Tooltip,
 	Icon,
 } from '@wordpress/components';
 
 import {
-	AlignmentToolbar,
 	BlockControls,
 	InspectorControls,
 } from '@wordpress/block-editor';
@@ -39,7 +34,7 @@ import UAGAdvancedPanelBody from '@Components/advanced-panel-body';
 const Settings = ( props ) => {
 	props = props.parentProps;
 
-	const { className, setAttributes, attributes, deviceType } = props;
+	const { setAttributes, attributes, deviceType } = props;
 
 	const {
 		skinStyle,
@@ -488,6 +483,30 @@ const Settings = ( props ) => {
 				showIcons={ false }
 			/>
 			{ 'quotation' === skinStyle &&
+			<>
+				<MultiButtonsControl
+					setAttributes={ setAttributes }
+					label={ __( 'Quotation Type', 'ultimate-addons-for-gutenberg' ) }
+					data={ {
+						value: quoteStyle,
+						label: 'quoteStyle',
+					} }
+					className="uagb-multi-button-alignment-control"
+					options={ [
+						{
+							value: 'style_1',
+							label: __( 'Normal', 'ultimate-addons-for-gutenberg' ),
+						},
+						{
+							value: 'style_2',
+							label: __(
+								'Inline',
+								'ultimate-addons-for-gutenberg'
+							),
+						},
+					] }
+					showIcons={ false }
+				/>
 				<MultiButtonsControl
 					setAttributes={ setAttributes }
 					label={ __( 'Text Alignment', 'ultimate-addons-for-gutenberg' ) }
@@ -536,6 +555,7 @@ const Settings = ( props ) => {
 					] }
 					showIcons={ true }
 				/>
+			</>
 			}
 			{ imageControls }
 			<MultiButtonsControl
@@ -731,6 +751,18 @@ const Settings = ( props ) => {
 			/>
 			{ enableTweet && (
 				<>
+					<TextControl
+						label={ __(
+							'Twitter Username',
+							'ultimate-addons-for-gutenberg'
+						) }
+						value={ iconShareVia }
+						onChange={ ( value ) =>
+							setAttributes( {
+								iconShareVia: value,
+							} )
+						}
+					/>
 					<MultiButtonsControl
 						setAttributes={ setAttributes }
 						label={ __(
@@ -1018,111 +1050,6 @@ const Settings = ( props ) => {
 		</UAGAdvancedPanelBody>
 	);
 
-	const getTooltipElement = () => {
-		return (
-			<>
-				<Toolbar label="Options">
-					<label
-						aria-label={ __(
-							'Twitter Username',
-							'ultimate-addons-for-gutenberg'
-						) }
-						className={ `${ className }__via-label` }
-						htmlFor={ `${ className }__via` }
-					>
-						{ ' ' }
-						{ UAGB_Block_Icons.at_the_rate }
-					</label>
-					<input
-						aria-label={ __(
-							'Twitter Username',
-							'ultimate-addons-for-gutenberg'
-						) }
-						className={ `${ className }__via` }
-						id={ `${ className }__via` }
-						onChange={ ( event ) =>
-							setAttributes( {
-								iconShareVia: event.target.value,
-							} )
-						}
-						placeholder={ __(
-							'Username',
-							'ultimate-addons-for-gutenberg'
-						) }
-						type="text"
-						value={ iconShareVia }
-					/>
-				</Toolbar>
-			</>
-		);
-	};
-
-	const getAlignmentToolbar = () => {
-		return (
-			<AlignmentToolbar
-				value={ align }
-				onChange={ ( value ) => setAttributes( { align: value } ) }
-			/>
-		);
-	};
-
-	const getToolbarElement = () => {
-		return (
-			<>
-				<Toolbar label="Options">
-					<Tooltip
-						text={ __(
-							'Normal Quote',
-							'ultimate-addons-for-gutenberg'
-						) }
-					>
-						<Button
-							className={ classnames(
-								'components-icon-button',
-								'components-toolbar__control',
-								{
-									'is-active': quoteStyle === 'style_1',
-								}
-							) }
-							onClick={ () =>
-								setAttributes( {
-									quoteStyle: 'style_1',
-								} )
-							}
-						>
-							{ UAGB_Block_Icons.quote_1 }
-						</Button>
-					</Tooltip>
-				</Toolbar>
-
-				<Toolbar label="Options">
-					<Tooltip
-						text={ __(
-							'Inline Quote',
-							'ultimate-addons-for-gutenberg'
-						) }
-					>
-						<Button
-							className={ classnames(
-								'components-icon-button',
-								'components-toolbar__control',
-								{
-									'is-active': quoteStyle === 'style_2',
-								}
-							) }
-							onClick={ () =>
-								setAttributes( {
-									quoteStyle: 'style_2',
-								} )
-							}
-						>
-							{ UAGB_Block_Icons.quote_2 }
-						</Button>
-					</Tooltip>
-				</Toolbar>
-			</>
-		);
-	};
 	const generalStyle = () => {
 		const tabOutputNormal = (
 			<>
@@ -1660,9 +1587,6 @@ const Settings = ( props ) => {
 	return (
 		<>
 			<BlockControls key="controls">
-				{ skinStyle !== 'border' && getAlignmentToolbar() }
-				{ skinStyle === 'quotation' && getToolbarElement() }
-				{ enableTweet && getTooltipElement() }
 			</BlockControls>
 			<InspectorControls>
 				<InspectorTabs>
