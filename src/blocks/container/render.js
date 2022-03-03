@@ -16,7 +16,7 @@ const Render = ( props ) => {
 	} = attributes;
 
 	const direction = attributes[ 'direction' + deviceType ];
-	
+
 	const moverDirection = 'row' === direction ? 'horizontal' : 'vertical';
 
 	return (
