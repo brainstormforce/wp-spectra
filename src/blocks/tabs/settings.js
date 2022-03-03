@@ -1140,7 +1140,7 @@ const Settings = ( props ) => {
 						setAttributes( { iconSpacing: value } )
 					}
 					min={ 0 }
-					max={ 500 }
+					max={ 100 }
 					displayUnit={ false }
 				/>
 				<UAGTabsControl
@@ -1171,7 +1171,7 @@ const Settings = ( props ) => {
 						setAttributes( { iconSize: value } )
 					}
 					min={ 0 }
-					max={ 500 }
+					max={ 100 }
 					displayUnit={ false }
 				/>
 			</UAGAdvancedPanelBody>

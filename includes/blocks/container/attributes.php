@@ -89,4 +89,5 @@ return array(
 	'columnGapTablet'       => '',
 	'columnGapMobile'       => '',
 	'columnGapType'         => 'px',
+	'contentWidth'          => 'alignwide',
 );

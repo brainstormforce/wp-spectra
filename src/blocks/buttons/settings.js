@@ -163,7 +163,7 @@ const Settings = ( props ) => {
 					value={ gap }
 					onChange={ ( value ) => setAttributes( { gap: value } ) }
 					min={ 0 }
-					max={ 500 }
+					max={ 200 }
 					displayUnit={ false }
 				/>
 			</UAGAdvancedPanelBody>

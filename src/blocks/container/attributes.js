@@ -2,6 +2,10 @@ const attributes = {
 	block_id: {
 		type: 'string',
 	},
+	contentWidth: {
+		type: 'string',
+		default: 'alignwide',
+	},
 	widthDesktop: {
 		type: 'number',
 		default: 100,
@@ -267,6 +271,7 @@ const attributes = {
 	},
 	rowGapDesktop: {
 		type: 'number',
+		default: 20
 	},
 	rowGapTablet: {
 		type: 'number',
@@ -280,6 +285,7 @@ const attributes = {
 	},
 	columnGapDesktop: {
 		type: 'number',
+		default: 20
 	},
 	columnGapTablet: {
 		type: 'number',
@@ -291,6 +297,10 @@ const attributes = {
 		type: 'string',
 		default: 'px',
 	},
+	isBlockRootParent: {
+		type: 'boolean',
+		default: false,
+	}
 };
 
 export default attributes;
