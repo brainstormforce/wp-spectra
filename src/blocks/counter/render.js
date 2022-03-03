@@ -32,7 +32,7 @@ const Render = ( props ) => {
 
 	useEffect( () => {
 		UAGBCounter.init( '.uagb-block-' + block_id, attributes ) // eslint-disable-line no-undef
-	}, [] )
+	}, [attributes] )
 
 
 	const number = (
@@ -54,10 +54,10 @@ const Render = ( props ) => {
 	)
 
 	const circle = (
-		<div className="svg-container">
-			<svg className="svg" viewBox="0 0 250 250" version="1.1" preserveAspectRatio="xMinYMin meet">
-				{/* <path className="fl-bar-bg" r="115" cx="125" cy="125" fill="transparent" strokeDasharray="722.57" strokeDashoffset="0"></path>
-				<path className="fl-bar" r="115" cx="125" cy="125" fill="transparent" strokeDasharray="722.57" strokeDashoffset="722.57" transform="rotate(-90 125 125)" data-bbtest="sample-lang" style="strokeDashoffset: 0px;"></path> */}
+		<div className="wp-block-uagb-counter-circle-container">
+			<svg width="200" height="200" viewPort="0 0 100 100" version="1.1" xmlns="http://www.w3.org/2000/svg">
+				<circle r="90" cx="100" cy="100" fill="transparent" stroke-dasharray="565.48" stroke-dashoffset="0"></circle>
+				<circle id="bar" r="90" cx="100" cy="100" fill="transparent" stroke-dasharray="565.48" stroke-dashoffset="0"></circle>
 			</svg>
 		</div>
 	)

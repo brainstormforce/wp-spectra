@@ -9,6 +9,8 @@ UAGBCounter = {
 		if(typeof this.elements.counterWrapper !== 'undefined' && this.elements.counterWrapper){
 			if(data.layout === 'bars'){
 				this._triggerBar();
+			} else if(data.layout === 'circle'){
+				this._triggerCircle();
 			}
 			this._initCount();
 		}
@@ -63,7 +65,26 @@ UAGBCounter = {
 	},
 
 	_triggerCircle(){
+		const that = this
+		const circleWrap = that.elements.counterWrapper.querySelector( '.wp-block-uagb-counter-circle-container svg #bar' );
+		var val = 30;
+		var r = 90;
+		var c = Math.PI*(r*2);
 
+		if (val < 0) { val = 0;}
+		if (val > 100) { val = 100;}
+
+		var pct = ((100-val)/100)*c;
+
+		jQuery(circleWrap).animate({
+			strokeDashoffset: pct
+		}, {
+			duration: 2000,
+			easing: 'swing',
+			complete: function() {
+
+			}
+		});
 	},
 
 	numberCount( el, options = {} ){
