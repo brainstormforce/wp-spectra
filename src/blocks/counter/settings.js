@@ -13,7 +13,7 @@ import UAGAdvancedPanelBody from '@Components/advanced-panel-body';
 
 export default function Settings( props ) {
 	const { attributes, setAttributes } = props.parentProps;
-	const {startNumber, endNumber, numberPrefix, numberSuffix, animationDuration, thousandSeparator, heading, headingTag, layout} = attributes;
+	const {startNumber, endNumber, totalNumber, numberPrefix, numberSuffix, animationDuration, thousandSeparator, heading, headingTag, layout} = attributes;
 	const generalPanel = (
 		<UAGAdvancedPanelBody
 			title={ __( 'General', 'ultimate-addons-for-gutenberg' ) }
@@ -39,6 +39,15 @@ export default function Settings( props ) {
 				value={ endNumber }
 				onChange={ ( value ) => setAttributes({endNumber: value})}
 			/>
+			{
+				layout !== 'number' && (
+					<TextControl
+						label={ __( 'Total Number', 'ultimate-addons-for-gutenberg' ) }
+						value={ totalNumber }
+						onChange={ ( value ) => setAttributes({totalNumber: value})}
+					/>
+				)
+			}
 			<TextControl
 				label={ __( 'Number Prefix', 'ultimate-addons-for-gutenberg' ) }
 				value={ numberPrefix }
@@ -59,9 +68,9 @@ export default function Settings( props ) {
 				onChange={ ( value ) =>
 					setAttributes( { animationDuration: value } )
 				}
-				min={ 100 }
-				step={ 100 }
-				max={ 20000 }
+				min={ 0.1 }
+				step={ 0.1 }
+				max={ 25 }
 				displayUnit={ false }
 			/>
 			<SelectControl

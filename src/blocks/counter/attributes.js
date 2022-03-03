@@ -14,6 +14,10 @@ const attributes = {
 		type: 'string',
 		default: 100,
 	},
+	totalNumber: {
+		type: 'string',
+		default: 0,
+	},
 	numberPrefix: {
 		type: 'string',
 		default: '',
@@ -23,8 +27,8 @@ const attributes = {
 		default: '',
 	},
 	animationDuration: {
-		type: 'number',
-		default: 2000,
+		type: 'float',
+		default: 0.1,
 	},
 	thousandSeparator: {
 		type: 'string',

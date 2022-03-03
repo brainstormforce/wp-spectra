@@ -6,6 +6,7 @@ UAGBCounter = {
 	elements: {},
 	init(mainSelector, data = {}) {
 		this.elements = this.getDefaultElements(mainSelector);
+		this.settings = {...this.settings, ...data}
 		if(typeof this.elements.counterWrapper !== 'undefined' && this.elements.counterWrapper){
 			if(data.layout === 'bars'){
 				this._triggerBar();
@@ -47,9 +48,13 @@ UAGBCounter = {
 	},
 
 	_initCount(){
+		const that = this
 		const el = this.elements.counterWrapper.querySelector('.uagb-counter-block-number')
 		if(typeof el !== 'undefined' && el){
-			const countUp = new window.countUp.CountUp(el, 5234);
+			const countUp = new window.countUp.CountUp(el, that.settings.endNumber, {
+				startVal: that.settings.startNumber,
+				duration: that.settings.animationDuration
+			});
 			if (!countUp.error) {
 				countUp.start();
 			} else {
@@ -61,9 +66,13 @@ UAGBCounter = {
 	_triggerBar(){
 		const that = this
 		const numberWrap = that.elements.counterWrapper.querySelector( '.wp-block-uagb-counter__number' );
+		const duration = that._getAnimationDuration();
+		var width = Math.ceil( ( that.settings.endNumber / that.settings.totalNumber ) * 100 );
 		jQuery(numberWrap).animate({
-			width: 100 + '%'
-		}, 2000);
+			width: width + '%'
+		}, {
+			duration: duration
+		});
 	},
 
 	_triggerCircle(){
@@ -89,6 +98,11 @@ UAGBCounter = {
 		});
 	},
 
+	_getAnimationDuration(){
+		const that = this
+		const countableNumber = Math.ceil(  that.settings.startNumber - that.settings.endNumber );
+		return Math.ceil((that.settings.animationDuration * 1000) - (that.settings.animationDuration * countableNumber));
+	}
 
 
 
