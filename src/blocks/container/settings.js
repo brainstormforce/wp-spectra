@@ -118,7 +118,7 @@ const Settings = ( props ) => {
 		currentDirection = attributes[ 'direction' + deviceType ].split( '-' )[0];
 	}
 
-	let currentOppAxisDirection = 'row' === currentDirection ? 'column' : 'row';
+	const currentOppAxisDirection = 'row' === currentDirection ? 'column' : 'row';
 
 	const generalSettings = () => {
 
