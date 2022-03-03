@@ -250,7 +250,7 @@ const variations = [
 		innerBlocks: [
 			[
 				'uagb/container',
-				{ widthDesktop: 100 },
+				{ widthDesktop: 100, directionDesktop: 'row', },
 				[
 					[ 'uagb/container', { widthDesktop: 50 } ],
 					[ 'uagb/container', { widthDesktop: 50 } ],
