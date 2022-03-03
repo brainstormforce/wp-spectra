@@ -46,7 +46,7 @@ const CopyPasteStyles = () => {
                     {__( 'Copy Paste Styles', 'ultimate-addons-for-gutenberg' )}
                 </h3>
                 <p className="mt-[0.6rem] text-sm ">
-                    { __( 'Enable the "Copy Paste Styles" option to have the ability to Copy & Paste Spectra & Core Gutenberg Blocks Styles.', 'ultimate-addons-for-gutenberg' ) }
+                    { __( 'Enable the "Copy Paste Styles" option to have the ability to copy & paste Spectra & Core Gutenberg Blocks Styles.', 'ultimate-addons-for-gutenberg' ) }
                 </p>
             </div>
             <div>
