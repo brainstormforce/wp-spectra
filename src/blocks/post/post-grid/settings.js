@@ -465,7 +465,7 @@ const Settings = ( props ) => {
 					value={ postsToShow }
 					onChange={ onChangePostsPerPage }
 					min={ 0 }
-					max={ 500 }
+					max={ 50 }
 					displayUnit={ false }
 				/>
 				<MultiButtonsControl
@@ -1634,7 +1634,7 @@ const Settings = ( props ) => {
 						setAttributes( { ctaBottomSpace: value } )
 					}
 					min={ 0 }
-					max={ 500 }
+					max={ 300 }
 					unit={ {
 						value: ctaBottomSpaceUnit,
 						label: 'ctaBottomSpaceUnit',
@@ -1911,7 +1911,7 @@ const Settings = ( props ) => {
 							}
 							displayUnit={ false }
 							min={ 0 }
-							max={ 500 }
+							max={ 100 }
 						/>
 					</>
 				) }
@@ -1927,7 +1927,7 @@ const Settings = ( props ) => {
 						'ultimate-addons-for-gutenberg'
 					) }
 					min={ 0 }
-					max={ 500 }
+					max={ 300 }
 					unit={ {
 						value: paginationSpacingUnit,
 						label: 'paginationSpacingUnit',

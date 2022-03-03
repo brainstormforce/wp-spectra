@@ -878,7 +878,7 @@ const Settings = ( props ) => {
 						setAttributes( { row_gap: value } )
 					}
 					min={ 0 }
-					max={ 500 }
+					max={ 200 }
 					displayUnit={ false }
 				/>
 				<Range
@@ -892,7 +892,7 @@ const Settings = ( props ) => {
 						setAttributes( { step_gap: value } )
 					}
 					min={ 0 }
-					max={ 500 }
+					max={ 200 }
 					displayUnit={ false }
 				/>
 			</UAGAdvancedPanelBody>
