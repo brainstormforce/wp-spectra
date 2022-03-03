@@ -38,15 +38,15 @@ const attributes = {
 	},
 	directionDesktop: {
 		type: 'string',
-		default: 'row',
+		default: 'column',
 	},
 	directionTablet: {
 		type: 'string',
-		default: 'row',
+		default: 'column',
 	},
 	directionMobile: {
 		type: 'string',
-		default: 'row',
+		default: 'column',
 	},
 	alignItemsDesktop: {
 		type: 'string',
