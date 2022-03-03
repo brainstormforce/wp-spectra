@@ -136,6 +136,7 @@ function styling( props ) {
 	};
 
 	selectors[' > .wp-block-uagb-container > .block-editor-inner-blocks > .block-editor-block-list__layout'] = {
+		'min-height' : generateCSSUnit( minHeightDesktop, minHeightType ),
 		'flex-direction' : directionDesktop,
 		'align-items' : alignItemsDesktop,
 		'justify-content' : justifyContentDesktop,

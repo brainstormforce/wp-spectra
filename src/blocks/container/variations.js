@@ -23,6 +23,7 @@ const variations = [
 		icon: rowIcons['50-50'],
 		attributes: {
 			variationSelected: true,
+			directionDesktop: 'row',
 		},
 		isDefault: true,
 		innerBlocks: [
@@ -36,6 +37,7 @@ const variations = [
 		icon: rowIcons['25-75'],
 		attributes: {
 			variationSelected: true,
+			directionDesktop: 'row',
 		},
 		innerBlocks: [
 			[ 'uagb/container', { widthDesktop: 25 } ],
@@ -48,6 +50,7 @@ const variations = [
 		icon: rowIcons['75-25'],
 		attributes: {
 			variationSelected: true,
+			directionDesktop: 'row',
 		},
 		innerBlocks: [
 			[ 'uagb/container', { widthDesktop: 75 } ],
@@ -60,6 +63,7 @@ const variations = [
 		icon: rowIcons['33-33-33'],
 		attributes: {
 			variationSelected: true,
+			directionDesktop: 'row',
 		},
 		innerBlocks: [
 			[ 'uagb/container', { widthDesktop: 33.33 } ],
@@ -73,7 +77,10 @@ const variations = [
 		icon: rowIcons['33-33-33_33-33-33'],
 		attributes: {
 			variationSelected: true,
-			wrapDesktop: 'wrap'
+			directionDesktop: 'row',
+			wrapDesktop: 'wrap',
+			rowGapDesktop: 0,
+			columnGapDesktop: 0
 		},
 		innerBlocks: [
 			[ 'uagb/container', { widthDesktop: 33 } ],
@@ -90,7 +97,10 @@ const variations = [
 		icon: rowIcons['50-50_50-50'],
 		attributes: {
 			variationSelected: true,
-			wrapDesktop: 'wrap'
+			directionDesktop: 'row',
+			wrapDesktop: 'wrap',
+			rowGapDesktop: 0,
+			columnGapDesktop: 0
 		},
 		innerBlocks: [
 			[ 'uagb/container', { widthDesktop: 50 } ],
@@ -105,6 +115,7 @@ const variations = [
 		icon: rowIcons['25-50-25'],
 		attributes: {
 			variationSelected: true,
+			directionDesktop: 'row',
 		},
 		innerBlocks: [
 			[ 'uagb/container', { widthDesktop: 25 } ],
@@ -118,6 +129,7 @@ const variations = [
 		icon: rowIcons['25-25-25-25'],
 		attributes: {
 			variationSelected: true,
+			directionDesktop: 'row',
 		},
 		innerBlocks: [
 			[ 'uagb/container', { widthDesktop: 25 } ],
@@ -132,6 +144,7 @@ const variations = [
 		icon: rowIcons['20-20-20-20-20'],
 		attributes: {
 			variationSelected: true,
+			directionDesktop: 'row',
 		},
 		innerBlocks: [
 			[ 'uagb/container', { widthDesktop: 20 } ],
@@ -147,12 +160,13 @@ const variations = [
 		icon: rowIcons['50-50+100_100'],
 		attributes: {
 			variationSelected: true,
+			directionDesktop: 'row',
 		},
 		innerBlocks: [
 			[ 'uagb/container', { widthDesktop: 50 } ],
 			[
 				'uagb/container',
-				{ widthDesktop: 50, wrapDesktop: 'wrap' },
+				{ widthDesktop: 50, wrapDesktop: 'wrap', rowGapDesktop: 0, columnGapDesktop: 0 },
 				[
 					[ 'uagb/container', { widthDesktop: 100 } ],
 					[ 'uagb/container', { widthDesktop: 100 } ],
@@ -166,13 +180,16 @@ const variations = [
 		icon: rowIcons['100_50-50'],
 		attributes: {
 			variationSelected: true,
-			wrapDesktop: 'wrap'
+			directionDesktop: 'row',
+			wrapDesktop: 'wrap',
+			rowGapDesktop: 0,
+			columnGapDesktop: 0
 		},
 		innerBlocks: [
 			[ 'uagb/container', { widthDesktop: 100 } ],
 			[
 				'uagb/container',
-				{ widthDesktop: 100 },
+				{ widthDesktop: 100, directionDesktop: 'row' },
 				[
 					[ 'uagb/container', { widthDesktop: 50 } ],
 					[ 'uagb/container', { widthDesktop: 50 } ],
@@ -186,7 +203,10 @@ const variations = [
 		icon: rowIcons['75-25_25_75'],
 		attributes: {
 			variationSelected: true,
-			wrapDesktop: 'wrap'
+			directionDesktop: 'row',
+			wrapDesktop: 'wrap',
+			rowGapDesktop: 0,
+			columnGapDesktop: 0
 		},
 		innerBlocks: [
 			[ 'uagb/container', { widthDesktop: 75 } ],
@@ -202,11 +222,12 @@ const variations = [
 		icon: rowIcons['50+100_100-50'],
 		attributes: {
 			variationSelected: true,
+			directionDesktop: 'row',
 		},
 		innerBlocks: [
 			[
 				'uagb/container',
-				{ widthDesktop: 50, wrapDesktop: 'wrap' },
+				{ widthDesktop: 50, wrapDesktop: 'wrap', rowGapDesktop: 0, columnGapDesktop: 0 },
 				[
 					[ 'uagb/container', { widthDesktop: 100 } ],
 					[ 'uagb/container', { widthDesktop: 100 } ],
@@ -221,12 +242,15 @@ const variations = [
 		icon: rowIcons['50-50_100'],
 		attributes: {
 			variationSelected: true,
-			wrapDesktop: 'wrap'
+			directionDesktop: 'row',
+			wrapDesktop: 'wrap',
+			rowGapDesktop: 0,
+			columnGapDesktop: 0
 		},
 		innerBlocks: [
 			[
 				'uagb/container',
-				{ widthDesktop: 100 },
+				{ widthDesktop: 100, directionDesktop: 'row', },
 				[
 					[ 'uagb/container', { widthDesktop: 50 } ],
 					[ 'uagb/container', { widthDesktop: 50 } ],
@@ -241,6 +265,7 @@ const variations = [
 		icon: rowIcons['25-25-50'],
 		attributes: {
 			variationSelected: true,
+			directionDesktop: 'row',
 		},
 		innerBlocks: [
 			[ 'uagb/container', { widthDesktop: 25 } ],
@@ -254,6 +279,7 @@ const variations = [
 		icon: rowIcons['50-25-25'],
 		attributes: {
 			variationSelected: true,
+			directionDesktop: 'row',
 		},
 		innerBlocks: [
 			[ 'uagb/container', { widthDesktop: 50 } ],
@@ -266,13 +292,14 @@ const variations = [
 		name: '33-33+100_100-33',
 		icon: rowIcons['33-33+100_100-33'],
 		attributes: {
-			variationSelected: true
+			variationSelected: true,
+			directionDesktop: 'row',
 		},
 		innerBlocks: [
 			[ 'uagb/container', { widthDesktop: 33 } ],
 			[
 				'uagb/container',
-				{ widthDesktop: 33, wrapDesktop: 'wrap' },
+				{ widthDesktop: 33, wrapDesktop: 'wrap', rowGapDesktop: 0, columnGapDesktop: 0 },
 				[
 					[ 'uagb/container', { widthDesktop: 100 } ],
 					[ 'uagb/container', { widthDesktop: 100 } ]
@@ -286,14 +313,15 @@ const variations = [
 		name: '33-33-33+100_100',
 		icon: rowIcons['33-33-33+100_100'],
 		attributes: {
-			variationSelected: true
+			variationSelected: true,
+			directionDesktop: 'row',
 		},
 		innerBlocks: [
 			[ 'uagb/container', { widthDesktop: 33 } ],
 			[ 'uagb/container', { widthDesktop: 33 } ],
 			[
 				'uagb/container',
-				{ widthDesktop: 33, wrapDesktop: 'wrap' },
+				{ widthDesktop: 33, wrapDesktop: 'wrap', rowGapDesktop: 0, columnGapDesktop: 0 },
 				[
 					[ 'uagb/container', { widthDesktop: 100 } ],
 					[ 'uagb/container', { widthDesktop: 100 } ]
@@ -307,7 +335,10 @@ const variations = [
 		icon: rowIcons['25-75_75-25'],
 		attributes: {
 			variationSelected: true,
-			wrapDesktop: 'wrap'
+			directionDesktop: 'row',
+			wrapDesktop: 'wrap',
+			rowGapDesktop: 0,
+			columnGapDesktop: 0
 		},
 		innerBlocks: [
 			[ 'uagb/container', { widthDesktop: 25 } ],

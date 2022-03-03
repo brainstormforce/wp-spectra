@@ -118,6 +118,8 @@ const Settings = ( props ) => {
 		currentDirection = attributes[ 'direction' + deviceType ].split( '-' )[0];
 	}
 
+	const currentOppAxisDirection = 'row' === currentDirection ? 'column' : 'row';
+
 	const generalSettings = () => {
 
 		const directionOptions = [
@@ -165,7 +167,7 @@ const Settings = ( props ) => {
 				tooltip: __( 'Flex Start', 'ultimate-addons-for-gutenberg' ),
 				icon: (
 					<Icon
-						icon={ renderCustomIcon( `flex-${currentDirection}-start` ) }
+						icon={ renderCustomIcon( `flex-${currentOppAxisDirection}-start` ) }
 					/>
 				),
 			},
@@ -174,7 +176,7 @@ const Settings = ( props ) => {
 				tooltip: __( 'Center', 'ultimate-addons-for-gutenberg' ),
 				icon: (
 					<Icon
-						icon={ renderCustomIcon( `flex-${currentDirection}-center` ) }
+						icon={ renderCustomIcon( `flex-${currentOppAxisDirection}-center` ) }
 					/>
 				),
 			},
@@ -183,7 +185,7 @@ const Settings = ( props ) => {
 				tooltip: __( 'Flex End', 'ultimate-addons-for-gutenberg' ),
 				icon: (
 					<Icon
-						icon={ renderCustomIcon( `flex-${currentDirection}-end` ) }
+						icon={ renderCustomIcon( `flex-${currentOppAxisDirection}-end` ) }
 					/>
 				),
 			},
@@ -192,7 +194,7 @@ const Settings = ( props ) => {
 				tooltip: __( 'Stretch', 'ultimate-addons-for-gutenberg' ),
 				icon: (
 					<Icon
-						icon={ renderCustomIcon( `flex-${currentDirection}-strech` ) }
+						icon={ renderCustomIcon( `flex-${currentOppAxisDirection}-strech` ) }
 					/>
 				),
 			},
