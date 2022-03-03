@@ -17,6 +17,6 @@ $block_data = array(
 	'description'      => __( 'This block allows you to add number counter.', 'ultimate-addons-for-gutenberg' ),
 	'default'          => true,
 	'extension'        => false,
-	'js_assets'        => array( 'uagb-counter-js' ),
+	'js_assets'        => array( 'uagb-countUp-js', 'uagb-counter-js' ),
 	'priority'         => 1,
 );

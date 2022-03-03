@@ -7,7 +7,7 @@ const attributes = {
 		default: 'number',
 	},
 	startNumber: {
-		type: 'number',
+		type: 'string',
 		default: 0,
 	},
 	endNumber: {

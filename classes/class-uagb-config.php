@@ -109,6 +109,10 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 						'dep'        => array(),
 						'skipEditor' => true,
 					),
+					'uagb-countUp-js'      => array(
+						'src'        => UAGB_URL . 'assets/js/countUp.min.js',
+						'dep'        => array(),
+					),
 
 					// Blocks.
 					'uagb-timeline-js'       => array(
@@ -148,7 +152,7 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 					),
 					'uagb-counter-js'         => array(
 						'src'        => UAGB_Scripts_Utils::get_js_url( 'counter' ),
-						'dep'        => array( 'jquery' ),
+						'dep'        => array( 'jquery', 'uagb-countUp-js' ),
 					),
 				);
 			}
