@@ -240,42 +240,42 @@ const attributes = {
 		type: 'number',
 		default: 15,
 		UAGCopyPaste: {
-			styleType: 'v-input-padding-mobile'
+			styleType: 'input-vertical-padding-mobile'
 		}
 	},
 	vinputPaddingTablet: {
 		type: 'number',
 		default: 15,
 		UAGCopyPaste: {
-			styleType: 'v-input-padding-tablet'
+			styleType: 'input-vertical-padding-tablet'
 		}
 	},
 	vinputPaddingDesktop: {
 		type: 'number',
 		default: 15,
 		UAGCopyPaste: {
-			styleType: 'v-input-padding-desktop'
+			styleType: 'input-vertical-padding-desktop'
 		}
 	},
 	hinputPaddingMobile: {
 		type: 'number',
 		default: 13,
 		UAGCopyPaste: {
-			styleType: 'h-input-padding-desktop'
+			styleType: 'input-horizantal-padding-desktop'
 		}
 	},
 	hinputPaddingTablet: {
 		type: 'number',
 		default: 13,
 		UAGCopyPaste: {
-			styleType: 'h-input-padding-tablet'
+			styleType: 'input-horizantal-padding-tablet'
 		}
 	},
 	hinputPaddingDesktop: {
 		type: 'number',
 		default: 13,
 		UAGCopyPaste: {
-			styleType: 'h-input-padding-desktop'
+			styleType: 'input-horizantal-padding-desktop'
 		}
 	},
 	buttonType: {
