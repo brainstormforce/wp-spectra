@@ -686,7 +686,7 @@ const UAGBPostCarousel = ( props ) => {
 						setAttributes={ setAttributes }
 						displayUnit={ false }
 						min={ 100 }
-						max={ 10000 }
+						max={ 5000 }
 					/>
 				) }
 				<ToggleControl
@@ -1663,7 +1663,7 @@ const UAGBPostCarousel = ( props ) => {
 						setAttributes( { ctaBottomSpace: value } )
 					}
 					min={ 0 }
-					max={ 500 }
+					max={ 200 }
 					unit={ {
 						value: ctaBottomSpaceUnit,
 						label: 'ctaBottomSpaceUnit',
