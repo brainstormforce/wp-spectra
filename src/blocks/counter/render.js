@@ -34,6 +34,15 @@ const Render = ( props ) => {
 		UAGBCounter.init( '.uagb-block-' + block_id, attributes ) // eslint-disable-line no-undef
 	}, [attributes] )
 
+	const title = (
+		<RichText
+			tagName="div"
+			className="wp-block-uagb-counter__title"
+			value={ heading }
+			onChange={ ( value ) => setAttributes( { heading: value } ) }
+			placeholder={ __( 'Heading...' ) }
+		/>
+	)
 
 	const number = (
 		<div className="wp-block-uagb-counter__number">
@@ -55,7 +64,10 @@ const Render = ( props ) => {
 
 	const circle = (
 		<div className="wp-block-uagb-counter-circle-container">
-			{number}
+			<div className='wp-block-uagb-counter-circle-container__content'>
+				{number}
+				{title}
+			</div>
 			<svg width="200" height="200" viewPort="0 0 100 100" version="1.1" xmlns="http://www.w3.org/2000/svg">
 				<circle r="90" cx="100" cy="100" fill="transparent" stroke-dasharray="565.48" stroke-dashoffset="0"></circle>
 				<circle id="bar" r="90" cx="100" cy="100" fill="transparent" stroke-dasharray="565.48" stroke-dashoffset="0"></circle>
@@ -80,13 +92,9 @@ const Render = ( props ) => {
 				{
 					layout === 'circle' && circle
 				}
-				<RichText
-					tagName="div"
-					className="wp-block-uagb-counter__title"
-					value={ heading }
-					onChange={ ( value ) => setAttributes( { heading: value } ) }
-					placeholder={ __( 'Heading...' ) }
-				/>
+				{
+					layout !== 'circle' && title
+				}
 			</div>
 		</React.Fragment>
 	);

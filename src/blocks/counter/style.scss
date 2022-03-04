@@ -6,6 +6,8 @@
 			.wp-block-uagb-counter__number {
 				width: 5%;
 				min-height: 5px;
+				padding: 5px;
+				text-align: right;
 				line-height: 1;
 				white-space: nowrap;
 				overflow: hidden;
@@ -15,6 +17,8 @@
 	}
 	&--circle {
 		.wp-block-uagb-counter-circle-container {
+			position: relative;
+			display: inline-block;
 			svg circle {
 				stroke-dashoffset: 0;
 				transition: stroke-dashoffset 1s linear;
@@ -23,7 +27,18 @@
 			}
 			svg #bar {
 				stroke: #FF9F1E;
-			  }
+			}
+			&__content {
+				position: absolute;
+				left: 0;
+				right: 0;
+				top: 0;
+				bottom: 0;
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				flex-direction: column;
+			}
 		}
 	}
 }
