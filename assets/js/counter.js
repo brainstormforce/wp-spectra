@@ -67,30 +67,30 @@ UAGBCounter = {
 		const that = this
 		const numberWrap = that.elements.counterWrapper.querySelector( '.wp-block-uagb-counter__number' );
 		const duration = that._getAnimationDuration();
-		var width = Math.ceil( ( that.settings.endNumber / that.settings.totalNumber ) * 100 );
-		jQuery(numberWrap).animate({
-			width: width + '%'
+		var startWidth = Math.ceil( ( that.settings.startNumber / that.settings.totalNumber ) * 100 );
+		var endWidth = Math.ceil( ( that.settings.endNumber / that.settings.totalNumber ) * 100 );
+
+		jQuery(numberWrap).css('width', startWidth + '%').animate({
+			width: endWidth + '%'
 		}, {
-			duration: duration
+			duration: duration,
+			easing: 'swing',
 		});
 	},
 
 	_triggerCircle(){
 		const that = this
 		const circleWrap = that.elements.counterWrapper.querySelector( '.wp-block-uagb-counter-circle-container svg #bar' );
-		var val = 30;
-		var r = 90;
-		var c = Math.PI*(r*2);
-
-		if (val < 0) { val = 0;}
-		if (val > 100) { val = 100;}
-
-		var pct = ((100-val)/100)*c;
-
-		jQuery(circleWrap).animate({
-			strokeDashoffset: pct
+		const totalWidth = that.settings.totalNumber;
+		const r = 90;
+		const circle = Math.PI*(r*2);
+		const startPct = ( 1 - ( that.settings.startNumber / totalWidth ) ) * circle;
+		const endPct = ( 1 - ( that.settings.endNumber / totalWidth ) ) * circle;
+		const duration = that._getAnimationDuration();
+		jQuery(circleWrap).css('strokeDashoffset', startPct).animate({
+			strokeDashoffset: endPct
 		}, {
-			duration: 2000,
+			duration: duration,
 			easing: 'swing',
 			complete: function() {
 
@@ -100,8 +100,7 @@ UAGBCounter = {
 
 	_getAnimationDuration(){
 		const that = this
-		const countableNumber = Math.ceil(  that.settings.startNumber - that.settings.endNumber );
-		return Math.ceil((that.settings.animationDuration * 1000) - (that.settings.animationDuration * countableNumber));
+		return that.settings.animationDuration * 1000;
 	}
 
 
