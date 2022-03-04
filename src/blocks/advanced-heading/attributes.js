@@ -86,7 +86,7 @@ const attributes = {
 		type: 'number',
 		default: 15,
 		UAGCopyPaste: {
-			styleType: 'main-title-space'
+			styleType: 'main-title-margin-bottom'
 		}
 	},
 	headFontFamily: {
@@ -257,7 +257,7 @@ const attributes = {
 		type: 'number',
 		default: 15,
 		UAGCopyPaste: {
-			styleType: 'separator-space'
+			styleType: 'separator-margin-bottom'
 		}
 	},
 	headLoadGoogleFonts: {

@@ -371,21 +371,21 @@ const attributes = {
 		type: 'number',
 		default: 10,
 		UAGCopyPaste: {
-			styleType: 'main-title-space'
+			styleType: 'main-title-bottom-margin'
 		}
 	},
 	subHeadSpace: {
 		type: 'number',
 		default: 10,
 		UAGCopyPaste: {
-			styleType: 'desc-space'
+			styleType: 'desc-bottom-margin'
 		}
 	},
 	seperatorSpace: {
 		type: 'number',
 		default: 10,
 		UAGCopyPaste: {
-			styleType: 'separator-space'
+			styleType: 'separator-bottom-margin'
 		}
 	},
 	iconimgBorderRadius: {
