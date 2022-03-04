@@ -1013,7 +1013,7 @@ const Settings = ( props ) => {
 										min={ 0 }
 										max={ 300 }
 										limitMin={ { 'px': 0, 'em': 0 } } // eslint-disable-line quote-props
-										limitMax={ { 'px': 1500, 'em': 100 } } // eslint-disable-line quote-props
+										limitMax={ { 'px': 500, 'em': 100 } } // eslint-disable-line quote-props
 										unit={ {
 											value: iconSizeType,
 											label: 'iconSizeType',
@@ -1087,7 +1087,7 @@ const Settings = ( props ) => {
 												} )
 											}
 											min={ 0 }
-											max={ 500 }
+											max={ 100 }
 											unit={ {
 												value: iconimgBorderRadiusUnit,
 												label:

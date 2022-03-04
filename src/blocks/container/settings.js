@@ -107,6 +107,8 @@ const Settings = ( props ) => {
 		columnGapTablet,
 		columnGapMobile,
 		columnGapType,
+		contentWidth,
+		isBlockRootParent
 	} = attributes;
 
 	let currentDirection = 'row';
@@ -115,6 +117,8 @@ const Settings = ( props ) => {
 
 		currentDirection = attributes[ 'direction' + deviceType ].split( '-' )[0];
 	}
+
+	const currentOppAxisDirection = 'row' === currentDirection ? 'column' : 'row';
 
 	const generalSettings = () => {
 
@@ -163,7 +167,7 @@ const Settings = ( props ) => {
 				tooltip: __( 'Flex Start', 'ultimate-addons-for-gutenberg' ),
 				icon: (
 					<Icon
-						icon={ renderCustomIcon( `flex-${currentDirection}-start` ) }
+						icon={ renderCustomIcon( `flex-${currentOppAxisDirection}-start` ) }
 					/>
 				),
 			},
@@ -172,7 +176,7 @@ const Settings = ( props ) => {
 				tooltip: __( 'Center', 'ultimate-addons-for-gutenberg' ),
 				icon: (
 					<Icon
-						icon={ renderCustomIcon( `flex-${currentDirection}-center` ) }
+						icon={ renderCustomIcon( `flex-${currentOppAxisDirection}-center` ) }
 					/>
 				),
 			},
@@ -181,7 +185,7 @@ const Settings = ( props ) => {
 				tooltip: __( 'Flex End', 'ultimate-addons-for-gutenberg' ),
 				icon: (
 					<Icon
-						icon={ renderCustomIcon( `flex-${currentDirection}-end` ) }
+						icon={ renderCustomIcon( `flex-${currentOppAxisDirection}-end` ) }
 					/>
 				),
 			},
@@ -190,7 +194,7 @@ const Settings = ( props ) => {
 				tooltip: __( 'Stretch', 'ultimate-addons-for-gutenberg' ),
 				icon: (
 					<Icon
-						icon={ renderCustomIcon( `flex-${currentDirection}-strech` ) }
+						icon={ renderCustomIcon( `flex-${currentOppAxisDirection}-strech` ) }
 					/>
 				),
 			},
@@ -316,11 +320,43 @@ const Settings = ( props ) => {
 			},
 		];
 
+		const contentWidthOptions = [
+			{
+				value: 'default',
+				tooltip: __( 'Default', 'ultimate-addons-for-gutenberg' ),
+				label: __( 'Default', 'ultimate-addons-for-gutenberg' ),
+			},
+			{
+				value: 'alignwide',
+				tooltip: __( 'Align Wide', 'ultimate-addons-for-gutenberg' ),
+				label: __( 'Align Wide', 'ultimate-addons-for-gutenberg' ),
+			},
+			{
+				value: 'alignfull',
+				tooltip: __( 'Full Width', 'ultimate-addons-for-gutenberg' ),
+				label: __( 'Full Width', 'ultimate-addons-for-gutenberg' ),
+			},
+		];
+
 		return (
 			<>
 				<UAGAdvancedPanelBody
 					title={ __( 'Size', 'ultimate-addons-for-gutenberg' ) }
+					initialOpen={ true }
 				>
+					{ isBlockRootParent &&
+						<MultiButtonsControl
+							setAttributes={ setAttributes }
+							label={ __( 'Content Width', 'ultimate-addons-for-gutenberg' ) }
+							data={ {
+								value: contentWidth,
+								label: 'contentWidth',
+							} }
+							options={ contentWidthOptions }
+							showIcons={ false }
+							responsive={false}
+						/>
+					}
 					<MultiButtonsControl
 						setAttributes={ setAttributes }
 						label={ __( 'Width', 'ultimate-addons-for-gutenberg' ) }
@@ -400,7 +436,7 @@ const Settings = ( props ) => {
 							},
 						} }
 						min={ 0 }
-						max={ 1440 }
+						limitMax={ { px: 1000, vh: 100 } }
 						unit={ {
 							value: minHeightType,
 							label: 'minHeightType',
@@ -423,6 +459,7 @@ const Settings = ( props ) => {
 				</UAGAdvancedPanelBody>
 				<UAGAdvancedPanelBody
 					title={ __( 'Flex Properties', 'ultimate-addons-for-gutenberg' ) }
+					initialOpen={ false }
 				>
 					<MultiButtonsControl
 						setAttributes={ setAttributes }
@@ -711,7 +748,7 @@ const Settings = ( props ) => {
 						},
 					} }
 					min={ 0 }
-					max={ 1600 }
+					max={ 200 }
 					unit={ {
 						value: rowGapType,
 						label: 'rowGapType',
@@ -752,7 +789,7 @@ const Settings = ( props ) => {
 						},
 					} }
 					min={ 0 }
-					max={ 1600 }
+					max={ 200 }
 					unit={ {
 						value: columnGapType,
 						label: 'columnGapType',

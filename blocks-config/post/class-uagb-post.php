@@ -393,6 +393,10 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 					'type'    => 'number',
 					'default' => 6,
 				),
+				'postsOffset'             => array(
+					'type'    => 'number',
+					'default' => 0,
+				),
 				'displayPostDate'         => array(
 					'type'    => 'boolean',
 					'default' => true,
@@ -1155,6 +1159,7 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 		public function required_attribute_for_query( $attributes ) {
 
 			return array(
+				'postsOffset'        => ( isset( $attributes['postsOffset'] ) ) ? sanitize_text_field( $attributes['postsOffset'] ) : 0,
 				'postsToShow'        => ( isset( $attributes['postsToShow'] ) ) ? sanitize_text_field( $attributes['postsToShow'] ) : 6,
 				'postType'           => ( isset( $attributes['postType'] ) ) ? sanitize_text_field( $attributes['postType'] ) : 'post',
 				'order'              => ( isset( $attributes['order'] ) ) ? sanitize_text_field( $attributes['order'] ) : 'desc',

@@ -151,7 +151,7 @@ const Settings = ( props ) => {
 						setAttributes( { inputSize: value } )
 					}
 					min={ 0 }
-					max={ 300 }
+					max={ 200 }
 					units={ [
 						{
 							name: __(
@@ -598,7 +598,7 @@ const Settings = ( props ) => {
 									} );
 								} }
 								min={ 0 }
-								max={ 500 }
+								max={ 100 }
 								unit={ {
 									value: buttonIconSizeType,
 									label: 'buttonIconSizeType',
@@ -725,7 +725,7 @@ const Settings = ( props ) => {
 								} );
 							} }
 							min={ 0 }
-							max={ 500 }
+							max={ 100 }
 							unit={ {
 								value: iconSizeType,
 								label: 'iconSizeType',

@@ -54,7 +54,7 @@ const attributes = {
 	},
 	icon: {
 		type: 'string',
-		default: 'fa fa-star',
+		default: 'fa fa-check-circle',
 	},
 	iconimgPosition: {
 		type: 'string',
@@ -1060,6 +1060,8 @@ const attributes = {
 	},
 	headMarginLeftMobile : {
 		type: 'number',
+
+
 		UAGCopyPaste: {
 			styleType: 'main-title-margin-left-mobile'
 		}
