@@ -435,7 +435,7 @@ const attributes = {
 	},
 	seperatorPosition: {
 		type: 'string',
-		default: 'seperator-position',
+		default: 'separator-position',
 	},
 	seperatorStyle: {
 		type: 'string',
@@ -892,14 +892,14 @@ const attributes = {
 		type: 'string',
 		default: 'px',
 		UAGCopyPaste: {
-			styleType: 'image-width-type'
+			styleType: 'image-width-unit'
 		}
 	},
 	iconimgBorderRadiusUnit: {
 		type: 'string',
 		default: 'px',
 		UAGCopyPaste: {
-			styleType: 'icon-borderr-radius-unit'
+			styleType: 'icon-border-radius-unit'
 		}
 	},
 
