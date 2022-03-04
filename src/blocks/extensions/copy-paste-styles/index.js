@@ -172,7 +172,8 @@ const UAGCopyPasteStyles = () => {
         /* eslint-disable no-shadow */
         const { getSelectedBlock, hasMultiSelection, getMultiSelectedBlocks } = select( 'core/block-editor' );
 
-        if ( hasMultiSelection() ) {
+        if ( hasMultiSelection()
+		) {
             const multiSelectedBlocksData = getMultiSelectedBlocks();
             multiSelectedBlocksData.map( ( block ) => {
 
@@ -239,21 +240,17 @@ const UAGCopyPasteStyles = () => {
                 if ( blockAttributes && uagLocalStorageObject ) {
 
                     Object.keys( blockAttributes ).map( ( attribute ) => {
-                        if ( blockAttributes[attribute].isUAGStyle ) {
-
-                            styles[attribute] = '';
+                        if ( blockAttributes[attribute].UAGCopyPaste ) {
+							const key = blockAttributes[attribute].UAGCopyPaste.styleType;
 
                             if ( attributes[attribute] ) {
-                                styles[attribute] = attributes[attribute];
+                                styles[key] = attributes[attribute];
                             }
                         }
-
                         return attribute;
                     } );
-
                     styles.stylesSavedTimeStamp = Date.now();
-
-                    uagLocalStorageObject[`uag-${blockName}-styles`] = styles;
+                    uagLocalStorageObject[`uag-block-styles`] = styles;
 
                     xsLocalStorage.setItem( 'uag-copy-paste-styles', JSON.stringify( uagLocalStorageObject ) );
                 }
@@ -276,7 +273,8 @@ const UAGCopyPasteStyles = () => {
 
         const {
             name,
-            clientId
+            clientId,
+			attributes
         } = blockData
 
         let styles;
@@ -287,9 +285,22 @@ const UAGCopyPasteStyles = () => {
 
             if ( name.includes( 'uagb/' ) ) {
 
-                const selectedBlockName = name.replace( 'uagb/', '' );
-
-                styles = uagLocalStorageObject[`uag-${selectedBlockName}-styles`];
+               styles = uagLocalStorageObject[`uag-block-styles`];
+			   const blockName = name.replace( 'uagb/', '' );
+			   const blockAttributes = blocksAttributes[blockName];
+			   if ( blockAttributes && styles ) {
+					Object.keys( blockAttributes ).map( ( attribute ) => {
+						if ( blockAttributes[attribute].UAGCopyPaste ) {
+							const key = blockAttributes[attribute].UAGCopyPaste.styleType;
+							Object.keys( styles ).map( ( item ) => {
+								if(item === key){
+									attributes[attribute] = styles[key];
+								}
+							})
+						}
+						return attribute;
+					} );
+				}
             }
 
             if ( name.includes( 'core/' ) ) {
@@ -371,11 +382,8 @@ const UAGCopyPasteStyles = () => {
                     position="bottom center"
                     className="uag-copy-paste-styles-popover"
                     focusOnMount="container"
-                    onClickOutside={ () => {
-                        setshowPopup( false );
-                    } }
-                >
 
+                >
                     <MenuItem
                         onClick={copyStylesHandler}
                     >
@@ -425,7 +433,7 @@ const displayUAGCopyPasteSettingConditionally = createHigherOrderComponent( ( Bl
             } );
         }
 
-        if ( singleSelectBlockFlag || multiSelectBlockFlag ) {
+		if ( singleSelectBlockFlag || multiSelectBlockFlag ) {
             return (
                 <>
                     <BlockEdit { ...props } />
@@ -441,6 +449,7 @@ const displayUAGCopyPasteSettingConditionally = createHigherOrderComponent( ( Bl
                 </>
             );
         }
+
 	};
 }, 'displayUAGCopyPasteSettingConditionally' );
 
