@@ -129,6 +129,7 @@ const Render = ( props ) => {
 			updateBlockAttributes( childBlockId, attrs )
 		);
 	};
+
 	return (
 		<>
 			<div
@@ -179,7 +180,11 @@ const Render = ( props ) => {
 													index === tabHeaders.length
 												}
 											>
-												<Dashicon icon="arrow-left" />
+												{ ( tabsStyleD.includes( 'vstyle' ) && deviceType === 'Desktop' ) || ( tabsStyleT.includes( 'vstyle' ) && deviceType === 'Tablet' ) || ( tabsStyleT.includes( 'vstyle' ) && deviceType === 'Mobile' ) ? (
+													<Dashicon icon="arrow-down" />
+												) :
+													<Dashicon icon="arrow-left" />
+												}
 											</span>
 										</Tooltip>
 									) }
@@ -208,7 +213,11 @@ const Render = ( props ) => {
 													index === tabHeaders.length
 												}
 											>
-												<Dashicon icon="arrow-right" />
+												{ ( tabsStyleD.includes( 'vstyle' ) && deviceType === 'Desktop' ) || ( tabsStyleT.includes( 'vstyle' ) && deviceType === 'Tablet' ) || ( tabsStyleT.includes( 'vstyle' ) && deviceType === 'Mobile' ) ? (
+													<Dashicon icon="arrow-up" />
+												) :
+													<Dashicon icon="arrow-right" />
+												}
 											</span>
 										</Tooltip>
 									) }
