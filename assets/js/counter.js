@@ -67,7 +67,6 @@ UAGBCounter = {
 		const that = this
 		const numberWrap = that.elements.counterWrapper.querySelector( '.wp-block-uagb-counter__number' );
 		const duration = that._getAnimationDuration();
-		console.log({duration})
 		var startWidth = Math.ceil( ( that.settings.startNumber / that.settings.totalNumber ) * 100 );
 		var endWidth = Math.ceil( ( that.settings.endNumber / that.settings.totalNumber ) * 100 );
 

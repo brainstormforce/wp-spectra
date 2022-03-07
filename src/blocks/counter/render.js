@@ -34,6 +34,8 @@ const Render = ( props ) => {
 		UAGBCounter.init( '.uagb-block-' + block_id, attributes ) // eslint-disable-line no-undef
 	}, [layout, animationDuration] )
 
+	const percentLayout = ['bars', 'circle'];
+
 	const title = (
 		<RichText
 			tagName="div"
@@ -50,6 +52,9 @@ const Render = ( props ) => {
 				numberPrefix && (<span className="uagb-counter-block-prefix">{numberPrefix}</span>)
 			}
 			<span className="uagb-counter-block-number" data-duration={animationDuration} data-to-value={endNumber} data-from-value={startNumber} data-delimiter={thousandSeparator}></span>
+			{
+				percentLayout.includes(layout) && (<span className='uagb-counter-block-number-type'>%</span>)
+			}
 			{
 				numberSuffix && (<span className="uagb-counter-block-suffix">{numberSuffix}</span>)
 			}
