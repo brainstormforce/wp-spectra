@@ -182,6 +182,7 @@ const attributes = {
 	headFontWeight: {
 		type: 'string',
 		isUAGStyle: true,
+		default: '500',
 	},
 	headFontStyle: {
 		type: 'string',
@@ -309,6 +310,7 @@ const attributes = {
 	priceFontSize: {
 		type: 'number',
 		isUAGStyle: true,
+		default: 18,
 	},
 	priceFontSizeTablet: {
 		type: 'number',
@@ -326,6 +328,7 @@ const attributes = {
 	priceFontWeight: {
 		type: 'string',
 		isUAGStyle: true,
+		default: '500',
 	},
 	priceFontStyle: {
 		type: 'string',
