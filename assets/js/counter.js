@@ -51,8 +51,8 @@ UAGBCounter = {
 		const that = this
 		const el = this.elements.counterWrapper.querySelector('.uagb-counter-block-number')
 		if(typeof el !== 'undefined' && el){
-			const countUp = new window.countUp.CountUp(el, that.settings.endNumber, {
-				startVal: that.settings.startNumber,
+			const countUp = new window.countUp.CountUp(el, that._getEndNumber(that.settings.endNumber), {
+				startVal: that._getStartNumber(that.settings.startNumber),
 				duration: that.settings.animationDuration
 			});
 			if (!countUp.error) {
@@ -67,6 +67,7 @@ UAGBCounter = {
 		const that = this
 		const numberWrap = that.elements.counterWrapper.querySelector( '.wp-block-uagb-counter__number' );
 		const duration = that._getAnimationDuration();
+		console.log({duration})
 		var startWidth = Math.ceil( ( that.settings.startNumber / that.settings.totalNumber ) * 100 );
 		var endWidth = Math.ceil( ( that.settings.endNumber / that.settings.totalNumber ) * 100 );
 
@@ -74,7 +75,7 @@ UAGBCounter = {
 			width: endWidth + '%'
 		}, {
 			duration: duration,
-			easing: 'swing',
+			easing: 'linear',
 		});
 	},
 
@@ -91,7 +92,7 @@ UAGBCounter = {
 			strokeDashoffset: endPct
 		}, {
 			duration: duration,
-			easing: 'swing',
+			easing: 'linear',
 			complete: function() {
 
 			}
@@ -100,9 +101,20 @@ UAGBCounter = {
 
 	_getAnimationDuration(){
 		const that = this
-		return that.settings.animationDuration * 1000;
+		const countAbleNumber = that._getEndNumber() - that._getStartNumber()
+		return (countAbleNumber * that.settings.animationDuration) * 10
+	},
+
+	_getStartNumber(){
+		if(this.settings.layout === 'bars' || this.settings.layout === 'circle'){
+			return Math.ceil( ( this.settings.startNumber / this.settings.totalNumber ) * 100 );
+		}
+		return this.settings.startNumber;
+	},
+	_getEndNumber(){
+		if(this.settings.layout === 'bars' || this.settings.layout === 'circle'){
+			return Math.ceil( ( this.settings.endNumber / this.settings.totalNumber ) * 100 );
+		}
+		return this.settings.endNumber;
 	}
-
-
-
 };
