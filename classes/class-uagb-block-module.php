@@ -134,6 +134,9 @@ class UAGB_Block_Module {
 		'container'          => array(
 			'dir' => 'container',
 		),
+		'counter'          => array(
+			'dir' => 'counter',
+		),
 	);
 
 	/**

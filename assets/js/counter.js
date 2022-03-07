@@ -18,7 +18,6 @@ UAGBCounter = {
 	},
 	getDefaultElements(mainSelector) {
 		const counterWrapper = this.getElement(mainSelector);
-
 		return {
 			counterWrapper
 		};
@@ -106,13 +105,13 @@ UAGBCounter = {
 
 	_getStartNumber(){
 		if(this.settings.layout === 'bars' || this.settings.layout === 'circle'){
-			return Math.ceil( ( this.settings.startNumber / this.settings.totalNumber ) * 100 );
+			return Math.ceil( ( parseInt(this.settings.startNumber) / parseInt(this.settings.totalNumber) ) * 100 );
 		}
 		return this.settings.startNumber;
 	},
 	_getEndNumber(){
 		if(this.settings.layout === 'bars' || this.settings.layout === 'circle'){
-			return Math.ceil( ( this.settings.endNumber / this.settings.totalNumber ) * 100 );
+			return Math.ceil( ( parseInt(this.settings.endNumber) / parseInt(this.settings.totalNumber) ) * 100 );
 		}
 		return this.settings.endNumber;
 	}
