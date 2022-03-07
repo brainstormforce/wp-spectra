@@ -799,7 +799,7 @@ const attributes = {
 		type: 'string',
 		default: 'px',
 		UAGCopyPaste: {
-			styleType: 'btn-padding-mobile-unit'
+			styleType: 'btn-padding-unit'
 		}
 	},
 	mobilePaddingBtnUnit: {
