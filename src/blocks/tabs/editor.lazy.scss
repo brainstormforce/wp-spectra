@@ -24,6 +24,11 @@
 		display: block;
 	}
 
+	li.uagb-tab.uagb-tabs__add-tab {
+		padding: 10px;
+		cursor: pointer;
+	}
+
 	.uagb-tab-item__move-forward,
 	.uagb-tab-item__move-back {
 		color: #fff;
