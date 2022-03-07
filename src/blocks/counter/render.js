@@ -32,7 +32,7 @@ const Render = ( props ) => {
 
 	useEffect( () => {
 		UAGBCounter.init( '.uagb-block-' + block_id, attributes ) // eslint-disable-line no-undef
-	}, [attributes] )
+	}, [layout, animationDuration] )
 
 	const title = (
 		<RichText

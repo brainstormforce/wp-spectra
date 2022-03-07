@@ -13,7 +13,7 @@ import UAGAdvancedPanelBody from '@Components/advanced-panel-body';
 
 export default function Settings( props ) {
 	const { attributes, setAttributes } = props.parentProps;
-	const {startNumber, endNumber, totalNumber, numberPrefix, numberSuffix, animationDuration, thousandSeparator, heading, headingTag, layout} = attributes;
+	const {startNumber, endNumber, totalNumber, numberType, numberPrefix, numberSuffix, animationDuration, thousandSeparator, heading, headingTag, layout} = attributes;
 	const generalPanel = (
 		<UAGAdvancedPanelBody
 			title={ __( 'General', 'ultimate-addons-for-gutenberg' ) }

@@ -12,11 +12,11 @@ const attributes = {
 	},
 	endNumber: {
 		type: 'string',
-		default: 100,
+		default: 80,
 	},
 	totalNumber: {
 		type: 'string',
-		default: 0,
+		default: 100,
 	},
 	numberPrefix: {
 		type: 'string',
@@ -28,7 +28,7 @@ const attributes = {
 	},
 	animationDuration: {
 		type: 'float',
-		default: 0.1,
+		default: 25,
 	},
 	thousandSeparator: {
 		type: 'string',
