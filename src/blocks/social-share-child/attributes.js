@@ -28,21 +28,29 @@ const attributes = {
 	icon_color: {
 		type: 'string',
 		default: '#3a3a3a',
-		isUAGStyle: true,
+		UAGCopyPaste: {
+			styleType: 'icon-color'
+		},
 	},
 	icon_hover_color: {
 		type: 'string',
-		isUAGStyle: true,
+		UAGCopyPaste: {
+			styleType: 'icon-hovercolor'
+		},
 		default: '',
 	},
 	icon_bg_color: {
 		type: 'string',
-		isUAGStyle: true,
+		UAGCopyPaste: {
+			styleType: 'icon-bg-color'
+		},
 		default: '',
 	},
 	icon_bg_hover_color: {
 		type: 'string',
-		isUAGStyle: true,
+		UAGCopyPaste: {
+			styleType: 'icon-bg-hover-color'
+		},
 		default: '',
 	},
 };
