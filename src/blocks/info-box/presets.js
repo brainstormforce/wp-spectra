@@ -10,7 +10,7 @@ const presets = [
         value: 'preset-1',
         label: __( 'Preset 1', 'ultimate-addons-for-gutenberg' ),
         attributes: [
-            { label: 'icon', value: 'fa fa-star' },
+            { label: 'icon', value: 'fa fa-check-circle' },
             { label: 'headingAlign', value: 'center' },
             { label: 'ctaType', value: 'button' },
         ],
@@ -20,7 +20,7 @@ const presets = [
         value: 'preset-2',
         label: __( 'Preset 2', 'ultimate-addons-for-gutenberg' ),
         attributes: [
-            { label: 'icon', value: 'fa fa-star' },
+            { label: 'icon', value: 'fa fa-check-circle' },
             { label: 'headingAlign', value: 'left' },
             { label: 'ctaType', value: 'button' },
             { label: 'iconLeftMargin', value: 0 },
@@ -31,7 +31,7 @@ const presets = [
         value: 'preset-3',
         label: __( 'Preset 3', 'ultimate-addons-for-gutenberg' ),
         attributes: [
-            { label: 'icon', value: 'fa fa-star' },
+            { label: 'icon', value: 'fa fa-check-circle' },
             { label: 'headingAlign', value: 'left' },
             { label: 'ctaType', value: 'none' },
             { label: 'iconLeftMargin', value: 0 },
