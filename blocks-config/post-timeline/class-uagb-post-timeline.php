@@ -466,11 +466,11 @@ if ( ! class_exists( 'UAGB_Post_Timeline' ) ) {
 							'type'    => 'number',
 							'default' => 10,
 						),
-						'ctaBottomSpacing'          => array(
-							'type'    => 'number',
+						'ctaBottomSpacing'        => array(
+							'type' => 'number',
 						),
 						'headTopSpacing'          => array(
-							'type'    => 'number',
+							'type' => 'number',
 						),
 						'iconSize'                => array(
 							'type'    => 'number',

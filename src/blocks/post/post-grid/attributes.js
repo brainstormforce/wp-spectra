@@ -713,6 +713,10 @@ const attributes = {
 		default : 'px',
 		isUAGStyle: true,
 	},
+	postsOffset: {
+		type    : 'number',
+		default : 0,
+	}
 }
 
 export default attributes;

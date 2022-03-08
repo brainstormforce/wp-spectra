@@ -171,74 +171,74 @@ const UAGBPostMasonry = ( props ) => {
 			}
 		}
 		if ( btnVPadding ) {
-			if ( ! paddingBtnTop ) {
+			if ( undefined === paddingBtnTop ) {
 				props.setAttributes( { paddingBtnTop: btnVPadding } );
 			}
-			if ( ! paddingBtnBottom ) {
+			if ( undefined === paddingBtnBottom ) {
 				props.setAttributes( { paddingBtnBottom: btnVPadding } );
 			}
 		}
 		if ( btnHPadding ) {
-			if ( ! paddingBtnRight ) {
+			if ( undefined === paddingBtnRight ) {
 				props.setAttributes( { paddingBtnRight: btnHPadding } );
 			}
-			if ( ! paddingBtnLeft ) {
+			if ( undefined === paddingBtnLeft ) {
 				props.setAttributes( { paddingBtnLeft: btnHPadding } );
 			}
 		}
 		if ( contentPadding ) {
-			if ( ! paddingTop ) {
+			if ( undefined === paddingTop ) {
 				props.setAttributes( { paddingTop: contentPadding } );
 			}
-			if ( ! paddingBottom ) {
+			if ( undefined === paddingBottom ) {
 				props.setAttributes( { paddingBottom: contentPadding } );
 			}
-			if ( ! paddingRight ) {
+			if ( undefined === paddingRight ) {
 				props.setAttributes( { paddingRight: contentPadding } );
 			}
-			if ( ! paddingLeft ) {
+			if ( undefined === paddingLeft ) {
 				props.setAttributes( { paddingLeft: contentPadding } );
 			}
 		}
 		if ( contentPaddingTablet ) {
-			if ( ! paddingTopTablet ) {
+			if ( undefined === paddingTopTablet ) {
 				props.setAttributes( {
 					paddingTopTablet: contentPaddingTablet,
 				} );
 			}
-			if ( ! paddingBottomTablet ) {
+			if ( undefined === paddingBottomTablet ) {
 				props.setAttributes( {
 					paddingBottomTablet: contentPaddingTablet,
 				} );
 			}
-			if ( ! paddingRightTablet ) {
+			if ( undefined === paddingRightTablet ) {
 				props.setAttributes( {
 					paddingRightTablet: contentPaddingTablet,
 				} );
 			}
-			if ( ! paddingLeftTablet ) {
+			if ( undefined === paddingLeftTablet ) {
 				props.setAttributes( {
 					paddingLeftTablet: contentPaddingTablet,
 				} );
 			}
 		}
 		if ( contentPaddingMobile ) {
-			if ( ! paddingTopMobile ) {
+			if ( undefined === paddingTopMobile ) {
 				props.setAttributes( {
 					paddingTopMobile: contentPaddingMobile,
 				} );
 			}
-			if ( ! paddingBottomMobile ) {
+			if ( undefined === paddingBottomMobile ) {
 				props.setAttributes( {
 					paddingBottomMobile: contentPaddingMobile,
 				} );
 			}
-			if ( ! paddingRightMobile ) {
+			if ( undefined === paddingRightMobile ) {
 				props.setAttributes( {
 					paddingRightMobile: contentPaddingMobile,
 				} );
 			}
-			if ( ! paddingLeftMobile ) {
+			if ( undefined === paddingLeftMobile ) {
 				props.setAttributes( {
 					paddingLeftMobile: contentPaddingMobile,
 				} );
@@ -251,7 +251,7 @@ const UAGBPostMasonry = ( props ) => {
 		const blockStyling = styling( props );
 
 		addBlockEditorDynamicStyles( 'uagb-post-masonry-style-' + props.clientId.substr( 0, 8 ), blockStyling );
-		
+
 	}, [ props ] );
 
 	useEffect( () => {
@@ -259,7 +259,7 @@ const UAGBPostMasonry = ( props ) => {
 		const blockStyling = styling( props );
 
 		addBlockEditorDynamicStyles( 'uagb-post-masonry-style-' + props.clientId.substr( 0, 8 ), blockStyling );
-		
+
 	}, [ props.deviceType ] );
 
 	const togglePreview = () => {
@@ -470,6 +470,7 @@ const UAGBPostMasonry = ( props ) => {
 		tabletPaddingUnit,
 		excerptBottomSpaceUnit,
 		contentPaddingUnit,
+		postsOffset
 	} = attributes;
 
 	const taxonomyListOptions = [];
@@ -606,6 +607,20 @@ const UAGBPostMasonry = ( props ) => {
 					displayUnit={ false }
 					min={ 1 }
 					max={ 100 }
+				/>
+				<Range
+					label={ __(
+						'Offset Starting Post',
+						'ultimate-addons-for-gutenberg'
+					) }
+					setAttributes={ setAttributes }
+					value={ postsOffset }
+					onChange={ ( value ) =>
+						setAttributes( { postsOffset: value } )
+					}
+					min={ 0 }
+					max={ 100 }
+					displayUnit={ false }
 				/>
 				<MultiButtonsControl
 					setAttributes={ setAttributes }
@@ -2008,7 +2023,7 @@ const UAGBPostMasonry = ( props ) => {
 						setAttributes( { ctaBottomSpace: value } )
 					}
 					min={ 0 }
-					max={ 500 }
+					max={ 200 }
 					unit={ {
 						value: ctaBottomSpaceUnit,
 						label: 'ctaBottomSpaceUnit',
@@ -2207,6 +2222,7 @@ export default compose(
 		const {
 			categories,
 			postsToShow,
+			postsOffset,
 			order,
 			orderBy,
 			postType,
@@ -2243,6 +2259,7 @@ export default compose(
 			order,
 			orderby: orderBy,
 			per_page: postsToShow,
+			offset: postsOffset
 		};
 
 		if ( excludeCurrentPost ) {
