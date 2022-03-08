@@ -16,75 +16,95 @@ import UAGAdvancedPanelBody from '@Components/advanced-panel-body';
 
 export default function Settings( props ) {
 	const { attributes, deviceType, setAttributes } = props.parentProps;
-	const {startNumber, endNumber, totalNumber, numberType, numberPrefix, numberSuffix, animationDuration, thousandSeparator, layout,
-	// heading
-	headingLoadGoogleFonts,
-	headingFontFamily,
-	headingFontWeight,
-	headingFontStyle,
-	headingFontSize,
-	headingColor,
-	headingTransform,
-	headingDecoration,
-	headingFontSizeType,
-	headingFontSizeMobile,
-	headingFontSizeTablet,
-	headingLineHeight,
-	headingLineHeightType,
-	headingLineHeightMobile,
-	headingLineHeightTablet,
-	headingTopMargin,
-	headingRightMargin,
-	headingLeftMargin,
-	headingBottomMargin,
-	headingTopMarginTablet,
-	headingRightMarginTablet,
-	headingLeftMarginTablet,
-	headingBottomMarginTablet,
-	headingTopMarginMobile,
-	headingRightMarginMobile,
-	headingLeftMarginMobile,
-	headingBottomMarginMobile,
-	headingMarginUnit,
-	headingMarginUnitTablet,
-	headingMarginUnitMobile,
-	headingMarginLink,
-	// Number
-	numberLoadGoogleFonts,
-	numberFontFamily,
-	numberFontWeight,
-	numberFontStyle,
-	numberFontSize,
-	numberColor,
-	numberTransform,
-	numberDecoration,
-	numberFontSizeType,
-	numberFontSizeMobile,
-	numberFontSizeTablet,
-	numberLineHeight,
-	numberLineHeightType,
-	numberLineHeightMobile,
-	numberLineHeightTablet,
-	numberTopMargin,
-	numberRightMargin,
-	numberLeftMargin,
-	numberBottomMargin,
-	numberTopMarginTablet,
-	numberRightMarginTablet,
-	numberLeftMarginTablet,
-	numberBottomMarginTablet,
-	numberTopMarginMobile,
-	numberRightMarginMobile,
-	numberLeftMarginMobile,
-	numberBottomMarginMobile,
-	numberMarginUnit,
-	numberMarginUnitTablet,
-	numberMarginUnitMobile,
-	numberMarginLink,
-	// prefix
-	prefixRightDistance,
-	suffixLeftDistance
+	const {
+		startNumber,
+		endNumber,
+		totalNumber,
+		numberType,
+		numberPrefix,
+		numberSuffix,
+		animationDuration,
+		thousandSeparator,
+		layout,
+		// heading
+		headingLoadGoogleFonts,
+		headingFontFamily,
+		headingFontWeight,
+		headingFontStyle,
+		headingFontSize,
+		headingColor,
+		headingTransform,
+		headingDecoration,
+		headingFontSizeType,
+		headingFontSizeMobile,
+		headingFontSizeTablet,
+		headingLineHeight,
+		headingLineHeightType,
+		headingLineHeightMobile,
+		headingLineHeightTablet,
+		headingTopMargin,
+		headingRightMargin,
+		headingLeftMargin,
+		headingBottomMargin,
+		headingTopMarginTablet,
+		headingRightMarginTablet,
+		headingLeftMarginTablet,
+		headingBottomMarginTablet,
+		headingTopMarginMobile,
+		headingRightMarginMobile,
+		headingLeftMarginMobile,
+		headingBottomMarginMobile,
+		headingMarginUnit,
+		headingMarginUnitTablet,
+		headingMarginUnitMobile,
+		headingMarginLink,
+		// Number
+		numberLoadGoogleFonts,
+		numberFontFamily,
+		numberFontWeight,
+		numberFontStyle,
+		numberFontSize,
+		numberColor,
+		numberTransform,
+		numberDecoration,
+		numberFontSizeType,
+		numberFontSizeMobile,
+		numberFontSizeTablet,
+		numberLineHeight,
+		numberLineHeightType,
+		numberLineHeightMobile,
+		numberLineHeightTablet,
+		numberTopMargin,
+		numberRightMargin,
+		numberLeftMargin,
+		numberBottomMargin,
+		numberTopMarginTablet,
+		numberRightMarginTablet,
+		numberLeftMarginTablet,
+		numberBottomMarginTablet,
+		numberTopMarginMobile,
+		numberRightMarginMobile,
+		numberLeftMarginMobile,
+		numberBottomMarginMobile,
+		numberMarginUnit,
+		numberMarginUnitTablet,
+		numberMarginUnitMobile,
+		numberMarginLink,
+		// prefix
+		prefixRightDistance,
+		suffixLeftDistance,
+		// circle
+		circleSize,
+		circleStokeSize,
+		circleForeground,
+		circleBackground,
+		// bar
+		barSize,
+		barForeground,
+		barBackground
 	} = attributes;
+
+
 	const generalPanel = (
 		<UAGAdvancedPanelBody
 			title={ __( 'General', 'ultimate-addons-for-gutenberg' ) }
@@ -495,6 +515,99 @@ export default function Settings( props ) {
 		</UAGAdvancedPanelBody>
 	)
 
+	const circleStylePanel = (
+		<UAGAdvancedPanelBody
+			title={__( 'Circle', 'ultimate-addons-for-gutenberg' )}
+			initialOpen={ false }
+		>
+			<Suspense fallback={ lazyLoader() }>
+				<Range
+					label={ __(
+						'Circle Size',
+						'ultimate-addons-for-gutenberg'
+					) }
+					setAttributes={ setAttributes }
+					value={ circleSize }
+					onChange={ ( value ) =>
+						setAttributes( { circleSize: value } )
+					}
+					min={ 10 }
+					step={ 10 }
+					max={ 500 }
+					displayUnit={ false }
+				/>
+				<Range
+					label={ __(
+						'Stoke Size',
+						'ultimate-addons-for-gutenberg'
+					) }
+					setAttributes={ setAttributes }
+					value={ circleStokeSize }
+					onChange={ ( value ) =>
+						setAttributes( { circleStokeSize: value } )
+					}
+					min={ 0 }
+					step={ 1 }
+					max={ 100 }
+					displayUnit={ false }
+				/>
+				<AdvancedPopColorControl
+					label={ __( 'Foreground', 'ultimate-addons-for-gutenberg' ) }
+					colorValue={ circleForeground ? circleForeground : '' }
+					onColorChange={ ( value ) =>
+						setAttributes( { circleForeground: value } )
+					}
+				/>
+				<AdvancedPopColorControl
+					label={ __( 'background', 'ultimate-addons-for-gutenberg' ) }
+					colorValue={ circleBackground ? circleBackground : '' }
+					onColorChange={ ( value ) =>
+						setAttributes( { circleBackground: value } )
+					}
+				/>
+			</Suspense>
+		</UAGAdvancedPanelBody>
+	)
+
+	const barStylePanel = (
+		<UAGAdvancedPanelBody
+			title={__( 'Bars', 'ultimate-addons-for-gutenberg' )}
+			initialOpen={ false }
+		>
+			<Suspense fallback={ lazyLoader() }>
+				<Range
+					label={ __(
+						'Bar Size',
+						'ultimate-addons-for-gutenberg'
+					) }
+					setAttributes={ setAttributes }
+					value={ barSize }
+					onChange={ ( value ) =>
+						setAttributes( { barSize: value } )
+					}
+					min={ 0 }
+					step={ 1 }
+					max={ 100 }
+					displayUnit={ false }
+				/>
+				<AdvancedPopColorControl
+					label={ __( 'Foreground', 'ultimate-addons-for-gutenberg' ) }
+					colorValue={ barForeground ? circleForeground : '' }
+					onColorChange={ ( value ) =>
+						setAttributes( { barForeground: value } )
+					}
+				/>
+				<AdvancedPopColorControl
+					label={ __( 'background', 'ultimate-addons-for-gutenberg' ) }
+					colorValue={ barBackground ? barBackground : '' }
+					onColorChange={ ( value ) =>
+						setAttributes( { barBackground: value } )
+					}
+				/>
+			</Suspense>
+		</UAGAdvancedPanelBody>
+	)
+
 	return (
 		<React.Fragment>
 			<InspectorControls>
@@ -505,6 +618,8 @@ export default function Settings( props ) {
 					<InspectorTab { ...UAGTabs.style }>
 						{headlineStylePanel}
 						{numberStylePanel}
+						{circleStylePanel}
+						{barStylePanel}
 					</InspectorTab>
 					<InspectorTab
 						{ ...UAGTabs.advance }

@@ -320,6 +320,36 @@ const attributes = {
 		type: 'number',
 		default: 0,
 	},
+	// circle
+	circleSize: {
+		type: 'number',
+		default: 300,
+	},
+	circleStokeSize: {
+		type: 'number',
+		default: 10,
+	},
+	circleForeground : {
+		type: 'string',
+		default: '#eaeaea',
+	},
+	circleBackground : {
+		type: 'string',
+		default: '#f7951e',
+	},
+	// bar
+	barSize: {
+		type: 'number',
+		default: 25,
+	},
+	barForeground : {
+		type: 'string',
+		default: '#eaeaea',
+	},
+	barBackground : {
+		type: 'string',
+		default: '#f7951e',
+	},
 };
 
 export default attributes;
