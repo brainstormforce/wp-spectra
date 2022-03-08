@@ -62,7 +62,6 @@ UAGBCounter = {
 		IO.observe( that.elements.counterWrapper )
 	},
 	_numberCount(data){
-		console.log({data})
 		const that = this
 		const el = this.elements.counterWrapper.querySelector('.uagb-counter-block-number')
 		if(typeof el !== 'undefined' && el){
