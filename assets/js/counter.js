@@ -1,19 +1,11 @@
 UAGBCounter = {
 	// eslint-disable-line no-undef
-	settings: {
-		animated: false
-	},
 	elements: {},
 	init(mainSelector, data = {}) {
 		this.elements = this.getDefaultElements(mainSelector);
-		this.settings = {...this.settings, ...data}
 		if(typeof this.elements.counterWrapper !== 'undefined' && this.elements.counterWrapper){
-			if(data.layout === 'bars'){
-				this._triggerBar();
-			} else if(data.layout === 'circle'){
-				this._triggerCircle();
-			}
-			this._initCount();
+			const numberCount = this._numberCount(data);
+			this._inViewInit(numberCount, data);
 		}
 	},
 	getDefaultElements(mainSelector) {
@@ -46,29 +38,48 @@ UAGBCounter = {
 		return domElement;
 	},
 
-	_initCount(){
+	_inViewInit(countUp, data){
+		const that = this
+		const callback = entries => {
+			entries.forEach( entry => {
+				const el = entry.target
+				if ( entry.isIntersecting && ! el.classList.contains( 'is-visible' ) ) {
+					if (!countUp.error) {
+						if(data.layout === 'bars'){
+							that._triggerBar(el, data);
+						} else if(data.layout === 'circle'){
+							that._triggerCircle(el, data);
+						}
+						countUp.start();
+					} else {
+						console.error(countUp.error);
+					}
+					el.classList.add( 'is-visible' )
+				}
+			} )
+		}
+		const IO = new IntersectionObserver( callback, { threshold: 1 } )
+		IO.observe( that.elements.counterWrapper )
+	},
+	_numberCount(data){
+		console.log({data})
 		const that = this
 		const el = this.elements.counterWrapper.querySelector('.uagb-counter-block-number')
 		if(typeof el !== 'undefined' && el){
-			const countUp = new window.countUp.CountUp(el, that._getEndNumber(that.settings.endNumber), {
-				startVal: that._getStartNumber(that.settings.startNumber),
-				duration: that.settings.animationDuration
+			const countUp = new window.countUp.CountUp(el, that._getEndNumber(data), {
+				startVal: that._getStartNumber(data),
+				duration: data.animationDuration
 			});
-			if (!countUp.error) {
-				countUp.start();
-			} else {
-				console.error(countUp.error);
-			}
+			return countUp;
 		}
 	},
 
-	_triggerBar(){
+	_triggerBar(el, data){
 		const that = this
-		const numberWrap = that.elements.counterWrapper.querySelector( '.wp-block-uagb-counter__number' );
-		const duration = that._getAnimationDuration();
-		var startWidth = Math.ceil( ( that.settings.startNumber / that.settings.totalNumber ) * 100 );
-		var endWidth = Math.ceil( ( that.settings.endNumber / that.settings.totalNumber ) * 100 );
-
+		const numberWrap = el.querySelector( '.wp-block-uagb-counter__number' );
+		const duration = that._getAnimationDuration(data);
+		var startWidth = Math.ceil( ( data.startNumber / data.totalNumber ) * 100 );
+		var endWidth = Math.ceil( ( data.endNumber / data.totalNumber ) * 100 );
 		jQuery(numberWrap).css('width', startWidth + '%').animate({
 			width: endWidth + '%'
 		}, {
@@ -77,15 +88,15 @@ UAGBCounter = {
 		});
 	},
 
-	_triggerCircle(){
+	_triggerCircle(el, data){
 		const that = this
-		const circleWrap = that.elements.counterWrapper.querySelector( '.wp-block-uagb-counter-circle-container svg #bar' );
-		const totalWidth = that.settings.totalNumber;
+		const circleWrap = el.querySelector( '.wp-block-uagb-counter-circle-container svg #bar' );
+		const totalWidth = data.totalNumber;
 		const r = 90;
 		const circle = Math.PI*(r*2);
-		const startPct = ( 1 - ( that.settings.startNumber / totalWidth ) ) * circle;
-		const endPct = ( 1 - ( that.settings.endNumber / totalWidth ) ) * circle;
-		const duration = that._getAnimationDuration();
+		const startPct = ( 1 - ( data.startNumber / totalWidth ) ) * circle;
+		const endPct = ( 1 - ( data.endNumber / totalWidth ) ) * circle;
+		const duration = that._getAnimationDuration(data);
 		jQuery(circleWrap).css('strokeDashoffset', startPct).animate({
 			strokeDashoffset: endPct
 		}, {
@@ -97,22 +108,22 @@ UAGBCounter = {
 		});
 	},
 
-	_getAnimationDuration(){
+	_getAnimationDuration(data){
 		const that = this
-		const countAbleNumber = that._getEndNumber() - that._getStartNumber()
-		return (countAbleNumber * that.settings.animationDuration) * 10
+		const countAbleNumber = that._getEndNumber(data) - that._getStartNumber(data)
+		return (countAbleNumber * data.animationDuration) * 10
 	},
 
-	_getStartNumber(){
-		if(this.settings.layout === 'bars' || this.settings.layout === 'circle'){
-			return Math.ceil( ( parseInt(this.settings.startNumber) / parseInt(this.settings.totalNumber) ) * 100 );
+	_getStartNumber(data){
+		if(data.layout === 'bars' || data.layout === 'circle'){
+			return Math.ceil( ( parseInt(data.startNumber) / parseInt(data.totalNumber) ) * 100 );
 		}
-		return this.settings.startNumber;
+		return data.startNumber;
 	},
-	_getEndNumber(){
-		if(this.settings.layout === 'bars' || this.settings.layout === 'circle'){
-			return Math.ceil( ( parseInt(this.settings.endNumber) / parseInt(this.settings.totalNumber) ) * 100 );
+	_getEndNumber(data){
+		if(data.layout === 'bars' || data.layout === 'circle'){
+			return Math.ceil( ( parseInt(data.endNumber) / parseInt(data.totalNumber) ) * 100 );
 		}
-		return this.settings.endNumber;
+		return data.endNumber;
 	}
 };
