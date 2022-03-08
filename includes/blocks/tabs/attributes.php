@@ -22,7 +22,7 @@ return array(
 	'borderWidth'                 => 1,
 	'borderColor'                 => '#e0e0e0',
 	'borderRadius'                => '',
-	'borderStyle'                 => '',
+	'borderStyle'                 => 'solid',
 	'borderHoverColor'            => '',
 	'activeTabBgColor'            => '',
 	'activeTabTextColor'          => '',
