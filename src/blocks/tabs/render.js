@@ -180,7 +180,7 @@ const Render = ( props ) => {
 													index === tabHeaders.length
 												}
 											>
-												{ ( tabsStyleD.includes( 'vstyle' ) && deviceType === 'Desktop' ) || ( tabsStyleT.includes( 'vstyle' ) && deviceType === 'Tablet' ) || ( tabsStyleT.includes( 'vstyle' ) && deviceType === 'Mobile' ) ? (
+												{ ( tabsStyleD.includes( 'vstyle' ) && deviceType === 'Desktop' ) || ( tabsStyleT.includes( 'vstyle' ) && deviceType === 'Tablet' ) || ( tabsStyleM.includes( 'vstyle' ) && deviceType === 'Mobile' ) || ( tabsStyleM.includes( 'stack' ) && deviceType === 'Mobile' ) ? (
 													<Dashicon icon="arrow-up" />
 												) :
 													<Dashicon icon="arrow-left" />
@@ -213,7 +213,7 @@ const Render = ( props ) => {
 													index === tabHeaders.length
 												}
 											>
-												{ ( tabsStyleD.includes( 'vstyle' ) && deviceType === 'Desktop' ) || ( tabsStyleT.includes( 'vstyle' ) && deviceType === 'Tablet' ) || ( tabsStyleT.includes( 'vstyle' ) && deviceType === 'Mobile' ) ? (
+												{ ( tabsStyleD.includes( 'vstyle' ) && deviceType === 'Desktop' ) || ( tabsStyleT.includes( 'vstyle' ) && deviceType === 'Tablet' ) || ( tabsStyleM.includes( 'vstyle' ) && deviceType === 'Mobile' ) || ( tabsStyleM.includes( 'stack' ) && deviceType === 'Mobile' ) ? (
 													<Dashicon icon="arrow-down" />
 												) :
 													<Dashicon icon="arrow-right" />
