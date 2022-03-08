@@ -181,7 +181,7 @@ const Render = ( props ) => {
 												}
 											>
 												{ ( tabsStyleD.includes( 'vstyle' ) && deviceType === 'Desktop' ) || ( tabsStyleT.includes( 'vstyle' ) && deviceType === 'Tablet' ) || ( tabsStyleT.includes( 'vstyle' ) && deviceType === 'Mobile' ) ? (
-													<Dashicon icon="arrow-down" />
+													<Dashicon icon="arrow-up" />
 												) :
 													<Dashicon icon="arrow-left" />
 												}
@@ -214,7 +214,7 @@ const Render = ( props ) => {
 												}
 											>
 												{ ( tabsStyleD.includes( 'vstyle' ) && deviceType === 'Desktop' ) || ( tabsStyleT.includes( 'vstyle' ) && deviceType === 'Tablet' ) || ( tabsStyleT.includes( 'vstyle' ) && deviceType === 'Mobile' ) ? (
-													<Dashicon icon="arrow-up" />
+													<Dashicon icon="arrow-down" />
 												) :
 													<Dashicon icon="arrow-right" />
 												}

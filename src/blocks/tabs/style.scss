@@ -7,6 +7,16 @@
 		list-style-type: none;
 		display: inherit;
 
+		&.uagb-tabs__align-center {
+			justify-content: center;
+		}
+		&.uagb-tabs__align-left {
+			justify-content: flex-start;
+		}
+		&.uagb-tabs__align-right {
+			justify-content: flex-end;
+		}
+
 		li.uagb-tab a {
 			position: relative;
 			padding: 6px 12px;
@@ -237,7 +247,6 @@
 .uagb-tabs__wrap.uagb-tabs__vstyle8-desktop {
 
 	ul.uagb-tabs__panel {
-		margin-bottom: 0;
 		min-width: 25%;
 		max-width: 25%;
 
