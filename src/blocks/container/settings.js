@@ -359,27 +359,29 @@ const Settings = ( props ) => {
 					}
 					{ ( ( isBlockRootParent && 'default' === contentWidth ) || ( ! isBlockRootParent ) ) &&
 						<>
-							<MultiButtonsControl
-								setAttributes={ setAttributes }
-								label={ __( 'Width', 'ultimate-addons-for-gutenberg' ) }
-								data={ {
-									desktop: {
-										value: widthDesktop,
-										label: 'widthDesktop',
-									},
-									tablet: {
-										value: widthTablet,
-										label: 'widthTablet',
-									},
-									mobile: {
-										value: widthMobile,
-										label: 'widthMobile',
-									},
-								} }
-								options={ widthOptions }
-								showIcons={ false }
-								responsive={true}
-							/>
+							{ '%' === widthType &&
+								<MultiButtonsControl
+									setAttributes={ setAttributes }
+									label={ __( 'Width', 'ultimate-addons-for-gutenberg' ) }
+									data={ {
+										desktop: {
+											value: widthDesktop,
+											label: 'widthDesktop',
+										},
+										tablet: {
+											value: widthTablet,
+											label: 'widthTablet',
+										},
+										mobile: {
+											value: widthMobile,
+											label: 'widthMobile',
+										},
+									} }
+									options={ widthOptions }
+									showIcons={ false }
+									responsive={true}
+								/>
+							}
 							<ResponsiveSlider
 								label={ __( 'Custom Width', 'ultimate	-addons-for-gutenberg' ) }
 								data={ {

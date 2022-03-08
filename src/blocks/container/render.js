@@ -12,7 +12,9 @@ const Render = ( props ) => {
 	} = props;
 
 	const {
-		block_id
+		block_id,
+		gradientValue,
+		backgroundColor
 	} = attributes;
 
 	const direction = attributes[ 'direction' + deviceType ];
