@@ -10,12 +10,12 @@ const classNames = ( ...classes ) => classes.filter( Boolean ).join( ' ' );
 
 const InstagramUsers = () => {
 
-	const UAG_IG_TOKEN_GENERATOR = 'https://uag-tests.local/auth/uag-instagram/';
+	const UAG_IG_TOKEN_GENERATOR = 'https://nimble-soda.localsite.io/auth/instagram/';
 	const UAG_IG_BASIC_APP_ID = 1005147296698965;
-	const UAG_IG_BASIC_REDIRECT = 'https://uag-tests.local/auth/uag-instagram/basic/';
+	const UAG_IG_BASIC_REDIRECT = 'https://nimble-soda.localsite.io/auth/instagram/basic/';
     
     window.addEventListener( 'message', ( event ) => {
-		if ( ! event.origin.startsWith( 'https://uag-tests.local' ) ){
+		if ( ! event.origin.startsWith( 'https://nimble-soda.localsite.io' ) ){
 			return;
 		}
         switch ( event.data.type ) {
