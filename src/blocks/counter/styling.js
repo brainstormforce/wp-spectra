@@ -11,16 +11,6 @@ import generateCSSUnit from '@Controls/generateCSSUnit';
 export default function styling( props ) {
 	const {attributes} = props
 	const {
-		startNumber,
-		endNumber,
-		totalNumber,
-		numberType,
-		numberPrefix,
-		numberSuffix,
-		animationDuration,
-		thousandSeparator,
-		layout,
-		// heading
 		headingFontFamily,
 		headingFontWeight,
 		headingFontStyle,
@@ -171,14 +161,12 @@ export default function styling( props ) {
 				'px'
 			)
 		},
-		'.wp-block-uagb-counter--circle .wp-block-uagb-counter-circle-container svg circle': {
-			'stroke-width': generateCSSUnit(circleStokeSize, 'px')
-		},
 		'.wp-block-uagb-counter--circle .wp-block-uagb-counter-circle-container': {
 			'width': generateCSSUnit(circleSize, 'px'),
 			'height': generateCSSUnit(circleSize, 'px')
 		},
 		'.wp-block-uagb-counter--circle .wp-block-uagb-counter-circle-container svg circle': {
+			'stroke-width': generateCSSUnit(circleStokeSize, 'px'),
 			'stroke': circleForeground,
 		},
 		'.wp-block-uagb-counter--circle .wp-block-uagb-counter-circle-container svg #bar': {
