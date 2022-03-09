@@ -360,7 +360,7 @@ const UAGCopyPasteStyles = () => {
             <ToolbarGroup className="uag-copy-paste-styles">
                 <ToolbarButton
                     icon="admin-appearance"
-                    label={ __( 'UAG Copy/Paste', 'ultimate-addons-for-gutenberg' ) }
+                    label={ __( 'Spectra Copy/Paste', 'ultimate-addons-for-gutenberg' ) }
                     onClick={ () => {
                         openPopup();
                     }}

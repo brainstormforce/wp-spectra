@@ -91,6 +91,7 @@ const Render = ( props ) => {
 		'arrows' === arrowDots || 'arrows_dots' === arrowDots ? true : false;
 
 	const settings = {
+		accessibility: false,
 		slidesToShow: columns,
 		slidesToScroll: 1,
 		autoplaySpeed,
