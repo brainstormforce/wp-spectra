@@ -114,7 +114,7 @@ msgid "Ever-growing Library of Gutenberg Blocks"
 msgstr ""
 
 #: admin/uagb-general.php:65
-msgid "The easy-to-use and extremely powerful blocks of the Ultimate Addons for Gutenberg (UAG) are now available within your Gutenberg Editor. Search for \"UAG\" in the block inserter and see all the Ultimate Addons for Gutenberg blocks listed below. Simply click on the block you wish to add on your page or post."
+msgid "The easy-to-use and extremely powerful blocks of the Spectra are now available within your Gutenberg Editor. Search for \"Spectra\" in the block inserter and see all the Ultimate Addons for Gutenberg blocks listed below. Simply click on the block you wish to add on your page or post."
 msgstr ""
 
 #: admin/uagb-general.php:66
@@ -768,7 +768,7 @@ msgstr ""
 
 #: classes/class-uagb-config.php:2705
 #: dist/blocks.js:9
-msgid "UAG Form"
+msgid "Spectra Form"
 msgstr ""
 
 #: classes/class-uagb-config.php:2708
@@ -937,7 +937,7 @@ msgid "Please select a valid Contact Form 7."
 msgstr ""
 
 #: classes/class-uagb-init-blocks.php:282
-msgid "Ultimate Addons Blocks"
+msgid "Spectra"
 msgstr ""
 
 #: classes/class-uagb-init-blocks.php:417
@@ -4215,7 +4215,7 @@ msgid "Gap Between Steps"
 msgstr ""
 
 #: dist/blocks.js:9
-msgid "How to configure HowTo Schema in UAG?"
+msgid "How to configure HowTo Schema in Spectra?"
 msgstr ""
 
 #: dist/blocks.js:9
