@@ -3,4 +3,9 @@
 	box-sizing: border-box;
 	margin-left: auto;
 	margin-right: auto;
+	& > *:not(.wp-block-uagb-container) {
+		width: unset !important;
+		min-width: unset !important;
+		max-width: unset !important;
+	}
 }
