@@ -20,7 +20,6 @@ export default function Settings( props ) {
 		startNumber,
 		endNumber,
 		totalNumber,
-		numberType,
 		numberPrefix,
 		numberSuffix,
 		animationDuration,
@@ -618,8 +617,8 @@ export default function Settings( props ) {
 					<InspectorTab { ...UAGTabs.style }>
 						{headlineStylePanel}
 						{numberStylePanel}
-						{circleStylePanel}
-						{barStylePanel}
+						{layout === 'circle' && circleStylePanel}
+						{layout === 'bars' && barStylePanel}
 					</InspectorTab>
 					<InspectorTab
 						{ ...UAGTabs.advance }

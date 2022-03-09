@@ -177,6 +177,19 @@ export default function styling( props ) {
 		'.wp-block-uagb-counter--circle .wp-block-uagb-counter-circle-container': {
 			'width': generateCSSUnit(circleSize, 'px'),
 			'height': generateCSSUnit(circleSize, 'px')
+		},
+		'.wp-block-uagb-counter--circle .wp-block-uagb-counter-circle-container svg circle': {
+			'stroke': circleForeground,
+		},
+		'.wp-block-uagb-counter--circle .wp-block-uagb-counter-circle-container svg #bar': {
+			'stroke': circleBackground
+		},
+		'.wp-block-uagb-counter--bars .wp-block-uagb-counter-bars-container': {
+			'background': barForeground,
+		},
+		'.wp-block-uagb-counter--bars .wp-block-uagb-counter-bars-container .wp-block-uagb-counter__number': {
+			'height': generateCSSUnit(barSize, 'px'),
+			'background': barBackground,
 		}
 	}
 

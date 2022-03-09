@@ -12,6 +12,9 @@
 				white-space: nowrap;
 				overflow: hidden;
 				background: #f7951e;
+				display: flex;
+				justify-content: flex-end;
+				align-items: center;
 			}
 		}
 	}
@@ -26,7 +29,7 @@
 			}
 			svg circle {
 				stroke-dashoffset: 0;
-				stroke: #666;
+				stroke: #eaeaea;
 				stroke-width: 1em;
 			}
 			svg #bar {
