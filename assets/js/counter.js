@@ -43,7 +43,8 @@ UAGBCounter = {
 		const callback = entries => {
 			entries.forEach( entry => {
 				const el = entry.target
-				if ( entry.isIntersecting && ! el.classList.contains( 'is-visible' ) ) {
+				// entry.isIntersecting && ! el.classList.contains( 'is-visible' )
+				if ( entry.isIntersecting ) {
 					if (!countUp.error) {
 						if(data.layout === 'bars'){
 							that._triggerBar(el, data);
@@ -54,7 +55,7 @@ UAGBCounter = {
 					} else {
 						console.error(countUp.error);
 					}
-					el.classList.add( 'is-visible' )
+					// el.classList.add( 'is-visible' )
 				}
 			} )
 		}
@@ -67,7 +68,8 @@ UAGBCounter = {
 		if(typeof el !== 'undefined' && el){
 			const countUp = new window.countUp.CountUp(el, that._getEndNumber(data), {
 				startVal: that._getStartNumber(data),
-				duration: data.animationDuration
+				duration: data.animationDuration,
+				separator: data.thousandSeparator
 			});
 			return countUp;
 		}
@@ -77,8 +79,8 @@ UAGBCounter = {
 		const that = this
 		const numberWrap = el.querySelector( '.wp-block-uagb-counter__number' );
 		const duration = that._getAnimationDuration(data);
-		var startWidth = Math.ceil( ( data.startNumber / data.totalNumber ) * 100 );
-		var endWidth = Math.ceil( ( data.endNumber / data.totalNumber ) * 100 );
+		var startWidth = data.startNumber < data.totalNumber ? Math.ceil( ( data.startNumber / data.totalNumber ) * 100 ) : 0;
+		var endWidth = data.endNumber < data.totalNumber ? Math.ceil( ( data.endNumber / data.totalNumber ) * 100 ) : 100;
 		jQuery(numberWrap).css('width', startWidth + '%').animate({
 			width: endWidth + '%'
 		}, {
@@ -93,8 +95,8 @@ UAGBCounter = {
 		const totalWidth = data.totalNumber;
 		const r = 90;
 		const circle = Math.PI*(r*2);
-		const startPct = ( 1 - ( data.startNumber / totalWidth ) ) * circle;
-		const endPct = ( 1 - ( data.endNumber / totalWidth ) ) * circle;
+		const startPct = data.startNumber < totalWidth ? ( 1 - ( data.startNumber / totalWidth ) ) * circle : 0;
+		const endPct = data.endNumber < totalWidth ? ( 1 - ( data.endNumber / totalWidth ) ) * circle : 100;
 		const duration = that._getAnimationDuration(data);
 		jQuery(circleWrap).css('strokeDashoffset', startPct).animate({
 			strokeDashoffset: endPct

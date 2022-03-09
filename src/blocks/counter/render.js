@@ -33,7 +33,7 @@ const Render = ( props ) => {
 
 	useEffect( () => {
 		UAGBCounter.init( '.uagb-block-' + block_id, attributes ) // eslint-disable-line no-undef
-	}, [layout, animationDuration] )
+	}, [layout, animationDuration, startNumber, endNumber, thousandSeparator] )
 
 	const circlePos    = ( circleSize / 2 );
 	const circleRadius = circlePos - 10;
