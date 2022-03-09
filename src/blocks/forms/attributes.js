@@ -10,7 +10,7 @@ const attributes = {
 	},
 	formLabel: {
 		type: 'string',
-		default: __( 'UAG Form', 'ultimate-addons-for-gutenberg' ),
+		default: __( 'Spectra Form', 'ultimate-addons-for-gutenberg' ),
 	},
 	buttonAlign: {
 		type: 'string',

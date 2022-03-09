@@ -86,7 +86,7 @@ const SelectedFontFamilies = () => {
                     {__( 'Display Selected Font Families', 'ultimate-addons-for-gutenberg' )}
                 </h3>
                 <p className="mt-[0.6rem] text-sm ">
-                    { __( 'Now you can set multiple global font families for all UAG blocks by Enabling "Display Selected Font Families" option. Also, It will not list the unsed fonts in your blocks controls.', 'ultimate-addons-for-gutenberg' ) }
+                    { __( 'Now you can set multiple global font families for all Spectra blocks by Enabling "Display Selected Font Families" option. Also, It will not list the unsed fonts in your blocks controls.', 'ultimate-addons-for-gutenberg' ) }
                 </p>
                 <p className="mt-3 text-sm ">
                     { __( 'You can get all the selected families in typography component of each block.', 'ultimate-addons-for-gutenberg' ) }
