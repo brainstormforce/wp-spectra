@@ -19,6 +19,11 @@
 		.wp-block-uagb-counter-circle-container {
 			position: relative;
 			display: inline-block;
+			svg {
+				overflow: visible;
+				width: 100%;
+				height: 100%;
+			}
 			svg circle {
 				stroke-dashoffset: 0;
 				stroke: #666;

@@ -170,6 +170,13 @@ export default function styling( props ) {
 				suffixLeftDistance,
 				'px'
 			)
+		},
+		'.wp-block-uagb-counter--circle .wp-block-uagb-counter-circle-container svg circle': {
+			'stroke-width': generateCSSUnit(circleStokeSize, 'px')
+		},
+		'.wp-block-uagb-counter--circle .wp-block-uagb-counter-circle-container': {
+			'width': generateCSSUnit(circleSize, 'px'),
+			'height': generateCSSUnit(circleSize, 'px')
 		}
 	}
 

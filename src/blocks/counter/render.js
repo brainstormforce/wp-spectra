@@ -28,12 +28,16 @@ const Render = ( props ) => {
 		endNumber,
 		animationDuration,
 		thousandSeparator,
+		circleSize
 	} = attributes
 
 	useEffect( () => {
 		UAGBCounter.init( '.uagb-block-' + block_id, attributes ) // eslint-disable-line no-undef
 	}, [layout, animationDuration] )
 
+	const circlePos    = ( circleSize / 2 );
+	const circleRadius = circlePos - 10;
+	const circleDash   = parseFloat(2 * Math.PI * circleRadius).toFixed(2);
 	const percentLayout = ['bars', 'circle'];
 
 	const title = (
@@ -73,9 +77,9 @@ const Render = ( props ) => {
 				{number}
 				{title}
 			</div>
-			<svg width="200" height="200" viewPort="0 0 100 100" version="1.1" xmlns="http://www.w3.org/2000/svg">
-				<circle r="90" cx="100" cy="100" fill="transparent" stroke-dasharray="565.48" stroke-dashoffset="0"></circle>
-				<circle id="bar" r="90" cx="100" cy="100" fill="transparent" stroke-dasharray="565.48" stroke-dashoffset="0"></circle>
+			<svg viewPort={`0 0 ${circleSize} ${circleSize}`} version="1.1" xmlns="http://www.w3.org/2000/svg">
+				<circle r={circleRadius} cx={circlePos} cy={circlePos} fill="transparent" stroke-dasharray={circleDash} stroke-dashoffset="0"></circle>
+				<circle id="bar" r={circleRadius} cx={circlePos} cy={circlePos} fill="transparent" stroke-dasharray={circleDash} stroke-dashoffset={circleDash}></circle>
 			</svg>
 		</div>
 	)
