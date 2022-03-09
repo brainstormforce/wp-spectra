@@ -313,12 +313,12 @@ const attributes = {
 	// Prefix
 	prefixRightDistance: {
 		type: 'number',
-		default: 0,
+		default: 5,
 	},
 	// Suffix
 	suffixLeftDistance: {
 		type: 'number',
-		default: 0,
+		default: 5,
 	},
 	// circle
 	circleSize: {

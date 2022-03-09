@@ -51,7 +51,6 @@ export default function styling( props ) {
 		headingMarginUnitTablet,
 		headingMarginUnitMobile,
 		// Number
-		numberLoadGoogleFonts,
 		numberFontFamily,
 		numberFontWeight,
 		numberFontStyle,
@@ -81,7 +80,6 @@ export default function styling( props ) {
 		numberMarginUnit,
 		numberMarginUnitTablet,
 		numberMarginUnitMobile,
-		numberMarginLink,
 		// prefix
 		prefixRightDistance,
 		suffixLeftDistance,
@@ -129,6 +127,50 @@ export default function styling( props ) {
 				headingMarginUnit
 			),
 		},
+		'.wp-block-uagb-counter .wp-block-uagb-counter__number': {
+			'font-family': numberFontFamily,
+			'font-style' : numberFontStyle,
+			'text-decoration': numberDecoration,
+			'text-transform': numberTransform,
+			'font-weight': numberFontWeight,
+			'font-size': generateCSSUnit(
+				numberFontSize,
+				numberFontSizeType
+			),
+			'line-height': generateCSSUnit(
+				numberLineHeight,
+				numberLineHeightType
+			),
+			'color': numberColor,
+			'margin-top': generateCSSUnit(
+				numberTopMargin,
+				numberMarginUnit
+			),
+			'margin-right': generateCSSUnit(
+				numberRightMargin,
+				numberMarginUnit
+			),
+			'margin-bottom': generateCSSUnit(
+				numberBottomMargin,
+				numberMarginUnit
+			),
+			'margin-left': generateCSSUnit(
+				numberLeftMargin,
+				numberMarginUnit
+			),
+		},
+		'.wp-block-uagb-counter .wp-block-uagb-counter__number .uagb-counter-block-prefix': {
+			'margin-right': generateCSSUnit(
+				prefixRightDistance,
+				'px'
+			)
+		},
+		'.wp-block-uagb-counter .wp-block-uagb-counter__number .uagb-counter-block-suffix': {
+			'margin-left': generateCSSUnit(
+				suffixLeftDistance,
+				'px'
+			)
+		}
 	}
 
 
@@ -168,6 +210,33 @@ export default function styling( props ) {
 		),
     }
 
+	tablet_selectors['.wp-block-uagb-counter .wp-block-uagb-counter__number'] = {
+		'font-size': generateCSSUnit(
+			numberFontSizeTablet,
+			numberFontSizeType
+		),
+		'line-height': generateCSSUnit(
+			numberLineHeightTablet,
+			numberLineHeightType
+		),
+		'margin-top': generateCSSUnit(
+			numberTopMarginTablet,
+			numberMarginUnitTablet
+		),
+		'margin-right': generateCSSUnit(
+			numberRightMarginTablet,
+			numberMarginUnitTablet
+		),
+		'margin-bottom': generateCSSUnit(
+			numberBottomMarginTablet,
+			numberMarginUnitTablet
+		),
+		'margin-left': generateCSSUnit(
+			numberLeftMarginTablet,
+			numberMarginUnitTablet
+		),
+	}
+
 
 
 	mobile_selectors['.wp-block-uagb-counter .wp-block-uagb-counter__title'] = {
@@ -196,6 +265,33 @@ export default function styling( props ) {
 			headingMarginUnitMobile
 		),
     }
+
+	mobile_selectors['.wp-block-uagb-counter .wp-block-uagb-counter__number'] = {
+		'font-size': generateCSSUnit(
+			numberFontSizeMobile,
+			numberFontSizeType
+		),
+		'line-height': generateCSSUnit(
+			numberLineHeightMobile,
+			numberLineHeightType
+		),
+		'margin-top': generateCSSUnit(
+			numberTopMarginMobile,
+			numberMarginUnitMobile
+		),
+		'margin-right': generateCSSUnit(
+			numberRightMarginMobile,
+			numberMarginUnitMobile
+		),
+		'margin-bottom': generateCSSUnit(
+			numberBottomMarginMobile,
+			numberMarginUnitMobile
+		),
+		'margin-left': generateCSSUnit(
+			numberLeftMarginMobile,
+			numberMarginUnitMobile
+		),
+	}
 
 	let styling_css = generateCSS( selectors, base_selector );
 
