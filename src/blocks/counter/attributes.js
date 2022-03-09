@@ -30,7 +30,7 @@ const attributes = {
 	},
 	headingColor: {
 		type: 'string',
-		default: '#fff'
+		default: '#333'
 	},
 	headingFontFamily: {
 		type: 'string',
@@ -184,7 +184,7 @@ const attributes = {
 	},
 	numberColor: {
 		type: 'string',
-		default: '#fff'
+		default: '#333'
 	},
 	numberFontFamily: {
 		type: 'string',
