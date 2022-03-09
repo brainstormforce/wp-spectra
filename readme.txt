@@ -1,4 +1,4 @@
-=== Gutenberg Blocks – Ultimate Addons for Gutenberg ===
+=== Gutenberg Blocks – Spectra ===
 Contributors: brainstormforce
 Donate link: https://www.paypal.me/BrainstormForce
 Tags: gutenberg, blocks, gutenberg blocks, editor, block
@@ -13,21 +13,21 @@ Power-up the Gutenberg editor with advanced and powerful blocks that help you bu
 
 == Description ==
 
-<strong>Ultimate Addons for Gutenberg</strong>
+<strong>Spectra</strong>
 
 Power-up the Gutenberg editor with advanced and powerful blocks that help you build websites in no time! This first Gutenberg addon is here to make website building an ultimate journey.
 
 <a href="https://www.ultimategutenberg.com/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme" target="_blank" rel="">Check out the live Gutenberg blocks demos.</a>
 
-Simply pick your favorite blocks from the Ultimate Addons that speed up the process of website building with easy to use settings and customizations for intuitive visual styling.
+Simply pick your favorite blocks from the Spectra that speed up the process of website building with easy to use settings and customizations for intuitive visual styling.
 
-With the Ultimate Addons for Gutenberg, we took the hassle out of the website building process. It gives you a number of unique and creative blocks for Gutenberg that help you build and design pages or posts without a single line of code. An easy to use interface and several customizations make it easier to build pages and complete websites without any custom code.
+With the Spectra, we took the hassle out of the website building process. It gives you a number of unique and creative blocks for Gutenberg that help you build and design pages or posts without a single line of code. An easy to use interface and several customizations make it easier to build pages and complete websites without any custom code.
 
-See the Ultimate Addons for Gutenberg in action! - <a href="https://www.ultimategutenberg.com/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme" target="_blank" rel="">Launch the Demo!</a>
+See the Spectra in action! - <a href="https://www.ultimategutenberg.com/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme" target="_blank" rel="">Launch the Demo!</a>
 
 <strong>Ready-to-use Full Website Demos for Gutenberg</strong>
 
-Get professionally designed 20+ pre-built FREE starter sites built using Gutenberg, Ultimate Addons for Gutenberg and the Astra theme. These can be imported in just a few clicks. Tweak them easily and build awesome websites in minutes!
+Get professionally designed 20+ pre-built FREE starter sites built using Gutenberg, Spectra and the Astra theme. These can be imported in just a few clicks. Tweak them easily and build awesome websites in minutes!
 
 These Gutenberg starter sites give you -
 
@@ -61,13 +61,13 @@ Reasons why people love the Astra Theme
 
 You can read more in a detailed article about <a href="https://wpastra.com/gutenberg-compatible/?utm_source=wp-repo&utm_medium=link&utm_campaign=uag-readme" target="_blank" rel="">Astra’s compatibility with Gutenberg.</a>
 
-<strong>Learn UAG from Tutorials</strong>
+<strong>Learn Spectra from Tutorials</strong>
 
-Not sure how the blocks work? With <a href="https://www.ultimategutenberg.com/docs/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme" target="_blank" rel="">detailed knowledge base articles</a> about every creative block in the Ultimate Addons, we are here to make things easy for you and help you at every step.
+Not sure how the blocks work? With <a href="https://www.ultimategutenberg.com/docs/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme" target="_blank" rel="">detailed knowledge base articles</a> about every creative block in the Spectra, we are here to make things easy for you and help you at every step.
 
-We also have an informative and detailed article that will help you to <a href="https://www.ultimategutenberg.com/getting-started-with-gutenberg-blocks/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme" target="_blank" rel="">get started with the Ultimate Addons for Gutenberg</a> in few easy steps.
+We also have an informative and detailed article that will help you to <a href="https://www.ultimategutenberg.com/getting-started-with-gutenberg-blocks/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme" target="_blank" rel="">get started with the Spectra</a> in few easy steps.
 
-<strong>An Ultimate Gutenberg Blocks Library</strong>
+<strong>An Spectra Library</strong>
 
 <ul>
 	<li><a href="https://ultimategutenberg.com/blocks/star-rating/" target="_blank">Star Ratings </a>: The Star Ratings block on a webpage can build trust and attract more customers. It allows you to add and completely customize star ratings anywhere on the Gutenberg page.</li>
@@ -108,7 +108,7 @@ We also have an informative and detailed article that will help you to <a href="
 
 <strong>Build Faster and Better Performing Websites</strong>
 
-The Ultimate Addons for Gutenberg is built for speed and performance along with lots of flexibility and ease of use. This is the only advanced addon you may need to build a complete website with the default WordPress editor and the Astra theme. This combination for sure will take away the extra bloat from your website making it much lighter and faster to load.
+The Spectra is built for speed and performance along with lots of flexibility and ease of use. This is the only advanced addon you may need to build a complete website with the default WordPress editor and the Astra theme. This combination for sure will take away the extra bloat from your website making it much lighter and faster to load.
 
 <strong>Support That Cares!</strong>
 
@@ -118,12 +118,12 @@ We understand the need for a quality product backed by dedicated support that ca
 
 <strong>Want To Contribute To The Plugin?</strong>
 
-You may now contribute to the plugin on Github: <a href="https://github.com/brainstormforce/ultimate-addons-for-gutenberg" target="_blank" rel="">Ultimate Addons for Gutenberg on Github</a>
+You may now contribute to the plugin on Github: <a href="https://github.com/brainstormforce/ultimate-addons-for-gutenberg" target="_blank" rel="">Spectra on Github</a>
 
 
 == Installation ==
 
-1. Install the Ultimate Addons for Gutenberg either via the WordPress plugin directory or by uploading the files to your server at wp-content/plugins.
+1. Install the Spectra either via the WordPress plugin directory or by uploading the files to your server at wp-content/plugins.
 
 You can refer to our <a href="https://www.ultimategutenberg.com/getting-started-with-gutenberg-blocks/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme" target="_blank" rel="">getting started article</a> to know more.
 
@@ -131,33 +131,33 @@ For more information, please visit our <a href="https://www.ultimategutenberg.co
 
 == Frequently Asked Questions ==
 
-= Who should use the Ultimate Addons for Gutenberg? =
+= Who should use the Spectra? =
 
-The Ultimate Addons for Gutenberg is a complete package of unique and creative blocks that help build beautiful pages and posts on a website. Therefore, it is certainly an asset for all those who love Gutenberg.
+The Spectra is a complete package of unique and creative blocks that help build beautiful pages and posts on a website. Therefore, it is certainly an asset for all those who love Gutenberg.
 
-= What are the requirements to use the Ultimate Addons for Gutenberg? =
+= What are the requirements to use the Spectra? =
 
-You only need to have the latest version of WordPress on your website, to begin with. The Ultimate Addons for Gutenberg is basically an addon for the default WordPress editor. Therefore, the latest WordPress installation along with a theme should be enough, to begin with.
+You only need to have the latest version of WordPress on your website, to begin with. The Spectra is basically an addon for the default WordPress editor. Therefore, the latest WordPress installation along with a theme should be enough, to begin with.
 
-= What themes does the Ultimate Addons for Gutenberg work with? =
+= What themes does the Spectra work with? =
 
-The Ultimate Addons for Gutenberg is built to work great with all the themes. But, <a href="https://wpastra.com/gutenberg-compatible/?utm_source=wp-repo&utm_medium=uagb&utm_campaign=readme" target="_blank" rel="">Astra being among the first ones to be Gutenberg ready</a>, we recommend you to try using Astra since it is lightweight, fast, simple and comes with a lot of options.
+The Spectra is built to work great with all the themes. But, <a href="https://wpastra.com/gutenberg-compatible/?utm_source=wp-repo&utm_medium=uagb&utm_campaign=readme" target="_blank" rel="">Astra being among the first ones to be Gutenberg ready</a>, we recommend you to try using Astra since it is lightweight, fast, simple and comes with a lot of options.
 
-= Can I use the Ultimate Addons for Gutenberg even while having another Page Builder? =
+= Can I use the Spectra even while having another Page Builder? =
 
-The basic need of the Ultimate Addons for Gutenberg is the latest WordPress version. We have also made it compatible with all major page builders and therefore, it won’t interfere in their working. Should you need help, you can <a href="https://support.brainstormforce.com/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme" target="_blank" rel="">get in touch with us.</a>
+The basic need of the Spectra is the latest WordPress version. We have also made it compatible with all major page builders and therefore, it won’t interfere in their working. Should you need help, you can <a href="https://support.brainstormforce.com/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme" target="_blank" rel="">get in touch with us.</a>
 
-= Can I use the Ultimate Addons on client websites? =
+= Can I use the Spectra on client websites? =
 
-Yes! You can certainly use the Ultimate Addons on yours as well as your client’s websites.
+Yes! You can certainly use the Spectra on yours as well as your client’s websites.
 
-= Will the Ultimate Addons slow down my website? =
+= Will the Spectra slow down my website? =
 
-Absolutely no! The Ultimate Addons for Gutenberg is built with ease and performance in mind. Its module architecture and the clean code keep it lightweight and fast. Therefore, it will not affect your website speed and performance in any way.
+Absolutely no! The Spectra is built with ease and performance in mind. Its module architecture and the clean code keep it lightweight and fast. Therefore, it will not affect your website speed and performance in any way.
 
-= What more do I get with the Ultimate Addons for Gutenberg? =
+= What more do I get with the Spectra? =
 
-When you use the Ultimate Addons for Gutenberg along with the free Astra theme, you get a huge library of ready-to-use starter sites that can be imported and used to build your own. Read an article about the <a href="https://www.ultimategutenberg.com/ready-websites-for-gutenberg/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme" target="_blank" rel="">Starter Sites with Gutenberg</a> to know more.
+When you use the Spectra along with the free Astra theme, you get a huge library of ready-to-use starter sites that can be imported and used to build your own. Read an article about the <a href="https://www.ultimategutenberg.com/ready-websites-for-gutenberg/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme" target="_blank" rel="">Starter Sites with Gutenberg</a> to know more.
 
 == Credits ==
 

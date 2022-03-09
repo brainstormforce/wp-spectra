@@ -25,7 +25,7 @@ const Settings = ( props ) => {
 					<UAGAdvancedPanelBody initialOpen={ true }>
 						<p className="uagb-settings-notice">
 							{ __(
-								"This block uses Ultimate Addon for Gutenberg's API key to display the map. You don't need to create your own API key or worry about renewing it.",
+								"This block uses Spectra's API key to display the map. You don't need to create your own API key or worry about renewing it.",
 								'ultimate-addons-for-gutenberg'
 							) }
 						</p>

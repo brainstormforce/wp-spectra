@@ -1980,7 +1980,7 @@ export default compose(
 
 		if ( excludeCurrentPost ) {
 			latestPostsQuery.exclude = select(
-				'core/block-editor'
+				'core/editor'
 			).getCurrentPostId();
 		}
 		const category = [];

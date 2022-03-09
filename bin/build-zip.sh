@@ -42,4 +42,4 @@ zip -r ultimate-addons-for-gutenberg.zip "./ultimate-addons-for-gutenberg"
 # Removed copied files folder.
 # rm -rf ultimate-addons-for-gutenberg
 
-success "Done. Your UAG zip is ready..! 🎉"
+success "Done. Your Spectra zip is ready..! 🎉"
