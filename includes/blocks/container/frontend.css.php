@@ -26,8 +26,6 @@ if ( 'outset' === $attr['boxShadowPosition'] ) {
 
 $container_bg_css = UAGB_Block_Helper::uag_get_background_obj( $bg_obj );
 $container_css    = array(
-	'width'           => UAGB_Helper::get_css_value( $attr['widthDesktop'], $attr['widthType'] ),
-	'max-width'       => UAGB_Helper::get_css_value( $attr['widthDesktop'], $attr['widthType'] ),
 	'min-height'      => UAGB_Helper::get_css_value( $attr['minHeightDesktop'], $attr['minHeightType'] ),
 	'flex-direction'  => $attr['directionDesktop'],
 	'align-items'     => $attr['alignItemsDesktop'],
@@ -65,16 +63,18 @@ $container_css    = array(
 $container_css = array_merge( $container_css, $container_bg_css );
 
 $selectors = array(
-	'.wp-block-uagb-container'       => $container_css,
-	'.wp-block-uagb-container:hover' => array(
+	'.uagb-block-' . $id                         => $container_css, // phpcs:ignore WordPress.WP.GlobalVariablesOverride.Prohibited
+	'.uagb-block-' . $id . ':hover'              => array(
 		'border-color' => $attr['borderHoverColor'],
+	),
+	'.uagb-is-root-container .uagb-block-' . $id => array( // phpcs:ignore WordPress.WP.GlobalVariablesOverride.Prohibited
+		'width'     => UAGB_Helper::get_css_value( $attr['widthDesktop'], $attr['widthType'] ),
+		'max-width' => UAGB_Helper::get_css_value( $attr['widthDesktop'], $attr['widthType'] ),
 	),
 );
 
 $t_selectors = array(
-	'.wp-block-uagb-container' => array(
-		'width'           => UAGB_Helper::get_css_value( $attr['widthTablet'], $attr['widthType'] ),
-		'max-width'       => UAGB_Helper::get_css_value( $attr['widthTablet'], $attr['widthType'] ),
+	'.uagb-block-' . $id                         => array( // phpcs:ignore WordPress.WP.GlobalVariablesOverride.Prohibited
 		'min-height'      => UAGB_Helper::get_css_value( $attr['minHeightTablet'], $attr['minHeightType'] ),
 		'flex-direction'  => $attr['directionTablet'],
 		'align-items'     => $attr['alignItemsTablet'],
@@ -92,12 +92,14 @@ $t_selectors = array(
 		'margin-left'     => UAGB_Helper::get_css_value( $attr['leftMarginTablet'], $attr['marginType'] ),
 		'margin-right'    => UAGB_Helper::get_css_value( $attr['rightMarginTablet'], $attr['marginType'] ),
 	),
+	'.uagb-is-root-container .uagb-block-' . $id => array( // phpcs:ignore WordPress.WP.GlobalVariablesOverride.Prohibited
+		'width'     => UAGB_Helper::get_css_value( $attr['widthTablet'], $attr['widthType'] ),
+		'max-width' => UAGB_Helper::get_css_value( $attr['widthTablet'], $attr['widthType'] ),
+	),
 );
 
 $m_selectors = array(
-	'.wp-block-uagb-container' => array(
-		'width'           => UAGB_Helper::get_css_value( $attr['widthMobile'], $attr['widthType'] ),
-		'max-width'       => UAGB_Helper::get_css_value( $attr['widthMobile'], $attr['widthType'] ),
+	'.uagb-block-' . $id                         => array( // phpcs:ignore WordPress.WP.GlobalVariablesOverride.Prohibited
 		'min-height'      => UAGB_Helper::get_css_value( $attr['minHeightMobile'], $attr['minHeightType'] ),
 		'flex-direction'  => $attr['directionMobile'],
 		'align-items'     => $attr['alignItemsMobile'],
@@ -115,7 +117,22 @@ $m_selectors = array(
 		'margin-left'     => UAGB_Helper::get_css_value( $attr['leftMarginMobile'], $attr['marginType'] ),
 		'margin-right'    => UAGB_Helper::get_css_value( $attr['rightMarginMobile'], $attr['marginType'] ),
 	),
+	'.uagb-is-root-container .uagb-block-' . $id => array( // phpcs:ignore WordPress.WP.GlobalVariablesOverride.Prohibited
+		'width'     => UAGB_Helper::get_css_value( $attr['widthMobile'], $attr['widthType'] ),
+		'max-width' => UAGB_Helper::get_css_value( $attr['widthMobile'], $attr['widthType'] ),
+	),
 );
+
+if ( 'default' === $attr['contentWidth'] ) {
+	$selectors[ '.uagb-block-' . $id ]['width']     = UAGB_Helper::get_css_value( $attr['widthDesktop'], $attr['widthType'] );
+	$selectors[ '.uagb-block-' . $id ]['max-width'] = UAGB_Helper::get_css_value( $attr['widthDesktop'], $attr['widthType'] );
+
+	$t_selectors[ '.uagb-block-' . $id ]['width']     = UAGB_Helper::get_css_value( $attr['widthTablet'], $attr['widthType'] );
+	$t_selectors[ '.uagb-block-' . $id ]['max-width'] = UAGB_Helper::get_css_value( $attr['widthTablet'], $attr['widthType'] );
+
+	$m_selectors[ '.uagb-block-' . $id ]['width']     = UAGB_Helper::get_css_value( $attr['widthMobile'], $attr['widthType'] );
+	$m_selectors[ '.uagb-block-' . $id ]['max-width'] = UAGB_Helper::get_css_value( $attr['widthMobile'], $attr['widthType'] );
+}
 
 $combined_selectors = array(
 	'desktop' => $selectors,
@@ -123,4 +140,4 @@ $combined_selectors = array(
 	'mobile'  => $m_selectors,
 );
 
-return UAGB_Helper::generate_all_css( $combined_selectors, '.uagb-block-' . $id );
+return UAGB_Helper::generate_all_css( $combined_selectors, '.wp-block-uagb-container' );

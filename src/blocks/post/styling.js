@@ -814,7 +814,7 @@ function styling( props ) {
 
 	stylingCss = generateCSS(
 		selectors,
-		`.uagb-block-${ props.clientId.substr( 0, 8 ) }`
+		`.editor-styles-wrapper .uagb-block-${ props.clientId.substr( 0, 8 ) }`
 	);
 
 	stylingCss += generateCSS(
