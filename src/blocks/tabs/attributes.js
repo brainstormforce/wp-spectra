@@ -40,7 +40,7 @@ const attributes = {
 	},
 	headerTextColor: {
 		type: 'string',
-		default: '',
+		default: '#3a3a3a',
 		isUAGStyle: true,
 	},
 	bodyBgColor: {
@@ -393,6 +393,7 @@ const attributes = {
 	titleFontWeight: {
 		type: 'string',
 		isUAGStyle: true,
+		default: '500',
 	},
 	titleLineHeightType: {
 		type: 'string',
@@ -459,7 +460,7 @@ const attributes = {
 	},
 	iconSize: {
 		type: 'number',
-		default: 12,
+		default: 16,
 		isUAGStyle: true,
 	},
 	activeiconColor: {

@@ -397,7 +397,7 @@ class UAGB_Init_Blocks {
 			array(
 				array(
 					'slug'  => 'uagb',
-					'title' => __( 'Ultimate Addons Blocks', 'ultimate-addons-for-gutenberg' ),
+					'title' => __( 'Spectra', 'ultimate-addons-for-gutenberg' ),
 				),
 			),
 			$categories
