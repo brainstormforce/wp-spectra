@@ -121,8 +121,8 @@ class Admin_Menu {
 
 		add_submenu_page(
 			'options-general.php',
-			'UAG',
-			'UAG',
+			'Spectra',
+			'Spectra',
 			$capability,
 			$menu_slug,
 			array( $this, 'render' ),
@@ -189,7 +189,7 @@ class Admin_Menu {
 				'uag_base_url'   => admin_url( 'options-general.php?page=' . $this->menu_slug ),
 				'plugin_dir'     => UAGB_URL,
 				'plugin_ver'     => UAGB_VER,
-				'logo_url'       => UAGB_URL . 'admin-core/assets/images/uagb_logo.svg',
+				'logo_url'       => UAGB_URL . 'admin-core/assets/images/uag-logo.svg',
 				'admin_url'      => admin_url( 'admin.php' ),
 				'ajax_url'       => admin_url( 'admin-ajax.php' ),
 				'wp_pages_url'   => admin_url( 'post-new.php?post_type=page' ),
@@ -374,7 +374,7 @@ class Admin_Menu {
 
 		$logs_page_url = '#';
 
-		echo '<span id="footer-thankyou"> Thank you for using <a href="#">UAG.</a></span>';
+		echo '<span id="footer-thankyou"> Thank you for using <a href="#">Spectra.</a></span>';
 	}
 
 }

@@ -121,7 +121,7 @@ const attributes = {
 		source: 'html',
 		selector: 'h1,h2,h3,h4,h5,h6',
 		default: __(
-			'How To Configure How-To Schema In Ultimate Addons For Gutenberg?',
+			'How To Configure How-To Schema In Spectra?',
 			'ultimate-addons-for-gutenberg'
 		),
 	},
