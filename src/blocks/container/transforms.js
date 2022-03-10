@@ -101,6 +101,117 @@ const transforms = {
 
 			},
 		},
+		{
+			type: 'block',
+			blocks: [ 'uagb/section' ],
+			priority: 1,
+			transform: ( attributes, innerBlocks ) => {
+
+				const {
+					backgroundType,
+					backgroundColor,
+					innerWidth,
+					innerWidthType,
+					contentWidth,
+					borderRadius,
+					topPaddingTablet,
+					bottomPaddingTablet,
+					leftPaddingTablet,
+					rightPaddingTablet,
+					topMarginTablet,
+					bottomMarginTablet,
+					leftMarginTablet,
+					rightMarginTablet,
+					topPaddingMobile,
+					bottomPaddingMobile,
+					leftPaddingMobile,
+					rightPaddingMobile,
+					topMarginMobile,
+					bottomMarginMobile,
+					leftMarginMobile,
+					rightMarginMobile,
+					boxShadowColor,
+					boxShadowHOffset,
+					boxShadowVOffset,
+					boxShadowBlur,
+					boxShadowSpread,
+					boxShadowPosition,
+					gradientValue,
+					borderStyle,
+					borderWidth,
+					borderColor,
+					borderHoverColor,
+					topMargin,
+					bottomMargin,
+					leftMargin,
+					rightMargin,
+					leftPadding,
+					rightPadding,
+					topPadding,
+					bottomPadding,
+				} = attributes;
+
+				let containerWidth = 'full_width' === contentWidth ? 'alignfull' : 'alignwide';
+				let innerContainerCustomWidth = null;
+				let innerContentWidth = null;
+
+				if ( 'full_width' === contentWidth ) {
+
+					innerContainerCustomWidth = 'px' === innerWidthType ? innerWidth : 1200;
+
+					innerContentWidth = 'px' === innerWidthType ? 'alignwide' : 'alignfull';
+				}
+
+				return createBlock(
+					'uagb/container',
+					{
+						contentWidth: containerWidth,
+						backgroundType,
+						backgroundColor,
+						gradientValue,
+						innerContentCustomWidthDesktop: innerContainerCustomWidth || 1200,
+						innerContentWidth: innerContentWidth || 'alignfull',
+						borderStyle,
+						borderWidth,
+						borderColor,
+						borderHoverColor,
+						borderRadius,
+						boxShadowColor,
+						boxShadowHOffset,
+						boxShadowVOffset,
+						boxShadowBlur,
+						boxShadowSpread,
+						boxShadowPosition,
+						topMarginDesktop: topMargin,
+						bottomMarginDesktop: bottomMargin,
+						leftMarginDesktop: leftMargin,
+						rightMarginDesktop: rightMargin,
+						topMarginTablet,
+						bottomMarginTablet,
+						leftMarginTablet,
+						rightMarginTablet,
+						topMarginMobile,
+						bottomMarginMobile,
+						leftMarginMobile,
+						rightMarginMobile,
+						topPaddingMobile,
+						bottomPaddingMobile,
+						leftPaddingMobile,
+						rightPaddingMobile,
+						topPaddingTablet,
+						bottomPaddingTablet,
+						leftPaddingTablet,
+						rightPaddingTablet,
+						leftPaddingDesktop: leftPadding,
+						rightPaddingDesktop: rightPadding,
+						topPaddingDesktop: topPadding,
+						bottomPaddingDesktop: bottomPadding,
+						variationSelected: true
+					},
+					innerBlocks
+				);
+			},
+		},
 	],
 };
 
