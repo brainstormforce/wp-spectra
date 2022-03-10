@@ -142,22 +142,6 @@ function styling( props ) {
 			),
 			'color': authorColor,
 		},
-		' .uagb-rating-desc, .uagb-rating-author': {
-			'font-size': generateCSSUnit(
-				subHeadFontSize,
-				subHeadFontSizeType
-			),
-			'font-weight': subHeadFontWeight,
-			'font-family': subHeadFontFamily,
-			'font-style' : subHeadFontStyle,
-			'text-decoration': subHeadDecoration,
-			'text-transform': subHeadTransform,
-			'line-height': generateCSSUnit(
-				subHeadLineHeight,
-				subHeadLineHeightType
-			),
-			'color': descColor,
-		},
 		' .uagb_review_block': {
 			'padding-left': generateCSSUnit( leftPadding, paddingUnit ),
 			'padding-right': generateCSSUnit( rightPadding, paddingUnit ),

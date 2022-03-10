@@ -65,7 +65,7 @@ if ( ! class_exists( 'UAGB_Ast_Block_Templates' ) ) :
 			$vars['button_text']         = 'Templates';
 			$vars['display_button_logo'] = true;
 			$vars['popup_logo_uri']      = UAGB_URL . 'admin/assets/images/uagb_notice.svg';
-			$vars['button_logo']         = UAGB_URL . 'admin/assets/images/uag-white-logo.svg';
+			$vars['button_logo']         = UAGB_URL . 'admin-core/assets/images/btn-spectra.svg';
 			$vars['button_class']        = 'uagb-template-button-logo';
 			return $vars;
 		}
