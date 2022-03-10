@@ -109,9 +109,9 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 						'dep'        => array(),
 						'skipEditor' => true,
 					),
-					'uagb-countUp-js'      => array(
-						'src'        => UAGB_URL . 'assets/js/countUp.min.js',
-						'dep'        => array(),
+					'uagb-countUp-js'        => array(
+						'src' => UAGB_URL . 'assets/js/countUp.min.js',
+						'dep' => array(),
 					),
 
 					// Blocks.
@@ -150,9 +150,9 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 						'dep'        => array( 'jquery', 'uagb-bodymovin-js' ),
 						'skipEditor' => true,
 					),
-					'uagb-counter-js'         => array(
-						'src'        => UAGB_Scripts_Utils::get_js_url( 'counter' ),
-						'dep'        => array( 'jquery', 'uagb-countUp-js' ),
+					'uagb-counter-js'        => array(
+						'src' => UAGB_Scripts_Utils::get_js_url( 'counter' ),
+						'dep' => array( 'jquery', 'uagb-countUp-js' ),
 					),
 				);
 			}

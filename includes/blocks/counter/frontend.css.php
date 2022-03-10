@@ -14,7 +14,7 @@ $m_selectors = array();
 $t_selectors = array();
 
 $selectors = array(
-	'.wp-block-uagb-counter .wp-block-uagb-counter__title'                      => array(
+	'.wp-block-uagb-counter .wp-block-uagb-counter__title' => array(
 		'font-family'     => $attr['headingFontFamily'],
 		'font-style'      => $attr['headingFontStyle'],
 		'text-decoration' => $attr['headingDecoration'],
@@ -43,34 +43,34 @@ $selectors = array(
 		'margin-left'     => UAGB_Helper::get_css_value( $attr['numberLeftMargin'], $attr['numberMarginUnit'] ),
 	),
 	'.wp-block-uagb-counter .wp-block-uagb-counter__number .uagb-counter-block-prefix' => array(
-		'margin-right' => UAGB_Helper::get_css_value( $attr['prefixRightDistance'], 'px' )
+		'margin-right' => UAGB_Helper::get_css_value( $attr['prefixRightDistance'], 'px' ),
 	),
 	'.wp-block-uagb-counter .wp-block-uagb-counter__number .uagb-counter-block-suffix' => array(
-		'margin-right' => UAGB_Helper::get_css_value( $attr['suffixLeftDistance'], 'px' )
+		'margin-right' => UAGB_Helper::get_css_value( $attr['suffixLeftDistance'], 'px' ),
 	),
 	'.wp-block-uagb-counter--circle .wp-block-uagb-counter-circle-container' => array(
-		'width' => UAGB_Helper::get_css_value( $attr['circleSize'], 'px' ),
-		'height' => UAGB_Helper::get_css_value( $attr['circleSize'], 'px' )
+		'width'  => UAGB_Helper::get_css_value( $attr['circleSize'], 'px' ),
+		'height' => UAGB_Helper::get_css_value( $attr['circleSize'], 'px' ),
 	),
 	'.wp-block-uagb-counter--circle .wp-block-uagb-counter-circle-container svg circle' => array(
 		'stroke-width' => UAGB_Helper::get_css_value( $attr['circleStokeSize'], 'px' ),
-		'stroke'	=> $attr['circleForeground'],
+		'stroke'       => $attr['circleForeground'],
 	),
 	'.wp-block-uagb-counter--circle .wp-block-uagb-counter-circle-container svg #bar' => array(
-		'stroke' => $attr['circleBackground']
+		'stroke' => $attr['circleBackground'],
 	),
 	'.wp-block-uagb-counter--bars .wp-block-uagb-counter-bars-container' => array(
 		'background' => $attr['barForeground'],
 	),
 	'.wp-block-uagb-counter--bars .wp-block-uagb-counter-bars-container .wp-block-uagb-counter__number' => array(
-		'height' => UAGB_Helper::get_css_value( $attr['barSize'], 'px' ),
+		'height'     => UAGB_Helper::get_css_value( $attr['barSize'], 'px' ),
 		'background' => $attr['barBackground'],
-	)
+	),
 );
 
 
 // tablet.
-$t_selectors['.wp-block-uagb-counter .wp-block-uagb-counter__title']                                    = array(
+$t_selectors['.wp-block-uagb-counter .wp-block-uagb-counter__title']  = array(
 	'font-size'     => UAGB_Helper::get_css_value( $attr['headingFontSizeTablet'], $attr['headingFontSizeType'] ),
 	'line-height'   => UAGB_Helper::get_css_value( $attr['headingLineHeightTablet'], $attr['headingLineHeightType'] ),
 	'margin-top'    => UAGB_Helper::get_css_value( $attr['headingTopMarginTablet'], $attr['headingMarginUnitTablet'] ),
@@ -88,7 +88,7 @@ $t_selectors['.wp-block-uagb-counter .wp-block-uagb-counter__number'] = array(
 );
 
 // mobile.
-$m_selectors['.wp-block-uagb-counter .wp-block-uagb-counter__title'] = array(
+$m_selectors['.wp-block-uagb-counter .wp-block-uagb-counter__title']  = array(
 	'font-size'     => UAGB_Helper::get_css_value( $attr['headingFontSizeMobile'], $attr['headingFontSizeType'] ),
 	'line-height'   => UAGB_Helper::get_css_value( $attr['headingLineHeightMobile'], $attr['headingLineHeightType'] ),
 	'margin-top'    => UAGB_Helper::get_css_value( $attr['headingTopMarginMobile'], $attr['headingMarginUnitMobile'] ),
