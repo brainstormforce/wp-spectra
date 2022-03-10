@@ -31,7 +31,7 @@ const attributes = { // eslint-disable-line no-unused-vars
 		type    : 'string',
 		default : '#eee',
 		UAGCopyPaste: {
-			styleType: 'bg-color'
+			styleType: 'timeline-bg-color'
 		},
 	},
 	separatorColor          : {
@@ -633,7 +633,7 @@ const attributes = { // eslint-disable-line no-unused-vars
 		type    : 'number',
 		default : 20,
 		UAGCopyPaste: {
-			styleType: 'bg-padding'
+			styleType: 'timeline-bg-padding'
 		},
 	},
 	contentPadding          : {

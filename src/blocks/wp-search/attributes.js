@@ -44,7 +44,7 @@ const attributes = {
 		type: 'number',
 		default: 0,
 		UAGCopyPaste: {
-			styleType: 'box-shadow-offset'
+			styleType: 'box-shadow-h-offset'
 		}
 	},
 	boxShadowVOffset: {
