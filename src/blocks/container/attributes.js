@@ -6,6 +6,10 @@ const attributes = {
 		type: 'string',
 		default: 'alignwide',
 	},
+	innerContentWidth: {
+		type: 'string',
+		default: 'alignwide',
+	},
 	widthDesktop: {
 		type: 'number',
 		default: 100,

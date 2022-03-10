@@ -108,7 +108,8 @@ const Settings = ( props ) => {
 		columnGapMobile,
 		columnGapType,
 		contentWidth,
-		isBlockRootParent
+		isBlockRootParent,
+		innerContentWidth
 	} = attributes;
 
 	let currentDirection = 'row';
@@ -338,6 +339,19 @@ const Settings = ( props ) => {
 			},
 		];
 
+		const innerContentWidthOptions = [
+			{
+				value: 'alignwide',
+				tooltip: __( 'Align Wide', 'ultimate-addons-for-gutenberg' ),
+				label: __( 'Align Wide', 'ultimate-addons-for-gutenberg' ),
+			},
+			{
+				value: 'alignfull',
+				tooltip: __( 'Full Width', 'ultimate-addons-for-gutenberg' ),
+				label: __( 'Full Width', 'ultimate-addons-for-gutenberg' ),
+			},
+		];
+
 		return (
 			<>
 				<UAGAdvancedPanelBody
@@ -345,17 +359,32 @@ const Settings = ( props ) => {
 					initialOpen={ true }
 				>
 					{ isBlockRootParent &&
-						<MultiButtonsControl
-							setAttributes={ setAttributes }
-							label={ __( 'Content Width', 'ultimate-addons-for-gutenberg' ) }
-							data={ {
-								value: contentWidth,
-								label: 'contentWidth',
-							} }
-							options={ contentWidthOptions }
-							showIcons={ false }
-							responsive={false}
-						/>
+						<>
+							<MultiButtonsControl
+								setAttributes={ setAttributes }
+								label={ __( 'Outer Container Width', 'ultimate-addons-for-gutenberg' ) }
+								data={ {
+									value: contentWidth,
+									label: 'contentWidth',
+								} }
+								options={ contentWidthOptions }
+								showIcons={ false }
+								responsive={false}
+							/>
+							{ 'alignfull' === contentWidth &&
+								<MultiButtonsControl
+									setAttributes={ setAttributes }
+									label={ __( 'Inner Content Width', 'ultimate-addons-for-gutenberg' ) }
+									data={ {
+										value: innerContentWidth,
+										label: 'innerContentWidth',
+									} }
+									options={ innerContentWidthOptions }
+									showIcons={ false }
+									responsive={false}
+								/>
+							}
+						</>
 					}
 					{ ( ( isBlockRootParent && 'default' === contentWidth ) || ( ! isBlockRootParent ) ) &&
 						<>
