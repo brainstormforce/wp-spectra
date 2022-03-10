@@ -293,10 +293,11 @@ const UAGCopyPasteStyles = () => {
 						if ( blockAttributes[attribute].UAGCopyPaste ) {
 							const key = blockAttributes[attribute].UAGCopyPaste.styleType;
 							Object.keys( styles ).map( ( item ) => {
-								if(item === key){
+								if( item === key ){
 									attributes[attribute] = styles[key];
 								}
-							})
+								return attribute;
+							} )
 						}
 						return attribute;
 					} );
