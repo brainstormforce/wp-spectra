@@ -54,7 +54,9 @@ const attributes = {
 	align: {
 		type: 'string',
 		default: 'center',
-		isUAGStyle: true,
+		UAGCopyPaste: {
+			styleType: 'btn-align'
+		}
 	},
 	gap: {
 		type: 'number',
@@ -67,29 +69,41 @@ const attributes = {
 	loadGoogleFonts: {
 		type: 'boolean',
 		default: false,
-		isUAGStyle: true,
+		UAGCopyPaste: {
+			styleType: 'btn-load-google-fonts'
+		}
 	},
 	fontFamily: {
 		type: 'string',
 		default: 'Default',
-		isUAGStyle: true,
+		UAGCopyPaste: {
+			styleType: 'btn-font-family'
+		}
 	},
 	fontWeight: {
 		type: 'string',
-		isUAGStyle: true,
+		UAGCopyPaste: {
+			styleType: 'btn-font-weight'
+		}
 	},
 	fontStyle: {
 		type: 'string',
 		default: 'normal',
-		isUAGStyle: true,
+		UAGCopyPaste: {
+			styleType: 'btn-font-style'
+		}
 	},
 	fontTransform: {
 		type: 'string',
-		isUAGStyle: true,
+		UAGCopyPaste: {
+			styleType: 'btn-font-transform'
+		}
 	},
 	fontDecoration: {
 		type: 'string',
-		isUAGStyle: true,
+		UAGCopyPaste: {
+			styleType: 'btn-font-decoration'
+		}
 	},
 };
 
