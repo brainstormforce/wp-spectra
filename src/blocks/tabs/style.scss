@@ -7,6 +7,18 @@
 		list-style-type: none;
 		display: inherit;
 
+		&.uagb-tabs__align-center {
+			justify-content: center;
+		}
+
+		&.uagb-tabs__align-left {
+			justify-content: flex-start;
+		}
+
+		&.uagb-tabs__align-right {
+			justify-content: flex-end;
+		}
+
 		li.uagb-tab a {
 			position: relative;
 			padding: 6px 12px;
@@ -68,6 +80,7 @@
 		margin-bottom: 0;
 		padding: 0;
 		display: flex;
+		align-items: center;
 		flex-direction: row;
 		max-width: 100%;
 	}
@@ -236,7 +249,6 @@
 .uagb-tabs__wrap.uagb-tabs__vstyle8-desktop {
 
 	ul.uagb-tabs__panel {
-		margin-bottom: 0;
 		min-width: 25%;
 		max-width: 25%;
 
