@@ -117,36 +117,36 @@ export default function Settings( props ) {
 					{ label: __( 'Circle Counter', 'ultimate-addons-for-gutenberg' ), value: 'circle' },
 					{ label: __( 'Bars Counter', 'ultimate-addons-for-gutenberg' ), value: 'bars' },
 				] }
-				onChange={ ( value ) => setAttributes({layout: value}) }
+				onChange={ ( value ) => setAttributes( {layout: value} ) }
 			/>
 			<TextControl
 				label={ __( 'Starting Number', 'ultimate-addons-for-gutenberg' ) }
 				value={ startNumber }
-				onChange={ ( value ) => setAttributes({startNumber: value})}
+				onChange={ ( value ) => setAttributes( {startNumber: value} )}
 			/>
 			<TextControl
 				label={ __( 'Ending Number', 'ultimate-addons-for-gutenberg' ) }
 				value={ endNumber }
-				onChange={ ( value ) => setAttributes({endNumber: value})}
+				onChange={ ( value ) => setAttributes( {endNumber: value} )}
 			/>
 			{
 				layout !== 'number' && (
 					<TextControl
 						label={ __( 'Total Number', 'ultimate-addons-for-gutenberg' ) }
 						value={ totalNumber }
-						onChange={ ( value ) => setAttributes({totalNumber: value})}
+						onChange={ ( value ) => setAttributes( {totalNumber: value} )}
 					/>
 				)
 			}
 			<TextControl
 				label={ __( 'Number Prefix', 'ultimate-addons-for-gutenberg' ) }
 				value={ numberPrefix }
-				onChange={ ( value ) => setAttributes({numberPrefix: value})}
+				onChange={ ( value ) => setAttributes( {numberPrefix: value} )}
 			/>
 			<TextControl
 				label={ __( 'Number Suffix', 'ultimate-addons-for-gutenberg' ) }
 				value={ numberSuffix }
-				onChange={ ( value ) => setAttributes({numberSuffix: value})}
+				onChange={ ( value ) => setAttributes( {numberSuffix: value} )}
 			/>
 			<Range
 				label={ __(
@@ -167,7 +167,7 @@ export default function Settings( props ) {
 				label={ __( 'Thousand Separator', 'ultimate-addons-for-gutenberg' ) }
 				value={ thousandSeparator }
 				onChange={ ( value ) => {
-					setAttributes({thousandSeparator: value})
+					setAttributes( {thousandSeparator: value} )
 				} }
 				options={ [
 					{ value: 'none', label: 'None' },

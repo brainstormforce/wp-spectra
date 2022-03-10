@@ -162,11 +162,11 @@ export default function styling( props ) {
 			)
 		},
 		'.wp-block-uagb-counter--circle .wp-block-uagb-counter-circle-container': {
-			'width': generateCSSUnit(circleSize, 'px'),
-			'height': generateCSSUnit(circleSize, 'px')
+			'width': generateCSSUnit( circleSize, 'px' ),
+			'height': generateCSSUnit( circleSize, 'px' )
 		},
 		'.wp-block-uagb-counter--circle .wp-block-uagb-counter-circle-container svg circle': {
-			'stroke-width': generateCSSUnit(circleStokeSize, 'px'),
+			'stroke-width': generateCSSUnit( circleStokeSize, 'px' ),
 			'stroke': circleForeground,
 		},
 		'.wp-block-uagb-counter--circle .wp-block-uagb-counter-circle-container svg #bar': {
@@ -176,7 +176,7 @@ export default function styling( props ) {
 			'background': barForeground,
 		},
 		'.wp-block-uagb-counter--bars .wp-block-uagb-counter-bars-container .wp-block-uagb-counter__number': {
-			'height': generateCSSUnit(barSize, 'px'),
+			'height': generateCSSUnit( barSize, 'px' ),
 			'background': barBackground,
 		}
 	}

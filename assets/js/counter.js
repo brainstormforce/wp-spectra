@@ -1,129 +1,128 @@
-UAGBCounter = {
-	// eslint-disable-line no-undef
+UAGBCounter = { // eslint-disable-line no-undef
 	elements: {},
-	init(mainSelector, data = {}) {
-		this.elements = this.getDefaultElements(mainSelector);
-		if(typeof this.elements.counterWrapper !== 'undefined' && this.elements.counterWrapper){
-			const numberCount = this._numberCount(data);
-			this._inViewInit(numberCount, data);
+	init( mainSelector, data = {} ) {
+		this.elements = this.getDefaultElements( mainSelector );
+		if( typeof this.elements.counterWrapper !== 'undefined' && this.elements.counterWrapper ){
+			const numberCount = this._numberCount( data );
+			this._inViewInit( numberCount, data );
 		}
 	},
-	getDefaultElements(mainSelector) {
-		const counterWrapper = this.getElement(mainSelector);
+	getDefaultElements( mainSelector ) {
+		const counterWrapper = this.getElement( mainSelector );
 		return {
 			counterWrapper
 		};
 	},
-	getElement(selector, childSelector = null) {
-		let domElement = document.querySelector(selector);
-		if (domElement) {
-			if (childSelector) {
-				return domElement.querySelector(childSelector);
+	getElement( selector, childSelector = null ) {
+		let domElement = document.querySelector( selector );
+		if ( domElement ) {
+			if ( childSelector ) {
+				return domElement.querySelector( childSelector );
 			}
 		} else {
 			const editorCanvas = document.querySelector(
 				'iframe[name="editor-canvas"]'
 			);
-			if (editorCanvas && editorCanvas.contentDocument) {
+			if ( editorCanvas && editorCanvas.contentDocument ) {
 				domElement = editorCanvas.contentDocument.querySelector(
 					selector
 				);
-				if (childSelector) {
-					return (domElement = domElement.querySelector(
+				if ( childSelector ) {
+					return ( domElement = domElement.querySelector(
 						childSelector
-					));
+					) );
 				}
 			}
 		}
 		return domElement;
 	},
 
-	_inViewInit(countUp, data){
+	_inViewInit( countUp, data ){
 		const that = this
 		const callback = entries => {
 			entries.forEach( entry => {
 				const el = entry.target
 				// entry.isIntersecting && ! el.classList.contains( 'is-visible' )
 				if ( entry.isIntersecting ) {
-					if (!countUp.error) {
-						if(data.layout === 'bars'){
-							that._triggerBar(el, data);
-						} else if(data.layout === 'circle'){
-							that._triggerCircle(el, data);
+					if ( !countUp.error ) {
+						if( data.layout === 'bars' ){
+							that._triggerBar( el, data );
+						} else if( data.layout === 'circle' ){
+							that._triggerCircle( el, data );
 						}
 						countUp.start();
 					} else {
-						console.error(countUp.error);
+						console.error( countUp.error ); // eslint-disable-line no-console
 					}
 					// el.classList.add( 'is-visible' )
 				}
 			} )
 		}
-		const IO = new IntersectionObserver( callback, { threshold: 1 } )
+		const IO = new IntersectionObserver( callback, { threshold: 1 } ) // eslint-disable-line no-undef
 		IO.observe( that.elements.counterWrapper )
 	},
-	_numberCount(data){
+	_numberCount( data ){
 		const that = this
-		const el = this.elements.counterWrapper.querySelector('.uagb-counter-block-number')
-		if(typeof el !== 'undefined' && el){
-			const countUp = new window.countUp.CountUp(el, that._getEndNumber(data), {
-				startVal: that._getStartNumber(data),
+		const el = this.elements.counterWrapper.querySelector( '.uagb-counter-block-number' )
+		if( typeof el !== 'undefined' && el ){
+			const countUp = new window.countUp.CountUp( el, that._getEndNumber( data ), {
+				startVal: that._getStartNumber( data ),
 				duration: data.animationDuration,
 				separator: data.thousandSeparator
-			});
+			} );
 			return countUp;
 		}
 	},
 
-	_triggerBar(el, data){
+	_triggerBar( el, data ){
 		const that = this
 		const numberWrap = el.querySelector( '.wp-block-uagb-counter__number' );
-		const duration = that._getAnimationDuration(data);
-		var startWidth = data.startNumber < data.totalNumber ? Math.ceil( ( data.startNumber / data.totalNumber ) * 100 ) : 0;
-		var endWidth = data.endNumber < data.totalNumber ? Math.ceil( ( data.endNumber / data.totalNumber ) * 100 ) : 100;
-		jQuery(numberWrap).css('width', startWidth + '%').animate({
+		const duration = that._getAnimationDuration( data );
+		const startWidth = data.startNumber < data.totalNumber ? Math.ceil( ( data.startNumber / data.totalNumber ) * 100 ) : 0;
+		const endWidth = data.endNumber < data.totalNumber ? Math.ceil( ( data.endNumber / data.totalNumber ) * 100 ) : 100;
+		jQuery( numberWrap ).css( 'width', startWidth + '%' ).animate( {
 			width: endWidth + '%'
 		}, {
-			duration: duration,
+			duration,
 			easing: 'linear',
-		});
+		} );
 	},
 
-	_triggerCircle(el, data){
+	_triggerCircle( el, data ){
 		const that = this
 		const circleWrap = el.querySelector( '.wp-block-uagb-counter-circle-container svg #bar' );
 		const totalWidth = data.totalNumber;
 		const r = 90;
-		const circle = Math.PI*(r*2);
+		const circle = Math.PI*( r*2 );
 		const startPct = data.startNumber < totalWidth ? ( 1 - ( data.startNumber / totalWidth ) ) * circle : 0;
 		const endPct = data.endNumber < totalWidth ? ( 1 - ( data.endNumber / totalWidth ) ) * circle : 100;
-		const duration = that._getAnimationDuration(data);
-		jQuery(circleWrap).css('strokeDashoffset', startPct).animate({
+		const duration = that._getAnimationDuration( data );
+		jQuery( circleWrap ).css( 'strokeDashoffset', startPct ).animate( {
 			strokeDashoffset: endPct
 		}, {
-			duration: duration,
+			duration,
 			easing: 'linear',
-			complete: function() {
+			complete() {
 
 			}
-		});
+		} );
 	},
 
-	_getAnimationDuration(data){
+	_getAnimationDuration( data ){
 		const that = this
-		const countAbleNumber = that._getEndNumber(data) - that._getStartNumber(data)
-		return (countAbleNumber * data.animationDuration) * 10
+		const countAbleNumber = that._getEndNumber( data ) - that._getStartNumber( data )
+		return ( countAbleNumber * data.animationDuration ) * 10
 	},
 
-	_getStartNumber(data){
-		if(data.layout === 'bars' || data.layout === 'circle'){
-			return Math.ceil( ( parseInt(data.startNumber) / parseInt(data.totalNumber) ) * 100 );
+	_getStartNumber( data ){
+		if( data.layout === 'bars' || data.layout === 'circle' ){
+			return Math.ceil( ( parseInt( data.startNumber ) / parseInt( data.totalNumber ) ) * 100 );
 		}
 		return data.startNumber;
 	},
-	_getEndNumber(data){
-		if(data.layout === 'bars' || data.layout === 'circle'){
-			return Math.ceil( ( parseInt(data.endNumber) / parseInt(data.totalNumber) ) * 100 );
+	_getEndNumber( data ){
+		if( data.layout === 'bars' || data.layout === 'circle' ){
+			return Math.ceil( ( parseInt( data.endNumber ) / parseInt( data.totalNumber ) ) * 100 );
 		}
 		return data.endNumber;
 	}

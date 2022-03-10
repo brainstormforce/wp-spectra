@@ -20,7 +20,7 @@ export default function Save( props ) {
 
 	const circlePos    = ( circleSize / 2 );
 	const circleRadius = circlePos - 10;
-	const circleDash   = parseFloat(2 * Math.PI * circleRadius).toFixed(2);
+	const circleDash   = parseFloat( 2 * Math.PI * circleRadius ).toFixed( 2 );
 	const percentLayout = ['bars', 'circle'];
 
 	const title = (
@@ -34,14 +34,14 @@ export default function Save( props ) {
 	const number = (
 		<div className="wp-block-uagb-counter__number">
 			{
-				numberPrefix && (<span className="uagb-counter-block-prefix">{numberPrefix}</span>)
+				numberPrefix && ( <span className="uagb-counter-block-prefix">{numberPrefix}</span> )
 			}
 			<span className="uagb-counter-block-number" data-duration={animationDuration} data-to-value={endNumber} data-from-value={startNumber} data-delimiter={thousandSeparator}></span>
 			{
-				percentLayout.includes(layout) && (<span className='uagb-counter-block-number-type'>%</span>)
+				percentLayout.includes( layout ) && ( <span className='uagb-counter-block-number-type'>%</span> )
 			}
 			{
-				numberSuffix && (<span className="uagb-counter-block-suffix">{numberSuffix}</span>)
+				numberSuffix && ( <span className="uagb-counter-block-suffix">{numberSuffix}</span> )
 			}
 		</div>
 	);
@@ -59,8 +59,8 @@ export default function Save( props ) {
 				{title}
 			</div>
 			<svg viewPort={`0 0 ${circleSize} ${circleSize}`} version="1.1" xmlns="http://www.w3.org/2000/svg">
-				<circle r={circleRadius} cx={circlePos} cy={circlePos} fill="transparent" stroke-dasharray={circleDash} stroke-dashoffset="0"></circle>
-				<circle id="bar" r={circleRadius} cx={circlePos} cy={circlePos} fill="transparent" stroke-dasharray={circleDash} stroke-dashoffset={circleDash}></circle>
+				<circle r={circleRadius} cx={circlePos} cy={circlePos} fill="transparent" strokeDasharray={circleDash} strokeDashoffset="0"></circle>
+				<circle id="bar" r={circleRadius} cx={circlePos} cy={circlePos} fill="transparent" strokeDasharray={circleDash} strokeDashoffset={circleDash}></circle>
 			</svg>
 		</div>
 	)
