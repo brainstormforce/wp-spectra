@@ -6,6 +6,10 @@ const attributes = {
 		type: 'string',
 		default: 'number',
 	},
+	align: {
+		type: 'string',
+		default: 'left',
+	},
 	animationDuration: {
 		type: 'float',
 		default: 25,

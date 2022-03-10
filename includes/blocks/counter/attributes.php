@@ -10,6 +10,7 @@
 return array(
 	'block_id'                  => '',
 	'layout'                    => '',
+	'align'                     => 'left',
 	'startNumber'               => 0,
 	'endNumber'                 => 80,
 	'totalNumber'               => 100,

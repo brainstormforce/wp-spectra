@@ -14,6 +14,9 @@ $m_selectors = array();
 $t_selectors = array();
 
 $selectors = array(
+	'.wp-block-uagb-counter'                               => array(
+		'text-align' => $attr['align'],
+	),
 	'.wp-block-uagb-counter .wp-block-uagb-counter__title' => array(
 		'font-family'     => $attr['headingFontFamily'],
 		'font-style'      => $attr['headingFontStyle'],

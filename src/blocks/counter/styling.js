@@ -11,6 +11,7 @@ import generateCSSUnit from '@Controls/generateCSSUnit';
 export default function styling( props ) {
 	const {attributes} = props
 	const {
+		align,
 		headingFontFamily,
 		headingFontWeight,
 		headingFontStyle,
@@ -85,6 +86,9 @@ export default function styling( props ) {
 	} = attributes;
 
 	const selectors = {
+		'.wp-block-uagb-counter':{
+			'text-align': align
+		},
 		'.wp-block-uagb-counter .wp-block-uagb-counter__title':{
 			'font-family': headingFontFamily,
 			'font-style' : headingFontStyle,

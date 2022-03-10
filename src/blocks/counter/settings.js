@@ -8,7 +8,7 @@ import InspectorTab, {
 import AdvancedPopColorControl from '@Components/color-control/advanced-pop-color-control.js';
 import SpacingControl from '@Components/spacing-control';
 import { __ } from '@wordpress/i18n';
-import {InspectorControls} from '@wordpress/block-editor';
+import {AlignmentToolbar, BlockControls, InspectorControls} from '@wordpress/block-editor';
 import { TextControl, SelectControl } from '@wordpress/components';
 import Range from '@Components/range/Range.js';
 import UAGAdvancedPanelBody from '@Components/advanced-panel-body';
@@ -19,6 +19,7 @@ export default function Settings( props ) {
 	const {
 		startNumber,
 		endNumber,
+		align,
 		totalNumber,
 		numberPrefix,
 		numberSuffix,
@@ -609,6 +610,14 @@ export default function Settings( props ) {
 
 	return (
 		<React.Fragment>
+			<BlockControls key="controls">
+				<AlignmentToolbar
+					value={ align }
+					onChange={ ( value ) =>
+						setAttributes( { align: value } )
+					}
+				/>
+			</BlockControls>
 			<InspectorControls>
 				<InspectorTabs>
 					<InspectorTab { ...UAGTabs.general }>

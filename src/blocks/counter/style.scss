@@ -1,4 +1,9 @@
 .wp-block-uagb-counter {
+	&--number {
+		.wp-block-uagb-counter__number {
+			font-size: 50px;
+		}
+	}
 	&--bars {
 		.wp-block-uagb-counter-bars-container {
 			width: 100%;
