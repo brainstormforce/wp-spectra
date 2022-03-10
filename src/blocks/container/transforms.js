@@ -6,8 +6,6 @@
 	createBlocksFromInnerBlocksTemplate,
 } from '@wordpress/blocks';
 
-import { select } from '@wordpress/data';
-
 const transforms = {
 	from: [
 		{
@@ -22,16 +20,16 @@ const transforms = {
 					gradient
 				} = attributes;
 
-				let contentWidth = align ? `align${align}` : 'default';
-				let bgColor = backgroundColor ? backgroundColor : style?.color?.background ? style?.color?.background : null;
+				const contentWidth = align ? `align${align}` : 'default';
+				const bgColor = backgroundColor ? backgroundColor : style?.color?.background ? style?.color?.background : null; // eslint-disable-line no-nested-ternary
 
-				let backgroundType = ( gradient || style?.color?.gradient ) ? 'gradient' : ( bgColor || style?.color?.background ) ? 'color' : 'none';
+				const backgroundType = ( gradient || style?.color?.gradient ) ? 'gradient' : ( bgColor || style?.color?.background ) ? 'color' : 'none'; // eslint-disable-line no-nested-ternary
 
 				return createBlock(
 					'uagb/container',
 					{
-						contentWidth: contentWidth,
-						backgroundType: backgroundType,
+						contentWidth,
+						backgroundType,
 						backgroundColor: bgColor,
 						gradientValue: gradient || style?.color?.gradient,
 						variationSelected: true
@@ -55,41 +53,41 @@ const transforms = {
 					isStackedOnMobile
 				} = attributes;
 
-				let contentWidth = align ? `align${align}` : 'default';
-				let bgColor = backgroundColor ? backgroundColor : style?.color?.background ? style?.color?.background : null;
+				const contentWidth = align ? `align${align}` : 'default';
+				const bgColor = backgroundColor ? backgroundColor : style?.color?.background ? style?.color?.background : null; // eslint-disable-line no-nested-ternary
 
-				let backgroundType = ( gradient || style?.color?.gradient ) ? 'gradient' : ( bgColor || style?.color?.background ) ? 'color' : 'none';
+				const backgroundType = ( gradient || style?.color?.gradient ) ? 'gradient' : ( bgColor || style?.color?.background ) ? 'color' : 'none'; // eslint-disable-line no-nested-ternary
 
-				let innerBlocksTemplate = [];
-				let containerChildWidth = ( 100 / innerBlocks.length );
+				const innerBlocksTemplate = [];
+				const containerChildWidth = ( 100 / innerBlocks.length );
 
-				innerBlocks.map((child) => {
+				innerBlocks.map( ( child ) => {
 
-					let bgColor = child?.attributes?.backgroundColor ? child?.attributes?.backgroundColor : child?.attributes?.style?.color?.background ? child?.attributes?.style?.color?.background : null;
+					const bgColorChild = child?.attributes?.backgroundColor ? child?.attributes?.backgroundColor : child?.attributes?.style?.color?.background ? child?.attributes?.style?.color?.background : null; // eslint-disable-line no-nested-ternary
 
-					let backgroundType = ( child?.attributes?.gradient || child?.attributes?.style?.color?.gradient ) ? 'gradient' : ( bgColor || child?.attributes?.style?.color?.background ) ? 'color' : 'none';
+					const backgroundTypeChild = ( child?.attributes?.gradient || child?.attributes?.style?.color?.gradient ) ? 'gradient' : ( bgColorChild || child?.attributes?.style?.color?.background ) ? 'color' : 'none'; // eslint-disable-line no-nested-ternary
 
-					let width = child?.attributes?.width ? child?.attributes?.width : containerChildWidth;
+					const width = child?.attributes?.width ? child?.attributes?.width : containerChildWidth;
 
-					innerBlocksTemplate.push([
+					innerBlocksTemplate.push( [
 						'uagb/container',
 						{
 							widthDesktop: width,
-							backgroundType: backgroundType,
-							backgroundColor: bgColor,
+							backgroundTypeChild,
+							backgroundColor: bgColorChild,
 							gradientValue: gradient || style?.color?.gradient
 						},
 						child?.innerBlocks
-					]);
+					] );
 
 					return child;
-				});
+				} );
 
 				return createBlock(
 					'uagb/container',
 					{
-						contentWidth: contentWidth,
-						backgroundType: backgroundType,
+						contentWidth,
+						backgroundType,
 						backgroundColor: bgColor,
 						gradientValue: gradient || style?.color?.gradient,
 						directionDesktop: 'row',

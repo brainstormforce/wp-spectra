@@ -33,7 +33,7 @@ function generateBackgroundCSS ( backgroundAttributes ) {
             }
         } else if ( 'gradient' === backgroundType ) {
             if ( '' !== gradientValue && 'unset' !== gradientValue ) {
-                bgCSS['background'] = gradientValue;
+                bgCSS.background = gradientValue;
             }
         }
 

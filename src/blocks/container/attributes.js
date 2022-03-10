@@ -26,6 +26,22 @@ const attributes = {
 		type: 'string',
 		default: '%',
 	},
+	innerContentCustomWidthDesktop: {
+		type: 'number',
+		default: 1200,
+	},
+	innerContentCustomWidthTablet: {
+		type: 'number',
+		default: 1200,
+	},
+	innerContentCustomWidthMobile: {
+		type: 'number',
+		default: 1200,
+	},
+	innerContentCustomWidthType: {
+		type: 'string',
+		default: 'px',
+	},
 	minHeightDesktop: {
 		type: 'number',
 		default: 120,

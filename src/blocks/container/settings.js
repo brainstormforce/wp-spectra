@@ -109,7 +109,11 @@ const Settings = ( props ) => {
 		columnGapType,
 		contentWidth,
 		isBlockRootParent,
-		innerContentWidth
+		innerContentWidth,
+		innerContentCustomWidthDesktop,
+		innerContentCustomWidthTablet,
+		innerContentCustomWidthMobile,
+		innerContentCustomWidthType
 	} = attributes;
 
 	let currentDirection = 'row';
@@ -372,6 +376,7 @@ const Settings = ( props ) => {
 								responsive={false}
 							/>
 							{ 'alignfull' === contentWidth &&
+								<>
 								<MultiButtonsControl
 									setAttributes={ setAttributes }
 									label={ __( 'Inner Content Width', 'ultimate-addons-for-gutenberg' ) }
@@ -383,6 +388,42 @@ const Settings = ( props ) => {
 									showIcons={ false }
 									responsive={false}
 								/>
+								{ 'alignwide' === innerContentWidth &&
+									<ResponsiveSlider
+										label={ __( 'Inner Content Custom Width', 'ultimate-addons-for-gutenberg' ) }
+										data={ {
+											desktop: {
+												value: innerContentCustomWidthDesktop,
+												label: 'innerContentCustomWidthDesktop',
+											},
+											tablet: {
+												value: innerContentCustomWidthTablet,
+												label: 'innerContentCustomWidthTablet',
+											},
+											mobile: {
+												value: innerContentCustomWidthMobile,
+												label: 'innerContentCustomWidthMobile',
+											},
+										} }
+										min={ 0 }
+										max={ 1200 }
+										unit={ {
+											value: innerContentCustomWidthType,
+											label: 'innerContentCustomWidthType',
+										} }
+										units={ [
+											{
+												name: __(
+													'PX',
+													'ultimate-addons-for-gutenberg'
+												),
+												unitValue: 'px',
+											},
+										] }
+										setAttributes={ setAttributes }
+									/>
+								}
+							</>
 							}
 						</>
 					}
