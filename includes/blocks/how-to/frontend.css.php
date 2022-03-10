@@ -39,6 +39,15 @@ $selectors = array(
 		'margin-bottom' => UAGB_Helper::get_css_value( $attr['row_gap'], 'px' ),
 	),
 
+	' h4.uagb-howto-req-steps-text'                        => array(
+		'margin-top'    => UAGB_Helper::get_css_value( $attr['row_gap'], 'px' ),
+		'margin-bottom' => UAGB_Helper::get_css_value( $attr['row_gap'], 'px' ),
+	),
+	' h4.uagb-howto-req-materials-text'                    => array(
+		'margin-top' => UAGB_Helper::get_css_value( $attr['row_gap'], 'px' ),
+	),
+
+
 	'.uagb-how-to-main-wrap .uagb-how-to-tools-child__wrapper:last-child' => array(
 		'margin-bottom' => UAGB_Helper::get_css_value( $attr['row_gap'], 'px' ),
 	),
