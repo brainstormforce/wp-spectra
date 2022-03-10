@@ -80,7 +80,7 @@ const RollBackConfirmPopup = ( props ) => {
                         <p className="text-sm ">
                         {
                           // eslint-disable-next-line @wordpress/i18n-no-variables
-                          __( `Are you sure you want to rollback to UAG v${previousVersionSelect}?`, 'ultimate-addons-for-gutenberg' )
+                          __( `Are you sure you want to rollback to Spectra v${previousVersionSelect}?`, 'ultimate-addons-for-gutenberg' )
                         }
                         </p>
                       </div>
