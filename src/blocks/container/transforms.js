@@ -151,7 +151,7 @@ const transforms = {
 					bottomPadding,
 				} = attributes;
 
-				let containerWidth = 'full_width' === contentWidth ? 'alignfull' : 'alignwide';
+				const containerWidth = 'full_width' === contentWidth ? 'alignfull' : 'alignwide';
 				let innerContainerCustomWidth = null;
 				let innerContentWidth = null;
 
