@@ -671,6 +671,7 @@ const Settings = ( props ) => {
 						options={ wrapOptions }
 						showIcons={ true }
 						responsive={true}
+						help={ __( 'Define whether the items are forced in a single line (No Wrap) or can be flowed into multiple lines (Wrap)', 'ultimate-addons-for-gutenberg' ) }
 					/>
 					{ 'wrap' === attributes[ 'wrap' + deviceType ] &&
 						<MultiButtonsControl
