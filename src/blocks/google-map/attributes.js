@@ -9,7 +9,9 @@ const attributes = {
 	height: {
 		type: 'number',
 		default: 300,
-		isUAGStyle: true,
+		UAGCopyPaste: {
+			styleType: 'map-height'
+		},
 	},
 	zoom: {
 		type: 'number',

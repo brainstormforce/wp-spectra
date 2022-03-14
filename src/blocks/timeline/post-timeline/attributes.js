@@ -612,7 +612,9 @@ const attributes = { // eslint-disable-line no-unused-vars
 	imageSize               : {
 		type    : 'string',
 		default : 'large',
-		isUAGStyle: true,
+		UAGCopyPaste: {
+			styleType: 'image-size'
+		},
 	},
 	block_id                : {
 		type    : 'string',
