@@ -1,1 +1,103 @@
-(window.webpackJsonp_ultimate_addons_for_gutenberg=window.webpackJsonp_ultimate_addons_for_gutenberg||[]).push([[77],{281:function(t,e,a){"use strict";a.r(e);var o=a(3),s=a.n(o),n=a(180),i=a(10),u=a(0),l=a.n(u);const r=t=>{const e=Object(u.useRef)(),{attributes:a,className:o,latestPosts:r,block_id:c}=t,g=Object(i.a)(),{columns:m,tcolumns:p,mcolumns:b,imgPosition:d,postsToShow:_,equalHeight:f,paginationMarkup:w,postPagination:v,layoutConfig:h,rowGap:k}=a,N=()=>{setTimeout(()=>{if(null!=e&&e.current){var t,a;const o=null==e||null===(t=e.current)||void 0===t?void 0:t.offsetWidth,s=100-k/o*100,n=null==e||null===(a=e.current)||void 0===a?void 0:a.parentNode;if(n&&n.classList.contains("uagb-post__image-position-background")){const t=null==n?void 0:n.getElementsByClassName("uagb-post__image");for(const e of t)e&&(e.style.width=s+"%",e.style.marginLeft=k/2+"px")}}},100)};Object(u.useEffect)(()=>{N()},[e]),Object(u.useEffect)(()=>{N()},[d]);const y=f?"uagb-post__equal-height":"",E=r.length>_?r.slice(0,_):r;return l.a.createElement("div",{className:s()("is-grid","uagb-post__columns-"+m,"uagb-post__columns-tablet-"+p,"uagb-post__columns-mobile-"+b,"uagb-post__items",""+y,o,"uagb-post-grid","uagb-post__image-position-"+d,"uagb-editor-preview-mode-"+g.toLowerCase(),"uagb-block-"+c)},l.a.createElement(n.b,{parentName:"uagb/post-grid",parentClassName:"uagb-block-grid"},E.map((function(){let a=arguments.length>0&&void 0!==arguments[0]?arguments[0]:{},o=arguments.length>1?arguments[1]:void 0;return l.a.createElement("article",{ref:e,key:o,className:"uagb-post__inner-wrap"},Object(n.e)("uagb/post-grid",a,h,t.attributes,t.categoriesList,e))}))),!0===v&&"empty"!==w&&l.a.createElement("div",{dangerouslySetInnerHTML:{__html:w},className:"uagb-post-pagination-wrap"}))};e.default=l.a.memo(r)}}]);
+(window["webpackJsonp_ultimate_addons_for_gutenberg"] = window["webpackJsonp_ultimate_addons_for_gutenberg"] || []).push([["chunks/post-grid/blog"],{
+
+/***/ "./src/blocks/post/post-grid/blog.js":
+/*!*******************************************!*\
+  !*** ./src/blocks/post/post-grid/blog.js ***!
+  \*******************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! classnames */ "./node_modules/classnames/index.js");
+/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(classnames__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _function__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! .././function */ "./src/blocks/post/function.js");
+/* harmony import */ var _Controls_getPreviewType__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @Controls/getPreviewType */ "./blocks-config/uagb-controls/getPreviewType.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_3__);
+
+
+
+
+
+const Blog = props => {
+  const article = Object(react__WEBPACK_IMPORTED_MODULE_3__["useRef"])();
+  const {
+    attributes,
+    className,
+    latestPosts,
+    block_id
+  } = props;
+  const deviceType = Object(_Controls_getPreviewType__WEBPACK_IMPORTED_MODULE_2__["useDeviceType"])();
+  const {
+    columns,
+    tcolumns,
+    mcolumns,
+    imgPosition,
+    postsToShow,
+    equalHeight,
+    paginationMarkup,
+    postPagination,
+    layoutConfig,
+    rowGap
+  } = attributes;
+
+  const updateImageBgWidth = () => {
+    setTimeout(() => {
+      if (article !== null && article !== void 0 && article.current) {
+        var _article$current, _article$current2;
+
+        const articleWidth = article === null || article === void 0 ? void 0 : (_article$current = article.current) === null || _article$current === void 0 ? void 0 : _article$current.offsetWidth;
+        const imageWidth = 100 - rowGap / articleWidth * 100;
+        const parent = article === null || article === void 0 ? void 0 : (_article$current2 = article.current) === null || _article$current2 === void 0 ? void 0 : _article$current2.parentNode;
+
+        if (parent && parent.classList.contains('uagb-post__image-position-background')) {
+          const images = parent === null || parent === void 0 ? void 0 : parent.getElementsByClassName('uagb-post__image');
+
+          for (const image of images) {
+            if (image) {
+              image.style.width = imageWidth + '%';
+              image.style.marginLeft = rowGap / 2 + 'px';
+            }
+          }
+        }
+      }
+    }, 100);
+  };
+
+  Object(react__WEBPACK_IMPORTED_MODULE_3__["useEffect"])(() => {
+    updateImageBgWidth();
+  }, [article]);
+  Object(react__WEBPACK_IMPORTED_MODULE_3__["useEffect"])(() => {
+    updateImageBgWidth();
+  }, [imgPosition]);
+  const equalHeightClass = equalHeight ? 'uagb-post__equal-height' : ''; // Removing posts from display should be instant.
+
+  const displayPosts = latestPosts.length > postsToShow ? latestPosts.slice(0, postsToShow) : latestPosts;
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement("div", {
+    className: classnames__WEBPACK_IMPORTED_MODULE_0___default()('is-grid', `uagb-post__columns-${columns}`, `uagb-post__columns-tablet-${tcolumns}`, `uagb-post__columns-mobile-${mcolumns}`, 'uagb-post__items', `${equalHeightClass}`, className, 'uagb-post-grid', `uagb-post__image-position-${imgPosition}`, `uagb-editor-preview-mode-${deviceType.toLowerCase()}`, `uagb-block-${block_id}`)
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement(_function__WEBPACK_IMPORTED_MODULE_1__["InnerBlockLayoutContextProvider"], {
+    parentName: "uagb/post-grid",
+    parentClassName: "uagb-block-grid"
+  }, displayPosts.map(function () {
+    let post = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+    let i = arguments.length > 1 ? arguments[1] : undefined;
+    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement("article", {
+      ref: article,
+      key: i,
+      className: "uagb-post__inner-wrap"
+    }, Object(_function__WEBPACK_IMPORTED_MODULE_1__["renderPostLayout"])('uagb/post-grid', post, layoutConfig, props.attributes, props.categoriesList, article));
+  })), postPagination === true && 'empty' !== paginationMarkup && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement("div", {
+    dangerouslySetInnerHTML: {
+      __html: paginationMarkup
+    },
+    className: "uagb-post-pagination-wrap"
+  }));
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (/*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3___default.a.memo(Blog));
+
+/***/ })
+
+}]);
+//# sourceMappingURL=blog.js.map

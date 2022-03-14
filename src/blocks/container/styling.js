@@ -5,6 +5,8 @@
 import generateCSS from '@Controls/generateCSS';
 import generateCSSUnit from '@Controls/generateCSSUnit';
 import generateBackgroundCSS from '@Controls/generateBackgroundCSS';
+import hexToRgba from '@Controls/hexToRgba';
+import maybeGetColorForVariable from '@Controls/maybeGetColorForVariable';
 
 function styling( props ) {
 	const { attributes, deviceType } = props;
@@ -89,9 +91,40 @@ function styling( props ) {
 		columnGapType,
 		contentWidth,
 		innerContentWidth,
+		bottomType,
+		bottomColor,
+		bottomHeight,
+		bottomHeightTablet,
+		bottomHeightMobile,
+		bottomWidth,
+		topType,
+		topColor,
+		topHeight,
+		topHeightTablet,
+		topHeightMobile,
+		topWidth,
+		bottomFlip,
+		topFlip,
+		topContentAboveShape,
+		bottomContentAboveShape,
 	} = attributes;
 
-	const selectors = {};
+	const selectors = {
+		' .uagb-columns__shape-top svg' : {
+			'width': 'calc( ' + topWidth + '% + 1.3px )',
+			'height': generateCSSUnit( topHeight, 'px' )
+		},
+		' .uagb-columns__shape-top .uagb-columns__shape-fill' : {
+			'fill': hexToRgba( maybeGetColorForVariable( topColor ), 100 ),
+		},
+		' .uagb-columns__shape-bottom svg' : {
+			'width': 'calc( ' + bottomWidth + '% + 1.3px )',
+			'height': generateCSSUnit( bottomHeight, 'px' )
+		},
+		' .uagb-columns__shape-bottom .uagb-columns__shape-fill' : {
+			'fill': hexToRgba( maybeGetColorForVariable( bottomColor ), 100 ),
+		},
+	};
 
 	const backgroundAttributes = {
         'backgroundType': backgroundType,
@@ -170,8 +203,8 @@ function styling( props ) {
 			'--inner-content-custom-width' : attributes[`innerContentCustomWidth${deviceType}`] + 'px',
 			'--padding-left' : ( attributes[`leftPadding${deviceType}`] || 0 ) + paddingType,
 			'--padding-right' : ( attributes[`rightPadding${deviceType}`] || 0 ) + paddingType,
-			'padding-left': `calc( ( 100% - var( --inner-content-custom-width ) ) / 2 + var( --padding-left ))`,
-			'padding-right': `calc( ( 100% - var( --inner-content-custom-width ) ) / 2 + var( --padding-right ))`,
+			'padding-left': `calc( ( 100% - var( --inner-content-custom-width ) ) / 2 + var( --padding-left )) !important`,
+			'padding-right': `calc( ( 100% - var( --inner-content-custom-width ) ) / 2 + var( --padding-right )) !important`,
 		};
 	}
 
@@ -217,7 +250,13 @@ function styling( props ) {
 			'justify-content' : justifyContentTablet,
 			'flex-wrap' : wrapTablet,
 			'align-content' : alignContentTablet,
-		}
+		},
+		' .uagb-columns__shape-top svg' : {
+			'height': generateCSSUnit( topHeightTablet, 'px' )
+		},
+		' .uagb-columns__shape-bottom svg' : {
+			'height': generateCSSUnit( bottomHeightTablet, 'px' )
+		},
 	};
 
 	const mobile_selectors = {
@@ -248,7 +287,13 @@ function styling( props ) {
 			'justify-content' : justifyContentMobile,
 			'flex-wrap' : wrapMobile,
 			'align-content' : alignContentMobile,
-		}
+		},
+		' .uagb-columns__shape-top svg' : {
+			'height': generateCSSUnit( topHeightMobile, 'px' )
+		},
+		' .uagb-columns__shape-bottom svg' : {
+			'height': generateCSSUnit( bottomHeightMobile, 'px' )
+		},
 	};
 
 	if ( 'default' === contentWidth ) {

@@ -316,7 +316,79 @@ const attributes = {
 	isBlockRootParent: {
 		type: 'boolean',
 		default: false,
-	}
+	},
+	bottomType: {
+		type: 'string',
+		default: 'none',
+		isUAGStyle: true,
+	},
+	bottomColor: {
+		type: 'string',
+		isUAGStyle: true,
+		default: '#333',
+	},
+	bottomHeight: {
+		type: 'number',
+		isUAGStyle: true,
+	},
+	bottomHeightTablet: {
+		type: 'number',
+		isUAGStyle: true,
+	},
+	bottomHeightMobile: {
+		type: 'number',
+		isUAGStyle: true,
+	},
+	bottomWidth: {
+		type: 'number',
+		isUAGStyle: true,
+	},
+	topType: {
+		type: 'string',
+		default: 'none',
+		isUAGStyle: true,
+	},
+	topColor: {
+		type: 'string',
+		default: '#333',
+		isUAGStyle: true,
+	},
+	topHeight: {
+		type: 'number',
+		isUAGStyle: true,
+	},
+	topHeightTablet: {
+		type: 'number',
+		isUAGStyle: true,
+	},
+	topHeightMobile: {
+		type: 'number',
+		isUAGStyle: true,
+	},
+	topWidth: {
+		type: 'number',
+		isUAGStyle: true,
+	},
+	topFlip: {
+		type: 'boolean',
+		default: false,
+		isUAGStyle: true,
+	},
+	bottomFlip: {
+		type: 'boolean',
+		default: false,
+		isUAGStyle: true,
+	},
+	topContentAboveShape: {
+		type: 'boolean',
+		default: false,
+		isUAGStyle: true,
+	},
+	bottomContentAboveShape: {
+		type: 'boolean',
+		default: false,
+		isUAGStyle: true,
+	},
 };
 
 export default attributes;
