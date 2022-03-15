@@ -7,7 +7,7 @@ import { createElement as el } from '@wordpress/element';
 const UAGB_Block_Icons = {
 	section: el(
 		'svg',
-		{ width: 36, height: 32, viewBox: '0 0 36 32', fill: 'none' },
+		{ width: 36, height: 32, viewBox: '0 0 36 32', fill: 'none', className: 'uagb-editor-icons' },
 		el( 'path', {
 			fill: '#411D7E',
 			d:
@@ -16,7 +16,7 @@ const UAGB_Block_Icons = {
 	),
 	buttons: el(
 		'svg',
-		{width: 32, height: 36, viewBox: '0 0 32 36', fill: 'none' },
+		{width: 32, height: 36, viewBox: '0 0 32 36', fill: 'none', className: 'uagb-editor-icons'  },
 		el( 'path', {
 			fill: '#411D7E',
 			d:
@@ -25,7 +25,7 @@ const UAGB_Block_Icons = {
 	),
 	buttons_child: el(
 		'svg',
-		{ width: 20, height: 20, viewBox: '0 0 36 36' },
+		{ width: 20, height: 20, viewBox: '0 0 36 36', className: 'uagb-editor-icons'  },
 		el( 'path', {
 			fill: '#411D7E',
 			d:
@@ -34,7 +34,7 @@ const UAGB_Block_Icons = {
 	),
 	advanced_heading: el(
 		'svg',
-		{ width: 37, height: 32, viewBox: '0 0 37 32', stroke: '#411D7E', fill: 'none' },
+		{ width: 37, height: 32, viewBox: '0 0 37 32', stroke: '#411D7E', fill: 'none', className: 'uagb-editor-icons'  },
 		el( 'path', {
 			fill: '#411D7E',
 			d:
@@ -48,7 +48,7 @@ const UAGB_Block_Icons = {
 	),
 	google_map: el(
 		'svg',
-		{ width: 36, height: 36, viewBox: '0 0 36 36', fill: 'none' },
+		{ width: 36, height: 36, viewBox: '0 0 36 36', fill: 'none', className: 'uagb-editor-icons'  },
 		el( 'path', {
 			'fill': '#411D7E',
 			'fill-rule':'evenodd',
@@ -59,7 +59,7 @@ const UAGB_Block_Icons = {
 	),
 	info_box: el(
 		'svg',
-		{ width: 36, height: 36, viewBox: '0 0 36 36', fill: 'none'  },
+		{ width: 36, height: 36, viewBox: '0 0 36 36', fill: 'none', className: 'uagb-editor-icons'   },
 		el( 'path', {
 			fill: '#411D7E',
 			d:
@@ -73,7 +73,7 @@ const UAGB_Block_Icons = {
 	),
 	post_carousel: el(
 		'svg',
-		{ width: 36, height: 36, viewBox: '0 0 36 36', fill: 'none' },
+		{ width: 36, height: 36, viewBox: '0 0 36 36', fill: 'none', className: 'uagb-editor-icons'  },
 		el( 'path', {
 			fill: '#411D7E',
 			d:
@@ -87,7 +87,7 @@ const UAGB_Block_Icons = {
 	),
 	post_masonry: el(
 		'svg',
-		{ width: 36, height: 32, viewBox: '0 0 36 32', fill: 'none' },
+		{ width: 36, height: 32, viewBox: '0 0 36 32', fill: 'none', className: 'uagb-editor-icons'  },
 		el( 'path', {
 			fill: '#411D7E',
 			d:
@@ -96,7 +96,7 @@ const UAGB_Block_Icons = {
 	),
 	post_grid: el(
 		'svg',
-		{ width: 32, height: 32, viewBox: '0 0 32 32', fill: 'none' },
+		{ width: 32, height: 32, viewBox: '0 0 32 32', fill: 'none', className: 'uagb-editor-icons'  },
 		el( 'path', {
 			fill: '#411D7E',
 			d:
@@ -114,7 +114,7 @@ const UAGB_Block_Icons = {
 	),
 	testimonial: el(
 		'svg',
-		{ width: 36, height: 35, viewBox: '0 0 36 35', fill: 'none' },
+		{ width: 36, height: 35, viewBox: '0 0 36 35', fill: 'none', className: 'uagb-editor-icons'  },
 		el( 'path', {
 			fill: '#411D7E',
 			d:
@@ -128,7 +128,7 @@ const UAGB_Block_Icons = {
 	),
 	cf7_styler: el(
 		'svg',
-		{ width: 20, height: 20 },
+		{ width: 20, height: 20, className: 'uagb-editor-icons'  },
 		el( 'path', {
 			fill: '#411D7E',
 			d:
@@ -162,7 +162,7 @@ const UAGB_Block_Icons = {
 	),
 	gf_styler: el(
 		'svg',
-		{ width: 20, height: 20, viewBox: '0 0 100 100' },
+		{ width: 20, height: 20, viewBox: '0 0 100 100', className: 'uagb-editor-icons'  },
 		el( 'path', {
 			fill: '#411D7E',
 			d:
@@ -186,7 +186,7 @@ const UAGB_Block_Icons = {
 	),
 	content_timeline: el(
 		'svg',
-		{ width: 34, height: 34, viewBox: '0 0 36 36' },
+		{ width: 34, height: 34, viewBox: '0 0 36 36', className: 'uagb-editor-icons'  },
 		el( 'path', { fill: '#411D7E', d: 'M17 1.125C17 0.50368 17.5037 0 18.125 0C18.7463 0 19.25 0.50368 19.25 1.125V34.875C19.25 35.4963 18.7463 36 18.125 36C17.5037 36 17 35.4963 17 34.875V1.125Z' } ),
 		el( 'path', {
 			'fill-rule':'evenodd',
@@ -209,7 +209,7 @@ const UAGB_Block_Icons = {
 	),
 	call_to_action: el(
 		'svg',
-		{ width: 34, height: 34, viewBox: '0 0 36 36' },
+		{ width: 34, height: 34, viewBox: '0 0 36 36', className: 'uagb-editor-icons'  },
 		el( 'path', {
 			fill: '#411D7E',
 			d:
@@ -223,7 +223,7 @@ const UAGB_Block_Icons = {
 	),
 	post_timeline: el(
 		'svg',
-		{ width: 34, height: 34, viewBox: '0 0 36 36' },
+		{ width: 34, height: 34, viewBox: '0 0 36 36', className: 'uagb-editor-icons'  },
 		el( 'path', {
 			'fill': '#411D7E',
 			'fill-rule':'evenodd',
@@ -282,7 +282,7 @@ const UAGB_Block_Icons = {
 	),
 	icon_list: el(
 		'svg',
-		{ width: 32, height: 23, viewBox: '0 0 32 23', fill: 'none' },
+		{ width: 32, height: 23, viewBox: '0 0 32 23', fill: 'none', className: 'uagb-editor-icons'  },
 		el( 'path', {
 			fill: '#411D7E',
 			d:
@@ -291,7 +291,7 @@ const UAGB_Block_Icons = {
 	),
 	icon_list_child: el(
 		'svg',
-		{ width: 20, height: 20 },
+		{ width: 20, height: 20, className: 'uagb-editor-icons'  },
 		el( 'path', {
 			fill: '#411D7E',
 			d:
@@ -325,7 +325,7 @@ const UAGB_Block_Icons = {
 	),
 	team: el(
 		'svg',
-		{ width: 36, height: 27, viewBox: '0 0 36 27' },
+		{ width: 36, height: 27, viewBox: '0 0 36 27', className: 'uagb-editor-icons'  },
 		el( 'path', {
 			fill: '#411D7E',
 			d:
@@ -334,7 +334,7 @@ const UAGB_Block_Icons = {
 	),
 	tabs: el(
 		'svg',
-		{ width: 36, height: 34, viewBox: '0 0 36 36' },
+		{ width: 36, height: 34, viewBox: '0 0 36 36', className: 'uagb-editor-icons'  },
 		el( 'path', {
 			'fill': '#411D7E',
 			'fill-rule':'evenodd',
@@ -345,7 +345,7 @@ const UAGB_Block_Icons = {
 	),
 	social_share: el(
 		'svg',
-		{ width: 36, height: 37, viewBox: '0 0 36 37' },
+		{ width: 36, height: 37, viewBox: '0 0 36 37', className: 'uagb-editor-icons'  },
 		el( 'path', {
 			fill: '#411D7E',
 			d:
@@ -354,7 +354,7 @@ const UAGB_Block_Icons = {
 	),
 	social_share_child: el(
 		'svg',
-		{ width: 20, height: 20 },
+		{ width: 20, height: 20, className: 'uagb-editor-icons'  },
 		el( 'path', {
 			fill: '#411D7E',
 			d:
@@ -363,7 +363,7 @@ const UAGB_Block_Icons = {
 	),
 	restaurant_menu: el(
 		'svg',
-		{ width: 36, height: 36, viewBox: '0 0 36 36', fill: 'none' },
+		{ width: 36, height: 36, viewBox: '0 0 36 36', fill: 'none', className: 'uagb-editor-icons'  },
 		el( 'path', {
 			fill: '#411D7E',
 			d:
@@ -381,7 +381,7 @@ const UAGB_Block_Icons = {
 	),
 	blockquote: el(
 		'svg',
-		{ width: 36, height: 34, viewBox: '0 0 36 34', fill: 'none' },
+		{ width: 36, height: 34, viewBox: '0 0 36 34', fill: 'none', className: 'uagb-editor-icons'  },
 		el( 'path', {
 			fill: '#411D7E',
 			d:
@@ -395,7 +395,7 @@ const UAGB_Block_Icons = {
 	),
 	quote_1: el(
 		'svg',
-		{ width: 20, height: 20 },
+		{ width: 20, height: 20, className: 'uagb-editor-icons'  },
 		el( 'path', {
 			d:
 				'M15.581 10.226h-15.162c-0.233 0-0.419 0.37-0.419 0.826 0 0.458 0.186 0.828 0.419 0.828h15.161c0.233 0 0.419-0.37 0.419-0.828 0.001-0.455-0.186-0.826-0.418-0.826v0z',
@@ -419,7 +419,7 @@ const UAGB_Block_Icons = {
 	),
 	quote_2: el(
 		'svg',
-		{ width: 20, height: 20 },
+		{ width: 20, height: 20, className: 'uagb-editor-icons'  },
 		el( 'path', {
 			d:
 				'M4.599 6.686c-0.39 0.397-0.822 1.149-0.705 2.586 0.068 1.123 0.561 2.799 2.561 4.434 0.096 0.080 0.205 0.115 0.321 0.115 0.153 0 0.306-0.071 0.409-0.214 0.181-0.239 0.135-0.58-0.095-0.766-1.626-1.332-2.066-2.639-2.144-3.531 0.231 0.132 0.488 0.218 0.769 0.218 0.874 0 1.587-0.753 1.587-1.677s-0.711-1.672-1.587-1.672c-0.196 0-0.38 0.054-0.552 0.121l0.003-0.010-0.184 0.085-0.016 0.010-0.006 0.006-0.252 0.181-0.109 0.114z',
@@ -443,7 +443,7 @@ const UAGB_Block_Icons = {
 	),
 	quote_inline_icon: el(
 		'svg',
-		{ width: 20, height: 20, viewBox: '0 0 32 32' },
+		{ width: 20, height: 20, viewBox: '0 0 32 32', className: 'uagb-editor-icons'  },
 		el( 'path', {
 			d:
 				'M7.031 14c3.866 0 7 3.134 7 7s-3.134 7-7 7-7-3.134-7-7l-0.031-1c0-7.732 6.268-14 14-14v4c-2.671 0-5.182 1.040-7.071 2.929-0.364 0.364-0.695 0.751-0.995 1.157 0.357-0.056 0.724-0.086 1.097-0.086zM25.031 14c3.866 0 7 3.134 7 7s-3.134 7-7 7-7-3.134-7-7l-0.031-1c0-7.732 6.268-14 14-14v4c-2.671 0-5.182 1.040-7.071 2.929-0.364 0.364-0.695 0.751-0.995 1.157 0.358-0.056 0.724-0.086 1.097-0.086z',
@@ -451,7 +451,7 @@ const UAGB_Block_Icons = {
 	),
 	quote_tweet_icon: el(
 		'svg',
-		{ width: 20, height: 20, viewBox: '0 0 512 512' },
+		{ width: 20, height: 20, viewBox: '0 0 512 512', className: 'uagb-editor-icons'  },
 		el( 'path', {
 			d:
 				'M459.37 151.716c.325 4.548.325 9.097.325 13.645 0 138.72-105.583 298.558-298.558 298.558-59.452 0-114.68-17.219-161.137-47.106 8.447.974 16.568 1.299 25.34 1.299 49.055 0 94.213-16.568 130.274-44.832-46.132-.975-84.792-31.188-98.112-72.772 6.498.974 12.995 1.624 19.818 1.624 9.421 0 18.843-1.3 27.614-3.573-48.081-9.747-84.143-51.98-84.143-102.985v-1.299c13.969 7.797 30.214 12.67 47.431 13.319-28.264-18.843-46.781-51.005-46.781-87.391 0-19.492 5.197-37.36 14.294-52.954 51.655 63.675 129.3 105.258 216.365 109.807-1.624-7.797-2.599-15.918-2.599-24.04 0-57.828 46.782-104.934 104.934-104.934 30.213 0 57.502 12.67 76.67 33.137 23.715-4.548 46.456-13.32 66.599-25.34-7.798 24.366-24.366 44.833-46.132 57.827 21.117-2.273 41.584-8.122 60.426-16.243-14.292 20.791-32.161 39.308-52.628 54.253z',
@@ -459,7 +459,7 @@ const UAGB_Block_Icons = {
 	),
 	at_the_rate: el(
 		'svg',
-		{ width: 30, height: 30 },
+		{ width: 30, height: 30, className: 'uagb-editor-icons'  },
 		el( 'path', {
 			d:
 				'M5.605 17.2c0-2.131 0.499-4.074 1.499-5.829 1-1.754 2.395-3.136 4.19-4.15 1.794-1.013 3.81-1.52 6.046-1.52 2.712 0 4.901 0.773 6.562 2.323 1.662 1.549 2.493 3.589 2.493 6.118 0 2.051-0.542 3.786-1.626 5.202-1.088 1.418-2.304 2.125-3.656 2.125-0.781 0-1.355-0.232-1.717-0.696-0.365-0.462-0.533-1.037-0.506-1.726-1.006 1.614-2.378 2.422-4.11 2.422-1.39 0-2.507-0.539-3.347-1.619-0.842-1.077-1.142-2.442-0.904-4.088 0.237-1.65 0.946-2.982 2.125-4.002 1.179-1.021 2.509-1.53 3.992-1.53s2.638 0.518 3.467 1.558c0.829 1.040 1.122 2.322 0.883 3.843l-0.494 3.2c-0.094 0.739 0.165 1.11 0.77 1.11 0.77 0 1.502-0.56 2.205-1.678 0.701-1.12 1.054-2.493 1.054-4.122 0-2.106-0.656-3.787-1.966-5.046-1.312-1.258-3.133-1.886-5.462-1.886-2.794 0-5.098 0.96-6.91 2.88-1.814 1.92-2.722 4.29-2.722 7.109 0 2.382 0.738 4.227 2.214 5.533 1.477 1.302 3.459 1.989 5.947 2.056l-0.376 1.509c-2.862-0.069-5.184-0.899-6.971-2.494-1.787-1.594-2.68-3.794-2.68-6.602zM19.15 15.85c0.17-1.15-0.014-2.118-0.558-2.899-0.542-0.781-1.28-1.173-2.214-1.173-0.933 0-1.79 0.392-2.571 1.173s-1.259 1.749-1.43 2.899c-0.171 1.152 0.013 2.122 0.557 2.91 0.542 0.787 1.282 1.181 2.214 1.181s1.79-0.394 2.573-1.181c0.781-0.789 1.256-1.758 1.43-2.91z',
@@ -467,7 +467,7 @@ const UAGB_Block_Icons = {
 	),
 	columns: el(
 		'svg',
-		{ width: 36, height: 36, viewBox: '0 0 36 36', fill: 'none' },
+		{ width: 36, height: 36, viewBox: '0 0 36 36', fill: 'none', className: 'uagb-editor-icons'  },
 		el( 'path', {
 			fill: '#411D7E',
 			d:
@@ -476,7 +476,7 @@ const UAGB_Block_Icons = {
 	),
 	column: el(
 		'svg',
-		{ width: 20, height: 20 },
+		{ width: 20, height: 20, className: 'uagb-editor-icons'  },
 		el( 'path', {
 			fill: '#411D7E',
 			d:
@@ -495,7 +495,7 @@ const UAGB_Block_Icons = {
 	),
 	top_align: el(
 		'svg',
-		{ width: 20, height: 20 },
+		{ width: 20, height: 20, className: 'uagb-editor-icons'  },
 		el( 'path', {
 			d:
 				'M1.5 0.438v2.125h17v-2.125h-17zM5.75 8.938h3.188v10.625h2.125v-10.625h3.187l-4.25-4.25-4.25 4.25z',
@@ -503,7 +503,7 @@ const UAGB_Block_Icons = {
 	),
 	middle_align: el(
 		'svg',
-		{ width: 20, height: 20 },
+		{ width: 20, height: 20, className: 'uagb-editor-icons'  },
 		el( 'path', { d: 'M18.5 11.063v-2.125h-17v2.125h17z' } ),
 		el( 'path', {
 			d:
@@ -516,7 +516,7 @@ const UAGB_Block_Icons = {
 	),
 	bottom_align: el(
 		'svg',
-		{ width: 20, height: 20 },
+		{ width: 20, height: 20, className: 'uagb-editor-icons'  },
 		el( 'path', {
 			d:
 				'M18.5 20v-2.125h-17v2.125h17zM14.25 11.5h-3.187v-10.625h-2.125v10.625h-3.188l4.25 4.25 4.25-4.25z',
@@ -524,7 +524,7 @@ const UAGB_Block_Icons = {
 	),
 	carousel_left: el(
 		'svg',
-		{ width: 20, height: 20, viewBox: '0 0 256 512' },
+		{ width: 20, height: 20, viewBox: '0 0 256 512', className: 'uagb-editor-icons'  },
 		el( 'path', {
 			d:
 				'M31.7 239l136-136c9.4-9.4 24.6-9.4 33.9 0l22.6 22.6c9.4 9.4 9.4 24.6 0 33.9L127.9 256l96.4 96.4c9.4 9.4 9.4 24.6 0 33.9L201.7 409c-9.4 9.4-24.6 9.4-33.9 0l-136-136c-9.5-9.4-9.5-24.6-.1-34z',
@@ -532,7 +532,7 @@ const UAGB_Block_Icons = {
 	),
 	carousel_right: el(
 		'svg',
-		{ width: 20, height: 20, viewBox: '0 0 256 512' },
+		{ width: 20, height: 20, viewBox: '0 0 256 512', className: 'uagb-editor-icons'  },
 		el( 'path', {
 			d:
 				'M224.3 273l-136 136c-9.4 9.4-24.6 9.4-33.9 0l-22.6-22.6c-9.4-9.4-9.4-24.6 0-33.9l96.4-96.4-96.4-96.4c-9.4-9.4-9.4-24.6 0-33.9L54.3 103c9.4-9.4 24.6-9.4 33.9 0l136 136c9.5 9.4 9.5 24.6.1 34z',
@@ -540,7 +540,7 @@ const UAGB_Block_Icons = {
 	),
 	top_margin: el(
 		'svg',
-		{ width: 20, height: 20 },
+		{ width: 20, height: 20, className: 'uagb-editor-icons'  },
 		el( 'path', {
 			fill: '#999',
 			d:
@@ -554,7 +554,7 @@ const UAGB_Block_Icons = {
 	),
 	bottom_margin: el(
 		'svg',
-		{ width: 20, height: 20 },
+		{ width: 20, height: 20, className: 'uagb-editor-icons'  },
 		el( 'path', {
 			fill: '#999',
 			d:
@@ -568,7 +568,7 @@ const UAGB_Block_Icons = {
 	),
 	left_margin: el(
 		'svg',
-		{ width: 20, height: 20 },
+		{ width: 20, height: 20, className: 'uagb-editor-icons'  },
 		el( 'path', {
 			fill: '#999',
 			d:
@@ -582,7 +582,7 @@ const UAGB_Block_Icons = {
 	),
 	right_margin: el(
 		'svg',
-		{ width: 20, height: 20 },
+		{ width: 20, height: 20, className: 'uagb-editor-icons'  },
 		el( 'path', {
 			fill: '#999',
 			d:
@@ -596,7 +596,7 @@ const UAGB_Block_Icons = {
 	),
 	vertical_spacing: el(
 		'svg',
-		{ width: 20, height: 20 },
+		{ width: 20, height: 20, className: 'uagb-editor-icons'  },
 		el( 'path', {
 			fill: '#999',
 			d:
@@ -615,7 +615,7 @@ const UAGB_Block_Icons = {
 	),
 	horizontal_spacing: el(
 		'svg',
-		{ width: 20, height: 20 },
+		{ width: 20, height: 20, className: 'uagb-editor-icons'  },
 		el( 'path', {
 			fill: '#999',
 			d:
@@ -634,7 +634,7 @@ const UAGB_Block_Icons = {
 	),
 	logo: el(
 		'svg',
-		{ width: 20, height: 20, viewBox: '0 0 85 85' },
+		{ width: 20, height: 20, viewBox: '0 0 85 85', className: 'uagb-editor-icons'  },
 		el( 'path', {
 			d:
 			'M41.7849 0C33.5206 0 25.4419 2.49258 18.5705 7.16254C11.699 11.8325 6.34331 18.4701 3.18071 26.236C0.0181112 34.0018 -0.809377 42.5471 0.802901 50.7913C2.41518 59.0355 6.3948 66.6083 12.2385 72.552C18.0822 78.4958 25.5276 82.5435 33.633 84.1834C41.7385 85.8232 50.1401 84.9816 57.7753 81.7649C65.4105 78.5482 71.9363 73.1008 76.5277 66.1117C81.1191 59.1226 83.5697 50.9057 83.5697 42.5C83.565 31.2298 79.1612 20.4225 71.326 12.4533C63.4908 4.48402 52.8655 0.0048112 41.7849 0ZM57.5278 49.0175C57.5278 49.1264 57.5278 49.2354 57.5278 49.3443V49.6529V49.8526C57.3161 51.0856 56.8673 52.2639 56.207 53.3201L55.8143 53.8829L55.2431 54.5546C55.0482 54.8082 54.8268 55.0396 54.5827 55.2445V55.3353L54.4578 55.4261L54.2079 55.6258C54.1249 55.7007 54.0353 55.7675 53.9402 55.8255L53.6724 56.0071L34.3061 69.0602C34.1479 69.1683 33.9612 69.2253 33.7706 69.2236H33.5743C33.447 69.1967 33.3262 69.1443 33.2189 69.0695C33.1117 68.9947 33.0201 68.899 32.9495 68.7879C32.9495 68.7879 32.5033 67.9891 32.4676 67.9347V67.7531V67.6623V67.5534V67.4263V67.2811C31.7014 65.262 31.6378 63.0371 32.2872 60.9761C32.9366 58.9152 34.2601 57.1424 36.0375 55.9526L45.0691 49.8708C45.2101 49.7754 45.3201 49.6398 45.3853 49.4809C45.4505 49.322 45.4679 49.147 45.4355 48.9781C45.403 48.8091 45.3221 48.6537 45.2029 48.5315C45.0837 48.4093 44.9316 48.3257 44.7657 48.2913L34.1633 46.1128H33.8599H33.7706H33.485H33.1816H33.0567H32.896H32.8068L32.5212 46.0038H32.4319H32.2534L31.9679 45.8586L31.6823 45.7134L31.4145 45.55L31.1468 45.3866C30.3041 44.8521 29.5509 44.1841 28.9156 43.4077L28.6836 43.0809L28.4159 42.6634C27.73 41.6278 27.255 40.4629 27.0189 39.2375C26.7828 38.012 26.7905 36.751 27.0415 35.5286C27.228 34.6884 27.5221 33.8766 27.9161 33.1141C28.0232 32.9144 28.1124 32.7328 28.2195 32.5694L28.3802 32.3153C28.4948 32.1207 28.6199 31.9329 28.755 31.7525L28.9156 31.5528L29.112 31.3167L29.3083 31.0989L29.4333 30.9718L29.6475 30.754L29.8259 30.5906L30.0223 30.4272L30.2365 30.2456H30.3257L30.4685 30.1185H30.5578L30.7898 29.9551L50.049 16.9746C50.1725 16.8912 50.3113 16.8338 50.457 16.806C50.6027 16.7782 50.7524 16.7804 50.8973 16.8126C51.0421 16.8448 51.1791 16.9062 51.3002 16.9933C51.4212 17.0804 51.5238 17.1913 51.6019 17.3195L51.7626 17.5918L51.8875 17.846C51.8875 17.9368 51.9768 18.0094 52.0125 18.082C52.0125 18.082 52.0125 18.082 52.0125 18.191C52.0239 18.2325 52.0239 18.2765 52.0125 18.318L52.1195 18.5904C52.1292 18.6383 52.1292 18.6877 52.1195 18.7356C52.1195 18.7356 52.1195 18.7356 52.1195 18.8445C52.8288 20.8305 52.8625 23.0011 52.2153 25.0089C51.5681 27.0166 50.2774 28.7455 48.5497 29.9188L39.6251 35.9462C39.4842 36.0415 39.3742 36.1772 39.309 36.3361C39.2438 36.495 39.2263 36.6699 39.2588 36.8389C39.2912 37.0078 39.3722 37.1632 39.4914 37.2854C39.6106 37.4077 39.7627 37.4912 39.9286 37.5256L50.4417 39.686C52.5458 40.1281 54.4361 41.2935 55.7948 42.9862C57.1536 44.679 57.8979 46.796 57.9027 48.9812C57.5635 48.4003 57.5278 48.9812 57.5278 48.9812V49.0175Z" fill="url(#paint0_linear_619_170)'
@@ -642,7 +642,7 @@ const UAGB_Block_Icons = {
 	),
 	marketing_button: el(
 		'svg',
-		{ width: 36, height: 32, viewBox: '0 0 36 32', fill: 'none' },
+		{ width: 36, height: 32, viewBox: '0 0 36 32', fill: 'none', className: 'uagb-editor-icons'  },
 		el( 'path', {
 			fill: '#411D7E',
 			d:
@@ -651,7 +651,7 @@ const UAGB_Block_Icons = {
 	),
 	table_of_contents: el(
 		'svg',
-		{ width: 36, height: 36, viewBox: '0 0 36 36', fill: 'none' },
+		{ width: 36, height: 36, viewBox: '0 0 36 36', fill: 'none', className: 'uagb-editor-icons'  },
 		el( 'path', {
 			fill: '#411D7E',
 			d:
@@ -665,7 +665,7 @@ const UAGB_Block_Icons = {
 	),
 	faq: el(
 		'svg',
-		{ width: 36, height: 36, viewBox: '0 0 36 36' },
+		{ width: 36, height: 36, viewBox: '0 0 36 36', className: 'uagb-editor-icons'  },
 		el( 'path', {
 			fill: '#411D7E',
 			d:
@@ -679,7 +679,7 @@ const UAGB_Block_Icons = {
 	),
 	forms: el(
 		'svg',
-		{ width: 32, height: 36, viewBox: '0 0 36 36' },
+		{ width: 32, height: 36, viewBox: '0 0 36 36', className: 'uagb-editor-icons'  },
 		el( 'path', {
 			fill: '#411D7E',
 			d:
@@ -705,7 +705,7 @@ const UAGB_Block_Icons = {
 	),
 	how_to: el(
 		'svg',
-		{ width: 34, height: 36, viewBox: '0 0 34 38' },
+		{ width: 34, height: 36, viewBox: '0 0 34 38', className: 'uagb-editor-icons'  },
 		el( 'path', {
 			'fill': '#411D7E',
 			'fill-rule':'evenodd',
@@ -751,7 +751,7 @@ const UAGB_Block_Icons = {
 	),
 	inline_notice: el(
 		'svg',
-		{ width: 36, height: 36, viewBox: '0 0 36 36' },
+		{ width: 36, height: 36, viewBox: '0 0 36 36', className: 'uagb-editor-icons'  },
 		el( 'path', {
 			fill: '#411D7E',
 			d:
@@ -765,7 +765,7 @@ const UAGB_Block_Icons = {
 	),
 	wp_search: el(
 		'svg',
-		{ width: 36, height: 36, viewBox: '0 0 36 36' },
+		{ width: 36, height: 36, viewBox: '0 0 36 36', className: 'uagb-editor-icons'  },
 		el( 'path', {
 			fill: '#411D7E',
 			d:
@@ -774,7 +774,7 @@ const UAGB_Block_Icons = {
 	),
 	taxonomy_list: el(
 		'svg',
-		{ width: 36, height: 27, viewBox: '0 0 36 27' },
+		{ width: 36, height: 27, viewBox: '0 0 36 27', className: 'uagb-editor-icons'  },
 		el( 'path', {
 			fill: '#411D7E',
 			d:
@@ -783,7 +783,7 @@ const UAGB_Block_Icons = {
 	),
 	review: el(
 		'svg',
-		{ width: 27, height: 36, viewBox: '0 0 27 36' },
+		{ width: 27, height: 36, viewBox: '0 0 27 36', className: 'uagb-editor-icons'  },
 		el( 'path', {
 			fill: '#411D7E',
 			d:
@@ -797,7 +797,7 @@ const UAGB_Block_Icons = {
 	),
 	lottie: el(
 		'svg',
-		{ width: 32, height: 32, viewBox: '0 0 36 36' },
+		{ width: 32, height: 32, viewBox: '0 0 36 36', className: 'uagb-editor-icons'  },
 		el( 'path', {
 			fill: '#411D7E',
 			d: 'M8.99994 28.675C11.6077 28.675 13.6225 27.2396 15.2324 25.378C16.8304 23.5304 18.1693 21.1016 19.4086 18.8088L19.6249 18.4084C20.8126 16.2085 21.9175 14.1619 23.1395 12.6206C24.4369 10.9841 25.6659 10.175 27 10.175C27.6489 10.175 28.175 9.64894 28.1749 9.00001C28.1749 8.35107 27.6489 7.82501 26.9999 7.82501C24.584 7.82502 22.7505 9.32846 21.298 11.1607C19.9416 12.8715 18.7427 15.094 17.5901 17.2303L17.3413 17.6913C16.0806 20.0235 14.857 22.2197 13.455 23.8408C12.0649 25.448 10.6422 26.325 8.99996 26.325C8.35102 26.325 7.82496 26.8511 7.82495 27.5C7.82495 28.1489 8.35101 28.675 8.99994 28.675Z',
@@ -809,7 +809,7 @@ const UAGB_Block_Icons = {
 	),
 	accept: el(
 		'svg',
-		{ width: 20, height: 20, role: 'img', viewBox: '0 0 1000 1000' },
+		{ width: 20, height: 20, role: 'img', viewBox: '0 0 1000 1000', className: 'uagb-editor-icons'  },
 		el( 'path', {
 			fill: '#411D7E',
 			d:
@@ -856,7 +856,7 @@ const UAGB_Block_Icons = {
 	),
 	checkbox: el(
 		'svg',
-		{ width: 20, height: 20, role: 'img', viewBox: '0 0 1000 1000' },
+		{ width: 20, height: 20, role: 'img', viewBox: '0 0 1000 1000', className: 'uagb-editor-icons'  },
 		el( 'path', {
 			fill: '#411D7E',
 			d:
@@ -870,7 +870,7 @@ const UAGB_Block_Icons = {
 	),
 	datepicker: el(
 		'svg',
-		{ width: 20, height: 20, role: 'img', viewBox: '0 0 1000 1000' },
+		{ width: 20, height: 20, role: 'img', viewBox: '0 0 1000 1000', className: 'uagb-editor-icons'  },
 		el( 'path', {
 			fill: '#411D7E',
 			d:
@@ -884,7 +884,7 @@ const UAGB_Block_Icons = {
 	),
 	email: el(
 		'svg',
-		{ width: 20, height: 20, role: 'img', viewBox: '0 0 32 32' },
+		{ width: 20, height: 20, role: 'img', viewBox: '0 0 32 32', className: 'uagb-editor-icons'  },
 		el( 'path', {
 			fill: '#411D7E',
 			d:
@@ -898,7 +898,7 @@ const UAGB_Block_Icons = {
 	),
 	hidden: el(
 		'svg',
-		{ width: 20, height: 20, role: 'img', viewBox: '0 0 32 32' },
+		{ width: 20, height: 20, role: 'img', viewBox: '0 0 32 32', className: 'uagb-editor-icons'  },
 		el( 'path', {
 			fill: '#411D7E',
 			d:
@@ -927,7 +927,7 @@ const UAGB_Block_Icons = {
 	),
 	name: el(
 		'svg',
-		{ width: 20, height: 20, role: 'img', viewBox: '0 0 1000 1000' },
+		{ width: 20, height: 20, role: 'img', viewBox: '0 0 1000 1000', className: 'uagb-editor-icons'  },
 		el( 'path', {
 			fill: '#411D7E',
 			d: 'M962.4,154.4v512.4H897V154.4H962.4z',
@@ -959,7 +959,7 @@ const UAGB_Block_Icons = {
 	),
 	phone: el(
 		'svg',
-		{ width: 20, height: 20, role: 'img', viewBox: '0 0 1000 1000' },
+		{ width: 20, height: 20, role: 'img', viewBox: '0 0 1000 1000', className: 'uagb-editor-icons'  },
 		el( 'path', {
 			fill: '#411D7E',
 			d:
@@ -978,7 +978,7 @@ const UAGB_Block_Icons = {
 	),
 	radio: el(
 		'svg',
-		{ width: 20, height: 20, role: 'img', viewBox: '0 0 32 32' },
+		{ width: 20, height: 20, role: 'img', viewBox: '0 0 32 32', className: 'uagb-editor-icons'  },
 		el( 'path', {
 			fill: '#411D7E',
 			d:
@@ -1013,7 +1013,7 @@ const UAGB_Block_Icons = {
 	),
 	select: el(
 		'svg',
-		{ width: 20, height: 20, role: 'img', viewBox: '0 0 1000 1000' },
+		{ width: 20, height: 20, role: 'img', viewBox: '0 0 1000 1000', className: 'uagb-editor-icons'  },
 		el( 'path', {
 			fill: '#411D7E',
 			d:
@@ -1032,7 +1032,7 @@ const UAGB_Block_Icons = {
 	),
 	textarea: el(
 		'svg',
-		{ width: 20, height: 20, role: 'img', viewBox: '0 0 32 32' },
+		{ width: 20, height: 20, role: 'img', viewBox: '0 0 32 32', className: 'uagb-editor-icons'  },
 		el( 'path', {
 			fill: '#411D7E',
 			d:
@@ -1046,7 +1046,7 @@ const UAGB_Block_Icons = {
 	),
 	toggle: el(
 		'svg',
-		{ width: 20, height: 20, role: 'img', viewBox: '0 0 1000 1000' },
+		{ width: 20, height: 20, role: 'img', viewBox: '0 0 1000 1000', className: 'uagb-editor-icons'  },
 		el( 'path', {
 			fill: '#411D7E',
 			d:
@@ -1060,7 +1060,7 @@ const UAGB_Block_Icons = {
 	),
 	url: el(
 		'svg',
-		{ width: 20, height: 20, role: 'img', viewBox: '0 0 1000 1000' },
+		{ width: 20, height: 20, role: 'img', viewBox: '0 0 1000 1000', className: 'uagb-editor-icons'  },
 		el( 'path', {
 			fill: '#411D7E',
 			d:
@@ -1094,7 +1094,7 @@ const UAGB_Block_Icons = {
 	),
 	form1: el(
 		'svg',
-		{ width: 20, height: 20, role: 'img', viewBox: '0 0 58 58' },
+		{ width: 20, height: 20, role: 'img', viewBox: '0 0 58 58', className: 'uagb-editor-icons'  },
 		el( 'path', {
 			fill: '#411D7E',
 			d:
@@ -1114,7 +1114,7 @@ const UAGB_Block_Icons = {
 	),
 	form2: el(
 		'svg',
-		{ width: 20, height: 20, role: 'img', viewBox: '0 0 58 58' },
+		{ width: 20, height: 20, role: 'img', viewBox: '0 0 58 58', className: 'uagb-editor-icons'  },
 		el( 'path', {
 			fill: '#411D7E',
 			d:
@@ -1131,7 +1131,7 @@ const UAGB_Block_Icons = {
 	),
 	form3: el(
 		'svg',
-		{ width: 20, height: 20, role: 'img', viewBox: '0 0 58 58' },
+		{ width: 20, height: 20, role: 'img', viewBox: '0 0 58 58', className: 'uagb-editor-icons'  },
 		el( 'path', { fill: '#411D7E', d: 'M41.5,46.1h-27v-3.4h27V46.1z' } ),
 		el( 'path', {
 			fill: '#411D7E',
@@ -1151,7 +1151,7 @@ const UAGB_Block_Icons = {
 	),
 	star_rating: el(
 		'svg',
-		{ width: 36, height: 34, viewBox: '0 0 36 34' },
+		{ width: 36, height: 34, viewBox: '0 0 36 34', className: 'uagb-editor-icons'  },
 		el( 'path', {
 			fill: '#411D7E',
 			d:
@@ -1160,7 +1160,7 @@ const UAGB_Block_Icons = {
 	),
 	container: el(
 		'svg',
-		{ width: 34, height: 34, viewBox: '0 0 36 36' },
+		{ width: 34, height: 34, viewBox: '0 0 36 36', className: 'uagb-editor-icons'  },
 		el( 'path', {
 			fill: '#411D7E',
 			d:

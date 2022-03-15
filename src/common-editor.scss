@@ -669,19 +669,20 @@ button.components-button.uagb-review-select-btn.is-secondary {
 }
 
 /* Block icons white when block is selected in list view. */
-.block-editor-list-view-leaf.is-selected .block-editor-list-view-block-contents svg {
+.block-editor-list-view-leaf.is-selected .block-editor-list-view-block-contents svg.uagb-editor-icons {
 	stroke: #fff;
+
 	> path {
 		fill: #fff;
 	}
 }
 
 /* Block icons white when toggle is set to select from tools. */
-.block-editor-block-list__block-selection-button .block-editor-block-icon.has-colors svg {
+.block-editor-block-list__block-selection-button .block-editor-block-icon.has-colors svg.uagb-editor-icons {
 	stroke: #fff;
+
 	> path {
 		fill: #fff;
 	}
 }
-
 
