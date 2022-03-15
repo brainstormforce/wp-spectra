@@ -21,5 +21,8 @@ const attributes = {
 			'ultimate-addons-for-gutenberg'
 		),
 	},
+	selectPhoneCode: {
+		type: 'string'
+	},
 };
 export default attributes;

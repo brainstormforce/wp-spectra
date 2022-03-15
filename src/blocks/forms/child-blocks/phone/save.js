@@ -13,7 +13,7 @@ import { RichText } from '@wordpress/block-editor';
 export default function save( props ) {
 	const { attributes } = props;
 
-	const { block_id, phoneRequired, phoneName, pattern } = attributes;
+	const { block_id, phoneRequired, phoneName, pattern, selectPhoneCode } = attributes;
 
 	let placeholder = '';
 	if ( pattern === '[0-9]{3}-[0-9]{2}-[0-9]{3}' ) {
@@ -45,9 +45,18 @@ export default function save( props ) {
 		);
 	}
 
+	const options = countryOptions.map( ( o, index ) => {
+		if( o.props.value === selectPhoneCode ){
+			return <option value={ o.props.value } key={ index }>
+						{ o.props.children }
+					</option>
+		}
+	} )
+
 	const isRequired = phoneRequired
 		? __( 'required', 'ultimate-addons-for-gutenberg' )
 		: '';
+
 	return (
 		<div
 			className={ classnames(
@@ -68,11 +77,7 @@ export default function save( props ) {
 				id={ `uagb-form-country-${ block_id }` }
 				name={ `${ phoneName }[]` }
 			>
-				{ countryOptions.map( ( o, index ) => (
-					<option value={ o.props.value } key={ index }>
-						{ o.props.children }
-					</option>
-				) ) }
+				{ options }
 			</select>
 			{ phone_html }
 		</div>
