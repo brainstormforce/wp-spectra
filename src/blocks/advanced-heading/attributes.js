@@ -277,7 +277,7 @@ const attributes = {
 	separatorHoverColor: {
 		type: 'string',
 		UAGCopyPaste: {
-			styleType: 'separator-color'
+			styleType: 'separator-hover-color'
 		}
 	},
 };

@@ -231,7 +231,7 @@ const attributes = {
 	imageSize: {
 		type: 'number',
 		UAGCopyPaste: {
-			styleType: 'image-size'
+			styleType: 'custom-image-size'
 		},
 		default: 100, //range: 0-200
 	},

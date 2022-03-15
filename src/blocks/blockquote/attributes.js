@@ -236,7 +236,7 @@ const attributes = {
 		type: 'string',
 		default: 'thumbnail',
 		UAGCopyPaste: {
-			styleType: 'author-image-size'
+			styleType: 'image-size'
 		}
 	},
 	authorImageWidth: {
