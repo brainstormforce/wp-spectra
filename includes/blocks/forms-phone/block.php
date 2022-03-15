@@ -15,5 +15,5 @@ $block_data = array(
 	'description' => __( 'This block helps to add Phone field.', 'ultimate-addons-for-gutenberg' ),
 	'default'     => true,
 	'is_child'    => true,
-	'selectPhoneCode' => ''
+	'selectPhoneCode' => '+44'
 );

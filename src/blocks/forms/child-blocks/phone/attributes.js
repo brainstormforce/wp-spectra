@@ -22,7 +22,8 @@ const attributes = {
 		),
 	},
 	selectPhoneCode: {
-		type: 'string'
+		type: 'string',
+		default: '+44'
 	},
 };
 export default attributes;

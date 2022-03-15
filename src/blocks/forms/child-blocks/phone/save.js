@@ -45,14 +45,6 @@ export default function save( props ) {
 		);
 	}
 
-	const options = countryOptions.map( ( o, index ) => {
-		if( o.props.value === selectPhoneCode ){
-			return <option value={ o.props.value } key={ index }>
-						{ o.props.children }
-					</option>
-		}
-	} )
-
 	const isRequired = phoneRequired
 		? __( 'required', 'ultimate-addons-for-gutenberg' )
 		: '';
@@ -77,7 +69,20 @@ export default function save( props ) {
 				id={ `uagb-form-country-${ block_id }` }
 				name={ `${ phoneName }[]` }
 			>
-				{ options }
+				{ countryOptions.map( ( o, index ) => (
+					<>
+					{ o.props.value == selectPhoneCode &&
+					<option value={ o.props.value } key={ index } selected>
+						{ o.props.children }
+					</option>
+					}
+					{ o.props.value !== selectPhoneCode &&
+						<option value={ o.props.value } key={ index } >
+							{ o.props.children }
+						</option>
+					}
+					</>
+				) ) }
 			</select>
 			{ phone_html }
 		</div>
