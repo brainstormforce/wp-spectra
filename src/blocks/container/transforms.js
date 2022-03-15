@@ -276,19 +276,18 @@ const transforms = {
 
 				if ( 'full' === align ) {
 
-					innerContainerCustomWidth = ('custom' === contentWidth && 'px' === widthType ) ? width : 1200;
+					innerContainerCustomWidth = ( 'custom' === contentWidth && 'px' === widthType ) ? width : 1200;
 
-					innerContentWidth = ('custom' === contentWidth && 'px' === widthType ) ? 'alignwide' : 'alignfull';
+					innerContentWidth = ( 'custom' === contentWidth && 'px' === widthType ) ? 'alignwide' : 'alignfull';
 				}
 
 				const innerBlocksTemplate = [];
 				const containerChildWidth = ( 100 / columns );
-
+				/* eslint-disable no-shadow */
 				innerBlocks.map( ( child ) => {
 					const {
 						backgroundType,
 						backgroundColor,
-						contentWidth,
 						borderRadius,
 						topPaddingTablet,
 						bottomPaddingTablet,
@@ -323,7 +322,7 @@ const transforms = {
 					} = child?.attributes;
 
 					const width = colWidth ? colWidth : containerChildWidth;
-
+					/* eslint-enable no-shadow */
 					innerBlocksTemplate.push( [
 						'uagb/container',
 						{
