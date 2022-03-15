@@ -412,7 +412,7 @@ const Settings = ( props ) => {
 						/>
 						<Range
 							label={ __(
-								'Arrow Border Size',
+								'Arrow Border Size(px)',
 								'ultimate-addons-for-gutenberg'
 							) }
 							setAttributes={ setAttributes }
@@ -426,7 +426,7 @@ const Settings = ( props ) => {
 						/>
 						<Range
 							label={ __(
-								'Arrow Border Radius',
+								'Arrow Border Radius(px)',
 								'ultimate-addons-for-gutenberg'
 							) }
 							setAttributes={ setAttributes }
@@ -512,7 +512,7 @@ const Settings = ( props ) => {
 		);
 	};
 	const backgroundStyle = () => {
-		
+
 		return (
 			<UAGAdvancedPanelBody
 				title={ __( 'Background', 'ultimate-addons-for-gutenberg' ) }

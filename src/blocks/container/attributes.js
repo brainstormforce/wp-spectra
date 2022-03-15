@@ -2,6 +2,10 @@ const attributes = {
 	block_id: {
 		type: 'string',
 	},
+	contentWidth: {
+		type: 'string',
+		default: 'alignwide',
+	},
 	widthDesktop: {
 		type: 'number',
 		default: 100,
@@ -34,15 +38,15 @@ const attributes = {
 	},
 	directionDesktop: {
 		type: 'string',
-		default: 'row',
+		default: 'column',
 	},
 	directionTablet: {
 		type: 'string',
-		default: 'row',
+		default: 'column',
 	},
 	directionMobile: {
 		type: 'string',
-		default: 'row',
+		default: 'column',
 	},
 	alignItemsDesktop: {
 		type: 'string',
@@ -169,20 +173,16 @@ const attributes = {
 	},
 
 	topPaddingDesktop: {
-		type: 'number',
-		default: 20,
+		type: 'number'
 	},
 	bottomPaddingDesktop: {
-		type: 'number',
-		default: 20,
+		type: 'number'
 	},
 	leftPaddingDesktop: {
-		type: 'number',
-		default: 20,
+		type: 'number'
 	},
 	rightPaddingDesktop: {
-		type: 'number',
-		default: 20,
+		type: 'number'
 	},
 	topPaddingTablet: {
 		type: 'number',
@@ -214,7 +214,7 @@ const attributes = {
 	},
 	paddingLink: {
 		type: 'boolean',
-		default: false,
+		default: true,
 	},
 
 	topMarginDesktop: {
@@ -259,7 +259,7 @@ const attributes = {
 	},
 	marginLink: {
 		type: 'boolean',
-		default: false,
+		default: true,
 	},
 	variationSelected: {
 		type: 'boolean',
@@ -267,6 +267,7 @@ const attributes = {
 	},
 	rowGapDesktop: {
 		type: 'number',
+		default: 20
 	},
 	rowGapTablet: {
 		type: 'number',
@@ -280,6 +281,7 @@ const attributes = {
 	},
 	columnGapDesktop: {
 		type: 'number',
+		default: 20
 	},
 	columnGapTablet: {
 		type: 'number',
@@ -291,6 +293,10 @@ const attributes = {
 		type: 'string',
 		default: 'px',
 	},
+	isBlockRootParent: {
+		type: 'boolean',
+		default: false,
+	}
 };
 
 export default attributes;
