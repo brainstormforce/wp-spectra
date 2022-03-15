@@ -10,14 +10,14 @@ const attributes = {
 		type: 'string',
 		default: 'center',
 		UAGCopyPaste: {
-			styleType: 'btn-align'
+			styleType: 'overall-alignment'
 		}
 	},
 	textAlign: {
 		type: 'string',
 		default: 'center',
 		UAGCopyPaste: {
-			styleType: 'btn-text-align'
+			styleType: 'main-title-align'
 		}
 	},
 	link: {
@@ -32,7 +32,7 @@ const attributes = {
 		type: 'number',
 		default: 0,
 		UAGCopyPaste: {
-			styleType: 'btn-title-space'
+			styleType: 'main-title-bottom-margin'
 		}
 	},
 
@@ -198,26 +198,26 @@ const attributes = {
 		type: 'string',
 		default: '#333',
 		UAGCopyPaste: {
-			styleType: 'btn-color'
+			styleType: 'main-title-color'
 		}
 	},
 	titleHoverColor: {
 		type: 'string',
 		UAGCopyPaste: {
-			styleType: 'btn-hover-color'
+			styleType: 'main-title-hover-color'
 		}
 	},
 	iconColor: {
 		type: 'string',
 		default: '#333',
 		UAGCopyPaste: {
-			styleType: 'btn-icon-color'
+			styleType: 'icon-color'
 		}
 	},
 	iconHoverColor: {
 		type: 'string',
 		UAGCopyPaste: {
-			styleType: 'btn-icon-hover-color'
+			styleType: 'icon-hover-color'
 		}
 	},
 	prefixColor: {
@@ -269,54 +269,54 @@ const attributes = {
 		type: 'boolean',
 		default: false,
 		UAGCopyPaste: {
-			styleType: 'btn-load-google-fonts'
+			styleType: 'main-title-load-google-fonts'
 		}
 	},
 	titleFontFamily: {
 		type: 'string',
 		UAGCopyPaste: {
-			styleType: 'btn-font-family'
+			styleType: 'main-title-font-family'
 		},
 		default: 'Default',
 	},
 	titleFontWeight: {
 		type: 'string',
 		UAGCopyPaste: {
-			styleType: 'btn-font-weight'
+			styleType: 'main-title-font-weight'
 		}
 	},
 	titleFontStyle: {
 		type: 'string',
 		UAGCopyPaste: {
-			styleType: 'btn-font-style'
+			styleType: 'main-title-font-style'
 		}
 	},
 	// Title Font Size
 	titleFontSize: {
 		type: 'number',
 		UAGCopyPaste: {
-			styleType: 'btn-font-size'
+			styleType: 'main-title-font-size'
 		},
 		default: 20,
 	},
 	titleFontSizeType: {
 		type: 'string',
 		UAGCopyPaste: {
-			styleType: 'btn-font-size-type'
+			styleType: 'main-title-font-size-type'
 		},
 		default: 'px',
 	},
 	titleFontSizeTablet: {
 		type: 'number',
 		UAGCopyPaste: {
-			styleType: 'btn-font-size-tablet'
+			styleType: 'main-title-font-size-tablet'
 		},
 		default: 20,
 	},
 	titleFontSizeMobile: {
 		type: 'number',
 		UAGCopyPaste: {
-			styleType: 'btn-font-size-mobile'
+			styleType: 'main-title-font-size-mobile'
 		},
 		default: 20,
 	},
@@ -324,26 +324,26 @@ const attributes = {
 	titleLineHeightType: {
 		type: 'string',
 		UAGCopyPaste: {
-			styleType: 'btn-line-height-type'
+			styleType: 'main-title-line-height-type'
 		},
 		default: 'em',
 	},
 	titleLineHeight: {
 		type: 'number',
 		UAGCopyPaste: {
-			styleType: 'btn-line-height'
+			styleType: 'main-title-line-height'
 		}
 	},
 	titleLineHeightTablet: {
 		type: 'number',
 		UAGCopyPaste: {
-			styleType: 'btn-line-height-tablet'
+			styleType: 'main-title-line-height-tablet'
 		}
 	},
 	titleLineHeightMobile: {
 		type: 'number',
 		UAGCopyPaste: {
-			styleType: 'btn-line-height-mobile'
+			styleType: 'main-title-line-height-mobile'
 		}
 	},
 	titleTag: {

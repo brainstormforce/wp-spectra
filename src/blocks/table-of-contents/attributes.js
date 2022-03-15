@@ -857,7 +857,7 @@ const attributes = {
 		type: 'string',
 		default: 'left',
 		UAGCopyPaste: {
-			styleType: 'main-title-alignment'
+			styleType: 'main-title-align'
 		},
 	}
 };
