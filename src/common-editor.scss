@@ -667,3 +667,21 @@ button.components-button.uagb-review-select-btn.is-secondary {
 		border-bottom: 1px solid #e0e0e0;
 	}
 }
+
+/* Block icons white when block is selected in list view. */
+.block-editor-list-view-leaf.is-selected .block-editor-list-view-block-contents svg {
+	stroke: #fff;
+	> path {
+		fill: #fff;
+	}
+}
+
+/* Block icons white when toggle is set to select from tools. */
+.block-editor-block-list__block-selection-button .block-editor-block-icon.has-colors svg {
+	stroke: #fff;
+	> path {
+		fill: #fff;
+	}
+}
+
+
