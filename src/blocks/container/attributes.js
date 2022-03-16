@@ -316,7 +316,15 @@ const attributes = {
 	isBlockRootParent: {
 		type: 'boolean',
 		default: false,
-	}
+	},
+	blockDescendants: {
+		type: 'array',
+		default: []
+	},
+	widthSetByUser: {
+		type: 'boolean',
+		default: false,
+	},
 };
 
 export default attributes;

@@ -356,6 +356,10 @@ const Settings = ( props ) => {
 			},
 		];
 
+		const onWidthChange = () => {
+			setAttributes( { widthSetByUser: true } );
+		};
+
 		return (
 			<>
 				<UAGAdvancedPanelBody
@@ -450,6 +454,7 @@ const Settings = ( props ) => {
 									options={ widthOptions }
 									showIcons={ false }
 									responsive={true}
+									onChange={onWidthChange}
 								/>
 							}
 							<ResponsiveSlider
@@ -492,6 +497,7 @@ const Settings = ( props ) => {
 									},
 								] }
 								setAttributes={ setAttributes }
+								onChange={onWidthChange}
 							/>
 						</>
 					}
