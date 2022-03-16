@@ -196,14 +196,14 @@ function styling( props ) {
 
 	stylingCss += generateCSS(
 		tabletSelectors,
-		`${ id }.uagb-editor-preview-mode-tablet`,
+		`.uagb-editor-preview-mode-tablet ${ id }`,
 		true,
 		'tablet'
 	);
 
 	stylingCss += generateCSS(
 		mobileSelectors,
-		`${ id }.uagb-editor-preview-mode-mobile`,
+		`.uagb-editor-preview-mode-mobile ${ id }`,
 		true,
 		'mobile'
 	);
