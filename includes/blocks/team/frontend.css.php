@@ -75,7 +75,7 @@ $selectors = array(
 		'margin-left'   => UAGB_Helper::get_css_value( $image_left_margin, $attr['imageMarginUnit'] ),
 		'margin-right'  => UAGB_Helper::get_css_value( $image_right_margin, $attr['imageMarginUnit'] ),
 		'width'         => UAGB_Helper::get_css_value( $attr['imgWidth'], 'px' ),
-		'height'         => UAGB_Helper::get_css_value( $attr['imgWidth'], 'px' ),
+		'height'        => UAGB_Helper::get_css_value( $attr['imgWidth'], 'px' ),
 	),
 	'.uagb-team__image-position-left > img' => array( // When Image position is left.
 		'margin-top'    => UAGB_Helper::get_css_value( $image_top_margin, $attr['imageMarginUnit'] ),
@@ -83,7 +83,7 @@ $selectors = array(
 		'margin-left'   => UAGB_Helper::get_css_value( $image_left_margin, $attr['imageMarginUnit'] ),
 		'margin-right'  => UAGB_Helper::get_css_value( $image_right_margin, $attr['imageMarginUnit'] ),
 		'width'         => UAGB_Helper::get_css_value( $attr['imgWidth'], 'px' ),
-		'height'         => UAGB_Helper::get_css_value( $attr['imgWidth'], 'px' ),
+		'height'        => UAGB_Helper::get_css_value( $attr['imgWidth'], 'px' ),
 	),
 	'.uagb-team__image-position-right .uagb-team__content + img' => array( // When Image position is right.
 		'margin-top'    => UAGB_Helper::get_css_value( $image_top_margin, $attr['imageMarginUnit'] ),
@@ -91,7 +91,7 @@ $selectors = array(
 		'margin-left'   => UAGB_Helper::get_css_value( $image_left_margin, $attr['imageMarginUnit'] ),
 		'margin-right'  => UAGB_Helper::get_css_value( $image_right_margin, $attr['imageMarginUnit'] ),
 		'width'         => UAGB_Helper::get_css_value( $attr['imgWidth'], 'px' ),
-		'height'         => UAGB_Helper::get_css_value( $attr['imgWidth'], 'px' ),
+		'height'        => UAGB_Helper::get_css_value( $attr['imgWidth'], 'px' ),
 	),
 	'.uagb-team__image-position-above img'  => array( // When Image position is above.
 		'margin-top'    => UAGB_Helper::get_css_value( $image_top_margin, $attr['imageMarginUnit'] ),
@@ -99,21 +99,21 @@ $selectors = array(
 		'margin-left'   => UAGB_Helper::get_css_value( $image_left_margin, $attr['imageMarginUnit'] ),
 		'margin-right'  => UAGB_Helper::get_css_value( $image_right_margin, $attr['imageMarginUnit'] ),
 		'width'         => UAGB_Helper::get_css_value( $attr['imgWidth'], 'px' ),
-		'height'         => UAGB_Helper::get_css_value( $attr['imgWidth'], 'px' ),
+		'height'        => UAGB_Helper::get_css_value( $attr['imgWidth'], 'px' ),
 	),
 
 );
 
 if ( 'above' === $attr['imgPosition'] ) {
 	if ( 'center' === $attr['align'] ) {
-		$selectors[' .uagb-team__image-wrap']['margin-left']  = 'auto';
-		$selectors[' .uagb-team__image-wrap']['margin-right'] = 'auto';
+		$selectors[' .uagb-team__image-wrap']['margin-left']      = 'auto';
+		$selectors[' .uagb-team__image-wrap']['margin-right']     = 'auto';
 		$selectors[' .uagb-team__social-list']['justify-content'] = 'center';
 	} elseif ( 'left' === $attr['align'] ) {
-		$selectors[' .uagb-team__image-wrap']['margin-right'] = 'auto';
+		$selectors[' .uagb-team__image-wrap']['margin-right']     = 'auto';
 		$selectors[' .uagb-team__social-list']['justify-content'] = 'flex-start';
 	} elseif ( 'right' === $attr['align'] ) {
-		$selectors[' .uagb-team__image-wrap']['margin-left'] = 'auto';
+		$selectors[' .uagb-team__image-wrap']['margin-left']      = 'auto';
 		$selectors[' .uagb-team__social-list']['justify-content'] = 'flex-end';
 	}
 }
