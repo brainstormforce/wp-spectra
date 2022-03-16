@@ -103,6 +103,7 @@ const Render = ( props ) => {
 					id={ block_id }
 				/>
 				<SelectControl
+					className= { 'uagb-forms-input uagb-form-phone-country uagb-form-phone-country-editor' }
 					options={ contryCode }
 					value={ selectPhoneCode }
 					onChange={ ( value ) =>

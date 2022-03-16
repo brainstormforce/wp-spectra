@@ -70,18 +70,9 @@ export default function save( props ) {
 				name={ `${ phoneName }[]` }
 			>
 				{ countryOptions.map( ( o, index ) => (
-					<>
-					{ o.props.value == selectPhoneCode &&
-					<option value={ o.props.value } key={ index } selected>
+					<option value={ o.props.value } key={ index } selected={o.props.value === selectPhoneCode}>
 						{ o.props.children }
 					</option>
-					}
-					{ o.props.value !== selectPhoneCode &&
-						<option value={ o.props.value } key={ index } >
-							{ o.props.children }
-						</option>
-					}
-					</>
 				) ) }
 			</select>
 			{ phone_html }
