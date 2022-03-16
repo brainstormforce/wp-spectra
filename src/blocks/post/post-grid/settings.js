@@ -215,7 +215,11 @@ const Settings = ( props ) => {
 		paddingLeftMobile,
 		mobilePaddingUnit,
 		tabletPaddingUnit,
-		postsOffset
+		postsOffset,
+		taxStyle,
+		displayPostTaxonomyAboveTitle,
+		highlightedTextColor,
+		highlightedTextBgColor
 	} = attributes;
 
 	const onSelectPostType = ( value ) => {
@@ -877,6 +881,45 @@ const Settings = ( props ) => {
 						} )
 					}
 				/>
+				{ displayPostTaxonomy && (
+				<ToggleControl
+					label={ __(
+						'Show Taxonomy Above Title',
+						'ultimate-addons-for-gutenberg'
+					) }
+					checked={ displayPostTaxonomyAboveTitle }
+					onChange={ () =>
+						setAttributes( {
+							displayPostTaxonomyAboveTitle: ! displayPostTaxonomyAboveTitle,
+						} )
+					}
+				/>
+				) }
+				{ displayPostTaxonomyAboveTitle && (
+				<SelectControl
+					label={ __( 'Taxonomy Style', 'ultimate-addons-for-gutenberg' ) }
+					value={ taxStyle }
+					onChange={ ( value ) =>
+						setAttributes( { taxStyle: value } )
+					}
+					options={ [
+						{
+							value: 'default',
+							label: __(
+								'Normal',
+								'ultimate-addons-for-gutenberg'
+							),
+						},
+						{
+							value: 'highlighted',
+							label: __(
+								'Highlighted',
+								'ultimate-addons-for-gutenberg'
+							),
+						},
+					] }
+				/>
+				) }
 				<ToggleControl
 					label={ __(
 						'Show Excerpt',
@@ -1274,6 +1317,24 @@ const Settings = ( props ) => {
 						setAttributes( { metaColor: value } )
 					}
 				/>
+				{ displayPostTaxonomyAboveTitle && (
+					<>
+					<AdvancedPopColorControl
+						label={ __( 'Taxonomy Text Color', 'ultimate-addons-for-gutenberg' ) }
+						colorValue={ highlightedTextColor }
+						onColorChange={ ( value ) =>
+							setAttributes( { highlightedTextColor: value } )
+						}
+					/>
+					<AdvancedPopColorControl
+						label={ __( 'Highlighted Color', 'ultimate-addons-for-gutenberg' ) }
+						colorValue={ highlightedTextBgColor }
+						onColorChange={ ( value ) =>
+							setAttributes( { highlightedTextBgColor: value } )
+						}
+					/>
+					</>
+				)}
 
 				<TypographyControl
 					label={ __(

@@ -251,6 +251,9 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				' .uagb-post-grid-byline'                  => array(
 					'margin-bottom' => UAGB_Helper::get_css_value( $attr['metaBottomSpace'], $attr['metaBottomSpaceUnit'] ),
 				),
+				' span.uagb-post__text.uagb-post__taxonomy' => array(
+					'margin-bottom' => UAGB_Helper::get_css_value( $attr['metaBottomSpace'], $attr['metaBottomSpaceUnit'] ),
+				),
 				' .uagb-post__excerpt'                     => array(
 					'margin-bottom' => UAGB_Helper::get_css_value( $attr['excerptBottomSpace'], $attr['excerptBottomSpaceUnit'] ),
 				),
@@ -260,19 +263,24 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				),
 			);
 
-			$selectors[' .uagb-post__text.uagb-post__title']['color']                  = $attr['titleColor'];
-			$selectors[' .uagb-post__text.uagb-post__title a']                         = array(
+			$selectors[' .uagb-post__text.uagb-post__title']['color']                         = $attr['titleColor'];
+			$selectors[' .uagb-post__text.uagb-post__title a']                                = array(
 				'color' => $attr['titleColor'],
 			);
-			$selectors[' .uagb-post__text.uagb-post-grid-byline']['color']             = $attr['metaColor'];
-			$selectors[' .uagb-post__text.uagb-post-grid-byline .uagb-post__author']   = array(
+			$selectors[' .uagb-post__text.uagb-post-grid-byline']['color']                    = $attr['metaColor'];
+			$selectors[' .uagb-post__text.uagb-post-grid-byline .uagb-post__author']          = array(
 				'color' => $attr['metaColor'],
 			);
-			$selectors[' .uagb-post__text.uagb-post-grid-byline .uagb-post__author a'] = array(
+			$selectors[' span.uagb-post__text.uagb-post__taxonomy']['color']                  = $attr['metaColor'];
+			$selectors[' span.uagb-post__text.uagb-post__taxonomy a']['color']                = $attr['metaColor'];
+			$selectors[' span.uagb-post__text.uagb-post__taxonomy.highlighted']['color']      = $attr['highlightedTextColor'];
+			$selectors[' span.uagb-post__text.uagb-post__taxonomy.highlighted a']['color']    = $attr['highlightedTextColor'];
+			$selectors[' span.uagb-post__text.uagb-post__taxonomy.highlighted']['background'] = $attr['highlightedTextBgColor'];
+			$selectors[' .uagb-post__text.uagb-post-grid-byline .uagb-post__author a']        = array(
 				'color' => $attr['metaColor'],
 			);
-			$selectors[' .uagb-post__text.uagb-post__excerpt']['color']                = $attr['excerptColor'];
-			$selectors[' .uagb-post__text.uagb-post__cta .uagb-text-link']             = array(
+			$selectors[' .uagb-post__text.uagb-post__excerpt']['color']                       = $attr['excerptColor'];
+			$selectors[' .uagb-post__text.uagb-post__cta .uagb-text-link']                    = array(
 				'color'         => $attr['ctaColor'],
 				'background'    => $attr['ctaBgColor'],
 				'border-color'  => $attr['borderColor'],
@@ -280,7 +288,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				'border-radius' => UAGB_Helper::get_css_value( $attr['borderRadius'], 'px' ),
 				'border-style'  => $attr['borderStyle'],
 			);
-			$selectors[' .uagb-post__text.uagb-post__cta a']                           = array(
+			$selectors[' .uagb-post__text.uagb-post__cta a']                                  = array(
 				'color'          => $attr['ctaColor'],
 				'padding-top'    => UAGB_Helper::get_css_value( $paddingBtnTop, $attr['paddingBtnUnit'] ),
 				'padding-bottom' => UAGB_Helper::get_css_value( $paddingBtnBottom, $attr['paddingBtnUnit'] ),

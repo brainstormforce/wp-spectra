@@ -63,8 +63,8 @@ export const PostMeta = ( props ) => {
 					</span>
 				) }
 
-			{ attributes.displayPostTaxonomy && (
-				<span className="uagb-post__taxonomy">
+			{ attributes.displayPostTaxonomy && ! attributes.displayPostTaxonomyAboveTitle && (
+					<span className="uagb-post__taxonomy">
 					<span className="dashicons-tag dashicons"></span>
 					<div
 						dangerouslySetInnerHTML={ {

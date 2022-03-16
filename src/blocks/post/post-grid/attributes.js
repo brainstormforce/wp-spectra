@@ -79,7 +79,7 @@ const attributes = {
 	},
 	layoutConfig                : {
 		type    : 'array',
-		default: [ 'uagb/post-image' ,'uagb/post-title' ,'uagb/post-meta' ,'uagb/post-excerpt' ,'uagb/post-button']
+		default: [ 'uagb/post-image' ,'uagb/post-taxonomy' ,'uagb/post-title' ,'uagb/post-meta' ,'uagb/post-excerpt' ,'uagb/post-button']
 	},
 	post_type                   : {
 		type    : 'string',
@@ -716,6 +716,22 @@ const attributes = {
 	postsOffset: {
 		type    : 'number',
 		default : 0,
+	},
+	taxStyle: {
+		type    : 'string',
+		default : 'default',
+	},
+	displayPostTaxonomyAboveTitle                : {
+		type    : 'boolean',
+		default : true,
+	},
+	highlightedTextColor: {
+		type    : 'string',
+		default : '',
+	},
+	highlightedTextBgColor: {
+		type    : 'string',
+		default : '',
 	}
 }
 
