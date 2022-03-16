@@ -53,10 +53,10 @@ const Render = ( props ) => {
 			/>
 		);
 	}
-	let contryCode = [];
+	const contryCode = [];
 
-	countryOptions.map( ( o, index ) => (
-		contryCode.push({ value:  o.props.value, label: __( o.props.children , 'ultimate-addons-for-gutenberg' ) })
+	countryOptions.map( ( o, index ) => ( // eslint-disable-line no-unused-vars
+		contryCode.push( { value:  o.props.value, label:  o.props.children } )
 	) )
 
 	const isRequired = phoneRequired
