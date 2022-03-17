@@ -1274,7 +1274,7 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 				case 'uagb/post-image':
 					return $this->render_image( $attr );
 				case 'uagb/post-taxonomy':
-					return $attr['displayPostTaxonomyAboveTitle'] ? $this->render_taxonomy( $attr ) : '';
+					return $attr['displayPostTaxonomyAboveTitle'] ? $this->render_meta_taxonomy( $attr ) : '';
 				case 'uagb/post-title':
 					return $this->render_title( $attr );
 				case 'uagb/post-meta':
@@ -1576,49 +1576,6 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 		 *
 		 * @since 1.14.0
 		 */
-		public function render_taxonomy( $attributes ) {
-
-			if ( ! $attributes['displayPostTaxonomy'] ) {
-				return;
-			}
-			global $post;
-
-			$terms = get_the_terms( $post->ID, $attributes['taxonomyType'] );
-			if ( is_wp_error( $terms ) ) {
-				return;
-			}
-
-			if ( ! isset( $terms[0] ) ) {
-				return;
-			}
-			$wrap = array(
-				'uagb-post__text',
-				'uagb-post__taxonomy',
-				$attributes['taxStyle'],
-			);
-			?>
-			<span class="<?php echo esc_html( implode( ' ', $wrap ) ); ?>">
-				<?php echo $attributes['hideTaxonomyIcon'] ? '' : '<span class="dashicons-tag dashicons"></span>'; ?>
-				<?php
-				$terms_list = array();
-				foreach ( $terms as $key => $value ) {
-					// Get the URL of this category.
-					$category_link = get_category_link( $value->term_id );
-					array_push( $terms_list, '<a href="' . esc_url( $category_link ) . '">' . esc_html( $value->name ) . '</a>' );
-				}
-				echo wp_kses_post( implode( ', ', $terms_list ) );
-				?>
-			</span>
-			<?php
-		}
-
-		/**
-		 * Render Post Meta - Comment HTML.
-		 *
-		 * @param array $attributes Array of block attributes.
-		 *
-		 * @since 1.14.0
-		 */
 		public function render_meta_taxonomy( $attributes ) {
 
 			if ( ! $attributes['displayPostTaxonomy'] ) {
@@ -1634,9 +1591,14 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 			if ( ! isset( $terms[0] ) ) {
 				return;
 			}
+			$wrap = $attributes['displayPostTaxonomyAboveTitle'] ? array(
+				'uagb-post__text',
+				'uagb-post__taxonomy',
+				$attributes['taxStyle'],
+			) : array( 'uagb-post__taxonomy' );
 			?>
-			<span class="uagb-post__taxonomy">
-				<span class="dashicons-tag dashicons"></span>
+			<span class="<?php echo esc_html( implode( ' ', $wrap ) ); ?>">
+				<?php echo $attributes['hideTaxonomyIcon'] ? '' : '<span class="dashicons-tag dashicons"></span>'; ?>
 				<?php
 				$terms_list = array();
 				foreach ( $terms as $key => $value ) {
