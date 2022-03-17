@@ -1749,7 +1749,7 @@ const UAGBPostMasonry = ( props ) => {
 						setAttributes( { metaColor: value } )
 					}
 				/>
-				{ displayPostTaxonomyAboveTitle && (
+				{ 'highlighted' === taxStyle && (
 					<>
 					<AdvancedPopColorControl
 						label={ __( 'Taxonomy Text Color', 'ultimate-addons-for-gutenberg' ) }
