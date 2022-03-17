@@ -1266,6 +1266,10 @@ const UAGBPostMasonry = ( props ) => {
 						} )
 					}
 				/>
+				</>
+				) }
+				{ displayPostTaxonomyAboveTitle && (
+				<>
 				<ToggleControl
 					label={ __(
 						'Hide Taxonomy Icon',
@@ -1278,9 +1282,6 @@ const UAGBPostMasonry = ( props ) => {
 						} )
 					}
 				/>
-				</>
-				) }
-				{ displayPostTaxonomyAboveTitle && (
 				<SelectControl
 					label={ __( 'Taxonomy Style', 'ultimate-addons-for-gutenberg' ) }
 					value={ taxStyle }
@@ -1304,6 +1305,7 @@ const UAGBPostMasonry = ( props ) => {
 						},
 					] }
 				/>
+				</>
 				) }
 				<ToggleControl
 					label={ __(

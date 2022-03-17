@@ -919,6 +919,10 @@ const UAGBPostCarousel = ( props ) => {
 						} )
 					}
 				/>
+				</>
+				) }
+				{ displayPostTaxonomyAboveTitle && (
+				<>
 				<ToggleControl
 					label={ __(
 						'Hide Taxonomy Icon',
@@ -931,9 +935,6 @@ const UAGBPostCarousel = ( props ) => {
 						} )
 					}
 				/>
-				</>
-				) }
-				{ displayPostTaxonomyAboveTitle && (
 				<SelectControl
 					label={ __( 'Taxonomy Style', 'ultimate-addons-for-gutenberg' ) }
 					value={ taxStyle }
@@ -957,6 +958,7 @@ const UAGBPostCarousel = ( props ) => {
 						},
 					] }
 				/>
+				</>
 				) }
 				<ToggleControl
 					label={ __(
