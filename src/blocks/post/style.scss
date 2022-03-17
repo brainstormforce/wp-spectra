@@ -166,6 +166,7 @@
 
 			a {
 				text-decoration: none;
+				color: inherit;
 			}
 		}
 	}
@@ -185,6 +186,7 @@
 	.uagb-post-grid-byline a:active {
 		color: inherit;
 		font-size: inherit;
+		text-decoration: none;
 	}
 
 	.uagb-post__title a,
