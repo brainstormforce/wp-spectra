@@ -723,7 +723,11 @@ const attributes = {
 	},
 	displayPostTaxonomyAboveTitle                : {
 		type    : 'boolean',
-		default : true,
+		default : false,
+	},
+	hideTaxonomyIcon                : {
+		type    : 'boolean',
+		default : false,
 	},
 	highlightedTextColor: {
 		type    : 'string',

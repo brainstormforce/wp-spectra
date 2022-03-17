@@ -3,7 +3,7 @@ export const PostTaxonomy = ( props ) => {
 
 	const { post, categoriesList } = props;
 
-	const { taxStyle, displayPostTaxonomy, displayPostTaxonomyAboveTitle } = props.attributes;
+	const { taxStyle, displayPostTaxonomy, displayPostTaxonomyAboveTitle, hideTaxonomyIcon } = props.attributes;
 
 	const list = categoriesList;
 	const cat = post.categories;
@@ -23,7 +23,7 @@ export const PostTaxonomy = ( props ) => {
 		<>
 			{ displayPostTaxonomy && displayPostTaxonomyAboveTitle && (
 				<span className={`uagb-post__text uagb-post__taxonomy ${taxStyle}`}>
-					{ 'withoutIcons' !== taxStyle && ( <span className="dashicons-tag dashicons"></span> ) }
+					{ ! hideTaxonomyIcon && ( <span className="dashicons-tag dashicons"></span> ) }
 					<div
 						dangerouslySetInnerHTML={ {
 							__html: categoriesName.join( ', ' ),

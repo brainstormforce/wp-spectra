@@ -218,6 +218,7 @@ const Settings = ( props ) => {
 		postsOffset,
 		taxStyle,
 		displayPostTaxonomyAboveTitle,
+		hideTaxonomyIcon,
 		highlightedTextColor,
 		highlightedTextBgColor
 	} = attributes;
@@ -882,6 +883,7 @@ const Settings = ( props ) => {
 					}
 				/>
 				{ displayPostTaxonomy && (
+				<>
 				<ToggleControl
 					label={ __(
 						'Show Taxonomy Above Title',
@@ -894,6 +896,19 @@ const Settings = ( props ) => {
 						} )
 					}
 				/>
+				<ToggleControl
+					label={ __(
+						'Hide Taxonomy Icon',
+						'ultimate-addons-for-gutenberg'
+					) }
+					checked={ hideTaxonomyIcon }
+					onChange={ () =>
+						setAttributes( {
+							hideTaxonomyIcon: ! hideTaxonomyIcon,
+						} )
+					}
+				/>
+				</>
 				) }
 				{ displayPostTaxonomyAboveTitle && (
 				<SelectControl

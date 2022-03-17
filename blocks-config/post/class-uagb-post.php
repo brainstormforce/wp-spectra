@@ -428,6 +428,10 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 					'type'    => 'boolean',
 					'default' => false,
 				),
+				'hideTaxonomyIcon'         => array(
+					'type'    => 'boolean',
+					'default' => false,
+				),
 				'taxStyle'                      => array(
 					'type'    => 'string',
 					'default' => 'default',
@@ -1594,7 +1598,7 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 			);
 			?>
 			<span class="<?php echo esc_html( implode( ' ', $wrap ) ); ?>">
-				<span class="dashicons-tag dashicons"></span>
+				<?php echo $attributes['hideTaxonomyIcon']  ? '' : `<span class="dashicons-tag dashicons"></span>`; ?>
 				<?php
 				$terms_list = array();
 				foreach ( $terms as $key => $value ) {

@@ -760,6 +760,26 @@ const attributes = {
 	postsOffset: {
 		type    : 'number',
 		default : 0,
+	},
+	taxStyle: {
+		type    : 'string',
+		default : 'default',
+	},
+	displayPostTaxonomyAboveTitle                : {
+		type    : 'boolean',
+		default : false,
+	},
+	hideTaxonomyIcon                : {
+		type    : 'boolean',
+		default : false,
+	},
+	highlightedTextColor: {
+		type    : 'string',
+		default : '',
+	},
+	highlightedTextBgColor: {
+		type    : 'string',
+		default : '',
 	}
 }
 
