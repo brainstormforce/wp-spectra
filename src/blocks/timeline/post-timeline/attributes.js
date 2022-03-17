@@ -24,7 +24,7 @@ const attributes = { // eslint-disable-line no-unused-vars
 		type    : 'string',
 		default : '#eee',
 		UAGCopyPaste: {
-			styleType: 'seprator-bg-color'
+			styleType: 'connector-bg-color'
 		},
 	},
 	backgroundColor         : {
@@ -38,21 +38,21 @@ const attributes = { // eslint-disable-line no-unused-vars
 		type    : 'string',
 		default : '#eee',
 		UAGCopyPaste: {
-			styleType: 'separator-color'
+			styleType: 'connector-color'
 		},
 	},
 	separatorFillColor      : {
 		type    : 'string',
 		default : '#0693e3',
 		UAGCopyPaste: {
-			styleType: 'separator-fill-color'
+			styleType: 'connector-fill-color'
 		},
 	},
 	separatorBorder         : {
 		type    : 'string',
 		default : '#eee',
 		UAGCopyPaste: {
-			styleType: 'separator-border-color'
+			styleType: 'connector-border-color'
 		},
 	},
 	borderFocus             : {
@@ -192,7 +192,7 @@ const attributes = { // eslint-disable-line no-unused-vars
 		type    : 'number',
 		default : 3,
 		UAGCopyPaste: {
-			styleType: 'separator-width'
+			styleType: 'connector-width'
 		},
 	},
 	borderwidth             : {
@@ -876,7 +876,7 @@ const attributes = { // eslint-disable-line no-unused-vars
 	headTransform           : {
 		type : 'string',
 		UAGCopyPaste: {
-			styleType: 'main-transform'
+			styleType: 'main-title-transform'
 		},
 	},
 	authorTransform         : {
@@ -906,7 +906,7 @@ const attributes = { // eslint-disable-line no-unused-vars
 	headDecoration          : {
 		type : 'string',
 		UAGCopyPaste: {
-			styleType: 'main-decoration'
+			styleType: 'main-title-title-decoration'
 		},
 	},
 	authorDecoration        : {
@@ -942,7 +942,7 @@ const attributes = { // eslint-disable-line no-unused-vars
 	headTopSpacing : {
 		type: 'number',
 		UAGCopyPaste: {
-			styleType: 'main-top-spacing'
+			styleType: 'main-title-top-spacing'
 		},
 	},
 }

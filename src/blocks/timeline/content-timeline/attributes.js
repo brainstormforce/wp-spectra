@@ -83,7 +83,7 @@ const attributes = {
 		type: 'string',
 		default: '#eee',
 		UAGCopyPaste: {
-			styleType: 'seprator-bg-color'
+			styleType: 'connector-bg-color'
 		},
 	},
 	backgroundColor: {
@@ -96,21 +96,21 @@ const attributes = {
 	separatorColor: {
 		type: 'string',
 		UAGCopyPaste: {
-			styleType: 'separator-color'
+			styleType: 'connector-color'
 		},
 		default: '#eee',
 	},
 	separatorFillColor: {
 		type: 'string',
 		UAGCopyPaste: {
-			styleType: 'separator-fill-color'
+			styleType: 'connector-fill-color'
 		},
 		default: '#0693e3',
 	},
 	separatorBorder: {
 		type: 'string',
 		UAGCopyPaste: {
-			styleType: 'separator-border-color'
+			styleType: 'connector-border-color'
 		},
 		default: '#eee',
 	},
@@ -339,7 +339,7 @@ const attributes = {
 	separatorwidth: {
 		type: 'number',
 		UAGCopyPaste: {
-			styleType: 'separator-width'
+			styleType: 'connector-width'
 		},
 		default: 3,
 	},
