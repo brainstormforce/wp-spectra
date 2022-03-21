@@ -142,6 +142,11 @@
 			.uag-font-family-select__dropdown-indicator:hover {
 				color: #000;
 			}
+
+			.uag-font-family-select__value-container div:nth-child(2) {
+				margin: 0;
+				padding: 0;
+			}
 		}
 
 		.uag-typography-font-family-subset {
