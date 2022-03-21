@@ -33,7 +33,7 @@ const Settings = () => {
       ];
 
     return (
-        <main className="max-w-[77rem] mx-auto my-[2.43rem] bg-white rounded-[0.2rem] shadow overflow-hidden h-[33rem]">
+        <main className="max-w-[77rem] mx-auto my-[2.43rem] bg-white rounded-[0.2rem] shadow overflow-hidden h-[34rem]">
             <div className="lg:grid lg:grid-cols-12 lg:gap-x-8 h-full">
                 <aside className="py-6 px-2 ml-8 sm:px-6 lg:py-6 lg:px-0 lg:col-span-3 border-r">
                     <nav className="space-y-1">
