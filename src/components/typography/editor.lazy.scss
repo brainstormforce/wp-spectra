@@ -145,8 +145,7 @@
 
 			.uag-font-family-select__value-container {
 
-				div:nth-child(1),
-				div:nth-child(2) {
+				> div {
 					margin: 0;
 					padding: 0;
 				}
