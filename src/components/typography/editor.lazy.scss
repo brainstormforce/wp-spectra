@@ -143,9 +143,13 @@
 				color: #000;
 			}
 
-			.uag-font-family-select__value-container div:nth-child(2) {
-				margin: 0;
-				padding: 0;
+			.uag-font-family-select__value-container {
+
+				div:nth-child(1),
+				div:nth-child(2) {
+					margin: 0;
+					padding: 0;
+				}
 			}
 		}
 
