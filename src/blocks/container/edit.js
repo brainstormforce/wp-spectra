@@ -22,7 +22,7 @@ const Render = lazy( () =>
 import './style.scss';
 import { __ } from '@wordpress/i18n';
 
-import { withSelect, useDispatch, select } from '@wordpress/data';
+import { withSelect, useDispatch, select, dispatch } from '@wordpress/data';
 
 import { compose } from '@wordpress/compose';
 
@@ -88,6 +88,12 @@ const UAGBContainer = ( props ) => {
 			}
 		}
 
+		const descendants = select( 'core/block-editor' ).getBlocks( props.clientId );
+
+		if ( descendants.length !== props.attributes.blockDescendants.length ) {
+			props.setAttributes( { blockDescendants: descendants } );
+		}
+
 	}, [] );
 
 	useEffect( () => {
@@ -121,6 +127,13 @@ const UAGBContainer = ( props ) => {
 		const blockStyling = styling( props );
 
         addBlockEditorDynamicStyles( 'uagb-container-style-' + props.clientId.substr( 0, 8 ), blockStyling );
+
+		const descendants = select( 'core/block-editor' ).getBlocks( props.clientId );
+
+		if ( descendants.length !== props.attributes.blockDescendants.length ) {
+			props.setAttributes( { blockDescendants: descendants } );
+		}
+
 	}, [ props ] );
 
 	useEffect( () => {
@@ -170,6 +183,33 @@ const UAGBContainer = ( props ) => {
 				)
 		);
 	};
+
+	useEffect( ()=>{
+
+		const {
+			blockDescendants
+		} = props.attributes;
+
+		let currentDirection = 'row';
+
+		if ( props.attributes[ 'direction' + deviceType ].split( '-' )[0] ) {
+
+			currentDirection = props.attributes[ 'direction' + deviceType ].split( '-' )[0];
+		}
+		const childColumnsWidth = ( 100 / blockDescendants.length );
+
+		if ( 'row' === currentDirection ) {
+			blockDescendants.map( ( child ) => {
+				if ( ! child.attributes.widthSetByUser ) {
+					dispatch( 'core/block-editor' ).updateBlockAttributes( child.clientId, {
+						[`width${deviceType}`] : childColumnsWidth,
+					} );
+				}
+				return child;
+			} );
+		}
+
+	}, [props.attributes.blockDescendants] );
 
 	const { variations } = props;
 

@@ -6,6 +6,10 @@ const attributes = {
 		type: 'string',
 		default: 'alignwide',
 	},
+	innerContentWidth: {
+		type: 'string',
+		default: 'alignwide',
+	},
 	widthDesktop: {
 		type: 'number',
 		default: 100,
@@ -21,6 +25,22 @@ const attributes = {
 	widthType: {
 		type: 'string',
 		default: '%',
+	},
+	innerContentCustomWidthDesktop: {
+		type: 'number',
+		default: 1200,
+	},
+	innerContentCustomWidthTablet: {
+		type: 'number',
+		default: 1200,
+	},
+	innerContentCustomWidthMobile: {
+		type: 'number',
+		default: 1200,
+	},
+	innerContentCustomWidthType: {
+		type: 'string',
+		default: 'px',
 	},
 	minHeightDesktop: {
 		type: 'number',
@@ -296,7 +316,15 @@ const attributes = {
 	isBlockRootParent: {
 		type: 'boolean',
 		default: false,
-	}
+	},
+	blockDescendants: {
+		type: 'array',
+		default: []
+	},
+	widthSetByUser: {
+		type: 'boolean',
+		default: false,
+	},
 };
 
 export default attributes;

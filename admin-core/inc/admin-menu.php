@@ -48,7 +48,7 @@ class Admin_Menu {
 	 * @var string Class object.
 	 * @since 1.0.0
 	 */
-	private $menu_slug = 'uag';
+	private $menu_slug = 'spectra';
 
 	/**
 	 * Constructor

@@ -7,7 +7,9 @@ import generateCSSUnit from '@Controls/generateCSSUnit';
 import generateBackgroundCSS from '@Controls/generateBackgroundCSS';
 
 function styling( props ) {
+	const { attributes, deviceType } = props;
 	const {
+		block_id,
 		widthDesktop,
 		widthTablet,
 		widthMobile,
@@ -85,8 +87,9 @@ function styling( props ) {
 		columnGapTablet,
 		columnGapMobile,
 		columnGapType,
-		contentWidth
-	} = props.attributes;
+		contentWidth,
+		innerContentWidth,
+	} = attributes;
 
 	const selectors = {};
 
@@ -158,8 +161,19 @@ function styling( props ) {
 		[`.is-root-container > .block-editor-block-list__block .block-editor-block-list__block#block-${ props.clientId } `] : {
 			'max-width' : generateCSSUnit( widthDesktop, widthType ),
 			'width' : generateCSSUnit( widthDesktop, widthType ),
-		},
+		}
 	};
+
+	if ( 'alignwide' === innerContentWidth ) {
+
+		widthSelectorsDesktop[`.is-root-container > .block-editor-block-list__block > .wp-block-uagb-container.uagb-block-${ block_id }`] = {
+			'--inner-content-custom-width' : attributes[`innerContentCustomWidth${deviceType}`] + 'px',
+			'--padding-left' : ( attributes[`leftPadding${deviceType}`] || 0 ) + paddingType,
+			'--padding-right' : ( attributes[`rightPadding${deviceType}`] || 0 ) + paddingType,
+			'padding-left': `calc( ( 100% - var( --inner-content-custom-width ) ) / 2 + var( --padding-left ))`,
+			'padding-right': `calc( ( 100% - var( --inner-content-custom-width ) ) / 2 + var( --padding-right ))`,
+		};
+	}
 
 	const widthSelectorsTablet = {
 		[`.is-root-container > .block-editor-block-list__block .uagb-editor-preview-mode-tablet.block-editor-block-list__block#block-${ props.clientId } `] : {
