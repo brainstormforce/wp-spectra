@@ -4,7 +4,7 @@ const attributes = {
 	},
 	contentWidth: {
 		type: 'string',
-		default: 'alignwide',
+		default: 'alignfull',
 	},
 	innerContentWidth: {
 		type: 'string',

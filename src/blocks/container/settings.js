@@ -208,7 +208,7 @@ const Settings = ( props ) => {
 		const justifyContentOptions = [
 			{
 				value: 'flex-start',
-				tooltip: __( 'Left', 'ultimate-addons-for-gutenberg' ),
+				tooltip: __( 'Flex Start', 'ultimate-addons-for-gutenberg' ),
 				icon: (
 					<Icon
 						icon={ renderCustomIcon( `flex-${currentDirection}-start` ) }
@@ -226,7 +226,7 @@ const Settings = ( props ) => {
 			},
 			{
 				value: 'flex-end',
-				tooltip: __( 'Right', 'ultimate-addons-for-gutenberg' ),
+				tooltip: __( 'Flex End', 'ultimate-addons-for-gutenberg' ),
 				icon: (
 					<Icon
 						icon={ renderCustomIcon( `flex-${currentDirection}-end` ) }
@@ -292,62 +292,29 @@ const Settings = ( props ) => {
 			},
 		];
 
-		const widthOptions = [
-			{
-				value: 25,
-				tooltip: __( '25%', 'ultimate-addons-for-gutenberg' ),
-				label: __( '25%', 'ultimate-addons-for-gutenberg' ),
-			},
-			{
-				value: 33,
-				tooltip: __( '33%', 'ultimate-addons-for-gutenberg' ),
-				label: __( '33%', 'ultimate-addons-for-gutenberg' ),
-			},
-			{
-				value: 50,
-				label: __( '50%', 'ultimate-addons-for-gutenberg' ),
-				tooltip: __( '50%', 'ultimate-addons-for-gutenberg' ),
-			},
-			{
-				value: 66,
-				label: __( '66%', 'ultimate-addons-for-gutenberg' ),
-				tooltip: __( '66%', 'ultimate-addons-for-gutenberg' ),
-			},
-			{
-				value: 75,
-				label: __( '75%', 'ultimate-addons-for-gutenberg' ),
-				tooltip: __( '75%', 'ultimate-addons-for-gutenberg' ),
-			},
-			{
-				value: 100,
-				label: __( '100%', 'ultimate-addons-for-gutenberg' ),
-				tooltip: __( '100%', 'ultimate-addons-for-gutenberg' ),
-			},
-		];
-
 		const contentWidthOptions = [
-			{
-				value: 'default',
-				tooltip: __( 'Default', 'ultimate-addons-for-gutenberg' ),
-				label: __( 'Default', 'ultimate-addons-for-gutenberg' ),
-			},
-			{
-				value: 'alignwide',
-				tooltip: __( 'Align Wide', 'ultimate-addons-for-gutenberg' ),
-				label: __( 'Align Wide', 'ultimate-addons-for-gutenberg' ),
-			},
 			{
 				value: 'alignfull',
 				tooltip: __( 'Full Width', 'ultimate-addons-for-gutenberg' ),
 				label: __( 'Full Width', 'ultimate-addons-for-gutenberg' ),
+			},
+			{
+				value: 'alignwide',
+				tooltip: __( 'Boxed', 'ultimate-addons-for-gutenberg' ),
+				label: __( 'Boxed', 'ultimate-addons-for-gutenberg' ),
+			},
+			{
+				value: 'default',
+				tooltip: __( 'Custom', 'ultimate-addons-for-gutenberg' ),
+				label: __( 'Custom', 'ultimate-addons-for-gutenberg' ),
 			},
 		];
 
 		const innerContentWidthOptions = [
 			{
 				value: 'alignwide',
-				tooltip: __( 'Align Wide', 'ultimate-addons-for-gutenberg' ),
-				label: __( 'Align Wide', 'ultimate-addons-for-gutenberg' ),
+				tooltip: __( 'Boxed', 'ultimate-addons-for-gutenberg' ),
+				label: __( 'Boxed', 'ultimate-addons-for-gutenberg' ),
 			},
 			{
 				value: 'alignfull',
@@ -370,7 +337,7 @@ const Settings = ( props ) => {
 						<>
 							<MultiButtonsControl
 								setAttributes={ setAttributes }
-								label={ __( 'Outer Container Width', 'ultimate-addons-for-gutenberg' ) }
+								label={ __( 'Container Width', 'ultimate-addons-for-gutenberg' ) }
 								data={ {
 									value: contentWidth,
 									label: 'contentWidth',
@@ -383,7 +350,7 @@ const Settings = ( props ) => {
 								<>
 									<MultiButtonsControl
 										setAttributes={ setAttributes }
-										label={ __( 'Inner Content Width', 'ultimate-addons-for-gutenberg' ) }
+										label={ __( 'Content Width', 'ultimate-addons-for-gutenberg' ) }
 										data={ {
 											value: innerContentWidth,
 											label: 'innerContentWidth',
@@ -394,7 +361,7 @@ const Settings = ( props ) => {
 									/>
 									{ 'alignwide' === innerContentWidth &&
 										<ResponsiveSlider
-											label={ __( 'Inner Content Custom Width', 'ultimate-addons-for-gutenberg' ) }
+											label={ __( 'Content Custom Width', 'ultimate-addons-for-gutenberg' ) }
 											data={ {
 												desktop: {
 													value: innerContentCustomWidthDesktop,
@@ -433,30 +400,6 @@ const Settings = ( props ) => {
 					}
 					{ ( ( isBlockRootParent && 'default' === contentWidth ) || ( ! isBlockRootParent ) ) &&
 						<>
-							{ '%' === widthType &&
-								<MultiButtonsControl
-									setAttributes={ setAttributes }
-									label={ __( 'Width', 'ultimate-addons-for-gutenberg' ) }
-									data={ {
-										desktop: {
-											value: widthDesktop,
-											label: 'widthDesktop',
-										},
-										tablet: {
-											value: widthTablet,
-											label: 'widthTablet',
-										},
-										mobile: {
-											value: widthMobile,
-											label: 'widthMobile',
-										},
-									} }
-									options={ widthOptions }
-									showIcons={ false }
-									responsive={true}
-									onChange={onWidthChange}
-								/>
-							}
 							<ResponsiveSlider
 								label={ __( 'Custom Width', 'ultimate	-addons-for-gutenberg' ) }
 								data={ {
@@ -505,7 +448,7 @@ const Settings = ( props ) => {
 						<>
 							<MultiButtonsControl
 								setAttributes={ setAttributes }
-								label={ __( 'Inner Content Width', 'ultimate-addons-for-gutenberg' ) }
+								label={ __( 'Content Width', 'ultimate-addons-for-gutenberg' ) }
 								data={ {
 									value: innerContentWidth,
 									label: 'innerContentWidth',
@@ -516,7 +459,7 @@ const Settings = ( props ) => {
 							/>
 							{ 'alignwide' === innerContentWidth &&
 								<ResponsiveSlider
-									label={ __( 'Inner Content Custom Width', 'ultimate-addons-for-gutenberg' ) }
+									label={ __( 'Content Custom Width', 'ultimate-addons-for-gutenberg' ) }
 									data={ {
 										desktop: {
 											value: innerContentCustomWidthDesktop,
