@@ -7,7 +7,7 @@ const setInitialState = ( store ) => {
         const initialState = {
             initialStateSetFlag : true,
             activeBlocksFilterTab : 'all',
-            activeSettingsNavigationTab : 'asset-generation',
+            activeSettingsNavigationTab : 'global-settings',
             blocksStatuses : data.blocks_activation_and_deactivation,
             enableFileGeneration : data.enable_file_generation,
             enableTemplates : data.enable_templates_button,
