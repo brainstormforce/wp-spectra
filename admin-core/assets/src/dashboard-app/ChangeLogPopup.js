@@ -65,8 +65,8 @@ return (
 											key={title}
 											href={link}
 											className="-m-3 p-3 block rounded-[0.2rem] transition ease-in-out duration-150 mb-1"
-											target={"_blank"}
-											rel={"noreferrer noopener"}
+											target={'_blank'}
+											rel={'noreferrer noopener'}
 										>
 										<p className="text-base font-medium text-gray-900" dangerouslySetInnerHTML={{__html: title}}></p>
 										<p className="mt-1 text-sm text-gray-500" dangerouslySetInnerHTML={{__html: pubDate}}></p>
