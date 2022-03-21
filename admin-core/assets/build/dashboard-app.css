@@ -1036,14 +1036,12 @@ select {
   transition-property: all;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
   transition-duration: 150ms;
-}.duration-500 {
-  transition-duration: 500ms;
 }.duration-150 {
   transition-duration: 150ms;
-}.duration-200 {
-  transition-duration: 200ms;
 }.duration-300 {
   transition-duration: 300ms;
+}.duration-200 {
+  transition-duration: 200ms;
 }.ease-in-out {
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }.ease-out {
@@ -1258,8 +1256,12 @@ select {
     line-height: 1.25rem;
   }
 
-  .sm\:duration-700 {
-    transition-duration: 700ms;
+  .sm\:duration-150 {
+    transition-duration: 150ms;
+  }
+
+  .sm\:duration-300 {
+    transition-duration: 300ms;
   }
 }@media (min-width: 1024px) {
 
