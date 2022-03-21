@@ -13,9 +13,6 @@ const UserConditionOptions = ( props ) => {
 		UAGLoggedIn,
 		UAGLoggedOut,
 		UAGDisplayConditions,
-		UAGHideDesktop,
-		UAGHideMob,
-		UAGHideTab,
 		UAGSystem,
 		UAGBrowser,
 		UAGUserRole,
@@ -32,10 +29,6 @@ const UserConditionOptions = ( props ) => {
 				options={ [
 					{ value: 'none', label: __( 'None' ) },
 					{ value: 'userstate', label: __( 'User State' ) },
-					{
-						value: 'responsiveVisibility',
-						label: __( 'Responsive Visibility' ),
-					},
 					{ value: 'userRole', label: __( 'User Role' ) },
 					{ value: 'browser', label: __( 'Browser' ) },
 					{ value: 'os', label: __( 'Operating System' ) },
@@ -58,37 +51,6 @@ const UserConditionOptions = ( props ) => {
 						onChange={ () =>
 							setAttributes( {
 								UAGLoggedOut: ! attributes.UAGLoggedOut,
-							} )
-						}
-					/>
-				</>
-			) }
-			{ UAGDisplayConditions === 'responsiveVisibility' && (
-				<>
-					<ToggleControl
-						label={ __( 'Hide on Desktop' ) }
-						checked={ UAGHideDesktop }
-						onChange={ () =>
-							setAttributes( {
-								UAGHideDesktop: ! attributes.UAGHideDesktop,
-							} )
-						}
-					/>
-					<ToggleControl
-						label={ __( 'Hide on Tablet' ) }
-						checked={ UAGHideTab }
-						onChange={ () =>
-							setAttributes( {
-								UAGHideTab: ! attributes.UAGHideTab,
-							} )
-						}
-					/>
-					<ToggleControl
-						label={ __( 'Hide on Mobile' ) }
-						checked={ UAGHideMob }
-						onChange={ () =>
-							setAttributes( {
-								UAGHideMob: ! attributes.UAGHideMob,
 							} )
 						}
 					/>
@@ -155,6 +117,61 @@ const UserConditionOptions = ( props ) => {
 	);
 };
 
+const ResponsiveConditionOptions = ( props ) => {
+	const { attributes, setAttributes } = props;
+	const {
+		UAGHideDesktop,
+		UAGHideMob,
+		UAGHideTab,
+		UAGResponsiveCondition,
+	} = attributes;
+
+	return (
+		<>
+		<ToggleControl
+			label={ __( 'Responsive Condition' ) }
+			checked={ UAGResponsiveCondition }
+			onChange={ () =>
+				setAttributes( {
+					UAGResponsiveCondition: ! attributes.UAGResponsiveCondition,
+				} )
+			}
+		/>
+		{ UAGResponsiveCondition && (
+		<>
+			<ToggleControl
+				label={ __( 'Hide on Desktop' ) }
+				checked={ UAGHideDesktop }
+				onChange={ () =>
+					setAttributes( {
+						UAGHideDesktop: ! attributes.UAGHideDesktop,
+					} )
+				}
+			/>
+			<ToggleControl
+				label={ __( 'Hide on Tablet' ) }
+				checked={ UAGHideTab }
+				onChange={ () =>
+					setAttributes( {
+						UAGHideTab: ! attributes.UAGHideTab,
+					} )
+				}
+			/>
+			<ToggleControl
+				label={ __( 'Hide on Mobile' ) }
+				checked={ UAGHideMob }
+				onChange={ () =>
+					setAttributes( {
+						UAGHideMob: ! attributes.UAGHideMob,
+					} )
+				}
+			/>
+		</>
+		) }
+		</>
+	);
+};
+
 const AdvancedControlsBlock = createHigherOrderComponent( ( BlockEdit ) => {
 	return ( props ) => {
 		const { isSelected } = props;
@@ -177,7 +194,14 @@ const AdvancedControlsBlock = createHigherOrderComponent( ( BlockEdit ) => {
 					>
 						<p className="components-base-control__help">{ __( "Below Spectra settings will only take effect once you are on the live page, and not while you're editing.", 'ultimate-addons-for-gutenberg' ) }</p>
 						{ UserConditionOptions( props ) }
-						<p className="components-base-control__help">{ __( "Above UAG settings will only take effect once you are on the live page, and not while you're editing.", 'ultimate-addons-for-gutenberg' ) }</p>
+					</UAGAdvancedPanelBody>
+					<UAGAdvancedPanelBody
+						title={ __( 'Responsive Conditions', 'ultimate-addons-for-gutenberg' ) }
+						initialOpen={ false }
+						className="block-editor-block-inspector__advanced uagb-extention-tab"
+					>
+						<p className="components-base-control__help">{ __( "Below Spectra settings will only take effect once you are on the live page, and not while you're editing.", 'ultimate-addons-for-gutenberg' ) }</p>
+						{ ResponsiveConditionOptions( props ) }
 					</UAGAdvancedPanelBody>
 				</InspectorControls>
 				}
@@ -192,9 +216,10 @@ function ApplyExtraClass( extraProps, blockType, attributes ) {
 		UAGHideTab,
 		UAGHideMob,
 		UAGDisplayConditions,
+		UAGResponsiveCondition
 	} = attributes;
 
-	if ( 'responsiveVisibility' === UAGDisplayConditions ) {
+	if ( 'responsiveVisibility' === UAGDisplayConditions || UAGResponsiveCondition ) {
 		if ( UAGHideDesktop ) {
 			extraProps.className = extraProps.className + ' uag-hide-desktop';
 		}
@@ -227,6 +252,7 @@ if ( 'enabled' === enableConditions ) {
 
 			if( isSelected && ! excludeBlocks.includes( name ) ) {
 				return (
+					<>
 					<UAGAdvancedPanelBody
 						title={ __(
 							'Display Conditions',
@@ -243,6 +269,23 @@ if ( 'enabled' === enableConditions ) {
 							) }
 						</p>
 					</UAGAdvancedPanelBody>
+					<UAGAdvancedPanelBody
+						title={ __(
+							'Responsive Conditions',
+							'ultimate-addons-for-gutenberg'
+						) }
+						initialOpen={ false }
+						className="block-editor-block-inspector__advanced uagb-extention-tab"
+					>
+					{ ResponsiveConditionOptions( props ) }
+						<p className="components-base-control__help">
+							{ __(
+								"Above setting will only take effect once you are on the live page, and not while you're editing.",
+								'ultimate-addons-for-gutenberg'
+							) }
+						</p>
+					</UAGAdvancedPanelBody>
+					</>
 				);
 			}
 		}
