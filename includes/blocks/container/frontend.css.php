@@ -126,15 +126,15 @@ if ( 'alignwide' === $attr['innerContentWidth'] ) {
 
 	$left_padding_desktop  = ! empty( $attr['leftPaddingDesktop'] ) ? $attr['leftPaddingDesktop'] : 0;
 	$right_padding_desktop = ! empty( $attr['rightPaddingDesktop'] ) ? $attr['rightPaddingDesktop'] : 0;
-	$column_gap_desktop = ! empty( $attr['columnGapDesktop'] ) ? $attr['columnGapDesktop'] : 0;
+	$column_gap_desktop    = ! empty( $attr['columnGapDesktop'] ) ? $attr['columnGapDesktop'] : 0;
 
 	$left_padding_tablet  = ! empty( $attr['leftPaddingTablet'] ) ? $attr['leftPaddingTablet'] : 0;
 	$right_padding_tablet = ! empty( $attr['rightPaddingTablet'] ) ? $attr['rightPaddingTablet'] : 0;
-	$column_gap_tablet = ! empty( $attr['columnGapTablet'] ) ? $attr['columnGapTablet'] : 0;
+	$column_gap_tablet    = ! empty( $attr['columnGapTablet'] ) ? $attr['columnGapTablet'] : 0;
 
 	$left_padding_mobile  = ! empty( $attr['leftPaddingMobile'] ) ? $attr['leftPaddingMobile'] : 0;
 	$right_padding_mobile = ! empty( $attr['rightPaddingMobile'] ) ? $attr['rightPaddingMobile'] : 0;
-	$column_gap_mobile = ! empty( $attr['columnGapMobile'] ) ? $attr['columnGapMobile'] : 0;
+	$column_gap_mobile    = ! empty( $attr['columnGapMobile'] ) ? $attr['columnGapMobile'] : 0;
 
 	$selectors[ '.uagb-is-root-container.uagb-block-' . $id ] = array( // phpcs:ignore WordPress.WP.GlobalVariablesOverride.Prohibited
 		'--inner-content-custom-width' => $attr['innerContentCustomWidthDesktop'] . 'px',
