@@ -170,8 +170,9 @@ function styling( props ) {
 			'--inner-content-custom-width' : attributes[`innerContentCustomWidth${deviceType}`] + 'px',
 			'--padding-left' : ( attributes[`leftPadding${deviceType}`] || 0 ) + paddingType,
 			'--padding-right' : ( attributes[`rightPadding${deviceType}`] || 0 ) + paddingType,
-			'padding-left': `calc( ( 100% - var( --inner-content-custom-width ) ) / 2 + var( --padding-left ))`,
-			'padding-right': `calc( ( 100% - var( --inner-content-custom-width ) ) / 2 + var( --padding-right ))`,
+			'--column-gap' : ( attributes[`columnGap${deviceType}`] || 0 ) + columnGapType,
+			'padding-left': `calc( ( 100vw - var( --inner-content-custom-width ) ) / 2 + var( --padding-left ) - ( var( --column-gap ) / 2 ))`,
+			'padding-right': `calc( ( 100vw - var( --inner-content-custom-width ) ) / 2 + var( --padding-right ) - ( var( --column-gap ) / 2 ))`,
 		};
 	}
 
