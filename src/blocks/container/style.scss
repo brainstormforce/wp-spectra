@@ -59,7 +59,7 @@
 	}
 }
 
-.entry-content .wp-block-uagb-container > *:not(.wp-block-uagb-container) {
+.entry-content .wp-block-uagb-container > *:not(.wp-block-uagb-container):not(.wp-block-uagb-column):not(.wp-block-uagb-columns):not(.wp-block-uagb-section) {
 	width: unset !important;
 	min-width: unset !important;
 	max-width: unset !important;

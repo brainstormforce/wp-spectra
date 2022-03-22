@@ -212,6 +212,219 @@ const transforms = {
 				);
 			},
 		},
+		{
+			type: 'block',
+			blocks: [ 'uagb/columns' ],
+			priority: 1,
+			transform: ( attributes, innerBlocks ) => {
+
+				const {
+					backgroundType,
+					backgroundColor,
+					widthType,
+					contentWidth,
+					borderRadius,
+					topPaddingTablet,
+					bottomPaddingTablet,
+					leftPaddingTablet,
+					rightPaddingTablet,
+					topMarginTablet,
+					bottomMarginTablet,
+					leftMarginTablet,
+					rightMarginTablet,
+					topPaddingMobile,
+					bottomPaddingMobile,
+					leftPaddingMobile,
+					rightPaddingMobile,
+					topMarginMobile,
+					bottomMarginMobile,
+					leftMarginMobile,
+					rightMarginMobile,
+					boxShadowColor,
+					boxShadowHOffset,
+					boxShadowVOffset,
+					boxShadowBlur,
+					boxShadowSpread,
+					boxShadowPosition,
+					gradientValue,
+					borderStyle,
+					borderWidth,
+					borderColor,
+					borderHoverColor,
+					topMarginDesktop,
+					bottomMarginDesktop,
+					leftMarginDesktop,
+					rightMarginDesktop,
+					leftPadding,
+					rightPadding,
+					topPadding,
+					bottomPadding,
+					stack,
+					align,
+					width,
+					columns,
+					backgroundImage,
+					backgroundPosition,
+					backgroundSize,
+					backgroundRepeat,
+					backgroundAttachment,
+				} = attributes;
+
+				const containerWidth = 'full' === align ? 'alignfull' : 'alignwide';
+				let innerContainerCustomWidth = null;
+				let innerContentWidth = null;
+
+				if ( 'full' === align ) {
+
+					innerContainerCustomWidth = ( 'custom' === contentWidth && 'px' === widthType ) ? width : 1200;
+
+					innerContentWidth = ( 'custom' === contentWidth && 'px' === widthType ) ? 'alignwide' : 'alignfull';
+				}
+
+				const innerBlocksTemplate = [];
+				const containerChildWidth = ( 100 / columns );
+				/* eslint-disable no-shadow */
+				innerBlocks.map( ( child ) => {
+					const {
+						backgroundType,
+						backgroundColor,
+						borderRadius,
+						topPaddingTablet,
+						bottomPaddingTablet,
+						leftPaddingTablet,
+						rightPaddingTablet,
+						topMarginTablet,
+						bottomMarginTablet,
+						leftMarginTablet,
+						rightMarginTablet,
+						topPaddingMobile,
+						bottomPaddingMobile,
+						leftPaddingMobile,
+						rightPaddingMobile,
+						topMarginMobile,
+						bottomMarginMobile,
+						leftMarginMobile,
+						rightMarginMobile,
+						gradientValue,
+						borderStyle,
+						borderWidth,
+						borderColor,
+						borderHoverColor,
+						topMargin,
+						bottomMargin,
+						leftMargin,
+						rightMargin,
+						leftPadding,
+						rightPadding,
+						topPadding,
+						bottomPadding,
+						colWidth,
+					} = child?.attributes;
+
+					const width = colWidth ? colWidth : containerChildWidth;
+					/* eslint-enable no-shadow */
+					innerBlocksTemplate.push( [
+						'uagb/container',
+						{
+							widthDesktop: width,
+							backgroundType,
+							backgroundColor,
+							borderRadius,
+							topPaddingTablet,
+							bottomPaddingTablet,
+							leftPaddingTablet,
+							rightPaddingTablet,
+							topMarginTablet,
+							bottomMarginTablet,
+							leftMarginTablet,
+							rightMarginTablet,
+							topPaddingMobile,
+							bottomPaddingMobile,
+							leftPaddingMobile,
+							rightPaddingMobile,
+							topMarginMobile,
+							bottomMarginMobile,
+							leftMarginMobile,
+							rightMarginMobile,
+							gradientValue,
+							borderStyle,
+							borderWidth,
+							borderColor,
+							borderHoverColor,
+							topMarginDesktop: topMargin,
+							bottomMarginDesktop: bottomMargin,
+							leftMarginDesktop: leftMargin,
+							rightMarginDesktop: rightMargin,
+							leftPaddingDesktop: leftPadding,
+							rightPaddingDesktop: rightPadding,
+							topPaddingDesktop: topPadding,
+							bottomPaddingDesktop: bottomPadding,
+
+						},
+						child?.innerBlocks
+					] );
+
+					return child;
+				} );
+
+				return createBlock(
+					'uagb/container',
+					{
+						contentWidth: containerWidth,
+						backgroundType,
+						backgroundColor,
+						gradientValue,
+						innerContentCustomWidthDesktop: innerContainerCustomWidth || 1200,
+						innerContentWidth: innerContentWidth || 'alignfull',
+						borderStyle,
+						borderWidth,
+						borderColor,
+						borderHoverColor,
+						borderRadius,
+						boxShadowColor,
+						boxShadowHOffset,
+						boxShadowVOffset,
+						boxShadowBlur,
+						boxShadowSpread,
+						boxShadowPosition,
+						topMarginDesktop,
+						bottomMarginDesktop,
+						leftMarginDesktop,
+						rightMarginDesktop,
+						topMarginTablet,
+						bottomMarginTablet,
+						leftMarginTablet,
+						rightMarginTablet,
+						topMarginMobile,
+						bottomMarginMobile,
+						leftMarginMobile,
+						rightMarginMobile,
+						topPaddingMobile,
+						bottomPaddingMobile,
+						leftPaddingMobile,
+						rightPaddingMobile,
+						topPaddingTablet,
+						bottomPaddingTablet,
+						leftPaddingTablet,
+						rightPaddingTablet,
+						leftPaddingDesktop : leftPadding,
+						rightPaddingDesktop : rightPadding,
+						topPaddingDesktop : topPadding,
+						bottomPaddingDesktop : bottomPadding,
+						backgroundImage,
+						backgroundPosition,
+						backgroundSize,
+						backgroundRepeat,
+						backgroundAttachment,
+						directionDesktop: 'row',
+						directionTablet: 'tablet' === stack ? 'column' : 'row',
+						directionMobile: 'mobile' === stack ? 'column' : 'row',
+						variationSelected: true
+					},
+					createBlocksFromInnerBlocksTemplate( innerBlocksTemplate )
+				);
+			},
+		},
 	],
 };
 

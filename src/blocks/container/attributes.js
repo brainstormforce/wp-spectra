@@ -4,7 +4,7 @@ const attributes = {
 	},
 	contentWidth: {
 		type: 'string',
-		default: 'alignwide',
+		default: 'alignfull',
 	},
 	innerContentWidth: {
 		type: 'string',
@@ -388,6 +388,14 @@ const attributes = {
 		type: 'boolean',
 		default: false,
 		isUAGStyle: true,
+	},
+	blockDescendants: {
+		type: 'array',
+		default: []
+	},
+	widthSetByUser: {
+		type: 'boolean',
+		default: false,
 	},
 };
 

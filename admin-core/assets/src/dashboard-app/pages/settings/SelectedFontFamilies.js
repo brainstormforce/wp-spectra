@@ -53,24 +53,25 @@ const SelectedFontFamilies = () => {
     };
 
     const updateSelectedFontFamilies = ( font ) => {
+		if( enableSelectedFontFamilies === 'enabled' ) {
+			dispatch( {type: 'UPDATE_SELECTED_FONT_FAMILIES', payload: font } );
 
-        dispatch( {type: 'UPDATE_SELECTED_FONT_FAMILIES', payload: font } );
+			const action = 'uag_select_font_globally',
+				nonce = uag_react.select_font_globally_nonce;
 
-		const action = 'uag_select_font_globally',
-			nonce = uag_react.select_font_globally_nonce;
+			const formData = new window.FormData();
 
-		const formData = new window.FormData();
+			formData.append( 'action', action );
+			formData.append( 'security', nonce );
+			formData.append( 'value', JSON.stringify( font ) );
 
-		formData.append( 'action', action );
-		formData.append( 'security', nonce );
-		formData.append( 'value', JSON.stringify( font ) );
-
-		apiFetch( {
-			url: uag_react.ajax_url,
-			method: 'POST',
-			body: formData,
-		} ).then( () => {
-		} );
+			apiFetch( {
+				url: uag_react.ajax_url,
+				method: 'POST',
+				body: formData,
+			} ).then( () => {
+			} );
+		}
 	};
 	const customStyles = {
 		control: ( provided ) => ( {
@@ -100,7 +101,7 @@ const SelectedFontFamilies = () => {
                     maxMenuHeight={ 140 }
                     minMenuHeight = { 70 }
                     isSearchable={true}
-                    className={`mt-4 cursor-pointer focus:ring-wpcolor uag-font-select-${enableSelectedFontFamilies}`}
+                    className={`mt-4 cursor-pointer focus:ring-wpcolor`}
 					theme={( theme ) => ( {
 						...theme,
 						colors: {
