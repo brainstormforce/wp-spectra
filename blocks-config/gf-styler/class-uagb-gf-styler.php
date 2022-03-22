@@ -815,6 +815,10 @@ if ( ! class_exists( 'UAGB_GF_Styler' ) ) {
 						'successMsgFontStyle'           => array(
 							'type' => 'string',
 						),
+						'isPreview'                     => array(
+							'type'    => 'boolean',
+							'default' => false,
+						),
 					),
 					'render_callback' => array( $this, 'render_html' ),
 				)

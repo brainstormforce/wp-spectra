@@ -14,7 +14,6 @@ const Render = ( props ) => {
 	const { attributes, isSelected, className } = props.parentProps;
 	const deviceType = useDeviceType();
 	const {
-		isPreview,
 		stack,
 		align,
 		vAlign,

@@ -146,7 +146,7 @@ const ColumnsComponent = ( props ) => {
 	if ( ! hasInnerBlocks ) {
 
 		return (
-			props.attributes.isPreview ? <img width='100%' src={previewImageData}/> :
+			props.attributes.isPreview ? <img width='100%' src={previewImageData} alt=''/> :
 			<div className='uagb-columns-variation-picker'>
 				<BlockVariationPicker
 					icon={ '' }

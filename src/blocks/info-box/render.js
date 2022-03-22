@@ -189,7 +189,7 @@ const Render = ( props ) => {
 
 
 	return (
-		isPreview ? <img width='100%' src={previewImageData}/> :
+		isPreview ? <img width='100%' src={previewImageData} alt=''/> :
 		<div
 			className={ classnames(
 				`uagb-block-${ block_id }`,

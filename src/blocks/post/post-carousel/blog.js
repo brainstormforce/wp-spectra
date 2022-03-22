@@ -205,7 +205,7 @@ function Blog( props ) {
 	return (
 		<Suspense fallback={ lazyLoader() }>
 			<>
-			{ isPreview } ? <img width='100%' src={previewImageData}/> :
+			{ isPreview } ? <img width='100%' src={previewImageData} alt=''/> :
 			<Slider
 				className={ classnames(
 					'is-carousel',

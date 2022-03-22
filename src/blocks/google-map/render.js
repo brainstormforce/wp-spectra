@@ -25,7 +25,7 @@ const Render = ( props ) => {
 	const url = `https://www.google.com/maps/embed/v1/place?key=${ wp.uagb_google_api_key }&q=${ encoded_address }&zoom=${ zoom }&language=${ lang_par }`;
 	const previewImageData = 'data:image/svg+xml;base64,';
 	return (
-		isPreview ? <img width='100%' src={previewImageData}/> :
+		isPreview ? <img width='100%' src={previewImageData} alt=''/> :
 		<div
 			className={ classnames(
 				className,
