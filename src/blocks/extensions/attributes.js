@@ -40,6 +40,10 @@ function addAttributes( settings ) {
 					type: 'boolean',
 					default: false,
 				},
+				UAGResponsiveCondition: {
+					type: 'boolean',
+					default: true,
+				},
 			} );
 		}
 	}
