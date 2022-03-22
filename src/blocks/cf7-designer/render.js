@@ -70,7 +70,7 @@ const Render = ( props ) => {
 		);
 	}
 
-	const previewImageData = '';
+	const previewImageData = 'data:image/svg+xml;base64,';
 
 	return (
 		isPreview ? <img width='100%' src={previewImageData}/> :
