@@ -4,6 +4,10 @@ const attributes = {
 	},
 	contentWidth: {
 		type: 'string',
+		default: 'alignfull',
+	},
+	innerContentWidth: {
+		type: 'string',
 		default: 'alignwide',
 		UAGCopyPaste: {
 			styleType: 'content-width'
@@ -36,6 +40,22 @@ const attributes = {
 		UAGCopyPaste: {
 			styleType: 'container-width-type'
 		}
+	},
+	innerContentCustomWidthDesktop: {
+		type: 'number',
+		default: 1200,
+	},
+	innerContentCustomWidthTablet: {
+		type: 'number',
+		default: 1200,
+	},
+	innerContentCustomWidthMobile: {
+		type: 'number',
+		default: 1200,
+	},
+	innerContentCustomWidthType: {
+		type: 'string',
+		default: 'px',
 	},
 	minHeightDesktop: {
 		type: 'number',
@@ -526,7 +546,15 @@ const attributes = {
 	isBlockRootParent: {
 		type: 'boolean',
 		default: false,
-	}
+	},
+	blockDescendants: {
+		type: 'array',
+		default: []
+	},
+	widthSetByUser: {
+		type: 'boolean',
+		default: false,
+	},
 };
 
 export default attributes;

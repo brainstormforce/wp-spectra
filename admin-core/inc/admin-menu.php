@@ -48,7 +48,7 @@ class Admin_Menu {
 	 * @var string Class object.
 	 * @since 1.0.0
 	 */
-	private $menu_slug = 'uag';
+	private $menu_slug = 'spectra';
 
 	/**
 	 * Constructor
@@ -273,6 +273,8 @@ class Admin_Menu {
 				if ( 'yes' !== get_option( 'uagb-old-user-less-than-2' ) ) {
 					$exclude_blocks[] = 'buttons';
 					$exclude_blocks[] = 'wp-search';
+					$exclude_blocks[] = 'columns';
+					$exclude_blocks[] = 'section';
 				}
 
 				if ( array_key_exists( 'extension', $info ) && $info['extension'] ) {

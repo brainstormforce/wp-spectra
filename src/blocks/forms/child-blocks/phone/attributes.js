@@ -21,5 +21,9 @@ const attributes = {
 			'ultimate-addons-for-gutenberg'
 		),
 	},
+	selectPhoneCode: {
+		type: 'string',
+		default: '+44'
+	},
 };
 export default attributes;
