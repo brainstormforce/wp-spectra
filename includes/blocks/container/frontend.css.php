@@ -71,13 +71,13 @@ $selectors = array(
 		'width'     => UAGB_Helper::get_css_value( $attr['widthDesktop'], $attr['widthType'] ),
 		'max-width' => UAGB_Helper::get_css_value( $attr['widthDesktop'], $attr['widthType'] ),
 	),
-	' .uagb-container__shape-top svg'    => array(
+	' .uagb-container__shape-top svg'            => array(
 		'height' => UAGB_Helper::get_css_value( $attr['topHeight'], 'px' ),
 	),
 	' .uagb-container__shape.uagb-container__shape-top .uagb-container__shape-fill' => array(
 		'fill' => UAGB_Helper::hex2rgba( $attr['topColor'], ( isset( $attr['topDividerOpacity'] ) && '' !== $attr['topDividerOpacity'] ) ? $attr['topDividerOpacity'] : 100 ),
 	),
-	' .uagb-container__shape-bottom svg' => array(
+	' .uagb-container__shape-bottom svg'         => array(
 		'height' => UAGB_Helper::get_css_value( $attr['bottomHeight'], 'px' ),
 	),
 	' .uagb-container__shape.uagb-container__shape-bottom .uagb-container__shape-fill' => array(
@@ -116,10 +116,10 @@ $t_selectors = array(
 		'width'     => UAGB_Helper::get_css_value( $attr['widthTablet'], $attr['widthType'] ),
 		'max-width' => UAGB_Helper::get_css_value( $attr['widthTablet'], $attr['widthType'] ),
 	),
-	' .uagb-container__shape-bottom svg' => array(
+	' .uagb-container__shape-bottom svg'         => array(
 		'height' => UAGB_Helper::get_css_value( $attr['bottomHeightTablet'], 'px' ),
 	),
-	' .uagb-container__shape-top svg'    => array(
+	' .uagb-container__shape-top svg'            => array(
 		'height' => UAGB_Helper::get_css_value( $attr['topHeightTablet'], 'px' ),
 	),
 );
@@ -147,10 +147,10 @@ $m_selectors = array(
 		'width'     => UAGB_Helper::get_css_value( $attr['widthMobile'], $attr['widthType'] ),
 		'max-width' => UAGB_Helper::get_css_value( $attr['widthMobile'], $attr['widthType'] ),
 	),
-	' .uagb-container__shape-bottom svg' => array(
+	' .uagb-container__shape-bottom svg'         => array(
 		'height' => UAGB_Helper::get_css_value( $attr['bottomHeightMobile'], 'px' ),
 	),
-	' .uagb-container__shape-top svg'    => array(
+	' .uagb-container__shape-top svg'            => array(
 		'height' => UAGB_Helper::get_css_value( $attr['topHeightMobile'], 'px' ),
 	),
 );
