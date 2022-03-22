@@ -20,6 +20,7 @@ if ( uagLocalStorage ) {
 __webpack_public_path__ = uagb_blocks_info.uagb_url + 'dist/';
 
 import './blocks/extensions/attributes.js';
+import './blocks/container/block.js';
 import './blocks/advanced-heading/block.js';
 import './blocks/post/block.js';
 import './blocks/section/block.js';
@@ -70,7 +71,6 @@ import './blocks/tabs/block.js';
 import './blocks/tabs-child/block.js';
 import './blocks/lottie/block.js';
 import './blocks/star-rating/block.js';
-import './blocks/container/block.js';
 
 wp.UAGBSvgIcons = Object.keys( uagb_blocks_info.uagb_svg_icons );
 
@@ -81,13 +81,3 @@ import { updateCategory } from '@wordpress/blocks';
 updateCategory( 'uagb', {
 	icon: UAGB_Block_Icons.logo,
 } );
-
-setTimeout( async function () {
-	// Sort the Blocks based on title.
-	wp.blocks.getBlockTypes().sort( ( blockA, blockB ) => {
-		if ( 'uagb' === blockA.category && 'uagb' === blockB.category ) {
-			return blockA.title > blockB.title ? 1 : -1;
-		}
-		return 0;
-	} );
-}, 50 );
