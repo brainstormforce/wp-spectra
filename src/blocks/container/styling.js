@@ -91,37 +91,31 @@ function styling( props ) {
 		columnGapType,
 		contentWidth,
 		innerContentWidth,
-		bottomType,
 		bottomColor,
 		bottomHeight,
 		bottomHeightTablet,
 		bottomHeightMobile,
 		bottomWidth,
-		topType,
 		topColor,
 		topHeight,
 		topHeightTablet,
 		topHeightMobile,
 		topWidth,
-		bottomFlip,
-		topFlip,
-		topContentAboveShape,
-		bottomContentAboveShape,
 	} = attributes;
 
 	const selectors = {
-		' .uagb-columns__shape-top svg' : {
+		' .uagb-container__shape-top svg' : {
 			'width': 'calc( ' + topWidth + '% + 1.3px )',
 			'height': generateCSSUnit( topHeight, 'px' )
 		},
-		' .uagb-columns__shape-top .uagb-columns__shape-fill' : {
+		' .uagb-container__shape-top .uagb-container__shape-fill' : {
 			'fill': hexToRgba( maybeGetColorForVariable( topColor ), 100 ),
 		},
-		' .uagb-columns__shape-bottom svg' : {
+		' .uagb-container__shape-bottom svg' : {
 			'width': 'calc( ' + bottomWidth + '% + 1.3px )',
 			'height': generateCSSUnit( bottomHeight, 'px' )
 		},
-		' .uagb-columns__shape-bottom .uagb-columns__shape-fill' : {
+		' .uagb-container__shape-bottom .uagb-container__shape-fill' : {
 			'fill': hexToRgba( maybeGetColorForVariable( bottomColor ), 100 ),
 		},
 	};
@@ -252,10 +246,10 @@ function styling( props ) {
 			'flex-wrap' : wrapTablet,
 			'align-content' : alignContentTablet,
 		},
-		' .uagb-columns__shape-top svg' : {
+		' .uagb-container__shape-top svg' : {
 			'height': generateCSSUnit( topHeightTablet, 'px' )
 		},
-		' .uagb-columns__shape-bottom svg' : {
+		' .uagb-container__shape-bottom svg' : {
 			'height': generateCSSUnit( bottomHeightTablet, 'px' )
 		},
 	};
@@ -289,10 +283,10 @@ function styling( props ) {
 			'flex-wrap' : wrapMobile,
 			'align-content' : alignContentMobile,
 		},
-		' .uagb-columns__shape-top svg' : {
+		' .uagb-container__shape-top svg' : {
 			'height': generateCSSUnit( topHeightMobile, 'px' )
 		},
-		' .uagb-columns__shape-bottom svg' : {
+		' .uagb-container__shape-bottom svg' : {
 			'height': generateCSSUnit( bottomHeightMobile, 'px' )
 		},
 	};

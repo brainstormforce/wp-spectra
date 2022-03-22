@@ -25,7 +25,7 @@ const Render = ( props ) => {
 	const direction = attributes[ 'direction' + deviceType ];
 
 	const moverDirection = 'row' === direction ? 'horizontal' : 'vertical';
-console.log(topType);
+
 	const topDividerHtml = 'none' !== topType && (
 		<div
 			className={ classnames(
