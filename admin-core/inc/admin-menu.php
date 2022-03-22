@@ -273,6 +273,8 @@ class Admin_Menu {
 				if ( 'yes' !== get_option( 'uagb-old-user-less-than-2' ) ) {
 					$exclude_blocks[] = 'buttons';
 					$exclude_blocks[] = 'wp-search';
+					$exclude_blocks[] = 'column';
+					$exclude_blocks[] = 'section';
 				}
 
 				if ( array_key_exists( 'extension', $info ) && $info['extension'] ) {
