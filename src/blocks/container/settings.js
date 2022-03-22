@@ -641,7 +641,7 @@ const Settings = ( props ) => {
 						responsive={true}
 						help={ __( 'Define whether the items are forced in a single line (No Wrap) or can be flowed into multiple lines (Wrap)', 'ultimate-addons-for-gutenberg' ) }
 					/>
-					{ 'wrap' === attributes[ 'wrap' + deviceType ] &&
+					{ ( 'wrap' === attributes[ 'wrap' + deviceType ] || 'wrap-reverse' === attributes[ 'wrap' + deviceType ] ) &&
 						<MultiButtonsControl
 							setAttributes={ setAttributes }
 							label={ __( 'Align Content', 'ultimate-addons-for-gutenberg' ) }
