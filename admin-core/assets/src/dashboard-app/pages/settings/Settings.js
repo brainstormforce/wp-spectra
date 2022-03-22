@@ -25,15 +25,15 @@ const Settings = () => {
     const activeSettingsNavigationTab = useSelector( ( state ) => state.activeSettingsNavigationTab );
 
     const navigation = [
+		{ name: __( 'Editor Options', 'ultimate-addons-for-gutenberg' ), slug: 'global-settings', icon: SettingsIcons['global-settings'] },
         { name: __( 'Asset Generation', 'ultimate-addons-for-gutenberg' ), slug: 'asset-generation', icon: SettingsIcons['asset-generation'] },
         { name: __( 'Templates', 'ultimate-addons-for-gutenberg' ), slug: 'templates', icon: SettingsIcons.templates },
         { name: __( 'Version Control', 'ultimate-addons-for-gutenberg' ), slug: 'version-control', icon: SettingsIcons['version-control'] },
         { name: __( 'Performance', 'ultimate-addons-for-gutenberg' ), slug: 'fonts-performance', icon: SettingsIcons['fonts-performance'] },
-        { name: __( 'Global Settings', 'ultimate-addons-for-gutenberg' ), slug: 'global-settings', icon: SettingsIcons['global-settings'] },
       ];
 
     return (
-        <main className="max-w-[77rem] mx-auto my-[2.43rem] bg-white rounded-[0.2rem] shadow overflow-hidden h-[33rem]">
+        <main className="max-w-[77rem] mx-auto my-[2.43rem] bg-white rounded-[0.2rem] shadow overflow-hidden h-[34rem]">
             <div className="lg:grid lg:grid-cols-12 lg:gap-x-8 h-full">
                 <aside className="py-6 px-2 ml-8 sm:px-6 lg:py-6 lg:px-0 lg:col-span-3 border-r">
                     <nav className="space-y-1">
@@ -55,6 +55,12 @@ const Settings = () => {
                     </nav>
                 </aside>
                 <div className='space-y-8 mt-8 mb-0 mr-8 sm:px-6 lg:px-0 lg:col-span-9'>
+					{ 'global-settings' === activeSettingsNavigationTab &&
+						<>
+                            <CollapsePanels/>
+                            <CopyPasteStyles/>
+                        </>
+                    }
                     { 'asset-generation' === activeSettingsNavigationTab &&
                         <>
                             <AssetsGeneration/>
@@ -75,12 +81,6 @@ const Settings = () => {
                             <SelectedFontFamilies/>
                             <LoadFontsLocally/>
                             <PreloadLocalFonts/>
-                        </>
-                    }
-                    { 'global-settings' === activeSettingsNavigationTab &&
-                        <>
-                            <CollapsePanels/>
-                            <CopyPasteStyles/>
                         </>
                     }
                 </div>

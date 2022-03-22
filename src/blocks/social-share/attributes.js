@@ -54,7 +54,7 @@ const attributes = {
 	},
 	size: {
 		type: 'number',
-		default: 25,
+		default: 30,
 		isUAGStyle: true,
 	},
 	sizeType: {
@@ -72,7 +72,7 @@ const attributes = {
 	},
 	bgSize: {
 		type: 'number',
-		default: 0,
+		default: 10,
 		isUAGStyle: true,
 	},
 	bgSizeType: {

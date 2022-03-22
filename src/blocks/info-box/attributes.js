@@ -46,7 +46,7 @@ const attributes = {
 	},
 	icon: {
 		type: 'string',
-		default: 'fa fa-star',
+		default: 'fa fa-check-circle',
 	},
 	iconimgPosition: {
 		type: 'string',

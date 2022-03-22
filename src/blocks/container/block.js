@@ -10,6 +10,7 @@ import './style.scss';
 import { __ } from '@wordpress/i18n';
 import { registerBlockType } from '@wordpress/blocks';
 import variations from './variations';
+import transforms from './transforms';
 
 registerBlockType( 'uagb/container', {
 	title: __( 'Container', 'ultimate-addons-for-gutenberg' ),
@@ -36,4 +37,5 @@ registerBlockType( 'uagb/container', {
 	variations,
 	edit,
 	save,
+	transforms,
 } );

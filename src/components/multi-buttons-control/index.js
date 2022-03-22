@@ -144,7 +144,6 @@ const MultiButtonsControl = ( props ) => {
 	const onClickHandler = ( value ) => {
 		if ( onChange ) {
 			onChange( value );
-			return;
 		}
 		setAttributes( {
 			[ data.label ]: value,

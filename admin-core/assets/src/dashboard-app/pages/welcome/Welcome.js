@@ -71,7 +71,7 @@ const Welcome = () => {
                     </h3>
                     <p className='text-sm pb-2 pr-2'>
                       { __(
-                        'Learn everything you need to know about the UAG plugin with our comprehensive documentation.',
+                        'Learn everything you need to know about the Spectra plugin with our comprehensive documentation.',
                         'ultimate-addons-for-gutenberg'
                       ) }
                     </p>

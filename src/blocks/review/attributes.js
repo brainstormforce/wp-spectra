@@ -58,15 +58,15 @@ const attributes = {
 	},
 	rTitle: {
 		type: 'string',
-		default: '',
+		default: 'Spectra: Gutenberg Blocks',
 	},
 	rContent: {
 		type: 'string',
-		default: '',
+		default: 'Whether you’re a beginner, marketer, web designer or developer, Spectra includes all the tools and resources you can trust to succeed online.',
 	},
 	rAuthor: {
 		type: 'string',
-		default: '',
+		default: '– Brainstorm Force',
 	},
 	headingTag: {
 		type: 'string',
@@ -79,7 +79,7 @@ const attributes = {
 	mainimage: {
 		type: 'object',
 		default: {
-			url: '',
+			url:`${ uagb_blocks_info.uagb_url }/admin/assets/images/placeholder.png`
 		},
 	},
 	imgSize: {
@@ -97,7 +97,7 @@ const attributes = {
 	},
 	items: {
 		type: 'string',
-		default: '[{"label":"","value":0}]',
+		default: '[{"label":"Feature #1","value":5},{"label":"Feature #2","value":5},{"label":"Feature #3","value":5}]',
 	},
 	description: {
 		type: 'string',
@@ -132,7 +132,7 @@ const attributes = {
 	},
 	summaryDescription: {
 		type: 'string',
-		default: '',
+		default: 'Whether you’re a beginner, marketer, web designer or developer, Spectra includes all the tools and resources you can trust to succeed online.',
 	},
 	callToActionText: {
 		type: 'string',
@@ -283,7 +283,7 @@ const attributes = {
 	},
 	showFeature: {
 		type: 'boolean',
-		default: false,
+		default: true,
 	},
 	showAuthor: {
 		type: 'boolean',

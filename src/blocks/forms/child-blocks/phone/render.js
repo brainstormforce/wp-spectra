@@ -4,7 +4,7 @@ import React, { useLayoutEffect } from 'react';
 import { __ } from '@wordpress/i18n';
 import styles from './editor.lazy.scss';
 
-import { ToggleControl } from '@wordpress/components';
+import { SelectControl, ToggleControl } from '@wordpress/components';
 
 import { RichText } from '@wordpress/block-editor';
 
@@ -21,7 +21,7 @@ const Render = ( props ) => {
 
 	const { attributes, setAttributes, isSelected } = props;
 
-	const { block_id, phoneRequired, phoneName, pattern } = attributes;
+	const { block_id, phoneRequired, phoneName, pattern, selectPhoneCode } = attributes;
 
 	let phone_html = '';
 
@@ -31,7 +31,7 @@ const Render = ( props ) => {
 	} else if ( pattern === '[0-9]{3}-[0-9]{3}-[0-9]{4}' ) {
 		placeholder = __( '123-456-6789', 'ultimate-addons-for-gutenberg' );
 	}
-	
+
 	if ( pattern !== '' ) {
 		phone_html = (
 			<input
@@ -53,6 +53,11 @@ const Render = ( props ) => {
 			/>
 		);
 	}
+	const contryCode = [];
+
+	countryOptions.map( ( o, index ) => ( // eslint-disable-line no-unused-vars
+		contryCode.push( { value:  o.props.value, label:  o.props.children } )
+	) )
 
 	const isRequired = phoneRequired
 		? __( 'required', 'ultimate-addons-for-gutenberg' )
@@ -97,17 +102,16 @@ const Render = ( props ) => {
 					multiline={ false }
 					id={ block_id }
 				/>
-				<select
-					className="uagb-forms-input uagb-form-phone-country uagb-form-phone-country-editor"
-					id={ `uagb-form-country-${ block_id }` }
-					name={ `${ phoneName }[]` }
-				>
-					{ countryOptions.map( ( o, index ) => (
-						<option value={ o.props.value } key={ index }>
-							{ o.props.children }
-						</option>
-					) ) }
-				</select>
+				<SelectControl
+					className= { 'uagb-forms-input uagb-form-phone-country uagb-form-phone-country-editor' }
+					options={ contryCode }
+					value={ selectPhoneCode }
+					onChange={ ( value ) =>
+						setAttributes( {
+							selectPhoneCode: value,
+						} )
+					}
+				/>
 				{ phone_html }
 			</div>
 		</>

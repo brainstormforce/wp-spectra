@@ -158,7 +158,7 @@ function styling( props ) {
 			'margin-right': generateCSSUnit( imageRightMargin, imageMarginUnit ),
 			'width': generateCSSUnit( imgWidth, 'px' ),
 		},
-		' img': { 
+		' img': {
 			'margin-top': generateCSSUnit( imageTopMargin, imageMarginUnit ),
 			'margin-bottom': generateCSSUnit(
 				imageBottomMargin,
@@ -167,6 +167,7 @@ function styling( props ) {
 			'margin-left': generateCSSUnit( imageLeftMargin, imageMarginUnit ),
 			'margin-right': generateCSSUnit( imageRightMargin, imageMarginUnit ),
 			'width': generateCSSUnit( imgWidth, 'px' ),
+			'height': generateCSSUnit( imgWidth, 'px' ),
 		},
 	};
 
@@ -174,9 +175,18 @@ function styling( props ) {
 		if ( 'center' === align ) {
 			selectors[' img']['margin-left'] = 'auto';
 			selectors[' img']['margin-right'] = 'auto';
+			selectors[ ' .uagb-team__social-list' ] = {
+				'justify-content': 'center',
+			};
 		} else if ( 'left' === align ) {
 			selectors[' img']['margin-right'] = 'auto';
+			selectors[ ' .uagb-team__social-list' ] = {
+				'justify-content': 'flex-start',
+			};
 		} else if ( 'right' === align ) {
+			selectors[ ' .uagb-team__social-list' ] = {
+				'justify-content': 'flex-end',
+			};
 			selectors[' img']['margin-left'] = 'auto';
 		}
 	}

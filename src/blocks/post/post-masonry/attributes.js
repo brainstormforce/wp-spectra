@@ -760,6 +760,10 @@ const attributes = {
 	isPreview: {
 		type: 'boolean',
 		default: false,
+	},
+	postsOffset: {
+		type    : 'number',
+		default : 0,
 	}
 }
 

@@ -1,17 +1,13 @@
 .uagb-tabs__wrap {
 
 	.uagb-tabs-editor-controls {
-		left: 0;
-		background-color: #000;
-		position: relative;
+		position: absolute;
+		top: -24px;
+		background: #000;
+		padding: 2px;
+		left: 50%;
+		transform: translateX(-50%);
 		display: none;
-		width: -webkit-fit-content;
-		width: -moz-fit-content;
-		width: fit-content;
-		padding-left: 2px;
-		padding-right: 2px;
-		border-radius: 2px;
-		font-size: 5px;
 	}
 
 	span.uagb-tabs__remove {
@@ -20,8 +16,17 @@
 		z-index: 1;
 	}
 
+	li.uagb-tab {
+		position: relative;
+	}
+
 	li.uagb-tab:hover span.uagb-tabs__remove {
 		display: block;
+	}
+
+	li.uagb-tab.uagb-tabs__add-tab {
+		padding: 10px;
+		cursor: pointer;
 	}
 
 	.uagb-tab-item__move-forward,

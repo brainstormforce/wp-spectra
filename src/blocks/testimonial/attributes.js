@@ -76,6 +76,7 @@ const attributes = {
 	nameFontSize: {
 		type: 'number',
 		isUAGStyle: true,
+		default: 20,
 	},
 	nameFontSizeTablet: {
 		type: 'number',
@@ -93,6 +94,7 @@ const attributes = {
 	nameFontWeight: {
 		type: 'string',
 		isUAGStyle: true,
+		default: '500',
 	},
 	nameFontStyle: {
 		type: 'string',
@@ -149,6 +151,7 @@ const attributes = {
 	companyFontStyle: {
 		type: 'string',
 		isUAGStyle: true,
+		default: 'normal',
 	},
 	companyLineHeightType: {
 		type: 'string',
@@ -181,6 +184,7 @@ const attributes = {
 	descFontSize: {
 		type: 'number',
 		isUAGStyle: true,
+		default: 18,
 	},
 	descFontSizeTablet: {
 		type: 'number',
@@ -198,6 +202,7 @@ const attributes = {
 	descFontWeight: {
 		type: 'string',
 		isUAGStyle: true,
+		default: '400',
 	},
 	descFontStyle: {
 		type: 'string',
@@ -211,6 +216,7 @@ const attributes = {
 	descLineHeight: {
 		type: 'number',
 		isUAGStyle: true,
+		default: 1.6,
 	},
 	descLineHeightTablet: {
 		type: 'number',
@@ -229,12 +235,12 @@ const attributes = {
 	nameSpace: {
 		type: 'number',
 		isUAGStyle: true,
-		default: 5,
+		default: 15,
 	},
 	descSpace: {
 		type: 'number',
 		isUAGStyle: true,
-		default: 15,
+		default: 25,
 	},
 	block_id: {
 		type: 'string',
@@ -328,12 +334,12 @@ const attributes = {
 	},
 	arrowBorderSize: {
 		type: 'number',
-		default: 1,
+		default: 0,
 		isUAGStyle: true,
 	},
 	arrowBorderRadius: {
 		type: 'number',
-		default: 0,
+		default: 50,
 		isUAGStyle: true,
 	},
 	arrowColor: {
@@ -353,7 +359,7 @@ const attributes = {
 	},
 	contentPadding: {
 		type: 'number',
-		default: 5,
+		default: 10,
 		isUAGStyle: true,
 	},
 	backgroundType: {

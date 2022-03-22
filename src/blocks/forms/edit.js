@@ -139,10 +139,10 @@ const UAGBFormsEdit = ( props ) => {
 			formscope = mainDiv.getElementsByClassName( 'uagb-forms__outer-wrap' )
 		} else {
 			mainDiv = document.getElementById( 'block-' + id )
-			formscope = mainDiv.getElementsByClassName( 'uagb-forms__outer-wrap' )
+			formscope = mainDiv?.getElementsByClassName( 'uagb-forms__outer-wrap' )
 		}
 
-		if ( null !== formscope[ 0 ] && undefined !== formscope[ 0 ] ) {
+		if ( formscope && formscope[ 0 ] ) {
 			const editorwrap = formscope[ 0 ].children;
 			const formInnerWrap = editorwrap[ 0 ].children;
 			const editorBlockWrap = formInnerWrap[ 0 ].getElementsByClassName(
