@@ -5,7 +5,7 @@ import { addFilter } from '@wordpress/hooks';
 import { InspectorControls } from '@wordpress/block-editor';
 import UAGAdvancedPanelBody from '@Components/advanced-panel-body';
 
-const { enableConditions } = uagb_blocks_info;
+const { enableConditions, enableResponsiveConditions } = uagb_blocks_info;
 
 const UserConditionOptions = ( props ) => {
 	const { attributes, setAttributes } = props;
@@ -187,6 +187,7 @@ const AdvancedControlsBlock = createHigherOrderComponent( ( BlockEdit ) => {
 				<BlockEdit {...props} />
 				{isSelected && ! blockName.includes( 'uagb/' ) && ( blockName.includes( 'core/' ) || ( Array.isArray( customBlocks ) && 0 !== customBlocks.length && ( customBlocks.includes( blockName ) || customBlocks.includes( blockPrefix ) ) ) ) && ! excludeBlocks.includes( blockName ) &&
 				<InspectorControls>
+					{ 'enabled' === enableConditions &&
 					<UAGAdvancedPanelBody
 						title={ __( 'Display Conditions', 'ultimate-addons-for-gutenberg' ) }
 						initialOpen={ false }
@@ -195,6 +196,8 @@ const AdvancedControlsBlock = createHigherOrderComponent( ( BlockEdit ) => {
 						<p className="components-base-control__help">{ __( "Below Spectra settings will only take effect once you are on the live page, and not while you're editing.", 'ultimate-addons-for-gutenberg' ) }</p>
 						{ UserConditionOptions( props ) }
 					</UAGAdvancedPanelBody>
+					}
+					{ 'enabled' === enableResponsiveConditions &&
 					<UAGAdvancedPanelBody
 						title={ __( 'Responsive Conditions', 'ultimate-addons-for-gutenberg' ) }
 						initialOpen={ false }
@@ -203,6 +206,7 @@ const AdvancedControlsBlock = createHigherOrderComponent( ( BlockEdit ) => {
 						<p className="components-base-control__help">{ __( "Below Spectra settings will only take effect once you are on the live page, and not while you're editing.", 'ultimate-addons-for-gutenberg' ) }</p>
 						{ ResponsiveConditionOptions( props ) }
 					</UAGAdvancedPanelBody>
+					}
 				</InspectorControls>
 				}
 			</>
@@ -210,7 +214,7 @@ const AdvancedControlsBlock = createHigherOrderComponent( ( BlockEdit ) => {
 	};
 }, 'AdvancedControlsBlock' );
 
-function ApplyExtraClass( extraProps, blockType, attributes ) {
+function ApplyExtraClass( extraProps, attributes ) {
 	const {
 		UAGHideDesktop,
 		UAGHideTab,
@@ -236,11 +240,10 @@ function ApplyExtraClass( extraProps, blockType, attributes ) {
 	return extraProps;
 }
 
-if ( 'enabled' === enableConditions ) {
 	//For UAG Blocks.
 	addFilter(
 		'uag_advance_tab_content',
-		'uagb/advanced-control-block',
+		'uagb/advanced-display-condition',
 		function ( content, props ) {
 			if ( ! props ) {
 				return content;
@@ -253,6 +256,7 @@ if ( 'enabled' === enableConditions ) {
 			if( isSelected && ! excludeBlocks.includes( name ) ) {
 				return (
 					<>
+					{ 'enabled' === enableConditions &&
 					<UAGAdvancedPanelBody
 						title={ __(
 							'Display Conditions',
@@ -269,22 +273,25 @@ if ( 'enabled' === enableConditions ) {
 							) }
 						</p>
 					</UAGAdvancedPanelBody>
-					<UAGAdvancedPanelBody
-						title={ __(
-							'Responsive Conditions',
-							'ultimate-addons-for-gutenberg'
-						) }
-						initialOpen={ false }
-						className="block-editor-block-inspector__advanced uagb-extention-tab"
-					>
-					{ ResponsiveConditionOptions( props ) }
-						<p className="components-base-control__help">
-							{ __(
-								"Above setting will only take effect once you are on the live page, and not while you're editing.",
+					}
+					{ 'enabled' === enableResponsiveConditions &&
+						<UAGAdvancedPanelBody
+							title={ __(
+								'Responsive Conditions',
 								'ultimate-addons-for-gutenberg'
 							) }
-						</p>
-					</UAGAdvancedPanelBody>
+							initialOpen={ false }
+							className="block-editor-block-inspector__advanced uagb-extention-tab"
+						>
+						{ ResponsiveConditionOptions( props ) }
+							<p className="components-base-control__help">
+								{ __(
+									"Above setting will only take effect once you are on the live page, and not while you're editing.",
+									'ultimate-addons-for-gutenberg'
+								) }
+							</p>
+						</UAGAdvancedPanelBody>
+					}
 					</>
 				);
 			}
@@ -293,13 +300,11 @@ if ( 'enabled' === enableConditions ) {
 	//For Non-UAG Blocks.
 	addFilter(
 		'editor.BlockEdit',
-		'uagb/advanced-control-block',
+		'uagb/advanced-display-condition',
 		AdvancedControlsBlock
 	);
-
 	addFilter(
 		'blocks.getSaveContent.extraProps',
 		'uagb/apply-extra-class',
 		ApplyExtraClass
 	);
-}
