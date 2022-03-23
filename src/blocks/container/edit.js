@@ -72,18 +72,18 @@ const UAGBContainer = ( props ) => {
 			element = document.getElementById( 'block-' + props.clientId )
 		}
 		// Add Close Button for Variation Selector.
-		let variationPicker = element.querySelector('.uagb-container-variation-picker .block-editor-block-variation-picker');
-		let closeButton = document.createElement('button');
+		const variationPicker = element.querySelector( '.uagb-container-variation-picker .block-editor-block-variation-picker' );
+		const closeButton = document.createElement( 'button' );
 		closeButton.onclick = function() {
 			if ( props.defaultVariation.attributes ) {
 				props.setAttributes( props.defaultVariation.attributes );
 			}
 		};
-		closeButton.setAttribute('class', 'uagb-variation-close');
-		closeButton.innerHTML = "×";
+		closeButton.setAttribute( 'class', 'uagb-variation-close' );
+		closeButton.innerHTML = '×';
 		if ( variationPicker ) {
-			let variationPickerLabel = variationPicker.querySelector('.components-placeholder__label');
-			variationPicker.insertBefore(closeButton,variationPickerLabel);
+			const variationPickerLabel = variationPicker.querySelector( '.components-placeholder__label' );
+			variationPicker.insertBefore( closeButton,variationPickerLabel );
 		}
 
 		if ( element ) {

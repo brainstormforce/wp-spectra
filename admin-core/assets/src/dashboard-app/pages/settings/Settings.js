@@ -13,6 +13,7 @@ import LoadFontsLocally from '@DashboardApp/pages/settings/LoadFontsLocally';
 import PreloadLocalFonts from '@DashboardApp/pages/settings/PreloadLocalFonts';
 import CollapsePanels from '@DashboardApp/pages/settings/CollapsePanels';
 import CopyPasteStyles from '@DashboardApp/pages/settings/CopyPasteStyles';
+import ContentWidth from '@DashboardApp/pages/settings/ContentWidth';
 
 function classNames( ...classes ) {
     return classes.filter( Boolean ).join( ' ' )
@@ -57,6 +58,7 @@ const Settings = () => {
                 <div className='space-y-8 mt-8 mb-0 mr-8 sm:px-6 lg:px-0 lg:col-span-9'>
 					{ 'global-settings' === activeSettingsNavigationTab &&
 						<>
+							<ContentWidth/>
                             <CollapsePanels/>
                             <CopyPasteStyles/>
                         </>

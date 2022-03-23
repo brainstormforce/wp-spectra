@@ -38,8 +38,14 @@ class Admin_Helper {
 	 */
 	public static function get_common_settings() {
 
-		$uag_versions   = self::get_rollback_versions_options();
-		$changelog_data = self::get_changelog_feed_data();
+		$uag_versions              = self::get_rollback_versions_options();
+		$changelog_data            = self::get_changelog_feed_data();
+		$content_width             = \UAGB_Admin_Helper::get_admin_settings_option( 'uag_content_width', '' );
+		$content_width_third_party = apply_filters( 'spectra_global_content_width', 'default' );
+
+		if ( '' === $content_width && 'default' !== $content_width_third_party ) {
+			$content_width = intval( $content_width_third_party );
+		}
 
 		$options = array(
 			'rollback_to_previous_version'       => isset( $uag_versions[0]['value'] ) ? $uag_versions[0]['value'] : '',
@@ -58,6 +64,7 @@ class Admin_Helper {
 			'preload_local_fonts'                => \UAGB_Admin_Helper::get_admin_settings_option( 'uag_preload_local_fonts', 'disabled' ),
 			'uag_previous_versions'              => $uag_versions,
 			'changelog_data'                     => $changelog_data,
+			'content_width'                      => $content_width,
 		);
 
 		return $options;
