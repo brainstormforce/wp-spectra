@@ -377,7 +377,7 @@ const Settings = ( props ) => {
 												},
 											} }
 											min={ 0 }
-											max={ 1200 }
+											max={ 1600 }
 											unit={ {
 												value: innerContentCustomWidthType,
 												label: 'innerContentCustomWidthType',
@@ -475,7 +475,7 @@ const Settings = ( props ) => {
 										},
 									} }
 									min={ 0 }
-									max={ 1200 }
+									max={ 1600 }
 									unit={ {
 										value: innerContentCustomWidthType,
 										label: 'innerContentCustomWidthType',
