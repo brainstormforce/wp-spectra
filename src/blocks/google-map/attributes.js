@@ -19,10 +19,9 @@ const attributes = {
 		type: 'string',
 		default: 'en',
 	},
-	example: {
-		attributes: {
-			isPreview: true,
-		}
+	isPreview: {
+		type: 'boolean',
+		default: false,
 	},
 };
 

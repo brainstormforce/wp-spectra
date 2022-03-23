@@ -220,7 +220,8 @@ const UAGBContainer = ( props ) => {
 	if ( ! variationSelected && 0 === select( 'core/block-editor' ).getBlockParents( props.clientId ).length ) {
 
 		return (
-			{ isPreview } ? <img width='100%' src={previewImageData} alt=''/> :
+			isPreview ? <img width='100%' src={previewImageData} alt=''/> :
+			<>
 			<div className='uagb-container-variation-picker'>
 				<BlockVariationPicker
 					icon={ '' }
@@ -235,6 +236,7 @@ const UAGBContainer = ( props ) => {
 					}
 				/>
 			</div>
+			</>
 		);
 	}
 

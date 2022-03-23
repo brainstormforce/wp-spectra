@@ -28,9 +28,10 @@ registerBlockType( 'uagb/google-map', {
 	},
 	category: uagb_blocks_info.category,
 	attributes,
-	isPreview: {
-		type: 'boolean',
-		default: false,
+	example: {
+		attributes: {
+			isPreview: true,
+		}
 	},
 	edit,
 	save,
