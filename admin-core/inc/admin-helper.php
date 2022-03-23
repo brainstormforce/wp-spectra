@@ -38,24 +38,9 @@ class Admin_Helper {
 	 */
 	public static function get_common_settings() {
 
-		$uag_versions              = self::get_rollback_versions_options();
-		$changelog_data            = self::get_changelog_feed_data();
-		$content_width             = \UAGB_Admin_Helper::get_admin_settings_option( 'uag_content_width', '' );
-		$content_width_third_party = apply_filters( 'spectra_global_content_width', 'default' );
-		$astra_content_width       = false;
-
-		if ( function_exists( 'astra_get_option' ) ) {
-			$astra_content_width = astra_get_option( 'site-content-width' );
-		}
-
-		if ( '' === $content_width ) {
-			if ( $astra_content_width ) {
-				$content_width = intval( $astra_content_width );
-			}
-			if ( 'default' !== $content_width_third_party ) {
-				$content_width = intval( $content_width_third_party );
-			}
-		}
+		$uag_versions   = self::get_rollback_versions_options();
+		$changelog_data = self::get_changelog_feed_data();
+		$content_width  = \UAGB_Admin_Helper::get_global_content_width();
 
 		$options = array(
 			'rollback_to_previous_version'       => isset( $uag_versions[0]['value'] ) ? $uag_versions[0]['value'] : '',

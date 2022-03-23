@@ -107,7 +107,6 @@ const UAGBContainer = ( props ) => {
 		if ( descendants.length !== props.attributes.blockDescendants.length ) {
 			props.setAttributes( { blockDescendants: descendants } );
 		}
-
 	}, [] );
 
 	useEffect( () => {
