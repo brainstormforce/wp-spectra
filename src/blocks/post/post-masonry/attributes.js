@@ -892,7 +892,7 @@ const attributes = {
 	excerptTransform        : {
 		type : 'string',
 		UAGCopyPaste: {
-			styleType: 'desc-trasnsform'
+			styleType: 'desc-transform'
 		},
 	},
 	ctaTransform            : {

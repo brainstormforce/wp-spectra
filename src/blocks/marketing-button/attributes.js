@@ -565,13 +565,13 @@ const attributes = {
 	titleTransform: {
 		type: 'string',
 		UAGCopyPaste: {
-			styleType: 'btn-title-transform'
+			styleType: 'main-title-transform'
 		}
 	},
 	titleDecoration: {
 		type: 'string',
 		UAGCopyPaste: {
-			styleType: 'btn-title-decoration'
+			styleType: 'main-title-decoration'
 		}
 	},
 	prefixTransform: {

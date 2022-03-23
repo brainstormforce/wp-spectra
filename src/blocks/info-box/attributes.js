@@ -476,7 +476,7 @@ const attributes = {
 		type: 'string',
 		default: 'px',
 		UAGCopyPaste: {
-			styleType: 'separator-width-unit'
+			styleType: 'separator-thickness-unit'
 		}
 	},
 	ctaType: {

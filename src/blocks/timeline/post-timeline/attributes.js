@@ -906,7 +906,7 @@ const attributes = { // eslint-disable-line no-unused-vars
 	headDecoration          : {
 		type : 'string',
 		UAGCopyPaste: {
-			styleType: 'main-title-title-decoration'
+			styleType: 'main-title-decoration'
 		},
 	},
 	authorDecoration        : {

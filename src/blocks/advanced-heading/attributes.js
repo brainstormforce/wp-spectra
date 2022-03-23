@@ -64,7 +64,7 @@ const attributes = {
 	separatorHeight: {
 		type: 'number',
 		UAGCopyPaste: {
-			styleType: 'separator-height'
+			styleType: 'separator-thickness'
 		},
 		default: 2
 	},
