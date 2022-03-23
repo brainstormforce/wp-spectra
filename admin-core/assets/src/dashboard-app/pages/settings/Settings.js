@@ -30,7 +30,11 @@ const Settings = () => {
         { name: __( 'Version Control', 'ultimate-addons-for-gutenberg' ), slug: 'version-control', icon: SettingsIcons['version-control'] },
         { name: __( 'Performance', 'ultimate-addons-for-gutenberg' ), slug: 'fonts-performance', icon: SettingsIcons['fonts-performance'] },
         { name: __( 'Global Settings', 'ultimate-addons-for-gutenberg' ), slug: 'global-settings', icon: SettingsIcons['global-settings'] },
-      ];
+    ];
+
+    uag_react.spectra_pro_status && navigation.push( 
+        { name: __( 'Block Settings', 'ultimate-addons-for-gutenberg' ), slug: 'block-settings', icon: SettingsIcons['global-settings'] }
+    );
 
     return (
         <main className="max-w-[77rem] mx-auto my-[2.43rem] bg-white rounded-[0.2rem] shadow overflow-hidden h-[33rem]">
@@ -81,6 +85,11 @@ const Settings = () => {
                         <>
                             <CollapsePanels/>
                             <CopyPasteStyles/>
+                        </>
+                    }
+                    { 'block-settings' === activeSettingsNavigationTab &&
+                        <>
+                            {/* All block-settings components should be created in /block-settings and imported here.*/}
                         </>
                     }
                 </div>
