@@ -13,6 +13,7 @@ import LoadFontsLocally from '@DashboardApp/pages/settings/LoadFontsLocally';
 import PreloadLocalFonts from '@DashboardApp/pages/settings/PreloadLocalFonts';
 import CollapsePanels from '@DashboardApp/pages/settings/CollapsePanels';
 import CopyPasteStyles from '@DashboardApp/pages/settings/CopyPasteStyles';
+import Login from '@DashboardApp/pages/settings/block-settings/Login';
 
 function classNames( ...classes ) {
     return classes.filter( Boolean ).join( ' ' )
@@ -32,7 +33,7 @@ const Settings = () => {
         { name: __( 'Global Settings', 'ultimate-addons-for-gutenberg' ), slug: 'global-settings', icon: SettingsIcons['global-settings'] },
     ];
 
-    uag_react.spectra_pro_status && navigation.push( 
+    uag_react.spectra_pro_status && navigation.push(
         { name: __( 'Block Settings', 'ultimate-addons-for-gutenberg' ), slug: 'block-settings', icon: SettingsIcons['global-settings'] }
     );
 
@@ -89,7 +90,7 @@ const Settings = () => {
                     }
                     { 'block-settings' === activeSettingsNavigationTab &&
                         <>
-                            {/* All block-settings components should be created in /block-settings and imported here.*/}
+                            <Login />
                         </>
                     }
                 </div>

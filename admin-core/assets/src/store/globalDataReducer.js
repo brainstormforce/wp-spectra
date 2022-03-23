@@ -79,6 +79,30 @@ const globalDataReducer = ( state = {}, action ) => {
                 ...state,
                 enableMasonryExtension: action.payload,
             };
+        case 'UPDATE_GOOGLE_CLIENT_ID':
+            return {
+                ...state,
+                socialLogin: {
+					...state.socialLogin,
+					googleClientId: action.payload
+				},
+            };
+        case 'UPDATE_FACEBOOK_APP_ID':
+            return {
+                ...state,
+                socialLogin: {
+					...state.socialLogin,
+					facebookAppId: action.payload
+				},
+            };
+        case 'UPDATE_FACEBOOK_APP_SECRET':
+            return {
+                ...state,
+                socialLogin: {
+					...state.socialLogin,
+					facebookAppSecret: action.payload
+				},
+            };
         default:
             return state;
     }

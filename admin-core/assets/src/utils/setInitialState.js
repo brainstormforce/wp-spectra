@@ -19,7 +19,8 @@ const setInitialState = ( store ) => {
             enableCollapsePanels : data.collapse_panels,
             enableCopyPasteStyles : data.copy_paste,
             enableDisplayConditions: data.enable_block_condition,
-            enableMasonryExtension: data.enable_masonry_gallery
+            enableMasonryExtension: data.enable_masonry_gallery,
+            socialLogin: data.social_login
         };
 
         store.dispatch( {type: 'UPDATE_INITIAL_STATE', payload: initialState} );

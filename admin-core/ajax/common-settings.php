@@ -63,6 +63,7 @@ class Common_Settings extends Ajax_Base {
 			'preload_local_fonts',
 			'collapse_panels',
 			'copy_paste',
+			'social_login'
 		);
 
 		$this->init_ajax_events( $ajax_events );
@@ -266,6 +267,47 @@ class Common_Settings extends Ajax_Base {
 		}
 
 		\UAGB_Admin_Helper::update_admin_settings_option( 'uag_copy_paste', sanitize_text_field( $_POST['value'] ) );
+
+		$response_data = array(
+			'messsage' => __( 'Successfully saved data!', 'ultimate-addons-for-gutenberg' ),
+		);
+		wp_send_json_success( $response_data );
+
+	}
+	/**
+	 * Save settings.
+	 *
+	 * @return void
+	 */
+	public function social_login() {
+		$response_data = array( 'messsage' => $this->get_error_msg( 'permission' ) );
+
+		if ( ! current_user_can( 'manage_options' ) ) {
+			wp_send_json_error( $response_data );
+		}
+
+		/**
+		 * Nonce verification
+		 */
+		if ( ! check_ajax_referer( 'uag_social_login', 'security', false ) ) {
+			$response_data = array( 'messsage' => $this->get_error_msg( 'nonce' ) );
+			wp_send_json_error( $response_data );
+		}
+
+		if ( empty( $_POST ) ) {
+			$response_data = array( 'messsage' => __( 'No post data found!', 'ultimate-addons-for-gutenberg' ) );
+			wp_send_json_error( $response_data );
+		}
+
+		$googleClientId = sanitize_text_field( $_POST['googleClientId'] );
+		$facebookAppId = sanitize_text_field( $_POST['facebookAppId'] );
+		$facebookAppSecret = sanitize_text_field( $_POST['facebookAppSecret'] );
+
+		\UAGB_Admin_Helper::update_admin_settings_option( 'uag_social_login', array(
+			'googleClientId' 	=> $googleClientId,
+			'facebookAppId' 	=> $facebookAppId,
+			'facebookAppSecret' => $facebookAppSecret,
+		) );
 
 		$response_data = array(
 			'messsage' => __( 'Successfully saved data!', 'ultimate-addons-for-gutenberg' ),
