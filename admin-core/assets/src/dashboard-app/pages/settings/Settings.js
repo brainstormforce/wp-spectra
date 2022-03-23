@@ -90,7 +90,7 @@ const Settings = () => {
                     }
                     { 'block-settings' === activeSettingsNavigationTab &&
                         <>
-                                <InstagramUsers/>
+                            <InstagramUsers/>
                         </>
                     }
                 </div>
