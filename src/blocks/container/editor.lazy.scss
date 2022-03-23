@@ -1,5 +1,17 @@
 .uagb-container-variation-picker {
-
+	.uagb-variation-close{
+		font-size: 45px;
+		background: none;
+		color: #d5dadf;
+		cursor: pointer;
+		border: none;
+		box-shadow: none;
+		display: flex;
+		align-self: flex-end;
+		position: absolute;
+		top: -5px;
+		z-index: 999999;
+	}
 	.components-button,
 	.components-button:hover:not(:disabled) {
 		box-shadow: none;
@@ -26,10 +38,13 @@
 
 	.components-placeholder {
 		align-items: center;
+		border: 1px dashed #d5dadf;
+		box-shadow: none;
 
 		.components-placeholder__label {
 			font-size: 18px;
-			font-weight: 500;
+			margin-bottom: 0;
+			color: #556068;
 		}
 	}
 

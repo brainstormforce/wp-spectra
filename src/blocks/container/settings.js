@@ -361,7 +361,7 @@ const Settings = ( props ) => {
 									/>
 									{ 'alignwide' === innerContentWidth &&
 										<ResponsiveSlider
-											label={ __( 'Content Custom Width', 'ultimate-addons-for-gutenberg' ) }
+											label={ __( 'Content Box Width', 'ultimate-addons-for-gutenberg' ) }
 											data={ {
 												desktop: {
 													value: innerContentCustomWidthDesktop,
@@ -459,7 +459,7 @@ const Settings = ( props ) => {
 							/>
 							{ 'alignwide' === innerContentWidth &&
 								<ResponsiveSlider
-									label={ __( 'Content Custom Width', 'ultimate-addons-for-gutenberg' ) }
+									label={ __( 'Content Box Width', 'ultimate-addons-for-gutenberg' ) }
 									data={ {
 										desktop: {
 											value: innerContentCustomWidthDesktop,
