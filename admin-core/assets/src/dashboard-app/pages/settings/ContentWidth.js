@@ -41,6 +41,14 @@ const ContentWidth = () => {
                             __( `This setting will apply to Container Block's default Content width.`, 'ultimate-addons-for-gutenberg' )
                         }
                     </p>
+					{ 'Spectra' !== uag_react.uag_content_width_set_by &&
+						<p className="mt-[0.6rem] text-sm italic">
+							{
+								// eslint-disable-next-line @wordpress/i18n-no-variables
+								__( `The current Content width is applied from ${uag_react.uag_content_width_set_by}`, 'ultimate-addons-for-gutenberg' )
+							}
+						</p>
+					}
                 </div>
                 <div className='flex'>
 				<input className="appearance-none block w-20 h-8 bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 pr-0 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-zip" value={contentWidth} onChange={updateContentWidth} type="number" placeholder="1200" min={0} max={1600} />
