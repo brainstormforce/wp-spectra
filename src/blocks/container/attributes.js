@@ -342,6 +342,7 @@ const attributes = {
 	bottomWidth: {
 		type: 'number',
 		isUAGStyle: true,
+		default: 100,
 	},
 	topType: {
 		type: 'string',
@@ -368,6 +369,7 @@ const attributes = {
 	topWidth: {
 		type: 'number',
 		isUAGStyle: true,
+		default: 100,
 	},
 	topFlip: {
 		type: 'boolean',
