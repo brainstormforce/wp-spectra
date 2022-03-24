@@ -79,6 +79,14 @@ const globalDataReducer = ( state = {}, action ) => {
                 ...state,
                 enableMasonryExtension: action.payload,
             };
+        case 'UPDATE_SOCIAL_REGISTER':
+            return {
+                ...state,
+                socialLogin: {
+					...state.socialLogin,
+					socialRegister: action.payload
+				},
+            };
         case 'UPDATE_GOOGLE_CLIENT_ID':
             return {
                 ...state,

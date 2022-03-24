@@ -18,6 +18,7 @@ const initialState = {
     enableDisplayConditions : '',
     enableMasonryExtension : '',
 	socialLogin: {
+		socialRegister: true,
 		googleClientId: '',
 		facebookAppId: '',
 		facebookAppSecret: ''

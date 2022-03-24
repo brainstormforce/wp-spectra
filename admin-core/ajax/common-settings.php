@@ -299,11 +299,13 @@ class Common_Settings extends Ajax_Base {
 			wp_send_json_error( $response_data );
 		}
 
+		$socialRegister = (bool) rest_sanitize_boolean( $_POST['socialRegister'] );
 		$googleClientId = sanitize_text_field( $_POST['googleClientId'] );
 		$facebookAppId = sanitize_text_field( $_POST['facebookAppId'] );
 		$facebookAppSecret = sanitize_text_field( $_POST['facebookAppSecret'] );
 
 		\UAGB_Admin_Helper::update_admin_settings_option( 'uag_social_login', array(
+			'socialRegister' 	=> $socialRegister,
 			'googleClientId' 	=> $googleClientId,
 			'facebookAppId' 	=> $facebookAppId,
 			'facebookAppSecret' => $facebookAppSecret,
