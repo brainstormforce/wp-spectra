@@ -33,7 +33,7 @@ const Render = ( props ) => {
 			</span>
 		);
 	}
-	const previewImageData = `${ uagb_blocks_info.uagb_url }/admin/assets/preview-images/star-rating.png`;
+	const previewImageData = `${ uagb_blocks_info.uagb_url }/admin/assets/preview-images/star-ratings.png`;
 	return (
 		isPreview ? <img width='100%' src={previewImageData} alt=''/> :
 		<div
