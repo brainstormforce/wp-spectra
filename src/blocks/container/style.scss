@@ -5,6 +5,7 @@
 	margin-left: auto;
 	margin-right: auto;
 	z-index: 2;
+
 	& > *:not(.uagb-container__shape) {
 		z-index: 2;
 	}
