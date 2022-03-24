@@ -16,13 +16,14 @@ const initialState = {
     enableCollapsePanels : '',
     enableCopyPasteStyles : '',
     enableDisplayConditions : '',
-    enableMasonryExtension : ''
+    enableMasonryExtension : '',
+	enableResponsiveConditions : '',
 };
 
 const globalDataStore = createStore(
     globalDataReducer,
-    initialState, 
-    window.__REDUX_DEVTOOLS_EXTENSION__ && 
+    initialState,
+    window.__REDUX_DEVTOOLS_EXTENSION__ &&
     window.__REDUX_DEVTOOLS_EXTENSION__()
 );
 

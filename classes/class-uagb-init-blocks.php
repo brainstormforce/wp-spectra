@@ -487,7 +487,8 @@ class UAGB_Init_Blocks {
 				'deactivated_blocks' => $blocks,
 			)
 		);
-		$displayCondition = UAGB_Admin_Helper::get_admin_settings_option( 'uag_enable_block_condition', 'enabled' );
+		$display_condition            = UAGB_Admin_Helper::get_admin_settings_option( 'uag_enable_block_condition', 'disabled' );
+		$display_responsive_condition = UAGB_Admin_Helper::get_admin_settings_option( 'uag_enable_block_responsive', 'enabled' );
 
 		$enable_selected_fonts = UAGB_Admin_Helper::get_admin_settings_option( 'uag_load_select_font_globally', 'disabled' );
 		$selected_fonts        = array();
@@ -541,8 +542,9 @@ class UAGB_Init_Blocks {
 				'uagb_url'                           => UAGB_URL,
 				'uagb_mime_type'                     => UAGB_Helper::get_mime_type(),
 				'uagb_site_url'                      => UAGB_URI,
-				'enableConditions'                   => apply_filters_deprecated( 'enable_block_condition', array( $displayCondition ), '1.23.4', 'uag_enable_block_condition' ),
+				'enableConditions'                   => apply_filters_deprecated( 'enable_block_condition', array( $display_condition ), '1.23.4', 'uag_enable_block_condition' ),
 				'enableMasonryGallery'               => apply_filters( 'uag_enable_masonry_gallery', UAGB_Admin_Helper::get_admin_settings_option( 'uag_enable_masonry_gallery', 'enabled' ) ),
+				'enableResponsiveConditions'         => apply_filters( 'enable_block_responsive', UAGB_Admin_Helper::get_admin_settings_option( 'uag_enable_block_responsive', 'enabled' ) ),
 				'uagb_svg_icons'                     => UAGB_Helper::backend_load_font_awesome_icons(),
 				'uagb_enable_extensions_for_blocks'  => apply_filters( 'uagb_enable_extensions_for_blocks', array() ),
 				'uagb_exclude_blocks_from_extension' => $uagb_exclude_blocks_from_extension,
