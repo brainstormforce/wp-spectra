@@ -22,12 +22,18 @@ export default function Login(props) {
 		formData.append( 'security', uag_react.social_login_nonce );
 		if('UPDATE_GOOGLE_CLIENT_ID' === type){
 			formData.append( 'googleClientId', payload );
+			formData.append( 'facebookAppId', facebookAppId || '' );
+			formData.append( 'facebookAppSecret', facebookAppSecret || '' );
 		}
 		if('UPDATE_FACEBOOK_APP_ID' === type){
 			formData.append( 'facebookAppId', payload );
+			formData.append( 'googleClientId', googleClientId || '' );
+			formData.append( 'facebookAppSecret', facebookAppSecret || '' );
 		}
 		if('UPDATE_FACEBOOK_APP_SECRET' === type){
 			formData.append( 'facebookAppSecret', payload );
+			formData.append( 'googleClientId', googleClientId || '' );
+			formData.append( 'facebookAppId', facebookAppId || '' );
 		}
 		apiFetch( {
 			url: uag_react.ajax_url,
