@@ -99,10 +99,6 @@
 			}
 		}
 	}
-
-	.wp-block-paragraph {
-		width: 100%;
-	}
 }
 
 .block-editor-block-list__empty-block-inserter .block-editor-inserter {
@@ -111,4 +107,8 @@
 
 .uag-container-block-inserter .components-button {
 	color: #4a01e0;
+}
+
+.wp-block-uagb-container > .block-editor-inner-blocks {
+	z-index: 2;
 }
