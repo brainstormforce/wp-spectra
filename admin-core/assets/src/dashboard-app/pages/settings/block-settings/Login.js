@@ -17,13 +17,18 @@ export default function Login(props) {
 
 	const savedFormData = (type, payload) => {
 		dispatch({type, payload })
-
 		const formData = new window.FormData();
 		formData.append( 'action', 'uag_social_login' );
 		formData.append( 'security', uag_react.social_login_nonce );
-		formData.append( 'googleClientId', googleClientId || '' );
-		formData.append( 'facebookAppId', facebookAppId || '' );
-		formData.append( 'facebookAppSecret', facebookAppSecret || '' );
+		if('UPDATE_GOOGLE_CLIENT_ID' === type){
+			formData.append( 'googleClientId', payload );
+		}
+		if('UPDATE_FACEBOOK_APP_ID' === type){
+			formData.append( 'facebookAppId', payload );
+		}
+		if('UPDATE_FACEBOOK_APP_SECRET' === type){
+			formData.append( 'facebookAppSecret', payload );
+		}
 		apiFetch( {
 			url: uag_react.ajax_url,
 			method: 'POST',
