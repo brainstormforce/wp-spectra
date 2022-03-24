@@ -663,6 +663,10 @@ const attributes = {
 		},
 		default: 'normal',
 	},
+	isPreview: {
+		type: 'boolean',
+		default: false,
+	}
 };
 
 export default attributes;

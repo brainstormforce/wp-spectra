@@ -28,6 +28,10 @@ registerBlockType( 'uagb/info-box', {
 	attributes,
 	edit,
 	save,
-	example: {},
+	example: {
+		attributes: {
+			isPreview: true,
+		}
+	},
 	deprecated,
 } );

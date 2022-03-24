@@ -492,6 +492,10 @@ const attributes = {
 		},
 		default: 15,
 	},
+	isPreview: {
+		type: 'boolean',
+		default: false,
+	}
 };
 
 export default attributes;

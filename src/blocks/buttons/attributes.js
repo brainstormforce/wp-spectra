@@ -105,6 +105,10 @@ const attributes = {
 			styleType: 'btn-font-decoration'
 		}
 	},
+	isPreview: {
+		type: 'boolean',
+		default: false,
+	},
 };
 
 export default attributes;

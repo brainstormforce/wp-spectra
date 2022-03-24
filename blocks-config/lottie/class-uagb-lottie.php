@@ -127,6 +127,10 @@ if ( ! class_exists( 'UAGB_Lottie' ) ) {
 							'type'    => 'string',
 							'default' => '',
 						),
+						'isPreview'        => array(
+							'type'    => 'boolean',
+							'default' => false,
+						),
 					),
 					'render_callback' => array( $this, 'render_html' ),
 				)

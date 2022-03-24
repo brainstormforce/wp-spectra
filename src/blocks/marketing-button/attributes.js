@@ -586,6 +586,10 @@ const attributes = {
 			styleType: 'prefix-decoration'
 		}
 	},
+	isPreview: {
+		type: 'boolean',
+		default: false,
+	}
 };
 
 export default attributes;

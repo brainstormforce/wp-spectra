@@ -892,6 +892,10 @@ const attributes = {
 		},
 		default: 'center center',
 	},
+	isPreview: {
+		type: 'boolean',
+		default: false,
+	}
 };
 
 export default attributes;

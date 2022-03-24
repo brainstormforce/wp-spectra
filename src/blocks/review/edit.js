@@ -128,6 +128,7 @@ const ReviewComponent = ( props ) => {
 		operatingSystem,
 		datecreated,
 		directorname,
+		isPreview,
 	} = attributes;
 
 	if ( block_id === '' ) {
@@ -149,7 +150,10 @@ const ReviewComponent = ( props ) => {
 		} );
 	}
 
+		const previewImageData = `${ uagb_blocks_info.uagb_url }/admin/assets/preview-images/review.png`;
+
 	return (
+		isPreview ? <img width='100%' src={previewImageData} alt=''/> :
 		<>
 			<SchemaNotices
 				enableSchema={ enableSchema }

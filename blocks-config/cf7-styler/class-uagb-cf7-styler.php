@@ -725,6 +725,10 @@ if ( ! class_exists( 'UAGB_CF7_Styler' ) ) {
 						'msgFontStyle'                  => array(
 							'type' => 'string',
 						),
+						'isPreview'                     => array(
+							'type'    => 'boolean',
+							'default' => false,
+						),
 					),
 					'render_callback' => array( $this, 'render_html' ),
 				)

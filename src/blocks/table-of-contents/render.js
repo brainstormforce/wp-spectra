@@ -34,6 +34,7 @@ const Render = ( props ) => {
 		tColumnsDesktop,
 		mappingHeaders,
 		headingTitle,
+		isPreview,
 	} = attributes;
 
 	let iconHtml = '';
@@ -41,9 +42,10 @@ const Render = ( props ) => {
 	if ( makeCollapsible && icon ) {
 		iconHtml = renderSVG( icon );
 	}
-
+	const previewImageData = `${ uagb_blocks_info.uagb_url }/admin/assets/preview-images/table-of-contents.png`;
 	return (
 		<>
+		 { isPreview ? <img width='100%' src={previewImageData} alt=''/> :
 			<div
 				className={ classnames(
 					className,
@@ -76,6 +78,7 @@ const Render = ( props ) => {
 					/>
 				</div>
 			</div>
+}
 		</>
 	);
 };

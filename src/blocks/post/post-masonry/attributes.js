@@ -1030,6 +1030,10 @@ const attributes = {
 			styleType: 'post-padding-unit-tablet'
 		},
 	},
+	isPreview: {
+		type: 'boolean',
+		default: false,
+	},
 	postsOffset: {
 		type    : 'number',
 		default : 0,

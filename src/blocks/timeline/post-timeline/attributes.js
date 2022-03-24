@@ -945,6 +945,10 @@ const attributes = { // eslint-disable-line no-unused-vars
 			styleType: 'main-title-top-spacing'
 		},
 	},
+	isPreview: {
+		type: 'boolean',
+		default: false,
+	}
 }
 
 export default attributes;

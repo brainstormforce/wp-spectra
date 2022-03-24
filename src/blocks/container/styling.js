@@ -5,6 +5,8 @@
 import generateCSS from '@Controls/generateCSS';
 import generateCSSUnit from '@Controls/generateCSSUnit';
 import generateBackgroundCSS from '@Controls/generateBackgroundCSS';
+import hexToRgba from '@Controls/hexToRgba';
+import maybeGetColorForVariable from '@Controls/maybeGetColorForVariable';
 
 function styling( props ) {
 	const { attributes, deviceType } = props;
@@ -89,9 +91,34 @@ function styling( props ) {
 		columnGapType,
 		contentWidth,
 		innerContentWidth,
+		bottomColor,
+		bottomHeight,
+		bottomHeightTablet,
+		bottomHeightMobile,
+		bottomWidth,
+		topColor,
+		topHeight,
+		topHeightTablet,
+		topHeightMobile,
+		topWidth,
 	} = attributes;
 
-	const selectors = {};
+	const selectors = {
+		' .uagb-container__shape-top svg' : {
+			'width': 'calc( ' + topWidth + '% + 1.3px )',
+			'height': generateCSSUnit( topHeight, 'px' )
+		},
+		' .uagb-container__shape-top .uagb-container__shape-fill' : {
+			'fill': hexToRgba( maybeGetColorForVariable( topColor ), 100 ),
+		},
+		' .uagb-container__shape-bottom svg' : {
+			'width': 'calc( ' + bottomWidth + '% + 1.3px )',
+			'height': generateCSSUnit( bottomHeight, 'px' )
+		},
+		' .uagb-container__shape-bottom .uagb-container__shape-fill' : {
+			'fill': hexToRgba( maybeGetColorForVariable( bottomColor ), 100 ),
+		},
+	};
 
 	const backgroundAttributes = {
         'backgroundType': backgroundType,
@@ -218,7 +245,13 @@ function styling( props ) {
 			'justify-content' : justifyContentTablet,
 			'flex-wrap' : wrapTablet,
 			'align-content' : alignContentTablet,
-		}
+		},
+		' .uagb-container__shape-top svg' : {
+			'height': generateCSSUnit( topHeightTablet, 'px' )
+		},
+		' .uagb-container__shape-bottom svg' : {
+			'height': generateCSSUnit( bottomHeightTablet, 'px' )
+		},
 	};
 
 	const mobile_selectors = {
@@ -249,7 +282,13 @@ function styling( props ) {
 			'justify-content' : justifyContentMobile,
 			'flex-wrap' : wrapMobile,
 			'align-content' : alignContentMobile,
-		}
+		},
+		' .uagb-container__shape-top svg' : {
+			'height': generateCSSUnit( topHeightMobile, 'px' )
+		},
+		' .uagb-container__shape-bottom svg' : {
+			'height': generateCSSUnit( bottomHeightMobile, 'px' )
+		},
 	};
 
 	if ( 'default' === contentWidth ) {

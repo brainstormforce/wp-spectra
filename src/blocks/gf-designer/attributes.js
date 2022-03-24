@@ -1314,5 +1314,9 @@ const attributes = { // eslint-disable-line no-unused-vars
 			styleType: 'success-msg-font-style'
 		},
 	},
+	isPreview: {
+		type: 'boolean',
+		default: false,
+	}
 }
 export default attributes;

@@ -32,6 +32,10 @@ registerBlockType( 'uagb/call-to-action', {
 	attributes,
 	edit,
 	save,
-	example: {},
+	example: {
+		attributes: {
+			isPreview: true,
+		}
+	},
 	deprecated,
 } );

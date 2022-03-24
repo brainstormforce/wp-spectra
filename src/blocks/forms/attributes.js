@@ -909,5 +909,9 @@ const attributes = {
 			styleType: 'input-font-style'
 		},
 	},
+	isPreview: {
+		type: 'boolean',
+		default: false,
+	}
 };
 export default attributes;

@@ -280,6 +280,10 @@ const attributes = {
 			styleType: 'separator-hover-color'
 		}
 	},
+	isPreview: {
+		type: 'boolean',
+		default: false,
+	}
 };
 
 export default attributes;

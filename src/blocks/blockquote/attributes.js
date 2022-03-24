@@ -833,6 +833,10 @@ const attributes = {
 			styleType: 'tweet-btn-decoration'
 		}
 	},
+	isPreview: {
+		type: 'boolean',
+		default: false,
+	}
 };
 
 export default attributes;

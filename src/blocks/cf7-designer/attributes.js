@@ -1196,5 +1196,9 @@
 			styleType: 'msg-font-style'
 		},
 	},
+	isPreview: {
+		type: 'boolean',
+		default: false,
+	}
  }
  export default attributes;

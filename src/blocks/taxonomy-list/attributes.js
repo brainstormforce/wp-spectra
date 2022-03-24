@@ -662,5 +662,9 @@ const attributes = {   // eslint-disable-line no-unused-vars
 			styleType: 'desc-list-decoration'
 		},
 	},
+	isPreview: {
+		type: 'boolean',
+		default: false,
+	}
 }
 export default attributes;

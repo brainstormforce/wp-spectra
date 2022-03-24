@@ -759,6 +759,10 @@ const attributes = {
 			styleType: 'desc-line-height-mobile'
 		},
 	},
+	isPreview: {
+		type: 'boolean',
+		default: false,
+	}
 };
 
 export default attributes;

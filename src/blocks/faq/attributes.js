@@ -695,5 +695,9 @@ const attributes = {
 			styleType: 'answer-left-padding-mobile'
 		},
 	},
+	isPreview: {
+		type: 'boolean',
+		default: false,
+	}
 };
 export default attributes;
