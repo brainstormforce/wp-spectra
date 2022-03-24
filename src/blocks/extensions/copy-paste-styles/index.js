@@ -51,6 +51,7 @@ import { useState, useEffect } from '@wordpress/element';
 import editorStyles from './../editor.lazy.scss';
 import { useLayoutEffect } from 'react';
 import { addFilter } from '@wordpress/hooks';
+import attributes from './../../advanced-heading/attributes';
 
 const blocksAttributes = {
 	'advanced-heading' : advancedHeadingAttribute,
@@ -233,6 +234,7 @@ const UAGCopyPasteStyles = () => {
         xsLocalStorage.getItem( 'uag-copy-paste-styles', function ( loop_element ) {
 
             const uagLocalStorageObject = JSON.parse( loop_element.value );
+
             let styles = {};
 
             if ( name.includes( 'uagb/' ) ) {
@@ -245,12 +247,13 @@ const UAGCopyPasteStyles = () => {
                         if ( blockAttributes[attribute].UAGCopyPaste ) {
 							const key = blockAttributes[attribute].UAGCopyPaste.styleType;
 
-                            if ( attributes[attribute] ) {
+							if ( attributes[attribute] ) {
                                 styles[key] = attributes[attribute];
                             }
                         }
                         return attribute;
                     } );
+
                     styles.stylesSavedTimeStamp = Date.now();
                     uagLocalStorageObject[`uag-block-styles`] = styles;
 
@@ -276,73 +279,51 @@ const UAGCopyPasteStyles = () => {
         const {
             name,
             clientId,
-			attributes,
-			innerBlocks
+			innerBlocks,
+			attributes
         } = blockData
 
         let styles;
+		let attrList;
         let uagLocalStorageObject = {};
 
         xsLocalStorage.getItem( 'uag-copy-paste-styles', function ( loop_element ) {
-			if ( uagLocalStorageObject ) {
-				xsLocalStorage.setItem( 'uag-copy-paste-styles', JSON.stringify( {} ) );
-			}
-            uagLocalStorageObject = JSON.parse( loop_element.value );
+
+			uagLocalStorageObject = JSON.parse( loop_element.value );
 
             if ( name.includes( 'uagb/' ) ) {
 
-               styles = uagLocalStorageObject[`uag-block-styles`];
+				styles = uagLocalStorageObject[`uag-block-styles`];
 
-			   const blockName = name.replace( 'uagb/', '' );
-			   const blockAttributes = blocksAttributes[blockName];
+				const blockName = name.replace( 'uagb/', '' );
+				const blockAttributes = blocksAttributes[blockName];
 
-			   if ( blockAttributes && styles ) {
+				if ( blockAttributes && styles ) {
 
-					Object.keys( blockAttributes ).map( ( attribute ) => {
+					 Object.keys( blockAttributes ).map( ( attribute ) => {
 
-						if ( blockAttributes[attribute].UAGCopyPaste ) {
+						 if ( blockAttributes[attribute].UAGCopyPaste ) {
 
-							const key = blockAttributes[attribute].UAGCopyPaste.styleType;
+							 const key = blockAttributes[attribute].UAGCopyPaste.styleType;
 
-							Object.keys( styles ).map( ( item ) => {
-								if( item === key ){
+							 Object.keys( styles ).map( ( item ) => {
+
+								 if( item === key && attributes[attribute] ){
+
 									attributes[attribute] = styles[key];
-								}
-								return attribute;
-							} )
 
-						}
-						return attribute;
-					} );
+								 }
+
+								 return attributes;
+							 } )
+
+						 }
+						 return attributes;
+					 } );
 
 				}
-                if( innerBlocks ) {
 
-					innerBlocks.map( ( childBlock ) => {
 
-						const Name = childBlock.name.replace( 'uagb/', '' );
-			   			const attr = blocksAttributes[Name];
-
-						Object.keys( attr ).map( ( attribute ) => {
-
-							if ( attr[attribute].UAGCopyPaste ) {
-
-								const key = attr[attribute].UAGCopyPaste.styleType;
-
-								Object.keys( styles ).map( ( item ) => {
-									if( item === key ){
-										attr[attribute] = styles[key];
-									}
-									return attribute;
-								} )
-
-							}
-							return attribute;
-						} );
-						updateBlockStyles( childBlock.clientId, styles );
-
-					} );
-                }
             }
 
             if ( name.includes( 'core/' ) ) {
@@ -351,21 +332,17 @@ const UAGCopyPasteStyles = () => {
 
                 const unwantedAttributes = ['content', 'values', 'value', 'citation', 'body', 'caption', 'foot', 'head', 'url', 'alt', 'id', 'linkDestination'];
 
-                styles= uagLocalStorageObject[`core-${selectedBlockName}-styles`];
+                attrList= uagLocalStorageObject[`core-${selectedBlockName}-styles`];
 
                 unwantedAttributes.map( ( attr ) => {
-                    if( styles[attr] ) {
-                        delete styles[attr];
+                    if( attrList[attr] ) {
+                        delete attrList[attr];
                     }
                     return attr;
                 } );
             }
-
-            if ( ! styles ) {
-                return;
-            }
-
-            updateBlockStyles( clientId, styles );
+			console.log(attributes);
+			updateBlockStyles( clientId, attributes );
         } );
 
 
