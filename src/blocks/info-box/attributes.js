@@ -901,6 +901,10 @@ const attributes = {
 		isUAGStyle: true,
 		default: 'px',
 	},
+	isPreview: {
+		type: 'boolean',
+		default: false,
+	}
 
 };
 

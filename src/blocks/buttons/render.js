@@ -21,7 +21,7 @@ const Render = ( props ) => {
 
 	const deviceType = useDeviceType();
 
-	const { className, btn_count, buttons, stack } = attributes;
+	const { className, btn_count, buttons, stack, isPreview } = attributes;
 
 	const getButtonTemplate = useMemo( () => {
 		const childButtons = [];
@@ -33,7 +33,11 @@ const Render = ( props ) => {
 		return childButtons;
 	}, [ btn_count, buttons ] );
 
+	const previewImageData = `${ uagb_blocks_info.uagb_url }/admin/assets/preview-images/multi-button.png`;
+
 	return (
+		isPreview ? <img width='100%' src={previewImageData} alt=''/> :
+		<>
 		<div
 			className={ classnames(
 				className,
@@ -58,6 +62,7 @@ const Render = ( props ) => {
 				/>
 			</div>
 		</div>
+		</>
 	);
 };
 

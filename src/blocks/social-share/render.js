@@ -23,7 +23,7 @@ const Render = ( props ) => {
 	const deviceType = useDeviceType();
 	const { attributes } = props;
 
-	const { className, social_layout } = attributes;
+	const { isPreview, className, social_layout } = attributes;
 
 	const getSocialShareTemplate = [
 		[
@@ -80,7 +80,10 @@ const Render = ( props ) => {
 		],
 	];
 
+	const previewImageData = `${ uagb_blocks_info.uagb_url }/admin/assets/preview-images/social-share.png`;
+
 	return (
+		isPreview ? <img width='100%' src={previewImageData} alt=''/> :
 		<div
 			className={ classnames(
 				className,

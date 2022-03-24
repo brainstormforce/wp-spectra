@@ -29,9 +29,13 @@ registerBlockType( 'uagb/container', {
 	},
 	category: uagb_blocks_info.category,
 	attributes,
+	example: {
+		attributes: {
+			isPreview: true,
+		}
+	},
 	variations,
 	edit,
 	save,
 	transforms,
-	example: {}
 } );
