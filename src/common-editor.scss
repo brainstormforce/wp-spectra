@@ -48,6 +48,16 @@
 	}
 }
 
+/* Gutenberg Editor border hover */
+.edit-post-visual-editor .block-editor-block-list__layout {
+
+	.block-editor-block-list__block:hover,
+	.block-editor-block-list__block:not([contenteditable]):focus::after {
+		box-shadow: 0 0 0 1px #007cba;
+		border-radius: 2px;
+	}
+}
+
 /* UAG Help Notice CSS*/
 .uagb-inspector-tab .uag-control-help-notice {
 	margin-top: 10px;
