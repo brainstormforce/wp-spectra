@@ -45,7 +45,7 @@ const ContentWidth = () => {
 						<p className="mt-[0.6rem] text-sm italic">
 							{
 								// eslint-disable-next-line @wordpress/i18n-no-variables
-								__( `The current Content width is applied from ${uag_react.uag_content_width_set_by}`, 'ultimate-addons-for-gutenberg' )
+								__( `The current Content width is applied from ${uag_react.uag_content_width_set_by}.`, 'ultimate-addons-for-gutenberg' )
 							}
 						</p>
 					}
