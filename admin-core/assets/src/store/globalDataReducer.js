@@ -79,6 +79,11 @@ const globalDataReducer = ( state = {}, action ) => {
                 ...state,
                 enableMasonryExtension: action.payload,
             };
+        case 'UPDATE_DYNAMIC_CONTENT_MODE':
+            return {
+                ...state,
+                dynamicContentMode: action.payload,
+            };
         default:
             return state;
     }
