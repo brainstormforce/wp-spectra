@@ -392,6 +392,10 @@ const attributes = {
 	timeInYears: {
 		type: 'number',
 	},
+	isPreview: {
+		type: 'boolean',
+		default: false,
+	}
 };
 
 export default attributes;

@@ -60,78 +60,9 @@ registerBlockType( 'uagb/content-timeline', {
 	edit,
 	save,
 	example: {
-		innerBlocks: [
-			{
-				name: 'uagb/content-timeline-child',
-				innerBlocks: [
-					{
-						name: 'uagb/content-timeline-child',
-						attributes: {
-							time_heading: 'Timeline Heading ',
-							time_desc:
-								'This is Timeline description, you can change me anytime click here ',
-							t_date: '1/1/2019',
-						},
-					},
-				],
-			},
-			{
-				name: 'uagb/content-timeline-child',
-				innerBlocks: [
-					{
-						name: 'uagb/content-timeline-child',
-						attributes: {
-							time_heading: 'Timeline Heading ',
-							time_desc:
-								'This is Timeline description, you can change me anytime click here ',
-							t_date: '1/1/2019',
-						},
-					},
-				],
-			},
-			{
-				name: 'uagb/content-timeline-child',
-				innerBlocks: [
-					{
-						name: 'uagb/content-timeline-child',
-						attributes: {
-							time_heading: 'Timeline Heading ',
-							time_desc:
-								'This is Timeline description, you can change me anytime click here ',
-							t_date: '1/1/2019',
-						},
-					},
-				],
-			},
-			{
-				name: 'uagb/content-timeline-child',
-				innerBlocks: [
-					{
-						name: 'uagb/content-timeline-child',
-						attributes: {
-							time_heading: 'Timeline Heading ',
-							time_desc:
-								'This is Timeline description, you can change me anytime click here ',
-							t_date: '1/1/2019',
-						},
-					},
-				],
-			},
-			{
-				name: 'uagb/content-timeline-child',
-				innerBlocks: [
-					{
-						name: 'uagb/content-timeline-child',
-						attributes: {
-							time_heading: 'Timeline Heading ',
-							time_desc:
-								'This is Timeline description, you can change me anytime click here ',
-							t_date: '1/1/2019',
-						},
-					},
-				],
-			},
-		],
+		attributes: {
+			isPreview: true,
+		}
 	},
 	deprecated,
 } );

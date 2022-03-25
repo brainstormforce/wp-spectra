@@ -19,6 +19,10 @@ const attributes = {
 		type: 'string',
 		default: 'en',
 	},
+	isPreview: {
+		type: 'boolean',
+		default: false,
+	},
 };
 
 export default attributes;

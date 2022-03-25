@@ -626,6 +626,10 @@ const attributes = {
 		type: 'string',
 		default: 'left',
 		isUAGStyle: true,
+	},
+	isPreview: {
+		type: 'boolean',
+		default: false,
 	}
 };
 

@@ -313,6 +313,10 @@ const attributes = {
 		type: 'string',
 		default: 'px',
 	},
+	isPreview: {
+		type: 'boolean',
+		default: false,
+	},
 	isBlockRootParent: {
 		type: 'boolean',
 		default: false,

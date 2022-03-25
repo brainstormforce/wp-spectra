@@ -226,11 +226,15 @@ const UAGBContainer = ( props ) => {
 
 	const { variations } = props;
 
-	const { variationSelected } = props.attributes;
+	const { variationSelected, isPreview } = props.attributes;
+
+	const previewImageData = `${ uagb_blocks_info.uagb_url }/admin/assets/preview-images/container.png`;
 
 	if ( ! variationSelected && 0 === select( 'core/block-editor' ).getBlockParents( props.clientId ).length ) {
 
 		return (
+			isPreview ? <img width='100%' src={previewImageData} alt=''/> :
+			<>
 			<div className='uagb-container-variation-picker'>
 				<BlockVariationPicker
 					icon={ '' }
@@ -245,6 +249,7 @@ const UAGBContainer = ( props ) => {
 					}
 				/>
 			</div>
+			</>
 		);
 	}
 
