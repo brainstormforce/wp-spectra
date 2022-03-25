@@ -38,7 +38,7 @@ const ContentWidth = () => {
                     <p className="mt-[0.6rem] text-sm ">
                         {
                             // eslint-disable-next-line @wordpress/i18n-no-variables
-                            __( `This setting will apply to Container Block's default Content width.`, 'ultimate-addons-for-gutenberg' )
+                            __( `This setting will apply to Container Block's default Content Width.`, 'ultimate-addons-for-gutenberg' )
                         }
                     </p>
 					{ 'Spectra' !== uag_react.uag_content_width_set_by &&
