@@ -32,7 +32,7 @@ const MultiButtonsControl = ( props ) => {
 	} = props;
 
 	const { getSelectedBlock } = select( 'core/block-editor' );
-	const selectedBlock = getSelectedBlock().name.replace( 'uagb/', '' );
+	const selectedBlock = getSelectedBlock().name.replace( 'uagb/', '' ); // eslint-disable-line @wordpress/no-unused-vars-before-return
 	const [ buttonPrimaryStateDesktop, setbuttonPrimaryStateDesktop ] = useState( true );
 	const [ buttonPrimaryStateTablet, setbuttonPrimaryStateTablet ] = useState( true );
 	const [ buttonPrimaryStateMobile, setbuttonPrimaryStateMobile ] = useState( true );
@@ -64,9 +64,9 @@ const MultiButtonsControl = ( props ) => {
 						isPrimary={ data.desktop.value === option.value && buttonPrimaryStateDesktop }
 						aria-pressed={ data.desktop.value === option.value }
 						onClick={ () => {
-							setbuttonPrimaryStateDesktop(true);
+							setbuttonPrimaryStateDesktop( true );
 							if ( option.value === data.desktop.value && buttonPrimaryStateDesktop ) {
-								setbuttonPrimaryStateDesktop(false);
+								setbuttonPrimaryStateDesktop( false );
 								setAttributes( {
 									[ data.desktop.label ]: blocksAttributes[selectedBlock][data.desktop.label].default,
 								} );
@@ -99,10 +99,10 @@ const MultiButtonsControl = ( props ) => {
 						isPrimary={ data.tablet.value === option.value && buttonPrimaryStateTablet }
 						aria-pressed={ data.tablet.value === option.value }
 						onClick={ () => {
-							setbuttonPrimaryStateTablet(true);
+							setbuttonPrimaryStateTablet( true );
 
 							if ( option.value === data.tablet.value && buttonPrimaryStateTablet ) {
-								setbuttonPrimaryStateTablet(false);
+								setbuttonPrimaryStateTablet( false );
 								setAttributes( {
 									[ data.tablet.label ]: blocksAttributes[selectedBlock][data.tablet.label].default,
 								} );
@@ -135,10 +135,10 @@ const MultiButtonsControl = ( props ) => {
 						isPrimary={ data.mobile.value === option.value && buttonPrimaryStateMobile }
 						aria-pressed={ data.mobile.value === option.value }
 						onClick={ () => {
-							setbuttonPrimaryStateMobile(true);
+							setbuttonPrimaryStateMobile( true );
 
 							if ( option.value === data.mobile.value && buttonPrimaryStateMobile ) {
-								setbuttonPrimaryStateMobile(false);
+								setbuttonPrimaryStateMobile( false );
 								setAttributes( {
 									[ data.mobile.label ]: blocksAttributes[selectedBlock][data.mobile.label].default,
 								} );
@@ -176,13 +176,13 @@ const MultiButtonsControl = ( props ) => {
 	}
 
 	const onClickHandler = ( value ) => {
-		setbuttonPrimaryStateDesktop(true);
+		setbuttonPrimaryStateDesktop( true );
 		if ( onChange ) {
 			onChange( value );
 		}
 
 		if ( value === data.value && buttonPrimaryStateDesktop ) {
-			setbuttonPrimaryStateDesktop(false);
+			setbuttonPrimaryStateDesktop( false );
 			setAttributes( {
 				[ data.label ]: blocksAttributes[selectedBlock][data.label].default,
 			} );
