@@ -13,6 +13,8 @@ import LoadFontsLocally from '@DashboardApp/pages/settings/LoadFontsLocally';
 import PreloadLocalFonts from '@DashboardApp/pages/settings/PreloadLocalFonts';
 import CollapsePanels from '@DashboardApp/pages/settings/CollapsePanels';
 import CopyPasteStyles from '@DashboardApp/pages/settings/CopyPasteStyles';
+import ContentWidth from '@DashboardApp/pages/settings/ContentWidth';
+import SettingsSkeleton from '@DashboardApp/pages/settings/SettingsSkeleton';
 
 function classNames( ...classes ) {
     return classes.filter( Boolean ).join( ' ' )
@@ -23,6 +25,7 @@ const Settings = () => {
     const dispatch = useDispatch();
 
     const activeSettingsNavigationTab = useSelector( ( state ) => state.activeSettingsNavigationTab );
+    const initialStateSetFlag = useSelector( ( state ) => state.initialStateSetFlag );
 
     const navigation = [
 		{ name: __( 'Editor Options', 'ultimate-addons-for-gutenberg' ), slug: 'global-settings', icon: SettingsIcons['global-settings'] },
@@ -30,7 +33,11 @@ const Settings = () => {
         { name: __( 'Templates', 'ultimate-addons-for-gutenberg' ), slug: 'templates', icon: SettingsIcons.templates },
         { name: __( 'Version Control', 'ultimate-addons-for-gutenberg' ), slug: 'version-control', icon: SettingsIcons['version-control'] },
         { name: __( 'Performance', 'ultimate-addons-for-gutenberg' ), slug: 'fonts-performance', icon: SettingsIcons['fonts-performance'] },
-      ];
+    ];
+
+	if ( ! initialStateSetFlag ) {
+		return <SettingsSkeleton/>;
+	}
 
     return (
         <main className="max-w-[77rem] mx-auto my-[2.43rem] bg-white rounded-[0.2rem] shadow overflow-hidden h-[34rem]">
@@ -57,6 +64,7 @@ const Settings = () => {
                 <div className='space-y-8 mt-8 mb-0 mr-8 sm:px-6 lg:px-0 lg:col-span-9'>
 					{ 'global-settings' === activeSettingsNavigationTab &&
 						<>
+							<ContentWidth/>
                             <CollapsePanels/>
                             <CopyPasteStyles/>
                         </>

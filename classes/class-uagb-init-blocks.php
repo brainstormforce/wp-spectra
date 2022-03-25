@@ -522,6 +522,12 @@ class UAGB_Init_Blocks {
 
 		$uagb_exclude_blocks_from_extension = array( 'core/archives', 'core/calendar', 'core/latest-comments', 'core/tag-cloud', 'core/rss' );
 
+		$content_width = \UAGB_Admin_Helper::get_global_content_width();
+
+		if ( '' === $content_width ) {
+			$content_width = 1200;
+		}
+
 		wp_localize_script(
 			'uagb-block-editor-js',
 			'uagb_blocks_info',
@@ -553,6 +559,7 @@ class UAGB_Init_Blocks {
 				'uagb_old_user_less_than_2'          => get_option( 'uagb-old-user-less-than-2' ),
 				'collapse_panels'                    => UAGB_Admin_Helper::get_admin_settings_option( 'uag_collapse_panels', 'enabled' ),
 				'copy_paste'                         => UAGB_Admin_Helper::get_admin_settings_option( 'uag_copy_paste', 'enabled' ),
+				'content_width'                      => $content_width,
 			)
 		);
 		// To match the editor with frontend.

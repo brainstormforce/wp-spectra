@@ -20,7 +20,8 @@ const setInitialState = ( store ) => {
             enableCopyPasteStyles : data.copy_paste,
             enableDisplayConditions: data.enable_block_condition,
             enableMasonryExtension: data.enable_masonry_gallery,
-			enableResponsiveConditions: data.enable_block_responsive
+			enableResponsiveConditions: data.enable_block_responsive,
+			contentWidth: data.content_width,
         };
 
         store.dispatch( {type: 'UPDATE_INITIAL_STATE', payload: initialState} );

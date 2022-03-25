@@ -46,7 +46,7 @@ $selectors = array(
 	' .uagb-tabs__panel .uagb-tab.uagb-tabs__active'       => array(
 		'background' => $attr['activeTabBgColor'],
 	),
-	'.uagb-tabs__wrap ul.uagb-tabs__panel li.uagb-tab.uagb-tabs__active a'     => array(
+	'.uagb-tabs__wrap ul.uagb-tabs__panel li.uagb-tab.uagb-tabs__active a' => array(
 		'color' => $attr['activeTabTextColor'],
 	),
 	' .uagb-tabs__panel .uagb-tab.uagb-tabs__active .uagb-tabs__icon svg' => array(

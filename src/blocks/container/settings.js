@@ -380,7 +380,7 @@ const Settings = ( props ) => {
 									/>
 									{ 'alignwide' === innerContentWidth &&
 										<ResponsiveSlider
-											label={ __( 'Content Custom Width', 'ultimate-addons-for-gutenberg' ) }
+											label={ __( 'Content Box Width', 'ultimate-addons-for-gutenberg' ) }
 											data={ {
 												desktop: {
 													value: innerContentCustomWidthDesktop,
@@ -396,7 +396,7 @@ const Settings = ( props ) => {
 												},
 											} }
 											min={ 0 }
-											max={ 1200 }
+											max={ 1600 }
 											unit={ {
 												value: innerContentCustomWidthType,
 												label: 'innerContentCustomWidthType',
@@ -478,7 +478,7 @@ const Settings = ( props ) => {
 							/>
 							{ 'alignwide' === innerContentWidth &&
 								<ResponsiveSlider
-									label={ __( 'Content Custom Width', 'ultimate-addons-for-gutenberg' ) }
+									label={ __( 'Content Box Width', 'ultimate-addons-for-gutenberg' ) }
 									data={ {
 										desktop: {
 											value: innerContentCustomWidthDesktop,
@@ -494,7 +494,7 @@ const Settings = ( props ) => {
 										},
 									} }
 									min={ 0 }
-									max={ 1200 }
+									max={ 1600 }
 									unit={ {
 										value: innerContentCustomWidthType,
 										label: 'innerContentCustomWidthType',
