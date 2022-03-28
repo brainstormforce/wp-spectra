@@ -43,6 +43,7 @@ import formsAttribute from './../../forms/attributes';
 import tabsAttribute from './../../tabs/attributes';
 import lottieAttribute from './../../lottie/attributes';
 import starRatingAttribute from './../../star-rating/attributes';
+import containerAttribute from './../../container/attributes';
 import {
 	BlockControls,
 } from '@wordpress/block-editor';
@@ -93,6 +94,7 @@ const blocksAttributes = {
 	'content-timeline-child' : contentChildAttribute,
     'post-timeline' : postTimelineAttribute,
     'how-to-step' : howToStepAttribute,
+	'container' : containerAttribute
 };
 
 const UAGCopyPasteStyles = () => {
@@ -249,7 +251,6 @@ const UAGCopyPasteStyles = () => {
 
 				uagLocalStorageObject[`${blockName}-styles`] = {};
 				uagLocalStorageObject[`global-style`] = {};
-
 
                 if ( blockAttributes && uagLocalStorageObject ) {
 
