@@ -128,16 +128,6 @@ const ResponsiveConditionOptions = ( props ) => {
 
 	return (
 		<>
-		<ToggleControl
-			label={ __( 'Responsive Condition' ) }
-			checked={ UAGResponsiveCondition }
-			onChange={ () =>
-				setAttributes( {
-					UAGResponsiveCondition: ! attributes.UAGResponsiveCondition,
-				} )
-			}
-		/>
-		{ UAGResponsiveCondition && (
 		<>
 			<ToggleControl
 				label={ __( 'Hide on Desktop' ) }
@@ -167,7 +157,6 @@ const ResponsiveConditionOptions = ( props ) => {
 				}
 			/>
 		</>
-		) }
 		</>
 	);
 };
@@ -214,16 +203,15 @@ const AdvancedControlsBlock = createHigherOrderComponent( ( BlockEdit ) => {
 	};
 }, 'AdvancedControlsBlock' );
 
-function ApplyExtraClass( extraProps, attributes ) {
+function ApplyExtraClass( extraProps, blockType, attributes ) {
 	const {
 		UAGHideDesktop,
 		UAGHideTab,
 		UAGHideMob,
 		UAGDisplayConditions,
-		UAGResponsiveCondition
 	} = attributes;
 
-	if ( 'responsiveVisibility' === UAGDisplayConditions || UAGResponsiveCondition ) {
+	if ( 'responsiveVisibility' === UAGDisplayConditions || UAGHideDesktop || UAGHideTab || UAGHideMob ) {
 		if ( UAGHideDesktop ) {
 			extraProps.className = extraProps.className + ' uag-hide-desktop';
 		}
