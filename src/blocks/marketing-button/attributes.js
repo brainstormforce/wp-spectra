@@ -95,7 +95,6 @@ const attributes = {
 	},
 	backgroundColor: {
 		type: 'string',
-		default: '#0170B9',
 		isUAGStyle: true,
 	},
 	backgroundHoverColor: {
@@ -144,7 +143,6 @@ const attributes = {
 	//Colors
 	titleColor: {
 		type: 'string',
-		default: '#333',
 		isUAGStyle: true,
 	},
 	titleHoverColor: {
