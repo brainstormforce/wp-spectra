@@ -16,7 +16,7 @@ for ( $i = 1; $i <= 2; $i++ ) {
 		'hPadding'         => '',
 		'borderWidth'      => '',
 		'borderRadius'     => '',
-		'borderStyle'      => 'solid',
+		'borderStyle'      => 'none',
 		'borderColor'      => '',
 		'borderHColor'     => '',
 		'color'            => '',

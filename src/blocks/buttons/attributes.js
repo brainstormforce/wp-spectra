@@ -14,7 +14,7 @@ for ( let i = 1; i <= itemCount; i++ ) {
 		hPadding: '',
 		borderWidth: '',
 		borderRadius: '',
-		borderStyle: 'solid',
+		borderStyle: 'none',
 		borderColor: '',
 		borderHColor: '',
 		color: '',
