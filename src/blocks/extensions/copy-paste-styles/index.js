@@ -145,6 +145,8 @@ const UAGCopyPasteStyles = () => {
 
     const storeBlockStyles = ( blockData ) => {
 
+		xsLocalStorage.setItem( 'uag-copy-paste-styles', JSON.stringify( {} ) );
+
         const {
             attributes,
             name,
