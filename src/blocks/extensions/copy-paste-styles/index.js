@@ -240,7 +240,7 @@ const UAGCopyPasteStyles = () => {
 			}
 
             let styles = {};
-			let parentStyle = {};
+			const parentStyle = {};
 
             if ( name.includes( 'uagb/' ) ) {
 
@@ -274,7 +274,7 @@ const UAGCopyPasteStyles = () => {
                 }
 				if( innerBlocks ) {
 
-					parentStyle['innerblocks'] = innerBlocks;
+					parentStyle.innerblocks = innerBlocks;
 
 				}
 
@@ -304,13 +304,12 @@ const UAGCopyPasteStyles = () => {
         const {
             name,
             clientId,
-			innerBlocks,
-			attributes
+			innerBlocks
         } = blockData
 
         let styles;
 		let pasteStyle;
-		let parentAttr = {};
+		const parentAttr = {};
         let uagLocalStorageObject = {};
 
         xsLocalStorage.getItem( 'uag-copy-paste-styles', function ( loop_element ) {
@@ -336,6 +335,7 @@ const UAGCopyPasteStyles = () => {
 
 							updateBlockStyles( childBlock.clientId, pasteStyle.innerblocks[index].attributes );
 
+							return childBlock;
 						} );
 
 					}

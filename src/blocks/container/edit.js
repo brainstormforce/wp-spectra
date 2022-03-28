@@ -71,6 +71,20 @@ const UAGBContainer = ( props ) => {
 		} else {
 			element = document.getElementById( 'block-' + props.clientId )
 		}
+		// Add Close Button for Variation Selector.
+		const variationPicker = element.querySelector( '.uagb-container-variation-picker .block-editor-block-variation-picker' );
+		const closeButton = document.createElement( 'button' );
+		closeButton.onclick = function() {
+			if ( props.defaultVariation.attributes ) {
+				props.setAttributes( props.defaultVariation.attributes );
+			}
+		};
+		closeButton.setAttribute( 'class', 'uagb-variation-close' );
+		closeButton.innerHTML = '×';
+		if ( variationPicker ) {
+			const variationPickerLabel = variationPicker.querySelector( '.components-placeholder__label' );
+			variationPicker.insertBefore( closeButton,variationPickerLabel );
+		}
 
 		if ( element ) {
 			element.classList.remove( `uagb-editor-preview-mode-desktop` );
@@ -93,7 +107,6 @@ const UAGBContainer = ( props ) => {
 		if ( descendants.length !== props.attributes.blockDescendants.length ) {
 			props.setAttributes( { blockDescendants: descendants } );
 		}
-
 	}, [] );
 
 	useEffect( () => {

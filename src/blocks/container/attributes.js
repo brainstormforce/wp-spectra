@@ -43,7 +43,7 @@ const attributes = {
 	},
 	innerContentCustomWidthDesktop: {
 		type: 'number',
-		default: 1200,
+		default: uagb_blocks_info.content_width
 	},
 	innerContentCustomWidthTablet: {
 		type: 'number',
