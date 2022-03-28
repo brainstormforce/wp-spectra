@@ -40,6 +40,7 @@ class Admin_Helper {
 
 		$uag_versions   = self::get_rollback_versions_options();
 		$changelog_data = self::get_changelog_feed_data();
+		$content_width  = \UAGB_Admin_Helper::get_global_content_width();
 
 		$options = array(
 			'rollback_to_previous_version'       => isset( $uag_versions[0]['value'] ) ? $uag_versions[0]['value'] : '',
@@ -58,6 +59,7 @@ class Admin_Helper {
 			'preload_local_fonts'                => \UAGB_Admin_Helper::get_admin_settings_option( 'uag_preload_local_fonts', 'disabled' ),
 			'uag_previous_versions'              => $uag_versions,
 			'changelog_data'                     => $changelog_data,
+			'content_width'                      => $content_width,
 		);
 
 		return $options;

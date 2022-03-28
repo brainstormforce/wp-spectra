@@ -71,6 +71,20 @@ const UAGBContainer = ( props ) => {
 		} else {
 			element = document.getElementById( 'block-' + props.clientId )
 		}
+		// Add Close Button for Variation Selector.
+		const variationPicker = element.querySelector( '.uagb-container-variation-picker .block-editor-block-variation-picker' );
+		const closeButton = document.createElement( 'button' );
+		closeButton.onclick = function() {
+			if ( props.defaultVariation.attributes ) {
+				props.setAttributes( props.defaultVariation.attributes );
+			}
+		};
+		closeButton.setAttribute( 'class', 'uagb-variation-close' );
+		closeButton.innerHTML = '×';
+		if ( variationPicker ) {
+			const variationPickerLabel = variationPicker.querySelector( '.components-placeholder__label' );
+			variationPicker.insertBefore( closeButton,variationPickerLabel );
+		}
 
 		if ( element ) {
 			element.classList.remove( `uagb-editor-preview-mode-desktop` );
@@ -93,7 +107,6 @@ const UAGBContainer = ( props ) => {
 		if ( descendants.length !== props.attributes.blockDescendants.length ) {
 			props.setAttributes( { blockDescendants: descendants } );
 		}
-
 	}, [] );
 
 	useEffect( () => {
@@ -213,11 +226,15 @@ const UAGBContainer = ( props ) => {
 
 	const { variations } = props;
 
-	const { variationSelected } = props.attributes;
+	const { variationSelected, isPreview } = props.attributes;
+
+	const previewImageData = `${ uagb_blocks_info.uagb_url }/admin/assets/preview-images/container.png`;
 
 	if ( ! variationSelected && 0 === select( 'core/block-editor' ).getBlockParents( props.clientId ).length ) {
 
 		return (
+			isPreview ? <img width='100%' src={previewImageData} alt=''/> :
+			<>
 			<div className='uagb-container-variation-picker'>
 				<BlockVariationPicker
 					icon={ '' }
@@ -232,6 +249,7 @@ const UAGBContainer = ( props ) => {
 					}
 				/>
 			</div>
+			</>
 		);
 	}
 

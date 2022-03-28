@@ -18,6 +18,7 @@ const Render = ( props ) => {
 	const { attributes, isSelected, className } = props;
 
 	const {
+		isPreview,
 		align,
 		contentWidth,
 		tag,
@@ -35,9 +36,10 @@ const Render = ( props ) => {
 			blockControlsClass = 'align' + align;
 		}
 	}
-
+	const previewImageData = `${ uagb_blocks_info.uagb_url }/admin/assets/preview-images/advanced-row.png`;
 	return (
 		<>
+		{ isPreview ? <img width='100%' src={previewImageData} alt=''/> :
 			<CustomTag
 				className={ classnames(
 					className,
@@ -66,6 +68,7 @@ const Render = ( props ) => {
 					<InnerBlocks templateLock={ false } />
 				</div>
 			</CustomTag>
+}
 		</>
 	);
 };

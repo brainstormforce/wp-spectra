@@ -24,7 +24,11 @@ registerBlockType( 'uagb/post-timeline', {
 		__( 'timeline', 'ultimate-addons-for-gutenberg' ),
 		__( 'uag', 'ultimate-addons-for-gutenberg' ),
 	],
-	example: {},
+	example: {
+		attributes: {
+			isPreview: true,
+		}
+	},
 	edit,
 	// Render via PHP
 	save() {

@@ -61,7 +61,7 @@ const Render = ( props ) => {
 			timeInYears,
 		},
 	} = props;
-	
+
 	const splitBlock = ( before, after, ...blocks ) => {
 		if ( after ) {
 			// Append "After" content as a new paragraph block to the end of

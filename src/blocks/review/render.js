@@ -100,7 +100,6 @@ const Render = ( props ) => {
 			/>
 		);
 	}
-
 	return (
 		<div
 			className={ classnames(

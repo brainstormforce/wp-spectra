@@ -26,6 +26,7 @@ const Render = ( props ) => {
 
 	// Setup the attributes.
 	const {
+		isPreview,
 		icon,
 		iconimgPosition,
 		source_type,
@@ -184,7 +185,11 @@ const Render = ( props ) => {
 		</>
 	);
 
+	const previewImageData = `${ uagb_blocks_info.uagb_url }/admin/assets/preview-images/info-box.png`;
+
+
 	return (
+		isPreview ? <img width='100%' src={previewImageData} alt=''/> :
 		<div
 			className={ classnames(
 				`uagb-block-${ block_id }`,
