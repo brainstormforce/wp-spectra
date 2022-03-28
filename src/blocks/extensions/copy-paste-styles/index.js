@@ -3,47 +3,8 @@ import { select, dispatch, useDispatch } from '@wordpress/data';
 import { store as keyboardShortcutsStore, useShortcut } from '@wordpress/keyboard-shortcuts';
 import { createHigherOrderComponent } from '@wordpress/compose';
 // Import Blocks Attributes.
-import advancedHeadingAttribute from './../../advanced-heading/attributes';
-import postGridAttribute from './../../post/post-grid/attributes';
-import postCarouselAttribute from './../../post/post-carousel/attributes';
-import postMasonryAttribute from './../../post/post-masonry/attributes';
-import sectionAttribute from './../../section/attributes';
-import buttonsAttribute from './../../buttons/attributes';
-import buttonsChildAttribute from './../../buttons-child/attributes';
-import infoboxAttribute from './../../info-box/attributes';
-import testimonialAttribute from './../../testimonial/attributes';
-import teamAttribute from './../../team/attributes';
-import socialAttribute from './../../social-share/attributes';
-import socialChildAttribute from './../../social-share-child/attributes';
-import googleMapAttribute from './../../google-map/attributes';
-import iconListAttribute from './../../icon-list/attributes';
-import iconListChildAttribute from './../../icon-list-child/attributes';
-import priceListAttribute from './../../price-list/attributes';
-import priceListChildAttribute from './../../price-list-child/attributes';
-import contentAttribute from './../../timeline/content-timeline/attributes';
-import contentChildAttribute from './../../timeline/content-timeline-child/attributes';
-import postTimelineAttribute from './../../timeline/post-timeline/attributes';
-import callToActionAttribute from './../../call-to-action/attributes';
-import columnAttribute from './../../column/attributes';
-import columnsAttribute from './../../columns/attributes';
-import gfAttribute from './../../gf-designer/attributes';
-import cf7Attribute from './../../cf7-designer/attributes';
-import blockquoteAttribute from './../../blockquote/attributes';
-import marketingBtnAttribute from './../../marketing-button/attributes';
-import tableofContentAttribute from './../../table-of-contents/attributes';
-import howToAttribute from './../../how-to/attributes';
-import howToStepAttribute from './../../how-to/child-blocks/step/attributes';
-import faqAttribute from './../../faq/attributes';
-import faqChildAttribute from './../../faq-child/attributes';
-import inlineNoticeAttribute from './../../inline-notice/attributes';
-import taxonomyListAttribute from './../../taxonomy-list/attributes';
-import reviewAttribute from './../../review/attributes';
-import wpSearchAttribute from './../../wp-search/attributes';
-import formsAttribute from './../../forms/attributes';
-import tabsAttribute from './../../tabs/attributes';
-import lottieAttribute from './../../lottie/attributes';
-import starRatingAttribute from './../../star-rating/attributes';
-import containerAttribute from './../../container/attributes';
+import { blocksAttributes } from '@Controls/getBlocksDefaultAttributes';
+
 import {
 	BlockControls,
 } from '@wordpress/block-editor';
@@ -53,49 +14,6 @@ import editorStyles from './../editor.lazy.scss';
 import { useLayoutEffect } from 'react';
 import { addFilter } from '@wordpress/hooks';
 
-const blocksAttributes = {
-	'advanced-heading' : advancedHeadingAttribute,
-	'post-grid' : postGridAttribute,
-	'post-carousel' : postCarouselAttribute,
-	'post-masonry' : postMasonryAttribute,
-	'section' : sectionAttribute,
-	'buttons' : buttonsAttribute,
-	'buttons-child' : buttonsChildAttribute,
-	'info-box' : infoboxAttribute,
-	'testimonial' : testimonialAttribute,
-	'team' : teamAttribute,
-	'social-share' : socialAttribute,
-	'social-share-child' : socialChildAttribute,
-	'google-map' : googleMapAttribute,
-	'icon-list' : iconListAttribute,
-	'icon-list-child' : iconListChildAttribute,
-	'restaurant-menu' : priceListAttribute,
-	'restaurant-menu-child' : priceListChildAttribute,
-	'call-to-action' : callToActionAttribute,
-	'column' : columnAttribute,
-	'columns' : columnsAttribute,
-	'gf-styler' : gfAttribute,
-	'cf7-styler' : cf7Attribute,
-	'blockquote' : blockquoteAttribute,
-	'marketing-button' : marketingBtnAttribute,
-	'table-of-contents' : tableofContentAttribute,
-	'how-to' : howToAttribute,
-	'faq' : faqAttribute,
-	'faq-child' : faqChildAttribute,
-	'inline-notice' : inlineNoticeAttribute,
-	'taxonomy-list' : taxonomyListAttribute,
-	'review' : reviewAttribute,
-	'wp-search' : wpSearchAttribute,
-	'forms' : formsAttribute,
-	'tabs' : tabsAttribute,
-	'lottie' : lottieAttribute,
-	'star-rating' : starRatingAttribute,
-	'content-timeline' : contentAttribute,
-	'content-timeline-child' : contentChildAttribute,
-    'post-timeline' : postTimelineAttribute,
-    'how-to-step' : howToStepAttribute,
-	'container' : containerAttribute
-};
 
 const UAGCopyPasteStyles = () => {
 
