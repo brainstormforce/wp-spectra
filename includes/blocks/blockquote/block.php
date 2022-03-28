@@ -17,5 +17,5 @@ $block_data = array(
 	'description'      => __( 'This block allows you to display your Blockquote.', 'ultimate-addons-for-gutenberg' ),
 	'default'          => true,
 	'extension'        => false,
-	'priority'         => 4,
+	'priority'         => 22,
 );
