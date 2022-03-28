@@ -18,5 +18,5 @@ $block_data = array(
 	'default'          => true,
 	'extension'        => false,
 	'js_assets'        => array( 'uagb-faq-js' ),
-	'priority'         => 1,
+	'priority'         => 24,
 );

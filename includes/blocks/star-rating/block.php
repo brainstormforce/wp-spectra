@@ -17,5 +17,5 @@ $block_data = array(
 	'description'      => __( 'This block helps you add Star Ratings and customize it as required.', 'ultimate-addons-for-gutenberg' ),
 	'default'          => true,
 	'js_assets'        => array(),
-	'priority'         => 5,
+	'priority'         => 21,
 );

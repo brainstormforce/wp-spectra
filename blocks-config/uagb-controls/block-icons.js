@@ -264,7 +264,7 @@ const UAGB_Block_Icons = {
 	),
 	social_share: el(
 		'svg',
-		{ width: 24, height: 24, viewBox: '0 0 20 20', className: 'uagb-editor-icons'  },
+		{ width: 24, height: 24, viewBox: '0 0 24 24', className: 'uagb-editor-icons'  },
 		el( 'path', {
 			fill: '#1e1e1e',
 			d:

@@ -17,5 +17,5 @@ $block_data = array(
 	'description'      => __( 'This block lets you add a Flex Properties Based Container.', 'ultimate-addons-for-gutenberg' ),
 	'default'          => true,
 	'extension'        => false,
-	'priority'         => 2,
+	'priority'         => 1,
 );
