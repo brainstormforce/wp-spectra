@@ -44,6 +44,10 @@
 			.components-base-control__help {
 				margin-top: 10px;
 			}
+			/* Add a border top and bottom of responsive condition */
+			&.uag-advance-panel-body-responsive.conditions {
+				border-bottom: 1px solid #e0e0e0;
+			}
 		}
 	}
 }
