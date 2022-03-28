@@ -15,40 +15,38 @@ const defaultProps = {};
 
 export default function Login(props) {
 	const dispatch = useDispatch();
-	const socialLogin = useSelector( ( state ) => state.socialLogin );
-	const socialRegister = socialLogin ? socialLogin.socialRegister : false;
-	const googleClientId = socialLogin ? socialLogin.googleClientId : '';
-	const facebookAppId = socialLogin ? socialLogin.facebookAppId : '';
-	const facebookAppSecret = socialLogin ? socialLogin.facebookAppSecret : '';
+	const loginBlock = useSelector( ( state ) => state.loginBlock );
+	const recaptchaSiteKey = loginBlock ? loginBlock.recaptchaSiteKey : '';
+	const recaptchaSecretKey = loginBlock ? loginBlock.recaptchaSecretKey : '';
+	const socialRegister = loginBlock ? loginBlock.socialRegister : false;
+	const googleClientId = loginBlock ? loginBlock.googleClientId : '';
+	const facebookAppId = loginBlock ? loginBlock.facebookAppId : '';
+	const facebookAppSecret = loginBlock ? loginBlock.facebookAppSecret : '';
 
 	const savedFormData = (type, payload) => {
 		dispatch({type, payload })
 		const formData = new window.FormData();
 		formData.append( 'action', 'uag_social_login' );
 		formData.append( 'security', uag_react.social_login_nonce );
-		if('UPDATE_SOCIAL_REGISTER' === type){
-			formData.append( 'socialRegister', payload );
-			formData.append( 'googleClientId', googleClientId || '' );
-			formData.append( 'facebookAppId', facebookAppId || '' );
-			formData.append( 'facebookAppSecret', facebookAppSecret || '' );
-		}
-		if('UPDATE_GOOGLE_CLIENT_ID' === type){
-			formData.append( 'googleClientId', payload );
-			formData.append( 'socialRegister', socialRegister || false );
-			formData.append( 'facebookAppId', facebookAppId || '' );
-			formData.append( 'facebookAppSecret', facebookAppSecret || '' );
-		}
-		if('UPDATE_FACEBOOK_APP_ID' === type){
-			formData.append( 'facebookAppId', payload );
-			formData.append( 'socialRegister', socialRegister || false );
-			formData.append( 'googleClientId', googleClientId || '' );
-			formData.append( 'facebookAppSecret', facebookAppSecret || '' );
-		}
-		if('UPDATE_FACEBOOK_APP_SECRET' === type){
-			formData.append( 'facebookAppSecret', payload );
-			formData.append( 'socialRegister', socialRegister || false );
-			formData.append( 'googleClientId', googleClientId || '' );
-			formData.append( 'facebookAppId', facebookAppId || '' );
+		switch(type) {
+			case 'UPDATE_RECAPTCHA_SITE_KEY':
+				formData.append( 'recaptchaSiteKey', payload );
+				break;
+			case 'UPDATE_RECAPTCHA_SECRET_KEY':
+				formData.append( 'recaptchaSecretKey', payload );
+				break;
+			case 'UPDATE_SOCIAL_REGISTER':
+				formData.append( 'socialRegister', payload );
+				break;
+			case 'UPDATE_GOOGLE_CLIENT_ID':
+				formData.append( 'googleClientId', payload );
+				break;
+			case 'UPDATE_FACEBOOK_APP_ID':
+				formData.append( 'facebookAppId', payload );
+				break;
+			case 'UPDATE_FACEBOOK_APP_SECRET':
+				formData.append( 'facebookAppSecret', payload );
+				break;
 		}
 		apiFetch( {
 			url: uag_react.ajax_url,
@@ -88,6 +86,28 @@ export default function Login(props) {
 						</Switch>
 					</div>
 				</section>
+				<div className='border-b pt-4'>
+					<div className='pb-4'>
+						<h3 className='text-lg leading-6 font-medium text-gray-900'>
+							{ __( 'Login Form - reCaptcha', 'ultimate-addons-for-gutenberg' ) }
+						</h3>
+						<p className='mt-[0.6rem] text-sm'>
+							{ __( 'Note: This setting is required if you wish to use Login reCaptcha in your website. Read', 'ultimate-addons-for-gutenberg' ) }
+							{' '}
+							<a href='https://developers.google.com/recaptcha/intro'>{__('this article', 'ultimate-addons-for-gutenberg')}</a>.
+						</p>
+					</div>
+					<div className='pb-8 flex'>
+						<div>
+							<label className='block'>{__('Site Key', 'ultimate-addons-for-gutenberg')}</label>
+							<input className='block' type="text" name="recaptcha-site-key" value={recaptchaSiteKey || ''} onChange={(e) => savedFormData('UPDATE_RECAPTCHA_SITE_KEY', e.target.value)} />
+						</div>
+						<div>
+							<label className='block'>{__('Secret Key', 'ultimate-addons-for-gutenberg')}</label>
+							<input className='block' type="text" name="recaptcha-secret-key" value={recaptchaSecretKey || ''} onChange={(e) => savedFormData('UPDATE_RECAPTCHA_SECRET_KEY', e.target.value)} />
+						</div>
+					</div>
+				</div>
 				<div className='border-b pt-4'>
 					<div className='pb-4'>
 						<h3 className='text-lg leading-6 font-medium text-gray-900'>

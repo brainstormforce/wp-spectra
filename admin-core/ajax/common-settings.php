@@ -299,17 +299,22 @@ class Common_Settings extends Ajax_Base {
 			wp_send_json_error( $response_data );
 		}
 
-		$socialRegister = (bool) rest_sanitize_boolean( $_POST['socialRegister'] );
-		$googleClientId = sanitize_text_field( $_POST['googleClientId'] );
-		$facebookAppId = sanitize_text_field( $_POST['facebookAppId'] );
-		$facebookAppSecret = sanitize_text_field( $_POST['facebookAppSecret'] );
+		$login_block = \UAGB_Admin_Helper::get_admin_settings_option( 'uag_login_block', [] );
+		if(isset($_POST['recaptchaSiteKey'])){
+			$login_block['recaptchaSiteKey'] = sanitize_text_field( $_POST['recaptchaSiteKey'] );
+		}else if(isset($_POST['recaptchaSecretKey'])){
+			$login_block['recaptchaSecretKey'] = sanitize_text_field( $_POST['recaptchaSecretKey'] );
+		}else if(isset($_POST['socialRegister'])){
+			$login_block['socialRegister'] = (bool) rest_sanitize_boolean( $_POST['socialRegister'] );
+		}else if(isset($_POST['googleClientId'])){
+			$login_block['googleClientId'] = sanitize_text_field( $_POST['googleClientId'] );
+		}else if(isset($_POST['facebookAppId'])){
+			$login_block['facebookAppId'] = sanitize_text_field( $_POST['facebookAppId'] );
+		}else if(isset($_POST['facebookAppSecret'])){
+			$login_block['facebookAppSecret'] = sanitize_text_field( $_POST['facebookAppSecret'] );
+		}
 
-		\UAGB_Admin_Helper::update_admin_settings_option( 'uag_social_login', array(
-			'socialRegister' 	=> $socialRegister,
-			'googleClientId' 	=> $googleClientId,
-			'facebookAppId' 	=> $facebookAppId,
-			'facebookAppSecret' => $facebookAppSecret,
-		) );
+		\UAGB_Admin_Helper::update_admin_settings_option( 'uag_login_block', $login_block );
 
 		$response_data = array(
 			'messsage' => __( 'Successfully saved data!', 'ultimate-addons-for-gutenberg' ),

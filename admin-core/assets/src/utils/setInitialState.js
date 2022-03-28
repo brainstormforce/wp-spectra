@@ -20,7 +20,7 @@ const setInitialState = ( store ) => {
             enableCopyPasteStyles : data.copy_paste,
             enableDisplayConditions: data.enable_block_condition,
             enableMasonryExtension: data.enable_masonry_gallery,
-            socialLogin: data.social_login
+            loginBlock: data.login_block
         };
 
         store.dispatch( {type: 'UPDATE_INITIAL_STATE', payload: initialState} );

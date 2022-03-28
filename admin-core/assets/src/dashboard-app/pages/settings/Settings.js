@@ -59,7 +59,7 @@ const Settings = () => {
                     ) )}
                     </nav>
                 </aside>
-                <div className='space-y-8 mt-8 mb-0 mr-8 sm:px-6 lg:px-0 lg:col-span-9'>
+                <div className='space-y-8 mt-8 mb-0 mr-8 sm:px-6 lg:px-0 lg:col-span-9 overflow-y-scroll'>
                     { 'asset-generation' === activeSettingsNavigationTab &&
                         <>
                             <AssetsGeneration/>
