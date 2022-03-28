@@ -17,5 +17,5 @@ $block_data = array(
 	'description'      => __( 'This block allows you to let users share your content across various social networking sites.', 'ultimate-addons-for-gutenberg' ),
 	'default'          => true,
 	'extension'        => false,
-	'priority'         => 15,
+	'priority'         => 14,
 );

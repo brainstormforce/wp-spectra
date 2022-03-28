@@ -6,9 +6,9 @@ const Extensions = () => {
 
     return (
        <>
+			<ResponsiveConditionsExtention/>
             <DisplayConditionsExtension/>
             <MasonryGalleryExtension/>
-			<ResponsiveConditionsExtention/>
        </>
     );
 };

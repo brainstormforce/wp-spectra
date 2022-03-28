@@ -18,5 +18,5 @@ $block_data = array(
 	'is_active'        => class_exists( 'WPCF7_ContactForm' ),
 	'default'          => true,
 	'extension'        => false,
-	'priority'         => 32,
+	'priority'         => 34,
 );
