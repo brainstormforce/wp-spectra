@@ -123,7 +123,6 @@ const ResponsiveConditionOptions = ( props ) => {
 		UAGHideDesktop,
 		UAGHideMob,
 		UAGHideTab,
-		UAGResponsiveCondition,
 	} = attributes;
 
 	return (
@@ -208,10 +207,8 @@ function ApplyExtraClass( extraProps, blockType, attributes ) {
 		UAGHideDesktop,
 		UAGHideTab,
 		UAGHideMob,
-		UAGDisplayConditions,
 	} = attributes;
 
-	if ( 'responsiveVisibility' === UAGDisplayConditions || UAGHideDesktop || UAGHideTab || UAGHideMob ) {
 		if ( UAGHideDesktop ) {
 			extraProps.className = extraProps.className + ' uag-hide-desktop';
 		}
@@ -223,7 +220,6 @@ function ApplyExtraClass( extraProps, blockType, attributes ) {
 		if ( UAGHideMob ) {
 			extraProps.className = extraProps.className + ' uag-hide-mob';
 		}
-	}
 
 	return extraProps;
 }
