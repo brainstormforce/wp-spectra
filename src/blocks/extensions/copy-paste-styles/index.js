@@ -122,7 +122,7 @@ const UAGCopyPasteStyles = () => {
 
                         const uagLocalStorageObject = JSON.parse( loop_element.value );
 
-                        if ( uagLocalStorageObject ) {
+                        if ( ! uagLocalStorageObject ) {
                             xsLocalStorage.setItem( 'uag-copy-paste-styles', JSON.stringify( {} ) );
                         }
 
