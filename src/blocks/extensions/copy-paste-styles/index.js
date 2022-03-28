@@ -252,9 +252,22 @@ const UAGCopyPasteStyles = () => {
 
 					if( innerBlocks  ) {
 
+						let childAttr = {};
+
 						innerBlocks.map( ( childBlock , index ) => {
 
-							updateBlockStyles( childBlock.clientId, pasteStyle.innerblocks[index].attributes );
+							const childName = childBlock.name.replace( 'uagb/', '' );
+							const blockAttributes = blocksAttributes[childName];
+
+							Object.keys( blockAttributes ).map( ( attribute ) => {
+
+								if ( blockAttributes[attribute].UAGCopyPaste ) {
+
+									childAttr[attribute] = pasteStyle.innerblocks[index].attributes[attribute];
+								}
+							});
+
+							updateBlockStyles( childBlock.clientId,  childAttr );
 
 							return childBlock;
 						} );
