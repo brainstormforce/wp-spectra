@@ -99,7 +99,7 @@ const Render = ( props ) => {
 			) }
 		>
 				<a // eslint-disable-line jsx-a11y/anchor-is-valid
-				 className="uagb-marketing-btn__link wp-block-button">
+				 className="uagb-marketing-btn__link">
 						{ 'before' === iconPosition &&
 							<>
 							{ iconHTML }
