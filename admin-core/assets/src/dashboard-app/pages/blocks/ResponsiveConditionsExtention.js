@@ -51,7 +51,7 @@ const ResponsiveConditionsExtention = () => {
         className="relative rounded-[0.2rem] border border-gray-300 bg-white px-6 py-5 shadow-sm flex items-center space-x-3"
         >
             <div className="flex-shrink-0">
-                { UAGB_Block_Icons['display-conditions'] }
+                { UAGB_Block_Icons['responsive-conditions'] }
             </div>
             <div className="flex-1 min-w-0">
                 <p className="text-sm font-medium text-gray-900 mb-[0.1875rem]">{__( 'Responsive Conditions', 'ultimate-addons-for-gutenberg' )}</p>

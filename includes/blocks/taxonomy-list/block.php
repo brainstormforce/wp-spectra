@@ -16,5 +16,5 @@ $block_data = array(
 	'title'            => __( 'Taxonomy List', 'ultimate-addons-for-gutenberg' ),
 	'description'      => __( 'This block helps you to display content categorization for various post types', 'ultimate-addons-for-gutenberg' ),
 	'default'          => true,
-	'priority'         => 4,
+	'priority'         => 30,
 );
