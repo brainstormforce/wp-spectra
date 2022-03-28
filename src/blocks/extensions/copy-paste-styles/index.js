@@ -51,7 +51,6 @@ import { useState, useEffect } from '@wordpress/element';
 import editorStyles from './../editor.lazy.scss';
 import { useLayoutEffect } from 'react';
 import { addFilter } from '@wordpress/hooks';
-import attributes from './../../advanced-heading/attributes';
 
 const blocksAttributes = {
 	'advanced-heading' : advancedHeadingAttribute,
@@ -123,7 +122,7 @@ const UAGCopyPasteStyles = () => {
 
                         const uagLocalStorageObject = JSON.parse( loop_element.value );
 
-                        if ( ! uagLocalStorageObject ) {
+                        if ( uagLocalStorageObject ) {
                             xsLocalStorage.setItem( 'uag-copy-paste-styles', JSON.stringify( {} ) );
                         }
 
@@ -228,7 +227,8 @@ const UAGCopyPasteStyles = () => {
 
         const {
             attributes,
-            name
+            name,
+			innerBlocks
         } = blockData;
 
         xsLocalStorage.getItem( 'uag-copy-paste-styles', function ( loop_element ) {
@@ -238,30 +238,52 @@ const UAGCopyPasteStyles = () => {
 			if ( uagLocalStorageObject ) {
 				xsLocalStorage.setItem( 'uag-copy-paste-styles', JSON.stringify( {} ) );
 			}
+
             let styles = {};
+			let parentStyle = {};
 
             if ( name.includes( 'uagb/' ) ) {
+
                 const blockName = name.replace( 'uagb/', '' );
                 const blockAttributes = blocksAttributes[blockName];
+
+				uagLocalStorageObject[`${blockName}-styles`] = {};
+				uagLocalStorageObject[`global-style`] = {};
+
 
                 if ( blockAttributes && uagLocalStorageObject ) {
 
                     Object.keys( blockAttributes ).map( ( attribute ) => {
+
                         if ( blockAttributes[attribute].UAGCopyPaste ) {
+
 							const key = blockAttributes[attribute].UAGCopyPaste.styleType;
 
 							if ( attributes[attribute] ) {
+
                                 styles[key] = attributes[attribute];
+                                parentStyle[attribute] = attributes[attribute];
+
                             }
                         }
+
                         return attribute;
+
                     } );
 
-                    styles.stylesSavedTimeStamp = Date.now();
-                    uagLocalStorageObject[`uag-block-styles`] = styles;
-
-                    xsLocalStorage.setItem( 'uag-copy-paste-styles', JSON.stringify( uagLocalStorageObject ) );
                 }
+				if( innerBlocks ) {
+
+					parentStyle['innerblocks'] = innerBlocks;
+
+				}
+
+				styles.stylesSavedTimeStamp = Date.now();
+
+				uagLocalStorageObject[`${blockName}-styles`] = parentStyle;
+				uagLocalStorageObject[`global-style`] = styles;
+
+				xsLocalStorage.setItem( 'uag-copy-paste-styles', JSON.stringify( uagLocalStorageObject ) );
             }
 
             if ( name.includes( 'core/' ) ) {
@@ -288,6 +310,7 @@ const UAGCopyPasteStyles = () => {
 
         let styles;
 		let pasteStyle;
+		let parentAttr = {};
         let uagLocalStorageObject = {};
 
         xsLocalStorage.getItem( 'uag-copy-paste-styles', function ( loop_element ) {
@@ -296,65 +319,50 @@ const UAGCopyPasteStyles = () => {
 
             if ( name.includes( 'uagb/' ) ) {
 
-				styles = uagLocalStorageObject[`uag-block-styles`];
+				styles = uagLocalStorageObject[`global-style`];
 
 				const blockName = name.replace( 'uagb/', '' );
 				const blockAttributes = blocksAttributes[blockName];
-				const pasteStyle = {};
 
-				if ( blockAttributes && styles ) {
+				pasteStyle = uagLocalStorageObject[`${blockName}-styles`];
 
-					 Object.keys( blockAttributes ).map( ( attribute ) => {
+				if(  blockAttributes && pasteStyle ) {
 
-						 if ( blockAttributes[attribute].UAGCopyPaste ) {
+                    updateBlockStyles( clientId, pasteStyle );
 
-							 const key = blockAttributes[attribute].UAGCopyPaste.styleType;
+					if( innerBlocks  ) {
 
-							 Object.keys( styles ).map( ( item ) => {
+						innerBlocks.map( ( childBlock , index ) => {
 
-								 if( item === key ){
-
-									pasteStyle[attribute] = styles[key];
-
-								 }
-
-								 return attributes;
-							 } )
-
-						 }
-
-						updateBlockStyles( clientId, pasteStyle );
-						 return attributes;
-					 } );
-
-					 if( innerBlocks ) {
-
-						innerBlocks.map( ( childBlock ) => {
-
-							const Name = childBlock.name.replace( 'uagb/', '' );
-							   const attr = blocksAttributes[Name];
-
-							Object.keys( attr ).map( ( attribute ) => {
-
-								if ( attr[attribute].UAGCopyPaste ) {
-
-									const key = attr[attribute].UAGCopyPaste.styleType;
-
-									Object.keys( styles ).map( ( item ) => {
-										if( item === key ){
-											pasteStyle[attribute] = styles[key];
-										}
-										return attribute;
-									} )
-
-								}
-								return attribute;
-							} );
-							updateBlockStyles( childBlock.clientId, pasteStyle );
+							updateBlockStyles( childBlock.clientId, pasteStyle.innerblocks[index].attributes );
 
 						} );
+
 					}
 
+				}else if ( blockAttributes && styles ) {
+
+					Object.keys( blockAttributes ).map( ( attribute ) => {
+
+						if ( blockAttributes[attribute].UAGCopyPaste ) {
+
+							const key = blockAttributes[attribute].UAGCopyPaste.styleType;
+
+							Object.keys( styles ).map( ( item ) => {
+
+								if( item === key ){
+
+									parentAttr[attribute] = styles[key];
+
+								}
+								return parentAttr;
+							} )
+
+						}
+						return parentAttr;
+					} );
+
+					updateBlockStyles( clientId, parentAttr );
 				}
             }
 
