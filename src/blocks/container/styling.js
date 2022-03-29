@@ -103,17 +103,17 @@ function styling( props ) {
 		topWidth,
 	} = attributes;
 
-	let editPostLayout = document.getElementsByClassName('edit-post-layout')[0];
-	let editorStylesWrapper = document.getElementsByClassName('editor-styles-wrapper')[0];
+	const editPostLayout = document.getElementsByClassName( 'edit-post-layout' )[0];
+	const editorStylesWrapper = document.getElementsByClassName( 'editor-styles-wrapper' )[0];
 	let editorWidth = '100vw';
 	let editorContentWidth = attributes[`innerContentCustomWidth${deviceType}`] + 'px';
 
 	if ( editPostLayout && editorStylesWrapper ) {
-		let editorStylesWrapperWidth = editorStylesWrapper.clientWidth;
-		let editPostLayoutWidth = editPostLayout.clientWidth;
+		const editorStylesWrapperWidth = editorStylesWrapper.clientWidth;
+		const editPostLayoutWidth = editPostLayout.clientWidth;
 
-		let differenceInPercent = 100 - (editorStylesWrapperWidth / editPostLayoutWidth) * 100;
-		let differenceCustomWidth = (attributes[`innerContentCustomWidth${deviceType}`] * differenceInPercent) / 100;
+		const differenceInPercent = 100 - ( editorStylesWrapperWidth / editPostLayoutWidth ) * 100;
+		const differenceCustomWidth = ( attributes[`innerContentCustomWidth${deviceType}`] * differenceInPercent ) / 100;
 		editorWidth = 100 - differenceInPercent + 'vw';
 		editorContentWidth = attributes[`innerContentCustomWidth${deviceType}`] - differenceCustomWidth + 'px';
 	}
