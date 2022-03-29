@@ -212,13 +212,12 @@ const attributes = {
 	},
 	starOutlineColor: {
 		type: 'string',
-		isUAGStyle: true,
-		default: '#000000',
+		isUAGStyle: true
 	},
 	starActiveColor: {
 		type: 'string',
 		isUAGStyle: true,
-		default: '#000000',
+		default: '#ccd6df',
 	},
 	imageSize: {
 		type: 'number',
@@ -297,7 +296,7 @@ const attributes = {
 	starColor: {
 		type: 'string',
 		isUAGStyle: true,
-		default: '#ffff00',
+		default: '#f0ad4e',
 	},
 	selectedStars: {
 		type: 'number',
