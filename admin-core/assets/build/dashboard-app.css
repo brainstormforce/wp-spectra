@@ -604,6 +604,9 @@ select {
 }.my-\[2\.43rem\] {
   margin-top: 2.43rem;
   margin-bottom: 2.43rem;
+}.mx-\[80px\] {
+  margin-left: 80px;
+  margin-right: 80px;
 }.mt-6 {
   margin-top: 1.5rem;
 }.mb-1 {
