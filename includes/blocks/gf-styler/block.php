@@ -18,5 +18,5 @@ $block_data = array(
 	'default'          => true,
 	'extension'        => false,
 	'is_active'        => class_exists( 'GFForms' ),
-	'priority'         => 4,
+	'priority'         => 33,
 );
