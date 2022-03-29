@@ -582,7 +582,7 @@ const attributes = {
 		type: 'string',
 		default: 'px',
 		UAGCopyPaste: {
-			styleType: 'desc-bottom-margin-type'
+			styleType: 'desc-bottom-margin-unit'
 		},
 	},
 	nameSpaceType: {

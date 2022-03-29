@@ -222,7 +222,7 @@ const attributes = {
 		type: 'string',
 		default: 'px',
 		UAGCopyPaste: {
-			styleType: 'author-bottom-margin-unit'
+			styleType: 'author-bottom-margin-type'
 		}
 	},
 	authorImage: {
