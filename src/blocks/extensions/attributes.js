@@ -17,9 +17,6 @@ function addAttributes( settings ) {
 				UAGSystem: {
 					type: 'string',
 				},
-				UAGDisplayConditions: {
-					type: 'string',
-				},
 				UAGHideDesktop: {
 					type: 'boolean',
 					default: false,
@@ -39,10 +36,6 @@ function addAttributes( settings ) {
 				UAGLoggedOut: {
 					type: 'boolean',
 					default: false,
-				},
-				UAGResponsiveCondition: {
-					type: 'boolean',
-					default: true,
 				},
 			} );
 		}
