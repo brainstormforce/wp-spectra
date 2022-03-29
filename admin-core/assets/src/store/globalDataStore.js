@@ -18,6 +18,10 @@ const initialState = {
     enableDisplayConditions : '',
     enableMasonryExtension : '',
 	socialLogin: {
+		recaptchaVersion: 'v2',
+		recaptchaSiteKey: '',
+		recaptchaSecretKey: '',
+		recaptchaBadgeHide: false,
 		socialRegister: true,
 		googleClientId: '',
 		facebookAppId: '',

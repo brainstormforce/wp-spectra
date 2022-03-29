@@ -299,7 +299,16 @@ class Common_Settings extends Ajax_Base {
 			wp_send_json_error( $response_data );
 		}
 
-		$login_block = \UAGB_Admin_Helper::get_admin_settings_option( 'uag_login_block', [] );
+		$login_block = \UAGB_Admin_Helper::get_admin_settings_option( 'uag_login_block', [
+			'recaptchaVersion' => 'v2',
+			'recaptchaSiteKey' => '',
+			'recaptchaSecretKey' => '',
+			'recaptchaBadgeHide' => false,
+			'socialRegister'	=> true,
+			'googleClientId' =>  '',
+			'facebookAppId' => '',
+			'facebookAppSecret' => ''
+		] );
 		if(isset($_POST['recaptchaSiteKey'])){
 			$login_block['recaptchaSiteKey'] = sanitize_text_field( $_POST['recaptchaSiteKey'] );
 		}else if(isset($_POST['recaptchaSecretKey'])){
@@ -312,6 +321,10 @@ class Common_Settings extends Ajax_Base {
 			$login_block['facebookAppId'] = sanitize_text_field( $_POST['facebookAppId'] );
 		}else if(isset($_POST['facebookAppSecret'])){
 			$login_block['facebookAppSecret'] = sanitize_text_field( $_POST['facebookAppSecret'] );
+		}else if(isset($_POST['recaptchaVersion'])){
+			$login_block['recaptchaVersion'] = sanitize_text_field( $_POST['recaptchaVersion'] );
+		}else if(isset($_POST['recaptchaBadgeHide'])){
+			$login_block['recaptchaBadgeHide'] = (bool) rest_sanitize_boolean( $_POST['recaptchaBadgeHide'] );
 		}
 
 		\UAGB_Admin_Helper::update_admin_settings_option( 'uag_login_block', $login_block );

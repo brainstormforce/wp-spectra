@@ -79,6 +79,22 @@ const globalDataReducer = ( state = {}, action ) => {
                 ...state,
                 enableMasonryExtension: action.payload,
             };
+        case 'UPDATE_RECAPTCHA_VERSION':
+            return {
+                ...state,
+                loginBlock: {
+					...state.loginBlock,
+					recaptchaVersion: action.payload
+				},
+            };
+        case 'UPDATE_RECAPTCHA_BADGE':
+            return {
+                ...state,
+                loginBlock: {
+					...state.loginBlock,
+					recaptchaBadgeHide: action.payload
+				},
+            };
         case 'UPDATE_RECAPTCHA_SITE_KEY':
             return {
                 ...state,
