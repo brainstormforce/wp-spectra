@@ -197,10 +197,11 @@ const UAGBFormsEdit = ( props ) => {
 			}
 		}
 	} );
-
+const previewImageData = `${ uagb_blocks_info.uagb_url }/admin/assets/preview-images/form.png`;
 	if ( ! hasInnerBlocks ) {
 		return (
 			<>
+			{ props.attributes.isPreview ? <img width='100%' src={previewImageData} alt=''/> :
 				<__experimentalBlockVariationPicker
 					icon={ UAGB_Block_Icons.columns }
 					label={ uagb_blocks_info.blocks[ 'uagb/forms' ].title }
@@ -215,6 +216,7 @@ const UAGBFormsEdit = ( props ) => {
 					}
 					className="uagb-forms-variations"
 				/>
+	}
 			</>
 		);
 	}

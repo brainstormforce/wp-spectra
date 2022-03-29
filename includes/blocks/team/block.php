@@ -17,5 +17,5 @@ $block_data = array(
 	'description'      => __( 'This block allows you to display your team. Add their picture, name, what they do and links to their social profiles.', 'ultimate-addons-for-gutenberg' ),
 	'default'          => true,
 	'extension'        => false,
-	'priority'         => 5,
+	'priority'         => 25,
 );

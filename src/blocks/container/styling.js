@@ -5,9 +5,13 @@
 import generateCSS from '@Controls/generateCSS';
 import generateCSSUnit from '@Controls/generateCSSUnit';
 import generateBackgroundCSS from '@Controls/generateBackgroundCSS';
+import hexToRgba from '@Controls/hexToRgba';
+import maybeGetColorForVariable from '@Controls/maybeGetColorForVariable';
 
 function styling( props ) {
+	const { attributes, deviceType } = props;
 	const {
+		block_id,
 		widthDesktop,
 		widthTablet,
 		widthMobile,
@@ -85,10 +89,36 @@ function styling( props ) {
 		columnGapTablet,
 		columnGapMobile,
 		columnGapType,
-		contentWidth
-	} = props.attributes;
+		contentWidth,
+		innerContentWidth,
+		bottomColor,
+		bottomHeight,
+		bottomHeightTablet,
+		bottomHeightMobile,
+		bottomWidth,
+		topColor,
+		topHeight,
+		topHeightTablet,
+		topHeightMobile,
+		topWidth,
+	} = attributes;
 
-	const selectors = {};
+	const selectors = {
+		' .uagb-container__shape-top svg' : {
+			'width': 'calc( ' + topWidth + '% + 1.3px )',
+			'height': generateCSSUnit( topHeight, 'px' )
+		},
+		' .uagb-container__shape-top .uagb-container__shape-fill' : {
+			'fill': hexToRgba( maybeGetColorForVariable( topColor ), 100 ),
+		},
+		' .uagb-container__shape-bottom svg' : {
+			'width': 'calc( ' + bottomWidth + '% + 1.3px )',
+			'height': generateCSSUnit( bottomHeight, 'px' )
+		},
+		' .uagb-container__shape-bottom .uagb-container__shape-fill' : {
+			'fill': hexToRgba( maybeGetColorForVariable( bottomColor ), 100 ),
+		},
+	};
 
 	const backgroundAttributes = {
         'backgroundType': backgroundType,
@@ -158,8 +188,20 @@ function styling( props ) {
 		[`.is-root-container > .block-editor-block-list__block .block-editor-block-list__block#block-${ props.clientId } `] : {
 			'max-width' : generateCSSUnit( widthDesktop, widthType ),
 			'width' : generateCSSUnit( widthDesktop, widthType ),
-		},
+		}
 	};
+
+	if ( 'alignwide' === innerContentWidth ) {
+
+		widthSelectorsDesktop[`.is-root-container > .block-editor-block-list__block > .wp-block-uagb-container.uagb-block-${ block_id }`] = {
+			'--inner-content-custom-width' : attributes[`innerContentCustomWidth${deviceType}`] + 'px',
+			'--padding-left' : ( attributes[`leftPadding${deviceType}`] || 0 ) + paddingType,
+			'--padding-right' : ( attributes[`rightPadding${deviceType}`] || 0 ) + paddingType,
+			'--column-gap' : ( attributes[`columnGap${deviceType}`] || 0 ) + columnGapType,
+			'padding-left': `calc( ( 100vw - var( --inner-content-custom-width ) ) / 2 + var( --padding-left ) - ( var( --column-gap ) / 2 ))`,
+			'padding-right': `calc( ( 100vw - var( --inner-content-custom-width ) ) / 2 + var( --padding-right ) - ( var( --column-gap ) / 2 ))`,
+		};
+	}
 
 	const widthSelectorsTablet = {
 		[`.is-root-container > .block-editor-block-list__block .uagb-editor-preview-mode-tablet.block-editor-block-list__block#block-${ props.clientId } `] : {
@@ -203,7 +245,13 @@ function styling( props ) {
 			'justify-content' : justifyContentTablet,
 			'flex-wrap' : wrapTablet,
 			'align-content' : alignContentTablet,
-		}
+		},
+		' .uagb-container__shape-top svg' : {
+			'height': generateCSSUnit( topHeightTablet, 'px' )
+		},
+		' .uagb-container__shape-bottom svg' : {
+			'height': generateCSSUnit( bottomHeightTablet, 'px' )
+		},
 	};
 
 	const mobile_selectors = {
@@ -234,7 +282,13 @@ function styling( props ) {
 			'justify-content' : justifyContentMobile,
 			'flex-wrap' : wrapMobile,
 			'align-content' : alignContentMobile,
-		}
+		},
+		' .uagb-container__shape-top svg' : {
+			'height': generateCSSUnit( topHeightMobile, 'px' )
+		},
+		' .uagb-container__shape-bottom svg' : {
+			'height': generateCSSUnit( bottomHeightMobile, 'px' )
+		},
 	};
 
 	if ( 'default' === contentWidth ) {

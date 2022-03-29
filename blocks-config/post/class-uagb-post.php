@@ -907,6 +907,10 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 					'type'    => 'string',
 					'default' => 'px',
 				),
+				'isPreview'               => array(
+					'type'    => 'boolean',
+					'default' => false,
+				),
 			);
 		}
 

@@ -28,6 +28,10 @@ registerBlockType( 'uagb/marketing-button', {
 	attributes,
 	edit,
 	save,
-	example: {},
+	example: {
+		attributes: {
+			isPreview: true,
+		}
+	},
 	deprecated,
 } );

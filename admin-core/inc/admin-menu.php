@@ -48,7 +48,7 @@ class Admin_Menu {
 	 * @var string Class object.
 	 * @since 1.0.0
 	 */
-	private $menu_slug = 'uag';
+	private $menu_slug = 'spectra';
 
 	/**
 	 * Constructor
@@ -184,20 +184,21 @@ class Admin_Menu {
 		$localize = apply_filters(
 			'uag_react_admin_localize',
 			array(
-				'current_user'   => ! empty( wp_get_current_user()->user_firstname ) ? wp_get_current_user()->user_firstname : wp_get_current_user()->display_name,
-				'admin_base_url' => admin_url(),
-				'uag_base_url'   => admin_url( 'options-general.php?page=' . $this->menu_slug ),
-				'plugin_dir'     => UAGB_URL,
-				'plugin_ver'     => UAGB_VER,
-				'logo_url'       => UAGB_URL . 'admin-core/assets/images/uag-logo.svg',
-				'admin_url'      => admin_url( 'admin.php' ),
-				'ajax_url'       => admin_url( 'admin-ajax.php' ),
-				'wp_pages_url'   => admin_url( 'post-new.php?post_type=page' ),
-				'home_slug'      => $this->menu_slug,
-				'rollback_url'   => esc_url( add_query_arg( 'version', 'VERSION', wp_nonce_url( admin_url( 'admin-post.php?action=uag_rollback' ), 'uag_rollback' ) ) ),
-				'blocks_info'    => $blocks_info,
-				'reusable_url'   => esc_url( admin_url( 'edit.php?post_type=wp_block' ) ),
-				'global_data'    => Admin_Helper::get_options(),
+				'current_user'             => ! empty( wp_get_current_user()->user_firstname ) ? wp_get_current_user()->user_firstname : wp_get_current_user()->display_name,
+				'admin_base_url'           => admin_url(),
+				'uag_base_url'             => admin_url( 'options-general.php?page=' . $this->menu_slug ),
+				'plugin_dir'               => UAGB_URL,
+				'plugin_ver'               => UAGB_VER,
+				'logo_url'                 => UAGB_URL . 'admin-core/assets/images/uag-logo.svg',
+				'admin_url'                => admin_url( 'admin.php' ),
+				'ajax_url'                 => admin_url( 'admin-ajax.php' ),
+				'wp_pages_url'             => admin_url( 'post-new.php?post_type=page' ),
+				'home_slug'                => $this->menu_slug,
+				'rollback_url'             => esc_url( add_query_arg( 'version', 'VERSION', wp_nonce_url( admin_url( 'admin-post.php?action=uag_rollback' ), 'uag_rollback' ) ) ),
+				'blocks_info'              => $blocks_info,
+				'reusable_url'             => esc_url( admin_url( 'edit.php?post_type=wp_block' ) ),
+				'global_data'              => Admin_Helper::get_options(),
+				'uag_content_width_set_by' => \UAGB_Admin_Helper::get_admin_settings_option( 'uag_content_width_set_by', __( 'Spectra', 'ultimate-addons-for-gutenberg' ) ),
 			)
 		);
 
@@ -273,6 +274,8 @@ class Admin_Menu {
 				if ( 'yes' !== get_option( 'uagb-old-user-less-than-2' ) ) {
 					$exclude_blocks[] = 'buttons';
 					$exclude_blocks[] = 'wp-search';
+					$exclude_blocks[] = 'columns';
+					$exclude_blocks[] = 'section';
 				}
 
 				if ( array_key_exists( 'extension', $info ) && $info['extension'] ) {

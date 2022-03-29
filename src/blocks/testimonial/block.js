@@ -27,6 +27,10 @@ registerBlockType( 'uagb/testimonial', {
 	attributes,
 	edit,
 	save,
-	example: {},
+	example: {
+		attributes: {
+			isPreview: true,
+		}
+	},
 	deprecated,
 } );

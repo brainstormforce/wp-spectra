@@ -28,6 +28,7 @@ const Render = ( props ) => {
 	} = props;
 
 	const {
+		isPreview,
 		block_id,
 		align,
 		textAlign,
@@ -84,8 +85,9 @@ const Render = ( props ) => {
 			/>
 		</>
 	);
-
+	const previewImageData = `${ uagb_blocks_info.uagb_url }/admin/assets/preview-images/marketing-button.png`;
 	return (
+		isPreview ? <img width='100%' src={previewImageData} alt=''/> :
 		<div
 			className={ classnames(
 				className,

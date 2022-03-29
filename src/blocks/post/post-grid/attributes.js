@@ -713,6 +713,10 @@ const attributes = {
 		default : 'px',
 		isUAGStyle: true,
 	},
+	isPreview: {
+		type: 'boolean',
+		default: false,
+	},
 	postsOffset: {
 		type    : 'number',
 		default : 0,

@@ -354,6 +354,10 @@ const attributes = {
 		isUAGStyle: true,
 		default: 15,
 	},
+	isPreview: {
+		type: 'boolean',
+		default: false,
+	}
 };
 
 export default attributes;

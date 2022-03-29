@@ -615,6 +615,10 @@ const attributes = {
 		type: 'number',
 		isUAGStyle: true,
 	},
+	isPreview: {
+		type: 'boolean',
+		default: false,
+	}
 };
 
 export default attributes;

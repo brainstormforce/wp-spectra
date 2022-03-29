@@ -79,6 +79,16 @@ const globalDataReducer = ( state = {}, action ) => {
                 ...state,
                 enableMasonryExtension: action.payload,
             };
+		case 'UPDATE_ENABLE_RESPONSIVE_CONDITIONS':
+			return {
+				...state,
+				enableResponsiveConditions: action.payload,
+			};
+		case 'UPDATE_CONTENT_WIDTH':
+			return {
+				...state,
+				contentWidth: action.payload,
+				};
         default:
             return state;
     }

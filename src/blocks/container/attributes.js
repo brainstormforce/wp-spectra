@@ -4,6 +4,10 @@ const attributes = {
 	},
 	contentWidth: {
 		type: 'string',
+		default: 'alignfull',
+	},
+	innerContentWidth: {
+		type: 'string',
 		default: 'alignwide',
 	},
 	widthDesktop: {
@@ -21,6 +25,22 @@ const attributes = {
 	widthType: {
 		type: 'string',
 		default: '%',
+	},
+	innerContentCustomWidthDesktop: {
+		type: 'number',
+		default: uagb_blocks_info.content_width
+	},
+	innerContentCustomWidthTablet: {
+		type: 'number',
+		default: 1200,
+	},
+	innerContentCustomWidthMobile: {
+		type: 'number',
+		default: 1200,
+	},
+	innerContentCustomWidthType: {
+		type: 'string',
+		default: 'px',
 	},
 	minHeightDesktop: {
 		type: 'number',
@@ -293,10 +313,96 @@ const attributes = {
 		type: 'string',
 		default: 'px',
 	},
+	isPreview: {
+		type: 'boolean',
+		default: false,
+	},
 	isBlockRootParent: {
 		type: 'boolean',
 		default: false,
-	}
+	},
+	bottomType: {
+		type: 'string',
+		default: 'none',
+		isUAGStyle: true,
+	},
+	bottomColor: {
+		type: 'string',
+		isUAGStyle: true,
+		default: '#333',
+	},
+	bottomHeight: {
+		type: 'number',
+		isUAGStyle: true,
+	},
+	bottomHeightTablet: {
+		type: 'number',
+		isUAGStyle: true,
+	},
+	bottomHeightMobile: {
+		type: 'number',
+		isUAGStyle: true,
+	},
+	bottomWidth: {
+		type: 'number',
+		isUAGStyle: true,
+		default: 100,
+	},
+	topType: {
+		type: 'string',
+		default: 'none',
+		isUAGStyle: true,
+	},
+	topColor: {
+		type: 'string',
+		default: '#333',
+		isUAGStyle: true,
+	},
+	topHeight: {
+		type: 'number',
+		isUAGStyle: true,
+	},
+	topHeightTablet: {
+		type: 'number',
+		isUAGStyle: true,
+	},
+	topHeightMobile: {
+		type: 'number',
+		isUAGStyle: true,
+	},
+	topWidth: {
+		type: 'number',
+		isUAGStyle: true,
+		default: 100,
+	},
+	topFlip: {
+		type: 'boolean',
+		default: false,
+		isUAGStyle: true,
+	},
+	bottomFlip: {
+		type: 'boolean',
+		default: false,
+		isUAGStyle: true,
+	},
+	topContentAboveShape: {
+		type: 'boolean',
+		default: false,
+		isUAGStyle: true,
+	},
+	bottomContentAboveShape: {
+		type: 'boolean',
+		default: false,
+		isUAGStyle: true,
+	},
+	blockDescendants: {
+		type: 'array',
+		default: []
+	},
+	widthSetByUser: {
+		type: 'boolean',
+		default: false,
+	},
 };
 
 export default attributes;

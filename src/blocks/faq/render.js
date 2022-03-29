@@ -24,7 +24,7 @@ const Render = ( props ) => {
 	props = props.parentProps;
 	const deviceType = useDeviceType();
 	const { attributes } = props;
-	const { equalHeight } = attributes;
+	const { isPreview, equalHeight } = attributes;
 
 	const getFaqChildTemplate = useMemo( () => {
 		const childFaq = [];
@@ -37,8 +37,10 @@ const Render = ( props ) => {
 	}, [ faqCount, faq ] );
 
 	const equalHeightClass = equalHeight ? 'uagb-faq-equal-height' : '';
+	const previewImageData = `${ uagb_blocks_info.uagb_url }/admin/assets/preview-images/faq.png`;
 
 	return (
+		isPreview ? <img width='100%' src={previewImageData} alt=''/> :
 		<div
 			className={ classnames(
 				'uagb-faq__outer-wrap',

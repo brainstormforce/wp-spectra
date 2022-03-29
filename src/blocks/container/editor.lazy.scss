@@ -1,5 +1,19 @@
 .uagb-container-variation-picker {
 
+	.uagb-variation-close {
+		font-size: 45px;
+		background: none;
+		color: #d5dadf;
+		cursor: pointer;
+		border: none;
+		box-shadow: none;
+		display: flex;
+		align-self: flex-end;
+		position: absolute;
+		top: -5px;
+		z-index: 999999;
+	}
+
 	.components-button,
 	.components-button:hover:not(:disabled) {
 		box-shadow: none;
@@ -26,10 +40,13 @@
 
 	.components-placeholder {
 		align-items: center;
+		border: 1px dashed #d5dadf;
+		box-shadow: none;
 
 		.components-placeholder__label {
 			font-size: 18px;
-			font-weight: 500;
+			margin-bottom: 0;
+			color: #556068;
 		}
 	}
 
@@ -70,10 +87,9 @@
 
 .wp-block-uagb-container {
 	display: flex;
-	height: 100%;
-
-	.block-editor-inner-blocks,
-	.block-editor-block-list__layout {
+	height: 100%; // We need this to drag drop things inside container.
+	& > .block-editor-inner-blocks,
+	& > .block-editor-inner-blocks > .block-editor-block-list__layout {
 		display: flex;
 		width: 100%;
 		height: 100%;
@@ -85,10 +101,6 @@
 			}
 		}
 	}
-
-	.wp-block-paragraph {
-		width: 100%;
-	}
 }
 
 .block-editor-block-list__empty-block-inserter .block-editor-inserter {
@@ -97,4 +109,8 @@
 
 .uag-container-block-inserter .components-button {
 	color: #4a01e0;
+}
+
+.wp-block-uagb-container > .block-editor-inner-blocks {
+	z-index: 2;
 }

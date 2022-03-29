@@ -17,5 +17,5 @@ $block_data = array(
 	'description'      => __( 'This block helps you add a Search field.', 'ultimate-addons-for-gutenberg' ),
 	'default'          => true,
 	'extension'        => false,
-	'priority'         => 5,
+	'priority'         => 38,
 );

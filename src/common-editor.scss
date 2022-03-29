@@ -44,7 +44,22 @@
 			.components-base-control__help {
 				margin-top: 10px;
 			}
+
+			/* Add a border top and bottom of responsive condition */
+			&.uag-advance-panel-body-responsive.conditions {
+				border-bottom: 1px solid #e0e0e0;
+			}
 		}
+	}
+}
+
+/* Gutenberg Editor border hover */
+.edit-post-visual-editor .block-editor-block-list__layout {
+
+	.block-editor-block-list__block:hover,
+	.block-editor-block-list__block:not([contenteditable]):focus::after {
+		box-shadow: 0 0 0 1px #007cba;
+		border-radius: 2px;
 	}
 }
 
