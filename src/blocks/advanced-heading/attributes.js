@@ -132,7 +132,7 @@ const attributes = {
 		type: 'string',
 		default: 'em',
 		UAGCopyPaste: {
-			styleType: 'main-title-font-line-height-type'
+			styleType: 'main-title-line-height-type'
 		}
 	},
 	headFontSize: {
