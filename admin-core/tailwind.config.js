@@ -14,6 +14,9 @@ module.exports = {
       },
       fontFamily: {
         inter: ['"Inter"', 'sans-serif']
+      },
+	  margin: {
+		'80px': '80px'
       }
     },
   },
