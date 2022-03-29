@@ -141,7 +141,7 @@ const attributes = {
 	},
 	borderStyle: {
 		type: 'string',
-		default: 'none',
+		default: 'solid',
 		isUAGStyle: true,
 	},
 	borderColor: {
