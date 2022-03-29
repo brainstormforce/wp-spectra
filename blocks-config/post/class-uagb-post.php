@@ -1602,6 +1602,7 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 			) : array( 'uagb-post__taxonomy' );
 			?>
 			<span class="<?php echo esc_html( implode( ' ', $wrap ) ); ?>">
+				<?php echo ( ! $attributes['displayPostTaxonomyAboveTitle'] ) ? '<span class="dashicons-tag dashicons"></span>' : ''; ?>
 				<?php echo ( $attributes['displayPostTaxonomyAboveTitle'] && $attributes['hideTaxonomyIcon'] ) ? '<span class="dashicons-tag dashicons"></span>' : ''; ?>
 				<?php
 				$terms_list = array();
