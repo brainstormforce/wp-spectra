@@ -23,7 +23,7 @@ const Welcome = () => {
           {/* Main 3 column grid */}
           <div className="grid grid-cols-1 gap-4 items-start lg:grid-cols-3 lg:gap-[1.43rem]">
             {/* Left column */}
-            <div className="grid grid-cols-1 gap-4 lg:col-span-2 h-full justify-center">
+            <div className="grid grid-cols-1 gap-4 lg:col-span-2 h-full">
               <section aria-labelledby="section-1-title">
                 <h2 className="sr-only" id="section-1-title">
                   Section title
