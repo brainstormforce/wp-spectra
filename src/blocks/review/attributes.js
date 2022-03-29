@@ -297,7 +297,7 @@ const attributes = {
 	starColor: {
 		type: 'string',
 		isUAGStyle: true,
-		default: '#f0ad4e',
+		default: '#ffff00',
 	},
 	selectedStars: {
 		type: 'number',

@@ -90,12 +90,10 @@ const attributes = {
 	},
 	backgroundType: {
 		type: 'string',
-		isUAGStyle: true,
-		default: 'color',
+		isUAGStyle: true
 	},
 	backgroundColor: {
 		type: 'string',
-		default: '#0170B9',
 		isUAGStyle: true,
 	},
 	backgroundHoverColor: {
@@ -144,7 +142,7 @@ const attributes = {
 	//Colors
 	titleColor: {
 		type: 'string',
-		default: '#333',
+		default: '#fff',
 		isUAGStyle: true,
 	},
 	titleHoverColor: {
@@ -153,7 +151,7 @@ const attributes = {
 	},
 	iconColor: {
 		type: 'string',
-		default: '#333',
+		default: '#fff',
 		isUAGStyle: true,
 	},
 	iconHoverColor: {
@@ -162,7 +160,7 @@ const attributes = {
 	},
 	prefixColor: {
 		type: 'string',
-		default: '#333',
+		default: '#fff',
 		isUAGStyle: true,
 	},
 	prefixHoverColor: {
@@ -258,7 +256,7 @@ const attributes = {
 	},
 	titleTag: {
 		type: 'string',
-		default: 'h6',
+		default: 'span',
 	},
 	// Prefix Font Family
 	prefixLoadGoogleFonts: {

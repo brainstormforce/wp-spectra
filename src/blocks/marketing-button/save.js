@@ -54,7 +54,7 @@ export default function save( props ) {
 		>
 				<a
 					href={ link }
-					className="uagb-marketing-btn__link"
+					className="uagb-marketing-btn__link wp-block-button__link"
 					target={ target }
 					rel="noopener noreferrer"
 				>
