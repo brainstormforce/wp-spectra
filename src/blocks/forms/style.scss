@@ -7,6 +7,10 @@
 		select {
 			width: 100%;
 		}
+
+		.uagb-forms-checkbox-wrap .uagb-form-checkbox-option input.uagb-inner-input-view {
+			width: 33%;
+		}
 		//Phone block css.
 		.uagb-form-phone-country {
 			width: 23%;
@@ -173,23 +177,23 @@ select::before {
 	content: " ";
 }
 
-.uagb-forms__small-btn .uagb-forms-main-submit-button {
+.uagb-forms__small-btn .uagb-forms-main-submit-button-wrap button.uagb-forms-main-submit-button {
 	padding: 5px 10px;
 }
 
-.uagb-forms__medium-btn .uagb-forms-main-submit-button {
+.uagb-forms__medium-btn .uagb-forms-main-submit-button-wrap button.uagb-forms-main-submit-button {
 	padding: 12px 24px;
 }
 
-.uagb-forms__large-btn .uagb-forms-main-submit-button {
+.uagb-forms__large-btn .uagb-forms-main-submit-button-wrap button.uagb-forms-main-submit-button {
 	padding: 20px 30px;
 }
 
-.uagb-forms__extralarge-btn .uagb-forms-main-submit-button {
+.uagb-forms__extralarge-btn .uagb-forms-main-submit-button-wrap button.uagb-forms-main-submit-button {
 	padding: 30px 65px;
 }
 
-.uagb-forms__full-btn .uagb-forms-main-submit-button {
+.uagb-forms__full-btn .uagb-forms-main-submit-button-wrap button.uagb-forms-main-submit-button {
 	width: 100%;
 	padding: 10px 15px;
 }
