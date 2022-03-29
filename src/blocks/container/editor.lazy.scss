@@ -61,6 +61,7 @@
 	.block-editor-block-variation-picker__variations {
 		justify-content: center;
 		width: 750px;
+
 		> li {
 			margin: 8px 30px 0 0;
 			width: 80px;
@@ -95,11 +96,13 @@
 
 		.block-list-appender {
 			align-self: flex-start;
+
 			.block-editor-inserter {
 				display: none;
 			}
 		}
 	}
+
 	.block-editor-block-list__layout {
 		padding-left: 10px;
 	}
