@@ -430,7 +430,7 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 				),
 				'hideTaxonomyIcon'              => array(
 					'type'    => 'boolean',
-					'default' => false,
+					'default' => true,
 				),
 				'taxStyle'                      => array(
 					'type'    => 'string',
@@ -1602,7 +1602,7 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 			) : array( 'uagb-post__taxonomy' );
 			?>
 			<span class="<?php echo esc_html( implode( ' ', $wrap ) ); ?>">
-				<?php echo $attributes['hideTaxonomyIcon'] ? '' : '<span class="dashicons-tag dashicons"></span>'; ?>
+				<?php echo ( $attributes['displayPostTaxonomyAboveTitle'] && $attributes['hideTaxonomyIcon'] ) ? '<span class="dashicons-tag dashicons"></span>' : ''; ?>
 				<?php
 				$terms_list = array();
 				foreach ( $terms as $key => $value ) {
@@ -1610,7 +1610,7 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 					$category_link = get_category_link( $value->term_id );
 					array_push( $terms_list, '<a href="' . esc_url( $category_link ) . '">' . esc_html( $value->name ) . '</a>' );
 				}
-				echo wp_kses_post( implode( ', ', $terms_list ) );
+				echo wp_kses_post( implode( ',&nbsp;', $terms_list ) );
 				?>
 			</span>
 			<?php

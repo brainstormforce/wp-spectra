@@ -251,9 +251,9 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				' .uagb-post-grid-byline'                  => array(
 					'margin-bottom' => UAGB_Helper::get_css_value( $attr['metaBottomSpace'], $attr['metaBottomSpaceUnit'] ),
 				),
-				' span.uagb-post__text.uagb-post__taxonomy' => array(
-					'margin-bottom' => UAGB_Helper::get_css_value( $attr['metaBottomSpace'], $attr['metaBottomSpaceUnit'] ),
-				),
+				// ' span.uagb-post__text.uagb-post__taxonomy' => array(
+				// 	'margin-bottom' => UAGB_Helper::get_css_value( $attr['metaBottomSpace'], $attr['metaBottomSpaceUnit'] ),
+				// ),
 				' .uagb-post__excerpt'                     => array(
 					'margin-bottom' => UAGB_Helper::get_css_value( $attr['excerptBottomSpace'], $attr['excerptBottomSpaceUnit'] ),
 				),

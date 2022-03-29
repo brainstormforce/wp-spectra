@@ -1272,7 +1272,7 @@ const UAGBPostMasonry = ( props ) => {
 				<>
 				<ToggleControl
 					label={ __(
-						'Hide Taxonomy Icon',
+						'Show Taxonomy Icon',
 						'ultimate-addons-for-gutenberg'
 					) }
 					checked={ hideTaxonomyIcon }

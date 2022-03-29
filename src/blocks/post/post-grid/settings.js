@@ -896,13 +896,11 @@ const Settings = ( props ) => {
 						} )
 					}
 				/>
-				</>
-				) }
 				{ displayPostTaxonomyAboveTitle && (
 				<>
 				<ToggleControl
 					label={ __(
-						'Hide Taxonomy Icon',
+						'Show Taxonomy Icon',
 						'ultimate-addons-for-gutenberg'
 					) }
 					checked={ hideTaxonomyIcon }
@@ -935,6 +933,8 @@ const Settings = ( props ) => {
 						},
 					] }
 				/>
+				</>
+				) }
 				</>
 				) }
 				<ToggleControl

@@ -241,12 +241,6 @@ function styling( props ) {
 				metaBottomSpaceUnit
 			),
 		},
-		' .uagb-post__inner-wrap span.uagb-post__text.uagb-post__taxonomy': {
-			'margin-bottom': generateCSSUnit(
-				metaBottomSpace,
-				metaBottomSpaceUnit
-			),
-		},
 		' .uagb-post__inner-wrap .uagb-post__excerpt': {
 			'margin-bottom': generateCSSUnit(
 				excerptBottomSpace,

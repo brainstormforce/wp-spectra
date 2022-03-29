@@ -94,7 +94,7 @@
 	}
 
 	&.uagb-post__columns-3 article {
-		width: 31%;
+		width: 33.33%;
 	}
 
 	&.uagb-post__columns-2 article {
@@ -152,12 +152,14 @@
 			display: inline-flex;
 			flex-direction: row;
 			align-items: flex-end;
-			padding: 0.25rem;
+			padding: 6px 8px;
+			line-height: 1;
+			margin-bottom: 0;
 
 			&.highlighted {
-				background: #3182ce;
+				background: #444;
 				color: #fff;
-				border-radius: 0.25rem;
+				border-radius: 2px;
 
 				a {
 					color: #fff;
@@ -174,7 +176,7 @@
 	.uagb-post-grid-byline,
 	.uagb-post__taxonomy {
 		text-transform: capitalize;
-		font-size: 13px;
+		font-size: 14px;
 		font-weight: 500;
 		line-height: 23px;
 		text-decoration: none;

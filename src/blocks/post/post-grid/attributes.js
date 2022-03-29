@@ -731,7 +731,7 @@ const attributes = {
 	},
 	hideTaxonomyIcon                : {
 		type    : 'boolean',
-		default : false,
+		default : true,
 	},
 	highlightedTextColor: {
 		type    : 'string',
