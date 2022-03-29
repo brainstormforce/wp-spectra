@@ -40,7 +40,7 @@ return array(
 	'backgroundHoverOpacity' => '',
 	'titleColor'             => '',
 	'titleHoverColor'        => '',
-	'iconColor'              => '#333',
+	'iconColor'              => '#fff',
 	'iconHoverColor'         => '',
 	'iconPosition'           => 'after',
 	'prefixColor'            => '',
