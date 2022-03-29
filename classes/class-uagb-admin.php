@@ -151,7 +151,7 @@ if ( ! class_exists( 'UAGB_Admin' ) ) {
 				return;
 			}
 
-			$image_path = UAGB_URL . 'admin/assets/images/uagb_notice.svg';
+			$image_path = UAGB_URL . 'admin-core/assets/images/spectra.svg';
 
 			Astra_Notices::add_notice(
 				array(
