@@ -23,6 +23,7 @@ import renderCustomIcon from '@Controls/renderCustomIcon';
 import UAGTabsControl from '@Components/tabs';
 import AdvancedPopColorControl from '@Components/color-control/advanced-pop-color-control';
 import Range from '@Components/range/Range';
+import { withSelect, useDispatch, select, dispatch } from '@wordpress/data';
 
 const Settings = ( props ) => {
 
