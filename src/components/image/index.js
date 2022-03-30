@@ -2,9 +2,13 @@ import { __ } from '@wordpress/i18n';
 import { BaseControl, Button } from '@wordpress/components';
 import { MediaUpload } from '@wordpress/block-editor';
 import React, { useLayoutEffect } from 'react';
+import { select } from '@wordpress/data';
 import styles from './editor.lazy.scss';
 
 const UAGImage = ( props ) => {
+	const { getSelectedBlock } = select( 'core/block-editor' );
+	const { name, attributes } = getSelectedBlock();
+	const {dynamicContent} = attributes
 	// Add and remove the CSS on the drop and remove of the component.
 	useLayoutEffect( () => {
 		styles.use();
@@ -52,40 +56,56 @@ const UAGImage = ( props ) => {
 		allowedTypes = [ 'video' ];
 	}
 	labelText = label ? label : labelText;
+
+	let registerImageExtender = wp.hooks.applyFilters('uagb.registerImageExtender', '', name, onSelectImage)
+
+	const isShowImageUploader = () => {
+		if(dynamicContent && dynamicContent.bgImage && dynamicContent.bgImage.enable === true) {
+			return false
+		}
+		return true;
+	}
 	return (
 		<BaseControl
 			className="editor-bg-image-control"
 			id={ `uagb-option-selector-${ label }` }
 			label={ labelText }
 		>
-			<div className="uagb-bg-image">
-				<MediaUpload
-					title={ selectImageLabel }
-					onSelect={ onSelectImage }
-					allowedTypes={ allowedTypes }
-					value={ backgroundImage }
-					render={ ( { open } ) => (
-						<Button isSecondary onClick={ open }>
-							{ ! backgroundImage?.url
-								? selectImageLabel
-								: replaceImageLabel }
-						</Button>
-					) }
-				/>
-				{ backgroundImage?.url && (
-					<Button
-						className="uagb-rm-btn"
-						onClick={ onRemoveImage }
-						isLink
-						isDestructive
-					>
-						{ removeImageLabel }
-					</Button>
-				) }
-				{ props.help && (
-					<p className="uag-control-help-notice">{ props.help }</p>
-				) }
-			</div>
+			{
+				isShowImageUploader() && (
+					<div className="uagb-bg-image">
+						<MediaUpload
+							title={ selectImageLabel }
+							onSelect={ onSelectImage }
+							allowedTypes={ allowedTypes }
+							value={ backgroundImage }
+							render={ ( { open } ) => (
+								<Button isSecondary onClick={ open }>
+									{ ! backgroundImage?.url
+										? selectImageLabel
+										: replaceImageLabel }
+								</Button>
+							) }
+						/>
+						{ backgroundImage?.url && (
+							<Button
+								className="uagb-rm-btn"
+								onClick={ onRemoveImage }
+								isLink
+								isDestructive
+							>
+								{ removeImageLabel }
+							</Button>
+						) }
+						{ props.help && (
+							<p className="uag-control-help-notice">{ props.help }</p>
+						) }
+					</div>
+				)
+			}
+			{
+				registerImageExtender
+			}
 		</BaseControl>
 	);
 };
