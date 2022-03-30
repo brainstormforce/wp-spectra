@@ -265,6 +265,7 @@ const UAGCopyPasteStyles = () => {
 
 									childAttr[attribute] = pasteStyle.innerblocks[index].attributes[attribute];
 								}
+								return childAttr;
 							} );
 
 							updateBlockStyles( childBlock.clientId,  childAttr );
