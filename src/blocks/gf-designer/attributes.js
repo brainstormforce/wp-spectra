@@ -131,14 +131,14 @@ const attributes = { // eslint-disable-line no-unused-vars
 		type: 'number',
 		default: 10,
 		UAGCopyPaste: {
-			styleType: 'btn-v-padding'
+			styleType: 'btn-vertical-padding'
 		},
 	},
 	buttonHrPadding: {
 		type: 'number',
 		default: 25,
 		UAGCopyPaste: {
-			styleType: 'btn-h-padding'
+			styleType: 'btn-horizontal-padding'
 		},
 	},
 	buttonBorderStyle: {
@@ -681,92 +681,92 @@ const attributes = { // eslint-disable-line no-unused-vars
 		type: 'number',
 		default: '',
 		UAGCopyPaste: {
-			styleType: 'msg-border-size'
+			styleType: 'success-msg-border-size'
 		},
 	},
 	msgBorderRadius: {
 		type: 'number',
 		default: '',
 		UAGCopyPaste: {
-			styleType: 'msg-border-radius'
+			styleType: 'success-msg-border-radius'
 		},
 	},
 	msgVrPadding: {
 		type: 'number',
 		default: '',
 		UAGCopyPaste: {
-			styleType: 'msg-v-padding'
+			styleType: 'success-msg-v-padding'
 		},
 	},
 	msgHrPadding: {
 		type: 'number',
 		default: '',
 		UAGCopyPaste: {
-			styleType: 'msg-h-padding'
+			styleType: 'success-msg-h-padding'
 		},
 	},
 	msgFontSize: {
 		type: 'number',
 		default: '',
 		UAGCopyPaste: {
-			styleType: 'msg-font-size'
+			styleType: 'success-msg-font-size'
 		},
 	},
 	msgFontSizeType: {
 		type: 'string',
 		default: 'px',
 		UAGCopyPaste: {
-			styleType: 'msg-font-size-type'
+			styleType: 'success-msg-font-size-type'
 		},
 	},
 	msgFontSizeTablet: {
 		type: 'number',
 		UAGCopyPaste: {
-			styleType: 'msg-font-size-tablet'
+			styleType: 'success-msg-font-size-tablet'
 		},
 	},
 	msgFontSizeMobile: {
 		type: 'number',
 		UAGCopyPaste: {
-			styleType: 'msg-font-size-mobile'
+			styleType: 'success-msg-font-size-mobile'
 		},
 	},
 	msgFontFamily: {
 		type: 'string',
 		default: 'Default',
 		UAGCopyPaste: {
-			styleType: 'msg-font-family'
+			styleType: 'success-msg-font-family'
 		},
 	},
 	msgFontWeight: {
 		type: 'string',
 		UAGCopyPaste: {
-			styleType: 'msg-font-weight'
+			styleType: 'success-msg-font-weight'
 		},
 	},
 	msgLineHeightType: {
 		type: 'string',
 		default: 'em',
 		UAGCopyPaste: {
-			styleType: 'msg-line-height-type'
+			styleType: 'success-msg-line-height-type'
 		},
 	},
 	msgLineHeight: {
 		type: 'number',
 		UAGCopyPaste: {
-			styleType: 'msg-line-height'
+			styleType: 'success-msg-line-height'
 		},
 	},
 	msgLineHeightTablet: {
 		type: 'number',
 		UAGCopyPaste: {
-			styleType: 'msg-line-height-tablet'
+			styleType: 'success-msg-line-height-tablet'
 		},
 	},
 	msgLineHeightMobile: {
 		type: 'number',
 		UAGCopyPaste: {
-			styleType: 'msg-line-height-mobile'
+			styleType: 'success-msg-line-height-mobile'
 		},
 	},
 	msgLoadGoogleFonts: {
@@ -784,7 +784,7 @@ const attributes = { // eslint-disable-line no-unused-vars
 		type: 'string',
 		default: 'px',
 		UAGCopyPaste: {
-			styleType: 'msg-border-radius-type'
+			styleType: 'success-msg-border-radius-type'
 		},
 	},
 	fieldBorderRadiusType: {
@@ -873,83 +873,83 @@ const attributes = { // eslint-disable-line no-unused-vars
 		type: 'number',
 		default: '',
 		UAGCopyPaste: {
-			styleType: 'msg-left-padding'
+			styleType: 'success-msg-left-padding'
 		},
 	},
 	msgrightPadding: {
 		type: 'number',
 		default: '',
 		UAGCopyPaste: {
-			styleType: 'msg-right-padding'
+			styleType: 'success-msg-right-padding'
 		},
 	},
 	msgtopPadding: {
 		type: 'number',
 		default: '',
 		UAGCopyPaste: {
-			styleType: 'msg-top-padding'
+			styleType: 'success-msg-top-padding'
 		},
 	},
 	msgbottomPadding: {
 		type: 'number',
 		default: '',
 		UAGCopyPaste: {
-			styleType: 'msg-bottom-padding'
+			styleType: 'success-msg-bottom-padding'
 		},
 	},
 	msgleftMobilePadding: {
 		type: 'number',
 		default: '',
 		UAGCopyPaste: {
-			styleType: 'msg-left-padding-mobile'
+			styleType: 'success-msg-left-padding-mobile'
 		},
 	},
 	msgrightMobilePadding: {
 		type: 'number',
 		default: '',
 		UAGCopyPaste: {
-			styleType: 'msg-right-padding-mobile'
+			styleType: 'success-msg-right-padding-mobile'
 		},
 	},
 	msgtopMobilePadding: {
 		type: 'number',
 		default: '',
 		UAGCopyPaste: {
-			styleType: 'msg-top-padding-mobile'
+			styleType: 'success-msg-top-padding-mobile'
 		},
 	},
 	msgbottomMobilePadding: {
 		type: 'number',
 		default: '',
 		UAGCopyPaste: {
-			styleType: 'msg-bottom-padding-mobile'
+			styleType: 'success-msg-bottom-padding-mobile'
 		},
 	},
 	msgleftTabletPadding: {
 		type: 'number',
 		default: '',
 		UAGCopyPaste: {
-			styleType: 'msg-left-padding-tablet'
+			styleType: 'success-msg-left-padding-tablet'
 		},
 	},
 	msgrightTabletPadding: {
 		type: 'number',
 		UAGCopyPaste: {
-			styleType: 'msg-right-padding-tablet'
+			styleType: 'success-msg-right-padding-tablet'
 		},
 		default: '',
 	},
 	msgtopTabletPadding: {
 		type: 'number',
 		UAGCopyPaste: {
-			styleType: 'msg-top-padding-tablet'
+			styleType: 'success-msg-top-padding-tablet'
 		},
 		default: '',
 	},
 	msgbottomTabletPadding: {
 		type: 'number',
 		UAGCopyPaste: {
-			styleType: 'msg-bottom-padding-tablet'
+			styleType: 'success-msg-bottom-padding-tablet'
 		},
 		default: '',
 	},
@@ -957,21 +957,21 @@ const attributes = { // eslint-disable-line no-unused-vars
 		type: 'string',
 		default: 'px',
 		UAGCopyPaste: {
-			styleType: 'msg-padding-unit-tablet'
+			styleType: 'success-msg-padding-unit-tablet'
 		},
 	},
 	msgmobilePaddingUnit: {
 		type: 'string',
 		default: 'px',
 		UAGCopyPaste: {
-			styleType: 'msg-padding-unit-mobile'
+			styleType: 'success-msg-padding-unit-mobile'
 		},
 	},
 	msgpaddingUnit: {
 		type: 'string',
 		default: 'px',
 		UAGCopyPaste: {
-			styleType: 'msg-padding-unit'
+			styleType: 'success-msg-padding-unit'
 		},
 	},
 	msgpaddingLink: {
@@ -1281,19 +1281,19 @@ const attributes = { // eslint-disable-line no-unused-vars
 	msgTransform: {
 		type: 'string',
 		UAGCopyPaste: {
-			styleType: 'msg-transform'
+			styleType: 'success-msg-transform'
 		},
 	},
 	msgDecoration: {
 		type: 'string',
 		UAGCopyPaste: {
-			styleType: 'msg-decoration'
+			styleType: 'success-msg-decoration'
 		},
 	},
 	msgFontStyle: {
 		type: 'string',
 		UAGCopyPaste: {
-			styleType: 'msg-font-style'
+			styleType: 'success-msg-font-style'
 		},
 	},
 	successMsgTransform: {

@@ -54,20 +54,20 @@ const attributes = {
 		type: 'string',
 		default: '#FFD54F',
 		UAGCopyPaste: {
-			styleType: 'notice-color'
+			styleType: 'main-title-border-color'
 		},
 	},
 	contentBgColor: {
 		type: 'string',
 		UAGCopyPaste: {
-			styleType: 'notice-content-bg-color'
+			styleType: 'desc-bg-color'
 		},
 	},
 	noticeDismissColor: {
 		type: 'string',
 		default: '',
 		UAGCopyPaste: {
-			styleType: 'notice-dismiss-color'
+			styleType: 'btn-color'
 		},
 	},
 	icon: {
@@ -78,7 +78,7 @@ const attributes = {
 		type: 'string',
 		default: 'left',
 		UAGCopyPaste: {
-			styleType: 'notice-align'
+			styleType: 'btn-align'
 		},
 	},
 	titleFontFamily: {
@@ -117,7 +117,7 @@ const attributes = {
 		type: 'string',
 		default: 'px',
 		UAGCopyPaste: {
-			styleType: 'main-title-font-size-unit'
+			styleType: 'main-title-font-size-type'
 		},
 	},
 	titleLineHeightType: {
@@ -364,99 +364,99 @@ const attributes = {
 		type: 'number',
 		default: 10,
 		UAGCopyPaste: {
-			styleType: 'notice-highlight-width'
+			styleType: 'main-title-border-width'
 		},
 	},
 	contentLeftPadding: {
 		type: 'number',
 		UAGCopyPaste: {
-			styleType: 'notice-content-left-padding'
+			styleType: 'desc-left-padding'
 		},
 	},
 	contentRightPadding: {
 		type: 'number',
 		UAGCopyPaste: {
-			styleType: 'notice-content-right-padding'
+			styleType: 'desc-right-padding'
 		},
 	},
 	contentTopPadding: {
 		type: 'number',
 		UAGCopyPaste: {
-			styleType: 'notice-content-Top-padding'
+			styleType: 'desc-Top-padding'
 		},
 	},
 	contentBottomPadding: {
 		type: 'number',
 		UAGCopyPaste: {
-			styleType: 'notice-content-bottom-padding'
+			styleType: 'desc-bottom-padding'
 		},
 	},
 	contentLeftPaddingTablet: {
 		type: 'number',
 		UAGCopyPaste: {
-			styleType:  'notice-content-left-padding-tablet'
+			styleType:  'desc-left-padding-tablet'
 		},
 	},
 	contentRightPaddingTablet: {
 		type: 'number',
 		UAGCopyPaste: {
-			styleType:  'notice-content-right-padding-tablet'
+			styleType:  'desc-right-padding-tablet'
 		},
 	},
 	contentTopPaddingTablet: {
 		type: 'number',
 		UAGCopyPaste: {
-			styleType:  'notice-content-Top-padding-tablet'
+			styleType:  'desc-Top-padding-tablet'
 		},
 	},
 	contentBottomPaddingTablet: {
 		type: 'number',
 		UAGCopyPaste: {
-			styleType:  'notice-content-bottom-padding-tablet'
+			styleType:  'desc-bottom-padding-tablet'
 		},
 	},
 	contentLeftPaddingMobile: {
 		type: 'number',
 		UAGCopyPaste: {
-			styleType:  'notice-content-left-padding-mobile'
+			styleType:  'desc-left-padding-mobile'
 		},
 	},
 	contentRightPaddingMobile: {
 		type: 'number',
 		UAGCopyPaste: {
-			styleType:  'notice-content-right-padding-mobile'
+			styleType:  'desc-right-padding-mobile'
 		},
 	},
 	contentTopPaddingMobile: {
 		type: 'number',
 		UAGCopyPaste: {
-			styleType:  'notice-content-Top-padding-mobile'
+			styleType:  'desc-Top-padding-mobile'
 		},
 	},
 	contentBottomPaddingMobile: {
 		type: 'number',
 		UAGCopyPaste: {
-			styleType:  'notice-content-bottom-padding-mobile'
+			styleType:  'desc-bottom-padding-mobile'
 		},
 	},
 	contentPaddingUnit: {
 		type: 'string',
 		UAGCopyPaste: {
-			styleType: 'notice-content-padding-unit'
+			styleType: 'desc-padding-unit'
 		},
 		default: 'px',
 	},
 	mobileContentPaddingUnit: {
 		type: 'string',
 		UAGCopyPaste: {
-			styleType: 'notice-content-padding-unit-mobile'
+			styleType: 'desc-padding-unit-mobile'
 		},
 		default: 'px',
 	},
 	tabletContentPaddingUnit: {
 		type: 'string',
 		UAGCopyPaste: {
-			styleType: 'notice-content-padding-unit-tablet'
+			styleType: 'desc-padding-unit-tablet'
 		},
 		default: 'px',
 	},
@@ -468,27 +468,27 @@ const attributes = {
 		type: 'number',
 		default: 15,
 		UAGCopyPaste: {
-			styleType: 'notice-content-v-padding'
+			styleType: 'desc-vertical-padding'
 		},
 	},
 	contentHrPadding: {
 		type: 'number',
 		default: 15,
 		UAGCopyPaste: {
-			styleType: 'notice-content-h-padding'
+			styleType: 'desc-horizontal-padding'
 		},
 	},
 	titleVrPadding: {
 		type: 'number',
 		UAGCopyPaste: {
-			styleType: 'main-title-v-padding'
+			styleType: 'main-title-vertical-padding'
 		},
 		default: 15,
 	},
 	titleHrPadding: {
 		type: 'number',
 		UAGCopyPaste: {
-			styleType: 'main-title-h-padding'
+			styleType: 'main-title-horizontal-padding'
 		},
 		default: 15,
 	},

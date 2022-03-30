@@ -56,7 +56,7 @@ const attributes = {
 		type: 'number',
 		default: 10,
 		UAGCopyPaste: {
-			styleType: 'main-title-gap'
+			styleType: 'main-title-bottom-margin'
 		},
 	},
 	titleColor: {

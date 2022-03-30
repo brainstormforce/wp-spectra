@@ -48,65 +48,65 @@ const attributes = {
 	urlFontSize: {
 		type: 'number',
 		UAGCopyPaste: {
-			styleType: 'desc-font-size'
+			styleType: 'prefix-font-size'
 		},
 	},
 	urlFontSizeType: {
 		type: 'string',
 		UAGCopyPaste: {
-			styleType: 'desc-font-size-type'
+			styleType: 'prefix-font-size-type'
 		},
 		default: 'px',
 	},
 	urlFontSizeMobile: {
 		type: 'number',
 		UAGCopyPaste: {
-			styleType: 'desc-font-size-mobile'
+			styleType: 'prefix-font-size-mobile'
 		},
 	},
 	urlFontSizeTablet: {
 		type: 'number',
 		UAGCopyPaste: {
-			styleType: 'desc-font-size-tablet'
+			styleType: 'prefix-font-size-tablet'
 		},
 	},
 	urlFontFamily: {
 		type: 'string',
 		UAGCopyPaste: {
-			styleType: 'desc-font-family'
+			styleType: 'prefix-font-family'
 		},
 		default: 'Default',
 	},
 	urlFontWeight: {
 		type: 'string',
 		UAGCopyPaste: {
-			styleType: 'desc-font-weight'
+			styleType: 'prefix-font-weight'
 		},
 	},
 	urlFontStyle: {
 		type: 'string',
 		default: 'normal',
 		UAGCopyPaste: {
-			styleType: 'desc-font-style'
+			styleType: 'prefix-font-style'
 		},
 	},
 	urlTransform: {
 		type: 'string',
 		UAGCopyPaste: {
-			styleType: 'desc-transform'
+			styleType: 'prefix-transform'
 		},
 	},
 	urlDecoration: {
 		type: 'string',
 		UAGCopyPaste: {
-			styleType: 'desc-decoration'
+			styleType: 'prefix-decoration'
 		},
 	},
 	urlLoadGoogleFonts: {
 		type: 'boolean',
 		default: false,
 		UAGCopyPaste: {
-			styleType: 'desc-load-google-fonts'
+			styleType: 'prefix-load-google-fonts'
 		},
 	},
 
@@ -259,7 +259,7 @@ const attributes = {
 	urlColor: {
 		type: 'string',
 		UAGCopyPaste: {
-			styleType: 'desc-color'
+			styleType: 'prefix-color'
 		},
 	},
 };

@@ -355,7 +355,7 @@ const attributes = {
 		type: 'number',
 		default: '70',
 		UAGCopyPaste: {
-			styleType: 'content-width'
+			styleType: 'desc-width'
 		},
 	},
 	ctaBtnLinkColor: {

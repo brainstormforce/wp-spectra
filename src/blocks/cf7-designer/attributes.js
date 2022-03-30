@@ -112,14 +112,14 @@
 		type    : 'number',
 		default : 10,
 		UAGCopyPaste: {
-			styleType: 'btn-v-padding'
+			styleType: 'btn-vertical-padding'
 		},
 	},
 	buttonHrPadding               : {
 		type    : 'number',
 		default : 25,
 		UAGCopyPaste: {
-			styleType: 'btn-h-padding'
+			styleType: 'btn-horizontal-padding'
 		},
 	},
 	buttonBorderStyle             : {
@@ -196,7 +196,7 @@
 		type    : 'number',
 		default : '',
 		UAGCopyPaste: {
-			styleType: 'field-label-spacing'
+			styleType: 'main-title-margin-bottom'
 		},
 	},
 	labelFontSize                 : {

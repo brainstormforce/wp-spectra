@@ -37,28 +37,28 @@ const attributes = {
 	failedMessageTextColor    : {
 		type: 'string',
 		UAGCopyPaste: {
-			styleType: 'failed-message-text-color'
+			styleType: 'failed-msg-text-color'
 		},
 		default: ''
 	},
 	failedMessageBorderColor  : {
 		type: 'string',
 		UAGCopyPaste: {
-			styleType: 'failed-message-border-color'
+			styleType: 'failed-msg-border-color'
 		},
 		default: ''
 	},
 	failedMessageBGColor      : {
 		type: 'string',
 		UAGCopyPaste: {
-			styleType: 'failed-message-bg-color'
+			styleType: 'failed-msg-bg-color'
 		},
 		default: ''
 	},
 	failedMessageBorderStyle  : {
 		type: 'string',
 		UAGCopyPaste: {
-			styleType: 'failed-message-border-style'
+			styleType: 'failed-msg-border-style'
 		},
 		default: 'solid'
 	},
@@ -66,7 +66,7 @@ const attributes = {
 		type: 'number',
 		default: 2,
 		UAGCopyPaste: {
-			styleType: 'failed-message-border-width'
+			styleType: 'failed-msg-border-width'
 		},
 	},
 	confirmationUrl: {
@@ -164,13 +164,13 @@ const attributes = {
 	hPaddingSubmit: {
 		type: 'number',
 		UAGCopyPaste: {
-			styleType: 'btn-h-padding'
+			styleType: 'btn-horizontal-padding'
 		},
 	},
 	vPaddingSubmit: {
 		type: 'number',
 		UAGCopyPaste: {
-			styleType: 'btn-v-padding'
+			styleType: 'btn-vertical-padding'
 		},
 	},
 	// Submit text Typography
@@ -576,35 +576,35 @@ const attributes = {
 	successMessageTextColor: {
 		type: 'string',
 		UAGCopyPaste: {
-			styleType: 'success-message-color'
+			styleType: 'success-msg-color'
 		},
 		default: '',
 	},
 	successMessageBGColor: {
 		type: 'string',
 		UAGCopyPaste: {
-			styleType: 'success-message-bg-color'
+			styleType: 'success-msg-bg-color'
 		},
 		default: '',
 	},
 	successMessageBorderColor: {
 		type: 'string',
 		UAGCopyPaste: {
-			styleType: 'success-message-border-color'
+			styleType: 'success-msg-border-color'
 		},
 		default: 'green',
 	},
 	successMessageBorderStyle: {
 		type: 'string',
 		UAGCopyPaste: {
-			styleType: 'success-message-border-style'
+			styleType: 'success-msg-border-style'
 		},
 		default: 'solid',
 	},
 	successMessageBorderWidth: {
 		type: 'string',
 		UAGCopyPaste: {
-			styleType: 'success-message-border-width'
+			styleType: 'success-msg-border-width'
 		},
 		default: '2',
 	},
@@ -619,25 +619,25 @@ const attributes = {
 	successMessageBorderRadius: {
 		type: 'string',
 		UAGCopyPaste: {
-			styleType: 'success-message-border-radius'
+			styleType: 'success-msg-border-radius'
 		},
 	},
 	successMessageHoverBorderColor: {
 		type: 'string',
 		UAGCopyPaste: {
-			styleType: 'success-message-hover-border-color'
+			styleType: 'success-msg-hover-border-color'
 		},
 	},
 	failedMessageBorderRadius: {
 		type: 'string',
 		UAGCopyPaste: {
-			styleType: 'failed-message-border-radius'
+			styleType: 'failed-msg-border-radius'
 		},
 	},
 	failedMessageHoverBorderColor: {
 		type: 'string',
 		UAGCopyPaste: {
-			styleType: 'failed-message-hover-border-color'
+			styleType: 'failed-msg-hover-border-color'
 		},
 	},
 	paddingBtnTop: {

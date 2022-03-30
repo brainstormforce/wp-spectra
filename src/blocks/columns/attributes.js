@@ -233,53 +233,53 @@ const attributes = {
 	backgroundType: {
 		type: 'string',
 		UAGCopyPaste: {
-			styleType: 'background-type'
+			styleType: 'column-bg-type'
 		},
 	},
 	backgroundImage: {
 		type: 'object',
 		UAGCopyPaste: {
-			styleType: 'background-image'
+			styleType: 'column-bg-image'
 		},
 	},
 	backgroundPosition: {
 		type: 'string',
 		UAGCopyPaste: {
-			styleType: 'background-position'
+			styleType: 'column-bg-position'
 		},
 		default: 'center-center',
 	},
 	backgroundSize: {
 		type: 'string',
 		UAGCopyPaste: {
-			styleType: 'background-size'
+			styleType: 'column-bg-size'
 		},
 		default: 'cover',
 	},
 	backgroundRepeat: {
 		type: 'string',
 		UAGCopyPaste: {
-			styleType: 'background-repeat'
+			styleType: 'column-bg-repeat'
 		},
 		default: 'no-repeat',
 	},
 	backgroundAttachment: {
 		type: 'string',
 		UAGCopyPaste: {
-			styleType: 'background-attachment'
+			styleType: 'column-bg-attachment'
 		},
 		default: 'scroll',
 	},
 	backgroundVideo: {
 		type: 'object',
 		UAGCopyPaste: {
-			styleType: 'background-video'
+			styleType: 'column-bg-video'
 		},
 	},
 	backgroundColor: {
 		type: 'string',
 		UAGCopyPaste: {
-			styleType: 'background-color'
+			styleType: 'column-bg-color'
 		},
 	},
 	overlayType: {
@@ -339,58 +339,58 @@ const attributes = {
 	backgroundOpacity: {
 		type: 'number',
 		UAGCopyPaste: {
-			styleType: 'background-opacity'
+			styleType: 'column-bg-opacity'
 		},
 	},
 	backgroundVideoOpacity: {
 		type: 'number',
 		UAGCopyPaste: {
-			styleType: 'background-video-opacity'
+			styleType: 'column-bg-video-opacity'
 		},
 		default: 50,
 	},
 	backgroundVideoColor: {
 		type: 'string',
 		UAGCopyPaste: {
-			styleType: 'background-video-color'
+			styleType: 'column-bg-video-color'
 		},
 	},
 	backgroundImageColor: {
 		type: 'string',
 		UAGCopyPaste: {
-			styleType: 'background-image-color'
+			styleType: 'column-bg-image-color'
 		},
 	},
 	borderStyle: {
 		type: 'string',
 		default: 'none',
 		UAGCopyPaste: {
-			styleType: 'border-style'
+			styleType: 'column-border-style'
 		},
 	},
 	borderWidth: {
 		type: 'number',
 		default: 1,
 		UAGCopyPaste: {
-			styleType: 'border-width'
+			styleType: 'column-border-width'
 		},
 	},
 	borderRadius: {
 		type: 'number',
 		UAGCopyPaste: {
-			styleType: 'border-radius'
+			styleType: 'column-border-radius'
 		},
 	},
 	borderColor: {
 		type: 'string',
 		UAGCopyPaste: {
-			styleType: 'border-color'
+			styleType: 'column-border-color'
 		},
 	},
 	borderHoverColor: {
 		type: 'string',
 		UAGCopyPaste: {
-			styleType: 'border-hover-color'
+			styleType: 'column-border-hover-color'
 		},
 	},
 	bottomType: {
@@ -578,13 +578,13 @@ const attributes = {
 	boxShadowColor: {
 		type: 'string',
 		UAGCopyPaste: {
-			styleType: 'box-shadow-color'
+			styleType: 'column-box-shadow-color'
 		},
 	},
 	boxShadowHOffset: {
 		type: 'number',
 		UAGCopyPaste: {
-			styleType: 'box-shadow-hoffset'
+			styleType: 'column-box-shadow-hoffset'
 		},
 		default: 0,
 	},
@@ -592,26 +592,26 @@ const attributes = {
 		type: 'number',
 		default: 0,
 		UAGCopyPaste: {
-			styleType: 'box-shadow-voffset'
+			styleType: 'column-box-shadow-voffset'
 		},
 	},
 	boxShadowBlur: {
 		type: 'number',
 		UAGCopyPaste: {
-			styleType: 'box-shadow-blur'
+			styleType: 'column-box-shadow-blur'
 		},
 	},
 	boxShadowSpread: {
 		type: 'number',
 		UAGCopyPaste: {
-			styleType: 'box-shadow-spread'
+			styleType: 'column-box-shadow-spread'
 		},
 	},
 	boxShadowPosition: {
 		type: 'string',
 		default: 'outset',
 		UAGCopyPaste: {
-			styleType: 'box-shadow-position'
+			styleType: 'column-box-shadow-position'
 		},
 	},
 	gradientValue: {

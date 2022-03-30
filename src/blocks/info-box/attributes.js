@@ -31,7 +31,7 @@ const attributes = {
 		type: 'string',
 		default: 'center',
 		UAGCopyPaste: {
-			styleType: 'main-title-align'
+			styleType: 'overall-alignment'
 		}
 	},
 	headingColor: {
@@ -78,14 +78,14 @@ const attributes = {
 		type: 'string',
 		default: '',
 		UAGCopyPaste: {
-			styleType: 'icon-size-hover-color'
+			styleType: 'icon-hover-color'
 		}
 	},
 	iconBgHover: {
 		type: 'string',
 		default: '',
 		UAGCopyPaste: {
-			styleType: 'icon-size-bg-hover-color'
+			styleType: 'icon-bg-hover-color'
 		}
 	},
 	iconColor: {
@@ -791,9 +791,6 @@ const attributes = {
 	paddingspacingLink: {
 		type: 'boolean',
 		default: false,
-		UAGCopyPaste: {
-			styleType: 'btn-padding-spacing-link'
-		}
 	},
 	paddingBtnUnit: {
 		type: 'string',
