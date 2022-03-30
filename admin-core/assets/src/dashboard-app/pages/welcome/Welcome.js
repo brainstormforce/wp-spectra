@@ -35,9 +35,11 @@ const Welcome = () => {
                 </h2>
                 <div className="rounded-[0.2rem] bg-white overflow-hidden shadow">
                   <div className="p-6">
-                        <h3 className='text-xl pb-3 font-medium'>{__( 'Powerful Blocks & Beautiful Templates for any kind of website.', 'ultimate-addons-for-gutenberg' )}</h3>
-                        <iframe width="100%" height="380px" src={`https://www.youtube.com/embed/N-MLUplUoZc?showinfo=0&autoplay=${allowAutoPlay}&mute=1`} allow="autoplay" title="YouTube video player" frameBorder="0" allowFullScreen></iframe>
-                        <span className="relative z-0 inline-flex rounded-[0.2rem] pt-6 justify-center w-full">
+                        <h3 className='text-xl pb-3 font-medium text-center'>{__( 'Powerful Blocks & Beautiful Templates for any kind of website.', 'ultimate-addons-for-gutenberg' )}</h3>
+						<div className="mx-[80px]">
+						<iframe width="621" height="350" src={`https://www.youtube.com/embed/N-MLUplUoZc?showinfo=0&autoplay=${allowAutoPlay}&mute=1`} allow="autoplay" title="YouTube video player" frameBorder="0" allowFullScreen></iframe>
+						</div>
+						<span className="relative z-0 inline-flex rounded-[0.2rem] pt-6 justify-center w-full">
                           <button
                               type="button"
                               className="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-[0.2rem] shadow-sm text-white bg-wpcolor hover:bg-wphovercolor focus:outline-none mr-4"
