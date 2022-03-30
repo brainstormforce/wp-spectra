@@ -252,32 +252,32 @@ const attributes = {
 		type: 'string',
 		default: 'none',
 		UAGCopyPaste: {
-			styleType: 'container-border-style'
+			styleType: 'overall-border-style'
 		},
 	},
 	borderWidth: {
 		type: 'number',
 		default: 1,
 		UAGCopyPaste: {
-			styleType: 'container-border-width'
+			styleType: 'overall-border-width'
 		},
 	},
 	borderRadius: {
 		type: 'number',
 		UAGCopyPaste: {
-			styleType: 'container-border-radius'
+			styleType: 'overall-border-radius'
 		},
 	},
 	borderColor: {
 		type: 'string',
 		UAGCopyPaste: {
-			styleType: 'container-border-color'
+			styleType: 'overall-border-color'
 		},
 	},
 	borderHoverColor: {
 		type: 'string',
 		UAGCopyPaste: {
-			styleType: 'container-border-hover-color'
+			styleType: 'overall-border-hover-color'
 		},
 	},
 	boxShadowColor: {

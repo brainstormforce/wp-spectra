@@ -627,32 +627,32 @@ const attributes = {
 		type: 'string',
 		default: 'solid',
 		UAGCopyPaste: {
-			styleType: 'toc-border-style'
+			styleType: 'overall-border-style'
 		},
 	},
 	borderWidth: {
 		type: 'number',
 		UAGCopyPaste: {
-			styleType: 'toc-border-width'
+			styleType: 'overall-border-width'
 		},
 	},
 	borderRadius: {
 		type: 'number',
 		UAGCopyPaste: {
-			styleType: 'toc-border-radius'
+			styleType: 'overall-border-radius'
 		},
 		default: 6,
 	},
 	borderColor: {
 		type: 'string',
 		UAGCopyPaste: {
-			styleType: 'toc-border-color'
+			styleType: 'overall-border-color'
 		},
 	},
 	borderHoverColor: {
 		type: 'string',
 		UAGCopyPaste: {
-			styleType: 'toc-border-hover-color'
+			styleType: 'overall-border-hover-color'
 		},
 	},
 

@@ -59,7 +59,7 @@ const attributes = { // eslint-disable-line no-unused-vars
 		type    : 'string',
 		default : '#5cb85c',
 		UAGCopyPaste: {
-			styleType: 'border-focus-color'
+			styleType: 'overall-border-focus-color'
 		},
 	},
 	headingTag              : {
@@ -199,7 +199,7 @@ const attributes = { // eslint-disable-line no-unused-vars
 		type    : 'number',
 		default : 0,
 		UAGCopyPaste: {
-			styleType: 'border-width'
+			styleType: 'overall-border-width'
 		},
 	},
 	iconColor               : {
@@ -628,7 +628,7 @@ const attributes = { // eslint-disable-line no-unused-vars
 		type    : 'number',
 		default : 2,
 		UAGCopyPaste: {
-			styleType: 'border-radius'
+			styleType: 'overall-border-radius'
 		},
 	},
 	bgPadding               : {

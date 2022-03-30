@@ -331,32 +331,32 @@ const attributes = {
 		type: 'string',
 		default: 'none',
 		UAGCopyPaste: {
-			styleType: 'column-border-style'
+			styleType: 'overall-border-style'
 		}
 	},
 	borderWidth: {
 		type: 'number',
 		default: 1,
 		UAGCopyPaste: {
-			styleType: 'column-border-width'
+			styleType: 'overall-border-width'
 		}
 	},
 	borderRadius: {
 		type: 'number',
 		UAGCopyPaste: {
-			styleType: 'column-border-radius'
+			styleType: 'overall-border-radius'
 		}
 	},
 	borderColor: {
 		type: 'string',
 		UAGCopyPaste: {
-			styleType: 'column-border-color'
+			styleType: 'overall-border-color'
 		}
 	},
 	borderHoverColor: {
 		type: 'string',
 		UAGCopyPaste: {
-			styleType: 'column-border-hover-color'
+			styleType: 'overall-border-hover-color'
 		}
 	},
 	overlayType: {

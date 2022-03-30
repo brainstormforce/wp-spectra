@@ -117,7 +117,7 @@ const attributes = {
 	borderFocus: {
 		type: 'string',
 		UAGCopyPaste: {
-			styleType: 'border-focus-color'
+			styleType: 'overall-border-focus-color'
 		},
 		default: '#0693e3',
 	},
@@ -347,7 +347,7 @@ const attributes = {
 		type: 'number',
 		default: 0,
 		UAGCopyPaste: {
-			styleType: 'border-width'
+			styleType: 'overall-border-width'
 		},
 	},
 	iconColor: {
@@ -503,7 +503,7 @@ const attributes = {
 		type: 'number',
 		default: 2,
 		UAGCopyPaste: {
-			styleType: 'border-radius'
+			styleType: 'overall-border-radius'
 		},
 	},
 	bgPadding: {
