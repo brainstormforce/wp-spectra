@@ -5,7 +5,7 @@ const Welcome = () => {
 
   const query = new URLSearchParams( useLocation()?.search );
 
-  const allowAutoPlay = 1 == query.get('spectra-activation-redirect') ? 1 : 0;
+  const allowAutoPlay = '1' === query.get( 'spectra-activation-redirect' ) ? 1 : 0;
 
   const onCreateNewPageClick = () => {
 		window.open(

@@ -33,7 +33,7 @@ const FilterTabs = () => {
 		// Activate Block Filter Tab from "filterTab" Hash in the URl is present.
 		const activePath = query.get( 'path' );
 		const activeHash = query.get( 'filterTab' );
-		const activeFilterTabFromHash = ( activeHash && 'blocks' === activePath) ? activeHash : 'all';
+		const activeFilterTabFromHash = ( activeHash && 'blocks' === activePath ) ? activeHash : 'all';
 		dispatch( {type:'UPDATE_BLOCKS_ACTIVE_FILTER_TAB', payload: activeFilterTabFromHash} )
 
         const categoriesBlocksTemp = {
