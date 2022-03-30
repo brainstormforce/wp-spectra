@@ -35,7 +35,7 @@ const attributes = {
 	icon_hover_color: {
 		type: 'string',
 		UAGCopyPaste: {
-			styleType: 'icon-hovercolor'
+			styleType: 'icon-hover-color'
 		},
 		default: '',
 	},

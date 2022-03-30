@@ -224,14 +224,14 @@ const attributes = {
 	starActiveColor: {
 		type: 'string',
 		UAGCopyPaste: {
-			styleType: 'icon-hover-color'
+			styleType: 'icon-color'
 		},
 		default: '#000000',
 	},
 	imageSize: {
 		type: 'number',
 		UAGCopyPaste: {
-			styleType: 'custom-image-size'
+			styleType: 'image-size'
 		},
 		default: 100, //range: 0-200
 	},
@@ -357,7 +357,7 @@ const attributes = {
 	contentVrPadding: {
 		type: 'number',
 		UAGCopyPaste: {
-			styleType: 'desc-v-padding'
+			styleType: 'desc-vertical-padding'
 		},
 		default: 15,
 	},
@@ -365,7 +365,7 @@ const attributes = {
 		type: 'number',
 		default: 50,
 		UAGCopyPaste: {
-			styleType: 'desc-h-padding'
+			styleType: 'desc-horizontal-padding'
 		},
 	},
 	topPadding: {

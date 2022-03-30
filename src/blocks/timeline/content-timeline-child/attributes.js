@@ -30,7 +30,7 @@ const attributes = {
 		type: 'string',
 		default: 'center',
 		UAGCopyPaste: {
-			styleType: 'align'
+			styleType: 'overall-alignment'
 		},
 	},
 	headingTag: {

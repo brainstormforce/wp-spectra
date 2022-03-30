@@ -64,7 +64,7 @@ const attributes = {
 		type: 'string',
 		default: 'center',
 		UAGCopyPaste: {
-			styleType: 'timeline-align'
+			styleType: 'overall-alignment'
 		},
 	},
 	headingColor: {
@@ -575,7 +575,7 @@ const attributes = {
 	topMarginTablet: {
 		type: 'number',
 		UAGCopyPaste: {
-			styleType: 'timeline-margin-bottom-tablet'
+			styleType: 'timeline-margin-top-tablet'
 		},
 	},
 	bottomMarginTablet: {

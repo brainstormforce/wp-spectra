@@ -19,14 +19,14 @@ const attributes = {
 		type    : 'string',
 		default : 'center',
 		UAGCopyPaste: {
-			styleType: 'pagination-align'
+			styleType: 'pagination-alignment'
 		},
 	},
 	paginationTextColor          : {
 		type    : 'string',
 		default : '',
 		UAGCopyPaste: {
-			styleType: 'pagination-text-color'
+			styleType: 'pagination-color'
 		},
 	},
 	paginationMasonryBgColor     : {
@@ -59,7 +59,7 @@ const attributes = {
 		type    : 'number',
 		default : 1,
 		UAGCopyPaste: {
-			styleType: 'pagination-border-width'
+			styleType: 'pagination-border-size'
 		},
 	},
 	paginationMasonryBorderRadius : {
@@ -80,7 +80,7 @@ const attributes = {
 		type    : 'string',
 		default : '',
 		UAGCopyPaste: {
-			styleType: 'pagination-border-hover-color'
+			styleType: 'pagination-border-active-color'
 		},
 	},
 	paginationFontSize           : {
@@ -108,42 +108,42 @@ const attributes = {
 		type    : 'number',
 		default : 8,
 		UAGCopyPaste: {
-			styleType: 'pagination-v-padding-mobile'
+			styleType: 'pagination-vertical-padding-mobile'
 		},
 	},
 	vpaginationButtonPaddingTablet : {
 		type    : 'number',
 		default : 8,
 		UAGCopyPaste: {
-			styleType: 'pagination-v-padding-tablet'
+			styleType: 'pagination-vertical-padding-tablet'
 		},
 	},
 	vpaginationButtonPaddingDesktop : {
 		type    : 'number',
 		default : 8,
 		UAGCopyPaste: {
-			styleType: 'pagination-v-padding-desktop'
+			styleType: 'pagination-vertical-padding-desktop'
 		},
 	},
 	hpaginationButtonPaddingMobile : {
 		type    : 'number',
 		default : 12,
 		UAGCopyPaste: {
-			styleType: 'pagination-h-padding-mobile'
+			styleType: 'pagination-horizontal-padding-mobile'
 		},
 	},
 	hpaginationButtonPaddingTablet : {
 		type    : 'number',
 		default : 12,
 		UAGCopyPaste: {
-			styleType: 'pagination-h-padding-tablet'
+			styleType: 'pagination-horizontal-padding-tablet'
 		},
 	},
 	hpaginationButtonPaddingDesktop : {
 		type    : 'number',
 		default : 12,
 		UAGCopyPaste: {
-			styleType: 'pagination-h-padding-desktop'
+			styleType: 'pagination-horizontal-padding-desktop'
 		},
 	},
 	layoutConfig                 : {
@@ -289,14 +289,14 @@ const attributes = {
 		type    : 'number',
 		default : 10,
 		UAGCopyPaste: {
-			styleType: 'btn-h-padding'
+			styleType: 'btn-horizontal-padding'
 		},
 	},
 	btnVPadding             : {
 		type    : 'number',
 		default : 5,
 		UAGCopyPaste: {
-			styleType: 'btn-v-padding'
+			styleType: 'btn-vertical-padding'
 		},
 	},
 	borderStyle             : {
@@ -640,7 +640,7 @@ const attributes = {
 		type    : 'boolean',
 		default : false,
 		UAGCopyPaste: {
-			styleType: 'lottie-bg-hover-color'
+			styleType: 'desc-load-google-fonts'
 		},
 	},
 	displayPostContentRadio : {
@@ -855,7 +855,7 @@ const attributes = {
 		type    : 'number',
 		default : 15,
 		UAGCopyPaste: {
-			styleType: 'title-bottom-margin'
+			styleType: 'main-title-bottom-margin'
 		},
 	},
 	metaBottomSpace         : {
@@ -957,7 +957,7 @@ const attributes = {
 		type    : 'string',
 		default : 'px',
 		UAGCopyPaste: {
-			styleType: 'pagination-bottom-margin-unit'
+			styleType: 'pagination-spacing-unit'
 		},
 	},
 	imageBottomSpaceUnit    : {
