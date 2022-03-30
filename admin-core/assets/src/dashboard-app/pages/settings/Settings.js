@@ -39,7 +39,7 @@ const Settings = () => {
 	useEffect( () => {
 		// Activate Setting Active Tab from "settingsTab" Hash in the URl is present.
 		const activePath = query.get( 'path' );
-		const activeHash = query.get( 'settingsTab' );
+		const activeHash = query.get( 'settings' );
 		const activeSettingsTabFromHash = ( activeHash && 'settings' === activePath ) ? activeHash : 'global-settings';
 		dispatch( {type:'UPDATE_SETTINGS_ACTIVE_NAVIGATION_TAB', payload: activeSettingsTabFromHash} )
 	}, [initialStateSetFlag] );
@@ -57,7 +57,7 @@ const Settings = () => {
                         <Link // eslint-disable-line
 							to={ {
 								pathname: 'options-general.php',
-								search: `?page=spectra&path=settings&settingsTab=${item.slug}`,
+								search: `?page=spectra&path=settings&settings=${item.slug}`,
 							} }
                             key={item.name}
                             className={classNames(
