@@ -226,7 +226,7 @@ const attributes = {
 		UAGCopyPaste: {
 			styleType: 'icon-color'
 		},
-		default: '#000000',
+		default: '#ccd6df',
 	},
 	imageSize: {
 		type: 'number',
@@ -311,7 +311,7 @@ const attributes = {
 		UAGCopyPaste: {
 			styleType: 'icon-color'
 		},
-		default: '#ffff00',
+		default: '#f0ad4e',
 	},
 	selectedStars: {
 		type: 'number',

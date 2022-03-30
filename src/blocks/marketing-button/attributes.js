@@ -39,14 +39,12 @@ const attributes = {
 	// Border
 	borderStyle: {
 		type: 'string',
-		default: 'none',
 		UAGCopyPaste: {
 			styleType: 'btn-border-hover-color'
 		}
 	},
 	borderWidth: {
 		type: 'number',
-		default: 1,
 		UAGCopyPaste: {
 			styleType: 'btn-border-width'
 		}
@@ -55,15 +53,13 @@ const attributes = {
 		type: 'number',
 		UAGCopyPaste: {
 			styleType: 'btn-border-radius'
-		},
-		default: 2
+		}
 	},
 	borderColor: {
 		type: 'string',
 		UAGCopyPaste: {
 			styleType: 'btn-border-color'
-		},
-		default: '',
+		}
 	},
 	borderHoverColor: {
 		type: 'string',
@@ -122,12 +118,10 @@ const attributes = {
 		type: 'string',
 		UAGCopyPaste: {
 			styleType: 'btn-bg-type'
-		},
-		default: 'color',
+		}
 	},
 	backgroundColor: {
 		type: 'string',
-		default: '#0170B9',
 		UAGCopyPaste: {
 			styleType: 'btn-bg-color'
 		}
@@ -196,7 +190,6 @@ const attributes = {
 	//Colors
 	titleColor: {
 		type: 'string',
-		default: '#333',
 		UAGCopyPaste: {
 			styleType: 'main-title-color'
 		}
@@ -209,7 +202,7 @@ const attributes = {
 	},
 	iconColor: {
 		type: 'string',
-		default: '#333',
+		default: '#fff',
 		UAGCopyPaste: {
 			styleType: 'icon-color'
 		}
@@ -222,7 +215,6 @@ const attributes = {
 	},
 	prefixColor: {
 		type: 'string',
-		default: '#333',
 		UAGCopyPaste: {
 			styleType: 'prefix-color'
 		}
@@ -348,7 +340,7 @@ const attributes = {
 	},
 	titleTag: {
 		type: 'string',
-		default: 'h6',
+		default: 'span',
 	},
 	// Prefix Font Family
 	prefixLoadGoogleFonts: {
@@ -488,28 +480,24 @@ const attributes = {
 	},
 	paddingBtnTop: {
 		type: 'number',
-		default: 10,
 		UAGCopyPaste: {
 			styleType: 'btn-top-padding'
 		}
 	},
 	paddingBtnBottom: {
 		type: 'number',
-		default: 10,
 		UAGCopyPaste: {
 			styleType: 'btn-bottom-padding'
 		}
 	},
 	paddingBtnLeft: {
 		type: 'number',
-		default: 35,
 		UAGCopyPaste: {
 			styleType: 'btn-left-padding'
 		}
 	},
 	paddingBtnRight: {
 		type: 'number',
-		default: 35,
 		UAGCopyPaste: {
 			styleType: 'btn-right-padding'
 		}

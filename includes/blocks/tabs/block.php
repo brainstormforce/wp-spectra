@@ -18,5 +18,5 @@ $block_data = array(
 	'default'          => true,
 	'extension'        => false,
 	'js_assets'        => array( 'uagb-tabs-js' ),
-	'priority'         => 2,
+	'priority'         => 9,
 );
