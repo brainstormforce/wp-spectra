@@ -5,7 +5,9 @@ const attributes = {  // eslint-disable-line no-unused-vars
 	align            : {
 		type    : 'string',
 		default : 'center',
-		isUAGStyle: true,
+		UAGCopyPaste: {
+			styleType: 'overall-alignment'
+		},
 	},
 	lottieURl        : {
 		type    : 'string',
@@ -38,37 +40,53 @@ const attributes = {  // eslint-disable-line no-unused-vars
 	// Style.
 	height           : {
 		type : 'number',
-		isUAGStyle: true,
+		UAGCopyPaste: {
+			styleType: 'lottie-height'
+		},
 	},
 	heightTablet     : {
 		type : 'number',
-		isUAGStyle: true,
+		UAGCopyPaste: {
+			styleType: 'lottie-height-tablet'
+		},
 	},
 	heightMob        : {
 		type : 'number',
-		isUAGStyle: true,
+		UAGCopyPaste: {
+			styleType: 'lottie-height-mobile'
+		},
 	},
 	width            : {
 		type : 'number',
-		isUAGStyle: true,
+		UAGCopyPaste: {
+			styleType: 'lottie-width'
+		},
 	},
 	widthTablet      : {
 		type : 'number',
-		isUAGStyle: true,
+		UAGCopyPaste: {
+			styleType: 'lottie-width-tablet'
+		},
 	},
 	widthMob         : {
 		type : 'number',
-		isUAGStyle: true,
+		UAGCopyPaste: {
+			styleType: 'lottie-width-mobile'
+		},
 	},
 	backgroundColor  : {
 		type    : 'string',
 		default : '',
-		isUAGStyle: true,
+		UAGCopyPaste: {
+			styleType: 'lottie-bg-color'
+		},
 	},
 	backgroundHColor : {
 		type    : 'string',
 		default : '',
-		isUAGStyle: true,
+		UAGCopyPaste: {
+			styleType: 'lottie-bg-hover-color'
+		},
 	},
 	isPreview: {
 		type: 'boolean',
