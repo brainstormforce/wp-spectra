@@ -188,14 +188,14 @@ const attributes = {
 		type    : 'string',
 		default : '#ffffff',
 		UAGCopyPaste: {
-			styleType: 'bg-overlay-color'
+			styleType: 'post-bg-overlay-color'
 		},
 	},
 	overlayOpacity          : {
 		type    : 'number',
 		default : '50',
 		UAGCopyPaste: {
-			styleType: 'overlay-opacity'
+			styleType: 'post-overlay-opacity'
 		},
 	},
 	displayPostLink         : {
@@ -221,14 +221,14 @@ const attributes = {
 		type    : 'number',
 		default : 10,
 		UAGCopyPaste: {
-			styleType: 'btn-h-padding'
+			styleType: 'btn-horizontal-padding'
 		},
 	},
 	btnVPadding             : {
 		type    : 'number',
 		default : 5,
 		UAGCopyPaste: {
-			styleType: 'btn-v-padding'
+			styleType: 'btn-vertical-padding'
 		},
 	},
 	borderStyle             : {
@@ -571,7 +571,7 @@ const attributes = {
 		type    : 'boolean',
 		default : false,
 		UAGCopyPaste: {
-			styleType: 'lottie-bg-hover-color'
+			styleType: 'desc-load-google-fonts'
 		},
 	},
 	displayPostContentRadio : {
@@ -785,7 +785,7 @@ const attributes = {
 			type    : 'number',
 			default : 15,
 			UAGCopyPaste: {
-				styleType: 'title-bottom-margin'
+				styleType: 'main-title-bottom-margin'
 			},
 		},
 		metaBottomSpace         : {
@@ -887,7 +887,7 @@ const attributes = {
 			type    : 'string',
 			default : 'px',
 			UAGCopyPaste: {
-				styleType: 'pagination-bottom-margin-unit'
+				styleType: 'pagination-spacing-unit'
 			},
 		},
 		imageBottomSpaceUnit    : {

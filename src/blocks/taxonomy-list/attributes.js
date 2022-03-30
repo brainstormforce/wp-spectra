@@ -136,21 +136,21 @@ const attributes = {   // eslint-disable-line no-unused-vars
 		type    : 'string',
 		default : '#3b3b3b',
 		UAGCopyPaste: {
-			styleType: 'desc-list-hover-color'
+			styleType: 'desc-hover-color'
 		},
 	},
 	listStyleColor             : {
 		type    : 'string',
 		default : '#3b3b3b',
 		UAGCopyPaste: {
-			styleType: 'desc-list-style-color'
+			styleType: 'desc-style-color'
 		},
 	},
 	hoverlistStyleColor        : {
 		type    : 'string',
 		default : '#3b3b3b',
 		UAGCopyPaste: {
-			styleType: 'desc-list-style-hover-color'
+			styleType: 'desc-style-hover-color'
 		},
 	},
 
@@ -203,7 +203,7 @@ const attributes = {   // eslint-disable-line no-unused-vars
 		type    : 'number',
 		default : 10,
 		UAGCopyPaste: {
-			styleType: 'list-bottom-margin'
+			styleType: 'desc-bottom-margin'
 		},
 	},
 
@@ -221,14 +221,14 @@ const attributes = {   // eslint-disable-line no-unused-vars
 		type    : 'string',
 		default : 'disc',
 		UAGCopyPaste: {
-			styleType: 'list-style'
+			styleType: 'desc-style'
 		},
 	},
 	listDisplayStyle           : {
 		type    : 'string',
 		default : 'list',
 		UAGCopyPaste: {
-			styleType: 'list-display-style'
+			styleType: 'desc-display-style'
 		},
 	},
 
@@ -641,7 +641,7 @@ const attributes = {   // eslint-disable-line no-unused-vars
 	listTransform              : {
 		type : 'string',
 		UAGCopyPaste: {
-			styleType: 'desc-list-transform'
+			styleType: 'desc-transform'
 		},
 	},
 	titleDecoration            : {
@@ -659,7 +659,7 @@ const attributes = {   // eslint-disable-line no-unused-vars
 	listDecoration             : {
 		type : 'string',
 		UAGCopyPaste: {
-			styleType: 'desc-list-decoration'
+			styleType: 'desc-decoration'
 		},
 	},
 	isPreview: {

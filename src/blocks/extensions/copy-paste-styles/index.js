@@ -252,7 +252,7 @@ const UAGCopyPasteStyles = () => {
 
 					if( innerBlocks  ) {
 
-						let childAttr = {};
+						const childAttr = {};
 
 						innerBlocks.map( ( childBlock , index ) => {
 
@@ -265,7 +265,7 @@ const UAGCopyPasteStyles = () => {
 
 									childAttr[attribute] = pasteStyle.innerblocks[index].attributes[attribute];
 								}
-							});
+							} );
 
 							updateBlockStyles( childBlock.clientId,  childAttr );
 

@@ -121,7 +121,7 @@ const attributes = {
 	backgroundType: {
 		type: 'string',
 		UAGCopyPaste: {
-			styleType: 'btn-background-type'
+			styleType: 'btn-bg-type'
 		},
 		default: 'color',
 	},
@@ -129,13 +129,13 @@ const attributes = {
 		type: 'string',
 		default: '#0170B9',
 		UAGCopyPaste: {
-			styleType: 'btn-background-color'
+			styleType: 'btn-bg-color'
 		}
 	},
 	backgroundHoverColor: {
 		type: 'string',
 		UAGCopyPaste: {
-			styleType: 'btn-background-hover-color'
+			styleType: 'btn-bg-hover-color'
 		}
 	},
 	gradientColor1: {
@@ -183,13 +183,13 @@ const attributes = {
 	backgroundOpacity: {
 		type: 'number',
 		UAGCopyPaste: {
-			styleType: 'btn-background-opacity'
+			styleType: 'btn-bg-opacity'
 		}
 	},
 	backgroundHoverOpacity: {
 		type: 'number',
 		UAGCopyPaste: {
-			styleType: 'btn-background-hover-opacity'
+			styleType: 'btn-bg-hover-opacity'
 		}
 	},
 
@@ -410,7 +410,7 @@ const attributes = {
 	prefixLineHeightType: {
 		type: 'string',
 		UAGCopyPaste: {
-			styleType: 'prefix-line-height-mobile'
+			styleType: 'prefix-line-height-type'
 		},
 		default: 'em',
 	},
@@ -437,13 +437,13 @@ const attributes = {
 		type: 'number',
 		default: 20,
 		UAGCopyPaste: {
-			styleType: 'btn-icon-font-size'
+			styleType: 'icon-size'
 		}
 	},
 	iconFontSizeType: {
 		type: 'string',
 		UAGCopyPaste: {
-			styleType: 'btn-icon-font-size-type'
+			styleType: 'icon-size-type'
 		},
 		default: 'px',
 	},
@@ -451,14 +451,14 @@ const attributes = {
 		type: 'number',
 		default: 20,
 		UAGCopyPaste: {
-			styleType: 'btn-icon-font-size-tablet'
+			styleType: 'icon-size-tablet'
 		},
 	},
 	iconFontSizeMobile: {
 		type: 'number',
 		default: 20,
 		UAGCopyPaste: {
-			styleType: 'btn-icon-font-size-mobile'
+			styleType: 'icon-size-mobile'
 		}
 	},
 	spacingLink: {

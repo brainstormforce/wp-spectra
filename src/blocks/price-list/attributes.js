@@ -73,14 +73,14 @@ const attributes = {
 		type: 'number',
 		default: 0,
 		UAGCopyPaste: {
-			styleType: 'image-v-padding'
+			styleType: 'image-vertical-padding'
 		},
 	},
 	imgHrPadding: {
 		type: 'number',
 		default: 0,
 		UAGCopyPaste: {
-			styleType: 'image-h-padding'
+			styleType: 'image-horizontal-padding'
 		},
 	},
 	imgPaddingTop: {
@@ -160,14 +160,14 @@ const attributes = {
 	contentVrPadding: {
 		type: 'number',
 		UAGCopyPaste: {
-			styleType: 'desc-v-padding'
+			styleType: 'desc-vertical-padding'
 		},
 		default: 5,
 	},
 	contentHrPadding: {
 		type: 'number',
 		UAGCopyPaste: {
-			styleType: 'desc-h-padding'
+			styleType: 'desc-horizontal-padding'
 		},
 		default: 5,
 	},
@@ -505,14 +505,14 @@ const attributes = {
 		type: 'string',
 		default: 'px',
 		UAGCopyPaste: {
-			styleType: 'row-gap-type'
+			styleType: 'row-gap-unit'
 		},
 	},
 	columnGapType: {
 		type: 'string',
 		default: 'px',
 		UAGCopyPaste: {
-			styleType: 'column-gap-type'
+			styleType: 'column-gap-unit'
 		},
 	},
 	titleSpaceType: {
