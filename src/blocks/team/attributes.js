@@ -14,7 +14,7 @@ const attributes = {
 		type: 'string',
 		default: 'center',
 		UAGCopyPaste: {
-			styleType: 'team-align'
+			styleType: 'overall-alignment'
 		},
 	},
 	tag: {
@@ -57,13 +57,13 @@ const attributes = {
 		type: 'string',
 		default: '#333',
 		UAGCopyPaste: {
-			styleType: 'social-color'
+			styleType: 'icon-color'
 		},
 	},
 	socialHoverColor: {
 		type: 'string',
 		UAGCopyPaste: {
-			styleType: 'social-hover-color'
+			styleType: 'icon-hover-color'
 		},
 	},
 	titleFontFamily: {
@@ -216,19 +216,19 @@ const attributes = {
 	prefixLineHeight: {
 		type: 'number',
 		UAGCopyPaste: {
-			styleType: 'desc-line-height'
+			styleType: 'prefix-line-height'
 		},
 	},
 	prefixLineHeightTablet: {
 		type: 'number',
 		UAGCopyPaste: {
-			styleType: 'desc-line-height-tablet'
+			styleType: 'prefix-line-height-tablet'
 		},
 	},
 	prefixLineHeightMobile: {
 		type: 'number',
 		UAGCopyPaste: {
-			styleType: 'desc-line-height-mobile'
+			styleType: 'prefix-line-height-mobile'
 		},
 	},
 	descFontFamily: {
@@ -316,27 +316,27 @@ const attributes = {
 	socialFontSize: {
 		type: 'number',
 		UAGCopyPaste: {
-			styleType: 'social-font-size'
+			styleType: 'icon-size'
 		},
 		default: 20,
 	},
 	socialFontSizeType: {
 		type: 'string',
 		UAGCopyPaste: {
-			styleType: 'social-font-size-type'
+			styleType: 'icon-size-type'
 		},
 		default: 'px',
 	},
 	socialFontSizeMobile: {
 		type: 'number',
 		UAGCopyPaste: {
-			styleType: 'social-font-size-mobile'
+			styleType: 'icon-size-mobile'
 		},
 	},
 	socialFontSizeTablet: {
 		type: 'number',
 		UAGCopyPaste: {
-			styleType: 'social-font-size-tablet'
+			styleType: 'icon-size-tablet'
 		},
 	},
 	image: {
@@ -434,7 +434,7 @@ const attributes = {
 	socialSpace: {
 		type: 'number',
 		UAGCopyPaste: {
-			styleType: 'social-bottom-margin'
+			styleType: 'icon-bottom-margin'
 		},
 		default: 20,
 	},
