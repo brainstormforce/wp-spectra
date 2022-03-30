@@ -89,6 +89,11 @@ const globalDataReducer = ( state = {}, action ) => {
 				...state,
 				contentWidth: action.payload,
 				};
+		case 'UPDATE_SETTINGS_SAVED_NOTIFICATION':
+			return {
+				...state,
+				settingsSavedNotification: action.payload,
+				};
         default:
             return state;
     }

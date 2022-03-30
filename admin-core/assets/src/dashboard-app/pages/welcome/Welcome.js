@@ -1,6 +1,11 @@
 import { __ } from '@wordpress/i18n';
+import { useLocation } from 'react-router-dom';
 
 const Welcome = () => {
+
+  const query = new URLSearchParams( useLocation()?.search );
+
+  const allowAutoPlay = '1' === query.get( 'spectra-activation-redirect' ) ? 1 : 0;
 
   const onCreateNewPageClick = () => {
 		window.open(
@@ -32,7 +37,7 @@ const Welcome = () => {
                   <div className="p-6">
                         <h3 className='text-xl pb-3 font-medium text-center'>{__( 'Powerful Blocks & Beautiful Templates for any kind of website.', 'ultimate-addons-for-gutenberg' )}</h3>
 						<div className="mx-[80px]">
-						<iframe width="621" height="350" src="https://www.youtube.com/embed/N-MLUplUoZc?showinfo=0&autoplay=1&mute=1" allow="autoplay" title="YouTube video player" frameBorder="0" allowFullScreen></iframe>
+						<iframe width="621" height="350" src={`https://www.youtube.com/embed/N-MLUplUoZc?showinfo=0&autoplay=${allowAutoPlay}&mute=${allowAutoPlay}`} allow="autoplay" title="YouTube video player" frameBorder="0" allowFullScreen></iframe>
 						</div>
 						<span className="relative z-0 inline-flex rounded-[0.2rem] pt-6 justify-center w-full">
                           <button

@@ -120,7 +120,15 @@ if ( ! class_exists( 'UAGB_Admin' ) ) {
 				update_option( '__uagb_do_redirect', false );
 
 				if ( ! is_multisite() ) {
-					wp_safe_redirect( esc_url( admin_url( 'options-general.php?page=' . UAGB_SLUG ) ) );
+					wp_safe_redirect(
+						add_query_arg(
+							array(
+								'page' => UAGB_SLUG,
+								'spectra-activation-redirect' => true,
+							),
+							admin_url( 'options-general.php' )
+						)
+					);
 					exit();
 				}
 			}
