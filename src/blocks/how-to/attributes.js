@@ -107,14 +107,14 @@ const attributes = {
 		type: 'number',
 		default: 5,
 		UAGCopyPaste: {
-			styleType: 'time-space'
+			styleType: 'prefix-bottom-margin'
 		},
 	},
 	costSpace: {
 		type: 'number',
 		default: 5,
 		UAGCopyPaste: {
-			styleType: 'cost-space'
+			styleType: 'desc-bottom-margin'
 		},
 	},
 	time: {
@@ -149,7 +149,7 @@ const attributes = {
 		type: 'string',
 		default: 'left',
 		UAGCopyPaste: {
-			styleType: 'main-title-align'
+			styleType: 'overall-alignment'
 		},
 	},
 	descriptionAlign: {
@@ -168,13 +168,13 @@ const attributes = {
 	showEstcostcolor: {
 		type: 'string',
 		UAGCopyPaste: {
-			styleType: 'desc-color'
+			styleType: 'prefix-color'
 		},
 	},
 	showTotaltimecolor: {
 		type: 'string',
 		UAGCopyPaste: {
-			styleType: 'desc-color'
+			styleType: 'prefix-color'
 		},
 		default: '',
 	},

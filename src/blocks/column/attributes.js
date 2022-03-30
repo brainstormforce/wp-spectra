@@ -35,7 +35,7 @@ const attributes = {
 		type: 'number',
 		default: '',
 		UAGCopyPaste: {
-			styleType: 'column-right-padding'
+			styleType: 'column-top-padding'
 		}
 	},
 	bottomPadding: {
@@ -147,28 +147,28 @@ const attributes = {
 	topPaddingMobile: {
 		type: 'number',
 		UAGCopyPaste: {
-			styleType: 'column-top-padding-mobie'
+			styleType: 'column-top-padding-mobile'
 		},
 		default: '',
 	},
 	bottomPaddingMobile: {
 		type: 'number',
 		UAGCopyPaste: {
-			styleType: 'column-bottom-padding-mobie'
+			styleType: 'column-bottom-padding-mobile'
 		},
 		default: '',
 	},
 	leftPaddingMobile: {
 		type: 'number',
 		UAGCopyPaste: {
-			styleType: 'column-left-padding-mobie'
+			styleType: 'column-left-padding-mobile'
 		},
 		default: '',
 	},
 	rightPaddingMobile: {
 		type: 'number',
 		UAGCopyPaste: {
-			styleType: 'column-right-padding-mobie'
+			styleType: 'column-right-padding-mobile'
 		},
 		default: '',
 	},

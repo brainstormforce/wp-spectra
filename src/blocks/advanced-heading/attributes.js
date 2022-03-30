@@ -25,7 +25,7 @@ const attributes = {
 		type: 'string',
 		default: 'center',
 		UAGCopyPaste: {
-			styleType: 'main-title-align'
+			styleType: 'overall-alignment'
 		}
 	},
 	headingColor: {

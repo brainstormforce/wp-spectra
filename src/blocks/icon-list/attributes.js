@@ -43,7 +43,7 @@ const attributes = {
 		type: 'string',
 		default: 'left',
 		UAGCopyPaste: {
-			styleType: 'icon-color'
+			styleType: 'overall-alignment'
 		},
 	},
 	icon_count: {

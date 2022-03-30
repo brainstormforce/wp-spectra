@@ -24,7 +24,7 @@ const attributes = {
 	textColor: {
 		type: 'string',
 		UAGCopyPaste: {
-			styleType: 'text-color'
+			styleType: 'input-color'
 		}
 	},
 	inputBgColor: {
@@ -37,66 +37,66 @@ const attributes = {
 	boxShadowColor: {
 		type: 'string',
 		UAGCopyPaste: {
-			styleType: 'box-shadow-color'
+			styleType: 'input-box-shadow-color'
 		}
 	},
 	boxShadowHOffset: {
 		type: 'number',
 		default: 0,
 		UAGCopyPaste: {
-			styleType: 'box-shadow-h-offset'
+			styleType: 'input-box-shadow-h-offset'
 		}
 	},
 	boxShadowVOffset: {
 		type: 'number',
 		default: 0,
 		UAGCopyPaste: {
-			styleType: 'box-shadow-v-offset'
+			styleType: 'input-box-shadow-v-offset'
 		}
 	},
 	boxShadowBlur: {
 		type: 'number',
 		UAGCopyPaste: {
-			styleType: 'box-shadow-blur'
+			styleType: 'input-box-shadow-blur'
 		}
 	},
 	boxShadowSpread: {
 		type: 'number',
 		UAGCopyPaste: {
-			styleType: 'box-shadow-spread'
+			styleType: 'input-box-shadow-spread'
 		}
 	},
 	boxShadowPosition: {
 		type: 'string',
 		default: 'outset',
 		UAGCopyPaste: {
-			styleType: 'box-shadow-position'
+			styleType: 'input-box-shadow-position'
 		}
 	},
 	borderStyle: {
 		type: 'string',
 		default: 'none',
 		UAGCopyPaste: {
-			styleType: 'border-style'
+			styleType: 'input-border-style'
 		}
 	},
 	borderWidth: {
 		type: 'number',
 		UAGCopyPaste: {
-			styleType: 'border-width'
+			styleType: 'input-border-width'
 		}
 	},
 	borderRadius: {
 		type: 'number',
 		default: 3,
 		UAGCopyPaste: {
-			styleType: 'border-radius'
+			styleType: 'input-border-radius'
 		}
 	},
 	borderColor: {
 		type: 'string',
 		UAGCopyPaste: {
-			styleType: 'border-color'
+			styleType: 'input-border-color'
 		}
 	},
 	buttonBgColor: {
@@ -365,14 +365,14 @@ const attributes = {
 	},
 	buttonTextColor: {
 		UAGCopyPaste: {
-			styleType: 'btn-text-color'
+			styleType: 'btn-color'
 		},
 		type: 'string',
 		default: '#313131',
 	},
 	buttonTextHoverColor: {
 		UAGCopyPaste: {
-			styleType: 'btn-text-hover-color'
+			styleType: 'btn-hover-color'
 		},
 		type: 'string',
 	},
@@ -517,7 +517,7 @@ const attributes = {
 	},
 	borderHColor: {
 		UAGCopyPaste: {
-			styleType: 'border-h-color'
+			styleType: 'input-border-hover-color'
 		},
 		type: 'string',
 	},

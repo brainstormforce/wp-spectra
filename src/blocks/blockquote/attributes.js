@@ -18,7 +18,7 @@ const attributes = {
 		type: 'string',
 		default: 'left',
 		UAGCopyPaste: {
-			styleType: 'desc-align'
+			styleType: 'overall-alignment'
 		}
 	},
 	descriptionText: {
@@ -236,7 +236,7 @@ const attributes = {
 		type: 'string',
 		default: 'thumbnail',
 		UAGCopyPaste: {
-			styleType: 'image-size'
+			styleType: 'author-image-size'
 		}
 	},
 	authorImageWidth: {
@@ -309,125 +309,125 @@ const attributes = {
 		type: 'string',
 		default: '#1DA1F2',
 		UAGCopyPaste: {
-			styleType: 'tweet-link-color'
+			styleType: 'btn-color'
 		}
 	},
 	tweetBtnColor: {
 		type: 'string',
 		default: '#fff',
 		UAGCopyPaste: {
-			styleType: 'tweet-btn-color'
+			styleType: 'btn-color'
 		}
 	},
 	tweetBtnBgColor: {
 		type: 'string',
 		default: '#1DA1F2',
 		UAGCopyPaste: {
-			styleType: 'tweet-btn-bg-color'
+			styleType: 'btn-bg-color'
 		}
 	},
 	tweetBtnHoverColor: {
 		type: 'string',
 		UAGCopyPaste: {
-			styleType: 'tweet-btn-hover-color'
+			styleType: 'btn-hover-color'
 		}
 	},
 	tweetBtnBgHoverColor: {
 		type: 'string',
 		default: '#1DA1F2',
 		UAGCopyPaste: {
-			styleType: 'tweet-btn-bg-hover-color'
+			styleType: 'btn-bg-hover-color'
 		}
 	},
 	tweetBtnFontSize: {
 		type: 'number',
 		default: 15,
 		UAGCopyPaste: {
-			styleType: 'tweet-btn-font-size'
+			styleType: 'btn-font-size'
 		}
 	},
 	tweetBtnFontSizeType: {
 		type: 'string',
 		default: 'px',
 		UAGCopyPaste: {
-			styleType: 'tweet-btn-font-size-unit'
+			styleType: 'btn-font-size-unit'
 		}
 	},
 	tweetBtnFontSizeTablet: {
 		type: 'number',
 		UAGCopyPaste: {
-			styleType: 'tweet-btn-font-size-tablet'
+			styleType: 'btn-font-size-tablet'
 		}
 	},
 	tweetBtnFontSizeMobile: {
 		type: 'number',
 		UAGCopyPaste: {
-			styleType: 'tweet-btn-font-size-mobile'
+			styleType: 'btn-font-size-mobile'
 		}
 	},
 	tweetBtnFontFamily: {
 		type: 'string',
 		UAGCopyPaste: {
-			styleType: 'tweet-btn-font-family'
+			styleType: 'btn-font-family'
 		},
 		default: 'Default',
 	},
 	tweetBtnFontWeight: {
 		type: 'string',
 		UAGCopyPaste: {
-			styleType: 'tweet-btn-fonr-weight'
+			styleType: 'btn-fonr-weight'
 		}
 	},
 	tweetBtnFontStyle: {
 		type: 'string',
 		UAGCopyPaste: {
-			styleType: 'tweet-btn-font-style'
+			styleType: 'btn-font-style'
 		}
 	},
 	tweetBtnLineHeightType: {
 		type: 'string',
 		default: 'em',
 		UAGCopyPaste: {
-			styleType: 'tweet-btn-line-height-type'
+			styleType: 'btn-line-height-type'
 		}
 	},
 	tweetBtnLineHeight: {
 		type: 'number',
 		UAGCopyPaste: {
-			styleType: 'tweet-btn-line-height'
+			styleType: 'btn-line-height'
 		}
 	},
 	tweetBtnLineHeightTablet: {
 		type: 'number',
 		UAGCopyPaste: {
-			styleType: 'tweet-btn-line-height-tablet'
+			styleType: 'btn-line-height-tablet'
 		}
 	},
 	tweetBtnLineHeightMobile: {
 		type: 'number',
 		UAGCopyPaste: {
-			styleType: 'tweet-btn-line-height-mobile'
+			styleType: 'btn-line-height-mobile'
 		}
 	},
 	tweetBtnLoadGoogleFonts: {
 		type: 'boolean',
 		default: false,
 		UAGCopyPaste: {
-			styleType: 'tweet-btn-load-google-fonts'
+			styleType: 'btn-load-google-fonts'
 		}
 	},
 	tweetBtnHrPadding: {
 		type: 'number',
 		default: 10,
 		UAGCopyPaste: {
-			styleType: 'tweet-btn-hr-padding'
+			styleType: 'btn-hr-padding'
 		}
 	},
 	tweetBtnVrPadding: {
 		type: 'number',
 		default: 10,
 		UAGCopyPaste: {
-			styleType: 'tweet-btn-vr-padding'
+			styleType: 'btn-vr-padding'
 		}
 	},
 	tweetIconSpacing: {
@@ -448,35 +448,35 @@ const attributes = {
 		type: 'string',
 		default: '#abb8c3',
 		UAGCopyPaste: {
-			styleType: 'quote-border-color'
+			styleType: 'desc-border-color'
 		}
 	},
 	borderStyle: {
 		type: 'string',
 		default: 'solid',
 		UAGCopyPaste: {
-			styleType: 'quote-border-style'
+			styleType: 'desc-border-style'
 		}
 	},
 	borderWidth: {
 		type: 'number',
 		default: 4,
 		UAGCopyPaste: {
-			styleType: 'quote-border-width'
+			styleType: 'desc-border-width'
 		}
 	},
 	borderGap: {
 		type: 'number',
 		default: 15,
 		UAGCopyPaste: {
-			styleType: 'quote-border-gap'
+			styleType: 'desc-border-gap'
 		}
 	},
 	borderGapUnit: {
 		type: 'string',
 		default: 'px',
 		UAGCopyPaste: {
-			styleType: 'quote-border-gap-unit'
+			styleType: 'desc-border-gap-unit'
 		}
 	},
 	verticalPadding: {
@@ -500,200 +500,200 @@ const attributes = {
 		type: 'string',
 		default: '#3d3d3d',
 		UAGCopyPaste: {
-			styleType: 'quote-color'
+			styleType: 'desc-color'
 		}
 	},
 	quoteSize: {
 		type: 'number',
 		default: 25,
 		UAGCopyPaste: {
-			styleType: 'quote-size'
+			styleType: 'icon-size'
 		}
 	},
 	quoteSizeType: {
 		type: 'string',
 		default: 'px',
 		UAGCopyPaste: {
-			styleType: 'quote-size-unit'
+			styleType: 'icon-size-type'
 		}
 	},
 	quoteSizeTablet: {
 		type: 'number',
 		UAGCopyPaste: {
-			styleType: 'quote-size-tablet'
+			styleType: 'icon-size-tablet'
 		}
 	},
 	quoteSizeMobile: {
 		type: 'number',
 		UAGCopyPaste: {
-			styleType: 'quote-size-mobile'
+			styleType: 'icon-size-mobile'
 		}
 	},
 	quotePadding: {
 		type: 'number',
 		default: 10,
 		UAGCopyPaste: {
-			styleType: 'quote-padding'
+			styleType: 'desc-padding'
 		}
 	},
 	quoteUnit: {
 		type: 'string',
 		default: 'px',
 		UAGCopyPaste: {
-			styleType: 'quote-margin-unit'
+			styleType: 'desc-margin-unit'
 		}
 	},
 	quotePaddingType: {
 		type: 'string',
 		default: 'px',
 		UAGCopyPaste: {
-			styleType: 'quote-padding-unit'
+			styleType: 'desc-padding-unit'
 		}
 	},
 	quotePaddingTablet: {
 		type: 'number',
 		UAGCopyPaste: {
-			styleType: 'quote-padding-tablet'
+			styleType: 'desc-padding-tablet'
 		}
 	},
 	quotePaddingMobile: {
 		type: 'number',
 		UAGCopyPaste: {
-			styleType: 'quote-padding-mobile'
+			styleType: 'desc-padding-mobile'
 		}
 	},
 	quoteBorderRadius: {
 		type: 'number',
 		default: 100,
 		UAGCopyPaste: {
-			styleType: 'quote-border-radius'
+			styleType: 'desc-border-radius'
 		}
 	},
 	quoteBorderRadiusUnit: {
 		type: 'string',
 		default: '%',
 		UAGCopyPaste: {
-			styleType: 'quote-border-radius-unit'
+			styleType: 'desc-border-radius-unit'
 		}
 	},
 	quoteBgColor: {
 		type: 'string',
 		default: '#f4f4f4',
 		UAGCopyPaste: {
-			styleType: 'quote-bg-color'
+			styleType: 'desc-bg-color'
 		}
 	},
 	quoteTopMargin: {
 		type: 'number',
 		UAGCopyPaste: {
-			styleType: 'quote-top-margin'
+			styleType: 'desc-top-margin'
 		}
 	},
 	quoteBottomMargin: {
 		type: 'number',
 		default: 15,
 		UAGCopyPaste: {
-			styleType: 'quote-bottom-margin'
+			styleType: 'desc-bottom-margin'
 		}
 	},
 	quoteLeftMargin: {
 		type: 'number',
 		UAGCopyPaste: {
-			styleType: 'quote-left-margin'
+			styleType: 'desc-left-margin'
 		}
 	},
 	quoteRightMargin: {
 		type: 'number',
 		default: 20,
 		UAGCopyPaste: {
-			styleType: 'quote-right-margin'
+			styleType: 'desc-right-margin'
 		}
 	},
 	quoteTopMarginTablet: {
 		type: 'number',
 		UAGCopyPaste: {
-			styleType: 'quote-top-margin-tablet'
+			styleType: 'desc-top-margin-tablet'
 		}
 	},
 	quoteBottomMarginTablet: {
 		type: 'number',
 		UAGCopyPaste: {
-			styleType: 'quote-bottom-margin-tablet'
+			styleType: 'desc-bottom-margin-tablet'
 		}
 	},
 	quoteLeftMarginTablet: {
 		type: 'number',
 		UAGCopyPaste: {
-			styleType: 'quote-left-margin-tablet'
+			styleType: 'desc-left-margin-tablet'
 		}
 	},
 	quoteRightMarginTablet: {
 		type: 'number',
 		UAGCopyPaste: {
-			styleType: 'quote-right-margin-tablet'
+			styleType: 'desc-right-margin-tablet'
 		}
 	},
 	quoteTopMarginMobile: {
 		type: 'number',
 		UAGCopyPaste: {
-			styleType: 'quote-top-margin-mobile'
+			styleType: 'desc-top-margin-mobile'
 		}
 	},
 	quoteBottomMarginMobile: {
 		type: 'number',
 		UAGCopyPaste: {
-			styleType: 'quote-bottom-margin-mobile'
+			styleType: 'desc-bottom-margin-mobile'
 		}
 	},
 	quoteLeftMarginMobile: {
 		type: 'number',
 		UAGCopyPaste: {
-			styleType: 'quote-left-margin-mobile'
+			styleType: 'desc-left-margin-mobile'
 		}
 	},
 	quoteRightMarginMobile: {
 		type: 'number',
 		UAGCopyPaste: {
-			styleType: 'quote-right-margin-mobile'
+			styleType: 'desc-right-margin-mobile'
 		}
 	},
 	quotemobileUnit: {
 		type: 'string',
 		default: 'px',
 		UAGCopyPaste: {
-			styleType: 'quote-mobile-unit'
+			styleType: 'desc-margin-unit-mobile'
 		}
 	},
 	quotetabletUnit: {
 		type: 'string',
 		default: 'px',
 		UAGCopyPaste: {
-			styleType: 'quote-tablet-unit'
+			styleType: 'desc-margin-unit-tablet'
 		}
 	},
 	quoteHoverColor: {
 		type: 'string',
 		UAGCopyPaste: {
-			styleType: 'quote-hover-color'
+			styleType: 'desc-hover-color'
 		}
 	},
 	quoteBgHoverColor: {
 		type: 'string',
 		UAGCopyPaste: {
-			styleType: 'quote-bg-hover-color'
+			styleType: 'desc-bg-hover-color'
 		}
 	},
 	borderHoverColor: {
 		type: 'string',
 		UAGCopyPaste: {
-			styleType: 'quote-border-hover-color'
+			styleType: 'desc-border-hover-color'
 		}
 	},
 	borderWidthUnit: {
 		type: 'string',
 		default: 'px',
 		UAGCopyPaste: {
-			styleType: 'quote-border-width-unit'
+			styleType: 'desc-border-width-unit'
 		}
 	},
 	paddingBtnTop: {
@@ -812,7 +812,7 @@ const attributes = {
 	tweetBtnTransform:{
 		type: 'string',
 		UAGCopyPaste: {
-			styleType: 'tweet-btn-transform'
+			styleType: 'btn-transform'
 		}
 	},
 	descDecoration:{
@@ -830,7 +830,7 @@ const attributes = {
 	tweetBtnDecoration:{
 		type: 'string',
 		UAGCopyPaste: {
-			styleType: 'tweet-btn-decoration'
+			styleType: 'btn-decoration'
 		}
 	},
 	isPreview: {
