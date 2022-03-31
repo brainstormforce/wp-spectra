@@ -1040,27 +1040,25 @@ const attributes = {
 	headMarginTopMobile : {
 		type: 'number',
 		UAGCopyPaste: {
-			styleType: 'main-title-margin-top-mobile'
+			styleType: 'main-title-top-margin-mobile'
 		}
 	},
 	headMarginRightMobile : {
 		type: 'number',
 		UAGCopyPaste: {
-			styleType: 'main-title-margin-right-mobile'
+			styleType: 'main-title-right-margin-mobile'
 		}
 	},
 	headMobileSpace : {
 		type: 'number',
 		UAGCopyPaste: {
-			styleType: 'main-title-margin-bottom-mobile'
+			styleType: 'main-title-bottom-margin-mobile'
 		}
 	},
 	headMarginLeftMobile : {
 		type: 'number',
-
-
 		UAGCopyPaste: {
-			styleType: 'main-title-margin-left-mobile'
+			styleType: 'main-title-left-margin-mobile'
 		}
 	},
 	headSpaceUnit : {

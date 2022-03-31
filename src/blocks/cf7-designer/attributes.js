@@ -196,7 +196,7 @@
 		type    : 'number',
 		default : '',
 		UAGCopyPaste: {
-			styleType: 'main-title-margin-bottom'
+			styleType: 'main-title-bottom-margin'
 		},
 	},
 	labelFontSize                 : {
