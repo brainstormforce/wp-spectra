@@ -206,7 +206,7 @@ function styling( props ) {
 		}
 	};
 
-	if ( 'alignwide' === innerContentWidth ) {
+	if ( ( 'alignfull' === contentWidth || 'default' === contentWidth ) && 'alignwide' === innerContentWidth ) {
 
 		widthSelectorsDesktop[`.is-root-container > .block-editor-block-list__block > .wp-block-uagb-container.uagb-block-${ block_id }`] = {
 			'--inner-content-custom-width' : editorContentWidth,
