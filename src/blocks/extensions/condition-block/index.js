@@ -178,17 +178,17 @@ const AdvancedControlsBlock = createHigherOrderComponent( ( BlockEdit ) => {
 		}
 		useEffect( () => {
 
-				let DisplayPanelBody = document.querySelector( '.uag-advance-panel-body-display' );
-				let ResponsivePanelBody = document.querySelector( '.uag-advance-panel-body-responsive' );
-				let MasonryPanelBody = document.querySelector( '.uag-advance-panel-body-masonry' );
-				if( DisplayPanelBody ){
-					const tabsParent = DisplayPanelBody.parentElement;
+				let displayPanel = document.querySelector( '.uag-advance-panel-body-display' );
+				let responsivePanel = document.querySelector( '.uag-advance-panel-body-responsive' );
+				let masonryPanel = document.querySelector( '.uag-advance-panel-body-masonry' );
+				if( displayPanel ){
+					const tabsParent = displayPanel.parentElement;
 					if( tabsParent ){
-						DisplayPanelBody = DisplayPanelBody ? DisplayPanelBody : '';
-						ResponsivePanelBody = ResponsivePanelBody ? ResponsivePanelBody : '';
-						MasonryPanelBody = MasonryPanelBody ? MasonryPanelBody : '';
+						displayPanel = displayPanel ? displayPanel : '';
+						responsivePanel = responsivePanel ? responsivePanel : '';
+						masonryPanel = masonryPanel ? masonryPanel : '';
 						if( tabsParent.lastChild.className.includes( 'components-panel__body is-opened' ) ){
-							tabsParent.prepend( tabsParent.lastChild, DisplayPanelBody, ResponsivePanelBody, MasonryPanelBody )
+							tabsParent.prepend( tabsParent.lastChild, displayPanel, responsivePanel, masonryPanel )
 						}
 
 					}
