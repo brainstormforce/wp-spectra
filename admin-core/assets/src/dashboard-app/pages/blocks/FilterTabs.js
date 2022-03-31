@@ -1,6 +1,7 @@
 import apiFetch from '@wordpress/api-fetch';
 import { useSelector, useDispatch } from 'react-redux';
 import React, { useEffect, useState } from 'react';
+import { Link, useLocation } from 'react-router-dom';
 
 function classNames( ...classes ) {
 return classes.filter( Boolean ).join( ' ' )
@@ -8,7 +9,8 @@ return classes.filter( Boolean ).join( ' ' )
 
 const FilterTabs = () => {
 
-    const blocksInfo = uag_react.blocks_info;
+	const query = new URLSearchParams( useLocation()?.search );
+	const blocksInfo = uag_react.blocks_info;
     const dispatch = useDispatch();
 
     const blocksStatuses = useSelector( ( state ) => state.blocksStatuses );
@@ -27,6 +29,12 @@ const FilterTabs = () => {
     ];
 
     useEffect( () => {
+
+		// Activate Block Filter Tab from "filterTab" Hash in the URl is present.
+		const activePath = query.get( 'path' );
+		const activeHash = query.get( 'filterTab' );
+		const activeFilterTabFromHash = ( activeHash && 'blocks' === activePath ) ? activeHash : 'all';
+		dispatch( {type:'UPDATE_BLOCKS_ACTIVE_FILTER_TAB', payload: activeFilterTabFromHash} )
 
         const categoriesBlocksTemp = {
             ...categoriesBlocks
@@ -147,16 +155,22 @@ const FilterTabs = () => {
             <div className="hidden justify-between sm:flex">
                 <nav className="flex space-x-4" aria-label="Tabs">
                     {tabs.map( ( tab ) => (
-                    <a // eslint-disable-line
+                    <Link // eslint-disable-line
+						to={ {
+							pathname: 'options-general.php',
+							search: `?page=spectra&path=blocks&filterTab=${tab.slug}`,
+						} }
                         key={tab.name}
                         className={classNames(
                         tab.slug === activeBlocksFilterTab ? 'bg-wphoverbgcolor text-wpcolor hover:text-wphovercolor' : ' hover:text-wphovercolor',
                         'px-3 py-2 font-medium text-sm rounded-[0.2rem] cursor-pointer'
                         )}
-                        onClick={ () => dispatch( {type:'UPDATE_BLOCKS_ACTIVE_FILTER_TAB', payload: tab.slug} ) }
+                        onClick={ () => {
+							dispatch( {type:'UPDATE_BLOCKS_ACTIVE_FILTER_TAB', payload: tab.slug} )
+						}}
                     >
                         {tab.name}
-                    </a>
+					</Link>
                     ) )}
                 </nav>
                 <span className="z-0 flex shadow-sm rounded-[0.2rem] justify-center">
