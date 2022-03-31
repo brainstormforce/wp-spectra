@@ -15,6 +15,7 @@ import CollapsePanels from '@DashboardApp/pages/settings/CollapsePanels';
 import CopyPasteStyles from '@DashboardApp/pages/settings/CopyPasteStyles';
 import ContentWidth from '@DashboardApp/pages/settings/ContentWidth';
 import SettingsSkeleton from '@DashboardApp/pages/settings/SettingsSkeleton';
+import BlockSettings from '@DashboardApp/pages/settings/BlockSettings';
 
 function classNames( ...classes ) {
     return classes.filter( Boolean ).join( ' ' )
@@ -33,7 +34,8 @@ const Settings = () => {
         { name: __( 'Templates', 'ultimate-addons-for-gutenberg' ), slug: 'templates', icon: SettingsIcons.templates },
         { name: __( 'Version Control', 'ultimate-addons-for-gutenberg' ), slug: 'version-control', icon: SettingsIcons['version-control'] },
         { name: __( 'Performance', 'ultimate-addons-for-gutenberg' ), slug: 'fonts-performance', icon: SettingsIcons['fonts-performance'] },
-    ];
+		{ name: __( 'Block Settings', 'ultimate-addons-for-gutenberg' ), slug: 'block-settings', icon: SettingsIcons['fonts-performance'] },
+	];
 
 	if ( ! initialStateSetFlag ) {
 		return <SettingsSkeleton/>;
@@ -89,6 +91,11 @@ const Settings = () => {
                             <SelectedFontFamilies/>
                             <LoadFontsLocally/>
                             <PreloadLocalFonts/>
+                        </>
+                    }
+					{ 'block-settings' === activeSettingsNavigationTab &&
+                        <>
+                            <BlockSettings/>
                         </>
                     }
                 </div>

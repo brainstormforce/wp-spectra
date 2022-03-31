@@ -199,6 +199,12 @@ class Admin_Menu {
 				'reusable_url'             => esc_url( admin_url( 'edit.php?post_type=wp_block' ) ),
 				'global_data'              => Admin_Helper::get_options(),
 				'uag_content_width_set_by' => \UAGB_Admin_Helper::get_admin_settings_option( 'uag_content_width_set_by', __( 'Spectra', 'ultimate-addons-for-gutenberg' ) ),
+				'enable_recaptcha'                   => UAGB_Admin_Helper::get_admin_settings_option( 'uag_enable_google-recaptcha', 'disabled' ),
+				'recaptcha_type'                   => UAGB_Admin_Helper::get_admin_settings_option( 'uag_google-recaptcha-type', 'disabled' ),
+				'site_key_v2'                   => UAGB_Admin_Helper::get_admin_settings_option( 'uag_google-site-key-v2', 'disabled' ),
+				'secret_key_v2'                   => UAGB_Admin_Helper::get_admin_settings_option( 'uag_google-secret-key-v2', 'disabled' ),
+				'site_key_v3'                   => UAGB_Admin_Helper::get_admin_settings_option( 'uag_google-site-key-v3', 'disabled' ),
+				'secret_key_v3'                   => UAGB_Admin_Helper::get_admin_settings_option( 'uag_google-site-key-v3', 'disabled' ),
 			)
 		);
 

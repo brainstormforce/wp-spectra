@@ -560,6 +560,12 @@ class UAGB_Init_Blocks {
 				'collapse_panels'                    => UAGB_Admin_Helper::get_admin_settings_option( 'uag_collapse_panels', 'enabled' ),
 				'copy_paste'                         => UAGB_Admin_Helper::get_admin_settings_option( 'uag_copy_paste', 'enabled' ),
 				'content_width'                      => $content_width,
+				'enable_recaptcha'                   => UAGB_Admin_Helper::get_admin_settings_option( 'uag_enable_google-recaptcha', 'disabled' ),
+				'recaptcha_type'                   => UAGB_Admin_Helper::get_admin_settings_option( 'uag_google-recaptcha-type', 'disabled' ),
+				'site_key_v2'                   => UAGB_Admin_Helper::get_admin_settings_option( 'uag_google-site-key-v2', 'disabled' ),
+				'secret_key_v2'                   => UAGB_Admin_Helper::get_admin_settings_option( 'uag_google-secret-key-v2', 'disabled' ),
+				'site_key_v3'                   => UAGB_Admin_Helper::get_admin_settings_option( 'uag_google-site-key-v3', 'disabled' ),
+				'secret_key_v3'                   => UAGB_Admin_Helper::get_admin_settings_option( 'uag_google-site-key-v3', 'disabled' ),
 			)
 		);
 		// To match the editor with frontend.

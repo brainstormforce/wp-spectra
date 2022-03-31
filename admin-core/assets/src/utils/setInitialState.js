@@ -22,6 +22,7 @@ const setInitialState = ( store ) => {
             enableMasonryExtension: data.enable_masonry_gallery,
 			enableResponsiveConditions: data.enable_block_responsive,
 			contentWidth: data.content_width,
+			enableReCaptcha: data.enable_recaptcha
         };
 
         store.dispatch( {type: 'UPDATE_INITIAL_STATE', payload: initialState} );
