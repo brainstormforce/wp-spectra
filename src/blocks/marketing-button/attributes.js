@@ -216,13 +216,13 @@ const attributes = {
 	prefixColor: {
 		type: 'string',
 		UAGCopyPaste: {
-			styleType: 'prefix-color'
+			styleType: 'desc-color'
 		}
 	},
 	prefixHoverColor: {
 		type: 'string',
 		UAGCopyPaste: {
-			styleType: 'prefix-hover-color'
+			styleType: 'desc-hover-color'
 		}
 	},
 
@@ -347,54 +347,54 @@ const attributes = {
 		type: 'boolean',
 		default: false,
 		UAGCopyPaste: {
-			styleType: 'prefix-load-google-font'
+			styleType: 'desc-load-google-font'
 		}
 	},
 	prefixFontFamily: {
 		type: 'string',
 		UAGCopyPaste: {
-			styleType: 'prefix-font-family'
+			styleType: 'desc-font-family'
 		},
 		default: 'Default',
 	},
 	prefixFontWeight: {
 		type: 'string',
 		UAGCopyPaste: {
-			styleType: 'prefix-font-weight'
+			styleType: 'desc-font-weight'
 		}
 	},
 	prefixFontStyle: {
 		type: 'string',
 		UAGCopyPaste: {
-			styleType: 'prefix-font-style'
+			styleType: 'desc-font-style'
 		}
 	},
 	// Prefix Font Size
 	prefixFontSize: {
 		type: 'number',
 		UAGCopyPaste: {
-			styleType: 'prefix-font-size'
+			styleType: 'desc-font-size'
 		},
 		default: 14,
 	},
 	prefixFontSizeType: {
 		type: 'string',
 		UAGCopyPaste: {
-			styleType: 'prefix-font-size-unit'
+			styleType: 'desc-font-size-unit'
 		},
 		default: 'px',
 	},
 	prefixFontSizeTablet: {
 		type: 'number',
 		UAGCopyPaste: {
-			styleType: 'prefix-font-size-tablet'
+			styleType: 'desc-font-size-tablet'
 		},
 		default: 14,
 	},
 	prefixFontSizeMobile: {
 		type: 'number',
 		UAGCopyPaste: {
-			styleType: 'prefix-font-size-mobile'
+			styleType: 'desc-font-size-mobile'
 		},
 		default: 14,
 	},
@@ -402,26 +402,26 @@ const attributes = {
 	prefixLineHeightType: {
 		type: 'string',
 		UAGCopyPaste: {
-			styleType: 'prefix-line-height-type'
+			styleType: 'desc-line-height-type'
 		},
 		default: 'em',
 	},
 	prefixLineHeight: {
 		type: 'number',
 		UAGCopyPaste: {
-			styleType: 'prefix-line-height'
+			styleType: 'desc-line-height'
 		}
 	},
 	prefixLineHeightTablet: {
 		type: 'number',
 		UAGCopyPaste: {
-			styleType: 'prefix-line-height-tablet'
+			styleType: 'desc-line-height-tablet'
 		}
 	},
 	prefixLineHeightMobile: {
 		type: 'number',
 		UAGCopyPaste: {
-			styleType: 'prefix-line-height-mobile'
+			styleType: 'desc-line-height-mobile'
 		}
 	},
 	// Icon Font Size
@@ -565,13 +565,13 @@ const attributes = {
 	prefixTransform: {
 		type: 'string',
 		UAGCopyPaste: {
-			styleType: 'prefix-transform'
+			styleType: 'desc-transform'
 		}
 	},
 	prefixDecoration: {
 		type: 'string',
 		UAGCopyPaste: {
-			styleType: 'prefix-decoration'
+			styleType: 'desc-decoration'
 		}
 	},
 	isPreview: {
