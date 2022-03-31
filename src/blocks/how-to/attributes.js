@@ -193,7 +193,7 @@ const attributes = {
 		type: 'number',
 		default: 15,
 		UAGCopyPaste: {
-			styleType: 'main-title-margin-bottom'
+			styleType: 'main-title-bottom-margin'
 		},
 	},
 	headFontFamily: {

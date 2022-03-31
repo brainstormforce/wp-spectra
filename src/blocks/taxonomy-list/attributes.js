@@ -411,13 +411,13 @@ const attributes = {   // eslint-disable-line no-unused-vars
 		type    : 'string',
 		default : 'Default',
 		UAGCopyPaste: {
-			styleType: 'desc-font-size-family'
+			styleType: 'desc-font-family'
 		},
 	},
 	countFontWeight            : {
 		type : 'string',
 		UAGCopyPaste: {
-			styleType: 'desc-font-size-weight'
+			styleType: 'desc-font-weight'
 		},
 	},
 	countFontStyle             : {
@@ -459,45 +459,45 @@ const attributes = {   // eslint-disable-line no-unused-vars
 	listFontSize               : {
 		type : 'number',
 		UAGCopyPaste: {
-			styleType: 'desc-list-font-size'
+			styleType: 'desc-font-size'
 		},
 	},
 	listFontSizeType           : {
 		type    : 'string',
 		default : 'px',
 		UAGCopyPaste: {
-			styleType: 'desc-list-font-size-type'
+			styleType: 'desc-font-size-type'
 		},
 	},
 	listFontSizeMobile         : {
 		type : 'number',
 		UAGCopyPaste: {
-			styleType: 'desc-list-font-size-mobile'
+			styleType: 'desc-font-size-mobile'
 		},
 	},
 	listFontSizeTablet         : {
 		type : 'number',
 		UAGCopyPaste: {
-			styleType: 'desc-list-font-size-tablet'
+			styleType: 'desc-font-size-tablet'
 		},
 	},
 	listFontFamily             : {
 		type    : 'string',
 		UAGCopyPaste: {
-			styleType: 'desc-list-font-family'
+			styleType: 'desc-font-family'
 		},
 		default : 'Default',
 	},
 	listFontWeight             : {
 		type : 'string',
 		UAGCopyPaste: {
-			styleType: 'desc-list-font-weight'
+			styleType: 'desc-font-weight'
 		},
 	},
 	listFontStyle              : {
 		type : 'string',
 		UAGCopyPaste: {
-			styleType: 'desc-list-font-style'
+			styleType: 'desc-font-style'
 		},
 	},
 	listLineHeightType         : {

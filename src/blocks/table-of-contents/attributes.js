@@ -556,7 +556,7 @@ const attributes = {
 	headingBottom: {
 		type: 'number',
 		UAGCopyPaste: {
-			styleType: 'main-title-margin-bottom'
+			styleType: 'main-title-bottom-margin'
 		},
 	},
 	paddingTypeDesktop: {
@@ -660,73 +660,73 @@ const attributes = {
 	loadGoogleFonts: {
 		type: 'boolean',
 		UAGCopyPaste: {
-			styleType: 'prefix-load-google-fonts'
+			styleType: 'desc-load-google-fonts'
 		},
 		default: false,
 	},
 	fontFamily: {
 		type: 'string',
 		UAGCopyPaste: {
-			styleType: 'prefix-font-family'
+			styleType: 'desc-font-family'
 		},
 		default: 'Default',
 	},
 	fontWeight: {
 		type: 'string',
 		UAGCopyPaste: {
-			styleType: 'prefix-font-weight'
+			styleType: 'desc-font-weight'
 		},
 	},
 	// Link Font Size
 	fontSize: {
 		type: 'number',
 		UAGCopyPaste: {
-			styleType: 'prefix-font-size'
+			styleType: 'desc-font-size'
 		},
 	},
 	fontSizeType: {
 		type: 'string',
 		default: 'px',
 		UAGCopyPaste: {
-			styleType: 'prefix-font-size-type'
+			styleType: 'desc-font-size-type'
 		},
 	},
 	fontSizeTablet: {
 		type: 'number',
 		UAGCopyPaste: {
-			styleType: 'prefix-font-size-tablet'
+			styleType: 'desc-font-size-tablet'
 		},
 	},
 	fontSizeMobile: {
 		type: 'number',
 		UAGCopyPaste: {
-			styleType: 'prefix-font-size-mobile'
+			styleType: 'desc-font-size-mobile'
 		},
 	},
 	// Link Line Height
 	lineHeightType: {
 		type: 'string',
 		UAGCopyPaste: {
-			styleType: 'prefix-line-height-type'
+			styleType: 'desc-line-height-type'
 		},
 		default: 'em',
 	},
 	lineHeight: {
 		type: 'number',
 		UAGCopyPaste: {
-			styleType: 'prefix-line-height'
+			styleType: 'desc-line-height'
 		},
 	},
 	lineHeightTablet: {
 		type: 'number',
 		UAGCopyPaste: {
-			styleType: 'prefix-line-height-tablet'
+			styleType: 'desc-line-height-tablet'
 		},
 	},
 	lineHeightMobile: {
 		type: 'number',
 		UAGCopyPaste: {
-			styleType: 'prefix-line-height-mobile'
+			styleType: 'desc-line-height-mobile'
 		},
 	},
 
@@ -816,20 +816,20 @@ const attributes = {
 	fontStyle: {
 		type: 'string',
 		UAGCopyPaste: {
-			styleType: 'prefix-font-style'
+			styleType: 'desc-font-style'
 		},
 		default: 'normal',
 	},
 	fontTransform: {
 		type: 'string',
 		UAGCopyPaste: {
-			styleType: 'prefix-transform'
+			styleType: 'desc-transform'
 		},
 	},
 	fontDecoration: {
 		type: 'string',
 		UAGCopyPaste: {
-			styleType: 'prefix-decoration'
+			styleType: 'desc-decoration'
 		},
 		default: 'underline'
 	},
