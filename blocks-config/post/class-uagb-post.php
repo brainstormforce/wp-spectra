@@ -911,6 +911,10 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 					'type'    => 'boolean',
 					'default' => false,
 				),
+				'taxDivider'                    => array(
+					'type'    => 'string',
+					'default' => ' , ',
+				),
 			);
 		}
 
@@ -1600,18 +1604,19 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 				'uagb-post__taxonomy',
 				$attributes['taxStyle'],
 			) : array( 'uagb-post__taxonomy' );
-			?>
-			<span class="<?php echo esc_html( implode( ' ', $wrap ) ); ?>">
-				<?php echo ( ! $attributes['displayPostTaxonomyAboveTitle'] ) ? '<span class="dashicons-tag dashicons"></span>' : ''; ?>
-				<?php echo ( $attributes['displayPostTaxonomyAboveTitle'] && $attributes['hideTaxonomyIcon'] ) ? '<span class="dashicons-tag dashicons"></span>' : ''; ?>
-				<?php
+
 				$terms_list = array();
 				foreach ( $terms as $key => $value ) {
 					// Get the URL of this category.
 					$category_link = get_category_link( $value->term_id );
-					array_push( $terms_list, '<a href="' . esc_url( $category_link ) . '">' . esc_html( $value->name ) . '</a>' );
+					echo sprintf( '<span class="%s">%s%s<a href="#%s">%s</a></span>',
+					esc_html( implode( ' ', $wrap ) ),
+					( ( ! $attributes['displayPostTaxonomyAboveTitle'] ) ? '<span class="dashicons-tag dashicons"></span>' : '' ),
+					( ( $attributes['displayPostTaxonomyAboveTitle'] && $attributes['hideTaxonomyIcon'] ) ? '<span class="dashicons-tag dashicons"></span>' : '' ),
+					esc_url( $category_link ),
+					esc_html( $value->name ) );
 				}
-				echo wp_kses_post( implode( ',&nbsp;', $terms_list ) );
+				echo ( $attributes['displayPostTaxonomyAboveTitle'] && 'default' === $attributes['taxStyle'] ) ? wp_kses_post( implode( '&nbsp;' . esc_html( $attributes['taxDivider'] ) . '&nbsp;', $terms_list ) ) : wp_kses_post( implode( ',&nbsp;', $terms_list ) );
 				?>
 			</span>
 			<?php

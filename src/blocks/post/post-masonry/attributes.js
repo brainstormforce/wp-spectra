@@ -769,6 +769,10 @@ const attributes = {
 		type    : 'string',
 		default : 'default',
 	},
+	taxDivider: {
+		type    : 'string',
+		default : ' , ',
+	},
 	displayPostTaxonomyAboveTitle                : {
 		type    : 'boolean',
 		default : false,

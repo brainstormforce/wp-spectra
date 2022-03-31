@@ -3,7 +3,7 @@ export const PostTaxonomy = ( props ) => {
 
 	const { post, categoriesList } = props;
 
-	const { taxStyle, displayPostTaxonomy, displayPostTaxonomyAboveTitle, hideTaxonomyIcon } = props.attributes;
+	const { taxStyle, displayPostTaxonomy, displayPostTaxonomyAboveTitle, hideTaxonomyIcon, taxDivider } = props.attributes;
 
 	const list = categoriesList;
 	const cat = post.categories;
@@ -26,7 +26,7 @@ export const PostTaxonomy = ( props ) => {
 					{ ( hideTaxonomyIcon && displayPostTaxonomyAboveTitle ) && ( <span className="dashicons-tag dashicons"></span> ) }
 					<div
 						dangerouslySetInnerHTML={ {
-							__html: categoriesName.join( ', ' ),
+							__html: categoriesName.join( ' ' + taxDivider + ' ' ),
 						} }
 					></div>
 				</span>

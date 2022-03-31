@@ -217,6 +217,7 @@ const Settings = ( props ) => {
 		tabletPaddingUnit,
 		postsOffset,
 		taxStyle,
+		taxDivider,
 		displayPostTaxonomyAboveTitle,
 		hideTaxonomyIcon,
 		highlightedTextColor,
@@ -933,6 +934,17 @@ const Settings = ( props ) => {
 						},
 					] }
 				/>
+				{ 'default' === taxStyle && (
+					<TextControl
+						label={ __( 'Taxonomy Divider', 'ultimate-addons-for-gutenberg' ) }
+						value={ taxDivider }
+						onChange={ ( value ) =>
+							setAttributes( {
+								taxDivider: value,
+							} )
+						}
+					/>
+				) }
 				</>
 				) }
 				</>
