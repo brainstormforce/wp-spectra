@@ -472,7 +472,7 @@ const Settings = ( props ) => {
 						setAttributes( { fieldBorderRadius: value } )
 					}
 					min={ 0 }
-					max={ 100 }
+					max={ 50 }
 					unit={ {
 						value: fieldBorderRadiusType,
 						label: 'fieldBorderRadiusType',
@@ -653,7 +653,7 @@ const Settings = ( props ) => {
 						setAttributes( { textAreaHeight: value } )
 					}
 					min={ 0 }
-					max={ 1000 }
+					max={ 200 }
 					displayUnit={ false }
 				/>
 			</UAGAdvancedPanelBody>
@@ -1046,7 +1046,7 @@ const Settings = ( props ) => {
 						setAttributes( { buttonBorderRadius: value } )
 					}
 					min={ 0 }
-					max={ 100 }
+					max={ 50 }
 					unit={ {
 						value: buttonBorderRadiusType,
 						label: 'buttonBorderRadiusType',
@@ -1164,7 +1164,7 @@ const Settings = ( props ) => {
 	const btnSetting = () => {
 		return (
 			<UAGAdvancedPanelBody
-				title={ __( 'Submit Button', 'ultimate-addons-for-gutenberg' ) }
+				title={ __( 'Submit', 'ultimate-addons-for-gutenberg' ) }
 				initialOpen={ false }
 			>
 				<MultiButtonsControl
@@ -1334,7 +1334,7 @@ const Settings = ( props ) => {
 						setAttributes( { fieldLabelSpacing: value } )
 					}
 					min={ 0 }
-					max={ 200 }
+					max={ 30 }
 					displayUnit={ false }
 				/>
 				<Range
@@ -1348,7 +1348,7 @@ const Settings = ( props ) => {
 						setAttributes( { fieldSpacing: value } )
 					}
 					min={ 0 }
-					max={ 200 }
+					max={ 50 }
 					displayUnit={ false }
 				/>
 				<SpacingControl
@@ -1606,7 +1606,7 @@ const Settings = ( props ) => {
 								setAttributes( { radioCheckSize: value } )
 							}
 							min={ 0 }
-							max={ 200 }
+							max={ 50 }
 							displayUnit={ false }
 						/>
 						<h2>
@@ -1761,7 +1761,7 @@ const Settings = ( props ) => {
 								} )
 							}
 							min={ 0 }
-							max={ 100 }
+							max={ 50 }
 							unit={ {
 								value: radioCheckBorderRadiusType,
 								label: 'radioCheckBorderRadiusType',
@@ -1793,7 +1793,7 @@ const Settings = ( props ) => {
 		return (
 			<UAGAdvancedPanelBody
 				title={ __(
-					'Success / Error Message',
+					'Success/Error Message',
 					'ultimate-addons-for-gutenberg'
 				) }
 				initialOpen={ false }
@@ -1987,7 +1987,7 @@ const Settings = ( props ) => {
 						setAttributes( { msgBorderRadius: value } )
 					}
 					min={ 0 }
-					max={ 100 }
+					max={ 50 }
 					unit={ {
 						value: msgBorderRadiusType,
 						label: 'msgBorderRadiusType',

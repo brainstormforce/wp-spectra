@@ -31,7 +31,7 @@ return array(
 	'paddingLink'         => '',
 	'borderWidth'         => '',
 	'borderRadius'        => '',
-	'borderStyle'         => 'none',
+	'borderStyle'         => 'solid',
 	'borderColor'         => '',
 	'borderHColor'        => '',
 	'color'               => '',

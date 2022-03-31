@@ -37,15 +37,6 @@ const InspectorTabs = ( props ) => {
 		sidebarPanel = tabContainer.current.closest( '.components-panel' );
 	} );
 
-	const observer = new IntersectionObserver( // eslint-disable-line no-undef
-		( [ e ] ) =>
-			e.target.classList.toggle(
-				'uagb-is-sticky',
-				e.intersectionRatio < 1
-			),
-		{ threshold: [ 1 ] }
-	);
-
 	const renderUAGTabsSettingsInOrder = () => {
 
 		// Inspector Tabs Priority Rendering Code. (Conflicts with 3rd Party plugin panels in Inspector Panel)
@@ -68,13 +59,7 @@ const InspectorTabs = ( props ) => {
 
 	// component did mount
 	useEffect( () => {
-		// sticky tabs menu
-		const container = document.querySelector(
-			'.uagb-inspector-tabs-container'
-		);
-		if ( container ) {
-			observer.observe( container );
-		}
+
 		renderUAGTabsSettingsInOrder();
 
 		// This code is to fix the side-effect of the editor responsive click settings panel refresh issue.

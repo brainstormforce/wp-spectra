@@ -9,8 +9,6 @@ import { InspectorControls } from '@wordpress/block-editor';
 
 import { ToggleControl, TextControl } from '@wordpress/components';
 
-
-
 import UAGAdvancedPanelBody from '@Components/advanced-panel-body';
 
 const Settings = ( props ) => {
@@ -23,11 +21,6 @@ const Settings = ( props ) => {
 	const nameInspectorControls = () => {
 		return (
 			<UAGAdvancedPanelBody initialOpen={ true }>
-				<ToggleControl
-					label={ __( 'Required', 'ultimate-addons-for-gutenberg' ) }
-					checked={ required }
-					onChange={ () => setAttributes( { required: ! required } ) }
-				/>
 				<TextControl
 					label="Placeholder"
 					value={ placeholder }
@@ -38,6 +31,11 @@ const Settings = ( props ) => {
 						'Placeholder',
 						'ultimate-addons-for-gutenberg'
 					) }
+				/>
+				<ToggleControl
+					label={ __( 'Required', 'ultimate-addons-for-gutenberg' ) }
+					checked={ required }
+					onChange={ () => setAttributes( { required: ! required } ) }
 				/>
 			</UAGAdvancedPanelBody>
 		);

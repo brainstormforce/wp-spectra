@@ -21,7 +21,7 @@ const Render = ( props ) => {
 	// Setup the attributes.
 	const {
 		className,
-		attributes: { tm_content, timelineItem },
+		attributes: { isPreview, tm_content, timelineItem },
 	} = props;
 
 	const getContentTimelineTemplate = useMemo( () => {
@@ -36,8 +36,9 @@ const Render = ( props ) => {
 
 		return childTimeline;
 	}, [ timelineItem, tm_content ] );
-
+	const previewImageData = `${ uagb_blocks_info.uagb_url }/admin/assets/preview-images/content-timeline.png`;
 	return (
+		isPreview ? <img width='100%' src={previewImageData} alt=''/> :
 		<div
 			className={ classnames(
 				className,

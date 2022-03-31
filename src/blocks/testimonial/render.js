@@ -30,6 +30,7 @@ const Render = ( props ) => {
 
 	// Setup the attributes.
 	const {
+		isPreview,
 		test_block,
 		imagePosition,
 		columns,
@@ -91,6 +92,7 @@ const Render = ( props ) => {
 		'arrows' === arrowDots || 'arrows_dots' === arrowDots ? true : false;
 
 	const settings = {
+		accessibility: false,
 		slidesToShow: columns,
 		slidesToScroll: 1,
 		autoplaySpeed,
@@ -122,7 +124,10 @@ const Render = ( props ) => {
 		],
 	};
 
+	const previewImageData = `${ uagb_blocks_info.uagb_url }/admin/assets/preview-images/testimonials.png`;
+
 	return (
+		isPreview ? <img width='100%' src={previewImageData} alt=''/> :
 		<div
 			className={ classnames(
 				className,

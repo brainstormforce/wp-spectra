@@ -28,7 +28,7 @@ $block_data = array(
 			'type' => 'js',
 		),
 	),
-	'priority'            => 5,
+	'priority'            => 20,
 	'dynamic_assets'      => array(
 		'dir' => 'inline-notice',
 	),

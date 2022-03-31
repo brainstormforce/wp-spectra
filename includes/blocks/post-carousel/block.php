@@ -33,7 +33,7 @@ $block_data = array(
 			'type' => 'css',
 		),
 	),
-	'priority'            => 1,
+	'priority'            => 17,
 	'static_css'          => 'post',
 	'dynamic_assets'      => array(
 		'dir' => 'post-carousel',

@@ -31,7 +31,11 @@ registerBlockType( 'uagb/blockquote', {
 	attributes,
 	edit,
 	save,
-	example: {},
+	example: {
+		attributes: {
+			isPreview: true,
+		}
+	},
 	deprecated,
 	transforms: {
 		from: [

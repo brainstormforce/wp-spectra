@@ -30,6 +30,7 @@ const Render = ( props ) => {
 		clientId,
 	} = props;
 	const {
+		isPreview,
 		tabsStyleD,
 		tabsStyleM,
 		tabsStyleT,
@@ -129,8 +130,11 @@ const Render = ( props ) => {
 			updateBlockAttributes( childBlockId, attrs )
 		);
 	};
+	const previewImageData = `${ uagb_blocks_info.uagb_url }/admin/assets/preview-images/tabs.png`;
+
 	return (
 		<>
+		{ isPreview ? <img width='100%' src={previewImageData} alt=''/> :
 			<div
 				className={ classnames(
 					`uagb-editor-preview-mode-${ deviceType.toLowerCase() }`,
@@ -179,7 +183,11 @@ const Render = ( props ) => {
 													index === tabHeaders.length
 												}
 											>
-												<Dashicon icon="arrow-left" />
+												{ ( tabsStyleD.includes( 'vstyle' ) && deviceType === 'Desktop' ) || ( tabsStyleT.includes( 'vstyle' ) && deviceType === 'Tablet' ) || ( ( tabsStyleM.includes( 'vstyle' ) || tabsStyleM.includes( 'stack' ) ) && deviceType === 'Mobile' ) ? (
+													<Dashicon icon="arrow-up" />
+												) :
+													<Dashicon icon="arrow-left" />
+												}
 											</span>
 										</Tooltip>
 									) }
@@ -208,7 +216,11 @@ const Render = ( props ) => {
 													index === tabHeaders.length
 												}
 											>
-												<Dashicon icon="arrow-right" />
+												{ ( tabsStyleD.includes( 'vstyle' ) && deviceType === 'Desktop' ) || ( tabsStyleT.includes( 'vstyle' ) && deviceType === 'Tablet' ) || ( ( tabsStyleM.includes( 'vstyle' ) || tabsStyleM.includes( 'stack' ) ) && deviceType === 'Mobile' ) ? (
+													<Dashicon icon="arrow-down" />
+												) :
+													<Dashicon icon="arrow-right" />
+												}
 											</span>
 										</Tooltip>
 									) }
@@ -298,6 +310,7 @@ const Render = ( props ) => {
 					/>
 				</div>
 			</div>
+}
 		</>
 	);
 };

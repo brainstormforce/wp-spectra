@@ -28,6 +28,7 @@ const Render = ( props ) => {
 	} = props;
 
 	const {
+		isPreview,
 		block_id,
 		align,
 		textAlign,
@@ -84,8 +85,9 @@ const Render = ( props ) => {
 			/>
 		</>
 	);
-
+	const previewImageData = `${ uagb_blocks_info.uagb_url }/admin/assets/preview-images/marketing-button.png`;
 	return (
+		isPreview ? <img width='100%' src={previewImageData} alt=''/> :
 		<div
 			className={ classnames(
 				className,
@@ -94,10 +96,11 @@ const Render = ( props ) => {
 				`uagb-marketing-btn__icon-${ iconPosition }`,
 				`uagb-editor-preview-mode-${ deviceType.toLowerCase() }`,
 				`uagb-block-${ block_id }`,
+				'wp-block-button'
 			) }
 		>
 				<a // eslint-disable-line jsx-a11y/anchor-is-valid
-				 className="uagb-marketing-btn__link">
+				 className="uagb-marketing-btn__link wp-block-button__link">
 						{ 'before' === iconPosition &&
 							<>
 							{ iconHTML }

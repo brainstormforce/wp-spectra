@@ -466,6 +466,12 @@ if ( ! class_exists( 'UAGB_Post_Timeline' ) ) {
 							'type'    => 'number',
 							'default' => 10,
 						),
+						'ctaBottomSpacing'        => array(
+							'type' => 'number',
+						),
+						'headTopSpacing'          => array(
+							'type' => 'number',
+						),
 						'iconSize'                => array(
 							'type'    => 'number',
 							'default' => 15,
@@ -624,6 +630,10 @@ if ( ! class_exists( 'UAGB_Post_Timeline' ) ) {
 						),
 						'ctaDecoration'           => array(
 							'type' => 'string',
+						),
+						'isPreview'               => array(
+							'type'    => 'boolean',
+							'default' => false,
 						),
 					),
 					'render_callback' => array( $this, 'post_timeline_callback' ),
