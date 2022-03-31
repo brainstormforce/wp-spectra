@@ -4,6 +4,8 @@ import { createHigherOrderComponent } from '@wordpress/compose';
 import { addFilter } from '@wordpress/hooks';
 import { InspectorControls } from '@wordpress/block-editor';
 import UAGAdvancedPanelBody from '@Components/advanced-panel-body';
+import { select } from '@wordpress/data';
+import { useEffect  } from '@wordpress/element';
 
 const { enableConditions, enableResponsiveConditions } = uagb_blocks_info;
 
@@ -169,6 +171,32 @@ const AdvancedControlsBlock = createHigherOrderComponent( ( BlockEdit ) => {
 		const excludeBlocks = uagb_blocks_info.uagb_exclude_blocks_from_extension;
 		const customBlocks = uagb_blocks_info.uagb_enable_extensions_for_blocks;
 		const blockPrefix = blockName.substring( 0, blockName.indexOf( '/' ) + 1 );
+		const { getSelectedBlock } = select( 'core/block-editor' );
+		let childBlocks = [];
+		if ( getSelectedBlock()?.innerBlocks ) {
+			childBlocks = getSelectedBlock().innerBlocks;
+		}
+		useEffect( () => {
+
+				let DisplayPanelBody = document.querySelector( '.uag-advance-panel-body-display' );
+				let ResponsivePanelBody = document.querySelector( '.uag-advance-panel-body-responsive' );
+				let MasonryPanelBody = document.querySelector( '.uag-advance-panel-body-masonry' );
+				if( DisplayPanelBody ){
+					const tabsParent = DisplayPanelBody.parentElement;
+					if( tabsParent ){
+						DisplayPanelBody = DisplayPanelBody ? DisplayPanelBody : '';
+						ResponsivePanelBody = ResponsivePanelBody ? ResponsivePanelBody : '';
+						MasonryPanelBody = MasonryPanelBody ? MasonryPanelBody : '';
+						if( tabsParent.lastChild.className.includes( 'components-panel__body is-opened' ) ){
+							tabsParent.prepend( tabsParent.lastChild, DisplayPanelBody, ResponsivePanelBody, MasonryPanelBody )
+						}
+
+					}
+				}
+
+		}, [childBlocks] );
+
+
 
 		return (
 			<>
@@ -292,3 +320,4 @@ function ApplyExtraClass( extraProps, blockType, attributes ) {
 		'uagb/apply-extra-class',
 		ApplyExtraClass
 	);
+
