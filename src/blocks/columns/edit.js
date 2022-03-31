@@ -142,10 +142,12 @@ const ColumnsComponent = ( props ) => {
 	};
 
 	const { variations, hasInnerBlocks } = props;
-
+	const previewImageData = `${ uagb_blocks_info.uagb_url }/admin/assets/preview-images/advanced-columns.png`;
 	if ( ! hasInnerBlocks ) {
-		
+
 		return (
+			props.attributes.isPreview ? <img width='100%' src={previewImageData} alt=''/> :
+			<>
 			<div className='uagb-columns-variation-picker'>
 				<BlockVariationPicker
 					icon={ '' }
@@ -160,6 +162,7 @@ const ColumnsComponent = ( props ) => {
 					}
 				/>
 			</div>
+			</>
 		);
 	}
 

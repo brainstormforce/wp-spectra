@@ -17,7 +17,7 @@ $block_data = array(
 	'description'      => __( 'This block allows you to add multiple buttons with a single block.', 'ultimate-addons-for-gutenberg' ),
 	'default'          => true,
 	'extension'        => false,
-	'priority'         => 5,
+	'priority'         => 37,
 	'dynamic_assets'   => array(
 		'dir' => 'buttons',
 	),

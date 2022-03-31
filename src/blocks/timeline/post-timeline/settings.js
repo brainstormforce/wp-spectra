@@ -3,6 +3,7 @@ import TypographyControl from '@Components/typography';
 import WebfontLoader from '@Components/typography/fontloader';
 import React from 'react';
 import { __ } from '@wordpress/i18n';
+import { decodeEntities } from '@wordpress/html-entities';
 import AdvancedPopColorControl from '@Components/color-control/advanced-pop-color-control.js';
 import Range from '@Components/range/Range.js';
 import InspectorTabs from '@Components/inspector-tabs/InspectorTabs.js';
@@ -27,8 +28,6 @@ import {
 	AlignmentToolbar,
 	BlockControls,
 } from '@wordpress/block-editor';
-
-
 
 import UAGAdvancedPanelBody from '@Components/advanced-panel-body';
 
@@ -137,7 +136,6 @@ const Settings = ( props ) => {
 		iconSize,
 		exerptLength,
 		borderRadius,
-		contentPadding,
 		iconFocus,
 		iconBgFocus,
 		stack,
@@ -187,7 +185,10 @@ const Settings = ( props ) => {
 		authorDecoration,
 		subHeadDecoration,
 		dateDecoration,
-		ctaDecoration
+		ctaDecoration,
+
+		ctaBottomSpacing,
+		headTopSpacing
 	} = attributes;
 
 	const onSelectPostType = ( value ) => {
@@ -214,7 +215,7 @@ const Settings = ( props ) => {
 		Object.keys( taxonomyList ).map( ( item ) => {
 			return taxonomyListOptions.push( {
 				value: taxonomyList[ item ].name,
-				label: taxonomyList[ item ].label,
+				label: decodeEntities( taxonomyList[ item ].label ),
 			} );
 		} );
 	}
@@ -223,7 +224,7 @@ const Settings = ( props ) => {
 		Object.keys( categoriesList ).map( ( item ) => {
 			return categoryListOptions.push( {
 				value: categoriesList[ item ].id,
-				label: categoriesList[ item ].name,
+				label: decodeEntities( categoriesList[ item ].name ),
 			} );
 		} );
 	}
@@ -862,7 +863,7 @@ const Settings = ( props ) => {
 				) }
 				<ToggleControl
 					label={ __(
-						'Open links in New Tab',
+						'Open link in New Tab',
 						'ultimate-addons-for-gutenberg'
 					) }
 					checked={ linkTarget }
@@ -1152,6 +1153,20 @@ const Settings = ( props ) => {
 						value: headDecoration,
 						label: 'headDecoration',
 					} }
+				/>
+				<Range
+					label={ __(
+						'Top Spacing',
+						'ultimate-addons-for-gutenberg'
+					) }
+					setAttributes={ setAttributes }
+					value={ headTopSpacing }
+					onChange={ ( value ) =>
+						setAttributes( { headTopSpacing: value } )
+					}
+					min={ 1 }
+					max={ 50 }
+					displayUnit={ false }
 				/>
 				<Range
 					label={ __(
@@ -1543,6 +1558,20 @@ const Settings = ( props ) => {
 						label: 'ctaDecoration',
 					} }
 				/>
+				<Range
+					label={ __(
+						'Bottom Spacing',
+						'ultimate-addons-for-gutenberg'
+					) }
+					setAttributes={ setAttributes }
+					value={ ctaBottomSpacing }
+					onChange={ ( value ) =>
+						setAttributes( { ctaBottomSpacing: value } )
+					}
+					min={ 1 }
+					max={ 50 }
+					displayUnit={ false }
+				/>
 			</UAGAdvancedPanelBody>
 		);
 	};
@@ -1568,20 +1597,6 @@ const Settings = ( props ) => {
 				title={ __( 'Spacing', 'ultimate-addons-for-gutenberg' ) }
 				initialOpen={ false }
 			>
-				<Range
-					label={ __(
-						'Content Padding',
-						'ultimate-addons-for-gutenberg'
-					) }
-					setAttributes={ setAttributes }
-					value={ contentPadding }
-					onChange={ ( value ) =>
-						setAttributes( { contentPadding: value } )
-					}
-					min={ 1 }
-					max={ 50 }
-					displayUnit={ false }
-				/>
 				<SpacingControl
 					{ ...props }
 					label={ __(

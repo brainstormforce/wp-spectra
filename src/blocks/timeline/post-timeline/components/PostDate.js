@@ -5,7 +5,7 @@ const PostDate = ( props ) => {
 
 	return (
 		<>
-			<time
+			<div
 				dateTime={ format( 'c', post.date_gmt ) }
 				className={ dateClass }
 				style={ {
@@ -15,7 +15,7 @@ const PostDate = ( props ) => {
 				{ attributes.displayPostDate && post.date_gmt && (
 					dateI18n( attributes.dateFormat, post.date_gmt )
 				) }
-			</time>
+			</div>
 		</>
 	);
 };

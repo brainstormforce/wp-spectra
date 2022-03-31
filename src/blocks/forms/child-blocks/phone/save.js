@@ -13,7 +13,7 @@ import { RichText } from '@wordpress/block-editor';
 export default function save( props ) {
 	const { attributes } = props;
 
-	const { block_id, phoneRequired, phoneName, pattern } = attributes;
+	const { block_id, phoneRequired, phoneName, pattern, selectPhoneCode } = attributes;
 
 	let placeholder = '';
 	if ( pattern === '[0-9]{3}-[0-9]{2}-[0-9]{3}' ) {
@@ -48,6 +48,7 @@ export default function save( props ) {
 	const isRequired = phoneRequired
 		? __( 'required', 'ultimate-addons-for-gutenberg' )
 		: '';
+
 	return (
 		<div
 			className={ classnames(
@@ -69,7 +70,7 @@ export default function save( props ) {
 				name={ `${ phoneName }[]` }
 			>
 				{ countryOptions.map( ( o, index ) => (
-					<option value={ o.props.value } key={ index }>
+					<option value={ o.props.value } key={ index } selected={o.props.value === selectPhoneCode}>
 						{ o.props.children }
 					</option>
 				) ) }

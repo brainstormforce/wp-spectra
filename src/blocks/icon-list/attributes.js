@@ -42,7 +42,9 @@ const attributes = {
 	align: {
 		type: 'string',
 		default: 'left',
-		isUAGStyle: true,
+		UAGCopyPaste: {
+			styleType: 'overall-alignment'
+		},
 	},
 	icon_count: {
 		type: 'number',
@@ -54,51 +56,71 @@ const attributes = {
 	},
 	gap: {
 		type: 'number',
-		isUAGStyle: true,
+		UAGCopyPaste: {
+			styleType: 'icon-gap'
+		},
 		default: 10,
 	},
 	inner_gap: {
 		type: 'number',
 		default: 15,
-		isUAGStyle: true,
+		UAGCopyPaste: {
+			styleType: 'icon-inner-gap'
+		},
 	},
 	iconPosition: {
 		type: 'string',
-		isUAGStyle: true,
+		UAGCopyPaste: {
+			styleType: 'icon-position'
+		},
 		default: 'middle',
 	},
 	size: {
 		type: 'number',
-		isUAGStyle: true,
+		UAGCopyPaste: {
+			styleType: 'icon-size'
+		},
 		default: 16,
 	},
 	sizeType: {
 		type: 'string',
-		isUAGStyle: true,
+		UAGCopyPaste: {
+			styleType: 'icon-size-type'
+		},
 		default: 'px',
 	},
 	sizeMobile: {
 		type: 'number',
-		isUAGStyle: true,
+		UAGCopyPaste: {
+			styleType: 'icon-size-mobile'
+		},
 	},
 	sizeTablet: {
 		type: 'number',
-		isUAGStyle: true,
+		UAGCopyPaste: {
+			styleType: 'icon-size-tablet'
+		},
 	},
 	bgSize: {
 		type: 'number',
-		isUAGStyle: true,
+		UAGCopyPaste: {
+			styleType: 'icon-bg-size'
+		},
 		default: 0,
 	},
 	border: {
 		type: 'number',
 		default: 0,
-		isUAGStyle: true,
+		UAGCopyPaste: {
+			styleType: 'icon-border-style'
+		},
 	},
 	borderRadius: {
 		type: 'number',
 		default: 0,
-		isUAGStyle: true,
+		UAGCopyPaste: {
+			styleType: 'icon-border-radius'
+		},
 	},
 	hideLabel: {
 		type: 'boolean',
@@ -106,75 +128,106 @@ const attributes = {
 	},
 	fontSize: {
 		type: 'number',
-		isUAGStyle: true,
+		UAGCopyPaste: {
+			styleType: 'main-title-font-size'
+		},
 	},
 	fontSizeType: {
 		type: 'string',
 		default: 'px',
-		isUAGStyle: true,
+		UAGCopyPaste: {
+			styleType: 'main-title-font-size-type'
+		},
 	},
 	fontSizeMobile: {
 		type: 'number',
-		isUAGStyle: true,
+		UAGCopyPaste: {
+			styleType: 'main-title-font-size-mobile'
+		},
 	},
 	fontSizeTablet: {
 		type: 'number',
-		isUAGStyle: true,
+		UAGCopyPaste: {
+			styleType: 'main-title-font-size-tablet'
+		},
 	},
 	fontFamily: {
 		type: 'string',
-		isUAGStyle: true,
+		UAGCopyPaste: {
+			styleType: 'main-title-font-family'
+		},
 		default: 'Default',
 	},
 	fontWeight: {
 		type: 'string',
-		isUAGStyle: true,
+		UAGCopyPaste: {
+			styleType: 'main-title-font-weight'
+		},
 	},
 	fontStyle: {
 		type: 'string',
-		isUAGStyle: true,
+		UAGCopyPaste: {
+			styleType: 'main-title-font-style'
+		},
 		default: 'normal',
 	},
 	fontTransform: {
 		type: 'string',
-		isUAGStyle: true,
+		UAGCopyPaste: {
+			styleType: 'main-title-transform'
+		},
 	},
 	fontDecoration: {
 		type: 'string',
-		isUAGStyle: true,
+		UAGCopyPaste: {
+			styleType: 'main-title-decoration'
+		},
 	},
 	lineHeightType: {
 		type: 'string',
-		isUAGStyle: true,
+		UAGCopyPaste: {
+			styleType: 'main-title-line-height-type'
+		},
 		default: 'em',
 	},
 	lineHeight: {
 		type: 'number',
-		isUAGStyle: true,
+		UAGCopyPaste: {
+			styleType: 'main-title-line-height'
+		},
 	},
 	lineHeightTablet: {
 		type: 'number',
-		isUAGStyle: true,
+		UAGCopyPaste: {
+
+			styleType: 'main-title-line-height-tablet'
+		},
 	},
 	lineHeightMobile: {
 		type: 'number',
-		isUAGStyle: true,
+		UAGCopyPaste: {
+			styleType: 'main-title-line-height-mobile'
+		},
 	},
 	loadGoogleFonts: {
 		type: 'boolean',
-		isUAGStyle: true,
+		UAGCopyPaste: {
+			styleType: 'main-title-load-google-fonts'
+		},
 		default: false,
 	},
 	icon_layout: {
 		type: 'string',
-		isUAGStyle: true,
 		default: 'vertical',
 	},
 	stack: {
 		type: 'string',
 		default: 'none',
-		isUAGStyle: true,
 	},
+	isPreview: {
+		type: 'boolean',
+		default: false,
+	}
 };
 
 export default attributes;

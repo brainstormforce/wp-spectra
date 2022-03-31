@@ -15,7 +15,7 @@
 	outline: none;
 }
 
-.settings_page_uag #wpcontent {
+.settings_page_spectra #wpcontent {
 	padding-left: 0;
 }
 
@@ -191,4 +191,19 @@
 
 .uag-dashboard-app .read-more a:hover {
 	color: #135e96;
+}
+
+.spectra-content-width-input-wrap {
+
+	> input {
+		border-top-right-radius: 0;
+		border-bottom-right-radius: 0;
+	}
+
+	> span {
+		border: 1px solid #8c8f94;
+		background-color: #fff;
+		color: #2c3338;
+		border-left-width: 0;
+	}
 }

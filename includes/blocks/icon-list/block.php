@@ -17,7 +17,7 @@ $block_data = array(
 	'description'      => __( 'This block allows you to place an image or icon in a list format.', 'ultimate-addons-for-gutenberg' ),
 	'default'          => true,
 	'extension'        => false,
-	'priority'         => 2,
+	'priority'         => 12,
 	'dynamic_assets'   => array(
 		'dir' => 'icon-list',
 	),

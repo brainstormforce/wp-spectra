@@ -120,7 +120,15 @@ if ( ! class_exists( 'UAGB_Admin' ) ) {
 				update_option( '__uagb_do_redirect', false );
 
 				if ( ! is_multisite() ) {
-					wp_safe_redirect( esc_url( admin_url( 'options-general.php?page=' . UAGB_SLUG ) ) );
+					wp_safe_redirect(
+						add_query_arg(
+							array(
+								'page' => UAGB_SLUG,
+								'spectra-activation-redirect' => true,
+							),
+							admin_url( 'options-general.php' )
+						)
+					);
 					exit();
 				}
 			}
@@ -151,7 +159,7 @@ if ( ! class_exists( 'UAGB_Admin' ) ) {
 				return;
 			}
 
-			$image_path = UAGB_URL . 'admin/assets/images/uagb_notice.svg';
+			$image_path = UAGB_URL . 'admin-core/assets/images/uag-logo.svg';
 
 			Astra_Notices::add_notice(
 				array(
@@ -159,7 +167,7 @@ if ( ! class_exists( 'UAGB_Admin' ) ) {
 					'type'                       => '',
 					'message'                    => sprintf(
 						'<div class="notice-image">
-							<img src="%1$s" class="custom-logo" alt="Ultimate Addons for Gutenberg" itemprop="logo"></div>
+							<img src="%1$s" class="custom-logo" alt="Spectra" itemprop="logo"></div>
 							<div class="notice-content">
 								<div class="notice-heading">
 									%2$s
@@ -180,7 +188,7 @@ if ( ! class_exists( 'UAGB_Admin' ) ) {
 								</div>
 							</div>',
 						$image_path,
-						__( 'Wow! The Ultimate Addons for Gutenberg has already powered over 5 pages on your website!', 'ultimate-addons-for-gutenberg' ),
+						__( 'Wow! The Spectra has already powered over 5 pages on your website!', 'ultimate-addons-for-gutenberg' ),
 						__( 'Would you please mind sharing your views and give it a 5 star rating on the WordPress repository?', 'ultimate-addons-for-gutenberg' ),
 						'https://wordpress.org/support/plugin/ultimate-addons-for-gutenberg/reviews/?filter=5#new-post',
 						__( 'Ok, you deserve it', 'ultimate-addons-for-gutenberg' ),
@@ -205,7 +213,7 @@ if ( ! class_exists( 'UAGB_Admin' ) ) {
 							'type'                       => 'warning',
 							'message'                    => sprintf(
 								/* translators: %s: html tags */
-								__( 'Ultimate Addons for Gutenberg requires&nbsp;%3$sBlock Editor%4$s. You can change your editor settings to Block Editor from&nbsp;%1$shere%2$s. Plugin is currently NOT RUNNING.', 'ultimate-addons-for-gutenberg' ),
+								__( 'Spectra requires&nbsp;%3$sBlock Editor%4$s. You can change your editor settings to Block Editor from&nbsp;%1$shere%2$s. Plugin is currently NOT RUNNING.', 'ultimate-addons-for-gutenberg' ),
 								'<a href="' . admin_url( 'options-writing.php' ) . '">',
 								'</a>',
 								'<strong>',
@@ -236,7 +244,7 @@ if ( ! class_exists( 'UAGB_Admin' ) ) {
 		 * @param array $plugins TOC plugins.
 		 */
 		public function toc_plugin( $plugins ) {
-			$plugins['ultimate-addons-for-gutenberg/ultimate-addons-for-gutenberg.php'] = 'Ultimate Addons for Gutenberg';
+			$plugins['ultimate-addons-for-gutenberg/ultimate-addons-for-gutenberg.php'] = 'Spectra';
 			return $plugins;
 		}
 

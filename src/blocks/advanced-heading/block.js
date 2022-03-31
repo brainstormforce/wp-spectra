@@ -28,15 +28,8 @@ registerBlockType( 'uagb/advanced-heading', {
 	},
 	example: {
 		attributes: {
-			headingTitle: __(
-				'Write a Heading',
-				'ultimate-addons-for-gutenberg'
-			),
-			headingDesc: __(
-				'Write a Description',
-				'ultimate-addons-for-gutenberg'
-			),
-		},
+			isPreview: true,
+		}
 	},
 	category: uagb_blocks_info.category,
 	attributes,

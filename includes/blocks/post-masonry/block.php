@@ -30,7 +30,7 @@ $block_data = array(
 			'type' => 'js',
 		),
 	),
-	'priority'            => 1,
+	'priority'            => 16,
 	'static_css'          => 'post',
 	'dynamic_assets'      => array(
 		'dir' => 'post-masonry',

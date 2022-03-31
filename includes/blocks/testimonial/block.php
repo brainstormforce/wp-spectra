@@ -25,7 +25,7 @@ $block_data = array(
 			'type' => 'js',
 		),
 	),
-	'priority'            => 3,
+	'priority'            => 26,
 	'dynamic_assets'      => array(
 		'dir' => 'testimonial',
 	),

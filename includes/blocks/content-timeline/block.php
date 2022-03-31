@@ -24,7 +24,7 @@ $block_data = array(
 			'type' => 'js',
 		),
 	),
-	'priority'            => 3,
+	'priority'            => 28,
 	'static_css'          => 'timeline',
 	'dynamic_assets'      => array(
 		'dir' => 'content-timeline',

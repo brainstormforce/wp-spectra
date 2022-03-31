@@ -124,7 +124,10 @@ function contentTimelineStyle( props ) {
 		authorDecoration,
 		subHeadDecoration,
 		dateDecoration,
-		ctaDecoration
+		ctaDecoration,
+
+		ctaBottomSpacing,
+		headTopSpacing
 	} = props.attributes;
 
 	const respSelectors = 'left';
@@ -144,6 +147,7 @@ function contentTimelineStyle( props ) {
 			'text-align': align,
 			'color': headingColor,
 			'margin-bottom': generateCSSUnit( headSpace, 'px' ),
+			'margin-top': generateCSSUnit( headTopSpacing, 'px' ),
 		},
 		' .uagb-timeline__heading a': {
 			'font-size': generateCSSUnit( headFontSize, headFontSizeType ),
@@ -237,6 +241,21 @@ function contentTimelineStyle( props ) {
 		},
 		' .uagb-timeline__field:not(:last-child)': {
 			'margin-bottom': generateCSSUnit( bottomMargin, marginUnit ),
+		},
+		' .uagb-timeline__date-hide.uagb-timeline__inner-date-new': {
+			'margin-bottom': generateCSSUnit( dateBottomspace, 'px' ),
+			'color': dateColor,
+			'font-size': generateCSSUnit( dateFontsize, dateFontsizeType ),
+			'font-family': dateFontFamily,
+			'font-weight': dateFontWeight,
+			'line-height': generateCSSUnit(
+				dateLineHeight,
+				dateLineHeightType
+			),
+			'font-style': dateFontStyle,
+			'text-decoration': dateDecoration,
+			'text-transform': dateTransform,
+			'text-align': align,
 		},
 		' .uagb-timeline__date-hide.uagb-timeline__date-inner': {
 			'margin-bottom': generateCSSUnit( dateBottomspace, 'px' ),
@@ -339,6 +358,7 @@ function contentTimelineStyle( props ) {
 			'font-style': ctaFontStyle,
 			'text-decoration': ctaDecoration,
 			'text-transform': ctaTransform,
+			'margin-bottom': generateCSSUnit( ctaBottomSpacing, 'px' ),
 		},
 	};
 
@@ -461,7 +481,7 @@ function contentTimelineStyle( props ) {
 		'.uagb-timeline__center-block.uagb-timeline__responsive-tablet a.uagb-timeline__image': {
 			'text-align': respSelectors,
 		},
-	
+
 
 		// CTA AUTHOR.
 		' .dashicons-admin-users': {

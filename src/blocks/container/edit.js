@@ -22,7 +22,7 @@ const Render = lazy( () =>
 import './style.scss';
 import { __ } from '@wordpress/i18n';
 
-import { withSelect, useDispatch, select } from '@wordpress/data';
+import { withSelect, useDispatch, select, dispatch } from '@wordpress/data';
 
 import { compose } from '@wordpress/compose';
 
@@ -54,6 +54,13 @@ const UAGBContainer = ( props ) => {
 	}
 
 	useEffect( () => {
+		const isBlockRootParent = 0 === select( 'core/block-editor' ).getBlockParents( props.clientId ).length;
+		const hasChildren = 0 !== select( 'core/block-editor' ).getBlocks( props.clientId ).length;
+
+		if ( isBlockRootParent ) {
+			props.setAttributes( { isBlockRootParent: true } );
+		}
+
 		// Assigning block_id in the attribute.
 		props.setAttributes( { block_id: props.clientId.substr( 0, 8 ) } );
 
@@ -64,36 +71,82 @@ const UAGBContainer = ( props ) => {
 		} else {
 			element = document.getElementById( 'block-' + props.clientId )
 		}
+		// Add Close Button for Variation Selector.
+		const variationPicker = element.querySelector( '.uagb-container-variation-picker .block-editor-block-variation-picker' );
+		const closeButton = document.createElement( 'button' );
+		closeButton.onclick = function() {
+			if ( props.defaultVariation.attributes ) {
+				props.setAttributes( props.defaultVariation.attributes );
+			}
+		};
+		closeButton.setAttribute( 'class', 'uagb-variation-close' );
+		closeButton.innerHTML = '×';
+		if ( variationPicker ) {
+			const variationPickerLabel = variationPicker.querySelector( '.components-placeholder__label' );
+			variationPicker.insertBefore( closeButton,variationPickerLabel );
+		}
 
 		if ( element ) {
 			element.classList.remove( `uagb-editor-preview-mode-desktop` );
 			element.classList.remove( `uagb-editor-preview-mode-tablet` );
 			element.classList.remove( `uagb-editor-preview-mode-mobile` );
 			element.classList.add( `uagb-editor-preview-mode-${ deviceType.toLowerCase() }` );
+			if ( ! hasChildren ) {
+				element.classList.remove( 'uagb-container-has-children' );
+			}
+			if ( hasChildren ) {
+				element.classList.add( 'uagb-container-has-children' );
+			}
+			if ( props.attributes.isBlockRootParent || isBlockRootParent ) {
+				element.dataset.align = props.attributes.contentWidth.split( 'align' )[1];
+			}
 		}
 
+		const descendants = select( 'core/block-editor' ).getBlocks( props.clientId );
+
+		if ( descendants.length !== props.attributes.blockDescendants.length ) {
+			props.setAttributes( { blockDescendants: descendants } );
+		}
 	}, [] );
 
 	useEffect( () => {
 
 		const iframeEl = document.querySelector( `iframe[name='editor-canvas']` );
+		const hasChildren = 0 !== select( 'core/block-editor' ).getBlocks( props.clientId ).length;
+
 		let element;
 		if( iframeEl ){
 			element = iframeEl.contentDocument.getElementById( 'block-' + props.clientId )
 		} else {
 			element = document.getElementById( 'block-' + props.clientId )
 		}
-		
+
 		if ( element ) {
 			element.classList.remove( `uagb-editor-preview-mode-desktop` );
 			element.classList.remove( `uagb-editor-preview-mode-tablet` );
 			element.classList.remove( `uagb-editor-preview-mode-mobile` );
 			element.classList.add( `uagb-editor-preview-mode-${deviceType.toLowerCase() }` );
+			if ( ! hasChildren ) {
+				element.classList.remove( 'uagb-container-has-children' );
+			}
+			if ( hasChildren ) {
+				element.classList.add( 'uagb-container-has-children' );
+			}
+			if ( props.attributes.isBlockRootParent ) {
+				element.dataset.align = props.attributes.contentWidth.split( 'align' )[1];
+			}
 		}
 
 		const blockStyling = styling( props );
 
         addBlockEditorDynamicStyles( 'uagb-container-style-' + props.clientId.substr( 0, 8 ), blockStyling );
+
+		const descendants = select( 'core/block-editor' ).getBlocks( props.clientId );
+
+		if ( descendants.length !== props.attributes.blockDescendants.length ) {
+			props.setAttributes( { blockDescendants: descendants } );
+		}
+
 	}, [ props ] );
 
 	useEffect( () => {
@@ -104,7 +157,7 @@ const UAGBContainer = ( props ) => {
 		} else {
 			element = document.getElementById( 'block-' + props.clientId )
 		}
-		
+
 		if ( element ) {
 			element.classList.remove( `uagb-editor-preview-mode-desktop` );
 			element.classList.remove( `uagb-editor-preview-mode-tablet` );
@@ -115,7 +168,7 @@ const UAGBContainer = ( props ) => {
 		const blockStyling = styling( props );
 
         addBlockEditorDynamicStyles( 'uagb-container-style-' + props.clientId.substr( 0, 8 ), blockStyling );
-		
+
 	}, [ deviceType ] );
 
 	const blockVariationPickerOnSelect = (
@@ -144,27 +197,59 @@ const UAGBContainer = ( props ) => {
 		);
 	};
 
+	useEffect( ()=>{
+
+		const {
+			blockDescendants
+		} = props.attributes;
+
+		let currentDirection = 'row';
+
+		if ( props.attributes[ 'direction' + deviceType ].split( '-' )[0] ) {
+
+			currentDirection = props.attributes[ 'direction' + deviceType ].split( '-' )[0];
+		}
+		const childColumnsWidth = ( 100 / blockDescendants.length );
+
+		if ( 'row' === currentDirection ) {
+			blockDescendants.map( ( child ) => {
+				if ( ! child.attributes.widthSetByUser ) {
+					dispatch( 'core/block-editor' ).updateBlockAttributes( child.clientId, {
+						[`width${deviceType}`] : childColumnsWidth,
+					} );
+				}
+				return child;
+			} );
+		}
+
+	}, [props.attributes.blockDescendants] );
+
 	const { variations } = props;
 
-	const { variationSelected } = props.attributes;
+	const { variationSelected, isPreview } = props.attributes;
+
+	const previewImageData = `${ uagb_blocks_info.uagb_url }/admin/assets/preview-images/container.png`;
 
 	if ( ! variationSelected && 0 === select( 'core/block-editor' ).getBlockParents( props.clientId ).length ) {
-		
+
 		return (
+			isPreview ? <img width='100%' src={previewImageData} alt=''/> :
+			<>
 			<div className='uagb-container-variation-picker'>
 				<BlockVariationPicker
 					icon={ '' }
-					label={ uagb_blocks_info.blocks[ 'uagb/container' ].title }
-					instructions={ __(
-						'Select a variation to start with.',
+					label={ __(
+						'Select a Layout',
 						'ultimate-addons-for-gutenberg'
 					) }
+					instructions={ false }
 					variations={ variations }
 					onSelect={ ( nextVariation ) =>
 						blockVariationPickerOnSelect( nextVariation )
 					}
 				/>
 			</div>
+			</>
 		);
 	}
 

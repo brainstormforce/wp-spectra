@@ -21,7 +21,11 @@ registerBlockType( 'uagb/review', {
 		__( 'schema', 'ultimate-addons-for-gutenberg' ),
 		__( 'uag', 'ultimate-addons-for-gutenberg' ),
 	],
-	example: {},
+	example: {
+		attributes: {
+			isPreview: true,
+		}
+	},
 	supports: {
 		anchor: true,
 	},

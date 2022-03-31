@@ -139,10 +139,10 @@ const UAGBFormsEdit = ( props ) => {
 			formscope = mainDiv.getElementsByClassName( 'uagb-forms__outer-wrap' )
 		} else {
 			mainDiv = document.getElementById( 'block-' + id )
-			formscope = mainDiv.getElementsByClassName( 'uagb-forms__outer-wrap' )
+			formscope = mainDiv?.getElementsByClassName( 'uagb-forms__outer-wrap' )
 		}
 
-		if ( null !== formscope[ 0 ] && undefined !== formscope[ 0 ] ) {
+		if ( formscope && formscope[ 0 ] ) {
 			const editorwrap = formscope[ 0 ].children;
 			const formInnerWrap = editorwrap[ 0 ].children;
 			const editorBlockWrap = formInnerWrap[ 0 ].getElementsByClassName(
@@ -197,12 +197,13 @@ const UAGBFormsEdit = ( props ) => {
 			}
 		}
 	} );
-
+const previewImageData = `${ uagb_blocks_info.uagb_url }/admin/assets/preview-images/form.png`;
 	if ( ! hasInnerBlocks ) {
 		return (
 			<>
+			{ props.attributes.isPreview ? <img width='100%' src={previewImageData} alt=''/> :
 				<__experimentalBlockVariationPicker
-					icon={ UAGB_Block_Icons.columns }
+					icon={ UAGB_Block_Icons.forms }
 					label={ uagb_blocks_info.blocks[ 'uagb/forms' ].title }
 					instructions={ __(
 						'Select a variation to start with.',
@@ -215,6 +216,7 @@ const UAGBFormsEdit = ( props ) => {
 					}
 					className="uagb-forms-variations"
 				/>
+	}
 			</>
 		);
 	}

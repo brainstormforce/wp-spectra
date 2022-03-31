@@ -313,6 +313,7 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 
 			// Block type is grid/masonry/carousel/timeline.
 			$query_args = array(
+				'offset'              => ( isset( $attributes['postsOffset'] ) ) ? $attributes['postsOffset'] : 0,
 				'posts_per_page'      => ( isset( $attributes['postsToShow'] ) ) ? $attributes['postsToShow'] : 6,
 				'post_status'         => 'publish',
 				'post_type'           => ( isset( $attributes['postType'] ) ) ? $attributes['postType'] : 'post',

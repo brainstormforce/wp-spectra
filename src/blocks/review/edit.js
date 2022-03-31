@@ -128,6 +128,7 @@ const ReviewComponent = ( props ) => {
 		operatingSystem,
 		datecreated,
 		directorname,
+		isPreview,
 	} = attributes;
 
 	if ( block_id === '' ) {
@@ -149,7 +150,10 @@ const ReviewComponent = ( props ) => {
 		} );
 	}
 
+		const previewImageData = `${ uagb_blocks_info.uagb_url }/admin/assets/preview-images/review.png`;
+
 	return (
+		isPreview ? <img width='100%' src={previewImageData} alt=''/> :
 		<>
 			<SchemaNotices
 				enableSchema={ enableSchema }
@@ -206,15 +210,15 @@ export default compose(
 	withSelect( ( ownProps ) => {
 
 		const newAverage =
-			ownProps.attributes.parts
+			ownProps.attributes?.parts
 				.map( ( i ) => i.value )
 				.reduce( ( total, v ) => total + v ) /
-			ownProps.attributes.parts.length;
+			ownProps.attributes?.parts.length;
 		let itemtype = '';
 
 		if (
 			[ 'Product', 'SoftwareApplication', 'Book' ].includes(
-				ownProps.attributes.itemType
+				ownProps.attributes?.itemType
 			)
 		) {
 			itemtype =
@@ -223,62 +227,62 @@ export default compose(
 					? ownProps.attributes.itemSubtype
 					: ownProps.attributes.itemType;
 		} else {
-			itemtype = ownProps.attributes.itemType;
+			itemtype = ownProps.attributes?.itemType;
 		}
 
 		const jsonData = {
 			'@context': 'https://schema.org/',
 			'@type': 'Review',
-			'reviewBody': ownProps.attributes.summaryDescription,
-			'description': ownProps.attributes.rContent,
+			'reviewBody': ownProps.attributes?.summaryDescription,
+			'description': ownProps.attributes?.rContent,
 			'itemReviewed': [],
 			'reviewRating': {
 				'@type': 'Rating',
 				'ratingValue': newAverage,
 				'worstRating': '0',
-				'bestRating': ownProps.attributes.starCount,
+				'bestRating': ownProps.attributes?.starCount,
 			},
 			'author': {
 				'@type': 'Person',
-				'name': ownProps.attributes.rAuthor,
+				'name': ownProps.attributes?.rAuthor,
 			},
-			'publisher': ownProps.attributes.reviewPublisher,
-			'datePublished': ownProps.attributes.datepublish,
-			'url': ownProps.attributes.ctaLink,
+			'publisher': ownProps.attributes?.reviewPublisher,
+			'datePublished': ownProps.attributes?.datepublish,
+			'url': ownProps.attributes?.ctaLink,
 		};
 
-		switch ( ownProps.attributes.itemType ) {
+		switch ( ownProps.attributes?.itemType ) {
 			case 'Book':
 				jsonData.itemReviewed = {
 					'@type': itemtype,
-					'name': ownProps.attributes.rTitle,
-					'description': ownProps.attributes.rContent,
+					'name': ownProps.attributes?.rTitle,
+					'description': ownProps.attributes?.rContent,
 					'image': [],
-					'author': ownProps.attributes.rAuthor,
-					'isbn': ownProps.attributes.isbn,
+					'author': ownProps.attributes?.rAuthor,
+					'isbn': ownProps.attributes?.isbn,
 				};
 				break;
 
 			case 'Course':
 				jsonData.itemReviewed = {
-					'@type': ownProps.attributes.itemType,
-					'name': ownProps.attributes.rTitle,
-					'description': ownProps.attributes.rContent,
+					'@type': ownProps.attributes?.itemType,
+					'name': ownProps.attributes?.rTitle,
+					'description': ownProps.attributes?.rContent,
 					'image': [],
-					'provider': ownProps.attributes.provider,
+					'provider': ownProps.attributes?.provider,
 				};
 				break;
 
 			case 'Product':
 				jsonData.itemReviewed = {
 					'@type': itemtype,
-					'name': ownProps.attributes.rTitle,
-					'description': ownProps.attributes.rContent,
+					'name': ownProps.attributes?.rTitle,
+					'description': ownProps.attributes?.rContent,
 					'image': [],
-					'sku': ownProps.attributes.sku,
+					'sku': ownProps.attributes?.sku,
 					'brand': {
 						'@type': 'Brand',
-						'name': ownProps.attributes.brand,
+						'name': ownProps.attributes?.brand,
 					},
 					'offers': [],
 				};
@@ -286,12 +290,12 @@ export default compose(
 
 			case 'Movie':
 				jsonData.itemReviewed = {
-					'@type': ownProps.attributes.itemType,
-					'name': ownProps.attributes.rTitle,
-					'dateCreated': ownProps.attributes.datecreated,
+					'@type': ownProps.attributes?.itemType,
+					'name': ownProps.attributes?.rTitle,
+					'dateCreated': ownProps.attributes?.datecreated,
 					'director': {
 						'@type': 'Person',
-						'name': ownProps.attributes.directorname,
+						'name': ownProps.attributes?.directorname,
 					},
 				};
 				break;
@@ -299,14 +303,14 @@ export default compose(
 			case 'SoftwareApplication':
 				jsonData.itemReviewed = {
 					'@type': itemtype,
-					'name': ownProps.attributes.rTitle,
-					'applicationCategory': ownProps.attributes.appCategory,
-					'operatingSystem': ownProps.attributes.operatingSystem,
+					'name': ownProps.attributes?.rTitle,
+					'applicationCategory': ownProps.attributes?.appCategory,
+					'operatingSystem': ownProps.attributes?.operatingSystem,
 					'offers': {
-						'@type': ownProps.attributes.offerType,
-						'price': ownProps.attributes.offerPrice,
-						'url': ownProps.attributes.ctaLink,
-						'priceCurrency': ownProps.attributes.offerCurrency,
+						'@type': ownProps.attributes?.offerType,
+						'price': ownProps.attributes?.offerPrice,
+						'url': ownProps.attributes?.ctaLink,
+						'priceCurrency': ownProps.attributes?.offerCurrency,
 					},
 				};
 				break;
@@ -315,11 +319,11 @@ export default compose(
 				break;
 		}
 
-		if ( ownProps.attributes.mainimage ) {
+		if ( ownProps.attributes?.mainimage ) {
 			jsonData.itemReviewed.image = ownProps.attributes.mainimage.url;
 		}
 
-		if ( ownProps.attributes.itemType === 'Product' ) {
+		if ( ownProps.attributes?.itemType === 'Product' ) {
 			jsonData.itemReviewed[ ownProps.attributes.identifierType ] =
 				ownProps.attributes.identifier;
 			jsonData.itemReviewed.offers = {

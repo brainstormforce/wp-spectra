@@ -78,7 +78,7 @@ if ( ! class_exists( 'UAGB_Loader' ) ) {
 			define( 'UAGB_VER', '2.0.0-beta.1' );
 			define( 'UAGB_MODULES_DIR', UAGB_DIR . 'modules/' );
 			define( 'UAGB_MODULES_URL', UAGB_URL . 'modules/' );
-			define( 'UAGB_SLUG', 'uag' );
+			define( 'UAGB_SLUG', 'spectra' );
 			define( 'UAGB_URI', trailingslashit( 'https://ultimategutenberg.com/' ) );
 
 			if ( ! defined( 'UAGB_TABLET_BREAKPOINT' ) ) {
@@ -283,7 +283,7 @@ if ( ! class_exists( 'UAGB_Loader' ) ) {
 
 			$class = 'notice notice-error';
 			/* translators: %s: html tags */
-			$message = sprintf( __( 'The %1$sUltimate Addon for Gutenberg%2$s plugin requires %1$sGutenberg%2$s plugin installed & activated.', 'ultimate-addons-for-gutenberg' ), '<strong>', '</strong>' );
+			$message = sprintf( __( 'The %1$sSpectra%2$s plugin requires %1$sGutenberg%2$s plugin installed & activated.', 'ultimate-addons-for-gutenberg' ), '<strong>', '</strong>' );
 
 			$action_url   = wp_nonce_url( self_admin_url( 'update.php?action=install-plugin&plugin=gutenberg' ), 'install-plugin_gutenberg' );
 			$button_label = __( 'Install Gutenberg', 'ultimate-addons-for-gutenberg' );
