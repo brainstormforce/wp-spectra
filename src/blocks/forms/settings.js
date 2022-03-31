@@ -1405,7 +1405,47 @@ const Settings = ( props ) => {
 			</UAGAdvancedPanelBody>
 		);
 	};
+	const googleReCaptcha = () => {
+		return (
+			<UAGAdvancedPanelBody
+				title={ __(
+					'Google reCAPTCHA',
+					'ultimate-addons-for-gutenberg'
+				) }
+				initialOpen={ false }
+			>
+				<p className="uagb-form-notice">
+					{ __(
+						'P.S. Note that If you are using two forms on the same page with the different reCAPTCHA versions (V2 checkbox and V3), it will create conflicts between the versions. Kindly avoid using different versions on same page. ',
+						'ultimate-addons-for-gutenberg'
+					) }
+				</p>
 
+				<ToggleControl
+					label={ __(
+						'Enable reCAPTCHA ',
+						'ultimate-addons-for-gutenberg'
+					) }
+					checked={ reCaptchaEnable }
+					onChange={ () =>
+						setAttributes( {
+							reCaptchaEnable: ! reCaptchaEnable,
+						} )
+					}
+				/>
+				<h2> { __( 'Know More', 'ultimate-addons-for-gutenberg' ) }</h2>
+				<ExternalLink href="https://www.google.com/recaptcha/admin/create">
+					{ __( 'Get Keys', 'ultimate-addons-for-gutenberg' ) }
+				</ExternalLink>
+				<ExternalLink href="https://developers.google.com/recaptcha/intro">
+					{ __(
+						' | Documentation',
+						'ultimate-addons-for-gutenberg'
+					) }
+				</ExternalLink>
+			</UAGAdvancedPanelBody>
+		);
+	};
 	let loadsubmittextGoogleFonts;
 
 	if ( submitTextloadGoogleFonts === true ) {
@@ -1464,6 +1504,7 @@ const Settings = ( props ) => {
 						{ presetSettings() }
 						{ generalSettings() }
 						{ afterSubmitActions() }
+						{ googleReCaptcha() }
 					</InspectorTab>
 					<InspectorTab { ...UAGTabs.style }>
 						{ labelSettings() }
