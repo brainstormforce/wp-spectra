@@ -14,6 +14,7 @@ import PreloadLocalFonts from '@DashboardApp/pages/settings/PreloadLocalFonts';
 import CollapsePanels from '@DashboardApp/pages/settings/CollapsePanels';
 import CopyPasteStyles from '@DashboardApp/pages/settings/CopyPasteStyles';
 import ContentWidth from '@DashboardApp/pages/settings/ContentWidth';
+import ComingSoon from '@DashboardApp/pages/settings/ComingSoon';
 import SettingsSkeleton from '@DashboardApp/pages/settings/SettingsSkeleton';
 import { Link, useLocation } from 'react-router-dom';
 import{ useEffect } from 'react';
@@ -34,6 +35,7 @@ const Settings = () => {
         { name: __( 'Templates', 'ultimate-addons-for-gutenberg' ), slug: 'templates', icon: SettingsIcons.templates },
         { name: __( 'Version Control', 'ultimate-addons-for-gutenberg' ), slug: 'version-control', icon: SettingsIcons['version-control'] },
         { name: __( 'Performance', 'ultimate-addons-for-gutenberg' ), slug: 'fonts-performance', icon: SettingsIcons['fonts-performance'] },
+		{ name: __( 'Coming Soon', 'ultimate-addons-for-gutenberg' ), slug: 'coming-soon', icon: SettingsIcons['global-settings'] },
     ];
 
 	useEffect( () => {
@@ -106,6 +108,12 @@ const Settings = () => {
                             <PreloadLocalFonts/>
                         </>
                     }
+					{
+						'coming-soon' === activeSettingsNavigationTab &&
+						<>
+							<ComingSoon/>
+						</>
+					}
                 </div>
             </div>
         </main>

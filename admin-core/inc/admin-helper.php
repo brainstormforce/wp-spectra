@@ -37,7 +37,6 @@ class Admin_Helper {
 	 * @return array.
 	 */
 	public static function get_common_settings() {
-
 		$uag_versions   = self::get_rollback_versions_options();
 		$changelog_data = self::get_changelog_feed_data();
 		$content_width  = \UAGB_Admin_Helper::get_global_content_width();
@@ -57,6 +56,8 @@ class Admin_Helper {
 			'collapse_panels'                    => \UAGB_Admin_Helper::get_admin_settings_option( 'uag_collapse_panels', 'enabled' ),
 			'copy_paste'                         => \UAGB_Admin_Helper::get_admin_settings_option( 'uag_copy_paste', 'enabled' ),
 			'preload_local_fonts'                => \UAGB_Admin_Helper::get_admin_settings_option( 'uag_preload_local_fonts', 'disabled' ),
+			'enable_coming_soon_mode'            => \UAGB_Admin_Helper::get_admin_settings_option( 'uag_enable_coming_soon_mode', 'disabled' ),
+			'coming_soon_page'                   => \UAGB_Admin_Helper::get_admin_settings_option( 'uag_coming_soon_page', '' ),
 			'uag_previous_versions'              => $uag_versions,
 			'changelog_data'                     => $changelog_data,
 			'content_width'                      => $content_width,
