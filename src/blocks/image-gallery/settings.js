@@ -241,116 +241,43 @@ const Settings = ( props ) => {
 		// First Default the Pagination for Carousel Only...
 		layoutType === 'carousel'
 			? setAttributes( { feedPagination: true, paginateUseArrows: true, paginateUseDots: true } )
-			:  setAttributes( { feedPagination: false, gridPageNumber: 1 } );
-		// Then Reset the Gaps.
-		// switch ( layoutType ) {
-		// 	case 'grid':
-		// 		if ( feedLayout !== 'grid'  ){
-		// 			setAttributes( {
-		// 				gridPostGap: gridPostGapUnit === 'em'
-		// 					? Math.max( gridPostGap + 0.5, 0 )
-		// 					: gridPostGap,
-		// 				gridPostGapTab: gridPostGapUnitTab === 'em'
-		// 					? Math.max( gridPostGapTab + 0.5, 0 )
-		// 					: gridPostGapTab,
-		// 				gridPostGapMob: gridPostGapUnitMob === 'em'
-		// 					? Math.max( gridPostGapMob + 0.5, 0 )
-		// 					: gridPostGapMob,
-		// 				feedMarginTop: feedMarginUnit === 'em'
-		// 					? Math.max( feedMarginTop + 0.5, 0 )
-		// 					: feedMarginTop,
-		// 				feedMarginRight: feedMarginUnit === 'em'
-		// 					? Math.max( feedMarginRight + 0.5, 0 )
-		// 					: feedMarginRight,
-		// 				feedMarginBottom: feedMarginUnit === 'em'
-		// 					? Math.max( feedMarginBottom + 0.5, 0 )
-		// 					: feedMarginBottom,
-		// 				feedMarginLeft: feedMarginUnit === 'em'
-		// 					? Math.max( feedMarginLeft + 0.5, 0 )
-		// 					: feedMarginLeft,
-		// 				feedMarginTopTab: feedMarginUnitTab === 'em'
-		// 					? Math.max( feedMarginTopTab + 0.5, 0 )
-		// 					: feedMarginTopTab,
-		// 				feedMarginRightTab: feedMarginUnitTab === 'em'
-		// 					? Math.max( feedMarginRightTab + 0.5, 0 )
-		// 					: feedMarginRightTab,
-		// 				feedMarginBottomTab: feedMarginUnitTab === 'em'
-		// 					? Math.max( feedMarginBottomTab + 0.5, 0 )
-		// 					: feedMarginBottomTab,
-		// 				feedMarginLeftTab: feedMarginUnitTab === 'em'
-		// 					? Math.max( feedMarginLeftTab + 0.5, 0 )
-		// 					: feedMarginLeftTab,
-		// 				feedMarginTopMob: feedMarginUnitMob === 'em'
-		// 					? Math.max( feedMarginTopMob + 0.5, 0 )
-		// 					: feedMarginTopMob,
-		// 				feedMarginRightMob: feedMarginUnitMob === 'em'
-		// 					? Math.max( feedMarginRightMob + 0.5, 0 )
-		// 					: feedMarginRightMob,
-		// 				feedMarginBottomMob: feedMarginUnitMob === 'em'
-		// 					? Math.max( feedMarginBottomMob + 0.5, 0 )
-		// 					: feedMarginBottomMob,
-		// 				feedMarginLeftMob: feedMarginUnitMob === 'em'
-		// 					? Math.max( feedMarginLeftMob + 0.5, 0 )
-		// 					: feedMarginLeftMob,
-		// 			} );
-		// 		}
-		// 		break;
-		// 	case 'masonry':
-		// 	case 'carousel':
-		// 	case 'tiled':
-		// 		if ( feedLayout === 'grid' ){
-		// 			setAttributes( {
-		// 				gridPostGap: gridPostGapUnit === 'em'
-		// 					? Math.max( gridPostGap - 0.5, 0 )
-		// 					: gridPostGap,
-		// 				gridPostGapTab: gridPostGapUnitTab === 'em'
-		// 					? Math.max( gridPostGapTab - 0.5, 0 )
-		// 					: gridPostGapTab,
-		// 				gridPostGapMob: gridPostGapUnitMob === 'em'
-		// 					? Math.max( gridPostGapMob - 0.5, 0 )
-		// 					: gridPostGapMob,
-		// 				feedMarginTop: feedMarginUnit === 'em'
-		// 					? Math.max( feedMarginTop - 0.5, 0 )
-		// 					: feedMarginTop,
-		// 				feedMarginRight: feedMarginUnit === 'em'
-		// 					? Math.max( feedMarginRight - 0.5, 0 )
-		// 					: feedMarginRight,
-		// 				feedMarginBottom: feedMarginUnit === 'em'
-		// 					? Math.max( feedMarginBottom - 0.5, 0 )
-		// 					: feedMarginBottom,
-		// 				feedMarginLeft: feedMarginUnit === 'em'
-		// 					? Math.max( feedMarginLeft - 0.5, 0 )
-		// 					: feedMarginLeft,
-		// 				feedMarginTopTab: feedMarginUnitTab === 'em'
-		// 					? Math.max( feedMarginTopTab - 0.5, 0 )
-		// 					: feedMarginTopTab,
-		// 				feedMarginRightTab: feedMarginUnitTab === 'em'
-		// 					? Math.max( feedMarginRightTab - 0.5, 0 )
-		// 					: feedMarginRightTab,
-		// 				feedMarginBottomTab: feedMarginUnitTab === 'em'
-		// 					? Math.max( feedMarginBottomTab - 0.5, 0 )
-		// 					: feedMarginBottomTab,
-		// 				feedMarginLeftTab: feedMarginUnitTab === 'em'
-		// 					? Math.max( feedMarginLeftTab - 0.5, 0 )
-		// 					: feedMarginLeftTab,
-		// 				feedMarginTopMob: feedMarginUnitMob === 'em'
-		// 					? Math.max( feedMarginTopMob - 0.5, 0 )
-		// 					: feedMarginTopMob,
-		// 				feedMarginRightMob: feedMarginUnitMob === 'em'
-		// 					? Math.max( feedMarginRightMob - 0.5, 0 )
-		// 					: feedMarginRightMob,
-		// 				feedMarginBottomMob: feedMarginUnitMob === 'em'
-		// 					? Math.max( feedMarginBottomMob - 0.5, 0 )
-		// 					: feedMarginBottomMob,
-		// 				feedMarginLeftMob: feedMarginUnitMob === 'em'
-		// 					? Math.max( feedMarginLeftMob - 0.5, 0 )
-		// 					: feedMarginLeftMob,
-		// 			} );
-		// 		}
-		// 		break;
-		// }
+			: setAttributes( { feedPagination: false, gridPageNumber: 1 } );
 		setAttributes( { feedLayout: layoutType } );
+		// Next Disable Bar Outside Image for Grid and Tiles...
+		console.log( captionDisplayType );
+		if ( ( layoutType === 'grid' || layoutType === 'tiled' ) && captionDisplayType === 'bar-outside' ){
+			console.log( "CONDITION MET!" );
+			setAttributes( { captionDisplayType: 'bar-inside' } );
+		}
 	};
+
+	const generateBarOptions = () => (
+		( feedLayout === 'grid' || feedLayout === 'tiled' )
+			? ( [
+				{
+					label: __( 'Overlay', 'ultimate-addons-for-gutenberg' ),
+					value: 'overlay',
+				},
+				{
+					label: __( 'Bar Over Image', 'ultimate-addons-for-gutenberg' ),
+					value: 'bar-inside',
+				}
+			] )
+			: ( [
+				{
+					label: __( 'Overlay', 'ultimate-addons-for-gutenberg' ),
+					value: 'overlay',
+				},
+				{
+					label: __( 'Bar Over Image', 'ultimate-addons-for-gutenberg' ),
+					value: 'bar-inside',
+				},
+				{
+					label: __( 'Bar Outside Image', 'ultimate-addons-for-gutenberg' ),
+					value: 'bar-outside',
+				}
+			] )
+	);
 
 	const renderCaptionDisplay = ( isHover ) => (
 		<>
@@ -602,20 +529,7 @@ const Settings = ( props ) => {
 				label={ __( 'Caption Type', 'ultimate-addons-for-gutenberg' ) }
 				value={ captionDisplayType }
 				onChange={ ( value ) => setAttributes( { captionDisplayType: value } )}
-				options = { [
-					{
-						label: __( 'Overlay', 'ultimate-addons-for-gutenberg' ),
-						value: 'overlay',
-					},
-					{
-						label: __( 'Bar Over Image', 'ultimate-addons-for-gutenberg' ),
-						value: 'bar-inside',
-					},
-					{
-						label: __( 'Bar Outside Image', 'ultimate-addons-for-gutenberg' ),
-						value: 'bar-outside',
-					},
-				] }
+				options={ generateBarOptions() }
 			/>
 			{
 				captionDisplayType !== 'bar-outside'
