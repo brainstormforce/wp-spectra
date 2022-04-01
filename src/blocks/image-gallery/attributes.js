@@ -143,7 +143,7 @@ const attributes = {
 	},
 	captionGap: {
 		type: 'number',
-		default: 2,
+		default: 4,
 	},
 	captionGapUnit: {
 		type: 'string',

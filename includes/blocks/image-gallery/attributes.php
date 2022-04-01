@@ -45,7 +45,7 @@ return array(
 	'captionPaddingUnitTab' => 'px',
 	'captionPaddingUnitMob' => 'px',
 	'captionPaddingUnitLink' => true,
-	'captionGap' => 2,
+	'captionGap' => 4,
 	'captionGapUnit' => 'px',
 	// Layout Settings
 	'columnsDesk' => 6,

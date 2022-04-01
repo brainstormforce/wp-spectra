@@ -212,6 +212,12 @@ const Settings = ( props ) => {
 		setAttributes( { imageCaptionAlignment: `${ imageCaptionAlignment01 } ${ imageCaptionAlignment02 }` } );
 	},  [ imageCaptionAlignment01, imageCaptionAlignment02 ] );
 
+	useEffect( () => {
+		if( feedLayout === 'carousel' && carouselSquares ){
+			setAttributes( { captionDisplayType: 'bar-inside' } );
+		}
+	}, [ carouselSquares ] );
+
 	const updateMediaGallery = ( media ) => {
         let goodToGo = true;
 		let updatedIDs = [];
@@ -242,8 +248,8 @@ const Settings = ( props ) => {
 			? setAttributes( { feedPagination: true, paginateUseArrows: true, paginateUseDots: true } )
 			: setAttributes( { feedPagination: false, gridPageNumber: 1 } );
 		setAttributes( { feedLayout: layoutType } );
-		// Next Disable Bar Outside Image for Grid and Tiles...
-		if ( ( layoutType === 'grid' || layoutType === 'tiled' ) && captionDisplayType === 'bar-outside' ){
+		// Next Disable Bar Outside Image for Grid, Tiles and Squared Carousel...
+		if ( ( layoutType === 'grid' || layoutType === 'tiled' || ( layoutType === 'carousel' && carouselSquares ) ) && captionDisplayType === 'bar-outside' ){
 			setAttributes( { captionDisplayType: 'bar-inside' } );
 		}
 	};
@@ -1619,8 +1625,8 @@ const Settings = ( props ) => {
 					<InspectorTab { ...UAGTabs.general }>
 						{ ! readyToRender && initialSettings() }
 						{ readyToRender && imageSettings() }
-						{ ( readyToRender && imageDisplayCaption ) && captionSettings() }
 						{ readyToRender && layoutSettings() }
+						{ ( readyToRender && imageDisplayCaption ) && captionSettings() }
 						{ ( readyToRender && feedLayout !== 'tiled' ) && layoutSpecificSettings() }
 					</InspectorTab>
 					<InspectorTab { ...UAGTabs.style }>

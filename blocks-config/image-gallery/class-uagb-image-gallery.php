@@ -215,7 +215,7 @@ if ( ! class_exists( 'Spectra_Pro_Image_Gallery' ) ) {
 							),
 							'captionGap' => array(
 								'type' => 'number',
-								'default' => 2,
+								'default' => 4,
 							),
 							'captionGapUnit' => array(
 								'type' => 'string',
