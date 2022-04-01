@@ -87,8 +87,20 @@ if ( ! class_exists( 'Spectra_Pro_Image_Gallery' ) ) {
 								'type' => 'boolean',
 								'default' => false,
 							),
+							'tileSize:' => array(
+								'type' => 'number',
+								'default' => 0,
+							),
+							'focusList:' => array(
+								'type' => 'array',
+								'default' => array(),
+							),
+							'previewLightbox' => array(
+								'type' => 'boolean',
+								'default' => false,
+							),
 						),
-						// Post Settings
+						// Gallery Settings
 						array(
 							'mediaGallery' => array(
 								'type' => 'array',
@@ -100,20 +112,20 @@ if ( ! class_exists( 'Spectra_Pro_Image_Gallery' ) ) {
 							),
 							'feedLayout' => array(
 								'type' => 'string',
-								'default' => 'grid',
+								'default' => 'tiled',
 							),
 							'useLightbox' => array(
 								'type' => 'boolean',
 								'default' => true,
 							),
-							'postDisplayCaption' => array(
+							'imageDisplayCaption' => array(
 								'type' => 'boolean',
 								'default' => true,
 							),
 						),
 						// Caption Settings
 						array(
-							'postCaptionLength' => array(
+							'imageCaptionLength' => array(
 								'type' => 'number',
 								'default' => 30,
 							),
@@ -121,81 +133,81 @@ if ( ! class_exists( 'Spectra_Pro_Image_Gallery' ) ) {
 								'type' => 'string',
 								'default' => 'overlay',
 							),
-							'postCaptionAlignment' => array(
+							'imageCaptionAlignment' => array(
 								'type' => 'string',
 								'default' => 'center center',
 							),
-							'postCaptionAlignment01' => array(
+							'imageCaptionAlignment01' => array(
 								'type' => 'string',
 								'default' => 'center',
 							),
-							'postCaptionAlignment02' => array(
+							'imageCaptionAlignment02' => array(
 								'type' => 'string',
 								'default' => 'center',
 							),
-							'postDefaultCaption' => array(
+							'imageDefaultCaption' => array(
 								'type' => 'string',
 								'default' => 'No Caption',
 							),
 							'captionPaddingTop' => array(
 								'type' => 'number',
-								'default' => 1,
+								'default' => 8,
 							),
 							'captionPaddingRight' => array(
 								'type' => 'number',
-								'default' => 1,
+								'default' => 8,
 							),
 							'captionPaddingBottom' => array(
 								'type' => 'number',
-								'default' => 1,
+								'default' => 8,
 							),
 							'captionPaddingLeft' => array(
 								'type' => 'number',
-								'default' => 1,
+								'default' => 8,
 							),
 							'captionPaddingTopTab' => array(
 								'type' => 'number',
-								'default' => 1,
+								'default' => 8,
 							),
 							'captionPaddingRightTab' => array(
 								'type' => 'number',
-								'default' => 1,
+								'default' => 8,
 							),
 							'captionPaddingBottomTab' => array(
 								'type' => 'number',
-								'default' => 1,
+								'default' => 8,
 							),
 							'captionPaddingLeftTab' => array(
 								'type' => 'number',
-								'default' => 1,
+								'default' => 8,
 							),
 							'captionPaddingTopMob' => array(
 								'type' => 'number',
-								'default' => 1,
+								'default' => 8,
 							),
 							'captionPaddingRightMob' => array(
 								'type' => 'number',
-								'default' => 1,
+								'default' => 8,
 							),
 							'captionPaddingBottomMob' => array(
 								'type' => 'number',
-								'default' => 1,
+								'default' => 8,
 							),
 							'captionPaddingLeftMob' => array(
 								'type' => 'number',
-								'default' => 1,
+								'default' => 8,
 							),
 							'captionPaddingUnit' => array(
 								'type' => 'string',
-								'default' => 'em',
+								'default' => 'px',
 							),
 							'captionPaddingUnitTab' => array(
 								'type' => 'string',
-								'default' => 'em',
+								'default' => 'px',
 							),
 							'captionPaddingUnitMob' => array(
 								'type' => 'string',
-								'default' => 'em',
+								'default' => 'px',
 							),
 							'captionPaddingUnitLink' => array(
 								'type' => 'boolean',
@@ -203,110 +215,110 @@ if ( ! class_exists( 'Spectra_Pro_Image_Gallery' ) ) {
 							),
 							'captionGap' => array(
 								'type' => 'number',
-								'default' => 1,
+								'default' => 2,
 							),
 							'captionGapUnit' => array(
 								'type' => 'string',
-								'default' => 'em',
+								'default' => 'px',
 							),
 						),
 						// Layout Settings
 						array(
 							'columnsDesk' => array(
 								'type' => 'number',
-								'default' => 3,
+								'default' => 6,
 							),
 							'columnsTab' => array(
 								'type' => 'number',
-								'default' => 3,
+								'default' => 4,
 							),
 							'columnsMob' => array(
 								'type' => 'number',
 								'default' => 3,
 							),
-							'gridPostGap' => array(
+							'gridImageGap' => array(
 								'type' => 'number',
-								'default' => 1,
+								'default' => 2,
 							),
-							'gridPostGapTab' => array(
+							'gridImageGapTab' => array(
 								'type' => 'number',
-								'default' => 1,
+								'default' => 2,
 							),
-							'gridPostGapMob' => array(
+							'gridImageGapMob' => array(
 								'type' => 'number',
-								'default' => 1,
+								'default' => 2,
 							),
-							'gridPostGapUnit' => array(
+							'gridImageGapUnit' => array(
 								'type' => 'string',
-								'default' => 'em',
+								'default' => 'px',
 							),
-							'gridPostGapUnitTab' => array(
+							'gridImageGapUnitTab' => array(
 								'type' => 'string',
-								'default' => 'em',
+								'default' => 'px',
 							),
-							'gridPostGapUnitMob' => array(
+							'gridImageGapUnitMob' => array(
 								'type' => 'string',
-								'default' => 'em',
+								'default' => 'px',
 							),
 							'feedMarginTop' => array(
 								'type' => 'number',
-								'default' => 1,
+								'default' => 0,
 							),
 							'feedMarginRight' => array(
 								'type' => 'number',
-								'default' => 1,
+								'default' => 0,
 							),
 							'feedMarginBottom' => array(
 								'type' => 'number',
-								'default' => 1,
+								'default' => 0,
 							),
 							'feedMarginLeft' => array(
 								'type' => 'number',
-								'default' => 1,
+								'default' => 0,
 							),
 							'feedMarginTopTab' => array(
 								'type' => 'number',
-								'default' => 1,
+								'default' => 0,
 							),
 							'feedMarginRightTab' => array(
 								'type' => 'number',
-								'default' => 1,
+								'default' => 0,
 							),
 							'feedMarginBottomTab' => array(
 								'type' => 'number',
-								'default' => 1,
+								'default' => 0,
 							),
 							'feedMarginLeftTab' => array(
 								'type' => 'number',
-								'default' => 1,
+								'default' => 0,
 							),
 							'feedMarginTopMob' => array(
 								'type' => 'number',
-								'default' => 1,
+								'default' => 0,
 							),
 							'feedMarginRightMob' => array(
 								'type' => 'number',
-								'default' => 1,
+								'default' => 0,
 							),
 							'feedMarginBottomMob' => array(
 								'type' => 'number',
-								'default' => 1,
+								'default' => 0,
 							),
 							'feedMarginLeftMob' => array(
 								'type' => 'number',
-								'default' => 1,
+								'default' => 0,
 							),
 							'feedMarginUnit' => array(
 								'type' => 'string',
-								'default' => 'em',
+								'default' => 'px',
 							),
 							'feedMarginUnitTab' => array(
 								'type' => 'string',
-								'default' => 'em',
+								'default' => 'px',
 							),
 							'feedMarginUnitMob' => array(
 								'type' => 'string',
-								'default' => 'em',
+								'default' => 'px',
 							),
 							'feedMarginUnitLink' => array(
 								'type' => 'boolean',
@@ -326,18 +338,6 @@ if ( ! class_exists( 'Spectra_Pro_Image_Gallery' ) ) {
 							'carouselLoop' => array(
 								'type' => 'boolean',
 								'default' => true,
-							),
-							'carouselCentered' => array(
-								'type' => 'boolean',
-								'default' => false,
-							),
-							'carouselCenterPadding' => array(
-								'type' => 'number',
-								'default' => 100,
-							),
-							'carouselCenterPaddingUnit' => array(
-								'type' => 'string',
-								'default' => 'px',
 							),
 							'carouselAutoplay' => array(
 								'type' => 'boolean',
@@ -362,6 +362,10 @@ if ( ! class_exists( 'Spectra_Pro_Image_Gallery' ) ) {
 							'gridPageNumber' => array(
 								'type' => 'number',
 								'default' => 1,
+							),
+							'generateSpecialTiles' => array(
+								'type' => 'boolean',
+								'default' => true,
 							),
 						),
 						// Pagination Settings
@@ -392,7 +396,7 @@ if ( ! class_exists( 'Spectra_Pro_Image_Gallery' ) ) {
 							),
 							'paginateButtonText' => array(
 								'type' => 'string',
-								'default' => 'Load More Posts',
+								'default' => 'Load More Images',
 							),
 							'paginateButtonPaddingTop' => array(
 								'type' => 'number',
@@ -459,21 +463,21 @@ if ( ! class_exists( 'Spectra_Pro_Image_Gallery' ) ) {
 								'default' => false,
 							),
 						),
-						// Post Styling
+						// Image Styling
 						array(
-							'postBorderRadius' => array(
+							'imageBorderRadius' => array(
 								'type' => 'number',
-								'default' => 1,
+								'default' => 0,
 							),
-							'postBorderRadiusUnit' => array(
+							'imageBorderRadiusUnit' => array(
 								'type' => 'string',
-								'default' => 'em',
+								'default' => 'px',
 							),
-							'postEnableZoom' => array(
+							'imageEnableZoom' => array(
 								'type' => 'boolean',
 								'default' => true,
 							),
-							'postZoomType' => array(
+							'imageZoomType' => array(
 								'type' => 'string',
 								'default' => 'zoom-in',
 							),
@@ -584,7 +588,6 @@ if ( ! class_exists( 'Spectra_Pro_Image_Gallery' ) ) {
 						array(
 							'paginateArrowDistance' => array(
 								'type' => 'number',
-								'default' => 'Default',
 								'default' => -24,
 							),
 							'paginateArrowDistanceUnit' => array(
@@ -651,7 +654,7 @@ if ( ! class_exists( 'Spectra_Pro_Image_Gallery' ) ) {
 		}
 
 		/**
-		 * Renders All Posts.
+		 * Renders All Images.
 		 *
 		 * @since 0.0.1
 		 */
@@ -792,7 +795,7 @@ if ( ! class_exists( 'Spectra_Pro_Image_Gallery' ) ) {
 		}
 
 		/**
-		 * Sends the Posts to Masonry AJAX.
+		 * Sends the Images to Masonry AJAX.
 		 *
 		 * @since 0.0.1
 		 */
@@ -818,7 +821,7 @@ if ( ! class_exists( 'Spectra_Pro_Image_Gallery' ) ) {
 		}
 
 		/**
-		 * Sends the Posts to Grid AJAX.
+		 * Sends the Imsges to Grid AJAX.
 		 *
 		 * @since 0.0.1
 		 */
@@ -880,7 +883,7 @@ if ( ! class_exists( 'Spectra_Pro_Image_Gallery' ) ) {
 		}
 	
 		private function  renderMediaThumbnail( $mediaArray, $atts ) {
-			if( $atts[ 'captionDisplayType' ] === 'bar-outside' && ( UAGB_Block_Helper::get_matrix_alignment( $atts[ 'postCaptionAlignment' ], 1 ) === 'top' ) && $atts[ 'postDisplayCaption' ] ) {
+			if( $atts[ 'captionDisplayType' ] === 'bar-outside' && ( UAGB_Block_Helper::get_matrix_alignment( $atts[ 'imageCaptionAlignment' ], 1 ) === 'top' ) && $atts[ 'imageDisplayCaption' ] ) {
 				?>
 				<div class="uag-image-gallery-media__thumbnail-caption-wrapper uag-image-gallery-media__thumbnail-caption-wrapper--<?= $atts[ 'captionDisplayType' ]; ?>">
 					<?php $this->renderMediaCaption( $mediaArray, $atts ); ?>
@@ -892,7 +895,7 @@ if ( ! class_exists( 'Spectra_Pro_Image_Gallery' ) ) {
 				<img class="uag-image-gallery-media__thumbnail uag-image-gallery-media__thumbnail--<?= $atts[ 'feedLayout' ] ?>" src="<?= $mediaArray[ 'url' ]; ?>" />
 				<div class="uag-image-gallery-media__thumbnail-blurrer"></div>
 				<?php
-					if ( $atts[ 'postDisplayCaption' ] ) {
+					if ( $atts[ 'imageDisplayCaption' ] ) {
 						if ( $atts[ 'captionDisplayType' ] !== 'bar-outside' ) {
 						?>
 							<div class="uag-image-gallery-media__thumbnail-caption-wrapper uag-image-gallery-media__thumbnail-caption-wrapper--<?= $atts[ 'captionDisplayType' ]; ?>">
@@ -909,7 +912,7 @@ if ( ! class_exists( 'Spectra_Pro_Image_Gallery' ) ) {
 				?>
 			</div>
 			<?php
-			if( $atts[ 'captionDisplayType' ] === 'bar-outside' && ( UAGB_Block_Helper::get_matrix_alignment( $atts[ 'postCaptionAlignment' ], 1 ) !== 'top' ) && $atts[ 'postDisplayCaption' ] ) {
+			if( $atts[ 'captionDisplayType' ] === 'bar-outside' && ( UAGB_Block_Helper::get_matrix_alignment( $atts[ 'imageCaptionAlignment' ], 1 ) !== 'top' ) && $atts[ 'imageDisplayCaption' ] ) {
 				?>
 				<div class="uag-image-gallery-media__thumbnail-caption-wrapper uag-image-gallery-media__thumbnail-caption-wrapper--<?= $atts[ 'captionDisplayType' ]; ?>">
 					<?php $this->renderMediaCaption( $mediaArray, $atts ); ?>
@@ -927,15 +930,15 @@ if ( ! class_exists( 'Spectra_Pro_Image_Gallery' ) ) {
 					$mediaArray[ 'url' ]
 					? $atts[ 'useLightbox' ]
 						? 'Click to view image'
-						: $atts[ 'postDefaultCaption' ]
+						: $atts[ 'imageDefaultCaption' ]
 					: 'Unable to load image'
 				);
-			if( $needsEllipsis && strlen( $mediaArray[ 'caption' ] ) <= $atts[ 'postCaptionLength' ] ) {
+			if( $needsEllipsis && strlen( $mediaArray[ 'caption' ] ) <= $atts[ 'imageCaptionLength' ] ) {
 				// The caption is already below the limiter.    
 				$needsEllipsis = false;
 			}
 			else if ( $needsEllipsis ){
-				$limitedCaption = substr( $limitedCaption, 0, $atts[ 'postCaptionLength' ] );
+				$limitedCaption = substr( $limitedCaption, 0, $atts[ 'imageCaptionLength' ] );
 				$limitedSpacePos = strpos( $limitedCaption, ' ' );
 				$limitedEnd = substr( $limitedCaption, -1 );
 				if ( ! $limitedSpacePos ) {

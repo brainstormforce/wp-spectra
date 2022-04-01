@@ -79,63 +79,63 @@ const attributes = {
 	},
 	captionPaddingTop: {
 		type: 'number',
-		default: 1,
+		default: 8,
 	},
 	captionPaddingRight: {
 		type: 'number',
-		default: 1,
+		default: 8,
 	},
 	captionPaddingBottom: {
 		type: 'number',
-		default: 1,
+		default: 8,
 	},
 	captionPaddingLeft: {
 		type: 'number',
-		default: 1,
+		default: 8,
 	},
 	captionPaddingTopTab: {
 		type: 'number',
-		default: 1,
+		default: 8,
 	},
 	captionPaddingRightTab: {
 		type: 'number',
-		default: 1,
+		default: 8,
 	},
 	captionPaddingBottomTab: {
 		type: 'number',
-		default: 1,
+		default: 8,
 	},
 	captionPaddingLeftTab: {
 		type: 'number',
-		default: 1,
+		default: 8,
 	},
 	captionPaddingTopMob: {
 		type: 'number',
-		default: 1,
+		default: 8,
 	},
 	captionPaddingRightMob: {
 		type: 'number',
-		default: 1,
+		default: 8,
 	},
 	captionPaddingBottomMob: {
 		type: 'number',
-		default: 1,
+		default: 8,
 	},
 	captionPaddingLeftMob: {
 		type: 'number',
-		default: 1,
+		default: 8,
 	},
 	captionPaddingUnit: {
 		type: 'string',
-		default: 'em',
+		default: 'px',
 	},
 	captionPaddingUnitTab: {
 		type: 'string',
-		default: 'em',
+		default: 'px',
 	},
 	captionPaddingUnitMob: {
 		type: 'string',
-		default: 'em',
+		default: 'px',
 	},
 	captionPaddingUnitLink: {
 		type: 'boolean',
@@ -143,11 +143,11 @@ const attributes = {
 	},
 	captionGap: {
 		type: 'number',
-		default: 1,
+		default: 2,
 	},
 	captionGapUnit: {
 		type: 'string',
-		default: 'em',
+		default: 'px',
 	},
 
 	// Layout Settings
@@ -266,18 +266,6 @@ const attributes = {
 	carouselLoop: {
 		type: 'boolean',
 		default: true,
-	},
-	carouselCentered: {
-		type: 'boolean',
-		default: false,
-	},
-	carouselCenterPadding: {
-		type: 'number',
-		default: 100,
-	},
-	carouselCenterPaddingUnit: {
-		type: 'string',
-		default: 'px',
 	},
 	carouselAutoplay: {
 		type: 'boolean',

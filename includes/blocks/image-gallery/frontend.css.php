@@ -114,20 +114,20 @@ $selectors = array(
 
 	'.uag-image-gallery__layout--grid' => array(
 		'grid-gap' => UAGB_Helper::get_css_value(
-			$attr[ 'gridPostGap' ],
-			$attr[ 'gridPostGapUnit' ]
+			$attr[ 'gridImageGap' ],
+			$attr[ 'gridImageGapUnit' ]
 		),
 	),
 	'.uag-image-gallery__layout--isogrid .uag-image-gallery-media-wrapper' => array(
 		'padding' => UAGB_Helper::get_css_value(
-			$attr[ 'gridPostGap' ] / 2,
-			$attr[ 'gridPostGapUnit' ]
+			$attr[ 'gridImageGap' ] / 2,
+			$attr[ 'gridImageGapUnit' ]
 		),
 	),
 	'.uag-image-gallery__layout--masonry .uag-image-gallery-media-wrapper' => array(
 		'padding' => UAGB_Helper::get_css_value(
-			$attr[ 'gridPostGap' ],
-			$attr[ 'gridPostGapUnit' ]
+			$attr[ 'gridImageGap' ],
+			$attr[ 'gridImageGapUnit' ]
 		),
 	),
 	'.uag-image-gallery__layout--carousel' => array(
@@ -135,29 +135,20 @@ $selectors = array(
 	),
 	'.uag-image-gallery__layout--carousel .uag-image-gallery-media-wrapper' => array(
 		'padding' => UAGB_Helper::get_css_value(
-			$attr[ 'gridPostGap' ],
-			$attr[ 'gridPostGapUnit' ]
+			$attr[ 'gridImageGap' ],
+			$attr[ 'gridImageGapUnit' ]
 		),
 	),
 	'.uag-image-gallery-media' => array(
 		'border-radius' => UAGB_Block_Helper::generate_border_radius(
-			$attr[ 'postBorderRadiusUnit' ],
-			$attr[ 'postBorderRadius' ],
+			$attr[ 'imageBorderRadiusUnit' ],
+			$attr[ 'imageBorderRadius' ],
 		),
 	),
-
-	// Thumbnail Selectors
-
-	// '.uag-image-gallery-media__thumbnail' => array(
-	// 	'border-radius' => UAGB_Block_Helper::generate_border_radius(
-	// 		$attr[ 'postBorderRadiusUnit' ],
-	// 		$attr[ 'postBorderRadius' ],
-	// 	),
-	// ),
 	'.uag-image-gallery-media__thumbnail-blurrer' => array(
 		'border-radius' => UAGB_Block_Helper::generate_border_radius(
-			$attr[ 'postBorderRadiusUnit' ],
-			$attr[ 'postBorderRadius' ],
+			$attr[ 'imageBorderRadiusUnit' ],
+			$attr[ 'imageBorderRadius' ],
 		),
 		'-webkit-backdrop-filter' => 'blur(' . UAGB_Helper::get_css_value(
 			$attr[ 'captionBackgroundBlurAmount' ],
@@ -183,8 +174,8 @@ $selectors = array(
 
 	'.uag-image-gallery-media__thumbnail-caption-wrapper' => array(
 		'border-radius' => UAGB_Block_Helper::generate_border_radius(
-			$attr[ 'postBorderRadiusUnit' ],
-			$attr[ 'postBorderRadius' ],
+			$attr[ 'imageBorderRadiusUnit' ],
+			$attr[ 'imageBorderRadius' ],
 		),
 	),
 	'.uag-image-gallery-media__thumbnail-caption-wrapper--overlay' => array(
@@ -194,17 +185,17 @@ $selectors = array(
 		'background-color' => $attr[ 'captionBackgroundColorHover' ],
 	),		
 	'.uag-image-gallery-media__thumbnail-caption-wrapper--bar-inside' => array(
-		'-webkit-align-items' => UAGB_Block_Helper::get_matrix_alignment( $attr[ 'postCaptionAlignment' ], 1, 'flex' ),
-		'align-items' => UAGB_Block_Helper::get_matrix_alignment( $attr[ 'postCaptionAlignment' ], 1, 'flex' ),
-		'-webkit-justify-content' => UAGB_Block_Helper::get_matrix_alignment( $attr[ 'postCaptionAlignment' ], 2, 'flex' ),
-		'justify-content' => UAGB_Block_Helper::get_matrix_alignment( $attr[ 'postCaptionAlignment' ], 2, 'flex' ),
+		'-webkit-align-items' => UAGB_Block_Helper::get_matrix_alignment( $attr[ 'imageCaptionAlignment' ], 1, 'flex' ),
+		'align-items' => UAGB_Block_Helper::get_matrix_alignment( $attr[ 'imageCaptionAlignment' ], 1, 'flex' ),
+		'-webkit-justify-content' => UAGB_Block_Helper::get_matrix_alignment( $attr[ 'imageCaptionAlignment' ], 2, 'flex' ),
+		'justify-content' => UAGB_Block_Helper::get_matrix_alignment( $attr[ 'imageCaptionAlignment' ], 2, 'flex' ),
 	),
 	
 	// Caption Selectors
 
 	'.uag-image-gallery-media__thumbnail-caption' => array(
 		'color' => $attr[ 'captionColor' ],
-		'text-align' => UAGB_Block_Helper::get_matrix_alignment( $attr[ 'postCaptionAlignment' ], 2 ),
+		'text-align' => UAGB_Block_Helper::get_matrix_alignment( $attr[ 'imageCaptionAlignment' ], 2 ),
 		'font-family' => $attr[ 'captionFontFamily' ] === 'Default' ? '' : $attr[ 'captionFontFamily' ],
 		'font-weight' => $attr[ 'captionFontWeight' ],
 		'font-style' => $attr[ 'captionFontStyle' ],
@@ -222,13 +213,13 @@ $selectors = array(
 	),	
 	'.uag-image-gallery-media__thumbnail-caption--overlay' => array(
 		'border-radius' => UAGB_Block_Helper::generate_border_radius(
-			$attr[ 'postBorderRadiusUnit' ],
-			$attr[ 'postBorderRadius' ],
+			$attr[ 'imageBorderRadiusUnit' ],
+			$attr[ 'imageBorderRadius' ],
 		),
-		'-webkit-align-items' => UAGB_Block_Helper::get_matrix_alignment( $attr[ 'postCaptionAlignment' ], 1, 'flex' ),
-		'align-items' => UAGB_Block_Helper::get_matrix_alignment( $attr[ 'postCaptionAlignment' ], 1, 'flex' ),
-		'-webkit-justify-content' => UAGB_Block_Helper::get_matrix_alignment( $attr[ 'postCaptionAlignment' ], 2, 'flex' ),
-		'justify-content' => UAGB_Block_Helper::get_matrix_alignment( $attr[ 'postCaptionAlignment' ], 2, 'flex' ),
+		'-webkit-align-items' => UAGB_Block_Helper::get_matrix_alignment( $attr[ 'imageCaptionAlignment' ], 1, 'flex' ),
+		'align-items' => UAGB_Block_Helper::get_matrix_alignment( $attr[ 'imageCaptionAlignment' ], 1, 'flex' ),
+		'-webkit-justify-content' => UAGB_Block_Helper::get_matrix_alignment( $attr[ 'imageCaptionAlignment' ], 2, 'flex' ),
+		'justify-content' => UAGB_Block_Helper::get_matrix_alignment( $attr[ 'imageCaptionAlignment' ], 2, 'flex' ),
 	),
 	'.uag-image-gallery-media__thumbnail-caption--bar-inside' => array(
 		'background-color' => $attr[ 'captionBackgroundColor' ],
@@ -284,20 +275,20 @@ $t_selectors = array(
 	),
 	'.uag-image-gallery__layout--grid' => array(
 		'grid-gap' => UAGB_Helper::get_css_value(
-			$attr[ 'gridPostGapTab' ],
-			$attr[ 'gridPostGapUnitTab' ]
+			$attr[ 'gridImageGapTab' ],
+			$attr[ 'gridImageGapUnitTab' ]
 		),
 	),
 	'.uag-image-gallery__layout--isogrid .uag-image-gallery-media-wrapper' => array(
 		'padding' => UAGB_Helper::get_css_value(
-			$attr[ 'gridPostGapTab' ] / 2,
-			$attr[ 'gridPostGapUnitTab' ]
+			$attr[ 'gridImageGapTab' ] / 2,
+			$attr[ 'gridImageGapUnitTab' ]
 		),
 	),
 	'.uag-image-gallery__layout--masonry .uag-image-gallery-media-wrapper' => array(
 		'padding' => UAGB_Helper::get_css_value(
-			$attr[ 'gridPostGapTab' ],
-			$attr[ 'gridPostGapUnitTab' ]
+			$attr[ 'gridImageGapTab' ],
+			$attr[ 'gridImageGapUnitTab' ]
 		),
 	),
 	'.uag-image-gallery-media__thumbnail-caption' => array(
@@ -350,20 +341,20 @@ $m_selectors = array(
 	),
 	'.uag-image-gallery__layout--grid' => array(
 		'grid-gap' => UAGB_Helper::get_css_value(
-			$attr[ 'gridPostGapMob' ],
-			$attr[ 'gridPostGapUnitMob' ]
+			$attr[ 'gridImageGapMob' ],
+			$attr[ 'gridImageGapUnitMob' ]
 		),
 	),
 	'.uag-image-gallery__layout--isogrid .uag-image-gallery-media-wrapper' => array(
 		'padding' => UAGB_Helper::get_css_value(
-			$attr[ 'gridPostGapMob' ] / 2,
-			$attr[ 'gridPostGapUnitMob' ]
+			$attr[ 'gridImageGapMob' ] / 2,
+			$attr[ 'gridImageGapUnitMob' ]
 		),
 	),
 	'.uag-image-gallery__layout--masonry .uag-image-gallery-media-wrapper' => array(
 		'padding' => UAGB_Helper::get_css_value(
-			$attr[ 'gridPostGapMob' ],
-			$attr[ 'gridPostGapUnitMob' ]
+			$attr[ 'gridImageGapMob' ],
+			$attr[ 'gridImageGapUnitMob' ]
 		),
 	),
 	'.uag-image-gallery-media__thumbnail-caption' => array(
@@ -422,36 +413,36 @@ if ( ! $attr[ 'captionBackgroundEnableBlur' ] ) {
 
 // Caption Type based styling
 
-if ( $attr[ 'captionDisplayType'] === 'bar-outside' && $attr[ 'postDisplayCaption' ] ){
-	switch( UAGB_Block_Helper::get_matrix_alignment( $attr[ 'postCaptionAlignment' ], 1 ) ){
+if ( $attr[ 'captionDisplayType'] === 'bar-outside' && $attr[ 'imageDisplayCaption' ] ){
+	switch( UAGB_Block_Helper::get_matrix_alignment( $attr[ 'imageCaptionAlignment' ], 1 ) ){
 		case 'top': 
 			$selectors[ '.uag-image-gallery-media__thumbnail-caption-wrapper--bar-outside' ][ 'border-radius' ] = UAGB_Block_Helper::generate_border_radius(
-				$attr[ 'postBorderRadiusUnit' ],
-				$attr[ 'postBorderRadius' ],
-				$attr[ 'postBorderRadius' ],
+				$attr[ 'imageBorderRadiusUnit' ],
+				$attr[ 'imageBorderRadius' ],
+				$attr[ 'imageBorderRadius' ],
 				0,
 				0
 			);
 			$selectors[ '.uag-image-gallery-media' ][ 'border-radius' ] = UAGB_Block_Helper::generate_border_radius(
-				$attr[ 'postBorderRadiusUnit' ],
+				$attr[ 'imageBorderRadiusUnit' ],
 				0,
 				0,
-				$attr[ 'postBorderRadius' ],
-				$attr[ 'postBorderRadius' ]
+				$attr[ 'imageBorderRadius' ],
+				$attr[ 'imageBorderRadius' ]
 			);
 			$selectors[ '.uag-image-gallery-media__thumbnail' ][ 'border-radius' ] = UAGB_Block_Helper::generate_border_radius(
-				$attr[ 'postBorderRadiusUnit' ],
+				$attr[ 'imageBorderRadiusUnit' ],
 				0,
 				0,
-				$attr[ 'postBorderRadius' ],
-				$attr[ 'postBorderRadius' ]
+				$attr[ 'imageBorderRadius' ],
+				$attr[ 'imageBorderRadius' ]
 			);
 			$selectors[ '.uag-image-gallery-media__thumbnail-blurrer' ][ 'border-radius' ] = UAGB_Block_Helper::generate_border_radius(
-				$attr[ 'postBorderRadiusUnit' ],
+				$attr[ 'imageBorderRadiusUnit' ],
 				0,
 				0,
-				 $attr[ 'postBorderRadius' ],
-				 $attr[ 'postBorderRadius' ]
+				 $attr[ 'imageBorderRadius' ],
+				 $attr[ 'imageBorderRadius' ]
 			);
 			break;
 		case 'center':
@@ -462,30 +453,30 @@ if ( $attr[ 'captionDisplayType'] === 'bar-outside' && $attr[ 'postDisplayCaptio
 			break;
 		case 'bottom':
 			$selectors[ '.uag-image-gallery-media__thumbnail-caption-wrapper--bar-outside' ][ 'border-radius' ] = UAGB_Block_Helper::generate_border_radius(
-				$attr[ 'postBorderRadiusUnit' ],
+				$attr[ 'imageBorderRadiusUnit' ],
 				0,
 				0,
-				$attr[ 'postBorderRadius' ],
-				$attr[ 'postBorderRadius' ]
+				$attr[ 'imageBorderRadius' ],
+				$attr[ 'imageBorderRadius' ]
 			);
 			$selectors[ '.uag-image-gallery-media' ][ 'border-radius' ] = UAGB_Block_Helper::generate_border_radius(
-				$attr[ 'postBorderRadiusUnit' ],
-				$attr[ 'postBorderRadius' ],
-				$attr[ 'postBorderRadius' ],
+				$attr[ 'imageBorderRadiusUnit' ],
+				$attr[ 'imageBorderRadius' ],
+				$attr[ 'imageBorderRadius' ],
 				0,
 				0
 			);
 			$selectors[ '.uag-image-gallery-media__thumbnail' ][ 'border-radius' ] = UAGB_Block_Helper::generate_border_radius(
-				$attr[ 'postBorderRadiusUnit' ],
-				$attr[ 'postBorderRadius' ],
-				$attr[ 'postBorderRadius' ],
+				$attr[ 'imageBorderRadiusUnit' ],
+				$attr[ 'imageBorderRadius' ],
+				$attr[ 'imageBorderRadius' ],
 				0,
 				0
 			);
 			$selectors[ '.uag-image-gallery-media__thumbnail-blurrer' ][ 'border-radius' ] = UAGB_Block_Helper::generate_border_radius(
-				$attr[ 'postBorderRadiusUnit' ],
-				$attr[ 'postBorderRadius' ],
-				$attr[ 'postBorderRadius' ],
+				$attr[ 'imageBorderRadiusUnit' ],
+				$attr[ 'imageBorderRadius' ],
+				$attr[ 'imageBorderRadius' ],
 				0,
 				0
 			);
@@ -517,15 +508,15 @@ if ( $attr[ 'feedLayout' ] === 'masonry' && $attr[ 'feedPagination' ] && ! $attr
 
 // New Zoom Effect on Hover
 
-switch ( $attr[ 'postZoomType' ] ) {
+switch ( $attr[ 'imageZoomType' ] ) {
 	case 'zoom-in':
-		if( $attr[ 'postEnableZoom' ] ){
+		if( $attr[ 'imageEnableZoom' ] ){
 			$selectors[ '.uag-image-gallery-media__thumbnail' ][ 'transform' ] = 'scale3d(1.005, 1.005, 1.005)';
 			$selectors[ '.uag-image-gallery-media-wrapper:hover .uag-image-gallery-media__thumbnail' ][ 'transform' ] = 'scale3d(1.025, 1.025, 1.025)';
 		}
 		break;
 	case 'zoom-out':
-		if( $attr[ 'postEnableZoom' ] ){
+		if( $attr[ 'imageEnableZoom' ] ){
 			$selectors[ '.uag-image-gallery-media__thumbnail' ][ 'transform' ] = 'scale3d(1.025, 1.025, 1.025)';
 			$selectors[ '.uag-image-gallery-media-wrapper:hover .uag-image-gallery-media__thumbnail' ][ 'transform' ] = 'scale3d(1.005, 1.005, 1.005)';
 		}

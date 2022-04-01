@@ -965,16 +965,6 @@ const Settings = ( props ) => {
 							setAttributes( { paginateUseArrows: ! paginateUseArrows } )
 						}
 					/>
-					{/* <ToggleControl
-						label={ __(
-							`Centertralized Focus`,
-							'ultimate-addons-for-gutenberg'
-						) }
-						checked={ carouselCentered }
-						onChange={ () => 
-							setAttributes( { carouselCentered: ! carouselCentered } )
-						}
-					/> */}
 					<ToggleControl
 						label={ __(
 							`Autoplay`,
