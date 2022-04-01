@@ -268,11 +268,11 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 			$selectors[' .uagb-post__text.uagb-post-grid-byline .uagb-post__author']          = array(
 				'color' => $attr['metaColor'],
 			);
-			$selectors[' span.uagb-post__text.uagb-post__taxonomy']['color']                  = $attr['metaColor'];
-			$selectors[' span.uagb-post__text.uagb-post__taxonomy a']['color']                = $attr['metaColor'];
-			$selectors[' span.uagb-post__text.uagb-post__taxonomy.highlighted']['color']      = $attr['highlightedTextColor'];
-			$selectors[' span.uagb-post__text.uagb-post__taxonomy.highlighted a']['color']    = $attr['highlightedTextColor'];
-			$selectors[' span.uagb-post__text.uagb-post__taxonomy.highlighted']['background'] = $attr['highlightedTextBgColor'];
+			$selectors[' .uagb-post__inner-wrap .uagb-post__taxonomy']['color']                  = $attr['metaColor'];
+			$selectors[' .uagb-post__inner-wrap .uagb-post__taxonomy a']['color']                = $attr['metaColor'];
+			$selectors[' .uagb-post__inner-wrap .uagb-post__taxonomy.highlighted']['color']      = $attr['highlightedTextColor'];
+			$selectors[' .uagb-post__inner-wrap .uagb-post__taxonomy.highlighted a']['color']    = $attr['highlightedTextColor'];
+			$selectors[' .uagb-post__inner-wrap .uagb-post__taxonomy.highlighted']['background'] = $attr['highlightedTextBgColor'];
 			$selectors[' .uagb-post__text.uagb-post-grid-byline .uagb-post__author a']        = array(
 				'color' => $attr['metaColor'],
 			);

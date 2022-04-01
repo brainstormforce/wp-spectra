@@ -302,7 +302,7 @@ function styling( props ) {
 		'text-decoration': metaDecoration,
 		'font-style': metaFontStyle,
 	};
-	selectors[ ' span.uagb-post__text.uagb-post__taxonomy' ] = {
+	selectors[ ' span.uagb-post__taxonomy' ] = {
 		'color': metaColor,
 		'font-size': generateCSSUnit( metaFontSize, metaFontSizeType ),
 		'font-family': metaFontFamily,
@@ -315,7 +315,7 @@ function styling( props ) {
 		'text-decoration': metaDecoration,
 		'font-style': metaFontStyle,
 	};
-	selectors[ ' span.uagb-post__text.uagb-post__taxonomy.highlighted' ] = {
+	selectors[ ' span.uagb-post__taxonomy.highlighted' ] = {
 		'color': highlightedTextColor,
 		'background-color': highlightedTextBgColor,
 	};
