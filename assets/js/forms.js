@@ -1,6 +1,7 @@
 
 UAGBForms = { // eslint-disable-line no-undef
 	init( attr, id ) {
+
 		const scope = document.querySelector( id );
 
 		const form = scope.querySelector( '.uagb-forms-main-form' );
@@ -233,8 +234,6 @@ UAGBForms = { // eslint-disable-line no-undef
 				form_data: JSON.stringify( postData ),
 				sendAfterSubmitEmail: attr.sendAfterSubmitEmail,
 				after_submit_data : JSON.stringify( after_submit_data ),
-				uagab_captcha_keys :captchaKey,
-				captcha_response,
 			  } ),
 		  } )
 		  .then( ( resp ) => resp.json() )

@@ -65,6 +65,14 @@ if ( ! class_exists( 'UAGB_Forms' ) ) {
 		 */
 		public function process_forms() {
 			check_ajax_referer( 'uagb_forms_ajax_nonce', 'nonce' );
+
+			$options = array(
+				'recaptcha_site_key_v2'                   => \UAGB_Admin_Helper::get_admin_settings_option( 'uag_recaptcha_site_key_v2', '' ),
+				'recaptcha_secret_key_v2'                   => \UAGB_Admin_Helper::get_admin_settings_option( 'uag_recaptcha_secret_key_v2', '' ),
+				'recaptcha_site_key_v3'                   => \UAGB_Admin_Helper::get_admin_settings_option( 'uag_recaptcha_site_key_v3', '' ),
+				'recaptcha_secret_key_v3'                   => \UAGB_Admin_Helper::get_admin_settings_option( 'uag_recaptcha_secret_key_v3', '' ),
+			);
+
 			// Google recaptcha secret key verification starts.
 			$uagb_google_recaptcha_verify = isset( $_POST['uagab_captcha_keys'] ) && '' !== $_POST['uagab_captcha_keys'] ? 1 : 0;
 

@@ -1420,6 +1420,12 @@ const Settings = ( props ) => {
 						'ultimate-addons-for-gutenberg'
 					) }
 				</p>
+				<p className="uagb-form-notice">
+					{ __(
+						'To enter Google Recaptcha site and secret key you need to check admin dashboard page.',
+						'ultimate-addons-for-gutenberg'
+					) }
+				</p>
 
 				<ToggleControl
 					label={ __(
@@ -1433,6 +1439,39 @@ const Settings = ( props ) => {
 						} )
 					}
 				/>
+				{ reCaptchaEnable && (
+					<MultiButtonsControl
+						setAttributes={ setAttributes }
+						label={ __(
+							'Select Version',
+							'ultimate-addons-for-gutenberg'
+						) }
+						data={ {
+							value: reCaptchaType,
+							label: 'reCaptchaType',
+						} }
+						className="uagb-multi-button-alignment-control"
+						options={ [
+							{
+								value: 'v2',
+								label: 'V2',
+								tooltip: __(
+									'V2',
+									'ultimate-addons-for-gutenberg'
+								),
+							},
+							{
+								value: 'v3',
+								label: 'V3',
+								tooltip: __(
+									'V3',
+									'ultimate-addons-for-gutenberg'
+								),
+							},
+						] }
+						showIcons={ false }
+					/>
+				) }
 				<h2> { __( 'Know More', 'ultimate-addons-for-gutenberg' ) }</h2>
 				<ExternalLink href="https://www.google.com/recaptcha/admin/create">
 					{ __( 'Get Keys', 'ultimate-addons-for-gutenberg' ) }

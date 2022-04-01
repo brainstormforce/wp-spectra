@@ -19,6 +19,10 @@ const initialState = {
     enableMasonryExtension : '',
 	enableResponsiveConditions : '',
 	contentWidth: '',
+	siteKeyV2: '',
+	siteKeyV3: '',
+	secretKeyV2: '',
+	secretKeyV3: ''
 };
 
 const globalDataStore = createStore(

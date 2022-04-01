@@ -15,7 +15,6 @@ import { registerBlockType } from '@wordpress/blocks';
 
 if( attributes.reCaptchaEnable ) {
 
-	uagb_blocks_info.enable_recaptcha = attributes.reCaptchaEnable;
 	uagb_blocks_info.recaptcha_type = attributes.reCaptchaType;
 
 	if( attributes.reCaptchaType == 'v2' ) {
@@ -27,7 +26,6 @@ if( attributes.reCaptchaEnable ) {
 
 		uagb_blocks_info.site_key_v3 = attributes.reCaptchaSiteKeyV3;
 		uagb_blocks_info.secret_key_v3 = attributes.reCaptchaSecretKeyV3;
-
 
 	}
 }
