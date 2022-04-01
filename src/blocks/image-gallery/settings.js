@@ -24,7 +24,6 @@ import {
 import {
 	ToggleControl,
 	__experimentalAlignmentMatrixControl as AlignmentMatrixControl,
-	Notice,
 	SelectControl ,
 	TextControl,
 	Icon,
@@ -473,14 +472,11 @@ const Settings = ( props ) => {
 
 	// Panel Component Renders
 
-	const userSettings = () => (
+	const initialSettings = () => (
 		<>
-			<UAGAdvancedPanelBody title={ __( 'User Settings', 'ultimate-addons-for-gutenberg' ) } initialOpen={ true }>
-				<p>{ __( 'Select a user from the drop-down to begin!', 'ultimate-addons-for-gutenberg' ) }</p>
+			<UAGAdvancedPanelBody title={ __( 'Gallery Settings', 'ultimate-addons-for-gutenberg' ) } initialOpen={ true }>
+				<p>{ __( 'Create a gallery to enable settings.', 'ultimate-addons-for-gutenberg' ) }</p>
 			</UAGAdvancedPanelBody>
-			<Notice status='success' isDismissible={ false }>
-				<p>{ __( 'You could also import readymade block patterns from here!', 'ultimate-addons-for-gutenberg' ) }</p>
-			</Notice>
 		</>
 	);
 
@@ -1631,14 +1627,14 @@ const Settings = ( props ) => {
 			<InspectorControls>
 				<InspectorTabs>
 					<InspectorTab { ...UAGTabs.general }>
-						{ ! readyToRender && userSettings() }
+						{ ! readyToRender && initialSettings() }
 						{ readyToRender && imageSettings() }
 						{ ( readyToRender && imageDisplayCaption ) && captionSettings() }
 						{ readyToRender && layoutSettings() }
 						{ ( readyToRender && feedLayout !== 'tiled' ) && layoutSpecificSettings() }
 					</InspectorTab>
 					<InspectorTab { ...UAGTabs.style }>
-						{ ! readyToRender && userSettings() }
+						{ ! readyToRender && initialSettings() }
 						{ readyToRender && imageStyling() }
 						{ ( readyToRender && feedPagination ) && paginationStyling() }
 					</InspectorTab>
