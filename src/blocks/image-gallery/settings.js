@@ -1640,7 +1640,7 @@ const Settings = ( props ) => {
 					></InspectorTab>
 				</InspectorTabs>
 			</InspectorControls>
-				{ loadCaptionGoogleFonts }
+			{ loadCaptionGoogleFonts }
 		</Suspense>
 	);
 };

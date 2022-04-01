@@ -50,10 +50,10 @@ if ( ! class_exists( 'Spectra_Pro_Image_Gallery' ) ) {
 		 */
 		public function __construct() {
 			add_action( 'init', array( $this, 'register_image_gallery' ) );
-			add_action( 'wp_ajax_uag_load_image_gallery_masonry', array( $this, 'renderMasonryPagination' ) );
-			add_action( 'wp_ajax_nopriv_uag_load_image_gallery_masonry', array( $this, 'renderMasonryPagination' ) );
-			add_action( 'wp_ajax_uag_load_image_gallery_grid_pagination', array( $this, 'renderGridPagination' ) );
-			add_action( 'wp_ajax_nopriv_uag_load_image_gallery_grid_pagination', array( $this, 'renderGridPagination' ) );
+			add_action( 'wp_ajax_uag_load_image_gallery_masonry', array( $this, 'render_masonry_pagination' ) );
+			add_action( 'wp_ajax_nopriv_uag_load_image_gallery_masonry', array( $this, 'render_masonry_pagination' ) );
+			add_action( 'wp_ajax_uag_load_image_gallery_grid_pagination', array( $this, 'render_grid_pagination' ) );
+			add_action( 'wp_ajax_nopriv_uag_load_image_gallery_grid_pagination', array( $this, 'render_grid_pagination' ) );
 		}
 
 		/**
@@ -648,7 +648,7 @@ if ( ! class_exists( 'Spectra_Pro_Image_Gallery' ) ) {
 							),
 						),
 					),
-					'render_callback' => array( $this, 'renderInitialGrid' ),
+					'render_callback' => array( $this, 'render_initial_grid' ),
 				)
 			);
 		}
@@ -658,12 +658,12 @@ if ( ! class_exists( 'Spectra_Pro_Image_Gallery' ) ) {
 		 *
 		 * @since 0.0.1
 		 */
-		public function renderInitialGrid( $attributes ) {
+		public function render_initial_grid( $attributes ) {
 			$allMedia = '';
 			if ( $attributes[ 'readyToRender' ] ){
 				$media = ( ( $attributes[ 'feedLayout' ] !== 'carousel' ) && $attributes[ 'feedPagination' ] )
-					? $this->getGalleryImages( $attributes, 'paginated' )
-					: $this->getGalleryImages( $attributes, 'full' );
+					? $this->get_gallery_images( $attributes, 'paginated' )
+					: $this->get_gallery_images( $attributes, 'full' );
 				if( ! $media ){
 					ob_start();
 					?>
@@ -675,7 +675,7 @@ if ( ! class_exists( 'Spectra_Pro_Image_Gallery' ) ) {
 				foreach ( $attributes as $key => $attribute ) {
 					$attributes[ $key ] = ( 'false' === $attribute ) ? false : ( ( 'true' === $attribute ) ? true : $attribute );
 				}
-				$allMedia = $this->renderMediaMarkup( $media, $attributes );
+				$allMedia = $this->render_media_markup( $media, $attributes );
 				switch ( $attributes[ 'feedLayout' ] ) {
 					case 'grid':
 						$gridLayout = ( $attributes[ 'feedPagination' ] ) ? 'isogrid' : 'grid';
@@ -684,7 +684,7 @@ if ( ! class_exists( 'Spectra_Pro_Image_Gallery' ) ) {
 							<div class="uag-image-gallery uag-image-gallery__layout--<?= $gridLayout ?> uag-image-gallery__layout--<?= $gridLayout ?>-col-<?= $attributes[ 'columnsDesk' ] ?> uag-image-gallery__layout--<?= $gridLayout ?>-col-tab-<?= $attributes[ 'columnsTab' ] ?> uag-image-gallery__layout--<?= $gridLayout ?>-col-mob-<?= $attributes[ 'columnsMob' ] ?>">
 								<?= $allMedia ?>
 							</div>
-							<?= $attributes[ 'feedPagination' ] ? $this->renderGridPagintion( $attributes ) : "" ?>
+							<?= $attributes[ 'feedPagination' ] ? $this->render_grid_pagintion( $attributes ) : "" ?>
 						<?php
 						$allMedia = ob_get_clean();
 						break;
@@ -694,7 +694,7 @@ if ( ! class_exists( 'Spectra_Pro_Image_Gallery' ) ) {
 							<div class="uag-image-gallery uag-image-gallery__layout--<?= $attributes[ 'feedLayout' ] ?> uag-image-gallery__layout--<?= $attributes[ 'feedLayout' ] ?>-col-<?= $attributes[ 'columnsDesk' ] ?> uag-image-gallery__layout--<?= $attributes[ 'feedLayout' ] ?>-col-tab-<?= $attributes[ 'columnsTab' ] ?> uag-image-gallery__layout--<?= $attributes[ 'feedLayout' ] ?>-col-mob-<?= $attributes[ 'columnsMob' ] ?>">
 								<?= $allMedia ?>
 							</div>
-							<?= $attributes[ 'feedPagination' ] ? $this->renderMasonryPagintion( $attributes ) : "" ?>
+							<?= $attributes[ 'feedPagination' ] ? $this->render_masonry_pagintion( $attributes ) : "" ?>
 						<?php
 						$allMedia = ob_get_clean();
 						break;
@@ -721,7 +721,7 @@ if ( ! class_exists( 'Spectra_Pro_Image_Gallery' ) ) {
 			return $allMedia;
 		}
 		
-		private function renderGridPagintion( $attributes ){
+		private function render_grid_pagintion( $attributes ){
 			ob_start();
 			?>
 			<div class="uag-image-gallery__control-wrapper">
@@ -753,7 +753,7 @@ if ( ! class_exists( 'Spectra_Pro_Image_Gallery' ) ) {
 			return ob_get_clean();
 		}
 
-		function renderMasonryPagintion( $attributes ){
+		function render_masonry_pagintion( $attributes ){
 			ob_start();
 			if ( $attributes[ 'paginateUseLoader' ] ){
 				?>
@@ -783,7 +783,7 @@ if ( ! class_exists( 'Spectra_Pro_Image_Gallery' ) ) {
 		 * @return array of requred query attributes.
 		 * @since 0.0.1
 		 */
-		public function requiredAtts( $attributes ) {
+		public function required_atts( $attributes ) {
 
 			return array(
 				'mediaGallery' => ( isset( $attributes[ 'mediaGallery' ] ) ) ? sanitize_text_field( $attributes[ 'mediaGallery' ] ) : [],
@@ -799,14 +799,14 @@ if ( ! class_exists( 'Spectra_Pro_Image_Gallery' ) ) {
 		 *
 		 * @since 0.0.1
 		 */
-		public function renderMasonryPagination() {
+		public function render_masonry_pagination() {
 			check_ajax_referer( 'uagb_image-gallery_masonry_ajax_nonce', 'nonce' );
 			$media_atts = array();
 			$attr = isset( $_POST[ 'attr' ] ) ? json_decode( stripslashes( $_POST[ 'attr' ] ), true ) : array();
 			$attr[ 'gridPageNumber' ] = $_POST[ 'page_number' ];
-			$media_atts = $this->requiredAtts( $attr );
+			$media_atts = $this->required_atts( $attr );
 
-			$media = $this->getGalleryImages( $media_atts, 'paginated' );
+			$media = $this->get_gallery_images( $media_atts, 'paginated' );
 			if( ! $media ){
 				wp_send_json_success();
 			}
@@ -815,7 +815,7 @@ if ( ! class_exists( 'Spectra_Pro_Image_Gallery' ) ) {
 				$attr[ $key ] = ( 'false' === $attribute ) ? false : ( ( 'true' === $attribute ) ? true : $attribute );
 			}
 
-			$htmlArray = $this->renderMediaMarkup( $media, $attr );
+			$htmlArray = $this->render_media_markup( $media, $attr );
 
 			wp_send_json_success( $htmlArray );
 		}
@@ -825,14 +825,14 @@ if ( ! class_exists( 'Spectra_Pro_Image_Gallery' ) ) {
 		 *
 		 * @since 0.0.1
 		 */
-		public function renderGridPagination() {
+		public function render_grid_pagination() {
 			check_ajax_referer( 'uagb_image-gallery_grid_pagination_ajax_nonce', 'nonce' );
 			$media_atts = array();
 			$attr = isset( $_POST[ 'attr' ] ) ? json_decode( stripslashes( $_POST[ 'attr' ] ), true ) : array();
 			$attr[ 'gridPageNumber' ] = $_POST[ 'page_number' ];
-			$media_atts = $this->requiredAtts( $attr );
+			$media_atts = $this->required_atts( $attr );
 
-			$media = $this->getGalleryImages( $media_atts, 'paginated' );
+			$media = $this->get_gallery_images( $media_atts, 'paginated' );
 			if( ! $media ){
 				wp_send_json_success();
 			}
@@ -840,7 +840,7 @@ if ( ! class_exists( 'Spectra_Pro_Image_Gallery' ) ) {
 				$attr[ $key ] = ( 'false' === $attribute ) ? false : ( ( 'true' === $attribute ) ? true : $attribute );
 			}
 
-			$htmlArray = $this->renderMediaMarkup( $media, $attr );
+			$htmlArray = $this->render_media_markup( $media, $attr );
 
 			wp_send_json_success( $htmlArray );
 		}
@@ -852,41 +852,41 @@ if ( ! class_exists( 'Spectra_Pro_Image_Gallery' ) ) {
 		 * @param array  $attributes Array of block attributes.
 		 * @since 0.0.1
 		 */
-		private function renderMediaMarkup( $media, $attributes ) {
+		private function render_media_markup( $media, $attributes ) {
 			ob_start();
 			for ( $i = 0; $i < count( $media ); $i++ ) { 
-				$this->renderSingleMedia( $media[ $i ], $attributes );
+				$this->render_single_media( $media[ $i ], $attributes );
 			}
 			return ob_get_clean();
 		}
 
-		private function renderSingleMedia( $mediaArray, $atts ) {
+		private function render_single_media( $mediaArray, $atts ) {
 			?>
 			<div class='uag-image-gallery-media-wrapper' >
 				<?php
 					$atts[ 'useLightbox' ]
-						? $this->renderMediaLink( $mediaArray, $atts )
-						: $this->renderMediaThumbnail( $mediaArray, $atts );
+						? $this->render_media_link( $mediaArray, $atts )
+						: $this->render_media_thumbnail( $mediaArray, $atts );
 				?>
 			</div>
 			<?php
 		}
 	
-		private function renderMediaLink( $mediaArray, $atts ) {
+		private function render_media_link( $mediaArray, $atts ) {
 			?>
 			<a <?= ( $mediaArray[ 'url' ] )
 				? 'href="' . $mediaArray[ 'url' ] . '"'
 				: 'class="uag-image-gallery-media--flagged"'; ?> target="_blank" rel="noopener noreferrer" >
-				<?php $this->renderMediaThumbnail( $mediaArray, $atts ); ?>
+				<?php $this->render_media_thumbnail( $mediaArray, $atts ); ?>
 			</a>
 			<?php
 		}
 	
-		private function  renderMediaThumbnail( $mediaArray, $atts ) {
+		private function render_media_thumbnail( $mediaArray, $atts ) {
 			if( $atts[ 'captionDisplayType' ] === 'bar-outside' && ( UAGB_Block_Helper::get_matrix_alignment( $atts[ 'imageCaptionAlignment' ], 1 ) === 'top' ) && $atts[ 'imageDisplayCaption' ] ) {
 				?>
 				<div class="uag-image-gallery-media__thumbnail-caption-wrapper uag-image-gallery-media__thumbnail-caption-wrapper--<?= $atts[ 'captionDisplayType' ]; ?>">
-					<?php $this->renderMediaCaption( $mediaArray, $atts ); ?>
+					<?php $this->render_media_caption( $mediaArray, $atts ); ?>
 				</div>
 				<?php
 			}
@@ -899,7 +899,7 @@ if ( ! class_exists( 'Spectra_Pro_Image_Gallery' ) ) {
 						if ( $atts[ 'captionDisplayType' ] !== 'bar-outside' ) {
 						?>
 							<div class="uag-image-gallery-media__thumbnail-caption-wrapper uag-image-gallery-media__thumbnail-caption-wrapper--<?= $atts[ 'captionDisplayType' ]; ?>">
-								<?php $this->renderMediaCaption( $mediaArray, $atts ); ?>
+								<?php $this->render_media_caption( $mediaArray, $atts ); ?>
 							</div>
 						<?php
 						}
@@ -915,13 +915,13 @@ if ( ! class_exists( 'Spectra_Pro_Image_Gallery' ) ) {
 			if( $atts[ 'captionDisplayType' ] === 'bar-outside' && ( UAGB_Block_Helper::get_matrix_alignment( $atts[ 'imageCaptionAlignment' ], 1 ) !== 'top' ) && $atts[ 'imageDisplayCaption' ] ) {
 				?>
 				<div class="uag-image-gallery-media__thumbnail-caption-wrapper uag-image-gallery-media__thumbnail-caption-wrapper--<?= $atts[ 'captionDisplayType' ]; ?>">
-					<?php $this->renderMediaCaption( $mediaArray, $atts ); ?>
+					<?php $this->render_media_caption( $mediaArray, $atts ); ?>
 				</div>
 				<?php
 			}
 		}
 	
-		private function renderMediaCaption( $mediaArray, $atts ) {
+		private function render_media_caption( $mediaArray, $atts ) {
 			$needsEllipsis = isset( $mediaArray[ 'caption' ] ) ? true : false;
 			$capSpacePos = isset( $mediaArray[ 'caption' ] ) ? strpos( $mediaArray[ 'caption' ], ' ' ) : 0;
 			$limitedCaption =  ( isset( $mediaArray[ 'caption' ] ) && $mediaArray[ 'caption' ] )
@@ -991,13 +991,13 @@ if ( ! class_exists( 'Spectra_Pro_Image_Gallery' ) ) {
 		}
 
 		/**
-		 * Render Images Media.
+		 * Render Images.
 		 *
 		 * @param array $attributes Array of block attributes.
 		 *
 		 * @since 0.0.1
 		 */
-		private static function getGalleryImages( $attributes, $fetchType ) {
+		private static function get_gallery_images( $attributes, $fetchType ) {
 			// fetch type could be - paginated | full
 			$mediaRequired = array();
 			switch ( $fetchType ) {
@@ -1025,7 +1025,7 @@ if ( ! class_exists( 'Spectra_Pro_Image_Gallery' ) ) {
 			return $mediaRequired;
 		}
 
-		public static function renderFrontendMasonryLayout( $id, $attr, $selector ){
+		public static function render_frontend_masonry_layout( $id, $attr, $selector ){
 			ob_start();
 			?>
 				window.addEventListener( 'DOMContentLoaded', function() {
@@ -1047,7 +1047,7 @@ if ( ! class_exists( 'Spectra_Pro_Image_Gallery' ) ) {
 			return ob_get_clean();
 		}
 		
-		public static function renderFrontendGridPagination( $id, $attr, $selector ){
+		public static function render_frontend_grid_pagination( $id, $attr, $selector ){
 			ob_start();
 			?>
 				window.addEventListener( 'DOMContentLoaded', function() {
@@ -1070,7 +1070,7 @@ if ( ! class_exists( 'Spectra_Pro_Image_Gallery' ) ) {
 			return ob_get_clean();
 		}
 
-		public static function renderFrontendCarouselLayout( $id, $settings, $selector ){
+		public static function render_frontend_carousel_layout( $id, $settings, $selector ){
 			ob_start();
 			?>
 				jQuery( document ).ready( function() {

@@ -47,14 +47,14 @@ if( $attr[ 'mediaGallery' ] ){
 	switch ( $attr[ 'feedLayout' ] ) {
 		case 'grid':
 			$js = $attr[ 'feedPagination' ]
-				? Spectra_Pro_Image_Gallery::renderFrontendGridPagination( $id, $attr, $selector )
+				? Spectra_Pro_Image_Gallery::render_frontend_grid_pagination( $id, $attr, $selector )
 				: '';
 			break;
 		case 'masonry':
-			$js = Spectra_Pro_Image_Gallery::renderFrontendMasonryLayout( $id, $attr, $selector );
+			$js = Spectra_Pro_Image_Gallery::render_frontend_masonry_layout( $id, $attr, $selector );
 			break;
 		case 'carousel':
-			$js = Spectra_Pro_Image_Gallery::renderFrontendCarouselLayout( $id, $settings, $selector );
+			$js = Spectra_Pro_Image_Gallery::render_frontend_carousel_layout( $id, $settings, $selector );
 			break;
 	}
 }
