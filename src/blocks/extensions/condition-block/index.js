@@ -172,19 +172,15 @@ const AdvancedControlsBlock = createHigherOrderComponent( ( BlockEdit ) => {
 		const customBlocks = uagb_blocks_info.uagb_enable_extensions_for_blocks;
 		const blockPrefix = blockName.substring( 0, blockName.indexOf( '/' ) + 1 );
 		const { getSelectedBlock } = select( 'core/block-editor' );
-		let childBlocks = [];
-		if ( getSelectedBlock()?.innerBlocks ) {
-			childBlocks = getSelectedBlock().innerBlocks;
-		}
+		const childBlocks = getSelectedBlock()?.innerBlocks;
 		useEffect( () => {
 
-				let displayPanel = document.querySelector( '.uag-advance-panel-body-display' );
+				const displayPanel = document.querySelector( '.uag-advance-panel-body-display' );
 				let responsivePanel = document.querySelector( '.uag-advance-panel-body-responsive' );
 				let masonryPanel = document.querySelector( '.uag-advance-panel-body-masonry' );
 				if( displayPanel ){
 					const tabsParent = displayPanel.parentElement;
 					if( tabsParent ){
-						displayPanel = displayPanel ? displayPanel : '';
 						responsivePanel = responsivePanel ? responsivePanel : '';
 						masonryPanel = masonryPanel ? masonryPanel : '';
 						if( tabsParent.lastChild.className.includes( 'components-panel__body is-opened' ) ){
