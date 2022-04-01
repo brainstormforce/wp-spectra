@@ -9,7 +9,7 @@ function styling( props ) {
 		tileSize,
 
 		feedLayout,
-		postDisplayCaption,
+		imageDisplayCaption,
 
 		feedMarginTop,
 		feedMarginRight,
@@ -26,15 +26,15 @@ function styling( props ) {
 		feedMarginUnit,
 		feedMarginUnitTab,
 		feedMarginUnitMob,
-		gridPostGap,
-		gridPostGapTab,
-		gridPostGapMob,
-		gridPostGapUnit,
-		gridPostGapUnitTab,
-		gridPostGapUnitMob,
+		gridImageGap,
+		gridImageGapTab,
+		gridImageGapMob,
+		gridImageGapUnit,
+		gridImageGapUnitTab,
+		gridImageGapUnitMob,
 
 		captionDisplayType,
-		postCaptionAlignment,
+		imageCaptionAlignment,
 		captionPaddingTop,
 		captionPaddingRight,
 		captionPaddingBottom,
@@ -79,10 +79,10 @@ function styling( props ) {
 		paginateButtonPaddingUnitTab,
 		paginateButtonPaddingUnitMob,
 		
-		postBorderRadius,
-		postBorderRadiusUnit,
-		postEnableZoom,
-		postZoomType,
+		imageBorderRadius,
+		imageBorderRadiusUnit,
+		imageEnableZoom,
+		imageZoomType,
 		captionBackgroundEnableBlur,
 		captionBackgroundBlurAmount,
 
@@ -252,14 +252,14 @@ function styling( props ) {
 		
 		'.uag-image-gallery__layout--grid': {
 			'grid-gap': generateCSSUnit(
-				gridPostGap,
-				gridPostGapUnit
+				gridImageGap,
+				gridImageGapUnit
 			),
 		},
 		'.uag-image-gallery__layout--masonry .uag-image-gallery-media-wrapper': {
 			'padding': generateSpacing(
-				gridPostGapUnit,
-				gridPostGap,
+				gridImageGapUnit,
+				gridImageGap,
 			),
 		},
 		'.uag-image-gallery__layout--carousel': {
@@ -267,14 +267,14 @@ function styling( props ) {
 		},
 		'.uag-image-gallery__layout--carousel .uag-image-gallery-media-wrapper': {
 			'padding': generateSpacing(
-				gridPostGapUnit,
-				gridPostGap,
+				gridImageGapUnit,
+				gridImageGap,
 			),
 		},
 		'.uag-image-gallery__layout--tiled .uag-image-gallery-media-wrapper': {
 			'padding': generateSpacing(
-				gridPostGapUnit,
-				gridPostGap,
+				gridImageGapUnit,
+				gridImageGap,
 			),
 		},
 		'.uag-image-gallery__layout--tiled .uag-image-gallery-media-spacer': {
@@ -282,27 +282,27 @@ function styling( props ) {
 			'aspect-ratio': 1,
 		},
 		'.uag-image-gallery__layout--tiled .uag-image-gallery-media-wrapper--wide': {
-			// 'width': `calc(${ getColWidth( columnsDesk ) }% + ${ getColWidth( columnsDesk ) }% + ${ generateSpacing( gridPostGapUnit, gridPostGap ) })`,
+			// 'width': `calc(${ getColWidth( columnsDesk ) }% + ${ getColWidth( columnsDesk ) }% + ${ generateSpacing( gridImageGapUnit, gridImageGap ) })`,
 			'width': `calc( ${ tileSize }px * 2 )`,
 			'height': `${ tileSize }px`,
 		},
 		'.uag-image-gallery__layout--tiled .uag-image-gallery-media-wrapper--tall': {
-			// 'width': `calc(${ getColWidth( columnsDesk ) }% + ${ getColWidth( columnsDesk ) }% + ${ generateSpacing( gridPostGapUnit, gridPostGap ) })`,
+			// 'width': `calc(${ getColWidth( columnsDesk ) }% + ${ getColWidth( columnsDesk ) }% + ${ generateSpacing( gridImageGapUnit, gridImageGap ) })`,
 			'height': `calc( ${ tileSize }px * 2 )`,
 			'width': `${ tileSize }px`,
 		},
 		'.uag-image-gallery__layout--tiled .uag-image-gallery-media--tiled-wide': {
-			'width': `calc( ( ${ tileSize }px * 2 ) - ( ${ generateSpacing( gridPostGapUnit, gridPostGap ) } * 2 ) )`,
-			'height': `calc( ${ tileSize }px - ( ${ generateSpacing( gridPostGapUnit, gridPostGap ) } * 2 ) )`,
+			'width': `calc( ( ${ tileSize }px * 2 ) - ( ${ generateSpacing( gridImageGapUnit, gridImageGap ) } * 2 ) )`,
+			'height': `calc( ${ tileSize }px - ( ${ generateSpacing( gridImageGapUnit, gridImageGap ) } * 2 ) )`,
 		},
 		'.uag-image-gallery__layout--tiled .uag-image-gallery-media--tiled-tall': {
-			'height': `calc( ( ${ tileSize }px * 2 ) - ( ${ generateSpacing( gridPostGapUnit, gridPostGap ) } * 2 ) )`,
-			'width': `calc( ${ tileSize }px - ( ${ generateSpacing( gridPostGapUnit, gridPostGap ) } * 2 ) )`,
+			'height': `calc( ( ${ tileSize }px * 2 ) - ( ${ generateSpacing( gridImageGapUnit, gridImageGap ) } * 2 ) )`,
+			'width': `calc( ${ tileSize }px - ( ${ generateSpacing( gridImageGapUnit, gridImageGap ) } * 2 ) )`,
 		},
 		'.uag-image-gallery-media': {
 			'border-radius': generateBorderRadius(
-				postBorderRadiusUnit,
-				postBorderRadius,
+				imageBorderRadiusUnit,
+				imageBorderRadius,
 			),
 		},
 
@@ -311,14 +311,14 @@ function styling( props ) {
 
 		// '.uag-image-gallery-media__thumbnail': {
 		// 	'border-radius': generateBorderRadius(
-		// 		postBorderRadiusUnit,
-		// 		postBorderRadius,
+		// 		imageBorderRadiusUnit,
+		// 		imageBorderRadius,
 		// 	),
 		// },
 		'.uag-image-gallery-media__thumbnail-blurrer': {
 			'border-radius': generateBorderRadius(
-				postBorderRadiusUnit,
-				postBorderRadius,
+				imageBorderRadiusUnit,
+				imageBorderRadius,
 			),
 			'-webkit-backdrop-filter': `blur( ${ generateCSSUnit(
 				captionBackgroundBlurAmount,
@@ -344,8 +344,8 @@ function styling( props ) {
 
 		'.uag-image-gallery-media__thumbnail-caption-wrapper': {
 			'border-radius': generateBorderRadius(
-				postBorderRadiusUnit,
-				postBorderRadius,				
+				imageBorderRadiusUnit,
+				imageBorderRadius,				
 			),
 		},
 		'.uag-image-gallery-media__thumbnail-caption-wrapper--overlay': {
@@ -355,17 +355,17 @@ function styling( props ) {
 			'background-color': captionBackgroundColorHover,
 		},		
 		'.uag-image-gallery-media__thumbnail-caption-wrapper--bar-inside': {
-			'-webkit-align-items': getMatrixAlignment( postCaptionAlignment, 1, 'flex' ),
-			'align-items': getMatrixAlignment( postCaptionAlignment, 1, 'flex' ),
-			'-webkit-justify-content': getMatrixAlignment( postCaptionAlignment, 2, 'flex' ),
-			'justify-content': getMatrixAlignment( postCaptionAlignment, 2, 'flex' ),
+			'-webkit-align-items': getMatrixAlignment( imageCaptionAlignment, 1, 'flex' ),
+			'align-items': getMatrixAlignment( imageCaptionAlignment, 1, 'flex' ),
+			'-webkit-justify-content': getMatrixAlignment( imageCaptionAlignment, 2, 'flex' ),
+			'justify-content': getMatrixAlignment( imageCaptionAlignment, 2, 'flex' ),
 		},
 
 		// Caption Selectors
 
 		'.uag-image-gallery-media__thumbnail-caption': {
 			'color': captionColor,
-			'text-align': getMatrixAlignment( postCaptionAlignment, 2 ),
+			'text-align': getMatrixAlignment( imageCaptionAlignment, 2 ),
 			'font-family': captionFontFamily === 'Default' ? '' : captionFontFamily,
 			'font-weight': captionFontWeight,
 			'font-style': captionFontStyle,
@@ -392,13 +392,13 @@ function styling( props ) {
 		},
 		'.uag-image-gallery-media__thumbnail-caption--overlay': {
 			'border-radius': generateBorderRadius(
-				postBorderRadiusUnit,
-				postBorderRadius,				
+				imageBorderRadiusUnit,
+				imageBorderRadius,				
 			),
-			'-webkit-align-items': getMatrixAlignment( postCaptionAlignment, 1, 'flex' ),
-			'align-items': getMatrixAlignment( postCaptionAlignment, 1, 'flex' ),
-			'-webkit-justify-content': getMatrixAlignment( postCaptionAlignment, 2, 'flex' ),
-			'justify-content': getMatrixAlignment( postCaptionAlignment, 2, 'flex' ),
+			'-webkit-align-items': getMatrixAlignment( imageCaptionAlignment, 1, 'flex' ),
+			'align-items': getMatrixAlignment( imageCaptionAlignment, 1, 'flex' ),
+			'-webkit-justify-content': getMatrixAlignment( imageCaptionAlignment, 2, 'flex' ),
+			'justify-content': getMatrixAlignment( imageCaptionAlignment, 2, 'flex' ),
 		},		
 		'.uag-image-gallery-media__thumbnail-caption--bar-inside': {
 			'background-color': captionBackgroundColor,
@@ -451,26 +451,26 @@ function styling( props ) {
 		},
 		'.uag-image-gallery__layout--grid': {
 			'grid-gap': generateCSSUnit(
-				gridPostGapTab,
-				gridPostGapUnitTab
+				gridImageGapTab,
+				gridImageGapUnitTab
 			),
 		},
 		'.uag-image-gallery__layout--masonry .uag-image-gallery-media-wrapper': {
 			'padding': generateSpacing(
-				gridPostGapUnitTab,
-				gridPostGapTab,
+				gridImageGapUnitTab,
+				gridImageGapTab,
 			),
 		},
 		'.uag-image-gallery__layout--carousel .uag-image-gallery-media-wrapper': {
 			'padding': generateSpacing(
-				gridPostGapUnitTab,
-				gridPostGapTab,
+				gridImageGapUnitTab,
+				gridImageGapTab,
 			),
 		},
 		'.uag-image-gallery__layout--tiled .uag-image-gallery-media-wrapper': {
 			'padding': generateSpacing(
-				gridPostGapUnitTab,
-				gridPostGapTab,
+				gridImageGapUnitTab,
+				gridImageGapTab,
 			),
 		},
 		'.uag-image-gallery__layout--tiled .uag-image-gallery-media-spacer': {
@@ -533,26 +533,26 @@ function styling( props ) {
 		},
 		'.uag-image-gallery__layout--grid': {
 			'grid-gap': generateCSSUnit(
-				gridPostGapMob,
-				gridPostGapUnitMob
+				gridImageGapMob,
+				gridImageGapUnitMob
 			),
 		},
 		'.uag-image-gallery__layout--masonry .uag-image-gallery-media-wrapper': {
 			'padding': generateSpacing(
-				gridPostGapUnitMob,
-				gridPostGapMob,
+				gridImageGapUnitMob,
+				gridImageGapMob,
 			),
 		},
 		'.uag-image-gallery__layout--carousel .uag-image-gallery-media-wrapper': {
 			'padding': generateSpacing(
-				gridPostGapUnitMob,
-				gridPostGapMob,
+				gridImageGapUnitMob,
+				gridImageGapMob,
 			),
 		},
 		'.uag-image-gallery__layout--tiled .uag-image-gallery-media-wrapper': {
 			'padding': generateSpacing(
-				gridPostGapUnitMob,
-				gridPostGapMob,
+				gridImageGapUnitMob,
+				gridImageGapMob,
 			),
 		},
 		'.uag-image-gallery__layout--tiled .uag-image-gallery-media-spacer': {
@@ -637,24 +637,24 @@ function styling( props ) {
 
 	// Caption Type based styling
 
-	if ( captionDisplayType === 'bar-outside' && postDisplayCaption ){
-		switch( getMatrixAlignment( postCaptionAlignment, 1 ) ){
+	if ( captionDisplayType === 'bar-outside' && imageDisplayCaption ){
+		switch( getMatrixAlignment( imageCaptionAlignment, 1 ) ){
 			case 'top':
 				selectors[ '.uag-image-gallery-media__thumbnail-caption-wrapper--bar-outside' ] = {
 					...selectors[ '.uag-image-gallery-media__thumbnail-caption-wrapper--bar-outside' ],
-					'border-radius': generateBorderRadius( postBorderRadiusUnit, postBorderRadius, postBorderRadius, 0, 0 ),
+					'border-radius': generateBorderRadius( imageBorderRadiusUnit, imageBorderRadius, imageBorderRadius, 0, 0 ),
 				};
 				selectors[ '.uag-image-gallery-media' ] = {
 					...selectors[ '.uag-image-gallery-media' ],
-					'border-radius': generateBorderRadius( postBorderRadiusUnit, 0, 0, postBorderRadius, postBorderRadius ),
+					'border-radius': generateBorderRadius( imageBorderRadiusUnit, 0, 0, imageBorderRadius, imageBorderRadius ),
 				};
 				selectors[ '.uag-image-gallery-media__thumbnail' ] = {
 					...selectors[ '.uag-image-gallery-media__thumbnail' ],
-					'border-radius': generateBorderRadius( postBorderRadiusUnit, 0, 0, postBorderRadius, postBorderRadius ),
+					'border-radius': generateBorderRadius( imageBorderRadiusUnit, 0, 0, imageBorderRadius, imageBorderRadius ),
 				};
 				selectors[ '.uag-image-gallery-media__thumbnail-blurrer' ] = {
 					...selectors[ '.uag-image-gallery-media__thumbnail-blurrer' ],
-					'border-radius': generateBorderRadius( postBorderRadiusUnit, 0, 0, postBorderRadius, postBorderRadius ),
+					'border-radius': generateBorderRadius( imageBorderRadiusUnit, 0, 0, imageBorderRadius, imageBorderRadius ),
 				};
 				break;
 			case 'center':
@@ -669,19 +669,19 @@ function styling( props ) {
 			case 'bottom':
 				selectors[ '.uag-image-gallery-media__thumbnail-caption-wrapper--bar-outside' ] = {
 					...selectors[ '.uag-image-gallery-media__thumbnail-caption-wrapper--bar-outside' ],
-					'border-radius': generateBorderRadius( postBorderRadiusUnit, 0, 0, postBorderRadius, postBorderRadius ),
+					'border-radius': generateBorderRadius( imageBorderRadiusUnit, 0, 0, imageBorderRadius, imageBorderRadius ),
 				};
 				selectors[ '.uag-image-gallery-media' ] = {
 					...selectors[ '.uag-image-gallery-media' ],
-					'border-radius': generateBorderRadius( postBorderRadiusUnit, postBorderRadius, postBorderRadius, 0, 0 ),
+					'border-radius': generateBorderRadius( imageBorderRadiusUnit, imageBorderRadius, imageBorderRadius, 0, 0 ),
 				};
 				selectors[ '.uag-image-gallery-media__thumbnail' ] = {
 					...selectors[ '.uag-image-gallery-media__thumbnail' ],
-					'border-radius': generateBorderRadius( postBorderRadiusUnit, postBorderRadius, postBorderRadius, 0, 0 ),
+					'border-radius': generateBorderRadius( imageBorderRadiusUnit, imageBorderRadius, imageBorderRadius, 0, 0 ),
 				};
 				selectors[ '.uag-image-gallery-media__thumbnail-blurrer' ] = {
 					...selectors[ '.uag-image-gallery-media__thumbnail-blurrer' ],
-					'border-radius': generateBorderRadius( postBorderRadiusUnit, postBorderRadius, postBorderRadius, 0, 0 ),
+					'border-radius': generateBorderRadius( imageBorderRadiusUnit, imageBorderRadius, imageBorderRadius, 0, 0 ),
 				};
 				break;
 		}
@@ -717,9 +717,9 @@ function styling( props ) {
 
 	// New Zoom Effect on Hover
 
-	switch ( postZoomType ) {
+	switch ( imageZoomType ) {
 		case 'zoom-in':
-			if( postEnableZoom ){
+			if( imageEnableZoom ){
 				selectors[ '.uag-image-gallery-media__thumbnail' ] = {
 					...selectors[ '.uag-image-gallery-media__thumbnail' ],
 					'transform': 'scale(1.005)',
@@ -733,7 +733,7 @@ function styling( props ) {
 			}
 			break;
 		case 'zoom-out':
-			if( postEnableZoom ){
+			if( imageEnableZoom ){
 				selectors[ '.uag-image-gallery-media__thumbnail' ] = {
 					...selectors[ '.uag-image-gallery-media__thumbnail' ],
 					'transform': 'scale(1.025)',

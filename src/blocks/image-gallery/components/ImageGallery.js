@@ -17,7 +17,7 @@ const ImageGallery = ( { attributes, setAttributes, block_id } ) => {
 		mediaGallery,
 		feedLayout,
 		useLightbox,
-		postDisplayCaption,
+		imageDisplayCaption,
 
 		feedMarginTop,
 		feedMarginRight,
@@ -34,17 +34,17 @@ const ImageGallery = ( { attributes, setAttributes, block_id } ) => {
 		feedMarginUnit,
 		feedMarginUnitTab,
 		feedMarginUnitMob,
-		gridPostGap,
-		gridPostGapTab,
-		gridPostGapMob,
-		gridPostGapUnit,
-		gridPostGapUnitTab,
-		gridPostGapUnitMob,
+		gridImageGap,
+		gridImageGapTab,
+		gridImageGapMob,
+		gridImageGapUnit,
+		gridImageGapUnitTab,
+		gridImageGapUnitMob,
 
-		postCaptionLength,
+		imageCaptionLength,
 		captionDisplayType,
-		postCaptionAlignment,
-		postDefaultCaption,
+		imageCaptionAlignment,
+		imageDefaultCaption,
 
 		carouselStartAt,
 		carouselLoop,
@@ -153,12 +153,12 @@ const ImageGallery = ( { attributes, setAttributes, block_id } ) => {
 		feedMarginUnit,
 		feedMarginUnitTab,
 		feedMarginUnitMob,
-		gridPostGap,
-		gridPostGapTab,
-		gridPostGapMob,
-		gridPostGapUnit,
-		gridPostGapUnitTab,
-		gridPostGapUnitMob,
+		gridImageGap,
+		gridImageGapTab,
+		gridImageGapMob,
+		gridImageGapUnit,
+		gridImageGapUnitTab,
+		gridImageGapUnitMob,
 	] );
 
 	useEffect ( () => {
@@ -561,8 +561,8 @@ const ImageGallery = ( { attributes, setAttributes, block_id } ) => {
 	const renderThumbnail = ( mediaObject ) => (
 		<>
 			{ captionDisplayType === "bar-outside" &&
-				getMatrixAlignment( postCaptionAlignment, 1 ) === "top" &&
-				postDisplayCaption && (
+				getMatrixAlignment( imageCaptionAlignment, 1 ) === "top" &&
+				imageDisplayCaption && (
 					<div
 						className={ classnames(
 							`uag-image-gallery-media__thumbnail-caption-wrapper`,
@@ -584,7 +584,7 @@ const ImageGallery = ( { attributes, setAttributes, block_id } ) => {
 					src={ mediaObject.url }
 				/>
 				<div className="uag-image-gallery-media__thumbnail-blurrer"></div>
-				{ postDisplayCaption
+				{ imageDisplayCaption
 					? (
 						captionDisplayType !== "bar-outside" && (
 							<div
@@ -608,8 +608,8 @@ const ImageGallery = ( { attributes, setAttributes, block_id } ) => {
 				}
 			</div>
 			{ captionDisplayType === "bar-outside" &&
-				getMatrixAlignment( postCaptionAlignment, 1 ) !== "top" &&
-				postDisplayCaption && (
+				getMatrixAlignment( imageCaptionAlignment, 1 ) !== "top" &&
+				imageDisplayCaption && (
 					<div
 						className={ classnames(
 							`uag-image-gallery-media__thumbnail-caption-wrapper`,
@@ -624,23 +624,23 @@ const ImageGallery = ( { attributes, setAttributes, block_id } ) => {
 
 	const renderCaption = ( mediaObject ) => {
 		// Utilizing Constant instead of Attribute for always active state.
-		const postCaptionOnlyWords = true;
+		const imageCaptionOnlyWords = true;
 		let needsEllipsis = mediaObject.caption ? true : false;
 		let limitedCaption = mediaObject.caption
 			? mediaObject.caption
 			: ( mediaObject.url
 				? ( useLightbox
 					? "Click to view image"
-					: postDefaultCaption
+					: imageDefaultCaption
 				)
 				: "Unable to load image"
 			);
-		if ( needsEllipsis && mediaObject.caption.length <= postCaptionLength ) {
+		if ( needsEllipsis && mediaObject.caption.length <= imageCaptionLength ) {
 			// The caption is already below the limiter.
 			needsEllipsis = false;
 		} else if ( needsEllipsis ) {
-			limitedCaption = limitedCaption.substr( 0, postCaptionLength );
-			if ( postCaptionOnlyWords ) {
+			limitedCaption = limitedCaption.substr( 0, imageCaptionLength );
+			if ( imageCaptionOnlyWords ) {
 				if ( limitedCaption.lastIndexOf( " " ) === -1 ) {
 					// There's only 1 word.
 					if ( mediaObject.caption.lastIndexOf( " " ) === -1 ) {

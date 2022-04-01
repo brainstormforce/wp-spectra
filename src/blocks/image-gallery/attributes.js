@@ -46,14 +46,14 @@ const attributes = {
 		type: 'boolean',
 		default: true,
 	},
-	postDisplayCaption: {
+	imageDisplayCaption: {
 		type: 'boolean',
 		default: true,
 	},
 
 	// Caption Settings
 	
-	postCaptionLength: {
+	imageCaptionLength: {
 		type: 'number',
 		default: 30,
 	},
@@ -61,19 +61,19 @@ const attributes = {
 		type: 'string',
 		default: 'overlay',
 	},
-	postCaptionAlignment: {
+	imageCaptionAlignment: {
 		type: 'string',
 		default: 'center center',
 	},
-	postCaptionAlignment01: {
+	imageCaptionAlignment01: {
 		type: 'string',
 		default: 'center',
 	},
-	postCaptionAlignment02: {
+	imageCaptionAlignment02: {
 		type: 'string',
 		default: 'center',
 	},
-	postDefaultCaption: {
+	imageDefaultCaption: {
 		type: 'string',
 		default: 'No Caption',
 	},
@@ -164,27 +164,27 @@ const attributes = {
 		type: 'number',
 		default: 3,
 	},
-	gridPostGap: {
+	gridImageGap: {
 		type: 'number',
 		default: 2,
 	},
-	gridPostGapTab: {
+	gridImageGapTab: {
 		type: 'number',
 		default: 2,
 	},
-	gridPostGapMob: {
+	gridImageGapMob: {
 		type: 'number',
 		default: 2,
 	},
-	gridPostGapUnit: {
+	gridImageGapUnit: {
 		type: 'string',
 		default: 'px',
 	},
-	gridPostGapUnitTab: {
+	gridImageGapUnitTab: {
 		type: 'string',
 		default: 'px',
 	},
-	gridPostGapUnitMob: {
+	gridImageGapUnitMob: {
 		type: 'string',
 		default: 'px',
 	},
@@ -336,7 +336,7 @@ const attributes = {
 	},
 	paginateButtonText: {
 		type: 'string',
-		default: 'Load More Posts',
+		default: 'Load More Images',
 	},
 	paginateButtonPaddingTop: {
 		type: 'number',
@@ -403,21 +403,21 @@ const attributes = {
 		default: false,
 	},
 
-	// Post Styling
+	// Image Styling
 
-	postBorderRadius: {
+	imageBorderRadius: {
 		type: 'number',
 		default: 0,
 	},
-	postBorderRadiusUnit: {
+	imageBorderRadiusUnit: {
 		type: 'string',
 		default: 'px',
 	},
-	postEnableZoom: {
+	imageEnableZoom: {
 		type: 'boolean',
 		default: true,
 	},
-	postZoomType: {
+	imageZoomType: {
 		type: 'string',
 		default: 'zoom-in',
 	},

@@ -31,7 +31,7 @@ import {
 } from '@wordpress/components';
 import UAGAdvancedPanelBody from '@Components/advanced-panel-body';
 
-const MAX_POSTS_COLUMNS = 8;
+const MAX_IMAGE_COLUMNS = 8;
 
 const Settings = ( props ) => {
 	props = props.parentProps;
@@ -45,23 +45,23 @@ const Settings = ( props ) => {
 		mediaIDs,
 		feedLayout,
 		useLightbox,
-		postDisplayCaption,
+		imageDisplayCaption,
 		
 		columnsDesk,
 		columnsTab,
 		columnsMob,
-		gridPostGap,
-		gridPostGapTab,
-		gridPostGapMob,
-		gridPostGapUnit,
-		gridPostGapUnitTab,
-		gridPostGapUnitMob,
+		gridImageGap,
+		gridImageGapTab,
+		gridImageGapMob,
+		gridImageGapUnit,
+		gridImageGapUnitTab,
+		gridImageGapUnitMob,
 
-		postCaptionLength,
+		imageCaptionLength,
 		captionDisplayType,
-		postCaptionAlignment,
-		postCaptionAlignment01,
-		postCaptionAlignment02,
+		imageCaptionAlignment,
+		imageCaptionAlignment01,
+		imageCaptionAlignment02,
 		captionPaddingTop,
 		captionPaddingRight,
 		captionPaddingBottom,
@@ -131,10 +131,10 @@ const Settings = ( props ) => {
 		paginateButtonPaddingUnitMob,
 		paginateButtonPaddingUnitLink,
 		
-		postBorderRadius,
-		postBorderRadiusUnit,
-		postEnableZoom,
-		postZoomType,
+		imageBorderRadius,
+		imageBorderRadiusUnit,
+		imageEnableZoom,
+		imageZoomType,
 		captionBackgroundEnableBlur,
 		captionBackgroundBlurAmount,
 
@@ -210,8 +210,8 @@ const Settings = ( props ) => {
 	};
 
 	useEffect( () => {
-		setAttributes( { postCaptionAlignment: `${ postCaptionAlignment01 } ${ postCaptionAlignment02 }` } );
-	},  [ postCaptionAlignment01, postCaptionAlignment02 ] );
+		setAttributes( { imageCaptionAlignment: `${ imageCaptionAlignment01 } ${ imageCaptionAlignment02 }` } );
+	},  [ imageCaptionAlignment01, imageCaptionAlignment02 ] );
 
 	const updateMediaGallery = ( media ) => {
         let goodToGo = true;
@@ -231,9 +231,9 @@ const Settings = ( props ) => {
 
 	const updateSplitAlignments = ( matrixValue ) => {
 		setAttributes( {
-			// postCaptionAlignment: matrixValue,
-			postCaptionAlignment01: getMatrixAlignment( matrixValue, 1 ),
-			postCaptionAlignment02: getMatrixAlignment( matrixValue, 2 ),
+			// imageCaptionAlignment: matrixValue,
+			imageCaptionAlignment01: getMatrixAlignment( matrixValue, 1 ),
+			imageCaptionAlignment02: getMatrixAlignment( matrixValue, 2 ),
 		} );
 	};
 
@@ -244,9 +244,7 @@ const Settings = ( props ) => {
 			: setAttributes( { feedPagination: false, gridPageNumber: 1 } );
 		setAttributes( { feedLayout: layoutType } );
 		// Next Disable Bar Outside Image for Grid and Tiles...
-		console.log( captionDisplayType );
 		if ( ( layoutType === 'grid' || layoutType === 'tiled' ) && captionDisplayType === 'bar-outside' ){
-			console.log( "CONDITION MET!" );
 			setAttributes( { captionDisplayType: 'bar-inside' } );
 		}
 	};
@@ -335,7 +333,7 @@ const Settings = ( props ) => {
 				isHover
 			) }
 			{/* The entire section above can be created into a component  if required in the future */}
-			{ postDisplayCaption && (
+			{ imageDisplayCaption && (
 				<AdvancedPopColorControl
 					label={ __( 'Caption Color', 'ultimate-addons-for-gutenberg' ) }
 					colorValue={
@@ -357,7 +355,7 @@ const Settings = ( props ) => {
 			<AdvancedPopColorControl
 				label={ __(
 					`${
-						postDisplayCaption
+						imageDisplayCaption
 						? titleFromValue( captionDisplayType ).split( ' ' )[ 0 ]
 						: 'Overlay'
 					} Color`,
@@ -477,7 +475,7 @@ const Settings = ( props ) => {
 
 	const userSettings = () => (
 		<>
-			<UAGAdvancedPanelBody title={ __( 'User Settings' ) } initialOpen={ true }>
+			<UAGAdvancedPanelBody title={ __( 'User Settings', 'ultimate-addons-for-gutenberg' ) } initialOpen={ true }>
 				<p>{ __( 'Select a user from the drop-down to begin!', 'ultimate-addons-for-gutenberg' ) }</p>
 			</UAGAdvancedPanelBody>
 			<Notice status='success' isDismissible={ false }>
@@ -486,8 +484,8 @@ const Settings = ( props ) => {
 		</>
 	);
 
-	const postSettings = () => (
-		<UAGAdvancedPanelBody title={ __( 'Gallery Settings' ) } initialOpen={ true }>
+	const imageSettings = () => (
+		<UAGAdvancedPanelBody title={ __( 'Gallery Settings', 'ultimate-addons-for-gutenberg' ) } initialOpen={ true }>
 			<MultiMediaSelector
 				componentLabel={ 'Update Gallery' }
 				mediaTypeLabel={ 'Images' }
@@ -506,21 +504,21 @@ const Settings = ( props ) => {
 			/>
 			<ToggleControl
 				label={ __( 'Display Captions', 'ultimate-addons-for-gutenberg' ) }
-				checked={ postDisplayCaption }
+				checked={ imageDisplayCaption }
 				onChange={ () =>
-					setAttributes( { postDisplayCaption: ! postDisplayCaption } )
+					setAttributes( { imageDisplayCaption: ! imageDisplayCaption } )
 				}
 			/>
 		</UAGAdvancedPanelBody>
 	);
 	
 	const captionSettings = () => (
-		<UAGAdvancedPanelBody title={ __( 'Caption Settings' ) } initialOpen={ false }>
+		<UAGAdvancedPanelBody title={ __( 'Caption Settings', 'ultimate-addons-for-gutenberg' ) } initialOpen={ false }>
 			<Range
 				label={ __( 'Max Caption Length (Characters)', 'ultimate-addons-for-gutenberg' ) }
 				setAttributes={ setAttributes }
-				value={ postCaptionLength }
-				onChange={ ( value ) => setAttributes( { postCaptionLength: value } ) }
+				value={ imageCaptionLength }
+				onChange={ ( value ) => setAttributes( { imageCaptionLength: value } ) }
 				min={ 1 }
 				max={ 100 }
 				displayUnit={ false }
@@ -540,7 +538,7 @@ const Settings = ( props ) => {
 							</span>
 							<AlignmentMatrixControl
 								label={ __( 'Caption Alignment', 'ultimate-addons-for-gutenberg' ) }
-								value={ postCaptionAlignment }
+								value={ imageCaptionAlignment }
 								onChange={ ( value ) => updateSplitAlignments( value ) }
 							/>
 						</>
@@ -554,8 +552,8 @@ const Settings = ( props ) => {
 									'ultimate-addons-for-gutenberg'
 								) }
 								data={ {
-									value: postCaptionAlignment01,
-									label: 'postCaptionAlignment01',
+									value: imageCaptionAlignment01,
+									label: 'imageCaptionAlignment01',
 								} }
 								options={ [
 									{
@@ -573,7 +571,7 @@ const Settings = ( props ) => {
 								] }
 								showIcons={ false }
 							/>
-							{ ( ( captionDisplayType === 'bar-outside' ) && ( getMatrixAlignment( postCaptionAlignment, 1 ) === 'center' ) ) && (
+							{ ( ( captionDisplayType === 'bar-outside' ) && ( getMatrixAlignment( imageCaptionAlignment, 1 ) === 'center' ) ) && (
 								<Range
 									label={ __( 'Caption Gap', 'ultimate-addons-for-gutenberg' ) }
 									setAttributes={ setAttributes }
@@ -606,8 +604,8 @@ const Settings = ( props ) => {
 									'ultimate-addons-for-gutenberg'
 								) }
 								data={ {
-									value: postCaptionAlignment02,
-									label: 'postCaptionAlignment02',
+									value: imageCaptionAlignment02,
+									label: 'imageCaptionAlignment02',
 								} }
 								className="uagb-multi-button-alignment-control"
 								options={ [
@@ -732,7 +730,7 @@ const Settings = ( props ) => {
 	);
 	
 	const layoutSettings = () => (
-		<UAGAdvancedPanelBody title={ __( 'Layout Settings' ) } initialOpen={ false }>
+		<UAGAdvancedPanelBody title={ __( 'Layout Settings', 'ultimate-addons-for-gutenberg' ) } initialOpen={ false }>
 			<SelectControl
 				label={ __( 'Layout Type', 'ultimate-addons-for-gutenberg' ) }
 				value={ feedLayout }
@@ -773,7 +771,7 @@ const Settings = ( props ) => {
 					},
 				} }
 				min={ 1 }
-				max={ Math.min( MAX_POSTS_COLUMNS, mediaGallery.length ) }
+				max={ Math.min( MAX_IMAGE_COLUMNS, mediaGallery.length ) }
 				displayUnit={ false }
 				setAttributes={ setAttributes }
 			/>
@@ -865,27 +863,27 @@ const Settings = ( props ) => {
 				label={ __( `Gap ${ feedLayout === 'grid' ? 'Between' : 'Around' } Images`, 'ultimate-addons-for-gutenberg' ) }
 				data={ {
 					desktop: {
-						value: gridPostGap,
-						label: 'gridPostGap',
+						value: gridImageGap,
+						label: 'gridImageGap',
 						unit: {
-							value: gridPostGapUnit,
-							label: 'gridPostGapUnit',
+							value: gridImageGapUnit,
+							label: 'gridImageGapUnit',
 						},
 					},
 					tablet: {
-						value: gridPostGapTab,
-						label: 'gridPostGapTab',
+						value: gridImageGapTab,
+						label: 'gridImageGapTab',
 						unit: {
-							value: gridPostGapUnitTab,
-							label: 'gridPostGapUnitTab',
+							value: gridImageGapUnitTab,
+							label: 'gridImageGapUnitTab',
 						},
 					},
 					mobile: {
-						value: gridPostGapMob,
-						label: 'gridPostGapMob',
+						value: gridImageGapMob,
+						label: 'gridImageGapMob',
 						unit: {
-							value: gridPostGapUnitMob,
-							label: 'gridPostGapUnitMob',
+							value: gridImageGapUnitMob,
+							label: 'gridImageGapUnitMob',
 						},
 					},
 				} }
@@ -908,12 +906,13 @@ const Settings = ( props ) => {
 	
 	const layoutSpecificSettings = () => (
 		<UAGAdvancedPanelBody title={ __(
-			`${ ( feedLayout === 'carousel' || feedLayout === 'tiled' ) ? titleFromValue( feedLayout ) : 'Pagination' } Settings`
+			`${ ( feedLayout === 'carousel' || feedLayout === 'tiled' ) ? titleFromValue( feedLayout ) : 'Pagination' } Settings`,
+			'ultimate-addons-for-gutenberg' 
 		) } initialOpen={ false }>
 			{ ( feedLayout === 'carousel' ) && (
 				<>
 					<Range
-						label={ __( `Starting Post`, 'ultimate-addons-for-gutenberg' ) }
+						label={ __( `Starting Image`, 'ultimate-addons-for-gutenberg' ) }
 						setAttributes={ setAttributes }
 						value={ carouselStartAt + 1 }
 						onChange={ ( value ) => setAttributes( { carouselStartAt: value -1 } ) }
@@ -1237,20 +1236,20 @@ const Settings = ( props ) => {
 		</UAGAdvancedPanelBody>
 	);
 
-	const postStyling = () => (
-		<UAGAdvancedPanelBody title={ __( 'Post Settings' ) } initialOpen={ true }>
+	const imageStyling = () => (
+		<UAGAdvancedPanelBody title={ __( 'Image Settings', 'ultimate-addons-for-gutenberg' ) } initialOpen={ true }>
 			<Range
-				label={ __( 'Post Border Radius', 'ultimate-addons-for-gutenberg' ) }
+				label={ __( 'Image Border Radius', 'ultimate-addons-for-gutenberg' ) }
 				setAttributes={ setAttributes }
-				value={ postBorderRadius }
+				value={ imageBorderRadius }
 				onChange={ ( value ) =>
-					setAttributes( { postBorderRadius: value } )
+					setAttributes( { imageBorderRadius: value } )
 				}
 				min={ 0 }
 				max={ 100 }
 				unit={ {
-					value: postBorderRadiusUnit,
-					label: 'postBorderRadiusUnit',
+					value: imageBorderRadiusUnit,
+					label: 'imageBorderRadiusUnit',
 				} }
 				units={ [
 					{
@@ -1338,12 +1337,12 @@ const Settings = ( props ) => {
 					`Enable Hover Zoom`,
 					'ultimate-addons-for-gutenberg'
 				) }
-				checked={ postEnableZoom }
+				checked={ imageEnableZoom }
 				onChange={ () => 
-					setAttributes( { postEnableZoom: ! postEnableZoom } )
+					setAttributes( { imageEnableZoom: ! imageEnableZoom } )
 					}
 			/>
-			{ postEnableZoom && (
+			{ imageEnableZoom && (
 				<MultiButtonsControl
 					setAttributes={ setAttributes }
 					label={ __(
@@ -1351,8 +1350,8 @@ const Settings = ( props ) => {
 						'ultimate-addons-for-gutenberg'
 					) }
 					data={ {
-						value: postZoomType,
-						label: 'postZoomType',
+						value: imageZoomType,
+						label: 'imageZoomType',
 					} }
 					options={ [
 						{
@@ -1419,7 +1418,7 @@ const Settings = ( props ) => {
 	);
 
 	const paginationStyling = () => (
-		<UAGAdvancedPanelBody title={ __( 'Pagination Settings' ) } initialOpen={ false }>
+		<UAGAdvancedPanelBody title={ __( 'Pagination Settings', 'ultimate-addons-for-gutenberg' ) } initialOpen={ false }>
 			{ ( paginateUseArrows && feedLayout === 'carousel' ) && (
 				<>
 					<Range
@@ -1633,14 +1632,14 @@ const Settings = ( props ) => {
 				<InspectorTabs>
 					<InspectorTab { ...UAGTabs.general }>
 						{ ! readyToRender && userSettings() }
-						{ readyToRender && postSettings() }
-						{ ( readyToRender && postDisplayCaption ) && captionSettings() }
+						{ readyToRender && imageSettings() }
+						{ ( readyToRender && imageDisplayCaption ) && captionSettings() }
 						{ readyToRender && layoutSettings() }
 						{ ( readyToRender && feedLayout !== 'tiled' ) && layoutSpecificSettings() }
 					</InspectorTab>
 					<InspectorTab { ...UAGTabs.style }>
 						{ ! readyToRender && userSettings() }
-						{ readyToRender && postStyling() }
+						{ readyToRender && imageStyling() }
 						{ ( readyToRender && feedPagination ) && paginationStyling() }
 					</InspectorTab>
 					<InspectorTab
