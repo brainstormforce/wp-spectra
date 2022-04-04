@@ -472,6 +472,7 @@ const UAGBPostMasonry = ( props ) => {
 		contentPaddingUnit,
 		postsOffset,
 		taxStyle,
+		taxDivider,
 		displayPostTaxonomyAboveTitle,
 		hideTaxonomyIcon,
 		highlightedTextColor,
@@ -1305,6 +1306,17 @@ const UAGBPostMasonry = ( props ) => {
 						},
 					] }
 				/>
+				{ 'default' === taxStyle && (
+					<TextControl
+						label={ __( 'Taxonomy Divider', 'ultimate-addons-for-gutenberg' ) }
+						value={ taxDivider }
+						onChange={ ( value ) =>
+							setAttributes( {
+								taxDivider: value,
+							} )
+						}
+					/>
+				) }
 				</>
 				) }
 				<ToggleControl

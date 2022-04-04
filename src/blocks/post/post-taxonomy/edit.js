@@ -3,7 +3,7 @@ export const PostTaxonomy = ( props ) => {
 
 	const { post, categoriesList } = props;
 
-	const { taxStyle, displayPostTaxonomy, displayPostTaxonomyAboveTitle, hideTaxonomyIcon } = props.attributes;
+	const { taxStyle, displayPostTaxonomy, displayPostTaxonomyAboveTitle, hideTaxonomyIcon, taxDivider } = props.attributes;
 
 	const list = categoriesList;
 	const cat = post.categories;
@@ -14,22 +14,39 @@ export const PostTaxonomy = ( props ) => {
 			for ( let i = 0; i < cat.length; i++ ) {
 				if ( list[ j ].id === cat[ i ] ) {
 					categoriesName.push( list[ j ].name );
+					// categoriesName.join( taxDivider )
 				}
 			}
 		}
 	}
-
+// console.log(categoriesName.join( taxDivider ))
 	return (
 		<>
 			{ displayPostTaxonomy && displayPostTaxonomyAboveTitle && (
-				<span className={`uagb-post__text uagb-post__taxonomy ${taxStyle}`}>
+				<>
+				{ ( 'default' === taxStyle ) && (
+					<span className="uagb-post__taxonomy normal">
 					{ ( hideTaxonomyIcon && displayPostTaxonomyAboveTitle ) && ( <span className="dashicons-tag dashicons"></span> ) }
 					<div
 						dangerouslySetInnerHTML={ {
-							__html: categoriesName.join( ', ' ),
+							__html: categoriesName.join( taxDivider ),
 						} }
 					></div>
-				</span>
+					</span>
+				) }
+				{ ( 'highlighted' === taxStyle ) && (
+				list.map( ( Litem ) => (
+					cat.map( ( Citem ) => (
+						( Litem.id === Citem ) && (
+							<span className={`uagb-post__taxonomy ${taxStyle}`}>
+							{ ( hideTaxonomyIcon && displayPostTaxonomyAboveTitle ) && ( <span className="dashicons-tag dashicons"></span> ) }
+							{Litem.name}
+							</span>
+						)
+					) )
+				) )
+			) }
+			</>
 			) }
 		</>
 	);
