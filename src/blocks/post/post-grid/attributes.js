@@ -744,7 +744,7 @@ const attributes = {
 	highlightedTextBgColor: {
 		type    : 'string',
 		default : '',
-	}
+	},
 }
 
 export default attributes;

@@ -13,7 +13,10 @@
 		.uagb-post__taxonomy {
 			display: inline-flex;
 			flex-wrap: wrap;
-			margin: 5px 5px 5px 20px;
+
+			&.default {
+				margin: 5px 5px 5px 20px;
+			}
 
 			&.highlighted {
 				background: #444;
@@ -23,6 +26,7 @@
 				align-items: flex-end;
 				padding: 6px 8px;
 				line-height: 1;
+				margin: 5px 5px 5px 20px;
 
 				a {
 					color: #fff;
@@ -187,6 +191,10 @@
 		color: inherit;
 		font-size: inherit;
 		text-decoration: none;
+	}
+
+	.uagb-post__text.uagb-post-grid-byline > span {
+		padding-right: 10px;
 	}
 
 	.uagb-post__title a,

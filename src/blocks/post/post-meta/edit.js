@@ -34,7 +34,7 @@ export const PostMeta = ( props ) => {
 			{ attributes.displayPostAuthor &&
 				undefined !== post.uagb_author_info && (
 					<span className="uagb-post__author">
-						<span className="dashicons-admin-users dashicons"></span>
+						{ attributes.hideTaxonomyIcon && <span className="dashicons-admin-users dashicons"></span> }
 						<a
 							target="_blank"
 							href={ post.uagb_author_info.author_link }
@@ -50,7 +50,7 @@ export const PostMeta = ( props ) => {
 					dateTime={ format( 'c', post.date_gmt ) }
 					className="uagb-post__date"
 				>
-					<span className="dashicons-calendar dashicons"></span>
+					{ attributes.hideTaxonomyIcon && <span className="dashicons-calendar dashicons"></span> }
 					{ dateI18n( dateFormat, post.date_gmt ) }
 				</time>
 			) }
@@ -58,14 +58,14 @@ export const PostMeta = ( props ) => {
 			{ attributes.displayPostComment &&
 				undefined !== post.uagb_comment_info && (
 					<span className="uagb-post__comment">
-						<span className="dashicons-admin-comments dashicons"></span>
+						{ attributes.hideTaxonomyIcon && <span className="dashicons-admin-comments dashicons"></span> }
 						{ post.uagb_comment_info }
 					</span>
 				) }
 
 			{ attributes.displayPostTaxonomy && ! attributes.displayPostTaxonomyAboveTitle && (
 					<span className="uagb-post__taxonomy">
-					<span className="dashicons-tag dashicons"></span>
+					{ attributes.hideTaxonomyIcon && <span className="dashicons-tag dashicons"></span> }
 					<div
 						dangerouslySetInnerHTML={ {
 							__html: categoriesName.join( ', ' ),

@@ -1604,7 +1604,7 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 				$attributes['taxStyle'],
 			) : array( 'uagb-post__taxonomy' );
 
-			if ( 'default' === $attributes['taxStyle'] ){
+			if ( ( 'default' === $attributes['taxStyle'] && true === $attributes['displayPostTaxonomyAboveTitle'] ) || ! $attributes['displayPostTaxonomyAboveTitle'] ){
 				?>
 				<span class='<?php esc_html_e( implode( ' ', $wrap ) ); ?>'>
 					<?php echo ( ! $attributes['displayPostTaxonomyAboveTitle'] ) ? '<span class="dashicons-tag dashicons"></span>' : ''; ?>
@@ -1621,7 +1621,7 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 				</span>
 				<?php
 			}
-			if ( 'highlighted' === $attributes['taxStyle'] ){
+			if ( 'highlighted' === $attributes['taxStyle'] && true === $attributes['displayPostTaxonomyAboveTitle'] ){
 				$terms_list = array();
 				foreach ( $terms as $key => $value ) {
 					// Get the URL of this category.
