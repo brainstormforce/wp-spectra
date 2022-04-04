@@ -54,7 +54,7 @@ UAGBForms = { // eslint-disable-line no-undef
 			}
 		}
 
-		const reCaptchaSiteKeyV2 = '', reCaptchaSiteKeyV3 = '';
+		let reCaptchaSiteKeyV2 = '', reCaptchaSiteKeyV3 = '';
 
 		//append recaptcha js when enabled.
 		if ( attr.reCaptchaEnable === true && attr.reCaptchaType === 'v2' ) {

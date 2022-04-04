@@ -15,7 +15,7 @@ import { registerBlockType } from '@wordpress/blocks';
 
 if( attributes.reCaptchaEnable ) {
 
-	if( attributes.reCaptchaType == 'v2' ) {
+	if( attributes.reCaptchaType === 'v2' ) {
 
 		uagb_blocks_info.recaptcha_site_key_v2 = attributes.reCaptchaSiteKeyV2;
 		uagb_blocks_info.recaptcha_secret_key_v2= attributes.reCaptchaSecretKeyV2;
