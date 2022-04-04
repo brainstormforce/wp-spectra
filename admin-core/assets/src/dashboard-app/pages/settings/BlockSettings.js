@@ -90,25 +90,25 @@ const BlockSettings = () => {
 				<h3 className="text-lg leading-6 font-medium text-gray-900">
 					{__( 'Google Recaptcha', 'ultimate-addons-for-gutenberg' )}
 				</h3>
-				<p className="mt-[0.6rem] text-sm ">
-					{ __( 'Enable the "Collapse Panels" option if you want to Collapse all other Panels in your Blocks Settings except for the one which is clicked This way you have only one Panel of Settings in front of you to Focus on.', 'ultimate-addons-for-gutenberg' ) }
+				<p className="mt-[0.6rem] text-sm">
+					{ __( 'To enable recaptcha feature on your forms blocks Please enable recaptcha option on your blocks setting and select version. Add google recaptcha secret and site key here. Recaptcha will be added to your page on front-end.', 'ultimate-addons-for-gutenberg' ) }
 				</p>
 			</div>
 		</section>
 		<section className='flex border-b border-solid border-slate-200'>
-
-
-				<div className='pr-16 pb-8 w-[50%]'>
-					<label className='pt-8'>Site Key V2</label>
-					<input className="appearance-none block w-300 h-8 bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 pr-0 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" value={siteKeyV2} name='site_key_v2' onChange={updateRecaptchaSiteKeyV2} id="grid-zip"  type="text"  />
-					<label className='pt-8'>Secret Key V2</label>
-					<input className="appearance-none block w-300 h-8 bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 pr-0 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-zip"  value={secretKeyV2} name='secret_key_v2' onChange={updateRecaptchaSecretKeyV2}  type="text"  />
+				<div className='pr-16 pb-8 w-[50%] spectra-recaptcha-input-field'>
+					<h3 className="mb-5 font-medium text-md text-gray-900">
+						{__( 'V2', 'ultimate-addons-for-gutenberg' )}
+					</h3>
+					<input placeholder="Site Key V2" className="mb-5 appearance-none block w-300 h-8 bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 pr-0 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" value={siteKeyV2} name='site_key_v2' onChange={updateRecaptchaSiteKeyV2} id="grid-zip"  type="text"  />
+					<input placeholder="Secret Key V2" className="mb-5 appearance-none block w-300 h-8 bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 pr-0 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-zip"  value={secretKeyV2} name='secret_key_v2' onChange={updateRecaptchaSecretKeyV2}  type="text"  />
 				</div>
-				<div className='pr-16 pb-8 w-[50%]'>
-					<label className='pt-8'>Site Key V3</label>
-					<input className="appearance-none block w-300 h-8 bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 pr-0 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-zip"  type="text"  value={siteKeyV3} name='site_key_v3' onChange={updateRecaptchaSiteKeyV3}/>
-					<label className='pt-8'>Secret Key V3</label>
-					<input className="appearance-none block w-300 h-8 bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 pr-0 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-zip"  type="text"  value={secretKeyV3} name='secret_key_v3' onChange={updateRecaptchaSecretKeyV3}/>
+				<div className='pr-16 pb-8 w-[50%] spectra-recaptcha-input-field'>
+					<h3 className="mb-5 font-medium text-md text-gray-900">
+						{__( 'V3', 'ultimate-addons-for-gutenberg' )}
+					</h3>
+					<input placeholder="Site Key V3" className="mb-5 appearance-none block w-300 h-8 bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 pr-0 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-zip"  type="text"  value={siteKeyV3} name='site_key_v3' onChange={updateRecaptchaSiteKeyV3}/>
+					<input placeholder="Secret Key V3" className="mb-5 appearance-none block w-300 h-8 bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 pr-0 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-zip"  type="text"  value={secretKeyV3} name='secret_key_v3' onChange={updateRecaptchaSecretKeyV3}/>
 				</div>
 			</section>
 		</>

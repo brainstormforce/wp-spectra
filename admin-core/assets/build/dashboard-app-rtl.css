@@ -636,6 +636,8 @@ select {
   margin-right: -1px;
 }.mt-\[0\.6rem\] {
   margin-top: 0.6rem;
+}.mb-5 {
+  margin-bottom: 1.25rem;
 }.mt-8 {
   margin-top: 2rem;
 }.-ml-1 {
@@ -965,8 +967,6 @@ select {
   padding-left: 4rem;
 }.pb-8 {
   padding-bottom: 2rem;
-}.pt-8 {
-  padding-top: 2rem;
 }.pr-0 {
   padding-left: 0px;
 }.pt-4 {
