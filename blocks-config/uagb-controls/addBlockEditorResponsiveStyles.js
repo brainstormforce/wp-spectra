@@ -1,4 +1,4 @@
-const addBlockEditorDynamicStyles = ( clientId, styling, deviceTypeClass ) => {
+const addBlockEditorResponsiveStyles = ( clientId, styling, deviceTypeClass ) => {
 
 
 
@@ -54,4 +54,4 @@ const addBlockEditorDynamicStyles = ( clientId, styling, deviceTypeClass ) => {
     }
 }
 
-export default addBlockEditorDynamicStyles;
+export default addBlockEditorResponsiveStyles;
