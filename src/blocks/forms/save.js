@@ -18,8 +18,6 @@ export default function save( props ) {
 		failedMessage,
 		reCaptchaEnable,
 		reCaptchaType,
-		reCaptchaSiteKeyV2,
-		reCaptchaSecretKeyV2,
 		buttonSize,
 	} = attributes;
 
@@ -69,13 +67,11 @@ export default function save( props ) {
 					/>
 				</div>
 				{ reCaptchaEnable &&
-					'v2' === reCaptchaType &&
-					reCaptchaSiteKeyV2 &&
-					reCaptchaSecretKeyV2 && (
+					'v2' === reCaptchaType && (
 						<>
 							<div
 								className="g-recaptcha uagb-forms-field-set"
-								data-sitekey={ reCaptchaSiteKeyV2 }
+								data-sitekey={ uagb_blocks_info.recaptcha_site_key_v2 }
 							></div>
 							<div
 								className={ `uagb-form-reacaptcha-error-${ block_id }` }

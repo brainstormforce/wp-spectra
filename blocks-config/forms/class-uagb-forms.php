@@ -70,11 +70,10 @@ if ( ! class_exists( 'UAGB_Forms' ) ) {
 				'recaptcha_secret_key_v2' => \UAGB_Admin_Helper::get_admin_settings_option( 'uag_recaptcha_secret_key_v2', '' ),
 				'recaptcha_secret_key_v3' => \UAGB_Admin_Helper::get_admin_settings_option( 'uag_recaptcha_secret_key_v3', '' ),
 			);
-			$google_recaptcha_enable = $_POST['uagab_captcha']['captchaEnable'];
 
-			if ( $google_recaptcha_enable ) {
+			if ( isset ( $_POST['captcha_version'] ) ) {
 
-				$google_recaptcha_version = $_POST['uagab_captcha']['captchaVersion'];
+				$google_recaptcha_version = $_POST['captcha_version'];
 
 				if ( 'v2' === $google_recaptcha_version ) {
 
@@ -86,7 +85,6 @@ if ( ! class_exists( 'UAGB_Forms' ) ) {
 
 				}
 				// Google recaptcha secret key verification starts.
-
 				$google_recaptcha = isset( $_POST['captcha_response'] ) ? sanitize_text_field( $_POST['captcha_response'] ) : '';
 				$remoteip         = isset( $_SERVER['REMOTE_ADDR'] ) ? sanitize_text_field( $_SERVER['REMOTE_ADDR'] ) : '';
 
@@ -95,27 +93,29 @@ if ( ! class_exists( 'UAGB_Forms' ) ) {
 
 				$errors = new WP_Error();
 				if ( empty( $google_recaptcha ) || empty( $remoteip ) ) {
+
 					$errors->add( 'invalid_api', __( 'Please try logging in again to verify that you are not a robot.', 'ultimate-addons-of-gutenberg' ) );
 					return $errors;
 				} else {
+
 					$google_response = add_query_arg(
 						array(
 							'secret'   => $google_recaptcha_secret_key,
 							'response' => $google_recaptcha,
-							'remoteip' => $_SERVER['REMOTE_ADDR'],
+							'remoteip' => $remoteip,
 						),
 						$google_url
 					);
 					if ( is_wp_error( $google_response ) ) {
+
 						$errors->add( 'invalid_recaptcha', __( 'Please try logging in again to verify that you are not a robot.', 'ultimate-addons-of-gutenberg' ) );
 						return $errors;
 					} else {
-						$response = wp_remote_retrieve_body( $google_response );
-						$response = json_decode( $response );
+						$google_response = wp_remote_retrieve_body( $google_response );
+						$decode_google_response = json_decode( $google_response );
 
-						if ( empty( $response ) || ( isset( $response->success ) && ! $response->success ) ) {
-							$errors->add( 'invalid_recaptcha', __( 'Please try logging in again to verify that you are not a robot.', 'ultimate-addons-of-gutenberg' ) );
-							return $errors;
+						if ( false === $decode_google_response->success ) {
+							wp_send_json_error( 400 );
 						}
 					}
 				}

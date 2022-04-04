@@ -15,17 +15,15 @@ import { registerBlockType } from '@wordpress/blocks';
 
 if( attributes.reCaptchaEnable ) {
 
-	uagb_blocks_info.recaptcha_type = attributes.reCaptchaType;
-
 	if( attributes.reCaptchaType == 'v2' ) {
 
-		uagb_blocks_info.site_key_v2 = attributes.reCaptchaSiteKeyV2;
-		uagb_blocks_info.secret_key_v2 = attributes.reCaptchaSecretKeyV2;
+		uagb_blocks_info.recaptcha_site_key_v2 = attributes.reCaptchaSiteKeyV2;
+		uagb_blocks_info.recaptcha_secret_key_v2= attributes.reCaptchaSecretKeyV2;
 
 	} else {
 
-		uagb_blocks_info.site_key_v3 = attributes.reCaptchaSiteKeyV3;
-		uagb_blocks_info.secret_key_v3 = attributes.reCaptchaSecretKeyV3;
+		uagb_blocks_info.recaptcha_site_key_v3 = attributes.reCaptchaSiteKeyV3;
+		uagb_blocks_info.recaptcha_secret_key_v3 = attributes.reCaptchaSecretKeyV3;
 
 	}
 }

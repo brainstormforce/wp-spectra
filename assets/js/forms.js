@@ -130,7 +130,7 @@ UAGBForms = { // eslint-disable-line no-undef
 				wrapper_div[ 0 ].appendChild( sibling[ index ] );
 			}
 		}
-		window.UAGBForms._formSubmit( e, this, attr );
+
 		form.addEventListener( 'submit', function ( e ) {
 			e.preventDefault();
 			if ( attr.reCaptchaEnable === true && attr.reCaptchaType === 'v3' && reCaptchaSiteKeyV3 ) {
@@ -142,12 +142,12 @@ UAGBForms = { // eslint-disable-line no-undef
 						.then( function ( token ) {
 							if ( token ) {
 								document.getElementById( 'g-recaptcha-response' ).value = token;
-								window.UAGBForms._formSubmit( e, this, attr );
+								window.UAGBForms._formSubmit( e, this, attr , reCaptchaSiteKeyV2 , reCaptchaSiteKeyV3 );
 							}
 						} );
 				} );
 			} else {
-
+				window.UAGBForms._formSubmit( e, this, attr, reCaptchaSiteKeyV2, reCaptchaSiteKeyV3 );
 			}
 		} );
 	},
@@ -164,16 +164,14 @@ UAGBForms = { // eslint-disable-line no-undef
         checkboxes[i].setCustomValidity( errorMessage ); // eslint-disable-line no-undef
     },
 
-	_formSubmit( e, form, attr ) {
+	_formSubmit( e, form, attr, reCaptchaSiteKeyV2, reCaptchaSiteKeyV3 ) {
 		e.preventDefault();
 
 		let captcha_response;
 
-		let uagab_captcha = { captchaEnable: attr.reCaptchaEnable, captchaVersion: attr.reCaptchaType };
-
 		if ( attr.reCaptchaEnable === true && attr.reCaptchaType === 'v2' && reCaptchaSiteKeyV2 ) {
 
-			captcha_response = form[ 0 ].getElementsByClassName( 'uagb-forms-recaptcha' )[ 0 ].value;
+			captcha_response = document.getElementById( 'g-recaptcha-response' ).value;
 			if ( ! captcha_response ) {
 				document.querySelector( '.uagb-form-reacaptcha-error-' + attr.block_id ).innerHTML = '<p style="color:red !important" class="error-captcha">' + attr.captchaMessage +'</p>';
 				return false;
@@ -224,7 +222,6 @@ UAGBForms = { // eslint-disable-line no-undef
 			spinner.class = 'components-spinner';
 		//add spiner to form button to show processing.
 		form.querySelector( '.uagb-forms-main-submit-button-wrap' ).appendChild( spinner );
-		const captchaKey = uagab_captcha ? uagab_captcha : '';
 
 		fetch( uagb_forms_data.ajax_url, { // eslint-disable-line no-undef
 			method: 'POST',
@@ -235,7 +232,7 @@ UAGBForms = { // eslint-disable-line no-undef
 				form_data: JSON.stringify( postData ),
 				sendAfterSubmitEmail: attr.sendAfterSubmitEmail,
 				after_submit_data : JSON.stringify( after_submit_data ),
-				uagab_captcha :captchaKey,
+				captcha_version: attr.reCaptchaType,
 				captcha_response,
 			  } ),
 		  } )
