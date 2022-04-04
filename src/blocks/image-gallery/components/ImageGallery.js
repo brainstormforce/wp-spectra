@@ -130,7 +130,7 @@ const ImageGallery = ( { attributes, setAttributes, block_id } ) => {
 					// isotope.current.destroy();
 					break;
 			}
-		}, 10 );
+		}, 50 );
 	}, [
 		mediaGallery.length,
 		feedLayout,
@@ -446,7 +446,7 @@ const ImageGallery = ( { attributes, setAttributes, block_id } ) => {
 	}
 
 	const renderIsoRef = () => (
-		<div ref={ isotopeElement }>
+		<div className="uag-image-gallery__iso-ref-wrapper" ref={ isotopeElement }>
 			{ renderGallery() }
 		</div>
 	);

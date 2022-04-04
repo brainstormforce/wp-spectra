@@ -558,6 +558,9 @@ if ( $attr[ 'feedLayout' ] === 'carousel' ) {
 		$selectors[ '.uag-image-gallery-media__thumbnail--carousel' ][ 'object-fit' ] = 'cover';
 	}
 }
+else {
+	$selectors[ '.uag-image-gallery__iso-ref-wrapper' ][ 'overflow' ] = 'auto';
+}
 
 // Masonry based styling
 
