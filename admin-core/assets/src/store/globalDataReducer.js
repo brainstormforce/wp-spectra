@@ -89,32 +89,30 @@ const globalDataReducer = ( state = {}, action ) => {
 				...state,
 				contentWidth: action.payload,
 				};
-<<<<<<< HEAD
 		case 'UPDATE_RECAPTCHA_SITE_KEY_V2':
 			return {
 					...state,
 					siteKeyV2: action.payload,
 				};
-			case 'UPDATE_RECAPTCHA_SITE_KEY_V3':
-				return {
-					...state,
-					siteKeyV3: action.payload,
-				};
-			case 'UPDATE_RECAPTCHA_SECRET_KEY_V2':
-				return {
-					...state,
-					secretKeyV2: action.payload,
-				};
-			case 'UPDATE_RECAPTCHA_SECRET_KEY_V3':
-				return {
-					...state,
-					secretKeyV3: action.payload,
-=======
+		case 'UPDATE_RECAPTCHA_SITE_KEY_V3':
+			return {
+				...state,
+				siteKeyV3: action.payload,
+			};
+		case 'UPDATE_RECAPTCHA_SECRET_KEY_V2':
+			return {
+				...state,
+				secretKeyV2: action.payload,
+			};
+		case 'UPDATE_RECAPTCHA_SECRET_KEY_V3':
+			return {
+				...state,
+				secretKeyV3: action.payload,
+			};
 		case 'UPDATE_SETTINGS_SAVED_NOTIFICATION':
 			return {
 				...state,
 				settingsSavedNotification: action.payload,
->>>>>>> 7cb335160b78472177129b921d94ad31ea73fab9
 				};
         default:
             return state;

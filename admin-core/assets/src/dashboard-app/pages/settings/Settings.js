@@ -15,12 +15,9 @@ import CollapsePanels from '@DashboardApp/pages/settings/CollapsePanels';
 import CopyPasteStyles from '@DashboardApp/pages/settings/CopyPasteStyles';
 import ContentWidth from '@DashboardApp/pages/settings/ContentWidth';
 import SettingsSkeleton from '@DashboardApp/pages/settings/SettingsSkeleton';
-<<<<<<< HEAD
 import BlockSettings from '@DashboardApp/pages/settings/BlockSettings';
-=======
 import { Link, useLocation } from 'react-router-dom';
 import{ useEffect } from 'react';
->>>>>>> 7cb335160b78472177129b921d94ad31ea73fab9
 
 function classNames( ...classes ) {
     return classes.filter( Boolean ).join( ' ' )
