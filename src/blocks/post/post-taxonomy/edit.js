@@ -43,8 +43,8 @@ export const PostTaxonomy = ( props ) => {
 							{Litem.name}
 							</span>
 						)
-					))
-				))
+					) )
+				) )
 			) }
 			</>
 			) }
