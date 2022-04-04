@@ -53,7 +53,7 @@ $selectors = array(
 			$attr[ 'paginateArrowDistance' ],
 			$attr[ 'paginateArrowDistanceUnit' ]
 		),
-	),		
+	),
 	'.uag-image-gallery__control-arrows--carousel.slick-next' => array(
 		'right' => UAGB_Helper::get_css_value(
 			$attr[ 'paginateArrowDistance' ],
@@ -110,6 +110,8 @@ $selectors = array(
 		'border-color' => $attr[ 'paginateButtonBorderColorHover' ],
 	),
 
+	//Need to implement Lightbox Styling
+
 	// Media Wrapper Selectors
 
 	'.uag-image-gallery__layout--grid' => array(
@@ -139,12 +141,41 @@ $selectors = array(
 			$attr[ 'gridImageGapUnit' ]
 		),
 	),
+	'.uag-image-gallery__layout--tiled .uag-image-gallery-media-wrapper' => array(
+		'padding' => UAGB_Helper::get_css_value(
+			$attr[ 'gridImageGapUnit' ],
+			$attr[ 'gridImageGap' ],
+		),
+	),
+	'.uag-image-gallery__layout--tiled .uag-image-gallery-media-spacer' => array(
+		'width' => 'calc( ' . UAGB_Block_Helper::get_precise_percentage( $attr[ 'columnsDesk' ] ) . ' )',
+		'aspect-ratio' => 1,
+	),
+	'.uag-image-gallery__layout--tiled .uag-image-gallery-media-wrapper--wide' => array(
+		'width' => 'calc( ' . $attr[ 'tileSize' ] . 'px * 2 )',
+		'height' => $attr[ 'tileSize' ] . 'px',
+	),
+	'.uag-image-gallery__layout--tiled .uag-image-gallery-media-wrapper--tall' => array(
+		'height' => 'calc( ' . $attr[ 'tileSize' ] . 'px * 2 )',
+		'width' => $attr[ 'tileSize' ] . 'px',
+	),
+	'.uag-image-gallery__layout--tiled .uag-image-gallery-media--tiled-wide' => array(
+		'width' => 'calc( ( ' . $attr[ 'tileSize' ] . 'px * 2 ) - ( ' . UAGB_Block_Helper::generate_spacing( $attr[ 'gridImageGapUnit' ], $attr[ 'gridImageGap' ] ) . ' * 2 ) )',
+		'height' => 'calc( ' . $attr[ 'tileSize' ] . 'px - ( ' . UAGB_Block_Helper::generate_spacing( $attr[ 'gridImageGapUnit' ], $attr[ 'gridImageGap' ] ) . ' * 2 ) )',
+	),
+	'.uag-image-gallery__layout--tiled .uag-image-gallery-media--tiled-tall' => array(
+		'height' => 'calc( ( ' . $attr[ 'tileSize' ] . 'px * 2 ) - ( ' . UAGB_Block_Helper::generate_spacing( $attr[ 'gridImageGapUnit' ], $attr[ 'gridImageGap' ] ) . ' * 2 ) )',
+		'width' => 'calc( ' . $attr[ 'tileSize' ] . 'px - ( ' . UAGB_Block_Helper::generate_spacing( $attr[ 'gridImageGapUnit' ], $attr[ 'gridImageGap' ] ) . ' * 2 ) )',
+	),
 	'.uag-image-gallery-media' => array(
 		'border-radius' => UAGB_Block_Helper::generate_border_radius(
 			$attr[ 'imageBorderRadiusUnit' ],
 			$attr[ 'imageBorderRadius' ],
 		),
 	),
+
+	// Thumbnail Selectors
+
 	'.uag-image-gallery-media__thumbnail-blurrer' => array(
 		'border-radius' => UAGB_Block_Helper::generate_border_radius(
 			$attr[ 'imageBorderRadiusUnit' ],
@@ -291,6 +322,22 @@ $t_selectors = array(
 			$attr[ 'gridImageGapUnitTab' ]
 		),
 	),
+	'.uag-image-gallery__layout--carousel .uag-image-gallery-media-wrapper' => array(
+		'padding' => UAGB_Block_Helper::generate_spacing(
+			$attr[ 'gridImageGapUnitTab' ],
+			$attr[ 'gridImageGapTab' ],
+		),
+	),
+	'.uag-image-gallery__layout--tiled .uag-image-gallery-media-wrapper' => array(
+		'padding' => UAGB_Block_Helper::generate_spacing(
+			$attr[ 'gridImageGapUnitTab' ],
+			$attr[ 'gridImageGapTab' ],
+		),
+	),
+	'.uag-image-gallery__layout--tiled .uag-image-gallery-media-spacer' => array(
+		'width' => 'calc( ' . UAGB_Block_Helper::get_precise_percentage( $attr[ 'columnsTab' ] ) . ' )',
+		'aspect-ratio' => 1,
+	),
 	'.uag-image-gallery-media__thumbnail-caption' => array(
 		'font-size' => UAGB_Helper::get_css_value( $attr[ 'captionFontSizeTab' ], $attr[ 'captionFontSizeType' ] ),
 		'line-height' => UAGB_Helper::get_css_value( $attr[ 'captionLineHeightTab' ], $attr[ 'captionLineHeightType' ] ),
@@ -356,6 +403,22 @@ $m_selectors = array(
 			$attr[ 'gridImageGapMob' ],
 			$attr[ 'gridImageGapUnitMob' ]
 		),
+	),
+	'.uag-image-gallery__layout--carousel .uag-image-gallery-media-wrapper' => array(
+		'padding' => UAGB_Block_Helper::generate_spacing(
+			$attr[ 'gridImageGapUnitMob' ],
+			$attr[ 'gridImageGapMob' ],
+		),
+	),
+	'.uag-image-gallery__layout--tiled .uag-image-gallery-media-wrapper' => array(
+		'padding' => UAGB_Block_Helper::generate_spacing(
+			$attr[ 'gridImageGapUnitMob' ],
+			$attr[ 'gridImageGapMob' ],
+		),
+	),
+	'.uag-image-gallery__layout--tiled .uag-image-gallery-media-spacer' => array(
+		'width' => 'calc( ' . UAGB_Block_Helper::get_precise_percentage( $attr[ 'columnsMob' ] ) . ' )',
+		'aspect-ratio' => 1,
 	),
 	'.uag-image-gallery-media__thumbnail-caption' => array(
 		'font-size' => UAGB_Helper::get_css_value( $attr[ 'captionFontSizeMob' ], $attr[ 'captionFontSizeType' ] ),

@@ -972,5 +972,25 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				: UAGB_Helper::get_css_value( $top, $unit );
 			return $spacing;
 		}
+		
+		/**
+		 * Get the Precise 2-Floating Point Percentage, Rounded to Floor for Precision.
+		 *
+		 * Syntax:
+		 *
+		 *  get_precise_percentage( DIVISIONS );
+		 *
+		 * E.g.
+		 *
+		 *  get_precise_percentage( 7 );
+		 *
+		 * @param int $divisions  The number of divisions.
+		 * @since 2.0.0
+		 */
+		public static function get_precise_percentage( $divisions ){
+			$matches = array();
+			preg_match( '/^-?\d+(?:\.\d{0,2})?/', strval( 100 / $divisions ), $matches );
+			return floatval( $matches[0] ) . '%';
+		}
 	}
 }

@@ -3,6 +3,7 @@ import generateCSSUnit from '@Controls/generateCSSUnit';
 import getMatrixAlignment from '@Controls/getMatrixAlignment';
 import generateBorderRadius from '@Controls/generateBorderRadius';
 import generateSpacing from '@Controls/generateSpacing';
+import getPrecisePercentage from '@Controls/getPrecisePercentage';
 
 function styling( props ) {
 	const {
@@ -127,8 +128,6 @@ function styling( props ) {
 		paginateColor,
 		paginateColorHover,
 	} = props.attributes;
-
-	const getColWidth = ( width ) => ( parseFloat( ( 100 / width ).toString().match( /^-?\d+(?:\.\d{0,2})?/ )[ 0 ] ) );
 
 	let selectors = {
 
@@ -278,16 +277,14 @@ function styling( props ) {
 			),
 		},
 		'.uag-image-gallery__layout--tiled .uag-image-gallery-media-spacer': {
-			'width': `calc( ${ getColWidth( columnsDesk ) }% )`,
+			'width': `calc( ${ getPrecisePercentage( columnsDesk ) } )`,
 			'aspect-ratio': 1,
 		},
 		'.uag-image-gallery__layout--tiled .uag-image-gallery-media-wrapper--wide': {
-			// 'width': `calc(${ getColWidth( columnsDesk ) }% + ${ getColWidth( columnsDesk ) }% + ${ generateSpacing( gridImageGapUnit, gridImageGap ) })`,
 			'width': `calc( ${ tileSize }px * 2 )`,
 			'height': `${ tileSize }px`,
 		},
 		'.uag-image-gallery__layout--tiled .uag-image-gallery-media-wrapper--tall': {
-			// 'width': `calc(${ getColWidth( columnsDesk ) }% + ${ getColWidth( columnsDesk ) }% + ${ generateSpacing( gridImageGapUnit, gridImageGap ) })`,
 			'height': `calc( ${ tileSize }px * 2 )`,
 			'width': `${ tileSize }px`,
 		},
@@ -474,7 +471,7 @@ function styling( props ) {
 			),
 		},
 		'.uag-image-gallery__layout--tiled .uag-image-gallery-media-spacer': {
-			'width': `calc( ${ getColWidth( columnsTab ) }% )`,
+			'width': `calc( ${ getPrecisePercentage( columnsTab ) } )`,
 			'aspect-ratio': 1,
 		},
 		'.uag-image-gallery-media__thumbnail-caption': {
@@ -556,7 +553,7 @@ function styling( props ) {
 			),
 		},
 		'.uag-image-gallery__layout--tiled .uag-image-gallery-media-spacer': {
-			'width': `calc( ${ getColWidth( columnsMob ) }% )`,
+			'width': `calc( ${ getPrecisePercentage( columnsMob ) } )`,
 			'aspect-ratio': 1,
 		},
 		'.uag-image-gallery-media__thumbnail-caption': {
