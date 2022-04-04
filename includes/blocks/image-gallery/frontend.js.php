@@ -56,6 +56,9 @@ if( $attr[ 'mediaGallery' ] ){
 		case 'carousel':
 			$js = Spectra_Pro_Image_Gallery::render_frontend_carousel_layout( $id, $settings, $selector );
 			break;
+		case 'tiled':
+			$js = Spectra_Pro_Image_Gallery::render_frontend_tiled_layout( $id, $attr, $selector );
+			break;
 	}
 }
 

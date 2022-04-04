@@ -709,6 +709,16 @@ if ( ! class_exists( 'Spectra_Pro_Image_Gallery' ) ) {
 						<?php
 						$allMedia = ob_get_clean();
 						break;
+					case "tiled":
+						ob_start();
+						?>
+							<div class="uag-image-gallery uag-image-gallery__layout--<?= $attributes[ 'feedLayout' ] ?> uag-image-gallery__layout--<?= $attributes[ 'feedLayout' ] ?>-col-<?= $attributes[ 'columnsDesk' ] ?> uag-image-gallery__layout--<?= $attributes[ 'feedLayout' ] ?>-col-tab-<?= $attributes[ 'columnsTab' ] ?> uag-image-gallery__layout--<?= $attributes[ 'feedLayout' ] ?>-col-mob-<?= $attributes[ 'columnsMob' ] ?>">
+								<div class="uag-image-gallery-media-spacer"></div>
+								<?= $allMedia ?>
+							</div>
+						<?php
+						$allMedia = ob_get_clean();
+						break;
 				}
 				ob_start();
 				?>
@@ -861,12 +871,18 @@ if ( ! class_exists( 'Spectra_Pro_Image_Gallery' ) ) {
 		}
 
 		private function render_single_media( $mediaArray, $atts ) {
+			// Check if this is part of the Tiled Layout, and if so then check if the current image is focused or not.
+			$focusedClass = '';
+			if ( $atts[ 'feedLayout' ] === 'tiled' && ( array_key_exists( $mediaArray[ 'id' ], $atts[ 'focusList' ] ) && $atts[ 'focusList' ][ $mediaArray[ 'id' ] ] === true ) ){
+				$focusedClass = ' uag-image-gallery-media-wrapper--focus';
+			}
 			?>
-			<div class='uag-image-gallery-media-wrapper' >
+			<div class='uag-image-gallery-media-wrapper<?= $focusedClass ?>' >
 				<?php
-					$atts[ 'useLightbox' ]
-						? $this->render_media_link( $mediaArray, $atts )
-						: $this->render_media_thumbnail( $mediaArray, $atts );
+					// $atts[ 'useLightbox' ]
+					// 	? $this->render_media_link( $mediaArray, $atts )
+					// 	: $this->render_media_thumbnail( $mediaArray, $atts );
+					$this->render_media_thumbnail( $mediaArray, $atts );
 				?>
 			</div>
 			<?php
@@ -883,7 +899,13 @@ if ( ! class_exists( 'Spectra_Pro_Image_Gallery' ) ) {
 		}
 	
 		private function render_media_thumbnail( $mediaArray, $atts ) {
-			if( $atts[ 'captionDisplayType' ] === 'bar-outside' && ( UAGB_Block_Helper::get_matrix_alignment( $atts[ 'imageCaptionAlignment' ], 1 ) === 'top' ) && $atts[ 'imageDisplayCaption' ] ) {
+			// Check if this is part of the Tiled Layout, and if so then check if the current image is focused or not.
+			$focusedClass = '';
+			if ( $atts[ 'feedLayout' ] === 'tiled' && ( array_key_exists( $mediaArray[ 'id' ], $atts[ 'focusList' ] ) && $atts[ 'focusList' ][ $mediaArray[ 'id' ] ] === true ) ){
+				$focusedClass = ' uag-image-gallery-media-wrapper--focus';
+			}
+
+			if ( $atts[ 'captionDisplayType' ] === 'bar-outside' && ( UAGB_Block_Helper::get_matrix_alignment( $atts[ 'imageCaptionAlignment' ], 1 ) === 'top' ) && $atts[ 'imageDisplayCaption' ] ) {
 				?>
 				<div class="uag-image-gallery-media__thumbnail-caption-wrapper uag-image-gallery-media__thumbnail-caption-wrapper--<?= $atts[ 'captionDisplayType' ]; ?>">
 					<?php $this->render_media_caption( $mediaArray, $atts ); ?>
@@ -1088,6 +1110,45 @@ if ( ! class_exists( 'Spectra_Pro_Image_Gallery' ) ) {
 			<?php
 			$buffer = ob_get_clean();
 			return 'jQuery( document ).ready( function() { if( jQuery( "' . $selector . '" ).length > 0 ){ jQuery( "' . $selector . '" ).find( ".uagb-slick-carousel" ).slick( ' . $settings . ' ); } } );' . $buffer;
+		}
+
+		public static function render_frontend_tiled_layout( $id, $attr, $selector ){
+			ob_start();
+			?>
+				window.addEventListener( 'DOMContentLoaded', function() {
+					const scope = document.querySelector( '.uagb-block-<?= $id; ?>' );
+					if ( scope ){
+						if ( scope.children[0].classList.contains( 'uag-image-gallery__layout--tiled' ) ) {
+							console.log('<?= json_encode( $attr[ 'focusList' ] ); ?>');
+							const element = scope.querySelector( '.uag-image-gallery__layout--tiled' );
+							const isotope = new Isotope( element, {
+								itemSelector: '.uag-image-gallery-media-wrapper',
+								layoutMode: 'masonry',
+								masonry: {
+									columnWidth: '.uag-image-gallery-media-spacer',
+								},
+							} );
+							imagesLoaded( element ).on( 'progress', ( theInstance, theImage ) => {
+								if ( theImage.isLoaded ){
+									const imageElement = theImage.img;
+									if( imageElement.classList.contains( 'uag-image-gallery-media-wrapper--focus' ) ){
+									}
+									else if ( imageElement.naturalWidth >= ( imageElement.naturalHeight * 2 ) - ( imageElement.naturalHeight / 2 ) ){
+										imageElement.parentElement.parentElement.classList.add( 'uag-image-gallery-media-wrapper--wide');
+										imageElement.parentElement.classList.add( 'uag-image-gallery-media--tiled-wide');
+									}
+									else if ( imageElement.naturalHeight >= ( imageElement.naturalWidth * 2 ) - ( imageElement.naturalWidth / 2 ) ){
+										imageElement.parentElement.parentElement.classList.add( 'uag-image-gallery-media-wrapper--tall');
+										imageElement.parentElement.classList.add( 'uag-image-gallery-media--tiled-tall');
+									}
+									isotope.layout();
+								}
+							} );
+						}
+					}
+				} );
+			<?php
+			return ob_get_clean();
 		}
 	}
 

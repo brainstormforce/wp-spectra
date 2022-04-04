@@ -118,12 +118,12 @@ const ImageGallery = ( { attributes, setAttributes, block_id } ) => {
 						},
 					} );
 					imagesLoaded( isotopeChild ).on( 'progress', ( theInstance, theImage ) => {
-						isotope.current.layout();
 						if ( generateSpecialTiles && theImage.isLoaded ){
 							createSpecialTile( theImage.img );
+							isotope.current.layout();
 						}
 					} );
-					isotope.current.layout();
+					// isotope.current.layout();
 					break;
 				default:
 					( isotope.current ) && isotope.current.destroy();
@@ -340,12 +340,12 @@ const ImageGallery = ( { attributes, setAttributes, block_id } ) => {
 		if ( imageElement.naturalWidth >= ( imageElement.naturalHeight * 2 ) - ( imageElement.naturalHeight / 2 ) ){
 			imageElement.parentElement.parentElement.classList.add( 'uag-image-gallery-media-wrapper--wide');
 			imageElement.parentElement.classList.add( 'uag-image-gallery-media--tiled-wide');
-			isotope.current.layout();
+			// isotope.current.layout();
 		}
 		else if ( imageElement.naturalHeight >= ( imageElement.naturalWidth * 2 ) - ( imageElement.naturalWidth / 2 ) ){
 			imageElement.parentElement.parentElement.classList.add( 'uag-image-gallery-media-wrapper--tall');
 			imageElement.parentElement.classList.add( 'uag-image-gallery-media--tiled-tall');
-			isotope.current.layout();
+			// isotope.current.layout();
 		}
 	};
 
