@@ -4,7 +4,7 @@ import globalDataReducer from './globalDataReducer';
 const initialState = {
     initialStateSetFlag : false,
     activeBlocksFilterTab : 'all',
-    activeSettingsNavigationTab : 'global-settings',
+    activeSettingsNavigationTab : '',
     blocksStatuses : [],
     enableFileGeneration : '',
     enableTemplates : '',
@@ -19,6 +19,7 @@ const initialState = {
     enableMasonryExtension : '',
 	enableResponsiveConditions : '',
 	contentWidth: '',
+	settingsSavedNotification: false,
 };
 
 const globalDataStore = createStore(

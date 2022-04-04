@@ -36,6 +36,7 @@ const CollapsePanels = () => {
 			method: 'POST',
 			body: formData,
 		} ).then( () => {
+			dispatch( {type: 'UPDATE_SETTINGS_SAVED_NOTIFICATION', payload: true } );
 		} );
     };
 

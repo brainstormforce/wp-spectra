@@ -29,37 +29,53 @@ const attributes = {
 	icon_color: {
 		type: 'string',
 		default: '#3a3a3a',
-		isUAGStyle: true,
+		UAGCopyPaste: {
+			styleType: 'icon-color'
+		},
 	},
 	label_color: {
 		type: 'string',
-		isUAGStyle: true,
+		UAGCopyPaste: {
+			styleType: 'main-title-color'
+		},
 	},
 	icon_hover_color: {
 		type: 'string',
-		isUAGStyle: true,
+		UAGCopyPaste: {
+			styleType: 'icon-hover-color'
+		},
 	},
 	label_hover_color: {
 		type: 'string',
-		isUAGStyle: true,
+		UAGCopyPaste: {
+			styleType: 'main-title-hover-color'
+		},
 	},
 	icon_bg_color: {
 		type: 'string',
-		isUAGStyle: true,
+		UAGCopyPaste: {
+			styleType: 'icon-bg-color'
+		},
 		default: '',
 	},
 	icon_bg_hover_color: {
 		type: 'string',
-		isUAGStyle: true,
+		UAGCopyPaste: {
+			styleType: 'icon-bg-hover-color'
+		},
 	},
 	icon_border_color: {
 		type: 'string',
-		isUAGStyle: true,
+		UAGCopyPaste: {
+			styleType: 'icon-border-color'
+		},
 		default: '',
 	},
 	icon_border_hover_color: {
 		type: 'string',
-		isUAGStyle: true,
+		UAGCopyPaste: {
+			styleType: 'icon-border-hover-color'
+		},
 	},
 	link: {
 		type: 'string',
