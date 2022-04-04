@@ -36,4 +36,19 @@
 	.components-menu-item__shortcut {
 		white-space: nowrap;
 	}
+
+	.components-menu-item__item {
+		min-width: 100%;
+		justify-content: space-around;
+	}
+
+	.components-popover__content {
+		border: 1px solid #1e1e1e;
+		box-shadow: none;
+	}
+
+	.components-button {
+		padding: 10px;
+		justify-content: center;
+	}
 }
