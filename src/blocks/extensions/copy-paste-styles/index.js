@@ -13,7 +13,7 @@ import { useState, useEffect } from '@wordpress/element';
 import editorStyles from './../editor.lazy.scss';
 import { useLayoutEffect } from 'react';
 import { addFilter } from '@wordpress/hooks';
-import SettingsIcons from './../Icons.js';
+import SettingsIcons from './icons.js';
 
 const UAGCopyPasteStyles = () => {
 
@@ -382,7 +382,7 @@ const UAGCopyPasteStyles = () => {
                     <MenuItem
                         onClick={ copyStylesHandler }
                     >
-						{ SettingsIcons['copy'] }
+						{ SettingsIcons.copy }
                         { __( 'Copy ', 'ultimate-addons-for-gutenberg' ) + stylesText }
                     </MenuItem>
                     <MenuItem
@@ -390,7 +390,7 @@ const UAGCopyPasteStyles = () => {
                         onClick={pasteStylesHandler}
                         disabled = {disablePaste}
                     >
-					   { SettingsIcons['paste'] }
+					   { SettingsIcons.paste }
 					   { __( 'Paste ', 'ultimate-addons-for-gutenberg' ) + stylesText }
                     </MenuItem>
                 </Popover>
