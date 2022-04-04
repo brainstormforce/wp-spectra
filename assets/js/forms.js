@@ -2,6 +2,9 @@
 UAGBForms = { // eslint-disable-line no-undef
 	init( attr, id ) {
 
+		const reCaptchaSiteKeyV2 = uagb_forms_data.recaptcha_site_key_v2;
+		const reCaptchaSiteKeyV3 = uagb_forms_data.recaptcha_site_key_v3;
+
 		const scope = document.querySelector( id );
 
 		const form = scope.querySelector( '.uagb-forms-main-form' );
@@ -55,14 +58,14 @@ UAGBForms = { // eslint-disable-line no-undef
 		}
 
 		//append recaptcha js when enabled.
-		if ( attr.reCaptchaEnable === true && attr.reCaptchaType === 'v2' && attr.reCaptchaSiteKeyV2 ) {
+		if ( attr.reCaptchaEnable === true && attr.reCaptchaType === 'v2' && reCaptchaSiteKeyV2 ) {
 
 			const recaptchaLink = document.createElement( 'script' );
 			recaptchaLink.type = 'text/javascript';
 			recaptchaLink.src = 'https://www.google.com/recaptcha/api.js';
 			document.head.appendChild( recaptchaLink );
 
-		} else if ( attr.reCaptchaEnable === true && attr.reCaptchaType === 'v3' &&	attr.reCaptchaSiteKeyV3 ) {
+		} else if ( attr.reCaptchaEnable === true && attr.reCaptchaType === 'v3' &&	reCaptchaSiteKeyV3 ) {
 			if ( attr.hidereCaptchaBatch ) {
 				if ( document.getElementsByClassName( 'grecaptcha-badge' )[ 0 ] === undefined ) {
 					return;
@@ -72,7 +75,7 @@ UAGBForms = { // eslint-disable-line no-undef
 			}
 			const api = document.createElement( 'script' );
 			api.type = 'text/javascript';
-			api.src = 'https://www.google.com/recaptcha/api.js?render=' + attr.reCaptchaSiteKeyV3;
+			api.src = 'https://www.google.com/recaptcha/api.js?render=' + reCaptchaSiteKeyV3;
 			document.head.appendChild( api );
 		}
 
@@ -127,13 +130,13 @@ UAGBForms = { // eslint-disable-line no-undef
 				wrapper_div[ 0 ].appendChild( sibling[ index ] );
 			}
 		}
-
+		window.UAGBForms._formSubmit( e, this, attr );
 		form.addEventListener( 'submit', function ( e ) {
 			e.preventDefault();
-			if ( attr.reCaptchaEnable === true && attr.reCaptchaType === 'v3' && attr.reCaptchaSiteKeyV3 ) {
+			if ( attr.reCaptchaEnable === true && attr.reCaptchaType === 'v3' && reCaptchaSiteKeyV3 ) {
 				grecaptcha.addEventListener( 'DOMContentLoaded', function () { // eslint-disable-line no-undef
 					grecaptcha // eslint-disable-line no-undef
-						.execute( attr.reCaptchaSiteKeyV3, {
+						.execute( reCaptchaSiteKeyV3, {
 							action: 'submit',
 						} )
 						.then( function ( token ) {
@@ -144,7 +147,7 @@ UAGBForms = { // eslint-disable-line no-undef
 						} );
 				} );
 			} else {
-				window.UAGBForms._formSubmit( e, this, attr );
+
 			}
 		} );
 	},
@@ -164,8 +167,11 @@ UAGBForms = { // eslint-disable-line no-undef
 	_formSubmit( e, form, attr ) {
 		e.preventDefault();
 
-		let uagab_captcha_keys, captcha_response;
-		if ( attr.reCaptchaEnable === true && attr.reCaptchaType === 'v2' && attr.reCaptchaSiteKeyV2 ) {
+		let captcha_response;
+
+		let uagab_captcha = { captchaEnable: attr.reCaptchaEnable, captchaVersion: attr.reCaptchaType };
+
+		if ( attr.reCaptchaEnable === true && attr.reCaptchaType === 'v2' && reCaptchaSiteKeyV2 ) {
 
 			captcha_response = form[ 0 ].getElementsByClassName( 'uagb-forms-recaptcha' )[ 0 ].value;
 			if ( ! captcha_response ) {
@@ -173,17 +179,12 @@ UAGBForms = { // eslint-disable-line no-undef
 				return false;
 			}
 			document.querySelector( '.uagb-form-reacaptcha-error-' + attr.block_id ).innerHTML = '';
-			uagab_captcha_keys = { secret: attr.reCaptchaSecretKeyV2, sitekey: attr.reCaptchaSiteKeyV2 };
 		}
 		if (
 			attr.reCaptchaEnable === true &&
 			attr.reCaptchaType === 'v3' &&
-			attr.reCaptchaSiteKeyV3
+			reCaptchaSiteKeyV3
 		) {
-			uagab_captcha_keys = {
-				secret: attr.reCaptchaSecretKeyV3,
-				sitekey: attr.reCaptchaSiteKeyV3,
-			};
 			captcha_response = document.getElementById( 'g-recaptcha-response' ).value;
 		}
 
@@ -223,7 +224,7 @@ UAGBForms = { // eslint-disable-line no-undef
 			spinner.class = 'components-spinner';
 		//add spiner to form button to show processing.
 		form.querySelector( '.uagb-forms-main-submit-button-wrap' ).appendChild( spinner );
-		const captchaKey = uagab_captcha_keys ? uagab_captcha_keys : '';
+		const captchaKey = uagab_captcha ? uagab_captcha : '';
 
 		fetch( uagb_forms_data.ajax_url, { // eslint-disable-line no-undef
 			method: 'POST',
@@ -234,6 +235,8 @@ UAGBForms = { // eslint-disable-line no-undef
 				form_data: JSON.stringify( postData ),
 				sendAfterSubmitEmail: attr.sendAfterSubmitEmail,
 				after_submit_data : JSON.stringify( after_submit_data ),
+				uagab_captcha :captchaKey,
+				captcha_response,
 			  } ),
 		  } )
 		  .then( ( resp ) => resp.json() )
