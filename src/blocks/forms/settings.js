@@ -170,6 +170,7 @@ const Settings = ( props ) => {
 		labelFontStyle,
 		inputFontStyle,
 	} = attributes;
+
 	const presetSettings = () => {
 		return <UAGAdvancedPanelBody
 					title={ __( 'Presets', 'ultimate-addons-for-gutenberg' ) }
@@ -186,7 +187,7 @@ const Settings = ( props ) => {
 		return (
 			<UAGAdvancedPanelBody
 				title={ __( 'General', 'ultimate-addons-for-gutenberg' ) }
-				initialOpen={ true }
+				initialOpen={ false }
 				className="uagb__url-panel-body"
 			>
 				<TextControl

@@ -89,6 +89,7 @@ const globalDataReducer = ( state = {}, action ) => {
 				...state,
 				contentWidth: action.payload,
 				};
+<<<<<<< HEAD
 		case 'UPDATE_RECAPTCHA_SITE_KEY_V2':
 			return {
 					...state,
@@ -108,6 +109,12 @@ const globalDataReducer = ( state = {}, action ) => {
 				return {
 					...state,
 					secretKeyV3: action.payload,
+=======
+		case 'UPDATE_SETTINGS_SAVED_NOTIFICATION':
+			return {
+				...state,
+				settingsSavedNotification: action.payload,
+>>>>>>> 7cb335160b78472177129b921d94ad31ea73fab9
 				};
         default:
             return state;

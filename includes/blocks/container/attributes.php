@@ -89,7 +89,7 @@ return array(
 	'columnGapTablet'                => '',
 	'columnGapMobile'                => '',
 	'columnGapType'                  => 'px',
-	'contentWidth'                   => 'alignwide',
+	'contentWidth'                   => 'alignfull',
 	'innerContentWidth'              => 'alignwide',
 	'innerContentCustomWidthDesktop' => 1200,
 	'innerContentCustomWidthTablet'  => 1200,

@@ -103,6 +103,21 @@ function styling( props ) {
 		topWidth,
 	} = attributes;
 
+	const editPostLayout = document.getElementsByClassName( 'edit-post-layout' )[0];
+	const editorStylesWrapper = document.getElementsByClassName( 'editor-styles-wrapper' )[0];
+	let editorWidth = '100vw';
+	let editorContentWidth = attributes[`innerContentCustomWidth${deviceType}`] + 'px';
+
+	if ( editPostLayout && editorStylesWrapper ) {
+		const editorStylesWrapperWidth = editorStylesWrapper.clientWidth;
+		const editPostLayoutWidth = editPostLayout.clientWidth;
+
+		const differenceInPercent = 100 - ( editorStylesWrapperWidth / editPostLayoutWidth ) * 100;
+		const differenceCustomWidth = ( attributes[`innerContentCustomWidth${deviceType}`] * differenceInPercent ) / 100;
+		editorWidth = 100 - differenceInPercent + 'vw';
+		editorContentWidth = attributes[`innerContentCustomWidth${deviceType}`] - differenceCustomWidth + 'px';
+	}
+
 	const selectors = {
 		' .uagb-container__shape-top svg' : {
 			'width': 'calc( ' + topWidth + '% + 1.3px )',
@@ -191,15 +206,15 @@ function styling( props ) {
 		}
 	};
 
-	if ( 'alignwide' === innerContentWidth ) {
+	if ( ( 'alignfull' === contentWidth || 'default' === contentWidth ) && 'alignwide' === innerContentWidth ) {
 
 		widthSelectorsDesktop[`.is-root-container > .block-editor-block-list__block > .wp-block-uagb-container.uagb-block-${ block_id }`] = {
-			'--inner-content-custom-width' : attributes[`innerContentCustomWidth${deviceType}`] + 'px',
+			'--inner-content-custom-width' : editorContentWidth,
 			'--padding-left' : ( attributes[`leftPadding${deviceType}`] || 0 ) + paddingType,
 			'--padding-right' : ( attributes[`rightPadding${deviceType}`] || 0 ) + paddingType,
 			'--column-gap' : ( attributes[`columnGap${deviceType}`] || 0 ) + columnGapType,
-			'padding-left': `calc( ( 100vw - var( --inner-content-custom-width ) ) / 2 + var( --padding-left ) - ( var( --column-gap ) / 2 ))`,
-			'padding-right': `calc( ( 100vw - var( --inner-content-custom-width ) ) / 2 + var( --padding-right ) - ( var( --column-gap ) / 2 ))`,
+			'padding-left': `calc( ( ${editorWidth} - var( --inner-content-custom-width ) ) / 2 + var( --padding-left ) )`,
+			'padding-right': `calc( ( ${editorWidth} - var( --inner-content-custom-width ) ) / 2 + var( --padding-right ) )`,
 		};
 	}
 
