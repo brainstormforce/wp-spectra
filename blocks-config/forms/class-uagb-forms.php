@@ -66,12 +66,12 @@ if ( ! class_exists( 'UAGB_Forms' ) ) {
 		public function process_forms() {
 			check_ajax_referer( 'uagb_forms_ajax_nonce', 'nonce' );
 
-			$options                 = array(
+			$options = array(
 				'recaptcha_secret_key_v2' => \UAGB_Admin_Helper::get_admin_settings_option( 'uag_recaptcha_secret_key_v2', '' ),
 				'recaptcha_secret_key_v3' => \UAGB_Admin_Helper::get_admin_settings_option( 'uag_recaptcha_secret_key_v3', '' ),
 			);
 
-			if ( isset ( $_POST['captcha_version'] ) ) {
+			if ( isset( $_POST['captcha_version'] ) ) {
 
 				$google_recaptcha_version = $_POST['captcha_version'];
 
@@ -111,7 +111,7 @@ if ( ! class_exists( 'UAGB_Forms' ) ) {
 						$errors->add( 'invalid_recaptcha', __( 'Please try logging in again to verify that you are not a robot.', 'ultimate-addons-of-gutenberg' ) );
 						return $errors;
 					} else {
-						$google_response = wp_remote_retrieve_body( $google_response );
+						$google_response        = wp_remote_retrieve_body( $google_response );
 						$decode_google_response = json_decode( $google_response );
 
 						if ( false === $decode_google_response->success ) {

@@ -2,9 +2,6 @@
 UAGBForms = { // eslint-disable-line no-undef
 	init( attr, id ) {
 
-		const reCaptchaSiteKeyV2 = uagb_forms_data.recaptcha_site_key_v2;
-		const reCaptchaSiteKeyV3 = uagb_forms_data.recaptcha_site_key_v3;
-
 		const scope = document.querySelector( id );
 
 		const form = scope.querySelector( '.uagb-forms-main-form' );
@@ -57,26 +54,40 @@ UAGBForms = { // eslint-disable-line no-undef
 			}
 		}
 
+		const reCaptchaSiteKeyV2 = '', reCaptchaSiteKeyV3 = '';
+
 		//append recaptcha js when enabled.
-		if ( attr.reCaptchaEnable === true && attr.reCaptchaType === 'v2' && reCaptchaSiteKeyV2 ) {
+		if ( attr.reCaptchaEnable === true && attr.reCaptchaType === 'v2' ) {
 
-			const recaptchaLink = document.createElement( 'script' );
-			recaptchaLink.type = 'text/javascript';
-			recaptchaLink.src = 'https://www.google.com/recaptcha/api.js';
-			document.head.appendChild( recaptchaLink );
+			reCaptchaSiteKeyV2 = uagb_forms_data.recaptcha_site_key_v2;
 
-		} else if ( attr.reCaptchaEnable === true && attr.reCaptchaType === 'v3' &&	reCaptchaSiteKeyV3 ) {
-			if ( attr.hidereCaptchaBatch ) {
-				if ( document.getElementsByClassName( 'grecaptcha-badge' )[ 0 ] === undefined ) {
-					return;
-				}
-				const badge = document.getElementsByClassName( 'grecaptcha-badge' )[ 0 ];
-				badge.style.visibility = 'hidden';
+			if( reCaptchaSiteKeyV2 ) {
+
+				const recaptchaLink = document.createElement( 'script' );
+				recaptchaLink.type = 'text/javascript';
+				recaptchaLink.src = 'https://www.google.com/recaptcha/api.js';
+				document.head.appendChild( recaptchaLink );
+
 			}
-			const api = document.createElement( 'script' );
-			api.type = 'text/javascript';
-			api.src = 'https://www.google.com/recaptcha/api.js?render=' + reCaptchaSiteKeyV3;
-			document.head.appendChild( api );
+
+		} else if ( attr.reCaptchaEnable === true && attr.reCaptchaType === 'v3' ) {
+
+			reCaptchaSiteKeyV3 = uagb_forms_data.recaptcha_site_key_v3;
+
+			if ( reCaptchaSiteKeyV3 ) {
+
+				if ( attr.hidereCaptchaBatch ) {
+					if ( document.getElementsByClassName( 'grecaptcha-badge' )[ 0 ] === undefined ) {
+						return;
+					}
+					const badge = document.getElementsByClassName( 'grecaptcha-badge' )[ 0 ];
+					badge.style.visibility = 'hidden';
+				}
+				const api = document.createElement( 'script' );
+				api.type = 'text/javascript';
+				api.src = 'https://www.google.com/recaptcha/api.js?render=' + reCaptchaSiteKeyV3;
+				document.head.appendChild( api );
+			}
 		}
 
 		//Ready Classes.
