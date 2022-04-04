@@ -37,3 +37,14 @@
 		white-space: nowrap;
 	}
 }
+
+
+.uagb-editor-preview-at-desktop.uag-hide-desktop,
+.uagb-editor-preview-at-tablet.uag-hide-tab,
+.uagb-editor-preview-at-mobile.uag-hide-mob {
+	display: inherit;
+	background: -o-repeating-linear-gradient(325deg, rgba(0, 0, 0, 0.05), rgba(0, 0, 0, 0.05) 1px, transparent 2px, transparent 9px);
+	background: repeating-linear-gradient(125deg, rgba(0, 0, 0, 0.05), rgba(0, 0, 0, 0.05) 1px, transparent 2px, transparent 9px);
+	border: 1px solid rgba(0, 0, 0, 0.02);
+}
+

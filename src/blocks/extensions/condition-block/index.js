@@ -6,7 +6,9 @@ import { InspectorControls } from '@wordpress/block-editor';
 import UAGAdvancedPanelBody from '@Components/advanced-panel-body';
 import { select } from '@wordpress/data';
 import { useEffect  } from '@wordpress/element';
-
+import classnames from 'classnames';
+import addBlockEditorResponsiveStyles from '@Controls/addBlockEditorResponsiveStyles';
+import { useDeviceType } from '@Controls/getPreviewType';
 const { enableConditions, enableResponsiveConditions } = uagb_blocks_info;
 
 const UserConditionOptions = ( props ) => {
@@ -173,7 +175,25 @@ const AdvancedControlsBlock = createHigherOrderComponent( ( BlockEdit ) => {
 		const blockPrefix = blockName.substring( 0, blockName.indexOf( '/' ) + 1 );
 		const { getSelectedBlock } = select( 'core/block-editor' );
 		const childBlocks = getSelectedBlock()?.innerBlocks;
+		const deviceType = useDeviceType();
 		useEffect( () => {
+			const responsiveClass = [];
+			let responsiveClassHideDesktop = '';
+			let responsiveClassHideTab = '';
+			let responsiveClassHideMob = '';
+			if ( props.attributes.UAGHideDesktop ) {
+				responsiveClassHideDesktop = 'uag-hide-desktop';
+			}
+
+			if ( props.attributes.UAGHideTab ) {
+				responsiveClassHideTab = 'uag-hide-tab';
+			}
+
+			if ( props.attributes.UAGHideMob ) {
+				responsiveClassHideMob = 'uag-hide-mob';
+			}
+			responsiveClass.push( responsiveClassHideDesktop, responsiveClassHideTab, responsiveClassHideMob );
+			addBlockEditorResponsiveStyles( props.clientId, responsiveClass, `uagb-editor-preview-at-${ deviceType.toLowerCase() }` );
 
 				const displayPanel = document.querySelector( '.uag-advance-panel-body-display' );
 				let responsivePanel = document.querySelector( '.uag-advance-panel-body-responsive' );
@@ -189,10 +209,7 @@ const AdvancedControlsBlock = createHigherOrderComponent( ( BlockEdit ) => {
 
 					}
 				}
-
-		}, [childBlocks] );
-
-
+		}, [childBlocks, deviceType] );
 
 		return (
 			<>
@@ -234,15 +251,15 @@ function ApplyExtraClass( extraProps, blockType, attributes ) {
 	} = attributes;
 
 		if ( UAGHideDesktop ) {
-			extraProps.className = extraProps.className + ' uag-hide-desktop';
+			extraProps.className = classnames( extraProps.className, 'uag-hide-desktop' );
 		}
 
 		if ( UAGHideTab ) {
-			extraProps.className = extraProps.className + ' uag-hide-tab';
+			extraProps.className = classnames( extraProps.className, 'uag-hide-tab' );
 		}
 
 		if ( UAGHideMob ) {
-			extraProps.className = extraProps.className + ' uag-hide-mob';
+			extraProps.className = classnames( extraProps.className, 'uag-hide-mob' );
 		}
 
 	return extraProps;
