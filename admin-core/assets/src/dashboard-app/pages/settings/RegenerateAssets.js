@@ -21,7 +21,7 @@ const RegenerateAssets = () => {
             if ( data.success ) {
                 setTimeout( function () {
 					setRegenerateAssetsState( false );
-				}, 1000 );
+				}, 2000 );
 				setRegenerateAssetsState( true );
 			}
 		} );
