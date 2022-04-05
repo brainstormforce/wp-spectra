@@ -77,6 +77,10 @@ const attributes = {
 		type: 'string',
 		default: 'No Caption',
 	},
+	imageDefaultCaptionClickable: {
+		type: 'string',
+		default: 'Click to view image',
+	},
 	captionPaddingTop: {
 		type: 'number',
 		default: 8,

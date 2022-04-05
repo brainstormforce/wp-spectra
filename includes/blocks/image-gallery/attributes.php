@@ -29,6 +29,7 @@ return array(
 	'imageCaptionAlignment01' => 'center',
 	'imageCaptionAlignment02' => 'center',
 	'imageDefaultCaption' => 'No Caption',
+	'imageDefaultCaptionClickable' => 'Click to view image',
 	'captionPaddingTop' => 8,
 	'captionPaddingRight' => 8,
 	'captionPaddingBottom' => 8,

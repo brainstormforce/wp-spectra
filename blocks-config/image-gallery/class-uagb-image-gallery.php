@@ -153,6 +153,10 @@ if ( ! class_exists( 'Spectra_Pro_Image_Gallery' ) ) {
 								'type' => 'string',
 								'default' => 'No Caption',
 							),
+							'imageDefaultCaptionClickable' => array(
+								'type' => 'string',
+								'default' => 'Click to view image',
+							),
 							'captionPaddingTop' => array(
 								'type' => 'number',
 								'default' => 8,
@@ -955,7 +959,7 @@ if ( ! class_exists( 'Spectra_Pro_Image_Gallery' ) ) {
 				: (
 					$mediaArray[ 'url' ]
 					? $atts[ 'useLightbox' ]
-						? 'Click to view image'
+						? $atts[ 'imageDefaultCaptionClickable' ]
 						: $atts[ 'imageDefaultCaption' ]
 					: 'Unable to load image'
 				);

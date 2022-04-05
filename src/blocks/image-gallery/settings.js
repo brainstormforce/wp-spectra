@@ -61,6 +61,8 @@ const Settings = ( props ) => {
 		imageCaptionAlignment,
 		imageCaptionAlignment01,
 		imageCaptionAlignment02,
+		imageDefaultCaption,
+		imageDefaultCaptionClickable,
 		captionPaddingTop,
 		captionPaddingRight,
 		captionPaddingBottom,
@@ -490,7 +492,7 @@ const Settings = ( props ) => {
 		</>
 	);
 
-	const imageSettings = () => (
+	const gallerySettings = () => (
 		<UAGAdvancedPanelBody title={ __( 'Gallery Settings', 'ultimate-addons-for-gutenberg' ) } initialOpen={ true }>
 			<MultiMediaSelector
 				componentLabel={ 'Update Gallery' }
@@ -502,19 +504,30 @@ const Settings = ( props ) => {
 				createGallery={ true }
 			/>
 			<ToggleControl
-				label={ __( 'Use Lightbox', 'ultimate-addons-for-gutenberg' ) }
-				checked={ useLightbox }
-				onChange={ () =>
-					setAttributes( { useLightbox: ! useLightbox } )
-				}
-			/>
-			<ToggleControl
 				label={ __( 'Display Captions', 'ultimate-addons-for-gutenberg' ) }
 				checked={ imageDisplayCaption }
 				onChange={ () =>
 					setAttributes( { imageDisplayCaption: ! imageDisplayCaption } )
 				}
 			/>
+			<ToggleControl
+				label={ __( 'Use Lightbox', 'ultimate-addons-for-gutenberg' ) }
+				checked={ useLightbox }
+				onChange={ () =>
+					setAttributes( { useLightbox: ! useLightbox } )
+				}
+			/>
+			{ imageDisplayCaption && (
+				<TextControl
+					autoComplete="off"
+					label={ __(
+						`Default Caption${ useLightbox ? ' (Clickable)' : '' }`,
+						'ultimate-addons-for-gutenberg'
+					) }
+					value={ useLightbox ? imageDefaultCaptionClickable : imageDefaultCaption }
+					onChange={ ( value ) => useLightbox ? setAttributes( { imageDefaultCaptionClickable: value } ) : setAttributes( { imageDefaultCaption: value } ) }
+				/>
+			) }
 		</UAGAdvancedPanelBody>
 	);
 	
@@ -1628,7 +1641,7 @@ const Settings = ( props ) => {
 				<InspectorTabs>
 					<InspectorTab { ...UAGTabs.general }>
 						{ ! readyToRender && initialSettings() }
-						{ readyToRender && imageSettings() }
+						{ readyToRender && gallerySettings() }
 						{ readyToRender && layoutSettings() }
 						{ ( readyToRender && imageDisplayCaption ) && captionSettings() }
 						{ ( readyToRender && feedLayout !== 'tiled' ) && layoutSpecificSettings() }

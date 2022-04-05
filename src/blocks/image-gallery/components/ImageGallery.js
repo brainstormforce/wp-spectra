@@ -45,6 +45,7 @@ const ImageGallery = ( { attributes, setAttributes, block_id } ) => {
 		captionDisplayType,
 		imageCaptionAlignment,
 		imageDefaultCaption,
+		imageDefaultCaptionClickable,
 
 		carouselStartAt,
 		carouselLoop,
@@ -630,7 +631,7 @@ const ImageGallery = ( { attributes, setAttributes, block_id } ) => {
 			? mediaObject.caption
 			: ( mediaObject.url
 				? ( useLightbox
-					? "Click to view image"
+					? imageDefaultCaptionClickable
 					: imageDefaultCaption
 				)
 				: "Unable to load image"
