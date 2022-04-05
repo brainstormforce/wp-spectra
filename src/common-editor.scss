@@ -62,23 +62,8 @@
 		border-radius: 2px;
 		z-index: 3;
 	}
-	.block-editor-block-list__block:hover::before,
-	.block-editor-block-list__block:not([contenteditable]):focus::before {
-		font-size: 20px;
-		content: "\f464";
-		display: inline-block;
-		font-family: 'dashicons';
-		padding: 2px;
-		position: absolute;
-		top: 0;
-		align-self: center;
-		background-color: #788894;
-		cursor: pointer;
-		z-index: 99;
-		color: #fff;
-	}
-	.block-editor-block-list__block:not([contenteditable]):focus::after
-	{
+
+	.block-editor-block-list__block:not([contenteditable]):focus::after {
 		z-index: 999;
 	}
 }
