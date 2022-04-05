@@ -510,13 +510,13 @@ const Settings = ( props ) => {
 					setAttributes( { imageDisplayCaption: ! imageDisplayCaption } )
 				}
 			/>
-			<ToggleControl
+			{/* <ToggleControl
 				label={ __( 'Use Lightbox', 'ultimate-addons-for-gutenberg' ) }
 				checked={ useLightbox }
 				onChange={ () =>
 					setAttributes( { useLightbox: ! useLightbox } )
 				}
-			/>
+			/> */}
 			{ imageDisplayCaption && (
 				<TextControl
 					autoComplete="off"

@@ -20,7 +20,7 @@ return array(
 	'mediaGallery' => array(),
 	'mediaIDs' => array(),
 	'feedLayout' => 'tiled',
-	'useLightbox' => true,
+	'useLightbox' => false,
 	'imageDisplayCaption' => true,
 	// Caption Settings
 	'imageCaptionLength' => 30,

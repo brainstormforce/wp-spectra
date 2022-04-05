@@ -120,7 +120,7 @@ if ( ! class_exists( 'Spectra_Pro_Image_Gallery' ) ) {
 							),
 							'useLightbox' => array(
 								'type' => 'boolean',
-								'default' => true,
+								'default' => false,
 							),
 							'imageDisplayCaption' => array(
 								'type' => 'boolean',

@@ -44,7 +44,7 @@ const attributes = {
 	},
 	useLightbox: {
 		type: 'boolean',
-		default: true,
+		default: false,
 	},
 	imageDisplayCaption: {
 		type: 'boolean',
