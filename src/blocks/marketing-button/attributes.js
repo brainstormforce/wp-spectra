@@ -6,6 +6,10 @@ const attributes = {
 		type: 'boolean',
 		default: false,
 	},
+	showDescription: {
+		type: 'boolean',
+		default: true,
+	},
 	align: {
 		type: 'string',
 		default: 'center',
@@ -202,7 +206,6 @@ const attributes = {
 	},
 	iconColor: {
 		type: 'string',
-		default: '#fff',
 		UAGCopyPaste: {
 			styleType: 'icon-color'
 		}
