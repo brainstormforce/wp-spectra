@@ -52,7 +52,7 @@ const PreloadLocalFonts = () => {
                     {__( 'Preload Local Fonts', 'ultimate-addons-for-gutenberg' )}
                 </h3>
                 <p className="mt-[0.6rem] text-sm ">
-                    { __( 'Enable "Preload Local Fonts" to preload font files. It will load the font files right away on page load.', 'ultimate-addons-for-gutenberg' ) }
+                    { __( 'This option will load the font files right away on page load. Preloading Local Fonts can speeds up your website even further.', 'ultimate-addons-for-gutenberg' ) }
                 </p>
             </div>
             <div>
