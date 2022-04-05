@@ -212,12 +212,6 @@ const Settings = ( props ) => {
 		setAttributes( { imageCaptionAlignment: `${ imageCaptionAlignment01 } ${ imageCaptionAlignment02 }` } );
 	},  [ imageCaptionAlignment01, imageCaptionAlignment02 ] );
 
-	useEffect( () => {
-		if( feedLayout === 'carousel' && carouselSquares ){
-			setAttributes( { captionDisplayType: 'bar-inside' } );
-		}
-	}, [ carouselSquares ] );
-
 	const updateMediaGallery = ( media ) => {
         let goodToGo = true;
 		let updatedIDs = [];
@@ -249,8 +243,18 @@ const Settings = ( props ) => {
 			: setAttributes( { feedPagination: false, gridPageNumber: 1 } );
 		setAttributes( { feedLayout: layoutType } );
 		// Next Disable Bar Outside Image for Grid, Tiles and Squared Carousel...
-		if ( ( layoutType === 'grid' || layoutType === 'tiled' || ( layoutType === 'carousel' && carouselSquares ) ) && captionDisplayType === 'bar-outside' ){
-			setAttributes( { captionDisplayType: 'bar-inside' } );
+		switch ( layoutType ){
+			case 'grid':
+			case 'tiled':
+				if ( captionDisplayType === 'bar-outside' ){
+					setAttributes( { captionDisplayType: 'bar-inside' } );
+				}
+				break;
+			case 'carousel':
+				if ( carouselSquares && captionDisplayType === 'bar-outside' ){
+					setAttributes( { captionDisplayType: 'bar-inside' } );
+				}
+				break;
 		}
 	};
 
