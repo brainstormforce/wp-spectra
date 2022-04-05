@@ -14,12 +14,11 @@ export const PostTaxonomy = ( props ) => {
 			for ( let i = 0; i < cat.length; i++ ) {
 				if ( list[ j ].id === cat[ i ] ) {
 					categoriesName.push( list[ j ].name );
-					// categoriesName.join( taxDivider )
 				}
 			}
 		}
 	}
-// console.log(categoriesName.join( taxDivider ))
+
 	return (
 		<>
 			{ displayPostTaxonomy && displayPostTaxonomyAboveTitle && (
