@@ -1416,13 +1416,6 @@ const Settings = ( props ) => {
 						'ultimate-addons-for-gutenberg'
 					) }
 				</p>
-				<p className="uagb-form-notice">
-					{ __(
-						'To enter Google Recaptcha site and secret key you need to check admin dashboard page.',
-						'ultimate-addons-for-gutenberg'
-					) }
-				</p>
-
 				<ToggleControl
 					label={ __(
 						'Enable reCAPTCHA ',
@@ -1436,48 +1429,57 @@ const Settings = ( props ) => {
 					}
 				/>
 				{ reCaptchaEnable && (
-					<MultiButtonsControl
-						setAttributes={ setAttributes }
+					<>
+						<p className="uagb-form-notice">
+							Please configure the Google reCAPTCHA Site & Secret key from <a href="https://developers.google.com/recaptcha/intro">here.</a> Hyperlink should open in a new tab.
+						</p>
+						<MultiButtonsControl
+							setAttributes={ setAttributes }
+							label={ __(
+								'Select Version',
+								'ultimate-addons-for-gutenberg'
+							) }
+							data={ {
+								value: reCaptchaType,
+								label: 'reCaptchaType',
+							} }
+							className="uagb-multi-button-alignment-control"
+							options={ [
+								{
+									value: 'v2',
+									label: 'V2',
+									tooltip: __(
+										'V2',
+										'ultimate-addons-for-gutenberg'
+									),
+								},
+								{
+									value: 'v3',
+									label: 'V3',
+									tooltip: __(
+										'V3',
+										'ultimate-addons-for-gutenberg'
+									),
+								},
+							] }
+							showIcons={ false }
+						/>
+					</>
+				) }
+				{ reCaptchaEnable && 'v3' === reCaptchaType && (
+					<ToggleControl
 						label={ __(
-							'Select Version',
+							'Hide reCAPTCHA Badge',
 							'ultimate-addons-for-gutenberg'
 						) }
-						data={ {
-							value: reCaptchaType,
-							label: 'reCaptchaType',
-						} }
-						className="uagb-multi-button-alignment-control"
-						options={ [
-							{
-								value: 'v2',
-								label: 'V2',
-								tooltip: __(
-									'V2',
-									'ultimate-addons-for-gutenberg'
-								),
-							},
-							{
-								value: 'v3',
-								label: 'V3',
-								tooltip: __(
-									'V3',
-									'ultimate-addons-for-gutenberg'
-								),
-							},
-						] }
-						showIcons={ false }
+						checked={ hidereCaptchaBatch }
+						onChange={ () =>
+							setAttributes( {
+								hidereCaptchaBatch: ! hidereCaptchaBatch,
+							} )
+						}
 					/>
 				) }
-				<h2> { __( 'Know More', 'ultimate-addons-for-gutenberg' ) }</h2>
-				<ExternalLink href="https://www.google.com/recaptcha/admin/create">
-					{ __( 'Get Keys', 'ultimate-addons-for-gutenberg' ) }
-				</ExternalLink>
-				<ExternalLink href="https://developers.google.com/recaptcha/intro">
-					{ __(
-						' | Documentation',
-						'ultimate-addons-for-gutenberg'
-					) }
-				</ExternalLink>
 			</UAGAdvancedPanelBody>
 		);
 	};

@@ -90,9 +90,18 @@ const BlockSettings = () => {
 				<h3 className="text-lg leading-6 font-medium text-gray-900">
 					{__( 'Google Recaptcha', 'ultimate-addons-for-gutenberg' )}
 				</h3>
-				<p className="mt-[0.6rem] text-sm">
+				<p className="mt-[0.6rem] text-sm mb-5">
 					{ __( 'To enable recaptcha feature on your forms blocks Please enable recaptcha option on your blocks setting and select version. Add google recaptcha secret and site key here. Recaptcha will be added to your page on front-end.', 'ultimate-addons-for-gutenberg' ) }
 				</p>
+				<a href="https://www.google.com/recaptcha/admin/create">
+					{ __( 'Get Keys', 'ultimate-addons-for-gutenberg' ) }
+				</a>
+				<a href="https://developers.google.com/recaptcha/intro">
+					{ __(
+						' | Documentation',
+						'ultimate-addons-for-gutenberg'
+					) }
+				</a>
 			</div>
 		</section>
 		<section className='flex border-b border-solid border-slate-200'>
