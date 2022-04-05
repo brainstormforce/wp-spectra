@@ -151,22 +151,22 @@ $selectors = array(
 		'width' => 'calc( ' . UAGB_Block_Helper::get_precise_percentage( $attr[ 'columnsDesk' ] ) . ' )',
 		'aspect-ratio' => 1,
 	),
-	'.uag-image-gallery__layout--tiled .uag-image-gallery-media-wrapper--wide' => array(
-		'width' => 'calc( ' . $attr[ 'tileSize' ] . 'px * 2 )',
-		'height' => $attr[ 'tileSize' ] . 'px',
-	),
-	'.uag-image-gallery__layout--tiled .uag-image-gallery-media-wrapper--tall' => array(
-		'height' => 'calc( ' . $attr[ 'tileSize' ] . 'px * 2 )',
-		'width' => $attr[ 'tileSize' ] . 'px',
-	),
-	'.uag-image-gallery__layout--tiled .uag-image-gallery-media--tiled-wide' => array(
-		'width' => 'calc( ( ' . $attr[ 'tileSize' ] . 'px * 2 ) - ( ' . UAGB_Block_Helper::generate_spacing( $attr[ 'gridImageGapUnit' ], $attr[ 'gridImageGap' ] ) . ' * 2 ) )',
-		'height' => 'calc( ' . $attr[ 'tileSize' ] . 'px - ( ' . UAGB_Block_Helper::generate_spacing( $attr[ 'gridImageGapUnit' ], $attr[ 'gridImageGap' ] ) . ' * 2 ) )',
-	),
-	'.uag-image-gallery__layout--tiled .uag-image-gallery-media--tiled-tall' => array(
-		'height' => 'calc( ( ' . $attr[ 'tileSize' ] . 'px * 2 ) - ( ' . UAGB_Block_Helper::generate_spacing( $attr[ 'gridImageGapUnit' ], $attr[ 'gridImageGap' ] ) . ' * 2 ) )',
-		'width' => 'calc( ' . $attr[ 'tileSize' ] . 'px - ( ' . UAGB_Block_Helper::generate_spacing( $attr[ 'gridImageGapUnit' ], $attr[ 'gridImageGap' ] ) . ' * 2 ) )',
-	),
+	// '.uag-image-gallery__layout--tiled .uag-image-gallery-media-wrapper--wide' => array(
+	// 	'width' => 'calc( ' . $attr[ 'tileSize' ] . 'px * 2 )',
+	// 	'height' => $attr[ 'tileSize' ] . 'px',
+	// ),
+	// '.uag-image-gallery__layout--tiled .uag-image-gallery-media-wrapper--tall' => array(
+	// 	'height' => 'calc( ' . $attr[ 'tileSize' ] . 'px * 2 )',
+	// 	'width' => $attr[ 'tileSize' ] . 'px',
+	// ),
+	// '.uag-image-gallery__layout--tiled .uag-image-gallery-media--tiled-wide' => array(
+	// 	'width' => 'calc( ( ' . $attr[ 'tileSize' ] . 'px * 2 ) - ( ' . UAGB_Block_Helper::generate_spacing( $attr[ 'gridImageGapUnit' ], $attr[ 'gridImageGap' ] ) . ' * 2 ) )',
+	// 	'height' => 'calc( ' . $attr[ 'tileSize' ] . 'px - ( ' . UAGB_Block_Helper::generate_spacing( $attr[ 'gridImageGapUnit' ], $attr[ 'gridImageGap' ] ) . ' * 2 ) )',
+	// ),
+	// '.uag-image-gallery__layout--tiled .uag-image-gallery-media--tiled-tall' => array(
+	// 	'height' => 'calc( ( ' . $attr[ 'tileSize' ] . 'px * 2 ) - ( ' . UAGB_Block_Helper::generate_spacing( $attr[ 'gridImageGapUnit' ], $attr[ 'gridImageGap' ] ) . ' * 2 ) )',
+	// 	'width' => 'calc( ' . $attr[ 'tileSize' ] . 'px - ( ' . UAGB_Block_Helper::generate_spacing( $attr[ 'gridImageGapUnit' ], $attr[ 'gridImageGap' ] ) . ' * 2 ) )',
+	// ),
 	'.uag-image-gallery-media' => array(
 		'border-radius' => UAGB_Block_Helper::generate_border_radius(
 			$attr[ 'imageBorderRadiusUnit' ],

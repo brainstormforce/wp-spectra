@@ -87,11 +87,15 @@ if ( ! class_exists( 'Spectra_Pro_Image_Gallery' ) ) {
 								'type' => 'boolean',
 								'default' => false,
 							),
-							'tileSize:' => array(
+							'tileSize' => array(
 								'type' => 'number',
 								'default' => 0,
 							),
-							'focusList:' => array(
+							'tileSizeFrontEnd' => array(
+								'type' => 'number',
+								'default' => 0,
+							),
+							'focusList' => array(
 								'type' => 'array',
 								'default' => array(),
 							),
@@ -1121,6 +1125,7 @@ if ( ! class_exists( 'Spectra_Pro_Image_Gallery' ) ) {
 						if ( scope.children[0].classList.contains( 'uag-image-gallery__layout--tiled' ) ) {
 							console.log('<?= json_encode( $attr[ 'focusList' ] ); ?>');
 							const element = scope.querySelector( '.uag-image-gallery__layout--tiled' );
+							const tileSize = scope.querySelector( '.uag-image-gallery-media-spacer' ).getBoundingClientRect().width;
 							const isotope = new Isotope( element, {
 								itemSelector: '.uag-image-gallery-media-wrapper',
 								layoutMode: 'masonry',
@@ -1131,15 +1136,21 @@ if ( ! class_exists( 'Spectra_Pro_Image_Gallery' ) ) {
 							imagesLoaded( element ).on( 'progress', ( theInstance, theImage ) => {
 								if ( theImage.isLoaded ){
 									const imageElement = theImage.img;
-									if( imageElement.parentElement.parentElement.classList.contains( 'uag-image-gallery-media-wrapper--focus' ) ){
-									}
-									else if ( imageElement.naturalWidth >= ( imageElement.naturalHeight * 2 ) - ( imageElement.naturalHeight / 2 ) ){
-										imageElement.parentElement.parentElement.classList.add( 'uag-image-gallery-media-wrapper--wide' );
-										imageElement.parentElement.classList.add( 'uag-image-gallery-media--tiled-wide' );
-									}
-									else if ( imageElement.naturalHeight >= ( imageElement.naturalWidth * 2 ) - ( imageElement.naturalWidth / 2 ) ){
-										imageElement.parentElement.parentElement.classList.add( 'uag-image-gallery-media-wrapper--tall' );
-										imageElement.parentElement.classList.add( 'uag-image-gallery-media--tiled-tall' );
+									if( ! imageElement.parentElement.parentElement.classList.contains( 'uag-image-gallery-media-wrapper--focus' ) ){
+										const wrapperElement = imageElement.parentElement.parentElement;
+										const mediaElement = imageElement.parentElement;
+										if ( imageElement.naturalWidth >= ( imageElement.naturalHeight * 2 ) - ( imageElement.naturalHeight / 2 ) ){
+											wrapperElement.style.width = `calc( ${ tileSize }px * 2 )`;
+											wrapperElement.style.height = `${ tileSize }px`;
+											mediaElement.style.width = `calc( ( ${ tileSize }px * 2 ) - ( <?= $attr[ 'gridImageGap' ] ?><?= $attr[ 'gridImageGapUnit' ] ?> * 2 ) )`;
+											mediaElement.style.height = `calc( ${ tileSize }px - ( <?= $attr[ 'gridImageGap' ] ?><?= $attr[ 'gridImageGapUnit' ] ?> * 2 ) )`;
+										}
+										else if ( imageElement.naturalHeight >= ( imageElement.naturalWidth * 2 ) - ( imageElement.naturalWidth / 2 ) ){
+											wrapperElement.style.height = `calc( ${ tileSize }px * 2 )`;
+											wrapperElement.style.width = `${ tileSize }px`;
+											mediaElement.style.height = `calc( ( ${ tileSize }px * 2 ) - ( <?= $attr[ 'gridImageGap' ] ?><?= $attr[ 'gridImageGapUnit' ] ?> * 2 ) )`;
+											mediaElement.style.width = `calc( ${ tileSize }px - ( <?= $attr[ 'gridImageGap' ] ?><?= $attr[ 'gridImageGapUnit' ] ?> * 2 ) )`;
+										}
 									}
 									isotope.layout();
 								}
