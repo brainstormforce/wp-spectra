@@ -54,13 +54,28 @@
 }
 
 /* Gutenberg Editor border hover */
-.edit-post-visual-editor .block-editor-block-list__layout {
+.edit-post-visual-editor .editor-styles-wrapper > .block-editor-block-list__layout {
 
 	.block-editor-block-list__block:hover::after,
 	.block-editor-block-list__block:not([contenteditable]):focus::after {
 		box-shadow: 0 0 0 1px #007cba;
 		border-radius: 2px;
 		z-index: 3;
+	}
+	.block-editor-block-list__block:hover::before,
+	.block-editor-block-list__block:not([contenteditable]):focus::before {
+		font-size: 20px;
+		content: "\f464";
+		display: inline-block;
+		font-family: 'dashicons';
+		padding: 2px;
+		position: absolute;
+		top: 0;
+		align-self: center;
+		background-color: #788894;
+		cursor: pointer;
+		z-index: 99;
+		color: #fff;
 	}
 	.block-editor-block-list__block:not([contenteditable]):focus::after
 	{
