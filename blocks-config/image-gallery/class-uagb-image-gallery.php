@@ -1131,15 +1131,15 @@ if ( ! class_exists( 'Spectra_Pro_Image_Gallery' ) ) {
 							imagesLoaded( element ).on( 'progress', ( theInstance, theImage ) => {
 								if ( theImage.isLoaded ){
 									const imageElement = theImage.img;
-									if( imageElement.classList.contains( 'uag-image-gallery-media-wrapper--focus' ) ){
+									if( imageElement.parentElement.parentElement.classList.contains( 'uag-image-gallery-media-wrapper--focus' ) ){
 									}
 									else if ( imageElement.naturalWidth >= ( imageElement.naturalHeight * 2 ) - ( imageElement.naturalHeight / 2 ) ){
-										imageElement.parentElement.parentElement.classList.add( 'uag-image-gallery-media-wrapper--wide');
-										imageElement.parentElement.classList.add( 'uag-image-gallery-media--tiled-wide');
+										imageElement.parentElement.parentElement.classList.add( 'uag-image-gallery-media-wrapper--wide' );
+										imageElement.parentElement.classList.add( 'uag-image-gallery-media--tiled-wide' );
 									}
 									else if ( imageElement.naturalHeight >= ( imageElement.naturalWidth * 2 ) - ( imageElement.naturalWidth / 2 ) ){
-										imageElement.parentElement.parentElement.classList.add( 'uag-image-gallery-media-wrapper--tall');
-										imageElement.parentElement.classList.add( 'uag-image-gallery-media--tiled-tall');
+										imageElement.parentElement.parentElement.classList.add( 'uag-image-gallery-media-wrapper--tall' );
+										imageElement.parentElement.classList.add( 'uag-image-gallery-media--tiled-tall' );
 									}
 									isotope.layout();
 								}

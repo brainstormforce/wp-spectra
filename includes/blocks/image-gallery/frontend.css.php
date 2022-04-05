@@ -143,8 +143,8 @@ $selectors = array(
 	),
 	'.uag-image-gallery__layout--tiled .uag-image-gallery-media-wrapper' => array(
 		'padding' => UAGB_Helper::get_css_value(
-			$attr[ 'gridImageGapUnit' ],
 			$attr[ 'gridImageGap' ],
+			$attr[ 'gridImageGapUnit' ],
 		),
 	),
 	'.uag-image-gallery__layout--tiled .uag-image-gallery-media-spacer' => array(

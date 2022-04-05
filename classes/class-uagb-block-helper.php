@@ -959,11 +959,11 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 		 * @since 2.0.0
 		 */
 		public static function generate_spacing( $unit, $top, $right=NAN, $bottom=NAN, $left=NAN ){
-			$spacing =  ! is_nan( $top )
+			$spacing =  ! is_nan( $right )
 				? (
-					! is_nan( $right )
+					! is_nan( $bottom )
 					? (
-						! is_nan( $bottom )
+						! is_nan( $left )
 						? UAGB_Helper::get_css_value( $top, $unit ) . ' ' . UAGB_Helper::get_css_value( $right, $unit ) . ' ' . UAGB_Helper::get_css_value( $bottom, $unit ) . ' ' . UAGB_Helper::get_css_value( $left, $unit )
 						: UAGB_Helper::get_css_value( $top, $unit ) . ' ' . UAGB_Helper::get_css_value( $right, $unit ) . ' ' . UAGB_Helper::get_css_value( $bottom, $unit )
 					)
