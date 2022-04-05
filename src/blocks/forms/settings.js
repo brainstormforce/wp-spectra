@@ -20,7 +20,6 @@ import {
 	TextControl,
 	ToggleControl,
 	TextareaControl,
-	ExternalLink,
 	Icon,
 } from '@wordpress/components';
 
