@@ -25,7 +25,7 @@ export const PostTaxonomy = ( props ) => {
 			{ displayPostTaxonomy && displayPostTaxonomyAboveTitle && (
 				<>
 				{ ( 'default' === taxStyle ) && (
-					<span className="uagb-post__taxonomy normal">
+					<span className="uagb-post__taxonomy default">
 					{ ( hideTaxonomyIcon && displayPostTaxonomyAboveTitle ) && ( <span className="dashicons-tag dashicons"></span> ) }
 					<div
 						dangerouslySetInnerHTML={ {
