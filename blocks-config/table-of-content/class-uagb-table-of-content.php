@@ -429,6 +429,19 @@ if ( ! class_exists( 'UAGB_Table_Of_Content' ) ) {
 				return $value;
 			};
 
+			$desktop_class = '';
+			$tab_class     = '';
+			$mob_class     = '';
+
+			if ( array_key_exists( 'UAGHideDesktop', $attributes ) || array_key_exists( 'UAGHideTab', $attributes ) || array_key_exists( 'UAGHideMob', $attributes ) ) {
+
+				$desktop_class = ( isset( $attributes['UAGHideDesktop'] ) ) ? 'uag-hide-desktop' : '';
+
+				$tab_class = ( isset( $attributes['UAGHideTab'] ) ) ? 'uag-hide-tab' : '';
+
+				$mob_class = ( isset( $attributes['UAGHideMob'] ) ) ? 'uag-hide-mob' : '';
+			}
+
 			$wrap = array(
 				'wp-block-uagb-table-of-contents',
 				'uagb-toc__align-' . $attributes['align'],
@@ -436,6 +449,9 @@ if ( ! class_exists( 'UAGB_Table_Of_Content' ) ) {
 				( ( true === $attributes['initialCollapse'] ) ? 'uagb-toc__collapse' : ' ' ),
 				'uagb-block-' . $attributes['block_id'],
 				( isset( $attributes['className'] ) ) ? $attributes['className'] : '',
+				$desktop_class,
+				$tab_class,
+				$mob_class,
 			);
 
 			ob_start();

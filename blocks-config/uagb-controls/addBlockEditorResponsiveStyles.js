@@ -6,16 +6,14 @@ const addBlockEditorResponsiveStyles = ( clientId, styling, deviceTypeClass ) =>
 	const findResponsiveElement = document.getElementById( `block-${clientId}` );
 
     if ( null !== findResponsiveElement && undefined !== findResponsiveElement ) {
+		findResponsiveElement.classList.remove( 'uag-hide-desktop' );
 		styling.map( ( item ) => {
 			if( item ){
-
 				findResponsiveElement.classList.remove( item, deviceTypeClass );
-				if( 'uagb-editor-preview-at-desktop' === deviceTypeClass && 'uag-hide-desktop' === item ){
-
+				if( 'uag-hide-desktop' === item ){
 					findResponsiveElement.classList.add( item, deviceTypeClass );
 				}
 			}
-
 			return findResponsiveElement;
 		} );
 
@@ -36,13 +34,12 @@ const addBlockEditorResponsiveStyles = ( clientId, styling, deviceTypeClass ) =>
         const findResponsiveElementInIframe = iframeDocument.getElementById( `block-${clientId}` );
 
         if ( null !== findResponsiveElementInIframe && undefined !== findResponsiveElementInIframe ) {
-
 				styling.map( ( item ) => {
 
 					if( item ){
 
 						findResponsiveElementInIframe.classList.remove( item, deviceTypeClass );
-						if( ( 'uagb-editor-preview-at-tablet' === deviceTypeClass && 'uag-hide-tab' === item ) ||  ( 'uagb-editor-preview-at-mobile' === deviceTypeClass && 'uag-hide-mob' === item ) ){
+						if( ( 'uag-hide-tab' === item ) ||  ( 'uag-hide-mob' === item ) ){
 							findResponsiveElementInIframe.classList.add( item, deviceTypeClass );
 						}
 					}

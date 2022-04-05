@@ -176,25 +176,27 @@ const AdvancedControlsBlock = createHigherOrderComponent( ( BlockEdit ) => {
 		const { getSelectedBlock } = select( 'core/block-editor' );
 		const childBlocks = getSelectedBlock()?.innerBlocks;
 		const deviceType = useDeviceType();
+		const responsiveClass = [];
+		let responsiveClassHideDesktop, responsiveClassHideTab, responsiveClassHideMob;
+		if ( props.attributes.UAGHideDesktop ) {
+			responsiveClassHideDesktop = 'uag-hide-desktop';
+		}
+
+		if ( props.attributes.UAGHideTab ) {
+			responsiveClassHideTab = 'uag-hide-tab';
+		}
+
+		if ( props.attributes.UAGHideMob ) {
+			responsiveClassHideMob = 'uag-hide-mob';
+		}
+
+		responsiveClass.push( responsiveClassHideDesktop, responsiveClassHideTab, responsiveClassHideMob );
+
+		addBlockEditorResponsiveStyles( props.clientId, responsiveClass, `uagb-editor-preview-at-${ deviceType.toLowerCase() }` );
+
+
 		useEffect( () => {
-			const responsiveClass = [];
-			let responsiveClassHideDesktop = '';
-			let responsiveClassHideTab = '';
-			let responsiveClassHideMob = '';
-			if ( props.attributes.UAGHideDesktop ) {
-				responsiveClassHideDesktop = 'uag-hide-desktop';
-			}
-
-			if ( props.attributes.UAGHideTab ) {
-				responsiveClassHideTab = 'uag-hide-tab';
-			}
-
-			if ( props.attributes.UAGHideMob ) {
-				responsiveClassHideMob = 'uag-hide-mob';
-			}
-			responsiveClass.push( responsiveClassHideDesktop, responsiveClassHideTab, responsiveClassHideMob );
 			addBlockEditorResponsiveStyles( props.clientId, responsiveClass, `uagb-editor-preview-at-${ deviceType.toLowerCase() }` );
-
 				const displayPanel = document.querySelector( '.uag-advance-panel-body-display' );
 				let responsivePanel = document.querySelector( '.uag-advance-panel-body-responsive' );
 				let masonryPanel = document.querySelector( '.uag-advance-panel-body-masonry' );
