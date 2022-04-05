@@ -899,7 +899,7 @@ const Settings = ( props ) => {
 				/>
 				<ToggleControl
 					label={ __(
-						'Show Taxonomy Icon',
+						'Show Meta Icon',
 						'ultimate-addons-for-gutenberg'
 					) }
 					checked={ hideTaxonomyIcon }
