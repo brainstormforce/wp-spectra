@@ -21,6 +21,7 @@ export default function save( props ) {
 		link,
 		linkTarget,
 		titleTag,
+		showDescription
 	} = attributes;
 
 	const target = linkTarget ? '_blank' : '';
@@ -71,11 +72,13 @@ export default function save( props ) {
 							{ iconHTML }
 							</>
 						}
+						{ showDescription && (
 						<RichText.Content
 							value={ prefix }
 							tagName="p"
 							className="uagb-marketing-btn__prefix"
 						/>
+						) }
 				</a>
 		</div>
 	);
