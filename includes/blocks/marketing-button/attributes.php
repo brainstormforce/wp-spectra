@@ -68,7 +68,7 @@ return array(
 	'prefixFontSizeTablet'   => 14,
 	'prefixFontSizeMobile'   => 14,
 	'prefixLineHeightType'   => 'em',
-	'prefixLineHeight'       => '',
+	'prefixLineHeight'       => 2,
 	'prefixLineHeightTablet' => '',
 	'prefixLineHeightMobile' => '',
 	'iconFontSize'           => 20,

@@ -413,7 +413,8 @@ const attributes = {
 		type: 'number',
 		UAGCopyPaste: {
 			styleType: 'desc-line-height'
-		}
+		},
+		default: 2,
 	},
 	prefixLineHeightTablet: {
 		type: 'number',
