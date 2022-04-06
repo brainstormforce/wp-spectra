@@ -396,11 +396,7 @@ const Settings = ( props ) => {
 												},
 											} }
 											min={ 0 }
-											max={ 1600 }
-											unit={ {
-												value: innerContentCustomWidthType,
-												label: 'innerContentCustomWidthType',
-											} }
+											limitMax={ { 'px': 1600, '%': 100, 'vw': 100 } }
 											units={ [
 												{
 													name: __(
@@ -409,7 +405,19 @@ const Settings = ( props ) => {
 													),
 													unitValue: 'px',
 												},
+												{
+													name: __( '%', 'ultimate-addons-for-gutenberg' ),
+													unitValue: '%',
+												},
+												{
+													name: __( 'VW', 'ultimate-addons-for-gutenberg' ),
+													unitValue: 'vw',
+												},
 											] }
+											unit={ {
+												value: innerContentCustomWidthType,
+												label: 'innerContentCustomWidthType',
+											} }
 											setAttributes={ setAttributes }
 										/>
 									}
@@ -436,11 +444,11 @@ const Settings = ( props ) => {
 									},
 								} }
 								min={ 0 }
-								limitMax={ { 'px': 1600, '%': 100 } }
 								unit={ {
 									value: widthType,
 									label: 'widthType',
 								} }
+								limitMax={ { 'px': 1600, '%': 100, 'vw': 100 } }
 								units={ [
 									{
 										name: __(
@@ -494,11 +502,7 @@ const Settings = ( props ) => {
 										},
 									} }
 									min={ 0 }
-									max={ 1600 }
-									unit={ {
-										value: innerContentCustomWidthType,
-										label: 'innerContentCustomWidthType',
-									} }
+									limitMax={ { 'px': 1600, '%': 100, 'vw': 100 } }
 									units={ [
 										{
 											name: __(
@@ -507,7 +511,19 @@ const Settings = ( props ) => {
 											),
 											unitValue: 'px',
 										},
+										{
+											name: __( '%', 'ultimate-addons-for-gutenberg' ),
+											unitValue: '%',
+										},
+										{
+											name: __( 'VW', 'ultimate-addons-for-gutenberg' ),
+											unitValue: 'vw',
+										},
 									] }
+									unit={ {
+										value: innerContentCustomWidthType,
+										label: 'innerContentCustomWidthType',
+									} }
 									setAttributes={ setAttributes }
 								/>
 							}

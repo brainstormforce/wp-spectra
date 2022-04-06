@@ -1,1 +1,80 @@
-(window.webpackJsonp_ultimate_addons_for_gutenberg=window.webpackJsonp_ultimate_addons_for_gutenberg||[]).push([[42],{444:function(e,t,a){"use strict";a.r(t);var n=a(0),r=a.n(n),l=a(1),o=a(79),u=a(23),c=a(6),b=a(4),s=a(14);const d=e=>{e=e.parentProps;const{attributes:t,setAttributes:a}=e,{phoneRequired:n,pattern:d}=t;return r.a.createElement(b.InspectorControls,null,r.a.createElement(o.a,{tabs:["general","advance"]},r.a.createElement(u.b,u.a.general,r.a.createElement(s.a,{initialOpen:!0},r.a.createElement(c.ToggleControl,{label:Object(l.__)("Required","ultimate-addons-for-gutenberg"),checked:n,onChange:()=>a({phoneRequired:!n})}),r.a.createElement(c.SelectControl,{label:Object(l.__)("Pattern"),value:d,options:[{label:"None",value:""},{label:"123-45-678",value:Object(l.__)("[0-9]{3}-[0-9]{2}-[0-9]{3}","ultimate-addons-for-gutenberg")},{label:"123-456-6789",value:Object(l.__)("[0-9]{3}-[0-9]{3}-[0-9]{4}","ultimate-addons-for-gutenberg")}],onChange:e=>a({pattern:e})}))),r.a.createElement(u.b,u.a.advance)))};t.default=r.a.memo(d)}}]);
+(window["webpackJsonp_ultimate_addons_for_gutenberg"] = window["webpackJsonp_ultimate_addons_for_gutenberg"] || []).push([["chunks/form/phone-settings"],{
+
+/***/ "./src/blocks/forms/child-blocks/phone/settings.js":
+/*!*********************************************************!*\
+  !*** ./src/blocks/forms/child-blocks/phone/settings.js ***!
+  \*********************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/i18n */ "@wordpress/i18n");
+/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _Components_inspector_tabs_InspectorTabs_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @Components/inspector-tabs/InspectorTabs.js */ "./src/components/inspector-tabs/InspectorTabs.js");
+/* harmony import */ var _Components_inspector_tabs_InspectorTab_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @Components/inspector-tabs/InspectorTab.js */ "./src/components/inspector-tabs/InspectorTab.js");
+/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @wordpress/components */ "@wordpress/components");
+/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @wordpress/block-editor */ "@wordpress/block-editor");
+/* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var _Components_advanced_panel_body__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @Components/advanced-panel-body */ "./src/components/advanced-panel-body/index.js");
+
+
+
+
+
+
+
+
+const Settings = props => {
+  props = props.parentProps;
+  const {
+    attributes,
+    setAttributes
+  } = props;
+  const {
+    phoneRequired,
+    pattern
+  } = attributes;
+
+  const phoneInspectorControls = () => {
+    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Components_advanced_panel_body__WEBPACK_IMPORTED_MODULE_6__["default"], {
+      initialOpen: true
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__["ToggleControl"], {
+      label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__["__"])('Required', 'ultimate-addons-for-gutenberg'),
+      checked: phoneRequired,
+      onChange: () => setAttributes({
+        phoneRequired: !phoneRequired
+      })
+    }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__["SelectControl"], {
+      label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__["__"])('Pattern'),
+      value: pattern,
+      options: [{
+        label: 'None',
+        value: ''
+      }, {
+        label: '123-45-678',
+        value: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__["__"])('[0-9]{3}-[0-9]{2}-[0-9]{3}', 'ultimate-addons-for-gutenberg')
+      }, {
+        label: '123-456-6789',
+        value: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__["__"])('[0-9]{3}-[0-9]{3}-[0-9]{4}', 'ultimate-addons-for-gutenberg')
+      }],
+      onChange: value => setAttributes({
+        pattern: value
+      })
+    }));
+  };
+
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_5__["InspectorControls"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Components_inspector_tabs_InspectorTabs_js__WEBPACK_IMPORTED_MODULE_2__["default"], {
+    tabs: ['general', 'advance']
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Components_inspector_tabs_InspectorTab_js__WEBPACK_IMPORTED_MODULE_3__["default"], _Components_inspector_tabs_InspectorTab_js__WEBPACK_IMPORTED_MODULE_3__["UAGTabs"].general, phoneInspectorControls()), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Components_inspector_tabs_InspectorTab_js__WEBPACK_IMPORTED_MODULE_3__["default"], _Components_inspector_tabs_InspectorTab_js__WEBPACK_IMPORTED_MODULE_3__["UAGTabs"].advance)));
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (/*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.memo(Settings));
+
+/***/ })
+
+}]);
+//# sourceMappingURL=phone-settings.js.map

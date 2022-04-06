@@ -170,7 +170,7 @@ if ( 'alignwide' === $attr['innerContentWidth'] ) {
 
 	if ( 'default' === $attr['contentWidth'] || 'alignfull' === $attr['contentWidth'] ) {
 		$selectors[ '.uagb-is-root-container.uagb-block-' . $id ] = array( // phpcs:ignore WordPress.WP.GlobalVariablesOverride.Prohibited
-		'--inner-content-custom-width' => $attr['innerContentCustomWidthDesktop'] . 'px',
+		'--inner-content-custom-width' => $attr['innerContentCustomWidthDesktop'] . $attr['innerContentCustomWidthType'],
 		'--padding-left'               => $left_padding_desktop . $attr['paddingType'],
 		'--padding-right'              => $right_padding_desktop . $attr['paddingType'],
 		'--column-gap'                 => $column_gap_desktop . $attr['columnGapType'],

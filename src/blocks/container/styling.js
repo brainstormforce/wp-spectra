@@ -101,22 +101,10 @@ function styling( props ) {
 		topHeightTablet,
 		topHeightMobile,
 		topWidth,
+		innerContentCustomWidthType
 	} = attributes;
 
-	const editPostLayout = document.getElementsByClassName( 'edit-post-layout' )[0];
-	const editorStylesWrapper = document.getElementsByClassName( 'editor-styles-wrapper' )[0];
-	let editorWidth = '100vw';
-	let editorContentWidth = attributes[`innerContentCustomWidth${deviceType}`] + 'px';
-
-	if ( editPostLayout && editorStylesWrapper ) {
-		const editorStylesWrapperWidth = editorStylesWrapper.clientWidth;
-		const editPostLayoutWidth = editPostLayout.clientWidth;
-
-		const differenceInPercent = 100 - ( editorStylesWrapperWidth / editPostLayoutWidth ) * 100;
-		const differenceCustomWidth = ( attributes[`innerContentCustomWidth${deviceType}`] * differenceInPercent ) / 100;
-		editorWidth = 100 - differenceInPercent + 'vw';
-		editorContentWidth = attributes[`innerContentCustomWidth${deviceType}`] - differenceCustomWidth + 'px';
-	}
+	const containerFullWidth = document.getElementById( `block-${ props.clientId }` ).clientWidth;
 
 	const selectors = {
 		' .uagb-container__shape-top svg' : {
@@ -209,12 +197,12 @@ function styling( props ) {
 	if ( ( 'alignfull' === contentWidth || 'default' === contentWidth ) && 'alignwide' === innerContentWidth ) {
 
 		widthSelectorsDesktop[`.is-root-container > .block-editor-block-list__block > .wp-block-uagb-container.uagb-block-${ block_id }`] = {
-			'--inner-content-custom-width' : editorContentWidth,
+			'--inner-content-custom-width' : attributes[`innerContentCustomWidth${deviceType}`] + innerContentCustomWidthType,
 			'--padding-left' : ( attributes[`leftPadding${deviceType}`] || 0 ) + paddingType,
 			'--padding-right' : ( attributes[`rightPadding${deviceType}`] || 0 ) + paddingType,
 			'--column-gap' : ( attributes[`columnGap${deviceType}`] || 0 ) + columnGapType,
-			'padding-left': `calc( ( ${editorWidth} - var( --inner-content-custom-width ) ) / 2 + var( --padding-left ) )`,
-			'padding-right': `calc( ( ${editorWidth} - var( --inner-content-custom-width ) ) / 2 + var( --padding-right ) )`,
+			'padding-left': `calc( ( ${containerFullWidth}px - var( --inner-content-custom-width ) ) / 2 + var( --padding-left ) )`,
+			'padding-right': `calc( ( ${containerFullWidth}px - var( --inner-content-custom-width ) ) / 2 + var( --padding-right ) )`,
 		};
 	}
 
