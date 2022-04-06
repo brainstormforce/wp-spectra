@@ -1,4 +1,5 @@
 
+import { useEffect } from 'react';
 import { __ } from '@wordpress/i18n';
 import { useSelector, useDispatch } from 'react-redux';
 import Select from 'react-select';
@@ -10,16 +11,14 @@ function classNames( ...classes ) {
 }
 
 const ComingSoon = () => {
-
 	const dispatch = useDispatch();
-
     const enableComingSoonMode = useSelector( ( state ) => state.enableComingSoonMode );
     const comingSoonPage = useSelector( ( state ) => state.comingSoonPage );
     const enableComingSoonModeStatus = 'disabled' === enableComingSoonMode ? false : true;
 
-
-	const pages = [];
-	let defaultPage = {};
+	useEffect(() => {
+		console.log('Fetch Pages')
+	}, [])
 
 	const updateenableComingSoonMode = () => {
 
@@ -85,7 +84,7 @@ const ComingSoon = () => {
                 <Select
                     isMulti={false}
                     placeholder={ __( 'Select the page you want' ) }
-                    defaultValue = { defaultPage }
+                    defaultValue = { comingSoonPage }
                     onChange={ ( value ) => updateSelectedPage( value ) }
                     options={ [] }
                     maxMenuHeight={ 140 }
