@@ -145,18 +145,14 @@ UAGBForms = { // eslint-disable-line no-undef
 		form.addEventListener( 'submit', function ( e ) {
 			e.preventDefault();
 			if ( attr.reCaptchaEnable === true && attr.reCaptchaType === 'v3' && reCaptchaSiteKeyV3 ) {
-				grecaptcha.addEventListener( 'DOMContentLoaded', function () { // eslint-disable-line no-undef
-					grecaptcha // eslint-disable-line no-undef
-						.execute( reCaptchaSiteKeyV3, {
-							action: 'submit',
-						} )
-						.then( function ( token ) {
-							if ( token ) {
-								document.getElementById( 'g-recaptcha-response' ).value = token;
-								window.UAGBForms._formSubmit( e, this, attr );
-							}
-						} );
-				} );
+				grecaptcha.ready(function() {
+					grecaptcha.execute(reCaptchaSiteKeyV3, {action: 'submit'}).then(function(token) {
+						if ( token ) {
+							document.getElementById( 'g-recaptcha-response' ).value = token;
+							window.UAGBForms._formSubmit( e, this, attr );
+						}
+					});
+				  });
 			} else {
 				window.UAGBForms._formSubmit( e, this, attr );
 			}
@@ -182,19 +178,25 @@ UAGBForms = { // eslint-disable-line no-undef
 
 		if ( attr.reCaptchaEnable === true ) {
 
-			if( document.getElementsByClassName( 'uagb-forms-recaptcha' ).length !== 0 ) {
+			if( attr.reCaptchaType === 'v2' ) {
 
-				captcha_response = document.getElementById( 'g-recaptcha-response' ).value;
+				if( document.getElementsByClassName( 'uagb-forms-recaptcha' ).length !== 0 ) {
 
-				if ( ! captcha_response ) {
-					document.querySelector( '.uagb-form-reacaptcha-error-' + attr.block_id ).innerHTML = '<p style="color:red !important" class="error-captcha">' + attr.captchaMessage +'</p>';
+					captcha_response = document.getElementById( 'g-recaptcha-response' ).value;
+
+					if ( ! captcha_response ) {
+						document.querySelector( '.uagb-form-reacaptcha-error-' + attr.block_id ).innerHTML = '<p style="color:red !important" class="error-captcha">' + attr.captchaMessage +'</p>';
+						return false;
+					}
+					document.querySelector( '.uagb-form-reacaptcha-error-' + attr.block_id ).innerHTML = '';
+				}else{
+					document.querySelector( '.uagb-form-reacaptcha-error-' + attr.block_id ).innerHTML = '<p style="color:red !important" class="error-captcha"> Google reCAPTCHA Response not found.</p>';
 					return false;
 				}
-				document.querySelector( '.uagb-form-reacaptcha-error-' + attr.block_id ).innerHTML = '';
-			}else{
-				document.querySelector( '.uagb-form-reacaptcha-error-' + attr.block_id ).innerHTML = '<p style="color:red !important" class="error-captcha"> Google reCAPTCHA Response not found.</p>';
-				return false;
+			} else if ( attr.reCaptchaType === 'v3' ) {
+				captcha_response = document.getElementById( 'g-recaptcha-response' ).value;
 			}
+
 		}
 
 		const originalSerialized = window.UAGBForms._serializeIt( form );
@@ -229,10 +231,7 @@ UAGBForms = { // eslint-disable-line no-undef
 			bcc: attr.afterSubmitBccEmail,
 			subject: attr.afterSubmitEmailSubject,
 		};
-		const spinner = document.createElement( 'span' );
-			spinner.class = 'components-spinner';
-		//add spiner to form button to show processing.
-		form.querySelector( '.uagb-forms-main-submit-button-wrap' ).appendChild( spinner );
+
 
 		fetch( uagb_forms_data.ajax_url, { // eslint-disable-line no-undef
 			method: 'POST',
