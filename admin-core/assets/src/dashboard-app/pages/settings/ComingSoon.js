@@ -16,19 +16,11 @@ const ComingSoon = () => {
     const enableComingSoonMode = useSelector( ( state ) => state.enableComingSoonMode );
     const comingSoonPage = useSelector( ( state ) => state.comingSoonPage );
     const enableComingSoonModeStatus = 'disabled' === enableComingSoonMode ? false : true;
-	const pagesInfo = uag_react.uag_pages_info;
+
 
 	const pages = [];
 	let defaultPage = {};
-	pagesInfo.map( ( page ) => {  // eslint-disable-line array-callback-return
-		const title = '' === page?.title ? `Page: ${page?.id}` : page?.title;
-		pages.push( { value: page?.id, label: title } );
 
-		if ( page.id === parseInt( comingSoonPage ) ) {
-			defaultPage = { value: parseInt( comingSoonPage ), label: title };
-		}
-
-	} );
 	const updateenableComingSoonMode = () => {
 
 		let assetStatus;
@@ -95,7 +87,7 @@ const ComingSoon = () => {
                     placeholder={ __( 'Select the page you want' ) }
                     defaultValue = { defaultPage }
                     onChange={ ( value ) => updateSelectedPage( value ) }
-                    options={ pages }
+                    options={ [] }
                     maxMenuHeight={ 140 }
                     minMenuHeight = { 70 }
                     isSearchable={true}
