@@ -109,6 +109,32 @@ const attributes = {
 		type: 'boolean',
 		default: false,
 	},
+	fontSizeType: {
+		type: 'string',
+		default: 'px'
+	},
+	fontSize: {
+		type: 'string'
+	},
+	fontSizeMobile: {
+		type: 'string'
+	},
+	fontSizeTablet: {
+		type: 'string'
+	},
+	lineHeightType: {
+		type: 'string',
+		default: 'px'
+	},
+	lineHeight: {
+		type: 'string'
+	},
+	lineHeightMobile: {
+		type: 'string'
+	},
+	lineHeightTablet: {
+		type: 'string'
+	},
 };
 
 export default attributes;

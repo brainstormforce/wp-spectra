@@ -2,7 +2,7 @@ import lazyLoader from '@Controls/lazy-loader';
 import React, { Suspense } from 'react';
 import { __ } from '@wordpress/i18n';
 import { InspectorControls, BlockControls, BlockAlignmentToolbar } from '@wordpress/block-editor';
-import { Icon } from '@wordpress/components';
+import { Icon, SelectControl } from '@wordpress/components';
 import TypographyControl from '@Components/typography';
 import WebfontLoader from '@Components/typography/fontloader';
 import MultiButtonsControl from '@Components/multi-buttons-control';
@@ -12,7 +12,6 @@ import InspectorTabs from '@Components/inspector-tabs/InspectorTabs.js';
 import InspectorTab, {
 	UAGTabs,
 } from '@Components/inspector-tabs/InspectorTab.js';
-
 
 import UAGAdvancedPanelBody from '@Components/advanced-panel-body';
 
@@ -31,6 +30,14 @@ const Settings = ( props ) => {
 		fontStyle,
 		fontTransform,
 		fontDecoration,
+		fontSizeType,
+		fontSize,
+		fontSizeMobile,
+		fontSizeTablet,
+		lineHeightType,
+		lineHeight,
+		lineHeightMobile,
+		lineHeightTablet,
 	} = attributes;
 
 	let loadBtnGoogleFonts;
@@ -54,7 +61,7 @@ const Settings = ( props ) => {
 			<UAGAdvancedPanelBody initialOpen={ true }>
 				<MultiButtonsControl
 					setAttributes={ setAttributes }
-					label={ __( 'Alignment', 'ultimate-addons-for-gutenberg' ) }
+					label={ __( 'Overall Alignment', 'ultimate-addons-for-gutenberg' ) }
 					data={ {
 						value: align,
 						label: 'align',
@@ -112,18 +119,25 @@ const Settings = ( props ) => {
 					] }
 					showIcons={ true }
 				/>
-				<MultiButtonsControl
+				<SelectControl
 					setAttributes={ setAttributes }
-					label={ __( 'Stack On', 'ultimate-addons-for-gutenberg' ) }
-					data={ {
-						value: stack,
-						label: 'stack',
-					} }
+					label={ __( 'Stack Orientation', 'ultimate-addons-for-gutenberg' ) }
+					value={  stack }
+					onChange={ ( value ) =>
+						setAttributes( { stack: value } )
+					}
 					options={ [
 						{
 							value: 'none',
 							label: __(
 								'None',
+								'ultimate-addons-for-gutenberg'
+							),
+						},
+						{
+							value: 'all',
+							label: __(
+								'All',
 								'ultimate-addons-for-gutenberg'
 							),
 						},
@@ -173,9 +187,10 @@ const Settings = ( props ) => {
 	const styleSettings = () => {
 		return (
 			<UAGAdvancedPanelBody
-				title={ __( 'Typography', 'ultimate-addons-for-gutenberg' ) }
+				title={ __( 'Button', 'ultimate-addons-for-gutenberg' ) }
 				initialOpen={ false }
 			>
+
 				<TypographyControl
 					label={ __(
 						'Typography',
@@ -201,8 +216,38 @@ const Settings = ( props ) => {
 						value: fontDecoration,
 						label: 'fontDecoration',
 					} }
-					disableFontSize={ true }
-					disableLineHeight={ true }
+					fontSizeType={ {
+						value: fontSizeType,
+						label: 'FontSizeType',
+					} }
+					fontSize={ {
+						value: fontSize,
+						label: 'FontSize',
+					} }
+					fontSizeMobile={ {
+						value: fontSizeMobile,
+						label: 'FontSizeMobile',
+					} }
+					fontSizeTablet={ {
+						value: fontSizeTablet,
+						label: 'FontSizeTablet',
+					} }
+					lineHeightType={ {
+						value: lineHeightType,
+						label: 'LineHeightType',
+					} }
+					lineHeight={ {
+						value: lineHeight,
+						label: 'LineHeight',
+					} }
+					lineHeightMobile={ {
+						value: lineHeightMobile,
+						label: 'LineHeightMobile',
+					} }
+					lineHeightTablet={ {
+						value: lineHeightTablet,
+						label: 'LineHeightTablet',
+					} }
 				/>
 			</UAGAdvancedPanelBody>
 		);
