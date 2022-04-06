@@ -27,8 +27,8 @@
 		}
 	}
 
-	.components-button:hover:not(:disabled) {
-		color: #9eaab5;
+	.components-button:hover:not(:disabled) svg {
+		color: #bcc0c4;
 	}
 
 	.block-editor-block-variation-picker__skip {
@@ -70,8 +70,7 @@
 }
 
 
-.is-selected .wp-block-uagb-container::before,
-.has-child-selected .wp-block-uagb-container::before {
+.wp-block-uagb-container::before {
 	content: "";
 	position: absolute;
 	border: 1px dashed #d5dadf;
@@ -113,7 +112,7 @@
 }
 
 .uag-container-block-inserter .components-button {
-	color: #4a01e0;
+	color: #1e1e1e;
 }
 
 .wp-block-uagb-container > .block-editor-inner-blocks {
