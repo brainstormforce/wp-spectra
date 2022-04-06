@@ -73,7 +73,7 @@ const attributes = {
 		UAGCopyPaste: {
 			styleType: 'separator-width'
 		},
-		default: 5
+		default: 9
 	},
 	separatorWidthType: {
 		type: 'string',
