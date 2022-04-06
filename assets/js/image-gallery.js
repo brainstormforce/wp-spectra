@@ -84,10 +84,7 @@ UAGBImageGalleryMasonry = {
 			credentials: 'same-origin',
 			body: mediaData,
 		} )
-		.then( ( resp ) => { 
-			console.log( resp );
-			return resp.json()
-		} )
+		.then( ( resp ) => resp.json() )
 		.then( function( data ) {
 			let element = $scope.querySelector( '.uag-image-gallery__layout--masonry' );
 			if ( ! element ) {
@@ -139,7 +136,7 @@ UAGBImageGalleryPagedGrid = {
 				}
 				let mediaItem = $scope.querySelector( '.uag-image-gallery-media-wrapper' );
 				if ( ! mediaItem ) {
-					mediaItem = $scope
+					mediaItem = $scope;
 				}
 				const total = $attr.gridPages;
 				const $args = {
@@ -211,6 +208,11 @@ UAGBImageGalleryPagedGrid = {
 		} )
 		.then( ( resp ) => resp.json() )
 		.then( function( data ) {
+			if ( data.success === false ){
+				console.error( 'Spectra pagination encountered an error, data below:' );
+				console.error( data );
+				return;
+			}
 			let element = $scope.querySelector( '.uag-image-gallery__layout--isogrid' );
 			if ( ! element ) {
 				element = $scope;
@@ -228,7 +230,7 @@ UAGBImageGalleryPagedGrid = {
 			isotope.insert( UAGBImageGalleryPagedGrid.createElementFromHTML( data.data ) );
 			imagesLoaded( element ).on( 'progress', function() {
 				isotope.layout();
-			});
+			} );
 			if ( parseInt( $obj.page_number ) === 1 ) {
 				arrows.forEach( ( arrow ) => {
 					arrow.disabled = ( arrow.getAttribute( 'data-direction' ) === 'Prev' );
