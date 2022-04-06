@@ -104,7 +104,18 @@ function styling( props ) {
 		innerContentCustomWidthType
 	} = attributes;
 
-	const containerFullWidth = document.getElementById( `block-${ props.clientId }` ).clientWidth;
+	let rootContainer = document.getElementById( `block-${ props.clientId }` );
+
+	let containerFullWidth = rootContainer ? rootContainer.clientWidth : '100vw';
+	const tabletPreview = document.getElementsByClassName( 'is-tablet-preview' );
+    const mobilePreview = document.getElementsByClassName( 'is-mobile-preview' );
+	if ( 0 !== tabletPreview.length || 0 !== mobilePreview.length ) {
+		const preview = tabletPreview[0] || mobilePreview[0];
+		const iframe = preview.getElementsByTagName( 'iframe' )[0];
+        const iframeDocument = iframe.contentWindow.document || iframe.contentDocument;
+		rootContainer = iframeDocument.getElementById( `block-${ props.clientId }` );
+		containerFullWidth = rootContainer ? rootContainer.clientWidth : '100vw';
+	}
 
 	const selectors = {
 		' .uagb-container__shape-top svg' : {
