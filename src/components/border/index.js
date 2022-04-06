@@ -131,12 +131,12 @@ const Border = ( props ) => {
 					<Range
 						label={ borderWidth.title }
 						value={ borderWidth.value }
-						onChange={ ( value ) =>
-							setAttributes( { [ borderWidth.label ]: value } )
-						}
 						min={ 0 }
 						max={ 100 }
 						displayUnit={ false }
+						setAttributes={setAttributes}
+						data={{value:borderWidth.value, label: borderWidth.label}}
+						onChange={false}
 					/>
 				</div>
 			) }
@@ -144,9 +144,7 @@ const Border = ( props ) => {
 				<Range
 					label={ borderRadius.title }
 					value={ borderRadius.value }
-					onChange={ ( value ) =>
-						setAttributes( { [ borderRadius.label ]: value } )
-					}
+					data={{value:borderRadius.value, label: borderRadius.label}}
 					min={ 0 }
 					max={ 100 }
 					displayUnit={ borderRadius?.displayUnit || false }
@@ -168,6 +166,7 @@ const Border = ( props ) => {
 						},
 					] }
 					setAttributes={ setAttributes }
+					onChange={false}
 				/>
 			</div>
 			{ 'none' !== borderStyle.value && (
