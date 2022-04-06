@@ -66,13 +66,19 @@ class Admin_Helper {
 		return $options;
 	}
 
-	public static function get_coming_soon_page(){
+	/**
+	 * Get Coming Soon Page
+	 *
+	 * @since 2.0.0
+	 * @return boolean|array
+	 */
+	public static function get_coming_soon_page() {
 		$page_id = \UAGB_Admin_Helper::get_admin_settings_option( 'uag_coming_soon_page', '' );
-		if($page_id){
-			return [
+		if ( $page_id ) {
+			return array(
 				'value' => $page_id,
-				'label' => \get_the_title($page_id)
-			];
+				'label' => \get_the_title( $page_id ),
+			);
 		}
 		return false;
 	}

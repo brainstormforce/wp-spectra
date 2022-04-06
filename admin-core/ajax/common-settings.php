@@ -67,7 +67,7 @@ class Common_Settings extends Ajax_Base {
 			'content_width',
 			'enable_coming_soon_mode',
 			'coming_soon_page',
-			'fetch_pages'
+			'fetch_pages',
 		);
 
 		$this->init_ajax_events( $ajax_events );
@@ -94,23 +94,23 @@ class Common_Settings extends Ajax_Base {
 			wp_send_json_error( $response_data );
 		}
 
-		$args = array(
-			'post_type' => 'page',
-			'posts_per_page' => 5
+		$args    = array(
+			'post_type'      => 'page',
+			'posts_per_page' => 5,
 		);
-		$keyword = (isset($_POST['keyword']) ? sanitize_text_field($_POST['keyword']) : '');
-		if(!empty($keyword)){
+		$keyword = ( isset( $_POST['keyword'] ) ? sanitize_text_field( $_POST['keyword'] ) : '' );
+		if ( ! empty( $keyword ) ) {
 			$args['s'] = $keyword;
 		}
 
-		$results = [];
-		$pages = get_posts($args);
-		if(is_array($pages)){
-			foreach($pages as $page){
-				$results[] = [
+		$results = array();
+		$pages   = get_posts( $args );
+		if ( is_array( $pages ) ) {
+			foreach ( $pages as $page ) {
+				$results[] = array(
 					'label' => $page->post_title,
-					'value' => $page->ID
-				];
+					'value' => $page->ID,
+				);
 			}
 		}
 

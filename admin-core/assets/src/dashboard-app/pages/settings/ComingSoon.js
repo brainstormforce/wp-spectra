@@ -12,8 +12,8 @@ function classNames( ...classes ) {
 
 const ComingSoon = () => {
 	const dispatch = useDispatch();
-	const [pages, setPages] = useState([])
-	const [isFetchPages, setFetchPages] = useState(false)
+	const [pages, setPages] = useState( [] )
+	const [isFetchPages, setFetchPages] = useState( false )
     const enableComingSoonMode = useSelector( ( state ) => state.enableComingSoonMode );
     const comingSoonPage = useSelector( ( state ) => state.comingSoonPage );
     const enableComingSoonModeStatus = 'disabled' === enableComingSoonMode ? false : true;
@@ -63,26 +63,26 @@ const ComingSoon = () => {
 		} );
 	};
 
-	const fetchPageHandler = (keyword = '') => {
+	const fetchPageHandler = ( keyword = '' ) => {
 		const formData = new window.FormData();
 		formData.append( 'action', 'uag_fetch_pages' );
 		formData.append( 'security', uag_react.fetch_pages_nonce );
 		formData.append( 'keyword', keyword );
-		setFetchPages(true)
+		setFetchPages( true )
 		apiFetch( {
 			url: uag_react.ajax_url,
 			method: 'POST',
 			body: formData,
-		} ).then( (response) => {
-			setFetchPages(false)
-			setPages(response.data)
+		} ).then( ( response ) => {
+			setFetchPages( false )
+			setPages( response.data )
 		} );
 	}
 
-	const onChangeHandler = (value) => {
-		const filterData = pages.filter((item) => item.label.toLowerCase().includes(value))
-		if(filterData.length === 0){
-			fetchPageHandler(value)
+	const onChangeHandler = ( value ) => {
+		const filterData = pages.filter( ( item ) => item.label.toLowerCase().includes( value ) )
+		if( filterData.length === 0 ){
+			fetchPageHandler( value )
 		}
 	}
 
@@ -106,7 +106,7 @@ const ComingSoon = () => {
                     isMulti={false}
                     placeholder={ __( 'Select the page you want' ) }
                     defaultValue = { comingSoonPage }
-                    onChange={ (value) => updateSelectedPage( value ) }
+                    onChange={ ( value ) => updateSelectedPage( value ) }
 					onInputChange={onChangeHandler}
                     options={ pages }
                     maxMenuHeight={ 140 }
