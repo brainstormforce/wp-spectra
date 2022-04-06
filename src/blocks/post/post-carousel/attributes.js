@@ -939,8 +939,8 @@ const attributes = {
 		default : ' , ',
 	},
 	displayPostTaxonomyAboveTitle                : {
-		type    : 'boolean',
-		default : false,
+		type    : 'string',
+		default : 'withMeta',
 	},
 	hideTaxonomyIcon                : {
 		type    : 'boolean',

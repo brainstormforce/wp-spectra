@@ -63,7 +63,7 @@ return array(
 	'ctaLineHeightTablet'         => '',
 	'ctaLineHeightMobile'         => '',
 	'ctaLoadGoogleFonts'          => false,
-	'metaColor'                   => '',
+	'metaColor'                   => '#777777',
 	'highlightedTextColor'        => '#fff',
 	'highlightedTextBgColor'      => '#3182ce',
 	'excerptColor'                => '',

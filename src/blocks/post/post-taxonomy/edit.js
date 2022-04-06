@@ -21,11 +21,11 @@ export const PostTaxonomy = ( props ) => {
 
 	return (
 		<>
-			{ displayPostTaxonomy && displayPostTaxonomyAboveTitle && (
+			{ displayPostTaxonomy && 'aboveTitle' === displayPostTaxonomyAboveTitle && (
 				<>
 				{ ( 'default' === taxStyle ) && (
 					<span className="uagb-post__taxonomy default">
-					{ ( hideTaxonomyIcon && displayPostTaxonomyAboveTitle ) && ( <span className="dashicons-tag dashicons"></span> ) }
+					{ ( hideTaxonomyIcon && 'aboveTitle' === displayPostTaxonomyAboveTitle ) && ( <span className="dashicons-tag dashicons"></span> ) }
 					<div
 						dangerouslySetInnerHTML={ {
 							__html: categoriesName.join( taxDivider ),
@@ -38,7 +38,7 @@ export const PostTaxonomy = ( props ) => {
 					cat.map( ( Citem ) => (
 						( Litem.id === Citem ) && (
 							<span className={`uagb-post__taxonomy ${taxStyle}`}>
-							{ ( hideTaxonomyIcon && displayPostTaxonomyAboveTitle ) && ( <span className="dashicons-tag dashicons"></span> ) }
+							{ ( hideTaxonomyIcon && 'aboveTitle' === displayPostTaxonomyAboveTitle ) && ( <span className="dashicons-tag dashicons"></span> ) }
 							{Litem.name}
 							</span>
 						)

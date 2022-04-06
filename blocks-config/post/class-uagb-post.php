@@ -437,8 +437,8 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 					'default' => 'default',
 				),
 				'displayPostTaxonomyAboveTitle' => array(
-					'type'    => 'boolean',
-					'default' => false,
+					'type'    => 'string',
+					'default' => 'withMeta',
 				),
 				'displayPostImage'              => array(
 					'type'    => 'boolean',
@@ -913,7 +913,7 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 				),
 				'taxDivider'                    => array(
 					'type'    => 'string',
-					'default' => ' , ',
+					'default' => ', ',
 				),
 			);
 		}
@@ -1282,7 +1282,7 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 				case 'uagb/post-image':
 					return $this->render_image( $attr );
 				case 'uagb/post-taxonomy':
-					return $attr['displayPostTaxonomyAboveTitle'] ? $this->render_meta_taxonomy( $attr ) : '';
+					return ( 'aboveTitle' === $attr['displayPostTaxonomyAboveTitle'] ) ? $this->render_meta_taxonomy( $attr ) : '';
 				case 'uagb/post-title':
 					return $this->render_title( $attr );
 				case 'uagb/post-meta':
@@ -1599,12 +1599,12 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 			if ( ! isset( $terms[0] ) ) {
 				return;
 			}
-			$wrap = $attributes['displayPostTaxonomyAboveTitle'] ? array(
+			$wrap = ( 'aboveTitle' === $attributes['displayPostTaxonomyAboveTitle'] ) ? array(
 				'uagb-post__taxonomy',
 				$attributes['taxStyle'],
 			) : array( 'uagb-post__taxonomy' );
 
-			if ( ( 'default' === $attributes['taxStyle'] && true === $attributes['displayPostTaxonomyAboveTitle'] ) || ! $attributes['displayPostTaxonomyAboveTitle'] ) {
+			if ( ( 'default' === $attributes['taxStyle'] && 'aboveTitle' === $attributes['displayPostTaxonomyAboveTitle'] ) || 'withMeta' === $attributes['displayPostTaxonomyAboveTitle'] ) {
 				?>
 				<span class='<?php echo esc_html( implode( ' ', $wrap ) ); ?>'>
 					<?php echo ( true === $attributes['hideTaxonomyIcon'] ) ? '<span class="dashicons-tag dashicons"></span>' : ''; ?>
@@ -1615,12 +1615,12 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 						$category_link = get_category_link( $value->term_id );
 						array_push( $terms_list, '<a href="' . esc_url( $category_link ) . '">' . esc_html( $value->name ) . '</a>' );
 					}
-					echo esc_attr( $attributes['displayPostTaxonomyAboveTitle'] && 'default' === $attributes['taxStyle'] ) ? wp_kses_post( implode( '&nbsp;' . esc_html( $attributes['taxDivider'] ) . '&nbsp;', $terms_list ) ) : wp_kses_post( implode( ',&nbsp;', $terms_list ) );
+					echo esc_attr( ( 'aboveTitle' === $attributes['displayPostTaxonomyAboveTitle'] ) && 'default' === $attributes['taxStyle'] ) ? wp_kses_post( implode( esc_html( $attributes['taxDivider'] ) . '&nbsp;', $terms_list ) ) : wp_kses_post( implode( ',&nbsp;', $terms_list ) );
 					?>
 				</span>
 				<?php
 			}
-			if ( 'highlighted' === $attributes['taxStyle'] && true === $attributes['displayPostTaxonomyAboveTitle'] ) {
+			if ( 'highlighted' === $attributes['taxStyle'] && 'aboveTitle' === $attributes['displayPostTaxonomyAboveTitle'] ) {
 				$terms_list = array();
 				foreach ( $terms as $key => $value ) {
 					// Get the URL of this category.
@@ -1668,7 +1668,7 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 							break;
 
 						case 'taxonomy':
-							! $attributes['displayPostTaxonomyAboveTitle'] ? $this->render_meta_taxonomy( $attributes ) : '';
+							( 'withMeta' === $attributes['displayPostTaxonomyAboveTitle'] ) ? $this->render_meta_taxonomy( $attributes ) : '';
 							break;
 
 						default:

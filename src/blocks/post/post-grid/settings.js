@@ -885,55 +885,62 @@ const Settings = ( props ) => {
 				/>
 				{ displayPostTaxonomy && (
 				<>
-				<ToggleControl
+				<MultiButtonsControl
+					setAttributes={ setAttributes }
 					label={ __(
-						'Show Taxonomy Above Title',
+						'Taxonomy Position',
 						'ultimate-addons-for-gutenberg'
 					) }
-					checked={ displayPostTaxonomyAboveTitle }
-					onChange={ () =>
-						setAttributes( {
-							displayPostTaxonomyAboveTitle: ! displayPostTaxonomyAboveTitle,
-						} )
-					}
-				/>
-				<ToggleControl
-					label={ __(
-						'Show Meta Icon',
-						'ultimate-addons-for-gutenberg'
-					) }
-					checked={ hideTaxonomyIcon }
-					onChange={ () =>
-						setAttributes( {
-							hideTaxonomyIcon: ! hideTaxonomyIcon,
-						} )
-					}
-				/>
-				{ displayPostTaxonomyAboveTitle && (
-				<>
-				<SelectControl
-					label={ __( 'Taxonomy Style', 'ultimate-addons-for-gutenberg' ) }
-					value={ taxStyle }
-					onChange={ ( value ) =>
-						setAttributes( { taxStyle: value } )
-					}
+					data={ {
+						value: displayPostTaxonomyAboveTitle,
+						label: 'displayPostTaxonomyAboveTitle',
+					} }
 					options={ [
 						{
-							value: 'default',
+							value: 'withMeta',
 							label: __(
-								'Normal',
+								'With Meta',
 								'ultimate-addons-for-gutenberg'
 							),
 						},
 						{
-							value: 'highlighted',
+							value: 'aboveTitle',
 							label: __(
-								'Highlighted',
+								'Above Title',
 								'ultimate-addons-for-gutenberg'
 							),
 						},
 					] }
 				/>
+				{ 'aboveTitle' === displayPostTaxonomyAboveTitle && (
+				<>
+					<MultiButtonsControl
+						setAttributes={ setAttributes }
+						label={ __(
+							'Taxonomy Style',
+							'ultimate-addons-for-gutenberg'
+						) }
+						data={ {
+							value: taxStyle,
+							label: 'taxStyle',
+						} }
+						options={ [
+							{
+								value: 'default',
+								label: __(
+									'Normal',
+									'ultimate-addons-for-gutenberg'
+								),
+							},
+							{
+								value: 'highlighted',
+								label: __(
+									'Highlighted',
+									'ultimate-addons-for-gutenberg'
+								),
+							},
+						] }
+					/>
 				{ 'default' === taxStyle && (
 					<TextControl
 						label={ __( 'Taxonomy Divider', 'ultimate-addons-for-gutenberg' ) }
@@ -949,6 +956,18 @@ const Settings = ( props ) => {
 				) }
 				</>
 				) }
+				<ToggleControl
+					label={ __(
+						'Show Meta Icon',
+						'ultimate-addons-for-gutenberg'
+					) }
+					checked={ hideTaxonomyIcon }
+					onChange={ () =>
+						setAttributes( {
+							hideTaxonomyIcon: ! hideTaxonomyIcon,
+						} )
+					}
+				/>
 				<ToggleControl
 					label={ __(
 						'Show Excerpt',
