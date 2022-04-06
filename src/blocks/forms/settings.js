@@ -163,6 +163,7 @@ const Settings = ( props ) => {
 		submitTextFontStyle,
 		labelFontStyle,
 		inputFontStyle,
+		hidereCaptchaBatch
 	} = attributes;
 
 	const presetSettings = () => {
@@ -1430,7 +1431,7 @@ const Settings = ( props ) => {
 				{ reCaptchaEnable && (
 					<>
 						<p className="uagb-form-notice">
-							Please configure the Google reCAPTCHA Site & Secret key from <a href="https://developers.google.com/recaptcha/intro">here.</a> Hyperlink should open in a new tab.
+							Please configure the Google reCAPTCHA Site & Secret key from <a target = "_blank" href={`${uagb_blocks_info.uagb_home_url}/wp-admin/options-general.php?page=spectra&path=settings&settings=block-settings`}>here.</a>
 						</p>
 						<MultiButtonsControl
 							setAttributes={ setAttributes }
