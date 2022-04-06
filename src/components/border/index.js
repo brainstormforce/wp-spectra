@@ -136,6 +136,7 @@ const Border = ( props ) => {
 						displayUnit={ false }
 						setAttributes={setAttributes}
 						data={{value:borderWidth.value, label: borderWidth.label}}
+						onChange={false}
 					/>
 				</div>
 			) }
@@ -165,6 +166,7 @@ const Border = ( props ) => {
 						},
 					] }
 					setAttributes={ setAttributes }
+					onChange={false}
 				/>
 			</div>
 			{ 'none' !== borderStyle.value && (

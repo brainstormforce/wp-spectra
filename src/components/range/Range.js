@@ -120,10 +120,10 @@ const Range = ( props ) => {
 		min = limitMin( newValue, props );
 
 		if ( props.value > max ) {
-			handleOnChange(max);
+			handleOnChange( max );
 		}
 		if ( props.value < min ) {
-			handleOnChange(min);
+			handleOnChange( min );
 		}
 
 	};
