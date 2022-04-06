@@ -13,21 +13,6 @@ import { __ } from '@wordpress/i18n';
 
 import { registerBlockType } from '@wordpress/blocks';
 
-if( attributes.reCaptchaEnable ) {
-
-	if( attributes.reCaptchaType === 'v2' ) {
-
-		uagb_blocks_info.recaptcha_site_key_v2 = attributes.reCaptchaSiteKeyV2;
-		uagb_blocks_info.recaptcha_secret_key_v2= attributes.reCaptchaSecretKeyV2;
-
-	} else {
-
-		uagb_blocks_info.recaptcha_site_key_v3 = attributes.reCaptchaSiteKeyV3;
-		uagb_blocks_info.recaptcha_secret_key_v3 = attributes.reCaptchaSecretKeyV3;
-
-	}
-}
-
 registerBlockType( 'uagb/forms', {
 	title: __( 'Form', 'ultimate-addons-for-gutenberg' ),
 	description: __( 'This block allow you to create interactive contact form, newsletter, suggestion, etc easily.', 'ultimate-addons-for-gutenberg' ),
