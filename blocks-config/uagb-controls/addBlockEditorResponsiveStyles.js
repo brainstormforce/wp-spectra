@@ -1,12 +1,11 @@
 const addBlockEditorResponsiveStyles = ( clientId, styling, deviceTypeClass ) => {
 
-
-
     // Desktop.
 	const findResponsiveElement = document.getElementById( `block-${clientId}` );
 
     if ( null !== findResponsiveElement && undefined !== findResponsiveElement ) {
-		findResponsiveElement.classList.remove( 'uag-hide-desktop' );
+
+		findResponsiveElement.classList.remove( 'uag-hide-desktop' ); // To remove uag-hide-desktop when toggle click.
 		styling.map( ( item ) => {
 			if( item ){
 				findResponsiveElement.classList.remove( item, deviceTypeClass );

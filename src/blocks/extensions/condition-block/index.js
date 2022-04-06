@@ -178,25 +178,35 @@ const AdvancedControlsBlock = createHigherOrderComponent( ( BlockEdit ) => {
 		const deviceType = useDeviceType();
 		const responsiveClass = [];
 		let responsiveClassHideDesktop, responsiveClassHideTab, responsiveClassHideMob;
-		if ( props.attributes.UAGHideDesktop ) {
-			responsiveClassHideDesktop = 'uag-hide-desktop';
-		}
 
-		if ( props.attributes.UAGHideTab ) {
-			responsiveClassHideTab = 'uag-hide-tab';
-		}
+			const parentClientId = select(
+				'core/block-editor'
+			).getBlockHierarchyRootClientId( props.clientId );
 
-		if ( props.attributes.UAGHideMob ) {
-			responsiveClassHideMob = 'uag-hide-mob';
-		}
+			const parentAttributes = select( 'core/block-editor' ).getBlockAttributes(
+				parentClientId
+			);
 
-		responsiveClass.push( responsiveClassHideDesktop, responsiveClassHideTab, responsiveClassHideMob );
+			if ( parentAttributes.UAGHideDesktop ) {
+				responsiveClassHideDesktop = 'uag-hide-desktop';
+			}
 
-		addBlockEditorResponsiveStyles( props.clientId, responsiveClass, `uagb-editor-preview-at-${ deviceType.toLowerCase() }` );
+			if ( parentAttributes.UAGHideTab ) {
+				responsiveClassHideTab = 'uag-hide-tab';
+			}
 
+			if ( parentAttributes.UAGHideMob ) {
+				responsiveClassHideMob = 'uag-hide-mob';
+			}
+
+			responsiveClass.push( responsiveClassHideDesktop, responsiveClassHideTab, responsiveClassHideMob );
+
+			addBlockEditorResponsiveStyles( parentClientId, responsiveClass, `uagb-editor-preview-at-${ deviceType.toLowerCase() }` );
 
 		useEffect( () => {
-			addBlockEditorResponsiveStyles( props.clientId, responsiveClass, `uagb-editor-preview-at-${ deviceType.toLowerCase() }` );
+
+				addBlockEditorResponsiveStyles( parentClientId, responsiveClass, `uagb-editor-preview-at-${ deviceType.toLowerCase() }` );
+
 				const displayPanel = document.querySelector( '.uag-advance-panel-body-display' );
 				let responsivePanel = document.querySelector( '.uag-advance-panel-body-responsive' );
 				let masonryPanel = document.querySelector( '.uag-advance-panel-body-masonry' );
