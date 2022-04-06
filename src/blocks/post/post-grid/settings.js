@@ -1365,7 +1365,7 @@ const Settings = ( props ) => {
 						setAttributes( { metaColor: value } )
 					}
 				/>
-				{ 'highlighted' === taxStyle && (
+				{ ( 'aboveTitle' === displayPostTaxonomyAboveTitle && 'highlighted' === taxStyle ) && (
 					<>
 					<AdvancedPopColorControl
 						label={ __( 'Taxonomy Text Color', 'ultimate-addons-for-gutenberg' ) }

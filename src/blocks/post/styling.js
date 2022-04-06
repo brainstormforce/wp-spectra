@@ -318,6 +318,16 @@ function styling( props ) {
 	selectors[ ' span.uagb-post__taxonomy.highlighted' ] = {
 		'color': highlightedTextColor,
 		'background-color': highlightedTextBgColor,
+		'font-size': generateCSSUnit( metaFontSize, metaFontSizeType ),
+		'font-family': metaFontFamily,
+		'font-weight': metaFontWeight,
+		'line-height': generateCSSUnit(
+			metaLineHeight,
+			metaLineHeightType
+		),
+		'text-transform': metaTransform,
+		'text-decoration': metaDecoration,
+		'font-style': metaFontStyle,
 	};
 	selectors[ ' .uagb-post-grid-byline .uagb-post__author' ] = {
 		'color': metaColor,
