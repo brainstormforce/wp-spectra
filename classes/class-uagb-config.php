@@ -78,7 +78,7 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 		public static function get_block_assets() {
 
 			$blocks      = UAGB_Admin_Helper::get_block_options();
-			$post_js_dep = ( ( false === $blocks['uagb/post-carousel']['is_activate'] ) ? array() : array( 'uagb-slick-js' ) );
+			$post_js_dep = ( ( false === $blocks['uagb/post-carousel']['is_activate'] ) ? array( 'jquery' ) : array( 'jquery', 'uagb-slick-js' ) );
 
 			if ( null === self::$block_assets ) {
 				self::$block_assets = array(
