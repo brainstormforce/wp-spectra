@@ -62,7 +62,6 @@ const attributes = {
 		UAGCopyPaste: {
 			styleType: 'container-min-height-desktop'
 		},
-		default: 120,
 	},
 	minHeightTablet: {
 		type: 'number',
@@ -108,42 +107,42 @@ const attributes = {
 	},
 	alignItemsDesktop: {
 		type: 'string',
-		default: 'stretch',
+		default: 'center',
 		UAGCopyPaste: {
 			styleType: 'container-align-items-desktop'
 		},
 	},
 	alignItemsTablet: {
 		type: 'string',
-		default: 'stretch',
+		default: 'center',
 		UAGCopyPaste: {
 			styleType: 'container-align-items-tablet'
 		},
 	},
 	alignItemsMobile: {
 		type: 'string',
-		default: 'stretch',
+		default: 'center',
 		UAGCopyPaste: {
 			styleType: 'container-align-items-mobile'
 		},
 	},
 	justifyContentDesktop: {
 		type: 'string',
-		default: 'flex-start',
+		default: 'center',
 		UAGCopyPaste: {
 			styleType: 'container-justify-content-desktop'
 		},
 	},
 	justifyContentTablet: {
 		type: 'string',
-		default: 'flex-start',
+		default: 'center',
 		UAGCopyPaste: {
 			styleType: 'container-justify-content-tablet'
 		},
 	},
 	justifyContentMobile: {
 		type: 'string',
-		default: 'flex-start',
+		default: 'center',
 		UAGCopyPaste: {
 			styleType: 'container-justify-content-mobile'
 		},

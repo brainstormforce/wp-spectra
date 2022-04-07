@@ -92,18 +92,23 @@
 		display: flex;
 		width: 100%;
 		height: 100%;
-
-		.block-list-appender {
-			align-self: flex-start;
-
-			.block-editor-inserter {
-				display: none;
-			}
-		}
 	}
 
 	.block-editor-block-list__layout {
-		padding-left: 10px;
+
+		.block-list-appender.wp-block {
+			button {
+				color: #a0a7ac;
+				font-size: 62px;
+				border: none;
+				box-shadow: none;
+
+				svg {
+					width: 36px;
+					height: 36px;
+				}
+			}
+		}
 	}
 }
 

@@ -9,8 +9,6 @@ import { __ } from '@wordpress/i18n';
 
 import {
 	InspectorControls,
-	BlockControls,
-	Inserter
 } from '@wordpress/block-editor';
 import BoxShadowControl from '@Components/box-shadow';
 import SpacingControl from '@Components/spacing-control';
@@ -18,7 +16,7 @@ import Background from '@Components/background';
 import Border from '@Components/border';
 import UAGAdvancedPanelBody from '@Components/advanced-panel-body';
 import MultiButtonsControl from '@Components/multi-buttons-control';
-import { Icon, Toolbar, SelectControl, ToggleControl } from '@wordpress/components';
+import { Icon, SelectControl, ToggleControl } from '@wordpress/components';
 import renderCustomIcon from '@Controls/renderCustomIcon';
 import UAGTabsControl from '@Components/tabs';
 import AdvancedPopColorControl from '@Components/color-control/advanced-pop-color-control';
@@ -1368,16 +1366,6 @@ const Settings = ( props ) => {
 
 	return (
 		<Suspense fallback={ lazyLoader() }>
-			<BlockControls>
-				<Toolbar className="uag-container-block-inserter">
-					<Inserter
-						clientId = { props.clientId }
-						rootClientId = { props.clientId }
-						__experimentalIsQuick = {true}
-						position="bottom right"
-					/>
-				</Toolbar>
-			</BlockControls>
 			<InspectorControls>
 				<InspectorTabs>
 					<InspectorTab { ...UAGTabs.general }>

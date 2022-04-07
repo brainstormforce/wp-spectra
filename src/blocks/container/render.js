@@ -2,6 +2,7 @@ import classnames from 'classnames';
 import { InnerBlocks } from '@wordpress/block-editor';
 import React from 'react';
 import shapes from './shapes';
+import { select } from '@wordpress/data';
 
 const Render = ( props ) => {
 
@@ -10,6 +11,7 @@ const Render = ( props ) => {
 		attributes,
 		className,
 		deviceType,
+		clientId
 	} = props;
 
 	const {
@@ -59,6 +61,10 @@ const Render = ( props ) => {
 		</div>
 	);
 
+	const { getBlockOrder } = select( 'core/block-editor' );
+
+	let hasChildBlocks = getBlockOrder( clientId ).length > 0;
+
 	return (
 		<div
 			className={ classnames(
@@ -70,6 +76,9 @@ const Render = ( props ) => {
 			{ topDividerHtml }
 			<InnerBlocks
 				__experimentalMoverDirection={ moverDirection }
+				renderAppender = { hasChildBlocks
+				? undefined
+				: InnerBlocks.ButtonBlockAppender }
 			/>
 			{ bottomDividerHtml }
 		</div>
