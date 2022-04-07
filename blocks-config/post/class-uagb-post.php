@@ -1007,7 +1007,7 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 			$tab_class     = '';
 			$mob_class     = '';
 
-			if ( array_key_exists( 'UAGDisplayConditions', $attributes ) && 'responsiveVisibility' === $attributes['UAGDisplayConditions'] ) {
+			if ( array_key_exists( 'UAGHideDesktop', $attributes ) || array_key_exists( 'UAGHideTab', $attributes ) || array_key_exists( 'UAGHideMob', $attributes ) ) {
 
 				$desktop_class = ( isset( $attributes['UAGHideDesktop'] ) ) ? 'uag-hide-desktop' : '';
 

@@ -33,6 +33,8 @@ const Range = ( props ) => {
 	};
 
 	const [ cachedValue, setCacheValue ] = useState( defaultCache );
+	let max = limitMax( props.unit?.value, props );
+	let min = limitMin( props.unit?.value, props );
 
 	useEffect( () => {
 		const cachedValueUpdate = { ...cachedValue };
@@ -87,7 +89,15 @@ const Range = ( props ) => {
 	const handleOnChange = ( newValue ) => {
 		setValue( newValue );
 		const parsedValue = parseFloat( newValue );
-		props.onChange( parsedValue );
+		if ( props.onChange ) {
+			props.onChange( parsedValue );
+			return;
+		}
+		if ( props.setAttributes ) {
+			props.setAttributes( {
+				[ props.data.label ]: parsedValue,
+			} )
+		}
 	};
 
 	const resetValues = () => {
@@ -103,7 +113,19 @@ const Range = ( props ) => {
 	};
 
 	const onChangeUnits = ( newValue ) => {
+
 		props.setAttributes( { [ props.unit.label ]: newValue } );
+
+		max = limitMax( newValue, props );
+		min = limitMin( newValue, props );
+
+		if ( props.value > max ) {
+			handleOnChange( max );
+		}
+		if ( props.value < min ) {
+			handleOnChange( min );
+		}
+
 	};
 
 	const onUnitSizeClick = ( uSizes ) => {
@@ -141,8 +163,6 @@ const Range = ( props ) => {
 		return items;
 	};
 
-	const max = limitMax( props.unit?.value, props );
-	const min = limitMin( props.unit?.value, props );
 
 	return (
 		<div className="components-base-control uag-range-control uagb-size-type-field-tabs">
