@@ -58,6 +58,20 @@ const attributes = {
 			styleType: 'btn-align'
 		}
 	},
+	alignTablet: {
+		type: 'string',
+		default: 'center',
+		UAGCopyPaste: {
+			styleType: 'btn-align-tablet'
+		}
+	},
+	alignMobile: {
+		type: 'string',
+		default: 'center',
+		UAGCopyPaste: {
+			styleType: 'btn-align-mobile'
+		}
+	},
 	gap: {
 		type: 'number',
 		default: 10,

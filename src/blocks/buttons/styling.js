@@ -6,7 +6,7 @@ import generateCSS from '@Controls/generateCSS';
 import generateCSSUnit from '@Controls/generateCSSUnit';
 
 function styling( props ) {
-	const { 
+	const {
 		fontFamily,
 		fontWeight,
 		gap,
@@ -14,7 +14,20 @@ function styling( props ) {
 		align,
 		fontStyle,
 		fontTransform,
-		fontDecoration, } = props.attributes;
+		fontDecoration,
+
+		alignTablet,
+		alignMobile,
+		fontSizeType,
+		fontSize,
+		fontSizeMobile,
+		fontSizeTablet,
+		lineHeightType,
+		lineHeight,
+		lineHeightMobile,
+		lineHeightTablet,
+
+	} = props.attributes;
 
 	const selectors = {};
 	const tabletSelectors = {};
@@ -26,6 +39,8 @@ function styling( props ) {
 		'text-decoration': fontDecoration,
 		'text-transform': fontTransform,
 		'font-weight': fontWeight,
+		'font-size': generateCSSUnit( fontSize, fontSizeType ),
+		'line-height': generateCSSUnit( lineHeight, lineHeightType ),
 	};
 
 	selectors[ ' .uagb-buttons-repeater' ] = { // For new user.
@@ -34,6 +49,8 @@ function styling( props ) {
 		'text-decoration': fontDecoration,
 		'text-transform': fontTransform,
 		'font-weight': fontWeight,
+		'font-size': generateCSSUnit( fontSize, fontSizeType ),
+		'line-height': generateCSSUnit( lineHeight, lineHeightType ),
 	};
 
 	selectors[ ' .uagb-button__wrapper' ] = {
@@ -41,14 +58,17 @@ function styling( props ) {
 		'margin-right': generateCSSUnit( gap / 2, 'px' ),
 	};
 
+	if ( 'all' === stack ) {
+		selectors[ ' .block-editor-block-list__layout' ] = {
+			'flex-direction': 'column',
+		};
+	}
 	if ( 'desktop' === stack ) {
 		selectors[ ' .uagb-button__wrapper' ][ 'margin-left' ] = 0;
 		selectors[ ' .uagb-button__wrapper' ][ 'margin-right' ] = 0;
-		selectors[ ' .uagb-button__wrapper' ][
-			'margin-bottom'
-		] = generateCSSUnit( gap, 'px' );
+		selectors[ ' .uagb-button__wrapper' ][ 'margin-bottom' ] = generateCSSUnit( gap, 'px' );
 
-		selectors[ ' .block-editor-block-list__layout' ] = {
+		selectors[ '.uagb-editor-preview-mode-desktop .block-editor-block-list__layout' ] = {
 			'flex-direction': 'column',
 		};
 	} else if ( 'tablet' === stack ) {
@@ -145,6 +165,16 @@ function styling( props ) {
 			'margin-right': 0,
 		};
 	}
+
+	tabletSelectors[ ' .uagb-buttons-repeater' ] = {
+		'font-size': generateCSSUnit( fontSizeTablet, fontSizeType ),
+		'line-height': generateCSSUnit( lineHeightTablet, lineHeightType ),
+	};
+
+	mobileSelectors[ ' .uagb-buttons-repeater' ] = {
+		'font-size': generateCSSUnit( fontSizeMobile, fontSizeType ),
+		'line-height': generateCSSUnit( lineHeightMobile, lineHeightType ),
+	};
 
 	const id = `.uagb-block-${ props.clientId.substr( 0, 8 ) }`;
 	let stylingCss = generateCSS( selectors, id );
