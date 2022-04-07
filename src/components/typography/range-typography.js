@@ -23,13 +23,13 @@ export default function RangeTypographyControl( props ) {
 				{ ...props }
 				label={ props.sizeText }
 				value={ props.size.value || '' }
-				onChange={ ( value ) =>
-					props.setAttributes( { [ props.sizeLabel ]: value } )
-				}
 				min={ 0 }
 				max={ 100 }
 				unit={ props.type }
 				responsive={ true }
+				setAttributes={props.setAttributes}
+				data={{value:props.size.value, label:props.sizeLabel}}
+				onChange={false}
 			/>
 		</>
 	);
@@ -39,13 +39,13 @@ export default function RangeTypographyControl( props ) {
 				{ ...props }
 				label={ props.sizeTabletText }
 				value={ props.sizeTablet.value }
-				onChange={ ( value ) =>
-					props.setAttributes( { [ props.sizeTabletLabel ]: value } )
-				}
 				min={ 0 }
 				max={ 100 }
 				unit={ props.type }
 				responsive={ true }
+				setAttributes={props.setAttributes}
+				data={{value:props.sizeTablet.value, label:props.sizeTabletLabel}}
+				onChange={false}
 			/>
 		</>
 	);
@@ -55,13 +55,13 @@ export default function RangeTypographyControl( props ) {
 				{ ...props }
 				label={ props.sizeMobileText }
 				value={ props.sizeMobile.value }
-				onChange={ ( value ) =>
-					props.setAttributes( { [ props.sizeMobileLabel ]: value } )
-				}
 				min={ 0 }
 				max={ 100 }
 				unit={ props.type }
 				responsive={ true }
+				setAttributes={props.setAttributes}
+				data={{value:props.sizeMobile.value, label:props.sizeMobileLabel}}
+				onChange={false}
 			/>
 		</>
 	);
