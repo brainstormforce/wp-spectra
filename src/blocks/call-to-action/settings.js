@@ -113,6 +113,7 @@ const Settings = ( props ) => {
 		titleFontStyle,
 		descFontStyle,
 		ctaFontStyle,
+		enabledSecondCtaButton,
 	} = attributes;
 
 	let loadCtaGoogleFonts;
@@ -337,6 +338,26 @@ const Settings = ( props ) => {
 						) }
 					</>
 				) }
+			</UAGAdvancedPanelBody>
+		);
+	};
+
+	const SecondCtaSettings = () => {
+		return (
+			<UAGAdvancedPanelBody
+				title={ __( '2nd CTA Button', 'ultimate-addons-for-gutenberg' ) }
+				initialOpen={ false }
+			>
+				<ToggleControl
+					label={ __(
+						'Enable CTA Button',
+						'ultimate-addons-for-gutenberg'
+					) }
+					checked={ enabledSecondCtaButton }
+					onChange={ () =>
+						setAttributes( { enabledSecondCtaButton: ! enabledSecondCtaButton } )
+					}
+				/>
 			</UAGAdvancedPanelBody>
 		);
 	};
@@ -1159,6 +1180,7 @@ const Settings = ( props ) => {
 						{ presetSettings() }
 						{ layouts() }
 						{ ctaSettings() }
+						{ SecondCtaSettings() }
 					</InspectorTab>
 					<InspectorTab { ...UAGTabs.style }>
 						{ headingSettings() }
