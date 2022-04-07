@@ -3,6 +3,7 @@ import React, { useLayoutEffect } from 'react';
 import Title from './components/Title';
 import Description from './components/Description';
 import CTA from './components/CallToActionNew';
+import SecondCTAButton from './components/SecondCTAButton';
 import styles from './editor.lazy.scss';
 import { useDeviceType } from '@Controls/getPreviewType';
 
@@ -20,9 +21,11 @@ const Render = ( props ) => {
 	const deviceType = useDeviceType();
 
 	// Setup the attributes.
-	const { isPreview, block_id, ctaPosition, ctaType, stack  } = attributes;
+	const { isPreview, block_id, ctaPosition, ctaType, stack, enabledSecondCtaButton  } = attributes;
 
 	const isCta = <CTA attributes={ attributes } setAttributes={ setAttributes } />;
+
+	const secondCtaButton = enabledSecondCtaButton ? <SecondCTAButton attributes={ attributes } setAttributes={ setAttributes } /> : '';
 
 	// Get description components.
 	const descText = (
@@ -50,6 +53,7 @@ const Render = ( props ) => {
 							{ titleText }
 							{ descText }
 							{ isCta }
+							{ secondCtaButton }
 						</>
 					) }
 					{ ctaPosition === 'right' && (
@@ -59,6 +63,7 @@ const Render = ( props ) => {
 								{ descText }
 							</div>
 							{isCta}
+							{secondCtaButton}
 						</>
 					) }
 			</>

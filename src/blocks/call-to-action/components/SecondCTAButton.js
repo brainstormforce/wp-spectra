@@ -7,37 +7,35 @@ const SecondCTAButton = ( props ) => {
 
 	let target = '_self';
 	const rel = 'noopener noreferrer';
-	if ( attributes.ctaTarget ) {
+	if ( attributes.secondCtaTarget ) {
 		target = '_blank';
 	}
 
-	let ctaIconOutput = '';
-	if ( attributes.ctaIcon !== '' ) {
-		ctaIconOutput = renderSVG( attributes.ctaIcon );
+	let secondCtaIconOutput = '';
+	if ( attributes.secondCtaIcon !== '' ) {
+		secondCtaIconOutput = renderSVG( attributes.secondCtaIcon );
 	}
 
 	let link = '/';
 	if ( setAttributes === 'not_set' ) {
-		link = attributes.ctaLink;
+		link = attributes.secondCtaLink;
 	}
 	return (
 		<>
-			{ ( attributes.ctaType === 'button' ||
-				attributes.ctaType === 'text' ) && (
-				<a
-					href={ link }
-					className={ classnames(
-						'uagb-second-cta__button-link-wrapper',
-						'button' === attributes.ctaType ? 'wp-block-button__link' : ''
-					) }
-					target={ target }
-					rel={ rel }
-				>
-					{ attributes.ctaIconPosition === 'before' && ctaIconOutput }
-					{ attributes.ctaText }
-					{ attributes.ctaIconPosition === 'after' && ctaIconOutput }
-				</a>
-			) }
+			<a
+				href={ link }
+				className={ classnames(
+					'uagb-cta__button-link-wrapper',
+					'uagb-cta-second__button',
+					'button' === attributes.ctaType ? 'wp-block-button__link' : ''
+				) }
+				target={ target }
+				rel={ rel }
+			>
+				{ attributes.secondCtaIconPosition === 'before' && secondCtaIconOutput }
+				{ attributes.secondCtaLabel }
+				{ attributes.secondCtaIconPosition === 'after' && secondCtaIconOutput }
+			</a>
 		</>
 	);
 };
