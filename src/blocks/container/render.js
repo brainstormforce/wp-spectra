@@ -63,7 +63,7 @@ const Render = ( props ) => {
 
 	const { getBlockOrder } = select( 'core/block-editor' );
 
-	let hasChildBlocks = getBlockOrder( clientId ).length > 0;
+	const hasChildBlocks = getBlockOrder( clientId ).length > 0;
 
 	return (
 		<div
