@@ -78,7 +78,7 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 		public static function get_block_assets() {
 
 			$blocks      = UAGB_Admin_Helper::get_block_options();
-			$post_js_dep = ( ( false === $blocks['uagb/post-carousel']['is_activate'] ) ? array( 'jquery' ) : array( 'jquery', 'uagb-slick-js' ) );
+			$post_js_dep = ( ( false === $blocks['uagb/post-carousel']['is_activate'] ) ? array() : array( 'uagb-slick-js' ) );
 
 			if ( null === self::$block_assets ) {
 				self::$block_assets = array(
@@ -101,7 +101,7 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 					),
 					'uagb-cookie-lib'        => array(
 						'src'        => UAGB_URL . 'assets/js/js_cookie.min.js',
-						'dep'        => array( 'jquery' ),
+						'dep'        => array(),
 						'skipEditor' => true,
 					),
 					'uagb-bodymovin-js'      => array(
@@ -113,11 +113,11 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 					// Blocks.
 					'uagb-timeline-js'       => array(
 						'src' => UAGB_Scripts_Utils::get_js_url( 'timeline' ),
-						'dep' => array( 'jquery' ),
+						'dep' => array(),
 					),
 					'uagb-table-of-contents' => array(
 						'src' => UAGB_Scripts_Utils::get_js_url( 'table-of-contents' ),
-						'dep' => array( 'jquery' ),
+						'dep' => array(),
 					),
 					'uagb-post-js'           => array(
 						'src' => UAGB_Scripts_Utils::get_js_url( 'post' ),
@@ -130,20 +130,20 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 					),
 					'uagb-inline-notice-js'  => array(
 						'src'        => UAGB_Scripts_Utils::get_js_url( 'inline-notice' ),
-						'dep'        => array( 'jquery', 'uagb-cookie-lib' ),
+						'dep'        => array( 'uagb-cookie-lib' ),
 						'skipEditor' => true,
 					),
 					'uagb-tabs-js'           => array(
 						'src' => UAGB_Scripts_Utils::get_js_url( 'tabs' ),
-						'dep' => array( 'jquery' ),
+						'dep' => array(),
 					),
 					'uagb-forms-js'          => array(
 						'src' => UAGB_Scripts_Utils::get_js_url( 'forms' ),
-						'dep' => array( 'jquery' ),
+						'dep' => array(),
 					),
 					'uagb-lottie-js'         => array(
 						'src'        => UAGB_Scripts_Utils::get_js_url( 'lottie' ),
-						'dep'        => array( 'jquery', 'uagb-bodymovin-js' ),
+						'dep'        => array( 'uagb-bodymovin-js' ),
 						'skipEditor' => true,
 					),
 				);

@@ -134,7 +134,7 @@ const Settings = ( props ) => {
 	}
 
 	const updateCookieId = ( value ) => {
-		const { getCurrentPostId } = select( 'core/block-editor' );
+		const { getCurrentPostId } = select( 'core/editor' );
 		const post_id = getCurrentPostId().toString();
 		const timestamp = new Date().getTime();
 
