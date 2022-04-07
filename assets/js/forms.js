@@ -148,8 +148,13 @@ UAGBForms = { // eslint-disable-line no-undef
 				grecaptcha.ready(function() {
 					grecaptcha.execute(reCaptchaSiteKeyV3, {action: 'submit'}).then(function(token) {
 						if ( token ) {
-							document.getElementById( 'g-recaptcha-response' ).value = token;
-							window.UAGBForms._formSubmit( e, this, attr );
+							if( document.getElementsByClassName( 'uagb-forms-recaptcha' ).length !== 0 ) {
+								document.getElementById( 'g-recaptcha-response' ).value = token;
+								window.UAGBForms._formSubmit( e, this, attr );
+							}else{
+								alert('Google reCAPTCHA Response not found.')
+								return false;
+							}
 						}
 					});
 				  });
