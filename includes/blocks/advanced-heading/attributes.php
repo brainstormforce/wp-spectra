@@ -15,7 +15,7 @@ return array(
 	'separatorColor'          => '',
 	'seperatorStyle'          => 'none',
 	'separatorHeight'         => 2,
-	'separatorWidth'          => 5,
+	'separatorWidth'          => 9,
 	'separatorWidthType'      => '%',
 	'headFontFamily'          => '',
 	'headLoadGoogleFonts'     => false,

@@ -30,6 +30,7 @@ registerBlockType( 'uagb/post-grid', { title: __( 'Post Grid', 'ultimate-addons-
 registerBlockType( 'uagb/post-image', { title: __( 'Post Image', 'ultimate-addons-for-gutenberg' ) } );
 registerBlockType( 'uagb/post-masonry', { title: __( 'Post Masonry', 'ultimate-addons-for-gutenberg' ) } );
 registerBlockType( 'uagb/post-meta', { title: __( 'Post Meta', 'ultimate-addons-for-gutenberg' ) } );
+registerBlockType( 'uagb/post-taxonomy', { title: __( 'Post Taxonomy', 'ultimate-addons-for-gutenberg' ) } );
 registerBlockType( 'uagb/post-title', { title: __( 'Post Title', 'ultimate-addons-for-gutenberg' ) } );
 registerBlockType( 'uagb/restaurant-menu', { title: __( 'Price List', 'ultimate-addons-for-gutenberg' ) } );
 registerBlockType( 'uagb/review', { title: __( 'Review', 'ultimate-addons-for-gutenberg' ) } );

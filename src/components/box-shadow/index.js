@@ -49,54 +49,48 @@ const BoxShadowControl = ( props ) => {
 					<Range
 						label={ boxShadowHOffset.title }
 						value={ boxShadowHOffset.value }
-						onChange={ ( value ) =>
-							setAttributes( {
-								[ boxShadowHOffset.label ]: value,
-							} )
-						}
 						min={ 0 }
 						max={ 100 }
 						displayUnit={ false }
+						setAttributes={setAttributes}
+						data={{value:boxShadowHOffset.value, label:boxShadowHOffset.label}}
+						onChange={false}
 					/>
 				</div>
 				<div className="uagb-vertical-wrap">
 					<Range
 						label={ boxShadowVOffset.title }
 						value={ boxShadowVOffset.value }
-						onChange={ ( value ) =>
-							setAttributes( {
-								[ boxShadowVOffset.label ]: value,
-							} )
-						}
 						min={ 0 }
 						max={ 100 }
 						displayUnit={ false }
+						setAttributes={setAttributes}
+						data={{value:boxShadowVOffset.value, label:boxShadowVOffset.label}}
+						onChange={false}
 					/>
 				</div>
 				<div className="uagb-blur-wrap">
 					<Range
 						label={ boxShadowBlur.title }
 						value={ boxShadowBlur.value }
-						onChange={ ( value ) =>
-							setAttributes( { [ boxShadowBlur.label ]: value } )
-						}
 						min={ 0 }
 						max={ 100 }
 						displayUnit={ false }
+						setAttributes={setAttributes}
+						data={{value:boxShadowBlur.value, label:boxShadowBlur.label}}
+						onChange={false}
 					/>
 				</div>
 				<div className="uagb-spread-wrap">
 					<Range
 						label={ boxShadowSpread.title }
 						value={ boxShadowSpread.value }
-						onChange={ ( value ) =>
-							setAttributes( {
-								[ boxShadowSpread.label ]: value,
-							} )
-						}
 						min={ -100 }
 						max={ 100 }
 						displayUnit={ false }
+						setAttributes={setAttributes}
+						data={{value:boxShadowSpread.value, label:boxShadowSpread.label}}
+						onChange={false}
 					/>
 				</div>
 				<div className="uagb-shadow-type">
