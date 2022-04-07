@@ -1119,8 +1119,10 @@ if ( ! class_exists( 'Spectra_Pro_Image_Gallery' ) ) {
 							const isotope = new Isotope( element, {
 								itemSelector: '.uag-image-gallery-media-wrapper',
 								layoutMode: 'masonry',
+								// percentPosition: true,
 								masonry: {
 									columnWidth: '.uag-image-gallery-media-spacer',
+									// horizontalOrder: true,
 								},
 							} );
 							imagesLoaded( element ).on( 'progress', ( theInstance, theImage ) => {

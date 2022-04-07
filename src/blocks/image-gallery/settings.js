@@ -485,15 +485,11 @@ const Settings = ( props ) => {
 	// Panel Component Renders
 
 	const initialSettings = () => (
-		<>
-			<UAGAdvancedPanelBody title={ __( 'Gallery Settings', 'ultimate-addons-for-gutenberg' ) } initialOpen={ true }>
-				<p>{ __( 'Create a gallery to enable settings.', 'ultimate-addons-for-gutenberg' ) }</p>
-			</UAGAdvancedPanelBody>
-		</>
+		<p style={ { 'padding': '16px' } }>{ __( 'Create a gallery to enable settings.', 'ultimate-addons-for-gutenberg' ) }</p>
 	);
 
 	const gallerySettings = () => (
-		<UAGAdvancedPanelBody title={ __( 'Gallery Settings', 'ultimate-addons-for-gutenberg' ) } initialOpen={ true }>
+		<UAGAdvancedPanelBody title={ __( 'General', 'ultimate-addons-for-gutenberg' ) } initialOpen={ true }>
 			<MultiMediaSelector
 				componentLabel={ 'Update Gallery' }
 				mediaTypeLabel={ 'Images' }
@@ -532,7 +528,7 @@ const Settings = ( props ) => {
 	);
 	
 	const captionSettings = () => (
-		<UAGAdvancedPanelBody title={ __( 'Caption Settings', 'ultimate-addons-for-gutenberg' ) } initialOpen={ false }>
+		<UAGAdvancedPanelBody title={ __( 'Caption', 'ultimate-addons-for-gutenberg' ) } initialOpen={ false }>
 			<Range
 				label={ __( 'Max Caption Length (Characters)', 'ultimate-addons-for-gutenberg' ) }
 				setAttributes={ setAttributes }
@@ -749,7 +745,7 @@ const Settings = ( props ) => {
 	);
 	
 	const layoutSettings = () => (
-		<UAGAdvancedPanelBody title={ __( 'Layout Settings', 'ultimate-addons-for-gutenberg' ) } initialOpen={ false }>
+		<UAGAdvancedPanelBody title={ __( 'Layout', 'ultimate-addons-for-gutenberg' ) } initialOpen={ false }>
 			<SelectControl
 				label={ __( 'Layout Type', 'ultimate-addons-for-gutenberg' ) }
 				value={ feedLayout }
@@ -925,7 +921,7 @@ const Settings = ( props ) => {
 	
 	const layoutSpecificSettings = () => (
 		<UAGAdvancedPanelBody title={ __(
-			`${ ( feedLayout === 'carousel' || feedLayout === 'tiled' ) ? titleFromValue( feedLayout ) : 'Pagination' } Settings`,
+			`${ ( feedLayout === 'carousel' || feedLayout === 'tiled' ) ? titleFromValue( feedLayout ) : 'Pagination' }`,
 			'ultimate-addons-for-gutenberg' 
 		) } initialOpen={ false }>
 			{ ( feedLayout === 'carousel' ) && (
@@ -1246,7 +1242,7 @@ const Settings = ( props ) => {
 	);
 
 	const imageStyling = () => (
-		<UAGAdvancedPanelBody title={ __( 'Image Settings', 'ultimate-addons-for-gutenberg' ) } initialOpen={ true }>
+		<UAGAdvancedPanelBody title={ __( 'Image', 'ultimate-addons-for-gutenberg' ) } initialOpen={ true }>
 			<Range
 				label={ __( 'Image Border Radius', 'ultimate-addons-for-gutenberg' ) }
 				setAttributes={ setAttributes }
@@ -1427,7 +1423,7 @@ const Settings = ( props ) => {
 	);
 
 	const paginationStyling = () => (
-		<UAGAdvancedPanelBody title={ __( 'Pagination Settings', 'ultimate-addons-for-gutenberg' ) } initialOpen={ false }>
+		<UAGAdvancedPanelBody title={ __( 'Pagination', 'ultimate-addons-for-gutenberg' ) } initialOpen={ false }>
 			{ ( paginateUseArrows && feedLayout === 'carousel' ) && (
 				<>
 					<Range
@@ -1643,8 +1639,8 @@ const Settings = ( props ) => {
 						{ ! readyToRender && initialSettings() }
 						{ readyToRender && gallerySettings() }
 						{ readyToRender && layoutSettings() }
-						{ ( readyToRender && imageDisplayCaption ) && captionSettings() }
 						{ ( readyToRender && feedLayout !== 'tiled' ) && layoutSpecificSettings() }
+						{ ( readyToRender && imageDisplayCaption ) && captionSettings() }
 					</InspectorTab>
 					<InspectorTab { ...UAGTabs.style }>
 						{ ! readyToRender && initialSettings() }
