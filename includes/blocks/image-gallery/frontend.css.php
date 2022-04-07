@@ -7,6 +7,9 @@
  * @package uagb
  */
 
+// Adds Fonts
+UAGB_Block_JS::blocks_image_gallery_gfont( $attr );
+
 $selectors = array(
 
 	// Feed Selectors
