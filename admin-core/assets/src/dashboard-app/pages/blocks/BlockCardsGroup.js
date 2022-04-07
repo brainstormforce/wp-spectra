@@ -11,7 +11,7 @@ const BlockCardsGroup = () => {
     const renderBlockCards = blocksInfo.map( ( block, index ) => {
 
         const blockCategories = block.admin_categories;
-        const showBlockCard = blockCategories.includes( activeBlocksFilterTab ) || 'all' === activeBlocksFilterTab;
+        const showBlockCard = blockCategories?.includes( activeBlocksFilterTab ) || 'all' === activeBlocksFilterTab;
 
         if ( ! showBlockCard ) {
             return '';
