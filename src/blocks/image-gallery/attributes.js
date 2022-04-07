@@ -332,63 +332,63 @@ const attributes = {
 	},
 	paginateButtonPaddingTop: {
 		type: 'number',
-		default: 0.5,
+		default: 8,
 	},
 	paginateButtonPaddingRight: {
 		type: 'number',
-		default: 1,
+		default: 16,
 	},
 	paginateButtonPaddingBottom: {
 		type: 'number',
-		default: 0.5,
+		default: 8,
 	},
 	paginateButtonPaddingLeft: {
 		type: 'number',
-		default: 1,
+		default: 16,
 	},
 	paginateButtonPaddingTopTab: {
 		type: 'number',
-		default: 0.5,
+		default: 8,
 	},
 	paginateButtonPaddingRightTab: {
 		type: 'number',
-		default: 1,
+		default: 16,
 	},
 	paginateButtonPaddingBottomTab: {
 		type: 'number',
-		default: 0.5,
+		default: 8,
 	},
 	paginateButtonPaddingLeftTab: {
 		type: 'number',
-		default: 1,
+		default: 16,
 	},
 	paginateButtonPaddingTopMob: {
 		type: 'number',
-		default: 0.5,
+		default: 8,
 	},
 	paginateButtonPaddingRightMob: {
 		type: 'number',
-		default: 1,
+		default: 16,
 	},
 	paginateButtonPaddingBottomMob: {
 		type: 'number',
-		default: 0.5,
+		default: 8,
 	},
 	paginateButtonPaddingLeftMob: {
 		type: 'number',
-		default: 1,
+		default: 16,
 	},
 	paginateButtonPaddingUnit: {
 		type: 'string',
-		default: 'em',
+		default: 'px',
 	},
 	paginateButtonPaddingUnitTab: {
 		type: 'string',
-		default: 'em',
+		default: 'px',
 	},
 	paginateButtonPaddingUnitMob: {
 		type: 'string',
-		default: 'em',
+		default: 'px',
 	},
 	paginateButtonPaddingUnitLink: {
 		type: 'boolean',

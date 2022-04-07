@@ -81,6 +81,11 @@ const ImageGallery = ( { attributes, setAttributes, block_id } ) => {
 	const isotopeChildren = useRef( [] );
 
 	useEffect( () => {
+		// First check if media items selected are less than the column count currently used.
+		setAttributes( { columnsDesk: Math.min( mediaGallery.length, Math.max( 6, columnsDesk ) ) } );
+		setAttributes( { columnsTab: Math.min( mediaGallery.length, Math.max( 4, columnsDesk ) ) } );
+		setAttributes( { columnsMob: Math.min( mediaGallery.length, Math.max( 3, columnsDesk ) ) } ); 
+		// Next Check if this is a carousel that needs dots, and set the height of the dots wrapper.
 		if ( ( mediaGallery && paginateUseDots ) && ( feedLayout === 'carousel' ) ){
 			setSlickDotHeight( 
 				( mediaGallery.length > columnsDesk )
@@ -88,7 +93,8 @@ const ImageGallery = ( { attributes, setAttributes, block_id } ) => {
 				: 0
 			);
 		}
-		if ( feedLayout === 'tiled' ){
+		// Else check if this is tiled and apply focus for the images that need it.
+		else if ( feedLayout === 'tiled' ){
 			// let emptyFocus = ( focusList.length === 0 ) ? true : false;
 			mediaGallery.forEach( ( image ) => {
 				// if ( emptyFocus ){
@@ -101,7 +107,7 @@ const ImageGallery = ( { attributes, setAttributes, block_id } ) => {
 				}
 			} );
 		}
-	}, [ mediaGallery.length ] );
+	}, [ JSON.stringify( mediaGallery ) ] );
 
 	useEffect( () => {
 		setTimeout( () => {
@@ -133,7 +139,7 @@ const ImageGallery = ( { attributes, setAttributes, block_id } ) => {
 			}
 		}, 50 );
 	}, [
-		mediaGallery.length,
+		JSON.stringify( mediaGallery ),
 		feedLayout,
 		generateSpecialTiles,
 		columnsDesk,

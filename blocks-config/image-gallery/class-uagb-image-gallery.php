@@ -408,63 +408,63 @@ if ( ! class_exists( 'Spectra_Pro_Image_Gallery' ) ) {
 							),
 							'paginateButtonPaddingTop' => array(
 								'type' => 'number',
-								'default' => 0.5,
+								'default' => 8,
 							),
 							'paginateButtonPaddingRight' => array(
 								'type' => 'number',
-								'default' => 1,
+								'default' => 16,
 							),
 							'paginateButtonPaddingBottom' => array(
 								'type' => 'number',
-								'default' => 0.5,
+								'default' => 8,
 							),
 							'paginateButtonPaddingLeft' => array(
 								'type' => 'number',
-								'default' => 1,
+								'default' => 16,
 							),
 							'paginateButtonPaddingTopTab' => array(
 								'type' => 'number',
-								'default' => 0.5,
+								'default' => 8,
 							),
 							'paginateButtonPaddingRightTab' => array(
 								'type' => 'number',
-								'default' => 1,
+								'default' => 16,
 							),
 							'paginateButtonPaddingBottomTab' => array(
 								'type' => 'number',
-								'default' => 0.5,
+								'default' => 8,
 							),
 							'paginateButtonPaddingLeftTab' => array(
 								'type' => 'number',
-								'default' => 1,
+								'default' => 16,
 							),
 							'paginateButtonPaddingTopMob' => array(
 								'type' => 'number',
-								'default' => 0.5,
+								'default' => 8,
 							),
 							'paginateButtonPaddingRightMob' => array(
 								'type' => 'number',
-								'default' => 1,
+								'default' => 16,
 							),
 							'paginateButtonPaddingBottomMob' => array(
 								'type' => 'number',
-								'default' => 0.5,
+								'default' => 8,
 							),
 							'paginateButtonPaddingLeftMob' => array(
 								'type' => 'number',
-								'default' => 1,
+								'default' => 16,
 							),
 							'paginateButtonPaddingUnit' => array(
 								'type' => 'string',
-								'default' => 'em',
+								'default' => 'px',
 							),
 							'paginateButtonPaddingUnitTab' => array(
 								'type' => 'string',
-								'default' => 'em',
+								'default' => 'px',
 							),
 							'paginateButtonPaddingUnitMob' => array(
 								'type' => 'string',
-								'default' => 'em',
+								'default' => 'px',
 							),
 							'paginateButtonPaddingUnitLink' => array(
 								'type' => 'boolean',
