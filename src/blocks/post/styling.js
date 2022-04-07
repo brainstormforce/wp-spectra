@@ -302,6 +302,30 @@ function styling( props ) {
 		'text-decoration': metaDecoration,
 		'font-style': metaFontStyle,
 	};
+	selectors[ ' .uagb-post-grid-byline time' ] = {
+		'font-size': generateCSSUnit( metaFontSize, metaFontSizeType ),
+		'font-family': metaFontFamily,
+		'font-weight': metaFontWeight,
+		'line-height': generateCSSUnit(
+			metaLineHeight,
+			metaLineHeightType
+		),
+		'text-transform': metaTransform,
+		'text-decoration': metaDecoration,
+		'font-style': metaFontStyle,
+	};
+	selectors[ ' .uagb-post-grid-byline span.uagb-post__comment' ] = {
+		'font-size': generateCSSUnit( metaFontSize, metaFontSizeType ),
+		'font-family': metaFontFamily,
+		'font-weight': metaFontWeight,
+		'line-height': generateCSSUnit(
+			metaLineHeight,
+			metaLineHeightType
+		),
+		'text-transform': metaTransform,
+		'text-decoration': metaDecoration,
+		'font-style': metaFontStyle,
+	};
 	selectors[ ' span.uagb-post__taxonomy' ] = {
 		'color': metaColor,
 		'font-size': generateCSSUnit( metaFontSize, metaFontSizeType ),
