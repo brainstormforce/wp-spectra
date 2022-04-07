@@ -292,10 +292,6 @@ const Settings = ( props ) => {
 					min={ 0 }
 					max={ 100 }
 					displayUnit={ false }
-					help={ __(
-						'Note: The gap between the items will seen larger in the editor, for better user edit experience. But at frontend the gap will be exactly what is set from here.',
-						'ultimate-addons-for-gutenberg'
-					) }
 				/>
 			</UAGAdvancedPanelBody>
 		);
