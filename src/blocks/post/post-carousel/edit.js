@@ -381,6 +381,12 @@ const UAGBPostCarousel = ( props ) => {
 		rowGapUnit,
 		columnGapUnit,
 		postsOffset,
+		taxStyle,
+		taxDivider,
+		displayPostTaxonomyAboveTitle,
+		hideTaxonomyIcon,
+		highlightedTextColor,
+		highlightedTextBgColor
 	} = attributes;
 	const taxonomyListOptions = [];
 
@@ -900,6 +906,91 @@ const UAGBPostCarousel = ( props ) => {
 						} )
 					}
 				/>
+				{ displayPostTaxonomy && (
+				<>
+				<MultiButtonsControl
+					setAttributes={ setAttributes }
+					label={ __(
+						'Taxonomy Position',
+						'ultimate-addons-for-gutenberg'
+					) }
+					data={ {
+						value: displayPostTaxonomyAboveTitle,
+						label: 'displayPostTaxonomyAboveTitle',
+					} }
+					options={ [
+						{
+							value: 'withMeta',
+							label: __(
+								'With Meta',
+								'ultimate-addons-for-gutenberg'
+							),
+						},
+						{
+							value: 'aboveTitle',
+							label: __(
+								'Above Title',
+								'ultimate-addons-for-gutenberg'
+							),
+						},
+					] }
+				/>
+				{ 'aboveTitle' === displayPostTaxonomyAboveTitle && (
+				<>
+					<MultiButtonsControl
+						setAttributes={ setAttributes }
+						label={ __(
+							'Taxonomy Style',
+							'ultimate-addons-for-gutenberg'
+						) }
+						data={ {
+							value: taxStyle,
+							label: 'taxStyle',
+						} }
+						options={ [
+							{
+								value: 'default',
+								label: __(
+									'Normal',
+									'ultimate-addons-for-gutenberg'
+								),
+							},
+							{
+								value: 'highlighted',
+								label: __(
+									'Highlighted',
+									'ultimate-addons-for-gutenberg'
+								),
+							},
+						] }
+					/>
+				{ 'default' === taxStyle && (
+					<TextControl
+						label={ __( 'Taxonomy Divider', 'ultimate-addons-for-gutenberg' ) }
+						value={ taxDivider }
+						onChange={ ( value ) =>
+							setAttributes( {
+								taxDivider: value,
+							} )
+						}
+					/>
+				) }
+				</>
+				) }
+				</>
+				) }
+				<ToggleControl
+					label={ __(
+						'Show Meta Icon',
+						'ultimate-addons-for-gutenberg'
+					) }
+					checked={ hideTaxonomyIcon }
+					onChange={ () =>
+						setAttributes( {
+							hideTaxonomyIcon: ! hideTaxonomyIcon,
+						} )
+					}
+				/>
 				<ToggleControl
 					label={ __(
 						'Show Excerpt',
@@ -1344,7 +1435,24 @@ const UAGBPostCarousel = ( props ) => {
 						setAttributes( { metaColor: value } )
 					}
 				/>
-
+				{ ( 'aboveTitle' === displayPostTaxonomyAboveTitle && 'highlighted' === taxStyle ) && (
+					<>
+					<AdvancedPopColorControl
+						label={ __( 'Taxonomy Text Color', 'ultimate-addons-for-gutenberg' ) }
+						colorValue={ highlightedTextColor }
+						onColorChange={ ( value ) =>
+							setAttributes( { highlightedTextColor: value } )
+						}
+					/>
+					<AdvancedPopColorControl
+						label={ __( 'Highlighted Color', 'ultimate-addons-for-gutenberg' ) }
+						colorValue={ highlightedTextBgColor }
+						onColorChange={ ( value ) =>
+							setAttributes( { highlightedTextBgColor: value } )
+						}
+					/>
+					</>
+				)}
 				<TypographyControl
 					label={ __(
 						'Typography',
