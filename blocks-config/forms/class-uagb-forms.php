@@ -99,16 +99,16 @@ if ( ! class_exists( 'UAGB_Forms' ) ) {
 
 				} else {
 
-					$google_response =  wp_safe_remote_get(
-											add_query_arg(
-												array(
-													'secret'   => $google_recaptcha_secret_key,
-													'response' => $google_recaptcha,
-													'remoteip' => $remoteip,
-												),
-												$google_url
-											)
-										);
+					$google_response = wp_safe_remote_get(
+						add_query_arg(
+							array(
+								'secret'   => $google_recaptcha_secret_key,
+								'response' => $google_recaptcha,
+								'remoteip' => $remoteip,
+							),
+							$google_url
+						)
+					);
 					if ( is_wp_error( $google_response ) ) {
 
 						$errors->add( 'invalid_recaptcha', __( 'Please try logging in again to verify that you are not a robot.', 'ultimate-addons-of-gutenberg' ) );

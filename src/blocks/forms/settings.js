@@ -1431,7 +1431,7 @@ const Settings = ( props ) => {
 				{ reCaptchaEnable && (
 					<>
 						<p className="uagb-form-notice">
-							Please configure the Google reCAPTCHA Site & Secret key from <a target = "_blank" href={`${uagb_blocks_info.uagb_home_url}/wp-admin/options-general.php?page=spectra&path=settings&settings=block-settings`}>here.</a>
+							Please configure the Google reCAPTCHA Site & Secret key from <a target = "_blank" href={`${uagb_blocks_info.uagb_home_url}/wp-admin/options-general.php?page=spectra&path=settings&settings=block-settings`} rel="noreferrer">here.</a>
 						</p>
 						<MultiButtonsControl
 							setAttributes={ setAttributes }

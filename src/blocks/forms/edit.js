@@ -97,28 +97,28 @@ const UAGBFormsEdit = ( props ) => {
 			const keys = {};
 			if( '' === uagb_blocks_info.recaptcha_site_key_v2 && '' === uagb_blocks_info.recaptcha_secret_key_v2 && reCaptchaSiteKeyV2 && reCaptchaSecretKeyV2 ) {
 
-				keys['reCaptchaSiteKeyV2'] = reCaptchaSiteKeyV2;
-				keys['reCaptchaSecretKeyV2'] = reCaptchaSecretKeyV2;
+				keys.reCaptchaSiteKeyV2 = reCaptchaSiteKeyV2;
+				keys.reCaptchaSecretKeyV2 = reCaptchaSecretKeyV2;
 			}
 			if( '' === uagb_blocks_info.recaptcha_site_key_v3 && '' === uagb_blocks_info.recaptcha_secret_key_v3 && reCaptchaSiteKeyV3 && reCaptchaSecretKeyV3 ) {
 
-				keys['reCaptchaSiteKeyV3'] = reCaptchaSiteKeyV3;
-				keys['reCaptchaSecretKeyV3'] = reCaptchaSecretKeyV3;
+				keys.reCaptchaSiteKeyV3 = reCaptchaSiteKeyV3;
+				keys.reCaptchaSecretKeyV3 = reCaptchaSecretKeyV3;
 			}
 
 			const formData = new window.FormData();
 
 			formData.append( 'action', 'uagb_forms_recaptcha' );
 			formData.append( 'nonce', uagb_blocks_info.uagb_ajax_nonce );
-			formData.append( 'value', JSON.stringify(keys) );
+			formData.append( 'value', JSON.stringify( keys ) );
 
-			if ( Object.keys(keys).length !== 0 ) {
+			if ( Object.keys( keys ).length !== 0 ) {
 
 				apiFetch( {
 					url: uagb_blocks_info.ajax_url,
 					method: 'POST',
 					body: formData,
-				} ).then( ( ) => {
+				} ).then( () => {
 				} );
 			}
 		}

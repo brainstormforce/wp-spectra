@@ -73,11 +73,11 @@ export default function save( props ) {
 								className="g-recaptcha uagb-forms-field-set"
 								data-sitekey={ uagb_blocks_info.recaptcha_site_key_v2 }
 							></div>
-							<div
-								className={ `uagb-form-reacaptcha-error-${ block_id }` }
-							></div>
 						</>
 					) }
+					<div
+						className={ `uagb-form-reacaptcha-error-${ block_id }` }
+					></div>
 				<div className="uagb-forms-main-submit-button-wrap wp-block-button">
 					{ renderButtonHtml() }
 				</div>

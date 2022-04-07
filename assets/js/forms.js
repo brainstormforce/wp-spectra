@@ -145,19 +145,19 @@ UAGBForms = { // eslint-disable-line no-undef
 		form.addEventListener( 'submit', function ( e ) {
 			e.preventDefault();
 			if ( attr.reCaptchaEnable === true && attr.reCaptchaType === 'v3' && reCaptchaSiteKeyV3 ) {
-				grecaptcha.ready(function() {
-					grecaptcha.execute(reCaptchaSiteKeyV3, {action: 'submit'}).then(function(token) {
+				grecaptcha.ready( function() { // eslint-disable-line no-undef
+					grecaptcha.execute( reCaptchaSiteKeyV3, {action: 'submit'} ).then( function( token ) { // eslint-disable-line no-undef
 						if ( token ) {
 							if( document.getElementsByClassName( 'uagb-forms-recaptcha' ).length !== 0 ) {
 								document.getElementById( 'g-recaptcha-response' ).value = token;
 								window.UAGBForms._formSubmit( e, this, attr );
 							}else{
-								alert('Google reCAPTCHA Response not found.')
+								document.querySelector( '.uagb-form-reacaptcha-error-' + attr.block_id ).innerHTML = '<p style="color:red !important" class="error-captcha">Google reCAPTCHA Response not found.</p>';
 								return false;
 							}
 						}
-					});
-				  });
+					} );
+				  } );
 			} else {
 				window.UAGBForms._formSubmit( e, this, attr );
 			}
@@ -176,7 +176,7 @@ UAGBForms = { // eslint-disable-line no-undef
         checkboxes[i].setCustomValidity( errorMessage ); // eslint-disable-line no-undef
     },
 
-	_formSubmit( e, form, attr) {
+	_formSubmit( e, form, attr ) {
 		e.preventDefault();
 
 		let captcha_response;
