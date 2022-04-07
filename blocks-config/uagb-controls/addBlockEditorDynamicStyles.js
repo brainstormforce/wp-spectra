@@ -20,12 +20,12 @@ const addBlockEditorDynamicStyles = ( styleTagId, styling ) => {
 
         cloneSlickStaticCSSStylesTag = slickStaticCSSStylesTag.cloneNode( true );
     }
-    
+
     // Desktop.
     const element = document.getElementById(
         styleTagId
     );
-    
+
     if ( null === element || undefined === element ) {
 
         const $style = document.createElement( 'style' );
@@ -36,7 +36,7 @@ const addBlockEditorDynamicStyles = ( styleTagId, styling ) => {
         $style.innerHTML = styling;
         document.head.appendChild( $style );
     }
-    
+
     if ( null !== element && undefined !== element ) {
         element.innerHTML = styling;
     }
@@ -47,9 +47,9 @@ const addBlockEditorDynamicStyles = ( styleTagId, styling ) => {
     const mobilePreview = document.getElementsByClassName( 'is-mobile-preview' );
 
     if ( 0 !== tabletPreview.length || 0 !== mobilePreview.length ) {
-        
+
         const preview = tabletPreview[0] || mobilePreview[0];
-        
+
         const iframe = preview.getElementsByTagName( 'iframe' )[0];
         const iframeDocument = iframe.contentWindow.document || iframe.contentDocument;
 
@@ -57,13 +57,13 @@ const addBlockEditorDynamicStyles = ( styleTagId, styling ) => {
             styleTagId
         );
         if ( null === iframeElement || undefined === iframeElement ) {
-            
+
             const $style = document.createElement( 'style' );
             $style.setAttribute(
                 'id',
                 styleTagId
                 );
-            
+
             // Static CSS.
             if ( cloneEditorStaticCSSStylesTag ) {
                 iframeDocument.head.appendChild( cloneEditorStaticCSSStylesTag );
@@ -76,13 +76,13 @@ const addBlockEditorDynamicStyles = ( styleTagId, styling ) => {
 
             // Dynamic CSS.
             iframeDocument.head.appendChild( $style );
-            
+
         }
 
         iframeElement = iframeDocument.getElementById(
             styleTagId
         );
-            
+
         if ( null !== iframeElement && undefined !== iframeElement ) {
             iframeElement.innerHTML = styling;
         }
