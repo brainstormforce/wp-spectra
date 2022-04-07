@@ -115,7 +115,6 @@ class Common_Settings extends Ajax_Base {
 		}
 
 		wp_send_json_success( $results );
-		wp_die();
 	}
 
 	/**
