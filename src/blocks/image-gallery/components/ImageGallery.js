@@ -82,9 +82,9 @@ const ImageGallery = ( { attributes, setAttributes, block_id } ) => {
 
 	useEffect( () => {
 		// First check if media items selected are less than the column count currently used.
-		setAttributes( { columnsDesk: Math.min( mediaGallery.length, Math.max( 6, columnsDesk ) ) } );
-		setAttributes( { columnsTab: Math.min( mediaGallery.length, Math.max( 4, columnsDesk ) ) } );
-		setAttributes( { columnsMob: Math.min( mediaGallery.length, Math.max( 3, columnsDesk ) ) } ); 
+		( mediaGallery.length < columnsDesk ) && setAttributes( { columnsDesk: mediaGallery.length } );
+		( mediaGallery.length < columnsTab ) && setAttributes( { columnsTab: mediaGallery.length } );
+		( mediaGallery.length < columnsMob ) && setAttributes( { columnsMob: mediaGallery.length } ); 
 		// Next Check if this is a carousel that needs dots, and set the height of the dots wrapper.
 		if ( ( mediaGallery && paginateUseDots ) && ( feedLayout === 'carousel' ) ){
 			setSlickDotHeight( 
