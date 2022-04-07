@@ -390,6 +390,86 @@ const Settings = ( props ) => {
 		</>
 	);
 
+	const renderOverlayDisplay = ( isHover ) => (
+		<>
+			{ captionBackgroundEnableBlur && (
+				<Range
+					label={ __( `Blur Opacity`, 'ultimate-addons-for-gutenberg' ) }
+					setAttributes={ setAttributes }
+					value={ 
+						isHover
+						? captionBackgroundBlurOpacityHover
+						: captionBackgroundBlurOpacity
+					}
+					onChange={
+						isHover
+						? ( value ) => setAttributes( {
+							captionBackgroundBlurOpacityHover: value
+						} )
+						: ( value ) => setAttributes( {
+							captionBackgroundBlurOpacity: value
+						} )
+					}
+					min={ 0 }
+					max={ 100 }
+					displayUnit={ false }
+				/>
+			) }
+			{/* The entire section below can be created into a component if required in the future */}
+			<MultiButtonsControl
+				setAttributes={ setAttributes }
+				label={ __(
+					`Image Effect`,
+					'ultimate-addons-for-gutenberg'
+				) }
+				data={ {
+					value: isHover ? captionBackgroundEffectHover : captionBackgroundEffect,
+					label:  isHover ? 'captionBackgroundEffectHover' : 'captionBackgroundEffect',
+				} }
+				options={ [
+					{
+						value: 'none',
+						label: __( 'None', 'ultimate-addons-for-gutenberg' ),
+					},
+					{
+						value: 'grayscale',
+						label: __( 'Grayscale', 'ultimate-addons-for-gutenberg' ),
+					},
+					{
+						value: 'sepia',
+						label: __( 'Sepia', 'ultimate-addons-for-gutenberg' ),
+					},
+				] }
+			/>
+			{ renderBackgroundEffectSettings(
+				isHover ? captionBackgroundEffectHover : captionBackgroundEffect,
+				isHover
+			) }
+			{/* The entire section above can be created into a component  if required in the future */}
+			{ ! imageDisplayCaption && (
+				<AdvancedPopColorControl
+					label={ __( 'Overlay Color',
+						'ultimate-addons-for-gutenberg'
+					) }
+					colorValue={
+						isHover
+						? captionBackgroundColorHover
+							? captionBackgroundColorHover
+							: 'rgba(0,0,0,0)'
+						: captionBackgroundColor
+							? captionBackgroundColor
+							: 'rgba(0,0,0,0)'
+					}
+					onColorChange={ ( value ) =>
+						isHover
+						? setAttributes( { captionBackgroundColorHover: value } )
+						: setAttributes( { captionBackgroundColor: value } )
+					}
+				/>
+			) }
+		</>
+	);
+
 	const renderBackgroundEffectSettings = ( bgEffect, isHover ) => {
 		switch ( bgEffect ) {
 			case 'grayscale':
@@ -650,90 +730,6 @@ const Settings = ( props ) => {
 								</>
 							)
 					}
-					<SpacingControl
-						{ ...props }
-						label={ __( 'Caption Padding', 'ultimate-addons-for-gutenberg' ) }
-						valueTop={ {
-							value: captionPaddingTop,
-							label: 'captionPaddingTop',
-						} }
-						valueRight={ {
-							value: captionPaddingRight,
-							label: 'captionPaddingRight',
-						} }
-						valueBottom={ {
-							value: captionPaddingBottom,
-							label: 'captionPaddingBottom',
-						} }
-						valueLeft={ {
-							value: captionPaddingLeft,
-							label: 'captionPaddingLeft',
-						} }
-						valueTopTablet={ {
-							value: captionPaddingTopTab,
-							label: 'captionPaddingTopTab',
-						} }
-						valueRightTablet={ {
-							value: captionPaddingRightTab,
-							label: 'captionPaddingRightTab',
-						} }
-						valueBottomTablet={ {
-							value: captionPaddingBottomTab,
-							label: 'captionPaddingBottomTab',
-						} }
-						valueLeftTablet={ {
-							value: captionPaddingLeftTab,
-							label: 'captionPaddingLeftTab',
-						} }
-						valueTopMobile={ {
-							value: captionPaddingTopMob,
-							label: 'captionPaddingTopMob',
-						} }
-						valueRightMobile={ {
-							value: captionPaddingRightMob,
-							label: 'captionPaddingRightMob',
-						} }
-						valueBottomMobile={ {
-							value: captionPaddingBottomMob,
-							label: 'captionPaddingBottomMob',
-						} }
-						valueLeftMobile={ {
-							value: captionPaddingLeftMob,
-							label: 'captionPaddingLeftMob',
-						} }
-						unit={ {
-							value: captionPaddingUnit,
-							label: 'captionPaddingUnit',
-						} }
-						tUnit={ {
-							value: captionPaddingUnitTab,
-							label: 'captionPaddingUnitTab',
-						} }
-						mUnit={ {
-							value: captionPaddingUnitMob,
-							label: 'captionPaddingUnitMob',
-						} }
-						attributes={ attributes }
-						setAttributes={ setAttributes }
-						link={ {
-							value: captionPaddingUnitLink,
-							label: 'captionPaddingUnitLink',
-						} }
-						units={ [
-							{
-								name: __( 'Em', 'ultimate-addons-for-gutenberg' ),
-								unitValue: 'em',
-							},
-							{
-								name: __( 'Pixel', 'ultimate-addons-for-gutenberg' ),
-								unitValue: 'px',
-							},
-							{
-								name: __( '%', 'ultimate-addons-for-gutenberg' ),
-								unitValue: '%',
-							},
-						] }
-					/>
 				</>
 			) }
 		</UAGAdvancedPanelBody>
@@ -1239,7 +1235,7 @@ const Settings = ( props ) => {
 	const imageStyling = () => (
 		<UAGAdvancedPanelBody title={ __( 'Image', 'ultimate-addons-for-gutenberg' ) } initialOpen={ true }>
 			<Range
-				label={ __( 'Image Border Radius', 'ultimate-addons-for-gutenberg' ) }
+				label={ __( 'Border Radius', 'ultimate-addons-for-gutenberg' ) }
 				setAttributes={ setAttributes }
 				value={ imageBorderRadius }
 				onChange={ ( value ) =>
@@ -1266,72 +1262,6 @@ const Settings = ( props ) => {
 					},
 				] }
 			/>
-			<Suspense fallback={ lazyLoader() }>
-				<TypographyControl
-					label={ __(
-						'Typography',
-						'ultimate-addons-for-gutenberg'
-					) }
-					attributes={ attributes }
-					setAttributes={ setAttributes }
-					loadGoogleFonts={ {
-						value: captionLoadGoogleFonts,
-						label: 'captionLoadGoogleFonts',
-					} }
-					fontFamily={ {
-						value: captionFontFamily,
-						label: 'captionFontFamily',
-					} }
-					fontWeight={ {
-						value: captionFontWeight,
-						label: 'captionFontWeight',
-					} }
-					fontStyle={ {
-						value: captionFontStyle,
-						label: 'captionFontStyle',
-					} }
-					transform={ {
-						value: captionTransform,
-						label: 'captionTransform',
-					} }
-					decoration={ {
-						value: captionDecoration,
-						label: 'captionDecoration',
-					} }
-					fontSizeType={ {
-						value: captionFontSizeType,
-						label: 'captionFontSizeType',
-					} }
-					fontSize={ {
-						value: captionFontSize,
-						label: 'captionFontSize',
-					} }
-					fontSizeMobile={ {
-						value: captionFontSizeMob,
-						label: 'captionFontSizeMob',
-					} }
-					fontSizeTablet={ {
-						value: captionFontSizeTab,
-						label: 'captionFontSizeTab',
-					} }
-					lineHeightType={ {
-						value: captionLineHeightType,
-						label: 'captionLineHeightType',
-					} }
-					lineHeight={ {
-						value: captionLineHeight,
-						label: 'captionLineHeight',
-					} }
-					lineHeightMobile={ {
-						value: captionLineHeightMob,
-						label: 'captionLineHeightMob',
-					} }
-					lineHeightTablet={ {
-						value: captionLineHeightTab,
-						label: 'captionLineHeightTab',
-					} }
-				/>
-			</Suspense>
 			<ToggleControl
 				label={ __(
 					`Enable Hover Zoom`,
@@ -1399,6 +1329,178 @@ const Settings = ( props ) => {
 					displayUnit={ false }
 				/>
 			) }
+			<UAGTabsControl
+				tabs={ [
+					{
+						name: 'normal',
+						title: __( 'Normal', 'ultimate-addons-for-gutenberg' ),
+					},
+					{
+						name: 'hover',
+						title: __( 'Hover', 'ultimate-addons-for-gutenberg' ),
+					},
+				] }
+				normal={ renderOverlayDisplay( false ) }
+				hover={ renderOverlayDisplay( true ) }
+				disableBottomSeparator={ true }
+			/>
+		</UAGAdvancedPanelBody>
+	);
+
+
+
+	const captionStyling = () => (
+		<UAGAdvancedPanelBody title={ __( 'Caption', 'ultimate-addons-for-gutenberg' ) } initialOpen={ false }>
+			<Suspense fallback={ lazyLoader() }>
+				<TypographyControl
+					label={ __(
+						'Typography',
+						'ultimate-addons-for-gutenberg'
+					) }
+					attributes={ attributes }
+					setAttributes={ setAttributes }
+					loadGoogleFonts={ {
+						value: captionLoadGoogleFonts,
+						label: 'captionLoadGoogleFonts',
+					} }
+					fontFamily={ {
+						value: captionFontFamily,
+						label: 'captionFontFamily',
+					} }
+					fontWeight={ {
+						value: captionFontWeight,
+						label: 'captionFontWeight',
+					} }
+					fontStyle={ {
+						value: captionFontStyle,
+						label: 'captionFontStyle',
+					} }
+					transform={ {
+						value: captionTransform,
+						label: 'captionTransform',
+					} }
+					decoration={ {
+						value: captionDecoration,
+						label: 'captionDecoration',
+					} }
+					fontSizeType={ {
+						value: captionFontSizeType,
+						label: 'captionFontSizeType',
+					} }
+					fontSize={ {
+						value: captionFontSize,
+						label: 'captionFontSize',
+					} }
+					fontSizeMobile={ {
+						value: captionFontSizeMob,
+						label: 'captionFontSizeMob',
+					} }
+					fontSizeTablet={ {
+						value: captionFontSizeTab,
+						label: 'captionFontSizeTab',
+					} }
+					lineHeightType={ {
+						value: captionLineHeightType,
+						label: 'captionLineHeightType',
+					} }
+					lineHeight={ {
+						value: captionLineHeight,
+						label: 'captionLineHeight',
+					} }
+					lineHeightMobile={ {
+						value: captionLineHeightMob,
+						label: 'captionLineHeightMob',
+					} }
+					lineHeightTablet={ {
+						value: captionLineHeightTab,
+						label: 'captionLineHeightTab',
+					} }
+				/>
+			</Suspense>
+			<SpacingControl
+				{ ...props }
+				label={ __( 'Caption Padding', 'ultimate-addons-for-gutenberg' ) }
+				valueTop={ {
+					value: captionPaddingTop,
+					label: 'captionPaddingTop',
+				} }
+				valueRight={ {
+					value: captionPaddingRight,
+					label: 'captionPaddingRight',
+				} }
+				valueBottom={ {
+					value: captionPaddingBottom,
+					label: 'captionPaddingBottom',
+				} }
+				valueLeft={ {
+					value: captionPaddingLeft,
+					label: 'captionPaddingLeft',
+				} }
+				valueTopTablet={ {
+					value: captionPaddingTopTab,
+					label: 'captionPaddingTopTab',
+				} }
+				valueRightTablet={ {
+					value: captionPaddingRightTab,
+					label: 'captionPaddingRightTab',
+				} }
+				valueBottomTablet={ {
+					value: captionPaddingBottomTab,
+					label: 'captionPaddingBottomTab',
+				} }
+				valueLeftTablet={ {
+					value: captionPaddingLeftTab,
+					label: 'captionPaddingLeftTab',
+				} }
+				valueTopMobile={ {
+					value: captionPaddingTopMob,
+					label: 'captionPaddingTopMob',
+				} }
+				valueRightMobile={ {
+					value: captionPaddingRightMob,
+					label: 'captionPaddingRightMob',
+				} }
+				valueBottomMobile={ {
+					value: captionPaddingBottomMob,
+					label: 'captionPaddingBottomMob',
+				} }
+				valueLeftMobile={ {
+					value: captionPaddingLeftMob,
+					label: 'captionPaddingLeftMob',
+				} }
+				unit={ {
+					value: captionPaddingUnit,
+					label: 'captionPaddingUnit',
+				} }
+				tUnit={ {
+					value: captionPaddingUnitTab,
+					label: 'captionPaddingUnitTab',
+				} }
+				mUnit={ {
+					value: captionPaddingUnitMob,
+					label: 'captionPaddingUnitMob',
+				} }
+				attributes={ attributes }
+				setAttributes={ setAttributes }
+				link={ {
+					value: captionPaddingUnitLink,
+					label: 'captionPaddingUnitLink',
+				} }
+				units={ [
+					{
+						name: __( 'Em', 'ultimate-addons-for-gutenberg' ),
+						unitValue: 'em',
+					},
+					{
+						name: __( 'Pixel', 'ultimate-addons-for-gutenberg' ),
+						unitValue: 'px',
+					},
+					{
+						name: __( '%', 'ultimate-addons-for-gutenberg' ),
+						unitValue: '%',
+					},
+				] }
+			/>
 			<UAGTabsControl
 				tabs={ [
 					{
@@ -1535,6 +1637,74 @@ const Settings = ( props ) => {
 						)
 						: (
 							<>
+								{ ! imageDisplayCaption && (
+									<Suspense fallback={ lazyLoader() }>
+										<TypographyControl
+											label={ __(
+												'Typography',
+												'ultimate-addons-for-gutenberg'
+											) }
+											attributes={ attributes }
+											setAttributes={ setAttributes }
+											loadGoogleFonts={ {
+												value: captionLoadGoogleFonts,
+												label: 'captionLoadGoogleFonts',
+											} }
+											fontFamily={ {
+												value: captionFontFamily,
+												label: 'captionFontFamily',
+											} }
+											fontWeight={ {
+												value: captionFontWeight,
+												label: 'captionFontWeight',
+											} }
+											fontStyle={ {
+												value: captionFontStyle,
+												label: 'captionFontStyle',
+											} }
+											transform={ {
+												value: captionTransform,
+												label: 'captionTransform',
+											} }
+											decoration={ {
+												value: captionDecoration,
+												label: 'captionDecoration',
+											} }
+											fontSizeType={ {
+												value: captionFontSizeType,
+												label: 'captionFontSizeType',
+											} }
+											fontSize={ {
+												value: captionFontSize,
+												label: 'captionFontSize',
+											} }
+											fontSizeMobile={ {
+												value: captionFontSizeMob,
+												label: 'captionFontSizeMob',
+											} }
+											fontSizeTablet={ {
+												value: captionFontSizeTab,
+												label: 'captionFontSizeTab',
+											} }
+											lineHeightType={ {
+												value: captionLineHeightType,
+												label: 'captionLineHeightType',
+											} }
+											lineHeight={ {
+												value: captionLineHeight,
+												label: 'captionLineHeight',
+											} }
+											lineHeightMobile={ {
+												value: captionLineHeightMob,
+												label: 'captionLineHeightMob',
+											} }
+											lineHeightTablet={ {
+												value: captionLineHeightTab,
+												label: 'captionLineHeightTab',
+											} }
+										/>
+									</Suspense>
+								) }
 								<SelectControl
 									label={ __( 'Button Border Style', 'ultimate-addons-for-gutenberg' ) }
 									value={ paginateButtonBorderStyle }
@@ -1640,6 +1810,7 @@ const Settings = ( props ) => {
 					<InspectorTab { ...UAGTabs.style }>
 						{ ! readyToRender && initialSettings() }
 						{ readyToRender && imageStyling() }
+						{ ( readyToRender && imageDisplayCaption ) && captionStyling() }
 						{ ( readyToRender && feedPagination ) && paginationStyling() }
 					</InspectorTab>
 					<InspectorTab
