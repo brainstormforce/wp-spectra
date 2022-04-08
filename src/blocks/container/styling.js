@@ -208,7 +208,7 @@ function styling( props ) {
 	if ( ( 'alignfull' === contentWidth || 'default' === contentWidth ) && 'alignwide' === innerContentWidth ) {
 
 		widthSelectorsDesktop[`.is-root-container > .block-editor-block-list__block > .wp-block-uagb-container.uagb-block-${ block_id }`] = {
-			'--inner-content-custom-width' : attributes[`innerContentCustomWidth${deviceType}`] + innerContentCustomWidthType,
+			'--inner-content-custom-width' : `min(${containerFullWidth}px,${attributes[`innerContentCustomWidth${deviceType}`]}${innerContentCustomWidthType})`,
 			'--padding-left' : ( attributes[`leftPadding${deviceType}`] || 0 ) + paddingType,
 			'--padding-right' : ( attributes[`rightPadding${deviceType}`] || 0 ) + paddingType,
 			'--column-gap' : ( attributes[`columnGap${deviceType}`] || 0 ) + columnGapType,

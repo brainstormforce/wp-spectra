@@ -3,8 +3,9 @@ UAGBContainer = { // eslint-disable-line no-undef
 		const rootContainer = document.querySelector( `${id}.uagb-is-root-container` );
 		if ( rootContainer ) {
 			const rootContainerFullWidth = rootContainer.clientWidth;
-			rootContainer.style.paddingLeft = `calc( ( ${rootContainerFullWidth}px - var( --inner-content-custom-width ) ) / 2 + var( --padding-left ) )`;
-			rootContainer.style.paddingRight = `calc( ( ${rootContainerFullWidth}px - var( --inner-content-custom-width ) ) / 2 + var( --padding-right ) )`;
+			const innerContentCustomWidth = getComputedStyle(rootContainer).getPropertyValue("--inner-content-custom-width");
+			rootContainer.style.setProperty('--inner-content-custom-width', `min(${rootContainerFullWidth}px,${innerContentCustomWidth})`);
+			rootContainer.style.setProperty('--root-container-full-width', `${rootContainerFullWidth}px`);
 		}
 
 	},
