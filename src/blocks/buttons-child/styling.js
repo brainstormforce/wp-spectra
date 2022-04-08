@@ -49,13 +49,13 @@ function styling( props ) {
 		fontStyle,
 		transform,
 		decoration,
-		gradientValue,
-		backgroundSize,
-		backgroundRepeat,
-		backgroundAttachment,
-		backgroundPosition,
-		backgroundImage,
 		backgroundType,
+		gradientColor1,
+		gradientColor2,
+		gradientLocation1,
+		gradientLocation2,
+		gradientType,
+		gradientAngle,
 		topMargin,
 		rightMargin,
 		bottomMargin,
@@ -141,20 +141,6 @@ function styling( props ) {
 			'color': color,
 		}
 	};
-	const backgroundAttributes = {
-        'backgroundType': backgroundType,
-        'backgroundImage': backgroundImage,
-        'backgroundColor': background,
-        'gradientValue': gradientValue,
-        'backgroundRepeat': backgroundRepeat,
-        'backgroundPosition': backgroundPosition,
-        'backgroundSize': backgroundSize,
-        'backgroundAttachment': backgroundAttachment,
-    };
-
-	const btnBackgroundCSS = generateBackgroundCSS( backgroundAttributes );
-
-	selectors[' .uagb-buttons-repeater'] = btnBackgroundCSS;
 
 	mobileSelectors[ '.uagb-buttons__outer-wrap .wp-block-button__link.uagb-buttons-repeater' ] = {
 		'font-size': generateCSSUnit( sizeMobile, sizeType ),
@@ -212,12 +198,10 @@ function styling( props ) {
 		),
 	};
 
-	selectors[ ' .uagb-button__icon' ] = {
+	selectors[ ' .uagb-button__icon > svg' ] = {
 		'width': generateCSSUnit( size, sizeType ),
-		'fill': iconColor
+		'fill': iconColor,
 	};
-
-	selectors[ ' .uagb-button__icon' ].color = color;
 
 	selectors[ ' .uagb-button__icon-position-after' ] = {
 		'margin-left': generateCSSUnit( iconSpace, 'px' ),
@@ -237,6 +221,22 @@ function styling( props ) {
 		'height': generateCSSUnit( sizeTablet, sizeType ),
 	};
 
+	if ( 'transparent' === backgroundType ) {
+		selectors[ '.uagb-buttons__outer-wrap .wp-block-button__link.uagb-buttons-repeater' ]['background']= 'transparent';
+	} else if ( 'gradient' === backgroundType ) {
+		selectors[ '.uagb-buttons__outer-wrap .wp-block-button__link.uagb-buttons-repeater' ][ 'background' ] =
+			'transparent';
+
+		if ( 'linear' === gradientType ) {
+			selectors[ '.uagb-buttons__outer-wrap .wp-block-button__link.uagb-buttons-repeater' ][
+				'background-image'
+			] = `linear-gradient(${ gradientAngle }deg, ${ gradientColor1 } ${ gradientLocation1 }%, ${	gradientColor2 } ${ gradientLocation2 }%)`;
+		} else {
+			selectors[ '.uagb-buttons__outer-wrap .wp-block-button__link.uagb-buttons-repeater' ][
+				'background-image'
+			] = `radial-gradient( at center center, ${ gradientColor1} ${ gradientLocation1 }%, ${ gradientColor2 } ${ gradientLocation2 }%)`;
+		}
+	}
 	const id = `.editor-styles-wrapper .uagb-block-${ props.clientId.substr( 0, 8 ) }`;
 	let stylingCss = generateCSS( selectors, id );
 

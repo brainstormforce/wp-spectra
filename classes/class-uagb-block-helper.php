@@ -47,40 +47,30 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				$box_shadow_position_css = '';
 			}
 
-			$bg_type      = ( isset( $attr['backgroundType'] ) ) ? $attr['backgroundType'] : 'none';
 
-			if ( 'image' === $bg_type ) {
-				if ( 'color' === $overlay_type ) {
-					$selectors[$wrapper] = array(
-						'background-color' => $attr['backgroundImageColor'],
-						'opacity'          => ( isset( $attr['backgroundOpacity'] ) && '' !== $attr['backgroundOpacity'] && 101 !== $attr['backgroundOpacity'] ) ? $attr['backgroundOpacity'] / 100 : '',
-					);
-				} else {
-					$selectors[$wrapper]['background-color'] = 'transparent';
-					if ( 'linear' === $attr['gradientOverlayType'] ) {
+if ( 'transparent' === $attr['backgroundType'] ) {
 
-						$selectors[$wrapper]['background-image'] = 'linear-gradient(' . $attr['gradientOverlayAngle'] . 'deg, ' . $attr['gradientOverlayColor1'] . ' ' . $attr['gradientOverlayLocation1'] . '%, ' . $attr['gradientOverlayColor2'] . ' ' . $attr['gradientOverlayLocation2'] . '%)';
-					} else {
+	$selectors[ ' .uagb-buttons-repeater.wp-block-button__link' ]['background'] = 'transparent';
 
-						$selectors[$wrapper]['background-image'] = 'radial-gradient( at center center, ' . $attr['gradientOverlayColor1'] . ' ' . $attr['gradientOverlayLocation1'] . '%, ' . $attr['gradientOverlayColor2'] . ' ' . $attr['gradientOverlayLocation2'] . '%)';
-					}
-				}
-			} elseif ( 'color' === $bg_type ) {
-				$selectors[$wrapper] = array(
-					'background-color' => $attr['backgroundColor'],
-				);
-			} elseif ( 'gradient' === $bg_type ) {
-				$selectors[' .uagb-button__wrapper']['background-color'] = 'transparent';
-				if ( $attr['gradientValue'] ) {
-					$selectors[$wrapper]['background-image'] = $attr['gradientValue'];
-				} else {
-					if ( 'linear' === $attr['gradientType'] ) {
-						$selectors[$wrapper]['background-image'] = 'linear-gradient(' . $attr['gradientAngle'] . 'deg, ' . $attr['gradientColor1'] . ' ' . $attr['gradientLocation1'] . '%, ' . $attr['gradientColor2'] . ' ' . $attr['gradientLocation2'] . '%)';
-					} else {
-						$selectors[$wrapper]['background-image'] = 'radial-gradient( at center center, ' . $attr['gradientColor1'] . ' ' . $attr['gradientLocation1'] . '%, ' . $attr['gradientColor2'] . ' ' . $attr['gradientLocation2'] . '%)';
-					}
-				}
-			}
+} elseif ( 'color' === $attr['backgroundType'] ) {
+
+	$selectors[ ' .uagb-buttons-repeater.wp-block-button__link' ]['background'] = UAGB_Helper::hex2rgba( $attr['background'], $attr['backgroundOpacity'] );
+
+	// Hover Background.
+	$selectors[$wrapper.':hover']['background'] = UAGB_Helper::hex2rgba( $attr['hBackground'], $attr['backgroundHoverOpacity'] );
+
+} elseif ( 'gradient' === $attr['backgroundType'] ) {
+
+	$selectors[ ' .uagb-buttons-repeater.wp-block-button__link' ]['background'] = 'transparent';
+
+	if ( 'linear' === $attr['gradientType'] ) {
+
+		$selectors[ ' .uagb-buttons-repeater.wp-block-button__link' ]['background-image'] = 'linear-gradient(' . $attr['gradientAngle'] . 'deg, ' . UAGB_Helper::hex2rgba( $attr['gradientColor1'], $attr['backgroundOpacity'] ) . ' ' . $attr['gradientLocation1'] . '%, ' . UAGB_Helper::hex2rgba( $attr['gradientColor2'], $attr['backgroundOpacity'] ) . ' ' . $attr['gradientLocation2'] . '%)';
+	} else {
+
+		$selectors[ ' .uagb-buttons-repeater.wp-block-button__link' ]['background-image'] = 'radial-gradient( at center center, ' . UAGB_Helper::hex2rgba( $attr['gradientColor1'], $attr['backgroundOpacity'] ) . ' ' . $attr['gradientLocation1'] . '%, ' . UAGB_Helper::hex2rgba( $attr['gradientColor2'], $attr['backgroundOpacity'] ) . ' ' . $attr['gradientLocation2'] . '%)';
+	}
+}
 
 			$selectors[ $wrapper ] = array(
 				'font-family'     => $attr['fontFamily'],
@@ -99,6 +89,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				'padding-left'    => UAGB_Helper::get_css_value( $left_padding, $attr['paddingUnit'] ),
 				'padding-right'   => UAGB_Helper::get_css_value( $right_padding, $attr['paddingUnit'] ),
 				'color'           => $attr['color'],
+				'background'   => $attr['background'],
 				'margin-top'      => UAGB_Helper::get_css_value( $attr['topMargin'], $attr['marginType'] ),
 				'margin-bottom'   => UAGB_Helper::get_css_value( $attr['bottomMargin'], $attr['marginType'] ),
 				'margin-left'     => UAGB_Helper::get_css_value( $attr['leftMargin'], $attr['marginType'] ),
@@ -123,8 +114,8 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				'border-color' => $attr['borderHColor'],
 				'color'        => $attr['hColor'],
 			);
-			$selectors[ $wrapper . ':hover .uagb-button__icon' ] = array(
-				'color' => $attr['hColor'],
+			$selectors[ ' .uagb-button__icon > svg' ] = array(
+				'color' => $attr['iconColor'],
 			);
 
 			$m_selectors[ $wrapper ] = array(

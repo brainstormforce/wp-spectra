@@ -94,14 +94,13 @@ const Settings = ( props ) => {
 		fontStyle,
 		transform,
 		decoration,
-		gradientValue,
-		backgroundImageColor,
-		backgroundSize,
-		backgroundRepeat,
-		backgroundAttachment,
-		backgroundPosition,
-		backgroundImage,
 		backgroundType,
+		gradientColor1,
+		gradientColor2,
+		gradientLocation1,
+		gradientLocation2,
+		gradientType,
+		gradientAngle,
 		topMargin,
 		rightMargin,
 		bottomMargin,
@@ -409,61 +408,223 @@ const Settings = ( props ) => {
 					title={__('background','ultimate-addons-for-gutenberg' )}
 					initialOpen={false}
 				>
-					<Background
-						setAttributes={ setAttributes }
-						backgroundGradient={ {
-							value: gradientValue,
-							label: 'gradientValue',
-						} }
-						backgroundImageColor={ {
-							value: backgroundImageColor,
-							label: 'backgroundImageColor',
-						} }
-						backgroundSize={ {
-							value: backgroundSize,
-							label: 'backgroundSize',
-						} }
-						backgroundRepeat={ {
-							value: backgroundRepeat,
-							label: 'backgroundRepeat',
-						} }
-						backgroundAttachment={ {
-							value: backgroundAttachment,
-							label: 'backgroundAttachment',
-						} }
-						backgroundPosition={ {
-							value: backgroundPosition,
-							label: 'backgroundPosition',
-						} }
-						backgroundImage={ {
-							value: backgroundImage,
-							label: 'backgroundImage',
-						} }
-						backgroundColor={ {
-							value: background,
-							label: 'background',
-						} }
-						backgroundType={ {
-							value: backgroundType,
-							label: 'backgroundType',
-						} }
-						backgroundVideoType={ {
-							value: false,
-						} }
-						{ ...props }
-					/>
-					{ backgroundType === 'color' && (
+				<MultiButtonsControl
+					setAttributes={ setAttributes }
+					label={ __( 'Type', 'ultimate-addons-for-gutenberg' ) }
+					data={ {
+						value: backgroundType,
+						label: 'backgroundType',
+					} }
+					className="uagb-multi-button-alignment-control"
+					options={ [
+						{
+							value: 'transparent',
+							label: __(
+								'Transparent',
+								'ultimate-addons-for-gutenberg'
+							),
+							tooltip: __(
+								'Transparent',
+								'ultimate-addons-for-gutenberg'
+							),
+						},
+						{
+							value: 'color',
+							label: __(
+								'Color',
+								'ultimate-addons-for-gutenberg'
+							),
+							tooltip: __(
+								'Color',
+								'ultimate-addons-for-gutenberg'
+							),
+						},
+						{
+							value: 'gradient',
+							label: __(
+								'Gradient',
+								'ultimate-addons-for-gutenberg'
+							),
+							tooltip: __(
+								'Gradient',
+								'ultimate-addons-for-gutenberg'
+							),
+						},
+					] }
+				/>
+				{ 'color' === backgroundType && (
+					<>
+						<UAGTabsControl
+							tabs={ [
+								{
+									name: 'normal',
+									title: __(
+										'Normal',
+										'ultimate-addons-for-gutenberg'
+									),
+								},
+								{
+									name: 'hover',
+									title: __(
+										'Hover',
+										'ultimate-addons-for-gutenberg'
+									),
+								},
+							] }
+							normal={
+								<>
+									<AdvancedPopColorControl
+										label={ __(
+											'Color',
+											'ultimate-addons-for-gutenberg'
+										) }
+										colorValue={
+											background
+												? background
+												: ''
+										}
+										onColorChange={ ( value ) =>
+											setAttributes( {
+												background: value,
+											} )
+										}
+									/>
+								</>
+							}
+							hover={
+								<>
+									<AdvancedPopColorControl
+										label={ __(
+											'Color',
+											'ultimate-addons-for-gutenberg'
+										) }
+										colorValue={
+											hBackground
+												? hBackground
+												: ''
+										}
+										onColorChange={ ( value ) =>
+											setAttributes( {
+												hBackground: value,
+											} )
+										}
+									/>
+								</>
+							}
+							disableBottomSeparator={ true }
+						/>
+					</>
+				) }
+				{ 'gradient' === backgroundType && (
+					<>
 						<AdvancedPopColorControl
 							label={ __(
-								'Hover Color',
+								'Color 1',
 								'ultimate-addons-for-gutenberg'
 							) }
-							colorValue={ hBackground ? hBackground : '' }
+							colorValue={ gradientColor2 ? gradientColor2 : '' }
 							onColorChange={ ( value ) =>
-								setAttributes( { hBackground: value } )
+								setAttributes( { gradientColor2: value } )
 							}
 						/>
-					)}
+						<AdvancedPopColorControl
+							label={ __(
+								'Color 2',
+								'ultimate-addons-for-gutenberg'
+							) }
+							colorValue={ gradientColor1 ? gradientColor1 : '' }
+							onColorChange={ ( value ) =>
+								setAttributes( { gradientColor1: value } )
+							}
+						/>
+						<MultiButtonsControl
+							setAttributes={ setAttributes }
+							label={ __(
+								'Type',
+								'ultimate-addons-for-gutenberg'
+							) }
+							data={ {
+								value: gradientType,
+								label: 'gradientType',
+							} }
+							className="uagb-multi-button-alignment-control"
+							options={ [
+								{
+									value: 'linear',
+									label: __(
+										'Linear',
+										'ultimate-addons-for-gutenberg'
+									),
+									tooltip: __(
+										'Linear',
+										'ultimate-addons-for-gutenberg'
+									),
+								},
+								{
+									value: 'radial',
+									label: __(
+										'Radial',
+										'ultimate-addons-for-gutenberg'
+									),
+									tooltip: __(
+										'Radial',
+										'ultimate-addons-for-gutenberg'
+									),
+								},
+							] }
+						/>
+						<Range
+							label={ __(
+								'Location 1',
+								'ultimate-addons-for-gutenberg'
+							) }
+							setAttributes={ setAttributes }
+							value={ gradientLocation1 }
+							onChange={ ( value ) =>
+								setAttributes( {
+									gradientLocation1: value,
+								} )
+							}
+							min={ 0 }
+							max={ 100 }
+							displayUnit={ false }
+						/>
+						<Range
+							label={ __(
+								'Location 2',
+								'ultimate-addons-for-gutenberg'
+							) }
+							setAttributes={ setAttributes }
+							value={ gradientLocation2 }
+							onChange={ ( value ) =>
+								setAttributes( {
+									gradientLocation2: value,
+								} )
+							}
+							min={ 0 }
+							max={ 100 }
+							displayUnit={ false }
+						/>
+						{ 'linear' === gradientType &&
+							<Range
+								label={ __(
+									'Angle',
+									'ultimate-addons-for-gutenberg'
+								) }
+								setAttributes={ setAttributes }
+								value={ gradientAngle }
+								onChange={ ( value ) =>
+									setAttributes( {
+										gradientAngle: value,
+									} )
+								}
+								min={ 0 }
+								max={ 360 }
+								displayUnit={ false }
+							/>
+						}
+					</>
+				) }
 				</UAGAdvancedPanelBody>
 	};
 
