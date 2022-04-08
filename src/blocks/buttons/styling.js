@@ -52,117 +52,83 @@ function styling( props ) {
 		'font-size': generateCSSUnit( fontSize, fontSizeType ),
 		'line-height': generateCSSUnit( lineHeight, lineHeightType ),
 	};
-
-	selectors[ ' .uagb-button__wrapper' ] = {
-		'margin-left': generateCSSUnit( gap / 2, 'px' ),
-		'margin-right': generateCSSUnit( gap / 2, 'px' ),
-	};
-
-	if ( 'all' === stack ) {
-		selectors[ ' .block-editor-block-list__layout' ] = {
-			'flex-direction': 'column',
-		};
-	}
 	if ( 'desktop' === stack ) {
-		selectors[ ' .uagb-button__wrapper' ][ 'margin-left' ] = 0;
-		selectors[ ' .uagb-button__wrapper' ][ 'margin-right' ] = 0;
-		selectors[ ' .uagb-button__wrapper' ][ 'margin-bottom' ] = generateCSSUnit( gap, 'px' );
-
 		selectors[ '.uagb-editor-preview-mode-desktop .block-editor-block-list__layout' ] = {
 			'flex-direction': 'column',
+			'row-gap': generateCSSUnit( gap, 'px' )
+		};
+		tabletSelectors[ '.uagb-editor-preview-mode-tablet .block-editor-block-list__layout' ] = {
+			'column-gap': generateCSSUnit( gap , 'px' ),
+		};
+		mobileSelectors[ '.uagb-editor-preview-mode-mobile .block-editor-block-list__layout' ] = {
+			'column-gap': generateCSSUnit( gap , 'px' ),
 		};
 	} else if ( 'tablet' === stack ) {
-		tabletSelectors[
-			'.uagb-editor-preview-mode-tablet .uagb-button__wrapper'
-		] = {
-			'margin-left': 0,
-			'margin-right': 0,
-			'margin-bottom': generateCSSUnit( gap, 'px' ),
+		selectors[ '.uagb-editor-preview-mode-desktop .block-editor-block-list__layout' ] = {
+			'column-gap': generateCSSUnit( gap , 'px' ),
 		};
-		mobileSelectors[
-			'.uagb-editor-preview-mode-mobile .uagb-button__wrapper'
-		] = {
-			'margin-left': 0,
-			'margin-right': 0,
-			'margin-bottom': generateCSSUnit( gap, 'px' ),
-		};
-		tabletSelectors[
-			'.uagb-editor-preview-mode-tablet .block-editor-block-list__layout'
-		] = {
+		tabletSelectors['.uagb-editor-preview-mode-tablet .block-editor-block-list__layout'] = {
 			'flex-direction': 'column',
+			'row-gap': generateCSSUnit( gap, 'px' ),
 		};
-		mobileSelectors[
-			'.uagb-editor-preview-mode-mobile .block-editor-block-list__layout'
-		] = {
+		mobileSelectors['.uagb-editor-preview-mode-mobile .block-editor-block-list__layout'] = {
 			'flex-direction': 'column',
+			'row-gap': generateCSSUnit( gap, 'px' ),
 		};
+
 	} else if ( 'mobile' === stack ) {
-		mobileSelectors[
-			'.uagb-editor-preview-mode-mobile .uagb-button__wrapper'
-		] = {
-			'margin-left': 0,
-			'margin-right': 0,
-			'margin-bottom': generateCSSUnit( gap, 'px' ),
+		selectors[ '.uagb-editor-preview-mode-desktop .block-editor-block-list__layout' ] = {
+			'column-gap': generateCSSUnit( gap , 'px' ),
 		};
-
-		mobileSelectors[
-			'.uagb-editor-preview-mode-mobile .block-editor-block-list__layout'
-		] = {
+		tabletSelectors[ '.uagb-editor-preview-mode-tablet .block-editor-block-list__layout' ] = {
+			'column-gap': generateCSSUnit( gap , 'px' ),
+		};
+		mobileSelectors['.uagb-editor-preview-mode-mobile .block-editor-block-list__layout'] = {
 			'flex-direction': 'column',
+			'row-gap': generateCSSUnit( gap, 'px' ),
 		};
-	}
-
-	let alignment = '';
-	if ( align === 'left' ) {
-		alignment = 'flex-start';
-	} else if ( align === 'right' ) {
-		alignment = 'flex-end';
-	} else {
-		alignment = 'center';
+	} else if ( 'none' === stack ) {
+		selectors[ '.uagb-buttons__outer-wrap .block-editor-block-list__layout' ] = {
+			'column-gap': generateCSSUnit( gap , 'px' ),
+		};
 	}
 
 	if ( align !== 'full' ) {
-		selectors[ ' .uagb-buttons__wrap' ] = {
-			'justify-content': alignment,
-			'-webkit-box-pack': alignment,
-			'-ms-flex-pack': alignment,
+		selectors[ '.uagb-editor-preview-mode-desktop .block-editor-inner-blocks' ] = {
+			'text-align': align,
 		};
-
-		selectors[
-			' .uagb-buttons-stack-desktop .block-editor-block-list__layout'
-		] = {
-			'align-items': alignment,
-		};
-
-		if ( align === 'left' ) {
-			selectors[
-				" .wp-block[data-type='uagb/buttons-child']:first-child .uagb-button__wrapper"
-			] = {
-				'margin-left': 0,
-			};
-		}
-
-		if ( align === 'right' ) {
-			selectors[
-				" .wp-block[data-type='uagb/buttons-child']:last-child .uagb-button__wrapper"
-			] = {
-				'margin-right': 0,
-			};
-		}
 	} else {
-		selectors[ ' .uagb-button__wrapper' ][ 'justify-content' ] = 'center';
-		selectors[ ' .uagb-buttons-repeater' ] = {
+
+		selectors[ '.uagb-editor-preview-mode-desktop .block-editor-block-list__layout' ] = {
+			'width': '100%'
+		}
+		selectors[ ' .block-editor-block-list__block' ] = {
 			'width': '100%',
 		};
-		selectors[
-			" .wp-block[data-type='uagb/buttons-child']:first-child .uagb-button__wrapper"
-		] = {
-			'margin-left': 0,
+	}
+	if ( alignTablet !== 'full' ) {
+		tabletSelectors[ '.uagb-editor-preview-mode-tablet .block-editor-inner-blocks' ] = {
+			'text-align': alignTablet,
 		};
-		selectors[
-			" .wp-block[data-type='uagb/buttons-child']:last-child .uagb-button__wrapper"
-		] = {
-			'margin-right': 0,
+	} else {
+
+		tabletSelectors[ '.uagb-editor-preview-mode-tablet .block-editor-block-list__layout' ] = {
+			'width': '100%'
+		}
+		tabletSelectors[ ' .block-editor-block-list__block ' ] = {
+			'width': '100%',
+		};
+	}
+	if ( alignMobile !== 'full' ) {
+		mobileSelectors[ '.uagb-editor-preview-mode-mobile .block-editor-inner-blocks' ] = {
+			'text-align': alignMobile,
+		};
+	} else {
+		mobileSelectors[ '.uagb-editor-preview-mode-mobile .block-editor-block-list__layout' ] = {
+			'width': '100%'
+		}
+		mobileSelectors[ ' .block-editor-block-list__block ' ] = {
+			'width': '100%',
 		};
 	}
 

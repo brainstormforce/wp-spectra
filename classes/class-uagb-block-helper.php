@@ -40,26 +40,64 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 			$attr['sizeType']       = isset( $attr['sizeType'] ) ? $attr['sizeType'] : 'px';
 			$attr['lineHeightType'] = isset( $attr['lineHeightType'] ) ? $attr['lineHeightType'] : 'em';
 
+			$box_shadow_position_css = $attr['boxShadowPosition'];
+
+			if ( 'outset' === $attr['boxShadowPosition'] ) {
+				$box_shadow_position_css = '';
+			}
+			$bg_obj       = array(
+				'backgroundType'       => $attr['backgroundType'],
+				'backgroundImage'      => $attr['backgroundImage'],
+				'backgroundColor'      => $attr['backgroundColor'],
+				'gradientValue'        => $attr['gradientValue'],
+				'backgroundRepeat'     => $attr['backgroundRepeat'],
+				'backgroundPosition'   => $attr['backgroundPosition'],
+				'backgroundSize'       => $attr['backgroundSize'],
+				'backgroundAttachment' => $attr['backgroundAttachment'],
+			);
+			// $btn_bg_color = $this->uag_get_background_obj( $bg_obj );
+
+			// $selectors[ $wrapper ] = $btn_bg_color;
+
 			$selectors[ $wrapper ] = array(
-				'font-size'      => UAGB_Helper::get_css_value( $attr['size'], $attr['sizeType'] ),
-				'line-height'    => UAGB_Helper::get_css_value( $attr['lineHeight'], $attr['lineHeightType'] ),
-				'border-width'   => UAGB_Helper::get_css_value( $attr['borderWidth'], 'px' ),
-				'border-color'   => $attr['borderColor'],
-				'border-style'   => $attr['borderStyle'],
-				'border-radius'  => UAGB_Helper::get_css_value( $attr['borderRadius'], 'px' ),
-				'background'     => $attr['background'],
-				'padding-top'    => UAGB_Helper::get_css_value( $top_padding, $attr['paddingUnit'] ),
-				'padding-bottom' => UAGB_Helper::get_css_value( $bottom_padding, $attr['paddingUnit'] ),
-				'padding-left'   => UAGB_Helper::get_css_value( $left_padding, $attr['paddingUnit'] ),
-				'padding-right'  => UAGB_Helper::get_css_value( $right_padding, $attr['paddingUnit'] ),
-				'color'          => $attr['color'],
+				'font-family'     => $attr['fontFamily'],
+				'font-weight'     => $attr['fontWeight'],
+				'font-style'      => $attr['fontStyle'],
+				'text-transform'  => $attr['transform'],
+				'text-decoration' => $attr['decoration'],
+				'font-size'       => UAGB_Helper::get_css_value( $attr['size'], $attr['sizeType'] ),
+				'line-height'     => UAGB_Helper::get_css_value( $attr['lineHeight'], $attr['lineHeightType'] ),
+				'border-width'    => UAGB_Helper::get_css_value( $attr['borderWidth'], 'px' ),
+				'border-color'    => $attr['borderColor'],
+				'border-style'    => $attr['borderStyle'],
+				'border-radius'   => UAGB_Helper::get_css_value( $attr['borderRadius'], 'px' ),
+				'padding-top'     => UAGB_Helper::get_css_value( $top_padding, $attr['paddingUnit'] ),
+				'padding-bottom'  => UAGB_Helper::get_css_value( $bottom_padding, $attr['paddingUnit'] ),
+				'padding-left'    => UAGB_Helper::get_css_value( $left_padding, $attr['paddingUnit'] ),
+				'padding-right'   => UAGB_Helper::get_css_value( $right_padding, $attr['paddingUnit'] ),
+				'color'           => $attr['color'],
+				'margin-top'      => UAGB_Helper::get_css_value( $attr['topMargin'], $attr['marginType'] ),
+				'margin-bottom'   => UAGB_Helper::get_css_value( $attr['bottomMargin'], $attr['marginType'] ),
+				'margin-left'     => UAGB_Helper::get_css_value( $attr['leftMargin'], $attr['marginType'] ),
+				'margin-right'    => UAGB_Helper::get_css_value( $attr['rightMargin'], $attr['marginType'] ),
+				'box-shadow'      =>
+					UAGB_Helper::get_css_value( $attr['boxShadowHOffset'], 'px' ) .
+					' ' .
+					UAGB_Helper::get_css_value( $attr['boxShadowVOffset'], 'px' ) .
+					' ' .
+					UAGB_Helper::get_css_value( $attr['boxShadowBlur'], 'px' ) .
+					' ' .
+					UAGB_Helper::get_css_value( $attr['boxShadowSpread'], 'px' ) .
+					' ' .
+					$attr['boxShadowColor'] .
+					' ' .
+					$box_shadow_position_css,
 			);
 
 			$selectors[ $wrapper . ':hover' ]                    = array(
 				'background'   => $attr['hBackground'],
 				'border-width' => UAGB_Helper::get_css_value( $attr['borderWidth'], 'px' ),
 				'border-color' => $attr['borderHColor'],
-				'border-style' => $attr['borderStyle'],
 				'color'        => $attr['hColor'],
 			);
 			$selectors[ $wrapper . ':hover .uagb-button__icon' ] = array(
@@ -73,6 +111,11 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				'padding-bottom' => UAGB_Helper::get_css_value( $attr['bottomMobilePadding'], $attr['mobilePaddingUnit'] ),
 				'padding-left'   => UAGB_Helper::get_css_value( $attr['leftMobilePadding'], $attr['mobilePaddingUnit'] ),
 				'padding-right'  => UAGB_Helper::get_css_value( $attr['rightMobilePadding'], $attr['mobilePaddingUnit'] ),
+				'margin-top'     => UAGB_Helper::get_css_value( $attr['topMarginMobile'], $attr['marginType'] ),
+				'margin-bottom'  => UAGB_Helper::get_css_value( $attr['bottomMarginMobile'], $attr['marginType'] ),
+				'margin-left'    => UAGB_Helper::get_css_value( $attr['leftMarginMobile'], $attr['marginType'] ),
+				'margin-right'   => UAGB_Helper::get_css_value( $attr['rightMarginMobile'], $attr['marginType'] ),
+
 			);
 
 			$t_selectors[ $wrapper ] = array(
@@ -82,10 +125,16 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				'padding-bottom' => UAGB_Helper::get_css_value( $attr['bottomTabletPadding'], $attr['tabletPaddingUnit'] ),
 				'padding-left'   => UAGB_Helper::get_css_value( $attr['leftTabletPadding'], $attr['tabletPaddingUnit'] ),
 				'padding-right'  => UAGB_Helper::get_css_value( $attr['rightTabletPadding'], $attr['tabletPaddingUnit'] ),
+				'margin-top'     => UAGB_Helper::get_css_value( $attr['topMarginTablet'], $attr['marginType'] ),
+				'margin-bottom'  => UAGB_Helper::get_css_value( $attr['bottomMarginTablet'], $attr['marginType'] ),
+				'margin-left'    => UAGB_Helper::get_css_value( $attr['leftMarginTablet'], $attr['marginType'] ),
+				'margin-right'   => UAGB_Helper::get_css_value( $attr['rightMarginTablet'], $attr['marginType'] ),
+
 			);
 
 			$selectors[ $wrapper . ' .uagb-button__icon' ] = array(
 				'width' => UAGB_Helper::get_css_value( $attr['size'], $attr['sizeType'] ),
+				'fill'  => $attr['iconColor'],
 			);
 
 			$selectors[ $wrapper . ' .uagb-button__icon' ]['color'] = $attr['color'];

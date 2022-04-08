@@ -22,6 +22,8 @@ const Render = ( props ) => {
 		label,
 		icon,
 		iconPosition,
+		removeText,
+		buttonSize
 	} = attributes;
 
 	const iconHtml = ( curr_position ) => {
@@ -39,26 +41,9 @@ const Render = ( props ) => {
 		}
 		return null;
 	};
-
-	return (
-		<div
-			className={ classnames(
-				className,
-				'uagb-buttons__outer-wrap',
-				`uagb-editor-preview-mode-${ deviceType.toLowerCase() }`,
-				`uagb-block-${ props.clientId.substr( 0, 8 ) }`,
-				'wp-block-button'
-			) }
-		>
-			<div className="uagb-button__wrapper">
-				<div
-					className={ classnames(
-						'uagb-buttons-repeater',
-						'wp-block-button__link'
-					) }
-				>
-					{ iconHtml( 'before' ) }
-					<RichText
+	const btnText = () => {
+		if( removeText ){
+			return <RichText
 						placeholder={ __( 'Add text…' ) }
 						value={ label }
 						tagName="div"
@@ -70,6 +55,30 @@ const Render = ( props ) => {
 						rel="noopener noreferrer"
 						keepPlaceholderOnFocus
 					/>
+		} else {
+			return '';
+		}
+	}
+	return (
+		<div
+			className={ classnames(
+				className,
+				'uagb-buttons__outer-wrap',
+				`uagb-editor-preview-mode-${ deviceType.toLowerCase() }`,
+				`uagb-block-${ props.clientId.substr( 0, 8 ) }`,
+				'wp-block-button',
+				`uagb-btn__${buttonSize}-btn`
+			) }
+		>
+			<div className="uagb-button__wrapper">
+				<div
+					className={ classnames(
+						'uagb-buttons-repeater',
+						'wp-block-button__link'
+					) }
+				>
+					{ iconHtml( 'before' ) }
+					{ btnText() }
 					{ iconHtml( 'after' ) }
 				</div>
 			</div>

@@ -4,6 +4,7 @@
 
 import generateCSS from '@Controls/generateCSS';
 import generateCSSUnit from '@Controls/generateCSSUnit';
+import generateBackgroundCSS from '@Controls/generateBackgroundCSS';
 
 function styling( props ) {
 	const {
@@ -44,19 +45,59 @@ function styling( props ) {
 		lineHeightMobile,
 		lineHeightTablet,
 		iconSpace,
+
+		fontStyle,
+		transform,
+		decoration,
+		gradientValue,
+		backgroundSize,
+		backgroundRepeat,
+		backgroundAttachment,
+		backgroundPosition,
+		backgroundImage,
+		backgroundType,
+		topMargin,
+		rightMargin,
+		bottomMargin,
+		leftMargin,
+		topMarginTablet,
+		rightMarginTablet,
+		bottomMarginTablet,
+		leftMarginTablet,
+		topMarginMobile,
+		rightMarginMobile,
+		bottomMarginMobile,
+		leftMarginMobile,
+		marginType,
+
+		boxShadowColor,
+		boxShadowHOffset,
+		boxShadowVOffset,
+		boxShadowBlur,
+		boxShadowSpread,
+		boxShadowPosition,
+		iconColor
 	} = props.attributes;
 
 	const tabletSelectors = {};
 	const mobileSelectors = {};
 	let selectors = {};
 
+	let boxShadowPositionCSS = boxShadowPosition;
+
+	if ( 'outset' === boxShadowPosition ) {
+		boxShadowPositionCSS = '';
+	}
 
 	selectors = {
-		' .uagb-buttons-repeater': {
+		'.uagb-buttons__outer-wrap .wp-block-button__link.uagb-buttons-repeater': {
 			'font-size': generateCSSUnit( size, sizeType ),
 			'line-height': generateCSSUnit( lineHeight, lineHeightType ),
 			'font-family': fontFamily,
 			'font-weight': fontWeight,
+			'font-style': fontStyle,
+			'text-transform': transform,
+			'text-decoration': decoration,
 			'border-width': generateCSSUnit( borderWidth, 'px' ),
 			'border-style': borderStyle,
 			'border-color': borderColor,
@@ -66,31 +107,56 @@ function styling( props ) {
 			'padding-right': generateCSSUnit( rightPadding, paddingUnit ),
 			'padding-top': generateCSSUnit( topPadding, paddingUnit ),
 			'padding-bottom': generateCSSUnit( bottomPadding, paddingUnit ),
+			'box-shadow':
+			generateCSSUnit( boxShadowHOffset, 'px' ) + ' ' + generateCSSUnit( boxShadowVOffset, 'px' ) +	' ' +
+			generateCSSUnit( boxShadowBlur, 'px' ) + ' ' +	generateCSSUnit( boxShadowSpread, 'px' ) + ' ' +
+			boxShadowColor + ' ' +	boxShadowPositionCSS,
+			'margin-left': generateCSSUnit( leftMargin, marginType ),
+			'margin-right': generateCSSUnit( rightMargin, marginType ),
+			'margin-top': generateCSSUnit( topMargin, marginType ),
+			'margin-bottom': generateCSSUnit(
+				bottomMargin,
+				marginType
+			),
 		},
-		' .uagb-buttons-repeater:hover': {
+		'.uagb-buttons__outer-wrap .wp-block-button__link.uagb-buttons-repeater:hover': {
 			'background': hBackground,
 			'border-width': generateCSSUnit( borderWidth, 'px' ),
 			'border-style': borderStyle,
 			'border-color': borderHColor,
 		},
-		' .uagb-buttons-repeater a.uagb-button__link': {
+		'.uagb-buttons__outer-wrap .wp-block-button__link.uagb-buttons-repeater a.uagb-button__link': {
 			'color': color,
 		},
-		' .uagb-buttons-repeater:hover a.uagb-button__link': {
+		'.uagb-buttons__outer-wrap .wp-block-button__link.uagb-buttons-repeater:hover a.uagb-button__link': {
 			'color': hColor,
 		},
-		' .uagb-buttons-repeater:hover .uagb-button__link': {
+		'.uagb-buttons__outer-wrap .wp-block-button__link.uagb-buttons-repeater:hover .uagb-button__link': {
 			'color': hColor,
 		},
-		' .uagb-buttons-repeater:hover .uagb-button__icon': {
+		'.uagb-buttons__outer-wrap .wp-block-button__link.uagb-buttons-repeater:hover .uagb-button__icon': {
 			'color': hColor,
 		},
-		' .uagb-buttons-repeater .uagb-button__link': {
+		'.uagb-buttons__outer-wrap .wp-block-button__link.uagb-buttons-repeater .uagb-button__link': {
 			'color': color,
-		},
+		}
 	};
+	const backgroundAttributes = {
+        'backgroundType': backgroundType,
+        'backgroundImage': backgroundImage,
+        'backgroundColor': background,
+        'gradientValue': gradientValue,
+        'backgroundRepeat': backgroundRepeat,
+        'backgroundPosition': backgroundPosition,
+        'backgroundSize': backgroundSize,
+        'backgroundAttachment': backgroundAttachment,
+    };
 
-	mobileSelectors[ ' .uagb-buttons-repeater' ] = {
+	const btnBackgroundCSS = generateBackgroundCSS( backgroundAttributes );
+
+	selectors[' .uagb-buttons-repeater'] = btnBackgroundCSS;
+
+	mobileSelectors[ '.uagb-buttons__outer-wrap .wp-block-button__link.uagb-buttons-repeater' ] = {
 		'font-size': generateCSSUnit( sizeMobile, sizeType ),
 		'line-height': generateCSSUnit( lineHeightMobile, lineHeightType ),
 		'padding-left': generateCSSUnit(
@@ -109,9 +175,16 @@ function styling( props ) {
 			bottomMobilePadding,
 			mobilePaddingUnit
 		),
+		'margin-left': generateCSSUnit( leftMarginMobile, marginType ),
+		'margin-right': generateCSSUnit( rightMarginMobile, marginType ),
+		'margin-top': generateCSSUnit( topMarginMobile, marginType ),
+		'margin-bottom': generateCSSUnit(
+			bottomMarginMobile,
+			marginType
+		),
 	};
 
-	tabletSelectors[ ' .uagb-buttons-repeater' ] = {
+	tabletSelectors[ '.uagb-buttons__outer-wrap .wp-block-button__link.uagb-buttons-repeater' ] = {
 		'font-size': generateCSSUnit( sizeTablet, sizeType ),
 		'line-height': generateCSSUnit( lineHeightTablet, lineHeightType ),
 		'padding-left': generateCSSUnit(
@@ -130,10 +203,18 @@ function styling( props ) {
 			bottomTabletPadding,
 			tabletPaddingUnit
 		),
+		'margin-left': generateCSSUnit( leftMarginTablet, marginType ),
+		'margin-right': generateCSSUnit( rightMarginTablet, marginType ),
+		'margin-top': generateCSSUnit( topMarginTablet, marginType ),
+		'margin-bottom': generateCSSUnit(
+			bottomMarginTablet,
+			marginType
+		),
 	};
 
 	selectors[ ' .uagb-button__icon' ] = {
 		'width': generateCSSUnit( size, sizeType ),
+		'fill': iconColor
 	};
 
 	selectors[ ' .uagb-button__icon' ].color = color;

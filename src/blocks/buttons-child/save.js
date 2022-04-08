@@ -16,8 +16,21 @@ export default function save( props ) {
 		label,
 		icon,
 		iconPosition,
+		removeText,
+		buttonSize
 	} = attributes;
 
+	const btnText = () => {
+		if( removeText ){
+			return <RichText.Content
+						value={ label }
+						tagName="div"
+						className="uagb-button__link"
+					/>
+		} else {
+			return '';
+		}
+	}
 	const iconHtml = ( curr_position ) => {
 		if ( '' !== icon && curr_position === iconPosition ) {
 			return (
@@ -40,7 +53,8 @@ export default function save( props ) {
 				className,
 				'uagb-buttons__outer-wrap',
 				`uagb-block-${ block_id }`,
-				'wp-block-button'
+				'wp-block-button',
+				`uagb-btn__${buttonSize}-btn`
 			) }
 		>
 			<div className="uagb-button__wrapper">
@@ -54,11 +68,7 @@ export default function save( props ) {
 					target={ target }
 				>
 					{ iconHtml( 'before' ) }
-					<RichText.Content
-						value={ label }
-						tagName="div"
-						className="uagb-button__link"
-					/>
+					{ btnText() }
 					{ iconHtml( 'after' ) }
 				</a>
 			</div>

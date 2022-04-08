@@ -10,6 +10,7 @@ import React, { Suspense } from 'react';
 import AdvancedPopColorControl from '@Components/color-control/advanced-pop-color-control.js';
 import Border from '@Components/border';
 import SpacingControl from '@Components/spacing-control';
+import Background from '@Components/background';
 import InspectorTabs from '@Components/inspector-tabs/InspectorTabs.js';
 import InspectorTab, {
 	UAGTabs,
@@ -18,9 +19,8 @@ import TypographyControl from '@Components/typography';
 import Range from '@Components/range/Range.js';
 import UAGTabsControl from '@Components/tabs';
 import MultiButtonsControl from '@Components/multi-buttons-control';
-
+import { SelectControl } from '@wordpress/components';
 import BoxShadowControl from '@Components/box-shadow';
-import SpacingControl from '@Components/spacing-control';
 
 import {
 	BlockControls,
@@ -122,6 +122,9 @@ const Settings = ( props ) => {
 		boxShadowBlur,
 		boxShadowSpread,
 		boxShadowPosition,
+		iconColor,
+		buttonSize,
+		removeText
 
 	} = attributes;
 
@@ -225,6 +228,58 @@ const Settings = ( props ) => {
 						setAttributes( { opensInNewTab: ! opensInNewTab } )
 					}
 				/>
+				<ToggleControl
+					label={ __(
+						'Remove Text',
+						'ultimate-addons-for-gutenberg'
+					) }
+					checked={ removeText }
+					onChange={ () =>
+						setAttributes( { removeText: ! removeText } )
+					}
+				/>
+				<SelectControl
+					label={ __(
+						'Button Size',
+						'ultimate-addons-for-gutenberg'
+					) }
+					value={ buttonSize }
+					onChange={ ( value ) =>
+						setAttributes( {
+							buttonSize: value,
+						} )
+					}
+					options={ [
+						{
+							value: 'small',
+							label: __(
+								'Small',
+								'ultimate-addons-for-gutenberg'
+							),
+						},
+						{
+							value: 'medium',
+							label: __(
+								'Medium',
+								'ultimate-addons-for-gutenberg'
+							),
+						},
+						{
+							value: 'large',
+							label: __(
+								'Large',
+								'ultimate-addons-for-gutenberg'
+							),
+						},
+						{
+							value: 'extralarge',
+							label: __(
+								'Extra Large',
+								'ultimate-addons-for-gutenberg'
+							),
+						}
+					] }
+				/>
 			</UAGAdvancedPanelBody>
 		);
 	};
@@ -235,52 +290,6 @@ const Settings = ( props ) => {
 				title={ __( 'Text', 'ultimate-addons-for-gutenberg' ) }
 				initialOpen={ true }
 			>
-				<UAGTabsControl
-					tabs={ [
-						{
-							name: 'normal',
-							title: __(
-								'Normal',
-								'ultimate-addons-for-gutenberg'
-							),
-						},
-						{
-							name: 'hover',
-							title: __(
-								'Hover',
-								'ultimate-addons-for-gutenberg'
-							),
-						},
-					] }
-					normal={
-						<>
-							<AdvancedPopColorControl
-								label={ __(
-									'Text Color',
-									'ultimate-addons-for-gutenberg'
-								) }
-								colorValue={ color ? color : '' }
-								onColorChange={ ( value ) =>
-									setAttributes( { color: value } )
-								}
-							/>
-						</>
-					}
-					hover={
-						<>
-							<AdvancedPopColorControl
-								label={ __(
-									'Text Color',
-									'ultimate-addons-for-gutenberg'
-								) }
-								colorValue={ hColor ? hColor : '' }
-								onColorChange={ ( value ) =>
-									setAttributes( { hColor: value } )
-								}
-							/>
-						</>
-					}
-				/>
 				<TypographyControl
 					label={ __(
 						'Typography',
@@ -345,167 +354,167 @@ const Settings = ( props ) => {
 						label: 'lineHeightTablet',
 					} }
 				/>
-				<Background
-					setAttributes={ setAttributes }
-					backgroundGradient={ {
-						value: gradientValue,
-						label: 'gradientValue',
-					} }
-					backgroundImageColor={ {
-						value: backgroundImageColor,
-						label: 'backgroundImageColor',
-					} }
-					backgroundSize={ {
-						value: backgroundSize,
-						label: 'backgroundSize',
-					} }
-					backgroundRepeat={ {
-						value: backgroundRepeat,
-						label: 'backgroundRepeat',
-					} }
-					backgroundAttachment={ {
-						value: backgroundAttachment,
-						label: 'backgroundAttachment',
-					} }
-					backgroundPosition={ {
-						value: backgroundPosition,
-						label: 'backgroundPosition',
-					} }
-					backgroundImage={ {
-						value: backgroundImage,
-						label: 'backgroundImage',
-					} }
-					backgroundColor={ {
-						value: background,
-						label: 'background',
-					} }
-					backgroundType={ {
-						value: backgroundType,
-						label: 'backgroundType',
-					} }
-					backgroundVideoType={ {
-						value: false,
-					} }
-					{ ...props }
-				/>
-				<SpacingControl
-					{ ...props }
-					label={ __( 'Margin', 'ultimate-addons-for-gutenberg' ) }
-					valueTop={ {
-						value: topMarginDesktop,
-						label: 'topMarginDesktop',
-					} }
-					valueRight={ {
-						value: rightMarginDesktop,
-						label: 'rightMarginDesktop',
-					} }
-					valueBottom={ {
-						value: bottomMarginDesktop,
-						label: 'bottomMarginDesktop',
-					} }
-					valueLeft={ {
-						value: leftMarginDesktop,
-						label: 'leftMarginDesktop',
-					} }
-					valueTopTablet={ {
-						value: topMarginTablet,
-						label: 'topMarginTablet',
-					} }
-					valueRightTablet={ {
-						value: rightMarginTablet,
-						label: 'rightMarginTablet',
-					} }
-					valueBottomTablet={ {
-						value: bottomMarginTablet,
-						label: 'bottomMarginTablet',
-					} }
-					valueLeftTablet={ {
-						value: leftMarginTablet,
-						label: 'leftMarginTablet',
-					} }
-					valueTopMobile={ {
-						value: topMarginMobile,
-						label: 'topMarginMobile',
-					} }
-					valueRightMobile={ {
-						value: rightMarginMobile,
-						label: 'rightMarginMobile',
-					} }
-					valueBottomMobile={ {
-						value: bottomMarginMobile,
-						label: 'bottomMarginMobile',
-					} }
-					valueLeftMobile={ {
-						value: leftMarginMobile,
-						label: 'leftMarginMobile',
-					} }
-					unit={ {
-						value: marginType,
-						label: 'marginType',
-					} }
-					mUnit={ {
-						value: marginType,
-						label: 'marginType',
-					} }
-					tUnit={ {
-						value: marginType,
-						label: 'marginType',
-					} }
-					attributes={ attributes }
-					setAttributes={ setAttributes }
-					link={ {
-						value: marginLink,
-						label: 'marginLink',
-					} }
-				/>
-				<BoxShadowControl
-					setAttributes={ setAttributes }
-					label={ __(
-						'Box Shadow',
-						'ultimate-addons-for-gutenberg'
-					) }
-					boxShadowColor={ {
-						value: boxShadowColor,
-						label: 'boxShadowColor',
-						title: __( 'Color', 'ultimate-addons-for-gutenberg' ),
-					} }
-					boxShadowHOffset={ {
-						value: boxShadowHOffset,
-						label: 'boxShadowHOffset',
-						title: __(
-							'Horizontal',
-							'ultimate-addons-for-gutenberg'
-						),
-					} }
-					boxShadowVOffset={ {
-						value: boxShadowVOffset,
-						label: 'boxShadowVOffset',
-						title: __(
-							'Vertical',
-							'ultimate-addons-for-gutenberg'
-						),
-					} }
-					boxShadowBlur={ {
-						value: boxShadowBlur,
-						label: 'boxShadowBlur',
-						title: __( 'Blur', 'ultimate-addons-for-gutenberg' ),
-					} }
-					boxShadowSpread={ {
-						value: boxShadowSpread,
-						label: 'boxShadowSpread',
-						title: __( 'Spread', 'ultimate-addons-for-gutenberg' ),
-					} }
-					boxShadowPosition={ {
-						value: boxShadowPosition,
-						label: 'boxShadowPosition',
-						title: __(
-							'Position',
-							'ultimate-addons-for-gutenberg'
-						),
-					} }
+				<UAGTabsControl
+					tabs={ [
+						{
+							name: 'normal',
+							title: __(
+								'Normal',
+								'ultimate-addons-for-gutenberg'
+							),
+						},
+						{
+							name: 'hover',
+							title: __(
+								'Hover',
+								'ultimate-addons-for-gutenberg'
+							),
+						},
+					] }
+					normal={
+						<>
+							<AdvancedPopColorControl
+								label={ __(
+									'Color',
+									'ultimate-addons-for-gutenberg'
+								) }
+								colorValue={ color ? color : '' }
+								onColorChange={ ( value ) =>
+									setAttributes( { color: value } )
+								}
+							/>
+						</>
+					}
+					hover={
+						<>
+							<AdvancedPopColorControl
+								label={ __(
+									'Color',
+									'ultimate-addons-for-gutenberg'
+								) }
+								colorValue={ hColor ? hColor : '' }
+								onColorChange={ ( value ) =>
+									setAttributes( { hColor: value } )
+								}
+							/>
+						</>
+					}
 				/>
 			</UAGAdvancedPanelBody>
 		);
+	};
+
+	const backgroundSettings = () => {
+		return <UAGAdvancedPanelBody
+					title={__('background','ultimate-addons-for-gutenberg' )}
+					initialOpen={false}
+				>
+					<Background
+						setAttributes={ setAttributes }
+						backgroundGradient={ {
+							value: gradientValue,
+							label: 'gradientValue',
+						} }
+						backgroundImageColor={ {
+							value: backgroundImageColor,
+							label: 'backgroundImageColor',
+						} }
+						backgroundSize={ {
+							value: backgroundSize,
+							label: 'backgroundSize',
+						} }
+						backgroundRepeat={ {
+							value: backgroundRepeat,
+							label: 'backgroundRepeat',
+						} }
+						backgroundAttachment={ {
+							value: backgroundAttachment,
+							label: 'backgroundAttachment',
+						} }
+						backgroundPosition={ {
+							value: backgroundPosition,
+							label: 'backgroundPosition',
+						} }
+						backgroundImage={ {
+							value: backgroundImage,
+							label: 'backgroundImage',
+						} }
+						backgroundColor={ {
+							value: background,
+							label: 'background',
+						} }
+						backgroundType={ {
+							value: backgroundType,
+							label: 'backgroundType',
+						} }
+						backgroundVideoType={ {
+							value: false,
+						} }
+						{ ...props }
+					/>
+					{ backgroundType === 'color' && (
+						<AdvancedPopColorControl
+							label={ __(
+								'Hover Color',
+								'ultimate-addons-for-gutenberg'
+							) }
+							colorValue={ hBackground ? hBackground : '' }
+							onColorChange={ ( value ) =>
+								setAttributes( { hBackground: value } )
+							}
+						/>
+					)}
+				</UAGAdvancedPanelBody>
+	};
+
+	const boxShadowSettings = () => {
+		return <UAGAdvancedPanelBody
+					title={__('Box Shadow','ultimate-addons-for-gutenberg')}
+					initialOpen={false}
+				>
+					<BoxShadowControl
+						setAttributes={ setAttributes }
+						boxShadowColor={ {
+							value: boxShadowColor,
+							label: 'boxShadowColor',
+							title: __( 'Color', 'ultimate-addons-for-gutenberg' ),
+						} }
+						boxShadowHOffset={ {
+							value: boxShadowHOffset,
+							label: 'boxShadowHOffset',
+							title: __(
+								'Horizontal',
+								'ultimate-addons-for-gutenberg'
+							),
+						} }
+						boxShadowVOffset={ {
+							value: boxShadowVOffset,
+							label: 'boxShadowVOffset',
+							title: __(
+								'Vertical',
+								'ultimate-addons-for-gutenberg'
+							),
+						} }
+						boxShadowBlur={ {
+							value: boxShadowBlur,
+							label: 'boxShadowBlur',
+							title: __( 'Blur', 'ultimate-addons-for-gutenberg' ),
+						} }
+						boxShadowSpread={ {
+							value: boxShadowSpread,
+							label: 'boxShadowSpread',
+							title: __( 'Spread', 'ultimate-addons-for-gutenberg' ),
+						} }
+						boxShadowPosition={ {
+							value: boxShadowPosition,
+							label: 'boxShadowPosition',
+							title: __(
+								'Position',
+								'ultimate-addons-for-gutenberg'
+							),
+						} }
+					/>
+				</UAGAdvancedPanelBody>
 	};
 
 	const IconSettings = () => {
@@ -525,6 +534,16 @@ const Settings = ( props ) => {
 						value: sizeType,
 						label: 'sizeType',
 					} }
+				/>
+				<AdvancedPopColorControl
+					label={ __(
+						'Color',
+						'ultimate-addons-for-gutenberg'
+					) }
+					colorValue={ iconColor ? iconColor : '' }
+					onColorChange={ ( value ) =>
+						setAttributes( { iconColor: value } )
+					}
 				/>
 			</UAGAdvancedPanelBody>
 		);
@@ -648,6 +667,76 @@ const Settings = ( props ) => {
 						label: 'paddingLink',
 					} }
 				/>
+				<SpacingControl
+					{ ...props }
+					label={ __( 'Margin', 'ultimate-addons-for-gutenberg' ) }
+					valueTop={ {
+						value: topMarginDesktop,
+						label: 'topMarginDesktop',
+					} }
+					valueRight={ {
+						value: rightMarginDesktop,
+						label: 'rightMarginDesktop',
+					} }
+					valueBottom={ {
+						value: bottomMarginDesktop,
+						label: 'bottomMarginDesktop',
+					} }
+					valueLeft={ {
+						value: leftMarginDesktop,
+						label: 'leftMarginDesktop',
+					} }
+					valueTopTablet={ {
+						value: topMarginTablet,
+						label: 'topMarginTablet',
+					} }
+					valueRightTablet={ {
+						value: rightMarginTablet,
+						label: 'rightMarginTablet',
+					} }
+					valueBottomTablet={ {
+						value: bottomMarginTablet,
+						label: 'bottomMarginTablet',
+					} }
+					valueLeftTablet={ {
+						value: leftMarginTablet,
+						label: 'leftMarginTablet',
+					} }
+					valueTopMobile={ {
+						value: topMarginMobile,
+						label: 'topMarginMobile',
+					} }
+					valueRightMobile={ {
+						value: rightMarginMobile,
+						label: 'rightMarginMobile',
+					} }
+					valueBottomMobile={ {
+						value: bottomMarginMobile,
+						label: 'bottomMarginMobile',
+					} }
+					valueLeftMobile={ {
+						value: leftMarginMobile,
+						label: 'leftMarginMobile',
+					} }
+					unit={ {
+						value: marginType,
+						label: 'marginType',
+					} }
+					mUnit={ {
+						value: marginType,
+						label: 'marginType',
+					} }
+					tUnit={ {
+						value: marginType,
+						label: 'marginType',
+					} }
+					attributes={ attributes }
+					setAttributes={ setAttributes }
+					link={ {
+						value: marginLink,
+						label: 'marginLink',
+					} }
+				/>
 			</UAGAdvancedPanelBody>
 		);
 	};
@@ -708,15 +797,9 @@ const Settings = ( props ) => {
 						{ textSettings() }
 						{ '' !== icon && IconSettings() }
 						{ borderSettings() }
+						{ backgroundSettings() }
+						{ boxShadowSettings() }
 						{ spacingSettings() }
-						{ '' === icon && (
-							<p className="uagb-settings-notice">
-								{ __(
-									'There is no style available for the inheritFromTheme option.',
-									'ultimate-addons-for-gutenberg'
-								) }
-							</p>
-						) }
 					</InspectorTab>
 					<InspectorTab
 						{ ...UAGTabs.advance }

@@ -2,7 +2,7 @@ import lazyLoader from '@Controls/lazy-loader';
 import React, { Suspense } from 'react';
 import { __ } from '@wordpress/i18n';
 import { InspectorControls, BlockControls, BlockAlignmentToolbar } from '@wordpress/block-editor';
-import { Icon, SelectControl } from '@wordpress/components';
+import { Icon } from '@wordpress/components';
 import TypographyControl from '@Components/typography';
 import WebfontLoader from '@Components/typography/fontloader';
 import MultiButtonsControl from '@Components/multi-buttons-control';
@@ -41,6 +41,7 @@ const Settings = ( props ) => {
 		lineHeight,
 		lineHeightMobile,
 		lineHeightTablet,
+
 	} = attributes;
 
 	let loadBtnGoogleFonts;
@@ -132,25 +133,18 @@ const Settings = ( props ) => {
 					showIcons={ true }
 					responsive={true}
 				/>
-				<SelectControl
+				<MultiButtonsControl
 					setAttributes={ setAttributes }
 					label={ __( 'Stack Orientation', 'ultimate-addons-for-gutenberg' ) }
-					value={  stack }
-					onChange={ ( value ) =>
-						setAttributes( { stack: value } )
-					}
+					data={ {
+						value: stack,
+						label: 'stack',
+					} }
 					options={ [
 						{
 							value: 'none',
 							label: __(
 								'None',
-								'ultimate-addons-for-gutenberg'
-							),
-						},
-						{
-							value: 'all',
-							label: __(
-								'All',
 								'ultimate-addons-for-gutenberg'
 							),
 						},
@@ -231,35 +225,35 @@ const Settings = ( props ) => {
 					} }
 					fontSizeType={ {
 						value: fontSizeType,
-						label: 'FontSizeType',
+						label: 'fontSizeType',
 					} }
 					fontSize={ {
 						value: fontSize,
-						label: 'FontSize',
+						label: 'fontSize',
 					} }
 					fontSizeMobile={ {
 						value: fontSizeMobile,
-						label: 'FontSizeMobile',
+						label: 'fontSizeMobile',
 					} }
 					fontSizeTablet={ {
 						value: fontSizeTablet,
-						label: 'FontSizeTablet',
+						label: 'fontSizeTablet',
 					} }
 					lineHeightType={ {
 						value: lineHeightType,
-						label: 'LineHeightType',
+						label: 'lineHeightType',
 					} }
 					lineHeight={ {
 						value: lineHeight,
-						label: 'LineHeight',
+						label: 'lineHeight',
 					} }
 					lineHeightMobile={ {
 						value: lineHeightMobile,
-						label: 'LineHeightMobile',
+						label: 'lineHeightMobile',
 					} }
 					lineHeightTablet={ {
 						value: lineHeightTablet,
-						label: 'LineHeightTablet',
+						label: 'lineHeightTablet',
 					} }
 				/>
 			</UAGAdvancedPanelBody>

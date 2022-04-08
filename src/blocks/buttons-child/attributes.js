@@ -65,14 +65,12 @@ const attributes = {
 	},
 	vPadding: {
 		type: 'number',
-		default: 10,
 		UAGCopyPaste: {
 			styleType: 'btn-vertical-padding'
 		}
 	},
 	hPadding: {
 		type: 'number',
-		default: 14,
 		UAGCopyPaste: {
 			styleType: 'btn-horizontal-padding'
 		}
@@ -190,7 +188,7 @@ const attributes = {
 	},
 	borderStyle: {
 		type: 'string',
-		default: 'none',
+		default: '',
 		UAGCopyPaste: {
 			styleType: 'btn-border-style'
 		}
@@ -225,7 +223,7 @@ const attributes = {
 	},
 	hColor: {
 		type: 'string',
-		default: '',
+		default: '#fff',
 		UAGCopyPaste: {
 			styleType: 'btn-hover-color'
 		}
@@ -304,6 +302,110 @@ const attributes = {
 			styleType: 'btn-icon-space'
 		}
 	},
+	fontStyle:{
+		type:'string',
+	},
+	transform:{
+		type:'string',
+	},
+	decoration:{
+		type:'string',
+	},
+	gradientValue:{
+		type:'string',
+	},
+	backgroundImageColor:{
+		type:'string',
+	},
+	backgroundSize:{
+		type:'string',
+	},
+	backgroundRepeat:{
+		type:'string',
+	},
+	backgroundAttachment:{
+		type:'string',
+	},
+	backgroundPosition:{
+		type:'string',
+	},
+	backgroundImage:{
+		type:'string',
+	},
+	backgroundType:{
+		type:'string',
+	},
+	topMarginDesktop:{
+		type:'string',
+	},
+	rightMarginDesktop:{
+		type:'string',
+	},
+	bottomMarginDesktop:{
+		type:'string',
+	},
+	leftMarginDesktop:{
+		type:'string',
+	},
+	topMarginTablet:{
+		type:'string',
+	},
+	rightMarginTablet:{
+		type:'string',
+	},
+	bottomMarginTablet:{
+		type:'string',
+	},
+	leftMarginTablet:{
+		type:'string',
+	},
+	topMarginMobile:{
+		type:'string',
+	},
+	rightMarginMobile:{
+		type:'string',
+	},
+	bottomMarginMobile:{
+		type:'string',
+	},
+	leftMarginMobile:{
+		type:'string',
+	},
+	marginType:{
+		type:'string',
+	},
+	marginLink:{
+		type:'string',
+	},
+	boxShadowColor:{
+		type:'string',
+	},
+	boxShadowHOffset:{
+		type:'string',
+	},
+	boxShadowVOffset:{
+		type:'string',
+	},
+	boxShadowBlur:{
+		type:'string',
+	},
+	boxShadowSpread:{
+		type:'string',
+	},
+	boxShadowPosition:{
+		type:'string',
+	},
+	iconColor:{
+		type:'string',
+	},
+	buttonSize:{
+		type:'string',
+	},
+	removeText:{
+		type:'string',
+		default: true
+	},
+
 };
 
 export default attributes;

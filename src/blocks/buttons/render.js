@@ -43,7 +43,7 @@ const Render = ( props ) => {
 				className,
 				'uagb-buttons__outer-wrap',
 				`uagb-editor-preview-mode-${ deviceType.toLowerCase() }`,
-				`uagb-block-${ props.clientId.substr( 0, 8 ) }`
+				`uagb-block-${ props.clientId.substr( 0, 8 ) }`,
 			) }
 		>
 			<div
