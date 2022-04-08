@@ -94,12 +94,26 @@ function styling( props ) {
 		captionDecoration,
 		captionFontSizeType,
 		captionFontSize,
-		captionFontSizeMob,
 		captionFontSizeTab,
+		captionFontSizeMob,
 		captionLineHeightType,
 		captionLineHeight,
-		captionLineHeightMob,
 		captionLineHeightTab,
+		captionLineHeightMob,
+
+		loadMoreFontFamily,
+		loadMoreFontWeight,
+		loadMoreFontStyle,
+		loadMoreTransform,
+		loadMoreDecoration,
+		loadMoreFontSizeType,
+		loadMoreFontSize,
+		loadMoreFontSizeTab,
+		loadMoreFontSizeMob,
+		loadMoreLineHeightType,
+		loadMoreLineHeight,
+		loadMoreLineHeightTab,
+		loadMoreLineHeightMob,
 
 		captionBackgroundBlurOpacity,
 		captionBackgroundBlurOpacityHover,
@@ -111,6 +125,8 @@ function styling( props ) {
 		captionColorHover,
 		captionBackgroundColor,
 		captionBackgroundColorHover,
+		overlayColor,
+		overlayColorHover,
 
 		paginateArrowDistance,
 		paginateArrowDistanceUnit,
@@ -209,12 +225,13 @@ function styling( props ) {
 			'border-width': generateCSSUnit( paginateButtonBorderWidth, 'px' ),
 			'border-radius': generateCSSUnit( paginateButtonBorderRadius, 'px' ),
 			'border-color': paginateButtonBorderColor,
-			'font-family': captionFontFamily === 'Default' ? '' : captionFontFamily,
-			'font-weight': captionFontWeight,
-			'font-style': captionFontStyle,
-			'text-decoration': captionDecoration,
-			'text-transform': captionTransform,
-			'font-size': generateCSSUnit( captionFontSize, captionFontSizeType ),
+			'font-family': loadMoreFontFamily === 'Default' ? '' : loadMoreFontFamily,
+			'font-weight': loadMoreFontWeight,
+			'font-style': loadMoreFontStyle,
+			'text-decoration': loadMoreDecoration,
+			'text-transform': loadMoreTransform,
+			'font-size': generateCSSUnit( loadMoreFontSize, loadMoreFontSizeType ),
+			'line-height': generateCSSUnit( loadMoreLineHeight, loadMoreLineHeightType ),
 		},
 		'.uag-image-gallery__control-button:hover': {
 			'color': paginateButtonTextColorHover,
@@ -346,10 +363,10 @@ function styling( props ) {
 			),
 		},
 		'.uag-image-gallery-media__thumbnail-caption-wrapper--overlay': {
-			'background-color': captionBackgroundColor,
+			'background-color': imageDisplayCaption ? captionBackgroundColor : overlayColor,
 		},
 		'.uag-image-gallery-media-wrapper:hover .uag-image-gallery-media__thumbnail-caption-wrapper--overlay': {
-			'background-color': captionBackgroundColorHover,
+			'background-color': imageDisplayCaption ? captionBackgroundColorHover : overlayColorHover,
 		},		
 		'.uag-image-gallery-media__thumbnail-caption-wrapper--bar-inside': {
 			'-webkit-align-items': getMatrixAlignment( imageCaptionAlignment, 1, 'flex' ),
@@ -444,7 +461,8 @@ function styling( props ) {
 				paginateButtonPaddingBottomTab,
 				paginateButtonPaddingLeftTab
 			),
-			'font-size': generateCSSUnit( captionFontSizeTab, captionFontSizeType ),
+			'font-size': generateCSSUnit( loadMoreFontSizeTab, loadMoreFontSizeType ),
+			'line-height': generateCSSUnit( loadMoreLineHeightTab, loadMoreLineHeightType ),
 		},
 		'.uag-image-gallery__layout--grid': {
 			'grid-gap': generateCSSUnit(
@@ -526,7 +544,8 @@ function styling( props ) {
 				paginateButtonPaddingBottomMob,
 				paginateButtonPaddingLeftMob
 			),
-			'font-size': generateCSSUnit( captionFontSizeMob, captionFontSizeType ),
+			'font-size': generateCSSUnit( loadMoreFontSizeMob, loadMoreFontSizeType ),
+			'line-height': generateCSSUnit( loadMoreLineHeightMob, loadMoreLineHeightType ),
 		},
 		'.uag-image-gallery__layout--grid': {
 			'grid-gap': generateCSSUnit(

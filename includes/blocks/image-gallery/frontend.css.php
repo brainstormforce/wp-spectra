@@ -100,12 +100,13 @@ $selectors = array(
 		'border-width' => UAGB_Helper::get_css_value( $attr[ 'paginateButtonBorderWidth' ], 'px' ),
 		'border-radius' => UAGB_Helper::get_css_value( $attr[ 'paginateButtonBorderRadius' ], 'px' ),
 		'border-color' => $attr[ 'paginateButtonBorderColor' ],
-		'font-family' => $attr[ 'captionFontFamily' ] === 'Default' ? '' : $attr[ 'captionFontFamily' ],
-		'font-weight' => $attr[ 'captionFontWeight' ],
-		'font-style' => $attr[ 'captionFontStyle' ],
-		'text-decoration' => $attr[ 'captionDecoration' ],
-		'text-transform' => $attr[ 'captionTransform' ],
-		'font-size' => UAGB_Helper::get_css_value( $attr[ 'captionFontSize' ], $attr[ 'captionFontSizeType' ] ),
+		'font-family' => $attr[ 'loadMoreFontFamily' ] === 'Default' ? '' : $attr[ 'loadMoreFontFamily' ],
+		'font-weight' => $attr[ 'loadMoreFontWeight' ],
+		'font-style' => $attr[ 'loadMoreFontStyle' ],
+		'text-decoration' => $attr[ 'loadMoreDecoration' ],
+		'text-transform' => $attr[ 'loadMoreTransform' ],
+		'font-size' => UAGB_Helper::get_css_value( $attr[ 'loadMoreFontSize' ], $attr[ 'loadMoreFontSizeType' ] ),
+		'line-height' => UAGB_Helper::get_css_value( $attr[ 'loadMoreLineHeight' ], $attr[ 'loadMoreLineHeightType' ] ),
 	),
 	'.uag-image-gallery__control-button:hover' => array(
 		'color' => $attr[ 'paginateButtonTextColorHover' ],
@@ -213,10 +214,10 @@ $selectors = array(
 		),
 	),
 	'.uag-image-gallery-media__thumbnail-caption-wrapper--overlay' => array(
-		'background-color' => $attr[ 'captionBackgroundColor' ],
+		'background-color' => $attr[ 'imageDisplayCaption' ] ? $attr[ 'captionBackgroundColor' ] : $attr[ 'overlayColor' ],
 	),
 	'.uag-image-gallery-media-wrapper:hover .uag-image-gallery-media__thumbnail-caption-wrapper--overlay' => array(
-		'background-color' => $attr[ 'captionBackgroundColorHover' ],
+		'background-color' => $attr[ 'imageDisplayCaption' ] ? $attr[ 'captionBackgroundColorHover' ] : $attr[ 'overlayColorHover' ],
 	),		
 	'.uag-image-gallery-media__thumbnail-caption-wrapper--bar-inside' => array(
 		'-webkit-align-items' => UAGB_Block_Helper::get_matrix_alignment( $attr[ 'imageCaptionAlignment' ], 1, 'flex' ),
@@ -305,7 +306,8 @@ $t_selectors = array(
 			$attr[ 'paginateButtonPaddingBottomTab' ],
 			$attr[ 'paginateButtonPaddingLeftTab' ]
 		),
-		'font-size' => UAGB_Helper::get_css_value( $attr[ 'captionFontSizeTab' ], $attr[ 'captionFontSizeType' ] ),
+		'font-size' => UAGB_Helper::get_css_value( $attr[ 'loadMoreFontSizeTab' ], $attr[ 'loadMoreFontSizeType' ] ),
+		'line-height' => UAGB_Helper::get_css_value( $attr[ 'loadMoreLineHeightTab' ], $attr[ 'loadMoreLineHeightType' ] ),
 	),
 	'.uag-image-gallery__layout--grid' => array(
 		'grid-gap' => UAGB_Helper::get_css_value(
@@ -387,7 +389,8 @@ $m_selectors = array(
 			$attr[ 'paginateButtonPaddingBottomMob' ],
 			$attr[ 'paginateButtonPaddingLeftMob' ]
 		),
-		'font-size' => UAGB_Helper::get_css_value( $attr[ 'captionFontSizeMob' ], $attr[ 'captionFontSizeType' ] ),
+		'font-size' => UAGB_Helper::get_css_value( $attr[ 'loadMoreFontSizeMob' ], $attr[ 'loadMoreFontSizeType' ] ),
+		'line-height' => UAGB_Helper::get_css_value( $attr[ 'loadMoreLineHeightMob' ], $attr[ 'loadMoreLineHeightType' ] ),
 	),
 	'.uag-image-gallery__layout--grid' => array(
 		'grid-gap' => UAGB_Helper::get_css_value(

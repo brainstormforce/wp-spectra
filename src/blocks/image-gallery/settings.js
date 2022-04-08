@@ -154,6 +154,21 @@ const Settings = ( props ) => {
 		captionLineHeightMob,
 		captionLineHeightTab,
 
+		loadMoreLoadGoogleFonts,
+		loadMoreFontFamily,
+		loadMoreFontWeight,
+		loadMoreFontStyle,
+		loadMoreTransform,
+		loadMoreDecoration,
+		loadMoreFontSizeType,
+		loadMoreFontSize,
+		loadMoreFontSizeMob,
+		loadMoreFontSizeTab,
+		loadMoreLineHeightType,
+		loadMoreLineHeight,
+		loadMoreLineHeightMob,
+		loadMoreLineHeightTab,
+
 		captionBackgroundBlurOpacity,
 		captionBackgroundBlurOpacityHover,
 		captionBackgroundEffect,
@@ -180,11 +195,14 @@ const Settings = ( props ) => {
 		paginateButtonBorderColorHover,
 		paginateColor,
 		paginateColorHover,
+		overlayColor,
+		overlayColorHover,
 	} = attributes;
 
 	// Helpers
 	
 	let loadCaptionGoogleFonts;
+	let loadLoadMoreGoogleFonts;
 
 	if ( captionLoadGoogleFonts === true ) {
 		const captionConfig = {
@@ -198,6 +216,21 @@ const Settings = ( props ) => {
 
 		loadCaptionGoogleFonts = (
 			<WebfontLoader config={ captionConfig }></WebfontLoader>
+		);
+	}
+
+	if ( loadMoreLoadGoogleFonts === true ) {
+		const loadMoreConfig = {
+			google: {
+				families: [
+					loadMoreFontFamily +
+						( loadMoreFontWeight ? ':' + loadMoreFontWeight : '' ),
+				],
+			},
+		};
+
+		loadLoadMoreGoogleFonts = (
+			<WebfontLoader config={ loadMoreConfig }></WebfontLoader>
 		);
 	}
 
@@ -290,79 +323,23 @@ const Settings = ( props ) => {
 
 	const renderCaptionDisplay = ( isHover ) => (
 		<>
-			{ captionBackgroundEnableBlur && (
-				<Range
-					label={ __( `Blur Opacity`, 'ultimate-addons-for-gutenberg' ) }
-					setAttributes={ setAttributes }
-					value={ 
-						isHover
-						? captionBackgroundBlurOpacityHover
-						: captionBackgroundBlurOpacity
-					}
-					onChange={
-						isHover
-						? ( value ) => setAttributes( {
-							captionBackgroundBlurOpacityHover: value
-						} )
-						: ( value ) => setAttributes( {
-							captionBackgroundBlurOpacity: value
-						} )
-					}
-					min={ 0 }
-					max={ 100 }
-					displayUnit={ false }
-				/>
-			) }
-			{/* The entire section below can be created into a component if required in the future */}
-			<MultiButtonsControl
-				setAttributes={ setAttributes }
-				label={ __(
-					`Image Effect`,
-					'ultimate-addons-for-gutenberg'
-				) }
-				data={ {
-					value: isHover ? captionBackgroundEffectHover : captionBackgroundEffect,
-					label:  isHover ? 'captionBackgroundEffectHover' : 'captionBackgroundEffect',
-				} }
-				options={ [
-					{
-						value: 'none',
-						label: __( 'None', 'ultimate-addons-for-gutenberg' ),
-					},
-					{
-						value: 'grayscale',
-						label: __( 'Grayscale', 'ultimate-addons-for-gutenberg' ),
-					},
-					{
-						value: 'sepia',
-						label: __( 'Sepia', 'ultimate-addons-for-gutenberg' ),
-					},
-				] }
-			/>
-			{ renderBackgroundEffectSettings(
-				isHover ? captionBackgroundEffectHover : captionBackgroundEffect,
-				isHover
-			) }
-			{/* The entire section above can be created into a component  if required in the future */}
-			{ imageDisplayCaption && (
-				<AdvancedPopColorControl
-					label={ __( 'Caption Color', 'ultimate-addons-for-gutenberg' ) }
-					colorValue={
-						isHover
+			<AdvancedPopColorControl
+				label={ __( 'Caption Color', 'ultimate-addons-for-gutenberg' ) }
+				colorValue={
+					isHover
+					? captionColorHover
 						? captionColorHover
-							? captionColorHover
-							: 'rgba(0,0,0,0)'
-						: captionColor
-							? captionColor
-							: 'rgba(0,0,0,0)'
-					}
-					onColorChange={ ( value ) =>
-						isHover
-						? setAttributes( { captionColorHover: value } )
-						: setAttributes( { captionColor: value } )
-					}
-				/>
-			) }
+						: 'rgba(0,0,0,0)'
+					: captionColor
+						? captionColor
+						: 'rgba(0,0,0,0)'
+				}
+				onColorChange={ ( value ) =>
+					isHover
+					? setAttributes( { captionColorHover: value } )
+					: setAttributes( { captionColor: value } )
+				}
+			/>
 			<AdvancedPopColorControl
 				label={ __(
 					`${
@@ -392,34 +369,11 @@ const Settings = ( props ) => {
 
 	const renderOverlayDisplay = ( isHover ) => (
 		<>
-			{ captionBackgroundEnableBlur && (
-				<Range
-					label={ __( `Blur Opacity`, 'ultimate-addons-for-gutenberg' ) }
-					setAttributes={ setAttributes }
-					value={ 
-						isHover
-						? captionBackgroundBlurOpacityHover
-						: captionBackgroundBlurOpacity
-					}
-					onChange={
-						isHover
-						? ( value ) => setAttributes( {
-							captionBackgroundBlurOpacityHover: value
-						} )
-						: ( value ) => setAttributes( {
-							captionBackgroundBlurOpacity: value
-						} )
-					}
-					min={ 0 }
-					max={ 100 }
-					displayUnit={ false }
-				/>
-			) }
 			{/* The entire section below can be created into a component if required in the future */}
 			<MultiButtonsControl
 				setAttributes={ setAttributes }
 				label={ __(
-					`Image Effect`,
+					`Effect`,
 					'ultimate-addons-for-gutenberg'
 				) }
 				data={ {
@@ -453,18 +407,41 @@ const Settings = ( props ) => {
 					) }
 					colorValue={
 						isHover
-						? captionBackgroundColorHover
-							? captionBackgroundColorHover
+						? overlayColorHover
+							? overlayColorHover
 							: 'rgba(0,0,0,0)'
-						: captionBackgroundColor
-							? captionBackgroundColor
+						: overlayColor
+							? overlayColor
 							: 'rgba(0,0,0,0)'
 					}
 					onColorChange={ ( value ) =>
 						isHover
-						? setAttributes( { captionBackgroundColorHover: value } )
-						: setAttributes( { captionBackgroundColor: value } )
+						? setAttributes( { overlayColorHover: value } )
+						: setAttributes( { overlayColor: value } )
 					}
+				/>
+			) }
+			{ captionBackgroundEnableBlur && (
+				<Range
+					label={ __( `Blur Opacity`, 'ultimate-addons-for-gutenberg' ) }
+					setAttributes={ setAttributes }
+					value={ 
+						isHover
+						? captionBackgroundBlurOpacityHover
+						: captionBackgroundBlurOpacity
+					}
+					onChange={
+						isHover
+						? ( value ) => setAttributes( {
+							captionBackgroundBlurOpacityHover: value
+						} )
+						: ( value ) => setAttributes( {
+							captionBackgroundBlurOpacity: value
+						} )
+					}
+					min={ 0 }
+					max={ 100 }
+					displayUnit={ false }
 				/>
 			) }
 		</>
@@ -1272,6 +1249,27 @@ const Settings = ( props ) => {
 					setAttributes( { imageEnableZoom: ! imageEnableZoom } )
 					}
 			/>
+			<ToggleControl
+				label={ __(
+					`Enable Blur Overlay`,
+					'ultimate-addons-for-gutenberg'
+				) }
+				help={
+					captionBackgroundEnableBlur
+					? __(
+						'Blur Overlay may not be visible on some browsers',
+						'ultimate-addons-for-gutenberg'
+					)
+					: __(
+						'Blur Opacity can be edited for Normal and Hover.',
+						'ultimate-addons-for-gutenberg'
+					)
+				}
+				checked={ captionBackgroundEnableBlur }
+				onChange={ () => 
+					setAttributes( { captionBackgroundEnableBlur: ! captionBackgroundEnableBlur } )
+					}
+			/>
 			{ imageEnableZoom && (
 				<MultiButtonsControl
 					setAttributes={ setAttributes }
@@ -1295,27 +1293,6 @@ const Settings = ( props ) => {
 					] }
 				/>
 			) }
-			<ToggleControl
-				label={ __(
-					`Enable Blur Overlay`,
-					'ultimate-addons-for-gutenberg'
-				) }
-				help={
-					captionBackgroundEnableBlur
-					? __(
-						'Blur Overlay may not be visible on some browsers',
-						'ultimate-addons-for-gutenberg'
-					)
-					: __(
-						'Blur Opacity can be edited for Normal and Hover.',
-						'ultimate-addons-for-gutenberg'
-					)
-				}
-				checked={ captionBackgroundEnableBlur }
-				onChange={ () => 
-					setAttributes( { captionBackgroundEnableBlur: ! captionBackgroundEnableBlur } )
-					}
-			/>
 			{ captionBackgroundEnableBlur && (
 				<Range
 					label={ __( `Blur Amount`, 'ultimate-addons-for-gutenberg' ) }
@@ -1637,74 +1614,72 @@ const Settings = ( props ) => {
 						)
 						: (
 							<>
-								{ ! imageDisplayCaption && (
-									<Suspense fallback={ lazyLoader() }>
-										<TypographyControl
-											label={ __(
-												'Typography',
-												'ultimate-addons-for-gutenberg'
-											) }
-											attributes={ attributes }
-											setAttributes={ setAttributes }
-											loadGoogleFonts={ {
-												value: captionLoadGoogleFonts,
-												label: 'captionLoadGoogleFonts',
-											} }
-											fontFamily={ {
-												value: captionFontFamily,
-												label: 'captionFontFamily',
-											} }
-											fontWeight={ {
-												value: captionFontWeight,
-												label: 'captionFontWeight',
-											} }
-											fontStyle={ {
-												value: captionFontStyle,
-												label: 'captionFontStyle',
-											} }
-											transform={ {
-												value: captionTransform,
-												label: 'captionTransform',
-											} }
-											decoration={ {
-												value: captionDecoration,
-												label: 'captionDecoration',
-											} }
-											fontSizeType={ {
-												value: captionFontSizeType,
-												label: 'captionFontSizeType',
-											} }
-											fontSize={ {
-												value: captionFontSize,
-												label: 'captionFontSize',
-											} }
-											fontSizeMobile={ {
-												value: captionFontSizeMob,
-												label: 'captionFontSizeMob',
-											} }
-											fontSizeTablet={ {
-												value: captionFontSizeTab,
-												label: 'captionFontSizeTab',
-											} }
-											lineHeightType={ {
-												value: captionLineHeightType,
-												label: 'captionLineHeightType',
-											} }
-											lineHeight={ {
-												value: captionLineHeight,
-												label: 'captionLineHeight',
-											} }
-											lineHeightMobile={ {
-												value: captionLineHeightMob,
-												label: 'captionLineHeightMob',
-											} }
-											lineHeightTablet={ {
-												value: captionLineHeightTab,
-												label: 'captionLineHeightTab',
-											} }
-										/>
-									</Suspense>
-								) }
+								<Suspense fallback={ lazyLoader() }>
+									<TypographyControl
+										label={ __(
+											'Typography',
+											'ultimate-addons-for-gutenberg'
+										) }
+										attributes={ attributes }
+										setAttributes={ setAttributes }
+										loadGoogleFonts={ {
+											value: loadMoreLoadGoogleFonts,
+											label: 'loadMoreLoadGoogleFonts',
+										} }
+										fontFamily={ {
+											value: loadMoreFontFamily,
+											label: 'loadMoreFontFamily',
+										} }
+										fontWeight={ {
+											value: loadMoreFontWeight,
+											label: 'loadMoreFontWeight',
+										} }
+										fontStyle={ {
+											value: loadMoreFontStyle,
+											label: 'loadMoreFontStyle',
+										} }
+										transform={ {
+											value: loadMoreTransform,
+											label: 'loadMoreTransform',
+										} }
+										decoration={ {
+											value: loadMoreDecoration,
+											label: 'loadMoreDecoration',
+										} }
+										fontSizeType={ {
+											value: loadMoreFontSizeType,
+											label: 'loadMoreFontSizeType',
+										} }
+										fontSize={ {
+											value: loadMoreFontSize,
+											label: 'loadMoreFontSize',
+										} }
+										fontSizeMobile={ {
+											value: loadMoreFontSizeMob,
+											label: 'loadMoreFontSizeMob',
+										} }
+										fontSizeTablet={ {
+											value: loadMoreFontSizeTab,
+											label: 'loadMoreFontSizeTab',
+										} }
+										lineHeightType={ {
+											value: loadMoreLineHeightType,
+											label: 'loadMoreLineHeightType',
+										} }
+										lineHeight={ {
+											value: loadMoreLineHeight,
+											label: 'loadMoreLineHeight',
+										} }
+										lineHeightMobile={ {
+											value: loadMoreLineHeightMob,
+											label: 'loadMoreLineHeightMob',
+										} }
+										lineHeightTablet={ {
+											value: loadMoreLineHeightTab,
+											label: 'loadMoreLineHeightTab',
+										} }
+									/>
+								</Suspense>
 								<SelectControl
 									label={ __( 'Button Border Style', 'ultimate-addons-for-gutenberg' ) }
 									value={ paginateButtonBorderStyle }
@@ -1820,6 +1795,7 @@ const Settings = ( props ) => {
 				</InspectorTabs>
 			</InspectorControls>
 			{ loadCaptionGoogleFonts }
+			{ loadLoadMoreGoogleFonts }
 		</Suspense>
 	);
 };

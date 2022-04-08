@@ -481,6 +481,57 @@ const attributes = {
 		type: 'number',
 	},
 
+	// Pagination Button Typography Styling
+
+	loadMoreLoadGoogleFonts: {
+		type: 'boolean',
+		default: false,
+	},
+	loadMoreFontFamily: {
+		type: 'string',
+		default: 'Default',
+	},
+	loadMoreFontWeight: {
+		type: 'string',
+	},
+	loadMoreFontStyle: {
+		type: 'string',
+		default: 'normal',
+	},
+	loadMoreTransform: {
+		type: 'string',
+	},
+	loadMoreDecoration: {
+		type: 'string',
+		default: 'none',
+	},
+	loadMoreFontSizeType: {
+		type: 'string',
+		default: 'px',
+	},
+	loadMoreFontSize: {
+		type: 'number',
+	},
+	loadMoreFontSizeTab: {
+		type: 'number',
+	},
+	loadMoreFontSizeMob: {
+		type: 'number',
+	},
+	loadMoreLineHeightType: {
+		type: 'string',
+		default: 'em',
+	},
+	loadMoreLineHeight: {
+		type: 'number',
+	},
+	loadMoreLineHeightTab: {
+		type: 'number',
+	},
+	loadMoreLineHeightMob: {
+		type: 'number',
+	},
+
 	// Hoverable Styling
 
 	captionBackgroundEffect: {
@@ -514,6 +565,14 @@ const attributes = {
 	captionBackgroundColorHover: {
 		type: 'string',
 		default: 'rgba(0,0,0,0.75)',
+	},
+	overlayColor: {
+		type: 'string',
+		default: 'rgba(0,0,0,0)',
+	},
+	overlayColorHover: {
+		type: 'string',
+		default: 'rgba(0,0,0,0)',
 	},
 
 	// Pagination Styling

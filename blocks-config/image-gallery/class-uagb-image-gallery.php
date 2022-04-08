@@ -557,6 +557,57 @@ if ( ! class_exists( 'Spectra_Pro_Image_Gallery' ) ) {
 								'type' => 'number',
 							),
 						),
+						// Pagination Button Typography Styling
+						array(
+							'loadMoreLoadGoogleFonts' => array(
+								'type' => 'boolean',
+								'default' => false,
+							),
+							'loadMoreFontFamily' => array(
+								'type' => 'string',
+								'default' => 'Default',
+							),
+							'loadMoreFontWeight' => array(
+								'type' => 'string',
+							),
+							'loadMoreFontStyle' => array(
+								'type' => 'string',
+								'default' => 'normal',
+							),
+							'loadMoreTransform' => array(
+								'type' => 'string',
+							),
+							'loadMoreDecoration' => array(
+								'type' => 'string',
+								'default' => 'none',
+							),
+							'loadMoreFontSizeType' => array(
+								'type' => 'string',
+								'default' => 'px',
+							),
+							'loadMoreFontSize' => array(
+								'type' => 'number',
+							),
+							'loadMoreFontSizeTab' => array(
+								'type' => 'number',
+							),
+							'loadMoreFontSizeMob' => array(
+								'type' => 'number',
+							),
+							'loadMoreLineHeightType' => array(
+								'type' => 'string',
+								'default' => 'em',
+							),
+							'loadMoreLineHeight' => array(
+								'type' => 'number',
+							),
+							'loadMoreLineHeightTab' => array(
+								'type' => 'number',
+							),
+							'loadMoreLineHeightMob' => array(
+								'type' => 'number',
+							),
+						),
 						// Hoverable Styling
 						array(
 							'captionBackgroundEffect' => array(
@@ -590,6 +641,14 @@ if ( ! class_exists( 'Spectra_Pro_Image_Gallery' ) ) {
 							'captionBackgroundColorHover' => array(
 								'type' => 'string',
 								'default' => 'rgba(0,0,0,0.75)',
+							),
+							'overlayColor' => array(
+								'type' => 'string',
+								'default' => 'rgba(0,0,0,0)',
+							),
+							'overlayColorHover' => array(
+								'type' => 'string',
+								'default' => 'rgba(0,0,0,0)',
 							),
 						),
 						// Pagination Styling
