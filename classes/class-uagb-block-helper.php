@@ -332,19 +332,24 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				),
 			);
 
-			$selectors[' .uagb-post__text.uagb-post__title']['color']                  = $attr['titleColor'];
-			$selectors[' .uagb-post__text.uagb-post__title a']                         = array(
+			$selectors[' .uagb-post__text.uagb-post__title']['color']                         = $attr['titleColor'];
+			$selectors[' .uagb-post__text.uagb-post__title a']                                = array(
 				'color' => $attr['titleColor'],
 			);
-			$selectors[' .uagb-post__text.uagb-post-grid-byline']['color']             = $attr['metaColor'];
-			$selectors[' .uagb-post__text.uagb-post-grid-byline .uagb-post__author']   = array(
+			$selectors[' .uagb-post__text.uagb-post-grid-byline']['color']                    = $attr['metaColor'];
+			$selectors[' .uagb-post__text.uagb-post-grid-byline .uagb-post__author']          = array(
 				'color' => $attr['metaColor'],
 			);
-			$selectors[' .uagb-post__text.uagb-post-grid-byline .uagb-post__author a'] = array(
+			$selectors[' .uagb-post__inner-wrap .uagb-post__taxonomy']['color']                  = $attr['metaColor'];
+			$selectors[' .uagb-post__inner-wrap .uagb-post__taxonomy a']['color']                = $attr['metaColor'];
+			$selectors[' .uagb-post__inner-wrap .uagb-post__taxonomy.highlighted']['color']      = $attr['highlightedTextColor'];
+			$selectors[' .uagb-post__inner-wrap .uagb-post__taxonomy.highlighted a']['color']    = $attr['highlightedTextColor'];
+			$selectors[' .uagb-post__inner-wrap .uagb-post__taxonomy.highlighted']['background'] = $attr['highlightedTextBgColor'];
+			$selectors[' .uagb-post__text.uagb-post-grid-byline .uagb-post__author a']        = array(
 				'color' => $attr['metaColor'],
 			);
-			$selectors[' .uagb-post__text.uagb-post__excerpt']['color']                = $attr['excerptColor'];
-			$selectors[' .uagb-post__text.uagb-post__cta .uagb-text-link']             = array(
+			$selectors[' .uagb-post__text.uagb-post__excerpt']['color']                       = $attr['excerptColor'];
+			$selectors[' .uagb-post__text.uagb-post__cta .uagb-text-link']                    = array(
 				'color'         => $attr['ctaColor'],
 				'background'    => $attr['ctaBgColor'],
 				'border-color'  => $attr['borderColor'],
@@ -352,7 +357,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				'border-radius' => UAGB_Helper::get_css_value( $attr['borderRadius'], 'px' ),
 				'border-style'  => $attr['borderStyle'],
 			);
-			$selectors[' .uagb-post__text.uagb-post__cta a']                           = array(
+			$selectors[' .uagb-post__text.uagb-post__cta a']                                  = array(
 				'color'          => $attr['ctaColor'],
 				'padding-top'    => UAGB_Helper::get_css_value( $paddingBtnTop, $attr['paddingBtnUnit'] ),
 				'padding-bottom' => UAGB_Helper::get_css_value( $paddingBtnBottom, $attr['paddingBtnUnit'] ),
@@ -677,7 +682,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 		 */
 		public static function get_condition_block_css() {
 
-			return '@media (min-width: 1025px){body .uag-hide-desktop.uagb-google-map__wrap,body .uag-hide-desktop{display:none}}@media (min-width: 768px) and (max-width: 1024px){body .uag-hide-tab.uagb-google-map__wrap,body .uag-hide-tab{display:none}}@media (max-width: 767px){body .uag-hide-mob.uagb-google-map__wrap,body .uag-hide-mob{display:none}}';
+			return '@media (min-width: 1025px){body .uag-hide-desktop.uagb-google-map__wrap,body .uag-hide-desktop{display:none !important}}@media (min-width: 768px) and (max-width: 1024px){body .uag-hide-tab.uagb-google-map__wrap,body .uag-hide-tab{display:none !important}}@media (max-width: 767px){body .uag-hide-mob.uagb-google-map__wrap,body .uag-hide-mob{display:none !important}}';
 		}
 
 		/**

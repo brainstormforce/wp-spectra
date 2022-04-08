@@ -6,6 +6,10 @@
 
 	.uagb-post__inner-wrap {
 		background-clip: content-box !important;
+
+		.uagb-post__taxonomy {
+			flex-wrap: nowrap;
+		}
 	}
 
 	h2 a {
