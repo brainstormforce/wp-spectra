@@ -44,7 +44,7 @@ const FilterTabs = () => {
 
             const blockCategories = block.admin_categories;
 
-            blockCategories.map( ( category ) => {
+            blockCategories?.map( ( category ) => {
 
                 if ( ! categoriesBlocksTemp [ category ] ) {
                     categoriesBlocksTemp [ category ] = [];

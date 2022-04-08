@@ -58,7 +58,7 @@ const attributes = {
 	},
 	size: {
 		type: 'number',
-		default: 25,
+		default: 30,
 		UAGCopyPaste: {
 			styleType: 'icon-size'
 		}
@@ -84,7 +84,7 @@ const attributes = {
 	},
 	bgSize: {
 		type: 'number',
-		default: 0,
+		default: 10,
 		UAGCopyPaste: {
 			styleType: 'icon-bg-size'
 		}
