@@ -199,32 +199,12 @@ class Admin_Menu {
 				'reusable_url'             => esc_url( admin_url( 'edit.php?post_type=wp_block' ) ),
 				'global_data'              => Admin_Helper::get_options(),
 				'uag_content_width_set_by' => \UAGB_Admin_Helper::get_admin_settings_option( 'uag_content_width_set_by', __( 'Spectra', 'ultimate-addons-for-gutenberg' ) ),
-				'uag_pages_info'           => $this->get_all_pages_info(),
 			)
 		);
 
 		$this->settings_app_scripts( $localize );
 	}
-	/**
-	 * Gives the all Pages info on the site.
-	 */
-	public function get_all_pages_info() {
 
-		$pages      = get_pages();
-		$pages_info = array();
-		if ( is_array( $pages ) ) {
-			foreach ( $pages as $page ) {
-				$pages_info[] = array(
-					'id'    => $page->ID,
-					'title' => $page->post_title,
-				);
-			}
-
-			return $pages_info;
-		}
-
-		return $pages_info;
-	}
 
 	/**
 	 * Create an Array of Blocks info which we need to show in Admin dashboard.

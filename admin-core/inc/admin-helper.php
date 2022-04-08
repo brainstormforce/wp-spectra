@@ -57,7 +57,7 @@ class Admin_Helper {
 			'copy_paste'                         => \UAGB_Admin_Helper::get_admin_settings_option( 'uag_copy_paste', 'enabled' ),
 			'preload_local_fonts'                => \UAGB_Admin_Helper::get_admin_settings_option( 'uag_preload_local_fonts', 'disabled' ),
 			'enable_coming_soon_mode'            => \UAGB_Admin_Helper::get_admin_settings_option( 'uag_enable_coming_soon_mode', 'disabled' ),
-			'coming_soon_page'                   => \UAGB_Admin_Helper::get_admin_settings_option( 'uag_coming_soon_page', '' ),
+			'coming_soon_page'                   => self::get_coming_soon_page(),
 			'uag_previous_versions'              => $uag_versions,
 			'changelog_data'                     => $changelog_data,
 			'content_width'                      => $content_width,
@@ -65,6 +65,24 @@ class Admin_Helper {
 
 		return $options;
 	}
+
+	/**
+	 * Get Coming Soon Page
+	 *
+	 * @since 2.0.0
+	 * @return boolean|array
+	 */
+	public static function get_coming_soon_page() {
+		$page_id = \UAGB_Admin_Helper::get_admin_settings_option( 'uag_coming_soon_page', '' );
+		if ( $page_id ) {
+			return array(
+				'value' => $page_id,
+				'label' => \get_the_title( $page_id ),
+			);
+		}
+		return false;
+	}
+
 	/**
 	 * Get Changelogs from API.
 	 *

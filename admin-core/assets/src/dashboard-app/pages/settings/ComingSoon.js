@@ -1,4 +1,5 @@
 
+import { useState } from 'react';
 import { __ } from '@wordpress/i18n';
 import { useSelector, useDispatch } from 'react-redux';
 import Select from 'react-select';
@@ -10,25 +11,13 @@ function classNames( ...classes ) {
 }
 
 const ComingSoon = () => {
-
 	const dispatch = useDispatch();
-
+	const [pages, setPages] = useState( [] )
+	const [isFetchPages, setFetchPages] = useState( false )
     const enableComingSoonMode = useSelector( ( state ) => state.enableComingSoonMode );
     const comingSoonPage = useSelector( ( state ) => state.comingSoonPage );
     const enableComingSoonModeStatus = 'disabled' === enableComingSoonMode ? false : true;
-	const pagesInfo = uag_react.uag_pages_info;
 
-	const pages = [];
-	let defaultPage = {};
-	pagesInfo.map( ( page ) => {  // eslint-disable-line array-callback-return
-		const title = '' === page?.title ? `Page: ${page?.id}` : page?.title;
-		pages.push( { value: page?.id, label: title } );
-
-		if ( page.id === parseInt( comingSoonPage ) ) {
-			defaultPage = { value: parseInt( comingSoonPage ), label: title };
-		}
-
-	} );
 	const updateenableComingSoonMode = () => {
 
 		let assetStatus;
@@ -74,10 +63,33 @@ const ComingSoon = () => {
 		} );
 	};
 
+	const fetchPageHandler = ( keyword = '' ) => {
+		const formData = new window.FormData();
+		formData.append( 'action', 'uag_fetch_pages' );
+		formData.append( 'security', uag_react.fetch_pages_nonce );
+		formData.append( 'keyword', keyword );
+		setFetchPages( true )
+		apiFetch( {
+			url: uag_react.ajax_url,
+			method: 'POST',
+			body: formData,
+		} ).then( ( response ) => {
+			setFetchPages( false )
+			setPages( response.data )
+		} );
+	}
+
+	const onChangeHandler = ( value ) => {
+		const filterData = pages.filter( ( item ) => item.label.toLowerCase().includes( value ) )
+		if( filterData.length === 0 ){
+			fetchPageHandler( value )
+		}
+	}
+
 	const customStyles = {
 		control: ( provided ) => ( {
-		  ...provided,
-		  cursor: 'pointer',
+			...provided,
+			cursor: 'pointer',
 		} ),
 	};
 
@@ -93,13 +105,16 @@ const ComingSoon = () => {
                 <Select
                     isMulti={false}
                     placeholder={ __( 'Select the page you want' ) }
-                    defaultValue = { defaultPage }
+                    defaultValue = { comingSoonPage }
                     onChange={ ( value ) => updateSelectedPage( value ) }
+					onInputChange={onChangeHandler}
                     options={ pages }
                     maxMenuHeight={ 140 }
                     minMenuHeight = { 70 }
                     isSearchable={true}
                     className={`mt-4 cursor-pointer focus:ring-wpcolor`}
+					isLoading={isFetchPages}
+					onMenuOpen={fetchPageHandler}
 					theme={( theme ) => ( {
 						...theme,
 						colors: {
