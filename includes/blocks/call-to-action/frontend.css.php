@@ -57,7 +57,67 @@ $selectors = array(
 	'.wp-block-uagb-call-to-action:hover a.uagb-cta__button-link-wrapper > svg' => array(
 		'fill' => $attr['ctaLinkHoverColor'],
 	),
+	'.wp-block-uagb-call-to-action a.uagb-cta-second__button > svg' => array(
+		'font-size'   => UAGB_Helper::get_css_value( $attr['secondCtaSize'], $attr['secondCtaSizeType'] ),
+		'width'       => UAGB_Helper::get_css_value( $attr['secondCtaSize'], $attr['secondCtaSizeType'] ),
+		'height'      => UAGB_Helper::get_css_value( $attr['secondCtaSize'], $attr['secondCtaSizeType'] ),
+		'line-height' => UAGB_Helper::get_css_value( $attr['secondCtaSize'], $attr['secondCtaSizeType'] ),
+		'fill'        => $attr['secondCtaColor'],
+	),
+	'.wp-block-uagb-call-to-action:hover a.uagb-cta-second__button > svg' => array(
+		'fill' => $attr['secondCtaHoverColor'],
+	),
 );
+
+if ( 'text' === $attr['secondCtaType'] ) {
+	$selectors['.wp-block-uagb-call-to-action a.uagb-cta-second__button']        = array(
+		'color'       => $attr['secondCtaColor'],
+		'margin-left' => UAGB_Helper::get_css_value( $attr['gap'], 'px' ),
+	);
+	$selectors['.wp-block-uagb-call-to-action:hover a.uagb-cta-second__button '] = array(
+		'color' => $attr['secondCtaHoverColor'],
+	);
+}
+
+if ( 'button' === $attr['secondCtaType'] ) {
+	$selectors['.wp-block-uagb-call-to-action a.uagb-cta-second__button']       = array(
+		'color'            => $attr['secondCtaColor'],
+		'background-color' => $attr['secondCtaBackground'],
+		'border-style'     => $attr['secondCtaBorderStyle'],
+		'border-color'     => $attr['secondCtaBorderColor'],
+		'border-radius'    => UAGB_Helper::get_css_value( $attr['secondCtaBorderRadius'], 'px' ),
+		'border-width'     => UAGB_Helper::get_css_value( $attr['secondCtaBorderWidth'], 'px' ),
+		'padding-top'      => UAGB_Helper::get_css_value( $attr['secondCtaTopPadding'], $attr['secondCtaPaddingUnit'] ),
+		'padding-bottom'   => UAGB_Helper::get_css_value( $attr['secondCtaBottomPadding'], $attr['secondCtaPaddingUnit'] ),
+		'padding-left'     => UAGB_Helper::get_css_value( $attr['secondCtaLeftPadding'], $attr['secondCtaPaddingUnit'] ),
+		'padding-right'    => UAGB_Helper::get_css_value( $attr['secondCtaRightPadding'], $attr['secondCtaPaddingUnit'] ),
+		'margin-left'      => UAGB_Helper::get_css_value( $attr['gap'], 'px' ),
+	);
+	$selectors['.wp-block-uagb-call-to-action:hover a.uagb-cta-second__button'] = array(
+		'color'            => $attr['secondCtaHoverColor'],
+		'background-color' => $attr['secondCtaHoverBackground'],
+		'border-color'     => $attr['secondCtaBorderHColor'],
+	);
+}
+if ( 'before' === $attr['secondCtaIconPosition'] ) {
+	$selectors['.wp-block-uagb-call-to-action a.uagb-cta-second__button > svg'] = array(
+		'margin-right' => UAGB_Helper::get_css_value( $attr['secondCtaIconSpace'], 'px' ),
+		'font-size'    => UAGB_Helper::get_css_value( $attr['secondCtaSize'], $attr['secondCtaSizeType'] ),
+		'width'        => UAGB_Helper::get_css_value( $attr['secondCtaSize'], $attr['secondCtaSizeType'] ),
+		'height'       => UAGB_Helper::get_css_value( $attr['secondCtaSize'], $attr['secondCtaSizeType'] ),
+		'line-height'  => UAGB_Helper::get_css_value( $attr['secondCtaSize'], $attr['secondCtaSizeType'] ),
+		'fill'         => $attr['secondCtaColor'],
+	);
+} else {
+	$selectors['.wp-block-uagb-call-to-action a.uagb-cta-second__button > svg'] = array(
+		'margin-left' => UAGB_Helper::get_css_value( $attr['secondCtaIconSpace'], 'px' ),
+		'font-size'   => UAGB_Helper::get_css_value( $attr['secondCtaSize'], $attr['secondCtaSizeType'] ),
+		'width'       => UAGB_Helper::get_css_value( $attr['secondCtaSize'], $attr['secondCtaSizeType'] ),
+		'height'      => UAGB_Helper::get_css_value( $attr['secondCtaSize'], $attr['secondCtaSizeType'] ),
+		'line-height' => UAGB_Helper::get_css_value( $attr['secondCtaSize'], $attr['secondCtaSizeType'] ),
+		'fill'        => $attr['secondCtaColor'],
+	);
+}
 
 if ( 'text' === $attr['ctaType'] ) {
 	$selectors[' .uagb-cta__button-wrapper a.uagb-cta-typeof-text']                    = array(
@@ -79,7 +139,7 @@ if ( 'button' === $attr['ctaType'] ) {
 		'color'            => $attr['ctaBtnLinkColor'] ? $attr['ctaBtnLinkColor'] : '#333',
 		'background-color' => $attr['ctaBgColor'],
 		'border-style'     => $attr['ctaBorderStyle'] ? $attr['ctaBorderStyle'] : 'solid',
-		'border-color'     => $attr['ctaBorderColor'] ? $attr['ctaBorderStyle'] : '#000',
+		'border-color'     => $attr['ctaBorderColor'] ? $attr['ctaBorderColor'] : '#000',
 		'border-radius'    => UAGB_Helper::get_css_value( $attr['ctaBorderRadius'], 'px' ),
 		'border-width'     => $attr['ctaBorderWidth'] ? UAGB_Helper::get_css_value( $attr['ctaBorderWidth'], 'px' ) : '1px',
 		'padding-top'      => UAGB_Helper::get_css_value( $btnPaddingTop, $attr['ctaPaddingUnit'] ),
@@ -194,7 +254,7 @@ $t_selectors = array(
 		'padding-left'   => UAGB_Helper::get_css_value( $attr['ctaLeftPaddingTablet'], $attr['tabletCTAPaddingUnit'] ),
 		'padding-right'  => UAGB_Helper::get_css_value( $attr['ctaRightPaddingTablet'], $attr['tabletCTAPaddingUnit'] ),
 	),
-	'.wp-block-uagb-call-to-action a.uagb-cta__button-link-wrapper avg' => array(
+	'.wp-block-uagb-call-to-action a.uagb-cta__button-link-wrapper svg' => array(
 		'font-size'   => $t_svg_size,
 		'width'       => $t_svg_size,
 		'height'      => $t_svg_size,
@@ -205,6 +265,18 @@ $t_selectors = array(
 		'padding-bottom' => UAGB_Helper::get_css_value( $attr['ctaBottomPaddingTablet'], $attr['tabletCTAPaddingUnit'] ),
 		'padding-left'   => UAGB_Helper::get_css_value( $attr['ctaLeftPaddingTablet'], $attr['tabletCTAPaddingUnit'] ),
 		'padding-right'  => UAGB_Helper::get_css_value( $attr['ctaRightPaddingTablet'], $attr['tabletCTAPaddingUnit'] ),
+	),
+	'.wp-block-uagb-call-to-action a.uagb-cta-second__button svg' => array(
+		'font-size'   => UAGB_Helper::get_css_value( $attr['secondCtaSizeTablet'], $attr['secondCtaSizeType'] ),
+		'width'       => UAGB_Helper::get_css_value( $attr['secondCtaSizeTablet'], $attr['secondCtaSizeType'] ),
+		'height'      => UAGB_Helper::get_css_value( $attr['secondCtaSizeTablet'], $attr['secondCtaSizeType'] ),
+		'line-height' => UAGB_Helper::get_css_value( $attr['secondCtaSizeTablet'], $attr['secondCtaSizeType'] ),
+	),
+	'.wp-block-uagb-call-to-action a.uagb-cta-second__button' => array(
+		'padding-top'    => UAGB_Helper::get_css_value( $attr['secondCtaTopTabletPadding'], $attr['secondCtaTabletPaddingUnit'] ),
+		'padding-bottom' => UAGB_Helper::get_css_value( $attr['secondCtaBottomTabletPadding'], $attr['secondCtaTabletPaddingUnit'] ),
+		'padding-left'   => UAGB_Helper::get_css_value( $attr['secondCtaLeftTabletPadding'], $attr['secondCtaTabletPaddingUnit'] ),
+		'padding-right'  => UAGB_Helper::get_css_value( $attr['secondCtaRightTabletPadding'], $attr['secondCtaTabletPaddingUnit'] ),
 	),
 );
 
@@ -233,6 +305,18 @@ $m_selectors = array(
 		'padding-left'   => UAGB_Helper::get_css_value( $attr['ctaLeftPaddingMobile'], $attr['mobileCTAPaddingUnit'] ),
 		'padding-right'  => UAGB_Helper::get_css_value( $attr['ctaRightPaddingMobile'], $attr['mobileCTAPaddingUnit'] ),
 	),
+	'.wp-block-uagb-call-to-action a.uagb-cta-second__button svg' => array(
+		'font-size'   => UAGB_Helper::get_css_value( $attr['secondCtaSizeMobile'], $attr['secondCtaSizeType'] ),
+		'width'       => UAGB_Helper::get_css_value( $attr['secondCtaSizeMobile'], $attr['secondCtaSizeType'] ),
+		'height'      => UAGB_Helper::get_css_value( $attr['secondCtaSizeMobile'], $attr['secondCtaSizeType'] ),
+		'line-height' => UAGB_Helper::get_css_value( $attr['secondCtaSizeMobile'], $attr['secondCtaSizeType'] ),
+	),
+	'.wp-block-uagb-call-to-action a.uagb-cta-second__button' => array(
+		'padding-top'    => UAGB_Helper::get_css_value( $attr['secondCtaTopMobilePadding'], $attr['secondCtaMobilePaddingUnit'] ),
+		'padding-bottom' => UAGB_Helper::get_css_value( $attr['secondCtaBottomMobilePadding'], $attr['secondCtaMobilePaddingUnit'] ),
+		'padding-left'   => UAGB_Helper::get_css_value( $attr['secondCtaLeftMobilePadding'], $attr['secondCtaMobilePaddingUnit'] ),
+		'padding-right'  => UAGB_Helper::get_css_value( $attr['secondCtaRightMobilePadding'], $attr['secondCtaMobilePaddingUnit'] ),
+	),
 );
 
 $combined_selectors = array(
@@ -250,6 +334,7 @@ if ( 'button' === $attr['ctaType'] ) {
 }
 
 $combined_selectors = UAGB_Helper::get_typography_css( $attr, 'cta', '.wp-block-uagb-call-to-action a.uagb-cta__button-link-wrapper', $combined_selectors );
+$combined_selectors = UAGB_Helper::get_typography_css( $attr, 'secondCta', '.wp-block-uagb-call-to-action a.uagb-cta-second__button', $combined_selectors );
 $combined_selectors = UAGB_Helper::get_typography_css( $attr, 'title', ' .uagb-cta__title', $combined_selectors );
 $combined_selectors = UAGB_Helper::get_typography_css( $attr, 'desc', ' .uagb-cta__desc', $combined_selectors );
 

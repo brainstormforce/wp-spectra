@@ -22,12 +22,13 @@ const SecondCTAButton = ( props ) => {
 	}
 	return (
 		<>
+			{ ( attributes.secondCtaType === 'button' ||
+				attributes.secondCtaType === 'text' ) && (
 			<a
 				href={ link }
 				className={ classnames(
-					'uagb-cta__button-link-wrapper',
 					'uagb-cta-second__button',
-					'button' === attributes.ctaType ? 'wp-block-button__link' : ''
+					'button' === attributes.secondCtaType ? 'wp-block-button__link' : ''
 				) }
 				target={ target }
 				rel={ rel }
@@ -36,6 +37,7 @@ const SecondCTAButton = ( props ) => {
 				{ attributes.secondCtaLabel }
 				{ attributes.secondCtaIconPosition === 'after' && secondCtaIconOutput }
 			</a>
+			) }
 		</>
 	);
 };

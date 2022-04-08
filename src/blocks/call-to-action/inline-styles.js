@@ -78,7 +78,44 @@ function CtaStyle( props ) {
 		descFontStyle,
 		ctaFontStyle,
 		buttonAlign,
-		ctaIconPosition
+		ctaIconPosition,
+		secondCtaIconSpace,
+		secondCtaIconPosition,
+		secondCtaSize,
+		secondCtaSizeType,
+		secondCtaSizeMobile,
+		secondCtaSizeTablet,
+		secondCtaFontFamily,
+		secondCtaFontWeight,
+		secondCtaFontStyle,
+		secondCtaFontTransform,
+		secondCtaFontDecoration,
+		secondCtaTopPadding,
+		secondCtaRightPadding,
+		secondCtaBottomPadding,
+		secondCtaLeftPadding,
+		secondCtaTopMobilePadding,
+		secondCtaRightMobilePadding,
+		secondCtaBottomMobilePadding,
+		secondCtaLeftMobilePadding,
+		secondCtaTopTabletPadding,
+		secondCtaRightTabletPadding,
+		secondCtaBottomTabletPadding,
+		secondCtaLeftTabletPadding,
+		secondCtaPaddingUnit,
+		secondCtaMobilePaddingUnit,
+		secondCtaTabletPaddingUnit,
+		secondCtaBorderWidth,
+		secondCtaBorderRadius,
+		secondCtaBorderStyle,
+		secondCtaBorderColor,
+		secondCtaBorderHColor,
+		secondCtaColor,
+		secondCtaBackground,
+		secondCtaHoverColor,
+		secondCtaHoverBackground,
+		gap,
+		secondCtaType
 	} = props.attributes;
 
 	const selectors = {
@@ -183,11 +220,60 @@ function CtaStyle( props ) {
 		'padding-right': generateCSSUnit( ctaRightPadding, ctaPaddingUnit ),
 	};
 
+	if( 'text' === secondCtaType ){
+		selectors['.uagb-cta__outer-wrap a.uagb-cta-second__button'] = {
+			'font-size': generateCSSUnit( secondCtaSize, secondCtaSizeType ),
+			'font-family': secondCtaFontFamily,
+			'font-style' : secondCtaFontStyle,
+			'text-decoration': secondCtaFontDecoration,
+			'text-transform': secondCtaFontTransform,
+			'font-weight': secondCtaFontWeight,
+			'color': secondCtaColor,
+			'background-color': secondCtaBackground,
+			'margin-left': generateCSSUnit( gap, 'px' ),
+			'margin-right': '0',
+		};
+		selectors['.uagb-cta__outer-wrap:hover a.uagb-cta-second__button'] = {
+			'color': secondCtaHoverColor,
+			'background-color': secondCtaHoverBackground,
+		};
+	}
+
+	if( 'button' === secondCtaType ){
+		selectors['.uagb-cta__outer-wrap a.uagb-cta-second__button'] = {
+			'font-size': generateCSSUnit( secondCtaSize, secondCtaSizeType ),
+			'font-family': secondCtaFontFamily,
+			'font-style' : secondCtaFontStyle,
+			'text-decoration': secondCtaFontDecoration,
+			'text-transform': secondCtaFontTransform,
+			'font-weight': secondCtaFontWeight,
+			'color': secondCtaColor,
+			'background-color': secondCtaBackground,
+			'border-style': secondCtaBorderStyle,
+			'border-color': secondCtaBorderColor,
+			'border-radius': generateCSSUnit( secondCtaBorderRadius, 'px' ),
+			'border-width': generateCSSUnit( secondCtaBorderWidth, 'px' ),
+			'padding-top': generateCSSUnit( secondCtaTopPadding, secondCtaPaddingUnit ),
+			'padding-bottom': generateCSSUnit( secondCtaBottomPadding, secondCtaPaddingUnit ),
+			'padding-left': generateCSSUnit( secondCtaLeftPadding, secondCtaPaddingUnit ),
+			'padding-right': generateCSSUnit( secondCtaRightPadding, secondCtaPaddingUnit ),
+			'margin-left': generateCSSUnit( gap, 'px' ),
+			'margin-right': '0',
+		};
+		selectors['.uagb-cta__outer-wrap:hover a.uagb-cta-second__button'] = {
+			'color': secondCtaHoverColor,
+			'background-color': secondCtaHoverBackground,
+			'border-color': secondCtaBorderHColor,
+		};
+	}
+
 	selectors['.uagb-cta__outer-wrap:hover a.uagb-cta__button-link-wrapper'] = {
 		'color': ctaLinkHoverColor,
 		'background-color': ctaBgHoverColor,
 		'border-color': ctaBorderhoverColor,
 	};
+
+
 
 	selectors['.uagb-cta__outer-wrap a.uagb-cta__button-link-wrapper svg' ] = {
 		'font-size': generateCSSUnit( ctaFontSize, ctaFontSizeType ),
@@ -196,8 +282,19 @@ function CtaStyle( props ) {
 		'fill': ctaBtnLinkColor,
 	};
 
+	selectors['.uagb-cta__outer-wrap a.uagb-cta-second__button svg' ] = {
+		'font-size': generateCSSUnit( secondCtaSize, secondCtaSizeType ),
+		'width': generateCSSUnit( secondCtaSize, secondCtaSizeType ),
+		'line-height': generateCSSUnit( secondCtaSize, secondCtaSizeType ),
+		'fill': secondCtaColor,
+	};
+
 	selectors['.uagb-cta__outer-wrap:hover a.uagb-cta__button-link-wrapper svg'] = {
 		'fill': ctaLinkHoverColor,
+	};
+
+	selectors['.uagb-cta__outer-wrap:hover a.uagb-cta-second__button svg'] = {
+		'fill': secondCtaHoverColor,
 	};
 
 	if( ctaIconPosition === 'before' ){
@@ -207,6 +304,16 @@ function CtaStyle( props ) {
 	}else{
 		selectors[ '.uagb-cta__outer-wrap a.uagb-cta__button-link-wrapper > svg' ] = {
 			'margin-left': generateCSSUnit( ctaIconSpace, 'px' ),
+		};
+	}
+
+	if( secondCtaIconPosition === 'before' ){
+		selectors[ '.uagb-cta__outer-wrap a.uagb-cta-second__button > svg' ] = {
+			'margin-right': generateCSSUnit( secondCtaIconSpace, 'px' ),
+		};
+	}else{
+		selectors[ '.uagb-cta__outer-wrap a.uagb-cta-second__button > svg' ] = {
+			'margin-left': generateCSSUnit( secondCtaIconSpace, 'px' ),
 		};
 	}
 
@@ -257,6 +364,34 @@ function CtaStyle( props ) {
 			'line-height': generateCSSUnit(
 				ctaFontSizeTablet,
 				ctaFontSizeType
+			),
+		},
+		'.uagb-cta__outer-wrap a.uagb-cta-second__button': {
+			'font-size': generateCSSUnit( secondCtaSizeTablet, secondCtaSizeType ),
+			'padding-top': generateCSSUnit(
+				secondCtaTopTabletPadding,
+				secondCtaTabletPaddingUnit
+			),
+			'padding-bottom': generateCSSUnit(
+				secondCtaBottomTabletPadding,
+				secondCtaTabletPaddingUnit
+			),
+			'padding-left': generateCSSUnit(
+				secondCtaLeftTabletPadding,
+				secondCtaTabletPaddingUnit
+			),
+			'padding-right': generateCSSUnit(
+				secondCtaRightTabletPadding,
+				secondCtaTabletPaddingUnit
+			),
+		},
+		'.uagb-cta__outer-wrap a.uagb-cta-second__button svg': {
+			'font-size': generateCSSUnit( secondCtaSizeTablet, secondCtaSizeType ),
+			'height': generateCSSUnit( secondCtaSizeTablet, secondCtaSizeType ),
+			'width': generateCSSUnit( secondCtaSizeTablet, secondCtaSizeType ),
+			'line-height': generateCSSUnit(
+				secondCtaSizeTablet,
+				secondCtaSizeType
 			),
 		},
 	};
@@ -311,6 +446,34 @@ function CtaStyle( props ) {
 			'line-height': generateCSSUnit(
 				ctaFontSizeMobile,
 				ctaFontSizeType
+			),
+		},
+		'.uagb-cta__outer-wrap a.uagb-cta-second__button': {
+			'font-size': generateCSSUnit( secondCtaSizeMobile, secondCtaSizeType ),
+			'padding-top': generateCSSUnit(
+				secondCtaTopMobilePadding,
+				secondCtaMobilePaddingUnit
+			),
+			'padding-bottom': generateCSSUnit(
+				secondCtaBottomMobilePadding,
+				secondCtaMobilePaddingUnit
+			),
+			'padding-left': generateCSSUnit(
+				secondCtaLeftMobilePadding,
+				secondCtaMobilePaddingUnit
+			),
+			'padding-right': generateCSSUnit(
+				secondCtaRightMobilePadding,
+				secondCtaMobilePaddingUnit
+			),
+		},
+		'.uagb-cta__outer-wrap a.uagb-cta-second__button svg': {
+			'font-size': generateCSSUnit( secondCtaSizeMobile, secondCtaSizeType ),
+			'height': generateCSSUnit( secondCtaSizeMobile, secondCtaSizeType ),
+			'width': generateCSSUnit( secondCtaSizeMobile, secondCtaSizeType ),
+			'line-height': generateCSSUnit(
+				secondCtaSizeMobile,
+				secondCtaSizeType
 			),
 		},
 	};

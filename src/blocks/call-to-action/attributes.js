@@ -552,6 +552,10 @@ const attributes = {
 		type: 'boolean',
 		default: false,
 	},
+	secondCtaType: {
+		type: 'string',
+		default: 'button',
+	},
 	secondCtaLabel: {
 		type: 'html',
 		default: '#Click Here',
@@ -602,34 +606,6 @@ const attributes = {
 		type: 'string',
 		UAGCopyPaste: {
 			styleType: 'btn-font-decoration'
-		}
-	},
-	secondCtaLineHeight: {
-		type: 'number',
-		default: '',
-		UAGCopyPaste: {
-			styleType: 'btn-line-height'
-		}
-	},
-	secondCtaLineHeightType: {
-		type: 'string',
-		default: 'em',
-		UAGCopyPaste: {
-			styleType: 'btn-line-height-type'
-		}
-	},
-	secondCtaLineHeightMobile: {
-		type: 'number',
-		default: '',
-		UAGCopyPaste: {
-			styleType: 'btn-line-height-mobile'
-		}
-	},
-	secondCtaLineHeightTablet: {
-		type: 'number',
-		default: '',
-		UAGCopyPaste: {
-			styleType: 'btn-line-height-tablet'
 		}
 	},
 	secondCtaTopPadding: {
@@ -833,6 +809,10 @@ const attributes = {
 		UAGCopyPaste: {
 			styleType: 'btn-icon-space'
 		}
+	},
+	gap: {
+		type: 'number',
+		default: 10,
 	},
 	isPreview: {
 		type: 'boolean',
