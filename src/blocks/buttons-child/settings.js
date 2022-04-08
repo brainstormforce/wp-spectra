@@ -102,10 +102,10 @@ const Settings = ( props ) => {
 		backgroundPosition,
 		backgroundImage,
 		backgroundType,
-		topMarginDesktop,
-		rightMarginDesktop,
-		bottomMarginDesktop,
-		leftMarginDesktop,
+		topMargin,
+		rightMargin,
+		bottomMargin,
+		leftMargin,
 		topMarginTablet,
 		rightMarginTablet,
 		bottomMarginTablet,
@@ -671,20 +671,20 @@ const Settings = ( props ) => {
 					{ ...props }
 					label={ __( 'Margin', 'ultimate-addons-for-gutenberg' ) }
 					valueTop={ {
-						value: topMarginDesktop,
-						label: 'topMarginDesktop',
+						value: topMargin,
+						label: 'topMargin',
 					} }
 					valueRight={ {
-						value: rightMarginDesktop,
-						label: 'rightMarginDesktop',
+						value: rightMargin,
+						label: 'rightMargin',
 					} }
 					valueBottom={ {
-						value: bottomMarginDesktop,
-						label: 'bottomMarginDesktop',
+						value: bottomMargin,
+						label: 'bottomMargin',
 					} }
 					valueLeft={ {
-						value: leftMarginDesktop,
-						label: 'leftMarginDesktop',
+						value: leftMargin,
+						label: 'leftMargin',
 					} }
 					valueTopTablet={ {
 						value: topMarginTablet,

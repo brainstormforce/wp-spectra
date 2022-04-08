@@ -98,7 +98,10 @@ function styling( props ) {
 			'text-align': align,
 		};
 	} else {
-
+		selectors['.uagb-editor-preview-mode-desktop .block-editor-block-list__layout'] = {
+			'flex-direction': 'column',
+			'row-gap': generateCSSUnit( gap, 'px' ),
+		};
 		selectors[ '.uagb-editor-preview-mode-desktop .block-editor-block-list__layout' ] = {
 			'width': '100%'
 		}
@@ -111,7 +114,10 @@ function styling( props ) {
 			'text-align': alignTablet,
 		};
 	} else {
-
+		tabletSelectors['.uagb-editor-preview-mode-tablet .block-editor-block-list__layout'] = {
+			'flex-direction': 'column',
+			'row-gap': generateCSSUnit( gap, 'px' ),
+		};
 		tabletSelectors[ '.uagb-editor-preview-mode-tablet .block-editor-block-list__layout' ] = {
 			'width': '100%'
 		}
@@ -124,6 +130,10 @@ function styling( props ) {
 			'text-align': alignMobile,
 		};
 	} else {
+		mobileSelectors['.uagb-editor-preview-mode-mobile .block-editor-block-list__layout'] = {
+			'flex-direction': 'column',
+			'row-gap': generateCSSUnit( gap, 'px' ),
+		};
 		mobileSelectors[ '.uagb-editor-preview-mode-mobile .block-editor-block-list__layout' ] = {
 			'width': '100%'
 		}

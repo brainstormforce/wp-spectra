@@ -62,10 +62,13 @@ if ( 'desktop' === $attr['stack'] ) {
 	);
 }
 $alignment = ( 'left' === $attr['align'] ) ? 'flex-start' : ( ( 'right' === $attr['align'] ) ? 'flex-end' : 'center' );
+$alignmentTablet = ( 'left' === $attr['alignTablet'] ) ? 'flex-start' : ( ( 'right' === $attr['alignTablet'] ) ? 'flex-end' : 'center' );
+$alignmentMobile = ( 'left' === $attr['alignMobile'] ) ? 'flex-start' : ( ( 'right' === $attr['alignMobile'] ) ? 'flex-end' : 'center' );
 
 if ( 'full' !== $attr['align'] ) {
 	$selectors['.uagb-buttons__outer-wrap .uagb-buttons__wrap '] = array(
 		'justify-content' => $attr['align'],
+		'align-items' => $alignment
 	);
 } else {
 	$selectors['.uagb-buttons__outer-wrap .uagb-buttons__wrap']                   = array(
@@ -79,6 +82,7 @@ if ( 'full' !== $attr['align'] ) {
 if ( 'full' !== $attr['alignTablet'] ) {
 	$t_selectors['.uagb-buttons__outer-wrap.wp-block-uagb-buttons '] = array(
 		'justify-content' => $attr['alignTablet'],
+		'align-items' => $alignmentTablet
 	);
 } else {
 	$t_selectors['.uagb-buttons__outer-wrap .uagb-buttons__wrap']                   = array(
@@ -92,6 +96,7 @@ if ( 'full' !== $attr['alignTablet'] ) {
 if ( 'full' !== $attr['alignMobile'] ) {
 	$m_selectors['.uagb-buttons__outer-wrap.wp-block-uagb-buttons '] = array(
 		'justify-content' => $attr['alignMobile'],
+		'align-items' => $alignmentMobile
 	);
 } else {
 	$m_selectors['.uagb-buttons__outer-wrap .uagb-buttons__wrap']                   = array(

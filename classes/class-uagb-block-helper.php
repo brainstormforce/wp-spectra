@@ -28,6 +28,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 		public static function get_buttons_child_selectors( $attr, $id, $child_migrate ) {
 
 			$wrapper     = ( ! $child_migrate ) ? ' .uagb-buttons-repeater-' . $id : ' .uagb-buttons-repeater';
+
 			$m_selectors = array();
 			$t_selectors = array();
 			$selectors   = array();
@@ -45,19 +46,41 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 			if ( 'outset' === $attr['boxShadowPosition'] ) {
 				$box_shadow_position_css = '';
 			}
-			$bg_obj       = array(
-				'backgroundType'       => $attr['backgroundType'],
-				'backgroundImage'      => $attr['backgroundImage'],
-				'backgroundColor'      => $attr['backgroundColor'],
-				'gradientValue'        => $attr['gradientValue'],
-				'backgroundRepeat'     => $attr['backgroundRepeat'],
-				'backgroundPosition'   => $attr['backgroundPosition'],
-				'backgroundSize'       => $attr['backgroundSize'],
-				'backgroundAttachment' => $attr['backgroundAttachment'],
-			);
-			// $btn_bg_color = $this->uag_get_background_obj( $bg_obj );
 
-			// $selectors[ $wrapper ] = $btn_bg_color;
+			$bg_type      = ( isset( $attr['backgroundType'] ) ) ? $attr['backgroundType'] : 'none';
+
+			if ( 'image' === $bg_type ) {
+				if ( 'color' === $overlay_type ) {
+					$selectors[$wrapper] = array(
+						'background-color' => $attr['backgroundImageColor'],
+						'opacity'          => ( isset( $attr['backgroundOpacity'] ) && '' !== $attr['backgroundOpacity'] && 101 !== $attr['backgroundOpacity'] ) ? $attr['backgroundOpacity'] / 100 : '',
+					);
+				} else {
+					$selectors[$wrapper]['background-color'] = 'transparent';
+					if ( 'linear' === $attr['gradientOverlayType'] ) {
+
+						$selectors[$wrapper]['background-image'] = 'linear-gradient(' . $attr['gradientOverlayAngle'] . 'deg, ' . $attr['gradientOverlayColor1'] . ' ' . $attr['gradientOverlayLocation1'] . '%, ' . $attr['gradientOverlayColor2'] . ' ' . $attr['gradientOverlayLocation2'] . '%)';
+					} else {
+
+						$selectors[$wrapper]['background-image'] = 'radial-gradient( at center center, ' . $attr['gradientOverlayColor1'] . ' ' . $attr['gradientOverlayLocation1'] . '%, ' . $attr['gradientOverlayColor2'] . ' ' . $attr['gradientOverlayLocation2'] . '%)';
+					}
+				}
+			} elseif ( 'color' === $bg_type ) {
+				$selectors[$wrapper] = array(
+					'background-color' => $attr['backgroundColor'],
+				);
+			} elseif ( 'gradient' === $bg_type ) {
+				$selectors[' .uagb-button__wrapper']['background-color'] = 'transparent';
+				if ( $attr['gradientValue'] ) {
+					$selectors[$wrapper]['background-image'] = $attr['gradientValue'];
+				} else {
+					if ( 'linear' === $attr['gradientType'] ) {
+						$selectors[$wrapper]['background-image'] = 'linear-gradient(' . $attr['gradientAngle'] . 'deg, ' . $attr['gradientColor1'] . ' ' . $attr['gradientLocation1'] . '%, ' . $attr['gradientColor2'] . ' ' . $attr['gradientLocation2'] . '%)';
+					} else {
+						$selectors[$wrapper]['background-image'] = 'radial-gradient( at center center, ' . $attr['gradientColor1'] . ' ' . $attr['gradientLocation1'] . '%, ' . $attr['gradientColor2'] . ' ' . $attr['gradientLocation2'] . '%)';
+					}
+				}
+			}
 
 			$selectors[ $wrapper ] = array(
 				'font-family'     => $attr['fontFamily'],

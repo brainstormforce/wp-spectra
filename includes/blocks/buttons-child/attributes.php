@@ -85,4 +85,5 @@ return array(
 	'iconColor'            => '',
 	'buttonSize'           => '',
 	'removeText'           => true,
+
 );
