@@ -1,49 +1,38 @@
 /**
- * BLOCK: Instagram Feed
+ * BLOCK: Image Gallery
  */
 
 import styling from './styling';
 import React, { useEffect, Suspense, lazy } from 'react';
 import lazyLoader from '@Controls/lazy-loader';
+import addBlockEditorDynamicStyles from '@Controls/addBlockEditorDynamicStyles';
+import { useDeviceType } from '@Controls/getPreviewType';
 const Settings = lazy( () =>
 	import(
-		/* webpackChunkName: "chunks/instagram-feed/settings" */ './settings'
+		/* webpackChunkName: "chunks/image-gallery/settings" */ './settings'
 	)
 );
 const Render = lazy( () =>
-	import( /* webpackChunkName: "chunks/instagram-feed/render" */ './render' )
+	import( /* webpackChunkName: "chunks/image-gallery/render" */ './render' )
 );
-import { withSelect } from '@wordpress/data';
 
-import { compose } from '@wordpress/compose';
+const UAGBImageGallery = ( props ) => {
 
-const UAGBImageGalleryEdit = ( props ) => {
-
+	const deviceType = useDeviceType();
 	useEffect( () => {
+		const { setAttributes } = props;
 		// Assigning block_id in the attribute.
-		props.setAttributes( { block_id: props.clientId.substr( 0, 8 ) } );
-
-		props.setAttributes( { classMigrate: true } );
-
-		// Pushing Style tag for this block css.
-		const $style = document.createElement( 'style' );
-		$style.setAttribute(
-			'id',
-			'uagb-style-image-gallery-' + props.clientId.substr( 0, 8 )
-		);
-		document.head.appendChild( $style );
+		setAttributes( { block_id: props.clientId.substr( 0, 8 ) } );
+		setAttributes( { classMigrate: true } );
 	}, [] );
 
 	useEffect( () => {
 		// Replacement for componentDidUpdate.
-		const element = document.getElementById(
-			'uagb-style-image-gallery-' + props.clientId.substr( 0, 8 )
-		);
+		const blockStyling = styling( props );
+        addBlockEditorDynamicStyles( 'uagb-image-gallery-style-' + props.clientId.substr( 0, 8 ), blockStyling );
+	}, [ props, deviceType ] );
 
-		if ( null !== element && undefined !== element ) {
-			element.innerHTML = styling( props );
-		}
-	}, [ props ] );
+	//'uagb-style-image-gallery-'
 
 	return (
 		<Suspense fallback={ lazyLoader() }>
@@ -53,17 +42,4 @@ const UAGBImageGalleryEdit = ( props ) => {
 	);
 };
 
-const applyWithSelect = withSelect( ( select ) => {
-	const { __experimentalGetPreviewDeviceType = null } = select(
-		'core/edit-post'
-	);
-	const deviceType = __experimentalGetPreviewDeviceType
-		? __experimentalGetPreviewDeviceType()
-		: null;
-
-	return {
-		deviceType,
-	};
-} );
-
-export default compose( applyWithSelect )( UAGBImageGalleryEdit );
+export default UAGBImageGallery;

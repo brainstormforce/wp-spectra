@@ -769,20 +769,20 @@ function styling( props ) {
 			break;
 	}
 
-	const id = `.uagb-block-${ props.clientId.substr( 0, 8 ) } `; // That last space is needed.
+	const base_selector = `.editor-styles-wrapper .uagb-block-${ props.clientId.substr( 0, 8 ) } `; // That last space is needed.
 
-	let stylingCss = generateCSS( selectors, id );
+	let stylingCss = generateCSS( selectors, base_selector );
 
 	stylingCss += generateCSS(
 		tabletSelectors,
-		`${ id }.uagb-editor-preview-mode-tablet`,
+		`${ base_selector }.uagb-editor-preview-mode-tablet`,
 		true,
 		'tablet'
 	);
 
 	stylingCss += generateCSS(
 		mobileSelectors,
-		`${ id }.uagb-editor-preview-mode-mobile`,
+		`${ base_selector }.uagb-editor-preview-mode-mobile`,
 		true,
 		'mobile'
 	);

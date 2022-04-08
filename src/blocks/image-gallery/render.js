@@ -3,6 +3,7 @@ import React, { useLayoutEffect, useEffect } from 'react';
 import { __ } from '@wordpress/i18n';
 import InitialSelector from "./components/InitialSelector";
 import ImageGallery from "./components/ImageGallery";
+import { useDeviceType } from '@Controls/getPreviewType';
 import styles from './editor.lazy.scss';
 
 const Render = ( props ) => {
@@ -19,17 +20,12 @@ const Render = ( props ) => {
 		attributes,
 		setAttributes,
 		className,
-		deviceType,
 	} = props;
 
-	const { block_id, readyToRender } = attributes;	
-
-	// useEffect( () => {
-	// 	if ( igUserName !== 'Not Defined' ){
-	// 		setAttributes( { readyToRender: true } );
-	// 	}
-	// } );
-
+	const { block_id, readyToRender } = attributes;
+	
+	const deviceType = useDeviceType();
+	
 	return (
 		<div
 			className={ classnames(

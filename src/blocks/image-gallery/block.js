@@ -1,5 +1,5 @@
 /**
- * BLOCK: Instagram Feed
+ * BLOCK: Image Gallery
  */
 
 import UAGB_Block_Icons from '@Controls/block-icons';
@@ -23,7 +23,7 @@ registerBlockType('uagb/image-gallery', {
 		__('grid', 'ultimate-addons-for-gutenberg'),
 		__('masonry', 'ultimate-addons-for-gutenberg'),
 		__('carousel', 'ultimate-addons-for-gutenberg'),
-		__('ig', 'ultimate-addons-for-gutenberg'),
+		__('tile', 'ultimate-addons-for-gutenberg'),
 		__('uag', 'ultimate-addons-for-gutenberg'),
 		__('ultimate', 'ultimate-addons-for-gutenberg'),
 		__('addon', 'ultimate-addons-for-gutenberg'),
