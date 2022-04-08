@@ -488,7 +488,7 @@ class UAGB_Post_Assets {
 			'uagb-container-js',
 			'uagb_container_data',
 			array(
-				'tablet_breakpoint'              => UAGB_TABLET_BREAKPOINT,
+				'tablet_breakpoint' => UAGB_TABLET_BREAKPOINT,
 				'mobile_breakpoint' => UAGB_MOBILE_BREAKPOINT,
 			)
 		);
