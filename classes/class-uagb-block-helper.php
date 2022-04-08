@@ -27,7 +27,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 		 */
 		public static function get_buttons_child_selectors( $attr, $id, $child_migrate ) {
 
-			$wrapper     = ( ! $child_migrate ) ? ' .uagb-buttons-repeater-' . $id : ' .uagb-buttons-repeater';
+			$wrapper = ( ! $child_migrate ) ? ' .uagb-buttons-repeater-' . $id : ' .uagb-buttons-repeater';
 
 			$m_selectors = array();
 			$t_selectors = array();
@@ -47,30 +47,29 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				$box_shadow_position_css = '';
 			}
 
+			if ( 'transparent' === $attr['backgroundType'] ) {
 
-if ( 'transparent' === $attr['backgroundType'] ) {
+				$selectors[' .uagb-buttons-repeater.wp-block-button__link']['background'] = 'transparent';
 
-	$selectors[ ' .uagb-buttons-repeater.wp-block-button__link' ]['background'] = 'transparent';
+			} elseif ( 'color' === $attr['backgroundType'] ) {
 
-} elseif ( 'color' === $attr['backgroundType'] ) {
+				$selectors[' .uagb-buttons-repeater.wp-block-button__link']['background'] = UAGB_Helper::hex2rgba( $attr['background'], $attr['backgroundOpacity'] );
 
-	$selectors[ ' .uagb-buttons-repeater.wp-block-button__link' ]['background'] = UAGB_Helper::hex2rgba( $attr['background'], $attr['backgroundOpacity'] );
+				// Hover Background.
+				$selectors[ $wrapper . ':hover' ]['background'] = UAGB_Helper::hex2rgba( $attr['hBackground'], $attr['backgroundHoverOpacity'] );
 
-	// Hover Background.
-	$selectors[$wrapper.':hover']['background'] = UAGB_Helper::hex2rgba( $attr['hBackground'], $attr['backgroundHoverOpacity'] );
+			} elseif ( 'gradient' === $attr['backgroundType'] ) {
 
-} elseif ( 'gradient' === $attr['backgroundType'] ) {
+				$selectors[' .uagb-buttons-repeater.wp-block-button__link']['background'] = 'transparent';
 
-	$selectors[ ' .uagb-buttons-repeater.wp-block-button__link' ]['background'] = 'transparent';
+				if ( 'linear' === $attr['gradientType'] ) {
 
-	if ( 'linear' === $attr['gradientType'] ) {
+					$selectors[' .uagb-buttons-repeater.wp-block-button__link']['background-image'] = 'linear-gradient(' . $attr['gradientAngle'] . 'deg, ' . UAGB_Helper::hex2rgba( $attr['gradientColor1'], $attr['backgroundOpacity'] ) . ' ' . $attr['gradientLocation1'] . '%, ' . UAGB_Helper::hex2rgba( $attr['gradientColor2'], $attr['backgroundOpacity'] ) . ' ' . $attr['gradientLocation2'] . '%)';
+				} else {
 
-		$selectors[ ' .uagb-buttons-repeater.wp-block-button__link' ]['background-image'] = 'linear-gradient(' . $attr['gradientAngle'] . 'deg, ' . UAGB_Helper::hex2rgba( $attr['gradientColor1'], $attr['backgroundOpacity'] ) . ' ' . $attr['gradientLocation1'] . '%, ' . UAGB_Helper::hex2rgba( $attr['gradientColor2'], $attr['backgroundOpacity'] ) . ' ' . $attr['gradientLocation2'] . '%)';
-	} else {
-
-		$selectors[ ' .uagb-buttons-repeater.wp-block-button__link' ]['background-image'] = 'radial-gradient( at center center, ' . UAGB_Helper::hex2rgba( $attr['gradientColor1'], $attr['backgroundOpacity'] ) . ' ' . $attr['gradientLocation1'] . '%, ' . UAGB_Helper::hex2rgba( $attr['gradientColor2'], $attr['backgroundOpacity'] ) . ' ' . $attr['gradientLocation2'] . '%)';
-	}
-}
+					$selectors[' .uagb-buttons-repeater.wp-block-button__link']['background-image'] = 'radial-gradient( at center center, ' . UAGB_Helper::hex2rgba( $attr['gradientColor1'], $attr['backgroundOpacity'] ) . ' ' . $attr['gradientLocation1'] . '%, ' . UAGB_Helper::hex2rgba( $attr['gradientColor2'], $attr['backgroundOpacity'] ) . ' ' . $attr['gradientLocation2'] . '%)';
+				}
+			}
 
 			$selectors[ $wrapper ] = array(
 				'font-family'     => $attr['fontFamily'],
@@ -89,7 +88,7 @@ if ( 'transparent' === $attr['backgroundType'] ) {
 				'padding-left'    => UAGB_Helper::get_css_value( $left_padding, $attr['paddingUnit'] ),
 				'padding-right'   => UAGB_Helper::get_css_value( $right_padding, $attr['paddingUnit'] ),
 				'color'           => $attr['color'],
-				'background'   => $attr['background'],
+				'background'      => $attr['background'],
 				'margin-top'      => UAGB_Helper::get_css_value( $attr['topMargin'], $attr['marginType'] ),
 				'margin-bottom'   => UAGB_Helper::get_css_value( $attr['bottomMargin'], $attr['marginType'] ),
 				'margin-left'     => UAGB_Helper::get_css_value( $attr['leftMargin'], $attr['marginType'] ),
@@ -108,13 +107,13 @@ if ( 'transparent' === $attr['backgroundType'] ) {
 					$box_shadow_position_css,
 			);
 
-			$selectors[ $wrapper . ':hover' ]                    = array(
+			$selectors[ $wrapper . ':hover' ]       = array(
 				'background'   => $attr['hBackground'],
 				'border-width' => UAGB_Helper::get_css_value( $attr['borderWidth'], 'px' ),
 				'border-color' => $attr['borderHColor'],
 				'color'        => $attr['hColor'],
 			);
-			$selectors[ ' .uagb-button__icon > svg' ] = array(
+			$selectors[' .uagb-button__icon > svg'] = array(
 				'color' => $attr['iconColor'],
 			);
 
@@ -323,12 +322,12 @@ if ( 'transparent' === $attr['backgroundType'] ) {
 				),
 			);
 
-			$selectors[' .uagb-post__text.uagb-post__title']['color']                         = $attr['titleColor'];
-			$selectors[' .uagb-post__text.uagb-post__title a']                                = array(
+			$selectors[' .uagb-post__text.uagb-post__title']['color']                            = $attr['titleColor'];
+			$selectors[' .uagb-post__text.uagb-post__title a']                                   = array(
 				'color' => $attr['titleColor'],
 			);
-			$selectors[' .uagb-post__text.uagb-post-grid-byline']['color']                    = $attr['metaColor'];
-			$selectors[' .uagb-post__text.uagb-post-grid-byline .uagb-post__author']          = array(
+			$selectors[' .uagb-post__text.uagb-post-grid-byline']['color']                       = $attr['metaColor'];
+			$selectors[' .uagb-post__text.uagb-post-grid-byline .uagb-post__author']             = array(
 				'color' => $attr['metaColor'],
 			);
 			$selectors[' .uagb-post__inner-wrap .uagb-post__taxonomy']['color']                  = $attr['metaColor'];
@@ -336,11 +335,11 @@ if ( 'transparent' === $attr['backgroundType'] ) {
 			$selectors[' .uagb-post__inner-wrap .uagb-post__taxonomy.highlighted']['color']      = $attr['highlightedTextColor'];
 			$selectors[' .uagb-post__inner-wrap .uagb-post__taxonomy.highlighted a']['color']    = $attr['highlightedTextColor'];
 			$selectors[' .uagb-post__inner-wrap .uagb-post__taxonomy.highlighted']['background'] = $attr['highlightedTextBgColor'];
-			$selectors[' .uagb-post__text.uagb-post-grid-byline .uagb-post__author a']        = array(
+			$selectors[' .uagb-post__text.uagb-post-grid-byline .uagb-post__author a']           = array(
 				'color' => $attr['metaColor'],
 			);
-			$selectors[' .uagb-post__text.uagb-post__excerpt']['color']                       = $attr['excerptColor'];
-			$selectors[' .uagb-post__text.uagb-post__cta .uagb-text-link']                    = array(
+			$selectors[' .uagb-post__text.uagb-post__excerpt']['color']                          = $attr['excerptColor'];
+			$selectors[' .uagb-post__text.uagb-post__cta .uagb-text-link']                       = array(
 				'color'         => $attr['ctaColor'],
 				'background'    => $attr['ctaBgColor'],
 				'border-color'  => $attr['borderColor'],
@@ -348,7 +347,7 @@ if ( 'transparent' === $attr['backgroundType'] ) {
 				'border-radius' => UAGB_Helper::get_css_value( $attr['borderRadius'], 'px' ),
 				'border-style'  => $attr['borderStyle'],
 			);
-			$selectors[' .uagb-post__text.uagb-post__cta a']                                  = array(
+			$selectors[' .uagb-post__text.uagb-post__cta a']                                     = array(
 				'color'          => $attr['ctaColor'],
 				'padding-top'    => UAGB_Helper::get_css_value( $paddingBtnTop, $attr['paddingBtnUnit'] ),
 				'padding-bottom' => UAGB_Helper::get_css_value( $paddingBtnBottom, $attr['paddingBtnUnit'] ),
