@@ -4,6 +4,7 @@
 import { PostTitle } from './post-title/edit';
 import { PostMeta } from './post-meta/edit';
 import { PostImage } from './post-image/edit';
+import { PostTaxonomy } from './post-taxonomy/edit';
 import { PostExcerpt } from './post-excerpt/edit';
 import { PostButton } from './post-button/edit';
 import { createContext, useContext, Suspense } from '@wordpress/element';
@@ -34,6 +35,7 @@ export const InnerBlockLayoutContextProvider = ( {
 
 export const DEFAULT_POST_LIST_LAYOUT = [
 	[ 'uagb/post-image' ],
+	[ 'uagb/post-taxonomy' ],
 	[ 'uagb/post-title' ],
 	[ 'uagb/post-meta' ],
 	[ 'uagb/post-excerpt' ],
@@ -67,7 +69,7 @@ export const renderPostLayout = (
 		if ( ! LayoutComponent ) {
 			return null;
 		}
-		
+
 		return (
 			<Suspense key={ key } fallback={ <div className="wc-block-placeholder" /> }>
 				<LayoutComponent
@@ -135,6 +137,11 @@ registerBlockComponent( {
 registerBlockComponent( {
 	blockName: 'uagb/post-image',
 	component: PostImage,
+} );
+
+registerBlockComponent( {
+	blockName: 'uagb/post-taxonomy',
+	component: PostTaxonomy,
 } );
 
 registerBlockComponent( {

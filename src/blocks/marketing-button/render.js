@@ -37,6 +37,7 @@ const Render = ( props ) => {
 		icon,
 		iconPosition,
 		titleTag,
+		showDescription,
 	} = attributes;
 
 	const iconHTML = (
@@ -113,6 +114,7 @@ const Render = ( props ) => {
 							{ iconHTML }
 							</>
 						}
+						{ showDescription && (
 						<RichText
 							placeholder={ __(
 								'Add Button Description…',
@@ -148,6 +150,7 @@ const Render = ( props ) => {
 									: undefined
 							}
 						/>
+						) }
 				</a>
 		</div>
 	);

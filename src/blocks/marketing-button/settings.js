@@ -52,6 +52,7 @@ const Settings = ( props ) => {
 		link,
 		linkTarget,
 		titleSpace,
+		showDescription,
 		//Icon
 		icon,
 		iconPosition,
@@ -325,6 +326,16 @@ const Settings = ( props ) => {
 						] }
 						showIcons={ true }
 					/>
+					<ToggleControl
+						label={ __(
+							'Show Description',
+							'ultimate-addons-for-gutenberg'
+						) }
+						checked={ showDescription }
+						onChange={ () =>
+							setAttributes( { showDescription: ! showDescription } )
+						}
+					/>
 					<TextControl
 						label={ __(
 							'Link',
@@ -497,7 +508,7 @@ const Settings = ( props ) => {
 				title={ __( 'Heading', 'ultimate-addons-for-gutenberg' ) }
 				initialOpen={ false }
 			>
-				<Range
+				{ showDescription && ( <Range
 					label={ __(
 						'Bottom Spacing',
 						'ultimate-addons-for-gutenberg'
@@ -512,7 +523,7 @@ const Settings = ( props ) => {
 					min={ 0 }
 					max={ 20 }
 					displayUnit={ false }
-				/>
+				/> ) }
 				<TypographyControl
 					label={ __(
 						'Typography',
@@ -1178,7 +1189,7 @@ const Settings = ( props ) => {
 					</InspectorTab>
 					<InspectorTab { ...UAGTabs.style }>
 						{ titleSettings() }
-						{ descriptionSettings() }
+						{ showDescription && descriptionSettings() }
 						{ '' !== icon && iconSettings() }
 						{ backgroundSettings() }
 						{ borderSettings() }

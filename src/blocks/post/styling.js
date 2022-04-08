@@ -177,6 +177,8 @@ function styling( props ) {
 		tabletpaginationButtonPaddingType,
 		loaderSize,
 		loaderColor,
+		highlightedTextColor,
+		highlightedTextBgColor
 	} = props.attributes;
 
 	let mobileSelectors = {};
@@ -289,6 +291,57 @@ function styling( props ) {
 	};
 	selectors[ ' .uagb-post-grid-byline' ] = {
 		'color': metaColor,
+		'font-size': generateCSSUnit( metaFontSize, metaFontSizeType ),
+		'font-family': metaFontFamily,
+		'font-weight': metaFontWeight,
+		'line-height': generateCSSUnit(
+			metaLineHeight,
+			metaLineHeightType
+		),
+		'text-transform': metaTransform,
+		'text-decoration': metaDecoration,
+		'font-style': metaFontStyle,
+	};
+	selectors[ ' .uagb-post-grid-byline time' ] = {
+		'font-size': generateCSSUnit( metaFontSize, metaFontSizeType ),
+		'font-family': metaFontFamily,
+		'font-weight': metaFontWeight,
+		'line-height': generateCSSUnit(
+			metaLineHeight,
+			metaLineHeightType
+		),
+		'text-transform': metaTransform,
+		'text-decoration': metaDecoration,
+		'font-style': metaFontStyle,
+	};
+	selectors[ ' .uagb-post-grid-byline span.uagb-post__comment' ] = {
+		'font-size': generateCSSUnit( metaFontSize, metaFontSizeType ),
+		'font-family': metaFontFamily,
+		'font-weight': metaFontWeight,
+		'line-height': generateCSSUnit(
+			metaLineHeight,
+			metaLineHeightType
+		),
+		'text-transform': metaTransform,
+		'text-decoration': metaDecoration,
+		'font-style': metaFontStyle,
+	};
+	selectors[ ' span.uagb-post__taxonomy' ] = {
+		'color': metaColor,
+		'font-size': generateCSSUnit( metaFontSize, metaFontSizeType ),
+		'font-family': metaFontFamily,
+		'font-weight': metaFontWeight,
+		'line-height': generateCSSUnit(
+			metaLineHeight,
+			metaLineHeightType
+		),
+		'text-transform': metaTransform,
+		'text-decoration': metaDecoration,
+		'font-style': metaFontStyle,
+	};
+	selectors[ ' span.uagb-post__taxonomy.highlighted' ] = {
+		'color': highlightedTextColor,
+		'background-color': highlightedTextBgColor,
 		'font-size': generateCSSUnit( metaFontSize, metaFontSizeType ),
 		'font-family': metaFontFamily,
 		'font-weight': metaFontWeight,
@@ -557,6 +610,13 @@ function styling( props ) {
 			),
 			'line-height': metaLineHeightMobile + metaLineHeightType,
 		},
+		' span.uagb-post__text.uagb-post__taxonomy.default': {
+			'font-size': generateCSSUnit(
+				metaFontSizeMobile,
+				metaFontSizeType
+			),
+			'line-height': metaLineHeightMobile + metaLineHeightType,
+		},
 		' .uagb-post-grid-byline .uagb-post__author': {
 			'font-size': generateCSSUnit(
 				metaFontSizeMobile,
@@ -626,6 +686,13 @@ function styling( props ) {
 			'line-height': titleLineHeightTablet + titleLineHeightType,
 		},
 		' .uagb-post-grid-byline': {
+			'font-size': generateCSSUnit(
+				metaFontSizeTablet,
+				metaFontSizeType
+			),
+			'line-height': metaLineHeightTablet + metaLineHeightType,
+		},
+		' span.uagb-post__text.uagb-post__taxonomy.default': {
 			'font-size': generateCSSUnit(
 				metaFontSizeTablet,
 				metaFontSizeType
