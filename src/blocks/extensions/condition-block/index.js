@@ -187,15 +187,15 @@ const AdvancedControlsBlock = createHigherOrderComponent( ( BlockEdit ) => {
 				parentClientId
 			);
 
-			if ( parentAttributes.UAGHideDesktop ) {
+			if ( parentAttributes?.UAGHideDesktop ) {
 				responsiveClassHideDesktop = 'uag-hide-desktop';
 			}
 
-			if ( parentAttributes.UAGHideTab ) {
+			if ( parentAttributes?.UAGHideTab ) {
 				responsiveClassHideTab = 'uag-hide-tab';
 			}
 
-			if ( parentAttributes.UAGHideMob ) {
+			if ( parentAttributes?.UAGHideMob ) {
 				responsiveClassHideMob = 'uag-hide-mob';
 			}
 
