@@ -170,7 +170,7 @@ const attributes = {
 	},
 	paddingLink: {
 		type: 'boolean',
-		default: false,
+		default: true,
 	},
 	borderWidth: {
 		type: 'number',
@@ -408,6 +408,7 @@ const attributes = {
 	},
 	marginLink:{
 		type:'string',
+		default: true
 	},
 	boxShadowColor:{
 		type:'string',
