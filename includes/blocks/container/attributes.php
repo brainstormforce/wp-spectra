@@ -111,4 +111,6 @@ return array(
 	'bottomFlip'                     => '',
 	'topContentAboveShape'           => '',
 	'bottomContentAboveShape'        => '',
+	'topInvert'                        => '',
+	'bottomInvert'                     => '',
 );

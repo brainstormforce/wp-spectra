@@ -642,6 +642,20 @@ const attributes = {
 			styleType: 'container-bottom-flip'
 		},
 	},
+	topInvert: {
+		type: 'boolean',
+		default: false,
+		UAGCopyPaste: {
+			styleType: 'container-top-invert'
+		},
+	},
+	bottomInvert: {
+		type: 'boolean',
+		default: false,
+		UAGCopyPaste: {
+			styleType: 'container-bottom-invert'
+		},
+	},
 	topContentAboveShape: {
 		type: 'boolean',
 		default: false,

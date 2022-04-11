@@ -21,7 +21,9 @@ const Render = ( props ) => {
 		topContentAboveShape,
 		bottomType,
 		bottomFlip,
-		bottomContentAboveShape
+		bottomContentAboveShape,
+		topInvert,
+		bottomInvert
 	} = attributes;
 
 	const direction = attributes[ 'direction' + deviceType ];
@@ -37,7 +39,8 @@ const Render = ( props ) => {
 				{
 					'uagb-container__shape-above-content':
 						topContentAboveShape === true,
-				}
+				},
+				{ 'uagb-container__invert' : topInvert === true }
 			) }
 		>
 			{ shapes[ topType ] }
@@ -53,9 +56,9 @@ const Render = ( props ) => {
 				{
 					'uagb-container__shape-above-content':
 						bottomContentAboveShape === true,
-				}
+				},
+				{ 'uagb-container__invert' : bottomInvert === true },
 			) }
-			data-negative="false"
 		>
 			{ shapes[ bottomType ] }
 		</div>

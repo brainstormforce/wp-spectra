@@ -131,6 +131,8 @@ const Settings = ( props ) => {
 		topFlip,
 		topContentAboveShape,
 		bottomContentAboveShape,
+		topInvert,
+		bottomInvert
 	} = attributes;
 
 	let currentDirection = 'row';
@@ -1235,6 +1237,18 @@ const Settings = ( props ) => {
 						/>
 						<ToggleControl
 							label={ __(
+								'Invert',
+								'ultimate-addons-for-gutenberg'
+							) }
+							checked={ topInvert }
+							onChange={ () =>
+								setAttributes( {
+									topInvert: ! topInvert,
+								} )
+							}
+						/>
+						<ToggleControl
+							label={ __(
 								'Bring To Front',
 								'ultimate-addons-for-gutenberg'
 							) }
@@ -1318,6 +1332,18 @@ const Settings = ( props ) => {
 							checked={ bottomFlip }
 							onChange={ () =>
 								setAttributes( { bottomFlip: ! bottomFlip } )
+							}
+						/>
+						<ToggleControl
+							label={ __(
+								'Invert',
+								'ultimate-addons-for-gutenberg'
+							) }
+							checked={ bottomInvert }
+							onChange={ () =>
+								setAttributes( {
+									bottomInvert: ! bottomInvert,
+								} )
 							}
 						/>
 						<ToggleControl
