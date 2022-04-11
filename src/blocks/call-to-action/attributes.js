@@ -554,7 +554,7 @@ const attributes = {
 	},
 	secondCtaLabel: {
 		type: 'html',
-		default: 'Here',
+		default: 'Click Here',
 	},
 	secondCtaLink: {
 		type: 'string',

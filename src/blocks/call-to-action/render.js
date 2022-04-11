@@ -25,7 +25,7 @@ const Render = ( props ) => {
 
 	const isCta = <CTA attributes={ attributes } setAttributes={ setAttributes } />;
 
-	const secondCtaButton = enabledSecondCtaButton ? <SecondCTAButton attributes={ attributes } setAttributes={ setAttributes } /> : '';
+	const secondCtaButton = ( 'button' === ctaType && enabledSecondCtaButton ) ? <SecondCTAButton attributes={ attributes } setAttributes={ setAttributes } /> : '';
 
 	// Get description components.
 	const descText = (

@@ -230,7 +230,7 @@ const Settings = ( props ) => {
 			>
 				<ToggleControl
 					label={ __(
-						'Enable 2nd CTA Button',
+						'Enable Additional Button',
 						'ultimate-addons-for-gutenberg'
 					) }
 					checked={ enabledSecondCtaButton }
@@ -1583,7 +1583,7 @@ const Settings = ( props ) => {
 						{ presetSettings() }
 						{ layouts() }
 						{ ctaSettings() }
-						{ secBtnSettings() }
+						{ 'button' === ctaType && secBtnSettings() }
 					</InspectorTab>
 					<InspectorTab { ...UAGTabs.style }>
 						{ headingSettings() }
@@ -1591,7 +1591,7 @@ const Settings = ( props ) => {
 						{ ctaType !== 'all' &&
 						  ctaType !== 'none' &&
 						  ctaStyleSettings() }
-						{ enabledSecondCtaButton && secButtonStyleSettings() }
+						{ ( 'button' === ctaType && enabledSecondCtaButton ) && secButtonStyleSettings() }
 						{ marginSettings() }
 					</InspectorTab>
 					<InspectorTab

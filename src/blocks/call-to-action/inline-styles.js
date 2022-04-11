@@ -81,10 +81,10 @@ function CtaStyle( props ) {
 		ctaIconPosition,
 		secondCtaIconSpace,
 		secondCtaIconPosition,
-		secondCtaSize,
-		secondCtaSizeType,
-		secondCtaSizeMobile,
-		secondCtaSizeTablet,
+		secondCtaFontSize,
+		secondCtaFontSizeType,
+		secondCtaFontSizeMobile,
+		secondCtaFontSizeTablet,
 		secondCtaFontFamily,
 		secondCtaFontWeight,
 		secondCtaFontStyle,
@@ -220,7 +220,7 @@ function CtaStyle( props ) {
 	};
 
 	selectors['.uagb-cta__outer-wrap a.uagb-cta-second__button'] = {
-		'font-size': generateCSSUnit( secondCtaSize, secondCtaSizeType ),
+		'font-size': generateCSSUnit( secondCtaFontSize, secondCtaFontSizeType ),
 		'font-family': secondCtaFontFamily,
 		'font-style' : secondCtaFontStyle,
 		'text-decoration': secondCtaFontDecoration,
@@ -262,9 +262,9 @@ function CtaStyle( props ) {
 	};
 
 	selectors['.uagb-cta__outer-wrap a.uagb-cta-second__button svg' ] = {
-		'font-size': generateCSSUnit( secondCtaSize, secondCtaSizeType ),
-		'width': generateCSSUnit( secondCtaSize, secondCtaSizeType ),
-		'line-height': generateCSSUnit( secondCtaSize, secondCtaSizeType ),
+		'font-size': generateCSSUnit( secondCtaFontSize, secondCtaFontSizeType ),
+		'width': generateCSSUnit( secondCtaFontSize, secondCtaFontSizeType ),
+		'line-height': generateCSSUnit( secondCtaFontSize, secondCtaFontSizeType ),
 		'fill': secondCtaColor,
 	};
 
@@ -346,7 +346,7 @@ function CtaStyle( props ) {
 			),
 		},
 		'.uagb-cta__outer-wrap a.uagb-cta-second__button': {
-			'font-size': generateCSSUnit( secondCtaSizeTablet, secondCtaSizeType ),
+			'font-size': generateCSSUnit( secondCtaFontSizeTablet, secondCtaFontSizeType ),
 			'padding-top': generateCSSUnit(
 				secondCtaTopTabletPadding,
 				secondCtaTabletPaddingUnit
@@ -365,12 +365,12 @@ function CtaStyle( props ) {
 			),
 		},
 		'.uagb-cta__outer-wrap a.uagb-cta-second__button svg': {
-			'font-size': generateCSSUnit( secondCtaSizeTablet, secondCtaSizeType ),
-			'height': generateCSSUnit( secondCtaSizeTablet, secondCtaSizeType ),
-			'width': generateCSSUnit( secondCtaSizeTablet, secondCtaSizeType ),
+			'font-size': generateCSSUnit( secondCtaFontSizeTablet, secondCtaFontSizeType ),
+			'height': generateCSSUnit( secondCtaFontSizeTablet, secondCtaFontSizeType ),
+			'width': generateCSSUnit( secondCtaFontSizeTablet, secondCtaFontSizeType ),
 			'line-height': generateCSSUnit(
-				secondCtaSizeTablet,
-				secondCtaSizeType
+				secondCtaFontSizeTablet,
+				secondCtaFontSizeType
 			),
 		},
 	};
@@ -428,7 +428,7 @@ function CtaStyle( props ) {
 			),
 		},
 		'.uagb-cta__outer-wrap a.uagb-cta-second__button': {
-			'font-size': generateCSSUnit( secondCtaSizeMobile, secondCtaSizeType ),
+			'font-size': generateCSSUnit( secondCtaFontSizeMobile, secondCtaFontSizeType ),
 			'padding-top': generateCSSUnit(
 				secondCtaTopMobilePadding,
 				secondCtaMobilePaddingUnit
@@ -447,12 +447,12 @@ function CtaStyle( props ) {
 			),
 		},
 		'.uagb-cta__outer-wrap a.uagb-cta-second__button svg': {
-			'font-size': generateCSSUnit( secondCtaSizeMobile, secondCtaSizeType ),
-			'height': generateCSSUnit( secondCtaSizeMobile, secondCtaSizeType ),
-			'width': generateCSSUnit( secondCtaSizeMobile, secondCtaSizeType ),
+			'font-size': generateCSSUnit( secondCtaFontSizeMobile, secondCtaFontSizeType ),
+			'height': generateCSSUnit( secondCtaFontSizeMobile, secondCtaFontSizeType ),
+			'width': generateCSSUnit( secondCtaFontSizeMobile, secondCtaFontSizeType ),
 			'line-height': generateCSSUnit(
-				secondCtaSizeMobile,
-				secondCtaSizeType
+				secondCtaFontSizeMobile,
+				secondCtaFontSizeType
 			),
 		},
 	};

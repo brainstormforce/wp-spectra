@@ -27,7 +27,7 @@ export default function save( props ) {
 		<CTA attributes={ props.attributes } setAttributes="not_set" />
 	);
 
-	const secondCtaButton = enabledSecondCtaButton ? <SecondCTAButton attributes={ props.attributes } setAttributes="not_set" /> : '';
+	const secondCtaButton = ( 'button' === ctaType && enabledSecondCtaButton ) ? <SecondCTAButton attributes={ props.attributes } setAttributes="not_set" /> : '';
 
 
 	// Get description and seperator components.
