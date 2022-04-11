@@ -22,7 +22,7 @@ const Render = lazy( () =>
 import './style.scss';
 import { __ } from '@wordpress/i18n';
 
-import { withSelect, useDispatch, select, dispatch } from '@wordpress/data';
+import { withSelect, useDispatch, select } from '@wordpress/data';
 
 import { compose } from '@wordpress/compose';
 
