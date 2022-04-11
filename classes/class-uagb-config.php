@@ -148,6 +148,7 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 					),
 					'uagb-container-js'      => array(
 						'src' => UAGB_Scripts_Utils::get_js_url( 'container' ),
+						'skipEditor' => true,
 					),
 				);
 			}
