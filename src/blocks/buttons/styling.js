@@ -53,37 +53,37 @@ function styling( props ) {
 		'line-height': generateCSSUnit( lineHeight, lineHeightType ),
 	};
 	if ( 'desktop' === stack ) {
-		selectors[ '.uagb-editor-preview-mode-desktop .block-editor-block-list__layout' ] = {
+		selectors[ '.uagb-editor-preview-mode-desktop .uagb-buttons-stack-desktop .block-editor-block-list__layout' ] = {
 			'flex-direction': 'column',
 			'row-gap': generateCSSUnit( gap, 'px' )
 		};
-		tabletSelectors[ '.uagb-editor-preview-mode-tablet .block-editor-block-list__layout' ] = {
+		tabletSelectors[ '.uagb-editor-preview-mode-tablet .uagb-buttons-stack-desktop .block-editor-block-list__layout' ] = {
 			'column-gap': generateCSSUnit( gap , 'px' ),
 		};
-		mobileSelectors[ '.uagb-editor-preview-mode-mobile .block-editor-block-list__layout' ] = {
+		mobileSelectors[ '.uagb-editor-preview-mode-mobile .uagb-buttons-stack-desktop .block-editor-block-list__layout' ] = {
 			'column-gap': generateCSSUnit( gap , 'px' ),
 		};
 	} else if ( 'tablet' === stack ) {
-		selectors[ '.uagb-editor-preview-mode-desktop .block-editor-block-list__layout' ] = {
+		selectors[ '.uagb-editor-preview-mode-desktop .uagb-buttons-stack-tablet .block-editor-block-list__layout' ] = {
 			'column-gap': generateCSSUnit( gap , 'px' ),
 		};
-		tabletSelectors['.uagb-editor-preview-mode-tablet .block-editor-block-list__layout'] = {
+		tabletSelectors['.uagb-editor-preview-mode-tablet .uagb-buttons-stack-tablet .block-editor-block-list__layout'] = {
 			'flex-direction': 'column',
 			'row-gap': generateCSSUnit( gap, 'px' ),
 		};
-		mobileSelectors['.uagb-editor-preview-mode-mobile .block-editor-block-list__layout'] = {
+		mobileSelectors['.uagb-editor-preview-mode-mobile .uagb-buttons-stack-tablet .block-editor-block-list__layout'] = {
 			'flex-direction': 'column',
 			'row-gap': generateCSSUnit( gap, 'px' ),
 		};
 
 	} else if ( 'mobile' === stack ) {
-		selectors[ '.uagb-editor-preview-mode-desktop .block-editor-block-list__layout' ] = {
+		selectors[ '.uagb-editor-preview-mode-desktop .uagb-buttons-stack-mobile .block-editor-block-list__layout' ] = {
 			'column-gap': generateCSSUnit( gap , 'px' ),
 		};
-		tabletSelectors[ '.uagb-editor-preview-mode-tablet .block-editor-block-list__layout' ] = {
+		tabletSelectors[ '.uagb-editor-preview-mode-tablet .uagb-buttons-stack-mobile .block-editor-block-list__layout' ] = {
 			'column-gap': generateCSSUnit( gap , 'px' ),
 		};
-		mobileSelectors['.uagb-editor-preview-mode-mobile .block-editor-block-list__layout'] = {
+		mobileSelectors['.uagb-editor-preview-mode-mobile .uagb-buttons-stack-mobile .block-editor-block-list__layout'] = {
 			'flex-direction': 'column',
 			'row-gap': generateCSSUnit( gap, 'px' ),
 		};

@@ -19,6 +19,7 @@ import Range from '@Components/range/Range.js';
 import UAGTabsControl from '@Components/tabs';
 import MultiButtonsControl from '@Components/multi-buttons-control';
 import BoxShadowControl from '@Components/box-shadow';
+import WebfontLoader from '@Components/typography/fontloader';
 
 import {
 	InspectorControls,
@@ -82,7 +83,7 @@ const Settings = ( props ) => {
 		iconSpace,
 		target,
 
-		LoadGoogleFonts,
+		loadGoogleFonts,
 		fontFamily,
 		fontWeight,
 		fontStyle,
@@ -215,11 +216,27 @@ const Settings = ( props ) => {
 		);
 	};
 
+	let loadBtnGoogleFonts;
+
+	if ( loadGoogleFonts === true ) {
+		const btnconfig = {
+			google: {
+				families: [
+					fontFamily + ( fontWeight ? ':' + fontWeight : '' ),
+				],
+			},
+		};
+
+		loadBtnGoogleFonts = (
+			<WebfontLoader config={ btnconfig }></WebfontLoader>
+		);
+	}
+
 	const textSettings = () => {
 		return (
 			<UAGAdvancedPanelBody
 				title={ __( 'Text', 'ultimate-addons-for-gutenberg' ) }
-				initialOpen={ true }
+				initialOpen={ false }
 			>
 				<TypographyControl
 					label={ __(
@@ -229,8 +246,8 @@ const Settings = ( props ) => {
 					attributes={ attributes }
 					setAttributes={ setAttributes }
 					loadGoogleFonts={ {
-						value: LoadGoogleFonts,
-						label: 'LoadGoogleFonts',
+						value: loadGoogleFonts,
+						label: 'loadGoogleFonts',
 					} }
 					fontFamily={ {
 						value: fontFamily,
@@ -648,6 +665,7 @@ const Settings = ( props ) => {
 				initialOpen={ false }
 			>
 				<Border
+					disabledBorderTitle= {true}
 					setAttributes={ setAttributes }
 					borderStyle={ {
 						value: borderStyle,
@@ -841,7 +859,7 @@ const Settings = ( props ) => {
 						{ buttonSettings() }
 					</InspectorTab>
 					<InspectorTab { ...UAGTabs.style }>
-						{ textSettings() }
+						{ !removeText && textSettings() }
 						{ '' !== icon && IconSettings() }
 						{ borderSettings() }
 						{ backgroundSettings() }
@@ -854,6 +872,7 @@ const Settings = ( props ) => {
 					></InspectorTab>
 				</InspectorTabs>
 			</InspectorControls>
+			{loadBtnGoogleFonts}
 		</Suspense>
 	);
 };

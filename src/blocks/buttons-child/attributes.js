@@ -188,7 +188,7 @@ const attributes = {
 	},
 	borderStyle: {
 		type: 'string',
-		default: '',
+		default: 'none',
 		UAGCopyPaste: {
 			styleType: 'btn-border-style'
 		}
@@ -198,7 +198,7 @@ const attributes = {
 		UAGCopyPaste: {
 			styleType: 'btn-border-color'
 		},
-		default: '',
+		default: '#000',
 	},
 	borderHColor: {
 		type: 'string',
@@ -322,6 +322,7 @@ const attributes = {
 	},
 	backgroundType:{
 		type:'string',
+		default: 'color',
 		UAGCopyPaste: {
 			styleType: 'btn-background-type'
 		}
@@ -410,6 +411,7 @@ const attributes = {
 	},
 	boxShadowColor:{
 		type:'string',
+		default: '#000',
 		UAGCopyPaste: {
 			styleType: 'btn-box-shadow-color'
 		}
@@ -430,6 +432,7 @@ const attributes = {
 	},
 	boxShadowBlur:{
 		type:'string',
+		default: 5,
 		UAGCopyPaste: {
 			styleType: 'btn-box-shadow-blur'
 		}

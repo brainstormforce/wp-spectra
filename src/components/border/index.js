@@ -25,6 +25,7 @@ const Border = ( props ) => {
 		borderRadius,
 		borderStyle,
 		borderHoverColor,
+		disabledBorderTitle
 	} = props;
 
 	const tabOutputNormal = (
@@ -45,9 +46,12 @@ const Border = ( props ) => {
 			}
 		/>
 	);
+	let title = disabledBorderTitle ? true : false;
 	const advancedControls = (
 		<>
+		{ !title && (
 			<h2>{ __( 'Border', 'ultimate-addons-for-gutenberg' ) }</h2>
+		)}
 			<div className="uag-border-type">
 				<SelectControl
 					label={ borderStyle.title }

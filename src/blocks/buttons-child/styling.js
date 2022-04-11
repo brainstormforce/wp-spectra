@@ -91,7 +91,7 @@ function styling( props ) {
 	}
 
 	selectors = {
-		'.uagb-buttons__outer-wrap .wp-block-button__link.uagb-buttons-repeater': {
+		'.uagb-buttons__outer-wrap .uagb-button__wrapper .wp-block-button__link.uagb-buttons-repeater': {
 			'font-size': generateCSSUnit( size, sizeType ),
 			'line-height': generateCSSUnit( lineHeight, lineHeightType ),
 			'font-family': fontFamily,
@@ -99,19 +99,11 @@ function styling( props ) {
 			'font-style': fontStyle,
 			'text-transform': transform,
 			'text-decoration': decoration,
-			'border-width': generateCSSUnit( borderWidth, 'px' ),
-			'border-style': borderStyle,
-			'border-color': borderColor,
-			'border-radius': generateCSSUnit( borderRadius, 'px' ),
 			'background': background,
 			'padding-left': generateCSSUnit( leftPadding, paddingUnit ),
 			'padding-right': generateCSSUnit( rightPadding, paddingUnit ),
 			'padding-top': generateCSSUnit( topPadding, paddingUnit ),
 			'padding-bottom': generateCSSUnit( bottomPadding, paddingUnit ),
-			'box-shadow':
-			generateCSSUnit( boxShadowHOffset, 'px' ) + ' ' + generateCSSUnit( boxShadowVOffset, 'px' ) +	' ' +
-			generateCSSUnit( boxShadowBlur, 'px' ) + ' ' +	generateCSSUnit( boxShadowSpread, 'px' ) + ' ' +
-			boxShadowColor + ' ' +	boxShadowPositionCSS,
 			'margin-left': generateCSSUnit( leftMargin, marginType ),
 			'margin-right': generateCSSUnit( rightMargin, marginType ),
 			'margin-top': generateCSSUnit( topMargin, marginType ),
@@ -119,15 +111,13 @@ function styling( props ) {
 				bottomMargin,
 				marginType
 			),
+			'color': color,
 		},
 		'.uagb-buttons__outer-wrap .wp-block-button__link.uagb-buttons-repeater:hover': {
 			'background': hBackground,
 			'border-width': generateCSSUnit( borderWidth, 'px' ),
 			'border-style': borderStyle,
 			'border-color': borderHColor,
-		},
-		'.uagb-buttons__outer-wrap .wp-block-button__link.uagb-buttons-repeater a.uagb-button__link': {
-			'color': color,
 		},
 		'.uagb-buttons__outer-wrap .wp-block-button__link.uagb-buttons-repeater:hover a.uagb-button__link': {
 			'color': hColor,
@@ -142,7 +132,22 @@ function styling( props ) {
 			'color': color,
 		}
 	};
+	selectors['.uagb-buttons__outer-wrap .wp-block-button__link.uagb-buttons-repeater'] = {
+		'box-shadow':
+		generateCSSUnit( boxShadowHOffset, 'px' ) + ' ' + generateCSSUnit( boxShadowVOffset, 'px' ) +	' ' +
+		generateCSSUnit( boxShadowBlur, 'px' ) + ' ' +	generateCSSUnit( boxShadowSpread, 'px' ) + ' ' +
+		boxShadowColor + ' ' +	boxShadowPositionCSS,
+	};
 
+	if( 'none' !== borderStyle ) {
+		selectors['.uagb-buttons__outer-wrap .wp-block-button__link.uagb-buttons-repeater'] = {
+			'border-width': generateCSSUnit( borderWidth, 'px' ),
+			'border-style': borderStyle,
+			'border-color': borderColor,
+			'border-radius': generateCSSUnit( borderRadius, 'px' ),
+		};
+
+	}
 	mobileSelectors[ '.uagb-buttons__outer-wrap .wp-block-button__link.uagb-buttons-repeater' ] = {
 		'font-size': generateCSSUnit( sizeMobile, sizeType ),
 		'line-height': generateCSSUnit( lineHeightMobile, lineHeightType ),

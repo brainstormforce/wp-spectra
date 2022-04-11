@@ -93,7 +93,11 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				'margin-bottom'   => UAGB_Helper::get_css_value( $attr['bottomMargin'], $attr['marginType'] ),
 				'margin-left'     => UAGB_Helper::get_css_value( $attr['leftMargin'], $attr['marginType'] ),
 				'margin-right'    => UAGB_Helper::get_css_value( $attr['rightMargin'], $attr['marginType'] ),
-				'box-shadow'      =>
+
+			);
+			if( 0 !== $attr['boxShadowHOffset'] || 0 !== $attr['boxShadowVOffset'] ) {
+				$selectors[ $wrapper ] = array(
+					'box-shadow'      =>
 					UAGB_Helper::get_css_value( $attr['boxShadowHOffset'], 'px' ) .
 					' ' .
 					UAGB_Helper::get_css_value( $attr['boxShadowVOffset'], 'px' ) .
@@ -105,7 +109,16 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					$attr['boxShadowColor'] .
 					' ' .
 					$box_shadow_position_css,
-			);
+				);
+			}
+			if( 'none'!== $attr['borderStyle'] ) {
+				$selectors[ $wrapper ] = array(
+					'border-width'    => UAGB_Helper::get_css_value( $attr['borderWidth'], 'px' ),
+					'border-color'    => $attr['borderColor'],
+					'border-style'    => $attr['borderStyle'],
+					'border-radius'   => UAGB_Helper::get_css_value( $attr['borderRadius'], 'px' ),
+				);
+			}
 			$selectors[ $wrapper.' .uagb-button__link' ] = array(
 				'font-family'     => $attr['fontFamily'],
 				'font-weight'     => $attr['fontWeight'],
