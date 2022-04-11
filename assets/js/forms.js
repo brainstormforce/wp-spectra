@@ -145,6 +145,10 @@ UAGBForms = { // eslint-disable-line no-undef
 		form.addEventListener( 'submit', function ( e ) {
 			e.preventDefault();
 			if ( attr.reCaptchaEnable === true && attr.reCaptchaType === 'v3' && reCaptchaSiteKeyV3 ) {
+				if( document.getElementsByClassName('.grecaptcha-logo').length === 0 ){
+					document.querySelector( '.uagb-form-reacaptcha-error-' + attr.block_id ).innerHTML = '<p style="color:red !important" class="error-captcha">Invalid Google reCAPTCHA Site Key.</p>';
+					return false;
+				}
 				grecaptcha.ready( function() { // eslint-disable-line no-undef
 					grecaptcha.execute( reCaptchaSiteKeyV3, {action: 'submit'} ).then( function( token ) { // eslint-disable-line no-undef
 						if ( token ) {
