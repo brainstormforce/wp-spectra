@@ -365,8 +365,8 @@ const Settings = ( props ) => {
 						label: 'secondCtaFontFamily',
 					} }
 					fontWeight={ {
-						value: secondCtaFontFamily,
-						label: 'secondCtaFontFamily',
+						value: secondCtaFontWeight,
+						label: 'secondCtaFontWeight',
 					} }
 					fontStyle={ {
 						value: secondCtaFontStyle,

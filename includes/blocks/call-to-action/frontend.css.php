@@ -271,6 +271,13 @@ $t_selectors = array(
 	),
 );
 
+$t_selectors['.wp-block-uagb-call-to-action.uagb-cta__content-stacked-tablet '] = array(
+	'display' => 'inherit',
+);
+$t_selectors['.uagb-cta__content-stacked-tablet .uagb-cta__wrap']               = array(
+	'width' => '100%',
+);
+
 $m_selectors = array(
 	' .uagb-cta__button-wrapper .uagb-cta-with-svg'       => array(
 		'font-size'   => $m_svg_size,
@@ -308,6 +315,13 @@ $m_selectors = array(
 		'padding-left'   => UAGB_Helper::get_css_value( $attr['secondCtaLeftMobilePadding'], $attr['secondCtaMobilePaddingUnit'] ),
 		'padding-right'  => UAGB_Helper::get_css_value( $attr['secondCtaRightMobilePadding'], $attr['secondCtaMobilePaddingUnit'] ),
 	),
+);
+
+$m_selectors['.wp-block-uagb-call-to-action.uagb-cta__content-stacked-mobile '] = array(
+	'display' => 'inherit',
+);
+$m_selectors['.uagb-cta__content-stacked-mobile .uagb-cta__wrap']               = array(
+	'width' => '100%',
 );
 
 $combined_selectors = array(
