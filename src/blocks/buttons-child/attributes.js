@@ -154,6 +154,13 @@ const attributes = {
 			styleType: 'btn-padding-unit'
 		}
 	},
+	gradientValue: {
+		type: 'string',
+		default: '',
+		UAGCopyPaste: {
+			styleType: 'container-bg-gradient-value'
+		},
+	},
 	mobilePaddingUnit: {
 		type: 'string',
 		default: 'px',
@@ -467,48 +474,6 @@ const attributes = {
 	removeText:{
 		type:'string',
 		default: false
-	},
-	gradientColor1: {
-		type: 'string',
-		default: '#F2295B',
-		UAGCopyPaste: {
-			styleType: 'btn-gradient-color-1'
-		}
-	},
-	gradientColor2: {
-		type: 'string',
-		default: '#61CE70',
-		UAGCopyPaste: {
-			styleType: 'btn-gradient-color-2'
-		}
-	},
-	gradientType: {
-		type: 'string',
-		default: 'linear',
-		UAGCopyPaste: {
-			styleType: 'btn-gradient-type'
-		}
-	},
-	gradientLocation1: {
-		type: 'number',
-		default: 0,
-		UAGCopyPaste: {
-			styleType: 'btn-gradient-location-1'
-		}
-	},
-	gradientLocation2: {
-		type: 'number',
-		default: 100,
-		UAGCopyPaste: {
-			styleType: 'btn-gradient-location-2'
-		}
-	},
-	gradientAngle: {
-		type: 'number',
-		default: 0,
-		UAGCopyPaste: {
-			styleType: 'btn-gradient-angle'
-		}
 	},
 };
 

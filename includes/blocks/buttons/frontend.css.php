@@ -126,11 +126,11 @@ if ( $attr['childMigrate'] ) {
 		'font-size'       => UAGB_Helper::get_css_value( $attr['fontSize'], $attr['fontSizeType'] ),
 		'line-height'     => UAGB_Helper::get_css_value( $attr['lineHeight'], $attr['lineHeightType'] ),
 	);
-	$t_selectors[' .uagb-buttons-repeater']                           = array(
+	$t_selectors[' .uagb-buttons-repeater'] = array(
 		'font-size'   => UAGB_Helper::get_css_value( $attr['fontSizeTablet'], $attr['fontSizeType'] ),
 		'line-height' => UAGB_Helper::get_css_value( $attr['lineHeightTablet'], $attr['lineHeightType'] ),
 	);
-	$m_selectors[' .uagb-buttons-repeater']                           = array(
+	$m_selectors[' .uagb-buttons-repeater'] = array(
 		'font-size'   => UAGB_Helper::get_css_value( $attr['fontSizeMobile'], $attr['fontSizeType'] ),
 		'line-height' => UAGB_Helper::get_css_value( $attr['lineHeightMobile'], $attr['lineHeightType'] ),
 	);

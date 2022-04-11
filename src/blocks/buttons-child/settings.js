@@ -21,6 +21,8 @@ import MultiButtonsControl from '@Components/multi-buttons-control';
 import BoxShadowControl from '@Components/box-shadow';
 import WebfontLoader from '@Components/typography/fontloader';
 
+import GradientSettings from '@Components/gradient-settings';
+
 import {
 	InspectorControls,
 	__experimentalLinkControl,
@@ -90,12 +92,7 @@ const Settings = ( props ) => {
 		transform,
 		decoration,
 		backgroundType,
-		gradientColor1,
-		gradientColor2,
-		gradientLocation1,
-		gradientLocation2,
-		gradientType,
-		gradientAngle,
+		gradientValue,
 		topMargin,
 		rightMargin,
 		bottomMargin,
@@ -467,114 +464,13 @@ const Settings = ( props ) => {
 					</>
 				) }
 				{ 'gradient' === backgroundType && (
-					<>
-						<AdvancedPopColorControl
-							label={ __(
-								'Color 1',
-								'ultimate-addons-for-gutenberg'
-							) }
-							colorValue={ gradientColor2 ? gradientColor2 : '' }
-							onColorChange={ ( value ) =>
-								setAttributes( { gradientColor2: value } )
-							}
-						/>
-						<AdvancedPopColorControl
-							label={ __(
-								'Color 2',
-								'ultimate-addons-for-gutenberg'
-							) }
-							colorValue={ gradientColor1 ? gradientColor1 : '' }
-							onColorChange={ ( value ) =>
-								setAttributes( { gradientColor1: value } )
-							}
-						/>
-						<MultiButtonsControl
-							setAttributes={ setAttributes }
-							label={ __(
-								'Type',
-								'ultimate-addons-for-gutenberg'
-							) }
-							data={ {
-								value: gradientType,
-								label: 'gradientType',
-							} }
-							className="uagb-multi-button-alignment-control"
-							options={ [
-								{
-									value: 'linear',
-									label: __(
-										'Linear',
-										'ultimate-addons-for-gutenberg'
-									),
-									tooltip: __(
-										'Linear',
-										'ultimate-addons-for-gutenberg'
-									),
-								},
-								{
-									value: 'radial',
-									label: __(
-										'Radial',
-										'ultimate-addons-for-gutenberg'
-									),
-									tooltip: __(
-										'Radial',
-										'ultimate-addons-for-gutenberg'
-									),
-								},
-							] }
-						/>
-						<Range
-							label={ __(
-								'Location 1',
-								'ultimate-addons-for-gutenberg'
-							) }
-							setAttributes={ setAttributes }
-							value={ gradientLocation1 }
-							onChange={ ( value ) =>
-								setAttributes( {
-									gradientLocation1: value,
-								} )
-							}
-							min={ 0 }
-							max={ 100 }
-							displayUnit={ false }
-						/>
-						<Range
-							label={ __(
-								'Location 2',
-								'ultimate-addons-for-gutenberg'
-							) }
-							setAttributes={ setAttributes }
-							value={ gradientLocation2 }
-							onChange={ ( value ) =>
-								setAttributes( {
-									gradientLocation2: value,
-								} )
-							}
-							min={ 0 }
-							max={ 100 }
-							displayUnit={ false }
-						/>
-						{ 'linear' === gradientType &&
-							<Range
-								label={ __(
-									'Angle',
-									'ultimate-addons-for-gutenberg'
-								) }
-								setAttributes={ setAttributes }
-								value={ gradientAngle }
-								onChange={ ( value ) =>
-									setAttributes( {
-										gradientAngle: value,
-									} )
-								}
-								min={ 0 }
-								max={ 360 }
-								displayUnit={ false }
-							/>
-						}
-					</>
+					<GradientSettings
+						backgroundGradient={ {
+							value: gradientValue,
+							label: 'gradientValue',
+						}}
+						setAttributes={ setAttributes }
+					/>
 				) }
 				</UAGAdvancedPanelBody>
 	};
