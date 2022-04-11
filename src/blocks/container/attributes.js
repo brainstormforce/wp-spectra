@@ -107,21 +107,21 @@ const attributes = {
 	},
 	alignItemsDesktop: {
 		type: 'string',
-		default: 'center',
+		default: 'stretch',
 		UAGCopyPaste: {
 			styleType: 'container-align-items-desktop'
 		},
 	},
 	alignItemsTablet: {
 		type: 'string',
-		default: 'center',
+		default: 'stretch',
 		UAGCopyPaste: {
 			styleType: 'container-align-items-tablet'
 		},
 	},
 	alignItemsMobile: {
 		type: 'string',
-		default: 'center',
+		default: 'stretch',
 		UAGCopyPaste: {
 			styleType: 'container-align-items-mobile'
 		},
