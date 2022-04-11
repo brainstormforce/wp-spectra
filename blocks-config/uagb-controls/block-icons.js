@@ -62,7 +62,7 @@ const UAGB_Block_Icons = {
 	),
 	buttons_child: el(
 		'svg',
-		{ width: 20, height: 20, viewBox: '0 0 36 36', className: 'uagb-editor-icons'  },
+		{ width: 24, height: 24, viewBox: '0 0 20 20', className: 'uagb-editor-icons'  },
 		el( 'path', {
 			fill: '#1e1e1e',
 			d:

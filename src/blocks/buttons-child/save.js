@@ -16,12 +16,11 @@ export default function save( props ) {
 		label,
 		icon,
 		iconPosition,
-		removeText,
-		buttonSize
+		removeText
 	} = attributes;
 
 	const btnText = () => {
-		if( removeText ){
+		if( ! removeText ){
 			return <RichText.Content
 						value={ label }
 						tagName="div"
@@ -53,8 +52,7 @@ export default function save( props ) {
 				className,
 				'uagb-buttons__outer-wrap',
 				`uagb-block-${ block_id }`,
-				'wp-block-button',
-				`uagb-btn__${buttonSize}-btn`
+				'wp-block-button'
 			) }
 		>
 			<div className="uagb-button__wrapper">

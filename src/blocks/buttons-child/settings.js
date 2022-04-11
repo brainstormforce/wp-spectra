@@ -10,7 +10,6 @@ import React, { Suspense } from 'react';
 import AdvancedPopColorControl from '@Components/color-control/advanced-pop-color-control.js';
 import Border from '@Components/border';
 import SpacingControl from '@Components/spacing-control';
-import Background from '@Components/background';
 import InspectorTabs from '@Components/inspector-tabs/InspectorTabs.js';
 import InspectorTab, {
 	UAGTabs,
@@ -19,19 +18,14 @@ import TypographyControl from '@Components/typography';
 import Range from '@Components/range/Range.js';
 import UAGTabsControl from '@Components/tabs';
 import MultiButtonsControl from '@Components/multi-buttons-control';
-import { SelectControl } from '@wordpress/components';
 import BoxShadowControl from '@Components/box-shadow';
 
 import {
-	BlockControls,
 	InspectorControls,
 	__experimentalLinkControl,
 } from '@wordpress/block-editor';
 
 import {
-	Popover,
-	ToolbarButton,
-	ToolbarGroup,
 	ToggleControl,
 	TextControl
 } from '@wordpress/components';
@@ -39,7 +33,7 @@ import {
 import UAGAdvancedPanelBody from '@Components/advanced-panel-body';
 
 const Settings = ( props ) => {
-	const state = props.state;
+
 	const setStateValue = props.setStateValue;
 	props = props.parentProps;
 
@@ -122,30 +116,10 @@ const Settings = ( props ) => {
 		boxShadowSpread,
 		boxShadowPosition,
 		iconColor,
-		buttonSize,
+		iconSize,
 		removeText
 
 	} = attributes;
-
-	const onClickLinkSettings = () => {
-		if ( '_self' === target ) {
-			setAttributes( { opensInNewTab: false } );
-		} else if ( '_blank' === target ) {
-			setAttributes( { opensInNewTab: true } );
-		}
-
-		setStateValue( {
-			isURLPickerOpen: true,
-		} );
-	};
-
-	const onChangeOpensInNewTab = ( value ) => {
-		if ( true === value ) {
-			props.setAttributes( { target: '_blank' } );
-		} else {
-			props.setAttributes( { target: '_self' } );
-		}
-	};
 
 	const buttonSettings = () => {
 		return (
@@ -236,48 +210,6 @@ const Settings = ( props ) => {
 					onChange={ () =>
 						setAttributes( { removeText: ! removeText } )
 					}
-				/>
-				<SelectControl
-					label={ __(
-						'Button Size',
-						'ultimate-addons-for-gutenberg'
-					) }
-					value={ buttonSize }
-					onChange={ ( value ) =>
-						setAttributes( {
-							buttonSize: value,
-						} )
-					}
-					options={ [
-						{
-							value: 'small',
-							label: __(
-								'Small',
-								'ultimate-addons-for-gutenberg'
-							),
-						},
-						{
-							value: 'medium',
-							label: __(
-								'Medium',
-								'ultimate-addons-for-gutenberg'
-							),
-						},
-						{
-							value: 'large',
-							label: __(
-								'Large',
-								'ultimate-addons-for-gutenberg'
-							),
-						},
-						{
-							value: 'extralarge',
-							label: __(
-								'Extra Large',
-								'ultimate-addons-for-gutenberg'
-							),
-						}
-					] }
 				/>
 			</UAGAdvancedPanelBody>
 		);
@@ -398,6 +330,8 @@ const Settings = ( props ) => {
 							/>
 						</>
 					}
+
+					disableBottomSeparator={ true }
 				/>
 			</UAGAdvancedPanelBody>
 		);
@@ -405,7 +339,7 @@ const Settings = ( props ) => {
 
 	const backgroundSettings = () => {
 		return <UAGAdvancedPanelBody
-					title={__('background','ultimate-addons-for-gutenberg' )}
+					title={__('Background','ultimate-addons-for-gutenberg' )}
 					initialOpen={false}
 				>
 				<MultiButtonsControl
@@ -687,14 +621,11 @@ const Settings = ( props ) => {
 				<Range
 					label={ __( 'Size', 'ultimate-addons-for-gutenberg' ) }
 					setAttributes={ setAttributes }
-					value={ size }
-					onChange={ ( value ) => setAttributes( { size: value } ) }
+					value={ iconSize }
+					onChange={ ( value ) => setAttributes( { iconSize: value } ) }
 					min={ 0 }
 					max={ 50 }
-					unit={ {
-						value: sizeType,
-						label: 'sizeType',
-					} }
+					displayUnit={ false }
 				/>
 				<AdvancedPopColorControl
 					label={ __(
@@ -902,53 +833,8 @@ const Settings = ( props ) => {
 		);
 	};
 
-	const blockControls = () => {
-		return (
-			<BlockControls>
-				<ToolbarGroup>
-					<ToolbarButton
-						icon="admin-links"
-						name="link"
-						title={ __( 'Link' ) }
-						onClick={ onClickLinkSettings }
-					/>
-				</ToolbarGroup>
-			</BlockControls>
-		);
-	};
-
-	const linkControls = () => {
-		if ( ! state.isURLPickerOpen ) {
-			return '';
-		}
-
-		return (
-			<Popover
-				position="bottom center"
-				onClose={ () =>
-					setStateValue( {
-						isURLPickerOpen: false,
-					} )
-				}
-			>
-				<__experimentalLinkControl
-					value={ { url: link, opensInNewTab } }
-					onChange={ ( {
-						url: newURL = '',
-						opensInNewTab: newOpensInNewTab,
-					} ) => {
-						setAttributes( { link: newURL } );
-						setAttributes( { opensInNewTab: newOpensInNewTab } );
-						onChangeOpensInNewTab( newOpensInNewTab );
-					} }
-				/>
-			</Popover>
-		);
-	};
 	return (
 		<Suspense fallback={ lazyLoader() }>
-			{ blockControls() }
-			{ linkControls() }
 			<InspectorControls>
 				<InspectorTabs>
 					<InspectorTab { ...UAGTabs.general }>

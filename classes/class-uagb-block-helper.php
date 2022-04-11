@@ -106,7 +106,15 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					' ' .
 					$box_shadow_position_css,
 			);
-
+			$selectors[ $wrapper.' .uagb-button__link' ] = array(
+				'font-family'     => $attr['fontFamily'],
+				'font-weight'     => $attr['fontWeight'],
+				'font-style'      => $attr['fontStyle'],
+				'text-transform'  => $attr['transform'],
+				'text-decoration' => $attr['decoration'],
+				'font-size'       => UAGB_Helper::get_css_value( $attr['size'], $attr['sizeType'] ),
+				'line-height'     => UAGB_Helper::get_css_value( $attr['lineHeight'], $attr['lineHeightType'] ),
+			);
 			$selectors[ $wrapper . ':hover' ]       = array(
 				'background'   => $attr['hBackground'],
 				'border-width' => UAGB_Helper::get_css_value( $attr['borderWidth'], 'px' ),

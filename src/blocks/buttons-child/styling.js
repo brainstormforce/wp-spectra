@@ -76,7 +76,8 @@ function styling( props ) {
 		boxShadowBlur,
 		boxShadowSpread,
 		boxShadowPosition,
-		iconColor
+		iconColor,
+		iconSize
 	} = props.attributes;
 
 	const tabletSelectors = {};
@@ -199,7 +200,8 @@ function styling( props ) {
 	};
 
 	selectors[ ' .uagb-button__icon > svg' ] = {
-		'width': generateCSSUnit( size, sizeType ),
+		'width': generateCSSUnit( iconSize, 'px' ),
+		'height': generateCSSUnit( iconSize, 'px' ),
 		'fill': iconColor,
 	};
 

@@ -28,6 +28,7 @@ for ( let i = 1; i <= itemCount; i++ ) {
 		lineHeightType: 'em',
 		lineHeightMobile: '',
 		lineHeightTablet: '',
+		buttonSize:''
 	} );
 }
 
@@ -125,29 +126,59 @@ const attributes = {
 	},
 	fontSizeType: {
 		type: 'string',
-		default: 'px'
+		default: 'px',
+		UAGCopyPaste: {
+			styleType: 'btn-font-size-type'
+		}
 	},
 	fontSize: {
-		type: 'string'
+		type: 'string',
+		UAGCopyPaste: {
+			styleType: 'btn-font-size'
+		}
 	},
 	fontSizeMobile: {
-		type: 'string'
+		type: 'string',
+		UAGCopyPaste: {
+			styleType: 'btn-font-size-mobile'
+		}
 	},
 	fontSizeTablet: {
-		type: 'string'
+		type: 'string',
+		UAGCopyPaste: {
+			styleType: 'btn-font-size-tablet'
+		}
 	},
 	lineHeightType: {
 		type: 'string',
-		default: 'px'
+		default: 'px',
+		UAGCopyPaste: {
+			styleType: 'btn-line-height-type'
+		}
 	},
 	lineHeight: {
-		type: 'string'
+		type: 'string',
+		UAGCopyPaste: {
+			styleType: 'btn-line-height'
+		}
 	},
 	lineHeightMobile: {
-		type: 'string'
+		type: 'string',
+		UAGCopyPaste: {
+			styleType: 'btn-line-height-mobile'
+		}
 	},
 	lineHeightTablet: {
-		type: 'string'
+		type: 'string',
+		UAGCopyPaste: {
+			styleType: 'btn-line-height-tablet'
+		}
+	},
+	buttonSize:{
+		type:'string',
+		UAGCopyPaste: {
+			styleType: 'btn-size'
+		}
 	},
 };
 

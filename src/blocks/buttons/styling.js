@@ -33,7 +33,7 @@ function styling( props ) {
 	const tabletSelectors = {};
 	const mobileSelectors = {};
 
-	selectors[ ' .uagb-buttons-repeater:not(.wp-block-button__link)' ] = { // For Backword user.
+	selectors[ ' .uagb-button__wrapper .uagb-buttons-repeater:not(.wp-block-button__link)' ] = { // For Backword user.
 		'font-family': fontFamily,
 		'font-style' : fontStyle,
 		'text-decoration': fontDecoration,
@@ -43,7 +43,7 @@ function styling( props ) {
 		'line-height': generateCSSUnit( lineHeight, lineHeightType ),
 	};
 
-	selectors[ ' .uagb-buttons-repeater' ] = { // For new user.
+	selectors[ ' .uagb-button__wrapper .uagb-buttons-repeater' ] = { // For new user.
 		'font-family': fontFamily,
 		'font-style' : fontStyle,
 		'text-decoration': fontDecoration,
@@ -99,10 +99,6 @@ function styling( props ) {
 		};
 	} else {
 		selectors['.uagb-editor-preview-mode-desktop .block-editor-block-list__layout'] = {
-			'flex-direction': 'column',
-			'row-gap': generateCSSUnit( gap, 'px' ),
-		};
-		selectors[ '.uagb-editor-preview-mode-desktop .block-editor-block-list__layout' ] = {
 			'width': '100%'
 		}
 		selectors[ ' .block-editor-block-list__block' ] = {

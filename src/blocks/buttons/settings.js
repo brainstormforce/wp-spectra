@@ -1,13 +1,16 @@
 import lazyLoader from '@Controls/lazy-loader';
 import React, { Suspense } from 'react';
 import { __ } from '@wordpress/i18n';
-import { InspectorControls, BlockControls, BlockAlignmentToolbar } from '@wordpress/block-editor';
+import { InspectorControls, BlockControls, Inserter } from '@wordpress/block-editor';
 import { Icon } from '@wordpress/components';
 import TypographyControl from '@Components/typography';
 import WebfontLoader from '@Components/typography/fontloader';
 import MultiButtonsControl from '@Components/multi-buttons-control';
 import renderSVG from '@Controls/renderIcon';
 import Range from '@Components/range/Range.js';
+
+import { SelectControl,
+	Toolbar } from '@wordpress/components';
 import InspectorTabs from '@Components/inspector-tabs/InspectorTabs.js';
 import InspectorTab, {
 	UAGTabs,
@@ -41,6 +44,7 @@ const Settings = ( props ) => {
 		lineHeight,
 		lineHeightMobile,
 		lineHeightTablet,
+		buttonSize
 
 	} = attributes;
 
@@ -187,6 +191,48 @@ const Settings = ( props ) => {
 					max={ 200 }
 					displayUnit={ false }
 				/>
+				<SelectControl
+					label={ __(
+						'Button Size',
+						'ultimate-addons-for-gutenberg'
+					) }
+					value={ buttonSize }
+					onChange={ ( value ) =>
+						setAttributes( {
+							buttonSize: value,
+						} )
+					}
+					options={ [
+						{
+							value: 'small',
+							label: __(
+								'Small',
+								'ultimate-addons-for-gutenberg'
+							),
+						},
+						{
+							value: 'medium',
+							label: __(
+								'Medium',
+								'ultimate-addons-for-gutenberg'
+							),
+						},
+						{
+							value: 'large',
+							label: __(
+								'Large',
+								'ultimate-addons-for-gutenberg'
+							),
+						},
+						{
+							value: 'extralarge',
+							label: __(
+								'Extra Large',
+								'ultimate-addons-for-gutenberg'
+							),
+						}
+					] }
+				/>
 			</UAGAdvancedPanelBody>
 		);
 	};
@@ -263,13 +309,14 @@ const Settings = ( props ) => {
 	const blockControls = () => {
 		return (
 			<BlockControls>
-				<BlockAlignmentToolbar
-					value={ align }
-					onChange={ ( value ) => {
-						setAttributes( { align: value } );
-					} }
-					controls={ [ 'left', 'center', 'right', 'full' ] }
-				/>
+				<Toolbar className="uag-container-block-inserter">
+					<Inserter
+						clientId = { props.clientId }
+						rootClientId = { props.clientId }
+						__experimentalIsQuick = {true}
+						position="bottom right"
+					/>
+				</Toolbar>
 			</BlockControls>
 		);
 	};

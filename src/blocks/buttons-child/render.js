@@ -22,8 +22,7 @@ const Render = ( props ) => {
 		label,
 		icon,
 		iconPosition,
-		removeText,
-		buttonSize
+		removeText
 	} = attributes;
 
 	const iconHtml = ( curr_position ) => {
@@ -42,7 +41,7 @@ const Render = ( props ) => {
 		return null;
 	};
 	const btnText = () => {
-		if( removeText ){
+		if( ! removeText ){
 			return <RichText
 						placeholder={ __( 'Add text…' ) }
 						value={ label }
@@ -66,8 +65,7 @@ const Render = ( props ) => {
 				'uagb-buttons__outer-wrap',
 				`uagb-editor-preview-mode-${ deviceType.toLowerCase() }`,
 				`uagb-block-${ props.clientId.substr( 0, 8 ) }`,
-				'wp-block-button',
-				`uagb-btn__${buttonSize}-btn`
+				'wp-block-button'
 			) }
 		>
 			<div className="uagb-button__wrapper">

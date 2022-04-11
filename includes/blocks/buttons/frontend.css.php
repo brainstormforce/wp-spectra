@@ -108,19 +108,19 @@ if ( 'full' !== $attr['alignMobile'] ) {
 }
 
 if ( $attr['childMigrate'] ) {
-	$selectors[' .uagb-buttons-repeater:not(.wp-block-button__link)'] = array( // For Backword user.
+	$selectors[' .uagb-buttons-repeater:not(.wp-block-button__link) .uagb-button__link'] = array( // For Backword user.
 		'font-family'     => $attr['fontFamily'],
 		'text-transform'  => $attr['fontTransform'],
-		'text-decoration' => $attr['fontDecoration'] . '!important',
+		'text-decoration' => $attr['fontDecoration'],
 		'font-style'      => $attr['fontStyle'],
 		'font-weight'     => $attr['fontWeight'],
 		'font-size'       => UAGB_Helper::get_css_value( $attr['fontSize'], $attr['fontSizeType'] ),
 		'line-height'     => UAGB_Helper::get_css_value( $attr['lineHeight'], $attr['lineHeightType'] ),
 	);
-	$selectors[' .uagb-buttons-repeater']                             = array( // For New User.
+	$selectors[' .uagb-buttons-repeater .uagb-button__link']                             = array( // For New User.
 		'font-family'     => $attr['fontFamily'],
 		'text-transform'  => $attr['fontTransform'],
-		'text-decoration' => $attr['fontDecoration'] . '!important',
+		'text-decoration' => $attr['fontDecoration'],
 		'font-style'      => $attr['fontStyle'],
 		'font-weight'     => $attr['fontWeight'],
 		'font-size'       => UAGB_Helper::get_css_value( $attr['fontSize'], $attr['fontSizeType'] ),
