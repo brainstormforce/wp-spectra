@@ -71,7 +71,7 @@ export default function save( props ) {
 						<>
 							<div
 								className="g-recaptcha uagb-forms-field-set"
-								data-sitekey={ uagb_blocks_info.recaptcha_site_key_v2 }
+								data-sitekey= ''
 							></div>
 						</>
 					) }
