@@ -123,7 +123,6 @@ const Settings = ( props ) => {
 		secondCtaFontStyle,
 		secondCtaFontTransform,
 		secondCtaFontDecoration,
-		secondCtaType,
 		secondCtaTopPadding,
 		secondCtaRightPadding,
 		secondCtaBottomPadding,
@@ -149,10 +148,10 @@ const Settings = ( props ) => {
 		secondCtaBackground,
 		secondCtaHoverColor,
 		secondCtaHoverBackground,
-		secondCtaSize,
-		secondCtaSizeType,
-		secondCtaSizeMobile,
-		secondCtaSizeTablet,
+		secondCtaFontSize,
+		secondCtaFontSizeType,
+		secondCtaFontSizeMobile,
+		secondCtaFontSizeTablet,
 		secondCtaIcon,
 		secondCtaIconPosition,
 		secondCtaIconSpace,
@@ -226,45 +225,21 @@ const Settings = ( props ) => {
 	const secBtnSettings = () => {
 		return (
 			<UAGAdvancedPanelBody
-				title={ __( '2nd-Button', 'ultimate-addons-for-gutenberg' ) }
+				title={ __( 'Additional-Button', 'ultimate-addons-for-gutenberg' ) }
 				initialOpen={ true }
 			>
-				<MultiButtonsControl
-					setAttributes={ setAttributes }
-					label={ __( 'Type', 'ultimate-addons-for-gutenberg' ) }
-					data={ {
-						value: secondCtaType,
-						label: 'secondCtaType',
-					} }
-					className="uagb-multi-button-alignment-control"
-					options={ [
-						{
-							value: 'text',
-							label: __(
-								'Text',
-								'ultimate-addons-for-gutenberg'
-							),
-							tooltip: __(
-								'Text',
-								'ultimate-addons-for-gutenberg'
-							),
-						},
-						{
-							value: 'button',
-							label: __(
-								'Button',
-								'ultimate-addons-for-gutenberg'
-							),
-							tooltip: __(
-								'Button',
-								'ultimate-addons-for-gutenberg'
-							),
-						},
-					] }
-					showIcons={ false }
+				<ToggleControl
+					label={ __(
+						'Enable 2nd CTA Button',
+						'ultimate-addons-for-gutenberg'
+					) }
+					checked={ enabledSecondCtaButton }
+					onChange={ () =>
+						setAttributes( { enabledSecondCtaButton: ! enabledSecondCtaButton } )
+					}
 				/>
-				{ ( secondCtaType === 'text' || secondCtaType === 'button' ) && (
-					<>
+				{ enabledSecondCtaButton && (
+				<>
 				<TextControl
 					label={ __(
 						'Text',
@@ -295,10 +270,6 @@ const Settings = ( props ) => {
 						setAttributes( { secondCtaTarget: ! secondCtaTarget } )
 					}
 				/>
-				</>
-				)}
-				{ secondCtaType === 'button' && (
-					<>
 				<UAGIconPicker
 					label={ __(
 						'Icon',
@@ -364,7 +335,7 @@ const Settings = ( props ) => {
 					max={ 50 }
 					displayUnit={ false }
 				/>
-			</>
+				</>
 				)}
 				</>
 				)}
@@ -375,11 +346,9 @@ const Settings = ( props ) => {
 	const secButtonStyleSettings = () => {
 		return (
 			<UAGAdvancedPanelBody
-				title={ __( '2nd-Button', 'ultimate-addons-for-gutenberg' ) }
+				title={ __( 'Additional-Button', 'ultimate-addons-for-gutenberg' ) }
 				initialOpen={ false }
 			>
-				{ ( ctaType === 'text' || ctaType === 'button' ) && (
-				<>
 				<TypographyControl
 					label={ __(
 						'Typography',
@@ -391,8 +360,14 @@ const Settings = ( props ) => {
 						value: secondCtaLoadGoogleFonts,
 						label: 'secondCtaLoadGoogleFonts',
 					} }
-					fontFamily={ { value: secondCtaFontFamily, label: 'secondCtaFontFamily' } }
-					fontWeight={ { value: secondCtaFontWeight, label: 'secondCtaFontWeight' } }
+					fontFamily={ {
+						value: secondCtaFontFamily,
+						label: 'secondCtaFontFamily',
+					} }
+					fontWeight={ {
+						value: secondCtaFontFamily,
+						label: 'secondCtaFontFamily',
+					} }
 					fontStyle={ {
 						value: secondCtaFontStyle,
 						label: 'secondCtaFontStyle',
@@ -406,76 +381,23 @@ const Settings = ( props ) => {
 						label: 'secondCtaFontDecoration',
 					} }
 					fontSizeType={ {
-						value: secondCtaSizeType,
-						label: 'secondCtaSizeType',
+						value: secondCtaFontSizeType,
+						label: 'secondCtaFontSizeType',
 					} }
 					fontSize={ {
-						value: secondCtaSize,
-						label: 'secondCtaSize',
+						value: secondCtaFontSize,
+						label: 'secondCtaFontSize',
 					} }
 					fontSizeMobile={ {
-						value: secondCtaSizeMobile,
-						label: 'secondCtaSizeMobile',
+						value: secondCtaFontSizeMobile,
+						label: 'secondCtaFontSizeMobile',
 					} }
 					fontSizeTablet={ {
-						value: secondCtaSizeTablet,
-						label: 'secondCtaSizeTablet',
+						value: secondCtaFontSizeTablet,
+						label: 'secondCtaFontSizeTablet',
 					} }
 					disableLineHeight={ true }
 				/>
-				</>
-				)}
-				{ secondCtaType === 'text' && (
-					<UAGTabsControl
-						tabs={ [
-							{
-								name: 'normal',
-								title: __(
-									'Normal',
-									'ultimate-addons-for-gutenberg'
-								),
-							},
-							{
-								name: 'hover',
-								title: __(
-									'Hover',
-									'ultimate-addons-for-gutenberg'
-								),
-							},
-						] }
-						normal={
-							<>
-							<AdvancedPopColorControl
-								label={ __(
-									'Text Color',
-									'ultimate-addons-for-gutenberg'
-								) }
-								colorValue={ secondCtaColor ? secondCtaColor : '' }
-								onColorChange={ ( value ) =>
-									setAttributes( { secondCtaColor: value } )
-								}
-							/>
-							</>
-						 }
-						hover={
-							<>
-							<AdvancedPopColorControl
-								label={ __(
-									'Text Color',
-									'ultimate-addons-for-gutenberg'
-								) }
-								colorValue={ secondCtaHoverColor ? secondCtaHoverColor : '' }
-								onColorChange={ ( value ) =>
-									setAttributes( { secondCtaHoverColor: value } )
-								}
-							/>
-							</>
-						 }
-						disableBottomSeparator={ true }
-					/>
-				) }
-				{ secondCtaType === 'button' && (
-				<>
 				<UAGTabsControl
 					tabs={ [
 						{
@@ -645,8 +567,6 @@ const Settings = ( props ) => {
 						label: 'secondCtaPaddingLink',
 					} }
 				/>
-				</>
-				)}
 			</UAGAdvancedPanelBody>
 		);
 	};
@@ -658,16 +578,6 @@ const Settings = ( props ) => {
 				title={ __( 'Button', 'ultimate-addons-for-gutenberg' ) }
 				initialOpen={ false }
 			>
-				<ToggleControl
-					label={ __(
-						'Enable 2nd CTA Button',
-						'ultimate-addons-for-gutenberg'
-					) }
-					checked={ enabledSecondCtaButton }
-					onChange={ () =>
-						setAttributes( { enabledSecondCtaButton: ! enabledSecondCtaButton } )
-					}
-				/>
 				<MultiButtonsControl
 					setAttributes={ setAttributes }
 					label={ __( 'Type', 'ultimate-addons-for-gutenberg' ) }
@@ -1673,7 +1583,7 @@ const Settings = ( props ) => {
 						{ presetSettings() }
 						{ layouts() }
 						{ ctaSettings() }
-						{ enabledSecondCtaButton && secBtnSettings() }
+						{ secBtnSettings() }
 					</InspectorTab>
 					<InspectorTab { ...UAGTabs.style }>
 						{ headingSettings() }
@@ -1691,9 +1601,9 @@ const Settings = ( props ) => {
 				</InspectorTabs>
 			</InspectorControls>
 			{ loadCtaGoogleFonts }
+			{ loadSecCtaGoogleFonts }
 			{ loadTitleGoogleFonts }
 			{ loadDescGoogleFonts }
-			{ loadSecCtaGoogleFonts }
 		</Suspense>
 	);
 };

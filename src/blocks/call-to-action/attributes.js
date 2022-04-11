@@ -552,23 +552,18 @@ const attributes = {
 		type: 'boolean',
 		default: false,
 	},
-	secondCtaType: {
-		type: 'string',
-		default: 'button',
-	},
 	secondCtaLabel: {
 		type: 'html',
-		default: '#Click Here',
+		default: 'Here',
 	},
 	secondCtaLink: {
 		type: 'string',
-		default: '',
+		default: '#',
 	},
 	secondCtaTarget: {
-		type: 'string',
-		default: '_self',
+		type: 'boolean',
+		default: false,
 	},
-
 	secondCtaLoadGoogleFonts: {
 		type: 'boolean',
 		default: false,
@@ -768,27 +763,28 @@ const attributes = {
 			styleType: 'btn-h-background'
 		}
 	},
-	secondCtaSize: {
+	secondCtaFontSize: {
 		type: 'number',
 		UAGCopyPaste: {
 			styleType: 'btn-size'
-		}
+		},
+		default: 14,
 	},
-	secondCtaSizeType: {
+	secondCtaFontSizeType: {
 		type: 'string',
 		default: 'px',
 		UAGCopyPaste: {
 			styleType: 'btn-size-unit'
 		}
 	},
-	secondCtaSizeMobile: {
+	secondCtaFontSizeMobile: {
 		type: 'number',
 		default: '',
 		UAGCopyPaste: {
 			styleType: 'btn-size-mobile'
 		}
 	},
-	secondCtaSizeTablet: {
+	secondCtaFontSizeTablet: {
 		type: 'number',
 		default: '',
 		UAGCopyPaste: {

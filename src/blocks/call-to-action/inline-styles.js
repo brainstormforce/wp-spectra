@@ -115,7 +115,6 @@ function CtaStyle( props ) {
 		secondCtaHoverColor,
 		secondCtaHoverBackground,
 		gap,
-		secondCtaType
 	} = props.attributes;
 
 	const selectors = {
@@ -220,52 +219,32 @@ function CtaStyle( props ) {
 		'padding-right': generateCSSUnit( ctaRightPadding, ctaPaddingUnit ),
 	};
 
-	if( 'text' === secondCtaType ){
-		selectors['.uagb-cta__outer-wrap a.uagb-cta-second__button'] = {
-			'font-size': generateCSSUnit( secondCtaSize, secondCtaSizeType ),
-			'font-family': secondCtaFontFamily,
-			'font-style' : secondCtaFontStyle,
-			'text-decoration': secondCtaFontDecoration,
-			'text-transform': secondCtaFontTransform,
-			'font-weight': secondCtaFontWeight,
-			'color': secondCtaColor,
-			'background-color': secondCtaBackground,
-			'margin-left': generateCSSUnit( gap, 'px' ),
-			'margin-right': '0',
-		};
-		selectors['.uagb-cta__outer-wrap:hover a.uagb-cta-second__button'] = {
-			'color': secondCtaHoverColor,
-			'background-color': secondCtaHoverBackground,
-		};
-	}
-
-	if( 'button' === secondCtaType ){
-		selectors['.uagb-cta__outer-wrap a.uagb-cta-second__button'] = {
-			'font-size': generateCSSUnit( secondCtaSize, secondCtaSizeType ),
-			'font-family': secondCtaFontFamily,
-			'font-style' : secondCtaFontStyle,
-			'text-decoration': secondCtaFontDecoration,
-			'text-transform': secondCtaFontTransform,
-			'font-weight': secondCtaFontWeight,
-			'color': secondCtaColor,
-			'background-color': secondCtaBackground,
-			'border-style': secondCtaBorderStyle,
-			'border-color': secondCtaBorderColor,
-			'border-radius': generateCSSUnit( secondCtaBorderRadius, 'px' ),
-			'border-width': generateCSSUnit( secondCtaBorderWidth, 'px' ),
-			'padding-top': generateCSSUnit( secondCtaTopPadding, secondCtaPaddingUnit ),
-			'padding-bottom': generateCSSUnit( secondCtaBottomPadding, secondCtaPaddingUnit ),
-			'padding-left': generateCSSUnit( secondCtaLeftPadding, secondCtaPaddingUnit ),
-			'padding-right': generateCSSUnit( secondCtaRightPadding, secondCtaPaddingUnit ),
-			'margin-left': generateCSSUnit( gap, 'px' ),
-			'margin-right': '0',
-		};
-		selectors['.uagb-cta__outer-wrap:hover a.uagb-cta-second__button'] = {
-			'color': secondCtaHoverColor,
-			'background-color': secondCtaHoverBackground,
-			'border-color': secondCtaBorderHColor,
-		};
-	}
+	selectors['.uagb-cta__outer-wrap a.uagb-cta-second__button'] = {
+		'font-size': generateCSSUnit( secondCtaSize, secondCtaSizeType ),
+		'font-family': secondCtaFontFamily,
+		'font-style' : secondCtaFontStyle,
+		'text-decoration': secondCtaFontDecoration,
+		'text-transform': secondCtaFontTransform,
+		'font-weight': secondCtaFontWeight,
+		'color': secondCtaColor,
+		'background-color': secondCtaBackground,
+		'border-style': secondCtaBorderStyle,
+		'border-color': secondCtaBorderColor,
+		'border-radius': generateCSSUnit( secondCtaBorderRadius, 'px' ),
+		'border-width': generateCSSUnit( secondCtaBorderWidth, 'px' ),
+		'padding-top': generateCSSUnit( secondCtaTopPadding, secondCtaPaddingUnit ),
+		'padding-bottom': generateCSSUnit( secondCtaBottomPadding, secondCtaPaddingUnit ),
+		'padding-left': generateCSSUnit( secondCtaLeftPadding, secondCtaPaddingUnit ),
+		'padding-right': generateCSSUnit( secondCtaRightPadding, secondCtaPaddingUnit ),
+		'margin-left': generateCSSUnit( gap, 'px' ),
+		'align-self': 'top' === buttonAlign ? 'flex-start' : 'center',
+		'height' : 'fit-content',
+	};
+	selectors['.uagb-cta__outer-wrap:hover a.uagb-cta-second__button'] = {
+		'color': secondCtaHoverColor,
+		'background-color': secondCtaHoverBackground,
+		'border-color': secondCtaBorderHColor,
+	};
 
 	selectors['.uagb-cta__outer-wrap:hover a.uagb-cta__button-link-wrapper'] = {
 		'color': ctaLinkHoverColor,
