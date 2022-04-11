@@ -197,33 +197,6 @@ const UAGBContainer = ( props ) => {
 		);
 	};
 
-	useEffect( ()=>{
-
-		const {
-			blockDescendants
-		} = props.attributes;
-
-		let currentDirection = 'row';
-
-		if ( props.attributes[ 'direction' + deviceType ].split( '-' )[0] ) {
-
-			currentDirection = props.attributes[ 'direction' + deviceType ].split( '-' )[0];
-		}
-		const childColumnsWidth = ( 100 / blockDescendants.length );
-
-		if ( 'row' === currentDirection ) {
-			blockDescendants.map( ( child ) => {
-				if ( ! child.attributes.widthSetByUser ) {
-					dispatch( 'core/block-editor' ).updateBlockAttributes( child.clientId, {
-						[`width${deviceType}`] : childColumnsWidth,
-					} );
-				}
-				return child;
-			} );
-		}
-
-	}, [props.attributes.blockDescendants] );
-
 	const { variations } = props;
 
 	const { variationSelected, isPreview } = props.attributes;
