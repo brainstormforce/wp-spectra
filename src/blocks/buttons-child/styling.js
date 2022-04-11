@@ -112,6 +112,10 @@ function styling( props ) {
 				marginType
 			),
 			'color': color,
+			'box-shadow':
+			generateCSSUnit( boxShadowHOffset, 'px' ) + ' ' + generateCSSUnit( boxShadowVOffset, 'px' ) +	' ' +
+			generateCSSUnit( boxShadowBlur, 'px' ) + ' ' +	generateCSSUnit( boxShadowSpread, 'px' ) + ' ' +
+			boxShadowColor + ' ' +	boxShadowPositionCSS,
 		},
 		'.uagb-buttons__outer-wrap .wp-block-button__link.uagb-buttons-repeater:hover': {
 			'background': hBackground,
@@ -131,12 +135,6 @@ function styling( props ) {
 		'.uagb-buttons__outer-wrap .wp-block-button__link.uagb-buttons-repeater .uagb-button__link': {
 			'color': color,
 		}
-	};
-	selectors['.uagb-buttons__outer-wrap .wp-block-button__link.uagb-buttons-repeater'] = {
-		'box-shadow':
-		generateCSSUnit( boxShadowHOffset, 'px' ) + ' ' + generateCSSUnit( boxShadowVOffset, 'px' ) +	' ' +
-		generateCSSUnit( boxShadowBlur, 'px' ) + ' ' +	generateCSSUnit( boxShadowSpread, 'px' ) + ' ' +
-		boxShadowColor + ' ' +	boxShadowPositionCSS,
 	};
 
 	if( 'none' !== borderStyle ) {
