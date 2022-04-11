@@ -37,7 +37,7 @@ const UAGAdvancedPanelBody = ( props ) => {
 
     };
 
-	const panelTitle = props?.title ? props?.title.toLowerCase().replace( /[^a-zA-Z ]/g, '' ) : '';
+	const panelTitle = props?.title ? props?.title.toLowerCase().replace( /[^a-zA-Z\s+]/g, '' ).replace( /\s+/g, '-' ) : '';
 
     return (
         <PanelBody

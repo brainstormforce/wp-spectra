@@ -225,7 +225,7 @@ const Settings = ( props ) => {
 	const secBtnSettings = () => {
 		return (
 			<UAGAdvancedPanelBody
-				title={ __( 'Additional-Button', 'ultimate-addons-for-gutenberg' ) }
+				title={ __( 'Additional Button', 'ultimate-addons-for-gutenberg' ) }
 				initialOpen={ true }
 			>
 				<ToggleControl
@@ -346,7 +346,7 @@ const Settings = ( props ) => {
 	const secButtonStyleSettings = () => {
 		return (
 			<UAGAdvancedPanelBody
-				title={ __( 'Additional-Button', 'ultimate-addons-for-gutenberg' ) }
+				title={ __( 'Additional Button', 'ultimate-addons-for-gutenberg' ) }
 				initialOpen={ false }
 			>
 				<TypographyControl
