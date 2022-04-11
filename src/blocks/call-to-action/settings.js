@@ -226,7 +226,7 @@ const Settings = ( props ) => {
 		return (
 			<UAGAdvancedPanelBody
 				title={ __( 'Additional Button', 'ultimate-addons-for-gutenberg' ) }
-				initialOpen={ true }
+				initialOpen={ false }
 			>
 				<ToggleControl
 					label={ __(

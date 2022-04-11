@@ -199,6 +199,8 @@ function CtaStyle( props ) {
 		};
 	}
 
+
+
 	// CTA style.
 	selectors['.uagb-cta__outer-wrap a.uagb-cta__button-link-wrapper'] = {
 		'font-size': generateCSSUnit( ctaFontSize, ctaFontSizeType ),
@@ -387,6 +389,12 @@ function CtaStyle( props ) {
 		};
 	}
 
+	if( 'below-title' === ctaPosition ){
+		tabletSelectors[ '.uagb-cta__outer-wrap ' ] = {
+			'display' : 'inherit',
+		};
+	}
+
 	const mobileSelectors = {
 		'.uagb-cta__outer-wrap ': {
 			'display' : 'inline-flex',
@@ -481,6 +489,12 @@ function CtaStyle( props ) {
 		};
 		mobileSelectors[ '.uagb-cta__content-stacked-mobile .uagb-cta__wrap ' ] = {
 			'width' : '100%',
+		};
+	}
+
+	if( 'below-title' === ctaPosition ){
+		mobileSelectors[ '.uagb-cta__outer-wrap ' ] = {
+			'display' : 'inherit',
 		};
 	}
 
