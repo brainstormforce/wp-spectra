@@ -15,21 +15,18 @@ const attributes = {
 	},
 	widthDesktop: {
 		type: 'number',
-		default: 100,
 		UAGCopyPaste: {
 			styleType: 'container-width-desktop'
 		}
 	},
 	widthTablet: {
 		type: 'number',
-		default: 100,
 		UAGCopyPaste: {
 			styleType: 'container-width-tablet'
 		}
 	},
 	widthMobile: {
 		type: 'number',
-		default: 100,
 		UAGCopyPaste: {
 			styleType: 'container-width-mobile'
 		}
