@@ -27,6 +27,7 @@ import {
 	SelectControl ,
 	TextControl,
 	Icon,
+	Button,
 } from '@wordpress/components';
 import UAGAdvancedPanelBody from '@Components/advanced-panel-body';
 
@@ -180,6 +181,9 @@ const Settings = ( props ) => {
 		captionColorHover,
 		captionBackgroundColor,
 		captionBackgroundColorHover,
+		overlayColor,
+		overlayColorHover,
+		captionSeparateColors,
 
 		paginateArrowDistance,
 		paginateArrowDistanceUnit,
@@ -196,8 +200,6 @@ const Settings = ( props ) => {
 		paginateButtonBorderColorHover,
 		paginateColor,
 		paginateColorHover,
-		overlayColor,
-		overlayColorHover,
 	} = attributes;
 
 	// Helpers
@@ -1277,7 +1279,7 @@ const Settings = ( props ) => {
 				checked={ imageEnableZoom }
 				onChange={ () => 
 					setAttributes( { imageEnableZoom: ! imageEnableZoom } )
-					}
+				}
 			/>
 			<ToggleControl
 				label={ __(
@@ -1298,7 +1300,7 @@ const Settings = ( props ) => {
 				checked={ captionBackgroundEnableBlur }
 				onChange={ () => 
 					setAttributes( { captionBackgroundEnableBlur: ! captionBackgroundEnableBlur } )
-					}
+				}
 			/>
 			{ imageEnableZoom && (
 				<MultiButtonsControl
@@ -1508,7 +1510,17 @@ const Settings = ( props ) => {
 					},
 				] }
 			/>
-			{ captionVisibility === 'always'
+			{ captionVisibility === 'always' && (
+				<ToggleControl
+					label={ __(
+						'Separate Hover Colors',
+						'ultimate-addons-for-gutenberg'
+					) }
+					checked={ captionSeparateColors }
+					onChange={ () => setAttributes( { captionSeparateColors: ! captionSeparateColors } ) }
+				/>
+			) }
+			{ ( captionVisibility === 'always' && captionSeparateColors )
 				? (
 					<UAGTabsControl
 						tabs={ [

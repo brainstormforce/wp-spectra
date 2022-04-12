@@ -160,6 +160,7 @@ return array(
 	'captionBackgroundColorHover' => 'rgba(0,0,0,0.75)',
 	'overlayColor' => 'rgba(0,0,0,0)',
 	'overlayColorHover' => 'rgba(0,0,0,0)',
+	'captionSeparateColors' => false,
 	// Pagination Styling
 	'paginateArrowDistance' => -24,
 	'paginateArrowDistanceUnit' => 'px',

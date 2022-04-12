@@ -128,6 +128,7 @@ function styling( props ) {
 		captionBackgroundColorHover,
 		overlayColor,
 		overlayColorHover,
+		captionSeparateColors,
 
 		paginateArrowDistance,
 		paginateArrowDistanceUnit,
@@ -367,7 +368,7 @@ function styling( props ) {
 			'background-color': imageDisplayCaption ? ( ( captionVisibility === 'hover' ) ? 'rgba(0,0,0,0)' : captionBackgroundColor ) : overlayColor,
 		},
 		'.uag-image-gallery-media-wrapper:hover .uag-image-gallery-media__thumbnail-caption-wrapper--overlay': {
-			'background-color': imageDisplayCaption ? ( ( captionVisibility === 'antiHover' ) ? 'rgba(0,0,0,0)' : ( ( captionVisibility === 'always' ) ? captionBackgroundColorHover : captionBackgroundColor ) ) : overlayColorHover,
+			'background-color': imageDisplayCaption ? ( ( captionVisibility === 'antiHover' ) ? 'rgba(0,0,0,0)' : ( ( captionVisibility === 'always' && captionSeparateColors ) ? captionBackgroundColorHover : captionBackgroundColor ) ) : overlayColorHover,
 		},		
 		'.uag-image-gallery-media__thumbnail-caption-wrapper--bar-inside': {
 			'-webkit-align-items': getMatrixAlignment( imageCaptionAlignment, 1, 'flex' ),
@@ -419,16 +420,16 @@ function styling( props ) {
 			'background-color': ( captionVisibility === 'hover' ) ? 'rgba(0,0,0,0)' : captionBackgroundColor,
 		},
 		'.uag-image-gallery-media-wrapper:hover .uag-image-gallery-media__thumbnail-caption--bar-inside': {
-			'background-color': ( captionVisibility === 'antiHover' ) ? 'rgba(0,0,0,0)' : ( ( captionVisibility === 'always' ) ? captionBackgroundColorHover : captionBackgroundColor ),
+			'background-color': ( captionVisibility === 'antiHover' ) ? 'rgba(0,0,0,0)' : ( ( captionVisibility === 'always' && captionSeparateColors ) ? captionBackgroundColorHover : captionBackgroundColor ),
 		},		
 		'.uag-image-gallery-media__thumbnail-caption--bar-outside': {
 			'background-color': captionBackgroundColor,
 		},
 		'.uag-image-gallery-media-wrapper:hover .uag-image-gallery-media__thumbnail-caption--bar-outside': {
-			'background-color': captionBackgroundColorHover,
+			'background-color': captionSeparateColors ? captionBackgroundColorHover : captionBackgroundColor,
 		},
 		'.uag-image-gallery-media-wrapper:hover .uag-image-gallery-media__thumbnail-caption': {
-			'color': ( captionVisibility === 'antiHover' ) ? 'rgba(0,0,0,0)' : ( ( captionVisibility === 'always' ) ? captionColorHover : captionColor ),
+			'color': ( captionVisibility === 'antiHover' ) ? 'rgba(0,0,0,0)' : ( ( captionVisibility === 'always' && captionSeparateColors ) ? captionColorHover : captionColor ),
 		},
 	};
 

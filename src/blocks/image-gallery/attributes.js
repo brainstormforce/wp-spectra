@@ -578,6 +578,10 @@ const attributes = {
 		type: 'string',
 		default: 'rgba(0,0,0,0)',
 	},
+	captionSeparateColors: {
+		type: 'boolean',
+		default: false,
+	},
 
 	// Pagination Styling
 	

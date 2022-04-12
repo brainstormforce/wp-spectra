@@ -654,6 +654,10 @@ if ( ! class_exists( 'Spectra_Pro_Image_Gallery' ) ) {
 								'type' => 'string',
 								'default' => 'rgba(0,0,0,0)',
 							),
+							'captionSeparateColors' => array(
+								'type' => 'boolean',
+								'default' => false,
+							),
 						),
 						// Pagination Styling
 						array(
