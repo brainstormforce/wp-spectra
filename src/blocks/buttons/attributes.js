@@ -12,11 +12,6 @@ for ( let i = 1; i <= itemCount; i++ ) {
 		size: '',
 		vPadding: '',
 		hPadding: '',
-		borderWidth: '',
-		borderRadius: '',
-		borderStyle: '',
-		borderColor: '',
-		borderHColor: '',
 		color: '',
 		background: '',
 		hColor: '',
@@ -28,7 +23,6 @@ for ( let i = 1; i <= itemCount; i++ ) {
 		lineHeightType: 'em',
 		lineHeightMobile: '',
 		lineHeightTablet: '',
-		buttonSize:''
 	} );
 }
 
@@ -76,6 +70,9 @@ const attributes = {
 	gap: {
 		type: 'number',
 		default: 10,
+		UAGCopyPaste: {
+			styleType: 'btn-gap'
+		}
 	},
 	stack: {
 		type: 'string',
@@ -176,6 +173,7 @@ const attributes = {
 	},
 	buttonSize:{
 		type:'string',
+		default: 'none',
 		UAGCopyPaste: {
 			styleType: 'btn-size'
 		}

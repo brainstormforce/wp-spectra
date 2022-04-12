@@ -11,7 +11,7 @@ export default function save( props ) {
 
 	const {
 		block_id,
-		target,
+		opensInNewTab,
 		link,
 		label,
 		icon,
@@ -45,7 +45,7 @@ export default function save( props ) {
 		}
 		return null;
 	};
-
+	let openNewWindow = opensInNewTab ? '_blank' : '_self' ;
 	return (
 		<div
 			className={ classnames(
@@ -63,7 +63,7 @@ export default function save( props ) {
 					) }
 					href={ link }
 					rel="noopener noreferrer"
-					target={ target }
+					target={ openNewWindow }
 				>
 					{ iconHtml( 'before' ) }
 					{ btnText() }

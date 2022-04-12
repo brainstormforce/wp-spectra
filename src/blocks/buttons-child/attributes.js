@@ -334,25 +334,25 @@ const attributes = {
 			styleType: 'btn-background-type'
 		}
 	},
-	topMarginDesktop:{
+	topMargin:{
 		type:'string',
 		UAGCopyPaste: {
 			styleType: 'btn-top-margin'
 		}
 	},
-	rightMarginDesktop:{
+	rightMargin:{
 		type:'string',
 		UAGCopyPaste: {
 			styleType: 'btn-right-margin'
 		}
 	},
-	bottomMarginDesktop:{
+	bottomMargin:{
 		type:'string',
 		UAGCopyPaste: {
 			styleType: 'btn-bottom-margin'
 		}
 	},
-	leftMarginDesktop:{
+	leftMargin:{
 		type:'string',
 		UAGCopyPaste: {
 			styleType: 'btn-left-margin'
@@ -440,7 +440,6 @@ const attributes = {
 	},
 	boxShadowBlur:{
 		type:'string',
-		default: 5,
 		UAGCopyPaste: {
 			styleType: 'btn-box-shadow-blur'
 		}
@@ -462,6 +461,12 @@ const attributes = {
 		type:'string',
 		UAGCopyPaste: {
 			styleType: 'btn-icon-color'
+		}
+	},
+	iconHColor:{
+		type:'string',
+		UAGCopyPaste: {
+			styleType: 'btn-icon-hover-color'
 		}
 	},
 	iconSize: {

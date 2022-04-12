@@ -79,11 +79,10 @@ const Settings = ( props ) => {
 		lineHeightType,
 		lineHeightMobile,
 		lineHeightTablet,
-		opensInNewTab,
 		icon,
 		iconPosition,
 		iconSpace,
-		target,
+		opensInNewTab,
 
 		loadGoogleFonts,
 		fontFamily,
@@ -114,6 +113,7 @@ const Settings = ( props ) => {
 		boxShadowSpread,
 		boxShadowPosition,
 		iconColor,
+		iconHColor,
 		iconSize,
 		removeText
 
@@ -121,10 +121,7 @@ const Settings = ( props ) => {
 
 	const buttonSettings = () => {
 		return (
-			<UAGAdvancedPanelBody
-				title={ __( 'Button', 'ultimate-addons-for-gutenberg' ) }
-				initialOpen={ true }
-			>
+			<UAGAdvancedPanelBody>
 				<UAGIconPicker
 					label={ __( 'Icon', 'ultimate-addons-for-gutenberg' ) }
 					value={ icon }
@@ -196,7 +193,7 @@ const Settings = ( props ) => {
 					) }
 					checked={ opensInNewTab }
 					onChange={ () =>
-						setAttributes( { opensInNewTab: ! opensInNewTab } )
+						setAttributes( { opensInNewTab : ! opensInNewTab } )
 					}
 				/>
 				<ToggleControl
@@ -540,15 +537,51 @@ const Settings = ( props ) => {
 					max={ 50 }
 					displayUnit={ false }
 				/>
-				<AdvancedPopColorControl
-					label={ __(
-						'Color',
-						'ultimate-addons-for-gutenberg'
-					) }
-					colorValue={ iconColor ? iconColor : '' }
-					onColorChange={ ( value ) =>
-						setAttributes( { iconColor: value } )
+				<UAGTabsControl
+					tabs={ [
+						{
+							name: 'normal',
+							title: __(
+								'Normal',
+								'ultimate-addons-for-gutenberg'
+							),
+						},
+						{
+							name: 'hover',
+							title: __(
+								'Hover',
+								'ultimate-addons-for-gutenberg'
+							),
+						},
+					] }
+					normal={
+							<AdvancedPopColorControl
+								label={ __(
+									'Color',
+									'ultimate-addons-for-gutenberg'
+								) }
+								colorValue={ iconColor ? iconColor : '' }
+								onColorChange={ ( value ) =>
+									setAttributes( { iconColor: value } )
+								}
+							/>
 					}
+					hover={
+						<>
+							<AdvancedPopColorControl
+								label={ __(
+									'Color',
+									'ultimate-addons-for-gutenberg'
+								) }
+								colorValue={ iconHColor ? iconHColor : '' }
+								onColorChange={ ( value ) =>
+									setAttributes( { iconHColor: value } )
+								}
+							/>
+						</>
+					}
+
+					disableBottomSeparator={ true }
 				/>
 			</UAGAdvancedPanelBody>
 		);
@@ -587,7 +620,7 @@ const Settings = ( props ) => {
 						value: borderHColor,
 						label: 'borderHColor',
 						title: __(
-							'Hover Color',
+							'Color',
 							'ultimate-addons-for-gutenberg'
 						),
 					} }

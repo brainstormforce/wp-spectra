@@ -204,6 +204,13 @@ const Settings = ( props ) => {
 					}
 					options={ [
 						{
+							value: 'none',
+							label: __(
+								'None',
+								'ultimate-addons-for-gutenberg'
+							),
+						},
+						{
 							value: 'small',
 							label: __(
 								'Small',

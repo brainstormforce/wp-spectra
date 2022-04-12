@@ -72,6 +72,7 @@ function styling( props ) {
 		boxShadowSpread,
 		boxShadowPosition,
 		iconColor,
+		iconHColor,
 		iconSize
 	} = props.attributes;
 
@@ -94,7 +95,6 @@ function styling( props ) {
 			'font-style': fontStyle,
 			'text-transform': transform,
 			'text-decoration': decoration,
-			'background': background,
 			'padding-left': generateCSSUnit( leftPadding, paddingUnit ),
 			'padding-right': generateCSSUnit( rightPadding, paddingUnit ),
 			'padding-top': generateCSSUnit( topPadding, paddingUnit ),
@@ -112,19 +112,7 @@ function styling( props ) {
 			generateCSSUnit( boxShadowBlur, 'px' ) + ' ' +	generateCSSUnit( boxShadowSpread, 'px' ) + ' ' +
 			boxShadowColor + ' ' +	boxShadowPositionCSS,
 		},
-		'.uagb-buttons__outer-wrap .wp-block-button__link.uagb-buttons-repeater:hover': {
-			'background': hBackground,
-			'border-width': generateCSSUnit( borderWidth, 'px' ),
-			'border-style': borderStyle,
-			'border-color': borderHColor,
-		},
-		'.uagb-buttons__outer-wrap .wp-block-button__link.uagb-buttons-repeater:hover a.uagb-button__link': {
-			'color': hColor,
-		},
 		'.uagb-buttons__outer-wrap .wp-block-button__link.uagb-buttons-repeater:hover .uagb-button__link': {
-			'color': hColor,
-		},
-		'.uagb-buttons__outer-wrap .wp-block-button__link.uagb-buttons-repeater:hover .uagb-button__icon': {
 			'color': hColor,
 		},
 		'.uagb-buttons__outer-wrap .wp-block-button__link.uagb-buttons-repeater .uagb-button__link': {
@@ -133,11 +121,14 @@ function styling( props ) {
 	};
 
 	if( 'none' !== borderStyle ) {
-		selectors['.uagb-buttons__outer-wrap .wp-block-button__link.uagb-buttons-repeater'] = {
+		selectors[' .wp-block-button__link.uagb-buttons-repeater'] = {
 			'border-width': generateCSSUnit( borderWidth, 'px' ),
 			'border-style': borderStyle,
 			'border-color': borderColor,
 			'border-radius': generateCSSUnit( borderRadius, 'px' ),
+		};
+		selectors[ ' .wp-block-button__link.uagb-buttons-repeater:hover' ] = {
+			'border-color': borderHColor,
 		};
 
 	}
@@ -202,23 +193,15 @@ function styling( props ) {
 		'height': generateCSSUnit( iconSize, 'px' ),
 		'fill': iconColor,
 	};
-
+	selectors[ '.uagb-buttons__outer-wrap .wp-block-button__link.uagb-buttons-repeater:hover .uagb-button__icon > svg' ] = {
+		'fill': iconHColor,
+	};
 	selectors[ ' .uagb-button__icon-position-after' ] = {
 		'margin-left': generateCSSUnit( iconSpace, 'px' ),
 	};
 
 	selectors[ ' .uagb-button__icon-position-before' ] = {
 		'margin-right': generateCSSUnit( iconSpace, 'px' ),
-	};
-
-	mobileSelectors[ ' .uagb-button__icon' ] = {
-		'width': generateCSSUnit( sizeMobile, sizeType ),
-		'height': generateCSSUnit( sizeMobile, sizeType ),
-	};
-
-	tabletSelectors[ ' .uagb-button__icon' ] = {
-		'width': generateCSSUnit( sizeTablet, sizeType ),
-		'height': generateCSSUnit( sizeTablet, sizeType ),
 	};
 
 	if ( 'transparent' === backgroundType ) {
@@ -231,6 +214,13 @@ function styling( props ) {
 
 		const btnBackground = generateBackgroundCSS( backgroundAttributes );
 		selectors[ '.uagb-buttons__outer-wrap .wp-block-button__link.uagb-buttons-repeater' ] = btnBackground;
+	} else {
+		selectors[ '.uagb-buttons__outer-wrap .wp-block-button__link.uagb-buttons-repeater' ] = {
+			'background': background,
+		}
+		selectors[ '.uagb-buttons__outer-wrap .wp-block-button__link.uagb-buttons-repeater:hover' ] = {
+			'background': hBackground,
+		}
 	}
 	const id = `.editor-styles-wrapper .uagb-block-${ props.clientId.substr( 0, 8 ) }`;
 	let stylingCss = generateCSS( selectors, id );
