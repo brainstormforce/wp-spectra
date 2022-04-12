@@ -54,9 +54,9 @@ const Render = ( props ) => {
 						rel="noopener noreferrer"
 						keepPlaceholderOnFocus
 					/>
-		} else {
+		} 
 			return '';
-		}
+		
 	}
 	return (
 		<div

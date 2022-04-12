@@ -24,8 +24,7 @@ import WebfontLoader from '@Components/typography/fontloader';
 import GradientSettings from '@Components/gradient-settings';
 
 import {
-	InspectorControls,
-	__experimentalLinkControl,
+	InspectorControls
 } from '@wordpress/block-editor';
 
 import {
@@ -37,7 +36,6 @@ import UAGAdvancedPanelBody from '@Components/advanced-panel-body';
 
 const Settings = ( props ) => {
 
-	const setStateValue = props.setStateValue;
 	props = props.parentProps;
 
 	const { attributes, setAttributes } = props;
@@ -350,7 +348,7 @@ const Settings = ( props ) => {
 
 	const backgroundSettings = () => {
 		return <UAGAdvancedPanelBody
-					title={__('Background','ultimate-addons-for-gutenberg' )}
+					title={__( 'Background','ultimate-addons-for-gutenberg' )}
 					initialOpen={false}
 				>
 				<MultiButtonsControl
@@ -474,7 +472,7 @@ const Settings = ( props ) => {
 
 	const boxShadowSettings = () => {
 		return <UAGAdvancedPanelBody
-					title={__('Box Shadow','ultimate-addons-for-gutenberg')}
+					title={__( 'Box Shadow','ultimate-addons-for-gutenberg' )}
 					initialOpen={false}
 				>
 					<BoxShadowControl

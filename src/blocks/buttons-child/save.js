@@ -26,9 +26,9 @@ export default function save( props ) {
 						tagName="div"
 						className="uagb-button__link"
 					/>
-		} else {
+		} 
 			return '';
-		}
+		
 	}
 	const iconHtml = ( curr_position ) => {
 		if ( '' !== icon && curr_position === iconPosition ) {
@@ -45,7 +45,7 @@ export default function save( props ) {
 		}
 		return null;
 	};
-	let openNewWindow = opensInNewTab ? '_blank' : '_self' ;
+	const openNewWindow = opensInNewTab ? '_blank' : '_self' ;
 	return (
 		<div
 			className={ classnames(

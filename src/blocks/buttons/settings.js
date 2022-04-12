@@ -2,7 +2,6 @@ import lazyLoader from '@Controls/lazy-loader';
 import React, { Suspense } from 'react';
 import { __ } from '@wordpress/i18n';
 import { InspectorControls, BlockControls, Inserter } from '@wordpress/block-editor';
-import { Icon } from '@wordpress/components';
 import TypographyControl from '@Components/typography';
 import WebfontLoader from '@Components/typography/fontloader';
 import MultiButtonsControl from '@Components/multi-buttons-control';
@@ -10,7 +9,7 @@ import renderSVG from '@Controls/renderIcon';
 import Range from '@Components/range/Range.js';
 
 import { SelectControl,
-	Toolbar } from '@wordpress/components';
+	Toolbar , Icon } from '@wordpress/components';
 import InspectorTabs from '@Components/inspector-tabs/InspectorTabs.js';
 import InspectorTab, {
 	UAGTabs,
