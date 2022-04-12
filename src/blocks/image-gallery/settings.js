@@ -1,7 +1,7 @@
 // Import all of our Text Options requirements.
 import { __ } from '@wordpress/i18n';
 import renderSVG from '@Controls/renderIcon';
-import React, { Suspense, useEffect } from 'react';
+import React, { Suspense, useEffect, useState } from 'react';
 import lazyLoader from '@Controls/lazy-loader';
 import getMatrixAlignment from '@Controls/getMatrixAlignment';
 import TypographyControl from '@Components/typography';
@@ -35,7 +35,7 @@ const MAX_IMAGE_COLUMNS = 8;
 const Settings = ( props ) => {
 	props = props.parentProps;
 
-	const { attributes, setAttributes, deviceType } = props;
+	const { attributes, setAttributes } = props;
 
 	const {
 		readyToRender,
@@ -200,6 +200,31 @@ const Settings = ( props ) => {
 	} = attributes;
 
 	// Helpers
+
+	const [ captionVisibility, setCaptionVisibility ] = useState( 'hover' );
+
+	useEffect( () => {
+		switch ( captionVisibility ){
+			case 'hover':
+				break;
+		}
+	}, [ captionVisibility ] );
+
+	const getVisibleColors = () => {
+		// Skip to hover color if any of the following are true:
+		// For Text: captionColor.toLowerCase() === 'transparent'
+		// For Hex: captionColor.charAt( 0 ) === "#" && captionColor.length === 9 && captionColor.slice(-2) === "00"
+		// For RGBA: captionColor.slice(0,4) === "rgba" && parseFloat( captionColor.slice( captionColor.lastIndexOf( ',' ) ).slice( 1, -1 ) ) === 0.0
+		if (
+			captionColor.toLowerCase() === 'transparent' || (
+				captionColor.charAt( 0 ) === "#" && captionColor.length === 9 && captionColor.slice(-2) === "00"
+			) || (
+				captionColor.slice(0,4) === "rgba" && parseFloat( captionColor.slice( captionColor.lastIndexOf( ',' ) ).slice( 1, -1 ) ) === 0.0
+			)
+		){
+			// Use Hover Colors.
+		}
+	};
 	
 	let loadCaptionGoogleFonts;
 	let loadLoadMoreGoogleFonts;
@@ -364,6 +389,7 @@ const Settings = ( props ) => {
 					: setAttributes( { captionBackgroundColor: value } )
 				}
 			/>
+			<p>{ captionBackgroundColor }</p>
 		</>
 	);
 
@@ -589,9 +615,19 @@ const Settings = ( props ) => {
 						displayUnit={ false }
 					/>
 					<SelectControl
+						label={ __( 'Visibility', 'ultimate-addons-for-gutenberg' ) }
+						value={ captionVisibility }
+						onChange={ ( value ) => setCaptionVisibility( value ) }
+					>
+						<option value="hover">Show on hover</option>
+						<option value="antiHover">Hide on hover</option>
+						<option value="always">Always Visible</option>
+						<option value="custom" disabled>Custom</option>
+					</SelectControl>
+					<SelectControl
 						label={ __( 'Caption Type', 'ultimate-addons-for-gutenberg' ) }
 						value={ captionDisplayType }
-						onChange={ ( value ) => setAttributes( { captionDisplayType: value } )}
+						onChange={ ( value ) => setAttributes( { captionDisplayType: value } ) }
 						options={ generateBarOptions() }
 					/>
 					{

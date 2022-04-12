@@ -72,8 +72,6 @@ const ImageGallery = ( { attributes, setAttributes, block_id } ) => {
 	const isGridPagesNeeded = feedPagination && ( feedLayout === "grid" || feedLayout === "masonry" );
 	const [ slickDotHeight, setSlickDotHeight ] = useState( 0 );
 	const [ focusUpdate, setFocusUpdate ] = useState( false );
-	const [ slickLightbox, setSlickLightbox] = useState();
-	const [ slickLightboxNav, setSlickLightboxNav ] = useState();
 	const slickCarousel = useRef( null );
 	const isotopeElement = useRef( null );
 	const isotopeSpacer = useRef( null );

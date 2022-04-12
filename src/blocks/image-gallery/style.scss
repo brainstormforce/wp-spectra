@@ -626,24 +626,52 @@
 					}
 					&-2 .uag-image-gallery-media-wrapper {
 						width: 50%;
+						&--focus {
+							width: 100% !important;
+							@include specialTileFocus;
+						}
 					}
 					&-3 .uag-image-gallery-media-wrapper {
 						width: 33.33%;
+						&--focus {
+							width: 66.66% !important;
+							@include specialTileFocus;
+						}
 					}
 					&-4 .uag-image-gallery-media-wrapper {
 						width: 25%;
+						&--focus {
+							width: 50% !important;
+							@include specialTileFocus;
+						}
 					}
 					&-5 .uag-image-gallery-media-wrapper {
 						width: 20%;
+						&--focus {
+							width: 40% !important;
+							@include specialTileFocus;
+						}
 					}
 					&-6 .uag-image-gallery-media-wrapper {
 						width: 16.66%;
+						&--focus {
+							width: 33.32% !important;
+							@include specialTileFocus;
+						}
 					}
 					&-7 .uag-image-gallery-media-wrapper {
 						width: 14.28%;
+						&--focus {
+							width: 28.56% !important;
+							@include specialTileFocus;
+						}
 					}
 					&-8 .uag-image-gallery-media-wrapper {
 						width: 12.5%;
+						&--focus {
+							width: 25% !important;
+							@include specialTileFocus;
+						}
 					}
 				}
 			}
@@ -717,24 +745,52 @@
 					}
 					&-2 .uag-image-gallery-media-wrapper {
 						width: 50%;
+						&--focus {
+							width: 100% !important;
+							@include specialTileFocus;
+						}
 					}
 					&-3 .uag-image-gallery-media-wrapper {
 						width: 33.33%;
+						&--focus {
+							width: 66.66% !important;
+							@include specialTileFocus;
+						}
 					}
 					&-4 .uag-image-gallery-media-wrapper {
 						width: 25%;
+						&--focus {
+							width: 50% !important;
+							@include specialTileFocus;
+						}
 					}
 					&-5 .uag-image-gallery-media-wrapper {
 						width: 20%;
+						&--focus {
+							width: 40% !important;
+							@include specialTileFocus;
+						}
 					}
 					&-6 .uag-image-gallery-media-wrapper {
 						width: 16.66%;
+						&--focus {
+							width: 33.32% !important;
+							@include specialTileFocus;
+						}
 					}
 					&-7 .uag-image-gallery-media-wrapper {
 						width: 14.28%;
+						&--focus {
+							width: 28.56% !important;
+							@include specialTileFocus;
+						}
 					}
 					&-8 .uag-image-gallery-media-wrapper {
 						width: 12.5%;
+						&--focus {
+							width: 25% !important;
+							@include specialTileFocus;
+						}
 					}
 				}
 			}
