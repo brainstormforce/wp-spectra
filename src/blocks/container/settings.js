@@ -133,6 +133,10 @@ const Settings = ( props ) => {
 		topFlip,
 		topContentAboveShape,
 		bottomContentAboveShape,
+		backgroundCustomSizeDesktop,
+		backgroundCustomSizeTablet,
+		backgroundCustomSizeMobile,
+		backgroundCustomSizeType,
 	} = attributes;
 
 	let currentDirection = 'row';
@@ -689,6 +693,24 @@ const Settings = ( props ) => {
 						value: backgroundSize,
 						label: 'backgroundSize',
 					} }
+					backgroundCustomSize={{
+						desktop: {
+							value: backgroundCustomSizeDesktop,
+							label: 'backgroundCustomSizeDesktop',
+						},
+						tablet: {
+							value: backgroundCustomSizeTablet,
+							label: 'backgroundCustomSizeTablet',
+						},
+						mobile: {
+							value: backgroundCustomSizeMobile,
+							label: 'backgroundCustomSizeMobile',
+						},
+					}}
+					backgroundCustomSizeType={{
+						value: backgroundCustomSizeType,
+						label: 'backgroundCustomSizeType'
+					}}
 					backgroundRepeat={ {
 						value: backgroundRepeat,
 						label: 'backgroundRepeat',

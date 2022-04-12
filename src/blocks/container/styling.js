@@ -101,6 +101,10 @@ function styling( props ) {
 		topHeightTablet,
 		topHeightMobile,
 		topWidth,
+		backgroundCustomSizeDesktop,
+		backgroundCustomSizeTablet,
+		backgroundCustomSizeMobile,
+		backgroundCustomSizeType,
 	} = attributes;
 
 	const editPostLayout = document.getElementsByClassName( 'edit-post-layout' )[0];
@@ -144,6 +148,8 @@ function styling( props ) {
         'backgroundPosition': backgroundPosition,
         'backgroundSize': backgroundSize,
         'backgroundAttachment': backgroundAttachment,
+		'backgroundCustomSize' : backgroundCustomSizeDesktop,
+		'backgroundCustomSizeType' : backgroundCustomSizeType
     };
 
 	const containerBackgroundCSS = generateBackgroundCSS( backgroundAttributes );

@@ -9,6 +9,8 @@ function generateBackgroundCSS ( backgroundAttributes ) {
         backgroundPosition,
         backgroundSize,
         backgroundAttachment,
+		backgroundCustomSize,
+		backgroundCustomSizeType
     } = backgroundAttributes;
 
     const bgCSS = {};
@@ -37,12 +39,17 @@ function generateBackgroundCSS ( backgroundAttributes ) {
             }
         }
 
+		let backgroundSizeValue = backgroundSize;
+
+		if ( 'custom' === backgroundSize ) {
+			backgroundSizeValue = backgroundCustomSize + backgroundCustomSizeType;
+		}
 
         if ( '' !== backgroundImage ) {
 
             bgCSS['background-repeat'] = backgroundRepeat;
             bgCSS['background-position'] = backgroundPosition;
-            bgCSS['background-size'] = backgroundSize;
+            bgCSS['background-size'] = backgroundSizeValue;
             bgCSS['background-attachment'] = backgroundAttachment;
         }
     }

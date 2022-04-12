@@ -665,6 +665,34 @@ const attributes = {
 		type: 'boolean',
 		default: false,
 	},
+	backgroundCustomSizeDesktop: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'background-custom-size-desktop'
+		},
+		default: 100,
+	},
+	backgroundCustomSizeTablet: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'background-custom-size-tablet'
+		},
+		default: 100,
+	},
+	backgroundCustomSizeMobile: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'background-custom-size-mobile'
+		},
+		default: 100,
+	},
+	backgroundCustomSizeType: {
+		type: 'string',
+		default: '%',
+		UAGCopyPaste: {
+			styleType: 'background-custom-size-type'
+		}
+	},
 };
 
 export default attributes;

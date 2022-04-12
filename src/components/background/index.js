@@ -5,6 +5,7 @@ import styles from './editor.lazy.scss';
 import GradientSettings from '@Components/gradient-settings';
 import React, { useLayoutEffect } from 'react';
 import UAGImage from '@Components/image';
+import ResponsiveSlider from '@Components/responsive-slider';
 
 const Background = ( props ) => {
 	// Add and remove the CSS on the drop and remove of the component.
@@ -29,7 +30,9 @@ const Background = ( props ) => {
 		backgroundType,
 		backgroundVideo,
 		backgroundVideoColor,
-		onOpacityChange
+		onOpacityChange,
+		backgroundCustomSize,
+		backgroundCustomSizeType
 	} = props;
 
 	const onRemoveImage = () => {
@@ -315,8 +318,61 @@ const Background = ( props ) => {
 												'ultimate-addons-for-gutenberg'
 											),
 										},
+										{
+											value: 'custom',
+											label: __(
+												'Custom',
+												'ultimate-addons-for-gutenberg'
+											),
+										},
 									] }
 								/>
+								{ 'custom' === backgroundSize.value && backgroundCustomSize &&
+									<ResponsiveSlider
+										label={ __(
+											'Width',
+											'ultimate-addons-for-gutenberg'
+										) }
+										data={ {
+											desktop: {
+												value: backgroundCustomSize.desktop.value,
+												label: backgroundCustomSize.desktop.label,
+											},
+											tablet: {
+												value: backgroundCustomSize.tablet.value,
+												label: backgroundCustomSize.tablet.label,
+											},
+											mobile: {
+												value: backgroundCustomSize.mobile.value,
+												label: backgroundCustomSize.mobile.label,
+											},
+										} }
+										min={ 0 }
+										limitMax={ { 'px': 1600, '%': 100, 'em': 574 } }
+										unit={ {
+											value: backgroundCustomSizeType.value,
+											label: backgroundCustomSizeType.label,
+										} }
+										units={ [
+											{
+												name: __(
+													'PX',
+													'ultimate-addons-for-gutenberg'
+												),
+												unitValue: 'px',
+											},
+											{
+												name: __( '%', 'ultimate-addons-for-gutenberg' ),
+												unitValue: '%',
+											},
+											{
+												name: __( 'EM', 'ultimate-addons-for-gutenberg' ),
+												unitValue: 'em',
+											},
+										] }
+										setAttributes={ setAttributes }
+									/>
+								}
 							</div>
 							{ overlayType &&
 								<>
