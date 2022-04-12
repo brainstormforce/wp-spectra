@@ -14,6 +14,8 @@ function styling( props ) {
 		seperatorStyle,
 		separatorHeight,
 		separatorWidth,
+		separatorWidthTablet,
+		separatorWidthMobile,
 		separatorWidthType,
 		separatorColor,
 		separatorSpace,
@@ -111,6 +113,9 @@ function styling( props ) {
 			subHeadLineHeightType
 		),
 	};
+	tablet_selectors[ ' .uagb-separator' ] = {
+		'width': generateCSSUnit( separatorWidthTablet, separatorWidthType ),
+	};
 
 	mobile_selectors[ ' ' + headingTag + '.uagb-heading-text' ] = {
 		'font-size': generateCSSUnit( headFontSizeMobile, headFontSizeType ),
@@ -128,6 +133,9 @@ function styling( props ) {
 			subHeadLineHeightMobile,
 			subHeadLineHeightType
 		),
+	};
+	mobile_selectors[ ' .uagb-separator' ] = {
+		'width': generateCSSUnit( separatorWidthMobile, separatorWidthType ),
 	};
 
 	const base_selector = `.editor-styles-wrapper .uagb-block-${ props.clientId.substr(

@@ -64,9 +64,13 @@ function CtaStyle( props ) {
 		ctaBgHoverColor,
 		ctaBorderhoverColor,
 		ctaIconSpace,
+		ctaIconSpaceTablet,
+		ctaIconSpaceMobile,
 		ctaLeftSpace,
 		ctaRightSpace,
 		contentWidth,
+		contentWidthTablet,
+		contentWidthMobile,
 		ctaType,
 		titleTransform,
 		titleDecoration,
@@ -146,16 +150,6 @@ function CtaStyle( props ) {
 		};
 	}
 
-	if ( ctaPosition === 'right' && ( ctaType === 'text' || ctaType === 'button' ) ) {
-		selectors[ ' .uagb-cta__wrap' ] = {
-			'width': generateCSSUnit( contentWidth, '%' ),
-		};
-		selectors[ '.uagb-cta__outer-wrap > a' ] = {
-			'align-self': 'top' === buttonAlign ? 'flex-start' : 'center',
-			'height' : 'fit-content',
-			'margin-left': 'auto'
-		};
-	}
 
 	if ( ctaPosition === 'right' ) {
 		selectors[ '.uagb-cta__outer-wrap ' ] = {
@@ -200,15 +194,6 @@ function CtaStyle( props ) {
 		'fill': ctaLinkHoverColor,
 	};
 
-	if( ctaIconPosition === 'before' ){
-		selectors[ '.uagb-cta__outer-wrap a.uagb-cta__button-link-wrapper > svg' ] = {
-			'margin-right': generateCSSUnit( ctaIconSpace, 'px' ),
-		};
-	}else{
-		selectors[ '.uagb-cta__outer-wrap a.uagb-cta__button-link-wrapper > svg' ] = {
-			'margin-left': generateCSSUnit( ctaIconSpace, 'px' ),
-		};
-	}
 
 	const tabletSelectors = {
 		' .block-editor-rich-text__editable.uagb-cta__title': {
@@ -314,6 +299,45 @@ function CtaStyle( props ) {
 			),
 		},
 	};
+
+	if( ctaIconPosition === 'before' ){
+		selectors[ '.uagb-cta__outer-wrap a.uagb-cta__button-link-wrapper > svg' ] = {
+			'margin-right': generateCSSUnit( ctaIconSpace, 'px' ),
+		};
+		tabletSelectors[ '.uagb-cta__outer-wrap a.uagb-cta__button-link-wrapper > svg' ] = {
+			'margin-right': generateCSSUnit( ctaIconSpaceTablet, 'px' ),
+		};
+		mobileSelectors[ '.uagb-cta__outer-wrap a.uagb-cta__button-link-wrapper > svg' ] = {
+			'margin-right': generateCSSUnit( ctaIconSpaceMobile, 'px' ),
+		};
+	}else{
+		selectors[ '.uagb-cta__outer-wrap a.uagb-cta__button-link-wrapper > svg' ] = {
+			'margin-left': generateCSSUnit( ctaIconSpace, 'px' ),
+		};
+		tabletSelectors[ '.uagb-cta__outer-wrap a.uagb-cta__button-link-wrapper > svg' ] = {
+			'margin-left': generateCSSUnit( ctaIconSpaceTablet, 'px' ),
+		};
+		mobileSelectors[ '.uagb-cta__outer-wrap a.uagb-cta__button-link-wrapper > svg' ] = {
+			'margin-left': generateCSSUnit( ctaIconSpaceMobile, 'px' ),
+		};
+	}
+
+	if ( ctaPosition === 'right' && ( ctaType === 'text' || ctaType === 'button' ) ) {
+		selectors[ ' .uagb-cta__wrap' ] = {
+			'width': generateCSSUnit( contentWidth, '%' ),
+		};
+		selectors[ '.uagb-cta__outer-wrap > a' ] = {
+			'align-self': 'top' === buttonAlign ? 'flex-start' : 'center',
+			'height' : 'fit-content',
+			'margin-left': 'auto'
+		};
+		tabletSelectors[ ' .uagb-cta__wrap' ] = {
+			'width': generateCSSUnit( contentWidthTablet, '%' ),
+		};
+		mobileSelectors[ ' .uagb-cta__wrap' ] = {
+			'width': generateCSSUnit( contentWidthMobile, '%' ),
+		};
+	}
 
 	const id = `.editor-styles-wrapper .uagb-block-${ props.clientId.substr( 0, 8 ) }`;
 

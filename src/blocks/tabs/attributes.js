@@ -637,6 +637,18 @@ const attributes = {
 			styleType: 'tab-icon-spacing'
 		},
 	},
+	iconSpacingTablet: {
+		type: 'string',
+		UAGCopyPaste: {
+			styleType: 'tab-icon-spacing'
+		},
+	},
+	iconSpacingMobile: {
+		type: 'string',
+		UAGCopyPaste: {
+			styleType: 'tab-icon-spacing'
+		},
+	},
 	iconColor: {
 		type: 'string',
 		UAGCopyPaste: {
@@ -646,6 +658,18 @@ const attributes = {
 	iconSize: {
 		type: 'number',
 		default: 12,
+		UAGCopyPaste: {
+			styleType: 'icon-size'
+		},
+	},
+	iconSizeTablet: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'icon-size'
+		},
+	},
+	iconSizeMobile: {
+		type: 'number',
 		UAGCopyPaste: {
 			styleType: 'icon-size'
 		},

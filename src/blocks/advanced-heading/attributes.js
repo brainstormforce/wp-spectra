@@ -75,6 +75,18 @@ const attributes = {
 		},
 		default: 9
 	},
+	separatorWidthTablet: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'separator-width'
+		},
+	},
+	separatorWidthMobile: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'separator-width'
+		},
+	},
 	separatorWidthType: {
 		type: 'string',
 		default: '%',

@@ -51,6 +51,8 @@ function styling( props ) {
 		iconimgBorderRadiusUnit,
 		seperatorStyle,
 		seperatorWidth,
+		seperatorWidthTablet,
+		seperatorWidthMobile,
 		seperatorColor,
 		seperatorThickness,
 		thicknessUnit,
@@ -104,6 +106,8 @@ function styling( props ) {
 		ctaBgHoverColor,
 		ctaBorderhoverColor,
 		ctaIconSpace,
+		ctaIconSpaceTablet,
+		ctaIconSpaceMobile,
 		ctaIconSpaceType,
 		ctaTransform,
 		ctaDecoration,
@@ -442,15 +446,7 @@ function styling( props ) {
 			'margin-right': generateCSSUnit( separatorRightMargin, seperatorSpaceUnit ),
 		}
 	};
-	if( 'after' === ctaIconPosition ){
-		selectors[ '.uagb-infobox__content-wrap .uagb-infobox-cta-link > svg'] = {
-			'margin-left': generateCSSUnit( ctaIconSpace, ctaIconSpaceType ),
-		};
-	}else{
-		selectors[ '.uagb-infobox__content-wrap .uagb-infobox-cta-link > svg'] = {
-			'margin-right': generateCSSUnit( ctaIconSpace, ctaIconSpaceType ),
-		};
-	}
+
 	if ( imageWidthType ) {
 		// Image
 		selectors[ '.uagb-infobox__content-wrap img' ] = {
@@ -698,6 +694,9 @@ function styling( props ) {
 			),
 			'width': generateCSSUnit( ctaFontSizeTablet, ctaFontSizeType ),
 		},
+		'.uagb-infobox__content-wrap .uagb-ifb-separator': {
+			'width': generateCSSUnit( seperatorWidthTablet, separatorWidthType ),
+		},
 		' .uagb-ifb-separator': {
 			'margin-bottom': generateCSSUnit( seperatorTabletSpace, separatorTabletMarginUnit ),
 			'margin-top': generateCSSUnit( separatorMarginTopTablet, separatorTabletMarginUnit ),
@@ -866,6 +865,9 @@ function styling( props ) {
 		' .uagb-infobox-cta-link': {
 			'font-size': generateCSSUnit( ctaFontSizeMobile, ctaFontSizeType ),
 		},
+		'.uagb-infobox__content-wrap .uagb-ifb-separator': {
+			'width': generateCSSUnit( seperatorWidthMobile, separatorWidthType ),
+		},
 		' .uagb-infobox-cta-link svg': {
 			'font-size': generateCSSUnit( ctaFontSizeMobile, ctaFontSizeType ),
 			'height': generateCSSUnit( ctaFontSizeMobile, ctaFontSizeType ),
@@ -876,6 +878,28 @@ function styling( props ) {
 			'width': generateCSSUnit( ctaFontSizeMobile, ctaFontSizeType ),
 		},
 	};
+
+	if( 'after' === ctaIconPosition ){
+		selectors[ '.uagb-infobox__content-wrap .uagb-infobox-cta-link > svg'] = {
+			'margin-left': generateCSSUnit( ctaIconSpace, ctaIconSpaceType ),
+		};
+		tabletSelectors[ '.uagb-infobox__content-wrap .uagb-infobox-cta-link > svg'] = {
+			'margin-left': generateCSSUnit( ctaIconSpaceTablet, ctaIconSpaceType ),
+		};
+		mobileSelectors[ '.uagb-infobox__content-wrap .uagb-infobox-cta-link > svg'] = {
+			'margin-left': generateCSSUnit( ctaIconSpaceMobile, ctaIconSpaceType ),
+		};
+	}else{
+		selectors[ '.uagb-infobox__content-wrap .uagb-infobox-cta-link > svg'] = {
+			'margin-right': generateCSSUnit( ctaIconSpace, ctaIconSpaceType ),
+		};
+		tabletSelectors[ '.uagb-infobox__content-wrap .uagb-infobox-cta-link > svg'] = {
+			'margin-right': generateCSSUnit( ctaIconSpaceTablet, ctaIconSpaceType ),
+		};
+		mobileSelectors[ '.uagb-infobox__content-wrap .uagb-infobox-cta-link > svg'] = {
+			'margin-right': generateCSSUnit( ctaIconSpaceMobile, ctaIconSpaceType ),
+		};
+	}
 
 	const id = `.editor-styles-wrapper .uagb-block-${ props.clientId.substr(
 		0,

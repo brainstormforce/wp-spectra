@@ -19,7 +19,7 @@ import {
 } from '@wordpress/block-editor';
 import renderSVG from '@Controls/renderIcon';
 import { SelectControl, Icon } from '@wordpress/components';
-
+import ResponsiveSlider from '@Components/responsive-slider';
 // Extend component
 import UAGAdvancedPanelBody from '@Components/advanced-panel-body';
 
@@ -59,6 +59,8 @@ const Settings = ( props ) => {
 		subHeadTransform,
 		subHeadDecoration,
 		separatorWidth,
+		separatorWidthTablet,
+		separatorWidthMobile,
 		separatorWidthType,
 		seperatorStyle,
 		separatorHeight,
@@ -437,19 +439,25 @@ const Settings = ( props ) => {
 				title={ __( 'Separator', 'ultimate-addons-for-gutenberg' ) }
 				initialOpen={ false }
 			>
-
-				<Range
+				<ResponsiveSlider
 					label={ __(
 						'Width',
 						'ultimate-addons-for-gutenberg'
 					) }
-					setAttributes={ setAttributes }
-					value={ separatorWidth }
-					onChange={ ( value ) =>
-						setAttributes( {
-							separatorWidth: value,
-						} )
-					}
+					data={ {
+						desktop: {
+							value: separatorWidth,
+							label: 'separatorWidth',
+						},
+						tablet: {
+							value: separatorWidthTablet,
+							label: 'separatorWidthTablet',
+						},
+						mobile: {
+							value: separatorWidthMobile,
+							label: 'separatorWidthMobile',
+						},
+					} }
 					min={ 0 }
 					max={ '%' === separatorWidthType ? 100 : 500 }
 					unit={ {
@@ -472,6 +480,7 @@ const Settings = ( props ) => {
 							unitValue: '%',
 						},
 					] }
+					setAttributes={ setAttributes }
 				/>
 				<Range
 					label={ __(

@@ -16,6 +16,8 @@ return array(
 	'seperatorStyle'          => 'none',
 	'separatorHeight'         => 2,
 	'separatorWidth'          => 9,
+	'separatorWidthTablet'    => '',
+	'separatorWidthMobile'    => '',
 	'separatorWidthType'      => '%',
 	'headFontFamily'          => '',
 	'headLoadGoogleFonts'     => false,

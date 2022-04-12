@@ -274,6 +274,18 @@ const attributes = {
 			styleType: 'btn-icon-space'
 		},
 	},
+	ctaIconSpaceTablet: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'btn-icon-space'
+		}
+	},
+	ctaIconSpaceMobile: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'btn-icon-space'
+		}
+	},
 	ctaType: {
 		type: 'string',
 		default: 'button',
@@ -354,6 +366,18 @@ const attributes = {
 	contentWidth: {
 		type: 'number',
 		default: '70',
+		UAGCopyPaste: {
+			styleType: 'desc-width'
+		},
+	},
+	contentWidthTablet: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'desc-width'
+		},
+	},
+	contentWidthMobile: {
+		type: 'number',
 		UAGCopyPaste: {
 			styleType: 'desc-width'
 		},

@@ -5,14 +5,13 @@ import ResponsiveSelectControl from '@Components/responsive-select';
 import MultiButtonsControl from '@Components/multi-buttons-control';
 import AdvancedPopColorControl from '@Components/color-control/advanced-pop-color-control.js';
 import SpacingControl from '@Components/spacing-control';
-import Range from '@Components/range/Range.js';
 import Border from '@Components/border';
 import InspectorTabs from '@Components/inspector-tabs/InspectorTabs.js';
 import InspectorTab, {
 	UAGTabs,
 } from '@Components/inspector-tabs/InspectorTab.js';
 import UAGTabsControl from '@Components/tabs';
-
+import ResponsiveSlider from '@Components/responsive-slider';
 import React from 'react';
 import { __ } from '@wordpress/i18n';
 import { InspectorControls, BlockAlignmentToolbar, AlignmentToolbar, BlockControls } from '@wordpress/block-editor';
@@ -132,7 +131,11 @@ const Settings = ( props ) => {
 		iconColor,
 		iconPosition,
 		iconSpacing,
+		iconSpacingTablet,
+		iconSpacingMobile,
 		iconSize,
+		iconSizeTablet,
+		iconSizeMobile,
 		activeiconColor,
 		titleFontStyle
 	} = attributes;
@@ -1132,16 +1135,29 @@ const Settings = ( props ) => {
 				title={ __( 'Icon', 'ultimate-addons-for-gutenberg' ) }
 				initialOpen={ false }
 			>
-				<Range
-					label={ __( 'Spacing', 'ultimate-addons-for-gutenberg' ) }
-					setAttributes={ setAttributes }
-					value={ iconSpacing }
-					onChange={ ( value ) =>
-						setAttributes( { iconSpacing: value } )
-					}
+				<ResponsiveSlider
+					label={ __(
+						'Spacing',
+						'ultimate-addons-for-gutenberg'
+					) }
+					data={ {
+						desktop: {
+							value: iconSpacing,
+							label: 'iconSpacing',
+						},
+						tablet: {
+							value: iconSpacingTablet,
+							label: 'iconSpacingTablet',
+						},
+						mobile: {
+							value: iconSpacingMobile,
+							label: 'iconSpacingMobile',
+						},
+					} }
 					min={ 0 }
 					max={ 100 }
 					displayUnit={ false }
+					setAttributes={ setAttributes }
 				/>
 				<UAGTabsControl
 					tabs={ [
@@ -1163,7 +1179,7 @@ const Settings = ( props ) => {
 					normal={ tabOutputNormal }
 					active={ tabOutputActive }
 				/>
-				<Range
+				{/* <Range
 					label={ __( 'Size', 'ultimate-addons-for-gutenberg' ) }
 					setAttributes={ setAttributes }
 					value={ iconSize }
@@ -1173,6 +1189,30 @@ const Settings = ( props ) => {
 					min={ 0 }
 					max={ 100 }
 					displayUnit={ false }
+				/> */}
+				<ResponsiveSlider
+					label={ __(
+						'Size',
+						'ultimate-addons-for-gutenberg'
+					) }
+					data={ {
+						desktop: {
+							value: iconSize,
+							label: 'iconSize',
+						},
+						tablet: {
+							value: iconSizeTablet,
+							label: 'iconSizeTablet',
+						},
+						mobile: {
+							value: iconSizeMobile,
+							label: 'iconSizeMobile',
+						},
+					} }
+					min={ 0 }
+					max={ 100 }
+					displayUnit={ false }
+					setAttributes={ setAttributes }
 				/>
 			</UAGAdvancedPanelBody>
 		);
