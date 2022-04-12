@@ -57,6 +57,10 @@ const attributes = {
 		type: 'number',
 		default: 30,
 	},
+	captionVisibility: {
+		type: 'string',
+		default: 'hover',
+	},
 	captionDisplayType: {
 		type: 'string',
 		default: 'overlay',
@@ -552,7 +556,7 @@ const attributes = {
 	},
 	captionColor: {
 		type: 'string',
-		default: 'rgba(0,0,0,0)',
+		default: 'rgba(255,255,255,1)',
 	},
 	captionColorHover: {
 		type: 'string',
@@ -560,7 +564,7 @@ const attributes = {
 	},
 	captionBackgroundColor: {
 		type: 'string',
-		default: 'rgba(0,0,0,0)',
+		default: 'rgba(0,0,0,0.75)',
 	},
 	captionBackgroundColorHover: {
 		type: 'string',

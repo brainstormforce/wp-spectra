@@ -133,6 +133,10 @@ if ( ! class_exists( 'Spectra_Pro_Image_Gallery' ) ) {
 								'type' => 'number',
 								'default' => 30,
 							),
+							'captionVisibility' => array(
+								'type' => 'string',
+								'default' => 'hover',
+							),
 							'captionDisplayType' => array(
 								'type' => 'string',
 								'default' => 'overlay',
@@ -628,7 +632,7 @@ if ( ! class_exists( 'Spectra_Pro_Image_Gallery' ) ) {
 							),
 							'captionColor' => array(
 								'type' => 'string',
-								'default' => 'rgba(0,0,0,0)',
+								'default' => 'rgba(255,255,255,1)',
 							),
 							'captionColorHover' => array(
 								'type' => 'string',
@@ -636,7 +640,7 @@ if ( ! class_exists( 'Spectra_Pro_Image_Gallery' ) ) {
 							),
 							'captionBackgroundColor' => array(
 								'type' => 'string',
-								'default' => 'rgba(0,0,0,0)',
+								'default' => 'rgba(0,0,0,0.75)',
 							),
 							'captionBackgroundColorHover' => array(
 								'type' => 'string',

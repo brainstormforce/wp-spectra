@@ -1,7 +1,7 @@
 // Import all of our Text Options requirements.
 import { __ } from '@wordpress/i18n';
 import renderSVG from '@Controls/renderIcon';
-import React, { Suspense, useEffect, useState } from 'react';
+import React, { Suspense, useEffect } from 'react';
 import lazyLoader from '@Controls/lazy-loader';
 import getMatrixAlignment from '@Controls/getMatrixAlignment';
 import TypographyControl from '@Components/typography';
@@ -57,6 +57,7 @@ const Settings = ( props ) => {
 		gridImageGapUnitMob,
 
 		imageCaptionLength,
+		captionVisibility,
 		captionDisplayType,
 		imageCaptionAlignment,
 		imageCaptionAlignment01,
@@ -201,15 +202,6 @@ const Settings = ( props ) => {
 
 	// Helpers
 
-	const [ captionVisibility, setCaptionVisibility ] = useState( 'hover' );
-
-	useEffect( () => {
-		switch ( captionVisibility ){
-			case 'hover':
-				break;
-		}
-	}, [ captionVisibility ] );
-
 	const getVisibleColors = () => {
 		// Skip to hover color if any of the following are true:
 		// For Text: captionColor.toLowerCase() === 'transparent'
@@ -318,6 +310,10 @@ const Settings = ( props ) => {
 		}
 	};
 
+	useEffect( () => {
+		( captionDisplayType === 'bar-outside' ) && setAttributes( { captionVisibility: 'always' } ) 
+	}, [ captionDisplayType ] );
+
 	const generateBarOptions = () => (
 		( feedLayout === 'grid' || feedLayout === 'tiled' )
 			? ( [
@@ -349,7 +345,7 @@ const Settings = ( props ) => {
 	const renderCaptionDisplay = ( isHover ) => (
 		<>
 			<AdvancedPopColorControl
-				label={ __( 'Caption Color', 'ultimate-addons-for-gutenberg' ) }
+				label={ __( 'Text Color', 'ultimate-addons-for-gutenberg' ) }
 				colorValue={
 					isHover
 					? captionColorHover
@@ -389,7 +385,6 @@ const Settings = ( props ) => {
 					: setAttributes( { captionBackgroundColor: value } )
 				}
 			/>
-			<p>{ captionBackgroundColor }</p>
 		</>
 	);
 
@@ -615,16 +610,6 @@ const Settings = ( props ) => {
 						displayUnit={ false }
 					/>
 					<SelectControl
-						label={ __( 'Visibility', 'ultimate-addons-for-gutenberg' ) }
-						value={ captionVisibility }
-						onChange={ ( value ) => setCaptionVisibility( value ) }
-					>
-						<option value="hover">Show on hover</option>
-						<option value="antiHover">Hide on hover</option>
-						<option value="always">Always Visible</option>
-						<option value="custom" disabled>Custom</option>
-					</SelectControl>
-					<SelectControl
 						label={ __( 'Caption Type', 'ultimate-addons-for-gutenberg' ) }
 						value={ captionDisplayType }
 						onChange={ ( value ) => setAttributes( { captionDisplayType: value } ) }
@@ -634,6 +619,15 @@ const Settings = ( props ) => {
 						captionDisplayType !== 'bar-outside'
 							? (
 								<>
+									<SelectControl
+										label={ __( 'Visibility', 'ultimate-addons-for-gutenberg' ) }
+										value={ captionVisibility }
+										onChange={ ( value ) => setAttributes( { captionVisibility: value } ) }
+									>
+										<option value="hover">Show on hover</option>
+										<option value="antiHover">Hide on hover</option>
+										<option value="always">Always Visible</option>
+									</SelectControl>
 									<span className='uag-control-label'>
 										{ __( 'Caption Alignment', 'ultimate-addons-for-gutenberg' ) }
 									</span>
@@ -1514,21 +1508,54 @@ const Settings = ( props ) => {
 					},
 				] }
 			/>
-			<UAGTabsControl
-				tabs={ [
-					{
-						name: 'normal',
-						title: __( 'Normal', 'ultimate-addons-for-gutenberg' ),
-					},
-					{
-						name: 'hover',
-						title: __( 'Hover', 'ultimate-addons-for-gutenberg' ),
-					},
-				] }
-				normal={ renderCaptionDisplay( false ) }
-				hover={ renderCaptionDisplay( true ) }
-				disableBottomSeparator={ true }
-			/>
+			{ captionVisibility === 'always'
+				? (
+					<UAGTabsControl
+						tabs={ [
+							{
+								name: 'normal',
+								title: __( 'Normal', 'ultimate-addons-for-gutenberg' ),
+							},
+							{
+								name: 'hover',
+								title: __( 'Hover', 'ultimate-addons-for-gutenberg' ),
+							},
+						] }
+						normal={ renderCaptionDisplay( false ) }
+						hover={ renderCaptionDisplay( true ) }
+						disableBottomSeparator={ true }
+					/>
+				)
+				: (
+					<>
+						<AdvancedPopColorControl
+							label={ __( 'Text Color', 'ultimate-addons-for-gutenberg' ) }
+							colorValue={
+								captionColor
+								? captionColor
+								: 'rgba(0,0,0,0)'
+							}
+							onColorChange={ ( value ) => setAttributes( { captionColor: value } ) }
+						/>
+						<AdvancedPopColorControl
+							label={ __(
+								`${
+									imageDisplayCaption
+									? titleFromValue( captionDisplayType ).split( ' ' )[ 0 ]
+									: 'Overlay'
+								} Color`,
+								'ultimate-addons-for-gutenberg'
+							) }
+							colorValue={
+								captionBackgroundColor
+								? captionBackgroundColor
+								: 'rgba(0,0,0,0)'
+							}
+							onColorChange={ ( value ) => setAttributes( { captionBackgroundColor: value } ) }
+						/>
+					</>
+				)
+			}
 		</UAGAdvancedPanelBody>
 	);
 

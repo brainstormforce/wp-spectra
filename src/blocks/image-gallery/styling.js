@@ -34,6 +34,7 @@ function styling( props ) {
 		gridImageGapUnitTab,
 		gridImageGapUnitMob,
 
+		captionVisibility,
 		captionDisplayType,
 		imageCaptionAlignment,
 		captionPaddingTop,
@@ -363,10 +364,10 @@ function styling( props ) {
 			),
 		},
 		'.uag-image-gallery-media__thumbnail-caption-wrapper--overlay': {
-			'background-color': imageDisplayCaption ? captionBackgroundColor : overlayColor,
+			'background-color': imageDisplayCaption ? ( ( captionVisibility === 'hover' ) ? 'rgba(0,0,0,0)' : captionBackgroundColor ) : overlayColor,
 		},
 		'.uag-image-gallery-media-wrapper:hover .uag-image-gallery-media__thumbnail-caption-wrapper--overlay': {
-			'background-color': imageDisplayCaption ? captionBackgroundColorHover : overlayColorHover,
+			'background-color': imageDisplayCaption ? ( ( captionVisibility === 'antiHover' ) ? 'rgba(0,0,0,0)' : ( ( captionVisibility === 'always' ) ? captionBackgroundColorHover : captionBackgroundColor ) ) : overlayColorHover,
 		},		
 		'.uag-image-gallery-media__thumbnail-caption-wrapper--bar-inside': {
 			'-webkit-align-items': getMatrixAlignment( imageCaptionAlignment, 1, 'flex' ),
@@ -378,7 +379,7 @@ function styling( props ) {
 		// Caption Selectors
 
 		'.uag-image-gallery-media__thumbnail-caption': {
-			'color': captionColor,
+			'color': ( captionVisibility === 'hover' ) ? 'rgba(0,0,0,0)' : captionColor,
 			'text-align': getMatrixAlignment( imageCaptionAlignment, 2 ),
 			'font-family': captionFontFamily === 'Default' ? '' : captionFontFamily,
 			'font-weight': captionFontWeight,
@@ -415,10 +416,10 @@ function styling( props ) {
 			'justify-content': getMatrixAlignment( imageCaptionAlignment, 2, 'flex' ),
 		},		
 		'.uag-image-gallery-media__thumbnail-caption--bar-inside': {
-			'background-color': captionBackgroundColor,
+			'background-color': ( captionVisibility === 'hover' ) ? 'rgba(0,0,0,0)' : captionBackgroundColor,
 		},
 		'.uag-image-gallery-media-wrapper:hover .uag-image-gallery-media__thumbnail-caption--bar-inside': {
-			'background-color': captionBackgroundColorHover,
+			'background-color': ( captionVisibility === 'antiHover' ) ? 'rgba(0,0,0,0)' : ( ( captionVisibility === 'always' ) ? captionBackgroundColorHover : captionBackgroundColor ),
 		},		
 		'.uag-image-gallery-media__thumbnail-caption--bar-outside': {
 			'background-color': captionBackgroundColor,
@@ -427,7 +428,7 @@ function styling( props ) {
 			'background-color': captionBackgroundColorHover,
 		},
 		'.uag-image-gallery-media-wrapper:hover .uag-image-gallery-media__thumbnail-caption': {
-			'color': captionColorHover,
+			'color': ( captionVisibility === 'antiHover' ) ? 'rgba(0,0,0,0)' : ( ( captionVisibility === 'always' ) ? captionColorHover : captionColor ),
 		},
 	};
 
