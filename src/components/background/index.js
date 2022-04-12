@@ -403,6 +403,13 @@ const Background = ( props ) => {
 														'ultimate-addons-for-gutenberg'
 													),
 												},
+												{
+													value: 'none',
+													label: __(
+														'None',
+														'ultimate-addons-for-gutenberg'
+													),
+												},
 											] }
 										/>
 									</div>

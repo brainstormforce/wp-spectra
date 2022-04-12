@@ -137,6 +137,7 @@ const Settings = ( props ) => {
 		backgroundCustomSizeTablet,
 		backgroundCustomSizeMobile,
 		backgroundCustomSizeType,
+		overlayType
 	} = attributes;
 
 	let currentDirection = 'row';
@@ -738,6 +739,10 @@ const Settings = ( props ) => {
 					backgroundVideoType={ {
 						value: false,
 					} }
+					overlayType={{
+						value: overlayType,
+						label: 'overlayType'
+					}}
 					{ ...props }
 				/>
 			</UAGAdvancedPanelBody>

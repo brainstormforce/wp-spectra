@@ -105,6 +105,8 @@ function styling( props ) {
 		backgroundCustomSizeTablet,
 		backgroundCustomSizeMobile,
 		backgroundCustomSizeType,
+		backgroundImageColor,
+		overlayType
 	} = attributes;
 
 	const editPostLayout = document.getElementsByClassName( 'edit-post-layout' )[0];
@@ -149,7 +151,9 @@ function styling( props ) {
         'backgroundSize': backgroundSize,
         'backgroundAttachment': backgroundAttachment,
 		'backgroundCustomSize' : backgroundCustomSizeDesktop,
-		'backgroundCustomSizeType' : backgroundCustomSizeType
+		'backgroundCustomSizeType' : backgroundCustomSizeType,
+		'backgroundImageColor' : backgroundImageColor,
+		'overlayType' : overlayType
     };
 
 	const containerBackgroundCSS = generateBackgroundCSS( backgroundAttributes );

@@ -693,6 +693,13 @@ const attributes = {
 			styleType: 'background-custom-size-type'
 		}
 	},
+	overlayType:{
+		type: 'string',
+		default: 'none',
+		UAGCopyPaste: {
+			styleType: 'background-overlay-type'
+		}
+	}
 };
 
 export default attributes;
