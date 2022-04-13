@@ -8,14 +8,18 @@
  */
 
 $bg_obj = array(
-	'backgroundType'       => $attr['backgroundType'],
-	'backgroundImage'      => $attr['backgroundImage'],
-	'backgroundColor'      => $attr['backgroundColor'],
-	'gradientValue'        => $attr['gradientValue'],
-	'backgroundRepeat'     => $attr['backgroundRepeat'],
-	'backgroundPosition'   => $attr['backgroundPosition'],
-	'backgroundSize'       => $attr['backgroundSize'],
-	'backgroundAttachment' => $attr['backgroundAttachment'],
+	'backgroundType'           => $attr['backgroundType'],
+	'backgroundImage'          => $attr['backgroundImage'],
+	'backgroundColor'          => $attr['backgroundColor'],
+	'gradientValue'            => $attr['gradientValue'],
+	'backgroundRepeat'         => $attr['backgroundRepeat'],
+	'backgroundPosition'       => $attr['backgroundPosition'],
+	'backgroundSize'           => $attr['backgroundSize'],
+	'backgroundAttachment'     => $attr['backgroundAttachment'],
+	'backgroundImageColor'     => $attr['backgroundImageColor'],
+	'overlayType'              => $attr['overlayType'],
+	'backgroundCustomSize'     => $attr['backgroundCustomSizeDesktop'],
+	'backgroundCustomSizeType' => $attr['backgroundCustomSizeType'],
 );
 
 $box_shadow_position_css = $attr['boxShadowPosition'];
@@ -63,11 +67,11 @@ $container_css    = array(
 $container_css = array_merge( $container_css, $container_bg_css );
 
 $selectors = array(
-	'.uagb-block-' . $id                         => $container_css, // phpcs:ignore WordPress.WP.GlobalVariablesOverride.Prohibited
-	'.uagb-block-' . $id . ':hover'              => array(
+	'.uagb-block-' . $id                                  => $container_css, // phpcs:ignore WordPress.WP.GlobalVariablesOverride.Prohibited
+	'.uagb-block-' . $id . ':hover'                       => array(
 		'border-color' => $attr['borderHoverColor'],
 	),
-	'.uagb-is-root-container .uagb-block-' . $id => array( // phpcs:ignore WordPress.WP.GlobalVariablesOverride.Prohibited
+	'.uagb-is-root-container .uagb-block-' . $id          => array( // phpcs:ignore WordPress.WP.GlobalVariablesOverride.Prohibited
 		'width'     => UAGB_Helper::get_css_value( $attr['widthDesktop'], $attr['widthType'] ),
 		'max-width' => UAGB_Helper::get_css_value( $attr['widthDesktop'], $attr['widthType'] ),
 	),
@@ -82,6 +86,12 @@ $selectors = array(
 	),
 	'.uagb-block-' . $id . ' .uagb-container__shape.uagb-container__shape-bottom .uagb-container__shape-fill' => array(
 		'fill' => UAGB_Helper::hex2rgba( $attr['bottomColor'], ( isset( $attr['bottomDividerOpacity'] ) && '' !== $attr['bottomDividerOpacity'] ) ? $attr['bottomDividerOpacity'] : 100 ),
+	),
+	'.uagb-block-' . $id . ' .uagb-container__video-wrap' => array(
+		'background' => $attr['backgroundVideoColor'],
+	),
+	'.uagb-block-' . $id . ' .uagb-container__video-wrap video' => array(
+		'opacity' => $attr['backgroundVideoOpacity'],
 	),
 );
 

@@ -102,11 +102,11 @@ function styling( props ) {
 		topHeightMobile,
 		topWidth,
 		backgroundCustomSizeDesktop,
-		backgroundCustomSizeTablet,
-		backgroundCustomSizeMobile,
 		backgroundCustomSizeType,
 		backgroundImageColor,
-		overlayType
+		overlayType,
+		backgroundVideoOpacity,
+		backgroundVideoColor
 	} = attributes;
 
 	const editPostLayout = document.getElementsByClassName( 'edit-post-layout' )[0];
@@ -139,6 +139,12 @@ function styling( props ) {
 		' .uagb-container__shape-bottom .uagb-container__shape-fill' : {
 			'fill': hexToRgba( maybeGetColorForVariable( bottomColor ), 100 ),
 		},
+		' .uagb-container__video-wrap' : {
+			'background': backgroundVideoColor
+		},
+		' .uagb-container__video-wrap video' : {
+			'opacity': backgroundVideoOpacity
+		}
 	};
 
 	const backgroundAttributes = {

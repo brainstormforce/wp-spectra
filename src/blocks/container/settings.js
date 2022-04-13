@@ -137,7 +137,9 @@ const Settings = ( props ) => {
 		backgroundCustomSizeTablet,
 		backgroundCustomSizeMobile,
 		backgroundCustomSizeType,
-		overlayType
+		overlayType,
+		backgroundVideoColor,
+		backgroundVideo
 	} = attributes;
 
 	let currentDirection = 'row';
@@ -736,13 +738,22 @@ const Settings = ( props ) => {
 						value: backgroundType,
 						label: 'backgroundType',
 					} }
-					backgroundVideoType={ {
-						value: false,
-					} }
 					overlayType={{
 						value: overlayType,
 						label: 'overlayType'
 					}}
+					backgroundVideoType={ {
+						value: true,
+					} }
+					backgroundVideo={ {
+						value: backgroundVideo,
+						label: 'backgroundVideo',
+					} }
+					backgroundVideoColor={ {
+						value: backgroundVideoColor,
+						label: 'backgroundVideoColor',
+					} }
+					onOpacityChange = { ( opacity ) => setAttributes( { backgroundVideoOpacity: opacity } ) }
 					{ ...props }
 				/>
 			</UAGAdvancedPanelBody>

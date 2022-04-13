@@ -111,4 +111,12 @@ return array(
 	'bottomFlip'                     => '',
 	'topContentAboveShape'           => '',
 	'bottomContentAboveShape'        => '',
+	'backgroundCustomSizeDesktop'    => '',
+	'backgroundCustomSizeTablet'     => '',
+	'overlayType'                    => '',
+	'backgroundCustomSizeMobile'     => '',
+	'backgroundCustomSizeType'       => '%',
+	'backgroundVideoColor'           => '',
+	'backgroundVideo'                => '',
+	'backgroundVideoOpacity'         => '',
 );

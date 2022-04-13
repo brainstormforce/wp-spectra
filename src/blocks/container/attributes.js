@@ -699,7 +699,26 @@ const attributes = {
 		UAGCopyPaste: {
 			styleType: 'background-overlay-type'
 		}
-	}
+	},
+	backgroundVideoColor: {
+		type: 'string',
+		UAGCopyPaste: {
+			styleType: 'bg-video-color'
+		},
+	},
+	backgroundVideo: {
+		type: 'object',
+		UAGCopyPaste: {
+			styleType: 'bg-video'
+		},
+	},
+	backgroundVideoOpacity: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'bg-video-opacity'
+		},
+		default: 1,
+	},
 };
 
 export default attributes;
