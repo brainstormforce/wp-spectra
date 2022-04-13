@@ -261,6 +261,7 @@ class Admin_Menu {
 					'post-image',
 					'post-button',
 					'post-excerpt',
+					'post-taxonomy',
 					'post-meta',
 					'restaurant-menu-child',
 					'content-timeline-child',
