@@ -114,7 +114,7 @@ return array(
 	'secondCtaPaddingLink'         => '',
 	'secondCtaBorderWidth'         => '',
 	'secondCtaBorderRadius'        => '',
-	'secondCtaBorderStyle'         => 'none',
+	'secondCtaBorderStyle'         => '',
 	'secondCtaBorderColor'         => '',
 	'secondCtaBorderHColor'        => '',
 	'secondCtaColor'               => '',
