@@ -3,7 +3,7 @@
  */
 
 // Import block dependencies and components
-import { PostMeta } from './edit';
+import { PostTaxonomy } from './edit';
 import save from './save';
 import UAGB_Block_Icons from '@Controls/block-icons';
 // Components
@@ -21,7 +21,7 @@ registerBlockType( 'uagb/post-taxonomy', {
 	category: uagb_blocks_info.category,
 	parent: [ 'uagb/post-grid', 'uagb/post-masonry', 'uagb/post-carousel' ],
 	keywords: [ __( 'tags' ), __( 'taxonomy' ), __( 'uag' ) ],
-	PostMeta,
+	PostTaxonomy,
 	example: {},
 	save,
 } );
