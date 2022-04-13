@@ -364,14 +364,42 @@ const attributes = {
 		type    : 'number',
 		default : 20,
 		UAGCopyPaste: {
-			styleType: 'row-gap'
+			styleType: 'post-bottom-padding'
+		},
+	},
+	rowGapTablet                  : {
+		type    : 'number',
+		default : 0,
+		UAGCopyPaste: {
+			styleType: 'post-bottom-padding'
+		},
+	},
+	rowGapMobile                  : {
+		type    : 'number',
+		default : 0,
+		UAGCopyPaste: {
+			styleType: 'post-bottom-padding'
 		},
 	},
 	columnGap               : {
 		type    : 'number',
 		default : 20,
 		UAGCopyPaste: {
-			styleType: 'column-gap'
+			styleType: 'post-bottom-padding'
+		},
+	},
+	columnGapTablet               : {
+		type    : 'number',
+		default : 0,
+		UAGCopyPaste: {
+			styleType: 'post-bottom-padding'
+		},
+	},
+	columnGapMobile               : {
+		type    : 'number',
+		default : 0,
+		UAGCopyPaste: {
+			styleType: 'post-bottom-padding'
 		},
 	},
 	bgColor                 : {
@@ -844,9 +872,37 @@ const attributes = {
 			styleType: 'btn-bottom-margin'
 		},
 	},
+	ctaBottomSpaceTablet          : {
+		type    : 'number',
+		default : 0,
+		UAGCopyPaste: {
+			styleType: 'btn-bottom-margin'
+		},
+	},
+	ctaBottomSpaceMobile          : {
+		type    : 'number',
+		default : 0,
+		UAGCopyPaste: {
+			styleType: 'btn-bottom-margin'
+		},
+	},
 	imageBottomSpace        : {
 		type    : 'number',
 		default : 15,
+		UAGCopyPaste: {
+			styleType: 'image-bottom-margin'
+		},
+	},
+	imageBottomSpaceTablet        : {
+		type    : 'number',
+		default : 0,
+		UAGCopyPaste: {
+			styleType: 'image-bottom-margin'
+		},
+	},
+	imageBottomSpaceMobile        : {
+		type    : 'number',
+		default : 0,
 		UAGCopyPaste: {
 			styleType: 'image-bottom-margin'
 		},
@@ -858,6 +914,20 @@ const attributes = {
 			styleType: 'main-title-bottom-margin'
 		},
 	},
+	titleBottomSpaceTablet        : {
+		type    : 'number',
+		default : 0,
+		UAGCopyPaste: {
+			styleType: 'main-title-bottom-margin'
+		},
+	},
+	titleBottomSpaceMobile        : {
+		type    : 'number',
+		default : 0,
+		UAGCopyPaste: {
+			styleType: 'main-title-bottom-margin'
+		},
+	},
 	metaBottomSpace         : {
 		type    : 'number',
 		default : 15,
@@ -865,9 +935,37 @@ const attributes = {
 			styleType: 'prefix-bottom-margin'
 		},
 	},
+	metaBottomSpaceTablet         : {
+		type    : 'number',
+		default : 0,
+		UAGCopyPaste: {
+			styleType: 'prefix-bottom-margin'
+		},
+	},
+	metaBottomSpaceMobile         : {
+		type    : 'number',
+		default : 0,
+		UAGCopyPaste: {
+			styleType: 'prefix-bottom-margin'
+		},
+	},
 	excerptBottomSpace      : {
 		type    : 'number',
 		default : 25,
+		UAGCopyPaste: {
+			styleType: 'desc-bottom-margin'
+		},
+	},
+	excerptBottomSpaceTablet      : {
+		type    : 'number',
+		default : 0,
+		UAGCopyPaste: {
+			styleType: 'desc-bottom-margin'
+		},
+	},
+	excerptBottomSpaceMobile      : {
+		type    : 'number',
+		default : 0,
 		UAGCopyPaste: {
 			styleType: 'desc-bottom-margin'
 		},

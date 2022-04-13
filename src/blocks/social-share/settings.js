@@ -30,9 +30,13 @@ const Settings = ( props ) => {
 	const {
 		align,
 		gap,
+		gapTablet,
+		gapMobile,
 		stack,
 		social_layout,
 		borderRadius,
+		borderRadiusTablet,
+		borderRadiusMobile,
 		size,
 		sizeType,
 		sizeMobile,
@@ -263,7 +267,7 @@ const Settings = ( props ) => {
 						'ultimate-addons-for-gutenberg'
 					) }
 				/>
-				<Range
+				{/* <Range
 					label={ __(
 						'Border Radius',
 						'ultimate-addons-for-gutenberg'
@@ -280,8 +284,36 @@ const Settings = ( props ) => {
 						'Note: Border Radius option is useful when one adds background color to the icons.',
 						'ultimate-addons-for-gutenberg'
 					) }
+				/> */}
+				<ResponsiveSlider
+					label={ __(
+						'Border Radius',
+						'ultimate-addons-for-gutenberg'
+					) }
+					data={ {
+						desktop: {
+							value: borderRadius,
+							label: 'borderRadius',
+						},
+						tablet: {
+							value: borderRadiusTablet,
+							label: 'borderRadiusTablet',
+						},
+						mobile: {
+							value: borderRadiusMobile,
+							label: 'borderRadiusMobile',
+						},
+					} }
+					min={ 0 }
+					max={ 100 }
+					displayUnit={ false }
+					help={ __(
+						'Note: Border Radius option is useful when one adds background color to the icons.',
+						'ultimate-addons-for-gutenberg'
+					) }
+					setAttributes={ setAttributes }
 				/>
-				<Range
+				{/* <Range
 					label={ __(
 						'Gap between Items',
 						'ultimate-addons-for-gutenberg'
@@ -292,6 +324,30 @@ const Settings = ( props ) => {
 					min={ 0 }
 					max={ 100 }
 					displayUnit={ false }
+				/> */}
+				<ResponsiveSlider
+					label={ __(
+						'Gap between Items',
+						'ultimate-addons-for-gutenberg'
+					) }
+					data={ {
+						desktop: {
+							value: gap,
+							label: 'gap',
+						},
+						tablet: {
+							value: gapTablet,
+							label: 'gapTablet',
+						},
+						mobile: {
+							value: gapMobile,
+							label: 'gapMobile',
+						},
+					} }
+					min={ 0 }
+					max={ 100 }
+					displayUnit={ false }
+					setAttributes={ setAttributes }
 				/>
 			</UAGAdvancedPanelBody>
 		);

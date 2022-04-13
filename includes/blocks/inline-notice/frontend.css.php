@@ -146,9 +146,13 @@ if ( 'modern' === $attr['layout'] ) {
 
 	$selectors[' .uagb-notice-title']['background-color'] = $attr['contentBgColor'];
 	$selectors[' .uagb-notice-title']['border-left']      = UAGB_Helper::get_css_value( $attr['highlightWidth'], 'px' ) . ' solid ' . $attr['noticeColor'];
+	$t_selectors[' .uagb-notice-title']['border-left']      = UAGB_Helper::get_css_value( $attr['highlightWidthTablet'], 'px' ) . ' solid ' . $attr['noticeColor'];
+	$m_selectors[' .uagb-notice-title']['border-left']      = UAGB_Helper::get_css_value( $attr['highlightWidthMobile'], 'px' ) . ' solid ' . $attr['noticeColor'];
 
 	$selectors[' .uagb-notice-text']['background-color'] = $attr['contentBgColor'];
 	$selectors[' .uagb-notice-text']['border-left']      = UAGB_Helper::get_css_value( $attr['highlightWidth'], 'px' ) . ' solid ' . $attr['noticeColor'];
+	$t_selectors[' .uagb-notice-text']['border-left']      = UAGB_Helper::get_css_value( $attr['highlightWidthTablet'], 'px' ) . ' solid ' . $attr['noticeColor'];
+	$m_selectors[' .uagb-notice-text']['border-left']      = UAGB_Helper::get_css_value( $attr['highlightWidthMobile'], 'px' ) . ' solid ' . $attr['noticeColor'];
 
 }
 

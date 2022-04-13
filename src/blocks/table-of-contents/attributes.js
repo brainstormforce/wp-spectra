@@ -559,6 +559,20 @@ const attributes = {
 			styleType: 'main-title-bottom-margin'
 		},
 	},
+	headingBottomTablet: {
+		type: 'number',
+		default: 0,
+		UAGCopyPaste: {
+			styleType: 'main-title-bottom-margin'
+		},
+	},
+	headingBottomMobile: {
+		type: 'number',
+		default: 0,
+		UAGCopyPaste: {
+			styleType: 'main-title-bottom-margin'
+		},
+	},
 	paddingTypeDesktop: {
 		type: 'string',
 		default: 'px',
