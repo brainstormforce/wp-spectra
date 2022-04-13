@@ -5,7 +5,9 @@
 		display: inline-block;
 		max-width: 100%;
 		height: auto;
-
+		> a {
+			display: inline-block;
+		}
 		figcaption {
 			text-align: center;
 			margin-top: 0.5em;
@@ -55,7 +57,6 @@
 	}
 
 	&--layout-overlay {
-
 		&__color-wrapper {
 			position: absolute;
 			left: 0;
@@ -65,6 +66,14 @@
 			opacity: 0.2;
 			background: rgba(#000, 0.5);
 			transition: opacity 0.35s ease-in-out;
+		}
+
+		&-link {
+			position: absolute;
+			left: 0;
+			right: 0;
+			bottom: 0;
+			top: 0;
 		}
 
 		&:hover {

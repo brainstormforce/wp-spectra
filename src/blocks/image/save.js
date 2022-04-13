@@ -96,6 +96,12 @@ export default function Save( props ) {
 						<>
 							<div className='wp-block-uagb-image--layout-overlay__color-wrapper'></div>
 							<div className={`wp-block-uagb-image--layout-overlay__inner ${overlayContentPosition.replace( ' ', '-' )}`}>
+								<a
+									className={ `wp-block-uagb-image--layout-overlay-link ${linkClass}` }
+									href={ href }
+									target={ linkTarget }
+									rel={getRel()}
+								></a>
 								{ 'before_title' === seperatorPosition && separator}
 								{imageHeading}
 								{ 'after_title' === seperatorPosition && separator}
