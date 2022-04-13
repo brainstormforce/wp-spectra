@@ -20,6 +20,8 @@ const initialState = {
 	enableResponsiveConditions : '',
 	contentWidth: '',
 	settingsSavedNotification: false,
+	enableComingSoonMode: 'disabled',
+	comingSoonPage: '',
 };
 
 const globalDataStore = createStore(
