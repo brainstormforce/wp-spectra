@@ -216,6 +216,9 @@ export default function styling( props ) {
 			),
 			'text-align': captionAlign
 		},
+		'.wp-block-uagb-image .wp-block-uagb-image__figure figcaption a': {
+			'color': captionColor,
+		},
 		// overlay
 		'.wp-block-uagb-image .wp-block-uagb-image--layout-overlay__color-wrapper': {
 			'background': overlayBackground,
@@ -263,6 +266,9 @@ export default function styling( props ) {
 				headingMarginUnit
 			),
 			'opacity': headingShowOn === 'always' ? 1 : 0
+		},
+		'.wp-block-uagb-image .wp-block-uagb-image--layout-overlay__inner .uagb-image-heading a': {
+			'color': headingColor,
 		},
 		'.wp-block-uagb-image .wp-block-uagb-image--layout-overlay__inner .uagb-image-caption': {
 			'opacity': captionShowOn === 'always' ? 1 : 0

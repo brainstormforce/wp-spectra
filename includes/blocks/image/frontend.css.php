@@ -54,6 +54,9 @@ $selectors = array(
 		'margin-left'     => UAGB_Helper::get_css_value( $attr['captionLeftMargin'], $attr['captionMarginUnit'] ),
 		'text-align'      => $attr['captionAlign'],
 	),
+	'.wp-block-uagb-image .wp-block-uagb-image__figure figcaption a' => array(
+		'color'           => $attr['captionColor'],
+	),
 	// overlay.
 	'.wp-block-uagb-image .wp-block-uagb-image--layout-overlay__color-wrapper' => array(
 		'background' => $attr['overlayBackground'],
@@ -83,6 +86,9 @@ $selectors = array(
 		'margin-bottom'   => UAGB_Helper::get_css_value( $attr['headingBottomMargin'], $attr['headingMarginUnit'] ),
 		'margin-left'     => UAGB_Helper::get_css_value( $attr['headingLeftMargin'], $attr['headingMarginUnit'] ),
 		'opacity'         => 'always' === $attr['headingShowOn'] ? 1 : 0,
+	),
+	'.wp-block-uagb-image .wp-block-uagb-image--layout-overlay__inner .uagb-image-heading a' => array(
+		'color'           => $attr['headingColor'],
 	),
 	'.wp-block-uagb-image .wp-block-uagb-image--layout-overlay__inner .uagb-image-caption' => array(
 		'opacity' => 'always' === $attr['captionShowOn'] ? 1 : 0,
