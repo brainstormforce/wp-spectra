@@ -1,1 +1,84 @@
-(window.webpackJsonp_ultimate_addons_for_gutenberg=window.webpackJsonp_ultimate_addons_for_gutenberg||[]).push([[7],{488:function(e,t,a){"use strict";a.r(t);var o=a(3),n=a.n(o),r=a(12),l=a(1),s=a(4),b=a(0),c=a.n(b),u=a(10);const i=e=>{e=e.parentProps;const{attributes:t,setAttributes:a}=e,o=Object(u.a)(),{className:b,label:i,icon:_,iconPosition:d}=t,p=e=>""!==_&&e===d?c.a.createElement("span",{className:n()("uagb-button__icon","uagb-button__icon-position-"+d)},Object(r.a)(_)):null;return c.a.createElement("div",{className:n()(b,"uagb-buttons__outer-wrap","uagb-editor-preview-mode-"+o.toLowerCase(),"uagb-block-"+e.clientId.substr(0,8),"wp-block-button")},c.a.createElement("div",{className:"uagb-button__wrapper"},c.a.createElement("div",{className:n()("uagb-buttons-repeater","wp-block-button__link")},p("before"),c.a.createElement(s.RichText,{placeholder:Object(l.__)("Add text…"),value:i,tagName:"div",onChange:e=>{a({label:e})},allowedFormats:["bold","italic","strikethrough"],className:"uagb-button__link",rel:"noopener noreferrer",keepPlaceholderOnFocus:!0}),p("after"))))};t.default=c.a.memo(i)}}]);
+(window["webpackJsonp_ultimate_addons_for_gutenberg"] = window["webpackJsonp_ultimate_addons_for_gutenberg"] || []).push([["chunks/buttons-child/render"],{
+
+/***/ "./src/blocks/buttons-child/render.js":
+/*!********************************************!*\
+  !*** ./src/blocks/buttons-child/render.js ***!
+  \********************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! classnames */ "./node_modules/classnames/index.js");
+/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(classnames__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _Controls_renderIcon__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @Controls/renderIcon */ "./blocks-config/uagb-controls/renderIcon.js");
+/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @wordpress/i18n */ "@wordpress/i18n");
+/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @wordpress/block-editor */ "@wordpress/block-editor");
+/* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var _Controls_getPreviewType__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @Controls/getPreviewType */ "./blocks-config/uagb-controls/getPreviewType.js");
+/**
+ * BLOCK: Buttons Child - Edit Class
+ */
+// Import classes
+
+
+
+
+
+
+
+const Render = props => {
+  props = props.parentProps;
+  const {
+    attributes,
+    setAttributes
+  } = props;
+  const deviceType = Object(_Controls_getPreviewType__WEBPACK_IMPORTED_MODULE_5__["useDeviceType"])();
+  const {
+    className,
+    label,
+    icon,
+    iconPosition
+  } = attributes;
+
+  const iconHtml = curr_position => {
+    if ('' !== icon && curr_position === iconPosition) {
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_4___default.a.createElement("span", {
+        className: classnames__WEBPACK_IMPORTED_MODULE_0___default()('uagb-button__icon', `uagb-button__icon-position-${iconPosition}`)
+      }, Object(_Controls_renderIcon__WEBPACK_IMPORTED_MODULE_1__["default"])(icon));
+    }
+
+    return null;
+  };
+
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_4___default.a.createElement("div", {
+    className: classnames__WEBPACK_IMPORTED_MODULE_0___default()(className, 'uagb-buttons__outer-wrap', `uagb-editor-preview-mode-${deviceType.toLowerCase()}`, `uagb-block-${props.clientId.substr(0, 8)}`, 'wp-block-button')
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_4___default.a.createElement("div", {
+    className: "uagb-button__wrapper"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_4___default.a.createElement("div", {
+    className: classnames__WEBPACK_IMPORTED_MODULE_0___default()('uagb-buttons-repeater', 'wp-block-button__link')
+  }, iconHtml('before'), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_4___default.a.createElement(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__["RichText"], {
+    placeholder: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__["__"])('Add text…'),
+    value: label,
+    tagName: "div",
+    onChange: value => {
+      setAttributes({
+        label: value
+      });
+    },
+    allowedFormats: ['bold', 'italic', 'strikethrough'],
+    className: "uagb-button__link",
+    rel: "noopener noreferrer",
+    keepPlaceholderOnFocus: true
+  }), iconHtml('after'))));
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (/*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_4___default.a.memo(Render));
+
+/***/ })
+
+}]);
+//# sourceMappingURL=render.js.map

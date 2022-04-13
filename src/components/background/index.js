@@ -1,6 +1,6 @@
 import { __ } from '@wordpress/i18n';
 import AdvancedPopColorControl from '@Components/color-control/advanced-pop-color-control.js';
-import { SelectControl } from '@wordpress/components';
+import { SelectControl, __experimentalAlignmentMatrixControl as AlignmentMatrixControl } from '@wordpress/components';
 import styles from './editor.lazy.scss';
 import GradientSettings from '@Components/gradient-settings';
 import React, { useLayoutEffect } from 'react';
@@ -132,6 +132,14 @@ const Background = ( props ) => {
 					{ backgroundImage.value && (
 						<>
 							<div className="uag-background-image-position">
+								<AlignmentMatrixControl
+									value={ backgroundPosition.value }
+									onChange={ ( value ) =>
+										setAttributes( {
+											[ backgroundPosition.label ]: value,
+										} )
+									}
+								/>
 								<SelectControl
 									label={ __(
 										'Image Position',
