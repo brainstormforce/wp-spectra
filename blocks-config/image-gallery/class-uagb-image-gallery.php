@@ -1006,7 +1006,7 @@ if ( ! class_exists( 'Spectra_Pro_Image_Gallery' ) ) {
 	
 		private function render_media_caption( $mediaArray, $atts ) {
 			$needsEllipsis = isset( $mediaArray[ 'caption' ] ) ? true : false;
-			$capSpacePos = isset( $mediaArray[ 'caption' ] ) ? strpos( $mediaArray[ 'caption' ], ' ' ) : 0;
+			$capSpacePos = isset( $mediaArray[ 'caption' ] ) ? strpos( $mediaArray[ 'caption' ], ' ' ) : false;
 			$limitedCaption =  ( isset( $mediaArray[ 'caption' ] ) && $mediaArray[ 'caption' ] )
 				? $mediaArray[ 'caption' ]
 				: (
@@ -1026,7 +1026,7 @@ if ( ! class_exists( 'Spectra_Pro_Image_Gallery' ) ) {
 				$limitedEnd = substr( $limitedCaption, -1 );
 				if ( ! $limitedSpacePos ) {
 					// There's only 1 word.
-					if ( strpos( ! $capSpacePos ) !== false ) {
+					if ( ! $capSpacePos ) {
 						// There's only 1 word in the original caption.
 						if ( strlen( $limitedCaption ) === strlen( explode( ' ', $mediaArray[ 'caption' ] )[0] ) ) {
 							// The limited caption is the same as the original.
