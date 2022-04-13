@@ -72,6 +72,7 @@ import './blocks/section/block.js';
 import './blocks/buttons/block.js';
 import './blocks/buttons-child/block.js';
 import './blocks/wp-search/block.js';
+import './blocks/image/block.js';
 import './blocks/extensions/block.js';
 
 

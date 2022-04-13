@@ -1,0 +1,48 @@
+.uagb-inspector-tab {
+
+	.block-editor-image-size-control .block-editor-image-size-control__row {
+		text-transform: capitalize;
+	}
+
+	.components-base-control label.components-input-control__label {
+		text-transform: capitalize;
+	}
+
+	.block-editor-image-size-control {
+
+		&__row {
+
+			.components-button-group {
+
+				.components-button {
+					border: 1px solid #8f9395;
+					box-shadow: none;
+
+					&.is-pressed {
+						background: #0085ba;
+						border-color: #0085ba;
+					}
+				}
+			}
+		}
+	}
+}
+
+.wp-block-uagb-image {
+
+	.components-placeholder.is-medium {
+
+		.components-placeholder__instructions {
+			display: block !important;
+		}
+
+		.components-placeholder__fieldset {
+			flex-direction: row;
+
+			.components-button {
+				margin-right: 10px;
+			}
+		}
+	}
+}
+
