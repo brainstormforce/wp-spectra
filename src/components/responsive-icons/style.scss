@@ -1,14 +1,19 @@
 .spectra-responsive-icons__wrap {
 	margin-right: 15px;
+	box-shadow: inset 0 0 0 1px #9fa59c;
+	border-radius: 3px;
 
 	.components-button-group .components-button {
-		margin-right: 5px;
-		padding: 10px;
+		padding-right: 10px;
+    	padding-left: 10px;
+		box-shadow: none;
+		margin-right: 0px;
 	}
 
 	svg {
-		height: 25px;
-		width: 25px;
+		height: 18px;
+		width: 18px;
+		fill: #9fa59c;
 	}
 
 	.uagb-responsive-tabs.active-tab > svg {
