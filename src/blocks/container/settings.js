@@ -9,8 +9,6 @@ import { __ } from '@wordpress/i18n';
 
 import {
 	InspectorControls,
-	BlockControls,
-	Inserter
 } from '@wordpress/block-editor';
 import BoxShadowControl from '@Components/box-shadow';
 import SpacingControl from '@Components/spacing-control';
@@ -18,7 +16,7 @@ import Background from '@Components/background';
 import Border from '@Components/border';
 import UAGAdvancedPanelBody from '@Components/advanced-panel-body';
 import MultiButtonsControl from '@Components/multi-buttons-control';
-import { Icon, Toolbar, SelectControl, ToggleControl } from '@wordpress/components';
+import { Icon, SelectControl, ToggleControl } from '@wordpress/components';
 import renderCustomIcon from '@Controls/renderCustomIcon';
 import UAGTabsControl from '@Components/tabs';
 import AdvancedPopColorControl from '@Components/color-control/advanced-pop-color-control';
@@ -139,7 +137,9 @@ const Settings = ( props ) => {
 		backgroundCustomSizeType,
 		overlayType,
 		backgroundVideoColor,
-		backgroundVideo
+		backgroundVideo,
+		topInvert,
+		bottomInvert
 	} = attributes;
 
 	let currentDirection = 'row';
@@ -403,11 +403,7 @@ const Settings = ( props ) => {
 												},
 											} }
 											min={ 0 }
-											max={ 1600 }
-											unit={ {
-												value: innerContentCustomWidthType,
-												label: 'innerContentCustomWidthType',
-											} }
+											limitMax={ { 'px': 1600, '%': 100, 'vw': 100 } }
 											units={ [
 												{
 													name: __(
@@ -416,7 +412,19 @@ const Settings = ( props ) => {
 													),
 													unitValue: 'px',
 												},
+												{
+													name: __( '%', 'ultimate-addons-for-gutenberg' ),
+													unitValue: '%',
+												},
+												{
+													name: __( 'VW', 'ultimate-addons-for-gutenberg' ),
+													unitValue: 'vw',
+												},
 											] }
+											unit={ {
+												value: innerContentCustomWidthType,
+												label: 'innerContentCustomWidthType',
+											} }
 											setAttributes={ setAttributes }
 										/>
 									}
@@ -443,11 +451,11 @@ const Settings = ( props ) => {
 									},
 								} }
 								min={ 0 }
-								limitMax={ { 'px': 1600, '%': 100 } }
 								unit={ {
 									value: widthType,
 									label: 'widthType',
 								} }
+								limitMax={ { 'px': 1600, '%': 100, 'vw': 100 } }
 								units={ [
 									{
 										name: __(
@@ -501,11 +509,7 @@ const Settings = ( props ) => {
 										},
 									} }
 									min={ 0 }
-									max={ 1600 }
-									unit={ {
-										value: innerContentCustomWidthType,
-										label: 'innerContentCustomWidthType',
-									} }
+									limitMax={ { 'px': 1600, '%': 100, 'vw': 100 } }
 									units={ [
 										{
 											name: __(
@@ -514,7 +518,19 @@ const Settings = ( props ) => {
 											),
 											unitValue: 'px',
 										},
+										{
+											name: __( '%', 'ultimate-addons-for-gutenberg' ),
+											unitValue: '%',
+										},
+										{
+											name: __( 'VW', 'ultimate-addons-for-gutenberg' ),
+											unitValue: 'vw',
+										},
 									] }
+									unit={ {
+										value: innerContentCustomWidthType,
+										label: 'innerContentCustomWidthType',
+									} }
 									setAttributes={ setAttributes }
 								/>
 							}
@@ -1259,6 +1275,18 @@ const Settings = ( props ) => {
 						/>
 						<ToggleControl
 							label={ __(
+								'Invert',
+								'ultimate-addons-for-gutenberg'
+							) }
+							checked={ topInvert }
+							onChange={ () =>
+								setAttributes( {
+									topInvert: ! topInvert,
+								} )
+							}
+						/>
+						<ToggleControl
+							label={ __(
 								'Bring To Front',
 								'ultimate-addons-for-gutenberg'
 							) }
@@ -1346,6 +1374,18 @@ const Settings = ( props ) => {
 						/>
 						<ToggleControl
 							label={ __(
+								'Invert',
+								'ultimate-addons-for-gutenberg'
+							) }
+							checked={ bottomInvert }
+							onChange={ () =>
+								setAttributes( {
+									bottomInvert: ! bottomInvert,
+								} )
+							}
+						/>
+						<ToggleControl
+							label={ __(
 								'Bring To Front',
 								'ultimate-addons-for-gutenberg'
 							) }
@@ -1390,16 +1430,6 @@ const Settings = ( props ) => {
 
 	return (
 		<Suspense fallback={ lazyLoader() }>
-			<BlockControls>
-				<Toolbar className="uag-container-block-inserter">
-					<Inserter
-						clientId = { props.clientId }
-						rootClientId = { props.clientId }
-						__experimentalIsQuick = {true}
-						position="bottom right"
-					/>
-				</Toolbar>
-			</BlockControls>
 			<InspectorControls>
 				<InspectorTabs>
 					<InspectorTab { ...UAGTabs.general }>

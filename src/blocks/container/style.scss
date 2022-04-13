@@ -28,8 +28,8 @@
 		bottom: -3px;
 	}
 
-	.uagb-container__shape[data-negative="false"].uagb-container__shape-bottom,
-	.uagb-container__shape[data-negative="true"].uagb-container__shape-top {
+	.uagb-container__shape.uagb-container__invert.uagb-container__shape-bottom,
+	.uagb-container__shape.uagb-container__invert.uagb-container__shape-top {
 		-webkit-transform: rotate(180deg);
 		-ms-transform: rotate(180deg);
 		transform: rotate(180deg);

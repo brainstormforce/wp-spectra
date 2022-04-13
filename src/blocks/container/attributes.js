@@ -15,21 +15,18 @@ const attributes = {
 	},
 	widthDesktop: {
 		type: 'number',
-		default: 100,
 		UAGCopyPaste: {
 			styleType: 'container-width-desktop'
 		}
 	},
 	widthTablet: {
 		type: 'number',
-		default: 100,
 		UAGCopyPaste: {
 			styleType: 'container-width-tablet'
 		}
 	},
 	widthMobile: {
 		type: 'number',
-		default: 100,
 		UAGCopyPaste: {
 			styleType: 'container-width-mobile'
 		}
@@ -62,7 +59,6 @@ const attributes = {
 		UAGCopyPaste: {
 			styleType: 'container-min-height-desktop'
 		},
-		default: 120,
 	},
 	minHeightTablet: {
 		type: 'number',
@@ -129,21 +125,21 @@ const attributes = {
 	},
 	justifyContentDesktop: {
 		type: 'string',
-		default: 'flex-start',
+		default: 'center',
 		UAGCopyPaste: {
 			styleType: 'container-justify-content-desktop'
 		},
 	},
 	justifyContentTablet: {
 		type: 'string',
-		default: 'flex-start',
+		default: 'center',
 		UAGCopyPaste: {
 			styleType: 'container-justify-content-tablet'
 		},
 	},
 	justifyContentMobile: {
 		type: 'string',
-		default: 'flex-start',
+		default: 'center',
 		UAGCopyPaste: {
 			styleType: 'container-justify-content-mobile'
 		},
@@ -641,6 +637,20 @@ const attributes = {
 		default: false,
 		UAGCopyPaste: {
 			styleType: 'container-bottom-flip'
+		},
+	},
+	topInvert: {
+		type: 'boolean',
+		default: false,
+		UAGCopyPaste: {
+			styleType: 'container-top-invert'
+		},
+	},
+	bottomInvert: {
+		type: 'boolean',
+		default: false,
+		UAGCopyPaste: {
+			styleType: 'container-bottom-invert'
 		},
 	},
 	topContentAboveShape: {
