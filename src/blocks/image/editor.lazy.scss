@@ -17,6 +17,9 @@
 				.components-button {
 					border: 1px solid #8f9395;
 					box-shadow: none;
+					font-size: 13px;
+					font-weight: 400;
+					height: 26px;
 
 					&.is-pressed {
 						background: #0085ba;
