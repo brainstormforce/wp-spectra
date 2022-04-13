@@ -7,7 +7,8 @@ const setInitialState = ( store ) => {
         const initialState = {
             initialStateSetFlag : true,
             activeBlocksFilterTab : 'all',
-            activeSettingsNavigationTab : 'asset-generation',
+            activeSettingsNavigationTab : 'global-settings',
+			settingsSavedNotification: false,
             blocksStatuses : data.blocks_activation_and_deactivation,
             enableFileGeneration : data.enable_file_generation,
             enableTemplates : data.enable_templates_button,
@@ -20,7 +21,8 @@ const setInitialState = ( store ) => {
             enableCopyPasteStyles : data.copy_paste,
             enableDisplayConditions: data.enable_block_condition,
             enableMasonryExtension: data.enable_masonry_gallery,
-            instaLinkedAccounts: data.insta_linked_accounts,
+			enableResponsiveConditions: data.enable_block_responsive,
+			contentWidth: data.content_width,
         };
 
         store.dispatch( {type: 'UPDATE_INITIAL_STATE', payload: initialState} );

@@ -17,9 +17,6 @@ function addAttributes( settings ) {
 				UAGSystem: {
 					type: 'string',
 				},
-				UAGDisplayConditions: {
-					type: 'string',
-				},
 				UAGHideDesktop: {
 					type: 'boolean',
 					default: false,

@@ -29,26 +29,9 @@ if ( 'yes' === uagb_blocks_info.uagb_old_user_less_than_2 ) {
 			return { 'data-btn-width': attribute.align };
 		},
 		example: {
-			innerBlocks: [
-				{
-					name: 'uagb/buttons-child',
-					innerBlocks: [
-						{
-							name: 'uagb/buttons-child',
-							attributes: { label: '#Click Here' },
-						},
-					],
-				},
-				{
-					name: 'uagb/buttons-child',
-					innerBlocks: [
-						{
-							name: 'uagb/buttons-child',
-							attributes: { label: '#Click Here' },
-						},
-					],
-				},
-			],
+			attributes: {
+				isPreview: true,
+			}
 		},
 		attributes,
 		edit,

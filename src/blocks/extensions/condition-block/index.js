@@ -4,8 +4,12 @@ import { createHigherOrderComponent } from '@wordpress/compose';
 import { addFilter } from '@wordpress/hooks';
 import { InspectorControls } from '@wordpress/block-editor';
 import UAGAdvancedPanelBody from '@Components/advanced-panel-body';
-
-const { enableConditions } = uagb_blocks_info;
+import { select } from '@wordpress/data';
+import { useEffect  } from '@wordpress/element';
+import classnames from 'classnames';
+import addBlockEditorResponsiveStyles from '@Controls/addBlockEditorResponsiveStyles';
+import { useDeviceType } from '@Controls/getPreviewType';
+const { enableConditions, enableResponsiveConditions } = uagb_blocks_info;
 
 const UserConditionOptions = ( props ) => {
 	const { attributes, setAttributes } = props;
@@ -13,9 +17,6 @@ const UserConditionOptions = ( props ) => {
 		UAGLoggedIn,
 		UAGLoggedOut,
 		UAGDisplayConditions,
-		UAGHideDesktop,
-		UAGHideMob,
-		UAGHideTab,
 		UAGSystem,
 		UAGBrowser,
 		UAGUserRole,
@@ -32,10 +33,6 @@ const UserConditionOptions = ( props ) => {
 				options={ [
 					{ value: 'none', label: __( 'None' ) },
 					{ value: 'userstate', label: __( 'User State' ) },
-					{
-						value: 'responsiveVisibility',
-						label: __( 'Responsive Visibility' ),
-					},
 					{ value: 'userRole', label: __( 'User Role' ) },
 					{ value: 'browser', label: __( 'Browser' ) },
 					{ value: 'os', label: __( 'Operating System' ) },
@@ -58,37 +55,6 @@ const UserConditionOptions = ( props ) => {
 						onChange={ () =>
 							setAttributes( {
 								UAGLoggedOut: ! attributes.UAGLoggedOut,
-							} )
-						}
-					/>
-				</>
-			) }
-			{ UAGDisplayConditions === 'responsiveVisibility' && (
-				<>
-					<ToggleControl
-						label={ __( 'Hide on Desktop' ) }
-						checked={ UAGHideDesktop }
-						onChange={ () =>
-							setAttributes( {
-								UAGHideDesktop: ! attributes.UAGHideDesktop,
-							} )
-						}
-					/>
-					<ToggleControl
-						label={ __( 'Hide on Tablet' ) }
-						checked={ UAGHideTab }
-						onChange={ () =>
-							setAttributes( {
-								UAGHideTab: ! attributes.UAGHideTab,
-							} )
-						}
-					/>
-					<ToggleControl
-						label={ __( 'Hide on Mobile' ) }
-						checked={ UAGHideMob }
-						onChange={ () =>
-							setAttributes( {
-								UAGHideMob: ! attributes.UAGHideMob,
 							} )
 						}
 					/>
@@ -155,6 +121,49 @@ const UserConditionOptions = ( props ) => {
 	);
 };
 
+const ResponsiveConditionOptions = ( props ) => {
+	const { attributes, setAttributes } = props;
+	const {
+		UAGHideDesktop,
+		UAGHideMob,
+		UAGHideTab,
+	} = attributes;
+
+	return (
+		<>
+		<>
+			<ToggleControl
+				label={ __( 'Hide on Desktop' ) }
+				checked={ UAGHideDesktop }
+				onChange={ () =>
+					setAttributes( {
+						UAGHideDesktop: ! attributes.UAGHideDesktop,
+					} )
+				}
+			/>
+			<ToggleControl
+				label={ __( 'Hide on Tablet' ) }
+				checked={ UAGHideTab }
+				onChange={ () =>
+					setAttributes( {
+						UAGHideTab: ! attributes.UAGHideTab,
+					} )
+				}
+			/>
+			<ToggleControl
+				label={ __( 'Hide on Mobile' ) }
+				checked={ UAGHideMob }
+				onChange={ () =>
+					setAttributes( {
+						UAGHideMob: ! attributes.UAGHideMob,
+					} )
+				}
+			/>
+		</>
+		</>
+	);
+};
+
 const AdvancedControlsBlock = createHigherOrderComponent( ( BlockEdit ) => {
 	return ( props ) => {
 		const { isSelected } = props;
@@ -164,20 +173,81 @@ const AdvancedControlsBlock = createHigherOrderComponent( ( BlockEdit ) => {
 		const excludeBlocks = uagb_blocks_info.uagb_exclude_blocks_from_extension;
 		const customBlocks = uagb_blocks_info.uagb_enable_extensions_for_blocks;
 		const blockPrefix = blockName.substring( 0, blockName.indexOf( '/' ) + 1 );
+		const { getSelectedBlock } = select( 'core/block-editor' );
+		const childBlocks = getSelectedBlock()?.innerBlocks;
+		const deviceType = useDeviceType();
+		const responsiveClass = [];
+		let responsiveClassHideDesktop, responsiveClassHideTab, responsiveClassHideMob;
+
+			const parentClientId = select(
+				'core/block-editor'
+			).getBlockHierarchyRootClientId( props.clientId );
+
+			const parentAttributes = select( 'core/block-editor' ).getBlockAttributes(
+				parentClientId
+			);
+
+			if ( parentAttributes?.UAGHideDesktop ) {
+				responsiveClassHideDesktop = 'uag-hide-desktop';
+			}
+
+			if ( parentAttributes?.UAGHideTab ) {
+				responsiveClassHideTab = 'uag-hide-tab';
+			}
+
+			if ( parentAttributes?.UAGHideMob ) {
+				responsiveClassHideMob = 'uag-hide-mob';
+			}
+
+			responsiveClass.push( responsiveClassHideDesktop, responsiveClassHideTab, responsiveClassHideMob );
+
+			addBlockEditorResponsiveStyles( parentClientId, responsiveClass, `uagb-editor-preview-at-${ deviceType.toLowerCase() }` );
+
+		useEffect( () => {
+
+				addBlockEditorResponsiveStyles( parentClientId, responsiveClass, `uagb-editor-preview-at-${ deviceType.toLowerCase() }` );
+
+				const displayPanel = document.querySelector( '.uag-advance-panel-body-display' );
+				let responsivePanel = document.querySelector( '.uag-advance-panel-body-responsive' );
+				let masonryPanel = document.querySelector( '.uag-advance-panel-body-masonry' );
+				if( displayPanel ){
+					const tabsParent = displayPanel.parentElement;
+					if( tabsParent ){
+						responsivePanel = responsivePanel ? responsivePanel : '';
+						masonryPanel = masonryPanel ? masonryPanel : '';
+						if( tabsParent.lastChild.className.includes( 'components-panel__body is-opened' ) ){
+							tabsParent.prepend( tabsParent.lastChild, displayPanel, responsivePanel, masonryPanel )
+						}
+
+					}
+				}
+		}, [childBlocks, deviceType] );
 
 		return (
 			<>
 				<BlockEdit {...props} />
 				{isSelected && ! blockName.includes( 'uagb/' ) && ( blockName.includes( 'core/' ) || ( Array.isArray( customBlocks ) && 0 !== customBlocks.length && ( customBlocks.includes( blockName ) || customBlocks.includes( blockPrefix ) ) ) ) && ! excludeBlocks.includes( blockName ) &&
 				<InspectorControls>
+					{ 'enabled' === enableConditions &&
 					<UAGAdvancedPanelBody
 						title={ __( 'Display Conditions', 'ultimate-addons-for-gutenberg' ) }
 						initialOpen={ false }
 						className="block-editor-block-inspector__advanced uagb-extention-tab"
 					>
-						<p className="components-base-control__help">{ __( "Below UAG settings will only take effect once you are on the live page, and not while you're editing.", 'ultimate-addons-for-gutenberg' ) }</p>
+						<p className="components-base-control__help">{ __( "Below Spectra settings will only take effect once you are on the live page, and not while you're editing.", 'ultimate-addons-for-gutenberg' ) }</p>
 						{ UserConditionOptions( props ) }
 					</UAGAdvancedPanelBody>
+					}
+					{ 'enabled' === enableResponsiveConditions &&
+					<UAGAdvancedPanelBody
+						title={ __( 'Responsive Conditions', 'ultimate-addons-for-gutenberg' ) }
+						initialOpen={ false }
+						className="block-editor-block-inspector__advanced uagb-extention-tab"
+					>
+						<p className="components-base-control__help">{ __( "Below Spectra settings will only take effect once you are on the live page, and not while you're editing.", 'ultimate-addons-for-gutenberg' ) }</p>
+						{ ResponsiveConditionOptions( props ) }
+					</UAGAdvancedPanelBody>
+					}
 				</InspectorControls>
 				}
 			</>
@@ -190,31 +260,27 @@ function ApplyExtraClass( extraProps, blockType, attributes ) {
 		UAGHideDesktop,
 		UAGHideTab,
 		UAGHideMob,
-		UAGDisplayConditions,
 	} = attributes;
 
-	if ( 'responsiveVisibility' === UAGDisplayConditions ) {
 		if ( UAGHideDesktop ) {
-			extraProps.className = extraProps.className + ' uag-hide-desktop';
+			extraProps.className = classnames( extraProps.className, 'uag-hide-desktop' );
 		}
 
 		if ( UAGHideTab ) {
-			extraProps.className = extraProps.className + ' uag-hide-tab';
+			extraProps.className = classnames( extraProps.className, 'uag-hide-tab' );
 		}
 
 		if ( UAGHideMob ) {
-			extraProps.className = extraProps.className + ' uag-hide-mob';
+			extraProps.className = classnames( extraProps.className, 'uag-hide-mob' );
 		}
-	}
 
 	return extraProps;
 }
 
-if ( 'enabled' === enableConditions ) {
 	//For UAG Blocks.
 	addFilter(
 		'uag_advance_tab_content',
-		'uagb/advanced-control-block',
+		'uagb/advanced-display-condition',
 		function ( content, props ) {
 			if ( ! props ) {
 				return content;
@@ -226,6 +292,8 @@ if ( 'enabled' === enableConditions ) {
 
 			if( isSelected && ! excludeBlocks.includes( name ) ) {
 				return (
+					<>
+					{ 'enabled' === enableConditions &&
 					<UAGAdvancedPanelBody
 						title={ __(
 							'Display Conditions',
@@ -234,14 +302,34 @@ if ( 'enabled' === enableConditions ) {
 						initialOpen={ false }
 						className="block-editor-block-inspector__advanced uagb-extention-tab"
 					>
+						{ UserConditionOptions( props ) }
 						<p className="components-base-control__help">
 							{ __(
-								"Below setting will only take effect once you are on the live page, and not while you're editing.",
+								"Above setting will only take effect once you are on the live page, and not while you're editing.",
 								'ultimate-addons-for-gutenberg'
 							) }
 						</p>
-						{ UserConditionOptions( props ) }
 					</UAGAdvancedPanelBody>
+					}
+					{ 'enabled' === enableResponsiveConditions &&
+						<UAGAdvancedPanelBody
+							title={ __(
+								'Responsive Conditions',
+								'ultimate-addons-for-gutenberg'
+							) }
+							initialOpen={ false }
+							className="block-editor-block-inspector__advanced uagb-extention-tab"
+						>
+						{ ResponsiveConditionOptions( props ) }
+							<p className="components-base-control__help">
+								{ __(
+									"Above setting will only take effect once you are on the live page, and not while you're editing.",
+									'ultimate-addons-for-gutenberg'
+								) }
+							</p>
+						</UAGAdvancedPanelBody>
+					}
+					</>
 				);
 			}
 		}
@@ -249,13 +337,12 @@ if ( 'enabled' === enableConditions ) {
 	//For Non-UAG Blocks.
 	addFilter(
 		'editor.BlockEdit',
-		'uagb/advanced-control-block',
+		'uagb/advanced-display-condition',
 		AdvancedControlsBlock
 	);
-
 	addFilter(
 		'blocks.getSaveContent.extraProps',
 		'uagb/apply-extra-class',
 		ApplyExtraClass
 	);
-}
+

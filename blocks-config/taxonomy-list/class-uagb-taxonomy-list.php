@@ -464,6 +464,10 @@ if ( ! class_exists( 'UAGB_Taxonomy_List' ) ) {
 						'listDecoration'             => array(
 							'type' => 'string',
 						),
+						'isPreview'                  => array(
+							'type'    => 'boolean',
+							'default' => false,
+						),
 					),
 					'render_callback' => array( $this, 'render_html' ),
 				)
@@ -582,7 +586,7 @@ if ( ! class_exists( 'UAGB_Taxonomy_List' ) ) {
 													<a class="uagb-tax-link" href="<?php echo esc_url( get_term_link( $value->slug, $attributes['taxonomyType'] ) ); ?>"><?php echo esc_attr( $value->name ); ?></a>
 													<?php if ( $showCount ) { ?>
 														<?php echo ' (' . esc_attr( $value->count ) . ')'; ?>
-													<?php } ?>												
+													<?php } ?>
 													</li>
 												<?php } ?>
 											</ul>
@@ -640,7 +644,7 @@ if ( ! class_exists( 'UAGB_Taxonomy_List' ) ) {
 			$tab_class     = '';
 			$mob_class     = '';
 
-			if ( array_key_exists( 'UAGDisplayConditions', $attributes ) && 'responsiveVisibility' === $attributes['UAGDisplayConditions'] ) {
+			if ( array_key_exists( 'UAGHideDesktop', $attributes ) || array_key_exists( 'UAGHideTab', $attributes ) || array_key_exists( 'UAGHideMob', $attributes ) ) {
 
 				$desktop_class = ( isset( $attributes['UAGHideDesktop'] ) ) ? 'uag-hide-desktop' : '';
 
@@ -673,7 +677,7 @@ if ( ! class_exists( 'UAGB_Taxonomy_List' ) ) {
 				<div class = "<?php echo esc_attr( implode( ' ', $main_classes ) ); ?>">
 					<?php if ( ! empty( $newcategoriesList ) ) { ?>
 							<?php $this->grid_html( $attributes ); ?>
-							<?php $this->list_html( $attributes ); ?>							
+							<?php $this->list_html( $attributes ); ?>
 					<?php } else { ?>
 							<div class="uagb-tax-not-available"><?php echo esc_attr( $noTaxDisplaytext ); ?></div>
 					<?php } ?>

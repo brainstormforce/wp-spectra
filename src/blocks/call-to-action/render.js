@@ -20,7 +20,7 @@ const Render = ( props ) => {
 	const deviceType = useDeviceType();
 
 	// Setup the attributes.
-	const { block_id, ctaPosition, ctaType, stack  } = attributes;
+	const { isPreview, block_id, ctaPosition, ctaType, stack  } = attributes;
 
 	const isCta = <CTA attributes={ attributes } setAttributes={ setAttributes } />;
 
@@ -68,7 +68,9 @@ const Render = ( props ) => {
 	if ( ctaPosition === 'right' && stack !== 'none' ) {
 		iconimgStyleClass = 'uagb-cta__content-stacked-' + stack + ' ';
 	}
+	const previewImageData = `${ uagb_blocks_info.uagb_url }/admin/assets/preview-images/call-to-action.png`;
 	return (
+		isPreview ? <img width='100%' src={previewImageData} alt=''/> :
 			<div
 				className={ classnames(
 					`uagb-block-${ block_id }`,

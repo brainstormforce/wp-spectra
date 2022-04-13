@@ -819,7 +819,7 @@ const Settings = ( props ) => {
 						setAttributes( { titleSpace: value } )
 					}
 					min={ 0 }
-					max={ 500 }
+					max={ 200 }
 					displayUnit={ false }
 				/>
 				{ ctaPosition !== 'right' &&
@@ -834,7 +834,7 @@ const Settings = ( props ) => {
 							setAttributes( { descSpace: value } )
 						}
 						min={ 0 }
-						max={ 500 }
+						max={ 200 }
 						displayUnit={ false }
 					/>
 				}
@@ -850,7 +850,7 @@ const Settings = ( props ) => {
 							setAttributes( { ctaLeftSpace: value } )
 						}
 						min={ 0 }
-						max={ 500 }
+						max={ 200 }
 						displayUnit={ false }
 					/>
 				) }
@@ -866,7 +866,7 @@ const Settings = ( props ) => {
 							setAttributes( { ctaRightSpace: value } )
 						}
 						min={ 0 }
-						max={ 500 }
+						max={ 200 }
 						displayUnit={ false }
 					/>
 				) }

@@ -29,11 +29,12 @@ const Range = ( props ) => {
 
 	const defaultCache = {
 		value: props.value,
-		resetDisabled: true,
 		unit: props.unit.value,
 	};
 
 	const [ cachedValue, setCacheValue ] = useState( defaultCache );
+	let max = limitMax( props.unit?.value, props );
+	let min = limitMin( props.unit?.value, props );
 
 	useEffect( () => {
 		const cachedValueUpdate = { ...cachedValue };
@@ -55,7 +56,6 @@ const Range = ( props ) => {
 			JSON.stringify( value ) !==
 			JSON.stringify( cachedValueUpdate.value )
 		) {
-			cachedValueUpdate.resetDisabled = false;
 			setCacheValue( cachedValueUpdate );
 		}
 	}, [ props.value ] );
@@ -67,7 +67,6 @@ const Range = ( props ) => {
 			JSON.stringify( props.unit.value ) !==
 			JSON.stringify( cachedValueUpdate.unit )
 		) {
-			cachedValueUpdate.resetDisabled = false;
 			setCacheValue( cachedValueUpdate );
 		}
 	}, [ props.unit ] );
@@ -90,7 +89,15 @@ const Range = ( props ) => {
 	const handleOnChange = ( newValue ) => {
 		setValue( newValue );
 		const parsedValue = parseFloat( newValue );
-		props.onChange( parsedValue );
+		if ( props.onChange ) {
+			props.onChange( parsedValue );
+			return;
+		}
+		if ( props.setAttributes ) {
+			props.setAttributes( {
+				[ props.data.label ]: parsedValue,
+			} )
+		}
 	};
 
 	const resetValues = () => {
@@ -102,12 +109,23 @@ const Range = ( props ) => {
 			onChangeUnits( cachedValueUpdate.unit );
 		}
 
-		cachedValueUpdate.resetDisabled = true;
 		setCacheValue( cachedValueUpdate );
 	};
 
 	const onChangeUnits = ( newValue ) => {
+
 		props.setAttributes( { [ props.unit.label ]: newValue } );
+
+		max = limitMax( newValue, props );
+		min = limitMin( newValue, props );
+
+		if ( props.value > max ) {
+			handleOnChange( max );
+		}
+		if ( props.value < min ) {
+			handleOnChange( min );
+		}
+
 	};
 
 	const onUnitSizeClick = ( uSizes ) => {
@@ -145,9 +163,7 @@ const Range = ( props ) => {
 		return items;
 	};
 
-	const max = limitMax( props.unit?.value, props ); 
-	const min = limitMin( props.unit?.value, props );
-	
+
 	return (
 		<div className="components-base-control uag-range-control uagb-size-type-field-tabs">
 			<div className="uagb-control__header">
@@ -158,7 +174,6 @@ const Range = ( props ) => {
 				<div className="uagb-range-control__actions">
 					<Button
 						className="uagb-reset"
-						disabled={ cachedValue.resetDisabled }
 						isSecondary
 						isSmall
 						onClick={ ( e ) => {

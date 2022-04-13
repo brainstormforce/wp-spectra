@@ -466,6 +466,12 @@ if ( ! class_exists( 'UAGB_Post_Timeline' ) ) {
 							'type'    => 'number',
 							'default' => 10,
 						),
+						'ctaBottomSpacing'        => array(
+							'type' => 'number',
+						),
+						'headTopSpacing'          => array(
+							'type' => 'number',
+						),
 						'iconSize'                => array(
 							'type'    => 'number',
 							'default' => 15,
@@ -625,6 +631,10 @@ if ( ! class_exists( 'UAGB_Post_Timeline' ) ) {
 						'ctaDecoration'           => array(
 							'type' => 'string',
 						),
+						'isPreview'               => array(
+							'type'    => 'boolean',
+							'default' => false,
+						),
 					),
 					'render_callback' => array( $this, 'post_timeline_callback' ),
 				)
@@ -649,7 +659,7 @@ if ( ! class_exists( 'UAGB_Post_Timeline' ) ) {
 			$tab_class     = '';
 			$mob_class     = '';
 
-			if ( array_key_exists( 'UAGDisplayConditions', $attributes ) && 'responsiveVisibility' === $attributes['UAGDisplayConditions'] ) {
+			if ( array_key_exists( 'UAGHideDesktop', $attributes ) || array_key_exists( 'UAGHideTab', $attributes ) || array_key_exists( 'UAGHideMob', $attributes ) ) {
 
 				$desktop_class = ( isset( $attributes['UAGHideDesktop'] ) ) ? 'uag-hide-desktop' : '';
 

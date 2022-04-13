@@ -28,7 +28,11 @@ if ( uagb_blocks_info.blocks[ 'uagb/cf7-styler' ].is_active ) {
 		},
 		category: uagb_blocks_info.category,
 		edit,
-		example: {},
+		example: {
+			attributes: {
+				isPreview: true,
+			}
+		},
 		save() {
 			return null;
 		},

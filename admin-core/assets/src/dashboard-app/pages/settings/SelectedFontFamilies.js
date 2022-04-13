@@ -49,28 +49,31 @@ const SelectedFontFamilies = () => {
 			method: 'POST',
 			body: formData,
 		} ).then( () => {
+			dispatch( {type: 'UPDATE_SETTINGS_SAVED_NOTIFICATION', payload: true } );
 		} );
     };
 
     const updateSelectedFontFamilies = ( font ) => {
+		if( enableSelectedFontFamilies === 'enabled' ) {
+			dispatch( {type: 'UPDATE_SELECTED_FONT_FAMILIES', payload: font } );
 
-        dispatch( {type: 'UPDATE_SELECTED_FONT_FAMILIES', payload: font } );
+			const action = 'uag_select_font_globally',
+				nonce = uag_react.select_font_globally_nonce;
 
-		const action = 'uag_select_font_globally',
-			nonce = uag_react.select_font_globally_nonce;
+			const formData = new window.FormData();
 
-		const formData = new window.FormData();
+			formData.append( 'action', action );
+			formData.append( 'security', nonce );
+			formData.append( 'value', JSON.stringify( font ) );
 
-		formData.append( 'action', action );
-		formData.append( 'security', nonce );
-		formData.append( 'value', JSON.stringify( font ) );
-
-		apiFetch( {
-			url: uag_react.ajax_url,
-			method: 'POST',
-			body: formData,
-		} ).then( () => {
-		} );
+			apiFetch( {
+				url: uag_react.ajax_url,
+				method: 'POST',
+				body: formData,
+			} ).then( () => {
+				dispatch( {type: 'UPDATE_SETTINGS_SAVED_NOTIFICATION', payload: true } );
+			} );
+		}
 	};
 	const customStyles = {
 		control: ( provided ) => ( {
@@ -83,13 +86,10 @@ const SelectedFontFamilies = () => {
         <section className='flex border-b border-solid border-slate-200'>
             <div className='pr-16 pb-8 w-[78%]'>
                 <h3 className="text-lg leading-6 font-medium text-gray-900">
-                    {__( 'Display Selected Font Families', 'ultimate-addons-for-gutenberg' )}
+                    {__( 'Allow Only Selected Fonts', 'ultimate-addons-for-gutenberg' )}
                 </h3>
                 <p className="mt-[0.6rem] text-sm ">
-                    { __( 'Now you can set multiple global font families for all UAG blocks by Enabling "Display Selected Font Families" option. Also, It will not list the unsed fonts in your blocks controls.', 'ultimate-addons-for-gutenberg' ) }
-                </p>
-                <p className="mt-3 text-sm ">
-                    { __( 'You can get all the selected families in typography component of each block.', 'ultimate-addons-for-gutenberg' ) }
+                    { __( 'Spectra offers 700+ Google font options. If this is overwhelming for your clients, you can use this option to show only limited number of fonts in the block settings.', 'ultimate-addons-for-gutenberg' ) }
                 </p>
                 <Select
                     isMulti
@@ -100,7 +100,7 @@ const SelectedFontFamilies = () => {
                     maxMenuHeight={ 140 }
                     minMenuHeight = { 70 }
                     isSearchable={true}
-                    className={`mt-4 cursor-pointer focus:ring-wpcolor uag-font-select-${enableSelectedFontFamilies}`}
+                    className={`mt-4 cursor-pointer focus:ring-wpcolor`}
 					theme={( theme ) => ( {
 						...theme,
 						colors: {

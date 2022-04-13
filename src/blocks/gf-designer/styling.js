@@ -244,43 +244,6 @@ function styling( props ) {
 			),
 			'text-align': align,
 		},
-		' input[type=button]': {
-			'color': buttonTextColor,
-			'background-color': buttonBgColor,
-			'font-size': generateCSSUnit( buttonFontSize, buttonFontSizeType ),
-			'font-family': buttonFontFamily,
-			'font-style' : buttonFontStyle,
-			'text-decoration': buttonDecoration,
-			'text-transform': buttonTransform,
-			'font-weight': buttonFontWeight,
-			'line-height': generateCSSUnit(
-				buttonLineHeight,
-				buttonLineHeightType
-			),
-			'border-color': buttonBorderColor,
-			'border-style': buttonBorderStyle,
-			'border-width': generateCSSUnit( buttonBorderWidth, 'px' ),
-			'border-radius': generateCSSUnit(
-				buttonBorderRadius,
-				buttonBorderRadiusType
-			),
-			'padding-left': generateCSSUnit(
-				buttonleftPadding,
-				buttonpaddingUnit
-			),
-			'padding-right': generateCSSUnit(
-				buttonrightPadding,
-				buttonpaddingUnit
-			),
-			'padding-top': generateCSSUnit(
-				buttontopPadding,
-				buttonpaddingUnit
-			),
-			'padding-bottom': generateCSSUnit(
-				buttonbottomPadding,
-				buttonpaddingUnit
-			),
-		},
 		' select': {
 			'background-color': fieldBgColor,
 			'border-style': fieldBorderStyle,
@@ -1181,7 +1144,7 @@ function styling( props ) {
 
 	let stylingCss = generateCSS(
 		selectors,
-		`.editor-styles-wrapper .wp-block-uagb-gf-styler.uagb-block-${ props.clientId.substr(
+		`#wpwrap .editor-styles-wrapper .wp-block-uagb-gf-styler.uagb-block-${ props.clientId.substr(
 			0,
 			8
 		) }`

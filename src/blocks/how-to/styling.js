@@ -109,6 +109,13 @@ function styling( props ) {
 		'.uagb-how-to-main-wrap .uagb-how-to-materials-child__wrapper:last-child': {
 			'margin-bottom': generateCSSUnit( row_gap, 'px' ),
 		},
+		' h4.uagb-howto-req-steps-text': {
+			'margin-top': generateCSSUnit( row_gap, 'px' ),
+			'margin-bottom': generateCSSUnit( row_gap, 'px' ),
+		},
+		' h4.uagb-howto-req-materials-text': {
+			'margin-top': generateCSSUnit( row_gap, 'px' ),
+		},
 		' .uagb-infobox__content-wrap': {
 			'margin-bottom': generateCSSUnit( sGap, 'px' ),
 		},

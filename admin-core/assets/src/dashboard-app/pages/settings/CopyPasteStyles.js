@@ -36,6 +36,7 @@ const CopyPasteStyles = () => {
 			method: 'POST',
 			body: formData,
 		} ).then( () => {
+			dispatch( {type: 'UPDATE_SETTINGS_SAVED_NOTIFICATION', payload: true } );
 		} );
     };
 
@@ -46,7 +47,7 @@ const CopyPasteStyles = () => {
                     {__( 'Copy Paste Styles', 'ultimate-addons-for-gutenberg' )}
                 </h3>
                 <p className="mt-[0.6rem] text-sm ">
-                    { __( 'Enable the "Copy Paste Styles" option to have the ability to Copy & Paste UAG & Core Gutenberg Blocks Styles.', 'ultimate-addons-for-gutenberg' ) }
+                    { __( 'Enable the "Copy Paste Styles" option to have the ability to copy & paste Spectra & Core Gutenberg Blocks Styles.', 'ultimate-addons-for-gutenberg' ) }
                 </p>
             </div>
             <div>

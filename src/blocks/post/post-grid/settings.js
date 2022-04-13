@@ -215,6 +215,13 @@ const Settings = ( props ) => {
 		paddingLeftMobile,
 		mobilePaddingUnit,
 		tabletPaddingUnit,
+		postsOffset,
+		taxStyle,
+		taxDivider,
+		displayPostTaxonomyAboveTitle,
+		hideTaxonomyIcon,
+		highlightedTextColor,
+		highlightedTextBgColor
 	} = attributes;
 
 	const onSelectPostType = ( value ) => {
@@ -232,6 +239,10 @@ const Settings = ( props ) => {
 	};
 	const onChangePostsPerPage = ( value ) => {
 		setAttributes( { postsToShow: value } );
+		setAttributes( { paginationMarkup: 'empty' } );
+	};
+	const onChangePostsOffset = ( value ) => {
+		setAttributes( { postsOffset: value } );
 		setAttributes( { paginationMarkup: 'empty' } );
 	};
 	const onChangePageLimit = ( value ) => {
@@ -464,6 +475,18 @@ const Settings = ( props ) => {
 					setAttributes={ setAttributes }
 					value={ postsToShow }
 					onChange={ onChangePostsPerPage }
+					min={ 0 }
+					max={ 50 }
+					displayUnit={ false }
+				/>
+				<Range
+					label={ __(
+						'Offset Starting Post',
+						'ultimate-addons-for-gutenberg'
+					) }
+					setAttributes={ setAttributes }
+					value={ postsOffset }
+					onChange={ onChangePostsOffset }
 					min={ 0 }
 					max={ 500 }
 					displayUnit={ false }
@@ -857,6 +880,91 @@ const Settings = ( props ) => {
 					onChange={ () =>
 						setAttributes( {
 							displayPostTaxonomy: ! displayPostTaxonomy,
+						} )
+					}
+				/>
+				{ displayPostTaxonomy && (
+				<>
+				<MultiButtonsControl
+					setAttributes={ setAttributes }
+					label={ __(
+						'Taxonomy Position',
+						'ultimate-addons-for-gutenberg'
+					) }
+					data={ {
+						value: displayPostTaxonomyAboveTitle,
+						label: 'displayPostTaxonomyAboveTitle',
+					} }
+					options={ [
+						{
+							value: 'withMeta',
+							label: __(
+								'With Meta',
+								'ultimate-addons-for-gutenberg'
+							),
+						},
+						{
+							value: 'aboveTitle',
+							label: __(
+								'Above Title',
+								'ultimate-addons-for-gutenberg'
+							),
+						},
+					] }
+				/>
+				{ 'aboveTitle' === displayPostTaxonomyAboveTitle && (
+				<>
+					<MultiButtonsControl
+						setAttributes={ setAttributes }
+						label={ __(
+							'Taxonomy Style',
+							'ultimate-addons-for-gutenberg'
+						) }
+						data={ {
+							value: taxStyle,
+							label: 'taxStyle',
+						} }
+						options={ [
+							{
+								value: 'default',
+								label: __(
+									'Normal',
+									'ultimate-addons-for-gutenberg'
+								),
+							},
+							{
+								value: 'highlighted',
+								label: __(
+									'Highlighted',
+									'ultimate-addons-for-gutenberg'
+								),
+							},
+						] }
+					/>
+				{ 'default' === taxStyle && (
+					<TextControl
+						label={ __( 'Taxonomy Divider', 'ultimate-addons-for-gutenberg' ) }
+						value={ taxDivider }
+						onChange={ ( value ) =>
+							setAttributes( {
+								taxDivider: value,
+							} )
+						}
+					/>
+				) }
+				</>
+				) }
+				</>
+				) }
+				<ToggleControl
+					label={ __(
+						'Show Meta Icon',
+						'ultimate-addons-for-gutenberg'
+					) }
+					checked={ hideTaxonomyIcon }
+					onChange={ () =>
+						setAttributes( {
+							hideTaxonomyIcon: ! hideTaxonomyIcon,
 						} )
 					}
 				/>
@@ -1257,6 +1365,24 @@ const Settings = ( props ) => {
 						setAttributes( { metaColor: value } )
 					}
 				/>
+				{ ( 'aboveTitle' === displayPostTaxonomyAboveTitle && 'highlighted' === taxStyle ) && (
+					<>
+					<AdvancedPopColorControl
+						label={ __( 'Taxonomy Text Color', 'ultimate-addons-for-gutenberg' ) }
+						colorValue={ highlightedTextColor }
+						onColorChange={ ( value ) =>
+							setAttributes( { highlightedTextColor: value } )
+						}
+					/>
+					<AdvancedPopColorControl
+						label={ __( 'Highlighted Color', 'ultimate-addons-for-gutenberg' ) }
+						colorValue={ highlightedTextBgColor }
+						onColorChange={ ( value ) =>
+							setAttributes( { highlightedTextBgColor: value } )
+						}
+					/>
+					</>
+				)}
 
 				<TypographyControl
 					label={ __(
@@ -1634,7 +1760,7 @@ const Settings = ( props ) => {
 						setAttributes( { ctaBottomSpace: value } )
 					}
 					min={ 0 }
-					max={ 500 }
+					max={ 300 }
 					unit={ {
 						value: ctaBottomSpaceUnit,
 						label: 'ctaBottomSpaceUnit',
@@ -1911,7 +2037,7 @@ const Settings = ( props ) => {
 							}
 							displayUnit={ false }
 							min={ 0 }
-							max={ 500 }
+							max={ 100 }
 						/>
 					</>
 				) }
@@ -1927,7 +2053,7 @@ const Settings = ( props ) => {
 						'ultimate-addons-for-gutenberg'
 					) }
 					min={ 0 }
-					max={ 500 }
+					max={ 300 }
 					unit={ {
 						value: paginationSpacingUnit,
 						label: 'paginationSpacingUnit',

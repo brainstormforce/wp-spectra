@@ -17,8 +17,6 @@ $block_data = array(
 	'description'      => __( 'This block is an outer wrap section that allows you to add other blocks within it.', 'ultimate-addons-for-gutenberg' ),
 	'default'          => true,
 	'extension'        => false,
-	'priority'         => 2,
-	'dynamic_assets'   => array(
-		'dir' => 'section',
-	),
+	'priority'         => 36,
+
 );

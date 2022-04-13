@@ -36,12 +36,31 @@
 	.components-menu-item__shortcut {
 		white-space: nowrap;
 	}
-}
 
-.uag-copy-paste-styles,
-.uag-copy-paste-styles-popover {
+	.components-menu-item__item {
+		min-width: 100%;
+		justify-content: space-around;
+	}
+
+	.components-popover__content {
+		border: 1px solid #1e1e1e;
+		box-shadow: none;
+	}
 
 	.components-button {
-		color: #4a01e0;
+		padding: 10px;
+		justify-content: center;
 	}
 }
+
+
+.uag-hide-desktop,
+.uagb-editor-preview-at-desktop.uag-hide-desktop,
+.uagb-editor-preview-at-tablet.uag-hide-tab,
+.uagb-editor-preview-at-mobile.uag-hide-mob {
+	display: inherit;
+	background: -o-repeating-linear-gradient(325deg, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.05) 1px, transparent 2px, transparent 9px);
+	background: repeating-linear-gradient(125deg, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.05) 1px, transparent 2px, transparent 9px);
+	border: 1px solid rgba(0, 0, 0, 0.02);
+}
+

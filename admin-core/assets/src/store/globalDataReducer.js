@@ -79,11 +79,21 @@ const globalDataReducer = ( state = {}, action ) => {
                 ...state,
                 enableMasonryExtension: action.payload,
             };
-        case 'UPDATE_INSTA_LINKED_ACCOUNTS':
-            return {
-                ...state,
-                instaLinkedAccounts: action.payload,
-            };
+		case 'UPDATE_ENABLE_RESPONSIVE_CONDITIONS':
+			return {
+				...state,
+				enableResponsiveConditions: action.payload,
+			};
+		case 'UPDATE_CONTENT_WIDTH':
+			return {
+				...state,
+				contentWidth: action.payload,
+				};
+		case 'UPDATE_SETTINGS_SAVED_NOTIFICATION':
+			return {
+				...state,
+				settingsSavedNotification: action.payload,
+				};
         default:
             return state;
     }

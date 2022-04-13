@@ -4,7 +4,7 @@ import globalDataReducer from './globalDataReducer';
 const initialState = {
     initialStateSetFlag : false,
     activeBlocksFilterTab : 'all',
-    activeSettingsNavigationTab : 'asset-generation',
+    activeSettingsNavigationTab : '',
     blocksStatuses : [],
     enableFileGeneration : '',
     enableTemplates : '',
@@ -17,13 +17,15 @@ const initialState = {
     enableCopyPasteStyles : '',
     enableDisplayConditions : '',
     enableMasonryExtension : '',
-    instaLinkedAccounts: '',
+	enableResponsiveConditions : '',
+	contentWidth: '',
+	settingsSavedNotification: false,
 };
 
 const globalDataStore = createStore(
     globalDataReducer,
-    initialState, 
-    window.__REDUX_DEVTOOLS_EXTENSION__ && 
+    initialState,
+    window.__REDUX_DEVTOOLS_EXTENSION__ &&
     window.__REDUX_DEVTOOLS_EXTENSION__()
 );
 

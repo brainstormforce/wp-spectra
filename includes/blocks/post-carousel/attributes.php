@@ -64,6 +64,8 @@ return array(
 	'ctaLineHeightMobile'     => '',
 	'ctaLoadGoogleFonts'      => false,
 	'metaColor'               => '#777777',
+	'highlightedTextColor'    => '#fff',
+	'highlightedTextBgColor'  => '#3182ce',
 	'excerptColor'            => '',
 	'ctaColor'                => '',
 	'ctaBgColor'              => '',
@@ -140,6 +142,7 @@ return array(
 	'layoutConfig'            => array(
 		array( 'uagb/post-image' ),
 		array( 'uagb/post-title' ),
+		array( 'uagb/post-taxonomy' ),
 		array( 'uagb/post-meta' ),
 		array( 'uagb/post-excerpt' ),
 		array( 'uagb/post-button' ),

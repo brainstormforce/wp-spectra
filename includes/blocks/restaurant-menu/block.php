@@ -17,9 +17,5 @@ $block_data = array(
 	'description'      => __( 'This block allows you to add attractive Price List.', 'ultimate-addons-for-gutenberg' ),
 	'default'          => true,
 	'extension'        => false,
-	'priority'         => 4,
-	'static_css'       => 'price-list',
-	'dynamic_assets'   => array(
-		'dir' => 'restaurant-menu',
-	),
+	'priority'         => 13,
 );
