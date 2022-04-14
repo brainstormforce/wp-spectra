@@ -296,6 +296,7 @@ const attributes = {
 	},
 	noFollow: {
 		type: 'boolean',
+		default: false
 	},
 	icon: {
 		type: 'string',
