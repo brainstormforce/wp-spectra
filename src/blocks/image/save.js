@@ -80,16 +80,13 @@ export default function Save( props ) {
 		<div className="uagb-image-separator"></div>
 	)
 
-	const imageOverlayLink = () => {
-		// eslint-disable-next-line
-		return (<a
-				className={ `wp-block-uagb-image--layout-overlay-link ${linkClass}` }
-				href={ href }
-				target={ linkTarget }
-				rel={getRel()}
-			></a>
-		)
-	}
+	// eslint-disable-next-line
+	const imageOverlayLink = (<a
+		className={ `wp-block-uagb-image--layout-overlay-link ${linkClass}` }
+		href={ href }
+		target={ linkTarget }
+		rel={getRel()}
+	></a> )
 
 	return (
 		<div className={ classnames(
