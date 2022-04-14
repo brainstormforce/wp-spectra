@@ -725,6 +725,9 @@ button.components-button.uagb-review-select-btn.is-secondary {
 			.block-editor-block-breadcrumb__button:before {
 				box-shadow: none;
 			}
+			.block-editor-block-breadcrumb__button:active:not(:disabled) {
+				background: transparent;
+			}
 		}
 	}
 }
