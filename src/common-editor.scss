@@ -705,10 +705,10 @@ button.components-button.uagb-review-select-btn.is-secondary {
 }
 
 /* Breadcrumbs css */
-.block-editor .interface-interface-skeleton__footer{
+.block-editor .interface-interface-skeleton__footer {
 	padding: 5px;
 	border-top: 1px solid #e9e9e9;
-	.block-editor-block-breadcrumb{
+	.block-editor-block-breadcrumb {
 		li{
 			color: #2271b1;
 			font-weight: 600;
@@ -720,6 +720,9 @@ button.components-button.uagb-review-select-btn.is-secondary {
 			svg {
 				width: 25px;
 				height: 25px;
+			}
+			.block-editor-block-breadcrumb__button:before {
+				box-shadow: none;
 			}
 		}
 	}
