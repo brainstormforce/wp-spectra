@@ -184,38 +184,106 @@ const attributes = {
 			styleType: 'container-bg-type'
 		},
 	},
-	backgroundImage: {
+	backgroundImageDesktop: {
 		type: 'object',
 		UAGCopyPaste: {
-			styleType: 'container-bg-image'
+			styleType: 'container-bg-image-desktop'
 		},
 	},
-	backgroundPosition: {
+	backgroundImageTablet: {
+		type: 'object',
+		UAGCopyPaste: {
+			styleType: 'container-bg-image-tablet'
+		},
+	},
+	backgroundImageMobile: {
+		type: 'object',
+		UAGCopyPaste: {
+			styleType: 'container-bg-image-mobile'
+		},
+	},
+	backgroundPositionDesktop: {
 		type: 'string',
 		default: 'center-center',
 		UAGCopyPaste: {
-			styleType: 'container-bg-position'
+			styleType: 'container-bg-position-desktop'
 		},
 	},
-	backgroundSize: {
+	backgroundPositionTablet: {
+		type: 'string',
+		default: 'center-center',
+		UAGCopyPaste: {
+			styleType: 'container-bg-position-tablet'
+		},
+	},
+	backgroundPositionMobile: {
+		type: 'string',
+		default: 'center-center',
+		UAGCopyPaste: {
+			styleType: 'container-bg-position-mobile'
+		},
+	},
+	backgroundSizeDesktop: {
 		type: 'string',
 		default: 'cover',
 		UAGCopyPaste: {
-			styleType: 'container-bg-size'
+			styleType: 'container-bg-size-desktop'
 		},
 	},
-	backgroundRepeat: {
+	backgroundSizeTablet: {
+		type: 'string',
+		default: 'cover',
+		UAGCopyPaste: {
+			styleType: 'container-bg-size-tablet'
+		},
+	},
+	backgroundSizeMobile: {
+		type: 'string',
+		default: 'cover',
+		UAGCopyPaste: {
+			styleType: 'container-bg-size-mobile'
+		},
+	},
+	backgroundRepeatDesktop: {
 		type: 'string',
 		default: 'no-repeat',
 		UAGCopyPaste: {
-			styleType: 'container-bg-repeat'
+			styleType: 'container-bg-repeat-desktop'
 		},
 	},
-	backgroundAttachment: {
+	backgroundRepeatTablet: {
+		type: 'string',
+		default: 'no-repeat',
+		UAGCopyPaste: {
+			styleType: 'container-bg-repeat-tablet'
+		},
+	},
+	backgroundRepeatMobile: {
+		type: 'string',
+		default: 'no-repeat',
+		UAGCopyPaste: {
+			styleType: 'container-bg-repeat-mobile'
+		},
+	},
+	backgroundAttachmentDesktop: {
 		type: 'string',
 		default: 'scroll',
 		UAGCopyPaste: {
-			styleType: 'container-bg-attachment'
+			styleType: 'container-bg-attachment-desktop'
+		},
+	},
+	backgroundAttachmentTablet: {
+		type: 'string',
+		default: 'scroll',
+		UAGCopyPaste: {
+			styleType: 'container-bg-attachment-tablet'
+		},
+	},
+	backgroundAttachmentMobile: {
+		type: 'string',
+		default: 'scroll',
+		UAGCopyPaste: {
+			styleType: 'container-bg-attachment-mobile'
 		},
 	},
 	backgroundColor: {

@@ -7,29 +7,28 @@
  * @package uagb
  */
 
-$bg_obj = array(
-	'backgroundType'           => $attr['backgroundType'],
-	'backgroundImage'          => $attr['backgroundImage'],
-	'backgroundColor'          => $attr['backgroundColor'],
-	'gradientValue'            => $attr['gradientValue'],
-	'backgroundRepeat'         => $attr['backgroundRepeat'],
-	'backgroundPosition'       => $attr['backgroundPosition'],
-	'backgroundSize'           => $attr['backgroundSize'],
-	'backgroundAttachment'     => $attr['backgroundAttachment'],
-	'backgroundImageColor'     => $attr['backgroundImageColor'],
-	'overlayType'              => $attr['overlayType'],
-	'backgroundCustomSize'     => $attr['backgroundCustomSizeDesktop'],
-	'backgroundCustomSizeType' => $attr['backgroundCustomSizeType'],
-);
-
 $box_shadow_position_css = $attr['boxShadowPosition'];
 
 if ( 'outset' === $attr['boxShadowPosition'] ) {
 	$box_shadow_position_css = '';
 }
 
-$container_bg_css = UAGB_Block_Helper::uag_get_background_obj( $bg_obj );
-$container_css    = array(
+$bg_obj_desktop           = array(
+	'backgroundType'           => $attr['backgroundType'],
+	'backgroundImage'          => $attr['backgroundImageDesktop'],
+	'backgroundColor'          => $attr['backgroundColor'],
+	'gradientValue'            => $attr['gradientValue'],
+	'backgroundRepeat'         => $attr['backgroundRepeatDesktop'],
+	'backgroundPosition'       => $attr['backgroundPositionDesktop'],
+	'backgroundSize'           => $attr['backgroundSizeDesktop'],
+	'backgroundAttachment'     => $attr['backgroundAttachmentDesktop'],
+	'backgroundImageColor'     => $attr['backgroundImageColor'],
+	'overlayType'              => $attr['overlayType'],
+	'backgroundCustomSize'     => $attr['backgroundCustomSizeDesktop'],
+	'backgroundCustomSizeType' => $attr['backgroundCustomSizeType'],
+);
+$container_bg_css_desktop = UAGB_Block_Helper::uag_get_background_obj( $bg_obj_desktop );
+$container_css            = array(
 	'min-height'      => UAGB_Helper::get_css_value( $attr['minHeightDesktop'], $attr['minHeightType'] ),
 	'flex-direction'  => $attr['directionDesktop'],
 	'align-items'     => $attr['alignItemsDesktop'],
@@ -64,7 +63,7 @@ $container_css    = array(
 	'margin-right'    => UAGB_Helper::get_css_value( $attr['rightMarginDesktop'], $attr['marginType'] ),
 );
 
-$container_css = array_merge( $container_css, $container_bg_css );
+$container_css = array_merge( $container_css, $container_bg_css_desktop );
 
 $selectors = array(
 	'.uagb-block-' . $id                                  => $container_css, // phpcs:ignore WordPress.WP.GlobalVariablesOverride.Prohibited
@@ -103,25 +102,43 @@ if ( '' !== $attr['bottomWidth'] ) {
 	$selectors[ '.uagb-block-' . $id . ' .uagb-container__shape-bottom svg' ]['width'] = 'calc( ' . $attr['bottomWidth'] . '% + 1.3px )';
 }
 
+$bg_obj_tablet           = array(
+	'backgroundType'           => $attr['backgroundType'],
+	'backgroundImage'          => $attr['backgroundImageTablet'],
+	'backgroundColor'          => $attr['backgroundColor'],
+	'gradientValue'            => $attr['gradientValue'],
+	'backgroundRepeat'         => $attr['backgroundRepeatTablet'],
+	'backgroundPosition'       => $attr['backgroundPositionTablet'],
+	'backgroundSize'           => $attr['backgroundSizeTablet'],
+	'backgroundAttachment'     => $attr['backgroundAttachmentTablet'],
+	'backgroundImageColor'     => $attr['backgroundImageColor'],
+	'overlayType'              => $attr['overlayType'],
+	'backgroundCustomSize'     => $attr['backgroundCustomSizeTablet'],
+	'backgroundCustomSizeType' => $attr['backgroundCustomSizeType'],
+);
+$container_bg_css_tablet = UAGB_Block_Helper::uag_get_background_obj( $bg_obj_tablet );
+$container_tablet_css    = array(
+	'min-height'      => UAGB_Helper::get_css_value( $attr['minHeightTablet'], $attr['minHeightType'] ),
+	'flex-direction'  => $attr['directionTablet'],
+	'align-items'     => $attr['alignItemsTablet'],
+	'justify-content' => $attr['justifyContentTablet'],
+	'flex-wrap'       => $attr['wrapTablet'],
+	'align-content'   => $attr['alignContentTablet'],
+	'row-gap'         => UAGB_Helper::get_css_value( $attr['rowGapTablet'], $attr['rowGapType'] ),
+	'column-gap'      => UAGB_Helper::get_css_value( $attr['columnGapTablet'], $attr['columnGapType'] ),
+	'padding-top'     => UAGB_Helper::get_css_value( $attr['topPaddingTablet'], $attr['paddingType'] ),
+	'padding-bottom'  => UAGB_Helper::get_css_value( $attr['bottomPaddingTablet'], $attr['paddingType'] ),
+	'padding-left'    => UAGB_Helper::get_css_value( $attr['leftPaddingTablet'], $attr['paddingType'] ),
+	'padding-right'   => UAGB_Helper::get_css_value( $attr['rightPaddingTablet'], $attr['paddingType'] ),
+	'margin-top'      => UAGB_Helper::get_css_value( $attr['topMarginTablet'], $attr['marginType'] ),
+	'margin-bottom'   => UAGB_Helper::get_css_value( $attr['bottomMarginTablet'], $attr['marginType'] ),
+	'margin-left'     => UAGB_Helper::get_css_value( $attr['leftMarginTablet'], $attr['marginType'] ),
+	'margin-right'    => UAGB_Helper::get_css_value( $attr['rightMarginTablet'], $attr['marginType'] ),
+);
+$container_tablet_css    = array_merge( $container_tablet_css, $container_bg_css_tablet );
+
 $t_selectors = array(
-	'.uagb-block-' . $id                         => array( // phpcs:ignore WordPress.WP.GlobalVariablesOverride.Prohibited
-		'min-height'      => UAGB_Helper::get_css_value( $attr['minHeightTablet'], $attr['minHeightType'] ),
-		'flex-direction'  => $attr['directionTablet'],
-		'align-items'     => $attr['alignItemsTablet'],
-		'justify-content' => $attr['justifyContentTablet'],
-		'flex-wrap'       => $attr['wrapTablet'],
-		'align-content'   => $attr['alignContentTablet'],
-		'row-gap'         => UAGB_Helper::get_css_value( $attr['rowGapTablet'], $attr['rowGapType'] ),
-		'column-gap'      => UAGB_Helper::get_css_value( $attr['columnGapTablet'], $attr['columnGapType'] ),
-		'padding-top'     => UAGB_Helper::get_css_value( $attr['topPaddingTablet'], $attr['paddingType'] ),
-		'padding-bottom'  => UAGB_Helper::get_css_value( $attr['bottomPaddingTablet'], $attr['paddingType'] ),
-		'padding-left'    => UAGB_Helper::get_css_value( $attr['leftPaddingTablet'], $attr['paddingType'] ),
-		'padding-right'   => UAGB_Helper::get_css_value( $attr['rightPaddingTablet'], $attr['paddingType'] ),
-		'margin-top'      => UAGB_Helper::get_css_value( $attr['topMarginTablet'], $attr['marginType'] ),
-		'margin-bottom'   => UAGB_Helper::get_css_value( $attr['bottomMarginTablet'], $attr['marginType'] ),
-		'margin-left'     => UAGB_Helper::get_css_value( $attr['leftMarginTablet'], $attr['marginType'] ),
-		'margin-right'    => UAGB_Helper::get_css_value( $attr['rightMarginTablet'], $attr['marginType'] ),
-	),
+	'.uagb-block-' . $id                         => $container_tablet_css, // phpcs:ignore WordPress.WP.GlobalVariablesOverride.Prohibited
 	'.uagb-is-root-container .uagb-block-' . $id => array( // phpcs:ignore WordPress.WP.GlobalVariablesOverride.Prohibited
 		'width'     => UAGB_Helper::get_css_value( $attr['widthTablet'], $attr['widthType'] ),
 		'max-width' => UAGB_Helper::get_css_value( $attr['widthTablet'], $attr['widthType'] ),
@@ -134,25 +151,43 @@ $t_selectors = array(
 	),
 );
 
+$bg_obj_mobile           = array(
+	'backgroundType'           => $attr['backgroundType'],
+	'backgroundImage'          => $attr['backgroundImageMobile'],
+	'backgroundColor'          => $attr['backgroundColor'],
+	'gradientValue'            => $attr['gradientValue'],
+	'backgroundRepeat'         => $attr['backgroundRepeatMobile'],
+	'backgroundPosition'       => $attr['backgroundPositionMobile'],
+	'backgroundSize'           => $attr['backgroundSizeMobile'],
+	'backgroundAttachment'     => $attr['backgroundAttachmentMobile'],
+	'backgroundImageColor'     => $attr['backgroundImageColor'],
+	'overlayType'              => $attr['overlayType'],
+	'backgroundCustomSize'     => $attr['backgroundCustomSizeMobile'],
+	'backgroundCustomSizeType' => $attr['backgroundCustomSizeType'],
+);
+$container_bg_css_mobile = UAGB_Block_Helper::uag_get_background_obj( $bg_obj_mobile );
+$container_mobile_css    = array(
+	'min-height'      => UAGB_Helper::get_css_value( $attr['minHeightMobile'], $attr['minHeightType'] ),
+	'flex-direction'  => $attr['directionMobile'],
+	'align-items'     => $attr['alignItemsMobile'],
+	'justify-content' => $attr['justifyContentMobile'],
+	'flex-wrap'       => $attr['wrapMobile'],
+	'align-content'   => $attr['alignContentMobile'],
+	'row-gap'         => UAGB_Helper::get_css_value( $attr['rowGapMobile'], $attr['rowGapType'] ),
+	'column-gap'      => UAGB_Helper::get_css_value( $attr['columnGapMobile'], $attr['columnGapType'] ),
+	'padding-top'     => UAGB_Helper::get_css_value( $attr['topPaddingMobile'], $attr['paddingType'] ),
+	'padding-bottom'  => UAGB_Helper::get_css_value( $attr['bottomPaddingMobile'], $attr['paddingType'] ),
+	'padding-left'    => UAGB_Helper::get_css_value( $attr['leftPaddingMobile'], $attr['paddingType'] ),
+	'padding-right'   => UAGB_Helper::get_css_value( $attr['rightPaddingMobile'], $attr['paddingType'] ),
+	'margin-top'      => UAGB_Helper::get_css_value( $attr['topMarginMobile'], $attr['marginType'] ),
+	'margin-bottom'   => UAGB_Helper::get_css_value( $attr['bottomMarginMobile'], $attr['marginType'] ),
+	'margin-left'     => UAGB_Helper::get_css_value( $attr['leftMarginMobile'], $attr['marginType'] ),
+	'margin-right'    => UAGB_Helper::get_css_value( $attr['rightMarginMobile'], $attr['marginType'] ),
+);
+$container_mobile_css    = array_merge( $container_mobile_css, $container_bg_css_mobile );
+
 $m_selectors = array(
-	'.uagb-block-' . $id                         => array( // phpcs:ignore WordPress.WP.GlobalVariablesOverride.Prohibited
-		'min-height'      => UAGB_Helper::get_css_value( $attr['minHeightMobile'], $attr['minHeightType'] ),
-		'flex-direction'  => $attr['directionMobile'],
-		'align-items'     => $attr['alignItemsMobile'],
-		'justify-content' => $attr['justifyContentMobile'],
-		'flex-wrap'       => $attr['wrapMobile'],
-		'align-content'   => $attr['alignContentMobile'],
-		'row-gap'         => UAGB_Helper::get_css_value( $attr['rowGapMobile'], $attr['rowGapType'] ),
-		'column-gap'      => UAGB_Helper::get_css_value( $attr['columnGapMobile'], $attr['columnGapType'] ),
-		'padding-top'     => UAGB_Helper::get_css_value( $attr['topPaddingMobile'], $attr['paddingType'] ),
-		'padding-bottom'  => UAGB_Helper::get_css_value( $attr['bottomPaddingMobile'], $attr['paddingType'] ),
-		'padding-left'    => UAGB_Helper::get_css_value( $attr['leftPaddingMobile'], $attr['paddingType'] ),
-		'padding-right'   => UAGB_Helper::get_css_value( $attr['rightPaddingMobile'], $attr['paddingType'] ),
-		'margin-top'      => UAGB_Helper::get_css_value( $attr['topMarginMobile'], $attr['marginType'] ),
-		'margin-bottom'   => UAGB_Helper::get_css_value( $attr['bottomMarginMobile'], $attr['marginType'] ),
-		'margin-left'     => UAGB_Helper::get_css_value( $attr['leftMarginMobile'], $attr['marginType'] ),
-		'margin-right'    => UAGB_Helper::get_css_value( $attr['rightMarginMobile'], $attr['marginType'] ),
-	),
+	'.uagb-block-' . $id                         => $container_mobile_css, // phpcs:ignore WordPress.WP.GlobalVariablesOverride.Prohibited
 	'.uagb-is-root-container .uagb-block-' . $id => array( // phpcs:ignore WordPress.WP.GlobalVariablesOverride.Prohibited
 		'width'     => UAGB_Helper::get_css_value( $attr['widthMobile'], $attr['widthType'] ),
 		'max-width' => UAGB_Helper::get_css_value( $attr['widthMobile'], $attr['widthType'] ),

@@ -36,12 +36,22 @@ function styling( props ) {
 		alignContentTablet,
 		alignContentMobile,
 		backgroundType,
-		backgroundImage,
+		backgroundImageDesktop,
+		backgroundImageTablet,
+		backgroundImageMobile,
 		backgroundColor,
-		backgroundPosition,
-		backgroundAttachment,
-		backgroundRepeat,
-		backgroundSize,
+		backgroundPositionDesktop,
+		backgroundPositionTablet,
+		backgroundPositionMobile,
+		backgroundAttachmentDesktop,
+		backgroundAttachmentTablet,
+		backgroundAttachmentMobile,
+		backgroundRepeatDesktop,
+		backgroundRepeatTablet,
+		backgroundRepeatMobile,
+		backgroundSizeDesktop,
+		backgroundSizeTablet,
+		backgroundSizeMobile,
 		gradientValue,
 		borderStyle,
 		borderWidth,
@@ -102,6 +112,8 @@ function styling( props ) {
 		topHeightMobile,
 		topWidth,
 		backgroundCustomSizeDesktop,
+		backgroundCustomSizeTablet,
+		backgroundCustomSizeMobile,
 		backgroundCustomSizeType,
 		backgroundImageColor,
 		overlayType,
@@ -146,22 +158,22 @@ function styling( props ) {
 		}
 	};
 
-	const backgroundAttributes = {
+	const backgroundAttributesDesktop = {
         'backgroundType': backgroundType,
-        'backgroundImage': backgroundImage,
+        'backgroundImage': backgroundImageDesktop,
         'backgroundColor': backgroundColor,
         'gradientValue': gradientValue,
-        'backgroundRepeat': backgroundRepeat,
-        'backgroundPosition': backgroundPosition,
-        'backgroundSize': backgroundSize,
-        'backgroundAttachment': backgroundAttachment,
+        'backgroundRepeat': backgroundRepeatDesktop,
+        'backgroundPosition': backgroundPositionDesktop,
+        'backgroundSize': backgroundSizeDesktop,
+        'backgroundAttachment': backgroundAttachmentDesktop,
 		'backgroundCustomSize' : backgroundCustomSizeDesktop,
 		'backgroundCustomSizeType' : backgroundCustomSizeType,
 		'backgroundImageColor' : backgroundImageColor,
 		'overlayType' : overlayType
     };
 
-	const containerBackgroundCSS = generateBackgroundCSS( backgroundAttributes );
+	const containerBackgroundCSSDesktop = generateBackgroundCSS( backgroundAttributesDesktop );
 
 	let boxShadowPositionCSS = boxShadowPosition;
 
@@ -182,7 +194,7 @@ function styling( props ) {
 		'border-color': borderColor,
 		'border-radius': generateCSSUnit( borderRadius, 'px' ),
 		'border-width': generateCSSUnit( borderWidth, 'px' ),
-		...containerBackgroundCSS,
+		...containerBackgroundCSSDesktop,
 		'box-shadow':
 		generateCSSUnit( boxShadowHOffset, 'px' ) + ' ' + generateCSSUnit( boxShadowVOffset, 'px' ) +	' ' +
 		generateCSSUnit( boxShadowBlur, 'px' ) + ' ' +	generateCSSUnit( boxShadowSpread, 'px' ) + ' ' +
@@ -247,6 +259,23 @@ function styling( props ) {
 		},
 	};
 
+	const backgroundAttributesTablet = {
+        'backgroundType': backgroundType,
+        'backgroundImage': backgroundImageTablet,
+        'backgroundColor': backgroundColor,
+        'gradientValue': gradientValue,
+        'backgroundRepeat': backgroundRepeatTablet,
+        'backgroundPosition': backgroundPositionTablet,
+        'backgroundSize': backgroundSizeTablet,
+        'backgroundAttachment': backgroundAttachmentTablet,
+		'backgroundCustomSize' : backgroundCustomSizeTablet,
+		'backgroundCustomSizeType' : backgroundCustomSizeType,
+		'backgroundImageColor' : backgroundImageColor,
+		'overlayType' : overlayType
+    };
+
+	const containerBackgroundCSSTablet = generateBackgroundCSS( backgroundAttributesTablet );
+
 	const tablet_selectors = {
 		' > .wp-block-uagb-container' : {
 			'padding-top': generateCSSUnit( topPaddingTablet, paddingType ),
@@ -258,6 +287,7 @@ function styling( props ) {
 			'margin-left': generateCSSUnit( leftMarginTablet, marginType ),
 			'margin-right': generateCSSUnit( rightMarginTablet, marginType ),
 			'min-height' : generateCSSUnit( minHeightTablet, minHeightType ),
+			...containerBackgroundCSSTablet
 		},
 		' > .wp-block-uagb-container > .block-editor-inner-blocks > .block-editor-block-list__layout' : {
 			'flex-direction' : directionTablet,
@@ -284,6 +314,23 @@ function styling( props ) {
 		},
 	};
 
+	const backgroundAttributesMobile = {
+        'backgroundType': backgroundType,
+        'backgroundImage': backgroundImageMobile,
+        'backgroundColor': backgroundColor,
+        'gradientValue': gradientValue,
+        'backgroundRepeat': backgroundRepeatMobile,
+        'backgroundPosition': backgroundPositionMobile,
+        'backgroundSize': backgroundSizeMobile,
+        'backgroundAttachment': backgroundAttachmentMobile,
+		'backgroundCustomSize' : backgroundCustomSizeMobile,
+		'backgroundCustomSizeType' : backgroundCustomSizeType,
+		'backgroundImageColor' : backgroundImageColor,
+		'overlayType' : overlayType
+    };
+
+	const containerBackgroundCSSMobile = generateBackgroundCSS( backgroundAttributesMobile );
+
 	const mobile_selectors = {
 		' > .wp-block-uagb-container' : {
 			'padding-top': generateCSSUnit( topPaddingMobile, paddingType ),
@@ -295,6 +342,7 @@ function styling( props ) {
 			'margin-left': generateCSSUnit( leftMarginMobile, marginType ),
 			'margin-right': generateCSSUnit( rightMarginMobile, marginType ),
 			'min-height' : generateCSSUnit( minHeightMobile, minHeightType ),
+			...containerBackgroundCSSMobile
 		},
 		' > .wp-block-uagb-container > .block-editor-inner-blocks > .block-editor-block-list__layout' : {
 			'flex-direction' : directionMobile,

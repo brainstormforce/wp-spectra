@@ -52,12 +52,22 @@ const Settings = ( props ) => {
 		alignContentMobile,
 
 		backgroundType,
-		backgroundImage,
+		backgroundImageDesktop,
+		backgroundImageTablet,
+		backgroundImageMobile,
 		backgroundColor,
-		backgroundPosition,
-		backgroundAttachment,
-		backgroundRepeat,
-		backgroundSize,
+		backgroundPositionDesktop,
+		backgroundPositionTablet,
+		backgroundPositionMobile,
+		backgroundAttachmentDesktop,
+		backgroundAttachmentTablet,
+		backgroundAttachmentMobile,
+		backgroundRepeatDesktop,
+		backgroundRepeatTablet,
+		backgroundRepeatMobile,
+		backgroundSizeDesktop,
+		backgroundSizeTablet,
+		backgroundSizeMobile,
 		backgroundImageColor,
 		gradientValue,
 		borderStyle,
@@ -708,10 +718,20 @@ const Settings = ( props ) => {
 						value: backgroundImageColor,
 						label: 'backgroundImageColor',
 					} }
-					backgroundSize={ {
-						value: backgroundSize,
-						label: 'backgroundSize',
-					} }
+					backgroundSize={{
+						desktop: {
+							value: backgroundSizeDesktop,
+							label: 'backgroundSizeDesktop',
+						},
+						tablet: {
+							value: backgroundSizeTablet,
+							label: 'backgroundSizeTablet',
+						},
+						mobile: {
+							value: backgroundSizeMobile,
+							label: 'backgroundSizeMobile',
+						},
+					}}
 					backgroundCustomSize={{
 						desktop: {
 							value: backgroundCustomSizeDesktop,
@@ -730,22 +750,63 @@ const Settings = ( props ) => {
 						value: backgroundCustomSizeType,
 						label: 'backgroundCustomSizeType'
 					}}
-					backgroundRepeat={ {
-						value: backgroundRepeat,
-						label: 'backgroundRepeat',
-					} }
-					backgroundAttachment={ {
-						value: backgroundAttachment,
-						label: 'backgroundAttachment',
-					} }
-					backgroundPosition={ {
-						value: backgroundPosition,
-						label: 'backgroundPosition',
-					} }
-					backgroundImage={ {
-						value: backgroundImage,
-						label: 'backgroundImage',
-					} }
+					backgroundRepeat={{
+						desktop: {
+							value: backgroundRepeatDesktop,
+							label: 'backgroundRepeatDesktop',
+						},
+						tablet: {
+							value: backgroundRepeatTablet,
+							label: 'backgroundRepeatTablet',
+						},
+						mobile: {
+							value: backgroundRepeatMobile,
+							label: 'backgroundRepeatMobile',
+						},
+					}}
+					backgroundAttachment={{
+						desktop: {
+							value: backgroundAttachmentDesktop,
+							label: 'backgroundAttachmentDesktop',
+						},
+						tablet: {
+							value: backgroundAttachmentTablet,
+							label: 'backgroundAttachmentTablet',
+						},
+						mobile: {
+							value: backgroundAttachmentMobile,
+							label: 'backgroundAttachmentMobile',
+						},
+					}}
+					backgroundPosition={{
+						desktop: {
+							value: backgroundPositionDesktop,
+							label: 'backgroundPositionDesktop',
+						},
+						tablet: {
+							value: backgroundPositionTablet,
+							label: 'backgroundPositionTablet',
+						},
+						mobile: {
+							value: backgroundPositionMobile,
+							label: 'backgroundPositionMobile',
+						},
+					}}
+					backgroundImage={{
+						desktop: {
+							value: backgroundImageDesktop,
+							label: 'backgroundImageDesktop',
+						},
+						tablet: {
+							value: backgroundImageTablet,
+							label: 'backgroundImageTablet',
+						},
+						mobile: {
+							value: backgroundImageMobile,
+							label: 'backgroundImageMobile',
+						},
+					}}
+					imageResponsive={true}
 					backgroundColor={ {
 						value: backgroundColor,
 						label: 'backgroundColor',

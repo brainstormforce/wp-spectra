@@ -1,12 +1,14 @@
 import { __ } from '@wordpress/i18n';
 import AdvancedPopColorControl from '@Components/color-control/advanced-pop-color-control.js';
-import { SelectControl, __experimentalAlignmentMatrixControl as AlignmentMatrixControl } from '@wordpress/components';
+import { SelectControl } from '@wordpress/components';
 import styles from './editor.lazy.scss';
 import GradientSettings from '@Components/gradient-settings';
 import React, { useLayoutEffect } from 'react';
 import UAGImage from '@Components/image';
 import ResponsiveSlider from '@Components/responsive-slider';
-
+import ResponsiveSelectControl from '@Components/responsive-select';
+import { useDeviceType } from '@Controls/getPreviewType';
+import ResponsiveUAGImage from '@Components/responsive-image';
 const Background = ( props ) => {
 	// Add and remove the CSS on the drop and remove of the component.
 	useLayoutEffect( () => {
@@ -15,6 +17,8 @@ const Background = ( props ) => {
 			styles.unuse();
 		};
 	}, [] );
+
+	const deviceType = useDeviceType().toLowerCase();
 
 	const {
 		setAttributes,
@@ -32,7 +36,8 @@ const Background = ( props ) => {
 		backgroundVideoColor,
 		onOpacityChange,
 		backgroundCustomSize,
-		backgroundCustomSizeType
+		backgroundCustomSizeType,
+		imageResponsive
 	} = props;
 
 	const onRemoveImage = () => {
@@ -123,23 +128,17 @@ const Background = ( props ) => {
 				</div>
 			) }
 			{ 'image' === backgroundType.value && (
-				<div className="uag-background-image">
-					<UAGImage
-						onSelectImage={ onSelectImage }
-						backgroundImage={ backgroundImage.value }
-						onRemoveImage={ onRemoveImage }
-					/>
-					{ backgroundImage.value && (
+				<div c1lassName="uag-background-image">
+					{ ! imageResponsive &&
+						<UAGImage
+							onSelectImage={ onSelectImage }
+							backgroundImage={ backgroundImage.value }
+							onRemoveImage={ onRemoveImage }
+						/>
+					}
+					{ ! imageResponsive && backgroundImage.value && (
 						<>
 							<div className="uag-background-image-position">
-								<AlignmentMatrixControl
-									value={ backgroundPosition.value }
-									onChange={ ( value ) =>
-										setAttributes( {
-											[ backgroundPosition.label ]: value,
-										} )
-									}
-								/>
 								<SelectControl
 									label={ __(
 										'Image Position',
@@ -382,77 +381,289 @@ const Background = ( props ) => {
 									/>
 								}
 							</div>
-							{ overlayType &&
-								<>
-									<div className="uag-background-image-overlay-type">
-										<SelectControl
-											label={ __(
-												'Overlay Type',
-												'ultimate-addons-for-gutenberg'
-											) }
-											value={ overlayType.value }
-											onChange={ ( value ) =>
-												setAttributes( {
-													[ overlayType.label ]: value,
-												} )
-											}
-											options={ [
-												{
-													value: 'color',
-													label: __(
-														'Color',
-														'ultimate-addons-for-gutenberg'
-													),
-												},
-												{
-													value: 'gradient',
-													label: __(
-														'Gradient',
-														'ultimate-addons-for-gutenberg'
-													),
-												},
-												{
-													value: 'none',
-													label: __(
-														'None',
-														'ultimate-addons-for-gutenberg'
-													),
-												},
-											] }
-										/>
-									</div>
-									{ 'color' === overlayType.value && (
-										<div className="uag-background-image-overlay-color">
-											<AdvancedPopColorControl
-												label={ __(
-													'Image Overlay Color',
-													'ultimate-addons-for-gutenberg'
-												) }
-												colorValue={
-													backgroundImageColor.value
-												}
-												onColorChange={ ( value ) =>
-													setAttributes( {
-														[ backgroundImageColor.label ]: value,
-													} )
-												}
-											/>
-										</div>
-									) }
-									{ 'gradient' === overlayType.value && (
-										<div className="uag-background-image-overlay-gradient">
-											<GradientSettings
-												backgroundGradient={
-													props.backgroundGradient
-												}
-												setAttributes={ setAttributes }
-											/>
-										</div>
-									) }
-								</>
-							}
 						</>
 					) }
+					{ imageResponsive && backgroundImage &&
+						<ResponsiveUAGImage
+							backgroundImage={backgroundImage}
+							setAttributes={setAttributes}
+						/>
+					}
+					{ imageResponsive && backgroundImage && (
+						<>
+							<div className="uag-background-image-position">
+								<ResponsiveSelectControl
+									label={ __( 'Image Position', 'ultimate-addons-for-gutenberg' ) }
+									data={backgroundPosition}
+									options={ { desktop: [
+										{
+											value: 'left top',
+											label: __(
+												'Top Left',
+												'ultimate-addons-for-gutenberg'
+											),
+										},
+										{
+											value: 'center top',
+											label: __(
+												'Top Center',
+												'ultimate-addons-for-gutenberg'
+											),
+										},
+										{
+											value: 'right top',
+											label: __(
+												'Top Right',
+												'ultimate-addons-for-gutenberg'
+											),
+										},
+										{
+											value: 'center top',
+											label: __(
+												'Center Top',
+												'ultimate-addons-for-gutenberg'
+											),
+										},
+										{
+											value: 'center center',
+											label: __(
+												'Center Center',
+												'ultimate-addons-for-gutenberg'
+											),
+										},
+										{
+											value: 'center bottom',
+											label: __(
+												'Center Bottom',
+												'ultimate-addons-for-gutenberg'
+											),
+										},
+										{
+											value: 'left bottom',
+											label: __(
+												'Bottom Left',
+												'ultimate-addons-for-gutenberg'
+											),
+										},
+										{
+											value: 'center bottom',
+											label: __(
+												'Bottom Center',
+												'ultimate-addons-for-gutenberg'
+											),
+										},
+										{
+											value: 'right bottom',
+											label: __(
+												'Bottom Right',
+												'ultimate-addons-for-gutenberg'
+											),
+										},
+									] }}
+									setAttributes={ setAttributes }
+								/>
+							</div>
+							<div className="uag-background-image-attachment">
+								<ResponsiveSelectControl
+									label={ __( 'Attachment', 'ultimate-addons-for-gutenberg' ) }
+									data={backgroundAttachment}
+									options={ { desktop: [
+										{
+											value: 'fixed',
+											label: __(
+												'Fixed',
+												'ultimate-addons-for-gutenberg'
+											),
+										},
+										{
+											value: 'scroll',
+											label: __(
+												'Scroll',
+												'ultimate-addons-for-gutenberg'
+											),
+										},
+									] } }
+									setAttributes={ setAttributes }
+								/>
+							</div>
+							<div className="uag-background-image-repeat">
+								<ResponsiveSelectControl
+									label={ __( 'Repeat', 'ultimate-addons-for-gutenberg' ) }
+									data={backgroundRepeat}
+									options={ { desktop: [
+										{
+											value: 'no-repeat',
+											label: __(
+												'No Repeat',
+												'ultimate-addons-for-gutenberg'
+											),
+										},
+										{
+											value: 'repeat',
+											label: __(
+												'Repeat',
+												'ultimate-addons-for-gutenberg'
+											),
+										},
+										{
+											value: 'repeat-x',
+											label: __(
+												'Repeat-x',
+												'ultimate-addons-for-gutenberg'
+											),
+										},
+										{
+											value: 'repeat-y',
+											label: __(
+												'Repeat-y',
+												'ultimate-addons-for-gutenberg'
+											),
+										},
+									] } }
+									setAttributes={ setAttributes }
+								/>
+							</div>
+							<div className="uag-background-image-size">
+								<ResponsiveSelectControl
+									label={ __( 'Size', 'ultimate-addons-for-gutenberg' ) }
+									data={backgroundSize}
+									options={ { desktop: [
+										{
+											value: 'auto',
+											label: __(
+												'Auto',
+												'ultimate-addons-for-gutenberg'
+											),
+										},
+										{
+											value: 'cover',
+											label: __(
+												'Cover',
+												'ultimate-addons-for-gutenberg'
+											),
+										},
+										{
+											value: 'contain',
+											label: __(
+												'Contain',
+												'ultimate-addons-for-gutenberg'
+											),
+										},
+										{
+											value: 'custom',
+											label: __(
+												'Custom',
+												'ultimate-addons-for-gutenberg'
+											),
+										},
+									] } }
+									setAttributes={ setAttributes }
+								/>
+								{ 'custom' === backgroundSize[deviceType].value && backgroundCustomSize &&
+									<ResponsiveSlider
+										label={ __(
+											'Width',
+											'ultimate-addons-for-gutenberg'
+										) }
+										data={ backgroundCustomSize }
+										min={ 0 }
+										limitMax={ { 'px': 1600, '%': 100, 'em': 574 } }
+										unit={ {
+											value: backgroundCustomSizeType.value,
+											label: backgroundCustomSizeType.label,
+										} }
+										units={ [
+											{
+												name: __(
+													'PX',
+													'ultimate-addons-for-gutenberg'
+												),
+												unitValue: 'px',
+											},
+											{
+												name: __( '%', 'ultimate-addons-for-gutenberg' ),
+												unitValue: '%',
+											},
+											{
+												name: __( 'EM', 'ultimate-addons-for-gutenberg' ),
+												unitValue: 'em',
+											},
+										] }
+										setAttributes={ setAttributes }
+									/>
+								}
+							</div>
+						</>
+					) }
+					{ overlayType && backgroundImage &&
+						<>
+							<div className="uag-background-image-overlay-type">
+								<SelectControl
+									label={ __(
+										'Overlay Type',
+										'ultimate-addons-for-gutenberg'
+									) }
+									value={ overlayType.value }
+									onChange={ ( value ) =>
+										setAttributes( {
+											[ overlayType.label ]: value,
+										} )
+									}
+									options={ [
+										{
+											value: 'color',
+											label: __(
+												'Color',
+												'ultimate-addons-for-gutenberg'
+											),
+										},
+										{
+											value: 'gradient',
+											label: __(
+												'Gradient',
+												'ultimate-addons-for-gutenberg'
+											),
+										},
+										{
+											value: 'none',
+											label: __(
+												'None',
+												'ultimate-addons-for-gutenberg'
+											),
+										},
+									] }
+								/>
+							</div>
+							{ 'color' === overlayType.value && (
+								<div className="uag-background-image-overlay-color">
+									<AdvancedPopColorControl
+										label={ __(
+											'Image Overlay Color',
+											'ultimate-addons-for-gutenberg'
+										) }
+										colorValue={
+											backgroundImageColor.value
+										}
+										onColorChange={ ( value ) =>
+											setAttributes( {
+												[ backgroundImageColor.label ]: value,
+											} )
+										}
+									/>
+								</div>
+							) }
+							{ 'gradient' === overlayType.value && (
+								<div className="uag-background-image-overlay-gradient">
+									<GradientSettings
+										backgroundGradient={
+											props.backgroundGradient
+										}
+										setAttributes={ setAttributes }
+									/>
+								</div>
+							) }
+						</>
+					}
 				</div>
 			) }
 			{ 'gradient' === backgroundType.value && (
