@@ -294,6 +294,9 @@ const attributes = {
 	opensInNewTab: {
 		type: 'boolean',
 	},
+	noFollow: {
+		type: 'boolean',
+	},
 	icon: {
 		type: 'string',
 		default: '',

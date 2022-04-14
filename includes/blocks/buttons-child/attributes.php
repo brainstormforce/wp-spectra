@@ -50,6 +50,7 @@ return array(
 	'iconSpace'              => 8,
 	'iconSize'               => 15,
 	'LoadGoogleFonts'        => '',
+	'noFollow'               => '',
 	'fontFamily'             => '',
 	'fontWeight'             => '',
 	'fontStyle'              => '',

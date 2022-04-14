@@ -7,6 +7,7 @@ import WebfontLoader from '@Components/typography/fontloader';
 import MultiButtonsControl from '@Components/multi-buttons-control';
 import renderSVG from '@Controls/renderIcon';
 import Range from '@Components/range/Range.js';
+import ResponsiveSlider from '@Components/responsive-slider';
 
 import { SelectControl,
 	Toolbar , Icon } from '@wordpress/components';
@@ -25,6 +26,8 @@ const Settings = ( props ) => {
 	const {
 		align,
 		gap,
+		gapTablet,
+		gapMobile,
 		stack,
 		loadGoogleFonts,
 		fontFamily,
@@ -178,17 +181,29 @@ const Settings = ( props ) => {
 						'ultimate-addons-for-gutenberg'
 					) }
 				/>
-				<Range
+				<ResponsiveSlider
 					label={ __(
 						'Gap Between Buttons',
 						'ultimate-addons-for-gutenberg'
 					) }
-					setAttributes={ setAttributes }
-					value={ gap }
-					onChange={ ( value ) => setAttributes( { gap: value } ) }
+					data={ {
+						desktop: {
+							value: gap,
+							label: 'gap',
+						},
+						tablet: {
+							value: gapTablet,
+							label: 'gapTablet',
+						},
+						mobile: {
+							value: gapMobile,
+							label: 'gapMobile',
+						},
+					} }
 					min={ 0 }
 					max={ 200 }
 					displayUnit={ false }
+					setAttributes={ setAttributes }
 				/>
 				<SelectControl
 					label={ __(

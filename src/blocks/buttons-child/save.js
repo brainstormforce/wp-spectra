@@ -16,7 +16,8 @@ export default function save( props ) {
 		label,
 		icon,
 		iconPosition,
-		removeText
+		removeText,
+		noFollow
 	} = attributes;
 
 	const btnText = () => {
@@ -26,9 +27,9 @@ export default function save( props ) {
 						tagName="div"
 						className="uagb-button__link"
 					/>
-		} 
+		}
 			return '';
-		
+
 	}
 	const iconHtml = ( curr_position ) => {
 		if ( '' !== icon && curr_position === iconPosition ) {
@@ -62,7 +63,7 @@ export default function save( props ) {
 						'wp-block-button__link'
 					) }
 					href={ link }
-					rel="noopener noreferrer"
+					rel= { noFollow ? 'noFollow' : '' }
 					target={ openNewWindow }
 				>
 					{ iconHtml( 'before' ) }

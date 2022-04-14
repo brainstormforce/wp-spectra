@@ -113,7 +113,8 @@ const Settings = ( props ) => {
 		iconColor,
 		iconHColor,
 		iconSize,
-		removeText
+		removeText,
+		noFollow
 
 	} = attributes;
 
@@ -192,6 +193,16 @@ const Settings = ( props ) => {
 					checked={ opensInNewTab }
 					onChange={ () =>
 						setAttributes( { opensInNewTab : ! opensInNewTab } )
+					}
+				/>
+				<ToggleControl
+					label={ __(
+						'Add "nofollow" to link',
+						'ultimate-addons-for-gutenberg'
+					) }
+					checked={ noFollow }
+					onChange={ () =>
+						setAttributes( { noFollow : ! noFollow } )
 					}
 				/>
 				<ToggleControl

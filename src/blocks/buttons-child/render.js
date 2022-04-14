@@ -22,7 +22,8 @@ const Render = ( props ) => {
 		label,
 		icon,
 		iconPosition,
-		removeText
+		removeText,
+		noFollow
 	} = attributes;
 
 	const iconHtml = ( curr_position ) => {
@@ -51,12 +52,12 @@ const Render = ( props ) => {
 						} }
 						allowedFormats={ [ 'bold', 'italic', 'strikethrough' ] }
 						className="uagb-button__link"
-						rel="noopener noreferrer"
+						rel= { noFollow ? 'noFollow' : '' }
 						keepPlaceholderOnFocus
 					/>
-		} 
+		}
 			return '';
-		
+
 	}
 	return (
 		<div

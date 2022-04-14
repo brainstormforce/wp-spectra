@@ -10,6 +10,8 @@ function styling( props ) {
 		fontFamily,
 		fontWeight,
 		gap,
+		gapTablet,
+		gapMobile,
 		stack,
 		align,
 		fontStyle,
@@ -58,10 +60,10 @@ function styling( props ) {
 			'row-gap': generateCSSUnit( gap, 'px' )
 		};
 		tabletSelectors[ '.uagb-editor-preview-mode-tablet .uagb-buttons-stack-desktop .block-editor-block-list__layout' ] = {
-			'column-gap': generateCSSUnit( gap , 'px' ),
+			'column-gap': generateCSSUnit( gapTablet , 'px' ),
 		};
 		mobileSelectors[ '.uagb-editor-preview-mode-mobile .uagb-buttons-stack-desktop .block-editor-block-list__layout' ] = {
-			'column-gap': generateCSSUnit( gap , 'px' ),
+			'column-gap': generateCSSUnit( gapMobile , 'px' ),
 		};
 	} else if ( 'tablet' === stack ) {
 		selectors[ '.uagb-editor-preview-mode-desktop .uagb-buttons-stack-tablet .block-editor-block-list__layout' ] = {
@@ -69,11 +71,11 @@ function styling( props ) {
 		};
 		tabletSelectors['.uagb-editor-preview-mode-tablet .uagb-buttons-stack-tablet .block-editor-block-list__layout'] = {
 			'flex-direction': 'column',
-			'row-gap': generateCSSUnit( gap, 'px' ),
+			'row-gap': generateCSSUnit( gapTablet, 'px' ),
 		};
 		mobileSelectors['.uagb-editor-preview-mode-mobile .uagb-buttons-stack-tablet .block-editor-block-list__layout'] = {
 			'flex-direction': 'column',
-			'row-gap': generateCSSUnit( gap, 'px' ),
+			'row-gap': generateCSSUnit( gapMobile, 'px' ),
 		};
 
 	} else if ( 'mobile' === stack ) {
@@ -81,15 +83,21 @@ function styling( props ) {
 			'column-gap': generateCSSUnit( gap , 'px' ),
 		};
 		tabletSelectors[ '.uagb-editor-preview-mode-tablet .uagb-buttons-stack-mobile .block-editor-block-list__layout' ] = {
-			'column-gap': generateCSSUnit( gap , 'px' ),
+			'column-gap': generateCSSUnit( gapTablet , 'px' ),
 		};
 		mobileSelectors['.uagb-editor-preview-mode-mobile .uagb-buttons-stack-mobile .block-editor-block-list__layout'] = {
 			'flex-direction': 'column',
-			'row-gap': generateCSSUnit( gap, 'px' ),
+			'row-gap': generateCSSUnit( gapMobile, 'px' ),
 		};
 	} else if ( 'none' === stack ) {
 		selectors[ '.uagb-buttons__outer-wrap .block-editor-block-list__layout' ] = {
 			'column-gap': generateCSSUnit( gap , 'px' ),
+		};
+		tabletSelectors[ '.uagb-editor-preview-mode-tablet .uagb-buttons-stack-mobile .block-editor-block-list__layout' ] = {
+			'column-gap': generateCSSUnit( gapTablet , 'px' ),
+		};
+		mobileSelectors['.uagb-editor-preview-mode-mobile .uagb-buttons-stack-mobile .block-editor-block-list__layout'] = {
+			'row-gap': generateCSSUnit( gapMobile, 'px' ),
 		};
 	}
 

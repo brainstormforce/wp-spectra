@@ -23,10 +23,10 @@ if ( 'desktop' === $attr['stack'] ) {
 		'row-gap'        => UAGB_Helper::get_css_value( $attr['gap'], 'px' ),
 	);
 	$t_selectors[' .uagb-buttons__wrap '] = array(
-		'column-gap' => UAGB_Helper::get_css_value( $attr['gap'], 'px' ),
+		'column-gap' => UAGB_Helper::get_css_value( $attr['gapTablet'], 'px' ),
 	);
 	$m_selectors[' .uagb-buttons__wrap '] = array(
-		'column-gap' => UAGB_Helper::get_css_value( $attr['gap'], 'px' ),
+		'column-gap' => UAGB_Helper::get_css_value( $attr['gapMobile'], 'px' ),
 	);
 
 } elseif ( 'tablet' === $attr['stack'] ) {
@@ -36,11 +36,11 @@ if ( 'desktop' === $attr['stack'] ) {
 	);
 	$t_selectors[' .uagb-buttons__wrap'] = array(
 		'flex-direction' => 'column',
-		'row-gap'        => UAGB_Helper::get_css_value( $attr['gap'], 'px' ),
+		'row-gap'        => UAGB_Helper::get_css_value( $attr['gapTablet'], 'px' ),
 	);
 	$m_selectors[' .uagb-buttons__wrap'] = array(
 		'flex-direction' => 'column',
-		'row-gap'        => UAGB_Helper::get_css_value( $attr['gap'], 'px' ),
+		'row-gap'        => UAGB_Helper::get_css_value( $attr['gapMobile'], 'px' ),
 	);
 
 } elseif ( 'mobile' === $attr['stack'] ) {
@@ -49,16 +49,22 @@ if ( 'desktop' === $attr['stack'] ) {
 		'column-gap' => UAGB_Helper::get_css_value( $attr['gap'], 'px' ),
 	);
 	$t_selectors[' .uagb-buttons__wrap'] = array(
-		'column-gap' => UAGB_Helper::get_css_value( $attr['gap'], 'px' ),
+		'column-gap' => UAGB_Helper::get_css_value( $attr['gapTablet'], 'px' ),
 	);
 	$m_selectors[' .uagb-buttons__wrap'] = array(
 		'flex-direction' => 'column',
-		'row-gap'        => UAGB_Helper::get_css_value( $attr['gap'], 'px' ),
+		'row-gap'        => UAGB_Helper::get_css_value( $attr['gapMobile'], 'px' ),
 	);
 
 } elseif ( 'none' === $attr['stack'] ) {
-	$selectors[' .uagb-buttons__wrap '] = array(
+	$selectors[' .uagb-buttons__wrap ']  = array(
 		'column-gap' => UAGB_Helper::get_css_value( $attr['gap'], 'px' ),
+	);
+	$t_selectors[' .uagb-buttons__wrap'] = array(
+		'column-gap' => UAGB_Helper::get_css_value( $attr['gapTablet'], 'px' ),
+	);
+	$m_selectors[' .uagb-buttons__wrap'] = array(
+		'column-gap' => UAGB_Helper::get_css_value( $attr['gapMobile'], 'px' ),
 	);
 }
 $alignment       = ( 'left' === $attr['align'] ) ? 'flex-start' : ( ( 'right' === $attr['align'] ) ? 'flex-end' : 'center' );

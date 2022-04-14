@@ -74,6 +74,18 @@ const attributes = {
 			styleType: 'btn-gap'
 		}
 	},
+	gapTablet: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'btn-gap-tablet'
+		}
+	},
+	gapMobile: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'btn-gap-mobile'
+		}
+	},
 	stack: {
 		type: 'string',
 		default: 'none',
