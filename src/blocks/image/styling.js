@@ -220,11 +220,11 @@ export default function styling( props ) {
 			'color': captionColor,
 		},
 		// overlay
-		'.wp-block-uagb-image .wp-block-uagb-image--layout-overlay__color-wrapper': {
+		'.wp-block-uagb-image--layout-overlay .wp-block-uagb-image--layout-overlay__color-wrapper': {
 			'background': overlayBackground,
 			'opacity': overlayOpacity,
 		},
-		'.wp-block-uagb-image .wp-block-uagb-image--layout-overlay__inner': {
+		'.wp-block-uagb-image--layout-overlay .wp-block-uagb-image--layout-overlay__inner': {
 			'border-style': overlayBorderStyle,
 			'border-color': overlayBorderColor,
 			'border-radius': generateCSSUnit( overlayBorderRadius, 'px' ),
@@ -234,7 +234,7 @@ export default function styling( props ) {
 			'top': generateCSSUnit( overlayPositionFromEdge, overlayPositionFromEdgeUnit ),
 			'bottom': generateCSSUnit( overlayPositionFromEdge, overlayPositionFromEdgeUnit ),
 		},
-		'.wp-block-uagb-image .wp-block-uagb-image--layout-overlay__inner .uagb-image-heading': {
+		'.wp-block-uagb-image--layout-overlay .wp-block-uagb-image--layout-overlay__inner .uagb-image-heading': {
 			'font-family': headingFontFamily,
 			'font-style' : headingFontStyle,
 			'text-decoration': headingDecoration,
@@ -267,16 +267,16 @@ export default function styling( props ) {
 			),
 			'opacity': headingShowOn === 'always' ? 1 : 0
 		},
-		'.wp-block-uagb-image .wp-block-uagb-image--layout-overlay__inner .uagb-image-heading a': {
+		'.wp-block-uagb-image--layout-overlay .wp-block-uagb-image--layout-overlay__inner .uagb-image-heading a': {
 			'color': headingColor,
 		},
-		'.wp-block-uagb-image .wp-block-uagb-image--layout-overlay__inner .uagb-image-caption': {
+		'.wp-block-uagb-image--layout-overlay .wp-block-uagb-image--layout-overlay__inner .uagb-image-caption': {
 			'opacity': captionShowOn === 'always' ? 1 : 0
 		},
-		'.wp-block-uagb-image .wp-block-uagb-image__figure:hover .wp-block-uagb-image--layout-overlay__inner': {
+		'.wp-block-uagb-image--layout-overlay .wp-block-uagb-image__figure:hover .wp-block-uagb-image--layout-overlay__inner': {
 			'border-color': overlayBorderHoverColor,
 		},
-		'.wp-block-uagb-image .wp-block-uagb-image__figure:hover .wp-block-uagb-image--layout-overlay__color-wrapper': {
+		'.wp-block-uagb-image--layout-overlay .wp-block-uagb-image__figure:hover .wp-block-uagb-image--layout-overlay__color-wrapper': {
 			'opacity': overlayHoverOpacity,
 		},
 		// Seperator

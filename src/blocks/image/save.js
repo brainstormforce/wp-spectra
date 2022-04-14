@@ -80,6 +80,17 @@ export default function Save( props ) {
 		<div className="uagb-image-separator"></div>
 	)
 
+	const imageOverlayLink = () => {
+		// eslint-disable-next-line
+		return (<a
+				className={ `wp-block-uagb-image--layout-overlay-link ${linkClass}` }
+				href={ href }
+				target={ linkTarget }
+				rel={getRel()}
+			></a>
+		)
+	}
+
 	return (
 		<div className={ classnames(
 			props.className,
@@ -96,12 +107,7 @@ export default function Save( props ) {
 						<>
 							<div className='wp-block-uagb-image--layout-overlay__color-wrapper'></div>
 							<div className={`wp-block-uagb-image--layout-overlay__inner ${overlayContentPosition.replace( ' ', '-' )}`}>
-								<a
-									className={ `wp-block-uagb-image--layout-overlay-link ${linkClass}` }
-									href={ href }
-									target={ linkTarget }
-									rel={getRel()}
-								></a>
+								{imageOverlayLink}
 								{ 'before_title' === seperatorPosition && separator}
 								{imageHeading}
 								{ 'after_title' === seperatorPosition && separator}

@@ -55,14 +55,14 @@ $selectors = array(
 		'text-align'      => $attr['captionAlign'],
 	),
 	'.wp-block-uagb-image .wp-block-uagb-image__figure figcaption a' => array(
-		'color'           => $attr['captionColor'],
+		'color' => $attr['captionColor'],
 	),
 	// overlay.
-	'.wp-block-uagb-image .wp-block-uagb-image--layout-overlay__color-wrapper' => array(
+	'.wp-block-uagb-image--layout-overlay .wp-block-uagb-image--layout-overlay__color-wrapper' => array(
 		'background' => $attr['overlayBackground'],
 		'opacity'    => $attr['overlayOpacity'],
 	),
-	'.wp-block-uagb-image .wp-block-uagb-image--layout-overlay__inner' => array(
+	'.wp-block-uagb-image--layout-overlay .wp-block-uagb-image--layout-overlay__inner' => array(
 		'border-style'  => $attr['overlayBorderStyle'],
 		'border-color'  => $attr['overlayBorderColor'],
 		'border-radius' => UAGB_Helper::get_css_value( $attr['overlayBorderRadius'], 'px' ),
@@ -72,7 +72,7 @@ $selectors = array(
 		'top'           => UAGB_Helper::get_css_value( $attr['overlayPositionFromEdge'], $attr['overlayPositionFromEdgeUnit'] ),
 		'bottom'        => UAGB_Helper::get_css_value( $attr['overlayPositionFromEdge'], $attr['overlayPositionFromEdgeUnit'] ),
 	),
-	'.wp-block-uagb-image .wp-block-uagb-image--layout-overlay__inner .uagb-image-heading' => array(
+	'.wp-block-uagb-image--layout-overlay .wp-block-uagb-image--layout-overlay__inner .uagb-image-heading' => array(
 		'font-family'     => $attr['headingFontFamily'],
 		'font-style'      => $attr['headingFontStyle'],
 		'text-decoration' => $attr['headingDecoration'],
@@ -87,16 +87,16 @@ $selectors = array(
 		'margin-left'     => UAGB_Helper::get_css_value( $attr['headingLeftMargin'], $attr['headingMarginUnit'] ),
 		'opacity'         => 'always' === $attr['headingShowOn'] ? 1 : 0,
 	),
-	'.wp-block-uagb-image .wp-block-uagb-image--layout-overlay__inner .uagb-image-heading a' => array(
-		'color'           => $attr['headingColor'],
+	'.wp-block-uagb-image--layout-overlay .wp-block-uagb-image--layout-overlay__inner .uagb-image-heading a' => array(
+		'color' => $attr['headingColor'],
 	),
-	'.wp-block-uagb-image .wp-block-uagb-image--layout-overlay__inner .uagb-image-caption' => array(
+	'.wp-block-uagb-image--layout-overlay .wp-block-uagb-image--layout-overlay__inner .uagb-image-caption' => array(
 		'opacity' => 'always' === $attr['captionShowOn'] ? 1 : 0,
 	),
-	'.wp-block-uagb-image:hover .wp-block-uagb-image--layout-overlay__inner' => array(
+	'.wp-block-uagb-image--layout-overlay .wp-block-uagb-image__figure:hover .wp-block-uagb-image--layout-overlay__inner' => array(
 		'border-color' => $attr['overlayBorderHoverColor'],
 	),
-	'.wp-block-uagb-image:hover .wp-block-uagb-image--layout-overlay__color-wrapper' => array(
+	'.wp-block-uagb-image--layout-overlay .wp-block-uagb-image__figure:hover .wp-block-uagb-image--layout-overlay__color-wrapper' => array(
 		'opacity' => $attr['overlayHoverOpacity'],
 	),
 	// Seperator.

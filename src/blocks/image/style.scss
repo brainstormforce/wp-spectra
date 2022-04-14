@@ -76,7 +76,7 @@
 			top: 0;
 		}
 
-		&:hover {
+		.wp-block-uagb-image__figure:hover {
 
 			.wp-block-uagb-image--layout-overlay__color-wrapper {
 				opacity: 1;
@@ -95,6 +95,7 @@
 			flex-direction: column;
 			border-style: solid;
 			border-color: #fff;
+			transition: 0.35s ease-in-out;
 
 			&.top-left,
 			&.top-center,
