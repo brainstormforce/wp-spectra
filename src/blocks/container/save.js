@@ -16,7 +16,9 @@ export default function save( props ) {
 		topContentAboveShape,
 		bottomType,
 		bottomFlip,
-		bottomContentAboveShape
+		bottomContentAboveShape,
+		topInvert,
+		bottomInvert
 	} = props.attributes;
 
 	const topDividerHtml = 'none' !== topType && (
@@ -28,7 +30,8 @@ export default function save( props ) {
 				{
 					'uagb-container__shape-above-content':
 						topContentAboveShape === true,
-				}
+				},
+				{ 'uagb-container__invert' : topInvert === true }
 			) }
 		>
 			{ shapes[ topType ] }
@@ -44,7 +47,8 @@ export default function save( props ) {
 				{
 					'uagb-container__shape-above-content':
 						bottomContentAboveShape === true,
-				}
+				},
+				{ 'uagb-container__invert' : bottomInvert === true },
 			) }
 			data-negative="false"
 		>

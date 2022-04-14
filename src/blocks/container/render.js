@@ -2,6 +2,7 @@ import classnames from 'classnames';
 import { InnerBlocks } from '@wordpress/block-editor';
 import React from 'react';
 import shapes from './shapes';
+import { select } from '@wordpress/data';
 
 const Render = ( props ) => {
 
@@ -10,6 +11,7 @@ const Render = ( props ) => {
 		attributes,
 		className,
 		deviceType,
+		clientId
 	} = props;
 
 	const {
@@ -19,7 +21,9 @@ const Render = ( props ) => {
 		topContentAboveShape,
 		bottomType,
 		bottomFlip,
-		bottomContentAboveShape
+		bottomContentAboveShape,
+		topInvert,
+		bottomInvert
 	} = attributes;
 
 	const direction = attributes[ 'direction' + deviceType ];
@@ -35,7 +39,8 @@ const Render = ( props ) => {
 				{
 					'uagb-container__shape-above-content':
 						topContentAboveShape === true,
-				}
+				},
+				{ 'uagb-container__invert' : topInvert === true }
 			) }
 		>
 			{ shapes[ topType ] }
@@ -51,13 +56,17 @@ const Render = ( props ) => {
 				{
 					'uagb-container__shape-above-content':
 						bottomContentAboveShape === true,
-				}
+				},
+				{ 'uagb-container__invert' : bottomInvert === true },
 			) }
-			data-negative="false"
 		>
 			{ shapes[ bottomType ] }
 		</div>
 	);
+
+	const { getBlockOrder } = select( 'core/block-editor' );
+
+	const hasChildBlocks = getBlockOrder( clientId ).length > 0;
 
 	return (
 		<div
@@ -70,6 +79,9 @@ const Render = ( props ) => {
 			{ topDividerHtml }
 			<InnerBlocks
 				__experimentalMoverDirection={ moverDirection }
+				renderAppender = { hasChildBlocks
+				? undefined
+				: InnerBlocks.ButtonBlockAppender }
 			/>
 			{ bottomDividerHtml }
 		</div>
