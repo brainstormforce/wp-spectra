@@ -205,7 +205,9 @@ function styling( props ) {
 	};
 
 	if ( 'transparent' === backgroundType ) {
-		selectors[ '.uagb-buttons__outer-wrap .wp-block-button__link.uagb-buttons-repeater' ].background= 'transparent';
+		selectors[ '.uagb-buttons__outer-wrap .wp-block-button__link.uagb-buttons-repeater' ]  = {
+			'background': 'transparent',
+		}
 	} else if ( 'gradient' === backgroundType ) {
 		const backgroundAttributes = {
 			'backgroundType': 'gradient',

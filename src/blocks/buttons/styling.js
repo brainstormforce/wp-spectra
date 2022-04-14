@@ -97,7 +97,7 @@ function styling( props ) {
 			'column-gap': generateCSSUnit( gapTablet , 'px' ),
 		};
 		mobileSelectors['.uagb-editor-preview-mode-mobile .block-editor-block-list__layout'] = {
-			'row-gap': generateCSSUnit( gapMobile, 'px' ),
+			'column-gap': generateCSSUnit( gapMobile, 'px' ),
 		};
 	}
 
