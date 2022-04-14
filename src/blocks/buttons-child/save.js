@@ -63,7 +63,7 @@ export default function save( props ) {
 						'wp-block-button__link'
 					) }
 					href={ link }
-					rel= { noFollow ? 'noFollow' : '' }
+					rel= { noFollow ? 'nofollow' : 'follow' }
 					target={ openNewWindow }
 				>
 					{ iconHtml( 'before' ) }
