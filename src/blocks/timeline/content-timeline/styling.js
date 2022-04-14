@@ -8,6 +8,8 @@ import generateCSSUnit from '@Controls/generateCSSUnit';
 function contentTimelineStyle( props ) {
 	const {
 		dateBottomspace,
+		dateBottomspaceTablet,
+		dateBottomspaceMobile,
 		backgroundColor,
 		separatorColor,
 		separatorFillColor,
@@ -18,6 +20,8 @@ function contentTimelineStyle( props ) {
 		borderwidth,
 		connectorBgsize,
 		borderRadius,
+		borderRadiusTablet,
+		borderRadiusMobile,
 		iconColor,
 		dateFontsizeType,
 		dateFontsize,
@@ -45,6 +49,8 @@ function contentTimelineStyle( props ) {
 		align,
 		headingColor,
 		headSpace,
+		headSpaceTablet,
+		headSpaceMobile,
 		subHeadFontSizeType,
 		subHeadFontSize,
 		subHeadFontSizeTablet,
@@ -309,6 +315,7 @@ function contentTimelineStyle( props ) {
 				dateLineHeightTablet,
 				dateLineHeightType
 			),
+			'margin-bottom': generateCSSUnit( dateBottomspaceTablet, 'px' ),
 		},
 		' .uagb-timeline__date-new': {
 			'font-size': generateCSSUnit(
@@ -319,6 +326,7 @@ function contentTimelineStyle( props ) {
 				dateLineHeightTablet,
 				dateLineHeightType
 			),
+			'margin-bottom': generateCSSUnit( dateBottomspaceTablet, 'px' ),
 		},
 		' .uagb-timeline__heading': {
 			'font-size': generateCSSUnit(
@@ -329,6 +337,7 @@ function contentTimelineStyle( props ) {
 				headLineHeightTablet,
 				headLineHeightType
 			),
+			'margin-bottom': generateCSSUnit( headSpaceTablet, 'px' ),
 		},
 		' .uagb-timeline__heading a': {
 			'font-size': generateCSSUnit(
@@ -431,6 +440,7 @@ function contentTimelineStyle( props ) {
 				bottomPaddingTablet,
 				tabletPaddingUnit
 			),
+			'border-radius': generateCSSUnit( borderRadiusTablet, 'px' ),
 		},
 	};
 
@@ -444,6 +454,7 @@ function contentTimelineStyle( props ) {
 				dateLineHeightMobile,
 				dateLineHeightType
 			),
+			'margin-bottom': generateCSSUnit( dateBottomspaceMobile, 'px' ),
 		},
 		' .uagb-timeline__date-new': {
 			'font-size': generateCSSUnit(
@@ -454,6 +465,7 @@ function contentTimelineStyle( props ) {
 				dateLineHeightMobile,
 				dateLineHeightType
 			),
+			'margin-bottom': generateCSSUnit( dateBottomspaceMobile, 'px' ),
 		},
 		' .uagb-timeline__heading': {
 			'font-size': generateCSSUnit(
@@ -464,6 +476,7 @@ function contentTimelineStyle( props ) {
 				headLineHeightMobile,
 				headLineHeightType
 			),
+			'margin-bottom': generateCSSUnit( headSpaceMobile, 'px' ),
 		},
 		' .uagb-timeline__heading a': {
 			'font-size': generateCSSUnit(
@@ -566,6 +579,7 @@ function contentTimelineStyle( props ) {
 				bottomPaddingMobile,
 				mobilePaddingUnit
 			),
+			'border-radius': generateCSSUnit( borderRadiusMobile, 'px' ),
 		},
 	};
 

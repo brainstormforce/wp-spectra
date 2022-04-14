@@ -372,12 +372,14 @@ const attributes = {
 	},
 	contentWidthTablet: {
 		type: 'number',
+		default: 0,
 		UAGCopyPaste: {
 			styleType: 'desc-width'
 		},
 	},
 	contentWidthMobile: {
 		type: 'number',
+		default: 0,
 		UAGCopyPaste: {
 			styleType: 'desc-width'
 		},
