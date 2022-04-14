@@ -93,10 +93,10 @@ function styling( props ) {
 		selectors[ '.uagb-buttons__outer-wrap .block-editor-block-list__layout' ] = {
 			'column-gap': generateCSSUnit( gap , 'px' ),
 		};
-		tabletSelectors[ '.uagb-editor-preview-mode-tablet .uagb-buttons-stack-mobile .block-editor-block-list__layout' ] = {
+		tabletSelectors[ '.uagb-editor-preview-mode-tablet .block-editor-block-list__layout' ] = {
 			'column-gap': generateCSSUnit( gapTablet , 'px' ),
 		};
-		mobileSelectors['.uagb-editor-preview-mode-mobile .uagb-buttons-stack-mobile .block-editor-block-list__layout'] = {
+		mobileSelectors['.uagb-editor-preview-mode-mobile .block-editor-block-list__layout'] = {
 			'row-gap': generateCSSUnit( gapMobile, 'px' ),
 		};
 	}
