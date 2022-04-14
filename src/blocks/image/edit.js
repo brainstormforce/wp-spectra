@@ -1,6 +1,7 @@
 import React, { lazy, Suspense, useEffect } from 'react';
 import lazyLoader from '@Controls/lazy-loader';
 import addBlockEditorDynamicStyles from '@Controls/addBlockEditorDynamicStyles';
+import { useDeviceType } from '@Controls/getPreviewType';
 import styling from './styling';
 
 const Settings = lazy( () =>
@@ -19,6 +20,7 @@ import './style.scss';
 
 
 export default function UAGBImageEdit( props ) {
+	const deviceType = useDeviceType();
 	useEffect( () => {
 
 		const { setAttributes } = props;
@@ -33,7 +35,7 @@ export default function UAGBImageEdit( props ) {
 		const blockStyling = styling( props );
 
         addBlockEditorDynamicStyles( 'uagb-image-style-' + props.clientId.substr( 0, 8 ), blockStyling );
-	}, [ props ] );
+	}, [ props, deviceType ] );
 
 	return (
 		<React.Fragment>

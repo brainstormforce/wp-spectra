@@ -20,7 +20,7 @@ if ( ! class_exists( 'UAGB_Image' ) ) {
 		/**
 		 * Member Variable
 		 *
-		 * @since 1.18.1
+		 * @since x.x.x
 		 * @var instance
 		 */
 		private static $instance;
@@ -29,7 +29,7 @@ if ( ! class_exists( 'UAGB_Image' ) ) {
 		/**
 		 *  Initiator
 		 *
-		 * @since 1.18.1
+		 * @since x.x.x
 		 */
 		public static function get_instance() {
 			if ( ! isset( self::$instance ) ) {
@@ -46,9 +46,9 @@ if ( ! class_exists( 'UAGB_Image' ) ) {
 		}
 
 		/**
-		 * Registers the `core/latest-posts` block on server.
+		 * Register the Image block on server.
 		 *
-		 * @since 0.0.1
+		 * @since x.x.x
 		 */
 		public function register_blocks() {
 			// Check if the register function exists.
