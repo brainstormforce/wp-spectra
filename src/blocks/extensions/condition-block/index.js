@@ -208,7 +208,7 @@ const AdvancedControlsBlock = createHigherOrderComponent( ( BlockEdit ) => {
 				addBlockEditorResponsiveStyles( parentClientId, responsiveClass, `uagb-editor-preview-at-${ deviceType.toLowerCase() }` );
 
 				const displayPanel = document.querySelector( '.uag-advance-panel-body-display' );
-				let responsivePanel = document.querySelector( '.uag-advance-panel-body-responsive' );
+				let responsivePanel = document.querySelector( '.uag-advance-panel-body-responsive-conditions' );
 				let masonryPanel = document.querySelector( '.uag-advance-panel-body-masonry' );
 				if( displayPanel ){
 					const tabsParent = displayPanel.parentElement;

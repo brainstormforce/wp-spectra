@@ -75,6 +75,8 @@ import './blocks/wp-search/block.js';
 import './blocks/image/block.js';
 import './blocks/extensions/block.js';
 
+// Responsive Device Icons on Editor
+import './components/responsive-icons/index.js'
 
 
 wp.UAGBSvgIcons = Object.keys( uagb_blocks_info.uagb_svg_icons );

@@ -34,7 +34,8 @@
 
 .editor-styles-wrapper {
 
-	.uagb-cta__outer-wrap a.uagb-cta__button-link-wrapper {
+	.uagb-cta__outer-wrap a.uagb-cta__button-link-wrapper,
+	.uagb-cta__outer-wrap a.uagb-cta-second__button {
 		text-decoration: none;
 		fill: currentColor;
 	}
