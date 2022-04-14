@@ -146,7 +146,7 @@ if ( 'button' === $attr['ctaType'] ) {
 	$selectors['.wp-block-uagb-call-to-action a.uagb-cta__button-link-wrapper']       = array(
 		'color'            => $attr['ctaBtnLinkColor'],
 		'background-color' => $attr['ctaBgColor'],
-		'border-style'     => $attr['ctaBorderStyle'],
+		'border-style'     => $attr['ctaBorderStyle'] ? $attr['ctaBorderStyle'] : 'solid',
 		'border-color'     => $attr['ctaBorderColor'],
 		'border-radius'    => UAGB_Helper::get_css_value( $attr['ctaBorderRadius'], 'px' ),
 		'border-width'     => UAGB_Helper::get_css_value( $attr['ctaBorderWidth'], 'px' ),
