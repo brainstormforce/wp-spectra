@@ -1,6 +1,6 @@
 document.addEventListener( 'load', spectra_responsive_icons );
 document.addEventListener( 'DOMContentLoaded', spectra_responsive_icons );
-import './style.scss'
+
 import DeviceIcons from './device-icons';
 
 function spectra_responsive_icons() {
