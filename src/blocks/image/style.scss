@@ -5,9 +5,11 @@
 		display: inline-block;
 		max-width: 100%;
 		height: auto;
+
 		> a {
 			display: inline-block;
 		}
+
 		figcaption {
 			text-align: center;
 			margin-top: 0.5em;
@@ -57,6 +59,7 @@
 	}
 
 	&--layout-overlay {
+
 		&__color-wrapper {
 			position: absolute;
 			left: 0;
