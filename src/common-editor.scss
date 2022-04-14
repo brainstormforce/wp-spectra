@@ -658,6 +658,7 @@ button.components-button.uagb-review-select-btn.is-secondary {
 		padding: 4px;
 		line-height: 0;
 		box-shadow: none;
+		border: none;
 	}
 }
 
@@ -704,3 +705,35 @@ button.components-button.uagb-review-select-btn.is-secondary {
 	}
 }
 
+/* Breadcrumbs css */
+.block-editor .interface-interface-skeleton__footer {
+	padding: 5px;
+	border-top: 1px solid #e9e9e9;
+
+	.block-editor-block-breadcrumb {
+
+		li {
+			color: #2271b1;
+			font-weight: 600;
+			font-size: 14px;
+
+			button {
+				color: #2271b1;
+				font-weight: 600;
+			}
+
+			svg {
+				width: 25px;
+				height: 25px;
+			}
+
+			.block-editor-block-breadcrumb__button::before {
+				box-shadow: none;
+			}
+
+			.block-editor-block-breadcrumb__button:active:not(:disabled) {
+				background: transparent;
+			}
+		}
+	}
+}

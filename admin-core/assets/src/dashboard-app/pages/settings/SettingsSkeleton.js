@@ -9,9 +9,9 @@ const SettingsSkeleton = () => {
                     <nav className="space-y-1">
 					{ Array( 5 )
 					.fill()
-					.map( ( i ) => {
+					.map( ( i, index ) => {
 						return (
-							<RectSkeleton key={i} width="200px" height="45px" />
+							<RectSkeleton key={index} width="200px" height="45px" />
 						);
 					} ) }
                     </nav>

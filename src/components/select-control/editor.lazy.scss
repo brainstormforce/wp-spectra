@@ -1,0 +1,11 @@
+.uagb-select-control {
+
+	&--layout-inline {
+
+		.components-select-control {
+			align-items: center;
+			display: grid;
+			grid-template-columns: 50% 50%;
+		}
+	}
+}
