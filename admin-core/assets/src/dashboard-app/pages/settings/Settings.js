@@ -48,10 +48,6 @@ const Settings = () => {
 		return <SettingsSkeleton/>;
 	}
 
-    uag_react.spectra_pro_status && navigation.push( 
-        { name: __( 'Block Settings', 'ultimate-addons-for-gutenberg' ), slug: 'block-settings', icon: SettingsIcons['global-settings'] }
-    );
-
     return (
         <main className="max-w-[77rem] mx-auto my-[2.43rem] bg-white rounded-[0.2rem] shadow overflow-hidden h-[34rem]">
             <div className="lg:grid lg:grid-cols-12 lg:gap-x-8 h-full">

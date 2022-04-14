@@ -438,32 +438,29 @@ class UAGB_Post_Assets {
 
 		$block_list_for_assets = $this->current_block_list;
 
-		$blocks = UAGB_Block_Module::get_blocks_info();
-
-		$block_assets = UAGB_Block_Module::get_block_dependencies();
+		$blocks = UAGB_Config::get_block_attributes();
 
 		foreach ( $block_list_for_assets as $key => $curr_block_name ) {
 
-			$static_dependencies = ( isset( $blocks[ $curr_block_name ]['static_dependencies'] ) ) ? $blocks[ $curr_block_name ]['static_dependencies'] : array();
+			$js_assets = ( isset( $blocks[ $curr_block_name ]['js_assets'] ) ) ? $blocks[ $curr_block_name ]['js_assets'] : array();
 
-			foreach ( $static_dependencies as $asset_handle => $asset_info ) {
+			$css_assets = ( isset( $blocks[ $curr_block_name ]['css_assets'] ) ) ? $blocks[ $curr_block_name ]['css_assets'] : array();
 
-				if ( 'js' === $asset_info['type'] ) {
-					// Scripts.
-					if ( 'uagb-faq-js' === $asset_handle ) {
-						if ( $this->uag_faq_layout ) {
-							wp_enqueue_script( 'uagb-faq-js' );
-						}
-					} else {
-
-						wp_enqueue_script( $asset_handle );
+			foreach ( $js_assets as $asset_handle => $val ) {
+				// Scripts.
+				if ( 'uagb-faq-js' === $val ) {
+					if ( $this->uag_faq_layout ) {
+						wp_enqueue_script( 'uagb-faq-js' );
 					}
-				}
+				} else {
 
-				if ( 'css' === $asset_info['type'] ) {
-					// Styles.
-					wp_enqueue_style( $asset_handle );
+					wp_enqueue_script( $val );
 				}
+			}
+
+			foreach ( $css_assets as $asset_handle => $val ) {
+				// Styles.
+				wp_enqueue_style( $val );
 			}
 		}
 
@@ -484,6 +481,15 @@ class UAGB_Post_Assets {
 			array(
 				'ajax_url'              => admin_url( 'admin-ajax.php' ),
 				'uagb_forms_ajax_nonce' => $uagb_forms_ajax_nonce,
+			)
+		);
+
+		wp_localize_script(
+			'uagb-container-js',
+			'uagb_container_data',
+			array(
+				'tablet_breakpoint' => UAGB_TABLET_BREAKPOINT,
+				'mobile_breakpoint' => UAGB_MOBILE_BREAKPOINT,
 			)
 		);
 	}
@@ -746,13 +752,11 @@ class UAGB_Post_Assets {
 		}
 
 		// Add static css here.
-		$blocks = UAGB_Block_Module::get_blocks_info();
+		$block_css_arr = UAGB_Config::get_block_assets_css();
 
-		$block_css_file_name = ( isset( $blocks[ $name ] ) && isset( $blocks[ $name ]['static_css'] ) ) ? $blocks[ $name ]['static_css'] : str_replace( 'uagb/', '', $name );
-
-		if ( 'enabled' === $this->file_generation && ! in_array( $block_css_file_name, $this->static_css_blocks, true ) ) {
+		if ( 'enabled' === $this->file_generation && isset( $block_css_arr[ $name ] ) && ! in_array( $block_css_arr[ $name ]['name'], $this->static_css_blocks, true ) ) {
 			$common_css = array(
-				'common' => $this->get_block_static_css( $block_css_file_name ),
+				'common' => $this->get_block_static_css( $block_css_arr[ $name ]['name'] ),
 			);
 			$css       += $common_css;
 		}
@@ -760,7 +764,7 @@ class UAGB_Post_Assets {
 		if ( strpos( $name, 'uagb/' ) !== false ) {
 			$_block_slug = str_replace( 'uagb/', '', $name );
 			$_block_css  = UAGB_Block_Module::get_frontend_css( $_block_slug, $blockattr, $block_id );
-			$_block_js   = UAGB_Block_Module::get_frontend_js( $_block_slug, $blockattr, $block_id, 'js' );
+			$_block_js   = UAGB_Block_Module::get_frontend_js( $_block_slug, $blockattr, $block_id );
 			$css         = array_merge( $css, $_block_css );
 			if ( ! empty( $_block_js ) ) {
 				$js .= $_block_js;

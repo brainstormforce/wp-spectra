@@ -12,234 +12,211 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-if ( ! class_exists( 'UAGB_Block_Module' ) ) {
+/**
+ * Class doc
+ */
+class UAGB_Block_Module {
 
 	/**
-	 * Class doc
+	 * Blocks
+	 *
+	 * @var array
 	 */
-	class UAGB_Block_Module {
+	private static $blocks = array(
+		'star-rating'        => array(
+			'dir' => 'star-rating',
+		),
+		'advanced-heading'   => array(
+			'dir' => 'advanced-heading',
+		),
+		'columns'            => array(
+			'dir' => 'columns',
+		),
+		'column'             => array(
+			'dir' => 'column',
+		),
+		'blockquote'         => array(
+			'dir' => 'blockquote',
+		),
+		'call-to-action'     => array(
+			'dir' => 'call-to-action',
+		),
+		'cf7-styler'         => array(
+			'dir' => 'cf7-styler',
+		),
+		'content-timeline'   => array(
+			'dir' => 'content-timeline',
+		),
+		'faq'                => array(
+			'dir' => 'faq',
+		),
+		'gf-styler'          => array(
+			'dir' => 'gf-styler',
+		),
+		'how-to'             => array(
+			'dir' => 'how-to',
+		),
+		'how-to-step'        => array(
+			'dir' => 'how-to-step',
+		),
+		'icon-list'          => array(
+			'dir' => 'icon-list',
+		),
+		'icon-list-child'    => array(
+			'dir' => 'icon-list-child',
+		),
+		'info-box'           => array(
+			'dir' => 'info-box',
+		),
+		'inline-notice'      => array(
+			'dir' => 'inline-notice',
+		),
+		'marketing-button'   => array(
+			'dir' => 'marketing-button',
+		),
+		'buttons'            => array(
+			'dir' => 'buttons',
+		),
+		'buttons-child'      => array(
+			'dir' => 'buttons-child',
+		),
+		'post-carousel'      => array(
+			'dir' => 'post-carousel',
+		),
+		'post-grid'          => array(
+			'dir' => 'post-grid',
+		),
+		'post-masonry'       => array(
+			'dir' => 'post-masonry',
+		),
+		'post-timeline'      => array(
+			'dir' => 'post-timeline',
+		),
+		'restaurant-menu'    => array(
+			'dir' => 'restaurant-menu',
+		),
+		'review'             => array(
+			'dir' => 'review',
+		),
+		'section'            => array(
+			'dir' => 'section',
+		),
+		'social-share'       => array(
+			'dir' => 'social-share',
+		),
+		'social-share-child' => array(
+			'dir' => 'social-share-child',
+		),
+		'tabs'               => array(
+			'dir' => 'tabs',
+		),
+		'table-of-contents'  => array(
+			'dir' => 'table-of-contents',
+		),
+		'team'               => array(
+			'dir' => 'team',
+		),
+		'testimonial'        => array(
+			'dir' => 'testimonial',
+		),
+		'wp-search'          => array(
+			'dir' => 'wp-search',
+		),
+		'taxonomy-list'      => array(
+			'dir' => 'taxonomy-list',
+		),
+		'forms'              => array(
+			'dir' => 'forms',
+		),
+		'lottie'             => array(
+			'dir' => 'lottie',
+		),
+		'container'          => array(
+			'dir' => 'container',
+		),
+		'image-gallery'          => array(
+			'dir' => 'image-gallery',
+		),
+	);
 
-		/**
-		 * Member Variable
-		 *
-		 * @var instance
-		 */
-		private static $instance;
+	/**
+	 * Get frontend css.
+	 *
+	 * @since 2.0.0
+	 *
+	 * @param string $slug Block slug.
+	 * @param array  $attr Block attributes.
+	 * @param string $id   Block id.
+	 *
+	 * @return array
+	 */
+	public static function get_frontend_css( $slug, $attr, $id ) {
 
-		/**
-		 * Block Attributes
-		 *
-		 * @var block_attributes
-		 */
-		public static $block_attributes = null;
+		$css = array();
 
-		/**
-		 * Block Assets
-		 *
-		 * @var block_assets
-		 */
-		public static $block_assets = null;
+		if ( isset( self::$blocks[ $slug ] ) ) {
 
-		/**
-		 *  Initiator
-		 */
-		public static function get_instance() {
-			if ( ! isset( self::$instance ) ) {
-				self::$instance = new self();
-			}
-			return self::$instance;
-		}
+			$block_dir = UAGB_DIR . 'includes/blocks/' . self::$blocks[ $slug ]['dir'];
 
-		/**
-		 * Constructor
-		 */
-		public function __construct() {
-			add_filter( 'uag_register_block_static_dependencies', array( __CLASS__, 'uag_register_block_static_dependencies' ) );
-		}
+			$css_file = $block_dir . '/frontend.css.php';
 
-		/**
-		 * Add Blocks Static Assets.
-		 *
-		 * @since 2.0.0
-		 *
-		 * @param string $block_assets Block Assets.
-		 * @return array
-		 */
-		public static function uag_register_block_static_dependencies( $block_assets ) {
+			if ( file_exists( $css_file ) ) {
 
-			$blocks = self::get_blocks_info();
+				// Set default attributes.
+				$attr_file = $block_dir . '/attributes.php';
 
-			foreach ( $blocks as $block ) {
-				if ( isset( $block['static_dependencies'] ) ) {
+				if ( file_exists( $attr_file ) ) {
 
-					foreach ( $block['static_dependencies'] as $key => $static_dependencies ) {
-						if ( isset( $static_dependencies ) && is_array( $static_dependencies ) && isset( $static_dependencies['src'] ) ) {
-							$block_assets[ $key ] = $static_dependencies;
-						}
-					}
+					$default_attr = include $attr_file;
+
+					$attr = array_merge( $default_attr, $attr );
 				}
-			}
 
-			return $block_assets;
+				// Get CSS.
+				$css = include $css_file;
+			}
 		}
 
-		/**
-		 * Get frontend CSS.
-		 *
-		 * @since 2.0.0
-		 *
-		 * @param string $slug Block slug.
-		 * @param array  $attr Block attributes.
-		 * @param string $id   Block id.
-		 * @return array
-		 */
-		public static function get_frontend_css( $slug, $attr, $id ) {
-			return self::get_frontend_assets( $slug, $attr, $id, 'css' );
-		}
+		return $css;
+	}
+	/**
+	 * Get frontend JS.
+	 *
+	 * @since 2.0.0
+	 *
+	 * @param string $slug Block slug.
+	 * @param array  $attr Block attributes.
+	 * @param string $id   Block id.
+	 *
+	 * @return array
+	 */
+	public static function get_frontend_js( $slug, $attr, $id ) {
 
-		/**
-		 * Get frontend JS.
-		 *
-		 * @since 2.0.0
-		 *
-		 * @param string $slug Block slug.
-		 * @param array  $attr Block attributes.
-		 * @param string $id   Block id.
-		 * @return array
-		 */
-		public static function get_frontend_js( $slug, $attr, $id ) {
-			return self::get_frontend_assets( $slug, $attr, $id, 'js' );
-		}
+		$js = '';
 
-		/**
-		 * Get frontend Assets.
-		 *
-		 * @since 2.0.0
-		 *
-		 * @param string $slug Block slug.
-		 * @param array  $attr Block attributes.
-		 * @param string $id   Block id.
-		 * @param string $type Asset Type.
-		 * @return array
-		 */
-		public static function get_frontend_assets( $slug, $attr, $id, $type = 'css' ) {
+		if ( isset( self::$blocks[ $slug ] ) ) {
 
-			$assets = array();
+			$block_dir = UAGB_DIR . 'includes/blocks/' . self::$blocks[ $slug ]['dir'];
 
-			if ( 'js' === $type ) {
-				$assets = '';
-			}
+			$js_file = $block_dir . '/frontend.js.php';
 
-			$blocks_info = self::get_blocks_info();
-			if ( ! isset( $blocks_info[ 'uagb/' . $slug ] ) || ! isset( $blocks_info[ 'uagb/' . $slug ]['dynamic_assets'] ) ) {
-				return $assets;
-			}
+			if ( file_exists( $js_file ) ) {
 
-			$blocks = array(
-				$slug => $blocks_info[ 'uagb/' . $slug ]['dynamic_assets'],
-			);
+				// Set default attributes.
+				$attr_file = $block_dir . '/attributes.php';
 
-			if ( isset( $blocks[ $slug ] ) ) {
+				if ( file_exists( $attr_file ) ) {
 
-				$main_dir = UAGB_DIR;
+					$default_attr = include $attr_file;
 
-				if ( isset( $blocks[ $slug ]['plugin-dir'] ) ) {
-					$main_dir = $blocks[ $slug ]['plugin-dir'];
+					$attr = array_merge( $default_attr, $attr );
 				}
 
-				$block_dir = $main_dir . 'includes/blocks/' . $blocks[ $slug ]['dir'];
-
-				$assets_file = $block_dir . '/frontend.' . $type . '.php';
-
-				if ( file_exists( $assets_file ) ) {
-
-					// Set default attributes.
-					$attr_file = $block_dir . '/attributes.php';
-
-					if ( file_exists( $attr_file ) ) {
-
-						$default_attr = include $attr_file;
-
-						$attr = array_merge( $default_attr, $attr );
-					}
-
-					// Get Assets.
-					$assets = include $assets_file;
-				}
+				// Get JS.
+				$js = include $js_file;
 			}
-
-			return $assets;
-
 		}
 
-		/**
-		 * Get Widget List.
-		 *
-		 * @since 2.0.0
-		 *
-		 * @return array The Widget List.
-		 */
-		public static function get_blocks_info() {
-
-			return uagb_block()->get_blocks();
-		}
-
-		/**
-		 * Get Block Assets.
-		 *
-		 * @since 1.13.4
-		 *
-		 * @return array The Asset List.
-		 */
-		public static function get_block_dependencies() {
-
-			$blocks = UAGB_Admin_Helper::get_block_options();
-
-			if ( null === self::$block_assets ) {
-				self::$block_assets = array(
-					// Lib.
-					'uagb-imagesloaded' => array(
-						'src'  => UAGB_URL . 'assets/js/imagesloaded.min.js',
-						'dep'  => array( 'jquery' ),
-						'type' => 'js',
-					),
-					'uagb-slick-js'     => array(
-						'src'  => UAGB_URL . 'assets/js/slick.min.js',
-						'dep'  => array( 'jquery' ),
-						'type' => 'js',
-					),
-					'uagb-slick-css'    => array(
-						'src'  => UAGB_URL . 'assets/css/slick.min.css',
-						'dep'  => array(),
-						'type' => 'css',
-					),
-					'uagb-masonry'      => array(
-						'src'  => UAGB_URL . 'assets/js/isotope.min.js',
-						'dep'  => array( 'jquery' ),
-						'type' => 'js',
-					),
-					'uagb-cookie-lib'   => array(
-						'src'        => UAGB_URL . 'assets/js/js_cookie.min.js',
-						'dep'        => array( 'jquery' ),
-						'skipEditor' => true,
-						'type'       => 'js',
-					),
-					'uagb-bodymovin-js' => array(
-						'src'        => UAGB_URL . 'assets/js/uagb-bodymovin.min.js',
-						'dep'        => array(),
-						'skipEditor' => true,
-						'type'       => 'js',
-					),
-				);
-			}
-
-			return apply_filters( 'uag_register_block_static_dependencies', self::$block_assets );
-		}
+		return $js;
 	}
 }
-
-/**
- *  Prepare if class 'UAGB_Block_Module' exist.
- *  Kicking this off by calling 'get_instance()' method
- */
-UAGB_Block_Module::get_instance();

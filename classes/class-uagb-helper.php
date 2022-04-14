@@ -136,10 +136,11 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 		 * Constructor
 		 */
 		public function __construct() {
+			require UAGB_DIR . 'classes/class-uagb-config.php';
 			require UAGB_DIR . 'classes/class-uagb-block-helper.php';
 			require UAGB_DIR . 'classes/class-uagb-block-js.php';
 
-			self::$block_list      = UAGB_Block_Module::get_blocks_info();
+			self::$block_list      = UAGB_Config::get_block_attributes();
 			self::$file_generation = self::allow_file_generation();
 		}
 
@@ -1157,7 +1158,7 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 				self::$uag_flag = true;
 				$_block_slug    = str_replace( 'uagb/', '', $name );
 				$_block_css     = UAGB_Block_Module::get_frontend_css( $_block_slug, $blockattr, $block_id );
-				$_block_js      = UAGB_Block_Module::get_frontend_js( $_block_slug, $blockattr, $block_id, 'js' );
+				$_block_js      = UAGB_Block_Module::get_frontend_js( $_block_slug, $blockattr, $block_id );
 				$css            = array_merge( $css, $_block_css );
 				if ( ! empty( $_block_js ) ) {
 					$js .= $_block_js;

@@ -18,6 +18,6 @@ $block_data = array(
 	'default'          => true,
 	'extension'        => false,
 	'priority'         => 8,
-	'js_assets'        => array( 'uagb-slick-js', 'uagb-isotope-js', 'uagb-imagesloaded', 'uagb-image-gallery-js' ),
-	'css_assets'       => array( 'uagb-slick-css', 'uagb-image-gallery-css' ),
+	'js_assets'        => array( 'uagb-slick-js', 'uagb-masonry', 'uagb-imagesloaded', 'uagb-image-gallery-js' ),
+	'css_assets'       => array( 'uagb-slick-css' ),
 );

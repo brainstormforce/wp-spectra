@@ -15,5 +15,4 @@ $block_data = array(
 	'description' => __( 'The Timeline block lets you create beautiful timelines on your website.', 'ultimate-addons-for-gutenberg' ),
 	'default'     => true,
 	'is_child'    => true,
-	'static_css'  => 'timeline',
 );

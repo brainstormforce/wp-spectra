@@ -21,14 +21,18 @@ final class UAGB_Scripts_Utils {
 	 */
 	public static function enqueue_blocks_dependency_both() {
 
-		$blocks       = UAGB_Block_Module::get_blocks_info();
+		$blocks       = UAGB_Config::get_block_attributes();
 		$saved_blocks = UAGB_Admin_Helper::get_admin_settings_option( '_uagb_blocks', array() );
-		$block_assets = UAGB_Block_Module::get_block_dependencies();
+		$block_assets = UAGB_Config::get_block_assets();
 
 		foreach ( $blocks as $slug => $value ) {
 			$_slug = str_replace( 'uagb/', '', $slug );
 
 			if ( ! ( isset( $saved_blocks[ $_slug ] ) && 'disabled' === $saved_blocks[ $_slug ] ) ) {
+
+				$js_assets = ( isset( $blocks[ $slug ]['js_assets'] ) ) ? $blocks[ $slug ]['js_assets'] : array();
+
+				$css_assets = ( isset( $blocks[ $slug ]['css_assets'] ) ) ? $blocks[ $slug ]['css_assets'] : array();
 
 				if ( 'cf7-styler' === $_slug ) {
 					if ( ! wp_script_is( 'contact-form-7', 'enqueued' ) ) {
@@ -39,42 +43,35 @@ final class UAGB_Scripts_Utils {
 						wp_enqueue_script( ' wpcf7-admin' );
 					}
 				}
-				foreach ( $block_assets as $handle => $asset ) {
 
-					if ( isset( $asset['type'] ) ) {
+				foreach ( $js_assets as $asset_handle => $val ) {
+					// Scripts.
+					wp_register_script(
+						$val, // Handle.
+						$block_assets[ $val ]['src'],
+						$block_assets[ $val ]['dep'],
+						UAGB_VER,
+						true
+					);
 
-						if ( 'js' === $asset['type'] ) {
+					$skip_editor = isset( $block_assets[ $val ]['skipEditor'] ) ? $block_assets[ $val ]['skipEditor'] : false;
 
-							// Scripts.
-							wp_register_script(
-								$handle, // Handle.
-								$asset['src'],
-								$asset['dep'],
-								UAGB_VER,
-								true
-							);
+					if ( is_admin() && false === $skip_editor ) {
+						wp_enqueue_script( $val );
+					}
+				}
 
-							$skip_editor = isset( $asset['skipEditor'] ) ? $asset['skipEditor'] : false;
+				foreach ( $css_assets as $asset_handle => $val ) {
+					// Styles.
+					wp_register_style(
+						$val, // Handle.
+						$block_assets[ $val ]['src'],
+						$block_assets[ $val ]['dep'],
+						UAGB_VER
+					);
 
-							if ( is_admin() && false === $skip_editor ) {
-								wp_enqueue_script( $handle );
-							}
-						}
-
-						if ( 'css' === $asset['type'] ) {
-
-							// Styles.
-							wp_register_style(
-								$handle, // Handle.
-								$asset['src'],
-								$asset['dep'],
-								UAGB_VER
-							);
-
-							if ( is_admin() ) {
-								wp_enqueue_style( $handle );
-							}
-						}
+					if ( is_admin() ) {
+						wp_enqueue_style( $val );
 					}
 				}
 			}
