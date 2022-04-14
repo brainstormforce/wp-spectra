@@ -8,7 +8,7 @@
  */
 
 // Add fonts.
-UAGB_Block_JS::blocks_advanced_heading_gfont( $attr );
+UAGB_Block_JS::blocks_advanced_image_gfont( $attr );
 
 $m_selectors = array();
 $t_selectors = array();

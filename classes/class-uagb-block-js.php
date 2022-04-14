@@ -618,5 +618,25 @@ if ( ! class_exists( 'UAGB_Block_JS' ) ) {
 
 			UAGB_Helper::blocks_google_font( $load_google_font, $font_family, $font_weight );
 		}
+
+		/**
+		 * Adds Google fonts for Advanced Image block.
+		 *
+		 * @since 2.0.0
+		 * @param array $attr the blocks attr.
+		 */
+		public static function blocks_advanced_image_gfont( $attr ) {
+
+			$heading_load_google_font = isset( $attr['headingLoadGoogleFonts'] ) ? $attr['headingLoadGoogleFonts'] : '';
+			$heading_font_family      = isset( $attr['headingFontFamily'] ) ? $attr['headingFontFamily'] : '';
+			$heading_font_weight      = isset( $attr['headingFontWeight'] ) ? $attr['headingFontWeight'] : '';
+
+			$caption_load_google_font = isset( $attr['captionLoadGoogleFonts'] ) ? $attr['captionLoadGoogleFonts'] : '';
+			$caption_font_family      = isset( $attr['captionFontFamily'] ) ? $attr['captionFontFamily'] : '';
+			$caption_font_weight      = isset( $attr['captionFontWeight'] ) ? $attr['captionFontWeight'] : '';
+
+			UAGB_Helper::blocks_google_font( $heading_load_google_font, $heading_font_family, $heading_font_weight );
+			UAGB_Helper::blocks_google_font( $caption_load_google_font, $caption_font_family, $caption_font_weight );
+		}
 	}
 }

@@ -27,6 +27,7 @@ return array(
 	'imageMarginUnitMobile'       => 'px',
 	// heading.
 	'headingShowOn'               => 'always',
+	'headingLoadGoogleFonts'      => false,
 	'headingFontFamily'           => 'Default',
 	'headingFontWeight'           => '',
 	'headingFontStyle'            => 'normal',
@@ -72,6 +73,7 @@ return array(
 	'captionShowOn'               => 'hover',
 	'captionAlign'                => 'center',
 	'captionColor'                => '',
+	'captionLoadGoogleFonts'      => false,
 	'captionFontFamily'           => '',
 	'captionFontStyle'            => 'normal',
 	'captionTransform'            => '',
