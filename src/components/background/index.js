@@ -128,7 +128,7 @@ const Background = ( props ) => {
 				</div>
 			) }
 			{ 'image' === backgroundType.value && (
-				<div c1lassName="uag-background-image">
+				<div className="uag-background-image">
 					{ ! imageResponsive &&
 						<UAGImage
 							onSelectImage={ onSelectImage }

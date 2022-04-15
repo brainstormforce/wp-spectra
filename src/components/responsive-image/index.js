@@ -5,6 +5,7 @@
  import { useDeviceType } from '@Controls/getPreviewType';
  import ResponsiveToggle from '../responsive-toggle';
  import UAGImage from '@Components/image';
+ import { __ } from '@wordpress/i18n';
 
  const ResponsiveUAGImage = ( props ) => {
 	 const { backgroundImage, setAttributes } = props;
@@ -45,6 +46,7 @@
 			onSelectImage={ onSelectImage }
 			backgroundImage={ backgroundImage.desktop.value }
 			onRemoveImage={ onRemoveImage }
+			label={false}
 		/>
 	 );
 	 output.Tablet = (
@@ -52,6 +54,7 @@
 			onSelectImage={ onSelectImage }
 			backgroundImage={ backgroundImage.tablet.value }
 			onRemoveImage={ onRemoveImage }
+			label={false}
 		/>
 	 );
 	 output.Mobile = (
@@ -59,6 +62,7 @@
 			onSelectImage={ onSelectImage }
 			backgroundImage={ backgroundImage.mobile.value }
 			onRemoveImage={ onRemoveImage }
+			label={false}
 		/>
 	 );
 
@@ -67,7 +71,7 @@
 			 <div className="uagb-size-type-field-tabs">
 				 <div className="uagb-control__header">
 					 <ResponsiveToggle
-						 label= { '' }
+						 label= { __( 'Image', 'ultimate-addons-for-gutenberg' ) }
 						 responsive= { responsive }
 					 />
 				 </div>
