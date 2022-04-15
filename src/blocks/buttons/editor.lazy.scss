@@ -18,3 +18,10 @@
 		display: inline-flex;
 	}
 }
+
+
+.uagb-buttons__outer-wrap {
+	.uagb-buttons__wrap .block-editor-block-list__layout .block-list-appender {
+		margin-right: -60px!important;
+	}
+}

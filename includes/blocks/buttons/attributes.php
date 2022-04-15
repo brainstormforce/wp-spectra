@@ -41,8 +41,8 @@ return array(
 	'btn_count'        => '2',
 	'buttons'          => $default_buttons_child,
 	'gap'              => 10,
-	'gapTablet'        => '',
-	'gapMobile'        => '',
+	'gapTablet'        => 10,
+	'gapMobile'        => 10,
 	'stack'            => 'none',
 	'fontFamily'       => '',
 	'fontWeight'       => '',
@@ -60,4 +60,5 @@ return array(
 	'lineHeight'       => '',
 	'lineHeightMobile' => '',
 	'lineHeightTablet' => '',
+	'buttonSize' => 'default'
 );

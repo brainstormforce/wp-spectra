@@ -313,6 +313,20 @@ const attributes = {
 			styleType: 'btn-icon-space'
 		}
 	},
+	iconSpaceTablet: {
+		type: 'number',
+		default: 8,
+		UAGCopyPaste: {
+			styleType: 'btn-icon-space-tablet'
+		}
+	},
+	iconSpaceMobile: {
+		type: 'number',
+		default: 8,
+		UAGCopyPaste: {
+			styleType: 'btn-icon-space-mobile'
+		}
+	},
 	fontStyle:{
 		type:'string',
 		UAGCopyPaste: {
@@ -478,6 +492,20 @@ const attributes = {
 		default: 15,
 		UAGCopyPaste: {
 			styleType: 'btn-icon-size'
+		}
+	},
+	iconSizeTablet: {
+		type: 'string',
+		default: 15,
+		UAGCopyPaste: {
+			styleType: 'btn-icon-size-tablet'
+		}
+	},
+	iconSizeMobile: {
+		type: 'string',
+		default: 15,
+		UAGCopyPaste: {
+			styleType: 'btn-icon-size-mobile'
 		}
 	},
 	removeText:{

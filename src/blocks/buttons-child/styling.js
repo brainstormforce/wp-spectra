@@ -45,6 +45,8 @@ function styling( props ) {
 		lineHeightMobile,
 		lineHeightTablet,
 		iconSpace,
+		iconSpaceMobile,
+		iconSpaceTablet,
 
 		fontStyle,
 		transform,
@@ -73,7 +75,9 @@ function styling( props ) {
 		boxShadowPosition,
 		iconColor,
 		iconHColor,
-		iconSize
+		iconSize,
+		iconSizeTablet,
+		iconSizeMobile,
 	} = props.attributes;
 
 	const tabletSelectors = {};
@@ -193,11 +197,35 @@ function styling( props ) {
 		'height': generateCSSUnit( iconSize, 'px' ),
 		'fill': iconColor,
 	};
+	tabletSelectors[ ' .uagb-button__icon > svg' ] = {
+		'width': generateCSSUnit( iconSize, 'px' ),
+		'height': generateCSSUnit( iconSize, 'px' ),
+		'fill': iconColor,
+	};
+	mobileSelectors[ ' .uagb-button__icon > svg' ] = {
+		'width': generateCSSUnit( iconSize, 'px' ),
+		'height': generateCSSUnit( iconSize, 'px' ),
+		'fill': iconColor,
+	};
 	selectors[ '.uagb-buttons__outer-wrap .wp-block-button__link.uagb-buttons-repeater:hover .uagb-button__icon > svg' ] = {
 		'fill': iconHColor,
 	};
 	selectors[ ' .uagb-button__icon-position-after' ] = {
 		'margin-left': generateCSSUnit( iconSpace, 'px' ),
+	};
+
+	tabletSelectors[ ' .uagb-button__icon-position-before' ] = {
+		'margin-right': generateCSSUnit( iconSpaceTablet, 'px' ),
+	};
+	tabletSelectors[ ' .uagb-button__icon-position-after' ] = {
+		'margin-left': generateCSSUnit( iconSpaceTablet, 'px' ),
+	};
+
+	mobileSelectors[ ' .uagb-button__icon-position-before' ] = {
+		'margin-right': generateCSSUnit( iconSpaceMobile, 'px' ),
+	};
+	mobileSelectors[ ' .uagb-button__icon-position-after' ] = {
+		'margin-left': generateCSSUnit( iconSpaceMobile, 'px' ),
 	};
 
 	selectors[ ' .uagb-button__icon-position-before' ] = {

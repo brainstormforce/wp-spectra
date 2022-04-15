@@ -86,7 +86,7 @@ if ( 'full' !== $attr['align'] ) {
 }
 
 if ( 'full' !== $attr['alignTablet'] ) {
-	$t_selectors['.uagb-buttons__outer-wrap.wp-block-uagb-buttons '] = array(
+	$t_selectors['.uagb-buttons__outer-wrap .uagb-buttons__wrap '] = array(
 		'justify-content' => $attr['alignTablet'],
 		'align-items'     => $alignmentTablet,
 	);
@@ -100,7 +100,7 @@ if ( 'full' !== $attr['alignTablet'] ) {
 }
 
 if ( 'full' !== $attr['alignMobile'] ) {
-	$m_selectors['.uagb-buttons__outer-wrap.wp-block-uagb-buttons '] = array(
+	$m_selectors['.uagb-buttons__outer-wrap .uagb-buttons__wrap '] = array(
 		'justify-content' => $attr['alignMobile'],
 		'align-items'     => $alignmentMobile,
 	);
@@ -112,6 +112,10 @@ if ( 'full' !== $attr['alignMobile'] ) {
 		'width' => '100%',
 	);
 }
+$top_padding    = isset( $attr['topPadding'] ) ? $attr['topPadding'] : $attr['vPadding'];
+$bottom_padding = isset( $attr['bottomPadding'] ) ? $attr['bottomPadding'] : $attr['vPadding'];
+$left_padding   = isset( $attr['leftPadding'] ) ? $attr['leftPadding'] : $attr['hPadding'];
+$right_padding  = isset( $attr['rightPadding'] ) ? $attr['rightPadding'] : $attr['hPadding'];
 
 if ( $attr['childMigrate'] ) {
 	$selectors[' .uagb-buttons-repeater:not(.wp-block-button__link) .uagb-button__link'] = array( // For Backword user.
@@ -132,13 +136,39 @@ if ( $attr['childMigrate'] ) {
 		'font-size'       => UAGB_Helper::get_css_value( $attr['fontSize'], $attr['fontSizeType'] ),
 		'line-height'     => UAGB_Helper::get_css_value( $attr['lineHeight'], $attr['lineHeightType'] ),
 	);
+	$selectors[' .uagb-buttons-repeater']                             = array( // For New User.
+		'padding-top'     => UAGB_Helper::get_css_value( $top_padding, $attr['paddingUnit'] ),
+		'padding-bottom'  => UAGB_Helper::get_css_value( $bottom_padding, $attr['paddingUnit'] ),
+		'padding-left'    => UAGB_Helper::get_css_value( $left_padding, $attr['paddingUnit'] ),
+		'padding-right'   => UAGB_Helper::get_css_value( $right_padding, $attr['paddingUnit'] ),
+		'margin-top'      => UAGB_Helper::get_css_value( $attr['topMargin'], $attr['marginType'] ),
+		'margin-bottom'   => UAGB_Helper::get_css_value( $attr['bottomMargin'], $attr['marginType'] ),
+		'margin-left'     => UAGB_Helper::get_css_value( $attr['leftMargin'], $attr['marginType'] ),
+		'margin-right'    => UAGB_Helper::get_css_value( $attr['rightMargin'], $attr['marginType'] ),
+	);
 	$t_selectors[' .uagb-buttons-repeater'] = array(
 		'font-size'   => UAGB_Helper::get_css_value( $attr['fontSizeTablet'], $attr['fontSizeType'] ),
 		'line-height' => UAGB_Helper::get_css_value( $attr['lineHeightTablet'], $attr['lineHeightType'] ),
+		'padding-top'    => UAGB_Helper::get_css_value( $attr['topTabletPadding'], $attr['tabletPaddingUnit'] ),
+		'padding-bottom' => UAGB_Helper::get_css_value( $attr['bottomTabletPadding'], $attr['tabletPaddingUnit'] ),
+		'padding-left'   => UAGB_Helper::get_css_value( $attr['leftTabletPadding'], $attr['tabletPaddingUnit'] ),
+		'padding-right'  => UAGB_Helper::get_css_value( $attr['rightTabletPadding'], $attr['tabletPaddingUnit'] ),
+		'margin-top'     => UAGB_Helper::get_css_value( $attr['topMarginTablet'], $attr['marginType'] ),
+		'margin-bottom'  => UAGB_Helper::get_css_value( $attr['bottomMarginTablet'], $attr['marginType'] ),
+		'margin-left'    => UAGB_Helper::get_css_value( $attr['leftMarginTablet'], $attr['marginType'] ),
+		'margin-right'   => UAGB_Helper::get_css_value( $attr['rightMarginTablet'], $attr['marginType'] ),
+
 	);
 	$m_selectors[' .uagb-buttons-repeater'] = array(
 		'font-size'   => UAGB_Helper::get_css_value( $attr['fontSizeMobile'], $attr['fontSizeType'] ),
-		'line-height' => UAGB_Helper::get_css_value( $attr['lineHeightMobile'], $attr['lineHeightType'] ),
+		'line-height' => UAGB_Helper::get_css_value( $attr['lineHeightMobile'], $attr['lineHeightType'] ),'padding-top'    => UAGB_Helper::get_css_value( $attr['topMobilePadding'], $attr['mobilePaddingUnit'] ),
+		'padding-bottom' => UAGB_Helper::get_css_value( $attr['bottomMobilePadding'], $attr['mobilePaddingUnit'] ),
+		'padding-left'   => UAGB_Helper::get_css_value( $attr['leftMobilePadding'], $attr['mobilePaddingUnit'] ),
+		'padding-right'  => UAGB_Helper::get_css_value( $attr['rightMobilePadding'], $attr['mobilePaddingUnit'] ),
+		'margin-top'     => UAGB_Helper::get_css_value( $attr['topMarginMobile'], $attr['marginType'] ),
+		'margin-bottom'  => UAGB_Helper::get_css_value( $attr['bottomMarginMobile'], $attr['marginType'] ),
+		'margin-left'    => UAGB_Helper::get_css_value( $attr['leftMarginMobile'], $attr['marginType'] ),
+		'margin-right'   => UAGB_Helper::get_css_value( $attr['rightMarginMobile'], $attr['marginType'] ),
 	);
 }
 

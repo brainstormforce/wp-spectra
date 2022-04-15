@@ -21,6 +21,7 @@ import MultiButtonsControl from '@Components/multi-buttons-control';
 import BoxShadowControl from '@Components/box-shadow';
 import WebfontLoader from '@Components/typography/fontloader';
 
+import ResponsiveSlider from '@Components/responsive-slider';
 import GradientSettings from '@Components/gradient-settings';
 
 import {
@@ -80,6 +81,8 @@ const Settings = ( props ) => {
 		icon,
 		iconPosition,
 		iconSpace,
+		iconSpaceTablet,
+		iconSpaceMobile,
 		opensInNewTab,
 
 		loadGoogleFonts,
@@ -113,6 +116,8 @@ const Settings = ( props ) => {
 		iconColor,
 		iconHColor,
 		iconSize,
+		iconSizeTablet,
+		iconSizeMobile,
 		removeText,
 		noFollow
 
@@ -126,7 +131,7 @@ const Settings = ( props ) => {
 					value={ icon }
 					onChange={ ( value ) => setAttributes( { icon: value } ) }
 				/>
-				{ '' !== icon && (
+				{ '' !== icon && !removeText && (
 					<>
 						<MultiButtonsControl
 							setAttributes={ setAttributes }
@@ -158,20 +163,6 @@ const Settings = ( props ) => {
 								},
 							] }
 							showIcons={ false }
-						/>
-						<Range
-							label={ __(
-								'Icon Spacing',
-								'ultimate-addons-for-gutenberg'
-							) }
-							setAttributes={ setAttributes }
-							value={ iconSpace }
-							onChange={ ( value ) =>
-								setAttributes( { iconSpace: value } )
-							}
-							min={ 0 }
-							max={ 50 }
-							displayUnit={ false }
 						/>
 					</>
 				) }
@@ -205,16 +196,18 @@ const Settings = ( props ) => {
 						setAttributes( { noFollow : ! noFollow } )
 					}
 				/>
-				<ToggleControl
-					label={ __(
-						'Remove Text',
-						'ultimate-addons-for-gutenberg'
-					) }
-					checked={ removeText }
-					onChange={ () =>
-						setAttributes( { removeText: ! removeText } )
-					}
-				/>
+				{ '' !== icon && (
+					<ToggleControl
+						label={ __(
+							'Remove Text',
+							'ultimate-addons-for-gutenberg'
+						) }
+						checked={ removeText }
+						onChange={ () =>
+							setAttributes( { removeText: ! removeText } )
+						}
+					/>
+				)}
 			</UAGAdvancedPanelBody>
 		);
 	};
@@ -535,16 +528,55 @@ const Settings = ( props ) => {
 		return (
 			<UAGAdvancedPanelBody
 				title={ __( 'Icon', 'ultimate-addons-for-gutenberg' ) }
-				initialOpen={ true }
+				initialOpen={ false }
 			>
-				<Range
-					label={ __( 'Size', 'ultimate-addons-for-gutenberg' ) }
-					setAttributes={ setAttributes }
-					value={ iconSize }
-					onChange={ ( value ) => setAttributes( { iconSize: value } ) }
+				<ResponsiveSlider
+					label={ __(
+						'Size',
+						'ultimate-addons-for-gutenberg'
+					) }
+					data={ {
+						desktop: {
+							value: iconSize,
+							label: 'iconSize',
+						},
+						tablet: {
+							value: iconSizeTablet,
+							label: 'iconSizeTablet',
+						},
+						mobile: {
+							value: iconSizeMobile,
+							label: 'iconSizeMobile',
+						},
+					} }
 					min={ 0 }
-					max={ 50 }
+					max={ 200 }
 					displayUnit={ false }
+					setAttributes={ setAttributes }
+				/>
+				<ResponsiveSlider
+					label={ __(
+						'Icon Spacing',
+						'ultimate-addons-for-gutenberg'
+					) }
+					data={ {
+						desktop: {
+							value: iconSpace,
+							label: 'iconSpace',
+						},
+						tablet: {
+							value: iconSpaceTablet,
+							label: 'iconSpaceTablet',
+						},
+						mobile: {
+							value: iconSpaceMobile,
+							label: 'iconSpaceMobile',
+						},
+					} }
+					min={ 0 }
+					max={ 200 }
+					displayUnit={ false }
+					setAttributes={ setAttributes }
 				/>
 				<UAGTabsControl
 					tabs={ [
