@@ -38,12 +38,22 @@ if ( 'none' !== $seperatorStyle ) {
 		'margin-bottom'    => UAGB_Helper::get_css_value( $attr['separatorSpace'], 'px' ),
 	);
 	$t_selectors['.wp-block-uagb-advanced-heading .uagb-separator'] = array(
-		'width' => UAGB_Helper::get_css_value( $attr['separatorWidthTablet'], $attr['separatorWidthType'] ),
+		'width'         => UAGB_Helper::get_css_value( $attr['separatorWidthTablet'], $attr['separatorWidthType'] ),
+		'margin-bottom' => UAGB_Helper::get_css_value( $attr['separatorSpaceTablet'], 'px' ),
 	);
 	$m_selectors['.wp-block-uagb-advanced-heading .uagb-separator'] = array(
-		'width' => UAGB_Helper::get_css_value( $attr['separatorWidthMobile'], $attr['separatorWidthType'] ),
+		'width'         => UAGB_Helper::get_css_value( $attr['separatorWidthMobile'], $attr['separatorWidthType'] ),
+		'margin-bottom' => UAGB_Helper::get_css_value( $attr['separatorSpaceMobile'], 'px' ),
 	);
 }
+
+$t_selectors['.wp-block-uagb-advanced-heading .uagb-heading-text'] = array(
+	'margin-bottom' => UAGB_Helper::get_css_value( $attr['headSpaceTablet'], 'px' ),
+);
+$m_selectors['.wp-block-uagb-advanced-heading .uagb-heading-text'] = array(
+	'margin-bottom' => UAGB_Helper::get_css_value( $attr['headSpaceMobile'], 'px' ),
+);
+
 
 $combined_selectors = array(
 	'desktop' => $selectors,

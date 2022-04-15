@@ -65,7 +65,11 @@ const Settings = ( props ) => {
 		seperatorStyle,
 		separatorHeight,
 		headSpace,
+		headSpaceTablet,
+		headSpaceMobile,
 		separatorSpace,
+		separatorSpaceTablet,
+		separatorSpaceMobile,
 		headLoadGoogleFonts,
 		subHeadLoadGoogleFonts
 	} = attributes;
@@ -332,7 +336,7 @@ const Settings = ( props ) => {
 						setAttributes( { headingColor: value } )
 					}
 				/>
-				<Range
+				{/* <Range
 					label={ __(
 						'Bottom Spacing (px)',
 						'ultimate-addons-for-gutenberg'
@@ -345,6 +349,30 @@ const Settings = ( props ) => {
 					min={ 0 }
 					max={ 200 }
 					displayUnit={ false }
+				/> */}
+				<ResponsiveSlider
+					label={ __(
+						'Bottom Spacing (px)',
+						'ultimate-addons-for-gutenberg'
+					) }
+					data={ {
+						desktop: {
+							value: headSpace,
+							label: 'headSpace',
+						},
+						tablet: {
+							value: headSpaceTablet,
+							label: 'headSpaceTablet',
+						},
+						mobile: {
+							value: headSpaceMobile,
+							label: 'headSpaceMobile',
+						},
+					} }
+					min={ 0 }
+					max={ 200 }
+					displayUnit={ false }
+					setAttributes={ setAttributes }
 				/>
 			</UAGAdvancedPanelBody>
 		);
@@ -512,7 +540,7 @@ const Settings = ( props ) => {
 						} )
 					}
 				/>
-				<Range
+				{/* <Range
 					label={ __(
 						'Bottom Spacing (px)',
 						'ultimate-addons-for-gutenberg'
@@ -525,6 +553,30 @@ const Settings = ( props ) => {
 					min={ 0 }
 					max={ 200 }
 					displayUnit={ false }
+				/> */}
+				<ResponsiveSlider
+					label={ __(
+						'Bottom Spacing (px)',
+						'ultimate-addons-for-gutenberg'
+					) }
+					data={ {
+						desktop: {
+							value: separatorSpace,
+							label: 'separatorSpace',
+						},
+						tablet: {
+							value: separatorSpaceTablet,
+							label: 'separatorSpaceTablet',
+						},
+						mobile: {
+							value: separatorSpaceMobile,
+							label: 'separatorSpaceMobile',
+						},
+					} }
+					min={ 0 }
+					max={ 200 }
+					displayUnit={ false }
+					setAttributes={ setAttributes }
 				/>
 			</UAGAdvancedPanelBody>
 		);
