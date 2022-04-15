@@ -26,13 +26,16 @@
 	}
 
 	.uag-background-image > .uagb-responsive-select-control {
+
 		.uagb-size-type-field-tabs {
 			display: block;
+
 			& > .components-base-control {
 				width: 100%;
 			}
 		}
 	}
+
 	.uagb-size-type-field-tabs {
 		display: flex;
 		justify-content: space-between;
@@ -41,9 +44,11 @@
 			width: 45%;
 		}
 	}
+
 	.uag-background-image-overlay-type .components-select-control {
 		flex-direction: row;
 		align-items: center;
+
 		.components-input-control__container {
 			width: 45%;
 			flex: unset;
