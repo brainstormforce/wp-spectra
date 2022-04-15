@@ -1,6 +1,6 @@
 import { __ } from '@wordpress/i18n';
 import AdvancedPopColorControl from '@Components/color-control/advanced-pop-color-control.js';
-import { SelectControl } from '@wordpress/components';
+import { SelectControl, FocalPointPicker } from '@wordpress/components';
 import styles from './editor.lazy.scss';
 import GradientSettings from '@Components/gradient-settings';
 import React, { useLayoutEffect } from 'react';
@@ -9,6 +9,7 @@ import ResponsiveSlider from '@Components/responsive-slider';
 import ResponsiveSelectControl from '@Components/responsive-select';
 import { useDeviceType } from '@Controls/getPreviewType';
 import ResponsiveUAGImage from '@Components/responsive-image';
+
 const Background = ( props ) => {
 	// Add and remove the CSS on the drop and remove of the component.
 	useLayoutEffect( () => {
