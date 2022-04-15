@@ -60,5 +60,37 @@ return array(
 	'lineHeight'       => '',
 	'lineHeightMobile' => '',
 	'lineHeightTablet' => '',
-	'buttonSize' => 'default'
+	'buttonSize' => 'default',
+
+	'topTabletPadding'       => '',
+	'rightTabletPadding'     => '',
+	'bottomTabletPadding'    => '',
+	'leftTabletPadding'      => '',
+
+	'topMobilePadding'       => '',
+	'rightMobilePadding'     => '',
+	'bottomMobilePadding'    => '',
+	'leftMobilePadding'      => '',
+
+	'paddingUnit'            => 'px',
+	'mobilePaddingUnit'      => 'px',
+	'tabletPaddingUnit'      => 'px',
+
+	'topMargin'              => '',
+	'rightMargin'            => '',
+	'bottomMargin'           => '',
+	'leftMargin'             => '',
+
+	'topMarginTablet'        => '',
+	'rightMarginTablet'      => '',
+	'bottomMarginTablet'     => '',
+	'leftMarginTablet'       => '',
+
+	'topMarginMobile'        => '',
+	'rightMarginMobile'      => '',
+	'bottomMarginMobile'     => '',
+	'leftMarginMobile'       => '',
+
+	'marginType'             => 'px',
+	'marginLink'             => '',
 );
