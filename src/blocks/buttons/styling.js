@@ -191,7 +191,7 @@ function styling( props ) {
 		};
 	}
 
-	tabletSelectors[ ' .uagb-buttons-repeater' ] = {
+	tabletSelectors[ ' .uagb-button__wrapper .uagb-buttons-repeater' ] = {
 		'font-size': generateCSSUnit( fontSizeTablet, fontSizeType ),
 		'line-height': generateCSSUnit( lineHeightTablet, lineHeightType ),
 		'padding-left': generateCSSUnit(
@@ -219,7 +219,7 @@ function styling( props ) {
 		),
 	};
 
-	mobileSelectors[ ' .uagb-buttons-repeater' ] = {
+	mobileSelectors[ ' .uagb-button__wrapper .uagb-buttons-repeater' ] = {
 		'font-size': generateCSSUnit( fontSizeMobile, fontSizeType ),
 		'line-height': generateCSSUnit( lineHeightMobile, lineHeightType ),
 		'padding-left': generateCSSUnit(
