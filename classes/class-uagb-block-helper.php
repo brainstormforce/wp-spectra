@@ -172,27 +172,27 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 			$selectors[ $wrapper . ':hover .uagb-button__icon > svg' ] = array(
 				'fill' => $attr['iconHColor'],
 			);
+			if( ! $attr['removeText'] ) {
+				$selectors[ $wrapper . ' .uagb-button__icon-position-after' ] = array(
+					'margin-left' => UAGB_Helper::get_css_value( $attr['iconSpace'], 'px' ),
+				);
+				$t_selectors[ $wrapper . ' .uagb-button__icon-position-after' ] = array(
+					'margin-left' => UAGB_Helper::get_css_value( $attr['iconSpaceTablet'], 'px' ),
+				);
+				$m_selectors[ $wrapper . ' .uagb-button__icon-position-after' ] = array(
+					'margin-left' => UAGB_Helper::get_css_value( $attr['iconSpaceMobile'], 'px' ),
+				);
 
-			$selectors[ $wrapper . ' .uagb-button__icon-position-after' ] = array(
-				'margin-left' => UAGB_Helper::get_css_value( $attr['iconSpace'], 'px' ),
-			);
-			$t_selectors[ $wrapper . ' .uagb-button__icon-position-after' ] = array(
-				'margin-left' => UAGB_Helper::get_css_value( $attr['iconSpaceTablet'], 'px' ),
-			);
-			$m_selectors[ $wrapper . ' .uagb-button__icon-position-after' ] = array(
-				'margin-left' => UAGB_Helper::get_css_value( $attr['iconSpaceMobile'], 'px' ),
-			);
-
-			$selectors[ $wrapper . ' .uagb-button__icon-position-before' ] = array(
-				'margin-right' => UAGB_Helper::get_css_value( $attr['iconSpace'], 'px' ),
-			);
-			$t_selectors[ $wrapper . ' .uagb-button__icon-position-before' ] = array(
-				'margin-right' => UAGB_Helper::get_css_value( $attr['iconSpaceTablet'], 'px' ),
-			);
-			$m_selectors[ $wrapper . ' .uagb-button__icon-position-before' ] = array(
-				'margin-right' => UAGB_Helper::get_css_value( $attr['iconSpaceMobile'], 'px' ),
-			);
-
+				$selectors[ $wrapper . ' .uagb-button__icon-position-before' ] = array(
+					'margin-right' => UAGB_Helper::get_css_value( $attr['iconSpace'], 'px' ),
+				);
+				$t_selectors[ $wrapper . ' .uagb-button__icon-position-before' ] = array(
+					'margin-right' => UAGB_Helper::get_css_value( $attr['iconSpaceTablet'], 'px' ),
+				);
+				$m_selectors[ $wrapper . ' .uagb-button__icon-position-before' ] = array(
+					'margin-right' => UAGB_Helper::get_css_value( $attr['iconSpaceMobile'], 'px' ),
+				);
+		}
 			return array(
 				'selectors'   => $selectors,
 				'm_selectors' => $m_selectors,
