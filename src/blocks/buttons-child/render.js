@@ -52,7 +52,7 @@ const Render = ( props ) => {
 						} }
 						allowedFormats={ [ 'bold', 'italic', 'strikethrough' ] }
 						className="uagb-button__link"
-						rel= { noFollow ? 'nofollow' : '' }
+						rel= { noFollow ? 'nofollow noopener' : 'follow noopener' }
 						keepPlaceholderOnFocus
 					/>
 		}
