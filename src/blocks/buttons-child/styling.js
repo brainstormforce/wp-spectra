@@ -78,6 +78,7 @@ function styling( props ) {
 		iconSize,
 		iconSizeTablet,
 		iconSizeMobile,
+		removeText,
 	} = props.attributes;
 
 	const tabletSelectors = {};
@@ -198,39 +199,41 @@ function styling( props ) {
 		'fill': iconColor,
 	};
 	tabletSelectors[ ' .uagb-button__icon > svg' ] = {
-		'width': generateCSSUnit( iconSize, 'px' ),
-		'height': generateCSSUnit( iconSize, 'px' ),
+		'width': generateCSSUnit( iconSizeTablet, 'px' ),
+		'height': generateCSSUnit( iconSizeTablet, 'px' ),
 		'fill': iconColor,
 	};
 	mobileSelectors[ ' .uagb-button__icon > svg' ] = {
-		'width': generateCSSUnit( iconSize, 'px' ),
-		'height': generateCSSUnit( iconSize, 'px' ),
+		'width': generateCSSUnit( iconSizeMobile, 'px' ),
+		'height': generateCSSUnit( iconSizeMobile, 'px' ),
 		'fill': iconColor,
 	};
 	selectors[ '.uagb-buttons__outer-wrap .wp-block-button__link.uagb-buttons-repeater:hover .uagb-button__icon > svg' ] = {
 		'fill': iconHColor,
 	};
-	selectors[ ' .uagb-button__icon-position-after' ] = {
-		'margin-left': generateCSSUnit( iconSpace, 'px' ),
-	};
+	if( ! removeText ) {
+		selectors[ ' .uagb-button__icon-position-after' ] = {
+			'margin-left': generateCSSUnit( iconSpace, 'px' ),
+		};
 
-	tabletSelectors[ ' .uagb-button__icon-position-before' ] = {
-		'margin-right': generateCSSUnit( iconSpaceTablet, 'px' ),
-	};
-	tabletSelectors[ ' .uagb-button__icon-position-after' ] = {
-		'margin-left': generateCSSUnit( iconSpaceTablet, 'px' ),
-	};
+		tabletSelectors[ ' .uagb-button__icon-position-before' ] = {
+			'margin-right': generateCSSUnit( iconSpaceTablet, 'px' ),
+		};
+		tabletSelectors[ ' .uagb-button__icon-position-after' ] = {
+			'margin-left': generateCSSUnit( iconSpaceTablet, 'px' ),
+		};
 
-	mobileSelectors[ ' .uagb-button__icon-position-before' ] = {
-		'margin-right': generateCSSUnit( iconSpaceMobile, 'px' ),
-	};
-	mobileSelectors[ ' .uagb-button__icon-position-after' ] = {
-		'margin-left': generateCSSUnit( iconSpaceMobile, 'px' ),
-	};
+		mobileSelectors[ ' .uagb-button__icon-position-before' ] = {
+			'margin-right': generateCSSUnit( iconSpaceMobile, 'px' ),
+		};
+		mobileSelectors[ ' .uagb-button__icon-position-after' ] = {
+			'margin-left': generateCSSUnit( iconSpaceMobile, 'px' ),
+		};
 
-	selectors[ ' .uagb-button__icon-position-before' ] = {
-		'margin-right': generateCSSUnit( iconSpace, 'px' ),
-	};
+		selectors[ ' .uagb-button__icon-position-before' ] = {
+			'margin-right': generateCSSUnit( iconSpace, 'px' ),
+		};
+	}
 
 	if ( 'transparent' === backgroundType ) {
 		selectors[ '.uagb-buttons__outer-wrap .wp-block-button__link.uagb-buttons-repeater' ]  = {
