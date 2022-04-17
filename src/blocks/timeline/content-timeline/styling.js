@@ -317,6 +317,17 @@ function contentTimelineStyle( props ) {
 			),
 			'margin-bottom': generateCSSUnit( dateBottomspaceTablet, 'px' ),
 		},
+		' .uagb-timeline__date-hide.uagb-timeline__inner-date-new': {
+			'font-size': generateCSSUnit(
+				dateFontsizeTablet,
+				dateFontsizeType
+			),
+			'line-height': generateCSSUnit(
+				dateLineHeightTablet,
+				dateLineHeightType
+			),
+			'margin-bottom': generateCSSUnit( dateBottomspaceTablet, 'px' ),
+		},
 		' .uagb-timeline__date-new': {
 			'font-size': generateCSSUnit(
 				dateFontsizeTablet,
@@ -446,6 +457,17 @@ function contentTimelineStyle( props ) {
 
 	const mobileSelectors = {
 		' .uagb-timeline__date-hide.uagb-timeline__date-inner': {
+			'font-size': generateCSSUnit(
+				dateFontsizeMobile,
+				dateFontsizeType
+			),
+			'line-height': generateCSSUnit(
+				dateLineHeightMobile,
+				dateLineHeightType
+			),
+			'margin-bottom': generateCSSUnit( dateBottomspaceMobile, 'px' ),
+		},
+		' .uagb-timeline__date-hide.uagb-timeline__inner-date-new': {
 			'font-size': generateCSSUnit(
 				dateFontsizeMobile,
 				dateFontsizeType
