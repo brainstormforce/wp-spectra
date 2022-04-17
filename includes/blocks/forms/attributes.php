@@ -88,6 +88,8 @@ return array(
 	'vPaddingField'                  => 10,
 	'hPaddingField'                  => 10,
 	'fieldGap'                       => 20,
+	'fieldGapTablet'                 => 0,
+	'fieldGapMobile'                 => 0,
 	'formStyle'                      => 'boxed',
 	'overallAlignment'               => 'left',
 	'successMessageTextColor'        => '',
