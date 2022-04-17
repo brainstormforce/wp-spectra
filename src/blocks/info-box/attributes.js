@@ -706,12 +706,14 @@ const attributes = {
 	},
 	imageWidthMobile: {
 		type: 'number',
+		default: 0,
 		UAGCopyPaste: {
 			styleType: 'image-width-mobile'
 		}
 	},
 	imageWidthTablet: {
 		type: 'number',
+		default: 0,
 		UAGCopyPaste: {
 			styleType: 'image-width-tablet'
 		}

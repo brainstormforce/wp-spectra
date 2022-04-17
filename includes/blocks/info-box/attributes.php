@@ -114,6 +114,8 @@ return array(
 	'imageSize'                  => 'thumbnail',
 	'imageWidthType'             => true,
 	'imageWidth'                 => '120',
+	'imageWidthTablet'           => '0',
+	'imageWidthMobile'           => '0',
 	'ctaLinkHoverColor'          => '',
 	'ctaBgHoverColor'            => '',
 	'ctaBorderhoverColor'        => '',
