@@ -23,10 +23,10 @@ if ( 'desktop' === $attr['stack'] ) {
 		'row-gap'        => UAGB_Helper::get_css_value( $attr['gap'], 'px' ),
 	);
 	$t_selectors[' .uagb-buttons__wrap '] = array(
-		'column-gap' => UAGB_Helper::get_css_value( $attr['gapTablet'], 'px' ),
+		'row-gap' => UAGB_Helper::get_css_value( $attr['gapTablet'], 'px' ),
 	);
 	$m_selectors[' .uagb-buttons__wrap '] = array(
-		'column-gap' => UAGB_Helper::get_css_value( $attr['gapMobile'], 'px' ),
+		'row-gap' => UAGB_Helper::get_css_value( $attr['gapMobile'], 'px' ),
 	);
 
 } elseif ( 'tablet' === $attr['stack'] ) {
