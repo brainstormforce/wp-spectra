@@ -16,7 +16,8 @@
 	fill: currentColor;
 }
 
-.uagb-cta__button-link-wrapper {
+.uagb-cta__button-link-wrapper,
+.uagb-cta-second__button {
 	display: inline-flex;
 	align-items: center;
 }
@@ -100,6 +101,7 @@ a.uagb-cta__block-link-wrap:hover,
 }
 
 .uagb-cta__content-right .uagb-cta__button-link-wrapper,
+.uagb-cta__content-right .uagb-cta-second__button
 .uagb-cta__content-right .uagb-cta__block-link,
 .uagb-cta__content-right.uagb-cta__button-valign-middle .uagb-cta__left-right-wrap {
 	display: flex;
@@ -107,6 +109,7 @@ a.uagb-cta__block-link-wrap:hover,
 }
 
 .uagb-cta__content-right .uagb-cta__button-link-wrapper,
+.uagb-cta__content-right .uagb-cta-second__button
 .uagb-cta__content-right .uagb-cta__block-link {
 	justify-content: center;
 }
