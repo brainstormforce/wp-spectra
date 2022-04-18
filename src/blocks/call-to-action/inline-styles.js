@@ -82,7 +82,43 @@ function CtaStyle( props ) {
 		descFontStyle,
 		ctaFontStyle,
 		buttonAlign,
-		ctaIconPosition
+		ctaIconPosition,
+		secondCtaIconSpace,
+		secondCtaIconPosition,
+		secondCtaFontSize,
+		secondCtaFontSizeType,
+		secondCtaFontSizeMobile,
+		secondCtaFontSizeTablet,
+		secondCtaFontFamily,
+		secondCtaFontWeight,
+		secondCtaFontStyle,
+		secondCtaFontTransform,
+		secondCtaFontDecoration,
+		secondCtaTopPadding,
+		secondCtaRightPadding,
+		secondCtaBottomPadding,
+		secondCtaLeftPadding,
+		secondCtaTopMobilePadding,
+		secondCtaRightMobilePadding,
+		secondCtaBottomMobilePadding,
+		secondCtaLeftMobilePadding,
+		secondCtaTopTabletPadding,
+		secondCtaRightTabletPadding,
+		secondCtaBottomTabletPadding,
+		secondCtaLeftTabletPadding,
+		secondCtaPaddingUnit,
+		secondCtaMobilePaddingUnit,
+		secondCtaTabletPaddingUnit,
+		secondCtaBorderWidth,
+		secondCtaBorderRadius,
+		secondCtaBorderStyle,
+		secondCtaBorderColor,
+		secondCtaBorderHColor,
+		secondCtaColor,
+		secondCtaBackground,
+		secondCtaHoverColor,
+		secondCtaHoverBackground,
+		gap,
 	} = props.attributes;
 
 	const selectors = {
@@ -153,9 +189,11 @@ function CtaStyle( props ) {
 
 	if ( ctaPosition === 'right' ) {
 		selectors[ '.uagb-cta__outer-wrap ' ] = {
-			'display' : 'inline-flex'
+			'display' : 'inline-flex',
 		};
 	}
+
+
 
 	// CTA style.
 	selectors['.uagb-cta__outer-wrap a.uagb-cta__button-link-wrapper'] = {
@@ -177,11 +215,40 @@ function CtaStyle( props ) {
 		'padding-right': generateCSSUnit( ctaRightPadding, ctaPaddingUnit ),
 	};
 
+	selectors['.uagb-cta__outer-wrap a.uagb-cta-second__button'] = {
+		'font-size': generateCSSUnit( secondCtaFontSize, secondCtaFontSizeType ),
+		'font-family': secondCtaFontFamily,
+		'font-style' : secondCtaFontStyle,
+		'text-decoration': secondCtaFontDecoration,
+		'text-transform': secondCtaFontTransform,
+		'font-weight': secondCtaFontWeight,
+		'color': secondCtaColor,
+		'background-color': secondCtaBackground,
+		'border-style': secondCtaBorderStyle,
+		'border-color': secondCtaBorderColor,
+		'border-radius': generateCSSUnit( secondCtaBorderRadius, 'px' ),
+		'border-width': generateCSSUnit( secondCtaBorderWidth, 'px' ),
+		'padding-top': generateCSSUnit( secondCtaTopPadding, secondCtaPaddingUnit ),
+		'padding-bottom': generateCSSUnit( secondCtaBottomPadding, secondCtaPaddingUnit ),
+		'padding-left': generateCSSUnit( secondCtaLeftPadding, secondCtaPaddingUnit ),
+		'padding-right': generateCSSUnit( secondCtaRightPadding, secondCtaPaddingUnit ),
+		'margin-left': generateCSSUnit( gap, 'px' ),
+		'align-self': 'top' === buttonAlign ? 'flex-start' : 'center',
+		'height' : 'fit-content',
+	};
+	selectors['.uagb-cta__outer-wrap:hover a.uagb-cta-second__button'] = {
+		'color': secondCtaHoverColor,
+		'background-color': secondCtaHoverBackground,
+		'border-color': secondCtaBorderHColor,
+	};
+
 	selectors['.uagb-cta__outer-wrap:hover a.uagb-cta__button-link-wrapper'] = {
 		'color': ctaLinkHoverColor,
 		'background-color': ctaBgHoverColor,
 		'border-color': ctaBorderhoverColor,
 	};
+
+
 
 	selectors['.uagb-cta__outer-wrap a.uagb-cta__button-link-wrapper svg' ] = {
 		'font-size': generateCSSUnit( ctaFontSize, ctaFontSizeType ),
@@ -190,12 +257,35 @@ function CtaStyle( props ) {
 		'fill': ctaBtnLinkColor,
 	};
 
+	selectors['.uagb-cta__outer-wrap a.uagb-cta-second__button svg' ] = {
+		'font-size': generateCSSUnit( secondCtaFontSize, secondCtaFontSizeType ),
+		'width': generateCSSUnit( secondCtaFontSize, secondCtaFontSizeType ),
+		'line-height': generateCSSUnit( secondCtaFontSize, secondCtaFontSizeType ),
+		'fill': secondCtaColor,
+	};
+
 	selectors['.uagb-cta__outer-wrap:hover a.uagb-cta__button-link-wrapper svg'] = {
 		'fill': ctaLinkHoverColor,
 	};
 
+	selectors['.uagb-cta__outer-wrap:hover a.uagb-cta-second__button svg'] = {
+		'fill': secondCtaHoverColor,
+	};
+
+	if( secondCtaIconPosition === 'before' ){
+		selectors[ '.uagb-cta__outer-wrap a.uagb-cta-second__button > svg' ] = {
+			'margin-right': generateCSSUnit( secondCtaIconSpace, 'px' ),
+		};
+	}else{
+		selectors[ '.uagb-cta__outer-wrap a.uagb-cta-second__button > svg' ] = {
+			'margin-left': generateCSSUnit( secondCtaIconSpace, 'px' ),
+		};
+	}
 
 	const tabletSelectors = {
+		'.uagb-cta__outer-wrap ': {
+			'display' : 'inline-flex',
+		},
 		' .block-editor-rich-text__editable.uagb-cta__title': {
 			'font-size': generateCSSUnit(
 				titleFontSizeTablet,
@@ -244,9 +334,55 @@ function CtaStyle( props ) {
 				ctaFontSizeType
 			),
 		},
+		'.uagb-cta__outer-wrap a.uagb-cta-second__button': {
+			'font-size': generateCSSUnit( secondCtaFontSizeTablet, secondCtaFontSizeType ),
+			'padding-top': generateCSSUnit(
+				secondCtaTopTabletPadding,
+				secondCtaTabletPaddingUnit
+			),
+			'padding-bottom': generateCSSUnit(
+				secondCtaBottomTabletPadding,
+				secondCtaTabletPaddingUnit
+			),
+			'padding-left': generateCSSUnit(
+				secondCtaLeftTabletPadding,
+				secondCtaTabletPaddingUnit
+			),
+			'padding-right': generateCSSUnit(
+				secondCtaRightTabletPadding,
+				secondCtaTabletPaddingUnit
+			),
+		},
+		'.uagb-cta__outer-wrap a.uagb-cta-second__button svg': {
+			'font-size': generateCSSUnit( secondCtaFontSizeTablet, secondCtaFontSizeType ),
+			'height': generateCSSUnit( secondCtaFontSizeTablet, secondCtaFontSizeType ),
+			'width': generateCSSUnit( secondCtaFontSizeTablet, secondCtaFontSizeType ),
+			'line-height': generateCSSUnit(
+				secondCtaFontSizeTablet,
+				secondCtaFontSizeType
+			),
+		},
 	};
 
+	if ( ctaPosition === 'right' ) {
+		tabletSelectors[ '.uagb-cta__outer-wrap.uagb-cta__content-stacked-tablet ' ] = {
+			'display' : 'inherit',
+		};
+		tabletSelectors[ '.uagb-cta__content-stacked-tablet .uagb-cta__wrap ' ] = {
+			'width' : '100%',
+		};
+	}
+
+	if( 'below-title' === ctaPosition ){
+		tabletSelectors[ '.uagb-cta__outer-wrap ' ] = {
+			'display' : 'inherit',
+		};
+	}
+
 	const mobileSelectors = {
+		'.uagb-cta__outer-wrap ': {
+			'display' : 'inline-flex',
+		},
 		' .block-editor-rich-text__editable.uagb-cta__title': {
 			'font-size': generateCSSUnit(
 				titleFontSizeMobile,
@@ -298,6 +434,34 @@ function CtaStyle( props ) {
 				ctaFontSizeType
 			),
 		},
+		'.uagb-cta__outer-wrap a.uagb-cta-second__button': {
+			'font-size': generateCSSUnit( secondCtaFontSizeMobile, secondCtaFontSizeType ),
+			'padding-top': generateCSSUnit(
+				secondCtaTopMobilePadding,
+				secondCtaMobilePaddingUnit
+			),
+			'padding-bottom': generateCSSUnit(
+				secondCtaBottomMobilePadding,
+				secondCtaMobilePaddingUnit
+			),
+			'padding-left': generateCSSUnit(
+				secondCtaLeftMobilePadding,
+				secondCtaMobilePaddingUnit
+			),
+			'padding-right': generateCSSUnit(
+				secondCtaRightMobilePadding,
+				secondCtaMobilePaddingUnit
+			),
+		},
+		'.uagb-cta__outer-wrap a.uagb-cta-second__button svg': {
+			'font-size': generateCSSUnit( secondCtaFontSizeMobile, secondCtaFontSizeType ),
+			'height': generateCSSUnit( secondCtaFontSizeMobile, secondCtaFontSizeType ),
+			'width': generateCSSUnit( secondCtaFontSizeMobile, secondCtaFontSizeType ),
+			'line-height': generateCSSUnit(
+				secondCtaFontSizeMobile,
+				secondCtaFontSizeType
+			),
+		},
 	};
 
 	if( ctaIconPosition === 'before' ){
@@ -336,6 +500,24 @@ function CtaStyle( props ) {
 		};
 		mobileSelectors[ ' .uagb-cta__wrap' ] = {
 			'width': generateCSSUnit( contentWidthMobile, '%' ),
+		};
+	}
+
+	if ( ctaPosition === 'right' ) {
+		mobileSelectors[ '.uagb-cta__outer-wrap.uagb-cta__content-stacked-mobile ' ] = {
+			'display' : 'inherit',
+		};
+		mobileSelectors[ '.uagb-cta__outer-wrap.uagb-cta__content-stacked-tablet ' ] = {
+			'display' : 'inherit',
+		};
+		mobileSelectors[ '.uagb-cta__content-stacked-mobile .uagb-cta__wrap ' ] = {
+			'width' : '100%',
+		};
+	}
+
+	if( 'below-title' === ctaPosition ){
+		mobileSelectors[ '.uagb-cta__outer-wrap ' ] = {
+			'display' : 'inherit',
 		};
 	}
 

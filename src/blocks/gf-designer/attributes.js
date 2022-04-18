@@ -99,6 +99,20 @@ const attributes = { // eslint-disable-line no-unused-vars
 			styleType: 'field-border-width'
 		},
 	},
+	fieldBorderWidthTablet: {
+		type: 'number',
+		default: 1,
+		UAGCopyPaste: {
+			styleType: 'field-border-width'
+		},
+	},
+	fieldBorderWidthMobile: {
+		type: 'number',
+		default: 1,
+		UAGCopyPaste: {
+			styleType: 'field-border-width'
+		},
+	},
 	fieldBorderRadius: {
 		type: 'number',
 		default: 0,
@@ -211,7 +225,35 @@ const attributes = { // eslint-disable-line no-unused-vars
 			styleType: 'field-bottom-margin'
 		},
 	},
+	fieldSpacingTablet: {
+		type: 'number',
+		default: '',
+		UAGCopyPaste: {
+			styleType: 'field-bottom-margin'
+		},
+	},
+	fieldSpacingMobile: {
+		type: 'number',
+		default: '',
+		UAGCopyPaste: {
+			styleType: 'field-bottom-margin'
+		},
+	},
 	fieldLabelSpacing: {
+		type: 'number',
+		default: '',
+		UAGCopyPaste: {
+			styleType: 'main-title-bottom-margin'
+		},
+	},
+	fieldLabelSpacingTablet: {
+		type: 'number',
+		default: '',
+		UAGCopyPaste: {
+			styleType: 'main-title-bottom-margin'
+		},
+	},
+	fieldLabelSpacingMobile: {
 		type: 'number',
 		default: '',
 		UAGCopyPaste: {
@@ -367,6 +409,18 @@ const attributes = { // eslint-disable-line no-unused-vars
 			styleType: 'textarea-height'
 		},
 	},
+	textAreaHeightTablet: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'textarea-height'
+		},
+	},
+	textAreaHeightMobile: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'textarea-height'
+		},
+	},
 	buttonFontSize: {
 		type: 'number',
 		default: '',
@@ -446,6 +500,20 @@ const attributes = { // eslint-disable-line no-unused-vars
 			styleType: 'radio-size'
 		},
 	},
+	radioCheckSizeTablet: {
+		type: 'number',
+		default: '0',
+		UAGCopyPaste: {
+			styleType: 'radio-size'
+		},
+	},
+	radioCheckSizeMobile: {
+		type: 'number',
+		default: '0',
+		UAGCopyPaste: {
+			styleType: 'radio-size'
+		},
+	},
 	radioCheckBgColor: {
 		type: 'string',
 		default: '#fafafa',
@@ -475,6 +543,20 @@ const attributes = { // eslint-disable-line no-unused-vars
 		},
 	},
 	radioCheckBorderWidth: {
+		type: 'number',
+		default: '1',
+		UAGCopyPaste: {
+			styleType: 'radio-border-width'
+		},
+	},
+	radioCheckBorderWidthTablet: {
+		type: 'number',
+		default: '1',
+		UAGCopyPaste: {
+			styleType: 'radio-border-width'
+		},
+	},
+	radioCheckBorderWidthMobile: {
 		type: 'number',
 		default: '1',
 		UAGCopyPaste: {

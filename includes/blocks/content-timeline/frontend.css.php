@@ -187,6 +187,18 @@ $selectors = array(
 );
 
 	$m_selectors = array(
+		' .uagb-timeline__heading'          => array(
+			'margin-bottom' => UAGB_Helper::get_css_value( $attr['headSpaceMobile'], 'px' ),
+		),
+		' .uagb-timeline__heading-text'     => array(
+			'margin-bottom' => UAGB_Helper::get_css_value( $attr['headSpaceMobile'], 'px' ),
+		),
+		' .uagb-timeline__date-hide.uagb-timeline__date-inner' => array(
+			'margin-bottom' => UAGB_Helper::get_css_value( $attr['dateBottomspaceMobile'], 'px' ),
+		),
+		' .uagb-timeline__date-hide.uagb-timeline__inner-date-new' => array(
+			'margin-bottom' => UAGB_Helper::get_css_value( $attr['dateBottomspaceMobile'], 'px' ),
+		),
 		'.uagb-timeline__center-block .uagb-timeline__day-right .uagb-timeline__arrow:after' => array(
 			'border-right-color' => $attr['backgroundColor'],
 		),
@@ -211,10 +223,23 @@ $selectors = array(
 			'padding-right'  => UAGB_Helper::get_css_value( $attr['rightPaddingMobile'], $attr['mobilePaddingUnit'] ),
 			'padding-top'    => UAGB_Helper::get_css_value( $attr['topPaddingMobile'], $attr['mobilePaddingUnit'] ),
 			'padding-bottom' => UAGB_Helper::get_css_value( $attr['bottomPaddingMobile'], $attr['mobilePaddingUnit'] ),
+			'border-radius'  => UAGB_Helper::get_css_value( $attr['borderRadiusMobile'], 'px' ),
 		),
 	);
 
 	$t_selectors = array(
+		' .uagb-timeline__heading'          => array(
+			'margin-bottom' => UAGB_Helper::get_css_value( $attr['headSpaceTablet'], 'px' ),
+		),
+		' .uagb-timeline__heading-text'     => array(
+			'margin-bottom' => UAGB_Helper::get_css_value( $attr['headSpaceTablet'], 'px' ),
+		),
+		' .uagb-timeline__date-hide.uagb-timeline__date-inner' => array(
+			'margin-bottom' => UAGB_Helper::get_css_value( $attr['dateBottomspaceTablet'], 'px' ),
+		),
+		' .uagb-timeline__date-hide.uagb-timeline__inner-date-new' => array(
+			'margin-bottom' => UAGB_Helper::get_css_value( $attr['dateBottomspaceTablet'], 'px' ),
+		),
 		'.uagb-timeline__center-block .uagb-timeline__day-right .uagb-timeline__arrow:after' => array(
 			'border-right-color' => $attr['backgroundColor'],
 		),
@@ -239,6 +264,7 @@ $selectors = array(
 			'padding-right'  => UAGB_Helper::get_css_value( $attr['rightPaddingTablet'], $attr['tabletPaddingUnit'] ),
 			'padding-top'    => UAGB_Helper::get_css_value( $attr['topPaddingTablet'], $attr['tabletPaddingUnit'] ),
 			'padding-bottom' => UAGB_Helper::get_css_value( $attr['bottomPaddingTablet'], $attr['tabletPaddingUnit'] ),
+			'border-radius'  => UAGB_Helper::get_css_value( $attr['borderRadiusTablet'], 'px' ),
 		),
 	);
 

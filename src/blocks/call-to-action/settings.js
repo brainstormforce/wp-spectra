@@ -118,11 +118,69 @@ const Settings = ( props ) => {
 		titleFontStyle,
 		descFontStyle,
 		ctaFontStyle,
+		enabledSecondCtaButton,
+		secondCtaLabel,
+		secondCtaLink,
+		secondCtaTarget,
+		secondCtaLoadGoogleFonts,
+		secondCtaFontFamily,
+		secondCtaFontWeight,
+		secondCtaFontStyle,
+		secondCtaFontTransform,
+		secondCtaFontDecoration,
+		secondCtaTopPadding,
+		secondCtaRightPadding,
+		secondCtaBottomPadding,
+		secondCtaLeftPadding,
+		secondCtaTopMobilePadding,
+		secondCtaRightMobilePadding,
+		secondCtaBottomMobilePadding,
+		secondCtaLeftMobilePadding,
+		secondCtaTopTabletPadding,
+		secondCtaRightTabletPadding,
+		secondCtaBottomTabletPadding,
+		secondCtaLeftTabletPadding,
+		secondCtaPaddingUnit,
+		secondCtaMobilePaddingUnit,
+		secondCtaTabletPaddingUnit,
+		secondCtaPaddingLink,
+		secondCtaBorderWidth,
+		secondCtaBorderRadius,
+		secondCtaBorderStyle,
+		secondCtaBorderColor,
+		secondCtaBorderHColor,
+		secondCtaColor,
+		secondCtaBackground,
+		secondCtaHoverColor,
+		secondCtaHoverBackground,
+		secondCtaFontSize,
+		secondCtaFontSizeType,
+		secondCtaFontSizeMobile,
+		secondCtaFontSizeTablet,
+		secondCtaIcon,
+		secondCtaIconPosition,
+		secondCtaIconSpace,
+		gap,
 	} = attributes;
 
 	let loadCtaGoogleFonts;
 	let loadTitleGoogleFonts;
 	let loadDescGoogleFonts;
+	let loadSecCtaGoogleFonts;
+
+	if ( secondCtaLoadGoogleFonts === true ) {
+		const secondCtaBtnconfig = {
+			google: {
+				families: [
+					secondCtaFontFamily + ( secondCtaFontWeight ? ':' + secondCtaFontWeight : '' ),
+				],
+			},
+		};
+
+		loadSecCtaGoogleFonts = (
+			<WebfontLoader config={ secondCtaBtnconfig }></WebfontLoader>
+		);
+	}
 
 	if ( ctaLoadGoogleFonts === true ) {
 		const ctaconfig = {
@@ -168,6 +226,356 @@ const Settings = ( props ) => {
 			<WebfontLoader config={ descconfig }></WebfontLoader>
 		);
 	}
+
+	const secBtnSettings = () => {
+		return (
+			<UAGAdvancedPanelBody
+				title={ __( 'Additional Button', 'ultimate-addons-for-gutenberg' ) }
+				initialOpen={ false }
+			>
+				<ToggleControl
+					label={ __(
+						'Enable Additional Button',
+						'ultimate-addons-for-gutenberg'
+					) }
+					checked={ enabledSecondCtaButton }
+					onChange={ () =>
+						setAttributes( { enabledSecondCtaButton: ! enabledSecondCtaButton } )
+					}
+				/>
+				{ enabledSecondCtaButton && (
+				<>
+				<TextControl
+					label={ __(
+						'Text',
+						'ultimate-addons-for-gutenberg'
+					) }
+					value={ secondCtaLabel }
+					onChange={ ( value ) =>
+						setAttributes( { secondCtaLabel: value } )
+					}
+				/>
+				<TextControl
+					label={ __(
+						'Link',
+						'ultimate-addons-for-gutenberg'
+					) }
+					value={ secondCtaLink }
+					onChange={ ( value ) =>
+						setAttributes( { secondCtaLink: value } )
+					}
+				/>
+				<ToggleControl
+					label={ __(
+						'Open in new window',
+						'ultimate-addons-for-gutenberg'
+					) }
+					checked={ secondCtaTarget }
+					onChange={ () =>
+						setAttributes( { secondCtaTarget: ! secondCtaTarget } )
+					}
+				/>
+				<UAGIconPicker
+					label={ __(
+						'Icon',
+						'ultimate-addons-for-gutenberg'
+					) }
+					value={ secondCtaIcon }
+					onChange={ ( value ) =>
+						setAttributes( { secondCtaIcon: value } )
+					}
+				/>
+				{ secondCtaIcon !== '' && (
+				<>
+				<MultiButtonsControl
+					setAttributes={ setAttributes }
+					label={ __(
+						'Icon Position',
+						'ultimate-addons-for-gutenberg'
+					) }
+					data={ {
+						value: secondCtaIconPosition,
+						label: 'secondCtaIconPosition',
+					} }
+					className="uagb-multi-button-alignment-control"
+					options={ [
+						{
+							value: 'before',
+							label: __(
+								'Before Text',
+								'ultimate-addons-for-gutenberg'
+							),
+							tooltip: __(
+								'Before Text',
+								'ultimate-addons-for-gutenberg'
+							),
+						},
+						{
+							value: 'after',
+							label: __(
+								'After Text',
+								'ultimate-addons-for-gutenberg'
+							),
+							tooltip: __(
+								'After Text',
+								'ultimate-addons-for-gutenberg'
+							),
+						},
+					] }
+					showIcons={ false }
+				/>
+				<Range
+					label={ __(
+						'Icon Spacing',
+						'ultimate-addons-for-gutenberg'
+					) }
+					setAttributes={ setAttributes }
+					value={ secondCtaIconSpace }
+					onChange={ ( value ) =>
+						setAttributes( {
+							secondCtaIconSpace: value,
+						} )
+					}
+					min={ 0 }
+					max={ 50 }
+					displayUnit={ false }
+				/>
+				</>
+				)}
+				</>
+				)}
+			</UAGAdvancedPanelBody>
+		);
+	};
+
+	const secButtonStyleSettings = () => {
+		return (
+			<UAGAdvancedPanelBody
+				title={ __( 'Additional Button', 'ultimate-addons-for-gutenberg' ) }
+				initialOpen={ false }
+			>
+				<TypographyControl
+					label={ __(
+						'Typography',
+						'ultimate-addons-for-gutenberg'
+					) }
+					attributes={ attributes }
+					setAttributes={ setAttributes }
+					loadGoogleFonts={ {
+						value: secondCtaLoadGoogleFonts,
+						label: 'secondCtaLoadGoogleFonts',
+					} }
+					fontFamily={ {
+						value: secondCtaFontFamily,
+						label: 'secondCtaFontFamily',
+					} }
+					fontWeight={ {
+						value: secondCtaFontWeight,
+						label: 'secondCtaFontWeight',
+					} }
+					fontStyle={ {
+						value: secondCtaFontStyle,
+						label: 'secondCtaFontStyle',
+					} }
+					transform={ {
+						value: secondCtaFontTransform,
+						label: 'secondCtaFontTransform',
+					} }
+					decoration={ {
+						value: secondCtaFontDecoration,
+						label: 'secondCtaFontDecoration',
+					} }
+					fontSizeType={ {
+						value: secondCtaFontSizeType,
+						label: 'secondCtaFontSizeType',
+					} }
+					fontSize={ {
+						value: secondCtaFontSize,
+						label: 'secondCtaFontSize',
+					} }
+					fontSizeMobile={ {
+						value: secondCtaFontSizeMobile,
+						label: 'secondCtaFontSizeMobile',
+					} }
+					fontSizeTablet={ {
+						value: secondCtaFontSizeTablet,
+						label: 'secondCtaFontSizeTablet',
+					} }
+					disableLineHeight={ true }
+				/>
+				<UAGTabsControl
+					tabs={ [
+						{
+							name: 'normal',
+							title: __(
+								'Normal',
+								'ultimate-addons-for-gutenberg'
+							),
+						},
+						{
+							name: 'hover',
+							title: __(
+								'Hover',
+								'ultimate-addons-for-gutenberg'
+							),
+						},
+					] }
+					normal={
+						<>
+							<AdvancedPopColorControl
+								label={ __(
+									'Text Color',
+									'ultimate-addons-for-gutenberg'
+								) }
+								colorValue={ secondCtaColor ? secondCtaColor : '' }
+								onColorChange={ ( value ) =>
+									setAttributes( { secondCtaColor: value } )
+								}
+							/>
+							<AdvancedPopColorControl
+								label={ __(
+									'Background Color',
+									'ultimate-addons-for-gutenberg'
+								) }
+								colorValue={ secondCtaBackground ? secondCtaBackground : '' }
+								onColorChange={ ( value ) =>
+									setAttributes( { secondCtaBackground: value } )
+								}
+							/>
+						</>
+					 }
+					hover={
+						<>
+							<AdvancedPopColorControl
+								label={ __(
+									'Text Color',
+									'ultimate-addons-for-gutenberg'
+								) }
+								colorValue={ secondCtaHoverColor ? secondCtaHoverColor : '' }
+								onColorChange={ ( value ) =>
+									setAttributes( { secondCtaHoverColor: value } )
+								}
+							/>
+							<AdvancedPopColorControl
+								label={ __(
+									'Background Color',
+									'ultimate-addons-for-gutenberg'
+								) }
+								colorValue={ secondCtaHoverBackground ? secondCtaHoverBackground : '' }
+								onColorChange={ ( value ) =>
+									setAttributes( { secondCtaHoverBackground: value } )
+								}
+							/>
+						</>
+					}
+					disableBottomSeparator={ true }
+				/>
+				<Border
+					setAttributes={ setAttributes }
+					borderStyle={ {
+						value: secondCtaBorderStyle,
+						label: 'secondCtaBorderStyle',
+						title: __( 'Style', 'ultimate-addons-for-gutenberg' ),
+					} }
+					borderWidth={ {
+						value: secondCtaBorderWidth,
+						label: 'secondCtaBorderWidth',
+						title: __( 'Width', 'ultimate-addons-for-gutenberg' ),
+					} }
+					borderRadius={ {
+						value: secondCtaBorderRadius,
+						label: 'secondCtaBorderRadius',
+						title: __( 'Radius', 'ultimate-addons-for-gutenberg' ),
+					} }
+					borderColor={ {
+						value: secondCtaBorderColor,
+						label: 'secondCtaBorderColor',
+						title: __( 'Color', 'ultimate-addons-for-gutenberg' ),
+					} }
+					borderHoverColor={ {
+						value: secondCtaBorderHColor,
+						label: 'secondCtaBorderHColor',
+						title: __(
+							'Hover Color',
+							'ultimate-addons-for-gutenberg'
+						),
+					} }
+					disableBottomSeparator={ true }
+				/>
+				<SpacingControl
+					{ ...props }
+					label={ __( 'Padding', 'ultimate-addons-for-gutenberg' ) }
+					valueTop={ {
+						value: secondCtaTopPadding,
+						label: 'secondCtaTopPadding',
+					} }
+					valueRight={ {
+						value: secondCtaRightPadding,
+						label: 'secondCtaRightPadding',
+					} }
+					valueBottom={ {
+						value: secondCtaBottomPadding,
+						label: 'secondCtaBottomPadding',
+					} }
+					valueLeft={ {
+						value: secondCtaLeftPadding,
+						label: 'secondCtaLeftPadding',
+					} }
+					valueTopTablet={ {
+						value: secondCtaTopTabletPadding,
+						label: 'secondCtaTopTabletPadding',
+					} }
+					valueRightTablet={ {
+						value: secondCtaRightTabletPadding,
+						label: 'secondCtaRightTabletPadding',
+					} }
+					valueBottomTablet={ {
+						value: secondCtaBottomTabletPadding,
+						label: 'secondCtaBottomTabletPadding',
+					} }
+					valueLeftTablet={ {
+						value: secondCtaLeftTabletPadding,
+						label: 'secondCtaLeftTabletPadding',
+					} }
+					valueTopMobile={ {
+						value: secondCtaTopMobilePadding,
+						label: 'secondCtaTopMobilePadding',
+					} }
+					valueRightMobile={ {
+						value: secondCtaRightMobilePadding,
+						label: 'secondCtaRightMobilePadding',
+					} }
+					valueBottomMobile={ {
+						value: secondCtaBottomMobilePadding,
+						label: 'secondCtaBottomMobilePadding',
+					} }
+					valueLeftMobile={ {
+						value: secondCtaLeftMobilePadding,
+						label: 'secondCtaLeftMobilePadding',
+					} }
+					unit={ {
+						value: secondCtaPaddingUnit,
+						label: 'secondCtaPaddingUnit',
+					} }
+					mUnit={ {
+						value: secondCtaMobilePaddingUnit,
+						label: 'secondCtaMobilePaddingUnit',
+					} }
+					tUnit={ {
+						value: secondCtaTabletPaddingUnit,
+						label: 'secondCtaTabletPaddingUnit',
+					} }
+					attributes={ attributes }
+					setAttributes={ setAttributes }
+					link={ {
+						value: secondCtaPaddingLink,
+						label: 'secondCtaPaddingLink',
+					} }
+				/>
+			</UAGAdvancedPanelBody>
+		);
+	};
+
 	// CTA settings.
 	const ctaSettings = () => {
 		return (
@@ -883,6 +1291,22 @@ const Settings = ( props ) => {
 						displayUnit={ false }
 					/>
 				) }
+				{ enabledSecondCtaButton && (
+				<Range
+					label={ __(
+						'Gap between buttons (px)',
+						'ultimate-addons-for-gutenberg'
+					) }
+					setAttributes={ setAttributes }
+					value={ gap }
+					onChange={ ( value ) =>
+						setAttributes( { gap: value } )
+					}
+					min={ 0 }
+					max={ 200 }
+					displayUnit={ false }
+				/>
+				)}
 			</UAGAdvancedPanelBody>
 		);
 	};
@@ -1180,6 +1604,7 @@ const Settings = ( props ) => {
 						{ presetSettings() }
 						{ layouts() }
 						{ ctaSettings() }
+						{ 'button' === ctaType && secBtnSettings() }
 					</InspectorTab>
 					<InspectorTab { ...UAGTabs.style }>
 						{ headingSettings() }
@@ -1187,6 +1612,7 @@ const Settings = ( props ) => {
 						{ ctaType !== 'all' &&
 						  ctaType !== 'none' &&
 						  ctaStyleSettings() }
+						{ ( 'button' === ctaType && enabledSecondCtaButton ) && secButtonStyleSettings() }
 						{ marginSettings() }
 					</InspectorTab>
 					<InspectorTab
@@ -1196,6 +1622,7 @@ const Settings = ( props ) => {
 				</InspectorTabs>
 			</InspectorControls>
 			{ loadCtaGoogleFonts }
+			{ loadSecCtaGoogleFonts }
 			{ loadTitleGoogleFonts }
 			{ loadDescGoogleFonts }
 		</Suspense>

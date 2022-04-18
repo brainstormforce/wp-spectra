@@ -100,6 +100,8 @@ function styling( props ) {
 		iconMobileMarginUnit,
 		iconTabletMarginUnit,
 		imageWidth,
+		imageWidthMobile,
+imageWidthTablet,
 		imageWidthType,
 		imageWidthUnit,
 		ctaLinkHoverColor,
@@ -446,26 +448,6 @@ function styling( props ) {
 			'margin-right': generateCSSUnit( separatorRightMargin, seperatorSpaceUnit ),
 		}
 	};
-
-	if ( imageWidthType ) {
-		// Image
-		selectors[ '.uagb-infobox__content-wrap img' ] = {
-			'width': generateCSSUnit( imageWidth, imageWidthUnit ),
-			'max-width': generateCSSUnit( imageWidth, imageWidthUnit ),
-		};
-		selectors[ '.uagb-infobox__content-wrap .uagb-ifb-content .uagb-ifb-right-title-image > img' ] = {
-			'width': generateCSSUnit( imageWidth, imageWidthUnit ),
-			'max-width': generateCSSUnit( imageWidth, imageWidthUnit ),
-		};
-		selectors[ '.uagb-infobox__content-wrap .uagb-ifb-content .uagb-ifb-left-title-image > img' ] = {
-			'width': generateCSSUnit( imageWidth, imageWidthUnit ),
-			'max-width': generateCSSUnit( imageWidth, imageWidthUnit ),
-		};
-		selectors[ '.uagb-infobox__content-wrap .uagb-ifb-content .uagb-ifb-image-content > img' ] = {
-			'width': generateCSSUnit( imageWidth, imageWidthUnit ),
-			'max-width': generateCSSUnit( imageWidth, imageWidthUnit ),
-		};
-	}
 
 	if (
 		iconimgPosition === 'above-title' ||
@@ -878,6 +860,60 @@ function styling( props ) {
 			'width': generateCSSUnit( ctaFontSizeMobile, ctaFontSizeType ),
 		},
 	};
+
+	if ( imageWidthType ) {
+		// Image
+		selectors[ '.uagb-infobox__content-wrap img' ] = {
+			'width': generateCSSUnit( imageWidth, imageWidthUnit ),
+			'max-width': generateCSSUnit( imageWidth, imageWidthUnit ),
+		};
+		selectors[ '.uagb-infobox__content-wrap .uagb-ifb-content .uagb-ifb-right-title-image > img' ] = {
+			'width': generateCSSUnit( imageWidth, imageWidthUnit ),
+			'max-width': generateCSSUnit( imageWidth, imageWidthUnit ),
+		};
+		selectors[ '.uagb-infobox__content-wrap .uagb-ifb-content .uagb-ifb-left-title-image > img' ] = {
+			'width': generateCSSUnit( imageWidth, imageWidthUnit ),
+			'max-width': generateCSSUnit( imageWidth, imageWidthUnit ),
+		};
+		selectors[ '.uagb-infobox__content-wrap .uagb-ifb-content .uagb-ifb-image-content > img' ] = {
+			'width': generateCSSUnit( imageWidth, imageWidthUnit ),
+			'max-width': generateCSSUnit( imageWidth, imageWidthUnit ),
+		};
+
+		tabletSelectors[ '.uagb-infobox__content-wrap img' ] = {
+			'width': generateCSSUnit( imageWidthTablet, imageWidthUnit ),
+			'max-width': generateCSSUnit( imageWidth, imageWidthUnit ),
+		};
+		tabletSelectors[ '.uagb-infobox__content-wrap .uagb-ifb-content .uagb-ifb-right-title-image > img' ] = {
+			'width': generateCSSUnit( imageWidthTablet, imageWidthUnit ),
+			'max-width': generateCSSUnit( imageWidth, imageWidthUnit ),
+		};
+		tabletSelectors[ '.uagb-infobox__content-wrap .uagb-ifb-content .uagb-ifb-left-title-image > img' ] = {
+			'width': generateCSSUnit( imageWidthTablet, imageWidthUnit ),
+			'max-width': generateCSSUnit( imageWidth, imageWidthUnit ),
+		};
+		tabletSelectors[ '.uagb-infobox__content-wrap .uagb-ifb-content .uagb-ifb-image-content > img' ] = {
+			'width': generateCSSUnit( imageWidthTablet, imageWidthUnit ),
+			'max-width': generateCSSUnit( imageWidth, imageWidthUnit ),
+		};
+
+		mobileSelectors[ '.uagb-infobox__content-wrap img' ] = {
+			'width': generateCSSUnit( imageWidthMobile, imageWidthUnit ),
+			'max-width': generateCSSUnit( imageWidth, imageWidthUnit ),
+		};
+		mobileSelectors[ '.uagb-infobox__content-wrap .uagb-ifb-content .uagb-ifb-right-title-image > img' ] = {
+			'width': generateCSSUnit( imageWidthMobile, imageWidthUnit ),
+			'max-width': generateCSSUnit( imageWidth, imageWidthUnit ),
+		};
+		mobileSelectors[ '.uagb-infobox__content-wrap .uagb-ifb-content .uagb-ifb-left-title-image > img' ] = {
+			'width': generateCSSUnit( imageWidthMobile, imageWidthUnit ),
+			'max-width': generateCSSUnit( imageWidth, imageWidthUnit ),
+		};
+		mobileSelectors[ '.uagb-infobox__content-wrap .uagb-ifb-content .uagb-ifb-image-content > img' ] = {
+			'width': generateCSSUnit( imageWidthMobile, imageWidthUnit ),
+			'max-width': generateCSSUnit( imageWidth, imageWidthUnit ),
+		};
+	}
 
 	if( 'after' === ctaIconPosition ){
 		selectors[ '.uagb-infobox__content-wrap .uagb-infobox-cta-link > svg'] = {

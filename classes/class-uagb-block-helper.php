@@ -584,6 +584,13 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 		 */
 		public static function get_timeline_tablet_selectors( $attr ) {
 			$tablet_selector = array(
+				' .uagb-timeline__heading'          => array(
+					'margin-top'    => UAGB_Helper::get_css_value( $attr['headTopSpacingTablet'], 'px' ),
+					'margin-bottom' => UAGB_Helper::get_css_value( $attr['headSpaceTablet'], 'px' ),
+				),
+				' .uagb-timeline__date-hide.uagb-timeline__inner-date-new' => array(
+					'margin-bottom' => UAGB_Helper::get_css_value( $attr['dateBottomspaceTablet'], 'px' ),
+				),
 				'.uagb-timeline__center-block .uagb-timeline__marker' => array(
 					'margin-left'  => 0,
 					'margin-right' => 0,
@@ -614,6 +621,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					'padding-right'  => UAGB_Helper::get_css_value( $attr['rightPaddingTablet'], $attr['tabletPaddingUnit'] ),
 					'padding-top'    => UAGB_Helper::get_css_value( $attr['topPaddingTablet'], $attr['tabletPaddingUnit'] ),
 					'padding-bottom' => UAGB_Helper::get_css_value( $attr['bottomPaddingTablet'], $attr['tabletPaddingUnit'] ),
+					'border-radius'  => UAGB_Helper::get_css_value( $attr['borderRadiusTablet'], 'px' ),
 				),
 			);
 
@@ -629,6 +637,13 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 		 */
 		public static function get_timeline_mobile_selectors( $attr ) {
 			$m_selectors = array(
+				' .uagb-timeline__heading'          => array(
+					'margin-top'    => UAGB_Helper::get_css_value( $attr['headTopSpacingMobile'], 'px' ),
+					'margin-bottom' => UAGB_Helper::get_css_value( $attr['headSpaceMobile'], 'px' ),
+				),
+				' .uagb-timeline__date-hide.uagb-timeline__inner-date-new' => array(
+					'margin-bottom' => UAGB_Helper::get_css_value( $attr['dateBottomspaceMobile'], 'px' ),
+				),
 				'.uagb-timeline__center-block .uagb-timeline__marker' => array(
 					'margin-left'  => 0,
 					'margin-right' => 0,
@@ -662,6 +677,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					'padding-right'  => UAGB_Helper::get_css_value( $attr['rightPaddingMobile'], $attr['mobilePaddingUnit'] ),
 					'padding-top'    => UAGB_Helper::get_css_value( $attr['topPaddingMobile'], $attr['mobilePaddingUnit'] ),
 					'padding-bottom' => UAGB_Helper::get_css_value( $attr['bottomPaddingMobile'], $attr['mobilePaddingUnit'] ),
+					'border-radius'  => UAGB_Helper::get_css_value( $attr['borderRadiusMobile'], 'px' ),
 				),
 			);
 			return $m_selectors;

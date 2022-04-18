@@ -80,6 +80,9 @@ $selectors = array(
 
 );
 $t_selectors = array(
+	' .uagb-forms-main-form .uagb-forms-field-set' => array(
+		'margin-bottom' => UAGB_Helper::get_css_value( $attr['fieldGapTablet'], $attr['fieldGapType'] ),
+	),
 	' .uagb-forms-main-form .uagb-forms-main-submit-button' => array(
 		'padding-top'    => UAGB_Helper::get_css_value( $attr['paddingBtnTopTablet'], $attr['tabletPaddingBtnUnit'] ),
 		'padding-bottom' => UAGB_Helper::get_css_value( $attr['paddingBtnBottomTablet'], $attr['tabletPaddingBtnUnit'] ),
@@ -88,6 +91,9 @@ $t_selectors = array(
 	),
 );
 $m_selectors = array(
+	' .uagb-forms-main-form .uagb-forms-field-set' => array(
+		'margin-bottom' => UAGB_Helper::get_css_value( $attr['fieldGapMobile'], $attr['fieldGapType'] ),
+	),
 	' .uagb-forms-main-form .uagb-forms-main-submit-button' => array(
 		'padding-top'    => UAGB_Helper::get_css_value( $attr['paddingBtnTopMobile'], $attr['mobilePaddingBtnUnit'] ),
 		'padding-bottom' => UAGB_Helper::get_css_value( $attr['paddingBtnBottomMobile'], $attr['mobilePaddingBtnUnit'] ),

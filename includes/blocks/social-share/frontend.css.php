@@ -118,16 +118,13 @@ $m_selectors[' .uagb-ss__source-image'] = array(
 	'width' => $m_image_size,
 );
 
-$m_selectors[' .uagb-ss__source-icon']                                  = array(
+$m_selectors[' .uagb-ss__source-icon'] = array(
 	'width'       => $m_image_size,
 	'height'      => $m_image_size,
 	'font-size'   => $m_image_size,
 	'line-height' => $m_image_size,
 );
-$m_selectors['.uagb-social-share__layout-horizontal .uagb-ss__wrapper'] = array(
-	'margin-left'  => 0,
-	'margin-right' => 0,
-);
+
 
 $selectors['.uagb-social-share__outer-wrap'] = array(
 	'justify-content'   => $alignment,

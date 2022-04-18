@@ -239,59 +239,6 @@ if ( 'button' === $attr['ctaType'] ) {
 	);
 }
 
-if ( $attr['imageWidthType'] ) {
-	// Image.
-	$selectors[' .uagb-ifb-content .uagb-ifb-image-content > img']            = array(
-		'width'     => UAGB_Helper::get_css_value( $attr['imageWidth'], $attr['imageWidthUnit'] ),
-		'max-width' => UAGB_Helper::get_css_value( $attr['imageWidth'], $attr['imageWidthUnit'] ),
-	);
-	$selectors['.uagb-infobox__content-wrap .uagb-ifb-image-content > img']   = array(
-		'width'     => UAGB_Helper::get_css_value( $attr['imageWidth'], $attr['imageWidthUnit'] ),
-		'max-width' => UAGB_Helper::get_css_value( $attr['imageWidth'], $attr['imageWidthUnit'] ),
-	);
-	$selectors[' .uagb-ifb-content .uagb-ifb-left-title-image > img']         = array(
-		'width'     => UAGB_Helper::get_css_value( $attr['imageWidth'], $attr['imageWidthUnit'] ),
-		'max-width' => UAGB_Helper::get_css_value( $attr['imageWidth'], $attr['imageWidthUnit'] ),
-	);
-	$selectors[' .uagb-ifb-content .uagb-ifb-right-title-image > img']        = array(
-		'width'     => UAGB_Helper::get_css_value( $attr['imageWidth'], $attr['imageWidthUnit'] ),
-		'max-width' => UAGB_Helper::get_css_value( $attr['imageWidth'], $attr['imageWidthUnit'] ),
-	);
-	$m_selectors[' .uagb-ifb-content .uagb-ifb-image-content > img']          = array(
-		'width'     => UAGB_Helper::get_css_value( $attr['imageWidthMobile'], $attr['imageWidthUnit'] ),
-		'max-width' => UAGB_Helper::get_css_value( $attr['imageWidthMobile'], $attr['imageWidthUnit'] ),
-	);
-	$m_selectors['.uagb-infobox__content-wrap .uagb-ifb-image-content > img'] = array(
-		'width'     => UAGB_Helper::get_css_value( $attr['imageWidthMobile'], $attr['imageWidthUnit'] ),
-		'max-width' => UAGB_Helper::get_css_value( $attr['imageWidthMobile'], $attr['imageWidthUnit'] ),
-	);
-	$m_selectors[' .uagb-ifb-content .uagb-ifb-left-title-image > img']       = array(
-		'width'     => UAGB_Helper::get_css_value( $attr['imageWidthMobile'], $attr['imageWidthUnit'] ),
-		'max-width' => UAGB_Helper::get_css_value( $attr['imageWidthMobile'], $attr['imageWidthUnit'] ),
-	);
-	$m_selectors[' .uagb-ifb-content .uagb-ifb-right-title-image > img']      = array(
-		'width'     => UAGB_Helper::get_css_value( $attr['imageWidthMobile'], $attr['imageWidthUnit'] ),
-		'max-width' => UAGB_Helper::get_css_value( $attr['imageWidthMobile'], $attr['imageWidthUnit'] ),
-	);
-	$t_selectors[' .uagb-ifb-content .uagb-ifb-image-content > img']          = array(
-		'width'     => UAGB_Helper::get_css_value( $attr['imageWidthTablet'], $attr['imageWidthUnit'] ),
-		'max-width' => UAGB_Helper::get_css_value( $attr['imageWidthTablet'], $attr['imageWidthUnit'] ),
-	);
-	$t_selectors['.uagb-infobox__content-wrap .uagb-ifb-image-content > img'] = array(
-		'width'     => UAGB_Helper::get_css_value( $attr['imageWidthTablet'], $attr['imageWidthUnit'] ),
-		'max-width' => UAGB_Helper::get_css_value( $attr['imageWidthTablet'], $attr['imageWidthUnit'] ),
-	);
-	$t_selectors[' .uagb-ifb-content .uagb-ifb-left-title-image > img']       = array(
-		'width'     => UAGB_Helper::get_css_value( $attr['imageWidthTablet'], $attr['imageWidthUnit'] ),
-		'max-width' => UAGB_Helper::get_css_value( $attr['imageWidthTablet'], $attr['imageWidthUnit'] ),
-	);
-	$t_selectors[' .uagb-ifb-content .uagb-ifb-right-title-image > img']      = array(
-		'width'     => UAGB_Helper::get_css_value( $attr['imageWidthTablet'], $attr['imageWidthUnit'] ),
-		'max-width' => UAGB_Helper::get_css_value( $attr['imageWidthTablet'], $attr['imageWidthUnit'] ),
-	);
-
-}
-
 if ( 'above-title' === $attr['iconimgPosition'] || 'below-title' === $attr['iconimgPosition'] ) {
 	$selectors['.uagb-infobox__content-wrap']  = array(
 		'text-align' => $attr['headingAlign'],
@@ -445,6 +392,59 @@ $t_selectors = array(
 		'width' => UAGB_Helper::get_css_value( $attr['seperatorWidthTablet'], $attr['separatorWidthType'] ),
 	),
 );
+
+if ( $attr['imageWidthType'] ) {
+	// Image.
+	$selectors[' .uagb-ifb-content .uagb-ifb-image-content > img']            = array(
+		'width'     => UAGB_Helper::get_css_value( $attr['imageWidth'], $attr['imageWidthUnit'] ),
+		'max-width' => UAGB_Helper::get_css_value( $attr['imageWidth'], $attr['imageWidthUnit'] ),
+	);
+	$selectors['.uagb-infobox__content-wrap .uagb-ifb-image-content > img']   = array(
+		'width'     => UAGB_Helper::get_css_value( $attr['imageWidth'], $attr['imageWidthUnit'] ),
+		'max-width' => UAGB_Helper::get_css_value( $attr['imageWidth'], $attr['imageWidthUnit'] ),
+	);
+	$selectors[' .uagb-ifb-content .uagb-ifb-left-title-image > img']         = array(
+		'width'     => UAGB_Helper::get_css_value( $attr['imageWidth'], $attr['imageWidthUnit'] ),
+		'max-width' => UAGB_Helper::get_css_value( $attr['imageWidth'], $attr['imageWidthUnit'] ),
+	);
+	$selectors[' .uagb-ifb-content .uagb-ifb-right-title-image > img']        = array(
+		'width'     => UAGB_Helper::get_css_value( $attr['imageWidth'], $attr['imageWidthUnit'] ),
+		'max-width' => UAGB_Helper::get_css_value( $attr['imageWidth'], $attr['imageWidthUnit'] ),
+	);
+	$m_selectors[' .uagb-ifb-content .uagb-ifb-image-content > img']          = array(
+		'width'     => UAGB_Helper::get_css_value( $attr['imageWidthMobile'], $attr['imageWidthUnit'] ),
+		'max-width' => UAGB_Helper::get_css_value( $attr['imageWidthMobile'], $attr['imageWidthUnit'] ),
+	);
+	$m_selectors['.uagb-infobox__content-wrap .uagb-ifb-image-content > img'] = array(
+		'width'     => UAGB_Helper::get_css_value( $attr['imageWidthMobile'], $attr['imageWidthUnit'] ),
+		'max-width' => UAGB_Helper::get_css_value( $attr['imageWidthMobile'], $attr['imageWidthUnit'] ),
+	);
+	$m_selectors[' .uagb-ifb-content .uagb-ifb-left-title-image > img']       = array(
+		'width'     => UAGB_Helper::get_css_value( $attr['imageWidthMobile'], $attr['imageWidthUnit'] ),
+		'max-width' => UAGB_Helper::get_css_value( $attr['imageWidthMobile'], $attr['imageWidthUnit'] ),
+	);
+	$m_selectors[' .uagb-ifb-content .uagb-ifb-right-title-image > img']      = array(
+		'width'     => UAGB_Helper::get_css_value( $attr['imageWidthMobile'], $attr['imageWidthUnit'] ),
+		'max-width' => UAGB_Helper::get_css_value( $attr['imageWidthMobile'], $attr['imageWidthUnit'] ),
+	);
+	$t_selectors[' .uagb-ifb-content .uagb-ifb-image-content > img']          = array(
+		'width'     => UAGB_Helper::get_css_value( $attr['imageWidthTablet'], $attr['imageWidthUnit'] ),
+		'max-width' => UAGB_Helper::get_css_value( $attr['imageWidthTablet'], $attr['imageWidthUnit'] ),
+	);
+	$t_selectors['.uagb-infobox__content-wrap .uagb-ifb-image-content > img'] = array(
+		'width'     => UAGB_Helper::get_css_value( $attr['imageWidthTablet'], $attr['imageWidthUnit'] ),
+		'max-width' => UAGB_Helper::get_css_value( $attr['imageWidthTablet'], $attr['imageWidthUnit'] ),
+	);
+	$t_selectors[' .uagb-ifb-content .uagb-ifb-left-title-image > img']       = array(
+		'width'     => UAGB_Helper::get_css_value( $attr['imageWidthTablet'], $attr['imageWidthUnit'] ),
+		'max-width' => UAGB_Helper::get_css_value( $attr['imageWidthTablet'], $attr['imageWidthUnit'] ),
+	);
+	$t_selectors[' .uagb-ifb-content .uagb-ifb-right-title-image > img']      = array(
+		'width'     => UAGB_Helper::get_css_value( $attr['imageWidthTablet'], $attr['imageWidthUnit'] ),
+		'max-width' => UAGB_Helper::get_css_value( $attr['imageWidthTablet'], $attr['imageWidthUnit'] ),
+	);
+
+}
 
 if ( 'after' === $attr['ctaIconPosition'] ) {
 	$selectors['.uagb-infobox__content-wrap .uagb-infobox-cta-link > svg ']   = array(

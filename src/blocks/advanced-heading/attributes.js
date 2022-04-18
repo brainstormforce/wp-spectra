@@ -101,6 +101,20 @@ const attributes = {
 			styleType: 'main-title-bottom-margin'
 		}
 	},
+	headSpaceMobile: {
+		type: 'number',
+		default: 0,
+		UAGCopyPaste: {
+			styleType: 'main-title-bottom-margin'
+		}
+	},
+	headSpaceTablet: {
+		type: 'number',
+		default: 0,
+		UAGCopyPaste: {
+			styleType: 'main-title-bottom-margin'
+		}
+	},
 	headFontFamily: {
 		type: 'string',
 		default: 'Default',
@@ -268,6 +282,20 @@ const attributes = {
 	separatorSpace: {
 		type: 'number',
 		default: 15,
+		UAGCopyPaste: {
+			styleType: 'separator-bottom-margin'
+		}
+	},
+	separatorSpaceTablet: {
+		type: 'number',
+		default: 0,
+		UAGCopyPaste: {
+			styleType: 'separator-bottom-margin'
+		}
+	},
+	separatorSpaceMobile: {
+		type: 'number',
+		default: 0,
 		UAGCopyPaste: {
 			styleType: 'separator-bottom-margin'
 		}

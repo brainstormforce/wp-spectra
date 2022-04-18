@@ -66,21 +66,6 @@ $selectors = array(
 	),
 );
 
-if ( 'none' !== $attr['seperatorStyle'] ) {
-	$selectors[' .uagb-rest_menu__wrap .uagb-rm__separator']   = array(
-		'border-top-color' => $attr['seperatorColor'],
-		'border-top-style' => $attr['seperatorStyle'],
-		'border-top-width' => UAGB_Helper::get_css_value( $attr['seperatorThickness'], 'px' ),
-		'width'            => UAGB_Helper::get_css_value( $attr['seperatorWidth'], $attr['seperatorWidthType'] ),
-	);
-	$t_selectors[' .uagb-rest_menu__wrap .uagb-rm__separator'] = array(
-		'width' => UAGB_Helper::get_css_value( $attr['seperatorWidthTablet'], $attr['seperatorWidthType'] ),
-	);
-	$m_selectors[' .uagb-rest_menu__wrap .uagb-rm__separator'] = array(
-		'width' => UAGB_Helper::get_css_value( $attr['seperatorWidthMobile'], $attr['seperatorWidthType'] ),
-	);
-}
-
 $selectors[ ' .uagb-rest_menu__wrap.uagb-rm__desk-column-' . $attr['columns'] . ':nth-child(' . $attr['columns'] . 'n+1)' ] = array(
 	'margin-left' => '0',
 	'clear'       => 'left',
@@ -151,6 +136,21 @@ $m_selectors = array(
 		'padding-bottom' => UAGB_Helper::get_css_value( $attr['contentPaddingBottomMobile'], $attr['contentMobilePaddingUnit'] ),
 	),
 );
+
+if ( 'none' !== $attr['seperatorStyle'] ) {
+	$selectors[' .uagb-rest_menu__wrap .uagb-rm__separator']   = array(
+		'border-top-color' => $attr['seperatorColor'],
+		'border-top-style' => $attr['seperatorStyle'],
+		'border-top-width' => UAGB_Helper::get_css_value( $attr['seperatorThickness'], 'px' ),
+		'width'            => UAGB_Helper::get_css_value( $attr['seperatorWidth'], $attr['seperatorWidthType'] ),
+	);
+	$t_selectors[' .uagb-rest_menu__wrap .uagb-rm__separator'] = array(
+		'width' => UAGB_Helper::get_css_value( $attr['seperatorWidthTablet'], $attr['seperatorWidthType'] ),
+	);
+	$m_selectors[' .uagb-rest_menu__wrap .uagb-rm__separator'] = array(
+		'width' => UAGB_Helper::get_css_value( $attr['seperatorWidthMobile'], $attr['seperatorWidthType'] ),
+	);
+}
 
 $combined_selectors = array(
 	'desktop' => $selectors,
