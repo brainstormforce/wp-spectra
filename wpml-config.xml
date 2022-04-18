@@ -18,9 +18,7 @@
 			<key name="ctaText" />
 		</gutenberg-block>
 		<gutenberg-block type="uagb/section" translate="0"/>
-		<gutenberg-block type="uagb/buttons" translate="1">
-			<xpath>//div[@class="uagb-button__link"]</xpath>
-		</gutenberg-block>
+		<gutenberg-block type="uagb/buttons" translate="0"/>
 		<gutenberg-block type="uagb/icon-list" translate="0"/>
 		<gutenberg-block type="uagb/columns" translate="0"/>
 		<gutenberg-block type="uagb/column" translate="0"/>
