@@ -125,7 +125,7 @@ return array(
 	'backgroundCustomSizeTablet'     => '',
 	'backgroundCustomSizeMobile'     => '',
 	'backgroundCustomSizeType'       => '%',
-	'overlayType'                    => '',
+	'overlayType'                    => 'none',
 	'backgroundVideoColor'           => '',
 	'backgroundVideo'                => '',
 	'backgroundVideoOpacity'         => '',

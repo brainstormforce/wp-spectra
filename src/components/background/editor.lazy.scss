@@ -54,4 +54,20 @@
 			flex: unset;
 		}
 	}
+
+	.uag-background-image-size .uagb-responsive-control-inner > .components-base-control {
+		display: block;
+		margin-top: 24px;
+	}
+
+	.uag-background-image-position {
+
+		.uagb-size-type-field-tabs {
+			flex-direction: column;
+
+			.components-focal-point-picker-control {
+				width: 100%;
+			}
+		}
+	}
 }

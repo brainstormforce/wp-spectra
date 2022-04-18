@@ -4,41 +4,47 @@
  import React from 'react';
  import { useDeviceType } from '@Controls/getPreviewType';
  import ResponsiveToggle from '../responsive-toggle';
- import UAGImage from '@Components/image';
  import { __ } from '@wordpress/i18n';
  import { FocalPointPicker } from '@wordpress/components';
 
  const ResponsiveUAGFocalPointPicker = ( props ) => {
-	 const { backgroundPosition, setAttributes } = props;
 
-	 const responsive = true;
+	const { backgroundPosition, backgroundImage, setAttributes } = props;
 
-	 const deviceType = useDeviceType();
-	 const device = deviceType.toLowerCase();
+	const responsive = true;
 
-	 const output = {};
+	const deviceType = useDeviceType();
+	const device = deviceType.toLowerCase();
+
+	const output = {};
+	const url = backgroundImage[device]?.value?.url;
+	const value = backgroundPosition[device]?.value;
+
 	 output.Desktop = (
-		<UAGImage
-			onSelectImage={ onSelectImage }
-			backgroundImage={ backgroundImage.desktop.value }
-			onRemoveImage={ onRemoveImage }
-			label={false}
+		<FocalPointPicker
+			url={ url }
+			value={ value }
+			onChange={ ( focalPoint ) => {
+				setAttributes( { [ backgroundPosition[device]?.label ]: focalPoint } );
+			} }
 		/>
 	 );
 	 output.Tablet = (
-		<UAGImage
-			onSelectImage={ onSelectImage }
-			backgroundImage={ backgroundImage.tablet.value }
-			onRemoveImage={ onRemoveImage }
-			label={false}
+		<FocalPointPicker
+			url={ url }
+			value={ value }
+			onChange={ ( focalPoint ) => {
+				setAttributes( { [ backgroundPosition[device]?.label ]: focalPoint } );
+			} }
 		/>
 	 );
 	 output.Mobile = (
-		<UAGImage
-			onSelectImage={ onSelectImage }
-			backgroundImage={ backgroundImage.mobile.value }
-			onRemoveImage={ onRemoveImage }
-			label={false}
+		<FocalPointPicker
+			url={ url }
+			value={ value }
+			onChange={ ( focalPoint ) => {
+				setAttributes( { [ backgroundPosition[device]?.label ]: focalPoint } );
+			} }
 		/>
 	 );
 

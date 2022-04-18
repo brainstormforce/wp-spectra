@@ -1,6 +1,6 @@
 import { __ } from '@wordpress/i18n';
 import AdvancedPopColorControl from '@Components/color-control/advanced-pop-color-control.js';
-import { SelectControl, FocalPointPicker } from '@wordpress/components';
+import { SelectControl } from '@wordpress/components';
 import styles from './editor.lazy.scss';
 import GradientSettings from '@Components/gradient-settings';
 import React, { useLayoutEffect } from 'react';
@@ -9,6 +9,7 @@ import ResponsiveSlider from '@Components/responsive-slider';
 import ResponsiveSelectControl from '@Components/responsive-select';
 import { useDeviceType } from '@Controls/getPreviewType';
 import ResponsiveUAGImage from '@Components/responsive-image';
+import ResponsiveUAGFocalPointPicker from '@Components/responsive-focal-point-picker';
 
 const Background = ( props ) => {
 	// Add and remove the CSS on the drop and remove of the component.
@@ -393,75 +394,10 @@ const Background = ( props ) => {
 					{ imageResponsive && backgroundImage && (
 						<>
 							<div className="uag-background-image-position">
-								<ResponsiveSelectControl
-									label={ __( 'Image Position', 'ultimate-addons-for-gutenberg' ) }
-									data={backgroundPosition}
-									options={ { desktop: [
-										{
-											value: 'left top',
-											label: __(
-												'Top Left',
-												'ultimate-addons-for-gutenberg'
-											),
-										},
-										{
-											value: 'center top',
-											label: __(
-												'Top Center',
-												'ultimate-addons-for-gutenberg'
-											),
-										},
-										{
-											value: 'right top',
-											label: __(
-												'Top Right',
-												'ultimate-addons-for-gutenberg'
-											),
-										},
-										{
-											value: 'center top',
-											label: __(
-												'Center Top',
-												'ultimate-addons-for-gutenberg'
-											),
-										},
-										{
-											value: 'center center',
-											label: __(
-												'Center Center',
-												'ultimate-addons-for-gutenberg'
-											),
-										},
-										{
-											value: 'center bottom',
-											label: __(
-												'Center Bottom',
-												'ultimate-addons-for-gutenberg'
-											),
-										},
-										{
-											value: 'left bottom',
-											label: __(
-												'Bottom Left',
-												'ultimate-addons-for-gutenberg'
-											),
-										},
-										{
-											value: 'center bottom',
-											label: __(
-												'Bottom Center',
-												'ultimate-addons-for-gutenberg'
-											),
-										},
-										{
-											value: 'right bottom',
-											label: __(
-												'Bottom Right',
-												'ultimate-addons-for-gutenberg'
-											),
-										},
-									] }}
+								<ResponsiveUAGFocalPointPicker
+									backgroundPosition={backgroundPosition}
 									setAttributes={ setAttributes }
+									backgroundImage={backgroundImage}
 								/>
 							</div>
 							<div className="uag-background-image-attachment">

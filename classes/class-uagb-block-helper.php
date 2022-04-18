@@ -876,8 +876,9 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					$gen_bg_css['background-repeat'] = esc_attr( $repeat );
 				}
 
-				if ( isset( $position ) ) {
-					$gen_bg_css['background-position'] = esc_attr( $position );
+				if ( isset( $position ) && isset( $position['x'] ) && isset( $position['y'] ) ) {
+					$position_value                    = $position['x'] * 100 . '% ' . $position['y'] * 100 . '%';
+					$gen_bg_css['background-position'] = $position_value;
 				}
 
 				if ( isset( $size ) ) {

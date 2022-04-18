@@ -53,7 +53,7 @@ function generateBackgroundCSS ( backgroundAttributes ) {
         if ( '' !== backgroundImage ) {
 
             bgCSS['background-repeat'] = backgroundRepeat;
-            bgCSS['background-position'] = backgroundPosition;
+            bgCSS['background-position'] = `${ backgroundPosition?.x * 100 }% ${ backgroundPosition?.y * 100 }%`;
             bgCSS['background-size'] = backgroundSizeValue;
             bgCSS['background-attachment'] = backgroundAttachment;
         }
