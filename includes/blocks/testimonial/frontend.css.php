@@ -127,8 +127,15 @@ if ( '1' === $attr['test_item_count'] || $attr['test_item_count'] === $attr['col
 }
 
 $m_selectors = array(
+	' .uagb-tm__image img'                             => array(
+		'width'     => UAGB_Helper::get_css_value( $attr['imageWidthMobile'], $attr['imageWidthType'] ),
+		'max-width' => UAGB_Helper::get_css_value( $attr['imageWidthMobile'], $attr['imageWidthType'] ),
+	),
 	' .uagb-tm__author-name'                           => array(
 		'margin-bottom' => $attr['nameSpaceMobile'] . $attr['nameSpaceType'],
+	),
+	' .uagb-tm__desc'                                  => array(
+		'margin-bottom' => UAGB_Helper::get_css_value( $attr['descSpaceMobile'], $attr['descSpaceType'] ),
 	),
 	' .uagb-tm__content'                                => array(
 		'text-align'     => 'center',
@@ -145,8 +152,15 @@ $m_selectors = array(
 	),
 );
 $t_selectors = array(
+	' .uagb-tm__image img'                             => array(
+		'width'     => UAGB_Helper::get_css_value( $attr['imageWidthTablet'], $attr['imageWidthType'] ),
+		'max-width' => UAGB_Helper::get_css_value( $attr['imageWidthTablet'], $attr['imageWidthType'] ),
+	),
 	' .uagb-tm__author-name'                           => array(
 		'margin-bottom' => $attr['nameSpaceTablet'] . $attr['nameSpaceType'],
+	),
+	' .uagb-tm__desc'                                  => array(
+		'margin-bottom' => UAGB_Helper::get_css_value( $attr['descSpaceTablet'], $attr['descSpaceType'] ),
 	),
 	' .uagb-tm__content'                                => array(
 		'padding-top'    => UAGB_Helper::get_css_value( $attr['paddingTopTablet'], $attr['tabletPaddingUnit'] ),

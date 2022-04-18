@@ -42,10 +42,14 @@ function testimonialStyle( props ) {
 		descLineHeightTablet,
 		descLineHeightMobile,
 		descSpace,
+		descSpaceTablet,
+		descSpaceMobile,
 		nameSpace,
 		nameSpaceTablet,
 		nameSpaceMobile,
 		imageWidth,
+		imageWidthTablet,
+		imageWidthMobile,
 		rowGap,
 		rowGapTablet,
 		rowGapMobile,
@@ -268,15 +272,20 @@ function testimonialStyle( props ) {
 	}
 
 	const mobileSelectors = {
+		' .uagb-tm__image img': {
+			'width': generateCSSUnit( imageWidthMobile, imageWidthType ),
+			'max-width': generateCSSUnit( imageWidthMobile, imageWidthType ),
+		},
 		' .uagb-testimonial__wrap': {
 			'padding-left': generateCSSUnit( columnGapMobile / 2, columnGapType ),
 			'padding-right': generateCSSUnit( columnGapMobile / 2, columnGapType ),
 			'margin-bottom': generateCSSUnit( rowGapMobile, rowGapType ),
 		},
-		' .uagb-tm__author-name': {
+		' .block-editor-rich-text__editable.uagb-tm__author-name': {
 			'margin-bottom': generateCSSUnit( nameSpaceMobile, nameSpaceType ),
 		},
 		' .uagb-tm__desc': {
+			'margin-bottom': generateCSSUnit( descSpaceMobile, descSpaceType ),
 			'font-size': generateCSSUnit(
 				descFontSizeMobile,
 				descFontSizeType
@@ -345,7 +354,11 @@ function testimonialStyle( props ) {
 	};
 
 	const tabletSelectors = {
-		' .uagb-tm__author-name': {
+		' .uagb-tm__image img': {
+			'width': generateCSSUnit( imageWidthTablet, imageWidthType ),
+			'max-width': generateCSSUnit( imageWidthTablet, imageWidthType ),
+		},
+		' .block-editor-rich-text__editable.uagb-tm__author-name': {
 			'margin-bottom': generateCSSUnit( nameSpaceTablet, nameSpaceType ),
 		},
 		' .uagb-testimonial__wrap': {
@@ -391,6 +404,7 @@ function testimonialStyle( props ) {
 			'text-align': 'center',
 		},
 		' .uagb-tm__desc': {
+			'margin-bottom': generateCSSUnit( descSpaceTablet, descSpaceType ),
 			'font-size': generateCSSUnit(
 				descFontSizeTablet,
 				descFontSizeType

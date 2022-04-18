@@ -77,6 +77,8 @@ const Settings = ( props ) => {
 		descLineHeightMobile,
 		descLoadGoogleFonts,
 		descSpace,
+		descSpaceTablet,
+		descSpaceMobile,
 		iconimgStyle,
 		imagePosition,
 		imageAlignment,
@@ -85,6 +87,8 @@ const Settings = ( props ) => {
 		nameSpaceMobile,
 		imageSize,
 		imageWidth,
+		imageWidthTablet,
+		imageWidthMobile,
 		columns,
 		tcolumns,
 		mcolumns,
@@ -774,16 +778,26 @@ const Settings = ( props ) => {
 						label: 'descDecoration',
 					} }
 				/>
-				<Range
+				<ResponsiveSlider
 					label={ __(
 						'Bottom Margin',
 						'ultimate-addons-for-gutenberg'
 					) }
-					value={ descSpace }
-					onChange={ ( value ) =>
-						setAttributes( { descSpace: value } )
-					}
-					min={ 0 }
+					data={ {
+						desktop: {
+							value: descSpace,
+							label: 'descSpace',
+						},
+						tablet: {
+							value: descSpaceTablet,
+							label: 'descSpaceTablet',
+						},
+						mobile: {
+							value: descSpaceMobile,
+							label: 'descSpaceMobile',
+						},
+					} }
+					min={ 1 }
 					max={ 50 }
 					unit={ {
 						value: descSpaceType,
@@ -1391,24 +1405,32 @@ const Settings = ( props ) => {
 											} )
 										}
 									/>
-									<Range
+									<ResponsiveSlider
 										label={ __(
 											'Width',
 											'ultimate-addons-for-gutenberg'
 										) }
-										setAttributes={ setAttributes }
-										value={ imageWidth }
-										onChange={ ( value ) =>
-											setAttributes( {
-												imageWidth: value,
-											} )
-										}
-										min={ 0 }
+										data={ {
+											desktop: {
+												value: imageWidth,
+												label: 'imageWidth',
+											},
+											tablet: {
+												value: imageWidthTablet,
+												label: 'imageWidthTablet',
+											},
+											mobile: {
+												value: imageWidthMobile,
+												label: 'imageWidthMobile',
+											},
+										} }
+										min={ 1 }
 										max={ 500 }
 										unit={ {
 											value: imageWidthType,
 											label: 'imageWidthType',
 										} }
+										setAttributes={ setAttributes }
 									/>
 								</>
 							) }

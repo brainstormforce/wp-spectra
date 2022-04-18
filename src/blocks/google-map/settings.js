@@ -1,6 +1,6 @@
 import React from 'react';
 import { __ } from '@wordpress/i18n';
-import ResponsiveSlider from '@Components/responsive-slider';
+import Range from '@Components/range/Range.js';
 import { InspectorControls } from '@wordpress/block-editor';
 import InspectorTabs from '@Components/inspector-tabs/InspectorTabs.js';
 import InspectorTab, {
@@ -15,16 +15,7 @@ const Settings = ( props ) => {
 
 	const {
 		setAttributes,
-		attributes: {
-			height,
-			theight,
-			mheight,
-			zoom,
-			tzoom,
-			mzoom,
-			address,
-			language
-		}
+		attributes: { height, zoom, address, language },
 	} = props;
 
 	return (
@@ -53,50 +44,34 @@ const Settings = ( props ) => {
 								'ultimate-addons-for-gutenberg'
 							) }
 						/>
-						<ResponsiveSlider
+						<Range
 							label={ __(
 								'Zoom',
 								'ultimate-addons-for-gutenberg'
 							) }
-							data={ {
-								desktop: {
-									value: zoom,
-									label: 'zoom',
-								},
-								tablet: {
-									value: tzoom,
-									label: 'tzoom',
-								},
-								mobile: {
-									value: mzoom,
-									label: 'mzoom',
-								},
-							} }
+							value={ zoom }
+							setAttributes={ setAttributes }
+							onChange={ ( value ) =>
+								setAttributes( {
+									zoom: value,
+								} )
+							}
 							min={ 1 }
 							max={ 22 }
 							displayUnit={ false }
-							setAttributes={ setAttributes }
 						/>
-						<ResponsiveSlider
+						<Range
 							label={ __(
 								'Height',
 								'ultimate-addons-for-gutenberg'
 							) }
-							data={ {
-								desktop: {
-									value: height,
-									label: 'height',
-								},
-								tablet: {
-									value: theight,
-									label: 'theight',
-								},
-								mobile: {
-									value: mheight,
-									label: 'mheight',
-								},
-							} }
-							min={ 1 }
+							value={ height }
+							onChange={ ( value ) =>
+								setAttributes( {
+									height: value,
+								} )
+							}
+							min={ 0 }
 							max={ 1000 }
 							displayUnit={ false }
 							setAttributes={ setAttributes }

@@ -338,6 +338,20 @@ const attributes = {
 		},
 		default: 15,
 	},
+	descSpaceTablet: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'desc-bottom-margin-tablet'
+		},
+		default: 15,
+	},
+	descSpaceMobile: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'desc-bottom-margin-mobile'
+		},
+		default: 15,
+	},
 	block_id: {
 		type: 'string',
 		default: 'not_set',
@@ -395,6 +409,20 @@ const attributes = {
 		type: 'number',
 		UAGCopyPaste: {
 			styleType: 'image-width'
+		},
+		default: 60,
+	},
+	imageWidthMobile: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'image-width-mobile'
+		},
+		default: 60,
+	},
+	imageWidthTablet: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'image-width-tablet'
 		},
 		default: 60,
 	},
