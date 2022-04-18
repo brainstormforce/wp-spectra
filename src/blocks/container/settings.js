@@ -149,12 +149,12 @@ const Settings = ( props ) => {
 		backgroundVideoColor,
 		backgroundVideo,
 		topInvert,
-		bottomInvert
+		bottomInvert,
 	} = attributes;
 
-	let currentDirection = 'row';
+	let currentDirection = directionDesktop;
 
-	if ( attributes[ 'direction' + deviceType ].split( '-' )[0] ) {
+	if ( attributes[ 'direction' + deviceType ] && attributes[ 'direction' + deviceType ].split( '-' )[0] ) {
 
 		currentDirection = attributes[ 'direction' + deviceType ].split( '-' )[0];
 	}
