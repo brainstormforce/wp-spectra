@@ -42,10 +42,18 @@ function styling( props ) {
 		socialFontSizeTablet,
 		imgAlign,
 		imgWidth,
+		imgWidthTablet,
+		imgWidthMobile,
 		imgPosition,
 		titleSpace,
+		titleSpaceTablet,
+		titleSpaceMobile,
 		descSpace,
+		descSpaceTablet,
+		descSpaceMobile,
 		prefixSpace,
+		prefixSpaceTablet,
+		prefixSpaceMobile,
 		socialColor,
 		socialHoverColor,
 		socialSpace,
@@ -216,11 +224,17 @@ function styling( props ) {
 	};
 
 	mobileSelectors = {
+		' img': {
+			'width': generateCSSUnit( imgWidthMobile, 'px' ),
+			'height': generateCSSUnit( imgWidthMobile, 'px' ),
+		},
 		' p.uagb-team__desc.block-editor-rich-text__editable': {
 			'font-size': generateCSSUnit(
 				descFontSizeMobile,
 				descFontSizeType
 			),
+			'margin-top': generateCSSUnit( prefixSpaceMobile, 'px' ),
+			'margin-bottom': generateCSSUnit( descSpaceMobile, 'px' ),
 		},
 		' .rich-text.block-editor-rich-text__editable.uagb-team__prefix': {
 			'font-size': generateCSSUnit(
@@ -257,13 +271,25 @@ function styling( props ) {
 			'margin-right': generateCSSUnit( imageMarginRightMobile, mobileImageMarginUnit ),
 		},
 	};
-
+	mobileSelectors[
+		' ' +
+			tag +
+			'.rich-text.block-editor-rich-text__editable.uagb-team__title'
+	] = {
+		'margin-bottom': generateCSSUnit( titleSpaceMobile, 'px' ),
+	};
 	tabletSelectors = {
+		' img': {
+			'width': generateCSSUnit( imgWidthTablet, 'px' ),
+			'height': generateCSSUnit( imgWidthTablet, 'px' ),
+		},
 		' p.uagb-team__desc.block-editor-rich-text__editable': {
 			'font-size': generateCSSUnit(
 				descFontSizeTablet,
 				descFontSizeType
 			),
+			'margin-top': generateCSSUnit( prefixSpaceTablet, 'px' ),
+			'margin-bottom': generateCSSUnit( descSpaceTablet, 'px' ),
 		},
 		' .rich-text.block-editor-rich-text__editable.uagb-team__prefix': {
 			'font-size': generateCSSUnit(
@@ -300,7 +326,13 @@ function styling( props ) {
 			'margin-right': generateCSSUnit( imageMarginRightTablet, tabletImageMarginUnit ),
 		},
 	};
-
+	tabletSelectors[
+		' ' +
+			tag +
+			'.rich-text.block-editor-rich-text__editable.uagb-team__title'
+	] = {
+		'margin-bottom': generateCSSUnit( titleSpaceTablet, 'px' ),
+	};
 	mobileSelectors[ ' ' + tag + '.uagb-team__title' ] = {
 		'font-size': generateCSSUnit( titleFontSizeMobile, titleFontSizeType ),
 	};
