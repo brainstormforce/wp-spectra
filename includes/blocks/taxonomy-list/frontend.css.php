@@ -161,6 +161,9 @@ if ( 'none' !== $attr['seperatorStyle'] ) {
 			'padding-top'    => UAGB_Helper::get_css_value( $top_padding_tablet, $attr['tabletContentPaddingUnit'] ),
 			'padding-bottom' => UAGB_Helper::get_css_value( $bottom_padding_tablet, $attr['tabletContentPaddingUnit'] ),
 		),
+		'.uagb-layout-grid .uagb-tax-title'                    => array(
+			'margin-bottom' => UAGB_Helper::get_css_value( $attr['titleBottomSpaceTablet'], 'px' ),
+		),
 	);
 
 	$m_selectors = array(
@@ -172,6 +175,9 @@ if ( 'none' !== $attr['seperatorStyle'] ) {
 			'padding-right'  => UAGB_Helper::get_css_value( $right_padding_mobile, $attr['mobileContentPaddingUnit'] ),
 			'padding-top'    => UAGB_Helper::get_css_value( $top_padding_mobile, $attr['mobileContentPaddingUnit'] ),
 			'padding-bottom' => UAGB_Helper::get_css_value( $bottom_padding_mobile, $attr['mobileContentPaddingUnit'] ),
+		),
+		'.uagb-layout-grid .uagb-tax-title'                    => array(
+			'margin-bottom' => UAGB_Helper::get_css_value( $attr['titleBottomSpaceMobile'], 'px' ),
 		),
 	);
 

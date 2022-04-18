@@ -33,6 +33,8 @@ return array(
 	'contentPaddingMobile'     => 15,
 	'contentPaddingTablet'     => 15,
 	'titleBottomSpace'         => 5,
+	'titleBottomSpaceTablet'         => 5,
+	'titleBottomSpaceMobile'         => 5,
 	'listBottomMargin'         => 10,
 	'alignment'                => 'center',
 	'listStyle'                => 'disc',

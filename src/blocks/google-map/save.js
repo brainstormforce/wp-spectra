@@ -1,12 +1,31 @@
 import classnames from 'classnames';
 import React from 'react';
 import { __ } from '@wordpress/i18n';
+import { useDeviceType } from '@Controls/getPreviewType';
 
 export default function save( props ) {
-	const { block_id, height, zoom, address, language } = props.attributes;
+	const { block_id, height,
+		theight,
+		mheight,
+		zoom,
+		tzoom,
+		mzoom, address, language } = props.attributes;
 	const encoded_address = encodeURI( address );
 	const lang_par = language ? language : 'en';
-	const url = `https://www.google.com/maps/embed/v1/place?key=${ wp.uagb_google_api_key }&q=${ encoded_address }&zoom=${ zoom }&language=${ lang_par }`;
+	let deviceHeight, deviceZoom;
+
+	if( deviceType == 'desktop' ){
+		deviceHeight = height;
+		deviceZoom = zoom;
+	} else if( deviceType == 'tablet' ){
+		deviceHeight = theight;
+		deviceZoom = tzoom;
+	} else {
+		deviceHeight = mheight;
+		deviceZoom = mzoom;
+	}
+	const url = `https://www.google.com/maps/embed/v1/place?key=${ wp.uagb_google_api_key }&q=${ encoded_address }&zoom=${ deviceZoom }&language=${ lang_par }`;
+	const deviceType = useDeviceType();
 
 	return (
 		<div
@@ -23,7 +42,7 @@ export default function save( props ) {
 					address
 				}
 				src={ url }
-				style={ { height } }
+				style={ { deviceHeight } }
 			></iframe>
 		</div>
 	);

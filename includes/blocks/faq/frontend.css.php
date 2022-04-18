@@ -124,6 +124,12 @@ $selectors = array(
 );
 
 $t_selectors = array(
+	'.uagb-faq-icon-row .uagb-faq-item .uagb-faq-icon-wrap' => array(
+		'margin-right' => UAGB_Helper::get_css_value( $attr['gapBtwIconQUestionTablet'], 'px' ),
+	),
+	'.uagb-faq-icon-row-reverse .uagb-faq-item .uagb-faq-icon-wrap' => array(
+		'margin-left' => UAGB_Helper::get_css_value( $attr['gapBtwIconQUestionTablet'], 'px' ),
+	),
 	' .uagb-faq-questions-button' => array(
 		'padding-top'    => UAGB_Helper::get_css_value( $attr['vquestionPaddingTablet'], $attr['questionPaddingTypeTablet'] ),
 		'padding-bottom' => UAGB_Helper::get_css_value( $attr['questionBottomPaddingTablet'], $attr['questionPaddingTypeTablet'] ),
@@ -152,8 +158,20 @@ $t_selectors = array(
 		'height'    => $t_icon_size,
 		'font-size' => $t_icon_size,
 	),
+	' .uagb-faq-child__outer-wrap'                        => array(
+		'margin-bottom' => UAGB_Helper::get_css_value( $attr['rowsGapTablet'], 'px' ),
+	),
 );
 $m_selectors = array(
+	'.uagb-faq-icon-row .uagb-faq-item .uagb-faq-icon-wrap' => array(
+		'margin-right' => UAGB_Helper::get_css_value( $attr['gapBtwIconQUestionMobile'], 'px' ),
+	),
+	'.uagb-faq-icon-row-reverse .uagb-faq-item .uagb-faq-icon-wrap' => array(
+		'margin-left' => UAGB_Helper::get_css_value( $attr['gapBtwIconQUestionMobile'], 'px' ),
+	),
+	' .uagb-faq-child__outer-wrap'                        => array(
+		'margin-bottom' => UAGB_Helper::get_css_value( $attr['rowsGapMobile'], 'px' ),
+	),
 	' .uagb-faq-questions-button' => array(
 		'padding-top'    => UAGB_Helper::get_css_value( $attr['vquestionPaddingMobile'], $attr['questionPaddingTypeMobile'] ),
 		'padding-bottom' => UAGB_Helper::get_css_value( $attr['questionBottomPaddingMobile'], $attr['questionPaddingTypeMobile'] ),
@@ -230,10 +248,12 @@ if ( 'grid' === $attr['layout'] ) {
 		'display'               => 'grid',
 	);
 	$t_selectors['.uagb-faq-layout-grid .uagb-faq__wrap.uagb-buttons-layout-wrap '] = array(
+		'grid-column-gap'       => UAGB_Helper::get_css_value( $attr['columnsGapTablet'], 'px' ),
 		'grid-template-columns' => 'repeat(' . $attr['tcolumns'] . ', 1fr)',
 	);
 	$m_selectors['.uagb-faq-layout-grid .uagb-faq__wrap.uagb-buttons-layout-wrap '] = array(
 		'grid-template-columns' => 'repeat(' . $attr['mcolumns'] . ', 1fr)',
+		'grid-column-gap'       => UAGB_Helper::get_css_value( $attr['columnsGapMobile'], 'px' ),
 	);
 
 	$selectors['.uagb-faq-layout-grid.uagb-faq__wrap.uagb-buttons-layout-wrap ']   = array(
@@ -242,11 +262,14 @@ if ( 'grid' === $attr['layout'] ) {
 		'grid-row-gap'          => UAGB_Helper::get_css_value( $attr['rowsGap'], 'px' ),
 		'display'               => 'grid',
 	);
+
 	$t_selectors['.uagb-faq-layout-grid.uagb-faq__wrap.uagb-buttons-layout-wrap '] = array(
 		'grid-template-columns' => 'repeat(' . $attr['tcolumns'] . ', 1fr)',
+		'grid-column-gap'       => UAGB_Helper::get_css_value( $attr['columnsGapTablet'], 'px' ),
 	);
 	$m_selectors['.uagb-faq-layout-grid.uagb-faq__wrap.uagb-buttons-layout-wrap '] = array(
 		'grid-template-columns' => 'repeat(' . $attr['mcolumns'] . ', 1fr)',
+		'grid-column-gap'       => UAGB_Helper::get_css_value( $attr['columnsGapMobile'], 'px' ),
 	);
 }
 

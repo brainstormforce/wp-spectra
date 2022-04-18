@@ -199,6 +199,20 @@ const attributes = {   // eslint-disable-line no-unused-vars
 			styleType: 'main-title-bottom-margin'
 		},
 	},
+	titleBottomSpaceMobile           : {
+		type    : 'number',
+		default : 5,
+		UAGCopyPaste: {
+			styleType: 'main-title-bottom-margin-mobile'
+		},
+	},
+	titleBottomSpaceTablet          : {
+		type    : 'number',
+		default : 5,
+		UAGCopyPaste: {
+			styleType: 'main-title-bottom-margin-tablet'
+		},
+	},
 	listBottomMargin           : {
 		type    : 'number',
 		default : 10,

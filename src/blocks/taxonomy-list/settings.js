@@ -69,6 +69,8 @@ const Settings = ( props ) => {
 		tabletContentPaddingUnit,
 		contentPaddingLink,
 		titleBottomSpace,
+		titleBottomSpaceTablet,
+		titleBottomSpaceMobile,
 		alignment,
 		listStyle,
 		seperatorStyle,
@@ -732,20 +734,30 @@ const Settings = ( props ) => {
 					}
 				/>
 				{ showCount && (
-					<Range
-						label={ __(
-							'Bottom Spacing',
-							'ultimate-addons-for-gutenberg'
-						) }
-						setAttributes={ setAttributes }
-						value={ titleBottomSpace }
-						onChange={ ( value ) =>
-							setAttributes( { titleBottomSpace: value } )
-						}
-						min={ 0 }
-						max={ 50 }
-						displayUnit={ false }
-					/>
+					<ResponsiveSlider
+							label={ __(
+								'Bottom Spacing',
+								'ultimate-addons-for-gutenberg'
+							) }
+							data={ {
+								desktop: {
+									value: titleBottomSpace,
+									label: 'titleBottomSpace',
+								},
+								tablet: {
+									value: titleBottomSpaceTablet,
+									label: 'titleBottomSpaceTablet',
+								},
+								mobile: {
+									value: titleBottomSpaceMobile,
+									label: 'titleBottomSpaceMobile',
+								},
+							} }
+							min={ 0 }
+							max={ 50 }
+							displayUnit={ false }
+							setAttributes={ setAttributes }
+						/>
 				) }
 			</UAGAdvancedPanelBody>
 		);

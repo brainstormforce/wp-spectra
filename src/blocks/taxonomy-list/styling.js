@@ -32,6 +32,8 @@ function styling( props ) {
 		mobileContentPaddingUnit,
 		tabletContentPaddingUnit,
 		titleBottomSpace,
+		titleBottomSpaceTablet,
+		titleBottomSpaceMobile,
 		alignment,
 		listStyle,
 		seperatorStyle,
@@ -370,6 +372,7 @@ function styling( props ) {
 				titleLineHeightMobile,
 				titleLineHeightType
 			),
+			'margin-bottom': generateCSSUnit( titleBottomSpaceMobile, 'px' ),
 		},
 		'.uagb-layout-grid .uagb-tax-link': {
 			'font-size': generateCSSUnit(
@@ -477,6 +480,8 @@ function styling( props ) {
 				titleLineHeightTablet,
 				titleLineHeightType
 			),
+
+			'margin-bottom': generateCSSUnit( titleBottomSpaceTablet, 'px' ),
 		},
 		'.uagb-layout-grid .uagb-tax-link': {
 			'font-size': generateCSSUnit(
