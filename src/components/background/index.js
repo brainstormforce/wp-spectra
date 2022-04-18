@@ -95,6 +95,63 @@ const Background = ( props ) => {
 		},
 	];
 
+	let bgSizeOptions = [
+		{
+			value: 'auto',
+			label: __(
+				'Auto',
+				'ultimate-addons-for-gutenberg'
+			),
+		},
+		{
+			value: 'cover',
+			label: __(
+				'Cover',
+				'ultimate-addons-for-gutenberg'
+			),
+		},
+		{
+			value: 'contain',
+			label: __(
+				'Contain',
+				'ultimate-addons-for-gutenberg'
+			),
+		},
+		{
+			value: 'custom',
+			label: __(
+				'Custom',
+				'ultimate-addons-for-gutenberg'
+			),
+		},
+	];
+
+	if ( ! backgroundCustomSize ) {
+		bgSizeOptions = [
+			{
+				value: 'auto',
+				label: __(
+					'Auto',
+					'ultimate-addons-for-gutenberg'
+				),
+			},
+			{
+				value: 'cover',
+				label: __(
+					'Cover',
+					'ultimate-addons-for-gutenberg'
+				),
+			},
+			{
+				value: 'contain',
+				label: __(
+					'Contain',
+					'ultimate-addons-for-gutenberg'
+				),
+			},
+		];
+	}
+
 	if ( backgroundVideoType.value ) {
 		bgOptions.push( {
 			value: 'video',
@@ -305,36 +362,7 @@ const Background = ( props ) => {
 											[ backgroundSize.label ]: value,
 										} )
 									}
-									options={ [
-										{
-											value: 'auto',
-											label: __(
-												'Auto',
-												'ultimate-addons-for-gutenberg'
-											),
-										},
-										{
-											value: 'cover',
-											label: __(
-												'Cover',
-												'ultimate-addons-for-gutenberg'
-											),
-										},
-										{
-											value: 'contain',
-											label: __(
-												'Contain',
-												'ultimate-addons-for-gutenberg'
-											),
-										},
-										{
-											value: 'custom',
-											label: __(
-												'Custom',
-												'ultimate-addons-for-gutenberg'
-											),
-										},
-									] }
+									options={ bgSizeOptions }
 								/>
 								{ 'custom' === backgroundSize.value && backgroundCustomSize &&
 									<ResponsiveSlider
