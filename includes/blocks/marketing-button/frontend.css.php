@@ -109,11 +109,11 @@ if ( 'transparent' === $attr['backgroundType'] ) {
 }
 
 $m_selectors = array(
-	' svg'                       => array(
+	' svg'                         => array(
 		'width'  => UAGB_Helper::get_css_value( $attr['iconFontSizeMobile'], $attr['iconFontSizeType'] ),
 		'height' => UAGB_Helper::get_css_value( $attr['iconFontSizeMobile'], $attr['iconFontSizeType'] ),
 	),
-	' .uagb-marketing-btn__link' => array(
+	' .uagb-marketing-btn__link'   => array(
 		'padding-left'   => UAGB_Helper::get_css_value( $btn_padding_left_mobile, $attr['mobilePaddingBtnUnit'] ),
 		'padding-right'  => UAGB_Helper::get_css_value( $btn_padding_right_mobile, $attr['mobilePaddingBtnUnit'] ),
 		'padding-top'    => UAGB_Helper::get_css_value( $btn_padding_top_mobile, $attr['mobilePaddingBtnUnit'] ),
@@ -125,20 +125,20 @@ $m_selectors = array(
 	'.uagb-marketing-btn__icon-before .uagb-marketing-btn__link svg' => array(
 		'margin-right' => UAGB_Helper::get_css_value( $attr['iconSpaceMobile'], 'px' ),
 	),
-	' .uagb-marketing-btn__prefix'         => array(
+	' .uagb-marketing-btn__prefix' => array(
 		'margin-top' => UAGB_Helper::get_css_value( $attr['titleSpaceMobile'], 'px' ),
 	),
 );
 
 $t_selectors = array(
-	' .uagb-marketing-btn__prefix'         => array(
+	' .uagb-marketing-btn__prefix' => array(
 		'margin-top' => UAGB_Helper::get_css_value( $attr['titleSpaceTablet'], 'px' ),
 	),
-	' svg'                       => array(
+	' svg'                         => array(
 		'width'  => UAGB_Helper::get_css_value( $attr['iconFontSizeTablet'], $attr['iconFontSizeType'] ),
 		'height' => UAGB_Helper::get_css_value( $attr['iconFontSizeTablet'], $attr['iconFontSizeType'] ),
 	),
-	' .uagb-marketing-btn__link' => array(
+	' .uagb-marketing-btn__link'   => array(
 		'padding-left'   => UAGB_Helper::get_css_value( $btn_padding_left_tablet, $attr['tabletPaddingBtnUnit'] ),
 		'padding-right'  => UAGB_Helper::get_css_value( $btn_padding_right_tablet, $attr['tabletPaddingBtnUnit'] ),
 		'padding-top'    => UAGB_Helper::get_css_value( $btn_padding_top_tablet, $attr['tabletPaddingBtnUnit'] ),

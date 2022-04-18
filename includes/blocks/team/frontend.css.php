@@ -134,32 +134,32 @@ $selectors[ ' ' . $attr['tag'] . '.uagb-team__title' ] = array(
 
 $m_selectors = array(
 	'.uagb-team__image-position-left > img' => array( // When Image position is left.
-		'width'         => UAGB_Helper::get_css_value( $attr['imgWidthMobile'], 'px' ),
-		'height'        => UAGB_Helper::get_css_value( $attr['imgWidthMobile'], 'px' ),
+		'width'  => UAGB_Helper::get_css_value( $attr['imgWidthMobile'], 'px' ),
+		'height' => UAGB_Helper::get_css_value( $attr['imgWidthMobile'], 'px' ),
 	),
 	' p.uagb-team__desc'                    => array(
 		'margin-bottom' => UAGB_Helper::get_css_value( $attr['descSpaceMobile'], 'px' ),
 		'margin-top'    => UAGB_Helper::get_css_value( $attr['prefixSpaceMobile'], 'px' ),
 	),
 	'.uagb-team__image-position-right .uagb-team__content + img' => array( // When Image position is right.
-		'width'         => UAGB_Helper::get_css_value( $attr['imgWidthMobile'], 'px' ),
-		'height'        => UAGB_Helper::get_css_value( $attr['imgWidthMobile'], 'px' ),
+		'width'  => UAGB_Helper::get_css_value( $attr['imgWidthMobile'], 'px' ),
+		'height' => UAGB_Helper::get_css_value( $attr['imgWidthMobile'], 'px' ),
 	),
 	'.uagb-team__image-position-above img'  => array( // When Image position is above.
-		'width'         => UAGB_Helper::get_css_value( $attr['imgWidthMobile'], 'px' ),
-		'height'        => UAGB_Helper::get_css_value( $attr['imgWidthMobile'], 'px' ),
+		'width'  => UAGB_Helper::get_css_value( $attr['imgWidthMobile'], 'px' ),
+		'height' => UAGB_Helper::get_css_value( $attr['imgWidthMobile'], 'px' ),
 	),
-	' .uagb-team__social-icon a'   => array(
+	' .uagb-team__social-icon a'            => array(
 		'font-size'   => $m_icon_size,
 		'width'       => $m_icon_size,
 		'height'      => $m_icon_size,
 		'line-height' => $m_icon_size,
 	),
-	' .uagb-team__social-icon svg' => array(
+	' .uagb-team__social-icon svg'          => array(
 		'width'  => $m_icon_size,
 		'height' => $m_icon_size,
 	),
-	' .uagb-team__image-wrap'      => array(
+	' .uagb-team__image-wrap'               => array(
 		'margin-top'    => UAGB_Helper::get_css_value( $attr['imageMarginTopMobile'], $attr['mobileImageMarginUnit'] ),
 		'margin-bottom' => UAGB_Helper::get_css_value( $attr['imageMarginBottomMobile'], $attr['mobileImageMarginUnit'] ),
 		'margin-left'   => UAGB_Helper::get_css_value( $attr['imageMarginLeftMobile'], $attr['mobileImageMarginUnit'] ),
@@ -191,32 +191,32 @@ $m_selectors[ ' ' . $attr['tag'] . '.uagb-team__title' ] = array(
 );
 $t_selectors = array(
 	'.uagb-team__image-position-left > img' => array( // When Image position is left.
-		'width'         => UAGB_Helper::get_css_value( $attr['imgWidthTablet'], 'px' ),
-		'height'        => UAGB_Helper::get_css_value( $attr['imgWidthTablet'], 'px' ),
+		'width'  => UAGB_Helper::get_css_value( $attr['imgWidthTablet'], 'px' ),
+		'height' => UAGB_Helper::get_css_value( $attr['imgWidthTablet'], 'px' ),
 	),
 	' p.uagb-team__desc'                    => array(
 		'margin-bottom' => UAGB_Helper::get_css_value( $attr['descSpaceTablet'], 'px' ),
 		'margin-top'    => UAGB_Helper::get_css_value( $attr['prefixSpaceTablet'], 'px' ),
 	),
 	'.uagb-team__image-position-right .uagb-team__content + img' => array( // When Image position is right.
-		'width'         => UAGB_Helper::get_css_value( $attr['imgWidthTablet'], 'px' ),
-		'height'        => UAGB_Helper::get_css_value( $attr['imgWidthTablet'], 'px' ),
+		'width'  => UAGB_Helper::get_css_value( $attr['imgWidthTablet'], 'px' ),
+		'height' => UAGB_Helper::get_css_value( $attr['imgWidthTablet'], 'px' ),
 	),
 	'.uagb-team__image-position-above img'  => array( // When Image position is above.
-		'width'         => UAGB_Helper::get_css_value( $attr['imgWidthTablet'], 'px' ),
-		'height'        => UAGB_Helper::get_css_value( $attr['imgWidthTablet'], 'px' ),
+		'width'  => UAGB_Helper::get_css_value( $attr['imgWidthTablet'], 'px' ),
+		'height' => UAGB_Helper::get_css_value( $attr['imgWidthTablet'], 'px' ),
 	),
-	' .uagb-team__social-icon a'   => array(
+	' .uagb-team__social-icon a'            => array(
 		'font-size'   => $t_icon_size,
 		'width'       => $t_icon_size,
 		'height'      => $t_icon_size,
 		'line-height' => $t_icon_size,
 	),
-	' .uagb-team__social-icon svg' => array(
+	' .uagb-team__social-icon svg'          => array(
 		'width'  => $t_icon_size,
 		'height' => $t_icon_size,
 	),
-	' .uagb-team__image-wrap'      => array(
+	' .uagb-team__image-wrap'               => array(
 		'margin-top'    => UAGB_Helper::get_css_value( $attr['imageMarginTopTablet'], $attr['tabletImageMarginUnit'] ),
 		'margin-bottom' => UAGB_Helper::get_css_value( $attr['imageMarginBottomTablet'], $attr['tabletImageMarginUnit'] ),
 		'margin-left'   => UAGB_Helper::get_css_value( $attr['imageMarginLeftTablet'], $attr['tabletImageMarginUnit'] ),
@@ -246,7 +246,7 @@ $t_selectors = array(
 $t_selectors[ ' ' . $attr['tag'] . '.uagb-team__title' ] = array(
 	'margin-bottom' => UAGB_Helper::get_css_value( $attr['titleSpaceTablet'], 'px' ),
 );
-$combined_selectors = array(
+$combined_selectors                                      = array(
 	'desktop' => $selectors,
 	'tablet'  => $t_selectors,
 	'mobile'  => $m_selectors,

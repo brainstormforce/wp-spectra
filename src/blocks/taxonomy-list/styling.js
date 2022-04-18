@@ -348,8 +348,6 @@ function styling( props ) {
 	mobileSelectors = {
 		'.uagb-taxonomy__outer-wrap.uagb-layout-grid': {
 			'grid-template-columns': 'repeat(' + mcolumns + ', 1fr)',
-		},
-		'.uagb-taxonomy__outer-wrap.uagb-layout-grid': {
 			'grid-column-gap': generateCSSUnit( columnGapMobile , 'px' ),
 			'grid-row-gap': generateCSSUnit( rowGapMobile , 'px' ),
 		},
@@ -460,8 +458,6 @@ function styling( props ) {
 	tabletSelectors = {
 		'.uagb-taxonomy__outer-wrap.uagb-layout-grid': {
 			'grid-template-columns': 'repeat(' + tcolumns + ', 1fr)',
-		},
-		'.uagb-taxonomy__outer-wrap.uagb-layout-grid': {
 			'grid-column-gap': generateCSSUnit( columnGapTablet , 'px' ),
 			'grid-row-gap': generateCSSUnit( rowGapTablet , 'px' ),
 		},
