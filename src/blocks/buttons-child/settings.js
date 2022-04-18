@@ -554,30 +554,32 @@ const Settings = ( props ) => {
 					displayUnit={ false }
 					setAttributes={ setAttributes }
 				/>
-				<ResponsiveSlider
-					label={ __(
-						'Icon Spacing',
-						'ultimate-addons-for-gutenberg'
-					) }
-					data={ {
-						desktop: {
-							value: iconSpace,
-							label: 'iconSpace',
-						},
-						tablet: {
-							value: iconSpaceTablet,
-							label: 'iconSpaceTablet',
-						},
-						mobile: {
-							value: iconSpaceMobile,
-							label: 'iconSpaceMobile',
-						},
-					} }
-					min={ 0 }
-					max={ 200 }
-					displayUnit={ false }
-					setAttributes={ setAttributes }
-				/>
+				{ '' !== icon && !removeText && (
+					<ResponsiveSlider
+						label={ __(
+							'Icon Spacing',
+							'ultimate-addons-for-gutenberg'
+						) }
+						data={ {
+							desktop: {
+								value: iconSpace,
+								label: 'iconSpace',
+							},
+							tablet: {
+								value: iconSpaceTablet,
+								label: 'iconSpaceTablet',
+							},
+							mobile: {
+								value: iconSpaceMobile,
+								label: 'iconSpaceMobile',
+							},
+						} }
+						min={ 0 }
+						max={ 200 }
+						displayUnit={ false }
+						setAttributes={ setAttributes }
+					/>
+				)}
 				<UAGTabsControl
 					tabs={ [
 						{
