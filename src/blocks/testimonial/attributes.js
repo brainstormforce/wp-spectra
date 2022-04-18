@@ -317,6 +317,20 @@ const attributes = {
 		},
 		default: 5,
 	},
+	nameSpaceMobile: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'author-bottom-margin-mobile'
+		},
+		default: 5,
+	},
+	nameSpaceTablet: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'author-bottom-margin-tablet'
+		},
+		default: 5,
+	},
 	descSpace: {
 		type: 'number',
 		UAGCopyPaste: {

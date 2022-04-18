@@ -81,6 +81,8 @@ const Settings = ( props ) => {
 		imagePosition,
 		imageAlignment,
 		nameSpace,
+		nameSpaceTablet,
+		nameSpaceMobile,
 		imageSize,
 		imageWidth,
 		columns,
@@ -663,16 +665,26 @@ const Settings = ( props ) => {
 						label: 'nameDecoration',
 					} }
 				/>
-				<Range
+				<ResponsiveSlider
 					label={ __(
 						'Bottom Margin',
 						'ultimate-addons-for-gutenberg'
 					) }
-					value={ nameSpace }
-					onChange={ ( value ) =>
-						setAttributes( { nameSpace: value } )
-					}
-					min={ 0 }
+					data={ {
+						desktop: {
+							value: nameSpace,
+							label: 'nameSpace',
+						},
+						tablet: {
+							value: nameSpaceTablet,
+							label: 'nameSpaceTablet',
+						},
+						mobile: {
+							value: nameSpaceMobile,
+							label: 'nameSpaceMobile',
+						},
+					} }
+					min={ 1 }
 					max={ 50 }
 					unit={ {
 						value: nameSpaceType,

@@ -127,6 +127,9 @@ if ( '1' === $attr['test_item_count'] || $attr['test_item_count'] === $attr['col
 }
 
 $m_selectors = array(
+	' .uagb-tm__author-name'                           => array(
+		'margin-bottom' => $attr['nameSpaceMobile'] . $attr['nameSpaceType'],
+	),
 	' .uagb-tm__content'                                => array(
 		'text-align'     => 'center',
 		'padding-top'    => UAGB_Helper::get_css_value( $attr['paddingTopMobile'], $attr['mobilePaddingUnit'] ),
@@ -142,6 +145,9 @@ $m_selectors = array(
 	),
 );
 $t_selectors = array(
+	' .uagb-tm__author-name'                           => array(
+		'margin-bottom' => $attr['nameSpaceTablet'] . $attr['nameSpaceType'],
+	),
 	' .uagb-tm__content'                                => array(
 		'padding-top'    => UAGB_Helper::get_css_value( $attr['paddingTopTablet'], $attr['tabletPaddingUnit'] ),
 		'padding-bottom' => UAGB_Helper::get_css_value( $attr['paddingRightTablet'], $attr['tabletPaddingUnit'] ),

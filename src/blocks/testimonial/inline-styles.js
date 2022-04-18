@@ -43,6 +43,8 @@ function testimonialStyle( props ) {
 		descLineHeightMobile,
 		descSpace,
 		nameSpace,
+		nameSpaceTablet,
+		nameSpaceMobile,
 		imageWidth,
 		rowGap,
 		rowGapTablet,
@@ -271,6 +273,9 @@ function testimonialStyle( props ) {
 			'padding-right': generateCSSUnit( columnGapMobile / 2, columnGapType ),
 			'margin-bottom': generateCSSUnit( rowGapMobile, rowGapType ),
 		},
+		' .uagb-tm__author-name': {
+			'margin-bottom': generateCSSUnit( nameSpaceMobile, nameSpaceType ),
+		},
 		' .uagb-tm__desc': {
 			'font-size': generateCSSUnit(
 				descFontSizeMobile,
@@ -340,6 +345,9 @@ function testimonialStyle( props ) {
 	};
 
 	const tabletSelectors = {
+		' .uagb-tm__author-name': {
+			'margin-bottom': generateCSSUnit( nameSpaceTablet, nameSpaceType ),
+		},
 		' .uagb-testimonial__wrap': {
 			'padding-left': generateCSSUnit( columnGapTablet / 2, columnGapType ),
 			'padding-right': generateCSSUnit( columnGapTablet / 2, columnGapType ),

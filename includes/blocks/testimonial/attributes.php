@@ -52,6 +52,8 @@ return array(
 	'descSpace'               => 25,
 	'block_id'                => '',
 	'nameSpace'               => 15,
+	'nameSpaceMobile'               => 15,
+	'nameSpaceTablet'               => 15,
 	'imgVrPadding'            => 10,
 	'imgHrPadding'            => 10,
 	'imageWidth'              => 60,
