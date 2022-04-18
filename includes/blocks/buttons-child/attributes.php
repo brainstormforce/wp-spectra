@@ -17,6 +17,7 @@ return array(
 	'size'                   => '',
 	'vPadding'               => '',
 	'hPadding'               => '',
+
 	'topTabletPadding'       => '',
 	'rightTabletPadding'     => '',
 	'bottomTabletPadding'    => '',

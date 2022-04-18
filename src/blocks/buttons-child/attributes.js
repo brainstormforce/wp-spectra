@@ -353,73 +353,73 @@ const attributes = {
 		}
 	},
 	topMargin:{
-		type:'string',
+		type:'number',
 		UAGCopyPaste: {
 			styleType: 'btn-top-margin'
 		}
 	},
 	rightMargin:{
-		type:'string',
+		type:'number',
 		UAGCopyPaste: {
 			styleType: 'btn-right-margin'
 		}
 	},
 	bottomMargin:{
-		type:'string',
+		type:'number',
 		UAGCopyPaste: {
 			styleType: 'btn-bottom-margin'
 		}
 	},
 	leftMargin:{
-		type:'string',
+		type:'number',
 		UAGCopyPaste: {
 			styleType: 'btn-left-margin'
 		}
 	},
 	topMarginTablet:{
-		type:'string',
+		type:'number',
 		UAGCopyPaste: {
 			styleType: 'btn-top-margin-tablet'
 		}
 	},
 	rightMarginTablet:{
-		type:'string',
+		type:'number',
 		UAGCopyPaste: {
 			styleType: 'btn-right-margin-tablet'
 		}
 	},
 	bottomMarginTablet:{
-		type:'string',
+		type:'number',
 		UAGCopyPaste: {
 			styleType: 'btn-bottom-margin-tablet'
 		}
 	},
 	leftMarginTablet:{
-		type:'string',
+		type:'number',
 		UAGCopyPaste: {
 			styleType: 'btn-left-margin-tablet'
 		}
 	},
 	topMarginMobile:{
-		type:'string',
+		type:'number',
 		UAGCopyPaste: {
 			styleType: 'btn-top-margin-mobile'
 		}
 	},
 	rightMarginMobile:{
-		type:'string',
+		type:'number',
 		UAGCopyPaste: {
 			styleType: 'btn-right-margin-mobile'
 		}
 	},
 	bottomMarginMobile:{
-		type:'string',
+		type:'number',
 		UAGCopyPaste: {
 			styleType: 'btn-bottom-margin-mobile'
 		}
 	},
 	leftMarginMobile:{
-		type:'string',
+		type:'number',
 		UAGCopyPaste: {
 			styleType: 'btn-left-margin-mobile'
 		}
@@ -488,21 +488,21 @@ const attributes = {
 		}
 	},
 	iconSize: {
-		type: 'string',
+		type: 'number',
 		default: 15,
 		UAGCopyPaste: {
 			styleType: 'btn-icon-size'
 		}
 	},
 	iconSizeTablet: {
-		type: 'string',
+		type: 'number',
 		default: 15,
 		UAGCopyPaste: {
 			styleType: 'btn-icon-size-tablet'
 		}
 	},
 	iconSizeMobile: {
-		type: 'string',
+		type: 'number',
 		default: 15,
 		UAGCopyPaste: {
 			styleType: 'btn-icon-size-mobile'

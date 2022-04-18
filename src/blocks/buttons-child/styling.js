@@ -193,17 +193,17 @@ function styling( props ) {
 		),
 	};
 
-	selectors[ ' .uagb-button__icon > svg' ] = {
+	selectors[ '.uagb-buttons__outer-wrap .wp-block-button__link.uagb-buttons-repeater .uagb-button__icon svg' ] = {
 		'width': generateCSSUnit( iconSize, 'px' ),
 		'height': generateCSSUnit( iconSize, 'px' ),
 		'fill': iconColor,
 	};
-	tabletSelectors[ ' .uagb-button__icon > svg' ] = {
+	tabletSelectors[ '.uagb-buttons__outer-wrap .wp-block-button__link.uagb-buttons-repeater .uagb-button__icon svg' ] = {
 		'width': generateCSSUnit( iconSizeTablet, 'px' ),
 		'height': generateCSSUnit( iconSizeTablet, 'px' ),
 		'fill': iconColor,
 	};
-	mobileSelectors[ ' .uagb-button__icon > svg' ] = {
+	mobileSelectors[ '.uagb-buttons__outer-wrap .wp-block-button__link.uagb-buttons-repeater .uagb-button__icon svg' ] = {
 		'width': generateCSSUnit( iconSizeMobile, 'px' ),
 		'height': generateCSSUnit( iconSizeMobile, 'px' ),
 		'fill': iconColor,

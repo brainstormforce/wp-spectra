@@ -247,14 +247,27 @@ function styling( props ) {
 		),
 	};
 
-	const id = `.uagb-block-${ props.clientId.substr( 0, 8 ) }`;
-	let stylingCss = generateCSS( selectors, id );
+	const base_selector = ` .uagb-block-${ props.clientId.substr(
+		0,
+		8
+	) }`;
+	let styling_css = generateCSS( selectors, base_selector );
 
-	stylingCss += generateCSS( tabletSelectors, id, true, 'tablet' );
+	styling_css += generateCSS(
+		tabletSelectors,
+		`${ base_selector }.uagb-editor-preview-mode-tablet`,
+		true,
+		'tablet'
+	);
 
-	stylingCss += generateCSS( mobileSelectors, id, true, 'mobile' );
+	styling_css += generateCSS(
+		mobileSelectors,
+		`${ base_selector }.uagb-editor-preview-mode-mobile`,
+		true,
+		'mobile'
+	);
 
-	return stylingCss;
+	return styling_css;
 }
 
 export default styling;

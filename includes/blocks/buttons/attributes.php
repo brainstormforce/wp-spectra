@@ -62,6 +62,12 @@ return array(
 	'lineHeightTablet' => '',
 	'buttonSize' => 'default',
 
+	'topPadding' => '',
+    'rightPadding' => '',
+    'bottomPadding' => '',
+    'leftPadding' => '',
+
+
 	'topTabletPadding'       => '',
 	'rightTabletPadding'     => '',
 	'bottomTabletPadding'    => '',
