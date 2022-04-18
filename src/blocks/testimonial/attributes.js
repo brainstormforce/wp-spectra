@@ -455,11 +455,39 @@ const attributes = {
 			styleType: 'row-gap'
 		},
 	},
+	rowGapMobile: {
+		type: 'number',
+		default: 10,
+		UAGCopyPaste: {
+			styleType: 'row-gap-mobile'
+		},
+	},
+	rowGapTablet: {
+		type: 'number',
+		default: 10,
+		UAGCopyPaste: {
+			styleType: 'row-gap-tablet'
+		},
+	},
 	columnGap: {
 		type: 'number',
 		default: 10,
 		UAGCopyPaste: {
 			styleType: 'column-gap'
+		},
+	},
+	columnGapMobile: {
+		type: 'number',
+		default: 10,
+		UAGCopyPaste: {
+			styleType: 'column-gap-mobile'
+		},
+	},
+	columnGapTablet: {
+		type: 'number',
+		default: 10,
+		UAGCopyPaste: {
+			styleType: 'column-gap-tablet'
 		},
 	},
 	contentPadding: {

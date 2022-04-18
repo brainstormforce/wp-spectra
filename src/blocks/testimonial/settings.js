@@ -97,7 +97,11 @@ const Settings = ( props ) => {
 		autoplaySpeed,
 		arrowColor,
 		rowGap,
+		rowGapTablet,
+		rowGapMobile,
 		columnGap,
+		columnGapTablet,
+		columnGapMobile,
 		backgroundType,
 		backgroundColor,
 		backgroundImage,
@@ -440,20 +444,32 @@ const Settings = ( props ) => {
 						/>
 					</>
 				) }
-				<Range
+				<ResponsiveSlider
 					label={ __(
 						'Gap Between Content & Dots',
 						'ultimate-addons-for-gutenberg'
 					) }
-					value={ rowGap }
-					setAttributes={ setAttributes }
-					onChange={ ( value ) => setAttributes( { rowGap: value } ) }
-					min={ 0 }
+					data={ {
+						desktop: {
+							value: rowGap,
+							label: 'rowGap',
+						},
+						tablet: {
+							value: rowGapTablet,
+							label: 'rowGapTablet',
+						},
+						mobile: {
+							value: rowGapMobile,
+							label: 'rowGapMobile',
+						},
+					} }
+					min={ 1 }
 					max={ 50 }
 					unit={ {
 						value: rowGapType,
 						label: 'rowGapType',
 					} }
+					setAttributes={ setAttributes }
 				/>
 				<AdvancedPopColorControl
 					label={ __( 'Color', 'ultimate-addons-for-gutenberg' ) }
@@ -763,16 +779,26 @@ const Settings = ( props ) => {
 					} }
 					setAttributes={ setAttributes }
 				/>
-				<Range
+				<ResponsiveSlider
 					label={ __(
 						'Column Gap',
 						'ultimate-addons-for-gutenberg'
 					) }
-					value={ columnGap }
-					onChange={ ( value ) =>
-						setAttributes( { columnGap: value } )
-					}
-					min={ 0 }
+					data={ {
+						desktop: {
+							value: columnGap,
+							label: 'columnGap',
+						},
+						tablet: {
+							value: columnGapTablet,
+							label: 'columnGapTablet',
+						},
+						mobile: {
+							value: columnGapMobile,
+							label: 'columnGapMobile',
+						},
+					} }
+					min={ 1 }
 					max={ 50 }
 					unit={ {
 						value: columnGapType,

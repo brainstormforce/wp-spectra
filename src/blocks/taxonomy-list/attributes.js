@@ -163,11 +163,43 @@ const attributes = {   // eslint-disable-line no-unused-vars
 		},
 
 	},
+	rowGapTablet                    : {
+		type    : 'number',
+		default : 20,
+		UAGCopyPaste: {
+			styleType: 'row-gap-tablet'
+		},
+
+	},
+	rowGapMobile                    : {
+		type    : 'number',
+		default : 20,
+		UAGCopyPaste: {
+			styleType: 'row-gap-mobile'
+		},
+
+	},
 	columnGap                  : {
 		type    : 'number',
 		default : 20,
 		UAGCopyPaste: {
 			styleType: 'column-gap'
+		},
+
+	},
+	columnGapTablet                    : {
+		type    : 'number',
+		default : 20,
+		UAGCopyPaste: {
+			styleType: 'column-gap-tablet'
+		},
+
+	},
+	columnGapMobile                    : {
+		type    : 'number',
+		default : 20,
+		UAGCopyPaste: {
+			styleType: 'column-gap-mobile'
 		},
 
 	},

@@ -45,7 +45,11 @@ function testimonialStyle( props ) {
 		nameSpace,
 		imageWidth,
 		rowGap,
+		rowGapTablet,
+		rowGapMobile,
 		columnGap,
+		columnGapTablet,
+		columnGapMobile,
 		backgroundType,
 		backgroundColor,
 		backgroundImage,
@@ -262,6 +266,11 @@ function testimonialStyle( props ) {
 	}
 
 	const mobileSelectors = {
+		' .uagb-testimonial__wrap': {
+			'padding-left': generateCSSUnit( columnGapMobile / 2, columnGapType ),
+			'padding-right': generateCSSUnit( columnGapMobile / 2, columnGapType ),
+			'margin-bottom': generateCSSUnit( rowGapMobile, rowGapType ),
+		},
 		' .uagb-tm__desc': {
 			'font-size': generateCSSUnit(
 				descFontSizeMobile,
@@ -331,6 +340,11 @@ function testimonialStyle( props ) {
 	};
 
 	const tabletSelectors = {
+		' .uagb-testimonial__wrap': {
+			'padding-left': generateCSSUnit( columnGapTablet / 2, columnGapType ),
+			'padding-right': generateCSSUnit( columnGapTablet / 2, columnGapType ),
+			'margin-bottom': generateCSSUnit( rowGapTablet, rowGapType ),
+		},
 		' .uagb-testimonial__wrap .uagb-tm__image-content': {
 			'padding-top': generateCSSUnit(
 				imgpaddingTopTablet,
