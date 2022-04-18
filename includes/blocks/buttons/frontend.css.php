@@ -136,19 +136,19 @@ if ( $attr['childMigrate'] ) {
 		'font-size'       => UAGB_Helper::get_css_value( $attr['fontSize'], $attr['fontSizeType'] ),
 		'line-height'     => UAGB_Helper::get_css_value( $attr['lineHeight'], $attr['lineHeightType'] ),
 	);
-	$selectors[' .uagb-buttons-repeater']                             = array( // For New User.
-		'padding-top'     => UAGB_Helper::get_css_value( $top_padding, $attr['paddingUnit'] ),
-		'padding-bottom'  => UAGB_Helper::get_css_value( $bottom_padding, $attr['paddingUnit'] ),
-		'padding-left'    => UAGB_Helper::get_css_value( $left_padding, $attr['paddingUnit'] ),
-		'padding-right'   => UAGB_Helper::get_css_value( $right_padding, $attr['paddingUnit'] ),
-		'margin-top'      => UAGB_Helper::get_css_value( $attr['topMargin'], $attr['marginType'] ),
-		'margin-bottom'   => UAGB_Helper::get_css_value( $attr['bottomMargin'], $attr['marginType'] ),
-		'margin-left'     => UAGB_Helper::get_css_value( $attr['leftMargin'], $attr['marginType'] ),
-		'margin-right'    => UAGB_Helper::get_css_value( $attr['rightMargin'], $attr['marginType'] ),
+	$selectors[' .uagb-buttons-repeater']   = array( // For New User.
+		'padding-top'    => UAGB_Helper::get_css_value( $top_padding, $attr['paddingUnit'] ),
+		'padding-bottom' => UAGB_Helper::get_css_value( $bottom_padding, $attr['paddingUnit'] ),
+		'padding-left'   => UAGB_Helper::get_css_value( $left_padding, $attr['paddingUnit'] ),
+		'padding-right'  => UAGB_Helper::get_css_value( $right_padding, $attr['paddingUnit'] ),
+		'margin-top'     => UAGB_Helper::get_css_value( $attr['topMargin'], $attr['marginType'] ),
+		'margin-bottom'  => UAGB_Helper::get_css_value( $attr['bottomMargin'], $attr['marginType'] ),
+		'margin-left'    => UAGB_Helper::get_css_value( $attr['leftMargin'], $attr['marginType'] ),
+		'margin-right'   => UAGB_Helper::get_css_value( $attr['rightMargin'], $attr['marginType'] ),
 	);
 	$t_selectors[' .uagb-buttons-repeater'] = array(
-		'font-size'   => UAGB_Helper::get_css_value( $attr['fontSizeTablet'], $attr['fontSizeType'] ),
-		'line-height' => UAGB_Helper::get_css_value( $attr['lineHeightTablet'], $attr['lineHeightType'] ),
+		'font-size'      => UAGB_Helper::get_css_value( $attr['fontSizeTablet'], $attr['fontSizeType'] ),
+		'line-height'    => UAGB_Helper::get_css_value( $attr['lineHeightTablet'], $attr['lineHeightType'] ),
 		'padding-top'    => UAGB_Helper::get_css_value( $attr['topTabletPadding'], $attr['tabletPaddingUnit'] ),
 		'padding-bottom' => UAGB_Helper::get_css_value( $attr['bottomTabletPadding'], $attr['tabletPaddingUnit'] ),
 		'padding-left'   => UAGB_Helper::get_css_value( $attr['leftTabletPadding'], $attr['tabletPaddingUnit'] ),
@@ -160,8 +160,9 @@ if ( $attr['childMigrate'] ) {
 
 	);
 	$m_selectors[' .uagb-buttons-repeater'] = array(
-		'font-size'   => UAGB_Helper::get_css_value( $attr['fontSizeMobile'], $attr['fontSizeType'] ),
-		'line-height' => UAGB_Helper::get_css_value( $attr['lineHeightMobile'], $attr['lineHeightType'] ),'padding-top'    => UAGB_Helper::get_css_value( $attr['topMobilePadding'], $attr['mobilePaddingUnit'] ),
+		'font-size'      => UAGB_Helper::get_css_value( $attr['fontSizeMobile'], $attr['fontSizeType'] ),
+		'line-height'    => UAGB_Helper::get_css_value( $attr['lineHeightMobile'], $attr['lineHeightType'] ),
+		'padding-top'    => UAGB_Helper::get_css_value( $attr['topMobilePadding'], $attr['mobilePaddingUnit'] ),
 		'padding-bottom' => UAGB_Helper::get_css_value( $attr['bottomMobilePadding'], $attr['mobilePaddingUnit'] ),
 		'padding-left'   => UAGB_Helper::get_css_value( $attr['leftMobilePadding'], $attr['mobilePaddingUnit'] ),
 		'padding-right'  => UAGB_Helper::get_css_value( $attr['rightMobilePadding'], $attr['mobilePaddingUnit'] ),

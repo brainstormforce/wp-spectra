@@ -15,7 +15,6 @@ import InspectorTab, {
 	UAGTabs,
 } from '@Components/inspector-tabs/InspectorTab.js';
 import TypographyControl from '@Components/typography';
-import Range from '@Components/range/Range.js';
 import UAGTabsControl from '@Components/tabs';
 import MultiButtonsControl from '@Components/multi-buttons-control';
 import BoxShadowControl from '@Components/box-shadow';
