@@ -943,10 +943,9 @@ const Settings = ( props ) => {
 	const styleSettings = () => {
 		return (
 			<>
-				{ '' !== icon && (
+				{ ( ( source_type !== 'icon' && iconImage && iconImage.url !== 'null' && iconImage.url !== '' ) || ( source_type === 'icon' && '' !== icon ) ) && (
 					<UAGAdvancedPanelBody title="Icon/Image" initialOpen={ false }>
 						<>
-							{ ' ' }
 							{ source_type === 'icon' && (
 								<>
 									<UAGTabsControl

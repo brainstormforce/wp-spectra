@@ -523,7 +523,61 @@ function styling( props ) {
 				prefixLineHeightType
 			),
 		},
+		' .uagb-ifb-icon-wrap > svg': {
+			'margin-top': generateCSSUnit(
+				iconMarginTopTablet,
+				iconTabletMarginUnit
+			),
+			'margin-right': generateCSSUnit(
+				iconMarginRightTablet,
+				iconTabletMarginUnit
+			),
+			'margin-bottom': generateCSSUnit(
+				iconMarginBottomTablet,
+				iconTabletMarginUnit
+			),
+			'margin-left': generateCSSUnit(
+				iconMarginLeftTablet,
+				iconTabletMarginUnit
+			),
+		},
 		'.uagb-infobox__content-wrap > svg': {
+			'margin-top': generateCSSUnit(
+				iconMarginTopTablet,
+				iconTabletMarginUnit
+			),
+			'margin-right': generateCSSUnit(
+				iconMarginRightTablet,
+				iconTabletMarginUnit
+			),
+			'margin-bottom': generateCSSUnit(
+				iconMarginBottomTablet,
+				iconTabletMarginUnit
+			),
+			'margin-left': generateCSSUnit(
+				iconMarginLeftTablet,
+				iconTabletMarginUnit
+			),
+		},
+		'.uagb-infobox__content-wrap .uagb-ifb-content .uagb-ifb-left-title-image img': {
+			'margin-top': generateCSSUnit(
+				iconMarginTopTablet,
+				iconTabletMarginUnit
+			),
+			'margin-right': generateCSSUnit(
+				iconMarginRightTablet,
+				iconTabletMarginUnit
+			),
+			'margin-bottom': generateCSSUnit(
+				iconMarginBottomTablet,
+				iconTabletMarginUnit
+			),
+			'margin-left': generateCSSUnit(
+				iconMarginLeftTablet,
+				iconTabletMarginUnit
+			),
+		},
+		'.uagb-infobox__content-wrap .uagb-ifb-content .uagb-ifb-right-title-image img': {
 			'margin-top': generateCSSUnit(
 				iconMarginTopTablet,
 				iconTabletMarginUnit
@@ -754,6 +808,60 @@ function styling( props ) {
 			'margin-top': generateCSSUnit( separatorMarginTopMobile, separatorMobileMarginUnit ),
 			'margin-left': generateCSSUnit( separatorMarginLeftMobile, separatorMobileMarginUnit ),
 			'margin-right': generateCSSUnit( separatorMarginRightMobile, separatorMobileMarginUnit ),
+		},
+		' .uagb-ifb-icon-wrap > svg': {
+			'margin-top': generateCSSUnit(
+				iconMarginTopMobile,
+				iconMobileMarginUnit
+			),
+			'margin-right': generateCSSUnit(
+				iconMarginRightMobile,
+				iconMobileMarginUnit
+			),
+			'margin-bottom': generateCSSUnit(
+				iconMarginBottomMobile,
+				iconMobileMarginUnit
+			),
+			'margin-left': generateCSSUnit(
+				iconMarginLeftMobile,
+				iconMobileMarginUnit
+			),
+		},
+		'.uagb-infobox__content-wrap .uagb-ifb-content .uagb-ifb-left-title-image img': {
+			'margin-top': generateCSSUnit(
+				iconMarginTopMobile,
+				iconMobileMarginUnit
+			),
+			'margin-right': generateCSSUnit(
+				iconMarginRightMobile,
+				iconMobileMarginUnit
+			),
+			'margin-bottom': generateCSSUnit(
+				iconMarginBottomMobile,
+				iconMobileMarginUnit
+			),
+			'margin-left': generateCSSUnit(
+				iconMarginLeftMobile,
+				iconMobileMarginUnit
+			),
+		},
+		'.uagb-infobox__content-wrap .uagb-ifb-content .uagb-ifb-right-title-image img': {
+			'margin-top': generateCSSUnit(
+				iconMarginTopMobile,
+				iconMobileMarginUnit
+			),
+			'margin-right': generateCSSUnit(
+				iconMarginRightMobile,
+				iconMobileMarginUnit
+			),
+			'margin-bottom': generateCSSUnit(
+				iconMarginBottomMobile,
+				iconMobileMarginUnit
+			),
+			'margin-left': generateCSSUnit(
+				iconMarginLeftMobile,
+				iconMobileMarginUnit
+			),
 		},
 		'.uagb-infobox__content-wrap > svg': {
 			'margin-top': generateCSSUnit(
