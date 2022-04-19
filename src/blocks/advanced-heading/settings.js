@@ -19,13 +19,15 @@ import {
 } from '@wordpress/block-editor';
 import renderSVG from '@Controls/renderIcon';
 import { SelectControl, Icon } from '@wordpress/components';
+import SpacingControl from '@Components/spacing-control';
+
 
 // Extend component
 import UAGAdvancedPanelBody from '@Components/advanced-panel-body';
 
 const Settings = ( props ) => {
 	props = props.parentProps;
-	const { attributes, setAttributes } = props;
+	const { attributes, deviceType, setAttributes } = props;
 	const {
 		headingAlign,
 		headingColor,
@@ -65,7 +67,41 @@ const Settings = ( props ) => {
 		headSpace,
 		separatorSpace,
 		headLoadGoogleFonts,
-		subHeadLoadGoogleFonts
+		subHeadLoadGoogleFonts,
+		// padding
+		headingBlockTopPadding,
+		headingBlockRightPadding,
+		headingBlockLeftPadding,
+		headingBlockBottomPadding,
+		headingBlockTopPaddingTablet,
+		headingBlockRightPaddingTablet,
+		headingBlockLeftPaddingTablet,
+		headingBlockBottomPaddingTablet,
+		headingBlockTopPaddingMobile,
+		headingBlockRightPaddingMobile,
+		headingBlockLeftPaddingMobile,
+		headingBlockBottomPaddingMobile,
+		headingBlockPaddingUnit,
+		headingBlockPaddingUnitTablet,
+		headingBlockPaddingUnitMobile,
+		headingBlockPaddingLink,
+		// margin
+		headingBlockTopMargin,
+		headingBlockRightMargin,
+		headingBlockLeftMargin,
+		headingBlockBottomMargin,
+		headingBlockTopMarginTablet,
+		headingBlockRightMarginTablet,
+		headingBlockLeftMarginTablet,
+		headingBlockBottomMarginTablet,
+		headingBlockTopMarginMobile,
+		headingBlockRightMarginMobile,
+		headingBlockLeftMarginMobile,
+		headingBlockBottomMarginMobile,
+		headingBlockMarginUnit,
+		headingBlockMarginUnitTablet,
+		headingBlockMarginUnitMobile,
+		headingBlockMarginLink
 	} = attributes;
 
 	let loadHeadingGoogleFonts;
@@ -536,6 +572,163 @@ const Settings = ( props ) => {
 					/>
 				</UAGAdvancedPanelBody>
 	};
+
+	const spacingStylePanel = () => {
+		return (
+			<UAGAdvancedPanelBody
+				title={ __( 'Spacing', 'ultimate-addons-for-gutenberg' ) }
+				initialOpen={ false }
+			>
+				<SpacingControl
+					label={ __(
+						'Padding',
+						'ultimate-addons-for-gutenberg'
+					) }
+					valueTop={ {
+						value: headingBlockTopPadding,
+						label: 'headingBlockTopPadding',
+					} }
+					valueRight={ {
+						value: headingBlockRightPadding,
+						label: 'headingBlockRightPadding',
+					} }
+					valueBottom={ {
+						value: headingBlockBottomPadding,
+						label: 'headingBlockBottomPadding',
+					} }
+					valueLeft={ {
+						value: headingBlockLeftPadding,
+						label: 'headingBlockLeftPadding',
+					} }
+					valueTopTablet={ {
+						value: headingBlockTopPaddingTablet,
+						label: 'headingBlockTopPaddingTablet',
+					} }
+					valueRightTablet={ {
+						value: headingBlockRightPaddingTablet,
+						label: 'headingBlockRightPaddingTablet',
+					} }
+					valueBottomTablet={ {
+						value: headingBlockBottomPaddingTablet,
+						label: 'headingBlockBottomPaddingTablet',
+					} }
+					valueLeftTablet={ {
+						value: headingBlockLeftPaddingTablet,
+						label: 'headingBlockLeftPaddingTablet',
+					} }
+					valueTopMobile={ {
+						value: headingBlockTopPaddingMobile,
+						label: 'headingBlockTopPaddingMobile',
+					} }
+					valueRightMobile={ {
+						value: headingBlockRightPaddingMobile,
+						label: 'headingBlockRightPaddingMobile',
+					} }
+					valueBottomMobile={ {
+						value: headingBlockBottomPaddingMobile,
+						label: 'headingBlockBottomPaddingMobile',
+					} }
+					valueLeftMobile={ {
+						value: headingBlockLeftPaddingMobile,
+						label: 'headingBlockLeftPaddingMobile',
+					} }
+					unit={ {
+						value: headingBlockPaddingUnit,
+						label: 'headingBlockPaddingUnit',
+					} }
+					mUnit={ {
+						value: headingBlockPaddingUnitMobile,
+						label: 'headingBlockPaddingUnitMobile',
+					} }
+					tUnit={ {
+						value: headingBlockPaddingUnitTablet,
+						label: 'headingBlockPaddingUnitTablet',
+					} }
+					deviceType={ deviceType }
+					attributes={ attributes }
+					setAttributes={ setAttributes }
+					link={ {
+						value: headingBlockPaddingLink,
+						label: 'headingBlockPaddingLink',
+					} }
+				/>
+				<SpacingControl
+					label={ __(
+						'Margin',
+						'ultimate-addons-for-gutenberg'
+					) }
+					valueTop={ {
+						value: headingBlockTopMargin,
+						label: 'headingBlockTopMargin',
+					} }
+					valueRight={ {
+						value: headingBlockRightMargin,
+						label: 'headingBlockRightMargin',
+					} }
+					valueBottom={ {
+						value: headingBlockBottomMargin,
+						label: 'headingBlockBottomMargin',
+					} }
+					valueLeft={ {
+						value: headingBlockLeftMargin,
+						label: 'headingBlockLeftMargin',
+					} }
+					valueTopTablet={ {
+						value: headingBlockTopMarginTablet,
+						label: 'headingBlockTopMarginTablet',
+					} }
+					valueRightTablet={ {
+						value: headingBlockRightMarginTablet,
+						label: 'headingBlockRightMarginTablet',
+					} }
+					valueBottomTablet={ {
+						value: headingBlockBottomMarginTablet,
+						label: 'headingBlockBottomMarginTablet',
+					} }
+					valueLeftTablet={ {
+						value: headingBlockLeftMarginTablet,
+						label: 'headingBlockLeftMarginTablet',
+					} }
+					valueTopMobile={ {
+						value: headingBlockTopMarginMobile,
+						label: 'headingBlockTopMarginMobile',
+					} }
+					valueRightMobile={ {
+						value: headingBlockRightMarginMobile,
+						label: 'headingBlockRightMarginMobile',
+					} }
+					valueBottomMobile={ {
+						value: headingBlockBottomMarginMobile,
+						label: 'headingBlockBottomMarginMobile',
+					} }
+					valueLeftMobile={ {
+						value: headingBlockLeftMarginMobile,
+						label: 'headingBlockLeftMarginMobile',
+					} }
+					unit={ {
+						value: headingBlockMarginUnit,
+						label: 'headingBlockMarginUnit',
+					} }
+					mUnit={ {
+						value: headingBlockMarginUnitMobile,
+						label: 'headingBlockMarginUnitMobile',
+					} }
+					tUnit={ {
+						value: headingBlockMarginUnitTablet,
+						label: 'headingBlockMarginUnitTablet',
+					} }
+					deviceType={ deviceType }
+					attributes={ attributes }
+					setAttributes={ setAttributes }
+					link={ {
+						value: headingBlockMarginLink,
+						label: 'headingBlockMarginLink',
+					} }
+				/>
+			</UAGAdvancedPanelBody>
+		);
+	};
+
 	return (
 		<div>
 			{ blockControlSettings() }
@@ -549,6 +742,7 @@ const Settings = ( props ) => {
 						{ headingPanel() }
 						{ 'none' !== seperatorStyle && seperatorSettings() }
 						{ subheadingPanel() }
+						{spacingStylePanel()}
 					</InspectorTab>
 					<InspectorTab
 						{ ...UAGTabs.advance }

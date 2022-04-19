@@ -284,7 +284,145 @@ const attributes = {
 	isPreview: {
 		type: 'boolean',
 		default: false,
-	}
+	},
+	// padding
+	headingBlockTopPadding : {
+		type: 'number',
+		isUAGStyle: true,
+	},
+	headingBlockRightPadding : {
+		type: 'number',
+		isUAGStyle: true,
+	},
+	headingBlockLeftPadding : {
+		type: 'number',
+		isUAGStyle: true,
+	},
+	headingBlockBottomPadding : {
+		type: 'number',
+		isUAGStyle: true,
+	},
+	headingBlockTopPaddingTablet: {
+		type: 'number',
+		isUAGStyle: true,
+	},
+	headingBlockRightPaddingTablet: {
+		type: 'number',
+		isUAGStyle: true,
+	},
+	headingBlockLeftPaddingTablet: {
+		type: 'number',
+		isUAGStyle: true,
+	},
+	headingBlockBottomPaddingTablet: {
+		type: 'number',
+		isUAGStyle: true,
+	},
+	headingBlockTopPaddingMobile: {
+		type: 'number',
+		isUAGStyle: true,
+	},
+	headingBlockRightPaddingMobile: {
+		type: 'number',
+		isUAGStyle: true,
+	},
+	headingBlockLeftPaddingMobile: {
+		type: 'number',
+		isUAGStyle: true,
+	},
+	headingBlockBottomPaddingMobile: {
+		type: 'number',
+		isUAGStyle: true,
+	},
+	headingBlockPaddingUnit : {
+		type: 'string',
+		default: 'px',
+		isUAGStyle: true,
+	},
+	headingBlockPaddingUnitTablet: {
+		type: 'string',
+		default: 'px',
+		isUAGStyle: true,
+	},
+	headingBlockPaddingUnitMobile : {
+		type: 'string',
+		default: 'px',
+		isUAGStyle: true,
+	},
+	headingBlockPaddingLink: {
+		type: 'boolean',
+		default: false,
+		isUAGStyle: true,
+	},
+	// margin
+	headingBlockTopMargin : {
+		type: 'number',
+		isUAGStyle: true,
+	},
+	headingBlockRightMargin : {
+		type: 'number',
+		isUAGStyle: true,
+	},
+	headingBlockLeftMargin : {
+		type: 'number',
+		isUAGStyle: true,
+	},
+	headingBlockBottomMargin : {
+		type: 'number',
+		isUAGStyle: true,
+	},
+	headingBlockTopMarginTablet: {
+		type: 'number',
+		isUAGStyle: true,
+	},
+	headingBlockRightMarginTablet: {
+		type: 'number',
+		isUAGStyle: true,
+	},
+	headingBlockLeftMarginTablet: {
+		type: 'number',
+		isUAGStyle: true,
+	},
+	headingBlockBottomMarginTablet: {
+		type: 'number',
+		isUAGStyle: true,
+	},
+	headingBlockTopMarginMobile: {
+		type: 'number',
+		isUAGStyle: true,
+	},
+	headingBlockRightMarginMobile: {
+		type: 'number',
+		isUAGStyle: true,
+	},
+	headingBlockLeftMarginMobile: {
+		type: 'number',
+		isUAGStyle: true,
+	},
+	headingBlockBottomMarginMobile: {
+		type: 'number',
+		isUAGStyle: true,
+	},
+	headingBlockMarginUnit : {
+		type: 'string',
+		default: 'px',
+		isUAGStyle: true,
+	},
+	headingBlockMarginUnitTablet: {
+		type: 'string',
+		default: 'px',
+		isUAGStyle: true,
+	},
+	headingBlockMarginUnitMobile : {
+		type: 'string',
+		default: 'px',
+		isUAGStyle: true,
+	},
+	headingBlockMarginLink: {
+		type: 'boolean',
+		default: false,
+		isUAGStyle: true,
+	},
 };
 
 export default attributes;

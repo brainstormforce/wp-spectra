@@ -44,6 +44,38 @@ function styling( props ) {
 		headDecoration,
 		subHeadTransform,
 		subHeadDecoration,
+		// padding
+		headingBlockTopPadding,
+		headingBlockRightPadding,
+		headingBlockLeftPadding,
+		headingBlockBottomPadding,
+		headingBlockTopPaddingTablet,
+		headingBlockRightPaddingTablet,
+		headingBlockLeftPaddingTablet,
+		headingBlockBottomPaddingTablet,
+		headingBlockTopPaddingMobile,
+		headingBlockRightPaddingMobile,
+		headingBlockLeftPaddingMobile,
+		headingBlockBottomPaddingMobile,
+		headingBlockPaddingUnit,
+		headingBlockPaddingUnitTablet,
+		headingBlockPaddingUnitMobile,
+		// margin
+		headingBlockTopMargin,
+		headingBlockRightMargin,
+		headingBlockLeftMargin,
+		headingBlockBottomMargin,
+		headingBlockTopMarginTablet,
+		headingBlockRightMarginTablet,
+		headingBlockLeftMarginTablet,
+		headingBlockBottomMarginTablet,
+		headingBlockTopMarginMobile,
+		headingBlockRightMarginMobile,
+		headingBlockLeftMarginMobile,
+		headingBlockBottomMarginMobile,
+		headingBlockMarginUnit,
+		headingBlockMarginUnitTablet,
+		headingBlockMarginUnitMobile,
 	} = props.attributes;
 
 	const tablet_selectors = {};
@@ -52,6 +84,38 @@ function styling( props ) {
 	const selectors = {
 		'.wp-block-uagb-advanced-heading ':{
 			'text-align': headingAlign,
+			'margin-top': generateCSSUnit(
+				headingBlockTopMargin,
+				headingBlockMarginUnit
+			),
+			'margin-right': generateCSSUnit(
+				headingBlockRightMargin,
+				headingBlockMarginUnit
+			),
+			'margin-bottom': generateCSSUnit(
+				headingBlockBottomMargin,
+				headingBlockMarginUnit
+			),
+			'margin-left': generateCSSUnit(
+				headingBlockLeftMargin,
+				headingBlockMarginUnit
+			),
+			'padding-top': generateCSSUnit(
+				headingBlockTopPadding,
+				headingBlockPaddingUnit
+			),
+			'padding-right': generateCSSUnit(
+				headingBlockRightPadding,
+				headingBlockPaddingUnit
+			),
+			'padding-bottom': generateCSSUnit(
+				headingBlockBottomPadding,
+				headingBlockPaddingUnit
+			),
+			'padding-left': generateCSSUnit(
+				headingBlockLeftPadding,
+				headingBlockPaddingUnit
+			),
 		},
 		' .uagb-desc-text': {
 			'margin': 0,
@@ -94,6 +158,43 @@ function styling( props ) {
 		};
 	}
 
+
+	// tablet
+	tablet_selectors['.wp-block-uagb-advanced-heading '] = {
+		'margin-top': generateCSSUnit(
+			headingBlockTopMarginTablet,
+			headingBlockMarginUnitTablet
+		),
+		'margin-right': generateCSSUnit(
+			headingBlockRightMarginTablet,
+			headingBlockMarginUnitTablet
+		),
+		'margin-bottom': generateCSSUnit(
+			headingBlockBottomMarginTablet,
+			headingBlockMarginUnitTablet
+		),
+		'margin-left': generateCSSUnit(
+			headingBlockLeftMarginTablet,
+			headingBlockMarginUnitTablet
+		),
+		'padding-top': generateCSSUnit(
+			headingBlockTopPaddingTablet,
+			headingBlockPaddingUnitTablet
+		),
+		'padding-right': generateCSSUnit(
+			headingBlockRightPaddingTablet,
+			headingBlockPaddingUnitTablet
+		),
+		'padding-bottom': generateCSSUnit(
+			headingBlockBottomPaddingTablet,
+			headingBlockPaddingUnitTablet
+		),
+		'padding-left': generateCSSUnit(
+			headingBlockLeftPaddingTablet,
+			headingBlockPaddingUnitTablet
+		),
+	}
+
 	tablet_selectors[ ' ' + headingTag + '.uagb-heading-text' ] = {
 		'font-size': generateCSSUnit( headFontSizeTablet, headFontSizeType ),
 		'line-height': generateCSSUnit(
@@ -111,7 +212,41 @@ function styling( props ) {
 			subHeadLineHeightType
 		),
 	};
-
+	// mobile
+	mobile_selectors['.wp-block-uagb-advanced-heading '] = {
+		'margin-top': generateCSSUnit(
+			headingBlockTopMarginMobile,
+			headingBlockMarginUnitMobile
+		),
+		'margin-right': generateCSSUnit(
+			headingBlockRightMarginMobile,
+			headingBlockMarginUnitMobile
+		),
+		'margin-bottom': generateCSSUnit(
+			headingBlockBottomMarginMobile,
+			headingBlockMarginUnitMobile
+		),
+		'margin-left': generateCSSUnit(
+			headingBlockLeftMarginMobile,
+			headingBlockMarginUnitMobile
+		),
+		'padding-top': generateCSSUnit(
+			headingBlockTopPaddingMobile,
+			headingBlockPaddingUnitMobile
+		),
+		'padding-right': generateCSSUnit(
+			headingBlockRightPaddingMobile,
+			headingBlockPaddingUnitMobile
+		),
+		'padding-bottom': generateCSSUnit(
+			headingBlockBottomPaddingMobile,
+			headingBlockPaddingUnitMobile
+		),
+		'padding-left': generateCSSUnit(
+			headingBlockLeftPaddingMobile,
+			headingBlockPaddingUnitMobile
+		),
+	}
 	mobile_selectors[ ' ' + headingTag + '.uagb-heading-text' ] = {
 		'font-size': generateCSSUnit( headFontSizeMobile, headFontSizeType ),
 		'line-height': generateCSSUnit(
