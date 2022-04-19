@@ -419,7 +419,7 @@ const Background = ( props ) => {
 							setAttributes={setAttributes}
 						/>
 					}
-					{ imageResponsive && backgroundImage && (
+					{ imageResponsive && backgroundImage[deviceType] && backgroundImage[deviceType]?.value && (
 						<>
 							<div className="uag-background-image-position">
 								<ResponsiveUAGFocalPointPicker
