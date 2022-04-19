@@ -135,6 +135,8 @@ function styling( props ) {
 		containerFullWidth = rootContainer ? rootContainer.clientWidth : '100vw';
 	}
 
+	let backgroundVideoOpacityValue = backgroundVideoOpacity ? 1 - backgroundVideoOpacity : 0.5;
+
 	const selectors = {
 		' .uagb-container__shape-top svg' : {
 			'width': 'calc( ' + topWidth + '% + 1.3px )',
@@ -154,7 +156,7 @@ function styling( props ) {
 			'background': backgroundVideoColor
 		},
 		' .uagb-container__video-wrap video' : {
-			'opacity': backgroundVideoOpacity
+			'opacity': backgroundVideoOpacityValue
 		}
 	};
 

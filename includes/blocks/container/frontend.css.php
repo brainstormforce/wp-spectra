@@ -90,7 +90,7 @@ $selectors = array(
 		'background' => $attr['backgroundVideoColor'],
 	),
 	'.uagb-block-' . $id . ' .uagb-container__video-wrap video' => array(
-		'opacity' => $attr['backgroundVideoOpacity'],
+		'opacity' => 1 - $attr['backgroundVideoOpacity'],
 	),
 );
 
