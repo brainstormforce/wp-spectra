@@ -204,14 +204,6 @@ const Settings = ( props ) => {
 							value: 'h6',
 							label: __( 'H6', 'ultimate-addons-for-gutenberg' ),
 						},
-						{
-							value: 'p',
-							label: __( 'P', 'ultimate-addons-for-gutenberg' ),
-						},
-						{
-							value: 'div',
-							label: __( 'DIV', 'ultimate-addons-for-gutenberg' ),
-						},
 					] }
 				/>
 				<SelectControl
