@@ -112,13 +112,9 @@ if ( 'full' !== $attr['alignMobile'] ) {
 		'width' => '100%',
 	);
 }
-$top_padding    = isset( $attr['topPadding'] ) ? $attr['topPadding'] : $attr['vPadding'];
-$bottom_padding = isset( $attr['bottomPadding'] ) ? $attr['bottomPadding'] : $attr['vPadding'];
-$left_padding   = isset( $attr['leftPadding'] ) ? $attr['leftPadding'] : $attr['hPadding'];
-$right_padding  = isset( $attr['rightPadding'] ) ? $attr['rightPadding'] : $attr['hPadding'];
 
 if ( $attr['childMigrate'] ) {
-	$selectors[' .uagb-buttons-repeater:not(.wp-block-button__link) .uagb-button__link'] = array( // For Backword user.
+	$selectors[' .uagb-buttons-repeater:not(.wp-block-button__link) .uagb-button__link']   = array( // For Backword user.
 		'font-family'     => $attr['fontFamily'],
 		'text-transform'  => $attr['fontTransform'],
 		'text-decoration' => $attr['fontDecoration'],
@@ -127,7 +123,7 @@ if ( $attr['childMigrate'] ) {
 		'font-size'       => UAGB_Helper::get_css_value( $attr['fontSize'], $attr['fontSizeType'] ),
 		'line-height'     => UAGB_Helper::get_css_value( $attr['lineHeight'], $attr['lineHeightType'] ),
 	);
-	$selectors[' .uagb-buttons-repeater .uagb-button__link']                             = array( // For New User.
+	$selectors[' .uagb-buttons-repeater .uagb-button__link']                               = array( // For New User.
 		'font-family'     => $attr['fontFamily'],
 		'text-transform'  => $attr['fontTransform'],
 		'text-decoration' => $attr['fontDecoration'],
@@ -136,17 +132,17 @@ if ( $attr['childMigrate'] ) {
 		'font-size'       => UAGB_Helper::get_css_value( $attr['fontSize'], $attr['fontSizeType'] ),
 		'line-height'     => UAGB_Helper::get_css_value( $attr['lineHeight'], $attr['lineHeightType'] ),
 	);
-	$selectors[' .uagb-buttons-repeater']   = array( // For New User.
-		'padding-top'    => UAGB_Helper::get_css_value( $top_padding, $attr['paddingUnit'] ),
-		'padding-bottom' => UAGB_Helper::get_css_value( $bottom_padding, $attr['paddingUnit'] ),
-		'padding-left'   => UAGB_Helper::get_css_value( $left_padding, $attr['paddingUnit'] ),
-		'padding-right'  => UAGB_Helper::get_css_value( $right_padding, $attr['paddingUnit'] ),
+	$selectors['.uagb-buttons__outer-wrap .uagb-buttons-repeater.wp-block-button__link']   = array( // For New User.
+		'padding-top'    => UAGB_Helper::get_css_value( $attr['topPadding'], $attr['paddingUnit'] ),
+		'padding-bottom' => UAGB_Helper::get_css_value( $attr['bottomPadding'], $attr['paddingUnit'] ),
+		'padding-left'   => UAGB_Helper::get_css_value( $attr['leftPadding'], $attr['paddingUnit'] ),
+		'padding-right'  => UAGB_Helper::get_css_value( $attr['rightPadding'], $attr['paddingUnit'] ),
 		'margin-top'     => UAGB_Helper::get_css_value( $attr['topMargin'], $attr['marginType'] ),
 		'margin-bottom'  => UAGB_Helper::get_css_value( $attr['bottomMargin'], $attr['marginType'] ),
 		'margin-left'    => UAGB_Helper::get_css_value( $attr['leftMargin'], $attr['marginType'] ),
 		'margin-right'   => UAGB_Helper::get_css_value( $attr['rightMargin'], $attr['marginType'] ),
 	);
-	$t_selectors[' .uagb-buttons-repeater'] = array(
+	$t_selectors['.uagb-buttons__outer-wrap .uagb-buttons-repeater.wp-block-button__link'] = array(
 		'font-size'      => UAGB_Helper::get_css_value( $attr['fontSizeTablet'], $attr['fontSizeType'] ),
 		'line-height'    => UAGB_Helper::get_css_value( $attr['lineHeightTablet'], $attr['lineHeightType'] ),
 		'padding-top'    => UAGB_Helper::get_css_value( $attr['topTabletPadding'], $attr['tabletPaddingUnit'] ),
@@ -159,7 +155,7 @@ if ( $attr['childMigrate'] ) {
 		'margin-right'   => UAGB_Helper::get_css_value( $attr['rightMarginTablet'], $attr['marginType'] ),
 
 	);
-	$m_selectors[' .uagb-buttons-repeater'] = array(
+	$m_selectors['.uagb-buttons__outer-wrap .uagb-buttons-repeater.wp-block-button__link'] = array(
 		'font-size'      => UAGB_Helper::get_css_value( $attr['fontSizeMobile'], $attr['fontSizeType'] ),
 		'line-height'    => UAGB_Helper::get_css_value( $attr['lineHeightMobile'], $attr['lineHeightType'] ),
 		'padding-top'    => UAGB_Helper::get_css_value( $attr['topMobilePadding'], $attr['mobilePaddingUnit'] ),

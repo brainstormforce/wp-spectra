@@ -296,7 +296,7 @@ const Settings = ( props ) => {
 	const styleSettings = () => {
 		return (
 			<UAGAdvancedPanelBody
-				title={ __( 'Button', 'ultimate-addons-for-gutenberg' ) }
+				title={ __( 'Text', 'ultimate-addons-for-gutenberg' ) }
 				initialOpen={ false }
 			>
 
