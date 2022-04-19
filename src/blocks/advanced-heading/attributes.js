@@ -42,6 +42,7 @@ const attributes = {
 	},
 	separatorColor: {
 		type: 'string',
+		default: '#0170b9',
 		UAGCopyPaste: {
 			styleType: 'separator-color'
 		}
@@ -73,7 +74,7 @@ const attributes = {
 		UAGCopyPaste: {
 			styleType: 'separator-width'
 		},
-		default: 9
+		default: 12
 	},
 	separatorWidthType: {
 		type: 'string',
