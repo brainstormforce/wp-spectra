@@ -43,8 +43,18 @@ class UAGB_Coming_Soon {
 		$enabled_coming_soon = UAGB_Admin_Helper::get_admin_settings_option( 'uag_enable_coming_soon_mode', 'disabled' );
 		if ( 'enabled' === $enabled_coming_soon && ! is_user_logged_in() ) {
 			add_action( 'template_redirect', array( $this, 'set_coming_soon_page' ), 99 );
+			add_filter( 'template_include', array( $this, 'set_coming_soon_template' ) );
 			add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_asset_files' ) );
 		}
+	}
+
+	/**
+	 * Set Coming Soon Template.
+	 *
+	 * @since x.x.x
+	 */
+	public function set_coming_soon_template() {
+		require_once UAGB_DIR . 'templates/coming-soon-template.php';
 	}
 
 	/**
