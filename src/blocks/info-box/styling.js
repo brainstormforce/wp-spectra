@@ -246,16 +246,16 @@ function styling( props ) {
 				iconMarginUnit
 			),
 		},
-		' .uagb-ifb-content .uagb-ifb-icon-wrap:hover > svg': {
+		' .uagb-ifb-content .uagb-ifb-icon-wrap > svg:hover': {
 			'fill': iconHover,
 		},
-		'.uagb-infobox-icon-left .uagb-ifb-icon-wrap:hover > svg': {
+		'.uagb-infobox-icon-left .uagb-ifb-icon-wrap > svg:hover': {
 			'fill': iconHover,
 		},
-		'.uagb-infobox-icon-right .uagb-ifb-icon-wrap:hover > svg': {
+		'.uagb-infobox-icon-right .uagb-ifb-icon-wrap:hover > svg:hover': {
 			'fill': iconHover,
 		},
-		'.uagb-infobox__content-wrap .uagb-ifb-icon-wrap:hover > svg': {
+		'.uagb-infobox__content-wrap .uagb-ifb-icon-wrap > svg:hover': {
 			'fill': iconHover,
 		},
 		'.uagb-infobox_cta-type-all:hover .uagb-infobox__content-wrap svg': {

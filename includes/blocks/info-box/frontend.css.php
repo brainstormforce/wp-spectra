@@ -86,7 +86,7 @@ $selectors = array(
 		'margin-top'    => UAGB_Helper::get_css_value( $attr['iconTopMargin'], 'px' ),
 		'margin-bottom' => UAGB_Helper::get_css_value( $attr['iconBottomMargin'], 'px' ),
 	),
-	' .uagb-ifb-content .uagb-ifb-icon-wrap:hover svg'     => array(
+	' .uagb-ifb-content .uagb-ifb-icon-wrap svg:hover'     => array(
 		'fill'  => $attr['iconHover'],
 		'color' => $attr['iconHover'],
 	),

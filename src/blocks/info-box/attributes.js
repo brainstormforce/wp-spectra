@@ -376,7 +376,7 @@ const attributes = {
 	},
 	subHeadSpace: {
 		type: 'number',
-		default: 10,
+		default: 20,
 		UAGCopyPaste: {
 			styleType: 'desc-bottom-margin'
 		}
@@ -435,7 +435,10 @@ const attributes = {
 	},
 	seperatorPosition: {
 		type: 'string',
-		default: 'separator-position',
+		default: 'after_title',
+		UAGCopyPaste: {
+			styleType: 'seperator-position'
+		}
 	},
 	seperatorStyle: {
 		type: 'string',

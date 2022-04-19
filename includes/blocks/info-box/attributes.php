@@ -167,7 +167,7 @@ return array(
 	'subHeadTabletSpace'         => '',
 	'subHeadMobileSpace'         => '',
 	'subHeadSpaceUnit'           => 'px',
-	'subHeadSpace'               => '10',
+	'subHeadSpace'               => '20',
 	'subHeadTopMargin'           => '',
 	'subHeadRightMargin'         => '',
 	'subHeadLeftMargin'          => '',

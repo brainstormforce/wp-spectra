@@ -1075,7 +1075,7 @@ const Settings = ( props ) => {
 										) }
 										<Range
 											label={ __(
-												'Rounded Corners (px)',
+												'Rounded Corners',
 												'ultimate-addons-for-gutenberg'
 											) }
 											setAttributes={ setAttributes }
@@ -2059,6 +2059,7 @@ const Settings = ( props ) => {
 												label: 'paddingspacingLink',
 											} }
 										/>
+										<hr className="uagb-editor__separator" />
 										<Border
 											setAttributes={ setAttributes }
 											borderStyle={ {
