@@ -77,7 +77,7 @@ function styling( props ) {
 		'line-height': generateCSSUnit( lineHeight, lineHeightType ),
 	};
 
-	selectors[ ' .uagb-button__wrapper .uagb-buttons-repeater' ] = { // For new user.
+	selectors[ '.uagb-buttons__outer-wrap .uagb-button__wrapper .uagb-buttons-repeater.wp-block-button__link' ] = { // For new user.
 		'font-family': fontFamily,
 		'font-style' : fontStyle,
 		'text-decoration': fontDecoration,
