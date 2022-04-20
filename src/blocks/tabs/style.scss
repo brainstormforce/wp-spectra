@@ -29,7 +29,7 @@
 		}
 
 		.uagb-tabs__icon-position-left {
-			display: inline-flex;
+			display: block;
 			align-items: center;
 
 			.uagb-tabs__icon {
@@ -54,7 +54,7 @@
 		}
 
 		.uagb-tabs__icon-position-right {
-			display: inline-flex;
+			display: block;
 
 			.uagb-tabs__icon {
 				margin-top: 3px;
