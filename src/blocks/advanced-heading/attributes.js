@@ -172,6 +172,32 @@ const attributes = {
 			styleType: 'main-title-line-height-mobile'
 		}
 	},
+	headLetterSpacing: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'main-title-letter-spacing'
+		}
+	},
+	headLetterSpacingTablet: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'main-title-letter-spacing-tablet'
+		}
+	},
+	headLetterSpacingMobile: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'main-title-letter-spacing-mobile'
+		}
+	},
+	headLetterSpacingType: {
+		type: 'string',
+		default: 'px',
+		UAGCopyPaste: {
+			styleType: 'main-title-letter-spacing-type'
+		}
+	},
+	// sub headline.
 	subHeadFontFamily: {
 		type: 'string',
 		default: '',
@@ -254,6 +280,32 @@ const attributes = {
 			styleType: 'desc-line-height-mobile'
 		}
 	},
+	subHeadLetterSpacing: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'desc-letter-spacing'
+		}
+	},
+	subHeadLetterSpacingTablet: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'desc-letter-spacing-tablet'
+		}
+	},
+	subHeadLetterSpacingMobile: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'desc-letter-spacing-mobile'
+		}
+	},
+	subHeadLetterSpacingType: {
+		type: 'string',
+		default: 'px',
+		UAGCopyPaste: {
+			styleType: 'desc-letter-spacing-type'
+		}
+	},
+	// separator
 	separatorSpace: {
 		type: 'number',
 		default: 15,
@@ -434,32 +486,6 @@ const attributes = {
 		type: 'string',
 		UAGCopyPaste: {
 			styleType: 'link-hover-color'
-		}
-	},
-	// letter spacing
-	headLetterSpacing: {
-		type: 'number',
-		UAGCopyPaste: {
-			styleType: 'main-title-letter-spacing'
-		}
-	},
-	headLetterSpacingTablet: {
-		type: 'number',
-		UAGCopyPaste: {
-			styleType: 'main-title-letter-spacing-tablet'
-		}
-	},
-	headLetterSpacingMobile: {
-		type: 'number',
-		UAGCopyPaste: {
-			styleType: 'main-title-letter-spacing-mobile'
-		}
-	},
-	headLetterSpacingType: {
-		type: 'string',
-		default: 'px',
-		UAGCopyPaste: {
-			styleType: 'main-title-letter-spacing-type'
 		}
 	},
 };

@@ -73,6 +73,10 @@ const Settings = ( props ) => {
 		separatorSpace,
 		headLoadGoogleFonts,
 		subHeadLoadGoogleFonts,
+		subHeadLetterSpacing,
+		subHeadLetterSpacingTablet,
+		subHeadLetterSpacingMobile,
+		subHeadLetterSpacingType,
 		// padding
 		headingBlockTopPadding,
 		headingBlockRightPadding,
@@ -488,6 +492,22 @@ const Settings = ( props ) => {
 						lineHeightTablet={ {
 							value: subHeadLineHeightTablet,
 							label: 'subHeadLineHeightTablet',
+						} }
+						letterSpacing={ {
+							value: subHeadLetterSpacing,
+							label: 'subHeadLetterSpacing',
+						} }
+						letterSpacingTablet={ {
+							value: subHeadLetterSpacingTablet,
+							label: 'subHeadLetterSpacingTablet',
+						} }
+						letterSpacingMobile={ {
+							value: subHeadLetterSpacingMobile,
+							label: 'subHeadLetterSpacingMobile',
+						} }
+						letterSpacingType={ {
+							value: subHeadLetterSpacingType,
+							label: 'subHeadLetterSpacingType',
 						} }
 					/>
 				</Suspense>

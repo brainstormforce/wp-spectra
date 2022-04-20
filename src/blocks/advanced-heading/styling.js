@@ -49,6 +49,10 @@ function styling( props ) {
 		headDecoration,
 		subHeadTransform,
 		subHeadDecoration,
+		subHeadLetterSpacing,
+		subHeadLetterSpacingTablet,
+		subHeadLetterSpacingMobile,
+		subHeadLetterSpacingType,
 		// padding
 		headingBlockTopPadding,
 		headingBlockRightPadding,
@@ -140,6 +144,7 @@ function styling( props ) {
 				subHeadLineHeight,
 				subHeadLineHeightType
 			),
+			'letter-spacing': generateCSSUnit( subHeadLetterSpacing, subHeadLetterSpacingType ),
 			'color': subHeadingColor,
 		},
 		'.wp-block-uagb-advanced-heading a': {
@@ -228,6 +233,7 @@ function styling( props ) {
 			subHeadLineHeightTablet,
 			subHeadLineHeightType
 		),
+		'letter-spacing': generateCSSUnit( subHeadLetterSpacingTablet, subHeadLetterSpacingType ),
 	};
 	// mobile
 	mobile_selectors['.wp-block-uagb-advanced-heading '] = {
@@ -281,6 +287,7 @@ function styling( props ) {
 			subHeadLineHeightMobile,
 			subHeadLineHeightType
 		),
+		'letter-spacing': generateCSSUnit( subHeadLetterSpacingMobile, subHeadLetterSpacingType ),
 	};
 
 	const base_selector = `.editor-styles-wrapper .uagb-block-${ props.clientId.substr(
