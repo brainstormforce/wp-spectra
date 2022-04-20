@@ -6,7 +6,7 @@
  * It is auto-generated.
  */
 
-registerBlockType( 'uagb/advanced-heading', { title: __( 'Creative Heading', 'ultimate-addons-for-gutenberg' ) } );
+registerBlockType( 'uagb/advanced-heading', { title: __( 'Heading', 'ultimate-addons-for-gutenberg' ) } );
 registerBlockType( 'uagb/blockquote', { title: __( 'Blockquote', 'ultimate-addons-for-gutenberg' ) } );
 registerBlockType( 'uagb/buttons', { title: __( 'Buttons', 'ultimate-addons-for-gutenberg' ) } );
 registerBlockType( 'uagb/call-to-action', { title: __( 'Call To Action', 'ultimate-addons-for-gutenberg' ) } );
