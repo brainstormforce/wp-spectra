@@ -8,7 +8,7 @@
 
 registerBlockType( 'uagb/advanced-heading', { title: __( 'Creative Heading', 'ultimate-addons-for-gutenberg' ) } );
 registerBlockType( 'uagb/blockquote', { title: __( 'Blockquote', 'ultimate-addons-for-gutenberg' ) } );
-registerBlockType( 'uagb/buttons', { title: __( 'Multi Buttons', 'ultimate-addons-for-gutenberg' ) } );
+registerBlockType( 'uagb/buttons', { title: __( 'Buttons', 'ultimate-addons-for-gutenberg' ) } );
 registerBlockType( 'uagb/call-to-action', { title: __( 'Call To Action', 'ultimate-addons-for-gutenberg' ) } );
 registerBlockType( 'uagb/cf7-styler', { title: __( 'Contact Form 7 Designer', 'ultimate-addons-for-gutenberg' ) } );
 registerBlockType( 'uagb/columns', { title: __( 'Advanced Columns', 'ultimate-addons-for-gutenberg' ) } );
