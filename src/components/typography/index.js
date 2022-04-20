@@ -35,6 +35,7 @@ const TypographyControl = ( props ) => {
 	let showAdvancedFontControls;
 	let transform;
 	let decoration;
+	let letterSpacing;
 	const activeClass = showAdvancedControls ? 'active' : '';
 
 	const {
@@ -71,6 +72,35 @@ const TypographyControl = ( props ) => {
 				) }
 				sizeText={ __(
 					'Line Height',
+					'ultimate-addons-for-gutenberg'
+				) }
+				steps={ 0.1 }
+				{ ...props }
+			/>
+		);
+	}
+
+	if ( props.letterSpacing ) {
+		letterSpacing = (
+			<RangeTypographyControl
+				type={ props.letterSpacingType }
+				typeLabel={ props.letterSpacingType.label }
+				sizeMobile={ props.letterSpacingMobile }
+				sizeMobileLabel={ props.letterSpacingMobile.label }
+				sizeTablet={ props.letterSpacingTablet }
+				sizeTabletLabel={ props.letterSpacingTablet.label }
+				size={ props.letterSpacing }
+				sizeLabel={ props.letterSpacing.label }
+				sizeMobileText={ __(
+					'Letter Spacing',
+					'ultimate-addons-for-gutenberg'
+				) }
+				sizeTabletText={ __(
+					'Letter Spacing',
+					'ultimate-addons-for-gutenberg'
+				) }
+				sizeText={ __(
+					'Letter Spacing',
 					'ultimate-addons-for-gutenberg'
 				) }
 				steps={ 0.1 }
@@ -222,6 +252,7 @@ const TypographyControl = ( props ) => {
 				{ fontFamily }
 				{ fontSize }
 				{ fontWeight }
+				{letterSpacing}
 				<div className="uag-typography-transform-decoration-wrap">
 					{ transform }
 					{ decoration }
@@ -236,6 +267,7 @@ const TypographyControl = ( props ) => {
 				{ fontFamily }
 				{ fontSize }
 				{ fontWeight }
+				{letterSpacing}
 				<div className="uag-typography-transform-decoration-wrap">
 					{ transform }
 					{ decoration }

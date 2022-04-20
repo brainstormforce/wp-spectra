@@ -45,6 +45,11 @@ const Settings = ( props ) => {
 		headLineHeight,
 		headLineHeightMobile,
 		headLineHeightTablet,
+		headLetterSpacing,
+		headLetterSpacingTablet,
+		headLetterSpacingMobile,
+		headLetterSpacingType,
+		// sub head
 		subHeadFontFamily,
 		subHeadFontWeight,
 		subHeadFontStyle,
@@ -104,7 +109,7 @@ const Settings = ( props ) => {
 		headingBlockMarginLink,
 		// link
 		linkColor,
-		linkHColor
+		linkHColor,
 	} = attributes;
 
 	let loadHeadingGoogleFonts;
@@ -370,6 +375,22 @@ const Settings = ( props ) => {
 						lineHeightTablet={ {
 							value: headLineHeightTablet,
 							label: 'headLineHeightTablet',
+						} }
+						letterSpacing={ {
+							value: headLetterSpacing,
+							label: 'headLetterSpacing',
+						} }
+						letterSpacingTablet={ {
+							value: headLetterSpacingTablet,
+							label: 'headLetterSpacingTablet',
+						} }
+						letterSpacingMobile={ {
+							value: headLetterSpacingMobile,
+							label: 'headLetterSpacingMobile',
+						} }
+						letterSpacingType={ {
+							value: headLetterSpacingType,
+							label: 'headLetterSpacingType',
 						} }
 					/>
 				</Suspense>

@@ -29,6 +29,11 @@ function styling( props ) {
 		headLineHeightType,
 		headLineHeightMobile,
 		headLineHeightTablet,
+		headLetterSpacing,
+		headLetterSpacingTablet,
+		headLetterSpacingMobile,
+		headLetterSpacingType,
+		// sub heading
 		subHeadFontFamily,
 		subHeadFontStyle,
 		subHeadFontWeight,
