@@ -17,6 +17,7 @@ $selectors = array(
 	' .uagb-heading-text'              => array(
 		'color'         => $attr['headingColor'],
 		'margin-bottom' => UAGB_Helper::get_css_value( $attr['headSpace'], 'px' ),
+		'letter-spacing' => UAGB_Helper::get_css_value( $attr['headLetterSpacing'], $attr['headLetterSpacingType'] ),
 	),
 	'.wp-block-uagb-advanced-heading ' => array(
 		'text-align' => $attr['headingAlign'],
@@ -75,7 +76,9 @@ if ( 'none' !== $seperatorStyle ) {
 		'margin-bottom'    => UAGB_Helper::get_css_value( $attr['separatorSpace'], 'px' ),
 	);
 }
-
+$t_selectors[' .uagb-heading-text'] = array(
+	'letter-spacing' => UAGB_Helper::get_css_value( $attr['headLetterSpacingTablet'], $attr['headLetterSpacingType'] ),
+);
 $t_selectors['.wp-block-uagb-advanced-heading ']                                    = array(
 	'padding-top'    => UAGB_Helper::get_css_value( $attr['headingBlockTopPaddingTablet'], $attr['headingBlockPaddingUnitTablet'] ),
 	'padding-right'  => UAGB_Helper::get_css_value( $attr['headingBlockRightPaddingTablet'], $attr['headingBlockPaddingUnitTablet'] ),
@@ -87,6 +90,9 @@ $t_selectors['.wp-block-uagb-advanced-heading ']                                
 	'margin-left'   => UAGB_Helper::get_css_value( $attr['headingBlockLeftMarginTablet'], $attr['headingBlockMarginUnitTablet'] ),
 );
 
+$m_selectors[' .uagb-heading-text'] = array(
+	'letter-spacing' => UAGB_Helper::get_css_value( $attr['headLetterSpacingMobile'], $attr['headLetterSpacingType'] ),
+);
 $m_selectors['.wp-block-uagb-advanced-heading ']                                    = array(
 	'padding-top'    => UAGB_Helper::get_css_value( $attr['headingBlockTopPaddingMobile'], $attr['headingBlockPaddingUnitMobile'] ),
 	'padding-right'  => UAGB_Helper::get_css_value( $attr['headingBlockRightPaddingMobile'], $attr['headingBlockPaddingUnitMobile'] ),

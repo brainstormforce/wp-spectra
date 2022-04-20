@@ -457,7 +457,7 @@ const attributes = {
 	},
 	headLetterSpacingType: {
 		type: 'string',
-		default: 'em',
+		default: 'px',
 		UAGCopyPaste: {
 			styleType: 'main-title-letter-spacing-type'
 		}

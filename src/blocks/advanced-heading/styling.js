@@ -160,6 +160,7 @@ function styling( props ) {
 		'line-height': generateCSSUnit( headLineHeight, headLineHeightType ),
 		'color': headingColor,
 		'margin-bottom': generateCSSUnit( headSpace, 'px' ),
+		'letter-spacing': generateCSSUnit( headLetterSpacing, headLetterSpacingType ),
 	};
 
 
@@ -216,6 +217,7 @@ function styling( props ) {
 			headLineHeightTablet,
 			headLineHeightType
 		),
+		'letter-spacing': generateCSSUnit( headLetterSpacingTablet, headLetterSpacingType ),
 	};
 	tablet_selectors[ ' .uagb-desc-text' ] = {
 		'font-size': generateCSSUnit(
@@ -268,6 +270,7 @@ function styling( props ) {
 			headLineHeightMobile,
 			headLineHeightType
 		),
+		'letter-spacing': generateCSSUnit( headLetterSpacingMobile, headLetterSpacingType ),
 	};
 	mobile_selectors[ ' .uagb-desc-text' ] = {
 		'font-size': generateCSSUnit(
