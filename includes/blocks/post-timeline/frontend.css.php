@@ -86,7 +86,7 @@ $t_selectors = array(
 	),
 	' .uagb-timeline__heading-text' => array(
 		'margin-bottom' => UAGB_Helper::get_css_value( $attr['headSpaceTablet'], 'px' ),
-		'margin-top'    => UAGB_Helper::get_css_value( $attr['headTopSpaceTablet'], 'px' ),
+		'margin-top'    => UAGB_Helper::get_css_value( $attr['headTopSpacingTablet'], 'px' ),
 	),
 	'.uagb_timeline__cta-enable .uagb-timeline-desc-content' => array(
 		'margin-top' => UAGB_Helper::get_css_value( $attr['authorSpaceTablet'], 'px' ),
@@ -125,7 +125,7 @@ $m_selectors = array(
 	),
 	' .uagb-timeline__heading-text' => array(
 		'margin-bottom' => UAGB_Helper::get_css_value( $attr['headSpaceMobile'], 'px' ),
-		'margin-top'    => UAGB_Helper::get_css_value( $attr['headTopSpaceMobile'], 'px' ),
+		'margin-top'    => UAGB_Helper::get_css_value( $attr['headTopSpacingMobile'], 'px' ),
 	),
 	'.uagb_timeline__cta-enable .uagb-timeline-desc-content' => array(
 		'margin-top' => UAGB_Helper::get_css_value( $attr['authorSpaceMobile'], 'px' ),

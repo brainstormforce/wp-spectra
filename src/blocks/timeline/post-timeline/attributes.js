@@ -1015,12 +1015,14 @@ const attributes = { // eslint-disable-line no-unused-vars
 	},
 	headTopSpacingMobile : {
 		type: 'number',
+		default : 0,
 		UAGCopyPaste: {
 			styleType: 'main-title-top-spacing'
 		},
 	},
 	headTopSpacingTablet : {
 		type: 'number',
+		default : 0,
 		UAGCopyPaste: {
 			styleType: 'main-title-top-spacing'
 		},

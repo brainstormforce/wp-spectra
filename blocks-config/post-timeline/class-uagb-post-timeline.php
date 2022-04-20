@@ -503,10 +503,12 @@ if ( ! class_exists( 'UAGB_Post_Timeline' ) ) {
 							'type' => 'number',
 						),
 						'headTopSpacingTablet'    => array(
-							'type' => 'number',
+							'type'    => 'number',
+							'default' => 0,
 						),
 						'headTopSpacingMobile'    => array(
-							'type' => 'number',
+							'type'    => 'number',
+							'default' => 0,
 						),
 						'iconSize'                => array(
 							'type'    => 'number',
