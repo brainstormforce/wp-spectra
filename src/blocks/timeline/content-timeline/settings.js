@@ -369,10 +369,6 @@ const Settings = ( props ) => {
 						{
 							value: 'top',
 							label: __( 'Top', 'ultimate-addons-for-gutenberg' ),
-							tooltip: __(
-								'Top',
-								'ultimate-addons-for-gutenberg'
-							),
 						},
 						{
 							value: 'bottom',
@@ -380,18 +376,10 @@ const Settings = ( props ) => {
 								'Bottom',
 								'ultimate-addons-for-gutenberg'
 							),
-							tooltip: __(
-								'Bottom',
-								'ultimate-addons-for-gutenberg'
-							),
 						},
 						{
 							value: 'center',
 							label: __(
-								'Center',
-								'ultimate-addons-for-gutenberg'
-							),
-							tooltip: __(
 								'Center',
 								'ultimate-addons-for-gutenberg'
 							),
@@ -411,26 +399,14 @@ const Settings = ( props ) => {
 						{
 							value: 'none',
 							label: 'None',
-							tooltip: __(
-								'None',
-								'ultimate-addons-for-gutenberg'
-							),
 						},
 						{
 							value: 'tablet',
 							label: 'Tablet',
-							tooltip: __(
-								'Tablet',
-								'ultimate-addons-for-gutenberg'
-							),
 						},
 						{
 							value: 'mobile',
 							label: 'Mobile',
-							tooltip: __(
-								'Mobile',
-								'ultimate-addons-for-gutenberg'
-							),
 						},
 					] }
 					showIcons={ false }
