@@ -10,6 +10,7 @@ import ResponsiveSelectControl from '@Components/responsive-select';
 import { useDeviceType } from '@Controls/getPreviewType';
 import ResponsiveUAGImage from '@Components/responsive-image';
 import ResponsiveUAGFocalPointPicker from '@Components/responsive-focal-point-picker';
+import MultiButtonsControl from '@Components/multi-buttons-control';
 
 const Background = ( props ) => {
 	// Add and remove the CSS on the drop and remove of the component.
@@ -563,17 +564,17 @@ const Background = ( props ) => {
 					{ overlayType && backgroundImage &&
 						<>
 							<div className="uag-background-image-overlay-type">
-								<SelectControl
+								<MultiButtonsControl
+									setAttributes={ setAttributes }
 									label={ __(
 										'Overlay Type',
 										'ultimate-addons-for-gutenberg'
 									) }
-									value={ overlayType.value }
-									onChange={ ( value ) =>
-										setAttributes( {
-											[ overlayType.label ]: value,
-										} )
-									}
+									data={ {
+										value: overlayType.value,
+										label: overlayType.label,
+									} }
+									className="uagb-multi-button-alignment-control"
 									options={ [
 										{
 											value: 'color',
@@ -597,6 +598,7 @@ const Background = ( props ) => {
 											),
 										},
 									] }
+									showIcons={ false }
 								/>
 							</div>
 							{ 'color' === overlayType.value && (
@@ -656,17 +658,17 @@ const Background = ( props ) => {
 						{ overlayType && backgroundVideo &&
 							<>
 								<div className="uag-background-image-overlay-type">
-									<SelectControl
+									<MultiButtonsControl
+										setAttributes={ setAttributes }
 										label={ __(
 											'Overlay Type',
 											'ultimate-addons-for-gutenberg'
 										) }
-										value={ overlayType.value }
-										onChange={ ( value ) =>
-											setAttributes( {
-												[ overlayType.label ]: value,
-											} )
-										}
+										data={ {
+											value: overlayType.value,
+											label: overlayType.label,
+										} }
+										className="uagb-multi-button-alignment-control"
 										options={ [
 											{
 												value: 'color',
@@ -690,6 +692,7 @@ const Background = ( props ) => {
 												),
 											},
 										] }
+										showIcons={ false }
 									/>
 								</div>
 								{ 'color' === overlayType.value && (

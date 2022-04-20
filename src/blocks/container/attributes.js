@@ -776,7 +776,7 @@ const attributes = {
 		UAGCopyPaste: {
 			styleType: 'bg-video-opacity'
 		},
-		default: 1,
+		default: 0.5,
 	},
 };
 

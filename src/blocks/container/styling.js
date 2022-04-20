@@ -119,7 +119,8 @@ function styling( props ) {
 		overlayType,
 		backgroundVideoOpacity,
 		backgroundVideoColor,
-		innerContentCustomWidthType
+		innerContentCustomWidthType,
+		backgroundVideo
 	} = attributes;
 
 	let rootContainer = document.getElementById( `block-${ props.clientId }` );
@@ -135,7 +136,26 @@ function styling( props ) {
 		containerFullWidth = rootContainer ? rootContainer.clientWidth : '100vw';
 	}
 
-	let backgroundVideoOpacityValue = backgroundVideoOpacity ? 1 - backgroundVideoOpacity : 0.5;
+	const backgroundVideoOpacityValue = ( backgroundVideoOpacity && 'none' !== overlayType && ( ( 'color' === overlayType &&backgroundVideoColor ) || ( 'gradient' === overlayType && gradientValue ) ) ) ? 1 - backgroundVideoOpacity : 1;
+
+	const videoBackgroundAttributes = {
+        'backgroundType': backgroundType,
+        'backgroundImage': backgroundImageDesktop,
+        'backgroundColor': backgroundColor,
+        'gradientValue': gradientValue,
+        'backgroundRepeat': backgroundRepeatDesktop,
+        'backgroundPosition': backgroundPositionDesktop,
+        'backgroundSize': backgroundSizeDesktop,
+        'backgroundAttachment': backgroundAttachmentDesktop,
+		'backgroundCustomSize' : backgroundCustomSizeDesktop,
+		'backgroundCustomSizeType' : backgroundCustomSizeType,
+		'backgroundImageColor' : backgroundImageColor,
+		'overlayType' : overlayType,
+		'backgroundVideo' : backgroundVideo,
+		'backgroundVideoColor' : backgroundVideoColor,
+    };
+
+	const videoBackgroundCSS = generateBackgroundCSS( videoBackgroundAttributes );
 
 	const selectors = {
 		' .uagb-container__shape-top svg' : {
@@ -153,7 +173,7 @@ function styling( props ) {
 			'fill': hexToRgba( maybeGetColorForVariable( bottomColor ), 100 ),
 		},
 		' .uagb-container__video-wrap' : {
-			'background': backgroundVideoColor
+			...videoBackgroundCSS
 		},
 		' .uagb-container__video-wrap video' : {
 			'opacity': backgroundVideoOpacityValue
@@ -172,7 +192,9 @@ function styling( props ) {
 		'backgroundCustomSize' : backgroundCustomSizeDesktop,
 		'backgroundCustomSizeType' : backgroundCustomSizeType,
 		'backgroundImageColor' : backgroundImageColor,
-		'overlayType' : overlayType
+		'overlayType' : overlayType,
+		'backgroundVideo' : backgroundVideo,
+		'backgroundVideoColor' : backgroundVideoColor,
     };
 
 	const containerBackgroundCSSDesktop = generateBackgroundCSS( backgroundAttributesDesktop );
@@ -273,7 +295,9 @@ function styling( props ) {
 		'backgroundCustomSize' : backgroundCustomSizeTablet,
 		'backgroundCustomSizeType' : backgroundCustomSizeType,
 		'backgroundImageColor' : backgroundImageColor,
-		'overlayType' : overlayType
+		'overlayType' : overlayType,
+		'backgroundVideo' : backgroundVideo,
+		'backgroundVideoColor' : backgroundVideoColor,
     };
 
 	const containerBackgroundCSSTablet = generateBackgroundCSS( backgroundAttributesTablet );
@@ -328,7 +352,9 @@ function styling( props ) {
 		'backgroundCustomSize' : backgroundCustomSizeMobile,
 		'backgroundCustomSizeType' : backgroundCustomSizeType,
 		'backgroundImageColor' : backgroundImageColor,
-		'overlayType' : overlayType
+		'overlayType' : overlayType,
+		'backgroundVideo' : backgroundVideo,
+		'backgroundVideoColor' : backgroundVideoColor,
     };
 
 	const containerBackgroundCSSMobile = generateBackgroundCSS( backgroundAttributesMobile );

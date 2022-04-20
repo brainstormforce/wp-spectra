@@ -26,8 +26,13 @@ $bg_obj_desktop           = array(
 	'overlayType'              => $attr['overlayType'],
 	'backgroundCustomSize'     => $attr['backgroundCustomSizeDesktop'],
 	'backgroundCustomSizeType' => $attr['backgroundCustomSizeType'],
+	'backgroundVideo' => $attr['backgroundVideo'],
+	'backgroundVideoColor' => $attr['backgroundVideoColor'],
 );
 $container_bg_css_desktop = UAGB_Block_Helper::uag_get_background_obj( $bg_obj_desktop );
+
+$video_bg_css = UAGB_Block_Helper::uag_get_background_obj( $bg_obj_desktop );
+
 $container_css            = array(
 	'min-height'      => UAGB_Helper::get_css_value( $attr['minHeightDesktop'], $attr['minHeightType'] ),
 	'flex-direction'  => $attr['directionDesktop'],
@@ -64,6 +69,7 @@ $container_css            = array(
 );
 
 $container_css = array_merge( $container_css, $container_bg_css_desktop );
+$background_video_opacity_value = (isset($attr['backgroundVideoOpacity']) && 'none' !== $attr['overlayType'] && (('color' === $attr['overlayType'] && !empty($attr['backgroundVideoColor'])) || ('gradient' === $attr['overlayType'] && !empty($attr['gradientValue'])))) ? 1 - $attr['backgroundVideoOpacity'] : 1;
 
 $selectors = array(
 	'.uagb-block-' . $id                                  => $container_css, // phpcs:ignore WordPress.WP.GlobalVariablesOverride.Prohibited
@@ -86,11 +92,9 @@ $selectors = array(
 	'.uagb-block-' . $id . ' .uagb-container__shape.uagb-container__shape-bottom .uagb-container__shape-fill' => array(
 		'fill' => UAGB_Helper::hex2rgba( $attr['bottomColor'], ( isset( $attr['bottomDividerOpacity'] ) && '' !== $attr['bottomDividerOpacity'] ) ? $attr['bottomDividerOpacity'] : 100 ),
 	),
-	'.uagb-block-' . $id . ' .uagb-container__video-wrap' => array(
-		'background' => $attr['backgroundVideoColor'],
-	),
+	'.uagb-block-' . $id . ' .uagb-container__video-wrap' => $video_bg_css,
 	'.uagb-block-' . $id . ' .uagb-container__video-wrap video' => array(
-		'opacity' => 1 - $attr['backgroundVideoOpacity'],
+		'opacity' => $background_video_opacity_value,
 	),
 );
 
@@ -115,6 +119,8 @@ $bg_obj_tablet           = array(
 	'overlayType'              => $attr['overlayType'],
 	'backgroundCustomSize'     => $attr['backgroundCustomSizeTablet'],
 	'backgroundCustomSizeType' => $attr['backgroundCustomSizeType'],
+	'backgroundVideo' => $attr['backgroundVideo'],
+	'backgroundVideoColor' => $attr['backgroundVideoColor'],
 );
 $container_bg_css_tablet = UAGB_Block_Helper::uag_get_background_obj( $bg_obj_tablet );
 $container_tablet_css    = array(
@@ -164,6 +170,8 @@ $bg_obj_mobile           = array(
 	'overlayType'              => $attr['overlayType'],
 	'backgroundCustomSize'     => $attr['backgroundCustomSizeMobile'],
 	'backgroundCustomSizeType' => $attr['backgroundCustomSizeType'],
+	'backgroundVideo' => $attr['backgroundVideo'],
+	'backgroundVideoColor' => $attr['backgroundVideoColor'],
 );
 $container_bg_css_mobile = UAGB_Block_Helper::uag_get_background_obj( $bg_obj_mobile );
 $container_mobile_css    = array(

@@ -47,7 +47,7 @@ function generateBackgroundCSS ( backgroundAttributes ) {
         } else if ( 'video' === backgroundType ) {
 			if ( 'color' === overlayType && '' !== backgroundVideo && '' !== backgroundVideoColor && undefined !== backgroundVideoColor && 'unset' !== backgroundVideoColor ) {
 
-                bgCSS['background'] = backgroundVideoColor;
+                bgCSS.background = backgroundVideoColor;
             }
 			if (  'gradient' === overlayType && '' !== backgroundVideo && backgroundVideo && gradientValue ) {
                 bgCSS['background-image'] = gradientValue + ';';
