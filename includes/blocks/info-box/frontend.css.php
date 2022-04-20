@@ -98,6 +98,9 @@ $selectors = array(
 		'fill'  => $attr['iconHover'],
 		'color' => $attr['iconHover'],
 	),
+	' .uagb-infbox__link-to-all:hover ~.uagb-ifb-content .uagb-ifb-icon-wrap svg' => array(
+		'fill' => $attr['iconHover'],
+	),
 	'.uagb-infbox__link-to-all:hover ~.uagb-infobox__content-wrap svg' => array(
 		'fill' => $attr['iconHover'],
 	),
