@@ -14,7 +14,7 @@ import { registerBlockType } from '@wordpress/blocks';
 registerBlockType( 'uagb/image', {
 	title: __( 'Advanced Image', 'ultimate-addons-for-gutenberg' ),
 	description: __( 'This block let\'s you add an Image.', 'ultimate-addons-for-gutenberg' ),
-	icon: UAGB_Block_Icons.post_masonry,
+	icon: UAGB_Block_Icons.image,
 	keywords: [
 		__( 'image', 'ultimate-addons-for-gutenberg' ),
 		__( 'advance image', 'ultimate-addons-for-gutenberg' ),
