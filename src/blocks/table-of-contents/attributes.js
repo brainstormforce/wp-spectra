@@ -859,6 +859,10 @@ const attributes = {
 		UAGCopyPaste: {
 			styleType: 'main-title-align'
 		},
+	},
+	isPreview: {
+		type: 'boolean',
+		default: false,
 	}
 };
 

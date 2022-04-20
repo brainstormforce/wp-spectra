@@ -22,7 +22,7 @@ const Render = lazy( () =>
 import './style.scss';
 import { __ } from '@wordpress/i18n';
 
-import { withSelect, useDispatch, select, dispatch } from '@wordpress/data';
+import { withSelect, useDispatch, select } from '@wordpress/data';
 
 import { compose } from '@wordpress/compose';
 
@@ -72,7 +72,7 @@ const UAGBContainer = ( props ) => {
 			element = document.getElementById( 'block-' + props.clientId )
 		}
 		// Add Close Button for Variation Selector.
-		const variationPicker = element.querySelector( '.uagb-container-variation-picker .block-editor-block-variation-picker' );
+		const variationPicker = element?.querySelector( '.uagb-container-variation-picker .block-editor-block-variation-picker' );
 		const closeButton = document.createElement( 'button' );
 		closeButton.onclick = function() {
 			if ( props.defaultVariation.attributes ) {
@@ -196,33 +196,6 @@ const UAGBContainer = ( props ) => {
 				)
 		);
 	};
-
-	useEffect( ()=>{
-
-		const {
-			blockDescendants
-		} = props.attributes;
-
-		let currentDirection = 'row';
-
-		if ( props.attributes[ 'direction' + deviceType ].split( '-' )[0] ) {
-
-			currentDirection = props.attributes[ 'direction' + deviceType ].split( '-' )[0];
-		}
-		const childColumnsWidth = ( 100 / blockDescendants.length );
-
-		if ( 'row' === currentDirection ) {
-			blockDescendants.map( ( child ) => {
-				if ( ! child.attributes.widthSetByUser ) {
-					dispatch( 'core/block-editor' ).updateBlockAttributes( child.clientId, {
-						[`width${deviceType}`] : childColumnsWidth,
-					} );
-				}
-				return child;
-			} );
-		}
-
-	}, [props.attributes.blockDescendants] );
 
 	const { variations } = props;
 

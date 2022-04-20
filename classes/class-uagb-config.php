@@ -101,7 +101,7 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 					),
 					'uagb-cookie-lib'        => array(
 						'src'        => UAGB_URL . 'assets/js/js_cookie.min.js',
-						'dep'        => array( 'jquery' ),
+						'dep'        => array(),
 						'skipEditor' => true,
 					),
 					'uagb-bodymovin-js'      => array(
@@ -113,11 +113,11 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 					// Blocks.
 					'uagb-timeline-js'       => array(
 						'src' => UAGB_Scripts_Utils::get_js_url( 'timeline' ),
-						'dep' => array( 'jquery' ),
+						'dep' => array(),
 					),
 					'uagb-table-of-contents' => array(
 						'src' => UAGB_Scripts_Utils::get_js_url( 'table-of-contents' ),
-						'dep' => array( 'jquery' ),
+						'dep' => array(),
 					),
 					'uagb-post-js'           => array(
 						'src' => UAGB_Scripts_Utils::get_js_url( 'post' ),
@@ -130,21 +130,26 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 					),
 					'uagb-inline-notice-js'  => array(
 						'src'        => UAGB_Scripts_Utils::get_js_url( 'inline-notice' ),
-						'dep'        => array( 'jquery', 'uagb-cookie-lib' ),
+						'dep'        => array( 'uagb-cookie-lib' ),
 						'skipEditor' => true,
 					),
 					'uagb-tabs-js'           => array(
 						'src' => UAGB_Scripts_Utils::get_js_url( 'tabs' ),
-						'dep' => array( 'jquery' ),
+						'dep' => array(),
 					),
 					'uagb-forms-js'          => array(
 						'src' => UAGB_Scripts_Utils::get_js_url( 'forms' ),
-						'dep' => array( 'jquery' ),
+						'dep' => array(),
 					),
 					'uagb-lottie-js'         => array(
 						'src'        => UAGB_Scripts_Utils::get_js_url( 'lottie' ),
-						'dep'        => array( 'jquery', 'uagb-bodymovin-js' ),
+						'dep'        => array( 'uagb-bodymovin-js' ),
 						'skipEditor' => true,
+					),
+					'uagb-container-js'      => array(
+						'src'        => UAGB_Scripts_Utils::get_js_url( 'container' ),
+						'skipEditor' => true,
+						'dep'        => array(),
 					),
 				);
 			}
@@ -284,6 +289,9 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 					),
 					'uagb/wp-search'              => array(
 						'name' => 'wp-search',
+					),
+					'uagb/image'                  => array(
+						'name' => 'image',
 					),
 				);
 			}

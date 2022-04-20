@@ -205,6 +205,7 @@ class Admin_Menu {
 		$this->settings_app_scripts( $localize );
 	}
 
+
 	/**
 	 * Create an Array of Blocks info which we need to show in Admin dashboard.
 	 */
@@ -260,6 +261,7 @@ class Admin_Menu {
 					'post-image',
 					'post-button',
 					'post-excerpt',
+					'post-taxonomy',
 					'post-meta',
 					'restaurant-menu-child',
 					'content-timeline-child',

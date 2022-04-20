@@ -113,7 +113,17 @@ const globalDataReducer = ( state = {}, action ) => {
 			return {
 				...state,
 				settingsSavedNotification: action.payload,
-				};
+			};
+		case 'UPDATE_ENABLE_COMING_SOON':
+			return {
+				...state,
+				enableComingSoonMode: action.payload,
+			};
+		case 'UPDATE_COMING_SOON_PAGE':
+			return {
+				...state,
+				comingSoonPage: action.payload,
+			};
         default:
             return state;
     }

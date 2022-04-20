@@ -26,7 +26,9 @@ const setInitialState = ( store ) => {
 			siteKeyV2: data.recaptcha_site_key_v2,
 			secretKeyV2: data.recaptcha_secret_key_v2,
 			siteKeyV3: data.recaptcha_site_key_v3,
-			secretKeyV3: data.recaptcha_secret_key_v3
+			secretKeyV3: data.recaptcha_secret_key_v3,
+			enableComingSoonMode: data.enable_coming_soon_mode,
+			comingSoonPage: data.coming_soon_page
         };
 
         store.dispatch( {type: 'UPDATE_INITIAL_STATE', payload: initialState} );

@@ -485,6 +485,15 @@ class UAGB_Post_Assets {
 				'recaptcha_site_key_v3' => \UAGB_Admin_Helper::get_admin_settings_option( 'uag_recaptcha_site_key_v3', '' ),
 			)
 		);
+
+		wp_localize_script(
+			'uagb-container-js',
+			'uagb_container_data',
+			array(
+				'tablet_breakpoint' => UAGB_TABLET_BREAKPOINT,
+				'mobile_breakpoint' => UAGB_MOBILE_BREAKPOINT,
+			)
+		);
 	}
 
 	/**

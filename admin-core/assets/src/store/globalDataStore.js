@@ -24,6 +24,8 @@ const initialState = {
 	secretKeyV2: '',
 	secretKeyV3: '',
 	settingsSavedNotification: false,
+	enableComingSoonMode: 'disabled',
+	comingSoonPage: '',
 };
 
 const globalDataStore = createStore(

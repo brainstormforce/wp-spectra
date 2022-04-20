@@ -14,6 +14,7 @@ import PreloadLocalFonts from '@DashboardApp/pages/settings/PreloadLocalFonts';
 import CollapsePanels from '@DashboardApp/pages/settings/CollapsePanels';
 import CopyPasteStyles from '@DashboardApp/pages/settings/CopyPasteStyles';
 import ContentWidth from '@DashboardApp/pages/settings/ContentWidth';
+import ComingSoon from '@DashboardApp/pages/settings/ComingSoon';
 import SettingsSkeleton from '@DashboardApp/pages/settings/SettingsSkeleton';
 import BlockSettings from '@DashboardApp/pages/settings/BlockSettings';
 import { Link, useLocation } from 'react-router-dom';
@@ -36,7 +37,8 @@ const Settings = () => {
         { name: __( 'Version Control', 'ultimate-addons-for-gutenberg' ), slug: 'version-control', icon: SettingsIcons['version-control'] },
         { name: __( 'Performance', 'ultimate-addons-for-gutenberg' ), slug: 'fonts-performance', icon: SettingsIcons['fonts-performance'] },
 		{ name: __( 'Block Settings', 'ultimate-addons-for-gutenberg' ), slug: 'block-settings', icon: SettingsIcons['block-settings'] },
-	];
+		{ name: __( 'Coming Soon', 'ultimate-addons-for-gutenberg' ), slug: 'coming-soon', icon: SettingsIcons['coming-soon'] },
+    ];
 
 	useEffect( () => {
 		// Activate Setting Active Tab from "settingsTab" Hash in the URl is present.
@@ -113,6 +115,12 @@ const Settings = () => {
                             <BlockSettings/>
                         </>
                     }
+					{
+						'coming-soon' === activeSettingsNavigationTab &&
+						<>
+							<ComingSoon/>
+						</>
+					}
                 </div>
             </div>
         </main>

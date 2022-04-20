@@ -18,7 +18,7 @@
 		}
 	}
 
-	.components-tab-panel__tabs {
+	& > .components-tab-panel__tabs {
 		justify-content: space-between;
 		margin-bottom: 24px;
 		margin-left: -16px;

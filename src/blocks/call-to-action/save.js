@@ -9,6 +9,7 @@ import classnames from 'classnames';
 import Title from './components/Title';
 import Description from './components/Description';
 import CTA from './components/CallToActionNew';
+import SecondCTAButton from './components/SecondCTAButton';
 
 export default function save( props ) {
 	const {
@@ -19,11 +20,15 @@ export default function save( props ) {
 		ctaTarget,
 		ctaTitle,
 		description,
-		stack
+		stack,
+		enabledSecondCtaButton
 	} = props.attributes;
 	const isCta = (
 		<CTA attributes={ props.attributes } setAttributes="not_set" />
 	);
+
+	const secondCtaButton = ( 'button' === ctaType && enabledSecondCtaButton ) ? <SecondCTAButton attributes={ props.attributes } setAttributes="not_set" /> : '';
+
 
 	// Get description and seperator components.
 	const desc = (
@@ -56,6 +61,7 @@ export default function save( props ) {
 					{ titleText }
 					{ desc }
 					{ isCta }
+					{ secondCtaButton }
 				</>
 			) }
 
@@ -66,6 +72,7 @@ export default function save( props ) {
 						{ desc }
 					</div>
 					{isCta}
+					{secondCtaButton}
 				</>
 			) }
 		</>
