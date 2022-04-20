@@ -714,6 +714,10 @@ const attributes = {
 		type: 'boolean',
 		default: true,
 	},
+	showIcon: {
+		type: 'boolean',
+		default: true,
+	},
 	showDesc: {
 		type: 'boolean',
 		default: true,
