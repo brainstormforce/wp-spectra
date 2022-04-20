@@ -21,7 +21,11 @@ registerBlockType( 'uagb/image', {
 		__( 'caption', 'ultimate-addons-for-gutenberg' ),
 		__( 'overlay image', 'ultimate-addons-for-gutenberg' ),
 	],
-	example: {},
+	example: {
+		attributes: {
+			isPreview: true,
+		}
+	},
 	supports: {
 		anchor: true,
 		color: {

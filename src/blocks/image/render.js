@@ -56,6 +56,7 @@ const Render = ( props ) => {
 
 	const {
 		block_id,
+		isPreview,
 		layout,
 		url,
 		alt,
@@ -378,6 +379,8 @@ const Render = ( props ) => {
 		setAttributes( props );
 	}
 
+	const previewImageData = `${ uagb_blocks_info.uagb_url }/admin/assets/preview-images/image.svg`;
+
 	const blockProps = useBlockProps( {
 		ref,
 	} );
@@ -441,8 +444,8 @@ const Render = ( props ) => {
 					/>
 				</figure>
 				) }
-				<MediaPlaceholder
-					icon={ <BlockIcon icon={ UAGB_Block_Icons.post_masonry } /> }
+				{ isPreview ? ( <img width='100%' src={ previewImageData } alt=''/> ) : ( <MediaPlaceholder
+					icon={ <BlockIcon icon={ UAGB_Block_Icons.image } /> }
 					labels={
 						{
 							title: __( 'Advanced Image', 'ultimate-addons-for-gutenberg' ),
@@ -458,7 +461,7 @@ const Render = ( props ) => {
 					value={ { id, src } }
 					mediaPreview={ mediaPreview }
 					disableMediaButtons={ temporaryURL || url }
-				/>
+				/> )}
 			</div>
 		</React.Fragment>
 	);
