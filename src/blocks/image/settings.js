@@ -435,6 +435,13 @@ export default function Settings( props ) {
 						),
 					},
 					{
+						value: 'blob4',
+						label: __(
+							'Blob 4',
+							'ultimate-addons-for-gutenberg'
+						),
+					},
+					{
 						value: 'custom',
 						label: __(
 							'Custom',
