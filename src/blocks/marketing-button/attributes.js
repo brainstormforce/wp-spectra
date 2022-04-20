@@ -39,7 +39,13 @@ const attributes = {
 			styleType: 'main-title-bottom-margin'
 		}
 	},
-
+	titleSpaceUnit: {
+		type: 'string',
+		default: 'px',
+		UAGCopyPaste: {
+			styleType: 'main-title-bottom-margin'
+		}
+	},
 	// Border
 	borderStyle: {
 		type: 'string',
@@ -124,7 +130,7 @@ const attributes = {
 	},
 	backgroundType: {
 		type: 'string',
-		default: '',
+		default: 'color',
 		UAGCopyPaste: {
 			styleType: 'btn-bg-type'
 		}
@@ -144,14 +150,14 @@ const attributes = {
 	},
 	gradientColor1: {
 		type: 'string',
-		default: '#F2295B',
+		default: '#0170b9',
 		UAGCopyPaste: {
 			styleType: 'btn-gradient-color-1'
 		}
 	},
 	gradientColor2: {
 		type: 'string',
-		default: '#61CE70',
+		default: '#06558a',
 		UAGCopyPaste: {
 			styleType: 'btn-gradient-color-2'
 		}

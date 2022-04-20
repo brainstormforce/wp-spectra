@@ -15,6 +15,7 @@ return array(
 	'link'                   => '#',
 	'linkTarget'             => false,
 	'titleSpace'             => 0,
+	'titleSpaceUnit'         => 'px',
 	'borderStyle'            => 'none',
 	'borderWidth'            => 1,
 	'borderRadius'           => 2,
