@@ -288,18 +288,10 @@ const Settings = ( props ) => {
 						{
 							value: 'message',
 							label: 'Message',
-							tooltip: __(
-								'Message',
-								'ultimate-addons-for-gutenberg'
-							),
 						},
 						{
 							value: 'url',
 							label: 'URL Text',
-							tooltip: __(
-								'Url Text',
-								'ultimate-addons-for-gutenberg'
-							),
 						},
 					] }
 					showIcons={ false }
@@ -1451,18 +1443,10 @@ const Settings = ( props ) => {
 							{
 								value: 'v2',
 								label: 'V2',
-								tooltip: __(
-									'V2',
-									'ultimate-addons-for-gutenberg'
-								),
 							},
 							{
 								value: 'v3',
 								label: 'V3',
-								tooltip: __(
-									'V3',
-									'ultimate-addons-for-gutenberg'
-								),
 							},
 						] }
 						showIcons={ false }

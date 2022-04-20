@@ -301,18 +301,10 @@ const Settings = ( props ) => {
 						{
 							value: 'icon',
 							label: 'Icon',
-							tooltip: __(
-								'Icon',
-								'ultimate-addons-for-gutenberg'
-							),
 						},
 						{
 							value: 'image',
 							label: 'Image',
-							tooltip: __(
-								'Image',
-								'ultimate-addons-for-gutenberg'
-							),
 						},
 					] }
 					showIcons={ false }

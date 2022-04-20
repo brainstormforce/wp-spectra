@@ -182,18 +182,10 @@ const Settings = ( props ) => {
 						{
 							value: 'modern',
 							label: 'Modern',
-							tooltip: __(
-								'Modern',
-								'ultimate-addons-for-gutenberg'
-							),
 						},
 						{
 							value: 'simple',
 							label: 'Classic',
-							tooltip: __(
-								'Classic',
-								'ultimate-addons-for-gutenberg'
-							),
 						},
 					] }
 					showIcons={ false }

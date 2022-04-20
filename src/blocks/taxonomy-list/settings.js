@@ -357,18 +357,10 @@ const Settings = ( props ) => {
 						{
 							value: 'grid',
 							label: 'Grid',
-							tooltip: __(
-								'Grid',
-								'ultimate-addons-for-gutenberg'
-							),
 						},
 						{
 							value: 'list',
 							label: 'List',
-							tooltip: __(
-								'List',
-								'ultimate-addons-for-gutenberg'
-							),
 						},
 					] }
 					showIcons={ false }
@@ -422,18 +414,10 @@ const Settings = ( props ) => {
 								{
 									value: 'list',
 									label: 'List',
-									tooltip: __(
-										'List',
-										'ultimate-addons-for-gutenberg'
-									),
 								},
 								{
 									value: 'dropdown',
 									label: 'Dropdown',
-									tooltip: __(
-										'Dropdown',
-										'ultimate-addons-for-gutenberg'
-									),
 								},
 							] }
 							showIcons={ false }
