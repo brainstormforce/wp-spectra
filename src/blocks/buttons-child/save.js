@@ -11,13 +11,26 @@ export default function save( props ) {
 
 	const {
 		block_id,
-		target,
+		opensInNewTab,
 		link,
 		label,
 		icon,
 		iconPosition,
+		removeText,
+		noFollow
 	} = attributes;
 
+	const btnText = () => {
+		if( ! removeText ){
+			return <RichText.Content
+						value={ label }
+						tagName="div"
+						className="uagb-button__link"
+					/>
+		}
+			return '';
+
+	}
 	const iconHtml = ( curr_position ) => {
 		if ( '' !== icon && curr_position === iconPosition ) {
 			return (
@@ -33,7 +46,7 @@ export default function save( props ) {
 		}
 		return null;
 	};
-
+	const openNewWindow = opensInNewTab ? '_blank' : '_self' ;
 	return (
 		<div
 			className={ classnames(
@@ -50,15 +63,11 @@ export default function save( props ) {
 						'wp-block-button__link'
 					) }
 					href={ link }
-					rel="noopener noreferrer"
-					target={ target }
+					rel= { noFollow ? 'nofollow noopener ' : 'follow noopener' }
+					target={ openNewWindow }
 				>
 					{ iconHtml( 'before' ) }
-					<RichText.Content
-						value={ label }
-						tagName="div"
-						className="uagb-button__link"
-					/>
+					{ btnText() }
 					{ iconHtml( 'after' ) }
 				</a>
 			</div>
