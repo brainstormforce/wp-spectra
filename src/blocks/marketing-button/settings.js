@@ -2,7 +2,7 @@
 import UAGIconPicker from '@Components/icon-picker';
 import { __ } from '@wordpress/i18n';
 import renderSVG from '@Controls/renderIcon';
-import React, { Suspense, useState } from 'react';
+import React, { Suspense } from 'react';
 import lazyLoader from '@Controls/lazy-loader';
 import TypographyControl from '@Components/typography';
 import WebfontLoader from '@Components/typography/fontloader';
@@ -22,20 +22,14 @@ import UAGPresets from '@Components/presets';
 import {
 	BlockControls,
 	InspectorControls,
-	__experimentalLinkControl,
 	AlignmentToolbar
 } from '@wordpress/block-editor';
 
 import {
-	Popover,
-	ToolbarButton,
-	ToolbarGroup,
 	Icon,
 	ToggleControl,
 	TextControl
 } from '@wordpress/components';
-
-
 
 import UAGAdvancedPanelBody from '@Components/advanced-panel-body';
 
