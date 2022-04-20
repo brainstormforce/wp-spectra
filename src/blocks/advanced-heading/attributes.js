@@ -10,7 +10,7 @@ const attributes = {
 	},
 	headingTitle: {
 		source: 'html',
-		selector: 'h1,h2,h3,h4,h5,h6',
+		selector: '.uagb-heading-text',
 		default: __( 'Your Attractive Heading', 'ultimate-addons-for-gutenberg' ),
 	},
 	headingId: {
@@ -18,7 +18,7 @@ const attributes = {
 	},
 	headingDesc: {
 		source: 'html',
-		selector: 'p',
+		selector: '.uagb-desc-text',
 		default: __( 'Enter description text here.Lorem ipsum dolor sit amet, consectetur adipiscing. Quo incidunt ullamco.​', 'ultimate-addons-for-gutenberg' ),
 	},
 	headingAlign: {
