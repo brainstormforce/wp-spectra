@@ -37,5 +37,9 @@ registerBlockType('uagb/image-gallery', {
 	save() {
 		return null;
 	},
-	example: {},
+	example: {
+		attributes: {
+			isPreview: true,
+		}
+	},
 });
