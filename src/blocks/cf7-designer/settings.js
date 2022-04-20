@@ -1084,6 +1084,7 @@ const Settings = ( props ) => {
 				] }
 				normal={ buttonNormalSettings }
 				hover={ buttonHoverSettings }
+				disableBottomSeparator={ true }
 			/>
 			<Border
 				disabledBorderTitle= {false}

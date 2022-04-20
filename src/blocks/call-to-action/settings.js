@@ -463,7 +463,7 @@ const Settings = ( props ) => {
 							/>
 						</>
 					}
-					disableBottomSeparator={ true }
+					disableBottomSeparator={ false }
 				/>
 				<Border
 					disabledBorderTitle= {false}
@@ -851,10 +851,10 @@ const Settings = ( props ) => {
 							] }
 							normal={ ctaNormalSettings() }
 							hover={ ctaHoverSettings() }
-							disableBottomSeparator={ true }
+							disableBottomSeparator={ false }
 						/>
 						<Border
-							disabledBorderTitle= {false}
+							disabledBorderTitle= { false }
 							setAttributes={ setAttributes }
 							borderStyle={ {
 								value: ctaBorderStyle,
