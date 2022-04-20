@@ -466,6 +466,7 @@ const Settings = ( props ) => {
 					disableBottomSeparator={ true }
 				/>
 				<Border
+					disabledBorderTitle= {false}
 					setAttributes={ setAttributes }
 					borderStyle={ {
 						value: secondCtaBorderStyle,
@@ -853,6 +854,7 @@ const Settings = ( props ) => {
 							disableBottomSeparator={ true }
 						/>
 						<Border
+							disabledBorderTitle= {false}
 							setAttributes={ setAttributes }
 							borderStyle={ {
 								value: ctaBorderStyle,

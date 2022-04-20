@@ -775,6 +775,7 @@ const Settings = ( props ) => {
 			initialOpen={ false }
 		>
 			<Border
+				disabledBorderTitle= {false}
 				setAttributes={ setAttributes }
 				borderStyle={ {
 					value: fieldBorderStyle,
@@ -1085,6 +1086,7 @@ const Settings = ( props ) => {
 				hover={ buttonHoverSettings }
 			/>
 			<Border
+				disabledBorderTitle= {false}
 				setAttributes={ setAttributes }
 				borderStyle={ {
 					value: buttonBorderStyle,
