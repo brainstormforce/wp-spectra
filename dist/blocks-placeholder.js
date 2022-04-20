@@ -8,7 +8,7 @@
 
 registerBlockType( 'uagb/advanced-heading', { title: __( 'Creative Heading', 'ultimate-addons-for-gutenberg' ) } );
 registerBlockType( 'uagb/blockquote', { title: __( 'Blockquote', 'ultimate-addons-for-gutenberg' ) } );
-registerBlockType( 'uagb/buttons', { title: __( 'Multi Buttons', 'ultimate-addons-for-gutenberg' ) } );
+registerBlockType( 'uagb/buttons', { title: __( 'Buttons', 'ultimate-addons-for-gutenberg' ) } );
 registerBlockType( 'uagb/call-to-action', { title: __( 'Call To Action', 'ultimate-addons-for-gutenberg' ) } );
 registerBlockType( 'uagb/cf7-styler', { title: __( 'Contact Form 7 Designer', 'ultimate-addons-for-gutenberg' ) } );
 registerBlockType( 'uagb/columns', { title: __( 'Advanced Columns', 'ultimate-addons-for-gutenberg' ) } );
@@ -19,6 +19,7 @@ registerBlockType( 'uagb/gf-styler', { title: __( 'Gravity Form Designer', 'ulti
 registerBlockType( 'uagb/google-map', { title: __( 'Google Map', 'ultimate-addons-for-gutenberg' ) } );
 registerBlockType( 'uagb/how-to', { title: __( 'How-to', 'ultimate-addons-for-gutenberg' ) } );
 registerBlockType( 'uagb/icon-list', { title: __( 'Icon List', 'ultimate-addons-for-gutenberg' ) } );
+registerBlockType( 'uagb/image', { title: __( 'Advanced Image', 'ultimate-addons-for-gutenberg' ) } );
 registerBlockType( 'uagb/info-box', { title: __( 'Info Box', 'ultimate-addons-for-gutenberg' ) } );
 registerBlockType( 'uagb/inline-notice', { title: __( 'Inline Notice', 'ultimate-addons-for-gutenberg' ) } );
 registerBlockType( 'uagb/lottie', { title: __( 'Lottie Animation', 'ultimate-addons-for-gutenberg' ) } );
