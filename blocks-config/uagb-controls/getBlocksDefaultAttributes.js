@@ -39,6 +39,7 @@ import tabsAttribute from '@Blocks/tabs/attributes';
 import lottieAttribute from '@Blocks/lottie/attributes';
 import starRatingAttribute from '@Blocks/star-rating/attributes';
 import containerAttribute from '@Blocks/container/attributes';
+import imageAttribute from '@Blocks/image/attributes';
 
 export const blocksAttributes = {
 	'advanced-heading' : advancedHeadingAttribute,
@@ -81,5 +82,6 @@ export const blocksAttributes = {
 	'content-timeline-child' : contentChildAttribute,
     'post-timeline' : postTimelineAttribute,
     'how-to-step' : howToStepAttribute,
-	'container' : containerAttribute
+	'container' : containerAttribute,
+	'image': imageAttribute
 };
