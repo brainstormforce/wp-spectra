@@ -352,7 +352,7 @@ function styling( props ) {
 			'padding-left': generateCSSUnit( paddingBtnLeft, paddingBtnUnit ),
 			'padding-right': generateCSSUnit( paddingBtnRight, paddingBtnUnit ),
 		},
-		' .uagb-ifb-button-wrapper:hover .uagb-infobox-cta-link': {
+		' .uagb-ifb-button-wrapper .uagb-infobox-cta-link:hover': {
 			'color': ctaLinkHoverColor,
 			'background-color': ctaBgHoverColor,
 			'border-color': ctaBorderhoverColor,
