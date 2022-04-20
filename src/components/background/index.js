@@ -653,19 +653,76 @@ const Background = ( props ) => {
 				backgroundVideo.value &&
 				backgroundVideoType.value && (
 					<div className="uag-background-video-overlay">
-						<AdvancedPopColorControl
-							label={ __(
-								'Video Overlay Color',
-								'ultimate-addons-for-gutenberg'
-							) }
-							colorValue={ backgroundVideoColor.value }
-							onColorChange={ ( value ) =>
-								setAttributes( {
-									[ backgroundVideoColor.label ]: value,
-								} )
-							}
-							onOpacityChange={onOpacityChange}
-						/>
+						{ overlayType && backgroundVideo &&
+							<>
+								<div className="uag-background-image-overlay-type">
+									<SelectControl
+										label={ __(
+											'Overlay Type',
+											'ultimate-addons-for-gutenberg'
+										) }
+										value={ overlayType.value }
+										onChange={ ( value ) =>
+											setAttributes( {
+												[ overlayType.label ]: value,
+											} )
+										}
+										options={ [
+											{
+												value: 'color',
+												label: __(
+													'Color',
+													'ultimate-addons-for-gutenberg'
+												),
+											},
+											{
+												value: 'gradient',
+												label: __(
+													'Gradient',
+													'ultimate-addons-for-gutenberg'
+												),
+											},
+											{
+												value: 'none',
+												label: __(
+													'None',
+													'ultimate-addons-for-gutenberg'
+												),
+											},
+										] }
+									/>
+								</div>
+								{ 'color' === overlayType.value && (
+									<div className="uag-background-image-overlay-color">
+										<AdvancedPopColorControl
+											label={ __(
+												'Image Overlay Color',
+												'ultimate-addons-for-gutenberg'
+											) }
+											colorValue={
+												backgroundVideoColor.value
+											}
+											onColorChange={ ( value ) =>
+												setAttributes( {
+													[ backgroundVideoColor.label ]: value,
+												} )
+											}
+											onOpacityChange={onOpacityChange}
+										/>
+									</div>
+								) }
+								{ 'gradient' === overlayType.value && (
+									<div className="uag-background-image-overlay-gradient">
+										<GradientSettings
+											backgroundGradient={
+												props.backgroundGradient
+											}
+											setAttributes={ setAttributes }
+										/>
+									</div>
+								) }
+							</>
+						}
 					</div>
 				) }
 		</>
