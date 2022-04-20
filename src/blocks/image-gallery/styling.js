@@ -721,9 +721,9 @@ function styling( props ) {
 		}
 	}
 	else {
-		selectors[ '.uag-image-gallery__iso-ref-wrapper' ] = {
-			'overflow': 'auto',
-		};
+		// selectors[ '.uag-image-gallery__iso-ref-wrapper' ] = {
+		// 	'overflow': 'auto',
+		// };
 	}
 
 	// Masonry based styling

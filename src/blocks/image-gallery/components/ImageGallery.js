@@ -5,13 +5,13 @@ import UAGB_Block_Icons from "@Controls/block-icons";
 import getMatrixAlignment from "@Controls/getMatrixAlignment";
 import Masonry from "react-masonry-component";
 import Slider from "react-slick";
-import Isotope from "isotope-layout";
-// import "/assets/js/isotope.min";
-// import "/assets/js/imagesloaded.min";
+// import Isotope from "isotope-layout";
+import "/assets/js/isotope.min";
+import "/assets/js/imagesloaded.min";
+import { useDeviceType } from '@Controls/getPreviewType';
 
 const ImageGallery = ( { attributes, setAttributes, block_id } ) => {
 	const {
-		tileSize,
 		focusList,
 
 		mediaGallery,
@@ -77,6 +77,42 @@ const ImageGallery = ( { attributes, setAttributes, block_id } ) => {
 	const isotopeSpacer = useRef( null );
 	const isotope = useRef( null );
 	const isotopeChildren = useRef( [] );
+	const deviceType = useDeviceType();
+
+	useEffect( () => {
+		// Refresh Isotope on Preview Change.
+		setTimeout( () => {
+			switch ( feedLayout ) {
+				case 'tiled':
+					const isotopeTileChild = isotopeElement.current.querySelector( '.uag-image-gallery__layout--tiled' );
+					setAttributes( { tileSize: isotopeSpacer.current.getBoundingClientRect().width } );
+					console.log( isotopeSpacer.current.getBoundingClientRect().width );
+					isotope.current.destroy();
+					isotope.current = new Isotope( isotopeTileChild, {
+						itemSelector: '.uag-image-gallery-media-wrapper',
+						layoutMode: 'masonry',
+						// percentPosition: true,
+						masonry: {
+							columnWidth: '.uag-image-gallery-media-spacer',
+							// horizontalOrder: true,
+						},
+					} );
+					imagesLoaded( isotopeTileChild ).on( 'progress', ( theInstance, theImage ) => {
+						if ( generateSpecialTiles && theImage.isLoaded ){
+							createSpecialTile( theImage.img );
+							isotope.current.layout();
+						}
+					} );
+					isotope.current.reloadItems();
+					break;
+				// Need to add Masonry Case too once fixed.
+				default:
+					( isotope.current ) && isotope.current.destroy();
+					// isotope.current.destroy();
+					break;
+			}
+		}, 1000 );
+	}, [ deviceType ] );
 
 	useEffect( () => {
 		// First check if media items selected are less than the column count currently used.

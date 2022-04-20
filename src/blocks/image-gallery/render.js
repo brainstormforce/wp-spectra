@@ -22,7 +22,7 @@ const Render = ( props ) => {
 		setAttributes,
 		className,
 	} = props;
-	const { block_id, readyToRender, isPreview } = attributes;	
+	const { block_id, readyToRender, isPreview } = attributes;
 	const deviceType = useDeviceType();
 	const previewImageData = `${ uagb_blocks_info.uagb_url }/admin/assets/preview-images/image-gallery.svg`;
 	
