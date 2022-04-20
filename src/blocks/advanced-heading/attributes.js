@@ -423,6 +423,19 @@ const attributes = {
 		default: false,
 		isUAGStyle: true,
 	},
+	// link
+	linkColor: {
+		type: 'string',
+		UAGCopyPaste: {
+			styleType: 'link-color'
+		}
+	},
+	linkHColor: {
+		type: 'string',
+		UAGCopyPaste: {
+			styleType: 'link-hover-color'
+		}
+	},
 };
 
 export default attributes;

@@ -101,7 +101,10 @@ const Settings = ( props ) => {
 		headingBlockMarginUnit,
 		headingBlockMarginUnitTablet,
 		headingBlockMarginUnitMobile,
-		headingBlockMarginLink
+		headingBlockMarginLink,
+		// link
+		linkColor,
+		linkHColor
 	} = attributes;
 
 	let loadHeadingGoogleFonts;
@@ -729,6 +732,30 @@ const Settings = ( props ) => {
 		);
 	};
 
+	const linkStylePanel = () => {
+		return (
+			<UAGAdvancedPanelBody
+				title={ __( 'Link', 'ultimate-addons-for-gutenberg' ) }
+				initialOpen={ false }
+			>
+				<AdvancedPopColorControl
+					label={ __( 'Color', 'ultimate-addons-for-gutenberg' ) }
+					colorValue={ linkColor }
+					onColorChange={ ( value ) =>
+						setAttributes( { linkColor: value } )
+					}
+				/>
+				<AdvancedPopColorControl
+					label={ __( 'Hover Color', 'ultimate-addons-for-gutenberg' ) }
+					colorValue={ linkHColor }
+					onColorChange={ ( value ) =>
+						setAttributes( { linkHColor: value } )
+					}
+				/>
+			</UAGAdvancedPanelBody>
+		);
+	}
+
 	return (
 		<div>
 			{ blockControlSettings() }
@@ -743,6 +770,7 @@ const Settings = ( props ) => {
 						{ 'none' !== seperatorStyle && seperatorSettings() }
 						{ subheadingPanel() }
 						{spacingStylePanel()}
+						{linkStylePanel()}
 					</InspectorTab>
 					<InspectorTab
 						{ ...UAGTabs.advance }

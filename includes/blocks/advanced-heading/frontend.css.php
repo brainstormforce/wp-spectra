@@ -53,10 +53,15 @@ $selectors = array(
 			$attr['headingBlockPaddingUnit']
 		),
 	),
+	'.wp-block-uagb-advanced-heading a' => array(
+		'color' => $attr['linkColor']
+	),
+	'.wp-block-uagb-advanced-heading a:hover' => array(
+		'color' => $attr['linkHColor']
+	),
 	' .uagb-desc-text'                 => array(
 		'color' => $attr['subHeadingColor'],
 	),
-
 );
 
 $seperatorStyle = isset( $attr['seperatorStyle'] ) ? $attr['seperatorStyle'] : '';

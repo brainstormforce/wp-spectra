@@ -82,4 +82,7 @@ return array(
 	'headingBlockMarginUnitTablet'       => 'px',
 	'headingBlockMarginUnitMobile'       => 'px',
 	'headingBlockMarginLink'             => '',
+	// link
+	'linkColor'            				=> '',
+	'linkHColor'             			=> '',
 );

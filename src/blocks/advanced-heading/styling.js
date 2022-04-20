@@ -76,6 +76,9 @@ function styling( props ) {
 		headingBlockMarginUnit,
 		headingBlockMarginUnitTablet,
 		headingBlockMarginUnitMobile,
+		// link
+		linkColor,
+		linkHColor
 	} = props.attributes;
 
 	const tablet_selectors = {};
@@ -133,6 +136,12 @@ function styling( props ) {
 				subHeadLineHeightType
 			),
 			'color': subHeadingColor,
+		},
+		'.wp-block-uagb-advanced-heading a': {
+			'color': linkColor,
+		},
+		'.wp-block-uagb-advanced-heading a:hover': {
+			'color': linkHColor,
 		}
 	};
 
@@ -147,6 +156,7 @@ function styling( props ) {
 		'color': headingColor,
 		'margin-bottom': generateCSSUnit( headSpace, 'px' ),
 	};
+
 
 	if ( seperatorStyle !== 'none' ) {
 		selectors[ ' .uagb-separator' ] = {
