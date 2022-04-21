@@ -286,6 +286,7 @@ const attributes = {
 		UAGCopyPaste: {
 			styleType: 'container-bg-image-color'
 		},
+		default: '#FFFFFF75',
 	},
 	gradientValue: {
 		type: 'string',
@@ -764,6 +765,7 @@ const attributes = {
 		UAGCopyPaste: {
 			styleType: 'bg-video-color'
 		},
+		default: '#FFFFFF75',
 	},
 	backgroundVideo: {
 		type: 'object',
