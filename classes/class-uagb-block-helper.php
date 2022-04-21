@@ -919,9 +919,8 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 			$bg_image_color      = isset( $bg_obj['backgroundImageColor'] ) ? $bg_obj['backgroundImageColor'] : '';
 			$bg_custom_size      = isset( $bg_obj['backgroundCustomSize'] ) ? $bg_obj['backgroundCustomSize'] : '';
 			$bg_custom_size_type = isset( $bg_obj['backgroundCustomSizeType'] ) ? $bg_obj['backgroundCustomSizeType'] : '';
-			$bg_video = isset( $bg_obj['backgroundVideo'] ) ? $bg_obj['backgroundVideo'] : '';
-			$bg_video_color = isset( $bg_obj['backgroundVideoColor'] ) ? $bg_obj['backgroundVideoColor'] : '';
-
+			$bg_video            = isset( $bg_obj['backgroundVideo'] ) ? $bg_obj['backgroundVideo'] : '';
+			$bg_video_color      = isset( $bg_obj['backgroundVideoColor'] ) ? $bg_obj['backgroundVideoColor'] : '';
 
 			if ( 'custom' === $size ) {
 				$size = $bg_custom_size . $bg_custom_size_type;
@@ -956,7 +955,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 						break;
 					case 'video':
 						if ( 'color' === $overlay_type && '' !== $bg_video && '' !== $bg_video_color ) {
-							$gen_bg_css['background'] = $bg_video_color. ';';
+							$gen_bg_css['background'] = $bg_video_color . ';';
 						}
 						if ( 'gradient' === $overlay_type && '' !== $bg_video && '' !== $gradient_value ) {
 							$gen_bg_css['background-image'] = $gradient_value . ';';
