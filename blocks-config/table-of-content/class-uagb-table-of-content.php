@@ -680,6 +680,12 @@ if ( ! class_exists( 'UAGB_Table_Of_Content' ) ) {
 									'headingBottom'        => array(
 										'type' => 'number',
 									),
+									'headingBottomTablet'  => array(
+										'type' => 'number',
+									),
+									'headingBottomMobile'  => array(
+										'type' => 'number',
+									),
 									'paddingTypeDesktop'   => array(
 										'type'    => 'string',
 										'default' => 'px',

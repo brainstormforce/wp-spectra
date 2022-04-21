@@ -39,6 +39,18 @@ const attributes = {
 			styleType: 'main-title-bottom-margin'
 		}
 	},
+	titleSpaceTablet: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'main-title-bottom-margin-tablet'
+		}
+	},
+	titleSpaceMobile: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'main-title-bottom-margin-mobile'
+		}
+	},
 	titleSpaceUnit: {
 		type: 'string',
 		default: 'px',
@@ -272,7 +284,18 @@ const attributes = {
 			styleType: 'btn-icon-space'
 		}
 	},
-
+	iconSpaceTablet: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'btn-icon-space-tablet'
+		}
+	},
+	iconSpaceMobile: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'btn-icon-space-mobile'
+		}
+	},
 	// Typography
 	// Title Font Family
 	titleLoadGoogleFonts: {

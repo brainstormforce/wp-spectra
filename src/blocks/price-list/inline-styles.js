@@ -43,14 +43,24 @@ function RestMenuStyle( props ) {
 		descLineHeightMobile,
 		descSpace,
 		titleSpace,
+		titleSpaceTablet,
+		titleSpaceMobile,
 		imageWidth,
+		imageWidthTablet,
+		imageWidthMobile,
 		rowGap,
+		rowGapTablet,
+		rowGapMobile,
 		columnGap,
+		columnGapTablet,
+		columnGapMobile,
 		columns,
 		tcolumns,
 		mcolumns,
 		seperatorStyle,
 		seperatorWidth,
+		seperatorWidthTablet,
+		seperatorWidthMobile,
 		seperatorThickness,
 		seperatorColor,
 
@@ -157,7 +167,7 @@ function RestMenuStyle( props ) {
 			'display': 'inline-table',
 		},
 		// Prefix Style
-		' .uagb-rm__title': {
+		'.wp-block-uagb-restaurant-menu .uagb-rest_menu__wrap .uagb-rm__content .uagb-rm-details .uagb-rm__title': {
 			'font-size': generateCSSUnit( titleFontSize, titleFontSizeType ),
 			'color': titleColor,
 			'margin-bottom': generateCSSUnit( titleSpace, titleSpaceType ),
@@ -202,14 +212,6 @@ function RestMenuStyle( props ) {
 		},
 	};
 
-	if ( seperatorStyle !== 'none' ) {
-		selectors[ ' .uagb-rm__separator' ] = {
-			'border-top-color': seperatorColor,
-			'border-top-style': seperatorStyle,
-			'border-top-width': generateCSSUnit( seperatorThickness, 'px' ),
-			'width': generateCSSUnit( seperatorWidth, seperatorWidthType ),
-		};
-	}
 
 	selectors[
 		' .uagb-rest_menu__wrap.uagb-rm__desk-column-' +
@@ -223,7 +225,17 @@ function RestMenuStyle( props ) {
 	};
 
 	tabletSelectors = {
-		' .uagb-rm__title': {
+		// Image
+		' img': {
+			'width': generateCSSUnit( imageWidthTablet, imageWidthType ),
+			'max-width': generateCSSUnit( imageWidthTablet, imageWidthType ),
+		},
+		" [data-type='uagb/restaurant-menu-child'] .wp-block-uagb-restaurant-menu-child": {
+			'padding-left': generateCSSUnit( columnGapTablet / 2, columnGapType ),
+			'padding-right': generateCSSUnit( columnGapTablet / 2, columnGapType ),
+			'margin-bottom': generateCSSUnit( rowGapTablet, rowGapType ),
+		},
+		'.wp-block-uagb-restaurant-menu .uagb-rest_menu__wrap .uagb-rm__content .uagb-rm-details .uagb-rm__title': {
 			'font-size': generateCSSUnit(
 				titleFontSizeTablet,
 				titleFontSizeType
@@ -232,6 +244,7 @@ function RestMenuStyle( props ) {
 				titleLineHeightTablet,
 				titleLineHeightType
 			),
+			'margin-bottom': generateCSSUnit( titleSpaceTablet, titleSpaceType ),
 		},
 		' .uagb-rm__desc': {
 			'font-size': generateCSSUnit(
@@ -314,7 +327,17 @@ function RestMenuStyle( props ) {
 	};
 
 	mobileSelectors = {
-		' .uagb-rm__title': {
+		// Image
+		' img': {
+			'width': generateCSSUnit( imageWidthMobile, imageWidthType ),
+			'max-width': generateCSSUnit( imageWidthMobile, imageWidthType ),
+		},
+		" [data-type='uagb/restaurant-menu-child'] .wp-block-uagb-restaurant-menu-child": {
+			'padding-left': generateCSSUnit( columnGapMobile / 2, columnGapType ),
+			'padding-right': generateCSSUnit( columnGapMobile / 2, columnGapType ),
+			'margin-bottom': generateCSSUnit( rowGapMobile, rowGapType ),
+		},
+		'.wp-block-uagb-restaurant-menu .uagb-rest_menu__wrap .uagb-rm__content .uagb-rm-details .uagb-rm__title': {
 			'font-size': generateCSSUnit(
 				titleFontSizeMobile,
 				titleFontSizeType
@@ -323,6 +346,7 @@ function RestMenuStyle( props ) {
 				titleLineHeightMobile,
 				titleLineHeightType
 			),
+			'margin-bottom': generateCSSUnit( titleSpaceMobile, titleSpaceType ),
 		},
 		' .uagb-rm__desc': {
 			'font-size': generateCSSUnit(
@@ -403,6 +427,21 @@ function RestMenuStyle( props ) {
 		'margin-left': 0,
 		'clear': 'left',
 	};
+
+	if ( seperatorStyle !== 'none' ) {
+		selectors[ ' .uagb-rm__separator' ] = {
+			'border-top-color': seperatorColor,
+			'border-top-style': seperatorStyle,
+			'border-top-width': generateCSSUnit( seperatorThickness, 'px' ),
+			'width': generateCSSUnit( seperatorWidth, seperatorWidthType ),
+		};
+		tabletSelectors[ ' .uagb-rm__separator' ] = {
+			'width': generateCSSUnit( seperatorWidthTablet, seperatorWidthType ),
+		};
+		mobileSelectors[ ' .uagb-rm__separator' ] = {
+			'width': generateCSSUnit( seperatorWidthMobile, seperatorWidthType ),
+		};
+	}
 
 	let stylingCss = '';
 	const id = `.editor-styles-wrapper .uagb-block-${ props.clientId.substr( 0, 8 ) }`;

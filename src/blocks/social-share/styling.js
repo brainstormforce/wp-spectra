@@ -9,8 +9,12 @@ function styling( props ) {
 	const {
 		align,
 		gap,
+		gapTablet,
+		gapMobile,
 		social_layout,
 		borderRadius,
+		borderRadiusTablet,
+		borderRadiusMobile,
 		size,
 		sizeType,
 		sizeMobile,
@@ -30,6 +34,17 @@ function styling( props ) {
 		'margin-bottom': generateCSSUnit( gap, 'px' ),
 	};
 
+	tabletSelectors[ '.uagb-social-share__layout-vertical .uagb-ss__wrapper' ] = {
+		'margin-left': 0,
+		'margin-right': 0,
+		'margin-bottom': generateCSSUnit( gapTablet, 'px' ),
+	};
+	mobileSelectors[ '.uagb-social-share__layout-vertical .uagb-ss__wrapper' ] = {
+		'margin-left': 0,
+		'margin-right': 0,
+		'margin-bottom': generateCSSUnit( gapMobile, 'px' ),
+	};
+
 	selectors[
 		'.uagb-social-share__layout-vertical.uagb-social-share__outer-wrap'
 	] = {
@@ -42,8 +57,23 @@ function styling( props ) {
 		'margin-right': generateCSSUnit( gap / 2, 'px' ),
 	};
 
+	tabletSelectors[ '.uagb-social-share__layout-horizontal .uagb-ss__wrapper' ] = {
+		'margin-left': generateCSSUnit( gapTablet / 2, 'px' ),
+		'margin-right': generateCSSUnit( gapTablet / 2, 'px' ),
+	};
+	mobileSelectors[ '.uagb-social-share__layout-horizontal .uagb-ss__wrapper' ] = {
+		'margin-left': generateCSSUnit( gapMobile / 2, 'px' ),
+		'margin-right': generateCSSUnit( gapMobile / 2, 'px' ),
+	};
+
 	selectors[ ' .uagb-ss__wrapper' ] = {
 		'border-radius': generateCSSUnit( borderRadius, 'px' ),
+	};
+	tabletSelectors[ ' .uagb-ss__wrapper' ] = {
+		'border-radius': generateCSSUnit( borderRadiusTablet, 'px' ),
+	};
+	mobileSelectors[ ' .uagb-ss__wrapper' ] = {
+		'border-radius': generateCSSUnit( borderRadiusMobile, 'px' ),
 	};
 
 	selectors[ ' .uagb-ss__source-image' ] = {
@@ -110,6 +140,16 @@ function styling( props ) {
 				'margin-right': 0,
 				'margin-bottom': generateCSSUnit( gap, 'px' ),
 			};
+			tabletSelectors[ ' .uagb-ss__wrapper' ] = {
+				'margin-left': 0,
+				'margin-right': 0,
+				'margin-bottom': generateCSSUnit( gapTablet, 'px' ),
+			};
+			mobileSelectors[ ' .uagb-ss__wrapper' ] = {
+				'margin-left': 0,
+				'margin-right': 0,
+				'margin-bottom': generateCSSUnit( gapMobile, 'px' ),
+			};
 
 			selectors[ '.uagb-social-share__outer-wrap' ] = {
 				'flex-direction': 'column',
@@ -124,7 +164,7 @@ function styling( props ) {
 			tabletSelectors[ ' .uagb-ss__wrapper' ] = {
 				'margin-left': 0,
 				'margin-right': 0,
-				'margin-bottom': generateCSSUnit( gap, 'px' ),
+				'margin-bottom': generateCSSUnit( gapTablet, 'px' ),
 			};
 
 			tabletSelectors[
@@ -147,7 +187,7 @@ function styling( props ) {
 			mobileSelectors[ ' .uagb-ss__wrapper' ] = {
 				'margin-left': 0,
 				'margin-right': 0,
-				'margin-bottom': generateCSSUnit( gap, 'px' ),
+				'margin-bottom': generateCSSUnit( gapMobile, 'px' ),
 			};
 
 			mobileSelectors[

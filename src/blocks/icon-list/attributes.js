@@ -61,9 +61,33 @@ const attributes = {
 		},
 		default: 10,
 	},
+	gapTablet: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'icon-gap'
+		},
+	},
+	gapMobile: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'icon-gap'
+		},
+	},
 	inner_gap: {
 		type: 'number',
 		default: 15,
+		UAGCopyPaste: {
+			styleType: 'icon-inner-gap'
+		},
+	},
+	innerGapTablet: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'icon-inner-gap'
+		},
+	},
+	innerGapMobile: {
+		type: 'number',
 		UAGCopyPaste: {
 			styleType: 'icon-inner-gap'
 		},
@@ -115,9 +139,33 @@ const attributes = {
 			styleType: 'icon-border-style'
 		},
 	},
+	borderTablet: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'icon-border-style'
+		},
+	},
+	borderMobile: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'icon-border-style'
+		},
+	},
 	borderRadius: {
 		type: 'number',
 		default: 0,
+		UAGCopyPaste: {
+			styleType: 'icon-border-radius'
+		},
+	},
+	borderRadiusTablet: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'icon-border-radius'
+		},
+	},
+	borderRadiusMobile: {
+		type: 'number',
 		UAGCopyPaste: {
 			styleType: 'icon-border-radius'
 		},

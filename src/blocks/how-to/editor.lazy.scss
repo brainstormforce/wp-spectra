@@ -26,6 +26,11 @@
 		}
 	}
 
+	.wp-block {
+		margin: 0;
+		max-width: unset;
+	}
+
 }
 
 .wp-block-uagb-how-to {
@@ -54,8 +59,4 @@
 		}
 	}
 
-	.wp-block {
-		margin: 0;
-		max-width: unset;
-	}
 }

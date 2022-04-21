@@ -35,12 +35,20 @@ function styling( props ) {
 		authorLineHeightTablet,
 		authorLineHeightMobile,
 		descSpace,
+		descSpaceTablet,
+		descSpaceMobile,
 		authorSpace,
+		authorSpaceTablet,
+		authorSpaceMobile,
 		borderColor,
 		borderStyle,
 		borderWidth,
 		borderGap,
+		borderGapTablet,
+		borderGapMobile,
 		verticalPadding,
+		verticalPaddingTablet,
+		verticalPaddingMobile,
 		verticalPaddingUnit,
 		quoteColor,
 		quoteSize,
@@ -67,8 +75,12 @@ function styling( props ) {
 		tweetIconSpacing,
 		tweetIconSpacingUnit,
 		authorImageWidth,
+		authorImageWidthTablet,
+		authorImageWidthMobile,
 		authorImageWidthUnit,
 		authorImgBorderRadius,
+		authorImgBorderRadiusTablet,
+		authorImgBorderRadiusMobile,
 		quoteBorderRadius,
 		quoteTopMargin,
 		quoteBottomMargin,
@@ -125,9 +137,13 @@ function styling( props ) {
 	} = props.attributes;
 
 	let tmpAuthorSpace = authorSpace;
+	let tmpAuthorSpaceTablet = authorSpaceTablet;
+	let tmpAuthorSpaceMobile = authorSpaceMobile;
 
 	if ( align !== 'center' || skinStyle === 'border' ) {
 		tmpAuthorSpace = 0;
+		tmpAuthorSpaceTablet = 0;
+		tmpAuthorSpaceMobile = 0;
 	}
 	//Set align to left for border style
 	let textAlign = align;
@@ -384,6 +400,7 @@ function styling( props ) {
 				descLineHeightTablet,
 				descLineHeightType
 			),
+			'margin-bottom': generateCSSUnit( descSpaceTablet, descSpaceUnit ),
 		},
 		' .uagb-blockquote__author.block-editor-rich-text__editable': {
 			'font-size': generateCSSUnit(
@@ -437,6 +454,28 @@ function styling( props ) {
 				tabletPaddingBtnUnit
 			),
 		},
+		'.uagb-blockquote__skin-border blockquote.uagb-blockquote': {
+			'padding-top': generateCSSUnit(
+				verticalPaddingTablet,
+				verticalPaddingUnit
+			),
+			'padding-bottom': generateCSSUnit(
+				verticalPaddingTablet,
+				verticalPaddingUnit
+			),
+			'padding-left': generateCSSUnit( borderGapTablet, borderGapUnit ),
+		},
+		' .uagb-blockquote__author-wrap': {
+			'margin-bottom': generateCSSUnit( tmpAuthorSpaceTablet, authorSpaceUnit ),
+		},
+		' .uagb-blockquote__author-wrap img': {
+			'width': generateCSSUnit( authorImageWidthTablet, authorImageWidthUnit ),
+			'height': generateCSSUnit( authorImageWidthTablet, authorImageWidthUnit ),
+			'border-radius': generateCSSUnit(
+				authorImgBorderRadiusTablet,
+				authorImgBorderRadiusUnit
+			),
+		},
 	};
 	const mobileSelectors = {
 		'.uagb-blockquote__skin-quotation .uagb-blockquote__icon': {
@@ -467,6 +506,7 @@ function styling( props ) {
 				descLineHeightMobile,
 				descLineHeightType
 			),
+			'margin-bottom': generateCSSUnit( descSpaceMobile, descSpaceUnit ),
 		},
 		' .uagb-blockquote__author.block-editor-rich-text__editable': {
 			'font-size': generateCSSUnit(
@@ -518,6 +558,28 @@ function styling( props ) {
 			'padding-bottom': generateCSSUnit(
 				paddingBtnBottomMobile,
 				mobilePaddingBtnUnit
+			),
+		},
+		'.uagb-blockquote__skin-border blockquote.uagb-blockquote': {
+			'padding-top': generateCSSUnit(
+				verticalPaddingMobile,
+				verticalPaddingUnit
+			),
+			'padding-bottom': generateCSSUnit(
+				verticalPaddingMobile,
+				verticalPaddingUnit
+			),
+			'padding-left': generateCSSUnit( borderGapMobile, borderGapUnit ),
+		},
+		' .uagb-blockquote__author-wrap': {
+			'margin-bottom': generateCSSUnit( tmpAuthorSpaceMobile, authorSpaceUnit ),
+		},
+		' .uagb-blockquote__author-wrap img': {
+			'width': generateCSSUnit( authorImageWidthMobile, authorImageWidthUnit ),
+			'height': generateCSSUnit( authorImageWidthMobile, authorImageWidthUnit ),
+			'border-radius': generateCSSUnit(
+				authorImgBorderRadiusMobile,
+				authorImgBorderRadiusUnit
 			),
 		},
 	};

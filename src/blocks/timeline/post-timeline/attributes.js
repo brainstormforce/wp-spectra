@@ -174,9 +174,37 @@ const attributes = { // eslint-disable-line no-unused-vars
 			styleType: 'main-title-bottom-margin'
 		},
 	},
+	headSpaceTablet               : {
+		type    : 'number',
+		default : 0,
+		UAGCopyPaste: {
+			styleType: 'main-title-bottom-margin'
+		},
+	},
+	headSpaceMobile               : {
+		type    : 'number',
+		default : 0,
+		UAGCopyPaste: {
+			styleType: 'main-title-bottom-margin'
+		},
+	},
 	authorSpace             : {
 		type    : 'number',
 		default : 5,
+		UAGCopyPaste: {
+			styleType: 'author-bottom-margin'
+		},
+	},
+	authorSpaceTablet             : {
+		type    : 'number',
+		default : 0,
+		UAGCopyPaste: {
+			styleType: 'author-bottom-margin'
+		},
+	},
+	authorSpaceMobile             : {
+		type    : 'number',
+		default : 0,
 		UAGCopyPaste: {
 			styleType: 'author-bottom-margin'
 		},
@@ -473,6 +501,20 @@ const attributes = { // eslint-disable-line no-unused-vars
 			styleType: 'date-bottom-space'
 		},
 	},
+	dateBottomspaceTablet         : {
+		type    : 'number',
+		default : 0,
+		UAGCopyPaste: {
+			styleType: 'date-bottom-space'
+		},
+	},
+	dateBottomspaceMobile         : {
+		type    : 'number',
+		default : 0,
+		UAGCopyPaste: {
+			styleType: 'date-bottom-space'
+		},
+	},
 	headFontSizeType        : {
 		type    : 'string',
 		default : 'px',
@@ -627,6 +669,20 @@ const attributes = { // eslint-disable-line no-unused-vars
 	borderRadius            : {
 		type    : 'number',
 		default : 2,
+		UAGCopyPaste: {
+			styleType: 'overall-border-radius'
+		},
+	},
+	borderRadiusTablet            : {
+		type    : 'number',
+		default : 0,
+		UAGCopyPaste: {
+			styleType: 'overall-border-radius'
+		},
+	},
+	borderRadiusMobile            : {
+		type    : 'number',
+		default : 0,
 		UAGCopyPaste: {
 			styleType: 'overall-border-radius'
 		},
@@ -939,8 +995,34 @@ const attributes = { // eslint-disable-line no-unused-vars
 			styleType: 'cta-bottom-spacing'
 		},
 	},
+	ctaBottomSpacingTablet : {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'cta-bottom-spacing'
+		},
+	},
+	ctaBottomSpacingMobile : {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'cta-bottom-spacing'
+		},
+	},
 	headTopSpacing : {
 		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'main-title-top-spacing'
+		},
+	},
+	headTopSpacingMobile : {
+		type: 'number',
+		default : 0,
+		UAGCopyPaste: {
+			styleType: 'main-title-top-spacing'
+		},
+	},
+	headTopSpacingTablet : {
+		type: 'number',
+		default : 0,
 		UAGCopyPaste: {
 			styleType: 'main-title-top-spacing'
 		},

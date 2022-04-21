@@ -44,12 +44,16 @@ const Settings = ( props ) => {
 		link,
 		linkTarget,
 		titleSpace,
+		titleSpaceTablet,
+		titleSpaceMobile,
 		titleSpaceUnit,
 		showDescription,
 		//Icon
 		icon,
 		iconPosition,
 		iconSpace,
+		iconSpaceTablet,
+		iconSpaceMobile,
 		iconFontSize,
 		iconFontSizeMobile,
 		iconFontSizeTablet,
@@ -415,21 +419,29 @@ const Settings = ( props ) => {
 								},
 							] }
 						/>
-						<Range
+						<ResponsiveSlider
 							label={ __(
 								'Gap Between Icon And Text',
 								'ultimate-addons-for-gutenberg'
 							) }
-							setAttributes={ setAttributes }
-							value={ iconSpace }
-							onChange={ ( value ) =>
-								setAttributes( {
-									iconSpace: value,
-								} )
-							}
+							data={ {
+								desktop: {
+									value: iconSpace,
+									label: 'iconSpace',
+								},
+								tablet: {
+									value: iconSpaceTablet,
+									label: 'iconSpaceTablet',
+								},
+								mobile: {
+									value: iconSpaceMobile,
+									label: 'iconSpaceMobile',
+								},
+							} }
 							min={ 0 }
 							max={ 50 }
 							displayUnit={ false }
+							setAttributes={ setAttributes }
 						/>
 						<ResponsiveSlider
 							label={ __(
@@ -467,20 +479,30 @@ const Settings = ( props ) => {
 				title={ __( 'Heading', 'ultimate-addons-for-gutenberg' ) }
 				initialOpen={ false }
 			>
-				{ showDescription && ( <Range
+				{ showDescription && (
+				<ResponsiveSlider
 					label={ __(
 						'Bottom Spacing',
 						'ultimate-addons-for-gutenberg'
 					) }
-					setAttributes={ setAttributes }
-					value={ titleSpace }
-					onChange={ ( value ) =>
-						setAttributes( {
-							titleSpace: value,
-						} )
-					}
+					data={ {
+						desktop: {
+							value: titleSpace,
+							label: 'titleSpace',
+						},
+						tablet: {
+							value: titleSpaceTablet,
+							label: 'titleSpaceTablet',
+						},
+						mobile: {
+							value: titleSpaceMobile,
+							label: 'titleSpaceMobile',
+						},
+					} }
 					min={ 0 }
 					max={ 20 }
+					displayUnit={ false }
+					setAttributes={ setAttributes }
 					unit={ {
 						value: titleSpaceUnit,
 						label: 'titleSpaceUnit',

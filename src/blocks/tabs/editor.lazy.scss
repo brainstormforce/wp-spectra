@@ -18,6 +18,14 @@
 
 	li.uagb-tab {
 		position: relative;
+
+		a.uagb-tabs__icon-position-left {
+			display: inline-flex;
+		}
+
+		a.uagb-tabs__icon-position-right {
+			display: inline-flex;
+		}
 	}
 
 	li.uagb-tab:hover span.uagb-tabs__remove {

@@ -534,9 +534,21 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 					'type'    => 'number',
 					'default' => 20,
 				),
+				'rowGapTablet'                  => array(
+					'type' => 'number',
+				),
+				'rowGapMobile'                  => array(
+					'type' => 'number',
+				),
 				'columnGap'                     => array(
 					'type'    => 'number',
 					'default' => 20,
+				),
+				'columnGapTablet'               => array(
+					'type' => 'number',
+				),
+				'columnGapMobile'               => array(
+					'type' => 'number',
 				),
 				'bgColor'                       => array(
 					'type'    => 'string',
@@ -802,21 +814,51 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 					'type'    => 'number',
 					'default' => 0,
 				),
+				'ctaBottomSpaceTablet'          => array(
+					'type' => 'number',
+				),
+				'ctaBottomSpaceMobile'          => array(
+					'type' => 'number',
+				),
 				'imageBottomSpace'              => array(
 					'type'    => 'number',
 					'default' => 15,
+				),
+				'imageBottomSpaceTablet'        => array(
+					'type' => 'number',
+				),
+				'imageBottomSpaceMobiile'       => array(
+					'type' => 'number',
 				),
 				'titleBottomSpace'              => array(
 					'type'    => 'number',
 					'default' => 15,
 				),
+				'titleBottomSpaceTablet'        => array(
+					'type' => 'number',
+				),
+				'titleBottomSpaceMobile'        => array(
+					'type' => 'number',
+				),
 				'metaBottomSpace'               => array(
 					'type'    => 'number',
 					'default' => 15,
 				),
+				'metaBottomSpaceTablet'         => array(
+					'type' => 'number',
+				),
+				'metaBottomSpaceMobile'         => array(
+					'type' => 'number',
+				),
 				'excerptBottomSpace'            => array(
 					'type'    => 'number',
 					'default' => 25,
+				),
+				'excerptBottomSpaceTablet'      => array(
+					'type' => 'number',
+				),
+				'excerptBottomSpaceMobile'      => array(
+					'type' => 'number',
 				),
 				// Exclude Current Post.
 				'excludeCurrentPost'            => array(
