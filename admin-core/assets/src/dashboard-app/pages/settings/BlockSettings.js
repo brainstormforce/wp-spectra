@@ -85,26 +85,23 @@ const BlockSettings = () => {
 
 	return (
 		<>
-		<section className='flex'>
 			<div className='pr-16 w-[100%]'>
 				<h3 className="text-lg leading-6 font-medium text-gray-900">
-					{__( 'Google reCAPTCHA', 'ultimate-addons-for-gutenberg' )}
+					{__( 'Form - Google reCAPTCHA', 'ultimate-addons-for-gutenberg' )}
 				</h3>
-				<p className="mt-[0.6rem] text-sm mb-5">
-					{ __( 'To enable reCAPTCHA feature on your forms blocks Please enable reCAPTCHA option on your blocks setting and select version. Add google reCAPTCHA secret and site key here. reCAPTCHA will be added to your page on front-end.', 'ultimate-addons-for-gutenberg' ) }
-				</p>
-				<a href="https://www.google.com/recaptcha/admin/create">
+				<p className='mt-[0.6rem] mb-[0.6rem] text-sm '>{ __( 'To enable reCAPTCHA feature on your forms blocks Please enable reCAPTCHA option on your blocks setting and select version. Add google reCAPTCHA secret and site key here. reCAPTCHA will be added to your page on front-end.', 'ultimate-addons-for-gutenberg' ) }</p>
+				<a className='text-wpcolor hover:text-wphovercolor' href="https://www.google.com/recaptcha/admin/create">
 					{ __( 'Get Keys', 'ultimate-addons-for-gutenberg' ) }
 				</a>
-				<a href="https://developers.google.com/recaptcha/intro">
+				{ __( ' | ', 'ultimate-addons-for-gutenberg' ) }
+				<a className='text-wpcolor hover:text-wphovercolor' href="https://developers.google.com/recaptcha/intro">
 					{ __(
-						' | Documentation',
+						' Documentation',
 						'ultimate-addons-for-gutenberg'
 					) }
 				</a>
 			</div>
-		</section>
-		<section className='flex border-b border-solid border-slate-200'>
+			<section className='flex border-b border-solid border-slate-200'>
 				<div className='pr-16 pb-8 w-[50%] spectra-recaptcha-input-field'>
 					<h3 className="mb-5 font-medium text-md text-gray-900">
 						{__( 'V2', 'ultimate-addons-for-gutenberg' )}

@@ -157,7 +157,7 @@ UAGBForms = { // eslint-disable-line no-undef
 						if ( token ) {
 							if( document.getElementsByClassName( 'uagb-forms-recaptcha' ).length !== 0 ) {
 								document.getElementById( 'g-recaptcha-response' ).value = token;
-								window.UAGBForms._formSubmit( e, this, attr );
+								window.UAGBForms._formSubmit( e, this, attr, reCaptchaSiteKeyV2, reCaptchaSiteKeyV3 );
 							}else{
 								document.querySelector( '.uagb-form-reacaptcha-error-' + attr.block_id ).innerHTML = '<p style="color:red !important" class="error-captcha">Google reCAPTCHA Response not found.</p>';
 								return false;
@@ -166,7 +166,7 @@ UAGBForms = { // eslint-disable-line no-undef
 					} );
 				  } );
 			} else {
-				window.UAGBForms._formSubmit( e, this, attr );
+				window.UAGBForms._formSubmit( e, this, attr, reCaptchaSiteKeyV2, reCaptchaSiteKeyV3 );
 			}
 		} );
 	},
@@ -183,14 +183,14 @@ UAGBForms = { // eslint-disable-line no-undef
         checkboxes[i].setCustomValidity( errorMessage ); // eslint-disable-line no-undef
     },
 
-	_formSubmit( e, form, attr ) {
+	_formSubmit( e, form, attr, reCaptchaSiteKeyV2, reCaptchaSiteKeyV3 ) {
 		e.preventDefault();
 
 		let captcha_response;
 
 		if ( attr.reCaptchaEnable === true ) {
 
-			if( attr.reCaptchaType === 'v2' ) {
+			if( attr.reCaptchaType === 'v2' && reCaptchaSiteKeyV2 ) {
 
 				if( document.getElementsByClassName( 'uagb-forms-recaptcha' ).length !== 0 ) {
 
@@ -205,7 +205,7 @@ UAGBForms = { // eslint-disable-line no-undef
 					document.querySelector( '.uagb-form-reacaptcha-error-' + attr.block_id ).innerHTML = '<p style="color:red !important" class="error-captcha"> Google reCAPTCHA Response not found.</p>';
 					return false;
 				}
-			} else if ( attr.reCaptchaType === 'v3' ) {
+			} else if ( attr.reCaptchaType === 'v3' && reCaptchaSiteKeyV3 ) {
 				captcha_response = document.getElementById( 'g-recaptcha-response' ).value;
 			}
 
@@ -260,6 +260,7 @@ UAGBForms = { // eslint-disable-line no-undef
 		  } )
 		  .then( ( resp ) => resp.json() )
 		  .then( function( data ){
+			  console.log(data.data);
 			const hideForm = document.querySelector( '[name="uagb-form-' + attr.block_id + '"]' );
 			hideForm.style.display = 'none';
 			if ( 200 === data.data ) {

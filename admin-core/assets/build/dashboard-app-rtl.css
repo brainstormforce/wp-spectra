@@ -636,6 +636,8 @@ select {
   margin-right: -1px;
 }.mt-\[0\.6rem\] {
   margin-top: 0.6rem;
+}.mb-\[0\.6rem\] {
+  margin-bottom: 0.6rem;
 }.mb-5 {
   margin-bottom: 1.25rem;
 }.mt-4 {

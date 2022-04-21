@@ -67,23 +67,25 @@ if ( ! class_exists( 'UAGB_Forms' ) ) {
 			check_ajax_referer( 'uagb_forms_ajax_nonce', 'nonce' );
 
 			$options = array(
+				'recaptcha_site_key_v2' => \UAGB_Admin_Helper::get_admin_settings_option( 'uag_recaptcha_site_key_v2', '' ),
+				'recaptcha_site_key_v3' => \UAGB_Admin_Helper::get_admin_settings_option( 'uag_recaptcha_site_key_v3', '' ),
 				'recaptcha_secret_key_v2' => \UAGB_Admin_Helper::get_admin_settings_option( 'uag_recaptcha_secret_key_v2', '' ),
 				'recaptcha_secret_key_v3' => \UAGB_Admin_Helper::get_admin_settings_option( 'uag_recaptcha_secret_key_v3', '' ),
 			);
 
-			if ( isset( $_POST['captcha_version'] ) ) {
+			if ( 'v2' === $_POST['captcha_version'] ) {
 
-				$google_recaptcha_version = $_POST['captcha_version'];
+				$google_recaptcha_site_key = $options['recaptcha_site_key_v2'];
+				$google_recaptcha_secret_key = $options['recaptcha_secret_key_v2'];
 
-				if ( 'v2' === $google_recaptcha_version ) {
+			} elseif ( 'v3' === $_POST['captcha_version'] ) {
 
-					$google_recaptcha_secret_key = $options['recaptcha_secret_key_v2'];
+				$google_recaptcha_site_key = $options['recaptcha_site_key_v3'];
+				$google_recaptcha_secret_key = $options['recaptcha_secret_key_v3'];
 
-				} elseif ( 'v3' === $google_recaptcha_version ) {
+			}
+			if( is_null( $google_recaptcha_secret_key ) && is_null( $google_recaptcha_site_key ) ) {
 
-					$google_recaptcha_secret_key = $options['recaptcha_secret_key_v3'];
-
-				}
 				// Google recaptcha secret key verification starts.
 				$google_recaptcha = isset( $_POST['captcha_response'] ) ? sanitize_text_field( $_POST['captcha_response'] ) : '';
 				$remoteip         = isset( $_SERVER['REMOTE_ADDR'] ) ? sanitize_text_field( $_SERVER['REMOTE_ADDR'] ) : '';
@@ -92,6 +94,7 @@ if ( ! class_exists( 'UAGB_Forms' ) ) {
 				$google_url = 'https://www.google.com/recaptcha/api/siteverify';
 
 				$errors = new WP_Error();
+
 				if ( empty( $google_recaptcha ) || empty( $remoteip ) ) {
 
 					$errors->add( 'invalid_api', __( 'Please try logging in again to verify that you are not a robot.', 'ultimate-addons-of-gutenberg' ) );
@@ -124,6 +127,7 @@ if ( ! class_exists( 'UAGB_Forms' ) ) {
 					}
 				}
 			}
+
 			$form_data = isset( $_POST['form_data'] ) ? json_decode( stripslashes( $_POST['form_data'] ), true ) : array(); // phpcs:ignore
 
 			$body  = '';
