@@ -64,7 +64,7 @@ $selectors = array(
 		'line-height' => UAGB_Helper::get_css_value( $attr['secondCtaFontSize'], $attr['secondCtaFontSizeType'] ),
 		'fill'        => $attr['secondCtaColor'],
 	),
-	'.wp-block-uagb-call-to-action:hover a.uagb-cta-second__button > svg' => array(
+	'.wp-block-uagb-call-to-action a.uagb-cta-second__button:hover' => array(
 		'fill' => $attr['secondCtaHoverColor'],
 	),
 );
@@ -84,7 +84,7 @@ $selectors['.wp-block-uagb-call-to-action a.uagb-cta-second__button']       = ar
 	'align-self'       => 'top' === $attr['buttonAlign'] ? 'flex-start' : 'center',
 	'height'           => 'fit-content',
 );
-$selectors['.wp-block-uagb-call-to-action:hover a.uagb-cta-second__button'] = array(
+$selectors['.wp-block-uagb-call-to-action a.uagb-cta-second__button:hover'] = array(
 	'color'            => $attr['secondCtaHoverColor'],
 	'background-color' => $attr['secondCtaHoverBackground'],
 	'border-color'     => $attr['secondCtaBorderHColor'],
