@@ -1793,6 +1793,7 @@ const UAGBPostCarousel = ( props ) => {
 					} }
 				/>
 				<Border
+					disabledBorderTitle= {false}
 					disableBottomSeparator={ false }
 					setAttributes={ setAttributes }
 					borderStyle={ {
