@@ -20,6 +20,9 @@ import {
 import renderSVG from '@Controls/renderIcon';
 import { SelectControl, Icon } from '@wordpress/components';
 import SpacingControl from '@Components/spacing-control';
+import ColorSwitchControl from '@Components/color-switch-control';
+
+
 
 
 // Extend component
@@ -30,7 +33,9 @@ const Settings = ( props ) => {
 	const { attributes, deviceType, setAttributes } = props;
 	const {
 		headingAlign,
+		headingColorType,
 		headingColor,
+		headingGradientColor,
 		subHeadingColor,
 		separatorColor,
 		headingTag,
@@ -398,12 +403,22 @@ const Settings = ( props ) => {
 						} }
 					/>
 				</Suspense>
-				<AdvancedPopColorControl
-					label={ __( 'Color', 'ultimate-addons-for-gutenberg' ) }
-					colorValue={ headingColor ? headingColor : '' }
-					onColorChange={ ( value ) =>
-						setAttributes( { headingColor: value } )
-					}
+
+				<ColorSwitchControl
+					label={__( 'Color', 'ultimate-addons-for-gutenberg' )}
+					type={{
+						value: headingColorType,
+						label: 'headingColorType'
+					}}
+					classic={{
+						value: headingColor,
+						label: 'headingColor'
+					}}
+					gradient={{
+						value: headingGradientColor,
+						label: 'headingGradientColor'
+					}}
+					setAttributes={ setAttributes }
 				/>
 				<Range
 					label={ __(

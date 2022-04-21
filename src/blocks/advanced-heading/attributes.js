@@ -28,10 +28,20 @@ const attributes = {
 			styleType: 'overall-alignment'
 		}
 	},
+	headingColorType: {
+		type: 'string',
+		default: 'classic'
+	},
 	headingColor: {
 		type: 'string',
 		UAGCopyPaste: {
 			styleType: 'main-title-color'
+		}
+	},
+	headingGradientColor: {
+		type: 'string',
+		UAGCopyPaste: {
+			styleType: 'main-title-gradient-color'
 		}
 	},
 	subHeadingColor: {

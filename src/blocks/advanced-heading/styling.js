@@ -10,6 +10,8 @@ function styling( props ) {
 		headingAlign,
 		headingTag,
 		headingColor,
+		headingColorType,
+		headingGradientColor,
 		headSpace,
 		seperatorStyle,
 		separatorHeight,
@@ -167,6 +169,15 @@ function styling( props ) {
 		'margin-bottom': generateCSSUnit( headSpace, 'px' ),
 		'letter-spacing': generateCSSUnit( headLetterSpacing, headLetterSpacingType ),
 	};
+
+	// gradient text color
+	if('gradient' === headingColorType){
+		selectors[ ' ' + headingTag + '.uagb-heading-text' ] =  {
+			'background': headingGradientColor,
+			'-webkit-background-clip': 'text',
+			'-webkit-text-fill-color': 'transparent'
+		}
+	}
 
 
 	if ( seperatorStyle !== 'none' ) {

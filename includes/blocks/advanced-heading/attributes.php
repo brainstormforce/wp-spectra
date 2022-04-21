@@ -11,6 +11,8 @@ return array(
 	'classMigrate'            => false,
 	'headingAlign'            => 'center',
 	'headingColor'            => '',
+	'headingColorType' 		  =>'classic',
+	'headingGradientColor' 	  => '',
 	'subHeadingColor'         => '',
 	'separatorColor'          => '#0170b9',
 	'seperatorStyle'          => 'none',

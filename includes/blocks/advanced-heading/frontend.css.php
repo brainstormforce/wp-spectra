@@ -66,6 +66,14 @@ $selectors = array(
 	),
 );
 
+if('gradient' === $attr['headingColorType']){
+	$selectors[ ' .uagb-heading-text' ] =  array(
+		'background' => $attr['headingGradientColor'],
+		'-webkit-background-clip' => 'text',
+		'-webkit-text-fill-color' => 'transparent'
+	);
+}
+
 $seperatorStyle = isset( $attr['seperatorStyle'] ) ? $attr['seperatorStyle'] : '';
 
 if ( 'none' !== $seperatorStyle ) {
