@@ -67,24 +67,24 @@ if ( ! class_exists( 'UAGB_Forms' ) ) {
 			check_ajax_referer( 'uagb_forms_ajax_nonce', 'nonce' );
 
 			$options = array(
-				'recaptcha_site_key_v2' => \UAGB_Admin_Helper::get_admin_settings_option( 'uag_recaptcha_site_key_v2', '' ),
-				'recaptcha_site_key_v3' => \UAGB_Admin_Helper::get_admin_settings_option( 'uag_recaptcha_site_key_v3', '' ),
+				'recaptcha_site_key_v2'   => \UAGB_Admin_Helper::get_admin_settings_option( 'uag_recaptcha_site_key_v2', '' ),
+				'recaptcha_site_key_v3'   => \UAGB_Admin_Helper::get_admin_settings_option( 'uag_recaptcha_site_key_v3', '' ),
 				'recaptcha_secret_key_v2' => \UAGB_Admin_Helper::get_admin_settings_option( 'uag_recaptcha_secret_key_v2', '' ),
 				'recaptcha_secret_key_v3' => \UAGB_Admin_Helper::get_admin_settings_option( 'uag_recaptcha_secret_key_v3', '' ),
 			);
 
 			if ( 'v2' === $_POST['captcha_version'] ) {
 
-				$google_recaptcha_site_key = $options['recaptcha_site_key_v2'];
+				$google_recaptcha_site_key   = $options['recaptcha_site_key_v2'];
 				$google_recaptcha_secret_key = $options['recaptcha_secret_key_v2'];
 
 			} elseif ( 'v3' === $_POST['captcha_version'] ) {
 
-				$google_recaptcha_site_key = $options['recaptcha_site_key_v3'];
+				$google_recaptcha_site_key   = $options['recaptcha_site_key_v3'];
 				$google_recaptcha_secret_key = $options['recaptcha_secret_key_v3'];
 
 			}
-			if( is_null( $google_recaptcha_secret_key ) && is_null( $google_recaptcha_site_key ) ) {
+			if ( is_null( $google_recaptcha_secret_key ) && is_null( $google_recaptcha_site_key ) ) {
 
 				// Google recaptcha secret key verification starts.
 				$google_recaptcha = isset( $_POST['captcha_response'] ) ? sanitize_text_field( $_POST['captcha_response'] ) : '';

@@ -62,8 +62,8 @@ UAGBForms = { // eslint-disable-line no-undef
 			reCaptchaSiteKeyV2 = uagb_forms_data.recaptcha_site_key_v2;
 
 			if( reCaptchaSiteKeyV2 ) {
-				if( null === document.querySelector('.uagb-forms-field-set').getAttribute('data-sitekey') ) {
-					document.querySelector('.g-recaptcha ').setAttribute('data-sitekey', reCaptchaSiteKeyV2 );
+				if( null === document.querySelector( '.uagb-forms-field-set' ).getAttribute( 'data-sitekey' ) ) {
+					document.querySelector( '.g-recaptcha ' ).setAttribute( 'data-sitekey', reCaptchaSiteKeyV2 );
 				}
 
 				const recaptchaLink = document.createElement( 'script' );
@@ -148,7 +148,7 @@ UAGBForms = { // eslint-disable-line no-undef
 		form.addEventListener( 'submit', function ( e ) {
 			e.preventDefault();
 			if ( attr.reCaptchaEnable === true && attr.reCaptchaType === 'v3' && reCaptchaSiteKeyV3 ) {
-				if( document.getElementsByClassName('grecaptcha-logo').length === 0 ){
+				if( document.getElementsByClassName( 'grecaptcha-logo' ).length === 0 ){
 					document.querySelector( '.uagb-form-reacaptcha-error-' + attr.block_id ).innerHTML = '<p style="color:red !important" class="error-captcha">Invalid Google reCAPTCHA Site Key.</p>';
 					return false;
 				}
@@ -260,7 +260,6 @@ UAGBForms = { // eslint-disable-line no-undef
 		  } )
 		  .then( ( resp ) => resp.json() )
 		  .then( function( data ){
-			  console.log(data.data);
 			const hideForm = document.querySelector( '[name="uagb-form-' + attr.block_id + '"]' );
 			hideForm.style.display = 'none';
 			if ( 200 === data.data ) {
