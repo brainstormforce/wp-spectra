@@ -82,7 +82,7 @@ const TextShadowControl = ( props ) => {
 		);
 	}
 
-	const boxShadowAdvancedControls = (
+	const textShadowAdvancedControls = (
 		<div className="uag-text-shadow-option-actions">
 			<span className="uag-control-label">
 				{ __( 'Text Shadow', 'ultimate-addons-for-gutenberg' ) }
@@ -103,7 +103,7 @@ const TextShadowControl = ( props ) => {
 		<div
 			className={ `components-base-control uag-text-shadow-options ${ activeClass }` }
 		>
-			{ boxShadowAdvancedControls }
+			{ textShadowAdvancedControls }
 			{ showAdvancedControls && advancedControls }
 		</div>
 	);
