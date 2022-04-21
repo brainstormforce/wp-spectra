@@ -72,7 +72,7 @@ const UAGBContainer = ( props ) => {
 			element = document.getElementById( 'block-' + props.clientId )
 		}
 		// Add Close Button for Variation Selector.
-		const variationPicker = element.querySelector( '.uagb-container-variation-picker .block-editor-block-variation-picker' );
+		const variationPicker = element?.querySelector( '.uagb-container-variation-picker .block-editor-block-variation-picker' );
 		const closeButton = document.createElement( 'button' );
 		closeButton.onclick = function() {
 			if ( props.defaultVariation.attributes ) {

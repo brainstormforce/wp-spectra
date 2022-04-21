@@ -22,6 +22,8 @@ const Render = ( props ) => {
 		label,
 		icon,
 		iconPosition,
+		removeText,
+		noFollow
 	} = attributes;
 
 	const iconHtml = ( curr_position ) => {
@@ -39,7 +41,24 @@ const Render = ( props ) => {
 		}
 		return null;
 	};
+	const btnText = () => {
+		if( ! removeText ){
+			return <RichText
+						placeholder={ __( 'Add text…' ) }
+						value={ label }
+						tagName="div"
+						onChange={ ( value ) => {
+							setAttributes( { label: value } );
+						} }
+						allowedFormats={ [ 'bold', 'italic', 'strikethrough' ] }
+						className="uagb-button__link"
+						rel= { noFollow ? 'nofollow noopener' : 'follow noopener' }
+						keepPlaceholderOnFocus
+					/>
+		}
+			return '';
 
+	}
 	return (
 		<div
 			className={ classnames(
@@ -58,18 +77,7 @@ const Render = ( props ) => {
 					) }
 				>
 					{ iconHtml( 'before' ) }
-					<RichText
-						placeholder={ __( 'Add text…' ) }
-						value={ label }
-						tagName="div"
-						onChange={ ( value ) => {
-							setAttributes( { label: value } );
-						} }
-						allowedFormats={ [ 'bold', 'italic', 'strikethrough' ] }
-						className="uagb-button__link"
-						rel="noopener noreferrer"
-						keepPlaceholderOnFocus
-					/>
+					{ btnText() }
 					{ iconHtml( 'after' ) }
 				</div>
 			</div>
