@@ -1864,6 +1864,7 @@ const Settings = ( props ) => {
 					} }
 				/>
 				<Border
+					disabledBorderTitle= {false}
 					disableBottomSeparator={ false }
 					setAttributes={ setAttributes }
 					borderStyle={ {

@@ -1283,6 +1283,10 @@ const attributes = {
 			styleType: 'desc-margin-unit-tablet'
 		},
 		default: 'px',
+	},
+	isPreview: {
+		type: 'boolean',
+		default: false,
 	}
 };
 

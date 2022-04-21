@@ -924,6 +924,7 @@ const Settings = ( props ) => {
 				) }
 				<hr className="uagb-editor__separator" />
 				<Border
+					disabledBorderTitle= {false}
 					setAttributes={ setAttributes }
 					borderStyle={ {
 						value: borderStyle,

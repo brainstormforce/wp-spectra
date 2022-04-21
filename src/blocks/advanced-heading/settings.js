@@ -123,7 +123,10 @@ const Settings = ( props ) => {
 	const generalPanel = () => {
 
 		return (
-			<UAGAdvancedPanelBody>
+			<UAGAdvancedPanelBody
+				title={ __( 'Content', 'ultimate-addons-for-gutenberg' ) }
+				initialOpen={ false }
+			>
 				<MultiButtonsControl
 					setAttributes={ setAttributes }
 					label={ __( 'Alignment', 'ultimate-addons-for-gutenberg' ) }
