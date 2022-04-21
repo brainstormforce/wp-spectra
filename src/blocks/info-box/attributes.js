@@ -426,6 +426,18 @@ const attributes = {
 			styleType: 'btn-icon-space'
 		}
 	},
+	ctaIconSpaceTablet: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'btn-icon-space'
+		}
+	},
+	ctaIconSpaceMobile: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'btn-icon-space'
+		}
+	},
 	ctaIconSpaceType: {
 		type: 'string',
 		default: 'px',
@@ -457,6 +469,18 @@ const attributes = {
 			styleType: 'separator-width'
 		},
 		default: 30,
+	},
+	seperatorWidthTablet: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'separator-width'
+		},
+	},
+	seperatorWidthMobile: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'separator-width'
+		},
 	},
 	separatorWidthType: {
 		type: 'string',
@@ -682,12 +706,14 @@ const attributes = {
 	},
 	imageWidthMobile: {
 		type: 'number',
+		default: 0,
 		UAGCopyPaste: {
 			styleType: 'image-width-mobile'
 		}
 	},
 	imageWidthTablet: {
 		type: 'number',
+		default: 0,
 		UAGCopyPaste: {
 			styleType: 'image-width-tablet'
 		}

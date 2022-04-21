@@ -10,8 +10,12 @@ function styling( props ) {
 		layout,
 		rating,
 		size,
+		sizeMobile,
+		sizeTablet,
 		align,
 		gap,
+		gapTablet,
+		gapMobile,
 		unmarkedColor,
 		color,
 		fontFamily,
@@ -26,6 +30,8 @@ function styling( props ) {
 		lineHeightTablet,
 		titleColor,
 		titleGap,
+		titleGapTablet,
+		titleGapMobile,
 		fontStyle,
 		fontTransform,
 		fontDecoration,
@@ -107,17 +113,36 @@ function styling( props ) {
 	};
 
 	const tabletSelectors = {
+		' .uag-star-rating': {
+			'font-size': generateCSSUnit( sizeTablet, 'px' ),
+		},
+		' .uag-star-rating > span': {
+			'margin-right': generateCSSUnit( gapTablet, 'px' ),
+		},
 		' .uag-star-rating__title.block-editor-rich-text__editable': {
 			'font-size': generateCSSUnit( fontSizeTablet, fontSizeType ),
 			'line-height': generateCSSUnit( lineHeightTablet, lineHeightType ),
 		},
 	};
 	const mobileSelectors = {
+		' .uag-star-rating': {
+			'font-size': generateCSSUnit( sizeMobile, 'px' ),
+		},
+		' .uag-star-rating > span': {
+			'margin-right': generateCSSUnit( gapMobile, 'px' ),
+		},
 		' .uag-star-rating__title.block-editor-rich-text__editable': {
 			'font-size': generateCSSUnit( fontSizeMobile, fontSizeType ),
 			'line-height': generateCSSUnit( lineHeightMobile, lineHeightType ),
 		},
 	};
+
+	tabletSelectors[ ' .uag-star-rating__title.block-editor-rich-text__editable' ][
+		index
+	] = generateCSSUnit( titleGapTablet, 'px' );
+	mobileSelectors[ ' .uag-star-rating__title.block-editor-rich-text__editable' ][
+		index
+	] = generateCSSUnit( titleGapMobile, 'px' );
 
 	const baseSelector = `.uagb-block-${ props.clientId.substr( 0, 8 ) }`;
 

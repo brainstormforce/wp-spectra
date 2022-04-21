@@ -56,6 +56,18 @@ const attributes = {
 			styleType: 'column-gradient-value'
 		}
 	},
+	gapTablet: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'column-gradient-value'
+		}
+	},
+	gapMobile: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'column-gradient-value'
+		}
+	},
 	size: {
 		type: 'number',
 		default: 30,
@@ -114,6 +126,18 @@ const attributes = {
 			styleType: 'icon-border-radius'
 		},
 		default: 0,
+	},
+	borderRadiusTablet: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'icon-border-radius'
+		},
+	},
+	borderRadiusMobile: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'icon-border-radius'
+		},
 	},
 	social_layout: {
 		type: 'string',

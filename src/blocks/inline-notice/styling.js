@@ -67,6 +67,8 @@ function styling( props ) {
 		noticeAlignment,
 		layout,
 		highlightWidth,
+		highlightWidthMobile,
+		highlightWidthTablet,
 		titleTransform,
 		titleDecoration,
 		descTransform,
@@ -172,45 +174,6 @@ function styling( props ) {
 		},
 	};
 
-	if ( 'modern' === layout ) {
-		selectors[
-			' .rich-text.block-editor-rich-text__editable.uagb-notice-title'
-		][ 'background-color' ] = noticeColor;
-		selectors[
-			' .rich-text.block-editor-rich-text__editable.uagb-notice-title'
-		][ 'border-top-right-radius' ] = '3px';
-		selectors[
-			' .rich-text.block-editor-rich-text__editable.uagb-notice-title'
-		][ 'border-top-left-radius' ] = '3px';
-		selectors[
-			' .rich-text.block-editor-rich-text__editable.uagb-notice-text'
-		][ 'background-color' ] = contentBgColor;
-		selectors[
-			' .rich-text.block-editor-rich-text__editable.uagb-notice-text'
-		].border = '2px solid ' + noticeColor;
-		selectors[
-			' .rich-text.block-editor-rich-text__editable.uagb-notice-text'
-		][ 'border-bottom-left-radius' ] = '3px';
-		selectors[
-			' .rich-text.block-editor-rich-text__editable.uagb-notice-text'
-		][ 'border-bottom-right-radius' ] = '3px';
-
-	} else if ( 'simple' === layout ) {
-		selectors[
-			' .rich-text.block-editor-rich-text__editable.uagb-notice-title'
-		][ 'background-color' ] = contentBgColor;
-		selectors[
-			' .rich-text.block-editor-rich-text__editable.uagb-notice-title'
-		][ 'border-left' ] =
-			generateCSSUnit( highlightWidth, 'px' ) + ' solid ' + noticeColor;
-		selectors[
-			' .rich-text.block-editor-rich-text__editable.uagb-notice-text'
-		][ 'background-color' ] = contentBgColor;
-		selectors[
-			' .rich-text.block-editor-rich-text__editable.uagb-notice-text'
-		][ 'border-left' ] =
-			generateCSSUnit( highlightWidth, 'px' ) + ' solid ' + noticeColor;
-	}
 	mobileSelectors = {
 		' .rich-text.block-editor-rich-text__editable.uagb-notice-title': {
 			'font-size': generateCSSUnit(
@@ -327,6 +290,62 @@ function styling( props ) {
 			),
 		},
 	};
+
+	if ( 'modern' === layout ) {
+		selectors[
+			' .rich-text.block-editor-rich-text__editable.uagb-notice-title'
+		][ 'background-color' ] = noticeColor;
+		selectors[
+			' .rich-text.block-editor-rich-text__editable.uagb-notice-title'
+		][ 'border-top-right-radius' ] = '3px';
+		selectors[
+			' .rich-text.block-editor-rich-text__editable.uagb-notice-title'
+		][ 'border-top-left-radius' ] = '3px';
+		selectors[
+			' .rich-text.block-editor-rich-text__editable.uagb-notice-text'
+		][ 'background-color' ] = contentBgColor;
+		selectors[
+			' .rich-text.block-editor-rich-text__editable.uagb-notice-text'
+		].border = '2px solid ' + noticeColor;
+		selectors[
+			' .rich-text.block-editor-rich-text__editable.uagb-notice-text'
+		][ 'border-bottom-left-radius' ] = '3px';
+		selectors[
+			' .rich-text.block-editor-rich-text__editable.uagb-notice-text'
+		][ 'border-bottom-right-radius' ] = '3px';
+
+	} else if ( 'simple' === layout ) {
+		selectors[
+			' .rich-text.block-editor-rich-text__editable.uagb-notice-title'
+		][ 'background-color' ] = contentBgColor;
+		selectors[
+			' .rich-text.block-editor-rich-text__editable.uagb-notice-title'
+		][ 'border-left' ] =
+			generateCSSUnit( highlightWidth, 'px' ) + ' solid ' + noticeColor;
+		selectors[
+			' .rich-text.block-editor-rich-text__editable.uagb-notice-text'
+		][ 'background-color' ] = contentBgColor;
+		selectors[
+			' .rich-text.block-editor-rich-text__editable.uagb-notice-text'
+		][ 'border-left' ] =
+			generateCSSUnit( highlightWidth, 'px' ) + ' solid ' + noticeColor;
+		mobileSelectors[
+			' .rich-text.block-editor-rich-text__editable.uagb-notice-text'
+		][ 'border-left' ] =
+			generateCSSUnit( highlightWidthMobile, 'px' ) + ' solid ' + noticeColor;
+		mobileSelectors[
+			' .rich-text.block-editor-rich-text__editable.uagb-notice-title'
+		][ 'border-left' ] =
+			generateCSSUnit( highlightWidthMobile, 'px' ) + ' solid ' + noticeColor;
+		tabletSelectors[
+			' .rich-text.block-editor-rich-text__editable.uagb-notice-text'
+		][ 'border-left' ] =
+			generateCSSUnit( highlightWidthTablet, 'px' ) + ' solid ' + noticeColor;
+		tabletSelectors[
+			' .rich-text.block-editor-rich-text__editable.uagb-notice-title'
+		][ 'border-left' ] =
+			generateCSSUnit( highlightWidthTablet, 'px' ) + ' solid ' + noticeColor;
+	}
 
 	const baseSelector = `.editor-styles-wrapper .uagb-block-${ block_id }`;
 

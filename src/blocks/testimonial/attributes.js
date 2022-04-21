@@ -317,10 +317,38 @@ const attributes = {
 		},
 		default: 5,
 	},
+	nameSpaceMobile: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'author-bottom-margin-mobile'
+		},
+		default: 5,
+	},
+	nameSpaceTablet: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'author-bottom-margin-tablet'
+		},
+		default: 5,
+	},
 	descSpace: {
 		type: 'number',
 		UAGCopyPaste: {
 			styleType: 'desc-bottom-margin'
+		},
+		default: 15,
+	},
+	descSpaceTablet: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'desc-bottom-margin-tablet'
+		},
+		default: 15,
+	},
+	descSpaceMobile: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'desc-bottom-margin-mobile'
 		},
 		default: 15,
 	},
@@ -381,6 +409,20 @@ const attributes = {
 		type: 'number',
 		UAGCopyPaste: {
 			styleType: 'image-width'
+		},
+		default: 60,
+	},
+	imageWidthMobile: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'image-width-mobile'
+		},
+		default: 60,
+	},
+	imageWidthTablet: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'image-width-tablet'
 		},
 		default: 60,
 	},
@@ -455,11 +497,39 @@ const attributes = {
 			styleType: 'row-gap'
 		},
 	},
+	rowGapMobile: {
+		type: 'number',
+		default: 10,
+		UAGCopyPaste: {
+			styleType: 'row-gap-mobile'
+		},
+	},
+	rowGapTablet: {
+		type: 'number',
+		default: 10,
+		UAGCopyPaste: {
+			styleType: 'row-gap-tablet'
+		},
+	},
 	columnGap: {
 		type: 'number',
 		default: 10,
 		UAGCopyPaste: {
 			styleType: 'column-gap'
+		},
+	},
+	columnGapMobile: {
+		type: 'number',
+		default: 10,
+		UAGCopyPaste: {
+			styleType: 'column-gap-mobile'
+		},
+	},
+	columnGapTablet: {
+		type: 'number',
+		default: 10,
+		UAGCopyPaste: {
+			styleType: 'column-gap-tablet'
 		},
 	},
 	contentPadding: {

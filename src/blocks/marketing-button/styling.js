@@ -8,10 +8,14 @@ import generateCSSUnit from '@Controls/generateCSSUnit';
 function styling( props ) {
 	const {
 		titleSpace,
+		titleSpaceTablet,
+		titleSpaceMobile,
 		titleSpaceUnit,
 		//Icon
 		iconPosition,
 		iconSpace,
+		iconSpaceTablet,
+		iconSpaceMobile,
 		iconFontSize,
 		iconFontSizeType,
 		iconFontSizeMobile,
@@ -181,6 +185,9 @@ function styling( props ) {
 	] = generateCSSUnit( iconSpace, 'px' );
 
 	tabletSelectors = {
+		' .uagb-marketing-btn__prefix': {
+			'margin-top': generateCSSUnit( titleSpaceTablet, 'px' ),
+		},
 		' .block-editor-rich-text__editable.uagb-marketing-btn__title': {
 			'font-size': generateCSSUnit(
 				titleFontSizeTablet,
@@ -226,6 +233,9 @@ function styling( props ) {
 	};
 
 	mobileSelectors = {
+		' .uagb-marketing-btn__prefix': {
+			'margin-top': generateCSSUnit( titleSpaceMobile, 'px' ),
+		},
 		' .block-editor-rich-text__editable.uagb-marketing-btn__title': {
 			'font-size': generateCSSUnit(
 				titleFontSizeMobile,
@@ -269,6 +279,14 @@ function styling( props ) {
 			),
 		},
 	};
+
+	tabletSelectors[ ' svg' ][
+		marginType
+	] = generateCSSUnit( iconSpaceTablet, 'px' );
+
+	mobileSelectors[ ' svg' ][
+		marginType
+	] = generateCSSUnit( iconSpaceMobile, 'px' );
 
 	const id = `.editor-styles-wrapper .uagb-block-${ props.clientId.substr( 0, 8 ) }`;
 

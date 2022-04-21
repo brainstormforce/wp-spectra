@@ -10,7 +10,6 @@ import TypographyControl from '@Components/typography';
 import ResponsiveSlider from '@Components/responsive-slider';
 import MultiButtonsControl from '@Components/multi-buttons-control';
 import AdvancedPopColorControl from '@Components/color-control/advanced-pop-color-control.js';
-import Range from '@Components/range/Range.js';
 import SpacingControl from '@Components/spacing-control';
 import InspectorTabs from '@Components/inspector-tabs/InspectorTabs.js';
 import InspectorTab, {
@@ -43,7 +42,11 @@ const Settings = ( props ) => {
 		expandFirstItem,
 		enableSchemaSupport,
 		rowsGap,
+		rowsGapTablet,
+		rowsGapMobile,
 		columnsGap,
+		columnsGapTablet,
+		columnsGapMobile,
 		align,
 		enableSeparator,
 		boxBgColor,
@@ -64,6 +67,8 @@ const Settings = ( props ) => {
 		iconColor,
 		iconActiveColor,
 		gapBtwIconQUestion,
+		gapBtwIconQUestionTablet,
+		gapBtwIconQUestionMobile,
 		questionloadGoogleFonts,
 		questionFontFamily,
 		questionFontWeight,
@@ -855,35 +860,55 @@ const Settings = ( props ) => {
 						setAttributes( { boxBgColor: value } )
 					}
 				/>
-				<Range
+				<ResponsiveSlider
 					label={ __(
 						'Rows Gap (px)',
 						'ultimate-addons-for-gutenberg'
 					) }
-					setAttributes={ setAttributes }
-					value={ rowsGap }
-					onChange={ ( value ) =>
-						setAttributes( { rowsGap: value } )
-					}
+					data={ {
+						desktop: {
+							value: rowsGap,
+							label: 'rowsGap'
+						},
+						tablet: {
+							value: rowsGapTablet,
+							label: 'rowsGapTablet'
+						},
+						mobile: {
+							value: rowsGapMobile,
+							label: 'rowsGapMobile'
+						},
+					} }
 					min={ 0 }
 					max={ 50 }
 					displayUnit={ false }
+					setAttributes={ setAttributes }
 				/>
 				{ 'grid' === layout && (
 					<>
-						<Range
+						<ResponsiveSlider
 							label={ __(
 								'Columns Gap (px)',
 								'ultimate-addons-for-gutenberg'
 							) }
-							setAttributes={ setAttributes }
-							value={ columnsGap }
-							onChange={ ( value ) =>
-								setAttributes( { columnsGap: value } )
-							}
+							data={ {
+								desktop: {
+									value: columnsGap,
+									label: 'columnsGap'
+								},
+								tablet: {
+									value: columnsGapTablet,
+									label: 'columnsGapTablet'
+								},
+								mobile: {
+									value: columnsGapMobile,
+									label: 'columnsGapMobile'
+								},
+							} }
 							min={ 0 }
 							max={ 50 }
 							displayUnit={ false }
+							setAttributes={ setAttributes }
 						/>
 						<ToggleControl
 							label={ __(
@@ -981,19 +1006,27 @@ const Settings = ( props ) => {
 					] }
 					setAttributes={ setAttributes }
 				/>
-				<Range
+				<ResponsiveSlider
 					label={ __(
-						'Gap between Icon and Question',
-						'ultimate-addons-for-gutenberg'
-					) }
-					setAttributes={ setAttributes }
-					value={ gapBtwIconQUestion }
-					onChange={ ( value ) =>
-						setAttributes( { gapBtwIconQUestion: value } )
-					}
+						'Gap between Icon and Question', 'ultimate-addons-for-gutenberg' ) }
+					data={ {
+						desktop: {
+							value: gapBtwIconQUestion,
+							label: 'gapBtwIconQUestion',
+						},
+						tablet: {
+							value: gapBtwIconQUestionTablet,
+							label: 'gapBtwIconQUestionTablet',
+						},
+						mobile: {
+							value: gapBtwIconQUestionMobile,
+							label: 'gapBtwIconQUestionMobile',
+						},
+					} }
 					min={ 0 }
 					max={ 100 }
-					displayUnit={ false }
+					displayUnit = { false }
+					setAttributes={ setAttributes }
 				/>
 				<AdvancedPopColorControl
 					label={ __(

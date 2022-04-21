@@ -43,6 +43,8 @@ return array(
 	'ctaTarget'                    => false,
 	'ctaIconPosition'              => 'after',
 	'ctaIconSpace'                 => 5,
+	'ctaIconSpaceTablet'           => '',
+	'ctaIconSpaceMobile'           => '',
 	'ctaType'                      => 'button',
 	'ctaLink'                      => '#',
 	'ctaFontSize'                  => 14,
