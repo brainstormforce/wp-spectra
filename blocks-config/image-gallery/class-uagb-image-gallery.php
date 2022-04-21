@@ -99,10 +99,6 @@ if ( ! class_exists( 'Spectra_Pro_Image_Gallery' ) ) {
 								'type' => 'array',
 								'default' => array(),
 							),
-							'previewLightbox' => array(
-								'type' => 'boolean',
-								'default' => false,
-							),
 						),
 						// Gallery Settings
 						array(
@@ -117,10 +113,6 @@ if ( ! class_exists( 'Spectra_Pro_Image_Gallery' ) ) {
 							'feedLayout' => array(
 								'type' => 'string',
 								'default' => 'tiled',
-							),
-							'useLightbox' => array(
-								'type' => 'boolean',
-								'default' => false,
 							),
 							'imageDisplayCaption' => array(
 								'type' => 'boolean',
@@ -156,10 +148,6 @@ if ( ! class_exists( 'Spectra_Pro_Image_Gallery' ) ) {
 							'imageDefaultCaption' => array(
 								'type' => 'string',
 								'default' => 'No Caption',
-							),
-							'imageDefaultCaptionClickable' => array(
-								'type' => 'string',
-								'default' => 'Click to view image',
 							),
 							'captionPaddingTop' => array(
 								'type' => 'number',
@@ -1011,9 +999,7 @@ if ( ! class_exists( 'Spectra_Pro_Image_Gallery' ) ) {
 				? $mediaArray[ 'caption' ]
 				: (
 					$mediaArray[ 'url' ]
-					? $atts[ 'useLightbox' ]
-						? $atts[ 'imageDefaultCaptionClickable' ]
-						: $atts[ 'imageDefaultCaption' ]
+					? $atts[ 'imageDefaultCaption' ]
 					: 'Unable to load image'
 				);
 			if( $needsEllipsis && strlen( $mediaArray[ 'caption' ] ) <= $atts[ 'imageCaptionLength' ] ) {

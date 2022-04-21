@@ -10,13 +10,12 @@ import "/assets/js/isotope.min";
 import "/assets/js/imagesloaded.min";
 import { useDeviceType } from '@Controls/getPreviewType';
 
-const ImageGallery = ( { attributes, setAttributes, block_id } ) => {
+const ImageGallery = ( { attributes, setAttributes } ) => {
 	const {
 		focusList,
 
 		mediaGallery,
 		feedLayout,
-		useLightbox,
 		imageDisplayCaption,
 
 		feedMarginTop,
@@ -45,7 +44,6 @@ const ImageGallery = ( { attributes, setAttributes, block_id } ) => {
 		captionDisplayType,
 		imageCaptionAlignment,
 		imageDefaultCaption,
-		imageDefaultCaptionClickable,
 
 		carouselStartAt,
 		carouselLoop,
@@ -86,7 +84,7 @@ const ImageGallery = ( { attributes, setAttributes, block_id } ) => {
 				case 'tiled':
 					const isotopeTileChild = isotopeElement.current.querySelector( '.uag-image-gallery__layout--tiled' );
 					setAttributes( { tileSize: isotopeSpacer.current.getBoundingClientRect().width } );
-					console.log( isotopeSpacer.current.getBoundingClientRect().width );
+					// console.log( isotopeSpacer.current.getBoundingClientRect().width );
 					isotope.current.destroy();
 					isotope.current = new Isotope( isotopeTileChild, {
 						itemSelector: '.uag-image-gallery-media-wrapper',
@@ -108,7 +106,6 @@ const ImageGallery = ( { attributes, setAttributes, block_id } ) => {
 				// Need to add Masonry Case too once fixed.
 				default:
 					( isotope.current ) && isotope.current.destroy();
-					// isotope.current.destroy();
 					break;
 			}
 		}, 1000 );
@@ -129,11 +126,7 @@ const ImageGallery = ( { attributes, setAttributes, block_id } ) => {
 		}
 		// Else check if this is tiled and apply focus for the images that need it.
 		else if ( feedLayout === 'tiled' ){
-			// let emptyFocus = ( focusList.length === 0 ) ? true : false;
 			mediaGallery.forEach( ( image ) => {
-				// if ( emptyFocus ){
-				// 	focusList[ image.id ] = false;
-				// }
 				if ( isotopeChildren.current[ image.id ] !== undefined && isotopeChildren.current[ image.id ] !== null ){
 					if ( focusList[ image.id ] && ! isotopeChildren.current[ image.id ].classList.contains( 'uag-image-gallery-media-wrapper--focus' ) ){
 						isotopeChildren.current[ image.id ].classList.add( 'uag-image-gallery-media-wrapper--focus' );
@@ -152,10 +145,8 @@ const ImageGallery = ( { attributes, setAttributes, block_id } ) => {
 					isotope.current = new Isotope( isotopeChild, {
 						itemSelector: '.uag-image-gallery-media-wrapper',
 						layoutMode: 'masonry',
-						// percentPosition: true,
 						masonry: {
 							columnWidth: '.uag-image-gallery-media-spacer',
-							// horizontalOrder: true,
 						},
 					} );
 					imagesLoaded( isotopeChild ).on( 'progress', ( theInstance, theImage ) => {
@@ -164,11 +155,9 @@ const ImageGallery = ( { attributes, setAttributes, block_id } ) => {
 							isotope.current.layout();
 						}
 					} );
-					// isotope.current.layout();
 					break;
 				default:
 					( isotope.current ) && isotope.current.destroy();
-					// isotope.current.destroy();
 					break;
 			}
 		}, 50 );
@@ -204,32 +193,19 @@ const ImageGallery = ( { attributes, setAttributes, block_id } ) => {
 
 	useEffect ( () => {
 		if ( feedLayout === 'tiled' ){
-			( setFocusUpdate( true ) );
-			if ( useLightbox ){
-				for ( let i = 0; i < isotopeChildren.current.length; i++ ){
-					if ( isotopeChildren.current[ i ] !== undefined && isotopeChildren.current[ i ] !== null ){
-						isotopeChildren.current[ i ].classList.add( 'uag-image-gallery-media--clickable' );
-					}
-				}
-			}
-			else{
-				for ( let i = 0; i < isotopeChildren.current.length; i++ ){
-					if ( isotopeChildren.current[ i ] !== undefined && isotopeChildren.current[ i ] !== null ){
-						isotopeChildren.current[ i ].classList.remove( 'uag-image-gallery-media--clickable' );
-					}
+			setFocusUpdate( true );
+			for ( let i = 0; i < isotopeChildren.current.length; i++ ){
+				if ( isotopeChildren.current[ i ] !== undefined && isotopeChildren.current[ i ] !== null ){
+					isotopeChildren.current[ i ].classList.remove( 'uag-image-gallery-media--clickable' );
 				}
 			}
 		}
-	}, [ useLightbox, feedLayout ] );
+	}, [ feedLayout ] );
 
 	useEffect ( () => {
 		if( ! focusUpdate ){
 			return;
 		}
-		// if ( focusList.length === 0 ){
-		// 	focusList[ image.id ] = false;
-		// }
-		// isotopeChildren.current = isotopeChildren.current.slice( 0, focusList.length );
 		for ( let i = 0; i < focusList.length; i++ ){
 			if ( focusList[ i ] !== undefined && isotopeChildren.current[ i ] !== undefined && isotopeChildren.current[ i ] !== null ){
 				focusList[ i ]
@@ -321,27 +297,6 @@ const ImageGallery = ( { attributes, setAttributes, block_id } ) => {
 		],
 	};
 
-	const lightboxSettings = {
-		arrows: false,
-		dots: false,
-		draggable: false,
-		fade: true,
-		infinite: false,
-		lazyLoad: true,
-		swipe: false,
-		nextArrow: <SlickNextArrow />,
-		prevArrow: <SlickPrevArrow />,
-	};
-
-	const lightboxNavSettings = {
-		arrows: false,
-		centerMode: true,
-		dots: false,
-		infinite: false,
-		slidesToShow: 5,
-		variableWidth: true,
-	};
-
 	const svgFocus = ( image ) => (
 		<svg
 			xmlns="http://www.w3.org/2000/svg"
@@ -391,12 +346,10 @@ const ImageGallery = ( { attributes, setAttributes, block_id } ) => {
 		if ( imageElement.naturalWidth >= ( imageElement.naturalHeight * 2 ) - ( imageElement.naturalHeight / 2 ) ){
 			imageElement.parentElement.parentElement.classList.add( 'uag-image-gallery-media-wrapper--wide');
 			imageElement.parentElement.classList.add( 'uag-image-gallery-media--tiled-wide');
-			// isotope.current.layout();
 		}
 		else if ( imageElement.naturalHeight >= ( imageElement.naturalWidth * 2 ) - ( imageElement.naturalWidth / 2 ) ){
 			imageElement.parentElement.parentElement.classList.add( 'uag-image-gallery-media-wrapper--tall');
 			imageElement.parentElement.classList.add( 'uag-image-gallery-media--tiled-tall');
-			// isotope.current.layout();
 		}
 	};
 
@@ -413,15 +366,7 @@ const ImageGallery = ( { attributes, setAttributes, block_id } ) => {
 						} ) }
 						data-go-to={ pageIndex + 1 }
 					>
-						<button
-							onClick={ () => setAttributes( { gridPageNumber: pageIndex + 1 } ) }
-							// 	setAttributes !== "inapplicable"
-							// 		? setAttributes( {
-							// 				gridPageNumber: pageIndex + 1,
-							// 		  } )
-							// 		: ""
-							// }
-						/>
+						<button onClick={ () => setAttributes( { gridPageNumber: pageIndex + 1 } ) } />
 					</li>
 				) ) }
 			</ul>
@@ -456,41 +401,6 @@ const ImageGallery = ( { attributes, setAttributes, block_id } ) => {
 			) }
 		</>
 	);
-
-	const renderLightbox = () => (
-		<div className="uag-image-gallery__control-lightbox">
-			<h1 className="doofTop">Hi!</h1>
-			<h1 className="doofBottom">Bye!</h1>
-			{/* <div className="uag-image-gallery__control-lightbox--preview">
-				<Slider
-					className="uagb-slick-carousel"
-					asNavFor={ slickLightboxNav }
-					ref={ ( lightbox ) => setSlickLightbox( lightbox ) }
-					{ ...lightboxSettings }
-				>
-					{ mediaGallery.map( ( media ) => renderLightboxImage( media ) ) }
-				</Slider>
-			</div>
-			<Slider
-				className="uagb-slick-carousel"
-				asNavFor={ slickLightbox }
-				ref={ ( nav ) => setSlickLightboxNav( nav ) }
-				{ ...lightboxNavSettings }
-			>
-				{ mediaGallery.map( ( media ) => renderLightboxImage( media ) ) }
-			</Slider> */}
-		</div>
-	);
-
-	const renderLightboxImage = ( media ) => (
-		<div>
-			<img
-				className= "uag-image-gallery-media__lightbox"
-				src={ media.url }
-			/>
-		</div>
-	);
-
 	
 	const renderFocusControl = ( mediaObject ) => {
 		return focusList[ mediaObject.id ] ? svgUnfocus( mediaObject ) : svgFocus( mediaObject );	
@@ -505,10 +415,6 @@ const ImageGallery = ( { attributes, setAttributes, block_id } ) => {
 	const renderGallery = () => {
 		switch ( feedLayout ) {
 			case "grid":
-				// const gridLayout =
-				// 	feedPagination && setAttributes === "inapplicable"
-				// 		? "isogrid"
-				// 		: "grid";
 				const gridLayout = 'grid'; 
 				return (
 					<>
@@ -559,7 +465,6 @@ const ImageGallery = ( { attributes, setAttributes, block_id } ) => {
 							<div className="uag-image-gallery-media-spacer" ref={ isotopeSpacer }></div>
 							{ renderImageLooper() }
 						</div>
-						{/* { useLightbox && renderLightbox() } */}
 					</>
 				);
 			case "carousel":
@@ -597,10 +502,7 @@ const ImageGallery = ( { attributes, setAttributes, block_id } ) => {
 
 	const renderImage = ( mediaObject ) => (
 		<div
-			className={ classnames(
-				'uag-image-gallery-media-wrapper',
-				{ 'uag-image-gallery-media--clickable': ( feedLayout !== 'tiled' && useLightbox ) }
-			) }
+			className="uag-image-gallery-media-wrapper"
 			key={ mediaObject.id }
 			ref={ ( element ) => ( isotopeChildren.current[ mediaObject.id ] = element ) }
 		>
@@ -680,10 +582,7 @@ const ImageGallery = ( { attributes, setAttributes, block_id } ) => {
 		let limitedCaption = mediaObject.caption
 			? mediaObject.caption
 			: ( mediaObject.url
-				? ( useLightbox
-					? imageDefaultCaptionClickable
-					: imageDefaultCaption
-				)
+				? imageDefaultCaption
 				: "Unable to load image"
 			);
 		if ( needsEllipsis && mediaObject.caption.length <= imageCaptionLength ) {

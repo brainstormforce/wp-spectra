@@ -27,10 +27,6 @@ const attributes = {
 		type: 'array',
 		default: [],
 	},
-	previewLightbox: {
-		type: 'boolean',
-		default: false,
-	},
 
 	// Gallery Settings
 
@@ -48,10 +44,6 @@ const attributes = {
 		UAGCopyPaste: {
 			styleType: 'gallery-layout'
 		},
-	},
-	useLightbox: {
-		type: 'boolean',
-		default: false,
 	},
 	imageDisplayCaption: {
 		type: 'boolean',
@@ -105,10 +97,6 @@ const attributes = {
 	imageDefaultCaption: {
 		type: 'string',
 		default: 'No Caption',
-	},
-	imageDefaultCaptionClickable: {
-		type: 'string',
-		default: 'Click to view image',
 	},
 	captionPaddingTop: {
 		type: 'number',

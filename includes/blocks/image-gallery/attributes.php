@@ -15,12 +15,10 @@ return array(
 	'readyToRender' => false,
 	'tileSize' => 0,
 	'focusList' => array(),
-	'previewLightbox' => false,
 	// Gallery Settings
 	'mediaGallery' => array(),
 	'mediaIDs' => array(),
 	'feedLayout' => 'tiled',
-	'useLightbox' => false,
 	'imageDisplayCaption' => true,
 	// Caption Settings
 	'imageCaptionLength' => 30,
@@ -30,7 +28,6 @@ return array(
 	'imageCaptionAlignment01' => 'center',
 	'imageCaptionAlignment02' => 'center',
 	'imageDefaultCaption' => 'No Caption',
-	'imageDefaultCaptionClickable' => 'Click to view image',
 	'captionPaddingTop' => 8,
 	'captionPaddingRight' => 8,
 	'captionPaddingBottom' => 8,

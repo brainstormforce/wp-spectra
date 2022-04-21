@@ -44,7 +44,6 @@ const Settings = ( props ) => {
 		mediaGallery,
 		mediaIDs,
 		feedLayout,
-		useLightbox,
 		imageDisplayCaption,
 		
 		columnsDesk,
@@ -64,7 +63,6 @@ const Settings = ( props ) => {
 		imageCaptionAlignment01,
 		imageCaptionAlignment02,
 		imageDefaultCaption,
-		imageDefaultCaptionClickable,
 		captionPaddingTop,
 		captionPaddingRight,
 		captionPaddingBottom,
@@ -596,11 +594,11 @@ const Settings = ( props ) => {
 					<TextControl
 						autoComplete="off"
 						label={ __(
-							`Default Caption${ useLightbox ? ' (Clickable)' : '' }`,
+							`Default Caption`,
 							'ultimate-addons-for-gutenberg'
 						) }
-						value={ useLightbox ? imageDefaultCaptionClickable : imageDefaultCaption }
-						onChange={ ( value ) => useLightbox ? setAttributes( { imageDefaultCaptionClickable: value } ) : setAttributes( { imageDefaultCaption: value } ) }
+						value={ imageDefaultCaption }
+						onChange={ ( value ) => setAttributes( { imageDefaultCaption: value } ) }
 					/>
 					<Range
 						label={ __( 'Max Caption Length (Characters)', 'ultimate-addons-for-gutenberg' ) }
