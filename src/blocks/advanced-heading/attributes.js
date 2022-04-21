@@ -207,6 +207,22 @@ const attributes = {
 			styleType: 'main-title-letter-spacing-type'
 		}
 	},
+	headShadowColor: {
+		type: 'string',
+		default: '',
+	},
+	headShadowHOffset: {
+		type: 'number',
+		default: 0,
+	},
+	headShadowVOffset: {
+		type: 'number',
+		default: 0,
+	},
+	headShadowBlur: {
+		type: 'number',
+		default: 0,
+	},
 	// sub headline.
 	subHeadFontFamily: {
 		type: 'string',

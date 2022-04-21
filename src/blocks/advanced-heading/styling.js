@@ -35,6 +35,10 @@ function styling( props ) {
 		headLetterSpacingTablet,
 		headLetterSpacingMobile,
 		headLetterSpacingType,
+		headShadowColor,
+		headShadowHOffset,
+		headShadowVOffset,
+		headShadowBlur,
 		// sub heading
 		subHeadFontFamily,
 		subHeadFontStyle,
@@ -168,6 +172,7 @@ function styling( props ) {
 		'color': headingColor,
 		'margin-bottom': generateCSSUnit( headSpace, 'px' ),
 		'letter-spacing': generateCSSUnit( headLetterSpacing, headLetterSpacingType ),
+		'text-shadow': generateCSSUnit( headShadowHOffset, 'px' ) + ' ' + generateCSSUnit( headShadowVOffset, 'px' ) + ' ' + generateCSSUnit( headShadowBlur, 'px' ) + ' ' +  headShadowColor
 	};
 
 	// gradient text color

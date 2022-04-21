@@ -18,6 +18,7 @@ $selectors = array(
 		'color'         => $attr['headingColor'],
 		'margin-bottom' => UAGB_Helper::get_css_value( $attr['headSpace'], 'px' ),
 		'letter-spacing' => UAGB_Helper::get_css_value( $attr['headLetterSpacing'], $attr['headLetterSpacingType'] ),
+		'text-shadow' => UAGB_Helper::get_css_value( $attr['headShadowHOffset'], 'px' ) . ' ' . UAGB_Helper::get_css_value( $attr['headShadowVOffset'], 'px' )  . ' ' . UAGB_Helper::get_css_value( $attr['headShadowBlur'], 'px' ) . ' ' .  $attr['headShadowColor']
 	),
 	'.wp-block-uagb-advanced-heading ' => array(
 		'text-align' => $attr['headingAlign'],

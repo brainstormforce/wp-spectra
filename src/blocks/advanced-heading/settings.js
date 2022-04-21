@@ -21,6 +21,7 @@ import renderSVG from '@Controls/renderIcon';
 import { SelectControl, Icon } from '@wordpress/components';
 import SpacingControl from '@Components/spacing-control';
 import ColorSwitchControl from '@Components/color-switch-control';
+import TextShadowControl from '@Components/text-shadow';
 
 
 
@@ -54,6 +55,10 @@ const Settings = ( props ) => {
 		headLetterSpacingTablet,
 		headLetterSpacingMobile,
 		headLetterSpacingType,
+		headShadowColor,
+		headShadowHOffset,
+		headShadowVOffset,
+		headShadowBlur,
 		// sub head
 		subHeadFontFamily,
 		subHeadFontWeight,
@@ -419,6 +424,39 @@ const Settings = ( props ) => {
 						label: 'headingGradientColor'
 					}}
 					setAttributes={ setAttributes }
+				/>
+				<TextShadowControl
+					setAttributes={ setAttributes }
+					label={ __(
+						'Text Shadow',
+						'ultimate-addons-for-gutenberg'
+					) }
+					textShadowColor={ {
+						value: headShadowColor,
+						label: 'headShadowColor',
+						title: __( 'Color', 'ultimate-addons-for-gutenberg' ),
+					} }
+					textShadowHOffset={ {
+						value: headShadowHOffset,
+						label: 'headShadowHOffset',
+						title: __(
+							'Horizontal',
+							'ultimate-addons-for-gutenberg'
+						),
+					} }
+					textShadowVOffset={ {
+						value: headShadowVOffset,
+						label: 'headShadowVOffset',
+						title: __(
+							'Vertical',
+							'ultimate-addons-for-gutenberg'
+						),
+					} }
+					textShadowBlur={ {
+						value: headShadowBlur,
+						label: 'headShadowBlur',
+						title: __( 'Blur', 'ultimate-addons-for-gutenberg' ),
+					} }
 				/>
 				<Range
 					label={ __(
