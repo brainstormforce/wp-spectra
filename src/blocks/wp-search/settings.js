@@ -244,6 +244,7 @@ const Settings = ( props ) => {
 					}
 				/>
 				<Border
+					disabledBorderTitle= {false}
 					setAttributes={ setAttributes }
 					borderStyle={ {
 						value: borderStyle,
