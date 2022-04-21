@@ -33,7 +33,7 @@ const Welcome = () => {
                 <h2 className="sr-only" id="section-1-title">
                   Section title
                 </h2>
-                <div className="rounded-[0.2rem] bg-white overflow-hidden shadow">
+                <div className="rounded-[0.2rem] bg-white overflow-hidden shadow flex flex-col h-full justify-center">
                   <div className="p-6">
                         <h3 className='text-xl pb-3 font-medium text-center'>{__( 'Powerful Blocks & Beautiful Templates for any kind of website.', 'ultimate-addons-for-gutenberg' )}</h3>
 						<div className="mx-[80px]">
