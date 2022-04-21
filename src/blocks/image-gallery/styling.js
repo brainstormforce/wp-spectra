@@ -750,8 +750,8 @@ function styling( props ) {
 				};
 				selectors[ '.uag-image-gallery-media-wrapper:hover .uag-image-gallery-media__thumbnail' ] = {
 					...selectors[ '.uag-image-gallery-media-wrapper:hover .uag-image-gallery-media__thumbnail' ],
-					'transform': 'scale(1.025)',
-					'transform': 'scale3d(1.025, 1.025, 1.025)',
+					'transform': 'scale(1.1)',
+					'transform': 'scale3d(1.1, 1.1, 1.1)',
 				};
 			}
 			break;
@@ -759,8 +759,8 @@ function styling( props ) {
 			if( imageEnableZoom ){
 				selectors[ '.uag-image-gallery-media__thumbnail' ] = {
 					...selectors[ '.uag-image-gallery-media__thumbnail' ],
-					'transform': 'scale(1.025)',
-					'transform': 'scale3d(1.025, 1.025, 1.025)',
+					'transform': 'scale(1.1)',
+					'transform': 'scale3d(1.1, 1.1, 1.1)',
 				};
 				selectors[ '.uag-image-gallery-media-wrapper:hover .uag-image-gallery-media__thumbnail' ] = {
 					...selectors[ '.uag-image-gallery-media-wrapper:hover .uag-image-gallery-media__thumbnail' ],

@@ -36,7 +36,7 @@ const InitialSelector = ( { attributes, setAttributes } ) => {
         <div className="uag-image-gallery-init-wrapper">
             { UAGB_Block_Icons.image_gallery }
             <h3>{ __( 'Spectra - Image Gallery', 'ultimate-addons-for-gutenberg' ) }</h3>
-            <p>{ __( 'Select your images and you\'re all good to go!', 'ultimate-addons-for-gutenberg' ) }</p>
+            <p>{ __( 'Select your images to get started', 'ultimate-addons-for-gutenberg' ) }</p>
             <MediaUpload
                 title={ __( 'Select Images', 'ultimate-addons-for-gutenberg') }
                 onSelect={ handleGalleryUpdate }
