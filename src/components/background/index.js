@@ -561,7 +561,7 @@ const Background = ( props ) => {
 							</div>
 						</>
 					) }
-					{ overlayType && backgroundImage &&
+					{ overlayType && backgroundImage && ( ( imageResponsive && backgroundImage[deviceType]?.value ) || ( ! imageResponsive && backgroundImage?.value ) ) &&
 						<>
 							<div className="uag-background-image-overlay-type">
 								<MultiButtonsControl
@@ -655,7 +655,7 @@ const Background = ( props ) => {
 				backgroundVideo.value &&
 				backgroundVideoType.value && (
 					<div className="uag-background-video-overlay">
-						{ overlayType && backgroundVideo &&
+						{ overlayType && backgroundVideo && backgroundVideo.value &&
 							<>
 								<div className="uag-background-image-overlay-type">
 									<MultiButtonsControl
