@@ -48,7 +48,7 @@ const Border = ( props ) => {
 	);
 	const advancedControls = (
 		<>
-		{ disabledBorderTitle && (
+		{ ! disabledBorderTitle && (
 			<h2>{ __( 'Border', 'ultimate-addons-for-gutenberg' ) }</h2>
 		)}
 			<div className="uag-border-type">

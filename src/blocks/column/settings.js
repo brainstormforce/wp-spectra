@@ -323,6 +323,7 @@ const Settings = ( props ) => {
 				initialOpen={ false }
 			>
 				<Border
+					disabledBorderTitle= {true}
 					setAttributes={ setAttributes }
 					borderStyle={ {
 						value: borderStyle,

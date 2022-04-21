@@ -131,6 +131,12 @@ if ( ! class_exists( 'UAGB_GF_Styler' ) ) {
 							'type'    => 'number',
 							'default' => 1,
 						),
+						'fieldBorderWidthTablet'        => array(
+							'type' => 'number',
+						),
+						'fieldBorderWidthMobile'        => array(
+							'type' => 'number',
+						),
 						'fieldBorderRadius'             => array(
 							'type'    => 'number',
 							'default' => 0,
@@ -162,6 +168,12 @@ if ( ! class_exists( 'UAGB_GF_Styler' ) ) {
 						'buttonBorderWidth'             => array(
 							'type'    => 'number',
 							'default' => 1,
+						),
+						'buttonBorderWidthTablet'       => array(
+							'type' => 'number',
+						),
+						'buttonBorderWidthMobile'       => array(
+							'type' => 'number',
 						),
 						'buttonBorderRadius'            => array(
 							'type'    => 'number',
@@ -195,9 +207,21 @@ if ( ! class_exists( 'UAGB_GF_Styler' ) ) {
 							'type'    => 'number',
 							'default' => '',
 						),
+						'fieldSpacingTablet'            => array(
+							'type' => 'number',
+						),
+						'fieldSpacingMobile'            => array(
+							'type' => 'number',
+						),
 						'fieldLabelSpacing'             => array(
 							'type'    => 'number',
 							'default' => '',
+						),
+						'fieldLabelSpacingTablet'       => array(
+							'type' => 'number',
+						),
+						'fieldLabelSpacingMobile'       => array(
+							'type' => 'number',
 						),
 						'enableLabel'                   => array(
 							'type'    => 'boolean',
@@ -282,6 +306,12 @@ if ( ! class_exists( 'UAGB_GF_Styler' ) ) {
 						'textAreaHeight'                => array(
 							'type' => 'number',
 						),
+						'textAreaHeightTablet'          => array(
+							'type' => 'number',
+						),
+						'textAreaHeightMobile'          => array(
+							'type' => 'number',
+						),
 						'buttonFontSize'                => array(
 							'type'    => 'number',
 							'default' => '',
@@ -328,6 +358,12 @@ if ( ! class_exists( 'UAGB_GF_Styler' ) ) {
 							'type'    => 'number',
 							'default' => '20',
 						),
+						'radioCheckSizeTablet'          => array(
+							'type' => 'number',
+						),
+						'radioCheckSizeMobile'          => array(
+							'type' => 'number',
+						),
 						'radioCheckBgColor'             => array(
 							'type'    => 'string',
 							'default' => '#fafafa',
@@ -345,6 +381,14 @@ if ( ! class_exists( 'UAGB_GF_Styler' ) ) {
 							'default' => '#cbcbcb',
 						),
 						'radioCheckBorderWidth'         => array(
+							'type'    => 'number',
+							'default' => '1',
+						),
+						'radioCheckBorderWidthTablet'   => array(
+							'type'    => 'number',
+							'default' => '1',
+						),
+						'radioCheckBorderWidthMobile'   => array(
 							'type'    => 'number',
 							'default' => '1',
 						),

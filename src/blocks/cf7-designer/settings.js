@@ -14,7 +14,7 @@ import Range from '@Components/range/Range.js';
 import MultiButtonsControl from '@Components/multi-buttons-control';
 import UAGTabsControl from '@Components/tabs';
 import renderSVG from '@Controls/renderIcon';
-
+import ResponsiveSlider from '@Components/responsive-slider';
 import {
 	AlignmentToolbar,
 	BlockControls,
@@ -59,7 +59,11 @@ const Settings = ( props ) => {
 		buttonBorderColor,
 		buttonBorderHoverColor,
 		fieldSpacing,
+		fieldSpacingTablet,
+		fieldSpacingMobile,
 		fieldLabelSpacing,
+		fieldLabelSpacingTablet,
+		fieldLabelSpacingMobile,
 		labelFontSize,
 		labelFontSizeType,
 		labelFontSizeTablet,
@@ -95,11 +99,15 @@ const Settings = ( props ) => {
 		buttonLoadGoogleFonts,
 		enableOveride,
 		radioCheckSize,
+		radioCheckSizeTablet,
+		radioCheckSizeMobile,
 		radioCheckBgColor,
 		radioCheckSelectColor,
 		radioCheckLableColor,
 		radioCheckBorderColor,
 		radioCheckBorderWidth,
+		radioCheckBorderWidthTablet,
+		radioCheckBorderWidthMobile,
 		radioCheckBorderRadius,
 		radioCheckFontSize,
 		radioCheckFontSizeType,
@@ -753,18 +761,29 @@ const Settings = ( props ) => {
 					setAttributes( { fieldBgColor: value } )
 				}
 			/>
-			<Range
-				label={ __( 'Spacing', 'ultimate-addons-for-gutenberg' ) }
-				setAttributes={ setAttributes }
-				value={ fieldLabelSpacing }
-				onChange={ ( value ) =>
-					setAttributes( {
-						fieldLabelSpacing: value,
-					} )
-				}
+			<ResponsiveSlider
+				label={ __(
+					'Spacing',
+					'ultimate-addons-for-gutenberg'
+				) }
+				data={ {
+					desktop: {
+						value: fieldLabelSpacing,
+						label: 'fieldLabelSpacing',
+					},
+					tablet: {
+						value: fieldLabelSpacingTablet,
+						label: 'fieldLabelSpacingTablet',
+					},
+					mobile: {
+						value: fieldLabelSpacingMobile,
+						label: 'fieldLabelSpacingMobile',
+					},
+				} }
 				min={ 0 }
-				max={ 50 }
+				max={ 30 }
 				displayUnit={ false }
+				setAttributes={ setAttributes }
 			/>
 		</UAGAdvancedPanelBody>
 	);
@@ -775,6 +794,7 @@ const Settings = ( props ) => {
 			initialOpen={ false }
 		>
 			<Border
+				disabledBorderTitle= {false}
 				setAttributes={ setAttributes }
 				borderStyle={ {
 					value: fieldBorderStyle,
@@ -808,17 +828,29 @@ const Settings = ( props ) => {
 				} }
 				disableBottomSeparator={ true }
 			/>
-			<Range
-				label={ __( 'Fields Space', 'ultimate-addons-for-gutenberg' ) }
-				setAttributes={ setAttributes }
-				value={ fieldSpacing }
-				onChange={ ( value ) =>
-					setAttributes( {
-						fieldSpacing: value,
-					} )
-				}
+			<ResponsiveSlider
+				label={ __(
+					'Fields Space',
+					'ultimate-addons-for-gutenberg'
+				) }
+				data={ {
+					desktop: {
+						value: fieldSpacing,
+						label: 'fieldSpacing',
+					},
+					tablet: {
+						value: fieldSpacingTablet,
+						label: 'fieldSpacingTablet',
+					},
+					mobile: {
+						value: fieldSpacingMobile,
+						label: 'fieldSpacingMobile',
+					},
+				} }
 				min={ 0 }
 				max={ 50 }
+				displayUnit={ false }
+				setAttributes={ setAttributes }
 			/>
 			<SpacingControl
 				{ ...props }
@@ -897,16 +929,29 @@ const Settings = ( props ) => {
 			title={ __( 'Radio & Checkbox', 'ultimate-addons-for-gutenberg' ) }
 			initialOpen={ false }
 		>
-			<Range
-				label={ __( 'Size', 'ultimate-addons-for-gutenberg' ) }
-				setAttributes={ setAttributes }
-				value={ radioCheckSize }
-				onChange={ ( value ) =>
-					setAttributes( { radioCheckSize: value } )
-				}
+			<ResponsiveSlider
+				label={ __(
+					'Size',
+					'ultimate-addons-for-gutenberg'
+				) }
+				data={ {
+					desktop: {
+						value: radioCheckSize,
+						label: 'radioCheckSize',
+					},
+					tablet: {
+						value: radioCheckSizeTablet,
+						label: 'radioCheckSizeTablet',
+					},
+					mobile: {
+						value: radioCheckSizeMobile,
+						label: 'radioCheckSizeMobile',
+					},
+				} }
 				min={ 0 }
 				max={ 50 }
 				displayUnit={ false }
+				setAttributes={ setAttributes }
 			/>
 			<AdvancedPopColorControl
 				label={ __( 'Label Color', 'ultimate-addons-for-gutenberg' ) }
@@ -1001,21 +1046,29 @@ const Settings = ( props ) => {
 			/>
 			{ fieldBorderStyle !== 'none' && (
 				<>
-					<Range
+					<ResponsiveSlider
 						label={ __(
 							'Border Width (px)',
 							'ultimate-addons-for-gutenberg'
 						) }
-						setAttributes={ setAttributes }
-						value={ radioCheckBorderWidth }
-						onChange={ ( value ) =>
-							setAttributes( {
-								radioCheckBorderWidth: value,
-							} )
-						}
+						data={ {
+							desktop: {
+								value: radioCheckBorderWidth,
+								label: 'radioCheckBorderWidth',
+							},
+							tablet: {
+								value: radioCheckBorderWidthTablet,
+								label: 'radioCheckBorderWidthTablet',
+							},
+							mobile: {
+								value: radioCheckBorderWidthMobile,
+								label: 'radioCheckBorderWidthMobile',
+							},
+						} }
 						min={ 0 }
 						max={ 50 }
 						displayUnit={ false }
+						setAttributes={ setAttributes }
 					/>
 					<AdvancedPopColorControl
 						label={ __( 'Color', 'ultimate-addons-for-gutenberg' ) }
@@ -1083,8 +1136,10 @@ const Settings = ( props ) => {
 				] }
 				normal={ buttonNormalSettings }
 				hover={ buttonHoverSettings }
+				disableBottomSeparator={ true }
 			/>
 			<Border
+				disabledBorderTitle= {false}
 				setAttributes={ setAttributes }
 				borderStyle={ {
 					value: buttonBorderStyle,

@@ -168,9 +168,21 @@ if ( ! class_exists( 'UAGB_Post_Timeline' ) ) {
 							'type'    => 'number',
 							'default' => 5,
 						),
+						'headSpaceTablet'         => array(
+							'type' => 'number',
+						),
+						'headSpaceMobile'         => array(
+							'type' => 'number',
+						),
 						'authorSpace'             => array(
 							'type'    => 'number',
 							'default' => 5,
+						),
+						'authorSpaceTablet'       => array(
+							'type' => 'number',
+						),
+						'authorSpaceMobile'       => array(
+							'type' => 'number',
 						),
 						'contentSpace'            => array(
 							'type'    => 'number',
@@ -335,6 +347,12 @@ if ( ! class_exists( 'UAGB_Post_Timeline' ) ) {
 							'type'    => 'number',
 							'default' => 5,
 						),
+						'dateBottomspaceMobile'   => array(
+							'type' => 'number',
+						),
+						'dateBottomspaceTablet'   => array(
+							'type' => 'number',
+						),
 						'headFontSizeType'        => array(
 							'type'    => 'string',
 							'default' => 'px',
@@ -458,6 +476,12 @@ if ( ! class_exists( 'UAGB_Post_Timeline' ) ) {
 							'type'    => 'number',
 							'default' => 2,
 						),
+						'borderRadiusTablet'      => array(
+							'type' => 'number',
+						),
+						'borderRadiusMobile'      => array(
+							'type' => 'number',
+						),
 						'bgPadding'               => array(
 							'type'    => 'number',
 							'default' => 20,
@@ -469,8 +493,22 @@ if ( ! class_exists( 'UAGB_Post_Timeline' ) ) {
 						'ctaBottomSpacing'        => array(
 							'type' => 'number',
 						),
+						'ctaBottomSpacingTablet'  => array(
+							'type' => 'number',
+						),
+						'ctaBottomSpacingMobile'  => array(
+							'type' => 'number',
+						),
 						'headTopSpacing'          => array(
 							'type' => 'number',
+						),
+						'headTopSpacingTablet'    => array(
+							'type'    => 'number',
+							'default' => 0,
+						),
+						'headTopSpacingMobile'    => array(
+							'type'    => 'number',
+							'default' => 0,
 						),
 						'iconSize'                => array(
 							'type'    => 'number',

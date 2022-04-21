@@ -13,7 +13,7 @@ import renderSVG from '@Controls/renderIcon';
 import Range from '@Components/range/Range.js';
 import UAGTabsControl from '@Components/tabs';
 import SpacingControl from '@Components/spacing-control';
-
+import ResponsiveSlider from '@Components/responsive-slider';
 import {
 	AlignmentToolbar,
 	BlockControls,
@@ -49,10 +49,14 @@ const Settings = ( props ) => {
 		fieldInputColor,
 		fieldBorderStyle,
 		fieldBorderWidth,
+		fieldBorderWidthTablet,
+		fieldBorderWidthMobile,
 		fieldBorderRadius,
 		fieldBorderColor,
 		fieldBorderFocusColor,
 		textAreaHeight,
+		textAreaHeightTablet,
+		textAreaHeightMobile,
 		buttonAlignment,
 		buttonTextColor,
 		buttonBgColor,
@@ -60,11 +64,17 @@ const Settings = ( props ) => {
 		buttonBgHoverColor,
 		buttonBorderStyle,
 		buttonBorderWidth,
+		buttonBorderWidthTablet,
+		buttonBorderWidthMobile,
 		buttonBorderRadius,
 		buttonBorderColor,
 		buttonBorderHoverColor,
 		fieldSpacing,
+		fieldSpacingTablet,
+		fieldSpacingMobile,
 		fieldLabelSpacing,
+		fieldLabelSpacingTablet,
+		fieldLabelSpacingMobile,
 		enableLabel,
 		labelFontSize,
 		labelFontSizeType,
@@ -101,11 +111,15 @@ const Settings = ( props ) => {
 		buttonLoadGoogleFonts,
 		enableOveride,
 		radioCheckSize,
+		radioCheckSizeTablet,
+		radioCheckSizeMobile,
 		radioCheckBgColor,
 		radioCheckSelectColor,
 		radioCheckLableColor,
 		radioCheckBorderColor,
 		radioCheckBorderWidth,
+		radioCheckBorderWidthTablet,
+		radioCheckBorderWidthMobile,
 		radioCheckBorderRadius,
 		radioCheckFontSize,
 		radioCheckFontSizeType,
@@ -449,19 +463,29 @@ const Settings = ( props ) => {
 				) }
 				{ ( 'none' !== fieldBorderStyle ||
 					fieldStyle === 'underline' ) && (
-					<Range
+					<ResponsiveSlider
 						label={ __(
 							'Width (px)',
 							'ultimate-addons-for-gutenberg'
 						) }
-						setAttributes={ setAttributes }
-						value={ fieldBorderWidth }
-						onChange={ ( value ) =>
-							setAttributes( { fieldBorderWidth: value } )
-						}
+						data={ {
+							desktop: {
+								value: fieldBorderWidth,
+								label: 'fieldBorderWidth',
+							},
+							tablet: {
+								value: fieldBorderWidthTablet,
+								label: 'fieldBorderWidthTablet',
+							},
+							mobile: {
+								value: fieldBorderWidthMobile,
+								label: 'fieldBorderWidthMobile',
+							},
+						} }
 						min={ 0 }
 						max={ 50 }
 						displayUnit={ false }
+						setAttributes={ setAttributes }
 					/>
 				) }
 				<Range
@@ -642,19 +666,29 @@ const Settings = ( props ) => {
 						label: 'inputLineHeightTablet',
 					} }
 				/>
-				<Range
+				<ResponsiveSlider
 					label={ __(
 						'Text Area Height',
 						'ultimate-addons-for-gutenberg'
 					) }
-					setAttributes={ setAttributes }
-					value={ textAreaHeight }
-					onChange={ ( value ) =>
-						setAttributes( { textAreaHeight: value } )
-					}
+					data={ {
+						desktop: {
+							value: textAreaHeight,
+							label: 'textAreaHeight',
+						},
+						tablet: {
+							value: textAreaHeightTablet,
+							label: 'textAreaHeightTablet',
+						},
+						mobile: {
+							value: textAreaHeightMobile,
+							label: 'textAreaHeightMobile',
+						},
+					} }
 					min={ 0 }
 					max={ 200 }
 					displayUnit={ false }
+					setAttributes={ setAttributes }
 				/>
 			</UAGAdvancedPanelBody>
 		);
@@ -1023,19 +1057,29 @@ const Settings = ( props ) => {
 					] }
 				/>
 				{ 'none' !== buttonBorderStyle && (
-					<Range
+					<ResponsiveSlider
 						label={ __(
 							'Width (px)',
 							'ultimate-addons-for-gutenberg'
 						) }
-						setAttributes={ setAttributes }
-						value={ buttonBorderWidth }
-						onChange={ ( value ) =>
-							setAttributes( { buttonBorderWidth: value } )
-						}
+						data={ {
+							desktop: {
+								value: buttonBorderWidth,
+								label: 'buttonBorderWidth',
+							},
+							tablet: {
+								value: buttonBorderWidthTablet,
+								label: 'buttonBorderWidthTablet',
+							},
+							mobile: {
+								value: buttonBorderWidthMobile,
+								label: 'buttonBorderWidthMobile',
+							},
+						} }
 						min={ 0 }
 						max={ 50 }
 						displayUnit={ false }
+						setAttributes={ setAttributes }
 					/>
 				) }
 				<Range
@@ -1323,33 +1367,53 @@ const Settings = ( props ) => {
 				title={ __( 'Spacing', 'ultimate-addons-for-gutenberg' ) }
 				initialOpen={ false }
 			>
-				<Range
+				<ResponsiveSlider
 					label={ __(
 						'Label & Input Space',
 						'ultimate-addons-for-gutenberg'
 					) }
-					setAttributes={ setAttributes }
-					value={ fieldLabelSpacing }
-					onChange={ ( value ) =>
-						setAttributes( { fieldLabelSpacing: value } )
-					}
+					data={ {
+						desktop: {
+							value: fieldLabelSpacing,
+							label: 'fieldLabelSpacing',
+						},
+						tablet: {
+							value: fieldLabelSpacingTablet,
+							label: 'fieldLabelSpacingTablet',
+						},
+						mobile: {
+							value: fieldLabelSpacingMobile,
+							label: 'fieldLabelSpacingMobile',
+						},
+					} }
 					min={ 0 }
 					max={ 30 }
 					displayUnit={ false }
+					setAttributes={ setAttributes }
 				/>
-				<Range
+				<ResponsiveSlider
 					label={ __(
 						'Fields Space',
 						'ultimate-addons-for-gutenberg'
 					) }
-					setAttributes={ setAttributes }
-					value={ fieldSpacing }
-					onChange={ ( value ) =>
-						setAttributes( { fieldSpacing: value } )
-					}
+					data={ {
+						desktop: {
+							value: fieldSpacing,
+							label: 'fieldSpacing',
+						},
+						tablet: {
+							value: fieldSpacingTablet,
+							label: 'fieldSpacingTablet',
+						},
+						mobile: {
+							value: fieldSpacingMobile,
+							label: 'fieldSpacingMobile',
+						},
+					} }
 					min={ 0 }
 					max={ 50 }
 					displayUnit={ false }
+					setAttributes={ setAttributes }
 				/>
 				<SpacingControl
 					{ ...props }
@@ -1595,19 +1659,29 @@ const Settings = ( props ) => {
 				/>
 				{ enableOveride && (
 					<>
-						<Range
+						<ResponsiveSlider
 							label={ __(
 								'Size',
 								'ultimate-addons-for-gutenberg'
 							) }
-							setAttributes={ setAttributes }
-							value={ radioCheckSize }
-							onChange={ ( value ) =>
-								setAttributes( { radioCheckSize: value } )
-							}
+							data={ {
+								desktop: {
+									value: radioCheckSize,
+									label: 'radioCheckSize',
+								},
+								tablet: {
+									value: radioCheckSizeTablet,
+									label: 'radioCheckSizeTablet',
+								},
+								mobile: {
+									value: radioCheckSizeMobile,
+									label: 'radioCheckSizeMobile',
+								},
+							} }
 							min={ 0 }
 							max={ 50 }
 							displayUnit={ false }
+							setAttributes={ setAttributes }
 						/>
 						<h2>
 							{ __(
@@ -1714,21 +1788,29 @@ const Settings = ( props ) => {
 						{ fieldBorderStyle !== 'none' && (
 							<>
 								<h2>{ __( 'Radio & Checkbox Border' ) }</h2>
-								<Range
+								<ResponsiveSlider
 									label={ __(
 										'Width (px)',
 										'ultimate-addons-for-gutenberg'
 									) }
-									setAttributes={ setAttributes }
-									value={ radioCheckBorderWidth }
-									onChange={ ( value ) =>
-										setAttributes( {
-											radioCheckBorderWidth: value,
-										} )
-									}
+									data={ {
+										desktop: {
+											value: radioCheckBorderWidth,
+											label: 'radioCheckBorderWidth',
+										},
+										tablet: {
+											value: radioCheckBorderWidthTablet,
+											label: 'radioCheckBorderWidthTablet',
+										},
+										mobile: {
+											value: radioCheckBorderWidthMobile,
+											label: 'radioCheckBorderWidthMobile',
+										},
+									} }
 									min={ 0 }
 									max={ 50 }
 									displayUnit={ false }
+									setAttributes={ setAttributes }
 								/>
 								<AdvancedPopColorControl
 									label={ __(

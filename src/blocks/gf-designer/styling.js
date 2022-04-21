@@ -16,6 +16,8 @@ function styling( props ) {
 		fieldInputColor,
 		fieldBorderStyle,
 		fieldBorderWidth,
+		fieldBorderWidthTablet,
+		fieldBorderWidthMobile,
 		fieldBorderRadius,
 		fieldBorderColor,
 		fieldBorderFocusColor,
@@ -25,11 +27,17 @@ function styling( props ) {
 		buttonBgHoverColor,
 		buttonBorderStyle,
 		buttonBorderWidth,
+		buttonBorderWidthMobile,
+		buttonBorderWidthTablet,
 		buttonBorderRadius,
 		buttonBorderColor,
 		buttonBorderHoverColor,
 		fieldSpacing,
+		fieldSpacingTablet,
+		fieldSpacingMobile,
 		fieldLabelSpacing,
+		fieldLabelSpacingTablet,
+		fieldLabelSpacingMobile,
 		labelFontSize,
 		labelFontSizeType,
 		labelFontSizeTablet,
@@ -41,6 +49,8 @@ function styling( props ) {
 		labelLineHeightTablet,
 		labelLineHeightMobile,
 		textAreaHeight,
+		textAreaHeightTablet,
+		textAreaHeightMobile,
 		inputFontSize,
 		inputFontSizeType,
 		inputFontSizeTablet,
@@ -63,11 +73,15 @@ function styling( props ) {
 		buttonLineHeightMobile,
 		highlightBorderColor,
 		radioCheckSize,
+		radioCheckSizeTablet,
+		radioCheckSizeMobile,
 		radioCheckBgColor,
 		radioCheckSelectColor,
 		radioCheckLableColor,
 		radioCheckBorderColor,
 		radioCheckBorderWidth,
+		radioCheckBorderWidthTablet,
+		radioCheckBorderWidthMobile,
 		radioCheckBorderRadius,
 		radioCheckFontSize,
 		radioCheckFontSizeType,
@@ -754,6 +768,48 @@ function styling( props ) {
 	};
 
 	const tabletSelectors = {
+		" .uagb-gf-styler__field-style-box .gfield_checkbox input[type='checkbox']:checked + label:before": {
+			'border-width': generateCSSUnit( fieldBorderWidthTablet, 'px' ),
+			'font-size': 'calc( ' + radioCheckSizeTablet + 'px / 1.2 )',
+		},
+		" .uagb-gf-styler__field-style-box input[type='checkbox']:checked + label:before": {
+			'border-width': generateCSSUnit( fieldBorderWidthTablet, 'px' ),
+			'font-size': 'calc( ' + radioCheckSizeTablet + 'px / 1.2)',
+		},
+		" .uagb-gf-styler__check-style-enabled input[type='checkbox'] + label:before": {
+			'height': generateCSSUnit( radioCheckSizeTablet, 'px' ),
+			'width': generateCSSUnit( radioCheckSizeTablet, 'px' ),
+			'font-size': 'calc( ' + radioCheckSizeTablet + 'px / 1.2 )',
+			'border-width': generateCSSUnit( radioCheckBorderWidthTablet, 'px' ),
+		},
+		" .uagb-gf-styler__check-style-enabled .gfield_radio input[type='radio'] + label:before": {
+			'background-color': radioCheckBgColor,
+			'color': radioCheckSelectColor,
+			'border-color': radioCheckBorderColor,
+			'border-style': 'solid',
+			'border-radius': generateCSSUnit(
+				radioCheckBorderRadius,
+				radioCheckBorderRadiusType
+			),
+			'height': generateCSSUnit( radioCheckSizeTablet, 'px' ),
+			'width': generateCSSUnit( radioCheckSizeTablet, 'px' ),
+			'font-size': 'calc( ' + radioCheckSizeTablet + 'px / 1.2 )',
+			'border-width': generateCSSUnit( radioCheckBorderWidthTablet, 'px' ),
+		},
+		" .uagb-gf-styler__check-style-enabled .gfield_checkbox input[type='checkbox'] + label:before": {
+			'background-color': radioCheckBgColor,
+			'color': radioCheckSelectColor,
+			'border-color': radioCheckBorderColor,
+			'border-style': 'solid',
+			'border-radius': generateCSSUnit(
+				radioCheckBorderRadius,
+				radioCheckBorderRadiusType
+			),
+			'height': generateCSSUnit( radioCheckSizeTablet, 'px' ),
+			'width': generateCSSUnit( radioCheckSizeTablet, 'px' ),
+			'font-size': 'calc( ' + radioCheckSizeTablet + 'px / 1.2 )',
+			'border-width': generateCSSUnit( radioCheckBorderWidthTablet, 'px' ),
+		},
 		' input:not([type=submit])': {
 			'font-size': generateCSSUnit(
 				inputFontSizeTablet,
@@ -779,6 +835,9 @@ function styling( props ) {
 				fieldbottomTabletPadding,
 				fieldtabletPaddingUnit
 			),
+			'border-width': generateCSSUnit( fieldBorderWidthTablet, 'px' ),
+			'margin-top': generateCSSUnit( fieldLabelSpacingTablet, 'px' ),
+			'margin-bottom': generateCSSUnit( fieldSpacingTablet, 'px' ),
 		},
 		' select': {
 			'font-size': generateCSSUnit(
@@ -789,8 +848,10 @@ function styling( props ) {
 				labelLineHeightTablet,
 				labelLineHeightType
 			),
+			'margin-top': generateCSSUnit( fieldLabelSpacingTablet, 'px' ),
+			'margin-bottom': generateCSSUnit( fieldSpacingTablet, 'px' ),
 		},
-		' textarea': {
+		' .gform_wrapper.gravity-theme .gfield textarea': {
 			'font-size': generateCSSUnit(
 				inputFontSizeTablet,
 				inputFontSizeType
@@ -815,6 +876,12 @@ function styling( props ) {
 				fieldbottomTabletPadding,
 				fieldtabletPaddingUnit
 			),
+			'margin-top': generateCSSUnit( fieldLabelSpacingTablet, 'px' ),
+			'margin-bottom': generateCSSUnit( fieldSpacingTablet, 'px' ),
+			'height':
+				'auto' === textAreaHeightTablet
+					? textAreaHeightTablet
+					: textAreaHeightTablet + 'px',
 		},
 		' form label': {
 			'font-size': generateCSSUnit(
@@ -872,6 +939,11 @@ function styling( props ) {
 				buttonbottomTabletPadding,
 				buttontabletPaddingUnit
 			),
+			'border-width': generateCSSUnit( buttonBorderWidthTablet, 'px' ),
+			'color': buttonTextColor,
+			'background-color': buttonBgColor,
+			'border-color': buttonBorderColor,
+			'border-style': buttonBorderStyle,
 		},
 		' .uagb-gf-styler__check-style-enabled form .gfield_radio label': {
 			'font-size': generateCSSUnit(
@@ -949,6 +1021,48 @@ function styling( props ) {
 	};
 
 	const mobileSelectors = {
+		" .uagb-gf-styler__field-style-box .gfield_checkbox input[type='checkbox']:checked + label:before": {
+			'border-width': generateCSSUnit( fieldBorderWidthMobile, 'px' ),
+			'font-size': 'calc( ' + radioCheckSizeMobile + 'px / 1.2 )',
+		},
+		" .uagb-gf-styler__field-style-box input[type='checkbox']:checked + label:before": {
+			'border-width': generateCSSUnit( fieldBorderWidthMobile, 'px' ),
+			'font-size': 'calc( ' + radioCheckSizeMobile + 'px / 1.2)',
+		},
+		" .uagb-gf-styler__check-style-enabled input[type='checkbox'] + label:before": {
+			'height': generateCSSUnit( radioCheckSizeMobile, 'px' ),
+			'width': generateCSSUnit( radioCheckSizeMobile, 'px' ),
+			'font-size': 'calc( ' + radioCheckSizeMobile + 'px / 1.2 )',
+			'border-width': generateCSSUnit( radioCheckBorderWidthMobile, 'px' ),
+		},
+		" .uagb-gf-styler__check-style-enabled .gfield_radio input[type='radio'] + label:before": {
+			'background-color': radioCheckBgColor,
+			'color': radioCheckSelectColor,
+			'border-color': radioCheckBorderColor,
+			'border-style': 'solid',
+			'border-radius': generateCSSUnit(
+				radioCheckBorderRadius,
+				radioCheckBorderRadiusType
+			),
+			'height': generateCSSUnit( radioCheckSizeMobile, 'px' ),
+			'width': generateCSSUnit( radioCheckSizeMobile, 'px' ),
+			'font-size': 'calc( ' + radioCheckSizeMobile + 'px / 1.2 )',
+			'border-width': generateCSSUnit( radioCheckBorderWidthMobile, 'px' ),
+		},
+		" .uagb-gf-styler__check-style-enabled .gfield_checkbox input[type='checkbox'] + label:before": {
+			'background-color': radioCheckBgColor,
+			'color': radioCheckSelectColor,
+			'border-color': radioCheckBorderColor,
+			'border-style': 'solid',
+			'border-radius': generateCSSUnit(
+				radioCheckBorderRadius,
+				radioCheckBorderRadiusType
+			),
+			'height': generateCSSUnit( radioCheckSizeMobile, 'px' ),
+			'width': generateCSSUnit( radioCheckSizeMobile, 'px' ),
+			'font-size': 'calc( ' + radioCheckSizeMobile + 'px / 1.2 )',
+			'border-width': generateCSSUnit( radioCheckBorderWidthMobile, 'px' ),
+		},
 		' input:not([type=submit])': {
 			'font-size': generateCSSUnit(
 				inputFontSizeMobile,
@@ -974,6 +1088,9 @@ function styling( props ) {
 				fieldbottomMobilePadding,
 				fieldmobilePaddingUnit
 			),
+			'border-width': generateCSSUnit( fieldBorderWidthMobile, 'px' ),
+			'margin-top': generateCSSUnit( fieldLabelSpacingMobile, 'px' ),
+			'margin-bottom': generateCSSUnit( fieldSpacingMobile, 'px' ),
 		},
 		' select': {
 			'font-size': generateCSSUnit(
@@ -984,16 +1101,24 @@ function styling( props ) {
 				labelLineHeightMobile,
 				labelLineHeightType
 			),
+			'margin-top': generateCSSUnit( fieldLabelSpacingMobile, 'px' ),
+			'margin-bottom': generateCSSUnit( fieldSpacingMobile, 'px' ),
 		},
-		' textarea': {
+		' .gform_wrapper.gravity-theme .gfield textarea': {
 			'font-size': generateCSSUnit(
-				inputFontSizeTablet,
+				inputFontSizeMobile,
 				inputFontSizeType
 			),
 			'line-height': generateCSSUnit(
-				inputLineHeightTablet,
+				inputLineHeightMobile,
 				inputLineHeightType
 			),
+			'margin-top': generateCSSUnit( fieldLabelSpacingMobile, 'px' ),
+			'margin-bottom': generateCSSUnit( fieldSpacingMobile, 'px' ),
+			'height':
+				'auto' === textAreaHeightMobile
+					? textAreaHeightMobile
+					: textAreaHeightMobile + 'px',
 		},
 		' form label': {
 			'font-size': generateCSSUnit(
@@ -1066,6 +1191,11 @@ function styling( props ) {
 				buttonbottomMobilePadding,
 				buttonmobilePaddingUnit
 			),
+			'border-width': generateCSSUnit( buttonBorderWidthMobile, 'px' ),
+			'color': buttonTextColor,
+			'background-color': buttonBgColor,
+			'border-color': buttonBorderColor,
+			'border-style': buttonBorderStyle,
 		},
 		' .uagb-gf-styler__check-style-enabled form .gfield_radio label': {
 			'font-size': generateCSSUnit(
@@ -1142,30 +1272,26 @@ function styling( props ) {
 		},
 	};
 
+	const base_selector = `.editor-styles-wrapper .wp-block-uagb-gf-styler.uagb-block-${ props.clientId.substr(
+		0,
+		8
+	) }`;
+
 	let stylingCss = generateCSS(
 		selectors,
-		`#wpwrap .editor-styles-wrapper .wp-block-uagb-gf-styler.uagb-block-${ props.clientId.substr(
-			0,
-			8
-		) }`
+		`${ base_selector }`
 	);
 
 	stylingCss += generateCSS(
 		tabletSelectors,
-		`.editor-styles-wrapper .uagb-block-${ props.clientId.substr(
-			0,
-			8
-		) }`,
+		`${ base_selector }.uagb-editor-preview-mode-tablet`,
 		true,
 		'tablet'
 	);
 
 	stylingCss += generateCSS(
 		mobileSelectors,
-		`.editor-styles-wrapper .uagb-block-${ props.clientId.substr(
-			0,
-			8
-		) }`,
+		`${ base_selector }.uagb-editor-preview-mode-mobile`,
 		true,
 		'mobile'
 	);

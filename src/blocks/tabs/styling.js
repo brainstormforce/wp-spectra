@@ -42,11 +42,15 @@ function styling( props ) {
 		borderHoverColor,
 		iconColor,
 		iconSize,
+		iconSizeTablet,
+		iconSizeMobile,
 		tabBodyLeftMargin,
 		tabBodyRightMargin,
 		tabBodyTopMargin,
 		tabBodyBottomMargin,
 		iconSpacing,
+		iconSpacingTablet,
+		iconSpacingMobile,
 		tabsStyleD,
 		tabsStyleM,
 		tabsStyleT,
@@ -259,6 +263,10 @@ function styling( props ) {
 	}
 
 	tabletSelectors = {
+		' .uagb-tabs__icon svg': {
+			'height': generateCSSUnit( iconSizeTablet, 'px' ),
+			'width': generateCSSUnit( iconSizeTablet, 'px' ),
+		},
 		' > .uagb-tabs__panel .uagb-tab p': {
 			'font-size': generateCSSUnit(
 				titleFontSizeTablet,
@@ -337,8 +345,24 @@ function styling( props ) {
 				tablettabBodyMarginUnit
 			),
 		},
+		' .uagb-tabs__icon-position-left  .uagb-tabs__icon ': {
+			'margin-right': generateCSSUnit( iconSpacingTablet, 'px' ),
+		},
+		' .uagb-tabs__icon-position-right  .uagb-tabs__icon ': {
+			'margin-left': generateCSSUnit( iconSpacingTablet, 'px' ),
+		},
+		' .uagb-tabs__icon-position-top  .uagb-tabs__icon ': {
+			'margin-bottom': generateCSSUnit( iconSpacingTablet, 'px' ),
+		},
+		' .uagb-tabs__icon-position-bottom  .uagb-tabs__icon ': {
+			'margin-top': generateCSSUnit( iconSpacingTablet, 'px' ),
+		},
 	};
 	mobileSelectors = {
+		' .uagb-tabs__icon svg': {
+			'height': generateCSSUnit( iconSizeMobile, 'px' ),
+			'width': generateCSSUnit( iconSizeMobile, 'px' ),
+		},
 		' > .uagb-tabs__panel .uagb-tab p': {
 			'font-size': generateCSSUnit(
 				titleFontSizeMobile,
@@ -416,6 +440,18 @@ function styling( props ) {
 				tabBodyBottomMarginMobile,
 				mobiletabBodyMarginUnit
 			),
+		},
+		' .uagb-tabs__icon-position-left  .uagb-tabs__icon ': {
+			'margin-right': generateCSSUnit( iconSpacingMobile, 'px' ),
+		},
+		' .uagb-tabs__icon-position-right  .uagb-tabs__icon ': {
+			'margin-left': generateCSSUnit( iconSpacingMobile, 'px' ),
+		},
+		' .uagb-tabs__icon-position-top  .uagb-tabs__icon ': {
+			'margin-bottom': generateCSSUnit( iconSpacingMobile, 'px' ),
+		},
+		' .uagb-tabs__icon-position-bottom  .uagb-tabs__icon ': {
+			'margin-top': generateCSSUnit( iconSpacingMobile, 'px' ),
 		},
 	};
 

@@ -51,7 +51,11 @@ const Settings = ( props ) => {
 		titleColor,
 		countColor,
 		rowGap,
+		rowGapTablet,
+		rowGapMobile,
 		columnGap,
+		columnGapTablet,
+		columnGapMobile,
 		contentTopPadding,
 		contentRightPadding,
 		contentBottomPadding,
@@ -69,6 +73,8 @@ const Settings = ( props ) => {
 		tabletContentPaddingUnit,
 		contentPaddingLink,
 		titleBottomSpace,
+		titleBottomSpaceTablet,
+		titleBottomSpaceMobile,
 		alignment,
 		listStyle,
 		seperatorStyle,
@@ -732,20 +738,30 @@ const Settings = ( props ) => {
 					}
 				/>
 				{ showCount && (
-					<Range
-						label={ __(
-							'Bottom Spacing',
-							'ultimate-addons-for-gutenberg'
-						) }
-						setAttributes={ setAttributes }
-						value={ titleBottomSpace }
-						onChange={ ( value ) =>
-							setAttributes( { titleBottomSpace: value } )
-						}
-						min={ 0 }
-						max={ 50 }
-						displayUnit={ false }
-					/>
+					<ResponsiveSlider
+							label={ __(
+								'Bottom Spacing',
+								'ultimate-addons-for-gutenberg'
+							) }
+							data={ {
+								desktop: {
+									value: titleBottomSpace,
+									label: 'titleBottomSpace',
+								},
+								tablet: {
+									value: titleBottomSpaceTablet,
+									label: 'titleBottomSpaceTablet',
+								},
+								mobile: {
+									value: titleBottomSpaceMobile,
+									label: 'titleBottomSpaceMobile',
+								},
+							} }
+							min={ 0 }
+							max={ 50 }
+							displayUnit={ false }
+							setAttributes={ setAttributes }
+						/>
 				) }
 			</UAGAdvancedPanelBody>
 		);
@@ -854,33 +870,53 @@ const Settings = ( props ) => {
 			>
 				{ 'grid' === layout && (
 					<>
-						<Range
+						<ResponsiveSlider
 							label={ __(
 								'Row Gap',
 								'ultimate-addons-for-gutenberg'
 							) }
-							setAttributes={ setAttributes }
-							value={ rowGap }
-							onChange={ ( value ) =>
-								setAttributes( { rowGap: value } )
-							}
-							min={ 0 }
+							data={ {
+								desktop: {
+									value: rowGap,
+									label: 'rowGap',
+								},
+								tablet: {
+									value: rowGapTablet,
+									label: 'rowGapTablet',
+								},
+								mobile: {
+									value: rowGapMobile,
+									label: 'rowGapMobile',
+								},
+							} }
+							min={ 1 }
 							max={ 50 }
 							displayUnit={ false }
+							setAttributes={ setAttributes }
 						/>
-						<Range
+						<ResponsiveSlider
 							label={ __(
 								'Column Gap',
 								'ultimate-addons-for-gutenberg'
 							) }
-							setAttributes={ setAttributes }
-							value={ columnGap }
-							onChange={ ( value ) =>
-								setAttributes( { columnGap: value } )
-							}
-							min={ 0 }
+							data={ {
+								desktop: {
+									value: columnGap,
+									label: 'columnGap',
+								},
+								tablet: {
+									value: columnGapTablet,
+									label: 'columnGapTablet',
+								},
+								mobile: {
+									value: columnGapMobile,
+									label: 'columnGapMobile',
+								},
+							} }
+							min={ 1 }
 							max={ 50 }
 							displayUnit={ false }
+							setAttributes={ setAttributes }
 						/>
 						<SpacingControl
 							{ ...props }
@@ -984,6 +1020,7 @@ const Settings = ( props ) => {
 				initialOpen={ false }
 			>
 				<Border
+					disabledBorderTitle= {true}
 					setAttributes={ setAttributes }
 					borderStyle={ {
 						value: borderStyle,
@@ -1119,6 +1156,7 @@ const Settings = ( props ) => {
 				initialOpen={ false }
 			>
 				<Border
+					disabledBorderTitle= {false}
 					setAttributes={ setAttributes }
 					borderStyle={ {
 						value: seperatorStyle,

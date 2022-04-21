@@ -62,7 +62,21 @@ if ( 'stack' === $attr['layout'] ) {
 	);
 }
 
-$selectors[' .uag-star-rating__title'][ $index ] = UAGB_Helper::get_css_value( $attr['titleGap'], 'px' );
+$selectors[' .uag-star-rating__title'][ $index ]   = UAGB_Helper::get_css_value( $attr['titleGap'], 'px' );
+$t_selectors[' .uag-star-rating__title'][ $index ] = UAGB_Helper::get_css_value( $attr['titleGapTablet'], 'px' );
+$m_selectors[' .uag-star-rating__title'][ $index ] = UAGB_Helper::get_css_value( $attr['titleGapMobile'], 'px' );
+$t_selectors[' .uag-star-rating']                  = array(
+	'font-size' => UAGB_Helper::get_css_value( $attr['sizeTablet'], 'px' ),
+);
+$t_selectors[' .uag-star-rating > span']           = array(
+	'margin-right' => UAGB_Helper::get_css_value( $attr['gapTablet'], 'px' ),
+);
+$m_selectors[' .uag-star-rating']                  = array(
+	'font-size' => UAGB_Helper::get_css_value( $attr['sizeMobile'], 'px' ),
+);
+$m_selectors[' .uag-star-rating > span']           = array(
+	'margin-right' => UAGB_Helper::get_css_value( $attr['gapMobile'], 'px' ),
+);
 
 $remainder = ( $attr['rating'] - floor( $attr['rating'] ) );
 $width     = $remainder * 100;

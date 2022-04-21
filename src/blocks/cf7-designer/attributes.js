@@ -192,9 +192,37 @@
 			styleType: 'field-bottom-margin'
 		},
 	},
+	fieldSpacingTablet: {
+		type: 'number',
+		default: 0,
+		UAGCopyPaste: {
+			styleType: 'field-bottom-margin'
+		},
+	},
+	fieldSpacingMobile: {
+		type: 'number',
+		default: 0,
+		UAGCopyPaste: {
+			styleType: 'field-bottom-margin'
+		},
+	},
 	fieldLabelSpacing             : {
 		type    : 'number',
 		default : '',
+		UAGCopyPaste: {
+			styleType: 'main-title-bottom-margin'
+		},
+	},
+	fieldLabelSpacingTablet: {
+		type: 'number',
+		default: 0,
+		UAGCopyPaste: {
+			styleType: 'main-title-bottom-margin'
+		},
+	},
+	fieldLabelSpacingMobile: {
+		type: 'number',
+		default: 0,
 		UAGCopyPaste: {
 			styleType: 'main-title-bottom-margin'
 		},
@@ -423,6 +451,20 @@
 			styleType: 'radio-size'
 		},
 	},
+	radioCheckSizeTablet: {
+		type: 'number',
+		default: 0,
+		UAGCopyPaste: {
+			styleType: 'radio-size'
+		},
+	},
+	radioCheckSizeMobile: {
+		type: 'number',
+		default: 0,
+		UAGCopyPaste: {
+			styleType: 'radio-size'
+		},
+	},
 	radioCheckBgColor             : {
 		type    : 'string',
 		default : '',
@@ -454,6 +496,20 @@
 	radioCheckBorderWidth         : {
 		type    : 'number',
 		default : '',
+		UAGCopyPaste: {
+			styleType: 'radio-border-width'
+		},
+	},
+	radioCheckBorderWidthTablet: {
+		type: 'number',
+		default: 0,
+		UAGCopyPaste: {
+			styleType: 'radio-border-width'
+		},
+	},
+	radioCheckBorderWidthMobile: {
+		type: 'number',
+		default: 0,
 		UAGCopyPaste: {
 			styleType: 'radio-border-width'
 		},

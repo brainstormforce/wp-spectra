@@ -62,6 +62,8 @@ function styling( props ) {
 		paddingTypeDesktop,
 		//Padding,
 		headingBottom,
+		headingBottomTablet,
+		headingBottomMobile,
 		contentPaddingDesktop,
 		contentPaddingTablet,
 		contentPaddingMobile,
@@ -259,6 +261,7 @@ function styling( props ) {
 				headingLineHeightTablet,
 				headingLineHeightType
 			),
+			'margin-bottom': generateCSSUnit( headingBottomTablet, 'px' ),
 		},
 		' .uagb-toc__wrap': {
 			'width': generateCSSUnit( widthTablet, widthTypeTablet ),
@@ -359,6 +362,7 @@ function styling( props ) {
 				headingLineHeightMobile,
 				headingLineHeightType
 			),
+			'margin-bottom': generateCSSUnit( headingBottomMobile, 'px' ),
 		},
 		' .uagb-toc__wrap': {
 			'width': generateCSSUnit( widthMobile, widthTypeMobile ),
