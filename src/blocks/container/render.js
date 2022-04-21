@@ -22,6 +22,8 @@ const Render = ( props ) => {
 		bottomType,
 		bottomFlip,
 		bottomContentAboveShape,
+		backgroundType,
+		backgroundVideo,
 		topInvert,
 		bottomInvert
 	} = attributes;
@@ -77,6 +79,18 @@ const Render = ( props ) => {
 			key = { block_id }
 		>
 			{ topDividerHtml }
+			{ 'video' === backgroundType && (
+				<div className="uagb-container__video-wrap">
+					{ backgroundVideo && (
+						<video autoPlay loop muted playsinline>
+							<source
+								src={ backgroundVideo.url }
+								type="video/mp4"
+							/>
+						</video>
+					) }
+				</div>
+			) }
 			<InnerBlocks
 				__experimentalMoverDirection={ moverDirection }
 				renderAppender = { hasChildBlocks

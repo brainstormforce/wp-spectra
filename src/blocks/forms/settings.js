@@ -400,6 +400,7 @@ const Settings = ( props ) => {
 							}
 						/>
 						<Border
+							disabledBorderTitle= {false}
 							setAttributes={ setAttributes }
 							borderStyle={ {
 								value: successMessageBorderStyle,
@@ -486,6 +487,7 @@ const Settings = ( props ) => {
 							}
 						/>
 						<Border
+							disabledBorderTitle= {false}
 							setAttributes={ setAttributes }
 							borderStyle={ {
 								value: failedMessageBorderStyle,
@@ -790,6 +792,7 @@ const Settings = ( props ) => {
 					}
 				/>
 				<Border
+					disabledBorderTitle= {false}
 					setAttributes={ setAttributes }
 					borderStyle={ {
 						value: submitborderStyle,
@@ -1194,6 +1197,7 @@ const Settings = ( props ) => {
 					} }
 				/>
 				<Border
+					disabledBorderTitle= {false}
 					setAttributes={ setAttributes }
 					borderStyle={ {
 						value: inputborderStyle,

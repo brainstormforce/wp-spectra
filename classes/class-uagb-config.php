@@ -290,6 +290,9 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 					'uagb/wp-search'              => array(
 						'name' => 'wp-search',
 					),
+					'uagb/image'                  => array(
+						'name' => 'image',
+					),
 				);
 			}
 			return self::$block_assets_css;

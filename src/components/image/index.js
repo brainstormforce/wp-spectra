@@ -52,6 +52,7 @@ const UAGImage = ( props ) => {
 		allowedTypes = [ 'video' ];
 	}
 	labelText = label ? label : labelText;
+	labelText = false === label ? label : labelText;
 	return (
 		<BaseControl
 			className="editor-bg-image-control"
