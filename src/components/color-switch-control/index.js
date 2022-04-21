@@ -1,8 +1,9 @@
-import React from 'react';
+import React, {useLayoutEffect} from 'react';
 import { __ } from '@wordpress/i18n';
 import GradientSettings from '@Components/gradient-settings';
 import MultiButtonsControl from '@Components/multi-buttons-control';
 import AdvancedPopColorControl from '@Components/color-control/advanced-pop-color-control.js';
+import styles from './editor.lazy.scss';
 import PropTypes from 'prop-types';
 
 const propTypes = {};
@@ -10,48 +11,58 @@ const propTypes = {};
 const defaultProps = {};
 
 export default function ColorSwitchControl({label, type, classic, gradient, setAttributes}) {
+	// Add and remove the CSS on the drop and remove of the component.
+	useLayoutEffect( () => {
+		styles.use();
+		return () => {
+			styles.unuse();
+		};
+	}, [] );
+
 	return (
 		<React.Fragment>
-			<MultiButtonsControl
-				setAttributes={ setAttributes }
-				label={ label }
-				data={ type }
-				className="uagb-multi-button-alignment-control"
-				options={ [
-					{
-						value: 'classic',
-						label: __(
-							'Classic',
-							'ultimate-addons-for-gutenberg'
-						),
-					},
-					{
-						value: 'gradient',
-						label: __(
-							'Gradient',
-							'ultimate-addons-for-gutenberg'
-						),
-					},
-				] }
-				showIcons={ false }
-			/>
-			{
-				type.value === 'classic' ? (
-					<AdvancedPopColorControl
-						colorValue={ classic.value }
-						onColorChange={ ( value ) =>
-							setAttributes( { [classic.label]: value } )
-						}
-					/>
-				) : (
-					<GradientSettings
-						backgroundGradient={
-							gradient
-						}
-						setAttributes={ setAttributes }
-					/>
-				)
-			}
+			<div className="uagb-color-switch-control-container components-base-control">
+				<MultiButtonsControl
+					setAttributes={ setAttributes }
+					label={ label }
+					data={ type }
+					className="uagb-multi-button-alignment-control"
+					options={ [
+						{
+							value: 'classic',
+							label: __(
+								'Classic',
+								'ultimate-addons-for-gutenberg'
+							),
+						},
+						{
+							value: 'gradient',
+							label: __(
+								'Gradient',
+								'ultimate-addons-for-gutenberg'
+							),
+						},
+					] }
+					showIcons={ false }
+				/>
+				{
+					type.value === 'classic' ? (
+						<AdvancedPopColorControl
+							colorValue={ classic.value }
+							onColorChange={ ( value ) =>
+								setAttributes( { [classic.label]: value } )
+							}
+						/>
+					) : (
+						<GradientSettings
+							backgroundGradient={
+								gradient
+							}
+							setAttributes={ setAttributes }
+						/>
+					)
+				}
+			</div>
 		</React.Fragment>
 	);
 }
