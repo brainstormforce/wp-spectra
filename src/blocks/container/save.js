@@ -17,6 +17,8 @@ export default function save( props ) {
 		bottomType,
 		bottomFlip,
 		bottomContentAboveShape,
+		backgroundType,
+		backgroundVideo,
 		topInvert,
 		bottomInvert
 	} = props.attributes;
@@ -66,6 +68,18 @@ export default function save( props ) {
 			) }
 		>
 			{ topDividerHtml }
+			{ 'video' === backgroundType && (
+				<div className="uagb-container__video-wrap">
+					{ backgroundVideo && (
+						<video autoPlay loop muted playsinline>
+							<source
+								src={ backgroundVideo.url }
+								type="video/mp4"
+							/>
+						</video>
+					) }
+				</div>
+			) }
 			<InnerBlocks.Content />
 			{ bottomDividerHtml }
 		</div>
