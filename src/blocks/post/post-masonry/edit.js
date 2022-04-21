@@ -1041,6 +1041,7 @@ const UAGBPostMasonry = ( props ) => {
 								disableBottomSeparator={ false }
 							/>
 							<Border
+								disabledBorderTitle= {false}
 								setAttributes={ setAttributes }
 								disableBottomSeparator={ true }
 								borderStyle={ {
@@ -2138,6 +2139,7 @@ const UAGBPostMasonry = ( props ) => {
 					} }
 				/>
 				<Border
+					disabledBorderTitle= {false}
 					setAttributes={ setAttributes }
 					disableBottomSeparator={ false }
 					borderStyle={ {
