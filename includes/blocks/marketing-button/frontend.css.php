@@ -33,7 +33,7 @@ $icon_hover_color = ( '' === $attr['iconHoverColor'] ) ? $attr['titleHoverColor'
 
 $selectors = array(
 	' .uagb-marketing-btn__prefix'         => array(
-		'margin-top' => UAGB_Helper::get_css_value( $attr['titleSpace'], 'px' ),
+		'margin-top' => UAGB_Helper::get_css_value( $attr['titleSpace'], $attr['titleSpaceUnit'] ),
 	),
 	' svg'                                 => array(
 		'fill'   => $icon_color,
