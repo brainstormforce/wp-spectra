@@ -1,7 +1,7 @@
 /**
  * Internal & External dependencies.
  */
-import { ButtonGroup, Button } from '@wordpress/components';
+import { ButtonGroup, Button, Tooltip } from '@wordpress/components';
 import { useDeviceType } from '@Controls/getPreviewType';
 import { __ } from '@wordpress/i18n'
 import { useState, useCallback } from '@wordpress/element'
@@ -146,6 +146,14 @@ const devices = [
 			>
 				{ devices.map(
 					( { name, key, title, itemClass } ) => (
+						<Tooltip
+							text={ sprintf(
+								/* translators: abbreviation for units */
+								__( '%s', 'ultimate-addons-for-gutenberg' ),
+								name
+							) }
+							key={key}
+						>
 						<Button
 							key={ key }
 							className={ `components-button components-tab-panel__tabs-item ${ itemClass }${
@@ -162,6 +170,7 @@ const devices = [
 						>
 							{ title }
 						</Button>
+						</Tooltip>
 					)
 				) }
 			</ButtonGroup>

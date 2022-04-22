@@ -1,4 +1,4 @@
-import { SelectControl, Button, Dashicon } from '@wordpress/components';
+import { SelectControl, Button, Dashicon, Tooltip } from '@wordpress/components';
 import { __ } from '@wordpress/i18n';
 import { useState } from '@wordpress/element';
 import styles from './editor.lazy.scss';
@@ -192,6 +192,10 @@ const UAGPresets = ( props ) => {
 		<div className="uagb-presets-main-wrap">
 			<div className='uagb-presets-label-reset-wrap'>
 				<label htmlFor="uag-presets-label" className="uag-presets-label">{label}</label>
+				<Tooltip
+					text={ __( 'Reset', 'ultimate-addons-for-gutenberg' )}
+					key={ 'reset' }
+				>
 				<Button
 					className="uagb-reset"
 					isSecondary
@@ -203,6 +207,7 @@ const UAGPresets = ( props ) => {
 				>
 					<Dashicon icon="image-rotate" />
 				</Button>
+				</Tooltip>
 			</div>
             { 'dropdown' === presetInputType && presetDropdown }
             { 'radioImage' === presetInputType && presetRadioImage }

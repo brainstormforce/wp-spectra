@@ -450,7 +450,7 @@ const UAGBPostCarousel = ( props ) => {
 		return (
 			<UAGAdvancedPanelBody
 				title={ __( 'General', 'ultimate-addons-for-gutenberg' ) }
-				initialOpen={ true }
+				initialOpen={ false }
 			>
 				<MultiButtonsControl
 					setAttributes={ setAttributes }

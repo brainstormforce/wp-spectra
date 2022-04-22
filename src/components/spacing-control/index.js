@@ -185,7 +185,7 @@ const SpacingControl = ( props ) => {
 		if ( '' === value && '' !== event ) {
 			newValue =
 				event.target.value === ''
-					? undefined
+					? ''
 					: Number( event.target.value );
 		}
 		if ( link.value ) {
@@ -502,6 +502,10 @@ const SpacingControl = ( props ) => {
 					responsive= { responsive }
 				/>
 					<div className="uagb-control__actions">
+						<Tooltip
+							text={ __( 'Reset', 'ultimate-addons-for-gutenberg' )}
+							key={ 'reset' }
+						>
 						<Button
 							className="uagb-reset"
 							isSecondary
@@ -513,6 +517,7 @@ const SpacingControl = ( props ) => {
 						>
 							<Dashicon icon="image-rotate" />
 						</Button>
+						</Tooltip>
 						<ButtonGroup
 							className="uagb-spacing-control__units"
 							aria-label={ __(

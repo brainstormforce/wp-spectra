@@ -588,20 +588,6 @@ const Settings = ( props ) => {
 					value={ imageSize }
 					onChange={ setimageSize }
 				/>
-				{/* <Range
-					label={ __( 'Width' ) }
-					value={ imageWidth }
-					setAttributes={ setAttributes }
-					onChange={ ( value ) =>
-						setAttributes( { imageWidth: value } )
-					}
-					min={ 0 }
-					max={ 500 }
-					unit={ {
-						value: imageWidthType,
-						label: 'imageWidthType',
-					} }
-				/> */}
 				<ResponsiveSlider
 					label={ __(
 						'Width',
@@ -829,43 +815,6 @@ const Settings = ( props ) => {
 				/>
 				{ 'none' !== seperatorStyle && (
 					<>
-						{/* <Range
-							label={ __( 'Width' ) }
-							setAttributes={ setAttributes }
-							value={ seperatorWidth }
-							onChange={ ( value ) =>
-								setAttributes( { seperatorWidth: value } )
-							}
-							min={ 0 }
-							max={ 100 }
-							unit={ {
-								value: seperatorWidthType,
-								label: 'seperatorWidthType',
-							} }
-							units={ [
-								{
-									name: __(
-										'Pixel',
-										'ultimate-addons-for-gutenberg'
-									),
-									unitValue: 'px',
-								},
-								{
-									name: __(
-										'Em',
-										'ultimate-addons-for-gutenberg'
-									),
-									unitValue: 'em',
-								},
-								{
-									name: __(
-										'%',
-										'ultimate-addons-for-gutenberg'
-									),
-									unitValue: '%',
-								},
-							] }
-						/> */}
 						<ResponsiveSlider
 							label={ __(
 								'Width',
@@ -1095,20 +1044,6 @@ const Settings = ( props ) => {
 						label: 'titleDecoration',
 					} }
 				/>
-				{/* <Range
-					label={ __( 'Bottom Margin' ) }
-					value={ titleSpace }
-					setAttributes={ setAttributes }
-					onChange={ ( value ) =>
-						setAttributes( { titleSpace: value } )
-					}
-					min={ 0 }
-					max={ 50 }
-					unit={ {
-						value: titleSpaceType,
-						label: 'titleSpaceType',
-					} }
-				/> */}
 				<ResponsiveSlider
 					label={ __(
 						'Bottom Margin',
@@ -1175,7 +1110,7 @@ const Settings = ( props ) => {
 						{ presetSettings() }
 						<UAGAdvancedPanelBody
 							title={ __( 'General' ) }
-							initialOpen={ true }
+							initialOpen={ false }
 						>
 							<ResponsiveSlider
 								label={ __(

@@ -119,8 +119,11 @@
 				min-height: 22px;
 			}
 
-			.uag-font-family-select__control:hover {
-				border: 1px solid #757575;
+			.uag-font-family-select__control {
+				cursor: pointer;
+				&:hover {
+					border: 1px solid #757575;
+				}
 			}
 
 			.uag-font-family-select__menu {
@@ -144,7 +147,6 @@
 			}
 
 			.uag-font-family-select__value-container {
-
 				> div {
 					margin: 0;
 					padding: 0;

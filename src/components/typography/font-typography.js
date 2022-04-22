@@ -123,12 +123,12 @@ function FontFamilyControl( props ) {
 			height: '30px',
 		} ),
 	}
-	
+
 	let fontFamilyValue;
 	//Push Google Fonts into stytem fonts object
 	if ( gFonts ) {
 		gFonts.map( ( font ) => {  // eslint-disable-line array-callback-return
-			
+
 			if ( ! props.fontFamily.weight && font.value === props.fontFamily.value ) {
 				fontFamilyValue = { ...props.fontFamily, weight: font.weight, label: font.value };
 			}

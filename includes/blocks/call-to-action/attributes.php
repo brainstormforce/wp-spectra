@@ -70,6 +70,8 @@ return array(
 	'ctaLeftSpace'                 => 5,
 	'ctaRightSpace'                => 5,
 	'contentWidth'                 => 70,
+	'contentWidthTablet'           => 70,
+	'contentWidthMobile'           => 70,
 	'ctaLinkHoverColor'            => '',
 	'ctaTopPaddingTablet'          => '',
 	'ctaRightPaddingTablet'        => '',

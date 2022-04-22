@@ -390,7 +390,7 @@ const Settings = ( props ) => {
 		return (
 			<UAGAdvancedPanelBody
 				title={ __( 'Layout', 'ultimate-addons-for-gutenberg' ) }
-				initialOpen={ true }
+				initialOpen={ false }
 			>
 				<ResponsiveSelectControl
 					label={ __( 'Style', 'ultimate-addons-for-gutenberg' ) }

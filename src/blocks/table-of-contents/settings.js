@@ -356,20 +356,6 @@ const Settings = ( props ) => {
 						label: 'headingLineHeightTablet',
 					} }
 				/>
-				{/* <Range
-					label={ __(
-						'Bottom Spacing',
-						'ultimate-addons-for-gutenberg'
-					) }
-					setAttributes={ setAttributes }
-					value={ headingBottom }
-					onChange={ ( value ) =>
-						setAttributes( { headingBottom: value } )
-					}
-					min={ 0 }
-					max={ 50 }
-					displayUnit={ false }
-				/> */}
 				<ResponsiveSlider
 					label={ __( 'Bottom Spacing', 'ultimate-addons-for-gutenberg' ) }
 					data={ {

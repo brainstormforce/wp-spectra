@@ -339,20 +339,6 @@ const Settings = ( props ) => {
 						setAttributes( { headingColor: value } )
 					}
 				/>
-				{/* <Range
-					label={ __(
-						'Bottom Spacing (px)',
-						'ultimate-addons-for-gutenberg'
-					) }
-					setAttributes={ setAttributes }
-					value={ headSpace }
-					onChange={ ( value ) =>
-						setAttributes( { headSpace: value } )
-					}
-					min={ 0 }
-					max={ 200 }
-					displayUnit={ false }
-				/> */}
 				<ResponsiveSlider
 					label={ __(
 						'Bottom Spacing (px)',
@@ -543,20 +529,6 @@ const Settings = ( props ) => {
 						} )
 					}
 				/>
-				{/* <Range
-					label={ __(
-						'Bottom Spacing (px)',
-						'ultimate-addons-for-gutenberg'
-					) }
-					setAttributes={ setAttributes }
-					value={ separatorSpace }
-					onChange={ ( value ) =>
-						setAttributes( { separatorSpace: value } )
-					}
-					min={ 0 }
-					max={ 200 }
-					displayUnit={ false }
-				/> */}
 				<ResponsiveSlider
 					label={ __(
 						'Bottom Spacing (px)',
