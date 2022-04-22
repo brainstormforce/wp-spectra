@@ -840,6 +840,22 @@ const attributes = {
 		type: 'boolean',
 		default: false,
 	},
+	stackBtn: {
+		type: 'string',
+		default: 'none'
+	},
+	gapBtn: {
+		type: 'number',
+		default: 15
+	},
+	gapBtnTablet: {
+		type: 'number',
+		default: 15
+	},
+	gapBtnMobile: {
+		type: 'number',
+		default: 15
+	},
 };
 
 export default attributes;

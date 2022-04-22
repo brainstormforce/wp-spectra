@@ -80,7 +80,6 @@ $selectors['.wp-block-uagb-call-to-action a.uagb-cta-second__button']       = ar
 	'padding-bottom'   => UAGB_Helper::get_css_value( $attr['secondCtaBottomPadding'], $attr['secondCtaPaddingUnit'] ),
 	'padding-left'     => UAGB_Helper::get_css_value( $attr['secondCtaLeftPadding'], $attr['secondCtaPaddingUnit'] ),
 	'padding-right'    => UAGB_Helper::get_css_value( $attr['secondCtaRightPadding'], $attr['secondCtaPaddingUnit'] ),
-	'margin-left'      => UAGB_Helper::get_css_value( $attr['gap'], 'px' ),
 	'align-self'       => 'top' === $attr['buttonAlign'] ? 'flex-start' : 'center',
 	'height'           => 'fit-content',
 );
@@ -285,7 +284,57 @@ $m_selectors['.wp-block-uagb-call-to-action.uagb-cta__content-stacked-mobile '] 
 $m_selectors['.uagb-cta__content-stacked-mobile .uagb-cta__wrap']               = array(
 	'width' => '100%',
 );
+if ( 'desktop' === $attr['stackBtn'] ) {
 
+	$selectors[' .uagb-cta__buttons ']   = array(
+		'flex-direction' => 'column',
+		'row-gap'        => UAGB_Helper::get_css_value( $attr['gapBtn'], 'px' ),
+	);
+	$t_selectors[' .uagb-cta__buttons '] = array(
+		'row-gap' => UAGB_Helper::get_css_value( $attr['gapBtnTablet'], 'px' ),
+	);
+	$m_selectors[' .uagb-cta__buttons '] = array(
+		'row-gap' => UAGB_Helper::get_css_value( $attr['gapBtnMobile'], 'px' ),
+	);
+
+} elseif ( 'tablet' === $attr['stackBtn'] ) {
+
+	$selectors[' .uagb-cta__buttons ']  = array(
+		'column-gap' => UAGB_Helper::get_css_value( $attr['gapBtn'], 'px' ),
+	);
+	$t_selectors[' .uagb-cta__buttons'] = array(
+		'flex-direction' => 'column',
+		'row-gap'        => UAGB_Helper::get_css_value( $attr['gapBtnTablet'], 'px' ),
+	);
+	$m_selectors[' .uagb-cta__buttons'] = array(
+		'flex-direction' => 'column',
+		'row-gap'        => UAGB_Helper::get_css_value( $attr['gapBtnMobile'], 'px' ),
+	);
+
+} elseif ( 'mobile' === $attr['stackBtn'] ) {
+
+	$selectors[' .uagb-cta__buttons ']  = array(
+		'column-gap' => UAGB_Helper::get_css_value( $attr['gapBtn'], 'px' ),
+	);
+	$t_selectors[' .uagb-cta__buttons'] = array(
+		'column-gap' => UAGB_Helper::get_css_value( $attr['gapBtnTablet'], 'px' ),
+	);
+	$m_selectors[' .uagb-cta__buttons'] = array(
+		'flex-direction' => 'column',
+		'row-gap'        => UAGB_Helper::get_css_value( $attr['gapBtnMobile'], 'px' ),
+	);
+
+} elseif ( 'none' === $attr['stackBtn'] ) {
+	$selectors[' .uagb-buttons__wrap ']  = array(
+		'column-gap' => UAGB_Helper::get_css_value( $attr['gapBtn'], 'px' ),
+	);
+	$t_selectors[' .uagb-buttons__wrap'] = array(
+		'column-gap' => UAGB_Helper::get_css_value( $attr['gapBtnTablet'], 'px' ),
+	);
+	$m_selectors[' .uagb-buttons__wrap'] = array(
+		'column-gap' => UAGB_Helper::get_css_value( $attr['gapBtnMobile'], 'px' ),
+	);
+}
 if ( 'before' === $attr['ctaIconPosition'] ) {
 	$selectors['.wp-block-uagb-call-to-action a.uagb-cta__button-link-wrapper > svg']   = array(
 		'margin-right' => UAGB_Helper::get_css_value( $attr['ctaIconSpace'], 'px' ),

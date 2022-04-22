@@ -62,8 +62,10 @@ const Render = ( props ) => {
 								{ titleText }
 								{ descText }
 							</div>
-							{isCta}
-							{secondCtaButton}
+							<div className='uagb-cta__buttons'>
+								{isCta}
+								{secondCtaButton}
+							</div>
 						</>
 					) }
 			</>

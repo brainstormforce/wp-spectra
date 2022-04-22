@@ -161,6 +161,10 @@ const Settings = ( props ) => {
 		secondCtaIconPosition,
 		secondCtaIconSpace,
 		gap,
+		stackBtn,
+		gapBtn,
+		gapBtnTablet,
+		gapBtnMobile,
 	} = attributes;
 
 	let loadCtaGoogleFonts;
@@ -245,6 +249,72 @@ const Settings = ( props ) => {
 				/>
 				{ enabledSecondCtaButton && (
 				<>
+				<MultiButtonsControl
+					setAttributes={ setAttributes }
+					label={ __( 'Stack Orientation', 'ultimate-addons-for-gutenberg' ) }
+					data={ {
+						value: stackBtn,
+						label: 'stackBtn',
+					} }
+					options={ [
+						{
+							value: 'none',
+							label: __(
+								'None',
+								'ultimate-addons-for-gutenberg'
+							),
+						},
+						{
+							value: 'desktop',
+							label: __(
+								'Desktop',
+								'ultimate-addons-for-gutenberg'
+							),
+						},
+						{
+							value: 'tablet',
+							label: __(
+								'Tablet',
+								'ultimate-addons-for-gutenberg'
+							),
+						},
+						{
+							value: 'mobile',
+							label: __(
+								'Mobile',
+								'ultimate-addons-for-gutenberg'
+							),
+						},
+					] }
+					help={ __(
+						'Note: Choose on what breakpoint the buttons will stack.',
+						'ultimate-addons-for-gutenberg'
+					) }
+				/>
+				<ResponsiveSlider
+					label={ __(
+						'Gap Between Buttons',
+						'ultimate-addons-for-gutenberg'
+					) }
+					data={ {
+						desktop: {
+							value: gapBtn,
+							label: 'gapBtn',
+						},
+						tablet: {
+							value: gapBtnTablet,
+							label: 'gapBtnTablet',
+						},
+						mobile: {
+							value: gapBtnMobile,
+							label: 'gapBtnMobile',
+						},
+					} }
+					min={ 0 }
+					max={ 200 }
+					displayUnit={ false }
+					setAttributes={ setAttributes }
+				/>
 				<TextControl
 					label={ __(
 						'Text',
@@ -1293,22 +1363,6 @@ const Settings = ( props ) => {
 						displayUnit={ false }
 					/>
 				) }
-				{ enabledSecondCtaButton && (
-				<Range
-					label={ __(
-						'Gap between buttons (px)',
-						'ultimate-addons-for-gutenberg'
-					) }
-					setAttributes={ setAttributes }
-					value={ gap }
-					onChange={ ( value ) =>
-						setAttributes( { gap: value } )
-					}
-					min={ 0 }
-					max={ 200 }
-					displayUnit={ false }
-				/>
-				)}
 			</UAGAdvancedPanelBody>
 		);
 	};
