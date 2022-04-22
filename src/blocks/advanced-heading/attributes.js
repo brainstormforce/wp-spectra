@@ -44,6 +44,16 @@ const attributes = {
 			styleType: 'main-title-gradient-color'
 		}
 	},
+	headingBackgroundType: {
+		type: 'string',
+		default: 'classic'
+	},
+	headingGradientBackground: {
+		type: 'string',
+	},
+	headingBackground: {
+		type: 'string',
+	},
 	subHeadingColor: {
 		type: 'string',
 		UAGCopyPaste: {

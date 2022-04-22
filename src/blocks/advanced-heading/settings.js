@@ -38,6 +38,9 @@ const Settings = ( props ) => {
 		headingColorType,
 		headingColor,
 		headingGradientColor,
+		headingBackgroundType,
+		headingBackground,
+		headingGradientBackground,
 		subHeadingColor,
 		separatorColor,
 		headingTag,
@@ -353,6 +356,38 @@ const Settings = ( props ) => {
 				title={ __( 'Heading', 'ultimate-addons-for-gutenberg' ) }
 				initialOpen={ false }
 			>
+				<ColorSwitchControl
+					label={__( 'Background Color', 'ultimate-addons-for-gutenberg' )}
+					type={{
+						value: headingBackgroundType,
+						label: 'headingBackgroundType'
+					}}
+					classic={{
+						value: headingBackground,
+						label: 'headingBackground'
+					}}
+					gradient={{
+						value: headingGradientBackground,
+						label: 'headingGradientBackground'
+					}}
+					setAttributes={ setAttributes }
+				/>
+				<ColorSwitchControl
+					label={__( 'Text Color', 'ultimate-addons-for-gutenberg' )}
+					type={{
+						value: headingColorType,
+						label: 'headingColorType'
+					}}
+					classic={{
+						value: headingColor,
+						label: 'headingColor'
+					}}
+					gradient={{
+						value: headingGradientColor,
+						label: 'headingGradientColor'
+					}}
+					setAttributes={ setAttributes }
+				/>
 				<Suspense fallback={ lazyLoader() }>
 					<TypographyControl
 						label={ __(
@@ -435,23 +470,6 @@ const Settings = ( props ) => {
 						} }
 					/>
 				</Suspense>
-
-				<ColorSwitchControl
-					label={__( 'Color', 'ultimate-addons-for-gutenberg' )}
-					type={{
-						value: headingColorType,
-						label: 'headingColorType'
-					}}
-					classic={{
-						value: headingColor,
-						label: 'headingColor'
-					}}
-					gradient={{
-						value: headingGradientColor,
-						label: 'headingGradientColor'
-					}}
-					setAttributes={ setAttributes }
-				/>
 				<TextShadowControl
 					setAttributes={ setAttributes }
 					label={ __(

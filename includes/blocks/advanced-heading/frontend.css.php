@@ -15,6 +15,7 @@ $t_selectors = array();
 
 $selectors = array(
 	' .uagb-heading-text'                             => array(
+		'background'     => 'classic' === $attr['headingBackgroundType'] ? $attr['headingBackground'] : $attr['headingGradientBackground'],
 		'color'          => $attr['headingColor'],
 		'margin-bottom'  => UAGB_Helper::get_css_value( $attr['headSpace'], 'px' ),
 		'letter-spacing' => UAGB_Helper::get_css_value( $attr['headLetterSpacing'], $attr['headLetterSpacingType'] ),
