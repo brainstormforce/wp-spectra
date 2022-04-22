@@ -220,7 +220,7 @@ function styling( props ) {
 	};
 
 	// gradient text color
-	if('gradient' === headingColorType){
+	if( 'gradient' === headingColorType ){
 		selectors[ ' ' + headingTag + '.uagb-heading-text' ] =  {
 			'background': headingGradientColor,
 			'-webkit-background-clip': 'text',

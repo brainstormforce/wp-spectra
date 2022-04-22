@@ -5,7 +5,7 @@ import { useSelect } from '@wordpress/data';
 
 const FORMAT_TYPE = 'uagb/advanced-heading-highlight'
 
-function highlightFormat({ isActive, onChange, value }) {
+function HighlightFormat( { isActive, onChange, value } ) {
 	const selectedBlock = useSelect( ( select ) => {
 		return select( 'core/block-editor' ).getSelectedBlock();
 	}, [] );
@@ -39,5 +39,5 @@ registerFormatType( FORMAT_TYPE, {
 	title: 'Spectra Highlight',
 	tagName: 'mark',
 	className: 'uagb-highlight',
-	edit: highlightFormat,
+	edit: HighlightFormat,
 } );

@@ -4,13 +4,9 @@ import GradientSettings from '@Components/gradient-settings';
 import MultiButtonsControl from '@Components/multi-buttons-control';
 import AdvancedPopColorControl from '@Components/color-control/advanced-pop-color-control.js';
 import styles from './editor.lazy.scss';
-import PropTypes from 'prop-types';
 
-const propTypes = {};
 
-const defaultProps = {};
-
-export default function ColorSwitchControl({label, type, classic, gradient, setAttributes}) {
+export default function ColorSwitchControl( {label, type, classic, gradient, setAttributes} ) {
 	// Add and remove the CSS on the drop and remove of the component.
 	useLayoutEffect( () => {
 		styles.use();
@@ -66,6 +62,3 @@ export default function ColorSwitchControl({label, type, classic, gradient, setA
 		</React.Fragment>
 	);
 }
-
-ColorSwitchControl.propTypes = propTypes;
-ColorSwitchControl.defaultProps = defaultProps;

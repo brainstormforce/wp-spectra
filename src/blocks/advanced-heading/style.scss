@@ -18,8 +18,26 @@
 		display: inline-block;
 		margin: 0 0 10px 0;
 	}
+
 	.uagb-highlight {
 		color: #f78a0c;
-		transition: all .3s ease;
+		transition: all 0.3s ease;
+	}
+}
+
+.uag-highlight-toolbar {
+	border-left: 0;
+	border-top: 0;
+	border-bottom: 0;
+	border-radius: 0;
+	border-right-color: #1e1e1e;
+
+	.components-button {
+		border-radius: 0;
+		outline: none;
+
+		&.is-primary {
+			color: #fff;
+		}
 	}
 }
