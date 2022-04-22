@@ -514,6 +514,148 @@ const attributes = {
 			styleType: 'link-hover-color'
 		}
 	},
+	// Highlight
+	highLightColor: {
+		type: 'string',
+		default: '#f78a0c'
+	},
+	highLightBackground: {
+		type: 'string',
+	},
+	highLightBorderWidth: {
+		type: 'number',
+		default: '',
+	},
+	highLightBorderRadius: {
+		type: 'number',
+		default: '',
+	},
+	highLightBorderStyle: {
+		type: 'string',
+		default: 'none',
+	},
+	highLightBorderColor: {
+		type: 'string',
+		default: '',
+	},
+	highLightBorderHColor: {
+		type: 'string',
+		default: '',
+	},
+	highLightLoadGoogleFonts: {
+		type: 'boolean',
+		default: false,
+		UAGCopyPaste: {
+			styleType: 'main-title-load-google-fonts'
+		}
+	},
+	highLightFontFamily: {
+		type: 'string',
+		default: 'Default',
+		UAGCopyPaste: {
+			styleType: 'main-title-font-family'
+		}
+	},
+	highLightFontWeight: {
+		type: 'string',
+		UAGCopyPaste: {
+			styleType: 'main-title-font-weight'
+		}
+	},
+	highLightFontStyle: {
+		type: 'string',
+		default: 'normal',
+		UAGCopyPaste: {
+			styleType: 'main-title-font-style'
+		}
+	},
+	highLightTransform: {
+		type: 'string',
+		UAGCopyPaste: {
+			styleType: 'main-title-transform'
+		}
+	},
+	highLightDecoration: {
+		type: 'string',
+		UAGCopyPaste: {
+			styleType: 'main-title-decoration'
+		}
+	},
+	highLightFontSizeType: {
+		type: 'string',
+		default: 'px',
+		UAGCopyPaste: {
+			styleType: 'main-title-font-size-type'
+		}
+	},
+	highLightLineHeightType: {
+		type: 'string',
+		default: 'em',
+		UAGCopyPaste: {
+			styleType: 'main-title-line-height-type'
+		}
+	},
+	highLightFontSize: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'main-title-font-size'
+		}
+	},
+	highLightFontSizeTablet: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'main-title-font-size-tablet'
+		}
+	},
+	highLightFontSizeMobile: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'main-title-font-size-mobile'
+		}
+	},
+	highLightLineHeight: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'main-title-line-height'
+		}
+	},
+	highLightLineHeightTablet: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'main-title-line-height-tablet'
+		}
+	},
+	highLightLineHeightMobile: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'main-title-line-height-mobile'
+		}
+	},
+	highLightLetterSpacing: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'main-title-letter-spacing'
+		}
+	},
+	highLightLetterSpacingTablet: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'main-title-letter-spacing-tablet'
+		}
+	},
+	highLightLetterSpacingMobile: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'main-title-letter-spacing-mobile'
+		}
+	},
+	highLightLetterSpacingType: {
+		type: 'string',
+		default: 'px',
+		UAGCopyPaste: {
+			styleType: 'main-title-letter-spacing-type'
+		}
+	},
 };
 
 export default attributes;

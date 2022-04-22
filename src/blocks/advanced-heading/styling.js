@@ -93,7 +93,32 @@ function styling( props ) {
 		headingBlockMarginUnitMobile,
 		// link
 		linkColor,
-		linkHColor
+		linkHColor,
+		// Highlight
+		highLightColor,
+		highLightBackground,
+		highLightBorderWidth,
+		highLightBorderRadius,
+		highLightBorderStyle,
+		highLightBorderColor,
+		highLightBorderHColor,
+		highLightFontFamily,
+		highLightFontWeight,
+		highLightFontStyle,
+		highLightTransform,
+		highLightDecoration,
+		highLightFontSizeType,
+		highLightLineHeightType,
+		highLightFontSize,
+		highLightFontSizeTablet,
+		highLightFontSizeMobile,
+		highLightLineHeight,
+		highLightLineHeightTablet,
+		highLightLineHeightMobile,
+		highLightLetterSpacing,
+		highLightLetterSpacingTablet,
+		highLightLetterSpacingMobile,
+		highLightLetterSpacingType,
 	} = props.attributes;
 
 	const tablet_selectors = {};
@@ -158,6 +183,25 @@ function styling( props ) {
 		},
 		'.wp-block-uagb-advanced-heading a:hover': {
 			'color': linkHColor,
+		},
+		'.wp-block-uagb-advanced-heading .uagb-highlight': {
+			'background': highLightBackground,
+			'color': highLightColor,
+			'font-family': highLightFontFamily,
+			'font-style' : highLightFontStyle,
+			'text-decoration': highLightDecoration,
+			'text-transform': highLightTransform,
+			'font-weight': highLightFontWeight,
+			'font-size': generateCSSUnit( highLightFontSize, highLightFontSizeType ),
+			'line-height': generateCSSUnit( highLightLineHeight, highLightLineHeightType ),
+			'letter-spacing': generateCSSUnit( highLightLetterSpacing, highLightLetterSpacingType ),
+			'border-style': highLightBorderStyle,
+			'border-width': generateCSSUnit( highLightBorderWidth, 'px' ),
+			'border-color': highLightBorderColor,
+			'border-radius': generateCSSUnit( highLightBorderRadius, 'px' ),
+		},
+		'.wp-block-uagb-advanced-heading .uagb-highlight:hover': {
+			'border-color': highLightBorderHColor,
 		}
 	};
 
@@ -251,6 +295,17 @@ function styling( props ) {
 		),
 		'letter-spacing': generateCSSUnit( subHeadLetterSpacingTablet, subHeadLetterSpacingType ),
 	};
+	tablet_selectors[ '.wp-block-uagb-advanced-heading .uagb-highlight' ] = {
+		'font-size': generateCSSUnit(
+			highLightFontSizeTablet,
+			highLightFontSizeType
+		),
+		'line-height': generateCSSUnit(
+			highLightLineHeightTablet,
+			highLightLineHeightType
+		),
+		'letter-spacing': generateCSSUnit( highLightLetterSpacingTablet, highLightLetterSpacingType ),
+	};
 	// mobile
 	mobile_selectors['.wp-block-uagb-advanced-heading '] = {
 		'margin-top': generateCSSUnit(
@@ -304,6 +359,17 @@ function styling( props ) {
 			subHeadLineHeightType
 		),
 		'letter-spacing': generateCSSUnit( subHeadLetterSpacingMobile, subHeadLetterSpacingType ),
+	};
+	mobile_selectors[ '.wp-block-uagb-advanced-heading .uagb-highlight' ] = {
+		'font-size': generateCSSUnit(
+			highLightFontSizeMobile,
+			highLightFontSizeType
+		),
+		'line-height': generateCSSUnit(
+			highLightLineHeightMobile,
+			highLightLineHeightType
+		),
+		'letter-spacing': generateCSSUnit( highLightLetterSpacingMobile, highLightLetterSpacingType ),
 	};
 
 	const base_selector = `.editor-styles-wrapper .uagb-block-${ props.clientId.substr(

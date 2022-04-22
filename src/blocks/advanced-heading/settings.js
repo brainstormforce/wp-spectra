@@ -22,6 +22,7 @@ import { SelectControl, Icon } from '@wordpress/components';
 import SpacingControl from '@Components/spacing-control';
 import ColorSwitchControl from '@Components/color-switch-control';
 import TextShadowControl from '@Components/text-shadow';
+import Border from '@Components/border';
 
 
 
@@ -124,6 +125,32 @@ const Settings = ( props ) => {
 		// link
 		linkColor,
 		linkHColor,
+		// Highlight
+		highLightColor,
+		highLightBackground,
+		highLightBorderWidth,
+		highLightBorderRadius,
+		highLightBorderStyle,
+		highLightBorderColor,
+		highLightBorderHColor,
+		highLightLoadGoogleFonts,
+		highLightFontFamily,
+		highLightFontWeight,
+		highLightFontStyle,
+		highLightTransform,
+		highLightDecoration,
+		highLightFontSizeType,
+		highLightLineHeightType,
+		highLightFontSize,
+		highLightFontSizeTablet,
+		highLightFontSizeMobile,
+		highLightLineHeight,
+		highLightLineHeightTablet,
+		highLightLineHeightMobile,
+		highLightLetterSpacing,
+		highLightLetterSpacingTablet,
+		highLightLetterSpacingMobile,
+		highLightLetterSpacingType,
 	} = attributes;
 
 	let loadHeadingGoogleFonts;
@@ -858,6 +885,144 @@ const Settings = ( props ) => {
 		);
 	}
 
+	const highLightStylePanel = () => {
+		return (
+			<UAGAdvancedPanelBody
+				title={ __( 'Highlight', 'ultimate-addons-for-gutenberg' ) }
+				initialOpen={ false }
+			>
+				<AdvancedPopColorControl
+					label={ __( 'Background', 'ultimate-addons-for-gutenberg' ) }
+					colorValue={ highLightBackground }
+					onColorChange={ ( value ) =>
+						setAttributes( { highLightBackground: value } )
+					}
+				/>
+				<AdvancedPopColorControl
+					label={ __( 'Color', 'ultimate-addons-for-gutenberg' ) }
+					colorValue={ highLightColor }
+					onColorChange={ ( value ) =>
+						setAttributes( { highLightColor: value } )
+					}
+				/>
+				<Suspense fallback={ lazyLoader() }>
+					<TypographyControl
+						label={ __(
+							'Typography',
+							'ultimate-addons-for-gutenberg'
+						) }
+						attributes={ attributes }
+						setAttributes={ setAttributes }
+						loadGoogleFonts={ {
+							value: highLightLoadGoogleFonts,
+							label: 'highLightLoadGoogleFonts',
+						} }
+						fontFamily={ {
+							value: highLightFontFamily,
+							label: 'highLightFontFamily',
+						} }
+						fontWeight={ {
+							value: highLightFontWeight,
+							label: 'highLightFontWeight',
+						} }
+						fontStyle={ {
+							value: highLightFontStyle,
+							label: 'highLightFontStyle',
+						} }
+						transform={ {
+							value: highLightTransform,
+							label: 'highLightTransform',
+						} }
+						decoration={ {
+							value: highLightDecoration,
+							label: 'highLightDecoration',
+						} }
+						fontSizeType={ {
+							value: highLightFontSizeType,
+							label: 'highLightFontSizeType',
+						} }
+						fontSize={ {
+							value: highLightFontSize,
+							label: 'highLightFontSize',
+						} }
+						fontSizeMobile={ {
+							value: highLightFontSizeMobile,
+							label: 'highLightFontSizeMobile',
+						} }
+						fontSizeTablet={ {
+							value: highLightFontSizeTablet,
+							label: 'highLightFontSizeTablet',
+						} }
+						lineHeightType={ {
+							value: highLightLineHeightType,
+							label: 'highLightLineHeightType',
+						} }
+						lineHeight={ {
+							value: highLightLineHeight,
+							label: 'highLightLineHeight',
+						} }
+						lineHeightMobile={ {
+							value: highLightLineHeightMobile,
+							label: 'highLightLineHeightMobile',
+						} }
+						lineHeightTablet={ {
+							value: highLightLineHeightTablet,
+							label: 'highLightLineHeightTablet',
+						} }
+						letterSpacing={ {
+							value: highLightLetterSpacing,
+							label: 'highLightLetterSpacing',
+						} }
+						letterSpacingTablet={ {
+							value: highLightLetterSpacingTablet,
+							label: 'highLightLetterSpacingTablet',
+						} }
+						letterSpacingMobile={ {
+							value: highLightLetterSpacingMobile,
+							label: 'highLightLetterSpacingMobile',
+						} }
+						letterSpacingType={ {
+							value: highLightLetterSpacingType,
+							label: 'highLightLetterSpacingType',
+						} }
+					/>
+				</Suspense>
+				<Border
+					setAttributes={ setAttributes }
+					borderStyle={ {
+						value: highLightBorderStyle,
+						label: 'highLightBorderStyle',
+						title: __( 'Style', 'ultimate-addons-for-gutenberg' ),
+					} }
+					borderWidth={ {
+						value: highLightBorderWidth,
+						label: 'highLightBorderWidth',
+						title: __( 'Width', 'ultimate-addons-for-gutenberg' ),
+					} }
+					borderRadius={ {
+						value: highLightBorderRadius,
+						label: 'highLightBorderRadius',
+						title: __( 'Radius', 'ultimate-addons-for-gutenberg' ),
+					} }
+					borderColor={ {
+						value: highLightBorderColor,
+						label: 'highLightBorderColor',
+						title: __( 'Color', 'ultimate-addons-for-gutenberg' ),
+					} }
+					borderHoverColor={ {
+						value: highLightBorderHColor,
+						label: 'highLightBorderHColor',
+						title: __(
+							'Hover Color',
+							'ultimate-addons-for-gutenberg'
+						),
+					} }
+					disableBottomSeparator={ true }
+				/>
+			</UAGAdvancedPanelBody>
+		)
+	}
+
 	return (
 		<div>
 			{ blockControlSettings() }
@@ -873,6 +1038,7 @@ const Settings = ( props ) => {
 						{ subheadingPanel() }
 						{spacingStylePanel()}
 						{linkStylePanel()}
+						{highLightStylePanel()}
 					</InspectorTab>
 					<InspectorTab
 						{ ...UAGTabs.advance }
