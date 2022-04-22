@@ -236,13 +236,13 @@ function CtaStyle( props ) {
 		'align-self': 'top' === buttonAlign ? 'flex-start' : 'center',
 		'height' : 'fit-content',
 	};
-	selectors['.uagb-cta__outer-wrap:hover a.uagb-cta-second__button'] = {
+	selectors['.uagb-cta__outer-wrap a.uagb-cta-second__button:hover'] = {
 		'color': secondCtaHoverColor,
 		'background-color': secondCtaHoverBackground,
 		'border-color': secondCtaBorderHColor,
 	};
 
-	selectors['.uagb-cta__outer-wrap:hover a.uagb-cta__button-link-wrapper'] = {
+	selectors['.uagb-cta__outer-wrap a.uagb-cta__button-link-wrapper:hover'] = {
 		'color': ctaLinkHoverColor,
 		'background-color': ctaBgHoverColor,
 		'border-color': ctaBorderhoverColor,
@@ -264,11 +264,11 @@ function CtaStyle( props ) {
 		'fill': secondCtaColor,
 	};
 
-	selectors['.uagb-cta__outer-wrap:hover a.uagb-cta__button-link-wrapper svg'] = {
+	selectors['.uagb-cta__outer-wrap a.uagb-cta__button-link-wrapper:hover svg'] = {
 		'fill': ctaLinkHoverColor,
 	};
 
-	selectors['.uagb-cta__outer-wrap:hover a.uagb-cta-second__button svg'] = {
+	selectors['.uagb-cta__outer-wrap a.uagb-cta-second__button:hover svg'] = {
 		'fill': secondCtaHoverColor,
 	};
 
