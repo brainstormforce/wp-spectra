@@ -204,7 +204,6 @@ const Range = ( props ) => {
 					allowReset={ false }
 					max={ max }
 					min={ min }
-					initialPosition={ 0 }
 					step={ props.step || 1 }
 				/>
 				{ withInputField && isNumberControlSupported && (
