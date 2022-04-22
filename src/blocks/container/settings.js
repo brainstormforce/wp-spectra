@@ -331,17 +331,14 @@ const Settings = ( props ) => {
 		const contentWidthOptions = [
 			{
 				value: 'alignfull',
-				tooltip: __( 'Full Width', 'ultimate-addons-for-gutenberg' ),
 				label: __( 'Full Width', 'ultimate-addons-for-gutenberg' ),
 			},
 			{
 				value: 'alignwide',
-				tooltip: __( 'Boxed', 'ultimate-addons-for-gutenberg' ),
 				label: __( 'Boxed', 'ultimate-addons-for-gutenberg' ),
 			},
 			{
 				value: 'default',
-				tooltip: __( 'Custom', 'ultimate-addons-for-gutenberg' ),
 				label: __( 'Custom', 'ultimate-addons-for-gutenberg' ),
 			},
 		];
@@ -349,12 +346,10 @@ const Settings = ( props ) => {
 		const innerContentWidthOptions = [
 			{
 				value: 'alignwide',
-				tooltip: __( 'Boxed', 'ultimate-addons-for-gutenberg' ),
 				label: __( 'Boxed', 'ultimate-addons-for-gutenberg' ),
 			},
 			{
 				value: 'alignfull',
-				tooltip: __( 'Full Width', 'ultimate-addons-for-gutenberg' ),
 				label: __( 'Full Width', 'ultimate-addons-for-gutenberg' ),
 			},
 		];
