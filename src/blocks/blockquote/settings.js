@@ -66,13 +66,21 @@ const Settings = ( props ) => {
 		authorLineHeightMobile,
 		authorLoadGoogleFonts,
 		descSpace,
+		descSpaceTablet,
+		descSpaceMobile,
 		authorSpace,
+		authorSpaceTablet,
+		authorSpaceMobile,
 		stack,
 		borderColor,
 		borderStyle,
 		borderWidth,
 		borderGap,
+		borderGapTablet,
+		borderGapMobile,
 		verticalPadding,
+		verticalPaddingTablet,
+		verticalPaddingMobile,
 		quoteColor,
 		quoteBgColor,
 		quoteSize,
@@ -113,9 +121,13 @@ const Settings = ( props ) => {
 		customUrl,
 		authorImage,
 		authorImageWidth,
+		authorImageWidthTablet,
+		authorImageWidthMobile,
 		authorImageWidthUnit,
 		authorImageSize,
 		authorImgBorderRadius,
+		authorImgBorderRadiusTablet,
+		authorImgBorderRadiusMobile,
 		authorImgPosition,
 		quoteTopMargin,
 		quoteBottomMargin,
@@ -305,7 +317,7 @@ const Settings = ( props ) => {
 								setAttributes( { authorImageSize: value } )
 							}
 						/>
-						<Range
+						{/* <Range
 							label={ __(
 								'Author Image Width',
 								'ultimate-addons-for-gutenberg'
@@ -321,8 +333,35 @@ const Settings = ( props ) => {
 								value: authorImageWidthUnit,
 								label: 'authorImageWidthUnit',
 							} }
+						/> */}
+						<ResponsiveSlider
+							label={ __(
+								'Author Image Width',
+								'ultimate-addons-for-gutenberg'
+							) }
+							data={ {
+								desktop: {
+									value: authorImageWidth,
+									label: 'authorImageWidth',
+								},
+								tablet: {
+									value: authorImageWidthTablet,
+									label: 'authorImageWidthTablet',
+								},
+								mobile: {
+									value: authorImageWidthMobile,
+									label: 'authorImageWidthMobile',
+								},
+							} }
+							min={ 0 }
+							max={ 500 }
+							unit={ {
+								value: authorImageWidthUnit,
+								label: 'authorImageWidthUnit',
+							} }
+							setAttributes={ setAttributes }
 						/>
-						<Range
+						{/* <Range
 							label={ __(
 								'Author Image Rounded Corners',
 								'ultimate-addons-for-gutenberg'
@@ -356,6 +395,49 @@ const Settings = ( props ) => {
 									unitValue: '%',
 								},
 							] }
+						/> */}
+						<ResponsiveSlider
+							label={ __(
+								'Author Image Rounded Corners',
+								'ultimate-addons-for-gutenberg'
+							) }
+							data={ {
+								desktop: {
+									value: authorImgBorderRadius,
+									label: 'authorImgBorderRadius',
+								},
+								tablet: {
+									value: authorImgBorderRadiusTablet,
+									label: 'authorImgBorderRadiusTablet',
+								},
+								mobile: {
+									value: authorImgBorderRadiusMobile,
+									label: 'authorImgBorderRadiusMobile',
+								},
+							} }
+							min={ 0 }
+							max={ 50 }
+							unit={ {
+								value: authorImgBorderRadiusUnit,
+								label: 'authorImgBorderRadiusUnit',
+							} }
+							units={ [
+								{
+									name: __(
+										'Pixel',
+										'ultimate-addons-for-gutenberg'
+									),
+									unitValue: 'px',
+								},
+								{
+									name: __(
+										'%',
+										'ultimate-addons-for-gutenberg'
+									),
+									unitValue: '%',
+								},
+							] }
+							setAttributes={ setAttributes }
 						/>
 					</>
 				) }
@@ -974,25 +1056,52 @@ const Settings = ( props ) => {
 				/>
 			) }
 			{ skinStyle === 'border' && (
-				<Range
+				// <Range
+				// 	label={ __(
+				// 		'Gap Between Border and Quote',
+				// 		'ultimate-addons-for-gutenberg'
+				// 	) }
+				// 	setAttributes={ setAttributes }
+				// 	value={ borderGap }
+				// 	onChange={ ( value ) =>
+				// 		setAttributes( { borderGap: value } )
+				// 	}
+				// 	min={ 0 }
+				// 	max={ 200 }
+				// 	unit={ {
+				// 		value: borderGapUnit,
+				// 		label: 'borderGapUnit',
+				// 	} }
+				// />
+				<ResponsiveSlider
 					label={ __(
-						'Gap Between Border and Quote',
+						'Border - Quote Gap',
 						'ultimate-addons-for-gutenberg'
 					) }
-					setAttributes={ setAttributes }
-					value={ borderGap }
-					onChange={ ( value ) =>
-						setAttributes( { borderGap: value } )
-					}
+					data={ {
+						desktop: {
+							value: borderGap,
+							label: 'borderGap',
+						},
+						tablet: {
+							value: borderGapTablet,
+							label: 'borderGapTablet',
+						},
+						mobile: {
+							value: borderGapMobile,
+							label: 'borderGapMobile',
+						},
+					} }
 					min={ 0 }
 					max={ 200 }
 					unit={ {
 						value: borderGapUnit,
 						label: 'borderGapUnit',
 					} }
+					setAttributes={ setAttributes }
 				/>
 			) }
-			<Range
+			{/* <Range
 				label={ __(
 					'Quote Bottom Spacing',
 					'ultimate-addons-for-gutenberg'
@@ -1007,30 +1116,84 @@ const Settings = ( props ) => {
 					value: descSpaceUnit,
 					label: 'descSpaceUnit',
 				} }
+			/> */}
+			<ResponsiveSlider
+				label={ __(
+					'Quote Bottom Spacing',
+					'ultimate-addons-for-gutenberg'
+				) }
+				data={ {
+					desktop: {
+						value: descSpace,
+						label: 'descSpace',
+					},
+					tablet: {
+						value: descSpaceTablet,
+						label: 'descSpaceTablet',
+					},
+					mobile: {
+						value: descSpaceMobile,
+						label: 'descSpaceMobile',
+					},
+				} }
+				min={ 0 }
+				max={ 200 }
+				unit={ {
+					value: descSpaceUnit,
+					label: 'descSpaceUnit',
+				} }
+				setAttributes={ setAttributes }
 			/>
 			{ align === 'center' && skinStyle !== 'border' && (
-				<Range
+				// <Range
+				// 	label={ __(
+				// 		'Author Bottom Spacing',
+				// 		'ultimate-addons-for-gutenberg'
+				// 	) }
+				// 	setAttributes={ setAttributes }
+				// 	value={ authorSpace }
+				// 	onChange={ ( value ) =>
+				// 		setAttributes( { authorSpace: value } )
+				// 	}
+				// 	min={ 0 }
+				// 	max={ 200 }
+				// 	unit={ {
+				// 		value: authorSpaceUnit,
+				// 		label: 'authorSpaceUnit',
+				// 	} }
+				// />
+				<ResponsiveSlider
 					label={ __(
 						'Author Bottom Spacing',
 						'ultimate-addons-for-gutenberg'
 					) }
-					setAttributes={ setAttributes }
-					value={ authorSpace }
-					onChange={ ( value ) =>
-						setAttributes( { authorSpace: value } )
-					}
+					data={ {
+						desktop: {
+							value: authorSpace,
+							label: 'authorSpace',
+						},
+						tablet: {
+							value: authorSpaceTablet,
+							label: 'authorSpaceTablet',
+						},
+						mobile: {
+							value: authorSpaceMobile,
+							label: 'authorSpaceMobile',
+						},
+					} }
 					min={ 0 }
 					max={ 200 }
 					unit={ {
 						value: authorSpaceUnit,
 						label: 'authorSpaceUnit',
 					} }
+					setAttributes={ setAttributes }
 				/>
 			) }
 
 			{ skinStyle === 'border' && (
 				<>
-					<Range
+					{/* <Range
 						label={ 'Vertical Padding' }
 						className={ 'uagb-margin-control' }
 						value={ verticalPadding }
@@ -1044,6 +1207,33 @@ const Settings = ( props ) => {
 							value: verticalPaddingUnit,
 							label: 'verticalPaddingUnit',
 						} }
+					/> */}
+					<ResponsiveSlider
+						label={ __(
+							'Vertical Spacing',
+							'ultimate-addons-for-gutenberg'
+						) }
+						data={ {
+							desktop: {
+								value: verticalPadding,
+								label: 'verticalPadding',
+							},
+							tablet: {
+								value: verticalPaddingTablet,
+								label: 'verticalPaddingTablet',
+							},
+							mobile: {
+								value: verticalPaddingMobile,
+								label: 'verticalPaddingMobile',
+							},
+						} }
+						min={ 0 }
+						max={ 500 }
+						unit={ {
+							value: verticalPaddingUnit,
+							label: 'verticalPaddingUnit',
+						} }
+						setAttributes={ setAttributes }
 					/>
 				</>
 			) }

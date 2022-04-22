@@ -2,7 +2,7 @@
 import UAGIconPicker from '@Components/icon-picker';
 import { __ } from '@wordpress/i18n';
 import renderSVG from '@Controls/renderIcon';
-import React, { Suspense, useState } from 'react';
+import React, { Suspense } from 'react';
 import lazyLoader from '@Controls/lazy-loader';
 import TypographyControl from '@Components/typography';
 import WebfontLoader from '@Components/typography/fontloader';
@@ -21,28 +21,20 @@ import presets from './presets';
 import UAGPresets from '@Components/presets';
 import {
 	BlockControls,
-	BlockAlignmentToolbar,
 	InspectorControls,
-	__experimentalLinkControl,
 	AlignmentToolbar
 } from '@wordpress/block-editor';
 
 import {
-	Popover,
-	ToolbarButton,
-	ToolbarGroup,
 	Icon,
 	ToggleControl,
 	TextControl
 } from '@wordpress/components';
 
-
-
 import UAGAdvancedPanelBody from '@Components/advanced-panel-body';
 
 const Settings = ( props ) => {
 	props = props.parentProps;
-	const [ isURLPickerOpen, setCount ] = useState( false );
 
 	const { attributes, setAttributes, deviceType } = props;
 
@@ -52,11 +44,16 @@ const Settings = ( props ) => {
 		link,
 		linkTarget,
 		titleSpace,
+		titleSpaceTablet,
+		titleSpaceMobile,
+		titleSpaceUnit,
 		showDescription,
 		//Icon
 		icon,
 		iconPosition,
 		iconSpace,
+		iconSpaceTablet,
+		iconSpaceMobile,
 		iconFontSize,
 		iconFontSizeMobile,
 		iconFontSizeTablet,
@@ -131,10 +128,6 @@ const Settings = ( props ) => {
 		prefixDecoration,
 	} = attributes;
 
-	const onChangeOpensInNewTab = ( value ) => {
-		setAttributes( { linkTarget: value } );
-	};
-
 	// Load Google fonts for heading.
 	let loadTitleGoogleFonts;
 	if ( titleLoadGoogleFonts === true ) {
@@ -172,47 +165,17 @@ const Settings = ( props ) => {
 	const blockControls = () => {
 		return (
 			<BlockControls>
-				<BlockAlignmentToolbar
+				<AlignmentToolbar
 					value={ align }
 					onChange={ ( value ) => {
 						setAttributes( { align: value } );
 					} }
 					controls={ [ 'left', 'center', 'right', 'full' ] }
 				/>
-				<AlignmentToolbar
-					value={ textAlign }
-					onChange={ ( value ) => {
-						setAttributes( { textAlign: value } );
-					} }
-					controls={ [ 'left', 'center', 'right' ] }
-				/>
-				<ToolbarGroup>
-					<ToolbarButton
-						icon="admin-links"
-						name="link"
-						title={ __( 'Link', 'ultimate-addons-for-gutenberg' ) }
-						onClick={ () => setCount( true ) }
-					/>
-				</ToolbarGroup>
+
 			</BlockControls>
 		);
 	};
-
-	const linkControl = isURLPickerOpen && (
-		<Popover position="bottom center" onClose={ () => setCount( false ) }>
-			<__experimentalLinkControl
-				value={ { url: link, opensInNewTab: linkTarget } }
-				onChange={ ( {
-					url: newURL = '',
-					opensInNewTab: newOpensInNewTab,
-				} ) => {
-					setAttributes( { link: newURL } );
-					setAttributes( { linkTarget: newOpensInNewTab } );
-					onChangeOpensInNewTab( newOpensInNewTab );
-				} }
-			/>
-		</Popover>
-	);
 
 	const generalSettings = () => {
 		return (
@@ -456,21 +419,29 @@ const Settings = ( props ) => {
 								},
 							] }
 						/>
-						<Range
+						<ResponsiveSlider
 							label={ __(
 								'Gap Between Icon And Text',
 								'ultimate-addons-for-gutenberg'
 							) }
-							setAttributes={ setAttributes }
-							value={ iconSpace }
-							onChange={ ( value ) =>
-								setAttributes( {
-									iconSpace: value,
-								} )
-							}
+							data={ {
+								desktop: {
+									value: iconSpace,
+									label: 'iconSpace',
+								},
+								tablet: {
+									value: iconSpaceTablet,
+									label: 'iconSpaceTablet',
+								},
+								mobile: {
+									value: iconSpaceMobile,
+									label: 'iconSpaceMobile',
+								},
+							} }
 							min={ 0 }
 							max={ 50 }
 							displayUnit={ false }
+							setAttributes={ setAttributes }
 						/>
 						<ResponsiveSlider
 							label={ __(
@@ -508,21 +479,34 @@ const Settings = ( props ) => {
 				title={ __( 'Heading', 'ultimate-addons-for-gutenberg' ) }
 				initialOpen={ false }
 			>
-				{ showDescription && ( <Range
+				{ showDescription && (
+				<ResponsiveSlider
 					label={ __(
 						'Bottom Spacing',
 						'ultimate-addons-for-gutenberg'
 					) }
-					setAttributes={ setAttributes }
-					value={ titleSpace }
-					onChange={ ( value ) =>
-						setAttributes( {
-							titleSpace: value,
-						} )
-					}
+					data={ {
+						desktop: {
+							value: titleSpace,
+							label: 'titleSpace',
+						},
+						tablet: {
+							value: titleSpaceTablet,
+							label: 'titleSpaceTablet',
+						},
+						mobile: {
+							value: titleSpaceMobile,
+							label: 'titleSpaceMobile',
+						},
+					} }
 					min={ 0 }
 					max={ 20 }
 					displayUnit={ false }
+					setAttributes={ setAttributes }
+					unit={ {
+						value: titleSpaceUnit,
+						label: 'titleSpaceUnit',
+					} }
 				/> ) }
 				<TypographyControl
 					label={ __(
@@ -1180,7 +1164,6 @@ const Settings = ( props ) => {
 	return (
 		<Suspense fallback={ lazyLoader() }>
 			{ blockControls() }
-			{ linkControl }
 			<InspectorControls>
 				<InspectorTabs>
 					<InspectorTab { ...UAGTabs.general }>

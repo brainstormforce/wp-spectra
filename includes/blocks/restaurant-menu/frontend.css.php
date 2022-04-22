@@ -66,21 +66,20 @@ $selectors = array(
 	),
 );
 
-if ( 'none' !== $attr['seperatorStyle'] ) {
-	$selectors[' .uagb-rest_menu__wrap .uagb-rm__separator'] = array(
-		'border-top-color' => $attr['seperatorColor'],
-		'border-top-style' => $attr['seperatorStyle'],
-		'border-top-width' => UAGB_Helper::get_css_value( $attr['seperatorThickness'], 'px' ),
-		'width'            => UAGB_Helper::get_css_value( $attr['seperatorWidth'], $attr['seperatorWidthType'] ),
-	);
-}
-
 $selectors[ ' .uagb-rest_menu__wrap.uagb-rm__desk-column-' . $attr['columns'] . ':nth-child(' . $attr['columns'] . 'n+1)' ] = array(
 	'margin-left' => '0',
 	'clear'       => 'left',
 );
 
 $t_selectors = array(
+	' .uagb-rest_menu__wrap .uagb-rm__content .uagb-rm-details .uagb-rm__title' => array(
+		'margin-bottom' => UAGB_Helper::get_css_value( $attr['titleSpaceTablet'], $attr['titleSpaceType'] ),
+	),
+	' .uagb-rest_menu__wrap'     => array(
+		'padding-left'  => UAGB_Helper::get_css_value( ( $attr['columnGapTablet'] / 2 ), $attr['columnGapType'] ),
+		'padding-right' => UAGB_Helper::get_css_value( ( $attr['columnGapTablet'] / 2 ), $attr['columnGapType'] ),
+		'margin-bottom' => UAGB_Helper::get_css_value( $attr['rowGapTablet'], $attr['rowGapType'] ),
+	),
 	' .uagb-rest_menu__wrap.uagb-rm__desk-column-' . $attr['columns'] . ':nth-child(' . $attr['columns'] . 'n+1)' => array(
 		'margin-left' => 'unset',
 		'clear'       => 'unset',
@@ -94,6 +93,8 @@ $t_selectors = array(
 		'padding-right'  => UAGB_Helper::get_css_value( $attr['imgPaddingRightTablet'], $attr['imgTabletPaddingUnit'] ),
 		'padding-top'    => UAGB_Helper::get_css_value( $attr['imgPaddingTopTablet'], $attr['imgTabletPaddingUnit'] ),
 		'padding-bottom' => UAGB_Helper::get_css_value( $attr['imgPaddingBottomTablet'], $attr['imgTabletPaddingUnit'] ),
+		'width'          => UAGB_Helper::get_css_value( $attr['imageWidthTablet'], $attr['imageWidthType'] ),
+		'max-width'      => UAGB_Helper::get_css_value( $attr['imageWidthTablet'], $attr['imageWidthType'] ),
 	),
 	' .uagb-rm__content'         => array(
 		'padding-left'   => UAGB_Helper::get_css_value( $attr['contentPaddingLeftTablet'], $attr['contentTabletPaddingUnit'] ),
@@ -104,6 +105,14 @@ $t_selectors = array(
 );
 
 $m_selectors = array(
+	' .uagb-rest_menu__wrap .uagb-rm__content .uagb-rm-details .uagb-rm__title' => array(
+		'margin-bottom' => UAGB_Helper::get_css_value( $attr['titleSpaceMobile'], $attr['titleSpaceType'] ),
+	),
+	' .uagb-rest_menu__wrap'     => array(
+		'padding-left'  => UAGB_Helper::get_css_value( ( $attr['columnGapMobile'] / 2 ), $attr['columnGapType'] ),
+		'padding-right' => UAGB_Helper::get_css_value( ( $attr['columnGapMobile'] / 2 ), $attr['columnGapType'] ),
+		'margin-bottom' => UAGB_Helper::get_css_value( $attr['rowGapMobile'], $attr['rowGapType'] ),
+	),
 	' .uagb-rest_menu__wrap.uagb-rm__desk-column-' . $attr['columns'] . ':nth-child(' . $attr['columns'] . 'n+1)' => array(
 		'margin-left' => 'unset',
 		'clear'       => 'unset',
@@ -117,6 +126,8 @@ $m_selectors = array(
 		'padding-right'  => UAGB_Helper::get_css_value( $attr['imgPaddingRightMobile'], $attr['imgMobilePaddingUnit'] ),
 		'padding-top'    => UAGB_Helper::get_css_value( $attr['imgPaddingTopMobile'], $attr['imgMobilePaddingUnit'] ),
 		'padding-bottom' => UAGB_Helper::get_css_value( $attr['imgPaddingBottomMobile'], $attr['imgMobilePaddingUnit'] ),
+		'width'          => UAGB_Helper::get_css_value( $attr['imageWidthMobile'], $attr['imageWidthType'] ),
+		'max-width'      => UAGB_Helper::get_css_value( $attr['imageWidthMobile'], $attr['imageWidthType'] ),
 	),
 	' .uagb-rm__content'         => array(
 		'padding-left'   => UAGB_Helper::get_css_value( $attr['contentPaddingLeftMobile'], $attr['contentMobilePaddingUnit'] ),
@@ -125,6 +136,21 @@ $m_selectors = array(
 		'padding-bottom' => UAGB_Helper::get_css_value( $attr['contentPaddingBottomMobile'], $attr['contentMobilePaddingUnit'] ),
 	),
 );
+
+if ( 'none' !== $attr['seperatorStyle'] ) {
+	$selectors[' .uagb-rest_menu__wrap .uagb-rm__separator']   = array(
+		'border-top-color' => $attr['seperatorColor'],
+		'border-top-style' => $attr['seperatorStyle'],
+		'border-top-width' => UAGB_Helper::get_css_value( $attr['seperatorThickness'], 'px' ),
+		'width'            => UAGB_Helper::get_css_value( $attr['seperatorWidth'], $attr['seperatorWidthType'] ),
+	);
+	$t_selectors[' .uagb-rest_menu__wrap .uagb-rm__separator'] = array(
+		'width' => UAGB_Helper::get_css_value( $attr['seperatorWidthTablet'], $attr['seperatorWidthType'] ),
+	);
+	$m_selectors[' .uagb-rest_menu__wrap .uagb-rm__separator'] = array(
+		'width' => UAGB_Helper::get_css_value( $attr['seperatorWidthMobile'], $attr['seperatorWidthType'] ),
+	);
+}
 
 $combined_selectors = array(
 	'desktop' => $selectors,

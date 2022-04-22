@@ -477,6 +477,20 @@ const attributes = {
 			styleType: 'row-gap'
 		},
 	},
+	rowGapTablet: {
+		type: 'number',
+		default: 0,
+		UAGCopyPaste: {
+			styleType: 'row-gap'
+		},
+	},
+	rowGapMobile: {
+		type: 'number',
+		default: 0,
+		UAGCopyPaste: {
+			styleType: 'row-gap'
+		},
+	},
 	step_gap: {
 		type: 'number',
 	},

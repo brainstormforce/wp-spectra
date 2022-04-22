@@ -51,6 +51,8 @@ function styling( props ) {
 		iconimgBorderRadiusUnit,
 		seperatorStyle,
 		seperatorWidth,
+		seperatorWidthTablet,
+		seperatorWidthMobile,
 		seperatorColor,
 		seperatorThickness,
 		thicknessUnit,
@@ -98,12 +100,16 @@ function styling( props ) {
 		iconMobileMarginUnit,
 		iconTabletMarginUnit,
 		imageWidth,
+		imageWidthMobile,
+imageWidthTablet,
 		imageWidthType,
 		imageWidthUnit,
 		ctaLinkHoverColor,
 		ctaBgHoverColor,
 		ctaBorderhoverColor,
 		ctaIconSpace,
+		ctaIconSpaceTablet,
+		ctaIconSpaceMobile,
 		ctaIconSpaceType,
 		ctaTransform,
 		ctaDecoration,
@@ -246,16 +252,16 @@ function styling( props ) {
 				iconMarginUnit
 			),
 		},
-		' .uagb-ifb-content .uagb-ifb-icon-wrap:hover > svg': {
+		' .uagb-ifb-content .uagb-ifb-icon-wrap > svg:hover': {
 			'fill': iconHover,
 		},
-		'.uagb-infobox-icon-left .uagb-ifb-icon-wrap:hover > svg': {
+		'.uagb-infobox-icon-left .uagb-ifb-icon-wrap > svg:hover': {
 			'fill': iconHover,
 		},
-		'.uagb-infobox-icon-right .uagb-ifb-icon-wrap:hover > svg': {
+		'.uagb-infobox-icon-right .uagb-ifb-icon-wrap:hover > svg:hover': {
 			'fill': iconHover,
 		},
-		'.uagb-infobox__content-wrap .uagb-ifb-icon-wrap:hover > svg': {
+		'.uagb-infobox__content-wrap .uagb-ifb-icon-wrap > svg:hover': {
 			'fill': iconHover,
 		},
 		'.uagb-infobox_cta-type-all:hover .uagb-infobox__content-wrap svg': {
@@ -352,7 +358,7 @@ function styling( props ) {
 			'padding-left': generateCSSUnit( paddingBtnLeft, paddingBtnUnit ),
 			'padding-right': generateCSSUnit( paddingBtnRight, paddingBtnUnit ),
 		},
-		' .uagb-ifb-button-wrapper:hover .uagb-infobox-cta-link': {
+		' .uagb-ifb-button-wrapper .uagb-infobox-cta-link:hover': {
 			'color': ctaLinkHoverColor,
 			'background-color': ctaBgHoverColor,
 			'border-color': ctaBorderhoverColor,
@@ -442,34 +448,6 @@ function styling( props ) {
 			'margin-right': generateCSSUnit( separatorRightMargin, seperatorSpaceUnit ),
 		}
 	};
-	if( 'after' === ctaIconPosition ){
-		selectors[ '.uagb-infobox__content-wrap .uagb-infobox-cta-link > svg'] = {
-			'margin-left': generateCSSUnit( ctaIconSpace, ctaIconSpaceType ),
-		};
-	}else{
-		selectors[ '.uagb-infobox__content-wrap .uagb-infobox-cta-link > svg'] = {
-			'margin-right': generateCSSUnit( ctaIconSpace, ctaIconSpaceType ),
-		};
-	}
-	if ( imageWidthType ) {
-		// Image
-		selectors[ '.uagb-infobox__content-wrap img' ] = {
-			'width': generateCSSUnit( imageWidth, imageWidthUnit ),
-			'max-width': generateCSSUnit( imageWidth, imageWidthUnit ),
-		};
-		selectors[ '.uagb-infobox__content-wrap .uagb-ifb-content .uagb-ifb-right-title-image > img' ] = {
-			'width': generateCSSUnit( imageWidth, imageWidthUnit ),
-			'max-width': generateCSSUnit( imageWidth, imageWidthUnit ),
-		};
-		selectors[ '.uagb-infobox__content-wrap .uagb-ifb-content .uagb-ifb-left-title-image > img' ] = {
-			'width': generateCSSUnit( imageWidth, imageWidthUnit ),
-			'max-width': generateCSSUnit( imageWidth, imageWidthUnit ),
-		};
-		selectors[ '.uagb-infobox__content-wrap .uagb-ifb-content .uagb-ifb-image-content > img' ] = {
-			'width': generateCSSUnit( imageWidth, imageWidthUnit ),
-			'max-width': generateCSSUnit( imageWidth, imageWidthUnit ),
-		};
-	}
 
 	if (
 		iconimgPosition === 'above-title' ||
@@ -523,7 +501,61 @@ function styling( props ) {
 				prefixLineHeightType
 			),
 		},
+		' .uagb-ifb-icon-wrap > svg': {
+			'margin-top': generateCSSUnit(
+				iconMarginTopTablet,
+				iconTabletMarginUnit
+			),
+			'margin-right': generateCSSUnit(
+				iconMarginRightTablet,
+				iconTabletMarginUnit
+			),
+			'margin-bottom': generateCSSUnit(
+				iconMarginBottomTablet,
+				iconTabletMarginUnit
+			),
+			'margin-left': generateCSSUnit(
+				iconMarginLeftTablet,
+				iconTabletMarginUnit
+			),
+		},
 		'.uagb-infobox__content-wrap > svg': {
+			'margin-top': generateCSSUnit(
+				iconMarginTopTablet,
+				iconTabletMarginUnit
+			),
+			'margin-right': generateCSSUnit(
+				iconMarginRightTablet,
+				iconTabletMarginUnit
+			),
+			'margin-bottom': generateCSSUnit(
+				iconMarginBottomTablet,
+				iconTabletMarginUnit
+			),
+			'margin-left': generateCSSUnit(
+				iconMarginLeftTablet,
+				iconTabletMarginUnit
+			),
+		},
+		'.uagb-infobox__content-wrap .uagb-ifb-content .uagb-ifb-left-title-image img': {
+			'margin-top': generateCSSUnit(
+				iconMarginTopTablet,
+				iconTabletMarginUnit
+			),
+			'margin-right': generateCSSUnit(
+				iconMarginRightTablet,
+				iconTabletMarginUnit
+			),
+			'margin-bottom': generateCSSUnit(
+				iconMarginBottomTablet,
+				iconTabletMarginUnit
+			),
+			'margin-left': generateCSSUnit(
+				iconMarginLeftTablet,
+				iconTabletMarginUnit
+			),
+		},
+		'.uagb-infobox__content-wrap .uagb-ifb-content .uagb-ifb-right-title-image img': {
 			'margin-top': generateCSSUnit(
 				iconMarginTopTablet,
 				iconTabletMarginUnit
@@ -698,6 +730,9 @@ function styling( props ) {
 			),
 			'width': generateCSSUnit( ctaFontSizeTablet, ctaFontSizeType ),
 		},
+		'.uagb-infobox__content-wrap .uagb-ifb-separator': {
+			'width': generateCSSUnit( seperatorWidthTablet, separatorWidthType ),
+		},
 		' .uagb-ifb-separator': {
 			'margin-bottom': generateCSSUnit( seperatorTabletSpace, separatorTabletMarginUnit ),
 			'margin-top': generateCSSUnit( separatorMarginTopTablet, separatorTabletMarginUnit ),
@@ -754,6 +789,60 @@ function styling( props ) {
 			'margin-top': generateCSSUnit( separatorMarginTopMobile, separatorMobileMarginUnit ),
 			'margin-left': generateCSSUnit( separatorMarginLeftMobile, separatorMobileMarginUnit ),
 			'margin-right': generateCSSUnit( separatorMarginRightMobile, separatorMobileMarginUnit ),
+		},
+		' .uagb-ifb-icon-wrap > svg': {
+			'margin-top': generateCSSUnit(
+				iconMarginTopMobile,
+				iconMobileMarginUnit
+			),
+			'margin-right': generateCSSUnit(
+				iconMarginRightMobile,
+				iconMobileMarginUnit
+			),
+			'margin-bottom': generateCSSUnit(
+				iconMarginBottomMobile,
+				iconMobileMarginUnit
+			),
+			'margin-left': generateCSSUnit(
+				iconMarginLeftMobile,
+				iconMobileMarginUnit
+			),
+		},
+		'.uagb-infobox__content-wrap .uagb-ifb-content .uagb-ifb-left-title-image img': {
+			'margin-top': generateCSSUnit(
+				iconMarginTopMobile,
+				iconMobileMarginUnit
+			),
+			'margin-right': generateCSSUnit(
+				iconMarginRightMobile,
+				iconMobileMarginUnit
+			),
+			'margin-bottom': generateCSSUnit(
+				iconMarginBottomMobile,
+				iconMobileMarginUnit
+			),
+			'margin-left': generateCSSUnit(
+				iconMarginLeftMobile,
+				iconMobileMarginUnit
+			),
+		},
+		'.uagb-infobox__content-wrap .uagb-ifb-content .uagb-ifb-right-title-image img': {
+			'margin-top': generateCSSUnit(
+				iconMarginTopMobile,
+				iconMobileMarginUnit
+			),
+			'margin-right': generateCSSUnit(
+				iconMarginRightMobile,
+				iconMobileMarginUnit
+			),
+			'margin-bottom': generateCSSUnit(
+				iconMarginBottomMobile,
+				iconMobileMarginUnit
+			),
+			'margin-left': generateCSSUnit(
+				iconMarginLeftMobile,
+				iconMobileMarginUnit
+			),
 		},
 		'.uagb-infobox__content-wrap > svg': {
 			'margin-top': generateCSSUnit(
@@ -866,6 +955,9 @@ function styling( props ) {
 		' .uagb-infobox-cta-link': {
 			'font-size': generateCSSUnit( ctaFontSizeMobile, ctaFontSizeType ),
 		},
+		'.uagb-infobox__content-wrap .uagb-ifb-separator': {
+			'width': generateCSSUnit( seperatorWidthMobile, separatorWidthType ),
+		},
 		' .uagb-infobox-cta-link svg': {
 			'font-size': generateCSSUnit( ctaFontSizeMobile, ctaFontSizeType ),
 			'height': generateCSSUnit( ctaFontSizeMobile, ctaFontSizeType ),
@@ -876,6 +968,82 @@ function styling( props ) {
 			'width': generateCSSUnit( ctaFontSizeMobile, ctaFontSizeType ),
 		},
 	};
+
+	if ( imageWidthType ) {
+		// Image
+		selectors[ '.uagb-infobox__content-wrap img' ] = {
+			'width': generateCSSUnit( imageWidth, imageWidthUnit ),
+			'max-width': generateCSSUnit( imageWidth, imageWidthUnit ),
+		};
+		selectors[ '.uagb-infobox__content-wrap .uagb-ifb-content .uagb-ifb-right-title-image > img' ] = {
+			'width': generateCSSUnit( imageWidth, imageWidthUnit ),
+			'max-width': generateCSSUnit( imageWidth, imageWidthUnit ),
+		};
+		selectors[ '.uagb-infobox__content-wrap .uagb-ifb-content .uagb-ifb-left-title-image > img' ] = {
+			'width': generateCSSUnit( imageWidth, imageWidthUnit ),
+			'max-width': generateCSSUnit( imageWidth, imageWidthUnit ),
+		};
+		selectors[ '.uagb-infobox__content-wrap .uagb-ifb-content .uagb-ifb-image-content > img' ] = {
+			'width': generateCSSUnit( imageWidth, imageWidthUnit ),
+			'max-width': generateCSSUnit( imageWidth, imageWidthUnit ),
+		};
+
+		tabletSelectors[ '.uagb-infobox__content-wrap img' ] = {
+			'width': generateCSSUnit( imageWidthTablet, imageWidthUnit ),
+			'max-width': generateCSSUnit( imageWidth, imageWidthUnit ),
+		};
+		tabletSelectors[ '.uagb-infobox__content-wrap .uagb-ifb-content .uagb-ifb-right-title-image > img' ] = {
+			'width': generateCSSUnit( imageWidthTablet, imageWidthUnit ),
+			'max-width': generateCSSUnit( imageWidth, imageWidthUnit ),
+		};
+		tabletSelectors[ '.uagb-infobox__content-wrap .uagb-ifb-content .uagb-ifb-left-title-image > img' ] = {
+			'width': generateCSSUnit( imageWidthTablet, imageWidthUnit ),
+			'max-width': generateCSSUnit( imageWidth, imageWidthUnit ),
+		};
+		tabletSelectors[ '.uagb-infobox__content-wrap .uagb-ifb-content .uagb-ifb-image-content > img' ] = {
+			'width': generateCSSUnit( imageWidthTablet, imageWidthUnit ),
+			'max-width': generateCSSUnit( imageWidth, imageWidthUnit ),
+		};
+
+		mobileSelectors[ '.uagb-infobox__content-wrap img' ] = {
+			'width': generateCSSUnit( imageWidthMobile, imageWidthUnit ),
+			'max-width': generateCSSUnit( imageWidth, imageWidthUnit ),
+		};
+		mobileSelectors[ '.uagb-infobox__content-wrap .uagb-ifb-content .uagb-ifb-right-title-image > img' ] = {
+			'width': generateCSSUnit( imageWidthMobile, imageWidthUnit ),
+			'max-width': generateCSSUnit( imageWidth, imageWidthUnit ),
+		};
+		mobileSelectors[ '.uagb-infobox__content-wrap .uagb-ifb-content .uagb-ifb-left-title-image > img' ] = {
+			'width': generateCSSUnit( imageWidthMobile, imageWidthUnit ),
+			'max-width': generateCSSUnit( imageWidth, imageWidthUnit ),
+		};
+		mobileSelectors[ '.uagb-infobox__content-wrap .uagb-ifb-content .uagb-ifb-image-content > img' ] = {
+			'width': generateCSSUnit( imageWidthMobile, imageWidthUnit ),
+			'max-width': generateCSSUnit( imageWidth, imageWidthUnit ),
+		};
+	}
+
+	if( 'after' === ctaIconPosition ){
+		selectors[ '.uagb-infobox__content-wrap .uagb-infobox-cta-link > svg'] = {
+			'margin-left': generateCSSUnit( ctaIconSpace, ctaIconSpaceType ),
+		};
+		tabletSelectors[ '.uagb-infobox__content-wrap .uagb-infobox-cta-link > svg'] = {
+			'margin-left': generateCSSUnit( ctaIconSpaceTablet, ctaIconSpaceType ),
+		};
+		mobileSelectors[ '.uagb-infobox__content-wrap .uagb-infobox-cta-link > svg'] = {
+			'margin-left': generateCSSUnit( ctaIconSpaceMobile, ctaIconSpaceType ),
+		};
+	}else{
+		selectors[ '.uagb-infobox__content-wrap .uagb-infobox-cta-link > svg'] = {
+			'margin-right': generateCSSUnit( ctaIconSpace, ctaIconSpaceType ),
+		};
+		tabletSelectors[ '.uagb-infobox__content-wrap .uagb-infobox-cta-link > svg'] = {
+			'margin-right': generateCSSUnit( ctaIconSpaceTablet, ctaIconSpaceType ),
+		};
+		mobileSelectors[ '.uagb-infobox__content-wrap .uagb-infobox-cta-link > svg'] = {
+			'margin-right': generateCSSUnit( ctaIconSpaceMobile, ctaIconSpaceType ),
+		};
+	}
 
 	const id = `.editor-styles-wrapper .uagb-block-${ props.clientId.substr(
 		0,

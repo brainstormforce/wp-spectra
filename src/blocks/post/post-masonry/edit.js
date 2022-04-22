@@ -320,7 +320,11 @@ const UAGBPostMasonry = ( props ) => {
 		categories,
 		postsToShow,
 		rowGap,
+		rowGapTablet,
+		rowGapMobile,
 		columnGap,
+		columnGapTablet,
+		columnGapMobile,
 		bgColor,
 		titleColor,
 		titleTag,
@@ -379,10 +383,20 @@ const UAGBPostMasonry = ( props ) => {
 		ctaHColor,
 		ctaBgHColor,
 		imageBottomSpace,
-		ctaBottomSpace,
+		imageBottomSpaceTablet,
+		imageBottomSpaceMobile,
 		titleBottomSpace,
+		titleBottomSpaceTablet,
+		titleBottomSpaceMobile,
 		metaBottomSpace,
+		metaBottomSpaceTablet,
+		metaBottomSpaceMobile,
 		excerptBottomSpace,
+		excerptBottomSpaceTablet,
+		excerptBottomSpaceMobile,
+		ctaBottomSpace,
+		ctaBottomSpaceTablet,
+		ctaBottomSpaceMobile,
 		excerptLength,
 		overlayOpacity,
 		bgOverlayColor,
@@ -1460,7 +1474,7 @@ const UAGBPostMasonry = ( props ) => {
 						setAttributes( { bgColor: value } )
 					}
 				/>
-				<Range
+				{/* <Range
 					label={ __( 'Row Gap', 'ultimate-addons-for-gutenberg' ) }
 					setAttributes={ setAttributes }
 					value={ rowGap }
@@ -1488,6 +1502,54 @@ const UAGBPostMasonry = ( props ) => {
 						value: columnGapUnit,
 						label: 'columnGapUnit',
 					} }
+				/> */}
+				<ResponsiveSlider
+					label={ __( 'Column Gap', 'ultimate-addons-for-gutenberg' ) }
+					data={ {
+						desktop: {
+							value: columnGap,
+							label: 'columnGap',
+						},
+						tablet: {
+							value: columnGapTablet,
+							label: 'columnGapTablet',
+						},
+						mobile: {
+							value: columnGapMobile,
+							label: 'columnGapMobile',
+						},
+					} }
+					min={ 0 }
+					max={ 50 }
+					unit={ {
+						value: columnGapUnit,
+						label: 'columnGapUnit',
+					} }
+					setAttributes={ setAttributes }
+				/>
+				<ResponsiveSlider
+					label={ __( 'Row Gap', 'ultimate-addons-for-gutenberg' ) }
+					data={ {
+						desktop: {
+							value: rowGap,
+							label: 'rowGap',
+						},
+						tablet: {
+							value: rowGapTablet,
+							label: 'rowGapTablet',
+						},
+						mobile: {
+							value: rowGapMobile,
+							label: 'rowGapMobile',
+						},
+					} }
+					min={ 0 }
+					max={ 50 }
+					unit={ {
+						value: rowGapUnit,
+						label: 'rowGapUnit',
+					} }
+					setAttributes={ setAttributes }
 				/>
 				<SpacingControl
 					{ ...props }
@@ -1601,22 +1663,46 @@ const UAGBPostMasonry = ( props ) => {
 					</>
 				}
 				{imgPosition === 'top' &&
-					<Range
-						label={ __(
-							'Image Bottom Spacing',
-							'ultimate-addons-for-gutenberg'
-						) }
-						setAttributes={ setAttributes }
-						value={ imageBottomSpace }
-						onChange={ ( value ) =>
-							setAttributes( { imageBottomSpace: value } )
-						}
+					// <Range
+					// 	label={ __(
+					// 		'Image Bottom Spacing',
+					// 		'ultimate-addons-for-gutenberg'
+					// 	) }
+					// 	setAttributes={ setAttributes }
+					// 	value={ imageBottomSpace }
+					// 	onChange={ ( value ) =>
+					// 		setAttributes( { imageBottomSpace: value } )
+					// 	}
+					// 	min={ 0 }
+					// 	max={ 50 }
+					// 	unit={ {
+					// 		value: imageBottomSpaceUnit,
+					// 		label: 'imageBottomSpaceUnit',
+					// 	} }
+					// />
+					<ResponsiveSlider
+						label={ __( 'Bottom Spacing', 'ultimate-addons-for-gutenberg' ) }
+						data={ {
+							desktop: {
+								value: imageBottomSpace,
+								label: 'imageBottomSpace',
+							},
+							tablet: {
+								value: imageBottomSpaceTablet,
+								label: 'imageBottomSpaceTablet',
+							},
+							mobile: {
+								value: imageBottomSpaceMobile,
+								label: 'imageBottomSpaceMobile',
+							},
+						} }
 						min={ 0 }
 						max={ 50 }
 						unit={ {
 							value: imageBottomSpaceUnit,
 							label: 'imageBottomSpaceUnit',
 						} }
+						setAttributes={ setAttributes }
 					/>
 				}
 			</UAGAdvancedPanelBody>
@@ -1747,7 +1833,7 @@ const UAGBPostMasonry = ( props ) => {
 						label: 'titleDecoration',
 					} }
 				/>
-				<Range
+				{/* <Range
 					label={ __(
 						'Bottom Spacing',
 						'ultimate-addons-for-gutenberg'
@@ -1763,6 +1849,30 @@ const UAGBPostMasonry = ( props ) => {
 						value: titleBottomSpaceUnit,
 						label: 'titleBottomSpaceUnit',
 					} }
+				/> */}
+				<ResponsiveSlider
+					label={ __( 'Bottom Spacing', 'ultimate-addons-for-gutenberg' ) }
+					data={ {
+						desktop: {
+							value: titleBottomSpace,
+							label: 'titleBottomSpace',
+						},
+						tablet: {
+							value: titleBottomSpaceTablet,
+							label: 'titleBottomSpaceTablet',
+						},
+						mobile: {
+							value: titleBottomSpaceMobile,
+							label: 'titleBottomSpaceMobile',
+						},
+					} }
+					min={ 0 }
+					max={ 50 }
+					unit={ {
+						value: titleBottomSpaceUnit,
+						label: 'titleBottomSpaceUnit',
+					} }
+					setAttributes={ setAttributes }
 				/>
 
 			</UAGAdvancedPanelBody>
@@ -1864,7 +1974,7 @@ const UAGBPostMasonry = ( props ) => {
 					} }
 				/>
 
-				<Range
+				{/* <Range
 					label={ __(
 						'Bottom Spacing',
 						'ultimate-addons-for-gutenberg'
@@ -1880,6 +1990,30 @@ const UAGBPostMasonry = ( props ) => {
 						value: metaBottomSpaceUnit,
 						label: 'metaBottomSpaceUnit',
 					} }
+				/> */}
+				<ResponsiveSlider
+					label={ __( 'Bottom Spacing', 'ultimate-addons-for-gutenberg' ) }
+					data={ {
+						desktop: {
+							value: metaBottomSpace,
+							label: 'metaBottomSpace',
+						},
+						tablet: {
+							value: metaBottomSpaceTablet,
+							label: 'metaBottomSpaceTablet',
+						},
+						mobile: {
+							value: metaBottomSpaceMobile,
+							label: 'metaBottomSpaceMobile',
+						},
+					} }
+					min={ 0 }
+					max={ 50 }
+					unit={ {
+						value: metaBottomSpaceUnit,
+						label: 'metaBottomSpaceUnit',
+					} }
+					setAttributes={ setAttributes }
 				/>
 			</UAGAdvancedPanelBody>
 		);
@@ -1961,7 +2095,7 @@ const UAGBPostMasonry = ( props ) => {
 						label: 'excerptDecoration',
 					} }
 				/>
-				<Range
+				{/* <Range
 					label={ __(
 						'Bottom Spacing',
 						'ultimate-addons-for-gutenberg'
@@ -1977,6 +2111,30 @@ const UAGBPostMasonry = ( props ) => {
 						value: excerptBottomSpaceUnit,
 						label: 'excerptBottomSpaceUnit',
 					} }
+				/> */}
+				<ResponsiveSlider
+					label={ __( 'Bottom Spacing', 'ultimate-addons-for-gutenberg' ) }
+					data={ {
+						desktop: {
+							value: excerptBottomSpace,
+							label: 'excerptBottomSpace',
+						},
+						tablet: {
+							value: excerptBottomSpaceTablet,
+							label: 'excerptBottomSpaceTablet',
+						},
+						mobile: {
+							value: excerptBottomSpaceMobile,
+							label: 'excerptBottomSpaceMobile',
+						},
+					} }
+					min={ 0 }
+					max={ 50 }
+					unit={ {
+						value: excerptBottomSpaceUnit,
+						label: 'excerptBottomSpaceUnit',
+					} }
+					setAttributes={ setAttributes }
 				/>
 			</UAGAdvancedPanelBody>
 		);
@@ -2121,7 +2279,7 @@ const UAGBPostMasonry = ( props ) => {
 						label: 'ctaDecoration',
 					} }
 				/>
-				<Range
+				{/* <Range
 					label={ __(
 						'Bottom Spacing',
 						'ultimate-addons-for-gutenberg'
@@ -2137,6 +2295,30 @@ const UAGBPostMasonry = ( props ) => {
 						value: ctaBottomSpaceUnit,
 						label: 'ctaBottomSpaceUnit',
 					} }
+				/> */}
+				<ResponsiveSlider
+					label={ __( 'Bottom Spacing', 'ultimate-addons-for-gutenberg' ) }
+					data={ {
+						desktop: {
+							value: ctaBottomSpace,
+							label: 'ctaBottomSpace',
+						},
+						tablet: {
+							value: ctaBottomSpaceTablet,
+							label: 'ctaBottomSpaceTablet',
+						},
+						mobile: {
+							value: ctaBottomSpaceMobile,
+							label: 'ctaBottomSpaceMobile',
+						},
+					} }
+					min={ 0 }
+					max={ 300 }
+					unit={ {
+						value: ctaBottomSpaceUnit,
+						label: 'ctaBottomSpaceUnit',
+					} }
+					setAttributes={ setAttributes }
 				/>
 				<Border
 					disabledBorderTitle= {false}

@@ -36,11 +36,39 @@ const attributes = {
 			styleType: 'row-gap'
 		},
 	},
+	rowsGapTablet: {
+		type: 'number',
+		default: 10,
+		UAGCopyPaste: {
+			styleType: 'row-gap-tablet'
+		},
+	},
+	rowsGapMobile: {
+		type: 'number',
+		default: 10,
+		UAGCopyPaste: {
+			styleType: 'row-gap-mobile'
+		},
+	},
 	columnsGap: {
 		type: 'number',
 		default: 10,
 		UAGCopyPaste: {
 			styleType: 'column-gap'
+		},
+	},
+	columnsGapTablet: {
+		type: 'number',
+		default: 10,
+		UAGCopyPaste: {
+			styleType: 'column-gap-tablet'
+		},
+	},
+	columnsGapMobile: {
+		type: 'number',
+		default: 10,
+		UAGCopyPaste: {
+			styleType: 'column-gap-mobile'
 		},
 	},
 	boxBgColor: {
@@ -309,6 +337,20 @@ const attributes = {
 		default: 10,
 		UAGCopyPaste: {
 			styleType: 'icon-spacing'
+		},
+	},
+	gapBtwIconQUestionTablet: {
+		type: 'number',
+		default: 10,
+		UAGCopyPaste: {
+			styleType: 'icon-spacing-tablet'
+		},
+	},
+	gapBtwIconQUestionMobile: {
+		type: 'number',
+		default: 10,
+		UAGCopyPaste: {
+			styleType: 'icon-spacing-mobile'
 		},
 	},
 	questionloadGoogleFonts: {

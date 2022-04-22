@@ -128,6 +128,9 @@ if ( $attr['disableBullets'] ) {
 }
 
 $m_selectors = array(
+	' .uagb-toc__title'                                   => array(
+		'margin-bottom' => UAGB_Helper::get_css_value( $attr['headingBottomMobile'], 'px' ),
+	),
 	' .uagb-toc__wrap'                                    => array(
 		'width'          => UAGB_Helper::get_css_value( $attr['widthMobile'], $attr['widthTypeMobile'] ),
 		'padding-left'   => UAGB_Helper::get_css_value( $mobile_left_padding, $attr['paddingTypeMobile'] ),
@@ -154,6 +157,9 @@ $m_selectors = array(
 );
 
 $t_selectors = array(
+	' .uagb-toc__title'                                   => array(
+		'margin-bottom' => UAGB_Helper::get_css_value( $attr['headingBottomTablet'], 'px' ),
+	),
 	' .uagb-toc__wrap'                                    => array(
 		'width'          => UAGB_Helper::get_css_value( $attr['widthTablet'], $attr['widthTypeTablet'] ),
 		'padding-left'   => UAGB_Helper::get_css_value( $tablet_left_padding, $attr['paddingTypeTablet'] ),

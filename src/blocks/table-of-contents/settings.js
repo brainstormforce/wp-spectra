@@ -84,6 +84,8 @@ const Settings = ( props ) => {
 		marginLink,
 		paddingLink,
 		headingBottom,
+		headingBottomTablet,
+		headingBottomMobile,
 		contentPaddingDesktop,
 		contentPaddingTablet,
 		contentPaddingMobile,
@@ -354,7 +356,7 @@ const Settings = ( props ) => {
 						label: 'headingLineHeightTablet',
 					} }
 				/>
-				<Range
+				{/* <Range
 					label={ __(
 						'Bottom Spacing',
 						'ultimate-addons-for-gutenberg'
@@ -367,6 +369,27 @@ const Settings = ( props ) => {
 					min={ 0 }
 					max={ 50 }
 					displayUnit={ false }
+				/> */}
+				<ResponsiveSlider
+					label={ __( 'Bottom Spacing', 'ultimate-addons-for-gutenberg' ) }
+					data={ {
+						desktop: {
+							value: headingBottom,
+							label: 'headingBottom',
+						},
+						tablet: {
+							value: headingBottomTablet,
+							label: 'headingBottomTablet',
+						},
+						mobile: {
+							value: headingBottomMobile,
+							label: 'headingBottomMobile',
+						},
+					} }
+					min={ 0 }
+					max={ 50 }
+					displayUnit={ false }
+					setAttributes={ setAttributes }
 				/>
 			</UAGAdvancedPanelBody>
 		);
