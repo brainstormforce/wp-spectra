@@ -832,10 +832,6 @@ const attributes = {
 			styleType: 'btn-icon-space'
 		}
 	},
-	gap: {
-		type: 'number',
-		default: 10,
-	},
 	isPreview: {
 		type: 'boolean',
 		default: false,

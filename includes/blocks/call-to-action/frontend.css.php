@@ -286,7 +286,7 @@ $m_selectors['.uagb-cta__content-stacked-mobile .uagb-cta__wrap']               
 );
 if ( 'desktop' === $attr['stackBtn'] ) {
 
-	$selectors[' .uagb-cta__buttons ']   = array(
+	$selectors[' .uagb-cta__buttons']    = array(
 		'flex-direction' => 'column',
 		'row-gap'        => UAGB_Helper::get_css_value( $attr['gapBtn'], 'px' ),
 	);
@@ -325,13 +325,13 @@ if ( 'desktop' === $attr['stackBtn'] ) {
 	);
 
 } elseif ( 'none' === $attr['stackBtn'] ) {
-	$selectors[' .uagb-buttons__wrap ']  = array(
+	$selectors[' .uagb-cta__buttons']   = array(
 		'column-gap' => UAGB_Helper::get_css_value( $attr['gapBtn'], 'px' ),
 	);
-	$t_selectors[' .uagb-buttons__wrap'] = array(
+	$t_selectors[' .uagb-cta__buttons'] = array(
 		'column-gap' => UAGB_Helper::get_css_value( $attr['gapBtnTablet'], 'px' ),
 	);
-	$m_selectors[' .uagb-buttons__wrap'] = array(
+	$m_selectors[' .uagb-cta__buttons'] = array(
 		'column-gap' => UAGB_Helper::get_css_value( $attr['gapBtnMobile'], 'px' ),
 	);
 }

@@ -118,7 +118,6 @@ function CtaStyle( props ) {
 		secondCtaBackground,
 		secondCtaHoverColor,
 		secondCtaHoverBackground,
-		gap,
 		stackBtn,
 		gapBtn,
 		gapBtnTablet,
@@ -233,7 +232,6 @@ function CtaStyle( props ) {
 		'padding-bottom': generateCSSUnit( secondCtaBottomPadding, secondCtaPaddingUnit ),
 		'padding-left': generateCSSUnit( secondCtaLeftPadding, secondCtaPaddingUnit ),
 		'padding-right': generateCSSUnit( secondCtaRightPadding, secondCtaPaddingUnit ),
-		'margin-left': generateCSSUnit( gap, 'px' ),
 		'align-self': 'top' === buttonAlign ? 'flex-start' : 'center',
 		'height' : 'fit-content',
 	};
@@ -520,54 +518,54 @@ function CtaStyle( props ) {
 		};
 	}
 	if ( 'desktop' === stackBtn ) {
-		selectors[ '.uagb-editor-preview-mode-desktop .uagb-cta__buttons' ] = {
+		selectors[ ' .uagb-cta__buttons' ] = {
 			'flex-direction': 'column',
 			'row-gap': generateCSSUnit( gapBtn, 'px' ),
 		};
-		tabletSelectors[ '.uagb-editor-preview-mode-tablet .uagb-cta__buttons' ] = {
+		tabletSelectors[ ' .uagb-cta__buttons' ] = {
 			'flex-direction': 'column',
 			'row-gap': generateCSSUnit( gapBtnTablet, 'px' )
 		};
-		mobileSelectors[ '.uagb-editor-preview-mode-mobile .uagb-cta__buttons' ] = {
+		mobileSelectors[ ' .uagb-cta__buttons' ] = {
 			'flex-direction': 'column',
 			'row-gap': generateCSSUnit( gapBtnMobile, 'px' )
 		};
 	} else if ( 'tablet' === stackBtn ) {
-		selectors[ '.uagb-editor-preview-mode-desktop .uagb-cta__buttons' ] = {
+		selectors[ ' .uagb-cta__buttons' ] = {
 			'column-gap': generateCSSUnit( gapBtn , 'px' ),
 			'align-items': 'center'
 		};
-		tabletSelectors['.uagb-editor-preview-mode-tablet .uagb-cta__buttons'] = {
+		tabletSelectors[' .uagb-cta__buttons'] = {
 			'flex-direction': 'column',
 			'row-gap': generateCSSUnit( gapBtnTablet, 'px' ),
 		};
-		mobileSelectors['.uagb-editor-preview-mode-mobile .uagb-cta__buttons'] = {
+		mobileSelectors[' .uagb-cta__buttons'] = {
 			'flex-direction': 'column',
 			'row-gap': generateCSSUnit( gapBtnMobile, 'px' ),
 		};
 
 	} else if ( 'mobile' === stackBtn ) {
-		selectors[ '.uagb-editor-preview-mode-desktop .uagb-cta__buttons' ] = {
+		selectors[ ' .uagb-cta__buttons' ] = {
 			'column-gap': generateCSSUnit( gapBtn , 'px' ),
 			'align-items': 'center'
 		};
-		tabletSelectors[ '.uagb-editor-preview-mode-tablet .uagb-cta__buttons' ] = {
+		tabletSelectors[ ' .uagb-cta__buttons' ] = {
 			'column-gap': generateCSSUnit( gapBtnTablet , 'px' ),
 			'align-items': 'center'
 		};
-		mobileSelectors['.uagb-editor-preview-mode-mobile .uagb-cta__buttons'] = {
+		mobileSelectors[' .uagb-cta__buttons'] = {
 			'flex-direction': 'column',
 			'row-gap': generateCSSUnit( gapBtnMobile, 'px' ),
 		};
 	} else if ( 'none' === stackBtn ) {
-		selectors[ '.uagb-editor-preview-mode-desktop .uagb-cta__buttons' ] = {
+		selectors[ ' .uagb-cta__buttons' ] = {
 			'column-gap': generateCSSUnit( gapBtn , 'px' ),
 			'align-items': 'center'
 		};
-		tabletSelectors[ '.uagb-editor-preview-mode-tablet .uagb-cta__buttons' ] = {
+		tabletSelectors[ ' .uagb-cta__buttons' ] = {
 			'column-gap': generateCSSUnit( gapBtnTablet , 'px' ),
 		};
-		mobileSelectors['.uagb-editor-preview-mode-mobile .uagb-cta__buttons'] = {
+		mobileSelectors[' .uagb-cta__buttons'] = {
 			'column-gap': generateCSSUnit( gapBtnMobile, 'px' ),
 		};
 	}

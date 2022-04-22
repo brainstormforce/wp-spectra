@@ -160,7 +160,6 @@ const Settings = ( props ) => {
 		secondCtaIcon,
 		secondCtaIconPosition,
 		secondCtaIconSpace,
-		gap,
 		stackBtn,
 		gapBtn,
 		gapBtnTablet,
