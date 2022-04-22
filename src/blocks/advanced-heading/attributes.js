@@ -666,6 +666,74 @@ const attributes = {
 			styleType: 'main-title-letter-spacing-type'
 		}
 	},
+	highLightTopPadding : {
+		type: 'number',
+		isUAGStyle: true,
+	},
+	highLightRightPadding : {
+		type: 'number',
+		isUAGStyle: true,
+	},
+	highLightLeftPadding : {
+		type: 'number',
+		isUAGStyle: true,
+	},
+	highLightBottomPadding : {
+		type: 'number',
+		isUAGStyle: true,
+	},
+	highLightTopPaddingTablet: {
+		type: 'number',
+		isUAGStyle: true,
+	},
+	highLightRightPaddingTablet: {
+		type: 'number',
+		isUAGStyle: true,
+	},
+	highLightLeftPaddingTablet: {
+		type: 'number',
+		isUAGStyle: true,
+	},
+	highLightBottomPaddingTablet: {
+		type: 'number',
+		isUAGStyle: true,
+	},
+	highLightTopPaddingMobile: {
+		type: 'number',
+		isUAGStyle: true,
+	},
+	highLightRightPaddingMobile: {
+		type: 'number',
+		isUAGStyle: true,
+	},
+	highLightLeftPaddingMobile: {
+		type: 'number',
+		isUAGStyle: true,
+	},
+	highLightBottomPaddingMobile: {
+		type: 'number',
+		isUAGStyle: true,
+	},
+	highLightPaddingUnit : {
+		type: 'string',
+		default: 'px',
+		isUAGStyle: true,
+	},
+	highLightPaddingUnitTablet: {
+		type: 'string',
+		default: 'px',
+		isUAGStyle: true,
+	},
+	highLightPaddingUnitMobile : {
+		type: 'string',
+		default: 'px',
+		isUAGStyle: true,
+	},
+	highLightPaddingLink: {
+		type: 'boolean',
+		default: false,
+		isUAGStyle: true,
+	},
 };
 
 export default attributes;

@@ -122,6 +122,22 @@ function styling( props ) {
 		highLightLetterSpacingTablet,
 		highLightLetterSpacingMobile,
 		highLightLetterSpacingType,
+		highLightTopPadding,
+		highLightRightPadding,
+		highLightLeftPadding,
+		highLightBottomPadding,
+		highLightTopPaddingTablet,
+		highLightRightPaddingTablet,
+		highLightLeftPaddingTablet,
+		highLightBottomPaddingTablet,
+		highLightTopPaddingMobile,
+		highLightRightPaddingMobile,
+		highLightLeftPaddingMobile,
+		highLightBottomPaddingMobile,
+		highLightPaddingUnit,
+		highLightPaddingUnitTablet,
+		highLightPaddingUnitMobile,
+		highLightPaddingLink,
 	} = props.attributes;
 
 	const tablet_selectors = {};
@@ -202,6 +218,22 @@ function styling( props ) {
 			'border-width': generateCSSUnit( highLightBorderWidth, 'px' ),
 			'border-color': highLightBorderColor,
 			'border-radius': generateCSSUnit( highLightBorderRadius, 'px' ),
+			'padding-top': generateCSSUnit(
+				highLightTopPadding,
+				highLightPaddingUnit
+			),
+			'padding-right': generateCSSUnit(
+				highLightRightPadding,
+				highLightPaddingUnit
+			),
+			'padding-bottom': generateCSSUnit(
+				highLightBottomPadding,
+				highLightPaddingUnit
+			),
+			'padding-left': generateCSSUnit(
+				highLightLeftPadding,
+				highLightPaddingUnit
+			),
 		},
 		'.wp-block-uagb-advanced-heading .uagb-highlight:hover': {
 			'border-color': highLightBorderHColor,
@@ -309,6 +341,22 @@ function styling( props ) {
 			highLightLineHeightType
 		),
 		'letter-spacing': generateCSSUnit( highLightLetterSpacingTablet, highLightLetterSpacingType ),
+		'padding-top': generateCSSUnit(
+			highLightTopPaddingTablet,
+			highLightPaddingUnitTablet
+		),
+		'padding-right': generateCSSUnit(
+			highLightRightPaddingTablet,
+			highLightPaddingUnitTablet
+		),
+		'padding-bottom': generateCSSUnit(
+			highLightBottomPaddingTablet,
+			highLightPaddingUnitTablet
+		),
+		'padding-left': generateCSSUnit(
+			highLightLeftPaddingTablet,
+			highLightPaddingUnitTablet
+		),
 	};
 	// mobile
 	mobile_selectors['.wp-block-uagb-advanced-heading '] = {
@@ -374,6 +422,22 @@ function styling( props ) {
 			highLightLineHeightType
 		),
 		'letter-spacing': generateCSSUnit( highLightLetterSpacingMobile, highLightLetterSpacingType ),
+		'padding-top': generateCSSUnit(
+			highLightTopPaddingMobile,
+			highLightPaddingUnitMobile
+		),
+		'padding-right': generateCSSUnit(
+			highLightRightPaddingMobile,
+			highLightPaddingUnitMobile
+		),
+		'padding-bottom': generateCSSUnit(
+			highLightBottomPaddingMobile,
+			highLightPaddingUnitMobile
+		),
+		'padding-left': generateCSSUnit(
+			highLightLeftPaddingMobile,
+			highLightPaddingUnitMobile
+		),
 	};
 
 	const base_selector = `.editor-styles-wrapper .uagb-block-${ props.clientId.substr(

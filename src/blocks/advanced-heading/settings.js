@@ -154,6 +154,22 @@ const Settings = ( props ) => {
 		highLightLetterSpacingTablet,
 		highLightLetterSpacingMobile,
 		highLightLetterSpacingType,
+		highLightTopPadding,
+		highLightRightPadding,
+		highLightLeftPadding,
+		highLightBottomPadding,
+		highLightTopPaddingTablet,
+		highLightRightPaddingTablet,
+		highLightLeftPaddingTablet,
+		highLightBottomPaddingTablet,
+		highLightTopPaddingMobile,
+		highLightRightPaddingMobile,
+		highLightLeftPaddingMobile,
+		highLightBottomPaddingMobile,
+		highLightPaddingUnit,
+		highLightPaddingUnitTablet,
+		highLightPaddingUnitMobile,
+		highLightPaddingLink,
 	} = attributes;
 
 	let loadHeadingGoogleFonts;
@@ -1005,6 +1021,79 @@ const Settings = ( props ) => {
 						} }
 					/>
 				</Suspense>
+				<SpacingControl
+					label={ __(
+						'Padding',
+						'ultimate-addons-for-gutenberg'
+					) }
+					valueTop={ {
+						value: highLightTopPadding,
+						label: 'highLightTopPadding',
+					} }
+					valueRight={ {
+						value: highLightRightPadding,
+						label: 'highLightRightPadding',
+					} }
+					valueBottom={ {
+						value: highLightBottomPadding,
+						label: 'highLightBottomPadding',
+					} }
+					valueLeft={ {
+						value: highLightLeftPadding,
+						label: 'highLightLeftPadding',
+					} }
+					valueTopTablet={ {
+						value: highLightTopPaddingTablet,
+						label: 'highLightTopPaddingTablet',
+					} }
+					valueRightTablet={ {
+						value: highLightRightPaddingTablet,
+						label: 'highLightRightPaddingTablet',
+					} }
+					valueBottomTablet={ {
+						value: highLightBottomPaddingTablet,
+						label: 'highLightBottomPaddingTablet',
+					} }
+					valueLeftTablet={ {
+						value: highLightLeftPaddingTablet,
+						label: 'highLightLeftPaddingTablet',
+					} }
+					valueTopMobile={ {
+						value: highLightTopPaddingMobile,
+						label: 'highLightTopPaddingMobile',
+					} }
+					valueRightMobile={ {
+						value: highLightRightPaddingMobile,
+						label: 'highLightRightPaddingMobile',
+					} }
+					valueBottomMobile={ {
+						value: highLightBottomPaddingMobile,
+						label: 'highLightBottomPaddingMobile',
+					} }
+					valueLeftMobile={ {
+						value: highLightLeftPaddingMobile,
+						label: 'highLightLeftPaddingMobile',
+					} }
+					unit={ {
+						value: highLightPaddingUnit,
+						label: 'highLightPaddingUnit',
+					} }
+					mUnit={ {
+						value: highLightPaddingUnitMobile,
+						label: 'highLightPaddingUnitMobile',
+					} }
+					tUnit={ {
+						value: highLightPaddingUnitTablet,
+						label: 'highLightPaddingUnitTablet',
+					} }
+					deviceType={ deviceType }
+					attributes={ attributes }
+					setAttributes={ setAttributes }
+					link={ {
+						value: highLightPaddingLink,
+						label: 'highLightPaddingLink',
+					} }
+				/>
 				<Border
 					setAttributes={ setAttributes }
 					borderStyle={ {
