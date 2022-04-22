@@ -46,6 +46,8 @@ function styling( props ) {
 		timeSpace,
 		costSpace,
 		row_gap,
+		rowGapTablet,
+		rowGapMobile,
 		step_gap,
 		priceFontStyle,
 		priceTransform,
@@ -463,6 +465,37 @@ function styling( props ) {
 				priceLineHeightType
 			),
 		},
+		'.uagb-how-to-main-wrap p': {
+			'margin-bottom': generateCSSUnit( rowGapMobile, 'px' ),
+		},
+		'.uagb-how-to-main-wrap .uagb-how-to-tools__wrap': {
+			'margin-bottom': generateCSSUnit( rowGapMobile, 'px' ),
+		},
+		'.uagb-how-to-main-wrap .uagb-howto__source-image': {
+			'margin-bottom': generateCSSUnit( rowGapMobile, 'px' ),
+		},
+		'.uagb-how-to-main-wrap span.uagb-howto__time-wrap': {
+			'margin-bottom': generateCSSUnit( rowGapMobile, 'px' ),
+		},
+
+		'.uagb-how-to-main-wrap span.uagb-howto__cost-wrap': {
+			'margin-bottom': generateCSSUnit( rowGapMobile, 'px' ),
+		},
+
+		' .uagb-how-to-tools .uagb-how-to-tools-child__wrapper:last-child': {
+			'margin-bottom': generateCSSUnit( rowGapMobile, 'px' ),
+		},
+
+		'.uagb-how-to-main-wrap .uagb-how-to-materials-child__wrapper:last-child': {
+			'margin-bottom': generateCSSUnit( rowGapMobile, 'px' ),
+		},
+		' h4.uagb-howto-req-steps-text': {
+			'margin-top': generateCSSUnit( rowGapMobile, 'px' ),
+			'margin-bottom': generateCSSUnit( rowGapMobile, 'px' ),
+		},
+		' h4.uagb-howto-req-materials-text': {
+			'margin-top': generateCSSUnit( rowGapMobile, 'px' ),
+		},
 	};
 
 	tabletSelectors = {
@@ -585,6 +618,37 @@ function styling( props ) {
 				priceLineHeightTablet,
 				priceLineHeightType
 			),
+		},
+		'.uagb-how-to-main-wrap p': {
+			'margin-bottom': generateCSSUnit( rowGapTablet, 'px' ),
+		},
+		'.uagb-how-to-main-wrap .uagb-how-to-tools__wrap': {
+			'margin-bottom': generateCSSUnit( rowGapTablet, 'px' ),
+		},
+		'.uagb-how-to-main-wrap .uagb-howto__source-image': {
+			'margin-bottom': generateCSSUnit( rowGapTablet, 'px' ),
+		},
+		'.uagb-how-to-main-wrap span.uagb-howto__time-wrap': {
+			'margin-bottom': generateCSSUnit( rowGapTablet, 'px' ),
+		},
+
+		'.uagb-how-to-main-wrap span.uagb-howto__cost-wrap': {
+			'margin-bottom': generateCSSUnit( rowGapTablet, 'px' ),
+		},
+
+		' .uagb-how-to-tools .uagb-how-to-tools-child__wrapper:last-child': {
+			'margin-bottom': generateCSSUnit( rowGapTablet, 'px' ),
+		},
+
+		'.uagb-how-to-main-wrap .uagb-how-to-materials-child__wrapper:last-child': {
+			'margin-bottom': generateCSSUnit( rowGapTablet, 'px' ),
+		},
+		' h4.uagb-howto-req-steps-text': {
+			'margin-top': generateCSSUnit( rowGapTablet, 'px' ),
+			'margin-bottom': generateCSSUnit( rowGapTablet, 'px' ),
+		},
+		' h4.uagb-howto-req-materials-text': {
+			'margin-top': generateCSSUnit( rowGapTablet, 'px' ),
 		},
 	};
 

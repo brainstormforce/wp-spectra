@@ -336,6 +336,20 @@ const attributes = {
 			styleType: 'main-title-bottom-margin'
 		},
 	},
+	headSpaceTablet: {
+		type: 'number',
+		default: 0,
+		UAGCopyPaste: {
+			styleType: 'main-title-bottom-margin'
+		},
+	},
+	headSpaceMobile: {
+		type: 'number',
+		default: 0,
+		UAGCopyPaste: {
+			styleType: 'main-title-bottom-margin'
+		},
+	},
 	separatorwidth: {
 		type: 'number',
 		UAGCopyPaste: {
@@ -487,6 +501,20 @@ const attributes = {
 		},
 		default: 5,
 	},
+	dateBottomspaceTablet         : {
+		type    : 'number',
+		default : 0,
+		UAGCopyPaste: {
+			styleType: 'date-bottom-space'
+		},
+	},
+	dateBottomspaceMobile         : {
+		type    : 'number',
+		default : 0,
+		UAGCopyPaste: {
+			styleType: 'date-bottom-space'
+		},
+	},
 	block_id: {
 		type: 'string',
 		default: '0',
@@ -502,6 +530,20 @@ const attributes = {
 	borderRadius: {
 		type: 'number',
 		default: 2,
+		UAGCopyPaste: {
+			styleType: 'overall-border-radius'
+		},
+	},
+	borderRadiusTablet            : {
+		type    : 'number',
+		default : 0,
+		UAGCopyPaste: {
+			styleType: 'overall-border-radius'
+		},
+	},
+	borderRadiusMobile            : {
+		type    : 'number',
+		default : 0,
 		UAGCopyPaste: {
 			styleType: 'overall-border-radius'
 		},

@@ -15,7 +15,11 @@ function styling( props ) {
 		titleColor,
 		countColor,
 		rowGap,
+		rowGapTablet,
+		rowGapMobile,
 		columnGap,
+		columnGapTablet,
+		columnGapMobile,
 		contentTopPadding,
 		contentRightPadding,
 		contentBottomPadding,
@@ -32,6 +36,8 @@ function styling( props ) {
 		mobileContentPaddingUnit,
 		tabletContentPaddingUnit,
 		titleBottomSpace,
+		titleBottomSpaceTablet,
+		titleBottomSpaceMobile,
 		alignment,
 		listStyle,
 		seperatorStyle,
@@ -342,6 +348,8 @@ function styling( props ) {
 	mobileSelectors = {
 		'.uagb-taxonomy__outer-wrap.uagb-layout-grid': {
 			'grid-template-columns': 'repeat(' + mcolumns + ', 1fr)',
+			'grid-column-gap': generateCSSUnit( columnGapMobile , 'px' ),
+			'grid-row-gap': generateCSSUnit( rowGapMobile , 'px' ),
 		},
 		'.uagb-layout-grid .uagb-taxomony-box': {
 			'padding-top': generateCSSUnit(
@@ -370,6 +378,7 @@ function styling( props ) {
 				titleLineHeightMobile,
 				titleLineHeightType
 			),
+			'margin-bottom': generateCSSUnit( titleBottomSpaceMobile, 'px' ),
 		},
 		'.uagb-layout-grid .uagb-tax-link': {
 			'font-size': generateCSSUnit(
@@ -449,6 +458,8 @@ function styling( props ) {
 	tabletSelectors = {
 		'.uagb-taxonomy__outer-wrap.uagb-layout-grid': {
 			'grid-template-columns': 'repeat(' + tcolumns + ', 1fr)',
+			'grid-column-gap': generateCSSUnit( columnGapTablet , 'px' ),
+			'grid-row-gap': generateCSSUnit( rowGapTablet , 'px' ),
 		},
 		'.uagb-layout-grid .uagb-taxomony-box': {
 			'padding-top': generateCSSUnit(
@@ -477,6 +488,8 @@ function styling( props ) {
 				titleLineHeightTablet,
 				titleLineHeightType
 			),
+
+			'margin-bottom': generateCSSUnit( titleBottomSpaceTablet, 'px' ),
 		},
 		'.uagb-layout-grid .uagb-tax-link': {
 			'font-size': generateCSSUnit(

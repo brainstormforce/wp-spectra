@@ -28,7 +28,11 @@ function styling( props ) {
 		buttonBorderColor,
 		buttonBorderHoverColor,
 		fieldSpacing,
+		fieldSpacingTablet,
+		fieldSpacingMobile,
 		fieldLabelSpacing,
+		fieldLabelSpacingTablet,
+		fieldLabelSpacingMobile,
 		labelFontSize,
 		labelFontSizeType,
 		labelFontSizeTablet,
@@ -60,11 +64,15 @@ function styling( props ) {
 		buttonLineHeightTablet,
 		buttonLineHeightMobile,
 		radioCheckSize,
+		radioCheckSizeTablet,
+		radioCheckSizeMobile,
 		radioCheckBgColor,
 		radioCheckSelectColor,
 		radioCheckLableColor,
 		radioCheckBorderColor,
 		radioCheckBorderWidth,
+		radioCheckBorderWidthTablet,
+		radioCheckBorderWidthMobile,
 		radioCheckBorderRadius,
 		radioCheckFontSize,
 		radioCheckFontSizeType,
@@ -544,7 +552,25 @@ function styling( props ) {
 		),
 	};
 	const tabletSelectors = {
-		' .wpcf7 input:not([type=submit])': {
+		" .uagb-cf7-styler__check-style-enabled .wpcf7 .wpcf7-checkbox input[type='checkbox'] + span:before": {
+			'height': generateCSSUnit( radioCheckSizeTablet, 'px' ),
+			'width': generateCSSUnit( radioCheckSizeTablet, 'px' ),
+			'font-size': 'calc( ' + radioCheckSizeTablet + 'px / 1.2 )',
+			'border-width': generateCSSUnit( radioCheckBorderWidthTablet, 'px' ),
+		},
+		" .uagb-cf7-styler__check-style-enabled .wpcf7 .wpcf7-acceptance input[type='checkbox'] + span:before": {
+					'height': generateCSSUnit( radioCheckSizeTablet, 'px' ),
+					'width': generateCSSUnit( radioCheckSizeTablet, 'px' ),
+					'font-size': 'calc( ' + radioCheckSizeTablet + 'px / 1.2 )',
+					'border-width': generateCSSUnit( radioCheckBorderWidthTablet, 'px' ),
+				},
+		" .uagb-cf7-styler__check-style-enabled .wpcf7 input[type='radio'] + span:before": {
+					'height': generateCSSUnit( radioCheckSizeTablet, 'px' ),
+					'width': generateCSSUnit( radioCheckSizeTablet, 'px' ),
+					'font-size': 'calc( ' + radioCheckSizeTablet + 'px / 1.2 )',
+					'border-width': generateCSSUnit( radioCheckBorderWidthTablet, 'px' ),
+				},
+		' .uagb-cf7-styler__check-style-enabled .wpcf7 input:not([type=submit])': {
 			'font-size': generateCSSUnit(
 				inputFontSizeTablet,
 				inputFontSizeType
@@ -553,6 +579,8 @@ function styling( props ) {
 				inputLineHeightTablet,
 				inputLineHeightType
 			),
+			'margin-top': generateCSSUnit( fieldLabelSpacingTablet, 'px' ),
+			'margin-bottom': generateCSSUnit( fieldSpacingTablet, 'px' ),
 		},
 		' .wpcf7 select': {
 			'font-size': generateCSSUnit(
@@ -667,7 +695,25 @@ function styling( props ) {
 		),
 	};
 	const mobileSelectors = {
-		' .wpcf7 input:not([type=submit])': {
+		" .uagb-cf7-styler__check-style-enabled .wpcf7 .wpcf7-checkbox input[type='checkbox'] + span:before": {
+			'height': generateCSSUnit( radioCheckSizeMobile, 'px' ),
+			'width': generateCSSUnit( radioCheckSizeMobile, 'px' ),
+			'font-size': 'calc( ' + radioCheckSizeMobile + 'px / 1.2 )',
+			'border-width': generateCSSUnit( radioCheckBorderWidthMobile, 'px' ),
+		},
+		" .uagb-cf7-styler__check-style-enabled .wpcf7 .wpcf7-acceptance input[type='checkbox'] + span:before": {
+			'height': generateCSSUnit( radioCheckSizeMobile, 'px' ),
+			'width': generateCSSUnit( radioCheckSizeMobile, 'px' ),
+			'font-size': 'calc( ' + radioCheckSizeMobile + 'px / 1.2 )',
+			'border-width': generateCSSUnit( radioCheckBorderWidthMobile, 'px' ),
+		},
+		" .uagb-cf7-styler__check-style-enabled .wpcf7 input[type='radio'] + span:before": {
+			'height': generateCSSUnit( radioCheckSizeMobile, 'px' ),
+			'width': generateCSSUnit( radioCheckSizeMobile, 'px' ),
+			'font-size': 'calc( ' + radioCheckSizeMobile + 'px / 1.2 )',
+			'border-width': generateCSSUnit( radioCheckBorderWidthMobile, 'px' ),
+		},
+		' .uagb-cf7-styler__check-style-enabled .wpcf7 input:not([type=submit])': {
 			'font-size': generateCSSUnit(
 				inputFontSizeMobile,
 				inputFontSizeType
@@ -676,6 +722,8 @@ function styling( props ) {
 				inputLineHeightMobile,
 				inputLineHeightType
 			),
+			'margin-top': generateCSSUnit( fieldLabelSpacingMobile, 'px' ),
+			'margin-bottom': generateCSSUnit( fieldSpacingMobile, 'px' ),
 		},
 		' .wpcf7 select': {
 			'font-size': generateCSSUnit(
@@ -784,7 +832,7 @@ function styling( props ) {
 		`.editor-styles-wrapper .uagb-block-${ props.clientId.substr(
 			0,
 			8
-		) }`,
+		) }.uagb-editor-preview-mode-tablet`,
 		true,
 		'tablet'
 	);
@@ -794,7 +842,7 @@ function styling( props ) {
 		`.editor-styles-wrapper .uagb-block-${ props.clientId.substr(
 			0,
 			8
-		) }`,
+		) }.uagb-editor-preview-mode-mobile`,
 		true,
 		'mobile'
 	);

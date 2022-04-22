@@ -317,9 +317,29 @@ $field_padding_tablet = array(
 	'padding-bottom' => UAGB_Helper::get_css_value( $attr['fieldBottomPaddingTablet'], $attr['fieldPaddingTypeTablet'] ),
 	'padding-left'   => UAGB_Helper::get_css_value( $attr['fieldLeftPaddingTablet'], $attr['fieldPaddingTypeTablet'] ),
 	'padding-right'  => UAGB_Helper::get_css_value( $attr['fieldRightPaddingTablet'], $attr['fieldPaddingTypeTablet'] ),
+	'margin-top'     => UAGB_Helper::get_css_value( $attr['fieldLabelSpacingTablet'], 'px' ),
+	'margin-bottom'  => UAGB_Helper::get_css_value( $attr['fieldSpacingTablet'], 'px' ),
 );
 
 $t_selectors = array(
+	' .uagb-cf7-styler__check-style-enabled .wpcf7 .wpcf7-checkbox input[type="checkbox"] + span:before' => array(
+		'height'       => UAGB_Helper::get_css_value( $attr['radioCheckSizeTablet'], 'px' ),
+		'width'        => UAGB_Helper::get_css_value( $attr['radioCheckSizeTablet'], 'px' ),
+		'font-size'    => 'calc( ' . $attr['radioCheckSizeTablet'] . 'px / 1.2 )',
+		'border-width' => UAGB_Helper::get_css_value( $attr['radioCheckBorderWidthTablet'], 'px' ),
+	),
+	' .uagb-cf7-styler__check-style-enabled .wpcf7 .wpcf7-acceptance input[type="checkbox"] + span:before' => array(
+		'height'       => UAGB_Helper::get_css_value( $attr['radioCheckSizeTablet'], 'px' ),
+		'width'        => UAGB_Helper::get_css_value( $attr['radioCheckSizeTablet'], 'px' ),
+		'font-size'    => 'calc( ' . $attr['radioCheckSizeTablet'] . 'px / 1.2 )',
+		'border-width' => UAGB_Helper::get_css_value( $attr['radioCheckBorderWidthTablet'], 'px' ),
+	),
+	' .uagb-cf7-styler__check-style-enabled .wpcf7 input[type="radio"] + span:before' => array(
+		'height'       => UAGB_Helper::get_css_value( $attr['radioCheckSizeTablet'], 'px' ),
+		'width'        => UAGB_Helper::get_css_value( $attr['radioCheckSizeTablet'], 'px' ),
+		'font-size'    => 'calc( ' . $attr['radioCheckSizeTablet'] . 'px / 1.2 )',
+		'border-width' => UAGB_Helper::get_css_value( $attr['radioCheckBorderWidthTablet'], 'px' ),
+	),
 	' .wpcf7 form.wpcf7-form:not(input)'            => array(
 		'color' => $attr['fieldLabelColor'],
 	),
@@ -335,10 +355,10 @@ $t_selectors = array(
 		'padding-left'   => UAGB_Helper::get_css_value( $attr['buttonLeftPaddingTablet'], $attr['buttonPaddingTypeTablet'] ),
 		'padding-right'  => UAGB_Helper::get_css_value( $attr['buttonRightPaddingTablet'], $attr['buttonPaddingTypeTablet'] ),
 	),
-	' .wpcf7 input:not([type=submit])'              => $field_padding_tablet,
-	' .wpcf7 select.wpcf7-form-control.wpcf7-select:not([multiple="multiple"])' => $field_padding_tablet,
-	' .wpcf7 select.wpcf7-select[multiple="multiple"] option' => $field_padding_tablet,
-	' .wpcf7 textarea'                              => $field_padding_tablet,
+	' .uagb-cf7-styler__check-style-enabled .wpcf7 input:not([type=submit])' => $field_padding_tablet,
+	' .uagb-cf7-styler__check-style-enabled .wpcf7 select.wpcf7-form-control.wpcf7-select:not([multiple="multiple"])' => $field_padding_tablet,
+	' .uagb-cf7-styler__check-style-enabled .wpcf7 select.wpcf7-select[multiple="multiple"] option' => $field_padding_tablet,
+	' .uagb-cf7-styler__check-style-enabled .wpcf7 textarea' => $field_padding_tablet,
 );
 
 $field_padding_mobile = array(
@@ -346,9 +366,29 @@ $field_padding_mobile = array(
 	'padding-bottom' => UAGB_Helper::get_css_value( $attr['fieldBottomPaddingMobile'], $attr['fieldPaddingTypeMobile'] ),
 	'padding-left'   => UAGB_Helper::get_css_value( $attr['fieldLeftPaddingMobile'], $attr['fieldPaddingTypeMobile'] ),
 	'padding-right'  => UAGB_Helper::get_css_value( $attr['fieldRightPaddingMobile'], $attr['fieldPaddingTypeMobile'] ),
+	'margin-top'     => UAGB_Helper::get_css_value( $attr['fieldLabelSpacingMobile'], 'px' ),
+	'margin-bottom'  => UAGB_Helper::get_css_value( $attr['fieldSpacingMobile'], 'px' ),
 );
 
 $m_selectors = array(
+	' .uagb-cf7-styler__check-style-enabled .wpcf7 .wpcf7-checkbox input[type="checkbox"] + span:before' => array(
+		'height'       => UAGB_Helper::get_css_value( $attr['radioCheckSizeTablet'], 'px' ),
+		'width'        => UAGB_Helper::get_css_value( $attr['radioCheckSizeTablet'], 'px' ),
+		'font-size'    => 'calc( ' . $attr['radioCheckSizeTablet'] . 'px / 1.2 )',
+		'border-width' => UAGB_Helper::get_css_value( $attr['radioCheckBorderWidthTablet'], 'px' ),
+	),
+	' .uagb-cf7-styler__check-style-enabled .wpcf7 .wpcf7-acceptance input[type="checkbox"] + span:before' => array(
+		'height'       => UAGB_Helper::get_css_value( $attr['radioCheckSizeTablet'], 'px' ),
+		'width'        => UAGB_Helper::get_css_value( $attr['radioCheckSizeTablet'], 'px' ),
+		'font-size'    => 'calc( ' . $attr['radioCheckSizeTablet'] . 'px / 1.2 )',
+		'border-width' => UAGB_Helper::get_css_value( $attr['radioCheckBorderWidthTablet'], 'px' ),
+	),
+	' .uagb-cf7-styler__check-style-enabled .wpcf7 input[type="radio"] + span:before' => array(
+		'height'       => UAGB_Helper::get_css_value( $attr['radioCheckSizeTablet'], 'px' ),
+		'width'        => UAGB_Helper::get_css_value( $attr['radioCheckSizeTablet'], 'px' ),
+		'font-size'    => 'calc( ' . $attr['radioCheckSizeTablet'] . 'px / 1.2 )',
+		'border-width' => UAGB_Helper::get_css_value( $attr['radioCheckBorderWidthTablet'], 'px' ),
+	),
 	' .wpcf7-response-output'                       => array(
 		'padding-top'    => UAGB_Helper::get_css_value( $attr['messageTopPaddingMobile'], $attr['messagePaddingTypeMobile'] ),
 		'padding-bottom' => UAGB_Helper::get_css_value( $attr['messageBottomPaddingMobile'], $attr['messagePaddingTypeMobile'] ),
