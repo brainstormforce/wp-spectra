@@ -54,7 +54,7 @@ $selectors = array(
 		'line-height' => $svg_size,
 		'fill'        => $attr['ctaBtnLinkColor'],
 	),
-	'.wp-block-uagb-call-to-action:hover a.uagb-cta__button-link-wrapper > svg' => array(
+	'.wp-block-uagb-call-to-action a.uagb-cta__button-link-wrapper:hover > svg' => array(
 		'fill' => $attr['ctaLinkHoverColor'],
 	),
 	'.wp-block-uagb-call-to-action a.uagb-cta-second__button > svg' => array(
@@ -114,13 +114,13 @@ if ( 'text' === $attr['ctaType'] ) {
 	$selectors[' .uagb-cta__button-wrapper a.uagb-cta-typeof-text']                    = array(
 		'color' => $attr['ctaBtnLinkColor'],
 	);
-	$selectors[' .uagb-cta__button-wrapper:hover a.uagb-cta-typeof-text ']             = array(
+	$selectors[' .uagb-cta__button-wrapper a.uagb-cta-typeof-text:hover ']             = array(
 		'color' => $attr['ctaLinkHoverColor'],
 	);
 	$selectors['.wp-block-uagb-call-to-action a.uagb-cta__button-link-wrapper']        = array(
 		'color' => $attr['ctaBtnLinkColor'],
 	);
-	$selectors['.wp-block-uagb-call-to-action:hover a.uagb-cta__button-link-wrapper '] = array(
+	$selectors['.wp-block-uagb-call-to-action a.uagb-cta__button-link-wrapper:hover '] = array(
 		'color' => $attr['ctaLinkHoverColor'],
 	);
 }
@@ -138,7 +138,7 @@ if ( 'button' === $attr['ctaType'] ) {
 		'padding-left'     => UAGB_Helper::get_css_value( $btnPaddingLeft, $attr['ctaPaddingUnit'] ),
 		'padding-right'    => UAGB_Helper::get_css_value( $btnPaddingRight, $attr['ctaPaddingUnit'] ),
 	);
-	$selectors[' .uagb-cta__button-wrapper:hover a.uagb-cta-typeof-button']           = array(
+	$selectors[' .uagb-cta__button-wrapper a.uagb-cta-typeof-button:hover']           = array(
 		'color'            => $attr['ctaLinkHoverColor'],
 		'background-color' => $attr['ctaBgHoverColor'],
 		'border-color'     => $attr['ctaBorderhoverColor'],
@@ -155,7 +155,7 @@ if ( 'button' === $attr['ctaType'] ) {
 		'padding-left'     => UAGB_Helper::get_css_value( $btnPaddingLeft, $attr['ctaPaddingUnit'] ),
 		'padding-right'    => UAGB_Helper::get_css_value( $btnPaddingRight, $attr['ctaPaddingUnit'] ),
 	);
-	$selectors['.wp-block-uagb-call-to-action:hover a.uagb-cta__button-link-wrapper'] = array(
+	$selectors['.wp-block-uagb-call-to-action a.uagb-cta__button-link-wrapper:hover'] = array(
 		'color'            => $attr['ctaLinkHoverColor'],
 		'background-color' => $attr['ctaBgHoverColor'],
 		'border-color'     => $attr['ctaBorderhoverColor'],
