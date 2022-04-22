@@ -9,8 +9,8 @@ import InspectorTabs from '@Components/inspector-tabs/InspectorTabs.js';
 import InspectorTab, {
 	UAGTabs,
 } from '@Components/inspector-tabs/InspectorTab.js';
+import ResponsiveSlider from '@Components/responsive-slider';
 import AdvancedPopColorControl from '@Components/color-control/advanced-pop-color-control.js';
-import Range from '@Components/range/Range.js';
 import SpacingControl from '@Components/spacing-control';
 import MultiButtonsControl from '@Components/multi-buttons-control';
 import UAGImage from '@Components/image';
@@ -92,10 +92,18 @@ const Settings = ( props ) => {
 		imgAlign,
 		imgSize,
 		imgWidth,
+		imgWidthTablet,
+		imgWidthMobile,
 		imgPosition,
 		titleSpace,
+		titleSpaceTablet,
+		titleSpaceMobile,
 		descSpace,
+		descSpaceTablet,
+		descSpaceMobile,
 		prefixSpace,
+		prefixSpaceTablet,
+		prefixSpaceMobile,
 		twitterIcon,
 		fbIcon,
 		linkedinIcon,
@@ -107,6 +115,8 @@ const Settings = ( props ) => {
 		socialColor,
 		socialHoverColor,
 		socialSpace,
+		socialSpaceTablet,
+		socialSpaceMobile,
 		socialTarget,
 		socialEnable,
 		stack,
@@ -512,21 +522,29 @@ const Settings = ( props ) => {
 								setAttributes( { imgSize: value } )
 							}
 						/>
-						<Range
+						<ResponsiveSlider
 							label={ __(
 								'Width',
 								'ultimate-addons-for-gutenberg'
 							) }
-							setAttributes={ setAttributes }
-							value={ imgWidth }
-							onChange={ ( value ) =>
-								setAttributes( {
-									imgWidth: value,
-								} )
-							}
+							data={ {
+								desktop: {
+									value: imgWidth,
+									label: 'imgWidth',
+								},
+								tablet: {
+									value: imgWidthTablet,
+									label: 'imgWidthTablet',
+								},
+								mobile: {
+									value: imgWidthMobile,
+									label: 'imgWidthMobile',
+								},
+							} }
 							min={ 0 }
 							max={ 500 }
 							displayUnit={ false }
+							setAttributes={ setAttributes }
 						/>
 					</>
 				) }
@@ -788,21 +806,30 @@ const Settings = ( props ) => {
 						label: 'titleLineHeightTablet',
 					} }
 				/>
-				<Range
+
+				<ResponsiveSlider
 					label={ __(
 						'Bottom Spacing',
 						'ultimate-addons-for-gutenberg'
 					) }
-					setAttributes={ setAttributes }
-					value={ titleSpace }
-					onChange={ ( value ) =>
-						setAttributes( {
-							titleSpace: value,
-						} )
-					}
+					data={ {
+						desktop: {
+							value: titleSpace,
+							label: 'titleSpace',
+						},
+						tablet: {
+							value: titleSpaceTablet,
+							label: 'titleSpaceTablet',
+						},
+						mobile: {
+							value: titleSpaceMobile,
+							label: 'titleSpaceMobile',
+						},
+					} }
 					min={ 0 }
 					max={ 50 }
 					displayUnit={ false }
+					setAttributes={ setAttributes }
 				/>
 			</UAGAdvancedPanelBody>
 		);
@@ -885,21 +912,29 @@ const Settings = ( props ) => {
 						label: 'prefixLineHeightTablet',
 					} }
 				/>
-				<Range
+				<ResponsiveSlider
 					label={ __(
 						'Bottom Spacing',
 						'ultimate-addons-for-gutenberg'
 					) }
-					setAttributes={ setAttributes }
-					value={ prefixSpace }
-					onChange={ ( value ) =>
-						setAttributes( {
-							prefixSpace: value,
-						} )
-					}
+					data={ {
+						desktop: {
+							value: prefixSpace,
+							label: 'prefixSpace',
+						},
+						tablet: {
+							value: prefixSpaceTablet,
+							label: 'prefixSpaceTablet',
+						},
+						mobile: {
+							value: prefixSpaceMobile,
+							label: 'prefixSpaceMobile',
+						},
+					} }
 					min={ 0 }
 					max={ 50 }
 					displayUnit={ false }
+					setAttributes={ setAttributes }
 				/>
 			</UAGAdvancedPanelBody>
 		);
@@ -982,21 +1017,29 @@ const Settings = ( props ) => {
 						label: 'descLineHeightTablet',
 					} }
 				/>
-				<Range
+				<ResponsiveSlider
 					label={ __(
 						'Bottom Spacing',
 						'ultimate-addons-for-gutenberg'
 					) }
-					setAttributes={ setAttributes }
-					value={ descSpace }
-					onChange={ ( value ) =>
-						setAttributes( {
-							descSpace: value,
-						} )
-					}
+					data={ {
+						desktop: {
+							value: descSpace,
+							label: 'descSpace',
+						},
+						tablet: {
+							value: descSpaceTablet,
+							label: 'descSpaceTablet',
+						},
+						mobile: {
+							value: descSpaceMobile,
+							label: 'descSpaceMobile',
+						},
+					} }
 					min={ 0 }
 					max={ 50 }
 					displayUnit={ false }
+					setAttributes={ setAttributes }
 				/>
 			</UAGAdvancedPanelBody>
 		);
@@ -1034,21 +1077,29 @@ const Settings = ( props ) => {
 					disableFontFamily={ true }
 					disableLineHeight={ true }
 				/>
-				<Range
+				<ResponsiveSlider
 					label={ __(
 						'Inter Icon Spacing',
 						'ultimate-addons-for-gutenberg'
 					) }
-					setAttributes={ setAttributes }
-					value={ socialSpace }
-					onChange={ ( value ) =>
-						setAttributes( {
-							socialSpace: value,
-						} )
-					}
+					data={ {
+						desktop: {
+							value: socialSpace,
+							label: 'socialSpace',
+						},
+						tablet: {
+							value: socialSpaceTablet,
+							label: 'socialSpaceTablet',
+						},
+						mobile: {
+							value: socialSpaceMobile,
+							label: 'socialSpaceMobile',
+						},
+					} }
 					min={ 0 }
 					max={ 50 }
 					displayUnit={ false }
+					setAttributes={ setAttributes }
 				/>
 				<UAGTabsControl
 					tabs={ [

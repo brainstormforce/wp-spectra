@@ -29,7 +29,11 @@ const Settings = ( props ) => {
 	const {
 		align,
 		gap,
+		gapTablet,
+		gapMobile,
 		inner_gap,
+		innerGapTablet,
+		innerGapMobile,
 		stack,
 		icon_layout,
 		iconPosition,
@@ -39,8 +43,12 @@ const Settings = ( props ) => {
 		sizeTablet,
 		hideLabel,
 		borderRadius,
+		borderRadiusTablet,
+		borderRadiusMobile,
 		bgSize,
 		border,
+		borderTablet,
+		borderMobile,
 		fontSize,
 		fontSizeType,
 		fontSizeMobile,
@@ -97,7 +105,7 @@ const Settings = ( props ) => {
 
 	const generalSetting = () => {
 		return (
-			<UAGAdvancedPanelBody initialOpen={ true }>
+			<UAGAdvancedPanelBody title={ __( 'Content', 'ultimate-addons-for-gutenberg' ) } initialOpen={ true }>
 				<MultiButtonsControl
 					setAttributes={ setAttributes }
 					label={ __( 'Layout', 'ultimate-addons-for-gutenberg' ) }
@@ -272,17 +280,26 @@ const Settings = ( props ) => {
 				title={ __( 'Spacing', 'ultimate-addons-for-gutenberg' ) }
 				initialOpen={ false }
 			>
-				<Range
-					label={ __(
-						'Gap between Items (px)',
-						'ultimate-addons-for-gutenberg'
-					) }
-					setAttributes={ setAttributes }
-					value={ gap }
-					onChange={ ( value ) => setAttributes( { gap: value } ) }
+				<ResponsiveSlider
+					label={ __( 'Gap between Items (px)', 'ultimate-addons-for-gutenberg' ) }
+					data={ {
+						desktop: {
+							value: gap,
+							label: 'gap',
+						},
+						tablet: {
+							value: gapTablet,
+							label: 'gapTablet',
+						},
+						mobile: {
+							value: gapMobile,
+							label: 'gapMobile',
+						},
+					} }
 					min={ 0 }
 					max={ 100 }
 					displayUnit={ false }
+					setAttributes={ setAttributes }
 					help={ __(
 						'Note: For better editing experience, the gap between items might look larger than applied. Viewing in frontend will show the actual results.',
 						'ultimate-addons-for-gutenberg'
@@ -298,19 +315,26 @@ const Settings = ( props ) => {
 				title={ __( 'Label', 'ultimate-addons-for-gutenberg' ) }
 				initialOpen={ false }
 			>
-				<Range
-					label={ __(
-						'Gap between Icon and Label (px)',
-						'ultimate-addons-for-gutenberg'
-					) }
-					setAttributes={ setAttributes }
-					value={ inner_gap }
-					onChange={ ( value ) =>
-						setAttributes( { inner_gap: value } )
-					}
+				<ResponsiveSlider
+					label={ __( 'Gap between Icon and Label (px)', 'ultimate-addons-for-gutenberg' ) }
+					data={ {
+						desktop: {
+							value: inner_gap,
+							label: 'inner_gap',
+						},
+						tablet: {
+							value: innerGapTablet,
+							label: 'innerGapTablet',
+						},
+						mobile: {
+							value: innerGapMobile,
+							label: 'innerGapMobile',
+						},
+					} }
 					min={ 0 }
 					max={ 100 }
 					displayUnit={ false }
+					setAttributes={ setAttributes }
 				/>
 				<TypographyControl
 					label={ __(
@@ -436,35 +460,51 @@ const Settings = ( props ) => {
 						'ultimate-addons-for-gutenberg'
 					) }
 				/>
-				<Range
-					label={ __(
-						'Border (px)',
-						'ultimate-addons-for-gutenberg'
-					) }
-					setAttributes={ setAttributes }
-					value={ border }
-					onChange={ ( value ) => setAttributes( { border: value } ) }
+				<ResponsiveSlider
+					label={ __( 'Border (px)', 'ultimate-addons-for-gutenberg' ) }
+					data={ {
+						desktop: {
+							value: border,
+							label: 'border',
+						},
+						tablet: {
+							value: borderTablet,
+							label: 'borderTablet',
+						},
+						mobile: {
+							value: borderMobile,
+							label: 'borderMobile',
+						},
+					} }
 					min={ 0 }
 					max={ 10 }
 					displayUnit={ false }
+					setAttributes={ setAttributes }
 					help={ __(
 						'Note: Border option is useful when one adds border color to the icons.',
 						'ultimate-addons-for-gutenberg'
 					) }
 				/>
-				<Range
-					label={ __(
-						'Border Radius (px)',
-						'ultimate-addons-for-gutenberg'
-					) }
-					setAttributes={ setAttributes }
-					value={ borderRadius }
-					onChange={ ( value ) =>
-						setAttributes( { borderRadius: value } )
-					}
+				<ResponsiveSlider
+					label={ __( 'Border Radius (px)', 'ultimate-addons-for-gutenberg' ) }
+					data={ {
+						desktop: {
+							value: borderRadius,
+							label: 'borderRadius',
+						},
+						tablet: {
+							value: borderRadiusTablet,
+							label: 'borderRadiusTablet',
+						},
+						mobile: {
+							value: borderRadiusMobile,
+							label: 'borderRadiusMobile',
+						},
+					} }
 					min={ 0 }
 					max={ 100 }
 					displayUnit={ false }
+					setAttributes={ setAttributes }
 					help={ __(
 						'Note: Border Radius option is useful when one adds background color to the icons.',
 						'ultimate-addons-for-gutenberg'

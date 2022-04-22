@@ -9,7 +9,11 @@ function styling( props ) {
 	const {
 		align,
 		gap,
+		gapTablet,
+		gapMobile,
 		inner_gap,
+		innerGapTablet,
+		innerGapMobile,
 		icon_layout,
 		size,
 		sizeType,
@@ -27,8 +31,12 @@ function styling( props ) {
 		lineHeightMobile,
 		stack,
 		border,
+		borderTablet,
+		borderMobile,
 		bgSize,
 		borderRadius,
+		borderRadiusTablet,
+		borderRadiusMobile,
 		fontStyle,
 		fontTransform,
 		fontDecoration,
@@ -49,6 +57,8 @@ function styling( props ) {
 	}
 
 	const editorGap = undefined !== typeof gap && '' !== gap ? gap + 15 : 15;
+	const editorGapTablet = undefined !== typeof gapTablet && '' !== gapTablet ? gapTablet + 15 : 15;
+	const editorGapMobile = undefined !== typeof gapMobile && '' !== gapMobile ? gapMobile + 15 : 15;
 
 	selectors = {
 		' .wp-block-uagb-icon-list-child .uagb-icon-list__source-wrap': {
@@ -100,7 +110,7 @@ function styling( props ) {
 			] = {
 				'margin-left': 0,
 				'margin-right': 0,
-				'margin-bottom': generateCSSUnit( editorGap, 'px' ),
+				'margin-bottom': generateCSSUnit( editorGapTablet, 'px' ),
 			};
 
 			tabletSelectors[
@@ -126,7 +136,7 @@ function styling( props ) {
 			] = {
 				'margin-left': 0,
 				'margin-right': 0,
-				'margin-bottom': generateCSSUnit( editorGap, 'px' ),
+				'margin-bottom': generateCSSUnit( editorGapMobile, 'px' ),
 			};
 
 			mobileSelectors[
@@ -152,12 +162,32 @@ function styling( props ) {
 			'margin-right': generateCSSUnit( editorGap / 2, 'px' ),
 			'display': 'inline-flex'
 		};
+		mobileSelectors[' .block-editor-block-list__layout .wp-block[data-type="uagb/icon-list-child"]' ] = {
+			'margin-left': generateCSSUnit( editorGapMobile / 2, 'px' ),
+			'margin-right': generateCSSUnit( editorGapMobile / 2, 'px' ),
+			'display': 'inline-flex'
+		};
+		tabletSelectors[' .block-editor-block-list__layout .wp-block[data-type="uagb/icon-list-child"]' ] = {
+			'margin-left': generateCSSUnit( editorGapTablet / 2, 'px' ),
+			'margin-right': generateCSSUnit( editorGapTablet / 2, 'px' ),
+			'display': 'inline-flex'
+		};
 	}
 	if( 'vertical' === icon_layout  ) {
 		selectors[ ' .wp-block[data-type="uagb/icon-list-child"]' ] = {
 			'margin-left': 0,
 			'margin-right': 0,
 			'margin-bottom': generateCSSUnit( editorGap, 'px' ),
+		};
+		mobileSelectors[ ' .wp-block[data-type="uagb/icon-list-child"]' ] = {
+			'margin-left': 0,
+			'margin-right': 0,
+			'margin-bottom': generateCSSUnit( editorGapMobile, 'px' ),
+		};
+		tabletSelectors[ ' .wp-block[data-type="uagb/icon-list-child"]' ] = {
+			'margin-left': 0,
+			'margin-right': 0,
+			'margin-bottom': generateCSSUnit( editorGapTablet, 'px' ),
 		};
 		selectors[ ' .uagb-icon-list__wrap' ] = {
 			'flex-direction': 'column',
@@ -170,6 +200,16 @@ function styling( props ) {
 		] = {
 			'margin-left': generateCSSUnit( inner_gap, 'px' ),
 		};
+		mobileSelectors[
+			' .uagb-icon-list__source-wrap'
+		] = {
+			'margin-left': generateCSSUnit( innerGapMobile, 'px' ),
+		};
+		tabletSelectors[
+			' .uagb-icon-list__source-wrap'
+		] = {
+			'margin-left': generateCSSUnit( innerGapTablet, 'px' ),
+		};
 		selectors[ ' .wp-block-uagb-icon-list-child ' ] = {
 			'flex-direction': 'row-reverse',
 		};
@@ -178,6 +218,16 @@ function styling( props ) {
 			' .uagb-icon-list__source-wrap'
 		] = {
 			'margin-right': generateCSSUnit( inner_gap, 'px' ),
+		};
+		mobileSelectors[
+			' .uagb-icon-list__source-wrap'
+		] = {
+			'margin-right': generateCSSUnit( innerGapMobile, 'px' ),
+		};
+		tabletSelectors[
+			' .uagb-icon-list__source-wrap'
+		] = {
+			'margin-right': generateCSSUnit( innerGapTablet, 'px' ),
 		};
 	}
 
@@ -199,6 +249,18 @@ function styling( props ) {
 	tabletSelectors[ ' .wp-block-uagb-icon-list-child .uagb-icon-list__label' ] = {
 		'font-size': generateCSSUnit( fontSizeTablet, fontSizeType ),
 		'line-height': generateCSSUnit( lineHeightTablet, lineHeightType ),
+	};
+
+	mobileSelectors[ ' .wp-block-uagb-icon-list-child .uagb-icon-list__source-wrap' ] = {
+		'border-radius': generateCSSUnit( borderRadiusMobile, 'px' ),
+		'border-style':	0 === borderMobile || undefined === borderMobile ? 'none' : 'solid',
+		'border-width': generateCSSUnit( border, 'px' ),
+	};
+
+	tabletSelectors[ ' .wp-block-uagb-icon-list-child .uagb-icon-list__source-wrap' ] = {
+		'border-radius': generateCSSUnit( borderRadiusTablet, 'px' ),
+		'border-style':	0 === borderTablet || undefined === borderTablet ? 'none' : 'solid',
+		'border-width': generateCSSUnit( borderTablet, 'px' ),
 	};
 
 	let stylingCss = '';

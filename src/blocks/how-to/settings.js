@@ -25,7 +25,7 @@ import {
 	Icon
 } from '@wordpress/components';
 import MultiButtonsControl from '@Components/multi-buttons-control';
-
+import ResponsiveSlider from '@Components/responsive-slider';
 let imageSizeOptions = [
 	{
 		value: 'thumbnail',
@@ -99,6 +99,8 @@ const Settings = ( props ) => {
 			timeSpace,
 			costSpace,
 			row_gap,
+			rowGapTablet,
+			rowGapMobile,
 			step_gap,
 			timeInHours,
 			timeInDays,
@@ -870,7 +872,7 @@ const Settings = ( props ) => {
 						displayUnit={ false }
 					/>
 				) }
-				<Range
+				{/* <Range
 					label={ __( 'Row Gap', 'ultimate-addons-for-gutenberg' ) }
 					setAttributes={ setAttributes }
 					value={ row_gap }
@@ -880,6 +882,30 @@ const Settings = ( props ) => {
 					min={ 0 }
 					max={ 200 }
 					displayUnit={ false }
+				/> */}
+				<ResponsiveSlider
+					label={ __(
+						'Row Gap',
+						'ultimate-addons-for-gutenberg'
+					) }
+					data={ {
+						desktop: {
+							value: row_gap,
+							label: 'row_gap',
+						},
+						tablet: {
+							value: rowGapTablet,
+							label: 'rowGapTablet',
+						},
+						mobile: {
+							value: rowGapMobile,
+							label: 'rowGapMobile',
+						},
+					} }
+					min={ 0 }
+					max={ 200 }
+					displayUnit={ false }
+					setAttributes={ setAttributes }
 				/>
 				<Range
 					label={ __(

@@ -79,7 +79,11 @@ const Settings = ( props ) => {
 		categories,
 		postsToShow,
 		rowGap,
+		rowGapTablet,
+		rowGapMobile,
 		columnGap,
+		columnGapTablet,
+		columnGapMobile,
 		bgColor,
 		contentPaddingUnit,
 		titleColor,
@@ -139,11 +143,21 @@ const Settings = ( props ) => {
 		ctaHColor,
 		ctaBgHColor,
 		imageBottomSpace,
+		imageBottomSpaceTablet,
+		imageBottomSpaceMobile,
 		titleBottomSpace,
+		titleBottomSpaceTablet,
+		titleBottomSpaceMobile,
 		metaBottomSpace,
+		metaBottomSpaceTablet,
+		metaBottomSpaceMobile,
 		excerptBottomSpace,
+		excerptBottomSpaceTablet,
+		excerptBottomSpaceMobile,
 		excerptBottomSpaceUnit,
 		ctaBottomSpace,
+		ctaBottomSpaceTablet,
+		ctaBottomSpaceMobile,
 		equalHeight,
 		excerptLength,
 		overlayOpacity,
@@ -1089,7 +1103,7 @@ const Settings = ( props ) => {
 						setAttributes( { bgColor: value } )
 					}
 				/>
-				<Range
+				{/* <Range
 					label={ __( 'Column Gap', 'ultimate-addons-for-gutenberg' ) }
 					setAttributes={ setAttributes }
 					value={ rowGap }
@@ -1100,8 +1114,56 @@ const Settings = ( props ) => {
 						value: rowGapUnit,
 						label: 'rowGapUnit',
 					} }
+				/> */}
+				<ResponsiveSlider
+					label={ __( 'Column Gap', 'ultimate-addons-for-gutenberg' ) }
+					data={ {
+						desktop: {
+							value: columnGap,
+							label: 'columnGap',
+						},
+						tablet: {
+							value: columnGapTablet,
+							label: 'columnGapTablet',
+						},
+						mobile: {
+							value: columnGapMobile,
+							label: 'columnGapMobile',
+						},
+					} }
+					min={ 0 }
+					max={ 50 }
+					unit={ {
+						value: columnGapUnit,
+						label: 'columnGapUnit',
+					} }
+					setAttributes={ setAttributes }
 				/>
-				<Range
+				<ResponsiveSlider
+					label={ __( 'Row Gap', 'ultimate-addons-for-gutenberg' ) }
+					data={ {
+						desktop: {
+							value: rowGap,
+							label: 'rowGap',
+						},
+						tablet: {
+							value: rowGapTablet,
+							label: 'rowGapTablet',
+						},
+						mobile: {
+							value: rowGapMobile,
+							label: 'rowGapMobile',
+						},
+					} }
+					min={ 0 }
+					max={ 50 }
+					unit={ {
+						value: rowGapUnit,
+						label: 'rowGapUnit',
+					} }
+					setAttributes={ setAttributes }
+				/>
+				{/* <Range
 					label={ __(
 						'Row Gap',
 						'ultimate-addons-for-gutenberg'
@@ -1117,7 +1179,7 @@ const Settings = ( props ) => {
 						value: columnGapUnit,
 						label: 'columnGapUnit',
 					} }
-				/>
+				/> */}
 				<SpacingControl
 					{ ...props }
 					label={ __(
@@ -1230,22 +1292,46 @@ const Settings = ( props ) => {
 				</>
 			}
 			{imgPosition === 'top' &&
-				<Range
-					label={ __(
-						'Bottom Spacing',
-						'ultimate-addons-for-gutenberg'
-					) }
-					setAttributes={ setAttributes }
-					value={ imageBottomSpace }
-					onChange={ ( value ) =>
-						setAttributes( { imageBottomSpace: value } )
-					}
+				// <Range
+				// 	label={ __(
+				// 		'Bottom Spacing',
+				// 		'ultimate-addons-for-gutenberg'
+				// 	) }
+				// 	setAttributes={ setAttributes }
+				// 	value={ imageBottomSpace }
+				// 	onChange={ ( value ) =>
+				// 		setAttributes( { imageBottomSpace: value } )
+				// 	}
+				// 	min={ 0 }
+				// 	max={ 50 }
+				// 	unit={ {
+				// 		value: imageBottomSpaceUnit,
+				// 		label: 'imageBottomSpaceUnit',
+				// 	} }
+				// />
+				<ResponsiveSlider
+					label={ __( 'Bottom Spacing', 'ultimate-addons-for-gutenberg' ) }
+					data={ {
+						desktop: {
+							value: imageBottomSpace,
+							label: 'imageBottomSpace',
+						},
+						tablet: {
+							value: imageBottomSpaceTablet,
+							label: 'imageBottomSpaceTablet',
+						},
+						mobile: {
+							value: imageBottomSpaceMobile,
+							label: 'imageBottomSpaceMobile',
+						},
+					} }
 					min={ 0 }
 					max={ 50 }
 					unit={ {
 						value: imageBottomSpaceUnit,
 						label: 'imageBottomSpaceUnit',
 					} }
+					setAttributes={ setAttributes }
 				/>
 			}
 			</UAGAdvancedPanelBody>
@@ -1332,7 +1418,7 @@ const Settings = ( props ) => {
 						label: 'titleDecoration',
 					} }
 				/>
-				<Range
+				{/* <Range
 					label={ __(
 						'Bottom Spacing',
 						'ultimate-addons-for-gutenberg'
@@ -1348,6 +1434,30 @@ const Settings = ( props ) => {
 						value: titleBottomSpaceUnit,
 						label: 'titleBottomSpaceUnit',
 					} }
+				/> */}
+				<ResponsiveSlider
+					label={ __( 'Bottom Spacing', 'ultimate-addons-for-gutenberg' ) }
+					data={ {
+						desktop: {
+							value: titleBottomSpace,
+							label: 'titleBottomSpace',
+						},
+						tablet: {
+							value: titleBottomSpaceTablet,
+							label: 'titleBottomSpaceTablet',
+						},
+						mobile: {
+							value: titleBottomSpaceMobile,
+							label: 'titleBottomSpaceMobile',
+						},
+					} }
+					min={ 0 }
+					max={ 50 }
+					unit={ {
+						value: titleBottomSpaceUnit,
+						label: 'titleBottomSpaceUnit',
+					} }
+					setAttributes={ setAttributes }
 				/>
 			</UAGAdvancedPanelBody>
 		);
@@ -1449,7 +1559,7 @@ const Settings = ( props ) => {
 					} }
 				/>
 
-				<Range
+				{/* <Range
 					label={ __(
 						'Bottom Spacing',
 						'ultimate-addons-for-gutenberg'
@@ -1465,6 +1575,30 @@ const Settings = ( props ) => {
 						value: metaBottomSpaceUnit,
 						label: 'metaBottomSpaceUnit',
 					} }
+				/> */}
+				<ResponsiveSlider
+					label={ __( 'Bottom Spacing', 'ultimate-addons-for-gutenberg' ) }
+					data={ {
+						desktop: {
+							value: metaBottomSpace,
+							label: 'metaBottomSpace',
+						},
+						tablet: {
+							value: metaBottomSpaceTablet,
+							label: 'metaBottomSpaceTablet',
+						},
+						mobile: {
+							value: metaBottomSpaceMobile,
+							label: 'metaBottomSpaceMobile',
+						},
+					} }
+					min={ 0 }
+					max={ 50 }
+					unit={ {
+						value: metaBottomSpaceUnit,
+						label: 'metaBottomSpaceUnit',
+					} }
+					setAttributes={ setAttributes }
 				/>
 			</UAGAdvancedPanelBody>
 		);
@@ -1546,7 +1680,7 @@ const Settings = ( props ) => {
 						label: 'excerptDecoration',
 					} }
 				/>
-				<Range
+				{/* <Range
 					label={ __(
 						'Bottom Spacing',
 						'ultimate-addons-for-gutenberg'
@@ -1562,6 +1696,30 @@ const Settings = ( props ) => {
 						value: excerptBottomSpaceUnit,
 						label: 'excerptBottomSpaceUnit',
 					} }
+				/> */}
+				<ResponsiveSlider
+					label={ __( 'Bottom Spacing', 'ultimate-addons-for-gutenberg' ) }
+					data={ {
+						desktop: {
+							value: excerptBottomSpace,
+							label: 'excerptBottomSpace',
+						},
+						tablet: {
+							value: excerptBottomSpaceTablet,
+							label: 'excerptBottomSpaceTablet',
+						},
+						mobile: {
+							value: excerptBottomSpaceMobile,
+							label: 'excerptBottomSpaceMobile',
+						},
+					} }
+					min={ 0 }
+					max={ 50 }
+					unit={ {
+						value: excerptBottomSpaceUnit,
+						label: 'excerptBottomSpaceUnit',
+					} }
+					setAttributes={ setAttributes }
 				/>
 			</UAGAdvancedPanelBody>
 		);
@@ -1706,6 +1864,7 @@ const Settings = ( props ) => {
 					} }
 				/>
 				<Border
+					disabledBorderTitle= {false}
 					disableBottomSeparator={ false }
 					setAttributes={ setAttributes }
 					borderStyle={ {
@@ -1749,7 +1908,7 @@ const Settings = ( props ) => {
 						),
 					} }
 				/>
-				<Range
+				{/* <Range
 					label={ __(
 						'Bottom Spacing',
 						'ultimate-addons-for-gutenberg'
@@ -1765,6 +1924,30 @@ const Settings = ( props ) => {
 						value: ctaBottomSpaceUnit,
 						label: 'ctaBottomSpaceUnit',
 					} }
+				/> */}
+				<ResponsiveSlider
+					label={ __( 'Bottom Spacing', 'ultimate-addons-for-gutenberg' ) }
+					data={ {
+						desktop: {
+							value: ctaBottomSpace,
+							label: 'ctaBottomSpace',
+						},
+						tablet: {
+							value: ctaBottomSpaceTablet,
+							label: 'ctaBottomSpaceTablet',
+						},
+						mobile: {
+							value: ctaBottomSpaceMobile,
+							label: 'ctaBottomSpaceMobile',
+						},
+					} }
+					min={ 0 }
+					max={ 300 }
+					unit={ {
+						value: ctaBottomSpaceUnit,
+						label: 'ctaBottomSpaceUnit',
+					} }
+					setAttributes={ setAttributes }
 				/>
 				<SpacingControl
 					{ ...props }

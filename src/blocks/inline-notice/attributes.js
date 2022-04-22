@@ -367,6 +367,20 @@ const attributes = {
 			styleType: 'main-title-border-width'
 		},
 	},
+	highlightWidthTablet: {
+		type: 'number',
+		default: 0,
+		UAGCopyPaste: {
+			styleType: 'main-title-border-width'
+		},
+	},
+	highlightWidthMobile: {
+		type: 'number',
+		default: 0,
+		UAGCopyPaste: {
+			styleType: 'main-title-border-width'
+		},
+	},
 	contentLeftPadding: {
 		type: 'number',
 		UAGCopyPaste: {

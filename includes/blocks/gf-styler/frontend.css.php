@@ -431,26 +431,58 @@ $selectors = array(
 );
 
 $t_selectors = array(
+	' .uagb-gf-styler__field-style-box .gfield_checkbox input[type="checkbox"]:checked + label:before' => array(
+		'border-width' => UAGB_Helper::get_css_value( $attr['fieldBorderWidthTablet'], 'px' ),
+		'font-size'    => 'calc( ' . $attr['radioCheckSizeTablet'] . 'px / 1.2 )',
+	),
+	' .uagb-gf-styler__field-style-box input[type="checkbox"]:checked + label:before' => array(
+		'border-width' => UAGB_Helper::get_css_value( $attr['fieldBorderWidth'], 'px' ),
+		'font-size'    => 'calc( ' . $attr['radioCheckSizeTablet'] . 'px / 1.2 )',
+	),
+	' .uagb-gf-styler__check-style-enabled .gfield_checkbox input[type="checkbox"] + label:before' => array(
+		'height'       => UAGB_Helper::get_css_value( $attr['radioCheckSizeTablet'], 'px' ),
+		'width'        => UAGB_Helper::get_css_value( $attr['radioCheckSizeTablet'], 'px' ),
+		'font-size'    => 'calc( ' . $attr['radioCheckSizeTablet'] . 'px / 1.2 )',
+		'border-width' => UAGB_Helper::get_css_value( $attr['radioCheckBorderWidthTablet'], 'px' ),
+	),
+	' .uagb-gf-styler__check-style-enabled input[type="checkbox"] + label:before' => array(
+		'height'       => UAGB_Helper::get_css_value( $attr['radioCheckSizeTablet'], 'px' ),
+		'width'        => UAGB_Helper::get_css_value( $attr['radioCheckSizeTablet'], 'px' ),
+		'font-size'    => 'calc( ' . $attr['radioCheckSizeTablet'] . 'px / 1.2 )',
+		'border-width' => UAGB_Helper::get_css_value( $attr['radioCheckBorderWidth'], 'px' ),
+	),
+	' .uagb-gf-styler__check-style-enabled input[type="radio"] + label:before' => array(
+		'height'       => UAGB_Helper::get_css_value( $attr['radioCheckSizeTablet'], 'px' ),
+		'width'        => UAGB_Helper::get_css_value( $attr['radioCheckSizeTablet'], 'px' ),
+		'font-size'    => 'calc( ' . $attr['radioCheckSizeTablet'] . 'px / 1.2 )',
+		'border-width' => UAGB_Helper::get_css_value( $attr['radioCheckBorderWidthTablet'], 'px' ),
+	),
 	' form.wpgf-form:not(input)'                           => array(
 		'color' => $attr['fieldLabelColor'],
 	),
-	' input:not([type=submit])'                            => array(
+	' .gform_wrapper.gravity-theme input:not([type=submit])' => array(
 		'padding-left'   => UAGB_Helper::get_css_value( $attr['fieldleftTabletPadding'], $attr['fieldtabletPaddingUnit'] ),
 		'padding-right'  => UAGB_Helper::get_css_value( $attr['fieldrightTabletPadding'], $attr['fieldtabletPaddingUnit'] ),
 		'padding-top'    => UAGB_Helper::get_css_value( $attr['fieldtopTabletPadding'], $attr['fieldtabletPaddingUnit'] ),
 		'padding-bottom' => UAGB_Helper::get_css_value( $attr['fieldbottomTabletPadding'], $attr['fieldtabletPaddingUnit'] ),
+		'margin-top'     => UAGB_Helper::get_css_value( $attr['fieldLabelSpacingTablet'], 'px' ),
+		'margin-bottom'  => UAGB_Helper::get_css_value( $attr['fieldSpacingTablet'], 'px' ),
 	),
 	' .gform_wrapper.gravity-theme .gfield textarea.large' => array(
 		'padding-left'   => UAGB_Helper::get_css_value( $attr['fieldleftTabletPadding'], $attr['fieldtabletPaddingUnit'] ),
 		'padding-right'  => UAGB_Helper::get_css_value( $attr['fieldrightTabletPadding'], $attr['fieldtabletPaddingUnit'] ),
 		'padding-top'    => UAGB_Helper::get_css_value( $attr['fieldtopTabletPadding'], $attr['fieldtabletPaddingUnit'] ),
 		'padding-bottom' => UAGB_Helper::get_css_value( $attr['fieldbottomTabletPadding'], $attr['fieldtabletPaddingUnit'] ),
+		'margin-top'     => UAGB_Helper::get_css_value( $attr['fieldLabelSpacingTablet'], 'px' ),
+		'margin-bottom'  => UAGB_Helper::get_css_value( $attr['fieldSpacingTablet'], 'px' ),
+		'height'         => $attr['textAreaHeightTablet'],
 	),
 	' input.gform_button'                                  => array(
 		'padding-left'   => UAGB_Helper::get_css_value( $attr['buttonleftTabletPadding'], $attr['buttontabletPaddingUnit'] ),
 		'padding-right'  => UAGB_Helper::get_css_value( $attr['buttonrightTabletPadding'], $attr['buttontabletPaddingUnit'] ),
 		'padding-top'    => UAGB_Helper::get_css_value( $attr['buttontopTabletPadding'], $attr['buttontabletPaddingUnit'] ),
 		'padding-bottom' => UAGB_Helper::get_css_value( $attr['buttonbottomTabletPadding'], $attr['buttontabletPaddingUnit'] ),
+		'border-width'   => UAGB_Helper::get_css_value( $attr['buttonBorderWidthTablet'], 'px' ),
 	),
 	' .gform_wrapper div.validation_error'                 => array(
 		'padding-left'   => UAGB_Helper::get_css_value( $attr['msgleftTabletPadding'], $attr['msgtabletPaddingUnit'] ),
@@ -461,23 +493,56 @@ $t_selectors = array(
 );
 
 $m_selectors = array(
+	' .uagb-gf-styler__field-style-box .gfield_checkbox input[type="checkbox"]:checked + label:before' => array(
+		'border-width' => UAGB_Helper::get_css_value( $attr['fieldBorderWidthMobile'], 'px' ),
+		'font-size'    => 'calc( ' . $attr['radioCheckSizeMobile'] . 'px / 1.2 )',
+	),
+	' .uagb-gf-styler__field-style-box input[type="checkbox"]:checked + label:before' => array(
+		'border-width' => UAGB_Helper::get_css_value( $attr['fieldBorderWidth'], 'px' ),
+		'font-size'    => 'calc( ' . $attr['radioCheckSizeMobile'] . 'px / 1.2 )',
+	),
+	' .uagb-gf-styler__check-style-enabled .gfield_checkbox input[type="checkbox"] + label:before' => array(
+		'height'       => UAGB_Helper::get_css_value( $attr['radioCheckSizeMobile'], 'px' ),
+		'width'        => UAGB_Helper::get_css_value( $attr['radioCheckSizeMobile'], 'px' ),
+		'font-size'    => 'calc( ' . $attr['radioCheckSizeMobile'] . 'px / 1.2 )',
+		'border-width' => UAGB_Helper::get_css_value( $attr['radioCheckBorderWidthMobile'], 'px' ),
+	),
+	' .uagb-gf-styler__check-style-enabled input[type="checkbox"] + label:before' => array(
+		'height'       => UAGB_Helper::get_css_value( $attr['radioCheckSizeMobile'], 'px' ),
+		'width'        => UAGB_Helper::get_css_value( $attr['radioCheckSizeMobile'], 'px' ),
+		'font-size'    => 'calc( ' . $attr['radioCheckSizeMobile'] . 'px / 1.2 )',
+		'border-width' => UAGB_Helper::get_css_value( $attr['radioCheckBorderWidth'], 'px' ),
+	),
+	' .uagb-gf-styler__check-style-enabled input[type="radio"] + label:before' => array(
+		'height'       => UAGB_Helper::get_css_value( $attr['radioCheckSizeMobile'], 'px' ),
+		'width'        => UAGB_Helper::get_css_value( $attr['radioCheckSizeMobile'], 'px' ),
+		'font-size'    => 'calc( ' . $attr['radioCheckSizeMobile'] . 'px / 1.2 )',
+		'border-width' => UAGB_Helper::get_css_value( $attr['radioCheckBorderWidthMobile'], 'px' ),
+	),
 	' input:not([type=submit])'                            => array(
 		'padding-left'   => UAGB_Helper::get_css_value( $attr['fieldleftMobilePadding'], $attr['fieldmobilePaddingUnit'] ),
 		'padding-right'  => UAGB_Helper::get_css_value( $attr['fieldrightMobilePadding'], $attr['fieldmobilePaddingUnit'] ),
 		'padding-top'    => UAGB_Helper::get_css_value( $attr['fieldtopMobilePadding'], $attr['fieldmobilePaddingUnit'] ),
 		'padding-bottom' => UAGB_Helper::get_css_value( $attr['fieldbottomMobilePadding'], $attr['fieldmobilePaddingUnit'] ),
+		'border-width'   => UAGB_Helper::get_css_value( $attr['fieldBorderWidthMobile'], 'px' ),
+		'margin-top'     => UAGB_Helper::get_css_value( $attr['fieldLabelSpacingMobile'], 'px' ),
+		'margin-bottom'  => UAGB_Helper::get_css_value( $attr['fieldSpacingMobile'], 'px' ),
 	),
 	' .gform_wrapper.gravity-theme .gfield textarea.large' => array(
 		'padding-left'   => UAGB_Helper::get_css_value( $attr['fieldleftMobilePadding'], $attr['fieldmobilePaddingUnit'] ),
 		'padding-right'  => UAGB_Helper::get_css_value( $attr['fieldrightMobilePadding'], $attr['fieldmobilePaddingUnit'] ),
 		'padding-top'    => UAGB_Helper::get_css_value( $attr['fieldtopMobilePadding'], $attr['fieldmobilePaddingUnit'] ),
 		'padding-bottom' => UAGB_Helper::get_css_value( $attr['fieldbottomMobilePadding'], $attr['fieldmobilePaddingUnit'] ),
+		'margin-top'     => UAGB_Helper::get_css_value( $attr['fieldLabelSpacingMobile'], 'px' ),
+		'margin-bottom'  => UAGB_Helper::get_css_value( $attr['fieldSpacingMobile'], 'px' ),
+		'height'         => $attr['textAreaHeightMobile'],
 	),
 	' input.gform_button'                                  => array(
 		'padding-left'   => UAGB_Helper::get_css_value( $attr['buttonleftMobilePadding'], $attr['buttonmobilePaddingUnit'] ),
 		'padding-right'  => UAGB_Helper::get_css_value( $attr['buttonrightMobilePadding'], $attr['buttonmobilePaddingUnit'] ),
 		'padding-top'    => UAGB_Helper::get_css_value( $attr['buttontopMobilePadding'], $attr['buttonmobilePaddingUnit'] ),
 		'padding-bottom' => UAGB_Helper::get_css_value( $attr['buttonbottomMobilePadding'], $attr['buttonmobilePaddingUnit'] ),
+		'border-width'   => UAGB_Helper::get_css_value( $attr['buttonBorderWidthMobile'], 'px' ),
 	),
 	' .gform_wrapper div.validation_error'                 => array(
 		'padding-left'   => UAGB_Helper::get_css_value( $attr['msgleftMobilePadding'], $attr['msgmobilePaddingUnit'] ),

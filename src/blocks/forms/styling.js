@@ -13,7 +13,11 @@ function styling( props ) {
 		submitBgColor,
 		submitBgColorHover,
 		toggleWidthSize,
+		toggleWidthSizeTablet,
+		toggleWidthSizeMobile,
 		toggleHeightSize,
+		toggleHeightSizeTablet,
+		toggleHeightSizeMobile,
 		submitborderStyle,
 		submitborderWidth,
 		submitborderRadius,
@@ -61,9 +65,13 @@ function styling( props ) {
 		inputborderColor,
 		inputborderHoverColor,
 		fieldGap,
+		fieldGapTablet,
+		fieldGapMobile,
 		formStyle,
 		overallAlignment,
 		toggleSize,
+		toggleSizeTablet,
+		toggleSizeMobile,
 
 		paddingBtnTop,
 		paddingBtnRight,
@@ -501,6 +509,56 @@ function styling( props ) {
 	}
 
 	tabletSelectors = {
+		' .uagb-forms-main-form .uagb-forms-field-set': {
+			'margin-bottom': generateCSSUnit( fieldGapTablet, fieldGapType ),
+		},
+		' .uagb-forms-radio-wrap input[type=radio]:checked + label:before': {
+			'font-size': 'calc(' + toggleSizeTablet + toggleSizeType + ' / 1.2 )',
+		},
+		' .uagb-forms-radio-wrap input[type=radio] + label:before': {
+			'width': generateCSSUnit( toggleSizeTablet, toggleSizeType ),
+			'height': generateCSSUnit( toggleSizeTablet, toggleSizeType ),
+		},
+		' .uagb-forms-checkbox-wrap input[type=checkbox]:checked + label:before': {
+			'font-size': 'calc(' + toggleSizeTablet + 'px / 1.2 )',
+		},
+		' .uagb-forms-checkbox-wrap input[type=checkbox] + label:before': {
+			'width': generateCSSUnit( toggleSizeTablet, 'px' ),
+			'height': generateCSSUnit( toggleSizeTablet, 'px' ),
+		},
+		' .uagb-forms-accept-wrap input[type=checkbox]:checked + label:before': {
+			'font-size': 'calc(' + toggleSizeTablet + 'px / 1.2 )',
+		},
+		' .uagb-forms-accept-wrap input[type=checkbox] + label:before': {
+			'width': generateCSSUnit( toggleSizeTablet, 'px' ),
+			'height': generateCSSUnit( toggleSizeTablet, 'px' ),
+		},
+		' .uagb-switch ' : {
+			'height': generateCSSUnit(
+				25 + toggleHeightSizeTablet + inputborderWidth,
+				'px'
+			),
+			'width': generateCSSUnit(
+				50 + toggleWidthSizeTablet + inputborderWidth,
+				'px'
+			),
+		},
+		' .uagb-switch .uagb-slider:before ' : {
+			'height': generateCSSUnit(
+				20 + toggleHeightSizeTablet - inputborderWidth,
+				'px'
+			),
+			'width': generateCSSUnit(
+				20 + toggleWidthSizeTablet - inputborderWidth / 2,
+				'px'
+			),
+		},
+		' .uagb-switch input:checked + .uagb-slider:before ' : {
+			'transform':
+				'translateX(' +
+				generateCSSUnit( 26 + toggleWidthSizeTablet, 'px' ) / 2 +
+				')',
+		},
 		' .uagb-forms-main-form .uagb-forms-main-submit-button': {
 			'padding-top': generateCSSUnit(
 				paddingBtnTopTablet,
@@ -552,6 +610,56 @@ function styling( props ) {
 	};
 
 	mobileSelectors = {
+		' .uagb-forms-radio-wrap input[type=radio]:checked + label:before': {
+			'font-size': 'calc(' + toggleSizeMobile + toggleSizeType + ' / 1.2 )',
+		},
+		' .uagb-forms-radio-wrap input[type=radio] + label:before': {
+			'width': generateCSSUnit( toggleSizeMobile, toggleSizeType ),
+			'height': generateCSSUnit( toggleSizeMobile, toggleSizeType ),
+		},
+		' .uagb-forms-checkbox-wrap input[type=checkbox]:checked + label:before': {
+			'font-size': 'calc(' + toggleSizeMobile + 'px / 1.2 )',
+		},
+		' .uagb-forms-checkbox-wrap input[type=checkbox] + label:before': {
+			'width': generateCSSUnit( toggleSizeMobile, 'px' ),
+			'height': generateCSSUnit( toggleSizeMobile, 'px' ),
+		},
+		' .uagb-forms-accept-wrap input[type=checkbox]:checked + label:before': {
+			'font-size': 'calc(' + toggleSizeMobile + 'px / 1.2 )',
+		},
+		' .uagb-forms-accept-wrap input[type=checkbox] + label:before': {
+			'width': generateCSSUnit( toggleSizeMobile, 'px' ),
+			'height': generateCSSUnit( toggleSizeMobile, 'px' ),
+		},
+		' .uagb-forms-main-form .uagb-forms-field-set': {
+			'margin-bottom': generateCSSUnit( fieldGapMobile, fieldGapType ),
+		},
+		' .uagb-switch ' : {
+			'height': generateCSSUnit(
+				25 + toggleHeightSizeMobile + inputborderWidth,
+				'px'
+			),
+			'width': generateCSSUnit(
+				50 + toggleWidthSizeMobile + inputborderWidth,
+				'px'
+			),
+		},
+		' .uagb-switch .uagb-slider:before ' : {
+			'height': generateCSSUnit(
+				20 + toggleHeightSizeMobile - inputborderWidth,
+				'px'
+			),
+			'width': generateCSSUnit(
+				20 + toggleWidthSizeMobile - inputborderWidth / 2,
+				'px'
+			),
+		},
+		' .uagb-switch input:checked + .uagb-slider:before ' : {
+			'transform':
+				'translateX(' +
+				generateCSSUnit( 26 + toggleWidthSizeMobile, 'px' ) / 2 +
+				')',
+		},
 		' .uagb-forms-main-form .uagb-forms-main-submit-button': { // eslint-disable-line no-dupe-keys
 			'padding-top': generateCSSUnit(
 				paddingBtnTopMobile,

@@ -69,6 +69,8 @@ return array(
 	'contentPaddingTypeTablet'  => 'px',
 	'contentPaddingTypeMobile'  => 'px',
 	'headingBottom'             => '',
+	'headingBottomTablet'       => '',
+	'headingBottomMobile'       => '',
 	'backgroundColor'           => '',
 	'linkHoverColor'            => '',
 	'headingColor'              => '',

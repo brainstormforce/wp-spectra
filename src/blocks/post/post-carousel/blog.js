@@ -217,6 +217,7 @@ function Blog( props ) {
 					'uagb-slick-carousel',
 					`uagb-post__image-position-${ imgPosition }`,
 					`${ equalHeightClass }`,
+					`uagb-editor-preview-mode-${ deviceType.toLowerCase() }`,
 					`uagb-block-${ block_id }`
 				) }
 				data-blog-id={ block_id }

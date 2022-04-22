@@ -16,7 +16,7 @@ import Range from '@Components/range/Range.js';
 import SpacingControl from '@Components/spacing-control';
 import MultiButtonsControl from '@Components/multi-buttons-control';
 import UAGTabsControl from '@Components/tabs';
-
+import ResponsiveSlider from '@Components/responsive-slider';
 import { __ } from '@wordpress/i18n';
 
 import { dateI18n } from '@wordpress/date';
@@ -47,6 +47,8 @@ const Settings = ( props ) => {
 		setAttributes,
 		attributes: {
 			headSpace,
+			headSpaceTablet,
+			headSpaceMobile,
 			headingColor,
 			subHeadingColor,
 			backgroundColor,
@@ -86,6 +88,8 @@ const Settings = ( props ) => {
 			borderwidth,
 			connectorBgsize,
 			dateBottomspace,
+		dateBottomspaceTablet,
+		dateBottomspaceMobile,
 			align,
 			icon,
 			iconColor,
@@ -104,6 +108,8 @@ const Settings = ( props ) => {
 			dateLoadGoogleFonts,
 			iconSize,
 			borderRadius,
+		borderRadiusTablet,
+		borderRadiusMobile,
 			iconFocus,
 			iconBgFocus,
 			displayPostDate,
@@ -769,19 +775,29 @@ const Settings = ( props ) => {
 						},
 					] }
 				/>
-				<Range
+				<ResponsiveSlider
 					label={ __(
 						'Rounded Corners',
 						'ultimate-addons-for-gutenberg'
 					) }
-					setAttributes={ setAttributes }
-					value={ borderRadius }
-					onChange={ ( value ) =>
-						setAttributes( { borderRadius: value } )
-					}
+					data={ {
+						desktop: {
+							value: borderRadius,
+							label: 'borderRadius',
+						},
+						tablet: {
+							value: borderRadiusTablet,
+							label: 'borderRadiusTablet',
+						},
+						mobile: {
+							value: borderRadiusMobile,
+							label: 'borderRadiusMobile',
+						},
+					} }
 					min={ 0 }
 					max={ 50 }
 					displayUnit={ false }
+					setAttributes={ setAttributes }
 				/>
 			</UAGAdvancedPanelBody>
 		);
@@ -860,19 +876,29 @@ const Settings = ( props ) => {
 						label: 'headDecoration',
 					} }
 				/>
-				<Range
+				<ResponsiveSlider
 					label={ __(
 						'Bottom Spacing',
 						'ultimate-addons-for-gutenberg'
 					) }
-					setAttributes={ setAttributes }
-					value={ headSpace }
-					onChange={ ( value ) =>
-						setAttributes( { headSpace: value } )
-					}
+					data={ {
+						desktop: {
+							value: headSpace,
+							label: 'headSpace',
+						},
+						tablet: {
+							value: headSpaceTablet,
+							label: 'headSpaceTablet',
+						},
+						mobile: {
+							value: headSpaceMobile,
+							label: 'headSpaceMobile',
+						},
+					} }
 					min={ 0 }
 					max={ 50 }
 					displayUnit={ false }
+					setAttributes={ setAttributes }
 				/>
 			</UAGAdvancedPanelBody>
 		);
@@ -1035,19 +1061,43 @@ const Settings = ( props ) => {
 					} }
 				/>
 				{ timelinAlignment !== 'center' && (
-					<Range
+					// <Range
+					// 	label={ __(
+					// 		'Date Bottom Spacing',
+					// 		'ultimate-addons-for-gutenberg'
+					// 	) }
+					// 	setAttributes={ setAttributes }
+					// 	value={ dateBottomspace }
+					// 	onChange={ ( value ) =>
+					// 		setAttributes( { dateBottomspace: value } )
+					// 	}
+					// 	min={ 0 }
+					// 	max={ 50 }
+					// 	displayUnit={ false }
+					// />
+					<ResponsiveSlider
 						label={ __(
-							'Date Bottom Spacing',
+							'Bottom Spacing',
 							'ultimate-addons-for-gutenberg'
 						) }
-						setAttributes={ setAttributes }
-						value={ dateBottomspace }
-						onChange={ ( value ) =>
-							setAttributes( { dateBottomspace: value } )
-						}
+						data={ {
+							desktop: {
+								value: dateBottomspace,
+								label: 'dateBottomspace',
+							},
+							tablet: {
+								value: dateBottomspaceTablet,
+								label: 'dateBottomspaceTablet',
+							},
+							mobile: {
+								value: dateBottomspaceMobile,
+								label: 'dateBottomspaceMobile',
+							},
+						} }
 						min={ 0 }
 						max={ 50 }
 						displayUnit={ false }
+						setAttributes={ setAttributes }
 					/>
 				) }
 			</UAGAdvancedPanelBody>

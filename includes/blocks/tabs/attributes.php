@@ -106,6 +106,10 @@ return array(
 	'icon'                        => '',
 	'iconColor'                   => '',
 	'iconSize'                    => 16,
+	'iconSizeTablet'              => '',
+	'iconSizeMobile'              => '',
 	'iconPosition'                => 'left',
 	'iconSpacing'                 => 10,
+	'iconSpacingTablet'           => '',
+	'iconSpacingMobile'           => '',
 );
