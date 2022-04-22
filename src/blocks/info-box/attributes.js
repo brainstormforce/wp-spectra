@@ -62,7 +62,7 @@ const attributes = {
 	},
 	iconSize: {
 		type: 'number',
-		default: 40,
+		default: 30,
 		UAGCopyPaste: {
 			styleType: 'icon-size'
 		}
@@ -376,7 +376,7 @@ const attributes = {
 	},
 	subHeadSpace: {
 		type: 'number',
-		default: 10,
+		default: 20,
 		UAGCopyPaste: {
 			styleType: 'desc-bottom-margin'
 		}
@@ -447,7 +447,10 @@ const attributes = {
 	},
 	seperatorPosition: {
 		type: 'string',
-		default: 'separator-position',
+		default: 'after_title',
+		UAGCopyPaste: {
+			styleType: 'seperator-position'
+		}
 	},
 	seperatorStyle: {
 		type: 'string',
@@ -630,14 +633,14 @@ const attributes = {
 	},
 	ctaBtnVertPadding: {
 		type: 'number',
-		default: 10,
+		default: 12,
 		UAGCopyPaste: {
 			styleType: 'btn-vertical-padding'
 		}
 	},
 	ctaBtnHrPadding: {
 		type: 'number',
-		default: 10,
+		default: 20,
 		UAGCopyPaste: {
 			styleType: 'btn-horizontal-padding'
 		}
@@ -681,7 +684,7 @@ const attributes = {
 		UAGCopyPaste: {
 			styleType: 'icon-bottom-margin'
 		},
-		default: 5,
+		default: 15,
 	},
 	iconImage: {
 		type: 'object',
@@ -734,6 +737,10 @@ const attributes = {
 		default: false,
 	},
 	showTitle: {
+		type: 'boolean',
+		default: true,
+	},
+	showIcon: {
 		type: 'boolean',
 		default: true,
 	},
