@@ -252,16 +252,16 @@ imageWidthTablet,
 				iconMarginUnit
 			),
 		},
-		' .uagb-ifb-content .uagb-ifb-icon-wrap:hover > svg': {
+		' .uagb-ifb-content .uagb-ifb-icon-wrap > svg:hover': {
 			'fill': iconHover,
 		},
-		'.uagb-infobox-icon-left .uagb-ifb-icon-wrap:hover > svg': {
+		'.uagb-infobox-icon-left .uagb-ifb-icon-wrap > svg:hover': {
 			'fill': iconHover,
 		},
-		'.uagb-infobox-icon-right .uagb-ifb-icon-wrap:hover > svg': {
+		'.uagb-infobox-icon-right .uagb-ifb-icon-wrap:hover > svg:hover': {
 			'fill': iconHover,
 		},
-		'.uagb-infobox__content-wrap .uagb-ifb-icon-wrap:hover > svg': {
+		'.uagb-infobox__content-wrap .uagb-ifb-icon-wrap > svg:hover': {
 			'fill': iconHover,
 		},
 		'.uagb-infobox_cta-type-all:hover .uagb-infobox__content-wrap svg': {
@@ -358,7 +358,7 @@ imageWidthTablet,
 			'padding-left': generateCSSUnit( paddingBtnLeft, paddingBtnUnit ),
 			'padding-right': generateCSSUnit( paddingBtnRight, paddingBtnUnit ),
 		},
-		' .uagb-ifb-button-wrapper:hover .uagb-infobox-cta-link': {
+		' .uagb-ifb-button-wrapper .uagb-infobox-cta-link:hover': {
 			'color': ctaLinkHoverColor,
 			'background-color': ctaBgHoverColor,
 			'border-color': ctaBorderhoverColor,
@@ -501,7 +501,61 @@ imageWidthTablet,
 				prefixLineHeightType
 			),
 		},
+		' .uagb-ifb-icon-wrap > svg': {
+			'margin-top': generateCSSUnit(
+				iconMarginTopTablet,
+				iconTabletMarginUnit
+			),
+			'margin-right': generateCSSUnit(
+				iconMarginRightTablet,
+				iconTabletMarginUnit
+			),
+			'margin-bottom': generateCSSUnit(
+				iconMarginBottomTablet,
+				iconTabletMarginUnit
+			),
+			'margin-left': generateCSSUnit(
+				iconMarginLeftTablet,
+				iconTabletMarginUnit
+			),
+		},
 		'.uagb-infobox__content-wrap > svg': {
+			'margin-top': generateCSSUnit(
+				iconMarginTopTablet,
+				iconTabletMarginUnit
+			),
+			'margin-right': generateCSSUnit(
+				iconMarginRightTablet,
+				iconTabletMarginUnit
+			),
+			'margin-bottom': generateCSSUnit(
+				iconMarginBottomTablet,
+				iconTabletMarginUnit
+			),
+			'margin-left': generateCSSUnit(
+				iconMarginLeftTablet,
+				iconTabletMarginUnit
+			),
+		},
+		'.uagb-infobox__content-wrap .uagb-ifb-content .uagb-ifb-left-title-image img': {
+			'margin-top': generateCSSUnit(
+				iconMarginTopTablet,
+				iconTabletMarginUnit
+			),
+			'margin-right': generateCSSUnit(
+				iconMarginRightTablet,
+				iconTabletMarginUnit
+			),
+			'margin-bottom': generateCSSUnit(
+				iconMarginBottomTablet,
+				iconTabletMarginUnit
+			),
+			'margin-left': generateCSSUnit(
+				iconMarginLeftTablet,
+				iconTabletMarginUnit
+			),
+		},
+		'.uagb-infobox__content-wrap .uagb-ifb-content .uagb-ifb-right-title-image img': {
 			'margin-top': generateCSSUnit(
 				iconMarginTopTablet,
 				iconTabletMarginUnit
@@ -735,6 +789,60 @@ imageWidthTablet,
 			'margin-top': generateCSSUnit( separatorMarginTopMobile, separatorMobileMarginUnit ),
 			'margin-left': generateCSSUnit( separatorMarginLeftMobile, separatorMobileMarginUnit ),
 			'margin-right': generateCSSUnit( separatorMarginRightMobile, separatorMobileMarginUnit ),
+		},
+		' .uagb-ifb-icon-wrap > svg': {
+			'margin-top': generateCSSUnit(
+				iconMarginTopMobile,
+				iconMobileMarginUnit
+			),
+			'margin-right': generateCSSUnit(
+				iconMarginRightMobile,
+				iconMobileMarginUnit
+			),
+			'margin-bottom': generateCSSUnit(
+				iconMarginBottomMobile,
+				iconMobileMarginUnit
+			),
+			'margin-left': generateCSSUnit(
+				iconMarginLeftMobile,
+				iconMobileMarginUnit
+			),
+		},
+		'.uagb-infobox__content-wrap .uagb-ifb-content .uagb-ifb-left-title-image img': {
+			'margin-top': generateCSSUnit(
+				iconMarginTopMobile,
+				iconMobileMarginUnit
+			),
+			'margin-right': generateCSSUnit(
+				iconMarginRightMobile,
+				iconMobileMarginUnit
+			),
+			'margin-bottom': generateCSSUnit(
+				iconMarginBottomMobile,
+				iconMobileMarginUnit
+			),
+			'margin-left': generateCSSUnit(
+				iconMarginLeftMobile,
+				iconMobileMarginUnit
+			),
+		},
+		'.uagb-infobox__content-wrap .uagb-ifb-content .uagb-ifb-right-title-image img': {
+			'margin-top': generateCSSUnit(
+				iconMarginTopMobile,
+				iconMobileMarginUnit
+			),
+			'margin-right': generateCSSUnit(
+				iconMarginRightMobile,
+				iconMobileMarginUnit
+			),
+			'margin-bottom': generateCSSUnit(
+				iconMarginBottomMobile,
+				iconMobileMarginUnit
+			),
+			'margin-left': generateCSSUnit(
+				iconMarginLeftMobile,
+				iconMobileMarginUnit
+			),
 		},
 		'.uagb-infobox__content-wrap > svg': {
 			'margin-top': generateCSSUnit(
