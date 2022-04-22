@@ -10,6 +10,7 @@ import deprecated from './deprecated';
 import './style.scss';
 import { __ } from '@wordpress/i18n';
 import { registerBlockType, createBlock } from '@wordpress/blocks';
+import './format'
 
 registerBlockType( 'uagb/advanced-heading', {
 	title: __( 'Creative Heading', 'ultimate-addons-for-gutenberg' ),
