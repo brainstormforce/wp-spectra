@@ -227,24 +227,24 @@ if ( 'alignwide' === $attr['innerContentWidth'] ) {
 		'--padding-left'               => $left_padding_desktop . $attr['paddingType'],
 		'--padding-right'              => $right_padding_desktop . $attr['paddingType'],
 		'--column-gap'                 => $column_gap_desktop . $attr['columnGapType'],
-		'padding-left'                 => 'calc( ( var(--root-container-full-width) - var( --inner-content-custom-width-final ) ) / 2 + var( --padding-left ) )',
-		'padding-right'                => 'calc( ( var(--root-container-full-width) - var( --inner-content-custom-width-final ) ) / 2 + var( --padding-right ) )',
+		'padding-left'                 => 'calc( ( var(--root-container-full-width) - var( --inner-content-custom-width-final ) ) / 2 )',
+		'padding-right'                => 'calc( ( var(--root-container-full-width) - var( --inner-content-custom-width-final ) ) / 2 )',
 		);
 
 		$t_selectors[ '.uagb-is-root-container.uagb-block-' . $id ] = array( // phpcs:ignore WordPress.WP.GlobalVariablesOverride.Prohibited
 		'--inner-content-custom-width' => $attr['innerContentCustomWidthTablet'] . $attr['innerContentCustomWidthType'],
 		'--padding-left'               => $left_padding_tablet . $attr['paddingType'],
 		'--padding-right'              => $right_padding_tablet . $attr['paddingType'],
-		'padding-left'                 => 'calc( ( var(--root-container-full-width) - var( --inner-content-custom-width-final ) ) / 2 + var( --padding-left ) )',
-		'padding-right'                => 'calc( ( var(--root-container-full-width) - var( --inner-content-custom-width-final ) ) / 2 + var( --padding-right ) )',
+		'padding-left'                 => 'calc( ( var(--root-container-full-width) - var( --inner-content-custom-width-final ) ) / 2 )',
+		'padding-right'                => 'calc( ( var(--root-container-full-width) - var( --inner-content-custom-width-final ) ) / 2 )',
 		);
 
 		$m_selectors[ '.uagb-is-root-container.uagb-block-' . $id ] = array( // phpcs:ignore WordPress.WP.GlobalVariablesOverride.Prohibited
 		'--inner-content-custom-width' => $attr['innerContentCustomWidthMobile'] . $attr['innerContentCustomWidthType'],
 		'--padding-left'               => $left_padding_mobile . $attr['paddingType'],
 		'--padding-right'              => $right_padding_mobile . $attr['paddingType'],
-		'padding-left'                 => 'calc( ( var(--root-container-full-width) - var( --inner-content-custom-width-final ) ) / 2 + var( --padding-left ) )',
-		'padding-right'                => 'calc( ( var(--root-container-full-width) - var( --inner-content-custom-width-final ) ) / 2 + var( --padding-right ) )',
+		'padding-left'                 => 'calc( ( var(--root-container-full-width) - var( --inner-content-custom-width-final ) ) / 2 )',
+		'padding-right'                => 'calc( ( var(--root-container-full-width) - var( --inner-content-custom-width-final ) ) / 2 )',
 		);
 	}
 }
