@@ -14,83 +14,83 @@ $m_selectors = array();
 $t_selectors = array();
 
 $selectors = array(
-	' .uagb-heading-text'              => array(
-		'color'         => $attr['headingColor'],
-		'margin-bottom' => UAGB_Helper::get_css_value( $attr['headSpace'], 'px' ),
+	' .uagb-heading-text'                             => array(
+		'color'          => $attr['headingColor'],
+		'margin-bottom'  => UAGB_Helper::get_css_value( $attr['headSpace'], 'px' ),
 		'letter-spacing' => UAGB_Helper::get_css_value( $attr['headLetterSpacing'], $attr['headLetterSpacingType'] ),
-		'text-shadow' => UAGB_Helper::get_css_value( $attr['headShadowHOffset'], 'px' ) . ' ' . UAGB_Helper::get_css_value( $attr['headShadowVOffset'], 'px' )  . ' ' . UAGB_Helper::get_css_value( $attr['headShadowBlur'], 'px' ) . ' ' .  $attr['headShadowColor']
+		'text-shadow'    => UAGB_Helper::get_css_value( $attr['headShadowHOffset'], 'px' ) . ' ' . UAGB_Helper::get_css_value( $attr['headShadowVOffset'], 'px' ) . ' ' . UAGB_Helper::get_css_value( $attr['headShadowBlur'], 'px' ) . ' ' . $attr['headShadowColor'],
 	),
-	'.wp-block-uagb-advanced-heading ' => array(
-		'text-align' => $attr['headingAlign'],
-		'margin-top'      => UAGB_Helper::get_css_value(
+	'.wp-block-uagb-advanced-heading '                => array(
+		'text-align'     => $attr['headingAlign'],
+		'margin-top'     => UAGB_Helper::get_css_value(
 			$attr['headingBlockTopMargin'],
 			$attr['headingBlockMarginUnit']
 		),
-		'margin-right'    => UAGB_Helper::get_css_value(
+		'margin-right'   => UAGB_Helper::get_css_value(
 			$attr['headingBlockRightMargin'],
 			$attr['headingBlockMarginUnit']
 		),
-		'margin-bottom'   => UAGB_Helper::get_css_value(
+		'margin-bottom'  => UAGB_Helper::get_css_value(
 			$attr['headingBlockBottomMargin'],
 			$attr['headingBlockMarginUnit']
 		),
-		'margin-left'     => UAGB_Helper::get_css_value(
+		'margin-left'    => UAGB_Helper::get_css_value(
 			$attr['headingBlockLeftMargin'],
 			$attr['headingBlockMarginUnit']
 		),
-		'padding-top'      => UAGB_Helper::get_css_value(
+		'padding-top'    => UAGB_Helper::get_css_value(
 			$attr['headingBlockTopPadding'],
 			$attr['headingBlockPaddingUnit']
 		),
-		'padding-right'    => UAGB_Helper::get_css_value(
+		'padding-right'  => UAGB_Helper::get_css_value(
 			$attr['headingBlockRightPadding'],
 			$attr['headingBlockPaddingUnit']
 		),
-		'padding-bottom'   => UAGB_Helper::get_css_value(
+		'padding-bottom' => UAGB_Helper::get_css_value(
 			$attr['headingBlockBottomPadding'],
 			$attr['headingBlockPaddingUnit']
 		),
-		'padding-left'     => UAGB_Helper::get_css_value(
+		'padding-left'   => UAGB_Helper::get_css_value(
 			$attr['headingBlockLeftPadding'],
 			$attr['headingBlockPaddingUnit']
 		),
 	),
-	'.wp-block-uagb-advanced-heading a' => array(
-		'color' => $attr['linkColor']
+	'.wp-block-uagb-advanced-heading a'               => array(
+		'color' => $attr['linkColor'],
 	),
-	'.wp-block-uagb-advanced-heading a:hover' => array(
-		'color' => $attr['linkHColor']
+	'.wp-block-uagb-advanced-heading a:hover'         => array(
+		'color' => $attr['linkHColor'],
 	),
-	' .uagb-desc-text'                 => array(
-		'letter-spacing' 	=> UAGB_Helper::get_css_value( $attr['subHeadLetterSpacing'], $attr['subHeadLetterSpacingType'] ),
-		'color' 			=> $attr['subHeadingColor'],
+	' .uagb-desc-text'                                => array(
+		'letter-spacing' => UAGB_Helper::get_css_value( $attr['subHeadLetterSpacing'], $attr['subHeadLetterSpacingType'] ),
+		'color'          => $attr['subHeadingColor'],
 	),
 	'.wp-block-uagb-advanced-heading .uagb-highlight' => array(
-		'background' => $attr['highLightBackground'],
-		'color'  => $attr['highLightColor'] ,
-		'font-family'  => $attr['highLightFontFamily']  ,
-		'font-style' => $attr['highLightFontStyle'],
-		'text-decoration' =>  $attr['highLightDecoration'] ,
-		'text-transform' =>  $attr['highLightTransform'],
-		'font-weight' =>  $attr['highLightFontWeight'],
-		'font-size' =>  UAGB_Helper::get_css_value( $attr['highLightFontSize'], $attr['highLightFontSizeType'] ),
-		'line-height' =>  UAGB_Helper::get_css_value( $attr['highLightLineHeight'], $attr['highLightLineHeightType'] ),
-		'letter-spacing' => UAGB_Helper::get_css_value( $attr['highLightLetterSpacing'], $attr['highLightLetterSpacingType'] ),
-		'border-style' => $attr['highLightBorderStyle'],
-		'border-width' => UAGB_Helper::get_css_value( $attr['highLightBorderWidth'], 'px'),
-		'border-color' => $attr['highLightBorderColor'],
-		'border-radius' => UAGB_Helper::get_css_value( $attr['highLightBorderRadius'], 'px'),
+		'background'      => $attr['highLightBackground'],
+		'color'           => $attr['highLightColor'],
+		'font-family'     => $attr['highLightFontFamily'],
+		'font-style'      => $attr['highLightFontStyle'],
+		'text-decoration' => $attr['highLightDecoration'],
+		'text-transform'  => $attr['highLightTransform'],
+		'font-weight'     => $attr['highLightFontWeight'],
+		'font-size'       => UAGB_Helper::get_css_value( $attr['highLightFontSize'], $attr['highLightFontSizeType'] ),
+		'line-height'     => UAGB_Helper::get_css_value( $attr['highLightLineHeight'], $attr['highLightLineHeightType'] ),
+		'letter-spacing'  => UAGB_Helper::get_css_value( $attr['highLightLetterSpacing'], $attr['highLightLetterSpacingType'] ),
+		'border-style'    => $attr['highLightBorderStyle'],
+		'border-width'    => UAGB_Helper::get_css_value( $attr['highLightBorderWidth'], 'px' ),
+		'border-color'    => $attr['highLightBorderColor'],
+		'border-radius'   => UAGB_Helper::get_css_value( $attr['highLightBorderRadius'], 'px' ),
 	),
 	'.wp-block-uagb-advanced-heading .uagb-highlight:hover' => array(
-		'border-color' => $attr['highLightBorderHColor'] ,
-	)
+		'border-color' => $attr['highLightBorderHColor'],
+	),
 );
 
-if('gradient' === $attr['headingColorType']){
-	$selectors[ ' .uagb-heading-text' ] =  array(
-		'background' => $attr['headingGradientColor'],
+if ( 'gradient' === $attr['headingColorType'] ) {
+	$selectors[' .uagb-heading-text'] = array(
+		'background'              => $attr['headingGradientColor'],
 		'-webkit-background-clip' => 'text',
-		'-webkit-text-fill-color' => 'transparent'
+		'-webkit-text-fill-color' => 'transparent',
 	);
 }
 
@@ -105,48 +105,48 @@ if ( 'none' !== $seperatorStyle ) {
 		'margin-bottom'    => UAGB_Helper::get_css_value( $attr['separatorSpace'], 'px' ),
 	);
 }
-$t_selectors[' .uagb-heading-text'] = array(
+$t_selectors[' .uagb-heading-text']              = array(
 	'letter-spacing' => UAGB_Helper::get_css_value( $attr['headLetterSpacingTablet'], $attr['headLetterSpacingType'] ),
 );
-$t_selectors[' .uagb-desc-text'] = array(
+$t_selectors[' .uagb-desc-text']                 = array(
 	'letter-spacing' => UAGB_Helper::get_css_value( $attr['subHeadLetterSpacingTablet'], $attr['subHeadLetterSpacingType'] ),
 );
-$t_selectors['.wp-block-uagb-advanced-heading ']                                    = array(
+$t_selectors['.wp-block-uagb-advanced-heading '] = array(
 	'padding-top'    => UAGB_Helper::get_css_value( $attr['headingBlockTopPaddingTablet'], $attr['headingBlockPaddingUnitTablet'] ),
 	'padding-right'  => UAGB_Helper::get_css_value( $attr['headingBlockRightPaddingTablet'], $attr['headingBlockPaddingUnitTablet'] ),
 	'padding-bottom' => UAGB_Helper::get_css_value( $attr['headingBlockBottomPaddingTablet'], $attr['headingBlockPaddingUnitTablet'] ),
 	'padding-left'   => UAGB_Helper::get_css_value( $attr['headingBlockLeftPaddingTablet'], $attr['headingBlockPaddingUnitTablet'] ),
-	'margin-top'    => UAGB_Helper::get_css_value( $attr['headingBlockTopMarginTablet'], $attr['headingBlockMarginUnitTablet'] ),
-	'margin-right'  => UAGB_Helper::get_css_value( $attr['headingBlockRightMarginTablet'], $attr['headingBlockMarginUnitTablet'] ),
-	'margin-bottom' => UAGB_Helper::get_css_value( $attr['headingBlockBottomMarginTablet'], $attr['headingBlockMarginUnitTablet'] ),
-	'margin-left'   => UAGB_Helper::get_css_value( $attr['headingBlockLeftMarginTablet'], $attr['headingBlockMarginUnitTablet'] ),
+	'margin-top'     => UAGB_Helper::get_css_value( $attr['headingBlockTopMarginTablet'], $attr['headingBlockMarginUnitTablet'] ),
+	'margin-right'   => UAGB_Helper::get_css_value( $attr['headingBlockRightMarginTablet'], $attr['headingBlockMarginUnitTablet'] ),
+	'margin-bottom'  => UAGB_Helper::get_css_value( $attr['headingBlockBottomMarginTablet'], $attr['headingBlockMarginUnitTablet'] ),
+	'margin-left'    => UAGB_Helper::get_css_value( $attr['headingBlockLeftMarginTablet'], $attr['headingBlockMarginUnitTablet'] ),
 );
 
-$t_selectors[ '.wp-block-uagb-advanced-heading .uagb-highlight' ] = array(
-	'font-size' => UAGB_Helper::get_css_value( $attr['highLightFontSizeTablet'], $attr['highLightFontSizeType'] ),
-	'line-height' => UAGB_Helper::get_css_value( $attr['highLightLineHeightTablet'], $attr['highLightLineHeightType'] ),
+$t_selectors['.wp-block-uagb-advanced-heading .uagb-highlight'] = array(
+	'font-size'      => UAGB_Helper::get_css_value( $attr['highLightFontSizeTablet'], $attr['highLightFontSizeType'] ),
+	'line-height'    => UAGB_Helper::get_css_value( $attr['highLightLineHeightTablet'], $attr['highLightLineHeightType'] ),
 	'letter-spacing' => UAGB_Helper::get_css_value( $attr['highLightLetterSpacingTablet'], $attr['highLightLetterSpacingType'] ),
 );
 
-$m_selectors[' .uagb-heading-text'] = array(
+$m_selectors[' .uagb-heading-text']                             = array(
 	'letter-spacing' => UAGB_Helper::get_css_value( $attr['headLetterSpacingMobile'], $attr['headLetterSpacingType'] ),
 );
-$m_selectors[' .uagb-desc-text'] = array(
+$m_selectors[' .uagb-desc-text']                                = array(
 	'letter-spacing' => UAGB_Helper::get_css_value( $attr['subHeadLetterSpacingMobile'], $attr['subHeadLetterSpacingType'] ),
 );
-$m_selectors['.wp-block-uagb-advanced-heading ']                                    = array(
+$m_selectors['.wp-block-uagb-advanced-heading ']                = array(
 	'padding-top'    => UAGB_Helper::get_css_value( $attr['headingBlockTopPaddingMobile'], $attr['headingBlockPaddingUnitMobile'] ),
 	'padding-right'  => UAGB_Helper::get_css_value( $attr['headingBlockRightPaddingMobile'], $attr['headingBlockPaddingUnitMobile'] ),
 	'padding-bottom' => UAGB_Helper::get_css_value( $attr['headingBlockBottomPaddingMobile'], $attr['headingBlockPaddingUnitMobile'] ),
 	'padding-left'   => UAGB_Helper::get_css_value( $attr['headingBlockLeftPaddingMobile'], $attr['headingBlockPaddingUnitMobile'] ),
-	'margin-top'    => UAGB_Helper::get_css_value( $attr['headingBlockTopMarginMobile'], $attr['headingBlockMarginUnitMobile'] ),
-	'margin-right'  => UAGB_Helper::get_css_value( $attr['headingBlockRightMarginMobile'], $attr['headingBlockMarginUnitMobile'] ),
-	'margin-bottom' => UAGB_Helper::get_css_value( $attr['headingBlockBottomMarginMobile'], $attr['headingBlockMarginUnitMobile'] ),
-	'margin-left'   => UAGB_Helper::get_css_value( $attr['headingBlockLeftMarginMobile'], $attr['headingBlockMarginUnitMobile'] ),
+	'margin-top'     => UAGB_Helper::get_css_value( $attr['headingBlockTopMarginMobile'], $attr['headingBlockMarginUnitMobile'] ),
+	'margin-right'   => UAGB_Helper::get_css_value( $attr['headingBlockRightMarginMobile'], $attr['headingBlockMarginUnitMobile'] ),
+	'margin-bottom'  => UAGB_Helper::get_css_value( $attr['headingBlockBottomMarginMobile'], $attr['headingBlockMarginUnitMobile'] ),
+	'margin-left'    => UAGB_Helper::get_css_value( $attr['headingBlockLeftMarginMobile'], $attr['headingBlockMarginUnitMobile'] ),
 );
-$m_selectors[ '.wp-block-uagb-advanced-heading .uagb-highlight' ] = array(
-	'font-size' => UAGB_Helper::get_css_value( $attr['highLightFontSizeMobile'], $attr['highLightFontSizeType'] ),
-	'line-height' => UAGB_Helper::get_css_value( $attr['highLightLineHeightMobile'], $attr['highLightLineHeightType'] ),
+$m_selectors['.wp-block-uagb-advanced-heading .uagb-highlight'] = array(
+	'font-size'      => UAGB_Helper::get_css_value( $attr['highLightFontSizeMobile'], $attr['highLightFontSizeType'] ),
+	'line-height'    => UAGB_Helper::get_css_value( $attr['highLightLineHeightMobile'], $attr['highLightLineHeightType'] ),
 	'letter-spacing' => UAGB_Helper::get_css_value( $attr['highLightLetterSpacingMobile'], $attr['highLightLetterSpacingType'] ),
 );
 
