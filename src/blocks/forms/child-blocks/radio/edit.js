@@ -14,17 +14,15 @@ const Render = lazy( () =>
 );
 
 const UAGBFormsRadioEdit = ( props ) => {
-	const [ setState ] = useState( {
-		optionsstate: [
-			{
-				optiontitle: __(
-					'Option Name 1',
-					'ultimate-addons-for-gutenberg'
-				),
-			},
-		],
-	} );
 
+	const [ state, setState ] = useState( { optionsstate: [
+		{
+			optiontitle: __(
+				'Option Name 1',
+				'ultimate-addons-for-gutenberg'
+			),
+		},
+	], } );
 	useEffect( () => {
 		const { setAttributes } = props;
 
