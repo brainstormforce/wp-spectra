@@ -17,7 +17,7 @@ const Render = lazy( () =>
 
 const UAGBFormsCheckboxEdit = ( props ) => {
 
-    const [ state, setState ] = useState( { optionsstate: [
+    const [ state, setState ] = useState( { optionsstate: [ // eslint-disable-line no-unused-vars
 		{
 			optiontitle: __(
 				'Option Name 1',
