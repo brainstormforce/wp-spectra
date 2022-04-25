@@ -10,26 +10,28 @@ function HighlightFormat( { isActive, onChange, value } ) {
 		return select( 'core/block-editor' ).getSelectedBlock();
 	}, [] );
 
-	if ( selectedBlock && selectedBlock.name !== 'uagb/advanced-heading' ) {
-		return null;
-	}
+	const {attributes} = selectedBlock
 
 	return (
 		<BlockControls>
-			<Toolbar className="uag-highlight-toolbar" label="Options">
-				<Button
-					isPrimary={isActive}
-					onClick={ () => {
-						onChange(
-							toggleFormat( value, {
-								type: FORMAT_TYPE,
-							} )
-						);
-					} }
-				>
-					<span className="dashicons  dashicons-admin-customizer"></span>
-				</Button>
-			</Toolbar>
+			{
+				selectedBlock && selectedBlock.name === 'uagb/advanced-heading' && attributes.headingColorType === 'classic' && (
+					<Toolbar className="uag-highlight-toolbar" label="Options">
+						<Button
+							isPrimary={isActive}
+							onClick={ () => {
+								onChange(
+									toggleFormat( value, {
+										type: FORMAT_TYPE,
+									} )
+								);
+							} }
+						>
+							<span className="dashicons  dashicons-admin-customizer"></span>
+						</Button>
+					</Toolbar>
+				)
+			}
 		</BlockControls>
 	);
 }

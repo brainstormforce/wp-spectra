@@ -771,7 +771,7 @@ const Settings = ( props ) => {
 				</UAGAdvancedPanelBody>
 	};
 
-	const blockStylePanel = () => {
+	const backgroundStylePanel = () => {
 		return (
 			<UAGAdvancedPanelBody
 				title={ __( 'Background', 'ultimate-addons-for-gutenberg' ) }
@@ -1198,13 +1198,13 @@ const Settings = ( props ) => {
 						{ generalPanel() }
 					</InspectorTab>
 					<InspectorTab { ...UAGTabs.style }>
-						{blockStylePanel()}
 						{ headingStylePanel() }
 						{ 'none' !== seperatorStyle && seperatorSettings() }
 						{ subHeadingStylePanel() }
-						{spacingStylePanel()}
 						{linkStylePanel()}
-						{highLightStylePanel()}
+						{headingColorType === 'classic' && highLightStylePanel()}
+						{backgroundStylePanel()}
+						{spacingStylePanel()}
 					</InspectorTab>
 					<InspectorTab
 						{ ...UAGTabs.advance }

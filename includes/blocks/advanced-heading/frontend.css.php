@@ -15,13 +15,13 @@ $t_selectors = array();
 
 $selectors = array(
 	' .uagb-heading-text'                             => array(
-		'background'     => 'classic' === $attr['headingBackgroundType'] ? $attr['headingBackground'] : $attr['headingGradientBackground'],
 		'color'          => $attr['headingColor'],
 		'margin-bottom'  => UAGB_Helper::get_css_value( $attr['headSpace'], 'px' ),
 		'letter-spacing' => UAGB_Helper::get_css_value( $attr['headLetterSpacing'], $attr['headLetterSpacingType'] ),
 		'text-shadow'    => UAGB_Helper::get_css_value( $attr['headShadowHOffset'], 'px' ) . ' ' . UAGB_Helper::get_css_value( $attr['headShadowVOffset'], 'px' ) . ' ' . UAGB_Helper::get_css_value( $attr['headShadowBlur'], 'px' ) . ' ' . $attr['headShadowColor'],
 	),
 	'.wp-block-uagb-advanced-heading '                => array(
+		'background'     => 'classic' === $attr['blockBackgroundType'] ? $attr['blockBackground'] : $attr['blockGradientBackground'],
 		'text-align'     => $attr['headingAlign'],
 		'margin-top'     => UAGB_Helper::get_css_value(
 			$attr['headingBlockTopMargin'],
