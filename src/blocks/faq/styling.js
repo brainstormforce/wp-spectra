@@ -13,6 +13,8 @@ function styling( props ) {
 		rowsGap,
 		rowsGapTablet,
 		rowsGapMobile,
+		rowsGapUnit,
+		columnsGapUnit,
 		columnsGap,
 		columnsGapTablet,
 		columnsGapMobile,
@@ -125,11 +127,11 @@ function styling( props ) {
 			'fill': iconActiveColorTemp,
 		},
 		' .uagb-faq-child__outer-wrap': {
-			'margin-bottom': generateCSSUnit( rowsGap, 'px' ),
+			'margin-bottom': generateCSSUnit( rowsGap, rowsGapUnit ),
 		},
 		'.uagb-faq-layout-grid .block-editor-inner-blocks .block-editor-block-list__layout': {
-			'grid-column-gap': generateCSSUnit( columnsGap, 'px' ),
-			'grid-row-gap': generateCSSUnit( rowsGap, 'px' ),
+			'grid-column-gap': generateCSSUnit( columnsGap, columnsGapUnit ),
+			'grid-row-gap': generateCSSUnit( rowsGap, rowsGapUnit ),
 		},
 		' .uagb-faq-item': {
 			'background-color': boxBgColor,
@@ -302,11 +304,11 @@ function styling( props ) {
 			'font-size': generateCSSUnit( iconSizeTablet, iconSizeType ),
 		},
 		' .uagb-faq-child__outer-wrap': {
-			'margin-bottom': generateCSSUnit( rowsGapTablet, 'px' ),
+			'margin-bottom': generateCSSUnit( rowsGapTablet, rowsGapUnit ),
 		},
 		'.uagb-faq-layout-grid .block-editor-inner-blocks .block-editor-block-list__layout': {
-			'grid-column-gap': generateCSSUnit( columnsGapTablet, 'px' ),
-			'grid-row-gap': generateCSSUnit( rowsGapTablet, 'px' ),
+			'grid-column-gap': generateCSSUnit( columnsGapTablet, columnsGapUnit ),
+			'grid-row-gap': generateCSSUnit( rowsGapTablet, rowsGapUnit ),
 		},
 	};
 
@@ -384,11 +386,11 @@ function styling( props ) {
 			'font-size': generateCSSUnit( iconSizeMobile, iconSizeType ),
 		},
 		' .uagb-faq-child__outer-wrap': {
-			'margin-bottom': generateCSSUnit( rowsGapMobile, 'px' ),
+			'margin-bottom': generateCSSUnit( rowsGapMobile, rowsGapUnit ),
 		},
 		'.uagb-faq-layout-grid .block-editor-inner-blocks .block-editor-block-list__layout': {
-			'grid-column-gap': generateCSSUnit( columnsGapMobile, 'px' ),
-			'grid-row-gap': generateCSSUnit( rowsGapMobile, 'px' ),
+			'grid-column-gap': generateCSSUnit( columnsGapMobile, columnsGapUnit ),
+			'grid-row-gap': generateCSSUnit( rowsGapMobile, rowsGapUnit ),
 		},
 	};
 

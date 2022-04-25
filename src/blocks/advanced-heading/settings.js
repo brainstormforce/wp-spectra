@@ -64,12 +64,15 @@ const Settings = ( props ) => {
 		separatorWidthType,
 		seperatorStyle,
 		separatorHeight,
+		separatorHeightType,
 		headSpace,
 		headSpaceTablet,
 		headSpaceMobile,
+		headSpaceType,
 		separatorSpace,
 		separatorSpaceTablet,
 		separatorSpaceMobile,
+		separatorSpaceType,
 		headLoadGoogleFonts,
 		subHeadLoadGoogleFonts
 	} = attributes;
@@ -341,7 +344,7 @@ const Settings = ( props ) => {
 				/>
 				<ResponsiveSlider
 					label={ __(
-						'Bottom Spacing (px)',
+						'Bottom Spacing',
 						'ultimate-addons-for-gutenberg'
 					) }
 					data={ {
@@ -360,7 +363,19 @@ const Settings = ( props ) => {
 					} }
 					min={ 0 }
 					max={ 200 }
-					displayUnit={ false }
+					unit={ {
+						value: headSpaceType,
+						label: 'headSpaceType',
+					} }
+					units={ [
+						{
+							name: __(
+								'Pixel',
+								'ultimate-addons-for-gutenberg'
+							),
+							unitValue: 'px',
+						},
+					] }
 					setAttributes={ setAttributes }
 				/>
 			</UAGAdvancedPanelBody>
@@ -501,7 +516,7 @@ const Settings = ( props ) => {
 				/>
 				<Range
 					label={ __(
-						'Thickness(px)',
+						'Thickness',
 						'ultimate-addons-for-gutenberg'
 					) }
 					setAttributes={ setAttributes }
@@ -513,7 +528,19 @@ const Settings = ( props ) => {
 					}
 					min={ 0 }
 					max={ 20 }
-					displayUnit={ false }
+					unit={ {
+						value: separatorHeightType,
+						label: 'separatorHeightType',
+					} }
+					units={ [
+						{
+							name: __(
+								'Pixel',
+								'ultimate-addons-for-gutenberg'
+							),
+							unitValue: 'px',
+						},
+					] }
 				/>
 				<AdvancedPopColorControl
 					label={ __(
@@ -531,7 +558,7 @@ const Settings = ( props ) => {
 				/>
 				<ResponsiveSlider
 					label={ __(
-						'Bottom Spacing (px)',
+						'Bottom Spacing',
 						'ultimate-addons-for-gutenberg'
 					) }
 					data={ {
@@ -550,7 +577,19 @@ const Settings = ( props ) => {
 					} }
 					min={ 0 }
 					max={ 200 }
-					displayUnit={ false }
+					unit={ {
+						value: separatorSpaceType,
+						label: 'separatorSpaceType',
+					} }
+					units={ [
+						{
+							name: __(
+								'Pixel',
+								'ultimate-addons-for-gutenberg'
+							),
+							unitValue: 'px',
+						},
+					] }
 					setAttributes={ setAttributes }
 				/>
 			</UAGAdvancedPanelBody>

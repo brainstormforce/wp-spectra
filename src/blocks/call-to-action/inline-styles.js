@@ -31,7 +31,9 @@ function CtaStyle( props ) {
 		descLineHeightTablet,
 		descLineHeightMobile,
 		titleSpace,
+		titleSpaceType,
 		descSpace,
+		descSpaceType,
 		ctaPosition,
 		ctaFontSize,
 		ctaFontSizeType,
@@ -67,10 +69,13 @@ function CtaStyle( props ) {
 		ctaIconSpaceTablet,
 		ctaIconSpaceMobile,
 		ctaLeftSpace,
+		ctaLeftSpaceType,
 		ctaRightSpace,
+		ctaRightSpaceType,
 		contentWidth,
 		contentWidthTablet,
 		contentWidthMobile,
+		contentWidthType,
 		ctaType,
 		titleTransform,
 		titleDecoration,
@@ -119,6 +124,7 @@ function CtaStyle( props ) {
 		secondCtaHoverColor,
 		secondCtaHoverBackground,
 		gap,
+		gapType,
 	} = props.attributes;
 
 	const selectors = {
@@ -144,7 +150,7 @@ function CtaStyle( props ) {
 				titleLineHeightType
 			),
 			'color': titleColor,
-			'margin-bottom': generateCSSUnit( titleSpace, 'px' ),
+			'margin-bottom': generateCSSUnit( titleSpace, titleSpaceType ),
 		},
 
 		// Description Style
@@ -160,28 +166,28 @@ function CtaStyle( props ) {
 				descLineHeightType
 			),
 			'color': descColor,
-			'margin-bottom': generateCSSUnit( descSpace, 'px' ),
+			'margin-bottom': generateCSSUnit( descSpace, descSpaceType ),
 		},
 	};
 
 	if ( textAlign === 'left' && ctaPosition === 'right' ) {
 		selectors[ ' .uagb-cta__left-right-wrap .uagb-cta__content' ] = {
-			'margin-left': generateCSSUnit( ctaLeftSpace, 'px' ),
+			'margin-left': generateCSSUnit( ctaLeftSpace, ctaLeftSpaceType ),
 			'margin-right': '0',
 		};
 		selectors[ ' > .uagb-cta__wrap' ] = {
-			'margin-left': generateCSSUnit( ctaLeftSpace, 'px' ),
+			'margin-left': generateCSSUnit( ctaLeftSpace, ctaLeftSpaceType ),
 			'margin-right': '0',
 		};
 	}
 
 	if ( textAlign === 'right' && ctaPosition === 'right' ) {
 		selectors[ ' .uagb-cta__left-right-wrap .uagb-cta__content' ] = {
-			'margin-right': generateCSSUnit( ctaRightSpace, 'px' ),
+			'margin-right': generateCSSUnit( ctaRightSpace, ctaRightSpaceType ),
 			'margin-left': '0',
 		};
 		selectors[ ' > .uagb-cta__wrap' ] = {
-			'margin-right': generateCSSUnit( ctaRightSpace, 'px' ),
+			'margin-right': generateCSSUnit( ctaRightSpace, ctaRightSpaceType ),
 			'margin-left': '0',
 		};
 	}
@@ -232,7 +238,7 @@ function CtaStyle( props ) {
 		'padding-bottom': generateCSSUnit( secondCtaBottomPadding, secondCtaPaddingUnit ),
 		'padding-left': generateCSSUnit( secondCtaLeftPadding, secondCtaPaddingUnit ),
 		'padding-right': generateCSSUnit( secondCtaRightPadding, secondCtaPaddingUnit ),
-		'margin-left': generateCSSUnit( gap, 'px' ),
+		'margin-left': generateCSSUnit( gap, gapType ),
 		'align-self': 'top' === buttonAlign ? 'flex-start' : 'center',
 		'height' : 'fit-content',
 	};
@@ -488,7 +494,7 @@ function CtaStyle( props ) {
 
 	if ( ctaPosition === 'right' && ( ctaType === 'text' || ctaType === 'button' ) ) {
 		selectors[ ' .uagb-cta__wrap' ] = {
-			'width': generateCSSUnit( contentWidth, '%' ),
+			'width': generateCSSUnit( contentWidth, contentWidthType ),
 		};
 		selectors[ '.uagb-cta__outer-wrap > a' ] = {
 			'align-self': 'top' === buttonAlign ? 'flex-start' : 'center',
@@ -496,10 +502,10 @@ function CtaStyle( props ) {
 			'margin-left': 'auto'
 		};
 		tabletSelectors[ ' .uagb-cta__wrap' ] = {
-			'width': generateCSSUnit( contentWidthTablet, '%' ),
+			'width': generateCSSUnit( contentWidthTablet, contentWidthType ),
 		};
 		mobileSelectors[ ' .uagb-cta__wrap' ] = {
-			'width': generateCSSUnit( contentWidthMobile, '%' ),
+			'width': generateCSSUnit( contentWidthMobile, contentWidthType ),
 		};
 	}
 

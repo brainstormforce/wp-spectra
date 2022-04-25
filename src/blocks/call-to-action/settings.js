@@ -59,7 +59,9 @@ const Settings = ( props ) => {
 		descLineHeightMobile,
 		descLoadGoogleFonts,
 		titleSpace,
+		titleSpaceType,
 		descSpace,
+		descSpaceType,
 		ctaPosition,
 		buttonAlign,
 		ctaType,
@@ -81,6 +83,7 @@ const Settings = ( props ) => {
 		contentWidth,
 		contentWidthTablet,
 		contentWidthMobile,
+		contentWidthType,
 		ctaBtnLinkColor,
 		ctaBgHoverColor,
 		ctaBgColor,
@@ -107,7 +110,9 @@ const Settings = ( props ) => {
 		ctaBorderRadius,
 		stack,
 		ctaLeftSpace,
+		ctaLeftSpaceType,
 		ctaRightSpace,
+		ctaRightSpaceType,
 		ctaLinkHoverColor,
 		titleTransform,
 		titleDecoration,
@@ -161,6 +166,7 @@ const Settings = ( props ) => {
 		secondCtaIconPosition,
 		secondCtaIconSpace,
 		gap,
+		gapType,
 	} = attributes;
 
 	let loadCtaGoogleFonts;
@@ -1233,7 +1239,7 @@ const Settings = ( props ) => {
 			>
 				<Range
 					label={ __(
-						'Heading Bottom Margin (px)',
+						'Heading Bottom Margin',
 						'ultimate-addons-for-gutenberg'
 					) }
 					setAttributes={ setAttributes }
@@ -1243,12 +1249,24 @@ const Settings = ( props ) => {
 					}
 					min={ 0 }
 					max={ 200 }
-					displayUnit={ false }
+					unit={ {
+						value: titleSpaceType,
+						label: 'titleSpaceType',
+					} }
+					units={ [
+						{
+							name: __(
+								'Pixel',
+								'ultimate-addons-for-gutenberg'
+							),
+							unitValue: 'px',
+						},
+					] }
 				/>
 				{ ctaPosition !== 'right' &&
 					<Range
 						label={ __(
-							'Description Bottom Margin (px)',
+							'Description Bottom Margin',
 							'ultimate-addons-for-gutenberg'
 						) }
 						setAttributes={ setAttributes }
@@ -1258,13 +1276,25 @@ const Settings = ( props ) => {
 						}
 						min={ 0 }
 						max={ 200 }
-						displayUnit={ false }
+						unit={ {
+							value: descSpaceType,
+							label: 'descSpaceType',
+						} }
+						units={ [
+							{
+								name: __(
+									'Pixel',
+									'ultimate-addons-for-gutenberg'
+								),
+								unitValue: 'px',
+							},
+						] }
 					/>
 				}
 				{ textAlign === 'left' && ctaPosition === 'right' && (
 					<Range
 						label={ __(
-							'Content Left Margin (px)',
+							'Content Left Margin',
 							'ultimate-addons-for-gutenberg'
 						) }
 						setAttributes={ setAttributes }
@@ -1274,13 +1304,25 @@ const Settings = ( props ) => {
 						}
 						min={ 0 }
 						max={ 200 }
-						displayUnit={ false }
+						unit={ {
+							value: ctaLeftSpaceType,
+							label: 'ctaLeftSpaceType',
+						} }
+						units={ [
+							{
+								name: __(
+									'Pixel',
+									'ultimate-addons-for-gutenberg'
+								),
+								unitValue: 'px',
+							},
+						] }
 					/>
 				) }
 				{ textAlign === 'right' && ctaPosition === 'right' && (
 					<Range
 						label={ __(
-							'Content Right Margin (px)',
+							'Content Right Margin',
 							'ultimate-addons-for-gutenberg'
 						) }
 						setAttributes={ setAttributes }
@@ -1290,13 +1332,25 @@ const Settings = ( props ) => {
 						}
 						min={ 0 }
 						max={ 200 }
-						displayUnit={ false }
+						unit={ {
+							value: ctaRightSpaceType,
+							label: 'ctaRightSpaceType',
+						} }
+						units={ [
+							{
+								name: __(
+									'Pixel',
+									'ultimate-addons-for-gutenberg'
+								),
+								unitValue: 'px',
+							},
+						] }
 					/>
 				) }
 				{ enabledSecondCtaButton && (
 				<Range
 					label={ __(
-						'Gap between buttons (px)',
+						'Gap between buttons',
 						'ultimate-addons-for-gutenberg'
 					) }
 					setAttributes={ setAttributes }
@@ -1306,7 +1360,19 @@ const Settings = ( props ) => {
 					}
 					min={ 0 }
 					max={ 200 }
-					displayUnit={ false }
+					unit={ {
+						value: gapType,
+						label: 'gapType',
+					} }
+					units={ [
+						{
+							name: __(
+								'Pixel',
+								'ultimate-addons-for-gutenberg'
+							),
+							unitValue: 'px',
+						},
+					] }
 				/>
 				)}
 			</UAGAdvancedPanelBody>
@@ -1447,7 +1513,7 @@ const Settings = ( props ) => {
 								{ ctaPosition === 'right' && (
 									<ResponsiveSlider
 										label={ __(
-											'Content Width (%)',
+											'Content Width',
 											'ultimate-addons-for-gutenberg'
 										) }
 										data={ {
@@ -1466,7 +1532,19 @@ const Settings = ( props ) => {
 										} }
 										min={ 0 }
 										max={ 100 }
-										displayUnit={ false }
+										unit={ {
+											value: contentWidthType,
+											label: 'contentWidthType',
+										} }
+										units={ [
+											{
+												name: __(
+													'%',
+													'ultimate-addons-for-gutenberg'
+												),
+												unitValue: '%',
+											},
+										] }
 										setAttributes={ setAttributes }
 									/>
 								) }

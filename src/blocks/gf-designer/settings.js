@@ -51,6 +51,7 @@ const Settings = ( props ) => {
 		fieldBorderWidth,
 		fieldBorderWidthTablet,
 		fieldBorderWidthMobile,
+		fieldBorderWidthType,
 		fieldBorderRadius,
 		fieldBorderColor,
 		fieldBorderFocusColor,
@@ -66,6 +67,7 @@ const Settings = ( props ) => {
 		buttonBorderWidth,
 		buttonBorderWidthTablet,
 		buttonBorderWidthMobile,
+		buttonBorderWidthType,
 		buttonBorderRadius,
 		buttonBorderColor,
 		buttonBorderHoverColor,
@@ -120,6 +122,7 @@ const Settings = ( props ) => {
 		radioCheckBorderWidth,
 		radioCheckBorderWidthTablet,
 		radioCheckBorderWidthMobile,
+		radioCheckBorderWidthType,
 		radioCheckBorderRadius,
 		radioCheckFontSize,
 		radioCheckFontSizeType,
@@ -152,6 +155,7 @@ const Settings = ( props ) => {
 		errorMsgBgColor,
 		errorMsgBorderColor,
 		msgBorderSize,
+		msgBorderSizeType,
 		msgBorderRadius,
 		msgFontSize,
 		msgFontSizeType,
@@ -465,7 +469,7 @@ const Settings = ( props ) => {
 					fieldStyle === 'underline' ) && (
 					<ResponsiveSlider
 						label={ __(
-							'Width (px)',
+							'Width',
 							'ultimate-addons-for-gutenberg'
 						) }
 						data={ {
@@ -484,7 +488,20 @@ const Settings = ( props ) => {
 						} }
 						min={ 0 }
 						max={ 50 }
-						displayUnit={ false }
+						unit={ {
+							value: fieldBorderWidthType,
+							label:
+								'fieldBorderWidthType',
+						} }
+						units={ [
+							{
+								name: __(
+									'Pixel',
+									'ultimate-addons-for-gutenberg'
+								),
+								unitValue: 'px',
+							},
+						] }
 						setAttributes={ setAttributes }
 					/>
 				) }
@@ -1059,7 +1076,7 @@ const Settings = ( props ) => {
 				{ 'none' !== buttonBorderStyle && (
 					<ResponsiveSlider
 						label={ __(
-							'Width (px)',
+							'Width',
 							'ultimate-addons-for-gutenberg'
 						) }
 						data={ {
@@ -1078,7 +1095,20 @@ const Settings = ( props ) => {
 						} }
 						min={ 0 }
 						max={ 50 }
-						displayUnit={ false }
+						unit={ {
+							value: buttonBorderWidthType,
+							label:
+								'buttonBorderWidthType',
+						} }
+						units={ [
+							{
+								name: __(
+									'Pixel',
+									'ultimate-addons-for-gutenberg'
+								),
+								unitValue: 'px',
+							},
+						] }
 						setAttributes={ setAttributes }
 					/>
 				) }
@@ -1790,7 +1820,7 @@ const Settings = ( props ) => {
 								<h2>{ __( 'Radio & Checkbox Border' ) }</h2>
 								<ResponsiveSlider
 									label={ __(
-										'Width (px)',
+										'Width',
 										'ultimate-addons-for-gutenberg'
 									) }
 									data={ {
@@ -1809,7 +1839,20 @@ const Settings = ( props ) => {
 									} }
 									min={ 0 }
 									max={ 50 }
-									displayUnit={ false }
+									unit={ {
+										value: radioCheckBorderWidthType,
+										label:
+											'radioCheckBorderWidthType',
+									} }
+									units={ [
+										{
+											name: __(
+												'Pixel',
+												'ultimate-addons-for-gutenberg'
+											),
+											unitValue: 'px',
+										},
+									] }
 									setAttributes={ setAttributes }
 								/>
 								<AdvancedPopColorControl
@@ -2046,7 +2089,7 @@ const Settings = ( props ) => {
 				/>
 				<Range
 					label={ __(
-						'Border Width (px)',
+						'Border Width',
 						'ultimate-addons-for-gutenberg'
 					) }
 					setAttributes={ setAttributes }
@@ -2056,7 +2099,20 @@ const Settings = ( props ) => {
 					}
 					min={ 0 }
 					max={ 50 }
-					displayUnit={ false }
+					unit={ {
+						value: msgBorderSizeType,
+						label:
+							'msgBorderSizeType',
+					} }
+					units={ [
+						{
+							name: __(
+								'Pixel',
+								'ultimate-addons-for-gutenberg'
+							),
+							unitValue: 'px',
+						},
+					] }
 				/>
 				<Range
 					label={ __(

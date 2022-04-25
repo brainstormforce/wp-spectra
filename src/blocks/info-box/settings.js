@@ -1106,7 +1106,7 @@ const Settings = ( props ) => {
 										) }
 										<Range
 											label={ __(
-												'Rounded Corners (px)',
+												'Rounded Corners',
 												'ultimate-addons-for-gutenberg'
 											) }
 											setAttributes={ setAttributes }
@@ -1123,6 +1123,15 @@ const Settings = ( props ) => {
 												label:
 													'iconimgBorderRadiusUnit',
 											} }
+											units={ [
+												{
+													name: __(
+														'Pixel',
+														'ultimate-addons-for-gutenberg'
+													),
+													unitValue: 'px',
+												},
+											] }
 										/>
 									</>
 								) }

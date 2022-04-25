@@ -237,11 +237,25 @@ const attributes = {
 			styleType: 'main-title-bottom-margin'
 		},
 	},
+	titleSpaceType: {
+		type: 'string',
+		default: 'px',
+		UAGCopyPaste: {
+			styleType: 'main-title-unit-type'
+		},
+	},
 	descSpace: {
 		type: 'number',
 		default: 10,
 		UAGCopyPaste: {
 			styleType: 'desc-bottom-margin'
+		},
+	},
+	descSpaceType: {
+		type: 'string',
+		default: 'px',
+		UAGCopyPaste: {
+			styleType: 'desc-bottom-margin-unit-type'
 		},
 	},
 	block_id: {
@@ -384,6 +398,13 @@ const attributes = {
 			styleType: 'desc-width'
 		},
 	},
+	contentWidthType: {
+		type: 'string',
+		default: '%',
+		UAGCopyPaste: {
+			styleType: 'desc-width-type'
+		},
+	},
 	ctaBtnLinkColor: {
 		type: 'string',
 		UAGCopyPaste: {
@@ -470,11 +491,25 @@ const attributes = {
 		},
 		default: 5,
 	},
+	ctaLeftSpaceType: {
+		type: 'string',
+		default: 'px',
+		UAGCopyPaste: {
+			styleType: 'btn-margin-unit-type'
+		},
+	},
 	ctaRightSpace: {
 		type: 'number',
 		default: 5,
 		UAGCopyPaste: {
 			styleType: 'btn-right-margin'
+		},
+	},
+	ctaRightSpaceType: {
+		type: 'string',
+		default: 'px',
+		UAGCopyPaste: {
+			styleType: 'btn-margin-unit-type'
 		},
 	},
 	ctaTopPadding: {
@@ -835,6 +870,13 @@ const attributes = {
 	gap: {
 		type: 'number',
 		default: 10,
+	},
+	gapType: {
+		type: 'string',
+		default: 'px',
+		UAGCopyPaste: {
+			styleType: 'desc-bottom-margin-unit-type'
+		},
 	},
 	isPreview: {
 		type: 'boolean',

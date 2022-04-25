@@ -63,14 +63,15 @@
 		z-index: 3;
 	}
 
-	.block-editor-block-list__block.is-selected { // Added CSS for better clarity to the users to indicates which block is selected & being edited.
-		box-shadow: 0 0 0 2px #007cba;
-		border-radius: 5px;
-	}
 
 	.block-editor-block-list__block:not([contenteditable]):focus::after {
 		z-index: 999;
 	}
+}
+
+.block-editor-block-list__layout .block-editor-block-list__block { // Added CSS for better clarity to the users to indicates which block is selected & being edited.
+	box-shadow: 0 0 0 2px #007cba;
+	border-radius: 5px;
 }
 
 /* UAG Help Notice CSS*/

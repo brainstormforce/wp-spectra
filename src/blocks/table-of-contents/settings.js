@@ -48,6 +48,7 @@ const Settings = ( props ) => {
 		iconSize,
 		smoothScroll,
 		smoothScrollOffset,
+		smoothScrollOffsetType,
 		smoothScrollDelay,
 		scrollToTop,
 		scrollToTopColor,
@@ -86,6 +87,7 @@ const Settings = ( props ) => {
 		headingBottom,
 		headingBottomTablet,
 		headingBottomMobile,
+		headingBottomType,
 		contentPaddingDesktop,
 		contentPaddingTablet,
 		contentPaddingMobile,
@@ -233,7 +235,7 @@ const Settings = ( props ) => {
 					<>
 						<Range
 							label={ __(
-								'Smooth Scroll Offset (px)',
+								'Smooth Scroll Offset',
 								'ultimate-addons-for-gutenberg'
 							) }
 							setAttributes={ setAttributes }
@@ -243,7 +245,19 @@ const Settings = ( props ) => {
 							}
 							min={ 0 }
 							max={ 1000 }
-							displayUnit={ false }
+							unit={ {
+								value: smoothScrollOffsetType,
+								label: 'smoothScrollOffsetType',
+							} }
+							units={ [
+								{
+									name: __(
+										'Pixel',
+										'ultimate-addons-for-gutenberg'
+									),
+									unitValue: 'px',
+								},
+							] }
 						/>
 						<Range
 							label={ __(
@@ -374,7 +388,19 @@ const Settings = ( props ) => {
 					} }
 					min={ 0 }
 					max={ 50 }
-					displayUnit={ false }
+					unit={ {
+						value: headingBottomType,
+						label: 'headingBottomType',
+					} }
+					units={ [
+						{
+							name: __(
+								'Pixel',
+								'ultimate-addons-for-gutenberg'
+							),
+							unitValue: 'px',
+						},
+					] }
 					setAttributes={ setAttributes }
 				/>
 			</UAGAdvancedPanelBody>
