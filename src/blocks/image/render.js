@@ -60,6 +60,7 @@ const Render = ( props ) => {
 		layout,
 		url,
 		alt,
+		sizeSlug,
 		caption,
 		align,
 		id,
@@ -101,6 +102,13 @@ const Render = ( props ) => {
 		const {imageDefaultSize, mediaUpload} = getSettings();
 		return {imageDefaultSize, mediaUpload}
 	}, [] );
+
+	useEffect(() => {
+		setAttributes( {
+			width: undefined,
+			height: undefined,
+		} );
+	}, [sizeSlug])
 
 	const { image } = useSelect(
 		( select ) => {
@@ -240,6 +248,7 @@ const Render = ( props ) => {
 				break;
 		}
 		mediaAttributes.href = href;
+
 		setAttributes( {
 			...mediaAttributes,
 			...additionalAttributes,
