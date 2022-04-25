@@ -380,22 +380,6 @@ const Settings = ( props ) => {
 				initialOpen={ false }
 			>
 				<ColorSwitchControl
-					label={__( 'Background Color', 'ultimate-addons-for-gutenberg' )}
-					type={{
-						value: headingBackgroundType,
-						label: 'headingBackgroundType'
-					}}
-					classic={{
-						value: headingBackground,
-						label: 'headingBackground'
-					}}
-					gradient={{
-						value: headingGradientBackground,
-						label: 'headingGradientBackground'
-					}}
-					setAttributes={ setAttributes }
-				/>
-				<ColorSwitchControl
 					label={__( 'Text Color', 'ultimate-addons-for-gutenberg' )}
 					type={{
 						value: headingColorType,
@@ -408,6 +392,22 @@ const Settings = ( props ) => {
 					gradient={{
 						value: headingGradientColor,
 						label: 'headingGradientColor'
+					}}
+					setAttributes={ setAttributes }
+				/>
+				<ColorSwitchControl
+					label={__( 'Background Color', 'ultimate-addons-for-gutenberg' )}
+					type={{
+						value: headingBackgroundType,
+						label: 'headingBackgroundType'
+					}}
+					classic={{
+						value: headingBackground,
+						label: 'headingBackground'
+					}}
+					gradient={{
+						value: headingGradientBackground,
+						label: 'headingGradientBackground'
 					}}
 					setAttributes={ setAttributes }
 				/>

@@ -40,6 +40,7 @@ const attributes = {
 	},
 	headingGradientColor: {
 		type: 'string',
+		default: 'linear-gradient(90deg, rgb(6, 147, 227) 0%, rgb(155, 81, 224) 100%)',
 		UAGCopyPaste: {
 			styleType: 'main-title-gradient-color'
 		}
@@ -50,6 +51,7 @@ const attributes = {
 	},
 	headingGradientBackground: {
 		type: 'string',
+		default: 'linear-gradient(90deg, rgb(6, 147, 227) 0%, rgb(155, 81, 224) 100%)',
 	},
 	headingBackground: {
 		type: 'string',
