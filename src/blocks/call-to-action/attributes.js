@@ -850,6 +850,14 @@ const attributes = {
 		type: 'number',
 		default: 15
 	},
+	textAlignTablet: {
+		type: 'string',
+		default: 'center'
+	},
+	textAlignMobile: {
+		type: 'string',
+		default: 'center'
+	},
 };
 
 export default attributes;

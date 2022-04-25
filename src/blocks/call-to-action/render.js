@@ -48,35 +48,18 @@ const Render = ( props ) => {
 	const output = () => {
 		return (
 			<>
-					{ ctaPosition === 'below-title' && (
-						<>
-							{ titleText }
-							{ descText }
-							<div className='uagb-cta__buttons'>
-								{ isCta }
-								{ secondCtaButton }
-							</div>
-						</>
-					) }
-					{ ctaPosition === 'right' && (
-						<>
-							<div className="uagb-cta__wrap">
-								{ titleText }
-								{ descText }
-							</div>
-							<div className='uagb-cta__buttons'>
-								{isCta}
-								{secondCtaButton}
-							</div>
-						</>
-					) }
+				<div className="uagb-cta__wrap">
+					{ titleText }
+					{ descText }
+				</div>
+				<div className='uagb-cta__buttons'>
+					{isCta}
+					{secondCtaButton}
+				</div>
 			</>
 		);
 	};
-	let iconimgStyleClass;
-	if ( ctaPosition === 'right' && stack !== 'none' ) {
-		iconimgStyleClass = 'uagb-cta__content-stacked-' + stack + ' ';
-	}
+
 	const previewImageData = `${ uagb_blocks_info.uagb_url }/admin/assets/preview-images/call-to-action.png`;
 	return (
 		isPreview ? <img width='100%' src={previewImageData} alt=''/> :
@@ -86,7 +69,6 @@ const Render = ( props ) => {
 					`uagb-editor-preview-mode-${ deviceType.toLowerCase() }`,
 					'uagb-cta__outer-wrap',
 					'button' === ctaType ? 'wp-block-button' : '',
-					iconimgStyleClass
 				) }
 			>
 				{ ctaType === 'all' && (
