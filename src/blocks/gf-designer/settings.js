@@ -362,7 +362,7 @@ const Settings = ( props ) => {
 					'Field Style & Border',
 					'ultimate-addons-for-gutenberg'
 				) }
-				initialOpen={ false }
+				initialOpen={ true }
 			>
 				<MultiButtonsControl
 					setAttributes={ setAttributes }

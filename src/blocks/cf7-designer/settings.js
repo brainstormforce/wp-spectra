@@ -793,7 +793,7 @@ const Settings = ( props ) => {
 	const fieldStyling = (
 		<UAGAdvancedPanelBody
 			title={ __( 'Field', 'ultimate-addons-for-gutenberg' ) }
-			initialOpen={ false }
+			initialOpen={ true }
 		>
 			<Border
 				disabledBorderTitle= {false}

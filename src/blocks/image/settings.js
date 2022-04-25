@@ -1223,7 +1223,7 @@ export default function Settings( props ) {
 	const ImageStylePanel = (
 		<UAGAdvancedPanelBody
 			title={ __( 'Image', 'ultimate-addons-for-gutenberg' ) }
-			initialOpen={ false }
+			initialOpen={ true }
 		>
 			<MultiButtonsControl
 				setAttributes={ setAttributes }

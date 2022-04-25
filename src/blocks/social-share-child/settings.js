@@ -384,6 +384,7 @@ const Settings = ( props ) => {
 		return (
 			<UAGAdvancedPanelBody
 				title={ __( 'Icon Color', 'ultimate-addons-for-gutenberg' ) }
+				initialOpen={ true }
 			>
 				<UAGTabsControl
 					tabs={ [

@@ -974,7 +974,7 @@ const Settings = ( props ) => {
 		return (
 			<>
 				{ '' !== icon && (
-					<UAGAdvancedPanelBody title="Icon/Image" initialOpen={ false }>
+					<UAGAdvancedPanelBody title="Icon/Image" initialOpen={ true }>
 						<>
 							{ ' ' }
 							{ source_type === 'icon' && (

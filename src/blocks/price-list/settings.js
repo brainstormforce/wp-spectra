@@ -973,7 +973,7 @@ const Settings = ( props ) => {
 	};
 	const titleSettings = () => {
 		return (
-			<UAGAdvancedPanelBody title={ __( 'Title' ) } initialOpen={ false }>
+			<UAGAdvancedPanelBody title={ __( 'Title' ) } initialOpen={ true }>
 				<AdvancedPopColorControl
 					label={ __( 'Color', 'ultimate-addons-for-gutenberg' ) }
 					colorValue={ titleColor ? titleColor : '' }

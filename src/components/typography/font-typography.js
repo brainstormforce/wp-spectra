@@ -29,7 +29,7 @@ function FontFamilyControl( props ) {
 	}
 
 	const fontWeightObj = [];
-
+	fontWeight.unshift( 'Default' );
 	fontWeight.forEach( function ( item ) {
 		fontWeightObj.push( { value: item, label: item } );
 	} );
@@ -177,11 +177,11 @@ function FontFamilyControl( props ) {
 									[ props.fontStyle.label ]: value,
 								} )
 							}
-							options={ [
+							options={ [,
 								{
 									value: 'normal',
 									label: __(
-										'Normal',
+										'Default',
 										'ultimate-addons-for-gutenberg'
 									),
 								},

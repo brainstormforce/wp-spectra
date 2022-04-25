@@ -112,6 +112,9 @@ const UAGPresets = ( props ) => {
 					resetChildBlockAttributes( preset, defaultChildAttributes );
 				}
 			}
+			if ( selectedPresetState === preset.value ){
+				setPreset( { selectedPreset: '' } );
+			}
 
 			return preset;
 		} );
