@@ -81,19 +81,19 @@ $selectors = array(
 		'border-width'    => UAGB_Helper::get_css_value( $attr['highLightBorderWidth'], 'px' ),
 		'border-color'    => $attr['highLightBorderColor'],
 		'border-radius'   => UAGB_Helper::get_css_value( $attr['highLightBorderRadius'], 'px' ),
-		'padding-top'    => UAGB_Helper::get_css_value(
+		'padding-top'     => UAGB_Helper::get_css_value(
 			$attr['highLightTopPadding'],
 			$attr['highLightPaddingUnit']
 		),
-		'padding-right'  => UAGB_Helper::get_css_value(
+		'padding-right'   => UAGB_Helper::get_css_value(
 			$attr['highLightRightPadding'],
 			$attr['highLightPaddingUnit']
 		),
-		'padding-bottom' => UAGB_Helper::get_css_value(
+		'padding-bottom'  => UAGB_Helper::get_css_value(
 			$attr['highLightBottomPadding'],
 			$attr['highLightPaddingUnit']
 		),
-		'padding-left'   => UAGB_Helper::get_css_value(
+		'padding-left'    => UAGB_Helper::get_css_value(
 			$attr['highLightLeftPadding'],
 			$attr['highLightPaddingUnit']
 		),

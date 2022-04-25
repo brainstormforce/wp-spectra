@@ -143,7 +143,6 @@ function styling( props ) {
 		highLightPaddingUnit,
 		highLightPaddingUnitTablet,
 		highLightPaddingUnitMobile,
-		highLightPaddingLink,
 	} = props.attributes;
 
 	const tablet_selectors = {};
