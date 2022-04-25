@@ -41,6 +41,7 @@ if ( 'left' === $attr['textAlignTablet'] ) {
 if ( 'left' === $attr['textAlignMobile'] ) {
 	$alignmentMobile = 'flex-start';
 } elseif ( 'right' === $attr['textAlignMobile'] ) {
+
 	$alignmentMobile = 'flex-end';
 } else {
 	$alignmentMobile = 'center';
@@ -92,60 +93,6 @@ $selectors = array(
 	),
 );
 
-if ( 'desktop' === $attr['stack'] ) {
-
-	$selectors['.wp-block-uagb-call-to-action  ']   = array(
-		'flex-direction' => 'column',
-		'align-items'    => $alignment,
-	);
-	$t_selectors['.wp-block-uagb-call-to-action  '] = array(
-		'align-items' => $alignmentTablet,
-	);
-	$m_selectors['.wp-block-uagb-call-to-action  '] = array(
-		'align-items' => $alignmentMobile,
-	);
-
-} elseif ( 'tablet' === $attr['stack'] ) {
-
-	$selectors['.wp-block-uagb-call-to-action  ']  = array(
-		'flex-direction' => 'row',
-		'align-items'    => 'top' === $attr['buttonAlign'] ? 'flex-start' : 'center',
-	);
-	$t_selectors['.wp-block-uagb-call-to-action '] = array(
-		'flex-direction' => 'column',
-		'align-items'    => $alignmentTablet,
-	);
-	$m_selectors['.wp-block-uagb-call-to-action '] = array(
-		'flex-direction' => 'column',
-		'align-items'    => $alignmentMobile,
-	);
-
-} elseif ( 'mobile' === $attr['stack'] ) {
-
-	$selectors['.wp-block-uagb-call-to-action  ']  = array(
-		'flex-direction' => 'row',
-		'align-items'    => 'top' === $attr['buttonAlign'] ? 'flex-start' : 'center',
-	);
-	$t_selectors['.wp-block-uagb-call-to-action '] = array(
-		'flex-direction' => 'row',
-		'align-items'    => 'top' === $attr['buttonAlign'] ? 'flex-start' : 'center',
-	);
-	$m_selectors['.wp-block-uagb-call-to-action '] = array(
-		'flex-direction' => 'column',
-		'align-items'    => $alignmentMobile,
-	);
-
-} elseif ( 'none' === $attr['stack'] ) {
-	$selectors['.wp-block-uagb-call-to-action  ']  = array(
-		'column-gap' => UAGB_Helper::get_css_value( $attr['gap'], 'px' ),
-	);
-	$t_selectors['.wp-block-uagb-call-to-action '] = array(
-		'column-gap' => UAGB_Helper::get_css_value( $attr['gapTablet'], 'px' ),
-	);
-	$m_selectors['.wp-block-uagb-call-to-action '] = array(
-		'column-gap' => UAGB_Helper::get_css_value( $attr['gapMobile'], 'px' ),
-	);
-}
 $selectors['.wp-block-uagb-call-to-action a.uagb-cta-second__button']       = array(
 	'color'            => $attr['secondCtaColor'],
 	'background-color' => $attr['secondCtaBackground'],
@@ -482,6 +429,61 @@ if ( 'right' === $attr['ctaPosition'] && ( 'text' === $attr['ctaType'] || 'butto
 	);
 }
 
+if ( 'desktop' === $attr['stack'] ) {
+
+	$selectors['.wp-block-uagb-call-to-action  ']   = array(
+		'flex-direction' => 'column',
+		'align-items'    => $alignment,
+	);
+	$t_selectors['.wp-block-uagb-call-to-action  '] = array(
+		'flex-direction' => 'column',
+		'align-items' => $alignmentTablet,
+	);
+	$m_selectors['.wp-block-uagb-call-to-action  '] = array(
+		'flex-direction' => 'column',
+		'align-items' => $alignmentMobile,
+	);
+} elseif ( 'tablet' === $attr['stack'] ) {
+
+	$selectors['.wp-block-uagb-call-to-action  ']  = array(
+		'flex-direction' => 'row',
+		'align-items'    => 'top' === $attr['buttonAlign'] ? 'flex-start' : 'center',
+	);
+	$t_selectors['.wp-block-uagb-call-to-action '] = array(
+		'flex-direction' => 'column',
+		'align-items'    => $alignmentTablet,
+	);
+	$m_selectors['.wp-block-uagb-call-to-action '] = array(
+		'flex-direction' => 'column',
+		'align-items'    => $alignmentMobile,
+	);
+
+} elseif ( 'mobile' === $attr['stack'] ) {
+
+	$selectors['.wp-block-uagb-call-to-action  ']  = array(
+		'flex-direction' => 'row',
+		'align-items'    => 'top' === $attr['buttonAlign'] ? 'flex-start' : 'center',
+	);
+	$t_selectors['.wp-block-uagb-call-to-action '] = array(
+		'flex-direction' => 'row',
+		'align-items'    => 'top' === $attr['buttonAlign'] ? 'flex-start' : 'center',
+	);
+	$m_selectors['.wp-block-uagb-call-to-action '] = array(
+		'flex-direction' => 'column',
+		'align-items'    => $alignmentMobile,
+	);
+
+} elseif ( 'none' === $attr['stack'] ) {
+	$selectors['.wp-block-uagb-call-to-action  ']  = array(
+		'align-items' => 'top' === $attr['buttonAlign'] ? 'flex-start' : 'center',
+	);
+	$t_selectors['.wp-block-uagb-call-to-action '] = array(
+		'align-items' => 'top' === $attr['buttonAlign'] ? 'flex-start' : 'center',
+	);
+	$m_selectors['.wp-block-uagb-call-to-action '] = array(
+		'align-items' => 'top' === $attr['buttonAlign'] ? 'flex-start' : 'center',
+	);
+}
 $combined_selectors = array(
 	'desktop' => $selectors,
 	'tablet'  => $t_selectors,
