@@ -372,14 +372,12 @@ const attributes = {
 	},
 	contentWidthTablet: {
 		type: 'number',
-		default: '0',
 		UAGCopyPaste: {
 			styleType: 'desc-width'
 		},
 	},
 	contentWidthMobile: {
 		type: 'number',
-		default: '0',
 		UAGCopyPaste: {
 			styleType: 'desc-width'
 		},
@@ -832,13 +830,25 @@ const attributes = {
 			styleType: 'btn-icon-space'
 		}
 	},
-	gap: {
-		type: 'number',
-		default: 10,
-	},
 	isPreview: {
 		type: 'boolean',
 		default: false,
+	},
+	stackBtn: {
+		type: 'string',
+		default: 'none'
+	},
+	gapBtn: {
+		type: 'number',
+		default: 15
+	},
+	gapBtnTablet: {
+		type: 'number',
+		default: 15
+	},
+	gapBtnMobile: {
+		type: 'number',
+		default: 15
 	},
 };
 
