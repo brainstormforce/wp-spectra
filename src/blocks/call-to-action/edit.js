@@ -37,14 +37,14 @@ const UAGBCallToAction = ( props ) => {
 			stack
 		} = props.attributes;
 
-		if( stack === 'tablet') {
-			props.setAttributes({stack: 'tablet'});
-		}else if ( stack === 'mobile') {
-			props.setAttributes({stack: 'mobile'})
+		if( stack === 'tablet' ) {
+			props.setAttributes( {stack: 'tablet'} );
+		}else if ( stack === 'mobile' ) {
+			props.setAttributes( {stack: 'mobile'} )
 		} else if ( stack === 'none' && ctaPosition === 'right' ) {
-			props.setAttributes({stack: 'none'})
+			props.setAttributes( {stack: 'none'} )
 		} else if ( stack === 'none' && 'below-title' === ctaPosition ) {
-			props.setAttributes({ stack: 'desktop' });
+			props.setAttributes( { stack: 'desktop' } );
 		}
 
 		if ( ctaBtnVertPadding ) {

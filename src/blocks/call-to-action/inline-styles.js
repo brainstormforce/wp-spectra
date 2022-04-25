@@ -570,7 +570,7 @@ function CtaStyle( props ) {
 	let alignment;
 	if( 'left' === textAlign ) {
 		alignment = 'flex-start';
-	} else if ('right' === textAlign ) {
+	} else if ( 'right' === textAlign ) {
 		alignment = 'flex-end'
 	} else {
 		alignment = 'center'
@@ -578,7 +578,7 @@ function CtaStyle( props ) {
 	let alignmentTablet;
 	if( 'left' === textAlignTablet ) {
 		alignmentTablet = 'flex-start';
-	} else if ('right' === textAlignTablet ) {
+	} else if ( 'right' === textAlignTablet ) {
 		alignmentTablet = 'flex-end'
 	} else {
 		alignmentTablet = 'center'
@@ -586,7 +586,7 @@ function CtaStyle( props ) {
 	let alignmentMobile;
 	if( 'left' === textAlignMobile ) {
 		alignmentMobile = 'flex-start';
-	} else if ('right' === textAlignMobile ) {
+	} else if ( 'right' === textAlignMobile ) {
 		alignmentMobile = 'flex-end'
 	} else {
 		alignmentMobile = 'center'

@@ -21,7 +21,7 @@ const Render = ( props ) => {
 	const deviceType = useDeviceType();
 
 	// Setup the attributes.
-	const { isPreview, block_id, ctaPosition, ctaType, stack, enabledSecondCtaButton  } = attributes;
+	const { isPreview, block_id, ctaType, enabledSecondCtaButton  } = attributes;
 
 	const isCta = <CTA attributes={ attributes } setAttributes={ setAttributes } />;
 
