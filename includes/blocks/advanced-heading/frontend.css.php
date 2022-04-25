@@ -104,11 +104,11 @@ $selectors = array(
 );
 
 if ( 'gradient' === $attr['headingColorType'] ) {
-	$selectors[' .uagb-heading-text'] = array(
+	$selectors[' .uagb-heading-text'] = array_merge($selectors[' .uagb-heading-text'], array(
 		'background'              => $attr['headingGradientColor'],
 		'-webkit-background-clip' => 'text',
 		'-webkit-text-fill-color' => 'transparent',
-	);
+	));
 }
 
 $seperatorStyle = isset( $attr['seperatorStyle'] ) ? $attr['seperatorStyle'] : '';
