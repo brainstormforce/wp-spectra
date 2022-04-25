@@ -633,14 +633,12 @@ const attributes = {
 	},
 	ctaBtnVertPadding: {
 		type: 'number',
-		default: 12,
 		UAGCopyPaste: {
 			styleType: 'btn-vertical-padding'
 		}
 	},
 	ctaBtnHrPadding: {
 		type: 'number',
-		default: 20,
 		UAGCopyPaste: {
 			styleType: 'btn-horizontal-padding'
 		}

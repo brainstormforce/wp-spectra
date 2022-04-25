@@ -374,18 +374,10 @@ const Settings = ( props ) => {
 								'Before Text',
 								'ultimate-addons-for-gutenberg'
 							),
-							tooltip: __(
-								'Before Text',
-								'ultimate-addons-for-gutenberg'
-							),
 						},
 						{
 							value: 'after',
 							label: __(
-								'After Text',
-								'ultimate-addons-for-gutenberg'
-							),
-							tooltip: __(
 								'After Text',
 								'ultimate-addons-for-gutenberg'
 							),
@@ -668,18 +660,10 @@ const Settings = ( props ) => {
 								'None',
 								'ultimate-addons-for-gutenberg'
 							),
-							tooltip: __(
-								'None',
-								'ultimate-addons-for-gutenberg'
-							),
 						},
 						{
 							value: 'text',
 							label: __(
-								'Text',
-								'ultimate-addons-for-gutenberg'
-							),
-							tooltip: __(
 								'Text',
 								'ultimate-addons-for-gutenberg'
 							),
@@ -690,18 +674,10 @@ const Settings = ( props ) => {
 								'Button',
 								'ultimate-addons-for-gutenberg'
 							),
-							tooltip: __(
-								'Button',
-								'ultimate-addons-for-gutenberg'
-							),
 						},
 						{
 							value: 'all',
 							label: __(
-								'Complete Box',
-								'ultimate-addons-for-gutenberg'
-							),
-							tooltip: __(
 								'Complete Box',
 								'ultimate-addons-for-gutenberg'
 							),
@@ -779,18 +755,10 @@ const Settings = ( props ) => {
 												'Before Text',
 												'ultimate-addons-for-gutenberg'
 											),
-											tooltip: __(
-												'Before Text',
-												'ultimate-addons-for-gutenberg'
-											),
 										},
 										{
 											value: 'after',
 											label: __(
-												'After Text',
-												'ultimate-addons-for-gutenberg'
-											),
-											tooltip: __(
 												'After Text',
 												'ultimate-addons-for-gutenberg'
 											),
@@ -1476,18 +1444,10 @@ const Settings = ( props ) => {
 										'Inline',
 										'ultimate-addons-for-gutenberg'
 									),
-									tooltip: __(
-										'Inline',
-										'ultimate-addons-for-gutenberg'
-									),
 								},
 								{
 									value: 'below-title',
 									label: __(
-										'Stack',
-										'ultimate-addons-for-gutenberg'
-									),
-									tooltip: __(
 										'Stack',
 										'ultimate-addons-for-gutenberg'
 									),
@@ -1545,18 +1505,10 @@ const Settings = ( props ) => {
 												'Top',
 												'ultimate-addons-for-gutenberg'
 											),
-											tooltip: __(
-												'Top',
-												'ultimate-addons-for-gutenberg'
-											),
 										},
 										{
 											value: 'middle',
 											label: __(
-												'Middle',
-												'ultimate-addons-for-gutenberg'
-											),
-											tooltip: __(
 												'Middle',
 												'ultimate-addons-for-gutenberg'
 											),
@@ -1582,10 +1534,6 @@ const Settings = ( props ) => {
 												'None',
 												'ultimate-addons-for-gutenberg'
 											),
-											tooltip: __(
-												'None',
-												'ultimate-addons-for-gutenberg'
-											),
 										},
 										{
 											value: 'tablet',
@@ -1593,18 +1541,10 @@ const Settings = ( props ) => {
 												'Tablet',
 												'ultimate-addons-for-gutenberg'
 											),
-											tooltip: __(
-												'Tablet',
-												'ultimate-addons-for-gutenberg'
-											),
 										},
 										{
 											value: 'mobile',
 											label: __(
-												'Mobile',
-												'ultimate-addons-for-gutenberg'
-											),
-											tooltip: __(
 												'Mobile',
 												'ultimate-addons-for-gutenberg'
 											),

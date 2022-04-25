@@ -255,18 +255,10 @@ const Settings = ( props ) => {
 								'Icon',
 								'ultimate-addons-for-gutenberg'
 							),
-							tooltip: __(
-								'Icon',
-								'ultimate-addons-for-gutenberg'
-							),
 						},
 						{
 							value: 'image',
 							label: __(
-								'Image',
-								'ultimate-addons-for-gutenberg'
-							),
-							tooltip: __(
 								'Image',
 								'ultimate-addons-for-gutenberg'
 							),

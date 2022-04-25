@@ -72,34 +72,18 @@ const Settings = ( props ) => {
 					{
 						value: 'none',
 						label: __( 'Default', 'ultimate-addons-for-gutenberg' ),
-						tooltip: __(
-							'Default',
-							'ultimate-addons-for-gutenberg'
-						),
 					},
 					{
 						value: 'hover',
 						label: __( 'Hover', 'ultimate-addons-for-gutenberg' ),
-						tooltip: __(
-							'On Hover',
-							'ultimate-addons-for-gutenberg'
-						),
 					},
 					{
 						value: 'click',
 						label: __( 'Click', 'ultimate-addons-for-gutenberg' ),
-						tooltip: __(
-							'On Click',
-							'ultimate-addons-for-gutenberg'
-						),
 					},
 					{
 						value: 'scroll',
 						label: __(
-							'Viewport',
-							'ultimate-addons-for-gutenberg'
-						),
-						tooltip: __(
 							'Viewport',
 							'ultimate-addons-for-gutenberg'
 						),
