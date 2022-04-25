@@ -16,12 +16,18 @@ function styling( props ) {
 		headingBackground,
 		headingGradientBackground,
 		headSpace,
+		headSpaceTablet,
+		headSpaceMobile,
 		seperatorStyle,
 		separatorHeight,
 		separatorWidth,
+		separatorWidthTablet,
+		separatorWidthMobile,
 		separatorWidthType,
 		separatorColor,
 		separatorSpace,
+		separatorSpaceTablet,
+		separatorSpaceMobile,
 		subHeadingColor,
 		headFontFamily,
 		headFontStyle,
@@ -319,6 +325,7 @@ function styling( props ) {
 			headLineHeightType
 		),
 		'letter-spacing': generateCSSUnit( headLetterSpacingTablet, headLetterSpacingType ),
+		'margin-bottom': generateCSSUnit( headSpaceTablet, 'px' ),
 	};
 	tablet_selectors[ ' .uagb-desc-text' ] = {
 		'font-size': generateCSSUnit(
@@ -393,6 +400,11 @@ function styling( props ) {
 			headingBlockPaddingUnitMobile
 		),
 	}
+	tablet_selectors[ ' .uagb-separator' ] = {
+		'width': generateCSSUnit( separatorWidthTablet, separatorWidthType ),
+		'margin-bottom': generateCSSUnit( separatorSpaceTablet, 'px' ),
+	};
+
 	mobile_selectors[ ' ' + headingTag + '.uagb-heading-text' ] = {
 		'font-size': generateCSSUnit( headFontSizeMobile, headFontSizeType ),
 		'line-height': generateCSSUnit(
@@ -400,6 +412,7 @@ function styling( props ) {
 			headLineHeightType
 		),
 		'letter-spacing': generateCSSUnit( headLetterSpacingMobile, headLetterSpacingType ),
+		'margin-bottom': generateCSSUnit( headSpaceMobile, 'px' ),
 	};
 	mobile_selectors[ ' .uagb-desc-text' ] = {
 		'font-size': generateCSSUnit(
@@ -438,6 +451,10 @@ function styling( props ) {
 			highLightLeftPaddingMobile,
 			highLightPaddingUnitMobile
 		),
+	};
+	mobile_selectors[ ' .uagb-separator' ] = {
+		'width': generateCSSUnit( separatorWidthMobile, separatorWidthType ),
+		'margin-bottom': generateCSSUnit( separatorSpaceMobile, 'px' ),
 	};
 
 	const base_selector = `.editor-styles-wrapper .uagb-block-${ props.clientId.substr(

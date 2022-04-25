@@ -21,9 +21,37 @@ const attributes = {
 		},
 		default: 18,
 	},
+	sizeTablet: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'icon-size'
+		},
+		default: 0,
+	},
+	sizeMobile: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'icon-size'
+		},
+		default: 0,
+	},
 	gap: {
 		type: 'number',
 		default: 2,
+		UAGCopyPaste: {
+			styleType: 'icon-gap'
+		},
+	},
+	gapTablet: {
+		type: 'number',
+		default: 0,
+		UAGCopyPaste: {
+			styleType: 'icon-gap'
+		},
+	},
+	gapMobile: {
+		type: 'number',
+		default: 0,
 		UAGCopyPaste: {
 			styleType: 'icon-gap'
 		},
@@ -53,6 +81,20 @@ const attributes = {
 		type: 'string',
 	},
 	titleGap: {
+		type: 'number',
+		default: 10,
+		UAGCopyPaste: {
+			styleType: 'main-title-bottom-margin'
+		},
+	},
+	titleGapTablet: {
+		type: 'number',
+		default: 10,
+		UAGCopyPaste: {
+			styleType: 'main-title-bottom-margin'
+		},
+	},
+	titleGapMobile: {
 		type: 'number',
 		default: 10,
 		UAGCopyPaste: {

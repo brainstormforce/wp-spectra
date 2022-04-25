@@ -1,5 +1,5 @@
 /**
- * BLOCK: Creative Heading
+ * BLOCK: Heading
  */
 
 import UAGB_Block_Icons from '@Controls/block-icons';
@@ -13,7 +13,7 @@ import { registerBlockType, createBlock } from '@wordpress/blocks';
 import './format'
 
 registerBlockType( 'uagb/advanced-heading', {
-	title: __( 'Creative Heading', 'ultimate-addons-for-gutenberg' ),
+	title: __( 'Heading', 'ultimate-addons-for-gutenberg' ),
 	description: __(
 		'This block lets you add a combination of a heading and a sub-heading with a separator in between.',
 		'ultimate-addons-for-gutenberg'

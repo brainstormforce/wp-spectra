@@ -4,6 +4,7 @@
 
 import generateCSS from '@Controls/generateCSS';
 import generateCSSUnit from '@Controls/generateCSSUnit';
+import generateBackgroundCSS from '@Controls/generateBackgroundCSS';
 
 function styling( props ) {
 	const {
@@ -44,53 +45,99 @@ function styling( props ) {
 		lineHeightMobile,
 		lineHeightTablet,
 		iconSpace,
+		iconSpaceMobile,
+		iconSpaceTablet,
+
+		fontStyle,
+		transform,
+		decoration,
+		backgroundType,
+		gradientValue,
+		topMargin,
+		rightMargin,
+		bottomMargin,
+		leftMargin,
+		topMarginTablet,
+		rightMarginTablet,
+		bottomMarginTablet,
+		leftMarginTablet,
+		topMarginMobile,
+		rightMarginMobile,
+		bottomMarginMobile,
+		leftMarginMobile,
+		marginType,
+
+		boxShadowColor,
+		boxShadowHOffset,
+		boxShadowVOffset,
+		boxShadowBlur,
+		boxShadowSpread,
+		boxShadowPosition,
+		iconColor,
+		iconHColor,
+		iconSize,
+		iconSizeTablet,
+		iconSizeMobile,
+		removeText,
 	} = props.attributes;
 
 	const tabletSelectors = {};
 	const mobileSelectors = {};
 	let selectors = {};
 
+	let boxShadowPositionCSS = boxShadowPosition;
+
+	if ( 'outset' === boxShadowPosition ) {
+		boxShadowPositionCSS = '';
+	}
 
 	selectors = {
-		' .uagb-buttons-repeater': {
+		'.uagb-buttons__outer-wrap .uagb-button__wrapper .wp-block-button__link.uagb-buttons-repeater': {
 			'font-size': generateCSSUnit( size, sizeType ),
 			'line-height': generateCSSUnit( lineHeight, lineHeightType ),
 			'font-family': fontFamily,
 			'font-weight': fontWeight,
-			'border-width': generateCSSUnit( borderWidth, 'px' ),
-			'border-style': borderStyle,
-			'border-color': borderColor,
-			'border-radius': generateCSSUnit( borderRadius, 'px' ),
-			'background': background,
+			'font-style': fontStyle,
+			'text-transform': transform,
+			'text-decoration': decoration,
 			'padding-left': generateCSSUnit( leftPadding, paddingUnit ),
 			'padding-right': generateCSSUnit( rightPadding, paddingUnit ),
 			'padding-top': generateCSSUnit( topPadding, paddingUnit ),
 			'padding-bottom': generateCSSUnit( bottomPadding, paddingUnit ),
-		},
-		' .uagb-buttons-repeater:hover': {
-			'background': hBackground,
-			'border-width': generateCSSUnit( borderWidth, 'px' ),
-			'border-style': borderStyle,
-			'border-color': borderHColor,
-		},
-		' .uagb-buttons-repeater a.uagb-button__link': {
+			'margin-left': generateCSSUnit( leftMargin, marginType ),
+			'margin-right': generateCSSUnit( rightMargin, marginType ),
+			'margin-top': generateCSSUnit( topMargin, marginType ),
+			'margin-bottom': generateCSSUnit(
+				bottomMargin,
+				marginType
+			),
 			'color': color,
+			'box-shadow':
+			generateCSSUnit( boxShadowHOffset, 'px' ) + ' ' + generateCSSUnit( boxShadowVOffset, 'px' ) +	' ' +
+			generateCSSUnit( boxShadowBlur, 'px' ) + ' ' +	generateCSSUnit( boxShadowSpread, 'px' ) + ' ' +
+			boxShadowColor + ' ' +	boxShadowPositionCSS,
 		},
-		' .uagb-buttons-repeater:hover a.uagb-button__link': {
+		'.uagb-buttons__outer-wrap .wp-block-button__link.uagb-buttons-repeater:hover .uagb-button__link': {
 			'color': hColor,
 		},
-		' .uagb-buttons-repeater:hover .uagb-button__link': {
-			'color': hColor,
-		},
-		' .uagb-buttons-repeater:hover .uagb-button__icon': {
-			'color': hColor,
-		},
-		' .uagb-buttons-repeater .uagb-button__link': {
+		'.uagb-buttons__outer-wrap .wp-block-button__link.uagb-buttons-repeater .uagb-button__link': {
 			'color': color,
-		},
+		}
 	};
 
-	mobileSelectors[ ' .uagb-buttons-repeater' ] = {
+	if( 'none' !== borderStyle ) {
+		selectors[' .wp-block-button__link.uagb-buttons-repeater'] = {
+			'border-width': generateCSSUnit( borderWidth, 'px' ),
+			'border-style': borderStyle,
+			'border-color': borderColor,
+			'border-radius': generateCSSUnit( borderRadius, 'px' ),
+		};
+		selectors[ ' .wp-block-button__link.uagb-buttons-repeater:hover' ] = {
+			'border-color': borderHColor,
+		};
+
+	}
+	mobileSelectors[ '.uagb-buttons__outer-wrap .wp-block-button__link.uagb-buttons-repeater' ] = {
 		'font-size': generateCSSUnit( sizeMobile, sizeType ),
 		'line-height': generateCSSUnit( lineHeightMobile, lineHeightType ),
 		'padding-left': generateCSSUnit(
@@ -109,9 +156,16 @@ function styling( props ) {
 			bottomMobilePadding,
 			mobilePaddingUnit
 		),
+		'margin-left': generateCSSUnit( leftMarginMobile, marginType ),
+		'margin-right': generateCSSUnit( rightMarginMobile, marginType ),
+		'margin-top': generateCSSUnit( topMarginMobile, marginType ),
+		'margin-bottom': generateCSSUnit(
+			bottomMarginMobile,
+			marginType
+		),
 	};
 
-	tabletSelectors[ ' .uagb-buttons-repeater' ] = {
+	tabletSelectors[ '.uagb-buttons__outer-wrap .wp-block-button__link.uagb-buttons-repeater' ] = {
 		'font-size': generateCSSUnit( sizeTablet, sizeType ),
 		'line-height': generateCSSUnit( lineHeightTablet, lineHeightType ),
 		'padding-left': generateCSSUnit(
@@ -130,32 +184,77 @@ function styling( props ) {
 			bottomTabletPadding,
 			tabletPaddingUnit
 		),
+		'margin-left': generateCSSUnit( leftMarginTablet, marginType ),
+		'margin-right': generateCSSUnit( rightMarginTablet, marginType ),
+		'margin-top': generateCSSUnit( topMarginTablet, marginType ),
+		'margin-bottom': generateCSSUnit(
+			bottomMarginTablet,
+			marginType
+		),
 	};
 
-	selectors[ ' .uagb-button__icon' ] = {
-		'width': generateCSSUnit( size, sizeType ),
+	selectors[ '.uagb-buttons__outer-wrap .wp-block-button__link.uagb-buttons-repeater .uagb-button__icon svg' ] = {
+		'width': generateCSSUnit( iconSize, 'px' ),
+		'height': generateCSSUnit( iconSize, 'px' ),
+		'fill': iconColor,
 	};
-
-	selectors[ ' .uagb-button__icon' ].color = color;
-
-	selectors[ ' .uagb-button__icon-position-after' ] = {
-		'margin-left': generateCSSUnit( iconSpace, 'px' ),
+	tabletSelectors[ '.uagb-buttons__outer-wrap .wp-block-button__link.uagb-buttons-repeater .uagb-button__icon svg' ] = {
+		'width': generateCSSUnit( iconSizeTablet, 'px' ),
+		'height': generateCSSUnit( iconSizeTablet, 'px' ),
+		'fill': iconColor,
 	};
-
-	selectors[ ' .uagb-button__icon-position-before' ] = {
-		'margin-right': generateCSSUnit( iconSpace, 'px' ),
+	mobileSelectors[ '.uagb-buttons__outer-wrap .wp-block-button__link.uagb-buttons-repeater .uagb-button__icon svg' ] = {
+		'width': generateCSSUnit( iconSizeMobile, 'px' ),
+		'height': generateCSSUnit( iconSizeMobile, 'px' ),
+		'fill': iconColor,
 	};
-
-	mobileSelectors[ ' .uagb-button__icon' ] = {
-		'width': generateCSSUnit( sizeMobile, sizeType ),
-		'height': generateCSSUnit( sizeMobile, sizeType ),
+	selectors[ '.uagb-buttons__outer-wrap .wp-block-button__link.uagb-buttons-repeater:hover .uagb-button__icon > svg' ] = {
+		'fill': iconHColor,
 	};
+	if( ! removeText ) {
+		selectors[ ' .uagb-button__icon-position-after' ] = {
+			'margin-left': generateCSSUnit( iconSpace, 'px' ),
+		};
 
-	tabletSelectors[ ' .uagb-button__icon' ] = {
-		'width': generateCSSUnit( sizeTablet, sizeType ),
-		'height': generateCSSUnit( sizeTablet, sizeType ),
-	};
+		tabletSelectors[ ' .uagb-button__icon-position-before' ] = {
+			'margin-right': generateCSSUnit( iconSpaceTablet, 'px' ),
+		};
+		tabletSelectors[ ' .uagb-button__icon-position-after' ] = {
+			'margin-left': generateCSSUnit( iconSpaceTablet, 'px' ),
+		};
 
+		mobileSelectors[ ' .uagb-button__icon-position-before' ] = {
+			'margin-right': generateCSSUnit( iconSpaceMobile, 'px' ),
+		};
+		mobileSelectors[ ' .uagb-button__icon-position-after' ] = {
+			'margin-left': generateCSSUnit( iconSpaceMobile, 'px' ),
+		};
+
+		selectors[ ' .uagb-button__icon-position-before' ] = {
+			'margin-right': generateCSSUnit( iconSpace, 'px' ),
+		};
+	}
+
+	if ( 'transparent' === backgroundType ) {
+		selectors[ '.uagb-buttons__outer-wrap .wp-block-button__link.uagb-buttons-repeater' ]  = {
+			'background': 'transparent',
+		}
+	} else if ( 'gradient' === backgroundType ) {
+		const backgroundAttributes = {
+			'backgroundType': 'gradient',
+			'gradientValue': gradientValue,
+		};
+
+		const btnBackground = generateBackgroundCSS( backgroundAttributes );
+		selectors[ '.uagb-buttons__outer-wrap .wp-block-button__link.uagb-buttons-repeater' ] = btnBackground;
+	} else {
+		selectors[ '.uagb-buttons__outer-wrap .wp-block-button__link.uagb-buttons-repeater' ] = {
+			'background': background,
+		}
+		selectors[ '.uagb-buttons__outer-wrap .wp-block-button__link.uagb-buttons-repeater:hover' ] = {
+			'background': hBackground,
+		}
+	}
 	const id = `.editor-styles-wrapper .uagb-block-${ props.clientId.substr( 0, 8 ) }`;
 	let stylingCss = generateCSS( selectors, id );
 

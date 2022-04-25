@@ -27,6 +27,7 @@ import Border from '@Components/border';
 
 
 
+import ResponsiveSlider from '@Components/responsive-slider';
 // Extend component
 import UAGAdvancedPanelBody from '@Components/advanced-panel-body';
 
@@ -80,11 +81,17 @@ const Settings = ( props ) => {
 		subHeadTransform,
 		subHeadDecoration,
 		separatorWidth,
+		separatorWidthTablet,
+		separatorWidthMobile,
 		separatorWidthType,
 		seperatorStyle,
 		separatorHeight,
 		headSpace,
+		headSpaceTablet,
+		headSpaceMobile,
 		separatorSpace,
+		separatorSpaceTablet,
+		separatorSpaceMobile,
 		headLoadGoogleFonts,
 		subHeadLoadGoogleFonts,
 		subHeadLetterSpacing,
@@ -519,7 +526,7 @@ const Settings = ( props ) => {
 						title: __( 'Blur', 'ultimate-addons-for-gutenberg' ),
 					} }
 				/>
-				<Range
+				{/* <Range
 					label={ __(
 						'Bottom Spacing (px)',
 						'ultimate-addons-for-gutenberg'
@@ -532,6 +539,30 @@ const Settings = ( props ) => {
 					min={ 0 }
 					max={ 200 }
 					displayUnit={ false }
+				/> */}
+				<ResponsiveSlider
+					label={ __(
+						'Bottom Spacing (px)',
+						'ultimate-addons-for-gutenberg'
+					) }
+					data={ {
+						desktop: {
+							value: headSpace,
+							label: 'headSpace',
+						},
+						tablet: {
+							value: headSpaceTablet,
+							label: 'headSpaceTablet',
+						},
+						mobile: {
+							value: headSpaceMobile,
+							label: 'headSpaceMobile',
+						},
+					} }
+					min={ 0 }
+					max={ 200 }
+					displayUnit={ false }
+					setAttributes={ setAttributes }
 				/>
 			</UAGAdvancedPanelBody>
 		);
@@ -642,19 +673,25 @@ const Settings = ( props ) => {
 				title={ __( 'Separator', 'ultimate-addons-for-gutenberg' ) }
 				initialOpen={ false }
 			>
-
-				<Range
+				<ResponsiveSlider
 					label={ __(
 						'Width',
 						'ultimate-addons-for-gutenberg'
 					) }
-					setAttributes={ setAttributes }
-					value={ separatorWidth }
-					onChange={ ( value ) =>
-						setAttributes( {
-							separatorWidth: value,
-						} )
-					}
+					data={ {
+						desktop: {
+							value: separatorWidth,
+							label: 'separatorWidth',
+						},
+						tablet: {
+							value: separatorWidthTablet,
+							label: 'separatorWidthTablet',
+						},
+						mobile: {
+							value: separatorWidthMobile,
+							label: 'separatorWidthMobile',
+						},
+					} }
 					min={ 0 }
 					max={ '%' === separatorWidthType ? 100 : 500 }
 					unit={ {
@@ -677,6 +714,7 @@ const Settings = ( props ) => {
 							unitValue: '%',
 						},
 					] }
+					setAttributes={ setAttributes }
 				/>
 				<Range
 					label={ __(
@@ -708,7 +746,7 @@ const Settings = ( props ) => {
 						} )
 					}
 				/>
-				<Range
+				{/* <Range
 					label={ __(
 						'Bottom Spacing (px)',
 						'ultimate-addons-for-gutenberg'
@@ -721,6 +759,30 @@ const Settings = ( props ) => {
 					min={ 0 }
 					max={ 200 }
 					displayUnit={ false }
+				/> */}
+				<ResponsiveSlider
+					label={ __(
+						'Bottom Spacing (px)',
+						'ultimate-addons-for-gutenberg'
+					) }
+					data={ {
+						desktop: {
+							value: separatorSpace,
+							label: 'separatorSpace',
+						},
+						tablet: {
+							value: separatorSpaceTablet,
+							label: 'separatorSpaceTablet',
+						},
+						mobile: {
+							value: separatorSpaceMobile,
+							label: 'separatorSpaceMobile',
+						},
+					} }
+					min={ 0 }
+					max={ 200 }
+					displayUnit={ false }
+					setAttributes={ setAttributes }
 				/>
 			</UAGAdvancedPanelBody>
 		);

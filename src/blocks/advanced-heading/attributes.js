@@ -96,6 +96,18 @@ const attributes = {
 		},
 		default: 12
 	},
+	separatorWidthTablet: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'separator-width'
+		},
+	},
+	separatorWidthMobile: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'separator-width'
+		},
+	},
 	separatorWidthType: {
 		type: 'string',
 		default: '%',
@@ -106,6 +118,20 @@ const attributes = {
 	headSpace: {
 		type: 'number',
 		default: 15,
+		UAGCopyPaste: {
+			styleType: 'main-title-bottom-margin'
+		}
+	},
+	headSpaceMobile: {
+		type: 'number',
+		default: 0,
+		UAGCopyPaste: {
+			styleType: 'main-title-bottom-margin'
+		}
+	},
+	headSpaceTablet: {
+		type: 'number',
+		default: 0,
 		UAGCopyPaste: {
 			styleType: 'main-title-bottom-margin'
 		}
@@ -345,6 +371,20 @@ const attributes = {
 	separatorSpace: {
 		type: 'number',
 		default: 15,
+		UAGCopyPaste: {
+			styleType: 'separator-bottom-margin'
+		}
+	},
+	separatorSpaceTablet: {
+		type: 'number',
+		default: 0,
+		UAGCopyPaste: {
+			styleType: 'separator-bottom-margin'
+		}
+	},
+	separatorSpaceMobile: {
+		type: 'number',
+		default: 0,
 		UAGCopyPaste: {
 			styleType: 'separator-bottom-margin'
 		}

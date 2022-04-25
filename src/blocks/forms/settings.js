@@ -11,7 +11,7 @@ import InspectorTab, {
 } from '@Components/inspector-tabs/InspectorTab.js';
 import AdvancedPopColorControl from '@Components/color-control/advanced-pop-color-control.js';
 import SpacingControl from '@Components/spacing-control';
-import Range from '@Components/range/Range.js';
+import ResponsiveSlider from '@Components/responsive-slider';
 import { InspectorControls } from '@wordpress/block-editor';
 import renderSVG from '@Controls/renderIcon';
 import UAGTabsControl from '@Components/tabs';
@@ -88,8 +88,14 @@ const Settings = ( props ) => {
 		inputLineHeightTablet,
 		inputLineHeightMobile,
 		toggleSize,
+		toggleSizeTablet,
+		toggleSizeMobile,
 		toggleWidthSize,
+		toggleWidthSizeTablet,
+		toggleWidthSizeMobile,
 		toggleHeightSize,
+		toggleHeightSizeTablet,
+		toggleHeightSizeMobile,
 		toggleActiveColor,
 		labelColor,
 		inputColor,
@@ -102,6 +108,8 @@ const Settings = ( props ) => {
 		inputborderColor,
 		inputborderHoverColor,
 		fieldGap,
+		fieldGapTablet,
+		fieldGapMobile,
 		formStyle,
 		overallAlignment,
 		reCaptchaEnable,
@@ -288,18 +296,10 @@ const Settings = ( props ) => {
 						{
 							value: 'message',
 							label: 'Message',
-							tooltip: __(
-								'Message',
-								'ultimate-addons-for-gutenberg'
-							),
 						},
 						{
 							value: 'url',
 							label: 'URL Text',
-							tooltip: __(
-								'Url Text',
-								'ultimate-addons-for-gutenberg'
-							),
 						},
 					] }
 					showIcons={ false }
@@ -400,6 +400,7 @@ const Settings = ( props ) => {
 							}
 						/>
 						<Border
+							disabledBorderTitle= {false}
 							setAttributes={ setAttributes }
 							borderStyle={ {
 								value: successMessageBorderStyle,
@@ -486,6 +487,7 @@ const Settings = ( props ) => {
 							}
 						/>
 						<Border
+							disabledBorderTitle= {false}
 							setAttributes={ setAttributes }
 							borderStyle={ {
 								value: failedMessageBorderStyle,
@@ -790,6 +792,7 @@ const Settings = ( props ) => {
 					}
 				/>
 				<Border
+					disabledBorderTitle= {false}
 					setAttributes={ setAttributes }
 					borderStyle={ {
 						value: submitborderStyle,
@@ -1194,6 +1197,7 @@ const Settings = ( props ) => {
 					} }
 				/>
 				<Border
+					disabledBorderTitle= {false}
 					setAttributes={ setAttributes }
 					borderStyle={ {
 						value: inputborderStyle,
@@ -1238,25 +1242,48 @@ const Settings = ( props ) => {
 				initialOpen={ false }
 				className="uagb__url-panel-body"
 			>
-				<Range
+				<ResponsiveSlider
 					label={ __(
 						'Spacing between fields',
 						'ultimate-addons-for-gutenberg'
 					) }
-					setAttributes={ setAttributes }
-					className={ 'uagb-padding-control' }
-					value={ fieldGap }
-					onChange={ ( value ) =>
-						setAttributes( {
-							fieldGap: value,
-						} )
-					}
+					data={ {
+						desktop: {
+							value: fieldGap,
+							label: 'fieldGap',
+						},
+						tablet: {
+							value: fieldGapTablet,
+							label: 'fieldGapTablet',
+						},
+						mobile: {
+							value: fieldGapMobile,
+							label: 'fieldGapMobile',
+						},
+					} }
 					min={ 0 }
 					max={ 100 }
 					unit={ {
 						value: fieldGapType,
 						label: 'fieldGapType',
 					} }
+					units={ [
+						{
+							name: __(
+								'Pixel',
+								'ultimate-addons-for-gutenberg'
+							),
+							unitValue: 'px',
+						},
+						{
+							name: __(
+								'%',
+								'ultimate-addons-for-gutenberg'
+							),
+							unitValue: '%',
+						},
+					] }
+					setAttributes={ setAttributes }
 				/>
 				<SpacingControl
 					{ ...props }
@@ -1342,56 +1369,80 @@ const Settings = ( props ) => {
 				initialOpen={ false }
 				className="uagb__url-panel-body"
 			>
-				<Range
+				<ResponsiveSlider
 					label={ __(
 						'Checkbox/Radio Size',
 						'ultimate-addons-for-gutenberg'
 					) }
-					setAttributes={ setAttributes }
-					value={ toggleSize }
-					onChange={ ( value ) =>
-						setAttributes( {
-							toggleSize: value,
-						} )
-					}
+					data={ {
+						desktop: {
+							value: toggleSize,
+							label: 'toggleSize',
+						},
+						tablet: {
+							value: toggleSizeTablet,
+							label: 'toggleSizeTablet',
+						},
+						mobile: {
+							value: toggleSizeMobile,
+							label: 'toggleSizeMobile',
+						},
+					} }
 					min={ 0 }
 					max={ 50 }
 					unit={ {
 						value: toggleSizeType,
 						label: 'toggleSizeType',
 					} }
+					setAttributes={ setAttributes }
 				/>
-				<Range
+				<ResponsiveSlider
 					label={ __(
 						'Toggle Width',
 						'ultimate-addons-for-gutenberg'
 					) }
-					value={ toggleWidthSize }
-					setAttributes={ setAttributes }
-					onChange={ ( value ) =>
-						setAttributes( {
-							toggleWidthSize: value,
-						} )
-					}
+					data={ {
+						desktop: {
+							value: toggleWidthSize,
+							label: 'toggleWidthSize',
+						},
+						tablet: {
+							value: toggleWidthSizeTablet,
+							label: 'toggleWidthSizeTablet',
+						},
+						mobile: {
+							value: toggleWidthSizeMobile,
+							label: 'toggleWidthSizeMobile',
+						},
+					} }
 					min={ 0 }
 					max={ 50 }
 					displayUnit={ false }
+					setAttributes={ setAttributes }
 				/>
-				<Range
+				<ResponsiveSlider
 					label={ __(
 						'Toggle Height',
 						'ultimate-addons-for-gutenberg'
 					) }
-					setAttributes={ setAttributes }
-					value={ toggleHeightSize }
-					onChange={ ( value ) =>
-						setAttributes( {
-							toggleHeightSize: value,
-						} )
-					}
+					data={ {
+						desktop: {
+							value: toggleHeightSize,
+							label: 'toggleHeightSize',
+						},
+						tablet: {
+							value: toggleHeightSizeTablet,
+							label: 'toggleHeightSizeTablet',
+						},
+						mobile: {
+							value: toggleHeightSizeMobile,
+							label: 'toggleHeightSizeMobile',
+						},
+					} }
 					min={ 0 }
 					max={ 50 }
 					displayUnit={ false }
+					setAttributes={ setAttributes }
 				/>
 				<AdvancedPopColorControl
 					label={ __(
@@ -1451,18 +1502,10 @@ const Settings = ( props ) => {
 							{
 								value: 'v2',
 								label: 'V2',
-								tooltip: __(
-									'V2',
-									'ultimate-addons-for-gutenberg'
-								),
 							},
 							{
 								value: 'v3',
 								label: 'V3',
-								tooltip: __(
-									'V3',
-									'ultimate-addons-for-gutenberg'
-								),
 							},
 						] }
 						showIcons={ false }

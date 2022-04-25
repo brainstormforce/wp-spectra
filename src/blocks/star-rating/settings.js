@@ -14,7 +14,7 @@ import Range from '@Components/range/Range.js';
 import MultiButtonsControl from '@Components/multi-buttons-control';
 import renderSVG from '@Controls/renderIcon';
 import React from 'react';
-
+import ResponsiveSlider from '@Components/responsive-slider';
 
 
 import UAGAdvancedPanelBody from '@Components/advanced-panel-body';
@@ -31,7 +31,11 @@ const Settings = ( props ) => {
 			layout,
 			align,
 			size,
+			sizeTablet,
+			sizeMobile,
 			gap,
+			gapMobile,
+			gapTablet,
 			unmarkedColor,
 			color,
 			title,
@@ -48,6 +52,8 @@ const Settings = ( props ) => {
 			lineHeightTablet,
 			titleColor,
 			titleGap,
+			titleGapMobile,
+			titleGapTablet,
 			fontStyle,
 			fontTransform,
 			fontDecoration,
@@ -73,19 +79,36 @@ const Settings = ( props ) => {
 	let alignmentOptions = [
 		{
 			value: 'left',
-			icon: <Icon icon={ renderSVG( 'fa fa-align-left' ) } />,
+			icon: <Icon icon={ renderSVG( 'fa fa-align-left' )
+		} />,
+			tooltip: __(
+				'Left',
+				'ultimate-addons-for-gutenberg'
+			),
 		},
 		{
 			value: 'center',
 			icon: <Icon icon={ renderSVG( 'fa fa-align-center' ) } />,
+			tooltip: __(
+				'Center',
+				'ultimate-addons-for-gutenberg'
+			),
 		},
 		{
 			value: 'right',
 			icon: <Icon icon={ renderSVG( 'fa fa-align-right' ) } />,
+			tooltip: __(
+				'Right',
+				'ultimate-addons-for-gutenberg'
+			),
 		},
 		{
 			value: 'full',
 			icon: <Icon icon={ renderSVG( 'fa fa-align-justify' ) } />,
+			tooltip: __(
+				'Full',
+				'ultimate-addons-for-gutenberg'
+			),
 		},
 	];
 	if ( 'stack' === layout ) {
@@ -93,14 +116,26 @@ const Settings = ( props ) => {
 			{
 				value: 'left',
 				icon: <Icon icon={ renderSVG( 'fa fa-align-left' ) } />,
+				tooltip: __(
+					'Left',
+					'ultimate-addons-for-gutenberg'
+				),
 			},
 			{
 				value: 'center',
 				icon: <Icon icon={ renderSVG( 'fa fa-align-center' ) } />,
+				tooltip: __(
+					'Center',
+					'ultimate-addons-for-gutenberg'
+				),
 			},
 			{
 				value: 'right',
 				icon: <Icon icon={ renderSVG( 'fa fa-align-right' ) } />,
+				tooltip: __(
+					'Right',
+					'ultimate-addons-for-gutenberg'
+				),
 			},
 		];
 		if ( 'full' === align ) {
@@ -228,7 +263,7 @@ const Settings = ( props ) => {
 					label: 'lineHeightTablet',
 				} }
 			/>
-			<Range
+			{/* <Range
 				label={ __( 'Gap', 'ultimate-addons-for-gutenberg' ) }
 				setAttributes={ setAttributes }
 				value={ titleGap }
@@ -236,6 +271,30 @@ const Settings = ( props ) => {
 				min={ 0 }
 				max={ 50 }
 				displayUnit={ false }
+			/> */}
+			<ResponsiveSlider
+				label={ __(
+					'Gap',
+					'ultimate-addons-for-gutenberg'
+				) }
+				data={ {
+					desktop: {
+						value: titleGap,
+						label: 'titleGap',
+					},
+					tablet: {
+						value: titleGapTablet,
+						label: 'titleGapTablet',
+					},
+					mobile: {
+						value: titleGapMobile,
+						label: 'titleGapMobile',
+					},
+				} }
+				min={ 0 }
+				max={ 50 }
+				displayUnit={ false }
+				setAttributes={ setAttributes }
 			/>
 		</UAGAdvancedPanelBody>
 	);
@@ -259,7 +318,7 @@ const Settings = ( props ) => {
 					setAttributes( { unmarkedColor: value } )
 				}
 			/>
-			<Range
+			{/* <Range
 				label={ __( 'Size', 'ultimate-addons-for-gutenberg' ) }
 				setAttributes={ setAttributes }
 				value={ size }
@@ -276,6 +335,54 @@ const Settings = ( props ) => {
 				min={ 0 }
 				max={ 50 }
 				displayUnit={ false }
+			/> */}
+			<ResponsiveSlider
+				label={ __(
+					'Size',
+					'ultimate-addons-for-gutenberg'
+				) }
+				data={ {
+					desktop: {
+						value: size,
+						label: 'size',
+					},
+					tablet: {
+						value: sizeTablet,
+						label: 'sizeTablet',
+					},
+					mobile: {
+						value: sizeMobile,
+						label: 'sizeMobile',
+					},
+				} }
+				min={ 0 }
+				max={ 100 }
+				displayUnit={ false }
+				setAttributes={ setAttributes }
+			/>
+			<ResponsiveSlider
+				label={ __(
+					'Gap',
+					'ultimate-addons-for-gutenberg'
+				) }
+				data={ {
+					desktop: {
+						value: gap,
+						label: 'gap',
+					},
+					tablet: {
+						value: gapTablet,
+						label: 'gapTablet',
+					},
+					mobile: {
+						value: gapMobile,
+						label: 'gapMobile',
+					},
+				} }
+				min={ 0 }
+				max={ 100 }
+				displayUnit={ false }
+				setAttributes={ setAttributes }
 			/>
 		</UAGAdvancedPanelBody>
 	);

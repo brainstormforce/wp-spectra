@@ -151,7 +151,7 @@ export default withSelect( ( select, props ) => {
 	};
 
 	if ( excludeCurrentPost ) {
-		latestPostsQuery.exclude = select( 'core/block-editor' ).getCurrentPostId();
+		latestPostsQuery.exclude = select( 'core/editor' ).getCurrentPostId();
 	}
 	const category = [];
 	const temp = parseInt( categories );

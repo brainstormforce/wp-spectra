@@ -24,6 +24,7 @@ import UAGPresets from '@Components/presets';
 import renderSVG from '@Controls/renderIcon';
 import { ToggleControl, TextControl, Icon } from '@wordpress/components';
 import UAGAdvancedPanelBody from '@Components/advanced-panel-body';
+import ResponsiveSlider from '@Components/responsive-slider';
 
 const Settings = ( props ) => {
 	props = props.parentProps;
@@ -68,6 +69,8 @@ const Settings = ( props ) => {
 		ctaIcon,
 		ctaIconPosition,
 		ctaIconSpace,
+		ctaIconSpaceTablet,
+		ctaIconSpaceMobile,
 		ctaFontSize,
 		ctaFontSizeType,
 		ctaFontSizeMobile,
@@ -76,6 +79,8 @@ const Settings = ( props ) => {
 		ctaFontWeight,
 		ctaLoadGoogleFonts,
 		contentWidth,
+		contentWidthTablet,
+		contentWidthMobile,
 		ctaBtnLinkColor,
 		ctaBgHoverColor,
 		ctaBgColor,
@@ -300,18 +305,10 @@ const Settings = ( props ) => {
 								'Before Text',
 								'ultimate-addons-for-gutenberg'
 							),
-							tooltip: __(
-								'Before Text',
-								'ultimate-addons-for-gutenberg'
-							),
 						},
 						{
 							value: 'after',
 							label: __(
-								'After Text',
-								'ultimate-addons-for-gutenberg'
-							),
-							tooltip: __(
 								'After Text',
 								'ultimate-addons-for-gutenberg'
 							),
@@ -463,9 +460,10 @@ const Settings = ( props ) => {
 							/>
 						</>
 					}
-					disableBottomSeparator={ true }
+					disableBottomSeparator={ false }
 				/>
 				<Border
+					disabledBorderTitle= {false}
 					setAttributes={ setAttributes }
 					borderStyle={ {
 						value: secondCtaBorderStyle,
@@ -593,18 +591,10 @@ const Settings = ( props ) => {
 								'None',
 								'ultimate-addons-for-gutenberg'
 							),
-							tooltip: __(
-								'None',
-								'ultimate-addons-for-gutenberg'
-							),
 						},
 						{
 							value: 'text',
 							label: __(
-								'Text',
-								'ultimate-addons-for-gutenberg'
-							),
-							tooltip: __(
 								'Text',
 								'ultimate-addons-for-gutenberg'
 							),
@@ -615,18 +605,10 @@ const Settings = ( props ) => {
 								'Button',
 								'ultimate-addons-for-gutenberg'
 							),
-							tooltip: __(
-								'Button',
-								'ultimate-addons-for-gutenberg'
-							),
 						},
 						{
 							value: 'all',
 							label: __(
-								'Complete Box',
-								'ultimate-addons-for-gutenberg'
-							),
-							tooltip: __(
 								'Complete Box',
 								'ultimate-addons-for-gutenberg'
 							),
@@ -704,18 +686,10 @@ const Settings = ( props ) => {
 												'Before Text',
 												'ultimate-addons-for-gutenberg'
 											),
-											tooltip: __(
-												'Before Text',
-												'ultimate-addons-for-gutenberg'
-											),
 										},
 										{
 											value: 'after',
 											label: __(
-												'After Text',
-												'ultimate-addons-for-gutenberg'
-											),
-											tooltip: __(
 												'After Text',
 												'ultimate-addons-for-gutenberg'
 											),
@@ -724,21 +698,29 @@ const Settings = ( props ) => {
 									showIcons={ false }
 								/>
 								{
-									<Range
+									<ResponsiveSlider
 										label={ __(
 											'Icon Spacing',
 											'ultimate-addons-for-gutenberg'
 										) }
-										setAttributes={ setAttributes }
-										value={ ctaIconSpace }
-										onChange={ ( value ) =>
-											setAttributes( {
-												ctaIconSpace: value,
-											} )
-										}
+										data={ {
+											desktop: {
+												value: ctaIconSpace,
+												label: 'ctaIconSpace',
+											},
+											tablet: {
+												value: ctaIconSpaceTablet,
+												label: 'ctaIconSpaceTablet',
+											},
+											mobile: {
+												value: ctaIconSpaceMobile,
+												label: 'ctaIconSpaceMobile',
+											},
+										} }
 										min={ 0 }
 										max={ 50 }
 										displayUnit={ false }
+										setAttributes={ setAttributes }
 									/>
 								}
 							</>
@@ -850,9 +832,10 @@ const Settings = ( props ) => {
 							] }
 							normal={ ctaNormalSettings() }
 							hover={ ctaHoverSettings() }
-							disableBottomSeparator={ true }
+							disableBottomSeparator={ false }
 						/>
 						<Border
+							disabledBorderTitle= { false }
 							setAttributes={ setAttributes }
 							borderStyle={ {
 								value: ctaBorderStyle,
@@ -1408,18 +1391,10 @@ const Settings = ( props ) => {
 										'Inline',
 										'ultimate-addons-for-gutenberg'
 									),
-									tooltip: __(
-										'Inline',
-										'ultimate-addons-for-gutenberg'
-									),
 								},
 								{
 									value: 'below-title',
 									label: __(
-										'Stack',
-										'ultimate-addons-for-gutenberg'
-									),
-									tooltip: __(
 										'Stack',
 										'ultimate-addons-for-gutenberg'
 									),
@@ -1430,21 +1405,29 @@ const Settings = ( props ) => {
 						{ ( ctaType === 'text' || ctaType === 'button' ) && (
 							<>
 								{ ctaPosition === 'right' && (
-									<Range
+									<ResponsiveSlider
 										label={ __(
 											'Content Width (%)',
 											'ultimate-addons-for-gutenberg'
 										) }
-										setAttributes={ setAttributes }
-										value={ contentWidth }
-										onChange={ ( value ) =>
-											setAttributes( {
-												contentWidth: value,
-											} )
-										}
+										data={ {
+											desktop: {
+												value: contentWidth,
+												label: 'contentWidth',
+											},
+											tablet: {
+												value: contentWidthTablet,
+												label: 'contentWidthTablet',
+											},
+											mobile: {
+												value: contentWidthMobile,
+												label: 'contentWidthMobile',
+											},
+										} }
 										min={ 0 }
 										max={ 100 }
 										displayUnit={ false }
+										setAttributes={ setAttributes }
 									/>
 								) }
 							</>
@@ -1469,18 +1452,10 @@ const Settings = ( props ) => {
 												'Top',
 												'ultimate-addons-for-gutenberg'
 											),
-											tooltip: __(
-												'Top',
-												'ultimate-addons-for-gutenberg'
-											),
 										},
 										{
 											value: 'middle',
 											label: __(
-												'Middle',
-												'ultimate-addons-for-gutenberg'
-											),
-											tooltip: __(
 												'Middle',
 												'ultimate-addons-for-gutenberg'
 											),
@@ -1506,10 +1481,6 @@ const Settings = ( props ) => {
 												'None',
 												'ultimate-addons-for-gutenberg'
 											),
-											tooltip: __(
-												'None',
-												'ultimate-addons-for-gutenberg'
-											),
 										},
 										{
 											value: 'tablet',
@@ -1517,18 +1488,10 @@ const Settings = ( props ) => {
 												'Tablet',
 												'ultimate-addons-for-gutenberg'
 											),
-											tooltip: __(
-												'Tablet',
-												'ultimate-addons-for-gutenberg'
-											),
 										},
 										{
 											value: 'mobile',
 											label: __(
-												'Mobile',
-												'ultimate-addons-for-gutenberg'
-											),
-											tooltip: __(
 												'Mobile',
 												'ultimate-addons-for-gutenberg'
 											),

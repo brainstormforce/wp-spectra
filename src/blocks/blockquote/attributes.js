@@ -117,6 +117,20 @@ const attributes = {
 			styleType: 'desc-bottom-margin'
 		}
 	},
+	descSpaceTablet: {
+		type: 'number',
+		default: 0,
+		UAGCopyPaste: {
+			styleType: 'desc-bottom-margin'
+		}
+	},
+	descSpaceMobile: {
+		type: 'number',
+		default: 0,
+		UAGCopyPaste: {
+			styleType: 'desc-bottom-margin'
+		}
+	},
 	descSpaceUnit: {
 		type: 'string',
 		default: 'px',
@@ -218,6 +232,20 @@ const attributes = {
 			styleType: 'author-bottom-margin'
 		}
 	},
+	authorSpaceTablet: {
+		type: 'number',
+		default: 0,
+		UAGCopyPaste: {
+			styleType: 'author-bottom-margin'
+		}
+	},
+	authorSpaceMobile: {
+		type: 'number',
+		default: 0,
+		UAGCopyPaste: {
+			styleType: 'author-bottom-margin'
+		}
+	},
 	authorSpaceUnit: {
 		type: 'string',
 		default: 'px',
@@ -246,6 +274,20 @@ const attributes = {
 			styleType: 'author-image-width'
 		}
 	},
+	authorImageWidthTablet: {
+		type: 'number',
+		default: 0,
+		UAGCopyPaste: {
+			styleType: 'author-image-width'
+		}
+	},
+	authorImageWidthMobile: {
+		type: 'number',
+		default: 0,
+		UAGCopyPaste: {
+			styleType: 'author-image-width'
+		}
+	},
 	authorImageWidthUnit: {
 		type: 'string',
 		default: 'px',
@@ -256,6 +298,20 @@ const attributes = {
 	authorImgBorderRadius: {
 		type: 'number',
 		default: 100,
+		UAGCopyPaste: {
+			styleType: 'author-image-border-radius'
+		}
+	},
+	authorImgBorderRadiusTablet: {
+		type: 'number',
+		default: 0,
+		UAGCopyPaste: {
+			styleType: 'author-image-border-radius'
+		}
+	},
+	authorImgBorderRadiusMobile: {
+		type: 'number',
+		default: 0,
 		UAGCopyPaste: {
 			styleType: 'author-image-border-radius'
 		}
@@ -472,6 +528,20 @@ const attributes = {
 			styleType: 'desc-border-gap'
 		}
 	},
+	borderGapTablet: {
+		type: 'number',
+		default: 0,
+		UAGCopyPaste: {
+			styleType: 'desc-border-gap'
+		}
+	},
+	borderGapMobile: {
+		type: 'number',
+		default: 0,
+		UAGCopyPaste: {
+			styleType: 'desc-border-gap'
+		}
+	},
 	borderGapUnit: {
 		type: 'string',
 		default: 'px',
@@ -481,6 +551,20 @@ const attributes = {
 	},
 	verticalPadding: {
 		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'desc-vertical-padding'
+		}
+	},
+	verticalPaddingTablet: {
+		type: 'number',
+		default: 0,
+		UAGCopyPaste: {
+			styleType: 'desc-vertical-padding'
+		}
+	},
+	verticalPaddingMobile: {
+		type: 'number',
+		default: 0,
 		UAGCopyPaste: {
 			styleType: 'desc-vertical-padding'
 		}
