@@ -39,9 +39,9 @@ const Settings = ( props ) => {
 		headingColorType,
 		headingColor,
 		headingGradientColor,
-		headingBackgroundType,
-		headingBackground,
-		headingGradientBackground,
+		blockBackgroundType,
+		blockBackground,
+		blockGradientBackground,
 		subHeadingColor,
 		separatorColor,
 		headingTag,
@@ -373,7 +373,7 @@ const Settings = ( props ) => {
 		);
 	};
 
-	const headingPanel = () => {
+	const headingStylePanel = () => {
 		return (
 			<UAGAdvancedPanelBody
 				title={ __( 'Heading', 'ultimate-addons-for-gutenberg' ) }
@@ -392,22 +392,6 @@ const Settings = ( props ) => {
 					gradient={{
 						value: headingGradientColor,
 						label: 'headingGradientColor'
-					}}
-					setAttributes={ setAttributes }
-				/>
-				<ColorSwitchControl
-					label={__( 'Background Color', 'ultimate-addons-for-gutenberg' )}
-					type={{
-						value: headingBackgroundType,
-						label: 'headingBackgroundType'
-					}}
-					classic={{
-						value: headingBackground,
-						label: 'headingBackground'
-					}}
-					gradient={{
-						value: headingGradientBackground,
-						label: 'headingGradientBackground'
 					}}
 					setAttributes={ setAttributes }
 				/>
@@ -568,7 +552,7 @@ const Settings = ( props ) => {
 		);
 	};
 
-	const subheadingPanel = () => {
+	const subHeadingStylePanel = () => {
 		return (
 			<UAGAdvancedPanelBody
 				title={ __( 'Description', 'ultimate-addons-for-gutenberg' ) }
@@ -786,6 +770,32 @@ const Settings = ( props ) => {
 					/>
 				</UAGAdvancedPanelBody>
 	};
+
+	const blockStylePanel = () => {
+		return (
+			<UAGAdvancedPanelBody
+				title={ __( 'Background', 'ultimate-addons-for-gutenberg' ) }
+				initialOpen={ false }
+			>
+				<ColorSwitchControl
+					label={__( 'Background Color', 'ultimate-addons-for-gutenberg' )}
+					type={{
+						value: blockBackgroundType,
+						label: 'blockBackgroundType'
+					}}
+					classic={{
+						value: blockBackground,
+						label: 'blockBackground'
+					}}
+					gradient={{
+						value: blockGradientBackground,
+						label: 'blockGradientBackground'
+					}}
+					setAttributes={ setAttributes }
+				/>
+			</UAGAdvancedPanelBody>
+		)
+	}
 
 	const spacingStylePanel = () => {
 		return (
@@ -1188,9 +1198,10 @@ const Settings = ( props ) => {
 						{ generalPanel() }
 					</InspectorTab>
 					<InspectorTab { ...UAGTabs.style }>
-						{ headingPanel() }
+						{blockStylePanel()}
+						{ headingStylePanel() }
 						{ 'none' !== seperatorStyle && seperatorSettings() }
-						{ subheadingPanel() }
+						{ subHeadingStylePanel() }
 						{spacingStylePanel()}
 						{linkStylePanel()}
 						{highLightStylePanel()}

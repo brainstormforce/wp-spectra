@@ -8,6 +8,18 @@ const attributes = {
 		type: 'boolean',
 		default: false,
 	},
+	blockBackgroundType: {
+		type: 'string',
+		default: 'classic'
+	},
+	blockGradientBackground: {
+		type: 'string',
+		default: 'linear-gradient(90deg, rgb(6, 147, 227) 0%, rgb(155, 81, 224) 100%)',
+	},
+	blockBackground: {
+		type: 'string',
+	},
+
 	headingTitle: {
 		source: 'html',
 		selector: '.uagb-heading-text',
@@ -40,21 +52,10 @@ const attributes = {
 	},
 	headingGradientColor: {
 		type: 'string',
-		default: 'linear-gradient(90deg, rgb(6, 147, 227) 0%, rgb(155, 81, 224) 100%)',
+		default: 'linear-gradient(90deg, rgb(155, 81, 224) 0%, rgb(6, 147, 227) 100%)',
 		UAGCopyPaste: {
 			styleType: 'main-title-gradient-color'
 		}
-	},
-	headingBackgroundType: {
-		type: 'string',
-		default: 'classic'
-	},
-	headingGradientBackground: {
-		type: 'string',
-		default: 'linear-gradient(90deg, rgb(6, 147, 227) 0%, rgb(155, 81, 224) 100%)',
-	},
-	headingBackground: {
-		type: 'string',
 	},
 	subHeadingColor: {
 		type: 'string',

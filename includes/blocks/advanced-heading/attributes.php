@@ -9,13 +9,13 @@
 
 return array(
 	'classMigrate'                    => false,
+	'blockBackground'                 => '',
+	'blockBackgroundType'             => 'classic',
+	'blockGradientBackground'         => 'linear-gradient(90deg, rgb(6, 147, 227) 0%, rgb(155, 81, 224) 100%)',
 	'headingAlign'                    => 'center',
 	'headingColor'                    => '',
 	'headingColorType'                => 'classic',
-	'headingGradientColor'            => 'linear-gradient(90deg, rgb(6, 147, 227) 0%, rgb(155, 81, 224) 100%)',
-	'headingBackground'               => '',
-	'headingBackgroundType'           => 'classic',
-	'headingGradientBackground'       => 'linear-gradient(90deg, rgb(6, 147, 227) 0%, rgb(155, 81, 224) 100%)',
+	'headingGradientColor'            => 'linear-gradient(90deg, rgb(155, 81, 224) 0%, rgb(6, 147, 227) 100%)',
 	'subHeadingColor'                 => '',
 	'separatorColor'                  => '#0170b9',
 	'seperatorStyle'                  => 'none',

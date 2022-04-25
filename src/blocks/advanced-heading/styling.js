@@ -12,9 +12,9 @@ function styling( props ) {
 		headingColor,
 		headingColorType,
 		headingGradientColor,
-		headingBackgroundType,
-		headingBackground,
-		headingGradientBackground,
+		blockBackgroundType,
+		blockBackground,
+		blockGradientBackground,
 		headSpace,
 		headSpaceTablet,
 		headSpaceMobile,
@@ -150,6 +150,7 @@ function styling( props ) {
 
 	const selectors = {
 		'.wp-block-uagb-advanced-heading ':{
+			'background': 	'classic' === blockBackgroundType ? blockBackground : blockGradientBackground,
 			'text-align': headingAlign,
 			'margin-top': generateCSSUnit(
 				headingBlockTopMargin,
@@ -254,7 +255,6 @@ function styling( props ) {
 		'font-size': generateCSSUnit( headFontSize, headFontSizeType ),
 		'line-height': generateCSSUnit( headLineHeight, headLineHeightType ),
 		'color': headingColor,
-		'background': 	'classic' === headingBackgroundType ? headingBackground : headingGradientBackground,
 		'margin-bottom': generateCSSUnit( headSpace, 'px' ),
 		'letter-spacing': generateCSSUnit( headLetterSpacing, headLetterSpacingType ),
 		'text-shadow': generateCSSUnit( headShadowHOffset, 'px' ) + ' ' + generateCSSUnit( headShadowVOffset, 'px' ) + ' ' + generateCSSUnit( headShadowBlur, 'px' ) + ' ' +  headShadowColor
