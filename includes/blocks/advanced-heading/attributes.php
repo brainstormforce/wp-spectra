@@ -43,7 +43,7 @@ return array(
 	'headShadowColor'                 => '',
 	'headShadowHOffset'               => 0,
 	'headShadowVOffset'               => 0,
-	'headShadowBlur'                  => 0,
+	'headShadowBlur'                  => 10,
 	'subHeadFontFamily'               => '',
 	'subHeadLoadGoogleFonts'          => false,
 	'subHeadFontWeight'               => '',

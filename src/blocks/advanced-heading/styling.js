@@ -267,7 +267,7 @@ function styling( props ) {
 		'color': headingColor,
 		'margin-bottom': generateCSSUnit( headSpace, 'px' ),
 		'letter-spacing': generateCSSUnit( headLetterSpacing, headLetterSpacingType ),
-		'text-shadow': generateCSSUnit( headShadowHOffset, 'px' ) + ' ' + generateCSSUnit( headShadowVOffset, 'px' ) + ' ' + generateCSSUnit( headShadowBlur, 'px' ) + ' ' +  headShadowColor,
+		'text-shadow': headShadowColor && generateCSSUnit( headShadowHOffset, 'px' ) + ' ' + generateCSSUnit( headShadowVOffset, 'px' ) + ' ' + generateCSSUnit( headShadowBlur, 'px' ) + ' ' +  headShadowColor,
 		...headingGradientStyle
 	};
 
