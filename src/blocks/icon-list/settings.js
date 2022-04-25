@@ -105,7 +105,7 @@ const Settings = ( props ) => {
 
 	const generalSetting = () => {
 		return (
-			<UAGAdvancedPanelBody initialOpen={ true }>
+			<UAGAdvancedPanelBody title={ __( 'Content', 'ultimate-addons-for-gutenberg' ) } initialOpen={ true }>
 				<MultiButtonsControl
 					setAttributes={ setAttributes }
 					label={ __( 'Layout', 'ultimate-addons-for-gutenberg' ) }
@@ -121,18 +121,10 @@ const Settings = ( props ) => {
 								'Horizontal',
 								'ultimate-addons-for-gutenberg'
 							),
-							tooltip: __(
-								'Horizontal',
-								'ultimate-addons-for-gutenberg'
-							),
 						},
 						{
 							value: 'vertical',
 							label: __(
-								'Vertical',
-								'ultimate-addons-for-gutenberg'
-							),
-							tooltip: __(
 								'Vertical',
 								'ultimate-addons-for-gutenberg'
 							),
@@ -215,10 +207,6 @@ const Settings = ( props ) => {
 										'None',
 										'ultimate-addons-for-gutenberg'
 									),
-									tooltip: __(
-										'None',
-										'ultimate-addons-for-gutenberg'
-									),
 								},
 								{
 									value: 'tablet',
@@ -226,18 +214,10 @@ const Settings = ( props ) => {
 										'Tablet + Mobile',
 										'ultimate-addons-for-gutenberg'
 									),
-									tooltip: __(
-										'Tablet',
-										'ultimate-addons-for-gutenberg'
-									),
 								},
 								{
 									value: 'mobile',
 									label: __(
-										'Mobile',
-										'ultimate-addons-for-gutenberg'
-									),
-									tooltip: __(
 										'Mobile',
 										'ultimate-addons-for-gutenberg'
 									),
@@ -268,18 +248,10 @@ const Settings = ( props ) => {
 								{
 									value: 'top',
 									label: 'Top',
-									tooltip: __(
-										'Top',
-										'ultimate-addons-for-gutenberg'
-									),
 								},
 								{
 									value: 'middle',
 									label: 'Middle',
-									tooltip: __(
-										'Middle',
-										'ultimate-addons-for-gutenberg'
-									),
 								},
 							] }
 							showIcons={ false }
