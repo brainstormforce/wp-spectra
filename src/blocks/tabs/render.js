@@ -288,6 +288,7 @@ const Render = ( props ) => {
 							) }
 						>
 							<span // eslint-disable-line jsx-a11y/click-events-have-key-events
+								className="uagb-tab uagb-tabs__add-tab"
 								role='button'
 								tabIndex='0'
 								onClick={ () => addTab() }
