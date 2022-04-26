@@ -33,13 +33,14 @@ const Welcome = () => {
                 <h2 className="sr-only" id="section-1-title">
                   Section title
                 </h2>
-                <div className="rounded-[0.2rem] bg-white overflow-hidden shadow flex flex-col h-full justify-center">
-                  <div className="p-6">
-                        <h3 className='text-xl pb-3 font-medium text-center'>{__( 'Powerful Blocks & Beautiful Templates for any kind of website.', 'ultimate-addons-for-gutenberg' )}</h3>
-						<div className="mx-[80px]">
+                <div className="rounded-[0.2rem] bg-white overflow-hidden shadow flex flex-col justify-end">
+                  <div className="p-12">
+                        <h2 className='text-[1.6rem] leading-[2.4rem] pb-3 font-medium text-left'>{__( 'Welcome to Spectra!', 'ultimate-addons-for-gutenberg' )}</h2>
+						<p className='pb-7'>{__( 'Learn everything you need to know about the Spectra plugin with our comprehensive documentation. Learn everything you need to know about know about.', 'ultimate-addons-for-gutenberg' )}</p>
+						<div className="mr-[80px]">
 						<iframe width="100%" height="350" src={`https://www.youtube.com/embed/N-MLUplUoZc?showinfo=0&autoplay=${allowAutoPlay}&mute=${allowAutoPlay}`} allow="autoplay" title="YouTube video player" frameBorder="0" allowFullScreen></iframe>
 						</div>
-						<span className="relative z-0 inline-flex rounded-[0.2rem] pt-6 justify-center w-full">
+						<span className="relative z-0 inline-flex rounded-[0.2rem] pt-6 justify-start w-full">
                           <button
                               type="button"
                               className="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-[0.2rem] shadow-sm text-white bg-wpcolor hover:bg-wphovercolor focus:outline-none mr-4"
@@ -69,8 +70,8 @@ const Welcome = () => {
                   Section title
                 </h2>
                 <div className="rounded-[0.2rem] bg-white overflow-hidden shadow">
-                  <div className="p-6">
-                    <h3 className='text-xl font-medium pb-2'>
+                  <div className="p-7">
+                    <h3 className='text-xl leading-[2.47rem] font-medium pb-2'>
                       { __(
                         'Knowledge Base',
                         'ultimate-addons-for-gutenberg'
@@ -97,8 +98,8 @@ const Welcome = () => {
                   Section title
                 </h2>
                 <div className="rounded-[0.2rem] bg-white overflow-hidden shadow">
-                  <div className="p-6">
-                    <h3 className='text-xl font-medium pb-2'>
+                  <div className="p-7">
+                    <h3 className='text-xl leading-[2.47rem] font-medium pb-2'>
                       { __(
                         'Get 5-star Support',
                         'ultimate-addons-for-gutenberg'
@@ -125,8 +126,8 @@ const Welcome = () => {
                   Section title
                 </h2>
                 <div className="rounded-[0.2rem] bg-white overflow-hidden shadow">
-                  <div className="p-6">
-                    <h3 className='text-xl font-medium pb-2'>
+                  <div className="p-7">
+                    <h3 className='text-xl leading-[2.47rem] font-medium pb-2'>
                       { __(
                         'Join the Community',
                         'ultimate-addons-for-gutenberg'
