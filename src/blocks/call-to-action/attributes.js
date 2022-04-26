@@ -365,21 +365,21 @@ const attributes = {
 	},
 	contentWidth: {
 		type: 'number',
-		default: '70',
+		default: 70,
 		UAGCopyPaste: {
 			styleType: 'desc-width'
 		},
 	},
 	contentWidthTablet: {
 		type: 'number',
-		default: '70',
+		default: 70,
 		UAGCopyPaste: {
 			styleType: 'desc-width'
 		},
 	},
 	contentWidthMobile: {
 		type: 'number',
-		default: '70',
+		default: 70,
 		UAGCopyPaste: {
 			styleType: 'desc-width'
 		},
