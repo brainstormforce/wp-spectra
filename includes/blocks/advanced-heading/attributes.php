@@ -18,7 +18,7 @@ return array(
 	'headingGradientColor'            => 'linear-gradient(90deg, rgb(155, 81, 224) 0%, rgb(6, 147, 227) 100%)',
 	'subHeadingColor'                 => '',
 	'separatorColor'                  => '#0170b9',
-	'seperatorStyle'                  => 'none',
+	'seperatorStyle'                  => 'solid',
 	'separatorHeight'                 => 2,
 	'separatorWidth'                  => 12,
 	'separatorWidthTablet'            => '',
