@@ -20,7 +20,6 @@ import {
 	TextControl,
 	ToggleControl,
 	TextareaControl,
-	ExternalLink,
 	Icon,
 } from '@wordpress/components';
 
@@ -114,11 +113,6 @@ const Settings = ( props ) => {
 		overallAlignment,
 		reCaptchaEnable,
 		reCaptchaType,
-		reCaptchaSecretKeyV2,
-		reCaptchaSiteKeyV2,
-		reCaptchaSecretKeyV3,
-		reCaptchaSiteKeyV3,
-		hidereCaptchaBatch,
 		successMessageTextColor,
 		successMessageBGColor,
 		successMessageBorderColor,
@@ -177,6 +171,7 @@ const Settings = ( props ) => {
 		submitTextFontStyle,
 		labelFontStyle,
 		inputFontStyle,
+		hidereCaptchaBatch
 	} = attributes;
 
 	const presetSettings = () => {
@@ -1457,7 +1452,6 @@ const Settings = ( props ) => {
 			</UAGAdvancedPanelBody>
 		);
 	};
-
 	const googleReCaptcha = () => {
 		return (
 			<UAGAdvancedPanelBody
@@ -1473,7 +1467,6 @@ const Settings = ( props ) => {
 						'ultimate-addons-for-gutenberg'
 					) }
 				</p>
-
 				<ToggleControl
 					label={ __(
 						'Enable reCAPTCHA ',
@@ -1487,128 +1480,60 @@ const Settings = ( props ) => {
 					}
 				/>
 				{ reCaptchaEnable && (
-					<MultiButtonsControl
-						setAttributes={ setAttributes }
-						label={ __(
-							'Select Version',
-							'ultimate-addons-for-gutenberg'
-						) }
-						data={ {
-							value: reCaptchaType,
-							label: 'reCaptchaType',
-						} }
-						className="uagb-multi-button-alignment-control"
-						options={ [
-							{
-								value: 'v2',
-								label: 'V2',
-							},
-							{
-								value: 'v3',
-								label: 'V3',
-							},
-						] }
-						showIcons={ false }
-					/>
-				) }
-				{ reCaptchaEnable && 'v2' === reCaptchaType && (
 					<>
-						<TextControl
+						<p className="uagb-form-notice">
+							Please configure the Google reCAPTCHA Site & Secret key from <a target = "_blank" href={`${uagb_blocks_info.uagb_home_url}/wp-admin/options-general.php?page=spectra&path=settings&settings=block-settings`} rel="noreferrer">here.</a>
+						</p>
+						<MultiButtonsControl
+							setAttributes={ setAttributes }
 							label={ __(
-								'Site Key',
+								'Select Version',
 								'ultimate-addons-for-gutenberg'
 							) }
-							value={ reCaptchaSiteKeyV2 }
-							onChange={ ( value ) =>
-								setAttributes( {
-									reCaptchaSiteKeyV2: value,
-								} )
-							}
-							placeholder={ __(
-								'Enter v2 Keys',
-								'ultimate-addons-for-gutenberg'
-							) }
-						/>
-						<TextControl
-							label={ __(
-								'Secret Key',
-								'ultimate-addons-for-gutenberg'
-							) }
-							value={ reCaptchaSecretKeyV2 }
-							onChange={ ( value ) =>
-								setAttributes( {
-									reCaptchaSecretKeyV2: value,
-								} )
-							}
-							placeholder={ __(
-								'Enter v2 Keys',
-								'ultimate-addons-for-gutenberg'
-							) }
+							data={ {
+								value: reCaptchaType,
+								label: 'reCaptchaType',
+							} }
+							className="uagb-multi-button-alignment-control"
+							options={ [
+								{
+									value: 'v2',
+									label: 'V2',
+									tooltip: __(
+										'V2',
+										'ultimate-addons-for-gutenberg'
+									),
+								},
+								{
+									value: 'v3',
+									label: 'V3',
+									tooltip: __(
+										'V3',
+										'ultimate-addons-for-gutenberg'
+									),
+								},
+							] }
+							showIcons={ false }
 						/>
 					</>
 				) }
 				{ reCaptchaEnable && 'v3' === reCaptchaType && (
-					<>
-						<TextControl
-							label={ __(
-								'Site Key',
-								'ultimate-addons-for-gutenberg'
-							) }
-							value={ reCaptchaSiteKeyV3 }
-							onChange={ ( value ) =>
-								setAttributes( {
-									reCaptchaSiteKeyV3: value,
-								} )
-							}
-							placeholder={ __(
-								'Enter v3 Keys',
-								'ultimate-addons-for-gutenberg'
-							) }
-						/>
-						<TextControl
-							label={ __(
-								'Secret Key',
-								'ultimate-addons-for-gutenberg'
-							) }
-							value={ reCaptchaSecretKeyV3 }
-							onChange={ ( value ) =>
-								setAttributes( {
-									reCaptchaSecretKeyV3: value,
-								} )
-							}
-							placeholder={ __(
-								'Enter v3 Keys',
-								'ultimate-addons-for-gutenberg'
-							) }
-						/>
-						<ToggleControl
-							label={ __(
-								'Hide reCAPTCHA Badge',
-								'ultimate-addons-for-gutenberg'
-							) }
-							checked={ hidereCaptchaBatch }
-							onChange={ () =>
-								setAttributes( {
-									hidereCaptchaBatch: ! hidereCaptchaBatch,
-								} )
-							}
-						/>
-					</>
+					<ToggleControl
+						label={ __(
+							'Hide reCAPTCHA Badge',
+							'ultimate-addons-for-gutenberg'
+						) }
+						checked={ hidereCaptchaBatch }
+						onChange={ () =>
+							setAttributes( {
+								hidereCaptchaBatch: ! hidereCaptchaBatch,
+							} )
+						}
+					/>
 				) }
-				<h2> { __( 'Know More', 'ultimate-addons-for-gutenberg' ) }</h2>
-				<ExternalLink href="https://www.google.com/recaptcha/admin/create">
-					{ __( 'Get Keys', 'ultimate-addons-for-gutenberg' ) }
-				</ExternalLink>
-				<ExternalLink href="https://developers.google.com/recaptcha/intro">
-					{ __(
-						' | Documentation',
-						'ultimate-addons-for-gutenberg'
-					) }
-				</ExternalLink>
 			</UAGAdvancedPanelBody>
 		);
 	};
-
 	let loadsubmittextGoogleFonts;
 
 	if ( submitTextloadGoogleFonts === true ) {
