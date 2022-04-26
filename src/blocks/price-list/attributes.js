@@ -249,7 +249,7 @@ const attributes = {
 	},
 	seperatorColor: {
 		type: 'string',
-		default: '#dddddd',
+		default: '#b2b4b5',
 		UAGCopyPaste: {
 			styleType: 'separator-color'
 		},
@@ -328,18 +328,21 @@ const attributes = {
 	},
 	titleLineHeight: {
 		type: 'number',
+		default: 1,
 		UAGCopyPaste: {
 			styleType: 'main-title-line-height'
 		},
 	},
 	titleLineHeightTablet: {
 		type: 'number',
+		default: 1,
 		UAGCopyPaste: {
 			styleType: 'main-title-line-height-tablet'
 		},
 	},
 	titleLineHeightMobile: {
 		type: 'number',
+		default: 1,
 		UAGCopyPaste: {
 			styleType: 'main-title-line-height-mobile'
 		},
@@ -405,18 +408,21 @@ const attributes = {
 	},
 	priceLineHeight: {
 		type: 'number',
+		default: 1,
 		UAGCopyPaste: {
 			styleType: 'prefix-line-height'
 		},
 	},
 	priceLineHeightTablet: {
 		type: 'number',
+		default: 1,
 		UAGCopyPaste: {
 			styleType: 'prefix-line-height-tablet'
 		},
 	},
 	priceLineHeightMobile: {
 		type: 'number',
+		default: 1,
 		UAGCopyPaste: {
 			styleType: 'prefix-line-height-mobile'
 		},
@@ -482,18 +488,21 @@ const attributes = {
 	},
 	descLineHeight: {
 		type: 'number',
+		default: 1,
 		UAGCopyPaste: {
 			styleType: 'desc-line-height'
 		},
 	},
 	descLineHeightTablet: {
 		type: 'number',
+		default: 1,
 		UAGCopyPaste: {
 			styleType: 'desc-line-height-tablet'
 		},
 	},
 	descLineHeightMobile: {
 		type: 'number',
+		default: 1,
 		UAGCopyPaste: {
 			styleType: 'desc-line-height-mobile'
 		},
