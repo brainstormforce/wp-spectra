@@ -510,20 +510,6 @@ const Settings = ( props ) => {
 						title: __( 'Blur', 'ultimate-addons-for-gutenberg' ),
 					} }
 				/>
-				{/* <Range
-					label={ __(
-						'Bottom Spacing (px)',
-						'ultimate-addons-for-gutenberg'
-					) }
-					setAttributes={ setAttributes }
-					value={ headSpace }
-					onChange={ ( value ) =>
-						setAttributes( { headSpace: value } )
-					}
-					min={ 0 }
-					max={ 200 }
-					displayUnit={ false }
-				/> */}
 				<ResponsiveSlider
 					label={ __(
 						'Bottom Spacing (px)',
