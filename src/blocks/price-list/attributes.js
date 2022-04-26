@@ -221,7 +221,7 @@ const attributes = {
 	},
 	seperatorWidth: {
 		type: 'number',
-		default: '100',
+		default: 100,
 		UAGCopyPaste: {
 			styleType: 'separator-width'
 		},
@@ -242,7 +242,7 @@ const attributes = {
 	},
 	seperatorThickness: {
 		type: 'number',
-		default: '1',
+		default: 1,
 		UAGCopyPaste: {
 			styleType: 'separator-thickness'
 		},
