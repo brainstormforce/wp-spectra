@@ -84,7 +84,7 @@ if ( ! class_exists( 'UAGB_Forms' ) ) {
 				$google_recaptcha_secret_key = $options['recaptcha_secret_key_v3'];
 
 			}
-			if ( is_null( $google_recaptcha_secret_key ) && is_null( $google_recaptcha_site_key ) ) {
+			if ( ! empty( $google_recaptcha_secret_key ) && ! empty( $google_recaptcha_site_key ) ) {
 
 				// Google recaptcha secret key verification starts.
 				$google_recaptcha = isset( $_POST['captcha_response'] ) ? sanitize_text_field( $_POST['captcha_response'] ) : '';
@@ -101,7 +101,6 @@ if ( ! class_exists( 'UAGB_Forms' ) ) {
 					return $errors;
 
 				} else {
-
 					$google_response = wp_safe_remote_get(
 						add_query_arg(
 							array(
@@ -126,6 +125,12 @@ if ( ! class_exists( 'UAGB_Forms' ) ) {
 						}
 					}
 				}
+			}
+			if ( empty( $google_recaptcha_secret_key ) && ! empty( $google_recaptcha_site_key ) ) {
+				wp_send_json_error( 400 );
+			}
+			if ( ! empty( $google_recaptcha_secret_key ) && empty( $google_recaptcha_site_key ) ) {
+				wp_send_json_error( 400 );
 			}
 
 			$form_data = isset( $_POST['form_data'] ) ? json_decode( stripslashes( $_POST['form_data'] ), true ) : array(); // phpcs:ignore
