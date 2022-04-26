@@ -177,7 +177,7 @@ function FontFamilyControl( props ) {
 									[ props.fontStyle.label ]: value,
 								} )
 							}
-							options={ [,
+							options={ [
 								{
 									value: 'normal',
 									label: __(
