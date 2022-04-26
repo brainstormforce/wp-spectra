@@ -18,7 +18,7 @@ const presets = [
             { label: 'bgSize', value: 15 },
             { label: 'size', value: 15 },
 			{ label: 'borderRadius', value: 0 },
-			{label: 'border', value: 0 },
+			{ label: 'border', value: 0 },
         ],
         childAttributes: [
             { label: 'icon_color', value: '#fff' },

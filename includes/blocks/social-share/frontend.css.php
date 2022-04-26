@@ -21,10 +21,12 @@ $selectors['.uagb-social-share__outer-wrap .block-editor-inner-blocks'] = array(
 );
 
 $selectors['.uagb-social-share__layout-vertical .uagb-ss__wrapper']   = array(
-	'padding'       => UAGB_Helper::get_css_value( $attr['bgSize'], 'px' ),
 	'margin-left'   => 0,
 	'margin-right'  => 0,
 	'margin-bottom' => UAGB_Helper::get_css_value( $attr['gap'], 'px' ),
+);
+$selectors['.uagb-social-share__layout-vertical .uagb-ss__link']   = array(
+	'padding'       => UAGB_Helper::get_css_value( $attr['bgSize'], 'px' )
 );
 $m_selectors['.uagb-social-share__layout-vertical .uagb-ss__wrapper'] = array(
 	'margin-left'   => 0,
@@ -36,9 +38,10 @@ $t_selectors['.uagb-social-share__layout-vertical .uagb-ss__wrapper'] = array(
 	'margin-right'  => 0,
 	'margin-bottom' => UAGB_Helper::get_css_value( $attr['gapTablet'], 'px' ),
 );
-
+$selectors['.uagb-social-share__layout-horizontal .uagb-ss__link']   = array(
+	'padding'      => UAGB_Helper::get_css_value( $attr['bgSize'], 'px' )
+);
 $selectors['.uagb-social-share__layout-horizontal .uagb-ss__wrapper']   = array(
-	'padding'      => UAGB_Helper::get_css_value( $attr['bgSize'], 'px' ),
 	'margin-left'  => UAGB_Helper::get_css_value( ( $attr['gap'] / 2 ), 'px' ),
 	'margin-right' => UAGB_Helper::get_css_value( ( $attr['gap'] / 2 ), 'px' ),
 );
