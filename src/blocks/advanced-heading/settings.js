@@ -99,39 +99,39 @@ const Settings = ( props ) => {
 		subHeadLetterSpacingMobile,
 		subHeadLetterSpacingType,
 		// padding
-		headingBlockTopPadding,
-		headingBlockRightPadding,
-		headingBlockLeftPadding,
-		headingBlockBottomPadding,
-		headingBlockTopPaddingTablet,
-		headingBlockRightPaddingTablet,
-		headingBlockLeftPaddingTablet,
-		headingBlockBottomPaddingTablet,
-		headingBlockTopPaddingMobile,
-		headingBlockRightPaddingMobile,
-		headingBlockLeftPaddingMobile,
-		headingBlockBottomPaddingMobile,
-		headingBlockPaddingUnit,
-		headingBlockPaddingUnitTablet,
-		headingBlockPaddingUnitMobile,
-		headingBlockPaddingLink,
+		blockTopPadding,
+		blockRightPadding,
+		blockLeftPadding,
+		blockBottomPadding,
+		blockTopPaddingTablet,
+		blockRightPaddingTablet,
+		blockLeftPaddingTablet,
+		blockBottomPaddingTablet,
+		blockTopPaddingMobile,
+		blockRightPaddingMobile,
+		blockLeftPaddingMobile,
+		blockBottomPaddingMobile,
+		blockPaddingUnit,
+		blockPaddingUnitTablet,
+		blockPaddingUnitMobile,
+		blockPaddingLink,
 		// margin
-		headingBlockTopMargin,
-		headingBlockRightMargin,
-		headingBlockLeftMargin,
-		headingBlockBottomMargin,
-		headingBlockTopMarginTablet,
-		headingBlockRightMarginTablet,
-		headingBlockLeftMarginTablet,
-		headingBlockBottomMarginTablet,
-		headingBlockTopMarginMobile,
-		headingBlockRightMarginMobile,
-		headingBlockLeftMarginMobile,
-		headingBlockBottomMarginMobile,
-		headingBlockMarginUnit,
-		headingBlockMarginUnitTablet,
-		headingBlockMarginUnitMobile,
-		headingBlockMarginLink,
+		blockTopMargin,
+		blockRightMargin,
+		blockLeftMargin,
+		blockBottomMargin,
+		blockTopMarginTablet,
+		blockRightMarginTablet,
+		blockLeftMarginTablet,
+		blockBottomMarginTablet,
+		blockTopMarginMobile,
+		blockRightMarginMobile,
+		blockLeftMarginMobile,
+		blockBottomMarginMobile,
+		blockMarginUnit,
+		blockMarginUnitTablet,
+		blockMarginUnitMobile,
+		blockMarginLink,
 		// link
 		linkColor,
 		linkHColor,
@@ -795,71 +795,71 @@ const Settings = ( props ) => {
 						'ultimate-addons-for-gutenberg'
 					) }
 					valueTop={ {
-						value: headingBlockTopPadding,
-						label: 'headingBlockTopPadding',
+						value: blockTopPadding,
+						label: 'blockTopPadding',
 					} }
 					valueRight={ {
-						value: headingBlockRightPadding,
-						label: 'headingBlockRightPadding',
+						value: blockRightPadding,
+						label: 'blockRightPadding',
 					} }
 					valueBottom={ {
-						value: headingBlockBottomPadding,
-						label: 'headingBlockBottomPadding',
+						value: blockBottomPadding,
+						label: 'blockBottomPadding',
 					} }
 					valueLeft={ {
-						value: headingBlockLeftPadding,
-						label: 'headingBlockLeftPadding',
+						value: blockLeftPadding,
+						label: 'blockLeftPadding',
 					} }
 					valueTopTablet={ {
-						value: headingBlockTopPaddingTablet,
-						label: 'headingBlockTopPaddingTablet',
+						value: blockTopPaddingTablet,
+						label: 'blockTopPaddingTablet',
 					} }
 					valueRightTablet={ {
-						value: headingBlockRightPaddingTablet,
-						label: 'headingBlockRightPaddingTablet',
+						value: blockRightPaddingTablet,
+						label: 'blockRightPaddingTablet',
 					} }
 					valueBottomTablet={ {
-						value: headingBlockBottomPaddingTablet,
-						label: 'headingBlockBottomPaddingTablet',
+						value: blockBottomPaddingTablet,
+						label: 'blockBottomPaddingTablet',
 					} }
 					valueLeftTablet={ {
-						value: headingBlockLeftPaddingTablet,
-						label: 'headingBlockLeftPaddingTablet',
+						value: blockLeftPaddingTablet,
+						label: 'blockLeftPaddingTablet',
 					} }
 					valueTopMobile={ {
-						value: headingBlockTopPaddingMobile,
-						label: 'headingBlockTopPaddingMobile',
+						value: blockTopPaddingMobile,
+						label: 'blockTopPaddingMobile',
 					} }
 					valueRightMobile={ {
-						value: headingBlockRightPaddingMobile,
-						label: 'headingBlockRightPaddingMobile',
+						value: blockRightPaddingMobile,
+						label: 'blockRightPaddingMobile',
 					} }
 					valueBottomMobile={ {
-						value: headingBlockBottomPaddingMobile,
-						label: 'headingBlockBottomPaddingMobile',
+						value: blockBottomPaddingMobile,
+						label: 'blockBottomPaddingMobile',
 					} }
 					valueLeftMobile={ {
-						value: headingBlockLeftPaddingMobile,
-						label: 'headingBlockLeftPaddingMobile',
+						value: blockLeftPaddingMobile,
+						label: 'blockLeftPaddingMobile',
 					} }
 					unit={ {
-						value: headingBlockPaddingUnit,
-						label: 'headingBlockPaddingUnit',
+						value: blockPaddingUnit,
+						label: 'blockPaddingUnit',
 					} }
 					mUnit={ {
-						value: headingBlockPaddingUnitMobile,
-						label: 'headingBlockPaddingUnitMobile',
+						value: blockPaddingUnitMobile,
+						label: 'blockPaddingUnitMobile',
 					} }
 					tUnit={ {
-						value: headingBlockPaddingUnitTablet,
-						label: 'headingBlockPaddingUnitTablet',
+						value: blockPaddingUnitTablet,
+						label: 'blockPaddingUnitTablet',
 					} }
 					deviceType={ deviceType }
 					attributes={ attributes }
 					setAttributes={ setAttributes }
 					link={ {
-						value: headingBlockPaddingLink,
-						label: 'headingBlockPaddingLink',
+						value: blockPaddingLink,
+						label: 'blockPaddingLink',
 					} }
 				/>
 				<SpacingControl
@@ -868,71 +868,71 @@ const Settings = ( props ) => {
 						'ultimate-addons-for-gutenberg'
 					) }
 					valueTop={ {
-						value: headingBlockTopMargin,
-						label: 'headingBlockTopMargin',
+						value: blockTopMargin,
+						label: 'blockTopMargin',
 					} }
 					valueRight={ {
-						value: headingBlockRightMargin,
-						label: 'headingBlockRightMargin',
+						value: blockRightMargin,
+						label: 'blockRightMargin',
 					} }
 					valueBottom={ {
-						value: headingBlockBottomMargin,
-						label: 'headingBlockBottomMargin',
+						value: blockBottomMargin,
+						label: 'blockBottomMargin',
 					} }
 					valueLeft={ {
-						value: headingBlockLeftMargin,
-						label: 'headingBlockLeftMargin',
+						value: blockLeftMargin,
+						label: 'blockLeftMargin',
 					} }
 					valueTopTablet={ {
-						value: headingBlockTopMarginTablet,
-						label: 'headingBlockTopMarginTablet',
+						value: blockTopMarginTablet,
+						label: 'blockTopMarginTablet',
 					} }
 					valueRightTablet={ {
-						value: headingBlockRightMarginTablet,
-						label: 'headingBlockRightMarginTablet',
+						value: blockRightMarginTablet,
+						label: 'blockRightMarginTablet',
 					} }
 					valueBottomTablet={ {
-						value: headingBlockBottomMarginTablet,
-						label: 'headingBlockBottomMarginTablet',
+						value: blockBottomMarginTablet,
+						label: 'blockBottomMarginTablet',
 					} }
 					valueLeftTablet={ {
-						value: headingBlockLeftMarginTablet,
-						label: 'headingBlockLeftMarginTablet',
+						value: blockLeftMarginTablet,
+						label: 'blockLeftMarginTablet',
 					} }
 					valueTopMobile={ {
-						value: headingBlockTopMarginMobile,
-						label: 'headingBlockTopMarginMobile',
+						value: blockTopMarginMobile,
+						label: 'blockTopMarginMobile',
 					} }
 					valueRightMobile={ {
-						value: headingBlockRightMarginMobile,
-						label: 'headingBlockRightMarginMobile',
+						value: blockRightMarginMobile,
+						label: 'blockRightMarginMobile',
 					} }
 					valueBottomMobile={ {
-						value: headingBlockBottomMarginMobile,
-						label: 'headingBlockBottomMarginMobile',
+						value: blockBottomMarginMobile,
+						label: 'blockBottomMarginMobile',
 					} }
 					valueLeftMobile={ {
-						value: headingBlockLeftMarginMobile,
-						label: 'headingBlockLeftMarginMobile',
+						value: blockLeftMarginMobile,
+						label: 'blockLeftMarginMobile',
 					} }
 					unit={ {
-						value: headingBlockMarginUnit,
-						label: 'headingBlockMarginUnit',
+						value: blockMarginUnit,
+						label: 'blockMarginUnit',
 					} }
 					mUnit={ {
-						value: headingBlockMarginUnitMobile,
-						label: 'headingBlockMarginUnitMobile',
+						value: blockMarginUnitMobile,
+						label: 'blockMarginUnitMobile',
 					} }
 					tUnit={ {
-						value: headingBlockMarginUnitTablet,
-						label: 'headingBlockMarginUnitTablet',
+						value: blockMarginUnitTablet,
+						label: 'blockMarginUnitTablet',
 					} }
 					deviceType={ deviceType }
 					attributes={ attributes }
 					setAttributes={ setAttributes }
 					link={ {
-						value: headingBlockMarginLink,
-						label: 'headingBlockMarginLink',
+						value: blockMarginLink,
+						label: 'blockMarginLink',
 					} }
 				/>
 			</UAGAdvancedPanelBody>

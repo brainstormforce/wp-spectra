@@ -18,7 +18,7 @@ function HighlightFormat( { isActive, onChange, value } ) {
 			{
 				selectedBlock && selectedBlock.name === 'uagb/advanced-heading' && attributes.headingColorType === 'classic' && (
 					<Toolbar className="uag-highlight-toolbar" label="Options">
-						<Tooltip text={__('Highlight Text', 'ultimate-addons-for-gutenberg')}>
+						<Tooltip text={__( 'Highlight Text', 'ultimate-addons-for-gutenberg' )}>
 							<Button
 								isPrimary={isActive}
 								onClick={ () => {

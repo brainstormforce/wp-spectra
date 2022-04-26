@@ -44,7 +44,7 @@ export default function ColorSwitchControl( {label, type, classic, gradient, set
 				{
 					type.value === 'classic' ? (
 						<AdvancedPopColorControl
-							label={__('Color', 'ultimate-addons-for-gutenberg')}
+							label={__( 'Color', 'ultimate-addons-for-gutenberg' )}
 							colorValue={ classic.value }
 							onColorChange={ ( value ) =>
 								setAttributes( { [classic.label]: value } )

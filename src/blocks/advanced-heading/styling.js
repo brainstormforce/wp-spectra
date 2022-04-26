@@ -69,37 +69,37 @@ function styling( props ) {
 		subHeadLetterSpacingMobile,
 		subHeadLetterSpacingType,
 		// padding
-		headingBlockTopPadding,
-		headingBlockRightPadding,
-		headingBlockLeftPadding,
-		headingBlockBottomPadding,
-		headingBlockTopPaddingTablet,
-		headingBlockRightPaddingTablet,
-		headingBlockLeftPaddingTablet,
-		headingBlockBottomPaddingTablet,
-		headingBlockTopPaddingMobile,
-		headingBlockRightPaddingMobile,
-		headingBlockLeftPaddingMobile,
-		headingBlockBottomPaddingMobile,
-		headingBlockPaddingUnit,
-		headingBlockPaddingUnitTablet,
-		headingBlockPaddingUnitMobile,
+		blockTopPadding,
+		blockRightPadding,
+		blockLeftPadding,
+		blockBottomPadding,
+		blockTopPaddingTablet,
+		blockRightPaddingTablet,
+		blockLeftPaddingTablet,
+		blockBottomPaddingTablet,
+		blockTopPaddingMobile,
+		blockRightPaddingMobile,
+		blockLeftPaddingMobile,
+		blockBottomPaddingMobile,
+		blockPaddingUnit,
+		blockPaddingUnitTablet,
+		blockPaddingUnitMobile,
 		// margin
-		headingBlockTopMargin,
-		headingBlockRightMargin,
-		headingBlockLeftMargin,
-		headingBlockBottomMargin,
-		headingBlockTopMarginTablet,
-		headingBlockRightMarginTablet,
-		headingBlockLeftMarginTablet,
-		headingBlockBottomMarginTablet,
-		headingBlockTopMarginMobile,
-		headingBlockRightMarginMobile,
-		headingBlockLeftMarginMobile,
-		headingBlockBottomMarginMobile,
-		headingBlockMarginUnit,
-		headingBlockMarginUnitTablet,
-		headingBlockMarginUnitMobile,
+		blockTopMargin,
+		blockRightMargin,
+		blockLeftMargin,
+		blockBottomMargin,
+		blockTopMarginTablet,
+		blockRightMarginTablet,
+		blockLeftMarginTablet,
+		blockBottomMarginTablet,
+		blockTopMarginMobile,
+		blockRightMarginMobile,
+		blockLeftMarginMobile,
+		blockBottomMarginMobile,
+		blockMarginUnit,
+		blockMarginUnitTablet,
+		blockMarginUnitMobile,
 		// link
 		linkColor,
 		linkHColor,
@@ -164,36 +164,36 @@ function styling( props ) {
 			'background': 	'classic' === blockBackgroundType ? blockBackground : blockGradientBackground,
 			'text-align': headingAlign,
 			'margin-top': generateCSSUnit(
-				headingBlockTopMargin,
-				headingBlockMarginUnit
+				blockTopMargin,
+				blockMarginUnit
 			),
 			'margin-right': generateCSSUnit(
-				headingBlockRightMargin,
-				headingBlockMarginUnit
+				blockRightMargin,
+				blockMarginUnit
 			),
 			'margin-bottom': generateCSSUnit(
-				headingBlockBottomMargin,
-				headingBlockMarginUnit
+				blockBottomMargin,
+				blockMarginUnit
 			),
 			'margin-left': generateCSSUnit(
-				headingBlockLeftMargin,
-				headingBlockMarginUnit
+				blockLeftMargin,
+				blockMarginUnit
 			),
 			'padding-top': generateCSSUnit(
-				headingBlockTopPadding,
-				headingBlockPaddingUnit
+				blockTopPadding,
+				blockPaddingUnit
 			),
 			'padding-right': generateCSSUnit(
-				headingBlockRightPadding,
-				headingBlockPaddingUnit
+				blockRightPadding,
+				blockPaddingUnit
 			),
 			'padding-bottom': generateCSSUnit(
-				headingBlockBottomPadding,
-				headingBlockPaddingUnit
+				blockBottomPadding,
+				blockPaddingUnit
 			),
 			'padding-left': generateCSSUnit(
-				headingBlockLeftPadding,
-				headingBlockPaddingUnit
+				blockLeftPadding,
+				blockPaddingUnit
 			),
 		},
 		' .uagb-desc-text': {
@@ -299,36 +299,36 @@ function styling( props ) {
 	// tablet
 	tablet_selectors['.wp-block-uagb-advanced-heading '] = {
 		'margin-top': generateCSSUnit(
-			headingBlockTopMarginTablet,
-			headingBlockMarginUnitTablet
+			blockTopMarginTablet,
+			blockMarginUnitTablet
 		),
 		'margin-right': generateCSSUnit(
-			headingBlockRightMarginTablet,
-			headingBlockMarginUnitTablet
+			blockRightMarginTablet,
+			blockMarginUnitTablet
 		),
 		'margin-bottom': generateCSSUnit(
-			headingBlockBottomMarginTablet,
-			headingBlockMarginUnitTablet
+			blockBottomMarginTablet,
+			blockMarginUnitTablet
 		),
 		'margin-left': generateCSSUnit(
-			headingBlockLeftMarginTablet,
-			headingBlockMarginUnitTablet
+			blockLeftMarginTablet,
+			blockMarginUnitTablet
 		),
 		'padding-top': generateCSSUnit(
-			headingBlockTopPaddingTablet,
-			headingBlockPaddingUnitTablet
+			blockTopPaddingTablet,
+			blockPaddingUnitTablet
 		),
 		'padding-right': generateCSSUnit(
-			headingBlockRightPaddingTablet,
-			headingBlockPaddingUnitTablet
+			blockRightPaddingTablet,
+			blockPaddingUnitTablet
 		),
 		'padding-bottom': generateCSSUnit(
-			headingBlockBottomPaddingTablet,
-			headingBlockPaddingUnitTablet
+			blockBottomPaddingTablet,
+			blockPaddingUnitTablet
 		),
 		'padding-left': generateCSSUnit(
-			headingBlockLeftPaddingTablet,
-			headingBlockPaddingUnitTablet
+			blockLeftPaddingTablet,
+			blockPaddingUnitTablet
 		),
 	}
 
@@ -382,36 +382,36 @@ function styling( props ) {
 	// mobile
 	mobile_selectors['.wp-block-uagb-advanced-heading '] = {
 		'margin-top': generateCSSUnit(
-			headingBlockTopMarginMobile,
-			headingBlockMarginUnitMobile
+			blockTopMarginMobile,
+			blockMarginUnitMobile
 		),
 		'margin-right': generateCSSUnit(
-			headingBlockRightMarginMobile,
-			headingBlockMarginUnitMobile
+			blockRightMarginMobile,
+			blockMarginUnitMobile
 		),
 		'margin-bottom': generateCSSUnit(
-			headingBlockBottomMarginMobile,
-			headingBlockMarginUnitMobile
+			blockBottomMarginMobile,
+			blockMarginUnitMobile
 		),
 		'margin-left': generateCSSUnit(
-			headingBlockLeftMarginMobile,
-			headingBlockMarginUnitMobile
+			blockLeftMarginMobile,
+			blockMarginUnitMobile
 		),
 		'padding-top': generateCSSUnit(
-			headingBlockTopPaddingMobile,
-			headingBlockPaddingUnitMobile
+			blockTopPaddingMobile,
+			blockPaddingUnitMobile
 		),
 		'padding-right': generateCSSUnit(
-			headingBlockRightPaddingMobile,
-			headingBlockPaddingUnitMobile
+			blockRightPaddingMobile,
+			blockPaddingUnitMobile
 		),
 		'padding-bottom': generateCSSUnit(
-			headingBlockBottomPaddingMobile,
-			headingBlockPaddingUnitMobile
+			blockBottomPaddingMobile,
+			blockPaddingUnitMobile
 		),
 		'padding-left': generateCSSUnit(
-			headingBlockLeftPaddingMobile,
-			headingBlockPaddingUnitMobile
+			blockLeftPaddingMobile,
+			blockPaddingUnitMobile
 		),
 	}
 	tablet_selectors[ ' .uagb-separator' ] = {
