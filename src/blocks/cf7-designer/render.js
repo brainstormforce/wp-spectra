@@ -3,7 +3,7 @@ import React, { useLayoutEffect } from 'react';
 import { __ } from '@wordpress/i18n';
 import styles from './editor.lazy.scss';
 import { SelectControl, Placeholder, Spinner } from '@wordpress/components';
-
+import { useDeviceType } from '@Controls/getPreviewType';
 const Render = ( props ) => {
 	// Add and remove the CSS on the drop and remove of the component.
 	useLayoutEffect( () => {
@@ -14,7 +14,7 @@ const Render = ( props ) => {
 	}, [] );
 
 	props = props.parentProps;
-
+	const deviceType = useDeviceType();
 	const { className, attributes } = props;
 
 	const {
@@ -79,6 +79,7 @@ const Render = ( props ) => {
 			className={ classnames(
 				className,
 				'uagb-cf7-styler__outer-wrap',
+				`uagb-editor-preview-mode-${ deviceType.toLowerCase() }`,
 				`uagb-block-${ props.clientId.substr( 0, 8 ) }`
 			) }
 		>

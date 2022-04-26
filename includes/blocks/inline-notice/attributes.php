@@ -57,6 +57,8 @@ return array(
 	'titlePaddingLink'         => false,
 	'layout'                   => 'modern',
 	'highlightWidth'           => 10,
+	'highlightWidthTablet'     => '',
+	'highlightWidthMobile'     => '',
 	'titleTransform'           => '',
 	'titleDecoration'          => '',
 	'descTransform'            => '',

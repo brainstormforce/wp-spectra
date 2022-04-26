@@ -28,7 +28,7 @@ import {
 	AlignmentToolbar,
 	BlockControls,
 } from '@wordpress/block-editor';
-
+import ResponsiveSlider from '@Components/responsive-slider';
 import UAGAdvancedPanelBody from '@Components/advanced-panel-body';
 
 const Settings = ( props ) => {
@@ -73,10 +73,14 @@ const Settings = ( props ) => {
 		subHeadLineHeightMobile,
 		subHeadLoadGoogleFonts,
 		headSpace,
+		headSpaceTablet,
+		headSpaceMobile,
 		separatorwidth,
 		borderwidth,
 		connectorBgsize,
 		authorSpace,
+		authorSpaceTablet,
+		authorSpaceMobile,
 		contentSpace,
 		authorColor,
 		authorFontSizeType,
@@ -92,6 +96,8 @@ const Settings = ( props ) => {
 		authorLineHeightMobile,
 		authorLoadGoogleFonts,
 		dateBottomspace,
+		dateBottomspaceTablet,
+		dateBottomspaceMobile,
 		displayPostDate,
 		displayPostExcerpt,
 		displayPostAuthor,
@@ -136,6 +142,8 @@ const Settings = ( props ) => {
 		iconSize,
 		exerptLength,
 		borderRadius,
+		borderRadiusTablet,
+		borderRadiusMobile,
 		iconFocus,
 		iconBgFocus,
 		stack,
@@ -188,7 +196,11 @@ const Settings = ( props ) => {
 		ctaDecoration,
 
 		ctaBottomSpacing,
-		headTopSpacing
+		ctaBottomSpacingTablet,
+		ctaBottomSpacingMobile,
+		headTopSpacing,
+		headTopSpacingTablet,
+		headTopSpacingMobile,
 	} = attributes;
 
 	const onSelectPostType = ( value ) => {
@@ -555,10 +567,6 @@ const Settings = ( props ) => {
 						{
 							value: 'top',
 							label: __( 'Top', 'ultimate-addons-for-gutenberg' ),
-							tooltip: __(
-								'Top',
-								'ultimate-addons-for-gutenberg'
-							),
 						},
 						{
 							value: 'bottom',
@@ -566,18 +574,10 @@ const Settings = ( props ) => {
 								'Bottom',
 								'ultimate-addons-for-gutenberg'
 							),
-							tooltip: __(
-								'Bottom',
-								'ultimate-addons-for-gutenberg'
-							),
 						},
 						{
 							value: 'center',
 							label: __(
-								'Center',
-								'ultimate-addons-for-gutenberg'
-							),
-							tooltip: __(
 								'Center',
 								'ultimate-addons-for-gutenberg'
 							),
@@ -597,26 +597,14 @@ const Settings = ( props ) => {
 						{
 							value: 'none',
 							label: 'None',
-							tooltip: __(
-								'None',
-								'ultimate-addons-for-gutenberg'
-							),
 						},
 						{
 							value: 'tablet',
 							label: 'Tablet',
-							tooltip: __(
-								'Tablet',
-								'ultimate-addons-for-gutenberg'
-							),
 						},
 						{
 							value: 'mobile',
 							label: 'Mobile',
-							tooltip: __(
-								'Mobile',
-								'ultimate-addons-for-gutenberg'
-							),
 						},
 					] }
 					showIcons={ false }
@@ -871,7 +859,7 @@ const Settings = ( props ) => {
 						setAttributes( { linkTarget: ! linkTarget } )
 					}
 				/>
-				<Range
+				{/* <Range
 					label={ __(
 						'Rounded Corners',
 						'ultimate-addons-for-gutenberg'
@@ -884,6 +872,30 @@ const Settings = ( props ) => {
 					min={ 0 }
 					max={ 50 }
 					displayUnit={ false }
+				/> */}
+				<ResponsiveSlider
+					label={ __(
+						'Rounded Corners',
+						'ultimate-addons-for-gutenberg'
+					) }
+					data={ {
+						desktop: {
+							value: borderRadius,
+							label: 'borderRadius',
+						},
+						tablet: {
+							value: borderRadiusTablet,
+							label: 'borderRadiusTablet',
+						},
+						mobile: {
+							value: borderRadiusMobile,
+							label: 'borderRadiusMobile',
+						},
+					} }
+					min={ 0 }
+					max={ 50 }
+					displayUnit={ false }
+					setAttributes={ setAttributes }
 				/>
 			</UAGAdvancedPanelBody>
 		);
@@ -1154,7 +1166,7 @@ const Settings = ( props ) => {
 						label: 'headDecoration',
 					} }
 				/>
-				<Range
+				{/* <Range
 					label={ __(
 						'Top Spacing',
 						'ultimate-addons-for-gutenberg'
@@ -1167,8 +1179,32 @@ const Settings = ( props ) => {
 					min={ 1 }
 					max={ 50 }
 					displayUnit={ false }
+				/> */}
+				<ResponsiveSlider
+					label={ __(
+						'Top Spacing',
+						'ultimate-addons-for-gutenberg'
+					) }
+					data={ {
+						desktop: {
+							value: headTopSpacing,
+							label: 'headTopSpacing',
+						},
+						tablet: {
+							value: headTopSpacingTablet,
+							label: 'headTopSpacingTablet',
+						},
+						mobile: {
+							value: headTopSpacingMobile,
+							label: 'headTopSpacingMobile',
+						},
+					} }
+					min={ 1 }
+					max={ 50 }
+					displayUnit={ false }
+					setAttributes={ setAttributes }
 				/>
-				<Range
+				{/* <Range
 					label={ __(
 						'Bottom Spacing',
 						'ultimate-addons-for-gutenberg'
@@ -1181,6 +1217,30 @@ const Settings = ( props ) => {
 					min={ 0 }
 					max={ 100 }
 					displayUnit={ false }
+				/> */}
+				<ResponsiveSlider
+					label={ __(
+						'Bottom Spacing',
+						'ultimate-addons-for-gutenberg'
+					) }
+					data={ {
+						desktop: {
+							value: headSpace,
+							label: 'headSpace',
+						},
+						tablet: {
+							value: headSpaceTablet,
+							label: 'headSpaceTablet',
+						},
+						mobile: {
+							value: headSpaceMobile,
+							label: 'headSpaceMobile',
+						},
+					} }
+					min={ 0 }
+					max={ 100 }
+					displayUnit={ false }
+					setAttributes={ setAttributes }
 				/>
 			</UAGAdvancedPanelBody>
 		);
@@ -1262,7 +1322,7 @@ const Settings = ( props ) => {
 						label: 'authorDecoration',
 					} }
 				/>
-				<Range
+				{/* <Range
 					label={ __(
 						'Bottom Spacing',
 						'ultimate-addons-for-gutenberg'
@@ -1275,6 +1335,30 @@ const Settings = ( props ) => {
 					min={ 0 }
 					max={ 50 }
 					displayUnit={ false }
+				/> */}
+				<ResponsiveSlider
+					label={ __(
+						'Bottom Spacing',
+						'ultimate-addons-for-gutenberg'
+					) }
+					data={ {
+						desktop: {
+							value: authorSpace,
+							label: 'authorSpace',
+						},
+						tablet: {
+							value: authorSpaceTablet,
+							label: 'authorSpaceTablet',
+						},
+						mobile: {
+							value: authorSpaceMobile,
+							label: 'authorSpaceMobile',
+						},
+					} }
+					min={ 0 }
+					max={ 50 }
+					displayUnit={ false }
+					setAttributes={ setAttributes }
 				/>
 			</UAGAdvancedPanelBody>
 		);
@@ -1453,19 +1537,43 @@ const Settings = ( props ) => {
 					} }
 				/>
 				{ timelinAlignment !== 'center' && (
-					<Range
+					// <Range
+					// 	label={ __(
+					// 		'Bottom Spacing',
+					// 		'ultimate-addons-for-gutenberg'
+					// 	) }
+					// 	setAttributes={ setAttributes }
+					// 	value={ dateBottomspace }
+					// 	onChange={ ( value ) =>
+					// 		setAttributes( { dateBottomspace: value } )
+					// 	}
+					// 	min={ 0 }
+					// 	max={ 50 }
+					// 	displayUnit={ false }
+					// />
+					<ResponsiveSlider
 						label={ __(
 							'Bottom Spacing',
 							'ultimate-addons-for-gutenberg'
 						) }
-						setAttributes={ setAttributes }
-						value={ dateBottomspace }
-						onChange={ ( value ) =>
-							setAttributes( { dateBottomspace: value } )
-						}
+						data={ {
+							desktop: {
+								value: dateBottomspace,
+								label: 'dateBottomspace',
+							},
+							tablet: {
+								value: dateBottomspaceTablet,
+								label: 'dateBottomspaceTablet',
+							},
+							mobile: {
+								value: dateBottomspaceMobile,
+								label: 'dateBottomspaceMobile',
+							},
+						} }
 						min={ 0 }
 						max={ 50 }
 						displayUnit={ false }
+						setAttributes={ setAttributes }
 					/>
 				) }
 			</UAGAdvancedPanelBody>
@@ -1558,7 +1666,7 @@ const Settings = ( props ) => {
 						label: 'ctaDecoration',
 					} }
 				/>
-				<Range
+				{/* <Range
 					label={ __(
 						'Bottom Spacing',
 						'ultimate-addons-for-gutenberg'
@@ -1571,6 +1679,30 @@ const Settings = ( props ) => {
 					min={ 1 }
 					max={ 50 }
 					displayUnit={ false }
+				/> */}
+				<ResponsiveSlider
+					label={ __(
+						'Bottom Spacing',
+						'ultimate-addons-for-gutenberg'
+					) }
+					data={ {
+						desktop: {
+							value: ctaBottomSpacing,
+							label: 'ctaBottomSpacing',
+						},
+						tablet: {
+							value: ctaBottomSpacingTablet,
+							label: 'ctaBottomSpacingTablet',
+						},
+						mobile: {
+							value: ctaBottomSpacingMobile,
+							label: 'ctaBottomSpacingMobile',
+						},
+					} }
+					min={ 1 }
+					max={ 50 }
+					displayUnit={ false }
+					setAttributes={ setAttributes }
 				/>
 			</UAGAdvancedPanelBody>
 		);

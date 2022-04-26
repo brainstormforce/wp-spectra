@@ -62,7 +62,7 @@ const attributes = {
 	},
 	iconSize: {
 		type: 'number',
-		default: 40,
+		default: 30,
 		UAGCopyPaste: {
 			styleType: 'icon-size'
 		}
@@ -376,7 +376,7 @@ const attributes = {
 	},
 	subHeadSpace: {
 		type: 'number',
-		default: 10,
+		default: 20,
 		UAGCopyPaste: {
 			styleType: 'desc-bottom-margin'
 		}
@@ -426,6 +426,18 @@ const attributes = {
 			styleType: 'btn-icon-space'
 		}
 	},
+	ctaIconSpaceTablet: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'btn-icon-space'
+		}
+	},
+	ctaIconSpaceMobile: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'btn-icon-space'
+		}
+	},
 	ctaIconSpaceType: {
 		type: 'string',
 		default: 'px',
@@ -435,7 +447,10 @@ const attributes = {
 	},
 	seperatorPosition: {
 		type: 'string',
-		default: 'separator-position',
+		default: 'after_title',
+		UAGCopyPaste: {
+			styleType: 'seperator-position'
+		}
 	},
 	seperatorStyle: {
 		type: 'string',
@@ -457,6 +472,18 @@ const attributes = {
 			styleType: 'separator-width'
 		},
 		default: 30,
+	},
+	seperatorWidthTablet: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'separator-width'
+		},
+	},
+	seperatorWidthMobile: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'separator-width'
+		},
 	},
 	separatorWidthType: {
 		type: 'string',
@@ -606,14 +633,12 @@ const attributes = {
 	},
 	ctaBtnVertPadding: {
 		type: 'number',
-		default: 10,
 		UAGCopyPaste: {
 			styleType: 'btn-vertical-padding'
 		}
 	},
 	ctaBtnHrPadding: {
 		type: 'number',
-		default: 10,
 		UAGCopyPaste: {
 			styleType: 'btn-horizontal-padding'
 		}
@@ -657,7 +682,7 @@ const attributes = {
 		UAGCopyPaste: {
 			styleType: 'icon-bottom-margin'
 		},
-		default: 5,
+		default: 15,
 	},
 	iconImage: {
 		type: 'object',
@@ -682,12 +707,14 @@ const attributes = {
 	},
 	imageWidthMobile: {
 		type: 'number',
+		default: 0,
 		UAGCopyPaste: {
 			styleType: 'image-width-mobile'
 		}
 	},
 	imageWidthTablet: {
 		type: 'number',
+		default: 0,
 		UAGCopyPaste: {
 			styleType: 'image-width-tablet'
 		}
@@ -708,6 +735,10 @@ const attributes = {
 		default: false,
 	},
 	showTitle: {
+		type: 'boolean',
+		default: true,
+	},
+	showIcon: {
 		type: 'boolean',
 		default: true,
 	},

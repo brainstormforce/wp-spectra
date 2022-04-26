@@ -30,9 +30,13 @@ const Settings = ( props ) => {
 	const {
 		align,
 		gap,
+		gapTablet,
+		gapMobile,
 		stack,
 		social_layout,
 		borderRadius,
+		borderRadiusTablet,
+		borderRadiusMobile,
 		size,
 		sizeType,
 		sizeMobile,
@@ -72,18 +76,10 @@ const Settings = ( props ) => {
 								'Horizontal',
 								'ultimate-addons-for-gutenberg'
 							),
-							tooltip: __(
-								'Horizontal',
-								'ultimate-addons-for-gutenberg'
-							),
 						},
 						{
 							value: 'vertical',
 							label: __(
-								'Vertical',
-								'ultimate-addons-for-gutenberg'
-							),
-							tooltip: __(
 								'Vertical',
 								'ultimate-addons-for-gutenberg'
 							),
@@ -166,10 +162,6 @@ const Settings = ( props ) => {
 										'None',
 										'ultimate-addons-for-gutenberg'
 									),
-									tooltip: __(
-										'None',
-										'ultimate-addons-for-gutenberg'
-									),
 								},
 								{
 									value: 'desktop',
@@ -177,10 +169,7 @@ const Settings = ( props ) => {
 										'Desktop',
 										'ultimate-addons-for-gutenberg'
 									),
-									tooltip: __(
-										'Desktop',
-										'ultimate-addons-for-gutenberg'
-									),
+
 								},
 								{
 									value: 'tablet',
@@ -188,10 +177,7 @@ const Settings = ( props ) => {
 										'Tablet',
 										'ultimate-addons-for-gutenberg'
 									),
-									tooltip: __(
-										'Tablet',
-										'ultimate-addons-for-gutenberg'
-									),
+
 								},
 								{
 									value: 'mobile',
@@ -199,10 +185,7 @@ const Settings = ( props ) => {
 										'Mobile',
 										'ultimate-addons-for-gutenberg'
 									),
-									tooltip: __(
-										'Mobile',
-										'ultimate-addons-for-gutenberg'
-									),
+
 								},
 							] }
 							showIcons={ false }
@@ -263,7 +246,7 @@ const Settings = ( props ) => {
 						'ultimate-addons-for-gutenberg'
 					) }
 				/>
-				<Range
+				{/* <Range
 					label={ __(
 						'Border Radius',
 						'ultimate-addons-for-gutenberg'
@@ -280,8 +263,36 @@ const Settings = ( props ) => {
 						'Note: Border Radius option is useful when one adds background color to the icons.',
 						'ultimate-addons-for-gutenberg'
 					) }
+				/> */}
+				<ResponsiveSlider
+					label={ __(
+						'Border Radius',
+						'ultimate-addons-for-gutenberg'
+					) }
+					data={ {
+						desktop: {
+							value: borderRadius,
+							label: 'borderRadius',
+						},
+						tablet: {
+							value: borderRadiusTablet,
+							label: 'borderRadiusTablet',
+						},
+						mobile: {
+							value: borderRadiusMobile,
+							label: 'borderRadiusMobile',
+						},
+					} }
+					min={ 0 }
+					max={ 100 }
+					displayUnit={ false }
+					help={ __(
+						'Note: Border Radius option is useful when one adds background color to the icons.',
+						'ultimate-addons-for-gutenberg'
+					) }
+					setAttributes={ setAttributes }
 				/>
-				<Range
+				{/* <Range
 					label={ __(
 						'Gap between Items',
 						'ultimate-addons-for-gutenberg'
@@ -292,6 +303,30 @@ const Settings = ( props ) => {
 					min={ 0 }
 					max={ 100 }
 					displayUnit={ false }
+				/> */}
+				<ResponsiveSlider
+					label={ __(
+						'Gap between Items',
+						'ultimate-addons-for-gutenberg'
+					) }
+					data={ {
+						desktop: {
+							value: gap,
+							label: 'gap',
+						},
+						tablet: {
+							value: gapTablet,
+							label: 'gapTablet',
+						},
+						mobile: {
+							value: gapMobile,
+							label: 'gapMobile',
+						},
+					} }
+					min={ 0 }
+					max={ 100 }
+					displayUnit={ false }
+					setAttributes={ setAttributes }
 				/>
 			</UAGAdvancedPanelBody>
 		);

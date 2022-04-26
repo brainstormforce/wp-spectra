@@ -400,12 +400,36 @@ const attributes = {
 		},
 		default: 15,
 	},
+	toggleSizeTablet: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'toggle-size'
+		},
+	},
+	toggleSizeMobile: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'toggle-size'
+		},
+	},
 	toggleWidthSize: {
 		type: 'number',
 		UAGCopyPaste: {
 			styleType: 'toggle-width-size'
 		},
 		default: 0,
+	},
+	toggleWidthSizeTablet: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'toggle-width-size'
+		},
+	},
+	toggleWidthSizeMobile: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'toggle-width-size'
+		},
 	},
 	toggleActiveColor: {
 		type: 'string',
@@ -420,6 +444,18 @@ const attributes = {
 			styleType: 'toggle-height-size'
 		},
 		default: 0,
+	},
+	toggleHeightSizeTablet: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'toggle-height-size'
+		},
+	},
+	toggleHeightSizeMobile: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'toggle-height-size'
+		},
 	},
 	inputLineHeightTablet: {
 		type: 'number',
@@ -523,6 +559,18 @@ const attributes = {
 	fieldGap: {
 		type: 'number',
 		default: 20,
+		UAGCopyPaste: {
+			styleType: 'field-gap'
+		},
+	},
+	fieldGapTablet: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'field-gap'
+		},
+	},
+	fieldGapMobile: {
+		type: 'number',
 		UAGCopyPaste: {
 			styleType: 'field-gap'
 		},

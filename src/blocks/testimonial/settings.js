@@ -77,12 +77,18 @@ const Settings = ( props ) => {
 		descLineHeightMobile,
 		descLoadGoogleFonts,
 		descSpace,
+		descSpaceTablet,
+		descSpaceMobile,
 		iconimgStyle,
 		imagePosition,
 		imageAlignment,
 		nameSpace,
+		nameSpaceTablet,
+		nameSpaceMobile,
 		imageSize,
 		imageWidth,
+		imageWidthTablet,
+		imageWidthMobile,
 		columns,
 		tcolumns,
 		mcolumns,
@@ -97,7 +103,11 @@ const Settings = ( props ) => {
 		autoplaySpeed,
 		arrowColor,
 		rowGap,
+		rowGapTablet,
+		rowGapMobile,
 		columnGap,
+		columnGapTablet,
+		columnGapMobile,
 		backgroundType,
 		backgroundColor,
 		backgroundImage,
@@ -440,20 +450,32 @@ const Settings = ( props ) => {
 						/>
 					</>
 				) }
-				<Range
+				<ResponsiveSlider
 					label={ __(
 						'Gap Between Content & Dots',
 						'ultimate-addons-for-gutenberg'
 					) }
-					value={ rowGap }
-					setAttributes={ setAttributes }
-					onChange={ ( value ) => setAttributes( { rowGap: value } ) }
-					min={ 0 }
+					data={ {
+						desktop: {
+							value: rowGap,
+							label: 'rowGap',
+						},
+						tablet: {
+							value: rowGapTablet,
+							label: 'rowGapTablet',
+						},
+						mobile: {
+							value: rowGapMobile,
+							label: 'rowGapMobile',
+						},
+					} }
+					min={ 1 }
 					max={ 50 }
 					unit={ {
 						value: rowGapType,
 						label: 'rowGapType',
 					} }
+					setAttributes={ setAttributes }
 				/>
 				<AdvancedPopColorControl
 					label={ __( 'Color', 'ultimate-addons-for-gutenberg' ) }
@@ -474,6 +496,7 @@ const Settings = ( props ) => {
 				initialOpen={ false }
 			>
 				<Border
+					disabledBorderTitle= {true}
 					setAttributes={ setAttributes }
 					borderStyle={ {
 						value: borderStyle,
@@ -647,16 +670,26 @@ const Settings = ( props ) => {
 						label: 'nameDecoration',
 					} }
 				/>
-				<Range
+				<ResponsiveSlider
 					label={ __(
 						'Bottom Margin',
 						'ultimate-addons-for-gutenberg'
 					) }
-					value={ nameSpace }
-					onChange={ ( value ) =>
-						setAttributes( { nameSpace: value } )
-					}
-					min={ 0 }
+					data={ {
+						desktop: {
+							value: nameSpace,
+							label: 'nameSpace',
+						},
+						tablet: {
+							value: nameSpaceTablet,
+							label: 'nameSpaceTablet',
+						},
+						mobile: {
+							value: nameSpaceMobile,
+							label: 'nameSpaceMobile',
+						},
+					} }
+					min={ 1 }
 					max={ 50 }
 					unit={ {
 						value: nameSpaceType,
@@ -746,16 +779,26 @@ const Settings = ( props ) => {
 						label: 'descDecoration',
 					} }
 				/>
-				<Range
+				<ResponsiveSlider
 					label={ __(
 						'Bottom Margin',
 						'ultimate-addons-for-gutenberg'
 					) }
-					value={ descSpace }
-					onChange={ ( value ) =>
-						setAttributes( { descSpace: value } )
-					}
-					min={ 0 }
+					data={ {
+						desktop: {
+							value: descSpace,
+							label: 'descSpace',
+						},
+						tablet: {
+							value: descSpaceTablet,
+							label: 'descSpaceTablet',
+						},
+						mobile: {
+							value: descSpaceMobile,
+							label: 'descSpaceMobile',
+						},
+					} }
+					min={ 1 }
 					max={ 50 }
 					unit={ {
 						value: descSpaceType,
@@ -763,16 +806,26 @@ const Settings = ( props ) => {
 					} }
 					setAttributes={ setAttributes }
 				/>
-				<Range
+				<ResponsiveSlider
 					label={ __(
 						'Column Gap',
 						'ultimate-addons-for-gutenberg'
 					) }
-					value={ columnGap }
-					onChange={ ( value ) =>
-						setAttributes( { columnGap: value } )
-					}
-					min={ 0 }
+					data={ {
+						desktop: {
+							value: columnGap,
+							label: 'columnGap',
+						},
+						tablet: {
+							value: columnGapTablet,
+							label: 'columnGapTablet',
+						},
+						mobile: {
+							value: columnGapMobile,
+							label: 'columnGapMobile',
+						},
+					} }
+					min={ 1 }
 					max={ 50 }
 					unit={ {
 						value: columnGapType,
@@ -1353,24 +1406,32 @@ const Settings = ( props ) => {
 											} )
 										}
 									/>
-									<Range
+									<ResponsiveSlider
 										label={ __(
 											'Width',
 											'ultimate-addons-for-gutenberg'
 										) }
-										setAttributes={ setAttributes }
-										value={ imageWidth }
-										onChange={ ( value ) =>
-											setAttributes( {
-												imageWidth: value,
-											} )
-										}
-										min={ 0 }
+										data={ {
+											desktop: {
+												value: imageWidth,
+												label: 'imageWidth',
+											},
+											tablet: {
+												value: imageWidthTablet,
+												label: 'imageWidthTablet',
+											},
+											mobile: {
+												value: imageWidthMobile,
+												label: 'imageWidthMobile',
+											},
+										} }
+										min={ 1 }
 										max={ 500 }
 										unit={ {
 											value: imageWidthType,
 											label: 'imageWidthType',
 										} }
+										setAttributes={ setAttributes }
 									/>
 								</>
 							) }

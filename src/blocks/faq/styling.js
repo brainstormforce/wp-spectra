@@ -11,7 +11,11 @@ function styling( props ) {
 		inactiveOtherItems,
 		expandFirstItem,
 		rowsGap,
+		rowsGapTablet,
+		rowsGapMobile,
 		columnsGap,
+		columnsGapTablet,
+		columnsGapMobile,
 		align,
 		enableSeparator,
 		boxBgColor,
@@ -50,6 +54,8 @@ function styling( props ) {
 		iconColor,
 		iconActiveColor,
 		gapBtwIconQUestion,
+		gapBtwIconQUestionTablet,
+		gapBtwIconQUestionMobile,
 		questionFontFamily,
 		questionFontWeight,
 		questionFontSizeType,
@@ -284,14 +290,33 @@ function styling( props ) {
 			'height': generateCSSUnit( iconSizeTablet, iconSizeType ),
 			'font-size': generateCSSUnit( iconSizeTablet, iconSizeType ),
 		},
+		'.uagb-faq-icon-row .uagb-faq-item .uagb-faq-icon-wrap': {
+			'margin-right': generateCSSUnit( gapBtwIconQUestionTablet, 'px' ),
+		},
+		'.uagb-faq-icon-row-reverse .uagb-faq-item .uagb-faq-icon-wrap': {
+			'margin-left': generateCSSUnit( gapBtwIconQUestionTablet, 'px' ),
+		},
 		' .uagb-icon-active svg': {
 			'width': generateCSSUnit( iconSizeTablet, iconSizeType ),
 			'height': generateCSSUnit( iconSizeTablet, iconSizeType ),
 			'font-size': generateCSSUnit( iconSizeTablet, iconSizeType ),
 		},
+		' .uagb-faq-child__outer-wrap': {
+			'margin-bottom': generateCSSUnit( rowsGapTablet, 'px' ),
+		},
+		'.uagb-faq-layout-grid .block-editor-inner-blocks .block-editor-block-list__layout': {
+			'grid-column-gap': generateCSSUnit( columnsGapTablet, 'px' ),
+			'grid-row-gap': generateCSSUnit( rowsGapTablet, 'px' ),
+		},
 	};
 
 	mobileSelectors = {
+		'.uagb-faq-icon-row .uagb-faq-item .uagb-faq-icon-wrap': {
+			'margin-right': generateCSSUnit( gapBtwIconQUestionMobile, 'px' ),
+		},
+		'.uagb-faq-icon-row-reverse .uagb-faq-item .uagb-faq-icon-wrap': {
+			'margin-left': generateCSSUnit( gapBtwIconQUestionMobile, 'px' ),
+		},
 		' .uagb-faq-questions-button': {
 			'padding-top': generateCSSUnit(
 				vquestionPaddingMobile,
@@ -357,6 +382,13 @@ function styling( props ) {
 			'width': generateCSSUnit( iconSizeMobile, iconSizeType ),
 			'height': generateCSSUnit( iconSizeMobile, iconSizeType ),
 			'font-size': generateCSSUnit( iconSizeMobile, iconSizeType ),
+		},
+		' .uagb-faq-child__outer-wrap': {
+			'margin-bottom': generateCSSUnit( rowsGapMobile, 'px' ),
+		},
+		'.uagb-faq-layout-grid .block-editor-inner-blocks .block-editor-block-list__layout': {
+			'grid-column-gap': generateCSSUnit( columnsGapMobile, 'px' ),
+			'grid-row-gap': generateCSSUnit( rowsGapMobile, 'px' ),
 		},
 	};
 

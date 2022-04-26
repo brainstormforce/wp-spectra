@@ -109,6 +109,8 @@ const Settings = ( props ) => {
 		seperatorPosition,
 		seperatorStyle,
 		seperatorWidth,
+		seperatorWidthTablet,
+		seperatorWidthMobile,
 		seperatorColor,
 		seperatorThickness,
 		thicknessUnit,
@@ -119,6 +121,8 @@ const Settings = ( props ) => {
 		ctaIcon,
 		ctaIconPosition,
 		ctaIconSpace,
+		ctaIconSpaceTablet,
+		ctaIconSpaceMobile,
 		ctaIconSpaceType,
 		ctaLinkColor,
 		ctaFontSize,
@@ -178,6 +182,7 @@ const Settings = ( props ) => {
 		imageWidthType,
 		imageWidthUnit,
 		stack,
+		showIcon,
 		showPrefix,
 		showTitle,
 		showDesc,
@@ -371,6 +376,17 @@ const Settings = ( props ) => {
 				title={ __( 'Image/Icon', 'ultimate-addons-for-gutenberg' ) }
 				initialOpen={ true }
 			>
+				<ToggleControl
+					checked={ showIcon }
+					onChange={ () =>
+						setAttributes( { showIcon: ! showIcon } )
+					}
+					label={ __(
+						'Enable Icon/Image',
+						'ultimate-addons-for-gutenberg'
+					) }
+				/>
+				{ showIcon && (
 				<SelectControl
 					label={ __(
 						'Select Position',
@@ -425,7 +441,7 @@ const Settings = ( props ) => {
 						},
 					] }
 				/>
-
+				)}
 				{ ( iconimgPosition === 'left' ||
 					iconimgPosition === 'right' ) && (
 					<SelectControl
@@ -497,6 +513,7 @@ const Settings = ( props ) => {
 							] }
 						/>
 					) }
+				{ showIcon &&
 				<MultiButtonsControl
 					setAttributes={ setAttributes }
 					label={ __(
@@ -524,8 +541,9 @@ const Settings = ( props ) => {
 						},
 					] }
 				/>
+				}
 
-				{ source_type === 'icon' && (
+				{ false !== showIcon && source_type === 'icon' && (
 					<>
 						<UAGIconPicker
 							label={ __(
@@ -539,7 +557,7 @@ const Settings = ( props ) => {
 						/>
 					</>
 				) }
-				{ source_type === 'image' && (
+				{ false !== showIcon && source_type === 'image' && (
 					<>
 						<UAGImage
 							onSelectImage={ onSelectImage }
@@ -906,22 +924,48 @@ const Settings = ( props ) => {
 								},
 							] }
 						/>
-						<Range
+						<ResponsiveSlider
 							label={ __(
 								'Icon Spacing',
 								'ultimate-addons-for-gutenberg'
 							) }
-							setAttributes={ setAttributes }
-							value={ ctaIconSpace }
-							onChange={ ( value ) =>
-								setAttributes( { ctaIconSpace: value } )
-							}
+							data={ {
+								desktop: {
+									value: ctaIconSpace,
+									label: 'ctaIconSpace',
+								},
+								tablet: {
+									value: ctaIconSpaceTablet,
+									label: 'ctaIconSpaceTablet',
+								},
+								mobile: {
+									value: ctaIconSpaceMobile,
+									label: 'ctaIconSpaceMobile',
+								},
+							} }
 							min={ 0 }
 							max={ 50 }
 							unit={ {
 								value: ctaIconSpaceType,
 								label: 'ctaIconSpaceType',
 							} }
+							units={ [
+								{
+									name: __(
+										'Pixel',
+										'ultimate-addons-for-gutenberg'
+									),
+									unitValue: 'px',
+								},
+								{
+									name: __(
+										'EM',
+										'ultimate-addons-for-gutenberg'
+									),
+									unitValue: 'em',
+								},
+							] }
+							setAttributes={ setAttributes }
 						/>
 					</>
 				) }
@@ -943,10 +987,9 @@ const Settings = ( props ) => {
 	const styleSettings = () => {
 		return (
 			<>
-				{ '' !== icon && (
+				{ ( ( false !== showIcon && source_type !== 'icon' && iconImage && iconImage.url !== 'null' && iconImage.url !== '' ) || ( false !== showIcon && source_type === 'icon' && '' !== icon ) ) && (
 					<UAGAdvancedPanelBody title="Icon/Image" initialOpen={ false }>
 						<>
-							{ ' ' }
 							{ source_type === 'icon' && (
 								<>
 									<UAGTabsControl
@@ -1076,7 +1119,7 @@ const Settings = ( props ) => {
 										) }
 										<Range
 											label={ __(
-												'Rounded Corners (px)',
+												'Rounded Corners',
 												'ultimate-addons-for-gutenberg'
 											) }
 											setAttributes={ setAttributes }
@@ -1481,24 +1524,27 @@ const Settings = ( props ) => {
 				) }
 				{ 'none' !== seperatorStyle && (
 					<UAGAdvancedPanelBody title="Separator" initialOpen={ false }>
-						<Range
+						<ResponsiveSlider
 							label={ __(
 								'Width',
 								'ultimate-addons-for-gutenberg'
 							) }
-							setAttributes={ setAttributes }
-							value={ seperatorWidth }
-							onChange={ ( value ) =>
-								setAttributes( {
-									seperatorWidth: value,
-								} )
-							}
+							data={ {
+								desktop: {
+									value: seperatorWidth,
+									label: 'seperatorWidth',
+								},
+								tablet: {
+									value: seperatorWidthTablet,
+									label: 'seperatorWidthTablet',
+								},
+								mobile: {
+									value: seperatorWidthMobile,
+									label: 'seperatorWidthMobile',
+								},
+							} }
 							min={ 0 }
-							max={
-								'%' === separatorWidthType
-									? 100
-									: 500
-							}
+							max={ '%' === separatorWidthType ? 100 : 500 }
 							unit={ {
 								value: separatorWidthType,
 								label: 'separatorWidthType',
@@ -1513,19 +1559,13 @@ const Settings = ( props ) => {
 								},
 								{
 									name: __(
-										'Em',
-										'ultimate-addons-for-gutenberg'
-									),
-									unitValue: 'em',
-								},
-								{
-									name: __(
 										'%',
 										'ultimate-addons-for-gutenberg'
 									),
 									unitValue: '%',
 								},
 							] }
+							setAttributes={ setAttributes }
 						/>
 						<Range
 							label={ __(
@@ -2060,7 +2100,9 @@ const Settings = ( props ) => {
 												label: 'paddingspacingLink',
 											} }
 										/>
+										<hr className="uagb-editor__separator" />
 										<Border
+											disabledBorderTitle= {false}
 											setAttributes={ setAttributes }
 											borderStyle={ {
 												value: ctaBorderStyle,

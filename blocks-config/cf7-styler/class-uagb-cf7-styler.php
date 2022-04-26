@@ -175,9 +175,21 @@ if ( ! class_exists( 'UAGB_CF7_Styler' ) ) {
 							'type'    => 'number',
 							'default' => '',
 						),
+						'fieldSpacingTablet'            => array(
+							'type' => 'number',
+						),
+						'fieldSpacingMobile'            => array(
+							'type' => 'number',
+						),
 						'fieldLabelSpacing'             => array(
 							'type'    => 'number',
 							'default' => '',
+						),
+						'fieldLabelSpacingTablet'       => array(
+							'type' => 'number',
+						),
+						'fieldLabelSpacingMobile'       => array(
+							'type' => 'number',
 						),
 						'labelFontSize'                 => array(
 							'type'    => 'number',
@@ -301,6 +313,12 @@ if ( ! class_exists( 'UAGB_CF7_Styler' ) ) {
 							'type'    => 'number',
 							'default' => '',
 						),
+						'radioCheckSizeTablet'          => array(
+							'type' => 'number',
+						),
+						'radioCheckSizeMobile'          => array(
+							'type' => 'number',
+						),
 						'radioCheckBgColor'             => array(
 							'type'    => 'string',
 							'default' => '',
@@ -320,6 +338,14 @@ if ( ! class_exists( 'UAGB_CF7_Styler' ) ) {
 						'radioCheckBorderWidth'         => array(
 							'type'    => 'number',
 							'default' => '',
+						),
+						'radioCheckBorderWidthTablet'   => array(
+							'type'    => 'number',
+							'default' => '1',
+						),
+						'radioCheckBorderWidthMobile'   => array(
+							'type'    => 'number',
+							'default' => '1',
 						),
 						'radioCheckBorderRadius'        => array(
 							'type'    => 'number',

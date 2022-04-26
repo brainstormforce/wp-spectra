@@ -10,6 +10,7 @@ import InspectorTab, {
 import AdvancedPopColorControl from '@Components/color-control/advanced-pop-color-control.js';
 import SpacingControl from '@Components/spacing-control';
 import Range from '@Components/range/Range.js';
+import ResponsiveSlider from '@Components/responsive-slider';
 import MultiButtonsControl from '@Components/multi-buttons-control';
 import {
 	AlignmentToolbar,
@@ -77,6 +78,8 @@ const Settings = ( props ) => {
 		headingTag,
 		layout,
 		highlightWidth,
+		highlightWidthTablet,
+		highlightWidthMobile,
 		contentTopPadding,
 		contentRightPadding,
 		contentBottomPadding,
@@ -182,18 +185,10 @@ const Settings = ( props ) => {
 						{
 							value: 'modern',
 							label: 'Modern',
-							tooltip: __(
-								'Modern',
-								'ultimate-addons-for-gutenberg'
-							),
 						},
 						{
 							value: 'simple',
 							label: 'Classic',
-							tooltip: __(
-								'Classic',
-								'ultimate-addons-for-gutenberg'
-							),
 						},
 					] }
 					showIcons={ false }
@@ -255,18 +250,42 @@ const Settings = ( props ) => {
 				/>
 
 				{ 'simple' === layout && (
-					<Range
+					// <Range
+					// 	label={ __(
+					// 		'Border Width',
+					// 		'ultimate-addons-for-gutenberg'
+					// 	) }
+					// 	value={ highlightWidth }
+					// 	onChange={ ( value ) =>
+					// 		setAttributes( { highlightWidth: value } )
+					// 	}
+					// 	min={ 0 }
+					// 	max={ 50 }
+					// 	displayUnit={ false }
+					// />
+					<ResponsiveSlider
 						label={ __(
 							'Border Width',
 							'ultimate-addons-for-gutenberg'
 						) }
-						value={ highlightWidth }
-						onChange={ ( value ) =>
-							setAttributes( { highlightWidth: value } )
-						}
+						data={ {
+							desktop: {
+								value: highlightWidth,
+								label: 'highlightWidth',
+							},
+							tablet: {
+								value: highlightWidthTablet,
+								label: 'highlightWidthTablet',
+							},
+							mobile: {
+								value: highlightWidthMobile,
+								label: 'highlightWidthMobile',
+							},
+						} }
 						min={ 0 }
 						max={ 50 }
 						displayUnit={ false }
+						setAttributes={ setAttributes }
 					/>
 				) }
 				<MultiButtonsControl
