@@ -41,7 +41,7 @@ return array(
 	'buttonBorderWidth'             => 1,
 	'buttonBorderWidthTablet'       => 0,
 	'buttonBorderWidthMobile'       => 0,
-	'buttonBorderWidthType'=> 'px',
+	'buttonBorderWidthType'         => 'px',
 	'buttonBorderRadius'            => 0,
 	'buttonBorderColor'             => '#333',
 	'buttonBorderHoverColor'        => '',

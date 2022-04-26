@@ -1,5 +1,6 @@
 .uagb-bg-image {
 	display: flex;
+
 	.components-button {
 		margin: 0;
 		border-radius: 2px;
@@ -15,22 +16,25 @@
 		align-items: center;
 		justify-content: center;
 
-		&.is-destructive:hover:not(:disabled){
+		&.is-destructive:hover:not(:disabled) {
 			color: #710d0d;
-			box-shadow: inset 0 0 0 0px #710d0d;
+			box-shadow: inset 0 0 0 0 #710d0d;
 		}
-		&.is-link.is-destructive{
-			&:hover:not(:disabled){
+
+		&.is-link.is-destructive {
+
+			&:hover:not(:disabled) {
 				background: #f0f0f0;
 			}
-			&:focus:not(:disabled){
-				outline:none;
-			 }
+
+			&:focus:not(:disabled) {
+				outline: none;
+			}
 		}
 	}
 
 	.uagb-rm-btn {
-		margin-left: 0px;
+		margin-left: 0;
 	}
 }
 
