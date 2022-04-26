@@ -37,8 +37,8 @@ const Welcome = () => {
                   <div className="p-12">
                         <h2 className='text-[1.6rem] leading-[2.4rem] pb-3 font-medium text-left'>{__( 'Welcome to Spectra!', 'ultimate-addons-for-gutenberg' )}</h2>
 						<p className='pb-7'>{__( 'Learn everything you need to know about the Spectra plugin with our comprehensive documentation. Learn everything you need to know about know about.', 'ultimate-addons-for-gutenberg' )}</p>
-						<div className="mr-[80px]">
-						<iframe width="100%" height="350" src={`https://www.youtube.com/embed/N-MLUplUoZc?showinfo=0&autoplay=${allowAutoPlay}&mute=${allowAutoPlay}`} allow="autoplay" title="YouTube video player" frameBorder="0" allowFullScreen></iframe>
+						<div className="mr-[80px] spectra-video-container">
+							<iframe className="spectra-video" src={`https://www.youtube.com/embed/N-MLUplUoZc?showinfo=0&autoplay=${allowAutoPlay}&mute=${allowAutoPlay}`} allow="autoplay" title="YouTube video player" frameBorder="0" allowFullScreen></iframe>
 						</div>
 						<span className="relative z-0 inline-flex rounded-[0.2rem] pt-6 justify-start w-full">
                           <button
