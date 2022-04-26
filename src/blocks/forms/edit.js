@@ -26,6 +26,7 @@ import { withNotices } from '@wordpress/components';
 
 import { __ } from '@wordpress/i18n';
 import lazyLoader from '@Controls/lazy-loader';
+import apiFetch from '@wordpress/api-fetch';
 
 const UAGBFormsEdit = ( props ) => {
 	const deviceType = useDeviceType();
@@ -47,6 +48,11 @@ const UAGBFormsEdit = ( props ) => {
 			paddingBtnRight,
 			paddingBtnBottom,
 			paddingBtnLeft,
+			reCaptchaSiteKeyV2,
+			reCaptchaSecretKeyV2,
+			reCaptchaSiteKeyV3,
+			reCaptchaSecretKeyV3,
+			reCaptchaEnable
 		} = props.attributes;
 
 		if ( vPaddingSubmit ) {
@@ -85,6 +91,37 @@ const UAGBFormsEdit = ( props ) => {
 		const id = props.clientId;
 
 		window.addEventListener( 'load', renderReadyClasses( id ) );
+
+		if( reCaptchaEnable ) {
+
+			const keys = {};
+			if( '' === uagb_blocks_info.recaptcha_site_key_v2 && '' === uagb_blocks_info.recaptcha_secret_key_v2 && reCaptchaSiteKeyV2 && reCaptchaSecretKeyV2 ) {
+
+				keys.reCaptchaSiteKeyV2 = reCaptchaSiteKeyV2;
+				keys.reCaptchaSecretKeyV2 = reCaptchaSecretKeyV2;
+			}
+			if( '' === uagb_blocks_info.recaptcha_site_key_v3 && '' === uagb_blocks_info.recaptcha_secret_key_v3 && reCaptchaSiteKeyV3 && reCaptchaSecretKeyV3 ) {
+
+				keys.reCaptchaSiteKeyV3 = reCaptchaSiteKeyV3;
+				keys.reCaptchaSecretKeyV3 = reCaptchaSecretKeyV3;
+			}
+
+			const formData = new window.FormData();
+
+			formData.append( 'action', 'uagb_forms_recaptcha' );
+			formData.append( 'nonce', uagb_blocks_info.uagb_ajax_nonce );
+			formData.append( 'value', JSON.stringify( keys ) );
+
+			if ( Object.keys( keys ).length !== 0 ) {
+
+				apiFetch( {
+					url: uagb_blocks_info.ajax_url,
+					method: 'POST',
+					body: formData,
+				} ).then( () => {
+				} );
+			}
+		}
 	}, [] );
 
 	useEffect( () => {

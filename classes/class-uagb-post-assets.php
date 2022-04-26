@@ -481,6 +481,8 @@ class UAGB_Post_Assets {
 			array(
 				'ajax_url'              => admin_url( 'admin-ajax.php' ),
 				'uagb_forms_ajax_nonce' => $uagb_forms_ajax_nonce,
+				'recaptcha_site_key_v2' => \UAGB_Admin_Helper::get_admin_settings_option( 'uag_recaptcha_site_key_v2', '' ),
+				'recaptcha_site_key_v3' => \UAGB_Admin_Helper::get_admin_settings_option( 'uag_recaptcha_site_key_v3', '' ),
 			)
 		);
 
