@@ -247,16 +247,16 @@ if ( 'alignwide' === $attr['innerContentWidth'] ) {
 }
 
 if ( 'default' === $attr['contentWidth'] ) {
-	$selectors[ '.uagb-block-' . $id ]['max-width'] = UAGB_Helper::get_css_value( $attr['widthDesktop'], $attr['widthType'] ) . ' !important';
-	$selectors[ '.uagb-block-' . $id ]['margin-left'] = UAGB_Helper::get_css_value( $attr['leftMarginDesktop'], $attr['marginType'] ) . ' !important';
+	$selectors[ '.uagb-block-' . $id ]['max-width']    = UAGB_Helper::get_css_value( $attr['widthDesktop'], $attr['widthType'] ) . ' !important';
+	$selectors[ '.uagb-block-' . $id ]['margin-left']  = UAGB_Helper::get_css_value( $attr['leftMarginDesktop'], $attr['marginType'] ) . ' !important';
 	$selectors[ '.uagb-block-' . $id ]['margin-right'] = UAGB_Helper::get_css_value( $attr['rightMarginDesktop'], $attr['marginType'] ) . ' !important';
 
-	$t_selectors[ '.uagb-block-' . $id ]['max-width'] = UAGB_Helper::get_css_value( $attr['widthTablet'], $attr['widthType'] ) . ' !important';
-	$t_selectors[ '.uagb-block-' . $id ]['margin-left'] = UAGB_Helper::get_css_value( $attr['leftMarginTablet'], $attr['marginType'] ) . ' !important';
+	$t_selectors[ '.uagb-block-' . $id ]['max-width']    = UAGB_Helper::get_css_value( $attr['widthTablet'], $attr['widthType'] ) . ' !important';
+	$t_selectors[ '.uagb-block-' . $id ]['margin-left']  = UAGB_Helper::get_css_value( $attr['leftMarginTablet'], $attr['marginType'] ) . ' !important';
 	$t_selectors[ '.uagb-block-' . $id ]['margin-right'] = UAGB_Helper::get_css_value( $attr['rightMarginTablet'], $attr['marginType'] ) . ' !important';
 
-	$m_selectors[ '.uagb-block-' . $id ]['max-width'] = UAGB_Helper::get_css_value( $attr['widthMobile'], $attr['widthType'] ) . ' !important';
-	$m_selectors[ '.uagb-block-' . $id ]['margin-left'] = UAGB_Helper::get_css_value( $attr['leftMarginMobile'], $attr['marginType'] ) . ' !important';
+	$m_selectors[ '.uagb-block-' . $id ]['max-width']    = UAGB_Helper::get_css_value( $attr['widthMobile'], $attr['widthType'] ) . ' !important';
+	$m_selectors[ '.uagb-block-' . $id ]['margin-left']  = UAGB_Helper::get_css_value( $attr['leftMarginMobile'], $attr['marginType'] ) . ' !important';
 	$m_selectors[ '.uagb-block-' . $id ]['margin-right'] = UAGB_Helper::get_css_value( $attr['rightMarginMobile'], $attr['marginType'] ) . ' !important';
 }
 
