@@ -79,19 +79,36 @@ const Settings = ( props ) => {
 	let alignmentOptions = [
 		{
 			value: 'left',
-			icon: <Icon icon={ renderSVG( 'fa fa-align-left' ) } />,
+			icon: <Icon icon={ renderSVG( 'fa fa-align-left' )
+		} />,
+			tooltip: __(
+				'Left',
+				'ultimate-addons-for-gutenberg'
+			),
 		},
 		{
 			value: 'center',
 			icon: <Icon icon={ renderSVG( 'fa fa-align-center' ) } />,
+			tooltip: __(
+				'Center',
+				'ultimate-addons-for-gutenberg'
+			),
 		},
 		{
 			value: 'right',
 			icon: <Icon icon={ renderSVG( 'fa fa-align-right' ) } />,
+			tooltip: __(
+				'Right',
+				'ultimate-addons-for-gutenberg'
+			),
 		},
 		{
 			value: 'full',
 			icon: <Icon icon={ renderSVG( 'fa fa-align-justify' ) } />,
+			tooltip: __(
+				'Full',
+				'ultimate-addons-for-gutenberg'
+			),
 		},
 	];
 	if ( 'stack' === layout ) {
@@ -99,14 +116,26 @@ const Settings = ( props ) => {
 			{
 				value: 'left',
 				icon: <Icon icon={ renderSVG( 'fa fa-align-left' ) } />,
+				tooltip: __(
+					'Left',
+					'ultimate-addons-for-gutenberg'
+				),
 			},
 			{
 				value: 'center',
 				icon: <Icon icon={ renderSVG( 'fa fa-align-center' ) } />,
+				tooltip: __(
+					'Center',
+					'ultimate-addons-for-gutenberg'
+				),
 			},
 			{
 				value: 'right',
 				icon: <Icon icon={ renderSVG( 'fa fa-align-right' ) } />,
+				tooltip: __(
+					'Right',
+					'ultimate-addons-for-gutenberg'
+				),
 			},
 		];
 		if ( 'full' === align ) {

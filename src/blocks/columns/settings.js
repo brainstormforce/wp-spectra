@@ -201,10 +201,6 @@ const Settings = ( props ) => {
 								'None',
 								'ultimate-addons-for-gutenberg'
 							),
-							tooltip: __(
-								'None',
-								'ultimate-addons-for-gutenberg'
-							),
 						},
 						{
 							value: 'tablet',
@@ -212,18 +208,10 @@ const Settings = ( props ) => {
 								'Tablet & Mobile',
 								'ultimate-addons-for-gutenberg'
 							),
-							tooltip: __(
-								'Tablet & Mobile',
-								'ultimate-addons-for-gutenberg'
-							),
 						},
 						{
 							value: 'mobile',
 							label: __(
-								'Mobile',
-								'ultimate-addons-for-gutenberg'
-							),
-							tooltip: __(
 								'Mobile',
 								'ultimate-addons-for-gutenberg'
 							),
@@ -253,18 +241,10 @@ const Settings = ( props ) => {
 								'Theme Container Width',
 								'ultimate-addons-for-gutenberg'
 							),
-							tooltip: __(
-								'Theme Container Width',
-								'ultimate-addons-for-gutenberg'
-							),
 						},
 						{
 							value: 'custom',
 							label: __(
-								'Custom',
-								'ultimate-addons-for-gutenberg'
-							),
-							tooltip: __(
 								'Custom',
 								'ultimate-addons-for-gutenberg'
 							),

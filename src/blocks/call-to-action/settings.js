@@ -160,7 +160,10 @@ const Settings = ( props ) => {
 		secondCtaIcon,
 		secondCtaIconPosition,
 		secondCtaIconSpace,
-		gap,
+		stackBtn,
+		gapBtn,
+		gapBtnTablet,
+		gapBtnMobile,
 	} = attributes;
 
 	let loadCtaGoogleFonts;
@@ -245,6 +248,72 @@ const Settings = ( props ) => {
 				/>
 				{ enabledSecondCtaButton && (
 				<>
+				<MultiButtonsControl
+					setAttributes={ setAttributes }
+					label={ __( 'Stack Orientation', 'ultimate-addons-for-gutenberg' ) }
+					data={ {
+						value: stackBtn,
+						label: 'stackBtn',
+					} }
+					options={ [
+						{
+							value: 'none',
+							label: __(
+								'None',
+								'ultimate-addons-for-gutenberg'
+							),
+						},
+						{
+							value: 'desktop',
+							label: __(
+								'Desktop',
+								'ultimate-addons-for-gutenberg'
+							),
+						},
+						{
+							value: 'tablet',
+							label: __(
+								'Tablet',
+								'ultimate-addons-for-gutenberg'
+							),
+						},
+						{
+							value: 'mobile',
+							label: __(
+								'Mobile',
+								'ultimate-addons-for-gutenberg'
+							),
+						},
+					] }
+					help={ __(
+						'Note: Choose on what breakpoint the buttons will stack.',
+						'ultimate-addons-for-gutenberg'
+					) }
+				/>
+				<ResponsiveSlider
+					label={ __(
+						'Gap Between Buttons',
+						'ultimate-addons-for-gutenberg'
+					) }
+					data={ {
+						desktop: {
+							value: gapBtn,
+							label: 'gapBtn',
+						},
+						tablet: {
+							value: gapBtnTablet,
+							label: 'gapBtnTablet',
+						},
+						mobile: {
+							value: gapBtnMobile,
+							label: 'gapBtnMobile',
+						},
+					} }
+					min={ 0 }
+					max={ 200 }
+					displayUnit={ false }
+					setAttributes={ setAttributes }
+				/>
 				<TextControl
 					label={ __(
 						'Text',
@@ -305,18 +374,10 @@ const Settings = ( props ) => {
 								'Before Text',
 								'ultimate-addons-for-gutenberg'
 							),
-							tooltip: __(
-								'Before Text',
-								'ultimate-addons-for-gutenberg'
-							),
 						},
 						{
 							value: 'after',
 							label: __(
-								'After Text',
-								'ultimate-addons-for-gutenberg'
-							),
-							tooltip: __(
 								'After Text',
 								'ultimate-addons-for-gutenberg'
 							),
@@ -599,18 +660,10 @@ const Settings = ( props ) => {
 								'None',
 								'ultimate-addons-for-gutenberg'
 							),
-							tooltip: __(
-								'None',
-								'ultimate-addons-for-gutenberg'
-							),
 						},
 						{
 							value: 'text',
 							label: __(
-								'Text',
-								'ultimate-addons-for-gutenberg'
-							),
-							tooltip: __(
 								'Text',
 								'ultimate-addons-for-gutenberg'
 							),
@@ -621,18 +674,10 @@ const Settings = ( props ) => {
 								'Button',
 								'ultimate-addons-for-gutenberg'
 							),
-							tooltip: __(
-								'Button',
-								'ultimate-addons-for-gutenberg'
-							),
 						},
 						{
 							value: 'all',
 							label: __(
-								'Complete Box',
-								'ultimate-addons-for-gutenberg'
-							),
-							tooltip: __(
 								'Complete Box',
 								'ultimate-addons-for-gutenberg'
 							),
@@ -710,18 +755,10 @@ const Settings = ( props ) => {
 												'Before Text',
 												'ultimate-addons-for-gutenberg'
 											),
-											tooltip: __(
-												'Before Text',
-												'ultimate-addons-for-gutenberg'
-											),
 										},
 										{
 											value: 'after',
 											label: __(
-												'After Text',
-												'ultimate-addons-for-gutenberg'
-											),
-											tooltip: __(
 												'After Text',
 												'ultimate-addons-for-gutenberg'
 											),
@@ -1293,22 +1330,6 @@ const Settings = ( props ) => {
 						displayUnit={ false }
 					/>
 				) }
-				{ enabledSecondCtaButton && (
-				<Range
-					label={ __(
-						'Gap between buttons (px)',
-						'ultimate-addons-for-gutenberg'
-					) }
-					setAttributes={ setAttributes }
-					value={ gap }
-					onChange={ ( value ) =>
-						setAttributes( { gap: value } )
-					}
-					min={ 0 }
-					max={ 200 }
-					displayUnit={ false }
-				/>
-				)}
 			</UAGAdvancedPanelBody>
 		);
 	};
@@ -1423,18 +1444,10 @@ const Settings = ( props ) => {
 										'Inline',
 										'ultimate-addons-for-gutenberg'
 									),
-									tooltip: __(
-										'Inline',
-										'ultimate-addons-for-gutenberg'
-									),
 								},
 								{
 									value: 'below-title',
 									label: __(
-										'Stack',
-										'ultimate-addons-for-gutenberg'
-									),
-									tooltip: __(
 										'Stack',
 										'ultimate-addons-for-gutenberg'
 									),
@@ -1492,18 +1505,10 @@ const Settings = ( props ) => {
 												'Top',
 												'ultimate-addons-for-gutenberg'
 											),
-											tooltip: __(
-												'Top',
-												'ultimate-addons-for-gutenberg'
-											),
 										},
 										{
 											value: 'middle',
 											label: __(
-												'Middle',
-												'ultimate-addons-for-gutenberg'
-											),
-											tooltip: __(
 												'Middle',
 												'ultimate-addons-for-gutenberg'
 											),
@@ -1529,10 +1534,6 @@ const Settings = ( props ) => {
 												'None',
 												'ultimate-addons-for-gutenberg'
 											),
-											tooltip: __(
-												'None',
-												'ultimate-addons-for-gutenberg'
-											),
 										},
 										{
 											value: 'tablet',
@@ -1540,18 +1541,10 @@ const Settings = ( props ) => {
 												'Tablet',
 												'ultimate-addons-for-gutenberg'
 											),
-											tooltip: __(
-												'Tablet',
-												'ultimate-addons-for-gutenberg'
-											),
 										},
 										{
 											value: 'mobile',
 											label: __(
-												'Mobile',
-												'ultimate-addons-for-gutenberg'
-											),
-											tooltip: __(
 												'Mobile',
 												'ultimate-addons-for-gutenberg'
 											),

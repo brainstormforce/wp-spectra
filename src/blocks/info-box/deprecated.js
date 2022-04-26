@@ -479,6 +479,10 @@ const attributes = {
 		type: "string",
 		default: "tablet"
 	},
+	showIcon: {
+		type: 'boolean',
+		default: true,
+	},
 	showPrefix: {
 		type: "boolean",
 		default: true,
