@@ -202,6 +202,7 @@ function styling( props ) {
 	if ( 'above' !== imgPosition ) {
 		if ( 'middle' === imgAlign ) {
 			selectors[ ' img' ][ 'align-self' ] = 'center';
+			selectors[ ' .uagb-team__content'] = { 'align-self': 'center', };
 		} else {
 			selectors[ ' img' ][ 'align-self' ] = 'flex-start';
 		}

@@ -99,5 +99,5 @@ return array(
 	'prefixDecoration'        => '',
 	'titleFontStyle'          => '',
 	'descFontStyle'           => '',
-	'prefixFontStyle'         => '',
+	'prefixFontStyle'         => 'normal',
 );
