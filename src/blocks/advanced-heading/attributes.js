@@ -40,7 +40,7 @@ const attributes = {
 	headingDesc: {
 		source: 'html',
 		selector: '.uagb-desc-text',
-		default: __( 'Enter description text here.Lorem ipsum dolor sit amet, consectetur adipiscing. Quo incidunt ullamco.​', 'ultimate-addons-for-gutenberg' ),
+		default: __( 'Enter description text here. Lorem ipsum dolor sit amet, consectetur adipiscing. Quo incidunt ullamco.​', 'ultimate-addons-for-gutenberg' ),
 	},
 	headingAlign: {
 		type: 'string',
