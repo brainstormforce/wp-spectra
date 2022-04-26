@@ -66,6 +66,10 @@
 	.block-editor-block-list__block:not([contenteditable]):focus::after {
 		z-index: 999;
 	}
+
+	.block-editor-block-list__block:hover{
+		z-index: 0;
+	}
 }
 
 /* UAG Help Notice CSS*/
