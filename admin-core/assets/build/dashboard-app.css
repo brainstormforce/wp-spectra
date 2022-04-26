@@ -797,8 +797,8 @@ select {
   justify-content: space-between;
 }.gap-4 {
   gap: 1rem;
-}.gap-\[1\.43rem\] {
-  gap: 1.43rem;
+}.gap-\[2\.92rem\] {
+  gap: 2.92rem;
 }.space-y-4 > :not([hidden]) ~ :not([hidden]) {
   --tw-space-y-reverse: 0;
   margin-top: calc(1rem * calc(1 - var(--tw-space-y-reverse)));
@@ -1407,8 +1407,8 @@ select {
     grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 
-  .lg\:gap-\[1\.43rem\] {
-    gap: 1.43rem;
+  .lg\:gap-\[2\.92rem\] {
+    gap: 2.92rem;
   }
 
   .lg\:gap-x-8 {

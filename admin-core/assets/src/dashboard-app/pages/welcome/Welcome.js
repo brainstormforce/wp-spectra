@@ -26,7 +26,7 @@ const Welcome = () => {
         <div className="max-w-3xl mx-auto px-6 lg:max-w-7xl">
           <h1 className="sr-only">Page title</h1>
           {/* Main 3 column grid */}
-          <div className="grid grid-cols-1 gap-4 items-start lg:grid-cols-3 lg:gap-[1.43rem]">
+          <div className="grid grid-cols-1 gap-4 items-start lg:grid-cols-3 lg:gap-[2.92rem]">
             {/* Left column */}
             <div className="grid grid-cols-1 gap-4 lg:col-span-2 h-full">
               <section aria-labelledby="section-1-title">
@@ -64,7 +64,7 @@ const Welcome = () => {
             </div>
 
             {/* Right column */}
-            <div className="grid grid-cols-1 gap-[1.43rem]">
+            <div className="grid grid-cols-1 gap-[2.92rem]">
               <section aria-labelledby="section-2-title">
                 <h2 className="sr-only" id="section-2-title">
                   Section title
