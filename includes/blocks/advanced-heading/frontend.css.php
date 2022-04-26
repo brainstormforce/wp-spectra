@@ -109,6 +109,12 @@ if ( 'gradient' === $attr['headingColorType'] ) {
 		'-webkit-background-clip' => 'text',
 		'-webkit-text-fill-color' => 'transparent',
 	));
+	$selectors['.wp-block-uagb-advanced-heading a'] = array_merge($selectors['.wp-block-uagb-advanced-heading a'], array(
+		'-webkit-text-fill-color' => $attr['linkColor'],
+	));
+	$selectors['.wp-block-uagb-advanced-heading a:hover'] = array_merge($selectors['.wp-block-uagb-advanced-heading a:hover'], array(
+		'-webkit-text-fill-color' => $attr['linkHColor'],
+	));
 }
 
 $seperatorStyle = isset( $attr['seperatorStyle'] ) ? $attr['seperatorStyle'] : '';

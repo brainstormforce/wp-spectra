@@ -148,6 +148,17 @@ function styling( props ) {
 	const tablet_selectors = {};
 	const mobile_selectors = {};
 
+	let gradientLinkColor = {}
+	let gradientLinkHoverColor = {}
+	if( 'gradient' === headingColorType ){
+		gradientLinkColor =  {
+			'-webkit-text-fill-color': linkColor
+		}
+		gradientLinkHoverColor =  {
+			'-webkit-text-fill-color': linkHColor
+		}
+	}
+
 	const selectors = {
 		'.wp-block-uagb-advanced-heading ':{
 			'background': 	'classic' === blockBackgroundType ? blockBackground : blockGradientBackground,
@@ -205,9 +216,11 @@ function styling( props ) {
 		},
 		'.wp-block-uagb-advanced-heading a': {
 			'color': linkColor,
+			...gradientLinkColor
 		},
 		'.wp-block-uagb-advanced-heading a:hover': {
 			'color': linkHColor,
+			...gradientLinkHoverColor
 		},
 		'.wp-block-uagb-advanced-heading .uagb-highlight': {
 			'background': highLightBackground,
