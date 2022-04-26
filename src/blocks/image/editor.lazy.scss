@@ -32,7 +32,10 @@
 }
 
 .wp-block-uagb-image {
-
+	.components-resizable-box__container {
+		max-width: 100% !important;
+		height: auto !important;
+	}
 	.components-placeholder.is-medium {
 
 		.components-placeholder__instructions {
