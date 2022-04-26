@@ -654,22 +654,22 @@ const Settings = ( props ) => {
 			>
 				<AdvancedPopColorControl
 					label={ __(
-						'Background Color',
-						'ultimate-addons-for-gutenberg'
-					) }
-					colorValue={ bodyBgColor }
-					onColorChange={ ( value ) =>
-						setAttributes( { bodyBgColor: value } )
-					}
-				/>
-				<AdvancedPopColorControl
-					label={ __(
 						'Text Color',
 						'ultimate-addons-for-gutenberg'
 					) }
 					colorValue={ bodyTextColor }
 					onColorChange={ ( value ) =>
 						setAttributes( { bodyTextColor: value } )
+					}
+				/>
+					<AdvancedPopColorControl
+					label={ __(
+						'Background Color',
+						'ultimate-addons-for-gutenberg'
+					) }
+					colorValue={ bodyBgColor }
+					onColorChange={ ( value ) =>
+						setAttributes( { bodyBgColor: value } )
 					}
 				/>
 				<SpacingControl

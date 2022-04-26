@@ -161,7 +161,7 @@ const Render = ( props ) => {
 									{ index !== 0 && (
 										<Tooltip
 											text={ __(
-												'Move Item Back',
+												'Move item back',
 												'ultimate-addons-for-gutenberg'
 											) }
 										>
@@ -281,7 +281,6 @@ const Render = ( props ) => {
 							</a>
 						</li>
 					) ) }
-					<li className="uagb-tab uagb-tabs__add-tab">
 						<Tooltip
 							text={ __(
 								'Add tab',
@@ -296,7 +295,6 @@ const Render = ( props ) => {
 								<Dashicon icon="plus" />
 							</span>
 						</Tooltip>
-					</li>
 				</ul>
 				<div className="uagb-tabs__body-wrap">
 					<InnerBlocks
