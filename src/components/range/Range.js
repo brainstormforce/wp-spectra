@@ -198,13 +198,14 @@ const Range = ( props ) => {
 			</div>
 			<div className="uagb-range-control__mobile-controls">
 				<RangeControl
-					value={ props.value || '' }
+					value={ props?.value }
 					onChange={ handleOnChange }
 					withInputField={ false }
 					allowReset={ false }
 					max={ max }
 					min={ min }
 					step={ props.step || 1 }
+					initialPosition = {props?.value}
 				/>
 				{ withInputField && isNumberControlSupported && (
 					<NumberControl
@@ -213,7 +214,7 @@ const Range = ( props ) => {
 						max={ max }
 						min={ min }
 						onChange={ handleOnChange }
-						value={ props.value || '' }
+						value={ props?.value }
 						step={ props.step || 1 }
 					/>
 				) }

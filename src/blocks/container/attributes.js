@@ -5,12 +5,15 @@ const attributes = {
 	contentWidth: {
 		type: 'string',
 		default: 'alignfull',
+		UAGCopyPaste: {
+			styleType: 'content-width'
+		}
 	},
 	innerContentWidth: {
 		type: 'string',
 		default: 'alignwide',
 		UAGCopyPaste: {
-			styleType: 'content-width'
+			styleType: 'inner-content-width'
 		}
 	},
 	widthDesktop: {
