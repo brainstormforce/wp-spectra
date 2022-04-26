@@ -18,7 +18,6 @@ import MultiButtonsControl from '@Components/multi-buttons-control';
 import UAGSelectControl from '@Components/select-control';
 import {
 	store as blockEditorStore,
-	__experimentalImageSizeControl as ImageSizeControl,
 	InspectorControls,
 } from '@wordpress/block-editor';
 import {
@@ -29,6 +28,7 @@ import {
 	Icon
 } from '@wordpress/components';
 import renderSVG from '@Controls/renderIcon';
+import ImageSizeControl from '@Components/image-size-control'
 
 import { store as coreStore } from '@wordpress/core-data';
 // Extend component
