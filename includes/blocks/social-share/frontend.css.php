@@ -54,13 +54,13 @@ $t_selectors['.uagb-social-share__layout-horizontal .uagb-ss__wrapper'] = array(
 	'margin-right' => UAGB_Helper::get_css_value( ( $attr['gapTablet'] / 2 ), 'px' ),
 );
 
-$selectors[' .uagb-ss__wrapper']   = array(
+$selectors[' .wp-block-uagb-social-share-child ']   = array(
 	'border-radius' => UAGB_Helper::get_css_value( $attr['borderRadius'], 'px' ),
 );
-$m_selectors[' .uagb-ss__wrapper'] = array(
+$m_selectors[' .wp-block-uagb-social-share-child '] = array(
 	'border-radius' => UAGB_Helper::get_css_value( $attr['borderRadiusMobile'], 'px' ),
 );
-$t_selectors[' .uagb-ss__wrapper'] = array(
+$t_selectors[' .wp-block-uagb-social-share-child '] = array(
 	'border-radius' => UAGB_Helper::get_css_value( $attr['borderRadiusTablet'], 'px' ),
 );
 
