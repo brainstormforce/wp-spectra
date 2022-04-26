@@ -182,6 +182,7 @@ const Settings = ( props ) => {
 		imageWidthType,
 		imageWidthUnit,
 		stack,
+		showIcon,
 		showPrefix,
 		showTitle,
 		showDesc,
@@ -375,6 +376,17 @@ const Settings = ( props ) => {
 				title={ __( 'Image/Icon', 'ultimate-addons-for-gutenberg' ) }
 				initialOpen={ false }
 			>
+				<ToggleControl
+					checked={ showIcon }
+					onChange={ () =>
+						setAttributes( { showIcon: ! showIcon } )
+					}
+					label={ __(
+						'Enable Icon/Image',
+						'ultimate-addons-for-gutenberg'
+					) }
+				/>
+				{ showIcon && (
 				<SelectControl
 					label={ __(
 						'Select Position',
@@ -429,7 +441,7 @@ const Settings = ( props ) => {
 						},
 					] }
 				/>
-
+				)}
 				{ ( iconimgPosition === 'left' ||
 					iconimgPosition === 'right' ) && (
 					<SelectControl
@@ -501,6 +513,7 @@ const Settings = ( props ) => {
 							] }
 						/>
 					) }
+				{ showIcon &&
 				<MultiButtonsControl
 					setAttributes={ setAttributes }
 					label={ __(
@@ -528,8 +541,9 @@ const Settings = ( props ) => {
 						},
 					] }
 				/>
+				}
 
-				{ source_type === 'icon' && (
+				{ false !== showIcon && source_type === 'icon' && (
 					<>
 						<UAGIconPicker
 							label={ __(
@@ -543,7 +557,7 @@ const Settings = ( props ) => {
 						/>
 					</>
 				) }
-				{ source_type === 'image' && (
+				{ false !== showIcon && source_type === 'image' && (
 					<>
 						<UAGImage
 							onSelectImage={ onSelectImage }
@@ -973,10 +987,9 @@ const Settings = ( props ) => {
 	const styleSettings = () => {
 		return (
 			<>
-				{ '' !== icon && (
-					<UAGAdvancedPanelBody title="Icon/Image" initialOpen={ true }>
+				{ ( ( false !== showIcon && source_type !== 'icon' && iconImage && iconImage.url !== 'null' && iconImage.url !== '' ) || ( false !== showIcon && source_type === 'icon' && '' !== icon ) ) && (
+					<UAGAdvancedPanelBody title="Icon/Image" initialOpen={ false }>
 						<>
-							{ ' ' }
 							{ source_type === 'icon' && (
 								<>
 									<UAGTabsControl
@@ -2096,6 +2109,7 @@ const Settings = ( props ) => {
 												label: 'paddingspacingLink',
 											} }
 										/>
+										<hr className="uagb-editor__separator" />
 										<Border
 											disabledBorderTitle= {false}
 											setAttributes={ setAttributes }

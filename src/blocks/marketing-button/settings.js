@@ -401,18 +401,10 @@ const Settings = ( props ) => {
 										'Before Text',
 										'ultimate-addons-for-gutenberg'
 									),
-									tooltip: __(
-										'Before Text',
-										'ultimate-addons-for-gutenberg'
-									),
 								},
 								{
 									value: 'after',
 									label: __(
-										'After Text',
-										'ultimate-addons-for-gutenberg'
-									),
-									tooltip: __(
 										'After Text',
 										'ultimate-addons-for-gutenberg'
 									),
@@ -904,10 +896,6 @@ const Settings = ( props ) => {
 								'Transparent',
 								'ultimate-addons-for-gutenberg'
 							),
-							tooltip: __(
-								'Transparent',
-								'ultimate-addons-for-gutenberg'
-							),
 						},
 						{
 							value: 'color',
@@ -915,18 +903,10 @@ const Settings = ( props ) => {
 								'Color',
 								'ultimate-addons-for-gutenberg'
 							),
-							tooltip: __(
-								'Color',
-								'ultimate-addons-for-gutenberg'
-							),
 						},
 						{
 							value: 'gradient',
 							label: __(
-								'Gradient',
-								'ultimate-addons-for-gutenberg'
-							),
-							tooltip: __(
 								'Gradient',
 								'ultimate-addons-for-gutenberg'
 							),
@@ -1036,18 +1016,10 @@ const Settings = ( props ) => {
 										'Linear',
 										'ultimate-addons-for-gutenberg'
 									),
-									tooltip: __(
-										'Linear',
-										'ultimate-addons-for-gutenberg'
-									),
 								},
 								{
 									value: 'radial',
 									label: __(
-										'Radial',
-										'ultimate-addons-for-gutenberg'
-									),
-									tooltip: __(
 										'Radial',
 										'ultimate-addons-for-gutenberg'
 									),

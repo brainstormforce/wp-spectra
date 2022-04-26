@@ -67,6 +67,7 @@ return array(
 	'ctaBorderWidth'               => '',
 	'ctaBorderRadius'              => '',
 	'stack'                        => 'tablet',
+	'stackBtn'                     => 'none',
 	'showTitle'                    => true,
 	'showDesc'                     => true,
 	'ctaLeftSpace'                 => 5,
@@ -139,4 +140,8 @@ return array(
 	'secondCtaIconSpace'           => 10,
 	'gap'                          => 10,
 	'gapType'                      => 'px',
+	'stackBtn'                     => 'none',
+	'gapBtn'                       => 15,
+	'gapBtnTablet'                 => 15,
+	'gapBtnMobile'                 => 15,
 );

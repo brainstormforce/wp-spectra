@@ -196,7 +196,10 @@ a.uagb-infobox-link-wrap:hover,
 
 .uagb-ifb-button-wrapper {
 	line-height: 1;
-	cursor: pointer;
+
+	.uagb-infobox-cta-link {
+		cursor: pointer;
+	}
 
 	.wp-block-button__link svg {
 		fill: currentColor;

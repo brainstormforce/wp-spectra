@@ -52,8 +52,10 @@ const Render = ( props ) => {
 						<>
 							{ titleText }
 							{ descText }
-							{ isCta }
-							{ secondCtaButton }
+							<div className='uagb-cta__buttons'>
+								{ isCta }
+								{ secondCtaButton }
+							</div>
 						</>
 					) }
 					{ ctaPosition === 'right' && (
@@ -62,8 +64,10 @@ const Render = ( props ) => {
 								{ titleText }
 								{ descText }
 							</div>
-							{isCta}
-							{secondCtaButton}
+							<div className='uagb-cta__buttons'>
+								{isCta}
+								{secondCtaButton}
+							</div>
 						</>
 					) }
 			</>

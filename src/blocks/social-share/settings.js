@@ -76,18 +76,10 @@ const Settings = ( props ) => {
 								'Horizontal',
 								'ultimate-addons-for-gutenberg'
 							),
-							tooltip: __(
-								'Horizontal',
-								'ultimate-addons-for-gutenberg'
-							),
 						},
 						{
 							value: 'vertical',
 							label: __(
-								'Vertical',
-								'ultimate-addons-for-gutenberg'
-							),
-							tooltip: __(
 								'Vertical',
 								'ultimate-addons-for-gutenberg'
 							),
@@ -170,10 +162,6 @@ const Settings = ( props ) => {
 										'None',
 										'ultimate-addons-for-gutenberg'
 									),
-									tooltip: __(
-										'None',
-										'ultimate-addons-for-gutenberg'
-									),
 								},
 								{
 									value: 'desktop',
@@ -181,10 +169,7 @@ const Settings = ( props ) => {
 										'Desktop',
 										'ultimate-addons-for-gutenberg'
 									),
-									tooltip: __(
-										'Desktop',
-										'ultimate-addons-for-gutenberg'
-									),
+
 								},
 								{
 									value: 'tablet',
@@ -192,10 +177,7 @@ const Settings = ( props ) => {
 										'Tablet',
 										'ultimate-addons-for-gutenberg'
 									),
-									tooltip: __(
-										'Tablet',
-										'ultimate-addons-for-gutenberg'
-									),
+
 								},
 								{
 									value: 'mobile',
@@ -203,10 +185,7 @@ const Settings = ( props ) => {
 										'Mobile',
 										'ultimate-addons-for-gutenberg'
 									),
-									tooltip: __(
-										'Mobile',
-										'ultimate-addons-for-gutenberg'
-									),
+
 								},
 							] }
 							showIcons={ false }

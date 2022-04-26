@@ -60,8 +60,10 @@ export default function save( props ) {
 				<>
 					{ titleText }
 					{ desc }
-					{ isCta }
-					{ secondCtaButton }
+					<div className='uagb-cta__buttons'>
+						{ isCta }
+						{ secondCtaButton }
+					</div>
 				</>
 			) }
 
@@ -71,8 +73,10 @@ export default function save( props ) {
 						{ titleText }
 						{ desc }
 					</div>
-					{isCta}
-					{secondCtaButton}
+					<div className='uagb-cta__buttons'>
+						{isCta}
+						{secondCtaButton}
+					</div>
 				</>
 			) }
 		</>

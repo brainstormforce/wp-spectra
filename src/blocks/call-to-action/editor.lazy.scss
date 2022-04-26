@@ -34,6 +34,10 @@
 
 .editor-styles-wrapper {
 
+	.uagb-cta__outer-wrap .uagb-cta__buttons {
+		display: inline-flex;
+	}
+
 	.uagb-cta__outer-wrap a.uagb-cta__button-link-wrapper,
 	.uagb-cta__outer-wrap a.uagb-cta-second__button {
 		text-decoration: none;

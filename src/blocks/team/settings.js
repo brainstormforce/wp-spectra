@@ -424,10 +424,6 @@ const Settings = ( props ) => {
 									'None',
 									'ultimate-addons-for-gutenberg'
 								),
-								tooltip: __(
-									'None',
-									'ultimate-addons-for-gutenberg'
-								),
 							},
 							{
 								value: 'tablet',
@@ -435,18 +431,10 @@ const Settings = ( props ) => {
 									'Tablet',
 									'ultimate-addons-for-gutenberg'
 								),
-								tooltip: __(
-									'Tablet',
-									'ultimate-addons-for-gutenberg'
-								),
 							},
 							{
 								value: 'mobile',
 								label: __(
-									'Mobile',
-									'ultimate-addons-for-gutenberg'
-								),
-								tooltip: __(
 									'Mobile',
 									'ultimate-addons-for-gutenberg'
 								),
@@ -473,10 +461,6 @@ const Settings = ( props ) => {
 									'Normal',
 									'ultimate-addons-for-gutenberg'
 								),
-								tooltip: __(
-									'Normal',
-									'ultimate-addons-for-gutenberg'
-								),
 							},
 							{
 								value: 'circle',
@@ -484,18 +468,10 @@ const Settings = ( props ) => {
 									'Circle',
 									'ultimate-addons-for-gutenberg'
 								),
-								tooltip: __(
-									'Circle',
-									'ultimate-addons-for-gutenberg'
-								),
 							},
 							{
 								value: 'square',
 								label: __(
-									'Square',
-									'ultimate-addons-for-gutenberg'
-								),
-								tooltip: __(
 									'Square',
 									'ultimate-addons-for-gutenberg'
 								),
@@ -523,18 +499,10 @@ const Settings = ( props ) => {
 									'Top',
 									'ultimate-addons-for-gutenberg'
 								),
-								tooltip: __(
-									'Top',
-									'ultimate-addons-for-gutenberg'
-								),
 							},
 							{
 								value: 'middle',
 								label: __(
-									'Middle',
-									'ultimate-addons-for-gutenberg'
-								),
-								tooltip: __(
 									'Middle',
 									'ultimate-addons-for-gutenberg'
 								),
