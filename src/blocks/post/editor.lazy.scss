@@ -9,7 +9,9 @@
 
 		&.uagb-post__edit-mode {
 			margin: 20px;
-			[data-type="uagb/post-meta"] span, [data-type="uagb/post-meta"] time {
+
+			[data-type="uagb/post-meta"] span,
+			[data-type="uagb/post-meta"] time {
 				margin-right: 10px;
 				font-weight: 500;
 			}

@@ -26,7 +26,6 @@ import {
 	ToggleControl,
 	ToolbarGroup,
 	TextControl,
-	RadioControl,
 	Icon,
 } from '@wordpress/components';
 

@@ -535,11 +535,11 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 					'default' => 20,
 				),
 				'rowGapTablet'                  => array(
-					'type' => 'number',
+					'type'    => 'number',
 					'default' => 20,
 				),
 				'rowGapMobile'                  => array(
-					'type' => 'number',
+					'type'    => 'number',
 					'default' => 20,
 				),
 				'columnGap'                     => array(
@@ -817,11 +817,11 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 					'default' => 0,
 				),
 				'ctaBottomSpaceTablet'          => array(
-					'type' => 'number',
+					'type'    => 'number',
 					'default' => 0,
 				),
 				'ctaBottomSpaceMobile'          => array(
-					'type' => 'number',
+					'type'    => 'number',
 					'default' => 0,
 				),
 				'imageBottomSpace'              => array(

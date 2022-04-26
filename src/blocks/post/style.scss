@@ -285,9 +285,12 @@
 	.uagb-post__inner-wrap {
 		position: relative;
 		width: 100%;
+
 		.uagb-post__taxonomy {
-			&.highlighted, &.default{
-				position:relative;
+
+			&.highlighted,
+			&.default {
+				position: relative;
 				z-index: 999;
 				margin-top: 20px;
 			}
