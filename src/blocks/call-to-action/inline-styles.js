@@ -7,6 +7,7 @@ import generateCSSUnit from '@Controls/generateCSSUnit';
 
 function CtaStyle( props ) {
 	const {
+		stack,
 		textAlign,
 		titleColor,
 		descColor,
@@ -122,6 +123,9 @@ function CtaStyle( props ) {
 		gapBtn,
 		gapBtnTablet,
 		gapBtnMobile,
+
+		textAlignTablet,
+		textAlignMobile,
 	} = props.attributes;
 
 	const selectors = {
@@ -280,8 +284,8 @@ function CtaStyle( props ) {
 	}
 
 	const tabletSelectors = {
-		'.uagb-cta__outer-wrap ': {
-			'display' : 'inline-flex',
+		'.uagb-editor-preview-mode-tablet.uagb-cta__outer-wrap ': {
+			'text-align': textAlignTablet,
 		},
 		' .block-editor-rich-text__editable.uagb-cta__title': {
 			'font-size': generateCSSUnit(
@@ -370,15 +374,9 @@ function CtaStyle( props ) {
 		};
 	}
 
-	if( 'below-title' === ctaPosition ){
-		tabletSelectors[ '.uagb-cta__outer-wrap ' ] = {
-			'display' : 'inherit',
-		};
-	}
-
 	const mobileSelectors = {
-		'.uagb-cta__outer-wrap ': {
-			'display' : 'inline-flex',
+		'.uagb-editor-preview-mode-mobile.uagb-cta__outer-wrap ': {
+			'text-align': textAlignMobile,
 		},
 		' .block-editor-rich-text__editable.uagb-cta__title': {
 			'font-size': generateCSSUnit(
@@ -569,6 +567,85 @@ function CtaStyle( props ) {
 			'column-gap': generateCSSUnit( gapBtnMobile, 'px' ),
 		};
 	}
+	let alignment;
+	if( 'left' === textAlign ) {
+		alignment = 'flex-start';
+	} else if ( 'right' === textAlign ) {
+		alignment = 'flex-end'
+	} else {
+		alignment = 'center'
+	}
+	let alignmentTablet;
+	if( 'left' === textAlignTablet ) {
+		alignmentTablet = 'flex-start';
+	} else if ( 'right' === textAlignTablet ) {
+		alignmentTablet = 'flex-end'
+	} else {
+		alignmentTablet = 'center'
+	}
+	let alignmentMobile;
+	if( 'left' === textAlignMobile ) {
+		alignmentMobile = 'flex-start';
+	} else if ( 'right' === textAlignMobile ) {
+		alignmentMobile = 'flex-end'
+	} else {
+		alignmentMobile = 'center'
+	}
+	if ( 'desktop' === stack ) {
+		selectors[ '.uagb-cta__outer-wrap ' ] = {
+			'flex-direction': 'column',
+			'align-items': alignment
+		};
+		tabletSelectors[ '.uagb-cta__outer-wrap ' ] = {
+			'flex-direction': 'column',
+			'align-items': alignmentTablet
+		};
+		mobileSelectors[ '.uagb-cta__outer-wrap ' ] = {
+			'flex-direction': 'column',
+			'align-items': alignmentMobile
+		};
+	} else if ( 'tablet' === stack ) {
+		selectors[ '.uagb-cta__outer-wrap ' ] = {
+			'flex-direction': 'row',
+			'align-items': 'top' === buttonAlign ? 'flex-start' : 'center'
+		};
+		tabletSelectors['.uagb-cta__outer-wrap '] = {
+			'flex-direction': 'column',
+			'align-items': alignmentTablet
+		};
+		mobileSelectors['.uagb-cta__outer-wrap '] = {
+			'flex-direction': 'column',
+			'align-items': alignmentMobile
+		};
+
+	} else if ( 'mobile' === stack ) {
+		selectors[ '.uagb-cta__outer-wrap ' ] = {
+			'flex-direction': 'row',
+			'align-items':  'top' === buttonAlign ? 'flex-start' : 'center'
+		};
+		tabletSelectors[ '.uagb-cta__outer-wrap ' ] = {
+			'flex-direction': 'row',
+			'align-items':  'top' === buttonAlign ? 'flex-start' : 'center'
+		};
+		mobileSelectors['.uagb-cta__outer-wrap '] = {
+			'flex-direction': 'column',
+			'align-items': alignmentMobile
+		};
+	} else if ( 'none' === stack ) {
+		selectors[ '.uagb-cta__outer-wrap ' ] = {
+			'flex-direction': 'row',
+			'align-items':  'top' === buttonAlign ? 'flex-start' : 'center'
+		};
+		tabletSelectors[ '.uagb-cta__outer-wrap ' ] = {
+			'flex-direction': 'row',
+			'align-items':  'top' === buttonAlign ? 'flex-start' : 'center'
+		};
+		mobileSelectors['.uagb-cta__outer-wrap '] = {
+			'flex-direction': 'row',
+			'align-items':  'top' === buttonAlign ? 'flex-start' : 'center'
+		};
+	}
+
 	const id = `.editor-styles-wrapper .uagb-block-${ props.clientId.substr( 0, 8 ) }`;
 
 	let stylingCss = generateCSS( selectors, `${ id }.uagb-editor-preview-mode-desktop` );
