@@ -28,12 +28,10 @@ function styling( props ) {
 	const mobileSelectors = {};
 
 	selectors[ '.uagb-social-share__layout-vertical .uagb-ss__wrapper' ] = {
+		'padding': generateCSSUnit( bgSize, 'px' ),
 		'margin-left': 0,
 		'margin-right': 0,
 		'margin-bottom': generateCSSUnit( gap, 'px' ),
-	};
-	selectors[ '.uagb-social-share__layout-vertical .uagb-ss__link' ] = {
-		'padding': generateCSSUnit( bgSize, 'px' ),
 	};
 	tabletSelectors[ '.uagb-social-share__layout-vertical .uagb-ss__wrapper' ] = {
 		'margin-left': 0,
@@ -53,12 +51,11 @@ function styling( props ) {
 	};
 
 	selectors[ '.uagb-social-share__layout-horizontal .uagb-ss__wrapper' ] = {
+		'padding': generateCSSUnit( bgSize, 'px' ),
 		'margin-left': generateCSSUnit( gap / 2, 'px' ),
 		'margin-right': generateCSSUnit( gap / 2, 'px' ),
 	};
-	selectors[ '.uagb-social-share__layout-horizontal .uagb-ss__link' ] = {
-		'padding': generateCSSUnit( bgSize, 'px' )
-	};
+
 	tabletSelectors[ '.uagb-social-share__layout-horizontal .uagb-ss__wrapper' ] = {
 		'margin-left': generateCSSUnit( gapTablet / 2, 'px' ),
 		'margin-right': generateCSSUnit( gapTablet / 2, 'px' ),
