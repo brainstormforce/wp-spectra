@@ -16,13 +16,11 @@ import { TextControl, ToggleControl } from '@wordpress/components';
 
 
 import UAGAdvancedPanelBody from '@Components/advanced-panel-body';
-import { select } from '@wordpress/data';
+
 const Settings = ( props ) => {
 	const hideLabel = props.hideLabel;
 	props = props.parentProps;
-	const parentClientId = select(
-		'core/block-editor'
-	).getBlockHierarchyRootClientId( props.clientId );
+
 	const { attributes, setAttributes } = props;
 	const {
 		image_icon,
