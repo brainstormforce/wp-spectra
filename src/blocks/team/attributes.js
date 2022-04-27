@@ -348,7 +348,7 @@ const attributes = {
 		UAGCopyPaste: {
 			styleType: 'image-style'
 		},
-		default: 'circle',
+		default: 'normal',
 	},
 	imgPosition: {
 		type: 'string',
