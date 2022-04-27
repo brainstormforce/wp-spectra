@@ -365,33 +365,6 @@ const Settings = ( props ) => {
 							} }
 							setAttributes={ setAttributes }
 						/>
-						<ResponsiveSlider
-							label={ __(
-								'Author Image Gap',
-								'ultimate-addons-for-gutenberg'
-							) }
-							data={ {
-								desktop: {
-									value: authorImageGap,
-									label: 'authorImageGap',
-								},
-								tablet: {
-									value: authorImageGapTablet,
-									label: 'authorImageGapTablet',
-								},
-								mobile: {
-									value: authorImageGapMobile,
-									label: 'authorImageGapMobile',
-								},
-							} }
-							min={ 0 }
-							max={ 500 }
-							unit={ {
-								value: authorImageGapUnit,
-								label: 'authorImageGapUnit',
-							} }
-							setAttributes={ setAttributes }
-						/>
 						{/* <Range
 							label={ __(
 								'Author Image Rounded Corners',
@@ -1010,6 +983,35 @@ const Settings = ( props ) => {
 			title={ __( 'Spacing', 'ultimate-addons-for-gutenberg' ) }
 			initialOpen={ false }
 		>
+			{ authorImage && (
+				<ResponsiveSlider
+					label={ __(
+						'Author - Image Gap',
+						'ultimate-addons-for-gutenberg'
+					) }
+					data={ {
+						desktop: {
+							value: authorImageGap,
+							label: 'authorImageGap',
+						},
+						tablet: {
+							value: authorImageGapTablet,
+							label: 'authorImageGapTablet',
+						},
+						mobile: {
+							value: authorImageGapMobile,
+							label: 'authorImageGapMobile',
+						},
+					} }
+					min={ 0 }
+					max={ 500 }
+					unit={ {
+						value: authorImageGapUnit,
+						label: 'authorImageGapUnit',
+					} }
+					setAttributes={ setAttributes }
+				/>
+			) }
 			{ skinStyle === 'quotation' && (
 				<SpacingControl
 					{ ...props }
