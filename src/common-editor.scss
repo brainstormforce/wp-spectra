@@ -737,3 +737,16 @@ button.components-button.uagb-review-select-btn.is-secondary {
 		}
 	}
 }
+
+/* Gradient Picker CSS */
+.uagb-gradient-picker {
+
+	.components-angle-picker-control {
+		margin-bottom: 0;
+	}
+
+	label {
+		text-transform: capitalize;
+		font-weight: 400;
+	}
+}

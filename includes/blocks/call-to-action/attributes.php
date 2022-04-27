@@ -71,8 +71,8 @@ return array(
 	'ctaLeftSpace'                 => 5,
 	'ctaRightSpace'                => 5,
 	'contentWidth'                 => 70,
-	'contentWidthTablet'           => '',
-	'contentWidthMobile'           => '',
+	'contentWidthTablet'           => 70,
+	'contentWidthMobile'           => 70,
 	'ctaLinkHoverColor'            => '',
 	'ctaTopPaddingTablet'          => '',
 	'ctaRightPaddingTablet'        => '',
@@ -137,4 +137,6 @@ return array(
 	'gapBtn'                       => 15,
 	'gapBtnTablet'                 => 15,
 	'gapBtnMobile'                 => 15,
+	'textAlignTablet'              => 'center',
+	'textAlignMobile'              => 'center',
 );
