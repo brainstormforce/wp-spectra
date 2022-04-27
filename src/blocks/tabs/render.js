@@ -194,7 +194,7 @@ const Render = ( props ) => {
 									{ index + 1 !== tabHeaders.length && (
 										<Tooltip
 											text={ __(
-												'Move Item Forward',
+												'Move item forward',
 												'ultimate-addons-for-gutenberg'
 											) }
 										>
@@ -281,6 +281,7 @@ const Render = ( props ) => {
 							</a>
 						</li>
 					) ) }
+					<li className="uagb-tab uagb-tabs__add-tab">
 						<Tooltip
 							text={ __(
 								'Add tab',
@@ -288,7 +289,6 @@ const Render = ( props ) => {
 							) }
 						>
 							<span // eslint-disable-line jsx-a11y/click-events-have-key-events
-								className="uagb-tab uagb-tabs__add-tab"
 								role='button'
 								tabIndex='0'
 								onClick={ () => addTab() }
@@ -296,6 +296,7 @@ const Render = ( props ) => {
 								<Dashicon icon="plus" />
 							</span>
 						</Tooltip>
+						</li>
 				</ul>
 				<div className="uagb-tabs__body-wrap">
 					<InnerBlocks
