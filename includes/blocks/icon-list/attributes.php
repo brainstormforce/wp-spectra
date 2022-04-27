@@ -41,6 +41,8 @@ return array(
 	'sizeMobile'         => '',
 	'sizeTablet'         => '',
 	'bgSize'             => '0',
+	'bgSizeTablet'       => '0',
+	'bgSizeMobile'       => '0',
 	'border'             => '0',
 	'borderTablet'       => '0',
 	'borderMobile'       => '0',
