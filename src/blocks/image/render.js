@@ -103,12 +103,6 @@ const Render = ( props ) => {
 		return {imageDefaultSize, mediaUpload}
 	}, [] );
 
-	useEffect(() => {
-		setAttributes( {
-			width: undefined,
-			height: undefined,
-		} );
-	}, [sizeSlug])
 
 	const { image } = useSelect(
 		( select ) => {

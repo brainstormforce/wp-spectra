@@ -8,6 +8,8 @@ import {
 import { __ } from '@wordpress/i18n';
 import styles from './editor.lazy.scss';
 import useDimensionHandler from './use-dimension-handler';
+import { useDeviceType } from '@Controls/getPreviewType';
+import ResponsiveToggle from '../responsive-toggle';
 
 const IMAGE_SIZE_PRESETS = [ 25, 50, 75, 100 ];
 
@@ -18,7 +20,12 @@ export default function ImageSizeControl( {
 	isResizable = true,
 	slug,
 	width,
+	widthTablet,
+	widthMobile,
 	height,
+	heightTablet,
+	heightMobile,
+	setAttributes,
 	onChange,
 	onChangeImage,
 } ) {
@@ -31,12 +38,104 @@ export default function ImageSizeControl( {
 		};
 	}, [] );
 
+	const deviceType = useDeviceType();
+	const responsive = true;
+
 	const {
 		currentHeight,
 		currentWidth,
 		updateDimension,
 		updateDimensions,
 	} = useDimensionHandler( height, width, imageHeight, imageWidth, onChange );
+
+	const output = {}
+	output.Desktop = (
+		<>
+			<TextControl
+				type="number"
+				className="block-editor-image-size-control__width"
+				label={ __( 'Width' ) }
+				value={ currentWidth }
+				min={ 1 }
+				onChange={ ( value ) =>
+					updateDimension( 'width', value )
+				}
+			/>
+			<TextControl
+				type="number"
+				className="block-editor-image-size-control__height"
+				label={ __( 'Height' ) }
+				value={ currentHeight }
+				min={ 1 }
+				onChange={ ( value ) =>
+					updateDimension( 'height', value )
+				}
+			/>
+		</>
+	);
+
+	output.Tablet = (
+		<>
+			<TextControl
+				type="number"
+				className="block-editor-image-size-control__width"
+				label={ __( 'Width' ) }
+				value={ widthTablet }
+				min={ 1 }
+				onChange={ ( value ) =>
+					setAttributes( { widthTablet: value} )
+				}
+			/>
+			<TextControl
+				type="number"
+				className="block-editor-image-size-control__height"
+				label={ __( 'Height' ) }
+				value={ heightTablet }
+				min={ 1 }
+				onChange={ ( value ) =>
+					setAttributes( { heightTablet: value} )
+				}
+			/>
+		</>
+	);
+
+	output.Mobile = (
+		<>
+			<TextControl
+				type="number"
+				className="block-editor-image-size-control__width"
+				label={ __( 'Width' ) }
+				value={ widthMobile }
+				min={ 1 }
+				onChange={ ( value ) =>
+					setAttributes( { widthMobile: value} )
+				}
+			/>
+			<TextControl
+				type="number"
+				className="block-editor-image-size-control__height"
+				label={ __( 'Height' ) }
+				value={ heightMobile }
+				min={ 1 }
+				onChange={ ( value ) =>
+					setAttributes( { heightMobile: value} )
+				}
+			/>
+		</>
+	);
+
+	const imageSizePresetHandler = (scaledHeight, scaledWidth) => {
+		if(deviceType === 'Tablet'){
+			setAttributes( { widthTablet: scaledWidth, heightTablet: scaledHeight} )
+		} else if(deviceType === 'Mobile'){
+			setAttributes( { widthMobile: scaledWidth, heightMobile: scaledHeight} )
+		} else {
+			updateDimensions(
+				scaledHeight,
+				scaledWidth
+			)
+		}
+	}
 
 	return (
 		<>
@@ -50,30 +149,12 @@ export default function ImageSizeControl( {
 			) }
 			{ isResizable && (
 				<div className="block-editor-image-size-control">
-					<p className="block-editor-image-size-control__row">
-						{ __( 'Image dimensions' ) }
-					</p>
+					<ResponsiveToggle
+						label= { __( 'Image dimensions' )  }
+						responsive= { responsive }
+					/>
 					<div className="block-editor-image-size-control__row">
-						<TextControl
-							type="number"
-							className="block-editor-image-size-control__width"
-							label={ __( 'Width' ) }
-							value={ currentWidth }
-							min={ 1 }
-							onChange={ ( value ) =>
-								updateDimension( 'width', value )
-							}
-						/>
-						<TextControl
-							type="number"
-							className="block-editor-image-size-control__height"
-							label={ __( 'Height' ) }
-							value={ currentHeight }
-							min={ 1 }
-							onChange={ ( value ) =>
-								updateDimension( 'height', value )
-							}
-						/>
+						{output[deviceType]}
 					</div>
 					<div className="block-editor-image-size-control__row">
 						<ButtonGroup aria-label={ __( 'Image size presets' ) }>
@@ -97,12 +178,7 @@ export default function ImageSizeControl( {
 											isCurrent ? 'primary' : undefined
 										}
 										isPressed={ isCurrent }
-										onClick={ () =>
-											updateDimensions(
-												scaledHeight,
-												scaledWidth
-											)
-										}
+										onClick={ () => imageSizePresetHandler(scaledHeight,scaledWidth)}
 									>
 										{ scale }%
 									</Button>

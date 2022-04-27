@@ -42,7 +42,11 @@ export default function Settings( props ) {
 		layout,
 		id,
 		width,
+		widthTablet,
+		widthMobile,
 		height,
+		heightTablet,
+		heightMobile,
 		align,
 		alt,
 		sizeSlug,
@@ -297,7 +301,12 @@ export default function Settings( props ) {
 							onChange={ ( value ) => setAttributes( value ) }
 							slug={ sizeSlug }
 							width={ width }
+							widthTablet={widthTablet}
+							widthMobile={widthMobile}
 							height={ height }
+							heightTablet={heightTablet}
+							heightMobile={heightMobile}
+							setAttributes={setAttributes}
 							imageSizeOptions={ imageSizeOptions }
 							isResizable={ isResizable }
 							imageWidth={ image?.media_details?.width }
