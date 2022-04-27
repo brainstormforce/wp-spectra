@@ -616,7 +616,7 @@ const UAGBPostMasonry = ( props ) => {
 				/>
 				<Range
 					label={ __(
-						'Number of items',
+						'No of items',
 						'ultimate-addons-for-gutenberg'
 					) }
 					value={ postsToShow }
@@ -630,7 +630,7 @@ const UAGBPostMasonry = ( props ) => {
 				/>
 				<Range
 					label={ __(
-						'Offset Starting Post',
+						'Starting Post',
 						'ultimate-addons-for-gutenberg'
 					) }
 					setAttributes={ setAttributes }
@@ -1366,9 +1366,13 @@ const UAGBPostMasonry = ( props ) => {
 					}
 				/>
 				{ displayPostExcerpt && (
-					<RadioControl
+					<MultiButtonsControl
+						setAttributes={ setAttributes }
 						label={ __( 'Show:', 'ultimate-addons-for-gutenberg' ) }
-						selected={ displayPostContentRadio }
+						data={ {
+							value: displayPostContentRadio,
+							label: 'displayPostContentRadio',
+						} }
 						options={ [
 							{
 								label: __(
@@ -1385,11 +1389,6 @@ const UAGBPostMasonry = ( props ) => {
 								value: 'full_post',
 							},
 						] }
-						onChange={ ( value ) =>
-							setAttributes( {
-								displayPostContentRadio: value,
-							} )
-						}
 					/>
 				) }
 				{ displayPostExcerpt &&
