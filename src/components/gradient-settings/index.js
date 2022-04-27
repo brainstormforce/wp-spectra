@@ -12,6 +12,7 @@ const GradientSettings = ( props ) => {
 		<GradientPicker
 			value={ backgroundGradient.value }
 			onChange={ onGradientChange }
+			className="uagb-gradient-picker"
 		/>
 	);
 }
