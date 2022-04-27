@@ -166,7 +166,6 @@ const attributes = {
 		UAGCopyPaste: {
 			styleType: 'prefix-font-style'
 		},
-		default: 'normal',
 	},
 	prefixTransform: {
 		type: 'string',
