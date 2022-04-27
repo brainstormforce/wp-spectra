@@ -73,6 +73,7 @@ const attributes = {
 	},
 	descFontStyle: {
 		type: 'string',
+		default: 'italic',
 		UAGCopyPaste: {
 			styleType: 'desc-font-style'
 		}
@@ -119,14 +120,14 @@ const attributes = {
 	},
 	descSpaceTablet: {
 		type: 'number',
-		default: 0,
+		default: 20,
 		UAGCopyPaste: {
 			styleType: 'desc-bottom-margin'
 		}
 	},
 	descSpaceMobile: {
 		type: 'number',
-		default: 0,
+		default: 15,
 		UAGCopyPaste: {
 			styleType: 'desc-bottom-margin'
 		}
@@ -227,21 +228,21 @@ const attributes = {
 	},
 	authorSpace: {
 		type: 'number',
-		default: 10,
+		default: 15,
 		UAGCopyPaste: {
 			styleType: 'author-bottom-margin'
 		}
 	},
 	authorSpaceTablet: {
 		type: 'number',
-		default: 0,
+		default: 15,
 		UAGCopyPaste: {
 			styleType: 'author-bottom-margin'
 		}
 	},
 	authorSpaceMobile: {
 		type: 'number',
-		default: 0,
+		default: 15,
 		UAGCopyPaste: {
 			styleType: 'author-bottom-margin'
 		}
@@ -276,14 +277,14 @@ const attributes = {
 	},
 	authorImageWidthTablet: {
 		type: 'number',
-		default: 30,
+		default: 35,
 		UAGCopyPaste: {
 			styleType: 'author-image-width'
 		}
 	},
 	authorImageWidthMobile: {
 		type: 'number',
-		default: 20,
+		default: 30,
 		UAGCopyPaste: {
 			styleType: 'author-image-width'
 		}
