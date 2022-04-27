@@ -13,7 +13,6 @@ import InspectorTabs from '@Components/inspector-tabs/InspectorTabs.js';
 import InspectorTab, {
 	UAGTabs,
 } from '@Components/inspector-tabs/InspectorTab.js';
-import Range from '@Components/range/Range.js';
 import ResponsiveSlider from '@Components/responsive-slider';
 import MultiButtonsControl from '@Components/multi-buttons-control';
 import presets from './presets';
