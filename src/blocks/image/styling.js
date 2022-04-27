@@ -10,6 +10,10 @@ import generateCSSUnit from '@Controls/generateCSSUnit';
 
 export default function styling( props ) {
 	const {
+		widthTablet,
+		widthMobile,
+		heightTablet,
+		heightMobile,
 		// image
 		imageTopMargin,
 		imageRightMargin,
@@ -341,6 +345,17 @@ export default function styling( props ) {
 	const tablet_selectors = {};
 	const mobile_selectors = {};
 
+
+	tablet_selectors['.wp-block-uagb-image .components-resizable-box__container'] = {
+		'width': generateCSSUnit(
+			widthTablet,
+			'px'
+		),
+		'height': generateCSSUnit(
+			heightTablet,
+			'px'
+		),
+	}
 	tablet_selectors['.wp-block-uagb-image'] = {
 		'margin-top': generateCSSUnit(
 			imageTopMarginTablet,
@@ -420,6 +435,17 @@ export default function styling( props ) {
 		'margin-right': generateCSSUnit( seperatorRightMarginTablet, seperatorMarginUnitTablet ),
 	}
 
+	// Mobile
+	mobile_selectors['.wp-block-uagb-image .components-resizable-box__container'] = {
+		'width': generateCSSUnit(
+			widthMobile,
+			'px'
+		),
+		'height': generateCSSUnit(
+			heightMobile,
+			'px'
+		),
+	}
 	mobile_selectors['.wp-block-uagb-image'] = {
 		'margin-top': generateCSSUnit(
 			imageTopMarginMobile,
