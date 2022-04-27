@@ -328,13 +328,15 @@ $t_selectors = array(
 		'margin-bottom' => UAGB_Helper::get_css_value( $attr['descSpaceTablet'], $attr['descSpaceUnit'] ),
 	),
 	' .uagb-blockquote__author-wrap.uagb-blockquote__author-at-right img' => array(
-		'margin-left' =>  UAGB_Helper::get_css_value( $attr['authorImageGap'], $attr['authorImageGapUnit'] ),
+		'margin-left' =>  ( $attr['stack'] === 'tablet' ) ? '0px' : UAGB_Helper::get_css_value( $attr['authorImageGapTablet'], $attr['authorImageGapUnit'] ),
+		'margin-bottom' =>  ( $attr['stack'] === 'tablet' ) ? UAGB_Helper::get_css_value( $attr['authorImageGapTablet'], $attr['authorImageGapUnit'] ) : '0px',
 	),
 	' .uagb-blockquote__author-wrap.uagb-blockquote__author-at-top img' => array(
-		'margin-bottom' =>  UAGB_Helper::get_css_value( $attr['authorImageGap'], $attr['authorImageGapUnit'] ),
+		'margin-bottom' =>  UAGB_Helper::get_css_value( $attr['authorImageGapTablet'], $attr['authorImageGapUnit'] ),
 	),
 	' .uagb-blockquote__author-wrap.uagb-blockquote__author-at-left img' => array(
-		'margin-right' =>  UAGB_Helper::get_css_value( $attr['authorImageGap'], $attr['authorImageGapUnit'] ),
+		'margin-right' =>  ( $attr['stack'] === 'tablet' ) ? '0px' : UAGB_Helper::get_css_value( $attr['authorImageGapTablet'], $attr['authorImageGapUnit'] ),
+		'margin-bottom' =>  ( $attr['stack'] === 'tablet' ) ? UAGB_Helper::get_css_value( $attr['authorImageGapTablet'], $attr['authorImageGapUnit'] ) : '0px',
 	),
 );
 
@@ -387,15 +389,30 @@ $m_selectors = array(
 		'margin-bottom' => UAGB_Helper::get_css_value( $attr['descSpaceMobile'], $attr['descSpaceUnit'] ),
 	),
 	' .uagb-blockquote__author-wrap.uagb-blockquote__author-at-right img' => array(
-		'margin-left' =>  UAGB_Helper::get_css_value( $attr['authorImageGap'], $attr['authorImageGapUnit'] ),
+		'margin-left' =>  ( $attr['stack'] !== 'none' ) ? '0px' : UAGB_Helper::get_css_value( $attr['authorImageGapMobile'], $attr['authorImageGapUnit'] ),
+		'margin-bottom' =>  ( $attr['stack'] !== 'none' ) ? UAGB_Helper::get_css_value( $attr['authorImageGapMobile'], $attr['authorImageGapUnit'] ) : '0px',
 	),
 	' .uagb-blockquote__author-wrap.uagb-blockquote__author-at-top img' => array(
-		'margin-bottom' =>  UAGB_Helper::get_css_value( $attr['authorImageGap'], $attr['authorImageGapUnit'] ),
+		'margin-bottom' =>  UAGB_Helper::get_css_value( $attr['authorImageGapMobile'], $attr['authorImageGapUnit'] ),
 	),
 	' .uagb-blockquote__author-wrap.uagb-blockquote__author-at-left img' => array(
-		'margin-right' =>  UAGB_Helper::get_css_value( $attr['authorImageGap'], $attr['authorImageGapUnit'] ),
+		'margin-right' =>  ( $attr['stack'] !== 'none' ) ? '0px' : UAGB_Helper::get_css_value( $attr['authorImageGapMobile'], $attr['authorImageGapUnit'] ),
+		'margin-bottom' =>  ( $attr['stack'] !== 'none' ) ? UAGB_Helper::get_css_value( $attr['authorImageGapMobile'], $attr['authorImageGapUnit'] ) : '0px',
 	),
 );
+
+if ( $attr['enableTweet'] ){
+	switch ( $attr['stack'] ){
+		case 'tablet':
+			$t_selectors[' a.uagb-blockquote__tweet-button'] = array(
+				'margin-top' => UAGB_Helper::get_css_value( $attr['tweetGap'], $attr['tweetGapUnit'] ),
+			);
+		case 'mobile':			
+			$m_selectors[' a.uagb-blockquote__tweet-button'] = array(
+				'margin-top' => UAGB_Helper::get_css_value( $attr['tweetGap'], $attr['tweetGapUnit'] ),
+			);
+	}
+}
 
 $combined_selectors = array(
 	'desktop' => $selectors,

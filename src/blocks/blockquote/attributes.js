@@ -528,6 +528,20 @@ const attributes = {
 			styleType: 'tweet-icon-spacing-unit'
 		}
 	},
+	tweetGap: {
+		type: 'number',
+		default: 10,
+		UAGCopyPaste: {
+			styleType: 'tweet-gap'
+		}
+	},
+	tweetGapUnit: {
+		type: 'string',
+		default: 'px',
+		UAGCopyPaste: {
+			styleType: 'tweet-gap-unit'
+		}
+	},
 	borderColor: {
 		type: 'string',
 		default: '#abb8c3',

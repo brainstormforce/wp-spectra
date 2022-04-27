@@ -137,7 +137,10 @@ function styling( props ) {
 		quotetabletUnit,
 		descFontStyle,
 		authorFontStyle,
-		tweetBtnFontStyle
+		tweetBtnFontStyle,
+		stack,
+		tweetGap,
+		tweetGapUnit,
 	} = props.attributes;
 
 	let tmpAuthorSpace = authorSpace;
@@ -490,13 +493,15 @@ function styling( props ) {
 			),
 		},
 		' .uagb-blockquote__author-wrap.uagb-blockquote__author-at-right img': {
-			'margin-left': generateCSSUnit( authorImageGapTablet, authorImageGapUnit ),
+			'margin-left': ( stack === 'tablet' ) ? '0px' : generateCSSUnit( authorImageGapTablet, authorImageGapUnit ),
+			'margin-bottom': ( stack === 'tablet' ) ? generateCSSUnit( authorImageGapTablet, authorImageGapUnit ) : '0px',
 		},
 		' .uagb-blockquote__author-wrap.uagb-blockquote__author-at-top img': {
 			'margin-bottom': generateCSSUnit( authorImageGapTablet, authorImageGapUnit ),
 		},
 		' .uagb-blockquote__author-wrap.uagb-blockquote__author-at-left img': {
-			'margin-right': generateCSSUnit( authorImageGapTablet, authorImageGapUnit ),
+			'margin-right': ( stack === 'tablet' ) ? '0px' : generateCSSUnit( authorImageGapTablet, authorImageGapUnit ),
+			'margin-bottom': ( stack === 'tablet' ) ? generateCSSUnit( authorImageGapTablet, authorImageGapUnit ) : '0px',
 		},
 	};
 	const mobileSelectors = {
@@ -605,15 +610,33 @@ function styling( props ) {
 			),
 		},
 		' .uagb-blockquote__author-wrap.uagb-blockquote__author-at-right img': {
-			'margin-left': generateCSSUnit( authorImageGapMobile, authorImageGapUnit ),
+			'margin-left': ( stack !== 'none' ) ? '0px' : generateCSSUnit( authorImageGapMobile, authorImageGapUnit ),
+			'margin-bottom': ( stack !== 'none' ) ? generateCSSUnit( authorImageGapMobile, authorImageGapUnit ) : '0px',
 		},
 		' .uagb-blockquote__author-wrap.uagb-blockquote__author-at-top img': {
 			'margin-bottom': generateCSSUnit( authorImageGapMobile, authorImageGapUnit ),
 		},
 		' .uagb-blockquote__author-wrap.uagb-blockquote__author-at-left img': {
-			'margin-right': generateCSSUnit( authorImageGapMobile, authorImageGapUnit ),
+			'margin-right': ( stack !== 'none' ) ? '0px' : generateCSSUnit( authorImageGapMobile, authorImageGapUnit ),
+			'margin-bottom': ( stack !== 'none' ) ? generateCSSUnit( authorImageGapMobile, authorImageGapUnit ) : '0px',
 		},
 	};
+
+	if ( enableTweet ){
+		switch ( stack ){
+			case 'tablet':
+				tabletSelectors[ ' a.uagb-blockquote__tweet-button' ] = {
+					...tabletSelectors[ ' a.uagb-blockquote__tweet-button' ],
+					'margin-top': generateCSSUnit( tweetGap, tweetGapUnit ),
+				}
+			case 'mobile':
+				mobileSelectors[ ' a.uagb-blockquote__tweet-button' ] = {
+					...mobileSelectors[ ' a.uagb-blockquote__tweet-button' ],
+					'margin-top': generateCSSUnit( tweetGap, tweetGapUnit ),
+				}
+		}
+	}
+
 	const baseSelector = `.editor-styles-wrapper .uagb-block-${ props.clientId.substr(
 		0,
 		8

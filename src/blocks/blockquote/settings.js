@@ -113,6 +113,8 @@ const Settings = ( props ) => {
 		tweetBtnLoadGoogleFonts,
 		tweetIconSpacing,
 		tweetIconSpacingUnit,
+		tweetGap,
+		tweetGapUnit,
 		iconView,
 		iconSkin,
 		iconLabel,
@@ -1269,6 +1271,26 @@ const Settings = ( props ) => {
 						setAttributes={ setAttributes }
 					/>
 				</>
+			) }
+
+			{ ( enableTweet && stack !== 'none' ) && (
+				<Range
+					label={ __(
+						'Stacked Twitter Gap',
+						'ultimate-addons-for-gutenberg'
+					) }
+					setAttributes={ setAttributes }
+					value={ tweetGap }
+					onChange={ ( value ) =>
+						setAttributes( { tweetGap: value } )
+					}
+					min={ 0 }
+					max={ 100 }
+					unit={ {
+						value: tweetGapUnit,
+						label: 'tweetGapUnit',
+					} }
+				/>
 			) }
 		</UAGAdvancedPanelBody>
 	);
