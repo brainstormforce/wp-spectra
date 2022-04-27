@@ -365,21 +365,21 @@ const attributes = {
 	},
 	contentWidth: {
 		type: 'number',
-		default: '70',
+		default: 70,
 		UAGCopyPaste: {
 			styleType: 'desc-width'
 		},
 	},
 	contentWidthTablet: {
 		type: 'number',
-		default: '0',
+		default: 70,
 		UAGCopyPaste: {
 			styleType: 'desc-width'
 		},
 	},
 	contentWidthMobile: {
 		type: 'number',
-		default: '0',
+		default: 70,
 		UAGCopyPaste: {
 			styleType: 'desc-width'
 		},
@@ -832,13 +832,33 @@ const attributes = {
 			styleType: 'btn-icon-space'
 		}
 	},
-	gap: {
-		type: 'number',
-		default: 10,
-	},
 	isPreview: {
 		type: 'boolean',
 		default: false,
+	},
+	stackBtn: {
+		type: 'string',
+		default: 'none'
+	},
+	gapBtn: {
+		type: 'number',
+		default: 15
+	},
+	gapBtnTablet: {
+		type: 'number',
+		default: 15
+	},
+	gapBtnMobile: {
+		type: 'number',
+		default: 15
+	},
+	textAlignTablet: {
+		type: 'string',
+		default: 'center'
+	},
+	textAlignMobile: {
+		type: 'string',
+		default: 'center'
 	},
 };
 

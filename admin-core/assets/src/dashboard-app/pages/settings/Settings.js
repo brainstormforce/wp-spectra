@@ -16,6 +16,7 @@ import CopyPasteStyles from '@DashboardApp/pages/settings/CopyPasteStyles';
 import ContentWidth from '@DashboardApp/pages/settings/ContentWidth';
 import ComingSoon from '@DashboardApp/pages/settings/ComingSoon';
 import SettingsSkeleton from '@DashboardApp/pages/settings/SettingsSkeleton';
+import BlockSettings from '@DashboardApp/pages/settings/BlockSettings';
 import { Link, useLocation } from 'react-router-dom';
 import{ useEffect } from 'react';
 
@@ -35,6 +36,7 @@ const Settings = () => {
         { name: __( 'Templates', 'ultimate-addons-for-gutenberg' ), slug: 'templates', icon: SettingsIcons.templates },
         { name: __( 'Version Control', 'ultimate-addons-for-gutenberg' ), slug: 'version-control', icon: SettingsIcons['version-control'] },
         { name: __( 'Performance', 'ultimate-addons-for-gutenberg' ), slug: 'fonts-performance', icon: SettingsIcons['fonts-performance'] },
+		{ name: __( 'Block Settings', 'ultimate-addons-for-gutenberg' ), slug: 'block-settings', icon: SettingsIcons['block-settings'] },
 		{ name: __( 'Coming Soon', 'ultimate-addons-for-gutenberg' ), slug: 'coming-soon', icon: SettingsIcons['coming-soon'] },
     ];
 
@@ -106,6 +108,11 @@ const Settings = () => {
                             <SelectedFontFamilies/>
                             <LoadFontsLocally/>
                             <PreloadLocalFonts/>
+                        </>
+                    }
+					{ 'block-settings' === activeSettingsNavigationTab &&
+                        <>
+                            <BlockSettings/>
                         </>
                     }
 					{

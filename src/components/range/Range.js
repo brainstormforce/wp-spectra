@@ -89,7 +89,7 @@ const Range = ( props ) => {
 	const handleOnChange = ( newValue ) => {
 		setValue( newValue );
 		const parsedValue = parseFloat( newValue );
-		if ( props.onChange ) {
+		if ( props?.onChange ) {
 			props.onChange( parsedValue );
 			return;
 		}
@@ -104,7 +104,7 @@ const Range = ( props ) => {
 		const cachedValueUpdate = { ...cachedValue };
 
 		setValue( cachedValueUpdate.value );
-		props.onChange( cachedValueUpdate.value );
+		props?.onChange( cachedValueUpdate.value );
 		if( cachedValueUpdate.unit ){
 			onChangeUnits( cachedValueUpdate.unit );
 		}
@@ -198,14 +198,14 @@ const Range = ( props ) => {
 			</div>
 			<div className="uagb-range-control__mobile-controls">
 				<RangeControl
-					value={ props.value || '' }
+					value={ props?.value }
 					onChange={ handleOnChange }
 					withInputField={ false }
 					allowReset={ false }
 					max={ max }
 					min={ min }
-					initialPosition={ 0 }
 					step={ props.step || 1 }
+					initialPosition = {props?.value}
 				/>
 				{ withInputField && isNumberControlSupported && (
 					<NumberControl
@@ -214,7 +214,7 @@ const Range = ( props ) => {
 						max={ max }
 						min={ min }
 						onChange={ handleOnChange }
-						value={ props.value || '' }
+						value={ props?.value }
 						step={ props.step || 1 }
 					/>
 				) }
