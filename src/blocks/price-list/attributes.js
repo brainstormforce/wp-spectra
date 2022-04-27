@@ -548,12 +548,14 @@ const attributes = {
 	},
 	imageWidthTablet: {
 		type: 'number',
+		default: 100,
 		UAGCopyPaste: {
 			styleType: 'image-width'
 		},
 	},
 	imageWidthMobile: {
 		type: 'number',
+		default: 100,
 		UAGCopyPaste: {
 			styleType: 'image-width'
 		},
