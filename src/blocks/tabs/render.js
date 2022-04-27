@@ -281,20 +281,17 @@ const Render = ( props ) => {
 							</a>
 						</li>
 					) ) }
-					<li className="uagb-tab uagb-tabs__add-tab">
+					<li className="uagb-tab uagb-tabs__add-tab" // eslint-disable-line jsx-a11y/click-events-have-key-events
+						role='button' // eslint-disable-line jsx-a11y/no-noninteractive-element-to-interactive-role
+						tabIndex='0'
+						onClick={ () => addTab() }>
 						<Tooltip
 							text={ __(
 								'Add tab',
 								'ultimate-addons-for-gutenberg'
 							) }
 						>
-							<span // eslint-disable-line jsx-a11y/click-events-have-key-events
-								role='button'
-								tabIndex='0'
-								onClick={ () => addTab() }
-							>
 								<Dashicon icon="plus" />
-							</span>
 						</Tooltip>
 						</li>
 				</ul>
