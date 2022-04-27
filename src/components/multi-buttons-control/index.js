@@ -32,7 +32,7 @@ const MultiButtonsControl = ( props ) => {
 	} = props;
 
 	const { getSelectedBlock } = select( 'core/block-editor' );
-	const selectedBlock = getSelectedBlock().name.replace( 'uagb/', '' ); // eslint-disable-line @wordpress/no-unused-vars-before-return
+	const selectedBlock = getSelectedBlock()?.name.replace( 'uagb/', '' ); // eslint-disable-line @wordpress/no-unused-vars-before-return
 	const [ buttonPrimaryStateDesktop, setbuttonPrimaryStateDesktop ] = useState( true );
 	const [ buttonPrimaryStateTablet, setbuttonPrimaryStateTablet ] = useState( true );
 	const [ buttonPrimaryStateMobile, setbuttonPrimaryStateMobile ] = useState( true );

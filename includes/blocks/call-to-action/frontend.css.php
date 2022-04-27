@@ -437,11 +437,11 @@ if ( 'desktop' === $attr['stack'] ) {
 	);
 	$t_selectors['.wp-block-uagb-call-to-action  '] = array(
 		'flex-direction' => 'column',
-		'align-items' => $alignmentTablet,
+		'align-items'    => $alignmentTablet,
 	);
 	$m_selectors['.wp-block-uagb-call-to-action  '] = array(
 		'flex-direction' => 'column',
-		'align-items' => $alignmentMobile,
+		'align-items'    => $alignmentMobile,
 	);
 } elseif ( 'tablet' === $attr['stack'] ) {
 

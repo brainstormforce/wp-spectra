@@ -25,7 +25,7 @@ const ResponsiveSlider = ( props ) => {
 						[ props.data.desktop.label ]: value,
 					} )
 
-					if ( props.onChange ) {
+					if ( props?.onChange ) {
 						props.onChange( value )
 					}
 				}}
@@ -48,7 +48,7 @@ const ResponsiveSlider = ( props ) => {
 					props.setAttributes( {
 						[ props.data.tablet.label ]: value,
 					} )
-					if ( props.onChange ) {
+					if ( props?.onChange ) {
 						props.onChange( value )
 					}
 				}}
@@ -70,7 +70,7 @@ const ResponsiveSlider = ( props ) => {
 					props.setAttributes( {
 						[ props.data.mobile.label ]: value,
 					} )
-					if ( props.onChange ) {
+					if ( props?.onChange ) {
 						props.onChange( value )
 					}
 				}}

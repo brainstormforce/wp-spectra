@@ -5,12 +5,15 @@ const attributes = {
 	contentWidth: {
 		type: 'string',
 		default: 'alignfull',
+		UAGCopyPaste: {
+			styleType: 'content-width'
+		}
 	},
 	innerContentWidth: {
 		type: 'string',
 		default: 'alignwide',
 		UAGCopyPaste: {
-			styleType: 'content-width'
+			styleType: 'inner-content-width'
 		}
 	},
 	widthDesktop: {
@@ -290,7 +293,7 @@ const attributes = {
 	},
 	gradientValue: {
 		type: 'string',
-		default: '',
+		default: 'linear-gradient(90deg, rgb(6, 147, 227) 0%, rgb(155, 81, 224) 100%)',
 		UAGCopyPaste: {
 			styleType: 'container-bg-gradient-value'
 		},
