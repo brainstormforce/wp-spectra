@@ -46,6 +46,8 @@ const Settings = ( props ) => {
 		borderRadiusTablet,
 		borderRadiusMobile,
 		bgSize,
+		bgSizeTablet,
+		bgSizeMobile,
 		border,
 		borderTablet,
 		borderMobile,
@@ -444,14 +446,26 @@ const Settings = ( props ) => {
 					] }
 					setAttributes={ setAttributes }
 				/>
-				<Range
+				<ResponsiveSlider
 					label={ __(
 						'Background Size (px)',
 						'ultimate-addons-for-gutenberg'
 					) }
+					data={ {
+						desktop: {
+							value: bgSize,
+							label: 'bgSize',
+						},
+						tablet: {
+							value: bgSizeTablet,
+							label: 'bgSizeTablet',
+						},
+						mobile: {
+							value: bgSizeMobile,
+							label: 'bgSizeMobile',
+						},
+					} }
 					setAttributes={ setAttributes }
-					value={ bgSize }
-					onChange={ ( value ) => setAttributes( { bgSize: value } ) }
 					min={ 0 }
 					max={ 50 }
 					displayUnit={ false }
