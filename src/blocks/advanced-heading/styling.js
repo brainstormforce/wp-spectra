@@ -225,6 +225,7 @@ function styling( props ) {
 		'.wp-block-uagb-advanced-heading .uagb-highlight': {
 			'background': highLightBackground,
 			'color': highLightColor,
+			'-webkit-text-fill-color': highLightColor,
 			'font-family': highLightFontFamily,
 			'font-style' : highLightFontStyle,
 			'text-decoration': highLightDecoration,
@@ -269,6 +270,20 @@ function styling( props ) {
 		}
 	}
 
+	// Text Selection & highlight
+	const highlightSelectionText = {
+		'color': highLightColor,
+		'background': highLightBackground,
+		'-webkit-text-fill-color': highLightColor
+	}
+	// selectors[ '.wp-block-uagb-advanced-heading .uagb-heading-text::-moz-selection' ] = highlightSelectionText
+	// selectors[ '.wp-block-uagb-advanced-heading .uagb-heading-text::selection' ] = highlightSelectionText
+	// selectors[ '.wp-block-uagb-advanced-heading .uagb-desc-text::-moz-selection' ] = highlightSelectionText
+	// selectors[ '.wp-block-uagb-advanced-heading .uagb-desc-text::selection' ] = highlightSelectionText
+	selectors[ '.wp-block-uagb-advanced-heading .uagb-highlight::-moz-selection' ] = highlightSelectionText
+	selectors[ '.wp-block-uagb-advanced-heading .uagb-highlight::selection' ] = highlightSelectionText
+
+	// heading
 	selectors[ ' ' + headingTag + '.uagb-heading-text' ] = {
 		'font-family': headFontFamily,
 		'font-style' : headFontStyle,
@@ -284,7 +299,7 @@ function styling( props ) {
 		...headingGradientStyle
 	};
 
-
+	// separator
 	if ( seperatorStyle !== 'none' ) {
 		selectors[ ' .uagb-separator' ] = {
 			'border-top-style': seperatorStyle,

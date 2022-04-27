@@ -67,33 +67,34 @@ $selectors = array(
 		'color'          => $attr['subHeadingColor'],
 	),
 	'.wp-block-uagb-advanced-heading .uagb-highlight' => array(
-		'background'      => $attr['highLightBackground'],
-		'color'           => $attr['highLightColor'],
-		'font-family'     => $attr['highLightFontFamily'],
-		'font-style'      => $attr['highLightFontStyle'],
-		'text-decoration' => $attr['highLightDecoration'],
-		'text-transform'  => $attr['highLightTransform'],
-		'font-weight'     => $attr['highLightFontWeight'],
-		'font-size'       => UAGB_Helper::get_css_value( $attr['highLightFontSize'], $attr['highLightFontSizeType'] ),
-		'line-height'     => UAGB_Helper::get_css_value( $attr['highLightLineHeight'], $attr['highLightLineHeightType'] ),
-		'letter-spacing'  => UAGB_Helper::get_css_value( $attr['highLightLetterSpacing'], $attr['highLightLetterSpacingType'] ),
-		'border-style'    => $attr['highLightBorderStyle'],
-		'border-width'    => UAGB_Helper::get_css_value( $attr['highLightBorderWidth'], 'px' ),
-		'border-color'    => $attr['highLightBorderColor'],
-		'border-radius'   => UAGB_Helper::get_css_value( $attr['highLightBorderRadius'], 'px' ),
-		'padding-top'     => UAGB_Helper::get_css_value(
+		'background'              => $attr['highLightBackground'],
+		'color'                   => $attr['highLightColor'],
+		'-webkit-text-fill-color' => $attr['highLightColor'],
+		'font-family'             => $attr['highLightFontFamily'],
+		'font-style'              => $attr['highLightFontStyle'],
+		'text-decoration'         => $attr['highLightDecoration'],
+		'text-transform'          => $attr['highLightTransform'],
+		'font-weight'             => $attr['highLightFontWeight'],
+		'font-size'               => UAGB_Helper::get_css_value( $attr['highLightFontSize'], $attr['highLightFontSizeType'] ),
+		'line-height'             => UAGB_Helper::get_css_value( $attr['highLightLineHeight'], $attr['highLightLineHeightType'] ),
+		'letter-spacing'          => UAGB_Helper::get_css_value( $attr['highLightLetterSpacing'], $attr['highLightLetterSpacingType'] ),
+		'border-style'            => $attr['highLightBorderStyle'],
+		'border-width'            => UAGB_Helper::get_css_value( $attr['highLightBorderWidth'], 'px' ),
+		'border-color'            => $attr['highLightBorderColor'],
+		'border-radius'           => UAGB_Helper::get_css_value( $attr['highLightBorderRadius'], 'px' ),
+		'padding-top'             => UAGB_Helper::get_css_value(
 			$attr['highLightTopPadding'],
 			$attr['highLightPaddingUnit']
 		),
-		'padding-right'   => UAGB_Helper::get_css_value(
+		'padding-right'           => UAGB_Helper::get_css_value(
 			$attr['highLightRightPadding'],
 			$attr['highLightPaddingUnit']
 		),
-		'padding-bottom'  => UAGB_Helper::get_css_value(
+		'padding-bottom'          => UAGB_Helper::get_css_value(
 			$attr['highLightBottomPadding'],
 			$attr['highLightPaddingUnit']
 		),
-		'padding-left'    => UAGB_Helper::get_css_value(
+		'padding-left'            => UAGB_Helper::get_css_value(
 			$attr['highLightLeftPadding'],
 			$attr['highLightPaddingUnit']
 		),
@@ -125,6 +126,18 @@ if ( 'gradient' === $attr['headingColorType'] ) {
 		)
 	);
 }
+
+// Text Selection & highlight.
+$highlightSelectionText = array(
+	'color'                   => $attr['highLightColor'],
+	'background'              => $attr['highLightBackground'],
+	'-webkit-text-fill-color' => $attr['highLightColor'],
+);
+
+$selectors['.wp-block-uagb-advanced-heading .uagb-highlight::-moz-selection'] = $highlightSelectionText;
+$selectors['.wp-block-uagb-advanced-heading .uagb-highlight::selection']      = $highlightSelectionText;
+
+
 
 $seperatorStyle = isset( $attr['seperatorStyle'] ) ? $attr['seperatorStyle'] : '';
 

@@ -1188,7 +1188,7 @@ const Settings = ( props ) => {
 						{ 'none' !== seperatorStyle && seperatorSettings() }
 						{ subHeadingStylePanel() }
 						{linkStylePanel()}
-						{headingColorType === 'classic' && highLightStylePanel()}
+						{highLightStylePanel()}
 						{backgroundStylePanel()}
 						{spacingStylePanel()}
 					</InspectorTab>

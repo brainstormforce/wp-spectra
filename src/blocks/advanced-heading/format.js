@@ -11,12 +11,10 @@ function HighlightFormat( { isActive, onChange, value } ) {
 		return select( 'core/block-editor' ).getSelectedBlock();
 	}, [] );
 
-	const {attributes} = selectedBlock
-
 	return (
 		<BlockControls>
 			{
-				selectedBlock && selectedBlock.name === 'uagb/advanced-heading' && attributes.headingColorType === 'classic' && (
+				selectedBlock && selectedBlock.name === 'uagb/advanced-heading' && (
 					<Toolbar className="uag-highlight-toolbar" label="Options">
 						<Tooltip text={__( 'Highlight Text', 'ultimate-addons-for-gutenberg' )}>
 							<Button
