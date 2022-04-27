@@ -78,6 +78,10 @@ function styling( props ) {
 		authorImageWidthTablet,
 		authorImageWidthMobile,
 		authorImageWidthUnit,
+		authorImageGap,
+		authorImageGapTablet,
+		authorImageGapMobile,
+		authorImageGapUnit,
 		authorImgBorderRadius,
 		authorImgBorderRadiusTablet,
 		authorImgBorderRadiusMobile,
@@ -238,6 +242,15 @@ function styling( props ) {
 				authorImgBorderRadius,
 				authorImgBorderRadiusUnit
 			),
+		},
+		' .uagb-blockquote__author-wrap.uagb-blockquote__author-at-right img': {
+			'margin-left': generateCSSUnit( authorImageGap, authorImageGapUnit ),
+		},
+		' .uagb-blockquote__author-wrap.uagb-blockquote__author-at-top img': {
+			'margin-bottom': generateCSSUnit( authorImageGap, authorImageGapUnit ),
+		},
+		' .uagb-blockquote__author-wrap.uagb-blockquote__author-at-left img': {
+			'margin-right': generateCSSUnit( authorImageGap, authorImageGapUnit ),
 		},
 	};
 	if ( enableTweet ) {
@@ -476,6 +489,15 @@ function styling( props ) {
 				authorImgBorderRadiusUnit
 			),
 		},
+		' .uagb-blockquote__author-wrap.uagb-blockquote__author-at-right img': {
+			'margin-left': generateCSSUnit( authorImageGapTablet, authorImageGapUnit ),
+		},
+		' .uagb-blockquote__author-wrap.uagb-blockquote__author-at-top img': {
+			'margin-bottom': generateCSSUnit( authorImageGapTablet, authorImageGapUnit ),
+		},
+		' .uagb-blockquote__author-wrap.uagb-blockquote__author-at-left img': {
+			'margin-right': generateCSSUnit( authorImageGapTablet, authorImageGapUnit ),
+		},
 	};
 	const mobileSelectors = {
 		'.uagb-blockquote__skin-quotation .uagb-blockquote__icon': {
@@ -581,6 +603,15 @@ function styling( props ) {
 				authorImgBorderRadiusMobile,
 				authorImgBorderRadiusUnit
 			),
+		},
+		' .uagb-blockquote__author-wrap.uagb-blockquote__author-at-right img': {
+			'margin-left': generateCSSUnit( authorImageGapMobile, authorImageGapUnit ),
+		},
+		' .uagb-blockquote__author-wrap.uagb-blockquote__author-at-top img': {
+			'margin-bottom': generateCSSUnit( authorImageGapMobile, authorImageGapUnit ),
+		},
+		' .uagb-blockquote__author-wrap.uagb-blockquote__author-at-left img': {
+			'margin-right': generateCSSUnit( authorImageGapMobile, authorImageGapUnit ),
 		},
 	};
 	const baseSelector = `.editor-styles-wrapper .uagb-block-${ props.clientId.substr(

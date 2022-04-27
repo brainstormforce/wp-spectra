@@ -333,7 +333,7 @@
 		img {
 			width: 50px;
 			height: 50px;
-			margin-right: 10px;
+			// margin-right: 10px;
 			border-radius: 100%;
 		}
 	}
@@ -408,15 +408,15 @@
 		-ms-flex-direction: row-reverse;
 		flex-direction: row-reverse;
 
-		.uagb-blockquote__author-image img {
-			margin-right: 0;
-			margin-left: 10px;
-		}
+		// .uagb-blockquote__author-image img {
+		// 	margin-right: 0;
+		// 	margin-left: 10px;
+		// }
 
-		img {
-			margin-right: 0;
-			margin-left: 10px;
-		}
+		// img {
+		// 	margin-right: 0;
+		// 	margin-left: 10px;
+		// }
 	}
 }
 
@@ -436,11 +436,11 @@
 				-ms-flex-direction: column;
 				flex-direction: column;
 
-				img {
-					margin-right: 0;
-					margin-bottom: 10px;
-					margin-left: 0;
-				}
+				// img {
+				// 	margin-right: 0;
+				// 	margin-bottom: 10px;
+				// 	margin-left: 0;
+				// }
 			}
 
 			/* Left alignment */
@@ -511,10 +511,10 @@
 				flex-direction: column;
 			}
 
-			.uagb-blockquote__author-wrap.uagb-blockquote__author-at-right .uagb-blockquote__author-wrap img,
-			.uagb-blockquote__author-wrap.uagb-blockquote__author-at-left .uagb-blockquote__author-wrap img {
-				margin: 0 0 10px 0;
-			}
+			// .uagb-blockquote__author-wrap.uagb-blockquote__author-at-right .uagb-blockquote__author-wrap img,
+			// .uagb-blockquote__author-wrap.uagb-blockquote__author-at-left .uagb-blockquote__author-wrap img {
+			// 	margin: 0 0 10px 0;
+			// }
 
 			/* Left alignment */
 			&.uagb-blockquote__with-tweet .uagb-blockquote footer {

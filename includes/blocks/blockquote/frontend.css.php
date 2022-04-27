@@ -102,6 +102,16 @@ $selectors = array(
 		'border-radius' => UAGB_Helper::get_css_value( $attr['authorImgBorderRadius'], '%' ),
 	),
 
+	' .uagb-blockquote__author-wrap.uagb-blockquote__author-at-right img' => array(
+		'margin-left' =>  UAGB_Helper::get_css_value( $attr['authorImageGap'], $attr['authorImageGapUnit'] ),
+	),
+	' .uagb-blockquote__author-wrap.uagb-blockquote__author-at-top img' => array(
+		'margin-bottom' =>  UAGB_Helper::get_css_value( $attr['authorImageGap'], $attr['authorImageGapUnit'] ),
+	),
+	' .uagb-blockquote__author-wrap.uagb-blockquote__author-at-left img' => array(
+		'margin-right' =>  UAGB_Helper::get_css_value( $attr['authorImageGap'], $attr['authorImageGapUnit'] ),
+	),
+
 	'.uagb-blockquote__skin-quotation .uagb-blockquote__icon:hover svg' => array(
 		'fill' => $attr['quoteHoverColor'],
 	),
@@ -317,6 +327,15 @@ $t_selectors = array(
 	' .uagb-blockquote__content'           => array(
 		'margin-bottom' => UAGB_Helper::get_css_value( $attr['descSpaceTablet'], $attr['descSpaceUnit'] ),
 	),
+	' .uagb-blockquote__author-wrap.uagb-blockquote__author-at-right img' => array(
+		'margin-left' =>  UAGB_Helper::get_css_value( $attr['authorImageGap'], $attr['authorImageGapUnit'] ),
+	),
+	' .uagb-blockquote__author-wrap.uagb-blockquote__author-at-top img' => array(
+		'margin-bottom' =>  UAGB_Helper::get_css_value( $attr['authorImageGap'], $attr['authorImageGapUnit'] ),
+	),
+	' .uagb-blockquote__author-wrap.uagb-blockquote__author-at-left img' => array(
+		'margin-right' =>  UAGB_Helper::get_css_value( $attr['authorImageGap'], $attr['authorImageGapUnit'] ),
+	),
 );
 
 $m_selectors = array(
@@ -366,6 +385,15 @@ $m_selectors = array(
 	),
 	' .uagb-blockquote__content'           => array(
 		'margin-bottom' => UAGB_Helper::get_css_value( $attr['descSpaceMobile'], $attr['descSpaceUnit'] ),
+	),
+	' .uagb-blockquote__author-wrap.uagb-blockquote__author-at-right img' => array(
+		'margin-left' =>  UAGB_Helper::get_css_value( $attr['authorImageGap'], $attr['authorImageGapUnit'] ),
+	),
+	' .uagb-blockquote__author-wrap.uagb-blockquote__author-at-top img' => array(
+		'margin-bottom' =>  UAGB_Helper::get_css_value( $attr['authorImageGap'], $attr['authorImageGapUnit'] ),
+	),
+	' .uagb-blockquote__author-wrap.uagb-blockquote__author-at-left img' => array(
+		'margin-right' =>  UAGB_Helper::get_css_value( $attr['authorImageGap'], $attr['authorImageGapUnit'] ),
 	),
 );
 

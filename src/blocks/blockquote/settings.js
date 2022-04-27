@@ -124,6 +124,10 @@ const Settings = ( props ) => {
 		authorImageWidthTablet,
 		authorImageWidthMobile,
 		authorImageWidthUnit,
+		authorImageGap,
+		authorImageGapTablet,
+		authorImageGapMobile,
+		authorImageGapUnit,
 		authorImageSize,
 		authorImgBorderRadius,
 		authorImgBorderRadiusTablet,
@@ -358,6 +362,33 @@ const Settings = ( props ) => {
 							unit={ {
 								value: authorImageWidthUnit,
 								label: 'authorImageWidthUnit',
+							} }
+							setAttributes={ setAttributes }
+						/>
+						<ResponsiveSlider
+							label={ __(
+								'Author Image Gap',
+								'ultimate-addons-for-gutenberg'
+							) }
+							data={ {
+								desktop: {
+									value: authorImageGap,
+									label: 'authorImageGap',
+								},
+								tablet: {
+									value: authorImageGapTablet,
+									label: 'authorImageGapTablet',
+								},
+								mobile: {
+									value: authorImageGapMobile,
+									label: 'authorImageGapMobile',
+								},
+							} }
+							min={ 0 }
+							max={ 500 }
+							unit={ {
+								value: authorImageGapUnit,
+								label: 'authorImageGapUnit',
 							} }
 							setAttributes={ setAttributes }
 						/>

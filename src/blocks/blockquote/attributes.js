@@ -276,14 +276,14 @@ const attributes = {
 	},
 	authorImageWidthTablet: {
 		type: 'number',
-		default: 0,
+		default: 30,
 		UAGCopyPaste: {
 			styleType: 'author-image-width'
 		}
 	},
 	authorImageWidthMobile: {
 		type: 'number',
-		default: 0,
+		default: 20,
 		UAGCopyPaste: {
 			styleType: 'author-image-width'
 		}
@@ -295,6 +295,34 @@ const attributes = {
 			styleType: 'author-image-width-unit'
 		}
 	},
+	authorImageGap: {
+		type: 'number',
+		default: 10,
+		UAGCopyPaste: {
+			styleType: 'author-image-gap'
+		}
+	},
+	authorImageGapTablet: {
+		type: 'number',
+		default: 10,
+		UAGCopyPaste: {
+			styleType: 'author-image-gap-tablet'
+		}
+	},
+	authorImageGapMobile: {
+		type: 'number',
+		default: 10,
+		UAGCopyPaste: {
+			styleType: 'author-image-gap-mobile'
+		}
+	},
+	authorImageGapUnit: {
+		type: 'string',
+		default: 'px',
+		UAGCopyPaste: {
+			styleType: 'author-image-gap-unit'
+		}
+	},
 	authorImgBorderRadius: {
 		type: 'number',
 		default: 100,
@@ -304,14 +332,14 @@ const attributes = {
 	},
 	authorImgBorderRadiusTablet: {
 		type: 'number',
-		default: 0,
+		default: 100,
 		UAGCopyPaste: {
 			styleType: 'author-image-border-radius'
 		}
 	},
 	authorImgBorderRadiusMobile: {
 		type: 'number',
-		default: 0,
+		default: 100,
 		UAGCopyPaste: {
 			styleType: 'author-image-border-radius'
 		}
