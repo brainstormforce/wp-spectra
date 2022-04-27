@@ -407,10 +407,12 @@ if ( $attr['enableTweet'] ){
 			$t_selectors[' a.uagb-blockquote__tweet-button'] = array(
 				'margin-top' => UAGB_Helper::get_css_value( $attr['tweetGap'], $attr['tweetGapUnit'] ),
 			);
+			break;
 		case 'mobile':			
 			$m_selectors[' a.uagb-blockquote__tweet-button'] = array(
 				'margin-top' => UAGB_Helper::get_css_value( $attr['tweetGap'], $attr['tweetGapUnit'] ),
 			);
+			break;
 	}
 }
 

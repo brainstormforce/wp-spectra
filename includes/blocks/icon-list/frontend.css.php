@@ -73,6 +73,7 @@ $m_selectors = array(
 		'font-size' => $m_icon_size,
 	),
 	' .wp-block-uagb-icon-list-child .uagb-icon-list__source-wrap ' => array(
+		'padding'       => UAGB_Helper::get_css_value( $attr['bgSizeMobile'], 'px' ),
 		'border-radius' => UAGB_Helper::get_css_value( $attr['borderRadiusMobile'], 'px' ),
 		'border-style'  => ( $attr['borderMobile'] > 0 ) ? 'solid' : '',
 		'border-width'  => UAGB_Helper::get_css_value( $attr['borderMobile'], 'px' ),
@@ -89,6 +90,7 @@ $t_selectors = array(
 		'font-size' => $t_icon_size,
 	),
 	' .wp-block-uagb-icon-list-child .uagb-icon-list__source-wrap ' => array(
+		'padding'       => UAGB_Helper::get_css_value( $attr['bgSizeTablet'], 'px' ),
 		'border-radius' => UAGB_Helper::get_css_value( $attr['borderRadiusTablet'], 'px' ),
 		'border-style'  => ( $attr['borderTablet'] > 0 ) ? 'solid' : '',
 		'border-width'  => UAGB_Helper::get_css_value( $attr['borderTablet'], 'px' ),

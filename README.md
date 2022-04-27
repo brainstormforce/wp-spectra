@@ -1,4 +1,4 @@
-# Gutenberg Blocks – Spectra #
+# Spectra - WordPress Gutenberg Blocks #
 **Contributors:** [brainstormforce](https://profiles.wordpress.org/brainstormforce)  
 **Donate link:** https://www.paypal.me/BrainstormForce  
 **Tags:** gutenberg, blocks, gutenberg blocks, editor, block  
@@ -9,21 +9,22 @@
 **License:** GPLv2 or later  
 **License URI:** https://www.gnu.org/licenses/gpl-2.0.html  
 
-Power-up the Gutenberg editor with advanced and powerful blocks that help you build websites in minutes!
+Power-up the Gutenberg editor with advanced and powerful blocks that help you build websites in no time! This first Gutenberg plugin is here to make website building an ultimate journey.
 
 ## Description ##
 
-<strong>Spectra</strong>
+<strong>Spectra (Formerly, Ultimate Addons for Gutenberg)</strong>
 
-Power-up the Gutenberg editor with advanced and powerful blocks that help you build websites in no time! This first Gutenberg addon is here to make website building an ultimate journey.
+Power-up the Gutenberg editor with advanced and powerful blocks that help you build websites in no time! This first Gutenberg plugin is here to make website building an ultimate journey.
 
-<a href="https://www.ultimategutenberg.com/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme" target="_blank" rel="">Check out the live Gutenberg blocks demos.</a>
+<a href="https://www.ultimategutenberg.com/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme" target="_blank" rel="">Check out the live Spectra blocks demos.</a>
 
-Simply pick your favorite blocks from the Spectra that speed up the process of website building with easy to use settings and customizations for intuitive visual styling.
+Simply pick your favorite WordPress blocks from Spectra that speed up the process of website building with easy to use settings and customizations for intuitive visual styling.
 
-With the Spectra, we took the hassle out of the website building process. It gives you a number of unique and creative blocks for Gutenberg that help you build and design pages or posts without a single line of code. An easy to use interface and several customizations make it easier to build pages and complete websites without any custom code.
+With Spectra, we took the hassle out of the website building process. It gives you a number of unique and creative blocks for Gutenberg that help you build and design pages or posts without a single line of code. An easy to use interface and several customizations make it easier to build pages and complete websites without any custom code.
 
-See the Spectra in action! - <a href="https://www.ultimategutenberg.com/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme" target="_blank" rel="">Launch the Demo!</a>
+
+ <a href="https://www.ultimategutenberg.com/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme" target="_blank" rel="">See the Spectra in action!</a>
 
 <strong>Ready-to-use Full Website Demos for Gutenberg</strong>
 
@@ -33,14 +34,14 @@ These Gutenberg starter sites give you -
 
 <ul>
  	<li>Pixel perfect ready websites in which you can just change the images and text to make them your own.</li>
- 	<li>Thoughtfully built ready-to-use  websites for different niches such as local businesses, restaurants, agencies, online stores, blogs, etc.</li>
+ 	<li>Thoughtfully built ready-to-use websites for different niches such as local businesses, restaurants, agencies, online stores, blogs, etc.</li>
 </ul>
 
 <a href="https://www.ultimategutenberg.com/ready-websites-for-gutenberg/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme" target="_blank" rel="">See Website Demos</a>
 
 <strong>FREE And Popular Gutenberg Compatible Theme</strong>
 
-Over 1+ million users are empowering their websites with Astra - 100% Gutenberg compatible theme! From beginners to industry experts, everyone is loving Astra for its performance and ease of use.
+Over 1+ million users are empowering their websites with Astra – 100% Gutenberg compatible theme! From beginners to industry experts, everyone is loving Astra for its performance and ease of use.
 
 Reasons why people love the Astra Theme
 
@@ -63,11 +64,11 @@ You can read more in a detailed article about <a href="https://wpastra.com/guten
 
 <strong>Learn Spectra from Tutorials</strong>
 
-Not sure how the blocks work? With <a href="https://www.ultimategutenberg.com/docs/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme" target="_blank" rel="">detailed knowledge base articles</a> about every creative block in the Spectra, we are here to make things easy for you and help you at every step.
+Not sure how the blocks work? With <a href="https://www.ultimategutenberg.com/docs/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme" target="_blank" rel="">detailed knowledge base articles</a> about every creative WordPress blocks in Spectra, we are here to make things easy for you and help you at every step.
 
-We also have an informative and detailed article that will help you to <a href="https://www.ultimategutenberg.com/getting-started-with-gutenberg-blocks/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme" target="_blank" rel="">get started with the Spectra</a> in few easy steps.
+We also have an informative and detailed article that will help you to <a href="https://www.ultimategutenberg.com/getting-started-with-gutenberg-blocks/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme" target="_blank" rel="">get started with Spectra </a> in few easy steps.
 
-<strong>An Spectra Library</strong>
+<strong>Spectra WordPress Blocks Library</strong>
 
 <ul>
 	<li><a href="https://ultimategutenberg.com/blocks/star-rating/" target="_blank">Star Ratings </a>: The Star Ratings block on a webpage can build trust and attract more customers. It allows you to add and completely customize star ratings anywhere on the Gutenberg page.</li>
@@ -108,7 +109,7 @@ We also have an informative and detailed article that will help you to <a href="
 
 <strong>Build Faster and Better Performing Websites</strong>
 
-The Spectra is built for speed and performance along with lots of flexibility and ease of use. This is the only advanced addon you may need to build a complete website with the default WordPress editor and the Astra theme. This combination for sure will take away the extra bloat from your website making it much lighter and faster to load.
+Spectra is built for speed and performance along with lots of flexibility and ease of use. This is the only advanced addon you may need to build a complete website with the default WordPress editor and the Astra theme. This combination for sure will take away the extra bloat from your website making it much lighter and faster to load.
 
 <strong>Support That Cares!</strong>
 
@@ -120,6 +121,9 @@ We understand the need for a quality product backed by dedicated support that ca
 
 You may now contribute to the plugin on Github: <a href="https://github.com/brainstormforce/ultimate-addons-for-gutenberg" target="_blank" rel="">Spectra on Github</a>
 
+<strong>CREDITS</strong>
+
+The awesome React FontIconPicker is developed by <a href="http://codeb.it/" target="_blank" rel="">Alessandro Benoit</a> & <a href="https://github.com/swashata" target="_blank" rel="">Swashata</a>. Our external packages use <a href="https://github.com/n49/react-stars" target="_blank" rel="">Star Ratings Components</a> that are distributed under the terms of the ISC. While <a href="https://github.com/akiran/react-slick" target="_blank" rel="">Slick</a>, <a href="https://github.com/chenqingspring/react-lottie" target="_blank" rel="">Lottie</a> and <a href="https://github.com/ericnorris/striptags" target="_blank" rel="">Striptags</a> is distributed under the terms of the MIT.
 
 ## Installation ##
 

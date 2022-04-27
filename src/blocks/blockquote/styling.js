@@ -629,11 +629,13 @@ function styling( props ) {
 					...tabletSelectors[ ' a.uagb-blockquote__tweet-button' ],
 					'margin-top': generateCSSUnit( tweetGap, tweetGapUnit ),
 				}
+				break;
 			case 'mobile':
 				mobileSelectors[ ' a.uagb-blockquote__tweet-button' ] = {
 					...mobileSelectors[ ' a.uagb-blockquote__tweet-button' ],
 					'margin-top': generateCSSUnit( tweetGap, tweetGapUnit ),
 				}
+				break;
 		}
 	}
 
