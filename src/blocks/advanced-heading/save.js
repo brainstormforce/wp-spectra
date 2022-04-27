@@ -11,6 +11,7 @@ export default function save( props ) {
 		block_id,
 		headingTitle,
 		headingDesc,
+		headingDescToggle,
 		headingTag,
 		seperatorStyle,
 		headingId,
@@ -52,7 +53,7 @@ export default function save( props ) {
 		>
 			{ headingText }
 			{ seprator }
-			{ descText }
+			{ headingDescToggle && descText }
 		</div>
 	);
 }

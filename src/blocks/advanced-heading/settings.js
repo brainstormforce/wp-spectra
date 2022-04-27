@@ -18,7 +18,7 @@ import {
 	InspectorControls,
 } from '@wordpress/block-editor';
 import renderSVG from '@Controls/renderIcon';
-import { SelectControl, Icon } from '@wordpress/components';
+import { SelectControl, Icon, ToggleControl } from '@wordpress/components';
 import SpacingControl from '@Components/spacing-control';
 import ColorSwitchControl from '@Components/color-switch-control';
 import TextShadowControl from '@Components/text-shadow';
@@ -65,6 +65,7 @@ const Settings = ( props ) => {
 		headShadowVOffset,
 		headShadowBlur,
 		// sub head
+		headingDescToggle,
 		subHeadFontFamily,
 		subHeadFontWeight,
 		subHeadFontStyle,
@@ -324,6 +325,16 @@ const Settings = ( props ) => {
 							label: __( 'Div', 'ultimate-addons-for-gutenberg' ),
 						},
 					] }
+				/>
+				<ToggleControl
+					label={ __(
+						'Sub Heading',
+						'ultimate-addons-for-gutenberg'
+					) }
+					checked={ headingDescToggle }
+					onChange={ () =>
+						setAttributes( { headingDescToggle : ! headingDescToggle } )
+					}
 				/>
 				<SelectControl
 					label={ __( 'Separator Style', 'ultimate-addons-for-gutenberg' ) }

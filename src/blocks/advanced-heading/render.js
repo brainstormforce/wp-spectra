@@ -12,6 +12,7 @@ const Render = ( props ) => {
 			block_id,
 			headingTitle,
 			headingDesc,
+			headingDescToggle,
 			headingTag,
 			seperatorStyle,
 		},
@@ -66,7 +67,7 @@ const Render = ( props ) => {
 		>
 			{ headingText }
 			{ separator }
-			{ descText }
+			{ headingDescToggle && descText  }
 		</div>
 	);
 };

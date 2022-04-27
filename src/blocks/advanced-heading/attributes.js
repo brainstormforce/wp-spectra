@@ -37,10 +37,13 @@ const attributes = {
 	headingId: {
 		type: 'string',
 	},
+	headingDescToggle: {
+		source: 'boolean',
+		default: true,
+	},
 	headingDesc: {
 		source: 'html',
 		selector: '.uagb-desc-text',
-		default: __( 'Enter description text here. Lorem ipsum dolor sit amet, consectetur adipiscing. Quo incidunt ullamco.​', 'ultimate-addons-for-gutenberg' ),
 	},
 	headingAlign: {
 		type: 'string',
@@ -672,7 +675,7 @@ const attributes = {
 	// Highlight
 	highLightColor: {
 		type: 'string',
-		default: '#f78a0c'
+		default: '#6104ff'
 	},
 	highLightBackground: {
 		type: 'string',
