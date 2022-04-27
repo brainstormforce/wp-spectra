@@ -287,13 +287,13 @@ export default function Image( {
 					onResizeStop();
 					if(deviceType === 'Tablet'){
 						setAttributes( {
-							widthTablet:  Math.abs( parseInt( currentWidth + delta.width, 10 ) ),
-							heightTablet: Math.abs( parseInt( currentHeight + delta.height, 10 ) ),
+							widthTablet:  Math.abs( parseInt( widthTablet + delta.width, 10 ) ),
+							heightTablet: Math.abs( parseInt( heightTablet + delta.height, 10 ) ),
 						} );
 					} else if(deviceType === 'Mobile'){
 						setAttributes( {
-							widthMobile:  Math.abs( parseInt( currentWidth + delta.width, 10 ) ),
-							heightMobile: Math.abs( parseInt( currentHeight + delta.height, 10 ) ),
+							widthMobile:  Math.abs( parseInt( widthMobile + delta.width, 10 ) ),
+							heightMobile: Math.abs( parseInt( heightMobile + delta.height, 10 ) ),
 						} );
 					} else {
 						setAttributes( {
