@@ -40,8 +40,7 @@ import {
 	Spinner,
 	ToggleControl,
 	TextControl,
-	Icon,
-	RadioControl,
+	Icon
 } from '@wordpress/components';
 
 import { InspectorControls } from '@wordpress/block-editor';
