@@ -280,7 +280,7 @@ const Settings = ( props ) => {
 				<MultiButtonsControl
 					setAttributes={ setAttributes }
 					label={ __(
-						'Heading Tag',
+						'Question Tag',
 						'ultimate-addons-for-gutenberg'
 					) }
 					data={ {
