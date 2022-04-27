@@ -24,7 +24,6 @@ import UAGTabsControl from '@Components/tabs';
 import { InspectorControls } from '@wordpress/block-editor';
 
 import {
-	SelectControl,
 	ToggleControl,
 	Icon,
 } from '@wordpress/components';
@@ -1010,7 +1009,7 @@ const Settings = ( props ) => {
 					] }
 					setAttributes={ setAttributes }
 				/>
-				{ iconAlign === row && (
+				{ iconAlign === 'row' && (
 					<ResponsiveSlider
 						label={ __(
 							'Gap between Icon and Question', 'ultimate-addons-for-gutenberg' ) }
