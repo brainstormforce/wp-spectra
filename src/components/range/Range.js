@@ -89,7 +89,7 @@ const Range = ( props ) => {
 	const handleOnChange = ( newValue ) => {
 		setValue( newValue );
 		const parsedValue = parseFloat( newValue );
-		if ( props.onChange ) {
+		if ( props?.onChange ) {
 			props.onChange( parsedValue );
 			return;
 		}
@@ -104,7 +104,7 @@ const Range = ( props ) => {
 		const cachedValueUpdate = { ...cachedValue };
 
 		setValue( cachedValueUpdate.value );
-		props.onChange( cachedValueUpdate.value );
+		props?.onChange( cachedValueUpdate.value );
 		if( cachedValueUpdate.unit ){
 			onChangeUnits( cachedValueUpdate.unit );
 		}
