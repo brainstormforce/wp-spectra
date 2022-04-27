@@ -198,6 +198,7 @@ if ( ! class_exists( 'UAGB_Admin_Helper' ) ) {
 			$is_already_icon_list = false;
 			$is_already_button    = false;
 			$is_already_faq       = false;
+
 			foreach ( UAGB_Config::$block_attributes as $key => $block ) {
 
 				$block_name = str_replace( 'uagb/', '', $key );
@@ -277,16 +278,24 @@ if ( ! class_exists( 'UAGB_Admin_Helper' ) ) {
 
 			$wp_upload_dir = UAGB_Helper::get_uag_upload_dir_path();
 			$combined_path = $wp_upload_dir . 'custom-style-blocks.css';
-			wp_delete_file( $combined_path );
+
+			if ( file_exists( $combined_path ) ) {
+				wp_delete_file( $combined_path );
+			}
 
 			$style = '';
 
 			$wp_filesystem = uagb_filesystem();
 
 			foreach ( $combined as $key => $c_block ) {
-				$style .= $wp_filesystem->get_contents( UAGB_DIR . 'assets/css/blocks/' . $c_block . '.css' );
 
+				$style_file = UAGB_DIR . 'assets/css/blocks/' . $c_block . '.css';
+
+				if ( file_exists( $style_file ) ) {
+					$style .= $wp_filesystem->get_contents( $style_file );
+				}
 			}
+
 			$wp_filesystem->put_contents( $combined_path, $style, FS_CHMOD_FILE );
 		}
 
@@ -301,7 +310,7 @@ if ( ! class_exists( 'UAGB_Admin_Helper' ) ) {
 
 			$rollback_versions = get_transient( 'uag_rollback_versions_' . UAGB_VER );
 
-			if ( ! $rollback_versions || empty( $rollback_versions ) ) {
+			if ( empty( $rollback_versions ) ) {
 
 				$max_versions = 10;
 
@@ -369,6 +378,37 @@ if ( ! class_exists( 'UAGB_Admin_Helper' ) ) {
 			}
 
 			return 1;
+		}
+
+		/**
+		 * Get Global Content Width
+		 *
+		 * @since x.x.x
+		 * @return int
+		 * @access public
+		 */
+		public static function get_global_content_width() {
+
+			$content_width             = self::get_admin_settings_option( 'uag_content_width', '' );
+			$content_width_third_party = apply_filters( 'spectra_global_content_width', 'default' );
+			$astra_content_width       = false;
+			self::update_admin_settings_option( 'uag_content_width_set_by', __( 'Spectra', 'ultimate-addons-for-gutenberg' ) );
+			if ( function_exists( 'astra_get_option' ) ) {
+				$astra_content_width = astra_get_option( 'site-content-width' );
+			}
+
+			if ( '' === $content_width ) {
+				if ( $astra_content_width ) {
+					$content_width = intval( $astra_content_width );
+					self::update_admin_settings_option( 'uag_content_width_set_by', __( 'Astra Theme', 'ultimate-addons-for-gutenberg' ) );
+				}
+				if ( 'default' !== $content_width_third_party ) {
+					$content_width = intval( $content_width_third_party );
+					self::update_admin_settings_option( 'uag_content_width_set_by', __( 'Filter added through any 3rd Party Theme/Plugin.', 'ultimate-addons-for-gutenberg' ) );
+				}
+			}
+
+			return $content_width;
 		}
 
 	}

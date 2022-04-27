@@ -137,11 +137,28 @@ final class UAGB_Scripts_Utils {
 		if ( is_rtl() ) {
 			wp_enqueue_style(
 				'uagb-style-rtl', // Handle.
-				UAGB_URL . 'assets/css/style-blocks.rtl.css', // RTL style CSS.
+				UAGB_URL . 'assets/css/style-blocks-rtl.min.css', // RTL style CSS.
 				array(),
 				UAGB_VER
 			);
 		}
+	}
+
+	/**
+	 * Get folder name by post id.
+	 *
+	 * @param int $post_id post id.
+	 * @since x.x.x
+	 */
+	public static function get_asset_folder_name( $post_id ) {
+
+		$folder_name = 0;
+
+		if ( ! empty( $post_id ) ) {
+			$folder_name = absint( round( $post_id, -3 ) );
+		}
+
+		return $folder_name;
 	}
 
 	/**
@@ -156,6 +173,7 @@ final class UAGB_Scripts_Utils {
 	public static function get_asset_info( $type, $post_id ) {
 
 		$uploads_dir = UAGB_Helper::get_upload_dir();
+		$folder_name = self::get_asset_folder_name( $post_id );
 		$file_name   = get_post_meta( $post_id, '_uag_' . $type . '_file_name', true );
 		$path        = $type;
 		$url         = $type . '_url';
@@ -166,10 +184,23 @@ final class UAGB_Scripts_Utils {
 		);
 
 		if ( ! empty( $file_name ) ) {
-			$info[ $path ] = $uploads_dir['path'] . $file_name;
-			$info[ $url ]  = $uploads_dir['url'] . $file_name;
+			$info[ $path ] = $uploads_dir['path'] . 'assets/' . $folder_name . '/' . $file_name;
+			$info[ $url ]  = $uploads_dir['url'] . 'assets/' . $folder_name . '/' . $file_name;
 		}
 
 		return $info;
+	}
+
+	/**
+	 * Get JS url from to assets.
+	 *
+	 * @since 2.0.0
+	 *
+	 * @param string $file_name File name.
+	 *
+	 * @return string JS url.
+	 */
+	public static function get_js_url( $file_name ) {
+		return UAGB_URL . 'assets/js/' . $file_name . UAGB_JS_EXT;
 	}
 }

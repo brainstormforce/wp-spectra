@@ -1,0 +1,104 @@
+import classnames from 'classnames';
+import { InnerBlocks } from '@wordpress/block-editor';
+import React from 'react';
+import shapes from './shapes';
+import { select } from '@wordpress/data';
+
+const Render = ( props ) => {
+
+	props = props.parentProps;
+	const {
+		attributes,
+		className,
+		deviceType,
+		clientId
+	} = props;
+
+	const {
+		block_id,
+		topType,
+		topFlip,
+		topContentAboveShape,
+		bottomType,
+		bottomFlip,
+		bottomContentAboveShape,
+		backgroundType,
+		backgroundVideo,
+		topInvert,
+		bottomInvert
+	} = attributes;
+
+	const direction = attributes[ 'direction' + deviceType ];
+
+	const moverDirection = 'row' === direction ? 'horizontal' : 'vertical';
+
+	const topDividerHtml = 'none' !== topType && (
+		<div
+			className={ classnames(
+				'uagb-container__shape',
+				'uagb-container__shape-top',
+				{ 'uagb-container__shape-flip': topFlip === true },
+				{
+					'uagb-container__shape-above-content':
+						topContentAboveShape === true,
+				},
+				{ 'uagb-container__invert' : topInvert === true }
+			) }
+		>
+			{ shapes[ topType ] }
+		</div>
+	);
+
+	const bottomDividerHtml = 'none' !== bottomType && (
+		<div
+			className={ classnames(
+				'uagb-container__shape',
+				'uagb-container__shape-bottom',
+				{ 'uagb-container__shape-flip': bottomFlip === true },
+				{
+					'uagb-container__shape-above-content':
+						bottomContentAboveShape === true,
+				},
+				{ 'uagb-container__invert' : bottomInvert === true },
+			) }
+		>
+			{ shapes[ bottomType ] }
+		</div>
+	);
+
+	const { getBlockOrder } = select( 'core/block-editor' );
+
+	const hasChildBlocks = getBlockOrder( clientId ).length > 0;
+
+	return (
+		<div
+			className={ classnames(
+				className,
+				`uagb-block-${ block_id }`
+			) }
+			key = { block_id }
+		>
+			{ topDividerHtml }
+			{ 'video' === backgroundType && (
+				<div className="uagb-container__video-wrap">
+					{ backgroundVideo && (
+						<video autoPlay loop muted playsinline>
+							<source
+								src={ backgroundVideo.url }
+								type="video/mp4"
+							/>
+						</video>
+					) }
+				</div>
+			) }
+			<InnerBlocks
+				__experimentalMoverDirection={ moverDirection }
+				renderAppender = { hasChildBlocks
+				? undefined
+				: InnerBlocks.ButtonBlockAppender }
+			/>
+			{ bottomDividerHtml }
+		</div>
+	);
+};
+export default React.memo( Render );

@@ -173,6 +173,16 @@ The awesome React FontIconPicker is developed by [Alessandro Benoit](http://code
 
 ## Changelog ##
 
+### 2.0.0-beta.1 - THURSDAY, 30TH SEPTEMBER 2021 ###
+* New: Redesigned UI/UX controls of UAG blocks.
+* New: Introduced new, beautiful & fast UAG admin dashboard powered by React.
+* Improvement: Display Condition – an UAG extensions will be enabled for Core Gutenberg blocks & UAG blocks by default, Also added a filter to enable UAG extension for third-party blocks.
+* Improvement: Refactored the UAG blocks' code & improved editor performance drastically.
+* Improvement: Typography control - Added text-transform, text-decoration and font-style options.
+* Improvement: Team Block - Span and Div tag support for Title.
+* Fix: Posts - Excerpt Layout Strips Shortcodes on Frontend.
+* Fix: Blockquote - Tweet content not shown in tweet box when double and single quotes are used.
+
 ### 1.25.3 - THURSDAY, 27TH JANUARY 2022 ###
 * Improvement: Added compatibility with WordPress v5.9.
 * Fix: Masonry option - Not visible for core/gallery.
@@ -185,6 +195,7 @@ The awesome React FontIconPicker is developed by [Alessandro Benoit](http://code
 * Fix: Call to undefined function `twentyseventeen_panel_count()` when previewing another theme from the customizer.
 * Fix: Marketing Button - Validation issue when Title Tag set to p.
 * Fix: Table of contents - Removed empty li tags from Table of contents markup.
+* Fix: Blockquote - Tweet content not shown in tweet box when double and single quotes are used.
 
 ### 1.25.0 – MONDAY, 4TH OCTOBER 2021 ###
 * New: Introduced Wireframe Blocks.

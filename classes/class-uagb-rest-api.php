@@ -45,7 +45,19 @@ if ( ! class_exists( 'UAGB_Rest_API' ) ) {
 
 			// We have added this action here to support both the ways of post updations, Rest API & Normal.
 			add_action( 'save_post', array( $this, 'delete_page_assets' ), 10, 1 );
+			add_action( 'rest_after_save_widget', array( $this, 'after_widget_save_action' ) );
 		}
+
+		/**
+		 * This function updates the __uagb_asset_version when Widgets Editor is Updated.
+		 *
+		 * @since x.x.x
+		 */
+		public function after_widget_save_action() {
+			/* Update the asset version */
+			update_option( '__uagb_asset_version', time() );
+		}
+
 		/**
 		 * This function deletes the Page assets from the Page Meta Key.
 		 *

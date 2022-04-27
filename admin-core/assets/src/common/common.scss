@@ -1,0 +1,224 @@
+#wpbody-content > .notice:not(.uag-notice),
+#wpbody-content > .error {
+	display: none !important;
+}
+
+.uag-menu-page-wrapper,
+.uag-menu-page-wrapper * {
+	box-sizing: border-box;
+}
+
+.uag-menu-page-wrapper a:focus,
+.uag-menu-page-wrapper button:focus,
+.uag-menu-page-wrapper input:focus {
+	box-shadow: none;
+	outline: none;
+}
+
+.settings_page_spectra #wpcontent {
+	padding-left: 0;
+}
+
+.uag-menu-page-wrapper .uag-settings-app {
+	font-family: var(--heading-font-family);
+	left: -20px;
+	position: relative;
+	width: calc(100% + 20px);
+	// Button CSS.
+	.uag-normal-button-control {
+
+		.uag-button {
+			display: inline-block;
+			text-decoration: none;
+			font-size: 14px;
+			margin: 0;
+			font-weight: var(--heading-weight-400);
+			font-family: var(--heading-font-family);
+			font-style: var(--heading-font-style);
+			padding: 10px 16px;
+			cursor: pointer;
+			-webkit-appearance: none;
+			border-radius: 3px;
+			white-space: nowrap;
+			box-sizing: border-box;
+			text-transform: capitalize;
+		}
+
+	}
+
+	h2 {
+		font-family: var(--heading-font-family);
+		font-weight: var(--heading-weight-500);
+		font-size: 24px;
+		margin-bottom: 20px;
+		margin-top: 0;
+		color: var(--content-color);
+		line-height: 32px;
+
+	}
+
+	h3 {
+		margin: 0;
+		margin-bottom: 10px;
+		color: var(--content-color);
+		font-family: var(--heading-font-family);
+		font-weight: var(--heading-weight-500);
+		font-size: 18px;
+		font-style: var(--heading-font-style);
+		line-height: 1.3em;
+	}
+
+	.uag-field {
+		border-radius: 2px;
+	}
+	// Paragraph CSS.
+	p {
+		color: var(--content-color);
+		font-family: var(--heading-font-family);
+		font-weight: var(--heading-weight-400);
+		font-size: 14px;
+		margin-top: 0;
+		margin-bottom: 20px;
+		line-height: 1.55em;
+		text-align: left;
+	}
+
+	.components-base-control__field {
+		font-size: 16px;
+	}
+}
+
+.uag-user-info {
+	background: var(--background-light-color);
+	padding: 35px 0;
+	box-sizing: border-box;
+	width: 1200px;
+	margin: 0 auto;
+	max-width: 100%;
+
+	a[href=""] {
+		display: none;
+	}
+}
+
+.uag-button--primary:hover,
+.uag-button--primary:focus,
+.uag-button--primary:active {
+	background: var(--accent-hv-color);
+	color: var(--metabox-background-color);
+}
+
+.uag-button--primary {
+	border-width: 0;
+	border: 1px solid var(--accent-color);
+	background: var(--accent-color);
+	color: var(--background-light-color);
+}
+
+.uag-button--secondary {
+	color: var(--accent-color);
+	border: 1px solid var(--accent-color);
+	background: #fff;
+	vertical-align: top;
+}
+
+.uag-button--secondary:hover,
+.uag-button--secondary:focus,
+.uag-button--secondary:active {
+	background: #f0f0f1;
+	border-color: var(--accent-hv-color);
+	color: var(--accent-hv-color);
+}
+
+.uag-control__status-yes,
+.uag-control__status-enabled {
+	display: inline-flex;
+	color: #639102;
+	align-items: center;
+	font-weight: var(--heading-weight-400);
+	font-family: var(--heading-font-family);
+	font-style: var(--heading-font-style);
+
+	img {
+		margin-left: 5px;
+		width: 18px;
+	}
+}
+
+.uag-control__status-no,
+.uag-control__status-disabled {
+	color: #f00;
+	font-weight: var(--heading-weight-400);
+	font-family: var(--heading-font-family);
+	font-style: var(--heading-font-style);
+	display: inline-flex;
+	align-items: center;
+
+	img {
+		display: none;
+	}
+}
+
+#wpwrap {
+	background: var(--background-light-color);
+}
+
+.uag-font-select-disabled {
+	pointer-events: none;
+	opacity: 0.4;
+}
+
+.uag-menu-page-wrapper {
+	font-family: Inter, sans-serif;
+
+	p {
+		font-size: 14px;
+		line-height: 22.4px;
+	}
+
+	h2 {
+		font-size: 1.6rem;
+	}
+
+	h3 {
+		font-size: 1.125rem;
+	}
+}
+
+.uag-dashboard-app .read-more a {
+	color: #2271b1;
+}
+
+.uag-dashboard-app .read-more a:hover {
+	color: #135e96;
+}
+
+.spectra-content-width-input-wrap {
+
+	> input {
+		border-top-right-radius: 0;
+		border-bottom-right-radius: 0;
+	}
+
+	> span {
+		border: 1px solid #8c8f94;
+		background-color: #fff;
+		color: #2c3338;
+		border-left-width: 0;
+	}
+}
+
+.spectra-video-container {
+	position: relative;
+	width: 100%;
+	padding-bottom: 56.25%;
+
+	.spectra-video {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		border: 0;
+	}
+}

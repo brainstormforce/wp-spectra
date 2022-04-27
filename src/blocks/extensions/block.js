@@ -1,3 +1,3 @@
 import './masonry-gallery';
 import './condition-block';
-import "./editor.scss"
+import './copy-paste-styles';

@@ -1,0 +1,221 @@
+.uagb-spacing-control {
+	position: relative;
+	display: inline-block;
+
+	.uagb-spacing-control__link {
+		border: 1px solid #8c8f94;
+		background-color: #d5dadf;
+		color: #1e8cbe;
+		justify-content: center;
+		display: flex;
+		align-items: center;
+		padding: 2px 0;
+		font-size: 12px;
+		line-height: 28px;
+		cursor: pointer;
+		width: 12%;
+
+		&.uagb-spacing-control-disconnected {
+			color: #2d3748;
+		}
+	}
+
+	.components-base-control__label {
+		margin-bottom: 5px;
+	}
+
+	.components-base-control__help {
+		margin-top: -8px;
+	}
+
+	input[type="number"].uagb-spacing-control__number,
+	.uagb-spacing-control__link {
+		border-left: 1px solid #d5dadf;
+		border-right: 1px solid #d5dadf;
+		border-color: #d5dadf;
+		border-radius: 0;
+		box-shadow: none !important;
+		height: 30px;
+		margin: 0 -1px 0 0;
+		padding-right: 1px;
+		width: 25%;
+	}
+
+	input[type="number"].uagb-spacing-control__number:focus,
+	.uagb-spacing-control__link {
+		z-index: 1;
+	}
+
+	.uagb-spacing-control__mobile-controls button[type="button"] > span {
+		cursor: pointer;
+		width: 15px;
+		height: 15px;
+		font-size: 15px;
+	}
+
+	.uagb-spacing-control__inputs > :first-child.uagb-spacing-control__number {
+		-webkit-border-radius: 3px 0 0 3px;
+		border-radius: 3px 0 0 3px;
+	}
+
+	.uagb-spacing-control__inputs > :last-child {
+		-webkit-border-radius: 0 3px 3px 0;
+		border-radius: 0 3px 3px 0;
+	}
+
+	.uagb-control__actions .components-tab-panel__tabs {
+		padding-right: 4px;
+		margin-right: 0;
+	}
+
+	.uagb-spacing-control__inputs {
+		display: flex;
+	}
+
+	.uagb-spacing-control__mobile-controls-item {
+		border: 0;
+		display: none;
+		font-size: 10px;
+		height: 30px;
+		justify-content: center;
+		left: 50px;
+		line-height: 12px;
+		padding: 0;
+		position: absolute;
+		text-align: center;
+		text-shadow: none;
+		top: -5px;
+		width: 26px;
+		z-index: 1;
+		box-shadow: unset;
+		border-radius: unset;
+		color: unset;
+
+		&.is-active {
+			display: block;
+		}
+
+		&:focus:enabled {
+			box-shadow: inset 0 0 0 1px #fff;
+		}
+
+		&:focus:enabled svg {
+			fill: #fff;
+		}
+
+		svg {
+			position: relative;
+		}
+
+		&.uagb-spacing-control__mobile-controls-item--spacing.components-button.is-secondary:active:not(:disabled),
+		&.uagb-spacing-control__mobile-controls-item--spacing.components-button.is-tertiary:active:not(:disabled) {
+			background: #fff;
+			color: #000;
+		}
+
+		&.components-button {
+
+			&.is-secondary:hover:not(:disabled),
+			&.is-tertiary:hover:not(:disabled) {
+				color: unset;
+				background: unset;
+				box-shadow: unset;
+			}
+		}
+	}
+
+	.uagb-spacing-control__mobile-controls-item--default svg {
+		top: 3px;
+	}
+
+	.uagb-spacing-control__mobile-controls-item--desktop svg {
+		top: 3px;
+	}
+
+	.uagb-spacing-control__mobile-controls-item--tablet svg {
+		top: 3px;
+	}
+
+	.uagb-spacing-control__mobile-controls-item--mobile svg {
+		top: 3px;
+	}
+
+	.uagb-spacing-control__input-labels {
+		display: flex;
+		margin-bottom: -3px;
+
+		span {
+			text-align: center;
+			width: 21%;
+		}
+
+		.uagb-spacing-control__link-label {
+			width: 10%;
+		}
+	}
+
+	.uagb-control__label {
+		margin-bottom: 0;
+		width: 50%;
+	}
+
+	.uagb-spacing-control__number-label {
+		color: #6c7781;
+		display: block;
+		font-size: 12px;
+		margin-bottom: 1px;
+		margin-top: 3px;
+	}
+
+	.uagb-control__actions {
+		position: relative;
+		top: 0;
+		display: flex;
+	}
+
+	.uagb-spacing-control__units {
+
+		.components-button:last-child {
+			padding: 0;
+		}
+
+		.components-button {
+			cursor: pointer;
+			padding: 0;
+			padding-right: 4px;
+			text-transform: uppercase;
+			font-size: 9px;
+
+			&.is-small {
+				box-shadow: unset;
+			}
+
+			&.is-primary.is-small {
+				background: unset;
+				background-color: unset;
+				color: #007cba;
+			}
+
+			&.is-secondary,
+			&.is-tertiary {
+				background: unset;
+				background-color: unset;
+				color: #050505;
+			}
+
+			&.is-primary:hover:not(:disabled) {
+				background: unset;
+				background-color: unset;
+				color: #007cba;
+			}
+
+			&.is-primary {
+				box-shadow: unset;
+			}
+		}
+	}
+}
+
+/*.components-panel .block-editor-block-inspector .uagb-inspector-tab .uagb-spacing-control.components-base-control:last-child{
+	margin-bottom: 15px;
+}*/

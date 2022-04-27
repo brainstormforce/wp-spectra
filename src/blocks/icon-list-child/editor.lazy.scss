@@ -1,0 +1,17 @@
+.uagb-icon-list__wrap > .block-editor-inner-blocks {
+	width: 100%;
+}
+
+.wp-block.block-editor-block-list__block[data-type="uagb/icon-list-child"] {
+	margin-top: 15px;
+	margin-bottom: 15px;
+
+	a {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: unset;
+	}
+}
+

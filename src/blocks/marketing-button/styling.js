@@ -2,17 +2,20 @@
  * Returns Dynamic Generated CSS
  */
 
-import generateCSS from "@Controls/generateCSS"
-import hexToRgba from "@Controls/hexToRgba"
-import generateCSSUnit from "@Controls/generateCSSUnit"
+import generateCSS from '@Controls/generateCSS';
+import generateCSSUnit from '@Controls/generateCSSUnit';
 
 function styling( props ) {
-
 	const {
 		titleSpace,
+		titleSpaceTablet,
+		titleSpaceMobile,
+		titleSpaceUnit,
 		//Icon
 		iconPosition,
 		iconSpace,
+		iconSpaceTablet,
+		iconSpaceMobile,
 		iconFontSize,
 		iconFontSizeType,
 		iconFontSizeMobile,
@@ -31,13 +34,6 @@ function styling( props ) {
 		borderColor,
 		borderHoverColor,
 		//Background
-		vPadding,
-		hPadding,
-		hPaddingMobile,
-		vPaddingMobile,
-		hPaddingTablet,
-		vPaddingTablet,
-		paddingType,
 		backgroundType,
 		backgroundColor,
 		backgroundHoverColor,
@@ -47,8 +43,6 @@ function styling( props ) {
 		gradientLocation2,
 		gradientType,
 		gradientAngle,
-		backgroundOpacity,
-		backgroundHoverOpacity,
 		//Typography
 		titleFontFamily,
 		titleFontWeight,
@@ -70,144 +64,249 @@ function styling( props ) {
 		prefixLineHeight,
 		prefixLineHeightTablet,
 		prefixLineHeightMobile,
-	} = props.attributes
+		paddingBtnUnit,
+		mobilePaddingBtnUnit,
+		tabletPaddingBtnUnit,
+		paddingBtnTop,
+		paddingBtnBottom,
+		paddingBtnLeft,
+		paddingBtnRight,
+		paddingBtnTopTablet,
+		paddingBtnRightTablet,
+		paddingBtnBottomTablet,
+		paddingBtnLeftTablet,
+		paddingBtnTopMobile,
+		paddingBtnRightMobile,
+		paddingBtnBottomMobile,
+		paddingBtnLeftMobile,
+		titleTransform,
+		titleDecoration,
+		prefixTransform,
+		prefixDecoration,
+		titleFontStyle,
+		prefixFontStyle
+	} = props.attributes;
 
-	var selectors = {}
-	var tablet_selectors = {}
-	var mobile_selectors = {}
+	let selectors = {};
+	let tabletSelectors = {};
+	let mobileSelectors = {};
 
-	let icon_color = ( "" == iconColor ) ? titleColor : iconColor
-	let icon_hover_color = ( "" == iconHoverColor ) ? titleHoverColor : iconHoverColor
-
+	const setIconColor = '' === iconColor ? titleColor : iconColor;
+	const setIconHoverColor =
+		'' === iconHoverColor ? titleHoverColor : iconHoverColor;
 	selectors = {
-		" .uagb-marketing-btn__title-wrap" : {
-			"margin-bottom" : generateCSSUnit( titleSpace, "px" )
+		' .uagb-marketing-btn__prefix': {
+			'margin-top': generateCSSUnit( titleSpace, titleSpaceUnit ),
 		},
-		" .block-editor-rich-text__editable.uagb-marketing-btn__title" : {
-			"font-size" : generateCSSUnit( titleFontSize, titleFontSizeType ),
-			"line-height" : generateCSSUnit( titleLineHeight, titleLineHeightType ),
-			"font-family": titleFontFamily,
-			"font-weight": titleFontWeight,
-			"color": titleColor,
+		' .block-editor-rich-text__editable.uagb-marketing-btn__title': {
+			'font-size': generateCSSUnit( titleFontSize, titleFontSizeType ),
+			'line-height': generateCSSUnit(
+				titleLineHeight,
+				titleLineHeightType
+			),
+			'font-family': titleFontFamily,
+			'font-weight': titleFontWeight,
+			'font-style': titleFontStyle,
+			'text-transform': titleTransform,
+			'text-decoration': titleDecoration,
+			'color': titleColor,
 		},
-		" .uagb-marketing-btn__icon-wrap svg" : {
-			"fill" : icon_color
+		' svg': {
+			'fill': setIconColor,
+			'width': generateCSSUnit( iconFontSize, iconFontSizeType ),
+			'height': generateCSSUnit( iconFontSize, iconFontSizeType ),
 		},
-		" .uagb-marketing-btn__icon-wrap" : {
-			"width" : generateCSSUnit( iconFontSize, iconFontSizeType ),
-			"height" : generateCSSUnit( iconFontSize, iconFontSizeType )
+		' .block-editor-rich-text__editable.uagb-marketing-btn__prefix': {
+			'font-size': generateCSSUnit( prefixFontSize, prefixFontSizeType ),
+			'line-height': generateCSSUnit(
+				prefixLineHeight,
+				prefixLineHeightType
+			),
+			'font-family': prefixFontFamily,
+			'font-weight': prefixFontWeight,
+			'color': prefixColor,
+			'font-style': prefixFontStyle,
+			'text-transform': prefixTransform,
+			'text-decoration': prefixDecoration,
 		},
-		" .block-editor-rich-text__editable.uagb-marketing-btn__prefix" : {
-			"font-size" : generateCSSUnit( prefixFontSize, prefixFontSizeType ),
-			"line-height" : generateCSSUnit( prefixLineHeight, prefixLineHeightType ),
-			"font-family": prefixFontFamily,
-			"font-weight": prefixFontWeight,
-			"color": prefixColor,
+		' .uagb-marketing-btn__link:hover .block-editor-rich-text__editable.uagb-marketing-btn__title': {
+			'color': titleHoverColor,
 		},
-		" .uagb-marketing-btn__link:hover .block-editor-rich-text__editable.uagb-marketing-btn__title" : {
-			"color": titleHoverColor,
+		' .uagb-marketing-btn__link:hover .block-editor-rich-text__editable.uagb-marketing-btn__prefix': {
+			'color': prefixHoverColor,
 		},
-		" .uagb-marketing-btn__link:hover .block-editor-rich-text__editable.uagb-marketing-btn__prefix" : {
-			"color": prefixHoverColor,
+		' .uagb-marketing-btn__link:hover svg': {
+			'fill': setIconHoverColor,
 		},
-		" .uagb-marketing-btn__link:hover .uagb-marketing-btn__icon-wrap svg" : {
-			"fill" : icon_hover_color
+		' .uagb-marketing-btn__link': {
+			'padding-left': generateCSSUnit( paddingBtnLeft, paddingBtnUnit ),
+			'padding-right': generateCSSUnit( paddingBtnRight, paddingBtnUnit ),
+			'padding-top': generateCSSUnit( paddingBtnTop, paddingBtnUnit ),
+			'padding-bottom': generateCSSUnit(
+				paddingBtnBottom,
+				paddingBtnUnit
+			),
+			'border-style': borderStyle,
+			'border-width': generateCSSUnit( borderWidth, 'px' ),
+			'border-color': borderColor,
+			'border-radius': generateCSSUnit( borderRadius, 'px' ),
 		},
-		" .uagb-marketing-btn__link" : {
-			"padding-left" : generateCSSUnit( hPadding, paddingType ),
-			"padding-right" : generateCSSUnit( hPadding, paddingType ),
-			"padding-top" : generateCSSUnit( vPadding, paddingType ),
-			"padding-bottom" : generateCSSUnit( vPadding, paddingType ),
-			"border-style": borderStyle,
-			"border-width": generateCSSUnit( borderWidth, "px" ),
-			"border-color": borderColor,
-			"border-radius": generateCSSUnit( borderRadius, "px" ),
+		' .uagb-marketing-btn__link:hover': {
+			'border-color': borderHoverColor,
 		},
-		" .uagb-marketing-btn__link:hover" : {
-			"border-color": borderHoverColor
-		},
-	}
+	};
 
-	if ( "transparent" == backgroundType ) {
-
-		selectors[" .uagb-marketing-btn__link"]["background"] = "transparent"
-
-	} else if ( "color" == backgroundType ) {
-
-		selectors[" .uagb-marketing-btn__link"]["background"] = hexToRgba( backgroundColor, backgroundOpacity )
+	if ( 'transparent' === backgroundType ) {
+		selectors[ ' .uagb-marketing-btn__link' ].background = 'transparent';
+	} else if ( 'color' === backgroundType ) {
+		selectors[ ' .uagb-marketing-btn__link' ].background = backgroundColor;
 
 		// Hover Background
-		selectors[" .uagb-marketing-btn__link:hover"]["background"] = hexToRgba( backgroundHoverColor, backgroundHoverOpacity )
+		selectors[ ' .uagb-marketing-btn__link:hover' ].background = backgroundHoverColor;
+	} else if ( 'gradient' === backgroundType ) {
+		selectors[ ' .uagb-marketing-btn__link' ][ 'background-color' ] =
+			'transparent';
 
-	} else if ( "gradient" == backgroundType ) {
-
-		selectors[" .uagb-marketing-btn__link"]["background-color"] = "transparent"
-
-		if ( "linear" === gradientType ) {
-
-			selectors[" .uagb-marketing-btn__link"]["background-image"] = `linear-gradient(${ gradientAngle }deg, ${ hexToRgba( gradientColor1, backgroundOpacity ) } ${ gradientLocation1 }%, ${ hexToRgba( gradientColor2, backgroundOpacity ) } ${ gradientLocation2 }%)`
+		if ( 'linear' === gradientType ) {
+			selectors[ ' .uagb-marketing-btn__link' ][
+				'background-image'
+			] = `linear-gradient(${ gradientAngle }deg, ${ gradientColor1 } ${ gradientLocation1 }%, ${	gradientColor2 } ${ gradientLocation2 }%)`;
 		} else {
-
-			selectors[" .uagb-marketing-btn__link"]["background-image"] = `radial-gradient( at center center, ${ hexToRgba( gradientColor1, backgroundOpacity ) } ${ gradientLocation1 }%, ${ hexToRgba( gradientColor2, backgroundOpacity ) } ${ gradientLocation2 }%)`
+			selectors[ ' .uagb-marketing-btn__link' ][
+				'background-image'
+			] = `radial-gradient( at center center, ${ gradientColor1} ${ gradientLocation1 }%, ${ gradientColor2 } ${ gradientLocation2 }%)`;
 		}
-
 	}
 
-	let margin_type = ( "after" == iconPosition ) ? "margin-left" : "margin-right"
+	const marginType = 'after' === iconPosition ? 'margin-left' : 'margin-right';
 
-	selectors[" .uagb-marketing-btn__icon-wrap"][margin_type] = generateCSSUnit( iconSpace, "px" )
+	selectors[ ' svg' ][
+		marginType
+	] = generateCSSUnit( iconSpace, 'px' );
 
-	tablet_selectors = {
-		" .block-editor-rich-text__editable.uagb-marketing-btn__title" : {
-			"font-size": generateCSSUnit( titleFontSizeTablet, titleFontSizeType ),
-			"line-height": generateCSSUnit( titleLineHeightTablet, titleLineHeightType ),
+	tabletSelectors = {
+		' .uagb-marketing-btn__prefix': {
+			'margin-top': generateCSSUnit( titleSpaceTablet, 'px' ),
 		},
-		" .block-editor-rich-text__editable.uagb-marketing-btn__prefix" : {
-			"font-size": generateCSSUnit( prefixFontSizeTablet, prefixFontSizeType ),
-			"line-height": generateCSSUnit( prefixLineHeightTablet, prefixLineHeightType ),
+		' .block-editor-rich-text__editable.uagb-marketing-btn__title': {
+			'font-size': generateCSSUnit(
+				titleFontSizeTablet,
+				titleFontSizeType
+			),
+			'line-height': generateCSSUnit(
+				titleLineHeightTablet,
+				titleLineHeightType
+			),
 		},
-		" .uagb-marketing-btn__icon-wrap" : {
-			"width" : generateCSSUnit( iconFontSizeTablet, iconFontSizeType ),
-			"height" : generateCSSUnit( iconFontSizeTablet, iconFontSizeType )
+		' .block-editor-rich-text__editable.uagb-marketing-btn__prefix': {
+			'font-size': generateCSSUnit(
+				prefixFontSizeTablet,
+				prefixFontSizeType
+			),
+			'line-height': generateCSSUnit(
+				prefixLineHeightTablet,
+				prefixLineHeightType
+			),
 		},
-		" .uagb-marketing-btn__link" : {
-			"padding-left" : generateCSSUnit( hPaddingTablet, paddingType ),
-			"padding-right" : generateCSSUnit( hPaddingTablet, paddingType ),
-			"padding-top" : generateCSSUnit( vPaddingTablet, paddingType ),
-			"padding-bottom" : generateCSSUnit( vPaddingTablet, paddingType ),
+		' svg': {
+			'width': generateCSSUnit( iconFontSizeTablet, iconFontSizeType ),
+			'height': generateCSSUnit( iconFontSizeTablet, iconFontSizeType ),
 		},
-	}
+		' .uagb-marketing-btn__link': {
+			'padding-left': generateCSSUnit(
+				paddingBtnLeftTablet,
+				tabletPaddingBtnUnit
+			),
+			'padding-right': generateCSSUnit(
+				paddingBtnRightTablet,
+				tabletPaddingBtnUnit
+			),
+			'padding-top': generateCSSUnit(
+				paddingBtnTopTablet,
+				tabletPaddingBtnUnit
+			),
+			'padding-bottom': generateCSSUnit(
+				paddingBtnBottomTablet,
+				tabletPaddingBtnUnit
+			),
+		},
+	};
 
-	mobile_selectors = {
-		" .block-editor-rich-text__editable.uagb-marketing-btn__title" : {
-			"font-size": generateCSSUnit( titleFontSizeMobile, titleFontSizeType ),
-			"line-height": generateCSSUnit( titleLineHeightMobile, titleLineHeightType ),
+	mobileSelectors = {
+		' .uagb-marketing-btn__prefix': {
+			'margin-top': generateCSSUnit( titleSpaceMobile, 'px' ),
 		},
-		" .block-editor-rich-text__editable.uagb-marketing-btn__prefix" : {
-			"font-size": generateCSSUnit( prefixFontSizeMobile, prefixFontSizeType ),
-			"line-height": generateCSSUnit( prefixLineHeightMobile, prefixLineHeightType ),
+		' .block-editor-rich-text__editable.uagb-marketing-btn__title': {
+			'font-size': generateCSSUnit(
+				titleFontSizeMobile,
+				titleFontSizeType
+			),
+			'line-height': generateCSSUnit(
+				titleLineHeightMobile,
+				titleLineHeightType
+			),
 		},
-		" .uagb-marketing-btn__icon-wrap" : {
-			"width" : generateCSSUnit( iconFontSizeMobile, iconFontSizeType ),
-			"height" : generateCSSUnit( iconFontSizeMobile, iconFontSizeType )
+		' .block-editor-rich-text__editable.uagb-marketing-btn__prefix': {
+			'font-size': generateCSSUnit(
+				prefixFontSizeMobile,
+				prefixFontSizeType
+			),
+			'line-height': generateCSSUnit(
+				prefixLineHeightMobile,
+				prefixLineHeightType
+			),
 		},
-		" .uagb-marketing-btn__link" : {
-			"padding-left" : generateCSSUnit( hPaddingMobile, paddingType ),
-			"padding-right" : generateCSSUnit( hPaddingMobile, paddingType ),
-			"padding-top" : generateCSSUnit( vPaddingMobile, paddingType ),
-			"padding-bottom" : generateCSSUnit( vPaddingMobile, paddingType ),
+		' svg': {
+			'width': generateCSSUnit( iconFontSizeMobile, iconFontSizeType ),
+			'height': generateCSSUnit( iconFontSizeMobile, iconFontSizeType ),
 		},
-	}
+		' .uagb-marketing-btn__link': {
+			'padding-left': generateCSSUnit(
+				paddingBtnLeftMobile,
+				mobilePaddingBtnUnit
+			),
+			'padding-right': generateCSSUnit(
+				paddingBtnRightMobile,
+				mobilePaddingBtnUnit
+			),
+			'padding-top': generateCSSUnit(
+				paddingBtnTopMobile,
+				mobilePaddingBtnUnit
+			),
+			'padding-bottom': generateCSSUnit(
+				paddingBtnBottomMobile,
+				mobilePaddingBtnUnit
+			),
+		},
+	};
 
-	var id = `.uagb-block-${ props.clientId.substr( 0, 8 ) }`
+	tabletSelectors[ ' svg' ][
+		marginType
+	] = generateCSSUnit( iconSpaceTablet, 'px' );
 
-	var styling_css = generateCSS( selectors, id )
+	mobileSelectors[ ' svg' ][
+		marginType
+	] = generateCSSUnit( iconSpaceMobile, 'px' );
 
-	styling_css += generateCSS( tablet_selectors, `${id}.uagb-editor-preview-mode-tablet`, true, "tablet" )
+	const id = `.editor-styles-wrapper .uagb-block-${ props.clientId.substr( 0, 8 ) }`;
 
-	styling_css += generateCSS( mobile_selectors, `${id}.uagb-editor-preview-mode-mobile`, true, "mobile" )
+	let stylingCss = generateCSS( selectors, id );
 
-	return styling_css
+	stylingCss += generateCSS(
+		tabletSelectors,
+		`${ id }.uagb-editor-preview-mode-tablet`,
+		true,
+		'tablet'
+	);
+
+	stylingCss += generateCSS(
+		mobileSelectors,
+		`${ id }.uagb-editor-preview-mode-mobile`,
+		true,
+		'mobile'
+	);
+
+	return stylingCss;
 }
 
-export default styling
+export default styling;

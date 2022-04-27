@@ -37,7 +37,6 @@ if ( ! class_exists( 'UAGB_Twenty_Seventeen_Compatibility' ) ) {
 		 * Constructor
 		 */
 		public function __construct() {
-
 			add_action( 'wp', array( $this, 'generate_stylesheet' ), 101 );
 		}
 		/**

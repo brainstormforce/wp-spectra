@@ -1,0 +1,50 @@
+/* Normal & Hover Tabs CSS*/
+.uag-control-tabs {
+	width: 100%;
+
+	&.uag-control-tabs-bottom-separator {
+		margin-bottom: 24px;
+		padding-bottom: 12px;
+		border-bottom: 1px solid #ddd;
+	}
+
+	&.uag-control-tabs-three-tabs {
+
+		.components-tab-panel__tabs {
+
+			& > .components-button {
+				width: 31.3%;
+			}
+		}
+	}
+
+	& > .components-tab-panel__tabs {
+		justify-content: space-between;
+		margin-bottom: 24px;
+		margin-left: -16px;
+		margin-right: -16px;
+		padding: 0 16px;
+		border-bottom: 1px solid #ddd;
+
+		& > .components-button {
+			width: 47%;
+			text-align: center;
+			justify-content: center;
+			border: 1px solid #ddd;
+			color: #3a3a3a;
+			max-height: 30px;
+			font-size: 13px;
+			border-bottom: 0;
+			margin-bottom: -1px;
+		}
+
+		& > .components-button:focus:not(:disabled) {
+			box-shadow: none;
+		}
+
+		& > .components-button.active-tab {
+			color: #007cba;
+			background: #fff;
+		}
+	}
+}

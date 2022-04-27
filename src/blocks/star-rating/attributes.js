@@ -1,87 +1,205 @@
 const attributes = {
 	block_id: {
-		type: "string"
+		type: 'string',
 	},
 	layout: {
-		type: "string",
-		default: "inline"
+		type: 'string',
+		default: 'inline',
 	},
 	rating: {
-		type: "number",
-		default: 4
+		type: 'number',
+		default: 4,
 	},
 	range: {
-		type: "string",
-		default: "5"
+		type: 'string',
+		default: '5',
 	},
 	size: {
-		type: "number",
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'icon-size'
+		},
+		default: 18,
+	},
+	sizeTablet: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'icon-size'
+		},
+		default: 0,
+	},
+	sizeMobile: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'icon-size'
+		},
+		default: 0,
 	},
 	gap: {
-		type: "number",
+		type: 'number',
+		default: 2,
+		UAGCopyPaste: {
+			styleType: 'icon-gap'
+		},
+	},
+	gapTablet: {
+		type: 'number',
+		default: 0,
+		UAGCopyPaste: {
+			styleType: 'icon-gap'
+		},
+	},
+	gapMobile: {
+		type: 'number',
+		default: 0,
+		UAGCopyPaste: {
+			styleType: 'icon-gap'
+		},
 	},
 	align: {
-		type: "string",
-		default: "left"
+		type: 'string',
+		default: 'left',
+		UAGCopyPaste: {
+			styleType: 'icon-align'
+		},
 	},
 	unmarkedColor: {
-		type: "string",
-		default: "#ccd6df"
+		type: 'string',
+		default: '#ccd6df',
+		UAGCopyPaste: {
+			styleType: 'icon-unmarked-color'
+		},
 	},
 	color: {
-		type: "string",
-		default: "#f0ad4e"
+		type: 'string',
+		default: '#f0ad4e',
+		UAGCopyPaste: {
+			styleType: 'icon-color'
+		},
 	},
 	title: {
-		type: "string"
+		type: 'string',
 	},
-	titleGap : {
-		type: "number",
-		default: 10
+	titleGap: {
+		type: 'number',
+		default: 10,
+		UAGCopyPaste: {
+			styleType: 'main-title-bottom-margin'
+		},
+	},
+	titleGapTablet: {
+		type: 'number',
+		default: 10,
+		UAGCopyPaste: {
+			styleType: 'main-title-bottom-margin'
+		},
+	},
+	titleGapMobile: {
+		type: 'number',
+		default: 10,
+		UAGCopyPaste: {
+			styleType: 'main-title-bottom-margin'
+		},
 	},
 	titleColor: {
-		type: "string",
+		type: 'string',
+		UAGCopyPaste: {
+			styleType: 'main-title-color'
+		},
 	},
 	fontSize: {
-		type: "number",
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'main-title-font-size'
+		},
 	},
 	fontSizeType: {
-		type: "string",
-		default: "px"
+		type: 'string',
+		UAGCopyPaste: {
+			styleType: 'main-title-font-size-type'
+		},
+		default: 'px',
 	},
 	fontSizeTablet: {
-		type: "number",
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'main-title-font-size-tablet'
+		},
 	},
 	fontSizeMobile: {
-		type: "number",
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'main-title-font-size-mobile'
+		},
 	},
 	fontFamily: {
-		type: "string",
-		default: "Default",
+		type: 'string',
+		UAGCopyPaste: {
+			styleType: 'main-title-font-family'
+		},
+		default: 'Default',
 	},
 	fontWeight: {
-		type: "string",
+		type: 'string',
+		UAGCopyPaste: {
+			styleType: 'main-title-font-weight'
+		},
 	},
-	fontSubset: {
-		type: "string",
+	fontStyle: {
+		type: 'string',
+		UAGCopyPaste: {
+			styleType: 'main-title-font-style'
+		},
+		default: 'normal',
+	},
+	fontTransform: {
+		type: 'string',
+		UAGCopyPaste: {
+			styleType: 'main-title-transform'
+		},
+	},
+	fontDecoration: {
+		type: 'string',
+		UAGCopyPaste: {
+			styleType: 'main-title-decoration'
+		},
 	},
 	lineHeightType: {
-		type: "string",
-		default: "em"
+		type: 'string',
+		UAGCopyPaste: {
+			styleType: 'main-title-line-height-type'
+		},
+		default: 'em',
 	},
 	lineHeight: {
-		type: "number",
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'main-title-line-height'
+		},
 	},
 	lineHeightTablet: {
-		type: "number",
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'main-title-line-height-tablet'
+		},
 	},
 	lineHeightMobile: {
-		type: "number",
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'main-title-line-height-mobile'
+		},
 	},
 	loadGoogleFonts: {
-		type: "boolean",
-		default: false	
+		type: 'boolean',
+		UAGCopyPaste: {
+			styleType: 'main-title-load-google-font'
+		},
+		default: false,
+	},
+	isPreview: {
+		type: 'boolean',
+		default: false,
 	}
-}
+};
 
-export default attributes
+export default attributes;

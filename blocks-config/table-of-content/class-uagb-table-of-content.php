@@ -339,13 +339,16 @@ if ( ! class_exists( 'UAGB_Table_Of_Content' ) ) {
 				} else {
 					$toc .= sprintf( '<li class="uagb-toc__list"><a href="#%s">%s</a>', esc_attr( $id ), $title );
 				}
+
 				$last_level = $level;
 			}
 
 			$toc .= str_repeat( '</li></ul>', $current_depth );
 			$toc .= '</ol>';
+
 			return $toc;
 		}
+
 		/**
 		 * Filters the Headings according to Mapping Headers Array.
 		 *
@@ -426,6 +429,19 @@ if ( ! class_exists( 'UAGB_Table_Of_Content' ) ) {
 				return $value;
 			};
 
+			$desktop_class = '';
+			$tab_class     = '';
+			$mob_class     = '';
+
+			if ( array_key_exists( 'UAGHideDesktop', $attributes ) || array_key_exists( 'UAGHideTab', $attributes ) || array_key_exists( 'UAGHideMob', $attributes ) ) {
+
+				$desktop_class = ( isset( $attributes['UAGHideDesktop'] ) ) ? 'uag-hide-desktop' : '';
+
+				$tab_class = ( isset( $attributes['UAGHideTab'] ) ) ? 'uag-hide-tab' : '';
+
+				$mob_class = ( isset( $attributes['UAGHideMob'] ) ) ? 'uag-hide-mob' : '';
+			}
+
 			$wrap = array(
 				'wp-block-uagb-table-of-contents',
 				'uagb-toc__align-' . $attributes['align'],
@@ -433,28 +449,29 @@ if ( ! class_exists( 'UAGB_Table_Of_Content' ) ) {
 				( ( true === $attributes['initialCollapse'] ) ? 'uagb-toc__collapse' : ' ' ),
 				'uagb-block-' . $attributes['block_id'],
 				( isset( $attributes['className'] ) ) ? $attributes['className'] : '',
+				$desktop_class,
+				$tab_class,
+				$mob_class,
 			);
 
 			ob_start();
 			?>
-				<div class="<?php echo esc_html( implode( ' ', $wrap ) ); ?>" 
+				<div class="<?php echo esc_html( implode( ' ', $wrap ) ); ?>"
 					data-scroll= "<?php echo esc_attr( $attributes['smoothScroll'] ); ?>"
 					data-offset= "<?php echo esc_attr( $attributes['smoothScrollOffset'] ); ?>"
 					data-delay= "<?php echo esc_attr( $attributes['smoothScrollDelay'] ); ?>"
 				>
 				<div class="uagb-toc__wrap">
-					<div class="uagb-toc__title-wrap">
 						<div class="uagb-toc__title">
-							<?php echo wp_kses_post( $attributes['headingTitle'] ); ?>
-						</div>
-						<?php
-						if ( $attributes['makeCollapsible'] && $attributes['icon'] ) {
-							?>
-							<span class="uag-toc__collapsible-wrap"><?php UAGB_Helper::render_svg_html( $attributes['icon'] ); ?></span>
 							<?php
-						}
-						?>
-					</div>
+								echo wp_kses_post( $attributes['headingTitle'] );
+							if ( $attributes['makeCollapsible'] && $attributes['icon'] ) {
+								?>
+									<?php UAGB_Helper::render_svg_html( $attributes['icon'] ); ?>
+									<?php
+							}
+							?>
+						</div>
 					<?php if ( $uagb_toc_heading_content && count( $uagb_toc_heading_content ) > 0 && count( array_filter( $attributes['mappingHeaders'], $mapping_header_func ) ) > 0 ) { ?>
 					<div class="uagb-toc__list-wrap">
 						<?php
@@ -467,7 +484,7 @@ if ( ! class_exists( 'UAGB_Table_Of_Content' ) ) {
 							);
 						?>
 					</div>
-					<?php } else { ?> 
+					<?php } else { ?>
 						<p class='uagb_table-of-contents-placeholder'>
 						<?php echo esc_html( $attributes['emptyHeadingTeaxt'] ); ?>
 						</p>
@@ -534,6 +551,10 @@ if ( ! class_exists( 'UAGB_Table_Of_Content' ) ) {
 										'type' => 'string',
 									),
 									'align'                => array(
+										'type'    => 'string',
+										'default' => 'left',
+									),
+									'headingAlignment'     => array(
 										'type'    => 'string',
 										'default' => 'left',
 									),
@@ -659,6 +680,12 @@ if ( ! class_exists( 'UAGB_Table_Of_Content' ) ) {
 									'headingBottom'        => array(
 										'type' => 'number',
 									),
+									'headingBottomTablet'  => array(
+										'type' => 'number',
+									),
+									'headingBottomMobile'  => array(
+										'type' => 'number',
+									),
 									'paddingTypeDesktop'   => array(
 										'type'    => 'string',
 										'default' => 'px',
@@ -725,9 +752,6 @@ if ( ! class_exists( 'UAGB_Table_Of_Content' ) ) {
 									'fontWeight'           => array(
 										'type' => 'string',
 									),
-									'fontSubset'           => array(
-										'type' => 'string',
-									),
 									// Link Font Size.
 									'fontSize'             => array(
 										'type' => 'number',
@@ -770,9 +794,6 @@ if ( ! class_exists( 'UAGB_Table_Of_Content' ) ) {
 										'type'    => 'string',
 										'default' => '500',
 									),
-									'headingFontSubset'    => array(
-										'type' => 'string',
-									),
 									// Link Font Size.
 									'headingFontSize'      => array(
 										'type'    => 'number',
@@ -801,10 +822,6 @@ if ( ! class_exists( 'UAGB_Table_Of_Content' ) ) {
 									),
 									'headingLineHeightMobile' => array(
 										'type' => 'number',
-									),
-									'headingAlignment'     => array(
-										'type'    => 'string',
-										'default' => 'left',
 									),
 									'emptyHeadingTeaxt'    => array(
 										'type'    => 'string',

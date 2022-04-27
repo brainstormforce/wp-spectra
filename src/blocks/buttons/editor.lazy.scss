@@ -1,0 +1,28 @@
+/**
+ * Editor styles for the admin
+ */
+
+
+.wp-block[data-type="uagb/buttons"][data-btn-width="full"] {
+
+	.block-editor-inner-blocks,
+	.wp-block[data-type="uagb/buttons-child"] {
+		width: 100%;
+	}
+}
+
+.uagb-buttons__outer-wrap .block-editor-inner-blocks {
+	width: 100%;
+
+	.block-editor-block-list__layout {
+		display: inline-flex;
+	}
+}
+
+
+.uagb-buttons__outer-wrap {
+
+	.uagb-buttons__wrap .block-editor-block-list__layout .block-list-appender {
+		margin-right: -60px !important;
+	}
+}

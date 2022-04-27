@@ -72,6 +72,12 @@ if ( ! class_exists( 'UAGB_Update' ) ) :
 				return;
 			}
 
+			// Update How-To Block Old User Version.
+			$this->update_uag_old_user_less_than_2_option();
+
+			// Create file if not present.
+			uagb_install()->create_files();
+
 			/* Create activated blocks stylesheet */
 			UAGB_Admin_Helper::create_specific_stylesheet();
 
@@ -92,8 +98,22 @@ if ( ! class_exists( 'UAGB_Update' ) ) :
 		 */
 		public function fresh_install_update_asset_generation_option() {
 
+			uagb_install()->create_files();
+
 			if ( UAGB_Helper::is_uag_dir_has_write_permissions() ) {
 				update_option( '_uagb_allow_file_generation', 'enabled' );
+			}
+		}
+
+		/**
+		 * Update How-to old user option by checking condition.
+		 *
+		 * @since x.x.x
+		 * @return void
+		 */
+		public function update_uag_old_user_less_than_2_option() {
+			if ( version_compare( UAGB_VER, '2.0.0', '<' ) ) {
+				update_option( 'uagb-old-user-less-than-2', 'yes' );
 			}
 		}
 	}

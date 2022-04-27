@@ -1,0 +1,94 @@
+/**
+ * #.# Editor Styles
+ *
+ * CSS for just Backend enqueued after style.scss
+ * which makes it higher in priority.
+ */
+
+
+.uagb-cta__content-wrap.uagb-cta__icon-position-above-title {
+	text-align: center;
+}
+
+.editor-styles-wrapper .edit-post-visual-editor a.uagb-cta__block-link-wrap {
+	color: inherit;
+}
+
+.editor-styles-wrapper .uagb-cta__title,
+.editor-styles-wrapper .uagb-cta-separator-parent,
+.editor-styles-wrapper .uagb-cta__desc {
+	margin-bottom: 10px;
+}
+
+.editor-styles-wrapper .uagb-cta__desc {
+	margin: 0;
+}
+
+.editor-styles-wrapper .uagb-cta__block-link i {
+	font-style: normal;
+}
+
+.wp-block-uagb-call-to-action.uagb-cta__outer-wrap a.uagb-cta__link-to-all {
+	z-index: 0;
+}
+
+.editor-styles-wrapper {
+
+	.uagb-cta__outer-wrap .uagb-cta__buttons {
+		display: inline-flex;
+	}
+
+	.uagb-cta__outer-wrap a.uagb-cta__button-link-wrapper,
+	.uagb-cta__outer-wrap a.uagb-cta-second__button {
+		text-decoration: none;
+		fill: currentColor;
+	}
+
+	.uagb-editor-preview-mode-tablet {
+
+		.uagb-cta__content-stacked-tablet .uagb-cta__left-right-wrap {
+			flex-direction: column;
+			text-align: center;
+
+			.uagb-cta__link-wrapper {
+				width: 100%;
+
+				.uagb-cta__button-wrapper {
+					float: none;
+					margin: 0 auto;
+				}
+			}
+		}
+	}
+
+	.uagb-editor-preview-mode-mobile {
+
+		.uagb-cta__content-stacked-mobile .uagb-cta__left-right-wrap {
+			flex-direction: column;
+			text-align: center;
+
+			.uagb-cta__link-wrapper {
+				width: 100%;
+
+				.uagb-cta__button-wrapper {
+					float: none;
+					margin: 0 auto;
+				}
+			}
+		}
+
+		.uagb-cta__content-stacked-tablet .uagb-cta__left-right-wrap {
+			flex-direction: column;
+			text-align: center;
+
+			.uagb-cta__link-wrapper {
+				width: 100%;
+
+				.uagb-cta__button-wrapper {
+					float: none;
+					margin: 0 auto;
+				}
+			}
+		}
+	}
+}

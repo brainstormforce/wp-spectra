@@ -1,0 +1,131 @@
+.uagb-container-variation-picker {
+
+	.uagb-variation-close {
+		font-size: 35px;
+		background: none;
+		color: #d5dadf;
+		cursor: pointer;
+		border: none;
+		box-shadow: none;
+		display: flex;
+		align-self: flex-end;
+		position: absolute;
+		top: 3px;
+		z-index: 999999;
+	}
+
+	.components-button,
+	.components-button:hover:not(:disabled) {
+		box-shadow: none;
+		outline: none;
+		color: #d5dadf;
+
+		svg {
+			width: 100px;
+			height: 50px;
+			color: #d5dadf;
+		}
+	}
+
+	.components-button:hover:not(:disabled) svg {
+		color: #bcc0c4;
+	}
+
+	.block-editor-block-variation-picker__skip {
+
+		.components-button {
+			color: #0073aa;
+		}
+	}
+
+	.components-placeholder {
+		align-items: center;
+		border: 1px dashed #d5dadf;
+		box-shadow: none;
+
+		.components-placeholder__label {
+			font-size: 18px;
+			margin-bottom: 0;
+			color: #556068;
+		}
+	}
+
+	.block-editor-block-variation-picker__variation::before {
+		padding-bottom: 0;
+	}
+
+	.components-placeholder__fieldset {
+		align-items: center;
+	}
+
+	.block-editor-block-variation-picker__variations {
+		justify-content: center;
+		width: 750px;
+
+		> li {
+			margin: 8px 30px 0 0;
+			width: 80px;
+		}
+	}
+}
+
+
+.wp-block-uagb-container::before {
+	content: "";
+	position: absolute;
+	border: 1px dashed #d5dadf;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+}
+
+.uagb-container-has-children > .wp-block-uagb-container::before {
+	border: 0;
+}
+
+.wp-block-uagb-container {
+	display: flex;
+
+	& > .block-editor-inner-blocks,
+	& > .block-editor-inner-blocks > .block-editor-block-list__layout {
+		display: flex;
+		width: 100%;
+		height: 100%;
+	}
+
+	.block-editor-block-list__layout {
+
+		.wp-block {
+			margin: 0;
+			padding: 0;
+		}
+
+		.block-list-appender.wp-block {
+
+			button {
+				color: #a0a7ac;
+				font-size: 62px;
+				border: none;
+				box-shadow: none;
+
+				svg {
+					width: 36px;
+					height: 36px;
+				}
+			}
+		}
+	}
+}
+
+.block-editor-block-list__empty-block-inserter .block-editor-inserter {
+	right: -35px;
+}
+
+.uag-container-block-inserter .components-button {
+	color: #1e1e1e;
+}
+
+.wp-block-uagb-container > .block-editor-inner-blocks {
+	z-index: 2;
+}

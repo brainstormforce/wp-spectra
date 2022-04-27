@@ -131,6 +131,12 @@ if ( ! class_exists( 'UAGB_GF_Styler' ) ) {
 							'type'    => 'number',
 							'default' => 1,
 						),
+						'fieldBorderWidthTablet'        => array(
+							'type' => 'number',
+						),
+						'fieldBorderWidthMobile'        => array(
+							'type' => 'number',
+						),
 						'fieldBorderRadius'             => array(
 							'type'    => 'number',
 							'default' => 0,
@@ -162,6 +168,12 @@ if ( ! class_exists( 'UAGB_GF_Styler' ) ) {
 						'buttonBorderWidth'             => array(
 							'type'    => 'number',
 							'default' => 1,
+						),
+						'buttonBorderWidthTablet'       => array(
+							'type' => 'number',
+						),
+						'buttonBorderWidthMobile'       => array(
+							'type' => 'number',
 						),
 						'buttonBorderRadius'            => array(
 							'type'    => 'number',
@@ -195,9 +207,21 @@ if ( ! class_exists( 'UAGB_GF_Styler' ) ) {
 							'type'    => 'number',
 							'default' => '',
 						),
+						'fieldSpacingTablet'            => array(
+							'type' => 'number',
+						),
+						'fieldSpacingMobile'            => array(
+							'type' => 'number',
+						),
 						'fieldLabelSpacing'             => array(
 							'type'    => 'number',
 							'default' => '',
+						),
+						'fieldLabelSpacingTablet'       => array(
+							'type' => 'number',
+						),
+						'fieldLabelSpacingMobile'       => array(
+							'type' => 'number',
 						),
 						'enableLabel'                   => array(
 							'type'    => 'boolean',
@@ -222,9 +246,6 @@ if ( ! class_exists( 'UAGB_GF_Styler' ) ) {
 							'default' => 'Default',
 						),
 						'labelFontWeight'               => array(
-							'type' => 'string',
-						),
-						'labelFontSubset'               => array(
 							'type' => 'string',
 						),
 						'labelLineHeightType'           => array(
@@ -265,9 +286,6 @@ if ( ! class_exists( 'UAGB_GF_Styler' ) ) {
 						'inputFontWeight'               => array(
 							'type' => 'string',
 						),
-						'inputFontSubset'               => array(
-							'type' => 'string',
-						),
 						'inputLineHeightType'           => array(
 							'type'    => 'string',
 							'default' => 'em',
@@ -286,6 +304,12 @@ if ( ! class_exists( 'UAGB_GF_Styler' ) ) {
 							'default' => false,
 						),
 						'textAreaHeight'                => array(
+							'type' => 'number',
+						),
+						'textAreaHeightTablet'          => array(
+							'type' => 'number',
+						),
+						'textAreaHeightMobile'          => array(
 							'type' => 'number',
 						),
 						'buttonFontSize'                => array(
@@ -307,9 +331,6 @@ if ( ! class_exists( 'UAGB_GF_Styler' ) ) {
 							'default' => 'Default',
 						),
 						'buttonFontWeight'              => array(
-							'type' => 'string',
-						),
-						'buttonFontSubset'              => array(
 							'type' => 'string',
 						),
 						'buttonLineHeightType'          => array(
@@ -337,6 +358,12 @@ if ( ! class_exists( 'UAGB_GF_Styler' ) ) {
 							'type'    => 'number',
 							'default' => '20',
 						),
+						'radioCheckSizeTablet'          => array(
+							'type' => 'number',
+						),
+						'radioCheckSizeMobile'          => array(
+							'type' => 'number',
+						),
 						'radioCheckBgColor'             => array(
 							'type'    => 'string',
 							'default' => '#fafafa',
@@ -354,6 +381,14 @@ if ( ! class_exists( 'UAGB_GF_Styler' ) ) {
 							'default' => '#cbcbcb',
 						),
 						'radioCheckBorderWidth'         => array(
+							'type'    => 'number',
+							'default' => '1',
+						),
+						'radioCheckBorderWidthTablet'   => array(
+							'type'    => 'number',
+							'default' => '1',
+						),
+						'radioCheckBorderWidthMobile'   => array(
 							'type'    => 'number',
 							'default' => '1',
 						),
@@ -380,9 +415,6 @@ if ( ! class_exists( 'UAGB_GF_Styler' ) ) {
 							'default' => 'Default',
 						),
 						'radioCheckFontWeight'          => array(
-							'type' => 'string',
-						),
-						'radioCheckFontSubset'          => array(
 							'type' => 'string',
 						),
 						'radioCheckLineHeightType'      => array(
@@ -437,9 +469,6 @@ if ( ! class_exists( 'UAGB_GF_Styler' ) ) {
 							'default' => 'Default',
 						),
 						'validationMsgFontWeight'       => array(
-							'type' => 'string',
-						),
-						'validationMsgFontSubset'       => array(
 							'type' => 'string',
 						),
 						'validationMsgLineHeightType'   => array(
@@ -512,9 +541,6 @@ if ( ! class_exists( 'UAGB_GF_Styler' ) ) {
 						'msgFontWeight'                 => array(
 							'type' => 'string',
 						),
-						'msgFontSubset'                 => array(
-							'type' => 'string',
-						),
 						'msgLineHeightType'             => array(
 							'type'    => 'string',
 							'default' => 'em',
@@ -569,9 +595,6 @@ if ( ! class_exists( 'UAGB_GF_Styler' ) ) {
 						'successMsgFontWeight'          => array(
 							'type' => 'string',
 						),
-						'successMsgFontSubset'          => array(
-							'type' => 'string',
-						),
 						'successMsgLineHeightType'      => array(
 							'type'    => 'string',
 							'default' => 'em',
@@ -586,6 +609,257 @@ if ( ! class_exists( 'UAGB_GF_Styler' ) ) {
 							'type' => 'number',
 						),
 						'successMsgLoadGoogleFonts'     => array(
+							'type'    => 'boolean',
+							'default' => false,
+						),
+						'msgleftPadding'                => array(
+							'type'    => 'number',
+							'default' => '',
+						),
+						'msgrightPadding'               => array(
+							'type'    => 'number',
+							'default' => '',
+						),
+						'msgtopPadding'                 => array(
+							'type'    => 'number',
+							'default' => '',
+						),
+						'msgbottomPadding'              => array(
+							'type'    => 'number',
+							'default' => '',
+						),
+						'msgleftMobilePadding'          => array(
+							'type'    => 'number',
+							'default' => '',
+						),
+						'msgrightMobilePadding'         => array(
+							'type'    => 'number',
+							'default' => '',
+						),
+						'msgtopMobilePadding'           => array(
+							'type'    => 'number',
+							'default' => '',
+						),
+						'msgbottomMobilePadding'        => array(
+							'type'    => 'number',
+							'default' => '',
+						),
+						'msgleftTabletPadding'          => array(
+							'type'    => 'number',
+							'default' => '',
+						),
+						'msgrightTabletPadding'         => array(
+							'type'    => 'number',
+							'default' => '',
+						),
+						'msgtopTabletPadding'           => array(
+							'type'    => 'number',
+							'default' => '',
+						),
+						'msgbottomTabletPadding'        => array(
+							'type'    => 'number',
+							'default' => '',
+						),
+						'msgtabletPaddingUnit'          => array(
+							'type'    => 'string',
+							'default' => 'px',
+						),
+						'msgmobilePaddingUnit'          => array(
+							'type'    => 'string',
+							'default' => 'px',
+						),
+						'msgpaddingUnit'                => array(
+							'type'    => 'string',
+							'default' => 'px',
+						),
+						'msgpaddingLink'                => array(
+							'type'    => 'boolean',
+							'default' => false,
+						),
+						'buttonleftPadding'             => array(
+							'type' => 'number',
+						),
+						'buttonrightPadding'            => array(
+							'type' => 'number',
+						),
+						'buttontopPadding'              => array(
+							'type' => 'number',
+						),
+						'buttonbottomPadding'           => array(
+							'type' => 'number',
+						),
+						'buttonleftMobilePadding'       => array(
+							'type'    => 'number',
+							'default' => '',
+						),
+						'buttonrightMobilePadding'      => array(
+							'type'    => 'number',
+							'default' => '',
+						),
+						'buttontopMobilePadding'        => array(
+							'type'    => 'number',
+							'default' => '',
+						),
+						'buttonbottomMobilePadding'     => array(
+							'type'    => 'number',
+							'default' => '',
+						),
+						'buttonleftTabletPadding'       => array(
+							'type'    => 'number',
+							'default' => '',
+						),
+						'buttonrightTabletPadding'      => array(
+							'type'    => 'number',
+							'default' => '',
+						),
+						'buttontopTabletPadding'        => array(
+							'type'    => 'number',
+							'default' => '',
+						),
+						'buttonbottomTabletPadding'     => array(
+							'type'    => 'number',
+							'default' => '',
+						),
+						'buttonpaddingLink'             => array(
+							'type'    => 'boolean',
+							'default' => false,
+						),
+						'buttontabletPaddingUnit'       => array(
+							'type'    => 'string',
+							'default' => 'px',
+						),
+						'buttonmobilePaddingUnit'       => array(
+							'type'    => 'string',
+							'default' => 'px',
+						),
+						'buttonpaddingUnit'             => array(
+							'type'    => 'string',
+							'default' => 'px',
+						),
+						'fieldleftPadding'              => array(
+							'type' => 'number',
+						),
+						'fieldrightPadding'             => array(
+							'type' => 'number',
+						),
+						'fieldtopPadding'               => array(
+							'type' => 'number',
+						),
+						'fieldbottomPadding'            => array(
+							'type' => 'number',
+						),
+						'fieldleftMobilePadding'        => array(
+							'type'    => 'number',
+							'default' => '',
+						),
+						'fieldrightMobilePadding'       => array(
+							'type'    => 'number',
+							'default' => '',
+						),
+						'fieldtopMobilePadding'         => array(
+							'type'    => 'number',
+							'default' => '',
+						),
+						'fieldbottomMobilePadding'      => array(
+							'type'    => 'number',
+							'default' => '',
+						),
+						'fieldleftTabletPadding'        => array(
+							'type'    => 'number',
+							'default' => '',
+						),
+						'fieldrightTabletPadding'       => array(
+							'type'    => 'number',
+							'default' => '',
+						),
+						'fieldtopTabletPadding'         => array(
+							'type'    => 'number',
+							'default' => '',
+						),
+						'fieldbottomTabletPadding'      => array(
+							'type'    => 'number',
+							'default' => '',
+						),
+						'fieldtabletPaddingUnit'        => array(
+							'type'    => 'string',
+							'default' => 'px',
+						),
+						'fieldmobilePaddingUnit'        => array(
+							'type'    => 'string',
+							'default' => 'px',
+						),
+						'fieldpaddingUnit'              => array(
+							'type'    => 'string',
+							'default' => 'px',
+						),
+						'fieldpaddingLink'              => array(
+							'type'    => 'boolean',
+							'default' => false,
+						),
+						'labelTransform'                => array(
+							'type' => 'string',
+						),
+						'labelDecoration'               => array(
+							'type' => 'string',
+						),
+						'labelFontStyle'                => array(
+							'type' => 'string',
+						),
+						'inputTransform'                => array(
+							'type' => 'string',
+						),
+						'inputDecoration'               => array(
+							'type' => 'string',
+						),
+						'inputFontStyle'                => array(
+							'type' => 'string',
+						),
+						'buttonTransform'               => array(
+							'type' => 'string',
+						),
+						'buttonDecoration'              => array(
+							'type' => 'string',
+						),
+						'buttonFontStyle'               => array(
+							'type' => 'string',
+						),
+						'radioCheckTransform'           => array(
+							'type' => 'string',
+						),
+						'radioCheckDecoration'          => array(
+							'type' => 'string',
+						),
+						'radioCheckFontStyle'           => array(
+							'type' => 'string',
+						),
+						'validationMsgTransform'        => array(
+							'type' => 'string',
+						),
+						'validationMsgDecoration'       => array(
+							'type' => 'string',
+						),
+						'validationMsgFontStyle'        => array(
+							'type' => 'string',
+						),
+						'msgTransform'                  => array(
+							'type' => 'string',
+						),
+						'msgDecoration'                 => array(
+							'type' => 'string',
+						),
+						'msgFontStyle'                  => array(
+							'type' => 'string',
+						),
+						'successMsgTransform'           => array(
+							'type' => 'string',
+						),
+						'successMsgDecoration'          => array(
+							'type' => 'string',
+						),
+						'successMsgFontStyle'           => array(
+							'type' => 'string',
+						),
+						'isPreview'                     => array(
 							'type'    => 'boolean',
 							'default' => false,
 						),
@@ -629,7 +903,7 @@ if ( ! class_exists( 'UAGB_GF_Styler' ) ) {
 			$tab_class     = '';
 			$mob_class     = '';
 
-			if ( array_key_exists( 'UAGDisplayConditions', $attributes ) && 'responsiveVisibility' === $attributes['UAGDisplayConditions'] ) {
+			if ( array_key_exists( 'UAGHideDesktop', $attributes ) || array_key_exists( 'UAGHideTab', $attributes ) || array_key_exists( 'UAGHideMob', $attributes ) ) {
 
 				$desktop_class = ( isset( $attributes['UAGHideDesktop'] ) ) ? 'uag-hide-desktop' : '';
 

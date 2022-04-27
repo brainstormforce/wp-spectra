@@ -1,18 +1,14 @@
 /**
- * BLOCK: Column - Save Block
+ * BLOCK: Marketing button - Save Block
  */
 
 // Import block dependencies and components.
-import classnames from "classnames"
-import renderSVG from "@Controls/renderIcon"
-
-const {
-	RichText
-} = wp.blockEditor
+import classnames from 'classnames';
+import renderSVG from '@Controls/renderIcon';
+import { RichText } from '@wordpress/block-editor';
 
 export default function save( props ) {
-
-	const { attributes, className } = props
+	const { attributes, className } = props;
 
 	const {
 		block_id,
@@ -24,43 +20,66 @@ export default function save( props ) {
 		prefix,
 		link,
 		linkTarget,
-		titleTag
-	} = props.attributes
+		titleTag,
+		showDescription
+	} = attributes;
 
-	let target = ( linkTarget ) ? "_blank" : ""
+	const target = linkTarget ? '_blank' : '';
+
+	const iconHTML = (
+		<>
+			{ '' !== icon && (
+				renderSVG( icon )
+			) }
+		</>
+	);
+	const titleHTML = (
+		<>
+			<RichText.Content
+				value={ heading }
+				tagName={ titleTag }
+				className="uagb-marketing-btn__title"
+			/>
+		</>
+	);
 
 	return (
-		<div className={ classnames(
-			className,
-			"uagb-marketing-btn__outer-wrap",
-			`uagb-marketing-btn__align-${ align }`,
-			`uagb-marketing-btn__align-text-${ textAlign }`,
-			`uagb-marketing-btn__icon-${ iconPosition }`,
-			`uagb-block-${ block_id }`
-		) }>
-			<div className="uagb-marketing-btn__wrap">
-				<a href={ link } className="uagb-marketing-btn__link" target={ target } rel ="noopener noreferrer">
-					<div className="uagb-marketing-btn__title-wrap">
-						{ "" != icon &&
-							<div className="uagb-marketing-btn__icon-wrap">
-								{ renderSVG( icon ) }
-							</div>
+		<div
+			className={ classnames(
+				className,
+				`uagb-marketing-btn__align-${ align }`,
+				`uagb-marketing-btn__align-text-${ textAlign }`,
+				`uagb-marketing-btn__icon-${ iconPosition }`,
+				`uagb-block-${ block_id }`,
+				'wp-block-button'
+			) }
+		>
+				<a
+					href={ link }
+					className="uagb-marketing-btn__link wp-block-button__link"
+					target={ target }
+					rel="noopener noreferrer"
+				>
+						{ 'before' === iconPosition &&
+							<>
+							{ iconHTML }
+							{ titleHTML }
+							</>
 						}
-						<RichText.Content
-							value={ heading }
-							tagName={ titleTag }
-							className='uagb-marketing-btn__title'
-						/>
-					</div>
-					<div className="uagb-marketing-btn__prefix-wrap">
+						{ 'after' === iconPosition &&
+							<>
+							{ titleHTML }
+							{ iconHTML }
+							</>
+						}
+						{ showDescription && (
 						<RichText.Content
 							value={ prefix }
-							tagName='p'
-							className='uagb-marketing-btn__prefix'
+							tagName="p"
+							className="uagb-marketing-btn__prefix"
 						/>
-					</div>
+						) }
 				</a>
-			</div>
 		</div>
-	)
+	);
 }

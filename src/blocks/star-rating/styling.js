@@ -2,18 +2,20 @@
  * Returns Dynamic Generated CSS
  */
 
-import generateCSS from "@Controls/generateCSS"
-import generateCSSUnit from "@Controls/generateCSSUnit"
+import generateCSS from '@Controls/generateCSS';
+import generateCSSUnit from '@Controls/generateCSSUnit';
 
 function styling( props ) {
-
 	const {
-		range,
 		layout,
 		rating,
 		size,
+		sizeMobile,
+		sizeTablet,
 		align,
 		gap,
+		gapTablet,
+		gapMobile,
 		unmarkedColor,
 		color,
 		fontFamily,
@@ -27,12 +29,17 @@ function styling( props ) {
 		lineHeightMobile,
 		lineHeightTablet,
 		titleColor,
-		titleGap
-	} = props.attributes
+		titleGap,
+		titleGapTablet,
+		titleGapMobile,
+		fontStyle,
+		fontTransform,
+		fontDecoration,
+	} = props.attributes;
 
 	let alignment = 'flex-start';
-	let stack_alignment = align;
-	
+	let stackAlignment = align;
+
 	if ( align ) {
 		if ( 'right' === align ) {
 			alignment = 'flex-end';
@@ -42,80 +49,120 @@ function styling( props ) {
 		}
 		if ( 'full' === align ) {
 			alignment = 'space-between';
-			stack_alignment = 'left';
+			stackAlignment = 'left';
 		}
 	}
 
-	let remainder = ( rating % 1 ).toFixed(1);
-	let width = remainder * 100;
-	
-	var selectors = {
-		" .uag-star-rating": {
-			"font-size": generateCSSUnit( size, 'px' ),
+	const remainder = ( rating % 1 ).toFixed( 1 );
+	const width = remainder * 100;
+
+	const selectors = {
+		' .uag-star-rating': {
+			'font-size': generateCSSUnit( size, 'px' ),
 		},
-		" .uag-star-rating > span": {
-			"margin-right": generateCSSUnit( gap, 'px' ),
-			"color": unmarkedColor
+		' .uag-star-rating > span': {
+			'margin-right': generateCSSUnit( gap, 'px' ),
+			'color': unmarkedColor,
 		},
-		" .uag-star-rating__title.block-editor-rich-text__editable": {
-			"font-size": generateCSSUnit( fontSize, fontSizeType ),
-			"font-family": fontFamily,
-			"font-weight": fontWeight,
-			"line-height": generateCSSUnit(lineHeight,lineHeightType ),
-			"color": titleColor,
+		' .uag-star-rating__title.block-editor-rich-text__editable': {
+			'font-size': generateCSSUnit( fontSize, fontSizeType ),
+			'font-family': fontFamily,
+			'font-style' : fontStyle,
+			'text-decoration': fontDecoration,
+			'text-transform': fontTransform,
+			'font-weight': fontWeight,
+			'line-height': generateCSSUnit( lineHeight, lineHeightType ),
+			'color': titleColor,
 		},
-		".uag-star-rating__wrapper" : {
+		'.wp-block-uagb-star-rating ': {
 			'justify-content': alignment,
-			'text-align' : stack_alignment,
-		}
+			'text-align': stackAlignment,
+		},
+	};
+	let index = 'margin-right';
+	if ( 'stack' === layout ) {
+		index = 'margin-bottom';
+		selectors[ '.wp-block-uagb-star-rating ' ] = {
+			'display' : 'block',
+			'text-align': stackAlignment,
+		};
 	}
 
-	var index = "margin-right";
-	if ( 'stack' === layout ) {
-		index = "margin-bottom";
-	}
-	selectors[" .uag-star-rating__title.block-editor-rich-text__editable"][index] = generateCSSUnit( titleGap, "px" );
+	selectors[ ' .uag-star-rating__title.block-editor-rich-text__editable' ][
+		index
+	] = generateCSSUnit( titleGap, 'px' );
 
 	if ( 0 !== width ) {
-		selectors[" .uag-star:nth-child(" + Math.ceil( rating ) + "):before"] = {
-			"color": color,
-			"width": generateCSSUnit( width, "%" ),
-			"position" : "absolute",
-			"content" : "'★'",
-			"overflow" : "hidden"
-		}
+		selectors[
+			' .uag-star:nth-child(' + Math.ceil( rating ) + '):before'
+		] = {
+			'color': color,
+			'width': generateCSSUnit( width, '%' ),
+			'position': 'absolute',
+			'content': "'★'",
+			'overflow': 'hidden',
+		};
 
-		selectors[" .uag-star:nth-child(" + Math.ceil( rating ) + ")"] = {
-			"position" : "relative",
-		}
+		selectors[ ' .uag-star:nth-child(' + Math.ceil( rating ) + ')' ] = {
+			'position': 'relative',
+		};
 	}
 
-	selectors[" .uag-star:nth-child(-n+" + Math.floor( rating ) + ")"] = {
-		"color": color,
-	}
+	selectors[ ' .uag-star:nth-child(-n+' + Math.floor( rating ) + ')' ] = {
+		'color': color,
+	};
 
-	var tablet_selectors = {
-		" .uag-star-rating__title.block-editor-rich-text__editable": {
-			"font-size": generateCSSUnit( fontSizeTablet, fontSizeType ),
-			"line-height": generateCSSUnit( lineHeightTablet, lineHeightType ),
+	const tabletSelectors = {
+		' .uag-star-rating': {
+			'font-size': generateCSSUnit( sizeTablet, 'px' ),
 		},
-	}
-	var mobile_selectors = {
-		" .uag-star-rating__title.block-editor-rich-text__editable": {
-			"font-size": generateCSSUnit( fontSizeMobile, fontSizeType ),
-			"line-height": generateCSSUnit( lineHeightMobile, lineHeightType ),
+		' .uag-star-rating > span': {
+			'margin-right': generateCSSUnit( gapTablet, 'px' ),
 		},
-	}
+		' .uag-star-rating__title.block-editor-rich-text__editable': {
+			'font-size': generateCSSUnit( fontSizeTablet, fontSizeType ),
+			'line-height': generateCSSUnit( lineHeightTablet, lineHeightType ),
+		},
+	};
+	const mobileSelectors = {
+		' .uag-star-rating': {
+			'font-size': generateCSSUnit( sizeMobile, 'px' ),
+		},
+		' .uag-star-rating > span': {
+			'margin-right': generateCSSUnit( gapMobile, 'px' ),
+		},
+		' .uag-star-rating__title.block-editor-rich-text__editable': {
+			'font-size': generateCSSUnit( fontSizeMobile, fontSizeType ),
+			'line-height': generateCSSUnit( lineHeightMobile, lineHeightType ),
+		},
+	};
 
-	var base_selector = `.uagb-block-${ props.clientId.substr( 0, 8 ) }`
+	tabletSelectors[ ' .uag-star-rating__title.block-editor-rich-text__editable' ][
+		index
+	] = generateCSSUnit( titleGapTablet, 'px' );
+	mobileSelectors[ ' .uag-star-rating__title.block-editor-rich-text__editable' ][
+		index
+	] = generateCSSUnit( titleGapMobile, 'px' );
 
-	var styling_css = generateCSS( selectors, base_selector )
+	const baseSelector = `.uagb-block-${ props.clientId.substr( 0, 8 ) }`;
 
-	styling_css += generateCSS( tablet_selectors, `${ base_selector }.uagb-editor-preview-mode-tablet`, true, "tablet" )
+	let stylingCss = generateCSS( selectors, baseSelector );
 
-	styling_css += generateCSS( mobile_selectors, `${ base_selector }.uagb-editor-preview-mode-mobile`, true, "mobile" )
+	stylingCss += generateCSS(
+		tabletSelectors,
+		`${ baseSelector }.uagb-editor-preview-mode-tablet`,
+		true,
+		'tablet'
+	);
 
-	return styling_css
+	stylingCss += generateCSS(
+		mobileSelectors,
+		`${ baseSelector }.uagb-editor-preview-mode-mobile`,
+		true,
+		'mobile'
+	);
+
+	return stylingCss;
 }
 
-export default styling
+export default styling;

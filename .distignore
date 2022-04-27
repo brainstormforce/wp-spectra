@@ -7,6 +7,16 @@
 .gitlab-ci.yml
 .travis.yml
 .DS_Store
+.github
+.wordpress-org
+.eslintrc.js
+.eslintignore
+.prettierrc.js
+.prettierignore
+.browserslistrc
+.babelrc
+.stylelintignore
+.stylelintrc
 Thumbs.db
 behat.yml
 bin
@@ -35,8 +45,5 @@ src
 eslintrc.json
 scripts
 config
-.github
-.wordpress-org
-.eslintignore
-.eslintrc.js
 artifact
+webpack.config.js
