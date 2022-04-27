@@ -775,39 +775,21 @@ const Settings = ( props ) => {
 						},
 					] }
 				/>
-				<ResponsiveSlider
-					label={ __(
-						'Rounded Corners',
-						'ultimate-addons-for-gutenberg'
-					) }
-					data={ {
-						desktop: {
-							value: borderRadius,
-							label: 'borderRadius',
-						},
-						tablet: {
-							value: borderRadiusTablet,
-							label: 'borderRadiusTablet',
-						},
-						mobile: {
-							value: borderRadiusMobile,
-							label: 'borderRadiusMobile',
-						},
-					} }
-					min={ 0 }
-					max={ 50 }
-					displayUnit={ false }
-					setAttributes={ setAttributes }
-				/>
 			</UAGAdvancedPanelBody>
 		);
 	};
-	const headingColorSettings = () => {
+	const timelineItemColorSettings = () => {
 		return (
 			<UAGAdvancedPanelBody
-				title={ __( 'Heading', 'ultimate-addons-for-gutenberg' ) }
+				title={ __( 'Timeline Item', 'ultimate-addons-for-gutenberg' ) }
 				initialOpen={ false }
 			>
+				<h2>
+					{ __(
+						'Heading',
+						'ultimate-addons-for-gutenberg'
+					) }
+				</h2>
 				<AdvancedPopColorControl
 					label={ __( 'Color', 'ultimate-addons-for-gutenberg' ) }
 					colorValue={ headingColor ? headingColor : '' }
@@ -900,15 +882,13 @@ const Settings = ( props ) => {
 					displayUnit={ false }
 					setAttributes={ setAttributes }
 				/>
-			</UAGAdvancedPanelBody>
-		);
-	};
-	const contentColorSettings = () => {
-		return (
-			<UAGAdvancedPanelBody
-				title={ __( 'Content', 'ultimate-addons-for-gutenberg' ) }
-				initialOpen={ false }
-			>
+				<hr className="uagb-editor__separator" />
+				<h2>
+					{ __(
+						'Description',
+						'ultimate-addons-for-gutenberg'
+					) }
+				</h2>
 				<AdvancedPopColorControl
 					label={ __( 'Color', 'ultimate-addons-for-gutenberg' ) }
 					colorValue={ subHeadingColor ? subHeadingColor : '' }
@@ -980,9 +960,228 @@ const Settings = ( props ) => {
 						label: 'subHeadDecoration',
 					} }
 				/>
+				<hr className="uagb-editor__separator" />
+				<h2>
+					{ __(
+						'Timeline',
+						'ultimate-addons-for-gutenberg'
+					) }
+				</h2>
+				<ResponsiveSlider
+					label={ __(
+						'Border radius',
+						'ultimate-addons-for-gutenberg'
+					) }
+					data={ {
+						desktop: {
+							value: borderRadius,
+							label: 'borderRadius',
+						},
+						tablet: {
+							value: borderRadiusTablet,
+							label: 'borderRadiusTablet',
+						},
+						mobile: {
+							value: borderRadiusMobile,
+							label: 'borderRadiusMobile',
+						},
+					} }
+					min={ 0 }
+					max={ 50 }
+					displayUnit={ false }
+					setAttributes={ setAttributes }
+				/>
+				<AdvancedPopColorControl
+					label={ __( 'Background Color', 'ultimate-addons-for-gutenberg' ) }
+					colorValue={ backgroundColor ? backgroundColor : '' }
+					onColorChange={ ( value ) =>
+						setAttributes( { backgroundColor: value } )
+					}
+				/>
 			</UAGAdvancedPanelBody>
-		);
-	};
+		)
+		};
+	// const headingColorSettings = () => {
+	// 	return (
+	// 		<UAGAdvancedPanelBody
+	// 			title={ __( 'Heading', 'ultimate-addons-for-gutenberg' ) }
+	// 			initialOpen={ false }
+	// 		>
+	// 			<AdvancedPopColorControl
+	// 				label={ __( 'Color', 'ultimate-addons-for-gutenberg' ) }
+	// 				colorValue={ headingColor ? headingColor : '' }
+	// 				onColorChange={ ( value ) =>
+	// 					setAttributes( { headingColor: value } )
+	// 				}
+	// 			/>
+	// 			<TypographyControl
+	// 				label={ __(
+	// 					'Typography',
+	// 					'ultimate-addons-for-gutenberg'
+	// 				) }
+	// 				attributes={ props.attributes }
+	// 				setAttributes={ setAttributes }
+	// 				loadGoogleFonts={ {
+	// 					value: headLoadGoogleFonts,
+	// 					label: 'headLoadGoogleFonts',
+	// 				} }
+	// 				fontFamily={ {
+	// 					value: headFontFamily,
+	// 					label: 'headFontFamily',
+	// 				} }
+	// 				fontWeight={ {
+	// 					value: headFontWeight,
+	// 					label: 'headFontWeight',
+	// 				} }
+	// 				fontStyle={ {
+	// 					value: headFontStyle,
+	// 					label: 'headFontStyle',
+	// 				} }
+	// 				fontSizeType={ {
+	// 					value: headFontSizeType,
+	// 					label: 'headFontSizeType',
+	// 				} }
+	// 				fontSize={ { value: headFontSize, label: 'headFontSize' } }
+	// 				fontSizeMobile={ {
+	// 					value: headFontSizeMobile,
+	// 					label: 'headFontSizeMobile',
+	// 				} }
+	// 				fontSizeTablet={ {
+	// 					value: headFontSizeTablet,
+	// 					label: 'headFontSizeTablet',
+	// 				} }
+	// 				lineHeightType={ {
+	// 					value: headLineHeightType,
+	// 					label: 'headLineHeightType',
+	// 				} }
+	// 				lineHeight={ {
+	// 					value: headLineHeight,
+	// 					label: 'headLineHeight',
+	// 				} }
+	// 				lineHeightMobile={ {
+	// 					value: headLineHeightMobile,
+	// 					label: 'headLineHeightMobile',
+	// 				} }
+	// 				lineHeightTablet={ {
+	// 					value: headLineHeightTablet,
+	// 					label: 'headLineHeightTablet',
+	// 				} }
+	// 				transform={ {
+	// 					value: headTransform,
+	// 					label: 'headTransform',
+	// 				} }
+	// 				decoration={ {
+	// 					value: headDecoration,
+	// 					label: 'headDecoration',
+	// 				} }
+	// 			/>
+	// 			<ResponsiveSlider
+	// 				label={ __(
+	// 					'Bottom Spacing',
+	// 					'ultimate-addons-for-gutenberg'
+	// 				) }
+	// 				data={ {
+	// 					desktop: {
+	// 						value: headSpace,
+	// 						label: 'headSpace',
+	// 					},
+	// 					tablet: {
+	// 						value: headSpaceTablet,
+	// 						label: 'headSpaceTablet',
+	// 					},
+	// 					mobile: {
+	// 						value: headSpaceMobile,
+	// 						label: 'headSpaceMobile',
+	// 					},
+	// 				} }
+	// 				min={ 0 }
+	// 				max={ 50 }
+	// 				displayUnit={ false }
+	// 				setAttributes={ setAttributes }
+	// 			/>
+	// 		</UAGAdvancedPanelBody>
+	// 	);
+	// };
+	// const contentColorSettings = () => {
+	// 	return (
+	// 		<UAGAdvancedPanelBody
+	// 			title={ __( 'Content', 'ultimate-addons-for-gutenberg' ) }
+	// 			initialOpen={ false }
+	// 		>
+	// 			<AdvancedPopColorControl
+	// 				label={ __( 'Color', 'ultimate-addons-for-gutenberg' ) }
+	// 				colorValue={ subHeadingColor ? subHeadingColor : '' }
+	// 				onColorChange={ ( value ) =>
+	// 					setAttributes( { subHeadingColor: value } )
+	// 				}
+	// 			/>
+	// 			<TypographyControl
+	// 				label={ __(
+	// 					'Typography',
+	// 					'ultimate-addons-for-gutenberg'
+	// 				) }
+	// 				attributes={ props.attributes }
+	// 				setAttributes={ setAttributes }
+	// 				loadGoogleFonts={ {
+	// 					value: subHeadLoadGoogleFonts,
+	// 					label: 'subHeadLoadGoogleFonts',
+	// 				} }
+	// 				fontFamily={ {
+	// 					value: subHeadFontFamily,
+	// 					label: 'subHeadFontFamily',
+	// 				} }
+	// 				fontWeight={ {
+	// 					value: subHeadFontWeight,
+	// 					label: 'subHeadFontWeight',
+	// 				} }
+	// 				fontStyle={ {
+	// 					value: subHeadFontStyle,
+	// 					label: 'subHeadFontStyle',
+	// 				} }
+	// 				fontSizeType={ {
+	// 					value: subHeadFontSizeType,
+	// 					label: 'subHeadFontSizeType',
+	// 				} }
+	// 				fontSize={ {
+	// 					value: subHeadFontSize,
+	// 					label: 'subHeadFontSize',
+	// 				} }
+	// 				fontSizeMobile={ {
+	// 					value: subHeadFontSizeMobile,
+	// 					label: 'subHeadFontSizeMobile',
+	// 				} }
+	// 				fontSizeTablet={ {
+	// 					value: subHeadFontSizeTablet,
+	// 					label: 'subHeadFontSizeTablet',
+	// 				} }
+	// 				lineHeightType={ {
+	// 					value: subHeadLineHeightType,
+	// 					label: 'subHeadLineHeightType',
+	// 				} }
+	// 				lineHeight={ {
+	// 					value: subHeadLineHeight,
+	// 					label: 'subHeadLineHeight',
+	// 				} }
+	// 				lineHeightMobile={ {
+	// 					value: subHeadLineHeightMobile,
+	// 					label: 'subHeadLineHeightMobile',
+	// 				} }
+	// 				lineHeightTablet={ {
+	// 					value: subHeadLineHeightTablet,
+	// 					label: 'subHeadLineHeightTablet',
+	// 				} }
+	// 				transform={ {
+	// 					value: subHeadTransform,
+	// 					label: 'subHeadTransform',
+	// 				} }
+	// 				decoration={ {
+	// 					value: subHeadDecoration,
+	// 					label: 'subHeadDecoration',
+	// 				} }
+	// 			/>
+	// 		</UAGAdvancedPanelBody>
+	// 	);
+	// };
 	const dateColorSettings = () => {
 		return (
 			<UAGAdvancedPanelBody
@@ -1103,22 +1302,22 @@ const Settings = ( props ) => {
 			</UAGAdvancedPanelBody>
 		);
 	};
-	const backgroundColorSetting = () => {
-		return (
-			<UAGAdvancedPanelBody
-				title={ __( 'Background', 'ultimate-addons-for-gutenberg' ) }
-				initialOpen={ false }
-			>
-				<AdvancedPopColorControl
-					label={ __( 'Color', 'ultimate-addons-for-gutenberg' ) }
-					colorValue={ backgroundColor ? backgroundColor : '' }
-					onColorChange={ ( value ) =>
-						setAttributes( { backgroundColor: value } )
-					}
-				/>
-			</UAGAdvancedPanelBody>
-		);
-	};
+	// const backgroundColorSetting = () => {
+	// 	return (
+	// 		<UAGAdvancedPanelBody
+	// 			title={ __( 'Background', 'ultimate-addons-for-gutenberg' ) }
+	// 			initialOpen={ false }
+	// 		>
+	// 			<AdvancedPopColorControl
+	// 				label={ __( 'Color', 'ultimate-addons-for-gutenberg' ) }
+	// 				colorValue={ backgroundColor ? backgroundColor : '' }
+	// 				onColorChange={ ( value ) =>
+	// 					setAttributes( { backgroundColor: value } )
+	// 				}
+	// 			/>
+	// 		</UAGAdvancedPanelBody>
+	// 	);
+	// };
 	const connectorColorSettings = () => {
 		const iconColorSettings = (
 			<UAGAdvancedPanelBody>
@@ -1299,12 +1498,10 @@ const Settings = ( props ) => {
 						{ connectorSettings() }
 					</InspectorTab>
 					<InspectorTab { ...UAGTabs.style }>
-						{ headingColorSettings() }
-						{ contentColorSettings() }
-						{ displayPostDate && dateColorSettings() }
-						{ backgroundColorSetting() }
-						{ connectorColorSettings() }
 						{ spacingSettings() }
+						{ timelineItemColorSettings() }
+						{ displayPostDate && dateColorSettings() }
+						{ connectorColorSettings() }
 					</InspectorTab>
 					<InspectorTab
 						{ ...UAGTabs.advance }
