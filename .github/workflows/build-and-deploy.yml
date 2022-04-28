@@ -61,5 +61,17 @@ jobs:
         remote_user: ${{ secrets.SSH_USER }}
         remote_key: ${{ secrets.SSH_KEY }}
 
+    - name: Rsync Drive Deployment
+      uses: burnett01/rsync-deployments@4.1
+      if: env.ENVIRONMENT == RELEASE_CANDIDATE
+      with:
+        # switches: -avzr --delete
+        switches: -avzr
+        path: artifact/ultimate-addons-for-gutenberg/
+        remote_path: ${{ secrets.SSH_DRIVE_PATH }}
+        remote_host: ${{ secrets.SSH_DRIVE_HOST }}
+        remote_user: ${{ secrets.SSH_DRIVE_USER }}
+        remote_key: ${{ secrets.SSH_DRIVE_KEY }}
+
     - name: Cleanup
       run: rm -rf artifact
