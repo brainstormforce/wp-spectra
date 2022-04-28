@@ -102,17 +102,19 @@ const Render = ( props ) => {
 					multiline={ false }
 					id={ block_id }
 				/>
-				<SelectControl
-					className= { 'uagb-forms-input uagb-form-phone-country uagb-form-phone-country-editor' }
-					options={ contryCode }
-					value={ selectPhoneCode }
-					onChange={ ( value ) =>
-						setAttributes( {
-							selectPhoneCode: value,
-						} )
-					}
-				/>
-				{ phone_html }
+				<div className="uagb-forms-phone__editor-flex">
+					<SelectControl
+						className= { 'uagb-forms-input uagb-form-phone-country uagb-form-phone-country-editor' }
+						options={ contryCode }
+						value={ selectPhoneCode }
+						onChange={ ( value ) =>
+							setAttributes( {
+								selectPhoneCode: value,
+							} )
+						}
+					/>
+					{ phone_html }
+				</div>
 			</div>
 		</>
 	);
