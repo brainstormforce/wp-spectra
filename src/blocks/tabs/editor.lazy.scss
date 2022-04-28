@@ -15,9 +15,11 @@
 		cursor: pointer;
 		z-index: 1;
 	}
+
 	.uagb-tabs__icon {
 		align-self: start;
 	}
+
 	li.uagb-tab {
 		position: relative;
 
@@ -57,6 +59,7 @@
 			vertical-align: middle;
 		}
 	}
+
 	ul.uagb-tabs__panel {
 		margin-top: 12px;
 	}
