@@ -242,6 +242,7 @@ const attributes = {
 	},
 	descFontSize: {
 		type: 'number',
+		default: 18,
 		UAGCopyPaste: {
 			styleType: 'desc-font-size'
 		},
@@ -267,6 +268,7 @@ const attributes = {
 	},
 	descFontWeight: {
 		type: 'string',
+		default: '400',
 		UAGCopyPaste: {
 			styleType: 'desc-font-weight'
 		},
@@ -279,13 +281,14 @@ const attributes = {
 	},
 	descLineHeightType: {
 		type: 'string',
+		default: 'em',
 		UAGCopyPaste: {
 			styleType: 'desc-line-height-type'
 		},
-		default: 'em',
 	},
 	descLineHeight: {
 		type: 'number',
+		default: 1.6,
 		UAGCopyPaste: {
 			styleType: 'desc-line-height'
 		},
@@ -336,21 +339,21 @@ const attributes = {
 		UAGCopyPaste: {
 			styleType: 'desc-bottom-margin'
 		},
-		default: 15,
+		default: 25,
 	},
 	descSpaceTablet: {
 		type: 'number',
 		UAGCopyPaste: {
 			styleType: 'desc-bottom-margin-tablet'
 		},
-		default: 15,
+		default: 25,
 	},
 	descSpaceMobile: {
 		type: 'number',
 		UAGCopyPaste: {
 			styleType: 'desc-bottom-margin-mobile'
 		},
-		default: 15,
+		default: 25,
 	},
 	block_id: {
 		type: 'string',
