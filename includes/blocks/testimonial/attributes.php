@@ -77,7 +77,7 @@ return array(
 	'arrowColor'              => '#333',
 	'arrowDots'               => 'arrowDots',
 	'arrowBorderSize'         => 0,
-	'arrowBorderRadius'       => 50,
+	'arrowBorderRadius'       => 0,
 	'columns'                 => 1,
 	'autoplaySpeed'           => 2000,
 	'autoplay'                => true,

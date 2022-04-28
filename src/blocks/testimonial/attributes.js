@@ -477,7 +477,7 @@ const attributes = {
 	},
 	arrowBorderSize: {
 		type: 'number',
-		default: 1,
+		default: 0,
 		UAGCopyPaste: {
 			styleType: 'arrow-border-size'
 		},
