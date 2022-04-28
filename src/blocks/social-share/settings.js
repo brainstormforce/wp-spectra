@@ -203,7 +203,7 @@ const Settings = ( props ) => {
 	const spacingSettings = () => {
 		return (
 			<UAGAdvancedPanelBody
-				title={ __( 'Common', 'ultimate-addons-for-gutenberg' ) }
+				title={ __( 'Spacing', 'ultimate-addons-for-gutenberg' ) }
 				initialOpen={ false }
 			>
 				<ResponsiveSlider

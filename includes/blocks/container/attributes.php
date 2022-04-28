@@ -54,7 +54,7 @@ return array(
 	'backgroundColor'                => '',
 	'backgroundOpacity'              => '',
 	'backgroundImageColor'           => '#FFFFFF75',
-	'gradientValue'                  => '',
+	'gradientValue'                  => 'linear-gradient(90deg, rgb(6, 147, 227) 0%, rgb(155, 81, 224) 100%)',
 	'borderStyle'                    => '',
 	'borderWidth'                    => 1,
 	'borderRadius'                   => '',
