@@ -665,6 +665,10 @@ button.components-button.uagb-review-select-btn.is-secondary {
 		line-height: 0;
 		box-shadow: none;
 		border: none;
+
+		&:hover {
+			color: #1e1e1e;
+		}
 	}
 }
 
