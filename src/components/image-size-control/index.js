@@ -148,46 +148,50 @@ export default function ImageSizeControl( {
 				/>
 			) }
 			{ isResizable && (
-				<div className="block-editor-image-size-control">
-					<ResponsiveToggle
-						label= { __( 'Image dimensions' )  }
-						responsive= { responsive }
-					/>
-					<div className="block-editor-image-size-control__row">
-						{output[deviceType]}
-					</div>
-					<div className="block-editor-image-size-control__row">
-						<ButtonGroup aria-label={ __( 'Image size presets' ) }>
-							{ IMAGE_SIZE_PRESETS.map( ( scale ) => {
-								const scaledWidth = Math.round(
-									imageWidth * ( scale / 100 )
-								);
-								const scaledHeight = Math.round(
-									imageHeight * ( scale / 100 )
-								);
+				<div className="components-base-control block-editor-image-size-control">
+					<div className='uagb-size-type-field-tabs'>
+						<div className='uagb-control__header'>
+							<ResponsiveToggle
+								label= { __( 'Image dimensions' )  }
+								responsive= { responsive }
+							/>
+						</div>
+						<div className="block-editor-image-size-control__row">
+							{output[deviceType]}
+						</div>
+						<div className="block-editor-image-size-control__row">
+							<ButtonGroup aria-label={ __( 'Image size presets' ) }>
+								{ IMAGE_SIZE_PRESETS.map( ( scale ) => {
+									const scaledWidth = Math.round(
+										imageWidth * ( scale / 100 )
+									);
+									const scaledHeight = Math.round(
+										imageHeight * ( scale / 100 )
+									);
 
-								const isCurrent =
-									currentWidth === scaledWidth &&
-									currentHeight === scaledHeight;
+									const isCurrent =
+										currentWidth === scaledWidth &&
+										currentHeight === scaledHeight;
 
-								return (
-									<Button
-										key={ scale }
-										isSmall
-										variant={
-											isCurrent ? 'primary' : undefined
-										}
-										isPressed={ isCurrent }
-										onClick={ () => imageSizePresetHandler(scaledHeight,scaledWidth)}
-									>
-										{ scale }%
-									</Button>
-								);
-							} ) }
-						</ButtonGroup>
-						<Button isSmall onClick={ () => updateDimensions() }>
-							<span className="dashicon dashicons dashicons-image-rotate"></span>
-						</Button>
+									return (
+										<Button
+											key={ scale }
+											isSmall
+											variant={
+												isCurrent ? 'primary' : undefined
+											}
+											isPressed={ isCurrent }
+											onClick={ () => imageSizePresetHandler(scaledHeight,scaledWidth)}
+										>
+											{ scale }%
+										</Button>
+									);
+								} ) }
+							</ButtonGroup>
+							<Button isSmall onClick={ () => updateDimensions() }>
+								<span className="dashicon dashicons dashicons-image-rotate"></span>
+							</Button>
+						</div>
 					</div>
 				</div>
 			) }
