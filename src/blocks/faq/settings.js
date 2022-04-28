@@ -1009,30 +1009,28 @@ const Settings = ( props ) => {
 					] }
 					setAttributes={ setAttributes }
 				/>
-				{ iconAlign === 'row' && (
-					<ResponsiveSlider
-						label={ __(
-							'Gap between Icon and Question', 'ultimate-addons-for-gutenberg' ) }
-						data={ {
-							desktop: {
-								value: gapBtwIconQUestion,
-								label: 'gapBtwIconQUestion',
-							},
-							tablet: {
-								value: gapBtwIconQUestionTablet,
-								label: 'gapBtwIconQUestionTablet',
-							},
-							mobile: {
-								value: gapBtwIconQUestionMobile,
-								label: 'gapBtwIconQUestionMobile',
-							},
-						} }
-						min={ 0 }
-						max={ 100 }
-						displayUnit = { false }
-						setAttributes={ setAttributes }
-					/>
-				)}
+				<ResponsiveSlider
+					label={ __(
+						'Gap between Icon and Question', 'ultimate-addons-for-gutenberg' ) }
+					data={ {
+						desktop: {
+							value: gapBtwIconQUestion,
+							label: 'gapBtwIconQUestion',
+						},
+						tablet: {
+							value: gapBtwIconQUestionTablet,
+							label: 'gapBtwIconQUestionTablet',
+						},
+						mobile: {
+							value: gapBtwIconQUestionMobile,
+							label: 'gapBtwIconQUestionMobile',
+						},
+					} }
+					min={ 0 }
+					max={ 100 }
+					displayUnit = { false }
+					setAttributes={ setAttributes }
+				/>
 				<AdvancedPopColorControl
 					label={ __(
 						'Color',
