@@ -189,11 +189,10 @@ a.uagb-cta__link-to-all {
 	height: 100%;
 	z-index: 11;
 }
-.wp-block-uagb-call-to-action .wp-block-button {
-	display: inline-flex;
-}
+
 .wp-block-uagb-call-to-action {
 	position: relative;
+	display: inline-flex;
 
 	a.uagb-cta__link-to-all {
 		position: absolute;

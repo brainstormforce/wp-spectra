@@ -475,15 +475,15 @@ if ( 'desktop' === $attr['stack'] ) {
 
 } elseif ( 'none' === $attr['stack'] ) {
 	$selectors['.wp-block-uagb-call-to-action  ']  = array(
-		'align-items' => 'top' === $attr['buttonAlign'] ? 'flex-start' : 'center',
+		'align-items'    => 'top' === $attr['buttonAlign'] ? 'flex-start' : 'center',
 		'flex-direction' => 'row',
 	);
 	$t_selectors['.wp-block-uagb-call-to-action '] = array(
-		'align-items' => 'top' === $attr['buttonAlign'] ? 'flex-start' : 'center',
+		'align-items'    => 'top' === $attr['buttonAlign'] ? 'flex-start' : 'center',
 		'flex-direction' => 'row',
 	);
 	$m_selectors['.wp-block-uagb-call-to-action '] = array(
-		'align-items' => 'top' === $attr['buttonAlign'] ? 'flex-start' : 'center',
+		'align-items'    => 'top' === $attr['buttonAlign'] ? 'flex-start' : 'center',
 		'flex-direction' => 'row',
 	);
 }
