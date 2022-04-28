@@ -34,6 +34,8 @@ function styling( props ) {
 		borderTablet,
 		borderMobile,
 		bgSize,
+		bgSizeTablet,
+		bgSizeMobile,
 		borderRadius,
 		borderRadiusTablet,
 		borderRadiusMobile,
@@ -252,12 +254,14 @@ function styling( props ) {
 	};
 
 	mobileSelectors[ ' .wp-block-uagb-icon-list-child .uagb-icon-list__source-wrap' ] = {
+		'padding': generateCSSUnit( bgSizeMobile, 'px' ),
 		'border-radius': generateCSSUnit( borderRadiusMobile, 'px' ),
 		'border-style':	0 === borderMobile || undefined === borderMobile ? 'none' : 'solid',
 		'border-width': generateCSSUnit( border, 'px' ),
 	};
 
 	tabletSelectors[ ' .wp-block-uagb-icon-list-child .uagb-icon-list__source-wrap' ] = {
+		'padding': generateCSSUnit( bgSizeTablet, 'px' ),
 		'border-radius': generateCSSUnit( borderRadiusTablet, 'px' ),
 		'border-style':	0 === borderTablet || undefined === borderTablet ? 'none' : 'solid',
 		'border-width': generateCSSUnit( borderTablet, 'px' ),
