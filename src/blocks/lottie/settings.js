@@ -283,7 +283,7 @@ const Settings = ( props ) => {
 				] }
 				normal={
 					<AdvancedPopColorControl
-						label={ __( 'Color', 'ultimate-addons-for-gutenberg' ) }
+						label={ __( 'Background Color', 'ultimate-addons-for-gutenberg' ) }
 						colorValue={ backgroundColor ? backgroundColor : '' }
 						onColorChange={ ( value ) =>
 							setAttributes( { backgroundColor: value } )
@@ -292,7 +292,7 @@ const Settings = ( props ) => {
 				}
 				hover={
 					<AdvancedPopColorControl
-						label={ __( 'Color', 'ultimate-addons-for-gutenberg' ) }
+						label={ __( 'Background Color', 'ultimate-addons-for-gutenberg' ) }
 						colorValue={ backgroundHColor ? backgroundHColor : '' }
 						onColorChange={ ( value ) =>
 							setAttributes( { backgroundHColor: value } )
