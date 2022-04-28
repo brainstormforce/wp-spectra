@@ -450,7 +450,7 @@ const Render = ( props ) => {
 					icon={ <BlockIcon icon={ UAGB_Block_Icons.image } /> }
 					labels={
 						{
-							title: __( 'Advanced Image', 'ultimate-addons-for-gutenberg' ),
+							title: __( 'Image', 'ultimate-addons-for-gutenberg' ),
 							instructions: __( 'Upload an image file, pick one from your media library, or add one with a URL.', 'ultimate-addons-for-gutenberg' )
 						}
 					}

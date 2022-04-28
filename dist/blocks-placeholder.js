@@ -19,7 +19,7 @@ registerBlockType( 'uagb/gf-styler', { title: __( 'Gravity Form Designer', 'ulti
 registerBlockType( 'uagb/google-map', { title: __( 'Google Map', 'ultimate-addons-for-gutenberg' ) } );
 registerBlockType( 'uagb/how-to', { title: __( 'How-to', 'ultimate-addons-for-gutenberg' ) } );
 registerBlockType( 'uagb/icon-list', { title: __( 'Icon List', 'ultimate-addons-for-gutenberg' ) } );
-registerBlockType( 'uagb/image', { title: __( 'Advanced Image', 'ultimate-addons-for-gutenberg' ) } );
+registerBlockType( 'uagb/image', { title: __( 'Image', 'ultimate-addons-for-gutenberg' ) } );
 registerBlockType( 'uagb/info-box', { title: __( 'Info Box', 'ultimate-addons-for-gutenberg' ) } );
 registerBlockType( 'uagb/inline-notice', { title: __( 'Inline Notice', 'ultimate-addons-for-gutenberg' ) } );
 registerBlockType( 'uagb/lottie', { title: __( 'Lottie Animation', 'ultimate-addons-for-gutenberg' ) } );
