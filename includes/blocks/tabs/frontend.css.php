@@ -34,11 +34,13 @@ $selectors = array(
 		'padding-bottom' => UAGB_Helper::get_css_value( $tab_title_bottom_padding, $attr['tabTitlePaddingUnit'] ),
 		'padding-left'   => UAGB_Helper::get_css_value( $tab_title_left_padding, $attr['tabTitlePaddingUnit'] ),
 		'padding-right'  => UAGB_Helper::get_css_value( $tab_title_right_padding, $attr['tabTitlePaddingUnit'] ),
+		'color'          => $attr['headerTextColor'],
+	),
+	'.uagb-tabs__wrap ul.uagb-tabs__panel li.uagb-tab'  => array(
 		'margin-top'     => UAGB_Helper::get_css_value( $attr['tabTitleTopMargin'], $attr['tabTitleMarginUnit'] ),
 		'margin-left'    => UAGB_Helper::get_css_value( $attr['tabTitleLeftMargin'], $attr['tabTitleMarginUnit'] ),
 		'margin-right'   => UAGB_Helper::get_css_value( $attr['tabTitleRightMargin'], $attr['tabTitleMarginUnit'] ),
 		'margin-bottom'  => UAGB_Helper::get_css_value( $attr['tabTitleBottomMargin'], $attr['tabTitleMarginUnit'] ),
-		'color'          => $attr['headerTextColor'],
 	),
 	' .uagb-tabs__panel .uagb-tab:hover '                  => array(
 		'border-color' => $attr['borderHoverColor'],
@@ -117,6 +119,8 @@ $m_selectors = array(
 		'padding-bottom' => UAGB_Helper::get_css_value( $attr['tabTitleBottomPaddingMobile'], $attr['mobiletabTitlePaddingUnit'] ),
 		'padding-left'   => UAGB_Helper::get_css_value( $attr['tabTitleLeftPaddingMobile'], $attr['mobiletabTitlePaddingUnit'] ),
 		'padding-right'  => UAGB_Helper::get_css_value( $attr['tabTitleRightPaddingMobile'], $attr['mobiletabTitlePaddingUnit'] ),
+	),
+	'.uagb-tabs__wrap ul.uagb-tabs__panel li.uagb-tab'  => array(
 		'margin-top'     => UAGB_Helper::get_css_value( $attr['tabTitleTopMarginMobile'], $attr['mobiletabTitleMarginUnit'] ),
 		'margin-left'    => UAGB_Helper::get_css_value( $attr['tabTitleLeftMarginMobile'], $attr['mobiletabTitleMarginUnit'] ),
 		'margin-right'   => UAGB_Helper::get_css_value( $attr['tabTitleRightMarginMobile'], $attr['mobiletabTitleMarginUnit'] ),
@@ -155,6 +159,8 @@ $t_selectors = array(
 		'padding-bottom' => UAGB_Helper::get_css_value( $attr['tabTitleBottomPaddingTablet'], $attr['tablettabTitlePaddingUnit'] ),
 		'padding-left'   => UAGB_Helper::get_css_value( $attr['tabTitleLeftPaddingTablet'], $attr['tablettabTitlePaddingUnit'] ),
 		'padding-right'  => UAGB_Helper::get_css_value( $attr['tabTitleRightPaddingTablet'], $attr['tablettabTitlePaddingUnit'] ),
+	),
+	'.uagb-tabs__wrap ul.uagb-tabs__panel li.uagb-tab '  => array(
 		'margin-top'     => UAGB_Helper::get_css_value( $attr['tabTitleTopMarginTablet'], $attr['tablettabTitleMarginUnit'] ),
 		'margin-left'    => UAGB_Helper::get_css_value( $attr['tabTitleLeftMarginTablet'], $attr['tablettabTitleMarginUnit'] ),
 		'margin-right'   => UAGB_Helper::get_css_value( $attr['tabTitleRightMarginTablet'], $attr['tablettabTitleMarginUnit'] ),
@@ -196,6 +202,13 @@ if ( 'hstyle5' === $attr['tabsStyleD'] ) {
 	$selectors['.uagb-tabs__wrap.uagb-tabs__hstyle5-desktop:hover'] = array(
 		'border-color' => $attr['borderHoverColor'],
 	);
+	$selectors['.uagb-tabs__wrap .uagb-tabs__body-wrap ']           = array(
+		'border-left-style'  => 'none',
+		'border-right-style' => 'none',
+		'border-top-style'   => $attr['borderStyle'],
+		'border-color'       => $attr['borderColor'],
+		'border-width'       => UAGB_Helper::get_css_value( $attr['borderWidth'], 'px' ),
+	);
 }
 if ( 'vstyle10' === $attr['tabsStyleD'] ) {
 	$selectors['.uagb-tabs__wrap.uagb-tabs__vstyle10-desktop']       = array(
@@ -220,6 +233,13 @@ if ( 'hstyle5' === $attr['tabsStyleM'] ) {
 	);
 	$m_selectors['.uagb-tabs__wrap.uagb-tabs__hstyle5-mobile:hover'] = array(
 		'border-color' => $attr['borderHoverColor'],
+	);
+	$m_selectors['.uagb-tabs__wrap .uagb-tabs__body-wrap ']          = array(
+		'border-left-style'  => 'none',
+		'border-right-style' => 'none',
+		'border-top-style'   => $attr['borderStyle'],
+		'border-color'       => $attr['borderColor'],
+		'border-width'       => UAGB_Helper::get_css_value( $attr['borderWidth'], 'px' ),
 	);
 }
 if ( 'vstyle10' === $attr['tabsStyleM'] ) {
@@ -258,6 +278,14 @@ if ( 'hstyle5' === $attr['tabsStyleT'] ) {
 	$t_selectors['.uagb-tabs__wrap.uagb-tabs__hstyle5-tablet:hover'] = array(
 		'border-color' => $attr['borderHoverColor'],
 	);
+	$t_selectors['.uagb-tabs__wrap .uagb-tabs__body-wrap ']          = array(
+		'border-left-style'  => 'none',
+		'border-right-style' => 'none',
+		'border-top-style'   => $attr['borderStyle'],
+		'border-color'       => $attr['borderColor'],
+		'border-width'       => UAGB_Helper::get_css_value( $attr['borderWidth'], 'px' ),
+	);
+
 }
 if ( 'vstyle10' === $attr['tabsStyleT'] ) {
 	$t_selectors['.uagb-tabs__wrap.uagb-tabs__vstyle10-tablet']       = array(
