@@ -28,6 +28,8 @@
 .uagb-cta-second__button {
 	display: inline-flex;
 	align-items: center;
+	width: max-content;
+    word-break: keep-all;
 }
 
 .uagb-cta__title {
@@ -187,7 +189,9 @@ a.uagb-cta__link-to-all {
 	height: 100%;
 	z-index: 11;
 }
-
+.wp-block-uagb-call-to-action .wp-block-button {
+	display: inline-flex;
+}
 .wp-block-uagb-call-to-action {
 	position: relative;
 
