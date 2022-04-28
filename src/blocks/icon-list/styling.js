@@ -58,9 +58,9 @@ function styling( props ) {
 		alignment = 'center';
 	}
 
-	const editorGap = undefined !== typeof gap && '' !== gap ? gap + 15 : 15;
-	const editorGapTablet = undefined !== typeof gapTablet && '' !== gapTablet ? gapTablet + 15 : 15;
-	const editorGapMobile = undefined !== typeof gapMobile && '' !== gapMobile ? gapMobile + 15 : 15;
+	const editorGap = undefined !== typeof gap && '' !== gap ? gap : 15;
+	const editorGapTablet = undefined !== typeof gapTablet && '' !== gapTablet ? gapTablet : 15;
+	const editorGapMobile = undefined !== typeof gapMobile && '' !== gapMobile ? gapMobile : 15;
 
 	selectors = {
 		' .wp-block-uagb-icon-list-child .uagb-icon-list__source-wrap': {
