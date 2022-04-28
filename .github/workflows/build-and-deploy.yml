@@ -63,7 +63,7 @@ jobs:
 
     - name: Rsync Drive Deployment
       uses: burnett01/rsync-deployments@4.1
-      if: env.ENVIRONMENT == "RELEASE_CANDIDATE"
+      if: env.ENVIRONMENT == 'RELEASE_CANDIDATE'
       with:
         # switches: -avzr --delete
         switches: -avzr
