@@ -1,6 +1,5 @@
-/**
- * WordPress dependencies
- */
+/* eslint-disable no-nested-ternary */
+
 import { useEffect, useState } from '@wordpress/element';
 
 export default function useDimensionHandler(

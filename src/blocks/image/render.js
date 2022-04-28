@@ -60,7 +60,6 @@ const Render = ( props ) => {
 		layout,
 		url,
 		alt,
-		sizeSlug,
 		caption,
 		align,
 		id,

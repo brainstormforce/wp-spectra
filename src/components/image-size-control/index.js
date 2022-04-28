@@ -124,10 +124,10 @@ export default function ImageSizeControl( {
 		</>
 	);
 
-	const imageSizePresetHandler = (scaledHeight, scaledWidth) => {
-		if(deviceType === 'Tablet'){
+	const imageSizePresetHandler = ( scaledHeight, scaledWidth ) => {
+		if( deviceType === 'Tablet' ){
 			setAttributes( { widthTablet: scaledWidth, heightTablet: scaledHeight} )
-		} else if(deviceType === 'Mobile'){
+		} else if( deviceType === 'Mobile' ){
 			setAttributes( { widthMobile: scaledWidth, heightMobile: scaledHeight} )
 		} else {
 			updateDimensions(
@@ -181,7 +181,7 @@ export default function ImageSizeControl( {
 												isCurrent ? 'primary' : undefined
 											}
 											isPressed={ isCurrent }
-											onClick={ () => imageSizePresetHandler(scaledHeight,scaledWidth)}
+											onClick={ () => imageSizePresetHandler( scaledHeight,scaledWidth )}
 										>
 											{ scale }%
 										</Button>
