@@ -647,7 +647,7 @@ const UAGBPostCarousel = ( props ) => {
 							label: 'mcolumns',
 						},
 					} }
-					min={ 0 }
+					min={ 1 }
 					max={
 						! hasPosts
 							? MAX_POSTS_COLUMNS
@@ -1128,61 +1128,8 @@ const UAGBPostCarousel = ( props ) => {
 						setAttributes( { bgColor: value } )
 					}
 				/>
-				{/* <Range
-					label={ __( 'Row Gap', 'ultimate-addons-for-gutenberg' ) }
-					setAttributes={ setAttributes }
-					value={ rowGap }
-					onChange={ ( value ) => setAttributes( { rowGap: value } ) }
-					min={ 0 }
-					max={ 50 }
-					unit={ {
-						value: rowGapUnit,
-						label: 'rowGapUnit',
-					} }
-				/>
-				<Range
-					label={ __(
-						'Column Gap',
-						'ultimate-addons-for-gutenberg'
-					) }
-					setAttributes={ setAttributes }
-					value={ columnGap }
-					onChange={ ( value ) =>
-						setAttributes( { columnGap: value } )
-					}
-					min={ 0 }
-					max={ 50 }
-					unit={ {
-						value: columnGapUnit,
-						label: 'columnGapUnit',
-					} }
-				/> */}
 				<ResponsiveSlider
 					label={ __( 'Column Gap', 'ultimate-addons-for-gutenberg' ) }
-					data={ {
-						desktop: {
-							value: columnGap,
-							label: 'columnGap',
-						},
-						tablet: {
-							value: columnGapTablet,
-							label: 'columnGapTablet',
-						},
-						mobile: {
-							value: columnGapMobile,
-							label: 'columnGapMobile',
-						},
-					} }
-					min={ 0 }
-					max={ 50 }
-					unit={ {
-						value: columnGapUnit,
-						label: 'columnGapUnit',
-					} }
-					setAttributes={ setAttributes }
-				/>
-				<ResponsiveSlider
-					label={ __( 'Row Gap', 'ultimate-addons-for-gutenberg' ) }
 					data={ {
 						desktop: {
 							value: rowGap,

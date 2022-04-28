@@ -43,7 +43,7 @@ const presets = [
             { label: 'postsToShow', value: 6 },
             { label: 'columns', value: 3 },
             { label: 'autoplay', value: true },
-			{ label: 'imageBottomSpace', value: 25 },
+			{ label: 'imageBottomSpace', value: 0 },
 			{ label: 'paddingTop' , value: 40 },
 			{ label: 'paddingBottom' , value: 40 },
 			{ label: 'paddingLeft' , value: 40 },
