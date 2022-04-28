@@ -107,7 +107,7 @@ const SpacingControl = ( props ) => {
 		if ( '' === value && '' !== event ) {
 			newValue =
 				event.target.value === ''
-					? undefined
+					? ''
 					: Number( event.target.value );
 		}
 
@@ -133,7 +133,7 @@ const SpacingControl = ( props ) => {
 		if ( '' === value && '' !== event ) {
 			newValue =
 				event.target.value === ''
-					? undefined
+					? ''
 					: Number( event.target.value );
 		}
 		if ( link.value ) {
@@ -159,7 +159,7 @@ const SpacingControl = ( props ) => {
 		if ( '' === value && '' !== event ) {
 			newValue =
 				event.target.value === ''
-					? undefined
+					? ''
 					: Number( event.target.value );
 		}
 		if ( link.value ) {
