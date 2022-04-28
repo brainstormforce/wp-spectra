@@ -60,16 +60,17 @@ const UAGImage = ( props ) => {
 	// Newer Dynamic Code here ( Currently used in Lottie Block )
 	
 	if ( label === 'Lottie Animation' ){
+		// No Template Literals due to @wordpress/i18n-no-variables
 		selectImageLabel = __(
-			`Select ${ labelText }`,
+			'Select Lottie Animation',
 			'ultimate-addons-for-gutenberg'
 		);
 		replaceImageLabel = __(
-			`Replace ${ labelText }`,
+			'Replace Lottie Animation',
 			'ultimate-addons-for-gutenberg'
 		);
 		removeImageLabel = __(
-			`Remove ${ labelText }`,
+			'Remove Lottie Animation',
 			'ultimate-addons-for-gutenberg'
 		);
 		allowedTypes = allow;

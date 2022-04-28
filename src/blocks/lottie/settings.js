@@ -11,7 +11,6 @@ import ResponsiveSlider from '@Components/responsive-slider';
 import Range from '@Components/range/Range.js';
 import UAGImage from '@Components/image';
 import UAGTabsControl from '@Components/tabs';
-import UAGSelectControl from '@Components/select-control';
 
 import {
 	InspectorControls,
