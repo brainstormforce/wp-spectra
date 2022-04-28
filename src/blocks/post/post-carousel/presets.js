@@ -57,8 +57,8 @@ const presets = [
 			{ label: 'metaColor', value: '#ffffff' },
 			{ label: 'excerptColor', value: '#FFFFFFC2' },
 			{ label: 'bgOverlayColor', value: '#000000' },
-			{ label: 'overlayOpacity', value: 60 },
-			{ label: 'rowGap', value: '' },
+			{ label: 'overlayOpacity', value: 40 },
+			{ label: 'rowGap', value: 20 },
 			{ label: 'columnGap', value: 20 },
 			{ label: 'bgColor', value: '#000000' }
         ],

@@ -112,8 +112,11 @@
 	}
 }
 
-.block-editor-page #wpwrap .edit-post-visual-editor .slick-dots button {
-	color: transparent;
+.block-editor-page #wpwrap .edit-post-visual-editor .slick-dots {
+	padding-left: 0px;
+	button {
+		color: transparent;
+	}
 }
 
 .block-editor-page #wpwrap .edit-post-visual-editor .uagb-post__image-position-background .uagb-post__image img {
