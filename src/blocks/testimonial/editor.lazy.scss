@@ -29,3 +29,14 @@
 	margin: 0;
 	padding: 0;
 }
+
+.wp-block-uagb-testimonial.uagb-editor-preview-mode-tablet.uagb-slick-carousel,
+.wp-block-uagb-testimonial.uagb-editor-preview-mode-mobile.uagb-slick-carousel {
+	.slick-slide {
+		height: auto;
+	}
+	ul.slick-dots {
+		padding-left: 0;
+	}
+}
+
