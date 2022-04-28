@@ -115,7 +115,8 @@ if ( '' !== $attr['contentPaddingDesktop'] ) {
 }
 
 if ( $attr['customWidth'] ) {
-	$selectors[' .uagb-toc__wrap']['width'] = UAGB_Helper::get_css_value( $attr['widthDesktop'], $attr['widthTypeDesktop'] );
+	$selectors[' .uagb-toc__wrap']['width']            = UAGB_Helper::get_css_value( $attr['widthDesktop'], $attr['widthTypeDesktop'] );
+	$selectors[' .uagb-toc__title']['justify-content'] = 'space-between';
 }
 
 if ( $attr['disableBullets'] ) {

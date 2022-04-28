@@ -233,6 +233,7 @@ function styling( props ) {
 			widthDesktop,
 			widthTypeDesktop
 		);
+		selectors[ ' .uagb-toc__title']['justify-content'] = 'space-between';
 	}
 
 	if ( disableBullets ) {
