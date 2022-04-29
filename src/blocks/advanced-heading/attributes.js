@@ -47,7 +47,7 @@ const attributes = {
 	},
 	headingAlign: {
 		type: 'string',
-		default: 'center',
+		default: 'left',
 		UAGCopyPaste: {
 			styleType: 'overall-alignment'
 		}
