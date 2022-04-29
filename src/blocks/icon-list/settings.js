@@ -13,7 +13,6 @@ import InspectorTabs from '@Components/inspector-tabs/InspectorTabs.js';
 import InspectorTab, {
 	UAGTabs,
 } from '@Components/inspector-tabs/InspectorTab.js';
-import Range from '@Components/range/Range.js';
 import ResponsiveSlider from '@Components/responsive-slider';
 import MultiButtonsControl from '@Components/multi-buttons-control';
 import presets from './presets';
@@ -50,6 +49,8 @@ const Settings = ( props ) => {
 		borderRadiusType,
 		bgSize,
 		bgSizeType,
+		bgSizeTablet,
+		bgSizeMobile,
 		border,
 		borderTablet,
 		borderMobile,
@@ -476,14 +477,26 @@ const Settings = ( props ) => {
 					] }
 					setAttributes={ setAttributes }
 				/>
-				<Range
+				<ResponsiveSlider
 					label={ __(
 						'Background Size',
 						'ultimate-addons-for-gutenberg'
 					) }
+					data={ {
+						desktop: {
+							value: bgSize,
+							label: 'bgSize',
+						},
+						tablet: {
+							value: bgSizeTablet,
+							label: 'bgSizeTablet',
+						},
+						mobile: {
+							value: bgSizeMobile,
+							label: 'bgSizeMobile',
+						},
+					} }
 					setAttributes={ setAttributes }
-					value={ bgSize }
-					onChange={ ( value ) => setAttributes( { bgSize: value } ) }
 					min={ 0 }
 					max={ 50 }
 					unit={ {

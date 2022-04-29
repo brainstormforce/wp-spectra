@@ -153,6 +153,20 @@ const attributes = {
 		},
 		default: 'px',
 	},
+	bgSizeTablet: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'icon-bg-size-tablet'
+		},
+		default: 0,
+	},
+	bgSizeMobile: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'icon-bg-size-mobile'
+		},
+		default: 0,
+	},
 	border: {
 		type: 'number',
 		default: 0,
@@ -162,12 +176,14 @@ const attributes = {
 	},
 	borderTablet: {
 		type: 'number',
+		default: 0,
 		UAGCopyPaste: {
 			styleType: 'icon-border-style'
 		},
 	},
 	borderMobile: {
 		type: 'number',
+		default: 0,
 		UAGCopyPaste: {
 			styleType: 'icon-border-style'
 		},

@@ -44,6 +44,8 @@ return array(
 	'sizeTablet'         => '',
 	'bgSize'             => '0',
 	'bgSizeType'         => 'px',
+	'bgSizeTablet'       => '0',
+	'bgSizeMobile'       => '0',
 	'border'             => '0',
 	'borderTablet'       => '0',
 	'borderMobile'       => '0',

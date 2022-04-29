@@ -24,7 +24,6 @@ import UAGTabsControl from '@Components/tabs';
 import { InspectorControls } from '@wordpress/block-editor';
 
 import {
-	SelectControl,
 	ToggleControl,
 	Icon,
 } from '@wordpress/components';
@@ -280,13 +279,16 @@ const Settings = ( props ) => {
 						setAttributes( { enableSeparator: ! enableSeparator } )
 					}
 				/>
-				<SelectControl
+				<MultiButtonsControl
+					setAttributes={ setAttributes }
 					label={ __(
 						'Question Tag',
 						'ultimate-addons-for-gutenberg'
 					) }
-					value={ headingTag }
-					onChange={ ( value ) => onchangeTag( value ) }
+					data={ {
+						value: headingTag,
+						label: 'headingTag',
+					} }
 					options={ [
 						{
 							value: 'span',
@@ -324,6 +326,7 @@ const Settings = ( props ) => {
 							label: __( 'H6', 'ultimate-addons-for-gutenberg' ),
 						},
 					] }
+					onChange={ ( value ) => onchangeTag( value ) }
 				/>
 				{ 'grid' === layout && (
 					<ResponsiveSlider
@@ -426,14 +429,14 @@ const Settings = ( props ) => {
 				className="uagb__url-panel-body"
 			>
 				<UAGIconPicker
-					label={ __( 'Expand', 'ultimate-addons-for-gutenberg' ) }
-					value={ icon }
-					onChange={ ( value ) => onchangeIcon( value ) }
-				/>
-				<UAGIconPicker
-					label={ __( 'Collapse', 'ultimate-addons-for-gutenberg' ) }
+					label={ __( 'Icon', 'ultimate-addons-for-gutenberg' ) }
 					value={ iconActive }
 					onChange={ ( value ) => onchangeActiveIcon( value ) }
+				/>
+				<UAGIconPicker
+					label={ __( 'Active Icon', 'ultimate-addons-for-gutenberg' ) }
+					value={ icon }
+					onChange={ ( value ) => onchangeIcon( value ) }
 				/>
 				<MultiButtonsControl
 					setAttributes={ setAttributes }
@@ -1058,7 +1061,7 @@ const Settings = ( props ) => {
 				/>
 				<AdvancedPopColorControl
 					label={ __(
-						'Expand Color',
+						'Color',
 						'ultimate-addons-for-gutenberg'
 					) }
 					colorValue={ iconColor }
@@ -1068,7 +1071,7 @@ const Settings = ( props ) => {
 				/>
 				<AdvancedPopColorControl
 					label={ __(
-						'Collapse Color',
+						'Active Color',
 						'ultimate-addons-for-gutenberg'
 					) }
 					colorValue={ iconActiveColor }

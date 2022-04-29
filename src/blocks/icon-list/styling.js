@@ -38,6 +38,8 @@ function styling( props ) {
 		borderType,
 		bgSize,
 		bgSizeType,
+		bgSizeTablet,
+		bgSizeMobile,
 		borderRadius,
 		borderRadiusTablet,
 		borderRadiusMobile,
@@ -61,9 +63,9 @@ function styling( props ) {
 		alignment = 'center';
 	}
 
-	const editorGap = undefined !== typeof gap && '' !== gap ? gap + 15 : 15;
-	const editorGapTablet = undefined !== typeof gapTablet && '' !== gapTablet ? gapTablet + 15 : 15;
-	const editorGapMobile = undefined !== typeof gapMobile && '' !== gapMobile ? gapMobile + 15 : 15;
+	const editorGap = undefined !== typeof gap && '' !== gap ? gap : 15;
+	const editorGapTablet = undefined !== typeof gapTablet && '' !== gapTablet ? gapTablet : 15;
+	const editorGapMobile = undefined !== typeof gapMobile && '' !== gapMobile ? gapMobile : 15;
 
 	selectors = {
 		' .wp-block-uagb-icon-list-child .uagb-icon-list__source-wrap': {
@@ -258,12 +260,14 @@ function styling( props ) {
 
 	mobileSelectors[ ' .wp-block-uagb-icon-list-child .uagb-icon-list__source-wrap' ] = {
 		'border-radius': generateCSSUnit( borderRadiusMobile, borderRadiusType ),
+		'padding': generateCSSUnit( bgSizeMobile, 'px' ),
 		'border-style':	0 === borderMobile || undefined === borderMobile ? 'none' : 'solid',
 		'border-width': generateCSSUnit( borderMobile, borderType ),
 	};
 
 	tabletSelectors[ ' .wp-block-uagb-icon-list-child .uagb-icon-list__source-wrap' ] = {
 		'border-radius': generateCSSUnit( borderRadiusTablet, borderRadiusType ),
+		'padding': generateCSSUnit( bgSizeTablet, 'px' ),
 		'border-style':	0 === borderTablet || undefined === borderTablet ? 'none' : 'solid',
 		'border-width': generateCSSUnit( borderTablet, borderType ),
 	};

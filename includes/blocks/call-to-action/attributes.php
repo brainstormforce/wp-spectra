@@ -144,4 +144,6 @@ return array(
 	'gapBtn'                       => 15,
 	'gapBtnTablet'                 => 15,
 	'gapBtnMobile'                 => 15,
+	'textAlignTablet'              => 'center',
+	'textAlignMobile'              => 'center',
 );

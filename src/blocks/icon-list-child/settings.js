@@ -20,6 +20,7 @@ import UAGAdvancedPanelBody from '@Components/advanced-panel-body';
 const Settings = ( props ) => {
 	const hideLabel = props.hideLabel;
 	props = props.parentProps;
+
 	const { attributes, setAttributes } = props;
 	const {
 		image_icon,

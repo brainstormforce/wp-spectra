@@ -271,85 +271,85 @@ if ( 'underlined' === $attr['formStyle'] ) {
 	);
 }
 
-	   // Checkbox Field css.
-	   $t_selectors[' .uagb-forms-checkbox-wrap input[type=checkbox]:checked + label:before'] = array(
-		   'font-size' => 'calc(' . $attr['toggleSizeTablet'] . $attr['toggleSizeType'] . ' / 1.2)',
-	   );
-	   $t_selectors[' .uagb-forms-checkbox-wrap input[type=checkbox] + label:before']         = array(
-		   'width'  => UAGB_Helper::get_css_value( $attr['toggleSizeTablet'], $attr['toggleSizeType'] ),
-		   'height' => UAGB_Helper::get_css_value( $attr['toggleSizeTablet'], $attr['toggleSizeType'] ),
-	   );
-	   // Radio Button Field css.
-	   $t_selectors[' .uagb-forms-radio-wrap input[type=radio]:checked + label:before'] = array(
-		   'font-size' => 'calc(' . $attr['toggleSizeTablet'] . 'px / 1.2)',
-	   );
-	   $t_selectors[' .uagb-forms-radio-wrap input[type=radio] + label:before']         = array(
-		   'width'  => UAGB_Helper::get_css_value( $attr['toggleSizeTablet'], $attr['toggleSizeType'] ),
-		   'height' => UAGB_Helper::get_css_value( $attr['toggleSizeTablet'], $attr['toggleSizeType'] ),
-	   );
-	   // Accept Field css.
-	   $t_selectors[' .uagb-forms-accept-wrap input[type=checkbox]:checked + label:before'] = array(
-		   'font-size' => 'calc(' . $attr['toggleSizeTablet'] . $attr['toggleSizeType'] . ' / 1.2)',
-	   );
-	   $t_selectors[' .uagb-forms-accept-wrap input[type=checkbox] + label:before']         = array(
-		   'width'  => UAGB_Helper::get_css_value( $attr['toggleSizeTablet'], $attr['toggleSizeType'] ),
-		   'height' => UAGB_Helper::get_css_value( $attr['toggleSizeTablet'], $attr['toggleSizeType'] ),
-	   );
-	   $t_selectors[' .uagb-forms-main-form .uagb-switch']                                  = array(
-		   'width'  => UAGB_Helper::get_css_value( '50' + $attr['toggleWidthSizeTablet'] + $attr['inputborderWidth'], 'px' ),
-		   'height' => UAGB_Helper::get_css_value( '25' + $attr['toggleWidthSizeTablet'] + $attr['inputborderWidth'], 'px' ),
-	   );
-	   $t_selectors[' .uagb-forms-main-form .uagb-slider:before']                           = array(
-		   'width'  => UAGB_Helper::get_css_value( '20' + $attr['toggleWidthSizeTablet'] - $attr['inputborderWidth'] / 2, 'px' ),
-		   'height' => UAGB_Helper::get_css_value( '20' + $attr['toggleWidthSizeTablet'] - $attr['inputborderWidth'], 'px' ),
-	   );
+	// Checkbox Field css.
+	$t_selectors[' .uagb-forms-checkbox-wrap input[type=checkbox]:checked + label:before'] = array(
+		'font-size' => 'calc(' . $attr['toggleSizeTablet'] . $attr['toggleSizeType'] . ' / 1.2)',
+	);
+	$t_selectors[' .uagb-forms-checkbox-wrap input[type=checkbox] + label:before']         = array(
+		'width'  => UAGB_Helper::get_css_value( $attr['toggleSizeTablet'], $attr['toggleSizeType'] ),
+		'height' => UAGB_Helper::get_css_value( $attr['toggleSizeTablet'], $attr['toggleSizeType'] ),
+	);
+	// Radio Button Field css.
+	$t_selectors[' .uagb-forms-radio-wrap input[type=radio]:checked + label:before'] = array(
+		'font-size' => 'calc(' . $attr['toggleSizeTablet'] . 'px / 1.2)',
+	);
+	$t_selectors[' .uagb-forms-radio-wrap input[type=radio] + label:before']         = array(
+		'width'  => UAGB_Helper::get_css_value( $attr['toggleSizeTablet'], $attr['toggleSizeType'] ),
+		'height' => UAGB_Helper::get_css_value( $attr['toggleSizeTablet'], $attr['toggleSizeType'] ),
+	);
+	// Accept Field css.
+	$t_selectors[' .uagb-forms-accept-wrap input[type=checkbox]:checked + label:before'] = array(
+		'font-size' => 'calc(' . $attr['toggleSizeTablet'] . $attr['toggleSizeType'] . ' / 1.2)',
+	);
+	$t_selectors[' .uagb-forms-accept-wrap input[type=checkbox] + label:before']         = array(
+		'width'  => UAGB_Helper::get_css_value( $attr['toggleSizeTablet'], $attr['toggleSizeType'] ),
+		'height' => UAGB_Helper::get_css_value( $attr['toggleSizeTablet'], $attr['toggleSizeType'] ),
+	);
+	$t_selectors[' .uagb-forms-main-form .uagb-switch']                                  = array(
+		'width'  => UAGB_Helper::get_css_value( '50' + $attr['toggleWidthSizeTablet'] + $attr['inputborderWidth'], 'px' ),
+		'height' => UAGB_Helper::get_css_value( '25' + $attr['toggleWidthSizeTablet'] + $attr['inputborderWidth'], 'px' ),
+	);
+	$t_selectors[' .uagb-forms-main-form .uagb-slider:before']                           = array(
+		'width'  => UAGB_Helper::get_css_value( '20' + $attr['toggleWidthSizeTablet'] - $attr['inputborderWidth'] / 2, 'px' ),
+		'height' => UAGB_Helper::get_css_value( '20' + $attr['toggleWidthSizeTablet'] - $attr['inputborderWidth'], 'px' ),
+	);
 
 
-		   // Checkbox Field css.
-	   $m_selectors[' .uagb-forms-checkbox-wrap input[type=checkbox]:checked + label:before'] = array(
-		   'font-size' => 'calc(' . $attr['toggleSizeMobile'] . $attr['toggleSizeType'] . ' / 1.2)',
-	   );
-	   $m_selectors[' .uagb-forms-checkbox-wrap input[type=checkbox] + label:before']         = array(
-		   'width'  => UAGB_Helper::get_css_value( $attr['toggleSizeMobile'], $attr['toggleSizeType'] ),
-		   'height' => UAGB_Helper::get_css_value( $attr['toggleSizeMobile'], $attr['toggleSizeType'] ),
-	   );
-	   // Radio Button Field css.
-	   $m_selectors[' .uagb-forms-radio-wrap input[type=radio]:checked + label:before'] = array(
-		   'font-size' => 'calc(' . $attr['toggleSizeMobile'] . 'px / 1.2)',
-	   );
-	   $m_selectors[' .uagb-forms-radio-wrap input[type=radio] + label:before']         = array(
-		   'width'  => UAGB_Helper::get_css_value( $attr['toggleSizeMobile'], $attr['toggleSizeType'] ),
-		   'height' => UAGB_Helper::get_css_value( $attr['toggleSizeMobile'], $attr['toggleSizeType'] ),
-	   );
-	   // Accept Field css.
-	   $m_selectors[' .uagb-forms-accept-wrap input[type=checkbox]:checked + label:before'] = array(
-		   'font-size' => 'calc(' . $attr['toggleSizeMobile'] . $attr['toggleSizeType'] . ' / 1.2)',
-	   );
-	   $m_selectors[' .uagb-forms-accept-wrap input[type=checkbox] + label:before']         = array(
-		   'width'  => UAGB_Helper::get_css_value( $attr['toggleSizeMobile'], $attr['toggleSizeType'] ),
-		   'height' => UAGB_Helper::get_css_value( $attr['toggleSizeMobile'], $attr['toggleSizeType'] ),
-	   );
-	   $m_selectors[' .uagb-forms-main-form .uagb-switch']                                  = array(
-		   'width'  => UAGB_Helper::get_css_value( '50' + $attr['toggleWidthSizeMobile'] + $attr['inputborderWidth'], 'px' ),
-		   'height' => UAGB_Helper::get_css_value( '25' + $attr['toggleWidthSizeMobile'] + $attr['inputborderWidth'], 'px' ),
-	   );
-	   $m_selectors[' .uagb-forms-main-form .uagb-slider:before']                           = array(
-		   'width'  => UAGB_Helper::get_css_value( '20' + $attr['toggleWidthSizeMobile'] - $attr['inputborderWidth'] / 2, 'px' ),
-		   'height' => UAGB_Helper::get_css_value( '20' + $attr['toggleWidthSizeMobile'] - $attr['inputborderWidth'], 'px' ),
-	   );
+		// Checkbox Field css.
+	$m_selectors[' .uagb-forms-checkbox-wrap input[type=checkbox]:checked + label:before'] = array(
+		'font-size' => 'calc(' . $attr['toggleSizeMobile'] . $attr['toggleSizeType'] . ' / 1.2)',
+	);
+	$m_selectors[' .uagb-forms-checkbox-wrap input[type=checkbox] + label:before']         = array(
+		'width'  => UAGB_Helper::get_css_value( $attr['toggleSizeMobile'], $attr['toggleSizeType'] ),
+		'height' => UAGB_Helper::get_css_value( $attr['toggleSizeMobile'], $attr['toggleSizeType'] ),
+	);
+	// Radio Button Field css.
+	$m_selectors[' .uagb-forms-radio-wrap input[type=radio]:checked + label:before'] = array(
+		'font-size' => 'calc(' . $attr['toggleSizeMobile'] . 'px / 1.2)',
+	);
+	$m_selectors[' .uagb-forms-radio-wrap input[type=radio] + label:before']         = array(
+		'width'  => UAGB_Helper::get_css_value( $attr['toggleSizeMobile'], $attr['toggleSizeType'] ),
+		'height' => UAGB_Helper::get_css_value( $attr['toggleSizeMobile'], $attr['toggleSizeType'] ),
+	);
+	// Accept Field css.
+	$m_selectors[' .uagb-forms-accept-wrap input[type=checkbox]:checked + label:before'] = array(
+		'font-size' => 'calc(' . $attr['toggleSizeMobile'] . $attr['toggleSizeType'] . ' / 1.2)',
+	);
+	$m_selectors[' .uagb-forms-accept-wrap input[type=checkbox] + label:before']         = array(
+		'width'  => UAGB_Helper::get_css_value( $attr['toggleSizeMobile'], $attr['toggleSizeType'] ),
+		'height' => UAGB_Helper::get_css_value( $attr['toggleSizeMobile'], $attr['toggleSizeType'] ),
+	);
+	$m_selectors[' .uagb-forms-main-form .uagb-switch']                                  = array(
+		'width'  => UAGB_Helper::get_css_value( '50' + $attr['toggleWidthSizeMobile'] + $attr['inputborderWidth'], 'px' ),
+		'height' => UAGB_Helper::get_css_value( '25' + $attr['toggleWidthSizeMobile'] + $attr['inputborderWidth'], 'px' ),
+	);
+	$m_selectors[' .uagb-forms-main-form .uagb-slider:before']                           = array(
+		'width'  => UAGB_Helper::get_css_value( '20' + $attr['toggleWidthSizeMobile'] - $attr['inputborderWidth'] / 2, 'px' ),
+		'height' => UAGB_Helper::get_css_value( '20' + $attr['toggleWidthSizeMobile'] - $attr['inputborderWidth'], 'px' ),
+	);
 
-	   $combined_selectors = array(
-		   'desktop' => $selectors,
-		   'tablet'  => $t_selectors,
-		   'mobile'  => $m_selectors,
-	   );
+	$combined_selectors = array(
+		'desktop' => $selectors,
+		'tablet'  => $t_selectors,
+		'mobile'  => $m_selectors,
+	);
 
-	   $combined_selectors = UAGB_Helper::get_typography_css( $attr, 'submitText', ' .uagb-forms-main-form .uagb-forms-main-submit-button', $combined_selectors );
+	$combined_selectors = UAGB_Helper::get_typography_css( $attr, 'submitText', ' .uagb-forms-main-form .uagb-forms-main-submit-button', $combined_selectors );
 
-	   $combined_selectors = UAGB_Helper::get_typography_css( $attr, 'label', ' .uagb-forms-main-form .uagb-forms-input-label', $combined_selectors );
+	$combined_selectors = UAGB_Helper::get_typography_css( $attr, 'label', ' .uagb-forms-main-form .uagb-forms-input-label', $combined_selectors );
 
-	   $combined_selectors = UAGB_Helper::get_typography_css( $attr, 'input', ' .uagb-forms-main-form  .uagb-forms-input::placeholder', $combined_selectors );
+	$combined_selectors = UAGB_Helper::get_typography_css( $attr, 'input', ' .uagb-forms-main-form  .uagb-forms-input::placeholder', $combined_selectors );
 
-	   $combined_selectors = UAGB_Helper::get_typography_css( $attr, 'input', ' .uagb-forms-main-form  .uagb-forms-input', $combined_selectors );
+	$combined_selectors = UAGB_Helper::get_typography_css( $attr, 'input', ' .uagb-forms-main-form  .uagb-forms-input', $combined_selectors );
 
-	   return UAGB_Helper::generate_all_css( $combined_selectors, '.uagb-block-' . $id );
+	return UAGB_Helper::generate_all_css( $combined_selectors, '.uagb-block-' . $id );

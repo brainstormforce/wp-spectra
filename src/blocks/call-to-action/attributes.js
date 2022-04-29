@@ -379,19 +379,21 @@ const attributes = {
 	},
 	contentWidth: {
 		type: 'number',
-		default: '70',
+		default: 70,
 		UAGCopyPaste: {
 			styleType: 'desc-width'
 		},
 	},
 	contentWidthTablet: {
 		type: 'number',
+		default: 70,
 		UAGCopyPaste: {
 			styleType: 'desc-width'
 		},
 	},
 	contentWidthMobile: {
 		type: 'number',
+		default: 70,
 		UAGCopyPaste: {
 			styleType: 'desc-width'
 		},
@@ -895,6 +897,14 @@ const attributes = {
 	gapBtnMobile: {
 		type: 'number',
 		default: 15
+	},
+	textAlignTablet: {
+		type: 'string',
+		default: 'center'
+	},
+	textAlignMobile: {
+		type: 'string',
+		default: 'center'
 	},
 };
 
