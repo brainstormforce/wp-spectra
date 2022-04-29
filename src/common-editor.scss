@@ -750,3 +750,12 @@ button.components-button.uagb-review-select-btn.is-secondary {
 		font-weight: 400;
 	}
 }
+
+/* Toggle Control */
+.uagb-inspector-tab {
+	.components-toggle-control .components-base-control__field {
+		display: flex;
+		flex-direction: row-reverse;
+		justify-content: space-between;
+	}
+}
