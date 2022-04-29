@@ -2,6 +2,10 @@
 
 	.uagb-forms-main-form {
 
+		.uagb-forms-input, input[type="text"] {			
+			min-height: 0px !important;
+		}
+
 		input:not([type="checkbox"]):not([type="radio"]):not([type="file"]),
 		textarea,
 		select {
