@@ -470,6 +470,7 @@ function styling( props ) {
 		" .uagb-cf7-styler__check-style-enabled .wpcf7 .wpcf7-checkbox input[type='checkbox'] + span:before": {
 			'background-color': radioCheckBgColor,
 			'color': radioCheckSelectColor,
+			'justify-content': 'center',
 			'height': generateCSSUnit( radioCheckSize, 'px' ),
 			'width': generateCSSUnit( radioCheckSize, 'px' ),
 			'font-size': 'calc( ' + radioCheckSize + 'px / 1.2 )',
@@ -487,6 +488,7 @@ function styling( props ) {
 			'background-color': radioCheckBgColor,
 			'display': 'inline-flex',
 			'color': radioCheckSelectColor,
+			'justify-content': 'center',
 			'height': generateCSSUnit( radioCheckSize, 'px' ),
 			'width': generateCSSUnit( radioCheckSize, 'px' ),
 			'font-size': 'calc( ' + radioCheckSize + 'px / 1.2 )',

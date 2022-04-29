@@ -560,7 +560,7 @@ const Settings = ( props ) => {
 	);
 	const btnSetting = (
 		<UAGAdvancedPanelBody
-			title={ __( 'Submit', 'ultimate-addons-for-gutenberg' ) }
+			title={ __( 'Submit Button', 'ultimate-addons-for-gutenberg' ) }
 			initialOpen={ false }
 		>
 			<MultiButtonsControl
@@ -763,7 +763,7 @@ const Settings = ( props ) => {
 			/>
 			<ResponsiveSlider
 				label={ __(
-					'Spacing',
+					'Spacing Between Labels & Input',
 					'ultimate-addons-for-gutenberg'
 				) }
 				data={ {
@@ -793,40 +793,45 @@ const Settings = ( props ) => {
 			title={ __( 'Field', 'ultimate-addons-for-gutenberg' ) }
 			initialOpen={ false }
 		>
-			<Border
-				disabledBorderTitle= {false}
-				setAttributes={ setAttributes }
-				borderStyle={ {
-					value: fieldBorderStyle,
-					label: 'fieldBorderStyle',
-					title: __( 'Style', 'ultimate-addons-for-gutenberg' ),
-				} }
-				borderWidth={ {
-					value: fieldBorderWidth,
-					label: 'fieldBorderWidth',
-					title: __( 'Width', 'ultimate-addons-for-gutenberg' ),
-				} }
-				borderRadius={ {
-					value: fieldBorderRadius,
-					label: 'fieldBorderRadius',
-					title: __( 'Radius', 'ultimate-addons-for-gutenberg' ),
-					displayUnit: true,
-					unit: {
-						value: fieldBorderRadiusType,
-						label: 'fieldBorderRadiusType',
-					},
-				} }
-				borderColor={ {
-					value: fieldBorderColor,
-					label: 'fieldBorderColor',
-					title: __( 'Color', 'ultimate-addons-for-gutenberg' ),
-				} }
-				borderHoverColor={ {
-					value: fieldBorderFocusColor,
-					label: 'fieldBorderFocusColor',
-					title: __( 'Focus Color', 'ultimate-addons-for-gutenberg' ),
-				} }
-				disableBottomSeparator={ true }
+			{ fieldStyle === 'box' && (
+				<Border
+					disabledBorderTitle= {false}
+					setAttributes={ setAttributes }
+					borderStyle={ {
+						value: fieldBorderStyle,
+						label: 'fieldBorderStyle',
+						title: __( 'Style', 'ultimate-addons-for-gutenberg' ),
+					} }
+					borderWidth={ {
+						value: fieldBorderWidth,
+						label: 'fieldBorderWidth',
+						title: __( 'Width', 'ultimate-addons-for-gutenberg' ),
+					} }
+					borderRadius={ {
+						value: fieldBorderRadius,
+						label: 'fieldBorderRadius',
+						title: __( 'Radius', 'ultimate-addons-for-gutenberg' ),
+						displayUnit: true,
+						unit: {
+							value: fieldBorderRadiusType,
+							label: 'fieldBorderRadiusType',
+						},
+					} }
+					borderColor={ {
+						value: fieldBorderColor,
+						label: 'fieldBorderColor',
+						title: __( 'Color', 'ultimate-addons-for-gutenberg' ),
+					} }
+					borderHoverColor={ false }
+					disableBottomSeparator={ false }
+				/>
+			)}
+			<AdvancedPopColorControl
+				label={ __( 'Active Color', 'ultimate-addons-for-gutenberg' ) }
+				colorValue={ fieldBorderFocusColor }
+				onColorChange={ ( value ) =>
+				setAttributes( { fieldBorderFocusColor: value } )
+				}
 			/>
 			<ResponsiveSlider
 				label={ __(
@@ -1083,7 +1088,7 @@ const Settings = ( props ) => {
 			) }
 			<Range
 				label={ __(
-					'Border Radius',
+					'Checkbox Rounded Corners',
 					'ultimate-addons-for-gutenberg'
 				) }
 				setAttributes={ setAttributes }
@@ -1120,7 +1125,7 @@ const Settings = ( props ) => {
 	);
 	const buttonStyling = (
 		<UAGAdvancedPanelBody
-			title={ __( 'Submit', 'ultimate-addons-for-gutenberg' ) }
+			title={ __( 'Submit Button', 'ultimate-addons-for-gutenberg' ) }
 			initialOpen={ false }
 		>
 			<UAGTabsControl
@@ -1136,7 +1141,7 @@ const Settings = ( props ) => {
 				] }
 				normal={ buttonNormalSettings }
 				hover={ buttonHoverSettings }
-				disableBottomSeparator={ true }
+				disableBottomSeparator={ false }
 			/>
 			<Border
 				disabledBorderTitle= {false}
@@ -1689,11 +1694,11 @@ const Settings = ( props ) => {
 						{ msgSettings }
 					</InspectorTab>
 					<InspectorTab { ...UAGTabs.style }>
-						{ fieldStyle === 'box' && fieldStyling }
+						{ fieldStyling }
+						{ labelInputStyling }
 						{ enableOveride && radioCheckStyling }
 						{ buttonStyling }
 						{ messageStyling }
-						{ labelInputStyling }
 					</InspectorTab>
 					<InspectorTab
 						{ ...UAGTabs.advance }
