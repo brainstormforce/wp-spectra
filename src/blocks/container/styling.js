@@ -9,7 +9,7 @@ import hexToRgba from '@Controls/hexToRgba';
 import maybeGetColorForVariable from '@Controls/maybeGetColorForVariable';
 
 function styling( props ) {
-	const { attributes, deviceType } = props;
+	const { attributes } = props;
 	const {
 		block_id,
 		widthDesktop,
@@ -264,21 +264,21 @@ function styling( props ) {
 	if ( ( 'alignfull' === contentWidth || 'default' === contentWidth ) && 'alignwide' === innerContentWidth ) {
 
 		widthSelectorsDesktop[`.is-root-container > .block-editor-block-list__block > .wp-block-uagb-container.uagb-block-${ block_id } > .uagb-container-inner-blocks-wrap`] = {
-			'--inner-content-custom-width' : `min(${containerFullWidth},${attributes['innerContentCustomWidthDesktop']}${innerContentCustomWidthType})`,
+			'--inner-content-custom-width' : `min(${containerFullWidth},${attributes.innerContentCustomWidthDesktop}${innerContentCustomWidthType})`,
 			'max-width' : 'var(--inner-content-custom-width)',
 			'margin-left': 'auto',
 			'margin-right': 'auto'
 		};
 
 		widthSelectorsTablet[`.is-root-container > .block-editor-block-list__block.uagb-editor-preview-mode-tablet > .wp-block-uagb-container.uagb-block-${ block_id } > .uagb-container-inner-blocks-wrap`] = {
-			'--inner-content-custom-width' : `min(${containerFullWidth},${attributes['innerContentCustomWidthTablet'] || attributes['innerContentCustomWidthDesktop']}${innerContentCustomWidthType})`,
+			'--inner-content-custom-width' : `min(${containerFullWidth},${attributes.innerContentCustomWidthTablet || attributes.innerContentCustomWidthDesktop}${innerContentCustomWidthType})`,
 			'max-width' : 'var(--inner-content-custom-width)',
 			'margin-left': 'auto',
 			'margin-right': 'auto'
 		};
 
 		widthSelectorsMobile[`.is-root-container > .block-editor-block-list__block.uagb-editor-preview-mode-mobile > .wp-block-uagb-container.uagb-block-${ block_id } > .uagb-container-inner-blocks-wrap`] = {
-			'--inner-content-custom-width' : `min(${containerFullWidth},${ attributes['innerContentCustomWidthMobile'] || attributes['innerContentCustomWidthTablet'] || attributes['innerContentCustomWidthDesktop']}${innerContentCustomWidthType})`,
+			'--inner-content-custom-width' : `min(${containerFullWidth},${ attributes.innerContentCustomWidthMobile || attributes.innerContentCustomWidthTablet || attributes.innerContentCustomWidthDesktop}${innerContentCustomWidthType})`,
 			'max-width' : 'var(--inner-content-custom-width)',
 			'margin-left': 'auto',
 			'margin-right': 'auto'

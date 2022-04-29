@@ -18,6 +18,7 @@ const attributes = {
 	},
 	widthDesktop: {
 		type: 'number',
+		default: 100,
 		UAGCopyPaste: {
 			styleType: 'container-width-desktop'
 		}
@@ -30,6 +31,7 @@ const attributes = {
 	},
 	widthMobile: {
 		type: 'number',
+		default: 100,
 		UAGCopyPaste: {
 			styleType: 'container-width-mobile'
 		}
@@ -148,6 +150,7 @@ const attributes = {
 	},
 	wrapMobile: {
 		type: 'string',
+		default: 'wrap',
 	},
 	alignContentDesktop: {
 		type: 'string',

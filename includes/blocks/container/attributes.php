@@ -9,9 +9,9 @@
 
 return array(
 	'block_id'                       => '',
-	'widthDesktop'                   => '',
+	'widthDesktop'                   => 100,
 	'widthTablet'                    => '',
-	'widthMobile'                    => '',
+	'widthMobile'                    => 100,
 	'widthType'                      => '%',
 	'minHeightDesktop'               => '',
 	'minHeightTablet'                => '',
@@ -28,7 +28,7 @@ return array(
 	'justifyContentMobile'           => '',
 	'wrapDesktop'                    => 'nowrap',
 	'wrapTablet'                     => '',
-	'wrapMobile'                     => '',
+	'wrapMobile'                     => 'wrap',
 	'alignContentDesktop'            => '',
 	'alignContentTablet'             => '',
 	'alignContentMobile'             => '',
