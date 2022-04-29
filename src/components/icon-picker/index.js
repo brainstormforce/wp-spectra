@@ -24,7 +24,7 @@ const UAGIconPicker = ( props ) => {
 				renderFunc={ renderSVG }
 				theme="default"
 				value={ props.value }
-				onChange={ props.onChange }
+				onChange={ props?.onChange }
 				isMulti={ props.isMulti || false }
 				noSelectedPlaceholder={
 					props.noSelectedPlaceholder ||

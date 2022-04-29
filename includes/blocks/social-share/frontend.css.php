@@ -20,25 +20,28 @@ $selectors['.uagb-social-share__outer-wrap .block-editor-inner-blocks'] = array(
 	'text-align' => UAGB_Helper::get_css_value( $attr['align'] ),
 );
 
-$selectors['.uagb-social-share__layout-vertical .uagb-ss__wrapper']   = array(
-	'padding'       => UAGB_Helper::get_css_value( $attr['bgSize'], 'px' ),
+$selectors['.uagb-social-share__layout-vertical .uagb-ss__wrapper']     = array(
 	'margin-left'   => 0,
 	'margin-right'  => 0,
 	'margin-bottom' => UAGB_Helper::get_css_value( $attr['gap'], 'px' ),
 );
-$m_selectors['.uagb-social-share__layout-vertical .uagb-ss__wrapper'] = array(
+$selectors['.uagb-social-share__layout-vertical .uagb-ss__link']        = array(
+	'padding' => UAGB_Helper::get_css_value( $attr['bgSize'], 'px' ),
+);
+$m_selectors['.uagb-social-share__layout-vertical .uagb-ss__wrapper']   = array(
 	'margin-left'   => 0,
 	'margin-right'  => 0,
 	'margin-bottom' => UAGB_Helper::get_css_value( $attr['gapMobile'], 'px' ),
 );
-$t_selectors['.uagb-social-share__layout-vertical .uagb-ss__wrapper'] = array(
+$t_selectors['.uagb-social-share__layout-vertical .uagb-ss__wrapper']   = array(
 	'margin-left'   => 0,
 	'margin-right'  => 0,
 	'margin-bottom' => UAGB_Helper::get_css_value( $attr['gapTablet'], 'px' ),
 );
-
+$selectors['.uagb-social-share__layout-horizontal .uagb-ss__link']      = array(
+	'padding' => UAGB_Helper::get_css_value( $attr['bgSize'], 'px' ),
+);
 $selectors['.uagb-social-share__layout-horizontal .uagb-ss__wrapper']   = array(
-	'padding'      => UAGB_Helper::get_css_value( $attr['bgSize'], 'px' ),
 	'margin-left'  => UAGB_Helper::get_css_value( ( $attr['gap'] / 2 ), 'px' ),
 	'margin-right' => UAGB_Helper::get_css_value( ( $attr['gap'] / 2 ), 'px' ),
 );
@@ -51,13 +54,13 @@ $t_selectors['.uagb-social-share__layout-horizontal .uagb-ss__wrapper'] = array(
 	'margin-right' => UAGB_Helper::get_css_value( ( $attr['gapTablet'] / 2 ), 'px' ),
 );
 
-$selectors[' .uagb-ss__wrapper']   = array(
+$selectors[' .wp-block-uagb-social-share-child ']   = array(
 	'border-radius' => UAGB_Helper::get_css_value( $attr['borderRadius'], 'px' ),
 );
-$m_selectors[' .uagb-ss__wrapper'] = array(
+$m_selectors[' .wp-block-uagb-social-share-child '] = array(
 	'border-radius' => UAGB_Helper::get_css_value( $attr['borderRadiusMobile'], 'px' ),
 );
-$t_selectors[' .uagb-ss__wrapper'] = array(
+$t_selectors[' .wp-block-uagb-social-share-child '] = array(
 	'border-radius' => UAGB_Helper::get_css_value( $attr['borderRadiusTablet'], 'px' ),
 );
 
