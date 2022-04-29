@@ -1,7 +1,7 @@
 import classnames from 'classnames';
 import { RichText } from '@wordpress/block-editor';
 import { __ } from '@wordpress/i18n';
-import React from 'react';
+import React, {useEffect} from 'react';
 import { useDeviceType } from '@Controls/getPreviewType';
 
 const Render = ( props ) => {
@@ -19,6 +19,13 @@ const Render = ( props ) => {
 		setAttributes,
 		className,
 	} = props;
+
+	useEffect(() => {
+		// if sub heading have value then enable it.
+		if(headingDesc){
+			setAttributes({headingDescToggle: true})
+		}
+	}, [])
 
 	const deviceType = useDeviceType();
 	const headingText = (

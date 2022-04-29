@@ -39,7 +39,7 @@ const attributes = {
 	},
 	headingDescToggle: {
 		source: 'boolean',
-		default: true,
+		default: false,
 	},
 	headingDesc: {
 		source: 'html',
