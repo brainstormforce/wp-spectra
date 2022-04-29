@@ -103,13 +103,13 @@ $selectors = array(
 	),
 
 	' .uagb-blockquote__author-wrap.uagb-blockquote__author-at-right img' => array(
-		'margin-left' =>  UAGB_Helper::get_css_value( $attr['authorImageGap'], $attr['authorImageGapUnit'] ),
+		'margin-left' => UAGB_Helper::get_css_value( $attr['authorImageGap'], $attr['authorImageGapUnit'] ),
 	),
 	' .uagb-blockquote__author-wrap.uagb-blockquote__author-at-top img' => array(
-		'margin-bottom' =>  UAGB_Helper::get_css_value( $attr['authorImageGap'], $attr['authorImageGapUnit'] ),
+		'margin-bottom' => UAGB_Helper::get_css_value( $attr['authorImageGap'], $attr['authorImageGapUnit'] ),
 	),
 	' .uagb-blockquote__author-wrap.uagb-blockquote__author-at-left img' => array(
-		'margin-right' =>  UAGB_Helper::get_css_value( $attr['authorImageGap'], $attr['authorImageGapUnit'] ),
+		'margin-right' => UAGB_Helper::get_css_value( $attr['authorImageGap'], $attr['authorImageGapUnit'] ),
 	),
 
 	'.uagb-blockquote__skin-quotation .uagb-blockquote__icon:hover svg' => array(
@@ -328,15 +328,15 @@ $t_selectors = array(
 		'margin-bottom' => UAGB_Helper::get_css_value( $attr['descSpaceTablet'], $attr['descSpaceUnit'] ),
 	),
 	' .uagb-blockquote__author-wrap.uagb-blockquote__author-at-right img' => array(
-		'margin-left' =>  ( $attr['stack'] === 'tablet' ) ? '0px' : UAGB_Helper::get_css_value( $attr['authorImageGapTablet'], $attr['authorImageGapUnit'] ),
-		'margin-bottom' =>  ( $attr['stack'] === 'tablet' ) ? UAGB_Helper::get_css_value( $attr['authorImageGapTablet'], $attr['authorImageGapUnit'] ) : '0px',
+		'margin-left' => ( 'tablet' === $attr['stack'] ) ? '0px' : UAGB_Helper::get_css_value( $attr['authorImageGapTablet'], $attr['authorImageGapUnit'] ),
+		'margin-bottom' => ( 'tablet' === $attr['stack'] ) ? UAGB_Helper::get_css_value( $attr['authorImageGapTablet'], $attr['authorImageGapUnit'] ) : '0px',
 	),
 	' .uagb-blockquote__author-wrap.uagb-blockquote__author-at-top img' => array(
-		'margin-bottom' =>  UAGB_Helper::get_css_value( $attr['authorImageGapTablet'], $attr['authorImageGapUnit'] ),
+		'margin-bottom' => UAGB_Helper::get_css_value( $attr['authorImageGapTablet'], $attr['authorImageGapUnit'] ),
 	),
 	' .uagb-blockquote__author-wrap.uagb-blockquote__author-at-left img' => array(
-		'margin-right' =>  ( $attr['stack'] === 'tablet' ) ? '0px' : UAGB_Helper::get_css_value( $attr['authorImageGapTablet'], $attr['authorImageGapUnit'] ),
-		'margin-bottom' =>  ( $attr['stack'] === 'tablet' ) ? UAGB_Helper::get_css_value( $attr['authorImageGapTablet'], $attr['authorImageGapUnit'] ) : '0px',
+		'margin-right' => ( 'tablet' === $attr['stack'] ) ? '0px' : UAGB_Helper::get_css_value( $attr['authorImageGapTablet'], $attr['authorImageGapUnit'] ),
+		'margin-bottom' => ( 'tablet' === $attr['stack'] ) ? UAGB_Helper::get_css_value( $attr['authorImageGapTablet'], $attr['authorImageGapUnit'] ) : '0px',
 	),
 );
 
@@ -389,15 +389,15 @@ $m_selectors = array(
 		'margin-bottom' => UAGB_Helper::get_css_value( $attr['descSpaceMobile'], $attr['descSpaceUnit'] ),
 	),
 	' .uagb-blockquote__author-wrap.uagb-blockquote__author-at-right img' => array(
-		'margin-left' =>  ( $attr['stack'] !== 'none' ) ? '0px' : UAGB_Helper::get_css_value( $attr['authorImageGapMobile'], $attr['authorImageGapUnit'] ),
-		'margin-bottom' =>  ( $attr['stack'] !== 'none' ) ? UAGB_Helper::get_css_value( $attr['authorImageGapMobile'], $attr['authorImageGapUnit'] ) : '0px',
+		'margin-left' => ( 'none' !== $attr['stack'] ) ? '0px' : UAGB_Helper::get_css_value( $attr['authorImageGapMobile'], $attr['authorImageGapUnit'] ),
+		'margin-bottom' => ( 'none' !== $attr['stack'] ) ? UAGB_Helper::get_css_value( $attr['authorImageGapMobile'], $attr['authorImageGapUnit'] ) : '0px',
 	),
 	' .uagb-blockquote__author-wrap.uagb-blockquote__author-at-top img' => array(
-		'margin-bottom' =>  UAGB_Helper::get_css_value( $attr['authorImageGapMobile'], $attr['authorImageGapUnit'] ),
+		'margin-bottom' => UAGB_Helper::get_css_value( $attr['authorImageGapMobile'], $attr['authorImageGapUnit'] ),
 	),
 	' .uagb-blockquote__author-wrap.uagb-blockquote__author-at-left img' => array(
-		'margin-right' =>  ( $attr['stack'] !== 'none' ) ? '0px' : UAGB_Helper::get_css_value( $attr['authorImageGapMobile'], $attr['authorImageGapUnit'] ),
-		'margin-bottom' =>  ( $attr['stack'] !== 'none' ) ? UAGB_Helper::get_css_value( $attr['authorImageGapMobile'], $attr['authorImageGapUnit'] ) : '0px',
+		'margin-right' => ( $attr['stack'] !== 'none' ) ? '0px' : UAGB_Helper::get_css_value( $attr['authorImageGapMobile'], $attr['authorImageGapUnit'] ),
+		'margin-bottom' => ( $attr['stack'] !== 'none' ) ? UAGB_Helper::get_css_value( $attr['authorImageGapMobile'], $attr['authorImageGapUnit'] ) : '0px',
 	),
 );
 
