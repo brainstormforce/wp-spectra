@@ -50,10 +50,12 @@ const attributes = {
 		default: "solid",
 	},
 	separatorHeight: {
-		type: "number"
+		type: "number",
+		default: 2
 	},
 	separatorWidth: {
-		type: "number"
+		type: "number",
+		default: 12
 	},
 	separatorWidthType : {
 		type: "string",
