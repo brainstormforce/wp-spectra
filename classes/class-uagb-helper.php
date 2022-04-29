@@ -251,7 +251,8 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 		 */
 		public static function backend_load_font_awesome_icons() {
 
-			$json_file = UAGB_DIR . 'blocks-config/uagb-controls/UAGBIcon.json';
+			$json_file = UAGB_DIR . 'blocks-config/uagb-controls/uagb-icons.php';
+
 			if ( ! file_exists( $json_file ) ) {
 				return array();
 			}
@@ -261,8 +262,8 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 				return self::$icon_json;
 			}
 
-			$str             = uagb_filesystem()->get_contents( $json_file );
-			self::$icon_json = json_decode( $str, true );
+			self::$icon_json = include $json_file;
+
 			return self::$icon_json;
 		}
 
