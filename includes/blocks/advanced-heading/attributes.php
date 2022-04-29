@@ -109,7 +109,7 @@ return array(
 	'linkColor'                    => '',
 	'linkHColor'                   => '',
 	// Highlight.
-	'highLightColor'               => '#f78a0c',
+	'highLightColor'               => '#6104ff',
 	'highLightBackground'          => '',
 	'highLightBorderWidth'         => '',
 	'highLightBorderRadius'        => '',
