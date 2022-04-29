@@ -431,6 +431,13 @@ const attributes = {
 			styleType: 'toggle-width-size'
 		},
 	},
+	toggleColor: {
+		type: 'string',
+		default: '#ffffff',
+		UAGCopyPaste: {
+			styleType: 'toggle-color'
+		},
+	},
 	toggleActiveColor: {
 		type: 'string',
 		default: '#000000',
@@ -438,23 +445,18 @@ const attributes = {
 			styleType: 'toggle-active-color'
 		},
 	},
-	toggleHeightSize: {
-		type: 'number',
+	toggleDotColor: {
+		type: 'string',
+		default: '#000000',
 		UAGCopyPaste: {
-			styleType: 'toggle-height-size'
-		},
-		default: 0,
-	},
-	toggleHeightSizeTablet: {
-		type: 'number',
-		UAGCopyPaste: {
-			styleType: 'toggle-height-size'
+			styleType: 'toggle-dot-color'
 		},
 	},
-	toggleHeightSizeMobile: {
-		type: 'number',
+	toggleDotActiveColor: {
+		type: 'string',
+		default: '#ffffff',
 		UAGCopyPaste: {
-			styleType: 'toggle-height-size'
+			styleType: 'toggle-dot-active-color'
 		},
 	},
 	inputLineHeightTablet: {
@@ -478,6 +480,13 @@ const attributes = {
 		},
 		default: '',
 	},
+	labelHoverColor: {
+		type: 'string',
+		UAGCopyPaste: {
+			styleType: 'main-title-hover-color'
+		},
+		default: '',
+	},
 	inputColor: {
 		type: 'string',
 		UAGCopyPaste: {
@@ -492,10 +501,38 @@ const attributes = {
 		},
 		default: '',
 	},
+	bgHoverColor: {
+		type: 'string',
+		UAGCopyPaste: {
+			styleType: 'input-bg-hover-color'
+		},
+		default: '',
+	},
+	bgActiveColor: {
+		type: 'string',
+		UAGCopyPaste: {
+			styleType: 'input-bg-active-color'
+		},
+		default: '',
+	},
 	inputplaceholderColor: {
 		type: 'string',
 		UAGCopyPaste: {
 			styleType: 'input-placeholder-color'
+		},
+		default: '#abb8c3',
+	},
+	inputplaceholderHoverColor: {
+		type: 'string',
+		UAGCopyPaste: {
+			styleType: 'input-placeholder-hover-color'
+		},
+		default: '#abb8c3',
+	},
+	inputplaceholderActiveColor: {
+		type: 'string',
+		UAGCopyPaste: {
+			styleType: 'input-placeholder-active-color'
 		},
 		default: '#abb8c3',
 	},

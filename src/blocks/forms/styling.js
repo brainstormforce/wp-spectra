@@ -15,9 +15,6 @@ function styling( props ) {
 		toggleWidthSize,
 		toggleWidthSizeTablet,
 		toggleWidthSizeMobile,
-		toggleHeightSize,
-		toggleHeightSizeTablet,
-		toggleHeightSizeMobile,
 		submitborderStyle,
 		submitborderWidth,
 		submitborderRadius,
@@ -53,11 +50,19 @@ function styling( props ) {
 		inputLineHeight,
 		inputLineHeightTablet,
 		inputLineHeightMobile,
+		toggleColor,
 		toggleActiveColor,
+		toggleDotColor,
+		toggleDotActiveColor,
 		labelColor,
+		labelHoverColor,
 		inputColor,
 		bgColor,
+		bgHoverColor,
+		bgActiveColor,
 		inputplaceholderColor,
+		inputplaceholderHoverColor,
+		inputplaceholderActiveColor,
 		inputactiveColor,
 		inputborderStyle,
 		inputborderWidth,
@@ -183,6 +188,10 @@ function styling( props ) {
 		' .uagb-forms-main-form .uagb-forms-input:focus': {
 			'outline': ' none !important',
 			'border': '2px solid ' + inputactiveColor,
+			'background-color': `${ bgActiveColor } !important`,
+		},
+		' .uagb-forms-main-form .uagb-forms-input:focus::placeholder': {
+			'color': `${ inputplaceholderActiveColor } !important`
 		},
 
 		' .uagb-forms-main-form .uagb-forms-main-submit-button-wrap': {
@@ -226,7 +235,7 @@ function styling( props ) {
 		},
 		' .uagb-switch ': {
 			'height': generateCSSUnit(
-				25 + toggleHeightSize + inputborderWidth,
+				25 + toggleWidthSize + inputborderWidth,
 				'px'
 			),
 			'width': generateCSSUnit(
@@ -237,31 +246,39 @@ function styling( props ) {
 		' .uagb-switch input:checked + .uagb-slider': {
 			'background-color': toggleActiveColor,
 		},
+		' .uagb-switch input:checked + .uagb-slider:before': {
+			'background-color': toggleDotActiveColor,
+		},
 		' .uagb-switch input:focus + .uagb-slider': {
 			'box-shadow': '0 0 1px' + toggleActiveColor,
 		},
 		' .uagb-slider:before ': {
 			'height': generateCSSUnit(
-				20 + toggleHeightSize - inputborderWidth,
+				20 + toggleWidthSize - inputborderWidth * 2,
 				'px'
 			),
 			'width': generateCSSUnit(
-				20 + toggleWidthSize - inputborderWidth / 2,
+				20 + toggleWidthSize - inputborderWidth,
 				'px'
 			),
+			'background-color': toggleDotColor,
+		},
+		' .uagb-slider.round': {
+			'border-radius': generateCSSUnit( 20 + toggleWidthSize - inputborderWidth, 'px' ),
 		},
 		' .uagb-switch input:checked + .uagb-slider:before ': {
 			'transform':
 				'translateX(' +
 				generateCSSUnit( 26 + toggleWidthSize, 'px' ) / 2 +
 				')',
+			'background-color': toggleDotActiveColor,
 		},
 		' .uagb-forms-radio-wrap input[type=radio]:checked + label:before': {
-			'background-color': inputColor,
+			'background-color': toggleActiveColor,
 			'font-size': 'calc(' + toggleSize + toggleSizeType + ' / 1.2 )',
 		},
 		' .uagb-forms-radio-wrap input[type=radio] + label:before': {
-			'background-color': bgColor,
+			'background-color': toggleColor,
 			'width': generateCSSUnit( toggleSize, toggleSizeType ),
 			'height': generateCSSUnit( toggleSize, toggleSizeType ),
 		},
@@ -269,11 +286,12 @@ function styling( props ) {
 			'color': inputColor,
 		},
 		' .uagb-forms-checkbox-wrap input[type=checkbox]:checked + label:before': {
-			'color': inputColor,
+			'color': toggleDotActiveColor,
+			'background-color': toggleActiveColor,
 			'font-size': 'calc(' + toggleSize + 'px / 1.2 )',
 		},
 		' .uagb-forms-checkbox-wrap input[type=checkbox] + label:before': {
-			'background-color': bgColor,
+			'background-color': toggleColor,
 			'border-radius': generateCSSUnit( inputborderRadius, 'px' ),
 			'width': generateCSSUnit( toggleSize, 'px' ),
 			'height': generateCSSUnit( toggleSize, 'px' ),
@@ -282,17 +300,28 @@ function styling( props ) {
 			'color': inputColor,
 		},
 		' .uagb-forms-accept-wrap input[type=checkbox]:checked + label:before': {
-			'color': inputColor,
+			'color': toggleDotColor,
 			'font-size': 'calc(' + toggleSize + 'px / 1.2 )',
 		},
 		' .uagb-forms-accept-wrap input[type=checkbox] + label:before': {
 			'border-radius': generateCSSUnit( inputborderRadius, 'px' ),
-			'background-color': bgColor,
+			'background-color': toggleColor,
 			'width': generateCSSUnit( toggleSize, 'px' ),
 			'height': generateCSSUnit( toggleSize, 'px' ),
 		},
 		' .uagb-forms-accept-wrap > label': {
 			'color': inputColor,
+		},
+		// Hover Colors
+		' .uagb-forms-field-set:hover .uagb-forms-input-label': {
+			'color': labelHoverColor,
+		},
+		' .uagb-forms-field-set:hover .uagb-forms-input': {
+			'background-color': bgHoverColor,
+			'border-color': inputborderHoverColor,
+		},
+		' .uagb-forms-field-set:hover .uagb-forms-input::placeholder': {
+			'color': inputplaceholderHoverColor,
 		},
 	};
 
@@ -396,11 +425,9 @@ function styling( props ) {
 				inputborderStyle +
 				' ' +
 				inputborderColor,
-			'background-color': bgColor,
+			'background-color': toggleColor,
 		};
-		selectors[ ' .uagb-forms-main-form  .uagb-forms-input:hover' ] = {
-			'border-color': inputborderHoverColor,
-		};
+		// Label Hovev Colors
 	} else if ( 'underlined' === formStyle ) {
 		selectors[ ' .uagb-forms-main-form  .uagb-forms-input' ] = {
 			'border': 0,
@@ -495,16 +522,13 @@ function styling( props ) {
 				inputborderColor,
 		};
 		selectors[ ' .uagb-slider ' ] = {
-			'background-color': bgColor,
+			'background-color': toggleColor,
 			'border-bottom':
 				generateCSSUnit( inputborderWidth, 'px' ) +
 				' ' +
 				inputborderStyle +
 				' ' +
 				inputborderColor,
-		};
-		selectors[ ' .uagb-forms-main-form  .uagb-forms-input:hover' ] = {
-			'border-color': inputborderHoverColor,
 		};
 	}
 
@@ -535,7 +559,7 @@ function styling( props ) {
 		},
 		' .uagb-switch ' : {
 			'height': generateCSSUnit(
-				25 + toggleHeightSizeTablet + inputborderWidth,
+				25 + toggleWidthSizeTablet + inputborderWidth,
 				'px'
 			),
 			'width': generateCSSUnit(
@@ -545,13 +569,16 @@ function styling( props ) {
 		},
 		' .uagb-switch .uagb-slider:before ' : {
 			'height': generateCSSUnit(
-				20 + toggleHeightSizeTablet - inputborderWidth,
+				20 + toggleWidthSizeTablet - inputborderWidth * 2,
 				'px'
 			),
 			'width': generateCSSUnit(
-				20 + toggleWidthSizeTablet - inputborderWidth / 2,
+				20 + toggleWidthSizeTablet - inputborderWidth,
 				'px'
 			),
+		},
+		' .uagb-slider.round': {
+			'border-radius': generateCSSUnit( 20 + toggleWidthSizeTablet - inputborderWidth, 'px' ),
 		},
 		' .uagb-switch input:checked + .uagb-slider:before ' : {
 			'transform':
@@ -636,7 +663,7 @@ function styling( props ) {
 		},
 		' .uagb-switch ' : {
 			'height': generateCSSUnit(
-				25 + toggleHeightSizeMobile + inputborderWidth,
+				25 + toggleWidthSizeMobile + inputborderWidth,
 				'px'
 			),
 			'width': generateCSSUnit(
@@ -646,13 +673,16 @@ function styling( props ) {
 		},
 		' .uagb-switch .uagb-slider:before ' : {
 			'height': generateCSSUnit(
-				20 + toggleHeightSizeMobile - inputborderWidth,
+				20 + toggleWidthSizeMobile - inputborderWidth * 2,
 				'px'
 			),
 			'width': generateCSSUnit(
-				20 + toggleWidthSizeMobile - inputborderWidth / 2,
+				20 + toggleWidthSizeMobile - inputborderWidth,
 				'px'
 			),
+		},
+		' .uagb-slider.round': {
+			'border-radius': generateCSSUnit( 20 + toggleWidthSizeMobile - inputborderWidth, 'px' ),
 		},
 		' .uagb-switch input:checked + .uagb-slider:before ' : {
 			'transform':
