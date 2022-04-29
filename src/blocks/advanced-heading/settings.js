@@ -1197,7 +1197,7 @@ const Settings = ( props ) => {
 					<InspectorTab { ...UAGTabs.style }>
 						{ headingStylePanel() }
 						{ 'none' !== seperatorStyle && seperatorSettings() }
-						{ subHeadingStylePanel() }
+						{ headingDescToggle && subHeadingStylePanel() }
 						{linkStylePanel()}
 						{highLightStylePanel()}
 						{backgroundStylePanel()}
