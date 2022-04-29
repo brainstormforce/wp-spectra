@@ -1,7 +1,7 @@
 import classnames from 'classnames';
 import { RichText } from '@wordpress/block-editor';
 import { __ } from '@wordpress/i18n';
-import React, {useEffect} from 'react';
+import React from 'react';
 import { useDeviceType } from '@Controls/getPreviewType';
 
 const Render = ( props ) => {
