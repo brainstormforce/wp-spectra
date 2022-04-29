@@ -395,19 +395,19 @@ if ( 'right' === $attr['ctaPosition'] && ( 'text' === $attr['ctaType'] || 'butto
 	$selectors['.wp-block-uagb-call-to-action '] = array(
 		'display' => 'flex',
 	);
-	$selectors[' .uagb-cta__content-right .uagb-cta__left-right-wrap .uagb-cta__content']      = array(
+	$selectors[' .uagb-cta__content-right .uagb-cta__left-right-wrap .uagb-cta__content'] = array(
 		'width' => UAGB_Helper::get_css_value( $attr['contentWidth'], '%' ),
 	);
 	$selectors[' .uagb-cta__wrap'] = array(
 		'width' => UAGB_Helper::get_css_value( $attr['contentWidth'], '%' ),
 	);
-	$t_selectors[' .uagb-cta__content-right .uagb-cta__left-right-wrap .uagb-cta__content']      = array(
+	$t_selectors[' .uagb-cta__content-right .uagb-cta__left-right-wrap .uagb-cta__content'] = array(
 		'width' => UAGB_Helper::get_css_value( $attr['contentWidthTablet'], '%' ),
 	);
 	$t_selectors[' .uagb-cta__wrap'] = array(
 		'width' => UAGB_Helper::get_css_value( $attr['contentWidthTablet'], '%' ),
 	);
-	$m_selectors[' .uagb-cta__content-right .uagb-cta__left-right-wrap .uagb-cta__content']      = array(
+	$m_selectors[' .uagb-cta__content-right .uagb-cta__left-right-wrap .uagb-cta__content'] = array(
 		'width' => UAGB_Helper::get_css_value( $attr['contentWidthMobile'], '%' ),
 	);
 	$m_selectors[' .uagb-cta__wrap'] = array(
@@ -466,15 +466,15 @@ if ( 'desktop' === $attr['stack'] ) {
 
 } elseif ( 'none' === $attr['stack'] ) {
 	$selectors['.wp-block-uagb-call-to-action  ']  = array(
-		'align-items' => 'top' === $attr['buttonAlign'] ? 'flex-start' : 'center',
+		'align-items'    => 'top' === $attr['buttonAlign'] ? 'flex-start' : 'center',
 		'flex-direction' => 'row',
 	);
 	$t_selectors['.wp-block-uagb-call-to-action '] = array(
-		'align-items' => 'top' === $attr['buttonAlign'] ? 'flex-start' : 'center',
+		'align-items'    => 'top' === $attr['buttonAlign'] ? 'flex-start' : 'center',
 		'flex-direction' => 'row',
 	);
 	$m_selectors['.wp-block-uagb-call-to-action '] = array(
-		'align-items' => 'top' === $attr['buttonAlign'] ? 'flex-start' : 'center',
+		'align-items'    => 'top' === $attr['buttonAlign'] ? 'flex-start' : 'center',
 		'flex-direction' => 'row',
 	);
 }
