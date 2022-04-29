@@ -95,7 +95,7 @@ const attributes = {
 	},
 	seperatorStyle: {
 		type: 'string',
-		default: 'solid',
+		default: 'none',
 		UAGCopyPaste: {
 			styleType: 'separator-style'
 		}

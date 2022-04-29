@@ -20,13 +20,6 @@ const Render = ( props ) => {
 		className,
 	} = props;
 
-	useEffect(() => {
-		// if sub heading have value then enable it.
-		if(headingDesc){
-			setAttributes({headingDescToggle: true})
-		}
-	}, [])
-
 	const deviceType = useDeviceType();
 	const headingText = (
 		<RichText

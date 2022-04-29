@@ -146,7 +146,11 @@ const attributes = {
 	subHeadLoadGoogleFonts: {
 		type: "boolean",
 		default: false
-	}
+	},
+	headingDescToggle: {
+		source: 'boolean',
+		default: true,
+	},
 }
 const deprecated = [
 	{
