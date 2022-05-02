@@ -73,27 +73,39 @@ const Settings = ( props ) => {
 				title={ __( 'General', 'ultimate-addons-for-gutenberg' ) }
 				initialOpen={ true }
 			>
-				<SelectControl
+				<MultiButtonsControl
+					setAttributes={ setAttributes }
 					label={ __( 'File Source', 'ultimate-addons-for-gutenberg' ) }
-					value={ lottieSource }
-					onChange={ ( value ) => setAttributes( { lottieSource: value } ) }
+					data={ {
+						value: lottieSource,
+						label: 'lottieSource',
+					} }
 					options={ [
 						{
 							value: 'library',
 							label: __(
-								'Media Library',
+								'Library',
 								'ultimate-addons-for-gutenberg'
 							),
 						},
 						{
 							value: 'url',
 							label: __(
-								'Remote URL',
+								'URL',
 								'ultimate-addons-for-gutenberg'
 							),
 						},
 					] }
 				/>
+				{ lottieSource === 'upload' && (
+					<UAGImage
+						label={ 'Lottie Animation' }
+						backgroundImage={ jsonLottie }
+						onSelectImage={ onSelectLottieJSON }
+						disableRemove={ true }
+						allow={ [ 'application/json' ] }
+					/>
+				) }
 				{ lottieSource === 'library' && (
 					<UAGImage
 						label={ 'Lottie Animation' }
