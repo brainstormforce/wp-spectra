@@ -55,6 +55,10 @@ const attributes = {
 		type: 'number',
 		default: 30,
 	},
+	smoothScrollOffsetType: {
+		type: 'string',
+		default: 'px',
+	},
 	scrollToTop: {
 		type: 'boolean',
 		default: false,
@@ -571,6 +575,13 @@ const attributes = {
 		default: 0,
 		UAGCopyPaste: {
 			styleType: 'main-title-bottom-margin'
+		},
+	},
+	headingBottomType: {
+		type: 'string',
+		default: 'px',
+		UAGCopyPaste: {
+			styleType: 'main-title-margin-type-desktop'
 		},
 	},
 	paddingTypeDesktop: {

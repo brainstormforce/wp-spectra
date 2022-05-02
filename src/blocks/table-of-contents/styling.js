@@ -65,6 +65,7 @@ function styling( props ) {
 		headingBottom,
 		headingBottomTablet,
 		headingBottomMobile,
+		headingBottomType,
 		contentPaddingDesktop,
 		contentPaddingTablet,
 		contentPaddingMobile,
@@ -125,11 +126,11 @@ function styling( props ) {
 		},
 		' .uagb-toc__title-wrap': {
 			'justify-content': align,
-			'margin-bottom': generateCSSUnit( headingBottom, 'px' ),
+			'margin-bottom': generateCSSUnit( headingBottom, headingBottomType ),
 		},
 		' .uagb-toc__title': {
 			'justify-content': headingAlignment,
-			'margin-bottom': generateCSSUnit( headingBottom, 'px' ),
+			'margin-bottom': generateCSSUnit( headingBottom, headingBottomType ),
 			'font-size': generateCSSUnit(
 				headingFontSize,
 				headingFontSizeType
@@ -266,7 +267,7 @@ function styling( props ) {
 				headingLineHeightTablet,
 				headingLineHeightType
 			),
-			'margin-bottom': generateCSSUnit( headingBottomTablet, 'px' ),
+			'margin-bottom': generateCSSUnit( headingBottomTablet, headingBottomType ),
 		},
 		' .uagb-toc__wrap': {
 			'width': generateCSSUnit( widthTablet, widthTypeTablet ),
@@ -367,7 +368,7 @@ function styling( props ) {
 				headingLineHeightMobile,
 				headingLineHeightType
 			),
-			'margin-bottom': generateCSSUnit( headingBottomMobile, 'px' ),
+			'margin-bottom': generateCSSUnit( headingBottomMobile, headingBottomType ),
 		},
 		' .uagb-toc__wrap': {
 			'width': generateCSSUnit( widthMobile, widthTypeMobile ),

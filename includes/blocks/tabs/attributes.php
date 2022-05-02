@@ -16,7 +16,7 @@ return array(
 	'tabsStyleT'                  => 'vstyle6',
 	'tabsStyleM'                  => 'vstyle6',
 	'headerBgColor'               => '',
-	'headerTextColor'             => '#3a3a3a',
+	'headerTextColor'             => '',
 	'bodyBgColor'                 => '',
 	'bodyTextColor'               => '',
 	'borderWidth'                 => 1,
