@@ -54,7 +54,23 @@ const attributes = {
 		type: 'integer',
 		default: '',
 	},
+	widthTablet: {
+		type: 'integer',
+		default: '',
+	},
+	widthMobile: {
+		type: 'integer',
+		default: '',
+	},
 	height: {
+		type: 'integer',
+		default: '',
+	},
+	heightTablet: {
+		type: 'integer',
+		default: '',
+	},
+	heightMobile: {
 		type: 'integer',
 		default: '',
 	},

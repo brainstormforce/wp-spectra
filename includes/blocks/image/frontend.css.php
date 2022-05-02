@@ -150,7 +150,10 @@ if ( 'none' !== $attr['maskShape'] ) {
 }
 
 // tablet.
-$t_selectors['.wp-block-uagb-image'] = array(
+$t_selectors['.wp-block-uagb-image .wp-block-uagb-image__figure img'] = array(
+	'width' => UAGB_Helper::get_css_value( $attr['widthTablet'], 'px' ),
+);
+$t_selectors['.wp-block-uagb-image']                                  = array(
 	'margin-top'    => UAGB_Helper::get_css_value( $attr['imageTopMarginTablet'], $attr['imageMarginUnitTablet'] ),
 	'margin-right'  => UAGB_Helper::get_css_value( $attr['imageRightMarginTablet'], $attr['imageMarginUnitTablet'] ),
 	'margin-bottom' => UAGB_Helper::get_css_value( $attr['imageBottomMarginTablet'], $attr['imageMarginUnitTablet'] ),
@@ -180,7 +183,10 @@ $t_selectors['.wp-block-uagb-image .wp-block-uagb-image--layout-overlay__inner .
 );
 
 // mobile.
-$m_selectors['.wp-block-uagb-image'] = array(
+$m_selectors['.wp-block-uagb-image .wp-block-uagb-image__figure img'] = array(
+	'width' => UAGB_Helper::get_css_value( $attr['widthMobile'], 'px' ),
+);
+$m_selectors['.wp-block-uagb-image']                                  = array(
 	'margin-top'    => UAGB_Helper::get_css_value( $attr['imageTopMarginMobile'], $attr['imageMarginUnitMobile'] ),
 	'margin-right'  => UAGB_Helper::get_css_value( $attr['imageRightMarginMobile'], $attr['imageMarginUnitMobile'] ),
 	'margin-bottom' => UAGB_Helper::get_css_value( $attr['imageBottomMarginMobile'], $attr['imageMarginUnitMobile'] ),
