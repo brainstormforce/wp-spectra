@@ -347,6 +347,10 @@ if ( ! class_exists( 'UAGB_CF7_Styler' ) ) {
 							'type'    => 'number',
 							'default' => '1',
 						),
+						'radioCheckBorderWidthUnit'     => array(
+							'type'    => 'string',
+							'default' => 'px',
+						),
 						'radioCheckBorderRadius'        => array(
 							'type'    => 'number',
 							'default' => '',
@@ -474,6 +478,10 @@ if ( ! class_exists( 'UAGB_CF7_Styler' ) ) {
 						'msgBorderSize'                 => array(
 							'type'    => 'number',
 							'default' => '',
+						),
+						'msgBorderSizeUnit'             => array(
+							'type'    => 'string',
+							'default' => 'px',
 						),
 						'msgBorderRadius'               => array(
 							'type'    => 'number',
