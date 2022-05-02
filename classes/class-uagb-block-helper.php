@@ -1064,8 +1064,8 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					$gen_bg_css['background-size'] = esc_attr( $size );
 				}
 
-				if ( isset( $battachment ) ) {
-					$gen_bg_css['background-attachment'] = esc_attr( $battachment );
+				if ( isset( $attachment ) ) {
+					$gen_bg_css['background-attachment'] = esc_attr( $attachment );
 				}
 			}
 

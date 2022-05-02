@@ -569,16 +569,16 @@ const Settings = ( props ) => {
 							label: __( 'Top', 'ultimate-addons-for-gutenberg' ),
 						},
 						{
-							value: 'bottom',
+							value: 'center',
 							label: __(
-								'Bottom',
+								'Center',
 								'ultimate-addons-for-gutenberg'
 							),
 						},
 						{
-							value: 'center',
+							value: 'bottom',
 							label: __(
-								'Center',
+								'Bottom',
 								'ultimate-addons-for-gutenberg'
 							),
 						},
@@ -875,7 +875,7 @@ const Settings = ( props ) => {
 				/> */}
 				<ResponsiveSlider
 					label={ __(
-						'Rounded Corners',
+						'Border Radius',
 						'ultimate-addons-for-gutenberg'
 					) }
 					data={ {
@@ -1096,7 +1096,7 @@ const Settings = ( props ) => {
 		return (
 			<UAGAdvancedPanelBody
 				title={ __( 'Heading', 'ultimate-addons-for-gutenberg' ) }
-				initialOpen={ false }
+				initialOpen={ true }
 			>
 				<AdvancedPopColorControl
 					label={ __( 'Color', 'ultimate-addons-for-gutenberg' ) }
@@ -1166,20 +1166,6 @@ const Settings = ( props ) => {
 						label: 'headDecoration',
 					} }
 				/>
-				{/* <Range
-					label={ __(
-						'Top Spacing',
-						'ultimate-addons-for-gutenberg'
-					) }
-					setAttributes={ setAttributes }
-					value={ headTopSpacing }
-					onChange={ ( value ) =>
-						setAttributes( { headTopSpacing: value } )
-					}
-					min={ 1 }
-					max={ 50 }
-					displayUnit={ false }
-				/> */}
 				<ResponsiveSlider
 					label={ __(
 						'Top Spacing',
@@ -1204,20 +1190,6 @@ const Settings = ( props ) => {
 					displayUnit={ false }
 					setAttributes={ setAttributes }
 				/>
-				{/* <Range
-					label={ __(
-						'Bottom Spacing',
-						'ultimate-addons-for-gutenberg'
-					) }
-					setAttributes={ setAttributes }
-					value={ headSpace }
-					onChange={ ( value ) =>
-						setAttributes( { headSpace: value } )
-					}
-					min={ 0 }
-					max={ 100 }
-					displayUnit={ false }
-				/> */}
 				<ResponsiveSlider
 					label={ __(
 						'Bottom Spacing',
@@ -1322,20 +1294,6 @@ const Settings = ( props ) => {
 						label: 'authorDecoration',
 					} }
 				/>
-				{/* <Range
-					label={ __(
-						'Bottom Spacing',
-						'ultimate-addons-for-gutenberg'
-					) }
-					setAttributes={ setAttributes }
-					value={ authorSpace }
-					onChange={ ( value ) =>
-						setAttributes( { authorSpace: value } )
-					}
-					min={ 0 }
-					max={ 50 }
-					displayUnit={ false }
-				/> */}
 				<ResponsiveSlider
 					label={ __(
 						'Bottom Spacing',
@@ -1537,20 +1495,6 @@ const Settings = ( props ) => {
 					} }
 				/>
 				{ timelinAlignment !== 'center' && (
-					// <Range
-					// 	label={ __(
-					// 		'Bottom Spacing',
-					// 		'ultimate-addons-for-gutenberg'
-					// 	) }
-					// 	setAttributes={ setAttributes }
-					// 	value={ dateBottomspace }
-					// 	onChange={ ( value ) =>
-					// 		setAttributes( { dateBottomspace: value } )
-					// 	}
-					// 	min={ 0 }
-					// 	max={ 50 }
-					// 	displayUnit={ false }
-					// />
 					<ResponsiveSlider
 						label={ __(
 							'Bottom Spacing',
@@ -1666,20 +1610,6 @@ const Settings = ( props ) => {
 						label: 'ctaDecoration',
 					} }
 				/>
-				{/* <Range
-					label={ __(
-						'Bottom Spacing',
-						'ultimate-addons-for-gutenberg'
-					) }
-					setAttributes={ setAttributes }
-					value={ ctaBottomSpacing }
-					onChange={ ( value ) =>
-						setAttributes( { ctaBottomSpacing: value } )
-					}
-					min={ 1 }
-					max={ 50 }
-					displayUnit={ false }
-				/> */}
 				<ResponsiveSlider
 					label={ __(
 						'Bottom Spacing',

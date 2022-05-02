@@ -299,7 +299,7 @@ function ApplyExtraClass( extraProps, blockType, attributes ) {
 							'Display Conditions',
 							'ultimate-addons-for-gutenberg'
 						) }
-						initialOpen={ false }
+						initialOpen={ true }
 						className="block-editor-block-inspector__advanced uagb-extention-tab"
 					>
 						{ UserConditionOptions( props ) }

@@ -287,7 +287,7 @@ $selectors = array(
 		'background-color' => $attr['validationMsgBgColor'],
 	),
 	' .wpcf7-response-output'                             => array(
-		'border-width'   => UAGB_Helper::get_css_value( $attr['msgBorderSize'], 'px' ),
+		'border-width'   => UAGB_Helper::get_css_value( $attr['msgBorderSize'], $attr['msgBorderSizeUnit'] ),
 		'border-radius'  => UAGB_Helper::get_css_value( $attr['msgBorderRadius'], $attr['msgBorderRadiusType'] ),
 		'padding-top'    => UAGB_Helper::get_css_value( $message_top_padding_dekstop, $attr['messagePaddingTypeDesktop'] ),
 		'padding-bottom' => UAGB_Helper::get_css_value( $message_bottom_padding_dekstop, $attr['messagePaddingTypeDesktop'] ),

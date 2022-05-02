@@ -237,11 +237,25 @@ const attributes = {
 			styleType: 'main-title-bottom-margin'
 		},
 	},
+	titleSpaceType: {
+		type: 'string',
+		default: 'px',
+		UAGCopyPaste: {
+			styleType: 'main-title-unit-type'
+		},
+	},
 	descSpace: {
 		type: 'number',
 		default: 10,
 		UAGCopyPaste: {
 			styleType: 'desc-bottom-margin'
+		},
+	},
+	descSpaceType: {
+		type: 'string',
+		default: 'px',
+		UAGCopyPaste: {
+			styleType: 'desc-bottom-margin-unit-type'
 		},
 	},
 	block_id: {
@@ -365,23 +379,30 @@ const attributes = {
 	},
 	contentWidth: {
 		type: 'number',
-		default: '70',
+		default: 70,
 		UAGCopyPaste: {
 			styleType: 'desc-width'
 		},
 	},
 	contentWidthTablet: {
 		type: 'number',
-		default: '0',
+		default: 70,
 		UAGCopyPaste: {
 			styleType: 'desc-width'
 		},
 	},
 	contentWidthMobile: {
 		type: 'number',
-		default: '0',
+		default: 70,
 		UAGCopyPaste: {
 			styleType: 'desc-width'
+		},
+	},
+	contentWidthType: {
+		type: 'string',
+		default: '%',
+		UAGCopyPaste: {
+			styleType: 'desc-width-type'
 		},
 	},
 	ctaBtnLinkColor: {
@@ -470,11 +491,25 @@ const attributes = {
 		},
 		default: 5,
 	},
+	ctaLeftSpaceType: {
+		type: 'string',
+		default: 'px',
+		UAGCopyPaste: {
+			styleType: 'btn-margin-unit-type'
+		},
+	},
 	ctaRightSpace: {
 		type: 'number',
 		default: 5,
 		UAGCopyPaste: {
 			styleType: 'btn-right-margin'
+		},
+	},
+	ctaRightSpaceType: {
+		type: 'string',
+		default: 'px',
+		UAGCopyPaste: {
+			styleType: 'btn-margin-unit-type'
 		},
 	},
 	ctaTopPadding: {
@@ -836,9 +871,40 @@ const attributes = {
 		type: 'number',
 		default: 10,
 	},
+	gapType: {
+		type: 'string',
+		default: 'px',
+		UAGCopyPaste: {
+			styleType: 'desc-bottom-margin-unit-type'
+		},
+	},
 	isPreview: {
 		type: 'boolean',
 		default: false,
+	},
+	stackBtn: {
+		type: 'string',
+		default: 'none'
+	},
+	gapBtn: {
+		type: 'number',
+		default: 15
+	},
+	gapBtnTablet: {
+		type: 'number',
+		default: 15
+	},
+	gapBtnMobile: {
+		type: 'number',
+		default: 15
+	},
+	textAlignTablet: {
+		type: 'string',
+		default: 'center'
+	},
+	textAlignMobile: {
+		type: 'string',
+		default: 'center'
 	},
 };
 

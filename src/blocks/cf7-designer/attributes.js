@@ -514,6 +514,13 @@
 			styleType: 'radio-border-width'
 		},
 	},
+	radioCheckBorderWidthUnit: {
+		type    : 'string',
+		default : 'px',
+		UAGCopyPaste: {
+			styleType: 'radio-border-width-type'
+		},
+	},
 	radioCheckBorderRadius        : {
 		type    : 'number',
 		default : '',
@@ -739,6 +746,13 @@
 		default : '',
 		UAGCopyPaste: {
 			styleType: 'msg-border-size'
+		},
+	},
+	msgBorderSizeUnit               : {
+		type    : 'string',
+		default : 'px',
+		UAGCopyPaste: {
+			styleType: 'msg-border-size-type'
 		},
 	},
 	msgBorderRadius               : {

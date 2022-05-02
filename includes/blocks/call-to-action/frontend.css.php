@@ -22,15 +22,39 @@ $btnPaddingBottom = isset( $attr['ctaBottomPadding'] ) ? $attr['ctaBottomPadding
 $btnPaddingLeft   = isset( $attr['ctaLeftPadding'] ) ? $attr['ctaLeftPadding'] : $attr['ctaBtnHrPadding'];
 $btnPaddingRight  = isset( $attr['ctaRightPadding'] ) ? $attr['ctaRightPadding'] : $attr['ctaBtnHrPadding'];
 
+if ( 'left' === $attr['textAlign'] ) {
+	$alignment = 'flex-start';
+} elseif ( 'right' === $attr['textAlign'] ) {
+	$alignment = 'flex-end';
+} else {
+	$alignment = 'center';
+}
+
+if ( 'left' === $attr['textAlignTablet'] ) {
+	$alignmentTablet = 'flex-start';
+} elseif ( 'right' === $attr['textAlignTablet'] ) {
+	$alignmentTablet = 'flex-end';
+} else {
+	$alignmentTablet = 'center';
+}
+
+if ( 'left' === $attr['textAlignMobile'] ) {
+	$alignmentMobile = 'flex-start';
+} elseif ( 'right' === $attr['textAlignMobile'] ) {
+
+	$alignmentMobile = 'flex-end';
+} else {
+	$alignmentMobile = 'center';
+}
 $selectors = array(
 	' .uagb-cta__title'                                    => array(
 		'line-height'   => UAGB_Helper::get_css_value( $attr['titleLineHeight'], $attr['titleLineHeightType'] ),
 		'color'         => $attr['titleColor'],
-		'margin-bottom' => $attr['titleSpace'] . 'px',
+		'margin-bottom' => UAGB_Helper::get_css_value( $attr['titleSpace'], $attr['titleSpaceType'] ),
 	),
 	' .uagb-cta__desc'                                     => array(
 		'color'         => $attr['descColor'],
-		'margin-bottom' => UAGB_Helper::get_css_value( $attr['descSpace'], 'px' ),
+		'margin-bottom' => UAGB_Helper::get_css_value( $attr['descSpace'], $attr['descSpaceType'] ),
 	),
 	' .uagb-cta__align-button-after'                       => array(
 		'margin-left' => UAGB_Helper::get_css_value( $attr['ctaIconSpace'], 'px' ),
@@ -54,7 +78,7 @@ $selectors = array(
 		'line-height' => $svg_size,
 		'fill'        => $attr['ctaBtnLinkColor'],
 	),
-	'.wp-block-uagb-call-to-action:hover a.uagb-cta__button-link-wrapper > svg' => array(
+	'.wp-block-uagb-call-to-action a.uagb-cta__button-link-wrapper:hover > svg' => array(
 		'fill' => $attr['ctaLinkHoverColor'],
 	),
 	'.wp-block-uagb-call-to-action a.uagb-cta-second__button > svg' => array(
@@ -64,7 +88,7 @@ $selectors = array(
 		'line-height' => UAGB_Helper::get_css_value( $attr['secondCtaFontSize'], $attr['secondCtaFontSizeType'] ),
 		'fill'        => $attr['secondCtaColor'],
 	),
-	'.wp-block-uagb-call-to-action:hover a.uagb-cta-second__button > svg' => array(
+	'.wp-block-uagb-call-to-action a.uagb-cta-second__button:hover' => array(
 		'fill' => $attr['secondCtaHoverColor'],
 	),
 );
@@ -80,11 +104,11 @@ $selectors['.wp-block-uagb-call-to-action a.uagb-cta-second__button']       = ar
 	'padding-bottom'   => UAGB_Helper::get_css_value( $attr['secondCtaBottomPadding'], $attr['secondCtaPaddingUnit'] ),
 	'padding-left'     => UAGB_Helper::get_css_value( $attr['secondCtaLeftPadding'], $attr['secondCtaPaddingUnit'] ),
 	'padding-right'    => UAGB_Helper::get_css_value( $attr['secondCtaRightPadding'], $attr['secondCtaPaddingUnit'] ),
-	'margin-left'      => UAGB_Helper::get_css_value( $attr['gap'], 'px' ),
+	'margin-left'      => UAGB_Helper::get_css_value( $attr['gap'], $attr['gapType'] ),
 	'align-self'       => 'top' === $attr['buttonAlign'] ? 'flex-start' : 'center',
 	'height'           => 'fit-content',
 );
-$selectors['.wp-block-uagb-call-to-action:hover a.uagb-cta-second__button'] = array(
+$selectors['.wp-block-uagb-call-to-action a.uagb-cta-second__button:hover'] = array(
 	'color'            => $attr['secondCtaHoverColor'],
 	'background-color' => $attr['secondCtaHoverBackground'],
 	'border-color'     => $attr['secondCtaBorderHColor'],
@@ -114,13 +138,13 @@ if ( 'text' === $attr['ctaType'] ) {
 	$selectors[' .uagb-cta__button-wrapper a.uagb-cta-typeof-text']                    = array(
 		'color' => $attr['ctaBtnLinkColor'],
 	);
-	$selectors[' .uagb-cta__button-wrapper:hover a.uagb-cta-typeof-text ']             = array(
+	$selectors[' .uagb-cta__button-wrapper a.uagb-cta-typeof-text:hover ']             = array(
 		'color' => $attr['ctaLinkHoverColor'],
 	);
 	$selectors['.wp-block-uagb-call-to-action a.uagb-cta__button-link-wrapper']        = array(
 		'color' => $attr['ctaBtnLinkColor'],
 	);
-	$selectors['.wp-block-uagb-call-to-action:hover a.uagb-cta__button-link-wrapper '] = array(
+	$selectors['.wp-block-uagb-call-to-action a.uagb-cta__button-link-wrapper:hover '] = array(
 		'color' => $attr['ctaLinkHoverColor'],
 	);
 }
@@ -138,7 +162,7 @@ if ( 'button' === $attr['ctaType'] ) {
 		'padding-left'     => UAGB_Helper::get_css_value( $btnPaddingLeft, $attr['ctaPaddingUnit'] ),
 		'padding-right'    => UAGB_Helper::get_css_value( $btnPaddingRight, $attr['ctaPaddingUnit'] ),
 	);
-	$selectors[' .uagb-cta__button-wrapper:hover a.uagb-cta-typeof-button']           = array(
+	$selectors[' .uagb-cta__button-wrapper a.uagb-cta-typeof-button:hover']           = array(
 		'color'            => $attr['ctaLinkHoverColor'],
 		'background-color' => $attr['ctaBgHoverColor'],
 		'border-color'     => $attr['ctaBorderhoverColor'],
@@ -155,7 +179,7 @@ if ( 'button' === $attr['ctaType'] ) {
 		'padding-left'     => UAGB_Helper::get_css_value( $btnPaddingLeft, $attr['ctaPaddingUnit'] ),
 		'padding-right'    => UAGB_Helper::get_css_value( $btnPaddingRight, $attr['ctaPaddingUnit'] ),
 	);
-	$selectors['.wp-block-uagb-call-to-action:hover a.uagb-cta__button-link-wrapper'] = array(
+	$selectors['.wp-block-uagb-call-to-action a.uagb-cta__button-link-wrapper:hover'] = array(
 		'color'            => $attr['ctaLinkHoverColor'],
 		'background-color' => $attr['ctaBgHoverColor'],
 		'border-color'     => $attr['ctaBorderhoverColor'],
@@ -174,22 +198,22 @@ $selectors['.wp-block-uagb-call-to-action'] = array(
 
 if ( 'left' === $attr['textAlign'] && 'right' === $attr['ctaPosition'] ) {
 	$selectors[' .uagb-cta__left-right-wrap .uagb-cta__content'] = array(
-		'margin-left'  => UAGB_Helper::get_css_value( $attr['ctaLeftSpace'], 'px' ),
+		'margin-left'  => UAGB_Helper::get_css_value( $attr['ctaLeftSpace'], $attr['ctaLeftSpaceType'] ),
 		'margin-right' => '0',
 	);
 	$selectors[' > .uagb-cta__wrap']                             = array(
-		'margin-left'  => UAGB_Helper::get_css_value( $attr['ctaLeftSpace'], 'px' ),
+		'margin-left'  => UAGB_Helper::get_css_value( $attr['ctaLeftSpace'], $attr['ctaLeftSpaceType'] ),
 		'margin-right' => '0',
 	);
 }
 
 if ( 'right' === $attr['textAlign'] && 'right' === $attr['ctaPosition'] ) {
 	$selectors[' .uagb-cta__left-right-wrap .uagb-cta__content'] = array(
-		'margin-right' => UAGB_Helper::get_css_value( $attr['ctaRightSpace'], 'px' ),
+		'margin-right' => UAGB_Helper::get_css_value( $attr['ctaRightSpace'], $attr['ctaRightSpaceType'] ),
 		'margin-left'  => '0',
 	);
 	$selectors[' > .uagb-cta__wrap']                             = array(
-		'margin-right' => UAGB_Helper::get_css_value( $attr['ctaRightSpace'], 'px' ),
+		'margin-right' => UAGB_Helper::get_css_value( $attr['ctaRightSpace'], $attr['ctaRightSpaceType'] ),
 		'margin-left'  => '0',
 	);
 }
@@ -285,7 +309,57 @@ $m_selectors['.wp-block-uagb-call-to-action.uagb-cta__content-stacked-mobile '] 
 $m_selectors['.uagb-cta__content-stacked-mobile .uagb-cta__wrap']               = array(
 	'width' => '100%',
 );
+if ( 'desktop' === $attr['stackBtn'] ) {
 
+	$selectors[' .uagb-cta__buttons']    = array(
+		'flex-direction' => 'column',
+		'row-gap'        => UAGB_Helper::get_css_value( $attr['gapBtn'], 'px' ),
+	);
+	$t_selectors[' .uagb-cta__buttons '] = array(
+		'row-gap' => UAGB_Helper::get_css_value( $attr['gapBtnTablet'], 'px' ),
+	);
+	$m_selectors[' .uagb-cta__buttons '] = array(
+		'row-gap' => UAGB_Helper::get_css_value( $attr['gapBtnMobile'], 'px' ),
+	);
+
+} elseif ( 'tablet' === $attr['stackBtn'] ) {
+
+	$selectors[' .uagb-cta__buttons ']  = array(
+		'column-gap' => UAGB_Helper::get_css_value( $attr['gapBtn'], 'px' ),
+	);
+	$t_selectors[' .uagb-cta__buttons'] = array(
+		'flex-direction' => 'column',
+		'row-gap'        => UAGB_Helper::get_css_value( $attr['gapBtnTablet'], 'px' ),
+	);
+	$m_selectors[' .uagb-cta__buttons'] = array(
+		'flex-direction' => 'column',
+		'row-gap'        => UAGB_Helper::get_css_value( $attr['gapBtnMobile'], 'px' ),
+	);
+
+} elseif ( 'mobile' === $attr['stackBtn'] ) {
+
+	$selectors[' .uagb-cta__buttons ']  = array(
+		'column-gap' => UAGB_Helper::get_css_value( $attr['gapBtn'], 'px' ),
+	);
+	$t_selectors[' .uagb-cta__buttons'] = array(
+		'column-gap' => UAGB_Helper::get_css_value( $attr['gapBtnTablet'], 'px' ),
+	);
+	$m_selectors[' .uagb-cta__buttons'] = array(
+		'flex-direction' => 'column',
+		'row-gap'        => UAGB_Helper::get_css_value( $attr['gapBtnMobile'], 'px' ),
+	);
+
+} elseif ( 'none' === $attr['stackBtn'] ) {
+	$selectors[' .uagb-cta__buttons']   = array(
+		'column-gap' => UAGB_Helper::get_css_value( $attr['gapBtn'], 'px' ),
+	);
+	$t_selectors[' .uagb-cta__buttons'] = array(
+		'column-gap' => UAGB_Helper::get_css_value( $attr['gapBtnTablet'], 'px' ),
+	);
+	$m_selectors[' .uagb-cta__buttons'] = array(
+		'column-gap' => UAGB_Helper::get_css_value( $attr['gapBtnMobile'], 'px' ),
+	);
+}
 if ( 'before' === $attr['ctaIconPosition'] ) {
 	$selectors['.wp-block-uagb-call-to-action a.uagb-cta__button-link-wrapper > svg']   = array(
 		'margin-right' => UAGB_Helper::get_css_value( $attr['ctaIconSpace'], 'px' ),
@@ -323,31 +397,31 @@ if ( 'right' === $attr['ctaPosition'] && ( 'text' === $attr['ctaType'] || 'butto
 		'display' => 'flex',
 	);
 	$selectors[' .uagb-cta__content-right .uagb-cta__left-right-wrap .uagb-cta__content']      = array(
-		'width' => UAGB_Helper::get_css_value( $attr['contentWidth'], '%' ),
+		'width' => UAGB_Helper::get_css_value( $attr['contentWidth'], $attr['contentWidthType'] ),
 	);
 	$selectors[' .uagb-cta__content-right .uagb-cta__left-right-wrap .uagb-cta__link-wrapper'] = array(
-		'width' => UAGB_Helper::get_css_value( ( 100 - $attr['contentWidth'] ), '%' ),
+		'width' => UAGB_Helper::get_css_value( ( 100 - $attr['contentWidth'] ), $attr['contentWidthType'] ),
 	);
 	$selectors[' .uagb-cta__wrap'] = array(
-		'width' => UAGB_Helper::get_css_value( $attr['contentWidth'], '%' ),
+		'width' => UAGB_Helper::get_css_value( $attr['contentWidth'], $attr['contentWidthType'] ),
 	);
 	$t_selectors[' .uagb-cta__content-right .uagb-cta__left-right-wrap .uagb-cta__content']      = array(
-		'width' => UAGB_Helper::get_css_value( $attr['contentWidthTablet'], '%' ),
+		'width' => UAGB_Helper::get_css_value( $attr['contentWidthTablet'], $attr['contentWidthType'] ),
 	);
 	$t_selectors[' .uagb-cta__content-right .uagb-cta__left-right-wrap .uagb-cta__link-wrapper'] = array(
-		'width' => UAGB_Helper::get_css_value( ( 100 - $attr['contentWidthTablet'] ), '%' ),
+		'width' => UAGB_Helper::get_css_value( ( 100 - $attr['contentWidthTablet'] ), $attr['contentWidthType'] ),
 	);
 	$t_selectors[' .uagb-cta__wrap'] = array(
-		'width' => UAGB_Helper::get_css_value( $attr['contentWidthTablet'], '%' ),
+		'width' => UAGB_Helper::get_css_value( $attr['contentWidthTablet'], $attr['contentWidthType'] ),
 	);
 	$m_selectors[' .uagb-cta__content-right .uagb-cta__left-right-wrap .uagb-cta__content']      = array(
-		'width' => UAGB_Helper::get_css_value( $attr['contentWidthMobile'], '%' ),
+		'width' => UAGB_Helper::get_css_value( $attr['contentWidthMobile'], $attr['contentWidthType'] ),
 	);
 	$m_selectors[' .uagb-cta__content-right .uagb-cta__left-right-wrap .uagb-cta__link-wrapper'] = array(
-		'width' => UAGB_Helper::get_css_value( ( 100 - $attr['contentWidthMobile'] ), '%' ),
+		'width' => UAGB_Helper::get_css_value( ( 100 - $attr['contentWidthMobile'] ), $attr['contentWidthType'] ),
 	);
 	$m_selectors[' .uagb-cta__wrap'] = array(
-		'width' => UAGB_Helper::get_css_value( $attr['contentWidthMobile'], '%' ),
+		'width' => UAGB_Helper::get_css_value( $attr['contentWidthMobile'], $attr['contentWidthType'] ),
 	);
 	$selectors['.wp-block-uagb-call-to-action a.uagb-cta__button-link-wrapper '] = array(
 		'align-self'  => 'top' === $attr['buttonAlign'] ? 'flex-start' : 'center',
@@ -356,6 +430,64 @@ if ( 'right' === $attr['ctaPosition'] && ( 'text' === $attr['ctaType'] || 'butto
 	);
 }
 
+if ( 'desktop' === $attr['stack'] ) {
+
+	$selectors['.wp-block-uagb-call-to-action  ']   = array(
+		'flex-direction' => 'column',
+		'align-items'    => $alignment,
+	);
+	$t_selectors['.wp-block-uagb-call-to-action  '] = array(
+		'flex-direction' => 'column',
+		'align-items'    => $alignmentTablet,
+	);
+	$m_selectors['.wp-block-uagb-call-to-action  '] = array(
+		'flex-direction' => 'column',
+		'align-items'    => $alignmentMobile,
+	);
+} elseif ( 'tablet' === $attr['stack'] ) {
+
+	$selectors['.wp-block-uagb-call-to-action  ']  = array(
+		'flex-direction' => 'row',
+		'align-items'    => 'top' === $attr['buttonAlign'] ? 'flex-start' : 'center',
+	);
+	$t_selectors['.wp-block-uagb-call-to-action '] = array(
+		'flex-direction' => 'column',
+		'align-items'    => $alignmentTablet,
+	);
+	$m_selectors['.wp-block-uagb-call-to-action '] = array(
+		'flex-direction' => 'column',
+		'align-items'    => $alignmentMobile,
+	);
+
+} elseif ( 'mobile' === $attr['stack'] ) {
+
+	$selectors['.wp-block-uagb-call-to-action  ']  = array(
+		'flex-direction' => 'row',
+		'align-items'    => 'top' === $attr['buttonAlign'] ? 'flex-start' : 'center',
+	);
+	$t_selectors['.wp-block-uagb-call-to-action '] = array(
+		'flex-direction' => 'row',
+		'align-items'    => 'top' === $attr['buttonAlign'] ? 'flex-start' : 'center',
+	);
+	$m_selectors['.wp-block-uagb-call-to-action '] = array(
+		'flex-direction' => 'column',
+		'align-items'    => $alignmentMobile,
+	);
+
+} elseif ( 'none' === $attr['stack'] ) {
+	$selectors['.wp-block-uagb-call-to-action  ']  = array(
+		'align-items'    => 'top' === $attr['buttonAlign'] ? 'flex-start' : 'center',
+		'flex-direction' => 'row',
+	);
+	$t_selectors['.wp-block-uagb-call-to-action '] = array(
+		'align-items'    => 'top' === $attr['buttonAlign'] ? 'flex-start' : 'center',
+		'flex-direction' => 'row',
+	);
+	$m_selectors['.wp-block-uagb-call-to-action '] = array(
+		'align-items'    => 'top' === $attr['buttonAlign'] ? 'flex-start' : 'center',
+		'flex-direction' => 'row',
+	);
+}
 $combined_selectors = array(
 	'desktop' => $selectors,
 	'tablet'  => $t_selectors,

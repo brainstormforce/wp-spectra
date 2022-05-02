@@ -13,7 +13,6 @@ import InspectorTabs from '@Components/inspector-tabs/InspectorTabs.js';
 import InspectorTab, {
 	UAGTabs,
 } from '@Components/inspector-tabs/InspectorTab.js';
-import Range from '@Components/range/Range.js';
 import ResponsiveSlider from '@Components/responsive-slider';
 import MultiButtonsControl from '@Components/multi-buttons-control';
 import presets from './presets';
@@ -31,9 +30,11 @@ const Settings = ( props ) => {
 		gap,
 		gapTablet,
 		gapMobile,
+		gapType,
 		inner_gap,
 		innerGapTablet,
 		innerGapMobile,
+		innerGapType,
 		stack,
 		icon_layout,
 		iconPosition,
@@ -45,10 +46,15 @@ const Settings = ( props ) => {
 		borderRadius,
 		borderRadiusTablet,
 		borderRadiusMobile,
+		borderRadiusType,
 		bgSize,
+		bgSizeType,
+		bgSizeTablet,
+		bgSizeMobile,
 		border,
 		borderTablet,
 		borderMobile,
+		borderType,
 		fontSize,
 		fontSizeType,
 		fontSizeMobile,
@@ -106,6 +112,7 @@ const Settings = ( props ) => {
 	const generalSetting = () => {
 		return (
 			<UAGAdvancedPanelBody title={ __( 'Content', 'ultimate-addons-for-gutenberg' ) } initialOpen={ true }>
+
 				<MultiButtonsControl
 					setAttributes={ setAttributes }
 					label={ __( 'Layout', 'ultimate-addons-for-gutenberg' ) }
@@ -281,7 +288,7 @@ const Settings = ( props ) => {
 				initialOpen={ false }
 			>
 				<ResponsiveSlider
-					label={ __( 'Gap between Items (px)', 'ultimate-addons-for-gutenberg' ) }
+					label={ __( 'Gap between Items', 'ultimate-addons-for-gutenberg' ) }
 					data={ {
 						desktop: {
 							value: gap,
@@ -298,7 +305,20 @@ const Settings = ( props ) => {
 					} }
 					min={ 0 }
 					max={ 100 }
-					displayUnit={ false }
+					unit={ {
+						value: gapType,
+						label:
+							'gapType',
+					} }
+					units={ [
+						{
+							name: __(
+								'Pixel',
+								'ultimate-addons-for-gutenberg'
+							),
+							unitValue: 'px',
+						},
+					] }
 					setAttributes={ setAttributes }
 					help={ __(
 						'Note: For better editing experience, the gap between items might look larger than applied. Viewing in frontend will show the actual results.',
@@ -316,7 +336,7 @@ const Settings = ( props ) => {
 				initialOpen={ false }
 			>
 				<ResponsiveSlider
-					label={ __( 'Gap between Icon and Label (px)', 'ultimate-addons-for-gutenberg' ) }
+					label={ __( 'Gap between Icon and Label', 'ultimate-addons-for-gutenberg' ) }
 					data={ {
 						desktop: {
 							value: inner_gap,
@@ -333,7 +353,20 @@ const Settings = ( props ) => {
 					} }
 					min={ 0 }
 					max={ 100 }
-					displayUnit={ false }
+					unit={ {
+						value: innerGapType,
+						label:
+							'innerGapType',
+					} }
+					units={ [
+						{
+							name: __(
+								'Pixel',
+								'ultimate-addons-for-gutenberg'
+							),
+							unitValue: 'px',
+						},
+					] }
 					setAttributes={ setAttributes }
 				/>
 				<TypographyControl
@@ -405,7 +438,7 @@ const Settings = ( props ) => {
 		return (
 			<UAGAdvancedPanelBody
 				title={ __( 'Icon/Image', 'ultimate-addons-for-gutenberg' ) }
-				initialOpen={ false }
+				initialOpen={ true }
 			>
 				<ResponsiveSlider
 					label={ __( 'Size', 'ultimate-addons-for-gutenberg' ) }
@@ -444,24 +477,49 @@ const Settings = ( props ) => {
 					] }
 					setAttributes={ setAttributes }
 				/>
-				<Range
+				<ResponsiveSlider
 					label={ __(
-						'Background Size (px)',
+						'Background Size',
 						'ultimate-addons-for-gutenberg'
 					) }
+					data={ {
+						desktop: {
+							value: bgSize,
+							label: 'bgSize',
+						},
+						tablet: {
+							value: bgSizeTablet,
+							label: 'bgSizeTablet',
+						},
+						mobile: {
+							value: bgSizeMobile,
+							label: 'bgSizeMobile',
+						},
+					} }
 					setAttributes={ setAttributes }
-					value={ bgSize }
-					onChange={ ( value ) => setAttributes( { bgSize: value } ) }
 					min={ 0 }
 					max={ 50 }
-					displayUnit={ false }
+					unit={ {
+						value: bgSizeType,
+						label:
+							'bgSizeType',
+					} }
+					units={ [
+						{
+							name: __(
+								'Pixel',
+								'ultimate-addons-for-gutenberg'
+							),
+							unitValue: 'px',
+						},
+					] }
 					help={ __(
 						'Note: Background Size option is useful when one adds background color to the icons.',
 						'ultimate-addons-for-gutenberg'
 					) }
 				/>
 				<ResponsiveSlider
-					label={ __( 'Border (px)', 'ultimate-addons-for-gutenberg' ) }
+					label={ __( 'Border', 'ultimate-addons-for-gutenberg' ) }
 					data={ {
 						desktop: {
 							value: border,
@@ -478,7 +536,20 @@ const Settings = ( props ) => {
 					} }
 					min={ 0 }
 					max={ 10 }
-					displayUnit={ false }
+					unit={ {
+						value: borderType,
+						label:
+							'borderType',
+					} }
+					units={ [
+						{
+							name: __(
+								'Pixel',
+								'ultimate-addons-for-gutenberg'
+							),
+							unitValue: 'px',
+						},
+					] }
 					setAttributes={ setAttributes }
 					help={ __(
 						'Note: Border option is useful when one adds border color to the icons.',
@@ -486,7 +557,7 @@ const Settings = ( props ) => {
 					) }
 				/>
 				<ResponsiveSlider
-					label={ __( 'Border Radius (px)', 'ultimate-addons-for-gutenberg' ) }
+					label={ __( 'Border Radius', 'ultimate-addons-for-gutenberg' ) }
 					data={ {
 						desktop: {
 							value: borderRadius,
@@ -503,7 +574,20 @@ const Settings = ( props ) => {
 					} }
 					min={ 0 }
 					max={ 100 }
-					displayUnit={ false }
+					unit={ {
+						value: borderRadiusType,
+						label:
+							'borderRadiusType',
+					} }
+					units={ [
+						{
+							name: __(
+								'Pixel',
+								'ultimate-addons-for-gutenberg'
+							),
+							unitValue: 'px',
+						},
+					] }
 					setAttributes={ setAttributes }
 					help={ __(
 						'Note: Border Radius option is useful when one adds background color to the icons.',

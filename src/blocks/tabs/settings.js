@@ -390,7 +390,7 @@ const Settings = ( props ) => {
 		return (
 			<UAGAdvancedPanelBody
 				title={ __( 'Layout', 'ultimate-addons-for-gutenberg' ) }
-				initialOpen={ true }
+				initialOpen={ false }
 			>
 				<ResponsiveSelectControl
 					label={ __( 'Style', 'ultimate-addons-for-gutenberg' ) }
@@ -654,22 +654,22 @@ const Settings = ( props ) => {
 			>
 				<AdvancedPopColorControl
 					label={ __(
-						'Background Color',
-						'ultimate-addons-for-gutenberg'
-					) }
-					colorValue={ bodyBgColor }
-					onColorChange={ ( value ) =>
-						setAttributes( { bodyBgColor: value } )
-					}
-				/>
-				<AdvancedPopColorControl
-					label={ __(
 						'Text Color',
 						'ultimate-addons-for-gutenberg'
 					) }
 					colorValue={ bodyTextColor }
 					onColorChange={ ( value ) =>
 						setAttributes( { bodyTextColor: value } )
+					}
+				/>
+					<AdvancedPopColorControl
+					label={ __(
+						'Background Color',
+						'ultimate-addons-for-gutenberg'
+					) }
+					colorValue={ bodyBgColor }
+					onColorChange={ ( value ) =>
+						setAttributes( { bodyBgColor: value } )
 					}
 				/>
 				<SpacingControl
@@ -879,7 +879,7 @@ const Settings = ( props ) => {
 		return (
 			<UAGAdvancedPanelBody
 				title={ __( 'Title', 'ultimate-addons-for-gutenberg' ) }
-				initialOpen={ false }
+				initialOpen={ true }
 			>
 				<UAGTabsControl
 					tabs={ [
@@ -1138,21 +1138,21 @@ const Settings = ( props ) => {
 			>
 				<ResponsiveSlider
 					label={ __(
-						'Spacing',
+						'Size',
 						'ultimate-addons-for-gutenberg'
 					) }
 					data={ {
 						desktop: {
-							value: iconSpacing,
-							label: 'iconSpacing',
+							value: iconSize,
+							label: 'iconSize',
 						},
 						tablet: {
-							value: iconSpacingTablet,
-							label: 'iconSpacingTablet',
+							value: iconSizeTablet,
+							label: 'iconSizeTablet',
 						},
 						mobile: {
-							value: iconSpacingMobile,
-							label: 'iconSpacingMobile',
+							value: iconSizeMobile,
+							label: 'iconSizeMobile',
 						},
 					} }
 					min={ 0 }
@@ -1180,34 +1180,23 @@ const Settings = ( props ) => {
 					normal={ tabOutputNormal }
 					active={ tabOutputActive }
 				/>
-				{/* <Range
-					label={ __( 'Size', 'ultimate-addons-for-gutenberg' ) }
-					setAttributes={ setAttributes }
-					value={ iconSize }
-					onChange={ ( value ) =>
-						setAttributes( { iconSize: value } )
-					}
-					min={ 0 }
-					max={ 100 }
-					displayUnit={ false }
-				/> */}
 				<ResponsiveSlider
 					label={ __(
-						'Size',
+						'Spacing',
 						'ultimate-addons-for-gutenberg'
 					) }
 					data={ {
 						desktop: {
-							value: iconSize,
-							label: 'iconSize',
+							value: iconSpacing,
+							label: 'iconSpacing',
 						},
 						tablet: {
-							value: iconSizeTablet,
-							label: 'iconSizeTablet',
+							value: iconSpacingTablet,
+							label: 'iconSpacingTablet',
 						},
 						mobile: {
-							value: iconSizeMobile,
-							label: 'iconSizeMobile',
+							value: iconSpacingMobile,
+							label: 'iconSpacingMobile',
 						},
 					} }
 					min={ 0 }

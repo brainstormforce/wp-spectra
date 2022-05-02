@@ -25,6 +25,22 @@ const TypographyControl = ( props ) => {
 			styles.unuse();
 		};
 	}, [] );
+
+	useLayoutEffect( () => {
+		window.addEventListener( 'click', function( e ){
+			const typoDiv = document.querySelector( '.uag-typography-options' );
+			if ( typoDiv ) {
+				if ( ! typoDiv.contains( e.target ) ){
+					if( typoDiv.classList.contains( 'active' ) ) {
+						typoDiv.classList.remove( 'active' );
+						typoDiv.querySelector( '.uagb-typography-advanced' ).style.visibility = 'hidden';
+						typoDiv.querySelector( '.uagb-typography-advanced' ).style.position = 'absolute';
+					}
+				}
+			}
+		  } );
+	}, [] );
+
 	const [ showAdvancedControls, toggleAdvancedControls ] = useState( false );
 
 	let fontSize;
@@ -124,6 +140,13 @@ const TypographyControl = ( props ) => {
 					}
 					options={ [
 						{
+							value: '',
+							label: __(
+								'Default',
+								'ultimate-addons-for-gutenberg'
+							),
+						},
+						{
 							value: 'normal',
 							label: __(
 								'Normal',
@@ -174,7 +197,7 @@ const TypographyControl = ( props ) => {
 						{
 							value: 'none',
 							label: __(
-								'None',
+								'Default',
 								'ultimate-addons-for-gutenberg'
 							),
 						},

@@ -12,6 +12,14 @@
 	display: inline-block;
 }
 
+.uagb-cta__outer-wrap {
+	display: inline-flex;
+}
+
+.wp-block-uagb-call-to-action .uagb-cta__buttons {
+	display: inline-flex;
+}
+
 .wp-block-uagb-call-to-action .wp-block-button__link {
 	fill: currentColor;
 }
@@ -20,6 +28,8 @@
 .uagb-cta-second__button {
 	display: inline-flex;
 	align-items: center;
+	width: max-content;
+	word-break: keep-all;
 }
 
 .uagb-cta__title {
@@ -182,6 +192,7 @@ a.uagb-cta__link-to-all {
 
 .wp-block-uagb-call-to-action {
 	position: relative;
+	display: inline-flex;
 
 	a.uagb-cta__link-to-all {
 		position: absolute;
