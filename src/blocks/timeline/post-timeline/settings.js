@@ -569,16 +569,16 @@ const Settings = ( props ) => {
 							label: __( 'Top', 'ultimate-addons-for-gutenberg' ),
 						},
 						{
-							value: 'bottom',
+							value: 'center',
 							label: __(
-								'Bottom',
+								'Center',
 								'ultimate-addons-for-gutenberg'
 							),
 						},
 						{
-							value: 'center',
+							value: 'bottom',
 							label: __(
-								'Center',
+								'Bottom',
 								'ultimate-addons-for-gutenberg'
 							),
 						},
@@ -875,7 +875,7 @@ const Settings = ( props ) => {
 				/> */}
 				<ResponsiveSlider
 					label={ __(
-						'Rounded Corners',
+						'Border Radius',
 						'ultimate-addons-for-gutenberg'
 					) }
 					data={ {
