@@ -403,7 +403,7 @@ const Settings = ( props ) => {
 	const getTitle = () => {
 		return (
 			<UAGAdvancedPanelBody
-				title={ __( 'Header', 'ultimate-addons-for-gutenberg' ) }
+				title={ __( 'Title', 'ultimate-addons-for-gutenberg' ) }
 				initialOpen={ false }
 			>
 				<AdvancedPopColorControl
@@ -516,7 +516,7 @@ const Settings = ( props ) => {
 				title={ __( 'Content', 'ultimate-addons-for-gutenberg' ) }
 				initialOpen={ false }
 			>
-				{ ! customWidth && (
+				{ ! makeCollapsible  && (
 					<MultiButtonsControl
 					setAttributes={ setAttributes }
 					label={ __(
