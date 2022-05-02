@@ -542,28 +542,28 @@ const attributes = {
 	},
 	toggleColor: {
 		type: 'string',
-		default: '#ffffff',
+		default: '#ebebeb',
 		UAGCopyPaste: {
 			styleType: 'toggle-color'
 		},
 	},
 	toggleActiveColor: {
 		type: 'string',
-		default: '#000000',
+		default: '#b2b2b2',
 		UAGCopyPaste: {
 			styleType: 'toggle-active-color'
 		},
 	},
 	toggleDotColor: {
 		type: 'string',
-		default: '#000000',
+		default: '#b2b2b2',
 		UAGCopyPaste: {
 			styleType: 'toggle-dot-color'
 		},
 	},
 	toggleDotActiveColor: {
 		type: 'string',
-		default: '#ffffff',
+		default: '#6b6b6b',
 		UAGCopyPaste: {
 			styleType: 'toggle-dot-active-color'
 		},

@@ -254,13 +254,15 @@ function styling( props ) {
 			'background-color': submitBgColorHover,
 			'border-color': submitborderHoverColor,
 		},
-		' .uagb-switch ': {
+		' .uagb-switch': {
+			// 20 is the min size of the toggle.
+			// Space around the toggle dot is calculated as 1/6th the size of the toggle dot.
 			'height': generateCSSUnit(
-				25 + toggleWidthSize + inputborderWidth,
+				parseInt( 20 + toggleWidthSize + ( inputborderWidth * 2 ) + ( ( 20 + toggleWidthSize ) / 3 ) ),
 				'px'
 			),
 			'width': generateCSSUnit(
-				50 + toggleWidthSize + inputborderWidth,
+				parseInt( ( ( 20 + toggleWidthSize ) * 2.5 ) + ( inputborderWidth * 2 ) + ( ( 20 + toggleWidthSize ) / 3 ) ),
 				'px'
 			),
 		},
@@ -273,25 +275,22 @@ function styling( props ) {
 		' .uagb-switch input:focus + .uagb-slider': {
 			'box-shadow': '0 0 1px' + toggleActiveColor,
 		},
-		' .uagb-slider:before ': {
-			'height': generateCSSUnit(
-				20 + toggleWidthSize - inputborderWidth * 2,
-				'px'
-			),
-			'width': generateCSSUnit(
-				20 + toggleWidthSize - inputborderWidth,
-				'px'
-			),
+		' .uagb-slider:before': {
+			'height': generateCSSUnit( 20 + toggleWidthSize, 'px' ),
+			'width': generateCSSUnit( 20 + toggleWidthSize, 'px' ),
+			'top': generateCSSUnit( parseInt( ( 20 + toggleWidthSize ) / 6 ), 'px' ),
+			'bottom': generateCSSUnit( parseInt( ( 20 + toggleWidthSize ) / 6 ), 'px' ),
+			'left': generateCSSUnit( parseInt( ( 20 + toggleWidthSize ) / 6 ), 'px' ),
 			'background-color': toggleDotColor,
 		},
 		' .uagb-slider.round': {
-			'border-radius': generateCSSUnit( 20 + toggleWidthSize - inputborderWidth, 'px' ),
+			'border-radius': generateCSSUnit( 20 + toggleWidthSize, 'px' ),
 		},
 		' .uagb-switch input:checked + .uagb-slider:before ': {
-			'transform':
-				'translateX(' +
-				generateCSSUnit( 26 + toggleWidthSize, 'px' ) / 2 +
-				')',
+			'transform': `translateX(${ generateCSSUnit(
+				parseInt( ( ( ( 20 + toggleWidthSize ) * 2.5 ) - ( 20 + toggleWidthSize ) ) ),
+				'px'
+			) })`,
 			'background-color': toggleDotActiveColor,
 		},
 		' .uagb-forms-radio-wrap input[type=radio]:checked + label:before': {
@@ -584,34 +583,32 @@ function styling( props ) {
 			'width': generateCSSUnit( toggleSizeTablet, 'px' ),
 			'height': generateCSSUnit( toggleSizeTablet, 'px' ),
 		},
-		' .uagb-switch ' : {
+		' .uagb-switch' : {
 			'height': generateCSSUnit(
-				25 + toggleWidthSizeTablet + inputborderWidth,
+				parseInt( 20 + toggleWidthSizeTablet + ( inputborderWidth * 2 ) + ( ( 20 + toggleWidthSizeTablet ) / 3 ) ),
 				'px'
 			),
 			'width': generateCSSUnit(
-				50 + toggleWidthSizeTablet + inputborderWidth,
+				parseInt( ( ( 20 + toggleWidthSizeTablet ) * 2.5 ) + ( inputborderWidth * 2 ) + ( ( 20 + toggleWidthSizeTablet ) / 3 ) ),
 				'px'
 			),
 		},
-		' .uagb-switch .uagb-slider:before ' : {
-			'height': generateCSSUnit(
-				20 + toggleWidthSizeTablet - inputborderWidth * 2,
-				'px'
-			),
-			'width': generateCSSUnit(
-				20 + toggleWidthSizeTablet - inputborderWidth,
-				'px'
-			),
+		' .uagb-switch .uagb-slider:before' : {
+			'height': generateCSSUnit( 20 + toggleWidthSizeTablet, 'px' ),
+			'width': generateCSSUnit( 20 + toggleWidthSizeTablet, 'px' ),
+			'top': generateCSSUnit( parseInt( ( 20 + toggleWidthSizeTablet ) / 6 ), 'px' ),
+			'bottom': generateCSSUnit( parseInt( ( 20 + toggleWidthSizeTablet ) / 6 ), 'px' ),
+			'left': generateCSSUnit( parseInt( ( 20 + toggleWidthSizeTablet ) / 6 ), 'px' ),
+			'background-color': toggleDotColor,
 		},
 		' .uagb-slider.round': {
-			'border-radius': generateCSSUnit( 20 + toggleWidthSizeTablet - inputborderWidth, 'px' ),
+			'border-radius': generateCSSUnit( 20 + toggleWidthSizeTablet, 'px' ),
 		},
 		' .uagb-switch input:checked + .uagb-slider:before ' : {
-			'transform':
-				'translateX(' +
-				generateCSSUnit( 26 + toggleWidthSizeTablet, 'px' ) / 2 +
-				')',
+			'transform': `translateX(${ generateCSSUnit(
+				parseInt( ( ( ( 20 + toggleWidthSizeTablet ) * 2.5 ) - ( 20 + toggleWidthSizeTablet ) ) ),
+				'px'
+			) })`,
 		},
 		' .uagb-forms-main-form .uagb-forms-main-submit-button': {
 			'padding-top': generateCSSUnit(
@@ -694,34 +691,32 @@ function styling( props ) {
 		' .uagb-forms-main-form .uagb-forms-field-set': {
 			'margin-bottom': generateCSSUnit( fieldGapMobile, fieldGapType ),
 		},
-		' .uagb-switch ' : {
+		' .uagb-switch' : {
 			'height': generateCSSUnit(
-				25 + toggleWidthSizeMobile + inputborderWidth,
+				parseInt(  20 + toggleWidthSizeMobile + ( inputborderWidth * 2 ) + ( ( 20 + toggleWidthSizeMobile ) / 3 ) ),
 				'px'
 			),
 			'width': generateCSSUnit(
-				50 + toggleWidthSizeMobile + inputborderWidth,
+				parseInt(  ( ( 20 + toggleWidthSizeMobile ) * 2.5 ) + ( inputborderWidth * 2 ) + ( ( 20 + toggleWidthSizeMobile ) / 3 ) ),
 				'px'
 			),
 		},
-		' .uagb-switch .uagb-slider:before ' : {
-			'height': generateCSSUnit(
-				20 + toggleWidthSizeMobile - inputborderWidth * 2,
-				'px'
-			),
-			'width': generateCSSUnit(
-				20 + toggleWidthSizeMobile - inputborderWidth,
-				'px'
-			),
+		' .uagb-switch .uagb-slider:before' : {
+			'height': generateCSSUnit( 20 + toggleWidthSizeMobile, 'px' ),
+			'width': generateCSSUnit( 20 + toggleWidthSizeMobile, 'px' ),
+			'top': generateCSSUnit( parseInt( ( 20 + toggleWidthSizeMobile ) / 6 ), 'px' ),
+			'bottom': generateCSSUnit( parseInt( ( 20 + toggleWidthSizeMobile ) / 6 ), 'px' ),
+			'left': generateCSSUnit( parseInt( ( 20 + toggleWidthSizeMobile ) / 6 ), 'px' ),
+			'background-color': toggleDotColor,
 		},
 		' .uagb-slider.round': {
-			'border-radius': generateCSSUnit( 20 + toggleWidthSizeMobile - inputborderWidth, 'px' ),
+			'border-radius': generateCSSUnit( 20 + toggleWidthSizeMobile, 'px' ),
 		},
 		' .uagb-switch input:checked + .uagb-slider:before ' : {
-			'transform':
-				'translateX(' +
-				generateCSSUnit( 26 + toggleWidthSizeMobile, 'px' ) / 2 +
-				')',
+			'transform': `translateX(${ generateCSSUnit(
+				parseInt( ( ( ( 20 + toggleWidthSizeMobile ) * 2.5 ) - ( 20 + toggleWidthSizeMobile ) ) ),
+				'px'
+			) })`,
 		},
 		' .uagb-forms-main-form .uagb-forms-main-submit-button': { // eslint-disable-line no-dupe-keys
 			'padding-top': generateCSSUnit(
