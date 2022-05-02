@@ -32,6 +32,22 @@ const Settings = ( props ) => {
 
 	const { attributes, setAttributes, deviceType } = props;
 	const {
+		formPaddingTop,
+		formPaddingRight,
+		formPaddingBottom,
+		formPaddingLeft,
+		formPaddingTopTab,
+		formPaddingRightTab,
+		formPaddingBottomTab,
+		formPaddingLeftTab,
+		formPaddingTopMob,
+		formPaddingRightMob,
+		formPaddingBottomMob,
+		formPaddingLeftMob,
+		formPaddingUnit,
+		formPaddingUnitTab,
+		formPaddingUnitMob,
+		formPaddingLink,
 		formLabel,
 		buttonAlign,
 		buttonSize,
@@ -674,8 +690,81 @@ const Settings = ( props ) => {
 			title={ __( 'Form', 'ultimate-addons-for-gutenberg' ) }
 			initialOpen={ true }
 			// className="uagb__url-panel-body"
-		>
-			{/* Add Form Outer Spacing (Responsive) */}
+		>			
+			<SpacingControl
+				{ ...props }
+				label={ __(
+					'Form Padding',
+					'ultimate-addons-for-gutenberg'
+				) }
+				valueTop={ {
+					value: formPaddingTop,
+					label: 'formPaddingTop',
+				} }
+				valueRight={ {
+					value: formPaddingRight,
+					label: 'formPaddingRight',
+				} }
+				valueBottom={ {
+					value: formPaddingBottom,
+					label: 'formPaddingBottom',
+				} }
+				valueLeft={ {
+					value: formPaddingLeft,
+					label: 'formPaddingLeft',
+				} }
+				valueTopTablet={ {
+					value: formPaddingTopTab,
+					label: 'formPaddingTopTab',
+				} }
+				valueRightTablet={ {
+					value: formPaddingRightTab,
+					label: 'formPaddingRightTab',
+				} }
+				valueBottomTablet={ {
+					value: formPaddingBottomTab,
+					label: 'formPaddingBottomTab',
+				} }
+				valueLeftTablet={ {
+					value: formPaddingLeftTab,
+					label: 'formPaddingLeftTab',
+				} }
+				valueTopMobile={ {
+					value: formPaddingTopMob,
+					label: 'formPaddingTopMob',
+				} }
+				valueRightMobile={ {
+					value: formPaddingRightMob,
+					label: 'formPaddingRightMob',
+				} }
+				valueBottomMobile={ {
+					value: formPaddingBottomMob,
+					label: 'formPaddingBottomMob',
+				} }
+				valueLeftMobile={ {
+					value: formPaddingLeftMob,
+					label: 'formPaddingLeftMob',
+				} }
+				unit={ {
+					value: formPaddingUnit,
+					label: 'formPaddingUnit',
+				} }
+				mUnit={ {
+					value: formPaddingUnitTab,
+					label: 'formPaddingUnitTab',
+				} }
+				tUnit={ {
+					value: formPaddingUnitMob,
+					label: 'formPaddingUnitMob',
+				} }
+				deviceType={ deviceType }
+				attributes={ attributes }
+				setAttributes={ setAttributes }
+				link={ {
+					value: formPaddingLink,
+					label: 'formPaddingLink',
+				} }
+			/>
 			<ResponsiveSlider
 				label={ __(
 					'Row Spacing',

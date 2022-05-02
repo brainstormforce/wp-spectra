@@ -6,6 +6,17 @@
 			min-height: 0px !important;
 		}
 
+		.uagb-forms-input, .uagb-forms-input::placeholder, .uagb-forms-input-label{
+			-webkit-transition-property: color, background-color, border-color;
+			-moz-transition-property: color, background-color, border-color;
+			-o-transition-property: color, background-color, border-color;
+			transition-property: color, background-color, border-color;
+			-webkit-transition-duration: 0.15s;
+			-moz-transition-duration: 0.15s;
+			-o-transition-duration: 0.15s;
+			transition-duration: 0.15s;
+		}
+
 		input:not([type="checkbox"]):not([type="radio"]):not([type="file"]),
 		textarea,
 		select {

@@ -4,6 +4,115 @@ const attributes = {
 	block_id: {
 		type: 'string',
 	},
+	formPaddingTop: {
+		type: 'number',
+		default: 25,
+		UAGCopyPaste: {
+			styleType: 'block-top-padding'
+		},		
+	},
+	formPaddingRight: {
+		type: 'number',
+		default: 25,
+		UAGCopyPaste: {
+			styleType: 'block-right-padding'
+		},		
+	},
+	formPaddingBottom: {
+		type: 'number',
+		default: 25,
+		UAGCopyPaste: {
+			styleType: 'block-bottom-padding'
+		},		
+	},
+	formPaddingLeft: {
+		type: 'number',
+		default: 25,
+		UAGCopyPaste: {
+			styleType: 'block-left-padding'
+		},		
+	},
+	formPaddingTopTab: {
+		type: 'number',
+		default: 25,
+		UAGCopyPaste: {
+			styleType: 'block-top-padding-tablet'
+		},		
+	},
+	formPaddingRightTab: {
+		type: 'number',
+		default: 25,
+		UAGCopyPaste: {
+			styleType: 'block-right-padding-tablet'
+		},		
+	},
+	formPaddingBottomTab: {
+		type: 'number',
+		default: 25,
+		UAGCopyPaste: {
+			styleType: 'block-bottom-padding-tablet'
+		},		
+	},
+	formPaddingLeftTab: {
+		type: 'number',
+		default: 25,
+		UAGCopyPaste: {
+			styleType: 'block-left-padding-tablet'
+		},		
+	},
+	formPaddingTopMob: {
+		type: 'number',
+		default: 25,
+		UAGCopyPaste: {
+			styleType: 'block-top-padding-mobile'
+		},		
+	},
+	formPaddingRightMob: {
+		type: 'number',
+		default: 25,
+		UAGCopyPaste: {
+			styleType: 'block-right-padding-mobile'
+		},		
+	},
+	formPaddingBottomMob: {
+		type: 'number',
+		default: 25,
+		UAGCopyPaste: {
+			styleType: 'block-bottom-padding-mobile'
+		},		
+	},
+	formPaddingLeftMob: {
+		type: 'number',
+		default: 25,
+		UAGCopyPaste: {
+			styleType: 'block-left-padding-mobile'
+		},		
+	},
+	formPaddingUnit: {
+		type: 'string',
+		default: 'px',
+		UAGCopyPaste: {
+			styleType: 'block-padding-unit'
+		},		
+	},
+	formPaddingUnitTab: {
+		type: 'string',
+		default: 'px',
+		UAGCopyPaste: {
+			styleType: 'block-padding-unit-tablet'
+		},		
+	},
+	formPaddingUnitMob: {
+		type: 'string',
+		default: 'px',
+		UAGCopyPaste: {
+			styleType: 'block-padding-unit-mobile'
+		},		
+	},
+	formPaddingLink: {
+		type: 'boolean',
+		default: true,
+	},
 	submitButtonText: {
 		type: 'string',
 		default: __( 'Submit', 'ultimate-addons-for-gutenberg' ),

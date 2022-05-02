@@ -25,6 +25,12 @@ $paddingFieldLeft   = isset( $attr['paddingFieldLeft'] ) ? $attr['paddingFieldLe
 $paddingFieldRight  = isset( $attr['paddingFieldRight'] ) ? $attr['paddingFieldRight'] : $attr['hPaddingField'];
 
 $selectors = array(
+	'.uagb-forms__outer-wrap'                        => array(
+		'padding-top'    => UAGB_Helper::get_css_value( $attr['formPaddingTop'], $attr['formPaddingUnit'] ),
+		'padding-right'  => UAGB_Helper::get_css_value( $attr['formPaddingRight'], $attr['formPaddingUnit'] ),
+		'padding-bottom' => UAGB_Helper::get_css_value( $attr['formPaddingBottom'], $attr['formPaddingUnit'] ),
+		'padding-left'   => UAGB_Helper::get_css_value( $attr['formPaddingLeft'], $attr['formPaddingUnit'] ),
+	),
 	' form.uagb-forms-main-form, form.uagb-forms-main-form .uagb-forms-input, form.uagb-forms-main-form textarea' => array(
 		'text-align' => $attr['overallAlignment'],
 	),
@@ -98,6 +104,12 @@ $selectors = array(
 
 );
 $t_selectors = array(
+	'.uagb-forms__outer-wrap' => array(
+		'padding-top'    => UAGB_Helper::get_css_value( $attr['formPaddingTopTab'], $attr['formPaddingUnitTab'] ),
+		'padding-right'  => UAGB_Helper::get_css_value( $attr['formPaddingRightTab'], $attr['formPaddingUnitTab'] ),
+		'padding-bottom' => UAGB_Helper::get_css_value( $attr['formPaddingBottomTab'], $attr['formPaddingUnitTab'] ),
+		'padding-left'   => UAGB_Helper::get_css_value( $attr['formPaddingLeftTab'], $attr['formPaddingUnitTab'] ),
+	),
 	' .uagb-forms-main-form .uagb-forms-field-set' => array(
 		'margin-bottom' => UAGB_Helper::get_css_value( $attr['fieldGapTablet'], $attr['fieldGapType'] ),
 	),
@@ -112,6 +124,12 @@ $t_selectors = array(
 	),
 );
 $m_selectors = array(
+	'.uagb-forms__outer-wrap' => array(
+		'padding-top'    => UAGB_Helper::get_css_value( $attr['formPaddingTopMob'], $attr['formPaddingUnitMob'] ),
+		'padding-right'  => UAGB_Helper::get_css_value( $attr['formPaddingRightMob'], $attr['formPaddingUnitMob'] ),
+		'padding-bottom' => UAGB_Helper::get_css_value( $attr['formPaddingBottomMob'], $attr['formPaddingUnitMob'] ),
+		'padding-left'   => UAGB_Helper::get_css_value( $attr['formPaddingLeftMob'], $attr['formPaddingUnitMob'] ),
+	),
 	' .uagb-forms-main-form .uagb-forms-field-set' => array(
 		'margin-bottom' => UAGB_Helper::get_css_value( $attr['fieldGapMobile'], $attr['fieldGapType'] ),
 	),

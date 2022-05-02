@@ -7,6 +7,21 @@ import generateCSSUnit from '@Controls/generateCSSUnit';
 
 function styling( props ) {
 	const {
+		formPaddingTop,
+		formPaddingRight,
+		formPaddingBottom,
+		formPaddingLeft,
+		formPaddingTopTab,
+		formPaddingRightTab,
+		formPaddingBottomTab,
+		formPaddingLeftTab,
+		formPaddingTopMob,
+		formPaddingRightMob,
+		formPaddingBottomMob,
+		formPaddingLeftMob,
+		formPaddingUnit,
+		formPaddingUnitTab,
+		formPaddingUnitMob,
 		buttonAlign,
 		submitColor,
 		submitColorHover,
@@ -126,6 +141,12 @@ function styling( props ) {
 	let mobileSelectors = {};
 
 	selectors = {
+		'.uagb-forms__outer-wrap': {
+			'padding-top': generateCSSUnit( formPaddingTop, formPaddingUnit ),
+			'padding-right': generateCSSUnit( formPaddingRight, formPaddingUnit ),
+			'padding-bottom': generateCSSUnit( formPaddingBottom, formPaddingUnit ),
+			'padding-left': generateCSSUnit( formPaddingLeft, formPaddingUnit ),
+		},
 		' form.uagb-forms-main-form, form.uagb-forms-main-form .uagb-forms-input, form.uagb-forms-main-form textarea': {
 			'text-align': overallAlignment,
 		},
@@ -533,6 +554,12 @@ function styling( props ) {
 	}
 
 	tabletSelectors = {
+		'.uagb-forms__outer-wrap': {
+			'padding-top': generateCSSUnit( formPaddingTopTab, formPaddingUnitTab ),
+			'padding-right': generateCSSUnit( formPaddingRightTab, formPaddingUnitTab ),
+			'padding-bottom': generateCSSUnit( formPaddingBottomTab, formPaddingUnitTab ),
+			'padding-left': generateCSSUnit( formPaddingLeftTab, formPaddingUnitTab ),
+		},
 		' .uagb-forms-main-form .uagb-forms-field-set': {
 			'margin-bottom': generateCSSUnit( fieldGapTablet, fieldGapType ),
 		},
@@ -637,6 +664,12 @@ function styling( props ) {
 	};
 
 	mobileSelectors = {
+		'.uagb-forms__outer-wrap': {
+			'padding-top': generateCSSUnit( formPaddingTopMob, formPaddingUnitMob ),
+			'padding-right': generateCSSUnit( formPaddingRightMob, formPaddingUnitMob ),
+			'padding-bottom': generateCSSUnit( formPaddingBottomMob, formPaddingUnitMob ),
+			'padding-left': generateCSSUnit( formPaddingLeftMob, formPaddingUnitMob ),
+		},
 		' .uagb-forms-radio-wrap input[type=radio]:checked + label:before': {
 			'font-size': 'calc(' + toggleSizeMobile + toggleSizeType + ' / 1.2 )',
 		},
