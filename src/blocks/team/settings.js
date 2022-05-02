@@ -839,7 +839,7 @@ const Settings = ( props ) => {
 	const getPrefixPanelColorSettings = () => {
 		return (
 			<UAGAdvancedPanelBody
-				title={ __( 'Prefix', 'ultimate-addons-for-gutenberg' ) }
+				title={ __( 'Designation', 'ultimate-addons-for-gutenberg' ) }
 				initialOpen={ false }
 			>
 				<AdvancedPopColorControl
@@ -1075,12 +1075,16 @@ const Settings = ( props ) => {
 						value: socialFontSizeTablet,
 						label: 'socialFontSizeTablet',
 					} }
+					sizeText={ __(
+						'Icon Size',
+						'ultimate-addons-for-gutenberg'
+					) }
 					disableFontFamily={ true }
 					disableLineHeight={ true }
 				/>
 				<ResponsiveSlider
 					label={ __(
-						'Inter Icon Spacing',
+						'Icon Spacing',
 						'ultimate-addons-for-gutenberg'
 					) }
 					data={ {
