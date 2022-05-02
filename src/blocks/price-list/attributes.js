@@ -228,14 +228,14 @@ const attributes = {
 	},
 	seperatorWidthTablet: {
 		type: 'number',
-		default: 0,
+		default: 100,
 		UAGCopyPaste: {
 			styleType: 'separator-width'
 		},
 	},
 	seperatorWidthMobile: {
 		type: 'number',
-		default: 0,
+		default: 100,
 		UAGCopyPaste: {
 			styleType: 'separator-width'
 		},
