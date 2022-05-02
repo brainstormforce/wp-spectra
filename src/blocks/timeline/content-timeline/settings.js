@@ -806,7 +806,7 @@ const Settings = ( props ) => {
 		return (
 			<UAGAdvancedPanelBody
 				title={ __( 'Heading', 'ultimate-addons-for-gutenberg' ) }
-				initialOpen={ false }
+				initialOpen={ true }
 			>
 				<AdvancedPopColorControl
 					label={ __( 'Color', 'ultimate-addons-for-gutenberg' ) }
@@ -1061,20 +1061,6 @@ const Settings = ( props ) => {
 					} }
 				/>
 				{ timelinAlignment !== 'center' && (
-					// <Range
-					// 	label={ __(
-					// 		'Date Bottom Spacing',
-					// 		'ultimate-addons-for-gutenberg'
-					// 	) }
-					// 	setAttributes={ setAttributes }
-					// 	value={ dateBottomspace }
-					// 	onChange={ ( value ) =>
-					// 		setAttributes( { dateBottomspace: value } )
-					// 	}
-					// 	min={ 0 }
-					// 	max={ 50 }
-					// 	displayUnit={ false }
-					// />
 					<ResponsiveSlider
 						label={ __(
 							'Bottom Spacing',

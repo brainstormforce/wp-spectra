@@ -69,6 +69,13 @@ const attributes = {
 		},
 		default: 2
 	},
+	separatorHeightType: {
+		type: 'string',
+		default: 'px',
+		UAGCopyPaste: {
+			styleType: 'separator-height-type'
+		}
+	},
 	separatorWidth: {
 		type: 'number',
 		UAGCopyPaste: {
@@ -114,6 +121,13 @@ const attributes = {
 		default: 0,
 		UAGCopyPaste: {
 			styleType: 'main-title-bottom-margin'
+		}
+	},
+	headSpaceType: {
+		type: 'string',
+		default: 'px',
+		UAGCopyPaste: {
+			styleType: 'main-title-unit-type'
 		}
 	},
 	headFontFamily: {
@@ -299,6 +313,13 @@ const attributes = {
 		default: 0,
 		UAGCopyPaste: {
 			styleType: 'separator-bottom-margin'
+		}
+	},
+	separatorSpaceType: {
+		type: 'string',
+		default: 'px',
+		UAGCopyPaste: {
+			styleType: 'separator-width-type'
 		}
 	},
 	headLoadGoogleFonts: {

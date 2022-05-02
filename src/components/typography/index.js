@@ -140,6 +140,13 @@ const TypographyControl = ( props ) => {
 					}
 					options={ [
 						{
+							value: '',
+							label: __(
+								'Default',
+								'ultimate-addons-for-gutenberg'
+							),
+						},
+						{
 							value: 'normal',
 							label: __(
 								'Normal',
@@ -190,7 +197,7 @@ const TypographyControl = ( props ) => {
 						{
 							value: 'none',
 							label: __(
-								'None',
+								'Default',
 								'ultimate-addons-for-gutenberg'
 							),
 						},
