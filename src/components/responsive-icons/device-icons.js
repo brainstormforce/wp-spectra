@@ -1,9 +1,9 @@
 /**
  * Internal & External dependencies.
  */
-import { ButtonGroup, Button } from '@wordpress/components';
+import { ButtonGroup, Button, Tooltip  } from '@wordpress/components';
 import { useDeviceType } from '@Controls/getPreviewType';
-import { __ } from '@wordpress/i18n'
+import { __, sprintf } from '@wordpress/i18n'
 import { useCallback } from '@wordpress/element'
 import { dispatch } from '@wordpress/data';
 import styles from './editor.lazy.scss';
@@ -93,6 +93,14 @@ if ( ! deviceType ) {
 	>
 		{ devices.map(
 			( { name, key, title, itemClass } ) => (
+				<Tooltip
+					text={ sprintf(
+						/* translators: abbreviation for units */
+						__( '%s device', 'ultimate-addons-for-gutenberg' ),
+						name
+					) }
+					key={key}
+				>
 				<Button
 					key={ key }
 					className={ `components-button components-tab-panel__tabs-item ${ itemClass }${
@@ -109,6 +117,7 @@ if ( ! deviceType ) {
 				>
 					{ title }
 				</Button>
+				</Tooltip>
 			)
 		) }
 	</ButtonGroup>

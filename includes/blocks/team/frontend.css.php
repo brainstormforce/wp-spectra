@@ -122,6 +122,7 @@ if ( 'above' !== $attr['imgPosition'] ) {
 	if ( 'middle' === $attr['imgAlign'] ) {
 		$selectors[' .uagb-team__image-wrap']['align-self'] = 'center';
 		$selectors[' img']['align-self']                    = 'center';
+		$selectors[' .uagb-team__content']                  = array( 'align-self' => 'center' );
 	} else {
 		$selectors[' img']['align-self'] = 'flex-start';
 	}
