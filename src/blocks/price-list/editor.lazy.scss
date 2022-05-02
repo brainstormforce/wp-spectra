@@ -5,7 +5,9 @@
  * which makes it higher in priority.
  */
 .editor-styles-wrapper {
-
+	[data-type="uagb/restaurant-menu"].block-editor-block-list__block {
+		display: flex;
+	}
 	.wp-block-uagb-restaurant-menu {
 		padding: 15px;
 		margin: 0;
