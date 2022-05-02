@@ -5,14 +5,13 @@
  * @return {Array} The inline CSS class.
  */
 
- import UAGB_SVG_Icon from './UAGBIcon'
  import parseSVG from './parseIcon'
 
  function renderSVG ( svg ) {
 
 	 svg = parseSVG( svg )
 
-	 const fontAwesome = UAGB_SVG_Icon[svg]
+	 const fontAwesome = uagb_blocks_info.uagb_svg_icons[ svg ];
 
 	 if ( 'undefined' !== typeof fontAwesome ) {
 
