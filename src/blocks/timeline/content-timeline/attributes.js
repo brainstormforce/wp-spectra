@@ -62,7 +62,6 @@ const attributes = {
 	},
 	align: {
 		type: 'string',
-		default: 'center',
 		UAGCopyPaste: {
 			styleType: 'overall-alignment'
 		},

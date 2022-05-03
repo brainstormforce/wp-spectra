@@ -91,13 +91,15 @@ const Render = ( props ) => {
 					) }
 				</div>
 			) }
-			<InnerBlocks
-				__experimentalMoverDirection={ moverDirection }
-				renderAppender = { hasChildBlocks
-				? undefined
-				: InnerBlocks.ButtonBlockAppender }
-			/>
-			{ bottomDividerHtml }
+			<div className='uagb-container-inner-blocks-wrap'>
+				<InnerBlocks
+					__experimentalMoverDirection={ moverDirection }
+					renderAppender = { hasChildBlocks
+					? undefined
+					: InnerBlocks.ButtonBlockAppender }
+				/>
+				{ bottomDividerHtml }
+			</div>
 		</div>
 	);
 };

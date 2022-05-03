@@ -1347,7 +1347,7 @@ const Settings = ( props ) => {
 		return (
 			<UAGAdvancedPanelBody
 				title={ __( 'Layout', 'ultimate-addons-for-gutenberg' ) }
-				initialOpen={ false }
+				initialOpen={ true }
 			>
 				{ skinStyle === 'border' && borderStyleSetting() }
 				{ skinStyle === 'quotation' && quoteSettings }
