@@ -438,6 +438,37 @@ const attributes = {
 		},
 	},
 
+	// Label Spacing
+
+	labelGap: {
+		type: 'number',
+		default: 10,
+		UAGCopyPaste: {
+			styleType: 'main-title-bottom-margin'
+		},
+	},
+	labelGapTablet: {
+		type: 'number',
+		default: 10,
+		UAGCopyPaste: {
+			styleType: 'main-title-bottom-margin-tablet'
+		},
+	},
+	labelGapMobile: {
+		type: 'number',
+		default: 10,
+		UAGCopyPaste: {
+			styleType: 'main-title-margin-bottom-mobile'
+		},
+	},
+	labelGapUnit: {
+		type: 'string',
+		default: 'px',
+		UAGCopyPaste: {
+			styleType: 'main-title-margin-unit'
+		},
+	},
+
 	// Input Font Family
 
 	inputloadGoogleFonts: {

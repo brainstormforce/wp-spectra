@@ -134,6 +134,11 @@ function styling( props ) {
 		submitTextFontStyle,
 		labelFontStyle,
 		inputFontStyle,
+		
+		labelGap,
+		labelGapTablet,
+		labelGapMobile,
+		labelGapUnit,
 	} = props.attributes;
 
 	let selectors = {};
@@ -166,6 +171,7 @@ function styling( props ) {
 			'text-decoration': labelDecoration,
 			'font-weight': labelFontWeight,
 			'color': labelColor,
+			'margin-bottom': generateCSSUnit( labelGap, labelGapUnit ),
 		},
 		' .uagb-forms-main-form  .uagb-forms-input::placeholder': {
 			'font-size': generateCSSUnit( inputFontSize, inputFontSizeType ),
@@ -647,6 +653,7 @@ function styling( props ) {
 				labelLineHeightTablet,
 				labelLineHeightType
 			),
+			'margin-bottom': generateCSSUnit( labelGapTablet, labelGapUnit ),
 		},
 		' .uagb-forms-main-form  .uagb-forms-input::placeholder': {
 			'font-size': generateCSSUnit(
@@ -753,6 +760,7 @@ function styling( props ) {
 				labelLineHeightMobile,
 				labelLineHeightType
 			),
+			'margin-bottom': generateCSSUnit( labelGapMobile, labelGapUnit ),
 		},
 		' .uagb-forms-main-form  .uagb-forms-input::placeholder': {
 			'font-size': generateCSSUnit(

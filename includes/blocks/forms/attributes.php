@@ -171,4 +171,8 @@ return array(
 	'paddingFieldUnitTablet'         => 'px',
 	'toggleSizeType'                 => 'px',
 	'captchaMessage'                 => __( 'Please fill up the above captcha.', 'ultimate-addons-for-gutenberg' ),
+	'labelGap'                       => 10,
+	'labelGapTablet'                 => 10,
+	'labelGapMobile'                 => 10,
+	'labelGapUnit'                   => 'px',
 );

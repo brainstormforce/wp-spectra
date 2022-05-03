@@ -38,8 +38,9 @@ $selectors = array(
 		'margin-bottom' => UAGB_Helper::get_css_value( $attr['fieldGap'], $attr['fieldGapType'] ),
 	),
 	' .uagb-forms-main-form .uagb-forms-input-label' => array(
-		'color'     => $attr['labelColor'],
-		'font-size' => UAGB_Helper::get_css_value( $attr['labelFontSize'], $attr['labelFontSizeType'] ),
+		'color'         => $attr['labelColor'],
+		'font-size'     => UAGB_Helper::get_css_value( $attr['labelFontSize'], $attr['labelFontSizeType'] ),
+		'margin-bottom' => UAGB_Helper::get_css_value( $attr['labelGap'], $attr['labelGapUnit'] ),
 	),
 	' .uagb-forms-success-message'                   => array(
 		'border'           => UAGB_Helper::get_css_value( $attr['successMessageBorderWidth'], 'px' ) . ' ' . $attr['successMessageBorderStyle'],
@@ -115,6 +116,9 @@ $t_selectors = array(
 	' .uagb-forms-main-form .uagb-forms-field-set' => array(
 		'margin-bottom' => UAGB_Helper::get_css_value( $attr['fieldGapTablet'], $attr['fieldGapType'] ),
 	),
+	' .uagb-forms-main-form .uagb-forms-input-label' => array(
+		'margin-bottom' => UAGB_Helper::get_css_value( $attr['labelGapTablet'], $attr['labelGapUnit'] ),
+	),
 	' .uagb-forms-main-form .uagb-forms-main-submit-button' => array(
 		'padding-top'    => UAGB_Helper::get_css_value( $attr['paddingBtnTopTablet'], $attr['tabletPaddingBtnUnit'] ),
 		'padding-bottom' => UAGB_Helper::get_css_value( $attr['paddingBtnBottomTablet'], $attr['tabletPaddingBtnUnit'] ),
@@ -134,6 +138,9 @@ $m_selectors = array(
 	),
 	' .uagb-forms-main-form .uagb-forms-field-set' => array(
 		'margin-bottom' => UAGB_Helper::get_css_value( $attr['fieldGapMobile'], $attr['fieldGapType'] ),
+	),
+	' .uagb-forms-main-form .uagb-forms-input-label' => array(
+		'margin-bottom' => UAGB_Helper::get_css_value( $attr['labelGapMobile'], $attr['labelGapUnit'] ),
 	),
 	' .uagb-forms-main-form .uagb-forms-main-submit-button' => array(
 		'padding-top'    => UAGB_Helper::get_css_value( $attr['paddingBtnTopMobile'], $attr['mobilePaddingBtnUnit'] ),

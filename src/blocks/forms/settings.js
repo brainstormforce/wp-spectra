@@ -192,7 +192,12 @@ const Settings = ( props ) => {
 		submitTextFontStyle,
 		labelFontStyle,
 		inputFontStyle,
-		hidereCaptchaBatch
+		hidereCaptchaBatch,
+
+		labelGap,
+		labelGapTablet,
+		labelGapMobile,
+		labelGapUnit,
 	} = attributes;
 
 	const presetSettings = () => {
@@ -685,137 +690,10 @@ const Settings = ( props ) => {
 		);
 	};
 
-	const formStyling = () => (
-		<UAGAdvancedPanelBody
-			title={ __( 'Form', 'ultimate-addons-for-gutenberg' ) }
-			initialOpen={ true }
-			// className="uagb__url-panel-body"
-		>			
-			<SpacingControl
-				{ ...props }
-				label={ __(
-					'Form Padding',
-					'ultimate-addons-for-gutenberg'
-				) }
-				valueTop={ {
-					value: formPaddingTop,
-					label: 'formPaddingTop',
-				} }
-				valueRight={ {
-					value: formPaddingRight,
-					label: 'formPaddingRight',
-				} }
-				valueBottom={ {
-					value: formPaddingBottom,
-					label: 'formPaddingBottom',
-				} }
-				valueLeft={ {
-					value: formPaddingLeft,
-					label: 'formPaddingLeft',
-				} }
-				valueTopTablet={ {
-					value: formPaddingTopTab,
-					label: 'formPaddingTopTab',
-				} }
-				valueRightTablet={ {
-					value: formPaddingRightTab,
-					label: 'formPaddingRightTab',
-				} }
-				valueBottomTablet={ {
-					value: formPaddingBottomTab,
-					label: 'formPaddingBottomTab',
-				} }
-				valueLeftTablet={ {
-					value: formPaddingLeftTab,
-					label: 'formPaddingLeftTab',
-				} }
-				valueTopMobile={ {
-					value: formPaddingTopMob,
-					label: 'formPaddingTopMob',
-				} }
-				valueRightMobile={ {
-					value: formPaddingRightMob,
-					label: 'formPaddingRightMob',
-				} }
-				valueBottomMobile={ {
-					value: formPaddingBottomMob,
-					label: 'formPaddingBottomMob',
-				} }
-				valueLeftMobile={ {
-					value: formPaddingLeftMob,
-					label: 'formPaddingLeftMob',
-				} }
-				unit={ {
-					value: formPaddingUnit,
-					label: 'formPaddingUnit',
-				} }
-				mUnit={ {
-					value: formPaddingUnitTab,
-					label: 'formPaddingUnitTab',
-				} }
-				tUnit={ {
-					value: formPaddingUnitMob,
-					label: 'formPaddingUnitMob',
-				} }
-				deviceType={ deviceType }
-				attributes={ attributes }
-				setAttributes={ setAttributes }
-				link={ {
-					value: formPaddingLink,
-					label: 'formPaddingLink',
-				} }
-			/>
-			<ResponsiveSlider
-				label={ __(
-					'Row Spacing',
-					'ultimate-addons-for-gutenberg'
-				) }
-				data={ {
-					desktop: {
-						value: fieldGap,
-						label: 'fieldGap',
-					},
-					tablet: {
-						value: fieldGapTablet,
-						label: 'fieldGapTablet',
-					},
-					mobile: {
-						value: fieldGapMobile,
-						label: 'fieldGapMobile',
-					},
-				} }
-				min={ 0 }
-				max={ 100 }
-				unit={ {
-					value: fieldGapType,
-					label: 'fieldGapType',
-				} }
-				units={ [
-					{
-						name: __(
-							'Pixel',
-							'ultimate-addons-for-gutenberg'
-						),
-						unitValue: 'px',
-					},
-					{
-						name: __(
-							'%',
-							'ultimate-addons-for-gutenberg'
-						),
-						unitValue: '%',
-					},
-				] }
-				setAttributes={ setAttributes }
-			/>
-			{/* Add Label Spacing (Responsive) */}
-		</UAGAdvancedPanelBody>
-	);
-
 	const fieldStyling = () => (
 		<UAGAdvancedPanelBody
 			title={ __( 'Fields', 'ultimate-addons-for-gutenberg' ) }
-			initialOpen={ false }
+			initialOpen={ true }
 			// className="uagb__url-panel-body"
 		>
 			<AdvancedPopColorControl
@@ -993,20 +871,6 @@ const Settings = ( props ) => {
 				} }
 				disableBottomSeparator={ false }
 			/>
-
-			{/* Border Active */}
-
-			{/* <AdvancedPopColorControl
-				label={ __(
-					'Active Color',
-					'ultimate-addons-for-gutenberg'
-				) }
-				colorValue={ inputactiveColor ? inputactiveColor : '' }
-				onColorChange={ ( value ) =>
-					setAttributes( { inputactiveColor: value } )
-				}
-			/> */}
-
 			<SpacingControl
 				{ ...props }
 				label={ __( 'Input Padding', 'ultimate-addons-for-gutenberg' ) }
@@ -1720,6 +1584,189 @@ const Settings = ( props ) => {
 		</UAGAdvancedPanelBody>
 	);
 
+	const spaceStyling = () => (
+		<UAGAdvancedPanelBody
+			title={ __( 'Spacing', 'ultimate-addons-for-gutenberg' ) }
+			initialOpen={ false }
+			// className="uagb__url-panel-body"
+		>			
+			<SpacingControl
+				{ ...props }
+				label={ __(
+					'Form Padding',
+					'ultimate-addons-for-gutenberg'
+				) }
+				valueTop={ {
+					value: formPaddingTop,
+					label: 'formPaddingTop',
+				} }
+				valueRight={ {
+					value: formPaddingRight,
+					label: 'formPaddingRight',
+				} }
+				valueBottom={ {
+					value: formPaddingBottom,
+					label: 'formPaddingBottom',
+				} }
+				valueLeft={ {
+					value: formPaddingLeft,
+					label: 'formPaddingLeft',
+				} }
+				valueTopTablet={ {
+					value: formPaddingTopTab,
+					label: 'formPaddingTopTab',
+				} }
+				valueRightTablet={ {
+					value: formPaddingRightTab,
+					label: 'formPaddingRightTab',
+				} }
+				valueBottomTablet={ {
+					value: formPaddingBottomTab,
+					label: 'formPaddingBottomTab',
+				} }
+				valueLeftTablet={ {
+					value: formPaddingLeftTab,
+					label: 'formPaddingLeftTab',
+				} }
+				valueTopMobile={ {
+					value: formPaddingTopMob,
+					label: 'formPaddingTopMob',
+				} }
+				valueRightMobile={ {
+					value: formPaddingRightMob,
+					label: 'formPaddingRightMob',
+				} }
+				valueBottomMobile={ {
+					value: formPaddingBottomMob,
+					label: 'formPaddingBottomMob',
+				} }
+				valueLeftMobile={ {
+					value: formPaddingLeftMob,
+					label: 'formPaddingLeftMob',
+				} }
+				unit={ {
+					value: formPaddingUnit,
+					label: 'formPaddingUnit',
+				} }
+				mUnit={ {
+					value: formPaddingUnitTab,
+					label: 'formPaddingUnitTab',
+				} }
+				tUnit={ {
+					value: formPaddingUnitMob,
+					label: 'formPaddingUnitMob',
+				} }
+				deviceType={ deviceType }
+				attributes={ attributes }
+				setAttributes={ setAttributes }
+				link={ {
+					value: formPaddingLink,
+					label: 'formPaddingLink',
+				} }
+			/>
+			<ResponsiveSlider
+				label={ __(
+					'Row Spacing',
+					'ultimate-addons-for-gutenberg'
+				) }
+				data={ {
+					desktop: {
+						value: fieldGap,
+						label: 'fieldGap',
+					},
+					tablet: {
+						value: fieldGapTablet,
+						label: 'fieldGapTablet',
+					},
+					mobile: {
+						value: fieldGapMobile,
+						label: 'fieldGapMobile',
+					},
+				} }
+				min={ 0 }
+				max={ 100 }
+				unit={ {
+					value: fieldGapType,
+					label: 'fieldGapType',
+				} }
+				units={ [
+					{
+						name: __(
+							'Pixel',
+							'ultimate-addons-for-gutenberg'
+						),
+						unitValue: 'px',
+					},
+					{
+						name: __(
+							'%',
+							'ultimate-addons-for-gutenberg'
+						),
+						unitValue: '%',
+					},
+					{
+						name: __(
+							'em',
+							'ultimate-addons-for-gutenberg'
+						),
+						unitValue: 'em',
+					},
+				] }
+				setAttributes={ setAttributes }
+			/>
+			<ResponsiveSlider
+				label={ __(
+					'Label Bottom Margin',
+					'ultimate-addons-for-gutenberg'
+				) }
+				data={ {
+					desktop: {
+						value: labelGap,
+						label: 'labelGap',
+					},
+					tablet: {
+						value: labelGapTablet,
+						label: 'labelGapTablet',
+					},
+					mobile: {
+						value: labelGapMobile,
+						label: 'labelGapMobile',
+					},
+				} }
+				min={ 0 }
+				max={ 100 }
+				unit={ {
+					value: labelGapUnit,
+					label: 'labelGapUnit',
+				} }
+				units={ [
+					{
+						name: __(
+							'Pixel',
+							'ultimate-addons-for-gutenberg'
+						),
+						unitValue: 'px',
+					},
+					{
+						name: __(
+							'%',
+							'ultimate-addons-for-gutenberg'
+						),
+						unitValue: '%',
+					},
+					{
+						name: __(
+							'em',
+							'ultimate-addons-for-gutenberg'
+						),
+						unitValue: 'em',
+					},
+				] }
+				setAttributes={ setAttributes }
+			/>
+		</UAGAdvancedPanelBody>
+	);
+
 
 	const googleReCaptcha = () => {
 		return (
@@ -1864,11 +1911,11 @@ const Settings = ( props ) => {
 						{ googleReCaptcha() }
 					</InspectorTab>
 					<InspectorTab { ...UAGTabs.style }>
-					{ formStyling() }
 					{ fieldStyling() }
 					{ elementStyling() }
 					{ submitStyling() }
 					{ messageStyling() }
+					{ spaceStyling() }
 					</InspectorTab>
 					<InspectorTab
 						{ ...UAGTabs.advance }
