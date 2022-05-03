@@ -333,7 +333,6 @@
 		img {
 			width: 50px;
 			height: 50px;
-			margin-right: 10px;
 			border-radius: 100%;
 		}
 	}
@@ -407,16 +406,6 @@
 		-webkit-flex-direction: row-reverse;
 		-ms-flex-direction: row-reverse;
 		flex-direction: row-reverse;
-
-		.uagb-blockquote__author-image img {
-			margin-right: 0;
-			margin-left: 10px;
-		}
-
-		img {
-			margin-right: 0;
-			margin-left: 10px;
-		}
 	}
 }
 
@@ -435,12 +424,6 @@
 				-webkit-flex-direction: column;
 				-ms-flex-direction: column;
 				flex-direction: column;
-
-				img {
-					margin-right: 0;
-					margin-bottom: 10px;
-					margin-left: 0;
-				}
 			}
 
 			/* Left alignment */
@@ -464,10 +447,6 @@
 			&.uagb-blockquote__align-right a.uagb-blockquote__tweet-button {
 				-ms-flex-item-align: flex-end;
 				align-self: flex-end;
-			}
-
-			a.uagb-blockquote__tweet-button {
-				margin-top: 10px;
 			}
 
 			&.uagb-blockquote__align-right.uagb-blockquote__tweet-style-bubble a.uagb-blockquote__tweet-button::before,
@@ -511,11 +490,6 @@
 				flex-direction: column;
 			}
 
-			.uagb-blockquote__author-wrap.uagb-blockquote__author-at-right .uagb-blockquote__author-wrap img,
-			.uagb-blockquote__author-wrap.uagb-blockquote__author-at-left .uagb-blockquote__author-wrap img {
-				margin: 0 0 10px 0;
-			}
-
 			/* Left alignment */
 			&.uagb-blockquote__with-tweet .uagb-blockquote footer {
 				-webkit-flex-direction: column;
@@ -537,10 +511,6 @@
 			&.uagb-blockquote__align-right a.uagb-blockquote__tweet-button {
 				-ms-flex-item-align: flex-end;
 				align-self: flex-end;
-			}
-
-			a.uagb-blockquote__tweet-button {
-				margin-top: 10px;
 			}
 
 			&.uagb-blockquote__align-right.uagb-blockquote__tweet-style-bubble a.uagb-blockquote__tweet-button::before,

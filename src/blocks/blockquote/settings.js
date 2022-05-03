@@ -113,6 +113,8 @@ const Settings = ( props ) => {
 		tweetBtnLoadGoogleFonts,
 		tweetIconSpacing,
 		tweetIconSpacingUnit,
+		tweetGap,
+		tweetGapUnit,
 		iconView,
 		iconSkin,
 		iconLabel,
@@ -124,6 +126,10 @@ const Settings = ( props ) => {
 		authorImageWidthTablet,
 		authorImageWidthMobile,
 		authorImageWidthUnit,
+		authorImageGap,
+		authorImageGapTablet,
+		authorImageGapMobile,
+		authorImageGapUnit,
 		authorImageSize,
 		authorImgBorderRadius,
 		authorImgBorderRadiusTablet,
@@ -979,6 +985,35 @@ const Settings = ( props ) => {
 			title={ __( 'Spacing', 'ultimate-addons-for-gutenberg' ) }
 			initialOpen={ false }
 		>
+			{ authorImage && (
+				<ResponsiveSlider
+					label={ __(
+						'Author - Image Gap',
+						'ultimate-addons-for-gutenberg'
+					) }
+					data={ {
+						desktop: {
+							value: authorImageGap,
+							label: 'authorImageGap',
+						},
+						tablet: {
+							value: authorImageGapTablet,
+							label: 'authorImageGapTablet',
+						},
+						mobile: {
+							value: authorImageGapMobile,
+							label: 'authorImageGapMobile',
+						},
+					} }
+					min={ 0 }
+					max={ 500 }
+					unit={ {
+						value: authorImageGapUnit,
+						label: 'authorImageGapUnit',
+					} }
+					setAttributes={ setAttributes }
+				/>
+			) }
 			{ skinStyle === 'quotation' && (
 				<SpacingControl
 					{ ...props }
@@ -1237,6 +1272,26 @@ const Settings = ( props ) => {
 					/>
 				</>
 			) }
+
+			{ ( enableTweet && stack !== 'none' ) && (
+				<Range
+					label={ __(
+						'Stacked Twitter Gap',
+						'ultimate-addons-for-gutenberg'
+					) }
+					setAttributes={ setAttributes }
+					value={ tweetGap }
+					onChange={ ( value ) =>
+						setAttributes( { tweetGap: value } )
+					}
+					min={ 0 }
+					max={ 100 }
+					unit={ {
+						value: tweetGapUnit,
+						label: 'tweetGapUnit',
+					} }
+				/>
+			) }
 		</UAGAdvancedPanelBody>
 	);
 
@@ -1292,7 +1347,7 @@ const Settings = ( props ) => {
 		return (
 			<UAGAdvancedPanelBody
 				title={ __( 'Layout', 'ultimate-addons-for-gutenberg' ) }
-				initialOpen={ false }
+				initialOpen={ true }
 			>
 				{ skinStyle === 'border' && borderStyleSetting() }
 				{ skinStyle === 'quotation' && quoteSettings }

@@ -55,7 +55,8 @@
     "node-sass": "^4.14.1",
     "sass-loader": "^6.0.6",
     "style-loader": "^2.0.0",
-    "webpack": "^4.46.0"
+    "webpack": "^4.46.0",
+    "grunt-json2php": "^0.1.4"
   },
   "scripts": {
     "start": "wp-scripts start",

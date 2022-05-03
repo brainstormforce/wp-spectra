@@ -482,11 +482,25 @@ const attributes = {
 			styleType: 'arrow-border-size'
 		},
 	},
+	arrowBorderSizeUnit: {
+		type: 'string',
+		default: 'px',
+		UAGCopyPaste: {
+			styleType: 'arrow-unit'
+		},
+	},
 	arrowBorderRadius: {
 		type: 'number',
 		default: 0,
 		UAGCopyPaste: {
 			styleType: 'arrow-border-radius'
+		},
+	},
+	arrowBorderRadiusUnit: {
+		type: 'string',
+		default: 'px',
+		UAGCopyPaste: {
+			styleType: 'arrow-unit'
 		},
 	},
 	arrowColor: {
