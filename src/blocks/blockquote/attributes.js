@@ -573,14 +573,14 @@ const attributes = {
 	},
 	borderGapTablet: {
 		type: 'number',
-		default: 0,
+		default: 15,
 		UAGCopyPaste: {
 			styleType: 'desc-border-gap'
 		}
 	},
 	borderGapMobile: {
 		type: 'number',
-		default: 0,
+		default: 15,
 		UAGCopyPaste: {
 			styleType: 'desc-border-gap'
 		}
