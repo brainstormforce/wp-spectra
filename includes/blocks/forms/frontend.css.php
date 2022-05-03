@@ -42,22 +42,24 @@ $selectors = array(
 		'font-size' => UAGB_Helper::get_css_value( $attr['labelFontSize'], $attr['labelFontSizeType'] ),
 	),
 	' .uagb-forms-success-message'                   => array(
-		'border'           => UAGB_Helper::get_css_value( $attr['successMessageBorderWidth'], 'px' ) . ' ' . $attr['successMessageBorderStyle'] . ' ' . $attr['successMessageBorderColor'],
+		'border'           => UAGB_Helper::get_css_value( $attr['successMessageBorderWidth'], 'px' ) . ' ' . $attr['successMessageBorderStyle'],
+		'border-color'     => $attr['successMessageBorderColor'],
 		'background-color' => $attr['successMessageBGColor'],
 		'color'            => $attr['successMessageTextColor'],
-		'border-radius'    => $attr['successMessageBorderRadius'],
+		'border-radius'    => UAGB_Helper::get_css_value( $attr['successMessageBorderRadius'], 'px' ),
 	),
 	' .uagb-forms-success-message:hover'             => array(
-		'border' => UAGB_Helper::get_css_value( $attr['successMessageBorderWidth'], 'px' ) . ' ' . $attr['successMessageBorderStyle'] . ' ' . $attr['successMessageHoverBorderColor'],
+		'border-color' => $attr['successMessageHoverBorderColor'],
 	),
 	' .uagb-forms-failed-message'                    => array(
-		'border'           => UAGB_Helper::get_css_value( $attr['failedMessageBorderWidth'], 'px' ) . ' ' . $attr['failedMessageBorderStyle'] . ' ' . $attr['failedMessageBorderColor'],
+		'border'           => UAGB_Helper::get_css_value( $attr['failedMessageBorderWidth'], 'px' ) . ' ' . $attr['failedMessageBorderStyle'],
+		'border-color'     => $attr['failedMessageBorderColor'],
 		'background-color' => $attr['failedMessageBGColor'],
 		'color'            => $attr['failedMessageTextColor'],
-		'border-radius'    => $attr['failedMessageBorderRadius'],
+		'border-radius'    => UAGB_Helper::get_css_value( $attr['failedMessageBorderRadius'], 'px' ),
 	),
 	' .uagb-forms-failed-message:hover'              => array(
-		'border' => UAGB_Helper::get_css_value( $attr['failedMessageBorderWidth'], 'px' ) . ' ' . $attr['failedMessageBorderStyle'] . ' ' . $attr['failedMessageHoverBorderColor'],
+		'border-color' => $attr['failedMessageHoverBorderColor'],
 	),
 	' .uagb-forms-main-form .uagb-forms-main-submit-button-wrap' => array(
 		'text-align' => $attr['buttonAlign'],

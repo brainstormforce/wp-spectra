@@ -155,7 +155,7 @@ const attributes = {
 		UAGCopyPaste: {
 			styleType: 'failed-msg-border-color'
 		},
-		default: ''
+		default: 'red'
 	},
 	failedMessageBGColor      : {
 		type: 'string',
@@ -173,7 +173,7 @@ const attributes = {
 	},
 	failedMessageBorderWidth  : {
 		type: 'number',
-		default: 2,
+		default: 3,
 		UAGCopyPaste: {
 			styleType: 'failed-msg-border-width'
 		},
@@ -800,11 +800,11 @@ const attributes = {
 		default: 'solid',
 	},
 	successMessageBorderWidth: {
-		type: 'string',
+		type: 'number',
 		UAGCopyPaste: {
 			styleType: 'success-msg-border-width'
 		},
-		default: '2',
+		default: 3,
 	},
 	captchaMessage: {
 		type: 'string',
@@ -815,25 +815,29 @@ const attributes = {
 	},
 
 	successMessageBorderRadius: {
-		type: 'string',
+		type: 'number',
+		default: 6,
 		UAGCopyPaste: {
 			styleType: 'success-msg-border-radius'
 		},
 	},
 	successMessageHoverBorderColor: {
 		type: 'string',
+		default: 'yellowgreen',
 		UAGCopyPaste: {
 			styleType: 'success-msg-hover-border-color'
 		},
 	},
 	failedMessageBorderRadius: {
-		type: 'string',
+		type: 'number',
+		default: 6,
 		UAGCopyPaste: {
 			styleType: 'failed-msg-border-radius'
 		},
 	},
 	failedMessageHoverBorderColor: {
 		type: 'string',
+		default: 'deeppink',
 		UAGCopyPaste: {
 			styleType: 'failed-msg-hover-border-color'
 		},
