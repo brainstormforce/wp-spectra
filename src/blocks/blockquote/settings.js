@@ -71,7 +71,6 @@ const Settings = ( props ) => {
 		authorSpace,
 		authorSpaceTablet,
 		authorSpaceMobile,
-		stack,
 		borderColor,
 		borderStyle,
 		borderWidth,
@@ -646,7 +645,7 @@ const Settings = ( props ) => {
 			</>
 			}
 			{ imageControls }
-			<MultiButtonsControl
+			{/* <MultiButtonsControl
 				setAttributes={ setAttributes }
 				label={ __( 'Stack On', 'ultimate-addons-for-gutenberg' ) }
 				data={ {
@@ -670,7 +669,7 @@ const Settings = ( props ) => {
 				] }
 				showIcons={ false }
 			/>
-			<p>Note: Choose on what breakpoint the elements will stack.</p>
+			<p>Note: Choose on what breakpoint the elements will stack.</p> */}
 		</UAGAdvancedPanelBody>
 	);
 
@@ -1273,7 +1272,7 @@ const Settings = ( props ) => {
 				</>
 			) }
 
-			{ ( enableTweet && stack !== 'none' ) && (
+			{ ( enableTweet ) && (
 				<Range
 					label={ __(
 						'Stacked Twitter Gap',
