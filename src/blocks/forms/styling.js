@@ -228,7 +228,7 @@ function styling( props ) {
 			} + ${
 				generateCSSUnit( paddingFieldBottom, paddingFieldUnit )
 			} + ${
-				generateCSSUnit( inputborderWidth * 2, 'px')
+				generateCSSUnit( inputborderWidth * 2, 'px' )
 			})`,
 		},
 		' .uagb-forms-main-form .uagb-forms-main-submit-button-wrap': {

@@ -643,53 +643,6 @@ const Settings = ( props ) => {
 		);
 	};
 
-	// DELETE FROM HTER
-
-	const labelSettings = () => {
-		return (
-			<UAGAdvancedPanelBody
-				title={ __( 'Label', 'ultimate-addons-for-gutenberg' ) }
-				initialOpen={ false }
-				className="uagb__url-panel-body"
-			>
-			</UAGAdvancedPanelBody>
-		);
-	};
-	const inputSettings = () => {
-		return (
-			<UAGAdvancedPanelBody
-				title={ __( 'Input', 'ultimate-addons-for-gutenberg' ) }
-				initialOpen={ false }
-				className="uagb__url-panel-body"
-			>
-			</UAGAdvancedPanelBody>
-		);
-	};
-	const fieldSettings = () => {
-		return (
-			<UAGAdvancedPanelBody
-				title={ __( 'Field', 'ultimate-addons-for-gutenberg' ) }
-				initialOpen={ false }
-				className="uagb__url-panel-body"
-			>
-			</UAGAdvancedPanelBody>
-		);
-	};
-	const checkboxSettings = () => {
-		return (
-			<UAGAdvancedPanelBody
-				title={ __(
-					'Checkbox / Toggle',
-					'ultimate-addons-for-gutenberg'
-				) }
-				initialOpen={ false }
-				className="uagb__url-panel-body"
-			>
-				
-			</UAGAdvancedPanelBody>
-		);
-	};
-
 	const fieldStyling = () => (
 		<UAGAdvancedPanelBody
 			title={ __( 'Fields', 'ultimate-addons-for-gutenberg' ) }

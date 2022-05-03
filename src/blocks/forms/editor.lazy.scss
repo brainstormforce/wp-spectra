@@ -57,14 +57,16 @@ select.uagb-forms-select-box.uagb-forms-input {
 	width: 90px;
 }
 
-.uagb-forms-phone-wrap{
-	
+.uagb-forms-phone-wrap {
+
 	& .uagb-forms-phone-flex {
 		display: flex;
 		width: 100%;
-		& .components-base-control__field{
-			height: calc( 100% - 8px );
+
+		& .components-base-control__field {
+			height: calc(100% - 8px);
 		}
+
 		& .uagb-form-phone-country {
 			width: auto !important;
 		}

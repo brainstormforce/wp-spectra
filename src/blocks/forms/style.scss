@@ -18,8 +18,9 @@
 
 	.uagb-forms-main-form {
 
-		.uagb-forms-input, input[type="text"] {			
-			min-height: 0px !important;
+		.uagb-forms-input,
+		input[type="text"] {
+			min-height: 0 !important;
 		}
 
 		input:not([type="checkbox"]):not([type="radio"]):not([type="file"]),
@@ -35,16 +36,11 @@
 		.uagb-forms-phone-flex {
 			display: flex;
 			width: 100%;
-			
+
 			& .uagb-form-phone-country {
-				// width: auto !important;
 				width: 23%;
 				margin-right: 5px;
 			}
-	
-			// & .uagb-forms-phone-input {
-			// 	margin-bottom: 8px;
-			// }
 		}
 
 		.required::after {
@@ -214,6 +210,7 @@ select::before {
 }
 
 @media only screen and (max-width: 767px) {
+
 	.uagb-forms__outer-wrap {
 
 		.uagb-forms-main-form {
@@ -221,7 +218,7 @@ select::before {
 			.uagb-forms-phone-flex {
 				display: flex;
 				width: 100%;
-				
+
 				& .uagb-form-phone-country {
 					width: 25%;
 				}
