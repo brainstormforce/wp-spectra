@@ -64,18 +64,20 @@ export default function save( props ) {
 				id={ block_id }
 			/>
 
-			<select
-				className="uagb-forms-input uagb-form-phone-country"
-				id={ `uagb-form-country-${ block_id }` }
-				name={ `${ phoneName }[]` }
-			>
-				{ countryOptions.map( ( o, index ) => (
-					<option value={ o.props.value } key={ index } selected={o.props.value === selectPhoneCode}>
-						{ o.props.children }
-					</option>
-				) ) }
-			</select>
-			{ phone_html }
+			<div className="uagb-forms-phone-flex">
+				<select
+					className="uagb-forms-input uagb-form-phone-country"
+					id={ `uagb-form-country-${ block_id }` }
+					name={ `${ phoneName }[]` }
+				>
+					{ countryOptions.map( ( o, index ) => (
+						<option value={ o.props.value } key={ index } selected={o.props.value === selectPhoneCode}>
+							{ o.props.children }
+						</option>
+					) ) }
+				</select>
+				{ phone_html }
+			</div>
 		</div>
 	);
 }

@@ -102,7 +102,7 @@ const Render = ( props ) => {
 					multiline={ false }
 					id={ block_id }
 				/>
-				<div className="uagb-forms-phone__editor-flex">
+				<div className="uagb-forms-phone-flex">
 					<SelectControl
 						className= { 'uagb-forms-input uagb-form-phone-country uagb-form-phone-country-editor' }
 						options={ contryCode }

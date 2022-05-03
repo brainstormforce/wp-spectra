@@ -32,13 +32,19 @@
 			width: 33%;
 		}
 		//Phone block css.
-		.uagb-form-phone-country {
-			width: 23%;
-			margin-right: 5px;
-		}
-
-		input.uagb-forms-phone-input.uagb-forms-input {
-			width: 75% !important;
+		.uagb-forms-phone-flex {
+			display: flex;
+			width: 100%;
+			
+			& .uagb-form-phone-country {
+				// width: auto !important;
+				width: 23%;
+				margin-right: 5px;
+			}
+	
+			// & .uagb-forms-phone-input {
+			// 	margin-bottom: 8px;
+			// }
 		}
 
 		.required::after {
@@ -207,3 +213,19 @@ select::before {
 	padding: 10px 15px;
 }
 
+@media only screen and (max-width: 767px) {
+	.uagb-forms__outer-wrap {
+
+		.uagb-forms-main-form {
+			//Phone block css.
+			.uagb-forms-phone-flex {
+				display: flex;
+				width: 100%;
+				
+				& .uagb-form-phone-country {
+					width: 25%;
+				}
+			}
+		}
+	}
+}

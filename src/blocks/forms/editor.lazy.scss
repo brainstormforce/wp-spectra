@@ -59,10 +59,12 @@ select.uagb-forms-select-box.uagb-forms-input {
 
 .uagb-forms-phone-wrap{
 	
-	& .uagb-forms-phone__editor-flex {
+	& .uagb-forms-phone-flex {
 		display: flex;
 		width: 100%;
-		
+		& .components-base-control__field{
+			height: calc( 100% - 8px );
+		}
 		& .uagb-form-phone-country {
 			width: auto !important;
 		}

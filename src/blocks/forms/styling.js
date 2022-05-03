@@ -220,7 +220,17 @@ function styling( props ) {
 		' .uagb-forms-main-form .uagb-forms-input:focus::placeholder': {
 			'color': `${ inputplaceholderActiveColor } !important`
 		},
-
+		' .uagb-forms-main-form .uagb-forms-phone-flex': {
+			'height': `calc(${
+				inputLineHeight ? generateCSSUnit( inputLineHeight, inputLineHeightType ) : '2em'
+			} + ${
+				generateCSSUnit( paddingFieldTop, paddingFieldUnit )
+			} + ${
+				generateCSSUnit( paddingFieldBottom, paddingFieldUnit )
+			} + ${
+				generateCSSUnit( inputborderWidth * 2, 'px')
+			})`,
+		},
 		' .uagb-forms-main-form .uagb-forms-main-submit-button-wrap': {
 			'text-align': buttonAlign,
 		},
