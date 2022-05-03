@@ -16,14 +16,12 @@ const attributes = {
 	},
 	align: {
 		type: 'string',
-		default: 'wide',
 		UAGCopyPaste: {
 			styleType: 'column-align'
 		},
 	},
 	vAlign: {
 		type: 'string',
-		default: 'top',
 		UAGCopyPaste: {
 			styleType: 'column-v-align'
 		},

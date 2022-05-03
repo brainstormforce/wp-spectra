@@ -536,9 +536,11 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 				),
 				'rowGapTablet'                  => array(
 					'type' => 'number',
+					'default' => 20,
 				),
 				'rowGapMobile'                  => array(
 					'type' => 'number',
+					'default' => 10,
 				),
 				'columnGap'                     => array(
 					'type'    => 'number',

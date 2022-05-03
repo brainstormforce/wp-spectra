@@ -113,6 +113,13 @@ const attributes = { // eslint-disable-line no-unused-vars
 			styleType: 'field-border-width'
 		},
 	},
+	fieldBorderWidthType: {
+		type: 'string',
+		default: 'px',
+		UAGCopyPaste: {
+			styleType: 'field-border-width-type'
+		},
+	},
 	fieldBorderRadius: {
 		type: 'number',
 		default: 0,
@@ -167,6 +174,13 @@ const attributes = { // eslint-disable-line no-unused-vars
 		default: 1,
 		UAGCopyPaste: {
 			styleType: 'btn-border-width'
+		},
+	},
+	buttonBorderWidthType: {
+		type: 'string',
+		default: 'px',
+		UAGCopyPaste: {
+			styleType: 'btn-border-width-type'
 		},
 	},
 	buttonBorderRadius: {
@@ -563,6 +577,13 @@ const attributes = { // eslint-disable-line no-unused-vars
 			styleType: 'radio-border-width'
 		},
 	},
+	radioCheckBorderWidthType: {
+		type: 'string',
+		default: 'px',
+		UAGCopyPaste: {
+			styleType: 'radio-border-width-type'
+		},
+	},
 	radioCheckBorderRadius: {
 		type: 'number',
 		default: '',
@@ -764,6 +785,13 @@ const attributes = { // eslint-disable-line no-unused-vars
 		default: '',
 		UAGCopyPaste: {
 			styleType: 'success-msg-border-size'
+		},
+	},
+	msgBorderSizeType: {
+		type: 'string',
+		default: 'px',
+		UAGCopyPaste: {
+			styleType: 'success-msg-border-size-type'
 		},
 	},
 	msgBorderRadius: {

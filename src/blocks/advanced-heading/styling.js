@@ -13,8 +13,10 @@ function styling( props ) {
 		headSpace,
 		headSpaceTablet,
 		headSpaceMobile,
+		headSpaceType,
 		seperatorStyle,
 		separatorHeight,
+		separatorHeightType,
 		separatorWidth,
 		separatorWidthTablet,
 		separatorWidthMobile,
@@ -23,6 +25,7 @@ function styling( props ) {
 		separatorSpace,
 		separatorSpaceTablet,
 		separatorSpaceMobile,
+		separatorSpaceType,
 		subHeadingColor,
 		headFontFamily,
 		headFontStyle,
@@ -87,16 +90,16 @@ function styling( props ) {
 		'font-size': generateCSSUnit( headFontSize, headFontSizeType ),
 		'line-height': generateCSSUnit( headLineHeight, headLineHeightType ),
 		'color': headingColor,
-		'margin-bottom': generateCSSUnit( headSpace, 'px' ),
+		'margin-bottom': generateCSSUnit( headSpace, headSpaceType ),
 	};
 
 	if ( seperatorStyle !== 'none' ) {
 		selectors[ ' .uagb-separator' ] = {
 			'border-top-style': seperatorStyle,
-			'border-top-width': generateCSSUnit( separatorHeight, 'px' ),
+			'border-top-width': generateCSSUnit( separatorHeight, separatorHeightType ),
 			'width': generateCSSUnit( separatorWidth, separatorWidthType ),
 			'border-color': separatorColor,
-			'margin-bottom': generateCSSUnit( separatorSpace, 'px' ),
+			'margin-bottom': generateCSSUnit( separatorSpace, separatorSpaceType ),
 		};
 	}
 
@@ -106,7 +109,7 @@ function styling( props ) {
 			headLineHeightTablet,
 			headLineHeightType
 		),
-		'margin-bottom': generateCSSUnit( headSpaceTablet, 'px' ),
+		'margin-bottom': generateCSSUnit( headSpaceTablet, headSpaceType ),
 	};
 	tablet_selectors[ ' .uagb-desc-text' ] = {
 		'font-size': generateCSSUnit(
@@ -120,7 +123,7 @@ function styling( props ) {
 	};
 	tablet_selectors[ ' .uagb-separator' ] = {
 		'width': generateCSSUnit( separatorWidthTablet, separatorWidthType ),
-		'margin-bottom': generateCSSUnit( separatorSpaceTablet, 'px' ),
+		'margin-bottom': generateCSSUnit( separatorSpaceTablet, separatorSpaceType ),
 	};
 
 	mobile_selectors[ ' ' + headingTag + '.uagb-heading-text' ] = {
@@ -129,7 +132,7 @@ function styling( props ) {
 			headLineHeightMobile,
 			headLineHeightType
 		),
-		'margin-bottom': generateCSSUnit( headSpaceMobile, 'px' ),
+		'margin-bottom': generateCSSUnit( headSpaceMobile, headSpaceType ),
 	};
 	mobile_selectors[ ' .uagb-desc-text' ] = {
 		'font-size': generateCSSUnit(
@@ -143,7 +146,7 @@ function styling( props ) {
 	};
 	mobile_selectors[ ' .uagb-separator' ] = {
 		'width': generateCSSUnit( separatorWidthMobile, separatorWidthType ),
-		'margin-bottom': generateCSSUnit( separatorSpaceMobile, 'px' ),
+		'margin-bottom': generateCSSUnit( separatorSpaceMobile, separatorSpaceType ),
 	};
 
 	const base_selector = `.editor-styles-wrapper .uagb-block-${ props.clientId.substr(

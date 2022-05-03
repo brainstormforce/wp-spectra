@@ -137,6 +137,10 @@ if ( ! class_exists( 'UAGB_GF_Styler' ) ) {
 						'fieldBorderWidthMobile'        => array(
 							'type' => 'number',
 						),
+						'fieldBorderWidthType'          => array(
+							'type'    => 'string',
+							'default' => 'px',
+						),
 						'fieldBorderRadius'             => array(
 							'type'    => 'number',
 							'default' => 0,
@@ -174,6 +178,10 @@ if ( ! class_exists( 'UAGB_GF_Styler' ) ) {
 						),
 						'buttonBorderWidthMobile'       => array(
 							'type' => 'number',
+						),
+						'buttonBorderWidthType'         => array(
+							'type'    => 'string',
+							'default' => 'px',
 						),
 						'buttonBorderRadius'            => array(
 							'type'    => 'number',
@@ -392,6 +400,10 @@ if ( ! class_exists( 'UAGB_GF_Styler' ) ) {
 							'type'    => 'number',
 							'default' => '1',
 						),
+						'radioCheckBorderWidthType'     => array(
+							'type'    => 'string',
+							'default' => 'px',
+						),
 						'radioCheckBorderRadius'        => array(
 							'type'    => 'number',
 							'default' => '',
@@ -507,6 +519,10 @@ if ( ! class_exists( 'UAGB_GF_Styler' ) ) {
 						'msgBorderSize'                 => array(
 							'type'    => 'number',
 							'default' => '',
+						),
+						'msgBorderSizeType'             => array(
+							'type'    => 'string',
+							'default' => 'px',
 						),
 						'msgBorderRadius'               => array(
 							'type'    => 'number',

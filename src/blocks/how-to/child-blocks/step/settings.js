@@ -312,7 +312,7 @@ const Settings = ( props ) => {
 	const titleStyle = () => {
 
 		return (
-			<UAGAdvancedPanelBody title={__( 'Title' )} initialOpen={false}>
+			<UAGAdvancedPanelBody title={__( 'Title' )} initialOpen={ true }>
 				<TypographyControl
 					label={__( 'Typography' )}
 					attributes={attributes}

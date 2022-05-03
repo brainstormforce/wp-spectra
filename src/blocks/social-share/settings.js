@@ -60,7 +60,7 @@ const Settings = ( props ) => {
 
 	const generalSettings = () => {
 		return (
-			<UAGAdvancedPanelBody initialOpen={ true }>
+			<UAGAdvancedPanelBody title={ __( 'Content', 'ultimate-addons-for-gutenberg' ) } initialOpen={ false }>
 				<MultiButtonsControl
 					setAttributes={ setAttributes }
 					label={ __( 'Layout', 'ultimate-addons-for-gutenberg' ) }
@@ -203,8 +203,8 @@ const Settings = ( props ) => {
 	const spacingSettings = () => {
 		return (
 			<UAGAdvancedPanelBody
-				title={ __( 'Spacing', 'ultimate-addons-for-gutenberg' ) }
-				initialOpen={ false }
+				title={ __( 'Common', 'ultimate-addons-for-gutenberg' ) }
+				initialOpen={ true }
 			>
 				<ResponsiveSlider
 					label={ __( 'Size', 'ultimate-addons-for-gutenberg' ) }
@@ -246,24 +246,6 @@ const Settings = ( props ) => {
 						'ultimate-addons-for-gutenberg'
 					) }
 				/>
-				{/* <Range
-					label={ __(
-						'Border Radius',
-						'ultimate-addons-for-gutenberg'
-					) }
-					setAttributes={ setAttributes }
-					value={ borderRadius }
-					onChange={ ( value ) =>
-						setAttributes( { borderRadius: value } )
-					}
-					min={ 0 }
-					max={ 100 }
-					displayUnit={ false }
-					help={ __(
-						'Note: Border Radius option is useful when one adds background color to the icons.',
-						'ultimate-addons-for-gutenberg'
-					) }
-				/> */}
 				<ResponsiveSlider
 					label={ __(
 						'Border Radius',
@@ -292,18 +274,6 @@ const Settings = ( props ) => {
 					) }
 					setAttributes={ setAttributes }
 				/>
-				{/* <Range
-					label={ __(
-						'Gap between Items',
-						'ultimate-addons-for-gutenberg'
-					) }
-					setAttributes={ setAttributes }
-					value={ gap }
-					onChange={ ( value ) => setAttributes( { gap: value } ) }
-					min={ 0 }
-					max={ 100 }
-					displayUnit={ false }
-				/> */}
 				<ResponsiveSlider
 					label={ __(
 						'Gap between Items',

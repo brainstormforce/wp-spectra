@@ -98,7 +98,9 @@ const Settings = ( props ) => {
 		arrowDots,
 		arrowSize,
 		arrowBorderSize,
+		arrowBorderSizeUnit,
 		arrowBorderRadius,
+		arrowBorderRadiusUnit,
 		autoplay,
 		autoplaySpeed,
 		arrowColor,
@@ -422,7 +424,7 @@ const Settings = ( props ) => {
 						/>
 						<Range
 							label={ __(
-								'Arrow Border Size(px)',
+								'Arrow Border Size',
 								'ultimate-addons-for-gutenberg'
 							) }
 							setAttributes={ setAttributes }
@@ -432,11 +434,24 @@ const Settings = ( props ) => {
 							}
 							min={ 0 }
 							max={ 50 }
-							displayUnit={ false }
+							unit={ {
+								value: arrowBorderSizeUnit,
+								label:
+									'arrowBorderSizeUnit',
+							} }
+							units={ [
+								{
+									name: __(
+										'Pixel',
+										'ultimate-addons-for-gutenberg'
+									),
+									unitValue: 'px',
+								},
+							] }
 						/>
 						<Range
 							label={ __(
-								'Arrow Border Radius(px)',
+								'Arrow Border Radius',
 								'ultimate-addons-for-gutenberg'
 							) }
 							setAttributes={ setAttributes }
@@ -446,7 +461,20 @@ const Settings = ( props ) => {
 							}
 							min={ 0 }
 							max={ 50 }
-							displayUnit={ false }
+							unit={ {
+								value: arrowBorderRadiusUnit,
+								label:
+									'arrowBorderRadiusUnit',
+							} }
+							units={ [
+								{
+									name: __(
+										'Pixel',
+										'ultimate-addons-for-gutenberg'
+									),
+									unitValue: 'px',
+								},
+							] }
 						/>
 					</>
 				) }
@@ -595,7 +623,7 @@ const Settings = ( props ) => {
 		return (
 			<UAGAdvancedPanelBody
 				title={ __( 'Name', 'ultimate-addons-for-gutenberg' ) }
-				initialOpen={ false }
+				initialOpen={ true }
 			>
 				<AdvancedPopColorControl
 					label={ __( 'Color', 'ultimate-addons-for-gutenberg' ) }
