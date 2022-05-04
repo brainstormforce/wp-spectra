@@ -155,7 +155,6 @@ const transforms = {
 					backgroundAttachment,
 					backgroundVideoColor,
 					backgroundVideo,
-					backgroundVideoOpacity,
 					overlayType,
 					backgroundImageColor
 				} = attributes;
@@ -219,11 +218,10 @@ const transforms = {
 						backgroundSizeDesktop : backgroundSize,
 						backgroundRepeatDesktop : backgroundRepeat,
 						backgroundAttachmentDesktop : backgroundAttachment,
-						backgroundVideoColor: backgroundVideoColor || '#FFFFFF75',
+						backgroundVideoColor: backgroundVideoColor || '#00000011',
 						backgroundVideo,
-						backgroundVideoOpacity,
 						overlayType,
-						backgroundImageColor: backgroundImageColor || '#FFFFFF75',
+						backgroundImageColor: backgroundImageColor || '#00000000',
 						variationSelected: true
 					},
 					innerBlocks
@@ -287,7 +285,6 @@ const transforms = {
 					backgroundAttachment,
 					backgroundVideoColor,
 					backgroundVideo,
-					backgroundVideoOpacity,
 					overlayType,
 					backgroundImageColor
 				} = attributes;
@@ -437,11 +434,10 @@ const transforms = {
 						backgroundSizeDesktop : backgroundSize,
 						backgroundRepeatDesktop : backgroundRepeat,
 						backgroundAttachmentDesktop : backgroundAttachment,
-						backgroundVideoColor: backgroundVideoColor || '#FFFFFF75',
+						backgroundVideoColor: backgroundVideoColor || '#00000011',
 						backgroundVideo,
-						backgroundVideoOpacity,
 						overlayType,
-						backgroundImageColor: backgroundImageColor || '#FFFFFF75',
+						backgroundImageColor: backgroundImageColor || '#00000000',
 						directionDesktop: 'row',
 						directionTablet: 'tablet' === stack ? 'column' : 'row',
 						directionMobile: 'mobile' === stack ? 'column' : 'row',
