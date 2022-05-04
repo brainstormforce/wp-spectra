@@ -515,7 +515,9 @@ const UAGBPostMasonry = ( props ) => {
 			} );
 		} );
 	}
-
+	const onChangePostsOffset = ( value ) => {
+		setAttributes( { postsOffset: value } );
+	};
 	const hasPosts = Array.isArray( latestPosts ) && latestPosts.length;
 
 	const generalSettings = () => {
@@ -615,7 +617,7 @@ const UAGBPostMasonry = ( props ) => {
 				/>
 				<Range
 					label={ __(
-						'No of items',
+						'Posts Per Page',
 						'ultimate-addons-for-gutenberg'
 					) }
 					value={ postsToShow }
@@ -629,14 +631,12 @@ const UAGBPostMasonry = ( props ) => {
 				/>
 				<Range
 					label={ __(
-						'Starting Post',
+						'Offset Starting Post',
 						'ultimate-addons-for-gutenberg'
 					) }
 					setAttributes={ setAttributes }
 					value={ postsOffset }
-					onChange={ ( value ) =>
-						setAttributes( { postsOffset: value } )
-					}
+					onChange={ onChangePostsOffset }
 					min={ 0 }
 					max={ 100 }
 					displayUnit={ false }
@@ -1459,8 +1459,8 @@ const UAGBPostMasonry = ( props ) => {
 	const spacingSettings = () => {
 		return (
 			<UAGAdvancedPanelBody
-				title={ __( 'Blog Settings', 'ultimate-addons-for-gutenberg' ) }
-				initialOpen={ false }
+				title={ __( 'Layout', 'ultimate-addons-for-gutenberg' ) }
+				initialOpen={ true }
 			>
 				<AdvancedPopColorControl
 					label={ __(
@@ -1472,35 +1472,6 @@ const UAGBPostMasonry = ( props ) => {
 						setAttributes( { bgColor: value } )
 					}
 				/>
-				{/* <Range
-					label={ __( 'Row Gap', 'ultimate-addons-for-gutenberg' ) }
-					setAttributes={ setAttributes }
-					value={ rowGap }
-					onChange={ ( value ) => setAttributes( { rowGap: value } ) }
-					min={ 0 }
-					max={ 50 }
-					unit={ {
-						value: rowGapUnit,
-						label: 'rowGapUnit',
-					} }
-				/>
-				<Range
-					label={ __(
-						'Column Gap',
-						'ultimate-addons-for-gutenberg'
-					) }
-					setAttributes={ setAttributes }
-					value={ columnGap }
-					onChange={ ( value ) =>
-						setAttributes( { columnGap: value } )
-					}
-					min={ 0 }
-					max={ 50 }
-					unit={ {
-						value: columnGapUnit,
-						label: 'columnGapUnit',
-					} }
-				/> */}
 				<ResponsiveSlider
 					label={ __( 'Column Gap', 'ultimate-addons-for-gutenberg' ) }
 					data={ {
@@ -1661,23 +1632,6 @@ const UAGBPostMasonry = ( props ) => {
 					</>
 				}
 				{imgPosition === 'top' &&
-					// <Range
-					// 	label={ __(
-					// 		'Image Bottom Spacing',
-					// 		'ultimate-addons-for-gutenberg'
-					// 	) }
-					// 	setAttributes={ setAttributes }
-					// 	value={ imageBottomSpace }
-					// 	onChange={ ( value ) =>
-					// 		setAttributes( { imageBottomSpace: value } )
-					// 	}
-					// 	min={ 0 }
-					// 	max={ 50 }
-					// 	unit={ {
-					// 		value: imageBottomSpaceUnit,
-					// 		label: 'imageBottomSpaceUnit',
-					// 	} }
-					// />
 					<ResponsiveSlider
 						label={ __( 'Bottom Spacing', 'ultimate-addons-for-gutenberg' ) }
 						data={ {
@@ -1710,7 +1664,7 @@ const UAGBPostMasonry = ( props ) => {
 		return (
 			<UAGAdvancedPanelBody
 				title={ __( 'Title', 'ultimate-addons-for-gutenberg' ) }
-				initialOpen={ true }
+				initialOpen={ false }
 			>
 				<MultiButtonsControl
 					setAttributes={ setAttributes }
@@ -1831,23 +1785,6 @@ const UAGBPostMasonry = ( props ) => {
 						label: 'titleDecoration',
 					} }
 				/>
-				{/* <Range
-					label={ __(
-						'Bottom Spacing',
-						'ultimate-addons-for-gutenberg'
-					) }
-					setAttributes={ setAttributes }
-					value={ titleBottomSpace }
-					onChange={ ( value ) =>
-						setAttributes( { titleBottomSpace: value } )
-					}
-					min={ 0 }
-					max={ 50 }
-					unit={ {
-						value: titleBottomSpaceUnit,
-						label: 'titleBottomSpaceUnit',
-					} }
-				/> */}
 				<ResponsiveSlider
 					label={ __( 'Bottom Spacing', 'ultimate-addons-for-gutenberg' ) }
 					data={ {
@@ -1971,24 +1908,6 @@ const UAGBPostMasonry = ( props ) => {
 						label: 'metaDecoration',
 					} }
 				/>
-
-				{/* <Range
-					label={ __(
-						'Bottom Spacing',
-						'ultimate-addons-for-gutenberg'
-					) }
-					setAttributes={ setAttributes }
-					value={ metaBottomSpace }
-					onChange={ ( value ) =>
-						setAttributes( { metaBottomSpace: value } )
-					}
-					min={ 0 }
-					max={ 50 }
-					unit={ {
-						value: metaBottomSpaceUnit,
-						label: 'metaBottomSpaceUnit',
-					} }
-				/> */}
 				<ResponsiveSlider
 					label={ __( 'Bottom Spacing', 'ultimate-addons-for-gutenberg' ) }
 					data={ {
@@ -2093,23 +2012,6 @@ const UAGBPostMasonry = ( props ) => {
 						label: 'excerptDecoration',
 					} }
 				/>
-				{/* <Range
-					label={ __(
-						'Bottom Spacing',
-						'ultimate-addons-for-gutenberg'
-					) }
-					setAttributes={ setAttributes }
-					value={ excerptBottomSpace }
-					onChange={ ( value ) =>
-						setAttributes( { excerptBottomSpace: value } )
-					}
-					min={ 0 }
-					max={ 50 }
-					unit={ {
-						value: excerptBottomSpaceUnit,
-						label: 'excerptBottomSpaceUnit',
-					} }
-				/> */}
 				<ResponsiveSlider
 					label={ __( 'Bottom Spacing', 'ultimate-addons-for-gutenberg' ) }
 					data={ {
@@ -2277,23 +2179,6 @@ const UAGBPostMasonry = ( props ) => {
 						label: 'ctaDecoration',
 					} }
 				/>
-				{/* <Range
-					label={ __(
-						'Bottom Spacing',
-						'ultimate-addons-for-gutenberg'
-					) }
-					setAttributes={ setAttributes }
-					value={ ctaBottomSpace }
-					onChange={ ( value ) =>
-						setAttributes( { ctaBottomSpace: value } )
-					}
-					min={ 0 }
-					max={ 200 }
-					unit={ {
-						value: ctaBottomSpaceUnit,
-						label: 'ctaBottomSpaceUnit',
-					} }
-				/> */}
 				<ResponsiveSlider
 					label={ __( 'Bottom Spacing', 'ultimate-addons-for-gutenberg' ) }
 					data={ {
@@ -2451,6 +2336,7 @@ const UAGBPostMasonry = ( props ) => {
 					{ readMoreLinkSettings() }
 				</InspectorTab>
 				<InspectorTab { ...UAGTabs.style }>
+					{ spacingSettings() }
 					{ displayPostTitle && titleStyle() }
 					{ ( displayPostAuthor ||
 						displayPostDate ||
@@ -2462,7 +2348,6 @@ const UAGBPostMasonry = ( props ) => {
 					{ paginationSettings() }
 					{ displayPostImage === true &&
 						imageStyle() }
-					{ spacingSettings() }
 				</InspectorTab>
 				<InspectorTab { ...UAGTabs.advance } parentProps={props}></InspectorTab>
 			</InspectorTabs>
