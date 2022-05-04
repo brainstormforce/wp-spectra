@@ -63,8 +63,11 @@ const Settings = ( props ) => {
 			return;
 		}
 
-		setAttributes( { jsonLottie: media } );
-		setAttributes( { lottieURl: media.url } );
+		setAttributes( { jsonLottie: media, lottieURl: media.url, lottieSource: 'library' } );
+	};
+
+	const onSelectLottieURL = ( mediaURL ) => {
+		setAttributes( { lottieURl: mediaURL, lottieSource: 'url' } );
 	};
 
 	const controlsSettings = (
@@ -369,9 +372,7 @@ const Settings = ( props ) => {
 					allowedTypes={ [ 'application/json' ] }
 					accept={ [ 'application/json' ] }
 					value={ jsonLottie }
-					onSelectURL={ ( value ) =>
-						setAttributes( { lottieURl: value } )
-					}
+					onSelectURL={ ( value ) => onSelectLottieURL( value ) }
 					onSelect={ onSelectLottieJSON }
 				/>
 			</div>
@@ -387,9 +388,7 @@ const Settings = ( props ) => {
 						mediaURL={ lottieURl }
 						allowedTypes={ [ 'application/json' ] }
 						accept={ [ 'application/json' ] }
-						onSelectURL={ ( value ) =>
-							setAttributes( { lottieURl: value } )
-						}
+						onSelectURL={ ( value ) => onSelectLottieURL( value ) }
 						onSelect={ onSelectLottieJSON }
 					/>
 				</ToolbarGroup>
