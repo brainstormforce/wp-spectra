@@ -43,7 +43,6 @@ import {
 	Spinner,
 	ToggleControl,
 	TextControl,
-	RadioControl,
 	Icon
 } from '@wordpress/components';
 
