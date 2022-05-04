@@ -108,6 +108,7 @@ const Settings = ( props ) => {
 		radioCheckBorderWidth,
 		radioCheckBorderWidthTablet,
 		radioCheckBorderWidthMobile,
+		radioCheckBorderWidthUnit,
 		radioCheckBorderRadius,
 		radioCheckFontSize,
 		radioCheckFontSizeType,
@@ -143,6 +144,7 @@ const Settings = ( props ) => {
 		errorMsgBgColor,
 		errorMsgBorderColor,
 		msgBorderSize,
+		msgBorderSizeUnit,
 		msgBorderRadius,
 		msgFontSize,
 		msgFontSizeType,
@@ -791,7 +793,7 @@ const Settings = ( props ) => {
 	const fieldStyling = (
 		<UAGAdvancedPanelBody
 			title={ __( 'Field', 'ultimate-addons-for-gutenberg' ) }
-			initialOpen={ false }
+			initialOpen={ true }
 		>
 			{ fieldStyle === 'box' && (
 				<Border
@@ -1053,7 +1055,7 @@ const Settings = ( props ) => {
 				<>
 					<ResponsiveSlider
 						label={ __(
-							'Border Width (px)',
+							'Border Width',
 							'ultimate-addons-for-gutenberg'
 						) }
 						data={ {
@@ -1072,7 +1074,20 @@ const Settings = ( props ) => {
 						} }
 						min={ 0 }
 						max={ 50 }
-						displayUnit={ false }
+						unit={ {
+							value: radioCheckBorderWidthUnit,
+							label:
+								'radioCheckBorderWidthUnit',
+						} }
+						units={ [
+							{
+								name: __(
+									'Pixel',
+									'ultimate-addons-for-gutenberg'
+								),
+								unitValue: 'px',
+							},
+						] }
 						setAttributes={ setAttributes }
 					/>
 					<AdvancedPopColorControl
@@ -1564,7 +1579,7 @@ const Settings = ( props ) => {
 			/>
 			<Range
 				label={ __(
-					'Border Width (px)',
+					'Border Width',
 					'ultimate-addons-for-gutenberg'
 				) }
 				setAttributes={ setAttributes }
@@ -1576,7 +1591,20 @@ const Settings = ( props ) => {
 				}
 				min={ 0 }
 				max={ 50 }
-				displayUnit={ false }
+				unit={ {
+					value: msgBorderSizeUnit,
+					label:
+						'msgBorderSizeUnit',
+				} }
+				units={ [
+					{
+						name: __(
+							'Pixel',
+							'ultimate-addons-for-gutenberg'
+						),
+						unitValue: 'px',
+					},
+				] }
 			/>
 			<Range
 				label={ __( 'Border Radius', 'ultimate-addons-for-gutenberg' ) }

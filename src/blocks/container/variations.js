@@ -24,11 +24,12 @@ const variations = [
 		attributes: {
 			variationSelected: true,
 			directionDesktop: 'row',
+			wrapMobile: 'wrap'
 		},
 		isDefault: true,
 		innerBlocks: [
-			[ 'uagb/container', { widthDesktop: 50, widthSetByUser:true } ],
-			[ 'uagb/container', { widthDesktop: 50, widthSetByUser:true } ],
+			[ 'uagb/container', { widthDesktop: 50, widthMobile: 100, widthSetByUser:true } ],
+			[ 'uagb/container', { widthDesktop: 50, widthMobile: 100, widthSetByUser:true } ],
 		],
 		scope: [ 'block' ],
 	},
@@ -38,11 +39,12 @@ const variations = [
 		attributes: {
 			variationSelected: true,
 			directionDesktop: 'row',
+			wrapMobile: 'wrap'
 		},
 		innerBlocks: [
-			[ 'uagb/container', { widthDesktop: 33.33, widthSetByUser:true } ],
-			[ 'uagb/container', { widthDesktop: 33.33, widthSetByUser:true } ],
-			[ 'uagb/container', { widthDesktop: 33.33, widthSetByUser:true } ],
+			[ 'uagb/container', { widthDesktop: 33.33, widthMobile: 100, widthSetByUser:true } ],
+			[ 'uagb/container', { widthDesktop: 33.33, widthMobile: 100, widthSetByUser:true } ],
+			[ 'uagb/container', { widthDesktop: 33.33, widthMobile: 100, widthSetByUser:true } ],
 		],
 		scope: [ 'block' ],
 	},
@@ -52,12 +54,13 @@ const variations = [
 		attributes: {
 			variationSelected: true,
 			directionDesktop: 'row',
+			wrapMobile: 'wrap'
 		},
 		innerBlocks: [
-			[ 'uagb/container', { widthDesktop: 25, widthSetByUser:true } ],
-			[ 'uagb/container', { widthDesktop: 25, widthSetByUser:true } ],
-			[ 'uagb/container', { widthDesktop: 25, widthSetByUser:true } ],
-			[ 'uagb/container', { widthDesktop: 25, widthSetByUser:true } ],
+			[ 'uagb/container', { widthDesktop: 25, widthMobile: 100, widthSetByUser:true } ],
+			[ 'uagb/container', { widthDesktop: 25, widthMobile: 100, widthSetByUser:true } ],
+			[ 'uagb/container', { widthDesktop: 25, widthMobile: 100, widthSetByUser:true } ],
+			[ 'uagb/container', { widthDesktop: 25, widthMobile: 100, widthSetByUser:true } ],
 		],
 		scope: [ 'block' ],
 	},
@@ -68,14 +71,15 @@ const variations = [
 			variationSelected: true,
 			directionDesktop: 'row',
 			wrapDesktop: 'wrap',
+			wrapMobile: 'wrap',
 			rowGapDesktop: 0,
 			columnGapDesktop: 0
 		},
 		innerBlocks: [
-			[ 'uagb/container', { widthDesktop: 50, widthSetByUser:true } ],
-			[ 'uagb/container', { widthDesktop: 50, widthSetByUser:true } ],
-			[ 'uagb/container', { widthDesktop: 50, widthSetByUser:true } ],
-			[ 'uagb/container', { widthDesktop: 50, widthSetByUser:true } ],
+			[ 'uagb/container', { widthDesktop: 50, widthMobile: 100, widthSetByUser:true } ],
+			[ 'uagb/container', { widthDesktop: 50, widthMobile: 100, widthSetByUser:true } ],
+			[ 'uagb/container', { widthDesktop: 50, widthMobile: 100, widthSetByUser:true } ],
+			[ 'uagb/container', { widthDesktop: 50, widthMobile: 100, widthSetByUser:true } ],
 		],
 		scope: [ 'block' ],
 	},
@@ -85,10 +89,11 @@ const variations = [
 		attributes: {
 			variationSelected: true,
 			directionDesktop: 'row',
+			wrapMobile: 'wrap',
 		},
 		innerBlocks: [
-			[ 'uagb/container', { widthDesktop: 25, widthSetByUser:true } ],
-			[ 'uagb/container', { widthDesktop: 75, widthSetByUser:true } ],
+			[ 'uagb/container', { widthDesktop: 25, widthMobile: 100, widthSetByUser:true } ],
+			[ 'uagb/container', { widthDesktop: 75, widthMobile: 100, widthSetByUser:true } ],
 		],
 		scope: [ 'block' ],
 	},
@@ -100,15 +105,16 @@ const variations = [
 			directionDesktop: 'row',
 			wrapDesktop: 'wrap',
 			rowGapDesktop: 0,
-			columnGapDesktop: 0
+			columnGapDesktop: 0,
+			wrapMobile: 'wrap',
 		},
 		innerBlocks: [
-			[ 'uagb/container', { widthDesktop: 33, widthSetByUser:true } ],
-			[ 'uagb/container', { widthDesktop: 33, widthSetByUser:true } ],
-			[ 'uagb/container', { widthDesktop: 33, widthSetByUser:true } ],
-			[ 'uagb/container', { widthDesktop: 33, widthSetByUser:true } ],
-			[ 'uagb/container', { widthDesktop: 33, widthSetByUser:true } ],
-			[ 'uagb/container', { widthDesktop: 33, widthSetByUser:true } ],
+			[ 'uagb/container', { widthDesktop: 33, widthMobile: 100, widthSetByUser:true } ],
+			[ 'uagb/container', { widthDesktop: 33, widthMobile: 100, widthSetByUser:true } ],
+			[ 'uagb/container', { widthDesktop: 33, widthMobile: 100, widthSetByUser:true } ],
+			[ 'uagb/container', { widthDesktop: 33, widthMobile: 100, widthSetByUser:true } ],
+			[ 'uagb/container', { widthDesktop: 33, widthMobile: 100, widthSetByUser:true } ],
+			[ 'uagb/container', { widthDesktop: 33, widthMobile: 100, widthSetByUser:true } ],
 		],
 		scope: [ 'block' ],
 	},
@@ -118,11 +124,12 @@ const variations = [
 		attributes: {
 			variationSelected: true,
 			directionDesktop: 'row',
+			wrapMobile: 'wrap',
 		},
 		innerBlocks: [
-			[ 'uagb/container', { widthDesktop: 25, widthSetByUser:true } ],
-			[ 'uagb/container', { widthDesktop: 50, widthSetByUser:true } ],
-			[ 'uagb/container', { widthDesktop: 25, widthSetByUser:true } ],
+			[ 'uagb/container', { widthDesktop: 25, widthMobile: 100, widthSetByUser:true } ],
+			[ 'uagb/container', { widthDesktop: 50, widthMobile: 100, widthSetByUser:true } ],
+			[ 'uagb/container', { widthDesktop: 25, widthMobile: 100, widthSetByUser:true } ],
 		],
 		scope: [ 'block' ],
 	},
@@ -132,10 +139,11 @@ const variations = [
 		attributes: {
 			variationSelected: true,
 			directionDesktop: 'row',
+			wrapMobile: 'wrap',
 		},
 		innerBlocks: [
-			[ 'uagb/container', { widthDesktop: 75, widthSetByUser:true } ],
-			[ 'uagb/container', { widthDesktop: 25, widthSetByUser:true } ],
+			[ 'uagb/container', { widthDesktop: 75, widthMobile: 100, widthSetByUser:true } ],
+			[ 'uagb/container', { widthDesktop: 25, widthMobile: 100, widthSetByUser:true } ],
 		],
 		scope: [ 'block' ],
 	},
@@ -147,13 +155,14 @@ const variations = [
 			directionDesktop: 'row',
 			wrapDesktop: 'wrap',
 			rowGapDesktop: 0,
-			columnGapDesktop: 0
+			columnGapDesktop: 0,
+			wrapMobile: 'wrap',
 		},
 		innerBlocks: [
-			[ 'uagb/container', { widthDesktop: 75, widthSetByUser:true } ],
-			[ 'uagb/container', { widthDesktop: 25, widthSetByUser:true } ],
-			[ 'uagb/container', { widthDesktop: 25, widthSetByUser:true } ],
-			[ 'uagb/container', { widthDesktop: 75, widthSetByUser:true } ],
+			[ 'uagb/container', { widthDesktop: 75, widthMobile: 100, widthSetByUser:true } ],
+			[ 'uagb/container', { widthDesktop: 25, widthMobile: 100, widthSetByUser:true } ],
+			[ 'uagb/container', { widthDesktop: 25, widthMobile: 100, widthSetByUser:true } ],
+			[ 'uagb/container', { widthDesktop: 75, widthMobile: 100, widthSetByUser:true } ],
 
 		],
 		scope: [ 'block' ],
@@ -165,6 +174,7 @@ const variations = [
 			variationSelected: true,
 			directionDesktop: 'row',
 			wrapDesktop: 'wrap',
+			wrapMobile: 'wrap',
 			rowGapDesktop: 0,
 			columnGapDesktop: 0
 		},
@@ -173,11 +183,11 @@ const variations = [
 				'uagb/container',
 				{ widthDesktop: 100, widthSetByUser:true, directionDesktop: 'row', },
 				[
-					[ 'uagb/container', { widthDesktop: 50, widthSetByUser:true } ],
-					[ 'uagb/container', { widthDesktop: 50, widthSetByUser:true } ],
+					[ 'uagb/container', { widthDesktop: 50, widthMobile: 100, widthSetByUser:true } ],
+					[ 'uagb/container', { widthDesktop: 50, widthMobile: 100, widthSetByUser:true } ],
 				]
 			],
-			[ 'uagb/container', { widthDesktop: 100, widthSetByUser:true } ],
+			[ 'uagb/container', { widthDesktop: 100, widthMobile: 100, widthSetByUser:true } ],
 		],
 		scope: [ 'block' ],
 	},
@@ -188,14 +198,15 @@ const variations = [
 			variationSelected: true,
 			directionDesktop: 'row',
 			wrapDesktop: 'wrap',
+			wrapMobile: 'wrap',
 			rowGapDesktop: 0,
 			columnGapDesktop: 0
 		},
 		innerBlocks: [
-			[ 'uagb/container', { widthDesktop: 25, widthSetByUser:true } ],
-			[ 'uagb/container', { widthDesktop: 75, widthSetByUser:true } ],
-			[ 'uagb/container', { widthDesktop: 75, widthSetByUser:true } ],
-			[ 'uagb/container', { widthDesktop: 25, widthSetByUser:true } ],
+			[ 'uagb/container', { widthDesktop: 25, widthMobile: 100, widthSetByUser:true } ],
+			[ 'uagb/container', { widthDesktop: 75, widthMobile: 100, widthSetByUser:true } ],
+			[ 'uagb/container', { widthDesktop: 75, widthMobile: 100, widthSetByUser:true } ],
+			[ 'uagb/container', { widthDesktop: 25, widthMobile: 100, widthSetByUser:true } ],
 
 		],
 		scope: [ 'block' ],
