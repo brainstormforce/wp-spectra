@@ -1,4 +1,4 @@
-const countryOptions = [
+const countryOptionsOld = [
     <option data-countryCode="GB" value="+44">UK (+44)</option>,
     <option data-countryCode="US" value="+1">USA (+1)</option>,
     <option data-countryCode="DZ" value="+213">Algeria (+213)</option>,
@@ -216,4 +216,4 @@ const countryOptions = [
     
     ];
     
-    export default countryOptions;
+    export default countryOptionsOld;
