@@ -1,21 +1,35 @@
 import classnames from 'classnames';
 
-import countryOptions from './country-option';
+import countryOptions from './TEMP';
 
 import { __ } from '@wordpress/i18n';
 
 import { RichText } from '@wordpress/block-editor';
 
-import attributes from './attributes';
+const attributes = {
+    block_id: {
+		type: "string"
+    },
+    phoneName: {
+        type: "string",
+        default: __("Phone" , 'ultimate-addons-for-gutenberg' )
+    },
+	phoneRequired : {
+        type: "boolean",
+        default: false
+    },
+    pattern: {
+        type: "string",
+        default: __("[0-9]{3}-[0-9]{3}-[0-9]{4}" , 'ultimate-addons-for-gutenberg'),
+    }
+}
 
 const deprecated = [
 	{
 		attributes,
 		save( props ) {
 
-			const { attributes } = props;
-
-			const { block_id, phoneRequired, phoneName, pattern } = attributes;
+			const { block_id, phoneRequired, phoneName, pattern } = props.attributes;
 
 			let placeholder = '';
 			if ( pattern === '[0-9]{3}-[0-9]{2}-[0-9]{3}' ) {
