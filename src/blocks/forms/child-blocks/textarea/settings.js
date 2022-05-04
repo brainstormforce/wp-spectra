@@ -30,8 +30,8 @@ const Settings = ( props ) => {
 						{ label: __( 'Off', 'ultimate-addons-for-gutenberg' ), value: 'off' },
 						{ label: __( 'Address', 'ultimate-addons-for-gutenberg' ), value: 'street-address' },
 					] }
-					onChange={ ( autocomplete ) =>
-						setAttributes( { autocomplete } )
+					onChange={ ( value ) =>
+						setAttributes( { autocomplete: value } )
 					}
 				/>
 				<TextControl

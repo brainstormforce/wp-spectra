@@ -47,7 +47,6 @@ const Settings = ( props ) => {
 		maxYear,
 		maxMonth,
 		maxDay,
-		autocomplete,
 	} = attributes;
 
 	let validation_min_value = '';

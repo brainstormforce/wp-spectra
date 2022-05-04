@@ -30,8 +30,8 @@ const Settings = ( props ) => {
 						{ label: __( 'Off', 'ultimate-addons-for-gutenberg' ), value: 'off' },
 						{ label: __( 'Phone', 'ultimate-addons-for-gutenberg' ), value: 'tel-national' },
 					] }
-					onChange={ ( autocomplete ) =>
-						setAttributes( { autocomplete } )
+					onChange={ ( value ) =>
+						setAttributes( { autocomplete: value } )
 					}
 				/>
 				<SelectControl

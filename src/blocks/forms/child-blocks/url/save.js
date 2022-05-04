@@ -36,7 +36,7 @@ export default function save( props ) {
 				required={ required }
 				placeholder={ placeholder }
 				className="uagb-forms-url-input uagb-forms-input"
-				autocomplete={ autocomplete }
+				autoComplete={ autocomplete }
 			/>
 		</div>
 	);

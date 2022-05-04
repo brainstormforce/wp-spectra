@@ -24,8 +24,8 @@ const Settings = ( props ) => {
 				<SelectControl
 					label={ __( 'Autocomplete', 'ultimate-addons-for-gutenberg' ) }
 					value={ autocomplete }
-					onChange={ ( autocomplete ) =>
-						setAttributes( { autocomplete } )
+					onChange={ ( value ) =>
+						setAttributes( { autocomplete: value } )
 					}
 				>
 					<option value="off">Off</option>
@@ -41,6 +41,13 @@ const Settings = ( props ) => {
 					<option value="nickname">Nickname</option>
 					<option value="organization">Company Name</option>
 					<option value="organization-title">Job Title</option>
+					<optgroup label="Address Lines">
+						<option value="address-line1">Address Line 1</option>
+						<option value="address-line2">Address Line 2</option>
+						<option value="address-line3">Address Line 3</option>
+					</optgroup>
+					<option value="country-name">Country</option>
+					<option value="postal-code">Postal / ZIP Code</option>
 				</SelectControl>
 				<TextControl
 					label="Placeholder"
