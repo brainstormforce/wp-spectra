@@ -76,6 +76,10 @@ if ( ! class_exists( 'UAGB_Lottie' ) ) {
 							'type'    => 'string',
 							'default' => '',
 						),
+						'lottieSource'     => array(
+							'type'    => 'string',
+							'default' => 'library',
+						),
 						'jsonLottie'       => array(
 							'type' => 'object',
 						),
