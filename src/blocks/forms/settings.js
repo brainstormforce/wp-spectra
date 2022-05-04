@@ -1104,7 +1104,7 @@ const Settings = ( props ) => {
 					<>
 						<AdvancedPopColorControl
 							label={ __(
-								'Checkbox/Toggle/Radio Color',
+								'Background Color',
 								'ultimate-addons-for-gutenberg'
 							) }
 							colorValue={ toggleColor ? toggleColor : '' }
@@ -1114,7 +1114,7 @@ const Settings = ( props ) => {
 						/>
 						<AdvancedPopColorControl
 							label={ __(
-								'Toggle Dot Color',
+								'Element Color',
 								'ultimate-addons-for-gutenberg'
 							) }
 							colorValue={ toggleDotColor ? toggleDotColor : '' }
@@ -1128,7 +1128,7 @@ const Settings = ( props ) => {
 					<>
 						<AdvancedPopColorControl
 							label={ __(
-								'Checkbox/Toggle/Radio Color',
+								'Background Color',
 								'ultimate-addons-for-gutenberg'
 							) }
 							colorValue={ toggleActiveColor ? toggleActiveColor : '' }
@@ -1138,7 +1138,7 @@ const Settings = ( props ) => {
 						/>
 						<AdvancedPopColorControl
 							label={ __(
-								'Check/Toggle Dot Color',
+								'Element Color',
 								'ultimate-addons-for-gutenberg'
 							) }
 							colorValue={ toggleDotActiveColor ? toggleDotActiveColor : '' }
@@ -1864,11 +1864,11 @@ const Settings = ( props ) => {
 						{ googleReCaptcha() }
 					</InspectorTab>
 					<InspectorTab { ...UAGTabs.style }>
-					{ fieldStyling() }
-					{ elementStyling() }
-					{ submitStyling() }
-					{ messageStyling() }
-					{ spaceStyling() }
+						{ fieldStyling() }
+						{ elementStyling() }
+						{ submitStyling() }
+						{ messageStyling() }
+						{ spaceStyling() }
 					</InspectorTab>
 					<InspectorTab
 						{ ...UAGTabs.advance }

@@ -169,7 +169,8 @@ $selectors[' .uagb-forms-checkbox-wrap > label']                                
 
 // Radio Button Field css.
 $selectors[' .uagb-forms-radio-wrap input[type=radio]:checked + label:before'] = array(
-	'background-color' => $attr['toggleActiveColor'],
+	'background-color' => $attr['toggleDotActiveColor'],
+	'box-shadow'       => 'inset 0 0 0 4px ' . $attr['toggleActiveColor'],
 	'font-size'        => 'calc(' . $attr['toggleSize'] . 'px / 1.2)',
 );
 $selectors[' .uagb-forms-radio-wrap input[type=radio] + label:before']         = array(

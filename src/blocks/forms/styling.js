@@ -310,7 +310,8 @@ function styling( props ) {
 			'background-color': toggleDotActiveColor,
 		},
 		' .uagb-forms-radio-wrap input[type=radio]:checked + label:before': {
-			'background-color': toggleActiveColor,
+			'background-color': toggleDotActiveColor,
+			'box-shadow': `inset 0 0 0 4px ${ toggleActiveColor }`,
 			'font-size': 'calc(' + toggleSize + toggleSizeType + ' / 1.2 )',
 		},
 		' .uagb-forms-radio-wrap input[type=radio] + label:before': {
