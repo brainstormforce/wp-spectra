@@ -188,6 +188,17 @@ UAGBForms = { // eslint-disable-line no-undef
 
 		let captcha_response;
 
+		if( '' == attr.afterSubmitToEmail || null == attr.afterSubmitToEmail ) {
+
+			const hideForm = document.querySelector( '[name="uagb-form-' + attr.block_id + '"]' );
+			hideForm.style.display = 'none';
+
+			const errorMsg = document.querySelector( '.uagb-forms-success-message-' + attr.block_id );
+			errorMsg.classList.remove( 'uagb-forms-submit-message-hide' );
+			errorMsg.classList.add( 'uagb-forms-success-message' );
+			return false;
+		}
+
 		if ( attr.reCaptchaEnable === true ) {
 
 			if( attr.reCaptchaType === 'v2' && reCaptchaSiteKeyV2 ) {
