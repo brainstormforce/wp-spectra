@@ -18,16 +18,20 @@ const Settings = ( props ) => {
 
 	const { attributes, setAttributes } = props;
 
-	const { phoneRequired, pattern } = attributes;
+	const { phoneRequired, pattern, autocomplete } = attributes;
 
 	const phoneInspectorControls = () => {
 		return (
 			<UAGAdvancedPanelBody initialOpen={ true }>
-				<ToggleControl
-					label={ __( 'Required', 'ultimate-addons-for-gutenberg' ) }
-					checked={ phoneRequired }
-					onChange={ () =>
-						setAttributes( { phoneRequired: ! phoneRequired } )
+				<SelectControl
+					label={ __( 'Autocomplete', 'ultimate-addons-for-gutenberg' ) }
+					value={ autocomplete }
+					options={ [
+						{ label: __( 'Off', 'ultimate-addons-for-gutenberg' ), value: 'off' },
+						{ label: __( 'Phone', 'ultimate-addons-for-gutenberg' ), value: 'tel-national' },
+					] }
+					onChange={ ( autocomplete ) =>
+						setAttributes( { autocomplete } )
 					}
 				/>
 				<SelectControl
@@ -38,20 +42,34 @@ const Settings = ( props ) => {
 						{
 							label: '123-45-678',
 							value: __(
-								'[0-9]{3}-[0-9]{2}-[0-9]{3}',
+								'[0-9]{3}-?[0-9]{2}-?[0-9]{3}',
 								'ultimate-addons-for-gutenberg'
 							),
 						},
 						{
-							label: '123-456-6789',
+							label: '123-456-7890',
 							value: __(
-								'[0-9]{3}-[0-9]{3}-[0-9]{4}',
+								'[0-9]{3}-?[0-9]{3}-?[0-9]{4}',
+								'ultimate-addons-for-gutenberg'
+							),
+						},
+						{
+							label: '123 456 7890',
+							value: __(
+								'[0-9]{3}\s?[0-9]{3}\s?[0-9]{4}',
 								'ultimate-addons-for-gutenberg'
 							),
 						},
 					] }
 					onChange={ ( value ) =>
 						setAttributes( { pattern: value } )
+					}
+				/>
+				<ToggleControl
+					label={ __( 'Required', 'ultimate-addons-for-gutenberg' ) }
+					checked={ phoneRequired }
+					onChange={ () =>
+						setAttributes( { phoneRequired: ! phoneRequired } )
 					}
 				/>
 			</UAGAdvancedPanelBody>

@@ -7,7 +7,7 @@ import InspectorTab, {
 
 import { InspectorControls } from '@wordpress/block-editor';
 
-import { ToggleControl, TextControl } from '@wordpress/components';
+import { ToggleControl, TextControl, SelectControl } from '@wordpress/components';
 
 import UAGAdvancedPanelBody from '@Components/advanced-panel-body';
 
@@ -16,11 +16,22 @@ const Settings = ( props ) => {
 
 	const { attributes, setAttributes } = props;
 
-	const { required, placeholder } = attributes;
+	const { required, placeholder, autocomplete } = attributes;
 
 	const nameInspectorControls = () => {
 		return (
 			<UAGAdvancedPanelBody initialOpen={ true }>
+				<SelectControl
+					label={ __( 'Autocomplete', 'ultimate-addons-for-gutenberg' ) }
+					value={ autocomplete }
+					options={ [
+						{ label: __( 'Off', 'ultimate-addons-for-gutenberg' ), value: 'off' },
+						{ label: __( 'email', 'ultimate-addons-for-gutenberg' ), value: 'email' },
+					] }
+					onChange={ ( autocomplete ) =>
+						setAttributes( { autocomplete } )
+					}
+				/>
 				<TextControl
 					label="Placeholder"
 					value={ placeholder }

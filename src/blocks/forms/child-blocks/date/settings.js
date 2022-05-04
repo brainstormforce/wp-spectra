@@ -47,6 +47,7 @@ const Settings = ( props ) => {
 		maxYear,
 		maxMonth,
 		maxDay,
+		autocomplete,
 	} = attributes;
 
 	let validation_min_value = '';
@@ -78,6 +79,17 @@ const Settings = ( props ) => {
 	const dateInspectorControls = () => {
 		return (
 			<UAGAdvancedPanelBody initialOpen={ true }>
+				{/* <SelectControl
+					label={ __( 'Autocomplete', 'ultimate-addons-for-gutenberg' ) }
+					value={ autocomplete }
+					options={ [
+						{ label: __( 'Off', 'ultimate-addons-for-gutenberg' ), value: 'off' },
+						{ label: __( 'Birthday', 'ultimate-addons-for-gutenberg' ), value: 'bday' },
+					] }
+					onChange={ ( autocomplete ) =>
+						setAttributes( { autocomplete } )
+					}
+				/> */}
 				<ToggleControl
 					label={ __( 'Required', 'ultimate-addons-for-gutenberg' ) }
 					checked={ dateRequired }

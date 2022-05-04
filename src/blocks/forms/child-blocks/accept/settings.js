@@ -34,13 +34,6 @@ const Settings = ( props ) => {
 	const acceptInspectorControls = () => {
 		return (
 			<UAGAdvancedPanelBody initialOpen={ true }>
-				<ToggleControl
-					label={ __( 'Required', 'ultimate-addons-for-gutenberg' ) }
-					checked={ acceptRequired }
-					onChange={ () =>
-						setAttributes( { acceptRequired: ! acceptRequired } )
-					}
-				/>
 				<TextareaControl
 					label={ __(
 						'Acceptance Text',
@@ -50,6 +43,13 @@ const Settings = ( props ) => {
 					value={ acceptText }
 					onChange={ ( value ) =>
 						setAttributes( { acceptText: value } )
+					}
+				/>
+				<ToggleControl
+					label={ __( 'Required', 'ultimate-addons-for-gutenberg' ) }
+					checked={ acceptRequired }
+					onChange={ () =>
+						setAttributes( { acceptRequired: ! acceptRequired } )
 					}
 				/>
 				<ToggleControl
