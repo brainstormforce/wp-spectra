@@ -16,6 +16,10 @@
 		z-index: 1;
 	}
 
+	.uagb-tabs__icon {
+		align-self: start;
+	}
+
 	li.uagb-tab {
 		position: relative;
 
@@ -35,6 +39,7 @@
 	li.uagb-tab.uagb-tabs__add-tab {
 		padding: 10px;
 		cursor: pointer;
+		display: block;
 	}
 
 	.uagb-tab-item__move-forward,
@@ -54,11 +59,16 @@
 			vertical-align: middle;
 		}
 	}
+
+	ul.uagb-tabs__panel {
+		margin-top: 12px;
+	}
 }
 
 .edit-post-visual-editor .uagb-tabs__wrap .block-editor-button-block-appender {
 	display: none;
 }
+
 //Horizonatal Styles
 .uagb-editor-preview-mode-tablet.uagb-tabs__wrap.uagb-tabs__hstyle1-tablet {
 	flex-direction: column;
@@ -83,6 +93,7 @@
 
 	.uagb-tabs__body-wrap {
 		border-style: solid;
+		margin-bottom: 20px;
 	}
 }
 

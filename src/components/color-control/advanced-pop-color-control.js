@@ -169,6 +169,10 @@ const AdvancedPopColorControl = ( props ) => {
 						{ props.label }
 					</span>
 				) }
+				<Tooltip
+					text={ __( 'Reset', 'ultimate-addons-for-gutenberg' )}
+					key={ 'reset' }
+				>
 				<Button
 					className="uagb-reset"
 					isSecondary
@@ -180,6 +184,7 @@ const AdvancedPopColorControl = ( props ) => {
 				>
 					<Dashicon icon="image-rotate" />
 				</Button>
+				</Tooltip>
 				<div className="uagb-beside-color-click">
 					{ visible.isVisible && (
 						<Popover
