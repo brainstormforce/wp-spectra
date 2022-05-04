@@ -172,6 +172,10 @@ const Range = ( props ) => {
 					responsive= { props.responsive }
 				/>
 				<div className="uagb-range-control__actions">
+					<Tooltip
+						text={ __( 'Reset', 'ultimate-addons-for-gutenberg' )}
+						key={ 'reset' }
+					>
 					<Button
 						className="uagb-reset"
 						isSecondary
@@ -183,6 +187,7 @@ const Range = ( props ) => {
 					>
 						<Dashicon icon="image-rotate" />
 					</Button>
+					</Tooltip>
 					{ props.displayUnit && (
 						<ButtonGroup
 							className="uagb-range-control__units"

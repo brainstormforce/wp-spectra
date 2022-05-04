@@ -87,8 +87,8 @@
 .wp-block-uagb-container {
 	display: flex;
 
-	& > .block-editor-inner-blocks,
-	& > .block-editor-inner-blocks > .block-editor-block-list__layout {
+	& > .uagb-container-inner-blocks-wrap > .block-editor-inner-blocks,
+	& > .uagb-container-inner-blocks-wrap > .block-editor-inner-blocks > .block-editor-block-list__layout {
 		display: flex;
 		width: 100%;
 		height: 100%;
@@ -126,6 +126,10 @@
 	color: #1e1e1e;
 }
 
-.wp-block-uagb-container > .block-editor-inner-blocks {
+.wp-block-uagb-container > .uagb-container-inner-blocks-wrap > .block-editor-inner-blocks {
 	z-index: 2;
+}
+
+.wp-block-uagb-container > .uagb-container-inner-blocks-wrap {
+	width: 100%;
 }

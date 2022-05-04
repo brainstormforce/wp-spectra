@@ -73,6 +73,13 @@ const attributes = {
 			styleType: 'icon-gap'
 		},
 	},
+	gapType: {
+		type: 'string',
+		UAGCopyPaste: {
+			styleType: 'icon-size-type'
+		},
+		default: 'px',
+	},
 	inner_gap: {
 		type: 'number',
 		default: 15,
@@ -91,6 +98,13 @@ const attributes = {
 		UAGCopyPaste: {
 			styleType: 'icon-inner-gap'
 		},
+	},
+	innerGapType: {
+		type: 'string',
+		UAGCopyPaste: {
+			styleType: 'icon-size-type'
+		},
+		default: 'px',
 	},
 	iconPosition: {
 		type: 'string',
@@ -132,6 +146,13 @@ const attributes = {
 		},
 		default: 0,
 	},
+	bgSizeType: {
+		type: 'string',
+		UAGCopyPaste: {
+			styleType: 'icon-size-type'
+		},
+		default: 'px',
+	},
 	bgSizeTablet: {
 		type: 'number',
 		UAGCopyPaste: {
@@ -167,6 +188,13 @@ const attributes = {
 			styleType: 'icon-border-style'
 		},
 	},
+	borderType: {
+		type: 'string',
+		default: 'px',
+		UAGCopyPaste: {
+			styleType: 'icon-border-unit'
+		},
+	},
 	borderRadius: {
 		type: 'number',
 		default: 0,
@@ -184,6 +212,13 @@ const attributes = {
 		type: 'number',
 		UAGCopyPaste: {
 			styleType: 'icon-border-radius'
+		},
+	},
+	borderRadiusType: {
+		type: 'string',
+		default: 'px',
+		UAGCopyPaste: {
+			styleType: 'icon-border-radius-unit'
 		},
 	},
 	hideLabel: {

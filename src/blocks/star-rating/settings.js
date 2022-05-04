@@ -263,15 +263,6 @@ const Settings = ( props ) => {
 					label: 'lineHeightTablet',
 				} }
 			/>
-			{/* <Range
-				label={ __( 'Gap', 'ultimate-addons-for-gutenberg' ) }
-				setAttributes={ setAttributes }
-				value={ titleGap }
-				onChange={ ( value ) => setAttributes( { titleGap: value } ) }
-				min={ 0 }
-				max={ 50 }
-				displayUnit={ false }
-			/> */}
 			<ResponsiveSlider
 				label={ __(
 					'Gap',
@@ -318,24 +309,6 @@ const Settings = ( props ) => {
 					setAttributes( { unmarkedColor: value } )
 				}
 			/>
-			{/* <Range
-				label={ __( 'Size', 'ultimate-addons-for-gutenberg' ) }
-				setAttributes={ setAttributes }
-				value={ size }
-				onChange={ ( value ) => setAttributes( { size: value } ) }
-				min={ 0 }
-				max={ 100 }
-				displayUnit={ false }
-			/>
-			<Range
-				label={ __( 'Gap', 'ultimate-addons-for-gutenberg' ) }
-				setAttributes={ setAttributes }
-				value={ gap }
-				onChange={ ( value ) => setAttributes( { gap: value } ) }
-				min={ 0 }
-				max={ 50 }
-				displayUnit={ false }
-			/> */}
 			<ResponsiveSlider
 				label={ __(
 					'Size',

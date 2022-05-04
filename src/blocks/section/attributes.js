@@ -262,7 +262,7 @@ const attributes = {
 	},
 	tag: {
 		type: 'string',
-		default: 'column',
+		default: 'section',
 	},
 	backgroundType: {
 		type: 'string',
