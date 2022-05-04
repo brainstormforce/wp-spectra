@@ -589,6 +589,7 @@ class UAGB_Init_Blocks {
 				'recaptcha_site_key_v3'              => UAGB_Admin_Helper::get_admin_settings_option( 'uag_recaptcha_site_key_v3', '' ),
 				'recaptcha_secret_key_v2'            => UAGB_Admin_Helper::get_admin_settings_option( 'uag_recaptcha_secret_key_v2', '' ),
 				'recaptcha_secret_key_v3'            => UAGB_Admin_Helper::get_admin_settings_option( 'uag_recaptcha_secret_key_v3', '' ),
+				'blocks_editor_spacing' => UAGB_Admin_Helper::get_admin_settings_option( 'uag_blocks_editor_spacing', 0 )
 			)
 		);
 		// To match the editor with frontend.
