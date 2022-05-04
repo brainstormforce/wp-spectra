@@ -8,7 +8,7 @@
  */
 
 return array(
-	'align'                   => 'center',
+	'align'                   => '',
 	'headingColor'            => '',
 	'subHeadingColor'         => '',
 	'separatorBg'             => '#eee',

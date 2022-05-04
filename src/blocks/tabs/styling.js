@@ -114,6 +114,22 @@ function styling( props ) {
 		' > .uagb-tabs__panel .uagb-tab': {
 			'background': headerBgColor,
 			'text-align': titleAlign,
+			'margin-top': generateCSSUnit(
+				tabTitleTopMargin,
+				tabTitleMarginUnit
+			),
+			'margin-left': generateCSSUnit(
+				tabTitleLeftMargin,
+				tabTitleMarginUnit
+			),
+			'margin-right': generateCSSUnit(
+				tabTitleRightMargin,
+				tabTitleMarginUnit
+			),
+			'margin-bottom': generateCSSUnit(
+				tabTitleBottomMargin,
+				tabTitleMarginUnit
+			),
 		},
 		' > .uagb-tabs__panel .uagb-tab a': {
 			'padding-top': generateCSSUnit(
@@ -131,22 +147,6 @@ function styling( props ) {
 			'padding-right': generateCSSUnit(
 				tabTitleRightPadding,
 				tabTitlePaddingUnit
-			),
-			'margin-top': generateCSSUnit(
-				tabTitleTopMargin,
-				tabTitleMarginUnit
-			),
-			'margin-left': generateCSSUnit(
-				tabTitleLeftMargin,
-				tabTitleMarginUnit
-			),
-			'margin-right': generateCSSUnit(
-				tabTitleRightMargin,
-				tabTitleMarginUnit
-			),
-			'margin-bottom': generateCSSUnit(
-				tabTitleBottomMargin,
-				tabTitleMarginUnit
 			),
 		},
 		' > .uagb-tabs__panel .uagb-tab a > p': {
@@ -294,6 +294,8 @@ function styling( props ) {
 				tabTitleRightPaddingTablet,
 				tablettabTitlePaddingUnit
 			),
+		},
+		' > .uagb-tabs__panel .uagb-tab':{
 			'margin-top': generateCSSUnit(
 				tabTitleTopMarginTablet,
 				tablettabTitleMarginUnit
@@ -373,6 +375,24 @@ function styling( props ) {
 				titleLineHeightType
 			),
 		},
+		' > .uagb-tabs__panel .uagb-tab' :{
+			'margin-top': generateCSSUnit(
+				tabTitleTopMarginMobile,
+				mobiletabTitleMarginUnit
+			),
+			'margin-left': generateCSSUnit(
+				tabTitleLeftMarginMobile,
+				mobiletabTitleMarginUnit
+			),
+			'margin-right': generateCSSUnit(
+				tabTitleRightMarginMobile,
+				mobiletabTitleMarginUnit
+			),
+			'margin-bottom': generateCSSUnit(
+				tabTitleBottomMarginMobile,
+				mobiletabTitleMarginUnit
+			),
+		},
 		' > .uagb-tabs__panel .uagb-tab a': {
 			'padding-top': generateCSSUnit(
 				tabTitleTopPaddingMobile,
@@ -389,22 +409,6 @@ function styling( props ) {
 			'padding-right': generateCSSUnit(
 				tabTitleRightPaddingMobile,
 				mobiletabTitlePaddingUnit
-			),
-			'margin-top': generateCSSUnit(
-				tabTitleTopMarginMobile,
-				mobiletabTitleMarginUnit
-			),
-			'margin-left': generateCSSUnit(
-				tabTitleLeftMarginMobile,
-				mobiletabTitleMarginUnit
-			),
-			'margin-right': generateCSSUnit(
-				tabTitleRightMarginMobile,
-				mobiletabTitleMarginUnit
-			),
-			'margin-bottom': generateCSSUnit(
-				tabTitleBottomMarginMobile,
-				mobiletabTitleMarginUnit
 			),
 		},
 		' > .uagb-tabs__body-wrap ': {
@@ -466,6 +470,13 @@ function styling( props ) {
 		selectors[ '.uagb-tabs__wrap.uagb-tabs__hstyle5-desktop:hover' ] = {
 			'border-color': borderHoverColor,
 		};
+		selectors['.uagb-tabs__wrap > .uagb-tabs__body-wrap'] = {
+			'border-left-style': 'none',
+			'border-right-style':'none',
+			'border-top-style': borderStyle,
+			'border-color': borderColor,
+			'border-width': generateCSSUnit( borderWidth, 'px' ),
+		};
 	}
 	if ( tabsStyleD === 'vstyle10' ) {
 		selectors[ '.uagb-tabs__wrap.uagb-tabs__vstyle10-desktop ' ] = {
@@ -492,6 +503,13 @@ function styling( props ) {
 		] = {
 			'border-color': borderHoverColor,
 		};
+		tabletSelectors['.uagb-tabs__wrap > .uagb-tabs__body-wrap'] = {
+			'border-left-style': 'none',
+			'border-right-style':'none',
+			'border-top-style': borderStyle,
+			'border-color': borderColor,
+			'border-width': generateCSSUnit( borderWidth, 'px' ),
+		};
 	}
 	if ( tabsStyleT === 'vstyle10' ) {
 		tabletSelectors[ '.uagb-tabs__wrap.uagb-tabs__vstyle10-tablet' ] = {
@@ -514,6 +532,13 @@ function styling( props ) {
 			'border-width': generateCSSUnit( borderWidth, 'px' ),
 			'border-style': borderStyle,
 			'border-radius': generateCSSUnit( borderRadius, 'px' ),
+		};
+		mobileSelectors['.uagb-tabs__wrap > .uagb-tabs__body-wrap'] = {
+			'border-left-style': 'none',
+			'border-right-style':'none',
+			'border-top-style': borderStyle,
+			'border-color': borderColor,
+			'border-width': generateCSSUnit( borderWidth, 'px' ),
 		};
 		mobileSelectors[
 			'.uagb-tabs__wrap.uagb-tabs__hstyle5-mobile:hover'

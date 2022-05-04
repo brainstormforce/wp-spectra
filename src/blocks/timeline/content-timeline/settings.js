@@ -775,39 +775,21 @@ const Settings = ( props ) => {
 						},
 					] }
 				/>
-				<ResponsiveSlider
-					label={ __(
-						'Rounded Corners',
-						'ultimate-addons-for-gutenberg'
-					) }
-					data={ {
-						desktop: {
-							value: borderRadius,
-							label: 'borderRadius',
-						},
-						tablet: {
-							value: borderRadiusTablet,
-							label: 'borderRadiusTablet',
-						},
-						mobile: {
-							value: borderRadiusMobile,
-							label: 'borderRadiusMobile',
-						},
-					} }
-					min={ 0 }
-					max={ 50 }
-					displayUnit={ false }
-					setAttributes={ setAttributes }
-				/>
 			</UAGAdvancedPanelBody>
 		);
 	};
-	const headingColorSettings = () => {
+	const timelineItemColorSettings = () => {
 		return (
 			<UAGAdvancedPanelBody
-				title={ __( 'Heading', 'ultimate-addons-for-gutenberg' ) }
+				title={ __( 'Timeline Item', 'ultimate-addons-for-gutenberg' ) }
 				initialOpen={ false }
 			>
+				<h2>
+					{ __(
+						'Heading',
+						'ultimate-addons-for-gutenberg'
+					) }
+				</h2>
 				<AdvancedPopColorControl
 					label={ __( 'Color', 'ultimate-addons-for-gutenberg' ) }
 					colorValue={ headingColor ? headingColor : '' }
@@ -900,15 +882,13 @@ const Settings = ( props ) => {
 					displayUnit={ false }
 					setAttributes={ setAttributes }
 				/>
-			</UAGAdvancedPanelBody>
-		);
-	};
-	const contentColorSettings = () => {
-		return (
-			<UAGAdvancedPanelBody
-				title={ __( 'Content', 'ultimate-addons-for-gutenberg' ) }
-				initialOpen={ false }
-			>
+				<hr className="uagb-editor__separator" />
+				<h2>
+					{ __(
+						'Description',
+						'ultimate-addons-for-gutenberg'
+					) }
+				</h2>
 				<AdvancedPopColorControl
 					label={ __( 'Color', 'ultimate-addons-for-gutenberg' ) }
 					colorValue={ subHeadingColor ? subHeadingColor : '' }
@@ -980,9 +960,47 @@ const Settings = ( props ) => {
 						label: 'subHeadDecoration',
 					} }
 				/>
+				<hr className="uagb-editor__separator" />
+				<h2>
+					{ __(
+						'Timeline',
+						'ultimate-addons-for-gutenberg'
+					) }
+				</h2>
+				<ResponsiveSlider
+					label={ __(
+						'Border radius',
+						'ultimate-addons-for-gutenberg'
+					) }
+					data={ {
+						desktop: {
+							value: borderRadius,
+							label: 'borderRadius',
+						},
+						tablet: {
+							value: borderRadiusTablet,
+							label: 'borderRadiusTablet',
+						},
+						mobile: {
+							value: borderRadiusMobile,
+							label: 'borderRadiusMobile',
+						},
+					} }
+					min={ 0 }
+					max={ 50 }
+					displayUnit={ false }
+					setAttributes={ setAttributes }
+				/>
+				<AdvancedPopColorControl
+					label={ __( 'Background Color', 'ultimate-addons-for-gutenberg' ) }
+					colorValue={ backgroundColor ? backgroundColor : '' }
+					onColorChange={ ( value ) =>
+						setAttributes( { backgroundColor: value } )
+					}
+				/>
 			</UAGAdvancedPanelBody>
-		);
-	};
+		)
+		};
 	const dateColorSettings = () => {
 		return (
 			<UAGAdvancedPanelBody
@@ -1061,20 +1079,6 @@ const Settings = ( props ) => {
 					} }
 				/>
 				{ timelinAlignment !== 'center' && (
-					// <Range
-					// 	label={ __(
-					// 		'Date Bottom Spacing',
-					// 		'ultimate-addons-for-gutenberg'
-					// 	) }
-					// 	setAttributes={ setAttributes }
-					// 	value={ dateBottomspace }
-					// 	onChange={ ( value ) =>
-					// 		setAttributes( { dateBottomspace: value } )
-					// 	}
-					// 	min={ 0 }
-					// 	max={ 50 }
-					// 	displayUnit={ false }
-					// />
 					<ResponsiveSlider
 						label={ __(
 							'Bottom Spacing',
@@ -1100,22 +1104,6 @@ const Settings = ( props ) => {
 						setAttributes={ setAttributes }
 					/>
 				) }
-			</UAGAdvancedPanelBody>
-		);
-	};
-	const backgroundColorSetting = () => {
-		return (
-			<UAGAdvancedPanelBody
-				title={ __( 'Background', 'ultimate-addons-for-gutenberg' ) }
-				initialOpen={ false }
-			>
-				<AdvancedPopColorControl
-					label={ __( 'Color', 'ultimate-addons-for-gutenberg' ) }
-					colorValue={ backgroundColor ? backgroundColor : '' }
-					onColorChange={ ( value ) =>
-						setAttributes( { backgroundColor: value } )
-					}
-				/>
 			</UAGAdvancedPanelBody>
 		);
 	};
@@ -1299,12 +1287,10 @@ const Settings = ( props ) => {
 						{ connectorSettings() }
 					</InspectorTab>
 					<InspectorTab { ...UAGTabs.style }>
-						{ headingColorSettings() }
-						{ contentColorSettings() }
-						{ displayPostDate && dateColorSettings() }
-						{ backgroundColorSetting() }
-						{ connectorColorSettings() }
 						{ spacingSettings() }
+						{ timelineItemColorSettings() }
+						{ displayPostDate && dateColorSettings() }
+						{ connectorColorSettings() }
 					</InspectorTab>
 					<InspectorTab
 						{ ...UAGTabs.advance }

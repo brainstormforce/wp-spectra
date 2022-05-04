@@ -261,14 +261,14 @@ const attributes = {
 	},
 	rowGapTablet                  : {
 		type    : 'number',
-		default : 0,
+		default : 20,
 		UAGCopyPaste: {
 			styleType: 'post-bottom-padding'
 		},
 	},
 	rowGapMobile                  : {
 		type    : 'number',
-		default : 0,
+		default : 10,
 		UAGCopyPaste: {
 			styleType: 'post-bottom-padding'
 		},
