@@ -25,7 +25,6 @@ import {
 	ToolbarGroup,
 	Icon,
 	TextControl,
-	SelectControl,
 } from '@wordpress/components';
 
 import UAGAdvancedPanelBody from '@Components/advanced-panel-body';
