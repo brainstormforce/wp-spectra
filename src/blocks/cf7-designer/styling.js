@@ -73,6 +73,7 @@ function styling( props ) {
 		radioCheckBorderWidth,
 		radioCheckBorderWidthTablet,
 		radioCheckBorderWidthMobile,
+		radioCheckBorderWidthUnit,
 		radioCheckBorderRadius,
 		radioCheckFontSize,
 		radioCheckFontSizeType,
@@ -474,7 +475,7 @@ function styling( props ) {
 			'width': generateCSSUnit( radioCheckSize, 'px' ),
 			'font-size': 'calc( ' + radioCheckSize + 'px / 1.2 )',
 			'border-color': radioCheckBorderColor,
-			'border-width': generateCSSUnit( radioCheckBorderWidth, 'px' ),
+			'border-width': generateCSSUnit( radioCheckBorderWidth, radioCheckBorderWidthUnit ),
 			'border-radius': generateCSSUnit(
 				radioCheckBorderRadius,
 				radioCheckBorderRadiusType
@@ -491,7 +492,7 @@ function styling( props ) {
 			'width': generateCSSUnit( radioCheckSize, 'px' ),
 			'font-size': 'calc( ' + radioCheckSize + 'px / 1.2 )',
 			'border-color': radioCheckBorderColor,
-			'border-width': generateCSSUnit( radioCheckBorderWidth, 'px' ),
+			'border-width': generateCSSUnit( radioCheckBorderWidth, radioCheckBorderWidthUnit ),
 			'border-radius': generateCSSUnit(
 				radioCheckBorderRadius,
 				radioCheckBorderRadiusType
@@ -508,7 +509,7 @@ function styling( props ) {
 			'width': generateCSSUnit( radioCheckSize, 'px' ),
 			'font-size': 'calc( ' + radioCheckSize + 'px / 1.2 )',
 			'border-color': radioCheckBorderColor,
-			'border-width': generateCSSUnit( radioCheckBorderWidth, 'px' ),
+			'border-width': generateCSSUnit( radioCheckBorderWidth, radioCheckBorderWidthUnit ),
 		},
 
 		" .uagb-cf7-styler__check-style-enabled .wpcf7-radio input[type='radio']:checked + span:before": {
@@ -556,19 +557,19 @@ function styling( props ) {
 			'height': generateCSSUnit( radioCheckSizeTablet, 'px' ),
 			'width': generateCSSUnit( radioCheckSizeTablet, 'px' ),
 			'font-size': 'calc( ' + radioCheckSizeTablet + 'px / 1.2 )',
-			'border-width': generateCSSUnit( radioCheckBorderWidthTablet, 'px' ),
+			'border-width': generateCSSUnit( radioCheckBorderWidthTablet, radioCheckBorderWidthUnit ),
 		},
 		" .uagb-cf7-styler__check-style-enabled .wpcf7 .wpcf7-acceptance input[type='checkbox'] + span:before": {
 					'height': generateCSSUnit( radioCheckSizeTablet, 'px' ),
 					'width': generateCSSUnit( radioCheckSizeTablet, 'px' ),
 					'font-size': 'calc( ' + radioCheckSizeTablet + 'px / 1.2 )',
-					'border-width': generateCSSUnit( radioCheckBorderWidthTablet, 'px' ),
+					'border-width': generateCSSUnit( radioCheckBorderWidthTablet, radioCheckBorderWidthUnit ),
 				},
 		" .uagb-cf7-styler__check-style-enabled .wpcf7 input[type='radio'] + span:before": {
 					'height': generateCSSUnit( radioCheckSizeTablet, 'px' ),
 					'width': generateCSSUnit( radioCheckSizeTablet, 'px' ),
 					'font-size': 'calc( ' + radioCheckSizeTablet + 'px / 1.2 )',
-					'border-width': generateCSSUnit( radioCheckBorderWidthTablet, 'px' ),
+					'border-width': generateCSSUnit( radioCheckBorderWidthTablet, radioCheckBorderWidthUnit ),
 				},
 		' .uagb-cf7-styler__check-style-enabled .wpcf7 input:not([type=submit])': {
 			'font-size': generateCSSUnit(
@@ -699,19 +700,19 @@ function styling( props ) {
 			'height': generateCSSUnit( radioCheckSizeMobile, 'px' ),
 			'width': generateCSSUnit( radioCheckSizeMobile, 'px' ),
 			'font-size': 'calc( ' + radioCheckSizeMobile + 'px / 1.2 )',
-			'border-width': generateCSSUnit( radioCheckBorderWidthMobile, 'px' ),
+			'border-width': generateCSSUnit( radioCheckBorderWidthMobile, radioCheckBorderWidthUnit ),
 		},
 		" .uagb-cf7-styler__check-style-enabled .wpcf7 .wpcf7-acceptance input[type='checkbox'] + span:before": {
 			'height': generateCSSUnit( radioCheckSizeMobile, 'px' ),
 			'width': generateCSSUnit( radioCheckSizeMobile, 'px' ),
 			'font-size': 'calc( ' + radioCheckSizeMobile + 'px / 1.2 )',
-			'border-width': generateCSSUnit( radioCheckBorderWidthMobile, 'px' ),
+			'border-width': generateCSSUnit( radioCheckBorderWidthMobile, radioCheckBorderWidthUnit ),
 		},
 		" .uagb-cf7-styler__check-style-enabled .wpcf7 input[type='radio'] + span:before": {
 			'height': generateCSSUnit( radioCheckSizeMobile, 'px' ),
 			'width': generateCSSUnit( radioCheckSizeMobile, 'px' ),
 			'font-size': 'calc( ' + radioCheckSizeMobile + 'px / 1.2 )',
-			'border-width': generateCSSUnit( radioCheckBorderWidthMobile, 'px' ),
+			'border-width': generateCSSUnit( radioCheckBorderWidthMobile, radioCheckBorderWidthUnit ),
 		},
 		' .uagb-cf7-styler__check-style-enabled .wpcf7 input:not([type=submit])': {
 			'font-size': generateCSSUnit(

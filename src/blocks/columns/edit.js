@@ -64,11 +64,11 @@ const ColumnsComponent = ( props ) => {
 		}
 
 		if ( undefined === align ){
-			setAttributes( { align: 'wide' } );
+			setAttributes( { align: '' } );
 		}
 
 		if ( undefined === vAlign ){
-			setAttributes( { vAlign: 'top' } );
+			setAttributes( { vAlign: '' } );
 		}
 
 		// Replacement for componentDidMount.

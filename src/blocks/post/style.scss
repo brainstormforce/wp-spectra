@@ -14,6 +14,14 @@
 			display: inline-flex;
 			flex-wrap: wrap;
 
+			&.default {
+				margin: 5px 5px 5px 20px;
+			}
+
+			&:nth-child(2).highlighted {
+				margin-left: 20px;
+			}
+
 			&.highlighted {
 				background: #444;
 				color: #fff;
@@ -22,7 +30,7 @@
 				align-items: flex-end;
 				padding: 6px 8px;
 				line-height: 1;
-				margin: 5px 5px 5px 20px;
+				margin: 5px 5px 5px 5px;
 
 				a {
 					color: #fff;
@@ -273,6 +281,16 @@
 	.uagb-post__inner-wrap {
 		position: relative;
 		width: 100%;
+
+		.uagb-post__taxonomy {
+
+			&.highlighted,
+			&.default {
+				position: relative;
+				z-index: 999;
+				margin-top: 20px;
+			}
+		}
 	}
 
 	.uagb-post__image img {

@@ -78,6 +78,10 @@ function styling( props ) {
 		authorImageWidthTablet,
 		authorImageWidthMobile,
 		authorImageWidthUnit,
+		authorImageGap,
+		authorImageGapTablet,
+		authorImageGapMobile,
+		authorImageGapUnit,
 		authorImgBorderRadius,
 		authorImgBorderRadiusTablet,
 		authorImgBorderRadiusMobile,
@@ -133,7 +137,10 @@ function styling( props ) {
 		quotetabletUnit,
 		descFontStyle,
 		authorFontStyle,
-		tweetBtnFontStyle
+		tweetBtnFontStyle,
+		stack,
+		tweetGap,
+		tweetGapUnit,
 	} = props.attributes;
 
 	let tmpAuthorSpace = authorSpace;
@@ -238,6 +245,15 @@ function styling( props ) {
 				authorImgBorderRadius,
 				authorImgBorderRadiusUnit
 			),
+		},
+		' .uagb-blockquote__author-wrap.uagb-blockquote__author-at-right img': {
+			'margin-left': generateCSSUnit( authorImageGap, authorImageGapUnit ),
+		},
+		' .uagb-blockquote__author-wrap.uagb-blockquote__author-at-top img': {
+			'margin-bottom': generateCSSUnit( authorImageGap, authorImageGapUnit ),
+		},
+		' .uagb-blockquote__author-wrap.uagb-blockquote__author-at-left img': {
+			'margin-right': generateCSSUnit( authorImageGap, authorImageGapUnit ),
 		},
 	};
 	if ( enableTweet ) {
@@ -476,6 +492,17 @@ function styling( props ) {
 				authorImgBorderRadiusUnit
 			),
 		},
+		' .uagb-blockquote__author-wrap.uagb-blockquote__author-at-right img': {
+			'margin-left': ( stack === 'tablet' ) ? '0px' : generateCSSUnit( authorImageGapTablet, authorImageGapUnit ),
+			'margin-bottom': ( stack === 'tablet' ) ? generateCSSUnit( authorImageGapTablet, authorImageGapUnit ) : '0px',
+		},
+		' .uagb-blockquote__author-wrap.uagb-blockquote__author-at-top img': {
+			'margin-bottom': generateCSSUnit( authorImageGapTablet, authorImageGapUnit ),
+		},
+		' .uagb-blockquote__author-wrap.uagb-blockquote__author-at-left img': {
+			'margin-right': ( stack === 'tablet' ) ? '0px' : generateCSSUnit( authorImageGapTablet, authorImageGapUnit ),
+			'margin-bottom': ( stack === 'tablet' ) ? generateCSSUnit( authorImageGapTablet, authorImageGapUnit ) : '0px',
+		},
 	};
 	const mobileSelectors = {
 		'.uagb-blockquote__skin-quotation .uagb-blockquote__icon': {
@@ -582,7 +609,36 @@ function styling( props ) {
 				authorImgBorderRadiusUnit
 			),
 		},
+		' .uagb-blockquote__author-wrap.uagb-blockquote__author-at-right img': {
+			'margin-left': ( stack !== 'none' ) ? '0px' : generateCSSUnit( authorImageGapMobile, authorImageGapUnit ),
+			'margin-bottom': ( stack !== 'none' ) ? generateCSSUnit( authorImageGapMobile, authorImageGapUnit ) : '0px',
+		},
+		' .uagb-blockquote__author-wrap.uagb-blockquote__author-at-top img': {
+			'margin-bottom': generateCSSUnit( authorImageGapMobile, authorImageGapUnit ),
+		},
+		' .uagb-blockquote__author-wrap.uagb-blockquote__author-at-left img': {
+			'margin-right': ( stack !== 'none' ) ? '0px' : generateCSSUnit( authorImageGapMobile, authorImageGapUnit ),
+			'margin-bottom': ( stack !== 'none' ) ? generateCSSUnit( authorImageGapMobile, authorImageGapUnit ) : '0px',
+		},
 	};
+
+	if ( enableTweet ){
+		switch ( stack ){
+			case 'tablet':
+				tabletSelectors[ ' a.uagb-blockquote__tweet-button' ] = {
+					...tabletSelectors[ ' a.uagb-blockquote__tweet-button' ],
+					'margin-top': generateCSSUnit( tweetGap, tweetGapUnit ),
+				}
+				break;
+			case 'mobile':
+				mobileSelectors[ ' a.uagb-blockquote__tweet-button' ] = {
+					...mobileSelectors[ ' a.uagb-blockquote__tweet-button' ],
+					'margin-top': generateCSSUnit( tweetGap, tweetGapUnit ),
+				}
+				break;
+		}
+	}
+
 	const baseSelector = `.editor-styles-wrapper .uagb-block-${ props.clientId.substr(
 		0,
 		8
