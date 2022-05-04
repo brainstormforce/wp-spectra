@@ -539,7 +539,7 @@ const UAGBPostCarousel = ( props ) => {
 				/>
 				<Range
 					label={ __(
-						'Number of items',
+						'Posts Per Page',
 						'ultimate-addons-for-gutenberg'
 					) }
 					value={ postsToShow }
@@ -1014,31 +1014,30 @@ const UAGBPostCarousel = ( props ) => {
 					}
 				/>
 				{ displayPostExcerpt && (
-					<RadioControl
-						label={ __( 'Show:', 'ultimate-addons-for-gutenberg' ) }
-						selected={ displayPostContentRadio }
-						options={ [
-							{
-								label: __(
-									'Excerpt',
-									'ultimate-addons-for-gutenberg'
-								),
-								value: 'excerpt',
-							},
-							{
-								label: __(
-									'Full post',
-									'ultimate-addons-for-gutenberg'
-								),
-								value: 'full_post',
-							},
-						] }
-						onChange={ ( value ) =>
-							setAttributes( {
-								displayPostContentRadio: value,
-							} )
-						}
-					/>
+					<MultiButtonsControl
+					setAttributes={ setAttributes }
+					label={ __( 'Show:', 'ultimate-addons-for-gutenberg' ) }
+					data={ {
+						value: displayPostContentRadio,
+						label: 'displayPostContentRadio',
+					} }
+					options={ [
+						{
+							label: __(
+								'Excerpt',
+								'ultimate-addons-for-gutenberg'
+							),
+							value: 'excerpt',
+						},
+						{
+							label: __(
+								'Full post',
+								'ultimate-addons-for-gutenberg'
+							),
+							value: 'full_post',
+						},
+					] }
+				/>
 				) }
 				{ displayPostExcerpt &&
 					displayPostContentRadio === 'excerpt' && (
@@ -1111,8 +1110,8 @@ const UAGBPostCarousel = ( props ) => {
 	const spacingSettings = () => {
 		return (
 			<UAGAdvancedPanelBody
-				title={ __( 'Blog Settings', 'ultimate-addons-for-gutenberg' ) }
-				initialOpen={ false }
+				title={ __( 'Layout', 'ultimate-addons-for-gutenberg' ) }
+				initialOpen={ true }
 			>
 				<AdvancedPopColorControl
 					label={ __(
@@ -1309,7 +1308,7 @@ const UAGBPostCarousel = ( props ) => {
 		return (
 			<UAGAdvancedPanelBody
 				title={ __( 'Title', 'ultimate-addons-for-gutenberg' ) }
-				initialOpen={ true }
+				initialOpen={ false }
 			>
 				<MultiButtonsControl
 					setAttributes={ setAttributes }
@@ -2112,6 +2111,7 @@ const UAGBPostCarousel = ( props ) => {
 					{ getReadMoreLinkPanelBody() }
 				</InspectorTab>
 				<InspectorTab { ...UAGTabs.style }>
+					{ spacingSettings() }
 					{ displayPostTitle && titleStyle() }
 					{ ( displayPostAuthor ||
 						displayPostDate ||
@@ -2121,7 +2121,6 @@ const UAGBPostCarousel = ( props ) => {
 					{ displayPostExcerpt && excerptStyle() }
 					{ displayPostLink && readMoreLinkStyleSettings() }
 					{ displayPostImage  && imageStyle() }
-					{ spacingSettings() }
 					{ carouselStyle() }
 				</InspectorTab>
 				<InspectorTab { ...UAGTabs.advance } parentProps={props}></InspectorTab>
