@@ -162,7 +162,7 @@ const Settings = ( props ) => {
 						},
 					] }
 					help={
-						'scroll' === playOn
+						( 'scroll' === playOn || 'none' === playOn )
 							? __(
 									"This setting will only take effect once you are on the live page, and not while you're editing.",
 									'ultimate-addons-for-gutenberg'
