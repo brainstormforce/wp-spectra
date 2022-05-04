@@ -33,7 +33,6 @@ function styling( props ) {
 		'margin-right': 0,
 		'margin-bottom': generateCSSUnit( gap, 'px' ),
 	};
-
 	tabletSelectors[ '.uagb-social-share__layout-vertical .uagb-ss__wrapper' ] = {
 		'margin-left': 0,
 		'margin-right': 0,
@@ -66,13 +65,13 @@ function styling( props ) {
 		'margin-right': generateCSSUnit( gapMobile / 2, 'px' ),
 	};
 
-	selectors[ ' .uagb-ss__wrapper' ] = {
+	selectors[ ' .uagb-ss__wrapper.uagb-ss-repeater ' ] = {
 		'border-radius': generateCSSUnit( borderRadius, 'px' ),
 	};
-	tabletSelectors[ ' .uagb-ss__wrapper' ] = {
+	tabletSelectors[ ' .uagb-ss__wrapper.uagb-ss-repeater ' ] = {
 		'border-radius': generateCSSUnit( borderRadiusTablet, 'px' ),
 	};
-	mobileSelectors[ ' .uagb-ss__wrapper' ] = {
+	mobileSelectors[ ' .uagb-ss__wrapper.uagb-ss-repeater ' ] = {
 		'border-radius': generateCSSUnit( borderRadiusMobile, 'px' ),
 	};
 

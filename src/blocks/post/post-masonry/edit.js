@@ -1710,7 +1710,7 @@ const UAGBPostMasonry = ( props ) => {
 		return (
 			<UAGAdvancedPanelBody
 				title={ __( 'Title', 'ultimate-addons-for-gutenberg' ) }
-				initialOpen={ false }
+				initialOpen={ true }
 			>
 				<MultiButtonsControl
 					setAttributes={ setAttributes }

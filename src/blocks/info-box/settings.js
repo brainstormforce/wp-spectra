@@ -374,7 +374,7 @@ const Settings = ( props ) => {
 		return (
 			<UAGAdvancedPanelBody
 				title={ __( 'Image/Icon', 'ultimate-addons-for-gutenberg' ) }
-				initialOpen={ true }
+				initialOpen={ false }
 			>
 				<ToggleControl
 					checked={ showIcon }
@@ -1136,6 +1136,15 @@ const Settings = ( props ) => {
 												label:
 													'iconimgBorderRadiusUnit',
 											} }
+											units={ [
+												{
+													name: __(
+														'Pixel',
+														'ultimate-addons-for-gutenberg'
+													),
+													unitValue: 'px',
+												},
+											] }
 										/>
 									</>
 								) }
