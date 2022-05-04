@@ -24,7 +24,7 @@ export const PostTaxonomy = ( props ) => {
 			{ displayPostTaxonomy && 'aboveTitle' === displayPostTaxonomyAboveTitle && (
 				<>
 				{ ( 'default' === taxStyle ) && (
-					<span className="uagb-post__taxonomy default">
+					<span className=" uagb-post__text uagb-post__taxonomy  default">
 					{ ( hideTaxonomyIcon && 'aboveTitle' === displayPostTaxonomyAboveTitle ) && ( <span className="dashicons-tag dashicons"></span> ) }
 					<div
 						dangerouslySetInnerHTML={ {
@@ -37,7 +37,7 @@ export const PostTaxonomy = ( props ) => {
 				list.map( ( Litem ) => (
 					cat.map( ( Citem ) => (
 						( Litem.id === Citem ) && (
-							<span className={`uagb-post__taxonomy ${taxStyle}`}>
+							<span className={`uagb-post__taxonomy uagb-post__text ${taxStyle}`}>
 							{ ( hideTaxonomyIcon && 'aboveTitle' === displayPostTaxonomyAboveTitle ) && ( <span className="dashicons-tag dashicons"></span> ) }
 							{Litem.name}
 							</span>
