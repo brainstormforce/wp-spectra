@@ -58,7 +58,7 @@ return array(
 	'authorImgBorderRadiusMobile' => 100,
 	'authorImgPosition'           => 'left',
 	'stack'                       => 'none',
-	'enableTweet'                 => false,
+	'enableTweet'                 => true,
 	'iconView'                    => 'icon_text',
 	'iconSkin'                    => 'classic',
 	'tweetLinkColor'              => '#1DA1F2',
