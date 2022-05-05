@@ -11,6 +11,7 @@ return array(
 	'block_id'         => '',
 	'jsonLottie'       => '',
 	'lottieURl'        => '',
+	'lottieSource'     => '',
 	'height'           => '',
 	'heightTablet'     => '',
 	'heightMob'        => '',

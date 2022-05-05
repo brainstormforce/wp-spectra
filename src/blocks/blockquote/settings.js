@@ -71,7 +71,6 @@ const Settings = ( props ) => {
 		authorSpace,
 		authorSpaceTablet,
 		authorSpaceMobile,
-		stack,
 		borderColor,
 		borderStyle,
 		borderWidth,
@@ -323,23 +322,6 @@ const Settings = ( props ) => {
 								setAttributes( { authorImageSize: value } )
 							}
 						/>
-						{/* <Range
-							label={ __(
-								'Author Image Width',
-								'ultimate-addons-for-gutenberg'
-							) }
-							setAttributes={ setAttributes }
-							value={ authorImageWidth }
-							onChange={ ( value ) =>
-								setAttributes( { authorImageWidth: value } )
-							}
-							min={ 0 }
-							max={ 500 }
-							unit={ {
-								value: authorImageWidthUnit,
-								label: 'authorImageWidthUnit',
-							} }
-						/> */}
 						<ResponsiveSlider
 							label={ __(
 								'Author Image Width',
@@ -367,41 +349,6 @@ const Settings = ( props ) => {
 							} }
 							setAttributes={ setAttributes }
 						/>
-						{/* <Range
-							label={ __(
-								'Author Image Rounded Corners',
-								'ultimate-addons-for-gutenberg'
-							) }
-							setAttributes={ setAttributes }
-							value={ authorImgBorderRadius }
-							onChange={ ( value ) =>
-								setAttributes( {
-									authorImgBorderRadius: value,
-								} )
-							}
-							min={ 0 }
-							max={ 50 }
-							unit={ {
-								value: authorImgBorderRadiusUnit,
-								label: 'authorImgBorderRadiusUnit',
-							} }
-							units={ [
-								{
-									name: __(
-										'Pixel',
-										'ultimate-addons-for-gutenberg'
-									),
-									unitValue: 'px',
-								},
-								{
-									name: __(
-										'%',
-										'ultimate-addons-for-gutenberg'
-									),
-									unitValue: '%',
-								},
-							] }
-						/> */}
 						<ResponsiveSlider
 							label={ __(
 								'Author Image Rounded Corners',
@@ -646,31 +593,6 @@ const Settings = ( props ) => {
 			</>
 			}
 			{ imageControls }
-			<MultiButtonsControl
-				setAttributes={ setAttributes }
-				label={ __( 'Stack On', 'ultimate-addons-for-gutenberg' ) }
-				data={ {
-					value: stack,
-					label: 'stack',
-				} }
-				className="uagb-multi-button-alignment-control"
-				options={ [
-					{
-						value: 'none',
-						label: __( 'None', 'ultimate-addons-for-gutenberg' ),
-					},
-					{
-						value: 'tablet',
-						label: __( 'Tablet', 'ultimate-addons-for-gutenberg' ),
-					},
-					{
-						value: 'mobile',
-						label: __( 'Mobile', 'ultimate-addons-for-gutenberg' ),
-					},
-				] }
-				showIcons={ false }
-			/>
-			<p>Note: Choose on what breakpoint the elements will stack.</p>
 		</UAGAdvancedPanelBody>
 	);
 
@@ -1091,23 +1013,6 @@ const Settings = ( props ) => {
 				/>
 			) }
 			{ skinStyle === 'border' && (
-				// <Range
-				// 	label={ __(
-				// 		'Gap Between Border and Quote',
-				// 		'ultimate-addons-for-gutenberg'
-				// 	) }
-				// 	setAttributes={ setAttributes }
-				// 	value={ borderGap }
-				// 	onChange={ ( value ) =>
-				// 		setAttributes( { borderGap: value } )
-				// 	}
-				// 	min={ 0 }
-				// 	max={ 200 }
-				// 	unit={ {
-				// 		value: borderGapUnit,
-				// 		label: 'borderGapUnit',
-				// 	} }
-				// />
 				<ResponsiveSlider
 					label={ __(
 						'Border - Quote Gap',
@@ -1136,22 +1041,6 @@ const Settings = ( props ) => {
 					setAttributes={ setAttributes }
 				/>
 			) }
-			{/* <Range
-				label={ __(
-					'Quote Bottom Spacing',
-					'ultimate-addons-for-gutenberg'
-				) }
-				setAttributes={ setAttributes }
-				value={ descSpace }
-				onChange={ ( value ) => setAttributes( { descSpace: value } ) }
-				min={ 0 }
-				max={ 200 }
-				initialPosition={ 0 }
-				unit={ {
-					value: descSpaceUnit,
-					label: 'descSpaceUnit',
-				} }
-			/> */}
 			<ResponsiveSlider
 				label={ __(
 					'Quote Bottom Spacing',
@@ -1180,23 +1069,6 @@ const Settings = ( props ) => {
 				setAttributes={ setAttributes }
 			/>
 			{ align === 'center' && skinStyle !== 'border' && (
-				// <Range
-				// 	label={ __(
-				// 		'Author Bottom Spacing',
-				// 		'ultimate-addons-for-gutenberg'
-				// 	) }
-				// 	setAttributes={ setAttributes }
-				// 	value={ authorSpace }
-				// 	onChange={ ( value ) =>
-				// 		setAttributes( { authorSpace: value } )
-				// 	}
-				// 	min={ 0 }
-				// 	max={ 200 }
-				// 	unit={ {
-				// 		value: authorSpaceUnit,
-				// 		label: 'authorSpaceUnit',
-				// 	} }
-				// />
 				<ResponsiveSlider
 					label={ __(
 						'Author Bottom Spacing',
@@ -1228,21 +1100,6 @@ const Settings = ( props ) => {
 
 			{ skinStyle === 'border' && (
 				<>
-					{/* <Range
-						label={ 'Vertical Padding' }
-						className={ 'uagb-margin-control' }
-						value={ verticalPadding }
-						setAttributes={ setAttributes }
-						onChange={ ( value ) =>
-							setAttributes( { verticalPadding: value } )
-						}
-						min={ 0 }
-						max={ 500 }
-						unit={ {
-							value: verticalPaddingUnit,
-							label: 'verticalPaddingUnit',
-						} }
-					/> */}
 					<ResponsiveSlider
 						label={ __(
 							'Vertical Spacing',
@@ -1273,7 +1130,7 @@ const Settings = ( props ) => {
 				</>
 			) }
 
-			{ ( enableTweet && stack !== 'none' ) && (
+			{ ( enableTweet ) && (
 				<Range
 					label={ __(
 						'Stacked Twitter Gap',

@@ -365,7 +365,7 @@ const attributes = {
 	},
 	enableTweet: {
 		type: 'boolean',
-		default: false,
+		default: true,
 	},
 	iconView: {
 		type: 'string',

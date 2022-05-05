@@ -46,9 +46,12 @@
 			margin-right: 0;
 		}
 
-		&.uagb-blockquote__style-style_2 .uagb-blockquote__icon-wrap {
-			display: inline-block;
-			float: left;
+		&.uagb-blockquote__style-style_2 {
+
+			.uagb-blockquote__icon-wrap {
+				display: inline-block;
+				float: left;
+			}
 		}
 	}
 
@@ -157,9 +160,17 @@
 			height: inherit;
 		}
 
-		&.uagb-blockquote__style-style_2 .uagb-blockquote__icon {
-			display: inline-block;
-			float: left;
+		&.uagb-blockquote__style-style_2 {
+
+			&.uagb-blockquote__align-right .uagb-blockquote__icon {
+				display: inline-block;
+				float: right;
+			}
+
+			.uagb-blockquote__icon {
+				display: inline-block;
+				float: left;
+			}
 		}
 
 		&.uagb-blockquote__style-style_1 .uagb-blockquote__icon {
@@ -307,6 +318,15 @@
 		text-align: center;
 	}
 
+	&.uagb-blockquote__align-center .uagb-blockquote__author-wrap.uagb-blockquote__author-at-right,
+	&.uagb-blockquote__align-center.uagb-blockquote__with-tweet .uagb-blockquote__author-wrap {
+		justify-content: center;
+		-webkit-box-pack: center;
+		-ms-flex-pack: center;
+		-webkit-justify-content: center;
+		-moz-box-pack: center;
+	}
+
 	&.uagb-blockquote__align-center a.uagb-blockquote__tweet-button {
 		display: block;
 		align-self: center;
@@ -406,6 +426,7 @@
 		-webkit-flex-direction: row-reverse;
 		-ms-flex-direction: row-reverse;
 		flex-direction: row-reverse;
+		justify-content: flex-end;
 	}
 }
 
@@ -424,6 +445,7 @@
 				-webkit-flex-direction: column;
 				-ms-flex-direction: column;
 				flex-direction: column;
+				align-items: flex-start;
 			}
 
 			/* Left alignment */
@@ -488,6 +510,7 @@
 				-webkit-flex-direction: column;
 				-ms-flex-direction: column;
 				flex-direction: column;
+				align-items: flex-start;
 			}
 
 			/* Left alignment */
