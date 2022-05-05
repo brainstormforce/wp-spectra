@@ -81,7 +81,7 @@ const Render = ( props ) => {
 		}
 		return (
 			<Placeholder label="Post Grid Layout">
-				<div className="uagb-block-all-post-grid-item-template">
+				<div className="uagb-post-grid uagb-block-all-post-grid-item-template">
 					<Tip>
 						{ __(
 							'Edit the blocks inside the preview below to change the content displayed for each post within the post grid.'

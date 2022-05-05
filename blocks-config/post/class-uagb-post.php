@@ -540,7 +540,7 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 				),
 				'rowGapMobile'                  => array(
 					'type'    => 'number',
-					'default' => 10,
+					'default' => 20,
 				),
 				'columnGap'                     => array(
 					'type'    => 'number',
@@ -817,10 +817,12 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 					'default' => 0,
 				),
 				'ctaBottomSpaceTablet'          => array(
-					'type' => 'number',
+					'type'    => 'number',
+					'default' => 0,
 				),
 				'ctaBottomSpaceMobile'          => array(
-					'type' => 'number',
+					'type'    => 'number',
+					'default' => 0,
 				),
 				'imageBottomSpace'              => array(
 					'type'    => 'number',
@@ -1670,7 +1672,7 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 					// Get the URL of this category.
 					$category_link = get_category_link( $value->term_id );
 					echo sprintf(
-						'<span class="%s">%s<a href="#%s">%s</a></span>',
+						'<span class="%s">%s<a href="%s">%s</a></span>',
 						esc_html( implode( ' ', $wrap ) ),
 						( ( true === $attributes['hideTaxonomyIcon'] ) ? '<span class="dashicons-tag dashicons"></span>' : '' ),
 						esc_url( $category_link ),
