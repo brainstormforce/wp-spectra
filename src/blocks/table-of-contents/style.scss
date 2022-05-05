@@ -26,16 +26,22 @@
 		}
 	}
 
-	&.uagb-toc__align-left {
-		text-align: left;
+	&.uagb-toc__align-left .uagb-toc__list-wrap {
+		display: flex;
+		flex-direction: column;
+		align-items: flex-start;
 	}
 
-	&.uagb-toc__align-center {
-		text-align: center;
+	&.uagb-toc__align-center .uagb-toc__list-wrap {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
 	}
 
-	&.uagb-toc__align-right {
-		text-align: right;
+	&.uagb-toc__align-right .uagb-toc__list-wrap {
+		display: flex;
+		flex-direction: column;
+		align-items: flex-end;
 	}
 
 	ul li:empty {
