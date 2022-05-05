@@ -137,6 +137,8 @@ export default function ImageSizeControl( {
 		}
 	}
 
+
+
 	return (
 		<>
 			{ imageSizeOptions.length !== 0 && (
@@ -169,10 +171,12 @@ export default function ImageSizeControl( {
 										imageHeight * ( scale / 100 )
 									);
 
-									const isCurrent =
-										currentWidth === scaledWidth &&
-										currentHeight === scaledHeight;
-
+									let isCurrent = currentWidth === scaledWidth
+									if( 'Tablet' === deviceType ){
+										isCurrent = widthTablet === scaledWidth;
+									} else if( 'Mobile' === deviceType ){
+										isCurrent = widthMobile === scaledWidth;
+									}
 									return (
 										<Button
 											key={ scale }
