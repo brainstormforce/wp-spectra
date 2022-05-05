@@ -124,7 +124,7 @@ function styling( props ) {
 			'color': color,
 		}
 	};
-	selectors[' .wp-block-button__link.uagb-buttons-repeater'] = {
+	selectors[' .uagb-button__wrapper .wp-block-button__link.uagb-buttons-repeater'] = {
 		'border-radius': generateCSSUnit( borderRadius, 'px' ),
 	};
 	if( 'none' !== borderStyle ) {

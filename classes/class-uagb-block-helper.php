@@ -106,7 +106,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					$box_shadow_position_css,
 				);
 			}
-			$selectors[ $wrapper ] = array(
+			$selectors[ $wrapper.'.wp-block-button__link' ] = array(
 				'border-radius' => UAGB_Helper::get_css_value( $attr['borderRadius'], 'px' ),
 			);
 			if ( 'none' !== $attr['borderStyle'] ) {
