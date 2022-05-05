@@ -640,6 +640,9 @@ const UAGBPostMasonry = ( props ) => {
 					min={ 0 }
 					max={ 100 }
 					displayUnit={ false }
+				 	help= {__(
+					'P.S. Note that We need to add Offset Starting Post to start post loading from specific post order.',
+					'ultimate-addons-for-gutenberg')}
 				/>
 				<MultiButtonsControl
 					setAttributes={ setAttributes }
@@ -1628,6 +1631,7 @@ const UAGBPostMasonry = ( props ) => {
 							}
 							min={ 0 }
 							max={ 100 }
+							displayUnit={ false }
 						/>
 					</>
 				}
