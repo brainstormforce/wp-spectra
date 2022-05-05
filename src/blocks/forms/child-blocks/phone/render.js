@@ -21,7 +21,7 @@ const Render = ( props ) => {
 
 	const { attributes, setAttributes, isSelected } = props;
 
-	const { block_id, phoneRequired, phoneName, pattern, selectPhoneCode } = attributes;
+	const { block_id, phoneRequired, phoneName, pattern, selectPhoneCode, autocomplete } = attributes;
 
 	let phone_html = '';
 
@@ -41,6 +41,7 @@ const Render = ( props ) => {
 				required={ phoneRequired }
 				className="uagb-forms-phone-input uagb-forms-input"
 				name={ block_id }
+				autoComplete={ autocomplete }
 			/>
 		);
 	} else {
