@@ -101,7 +101,7 @@ const attributes = {
 	},
 	customWidth: {
 		type: 'boolean',
-		default: false,
+		default: true,
 		UAGCopyPaste: {
 			styleType: 'custom-width'
 		},
@@ -660,6 +660,7 @@ const attributes = {
 		UAGCopyPaste: {
 			styleType: 'overall-border-width'
 		},
+		default: 1,
 	},
 	borderRadius: {
 		type: 'number',
