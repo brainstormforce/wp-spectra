@@ -27,7 +27,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 		 */
 		public static function get_buttons_child_selectors( $attr, $id, $child_migrate ) {
 
-			$wrapper = ( ! $child_migrate ) ? ' .uagb-buttons-repeater-' . $id : ' .uagb-buttons-repeater';
+			$wrapper= ( ! $child_migrate ) ? ' .uagb-buttons-repeater-' . $id : ' .uagb-button__wrapper .uagb-buttons-repeater';
 
 			$m_selectors = array();
 			$t_selectors = array();
@@ -37,7 +37,6 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 			$bottom_padding = isset( $attr['bottomPadding'] ) ? $attr['bottomPadding'] : $attr['vPadding'];
 			$left_padding   = isset( $attr['leftPadding'] ) ? $attr['leftPadding'] : $attr['hPadding'];
 			$right_padding  = isset( $attr['rightPadding'] ) ? $attr['rightPadding'] : $attr['hPadding'];
-
 			$attr['sizeType']       = isset( $attr['sizeType'] ) ? $attr['sizeType'] : 'px';
 			$attr['lineHeightType'] = isset( $attr['lineHeightType'] ) ? $attr['lineHeightType'] : 'em';
 
@@ -49,7 +48,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 
 			if ( 'transparent' === $attr['backgroundType'] ) {
 
-				$selectors[' .uagb-button__wrapper .uagb-buttons-repeater.wp-block-button__link']['background'] = 'transparent';
+				$selectors[' .uagb-buttons-repeater.wp-block-button__link']['background'] = 'transparent';
 
 			} elseif ( 'color' === $attr['backgroundType'] ) {
 
@@ -66,10 +65,10 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				);
 
 				$btn_bg_css = self::uag_get_background_obj( $bg_obj );
-				$selectors[' .uagb-button__wrapper .uagb-buttons-repeater'] = $btn_bg_css;
+				$selectors[' .uagb-buttons-repeater'] = $btn_bg_css;
 			}
 
-			$selectors[ $wrapper . '.wp-block-button__link' ]       = array(
+			$selectors[ $wrapper ]       = array(
 				'font-family'     => $attr['fontFamily'],
 				'font-weight'     => $attr['fontWeight'],
 				'font-style'      => $attr['fontStyle'],
@@ -87,11 +86,13 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				'margin-left'     => UAGB_Helper::get_css_value( $attr['leftMargin'], $attr['marginType'] ),
 				'margin-right'    => UAGB_Helper::get_css_value( $attr['rightMargin'], $attr['marginType'] ),
 			);
-			$selectors[ $wrapper . '.wp-block-button__link:hover' ] = array(
+			$selectors[ $wrapper. '.wp-block-button__link:hover' ] = array(
 				'color' => $attr['hColor'],
 			);
+
 			if ( 0 !== $attr['boxShadowHOffset'] || 0 !== $attr['boxShadowVOffset'] ) {
-				$selectors[ $wrapper . '.wp-block-button__link' ] = array(
+
+				$selectors[ $wrapper ] = array(
 					'box-shadow' =>
 					UAGB_Helper::get_css_value( $attr['boxShadowHOffset'], 'px' ) .
 					' ' .
