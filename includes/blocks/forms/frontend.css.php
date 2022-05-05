@@ -90,7 +90,7 @@ $selectors = array(
 		'background-color' => $attr['submitBgColorHover'],
 		'border-color'     => $attr['submitborderHoverColor'],
 	),
-	// Hover Colors
+	// Hover Colors.
 	' .uagb-forms-field-set:hover .uagb-forms-input-label' => array(
 		'color' => $attr['labelHoverColor'],
 	),
@@ -188,28 +188,28 @@ $selectors[' .uagb-slider']                              = array(
 );
 $selectors[' .uagb-forms-main-form .uagb-switch']        = array(
 	'height' => UAGB_Helper::get_css_value(
-		(int)( 20 + $attr['toggleWidthSize'] + ( $attr['inputborderWidth'] * 2 ) + ( ( 20 + $attr['toggleWidthSize'] ) / 3 ) ),
+		(int) ( 20 + $attr['toggleWidthSize'] + ( $attr['inputborderWidth'] * 2 ) + ( ( 20 + $attr['toggleWidthSize'] ) / 3 ) ),
 		'px'
 	),
 	'width'  => UAGB_Helper::get_css_value(
-		(int)( ( ( 20 + $attr['toggleWidthSize'] ) * 2.5 ) + ( $attr['inputborderWidth'] * 2 ) + ( ( 20 + $attr['toggleWidthSize'] ) / 3 ) ),
+		(int) ( ( ( 20 + $attr['toggleWidthSize'] ) * 2.5 ) + ( $attr['inputborderWidth'] * 2 ) + ( ( 20 + $attr['toggleWidthSize'] ) / 3 ) ),
 		'px'
 	),
 );
 $selectors[' .uagb-forms-main-form .uagb-slider:before'] = array(
 	'height'           => UAGB_Helper::get_css_value( 20 + $attr['toggleWidthSize'], 'px' ),
 	'width'            => UAGB_Helper::get_css_value( 20 + $attr['toggleWidthSize'], 'px' ),
-	'top'              => UAGB_Helper::get_css_value( (int)( ( 20 + $attr['toggleWidthSize'] ) / 6 ), 'px' ),
-	'bottom'           => UAGB_Helper::get_css_value( (int)( ( 20 + $attr['toggleWidthSize'] ) / 6 ), 'px' ),
-	'left'             => UAGB_Helper::get_css_value( (int)( ( 20 + $attr['toggleWidthSize'] ) / 6 ), 'px' ),
-	'background-color' => $attr['toggleDotColor'],	
+	'top'              => UAGB_Helper::get_css_value( (int) ( ( 20 + $attr['toggleWidthSize'] ) / 6 ), 'px' ),
+	'bottom'           => UAGB_Helper::get_css_value( (int) ( ( 20 + $attr['toggleWidthSize'] ) / 6 ), 'px' ),
+	'left'             => UAGB_Helper::get_css_value( (int) ( ( 20 + $attr['toggleWidthSize'] ) / 6 ), 'px' ),
+	'background-color' => $attr['toggleDotColor'],
 );
 $selectors[' .uagb-switch input:checked + .uagb-slider'] = array(
 	'background-color' => $attr['toggleActiveColor'],
 );
 $selectors[' .uagb-switch input:checked + .uagb-slider:before'] = array(
 	'transform'        => 'translateX(' . UAGB_Helper::get_css_value(
-		(int)( ( ( ( 20 + $attr['toggleWidthSize'] ) * 2.5 ) - ( 20 + $attr['toggleWidthSize'] ) ) ),
+		(int) ( ( ( ( 20 + $attr['toggleWidthSize'] ) * 2.5 ) - ( 20 + $attr['toggleWidthSize'] ) ) ),
 		'px'
 	) . ')',
 	'background-color' => $attr['toggleDotActiveColor'],
@@ -299,7 +299,7 @@ $t_selectors[' .uagb-forms-main-form  .uagb-forms-input.uagb-form-phone-country'
 );
 $t_selectors[' .uagb-switch input:checked + .uagb-slider:before'] = array(
 	'transform' => 'translateX(' . UAGB_Helper::get_css_value(
-		(int)( ( ( ( 20 + $attr['toggleWidthSizeTablet'] ) * 2.5 ) - ( 20 + $attr['toggleWidthSizeTablet'] ) ) ),
+		(int) ( ( ( ( 20 + $attr['toggleWidthSizeTablet'] ) * 2.5 ) - ( 20 + $attr['toggleWidthSizeTablet'] ) ) ),
 		'px'
 	) . ')',
 );
@@ -319,7 +319,7 @@ $m_selectors[' .uagb-forms-main-form  .uagb-forms-input'] = array(
 );
 $m_selectors[' .uagb-switch input:checked + .uagb-slider:before'] = array(
 	'transform' => 'translateX(' . UAGB_Helper::get_css_value(
-		(int)( ( ( ( 20 + $attr['toggleWidthSizeMobile'] ) * 2.5 ) - ( 20 + $attr['toggleWidthSizeMobile'] ) ) ),
+		(int) ( ( ( ( 20 + $attr['toggleWidthSizeMobile'] ) * 2.5 ) - ( 20 + $attr['toggleWidthSizeMobile'] ) ) ),
 		'px'
 	) . ')',
 );
@@ -379,20 +379,20 @@ if ( 'underlined' === $attr['formStyle'] ) {
 	);
 	$t_selectors[' .uagb-forms-main-form .uagb-switch']                                  = array(
 		'height' => UAGB_Helper::get_css_value(
-			(int)( 20 + $attr['toggleWidthSizeTablet'] + ( $attr['inputborderWidth'] * 2 ) + ( ( 20 + $attr['toggleWidthSizeTablet'] ) / 3 ) ),
+			(int) ( 20 + $attr['toggleWidthSizeTablet'] + ( $attr['inputborderWidth'] * 2 ) + ( ( 20 + $attr['toggleWidthSizeTablet'] ) / 3 ) ),
 			'px'
 		),
 		'width'  => UAGB_Helper::get_css_value(
-			(int)( ( ( 20 + $attr['toggleWidthSizeTablet'] ) * 2.5 ) + ( $attr['inputborderWidth'] * 2 ) + ( ( 20 + $attr['toggleWidthSizeTablet'] ) / 3 ) ),
+			(int) ( ( ( 20 + $attr['toggleWidthSizeTablet'] ) * 2.5 ) + ( $attr['inputborderWidth'] * 2 ) + ( ( 20 + $attr['toggleWidthSizeTablet'] ) / 3 ) ),
 			'px'
 		),
 	);
 	$t_selectors[' .uagb-forms-main-form .uagb-slider:before']                           = array(
 		'height' => UAGB_Helper::get_css_value( 20 + $attr['toggleWidthSizeTablet'], 'px' ),
 		'width'  => UAGB_Helper::get_css_value( 20 + $attr['toggleWidthSizeTablet'], 'px' ),
-		'top'    => UAGB_Helper::get_css_value( (int)( ( 20 + $attr['toggleWidthSizeTablet'] ) / 6 ), 'px' ),
-		'bottom' => UAGB_Helper::get_css_value( (int)( ( 20 + $attr['toggleWidthSizeTablet'] ) / 6 ), 'px' ),
-		'left'   => UAGB_Helper::get_css_value( (int)( ( 20 + $attr['toggleWidthSizeTablet'] ) / 6 ), 'px' ),
+		'top'    => UAGB_Helper::get_css_value( (int) ( ( 20 + $attr['toggleWidthSizeTablet'] ) / 6 ), 'px' ),
+		'bottom' => UAGB_Helper::get_css_value( (int) ( ( 20 + $attr['toggleWidthSizeTablet'] ) / 6 ), 'px' ),
+		'left'   => UAGB_Helper::get_css_value( (int) ( ( 20 + $attr['toggleWidthSizeTablet'] ) / 6 ), 'px' ),
 	);
 
 
@@ -422,20 +422,20 @@ if ( 'underlined' === $attr['formStyle'] ) {
 	);
 	$m_selectors[' .uagb-forms-main-form .uagb-switch']                                  = array(
 		'height' => UAGB_Helper::get_css_value(
-			(int)( 20 + $attr['toggleWidthSizeMobile'] + ( $attr['inputborderWidth'] * 2 ) + ( ( 20 + $attr['toggleWidthSizeMobile'] ) / 3 ) ),
+			(int) ( 20 + $attr['toggleWidthSizeMobile'] + ( $attr['inputborderWidth'] * 2 ) + ( ( 20 + $attr['toggleWidthSizeMobile'] ) / 3 ) ),
 			'px'
 		),
 		'width'  => UAGB_Helper::get_css_value(
-			(int)( ( ( 20 + $attr['toggleWidthSizeMobile'] ) * 2.5 ) + ( $attr['inputborderWidth'] * 2 ) + ( ( 20 + $attr['toggleWidthSizeMobile'] ) / 3 ) ),
+			(int) ( ( ( 20 + $attr['toggleWidthSizeMobile'] ) * 2.5 ) + ( $attr['inputborderWidth'] * 2 ) + ( ( 20 + $attr['toggleWidthSizeMobile'] ) / 3 ) ),
 			'px'
 		),
 	);
 	$m_selectors[' .uagb-forms-main-form .uagb-slider:before']                           = array(
 		'height' => UAGB_Helper::get_css_value( 20 + $attr['toggleWidthSizeMobile'], 'px' ),
 		'width'  => UAGB_Helper::get_css_value( 20 + $attr['toggleWidthSizeMobile'], 'px' ),
-		'top'    => UAGB_Helper::get_css_value( (int)( ( 20 + $attr['toggleWidthSizeMobile'] ) / 6 ), 'px' ),
-		'bottom' => UAGB_Helper::get_css_value( (int)( ( 20 + $attr['toggleWidthSizeMobile'] ) / 6 ), 'px' ),
-		'left'   => UAGB_Helper::get_css_value( (int)( ( 20 + $attr['toggleWidthSizeMobile'] ) / 6 ), 'px' ),
+		'top'    => UAGB_Helper::get_css_value( (int) ( ( 20 + $attr['toggleWidthSizeMobile'] ) / 6 ), 'px' ),
+		'bottom' => UAGB_Helper::get_css_value( (int) ( ( 20 + $attr['toggleWidthSizeMobile'] ) / 6 ), 'px' ),
+		'left'   => UAGB_Helper::get_css_value( (int) ( ( 20 + $attr['toggleWidthSizeMobile'] ) / 6 ), 'px' ),
 	);
 
 	$combined_selectors = array(
