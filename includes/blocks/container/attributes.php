@@ -20,7 +20,7 @@ return array(
 	'directionDesktop'               => 'column',
 	'directionTablet'                => '',
 	'directionMobile'                => '',
-	'alignItemsDesktop'              => 'stretch',
+	'alignItemsDesktop'              => 'center',
 	'alignItemsTablet'               => '',
 	'alignItemsMobile'               => '',
 	'justifyContentDesktop'          => 'center',
