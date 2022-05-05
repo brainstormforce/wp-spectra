@@ -9,7 +9,7 @@
 
 return array(
 	'classMigrate'            => false,
-	'align'                   => 'center',
+	'align'                   => '',
 	'headingColor'            => '',
 	'subHeadingColor'         => '',
 	'separatorBg'             => '#eee',

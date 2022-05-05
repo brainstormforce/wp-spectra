@@ -73,6 +73,7 @@ const attributes = {
 	},
 	descFontStyle: {
 		type: 'string',
+		default: 'italic',
 		UAGCopyPaste: {
 			styleType: 'desc-font-style'
 		}
@@ -119,14 +120,14 @@ const attributes = {
 	},
 	descSpaceTablet: {
 		type: 'number',
-		default: 0,
+		default: 20,
 		UAGCopyPaste: {
 			styleType: 'desc-bottom-margin'
 		}
 	},
 	descSpaceMobile: {
 		type: 'number',
-		default: 0,
+		default: 15,
 		UAGCopyPaste: {
 			styleType: 'desc-bottom-margin'
 		}
@@ -227,21 +228,21 @@ const attributes = {
 	},
 	authorSpace: {
 		type: 'number',
-		default: 10,
+		default: 15,
 		UAGCopyPaste: {
 			styleType: 'author-bottom-margin'
 		}
 	},
 	authorSpaceTablet: {
 		type: 'number',
-		default: 0,
+		default: 15,
 		UAGCopyPaste: {
 			styleType: 'author-bottom-margin'
 		}
 	},
 	authorSpaceMobile: {
 		type: 'number',
-		default: 0,
+		default: 15,
 		UAGCopyPaste: {
 			styleType: 'author-bottom-margin'
 		}
@@ -276,14 +277,14 @@ const attributes = {
 	},
 	authorImageWidthTablet: {
 		type: 'number',
-		default: 0,
+		default: 35,
 		UAGCopyPaste: {
 			styleType: 'author-image-width'
 		}
 	},
 	authorImageWidthMobile: {
 		type: 'number',
-		default: 0,
+		default: 30,
 		UAGCopyPaste: {
 			styleType: 'author-image-width'
 		}
@@ -295,6 +296,34 @@ const attributes = {
 			styleType: 'author-image-width-unit'
 		}
 	},
+	authorImageGap: {
+		type: 'number',
+		default: 10,
+		UAGCopyPaste: {
+			styleType: 'author-image-gap'
+		}
+	},
+	authorImageGapTablet: {
+		type: 'number',
+		default: 10,
+		UAGCopyPaste: {
+			styleType: 'author-image-gap-tablet'
+		}
+	},
+	authorImageGapMobile: {
+		type: 'number',
+		default: 10,
+		UAGCopyPaste: {
+			styleType: 'author-image-gap-mobile'
+		}
+	},
+	authorImageGapUnit: {
+		type: 'string',
+		default: 'px',
+		UAGCopyPaste: {
+			styleType: 'author-image-gap-unit'
+		}
+	},
 	authorImgBorderRadius: {
 		type: 'number',
 		default: 100,
@@ -304,14 +333,14 @@ const attributes = {
 	},
 	authorImgBorderRadiusTablet: {
 		type: 'number',
-		default: 0,
+		default: 100,
 		UAGCopyPaste: {
 			styleType: 'author-image-border-radius'
 		}
 	},
 	authorImgBorderRadiusMobile: {
 		type: 'number',
-		default: 0,
+		default: 100,
 		UAGCopyPaste: {
 			styleType: 'author-image-border-radius'
 		}
@@ -336,7 +365,7 @@ const attributes = {
 	},
 	enableTweet: {
 		type: 'boolean',
-		default: false,
+		default: true,
 	},
 	iconView: {
 		type: 'string',
@@ -500,6 +529,20 @@ const attributes = {
 			styleType: 'tweet-icon-spacing-unit'
 		}
 	},
+	tweetGap: {
+		type: 'number',
+		default: 10,
+		UAGCopyPaste: {
+			styleType: 'tweet-gap'
+		}
+	},
+	tweetGapUnit: {
+		type: 'string',
+		default: 'px',
+		UAGCopyPaste: {
+			styleType: 'tweet-gap-unit'
+		}
+	},
 	borderColor: {
 		type: 'string',
 		default: '#abb8c3',
@@ -530,14 +573,14 @@ const attributes = {
 	},
 	borderGapTablet: {
 		type: 'number',
-		default: 0,
+		default: 15,
 		UAGCopyPaste: {
 			styleType: 'desc-border-gap'
 		}
 	},
 	borderGapMobile: {
 		type: 'number',
-		default: 0,
+		default: 15,
 		UAGCopyPaste: {
 			styleType: 'desc-border-gap'
 		}
