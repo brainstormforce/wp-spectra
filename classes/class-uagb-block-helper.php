@@ -106,12 +106,14 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					$box_shadow_position_css,
 				);
 			}
+			$selectors[ $wrapper ]            = array(
+				'border-radius' => UAGB_Helper::get_css_value( $attr['borderRadius'], 'px' ),
+			);
 			if ( 'none' !== $attr['borderStyle'] ) {
 				$selectors[ $wrapper ]            = array(
 					'border-width'  => UAGB_Helper::get_css_value( $attr['borderWidth'], 'px' ),
 					'border-color'  => $attr['borderColor'],
-					'border-style'  => $attr['borderStyle'],
-					'border-radius' => UAGB_Helper::get_css_value( $attr['borderRadius'], 'px' ),
+					'border-style'  => $attr['borderStyle']
 				);
 				$selectors[ $wrapper . ':hover' ] = array(
 					'border-color' => $attr['borderHColor'],
