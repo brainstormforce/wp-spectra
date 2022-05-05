@@ -64,7 +64,8 @@
 	}
 
 
-	.block-editor-block-list__block:not([contenteditable]):focus{
+	.block-editor-block-list__block:not([contenteditable]):focus {
+
 		&::after {
 			z-index: 999;
 		}
