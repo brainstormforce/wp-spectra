@@ -188,7 +188,7 @@ UAGBForms = { // eslint-disable-line no-undef
 
 		let captcha_response;
 
-		if( '' == attr.afterSubmitToEmail || null == attr.afterSubmitToEmail ) {
+		if( '' === attr.afterSubmitToEmail || null === attr.afterSubmitToEmail ) {
 
 			const hideForm = document.querySelector( '[name="uagb-form-' + attr.block_id + '"]' );
 			hideForm.style.display = 'none';
