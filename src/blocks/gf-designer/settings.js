@@ -388,6 +388,79 @@ const Settings = ( props ) => {
 						},
 					] }
 				/>
+				<SpacingControl
+					{ ...props }
+					label={ __(
+						'Padding',
+						'ultimate-addons-for-gutenberg'
+					) }
+					valueTop={ {
+						value: fieldtopPadding,
+						label: 'fieldtopPadding',
+					} }
+					valueRight={ {
+						value: fieldrightPadding,
+						label: 'fieldrightPadding',
+					} }
+					valueBottom={ {
+						value: fieldbottomPadding,
+						label: 'fieldbottomPadding',
+					} }
+					valueLeft={ {
+						value: fieldleftPadding,
+						label: 'fieldleftPadding',
+					} }
+					valueTopTablet={ {
+						value: fieldtopTabletPadding,
+						label: 'fieldtopTabletPadding',
+					} }
+					valueRightTablet={ {
+						value: fieldrightTabletPadding,
+						label: 'fieldrightTabletPadding',
+					} }
+					valueBottomTablet={ {
+						value: fieldbottomTabletPadding,
+						label: 'fieldbottomTabletPadding',
+					} }
+					valueLeftTablet={ {
+						value: fieldleftTabletPadding,
+						label: 'fieldleftTabletPadding',
+					} }
+					valueTopMobile={ {
+						value: fieldtopMobilePadding,
+						label: 'fieldtopMobilePadding',
+					} }
+					valueRightMobile={ {
+						value: fieldrightMobilePadding,
+						label: 'fieldrightMobilePadding',
+					} }
+					valueBottomMobile={ {
+						value: fieldbottomMobilePadding,
+						label: 'fieldbottomMobilePadding',
+					} }
+					valueLeftMobile={ {
+						value: fieldleftMobilePadding,
+						label: 'fieldleftMobilePadding',
+					} }
+					unit={ {
+						value: fieldpaddingUnit,
+						label: 'fieldpaddingUnit',
+					} }
+					mUnit={ {
+						value: fieldmobilePaddingUnit,
+						label: 'fieldmobilePaddingUnit',
+					} }
+					tUnit={ {
+						value: fieldtabletPaddingUnit,
+						label: 'fieldtabletPaddingUnit',
+					} }
+					attributes={ attributes }
+					setAttributes={ setAttributes }
+					link={ {
+						value: fieldpaddingLink,
+						label: 'fieldpaddingLink',
+					} }
+				/>
 				{ fieldStyle === 'box' && (
 					<SelectControl
 						label={ __(
@@ -1302,27 +1375,6 @@ const Settings = ( props ) => {
 					showIcons={ true }
 				/>
 				{ btnBorderSetting() }
-				<UAGTabsControl
-					tabs={ [
-						{
-							name: 'normal',
-							title: __(
-								'Normal',
-								'ultimate-addons-for-gutenberg'
-							),
-						},
-						{
-							name: 'hover',
-							title: __(
-								'Hover',
-								'ultimate-addons-for-gutenberg'
-							),
-						},
-					] }
-					normal={ buttonNormalSettings() }
-					hover={ buttonHoverSettings() }
-					disableBottomSeparator={ true }
-				/>
 				<TypographyControl
 					label={ __(
 						'Typography',
@@ -1385,137 +1437,6 @@ const Settings = ( props ) => {
 					lineHeightTablet={ {
 						value: buttonLineHeightTablet,
 						label: 'buttonLineHeightTablet',
-					} }
-				/>
-			</UAGAdvancedPanelBody>
-		);
-	};
-
-	const spacingSetting = () => {
-		return (
-			<UAGAdvancedPanelBody
-				title={ __( 'Spacing', 'ultimate-addons-for-gutenberg' ) }
-				initialOpen={ false }
-			>
-				<ResponsiveSlider
-					label={ __(
-						'Label & Input Space',
-						'ultimate-addons-for-gutenberg'
-					) }
-					data={ {
-						desktop: {
-							value: fieldLabelSpacing,
-							label: 'fieldLabelSpacing',
-						},
-						tablet: {
-							value: fieldLabelSpacingTablet,
-							label: 'fieldLabelSpacingTablet',
-						},
-						mobile: {
-							value: fieldLabelSpacingMobile,
-							label: 'fieldLabelSpacingMobile',
-						},
-					} }
-					min={ 0 }
-					max={ 30 }
-					displayUnit={ false }
-					setAttributes={ setAttributes }
-				/>
-				<ResponsiveSlider
-					label={ __(
-						'Fields Space',
-						'ultimate-addons-for-gutenberg'
-					) }
-					data={ {
-						desktop: {
-							value: fieldSpacing,
-							label: 'fieldSpacing',
-						},
-						tablet: {
-							value: fieldSpacingTablet,
-							label: 'fieldSpacingTablet',
-						},
-						mobile: {
-							value: fieldSpacingMobile,
-							label: 'fieldSpacingMobile',
-						},
-					} }
-					min={ 0 }
-					max={ 50 }
-					displayUnit={ false }
-					setAttributes={ setAttributes }
-				/>
-				<SpacingControl
-					{ ...props }
-					label={ __(
-						'Field Padding',
-						'ultimate-addons-for-gutenberg'
-					) }
-					valueTop={ {
-						value: fieldtopPadding,
-						label: 'fieldtopPadding',
-					} }
-					valueRight={ {
-						value: fieldrightPadding,
-						label: 'fieldrightPadding',
-					} }
-					valueBottom={ {
-						value: fieldbottomPadding,
-						label: 'fieldbottomPadding',
-					} }
-					valueLeft={ {
-						value: fieldleftPadding,
-						label: 'fieldleftPadding',
-					} }
-					valueTopTablet={ {
-						value: fieldtopTabletPadding,
-						label: 'fieldtopTabletPadding',
-					} }
-					valueRightTablet={ {
-						value: fieldrightTabletPadding,
-						label: 'fieldrightTabletPadding',
-					} }
-					valueBottomTablet={ {
-						value: fieldbottomTabletPadding,
-						label: 'fieldbottomTabletPadding',
-					} }
-					valueLeftTablet={ {
-						value: fieldleftTabletPadding,
-						label: 'fieldleftTabletPadding',
-					} }
-					valueTopMobile={ {
-						value: fieldtopMobilePadding,
-						label: 'fieldtopMobilePadding',
-					} }
-					valueRightMobile={ {
-						value: fieldrightMobilePadding,
-						label: 'fieldrightMobilePadding',
-					} }
-					valueBottomMobile={ {
-						value: fieldbottomMobilePadding,
-						label: 'fieldbottomMobilePadding',
-					} }
-					valueLeftMobile={ {
-						value: fieldleftMobilePadding,
-						label: 'fieldleftMobilePadding',
-					} }
-					unit={ {
-						value: fieldpaddingUnit,
-						label: 'fieldpaddingUnit',
-					} }
-					mUnit={ {
-						value: fieldmobilePaddingUnit,
-						label: 'fieldmobilePaddingUnit',
-					} }
-					tUnit={ {
-						value: fieldtabletPaddingUnit,
-						label: 'fieldtabletPaddingUnit',
-					} }
-					attributes={ attributes }
-					setAttributes={ setAttributes }
-					link={ {
-						value: fieldpaddingLink,
-						label: 'fieldpaddingLink',
 					} }
 				/>
 				<SpacingControl
@@ -1591,78 +1512,84 @@ const Settings = ( props ) => {
 						label: 'buttonpaddingLink',
 					} }
 				/>
-				<SpacingControl
-					{ ...props }
+				<UAGTabsControl
+					tabs={ [
+						{
+							name: 'normal',
+							title: __(
+								'Normal',
+								'ultimate-addons-for-gutenberg'
+							),
+						},
+						{
+							name: 'hover',
+							title: __(
+								'Hover',
+								'ultimate-addons-for-gutenberg'
+							),
+						},
+					] }
+					normal={ buttonNormalSettings() }
+					hover={ buttonHoverSettings() }
+					disableBottomSeparator={ true }
+				/>
+			</UAGAdvancedPanelBody>
+		);
+	};
+
+	const spacingSetting = () => {
+		return (
+			<UAGAdvancedPanelBody
+				title={ __( 'Spacing', 'ultimate-addons-for-gutenberg' ) }
+				initialOpen={ false }
+			>
+				<ResponsiveSlider
 					label={ __(
-						'Message Padding',
+						'Label & Input Space',
 						'ultimate-addons-for-gutenberg'
 					) }
-					valueTop={ {
-						value: msgtopPadding,
-						label: 'msgtopPadding',
+					data={ {
+						desktop: {
+							value: fieldLabelSpacing,
+							label: 'fieldLabelSpacing',
+						},
+						tablet: {
+							value: fieldLabelSpacingTablet,
+							label: 'fieldLabelSpacingTablet',
+						},
+						mobile: {
+							value: fieldLabelSpacingMobile,
+							label: 'fieldLabelSpacingMobile',
+						},
 					} }
-					valueRight={ {
-						value: msgrightPadding,
-						label: 'msgrightPadding',
-					} }
-					valueBottom={ {
-						value: msgbottomPadding,
-						label: 'msgbottomPadding',
-					} }
-					valueLeft={ {
-						value: msgleftPadding,
-						label: 'msgleftPadding',
-					} }
-					valueTopTablet={ {
-						value: msgtopTabletPadding,
-						label: 'msgtopTabletPadding',
-					} }
-					valueRightTablet={ {
-						value: msgrightTabletPadding,
-						label: 'msgrightTabletPadding',
-					} }
-					valueBottomTablet={ {
-						value: msgbottomTabletPadding,
-						label: 'msgbottomTabletPadding',
-					} }
-					valueLeftTablet={ {
-						value: msgleftTabletPadding,
-						label: 'msgleftTabletPadding',
-					} }
-					valueTopMobile={ {
-						value: msgtopMobilePadding,
-						label: 'msgtopMobilePadding',
-					} }
-					valueRightMobile={ {
-						value: msgrightMobilePadding,
-						label: 'msgrightMobilePadding',
-					} }
-					valueBottomMobile={ {
-						value: msgbottomMobilePadding,
-						label: 'msgbottomMobilePadding',
-					} }
-					valueLeftMobile={ {
-						value: msgleftMobilePadding,
-						label: 'msgleftMobilePadding',
-					} }
-					unit={ {
-						value: msgpaddingUnit,
-						label: 'msgpaddingUnit',
-					} }
-					mUnit={ {
-						value: msgmobilePaddingUnit,
-						label: 'msgmobilePaddingUnit',
-					} }
-					tUnit={ {
-						value: msgtabletPaddingUnit,
-						label: 'msgtabletPaddingUnit',
-					} }
-					attributes={ attributes }
+					min={ 0 }
+					max={ 30 }
+					displayUnit={ false }
 					setAttributes={ setAttributes }
-					link={ {
-						value: msgpaddingLink,
-						label: 'msgpaddingLink',
+				/>
+				<ResponsiveSlider
+					label={ __(
+						'Fields Space',
+						'ultimate-addons-for-gutenberg'
+					) }
+					data={ {
+						desktop: {
+							value: fieldSpacing,
+							label: 'fieldSpacing',
+						},
+						tablet: {
+							value: fieldSpacingTablet,
+							label: 'fieldSpacingTablet',
+						},
+						mobile: {
+							value: fieldSpacingMobile,
+							label: 'fieldSpacingMobile',
+						},
 					} }
+					min={ 0 }
+					max={ 50 }
+					displayUnit={ false }
+					setAttributes={ setAttributes }
 				/>
 			</UAGAdvancedPanelBody>
 		);
@@ -1875,7 +1802,7 @@ const Settings = ( props ) => {
 						) }
 						<Range
 							label={ __(
-								'Radius',
+								'Checkbox Rounded Corners',
 								'ultimate-addons-for-gutenberg'
 							) }
 							setAttributes={ setAttributes }
@@ -2004,6 +1931,79 @@ const Settings = ( props ) => {
 					lineHeightTablet={ {
 						value: validationMsgLineHeightTablet,
 						label: 'validationMsgLineHeightTablet',
+					} }
+				/>
+				<SpacingControl
+					{ ...props }
+					label={ __(
+						'Padding',
+						'ultimate-addons-for-gutenberg'
+					) }
+					valueTop={ {
+						value: msgtopPadding,
+						label: 'msgtopPadding',
+					} }
+					valueRight={ {
+						value: msgrightPadding,
+						label: 'msgrightPadding',
+					} }
+					valueBottom={ {
+						value: msgbottomPadding,
+						label: 'msgbottomPadding',
+					} }
+					valueLeft={ {
+						value: msgleftPadding,
+						label: 'msgleftPadding',
+					} }
+					valueTopTablet={ {
+						value: msgtopTabletPadding,
+						label: 'msgtopTabletPadding',
+					} }
+					valueRightTablet={ {
+						value: msgrightTabletPadding,
+						label: 'msgrightTabletPadding',
+					} }
+					valueBottomTablet={ {
+						value: msgbottomTabletPadding,
+						label: 'msgbottomTabletPadding',
+					} }
+					valueLeftTablet={ {
+						value: msgleftTabletPadding,
+						label: 'msgleftTabletPadding',
+					} }
+					valueTopMobile={ {
+						value: msgtopMobilePadding,
+						label: 'msgtopMobilePadding',
+					} }
+					valueRightMobile={ {
+						value: msgrightMobilePadding,
+						label: 'msgrightMobilePadding',
+					} }
+					valueBottomMobile={ {
+						value: msgbottomMobilePadding,
+						label: 'msgbottomMobilePadding',
+					} }
+					valueLeftMobile={ {
+						value: msgleftMobilePadding,
+						label: 'msgleftMobilePadding',
+					} }
+					unit={ {
+						value: msgpaddingUnit,
+						label: 'msgpaddingUnit',
+					} }
+					mUnit={ {
+						value: msgmobilePaddingUnit,
+						label: 'msgmobilePaddingUnit',
+					} }
+					tUnit={ {
+						value: msgtabletPaddingUnit,
+						label: 'msgtabletPaddingUnit',
+					} }
+					attributes={ attributes }
+					setAttributes={ setAttributes }
+					link={ {
+						value: msgpaddingLink,
+						label: 'msgpaddingLink',
 					} }
 				/>
 				<ToggleControl
