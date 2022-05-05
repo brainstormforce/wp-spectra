@@ -39,7 +39,6 @@ const Settings = ( props ) => {
 		confirmationMessage,
 		failedMessage,
 		confirmationUrl,
-		sendAfterSubmitEmail,
 		afterSubmitToEmail,
 		afterSubmitCcEmail,
 		afterSubmitBccEmail,
@@ -899,7 +898,7 @@ const Settings = ( props ) => {
 			>
 				<p className="uagb-form-notice">
 					{ __(
-						'P.S. Note that You must enter Email ID to receive Form data. If you kept blank then Form will not be submitted. ',
+						'Note: It is recommended to enter an email id in order to receive the data submitted through a form, else you will not receive any data.',
 						'ultimate-addons-for-gutenberg'
 					) }
 				</p>
