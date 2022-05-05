@@ -27,7 +27,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 		 */
 		public static function get_buttons_child_selectors( $attr, $id, $child_migrate ) {
 
-			$wrapper= ( ! $child_migrate ) ? ' .uagb-buttons-repeater-' . $id : ' .uagb-button__wrapper .uagb-buttons-repeater';
+			$wrapper = ( ! $child_migrate ) ? ' .uagb-buttons-repeater-' . $id : ' .uagb-buttons-repeater';
 
 			$m_selectors = array();
 			$t_selectors = array();
@@ -37,6 +37,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 			$bottom_padding = isset( $attr['bottomPadding'] ) ? $attr['bottomPadding'] : $attr['vPadding'];
 			$left_padding   = isset( $attr['leftPadding'] ) ? $attr['leftPadding'] : $attr['hPadding'];
 			$right_padding  = isset( $attr['rightPadding'] ) ? $attr['rightPadding'] : $attr['hPadding'];
+
 			$attr['sizeType']       = isset( $attr['sizeType'] ) ? $attr['sizeType'] : 'px';
 			$attr['lineHeightType'] = isset( $attr['lineHeightType'] ) ? $attr['lineHeightType'] : 'em';
 
@@ -48,13 +49,13 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 
 			if ( 'transparent' === $attr['backgroundType'] ) {
 
-				$selectors[' .uagb-buttons-repeater.wp-block-button__link']['background'] = 'transparent';
+				$selectors[' .wp-block-button__link']['background'] = 'transparent';
 
 			} elseif ( 'color' === $attr['backgroundType'] ) {
 
-				$selectors[' .uagb-button__wrapper .uagb-buttons-repeater.wp-block-button__link']['background'] = $attr['background'];
+				$selectors[' .wp-block-button__link']['background'] = $attr['background'];
 
-				$selectors[' .uagb-button__wrapper .uagb-buttons-repeater.wp-block-button__link:hover'] = array(
+				$selectors[' .wp-block-button__link:hover'] = array(
 					'background' => $attr['hBackground'],
 				);
 
@@ -64,16 +65,17 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					'gradientValue'  => $attr['gradientValue'],
 				);
 
-				$btn_bg_css = self::uag_get_background_obj( $bg_obj );
-				$selectors[' .uagb-buttons-repeater'] = $btn_bg_css;
+				$btn_bg_css                           = self::uag_get_background_obj( $bg_obj );
+				$selectors[' .wp-block-button__link'] = $btn_bg_css;
 			}
 
-			$selectors[ $wrapper ]       = array(
+			$selectors[' .uagb-button__wrapper .uagb-buttons-repeater.wp-block-button__link'] = array(
 				'font-family'     => $attr['fontFamily'],
 				'font-weight'     => $attr['fontWeight'],
 				'font-style'      => $attr['fontStyle'],
 				'text-transform'  => $attr['transform'],
 				'text-decoration' => $attr['decoration'],
+				'border-radius'   => UAGB_Helper::get_css_value( $attr['borderRadius'], 'px' ),
 				'font-size'       => UAGB_Helper::get_css_value( $attr['size'], $attr['sizeType'] ),
 				'line-height'     => UAGB_Helper::get_css_value( $attr['lineHeight'], $attr['lineHeightType'] ),
 				'padding-top'     => UAGB_Helper::get_css_value( $top_padding, $attr['paddingUnit'] ),
@@ -86,13 +88,11 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				'margin-left'     => UAGB_Helper::get_css_value( $attr['leftMargin'], $attr['marginType'] ),
 				'margin-right'    => UAGB_Helper::get_css_value( $attr['rightMargin'], $attr['marginType'] ),
 			);
-			$selectors[ $wrapper. '.wp-block-button__link:hover' ] = array(
+			$selectors[ $wrapper . '.wp-block-button__link:hover' ]                           = array(
 				'color' => $attr['hColor'],
 			);
-
 			if ( 0 !== $attr['boxShadowHOffset'] || 0 !== $attr['boxShadowVOffset'] ) {
-
-				$selectors[ $wrapper ] = array(
+				$selectors[ $wrapper . '.wp-block-button__link' ] = array(
 					'box-shadow' =>
 					UAGB_Helper::get_css_value( $attr['boxShadowHOffset'], 'px' ) .
 					' ' .
@@ -107,9 +107,6 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					$box_shadow_position_css,
 				);
 			}
-			$selectors[ $wrapper.'.wp-block-button__link' ] = array(
-				'border-radius' => UAGB_Helper::get_css_value( $attr['borderRadius'], 'px' ),
-			);
 			if ( 'none' !== $attr['borderStyle'] ) {
 				$selectors[ $wrapper ]            = array(
 					'border-width' => UAGB_Helper::get_css_value( $attr['borderWidth'], 'px' ),
