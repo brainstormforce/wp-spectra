@@ -1,4 +1,4 @@
-import React, {Suspense} from 'react';
+import React, {Suspense, useEffect} from 'react';
 import lazyLoader from '@Controls/lazy-loader';
 import TypographyControl from '@Components/typography';
 import { useViewportMatch } from '@wordpress/compose';
@@ -16,6 +16,7 @@ import { useSelect } from '@wordpress/data';
 import { __ } from '@wordpress/i18n';
 import MultiButtonsControl from '@Components/multi-buttons-control';
 import UAGSelectControl from '@Components/select-control';
+import { useDeviceType } from '@Controls/getPreviewType';
 import {
 	store as blockEditorStore,
 	InspectorControls,
@@ -36,8 +37,9 @@ import UAGAdvancedPanelBody from '@Components/advanced-panel-body';
 
 
 export default function Settings( props ) {
+	const deviceType = useDeviceType();
 	props = props.parentProps;
-	const { attributes, setAttributes, deviceType, context, isSelected, clientId } = props;
+	const { attributes, setAttributes, context, isSelected, clientId } = props;
 	const {
 		layout,
 		id,
@@ -50,6 +52,8 @@ export default function Settings( props ) {
 		align,
 		alt,
 		sizeSlug,
+		sizeSlugTablet,
+		sizeSlugMobile,
 		// image
 		imageTopMargin,
 		imageRightMargin,
@@ -194,6 +198,9 @@ export default function Settings( props ) {
 		maskPosition,
 		maskRepeat
 	} = attributes;
+
+
+
 	const {imageSizes} = useSelect(
 		( select ) => {
 			const {getSettings} = select( blockEditorStore );
@@ -213,6 +220,16 @@ export default function Settings( props ) {
 		},
 		[ id, isSelected ]
 	);
+
+	useEffect( () => {
+		if( 'Tablet' === deviceType ){
+			updateTabletImage( sizeSlugTablet )
+		} else if( 'Mobile' === deviceType ) {
+			updateMobileImage( sizeSlugMobile )
+		} else {
+			updateImage( sizeSlug )
+		}
+	}, [sizeSlug, sizeSlugTablet, sizeSlugMobile] )
 
 	const { allowResize = true } = context;
 	const isLargeViewport = useViewportMatch( 'medium' );
@@ -234,6 +251,32 @@ export default function Settings( props ) {
 			width: newUrl?.width,
 			height: newUrl?.height,
 			sizeSlug: newSizeSlug,
+		} );
+	}
+
+	function updateTabletImage( newSizeSlug ) {
+		const newUrl = image?.media_details?.sizes[newSizeSlug]
+		if ( ! newUrl ) {
+			return null;
+		}
+		setAttributes( {
+			urlTablet: newUrl?.source_url,
+			widthTablet: newUrl?.width,
+			heightTablet: newUrl?.height,
+			sizeSlugTablet: newSizeSlug,
+		} );
+	}
+
+	function updateMobileImage( newSizeSlug ) {
+		const newUrl = image?.media_details?.sizes[newSizeSlug]
+		if ( ! newUrl ) {
+			return null;
+		}
+		setAttributes( {
+			urlMobile: newUrl?.source_url,
+			widthMobile: newUrl?.width,
+			heightMobile: newUrl?.height,
+			sizeSlugMobile: newSizeSlug,
 		} );
 	}
 
@@ -299,7 +342,9 @@ export default function Settings( props ) {
 						<ImageSizeControl
 							onChangeImage={ updateImage }
 							onChange={ ( value ) => setAttributes( value ) }
-							slug={ sizeSlug }
+							sizeSlug={ sizeSlug }
+							sizeSlugTablet={ sizeSlugTablet }
+							sizeSlugMobile={ sizeSlugMobile }
 							width={ width }
 							widthTablet={widthTablet}
 							widthMobile={widthMobile}

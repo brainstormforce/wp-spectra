@@ -26,6 +26,8 @@ export default function Image( {
 	temporaryURL,
 	attributes: {
 		url = '',
+		urlTablet = '',
+		urlMobile = '',
 		alt,
 		align,
 		id,
@@ -143,6 +145,7 @@ export default function Image( {
 		// should direct focus to block.
 		<>
 			<img
+				srcSet={`${temporaryURL || url} 1024w${urlTablet ? ',' + urlTablet + ' 780w' : ''}${urlMobile ? ', ' + urlMobile + ' 360w' : ''}`}
 				src={ temporaryURL || url }
 				alt={ defaultedAlt }
 				onLoad={ ( event ) => {

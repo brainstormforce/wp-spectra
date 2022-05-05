@@ -14,6 +14,14 @@ const attributes = {
 		type: 'string',
 		default: '',
 	},
+	urlTablet: {
+		type: 'string',
+		default: '',
+	},
+	urlMobile: {
+		type: 'string',
+		default: '',
+	},
 	alt: {
 		type: 'string',
 		default: '',
@@ -79,6 +87,14 @@ const attributes = {
 		default: '',
 	},
 	sizeSlug: {
+		type: 'string',
+		default: '',
+	},
+	sizeSlugTablet: {
+		type: 'string',
+		default: '',
+	},
+	sizeSlugMobile: {
 		type: 'string',
 		default: '',
 	},
