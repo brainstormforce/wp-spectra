@@ -498,6 +498,12 @@ html[dir="rtl"] .uagb-gf-styler__btn-align-left .gform_page .gform_page_footer i
 	border: none;
 }
 
+.wp-block-uagb-gf-styler .gform_wrapper .ginput_container_checkbox .gfield_checkbox .gchoice,
+.wp-block-uagb-gf-styler .gform_wrapper .ginput_container_radio .gfield_radio .gchoice {
+	margin-bottom: 5px;
+	line-height: 0;
+}
+
 /* Gravity Form ends */
 
 @media only screen and (max-width: 976px) {
