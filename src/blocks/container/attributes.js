@@ -105,7 +105,7 @@ const attributes = {
 	},
 	alignItemsDesktop: {
 		type: 'string',
-		default: 'stretch',
+		default: 'center',
 		UAGCopyPaste: {
 			styleType: 'container-align-items-desktop'
 		},

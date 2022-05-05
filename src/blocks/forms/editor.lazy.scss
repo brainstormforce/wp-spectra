@@ -56,3 +56,23 @@ select.uagb-forms-select-box.uagb-forms-input {
 [data-type="uagb/forms"] .block-editor-block-variation-picker__variation.components-button.has-icon {
 	width: 90px;
 }
+
+.uagb-forms-phone-wrap {
+
+	& .uagb-forms-phone-flex {
+		display: flex;
+		width: 100%;
+
+		& .components-base-control__field {
+			height: calc(100% - 8px);
+		}
+
+		& .uagb-form-phone-country {
+			width: auto !important;
+		}
+
+		& .uagb-forms-phone-input {
+			margin-bottom: 8px;
+		}
+	}
+}
