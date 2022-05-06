@@ -152,7 +152,8 @@ const Settings = ( props ) => {
 		bottomInvert,
 
 		textColor,
-
+		linkColor,
+		
 	} = attributes;
 
 	let currentDirection = directionDesktop;
@@ -849,6 +850,16 @@ const Settings = ( props ) => {
 					colorValue={ textColor }
 					onColorChange={ ( value ) =>
 						setAttributes( { textColor: value } )
+					}
+				/>
+				<AdvancedPopColorControl
+					label={ __(
+						'Link Color',
+						'ultimate-addons-for-gutenberg'
+					) }
+					colorValue={ linkColor }
+					onColorChange={ ( value ) =>
+						setAttributes( { linkColor: value } )
 					}
 				/>
 			</UAGAdvancedPanelBody>

@@ -793,6 +793,13 @@ const attributes = {
 		},
 		default: 'inherit',
 	},
+	linkColor: {
+		type: 'string',
+		UAGCopyPaste: {
+			styleType: 'link-color'
+		},
+		default: 'inherit',
+	},
 };
 
 export default attributes;

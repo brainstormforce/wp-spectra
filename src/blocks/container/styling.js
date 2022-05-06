@@ -123,6 +123,7 @@ function styling( props ) {
 		backgroundVideo,
 
 		textColor,
+		linkColor,
 	} = attributes;
 
 
@@ -152,6 +153,9 @@ function styling( props ) {
 	const selectors = {
 		' .uagb-container' : {
 			'color': textColor,
+		},
+		' .uagb-container a' : {
+			'color': linkColor,
 		},
 		' .uagb-container__shape-top svg' : {
 			'width': 'calc( ' + topWidth + '% + 1.3px )',
