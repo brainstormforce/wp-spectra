@@ -32,15 +32,24 @@
 		.uagb-forms-checkbox-wrap .uagb-form-checkbox-option input.uagb-inner-input-view {
 			width: 33%;
 		}
+		.uagb-forms-phone-wrap{
+			.uagb-form-phone-country {
+				width: 23%;
+				margin-right: 5px;
+			}
+			.uagb-forms-phone-input {
+				width: 75% !important;
+			}
+		}
 		//Phone block css.
 		.uagb-forms-phone-flex {
 			display: flex;
 			width: 100%;
-
-			& .uagb-form-phone-country {
+			.uagb-form-phone-country {
 				width: 23%;
 				margin-right: 5px;
 			}
+
 		}
 
 		.required::after {
