@@ -11,6 +11,9 @@ import MultiButtonsControl from '../multi-buttons-control/index';
 import styles from './editor.lazy.scss';
 import React, { useLayoutEffect } from 'react';
 const BoxShadowControl = ( props ) => {
+
+	const [ showAdvancedControls, toggleAdvancedControls ] = useState( false );
+
 	// Add and remove the CSS on the drop and remove of the component.
 	useLayoutEffect( () => {
 		styles.use();
@@ -18,7 +21,18 @@ const BoxShadowControl = ( props ) => {
 			styles.unuse();
 		};
 	}, [] );
-	const [ showAdvancedControls, toggleAdvancedControls ] = useState( false );
+
+	useLayoutEffect( () => {
+		window.addEventListener( 'click', function( e ){
+			const typoDiv = document.querySelector( '.uagb-box-shadow-advanced' );
+			const actionsDiv = document.querySelector( '.uag-box-shadow-button' );
+			if ( typoDiv ) {
+				if ( ! typoDiv?.contains( e.target ) && ! actionsDiv?.contains( e.target ) && ! e.target?.classList?.contains( 'uagb-advanced-color-indicate' ) && ! e.target?.parentElement?.closest( '.uagb-popover-color' ) ){
+					toggleAdvancedControls( false )
+				}
+			}
+		  } );
+	}, [] );
 
 	const {
 		setAttributes,
