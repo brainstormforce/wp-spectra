@@ -96,6 +96,30 @@ const attributes = {
 	vPaddingSubmit : {
 		type: "number",
 	},
+	paddingBtnUnit: {
+		type: 'string',
+		default: 'px',
+	},
+	mobilePaddingBtnUnit: {
+		type: 'string',
+		default: 'px',
+	},
+	tabletPaddingBtnUnit: {
+		type: 'string',
+		default: 'px',
+	},
+	paddingFieldUnit: {
+		type: 'string',
+		default: 'px'
+	},
+	paddingFieldUnitmobile: {
+		type: 'string',
+		default: 'px',
+	},
+	paddingFieldUnitTablet: {
+		type: 'string',
+		default: 'px',
+	},
 	// Submit text Typography
 
 	submitTextloadGoogleFonts: {
