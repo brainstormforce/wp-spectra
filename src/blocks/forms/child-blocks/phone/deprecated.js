@@ -25,6 +25,10 @@ const attributes = {
 		type: 'string',
 		default: '+44'
 	},
+	autocomplete: {
+		type: 'string',
+		default: 'tel-national',
+	}
 }
 const deprecated = [
 	{
