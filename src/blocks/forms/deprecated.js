@@ -409,7 +409,15 @@ const attributes = {
 	captchaMessage:{
 		type:"string",
 		default:__("Please fill up the above captcha." , 'ultimate-addons-for-gutenberg')
-	}
+	},
+	fieldGapType: {
+		type: 'string',
+		default: 'px',
+	},
+	toggleSizeType: {
+		type: 'string',
+		default: 'px',
+	},
 }
 
 const deprecated = [

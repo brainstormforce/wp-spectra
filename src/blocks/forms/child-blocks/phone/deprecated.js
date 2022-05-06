@@ -20,7 +20,11 @@ const attributes = {
     pattern: {
         type: "string",
         default: __("[0-9]{3}-[0-9]{3}-[0-9]{4}" , 'ultimate-addons-for-gutenberg'),
-    }
+    },
+	selectPhoneCode: {
+		type: 'string',
+		default: '+44'
+	},
 }
 const deprecated = [
 	{
