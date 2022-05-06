@@ -153,6 +153,7 @@ const Settings = ( props ) => {
 
 		textColor,
 		linkColor,
+		linkHoverColor,
 		
 	} = attributes;
 
@@ -860,6 +861,16 @@ const Settings = ( props ) => {
 					colorValue={ linkColor }
 					onColorChange={ ( value ) =>
 						setAttributes( { linkColor: value } )
+					}
+				/>
+				<AdvancedPopColorControl
+					label={ __(
+						'Link Color',
+						'ultimate-addons-for-gutenberg'
+					) }
+					colorValue={ linkHoverColor }
+					onColorChange={ ( value ) =>
+						setAttributes( { linkHoverColor: value } )
 					}
 				/>
 			</UAGAdvancedPanelBody>

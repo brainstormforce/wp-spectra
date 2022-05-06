@@ -800,6 +800,13 @@ const attributes = {
 		},
 		default: 'inherit',
 	},
+	linkHoverColor: {
+		type: 'string',
+		UAGCopyPaste: {
+			styleType: 'link-hover-color'
+		},
+		default: 'inherit',
+	},
 };
 
 export default attributes;

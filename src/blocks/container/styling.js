@@ -124,6 +124,7 @@ function styling( props ) {
 
 		textColor,
 		linkColor,
+		linkHoverColor,
 	} = attributes;
 
 
@@ -156,6 +157,9 @@ function styling( props ) {
 		},
 		' .uagb-container a' : {
 			'color': linkColor,
+		},
+		' .uagb-container a:hover' : {
+			'color': linkHoverColor,
 		},
 		' .uagb-container__shape-top svg' : {
 			'width': 'calc( ' + topWidth + '% + 1.3px )',
