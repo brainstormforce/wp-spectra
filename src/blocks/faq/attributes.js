@@ -82,7 +82,7 @@ const attributes = {
 		type: 'string',
 		default: 'px',
 		UAGCopyPaste: {
-			styleType: 'row-gap-type'
+			styleType: 'column-gap-type'
 		},
 	},
 	boxBgColor: {
