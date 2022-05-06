@@ -786,6 +786,13 @@ const attributes = {
 		},
 		default: 0.5,
 	},
+	textColor: {
+		type: 'string',
+		UAGCopyPaste: {
+			styleType: 'text-color'
+		},
+		default: 'inherit',
+	},
 };
 
 export default attributes;
