@@ -50,6 +50,13 @@ const attributes = {
 			styleType: 'row-gap-mobile'
 		},
 	},
+	rowsGapUnit: {
+		type: 'string',
+		default: 'px',
+		UAGCopyPaste: {
+			styleType: 'row-gap-type'
+		},
+	},
 	columnsGap: {
 		type: 'number',
 		default: 10,
@@ -69,6 +76,13 @@ const attributes = {
 		default: 10,
 		UAGCopyPaste: {
 			styleType: 'column-gap-mobile'
+		},
+	},
+	columnsGapUnit: {
+		type: 'string',
+		default: 'px',
+		UAGCopyPaste: {
+			styleType: 'row-gap-type'
 		},
 	},
 	boxBgColor: {
