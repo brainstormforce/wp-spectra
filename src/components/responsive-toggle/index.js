@@ -149,7 +149,7 @@ const devices = [
 						<Tooltip
 							text={ sprintf(
 								/* translators: abbreviation for units */
-								__( '%s device', 'ultimate-addons-for-gutenberg' ),
+								'%s',
 								name
 							) }
 							key={key}
