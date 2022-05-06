@@ -2,11 +2,26 @@ import classnames from 'classnames';
 
 import countryOptionsOld from './country-option-old';
 
-import attributes from './attributes';
 import { __ } from '@wordpress/i18n';
 
 import { RichText } from '@wordpress/block-editor';
-
+const attributes = {
+    block_id: {
+		type: "string"
+    },
+    phoneName: {
+        type: "string",
+        default: __("Phone" , 'ultimate-addons-for-gutenberg' )
+    },
+	phoneRequired : {
+        type: "boolean",
+        default: false
+    },
+    pattern: {
+        type: "string",
+        default: __("[0-9]{3}-[0-9]{3}-[0-9]{4}" , 'ultimate-addons-for-gutenberg'),
+    }
+}
 const deprecated = [
 	{
 		attributes,
