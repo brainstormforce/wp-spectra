@@ -120,7 +120,9 @@ function styling( props ) {
 		backgroundVideoOpacity,
 		backgroundVideoColor,
 		innerContentCustomWidthType,
-		backgroundVideo
+		backgroundVideo,
+
+		textColor,
 	} = attributes;
 
 
@@ -148,6 +150,9 @@ function styling( props ) {
 	const videoBackgroundCSS = generateBackgroundCSS( videoBackgroundAttributes );
 
 	const selectors = {
+		' .uagb-container' : {
+			'color': textColor,
+		},
 		' .uagb-container__shape-top svg' : {
 			'width': 'calc( ' + topWidth + '% + 1.3px )',
 			'height': generateCSSUnit( topHeight, 'px' )
