@@ -33,8 +33,9 @@ const TypographyControl = ( props ) => {
 		window.addEventListener( 'click', function( e ){
 			const typoDiv = document.querySelector( '.uagb-typography-advanced' );
 			const actionsDiv = document.querySelector( '.uag-typography-button' );
+
 			if ( typoDiv ) {
-				if ( ! typoDiv.contains( e.target ) && ! actionsDiv.contains( e.target ) ){
+				if ( ! typoDiv.contains( e.target ) && ! actionsDiv.contains( e.target ) && ! e.target?.parentElement?.parentElement?.classList?.contains('uag-font-family-select__menu') && ! e.target?.classList?.contains('uag-responsive-common-button') ){
 					toggleAdvancedControls( false )
 				}
 			}
