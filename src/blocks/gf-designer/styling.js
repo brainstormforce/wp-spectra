@@ -476,7 +476,7 @@ function styling( props ) {
 		' input.gform_button': {
 			'color': buttonTextColor,
 			'background-color': buttonBgColor,
-			'font-size': generateCSSUnit( buttonFontSize, buttonFontSizeType ),
+			'font-size': generateCSSUnit( buttonFontSize, buttonFontSizeType ) + ' !important',
 			'font-family': buttonFontFamily,
 			'font-style' : buttonFontStyle,
 			'text-decoration': buttonDecoration,
