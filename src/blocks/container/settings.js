@@ -150,6 +150,9 @@ const Settings = ( props ) => {
 		backgroundVideo,
 		topInvert,
 		bottomInvert,
+
+		textColor,
+
 	} = attributes;
 
 	let currentDirection = directionDesktop;
@@ -832,6 +835,26 @@ const Settings = ( props ) => {
 		);
 	};
 
+	const colorSettings = () => {
+		return (
+			<UAGAdvancedPanelBody
+				title={ __( 'Color', 'ultimate-addons-for-gutenberg' ) }
+				initialOpen={ false }
+			>
+				<AdvancedPopColorControl
+					label={ __(
+						'Text Color',
+						'ultimate-addons-for-gutenberg'
+					) }
+					colorValue={ textColor }
+					onColorChange={ ( value ) =>
+						setAttributes( { textColor: value } )
+					}
+				/>
+			</UAGAdvancedPanelBody>
+		);
+	}
+
 	const borderSettings = () => {
 		return(
 			<UAGAdvancedPanelBody
@@ -1494,6 +1517,7 @@ const Settings = ( props ) => {
 					</InspectorTab>
 					<InspectorTab { ...UAGTabs.style }>
 						{ backgroundSettings() }
+						{ colorSettings() }
 						{ borderSettings() }
 						{ boxShadowSettings() }
 						{ shapeDividersSettings() }
