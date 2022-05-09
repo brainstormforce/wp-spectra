@@ -798,7 +798,6 @@ const attributes = {
 		UAGCopyPaste: {
 			styleType: 'link-color'
 		},
-		default: 'inherit',
 	},
 	linkHoverColor: {
 		type: 'string',
