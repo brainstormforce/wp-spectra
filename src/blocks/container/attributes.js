@@ -804,7 +804,6 @@ const attributes = {
 		UAGCopyPaste: {
 			styleType: 'link-hover-color'
 		},
-		default: 'inherit',
 	},
 };
 
