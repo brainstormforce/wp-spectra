@@ -135,6 +135,6 @@ return array(
 	'topInvert'                      => false,
 	'bottomInvert'                   => false,
 	'textColor'                      => 'inherit',
-	'linkColor'                      => 'inherit',
-	'linkHoverColor'                 => 'inherit',
+	'linkColor'                      => '',
+	'linkHoverColor'                 => '',
 );
