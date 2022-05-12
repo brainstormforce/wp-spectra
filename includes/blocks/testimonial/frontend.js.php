@@ -13,13 +13,13 @@ $arrows = ( 'arrows' === $attr['arrowDots'] || 'arrowDots' === $attr['arrowDots'
 $slick_options = apply_filters(
 	'uagb_testimonials_slick_options',
 	array(
-		'slidesToShow'   => $attr['columns'],
+		'slidesToShow'   => intval( $attr['columns'] ),
 		'slidesToScroll' => 1,
-		'autoplaySpeed'  => $attr['autoplaySpeed'],
-		'autoplay'       => $attr['autoplay'],
-		'infinite'       => $attr['infiniteLoop'],
-		'pauseOnHover'   => $attr['pauseOnHover'],
-		'speed'          => $attr['transitionSpeed'],
+		'autoplaySpeed'  => esc_html( $attr['autoplaySpeed'] ),
+		'autoplay'       => esc_html( $attr['autoplay'] ),
+		'infinite'       => esc_html( $attr['infiniteLoop'] ),
+		'pauseOnHover'   => esc_html( $attr['pauseOnHover'] ),
+		'speed'          => esc_html( $attr['transitionSpeed'] ),
 		'arrows'         => $arrows,
 		'dots'           => $dots,
 		'rtl'            => is_rtl(),
@@ -29,14 +29,14 @@ $slick_options = apply_filters(
 			array(
 				'breakpoint' => 1024,
 				'settings'   => array(
-					'slidesToShow'   => $attr['tcolumns'],
+					'slidesToShow'   => intval( $attr['tcolumns'] ),
 					'slidesToScroll' => 1,
 				),
 			),
 			array(
 				'breakpoint' => 767,
 				'settings'   => array(
-					'slidesToShow'   => $attr['mcolumns'],
+					'slidesToShow'   => intval( $attr['mcolumns'] ),
 					'slidesToScroll' => 1,
 				),
 			),
@@ -50,7 +50,6 @@ $settings      = wp_json_encode( $slick_options );
 $base_selector = ( isset( $attr['classMigrate'] ) && $attr['classMigrate'] ) ? '.uagb-block-' : '#uagb-testimonial-';
 $selector      = $base_selector . $id;
 
-ob_start();
 ?>
 jQuery( document ).ready( function() {
 	if( jQuery( '<?php echo esc_html( $selector ); ?>' ).length > 0 ){
