@@ -193,32 +193,78 @@ $selectors[' .uagb-cta__wrap']              = array(
 	'text-align' => $attr['textAlign'],
 );
 $selectors['.wp-block-uagb-call-to-action'] = array(
-	'text-align' => $attr['textAlign'],
+	'text-align'     => $attr['textAlign'],
+	'padding-top'    => UAGB_Helper::get_css_value( $attr['overallBlockTopPadding'], $attr['overallBlockPaddingUnit'] ),
+	'padding-bottom' => UAGB_Helper::get_css_value( $attr['overallBlockBottomPadding'], $attr['overallBlockPaddingUnit'] ),
+	'padding-left'   => UAGB_Helper::get_css_value( $attr['overallBlockLeftPadding'], $attr['overallBlockPaddingUnit'] ),
+	'padding-right'  => UAGB_Helper::get_css_value( $attr['overallBlockRightPadding'], $attr['overallBlockPaddingUnit'] ),
+	'margin-top'     => UAGB_Helper::get_css_value( $attr['overallBlockTopMargin'], $attr['overallBlockMarginUnit'] ),
+	'margin-bottom'  => UAGB_Helper::get_css_value( $attr['overallBlockBottomMargin'], $attr['overallBlockMarginUnit'] ),
+	'margin-left'    => UAGB_Helper::get_css_value( $attr['overallBlockLeftMargin'], $attr['overallBlockMarginUnit'] ),
+	'margin-right'   => UAGB_Helper::get_css_value( $attr['overallBlockRightMargin'], $attr['overallBlockMarginUnit'] ),
 );
 
 if ( 'left' === $attr['textAlign'] && 'right' === $attr['ctaPosition'] ) {
-	$selectors[' .uagb-cta__left-right-wrap .uagb-cta__content'] = array(
+	$selectors[' .uagb-cta__left-right-wrap .uagb-cta__content']   = array(
 		'margin-left'  => UAGB_Helper::get_css_value( $attr['ctaLeftSpace'], $attr['ctaLeftSpaceType'] ),
 		'margin-right' => '0',
 	);
-	$selectors[' > .uagb-cta__wrap']                             = array(
+	$selectors[' > .uagb-cta__wrap']                               = array(
 		'margin-left'  => UAGB_Helper::get_css_value( $attr['ctaLeftSpace'], $attr['ctaLeftSpaceType'] ),
+		'margin-right' => '0',
+	);
+	$t_selectors[' .uagb-cta__left-right-wrap .uagb-cta__content'] = array(
+		'margin-left'  => UAGB_Helper::get_css_value( $attr['ctaLeftSpaceTablet'], $attr['ctaLeftSpaceType'] ),
+		'margin-right' => '0',
+	);
+	$t_selectors[' > .uagb-cta__wrap']                             = array(
+		'margin-left'  => UAGB_Helper::get_css_value( $attr['ctaLeftSpaceTablet'], $attr['ctaLeftSpaceType'] ),
+		'margin-right' => '0',
+	);
+	$m_selectors[' .uagb-cta__left-right-wrap .uagb-cta__content'] = array(
+		'margin-left'  => UAGB_Helper::get_css_value( $attr['ctaLeftSpaceMobile'], $attr['ctaLeftSpaceType'] ),
+		'margin-right' => '0',
+	);
+	$m_selectors[' > .uagb-cta__wrap']                             = array(
+		'margin-left'  => UAGB_Helper::get_css_value( $attr['ctaLeftSpaceMobile'], $attr['ctaLeftSpaceType'] ),
 		'margin-right' => '0',
 	);
 }
 
 if ( 'right' === $attr['textAlign'] && 'right' === $attr['ctaPosition'] ) {
-	$selectors[' .uagb-cta__left-right-wrap .uagb-cta__content'] = array(
+	$selectors[' .uagb-cta__left-right-wrap .uagb-cta__content']   = array(
 		'margin-right' => UAGB_Helper::get_css_value( $attr['ctaRightSpace'], $attr['ctaRightSpaceType'] ),
 		'margin-left'  => '0',
 	);
-	$selectors[' > .uagb-cta__wrap']                             = array(
+	$selectors[' > .uagb-cta__wrap']                               = array(
 		'margin-right' => UAGB_Helper::get_css_value( $attr['ctaRightSpace'], $attr['ctaRightSpaceType'] ),
+		'margin-left'  => '0',
+	);
+	$t_selectors[' .uagb-cta__left-right-wrap .uagb-cta__content'] = array(
+		'margin-right' => UAGB_Helper::get_css_value( $attr['ctaRightSpaceTablet'], $attr['ctaRightSpaceType'] ),
+		'margin-left'  => '0',
+	);
+	$t_selectors[' > .uagb-cta__wrap']                             = array(
+		'margin-right' => UAGB_Helper::get_css_value( $attr['ctaRightSpaceTablet'], $attr['ctaRightSpaceType'] ),
+		'margin-left'  => '0',
+	);
+	$m_selectors[' .uagb-cta__left-right-wrap .uagb-cta__content'] = array(
+		'margin-right' => UAGB_Helper::get_css_value( $attr['ctaRightSpaceMobile'], $attr['ctaRightSpaceType'] ),
+		'margin-left'  => '0',
+	);
+	$m_selectors[' > .uagb-cta__wrap']                             = array(
+		'margin-right' => UAGB_Helper::get_css_value( $attr['ctaRightSpaceMobile'], $attr['ctaRightSpaceType'] ),
 		'margin-left'  => '0',
 	);
 }
 
 $t_selectors = array(
+	' .uagb-cta__title'                                   => array(
+		'margin-bottom' => UAGB_Helper::get_css_value( $attr['titleSpaceTablet'], $attr['titleSpaceType'] ),
+	),
+	' .uagb-cta__desc'                                    => array(
+		'margin-bottom' => UAGB_Helper::get_css_value( $attr['descSpaceTablet'], $attr['descSpaceType'] ),
+	),
 	' .uagb-cta__button-wrapper .uagb-cta-with-svg'       => array(
 		'font-size'   => $t_svg_size,
 		'width'       => $t_svg_size,
@@ -254,6 +300,7 @@ $t_selectors = array(
 		'padding-bottom' => UAGB_Helper::get_css_value( $attr['secondCtaBottomTabletPadding'], $attr['secondCtaTabletPaddingUnit'] ),
 		'padding-left'   => UAGB_Helper::get_css_value( $attr['secondCtaLeftTabletPadding'], $attr['secondCtaTabletPaddingUnit'] ),
 		'padding-right'  => UAGB_Helper::get_css_value( $attr['secondCtaRightTabletPadding'], $attr['secondCtaTabletPaddingUnit'] ),
+		'margin-left'    => UAGB_Helper::get_css_value( $attr['gapTablet'], $attr['gapType'] ),
 	),
 );
 
@@ -265,6 +312,12 @@ $t_selectors['.uagb-cta__content-stacked-tablet .uagb-cta__wrap']               
 );
 
 $m_selectors = array(
+	' .uagb-cta__title'                                   => array(
+		'margin-bottom' => UAGB_Helper::get_css_value( $attr['titleSpaceMobile'], $attr['titleSpaceType'] ),
+	),
+	' .uagb-cta__desc'                                    => array(
+		'margin-bottom' => UAGB_Helper::get_css_value( $attr['descSpaceMobile'], $attr['descSpaceType'] ),
+	),
 	' .uagb-cta__button-wrapper .uagb-cta-with-svg'       => array(
 		'font-size'   => $m_svg_size,
 		'width'       => $m_svg_size,
@@ -300,6 +353,7 @@ $m_selectors = array(
 		'padding-bottom' => UAGB_Helper::get_css_value( $attr['secondCtaBottomMobilePadding'], $attr['secondCtaMobilePaddingUnit'] ),
 		'padding-left'   => UAGB_Helper::get_css_value( $attr['secondCtaLeftMobilePadding'], $attr['secondCtaMobilePaddingUnit'] ),
 		'padding-right'  => UAGB_Helper::get_css_value( $attr['secondCtaRightMobilePadding'], $attr['secondCtaMobilePaddingUnit'] ),
+		'margin-left'    => UAGB_Helper::get_css_value( $attr['gapMobile'], $attr['gapType'] ),
 	),
 );
 
@@ -439,10 +493,26 @@ if ( 'desktop' === $attr['stack'] ) {
 	$t_selectors['.wp-block-uagb-call-to-action  '] = array(
 		'flex-direction' => 'column',
 		'align-items'    => $alignmentTablet,
+		'padding-top'    => UAGB_Helper::get_css_value( $attr['overallBlockTopTabletPadding'], $attr['overallBlockTabletPaddingUnit'] ),
+		'padding-bottom' => UAGB_Helper::get_css_value( $attr['overallBlockBottomTabletPadding'], $attr['overallBlockTabletPaddingUnit'] ),
+		'padding-left'   => UAGB_Helper::get_css_value( $attr['overallBlockLeftTabletPadding'], $attr['overallBlockTabletPaddingUnit'] ),
+		'padding-right'  => UAGB_Helper::get_css_value( $attr['overallBlockRightTabletPadding'], $attr['overallBlockTabletPaddingUnit'] ),
+		'margin-top'     => UAGB_Helper::get_css_value( $attr['overallBlockTopTabletMargin'], $attr['overallBlockTabletMarginUnit'] ),
+		'margin-bottom'  => UAGB_Helper::get_css_value( $attr['overallBlockBottomTabletMargin'], $attr['overallBlockTabletMarginUnit'] ),
+		'margin-left'    => UAGB_Helper::get_css_value( $attr['overallBlockLeftTabletMargin'], $attr['overallBlockTabletMarginUnit'] ),
+		'margin-right'   => UAGB_Helper::get_css_value( $attr['overallBlockRightTabletMargin'], $attr['overallBlockTabletMarginUnit'] ),
 	);
 	$m_selectors['.wp-block-uagb-call-to-action  '] = array(
 		'flex-direction' => 'column',
 		'align-items'    => $alignmentMobile,
+		'padding-top'    => UAGB_Helper::get_css_value( $attr['overallBlockTopMobilePadding'], $attr['overallBlockMobilePaddingUnit'] ),
+		'padding-bottom' => UAGB_Helper::get_css_value( $attr['overallBlockBottomMobilePadding'], $attr['overallBlockMobilePaddingUnit'] ),
+		'padding-left'   => UAGB_Helper::get_css_value( $attr['overallBlockLeftMobilePadding'], $attr['overallBlockMobilePaddingUnit'] ),
+		'padding-right'  => UAGB_Helper::get_css_value( $attr['overallBlockRightMobilePadding'], $attr['overallBlockMobilePaddingUnit'] ),
+		'margin-top'     => UAGB_Helper::get_css_value( $attr['overallBlockTopMobileMargin'], $attr['overallBlockMobileMarginUnit'] ),
+		'margin-bottom'  => UAGB_Helper::get_css_value( $attr['overallBlockBottomMobileMargin'], $attr['overallBlockMobileMarginUnit'] ),
+		'margin-left'    => UAGB_Helper::get_css_value( $attr['overallBlockLeftMobileMargin'], $attr['overallBlockMobileMarginUnit'] ),
+		'margin-right'   => UAGB_Helper::get_css_value( $attr['overallBlockRightMobileMargin'], $attr['overallBlockMobileMarginUnit'] ),
 	);
 } elseif ( 'tablet' === $attr['stack'] ) {
 
@@ -453,10 +523,26 @@ if ( 'desktop' === $attr['stack'] ) {
 	$t_selectors['.wp-block-uagb-call-to-action '] = array(
 		'flex-direction' => 'column',
 		'align-items'    => $alignmentTablet,
+		'padding-top'    => UAGB_Helper::get_css_value( $attr['overallBlockTopTabletPadding'], $attr['overallBlockTabletPaddingUnit'] ),
+		'padding-bottom' => UAGB_Helper::get_css_value( $attr['overallBlockBottomTabletPadding'], $attr['overallBlockTabletPaddingUnit'] ),
+		'padding-left'   => UAGB_Helper::get_css_value( $attr['overallBlockLeftTabletPadding'], $attr['overallBlockTabletPaddingUnit'] ),
+		'padding-right'  => UAGB_Helper::get_css_value( $attr['overallBlockRightTabletPadding'], $attr['overallBlockTabletPaddingUnit'] ),
+		'margin-top'     => UAGB_Helper::get_css_value( $attr['overallBlockTopTabletMargin'], $attr['overallBlockTabletMarginUnit'] ),
+		'margin-bottom'  => UAGB_Helper::get_css_value( $attr['overallBlockBottomTabletMargin'], $attr['overallBlockTabletMarginUnit'] ),
+		'margin-left'    => UAGB_Helper::get_css_value( $attr['overallBlockLeftTabletMargin'], $attr['overallBlockTabletMarginUnit'] ),
+		'margin-right'   => UAGB_Helper::get_css_value( $attr['overallBlockRightTabletMargin'], $attr['overallBlockTabletMarginUnit'] ),
 	);
 	$m_selectors['.wp-block-uagb-call-to-action '] = array(
 		'flex-direction' => 'column',
 		'align-items'    => $alignmentMobile,
+		'padding-top'    => UAGB_Helper::get_css_value( $attr['overallBlockTopMobilePadding'], $attr['overallBlockMobilePaddingUnit'] ),
+		'padding-bottom' => UAGB_Helper::get_css_value( $attr['overallBlockBottomMobilePadding'], $attr['overallBlockMobilePaddingUnit'] ),
+		'padding-left'   => UAGB_Helper::get_css_value( $attr['overallBlockLeftMobilePadding'], $attr['overallBlockMobilePaddingUnit'] ),
+		'padding-right'  => UAGB_Helper::get_css_value( $attr['overallBlockRightMobilePadding'], $attr['overallBlockMobilePaddingUnit'] ),
+		'margin-top'     => UAGB_Helper::get_css_value( $attr['overallBlockTopMobileMargin'], $attr['overallBlockMobileMarginUnit'] ),
+		'margin-bottom'  => UAGB_Helper::get_css_value( $attr['overallBlockBottomMobileMargin'], $attr['overallBlockMobileMarginUnit'] ),
+		'margin-left'    => UAGB_Helper::get_css_value( $attr['overallBlockLeftMobileMargin'], $attr['overallBlockMobileMarginUnit'] ),
+		'margin-right'   => UAGB_Helper::get_css_value( $attr['overallBlockRightMobileMargin'], $attr['overallBlockMobileMarginUnit'] ),
 	);
 
 } elseif ( 'mobile' === $attr['stack'] ) {
@@ -472,6 +558,14 @@ if ( 'desktop' === $attr['stack'] ) {
 	$m_selectors['.wp-block-uagb-call-to-action '] = array(
 		'flex-direction' => 'column',
 		'align-items'    => $alignmentMobile,
+		'padding-top'    => UAGB_Helper::get_css_value( $attr['overallBlockTopMobilePadding'], $attr['overallBlockMobilePaddingUnit'] ),
+		'padding-bottom' => UAGB_Helper::get_css_value( $attr['overallBlockBottomMobilePadding'], $attr['overallBlockMobilePaddingUnit'] ),
+		'padding-left'   => UAGB_Helper::get_css_value( $attr['overallBlockLeftMobilePadding'], $attr['overallBlockMobilePaddingUnit'] ),
+		'padding-right'  => UAGB_Helper::get_css_value( $attr['overallBlockRightMobilePadding'], $attr['overallBlockMobilePaddingUnit'] ),
+		'margin-top'     => UAGB_Helper::get_css_value( $attr['overallBlockTopMobileMargin'], $attr['overallBlockMobileMarginUnit'] ),
+		'margin-bottom'  => UAGB_Helper::get_css_value( $attr['overallBlockBottomMobileMargin'], $attr['overallBlockMobileMarginUnit'] ),
+		'margin-left'    => UAGB_Helper::get_css_value( $attr['overallBlockLeftMobileMargin'], $attr['overallBlockMobileMarginUnit'] ),
+		'margin-right'   => UAGB_Helper::get_css_value( $attr['overallBlockRightMobileMargin'], $attr['overallBlockMobileMarginUnit'] ),
 	);
 
 } elseif ( 'none' === $attr['stack'] ) {
