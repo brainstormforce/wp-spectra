@@ -16,6 +16,7 @@ export default function save( props ) {
 		textareaName,
 		rows,
 		placeholder,
+		autocomplete,
 	} = attributes;
 
 	const isRequired = textareaRequired
@@ -42,6 +43,7 @@ export default function save( props ) {
 				rows={ rows }
 				placeholder={ placeholder }
 				name={ block_id }
+				autoComplete={ autocomplete }
 			></textarea>
 		</div>
 	);

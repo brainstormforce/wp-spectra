@@ -19,5 +19,9 @@ const attributes = {
 		type: 'string',
 		default: __( 'example@mail.com', 'ultimate-addons-for-gutenberg' ),
 	},
+	autocomplete: {
+		type: 'string',
+		default: 'email',
+	}
 };
 export default attributes;

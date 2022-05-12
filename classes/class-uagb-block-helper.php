@@ -302,12 +302,12 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 
 			$selectors = array(
 				'.uagb-post__items'                        => array(
-					'margin-right' => UAGB_Helper::get_css_value( ( -$attr['rowGap'] / 2 ), $attr['rowGapUnit'] ),
-					'margin-left'  => UAGB_Helper::get_css_value( ( -$attr['rowGap'] / 2 ), $attr['rowGapUnit'] ),
+					'margin-right' => UAGB_Helper::get_css_value( (int) ( -$attr['rowGap'] / 2 ), $attr['rowGapUnit'] ),
+					'margin-left'  => UAGB_Helper::get_css_value( (int) ( -$attr['rowGap'] / 2 ), $attr['rowGapUnit'] ),
 				),
 				'.uagb-post__items article'                => array(
-					'padding-right' => UAGB_Helper::get_css_value( ( $attr['rowGap'] / 2 ), $attr['rowGapUnit'] ),
-					'padding-left'  => UAGB_Helper::get_css_value( ( $attr['rowGap'] / 2 ), $attr['rowGapUnit'] ),
+					'padding-right' => UAGB_Helper::get_css_value( (int) ( $attr['rowGap'] / 2 ), $attr['rowGapUnit'] ),
+					'padding-left'  => UAGB_Helper::get_css_value( (int) ( $attr['rowGap'] / 2 ), $attr['rowGapUnit'] ),
 					'margin-bottom' => UAGB_Helper::get_css_value( ( $attr['columnGap'] ), $attr['columnGapUnit'] ),
 				),
 				' .uagb-post__inner-wrap'                  => array(
@@ -319,9 +319,6 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					'margin-right' => UAGB_Helper::get_css_value( $paddingRight, $attr['contentPaddingUnit'] ),
 				),
 				' .uagb-post__inner-wrap .uagb-post__text:first-child' => array(
-					'margin-top' => UAGB_Helper::get_css_value( $paddingTop, $attr['contentPaddingUnit'] ),
-				),
-				' .uagb-post__inner-wrap .uagb-post__text.uagb-post__title' => array(
 					'margin-top' => UAGB_Helper::get_css_value( $paddingTop, $attr['contentPaddingUnit'] ),
 				),
 				' .uagb-post__inner-wrap .uagb-post__text.uagb-post__cta:last-child' => array(
@@ -344,7 +341,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				),
 				' .uagb-post__image:before'                => array(
 					'background-color' => $attr['bgOverlayColor'],
-					'opacity'          => ( $attr['overlayOpacity'] / 100 ),
+					'opacity'          => ( (int) $attr['overlayOpacity'] / 100 ),
 				),
 			);
 
@@ -424,12 +421,12 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 
 			$m_selector = array(
 				'.uagb-post__items'         => array(
-					'margin-right' => UAGB_Helper::get_css_value( ( -$rowGapMobile / 2 ), $attr['rowGapUnit'] ),
-					'margin-left'  => UAGB_Helper::get_css_value( ( -$rowGapMobile / 2 ), $attr['rowGapUnit'] ),
+					'margin-right' => UAGB_Helper::get_css_value( ( - (int) $rowGapMobile / 2 ), $attr['rowGapUnit'] ),
+					'margin-left'  => UAGB_Helper::get_css_value( ( - (int) $rowGapMobile / 2 ), $attr['rowGapUnit'] ),
 				),
 				'.uagb-post__items article' => array(
-					'padding-right' => UAGB_Helper::get_css_value( ( $rowGapMobile / 2 ), $attr['rowGapUnit'] ),
-					'padding-left'  => UAGB_Helper::get_css_value( ( $rowGapMobile / 2 ), $attr['rowGapUnit'] ),
+					'padding-right' => UAGB_Helper::get_css_value( ( (int) $rowGapMobile / 2 ), $attr['rowGapUnit'] ),
+					'padding-left'  => UAGB_Helper::get_css_value( ( (int) $rowGapMobile / 2 ), $attr['rowGapUnit'] ),
 					'margin-bottom' => UAGB_Helper::get_css_value( ( $columnGapMobile ), $attr['columnGapUnit'] ),
 				),
 				' .uagb-post__inner-wrap .uagb-post__text.uagb-post__cta:last-child' => array(
@@ -488,12 +485,12 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 
 			$t_selector = array(
 				'.uagb-post__items'         => array(
-					'margin-right' => UAGB_Helper::get_css_value( ( -$rowGapTablet / 2 ), $attr['rowGapUnit'] ),
-					'margin-left'  => UAGB_Helper::get_css_value( ( -$rowGapTablet / 2 ), $attr['rowGapUnit'] ),
+					'margin-right' => UAGB_Helper::get_css_value( ( - (int) $rowGapTablet / 2 ), $attr['rowGapUnit'] ),
+					'margin-left'  => UAGB_Helper::get_css_value( ( - (int) $rowGapTablet / 2 ), $attr['rowGapUnit'] ),
 				),
 				'.uagb-post__items article' => array(
-					'padding-right' => UAGB_Helper::get_css_value( ( $rowGapTablet / 2 ), $attr['rowGapUnit'] ),
-					'padding-left'  => UAGB_Helper::get_css_value( ( $rowGapTablet / 2 ), $attr['rowGapUnit'] ),
+					'padding-right' => UAGB_Helper::get_css_value( ( (int) $rowGapTablet / 2 ), $attr['rowGapUnit'] ),
+					'padding-left'  => UAGB_Helper::get_css_value( ( (int) $rowGapTablet / 2 ), $attr['rowGapUnit'] ),
 					'margin-bottom' => UAGB_Helper::get_css_value( ( $columnGapTablet ), $attr['columnGapUnit'] ),
 				),
 				' .uagb-post__inner-wrap .uagb-post__text.uagb-post__cta:last-child' => array(
@@ -609,9 +606,13 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				'.uagb-timeline__center-block .uagb-timeline__right .uagb-timeline__arrow' => array(
 					'height' => $connector_size,
 				),
-				'.uagb-timeline__center-block .uagb-timeline__marker' => array(
-					'margin-left'  => UAGB_Helper::get_css_value( $left_margin, $attr['marginUnit'] ),
+				'.uagb-timeline__center-block .uagb-timeline__left .uagb-timeline__marker' => array(
+					'margin-left'  => UAGB_Helper::get_css_value( $left_margin + 3, $attr['marginUnit'] ),
 					'margin-right' => UAGB_Helper::get_css_value( $right_margin, $attr['marginUnit'] ),
+				),
+				'.uagb-timeline__center-block .uagb-timeline__right .uagb-timeline__marker' => array(
+					'margin-left'  => UAGB_Helper::get_css_value( $left_margin, $attr['marginUnit'] ),
+					'margin-right' => UAGB_Helper::get_css_value( $right_margin + 3, $attr['marginUnit'] ),
 				),
 				'.uagb-timeline__field:not(:last-child)' => array(
 					'margin-bottom' => UAGB_Helper::get_css_value( $bottom_margin, $attr['marginUnit'] ),

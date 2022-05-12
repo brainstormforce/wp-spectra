@@ -43,7 +43,6 @@ import {
 	Spinner,
 	ToggleControl,
 	TextControl,
-	RadioControl,
 	Icon
 } from '@wordpress/components';
 
@@ -252,9 +251,6 @@ const UAGBPostCarousel = ( props ) => {
 		rowGap,
 		rowGapTablet,
 		rowGapMobile,
-		columnGap,
-		columnGapTablet,
-		columnGapMobile,
 		bgColor,
 		titleColor,
 		titleTag,
@@ -393,7 +389,6 @@ const UAGBPostCarousel = ( props ) => {
 		ctaBottomSpaceUnit,
 		excerptBottomSpaceUnit,
 		rowGapUnit,
-		columnGapUnit,
 		postsOffset,
 		taxStyle,
 		taxDivider,
@@ -543,7 +538,7 @@ const UAGBPostCarousel = ( props ) => {
 				/>
 				<Range
 					label={ __(
-						'Number of items',
+						'Posts Per Page',
 						'ultimate-addons-for-gutenberg'
 					) }
 					value={ postsToShow }
@@ -568,6 +563,9 @@ const UAGBPostCarousel = ( props ) => {
 					min={ 0 }
 					max={ 100 }
 					displayUnit={ false }
+					help= {__(
+						'P.S. Note that We need to add Offset Starting Post to start post loading from specific post order.',
+						'ultimate-addons-for-gutenberg' )}
 				/>
 				<MultiButtonsControl
 					setAttributes={ setAttributes }
@@ -647,7 +645,7 @@ const UAGBPostCarousel = ( props ) => {
 							label: 'mcolumns',
 						},
 					} }
-					min={ 0 }
+					min={ 1 }
 					max={
 						! hasPosts
 							? MAX_POSTS_COLUMNS
@@ -1018,31 +1016,30 @@ const UAGBPostCarousel = ( props ) => {
 					}
 				/>
 				{ displayPostExcerpt && (
-					<RadioControl
-						label={ __( 'Show:', 'ultimate-addons-for-gutenberg' ) }
-						selected={ displayPostContentRadio }
-						options={ [
-							{
-								label: __(
-									'Excerpt',
-									'ultimate-addons-for-gutenberg'
-								),
-								value: 'excerpt',
-							},
-							{
-								label: __(
-									'Full post',
-									'ultimate-addons-for-gutenberg'
-								),
-								value: 'full_post',
-							},
-						] }
-						onChange={ ( value ) =>
-							setAttributes( {
-								displayPostContentRadio: value,
-							} )
-						}
-					/>
+					<MultiButtonsControl
+					setAttributes={ setAttributes }
+					label={ __( 'Show:', 'ultimate-addons-for-gutenberg' ) }
+					data={ {
+						value: displayPostContentRadio,
+						label: 'displayPostContentRadio',
+					} }
+					options={ [
+						{
+							label: __(
+								'Excerpt',
+								'ultimate-addons-for-gutenberg'
+							),
+							value: 'excerpt',
+						},
+						{
+							label: __(
+								'Full post',
+								'ultimate-addons-for-gutenberg'
+							),
+							value: 'full_post',
+						},
+					] }
+				/>
 				) }
 				{ displayPostExcerpt &&
 					displayPostContentRadio === 'excerpt' && (
@@ -1115,8 +1112,8 @@ const UAGBPostCarousel = ( props ) => {
 	const spacingSettings = () => {
 		return (
 			<UAGAdvancedPanelBody
-				title={ __( 'Blog Settings', 'ultimate-addons-for-gutenberg' ) }
-				initialOpen={ false }
+				title={ __( 'Layout', 'ultimate-addons-for-gutenberg' ) }
+				initialOpen={ true }
 			>
 				<AdvancedPopColorControl
 					label={ __(
@@ -1128,61 +1125,8 @@ const UAGBPostCarousel = ( props ) => {
 						setAttributes( { bgColor: value } )
 					}
 				/>
-				{/* <Range
-					label={ __( 'Row Gap', 'ultimate-addons-for-gutenberg' ) }
-					setAttributes={ setAttributes }
-					value={ rowGap }
-					onChange={ ( value ) => setAttributes( { rowGap: value } ) }
-					min={ 0 }
-					max={ 50 }
-					unit={ {
-						value: rowGapUnit,
-						label: 'rowGapUnit',
-					} }
-				/>
-				<Range
-					label={ __(
-						'Column Gap',
-						'ultimate-addons-for-gutenberg'
-					) }
-					setAttributes={ setAttributes }
-					value={ columnGap }
-					onChange={ ( value ) =>
-						setAttributes( { columnGap: value } )
-					}
-					min={ 0 }
-					max={ 50 }
-					unit={ {
-						value: columnGapUnit,
-						label: 'columnGapUnit',
-					} }
-				/> */}
 				<ResponsiveSlider
 					label={ __( 'Column Gap', 'ultimate-addons-for-gutenberg' ) }
-					data={ {
-						desktop: {
-							value: columnGap,
-							label: 'columnGap',
-						},
-						tablet: {
-							value: columnGapTablet,
-							label: 'columnGapTablet',
-						},
-						mobile: {
-							value: columnGapMobile,
-							label: 'columnGapMobile',
-						},
-					} }
-					min={ 0 }
-					max={ 50 }
-					unit={ {
-						value: columnGapUnit,
-						label: 'columnGapUnit',
-					} }
-					setAttributes={ setAttributes }
-				/>
-				<ResponsiveSlider
-					label={ __( 'Row Gap', 'ultimate-addons-for-gutenberg' ) }
 					data={ {
 						desktop: {
 							value: rowGap,
@@ -1313,6 +1257,7 @@ const UAGBPostCarousel = ( props ) => {
 						}
 						min={ 0 }
 						max={ 100 }
+						displayUnit={ false }
 					/>
 				</>
 			)}
@@ -1366,7 +1311,7 @@ const UAGBPostCarousel = ( props ) => {
 		return (
 			<UAGAdvancedPanelBody
 				title={ __( 'Title', 'ultimate-addons-for-gutenberg' ) }
-				initialOpen={ true }
+				initialOpen={ false }
 			>
 				<MultiButtonsControl
 					setAttributes={ setAttributes }
@@ -2169,6 +2114,7 @@ const UAGBPostCarousel = ( props ) => {
 					{ getReadMoreLinkPanelBody() }
 				</InspectorTab>
 				<InspectorTab { ...UAGTabs.style }>
+					{ spacingSettings() }
 					{ displayPostTitle && titleStyle() }
 					{ ( displayPostAuthor ||
 						displayPostDate ||
@@ -2178,7 +2124,6 @@ const UAGBPostCarousel = ( props ) => {
 					{ displayPostExcerpt && excerptStyle() }
 					{ displayPostLink && readMoreLinkStyleSettings() }
 					{ displayPostImage  && imageStyle() }
-					{ spacingSettings() }
 					{ carouselStyle() }
 				</InspectorTab>
 				<InspectorTab { ...UAGTabs.advance } parentProps={props}></InspectorTab>
