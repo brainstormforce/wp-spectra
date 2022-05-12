@@ -219,9 +219,13 @@ function contentTimelineStyle( props ) {
 		'.uagb-timeline__center-block .uagb-timeline__right .uagb-timeline__arrow': {
 			'height': generateCSSUnit( connectorBgsize, 'px' ),
 		},
-		'.uagb-timeline__center-block .uagb-timeline__marker': {
-			'margin-left': generateCSSUnit( leftMargin, marginUnit ),
+		'.uagb-timeline__center-block .uagb-timeline__left .uagb-timeline__marker': {
+			'margin-left': generateCSSUnit( leftMargin + 3, marginUnit ),
 			'margin-right': generateCSSUnit( rightMargin, marginUnit ),
+		},
+		'.uagb-timeline__center-block .uagb-timeline__right .uagb-timeline__marker': {
+			'margin-left': generateCSSUnit( leftMargin, marginUnit ),
+			'margin-right': generateCSSUnit( rightMargin + 3, marginUnit ),
 		},
 		' .uagb-timeline__field': {
 			'margin-top': generateCSSUnit( topMargin, marginUnit ),
@@ -370,7 +374,7 @@ function contentTimelineStyle( props ) {
 				subHeadLineHeightType
 			),
 		},
-		' .uagb-timeline__center-block .uagb-timeline__marker': {
+		'.uagb-timeline__center-block .uagb-timeline__marker': {
 			'margin-left': 0,
 			'margin-right': 0,
 		},
