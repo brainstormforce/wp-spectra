@@ -865,7 +865,7 @@ const Settings = ( props ) => {
 				/>
 				<AdvancedPopColorControl
 					label={ __(
-						'Link Color',
+						'Link Hover Color',
 						'ultimate-addons-for-gutenberg'
 					) }
 					colorValue={ linkHoverColor }
