@@ -26,6 +26,10 @@ const attributes = {
 		type: 'string',
 		default: '',
 	},
+	enableCaption: {
+		type: 'boolean',
+		default: false,
+	},
 	caption: {
 		type: 'string',
 		default: '',

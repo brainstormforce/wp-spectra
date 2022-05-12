@@ -4,7 +4,7 @@ import { __ } from '@wordpress/i18n';
 
 
 export default function Layout( {attributes, isSelected, setAttributes, captionRef} ) {
-	const {caption, heading, headingTag, layout, overlayContentPosition, seperatorStyle, seperatorPosition} = attributes
+	const {caption, enableCaption, heading, headingTag, layout, overlayContentPosition, seperatorStyle, seperatorPosition} = attributes
 	const headingRef = useRef();
 	useEffect( () => {
 		headingRef.current = heading;
@@ -66,7 +66,11 @@ export default function Layout( {attributes, isSelected, setAttributes, captionR
 						</div>
 					</>
 				) : (
-					imageCaption
+					<>
+						{
+							enableCaption && imageCaption
+						}
+					</>
 				)
 			}
 

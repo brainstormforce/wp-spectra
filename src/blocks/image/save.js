@@ -11,6 +11,7 @@ export default function Save( props ) {
 		urlMobile,
 		alt,
 		caption,
+		enableCaption,
 		imageHoverEffect,
 		href,
 		linkClass,
@@ -116,7 +117,11 @@ export default function Save( props ) {
 							</div>
 						</>
 					) : (
-						imageCaption
+						<>
+							{
+								enableCaption && imageCaption
+							}
+						</>
 					)
 				}
 			</figure>

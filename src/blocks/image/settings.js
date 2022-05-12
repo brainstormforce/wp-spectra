@@ -26,7 +26,8 @@ import {
 	TextControl,
 	SelectControl,
 	__experimentalAlignmentMatrixControl as AlignmentMatrixControl,
-	Icon
+	Icon,
+	ToggleControl
 } from '@wordpress/components';
 import renderSVG from '@Controls/renderIcon';
 import ImageSizeControl from '@Components/image-size-control'
@@ -54,6 +55,7 @@ export default function Settings( props ) {
 		sizeSlug,
 		sizeSlugTablet,
 		sizeSlugMobile,
+		enableCaption,
 		// image
 		imageTopMargin,
 		imageRightMargin,
@@ -412,6 +414,19 @@ export default function Settings( props ) {
 					},
 				] }
 			/>
+
+			{
+				layout !== 'overlay' && (
+					<ToggleControl
+						label={ __( 'Enable Caption', 'ultimate-addons-for-gutenberg' ) }
+						checked={ enableCaption }
+						onChange={ () => {
+							setAttributes({'enableCaption': !enableCaption});
+						} }
+					/>
+				)
+			}
+
 		</UAGAdvancedPanelBody>
 	)
 
