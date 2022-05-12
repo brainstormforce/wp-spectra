@@ -10,7 +10,7 @@
 return array(
 	'inheritFromTheme'       => false,
 	'block_id'               => '',
-	'label'                  => '',
+	'label'                  => '#Click Here',
 	'link'                   => '',
 	'opensInNewTab'          => false,
 	'target'                 => '',
