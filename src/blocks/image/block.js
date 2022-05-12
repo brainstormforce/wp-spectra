@@ -40,6 +40,11 @@ registerBlockType( 'uagb/image', {
 			}
 		}
 	},
+	getEditWrapperProps( attributes ) {
+		return {
+			'data-align': attributes.align,
+		};
+	},
 	category: uagb_blocks_info.category,
 	attributes,
 	edit,
