@@ -242,11 +242,12 @@ const Render = ( props ) => {
 		}
 		mediaAttributes.href = href;
 
-		setAttributes( {
+		const imageAttributes = {
 			...mediaAttributes,
 			...additionalAttributes,
 			linkDestination,
-		} );
+		}
+		setAttributes(imageAttributes);
 	}
 
 	function onSelectURL( newURL ) {
