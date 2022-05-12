@@ -39,6 +39,20 @@ const attributes = {
 			styleType: 'main-title-align'
 		},
 	},
+	headingAlignTablet: {
+		type: 'string',
+		default: 'center',
+		UAGCopyPaste: {
+			styleType: 'main-title-align-tablet'
+		},
+	},
+	headingAlignMobile: {
+		type: 'string',
+		default: 'center',
+		UAGCopyPaste: {
+			styleType: 'main-title-align-mobile'
+		},
+	},
 	descColor: {
 		type: 'string',
 		default: '#333',
@@ -985,7 +999,14 @@ const attributes = {
 	isPreview: {
 		type: 'boolean',
 		default: false,
-	}
+	},
+	equalHeight             : {
+		type    : 'boolean',
+		default : false,
+		UAGCopyPaste: {
+			styleType: 'post-equal-height'
+		},
+	},
 };
 
 export default attributes;

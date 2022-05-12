@@ -44,11 +44,30 @@ $slick_options = apply_filters(
 	),
 	$id
 );
+$equal_height  = isset( $attr['equalHeight'] ) ? $attr['equalHeight'] : '';
 
 $settings      = wp_json_encode( $slick_options );
 $base_selector = ( isset( $attr['classMigrate'] ) && $attr['classMigrate'] ) ? '.uagb-block-' : '#uagb-testimonial-';
 $selector      = $base_selector . $id;
-$js            = 'jQuery( document ).ready( function() { if( jQuery( "' . $selector . '" ).length > 0 ){ jQuery( "' . $selector . '" ).find( ".is-carousel" ).slick( ' . $settings . ' ); } } );';
 
-return $js;
+ob_start();
+?>
+jQuery( document ).ready( function() {
+	if( jQuery( '<?php echo esc_html( $selector ); ?>' ).length > 0 ){
+	jQuery( '<?php echo esc_html( $selector ); ?>' ).find( ".is-carousel" ).slick( <?php echo $settings; ?> );
+	}
+	var $scope = jQuery( '.uagb-block-<?php echo esc_html( $id ); ?>' );
+	var enableEqualHeight = ( '<?php echo esc_html( $equal_height ); ?>' );
+			if( enableEqualHeight ){
+				$scope.imagesLoaded( function() {
+					UAGBTestimonialCarousel._setHeight( $scope );
+				});
 
+				$scope.on( "afterChange", function() {
+					UAGBTestimonialCarousel._setHeight( $scope );
+				} );
+			}
+} );
+<?php
+return ob_get_clean();
+?>

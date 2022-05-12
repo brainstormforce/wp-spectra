@@ -37,6 +37,8 @@ const Settings = ( props ) => {
 		test_item_count,
 		test_block,
 		headingAlign,
+		headingAlignTablet,
+		headingAlignMobile,
 		companyColor,
 		descColor,
 		authorColor,
@@ -171,6 +173,7 @@ const Settings = ( props ) => {
 		imgpaddingUnit,
 		imgmobilePaddingUnit,
 		imgtabletPaddingUnit,
+		equalHeight
 	} = attributes;
 
 	let loadNameGoogleFonts;
@@ -236,7 +239,6 @@ const Settings = ( props ) => {
 		if ( ! media.type || 'image' !== media.type ) {
 			imgUrl = null;
 		}
-
 		const newItems = test_block.map( ( item, thisIndex ) => {
 			if ( index === thisIndex ) {
 				item.image = imgUrl;
@@ -1221,8 +1223,18 @@ const Settings = ( props ) => {
 									'ultimate-addons-for-gutenberg'
 								) }
 								data={ {
-									value: headingAlign,
-									label: 'headingAlign',
+									desktop: {
+										value: headingAlign,
+										label: 'headingAlign',
+									},
+									tablet: {
+										value: headingAlignTablet,
+										label: 'headingAlignTablet',
+									},
+									mobile: {
+										value: headingAlignMobile,
+										label: 'headingAlignMobile',
+									},
 								} }
 								className="uagb-multi-button-alignment-control"
 								options={ [
@@ -1268,6 +1280,17 @@ const Settings = ( props ) => {
 									},
 								] }
 								showIcons={ true }
+								responsive={ true }
+							/>
+							<ToggleControl
+								label={ __(
+									'Equal Height',
+									'ultimate-addons-for-gutenberg'
+								) }
+								checked={ equalHeight }
+								onChange={ () =>
+									setAttributes( { equalHeight: ! equalHeight } )
+								}
 							/>
 						</UAGAdvancedPanelBody>
 						<UAGAdvancedPanelBody
