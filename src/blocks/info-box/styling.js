@@ -344,9 +344,6 @@ imageWidthTablet,
 			'fill': ctaLinkHoverColor,
 		},
 		' .uagb-ifb-button-wrapper .uagb-infobox-cta-link': {
-			'border-style': ctaBorderStyle,
-			'border-color': ctaBorderColor,
-			'border-width': generateCSSUnit( ctaBorderWidth, 'px' ),
 			'color': ctaBtnLinkColor,
 			'background-color': ctaBgColor,
 			'border-radius': generateCSSUnit( ctaBorderRadius, 'px' ),
@@ -448,7 +445,13 @@ imageWidthTablet,
 			'margin-right': generateCSSUnit( separatorRightMargin, seperatorSpaceUnit ),
 		}
 	};
-
+	if( 'none' !== ctaBorderStyle ) {
+		selectors[' .uagb-ifb-button-wrapper .uagb-infobox-cta-link'] = {
+			'border-style': ctaBorderStyle,
+			'border-color': ctaBorderColor,
+			'border-width': generateCSSUnit( ctaBorderWidth, 'px' ),
+		}
+	}
 	if (
 		iconimgPosition === 'above-title' ||
 		iconimgPosition === 'below-title'

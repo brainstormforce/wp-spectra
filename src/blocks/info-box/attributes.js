@@ -627,6 +627,7 @@ const attributes = {
 	},
 	ctaBorderStyle: {
 		type: 'string',
+		default: 'none',
 		UAGCopyPaste: {
 			styleType: 'btn-border-style'
 		}

@@ -95,7 +95,7 @@ return array(
 	'paddingBtnRightMobile'      => '',
 	'paddingBtnBottomMobile'     => '',
 	'paddingBtnLeftMobile'       => '',
-	'ctaBorderStyle'             => '',
+	'ctaBorderStyle'             => 'none',
 	'ctaBorderColor'             => '',
 	'ctaBorderWidth'             => '',
 	'ctaBorderRadius'            => '',
