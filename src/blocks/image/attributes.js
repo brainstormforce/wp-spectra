@@ -61,26 +61,44 @@ const attributes = {
 	width: {
 		type: 'integer',
 		default: '',
+		UAGCopyPaste: {
+			styleType: 'image-width'
+		}
 	},
 	widthTablet: {
 		type: 'integer',
 		default: '',
+		UAGCopyPaste: {
+			styleType: 'image-width-tablet'
+		}
 	},
 	widthMobile: {
 		type: 'integer',
 		default: '',
+		UAGCopyPaste: {
+			styleType: 'image-width-mobile'
+		}
 	},
 	height: {
 		type: 'integer',
 		default: '',
+		UAGCopyPaste: {
+			styleType: 'image-height'
+		}
 	},
 	heightTablet: {
 		type: 'integer',
 		default: '',
+		UAGCopyPaste: {
+			styleType: 'image-height-tablet'
+		}
 	},
 	heightMobile: {
 		type: 'integer',
 		default: '',
+		UAGCopyPaste: {
+			styleType: 'image-height-mobile'
+		}
 	},
 	linkTarget: {
 		type: 'string',
