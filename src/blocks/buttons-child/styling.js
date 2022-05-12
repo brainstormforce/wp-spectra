@@ -124,13 +124,14 @@ function styling( props ) {
 			'color': color,
 		}
 	};
-
+	selectors[' .uagb-button__wrapper .wp-block-button__link.uagb-buttons-repeater'] = {
+		'border-radius': generateCSSUnit( borderRadius, 'px' ),
+	};
 	if( 'none' !== borderStyle ) {
 		selectors[' .wp-block-button__link.uagb-buttons-repeater'] = {
 			'border-width': generateCSSUnit( borderWidth, 'px' ),
 			'border-style': borderStyle,
 			'border-color': borderColor,
-			'border-radius': generateCSSUnit( borderRadius, 'px' ),
 		};
 		selectors[ ' .wp-block-button__link.uagb-buttons-repeater:hover' ] = {
 			'border-color': borderHColor,
