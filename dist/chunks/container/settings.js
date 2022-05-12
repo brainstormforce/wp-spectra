@@ -1,1 +1,2785 @@
-(window.webpackJsonp_ultimate_addons_for_gutenberg=window.webpackJsonp_ultimate_addons_for_gutenberg||[]).push([[20],{199:function(e,t,a){"use strict";var l,o=a(1),n=a(6),r=a(4),i=a(0),u=a.n(i),b=a(13),c=a.n(b),g=a(200),d=0,s={injectType:"lazySingletonStyleTag",attributes:{id:"uagb-editor-styles"},insert:"head",singleton:!0},m={};m.locals=g.a.locals||{},m.use=function(){return d++||(l=c()(g.a,s)),m},m.unuse=function(){d>0&&!--d&&(l(),l=null)};var v=m;t.a=e=>{Object(i.useLayoutEffect)(()=>(v.use(),()=>{v.unuse()}),[]);const{onSelectImage:t,backgroundImage:a,onRemoveImage:l,showVideoInput:b,label:c,disableRemove:g=!1,allow:d=["image"]}=e;let s=Object(o.__)("Image","ultimate-addons-for-gutenberg"),m=Object(o.__)("Select Image","ultimate-addons-for-gutenberg"),C=Object(o.__)("Replace Image","ultimate-addons-for-gutenberg"),p=Object(o.__)("Remove Image","ultimate-addons-for-gutenberg"),_=["image"];return b&&(s=Object(o.__)("Video","ultimate-addons-for-gutenberg"),m=Object(o.__)("Select Video","ultimate-addons-for-gutenberg"),C=Object(o.__)("Replace Video","ultimate-addons-for-gutenberg"),p=Object(o.__)("Remove Video","ultimate-addons-for-gutenberg"),_=["video"]),s=c||s,s=!1===c?c:s,"Lottie Animation"===c&&(m=Object(o.__)("Select Lottie Animation","ultimate-addons-for-gutenberg"),C=Object(o.__)("Replace Lottie Animation","ultimate-addons-for-gutenberg"),p=Object(o.__)("Remove Lottie Animation","ultimate-addons-for-gutenberg"),_=d),u.a.createElement(n.BaseControl,{className:"editor-bg-image-control",id:"uagb-option-selector-"+c,label:s},u.a.createElement("div",{className:"uagb-bg-image"},u.a.createElement(r.MediaUpload,{title:m,onSelect:t,allowedTypes:_,value:a,render:e=>{let{open:t}=e;return u.a.createElement(n.Button,{isSecondary:!0,onClick:t},null!=a&&a.url?C:m)}}),!g&&(null==a?void 0:a.url)&&u.a.createElement(n.Button,{className:"uagb-rm-btn",onClick:l,isLink:!0,isDestructive:!0},p),e.help&&u.a.createElement("p",{className:"uag-control-help-notice"},e.help)))}},200:function(e,t,a){"use strict";var l=a(14),o=a.n(l)()((function(e){return e[1]}));o.push([e.i,".uagb-bg-image {\n  display: flex; }\n  .uagb-bg-image .components-button {\n    margin: 0;\n    border-radius: 2px;\n    background-color: #f0f0f0;\n    min-height: 90px;\n    padding: 8px 0;\n    text-align: center;\n    display: flex;\n    width: 100%;\n    transition: all 0.1s ease-out;\n    box-shadow: 0 0 0 0 #0085ba;\n    margin-top: 10px;\n    align-items: center;\n    justify-content: center; }\n    .uagb-bg-image .components-button.is-destructive:hover:not(:disabled) {\n      color: #710d0d;\n      box-shadow: inset 0 0 0 0 #710d0d; }\n    .uagb-bg-image .components-button.is-link.is-destructive:hover:not(:disabled) {\n      background: #f0f0f0; }\n    .uagb-bg-image .components-button.is-link.is-destructive:focus:not(:disabled) {\n      outline: none; }\n  .uagb-bg-image .uagb-rm-btn {\n    margin-left: 0; }\n\n.uagb-bg-image .components-button:focus:not(:disabled),\n.uagb-bg-image .components-button.is-secondary:hover:not(:disabled),\n.components-button.is-tertiary:hover:not(:disabled),\n.uagb-bg-image .components-button.is-secondary,\n.components-button.is-tertiary {\n  box-shadow: none; }\n\n.uag-background-image .uagb-bg-image,\n.uag-background-video .uagb-bg-image {\n  display: block; }\n  .uag-background-image .uagb-bg-image .components-button,\n  .uag-background-video .uagb-bg-image .components-button {\n    min-height: 55px; }\n  .uag-background-image .uagb-bg-image .components-button:last-child,\n  .uag-background-video .uagb-bg-image .components-button:last-child {\n    margin-left: 0;\n    margin-top: 0; }\n",""]),t.a=o},203:function(e,t,a){"use strict";var l=a(14),o=a.n(l)()((function(e){return e[1]}));o.push([e.i,'/** Box Shadow Popup CSS*/\n.uag-box-shadow-options {\n  margin-bottom: 24px; }\n  .uag-box-shadow-options .uag-box-shadow-option-actions {\n    display: flex;\n    justify-content: space-between;\n    margin: 0;\n    align-items: center; }\n    .uag-box-shadow-options .uag-box-shadow-option-actions .uag-box-shadow-button {\n      margin: 0;\n      height: 28px;\n      width: 28px;\n      padding: 5px;\n      border: 1px solid #d3d3d3;\n      border-radius: 14px; }\n      .uag-box-shadow-options .uag-box-shadow-option-actions .uag-box-shadow-button .dashicons-edit {\n        font-size: 15px;\n        line-height: 20px; }\n      .uag-box-shadow-options .uag-box-shadow-option-actions .uag-box-shadow-button:focus:not(:disabled) {\n        box-shadow: none;\n        outline: none; }\n  .uag-box-shadow-options .uagb-box-shadow-advanced {\n    border: 1px solid #d3d3d3;\n    border-radius: 3px;\n    padding: 15px;\n    margin: 10px 0;\n    position: relative;\n    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.3); }\n    .uag-box-shadow-options .uagb-box-shadow-advanced > .components-base-control {\n      margin-top: 0; }\n    .uag-box-shadow-options .uagb-box-shadow-advanced::after, .uag-box-shadow-options .uagb-box-shadow-advanced::before {\n      bottom: 100%;\n      right: 8px;\n      border: solid transparent;\n      content: "";\n      height: 0;\n      width: 0;\n      position: absolute;\n      pointer-events: none; }\n    .uag-box-shadow-options .uagb-box-shadow-advanced::after {\n      right: 9px;\n      border-color: rgba(255, 255, 255, 0);\n      border-bottom-color: #fff;\n      border-width: 5px;\n      margin-left: -5px; }\n    .uag-box-shadow-options .uagb-box-shadow-advanced::before {\n      border-color: rgba(211, 211, 211, 0);\n      border-bottom-color: #d3d3d3;\n      border-width: 6px;\n      margin-left: -6px; }\n    .uag-box-shadow-options .uagb-box-shadow-advanced .uagb-shadow-color,\n    .uag-box-shadow-options .uagb-box-shadow-advanced .uagb-horizontal-wrap,\n    .uag-box-shadow-options .uagb-box-shadow-advanced .uagb-vertical-wrap,\n    .uag-box-shadow-options .uagb-box-shadow-advanced .uagb-blur-wrap,\n    .uag-box-shadow-options .uagb-box-shadow-advanced .uagb-spread-wrap {\n      margin-bottom: 16px; }\n\n.block-editor-block-inspector .components-base-control:last-child {\n  margin-bottom: 0; }\n',""]),t.a=o},205:function(e,t,a){"use strict";var l,o=a(1),n=a(18),r=a(15),i=a(6),u=a(2),b=a(19),c=a(13),g=a.n(c),d=a(203),s=0,m={injectType:"lazySingletonStyleTag",attributes:{id:"uagb-editor-styles"},insert:"head",singleton:!0},v={};v.locals=d.a.locals||{},v.use=function(){return s++||(l=g()(d.a,m)),v},v.unuse=function(){s>0&&!--s&&(l(),l=null)};var C=v,p=a(0),_=a.n(p);t.a=e=>{const[t,a]=Object(u.useState)(!1);Object(p.useLayoutEffect)(()=>(C.use(),()=>{C.unuse()}),[]),Object(p.useLayoutEffect)(()=>{window.addEventListener("click",(function(e){const t=document.querySelector(".uagb-box-shadow-advanced"),l=document.querySelector(".uag-box-shadow-button");var o,n,r,i;t&&(null!=t&&t.contains(e.target)||null!=l&&l.contains(e.target)||null!==(o=e.target)&&void 0!==o&&null!==(n=o.classList)&&void 0!==n&&n.contains("uagb-advanced-color-indicate")||null!==(r=e.target)&&void 0!==r&&null!==(i=r.parentElement)&&void 0!==i&&i.closest(".uagb-popover-color")||a(!1))}))},[]);const{setAttributes:l,boxShadowColor:c,boxShadowHOffset:g,boxShadowVOffset:d,boxShadowBlur:s,boxShadowSpread:m,boxShadowPosition:v}=e;let h;const f=t?"active":"";t&&(h=_.a.createElement("div",{className:"uagb-box-shadow-advanced"},_.a.createElement("div",{className:"uagb-shadow-color"},_.a.createElement(r.a,{label:c.title,colorValue:c.value,onColorChange:e=>l({[c.label]:e})})),_.a.createElement("div",{className:"uagb-horizontal-wrap"},_.a.createElement(n.a,{label:g.title,value:g.value,min:0,max:100,displayUnit:!1,setAttributes:l,data:{value:g.value,label:g.label},onChange:!1})),_.a.createElement("div",{className:"uagb-vertical-wrap"},_.a.createElement(n.a,{label:d.title,value:d.value,min:0,max:100,displayUnit:!1,setAttributes:l,data:{value:d.value,label:d.label},onChange:!1})),_.a.createElement("div",{className:"uagb-blur-wrap"},_.a.createElement(n.a,{label:s.title,value:s.value,min:0,max:100,displayUnit:!1,setAttributes:l,data:{value:s.value,label:s.label},onChange:!1})),_.a.createElement("div",{className:"uagb-spread-wrap"},_.a.createElement(n.a,{label:m.title,value:m.value,min:-100,max:100,displayUnit:!1,setAttributes:l,data:{value:m.value,label:m.label},onChange:!1})),_.a.createElement("div",{className:"uagb-shadow-type"},_.a.createElement(b.a,{setAttributes:l,label:v.title,data:{value:v.value,label:v.label},options:[{value:"outset",label:Object(o.__)("Outset","ultimate-addons-for-gutenberg"),tooltip:Object(o.__)("Outset","ultimate-addons-for-gutenberg")},{value:"inset",label:Object(o.__)("Inset","ultimate-addons-for-gutenberg"),tooltip:Object(o.__)("Inset (10px)","ultimate-addons-for-gutenberg")}],showIcons:!1}))));const w=_.a.createElement("div",{className:"uag-box-shadow-option-actions"},_.a.createElement("span",{className:"uag-control-label"},Object(o.__)("Box Shadow","ultimate-addons-for-gutenberg")),_.a.createElement(i.Button,{className:"uag-box-shadow-button","aria-pressed":t,onClick:()=>a(!t)},_.a.createElement(i.Dashicon,{icon:"edit"})));return _.a.createElement("div",{className:"components-base-control uag-box-shadow-options "+f},w,t&&h)}},206:function(e,t,a){"use strict";var l=a(6);t.a=e=>{const{setAttributes:t,backgroundGradient:a}=e;return React.createElement(l.GradientPicker,{value:a.value,onChange:e=>{t({[a.label]:e})},className:"uagb-gradient-picker"})}},207:function(e,t,a){"use strict";var l=a(0),o=a.n(l),n=a(6),r=a(10),i=a(65);t.a=e=>{const{label:t,data:a,setAttributes:l,options:u}=e,b=Object(r.a)(),c={};return c.Desktop=o.a.createElement(n.SelectControl,{value:a.desktop.value,onChange:e=>l({[a.desktop.label]:e}),options:u.desktop}),c.Tablet=o.a.createElement(n.SelectControl,{value:a.tablet.value,onChange:e=>l({[a.tablet.label]:e}),options:u.tablet||u.desktop}),c.Mobile=o.a.createElement(n.SelectControl,{value:a.mobile.value,onChange:e=>l({[a.mobile.label]:e}),options:u.mobile||u.desktop}),o.a.createElement("div",{className:"components-base-control uagb-responsive-select-control"},o.a.createElement("div",{className:"uagb-size-type-field-tabs"},o.a.createElement("div",{className:"uagb-control__header"},o.a.createElement(i.a,{label:t,responsive:!0})),c[b]?c[b]:c.Desktop),e.help&&o.a.createElement("p",{className:"uag-control-help-notice"},e.help))}},209:function(e,t,a){"use strict";var l=a(14),o=a.n(l)()((function(e){return e[1]}));o.push([e.i,".uag-bg-select-control .uag-background-type .components-select-control {\n  align-items: center;\n  display: grid;\n  grid-template-columns: 50% 50%; }\n\n.uag-bg-select-control .uag-background-color,\n.uag-bg-select-control .uag-background-image,\n.uag-bg-select-control .uag-background-gradient,\n.uag-bg-select-control .uag-background-opacity,\n.uag-bg-select-control .uag-background-video,\n.uag-bg-select-control .uag-background-video-overlay,\n.uag-bg-select-control .uag-background-video-opacity,\n.uag-bg-select-control .uag-background-image-position,\n.uag-bg-select-control .uag-background-image-attachment,\n.uag-bg-select-control .uag-background-image-repeat,\n.uag-bg-select-control .uag-background-image-size,\n.uag-bg-select-control .uag-background-image-overlay-type,\n.uag-bg-select-control .uag-background-image-overlay-color,\n.uag-bg-select-control .uag-background-image-overlay-gradient,\n.uag-bg-select-control .uagb-responsive-select-control {\n  margin-top: 24px; }\n\n.uag-bg-select-control .uag-background-image > .uagb-responsive-select-control .uagb-size-type-field-tabs {\n  display: block; }\n  .uag-bg-select-control .uag-background-image > .uagb-responsive-select-control .uagb-size-type-field-tabs > .components-base-control {\n    width: 100%; }\n\n.uag-bg-select-control .uagb-size-type-field-tabs {\n  display: flex;\n  justify-content: space-between; }\n  .uag-bg-select-control .uagb-size-type-field-tabs > .components-base-control {\n    width: 45%; }\n\n.uag-bg-select-control .uag-background-image-overlay-type .components-select-control {\n  flex-direction: row;\n  align-items: center; }\n  .uag-bg-select-control .uag-background-image-overlay-type .components-select-control .components-input-control__container {\n    width: 45%;\n    flex: unset; }\n\n.uag-bg-select-control .uag-background-image-size .uagb-responsive-control-inner > .components-base-control {\n  display: block;\n  margin-top: 24px; }\n\n.uag-bg-select-control .uag-background-image-position .uagb-size-type-field-tabs {\n  flex-direction: column; }\n  .uag-bg-select-control .uag-background-image-position .uagb-size-type-field-tabs .components-focal-point-picker-control {\n    width: 100%; }\n",""]),t.a=o},211:function(e,t,a){"use strict";var l,o=a(1),n=a(15),r=a(6),i=a(13),u=a.n(i),b=a(209),c=0,g={injectType:"lazySingletonStyleTag",attributes:{id:"uagb-editor-styles"},insert:"head",singleton:!0},d={};d.locals=b.a.locals||{},d.use=function(){return c++||(l=u()(b.a,g)),d},d.unuse=function(){c>0&&!--c&&(l(),l=null)};var s=d,m=a(206),v=a(0),C=a.n(v),p=a(199),_=a(23),h=a(207),f=a(10),w=a(65),k=e=>{const{backgroundImage:t,setAttributes:a}=e,l=Object(f.a)(),n=l.toLowerCase(),r=e=>{e&&e.url?e.type&&"image"===e.type?a({[t[n].label]:e}):a({[t[n].label]:null}):a({[t[n].label]:null})},i=()=>{a({[t[n].label]:""})},u={};return u.Desktop=C.a.createElement(p.a,{onSelectImage:r,backgroundImage:t.desktop.value,onRemoveImage:i,label:!1}),u.Tablet=C.a.createElement(p.a,{onSelectImage:r,backgroundImage:t.tablet.value,onRemoveImage:i,label:!1}),u.Mobile=C.a.createElement(p.a,{onSelectImage:r,backgroundImage:t.mobile.value,onRemoveImage:i,label:!1}),C.a.createElement("div",{className:"components-base-control uagb-responsive-select-control"},C.a.createElement("div",{className:"uagb-size-type-field-tabs"},C.a.createElement("div",{className:"uagb-control__header"},C.a.createElement(w.a,{label:Object(o.__)("Image","ultimate-addons-for-gutenberg"),responsive:!0})),u[l]?u[l]:u.Desktop),e.help&&C.a.createElement("p",{className:"uag-control-help-notice"},e.help))},L=e=>{var t,a,l;const{backgroundPosition:n,backgroundImage:i,setAttributes:u}=e,b=Object(f.a)(),c=b.toLowerCase(),g={},d=null===(t=i[c])||void 0===t||null===(a=t.value)||void 0===a?void 0:a.url,s=null===(l=n[c])||void 0===l?void 0:l.value;return g.Desktop=C.a.createElement(r.FocalPointPicker,{url:d,value:s,onChange:e=>{var t;u({[null===(t=n[c])||void 0===t?void 0:t.label]:e})}}),g.Tablet=C.a.createElement(r.FocalPointPicker,{url:d,value:s,onChange:e=>{var t;u({[null===(t=n[c])||void 0===t?void 0:t.label]:e})}}),g.Mobile=C.a.createElement(r.FocalPointPicker,{url:d,value:s,onChange:e=>{var t;u({[null===(t=n[c])||void 0===t?void 0:t.label]:e})}}),C.a.createElement("div",{className:"components-base-control uagb-responsive-select-control"},C.a.createElement("div",{className:"uagb-size-type-field-tabs"},C.a.createElement("div",{className:"uagb-control__header"},C.a.createElement(w.a,{label:Object(o.__)("Image","ultimate-addons-for-gutenberg"),responsive:!0})),g[b]?g[b]:g.Desktop),e.help&&C.a.createElement("p",{className:"uag-control-help-notice"},e.help))},x=a(19);t.a=e=>{var t,a;Object(v.useLayoutEffect)(()=>(s.use(),()=>{s.unuse()}),[]);const l=Object(f.a)().toLowerCase(),{setAttributes:i,backgroundImageColor:u,overlayType:b,backgroundSize:c,backgroundRepeat:g,backgroundAttachment:d,backgroundPosition:w,backgroundImage:E,backgroundColor:O,backgroundVideoType:M,backgroundType:j,backgroundVideo:y,backgroundVideoColor:V,onOpacityChange:T,backgroundCustomSize:R,backgroundCustomSizeType:S,imageResponsive:Z}=e;let I=[];I=[{value:"none",label:Object(o.__)("None","ultimate-addons-for-gutenberg")},{value:"color",label:Object(o.__)("Color","ultimate-addons-for-gutenberg")},{value:"gradient",label:Object(o.__)("Gradient","ultimate-addons-for-gutenberg")},{value:"image",label:Object(o.__)("Image","ultimate-addons-for-gutenberg")}];let A=[{value:"auto",label:Object(o.__)("Auto","ultimate-addons-for-gutenberg")},{value:"cover",label:Object(o.__)("Cover","ultimate-addons-for-gutenberg")},{value:"contain",label:Object(o.__)("Contain","ultimate-addons-for-gutenberg")},{value:"custom",label:Object(o.__)("Custom","ultimate-addons-for-gutenberg")}];R||(A=[{value:"auto",label:Object(o.__)("Auto","ultimate-addons-for-gutenberg")},{value:"cover",label:Object(o.__)("Cover","ultimate-addons-for-gutenberg")},{value:"contain",label:Object(o.__)("Contain","ultimate-addons-for-gutenberg")}]),M.value&&I.push({value:"video",label:Object(o.__)("Video","ultimate-addons-for-gutenberg")});const H=C.a.createElement(C.a.Fragment,null,C.a.createElement("div",{className:"uag-background-type"},C.a.createElement(r.SelectControl,{value:j.value,onChange:e=>i({[j.label]:e}),options:I,label:Object(o.__)("Type","ultimate-addons-for-gutenberg")})),"color"===j.value&&C.a.createElement("div",{className:"uag-background-color"},C.a.createElement(n.a,{label:Object(o.__)("Color","ultimate-addons-for-gutenberg"),colorValue:O.value?O.value:"",onColorChange:e=>i({[O.label]:e})})),"image"===j.value&&C.a.createElement("div",{className:"uag-background-image"},!Z&&C.a.createElement(p.a,{onSelectImage:e=>{e&&e.url?e.type&&"image"===e.type&&i({[E.label]:e}):i({[E.label]:null})},backgroundImage:E.value,onRemoveImage:()=>{i({[E.label]:null})}}),!Z&&E.value&&C.a.createElement(C.a.Fragment,null,C.a.createElement("div",{className:"uag-background-image-position"},C.a.createElement(r.SelectControl,{label:Object(o.__)("Image Position","ultimate-addons-for-gutenberg"),value:w.value,onChange:e=>i({[w.label]:e}),options:[{value:"left top",label:Object(o.__)("Top Left","ultimate-addons-for-gutenberg")},{value:"center top",label:Object(o.__)("Top Center","ultimate-addons-for-gutenberg")},{value:"right top",label:Object(o.__)("Top Right","ultimate-addons-for-gutenberg")},{value:"center top",label:Object(o.__)("Center Top","ultimate-addons-for-gutenberg")},{value:"center center",label:Object(o.__)("Center Center","ultimate-addons-for-gutenberg")},{value:"center bottom",label:Object(o.__)("Center Bottom","ultimate-addons-for-gutenberg")},{value:"left bottom",label:Object(o.__)("Bottom Left","ultimate-addons-for-gutenberg")},{value:"center bottom",label:Object(o.__)("Bottom Center","ultimate-addons-for-gutenberg")},{value:"right bottom",label:Object(o.__)("Bottom Right","ultimate-addons-for-gutenberg")}]})),C.a.createElement("div",{className:"uag-background-image-attachment"},C.a.createElement(r.SelectControl,{label:Object(o.__)("Attachment","ultimate-addons-for-gutenberg"),value:d.value,onChange:e=>i({[d.label]:e}),options:[{value:"fixed",label:Object(o.__)("Fixed","ultimate-addons-for-gutenberg")},{value:"scroll",label:Object(o.__)("Scroll","ultimate-addons-for-gutenberg")}]})),C.a.createElement("div",{className:"uag-background-image-repeat"},C.a.createElement(r.SelectControl,{label:Object(o.__)("Repeat","ultimate-addons-for-gutenberg"),value:g.value,onChange:e=>i({[g.label]:e}),options:[{value:"no-repeat",label:Object(o.__)("No Repeat","ultimate-addons-for-gutenberg")},{value:"repeat",label:Object(o.__)("Repeat","ultimate-addons-for-gutenberg")},{value:"repeat-x",label:Object(o.__)("Repeat-x","ultimate-addons-for-gutenberg")},{value:"repeat-y",label:Object(o.__)("Repeat-y","ultimate-addons-for-gutenberg")}]})),C.a.createElement("div",{className:"uag-background-image-size"},C.a.createElement(r.SelectControl,{label:Object(o.__)("Size","ultimate-addons-for-gutenberg"),value:c.value,onChange:e=>i({[c.label]:e}),options:A}),"custom"===c.value&&R&&C.a.createElement(_.a,{label:Object(o.__)("Width","ultimate-addons-for-gutenberg"),data:{desktop:{value:R.desktop.value,label:R.desktop.label},tablet:{value:R.tablet.value,label:R.tablet.label},mobile:{value:R.mobile.value,label:R.mobile.label}},min:0,limitMax:{px:1600,"%":100,em:574},unit:{value:S.value,label:S.label},units:[{name:Object(o.__)("PX","ultimate-addons-for-gutenberg"),unitValue:"px"},{name:Object(o.__)("%","ultimate-addons-for-gutenberg"),unitValue:"%"},{name:Object(o.__)("EM","ultimate-addons-for-gutenberg"),unitValue:"em"}],setAttributes:i}))),Z&&E&&C.a.createElement(k,{backgroundImage:E,setAttributes:i}),Z&&E[l]&&(null===(t=E[l])||void 0===t?void 0:t.value)&&C.a.createElement(C.a.Fragment,null,C.a.createElement("div",{className:"uag-background-image-position"},C.a.createElement(L,{backgroundPosition:w,setAttributes:i,backgroundImage:E})),C.a.createElement("div",{className:"uag-background-image-attachment"},C.a.createElement(h.a,{label:Object(o.__)("Attachment","ultimate-addons-for-gutenberg"),data:d,options:{desktop:[{value:"fixed",label:Object(o.__)("Fixed","ultimate-addons-for-gutenberg")},{value:"scroll",label:Object(o.__)("Scroll","ultimate-addons-for-gutenberg")}]},setAttributes:i})),C.a.createElement("div",{className:"uag-background-image-repeat"},C.a.createElement(h.a,{label:Object(o.__)("Repeat","ultimate-addons-for-gutenberg"),data:g,options:{desktop:[{value:"no-repeat",label:Object(o.__)("No Repeat","ultimate-addons-for-gutenberg")},{value:"repeat",label:Object(o.__)("Repeat","ultimate-addons-for-gutenberg")},{value:"repeat-x",label:Object(o.__)("Repeat-x","ultimate-addons-for-gutenberg")},{value:"repeat-y",label:Object(o.__)("Repeat-y","ultimate-addons-for-gutenberg")}]},setAttributes:i})),C.a.createElement("div",{className:"uag-background-image-size"},C.a.createElement(h.a,{label:Object(o.__)("Size","ultimate-addons-for-gutenberg"),data:c,options:{desktop:[{value:"auto",label:Object(o.__)("Auto","ultimate-addons-for-gutenberg")},{value:"cover",label:Object(o.__)("Cover","ultimate-addons-for-gutenberg")},{value:"contain",label:Object(o.__)("Contain","ultimate-addons-for-gutenberg")},{value:"custom",label:Object(o.__)("Custom","ultimate-addons-for-gutenberg")}]},setAttributes:i}),"custom"===c[l].value&&R&&C.a.createElement(_.a,{label:Object(o.__)("Width","ultimate-addons-for-gutenberg"),data:R,min:0,limitMax:{px:1600,"%":100,em:574},unit:{value:S.value,label:S.label},units:[{name:Object(o.__)("PX","ultimate-addons-for-gutenberg"),unitValue:"px"},{name:Object(o.__)("%","ultimate-addons-for-gutenberg"),unitValue:"%"},{name:Object(o.__)("EM","ultimate-addons-for-gutenberg"),unitValue:"em"}],setAttributes:i}))),b&&E&&(Z&&(null===(a=E[l])||void 0===a?void 0:a.value)||!Z&&(null==E?void 0:E.value))&&C.a.createElement(C.a.Fragment,null,C.a.createElement("div",{className:"uag-background-image-overlay-type"},C.a.createElement(x.a,{setAttributes:i,label:Object(o.__)("Overlay Type","ultimate-addons-for-gutenberg"),data:{value:b.value,label:b.label},className:"uagb-multi-button-alignment-control",options:[{value:"color",label:Object(o.__)("Color","ultimate-addons-for-gutenberg")},{value:"none",label:Object(o.__)("None","ultimate-addons-for-gutenberg")}],showIcons:!1})),"color"===b.value&&C.a.createElement("div",{className:"uag-background-image-overlay-color"},C.a.createElement(n.a,{label:Object(o.__)("Image Overlay Color","ultimate-addons-for-gutenberg"),colorValue:u.value,onColorChange:e=>i({[u.label]:e})})),"gradient"===b.value&&C.a.createElement("div",{className:"uag-background-image-overlay-gradient"},C.a.createElement(m.a,{backgroundGradient:e.backgroundGradient,setAttributes:i})))),"gradient"===j.value&&C.a.createElement("div",{className:"uag-background-gradient"},C.a.createElement(m.a,{backgroundGradient:e.backgroundGradient,setAttributes:e.setAttributes})),"video"===j.value&&M.value&&C.a.createElement("div",{className:"uag-background-video"},C.a.createElement(p.a,{onSelectImage:e=>{e&&e.url?e.type&&"video"===e.type&&i({[y.label]:e}):i({[y.label]:null})},backgroundImage:y.value,onRemoveImage:()=>{i({[y.label]:null})},showVideoInput:!0})),"video"===j.value&&y.value&&M.value&&C.a.createElement("div",{className:"uag-background-video-overlay"},b&&y&&y.value&&C.a.createElement(C.a.Fragment,null,C.a.createElement("div",{className:"uag-background-image-overlay-type"},C.a.createElement(x.a,{setAttributes:i,label:Object(o.__)("Overlay Type","ultimate-addons-for-gutenberg"),data:{value:b.value,label:b.label},className:"uagb-multi-button-alignment-control",options:[{value:"color",label:Object(o.__)("Color","ultimate-addons-for-gutenberg")},{value:"none",label:Object(o.__)("None","ultimate-addons-for-gutenberg")}],showIcons:!1})),"color"===b.value&&C.a.createElement("div",{className:"uag-background-image-overlay-color"},C.a.createElement(n.a,{label:Object(o.__)("Image Overlay Color","ultimate-addons-for-gutenberg"),colorValue:V.value,onColorChange:e=>i({[V.label]:e}),onOpacityChange:T})),"gradient"===b.value&&C.a.createElement("div",{className:"uag-background-image-overlay-gradient"},C.a.createElement(m.a,{backgroundGradient:e.backgroundGradient,setAttributes:i})))));return C.a.createElement("div",{className:"uag-bg-select-control components-base-control"},H)}},508:function(e,t,a){"use strict";a.r(t);var l=a(0),o=a.n(l),n=a(8),r=a(79),i=a(24),u=a(23),b=a(1),c=a(4),g=a(205),d=a(51),s=a(211),m=a(77),v=a(16),C=a(19),p=a(6),_=function(e){let t="";switch(e){case"align-center":t=React.createElement("svg",{id:"icon-format_align_center",viewBox:"0 0 24 24"},React.createElement("path",{d:"M3 3h18v2.016h-18v-2.016zM6.984 6.984h10.031v2.016h-10.031v-2.016zM3 12.984v-1.969h18v1.969h-18zM3 21v-2.016h18v2.016h-18zM6.984 15h10.031v2.016h-10.031v-2.016z"}));break;case"align-left":t=React.createElement("svg",{id:"icon-format_align_left",viewBox:"0 0 24 24"},React.createElement("path",{d:"M3 3h18v2.016h-18v-2.016zM3 21v-2.016h18v2.016h-18zM3 12.984v-1.969h18v1.969h-18zM15 6.984v2.016h-12v-2.016h12zM15 15v2.016h-12v-2.016h12z"}));break;case"align-right":t=React.createElement("svg",{id:"icon-format_align_right",viewBox:"0 0 24 24"},React.createElement("path",{d:"M3 3h18v2.016h-18v-2.016zM9 9v-2.016h12v2.016h-12zM3 12.984v-1.969h18v1.969h-18zM9 17.016v-2.016h12v2.016h-12zM3 21v-2.016h18v2.016h-18z"}));break;case"flex-row-start":t=React.createElement("svg",{viewBox:"0 0 33 32",xmlns:"http://www.w3.org/2000/svg"},React.createElement("path",{d:"M2.33984 1C2.33984 0.447715 1.89213 0 1.33984 0C0.787559 0 0.339844 0.447715 0.339844 1V30.5C0.339844 31.0523 0.787559 31.5 1.33984 31.5C1.89213 31.5 2.33984 31.0523 2.33984 30.5V1ZM32.3398 1C32.3398 0.447715 31.8921 0 31.3398 0C30.7876 0 30.3398 0.447715 30.3398 1V30.5C30.3398 31.0523 30.7876 31.5 31.3398 31.5C31.8921 31.5 32.3398 31.0523 32.3398 30.5V1ZM5.33984 6L9.33984 6C9.87011 6.00053 10.3785 6.21141 10.7535 6.58637C11.1284 6.96133 11.3393 7.46973 11.3398 8L11.3398 23C11.3393 23.5303 11.1284 24.0387 10.7535 24.4136C10.3785 24.7886 9.87011 24.9995 9.33984 25H5.33984C4.80957 24.9995 4.30117 24.7886 3.92621 24.4136C3.55126 24.0387 3.34037 23.5303 3.33984 23L3.33984 8C3.34037 7.46973 3.55126 6.96133 3.92621 6.58637C4.30117 6.21141 4.80957 6.00053 5.33984 6ZM5.33984 8L5.33984 23H9.33984L9.34084 8L5.33984 8ZM18.3398 6L14.3398 6C13.8096 6.00053 13.3012 6.21141 12.9262 6.58637C12.5513 6.96133 12.3404 7.46973 12.3398 8L12.3398 23C12.3404 23.5303 12.5513 24.0387 12.9262 24.4136C13.3012 24.7886 13.8096 24.9995 14.3398 25H18.3398C18.8701 24.9995 19.3785 24.7886 19.7535 24.4136C20.1284 24.0387 20.3393 23.5303 20.3398 23V8C20.3393 7.46973 20.1284 6.96133 19.7535 6.58637C19.3785 6.21141 18.8701 6.00053 18.3398 6ZM14.3398 23L14.3398 8L18.3408 8L18.3398 23H14.3398Z"}));break;case"flex-row-end":t=React.createElement("svg",{viewBox:"0 0 33 32",xmlns:"http://www.w3.org/2000/svg"},React.createElement("path",{d:"M2.33984 1C2.33984 0.447715 1.89213 0 1.33984 0C0.787559 0 0.339844 0.447715 0.339844 1V30.5C0.339844 31.0523 0.787559 31.5 1.33984 31.5C1.89213 31.5 2.33984 31.0523 2.33984 30.5V1ZM32.3398 1C32.3398 0.447715 31.8921 0 31.3398 0C30.7876 0 30.3398 0.447715 30.3398 1V30.5C30.3398 31.0523 30.7876 31.5 31.3398 31.5C31.8921 31.5 32.3398 31.0523 32.3398 30.5V1ZM14.3398 6L18.3398 6C18.8701 6.00053 19.3785 6.21141 19.7535 6.58637C20.1284 6.96133 20.3393 7.46973 20.3398 8V23C20.3393 23.5303 20.1284 24.0387 19.7535 24.4136C19.3785 24.7886 18.8701 24.9995 18.3398 25H14.3398C13.8096 24.9995 13.3012 24.7886 12.9262 24.4136C12.5513 24.0387 12.3404 23.5303 12.3398 23L12.3398 8C12.3404 7.46973 12.5513 6.96133 12.9262 6.58637C13.3012 6.21141 13.8096 6.00053 14.3398 6ZM14.3398 8L14.3398 23H18.3398L18.3408 8L14.3398 8ZM27.3398 6L23.3398 6C22.8096 6.00053 22.3012 6.21141 21.9262 6.58637C21.5513 6.96133 21.3404 7.46973 21.3398 8V23C21.3404 23.5303 21.5513 24.0387 21.9262 24.4136C22.3012 24.7886 22.8096 24.9995 23.3398 25H27.3398C27.8701 24.9995 28.3785 24.7886 28.7535 24.4136C29.1284 24.0387 29.3393 23.5303 29.3398 23V8C29.3393 7.46973 29.1284 6.96133 28.7535 6.58637C28.3785 6.21141 27.8701 6.00053 27.3398 6ZM23.3398 23V8L27.3408 8L27.3398 23H23.3398Z"}));break;case"flex-row-center":t=React.createElement("svg",{viewBox:"0 0 33 32",xmlns:"http://www.w3.org/2000/svg"},React.createElement("path",{d:"M2.33984 1C2.33984 0.447715 1.89213 0 1.33984 0C0.787559 0 0.339844 0.447715 0.339844 1V30.5C0.339844 31.0523 0.787559 31.5 1.33984 31.5C1.89213 31.5 2.33984 31.0523 2.33984 30.5V1ZM32.3398 1C32.3398 0.447715 31.8921 0 31.3398 0C30.7876 0 30.3398 0.447715 30.3398 1V30.5C30.3398 31.0523 30.7876 31.5 31.3398 31.5C31.8921 31.5 32.3398 31.0523 32.3398 30.5V1ZM9.33984 6L13.3398 6C13.8701 6.00053 14.3785 6.21141 14.7535 6.58637C15.1284 6.96133 15.3393 7.46973 15.3398 8L15.3398 23C15.3393 23.5303 15.1284 24.0387 14.7535 24.4136C14.3785 24.7886 13.8701 24.9995 13.3398 25H9.33984C8.80957 24.9995 8.30117 24.7886 7.92621 24.4136C7.55126 24.0387 7.34037 23.5303 7.33984 23L7.33984 8C7.34037 7.46973 7.55126 6.96133 7.92622 6.58637C8.30117 6.21141 8.80957 6.00053 9.33984 6ZM9.33984 8L9.33984 23H13.3398L13.3408 8H9.33984ZM23.3398 6L19.3398 6C18.8096 6.00053 18.3012 6.21141 17.9262 6.58637C17.5513 6.96133 17.3404 7.46973 17.3398 8V23C17.3404 23.5303 17.5513 24.0387 17.9262 24.4136C18.3012 24.7886 18.8096 24.9995 19.3398 25H23.3398C23.8701 24.9995 24.3785 24.7886 24.7535 24.4136C25.1284 24.0387 25.3393 23.5303 25.3398 23V8C25.3393 7.46973 25.1284 6.96133 24.7535 6.58637C24.3785 6.21141 23.8701 6.00053 23.3398 6ZM19.3398 23V8L23.3408 8L23.3398 23H19.3398Z"}));break;case"flex-row-strech":t=React.createElement("svg",{viewBox:"0 0 32 32",xmlns:"http://www.w3.org/2000/svg"},React.createElement("path",{d:"M2 1C2 0.447715 1.55228 0 1 0C0.447715 0 0 0.447715 0 1V30.5C0 31.0523 0.447715 31.5 1 31.5C1.55228 31.5 2 31.0523 2 30.5V1ZM32 1C32 0.447715 31.5523 0 31 0C30.4477 0 30 0.447715 30 1V30.5C30 31.0523 30.4477 31.5 31 31.5C31.5523 31.5 32 31.0523 32 30.5V1ZM5.00021 6L12.999 6C13.5293 6.00053 14.0377 6.21141 14.4127 6.58637C14.7876 6.96133 14.9985 7.46973 14.999 8L14.999 23C14.9985 23.5303 14.7876 24.0387 14.4127 24.4136C14.0377 24.7886 13.5293 24.9995 12.999 25H5.00021C4.46993 24.9995 3.96153 24.7886 3.58658 24.4136C3.21162 24.0387 3.00073 23.5303 3.00021 23L3.00021 8C3.00074 7.46973 3.21162 6.96133 3.58658 6.58637C3.96153 6.21141 4.46994 6.00053 5.00021 6ZM5.00021 8L5.00021 23H12.999L13 8L5.00021 8ZM26.9988 6L19 6C18.4697 6.00053 17.9613 6.21141 17.5863 6.58637C17.2114 6.96133 17.0005 7.46973 17 8V23C17.0005 23.5303 17.2114 24.0387 17.5863 24.4136C17.9613 24.7886 18.4697 24.9995 19 25H26.9988C27.529 24.9995 28.0375 24.7886 28.4124 24.4136C28.7874 24.0387 28.9982 23.5303 28.9988 23V8C28.9982 7.46973 28.7874 6.96133 28.4124 6.58637C28.0375 6.21141 27.529 6.00053 26.9988 6ZM19 23V8L26.9998 8L26.9988 23H19Z"}));break;case"flex-row-space-between":t=React.createElement("svg",{viewBox:"0 0 33 32",xmlns:"http://www.w3.org/2000/svg"},React.createElement("path",{d:"M2.68359 1C2.68359 0.447715 2.23588 0 1.68359 0C1.13131 0 0.683594 0.447715 0.683594 1V30.5C0.683594 31.0523 1.13131 31.5 1.68359 31.5C2.23588 31.5 2.68359 31.0523 2.68359 30.5V1ZM32.6836 1C32.6836 0.447715 32.2359 0 31.6836 0C31.1313 0 30.6836 0.447715 30.6836 1V30.5C30.6836 31.0523 31.1313 31.5 31.6836 31.5C32.2359 31.5 32.6836 31.0523 32.6836 30.5V1ZM5.68359 6L9.68359 6C10.2139 6.00053 10.7223 6.21141 11.0972 6.58637C11.4722 6.96133 11.6831 7.46973 11.6836 8L11.6836 23C11.6831 23.5303 11.4722 24.0387 11.0972 24.4136C10.7223 24.7886 10.2139 24.9995 9.68359 25H5.68359C5.15332 24.9995 4.64492 24.7886 4.26996 24.4136C3.89501 24.0387 3.68412 23.5303 3.68359 23L3.68359 8C3.68412 7.46973 3.89501 6.96133 4.26996 6.58637C4.64492 6.21141 5.15332 6.00053 5.68359 6ZM5.68359 8L5.68359 23H9.68359L9.68459 8L5.68359 8ZM27.6836 6L23.6836 6C23.1533 6.00053 22.6449 6.21141 22.27 6.58637C21.895 6.96133 21.6841 7.46973 21.6836 8V23C21.6841 23.5303 21.895 24.0387 22.27 24.4136C22.6449 24.7886 23.1533 24.9995 23.6836 25H27.6836C28.2139 24.9995 28.7223 24.7886 29.0972 24.4136C29.4722 24.0387 29.6831 23.5303 29.6836 23V8C29.6831 7.46973 29.4722 6.96133 29.0972 6.58637C28.7223 6.21141 28.2139 6.00053 27.6836 6ZM23.6836 23V8L27.6846 8L27.6836 23H23.6836Z"}));break;case"flex-row-space-around":t=React.createElement("svg",{viewBox:"0 0 33 32",xmlns:"http://www.w3.org/2000/svg"},React.createElement("path",{d:"M2.68359 1C2.68359 0.447715 2.23588 0 1.68359 0C1.13131 0 0.683594 0.447715 0.683594 1V30.5C0.683594 31.0523 1.13131 31.5 1.68359 31.5C2.23588 31.5 2.68359 31.0523 2.68359 30.5V1ZM32.6836 1C32.6836 0.447715 32.2359 0 31.6836 0C31.1313 0 30.6836 0.447715 30.6836 1V30.5C30.6836 31.0523 31.1313 31.5 31.6836 31.5C32.2359 31.5 32.6836 31.0523 32.6836 30.5V1ZM7.68359 6L11.6836 6C12.2139 6.00053 12.7223 6.21141 13.0972 6.58637C13.4722 6.96133 13.6831 7.46973 13.6836 8L13.6836 23C13.6831 23.5303 13.4722 24.0387 13.0972 24.4136C12.7223 24.7886 12.2139 24.9995 11.6836 25H7.68359C7.15332 24.9995 6.64492 24.7886 6.26996 24.4136C5.89501 24.0387 5.68412 23.5303 5.68359 23L5.68359 8C5.68412 7.46973 5.89501 6.96133 6.26996 6.58637C6.64492 6.21141 7.15332 6.00053 7.68359 6ZM7.68359 8L7.68359 23H11.6836L11.6846 8L7.68359 8ZM25.6836 6L21.6836 6C21.1533 6.00053 20.6449 6.21141 20.27 6.58637C19.895 6.96133 19.6841 7.46973 19.6836 8V23C19.6841 23.5303 19.895 24.0387 20.27 24.4136C20.6449 24.7886 21.1533 24.9995 21.6836 25H25.6836C26.2139 24.9995 26.7223 24.7886 27.0972 24.4136C27.4722 24.0387 27.6831 23.5303 27.6836 23V8C27.6831 7.46973 27.4722 6.96133 27.0972 6.58637C26.7223 6.21141 26.2139 6.00053 25.6836 6ZM21.6836 23V8L25.6846 8L25.6836 23H21.6836Z"}));break;case"flex-row-space-evenly":t=React.createElement("svg",{viewBox:"0 0 33 32",xmlns:"http://www.w3.org/2000/svg"},React.createElement("path",{d:"M2.68359 1C2.68359 0.447715 2.23588 0 1.68359 0C1.13131 0 0.683594 0.447715 0.683594 1V30.5C0.683594 31.0523 1.13131 31.5 1.68359 31.5C2.23588 31.5 2.68359 31.0523 2.68359 30.5V1ZM32.6836 1C32.6836 0.447715 32.2359 0 31.6836 0C31.1313 0 30.6836 0.447715 30.6836 1V30.5C30.6836 31.0523 31.1313 31.5 31.6836 31.5C32.2359 31.5 32.6836 31.0523 32.6836 30.5V1ZM8.68359 6L12.6836 6C13.2139 6.00053 13.7223 6.21141 14.0972 6.58637C14.4722 6.96133 14.6831 7.46973 14.6836 8L14.6836 23C14.6831 23.5303 14.4722 24.0387 14.0972 24.4136C13.7223 24.7886 13.2139 24.9995 12.6836 25H8.68359C8.15332 24.9995 7.64492 24.7886 7.26996 24.4136C6.89501 24.0387 6.68412 23.5303 6.68359 23L6.68359 8C6.68412 7.46973 6.89501 6.96133 7.26996 6.58637C7.64492 6.21141 8.15332 6.00053 8.68359 6ZM8.68359 8L8.68359 23H12.6836L12.6846 8L8.68359 8ZM24.6836 6L20.6836 6C20.1533 6.00053 19.6449 6.21141 19.27 6.58637C18.895 6.96133 18.6841 7.46973 18.6836 8V23C18.6841 23.5303 18.895 24.0387 19.27 24.4136C19.6449 24.7886 20.1533 24.9995 20.6836 25H24.6836C25.2139 24.9995 25.7223 24.7886 26.0972 24.4136C26.4722 24.0387 26.6831 23.5303 26.6836 23V8C26.6831 7.46973 26.4722 6.96133 26.0972 6.58637C25.7223 6.21141 25.2139 6.00053 24.6836 6ZM20.6836 23V8L24.6846 8L24.6836 23H20.6836Z"}));break;case"flex-column-start":t=React.createElement("svg",{viewBox:"0 0 33 33",xmlns:"http://www.w3.org/2000/svg"},React.createElement("path",{d:"M31.4336 2.75C31.9859 2.75 32.4336 2.30228 32.4336 1.75C32.4336 1.19772 31.9859 0.75 31.4336 0.75H1.93359C1.38131 0.75 0.933594 1.19771 0.933594 1.75C0.933594 2.30228 1.38131 2.75 1.93359 2.75L31.4336 2.75ZM31.4336 32.75C31.9859 32.75 32.4336 32.3023 32.4336 31.75C32.4336 31.1977 31.9859 30.75 31.4336 30.75L1.93359 30.75C1.38131 30.75 0.933594 31.1977 0.933594 31.75C0.933594 32.3023 1.38131 32.75 1.93359 32.75L31.4336 32.75ZM26.4336 5.75V9.75C26.4331 10.2803 26.2222 10.7887 25.8472 11.1636C25.4723 11.5386 24.9639 11.7495 24.4336 11.75L9.43359 11.75C8.90332 11.7495 8.39492 11.5386 8.01996 11.1636C7.64501 10.7887 7.43412 10.2803 7.43359 9.75L7.43359 5.75C7.43412 5.21973 7.64501 4.71133 8.01996 4.33637C8.39492 3.96141 8.90332 3.75053 9.43359 3.75L24.4336 3.75C24.9639 3.75053 25.4723 3.96141 25.8472 4.33637C26.2222 4.71133 26.4331 5.21973 26.4336 5.75ZM24.4336 5.75L9.43359 5.75L9.43359 9.75L24.4336 9.751V5.75ZM26.4336 18.75V14.75C26.4331 14.2197 26.2222 13.7113 25.8472 13.3364C25.4723 12.9614 24.9639 12.7505 24.4336 12.75L9.43359 12.75C8.90332 12.7505 8.39492 12.9614 8.01996 13.3364C7.64501 13.7113 7.43412 14.2197 7.43359 14.75L7.43359 18.75C7.43412 19.2803 7.64501 19.7887 8.01996 20.1636C8.39492 20.5386 8.90332 20.7495 9.43359 20.75L24.4336 20.75C24.9639 20.7495 25.4723 20.5386 25.8472 20.1636C26.2222 19.7887 26.4331 19.2803 26.4336 18.75ZM9.43359 14.75L24.4336 14.75V18.751L9.43359 18.75L9.43359 14.75Z"}));break;case"flex-column-end":t=React.createElement("svg",{viewBox:"0 0 33 33",xmlns:"http://www.w3.org/2000/svg"},React.createElement("path",{d:"M31.4336 2.75C31.9859 2.75 32.4336 2.30228 32.4336 1.75C32.4336 1.19772 31.9859 0.75 31.4336 0.75H1.93359C1.38131 0.75 0.933594 1.19771 0.933594 1.75C0.933594 2.30228 1.38131 2.75 1.93359 2.75L31.4336 2.75ZM31.4336 32.75C31.9859 32.75 32.4336 32.3023 32.4336 31.75C32.4336 31.1977 31.9859 30.75 31.4336 30.75L1.93359 30.75C1.38131 30.75 0.933594 31.1977 0.933594 31.75C0.933594 32.3023 1.38131 32.75 1.93359 32.75L31.4336 32.75ZM26.4336 14.75V18.75C26.4331 19.2803 26.2222 19.7887 25.8472 20.1636C25.4723 20.5386 24.9639 20.7495 24.4336 20.75L9.43359 20.75C8.90332 20.7495 8.39492 20.5386 8.01996 20.1636C7.64501 19.7887 7.43412 19.2803 7.43359 18.75L7.43359 14.75C7.43412 14.2197 7.64501 13.7113 8.01996 13.3364C8.39492 12.9614 8.90332 12.7505 9.43359 12.75L24.4336 12.75C24.9639 12.7505 25.4723 12.9614 25.8472 13.3364C26.2222 13.7113 26.4331 14.2197 26.4336 14.75ZM24.4336 14.75L9.43359 14.75L9.43359 18.75L24.4336 18.751V14.75ZM26.4336 27.75V23.75C26.4331 23.2197 26.2222 22.7113 25.8472 22.3364C25.4723 21.9614 24.9639 21.7505 24.4336 21.75L9.43359 21.75C8.90332 21.7505 8.39492 21.9614 8.01996 22.3364C7.64501 22.7113 7.43412 23.2197 7.43359 23.75L7.43359 27.75C7.43412 28.2803 7.64501 28.7887 8.01996 29.1636C8.39492 29.5386 8.90332 29.7495 9.43359 29.75L24.4336 29.75C24.9639 29.7495 25.4723 29.5386 25.8472 29.1636C26.2222 28.7887 26.4331 28.2803 26.4336 27.75ZM9.43359 23.75L24.4336 23.75V27.751L9.43359 27.75L9.43359 23.75Z"}));break;case"flex-column-center":t=React.createElement("svg",{viewBox:"0 0 33 33",xmlns:"http://www.w3.org/2000/svg"},React.createElement("path",{d:"M31.4336 2.75C31.9859 2.75 32.4336 2.30228 32.4336 1.75C32.4336 1.19772 31.9859 0.75 31.4336 0.75H1.93359C1.38131 0.75 0.933594 1.19771 0.933594 1.75C0.933594 2.30228 1.38131 2.75 1.93359 2.75L31.4336 2.75ZM31.4336 32.75C31.9859 32.75 32.4336 32.3023 32.4336 31.75C32.4336 31.1977 31.9859 30.75 31.4336 30.75L1.93359 30.75C1.38131 30.75 0.933594 31.1977 0.933594 31.75C0.933594 32.3023 1.38131 32.75 1.93359 32.75L31.4336 32.75ZM26.4336 9.75V13.75C26.4331 14.2803 26.2222 14.7887 25.8472 15.1636C25.4723 15.5386 24.9639 15.7495 24.4336 15.75L9.43359 15.75C8.90332 15.7495 8.39492 15.5386 8.01996 15.1636C7.64501 14.7887 7.43412 14.2803 7.43359 13.75L7.43359 9.75C7.43412 9.21973 7.64501 8.71133 8.01996 8.33637C8.39492 7.96141 8.90332 7.75053 9.43359 7.75L24.4336 7.75C24.9639 7.75053 25.4723 7.96141 25.8472 8.33637C26.2222 8.71133 26.4331 9.21973 26.4336 9.75ZM24.4336 9.75L9.43359 9.75L9.43359 13.75L24.4336 13.751V9.75ZM26.4336 23.75V19.75C26.4331 19.2197 26.2222 18.7113 25.8472 18.3364C25.4723 17.9614 24.9639 17.7505 24.4336 17.75L9.43359 17.75C8.90332 17.7505 8.39492 17.9614 8.01996 18.3364C7.64501 18.7113 7.43412 19.2197 7.43359 19.75V23.75C7.43412 24.2803 7.64501 24.7887 8.01996 25.1636C8.39492 25.5386 8.90332 25.7495 9.43359 25.75L24.4336 25.75C24.9639 25.7495 25.4723 25.5386 25.8472 25.1636C26.2222 24.7887 26.4331 24.2803 26.4336 23.75ZM9.43359 19.75L24.4336 19.75V23.751L9.43359 23.75L9.43359 19.75Z"}));break;case"flex-column-strech":t=React.createElement("svg",{viewBox:"0 0 32 32",xmlns:"http://www.w3.org/2000/svg"},React.createElement("path",{d:"M30.5 2C31.0523 2 31.5 1.55228 31.5 1C31.5 0.447715 31.0523 0 30.5 0H1C0.447716 0 0 0.447714 0 0.999999C0 1.55228 0.447716 2 1 2L30.5 2ZM30.5 32C31.0523 32 31.5 31.5523 31.5 31C31.5 30.4477 31.0523 30 30.5 30L1 30C0.447716 30 0 30.4477 0 31C0 31.5523 0.447716 32 1 32L30.5 32ZM25.5 5.00018V12.999C25.4995 13.5293 25.2886 14.0377 24.9136 14.4126C24.5387 14.7876 24.0303 14.9985 23.5 14.999L8.5 14.999C7.96973 14.9985 7.46133 14.7876 7.08637 14.4126C6.71141 14.0377 6.50053 13.5293 6.5 12.999L6.5 5.00017C6.50053 4.4699 6.71141 3.9615 7.08637 3.58654C7.46133 3.21159 7.96973 3.0007 8.5 3.00017L23.5 3.00018C24.0303 3.0007 24.5387 3.21159 24.9136 3.58655C25.2886 3.9615 25.4995 4.4699 25.5 5.00018ZM23.5 5.00018L8.5 5.00017L8.5 12.999L23.5 13V5.00018ZM25.5 26.9987V18.9999C25.4995 18.4697 25.2886 17.9613 24.9136 17.5863C24.5387 17.2113 24.0303 17.0005 23.5 16.9999L8.5 16.9999C7.96973 17.0005 7.46133 17.2113 7.08637 17.5863C6.71141 17.9613 6.50053 18.4697 6.5 18.9999L6.5 26.9987C6.50053 27.529 6.71141 28.0374 7.08637 28.4124C7.46133 28.7873 7.96973 28.9982 8.5 28.9987L23.5 28.9987C24.0303 28.9982 24.5387 28.7873 24.9136 28.4124C25.2886 28.0374 25.4995 27.529 25.5 26.9987ZM8.5 18.9999L23.5 18.9999V26.9997L8.5 26.9987L8.5 18.9999Z"}));break;case"flex-column-space-between":t=React.createElement("svg",{viewBox:"0 0 33 33",xmlns:"http://www.w3.org/2000/svg"},React.createElement("path",{d:"M31.4336 2.75C31.9859 2.75 32.4336 2.30228 32.4336 1.75C32.4336 1.19772 31.9859 0.75 31.4336 0.75H1.93359C1.38131 0.75 0.933594 1.19771 0.933594 1.75C0.933594 2.30228 1.38131 2.75 1.93359 2.75L31.4336 2.75ZM31.4336 32.75C31.9859 32.75 32.4336 32.3023 32.4336 31.75C32.4336 31.1977 31.9859 30.75 31.4336 30.75L1.93359 30.75C1.38131 30.75 0.933594 31.1977 0.933594 31.75C0.933594 32.3023 1.38131 32.75 1.93359 32.75L31.4336 32.75ZM26.4336 5.75V9.75C26.4331 10.2803 26.2222 10.7887 25.8472 11.1636C25.4723 11.5386 24.9639 11.7495 24.4336 11.75L9.43359 11.75C8.90332 11.7495 8.39492 11.5386 8.01996 11.1636C7.64501 10.7887 7.43412 10.2803 7.43359 9.75L7.43359 5.75C7.43412 5.21973 7.64501 4.71133 8.01996 4.33637C8.39492 3.96141 8.90332 3.75053 9.43359 3.75L24.4336 3.75C24.9639 3.75053 25.4723 3.96141 25.8472 4.33637C26.2222 4.71133 26.4331 5.21973 26.4336 5.75ZM24.4336 5.75L9.43359 5.75L9.43359 9.75L24.4336 9.751V5.75ZM26.4336 27.75V23.75C26.4331 23.2197 26.2222 22.7113 25.8472 22.3364C25.4723 21.9614 24.9639 21.7505 24.4336 21.75L9.43359 21.75C8.90332 21.7505 8.39492 21.9614 8.01996 22.3364C7.64501 22.7113 7.43412 23.2197 7.43359 23.75L7.43359 27.75C7.43412 28.2803 7.64501 28.7887 8.01996 29.1636C8.39492 29.5386 8.90332 29.7495 9.43359 29.75L24.4336 29.75C24.9639 29.7495 25.4723 29.5386 25.8472 29.1636C26.2222 28.7887 26.4331 28.2803 26.4336 27.75ZM9.43359 23.75L24.4336 23.75V27.751L9.43359 27.75L9.43359 23.75Z"}));break;case"flex-column-space-around":t=React.createElement("svg",{viewBox:"0 0 33 33",xmlns:"http://www.w3.org/2000/svg"},React.createElement("path",{d:"M31.4336 2.75C31.9859 2.75 32.4336 2.30228 32.4336 1.75C32.4336 1.19772 31.9859 0.75 31.4336 0.75H1.93359C1.38131 0.75 0.933594 1.19771 0.933594 1.75C0.933594 2.30228 1.38131 2.75 1.93359 2.75L31.4336 2.75ZM31.4336 32.75C31.9859 32.75 32.4336 32.3023 32.4336 31.75C32.4336 31.1977 31.9859 30.75 31.4336 30.75L1.93359 30.75C1.38131 30.75 0.933594 31.1977 0.933594 31.75C0.933594 32.3023 1.38131 32.75 1.93359 32.75L31.4336 32.75ZM26.4336 7.75V11.75C26.4331 12.2803 26.2222 12.7887 25.8472 13.1636C25.4723 13.5386 24.9639 13.7495 24.4336 13.75L9.43359 13.75C8.90332 13.7495 8.39492 13.5386 8.01996 13.1636C7.64501 12.7887 7.43412 12.2803 7.43359 11.75L7.43359 7.75C7.43412 7.21973 7.64501 6.71133 8.01996 6.33637C8.39492 5.96141 8.90332 5.75053 9.43359 5.75L24.4336 5.75C24.9639 5.75053 25.4723 5.96141 25.8472 6.33637C26.2222 6.71133 26.4331 7.21973 26.4336 7.75ZM24.4336 7.75L9.43359 7.75L9.43359 11.75L24.4336 11.751V7.75ZM26.4336 25.75V21.75C26.4331 21.2197 26.2222 20.7113 25.8472 20.3364C25.4723 19.9614 24.9639 19.7505 24.4336 19.75L9.43359 19.75C8.90332 19.7505 8.39492 19.9614 8.01996 20.3364C7.64501 20.7113 7.43412 21.2197 7.43359 21.75L7.43359 25.75C7.43412 26.2803 7.64501 26.7887 8.01996 27.1636C8.39492 27.5386 8.90332 27.7495 9.43359 27.75L24.4336 27.75C24.9639 27.7495 25.4723 27.5386 25.8472 27.1636C26.2222 26.7887 26.4331 26.2803 26.4336 25.75ZM9.43359 21.75L24.4336 21.75V25.751L9.43359 25.75L9.43359 21.75Z"}));break;case"flex-column-space-evenly":t=React.createElement("svg",{viewBox:"0 0 33 33",xmlns:"http://www.w3.org/2000/svg"},React.createElement("path",{d:"M31.4336 2.75C31.9859 2.75 32.4336 2.30228 32.4336 1.75C32.4336 1.19772 31.9859 0.75 31.4336 0.75H1.93359C1.38131 0.75 0.933594 1.19771 0.933594 1.75C0.933594 2.30228 1.38131 2.75 1.93359 2.75L31.4336 2.75ZM31.4336 32.75C31.9859 32.75 32.4336 32.3023 32.4336 31.75C32.4336 31.1977 31.9859 30.75 31.4336 30.75L1.93359 30.75C1.38131 30.75 0.933594 31.1977 0.933594 31.75C0.933594 32.3023 1.38131 32.75 1.93359 32.75L31.4336 32.75ZM26.4336 8.75V12.75C26.4331 13.2803 26.2222 13.7887 25.8472 14.1636C25.4723 14.5386 24.9639 14.7495 24.4336 14.75L9.43359 14.75C8.90332 14.7495 8.39492 14.5386 8.01996 14.1636C7.64501 13.7887 7.43412 13.2803 7.43359 12.75L7.43359 8.75C7.43412 8.21973 7.64501 7.71133 8.01996 7.33637C8.39492 6.96141 8.90332 6.75053 9.43359 6.75L24.4336 6.75C24.9639 6.75053 25.4723 6.96141 25.8472 7.33637C26.2222 7.71133 26.4331 8.21973 26.4336 8.75ZM24.4336 8.75L9.43359 8.75L9.43359 12.75L24.4336 12.751V8.75ZM26.4336 24.75V20.75C26.4331 20.2197 26.2222 19.7113 25.8472 19.3364C25.4723 18.9614 24.9639 18.7505 24.4336 18.75L9.43359 18.75C8.90332 18.7505 8.39492 18.9614 8.01996 19.3364C7.64501 19.7113 7.43412 20.2197 7.43359 20.75L7.43359 24.75C7.43412 25.2803 7.64501 25.7887 8.01996 26.1636C8.39492 26.5386 8.90332 26.7495 9.43359 26.75L24.4336 26.75C24.9639 26.7495 25.4723 26.5386 25.8472 26.1636C26.2222 25.7887 26.4331 25.2803 26.4336 24.75ZM9.43359 20.75L24.4336 20.75V24.751L9.43359 24.75L9.43359 20.75Z"}));break;case"flex-direction-row":t=React.createElement("svg",{viewBox:"0 0 32 32",xmlns:"http://www.w3.org/2000/svg"},React.createElement("path",{fillRule:"evenodd",clipRule:"evenodd",d:"M2 1.01587C2 0.454822 1.55228 0 1 0C0.447715 0 0 0.454822 0 1.01587V30.9841C0 31.5452 0.447715 32 1 32C1.55228 32 2 31.5452 2 30.9841V1.01587ZM32 1.01587C32 0.454822 31.5523 0 31 0C30.4477 0 30 0.454822 30 1.01587V30.9841C30 31.5452 30.4477 32 31 32C31.5523 32 32 31.5452 32 30.9841V1.01587ZM23.0355 5.29289L26.6213 8.87864C27.0118 9.26916 27.0118 9.90233 26.6213 10.2929L23.0355 13.8786C22.645 14.2691 22.0118 14.2691 21.6213 13.8786C21.2308 13.4881 21.2308 12.8549 21.6213 12.4644L23.5 10.5857H6C5.44772 10.5857 5 10.138 5 9.58574C5 9.03346 5.44772 8.58574 6 8.58574H23.5L21.6213 6.70711C21.2308 6.31658 21.2308 5.68342 21.6213 5.29289C22.0118 4.90237 22.645 4.90237 23.0355 5.29289ZM26.6213 21.5L23.0355 17.9143C22.645 17.5238 22.0118 17.5238 21.6213 17.9143C21.2308 18.3048 21.2308 18.938 21.6213 19.3285L23.5 21.2071H6C5.44771 21.2071 5 21.6548 5 22.2071C5 22.7594 5.44771 23.2071 6 23.2071H23.5L21.6213 25.0858C21.2308 25.4763 21.2308 26.1095 21.6213 26.5C22.0118 26.8905 22.645 26.8905 23.0355 26.5L26.6213 22.9142C27.0118 22.5237 27.0118 21.8905 26.6213 21.5Z"}));break;case"flex-direction-column":t=React.createElement("svg",{viewBox:"0 0 32 32",xmlns:"http://www.w3.org/2000/svg"},React.createElement("path",{fillRule:"evenodd",clipRule:"evenodd",d:"M30.9841 2C31.5452 2 32 1.55228 32 1C32 0.447715 31.5452 -1.98809e-08 30.9841 -4.44052e-08L1.01587 -1.35436e-06C0.454821 -1.37888e-06 -1.95703e-08 0.447714 -4.37114e-08 0.999999C-6.78525e-08 1.55228 0.454821 2 1.01587 2L30.9841 2ZM30.9841 32C31.5452 32 32 31.5523 32 31C32 30.4477 31.5452 30 30.9841 30L1.01587 30C0.454819 30 -1.33091e-06 30.4477 -1.35505e-06 31C-1.37919e-06 31.5523 0.454819 32 1.01587 32L30.9841 32ZM26.7071 23.0355L23.1214 26.6213C22.7308 27.0118 22.0977 27.0118 21.7071 26.6213L18.1214 23.0355C17.7309 22.645 17.7309 22.0118 18.1214 21.6213C18.5119 21.2308 19.1451 21.2308 19.5356 21.6213L21.4143 23.5L21.4143 6C21.4143 5.44771 21.862 5 22.4143 5C22.9665 5 23.4143 5.44771 23.4143 6L23.4143 23.5L25.2929 21.6213C25.6834 21.2308 26.3166 21.2308 26.7071 21.6213C27.0976 22.0118 27.0976 22.645 26.7071 23.0355ZM10.5 26.6213L14.0857 23.0355C14.4762 22.645 14.4762 22.0118 14.0857 21.6213C13.6952 21.2308 13.062 21.2308 12.6715 21.6213L10.7929 23.5L10.7929 6C10.7929 5.44771 10.3452 5 9.79287 5C9.24059 5 8.79287 5.44771 8.79287 6L8.79287 23.5L6.91422 21.6213C6.52369 21.2308 5.89053 21.2308 5.5 21.6213C5.10948 22.0118 5.10948 22.645 5.5 23.0355L9.08576 26.6213C9.47629 27.0118 10.1095 27.0118 10.5 26.6213Z"}));break;case"flex-direction-row-reverse":t=React.createElement("svg",{viewBox:"0 0 32 32",xmlns:"http://www.w3.org/2000/svg"},React.createElement("path",{fillRule:"evenodd",clipRule:"evenodd",d:"M30 30.9841C30 31.5452 30.4477 32 31 32C31.5523 32 32 31.5452 32 30.9841L32 1.01587C32 0.454821 31.5523 -3.91405e-08 31 -8.74228e-08C30.4477 -1.35705e-07 30 0.45482 30 1.01587L30 30.9841ZM8.88104e-08 30.9841C3.97618e-08 31.5452 0.447716 32 1 32C1.55228 32 2 31.5452 2 30.9841L2 1.01587C2 0.454818 1.55229 -2.66182e-06 1 -2.71011e-06C0.447719 -2.75839e-06 2.75777e-06 0.454818 2.70872e-06 1.01587L8.88104e-08 30.9841ZM8.96449 26.7071L5.37868 23.1214C4.98816 22.7308 4.98816 22.0977 5.37868 21.7071L8.96449 18.1214C9.35501 17.7309 9.98818 17.7309 10.3787 18.1214C10.7692 18.5119 10.7692 19.1451 10.3787 19.5356L8.5 21.4143L26 21.4143C26.5523 21.4143 27 21.862 27 22.4143C27 22.9665 26.5523 23.4143 26 23.4143L8.5 23.4143L10.3787 25.2929C10.7692 25.6834 10.7692 26.3166 10.3787 26.7071C9.98818 27.0976 9.35501 27.0976 8.96449 26.7071ZM5.37868 10.5L8.96449 14.0857C9.35502 14.4762 9.98818 14.4762 10.3787 14.0857C10.7692 13.6952 10.7692 13.062 10.3787 12.6715L8.5 10.7929L26 10.7929C26.5523 10.7929 27 10.3452 27 9.79287C27 9.24059 26.5523 8.79287 26 8.79287L8.5 8.79287L10.3787 6.91422C10.7692 6.52369 10.7692 5.89053 10.3787 5.5C9.98818 5.10948 9.35502 5.10948 8.96449 5.5L5.37868 9.08576C4.98816 9.47629 4.98816 10.1095 5.37868 10.5Z"}));break;case"flex-direction-column-reverse":t=React.createElement("svg",{viewBox:"0 0 32 32",xmlns:"http://www.w3.org/2000/svg"},React.createElement("path",{fillRule:"evenodd",clipRule:"evenodd",d:"M1.01587 30C0.454822 30 -6.78525e-08 30.4477 -4.37113e-08 31C-1.95702e-08 31.5523 0.454822 32 1.01587 32L30.9841 32C31.5452 32 32 31.5523 32 31C32 30.4477 31.5452 30 30.9841 30L1.01587 30ZM1.01587 -4.44052e-08C0.45482 -1.98809e-08 -1.37919e-06 0.447716 -1.35505e-06 1C-1.33091e-06 1.55228 0.454821 2 1.01587 2L30.9841 2C31.5452 2 32 1.55228 32 0.999999C32 0.447714 31.5452 -1.37888e-06 30.9841 -1.35436e-06L1.01587 -4.44052e-08ZM5.29289 8.96449L8.87863 5.37868C9.26916 4.98815 9.90233 4.98815 10.2928 5.37868L13.8786 8.96449C14.2691 9.35501 14.2691 9.98818 13.8786 10.3787C13.4881 10.7692 12.8549 10.7692 12.4644 10.3787L10.5857 8.5L10.5857 26C10.5857 26.5523 10.138 27 9.58574 27C9.03346 27 8.58574 26.5523 8.58574 26L8.58574 8.5L6.70711 10.3787C6.31658 10.7692 5.68342 10.7692 5.29289 10.3787C4.90237 9.98818 4.90237 9.35501 5.29289 8.96449ZM21.5 5.37868L17.9143 8.96449C17.5238 9.35501 17.5238 9.98818 17.9143 10.3787C18.3048 10.7692 18.938 10.7692 19.3285 10.3787L21.2071 8.5L21.2071 26C21.2071 26.5523 21.6548 27 22.2071 27C22.7594 27 23.2071 26.5523 23.2071 26L23.2071 8.5L25.0858 10.3787C25.4763 10.7692 26.1095 10.7692 26.5 10.3787C26.8905 9.98818 26.8905 9.35501 26.5 8.96449L22.9142 5.37868C22.5237 4.98815 21.8905 4.98815 21.5 5.37868Z"}));break;case"flex-wrap":t=React.createElement("svg",{viewBox:"0 0 33 32",xmlns:"http://www.w3.org/2000/svg"},React.createElement("path",{d:"M1.33984 0C1.89213 0 2.33984 0.447715 2.33984 1V30.5C2.33984 31.0523 1.89213 31.5 1.33984 31.5C0.787559 31.5 0.339844 31.0523 0.339844 30.5V1C0.339844 0.447715 0.787559 0 1.33984 0Z"}),React.createElement("path",{d:"M31.3398 0C31.8921 0 32.3398 0.447715 32.3398 1V30.5C32.3398 31.0523 31.8921 31.5 31.3398 31.5C30.7876 31.5 30.3398 31.0523 30.3398 30.5V1C30.3398 0.447715 30.7876 0 31.3398 0Z"}),React.createElement("path",{d:"M27.3398 5C27.8921 5 28.3398 5.44772 28.3398 6V22C28.3398 22.0022 28.3398 22.0043 28.3398 22.0065C28.3363 22.5558 27.89 23 27.3398 23L10.8398 23L12.7185 24.8786C13.1091 25.2692 13.1091 25.9023 12.7185 26.2929C12.328 26.6834 11.6949 26.6834 11.3043 26.2929L7.71852 22.7071C7.328 22.3166 7.328 21.6834 7.71852 21.2929L11.3043 17.7071C11.6949 17.3166 12.328 17.3166 12.7185 17.7071C13.1091 18.0977 13.1091 18.7308 12.7185 19.1213L10.8398 21L26.3398 21V7L5.33984 7C4.78756 7 4.33984 6.55228 4.33984 6C4.33984 5.44771 4.78756 5 5.33984 5H27.3398Z"}));break;case"flex-no-wrap":t=React.createElement("svg",{viewBox:"0 0 33 32",xmlns:"http://www.w3.org/2000/svg"},React.createElement("path",{d:"M1.33984 0C1.89213 0 2.33984 0.447715 2.33984 1V30.5C2.33984 31.0523 1.89213 31.5 1.33984 31.5C0.787559 31.5 0.339844 31.0523 0.339844 30.5V1C0.339844 0.447715 0.787559 0 1.33984 0Z"}),React.createElement("path",{d:"M31.3398 0C31.8921 0 32.3398 0.447715 32.3398 1V30.5C32.3398 31.0523 31.8921 31.5 31.3398 31.5C30.7876 31.5 30.3398 31.0523 30.3398 30.5V1C30.3398 0.447715 30.7876 0 31.3398 0Z"}),React.createElement("path",{d:"M24.3754 11.2929L27.9612 14.8786C28.3517 15.2692 28.3517 15.9023 27.9612 16.2929L24.3754 19.8786C23.9848 20.2691 23.3517 20.2691 22.9611 19.8786C22.5706 19.4881 22.5706 18.8549 22.9611 18.4644L24.8398 16.5857L5.33984 16.5857C4.78756 16.5857 4.33984 16.138 4.33984 15.5857C4.33984 15.0334 4.78756 14.5857 5.33984 14.5857L24.8398 14.5857L22.9611 12.7071C22.5706 12.3166 22.5706 11.6834 22.9611 11.2929C23.3517 10.9024 23.9848 10.9024 24.3754 11.2929Z"}));break;case"flex-wrap-reverse":t=React.createElement("svg",{viewBox:"0 0 33 32",xmlns:"http://www.w3.org/2000/svg"},React.createElement("path",{d:"M1.33984 32C1.89213 32 2.33984 31.5452 2.33984 30.9841V1.01587C2.33984 0.454821 1.89213 0 1.33984 0C0.787559 0 0.339844 0.454821 0.339844 1.01587V30.9841C0.339844 31.5452 0.787559 32 1.33984 32Z"}),React.createElement("path",{d:"M31.3398 32C31.8921 32 32.3398 31.5452 32.3398 30.9841V1.01587C32.3398 0.454821 31.8921 0 31.3398 0C30.7876 0 30.3398 0.454821 30.3398 1.01587V30.9841C30.3398 31.5452 30.7876 32 31.3398 32Z"}),React.createElement("path",{d:"M27.3398 26.5C27.8921 26.5 28.3398 26.0523 28.3398 25.5V9.5C28.3398 9.49784 28.3398 9.49569 28.3398 9.49353C28.3363 8.94422 27.89 8.5 27.3398 8.5L10.8398 8.5L12.7185 6.62136C13.1091 6.23084 13.1091 5.59767 12.7185 5.20715C12.328 4.81663 11.6949 4.81663 11.3043 5.20715L7.71852 8.79289C7.328 9.18342 7.328 9.81658 7.71852 10.2071L11.3043 13.7929C11.6949 14.1834 12.328 14.1834 12.7185 13.7929C13.1091 13.4023 13.1091 12.7692 12.7185 12.3787L10.8398 10.5L26.3398 10.5V24.5H5.33984C4.78756 24.5 4.33984 24.9477 4.33984 25.5C4.33984 26.0523 4.78756 26.5 5.33984 26.5H27.3398Z"}))}return t},h=a(52),f=a(15),w=a(18);function k(){return(k=Object.assign||function(e){for(var t=1;t<arguments.length;t++){var a=arguments[t];for(var l in a)Object.prototype.hasOwnProperty.call(a,l)&&(e[l]=a[l])}return e}).apply(this,arguments)}const L=e=>{e=e.parentProps;const{attributes:t,setAttributes:a,deviceType:L}=e,{widthDesktop:x,widthTablet:E,widthMobile:O,widthType:M,minHeightDesktop:j,minHeightTablet:y,minHeightMobile:V,minHeightType:T,directionDesktop:R,directionTablet:S,directionMobile:Z,alignItemsDesktop:I,alignItemsTablet:A,alignItemsMobile:H,justifyContentDesktop:B,justifyContentTablet:P,justifyContentMobile:D,wrapDesktop:z,wrapTablet:N,wrapMobile:W,alignContentDesktop:F,alignContentTablet:G,alignContentMobile:U,backgroundType:$,backgroundImageDesktop:X,backgroundImageTablet:J,backgroundImageMobile:q,backgroundColor:K,backgroundPositionDesktop:Q,backgroundPositionTablet:Y,backgroundPositionMobile:ee,backgroundAttachmentDesktop:te,backgroundAttachmentTablet:ae,backgroundAttachmentMobile:le,backgroundRepeatDesktop:oe,backgroundRepeatTablet:ne,backgroundRepeatMobile:re,backgroundSizeDesktop:ie,backgroundSizeTablet:ue,backgroundSizeMobile:be,backgroundImageColor:ce,gradientValue:ge,borderStyle:de,borderWidth:se,borderRadius:me,borderColor:ve,borderHoverColor:Ce,boxShadowColor:pe,boxShadowHOffset:_e,boxShadowVOffset:he,boxShadowBlur:fe,boxShadowSpread:we,boxShadowPosition:ke,topPaddingDesktop:Le,bottomPaddingDesktop:xe,leftPaddingDesktop:Ee,rightPaddingDesktop:Oe,topPaddingTablet:Me,bottomPaddingTablet:je,leftPaddingTablet:ye,rightPaddingTablet:Ve,topPaddingMobile:Te,bottomPaddingMobile:Re,leftPaddingMobile:Se,rightPaddingMobile:Ze,paddingType:Ie,paddingLink:Ae,topMarginDesktop:He,bottomMarginDesktop:Be,leftMarginDesktop:Pe,rightMarginDesktop:De,topMarginTablet:ze,bottomMarginTablet:Ne,leftMarginTablet:We,rightMarginTablet:Fe,topMarginMobile:Ge,bottomMarginMobile:Ue,leftMarginMobile:$e,rightMarginMobile:Xe,marginType:Je,marginLink:qe,rowGapDesktop:Ke,rowGapTablet:Qe,rowGapMobile:Ye,rowGapType:et,columnGapDesktop:tt,columnGapTablet:at,columnGapMobile:lt,columnGapType:ot,contentWidth:nt,isBlockRootParent:rt,innerContentWidth:it,innerContentCustomWidthDesktop:ut,innerContentCustomWidthTablet:bt,innerContentCustomWidthMobile:ct,innerContentCustomWidthType:gt,bottomType:dt,bottomColor:st,bottomHeight:mt,bottomHeightTablet:vt,bottomHeightMobile:Ct,bottomWidth:pt,topType:_t,topColor:ht,topHeight:ft,topHeightTablet:wt,topHeightMobile:kt,topWidth:Lt,bottomFlip:xt,topFlip:Et,topContentAboveShape:Ot,bottomContentAboveShape:Mt,backgroundCustomSizeDesktop:jt,backgroundCustomSizeTablet:yt,backgroundCustomSizeMobile:Vt,backgroundCustomSizeType:Tt,overlayType:Rt,backgroundVideoColor:St,backgroundVideo:Zt,topInvert:It,bottomInvert:At}=t;let Ht=R;t["direction"+L]&&t["direction"+L].split("-")[0]&&(Ht=t["direction"+L].split("-")[0]);const Bt="row"===Ht?"column":"row";return o.a.createElement(l.Suspense,{fallback:Object(n.a)()},o.a.createElement(c.InspectorControls,null,o.a.createElement(r.a,null,o.a.createElement(i.b,i.a.general,(()=>{const e=[{value:"row",tooltip:Object(b.__)("Row","ultimate-addons-for-gutenberg"),icon:o.a.createElement(p.Icon,{icon:_("flex-direction-row")})},{value:"column",tooltip:Object(b.__)("Column","ultimate-addons-for-gutenberg"),icon:o.a.createElement(p.Icon,{icon:_("flex-direction-column")})},{value:"row-reverse",tooltip:Object(b.__)("Row Reverse","ultimate-addons-for-gutenberg"),icon:o.a.createElement(p.Icon,{icon:_("flex-direction-row-reverse")})},{value:"column-reverse",tooltip:Object(b.__)("Column Reverse","ultimate-addons-for-gutenberg"),icon:o.a.createElement(p.Icon,{icon:_("flex-direction-column-reverse")})}],l=[{value:"flex-start",tooltip:Object(b.__)("Flex Start","ultimate-addons-for-gutenberg"),icon:o.a.createElement(p.Icon,{icon:_(`flex-${Bt}-start`)})},{value:"center",tooltip:Object(b.__)("Center","ultimate-addons-for-gutenberg"),icon:o.a.createElement(p.Icon,{icon:_(`flex-${Bt}-center`)})},{value:"flex-end",tooltip:Object(b.__)("Flex End","ultimate-addons-for-gutenberg"),icon:o.a.createElement(p.Icon,{icon:_(`flex-${Bt}-end`)})},{value:"stretch",tooltip:Object(b.__)("Stretch","ultimate-addons-for-gutenberg"),icon:o.a.createElement(p.Icon,{icon:_(`flex-${Bt}-strech`)})}],n=[{value:"flex-start",tooltip:Object(b.__)("Flex Start","ultimate-addons-for-gutenberg"),icon:o.a.createElement(p.Icon,{icon:_(`flex-${Ht}-start`)})},{value:"center",tooltip:Object(b.__)("Center","ultimate-addons-for-gutenberg"),icon:o.a.createElement(p.Icon,{icon:_(`flex-${Ht}-center`)})},{value:"flex-end",tooltip:Object(b.__)("Flex End","ultimate-addons-for-gutenberg"),icon:o.a.createElement(p.Icon,{icon:_(`flex-${Ht}-end`)})},{value:"space-between",tooltip:Object(b.__)("Space Between","ultimate-addons-for-gutenberg"),icon:o.a.createElement(p.Icon,{icon:_(`flex-${Ht}-space-between`)})},{value:"space-around",tooltip:Object(b.__)("Space Around","ultimate-addons-for-gutenberg"),icon:o.a.createElement(p.Icon,{icon:_(`flex-${Ht}-space-around`)})},{value:"space-evenly",tooltip:Object(b.__)("Space Evenly","ultimate-addons-for-gutenberg"),icon:o.a.createElement(p.Icon,{icon:_(`flex-${Ht}-space-evenly`)})}],r=[{value:"wrap",tooltip:Object(b.__)("Wrap","ultimate-addons-for-gutenberg"),icon:o.a.createElement(p.Icon,{icon:_("flex-wrap")})},{value:"nowrap",tooltip:Object(b.__)("No Wrap","ultimate-addons-for-gutenberg"),icon:o.a.createElement(p.Icon,{icon:_("flex-no-wrap")})},{value:"wrap-reverse",tooltip:Object(b.__)("Wrap Reverse","ultimate-addons-for-gutenberg"),icon:o.a.createElement(p.Icon,{icon:_("flex-wrap-reverse")})}],i=[{value:"alignfull",label:Object(b.__)("Full Width","ultimate-addons-for-gutenberg")},{value:"alignwide",label:Object(b.__)("Boxed","ultimate-addons-for-gutenberg")},{value:"default",label:Object(b.__)("Custom","ultimate-addons-for-gutenberg")}],c=[{value:"alignwide",label:Object(b.__)("Boxed","ultimate-addons-for-gutenberg")},{value:"alignfull",label:Object(b.__)("Full Width","ultimate-addons-for-gutenberg")}];return o.a.createElement(o.a.Fragment,null,o.a.createElement(v.a,{title:Object(b.__)("Size","ultimate-addons-for-gutenberg"),initialOpen:!0},rt&&o.a.createElement(o.a.Fragment,null,o.a.createElement(C.a,{setAttributes:a,label:Object(b.__)("Container Width","ultimate-addons-for-gutenberg"),data:{value:nt,label:"contentWidth"},options:i,showIcons:!1,responsive:!1}),"alignfull"===nt&&o.a.createElement(o.a.Fragment,null,o.a.createElement(C.a,{setAttributes:a,label:Object(b.__)("Content Width","ultimate-addons-for-gutenberg"),data:{value:it,label:"innerContentWidth"},options:c,showIcons:!1,responsive:!1}),"alignwide"===it&&o.a.createElement(u.a,{label:Object(b.__)("Content Box Width","ultimate-addons-for-gutenberg"),data:{desktop:{value:ut,label:"innerContentCustomWidthDesktop"},tablet:{value:bt,label:"innerContentCustomWidthTablet"},mobile:{value:ct,label:"innerContentCustomWidthMobile"}},min:0,limitMax:{px:1600,"%":100,vw:100},units:[{name:Object(b.__)("PX","ultimate-addons-for-gutenberg"),unitValue:"px"},{name:Object(b.__)("%","ultimate-addons-for-gutenberg"),unitValue:"%"},{name:Object(b.__)("VW","ultimate-addons-for-gutenberg"),unitValue:"vw"}],unit:{value:gt,label:"innerContentCustomWidthType"},setAttributes:a}))),(rt&&"default"===nt||!rt)&&o.a.createElement(o.a.Fragment,null,o.a.createElement(u.a,{label:Object(b.__)("Custom Width","ultimate\t-addons-for-gutenberg"),data:{desktop:{value:x,label:"widthDesktop"},tablet:{value:E,label:"widthTablet"},mobile:{value:O,label:"widthMobile"}},min:0,unit:{value:M,label:"widthType"},limitMax:{px:1600,"%":100,vw:100},units:[{name:Object(b.__)("PX","ultimate-addons-for-gutenberg"),unitValue:"px"},{name:Object(b.__)("%","ultimate-addons-for-gutenberg"),unitValue:"%"},{name:Object(b.__)("VW","ultimate-addons-for-gutenberg"),unitValue:"vw"}],setAttributes:a,onChange:()=>{a({widthSetByUser:!0})}})),rt&&"default"===nt&&o.a.createElement(o.a.Fragment,null,o.a.createElement(C.a,{setAttributes:a,label:Object(b.__)("Content Width","ultimate-addons-for-gutenberg"),data:{value:it,label:"innerContentWidth"},options:c,showIcons:!1,responsive:!1}),"alignwide"===it&&o.a.createElement(u.a,{label:Object(b.__)("Content Box Width","ultimate-addons-for-gutenberg"),data:{desktop:{value:ut,label:"innerContentCustomWidthDesktop"},tablet:{value:bt,label:"innerContentCustomWidthTablet"},mobile:{value:ct,label:"innerContentCustomWidthMobile"}},min:0,limitMax:{px:1600,"%":100,vw:100},units:[{name:Object(b.__)("PX","ultimate-addons-for-gutenberg"),unitValue:"px"},{name:Object(b.__)("%","ultimate-addons-for-gutenberg"),unitValue:"%"},{name:Object(b.__)("VW","ultimate-addons-for-gutenberg"),unitValue:"vw"}],unit:{value:gt,label:"innerContentCustomWidthType"},setAttributes:a})),o.a.createElement(u.a,{label:Object(b.__)("Minimum Height","ultimate-addons-for-gutenberg"),data:{desktop:{value:j,label:"minHeightDesktop"},tablet:{value:y,label:"minHeightTablet"},mobile:{value:V,label:"minHeightMobile"}},min:0,limitMax:{px:1e3,vh:100},unit:{value:T,label:"minHeightType"},units:[{name:Object(b.__)("PX","ultimate-addons-for-gutenberg"),unitValue:"px"},{name:Object(b.__)("VH","ultimate-addons-for-gutenberg"),unitValue:"vh"}],setAttributes:a})),o.a.createElement(v.a,{title:Object(b.__)("Flex Properties","ultimate-addons-for-gutenberg"),initialOpen:!1},o.a.createElement(C.a,{setAttributes:a,label:Object(b.__)("Direction","ultimate-addons-for-gutenberg"),data:{desktop:{value:R,label:"directionDesktop"},tablet:{value:S,label:"directionTablet"},mobile:{value:Z,label:"directionMobile"}},options:e,showIcons:!0,responsive:!0}),o.a.createElement(C.a,{setAttributes:a,label:Object(b.__)("Align Items","ultimate-addons-for-gutenberg"),data:{desktop:{value:I,label:"alignItemsDesktop"},tablet:{value:A,label:"alignItemsTablet"},mobile:{value:H,label:"alignItemsMobile"}},options:l,showIcons:!0,responsive:!0}),o.a.createElement(C.a,{setAttributes:a,label:Object(b.__)("Justify Content","ultimate-addons-for-gutenberg"),data:{desktop:{value:B,label:"justifyContentDesktop"},tablet:{value:P,label:"justifyContentTablet"},mobile:{value:D,label:"justifyContentMobile"}},options:n,showIcons:!0,responsive:!0}),o.a.createElement(C.a,{setAttributes:a,label:Object(b.__)("Wrap","ultimate-addons-for-gutenberg"),data:{desktop:{value:z,label:"wrapDesktop"},tablet:{value:N,label:"wrapTablet"},mobile:{value:W,label:"wrapMobile"}},options:r,showIcons:!0,responsive:!0,help:Object(b.__)("Define whether the items are forced in a single line (No Wrap) or can be flowed into multiple lines (Wrap)","ultimate-addons-for-gutenberg")}),("wrap"===t["wrap"+L]||"wrap-reverse"===t["wrap"+L])&&o.a.createElement(C.a,{setAttributes:a,label:Object(b.__)("Align Content","ultimate-addons-for-gutenberg"),data:{desktop:{value:F,label:"alignContentDesktop"},tablet:{value:G,label:"alignContentTablet"},mobile:{value:U,label:"alignContentMobile"}},options:n,showIcons:!0,responsive:!0})))})()),o.a.createElement(i.b,i.a.style,o.a.createElement(v.a,{title:Object(b.__)("Background","ultimate-addons-for-gutenberg"),initialOpen:!0},o.a.createElement(s.a,k({setAttributes:a,backgroundGradient:{value:ge,label:"gradientValue"},backgroundImageColor:{value:ce,label:"backgroundImageColor"},backgroundSize:{desktop:{value:ie,label:"backgroundSizeDesktop"},tablet:{value:ue,label:"backgroundSizeTablet"},mobile:{value:be,label:"backgroundSizeMobile"}},backgroundCustomSize:{desktop:{value:jt,label:"backgroundCustomSizeDesktop"},tablet:{value:yt,label:"backgroundCustomSizeTablet"},mobile:{value:Vt,label:"backgroundCustomSizeMobile"}},backgroundCustomSizeType:{value:Tt,label:"backgroundCustomSizeType"},backgroundRepeat:{desktop:{value:oe,label:"backgroundRepeatDesktop"},tablet:{value:ne,label:"backgroundRepeatTablet"},mobile:{value:re,label:"backgroundRepeatMobile"}},backgroundAttachment:{desktop:{value:te,label:"backgroundAttachmentDesktop"},tablet:{value:ae,label:"backgroundAttachmentTablet"},mobile:{value:le,label:"backgroundAttachmentMobile"}},backgroundPosition:{desktop:{value:Q,label:"backgroundPositionDesktop"},tablet:{value:Y,label:"backgroundPositionTablet"},mobile:{value:ee,label:"backgroundPositionMobile"}},backgroundImage:{desktop:{value:X,label:"backgroundImageDesktop"},tablet:{value:J,label:"backgroundImageTablet"},mobile:{value:q,label:"backgroundImageMobile"}},imageResponsive:!0,backgroundColor:{value:K,label:"backgroundColor"},backgroundType:{value:$,label:"backgroundType"},overlayType:{value:Rt,label:"overlayType"},backgroundVideoType:{value:!0},backgroundVideo:{value:Zt,label:"backgroundVideo"},backgroundVideoColor:{value:St,label:"backgroundVideoColor"},onOpacityChange:e=>a({backgroundVideoOpacity:e})},e))),o.a.createElement(v.a,{title:Object(b.__)("Border","ultimate-addons-for-gutenberg"),initialOpen:!1},o.a.createElement(m.a,{disabledBorderTitle:!0,setAttributes:a,borderStyle:{value:de,label:"borderStyle",title:Object(b.__)("Style","ultimate-addons-for-gutenberg")},borderWidth:{value:se,label:"borderWidth",title:Object(b.__)("Width","ultimate-addons-for-gutenberg")},borderRadius:{value:me,label:"borderRadius",title:Object(b.__)("Radius","ultimate-addons-for-gutenberg")},borderColor:{value:ve,label:"borderColor",title:Object(b.__)("Color","ultimate-addons-for-gutenberg")},borderHoverColor:{value:Ce,label:"borderHoverColor",title:Object(b.__)("Hover Color","ultimate-addons-for-gutenberg")},disableBottomSeparator:!0})),o.a.createElement(v.a,{title:Object(b.__)("Box Shadow","ultimate-addons-for-gutenberg"),initialOpen:!1},o.a.createElement(g.a,{setAttributes:a,label:Object(b.__)("Box Shadow","ultimate-addons-for-gutenberg"),boxShadowColor:{value:pe,label:"boxShadowColor",title:Object(b.__)("Color","ultimate-addons-for-gutenberg")},boxShadowHOffset:{value:_e,label:"boxShadowHOffset",title:Object(b.__)("Horizontal","ultimate-addons-for-gutenberg")},boxShadowVOffset:{value:he,label:"boxShadowVOffset",title:Object(b.__)("Vertical","ultimate-addons-for-gutenberg")},boxShadowBlur:{value:fe,label:"boxShadowBlur",title:Object(b.__)("Blur","ultimate-addons-for-gutenberg")},boxShadowSpread:{value:we,label:"boxShadowSpread",title:Object(b.__)("Spread","ultimate-addons-for-gutenberg")},boxShadowPosition:{value:ke,label:"boxShadowPosition",title:Object(b.__)("Position","ultimate-addons-for-gutenberg")}})),(()=>{const e=[{value:"none",label:Object(b.__)("None","ultimate-addons-for-gutenberg")},{value:"tilt",label:Object(b.__)("Tilt","ultimate-addons-for-gutenberg")},{value:"mountains",label:Object(b.__)("Mountains","ultimate-addons-for-gutenberg")},{value:"wave_brush",label:Object(b.__)("Wave Brush","ultimate-addons-for-gutenberg")},{value:"waves",label:Object(b.__)("Waves","ultimate-addons-for-gutenberg")},{value:"wave_pattern",label:Object(b.__)("Waves Pattern","ultimate-addons-for-gutenberg")},{value:"triangle",label:Object(b.__)("Triangle","ultimate-addons-for-gutenberg")},{value:"drops",label:Object(b.__)("Drops","ultimate-addons-for-gutenberg")},{value:"clouds",label:Object(b.__)("Clouds","ultimate-addons-for-gutenberg")},{value:"zigzag",label:Object(b.__)("ZigZag","ultimate-addons-for-gutenberg")},{value:"pyramids",label:Object(b.__)("Pyramids","ultimate-addons-for-gutenberg")},{value:"triangle_asymmetrical",label:Object(b.__)("Triangle Asymmetrical","ultimate-addons-for-gutenberg")},{value:"tilt_opacity",label:Object(b.__)("Tilt Opacity","ultimate-addons-for-gutenberg")},{value:"fan_opacity",label:Object(b.__)("Fan Opacity","ultimate-addons-for-gutenberg")},{value:"curve",label:Object(b.__)("Curve","ultimate-addons-for-gutenberg")},{value:"curve_asymmetrical",label:Object(b.__)("Curve Asymmetrical","ultimate-addons-for-gutenberg")},{value:"curve_reverse",label:Object(b.__)("Curve Reverse","ultimate-addons-for-gutenberg")},{value:"curve_asym_reverse",label:Object(b.__)("Curve Asymmetrical Reverse","ultimate-addons-for-gutenberg")},{value:"arrow",label:Object(b.__)("Arrow","ultimate-addons-for-gutenberg")},{value:"arrow_split",label:Object(b.__)("Arrow Split","ultimate-addons-for-gutenberg")},{value:"book",label:Object(b.__)("Book","ultimate-addons-for-gutenberg")}],t=o.a.createElement(o.a.Fragment,null,o.a.createElement(p.SelectControl,{label:Object(b.__)("Type","ultimate-addons-for-gutenberg"),value:_t,onChange:e=>a({topType:e}),options:e}),"none"!==_t&&o.a.createElement(o.a.Fragment,null,o.a.createElement(f.a,{label:Object(b.__)("Color","ultimate-addons-for-gutenberg"),colorValue:ht,onColorChange:e=>a({topColor:e})}),o.a.createElement(w.a,{label:Object(b.__)("Width","ultimate-addons-for-gutenberg"),setAttributes:a,value:Lt,onChange:e=>a({topWidth:e}),min:100,max:2e3,displayUnit:!1}),o.a.createElement(u.a,{label:Object(b.__)("Height","ultimate-addons-for-gutenberg"),data:{desktop:{value:ft,label:"topHeight"},tablet:{value:wt,label:"topHeightTablet"},mobile:{value:kt,label:"topHeightMobile"}},min:0,max:500,displayUnit:!1,setAttributes:a}),o.a.createElement(p.ToggleControl,{label:Object(b.__)("Flip","ultimate-addons-for-gutenberg"),checked:Et,onChange:()=>a({topFlip:!Et})}),o.a.createElement(p.ToggleControl,{label:Object(b.__)("Invert","ultimate-addons-for-gutenberg"),checked:It,onChange:()=>a({topInvert:!It})}),o.a.createElement(p.ToggleControl,{label:Object(b.__)("Bring To Front","ultimate-addons-for-gutenberg"),checked:Ot,onChange:()=>a({topContentAboveShape:!Ot})}))),l=o.a.createElement(o.a.Fragment,null,o.a.createElement(p.SelectControl,{label:Object(b.__)("Type","ultimate-addons-for-gutenberg"),value:dt,onChange:e=>a({bottomType:e}),options:e}),"none"!==dt&&o.a.createElement(o.a.Fragment,null,o.a.createElement(f.a,{label:Object(b.__)("Color","ultimate-addons-for-gutenberg"),colorValue:st,onColorChange:e=>a({bottomColor:e})}),o.a.createElement(w.a,{label:Object(b.__)("Width","ultimate-addons-for-gutenberg"),setAttributes:a,value:pt,onChange:e=>a({bottomWidth:e}),min:100,max:2e3,displayUnit:!1}),o.a.createElement(u.a,{label:Object(b.__)("Height","ultimate-addons-for-gutenberg"),data:{desktop:{value:mt,label:"bottomHeight"},tablet:{value:vt,label:"bottomHeightTablet"},mobile:{value:Ct,label:"bottomHeightMobile"}},min:0,max:500,displayUnit:!1,setAttributes:a}),o.a.createElement(p.ToggleControl,{label:Object(b.__)("Flip","ultimate-addons-for-gutenberg"),checked:xt,onChange:()=>a({bottomFlip:!xt})}),o.a.createElement(p.ToggleControl,{label:Object(b.__)("Invert","ultimate-addons-for-gutenberg"),checked:At,onChange:()=>a({bottomInvert:!At})}),o.a.createElement(p.ToggleControl,{label:Object(b.__)("Bring To Front","ultimate-addons-for-gutenberg"),checked:Mt,onChange:()=>a({bottomContentAboveShape:!Mt})})));return o.a.createElement(v.a,{title:Object(b.__)("Shape Dividers","ultimate-addons-for-gutenberg"),initialOpen:!1},o.a.createElement(h.a,{tabs:[{name:"top",title:Object(b.__)("Top","ultimate-addons-for-gutenberg")},{name:"bottom",title:Object(b.__)("Bottom","ultimate-addons-for-gutenberg")}],top:t,bottom:l,disableBottomSeparator:!0}))})(),o.a.createElement(v.a,{title:Object(b.__)("Spacing","ultimate-addons-for-gutenberg"),initialOpen:!1},o.a.createElement(u.a,{label:Object(b.__)("Row Gap","ultimate-addons-for-gutenberg"),data:{desktop:{value:Ke,label:"rowGapDesktop"},tablet:{value:Qe,label:"rowGapTablet"},mobile:{value:Ye,label:"rowGapMobile"}},min:0,max:200,unit:{value:et,label:"rowGapType"},units:[{name:Object(b.__)("PX","ultimate-addons-for-gutenberg"),unitValue:"px"},{name:Object(b.__)("%","ultimate-addons-for-gutenberg"),unitValue:"%"},{name:Object(b.__)("VW","ultimate-addons-for-gutenberg"),unitValue:"vw"}],setAttributes:a}),o.a.createElement(u.a,{label:Object(b.__)("Column Gap","ultimate\t-addons-for-gutenberg"),data:{desktop:{value:tt,label:"columnGapDesktop"},tablet:{value:at,label:"columnGapTablet"},mobile:{value:lt,label:"columnGapMobile"}},min:0,max:200,unit:{value:ot,label:"columnGapType"},units:[{name:Object(b.__)("PX","ultimate-addons-for-gutenberg"),unitValue:"px"},{name:Object(b.__)("%","ultimate-addons-for-gutenberg"),unitValue:"%"},{name:Object(b.__)("VW","ultimate-addons-for-gutenberg"),unitValue:"vw"}],setAttributes:a}),o.a.createElement(d.a,k({},e,{label:Object(b.__)("Padding","ultimate-addons-for-gutenberg"),valueTop:{value:Le,label:"topPaddingDesktop"},valueRight:{value:Oe,label:"rightPaddingDesktop"},valueBottom:{value:xe,label:"bottomPaddingDesktop"},valueLeft:{value:Ee,label:"leftPaddingDesktop"},valueTopTablet:{value:Me,label:"topPaddingTablet"},valueRightTablet:{value:Ve,label:"rightPaddingTablet"},valueBottomTablet:{value:je,label:"bottomPaddingTablet"},valueLeftTablet:{value:ye,label:"leftPaddingTablet"},valueTopMobile:{value:Te,label:"topPaddingMobile"},valueRightMobile:{value:Ze,label:"rightPaddingMobile"},valueBottomMobile:{value:Re,label:"bottomPaddingMobile"},valueLeftMobile:{value:Se,label:"leftPaddingMobile"},unit:{value:Ie,label:"paddingType"},mUnit:{value:Ie,label:"paddingType"},tUnit:{value:Ie,label:"paddingType"},attributes:t,setAttributes:a,link:{value:Ae,label:"paddingLink"}})),o.a.createElement(d.a,k({},e,{label:Object(b.__)("Margin","ultimate-addons-for-gutenberg"),valueTop:{value:He,label:"topMarginDesktop"},valueRight:{value:De,label:"rightMarginDesktop"},valueBottom:{value:Be,label:"bottomMarginDesktop"},valueLeft:{value:Pe,label:"leftMarginDesktop"},valueTopTablet:{value:ze,label:"topMarginTablet"},valueRightTablet:{value:Fe,label:"rightMarginTablet"},valueBottomTablet:{value:Ne,label:"bottomMarginTablet"},valueLeftTablet:{value:We,label:"leftMarginTablet"},valueTopMobile:{value:Ge,label:"topMarginMobile"},valueRightMobile:{value:Xe,label:"rightMarginMobile"},valueBottomMobile:{value:Ue,label:"bottomMarginMobile"},valueLeftMobile:{value:$e,label:"leftMarginMobile"},unit:{value:Je,label:"marginType"},mUnit:{value:Je,label:"marginType"},tUnit:{value:Je,label:"marginType"},attributes:t,setAttributes:a,link:{value:qe,label:"marginLink"}})))),o.a.createElement(i.b,k({},i.a.advance,{parentProps:e})))))};t.default=o.a.memo(L)}}]);
+(window["webpackJsonp_ultimate_addons_for_gutenberg"] = window["webpackJsonp_ultimate_addons_for_gutenberg"] || []).push([["chunks/container/settings"],{
+
+/***/ "./blocks-config/uagb-controls/renderCustomIcon.js":
+/*!*********************************************************!*\
+  !*** ./blocks-config/uagb-controls/renderCustomIcon.js ***!
+  \*********************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+function renderCustomIcon(svg) {
+  let customSVG = '';
+
+  switch (svg) {
+    case 'align-center':
+      customSVG = /*#__PURE__*/React.createElement("svg", {
+        id: "icon-format_align_center",
+        viewBox: "0 0 24 24"
+      }, /*#__PURE__*/React.createElement("path", {
+        d: "M3 3h18v2.016h-18v-2.016zM6.984 6.984h10.031v2.016h-10.031v-2.016zM3 12.984v-1.969h18v1.969h-18zM3 21v-2.016h18v2.016h-18zM6.984 15h10.031v2.016h-10.031v-2.016z"
+      }));
+      break;
+
+    case 'align-left':
+      customSVG = /*#__PURE__*/React.createElement("svg", {
+        id: "icon-format_align_left",
+        viewBox: "0 0 24 24"
+      }, /*#__PURE__*/React.createElement("path", {
+        d: "M3 3h18v2.016h-18v-2.016zM3 21v-2.016h18v2.016h-18zM3 12.984v-1.969h18v1.969h-18zM15 6.984v2.016h-12v-2.016h12zM15 15v2.016h-12v-2.016h12z"
+      }));
+      break;
+
+    case 'align-right':
+      customSVG = /*#__PURE__*/React.createElement("svg", {
+        id: "icon-format_align_right",
+        viewBox: "0 0 24 24"
+      }, /*#__PURE__*/React.createElement("path", {
+        d: "M3 3h18v2.016h-18v-2.016zM9 9v-2.016h12v2.016h-12zM3 12.984v-1.969h18v1.969h-18zM9 17.016v-2.016h12v2.016h-12zM3 21v-2.016h18v2.016h-18z"
+      }));
+      break;
+
+    case 'flex-row-start':
+      customSVG = /*#__PURE__*/React.createElement("svg", {
+        viewBox: "0 0 33 32",
+        xmlns: "http://www.w3.org/2000/svg"
+      }, /*#__PURE__*/React.createElement("path", {
+        d: "M2.33984 1C2.33984 0.447715 1.89213 0 1.33984 0C0.787559 0 0.339844 0.447715 0.339844 1V30.5C0.339844 31.0523 0.787559 31.5 1.33984 31.5C1.89213 31.5 2.33984 31.0523 2.33984 30.5V1ZM32.3398 1C32.3398 0.447715 31.8921 0 31.3398 0C30.7876 0 30.3398 0.447715 30.3398 1V30.5C30.3398 31.0523 30.7876 31.5 31.3398 31.5C31.8921 31.5 32.3398 31.0523 32.3398 30.5V1ZM5.33984 6L9.33984 6C9.87011 6.00053 10.3785 6.21141 10.7535 6.58637C11.1284 6.96133 11.3393 7.46973 11.3398 8L11.3398 23C11.3393 23.5303 11.1284 24.0387 10.7535 24.4136C10.3785 24.7886 9.87011 24.9995 9.33984 25H5.33984C4.80957 24.9995 4.30117 24.7886 3.92621 24.4136C3.55126 24.0387 3.34037 23.5303 3.33984 23L3.33984 8C3.34037 7.46973 3.55126 6.96133 3.92621 6.58637C4.30117 6.21141 4.80957 6.00053 5.33984 6ZM5.33984 8L5.33984 23H9.33984L9.34084 8L5.33984 8ZM18.3398 6L14.3398 6C13.8096 6.00053 13.3012 6.21141 12.9262 6.58637C12.5513 6.96133 12.3404 7.46973 12.3398 8L12.3398 23C12.3404 23.5303 12.5513 24.0387 12.9262 24.4136C13.3012 24.7886 13.8096 24.9995 14.3398 25H18.3398C18.8701 24.9995 19.3785 24.7886 19.7535 24.4136C20.1284 24.0387 20.3393 23.5303 20.3398 23V8C20.3393 7.46973 20.1284 6.96133 19.7535 6.58637C19.3785 6.21141 18.8701 6.00053 18.3398 6ZM14.3398 23L14.3398 8L18.3408 8L18.3398 23H14.3398Z"
+      }));
+      break;
+
+    case 'flex-row-end':
+      customSVG = /*#__PURE__*/React.createElement("svg", {
+        viewBox: "0 0 33 32",
+        xmlns: "http://www.w3.org/2000/svg"
+      }, /*#__PURE__*/React.createElement("path", {
+        d: "M2.33984 1C2.33984 0.447715 1.89213 0 1.33984 0C0.787559 0 0.339844 0.447715 0.339844 1V30.5C0.339844 31.0523 0.787559 31.5 1.33984 31.5C1.89213 31.5 2.33984 31.0523 2.33984 30.5V1ZM32.3398 1C32.3398 0.447715 31.8921 0 31.3398 0C30.7876 0 30.3398 0.447715 30.3398 1V30.5C30.3398 31.0523 30.7876 31.5 31.3398 31.5C31.8921 31.5 32.3398 31.0523 32.3398 30.5V1ZM14.3398 6L18.3398 6C18.8701 6.00053 19.3785 6.21141 19.7535 6.58637C20.1284 6.96133 20.3393 7.46973 20.3398 8V23C20.3393 23.5303 20.1284 24.0387 19.7535 24.4136C19.3785 24.7886 18.8701 24.9995 18.3398 25H14.3398C13.8096 24.9995 13.3012 24.7886 12.9262 24.4136C12.5513 24.0387 12.3404 23.5303 12.3398 23L12.3398 8C12.3404 7.46973 12.5513 6.96133 12.9262 6.58637C13.3012 6.21141 13.8096 6.00053 14.3398 6ZM14.3398 8L14.3398 23H18.3398L18.3408 8L14.3398 8ZM27.3398 6L23.3398 6C22.8096 6.00053 22.3012 6.21141 21.9262 6.58637C21.5513 6.96133 21.3404 7.46973 21.3398 8V23C21.3404 23.5303 21.5513 24.0387 21.9262 24.4136C22.3012 24.7886 22.8096 24.9995 23.3398 25H27.3398C27.8701 24.9995 28.3785 24.7886 28.7535 24.4136C29.1284 24.0387 29.3393 23.5303 29.3398 23V8C29.3393 7.46973 29.1284 6.96133 28.7535 6.58637C28.3785 6.21141 27.8701 6.00053 27.3398 6ZM23.3398 23V8L27.3408 8L27.3398 23H23.3398Z"
+      }));
+      break;
+
+    case 'flex-row-center':
+      customSVG = /*#__PURE__*/React.createElement("svg", {
+        viewBox: "0 0 33 32",
+        xmlns: "http://www.w3.org/2000/svg"
+      }, /*#__PURE__*/React.createElement("path", {
+        d: "M2.33984 1C2.33984 0.447715 1.89213 0 1.33984 0C0.787559 0 0.339844 0.447715 0.339844 1V30.5C0.339844 31.0523 0.787559 31.5 1.33984 31.5C1.89213 31.5 2.33984 31.0523 2.33984 30.5V1ZM32.3398 1C32.3398 0.447715 31.8921 0 31.3398 0C30.7876 0 30.3398 0.447715 30.3398 1V30.5C30.3398 31.0523 30.7876 31.5 31.3398 31.5C31.8921 31.5 32.3398 31.0523 32.3398 30.5V1ZM9.33984 6L13.3398 6C13.8701 6.00053 14.3785 6.21141 14.7535 6.58637C15.1284 6.96133 15.3393 7.46973 15.3398 8L15.3398 23C15.3393 23.5303 15.1284 24.0387 14.7535 24.4136C14.3785 24.7886 13.8701 24.9995 13.3398 25H9.33984C8.80957 24.9995 8.30117 24.7886 7.92621 24.4136C7.55126 24.0387 7.34037 23.5303 7.33984 23L7.33984 8C7.34037 7.46973 7.55126 6.96133 7.92622 6.58637C8.30117 6.21141 8.80957 6.00053 9.33984 6ZM9.33984 8L9.33984 23H13.3398L13.3408 8H9.33984ZM23.3398 6L19.3398 6C18.8096 6.00053 18.3012 6.21141 17.9262 6.58637C17.5513 6.96133 17.3404 7.46973 17.3398 8V23C17.3404 23.5303 17.5513 24.0387 17.9262 24.4136C18.3012 24.7886 18.8096 24.9995 19.3398 25H23.3398C23.8701 24.9995 24.3785 24.7886 24.7535 24.4136C25.1284 24.0387 25.3393 23.5303 25.3398 23V8C25.3393 7.46973 25.1284 6.96133 24.7535 6.58637C24.3785 6.21141 23.8701 6.00053 23.3398 6ZM19.3398 23V8L23.3408 8L23.3398 23H19.3398Z"
+      }));
+      break;
+
+    case 'flex-row-strech':
+      customSVG = /*#__PURE__*/React.createElement("svg", {
+        viewBox: "0 0 32 32",
+        xmlns: "http://www.w3.org/2000/svg"
+      }, /*#__PURE__*/React.createElement("path", {
+        d: "M2 1C2 0.447715 1.55228 0 1 0C0.447715 0 0 0.447715 0 1V30.5C0 31.0523 0.447715 31.5 1 31.5C1.55228 31.5 2 31.0523 2 30.5V1ZM32 1C32 0.447715 31.5523 0 31 0C30.4477 0 30 0.447715 30 1V30.5C30 31.0523 30.4477 31.5 31 31.5C31.5523 31.5 32 31.0523 32 30.5V1ZM5.00021 6L12.999 6C13.5293 6.00053 14.0377 6.21141 14.4127 6.58637C14.7876 6.96133 14.9985 7.46973 14.999 8L14.999 23C14.9985 23.5303 14.7876 24.0387 14.4127 24.4136C14.0377 24.7886 13.5293 24.9995 12.999 25H5.00021C4.46993 24.9995 3.96153 24.7886 3.58658 24.4136C3.21162 24.0387 3.00073 23.5303 3.00021 23L3.00021 8C3.00074 7.46973 3.21162 6.96133 3.58658 6.58637C3.96153 6.21141 4.46994 6.00053 5.00021 6ZM5.00021 8L5.00021 23H12.999L13 8L5.00021 8ZM26.9988 6L19 6C18.4697 6.00053 17.9613 6.21141 17.5863 6.58637C17.2114 6.96133 17.0005 7.46973 17 8V23C17.0005 23.5303 17.2114 24.0387 17.5863 24.4136C17.9613 24.7886 18.4697 24.9995 19 25H26.9988C27.529 24.9995 28.0375 24.7886 28.4124 24.4136C28.7874 24.0387 28.9982 23.5303 28.9988 23V8C28.9982 7.46973 28.7874 6.96133 28.4124 6.58637C28.0375 6.21141 27.529 6.00053 26.9988 6ZM19 23V8L26.9998 8L26.9988 23H19Z"
+      }));
+      break;
+
+    case 'flex-row-space-between':
+      customSVG = /*#__PURE__*/React.createElement("svg", {
+        viewBox: "0 0 33 32",
+        xmlns: "http://www.w3.org/2000/svg"
+      }, /*#__PURE__*/React.createElement("path", {
+        d: "M2.68359 1C2.68359 0.447715 2.23588 0 1.68359 0C1.13131 0 0.683594 0.447715 0.683594 1V30.5C0.683594 31.0523 1.13131 31.5 1.68359 31.5C2.23588 31.5 2.68359 31.0523 2.68359 30.5V1ZM32.6836 1C32.6836 0.447715 32.2359 0 31.6836 0C31.1313 0 30.6836 0.447715 30.6836 1V30.5C30.6836 31.0523 31.1313 31.5 31.6836 31.5C32.2359 31.5 32.6836 31.0523 32.6836 30.5V1ZM5.68359 6L9.68359 6C10.2139 6.00053 10.7223 6.21141 11.0972 6.58637C11.4722 6.96133 11.6831 7.46973 11.6836 8L11.6836 23C11.6831 23.5303 11.4722 24.0387 11.0972 24.4136C10.7223 24.7886 10.2139 24.9995 9.68359 25H5.68359C5.15332 24.9995 4.64492 24.7886 4.26996 24.4136C3.89501 24.0387 3.68412 23.5303 3.68359 23L3.68359 8C3.68412 7.46973 3.89501 6.96133 4.26996 6.58637C4.64492 6.21141 5.15332 6.00053 5.68359 6ZM5.68359 8L5.68359 23H9.68359L9.68459 8L5.68359 8ZM27.6836 6L23.6836 6C23.1533 6.00053 22.6449 6.21141 22.27 6.58637C21.895 6.96133 21.6841 7.46973 21.6836 8V23C21.6841 23.5303 21.895 24.0387 22.27 24.4136C22.6449 24.7886 23.1533 24.9995 23.6836 25H27.6836C28.2139 24.9995 28.7223 24.7886 29.0972 24.4136C29.4722 24.0387 29.6831 23.5303 29.6836 23V8C29.6831 7.46973 29.4722 6.96133 29.0972 6.58637C28.7223 6.21141 28.2139 6.00053 27.6836 6ZM23.6836 23V8L27.6846 8L27.6836 23H23.6836Z"
+      }));
+      break;
+
+    case 'flex-row-space-around':
+      customSVG = /*#__PURE__*/React.createElement("svg", {
+        viewBox: "0 0 33 32",
+        xmlns: "http://www.w3.org/2000/svg"
+      }, /*#__PURE__*/React.createElement("path", {
+        d: "M2.68359 1C2.68359 0.447715 2.23588 0 1.68359 0C1.13131 0 0.683594 0.447715 0.683594 1V30.5C0.683594 31.0523 1.13131 31.5 1.68359 31.5C2.23588 31.5 2.68359 31.0523 2.68359 30.5V1ZM32.6836 1C32.6836 0.447715 32.2359 0 31.6836 0C31.1313 0 30.6836 0.447715 30.6836 1V30.5C30.6836 31.0523 31.1313 31.5 31.6836 31.5C32.2359 31.5 32.6836 31.0523 32.6836 30.5V1ZM7.68359 6L11.6836 6C12.2139 6.00053 12.7223 6.21141 13.0972 6.58637C13.4722 6.96133 13.6831 7.46973 13.6836 8L13.6836 23C13.6831 23.5303 13.4722 24.0387 13.0972 24.4136C12.7223 24.7886 12.2139 24.9995 11.6836 25H7.68359C7.15332 24.9995 6.64492 24.7886 6.26996 24.4136C5.89501 24.0387 5.68412 23.5303 5.68359 23L5.68359 8C5.68412 7.46973 5.89501 6.96133 6.26996 6.58637C6.64492 6.21141 7.15332 6.00053 7.68359 6ZM7.68359 8L7.68359 23H11.6836L11.6846 8L7.68359 8ZM25.6836 6L21.6836 6C21.1533 6.00053 20.6449 6.21141 20.27 6.58637C19.895 6.96133 19.6841 7.46973 19.6836 8V23C19.6841 23.5303 19.895 24.0387 20.27 24.4136C20.6449 24.7886 21.1533 24.9995 21.6836 25H25.6836C26.2139 24.9995 26.7223 24.7886 27.0972 24.4136C27.4722 24.0387 27.6831 23.5303 27.6836 23V8C27.6831 7.46973 27.4722 6.96133 27.0972 6.58637C26.7223 6.21141 26.2139 6.00053 25.6836 6ZM21.6836 23V8L25.6846 8L25.6836 23H21.6836Z"
+      }));
+      break;
+
+    case 'flex-row-space-evenly':
+      customSVG = /*#__PURE__*/React.createElement("svg", {
+        viewBox: "0 0 33 32",
+        xmlns: "http://www.w3.org/2000/svg"
+      }, /*#__PURE__*/React.createElement("path", {
+        d: "M2.68359 1C2.68359 0.447715 2.23588 0 1.68359 0C1.13131 0 0.683594 0.447715 0.683594 1V30.5C0.683594 31.0523 1.13131 31.5 1.68359 31.5C2.23588 31.5 2.68359 31.0523 2.68359 30.5V1ZM32.6836 1C32.6836 0.447715 32.2359 0 31.6836 0C31.1313 0 30.6836 0.447715 30.6836 1V30.5C30.6836 31.0523 31.1313 31.5 31.6836 31.5C32.2359 31.5 32.6836 31.0523 32.6836 30.5V1ZM8.68359 6L12.6836 6C13.2139 6.00053 13.7223 6.21141 14.0972 6.58637C14.4722 6.96133 14.6831 7.46973 14.6836 8L14.6836 23C14.6831 23.5303 14.4722 24.0387 14.0972 24.4136C13.7223 24.7886 13.2139 24.9995 12.6836 25H8.68359C8.15332 24.9995 7.64492 24.7886 7.26996 24.4136C6.89501 24.0387 6.68412 23.5303 6.68359 23L6.68359 8C6.68412 7.46973 6.89501 6.96133 7.26996 6.58637C7.64492 6.21141 8.15332 6.00053 8.68359 6ZM8.68359 8L8.68359 23H12.6836L12.6846 8L8.68359 8ZM24.6836 6L20.6836 6C20.1533 6.00053 19.6449 6.21141 19.27 6.58637C18.895 6.96133 18.6841 7.46973 18.6836 8V23C18.6841 23.5303 18.895 24.0387 19.27 24.4136C19.6449 24.7886 20.1533 24.9995 20.6836 25H24.6836C25.2139 24.9995 25.7223 24.7886 26.0972 24.4136C26.4722 24.0387 26.6831 23.5303 26.6836 23V8C26.6831 7.46973 26.4722 6.96133 26.0972 6.58637C25.7223 6.21141 25.2139 6.00053 24.6836 6ZM20.6836 23V8L24.6846 8L24.6836 23H20.6836Z"
+      }));
+      break;
+
+    case 'flex-column-start':
+      customSVG = /*#__PURE__*/React.createElement("svg", {
+        viewBox: "0 0 33 33",
+        xmlns: "http://www.w3.org/2000/svg"
+      }, /*#__PURE__*/React.createElement("path", {
+        d: "M31.4336 2.75C31.9859 2.75 32.4336 2.30228 32.4336 1.75C32.4336 1.19772 31.9859 0.75 31.4336 0.75H1.93359C1.38131 0.75 0.933594 1.19771 0.933594 1.75C0.933594 2.30228 1.38131 2.75 1.93359 2.75L31.4336 2.75ZM31.4336 32.75C31.9859 32.75 32.4336 32.3023 32.4336 31.75C32.4336 31.1977 31.9859 30.75 31.4336 30.75L1.93359 30.75C1.38131 30.75 0.933594 31.1977 0.933594 31.75C0.933594 32.3023 1.38131 32.75 1.93359 32.75L31.4336 32.75ZM26.4336 5.75V9.75C26.4331 10.2803 26.2222 10.7887 25.8472 11.1636C25.4723 11.5386 24.9639 11.7495 24.4336 11.75L9.43359 11.75C8.90332 11.7495 8.39492 11.5386 8.01996 11.1636C7.64501 10.7887 7.43412 10.2803 7.43359 9.75L7.43359 5.75C7.43412 5.21973 7.64501 4.71133 8.01996 4.33637C8.39492 3.96141 8.90332 3.75053 9.43359 3.75L24.4336 3.75C24.9639 3.75053 25.4723 3.96141 25.8472 4.33637C26.2222 4.71133 26.4331 5.21973 26.4336 5.75ZM24.4336 5.75L9.43359 5.75L9.43359 9.75L24.4336 9.751V5.75ZM26.4336 18.75V14.75C26.4331 14.2197 26.2222 13.7113 25.8472 13.3364C25.4723 12.9614 24.9639 12.7505 24.4336 12.75L9.43359 12.75C8.90332 12.7505 8.39492 12.9614 8.01996 13.3364C7.64501 13.7113 7.43412 14.2197 7.43359 14.75L7.43359 18.75C7.43412 19.2803 7.64501 19.7887 8.01996 20.1636C8.39492 20.5386 8.90332 20.7495 9.43359 20.75L24.4336 20.75C24.9639 20.7495 25.4723 20.5386 25.8472 20.1636C26.2222 19.7887 26.4331 19.2803 26.4336 18.75ZM9.43359 14.75L24.4336 14.75V18.751L9.43359 18.75L9.43359 14.75Z"
+      }));
+      break;
+
+    case 'flex-column-end':
+      customSVG = /*#__PURE__*/React.createElement("svg", {
+        viewBox: "0 0 33 33",
+        xmlns: "http://www.w3.org/2000/svg"
+      }, /*#__PURE__*/React.createElement("path", {
+        d: "M31.4336 2.75C31.9859 2.75 32.4336 2.30228 32.4336 1.75C32.4336 1.19772 31.9859 0.75 31.4336 0.75H1.93359C1.38131 0.75 0.933594 1.19771 0.933594 1.75C0.933594 2.30228 1.38131 2.75 1.93359 2.75L31.4336 2.75ZM31.4336 32.75C31.9859 32.75 32.4336 32.3023 32.4336 31.75C32.4336 31.1977 31.9859 30.75 31.4336 30.75L1.93359 30.75C1.38131 30.75 0.933594 31.1977 0.933594 31.75C0.933594 32.3023 1.38131 32.75 1.93359 32.75L31.4336 32.75ZM26.4336 14.75V18.75C26.4331 19.2803 26.2222 19.7887 25.8472 20.1636C25.4723 20.5386 24.9639 20.7495 24.4336 20.75L9.43359 20.75C8.90332 20.7495 8.39492 20.5386 8.01996 20.1636C7.64501 19.7887 7.43412 19.2803 7.43359 18.75L7.43359 14.75C7.43412 14.2197 7.64501 13.7113 8.01996 13.3364C8.39492 12.9614 8.90332 12.7505 9.43359 12.75L24.4336 12.75C24.9639 12.7505 25.4723 12.9614 25.8472 13.3364C26.2222 13.7113 26.4331 14.2197 26.4336 14.75ZM24.4336 14.75L9.43359 14.75L9.43359 18.75L24.4336 18.751V14.75ZM26.4336 27.75V23.75C26.4331 23.2197 26.2222 22.7113 25.8472 22.3364C25.4723 21.9614 24.9639 21.7505 24.4336 21.75L9.43359 21.75C8.90332 21.7505 8.39492 21.9614 8.01996 22.3364C7.64501 22.7113 7.43412 23.2197 7.43359 23.75L7.43359 27.75C7.43412 28.2803 7.64501 28.7887 8.01996 29.1636C8.39492 29.5386 8.90332 29.7495 9.43359 29.75L24.4336 29.75C24.9639 29.7495 25.4723 29.5386 25.8472 29.1636C26.2222 28.7887 26.4331 28.2803 26.4336 27.75ZM9.43359 23.75L24.4336 23.75V27.751L9.43359 27.75L9.43359 23.75Z"
+      }));
+      break;
+
+    case 'flex-column-center':
+      customSVG = /*#__PURE__*/React.createElement("svg", {
+        viewBox: "0 0 33 33",
+        xmlns: "http://www.w3.org/2000/svg"
+      }, /*#__PURE__*/React.createElement("path", {
+        d: "M31.4336 2.75C31.9859 2.75 32.4336 2.30228 32.4336 1.75C32.4336 1.19772 31.9859 0.75 31.4336 0.75H1.93359C1.38131 0.75 0.933594 1.19771 0.933594 1.75C0.933594 2.30228 1.38131 2.75 1.93359 2.75L31.4336 2.75ZM31.4336 32.75C31.9859 32.75 32.4336 32.3023 32.4336 31.75C32.4336 31.1977 31.9859 30.75 31.4336 30.75L1.93359 30.75C1.38131 30.75 0.933594 31.1977 0.933594 31.75C0.933594 32.3023 1.38131 32.75 1.93359 32.75L31.4336 32.75ZM26.4336 9.75V13.75C26.4331 14.2803 26.2222 14.7887 25.8472 15.1636C25.4723 15.5386 24.9639 15.7495 24.4336 15.75L9.43359 15.75C8.90332 15.7495 8.39492 15.5386 8.01996 15.1636C7.64501 14.7887 7.43412 14.2803 7.43359 13.75L7.43359 9.75C7.43412 9.21973 7.64501 8.71133 8.01996 8.33637C8.39492 7.96141 8.90332 7.75053 9.43359 7.75L24.4336 7.75C24.9639 7.75053 25.4723 7.96141 25.8472 8.33637C26.2222 8.71133 26.4331 9.21973 26.4336 9.75ZM24.4336 9.75L9.43359 9.75L9.43359 13.75L24.4336 13.751V9.75ZM26.4336 23.75V19.75C26.4331 19.2197 26.2222 18.7113 25.8472 18.3364C25.4723 17.9614 24.9639 17.7505 24.4336 17.75L9.43359 17.75C8.90332 17.7505 8.39492 17.9614 8.01996 18.3364C7.64501 18.7113 7.43412 19.2197 7.43359 19.75V23.75C7.43412 24.2803 7.64501 24.7887 8.01996 25.1636C8.39492 25.5386 8.90332 25.7495 9.43359 25.75L24.4336 25.75C24.9639 25.7495 25.4723 25.5386 25.8472 25.1636C26.2222 24.7887 26.4331 24.2803 26.4336 23.75ZM9.43359 19.75L24.4336 19.75V23.751L9.43359 23.75L9.43359 19.75Z"
+      }));
+      break;
+
+    case 'flex-column-strech':
+      customSVG = /*#__PURE__*/React.createElement("svg", {
+        viewBox: "0 0 32 32",
+        xmlns: "http://www.w3.org/2000/svg"
+      }, /*#__PURE__*/React.createElement("path", {
+        d: "M30.5 2C31.0523 2 31.5 1.55228 31.5 1C31.5 0.447715 31.0523 0 30.5 0H1C0.447716 0 0 0.447714 0 0.999999C0 1.55228 0.447716 2 1 2L30.5 2ZM30.5 32C31.0523 32 31.5 31.5523 31.5 31C31.5 30.4477 31.0523 30 30.5 30L1 30C0.447716 30 0 30.4477 0 31C0 31.5523 0.447716 32 1 32L30.5 32ZM25.5 5.00018V12.999C25.4995 13.5293 25.2886 14.0377 24.9136 14.4126C24.5387 14.7876 24.0303 14.9985 23.5 14.999L8.5 14.999C7.96973 14.9985 7.46133 14.7876 7.08637 14.4126C6.71141 14.0377 6.50053 13.5293 6.5 12.999L6.5 5.00017C6.50053 4.4699 6.71141 3.9615 7.08637 3.58654C7.46133 3.21159 7.96973 3.0007 8.5 3.00017L23.5 3.00018C24.0303 3.0007 24.5387 3.21159 24.9136 3.58655C25.2886 3.9615 25.4995 4.4699 25.5 5.00018ZM23.5 5.00018L8.5 5.00017L8.5 12.999L23.5 13V5.00018ZM25.5 26.9987V18.9999C25.4995 18.4697 25.2886 17.9613 24.9136 17.5863C24.5387 17.2113 24.0303 17.0005 23.5 16.9999L8.5 16.9999C7.96973 17.0005 7.46133 17.2113 7.08637 17.5863C6.71141 17.9613 6.50053 18.4697 6.5 18.9999L6.5 26.9987C6.50053 27.529 6.71141 28.0374 7.08637 28.4124C7.46133 28.7873 7.96973 28.9982 8.5 28.9987L23.5 28.9987C24.0303 28.9982 24.5387 28.7873 24.9136 28.4124C25.2886 28.0374 25.4995 27.529 25.5 26.9987ZM8.5 18.9999L23.5 18.9999V26.9997L8.5 26.9987L8.5 18.9999Z"
+      }));
+      break;
+
+    case 'flex-column-space-between':
+      customSVG = /*#__PURE__*/React.createElement("svg", {
+        viewBox: "0 0 33 33",
+        xmlns: "http://www.w3.org/2000/svg"
+      }, /*#__PURE__*/React.createElement("path", {
+        d: "M31.4336 2.75C31.9859 2.75 32.4336 2.30228 32.4336 1.75C32.4336 1.19772 31.9859 0.75 31.4336 0.75H1.93359C1.38131 0.75 0.933594 1.19771 0.933594 1.75C0.933594 2.30228 1.38131 2.75 1.93359 2.75L31.4336 2.75ZM31.4336 32.75C31.9859 32.75 32.4336 32.3023 32.4336 31.75C32.4336 31.1977 31.9859 30.75 31.4336 30.75L1.93359 30.75C1.38131 30.75 0.933594 31.1977 0.933594 31.75C0.933594 32.3023 1.38131 32.75 1.93359 32.75L31.4336 32.75ZM26.4336 5.75V9.75C26.4331 10.2803 26.2222 10.7887 25.8472 11.1636C25.4723 11.5386 24.9639 11.7495 24.4336 11.75L9.43359 11.75C8.90332 11.7495 8.39492 11.5386 8.01996 11.1636C7.64501 10.7887 7.43412 10.2803 7.43359 9.75L7.43359 5.75C7.43412 5.21973 7.64501 4.71133 8.01996 4.33637C8.39492 3.96141 8.90332 3.75053 9.43359 3.75L24.4336 3.75C24.9639 3.75053 25.4723 3.96141 25.8472 4.33637C26.2222 4.71133 26.4331 5.21973 26.4336 5.75ZM24.4336 5.75L9.43359 5.75L9.43359 9.75L24.4336 9.751V5.75ZM26.4336 27.75V23.75C26.4331 23.2197 26.2222 22.7113 25.8472 22.3364C25.4723 21.9614 24.9639 21.7505 24.4336 21.75L9.43359 21.75C8.90332 21.7505 8.39492 21.9614 8.01996 22.3364C7.64501 22.7113 7.43412 23.2197 7.43359 23.75L7.43359 27.75C7.43412 28.2803 7.64501 28.7887 8.01996 29.1636C8.39492 29.5386 8.90332 29.7495 9.43359 29.75L24.4336 29.75C24.9639 29.7495 25.4723 29.5386 25.8472 29.1636C26.2222 28.7887 26.4331 28.2803 26.4336 27.75ZM9.43359 23.75L24.4336 23.75V27.751L9.43359 27.75L9.43359 23.75Z"
+      }));
+      break;
+
+    case 'flex-column-space-around':
+      customSVG = /*#__PURE__*/React.createElement("svg", {
+        viewBox: "0 0 33 33",
+        xmlns: "http://www.w3.org/2000/svg"
+      }, /*#__PURE__*/React.createElement("path", {
+        d: "M31.4336 2.75C31.9859 2.75 32.4336 2.30228 32.4336 1.75C32.4336 1.19772 31.9859 0.75 31.4336 0.75H1.93359C1.38131 0.75 0.933594 1.19771 0.933594 1.75C0.933594 2.30228 1.38131 2.75 1.93359 2.75L31.4336 2.75ZM31.4336 32.75C31.9859 32.75 32.4336 32.3023 32.4336 31.75C32.4336 31.1977 31.9859 30.75 31.4336 30.75L1.93359 30.75C1.38131 30.75 0.933594 31.1977 0.933594 31.75C0.933594 32.3023 1.38131 32.75 1.93359 32.75L31.4336 32.75ZM26.4336 7.75V11.75C26.4331 12.2803 26.2222 12.7887 25.8472 13.1636C25.4723 13.5386 24.9639 13.7495 24.4336 13.75L9.43359 13.75C8.90332 13.7495 8.39492 13.5386 8.01996 13.1636C7.64501 12.7887 7.43412 12.2803 7.43359 11.75L7.43359 7.75C7.43412 7.21973 7.64501 6.71133 8.01996 6.33637C8.39492 5.96141 8.90332 5.75053 9.43359 5.75L24.4336 5.75C24.9639 5.75053 25.4723 5.96141 25.8472 6.33637C26.2222 6.71133 26.4331 7.21973 26.4336 7.75ZM24.4336 7.75L9.43359 7.75L9.43359 11.75L24.4336 11.751V7.75ZM26.4336 25.75V21.75C26.4331 21.2197 26.2222 20.7113 25.8472 20.3364C25.4723 19.9614 24.9639 19.7505 24.4336 19.75L9.43359 19.75C8.90332 19.7505 8.39492 19.9614 8.01996 20.3364C7.64501 20.7113 7.43412 21.2197 7.43359 21.75L7.43359 25.75C7.43412 26.2803 7.64501 26.7887 8.01996 27.1636C8.39492 27.5386 8.90332 27.7495 9.43359 27.75L24.4336 27.75C24.9639 27.7495 25.4723 27.5386 25.8472 27.1636C26.2222 26.7887 26.4331 26.2803 26.4336 25.75ZM9.43359 21.75L24.4336 21.75V25.751L9.43359 25.75L9.43359 21.75Z"
+      }));
+      break;
+
+    case 'flex-column-space-evenly':
+      customSVG = /*#__PURE__*/React.createElement("svg", {
+        viewBox: "0 0 33 33",
+        xmlns: "http://www.w3.org/2000/svg"
+      }, /*#__PURE__*/React.createElement("path", {
+        d: "M31.4336 2.75C31.9859 2.75 32.4336 2.30228 32.4336 1.75C32.4336 1.19772 31.9859 0.75 31.4336 0.75H1.93359C1.38131 0.75 0.933594 1.19771 0.933594 1.75C0.933594 2.30228 1.38131 2.75 1.93359 2.75L31.4336 2.75ZM31.4336 32.75C31.9859 32.75 32.4336 32.3023 32.4336 31.75C32.4336 31.1977 31.9859 30.75 31.4336 30.75L1.93359 30.75C1.38131 30.75 0.933594 31.1977 0.933594 31.75C0.933594 32.3023 1.38131 32.75 1.93359 32.75L31.4336 32.75ZM26.4336 8.75V12.75C26.4331 13.2803 26.2222 13.7887 25.8472 14.1636C25.4723 14.5386 24.9639 14.7495 24.4336 14.75L9.43359 14.75C8.90332 14.7495 8.39492 14.5386 8.01996 14.1636C7.64501 13.7887 7.43412 13.2803 7.43359 12.75L7.43359 8.75C7.43412 8.21973 7.64501 7.71133 8.01996 7.33637C8.39492 6.96141 8.90332 6.75053 9.43359 6.75L24.4336 6.75C24.9639 6.75053 25.4723 6.96141 25.8472 7.33637C26.2222 7.71133 26.4331 8.21973 26.4336 8.75ZM24.4336 8.75L9.43359 8.75L9.43359 12.75L24.4336 12.751V8.75ZM26.4336 24.75V20.75C26.4331 20.2197 26.2222 19.7113 25.8472 19.3364C25.4723 18.9614 24.9639 18.7505 24.4336 18.75L9.43359 18.75C8.90332 18.7505 8.39492 18.9614 8.01996 19.3364C7.64501 19.7113 7.43412 20.2197 7.43359 20.75L7.43359 24.75C7.43412 25.2803 7.64501 25.7887 8.01996 26.1636C8.39492 26.5386 8.90332 26.7495 9.43359 26.75L24.4336 26.75C24.9639 26.7495 25.4723 26.5386 25.8472 26.1636C26.2222 25.7887 26.4331 25.2803 26.4336 24.75ZM9.43359 20.75L24.4336 20.75V24.751L9.43359 24.75L9.43359 20.75Z"
+      }));
+      break;
+
+    case 'flex-direction-row':
+      customSVG = /*#__PURE__*/React.createElement("svg", {
+        viewBox: "0 0 32 32",
+        xmlns: "http://www.w3.org/2000/svg"
+      }, /*#__PURE__*/React.createElement("path", {
+        fillRule: "evenodd",
+        clipRule: "evenodd",
+        d: "M2 1.01587C2 0.454822 1.55228 0 1 0C0.447715 0 0 0.454822 0 1.01587V30.9841C0 31.5452 0.447715 32 1 32C1.55228 32 2 31.5452 2 30.9841V1.01587ZM32 1.01587C32 0.454822 31.5523 0 31 0C30.4477 0 30 0.454822 30 1.01587V30.9841C30 31.5452 30.4477 32 31 32C31.5523 32 32 31.5452 32 30.9841V1.01587ZM23.0355 5.29289L26.6213 8.87864C27.0118 9.26916 27.0118 9.90233 26.6213 10.2929L23.0355 13.8786C22.645 14.2691 22.0118 14.2691 21.6213 13.8786C21.2308 13.4881 21.2308 12.8549 21.6213 12.4644L23.5 10.5857H6C5.44772 10.5857 5 10.138 5 9.58574C5 9.03346 5.44772 8.58574 6 8.58574H23.5L21.6213 6.70711C21.2308 6.31658 21.2308 5.68342 21.6213 5.29289C22.0118 4.90237 22.645 4.90237 23.0355 5.29289ZM26.6213 21.5L23.0355 17.9143C22.645 17.5238 22.0118 17.5238 21.6213 17.9143C21.2308 18.3048 21.2308 18.938 21.6213 19.3285L23.5 21.2071H6C5.44771 21.2071 5 21.6548 5 22.2071C5 22.7594 5.44771 23.2071 6 23.2071H23.5L21.6213 25.0858C21.2308 25.4763 21.2308 26.1095 21.6213 26.5C22.0118 26.8905 22.645 26.8905 23.0355 26.5L26.6213 22.9142C27.0118 22.5237 27.0118 21.8905 26.6213 21.5Z"
+      }));
+      break;
+
+    case 'flex-direction-column':
+      customSVG = /*#__PURE__*/React.createElement("svg", {
+        viewBox: "0 0 32 32",
+        xmlns: "http://www.w3.org/2000/svg"
+      }, /*#__PURE__*/React.createElement("path", {
+        fillRule: "evenodd",
+        clipRule: "evenodd",
+        d: "M30.9841 2C31.5452 2 32 1.55228 32 1C32 0.447715 31.5452 -1.98809e-08 30.9841 -4.44052e-08L1.01587 -1.35436e-06C0.454821 -1.37888e-06 -1.95703e-08 0.447714 -4.37114e-08 0.999999C-6.78525e-08 1.55228 0.454821 2 1.01587 2L30.9841 2ZM30.9841 32C31.5452 32 32 31.5523 32 31C32 30.4477 31.5452 30 30.9841 30L1.01587 30C0.454819 30 -1.33091e-06 30.4477 -1.35505e-06 31C-1.37919e-06 31.5523 0.454819 32 1.01587 32L30.9841 32ZM26.7071 23.0355L23.1214 26.6213C22.7308 27.0118 22.0977 27.0118 21.7071 26.6213L18.1214 23.0355C17.7309 22.645 17.7309 22.0118 18.1214 21.6213C18.5119 21.2308 19.1451 21.2308 19.5356 21.6213L21.4143 23.5L21.4143 6C21.4143 5.44771 21.862 5 22.4143 5C22.9665 5 23.4143 5.44771 23.4143 6L23.4143 23.5L25.2929 21.6213C25.6834 21.2308 26.3166 21.2308 26.7071 21.6213C27.0976 22.0118 27.0976 22.645 26.7071 23.0355ZM10.5 26.6213L14.0857 23.0355C14.4762 22.645 14.4762 22.0118 14.0857 21.6213C13.6952 21.2308 13.062 21.2308 12.6715 21.6213L10.7929 23.5L10.7929 6C10.7929 5.44771 10.3452 5 9.79287 5C9.24059 5 8.79287 5.44771 8.79287 6L8.79287 23.5L6.91422 21.6213C6.52369 21.2308 5.89053 21.2308 5.5 21.6213C5.10948 22.0118 5.10948 22.645 5.5 23.0355L9.08576 26.6213C9.47629 27.0118 10.1095 27.0118 10.5 26.6213Z"
+      }));
+      break;
+
+    case 'flex-direction-row-reverse':
+      customSVG = /*#__PURE__*/React.createElement("svg", {
+        viewBox: "0 0 32 32",
+        xmlns: "http://www.w3.org/2000/svg"
+      }, /*#__PURE__*/React.createElement("path", {
+        fillRule: "evenodd",
+        clipRule: "evenodd",
+        d: "M30 30.9841C30 31.5452 30.4477 32 31 32C31.5523 32 32 31.5452 32 30.9841L32 1.01587C32 0.454821 31.5523 -3.91405e-08 31 -8.74228e-08C30.4477 -1.35705e-07 30 0.45482 30 1.01587L30 30.9841ZM8.88104e-08 30.9841C3.97618e-08 31.5452 0.447716 32 1 32C1.55228 32 2 31.5452 2 30.9841L2 1.01587C2 0.454818 1.55229 -2.66182e-06 1 -2.71011e-06C0.447719 -2.75839e-06 2.75777e-06 0.454818 2.70872e-06 1.01587L8.88104e-08 30.9841ZM8.96449 26.7071L5.37868 23.1214C4.98816 22.7308 4.98816 22.0977 5.37868 21.7071L8.96449 18.1214C9.35501 17.7309 9.98818 17.7309 10.3787 18.1214C10.7692 18.5119 10.7692 19.1451 10.3787 19.5356L8.5 21.4143L26 21.4143C26.5523 21.4143 27 21.862 27 22.4143C27 22.9665 26.5523 23.4143 26 23.4143L8.5 23.4143L10.3787 25.2929C10.7692 25.6834 10.7692 26.3166 10.3787 26.7071C9.98818 27.0976 9.35501 27.0976 8.96449 26.7071ZM5.37868 10.5L8.96449 14.0857C9.35502 14.4762 9.98818 14.4762 10.3787 14.0857C10.7692 13.6952 10.7692 13.062 10.3787 12.6715L8.5 10.7929L26 10.7929C26.5523 10.7929 27 10.3452 27 9.79287C27 9.24059 26.5523 8.79287 26 8.79287L8.5 8.79287L10.3787 6.91422C10.7692 6.52369 10.7692 5.89053 10.3787 5.5C9.98818 5.10948 9.35502 5.10948 8.96449 5.5L5.37868 9.08576C4.98816 9.47629 4.98816 10.1095 5.37868 10.5Z"
+      }));
+      break;
+
+    case 'flex-direction-column-reverse':
+      customSVG = /*#__PURE__*/React.createElement("svg", {
+        viewBox: "0 0 32 32",
+        xmlns: "http://www.w3.org/2000/svg"
+      }, /*#__PURE__*/React.createElement("path", {
+        fillRule: "evenodd",
+        clipRule: "evenodd",
+        d: "M1.01587 30C0.454822 30 -6.78525e-08 30.4477 -4.37113e-08 31C-1.95702e-08 31.5523 0.454822 32 1.01587 32L30.9841 32C31.5452 32 32 31.5523 32 31C32 30.4477 31.5452 30 30.9841 30L1.01587 30ZM1.01587 -4.44052e-08C0.45482 -1.98809e-08 -1.37919e-06 0.447716 -1.35505e-06 1C-1.33091e-06 1.55228 0.454821 2 1.01587 2L30.9841 2C31.5452 2 32 1.55228 32 0.999999C32 0.447714 31.5452 -1.37888e-06 30.9841 -1.35436e-06L1.01587 -4.44052e-08ZM5.29289 8.96449L8.87863 5.37868C9.26916 4.98815 9.90233 4.98815 10.2928 5.37868L13.8786 8.96449C14.2691 9.35501 14.2691 9.98818 13.8786 10.3787C13.4881 10.7692 12.8549 10.7692 12.4644 10.3787L10.5857 8.5L10.5857 26C10.5857 26.5523 10.138 27 9.58574 27C9.03346 27 8.58574 26.5523 8.58574 26L8.58574 8.5L6.70711 10.3787C6.31658 10.7692 5.68342 10.7692 5.29289 10.3787C4.90237 9.98818 4.90237 9.35501 5.29289 8.96449ZM21.5 5.37868L17.9143 8.96449C17.5238 9.35501 17.5238 9.98818 17.9143 10.3787C18.3048 10.7692 18.938 10.7692 19.3285 10.3787L21.2071 8.5L21.2071 26C21.2071 26.5523 21.6548 27 22.2071 27C22.7594 27 23.2071 26.5523 23.2071 26L23.2071 8.5L25.0858 10.3787C25.4763 10.7692 26.1095 10.7692 26.5 10.3787C26.8905 9.98818 26.8905 9.35501 26.5 8.96449L22.9142 5.37868C22.5237 4.98815 21.8905 4.98815 21.5 5.37868Z"
+      }));
+      break;
+
+    case 'flex-wrap':
+      customSVG = /*#__PURE__*/React.createElement("svg", {
+        viewBox: "0 0 33 32",
+        xmlns: "http://www.w3.org/2000/svg"
+      }, /*#__PURE__*/React.createElement("path", {
+        d: "M1.33984 0C1.89213 0 2.33984 0.447715 2.33984 1V30.5C2.33984 31.0523 1.89213 31.5 1.33984 31.5C0.787559 31.5 0.339844 31.0523 0.339844 30.5V1C0.339844 0.447715 0.787559 0 1.33984 0Z"
+      }), /*#__PURE__*/React.createElement("path", {
+        d: "M31.3398 0C31.8921 0 32.3398 0.447715 32.3398 1V30.5C32.3398 31.0523 31.8921 31.5 31.3398 31.5C30.7876 31.5 30.3398 31.0523 30.3398 30.5V1C30.3398 0.447715 30.7876 0 31.3398 0Z"
+      }), /*#__PURE__*/React.createElement("path", {
+        d: "M27.3398 5C27.8921 5 28.3398 5.44772 28.3398 6V22C28.3398 22.0022 28.3398 22.0043 28.3398 22.0065C28.3363 22.5558 27.89 23 27.3398 23L10.8398 23L12.7185 24.8786C13.1091 25.2692 13.1091 25.9023 12.7185 26.2929C12.328 26.6834 11.6949 26.6834 11.3043 26.2929L7.71852 22.7071C7.328 22.3166 7.328 21.6834 7.71852 21.2929L11.3043 17.7071C11.6949 17.3166 12.328 17.3166 12.7185 17.7071C13.1091 18.0977 13.1091 18.7308 12.7185 19.1213L10.8398 21L26.3398 21V7L5.33984 7C4.78756 7 4.33984 6.55228 4.33984 6C4.33984 5.44771 4.78756 5 5.33984 5H27.3398Z"
+      }));
+      break;
+
+    case 'flex-no-wrap':
+      customSVG = /*#__PURE__*/React.createElement("svg", {
+        viewBox: "0 0 33 32",
+        xmlns: "http://www.w3.org/2000/svg"
+      }, /*#__PURE__*/React.createElement("path", {
+        d: "M1.33984 0C1.89213 0 2.33984 0.447715 2.33984 1V30.5C2.33984 31.0523 1.89213 31.5 1.33984 31.5C0.787559 31.5 0.339844 31.0523 0.339844 30.5V1C0.339844 0.447715 0.787559 0 1.33984 0Z"
+      }), /*#__PURE__*/React.createElement("path", {
+        d: "M31.3398 0C31.8921 0 32.3398 0.447715 32.3398 1V30.5C32.3398 31.0523 31.8921 31.5 31.3398 31.5C30.7876 31.5 30.3398 31.0523 30.3398 30.5V1C30.3398 0.447715 30.7876 0 31.3398 0Z"
+      }), /*#__PURE__*/React.createElement("path", {
+        d: "M24.3754 11.2929L27.9612 14.8786C28.3517 15.2692 28.3517 15.9023 27.9612 16.2929L24.3754 19.8786C23.9848 20.2691 23.3517 20.2691 22.9611 19.8786C22.5706 19.4881 22.5706 18.8549 22.9611 18.4644L24.8398 16.5857L5.33984 16.5857C4.78756 16.5857 4.33984 16.138 4.33984 15.5857C4.33984 15.0334 4.78756 14.5857 5.33984 14.5857L24.8398 14.5857L22.9611 12.7071C22.5706 12.3166 22.5706 11.6834 22.9611 11.2929C23.3517 10.9024 23.9848 10.9024 24.3754 11.2929Z"
+      }));
+      break;
+
+    case 'flex-wrap-reverse':
+      customSVG = /*#__PURE__*/React.createElement("svg", {
+        viewBox: "0 0 33 32",
+        xmlns: "http://www.w3.org/2000/svg"
+      }, /*#__PURE__*/React.createElement("path", {
+        d: "M1.33984 32C1.89213 32 2.33984 31.5452 2.33984 30.9841V1.01587C2.33984 0.454821 1.89213 0 1.33984 0C0.787559 0 0.339844 0.454821 0.339844 1.01587V30.9841C0.339844 31.5452 0.787559 32 1.33984 32Z"
+      }), /*#__PURE__*/React.createElement("path", {
+        d: "M31.3398 32C31.8921 32 32.3398 31.5452 32.3398 30.9841V1.01587C32.3398 0.454821 31.8921 0 31.3398 0C30.7876 0 30.3398 0.454821 30.3398 1.01587V30.9841C30.3398 31.5452 30.7876 32 31.3398 32Z"
+      }), /*#__PURE__*/React.createElement("path", {
+        d: "M27.3398 26.5C27.8921 26.5 28.3398 26.0523 28.3398 25.5V9.5C28.3398 9.49784 28.3398 9.49569 28.3398 9.49353C28.3363 8.94422 27.89 8.5 27.3398 8.5L10.8398 8.5L12.7185 6.62136C13.1091 6.23084 13.1091 5.59767 12.7185 5.20715C12.328 4.81663 11.6949 4.81663 11.3043 5.20715L7.71852 8.79289C7.328 9.18342 7.328 9.81658 7.71852 10.2071L11.3043 13.7929C11.6949 14.1834 12.328 14.1834 12.7185 13.7929C13.1091 13.4023 13.1091 12.7692 12.7185 12.3787L10.8398 10.5L26.3398 10.5V24.5H5.33984C4.78756 24.5 4.33984 24.9477 4.33984 25.5C4.33984 26.0523 4.78756 26.5 5.33984 26.5H27.3398Z"
+      }));
+      break;
+  }
+
+  return customSVG;
+}
+
+/* harmony default export */ __webpack_exports__["default"] = (renderCustomIcon);
+
+/***/ }),
+
+/***/ "./node_modules/css-loader/dist/cjs.js!./node_modules/sass-loader/lib/loader.js!./src/components/background/editor.lazy.scss":
+/*!***********************************************************************************************************************************!*\
+  !*** ./node_modules/css-loader/dist/cjs.js!./node_modules/sass-loader/lib/loader.js!./src/components/background/editor.lazy.scss ***!
+  \***********************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_css_loader_dist_runtime_cssWithMappingToString_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../node_modules/css-loader/dist/runtime/cssWithMappingToString.js */ "./node_modules/css-loader/dist/runtime/cssWithMappingToString.js");
+/* harmony import */ var _node_modules_css_loader_dist_runtime_cssWithMappingToString_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_cssWithMappingToString_js__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../node_modules/css-loader/dist/runtime/api.js */ "./node_modules/css-loader/dist/runtime/api.js");
+/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1__);
+// Imports
+
+
+var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()(_node_modules_css_loader_dist_runtime_cssWithMappingToString_js__WEBPACK_IMPORTED_MODULE_0___default.a);
+// Module
+___CSS_LOADER_EXPORT___.push([module.i, ".uag-bg-select-control .uag-background-type .components-select-control {\n  align-items: center;\n  display: grid;\n  grid-template-columns: 50% 50%; }\n\n.uag-bg-select-control .uag-background-color,\n.uag-bg-select-control .uag-background-image,\n.uag-bg-select-control .uag-background-gradient,\n.uag-bg-select-control .uag-background-opacity,\n.uag-bg-select-control .uag-background-video,\n.uag-bg-select-control .uag-background-video-overlay,\n.uag-bg-select-control .uag-background-video-opacity,\n.uag-bg-select-control .uag-background-image-position,\n.uag-bg-select-control .uag-background-image-attachment,\n.uag-bg-select-control .uag-background-image-repeat,\n.uag-bg-select-control .uag-background-image-size,\n.uag-bg-select-control .uag-background-image-overlay-type,\n.uag-bg-select-control .uag-background-image-overlay-color,\n.uag-bg-select-control .uag-background-image-overlay-gradient,\n.uag-bg-select-control .uagb-responsive-select-control {\n  margin-top: 24px; }\n\n.uag-bg-select-control .uag-background-image > .uagb-responsive-select-control .uagb-size-type-field-tabs {\n  display: block; }\n  .uag-bg-select-control .uag-background-image > .uagb-responsive-select-control .uagb-size-type-field-tabs > .components-base-control {\n    width: 100%; }\n\n.uag-bg-select-control .uagb-size-type-field-tabs {\n  display: flex;\n  justify-content: space-between; }\n  .uag-bg-select-control .uagb-size-type-field-tabs > .components-base-control {\n    width: 45%; }\n\n.uag-bg-select-control .uag-background-image-overlay-type .components-select-control {\n  flex-direction: row;\n  align-items: center; }\n  .uag-bg-select-control .uag-background-image-overlay-type .components-select-control .components-input-control__container {\n    width: 45%;\n    flex: unset; }\n\n.uag-bg-select-control .uag-background-image-size .uagb-responsive-control-inner > .components-base-control {\n  display: block;\n  margin-top: 24px; }\n\n.uag-bg-select-control .uag-background-image-position .uagb-size-type-field-tabs {\n  flex-direction: column; }\n  .uag-bg-select-control .uag-background-image-position .uagb-size-type-field-tabs .components-focal-point-picker-control {\n    width: 100%; }\n", "",{"version":3,"sources":["webpack://./src/components/background/editor.lazy.scss"],"names":[],"mappings":"AAAA;EACE,mBAAmB;EACnB,aAAa;EACb,8BAA8B,EAAE;;AAElC;;;;;;;;;;;;;;;EAeE,gBAAgB,EAAE;;AAEpB;EACE,cAAc,EAAE;EAChB;IACE,WAAW,EAAE;;AAEjB;EACE,aAAa;EACb,8BAA8B,EAAE;EAChC;IACE,UAAU,EAAE;;AAEhB;EACE,mBAAmB;EACnB,mBAAmB,EAAE;EACrB;IACE,UAAU;IACV,WAAW,EAAE;;AAEjB;EACE,cAAc;EACd,gBAAgB,EAAE;;AAEpB;EACE,sBAAsB,EAAE;EACxB;IACE,WAAW,EAAE","sourcesContent":[".uag-bg-select-control .uag-background-type .components-select-control {\n  align-items: center;\n  display: grid;\n  grid-template-columns: 50% 50%; }\n\n.uag-bg-select-control .uag-background-color,\n.uag-bg-select-control .uag-background-image,\n.uag-bg-select-control .uag-background-gradient,\n.uag-bg-select-control .uag-background-opacity,\n.uag-bg-select-control .uag-background-video,\n.uag-bg-select-control .uag-background-video-overlay,\n.uag-bg-select-control .uag-background-video-opacity,\n.uag-bg-select-control .uag-background-image-position,\n.uag-bg-select-control .uag-background-image-attachment,\n.uag-bg-select-control .uag-background-image-repeat,\n.uag-bg-select-control .uag-background-image-size,\n.uag-bg-select-control .uag-background-image-overlay-type,\n.uag-bg-select-control .uag-background-image-overlay-color,\n.uag-bg-select-control .uag-background-image-overlay-gradient,\n.uag-bg-select-control .uagb-responsive-select-control {\n  margin-top: 24px; }\n\n.uag-bg-select-control .uag-background-image > .uagb-responsive-select-control .uagb-size-type-field-tabs {\n  display: block; }\n  .uag-bg-select-control .uag-background-image > .uagb-responsive-select-control .uagb-size-type-field-tabs > .components-base-control {\n    width: 100%; }\n\n.uag-bg-select-control .uagb-size-type-field-tabs {\n  display: flex;\n  justify-content: space-between; }\n  .uag-bg-select-control .uagb-size-type-field-tabs > .components-base-control {\n    width: 45%; }\n\n.uag-bg-select-control .uag-background-image-overlay-type .components-select-control {\n  flex-direction: row;\n  align-items: center; }\n  .uag-bg-select-control .uag-background-image-overlay-type .components-select-control .components-input-control__container {\n    width: 45%;\n    flex: unset; }\n\n.uag-bg-select-control .uag-background-image-size .uagb-responsive-control-inner > .components-base-control {\n  display: block;\n  margin-top: 24px; }\n\n.uag-bg-select-control .uag-background-image-position .uagb-size-type-field-tabs {\n  flex-direction: column; }\n  .uag-bg-select-control .uag-background-image-position .uagb-size-type-field-tabs .components-focal-point-picker-control {\n    width: 100%; }\n"],"sourceRoot":""}]);
+// Exports
+/* harmony default export */ __webpack_exports__["default"] = (___CSS_LOADER_EXPORT___);
+
+
+/***/ }),
+
+/***/ "./node_modules/css-loader/dist/cjs.js!./node_modules/sass-loader/lib/loader.js!./src/components/box-shadow/editor.lazy.scss":
+/*!***********************************************************************************************************************************!*\
+  !*** ./node_modules/css-loader/dist/cjs.js!./node_modules/sass-loader/lib/loader.js!./src/components/box-shadow/editor.lazy.scss ***!
+  \***********************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_css_loader_dist_runtime_cssWithMappingToString_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../node_modules/css-loader/dist/runtime/cssWithMappingToString.js */ "./node_modules/css-loader/dist/runtime/cssWithMappingToString.js");
+/* harmony import */ var _node_modules_css_loader_dist_runtime_cssWithMappingToString_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_cssWithMappingToString_js__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../node_modules/css-loader/dist/runtime/api.js */ "./node_modules/css-loader/dist/runtime/api.js");
+/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1__);
+// Imports
+
+
+var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()(_node_modules_css_loader_dist_runtime_cssWithMappingToString_js__WEBPACK_IMPORTED_MODULE_0___default.a);
+// Module
+___CSS_LOADER_EXPORT___.push([module.i, "/** Box Shadow Popup CSS*/\n.uag-box-shadow-options {\n  margin-bottom: 24px; }\n  .uag-box-shadow-options .uag-box-shadow-option-actions {\n    display: flex;\n    justify-content: space-between;\n    margin: 0;\n    align-items: center; }\n    .uag-box-shadow-options .uag-box-shadow-option-actions .uag-box-shadow-button {\n      margin: 0;\n      height: 28px;\n      width: 28px;\n      padding: 5px;\n      border: 1px solid #d3d3d3;\n      border-radius: 14px; }\n      .uag-box-shadow-options .uag-box-shadow-option-actions .uag-box-shadow-button .dashicons-edit {\n        font-size: 15px;\n        line-height: 20px; }\n      .uag-box-shadow-options .uag-box-shadow-option-actions .uag-box-shadow-button:focus:not(:disabled) {\n        box-shadow: none;\n        outline: none; }\n  .uag-box-shadow-options .uagb-box-shadow-advanced {\n    border: 1px solid #d3d3d3;\n    border-radius: 3px;\n    padding: 15px;\n    margin: 10px 0;\n    position: relative;\n    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.3); }\n    .uag-box-shadow-options .uagb-box-shadow-advanced > .components-base-control {\n      margin-top: 0; }\n    .uag-box-shadow-options .uagb-box-shadow-advanced::after, .uag-box-shadow-options .uagb-box-shadow-advanced::before {\n      bottom: 100%;\n      right: 8px;\n      border: solid transparent;\n      content: \"\";\n      height: 0;\n      width: 0;\n      position: absolute;\n      pointer-events: none; }\n    .uag-box-shadow-options .uagb-box-shadow-advanced::after {\n      right: 9px;\n      border-color: rgba(255, 255, 255, 0);\n      border-bottom-color: #fff;\n      border-width: 5px;\n      margin-left: -5px; }\n    .uag-box-shadow-options .uagb-box-shadow-advanced::before {\n      border-color: rgba(211, 211, 211, 0);\n      border-bottom-color: #d3d3d3;\n      border-width: 6px;\n      margin-left: -6px; }\n    .uag-box-shadow-options .uagb-box-shadow-advanced .uagb-shadow-color,\n    .uag-box-shadow-options .uagb-box-shadow-advanced .uagb-horizontal-wrap,\n    .uag-box-shadow-options .uagb-box-shadow-advanced .uagb-vertical-wrap,\n    .uag-box-shadow-options .uagb-box-shadow-advanced .uagb-blur-wrap,\n    .uag-box-shadow-options .uagb-box-shadow-advanced .uagb-spread-wrap {\n      margin-bottom: 16px; }\n\n.block-editor-block-inspector .components-base-control:last-child {\n  margin-bottom: 0; }\n", "",{"version":3,"sources":["webpack://./src/components/box-shadow/editor.lazy.scss"],"names":[],"mappings":"AAAA,yBAAyB;AACzB;EACE,mBAAmB,EAAE;EACrB;IACE,aAAa;IACb,8BAA8B;IAC9B,SAAS;IACT,mBAAmB,EAAE;IACrB;MACE,SAAS;MACT,YAAY;MACZ,WAAW;MACX,YAAY;MACZ,yBAAyB;MACzB,mBAAmB,EAAE;MACrB;QACE,eAAe;QACf,iBAAiB,EAAE;MACrB;QACE,gBAAgB;QAChB,aAAa,EAAE;EACrB;IACE,yBAAyB;IACzB,kBAAkB;IAClB,aAAa;IACb,cAAc;IACd,kBAAkB;IAClB,yCAAyC,EAAE;IAC3C;MACE,aAAa,EAAE;IACjB;MACE,YAAY;MACZ,UAAU;MACV,yBAAyB;MACzB,WAAW;MACX,SAAS;MACT,QAAQ;MACR,kBAAkB;MAClB,oBAAoB,EAAE;IACxB;MACE,UAAU;MACV,oCAAoC;MACpC,yBAAyB;MACzB,iBAAiB;MACjB,iBAAiB,EAAE;IACrB;MACE,oCAAoC;MACpC,4BAA4B;MAC5B,iBAAiB;MACjB,iBAAiB,EAAE;IACrB;;;;;MAKE,mBAAmB,EAAE;;AAE3B;EACE,gBAAgB,EAAE","sourcesContent":["/** Box Shadow Popup CSS*/\n.uag-box-shadow-options {\n  margin-bottom: 24px; }\n  .uag-box-shadow-options .uag-box-shadow-option-actions {\n    display: flex;\n    justify-content: space-between;\n    margin: 0;\n    align-items: center; }\n    .uag-box-shadow-options .uag-box-shadow-option-actions .uag-box-shadow-button {\n      margin: 0;\n      height: 28px;\n      width: 28px;\n      padding: 5px;\n      border: 1px solid #d3d3d3;\n      border-radius: 14px; }\n      .uag-box-shadow-options .uag-box-shadow-option-actions .uag-box-shadow-button .dashicons-edit {\n        font-size: 15px;\n        line-height: 20px; }\n      .uag-box-shadow-options .uag-box-shadow-option-actions .uag-box-shadow-button:focus:not(:disabled) {\n        box-shadow: none;\n        outline: none; }\n  .uag-box-shadow-options .uagb-box-shadow-advanced {\n    border: 1px solid #d3d3d3;\n    border-radius: 3px;\n    padding: 15px;\n    margin: 10px 0;\n    position: relative;\n    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.3); }\n    .uag-box-shadow-options .uagb-box-shadow-advanced > .components-base-control {\n      margin-top: 0; }\n    .uag-box-shadow-options .uagb-box-shadow-advanced::after, .uag-box-shadow-options .uagb-box-shadow-advanced::before {\n      bottom: 100%;\n      right: 8px;\n      border: solid transparent;\n      content: \"\";\n      height: 0;\n      width: 0;\n      position: absolute;\n      pointer-events: none; }\n    .uag-box-shadow-options .uagb-box-shadow-advanced::after {\n      right: 9px;\n      border-color: rgba(255, 255, 255, 0);\n      border-bottom-color: #fff;\n      border-width: 5px;\n      margin-left: -5px; }\n    .uag-box-shadow-options .uagb-box-shadow-advanced::before {\n      border-color: rgba(211, 211, 211, 0);\n      border-bottom-color: #d3d3d3;\n      border-width: 6px;\n      margin-left: -6px; }\n    .uag-box-shadow-options .uagb-box-shadow-advanced .uagb-shadow-color,\n    .uag-box-shadow-options .uagb-box-shadow-advanced .uagb-horizontal-wrap,\n    .uag-box-shadow-options .uagb-box-shadow-advanced .uagb-vertical-wrap,\n    .uag-box-shadow-options .uagb-box-shadow-advanced .uagb-blur-wrap,\n    .uag-box-shadow-options .uagb-box-shadow-advanced .uagb-spread-wrap {\n      margin-bottom: 16px; }\n\n.block-editor-block-inspector .components-base-control:last-child {\n  margin-bottom: 0; }\n"],"sourceRoot":""}]);
+// Exports
+/* harmony default export */ __webpack_exports__["default"] = (___CSS_LOADER_EXPORT___);
+
+
+/***/ }),
+
+/***/ "./node_modules/css-loader/dist/cjs.js!./node_modules/sass-loader/lib/loader.js!./src/components/image/editor.lazy.scss":
+/*!******************************************************************************************************************************!*\
+  !*** ./node_modules/css-loader/dist/cjs.js!./node_modules/sass-loader/lib/loader.js!./src/components/image/editor.lazy.scss ***!
+  \******************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_css_loader_dist_runtime_cssWithMappingToString_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../node_modules/css-loader/dist/runtime/cssWithMappingToString.js */ "./node_modules/css-loader/dist/runtime/cssWithMappingToString.js");
+/* harmony import */ var _node_modules_css_loader_dist_runtime_cssWithMappingToString_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_cssWithMappingToString_js__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../node_modules/css-loader/dist/runtime/api.js */ "./node_modules/css-loader/dist/runtime/api.js");
+/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1__);
+// Imports
+
+
+var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()(_node_modules_css_loader_dist_runtime_cssWithMappingToString_js__WEBPACK_IMPORTED_MODULE_0___default.a);
+// Module
+___CSS_LOADER_EXPORT___.push([module.i, ".uagb-bg-image {\n  display: flex; }\n  .uagb-bg-image .components-button {\n    margin: 0;\n    border-radius: 2px;\n    background-color: #f0f0f0;\n    min-height: 90px;\n    padding: 8px 0;\n    text-align: center;\n    display: flex;\n    width: 100%;\n    transition: all 0.1s ease-out;\n    box-shadow: 0 0 0 0 #0085ba;\n    margin-top: 10px;\n    align-items: center;\n    justify-content: center; }\n    .uagb-bg-image .components-button.is-destructive:hover:not(:disabled) {\n      color: #710d0d;\n      box-shadow: inset 0 0 0 0 #710d0d; }\n    .uagb-bg-image .components-button.is-link.is-destructive:hover:not(:disabled) {\n      background: #f0f0f0; }\n    .uagb-bg-image .components-button.is-link.is-destructive:focus:not(:disabled) {\n      outline: none; }\n  .uagb-bg-image .uagb-rm-btn {\n    margin-left: 0; }\n\n.uagb-bg-image .components-button:focus:not(:disabled),\n.uagb-bg-image .components-button.is-secondary:hover:not(:disabled),\n.components-button.is-tertiary:hover:not(:disabled),\n.uagb-bg-image .components-button.is-secondary,\n.components-button.is-tertiary {\n  box-shadow: none; }\n\n.uag-background-image .uagb-bg-image,\n.uag-background-video .uagb-bg-image {\n  display: block; }\n  .uag-background-image .uagb-bg-image .components-button,\n  .uag-background-video .uagb-bg-image .components-button {\n    min-height: 55px; }\n  .uag-background-image .uagb-bg-image .components-button:last-child,\n  .uag-background-video .uagb-bg-image .components-button:last-child {\n    margin-left: 0;\n    margin-top: 0; }\n", "",{"version":3,"sources":["webpack://./src/components/image/editor.lazy.scss"],"names":[],"mappings":"AAAA;EACE,aAAa,EAAE;EACf;IACE,SAAS;IACT,kBAAkB;IAClB,yBAAyB;IACzB,gBAAgB;IAChB,cAAc;IACd,kBAAkB;IAClB,aAAa;IACb,WAAW;IACX,6BAA6B;IAC7B,2BAA2B;IAC3B,gBAAgB;IAChB,mBAAmB;IACnB,uBAAuB,EAAE;IACzB;MACE,cAAc;MACd,iCAAiC,EAAE;IACrC;MACE,mBAAmB,EAAE;IACvB;MACE,aAAa,EAAE;EACnB;IACE,cAAc,EAAE;;AAEpB;;;;;EAKE,gBAAgB,EAAE;;AAEpB;;EAEE,cAAc,EAAE;EAChB;;IAEE,gBAAgB,EAAE;EACpB;;IAEE,cAAc;IACd,aAAa,EAAE","sourcesContent":[".uagb-bg-image {\n  display: flex; }\n  .uagb-bg-image .components-button {\n    margin: 0;\n    border-radius: 2px;\n    background-color: #f0f0f0;\n    min-height: 90px;\n    padding: 8px 0;\n    text-align: center;\n    display: flex;\n    width: 100%;\n    transition: all 0.1s ease-out;\n    box-shadow: 0 0 0 0 #0085ba;\n    margin-top: 10px;\n    align-items: center;\n    justify-content: center; }\n    .uagb-bg-image .components-button.is-destructive:hover:not(:disabled) {\n      color: #710d0d;\n      box-shadow: inset 0 0 0 0 #710d0d; }\n    .uagb-bg-image .components-button.is-link.is-destructive:hover:not(:disabled) {\n      background: #f0f0f0; }\n    .uagb-bg-image .components-button.is-link.is-destructive:focus:not(:disabled) {\n      outline: none; }\n  .uagb-bg-image .uagb-rm-btn {\n    margin-left: 0; }\n\n.uagb-bg-image .components-button:focus:not(:disabled),\n.uagb-bg-image .components-button.is-secondary:hover:not(:disabled),\n.components-button.is-tertiary:hover:not(:disabled),\n.uagb-bg-image .components-button.is-secondary,\n.components-button.is-tertiary {\n  box-shadow: none; }\n\n.uag-background-image .uagb-bg-image,\n.uag-background-video .uagb-bg-image {\n  display: block; }\n  .uag-background-image .uagb-bg-image .components-button,\n  .uag-background-video .uagb-bg-image .components-button {\n    min-height: 55px; }\n  .uag-background-image .uagb-bg-image .components-button:last-child,\n  .uag-background-video .uagb-bg-image .components-button:last-child {\n    margin-left: 0;\n    margin-top: 0; }\n"],"sourceRoot":""}]);
+// Exports
+/* harmony default export */ __webpack_exports__["default"] = (___CSS_LOADER_EXPORT___);
+
+
+/***/ }),
+
+/***/ "./src/blocks/container/settings.js":
+/*!******************************************!*\
+  !*** ./src/blocks/container/settings.js ***!
+  \******************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _Controls_lazy_loader__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @Controls/lazy-loader */ "./blocks-config/uagb-controls/lazy-loader.js");
+/* harmony import */ var _Components_inspector_tabs_InspectorTabs_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @Components/inspector-tabs/InspectorTabs.js */ "./src/components/inspector-tabs/InspectorTabs.js");
+/* harmony import */ var _Components_inspector_tabs_InspectorTab_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @Components/inspector-tabs/InspectorTab.js */ "./src/components/inspector-tabs/InspectorTab.js");
+/* harmony import */ var _Components_responsive_slider__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @Components/responsive-slider */ "./src/components/responsive-slider/index.js");
+/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @wordpress/i18n */ "@wordpress/i18n");
+/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @wordpress/block-editor */ "@wordpress/block-editor");
+/* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_6__);
+/* harmony import */ var _Components_box_shadow__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @Components/box-shadow */ "./src/components/box-shadow/index.js");
+/* harmony import */ var _Components_spacing_control__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @Components/spacing-control */ "./src/components/spacing-control/index.js");
+/* harmony import */ var _Components_background__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! @Components/background */ "./src/components/background/index.js");
+/* harmony import */ var _Components_border__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! @Components/border */ "./src/components/border/index.js");
+/* harmony import */ var _Components_advanced_panel_body__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! @Components/advanced-panel-body */ "./src/components/advanced-panel-body/index.js");
+/* harmony import */ var _Components_multi_buttons_control__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! @Components/multi-buttons-control */ "./src/components/multi-buttons-control/index.js");
+/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! @wordpress/components */ "@wordpress/components");
+/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_13___default = /*#__PURE__*/__webpack_require__.n(_wordpress_components__WEBPACK_IMPORTED_MODULE_13__);
+/* harmony import */ var _Controls_renderCustomIcon__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! @Controls/renderCustomIcon */ "./blocks-config/uagb-controls/renderCustomIcon.js");
+/* harmony import */ var _Components_tabs__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! @Components/tabs */ "./src/components/tabs/index.js");
+/* harmony import */ var _Components_color_control_advanced_pop_color_control__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! @Components/color-control/advanced-pop-color-control */ "./src/components/color-control/advanced-pop-color-control.js");
+/* harmony import */ var _Components_range_Range__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! @Components/range/Range */ "./src/components/range/Range.js");
+function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+const Settings = props => {
+  props = props.parentProps;
+  const {
+    attributes,
+    setAttributes,
+    deviceType
+  } = props;
+  const {
+    widthDesktop,
+    widthTablet,
+    widthMobile,
+    widthType,
+    minHeightDesktop,
+    minHeightTablet,
+    minHeightMobile,
+    minHeightType,
+    directionDesktop,
+    directionTablet,
+    directionMobile,
+    alignItemsDesktop,
+    alignItemsTablet,
+    alignItemsMobile,
+    justifyContentDesktop,
+    justifyContentTablet,
+    justifyContentMobile,
+    wrapDesktop,
+    wrapTablet,
+    wrapMobile,
+    alignContentDesktop,
+    alignContentTablet,
+    alignContentMobile,
+    backgroundType,
+    backgroundImageDesktop,
+    backgroundImageTablet,
+    backgroundImageMobile,
+    backgroundColor,
+    backgroundPositionDesktop,
+    backgroundPositionTablet,
+    backgroundPositionMobile,
+    backgroundAttachmentDesktop,
+    backgroundAttachmentTablet,
+    backgroundAttachmentMobile,
+    backgroundRepeatDesktop,
+    backgroundRepeatTablet,
+    backgroundRepeatMobile,
+    backgroundSizeDesktop,
+    backgroundSizeTablet,
+    backgroundSizeMobile,
+    backgroundImageColor,
+    gradientValue,
+    borderStyle,
+    borderWidth,
+    borderRadius,
+    borderColor,
+    borderHoverColor,
+    boxShadowColor,
+    boxShadowHOffset,
+    boxShadowVOffset,
+    boxShadowBlur,
+    boxShadowSpread,
+    boxShadowPosition,
+    topPaddingDesktop,
+    bottomPaddingDesktop,
+    leftPaddingDesktop,
+    rightPaddingDesktop,
+    topPaddingTablet,
+    bottomPaddingTablet,
+    leftPaddingTablet,
+    rightPaddingTablet,
+    topPaddingMobile,
+    bottomPaddingMobile,
+    leftPaddingMobile,
+    rightPaddingMobile,
+    paddingType,
+    paddingLink,
+    topMarginDesktop,
+    bottomMarginDesktop,
+    leftMarginDesktop,
+    rightMarginDesktop,
+    topMarginTablet,
+    bottomMarginTablet,
+    leftMarginTablet,
+    rightMarginTablet,
+    topMarginMobile,
+    bottomMarginMobile,
+    leftMarginMobile,
+    rightMarginMobile,
+    marginType,
+    marginLink,
+    rowGapDesktop,
+    rowGapTablet,
+    rowGapMobile,
+    rowGapType,
+    columnGapDesktop,
+    columnGapTablet,
+    columnGapMobile,
+    columnGapType,
+    contentWidth,
+    isBlockRootParent,
+    innerContentWidth,
+    innerContentCustomWidthDesktop,
+    innerContentCustomWidthTablet,
+    innerContentCustomWidthMobile,
+    innerContentCustomWidthType,
+    bottomType,
+    bottomColor,
+    bottomHeight,
+    bottomHeightTablet,
+    bottomHeightMobile,
+    bottomWidth,
+    topType,
+    topColor,
+    topHeight,
+    topHeightTablet,
+    topHeightMobile,
+    topWidth,
+    bottomFlip,
+    topFlip,
+    topContentAboveShape,
+    bottomContentAboveShape,
+    backgroundCustomSizeDesktop,
+    backgroundCustomSizeTablet,
+    backgroundCustomSizeMobile,
+    backgroundCustomSizeType,
+    overlayType,
+    backgroundVideoColor,
+    backgroundVideo,
+    topInvert,
+    bottomInvert
+  } = attributes;
+  let currentDirection = directionDesktop;
+
+  if (attributes['direction' + deviceType] && attributes['direction' + deviceType].split('-')[0]) {
+    currentDirection = attributes['direction' + deviceType].split('-')[0];
+  }
+
+  const currentOppAxisDirection = 'row' === currentDirection ? 'column' : 'row';
+
+  const generalSettings = () => {
+    const directionOptions = [{
+      value: 'row',
+      tooltip: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_5__["__"])('Row', 'ultimate-addons-for-gutenberg'),
+      icon: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_13__["Icon"], {
+        icon: Object(_Controls_renderCustomIcon__WEBPACK_IMPORTED_MODULE_14__["default"])('flex-direction-row')
+      })
+    }, {
+      value: 'column',
+      tooltip: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_5__["__"])('Column', 'ultimate-addons-for-gutenberg'),
+      icon: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_13__["Icon"], {
+        icon: Object(_Controls_renderCustomIcon__WEBPACK_IMPORTED_MODULE_14__["default"])('flex-direction-column')
+      })
+    }, {
+      value: 'row-reverse',
+      tooltip: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_5__["__"])('Row Reverse', 'ultimate-addons-for-gutenberg'),
+      icon: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_13__["Icon"], {
+        icon: Object(_Controls_renderCustomIcon__WEBPACK_IMPORTED_MODULE_14__["default"])('flex-direction-row-reverse')
+      })
+    }, {
+      value: 'column-reverse',
+      tooltip: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_5__["__"])('Column Reverse', 'ultimate-addons-for-gutenberg'),
+      icon: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_13__["Icon"], {
+        icon: Object(_Controls_renderCustomIcon__WEBPACK_IMPORTED_MODULE_14__["default"])('flex-direction-column-reverse')
+      })
+    }];
+    const alignItemsOptions = [{
+      value: 'flex-start',
+      tooltip: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_5__["__"])('Flex Start', 'ultimate-addons-for-gutenberg'),
+      icon: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_13__["Icon"], {
+        icon: Object(_Controls_renderCustomIcon__WEBPACK_IMPORTED_MODULE_14__["default"])(`flex-${currentOppAxisDirection}-start`)
+      })
+    }, {
+      value: 'center',
+      tooltip: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_5__["__"])('Center', 'ultimate-addons-for-gutenberg'),
+      icon: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_13__["Icon"], {
+        icon: Object(_Controls_renderCustomIcon__WEBPACK_IMPORTED_MODULE_14__["default"])(`flex-${currentOppAxisDirection}-center`)
+      })
+    }, {
+      value: 'flex-end',
+      tooltip: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_5__["__"])('Flex End', 'ultimate-addons-for-gutenberg'),
+      icon: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_13__["Icon"], {
+        icon: Object(_Controls_renderCustomIcon__WEBPACK_IMPORTED_MODULE_14__["default"])(`flex-${currentOppAxisDirection}-end`)
+      })
+    }, {
+      value: 'stretch',
+      tooltip: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_5__["__"])('Stretch', 'ultimate-addons-for-gutenberg'),
+      icon: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_13__["Icon"], {
+        icon: Object(_Controls_renderCustomIcon__WEBPACK_IMPORTED_MODULE_14__["default"])(`flex-${currentOppAxisDirection}-strech`)
+      })
+    }];
+    const justifyContentOptions = [{
+      value: 'flex-start',
+      tooltip: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_5__["__"])('Flex Start', 'ultimate-addons-for-gutenberg'),
+      icon: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_13__["Icon"], {
+        icon: Object(_Controls_renderCustomIcon__WEBPACK_IMPORTED_MODULE_14__["default"])(`flex-${currentDirection}-start`)
+      })
+    }, {
+      value: 'center',
+      tooltip: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_5__["__"])('Center', 'ultimate-addons-for-gutenberg'),
+      icon: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_13__["Icon"], {
+        icon: Object(_Controls_renderCustomIcon__WEBPACK_IMPORTED_MODULE_14__["default"])(`flex-${currentDirection}-center`)
+      })
+    }, {
+      value: 'flex-end',
+      tooltip: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_5__["__"])('Flex End', 'ultimate-addons-for-gutenberg'),
+      icon: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_13__["Icon"], {
+        icon: Object(_Controls_renderCustomIcon__WEBPACK_IMPORTED_MODULE_14__["default"])(`flex-${currentDirection}-end`)
+      })
+    }, {
+      value: 'space-between',
+      tooltip: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_5__["__"])('Space Between', 'ultimate-addons-for-gutenberg'),
+      icon: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_13__["Icon"], {
+        icon: Object(_Controls_renderCustomIcon__WEBPACK_IMPORTED_MODULE_14__["default"])(`flex-${currentDirection}-space-between`)
+      })
+    }, {
+      value: 'space-around',
+      tooltip: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_5__["__"])('Space Around', 'ultimate-addons-for-gutenberg'),
+      icon: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_13__["Icon"], {
+        icon: Object(_Controls_renderCustomIcon__WEBPACK_IMPORTED_MODULE_14__["default"])(`flex-${currentDirection}-space-around`)
+      })
+    }, {
+      value: 'space-evenly',
+      tooltip: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_5__["__"])('Space Evenly', 'ultimate-addons-for-gutenberg'),
+      icon: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_13__["Icon"], {
+        icon: Object(_Controls_renderCustomIcon__WEBPACK_IMPORTED_MODULE_14__["default"])(`flex-${currentDirection}-space-evenly`)
+      })
+    }];
+    const wrapOptions = [{
+      value: 'wrap',
+      tooltip: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_5__["__"])('Wrap', 'ultimate-addons-for-gutenberg'),
+      icon: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_13__["Icon"], {
+        icon: Object(_Controls_renderCustomIcon__WEBPACK_IMPORTED_MODULE_14__["default"])('flex-wrap')
+      })
+    }, {
+      value: 'nowrap',
+      tooltip: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_5__["__"])('No Wrap', 'ultimate-addons-for-gutenberg'),
+      icon: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_13__["Icon"], {
+        icon: Object(_Controls_renderCustomIcon__WEBPACK_IMPORTED_MODULE_14__["default"])('flex-no-wrap')
+      })
+    }, {
+      value: 'wrap-reverse',
+      tooltip: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_5__["__"])('Wrap Reverse', 'ultimate-addons-for-gutenberg'),
+      icon: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_13__["Icon"], {
+        icon: Object(_Controls_renderCustomIcon__WEBPACK_IMPORTED_MODULE_14__["default"])('flex-wrap-reverse')
+      })
+    }];
+    const contentWidthOptions = [{
+      value: 'alignfull',
+      label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_5__["__"])('Full Width', 'ultimate-addons-for-gutenberg')
+    }, {
+      value: 'alignwide',
+      label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_5__["__"])('Boxed', 'ultimate-addons-for-gutenberg')
+    }, {
+      value: 'default',
+      label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_5__["__"])('Custom', 'ultimate-addons-for-gutenberg')
+    }];
+    const innerContentWidthOptions = [{
+      value: 'alignwide',
+      label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_5__["__"])('Boxed', 'ultimate-addons-for-gutenberg')
+    }, {
+      value: 'alignfull',
+      label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_5__["__"])('Full Width', 'ultimate-addons-for-gutenberg')
+    }];
+
+    const onWidthChange = () => {
+      setAttributes({
+        widthSetByUser: true
+      });
+    };
+
+    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Components_advanced_panel_body__WEBPACK_IMPORTED_MODULE_11__["default"], {
+      title: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_5__["__"])('Size', 'ultimate-addons-for-gutenberg'),
+      initialOpen: true
+    }, isBlockRootParent && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Components_multi_buttons_control__WEBPACK_IMPORTED_MODULE_12__["default"], {
+      setAttributes: setAttributes,
+      label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_5__["__"])('Container Width', 'ultimate-addons-for-gutenberg'),
+      data: {
+        value: contentWidth,
+        label: 'contentWidth'
+      },
+      options: contentWidthOptions,
+      showIcons: false,
+      responsive: false
+    }), 'alignfull' === contentWidth && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Components_multi_buttons_control__WEBPACK_IMPORTED_MODULE_12__["default"], {
+      setAttributes: setAttributes,
+      label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_5__["__"])('Content Width', 'ultimate-addons-for-gutenberg'),
+      data: {
+        value: innerContentWidth,
+        label: 'innerContentWidth'
+      },
+      options: innerContentWidthOptions,
+      showIcons: false,
+      responsive: false
+    }), 'alignwide' === innerContentWidth && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Components_responsive_slider__WEBPACK_IMPORTED_MODULE_4__["default"], {
+      label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_5__["__"])('Content Box Width', 'ultimate-addons-for-gutenberg'),
+      data: {
+        desktop: {
+          value: innerContentCustomWidthDesktop,
+          label: 'innerContentCustomWidthDesktop'
+        },
+        tablet: {
+          value: innerContentCustomWidthTablet,
+          label: 'innerContentCustomWidthTablet'
+        },
+        mobile: {
+          value: innerContentCustomWidthMobile,
+          label: 'innerContentCustomWidthMobile'
+        }
+      },
+      min: 0,
+      limitMax: {
+        'px': 1600,
+        '%': 100,
+        'vw': 100
+      },
+      units: [{
+        name: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_5__["__"])('PX', 'ultimate-addons-for-gutenberg'),
+        unitValue: 'px'
+      }, {
+        name: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_5__["__"])('%', 'ultimate-addons-for-gutenberg'),
+        unitValue: '%'
+      }, {
+        name: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_5__["__"])('VW', 'ultimate-addons-for-gutenberg'),
+        unitValue: 'vw'
+      }],
+      unit: {
+        value: innerContentCustomWidthType,
+        label: 'innerContentCustomWidthType'
+      },
+      setAttributes: setAttributes
+    }))), (isBlockRootParent && 'default' === contentWidth || !isBlockRootParent) && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Components_responsive_slider__WEBPACK_IMPORTED_MODULE_4__["default"], {
+      label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_5__["__"])('Custom Width', 'ultimate	-addons-for-gutenberg'),
+      data: {
+        desktop: {
+          value: widthDesktop,
+          label: 'widthDesktop'
+        },
+        tablet: {
+          value: widthTablet,
+          label: 'widthTablet'
+        },
+        mobile: {
+          value: widthMobile,
+          label: 'widthMobile'
+        }
+      },
+      min: 0,
+      unit: {
+        value: widthType,
+        label: 'widthType'
+      },
+      limitMax: {
+        'px': 1600,
+        '%': 100,
+        'vw': 100
+      },
+      units: [{
+        name: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_5__["__"])('PX', 'ultimate-addons-for-gutenberg'),
+        unitValue: 'px'
+      }, {
+        name: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_5__["__"])('%', 'ultimate-addons-for-gutenberg'),
+        unitValue: '%'
+      }, {
+        name: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_5__["__"])('VW', 'ultimate-addons-for-gutenberg'),
+        unitValue: 'vw'
+      }],
+      setAttributes: setAttributes,
+      onChange: onWidthChange
+    })), isBlockRootParent && 'default' === contentWidth && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Components_multi_buttons_control__WEBPACK_IMPORTED_MODULE_12__["default"], {
+      setAttributes: setAttributes,
+      label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_5__["__"])('Content Width', 'ultimate-addons-for-gutenberg'),
+      data: {
+        value: innerContentWidth,
+        label: 'innerContentWidth'
+      },
+      options: innerContentWidthOptions,
+      showIcons: false,
+      responsive: false
+    }), 'alignwide' === innerContentWidth && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Components_responsive_slider__WEBPACK_IMPORTED_MODULE_4__["default"], {
+      label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_5__["__"])('Content Box Width', 'ultimate-addons-for-gutenberg'),
+      data: {
+        desktop: {
+          value: innerContentCustomWidthDesktop,
+          label: 'innerContentCustomWidthDesktop'
+        },
+        tablet: {
+          value: innerContentCustomWidthTablet,
+          label: 'innerContentCustomWidthTablet'
+        },
+        mobile: {
+          value: innerContentCustomWidthMobile,
+          label: 'innerContentCustomWidthMobile'
+        }
+      },
+      min: 0,
+      limitMax: {
+        'px': 1600,
+        '%': 100,
+        'vw': 100
+      },
+      units: [{
+        name: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_5__["__"])('PX', 'ultimate-addons-for-gutenberg'),
+        unitValue: 'px'
+      }, {
+        name: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_5__["__"])('%', 'ultimate-addons-for-gutenberg'),
+        unitValue: '%'
+      }, {
+        name: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_5__["__"])('VW', 'ultimate-addons-for-gutenberg'),
+        unitValue: 'vw'
+      }],
+      unit: {
+        value: innerContentCustomWidthType,
+        label: 'innerContentCustomWidthType'
+      },
+      setAttributes: setAttributes
+    })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Components_responsive_slider__WEBPACK_IMPORTED_MODULE_4__["default"], {
+      label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_5__["__"])('Minimum Height', 'ultimate-addons-for-gutenberg'),
+      data: {
+        desktop: {
+          value: minHeightDesktop,
+          label: 'minHeightDesktop'
+        },
+        tablet: {
+          value: minHeightTablet,
+          label: 'minHeightTablet'
+        },
+        mobile: {
+          value: minHeightMobile,
+          label: 'minHeightMobile'
+        }
+      },
+      min: 0,
+      limitMax: {
+        px: 1000,
+        vh: 100
+      },
+      unit: {
+        value: minHeightType,
+        label: 'minHeightType'
+      },
+      units: [{
+        name: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_5__["__"])('PX', 'ultimate-addons-for-gutenberg'),
+        unitValue: 'px'
+      }, {
+        name: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_5__["__"])('VH', 'ultimate-addons-for-gutenberg'),
+        unitValue: 'vh'
+      }],
+      setAttributes: setAttributes
+    })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Components_advanced_panel_body__WEBPACK_IMPORTED_MODULE_11__["default"], {
+      title: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_5__["__"])('Flex Properties', 'ultimate-addons-for-gutenberg'),
+      initialOpen: false
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Components_multi_buttons_control__WEBPACK_IMPORTED_MODULE_12__["default"], {
+      setAttributes: setAttributes,
+      label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_5__["__"])('Direction', 'ultimate-addons-for-gutenberg'),
+      data: {
+        desktop: {
+          value: directionDesktop,
+          label: 'directionDesktop'
+        },
+        tablet: {
+          value: directionTablet,
+          label: 'directionTablet'
+        },
+        mobile: {
+          value: directionMobile,
+          label: 'directionMobile'
+        }
+      },
+      options: directionOptions,
+      showIcons: true,
+      responsive: true
+    }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Components_multi_buttons_control__WEBPACK_IMPORTED_MODULE_12__["default"], {
+      setAttributes: setAttributes,
+      label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_5__["__"])('Align Items', 'ultimate-addons-for-gutenberg'),
+      data: {
+        desktop: {
+          value: alignItemsDesktop,
+          label: 'alignItemsDesktop'
+        },
+        tablet: {
+          value: alignItemsTablet,
+          label: 'alignItemsTablet'
+        },
+        mobile: {
+          value: alignItemsMobile,
+          label: 'alignItemsMobile'
+        }
+      },
+      options: alignItemsOptions,
+      showIcons: true,
+      responsive: true
+    }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Components_multi_buttons_control__WEBPACK_IMPORTED_MODULE_12__["default"], {
+      setAttributes: setAttributes,
+      label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_5__["__"])('Justify Content', 'ultimate-addons-for-gutenberg'),
+      data: {
+        desktop: {
+          value: justifyContentDesktop,
+          label: 'justifyContentDesktop'
+        },
+        tablet: {
+          value: justifyContentTablet,
+          label: 'justifyContentTablet'
+        },
+        mobile: {
+          value: justifyContentMobile,
+          label: 'justifyContentMobile'
+        }
+      },
+      options: justifyContentOptions,
+      showIcons: true,
+      responsive: true
+    }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Components_multi_buttons_control__WEBPACK_IMPORTED_MODULE_12__["default"], {
+      setAttributes: setAttributes,
+      label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_5__["__"])('Wrap', 'ultimate-addons-for-gutenberg'),
+      data: {
+        desktop: {
+          value: wrapDesktop,
+          label: 'wrapDesktop'
+        },
+        tablet: {
+          value: wrapTablet,
+          label: 'wrapTablet'
+        },
+        mobile: {
+          value: wrapMobile,
+          label: 'wrapMobile'
+        }
+      },
+      options: wrapOptions,
+      showIcons: true,
+      responsive: true,
+      help: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_5__["__"])('Define whether the items are forced in a single line (No Wrap) or can be flowed into multiple lines (Wrap)', 'ultimate-addons-for-gutenberg')
+    }), ('wrap' === attributes['wrap' + deviceType] || 'wrap-reverse' === attributes['wrap' + deviceType]) && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Components_multi_buttons_control__WEBPACK_IMPORTED_MODULE_12__["default"], {
+      setAttributes: setAttributes,
+      label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_5__["__"])('Align Content', 'ultimate-addons-for-gutenberg'),
+      data: {
+        desktop: {
+          value: alignContentDesktop,
+          label: 'alignContentDesktop'
+        },
+        tablet: {
+          value: alignContentTablet,
+          label: 'alignContentTablet'
+        },
+        mobile: {
+          value: alignContentMobile,
+          label: 'alignContentMobile'
+        }
+      },
+      options: justifyContentOptions,
+      showIcons: true,
+      responsive: true
+    })));
+  };
+
+  const backgroundSettings = () => {
+    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Components_advanced_panel_body__WEBPACK_IMPORTED_MODULE_11__["default"], {
+      title: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_5__["__"])('Background', 'ultimate-addons-for-gutenberg'),
+      initialOpen: true
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Components_background__WEBPACK_IMPORTED_MODULE_9__["default"], _extends({
+      setAttributes: setAttributes,
+      backgroundGradient: {
+        value: gradientValue,
+        label: 'gradientValue'
+      },
+      backgroundImageColor: {
+        value: backgroundImageColor,
+        label: 'backgroundImageColor'
+      },
+      backgroundSize: {
+        desktop: {
+          value: backgroundSizeDesktop,
+          label: 'backgroundSizeDesktop'
+        },
+        tablet: {
+          value: backgroundSizeTablet,
+          label: 'backgroundSizeTablet'
+        },
+        mobile: {
+          value: backgroundSizeMobile,
+          label: 'backgroundSizeMobile'
+        }
+      },
+      backgroundCustomSize: {
+        desktop: {
+          value: backgroundCustomSizeDesktop,
+          label: 'backgroundCustomSizeDesktop'
+        },
+        tablet: {
+          value: backgroundCustomSizeTablet,
+          label: 'backgroundCustomSizeTablet'
+        },
+        mobile: {
+          value: backgroundCustomSizeMobile,
+          label: 'backgroundCustomSizeMobile'
+        }
+      },
+      backgroundCustomSizeType: {
+        value: backgroundCustomSizeType,
+        label: 'backgroundCustomSizeType'
+      },
+      backgroundRepeat: {
+        desktop: {
+          value: backgroundRepeatDesktop,
+          label: 'backgroundRepeatDesktop'
+        },
+        tablet: {
+          value: backgroundRepeatTablet,
+          label: 'backgroundRepeatTablet'
+        },
+        mobile: {
+          value: backgroundRepeatMobile,
+          label: 'backgroundRepeatMobile'
+        }
+      },
+      backgroundAttachment: {
+        desktop: {
+          value: backgroundAttachmentDesktop,
+          label: 'backgroundAttachmentDesktop'
+        },
+        tablet: {
+          value: backgroundAttachmentTablet,
+          label: 'backgroundAttachmentTablet'
+        },
+        mobile: {
+          value: backgroundAttachmentMobile,
+          label: 'backgroundAttachmentMobile'
+        }
+      },
+      backgroundPosition: {
+        desktop: {
+          value: backgroundPositionDesktop,
+          label: 'backgroundPositionDesktop'
+        },
+        tablet: {
+          value: backgroundPositionTablet,
+          label: 'backgroundPositionTablet'
+        },
+        mobile: {
+          value: backgroundPositionMobile,
+          label: 'backgroundPositionMobile'
+        }
+      },
+      backgroundImage: {
+        desktop: {
+          value: backgroundImageDesktop,
+          label: 'backgroundImageDesktop'
+        },
+        tablet: {
+          value: backgroundImageTablet,
+          label: 'backgroundImageTablet'
+        },
+        mobile: {
+          value: backgroundImageMobile,
+          label: 'backgroundImageMobile'
+        }
+      },
+      imageResponsive: true,
+      backgroundColor: {
+        value: backgroundColor,
+        label: 'backgroundColor'
+      },
+      backgroundType: {
+        value: backgroundType,
+        label: 'backgroundType'
+      },
+      overlayType: {
+        value: overlayType,
+        label: 'overlayType'
+      },
+      backgroundVideoType: {
+        value: true
+      },
+      backgroundVideo: {
+        value: backgroundVideo,
+        label: 'backgroundVideo'
+      },
+      backgroundVideoColor: {
+        value: backgroundVideoColor,
+        label: 'backgroundVideoColor'
+      },
+      onOpacityChange: opacity => setAttributes({
+        backgroundVideoOpacity: opacity
+      })
+    }, props)));
+  };
+
+  const borderSettings = () => {
+    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Components_advanced_panel_body__WEBPACK_IMPORTED_MODULE_11__["default"], {
+      title: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_5__["__"])('Border', 'ultimate-addons-for-gutenberg'),
+      initialOpen: false
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Components_border__WEBPACK_IMPORTED_MODULE_10__["default"], {
+      disabledBorderTitle: true,
+      setAttributes: setAttributes,
+      borderStyle: {
+        value: borderStyle,
+        label: 'borderStyle',
+        title: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_5__["__"])('Style', 'ultimate-addons-for-gutenberg')
+      },
+      borderWidth: {
+        value: borderWidth,
+        label: 'borderWidth',
+        title: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_5__["__"])('Width', 'ultimate-addons-for-gutenberg')
+      },
+      borderRadius: {
+        value: borderRadius,
+        label: 'borderRadius',
+        title: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_5__["__"])('Radius', 'ultimate-addons-for-gutenberg')
+      },
+      borderColor: {
+        value: borderColor,
+        label: 'borderColor',
+        title: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_5__["__"])('Color', 'ultimate-addons-for-gutenberg')
+      },
+      borderHoverColor: {
+        value: borderHoverColor,
+        label: 'borderHoverColor',
+        title: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_5__["__"])('Hover Color', 'ultimate-addons-for-gutenberg')
+      },
+      disableBottomSeparator: true
+    }));
+  };
+
+  const boxShadowSettings = () => {
+    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Components_advanced_panel_body__WEBPACK_IMPORTED_MODULE_11__["default"], {
+      title: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_5__["__"])('Box Shadow', 'ultimate-addons-for-gutenberg'),
+      initialOpen: false
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Components_box_shadow__WEBPACK_IMPORTED_MODULE_7__["default"], {
+      setAttributes: setAttributes,
+      label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_5__["__"])('Box Shadow', 'ultimate-addons-for-gutenberg'),
+      boxShadowColor: {
+        value: boxShadowColor,
+        label: 'boxShadowColor',
+        title: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_5__["__"])('Color', 'ultimate-addons-for-gutenberg')
+      },
+      boxShadowHOffset: {
+        value: boxShadowHOffset,
+        label: 'boxShadowHOffset',
+        title: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_5__["__"])('Horizontal', 'ultimate-addons-for-gutenberg')
+      },
+      boxShadowVOffset: {
+        value: boxShadowVOffset,
+        label: 'boxShadowVOffset',
+        title: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_5__["__"])('Vertical', 'ultimate-addons-for-gutenberg')
+      },
+      boxShadowBlur: {
+        value: boxShadowBlur,
+        label: 'boxShadowBlur',
+        title: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_5__["__"])('Blur', 'ultimate-addons-for-gutenberg')
+      },
+      boxShadowSpread: {
+        value: boxShadowSpread,
+        label: 'boxShadowSpread',
+        title: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_5__["__"])('Spread', 'ultimate-addons-for-gutenberg')
+      },
+      boxShadowPosition: {
+        value: boxShadowPosition,
+        label: 'boxShadowPosition',
+        title: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_5__["__"])('Position', 'ultimate-addons-for-gutenberg')
+      }
+    }));
+  };
+
+  const spacingSettings = () => {
+    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Components_advanced_panel_body__WEBPACK_IMPORTED_MODULE_11__["default"], {
+      title: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_5__["__"])('Spacing', 'ultimate-addons-for-gutenberg'),
+      initialOpen: false
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Components_responsive_slider__WEBPACK_IMPORTED_MODULE_4__["default"], {
+      label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_5__["__"])('Row Gap', 'ultimate-addons-for-gutenberg'),
+      data: {
+        desktop: {
+          value: rowGapDesktop,
+          label: 'rowGapDesktop'
+        },
+        tablet: {
+          value: rowGapTablet,
+          label: 'rowGapTablet'
+        },
+        mobile: {
+          value: rowGapMobile,
+          label: 'rowGapMobile'
+        }
+      },
+      min: 0,
+      max: 200,
+      unit: {
+        value: rowGapType,
+        label: 'rowGapType'
+      },
+      units: [{
+        name: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_5__["__"])('PX', 'ultimate-addons-for-gutenberg'),
+        unitValue: 'px'
+      }, {
+        name: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_5__["__"])('%', 'ultimate-addons-for-gutenberg'),
+        unitValue: '%'
+      }, {
+        name: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_5__["__"])('VW', 'ultimate-addons-for-gutenberg'),
+        unitValue: 'vw'
+      }],
+      setAttributes: setAttributes
+    }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Components_responsive_slider__WEBPACK_IMPORTED_MODULE_4__["default"], {
+      label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_5__["__"])('Column Gap', 'ultimate	-addons-for-gutenberg'),
+      data: {
+        desktop: {
+          value: columnGapDesktop,
+          label: 'columnGapDesktop'
+        },
+        tablet: {
+          value: columnGapTablet,
+          label: 'columnGapTablet'
+        },
+        mobile: {
+          value: columnGapMobile,
+          label: 'columnGapMobile'
+        }
+      },
+      min: 0,
+      max: 200,
+      unit: {
+        value: columnGapType,
+        label: 'columnGapType'
+      },
+      units: [{
+        name: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_5__["__"])('PX', 'ultimate-addons-for-gutenberg'),
+        unitValue: 'px'
+      }, {
+        name: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_5__["__"])('%', 'ultimate-addons-for-gutenberg'),
+        unitValue: '%'
+      }, {
+        name: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_5__["__"])('VW', 'ultimate-addons-for-gutenberg'),
+        unitValue: 'vw'
+      }],
+      setAttributes: setAttributes
+    }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Components_spacing_control__WEBPACK_IMPORTED_MODULE_8__["default"], _extends({}, props, {
+      label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_5__["__"])('Padding', 'ultimate-addons-for-gutenberg'),
+      valueTop: {
+        value: topPaddingDesktop,
+        label: 'topPaddingDesktop'
+      },
+      valueRight: {
+        value: rightPaddingDesktop,
+        label: 'rightPaddingDesktop'
+      },
+      valueBottom: {
+        value: bottomPaddingDesktop,
+        label: 'bottomPaddingDesktop'
+      },
+      valueLeft: {
+        value: leftPaddingDesktop,
+        label: 'leftPaddingDesktop'
+      },
+      valueTopTablet: {
+        value: topPaddingTablet,
+        label: 'topPaddingTablet'
+      },
+      valueRightTablet: {
+        value: rightPaddingTablet,
+        label: 'rightPaddingTablet'
+      },
+      valueBottomTablet: {
+        value: bottomPaddingTablet,
+        label: 'bottomPaddingTablet'
+      },
+      valueLeftTablet: {
+        value: leftPaddingTablet,
+        label: 'leftPaddingTablet'
+      },
+      valueTopMobile: {
+        value: topPaddingMobile,
+        label: 'topPaddingMobile'
+      },
+      valueRightMobile: {
+        value: rightPaddingMobile,
+        label: 'rightPaddingMobile'
+      },
+      valueBottomMobile: {
+        value: bottomPaddingMobile,
+        label: 'bottomPaddingMobile'
+      },
+      valueLeftMobile: {
+        value: leftPaddingMobile,
+        label: 'leftPaddingMobile'
+      },
+      unit: {
+        value: paddingType,
+        label: 'paddingType'
+      },
+      mUnit: {
+        value: paddingType,
+        label: 'paddingType'
+      },
+      tUnit: {
+        value: paddingType,
+        label: 'paddingType'
+      },
+      attributes: attributes,
+      setAttributes: setAttributes,
+      link: {
+        value: paddingLink,
+        label: 'paddingLink'
+      }
+    })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Components_spacing_control__WEBPACK_IMPORTED_MODULE_8__["default"], _extends({}, props, {
+      label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_5__["__"])('Margin', 'ultimate-addons-for-gutenberg'),
+      valueTop: {
+        value: topMarginDesktop,
+        label: 'topMarginDesktop'
+      },
+      valueRight: {
+        value: rightMarginDesktop,
+        label: 'rightMarginDesktop'
+      },
+      valueBottom: {
+        value: bottomMarginDesktop,
+        label: 'bottomMarginDesktop'
+      },
+      valueLeft: {
+        value: leftMarginDesktop,
+        label: 'leftMarginDesktop'
+      },
+      valueTopTablet: {
+        value: topMarginTablet,
+        label: 'topMarginTablet'
+      },
+      valueRightTablet: {
+        value: rightMarginTablet,
+        label: 'rightMarginTablet'
+      },
+      valueBottomTablet: {
+        value: bottomMarginTablet,
+        label: 'bottomMarginTablet'
+      },
+      valueLeftTablet: {
+        value: leftMarginTablet,
+        label: 'leftMarginTablet'
+      },
+      valueTopMobile: {
+        value: topMarginMobile,
+        label: 'topMarginMobile'
+      },
+      valueRightMobile: {
+        value: rightMarginMobile,
+        label: 'rightMarginMobile'
+      },
+      valueBottomMobile: {
+        value: bottomMarginMobile,
+        label: 'bottomMarginMobile'
+      },
+      valueLeftMobile: {
+        value: leftMarginMobile,
+        label: 'leftMarginMobile'
+      },
+      unit: {
+        value: marginType,
+        label: 'marginType'
+      },
+      mUnit: {
+        value: marginType,
+        label: 'marginType'
+      },
+      tUnit: {
+        value: marginType,
+        label: 'marginType'
+      },
+      attributes: attributes,
+      setAttributes: setAttributes,
+      link: {
+        value: marginLink,
+        label: 'marginLink'
+      }
+    })));
+  };
+
+  const shapeDividersSettings = () => {
+    const dividers = [{
+      value: 'none',
+      label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_5__["__"])('None', 'ultimate-addons-for-gutenberg')
+    }, {
+      value: 'tilt',
+      label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_5__["__"])('Tilt', 'ultimate-addons-for-gutenberg')
+    }, {
+      value: 'mountains',
+      label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_5__["__"])('Mountains', 'ultimate-addons-for-gutenberg')
+    }, {
+      value: 'wave_brush',
+      label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_5__["__"])('Wave Brush', 'ultimate-addons-for-gutenberg')
+    }, {
+      value: 'waves',
+      label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_5__["__"])('Waves', 'ultimate-addons-for-gutenberg')
+    }, {
+      value: 'wave_pattern',
+      label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_5__["__"])('Waves Pattern', 'ultimate-addons-for-gutenberg')
+    }, {
+      value: 'triangle',
+      label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_5__["__"])('Triangle', 'ultimate-addons-for-gutenberg')
+    }, {
+      value: 'drops',
+      label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_5__["__"])('Drops', 'ultimate-addons-for-gutenberg')
+    }, {
+      value: 'clouds',
+      label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_5__["__"])('Clouds', 'ultimate-addons-for-gutenberg')
+    }, {
+      value: 'zigzag',
+      label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_5__["__"])('ZigZag', 'ultimate-addons-for-gutenberg')
+    }, {
+      value: 'pyramids',
+      label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_5__["__"])('Pyramids', 'ultimate-addons-for-gutenberg')
+    }, {
+      value: 'triangle_asymmetrical',
+      label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_5__["__"])('Triangle Asymmetrical', 'ultimate-addons-for-gutenberg')
+    }, {
+      value: 'tilt_opacity',
+      label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_5__["__"])('Tilt Opacity', 'ultimate-addons-for-gutenberg')
+    }, {
+      value: 'fan_opacity',
+      label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_5__["__"])('Fan Opacity', 'ultimate-addons-for-gutenberg')
+    }, {
+      value: 'curve',
+      label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_5__["__"])('Curve', 'ultimate-addons-for-gutenberg')
+    }, {
+      value: 'curve_asymmetrical',
+      label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_5__["__"])('Curve Asymmetrical', 'ultimate-addons-for-gutenberg')
+    }, {
+      value: 'curve_reverse',
+      label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_5__["__"])('Curve Reverse', 'ultimate-addons-for-gutenberg')
+    }, {
+      value: 'curve_asym_reverse',
+      label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_5__["__"])('Curve Asymmetrical Reverse', 'ultimate-addons-for-gutenberg')
+    }, {
+      value: 'arrow',
+      label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_5__["__"])('Arrow', 'ultimate-addons-for-gutenberg')
+    }, {
+      value: 'arrow_split',
+      label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_5__["__"])('Arrow Split', 'ultimate-addons-for-gutenberg')
+    }, {
+      value: 'book',
+      label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_5__["__"])('Book', 'ultimate-addons-for-gutenberg')
+    }];
+    const topSettings = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_13__["SelectControl"], {
+      label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_5__["__"])('Type', 'ultimate-addons-for-gutenberg'),
+      value: topType,
+      onChange: value => setAttributes({
+        topType: value
+      }),
+      options: dividers
+    }), topType !== 'none' && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Components_color_control_advanced_pop_color_control__WEBPACK_IMPORTED_MODULE_16__["default"], {
+      label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_5__["__"])('Color', 'ultimate-addons-for-gutenberg'),
+      colorValue: topColor,
+      onColorChange: value => setAttributes({
+        topColor: value
+      })
+    }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Components_range_Range__WEBPACK_IMPORTED_MODULE_17__["default"], {
+      label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_5__["__"])('Width', 'ultimate-addons-for-gutenberg'),
+      setAttributes: setAttributes,
+      value: topWidth,
+      onChange: value => setAttributes({
+        topWidth: value
+      }),
+      min: 100,
+      max: 2000,
+      displayUnit: false
+    }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Components_responsive_slider__WEBPACK_IMPORTED_MODULE_4__["default"], {
+      label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_5__["__"])('Height', 'ultimate-addons-for-gutenberg'),
+      data: {
+        desktop: {
+          value: topHeight,
+          label: 'topHeight'
+        },
+        tablet: {
+          value: topHeightTablet,
+          label: 'topHeightTablet'
+        },
+        mobile: {
+          value: topHeightMobile,
+          label: 'topHeightMobile'
+        }
+      },
+      min: 0,
+      max: 500,
+      displayUnit: false,
+      setAttributes: setAttributes
+    }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_13__["ToggleControl"], {
+      label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_5__["__"])('Flip', 'ultimate-addons-for-gutenberg'),
+      checked: topFlip,
+      onChange: () => setAttributes({
+        topFlip: !topFlip
+      })
+    }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_13__["ToggleControl"], {
+      label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_5__["__"])('Invert', 'ultimate-addons-for-gutenberg'),
+      checked: topInvert,
+      onChange: () => setAttributes({
+        topInvert: !topInvert
+      })
+    }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_13__["ToggleControl"], {
+      label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_5__["__"])('Bring To Front', 'ultimate-addons-for-gutenberg'),
+      checked: topContentAboveShape,
+      onChange: () => setAttributes({
+        topContentAboveShape: !topContentAboveShape
+      })
+    })));
+    const bottomSettings = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_13__["SelectControl"], {
+      label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_5__["__"])('Type', 'ultimate-addons-for-gutenberg'),
+      value: bottomType,
+      onChange: value => setAttributes({
+        bottomType: value
+      }),
+      options: dividers
+    }), bottomType !== 'none' && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Components_color_control_advanced_pop_color_control__WEBPACK_IMPORTED_MODULE_16__["default"], {
+      label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_5__["__"])('Color', 'ultimate-addons-for-gutenberg'),
+      colorValue: bottomColor,
+      onColorChange: value => setAttributes({
+        bottomColor: value
+      })
+    }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Components_range_Range__WEBPACK_IMPORTED_MODULE_17__["default"], {
+      label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_5__["__"])('Width', 'ultimate-addons-for-gutenberg'),
+      setAttributes: setAttributes,
+      value: bottomWidth,
+      onChange: value => setAttributes({
+        bottomWidth: value
+      }),
+      min: 100,
+      max: 2000,
+      displayUnit: false
+    }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Components_responsive_slider__WEBPACK_IMPORTED_MODULE_4__["default"], {
+      label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_5__["__"])('Height', 'ultimate-addons-for-gutenberg'),
+      data: {
+        desktop: {
+          value: bottomHeight,
+          label: 'bottomHeight'
+        },
+        tablet: {
+          value: bottomHeightTablet,
+          label: 'bottomHeightTablet'
+        },
+        mobile: {
+          value: bottomHeightMobile,
+          label: 'bottomHeightMobile'
+        }
+      },
+      min: 0,
+      max: 500,
+      displayUnit: false,
+      setAttributes: setAttributes
+    }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_13__["ToggleControl"], {
+      label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_5__["__"])('Flip', 'ultimate-addons-for-gutenberg'),
+      checked: bottomFlip,
+      onChange: () => setAttributes({
+        bottomFlip: !bottomFlip
+      })
+    }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_13__["ToggleControl"], {
+      label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_5__["__"])('Invert', 'ultimate-addons-for-gutenberg'),
+      checked: bottomInvert,
+      onChange: () => setAttributes({
+        bottomInvert: !bottomInvert
+      })
+    }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_13__["ToggleControl"], {
+      label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_5__["__"])('Bring To Front', 'ultimate-addons-for-gutenberg'),
+      checked: bottomContentAboveShape,
+      onChange: () => setAttributes({
+        bottomContentAboveShape: !bottomContentAboveShape
+      })
+    })));
+    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Components_advanced_panel_body__WEBPACK_IMPORTED_MODULE_11__["default"], {
+      title: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_5__["__"])('Shape Dividers', 'ultimate-addons-for-gutenberg'),
+      initialOpen: false
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Components_tabs__WEBPACK_IMPORTED_MODULE_15__["default"], {
+      tabs: [{
+        name: 'top',
+        title: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_5__["__"])('Top', 'ultimate-addons-for-gutenberg')
+      }, {
+        name: 'bottom',
+        title: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_5__["__"])('Bottom', 'ultimate-addons-for-gutenberg')
+      }],
+      top: topSettings,
+      bottom: bottomSettings,
+      disableBottomSeparator: true
+    }));
+  };
+
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0__["Suspense"], {
+    fallback: Object(_Controls_lazy_loader__WEBPACK_IMPORTED_MODULE_1__["default"])()
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_6__["InspectorControls"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Components_inspector_tabs_InspectorTabs_js__WEBPACK_IMPORTED_MODULE_2__["default"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Components_inspector_tabs_InspectorTab_js__WEBPACK_IMPORTED_MODULE_3__["default"], _Components_inspector_tabs_InspectorTab_js__WEBPACK_IMPORTED_MODULE_3__["UAGTabs"].general, generalSettings()), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Components_inspector_tabs_InspectorTab_js__WEBPACK_IMPORTED_MODULE_3__["default"], _Components_inspector_tabs_InspectorTab_js__WEBPACK_IMPORTED_MODULE_3__["UAGTabs"].style, backgroundSettings(), borderSettings(), boxShadowSettings(), shapeDividersSettings(), spacingSettings()), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Components_inspector_tabs_InspectorTab_js__WEBPACK_IMPORTED_MODULE_3__["default"], _extends({}, _Components_inspector_tabs_InspectorTab_js__WEBPACK_IMPORTED_MODULE_3__["UAGTabs"].advance, {
+    parentProps: props
+  })))));
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (/*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.memo(Settings));
+
+/***/ }),
+
+/***/ "./src/components/background/editor.lazy.scss":
+/*!****************************************************!*\
+  !*** ./src/components/background/editor.lazy.scss ***!
+  \****************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js */ "./node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js");
+/* harmony import */ var _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _node_modules_css_loader_dist_cjs_js_node_modules_sass_loader_lib_loader_js_editor_lazy_scss__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! !../../../node_modules/css-loader/dist/cjs.js!../../../node_modules/sass-loader/lib/loader.js!./editor.lazy.scss */ "./node_modules/css-loader/dist/cjs.js!./node_modules/sass-loader/lib/loader.js!./src/components/background/editor.lazy.scss");
+
+            
+
+var refs = 0;
+var update;
+var options = {"injectType":"lazySingletonStyleTag","attributes":{"id":"uagb-editor-styles"}};
+
+options.insert = "head";
+options.singleton = true;
+
+var exported = {};
+
+exported.locals = _node_modules_css_loader_dist_cjs_js_node_modules_sass_loader_lib_loader_js_editor_lazy_scss__WEBPACK_IMPORTED_MODULE_1__["default"].locals || {};
+exported.use = function() {
+  if (!(refs++)) {
+    update = _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default()(_node_modules_css_loader_dist_cjs_js_node_modules_sass_loader_lib_loader_js_editor_lazy_scss__WEBPACK_IMPORTED_MODULE_1__["default"], options);
+  }
+
+  return exported;
+};
+exported.unuse = function() {
+  if (refs > 0 && !--refs) {
+    update();
+    update = null;
+  }
+};
+
+
+
+;
+       /* harmony default export */ __webpack_exports__["default"] = (exported);
+
+
+/***/ }),
+
+/***/ "./src/components/background/index.js":
+/*!********************************************!*\
+  !*** ./src/components/background/index.js ***!
+  \********************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/i18n */ "@wordpress/i18n");
+/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _Components_color_control_advanced_pop_color_control_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @Components/color-control/advanced-pop-color-control.js */ "./src/components/color-control/advanced-pop-color-control.js");
+/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @wordpress/components */ "@wordpress/components");
+/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _editor_lazy_scss__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./editor.lazy.scss */ "./src/components/background/editor.lazy.scss");
+/* harmony import */ var _Components_gradient_settings__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @Components/gradient-settings */ "./src/components/gradient-settings/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var _Components_image__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @Components/image */ "./src/components/image/index.js");
+/* harmony import */ var _Components_responsive_slider__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @Components/responsive-slider */ "./src/components/responsive-slider/index.js");
+/* harmony import */ var _Components_responsive_select__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @Components/responsive-select */ "./src/components/responsive-select/index.js");
+/* harmony import */ var _Controls_getPreviewType__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! @Controls/getPreviewType */ "./blocks-config/uagb-controls/getPreviewType.js");
+/* harmony import */ var _Components_responsive_image__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! @Components/responsive-image */ "./src/components/responsive-image/index.js");
+/* harmony import */ var _Components_responsive_focal_point_picker__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! @Components/responsive-focal-point-picker */ "./src/components/responsive-focal-point-picker/index.js");
+/* harmony import */ var _Components_multi_buttons_control__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! @Components/multi-buttons-control */ "./src/components/multi-buttons-control/index.js");
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+const Background = props => {
+  var _backgroundImage$devi, _backgroundImage$devi2;
+
+  // Add and remove the CSS on the drop and remove of the component.
+  Object(react__WEBPACK_IMPORTED_MODULE_5__["useLayoutEffect"])(() => {
+    _editor_lazy_scss__WEBPACK_IMPORTED_MODULE_3__["default"].use();
+    return () => {
+      _editor_lazy_scss__WEBPACK_IMPORTED_MODULE_3__["default"].unuse();
+    };
+  }, []);
+  const deviceType = Object(_Controls_getPreviewType__WEBPACK_IMPORTED_MODULE_9__["useDeviceType"])().toLowerCase();
+  const {
+    setAttributes,
+    backgroundImageColor,
+    overlayType,
+    backgroundSize,
+    backgroundRepeat,
+    backgroundAttachment,
+    backgroundPosition,
+    backgroundImage,
+    backgroundColor,
+    backgroundVideoType,
+    backgroundType,
+    backgroundVideo,
+    backgroundVideoColor,
+    onOpacityChange,
+    backgroundCustomSize,
+    backgroundCustomSizeType,
+    imageResponsive
+  } = props;
+
+  const onRemoveImage = () => {
+    setAttributes({
+      [backgroundImage.label]: null
+    });
+  };
+
+  const onSelectImage = media => {
+    if (!media || !media.url) {
+      setAttributes({
+        [backgroundImage.label]: null
+      });
+      return;
+    }
+
+    if (!media.type || 'image' !== media.type) {
+      return;
+    }
+
+    setAttributes({
+      [backgroundImage.label]: media
+    });
+  };
+
+  const onRemoveVideo = () => {
+    setAttributes({
+      [backgroundVideo.label]: null
+    });
+  };
+
+  const onSelectVideo = media => {
+    if (!media || !media.url) {
+      setAttributes({
+        [backgroundVideo.label]: null
+      });
+      return;
+    }
+
+    if (!media.type || 'video' !== media.type) {
+      return;
+    }
+
+    setAttributes({
+      [backgroundVideo.label]: media
+    });
+  };
+
+  let bgOptions = [];
+  bgOptions = [{
+    value: 'none',
+    label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__["__"])('None', 'ultimate-addons-for-gutenberg')
+  }, {
+    value: 'color',
+    label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__["__"])('Color', 'ultimate-addons-for-gutenberg')
+  }, {
+    value: 'gradient',
+    label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__["__"])('Gradient', 'ultimate-addons-for-gutenberg')
+  }, {
+    value: 'image',
+    label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__["__"])('Image', 'ultimate-addons-for-gutenberg')
+  }];
+  let bgSizeOptions = [{
+    value: 'auto',
+    label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__["__"])('Auto', 'ultimate-addons-for-gutenberg')
+  }, {
+    value: 'cover',
+    label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__["__"])('Cover', 'ultimate-addons-for-gutenberg')
+  }, {
+    value: 'contain',
+    label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__["__"])('Contain', 'ultimate-addons-for-gutenberg')
+  }, {
+    value: 'custom',
+    label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__["__"])('Custom', 'ultimate-addons-for-gutenberg')
+  }];
+
+  if (!backgroundCustomSize) {
+    bgSizeOptions = [{
+      value: 'auto',
+      label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__["__"])('Auto', 'ultimate-addons-for-gutenberg')
+    }, {
+      value: 'cover',
+      label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__["__"])('Cover', 'ultimate-addons-for-gutenberg')
+    }, {
+      value: 'contain',
+      label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__["__"])('Contain', 'ultimate-addons-for-gutenberg')
+    }];
+  }
+
+  if (backgroundVideoType.value) {
+    bgOptions.push({
+      value: 'video',
+      label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__["__"])('Video', 'ultimate-addons-for-gutenberg')
+    });
+  }
+
+  const advancedControls = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_5___default.a.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
+    className: "uag-background-type"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__["SelectControl"], {
+    value: backgroundType.value,
+    onChange: value => setAttributes({
+      [backgroundType.label]: value
+    }),
+    options: bgOptions,
+    label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__["__"])('Type', 'ultimate-addons-for-gutenberg')
+  })), 'color' === backgroundType.value && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
+    className: "uag-background-color"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement(_Components_color_control_advanced_pop_color_control_js__WEBPACK_IMPORTED_MODULE_1__["default"], {
+    label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__["__"])('Color', 'ultimate-addons-for-gutenberg'),
+    colorValue: backgroundColor.value ? backgroundColor.value : '',
+    onColorChange: value => setAttributes({
+      [backgroundColor.label]: value
+    })
+  })), 'image' === backgroundType.value && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
+    className: "uag-background-image"
+  }, !imageResponsive && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement(_Components_image__WEBPACK_IMPORTED_MODULE_6__["default"], {
+    onSelectImage: onSelectImage,
+    backgroundImage: backgroundImage.value,
+    onRemoveImage: onRemoveImage
+  }), !imageResponsive && backgroundImage.value && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_5___default.a.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
+    className: "uag-background-image-position"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__["SelectControl"], {
+    label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__["__"])('Image Position', 'ultimate-addons-for-gutenberg'),
+    value: backgroundPosition.value,
+    onChange: value => setAttributes({
+      [backgroundPosition.label]: value
+    }),
+    options: [{
+      value: 'left top',
+      label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__["__"])('Top Left', 'ultimate-addons-for-gutenberg')
+    }, {
+      value: 'center top',
+      label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__["__"])('Top Center', 'ultimate-addons-for-gutenberg')
+    }, {
+      value: 'right top',
+      label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__["__"])('Top Right', 'ultimate-addons-for-gutenberg')
+    }, {
+      value: 'center top',
+      label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__["__"])('Center Top', 'ultimate-addons-for-gutenberg')
+    }, {
+      value: 'center center',
+      label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__["__"])('Center Center', 'ultimate-addons-for-gutenberg')
+    }, {
+      value: 'center bottom',
+      label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__["__"])('Center Bottom', 'ultimate-addons-for-gutenberg')
+    }, {
+      value: 'left bottom',
+      label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__["__"])('Bottom Left', 'ultimate-addons-for-gutenberg')
+    }, {
+      value: 'center bottom',
+      label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__["__"])('Bottom Center', 'ultimate-addons-for-gutenberg')
+    }, {
+      value: 'right bottom',
+      label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__["__"])('Bottom Right', 'ultimate-addons-for-gutenberg')
+    }]
+  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
+    className: "uag-background-image-attachment"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__["SelectControl"], {
+    label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__["__"])('Attachment', 'ultimate-addons-for-gutenberg'),
+    value: backgroundAttachment.value,
+    onChange: value => setAttributes({
+      [backgroundAttachment.label]: value
+    }),
+    options: [{
+      value: 'fixed',
+      label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__["__"])('Fixed', 'ultimate-addons-for-gutenberg')
+    }, {
+      value: 'scroll',
+      label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__["__"])('Scroll', 'ultimate-addons-for-gutenberg')
+    }]
+  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
+    className: "uag-background-image-repeat"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__["SelectControl"], {
+    label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__["__"])('Repeat', 'ultimate-addons-for-gutenberg'),
+    value: backgroundRepeat.value,
+    onChange: value => setAttributes({
+      [backgroundRepeat.label]: value
+    }),
+    options: [{
+      value: 'no-repeat',
+      label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__["__"])('No Repeat', 'ultimate-addons-for-gutenberg')
+    }, {
+      value: 'repeat',
+      label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__["__"])('Repeat', 'ultimate-addons-for-gutenberg')
+    }, {
+      value: 'repeat-x',
+      label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__["__"])('Repeat-x', 'ultimate-addons-for-gutenberg')
+    }, {
+      value: 'repeat-y',
+      label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__["__"])('Repeat-y', 'ultimate-addons-for-gutenberg')
+    }]
+  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
+    className: "uag-background-image-size"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__["SelectControl"], {
+    label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__["__"])('Size', 'ultimate-addons-for-gutenberg'),
+    value: backgroundSize.value,
+    onChange: value => setAttributes({
+      [backgroundSize.label]: value
+    }),
+    options: bgSizeOptions
+  }), 'custom' === backgroundSize.value && backgroundCustomSize && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement(_Components_responsive_slider__WEBPACK_IMPORTED_MODULE_7__["default"], {
+    label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__["__"])('Width', 'ultimate-addons-for-gutenberg'),
+    data: {
+      desktop: {
+        value: backgroundCustomSize.desktop.value,
+        label: backgroundCustomSize.desktop.label
+      },
+      tablet: {
+        value: backgroundCustomSize.tablet.value,
+        label: backgroundCustomSize.tablet.label
+      },
+      mobile: {
+        value: backgroundCustomSize.mobile.value,
+        label: backgroundCustomSize.mobile.label
+      }
+    },
+    min: 0,
+    limitMax: {
+      'px': 1600,
+      '%': 100,
+      'em': 574
+    },
+    unit: {
+      value: backgroundCustomSizeType.value,
+      label: backgroundCustomSizeType.label
+    },
+    units: [{
+      name: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__["__"])('PX', 'ultimate-addons-for-gutenberg'),
+      unitValue: 'px'
+    }, {
+      name: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__["__"])('%', 'ultimate-addons-for-gutenberg'),
+      unitValue: '%'
+    }, {
+      name: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__["__"])('EM', 'ultimate-addons-for-gutenberg'),
+      unitValue: 'em'
+    }],
+    setAttributes: setAttributes
+  }))), imageResponsive && backgroundImage && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement(_Components_responsive_image__WEBPACK_IMPORTED_MODULE_10__["default"], {
+    backgroundImage: backgroundImage,
+    setAttributes: setAttributes
+  }), imageResponsive && backgroundImage[deviceType] && ((_backgroundImage$devi = backgroundImage[deviceType]) === null || _backgroundImage$devi === void 0 ? void 0 : _backgroundImage$devi.value) && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_5___default.a.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
+    className: "uag-background-image-position"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement(_Components_responsive_focal_point_picker__WEBPACK_IMPORTED_MODULE_11__["default"], {
+    backgroundPosition: backgroundPosition,
+    setAttributes: setAttributes,
+    backgroundImage: backgroundImage
+  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
+    className: "uag-background-image-attachment"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement(_Components_responsive_select__WEBPACK_IMPORTED_MODULE_8__["default"], {
+    label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__["__"])('Attachment', 'ultimate-addons-for-gutenberg'),
+    data: backgroundAttachment,
+    options: {
+      desktop: [{
+        value: 'fixed',
+        label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__["__"])('Fixed', 'ultimate-addons-for-gutenberg')
+      }, {
+        value: 'scroll',
+        label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__["__"])('Scroll', 'ultimate-addons-for-gutenberg')
+      }]
+    },
+    setAttributes: setAttributes
+  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
+    className: "uag-background-image-repeat"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement(_Components_responsive_select__WEBPACK_IMPORTED_MODULE_8__["default"], {
+    label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__["__"])('Repeat', 'ultimate-addons-for-gutenberg'),
+    data: backgroundRepeat,
+    options: {
+      desktop: [{
+        value: 'no-repeat',
+        label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__["__"])('No Repeat', 'ultimate-addons-for-gutenberg')
+      }, {
+        value: 'repeat',
+        label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__["__"])('Repeat', 'ultimate-addons-for-gutenberg')
+      }, {
+        value: 'repeat-x',
+        label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__["__"])('Repeat-x', 'ultimate-addons-for-gutenberg')
+      }, {
+        value: 'repeat-y',
+        label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__["__"])('Repeat-y', 'ultimate-addons-for-gutenberg')
+      }]
+    },
+    setAttributes: setAttributes
+  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
+    className: "uag-background-image-size"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement(_Components_responsive_select__WEBPACK_IMPORTED_MODULE_8__["default"], {
+    label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__["__"])('Size', 'ultimate-addons-for-gutenberg'),
+    data: backgroundSize,
+    options: {
+      desktop: [{
+        value: 'auto',
+        label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__["__"])('Auto', 'ultimate-addons-for-gutenberg')
+      }, {
+        value: 'cover',
+        label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__["__"])('Cover', 'ultimate-addons-for-gutenberg')
+      }, {
+        value: 'contain',
+        label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__["__"])('Contain', 'ultimate-addons-for-gutenberg')
+      }, {
+        value: 'custom',
+        label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__["__"])('Custom', 'ultimate-addons-for-gutenberg')
+      }]
+    },
+    setAttributes: setAttributes
+  }), 'custom' === backgroundSize[deviceType].value && backgroundCustomSize && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement(_Components_responsive_slider__WEBPACK_IMPORTED_MODULE_7__["default"], {
+    label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__["__"])('Width', 'ultimate-addons-for-gutenberg'),
+    data: backgroundCustomSize,
+    min: 0,
+    limitMax: {
+      'px': 1600,
+      '%': 100,
+      'em': 574
+    },
+    unit: {
+      value: backgroundCustomSizeType.value,
+      label: backgroundCustomSizeType.label
+    },
+    units: [{
+      name: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__["__"])('PX', 'ultimate-addons-for-gutenberg'),
+      unitValue: 'px'
+    }, {
+      name: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__["__"])('%', 'ultimate-addons-for-gutenberg'),
+      unitValue: '%'
+    }, {
+      name: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__["__"])('EM', 'ultimate-addons-for-gutenberg'),
+      unitValue: 'em'
+    }],
+    setAttributes: setAttributes
+  }))), overlayType && backgroundImage && (imageResponsive && ((_backgroundImage$devi2 = backgroundImage[deviceType]) === null || _backgroundImage$devi2 === void 0 ? void 0 : _backgroundImage$devi2.value) || !imageResponsive && (backgroundImage === null || backgroundImage === void 0 ? void 0 : backgroundImage.value)) && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_5___default.a.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
+    className: "uag-background-image-overlay-type"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement(_Components_multi_buttons_control__WEBPACK_IMPORTED_MODULE_12__["default"], {
+    setAttributes: setAttributes,
+    label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__["__"])('Overlay Type', 'ultimate-addons-for-gutenberg'),
+    data: {
+      value: overlayType.value,
+      label: overlayType.label
+    },
+    className: "uagb-multi-button-alignment-control",
+    options: [{
+      value: 'color',
+      label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__["__"])('Color', 'ultimate-addons-for-gutenberg')
+    }, {
+      value: 'none',
+      label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__["__"])('None', 'ultimate-addons-for-gutenberg')
+    }],
+    showIcons: false
+  })), 'color' === overlayType.value && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
+    className: "uag-background-image-overlay-color"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement(_Components_color_control_advanced_pop_color_control_js__WEBPACK_IMPORTED_MODULE_1__["default"], {
+    label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__["__"])('Image Overlay Color', 'ultimate-addons-for-gutenberg'),
+    colorValue: backgroundImageColor.value,
+    onColorChange: value => setAttributes({
+      [backgroundImageColor.label]: value
+    })
+  })), 'gradient' === overlayType.value && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
+    className: "uag-background-image-overlay-gradient"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement(_Components_gradient_settings__WEBPACK_IMPORTED_MODULE_4__["default"], {
+    backgroundGradient: props.backgroundGradient,
+    setAttributes: setAttributes
+  })))), 'gradient' === backgroundType.value && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
+    className: "uag-background-gradient"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement(_Components_gradient_settings__WEBPACK_IMPORTED_MODULE_4__["default"], {
+    backgroundGradient: props.backgroundGradient,
+    setAttributes: props.setAttributes
+  })), 'video' === backgroundType.value && backgroundVideoType.value && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
+    className: "uag-background-video"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement(_Components_image__WEBPACK_IMPORTED_MODULE_6__["default"], {
+    onSelectImage: onSelectVideo,
+    backgroundImage: backgroundVideo.value,
+    onRemoveImage: onRemoveVideo,
+    showVideoInput: true
+  })), 'video' === backgroundType.value && backgroundVideo.value && backgroundVideoType.value && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
+    className: "uag-background-video-overlay"
+  }, overlayType && backgroundVideo && backgroundVideo.value && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_5___default.a.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
+    className: "uag-background-image-overlay-type"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement(_Components_multi_buttons_control__WEBPACK_IMPORTED_MODULE_12__["default"], {
+    setAttributes: setAttributes,
+    label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__["__"])('Overlay Type', 'ultimate-addons-for-gutenberg'),
+    data: {
+      value: overlayType.value,
+      label: overlayType.label
+    },
+    className: "uagb-multi-button-alignment-control",
+    options: [{
+      value: 'color',
+      label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__["__"])('Color', 'ultimate-addons-for-gutenberg')
+    }, {
+      value: 'none',
+      label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__["__"])('None', 'ultimate-addons-for-gutenberg')
+    }],
+    showIcons: false
+  })), 'color' === overlayType.value && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
+    className: "uag-background-image-overlay-color"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement(_Components_color_control_advanced_pop_color_control_js__WEBPACK_IMPORTED_MODULE_1__["default"], {
+    label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__["__"])('Image Overlay Color', 'ultimate-addons-for-gutenberg'),
+    colorValue: backgroundVideoColor.value,
+    onColorChange: value => setAttributes({
+      [backgroundVideoColor.label]: value
+    }),
+    onOpacityChange: onOpacityChange
+  })), 'gradient' === overlayType.value && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
+    className: "uag-background-image-overlay-gradient"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement(_Components_gradient_settings__WEBPACK_IMPORTED_MODULE_4__["default"], {
+    backgroundGradient: props.backgroundGradient,
+    setAttributes: setAttributes
+  })))));
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
+    className: "uag-bg-select-control components-base-control"
+  }, advancedControls);
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (Background);
+
+/***/ }),
+
+/***/ "./src/components/box-shadow/editor.lazy.scss":
+/*!****************************************************!*\
+  !*** ./src/components/box-shadow/editor.lazy.scss ***!
+  \****************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js */ "./node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js");
+/* harmony import */ var _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _node_modules_css_loader_dist_cjs_js_node_modules_sass_loader_lib_loader_js_editor_lazy_scss__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! !../../../node_modules/css-loader/dist/cjs.js!../../../node_modules/sass-loader/lib/loader.js!./editor.lazy.scss */ "./node_modules/css-loader/dist/cjs.js!./node_modules/sass-loader/lib/loader.js!./src/components/box-shadow/editor.lazy.scss");
+
+            
+
+var refs = 0;
+var update;
+var options = {"injectType":"lazySingletonStyleTag","attributes":{"id":"uagb-editor-styles"}};
+
+options.insert = "head";
+options.singleton = true;
+
+var exported = {};
+
+exported.locals = _node_modules_css_loader_dist_cjs_js_node_modules_sass_loader_lib_loader_js_editor_lazy_scss__WEBPACK_IMPORTED_MODULE_1__["default"].locals || {};
+exported.use = function() {
+  if (!(refs++)) {
+    update = _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default()(_node_modules_css_loader_dist_cjs_js_node_modules_sass_loader_lib_loader_js_editor_lazy_scss__WEBPACK_IMPORTED_MODULE_1__["default"], options);
+  }
+
+  return exported;
+};
+exported.unuse = function() {
+  if (refs > 0 && !--refs) {
+    update();
+    update = null;
+  }
+};
+
+
+
+;
+       /* harmony default export */ __webpack_exports__["default"] = (exported);
+
+
+/***/ }),
+
+/***/ "./src/components/box-shadow/index.js":
+/*!********************************************!*\
+  !*** ./src/components/box-shadow/index.js ***!
+  \********************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/i18n */ "@wordpress/i18n");
+/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _Components_range_Range_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @Components/range/Range.js */ "./src/components/range/Range.js");
+/* harmony import */ var _color_control_advanced_pop_color_control__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../color-control/advanced-pop-color-control */ "./src/components/color-control/advanced-pop-color-control.js");
+/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @wordpress/components */ "@wordpress/components");
+/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var _multi_buttons_control_index__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../multi-buttons-control/index */ "./src/components/multi-buttons-control/index.js");
+/* harmony import */ var _editor_lazy_scss__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./editor.lazy.scss */ "./src/components/box-shadow/editor.lazy.scss");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_7__);
+/**
+ * Box-Shadow reusable component.
+ *
+ */
+
+
+
+
+
+
+
+
+
+const BoxShadowControl = props => {
+  const [showAdvancedControls, toggleAdvancedControls] = Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_4__["useState"])(false); // Add and remove the CSS on the drop and remove of the component.
+
+  Object(react__WEBPACK_IMPORTED_MODULE_7__["useLayoutEffect"])(() => {
+    _editor_lazy_scss__WEBPACK_IMPORTED_MODULE_6__["default"].use();
+    return () => {
+      _editor_lazy_scss__WEBPACK_IMPORTED_MODULE_6__["default"].unuse();
+    };
+  }, []);
+  Object(react__WEBPACK_IMPORTED_MODULE_7__["useLayoutEffect"])(() => {
+    window.addEventListener('click', function (e) {
+      const typoDiv = document.querySelector('.uagb-box-shadow-advanced');
+      const actionsDiv = document.querySelector('.uag-box-shadow-button');
+
+      if (typoDiv) {
+        var _e$target, _e$target$classList, _e$target2, _e$target2$parentElem;
+
+        if (!(typoDiv !== null && typoDiv !== void 0 && typoDiv.contains(e.target)) && !(actionsDiv !== null && actionsDiv !== void 0 && actionsDiv.contains(e.target)) && !((_e$target = e.target) !== null && _e$target !== void 0 && (_e$target$classList = _e$target.classList) !== null && _e$target$classList !== void 0 && _e$target$classList.contains('uagb-advanced-color-indicate')) && !((_e$target2 = e.target) !== null && _e$target2 !== void 0 && (_e$target2$parentElem = _e$target2.parentElement) !== null && _e$target2$parentElem !== void 0 && _e$target2$parentElem.closest('.uagb-popover-color'))) {
+          toggleAdvancedControls(false);
+        }
+      }
+    });
+  }, []);
+  const {
+    setAttributes,
+    boxShadowColor,
+    boxShadowHOffset,
+    boxShadowVOffset,
+    boxShadowBlur,
+    boxShadowSpread,
+    boxShadowPosition
+  } = props;
+  let advancedControls;
+  const activeClass = showAdvancedControls ? 'active' : '';
+
+  if (showAdvancedControls) {
+    advancedControls = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("div", {
+      className: "uagb-box-shadow-advanced"
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("div", {
+      className: "uagb-shadow-color"
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement(_color_control_advanced_pop_color_control__WEBPACK_IMPORTED_MODULE_2__["default"], {
+      label: boxShadowColor.title,
+      colorValue: boxShadowColor.value,
+      onColorChange: value => setAttributes({
+        [boxShadowColor.label]: value
+      })
+    })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("div", {
+      className: "uagb-horizontal-wrap"
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement(_Components_range_Range_js__WEBPACK_IMPORTED_MODULE_1__["default"], {
+      label: boxShadowHOffset.title,
+      value: boxShadowHOffset.value,
+      min: 0,
+      max: 100,
+      displayUnit: false,
+      setAttributes: setAttributes,
+      data: {
+        value: boxShadowHOffset.value,
+        label: boxShadowHOffset.label
+      },
+      onChange: false
+    })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("div", {
+      className: "uagb-vertical-wrap"
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement(_Components_range_Range_js__WEBPACK_IMPORTED_MODULE_1__["default"], {
+      label: boxShadowVOffset.title,
+      value: boxShadowVOffset.value,
+      min: 0,
+      max: 100,
+      displayUnit: false,
+      setAttributes: setAttributes,
+      data: {
+        value: boxShadowVOffset.value,
+        label: boxShadowVOffset.label
+      },
+      onChange: false
+    })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("div", {
+      className: "uagb-blur-wrap"
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement(_Components_range_Range_js__WEBPACK_IMPORTED_MODULE_1__["default"], {
+      label: boxShadowBlur.title,
+      value: boxShadowBlur.value,
+      min: 0,
+      max: 100,
+      displayUnit: false,
+      setAttributes: setAttributes,
+      data: {
+        value: boxShadowBlur.value,
+        label: boxShadowBlur.label
+      },
+      onChange: false
+    })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("div", {
+      className: "uagb-spread-wrap"
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement(_Components_range_Range_js__WEBPACK_IMPORTED_MODULE_1__["default"], {
+      label: boxShadowSpread.title,
+      value: boxShadowSpread.value,
+      min: -100,
+      max: 100,
+      displayUnit: false,
+      setAttributes: setAttributes,
+      data: {
+        value: boxShadowSpread.value,
+        label: boxShadowSpread.label
+      },
+      onChange: false
+    })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("div", {
+      className: "uagb-shadow-type"
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement(_multi_buttons_control_index__WEBPACK_IMPORTED_MODULE_5__["default"], {
+      setAttributes: setAttributes,
+      label: boxShadowPosition.title,
+      data: {
+        value: boxShadowPosition.value,
+        label: boxShadowPosition.label
+      },
+      options: [{
+        value: 'outset',
+        label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__["__"])('Outset', 'ultimate-addons-for-gutenberg'),
+        tooltip: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__["__"])('Outset', 'ultimate-addons-for-gutenberg')
+      }, {
+        value: 'inset',
+        label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__["__"])('Inset', 'ultimate-addons-for-gutenberg'),
+        tooltip: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__["__"])('Inset (10px)', 'ultimate-addons-for-gutenberg')
+      }],
+      showIcons: false
+    })));
+  }
+
+  const boxShadowAdvancedControls = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("div", {
+    className: "uag-box-shadow-option-actions"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("span", {
+    className: "uag-control-label"
+  }, Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__["__"])('Box Shadow', 'ultimate-addons-for-gutenberg')), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__["Button"], {
+    className: 'uag-box-shadow-button',
+    "aria-pressed": showAdvancedControls,
+    onClick: () => toggleAdvancedControls(!showAdvancedControls)
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__["Dashicon"], {
+    icon: "edit"
+  })));
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("div", {
+    className: `components-base-control uag-box-shadow-options ${activeClass}`
+  }, boxShadowAdvancedControls, showAdvancedControls && advancedControls);
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (BoxShadowControl);
+
+/***/ }),
+
+/***/ "./src/components/gradient-settings/index.js":
+/*!***************************************************!*\
+  !*** ./src/components/gradient-settings/index.js ***!
+  \***************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/components */ "@wordpress/components");
+/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_components__WEBPACK_IMPORTED_MODULE_0__);
+
+
+const GradientSettings = props => {
+  const {
+    setAttributes,
+    backgroundGradient
+  } = props;
+
+  const onGradientChange = value => {
+    setAttributes({
+      [backgroundGradient.label]: value
+    });
+  };
+
+  return /*#__PURE__*/React.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_0__["GradientPicker"], {
+    value: backgroundGradient.value,
+    onChange: onGradientChange,
+    className: "uagb-gradient-picker"
+  });
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (GradientSettings);
+
+/***/ }),
+
+/***/ "./src/components/image/editor.lazy.scss":
+/*!***********************************************!*\
+  !*** ./src/components/image/editor.lazy.scss ***!
+  \***********************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js */ "./node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js");
+/* harmony import */ var _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _node_modules_css_loader_dist_cjs_js_node_modules_sass_loader_lib_loader_js_editor_lazy_scss__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! !../../../node_modules/css-loader/dist/cjs.js!../../../node_modules/sass-loader/lib/loader.js!./editor.lazy.scss */ "./node_modules/css-loader/dist/cjs.js!./node_modules/sass-loader/lib/loader.js!./src/components/image/editor.lazy.scss");
+
+            
+
+var refs = 0;
+var update;
+var options = {"injectType":"lazySingletonStyleTag","attributes":{"id":"uagb-editor-styles"}};
+
+options.insert = "head";
+options.singleton = true;
+
+var exported = {};
+
+exported.locals = _node_modules_css_loader_dist_cjs_js_node_modules_sass_loader_lib_loader_js_editor_lazy_scss__WEBPACK_IMPORTED_MODULE_1__["default"].locals || {};
+exported.use = function() {
+  if (!(refs++)) {
+    update = _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default()(_node_modules_css_loader_dist_cjs_js_node_modules_sass_loader_lib_loader_js_editor_lazy_scss__WEBPACK_IMPORTED_MODULE_1__["default"], options);
+  }
+
+  return exported;
+};
+exported.unuse = function() {
+  if (refs > 0 && !--refs) {
+    update();
+    update = null;
+  }
+};
+
+
+
+;
+       /* harmony default export */ __webpack_exports__["default"] = (exported);
+
+
+/***/ }),
+
+/***/ "./src/components/image/index.js":
+/*!***************************************!*\
+  !*** ./src/components/image/index.js ***!
+  \***************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/i18n */ "@wordpress/i18n");
+/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/components */ "@wordpress/components");
+/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @wordpress/block-editor */ "@wordpress/block-editor");
+/* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _editor_lazy_scss__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./editor.lazy.scss */ "./src/components/image/editor.lazy.scss");
+
+
+
+
+
+
+const UAGImage = props => {
+  // Add and remove the CSS on the drop and remove of the component.
+  Object(react__WEBPACK_IMPORTED_MODULE_3__["useLayoutEffect"])(() => {
+    _editor_lazy_scss__WEBPACK_IMPORTED_MODULE_4__["default"].use();
+    return () => {
+      _editor_lazy_scss__WEBPACK_IMPORTED_MODULE_4__["default"].unuse();
+    };
+  }, []);
+  const {
+    onSelectImage,
+    backgroundImage,
+    onRemoveImage,
+    showVideoInput,
+    label,
+    disableRemove = false,
+    allow = ['image']
+  } = props; // Need to refactor this code as per multi-image select for more diversity.
+
+  let labelText = Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__["__"])('Image', 'ultimate-addons-for-gutenberg');
+
+  let selectImageLabel = Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__["__"])('Select Image', 'ultimate-addons-for-gutenberg');
+
+  let replaceImageLabel = Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__["__"])('Replace Image', 'ultimate-addons-for-gutenberg');
+
+  let removeImageLabel = Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__["__"])('Remove Image', 'ultimate-addons-for-gutenberg');
+
+  let allowedTypes = ['image'];
+
+  if (showVideoInput) {
+    labelText = Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__["__"])('Video', 'ultimate-addons-for-gutenberg');
+    selectImageLabel = Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__["__"])('Select Video', 'ultimate-addons-for-gutenberg');
+    replaceImageLabel = Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__["__"])('Replace Video', 'ultimate-addons-for-gutenberg');
+    removeImageLabel = Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__["__"])('Remove Video', 'ultimate-addons-for-gutenberg');
+    allowedTypes = ['video'];
+  }
+
+  labelText = label ? label : labelText;
+  labelText = false === label ? label : labelText; // Newer Dynamic Code here ( Currently used in Lottie Block )
+
+  if (label === 'Lottie Animation') {
+    // No Template Literals due to @wordpress/i18n-no-variables
+    selectImageLabel = Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__["__"])('Select Lottie Animation', 'ultimate-addons-for-gutenberg');
+    replaceImageLabel = Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__["__"])('Replace Lottie Animation', 'ultimate-addons-for-gutenberg');
+    removeImageLabel = Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__["__"])('Remove Lottie Animation', 'ultimate-addons-for-gutenberg');
+    allowedTypes = allow;
+  }
+
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__["BaseControl"], {
+    className: "editor-bg-image-control",
+    id: `uagb-option-selector-${label}`,
+    label: labelText
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement("div", {
+    className: "uagb-bg-image"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__["MediaUpload"], {
+    title: selectImageLabel,
+    onSelect: onSelectImage,
+    allowedTypes: allowedTypes,
+    value: backgroundImage,
+    render: _ref => {
+      let {
+        open
+      } = _ref;
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__["Button"], {
+        isSecondary: true,
+        onClick: open
+      }, !(backgroundImage !== null && backgroundImage !== void 0 && backgroundImage.url) ? selectImageLabel : replaceImageLabel);
+    }
+  }), !disableRemove && (backgroundImage === null || backgroundImage === void 0 ? void 0 : backgroundImage.url) && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__["Button"], {
+    className: "uagb-rm-btn",
+    onClick: onRemoveImage,
+    isLink: true,
+    isDestructive: true
+  }, removeImageLabel), props.help && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement("p", {
+    className: "uag-control-help-notice"
+  }, props.help)));
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (UAGImage);
+
+/***/ }),
+
+/***/ "./src/components/responsive-focal-point-picker/index.js":
+/*!***************************************************************!*\
+  !*** ./src/components/responsive-focal-point-picker/index.js ***!
+  \***************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _Controls_getPreviewType__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @Controls/getPreviewType */ "./blocks-config/uagb-controls/getPreviewType.js");
+/* harmony import */ var _responsive_toggle__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../responsive-toggle */ "./src/components/responsive-toggle/index.js");
+/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @wordpress/i18n */ "@wordpress/i18n");
+/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @wordpress/components */ "@wordpress/components");
+/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__);
+/**
+ * External dependencies
+ */
+
+
+
+
+
+
+const ResponsiveUAGFocalPointPicker = props => {
+  var _backgroundImage$devi, _backgroundImage$devi2, _backgroundPosition$d;
+
+  const {
+    backgroundPosition,
+    backgroundImage,
+    setAttributes
+  } = props;
+  const responsive = true;
+  const deviceType = Object(_Controls_getPreviewType__WEBPACK_IMPORTED_MODULE_1__["useDeviceType"])();
+  const device = deviceType.toLowerCase();
+  const output = {};
+  const url = (_backgroundImage$devi = backgroundImage[device]) === null || _backgroundImage$devi === void 0 ? void 0 : (_backgroundImage$devi2 = _backgroundImage$devi.value) === null || _backgroundImage$devi2 === void 0 ? void 0 : _backgroundImage$devi2.url;
+  const value = (_backgroundPosition$d = backgroundPosition[device]) === null || _backgroundPosition$d === void 0 ? void 0 : _backgroundPosition$d.value;
+  output.Desktop = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__["FocalPointPicker"], {
+    url: url,
+    value: value,
+    onChange: focalPoint => {
+      var _backgroundPosition$d2;
+
+      setAttributes({
+        [(_backgroundPosition$d2 = backgroundPosition[device]) === null || _backgroundPosition$d2 === void 0 ? void 0 : _backgroundPosition$d2.label]: focalPoint
+      });
+    }
+  });
+  output.Tablet = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__["FocalPointPicker"], {
+    url: url,
+    value: value,
+    onChange: focalPoint => {
+      var _backgroundPosition$d3;
+
+      setAttributes({
+        [(_backgroundPosition$d3 = backgroundPosition[device]) === null || _backgroundPosition$d3 === void 0 ? void 0 : _backgroundPosition$d3.label]: focalPoint
+      });
+    }
+  });
+  output.Mobile = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__["FocalPointPicker"], {
+    url: url,
+    value: value,
+    onChange: focalPoint => {
+      var _backgroundPosition$d4;
+
+      setAttributes({
+        [(_backgroundPosition$d4 = backgroundPosition[device]) === null || _backgroundPosition$d4 === void 0 ? void 0 : _backgroundPosition$d4.label]: focalPoint
+      });
+    }
+  });
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "components-base-control uagb-responsive-select-control"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "uagb-size-type-field-tabs"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "uagb-control__header"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_responsive_toggle__WEBPACK_IMPORTED_MODULE_2__["default"], {
+    label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__["__"])('Image', 'ultimate-addons-for-gutenberg'),
+    responsive: responsive
+  })), output[deviceType] ? output[deviceType] : output.Desktop), props.help && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+    className: "uag-control-help-notice"
+  }, props.help));
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (ResponsiveUAGFocalPointPicker);
+
+/***/ }),
+
+/***/ "./src/components/responsive-image/index.js":
+/*!**************************************************!*\
+  !*** ./src/components/responsive-image/index.js ***!
+  \**************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _Controls_getPreviewType__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @Controls/getPreviewType */ "./blocks-config/uagb-controls/getPreviewType.js");
+/* harmony import */ var _responsive_toggle__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../responsive-toggle */ "./src/components/responsive-toggle/index.js");
+/* harmony import */ var _Components_image__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @Components/image */ "./src/components/image/index.js");
+/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @wordpress/i18n */ "@wordpress/i18n");
+/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__);
+/**
+ * External dependencies
+ */
+
+
+
+
+
+
+const ResponsiveUAGImage = props => {
+  const {
+    backgroundImage,
+    setAttributes
+  } = props;
+  const responsive = true;
+  const deviceType = Object(_Controls_getPreviewType__WEBPACK_IMPORTED_MODULE_1__["useDeviceType"])();
+  const device = deviceType.toLowerCase();
+  /*
+  * Event to set Image as while adding.
+  */
+
+  const onSelectImage = media => {
+    if (!media || !media.url) {
+      setAttributes({
+        [backgroundImage[device].label]: null
+      });
+      return;
+    }
+
+    if (!media.type || 'image' !== media.type) {
+      setAttributes({
+        [backgroundImage[device].label]: null
+      });
+      return;
+    }
+
+    setAttributes({
+      [backgroundImage[device].label]: media
+    });
+  };
+  /*
+   * Event to set Image as null while removing.
+   */
+
+
+  const onRemoveImage = () => {
+    setAttributes({
+      [backgroundImage[device].label]: ''
+    });
+  };
+
+  const output = {};
+  output.Desktop = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Components_image__WEBPACK_IMPORTED_MODULE_3__["default"], {
+    onSelectImage: onSelectImage,
+    backgroundImage: backgroundImage.desktop.value,
+    onRemoveImage: onRemoveImage,
+    label: false
+  });
+  output.Tablet = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Components_image__WEBPACK_IMPORTED_MODULE_3__["default"], {
+    onSelectImage: onSelectImage,
+    backgroundImage: backgroundImage.tablet.value,
+    onRemoveImage: onRemoveImage,
+    label: false
+  });
+  output.Mobile = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Components_image__WEBPACK_IMPORTED_MODULE_3__["default"], {
+    onSelectImage: onSelectImage,
+    backgroundImage: backgroundImage.mobile.value,
+    onRemoveImage: onRemoveImage,
+    label: false
+  });
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "components-base-control uagb-responsive-select-control"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "uagb-size-type-field-tabs"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "uagb-control__header"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_responsive_toggle__WEBPACK_IMPORTED_MODULE_2__["default"], {
+    label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__["__"])('Image', 'ultimate-addons-for-gutenberg'),
+    responsive: responsive
+  })), output[deviceType] ? output[deviceType] : output.Desktop), props.help && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+    className: "uag-control-help-notice"
+  }, props.help));
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (ResponsiveUAGImage);
+
+/***/ }),
+
+/***/ "./src/components/responsive-select/index.js":
+/*!***************************************************!*\
+  !*** ./src/components/responsive-select/index.js ***!
+  \***************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/components */ "@wordpress/components");
+/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _Controls_getPreviewType__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @Controls/getPreviewType */ "./blocks-config/uagb-controls/getPreviewType.js");
+/* harmony import */ var _responsive_toggle__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../responsive-toggle */ "./src/components/responsive-toggle/index.js");
+/**
+ * External dependencies
+ */
+
+
+
+
+
+const ResponsiveSelectControl = props => {
+  const {
+    label,
+    data,
+    setAttributes,
+    options
+  } = props;
+  const responsive = true;
+  const deviceType = Object(_Controls_getPreviewType__WEBPACK_IMPORTED_MODULE_2__["useDeviceType"])();
+  const output = {};
+  output.Desktop = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__["SelectControl"], {
+    value: data.desktop.value,
+    onChange: value => setAttributes({
+      [data.desktop.label]: value
+    }),
+    options: options.desktop
+  });
+  output.Tablet = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__["SelectControl"], {
+    value: data.tablet.value,
+    onChange: value => setAttributes({
+      [data.tablet.label]: value
+    }),
+    options: options.tablet || options.desktop
+  });
+  output.Mobile = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__["SelectControl"], {
+    value: data.mobile.value,
+    onChange: value => setAttributes({
+      [data.mobile.label]: value
+    }),
+    options: options.mobile || options.desktop
+  });
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "components-base-control uagb-responsive-select-control"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "uagb-size-type-field-tabs"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "uagb-control__header"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_responsive_toggle__WEBPACK_IMPORTED_MODULE_3__["default"], {
+    label: label,
+    responsive: responsive
+  })), output[deviceType] ? output[deviceType] : output.Desktop), props.help && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+    className: "uag-control-help-notice"
+  }, props.help));
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (ResponsiveSelectControl);
+
+/***/ })
+
+}]);
+//# sourceMappingURL=settings.js.map

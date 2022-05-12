@@ -70,6 +70,6 @@ return array(
 	'fontStyle'          => '',
 	'fontTransform'      => '',
 	'fontDecoration'     => '',
-	'hideLabel'          => true,
+	'hideLabel'          => false,
 	'iconPosition'       => 'middle',
 );

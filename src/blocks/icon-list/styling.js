@@ -219,6 +219,7 @@ function styling( props ) {
 		};
 		selectors[ ' .wp-block-uagb-icon-list-child ' ] = {
 			'flex-direction': 'row-reverse',
+			'text-align' : 'unset !important',
 		};
 	} else {
 		selectors[
@@ -235,6 +236,9 @@ function styling( props ) {
 			' .uagb-icon-list__source-wrap'
 		] = {
 			'margin-right': generateCSSUnit( innerGapTablet, innerGapType ),
+		};
+		selectors[ ' .wp-block-uagb-icon-list-child ' ] = {
+			'text-align' : 'unset !important',
 		};
 	}
 
