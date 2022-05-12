@@ -49,9 +49,11 @@ const attributes = {
 	},
 	innerContentCustomWidthTablet: {
 		type: 'number',
+		default: 768
 	},
 	innerContentCustomWidthMobile: {
 		type: 'number',
+		default: 320
 	},
 	innerContentCustomWidthType: {
 		type: 'string',

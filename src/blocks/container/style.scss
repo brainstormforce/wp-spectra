@@ -97,7 +97,7 @@
 }
 
 .entry-content .wp-block-uagb-container > *:not(.wp-block-uagb-container):not(.wp-block-uagb-column):not(.wp-block-uagb-container):not(.wp-block-uagb-section):not(.uagb-container__shape):not(.uagb-container__video-wrap) {
-	width: unset !important;
 	min-width: unset !important;
-	max-width: unset !important;
+	width: 100%;
+	margin: 0;
 }

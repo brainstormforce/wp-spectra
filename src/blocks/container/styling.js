@@ -216,8 +216,8 @@ function styling( props ) {
 		'min-height' : generateCSSUnit( minHeightDesktop, minHeightType ),
 	}
 
-	selectors[' > .wp-block-uagb-container'] = containerCSS;
-	selectors[' > .wp-block-uagb-container:hover'] = {
+	selectors['.wp-block'] = containerCSS;
+	selectors['.wp-block:hover'] = {
 		'border-color': borderHoverColor,
 	};
 
@@ -305,7 +305,7 @@ function styling( props ) {
 	const containerBackgroundCSSTablet = generateBackgroundCSS( backgroundAttributesTablet );
 
 	const tablet_selectors = {
-		' > .wp-block-uagb-container' : {
+		'.wp-block' : {
 			'padding-top': generateCSSUnit( topPaddingTablet, paddingType ),
 			'padding-bottom': generateCSSUnit( bottomPaddingTablet, paddingType ),
 			'padding-left': generateCSSUnit( leftPaddingTablet, paddingType ),
@@ -362,7 +362,7 @@ function styling( props ) {
 	const containerBackgroundCSSMobile = generateBackgroundCSS( backgroundAttributesMobile );
 
 	const mobile_selectors = {
-		' > .wp-block-uagb-container' : {
+		'.wp-block' : {
 			'padding-top': generateCSSUnit( topPaddingMobile, paddingType ),
 			'padding-bottom': generateCSSUnit( bottomPaddingMobile, paddingType ),
 			'padding-left': generateCSSUnit( leftPaddingMobile, paddingType ),
