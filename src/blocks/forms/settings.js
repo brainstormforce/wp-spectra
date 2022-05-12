@@ -543,7 +543,7 @@ const Settings = ( props ) => {
 			>
 				<p className="uagb-form-notice">
 					{ __(
-						'Note: It is recommended to enter an email id in order to receive the data submitted through a form, else you will not receive any data.',
+						'Note: It is required to enter an email ID to receive the data submitted via Form. Else you will not receive any data.',
 						'ultimate-addons-for-gutenberg'
 					) }
 				</p>
@@ -1534,7 +1534,7 @@ const Settings = ( props ) => {
 			title={ __( 'Spacing', 'ultimate-addons-for-gutenberg' ) }
 			initialOpen={ false }
 			// className="uagb__url-panel-body"
-		>			
+		>
 			<SpacingControl
 				{ ...props }
 				label={ __(
