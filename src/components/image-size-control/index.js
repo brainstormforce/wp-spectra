@@ -143,7 +143,7 @@ export default function ImageSizeControl( {
 		<>
 			{ imageSizeOptions.length !== 0 && (
 				<ResponsiveSelectControl
-					label={ __( 'Image size', 'ultimate-addons-for-gutenberg' ) }
+					label={ __( 'Image Size', 'ultimate-addons-for-gutenberg' ) }
 					options={ {
 						desktop: imageSizeOptions,
 						tablet: imageSizeOptions,
@@ -171,7 +171,7 @@ export default function ImageSizeControl( {
 					<div className='uagb-size-type-field-tabs'>
 						<div className='uagb-control__header'>
 							<ResponsiveToggle
-								label= { __( 'Image dimensions' )  }
+								label= { __( 'Image Dimensions' )  }
 								responsive= { responsive }
 							/>
 						</div>
@@ -179,7 +179,7 @@ export default function ImageSizeControl( {
 							{output[deviceType]}
 						</div>
 						<div className="block-editor-image-size-control__row">
-							<ButtonGroup aria-label={ __( 'Image size presets' ) }>
+							<ButtonGroup aria-label={ __( 'Image Size Presets' ) }>
 								{ IMAGE_SIZE_PRESETS.map( ( scale ) => {
 									const scaledWidth = Math.round(
 										imageWidth * ( scale / 100 )
