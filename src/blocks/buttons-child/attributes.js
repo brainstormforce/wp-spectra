@@ -509,7 +509,7 @@ const attributes = {
 		}
 	},
 	removeText:{
-		type:'string',
+		type:'boolean',
 		default: false
 	},
 };
