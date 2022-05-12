@@ -837,6 +837,32 @@ const Settings = ( props ) => {
 		);
 	};
 
+	const linkColorMarkup = (
+		<AdvancedPopColorControl
+			label={ __(
+				'Link Color',
+				'ultimate-addons-for-gutenberg'
+			) }
+			colorValue={ linkColor }
+			onColorChange={ ( value ) =>
+				setAttributes( { linkColor: value } )
+			}
+		/>
+	);
+
+	const linkHoverColorMarkup = (
+		<AdvancedPopColorControl
+			label={ __(
+				'Link Hover Color',
+				'ultimate-addons-for-gutenberg'
+			) }
+			colorValue={ linkHoverColor }
+			onColorChange={ ( value ) =>
+				setAttributes( { linkHoverColor: value } )
+			}
+		/>
+	);
+
 	const colorSettings = () => {
 		return (
 			<UAGAdvancedPanelBody
@@ -853,26 +879,27 @@ const Settings = ( props ) => {
 						setAttributes( { textColor: value } )
 					}
 				/>
-				<AdvancedPopColorControl
-					label={ __(
-						'Link Color',
-						'ultimate-addons-for-gutenberg'
-					) }
-					colorValue={ linkColor }
-					onColorChange={ ( value ) =>
-						setAttributes( { linkColor: value } )
-					}
-				/>
-				<AdvancedPopColorControl
-					label={ __(
-						'Link Hover Color',
-						'ultimate-addons-for-gutenberg'
-					) }
-					colorValue={ linkHoverColor }
-					onColorChange={ ( value ) =>
-						setAttributes( { linkHoverColor: value } )
-					}
-				/>
+				<UAGTabsControl
+						tabs={ [
+							{
+								name: 'normal',
+								title: __(
+									'Normal',
+									'ultimate-addons-for-gutenberg'
+								),
+							},
+							{
+								name: 'hover',
+								title: __(
+									'Hover',
+									'ultimate-addons-for-gutenberg'
+								),
+							},
+						] }
+						normal={ linkColorMarkup }
+						hover={ linkHoverColorMarkup }
+						disableBottomSeparator={ true }
+					/>
 			</UAGAdvancedPanelBody>
 		);
 	}
