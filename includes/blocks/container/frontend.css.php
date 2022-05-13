@@ -214,8 +214,9 @@ if ( 'alignwide' === $attr['innerContentWidth'] ) {
 	$column_gap_desktop    = ! empty( $attr['columnGapDesktop'] ) ? $attr['columnGapDesktop'] : 0;
 
 	$left_padding_tablet  = ! empty( $attr['leftPaddingTablet'] ) ? $attr['leftPaddingTablet'] : $left_padding_desktop;
-	$right_padding_tablet = ! empty( $attr['rightPaddingTablet'] ) ? $attr['rightPaddingTablet'] : $right_padding_desktop;;
-	$column_gap_tablet    = ! empty( $attr['columnGapTablet'] ) ? $attr['columnGapTablet'] : $column_gap_desktop;
+	$right_padding_tablet = ! empty( $attr['rightPaddingTablet'] ) ? $attr['rightPaddingTablet'] : $right_padding_desktop;
+
+	$column_gap_tablet = ! empty( $attr['columnGapTablet'] ) ? $attr['columnGapTablet'] : $column_gap_desktop;
 
 	$left_padding_mobile  = ! empty( $attr['leftPaddingMobile'] ) ? $attr['leftPaddingMobile'] : $left_padding_tablet;
 	$right_padding_mobile = ! empty( $attr['rightPaddingMobile'] ) ? $attr['rightPaddingMobile'] : $right_padding_tablet;
