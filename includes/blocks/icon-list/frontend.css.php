@@ -273,10 +273,6 @@ if ( 'right' === $attr['align'] && ! $attr['hideLabel'] ) {
 		$selectors[' .wp-block-uagb-icon-list-child  '] = array(
 			'text-align' => 'center',
 		);
-	} else {
-		$selectors[' .wp-block-uagb-icon-list-child  '] = array(
-			'text-align' => 'unset',
-		);
 	}
 }
 
