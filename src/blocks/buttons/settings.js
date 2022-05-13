@@ -304,55 +304,6 @@ const Settings = ( props ) => {
 					} }
 					setAttributes={ setAttributes }
 				/>
-				<SelectControl
-					label={ __(
-						'Button Size',
-						'ultimate-addons-for-gutenberg'
-					) }
-					value={ buttonSize }
-					onChange={ ( value ) =>
-						setAttributes( {
-							buttonSize: value,
-						} )
-					}
-					options={ [
-						{
-							value: 'default',
-							label: __(
-								'Default',
-								'ultimate-addons-for-gutenberg'
-							),
-						},
-						{
-							value: 'small',
-							label: __(
-								'Small',
-								'ultimate-addons-for-gutenberg'
-							),
-						},
-						{
-							value: 'medium',
-							label: __(
-								'Medium',
-								'ultimate-addons-for-gutenberg'
-							),
-						},
-						{
-							value: 'large',
-							label: __(
-								'Large',
-								'ultimate-addons-for-gutenberg'
-							),
-						},
-						{
-							value: 'extralarge',
-							label: __(
-								'Extra Large',
-								'ultimate-addons-for-gutenberg'
-							),
-						}
-					] }
-				/>
 			</UAGAdvancedPanelBody>
 		);
 	};
