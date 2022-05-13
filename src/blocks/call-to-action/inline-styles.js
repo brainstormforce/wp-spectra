@@ -168,6 +168,10 @@ function CtaStyle( props ) {
 		overallBlockPaddingUnit,
 		overallBlockMobilePaddingUnit,
 		overallBlockTabletPaddingUnit,
+		buttonRightSpace,
+		buttonRightSpaceTablet,
+		buttonRightSpaceMobile,
+		buttonRightSpaceType,
 	} = props.attributes;
 
 	const selectors = {
@@ -625,52 +629,64 @@ function CtaStyle( props ) {
 		selectors[ ' .uagb-cta__buttons' ] = {
 			'flex-direction': 'column',
 			'row-gap': generateCSSUnit( gapBtn, 'px' ),
+			'margin-left': generateCSSUnit( buttonRightSpace, buttonRightSpaceType )
 		};
 		tabletSelectors[ ' .uagb-cta__buttons' ] = {
 			'flex-direction': 'column',
-			'row-gap': generateCSSUnit( gapBtnTablet, 'px' )
+			'row-gap': generateCSSUnit( gapBtnTablet, 'px' ),
+			'margin-left': generateCSSUnit( buttonRightSpaceTablet, buttonRightSpaceType )
 		};
 		mobileSelectors[ ' .uagb-cta__buttons' ] = {
 			'flex-direction': 'column',
-			'row-gap': generateCSSUnit( gapBtnMobile, 'px' )
+			'row-gap': generateCSSUnit( gapBtnMobile, 'px' ),
+			'margin-left': generateCSSUnit( buttonRightSpaceMobile, buttonRightSpaceType )
 		};
 	} else if ( 'tablet' === stackBtn ) {
 		selectors[ ' .uagb-cta__buttons' ] = {
 			'column-gap': generateCSSUnit( gapBtn , 'px' ),
-			'align-items': 'center'
+			'align-items': 'center',
+			'margin-left': generateCSSUnit( buttonRightSpace, buttonRightSpaceType )
 		};
 		tabletSelectors[' .uagb-cta__buttons'] = {
 			'flex-direction': 'column',
 			'row-gap': generateCSSUnit( gapBtnTablet, 'px' ),
+			'margin-left': generateCSSUnit( buttonRightSpaceTablet, buttonRightSpaceType )
 		};
 		mobileSelectors[' .uagb-cta__buttons'] = {
 			'flex-direction': 'column',
 			'row-gap': generateCSSUnit( gapBtnMobile, 'px' ),
+			'margin-left': generateCSSUnit( buttonRightSpaceMobile, buttonRightSpaceType )
 		};
 
 	} else if ( 'mobile' === stackBtn ) {
 		selectors[ ' .uagb-cta__buttons' ] = {
 			'column-gap': generateCSSUnit( gapBtn , 'px' ),
-			'align-items': 'center'
+			'align-items': 'center',
+			'margin-left': generateCSSUnit( buttonRightSpace, buttonRightSpaceType )
 		};
 		tabletSelectors[ ' .uagb-cta__buttons' ] = {
 			'column-gap': generateCSSUnit( gapBtnTablet , 'px' ),
-			'align-items': 'center'
+			'align-items': 'center',
+			'margin-left': generateCSSUnit( buttonRightSpaceTablet, buttonRightSpaceType )
 		};
 		mobileSelectors[' .uagb-cta__buttons'] = {
 			'flex-direction': 'column',
 			'row-gap': generateCSSUnit( gapBtnMobile, 'px' ),
+			'margin-left': generateCSSUnit( buttonRightSpaceMobile, buttonRightSpaceType )
 		};
 	} else if ( 'none' === stackBtn ) {
 		selectors[ ' .uagb-cta__buttons' ] = {
 			'column-gap': generateCSSUnit( gapBtn , 'px' ),
-			'align-items': 'center'
+			'align-items': 'center',
+			'margin-left': generateCSSUnit( buttonRightSpace, buttonRightSpaceType )
 		};
 		tabletSelectors[ ' .uagb-cta__buttons' ] = {
 			'column-gap': generateCSSUnit( gapBtnTablet , 'px' ),
+			'margin-left': generateCSSUnit( buttonRightSpace, buttonRightSpaceType )
 		};
 		mobileSelectors[' .uagb-cta__buttons'] = {
 			'column-gap': generateCSSUnit( gapBtnMobile, 'px' ),
+			'margin-left': generateCSSUnit( buttonRightSpaceMobile, buttonRightSpaceType )
 		};
 	}
 	let alignment;

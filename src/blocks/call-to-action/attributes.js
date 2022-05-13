@@ -895,25 +895,6 @@ const attributes = {
 			styleType: 'btn-icon-space'
 		}
 	},
-	gap: {
-		type: 'number',
-		default: 10,
-	},
-	gapTablet: {
-		type: 'number',
-		default: 10,
-	},
-	gapMobile: {
-		type: 'number',
-		default: 10,
-	},
-	gapType: {
-		type: 'string',
-		default: 'px',
-		UAGCopyPaste: {
-			styleType: 'desc-bottom-margin-unit-type'
-		},
-	},
 	isPreview: {
 		type: 'boolean',
 		default: false,
@@ -1135,6 +1116,34 @@ const attributes = {
 	overallBlockMarginLink: {
 		type: 'boolean',
 		default: false,
+	},
+	buttonRightSpace: {
+		type: 'number',
+		default: 10,
+		UAGCopyPaste: {
+			styleType: 'main-button-bottom-margin'
+		},
+	},
+	buttonRightSpaceTablet: {
+		type: 'number',
+		default: 10,
+		UAGCopyPaste: {
+			styleType: 'main-button-bottom-margin-tablet'
+		},
+	},
+	buttonRightSpaceMobile: {
+		type: 'number',
+		default: 10,
+		UAGCopyPaste: {
+			styleType: 'main-button-bottom-margin-mobile'
+		},
+	},
+	buttonRightSpaceType: {
+		type: 'string',
+		default: 'px',
+		UAGCopyPaste: {
+			styleType: 'main-button-unit-type'
+		},
 	},
 };
 

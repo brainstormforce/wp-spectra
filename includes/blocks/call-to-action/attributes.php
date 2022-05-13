@@ -184,4 +184,8 @@ return array(
 	'overallBlockMobileMarginUnit'    => 'px',
 	'overallBlockTabletMarginUnit'    => 'px',
 	'overallBlockMarginLink'          => '',
+	'buttonRightSpace'                => 5,
+	'buttonRightSpaceTablet'          => 5,
+	'buttonRightSpaceMobile'          => 5,
+	'buttonRightSpaceType'            => 'px',
 );

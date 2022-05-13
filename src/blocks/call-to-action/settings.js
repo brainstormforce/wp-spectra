@@ -64,7 +64,6 @@ const Settings = ( props ) => {
 		descSpaceTablet,
 		descSpaceMobile,
 		descSpaceType,
-		ctaPosition,
 		buttonAlign,
 		ctaType,
 		ctaText,
@@ -209,6 +208,10 @@ const Settings = ( props ) => {
 		overallBlockMobilePaddingUnit,
 		overallBlockTabletPaddingUnit,
 		overallBlockPaddingLink,
+		buttonRightSpace,
+		buttonRightSpaceTablet,
+		buttonRightSpaceMobile,
+		buttonRightSpaceType,
 	} = attributes;
 
 	let loadCtaGoogleFonts;
@@ -1368,7 +1371,6 @@ const Settings = ( props ) => {
 						setAttributes( { descColor: value } )
 					}
 				/>
-				{ ctaPosition !== 'right' &&
 					<ResponsiveSlider
 						label={ __(
 							'Bottom Margin',
@@ -1405,7 +1407,6 @@ const Settings = ( props ) => {
 						] }
 						setAttributes={ setAttributes }
 					/>
-				}
 			</UAGAdvancedPanelBody>
 		);
 	};
@@ -1416,7 +1417,8 @@ const Settings = ( props ) => {
 				title={ __( 'Spacing', 'ultimate-addons-for-gutenberg' ) }
 				initialOpen={ false }
 			>
-				{ textAlign === 'left' && ctaPosition === 'right' && (
+				{ textAlign === 'left' && (
+					<>
 					<ResponsiveSlider
 						label={ __(
 							'Content Left Margin',
@@ -1453,8 +1455,48 @@ const Settings = ( props ) => {
 						] }
 						setAttributes={ setAttributes }
 					/>
+					</>
 				) }
-				{ textAlign === 'right' && ctaPosition === 'right' && (
+				{ textAlign !== 'right' && (
+						<ResponsiveSlider
+						label={ __(
+							'Content And Buttons Gap',
+							'ultimate-addons-for-gutenberg'
+						) }
+						data={ {
+							desktop: {
+								value: buttonRightSpace,
+								label: 'buttonRightSpace',
+							},
+							tablet: {
+								value: buttonRightSpaceTablet,
+								label: 'buttonRightSpaceTablet',
+							},
+							mobile: {
+								value: buttonRightSpaceMobile,
+								label: 'buttonRightSpaceMobile',
+							},
+						} }
+						min={ 0 }
+						max={ 200 }
+						unit={ {
+							value: buttonRightSpaceType,
+							label: 'buttonRightSpaceType',
+						} }
+						units={ [
+							{
+								name: __(
+									'Pixel',
+									'ultimate-addons-for-gutenberg'
+								),
+								unitValue: 'px',
+							},
+						] }
+						setAttributes={ setAttributes }
+					/>
+					)
+				}
+				{ textAlign === 'right' && (
 					<ResponsiveSlider
 						label={ __(
 							'Content Right Margin',
@@ -1785,38 +1827,8 @@ const Settings = ( props ) => {
 				/>
 				{ ctaType !== 'all' && ctaType !== 'none' && (
 					<>
-						<MultiButtonsControl
-							setAttributes={ setAttributes }
-							label={ __(
-								'Layout',
-								'ultimate-addons-for-gutenberg'
-							) }
-							data={ {
-								value: ctaPosition,
-								label: 'ctaPosition',
-							} }
-							className="uagb-multi-button-alignment-control"
-							options={ [
-								{
-									value: 'right',
-									label: __(
-										'Inline',
-										'ultimate-addons-for-gutenberg'
-									),
-								},
-								{
-									value: 'below-title',
-									label: __(
-										'Stack',
-										'ultimate-addons-for-gutenberg'
-									),
-								},
-							] }
-							showIcons={ false }
-						/>
 						{ ( ctaType === 'text' || ctaType === 'button' ) && (
 							<>
-								{ ctaPosition === 'right' && (
 									<ResponsiveSlider
 										label={ __(
 											'Content Width',
@@ -1853,42 +1865,37 @@ const Settings = ( props ) => {
 										] }
 										setAttributes={ setAttributes }
 									/>
-								) }
 							</>
 						) }
-						{ ctaPosition && ctaPosition === 'right' && (
-							<>
-								<MultiButtonsControl
-									setAttributes={ setAttributes }
-									label={ __(
-										'Vertical Alignment',
+						<MultiButtonsControl
+							setAttributes={ setAttributes }
+							label={ __(
+								'Vertical Alignment',
+								'ultimate-addons-for-gutenberg'
+							) }
+							data={ {
+								value: buttonAlign,
+								label: 'buttonAlign',
+							} }
+							className="uagb-multi-button-alignment-control"
+							options={ [
+								{
+									value: 'top',
+									label: __(
+										'Top',
 										'ultimate-addons-for-gutenberg'
-									) }
-									data={ {
-										value: buttonAlign,
-										label: 'buttonAlign',
-									} }
-									className="uagb-multi-button-alignment-control"
-									options={ [
-										{
-											value: 'top',
-											label: __(
-												'Top',
-												'ultimate-addons-for-gutenberg'
-											),
-										},
-										{
-											value: 'middle',
-											label: __(
-												'Middle',
-												'ultimate-addons-for-gutenberg'
-											),
-										},
-									] }
-									showIcons={ false }
-								/>
-							</>
-						) }
+									),
+								},
+								{
+									value: 'middle',
+									label: __(
+										'Middle',
+										'ultimate-addons-for-gutenberg'
+									),
+								},
+							] }
+							showIcons={ false }
+						/>
 					</>
 				) }
 			</UAGAdvancedPanelBody>
