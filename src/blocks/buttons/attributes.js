@@ -192,6 +192,20 @@ const attributes = {
 			styleType: 'btn-size'
 		}
 	},
+	buttonSizeTablet:{
+		type:'string',
+		default: 'default',
+		UAGCopyPaste: {
+			styleType: 'btn-size-tablet'
+		}
+	},
+	buttonSizeMobile:{
+		type:'string',
+		default: 'default',
+		UAGCopyPaste: {
+			styleType: 'btn-size-mobile'
+		}
+	},
 	topMargin:{
 		type:'number',
 		UAGCopyPaste: {
