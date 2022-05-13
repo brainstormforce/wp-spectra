@@ -237,7 +237,7 @@ if ( 'button' === $attr['ctaType'] ) {
 		'fill' => $attr['ctaLinkHoverColor'],
 	);
 	if( 'none' !== $attr['ctaBorderStyle'] ) {
-		$selectors[' .uagb-ifb-button-wrapper .uagb-infobox-cta-link'] = array(
+		$selectors[' .uagb-infobox-cta-link'] = array(
 			'border-style'     => $attr['ctaBorderStyle'],
 			'border-color'     => $attr['ctaBorderColor'],
 			'border-width'     => UAGB_Helper::get_css_value( $attr['ctaBorderWidth'], 'px' ),

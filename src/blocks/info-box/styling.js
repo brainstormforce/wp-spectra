@@ -101,7 +101,7 @@ function styling( props ) {
 		iconTabletMarginUnit,
 		imageWidth,
 		imageWidthMobile,
-imageWidthTablet,
+		imageWidthTablet,
 		imageWidthType,
 		imageWidthUnit,
 		ctaLinkHoverColor,
@@ -446,7 +446,7 @@ imageWidthTablet,
 		}
 	};
 	if( 'none' !== ctaBorderStyle ) {
-		selectors[' .uagb-ifb-button-wrapper .uagb-infobox-cta-link'] = {
+		selectors[' .uagb-infobox-cta-link'] = {
 			'border-style': ctaBorderStyle,
 			'border-color': ctaBorderColor,
 			'border-width': generateCSSUnit( ctaBorderWidth, 'px' ),
