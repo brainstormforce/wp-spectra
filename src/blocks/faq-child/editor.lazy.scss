@@ -12,8 +12,10 @@
 
 		.uagb-faq-icon-wrap {
 
-			display: inline-block;
-			vertical-align: middle;
+			// display: inline-block;
+			// vertical-align: middle;
+			display: flex;
+			align-items: center;
 		}
 
 		.uagb-question {
@@ -40,7 +42,8 @@
 	&.uagb-faq-item.uagb-faq-item-active .uagb-icon-active,
 	.uagb-faq-item .uagb-icon,
 	.uagb-faq-item.uagb-faq-item-active .uagb-icon-active {
-		display: inline-block;
+		// display: inline-block;
+		display: flex;
 	}
 
 	&.uagb-faq__active.uagb-faq-item,
@@ -55,7 +58,8 @@
 		}
 
 		.uagb-icon-active {
-			display: inline-block;
+			// display: inline-block;
+			display: flex;
 		}
 	}
 }
