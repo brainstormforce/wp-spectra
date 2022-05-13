@@ -21,7 +21,7 @@ const Render = ( props ) => {
 
 	const deviceType = useDeviceType();
 
-	const { className, btn_count, buttons, stack, isPreview, buttonSize } = attributes;
+	const { className, btn_count, buttons, stack, isPreview, buttonSize, buttonSizeTablet, buttonSizeMobile } = attributes;
 
 	const getButtonTemplate = useMemo( () => {
 		const childButtons = [];
@@ -43,6 +43,8 @@ const Render = ( props ) => {
 				className,
 				'uagb-buttons__outer-wrap',
 				`uagb-btn__${buttonSize}-btn`,
+				`uagb-btn-tablet__${buttonSizeTablet}-btn`,
+				`uagb-btn-mobile__${buttonSizeMobile}-btn`,
 				`uagb-editor-preview-mode-${ deviceType.toLowerCase() }`,
 				`uagb-block-${ props.clientId.substr( 0, 8 ) }`,
 			) }
