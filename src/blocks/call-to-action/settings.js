@@ -171,10 +171,6 @@ const Settings = ( props ) => {
 		secondCtaIcon,
 		secondCtaIconPosition,
 		secondCtaIconSpace,
-		gap,
-		gapTablet,
-		gapMobile,
-		gapType,
 		stackBtn,
 		gapBtn,
 		gapBtnTablet,
@@ -1496,44 +1492,6 @@ const Settings = ( props ) => {
 						setAttributes={ setAttributes }
 					/>
 				) }
-				{ enabledSecondCtaButton && (
-					<ResponsiveSlider
-						label={ __(
-							'Gap between buttons',
-							'ultimate-addons-for-gutenberg'
-						) }
-						data={ {
-							desktop: {
-								value: gap,
-								label: 'gap',
-							},
-							tablet: {
-								value: gapTablet,
-								label: 'gapTablet',
-							},
-							mobile: {
-								value: gapMobile,
-								label: 'gapMobile',
-							},
-						} }
-						min={ 0 }
-						max={ 200 }
-						unit={ {
-							value: gapType,
-							label: 'gapType',
-						} }
-						units={ [
-							{
-								name: __(
-									'Pixel',
-									'ultimate-addons-for-gutenberg'
-								),
-								unitValue: 'px',
-							},
-						] }
-						setAttributes={ setAttributes }
-					/>
-				)}
 				<SpacingControl
 					{ ...props }
 					label={ __( 'Padding', 'ultimate-addons-for-gutenberg' ) }

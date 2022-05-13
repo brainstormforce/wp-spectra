@@ -132,10 +132,6 @@ function CtaStyle( props ) {
 		secondCtaBackground,
 		secondCtaHoverColor,
 		secondCtaHoverBackground,
-		gap,
-		gapTablet,
-		gapMobile,
-		gapType,
 		stackBtn,
 		gapBtn,
 		gapBtnTablet,
@@ -268,7 +264,6 @@ function CtaStyle( props ) {
 		'padding-bottom': generateCSSUnit( secondCtaBottomPadding, secondCtaPaddingUnit ),
 		'padding-left': generateCSSUnit( secondCtaLeftPadding, secondCtaPaddingUnit ),
 		'padding-right': generateCSSUnit( secondCtaRightPadding, secondCtaPaddingUnit ),
-		'margin-left': generateCSSUnit( gap, gapType ),
 		'align-self': 'top' === buttonAlign ? 'flex-start' : 'center',
 		'height' : 'fit-content',
 	};
@@ -396,7 +391,6 @@ function CtaStyle( props ) {
 				secondCtaRightTabletPadding,
 				secondCtaTabletPaddingUnit
 			),
-			'margin-left': generateCSSUnit( gapTablet, gapType ),
 		},
 		'.uagb-cta__outer-wrap a.uagb-cta-second__button svg': {
 			'font-size': generateCSSUnit( secondCtaFontSizeTablet, secondCtaFontSizeType ),
@@ -501,7 +495,6 @@ function CtaStyle( props ) {
 				secondCtaRightMobilePadding,
 				secondCtaMobilePaddingUnit
 			),
-			'margin-left': generateCSSUnit( gapMobile, gapType ),
 		},
 		'.uagb-cta__outer-wrap a.uagb-cta-second__button svg': {
 			'font-size': generateCSSUnit( secondCtaFontSizeMobile, secondCtaFontSizeType ),

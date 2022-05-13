@@ -104,7 +104,6 @@ $selectors['.wp-block-uagb-call-to-action a.uagb-cta-second__button']       = ar
 	'padding-bottom'   => UAGB_Helper::get_css_value( $attr['secondCtaBottomPadding'], $attr['secondCtaPaddingUnit'] ),
 	'padding-left'     => UAGB_Helper::get_css_value( $attr['secondCtaLeftPadding'], $attr['secondCtaPaddingUnit'] ),
 	'padding-right'    => UAGB_Helper::get_css_value( $attr['secondCtaRightPadding'], $attr['secondCtaPaddingUnit'] ),
-	'margin-left'      => UAGB_Helper::get_css_value( $attr['gap'], $attr['gapType'] ),
 	'align-self'       => 'top' === $attr['buttonAlign'] ? 'flex-start' : 'center',
 	'height'           => 'fit-content',
 );
@@ -300,7 +299,6 @@ $t_selectors = array(
 		'padding-bottom' => UAGB_Helper::get_css_value( $attr['secondCtaBottomTabletPadding'], $attr['secondCtaTabletPaddingUnit'] ),
 		'padding-left'   => UAGB_Helper::get_css_value( $attr['secondCtaLeftTabletPadding'], $attr['secondCtaTabletPaddingUnit'] ),
 		'padding-right'  => UAGB_Helper::get_css_value( $attr['secondCtaRightTabletPadding'], $attr['secondCtaTabletPaddingUnit'] ),
-		'margin-left'    => UAGB_Helper::get_css_value( $attr['gapTablet'], $attr['gapType'] ),
 	),
 );
 
@@ -353,7 +351,6 @@ $m_selectors = array(
 		'padding-bottom' => UAGB_Helper::get_css_value( $attr['secondCtaBottomMobilePadding'], $attr['secondCtaMobilePaddingUnit'] ),
 		'padding-left'   => UAGB_Helper::get_css_value( $attr['secondCtaLeftMobilePadding'], $attr['secondCtaMobilePaddingUnit'] ),
 		'padding-right'  => UAGB_Helper::get_css_value( $attr['secondCtaRightMobilePadding'], $attr['secondCtaMobilePaddingUnit'] ),
-		'margin-left'    => UAGB_Helper::get_css_value( $attr['gapMobile'], $attr['gapType'] ),
 	),
 );
 
@@ -448,7 +445,7 @@ if ( 'before' === $attr['ctaIconPosition'] ) {
 
 if ( 'right' === $attr['ctaPosition'] && ( 'text' === $attr['ctaType'] || 'button' === $attr['ctaType'] ) ) {
 	$selectors['.wp-block-uagb-call-to-action '] = array(
-		'display' => 'flex',
+		'display'         => 'flex',
 		'justify-content' => 'space-between',
 	);
 	$selectors[' .uagb-cta__content-right .uagb-cta__left-right-wrap .uagb-cta__content']      = array(
