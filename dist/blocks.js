@@ -53475,7 +53475,8 @@ const attributes = {
     type: 'number',
     UAGCopyPaste: {
       styleType: 'main-title-line-height'
-    }
+    },
+    default: 1.17
   },
   lineHeightTablet: {
     type: 'number',

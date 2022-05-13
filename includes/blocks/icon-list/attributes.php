@@ -58,7 +58,7 @@ return array(
 	'fontSizeType'       => 'px',
 	'fontSizeMobile'     => '',
 	'fontSizeTablet'     => '',
-	'lineHeight'         => '',
+	'lineHeight'         => '1.17',
 	'lineHeightType'     => 'em',
 	'lineHeightMobile'   => '',
 	'lineHeightTablet'   => '',
