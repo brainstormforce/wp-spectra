@@ -10,7 +10,7 @@ for ( let i = 1; i <= itemCount; i++ ) {
 	const descText =
 		'I have been working with these guys for years now! With lots of hard work and timely communication, they made sure they delivered the best to me. Highly recommended!';
 	const authorText = 'John Doe ';
-	const companyText = 'Company' + i;
+	const companyText = 'Company Name';
 	testimonialBlock.push( {
 		description: descText,
 		name: authorText,
