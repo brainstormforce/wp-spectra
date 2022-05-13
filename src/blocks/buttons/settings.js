@@ -8,6 +8,7 @@ import MultiButtonsControl from '@Components/multi-buttons-control';
 import renderSVG from '@Controls/renderIcon';
 import ResponsiveSlider from '@Components/responsive-slider';
 import SpacingControl from '@Components/spacing-control';
+import ResponsiveSelectControl from '@Components/responsive-select';
 
 import { SelectControl,
 	Toolbar , Icon } from '@wordpress/components';
@@ -86,6 +87,44 @@ const Settings = ( props ) => {
 		marginLink,
 
 	} = attributes;
+
+	const buttonSizeOptions = [
+		{
+			value: 'default',
+			label: __(
+				'Default',
+				'ultimate-addons-for-gutenberg'
+			),
+		},
+		{
+			value: 'small',
+			label: __(
+				'Small',
+				'ultimate-addons-for-gutenberg'
+			),
+		},
+		{
+			value: 'medium',
+			label: __(
+				'Medium',
+				'ultimate-addons-for-gutenberg'
+			),
+		},
+		{
+			value: 'large',
+			label: __(
+				'Large',
+				'ultimate-addons-for-gutenberg'
+			),
+		},
+		{
+			value: 'extralarge',
+			label: __(
+				'Extra Large',
+				'ultimate-addons-for-gutenberg'
+			),
+		}
+	];
 
 	let loadBtnGoogleFonts;
 
@@ -240,6 +279,29 @@ const Settings = ( props ) => {
 					min={ 0 }
 					max={ 200 }
 					displayUnit={ false }
+					setAttributes={ setAttributes }
+				/>
+				<ResponsiveSelectControl
+					label={ __( 'Button Size', 'ultimate-addons-for-gutenberg' ) }
+					data={ {
+						desktop: {
+							value: buttonSize,
+							label: 'buttonSize',
+						},
+						tablet: {
+							value: buttonSizeTablet,
+							label: 'buttonSizeTablet',
+						},
+						mobile: {
+							value: buttonSizeMobile,
+							label: 'buttonSizeMobile',
+						},
+					} }
+					options={ {
+						desktop: buttonSizeOptions,
+						tablet: buttonSizeOptions,
+						mobile: buttonSizeOptions,
+					} }
 					setAttributes={ setAttributes }
 				/>
 				<SelectControl
