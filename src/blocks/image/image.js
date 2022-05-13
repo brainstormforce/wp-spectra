@@ -201,10 +201,6 @@ export default function Image( {
 				naturalWidth={ naturalWidth }
 			/>
 		);
-	} else if ( ! isResizable || ! imageWidthWithinContainer ) {
-		if('full' !== align) {
-			img = <div style={ { width, height } }>{ img }</div>;
-		}
 	} else {
 		const currentWidth = width || imageWidthWithinContainer;
 		const currentHeight = height || imageHeightWithinContainer;
