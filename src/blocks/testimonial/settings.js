@@ -1282,6 +1282,7 @@ const Settings = ( props ) => {
 								showIcons={ true }
 								responsive={ true }
 							/>
+							{ columns > 1 && (
 							<ToggleControl
 								label={ __(
 									'Equal Height',
@@ -1291,7 +1292,12 @@ const Settings = ( props ) => {
 								onChange={ () =>
 									setAttributes( { equalHeight: ! equalHeight } )
 								}
+								help={ __(
+									"Note: Above setting will only take effect once you are on the live page, and not while you're editing.",
+									'ultimate-addons-for-gutenberg'
+								) }
 							/>
+							) }
 						</UAGAdvancedPanelBody>
 						<UAGAdvancedPanelBody
 							title={ __(
