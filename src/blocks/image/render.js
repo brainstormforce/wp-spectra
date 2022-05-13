@@ -247,7 +247,7 @@ const Render = ( props ) => {
 			...additionalAttributes,
 			linkDestination,
 		}
-		setAttributes(imageAttributes);
+		setAttributes( imageAttributes );
 	}
 
 	function onSelectURL( newURL ) {

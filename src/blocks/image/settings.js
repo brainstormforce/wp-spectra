@@ -423,7 +423,7 @@ export default function Settings( props ) {
 						label={ __( 'Enable Caption', 'ultimate-addons-for-gutenberg' ) }
 						checked={ enableCaption }
 						onChange={ () => {
-							setAttributes({'enableCaption': !enableCaption});
+							setAttributes( {enableCaption: !enableCaption} );
 						} }
 					/>
 				)
