@@ -47,6 +47,8 @@ const Settings = ( props ) => {
 		lineHeightMobile,
 		lineHeightTablet,
 		buttonSize,
+		buttonSizeTablet,
+		buttonSizeMobile,
 
 		paddingUnit,
 		mobilePaddingUnit,
