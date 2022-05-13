@@ -449,6 +449,7 @@ if ( 'before' === $attr['ctaIconPosition'] ) {
 if ( 'right' === $attr['ctaPosition'] && ( 'text' === $attr['ctaType'] || 'button' === $attr['ctaType'] ) ) {
 	$selectors['.wp-block-uagb-call-to-action '] = array(
 		'display' => 'flex',
+		'justify-content' => 'space-between',
 	);
 	$selectors[' .uagb-cta__content-right .uagb-cta__left-right-wrap .uagb-cta__content']      = array(
 		'width' => UAGB_Helper::get_css_value( $attr['contentWidth'], $attr['contentWidthType'] ),
