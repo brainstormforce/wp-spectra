@@ -595,7 +595,7 @@ const Settings = ( props ) => {
 
 	const quoteStyling = (
 		<UAGAdvancedPanelBody
-			title={ __( 'Quote panel', 'ultimate-addons-for-gutenberg' ) }
+			title={ __( 'Quote', 'ultimate-addons-for-gutenberg' ) }
 			initialOpen={ false }
 		>
 			<TypographyControl
@@ -671,7 +671,7 @@ const Settings = ( props ) => {
 
 	const authorStyling = (
 		<UAGAdvancedPanelBody
-			title={ __( 'Author panel', 'ultimate-addons-for-gutenberg' ) }
+			title={ __( 'Author', 'ultimate-addons-for-gutenberg' ) }
 			initialOpen={ false }
 		>
 			{ author !== '' && (
