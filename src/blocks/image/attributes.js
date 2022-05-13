@@ -104,6 +104,14 @@ const attributes = {
 			styleType: 'image-height-mobile'
 		}
 	},
+	naturalWidth: {
+		type: 'integer',
+		default: '',
+	},
+	naturalHeight: {
+		type: 'integer',
+		default: '',
+	},
 	linkTarget: {
 		type: 'string',
 		default: '',

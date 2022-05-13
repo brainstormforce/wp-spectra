@@ -108,15 +108,13 @@ export default function Image( {
 	// width and height. This resolves an issue in Safari where the loaded natural
 	// witdth and height is otherwise lost when switching between alignments.
 	const { naturalWidth, naturalHeight } = useMemo( () => {
+
+		const naturalWidth = imageRef.current?.naturalWidth || loadedNaturalWidth || undefined;
+		const naturalHeight = imageRef.current?.naturalHeight || loadedNaturalHeight || undefined;
+		setAttributes({naturalWidth, naturalHeight})
 		return {
-			naturalWidth:
-				imageRef.current?.naturalWidth ||
-				loadedNaturalWidth ||
-				undefined,
-			naturalHeight:
-				imageRef.current?.naturalHeight ||
-				loadedNaturalHeight ||
-				undefined,
+			naturalWidth,
+			naturalHeight
 		};
 	}, [
 		loadedNaturalWidth,

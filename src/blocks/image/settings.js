@@ -57,6 +57,8 @@ export default function Settings( props ) {
 		sizeSlugMobile,
 		enableCaption,
 		// image
+		naturalWidth,
+		naturalHeight,
 		imageTopMargin,
 		imageRightMargin,
 		imageLeftMargin,
@@ -237,7 +239,7 @@ export default function Settings( props ) {
 	const isLargeViewport = useViewportMatch( 'medium' );
 	const isWideAligned = [ 'wide', 'full' ].includes( align );
 	const isResizable = allowResize && ! ( isWideAligned && isLargeViewport );
-	const imageSizeOptions = imageSizes.reduce( ( acc, item ) => {
+	const imageSizeOptions =  image?.media_details && imageSizes.reduce( ( acc, item ) => {
 		acc.push( { value: item.slug, label: item.name } )
 		return acc;
 	}, [] );
@@ -339,7 +341,7 @@ export default function Settings( props ) {
 				showIcons={ false }
 			/>
 			{
-				id && isSelected && (
+				isSelected && (
 					<>
 						<ImageSizeControl
 							onChangeImage={ updateImage }
@@ -356,8 +358,8 @@ export default function Settings( props ) {
 							setAttributes={setAttributes}
 							imageSizeOptions={ imageSizeOptions }
 							isResizable={ isResizable }
-							imageWidth={ image?.media_details?.width }
-							imageHeight={ image?.media_details?.height }
+							imageWidth={ naturalWidth }
+							imageHeight={ naturalHeight }
 						/>
 						<TextControl
 							label={ __( 'Alt Text', 'ultimate-addons-for-gutenberg' ) }
