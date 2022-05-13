@@ -26,9 +26,6 @@ import {
 	BlockControls,
 	InspectorControls,
 } from '@wordpress/block-editor';
-
-
-
 import UAGAdvancedPanelBody from '@Components/advanced-panel-body';
 
 const Settings = ( props ) => {
@@ -596,9 +593,9 @@ const Settings = ( props ) => {
 		</UAGAdvancedPanelBody>
 	);
 
-	const contentStyling = (
+	const quoteStyling = (
 		<UAGAdvancedPanelBody
-			title={ __( 'Content', 'ultimate-addons-for-gutenberg' ) }
+			title={ __( 'Quote panel', 'ultimate-addons-for-gutenberg' ) }
 			initialOpen={ false }
 		>
 			<TypographyControl
@@ -669,6 +666,14 @@ const Settings = ( props ) => {
 					setAttributes( { descColor: value } )
 				}
 			/>
+		</UAGAdvancedPanelBody>
+	);
+
+	const authorStyling = (
+		<UAGAdvancedPanelBody
+			title={ __( 'Author panel', 'ultimate-addons-for-gutenberg' ) }
+			initialOpen={ false }
+		>
 			{ author !== '' && (
 				<>
 					<TypographyControl
@@ -1699,7 +1704,8 @@ const Settings = ( props ) => {
 					<InspectorTab { ...UAGTabs.style }>
 						{ generalStyle() }
 						{ enableTweet && iconStyleSetting() }
-						{ contentStyling }
+						{ quoteStyling }
+						{ authorStyling }
 						{ spacingSettings }
 					</InspectorTab>
 					<InspectorTab
