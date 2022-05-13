@@ -147,7 +147,7 @@ const Settings = ( props ) => {
 	}
 
 	const generalSettings = (
-		<UAGAdvancedPanelBody title={ __( 'General', 'ultimate-addons-for-gutenberg' ) }>
+		<UAGAdvancedPanelBody>
 			<ToggleControl
 				label={ __( 'Enable Title', 'ultimate-addons-for-gutenberg' ) }
 				checked={ displayTitle }
@@ -273,7 +273,7 @@ const Settings = ( props ) => {
 			/>
 			<ResponsiveSlider
 				label={ __(
-					'Gap',
+					'Gap Between Title And Stars',
 					'ultimate-addons-for-gutenberg'
 				) }
 				data={ {
@@ -343,7 +343,7 @@ const Settings = ( props ) => {
 			/>
 			<ResponsiveSlider
 				label={ __(
-					'Gap',
+					'Gap Between Stars',
 					'ultimate-addons-for-gutenberg'
 				) }
 				data={ {

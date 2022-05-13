@@ -25,41 +25,54 @@ $paddingFieldLeft   = isset( $attr['paddingFieldLeft'] ) ? $attr['paddingFieldLe
 $paddingFieldRight  = isset( $attr['paddingFieldRight'] ) ? $attr['paddingFieldRight'] : $attr['hPaddingField'];
 
 $selectors = array(
+	'.uagb-forms__outer-wrap'                              => array(
+		'padding-top'    => UAGB_Helper::get_css_value( $attr['formPaddingTop'], $attr['formPaddingUnit'] ),
+		'padding-right'  => UAGB_Helper::get_css_value( $attr['formPaddingRight'], $attr['formPaddingUnit'] ),
+		'padding-bottom' => UAGB_Helper::get_css_value( $attr['formPaddingBottom'], $attr['formPaddingUnit'] ),
+		'padding-left'   => UAGB_Helper::get_css_value( $attr['formPaddingLeft'], $attr['formPaddingUnit'] ),
+	),
 	' form.uagb-forms-main-form, form.uagb-forms-main-form .uagb-forms-input, form.uagb-forms-main-form textarea' => array(
 		'text-align' => $attr['overallAlignment'],
 	),
-	' .uagb-forms-main-form .uagb-forms-field-set'   => array(
+	' .uagb-forms-main-form .uagb-forms-field-set'         => array(
 		'margin-bottom' => UAGB_Helper::get_css_value( $attr['fieldGap'], $attr['fieldGapType'] ),
 	),
-	' .uagb-forms-main-form .uagb-forms-input-label' => array(
-		'color'     => $attr['labelColor'],
-		'font-size' => UAGB_Helper::get_css_value( $attr['labelFontSize'], $attr['labelFontSizeType'] ),
+	' .uagb-forms-main-form .uagb-forms-input-label'       => array(
+		'color'         => $attr['labelColor'],
+		'font-size'     => UAGB_Helper::get_css_value( $attr['labelFontSize'], $attr['labelFontSizeType'] ),
+		'margin-bottom' => UAGB_Helper::get_css_value( $attr['labelGap'], $attr['labelGapUnit'] ),
 	),
-	' .uagb-forms-success-message'                   => array(
-		'border'           => UAGB_Helper::get_css_value( $attr['successMessageBorderWidth'], 'px' ) . ' ' . $attr['successMessageBorderStyle'] . ' ' . $attr['successMessageBorderColor'],
+	' .uagb-forms-success-message'                         => array(
+		'border'           => UAGB_Helper::get_css_value( $attr['successMessageBorderWidth'], 'px' ) . ' ' . $attr['successMessageBorderStyle'],
+		'border-color'     => $attr['successMessageBorderColor'],
 		'background-color' => $attr['successMessageBGColor'],
 		'color'            => $attr['successMessageTextColor'],
-		'border-radius'    => $attr['successMessageBorderRadius'],
+		'border-radius'    => UAGB_Helper::get_css_value( $attr['successMessageBorderRadius'], 'px' ),
 	),
-	' .uagb-forms-success-message:hover'             => array(
-		'border' => UAGB_Helper::get_css_value( $attr['successMessageBorderWidth'], 'px' ) . ' ' . $attr['successMessageBorderStyle'] . ' ' . $attr['successMessageHoverBorderColor'],
+	' .uagb-forms-success-message:hover'                   => array(
+		'border-color' => $attr['successMessageHoverBorderColor'],
 	),
-	' .uagb-forms-failed-message'                    => array(
-		'border'           => UAGB_Helper::get_css_value( $attr['failedMessageBorderWidth'], 'px' ) . ' ' . $attr['failedMessageBorderStyle'] . ' ' . $attr['failedMessageBorderColor'],
+	' .uagb-forms-failed-message'                          => array(
+		'border'           => UAGB_Helper::get_css_value( $attr['failedMessageBorderWidth'], 'px' ) . ' ' . $attr['failedMessageBorderStyle'],
+		'border-color'     => $attr['failedMessageBorderColor'],
 		'background-color' => $attr['failedMessageBGColor'],
 		'color'            => $attr['failedMessageTextColor'],
-		'border-radius'    => $attr['failedMessageBorderRadius'],
+		'border-radius'    => UAGB_Helper::get_css_value( $attr['failedMessageBorderRadius'], 'px' ),
 	),
-	' .uagb-forms-failed-message:hover'              => array(
-		'border' => UAGB_Helper::get_css_value( $attr['failedMessageBorderWidth'], 'px' ) . ' ' . $attr['failedMessageBorderStyle'] . ' ' . $attr['failedMessageHoverBorderColor'],
+	' .uagb-forms-failed-message:hover'                    => array(
+		'border-color' => $attr['failedMessageHoverBorderColor'],
 	),
 	' .uagb-forms-main-form .uagb-forms-main-submit-button-wrap' => array(
 		'text-align' => $attr['buttonAlign'],
 
 	),
-	' .uagb-forms-main-form .uagb-forms-input:focus' => array(
-		'outline'      => ' none !important',
-		'border-color' => $attr['inputactiveColor'],
+	' .uagb-forms-main-form .uagb-forms-input:focus'       => array(
+		'outline'          => ' none !important',
+		'border-color'     => $attr['inputactiveColor'] . ' !important',
+		'background-color' => $attr['bgActiveColor'] . ' !important',
+	),
+	' .uagb-forms-main-form .uagb-forms-input:focus::placeholder' => array(
+		'color' => $attr['inputplaceholderActiveColor'] . ' !important',
 	),
 	' .uagb-forms-main-form .uagb-forms-main-submit-button' => array(
 		'font-size'        => UAGB_Helper::get_css_value( $attr['submitTextFontSize'], $attr['submitTextFontSizeType'] ),
@@ -77,11 +90,34 @@ $selectors = array(
 		'background-color' => $attr['submitBgColorHover'],
 		'border-color'     => $attr['submitborderHoverColor'],
 	),
+	// Hover Colors.
+	' .uagb-forms-field-set:hover .uagb-forms-input-label' => array(
+		'color' => $attr['labelHoverColor'],
+	),
+	' .uagb-forms-field-set:hover .uagb-forms-input'       => array(
+		'background-color' => $attr['bgHoverColor'],
+		'border-color'     => $attr['inputborderHoverColor'],
+	),
+	' .uagb-forms-field-set:hover .uagb-forms-input::placeholder' => array(
+		'color' => $attr['inputplaceholderHoverColor'],
+	),
+	' .uagb-slider.round'                                  => array(
+		'border-radius' => UAGB_Helper::get_css_value( 20 + $attr['toggleWidthSize'], 'px' ),
+	),
 
 );
 $t_selectors = array(
-	' .uagb-forms-main-form .uagb-forms-field-set' => array(
+	'.uagb-forms__outer-wrap'                        => array(
+		'padding-top'    => UAGB_Helper::get_css_value( $attr['formPaddingTopTab'], $attr['formPaddingUnitTab'] ),
+		'padding-right'  => UAGB_Helper::get_css_value( $attr['formPaddingRightTab'], $attr['formPaddingUnitTab'] ),
+		'padding-bottom' => UAGB_Helper::get_css_value( $attr['formPaddingBottomTab'], $attr['formPaddingUnitTab'] ),
+		'padding-left'   => UAGB_Helper::get_css_value( $attr['formPaddingLeftTab'], $attr['formPaddingUnitTab'] ),
+	),
+	' .uagb-forms-main-form .uagb-forms-field-set'   => array(
 		'margin-bottom' => UAGB_Helper::get_css_value( $attr['fieldGapTablet'], $attr['fieldGapType'] ),
+	),
+	' .uagb-forms-main-form .uagb-forms-input-label' => array(
+		'margin-bottom' => UAGB_Helper::get_css_value( $attr['labelGapTablet'], $attr['labelGapUnit'] ),
 	),
 	' .uagb-forms-main-form .uagb-forms-main-submit-button' => array(
 		'padding-top'    => UAGB_Helper::get_css_value( $attr['paddingBtnTopTablet'], $attr['tabletPaddingBtnUnit'] ),
@@ -89,10 +125,22 @@ $t_selectors = array(
 		'padding-left'   => UAGB_Helper::get_css_value( $attr['paddingBtnLeftTablet'], $attr['tabletPaddingBtnUnit'] ),
 		'padding-right'  => UAGB_Helper::get_css_value( $attr['paddingBtnRightTablet'], $attr['tabletPaddingBtnUnit'] ),
 	),
+	' .uagb-slider.round'                            => array(
+		'border-radius' => UAGB_Helper::get_css_value( 20 + $attr['toggleWidthSizeTablet'], 'px' ),
+	),
 );
 $m_selectors = array(
-	' .uagb-forms-main-form .uagb-forms-field-set' => array(
+	'.uagb-forms__outer-wrap'                        => array(
+		'padding-top'    => UAGB_Helper::get_css_value( $attr['formPaddingTopMob'], $attr['formPaddingUnitMob'] ),
+		'padding-right'  => UAGB_Helper::get_css_value( $attr['formPaddingRightMob'], $attr['formPaddingUnitMob'] ),
+		'padding-bottom' => UAGB_Helper::get_css_value( $attr['formPaddingBottomMob'], $attr['formPaddingUnitMob'] ),
+		'padding-left'   => UAGB_Helper::get_css_value( $attr['formPaddingLeftMob'], $attr['formPaddingUnitMob'] ),
+	),
+	' .uagb-forms-main-form .uagb-forms-field-set'   => array(
 		'margin-bottom' => UAGB_Helper::get_css_value( $attr['fieldGapMobile'], $attr['fieldGapType'] ),
+	),
+	' .uagb-forms-main-form .uagb-forms-input-label' => array(
+		'margin-bottom' => UAGB_Helper::get_css_value( $attr['labelGapMobile'], $attr['labelGapUnit'] ),
 	),
 	' .uagb-forms-main-form .uagb-forms-main-submit-button' => array(
 		'padding-top'    => UAGB_Helper::get_css_value( $attr['paddingBtnTopMobile'], $attr['mobilePaddingBtnUnit'] ),
@@ -100,14 +148,18 @@ $m_selectors = array(
 		'padding-left'   => UAGB_Helper::get_css_value( $attr['paddingBtnLeftMobile'], $attr['mobilePaddingBtnUnit'] ),
 		'padding-right'  => UAGB_Helper::get_css_value( $attr['paddingBtnRightMobile'], $attr['mobilePaddingBtnUnit'] ),
 	),
+	' .uagb-slider.round'                            => array(
+		'border-radius' => UAGB_Helper::get_css_value( 20 + $attr['toggleWidthSizeMobile'], 'px' ),
+	),
 );
 // Checkbox Field css.
 $selectors[' .uagb-forms-checkbox-wrap input[type=checkbox]:checked + label:before'] = array(
-	'color'     => $attr['inputColor'],
-	'font-size' => 'calc(' . $attr['toggleSize'] . $attr['toggleSizeType'] . ' / 1.2)',
+	'color'            => $attr['toggleDotActiveColor'],
+	'background-color' => $attr['toggleActiveColor'],
+	'font-size'        => 'calc(' . $attr['toggleSize'] . $attr['toggleSizeType'] . ' / 1.2)',
 );
 $selectors[' .uagb-forms-checkbox-wrap input[type=checkbox] + label:before']         = array(
-	'background-color' => $attr['bgColor'],
+	'background-color' => $attr['toggleColor'],
 	'width'            => UAGB_Helper::get_css_value( $attr['toggleSize'], $attr['toggleSizeType'] ),
 	'height'           => UAGB_Helper::get_css_value( $attr['toggleSize'], $attr['toggleSizeType'] ),
 );
@@ -117,11 +169,12 @@ $selectors[' .uagb-forms-checkbox-wrap > label']                                
 
 // Radio Button Field css.
 $selectors[' .uagb-forms-radio-wrap input[type=radio]:checked + label:before'] = array(
-	'background-color' => $attr['inputColor'],
+	'background-color' => $attr['toggleDotActiveColor'],
+	'box-shadow'       => 'inset 0 0 0 4px ' . $attr['toggleActiveColor'],
 	'font-size'        => 'calc(' . $attr['toggleSize'] . 'px / 1.2)',
 );
 $selectors[' .uagb-forms-radio-wrap input[type=radio] + label:before']         = array(
-	'background-color' => $attr['bgColor'],
+	'background-color' => $attr['toggleColor'],
 	'width'            => UAGB_Helper::get_css_value( $attr['toggleSize'], $attr['toggleSizeType'] ),
 	'height'           => UAGB_Helper::get_css_value( $attr['toggleSize'], $attr['toggleSizeType'] ),
 );
@@ -130,31 +183,48 @@ $selectors[' .uagb-forms-radio-wrap > label']                                  =
 );
 
 // Toggle Field css.
-$selectors[' .uagb-slider']                              = array(
-	'background-color' => $attr['bgColor'],
+$selectors[' .uagb-slider']                                     = array(
+	'background-color' => $attr['toggleColor'],
 );
-$selectors[' .uagb-forms-main-form .uagb-switch']        = array(
-	'width'  => UAGB_Helper::get_css_value( '50' + $attr['toggleWidthSize'] + $attr['inputborderWidth'], 'px' ),
-	'height' => UAGB_Helper::get_css_value( '25' + $attr['toggleHeightSize'] + $attr['inputborderWidth'], 'px' ),
+$selectors[' .uagb-forms-main-form .uagb-switch']               = array(
+	'height' => UAGB_Helper::get_css_value(
+		(int) ( 20 + $attr['toggleWidthSize'] + ( $attr['inputborderWidth'] * 2 ) + ( ( 20 + $attr['toggleWidthSize'] ) / 3 ) ),
+		'px'
+	),
+	'width'  => UAGB_Helper::get_css_value(
+		(int) ( ( ( 20 + $attr['toggleWidthSize'] ) * 2.5 ) + ( $attr['inputborderWidth'] * 2 ) + ( ( 20 + $attr['toggleWidthSize'] ) / 3 ) ),
+		'px'
+	),
 );
-$selectors[' .uagb-forms-main-form .uagb-slider:before'] = array(
-	'width'  => UAGB_Helper::get_css_value( '20' + $attr['toggleWidthSize'] - $attr['inputborderWidth'] / 2, 'px' ),
-	'height' => UAGB_Helper::get_css_value( '20' + $attr['toggleHeightSize'] - $attr['inputborderWidth'], 'px' ),
+$selectors[' .uagb-forms-main-form .uagb-slider:before']        = array(
+	'height'           => UAGB_Helper::get_css_value( 20 + $attr['toggleWidthSize'], 'px' ),
+	'width'            => UAGB_Helper::get_css_value( 20 + $attr['toggleWidthSize'], 'px' ),
+	'top'              => UAGB_Helper::get_css_value( (int) ( ( 20 + $attr['toggleWidthSize'] ) / 6 ), 'px' ),
+	'bottom'           => UAGB_Helper::get_css_value( (int) ( ( 20 + $attr['toggleWidthSize'] ) / 6 ), 'px' ),
+	'left'             => UAGB_Helper::get_css_value( (int) ( ( 20 + $attr['toggleWidthSize'] ) / 6 ), 'px' ),
+	'background-color' => $attr['toggleDotColor'],
 );
-$selectors[' .uagb-switch input:checked + .uagb-slider'] = array(
+$selectors[' .uagb-switch input:checked + .uagb-slider']        = array(
 	'background-color' => $attr['toggleActiveColor'],
 );
-$selectors[' .uagb-switch input:focus + .uagb-slider']   = array(
+$selectors[' .uagb-switch input:checked + .uagb-slider:before'] = array(
+	'transform'        => 'translateX(' . UAGB_Helper::get_css_value(
+		(int) ( ( ( ( 20 + $attr['toggleWidthSize'] ) * 2.5 ) - ( 20 + $attr['toggleWidthSize'] ) ) ),
+		'px'
+	) . ')',
+	'background-color' => $attr['toggleDotActiveColor'],
+);
+$selectors[' .uagb-switch input:focus + .uagb-slider']          = array(
 	'box-shadow' => '0 0 1px' . $attr['toggleActiveColor'],
 );
 
 // Accept Field css.
 $selectors[' .uagb-forms-accept-wrap input[type=checkbox]:checked + label:before'] = array(
-	'color'     => $attr['inputColor'],
+	'color'     => $attr['toggleDotColor'],
 	'font-size' => 'calc(' . $attr['toggleSize'] . $attr['toggleSizeType'] . ' / 1.2)',
 );
 $selectors[' .uagb-forms-accept-wrap input[type=checkbox] + label:before']         = array(
-	'background-color' => $attr['bgColor'],
+	'background-color' => $attr['toggleColor'],
 	'width'            => UAGB_Helper::get_css_value( $attr['toggleSize'], $attr['toggleSizeType'] ),
 	'height'           => UAGB_Helper::get_css_value( $attr['toggleSize'], $attr['toggleSizeType'] ),
 );
@@ -193,8 +263,8 @@ if ( 'boxed' === $attr['formStyle'] ) {
 		'color'            => $attr['inputColor'],
 	);
 	$selectors[' .uagb-forms-main-form .uagb-forms-input.uagb-form-phone-country'] = array(
-		'padding-top'    => UAGB_Helper::get_css_value( $paddingFieldTop, $attr['paddingFieldUnit'] ),
-		'padding-bottom' => UAGB_Helper::get_css_value( $paddingFieldBottom, $attr['paddingFieldUnit'] ),
+		'padding-top'    => UAGB_Helper::get_css_value( ( $paddingFieldTop - 1 ), $attr['paddingFieldUnit'] ),
+		'padding-bottom' => UAGB_Helper::get_css_value( ( $paddingFieldBottom - 1 ), $attr['paddingFieldUnit'] ),
 		'padding-left'   => UAGB_Helper::get_css_value( $paddingFieldLeft, $attr['paddingFieldUnit'] ),
 		'padding-right'  => UAGB_Helper::get_css_value( $paddingFieldRight, $attr['paddingFieldUnit'] ),
 	);
@@ -227,6 +297,12 @@ $t_selectors[' .uagb-forms-main-form  .uagb-forms-input.uagb-form-phone-country'
 	'padding-right'  => UAGB_Helper::get_css_value( $attr['paddingFieldRightTablet'], $attr['paddingFieldUnitTablet'] ),
 
 );
+$t_selectors[' .uagb-switch input:checked + .uagb-slider:before']                 = array(
+	'transform' => 'translateX(' . UAGB_Helper::get_css_value(
+		(int) ( ( ( ( 20 + $attr['toggleWidthSizeTablet'] ) * 2.5 ) - ( 20 + $attr['toggleWidthSizeTablet'] ) ) ),
+		'px'
+	) . ')',
+);
 $m_selectors[' .uagb-forms-main-form  .uagb-forms-input.uagb-form-phone-country'] = array(
 	'padding-top'    => UAGB_Helper::get_css_value( $attr['paddingFieldTopMobile'], $attr['paddingFieldUnitmobile'] ),
 	'padding-bottom' => UAGB_Helper::get_css_value( $attr['paddingFieldBottomMobile'], $attr['paddingFieldUnitmobile'] ),
@@ -240,6 +316,12 @@ $m_selectors[' .uagb-forms-main-form  .uagb-forms-input'] = array(
 	'padding-left'   => UAGB_Helper::get_css_value( $attr['paddingFieldLeftMobile'], $attr['paddingFieldUnitmobile'] ),
 	'padding-right'  => UAGB_Helper::get_css_value( $attr['paddingFieldRightMobile'], $attr['paddingFieldUnitmobile'] ),
 
+);
+$m_selectors[' .uagb-switch input:checked + .uagb-slider:before'] = array(
+	'transform' => 'translateX(' . UAGB_Helper::get_css_value(
+		(int) ( ( ( ( 20 + $attr['toggleWidthSizeMobile'] ) * 2.5 ) - ( 20 + $attr['toggleWidthSizeMobile'] ) ) ),
+		'px'
+	) . ')',
 );
 if ( 'underlined' === $attr['formStyle'] ) {
 	$selectors[' .uagb-forms-main-form  .uagb-forms-accept-wrap input[type=checkbox] + label:before']   = array(
@@ -296,12 +378,21 @@ if ( 'underlined' === $attr['formStyle'] ) {
 		'height' => UAGB_Helper::get_css_value( $attr['toggleSizeTablet'], $attr['toggleSizeType'] ),
 	);
 	$t_selectors[' .uagb-forms-main-form .uagb-switch']                                  = array(
-		'width'  => UAGB_Helper::get_css_value( '50' + $attr['toggleWidthSizeTablet'] + $attr['inputborderWidth'], 'px' ),
-		'height' => UAGB_Helper::get_css_value( '25' + $attr['toggleWidthSizeTablet'] + $attr['inputborderWidth'], 'px' ),
+		'height' => UAGB_Helper::get_css_value(
+			(int) ( 20 + $attr['toggleWidthSizeTablet'] + ( $attr['inputborderWidth'] * 2 ) + ( ( 20 + $attr['toggleWidthSizeTablet'] ) / 3 ) ),
+			'px'
+		),
+		'width'  => UAGB_Helper::get_css_value(
+			(int) ( ( ( 20 + $attr['toggleWidthSizeTablet'] ) * 2.5 ) + ( $attr['inputborderWidth'] * 2 ) + ( ( 20 + $attr['toggleWidthSizeTablet'] ) / 3 ) ),
+			'px'
+		),
 	);
 	$t_selectors[' .uagb-forms-main-form .uagb-slider:before']                           = array(
-		'width'  => UAGB_Helper::get_css_value( '20' + $attr['toggleWidthSizeTablet'] - $attr['inputborderWidth'] / 2, 'px' ),
-		'height' => UAGB_Helper::get_css_value( '20' + $attr['toggleWidthSizeTablet'] - $attr['inputborderWidth'], 'px' ),
+		'height' => UAGB_Helper::get_css_value( 20 + $attr['toggleWidthSizeTablet'], 'px' ),
+		'width'  => UAGB_Helper::get_css_value( 20 + $attr['toggleWidthSizeTablet'], 'px' ),
+		'top'    => UAGB_Helper::get_css_value( (int) ( ( 20 + $attr['toggleWidthSizeTablet'] ) / 6 ), 'px' ),
+		'bottom' => UAGB_Helper::get_css_value( (int) ( ( 20 + $attr['toggleWidthSizeTablet'] ) / 6 ), 'px' ),
+		'left'   => UAGB_Helper::get_css_value( (int) ( ( 20 + $attr['toggleWidthSizeTablet'] ) / 6 ), 'px' ),
 	);
 
 
@@ -330,12 +421,21 @@ if ( 'underlined' === $attr['formStyle'] ) {
 		'height' => UAGB_Helper::get_css_value( $attr['toggleSizeMobile'], $attr['toggleSizeType'] ),
 	);
 	$m_selectors[' .uagb-forms-main-form .uagb-switch']                                  = array(
-		'width'  => UAGB_Helper::get_css_value( '50' + $attr['toggleWidthSizeMobile'] + $attr['inputborderWidth'], 'px' ),
-		'height' => UAGB_Helper::get_css_value( '25' + $attr['toggleWidthSizeMobile'] + $attr['inputborderWidth'], 'px' ),
+		'height' => UAGB_Helper::get_css_value(
+			(int) ( 20 + $attr['toggleWidthSizeMobile'] + ( $attr['inputborderWidth'] * 2 ) + ( ( 20 + $attr['toggleWidthSizeMobile'] ) / 3 ) ),
+			'px'
+		),
+		'width'  => UAGB_Helper::get_css_value(
+			(int) ( ( ( 20 + $attr['toggleWidthSizeMobile'] ) * 2.5 ) + ( $attr['inputborderWidth'] * 2 ) + ( ( 20 + $attr['toggleWidthSizeMobile'] ) / 3 ) ),
+			'px'
+		),
 	);
 	$m_selectors[' .uagb-forms-main-form .uagb-slider:before']                           = array(
-		'width'  => UAGB_Helper::get_css_value( '20' + $attr['toggleWidthSizeMobile'] - $attr['inputborderWidth'] / 2, 'px' ),
-		'height' => UAGB_Helper::get_css_value( '20' + $attr['toggleWidthSizeMobile'] - $attr['inputborderWidth'], 'px' ),
+		'height' => UAGB_Helper::get_css_value( 20 + $attr['toggleWidthSizeMobile'], 'px' ),
+		'width'  => UAGB_Helper::get_css_value( 20 + $attr['toggleWidthSizeMobile'], 'px' ),
+		'top'    => UAGB_Helper::get_css_value( (int) ( ( 20 + $attr['toggleWidthSizeMobile'] ) / 6 ), 'px' ),
+		'bottom' => UAGB_Helper::get_css_value( (int) ( ( 20 + $attr['toggleWidthSizeMobile'] ) / 6 ), 'px' ),
+		'left'   => UAGB_Helper::get_css_value( (int) ( ( 20 + $attr['toggleWidthSizeMobile'] ) / 6 ), 'px' ),
 	);
 
 	$combined_selectors = array(

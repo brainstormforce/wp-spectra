@@ -24,5 +24,9 @@ const attributes = {
 		type: 'string',
 		default: __( 'Enter your message', 'ultimate-addons-for-gutenberg' ),
 	},
+	autocomplete: {
+		type: 'string',
+		default: 'off',
+	}
 };
 export default attributes;

@@ -26,14 +26,14 @@ const attributes = {
 		UAGCopyPaste: {
 			styleType: 'icon-size'
 		},
-		default: 0,
+		default: 18,
 	},
 	sizeMobile: {
 		type: 'number',
 		UAGCopyPaste: {
 			styleType: 'icon-size'
 		},
-		default: 0,
+		default: 18,
 	},
 	gap: {
 		type: 'number',
