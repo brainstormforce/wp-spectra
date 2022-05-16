@@ -81,7 +81,6 @@ $selectors[' .uagb-ss__source-icon'] = array(
 	'width'       => $image_size,
 	'height'      => $image_size,
 	'font-size'   => $image_size,
-	'line-height' => $image_size,
 );
 
 $t_selectors[' .uagb-ss__source-wrap'] = array(
