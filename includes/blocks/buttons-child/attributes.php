@@ -31,7 +31,7 @@ return array(
 	'tabletPaddingUnit'      => 'px',
 	'paddingLink'            => '',
 	'borderWidth'            => '',
-	'borderRadius'           => '',
+	'borderRadius'           => 0,
 	'borderStyle'            => 'none',
 	'borderColor'            => '#000',
 	'borderHColor'           => '',
