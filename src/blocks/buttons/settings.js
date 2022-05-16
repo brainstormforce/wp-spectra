@@ -10,8 +10,7 @@ import ResponsiveSlider from '@Components/responsive-slider';
 import SpacingControl from '@Components/spacing-control';
 import ResponsiveSelectControl from '@Components/responsive-select';
 
-import { SelectControl,
-	Toolbar , Icon } from '@wordpress/components';
+import { Toolbar , Icon } from '@wordpress/components';
 import InspectorTabs from '@Components/inspector-tabs/InspectorTabs.js';
 import InspectorTab, {
 	UAGTabs,
