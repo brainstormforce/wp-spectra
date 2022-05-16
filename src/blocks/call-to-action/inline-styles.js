@@ -770,7 +770,7 @@ function CtaStyle( props ) {
 
 	const id = `.editor-styles-wrapper .uagb-block-${ props.clientId.substr( 0, 8 ) }`;
 
-	let stylingCss = generateCSS( selectors, `${ id }.uagb-editor-preview-mode-desktop` );
+	let stylingCss = generateCSS( selectors, `${ id }` );
 
 	stylingCss += generateCSS( tabletSelectors, `${ id }.uagb-editor-preview-mode-tablet`, true, 'tablet' );
 
