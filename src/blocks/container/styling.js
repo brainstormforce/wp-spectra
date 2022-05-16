@@ -152,13 +152,13 @@ function styling( props ) {
 	const videoBackgroundCSS = generateBackgroundCSS( videoBackgroundAttributes );
 
 	const selectors = {
-		' .uagb-container' : {
+		' .wp-block-uagb-container' : {
 			'color': textColor,
 		},
-		' .uagb-container a' : {
+		' .wp-block-uagb-container a' : {
 			'color': linkColor,
 		},
-		' .uagb-container a:hover' : {
+		' .wp-block-uagb-container a:hover' : {
 			'color': linkHoverColor,
 		},
 		' .uagb-container__shape-top svg' : {

@@ -76,7 +76,7 @@ $selectors = array(
 	'.uagb-block-' . $id . ':hover'                       => array(
 		'border-color' => $attr['borderHoverColor'],
 	),
-	'.uagb-block-' . $id . '.uagb-container'              => array(
+	'.uagb-block-' . $id . '.wp-block-uagb-container'     => array(
 		'color' => $attr['textColor'],
 	),
 	'.uagb-block-' . $id . ' a'                           => array(
