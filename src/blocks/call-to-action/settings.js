@@ -23,11 +23,11 @@ import renderSVG from '@Controls/renderIcon';
 import { ToggleControl, TextControl, Icon } from '@wordpress/components';
 import UAGAdvancedPanelBody from '@Components/advanced-panel-body';
 import ResponsiveSlider from '@Components/responsive-slider';
-
+import { useDeviceType } from '@Controls/getPreviewType';
 const Settings = ( props ) => {
 	props = props.parentProps;
 	const { setAttributes, attributes } = props;
-
+	const deviceType = useDeviceType();
 	// Setup the attributes.
 	const {
 		textAlign,
@@ -1417,7 +1417,7 @@ const Settings = ( props ) => {
 				title={ __( 'Spacing', 'ultimate-addons-for-gutenberg' ) }
 				initialOpen={ false }
 			>
-				{ textAlign === 'left' && (
+				{ ( ( 'left' === textAlign && 'Desktop' === deviceType ) || ( 'left' === textAlignTablet && 'Tablet' === deviceType ) || ( 'left' === textAlignMobile && 'Mobile' === deviceType  ) ) && (
 					<>
 					<ResponsiveSlider
 						label={ __(
@@ -1457,7 +1457,7 @@ const Settings = ( props ) => {
 					/>
 					</>
 				) }
-				{ textAlign !== 'right' && (
+				{ ( ( 'right' !== textAlign && 'none' === stack && 'Desktop' === deviceType ) || ( 'right' !== textAlignTablet && 'Tablet' === deviceType && 'none' === stack ) || ( 'right' !== textAlignMobile && 'Mobile' === deviceType && 'none' === stack ) ) && (
 						<ResponsiveSlider
 						label={ __(
 							'Content And Buttons Gap',
@@ -1496,7 +1496,7 @@ const Settings = ( props ) => {
 					/>
 					)
 				}
-				{ textAlign === 'right' && (
+				{ ( ( 'right' === textAlign && 'Desktop' === deviceType ) || ( 'right' === textAlignTablet && 'Tablet' === deviceType ) || ( 'right' === textAlignMobile && 'Mobile' === deviceType  ) ) && (
 					<ResponsiveSlider
 						label={ __(
 							'Content Right Margin',

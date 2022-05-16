@@ -682,9 +682,9 @@ function CtaStyle( props ) {
 		};
 		tabletSelectors[ ' .uagb-cta__buttons' ] = {
 			'column-gap': generateCSSUnit( gapBtnTablet , 'px' ),
-			'margin-left': generateCSSUnit( buttonRightSpace, buttonRightSpaceType )
+			'margin-left': generateCSSUnit( buttonRightSpaceTablet, buttonRightSpaceType )
 		};
-		mobileSelectors[' .uagb-cta__buttons'] = {
+		mobileSelectors[ ' .uagb-cta__buttons' ] = {
 			'column-gap': generateCSSUnit( gapBtnMobile, 'px' ),
 			'margin-left': generateCSSUnit( buttonRightSpaceMobile, buttonRightSpaceType )
 		};
