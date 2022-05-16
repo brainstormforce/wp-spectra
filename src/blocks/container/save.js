@@ -65,7 +65,6 @@ export default function save( props ) {
 				`uagb-block-${ block_id }`,
 				isBlockRootParent ? contentWidth : '',
 				isBlockRootParent ? 'uagb-is-root-container' : '',
-				'uagb-container',
 			) }
 		>
 			{ topDividerHtml }

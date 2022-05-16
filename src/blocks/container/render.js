@@ -75,7 +75,6 @@ const Render = ( props ) => {
 			className={ classnames(
 				className,
 				`uagb-block-${ block_id }`,
-				'uagb-container'
 			) }
 			key = { block_id }
 		>
