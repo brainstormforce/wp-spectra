@@ -58,12 +58,14 @@ const attributes = {
 	},
 	gapTablet: {
 		type: 'number',
+		default: 10,
 		UAGCopyPaste: {
 			styleType: 'column-gradient-value'
 		}
 	},
 	gapMobile: {
 		type: 'number',
+		default: 10,
 		UAGCopyPaste: {
 			styleType: 'column-gradient-value'
 		}

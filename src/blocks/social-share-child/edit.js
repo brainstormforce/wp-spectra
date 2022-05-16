@@ -8,6 +8,8 @@ import lazyLoader from '@Controls/lazy-loader';
 import React, { useEffect, lazy, Suspense } from 'react';
 import addBlockEditorDynamicStyles from '@Controls/addBlockEditorDynamicStyles';
 import { useDeviceType } from '@Controls/getPreviewType';
+import { select } from '@wordpress/data';
+
 const Settings = lazy( () =>
 	import(
 		/* webpackChunkName: "chunks/social-share-child/settings" */ './settings'
@@ -26,9 +28,12 @@ const SocialShareChildComponent = ( props ) => {
 
 		// Assigning block_id in the attribute.
 		props.setAttributes( { block_id: props.clientId.substr( 0, 8 ) } );
-		props.setAttributes( {
-			current_url: wp.data.select( 'core/editor' ).getPermalink(),
-		} );
+
+		if ( select( 'core/editor' ) ) {
+			props.setAttributes( {
+				current_url: select( 'core/editor' ).getPermalink(),
+			} );
+		}
 
 	}, [] );
 
