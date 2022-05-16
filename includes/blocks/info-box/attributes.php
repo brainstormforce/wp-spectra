@@ -135,6 +135,7 @@ return array(
 	'imageWidthMobile'           => '',
 	'imageWidthTablet'           => '',
 	'ctaIconPosition'            => 'after',
+	'imageWidthType'             => true,
 
 	'headTabletSpace'            => '',
 	'headMobileSpace'            => '',

@@ -210,13 +210,13 @@ if ( 'text' === $attr['ctaType'] ) {
 	);
 }
 if ( 'button' === $attr['ctaType'] ) {
-	$selectors[' .uagb-infobox-cta-link svg']                      = array(
+	$selectors[' .uagb-infobox-cta-link svg']                          = array(
 		'font-size'   => $cta_icon_size,
 		'height'      => $cta_icon_size,
 		'width'       => $cta_icon_size,
 		'line-height' => $cta_icon_size,
 	);
-	$selectors[' .uagb-ifb-button-wrapper .uagb-infobox-cta-link'] = array(
+	$selectors[' .uagb-ifb-button-wrapper .uagb-infobox-cta-link']     = array(
 		'color'            => $attr['ctaBtnLinkColor'],
 		'background-color' => $attr['ctaBgColor'],
 		'border-radius'    => UAGB_Helper::get_css_value( $attr['ctaBorderRadius'], 'px' ),
@@ -236,11 +236,11 @@ if ( 'button' === $attr['ctaType'] ) {
 	$selectors[' .uagb-ifb-button-wrapper .uagb-infobox-cta-link:hover svg'] = array(
 		'fill' => $attr['ctaLinkHoverColor'],
 	);
-	if( 'none' !== $attr['ctaBorderStyle'] ) {
+	if ( 'none' !== $attr['ctaBorderStyle'] ) {
 		$selectors[' .uagb-infobox-cta-link'] = array(
-			'border-style'     => $attr['ctaBorderStyle'],
-			'border-color'     => $attr['ctaBorderColor'],
-			'border-width'     => UAGB_Helper::get_css_value( $attr['ctaBorderWidth'], 'px' ),
+			'border-style' => $attr['ctaBorderStyle'],
+			'border-color' => $attr['ctaBorderColor'],
+			'border-width' => UAGB_Helper::get_css_value( $attr['ctaBorderWidth'], 'px' ),
 		);
 	}
 }
