@@ -226,6 +226,9 @@ export default function Settings( props ) {
 	);
 
 	useEffect( () => {
+		if( !sizeSlug ) {
+			return;
+		}
 		if( 'Tablet' === deviceType ){
 			updateTabletImage( sizeSlugTablet )
 		} else if( 'Mobile' === deviceType ) {
@@ -345,7 +348,7 @@ export default function Settings( props ) {
 					<>
 						<ImageSizeControl
 							onChangeImage={ updateImage }
-							onChange={ ( value ) => setAttributes( value ) }
+							onChange={ ( value ) => setAttributes( value )}
 							sizeSlug={ sizeSlug }
 							sizeSlugTablet={ sizeSlugTablet }
 							sizeSlugMobile={ sizeSlugMobile }
