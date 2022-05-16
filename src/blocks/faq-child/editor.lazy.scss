@@ -11,9 +11,6 @@
 		width: auto;
 
 		.uagb-faq-icon-wrap {
-
-			// display: inline-block;
-			// vertical-align: middle;
 			display: flex;
 			align-items: center;
 		}
@@ -42,7 +39,6 @@
 	&.uagb-faq-item.uagb-faq-item-active .uagb-icon-active,
 	.uagb-faq-item .uagb-icon,
 	.uagb-faq-item.uagb-faq-item-active .uagb-icon-active {
-		// display: inline-block;
 		display: flex;
 	}
 
@@ -58,7 +54,6 @@
 		}
 
 		.uagb-icon-active {
-			// display: inline-block;
 			display: flex;
 		}
 	}
