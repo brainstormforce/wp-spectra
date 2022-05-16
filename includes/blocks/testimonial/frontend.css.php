@@ -138,13 +138,14 @@ $m_selectors = array(
 		'margin-bottom' => UAGB_Helper::get_css_value( $attr['descSpaceMobile'], $attr['descSpaceType'] ),
 	),
 	' .uagb-tm__content'                                => array(
-		'text-align'     => 'center',
+		'text-align'     => $attr['headingAlignMobile'],
 		'padding-top'    => UAGB_Helper::get_css_value( $attr['paddingTopMobile'], $attr['mobilePaddingUnit'] ),
 		'padding-bottom' => UAGB_Helper::get_css_value( $attr['paddingRightMobile'], $attr['mobilePaddingUnit'] ),
 		'padding-left'   => UAGB_Helper::get_css_value( $attr['paddingBottomMobile'], $attr['mobilePaddingUnit'] ),
 		'padding-right'  => UAGB_Helper::get_css_value( $attr['paddingLeftMobile'], $attr['mobilePaddingUnit'] ),
 	),
 	'  .uagb-testimonial__wrap .uagb-tm__image-content' => array(
+		'text-align'     => $attr['headingAlignMobile'],
 		'padding-top'    => UAGB_Helper::get_css_value( $attr['imgpaddingTopMobile'], $attr['imgmobilePaddingUnit'] ),
 		'padding-bottom' => UAGB_Helper::get_css_value( $attr['imgpaddingRightMobile'], $attr['imgmobilePaddingUnit'] ),
 		'padding-left'   => UAGB_Helper::get_css_value( $attr['imgpaddingBottomMobile'], $attr['imgmobilePaddingUnit'] ),
@@ -163,12 +164,14 @@ $t_selectors = array(
 		'margin-bottom' => UAGB_Helper::get_css_value( $attr['descSpaceTablet'], $attr['descSpaceType'] ),
 	),
 	' .uagb-tm__content'                                => array(
+		'text-align'     => $attr['headingAlignTablet'],
 		'padding-top'    => UAGB_Helper::get_css_value( $attr['paddingTopTablet'], $attr['tabletPaddingUnit'] ),
 		'padding-bottom' => UAGB_Helper::get_css_value( $attr['paddingRightTablet'], $attr['tabletPaddingUnit'] ),
 		'padding-left'   => UAGB_Helper::get_css_value( $attr['paddingBottomTablet'], $attr['tabletPaddingUnit'] ),
 		'padding-right'  => UAGB_Helper::get_css_value( $attr['paddingLeftTablet'], $attr['tabletPaddingUnit'] ),
 	),
 	'  .uagb-testimonial__wrap .uagb-tm__image-content' => array(
+		'text-align'     => $attr['headingAlignTablet'],
 		'padding-top'    => UAGB_Helper::get_css_value( $attr['imgpaddingTopTablet'], $attr['imgtabletPaddingUnit'] ),
 		'padding-bottom' => UAGB_Helper::get_css_value( $attr['imgpaddingRightTablet'], $attr['imgtabletPaddingUnit'] ),
 		'padding-left'   => UAGB_Helper::get_css_value( $attr['imgpaddingBottomTablet'], $attr['imgtabletPaddingUnit'] ),

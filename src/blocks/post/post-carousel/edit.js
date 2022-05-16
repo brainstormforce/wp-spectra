@@ -654,6 +654,7 @@ const UAGBPostCarousel = ( props ) => {
 					displayUnit={ false }
 					setAttributes={ setAttributes }
 				/>
+				{ columns > 1 && (
 				<ToggleControl
 					label={ __(
 						'Equal Height',
@@ -663,7 +664,12 @@ const UAGBPostCarousel = ( props ) => {
 					onChange={ () =>
 						setAttributes( { equalHeight: ! equalHeight } )
 					}
+					help={ __(
+						"Note: Above setting will only take effect once you are on the live page, and not while you're editing.",
+						'ultimate-addons-for-gutenberg'
+					) }
 				/>
+				) }
 				<h2>
 					{ __(
 						'If Posts Not Found',
