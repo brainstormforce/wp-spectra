@@ -789,20 +789,20 @@ const attributes = {
 	textColor: {
 		type: 'string',
 		UAGCopyPaste: {
-			styleType: 'text-color'
+			styleType: 'desc-color'
 		},
 		default: 'inherit',
 	},
 	linkColor: {
 		type: 'string',
 		UAGCopyPaste: {
-			styleType: 'link-color'
+			styleType: 'btn-color'
 		},
 	},
 	linkHoverColor: {
 		type: 'string',
 		UAGCopyPaste: {
-			styleType: 'link-hover-color'
+			styleType: 'btn-hover-color'
 		},
 	},
 };
