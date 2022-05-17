@@ -18,7 +18,6 @@ function styling( props ) {
 		headSpace,
 		headSpaceTablet,
 		headSpaceMobile,
-		headSpaceType,
 		seperatorStyle,
 		separatorHeight,
 		separatorHeightType,
