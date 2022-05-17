@@ -29,7 +29,7 @@ const Border = ( props ) => {
 		disabledBorderTitle,
 	} = props;
 
-	let tabsToUse = [ {
+	const tabsToUse = [ {
 		name: 'normal',
 		title: __(
 			'Normal',
