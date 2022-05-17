@@ -1325,6 +1325,7 @@ const Settings = ( props ) => {
 					label: 'paddingspacingLink',
 				} }
 			/>
+			{ paddingBtnTopTablet }
 			<UAGTabsControl
 				tabs={ [
 					{
