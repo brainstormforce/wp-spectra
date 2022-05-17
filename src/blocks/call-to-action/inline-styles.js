@@ -669,15 +669,12 @@ function CtaStyle( props ) {
 		selectors[ ' .uagb-cta__buttons' ] = {
 			'column-gap': generateCSSUnit( gapBtn , 'px' ),
 			'align-items': 'center',
-			'margin-left': generateCSSUnit( buttonRightSpace, buttonRightSpaceType )
 		};
 		tabletSelectors[ ' .uagb-cta__buttons' ] = {
-			'column-gap': generateCSSUnit( gapBtnTablet , 'px' ),
-			'margin-left': generateCSSUnit( buttonRightSpaceTablet, buttonRightSpaceType )
+			'column-gap': generateCSSUnit( gapBtnTablet , 'px' )
 		};
 		mobileSelectors[ ' .uagb-cta__buttons' ] = {
-			'column-gap': generateCSSUnit( gapBtnMobile, 'px' ),
-			'margin-left': generateCSSUnit( buttonRightSpaceMobile, buttonRightSpaceType )
+			'column-gap': generateCSSUnit( gapBtnMobile, 'px' )
 		};
 	}
 	let alignment;
@@ -756,6 +753,15 @@ function CtaStyle( props ) {
 		mobileSelectors['.uagb-cta__outer-wrap '] = {
 			'flex-direction': 'row',
 			'align-items':  'top' === buttonAlign ? 'flex-start' : 'center'
+		};
+		selectors[ ' .uagb-cta__buttons' ] = {
+			'margin-left': generateCSSUnit( buttonRightSpace, buttonRightSpaceType )
+		};
+		tabletSelectors[ ' .uagb-cta__buttons' ] = {
+			'margin-left': generateCSSUnit( buttonRightSpaceTablet, buttonRightSpaceType )
+		};
+		mobileSelectors[ ' .uagb-cta__buttons' ] = {
+			'margin-left': generateCSSUnit( buttonRightSpaceMobile, buttonRightSpaceType )
 		};
 	}
 

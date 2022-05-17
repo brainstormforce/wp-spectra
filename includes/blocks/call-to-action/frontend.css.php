@@ -403,15 +403,12 @@ if ( 'desktop' === $attr['stackBtn'] ) {
 } elseif ( 'none' === $attr['stackBtn'] ) {
 	$selectors[' .uagb-cta__buttons']   = array(
 		'column-gap'  => UAGB_Helper::get_css_value( $attr['gapBtn'], 'px' ),
-		'margin-left' => UAGB_Helper::get_css_value( $attr['buttonRightSpace'], $attr['buttonRightSpaceType'] ),
 	);
 	$t_selectors[' .uagb-cta__buttons'] = array(
 		'column-gap'  => UAGB_Helper::get_css_value( $attr['gapBtnTablet'], 'px' ),
-		'margin-left' => UAGB_Helper::get_css_value( $attr['buttonRightSpaceTablet'], $attr['buttonRightSpaceType'] ),
 	);
 	$m_selectors[' .uagb-cta__buttons'] = array(
 		'column-gap'  => UAGB_Helper::get_css_value( $attr['gapBtnMobile'], 'px' ),
-		'margin-left' => UAGB_Helper::get_css_value( $attr['buttonRightSpaceMobile'], $attr['buttonRightSpaceType'] ),
 	);
 }
 if ( 'before' === $attr['ctaIconPosition'] ) {
@@ -581,6 +578,15 @@ if ( 'desktop' === $attr['stack'] ) {
 	$m_selectors['.wp-block-uagb-call-to-action '] = array(
 		'align-items'    => 'top' === $attr['buttonAlign'] ? 'flex-start' : 'center',
 		'flex-direction' => 'row',
+	);
+	$selectors['.wp-block-uagb-call-to-action .uagb-cta__buttons']   = array(
+		'margin-left' => UAGB_Helper::get_css_value( $attr['buttonRightSpace'], $attr['buttonRightSpaceType'] ),
+	);
+	$t_selectors['.wp-block-uagb-call-to-action .uagb-cta__buttons'] = array(
+		'margin-left' => UAGB_Helper::get_css_value( $attr['buttonRightSpaceTablet'], $attr['buttonRightSpaceType'] ),
+	);
+	$m_selectors[' .uagb-cta__outer-wrap  .uagb-cta__buttons'] = array(
+		'margin-left' => UAGB_Helper::get_css_value( $attr['buttonRightSpaceMobile'], $attr['buttonRightSpaceType'] ),
 	);
 }
 $combined_selectors = array(
