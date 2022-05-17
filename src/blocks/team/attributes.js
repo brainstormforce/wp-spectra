@@ -166,7 +166,6 @@ const attributes = {
 		UAGCopyPaste: {
 			styleType: 'prefix-font-style'
 		},
-		default: 'normal',
 	},
 	prefixTransform: {
 		type: 'string',
@@ -348,7 +347,7 @@ const attributes = {
 		UAGCopyPaste: {
 			styleType: 'image-style'
 		},
-		default: 'circle',
+		default: 'normal',
 	},
 	imgPosition: {
 		type: 'string',

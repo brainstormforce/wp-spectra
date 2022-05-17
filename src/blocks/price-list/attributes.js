@@ -221,35 +221,35 @@ const attributes = {
 	},
 	seperatorWidth: {
 		type: 'number',
-		default: '100',
+		default: 100,
 		UAGCopyPaste: {
 			styleType: 'separator-width'
 		},
 	},
 	seperatorWidthTablet: {
 		type: 'number',
-		default: 0,
+		default: 100,
 		UAGCopyPaste: {
 			styleType: 'separator-width'
 		},
 	},
 	seperatorWidthMobile: {
 		type: 'number',
-		default: 0,
+		default: 100,
 		UAGCopyPaste: {
 			styleType: 'separator-width'
 		},
 	},
 	seperatorThickness: {
 		type: 'number',
-		default: '1',
+		default: 1,
 		UAGCopyPaste: {
 			styleType: 'separator-thickness'
 		},
 	},
 	seperatorColor: {
 		type: 'string',
-		default: '#dddddd',
+		default: '#b2b4b5',
 		UAGCopyPaste: {
 			styleType: 'separator-color'
 		},
@@ -287,6 +287,7 @@ const attributes = {
 		UAGCopyPaste: {
 			styleType: 'main-title-font-size'
 		},
+		default: 20
 	},
 	titleFontSizeTablet: {
 		type: 'number',
@@ -328,18 +329,21 @@ const attributes = {
 	},
 	titleLineHeight: {
 		type: 'number',
+		default: 1,
 		UAGCopyPaste: {
 			styleType: 'main-title-line-height'
 		},
 	},
 	titleLineHeightTablet: {
 		type: 'number',
+		default: 1,
 		UAGCopyPaste: {
 			styleType: 'main-title-line-height-tablet'
 		},
 	},
 	titleLineHeightMobile: {
 		type: 'number',
+		default: 1,
 		UAGCopyPaste: {
 			styleType: 'main-title-line-height-mobile'
 		},
@@ -405,18 +409,21 @@ const attributes = {
 	},
 	priceLineHeight: {
 		type: 'number',
+		default: 1,
 		UAGCopyPaste: {
 			styleType: 'prefix-line-height'
 		},
 	},
 	priceLineHeightTablet: {
 		type: 'number',
+		default: 1,
 		UAGCopyPaste: {
 			styleType: 'prefix-line-height-tablet'
 		},
 	},
 	priceLineHeightMobile: {
 		type: 'number',
+		default: 1,
 		UAGCopyPaste: {
 			styleType: 'prefix-line-height-mobile'
 		},
@@ -482,18 +489,21 @@ const attributes = {
 	},
 	descLineHeight: {
 		type: 'number',
+		default: 1,
 		UAGCopyPaste: {
 			styleType: 'desc-line-height'
 		},
 	},
 	descLineHeightTablet: {
 		type: 'number',
+		default: 1,
 		UAGCopyPaste: {
 			styleType: 'desc-line-height-tablet'
 		},
 	},
 	descLineHeightMobile: {
 		type: 'number',
+		default: 1,
 		UAGCopyPaste: {
 			styleType: 'desc-line-height-mobile'
 		},
@@ -539,12 +549,14 @@ const attributes = {
 	},
 	imageWidthTablet: {
 		type: 'number',
+		default: 100,
 		UAGCopyPaste: {
 			styleType: 'image-width'
 		},
 	},
 	imageWidthMobile: {
 		type: 'number',
+		default: 100,
 		UAGCopyPaste: {
 			styleType: 'image-width'
 		},

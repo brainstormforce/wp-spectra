@@ -18,6 +18,9 @@ import React, { useLayoutEffect } from 'react';
 export { TypographyStyles };
 
 const TypographyControl = ( props ) => {
+
+	const [ showAdvancedControls, toggleAdvancedControls ] = useState( false );
+
 	// Add and remove the CSS on the drop and remove of the component.
 	useLayoutEffect( () => {
 		styles.use();
@@ -25,7 +28,18 @@ const TypographyControl = ( props ) => {
 			styles.unuse();
 		};
 	}, [] );
-	const [ showAdvancedControls, toggleAdvancedControls ] = useState( false );
+
+	useLayoutEffect( () => {
+		window.addEventListener( 'click', function( e ){
+			const typoDiv = document.querySelector( '.uagb-typography-advanced' );
+			const actionsDiv = document.querySelector( '.uag-typography-button' );
+			if ( typoDiv ) {
+				if ( ! typoDiv.contains( e.target ) && ! actionsDiv.contains( e.target ) && ! e.target?.parentElement?.parentElement?.classList?.contains( 'uag-font-family-select__menu' ) && ! e.target?.classList?.contains( 'uag-responsive-common-button' ) && ! e.target?.closest( '.uag-responsive-common-button' ) && ! e.target?.closest( '.uagb-range-control-responsive' ) ){
+					toggleAdvancedControls( false )
+				}
+			}
+		  } );
+	}, [] );
 
 	let fontSize;
 	let fontWeight;
@@ -154,6 +168,13 @@ const TypographyControl = ( props ) => {
 					}
 					options={ [
 						{
+							value: '',
+							label: __(
+								'Default',
+								'ultimate-addons-for-gutenberg'
+							),
+						},
+						{
 							value: 'normal',
 							label: __(
 								'Normal',
@@ -204,7 +225,7 @@ const TypographyControl = ( props ) => {
 						{
 							value: 'none',
 							label: __(
-								'None',
+								'Default',
 								'ultimate-addons-for-gutenberg'
 							),
 						},

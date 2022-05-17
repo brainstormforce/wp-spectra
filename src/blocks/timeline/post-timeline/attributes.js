@@ -1,7 +1,7 @@
 const attributes = { // eslint-disable-line no-unused-vars
 	align                   : {
 		type    : 'string',
-		default : 'center',
+		default : '',
 		UAGCopyPaste: {
 			styleType: 'overall-alignment'
 		},

@@ -32,8 +32,7 @@ const Blog = ( props ) => {
 				const articleWidth  = article?.current?.offsetWidth;
 				const imageWidth = 100 - ( rowGap / articleWidth ) * 100;
 				const parent = article?.current?.parentNode;
-
-				if ( parent && parent.classList.contains( 'uagb-post__image-position-background' ) ) {
+				if ( 'background' === attributes.imgPosition && parent && parent.classList.contains( 'uagb-post__image-position-background' ) ) {
 					const images = parent?.getElementsByClassName( 'uagb-post__image' );
 
 					for( const image of images ) {
@@ -43,6 +42,17 @@ const Blog = ( props ) => {
 
 						}
 					}
+				}
+				if ( 'top' === attributes.imgPosition ){
+					const images = parent?.getElementsByClassName( 'uagb-post__image' );
+					for( const image of images ) {
+						if ( image ) {
+							image.style.width = null;
+							image.style.marginLeft = null;
+
+						}
+					}
+
 				}
 			}
 

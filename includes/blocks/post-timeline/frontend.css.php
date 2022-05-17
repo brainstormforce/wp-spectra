@@ -56,6 +56,9 @@ $selectors = array(
 		'margin-bottom' => UAGB_Helper::get_css_value( $attr['contentSpace'], 'px' ),
 		'margin-top'    => UAGB_Helper::get_css_value( $attr['authorSpace'], 'px' ),
 	),
+	' .uagb-timeline__author-link + .uagb-timeline__link_parent' => array(
+		'margin-top' => UAGB_Helper::get_css_value( $attr['authorSpace'], 'px' ),
+	),
 );
 
 $desktop_selectors = UAGB_Block_Helper::get_timeline_selectors( $attr );
@@ -89,6 +92,9 @@ $t_selectors = array(
 		'margin-top'    => UAGB_Helper::get_css_value( $attr['headTopSpacingTablet'], 'px' ),
 	),
 	'.uagb_timeline__cta-enable .uagb-timeline-desc-content' => array(
+		'margin-top' => UAGB_Helper::get_css_value( $attr['authorSpaceTablet'], 'px' ),
+	),
+	' .uagb-timeline__author-link + .uagb-timeline__link_parent' => array(
 		'margin-top' => UAGB_Helper::get_css_value( $attr['authorSpaceTablet'], 'px' ),
 	),
 );
@@ -128,6 +134,9 @@ $m_selectors = array(
 		'margin-top'    => UAGB_Helper::get_css_value( $attr['headTopSpacingMobile'], 'px' ),
 	),
 	'.uagb_timeline__cta-enable .uagb-timeline-desc-content' => array(
+		'margin-top' => UAGB_Helper::get_css_value( $attr['authorSpaceMobile'], 'px' ),
+	),
+	' .uagb-timeline__author-link + .uagb-timeline__link_parent' => array(
 		'margin-top' => UAGB_Helper::get_css_value( $attr['authorSpaceMobile'], 'px' ),
 	),
 );

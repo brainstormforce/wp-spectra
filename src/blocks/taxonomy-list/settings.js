@@ -605,7 +605,6 @@ const Settings = ( props ) => {
 							showEmptyTaxonomy: ! showEmptyTaxonomy,
 						} )
 					}
-					help={ __( 'Show empty taxonomy in list ' ) }
 				/>
 				<ToggleControl
 					label={ __(
@@ -616,10 +615,6 @@ const Settings = ( props ) => {
 					onChange={ () =>
 						setAttributes( { showCount: ! showCount } )
 					}
-					help={ __(
-						'Show count of taxonomy ',
-						'ultimate-addons-for-gutenberg'
-					) }
 				/>
 				{ 'list' === layout &&
 					'list' === listDisplayStyle &&
@@ -635,10 +630,6 @@ const Settings = ( props ) => {
 									showhierarchy: ! showhierarchy,
 								} )
 							}
-							help={ __(
-								'Show hierarchy of taxonomy ',
-								'ultimate-addons-for-gutenberg'
-							) }
 						/>
 					) }
 			</UAGAdvancedPanelBody>
@@ -648,7 +639,7 @@ const Settings = ( props ) => {
 		return (
 			<UAGAdvancedPanelBody
 				title={ __( 'Title', 'ultimate-addons-for-gutenberg' ) }
-				initialOpen={ false }
+				initialOpen={ true }
 			>
 				<TypographyControl
 					label={ __(

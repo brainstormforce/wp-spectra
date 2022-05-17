@@ -44,6 +44,7 @@ export default function save( props ) {
 			<form
 				className="uagb-forms-main-form"
 				method="post"
+				autoComplete="on"
 				name={ `uagb-form-${ block_id }` }
 			>
 				<InnerBlocks.Content />

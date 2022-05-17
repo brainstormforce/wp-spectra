@@ -1,9 +1,9 @@
 /**
  * Internal & External dependencies.
  */
-import { ButtonGroup, Button } from '@wordpress/components';
+import { ButtonGroup, Button, Tooltip  } from '@wordpress/components';
 import { useDeviceType } from '@Controls/getPreviewType';
-import { __ } from '@wordpress/i18n'
+import { __, sprintf } from '@wordpress/i18n'
 import { useCallback } from '@wordpress/element'
 import { dispatch } from '@wordpress/data';
 import styles from './editor.lazy.scss';
@@ -60,17 +60,17 @@ const devicesSvgs = {
 };
 const devices = [
 	{
-		name: 'Desktop',
+		name: __( 'Desktop', 'ultimate-addons-for-gutenberg' ),
 		title: devicesSvgs.desktop,
 		itemClass: 'uagb-desktop-tab uagb-responsive-tabs',
 	},
 	{
-		name: 'Tablet',
+		name: __( 'Tablet', 'ultimate-addons-for-gutenberg' ),
 		title: devicesSvgs.tablet,
 		itemClass: 'uagb-tablet-tab uagb-responsive-tabs',
 	},
 	{
-		name: 'Mobile',
+		name: __( 'Mobile', 'ultimate-addons-for-gutenberg' ),
 		key: 'mobile',
 		title: devicesSvgs.mobile,
 		itemClass: 'uagb-mobile-tab uagb-responsive-tabs',
@@ -93,6 +93,14 @@ if ( ! deviceType ) {
 	>
 		{ devices.map(
 			( { name, key, title, itemClass } ) => (
+				<Tooltip
+					text={ sprintf(
+						/* translators: abbreviation for units */
+						'%s',
+						name
+					) }
+					key={key}
+				>
 				<Button
 					key={ key }
 					className={ `components-button components-tab-panel__tabs-item ${ itemClass }${
@@ -109,6 +117,7 @@ if ( ! deviceType ) {
 				>
 					{ title }
 				</Button>
+				</Tooltip>
 			)
 		) }
 	</ButtonGroup>

@@ -4,7 +4,7 @@ import TypographyControl from '@Components/typography';
 import WebfontLoader from '@Components/typography/fontloader';
 import { __ } from '@wordpress/i18n';
 import { InspectorControls } from '@wordpress/block-editor';
-import { Icon } from '@wordpress/components';
+import { Icon, ToggleControl } from '@wordpress/components';
 import InspectorTabs from '@Components/inspector-tabs/InspectorTabs.js';
 import InspectorTab, {
 	UAGTabs,
@@ -57,6 +57,7 @@ const Settings = ( props ) => {
 			fontStyle,
 			fontTransform,
 			fontDecoration,
+			displayTitle,
 		},
 	} = props;
 
@@ -146,7 +147,14 @@ const Settings = ( props ) => {
 	}
 
 	const generalSettings = (
-		<UAGAdvancedPanelBody title={ __( 'General', 'ultimate-addons-for-gutenberg' ) }>
+		<UAGAdvancedPanelBody>
+			<ToggleControl
+				label={ __( 'Enable Title', 'ultimate-addons-for-gutenberg' ) }
+				checked={ displayTitle }
+				onChange={ () =>
+					setAttributes( { displayTitle: ! displayTitle } )
+				}
+			/>
 			<MultiButtonsControl
 				setAttributes={ setAttributes }
 				label={ __( 'Range', 'ultimate-addons-for-gutenberg' ) }
@@ -263,18 +271,9 @@ const Settings = ( props ) => {
 					label: 'lineHeightTablet',
 				} }
 			/>
-			{/* <Range
-				label={ __( 'Gap', 'ultimate-addons-for-gutenberg' ) }
-				setAttributes={ setAttributes }
-				value={ titleGap }
-				onChange={ ( value ) => setAttributes( { titleGap: value } ) }
-				min={ 0 }
-				max={ 50 }
-				displayUnit={ false }
-			/> */}
 			<ResponsiveSlider
 				label={ __(
-					'Gap',
+					'Gap Between Title And Stars',
 					'ultimate-addons-for-gutenberg'
 				) }
 				data={ {
@@ -318,24 +317,6 @@ const Settings = ( props ) => {
 					setAttributes( { unmarkedColor: value } )
 				}
 			/>
-			{/* <Range
-				label={ __( 'Size', 'ultimate-addons-for-gutenberg' ) }
-				setAttributes={ setAttributes }
-				value={ size }
-				onChange={ ( value ) => setAttributes( { size: value } ) }
-				min={ 0 }
-				max={ 100 }
-				displayUnit={ false }
-			/>
-			<Range
-				label={ __( 'Gap', 'ultimate-addons-for-gutenberg' ) }
-				setAttributes={ setAttributes }
-				value={ gap }
-				onChange={ ( value ) => setAttributes( { gap: value } ) }
-				min={ 0 }
-				max={ 50 }
-				displayUnit={ false }
-			/> */}
 			<ResponsiveSlider
 				label={ __(
 					'Size',
@@ -362,7 +343,7 @@ const Settings = ( props ) => {
 			/>
 			<ResponsiveSlider
 				label={ __(
-					'Gap',
+					'Gap Between Stars',
 					'ultimate-addons-for-gutenberg'
 				) }
 				data={ {
@@ -395,7 +376,7 @@ const Settings = ( props ) => {
 					</InspectorTab>
 					<InspectorTab { ...UAGTabs.style }>
 						{ starStyling }
-						{ '' !== title && titleStyling }
+						{ ( displayTitle && '' !== title ) && titleStyling }
 					</InspectorTab>
 					<InspectorTab
 						{ ...UAGTabs.advance }

@@ -43,9 +43,11 @@ const Settings = ( props ) => {
 		rowsGap,
 		rowsGapTablet,
 		rowsGapMobile,
+		rowsGapUnit,
 		columnsGap,
 		columnsGapTablet,
 		columnsGapMobile,
+		columnsGapUnit,
 		align,
 		enableSeparator,
 		boxBgColor,
@@ -185,7 +187,7 @@ const Settings = ( props ) => {
 		return (
 			<UAGAdvancedPanelBody
 				title={ __( 'General', 'ultimate-addons-for-gutenberg' ) }
-				initialOpen={ true }
+				initialOpen={ false }
 				className="uagb__url-panel-body"
 			>
 				<MultiButtonsControl
@@ -850,7 +852,7 @@ const Settings = ( props ) => {
 		return (
 			<UAGAdvancedPanelBody
 				title={ __( 'Container', 'ultimate-addons-for-gutenberg' ) }
-				initialOpen={ false }
+				initialOpen={ true }
 				className="uagb__url-panel-body"
 			>
 				<AdvancedPopColorControl
@@ -865,7 +867,7 @@ const Settings = ( props ) => {
 				/>
 				<ResponsiveSlider
 					label={ __(
-						'Rows Gap (px)',
+						'Rows Gap',
 						'ultimate-addons-for-gutenberg'
 					) }
 					data={ {
@@ -884,14 +886,27 @@ const Settings = ( props ) => {
 					} }
 					min={ 0 }
 					max={ 50 }
-					displayUnit={ false }
+					unit={ {
+						value: rowsGapUnit,
+						label:
+							'rowsGapUnit',
+					} }
+					units={ [
+						{
+							name: __(
+								'Pixel',
+								'ultimate-addons-for-gutenberg'
+							),
+							unitValue: 'px',
+						},
+					] }
 					setAttributes={ setAttributes }
 				/>
 				{ 'grid' === layout && (
 					<>
 						<ResponsiveSlider
 							label={ __(
-								'Columns Gap (px)',
+								'Columns Gap',
 								'ultimate-addons-for-gutenberg'
 							) }
 							data={ {
@@ -910,7 +925,20 @@ const Settings = ( props ) => {
 							} }
 							min={ 0 }
 							max={ 50 }
-							displayUnit={ false }
+							unit={ {
+								value: columnsGapUnit,
+								label:
+									'columnsGapUnit',
+							} }
+							units={ [
+								{
+									name: __(
+										'Pixel',
+										'ultimate-addons-for-gutenberg'
+									),
+									unitValue: 'px',
+								},
+							] }
 							setAttributes={ setAttributes }
 						/>
 						<ToggleControl

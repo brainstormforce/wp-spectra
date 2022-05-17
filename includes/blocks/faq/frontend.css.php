@@ -67,7 +67,7 @@ $selectors = array(
 		'fill'      => $icon_active_color,
 	),
 	' .uagb-faq-child__outer-wrap'                        => array(
-		'margin-bottom' => UAGB_Helper::get_css_value( $attr['rowsGap'], 'px' ),
+		'margin-bottom' => UAGB_Helper::get_css_value( $attr['rowsGap'], $attr['rowsGapUnit'] ),
 	),
 	' .uagb-faq-item'                                     => array(
 		'background-color' => $attr['boxBgColor'],
@@ -159,7 +159,7 @@ $t_selectors = array(
 		'font-size' => $t_icon_size,
 	),
 	' .uagb-faq-child__outer-wrap' => array(
-		'margin-bottom' => UAGB_Helper::get_css_value( $attr['rowsGapTablet'], 'px' ),
+		'margin-bottom' => UAGB_Helper::get_css_value( $attr['rowsGapTablet'], $attr['rowsGapUnit'] ),
 	),
 );
 $m_selectors = array(
@@ -170,7 +170,7 @@ $m_selectors = array(
 		'margin-left' => UAGB_Helper::get_css_value( $attr['gapBtwIconQUestionMobile'], 'px' ),
 	),
 	' .uagb-faq-child__outer-wrap' => array(
-		'margin-bottom' => UAGB_Helper::get_css_value( $attr['rowsGapMobile'], 'px' ),
+		'margin-bottom' => UAGB_Helper::get_css_value( $attr['rowsGapMobile'], $attr['rowsGapUnit'] ),
 	),
 	' .uagb-faq-questions-button'  => array(
 		'padding-top'    => UAGB_Helper::get_css_value( $attr['vquestionPaddingMobile'], $attr['questionPaddingTypeMobile'] ),
@@ -243,33 +243,37 @@ if ( 'grid' === $attr['layout'] ) {
 
 	$selectors['.uagb-faq-layout-grid .uagb-faq__wrap.uagb-buttons-layout-wrap ']   = array(
 		'grid-template-columns' => 'repeat(' . $attr['columns'] . ', 1fr)',
-		'grid-column-gap'       => UAGB_Helper::get_css_value( $attr['columnsGap'], 'px' ),
-		'grid-row-gap'          => UAGB_Helper::get_css_value( $attr['rowsGap'], 'px' ),
+		'grid-column-gap'       => UAGB_Helper::get_css_value( $attr['columnsGap'], $attr['columnsGapUnit'] ),
+		'grid-row-gap'          => UAGB_Helper::get_css_value( $attr['rowsGap'], $attr['rowsGapUnit'] ),
 		'display'               => 'grid',
 	);
 	$t_selectors['.uagb-faq-layout-grid .uagb-faq__wrap.uagb-buttons-layout-wrap '] = array(
-		'grid-column-gap'       => UAGB_Helper::get_css_value( $attr['columnsGapTablet'], 'px' ),
+		'grid-column-gap'       => UAGB_Helper::get_css_value( $attr['columnsGapTablet'], $attr['columnsGapUnit'] ),
 		'grid-template-columns' => 'repeat(' . $attr['tcolumns'] . ', 1fr)',
+		'grid-row-gap'          => UAGB_Helper::get_css_value( $attr['rowsGapTablet'], $attr['rowsGapUnit'] ),
 	);
 	$m_selectors['.uagb-faq-layout-grid .uagb-faq__wrap.uagb-buttons-layout-wrap '] = array(
 		'grid-template-columns' => 'repeat(' . $attr['mcolumns'] . ', 1fr)',
-		'grid-column-gap'       => UAGB_Helper::get_css_value( $attr['columnsGapMobile'], 'px' ),
+		'grid-column-gap'       => UAGB_Helper::get_css_value( $attr['columnsGapMobile'], $attr['columnsGapUnit'] ),
+		'grid-row-gap'          => UAGB_Helper::get_css_value( $attr['rowsGapMobile'], $attr['rowsGapUnit'] ),
 	);
 
 	$selectors['.uagb-faq-layout-grid.uagb-faq__wrap.uagb-buttons-layout-wrap '] = array(
 		'grid-template-columns' => 'repeat(' . $attr['columns'] . ', 1fr)',
-		'grid-column-gap'       => UAGB_Helper::get_css_value( $attr['columnsGap'], 'px' ),
-		'grid-row-gap'          => UAGB_Helper::get_css_value( $attr['rowsGap'], 'px' ),
+		'grid-column-gap'       => UAGB_Helper::get_css_value( $attr['columnsGap'], $attr['columnsGapUnit'] ),
+		'grid-row-gap'          => UAGB_Helper::get_css_value( $attr['rowsGap'], $attr['rowsGapUnit'] ),
 		'display'               => 'grid',
 	);
 
 	$t_selectors['.uagb-faq-layout-grid.uagb-faq__wrap.uagb-buttons-layout-wrap '] = array(
 		'grid-template-columns' => 'repeat(' . $attr['tcolumns'] . ', 1fr)',
-		'grid-column-gap'       => UAGB_Helper::get_css_value( $attr['columnsGapTablet'], 'px' ),
+		'grid-column-gap'       => UAGB_Helper::get_css_value( $attr['columnsGapTablet'], $attr['columnsGapUnit'] ),
+		'grid-row-gap'          => UAGB_Helper::get_css_value( $attr['rowsGapTablet'], $attr['rowsGapUnit'] ),
 	);
 	$m_selectors['.uagb-faq-layout-grid.uagb-faq__wrap.uagb-buttons-layout-wrap '] = array(
 		'grid-template-columns' => 'repeat(' . $attr['mcolumns'] . ', 1fr)',
-		'grid-column-gap'       => UAGB_Helper::get_css_value( $attr['columnsGapMobile'], 'px' ),
+		'grid-column-gap'       => UAGB_Helper::get_css_value( $attr['columnsGapMobile'], $attr['columnsGapUnit'] ),
+		'grid-row-gap'          => UAGB_Helper::get_css_value( $attr['rowsGapMobile'], $attr['rowsGapUnit'] ),
 	);
 }
 

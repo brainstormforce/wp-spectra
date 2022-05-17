@@ -55,6 +55,10 @@ const attributes = {
 		type: 'number',
 		default: 30,
 	},
+	smoothScrollOffsetType: {
+		type: 'string',
+		default: 'px',
+	},
 	scrollToTop: {
 		type: 'boolean',
 		default: false,
@@ -97,7 +101,7 @@ const attributes = {
 	},
 	customWidth: {
 		type: 'boolean',
-		default: false,
+		default: true,
 		UAGCopyPaste: {
 			styleType: 'custom-width'
 		},
@@ -573,6 +577,13 @@ const attributes = {
 			styleType: 'main-title-bottom-margin'
 		},
 	},
+	headingBottomType: {
+		type: 'string',
+		default: 'px',
+		UAGCopyPaste: {
+			styleType: 'main-title-margin-type-desktop'
+		},
+	},
 	paddingTypeDesktop: {
 		type: 'string',
 		default: 'px',
@@ -649,6 +660,7 @@ const attributes = {
 		UAGCopyPaste: {
 			styleType: 'overall-border-width'
 		},
+		default: 1,
 	},
 	borderRadius: {
 		type: 'number',

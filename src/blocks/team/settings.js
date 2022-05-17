@@ -242,6 +242,7 @@ const Settings = ( props ) => {
 		return (
 			<UAGAdvancedPanelBody
 				title={ __( 'Layout', 'ultimate-addons-for-gutenberg' ) }
+				initialOpen={ false }
 			>
 				<MultiButtonsControl
 					setAttributes={ setAttributes }
@@ -733,7 +734,7 @@ const Settings = ( props ) => {
 		return (
 			<UAGAdvancedPanelBody
 				title={ __( 'Title', 'ultimate-addons-for-gutenberg' ) }
-				initialOpen={ false }
+				initialOpen={ true }
 			>
 				<AdvancedPopColorControl
 					label={ __( 'Color', 'ultimate-addons-for-gutenberg' ) }
@@ -838,7 +839,7 @@ const Settings = ( props ) => {
 	const getPrefixPanelColorSettings = () => {
 		return (
 			<UAGAdvancedPanelBody
-				title={ __( 'Prefix', 'ultimate-addons-for-gutenberg' ) }
+				title={ __( 'Designation', 'ultimate-addons-for-gutenberg' ) }
 				initialOpen={ false }
 			>
 				<AdvancedPopColorControl
@@ -1074,12 +1075,16 @@ const Settings = ( props ) => {
 						value: socialFontSizeTablet,
 						label: 'socialFontSizeTablet',
 					} }
+					sizeText={ __(
+						'Icon Size',
+						'ultimate-addons-for-gutenberg'
+					) }
 					disableFontFamily={ true }
 					disableLineHeight={ true }
 				/>
 				<ResponsiveSlider
 					label={ __(
-						'Inter Icon Spacing',
+						'Icon Spacing',
 						'ultimate-addons-for-gutenberg'
 					) }
 					data={ {

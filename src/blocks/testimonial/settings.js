@@ -37,6 +37,8 @@ const Settings = ( props ) => {
 		test_item_count,
 		test_block,
 		headingAlign,
+		headingAlignTablet,
+		headingAlignMobile,
 		companyColor,
 		descColor,
 		authorColor,
@@ -98,7 +100,9 @@ const Settings = ( props ) => {
 		arrowDots,
 		arrowSize,
 		arrowBorderSize,
+		arrowBorderSizeUnit,
 		arrowBorderRadius,
+		arrowBorderRadiusUnit,
 		autoplay,
 		autoplaySpeed,
 		arrowColor,
@@ -169,6 +173,7 @@ const Settings = ( props ) => {
 		imgpaddingUnit,
 		imgmobilePaddingUnit,
 		imgtabletPaddingUnit,
+		equalHeight
 	} = attributes;
 
 	let loadNameGoogleFonts;
@@ -234,7 +239,6 @@ const Settings = ( props ) => {
 		if ( ! media.type || 'image' !== media.type ) {
 			imgUrl = null;
 		}
-
 		const newItems = test_block.map( ( item, thisIndex ) => {
 			if ( index === thisIndex ) {
 				item.image = imgUrl;
@@ -422,7 +426,7 @@ const Settings = ( props ) => {
 						/>
 						<Range
 							label={ __(
-								'Arrow Border Size(px)',
+								'Arrow Border Size',
 								'ultimate-addons-for-gutenberg'
 							) }
 							setAttributes={ setAttributes }
@@ -432,11 +436,24 @@ const Settings = ( props ) => {
 							}
 							min={ 0 }
 							max={ 50 }
-							displayUnit={ false }
+							unit={ {
+								value: arrowBorderSizeUnit,
+								label:
+									'arrowBorderSizeUnit',
+							} }
+							units={ [
+								{
+									name: __(
+										'Pixel',
+										'ultimate-addons-for-gutenberg'
+									),
+									unitValue: 'px',
+								},
+							] }
 						/>
 						<Range
 							label={ __(
-								'Arrow Border Radius(px)',
+								'Arrow Border Radius',
 								'ultimate-addons-for-gutenberg'
 							) }
 							setAttributes={ setAttributes }
@@ -446,7 +463,20 @@ const Settings = ( props ) => {
 							}
 							min={ 0 }
 							max={ 50 }
-							displayUnit={ false }
+							unit={ {
+								value: arrowBorderRadiusUnit,
+								label:
+									'arrowBorderRadiusUnit',
+							} }
+							units={ [
+								{
+									name: __(
+										'Pixel',
+										'ultimate-addons-for-gutenberg'
+									),
+									unitValue: 'px',
+								},
+							] }
 						/>
 					</>
 				) }
@@ -595,7 +625,7 @@ const Settings = ( props ) => {
 		return (
 			<UAGAdvancedPanelBody
 				title={ __( 'Name', 'ultimate-addons-for-gutenberg' ) }
-				initialOpen={ false }
+				initialOpen={ true }
 			>
 				<AdvancedPopColorControl
 					label={ __( 'Color', 'ultimate-addons-for-gutenberg' ) }
@@ -1193,8 +1223,18 @@ const Settings = ( props ) => {
 									'ultimate-addons-for-gutenberg'
 								) }
 								data={ {
-									value: headingAlign,
-									label: 'headingAlign',
+									desktop: {
+										value: headingAlign,
+										label: 'headingAlign',
+									},
+									tablet: {
+										value: headingAlignTablet,
+										label: 'headingAlignTablet',
+									},
+									mobile: {
+										value: headingAlignMobile,
+										label: 'headingAlignMobile',
+									},
 								} }
 								className="uagb-multi-button-alignment-control"
 								options={ [
@@ -1240,7 +1280,24 @@ const Settings = ( props ) => {
 									},
 								] }
 								showIcons={ true }
+								responsive={ true }
 							/>
+							{ columns > 1 && (
+							<ToggleControl
+								label={ __(
+									'Equal Height',
+									'ultimate-addons-for-gutenberg'
+								) }
+								checked={ equalHeight }
+								onChange={ () =>
+									setAttributes( { equalHeight: ! equalHeight } )
+								}
+								help={ __(
+									"Note: Above setting will only take effect once you are on the live page, and not while you're editing.",
+									'ultimate-addons-for-gutenberg'
+								) }
+							/>
+							) }
 						</UAGAdvancedPanelBody>
 						<UAGAdvancedPanelBody
 							title={ __(

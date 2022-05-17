@@ -180,7 +180,7 @@ const Settings = ( props ) => {
 	const generalSettings = () => {
 		return (
 			<>
-				<UAGAdvancedPanelBody title={ __( 'Content' ) } initialOpen={ true }>
+				<UAGAdvancedPanelBody title={ __( 'Content' ) } initialOpen={ false }>
 					<MultiButtonsControl
 						setAttributes={ setAttributes }
 						label={ __( 'Button Alignment', 'ultimate-addons-for-gutenberg' ) }
@@ -469,7 +469,7 @@ const Settings = ( props ) => {
 		return (
 			<UAGAdvancedPanelBody
 				title={ __( 'Heading', 'ultimate-addons-for-gutenberg' ) }
-				initialOpen={ false }
+				initialOpen={ true }
 			>
 				{ showDescription && (
 				<ResponsiveSlider

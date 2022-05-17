@@ -8,9 +8,9 @@ const testimonialBlock = [];
 
 for ( let i = 1; i <= itemCount; i++ ) {
 	const descText =
-		'I have been working with these guys since years now! With lots of hard work and timely communication they made sure they delivered the best to me. Highly recommended!';
+		'I have been working with these guys for years now! With lots of hard work and timely communication, they made sure they delivered the best to me. Highly recommended!';
 	const authorText = 'John Doe ';
-	const companyText = 'Company' + i;
+	const companyText = 'Company Name';
 	testimonialBlock.push( {
 		description: descText,
 		name: authorText,
@@ -37,6 +37,20 @@ const attributes = {
 		default: 'center',
 		UAGCopyPaste: {
 			styleType: 'main-title-align'
+		},
+	},
+	headingAlignTablet: {
+		type: 'string',
+		default: 'center',
+		UAGCopyPaste: {
+			styleType: 'main-title-align-tablet'
+		},
+	},
+	headingAlignMobile: {
+		type: 'string',
+		default: 'center',
+		UAGCopyPaste: {
+			styleType: 'main-title-align-mobile'
 		},
 	},
 	descColor: {
@@ -91,6 +105,7 @@ const attributes = {
 	},
 	nameFontSize: {
 		type: 'number',
+		default: 20,
 		UAGCopyPaste: {
 			styleType: 'author-font-size'
 		},
@@ -116,6 +131,7 @@ const attributes = {
 	},
 	nameFontWeight: {
 		type: 'string',
+		default: '500',
 		UAGCopyPaste: {
 			styleType: 'author-font-weight'
 		},
@@ -135,6 +151,7 @@ const attributes = {
 	},
 	nameLineHeight: {
 		type: 'number',
+		default: 2,
 		UAGCopyPaste: {
 			styleType: 'author-line-height'
 		},
@@ -242,6 +259,7 @@ const attributes = {
 	},
 	descFontSize: {
 		type: 'number',
+		default: 18,
 		UAGCopyPaste: {
 			styleType: 'desc-font-size'
 		},
@@ -267,6 +285,7 @@ const attributes = {
 	},
 	descFontWeight: {
 		type: 'string',
+		default: '400',
 		UAGCopyPaste: {
 			styleType: 'desc-font-weight'
 		},
@@ -279,13 +298,14 @@ const attributes = {
 	},
 	descLineHeightType: {
 		type: 'string',
+		default: 'em',
 		UAGCopyPaste: {
 			styleType: 'desc-line-height-type'
 		},
-		default: 'em',
 	},
 	descLineHeight: {
 		type: 'number',
+		default: 1.6,
 		UAGCopyPaste: {
 			styleType: 'desc-line-height'
 		},
@@ -312,10 +332,10 @@ const attributes = {
 
 	nameSpace: {
 		type: 'number',
+		default: 5,
 		UAGCopyPaste: {
 			styleType: 'author-bottom-margin'
 		},
-		default: 5,
 	},
 	nameSpaceMobile: {
 		type: 'number',
@@ -336,21 +356,21 @@ const attributes = {
 		UAGCopyPaste: {
 			styleType: 'desc-bottom-margin'
 		},
-		default: 15,
+		default: 20,
 	},
 	descSpaceTablet: {
 		type: 'number',
 		UAGCopyPaste: {
 			styleType: 'desc-bottom-margin-tablet'
 		},
-		default: 15,
+		default: 20,
 	},
 	descSpaceMobile: {
 		type: 'number',
 		UAGCopyPaste: {
 			styleType: 'desc-bottom-margin-mobile'
 		},
-		default: 15,
+		default: 20,
 	},
 	block_id: {
 		type: 'string',
@@ -471,9 +491,16 @@ const attributes = {
 	},
 	arrowBorderSize: {
 		type: 'number',
-		default: 1,
+		default: 0,
 		UAGCopyPaste: {
 			styleType: 'arrow-border-size'
+		},
+	},
+	arrowBorderSizeUnit: {
+		type: 'string',
+		default: 'px',
+		UAGCopyPaste: {
+			styleType: 'arrow-unit'
 		},
 	},
 	arrowBorderRadius: {
@@ -481,6 +508,13 @@ const attributes = {
 		default: 0,
 		UAGCopyPaste: {
 			styleType: 'arrow-border-radius'
+		},
+	},
+	arrowBorderRadiusUnit: {
+		type: 'string',
+		default: 'px',
+		UAGCopyPaste: {
+			styleType: 'arrow-unit'
 		},
 	},
 	arrowColor: {
@@ -965,7 +999,14 @@ const attributes = {
 	isPreview: {
 		type: 'boolean',
 		default: false,
-	}
+	},
+	equalHeight             : {
+		type    : 'boolean',
+		default : false,
+		UAGCopyPaste: {
+			styleType: 'post-equal-height'
+		},
+	},
 };
 
 export default attributes;
