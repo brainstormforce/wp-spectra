@@ -128,12 +128,12 @@ function styling( props ) {
 		'border-radius': generateCSSUnit( borderRadius, 'px' ),
 	};
 	if( 'none' !== borderStyle ) {
-		selectors[' .wp-block-button__link.uagb-buttons-repeater'] = {
+		selectors['.uagb-is-style-outline .wp-block-button__link.uagb-buttons-repeater'] = {
 			'border-width': generateCSSUnit( borderWidth, 'px' ),
 			'border-style': borderStyle,
 			'border-color': borderColor,
 		};
-		selectors[ ' .wp-block-button__link.uagb-buttons-repeater:hover' ] = {
+		selectors[ '.uagb-is-style-outline .wp-block-button__link.uagb-buttons-repeater:hover' ] = {
 			'border-color': borderHColor,
 		};
 
@@ -249,10 +249,10 @@ function styling( props ) {
 		const btnBackground = generateBackgroundCSS( backgroundAttributes );
 		selectors[ '.uagb-buttons__outer-wrap .wp-block-button__link.uagb-buttons-repeater' ] = btnBackground;
 	} else {
-		selectors[ '.uagb-buttons__outer-wrap .wp-block-button__link.uagb-buttons-repeater' ] = {
+		selectors[ '.uagb-buttons__outer-wrap.wp-block-button .uagb-has-background.wp-block-button__link.uagb-buttons-repeater' ] = {
 			'background': background,
 		}
-		selectors[ '.uagb-buttons__outer-wrap .wp-block-button__link.uagb-buttons-repeater:hover' ] = {
+		selectors[ '.uagb-buttons__outer-wrap.wp-block-button .uagb-has-background.wp-block-button__link.uagb-buttons-repeater:hover' ] = {
 			'background': hBackground,
 		}
 	}
