@@ -111,6 +111,11 @@ const Settings = ( props ) => {
 		toggleActiveColor,
 		toggleDotColor,
 		toggleDotActiveColor,
+		toggleBorderStyle,
+		toggleBorderWidth,
+		toggleBorderRadius,
+		toggleBorderColor,
+		toggleBorderActiveColor,
 		labelColor,
 		labelHoverColor,
 		inputColor,
@@ -1140,6 +1145,42 @@ const Settings = ( props ) => {
 						/>
 					</>
 				}
+				disableBottomSeparator={ false }
+			/>
+			<Border
+				disabledBorderTitle= { false }
+				setAttributes={ setAttributes }
+				borderStyle={ {
+					value: toggleBorderStyle,
+					label: 'toggleBorderStyle',
+					title: __(
+						'Style',
+						'ultimate-addons-for-gutenberg'
+					),
+				} }
+				borderWidth={ {
+					value: toggleBorderWidth,
+					label: 'toggleBorderWidth',
+					title: __( 'Width', 'ultimate-addons-for-gutenberg' ),
+				} }
+				borderRadius={ {
+					value: toggleBorderRadius,
+					label: 'toggleBorderRadius',
+					title: __( 'Checkbox Radius', 'ultimate-addons-for-gutenberg' ),
+				} }
+				borderColor={ {
+					value: toggleBorderColor,
+					label: 'toggleBorderColor',
+					title: __( 'Border Color', 'ultimate-addons-for-gutenberg' ),
+				} }
+				borderActiveColor={ {
+					value: toggleBorderActiveColor,
+					label: 'toggleBorderActiveColor',
+					title: __(
+						'Border Color',
+						'ultimate-addons-for-gutenberg'
+					),
+				} }
 				disableBottomSeparator={ true }
 			/>
 		</UAGAdvancedPanelBody>

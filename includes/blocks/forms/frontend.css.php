@@ -156,6 +156,7 @@ $m_selectors = array(
 $selectors[' .uagb-forms-checkbox-wrap input[type=checkbox]:checked + label:before'] = array(
 	'color'            => $attr['toggleDotActiveColor'],
 	'background-color' => $attr['toggleActiveColor'],
+	'border-color'     => $attr['toggleBorderActiveColor'] . ' !important',
 	'font-size'        => 'calc(' . $attr['toggleSize'] . $attr['toggleSizeType'] . ' / 1.2)',
 );
 $selectors[' .uagb-forms-checkbox-wrap input[type=checkbox] + label:before']         = array(
@@ -170,6 +171,7 @@ $selectors[' .uagb-forms-checkbox-wrap > label']                                
 // Radio Button Field css.
 $selectors[' .uagb-forms-radio-wrap input[type=radio]:checked + label:before'] = array(
 	'background-color' => $attr['toggleDotActiveColor'],
+	'border-color'     => $attr['toggleBorderActiveColor'] . ' !important',
 	'box-shadow'       => 'inset 0 0 0 4px ' . $attr['toggleActiveColor'],
 	'font-size'        => 'calc(' . $attr['toggleSize'] . 'px / 1.2)',
 );
@@ -188,11 +190,11 @@ $selectors[' .uagb-slider']                                     = array(
 );
 $selectors[' .uagb-forms-main-form .uagb-switch']               = array(
 	'height' => UAGB_Helper::get_css_value(
-		(int) ( 20 + $attr['toggleWidthSize'] + ( $attr['inputborderWidth'] * 2 ) + ( ( 20 + $attr['toggleWidthSize'] ) / 3 ) ),
+		(int) ( 20 + $attr['toggleWidthSize'] + ( $attr['toggleBorderWidth'] * 2 ) + ( ( 20 + $attr['toggleWidthSize'] ) / 3 ) ),
 		'px'
 	),
 	'width'  => UAGB_Helper::get_css_value(
-		(int) ( ( ( 20 + $attr['toggleWidthSize'] ) * 2.5 ) + ( $attr['inputborderWidth'] * 2 ) + ( ( 20 + $attr['toggleWidthSize'] ) / 3 ) ),
+		(int) ( ( ( 20 + $attr['toggleWidthSize'] ) * 2.5 ) + ( $attr['toggleBorderWidth'] * 2 ) + ( ( 20 + $attr['toggleWidthSize'] ) / 3 ) ),
 		'px'
 	),
 );
@@ -206,6 +208,7 @@ $selectors[' .uagb-forms-main-form .uagb-slider:before']        = array(
 );
 $selectors[' .uagb-switch input:checked + .uagb-slider']        = array(
 	'background-color' => $attr['toggleActiveColor'],
+	'border-color'     => $attr['toggleBorderActiveColor'] . ' !important',
 );
 $selectors[' .uagb-switch input:checked + .uagb-slider:before'] = array(
 	'transform'        => 'translateX(' . UAGB_Helper::get_css_value(
@@ -220,8 +223,10 @@ $selectors[' .uagb-switch input:focus + .uagb-slider']          = array(
 
 // Accept Field css.
 $selectors[' .uagb-forms-accept-wrap input[type=checkbox]:checked + label:before'] = array(
-	'color'     => $attr['toggleDotColor'],
-	'font-size' => 'calc(' . $attr['toggleSize'] . $attr['toggleSizeType'] . ' / 1.2)',
+	'color'            => $attr['toggleDotActiveColor'],
+	'background-color' => $attr['toggleActiveColor'],
+	'border-color'     => $attr['toggleBorderActiveColor'] . ' !important',
+	'font-size'    => 'calc(' . $attr['toggleSize'] . $attr['toggleSizeType'] . ' / 1.2)',
 );
 $selectors[' .uagb-forms-accept-wrap input[type=checkbox] + label:before']         = array(
 	'background-color' => $attr['toggleColor'],
@@ -234,24 +239,24 @@ $selectors[' .uagb-forms-accept-wrap > label']                                  
 
 if ( 'boxed' === $attr['formStyle'] ) {
 	$selectors[' .uagb-forms-main-form  .uagb-forms-checkbox-wrap input[type=checkbox] + label:before'] = array(
-		'border'        => UAGB_Helper::get_css_value( $attr['inputborderWidth'], 'px' ) . ' ' . $attr['inputborderStyle'] . ' ' . $attr['inputborderColor'],
-		'border-radius' => UAGB_Helper::get_css_value( $attr['inputborderRadius'], 'px' ),
+		'border'        => UAGB_Helper::get_css_value( $attr['toggleBorderWidth'], 'px' ) . ' ' . $attr['toggleBorderStyle'] . ' ' . $attr['toggleBorderColor'],
+		'border-radius' => UAGB_Helper::get_css_value( $attr['toggleBorderRadius'], 'px' ),
 	);
 	$selectors[' .uagb-forms-main-form .uagb-forms-checkbox-wrap > input']                              = array(
 		'color' => $attr['inputColor'],
 	);
 	$selectors[' .uagb-forms-main-form  .uagb-forms-radio-wrap input[type=radio] + label:before']       = array(
-		'border' => UAGB_Helper::get_css_value( $attr['inputborderWidth'], 'px' ) . ' ' . $attr['inputborderStyle'] . ' ' . $attr['inputborderColor'],
+		'border' => UAGB_Helper::get_css_value( $attr['toggleBorderWidth'], 'px' ) . ' ' . $attr['toggleBorderStyle'] . ' ' . $attr['toggleBorderColor'],
 	);
 	$selectors[' .uagb-forms-main-form .uagb-forms-radio-wrap > input']                                 = array(
 		'color' => $attr['inputColor'],
 	);
 	$selectors[' .uagb-forms-main-form .uagb-slider'] = array(
-		'border' => UAGB_Helper::get_css_value( $attr['inputborderWidth'], 'px' ) . ' ' . $attr['inputborderStyle'] . ' ' . $attr['inputborderColor'],
+		'border' => UAGB_Helper::get_css_value( $attr['toggleBorderWidth'], 'px' ) . ' ' . $attr['toggleBorderStyle'] . ' ' . $attr['toggleBorderColor'],
 	);
 	$selectors[' .uagb-forms-main-form  .uagb-forms-accept-wrap input[type=checkbox] + label:before'] = array(
-		'border'        => UAGB_Helper::get_css_value( $attr['inputborderWidth'], 'px' ) . ' ' . $attr['inputborderStyle'] . ' ' . $attr['inputborderColor'],
-		'border-radius' => UAGB_Helper::get_css_value( $attr['inputborderRadius'], 'px' ),
+		'border'        => UAGB_Helper::get_css_value( $attr['toggleBorderWidth'], 'px' ) . ' ' . $attr['toggleBorderStyle'] . ' ' . $attr['toggleBorderColor'],
+		'border-radius' => UAGB_Helper::get_css_value( $attr['toggleBorderRadius'], 'px' ),
 	);
 	$selectors[' .uagb-forms-main-form .uagb-forms-accept-wrap > input']                              = array(
 		'color' => $attr['inputColor'],
@@ -325,16 +330,16 @@ $m_selectors[' .uagb-switch input:checked + .uagb-slider:before'] = array(
 );
 if ( 'underlined' === $attr['formStyle'] ) {
 	$selectors[' .uagb-forms-main-form  .uagb-forms-accept-wrap input[type=checkbox] + label:before']   = array(
-		'border-bottom' => UAGB_Helper::get_css_value( $attr['inputborderWidth'], 'px' ) . ' ' . $attr['inputborderStyle'] . ' ' . $attr['inputborderColor'],
+		'border-bottom' => UAGB_Helper::get_css_value( $attr['toggleBorderWidth'], 'px' ) . ' ' . $attr['toggleBorderStyle'] . ' ' . $attr['toggleBorderColor'],
 	);
 	$selectors[' .uagb-forms-main-form  .uagb-forms-checkbox-wrap input[type=checkbox] + label:before'] = array(
-		'border-bottom' => UAGB_Helper::get_css_value( $attr['inputborderWidth'], 'px' ) . ' ' . $attr['inputborderStyle'] . ' ' . $attr['inputborderColor'],
+		'border-bottom' => UAGB_Helper::get_css_value( $attr['toggleBorderWidth'], 'px' ) . ' ' . $attr['toggleBorderStyle'] . ' ' . $attr['toggleBorderColor'],
 	);
 	$selectors[' .uagb-forms-main-form .uagb-slider'] = array(
-		'border-bottom' => UAGB_Helper::get_css_value( $attr['inputborderWidth'], 'px' ) . ' ' . $attr['inputborderStyle'] . ' ' . $attr['inputborderColor'],
+		'border-bottom' => UAGB_Helper::get_css_value( $attr['toggleBorderWidth'], 'px' ) . ' ' . $attr['toggleBorderStyle'] . ' ' . $attr['toggleBorderColor'],
 	);
 	$selectors[' .uagb-forms-main-form  .uagb-forms-radio-wrap input[type=radio] + label:before'] = array(
-		'border-bottom' => UAGB_Helper::get_css_value( $attr['inputborderWidth'], 'px' ) . ' ' . $attr['inputborderStyle'] . ' ' . $attr['inputborderColor'],
+		'border-bottom' => UAGB_Helper::get_css_value( $attr['toggleBorderWidth'], 'px' ) . ' ' . $attr['toggleBorderStyle'] . ' ' . $attr['toggleBorderColor'],
 	);
 	$selectors[' .uagb-forms-main-form  .uagb-forms-input']                                       = array(
 		'border'        => 0,
@@ -379,11 +384,11 @@ if ( 'underlined' === $attr['formStyle'] ) {
 	);
 	$t_selectors[' .uagb-forms-main-form .uagb-switch']                                  = array(
 		'height' => UAGB_Helper::get_css_value(
-			(int) ( 20 + $attr['toggleWidthSizeTablet'] + ( $attr['inputborderWidth'] * 2 ) + ( ( 20 + $attr['toggleWidthSizeTablet'] ) / 3 ) ),
+			(int) ( 20 + $attr['toggleWidthSizeTablet'] + ( $attr['toggleBorderWidth'] * 2 ) + ( ( 20 + $attr['toggleWidthSizeTablet'] ) / 3 ) ),
 			'px'
 		),
 		'width'  => UAGB_Helper::get_css_value(
-			(int) ( ( ( 20 + $attr['toggleWidthSizeTablet'] ) * 2.5 ) + ( $attr['inputborderWidth'] * 2 ) + ( ( 20 + $attr['toggleWidthSizeTablet'] ) / 3 ) ),
+			(int) ( ( ( 20 + $attr['toggleWidthSizeTablet'] ) * 2.5 ) + ( $attr['toggleBorderWidth'] * 2 ) + ( ( 20 + $attr['toggleWidthSizeTablet'] ) / 3 ) ),
 			'px'
 		),
 	);
@@ -422,11 +427,11 @@ if ( 'underlined' === $attr['formStyle'] ) {
 	);
 	$m_selectors[' .uagb-forms-main-form .uagb-switch']                                  = array(
 		'height' => UAGB_Helper::get_css_value(
-			(int) ( 20 + $attr['toggleWidthSizeMobile'] + ( $attr['inputborderWidth'] * 2 ) + ( ( 20 + $attr['toggleWidthSizeMobile'] ) / 3 ) ),
+			(int) ( 20 + $attr['toggleWidthSizeMobile'] + ( $attr['toggleBorderWidth'] * 2 ) + ( ( 20 + $attr['toggleWidthSizeMobile'] ) / 3 ) ),
 			'px'
 		),
 		'width'  => UAGB_Helper::get_css_value(
-			(int) ( ( ( 20 + $attr['toggleWidthSizeMobile'] ) * 2.5 ) + ( $attr['inputborderWidth'] * 2 ) + ( ( 20 + $attr['toggleWidthSizeMobile'] ) / 3 ) ),
+			(int) ( ( ( 20 + $attr['toggleWidthSizeMobile'] ) * 2.5 ) + ( $attr['toggleBorderWidth'] * 2 ) + ( ( 20 + $attr['toggleWidthSizeMobile'] ) / 3 ) ),
 			'px'
 		),
 	);

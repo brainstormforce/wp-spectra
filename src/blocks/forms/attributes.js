@@ -575,32 +575,70 @@ const attributes = {
 	},
 	toggleColor: {
 		type: 'string',
-		default: '#ebebeb',
+		default: '#ffffff',
 		UAGCopyPaste: {
 			styleType: 'toggle-color'
 		},
 	},
 	toggleActiveColor: {
 		type: 'string',
-		default: '#b2b2b2',
+		default: '#017cba',
 		UAGCopyPaste: {
 			styleType: 'toggle-active-color'
 		},
 	},
 	toggleDotColor: {
 		type: 'string',
-		default: '#b2b2b2',
+		default: '#1e1e1e',
 		UAGCopyPaste: {
 			styleType: 'toggle-dot-color'
 		},
 	},
 	toggleDotActiveColor: {
 		type: 'string',
-		default: '#6b6b6b',
+		default: '#ffffff',
 		UAGCopyPaste: {
 			styleType: 'toggle-dot-active-color'
 		},
 	},
+	// Toggle Border
+	toggleBorderStyle: {
+		type: 'string',
+		default: 'solid',
+		UAGCopyPaste: {
+			styleType: 'toggle-border-style'
+		},
+	},
+	toggleBorderWidth: {
+		type: 'number',
+		default: 1,
+		UAGCopyPaste: {
+			styleType: 'toggle-border-width'
+		},
+	},
+	toggleBorderRadius: {
+		type: 'number',
+		default: 3,
+		UAGCopyPaste: {
+			styleType: 'toggle-border-radius'
+		},
+	},
+	toggleBorderColor: {
+		type: 'string',
+		default: '#1e1e1e',
+		UAGCopyPaste: {
+			styleType: 'toggle-border-color'
+		},
+	},
+	toggleBorderActiveColor: {
+		type: 'string',
+		default: '#017cba',
+		UAGCopyPaste: {
+			styleType: 'toggle-border-hover-color'
+		},
+	},
+
+	// Input Line Height
 	inputLineHeightTablet: {
 		type: 'number',
 		UAGCopyPaste: {
@@ -710,7 +748,7 @@ const attributes = {
 	},
 	inputborderColor: {
 		type: 'string',
-		default: '#BDBDBD',
+		default: '#bdbdbd',
 		UAGCopyPaste: {
 			styleType: 'input-border-color'
 		},

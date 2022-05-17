@@ -26,8 +26,34 @@ const Border = ( props ) => {
 		borderStyle,
 		borderHoverColor,
 		borderActiveColor,
-		disabledBorderTitle
+		disabledBorderTitle,
 	} = props;
+
+	let tabsToUse = [ {
+		name: 'normal',
+		title: __(
+			'Normal',
+			'ultimate-addons-for-gutenberg'
+		),
+	} ];
+	if ( borderHoverColor ){
+		tabsToUse.push( {
+			name: 'hover',
+			title: __(
+				'Hover',
+				'ultimate-addons-for-gutenberg'
+			),
+		} );
+	}
+	if ( borderActiveColor ){
+		tabsToUse.push(  {
+			name: 'active',
+			title: __(
+				'Active',
+				'ultimate-addons-for-gutenberg'
+			),
+		} );
+	}
 
 	const tabOutputNormal = (
 		<AdvancedPopColorControl
@@ -39,6 +65,7 @@ const Border = ( props ) => {
 		/>
 	);
 	const tabOutputHover = (
+		borderHoverColor ? (
 		<AdvancedPopColorControl
 			label={ borderHoverColor.title }
 			colorValue={ borderHoverColor.value }
@@ -46,6 +73,7 @@ const Border = ( props ) => {
 				setAttributes( { [ borderHoverColor.label ]: value } )
 			}
 		/>
+		) : ''
 	);
 	const tabOutputActive = (
 		borderActiveColor ? (
@@ -58,45 +86,6 @@ const Border = ( props ) => {
 			/>
 		) : ''
 	);
-	const tabsToUse = borderActiveColor
-	? [
-		{
-			name: 'normal',
-			title: __(
-				'Normal',
-				'ultimate-addons-for-gutenberg'
-			),
-		},
-		{
-			name: 'hover',
-			title: __(
-				'Hover',
-				'ultimate-addons-for-gutenberg'
-			),
-		},
-		{
-			name: 'active',
-			title: __(
-				'Active',
-				'ultimate-addons-for-gutenberg'
-			),
-		},
-	] : [
-		{
-			name: 'normal',
-			title: __(
-				'Normal',
-				'ultimate-addons-for-gutenberg'
-			),
-		},
-		{
-			name: 'hover',
-			title: __(
-				'Hover',
-				'ultimate-addons-for-gutenberg'
-			),
-		},
-	];
 	const advancedControls = (
 		<>
 		{ ! disabledBorderTitle && (

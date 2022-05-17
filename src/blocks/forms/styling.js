@@ -69,6 +69,11 @@ function styling( props ) {
 		toggleActiveColor,
 		toggleDotColor,
 		toggleDotActiveColor,
+		toggleBorderStyle,
+		toggleBorderWidth,
+		toggleBorderRadius,
+		toggleBorderColor,
+		toggleBorderActiveColor,
 		labelColor,
 		labelHoverColor,
 		inputColor,
@@ -274,16 +279,17 @@ function styling( props ) {
 			// 20 is the min size of the toggle.
 			// Space around the toggle dot is calculated as 1/6th the size of the toggle dot.
 			'height': generateCSSUnit(
-				parseInt( 20 + toggleWidthSize + ( inputborderWidth * 2 ) + ( ( 20 + toggleWidthSize ) / 3 ) ),
+				parseInt( 20 + toggleWidthSize + ( toggleBorderWidth * 2 ) + ( ( 20 + toggleWidthSize ) / 3 ) ),
 				'px'
 			),
 			'width': generateCSSUnit(
-				parseInt( ( ( 20 + toggleWidthSize ) * 2.5 ) + ( inputborderWidth * 2 ) + ( ( 20 + toggleWidthSize ) / 3 ) ),
+				parseInt( ( ( 20 + toggleWidthSize ) * 2.5 ) + ( toggleBorderWidth * 2 ) + ( ( 20 + toggleWidthSize ) / 3 ) ),
 				'px'
 			),
 		},
 		' .uagb-switch input:checked + .uagb-slider': {
 			'background-color': toggleActiveColor,
+			'border-color': toggleBorderActiveColor,
 		},
 		' .uagb-switch input:checked + .uagb-slider:before': {
 			'background-color': toggleDotActiveColor,
@@ -311,6 +317,7 @@ function styling( props ) {
 		},
 		' .uagb-forms-radio-wrap input[type=radio]:checked + label:before': {
 			'background-color': toggleDotActiveColor,
+			'border-color': `${ toggleBorderActiveColor } !important`,
 			'box-shadow': `inset 0 0 0 4px ${ toggleActiveColor }`,
 			'font-size': 'calc(' + toggleSize + toggleSizeType + ' / 1.2 )',
 		},
@@ -325,11 +332,12 @@ function styling( props ) {
 		' .uagb-forms-checkbox-wrap input[type=checkbox]:checked + label:before': {
 			'color': toggleDotActiveColor,
 			'background-color': toggleActiveColor,
+			'border-color': `${ toggleBorderActiveColor } !important`,
 			'font-size': 'calc(' + toggleSize + 'px / 1.2 )',
 		},
 		' .uagb-forms-checkbox-wrap input[type=checkbox] + label:before': {
 			'background-color': toggleColor,
-			'border-radius': generateCSSUnit( inputborderRadius, 'px' ),
+			'border-radius': generateCSSUnit( toggleBorderRadius, 'px' ),
 			'width': generateCSSUnit( toggleSize, 'px' ),
 			'height': generateCSSUnit( toggleSize, 'px' ),
 		},
@@ -337,11 +345,13 @@ function styling( props ) {
 			'color': inputColor,
 		},
 		' .uagb-forms-accept-wrap input[type=checkbox]:checked + label:before': {
-			'color': toggleDotColor,
+			'color': toggleDotActiveColor,
+			'background-color': toggleActiveColor,
+			'border-color': `${ toggleBorderActiveColor } !important`,
 			'font-size': 'calc(' + toggleSize + 'px / 1.2 )',
 		},
 		' .uagb-forms-accept-wrap input[type=checkbox] + label:before': {
-			'border-radius': generateCSSUnit( inputborderRadius, 'px' ),
+			'border-radius': generateCSSUnit( toggleBorderRadius, 'px' ),
 			'background-color': toggleColor,
 			'width': generateCSSUnit( toggleSize, 'px' ),
 			'height': generateCSSUnit( toggleSize, 'px' ),
@@ -427,41 +437,41 @@ function styling( props ) {
 			' .uagb-forms-main-form .uagb-forms-checkbox-wrap input[type=checkbox] + label:before'
 		] = {
 			'border':
-				generateCSSUnit( inputborderWidth, 'px' ) +
+				generateCSSUnit( toggleBorderWidth, 'px' ) +
 				' ' +
-				inputborderStyle +
+				toggleBorderStyle +
 				' ' +
-				inputborderColor,
-			'border-radius': generateCSSUnit( inputborderRadius, 'px' ),
+				toggleBorderColor,
+			'border-radius': generateCSSUnit( toggleBorderRadius, 'px' ),
 		};
 		selectors[
 			' .uagb-forms-main-form .uagb-forms-accept-wrap input[type=checkbox] + label:before'
 		] = {
 			'border':
-				generateCSSUnit( inputborderWidth, 'px' ) +
+				generateCSSUnit( toggleBorderWidth, 'px' ) +
 				' ' +
-				inputborderStyle +
+				toggleBorderStyle +
 				' ' +
-				inputborderColor,
-			'border-radius': generateCSSUnit( inputborderRadius, 'px' ),
+				toggleBorderColor,
+			'border-radius': generateCSSUnit( toggleBorderRadius, 'px' ),
 		};
 		selectors[
 			' .uagb-forms-main-form .uagb-forms-radio-wrap input[type=radio] + label:before'
 		] = {
 			'border':
-				generateCSSUnit( inputborderWidth, 'px' ) +
+				generateCSSUnit( toggleBorderWidth, 'px' ) +
 				' ' +
-				inputborderStyle +
+				toggleBorderStyle +
 				' ' +
-				inputborderColor,
+				toggleBorderColor,
 		};
 		selectors[ ' .uagb-slider ' ] = {
 			'border':
-				generateCSSUnit( inputborderWidth, 'px' ) +
+				generateCSSUnit( toggleBorderWidth, 'px' ) +
 				' ' +
-				inputborderStyle +
+				toggleBorderStyle +
 				' ' +
-				inputborderColor,
+				toggleBorderColor,
 			'background-color': toggleColor,
 		};
 		// Label Hovev Colors
@@ -532,40 +542,40 @@ function styling( props ) {
 			' .uagb-forms-main-form .uagb-forms-checkbox-wrap input[type=checkbox] + label:before'
 		] = {
 			'border-bottom':
-				generateCSSUnit( inputborderWidth, 'px' ) +
+				generateCSSUnit( toggleBorderWidth, 'px' ) +
 				' ' +
-				inputborderStyle +
+				toggleBorderStyle +
 				' ' +
-				inputborderColor,
+				toggleBorderColor,
 		};
 		selectors[
 			' .uagb-forms-main-form .uagb-forms-accept-wrap input[type=checkbox] + label:before'
 		] = {
 			'border-bottom':
-				generateCSSUnit( inputborderWidth, 'px' ) +
+				generateCSSUnit( toggleBorderWidth, 'px' ) +
 				' ' +
-				inputborderStyle +
+				toggleBorderStyle +
 				' ' +
-				inputborderColor,
+				toggleBorderColor,
 		};
 		selectors[
 			' .uagb-forms-main-form .uagb-forms-radio-wrap input[type=radio] + label:before'
 		] = {
 			'border-bottom':
-				generateCSSUnit( inputborderWidth, 'px' ) +
+				generateCSSUnit( toggleBorderWidth, 'px' ) +
 				' ' +
-				inputborderStyle +
+				toggleBorderStyle +
 				' ' +
-				inputborderColor,
+				toggleBorderColor,
 		};
 		selectors[ ' .uagb-slider ' ] = {
 			'background-color': toggleColor,
 			'border-bottom':
-				generateCSSUnit( inputborderWidth, 'px' ) +
+				generateCSSUnit( toggleBorderWidth, 'px' ) +
 				' ' +
-				inputborderStyle +
+				toggleBorderStyle +
 				' ' +
-				inputborderColor,
+				toggleBorderColor,
 		};
 	}
 
@@ -602,11 +612,11 @@ function styling( props ) {
 		},
 		' .uagb-switch' : {
 			'height': generateCSSUnit(
-				parseInt( 20 + toggleWidthSizeTablet + ( inputborderWidth * 2 ) + ( ( 20 + toggleWidthSizeTablet ) / 3 ) ),
+				parseInt( 20 + toggleWidthSizeTablet + ( toggleBorderWidth * 2 ) + ( ( 20 + toggleWidthSizeTablet ) / 3 ) ),
 				'px'
 			),
 			'width': generateCSSUnit(
-				parseInt( ( ( 20 + toggleWidthSizeTablet ) * 2.5 ) + ( inputborderWidth * 2 ) + ( ( 20 + toggleWidthSizeTablet ) / 3 ) ),
+				parseInt( ( ( 20 + toggleWidthSizeTablet ) * 2.5 ) + ( toggleBorderWidth * 2 ) + ( ( 20 + toggleWidthSizeTablet ) / 3 ) ),
 				'px'
 			),
 		},
@@ -711,11 +721,11 @@ function styling( props ) {
 		},
 		' .uagb-switch' : {
 			'height': generateCSSUnit(
-				parseInt(  20 + toggleWidthSizeMobile + ( inputborderWidth * 2 ) + ( ( 20 + toggleWidthSizeMobile ) / 3 ) ),
+				parseInt(  20 + toggleWidthSizeMobile + ( toggleBorderWidth * 2 ) + ( ( 20 + toggleWidthSizeMobile ) / 3 ) ),
 				'px'
 			),
 			'width': generateCSSUnit(
-				parseInt(  ( ( 20 + toggleWidthSizeMobile ) * 2.5 ) + ( inputborderWidth * 2 ) + ( ( 20 + toggleWidthSizeMobile ) / 3 ) ),
+				parseInt(  ( ( 20 + toggleWidthSizeMobile ) * 2.5 ) + ( toggleBorderWidth * 2 ) + ( ( 20 + toggleWidthSizeMobile ) / 3 ) ),
 				'px'
 			),
 		},
