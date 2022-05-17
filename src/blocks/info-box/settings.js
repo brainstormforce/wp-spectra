@@ -1114,6 +1114,22 @@ const Settings = ( props ) => {
 													value: imageWidthUnit,
 													label: 'imageWidthUnit',
 												} }
+												units={ [
+													{
+														name: __(
+															'Pixel',
+															'ultimate-addons-for-gutenberg'
+														),
+														unitValue: 'px',
+													},
+													{
+														name: __(
+															'%',
+															'ultimate-addons-for-gutenberg'
+														),
+														unitValue: '%',
+													},
+												] }
 												setAttributes={ setAttributes }
 											/>
 										) }
@@ -1143,6 +1159,13 @@ const Settings = ( props ) => {
 														'ultimate-addons-for-gutenberg'
 													),
 													unitValue: 'px',
+												},
+												{
+													name: __(
+														'EM',
+														'ultimate-addons-for-gutenberg'
+													),
+													unitValue: 'em',
 												},
 											] }
 										/>

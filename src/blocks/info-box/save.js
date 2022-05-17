@@ -100,24 +100,25 @@ export default function save( props ) {
 
 	// Get Title and Prefix components.
 	const titleText = (
-		<div className="uagb-ifb-title-wrap">
-			{ showPrefix && '' !== prefixTitle && (
-				<Prefix
-					attributes={ props.attributes }
-					setAttributes="not_set"
-				/>
-			) }
-			{ 'none' !== seperatorStyle &&
-				position === 'after_prefix' &&
-				seperatorHtml }
-			{ showTitle && '' !== infoBoxTitle && (
-				<Title
-					attributes={ props.attributes }
-					setAttributes="not_set"
-				/>
-			) }
-		</div>
-	);
+		showPrefix || showTitle &&
+			<div className="uagb-ifb-title-wrap">
+				{ showPrefix && '' !== prefixTitle && (
+					<Prefix
+						attributes={ props.attributes }
+						setAttributes="not_set"
+					/>
+				) }
+				{ 'none' !== seperatorStyle &&
+					position === 'after_prefix' &&
+					seperatorHtml }
+				{ showTitle && '' !== infoBoxTitle && (
+					<Title
+						attributes={ props.attributes }
+						setAttributes="not_set"
+					/>
+				) }
+			</div>
+		);
 
 	const output = (
 		<>
