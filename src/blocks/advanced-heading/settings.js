@@ -346,7 +346,7 @@ const Settings = ( props ) => {
 				}
 				<ToggleControl
 					label={ __(
-						'Sub Heading',
+						'Description',
 						'ultimate-addons-for-gutenberg'
 					) }
 					checked={ headingDescToggle }
