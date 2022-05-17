@@ -23,7 +23,7 @@ export default function save( props ) {
 		seprator = <div className="uagb-separator"></div>
 	}
 	let headingText = '';
-	if ( headingTitle !== '' ) {
+	if ( headingTitle ) {
 		headingText = (
 			<RichText.Content
 				tagName={ headingTag }
@@ -35,7 +35,7 @@ export default function save( props ) {
 	}
 	let descText = '';
 
-	if ( headingDesc !== '' ) {
+	if ( headingDesc ) {
 		descText = (
 			<RichText.Content
 				tagName="p"
