@@ -1,12 +1,11 @@
 import { __ } from '@wordpress/i18n';
 import { applyFilters } from '@wordpress/hooks';
 import defaultAttributes from './attributes';
+
 let imgUrl = '';
 if ( defaultAttributes.image ) {
 	imgUrl = defaultAttributes.image.url;
 }
-
-console.log(imgUrl)
 
 const presets = [
 	{
