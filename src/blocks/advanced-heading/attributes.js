@@ -686,12 +686,14 @@ const attributes = {
 	// link
 	linkColor: {
 		type: 'string',
+		default: '#6104ff',
 		UAGCopyPaste: {
 			styleType: 'link-color'
 		}
 	},
 	linkHColor: {
 		type: 'string',
+		default: '#3a009f',
 		UAGCopyPaste: {
 			styleType: 'link-hover-color'
 		}
