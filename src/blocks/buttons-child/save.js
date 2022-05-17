@@ -17,7 +17,9 @@ export default function save( props ) {
 		icon,
 		iconPosition,
 		removeText,
-		noFollow
+		noFollow,
+		backgroundType,
+		borderStyle,
 	} = attributes;
 
 	const btnText = () => {
@@ -53,14 +55,16 @@ export default function save( props ) {
 				className,
 				'uagb-buttons__outer-wrap',
 				`uagb-block-${ block_id }`,
-				'wp-block-button'
+				'wp-block-button',
+				borderStyle !== 'none' ? 'uagb-is-style-outline' : '',
 			) }
 		>
 			<div className="uagb-button__wrapper">
 				<a
 					className={ classnames(
 						'uagb-buttons-repeater',
-						'wp-block-button__link'
+						'wp-block-button__link',
+						backgroundType !== 'transparent' ? 'uagb-has-background' : '',
 					) }
 					href={ link }
 					rel= { noFollow ? 'nofollow noopener ' : 'follow noopener' }
