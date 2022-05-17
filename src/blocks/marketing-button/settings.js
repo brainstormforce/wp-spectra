@@ -474,7 +474,7 @@ const Settings = ( props ) => {
 				{ showDescription && (
 				<ResponsiveSlider
 					label={ __(
-						'Bottom Spacing',
+						'Bottom Spacing (px)',
 						'ultimate-addons-for-gutenberg'
 					) }
 					data={ {
