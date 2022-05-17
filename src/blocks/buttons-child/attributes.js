@@ -188,7 +188,6 @@ const attributes = {
 	},
 	borderRadius: {
 		type: 'number',
-		default: 0,
 		UAGCopyPaste: {
 			styleType: 'btn-border-radius'
 		}
