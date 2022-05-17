@@ -365,48 +365,39 @@ if ( 'desktop' === $attr['stackBtn'] ) {
 	$selectors[' .uagb-cta__buttons']    = array(
 		'flex-direction' => 'column',
 		'row-gap'        => UAGB_Helper::get_css_value( $attr['gapBtn'], 'px' ),
-		'margin-left'    => UAGB_Helper::get_css_value( $attr['buttonRightSpace'], $attr['buttonRightSpaceType'] ),
 	);
 	$t_selectors[' .uagb-cta__buttons '] = array(
 		'row-gap'     => UAGB_Helper::get_css_value( $attr['gapBtnTablet'], 'px' ),
-		'margin-left' => UAGB_Helper::get_css_value( $attr['buttonRightSpaceTablet'], $attr['buttonRightSpaceType'] ),
 	);
 	$m_selectors[' .uagb-cta__buttons '] = array(
 		'row-gap'     => UAGB_Helper::get_css_value( $attr['gapBtnMobile'], 'px' ),
-		'margin-left' => UAGB_Helper::get_css_value( $attr['buttonRightSpaceMobile'], $attr['buttonRightSpaceType'] ),
 	);
 
 } elseif ( 'tablet' === $attr['stackBtn'] ) {
 
 	$selectors[' .uagb-cta__buttons ']  = array(
 		'column-gap'  => UAGB_Helper::get_css_value( $attr['gapBtn'], 'px' ),
-		'margin-left' => UAGB_Helper::get_css_value( $attr['buttonRightSpace'], $attr['buttonRightSpaceType'] ),
 	);
 	$t_selectors[' .uagb-cta__buttons'] = array(
 		'flex-direction' => 'column',
 		'row-gap'        => UAGB_Helper::get_css_value( $attr['gapBtnTablet'], 'px' ),
-		'margin-left'    => UAGB_Helper::get_css_value( $attr['buttonRightSpaceTablet'], $attr['buttonRightSpaceType'] ),
 	);
 	$m_selectors[' .uagb-cta__buttons'] = array(
 		'flex-direction' => 'column',
 		'row-gap'        => UAGB_Helper::get_css_value( $attr['gapBtnMobile'], 'px' ),
-		'margin-left'    => UAGB_Helper::get_css_value( $attr['buttonRightSpaceMobile'], $attr['buttonRightSpaceType'] ),
 	);
 
 } elseif ( 'mobile' === $attr['stackBtn'] ) {
 
 	$selectors[' .uagb-cta__buttons ']  = array(
 		'column-gap'  => UAGB_Helper::get_css_value( $attr['gapBtn'], 'px' ),
-		'margin-left' => UAGB_Helper::get_css_value( $attr['buttonRightSpace'], $attr['buttonRightSpaceType'] ),
 	);
 	$t_selectors[' .uagb-cta__buttons'] = array(
 		'column-gap'  => UAGB_Helper::get_css_value( $attr['gapBtnTablet'], 'px' ),
-		'margin-left' => UAGB_Helper::get_css_value( $attr['buttonRightSpaceTablet'], $attr['buttonRightSpaceType'] ),
 	);
 	$m_selectors[' .uagb-cta__buttons'] = array(
 		'flex-direction' => 'column',
 		'row-gap'        => UAGB_Helper::get_css_value( $attr['gapBtnMobile'], 'px' ),
-		'margin-left'    => UAGB_Helper::get_css_value( $attr['buttonRightSpaceMobile'], $attr['buttonRightSpaceType'] ),
 	);
 
 } elseif ( 'none' === $attr['stackBtn'] ) {

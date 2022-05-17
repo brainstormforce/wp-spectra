@@ -628,51 +628,42 @@ function CtaStyle( props ) {
 	if ( 'desktop' === stackBtn ) {
 		selectors[ ' .uagb-cta__buttons' ] = {
 			'flex-direction': 'column',
-			'row-gap': generateCSSUnit( gapBtn, 'px' ),
-			'margin-left': generateCSSUnit( buttonRightSpace, buttonRightSpaceType )
+			'row-gap': generateCSSUnit( gapBtn, 'px' )
 		};
 		tabletSelectors[ ' .uagb-cta__buttons' ] = {
 			'flex-direction': 'column',
-			'row-gap': generateCSSUnit( gapBtnTablet, 'px' ),
-			'margin-left': generateCSSUnit( buttonRightSpaceTablet, buttonRightSpaceType )
+			'row-gap': generateCSSUnit( gapBtnTablet, 'px' )
 		};
 		mobileSelectors[ ' .uagb-cta__buttons' ] = {
 			'flex-direction': 'column',
-			'row-gap': generateCSSUnit( gapBtnMobile, 'px' ),
-			'margin-left': generateCSSUnit( buttonRightSpaceMobile, buttonRightSpaceType )
+			'row-gap': generateCSSUnit( gapBtnMobile, 'px' )
 		};
 	} else if ( 'tablet' === stackBtn ) {
 		selectors[ ' .uagb-cta__buttons' ] = {
 			'column-gap': generateCSSUnit( gapBtn , 'px' ),
-			'align-items': 'center',
-			'margin-left': generateCSSUnit( buttonRightSpace, buttonRightSpaceType )
+			'align-items': 'center'
 		};
 		tabletSelectors[' .uagb-cta__buttons'] = {
 			'flex-direction': 'column',
-			'row-gap': generateCSSUnit( gapBtnTablet, 'px' ),
-			'margin-left': generateCSSUnit( buttonRightSpaceTablet, buttonRightSpaceType )
+			'row-gap': generateCSSUnit( gapBtnTablet, 'px' )
 		};
 		mobileSelectors[' .uagb-cta__buttons'] = {
 			'flex-direction': 'column',
-			'row-gap': generateCSSUnit( gapBtnMobile, 'px' ),
-			'margin-left': generateCSSUnit( buttonRightSpaceMobile, buttonRightSpaceType )
+			'row-gap': generateCSSUnit( gapBtnMobile, 'px' )
 		};
 
 	} else if ( 'mobile' === stackBtn ) {
 		selectors[ ' .uagb-cta__buttons' ] = {
 			'column-gap': generateCSSUnit( gapBtn , 'px' ),
-			'align-items': 'center',
-			'margin-left': generateCSSUnit( buttonRightSpace, buttonRightSpaceType )
+			'align-items': 'center'
 		};
 		tabletSelectors[ ' .uagb-cta__buttons' ] = {
 			'column-gap': generateCSSUnit( gapBtnTablet , 'px' ),
-			'align-items': 'center',
-			'margin-left': generateCSSUnit( buttonRightSpaceTablet, buttonRightSpaceType )
+			'align-items': 'center'
 		};
 		mobileSelectors[' .uagb-cta__buttons'] = {
 			'flex-direction': 'column',
-			'row-gap': generateCSSUnit( gapBtnMobile, 'px' ),
-			'margin-left': generateCSSUnit( buttonRightSpaceMobile, buttonRightSpaceType )
+			'row-gap': generateCSSUnit( gapBtnMobile, 'px' )
 		};
 	} else if ( 'none' === stackBtn ) {
 		selectors[ ' .uagb-cta__buttons' ] = {
