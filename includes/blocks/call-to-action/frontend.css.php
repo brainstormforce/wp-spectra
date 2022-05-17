@@ -367,16 +367,16 @@ if ( 'desktop' === $attr['stackBtn'] ) {
 		'row-gap'        => UAGB_Helper::get_css_value( $attr['gapBtn'], 'px' ),
 	);
 	$t_selectors[' .uagb-cta__buttons '] = array(
-		'row-gap'     => UAGB_Helper::get_css_value( $attr['gapBtnTablet'], 'px' ),
+		'row-gap' => UAGB_Helper::get_css_value( $attr['gapBtnTablet'], 'px' ),
 	);
 	$m_selectors[' .uagb-cta__buttons '] = array(
-		'row-gap'     => UAGB_Helper::get_css_value( $attr['gapBtnMobile'], 'px' ),
+		'row-gap' => UAGB_Helper::get_css_value( $attr['gapBtnMobile'], 'px' ),
 	);
 
 } elseif ( 'tablet' === $attr['stackBtn'] ) {
 
 	$selectors[' .uagb-cta__buttons ']  = array(
-		'column-gap'  => UAGB_Helper::get_css_value( $attr['gapBtn'], 'px' ),
+		'column-gap' => UAGB_Helper::get_css_value( $attr['gapBtn'], 'px' ),
 	);
 	$t_selectors[' .uagb-cta__buttons'] = array(
 		'flex-direction' => 'column',
@@ -390,10 +390,10 @@ if ( 'desktop' === $attr['stackBtn'] ) {
 } elseif ( 'mobile' === $attr['stackBtn'] ) {
 
 	$selectors[' .uagb-cta__buttons ']  = array(
-		'column-gap'  => UAGB_Helper::get_css_value( $attr['gapBtn'], 'px' ),
+		'column-gap' => UAGB_Helper::get_css_value( $attr['gapBtn'], 'px' ),
 	);
 	$t_selectors[' .uagb-cta__buttons'] = array(
-		'column-gap'  => UAGB_Helper::get_css_value( $attr['gapBtnTablet'], 'px' ),
+		'column-gap' => UAGB_Helper::get_css_value( $attr['gapBtnTablet'], 'px' ),
 	);
 	$m_selectors[' .uagb-cta__buttons'] = array(
 		'flex-direction' => 'column',
@@ -402,13 +402,13 @@ if ( 'desktop' === $attr['stackBtn'] ) {
 
 } elseif ( 'none' === $attr['stackBtn'] ) {
 	$selectors[' .uagb-cta__buttons']   = array(
-		'column-gap'  => UAGB_Helper::get_css_value( $attr['gapBtn'], 'px' ),
+		'column-gap' => UAGB_Helper::get_css_value( $attr['gapBtn'], 'px' ),
 	);
 	$t_selectors[' .uagb-cta__buttons'] = array(
-		'column-gap'  => UAGB_Helper::get_css_value( $attr['gapBtnTablet'], 'px' ),
+		'column-gap' => UAGB_Helper::get_css_value( $attr['gapBtnTablet'], 'px' ),
 	);
 	$m_selectors[' .uagb-cta__buttons'] = array(
-		'column-gap'  => UAGB_Helper::get_css_value( $attr['gapBtnMobile'], 'px' ),
+		'column-gap' => UAGB_Helper::get_css_value( $attr['gapBtnMobile'], 'px' ),
 	);
 }
 if ( 'before' === $attr['ctaIconPosition'] ) {
@@ -567,15 +567,15 @@ if ( 'desktop' === $attr['stack'] ) {
 	);
 
 } elseif ( 'none' === $attr['stack'] ) {
-	$selectors['.wp-block-uagb-call-to-action  ']  = array(
+	$selectors['.wp-block-uagb-call-to-action  ']                    = array(
 		'align-items'    => 'top' === $attr['buttonAlign'] ? 'flex-start' : 'center',
 		'flex-direction' => 'row',
 	);
-	$t_selectors['.wp-block-uagb-call-to-action '] = array(
+	$t_selectors['.wp-block-uagb-call-to-action ']                   = array(
 		'align-items'    => 'top' === $attr['buttonAlign'] ? 'flex-start' : 'center',
 		'flex-direction' => 'row',
 	);
-	$m_selectors['.wp-block-uagb-call-to-action '] = array(
+	$m_selectors['.wp-block-uagb-call-to-action ']                   = array(
 		'align-items'    => 'top' === $attr['buttonAlign'] ? 'flex-start' : 'center',
 		'flex-direction' => 'row',
 	);
@@ -585,7 +585,7 @@ if ( 'desktop' === $attr['stack'] ) {
 	$t_selectors['.wp-block-uagb-call-to-action .uagb-cta__buttons'] = array(
 		'margin-left' => UAGB_Helper::get_css_value( $attr['buttonRightSpaceTablet'], $attr['buttonRightSpaceType'] ),
 	);
-	$m_selectors[' .uagb-cta__outer-wrap  .uagb-cta__buttons'] = array(
+	$m_selectors[' .uagb-cta__outer-wrap  .uagb-cta__buttons']       = array(
 		'margin-left' => UAGB_Helper::get_css_value( $attr['buttonRightSpaceMobile'], $attr['buttonRightSpaceType'] ),
 	);
 }
