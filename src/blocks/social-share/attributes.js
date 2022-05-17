@@ -38,7 +38,7 @@ const attributes = {
 		type: 'string',
 		default: 'center',
 		UAGCopyPaste: {
-			styleType: 'column-gradient-value'
+			styleType: 'overall-alignment'
 		}
 	},
 	social_count: {
@@ -53,21 +53,21 @@ const attributes = {
 		type: 'number',
 		default: 10,
 		UAGCopyPaste: {
-			styleType: 'column-gradient-value'
+			styleType: 'icon-gap'
 		}
 	},
 	gapTablet: {
 		type: 'number',
 		default: 10,
 		UAGCopyPaste: {
-			styleType: 'column-gradient-value'
+			styleType: 'icon-gap-tablet'
 		}
 	},
 	gapMobile: {
 		type: 'number',
 		default: 10,
 		UAGCopyPaste: {
-			styleType: 'column-gradient-value'
+			styleType: 'icon-gap-mobile'
 		}
 	},
 	size: {
@@ -86,12 +86,14 @@ const attributes = {
 	},
 	sizeMobile: {
 		type: 'number',
+		default: 30,
 		UAGCopyPaste: {
 			styleType: 'icon-size-mobile'
 		}
 	},
 	sizeTablet: {
 		type: 'number',
+		default: 30,
 		UAGCopyPaste: {
 			styleType: 'icon-size-tablet'
 		}
@@ -112,12 +114,14 @@ const attributes = {
 	},
 	bgSizeMobile: {
 		type: 'number',
+		default: 10,
 		UAGCopyPaste: {
 			styleType: 'icon-bg-size-mobile'
 		}
 	},
 	bgSizeTablet: {
 		type: 'number',
+		default: 10,
 		UAGCopyPaste: {
 			styleType: 'icon-bg-size-tablet'
 		}
@@ -132,14 +136,16 @@ const attributes = {
 	borderRadiusTablet: {
 		type: 'number',
 		UAGCopyPaste: {
-			styleType: 'icon-border-radius'
+			styleType: 'icon-border-radius-tablet'
 		},
+		default: 0,
 	},
 	borderRadiusMobile: {
 		type: 'number',
 		UAGCopyPaste: {
-			styleType: 'icon-border-radius'
+			styleType: 'icon-border-radius-mobile'
 		},
+		default: 0,
 	},
 	social_layout: {
 		type: 'string',
