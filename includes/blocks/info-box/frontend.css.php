@@ -210,24 +210,20 @@ if ( 'text' === $attr['ctaType'] ) {
 	);
 }
 if ( 'button' === $attr['ctaType'] ) {
-	$selectors[' .uagb-infobox-cta-link svg']                      = array(
+	$selectors[' .uagb-infobox-cta-link svg']                          = array(
 		'font-size'   => $cta_icon_size,
 		'height'      => $cta_icon_size,
 		'width'       => $cta_icon_size,
 		'line-height' => $cta_icon_size,
 	);
-	$selectors[' .uagb-ifb-button-wrapper .uagb-infobox-cta-link'] = array(
+	$selectors[' .uagb-ifb-button-wrapper .uagb-infobox-cta-link']     = array(
 		'color'            => $attr['ctaBtnLinkColor'],
 		'background-color' => $attr['ctaBgColor'],
-		'border-style'     => $attr['ctaBorderStyle'],
-		'border-color'     => $attr['ctaBorderColor'],
 		'border-radius'    => UAGB_Helper::get_css_value( $attr['ctaBorderRadius'], 'px' ),
-		'border-width'     => UAGB_Helper::get_css_value( $attr['ctaBorderWidth'], 'px' ),
 		'padding-top'      => UAGB_Helper::get_css_value( $btnPaddingTop, $attr['paddingBtnUnit'] ),
 		'padding-bottom'   => UAGB_Helper::get_css_value( $btnPaddingBottom, $attr['paddingBtnUnit'] ),
 		'padding-left'     => UAGB_Helper::get_css_value( $btnPaddingLeft, $attr['paddingBtnUnit'] ),
 		'padding-right'    => UAGB_Helper::get_css_value( $btnPaddingRight, $attr['paddingBtnUnit'] ),
-
 	);
 	$selectors[' .uagb-ifb-button-wrapper .uagb-infobox-cta-link svg'] = array(
 		'fill' => $attr['ctaBtnLinkColor'],
@@ -240,6 +236,13 @@ if ( 'button' === $attr['ctaType'] ) {
 	$selectors[' .uagb-ifb-button-wrapper .uagb-infobox-cta-link:hover svg'] = array(
 		'fill' => $attr['ctaLinkHoverColor'],
 	);
+	if ( 'none' !== $attr['ctaBorderStyle'] ) {
+		$selectors[' .uagb-infobox-cta-link'] = array(
+			'border-style' => $attr['ctaBorderStyle'],
+			'border-color' => $attr['ctaBorderColor'],
+			'border-width' => UAGB_Helper::get_css_value( $attr['ctaBorderWidth'], 'px' ),
+		);
+	}
 }
 
 if ( 'above-title' === $attr['iconimgPosition'] || 'below-title' === $attr['iconimgPosition'] ) {

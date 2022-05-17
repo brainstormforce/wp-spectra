@@ -30,6 +30,7 @@ const Render = ( props ) => {
 
 	// Setup the attributes.
 	const {
+		block_id,
 		isPreview,
 		test_block,
 		imagePosition,
@@ -46,6 +47,7 @@ const Render = ( props ) => {
 		autoplay,
 		autoplaySpeed,
 		arrowColor,
+		equalHeight
 	} = attributes;
 
 	const NextArrow = () => {
@@ -91,6 +93,10 @@ const Render = ( props ) => {
 	const arrows =
 		'arrows' === arrowDots || 'arrows_dots' === arrowDots ? true : false;
 
+		const equalHeightClass = equalHeight
+		? 'uagb-post__carousel_equal-height'
+		: '';
+
 	const settings = {
 		accessibility: false,
 		slidesToShow: columns,
@@ -103,6 +109,11 @@ const Render = ( props ) => {
 		arrows,
 		dots,
 		rtl: false,
+		afterChange: () => {
+			if ( equalHeight ) {
+				uagb_carousel_height( block_id ); // eslint-disable-line no-undef
+			}
+		},
 		draggable: false,
 		nextArrow: <NextArrow arrowSize={ arrowSize } />,
 		prevArrow: <PrevArrow arrowSize={ arrowSize } />,
@@ -133,7 +144,8 @@ const Render = ( props ) => {
 				className,
 				'uagb-slick-carousel uagb-tm__arrow-outside',
 				`uagb-editor-preview-mode-${ deviceType.toLowerCase() }`,
-				`uagb-block-${ props.clientId.substr( 0, 8 ) }`
+				`uagb-block-${ props.clientId.substr( 0, 8 ) }`,
+				`${ equalHeightClass }`,
 			) }
 		>
 			<Suspense fallback={ lazyLoader() }>

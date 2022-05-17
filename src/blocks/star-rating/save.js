@@ -6,7 +6,7 @@ import classnames from 'classnames';
 import { RichText } from '@wordpress/block-editor';
 
 export default function save( props ) {
-	const { rating, block_id, title, range } = props.attributes;
+	const { rating, block_id, title, range, displayTitle } = props.attributes;
 
 	const rangeValue = parseInt( range );
 	const stars = [];
@@ -24,7 +24,7 @@ export default function save( props ) {
 				`uagb-block-${ block_id }`
 			) }
 		>
-			{ title && (
+			{ ( displayTitle && title ) && (
 				<RichText.Content
 					tagName="p"
 					value={ title }
