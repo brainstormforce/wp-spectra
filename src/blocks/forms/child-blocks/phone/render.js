@@ -26,10 +26,12 @@ const Render = ( props ) => {
 	let phone_html = '';
 
 	let placeholder = '';
-	if ( pattern === '[0-9]{3}-[0-9]{2}-[0-9]{3}' ) {
+	if ( pattern === '[0-9]{3}-?[0-9]{2}-?[0-9]{3}' ) {
 		placeholder = __( '123-45-678', 'ultimate-addons-for-gutenberg' );
-	} else if ( pattern === '[0-9]{3}-[0-9]{3}-[0-9]{4}' ) {
-		placeholder = __( '123-456-6789', 'ultimate-addons-for-gutenberg' );
+	} else if ( pattern === '[0-9]{3}-?[0-9]{3}-?[0-9]{4}' ) {
+		placeholder = __( '123-456-7890', 'ultimate-addons-for-gutenberg' );
+	} else if ( pattern === '[0-9]{3}\s?[0-9]{3}\s?[0-9]{4}' ) {
+		placeholder = __( '123 456 7890', 'ultimate-addons-for-gutenberg' );
 	}
 
 	if ( pattern !== '' ) {
