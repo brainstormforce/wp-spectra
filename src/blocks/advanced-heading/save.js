@@ -9,6 +9,7 @@ import { RichText } from '@wordpress/block-editor';
 export default function save( props ) {
 	const {
 		block_id,
+		headingTitleToggle,
 		headingTitle,
 		headingDesc,
 		headingDescToggle,
@@ -51,7 +52,7 @@ export default function save( props ) {
 				`uagb-block-${ block_id }`
 			) }
 		>
-			{ headingText }
+			{ headingTitleToggle && headingText }
 			{ seprator }
 			{ headingDescToggle && descText }
 		</div>

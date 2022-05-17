@@ -35,6 +35,7 @@ const Settings = ( props ) => {
 	props = props.parentProps;
 	const { attributes, deviceType, setAttributes } = props;
 	const {
+		headingTitleToggle,
 		headingAlign,
 		headingColorType,
 		headingColor,
@@ -281,51 +282,65 @@ const Settings = ( props ) => {
 					] }
 					showIcons={ true }
 				/>
-				<MultiButtonsControl
-					setAttributes={ setAttributes }
+				<ToggleControl
 					label={ __(
-						'Heading Tag',
+						'Heading',
 						'ultimate-addons-for-gutenberg'
 					) }
-					data={ {
-						value: headingTag,
-						label: 'headingTag',
-					} }
-					options={ [
-						{
-							value: 'h1',
-							label: __( 'H1', 'ultimate-addons-for-gutenberg' ),
-						},
-						{
-							value: 'h2',
-							label: __( 'H2', 'ultimate-addons-for-gutenberg' ),
-						},
-						{
-							value: 'h3',
-							label: __( 'H3', 'ultimate-addons-for-gutenberg' ),
-						},
-						{
-							value: 'h4',
-							label: __( 'H4', 'ultimate-addons-for-gutenberg' ),
-						},
-						{
-							value: 'h5',
-							label: __( 'H5', 'ultimate-addons-for-gutenberg' ),
-						},
-						{
-							value: 'h6',
-							label: __( 'H6', 'ultimate-addons-for-gutenberg' ),
-						},
-						{
-							value: 'p',
-							label: __( 'P', 'ultimate-addons-for-gutenberg' ),
-						},
-						{
-							value: 'div',
-							label: __( 'Div', 'ultimate-addons-for-gutenberg' ),
-						},
-					] }
+					checked={ headingTitleToggle }
+					onChange={ () =>
+						setAttributes( { headingTitleToggle : ! headingTitleToggle } )
+					}
 				/>
+				{
+					headingTitleToggle && (
+						<MultiButtonsControl
+							setAttributes={ setAttributes }
+							label={ __(
+								'Heading Tag',
+								'ultimate-addons-for-gutenberg'
+							) }
+							data={ {
+								value: headingTag,
+								label: 'headingTag',
+							} }
+							options={ [
+								{
+									value: 'h1',
+									label: __( 'H1', 'ultimate-addons-for-gutenberg' ),
+								},
+								{
+									value: 'h2',
+									label: __( 'H2', 'ultimate-addons-for-gutenberg' ),
+								},
+								{
+									value: 'h3',
+									label: __( 'H3', 'ultimate-addons-for-gutenberg' ),
+								},
+								{
+									value: 'h4',
+									label: __( 'H4', 'ultimate-addons-for-gutenberg' ),
+								},
+								{
+									value: 'h5',
+									label: __( 'H5', 'ultimate-addons-for-gutenberg' ),
+								},
+								{
+									value: 'h6',
+									label: __( 'H6', 'ultimate-addons-for-gutenberg' ),
+								},
+								{
+									value: 'p',
+									label: __( 'P', 'ultimate-addons-for-gutenberg' ),
+								},
+								{
+									value: 'div',
+									label: __( 'Div', 'ultimate-addons-for-gutenberg' ),
+								},
+							] }
+						/>
+					)
+				}
 				<ToggleControl
 					label={ __(
 						'Sub Heading',
@@ -1195,7 +1210,7 @@ const Settings = ( props ) => {
 						{ generalPanel() }
 					</InspectorTab>
 					<InspectorTab { ...UAGTabs.style }>
-						{ headingStylePanel() }
+						{ headingTitleToggle && headingStylePanel() }
 						{ 'none' !== seperatorStyle && seperatorSettings() }
 						{ headingDescToggle && subHeadingStylePanel() }
 						{linkStylePanel()}

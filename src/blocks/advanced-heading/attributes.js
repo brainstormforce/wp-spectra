@@ -28,7 +28,10 @@ const attributes = {
 			styleType: 'block-blackground'
 		}
 	},
-
+	headingTitleToggle: {
+		source: 'boolean',
+		default: true,
+	},
 	headingTitle: {
 		source: 'html',
 		selector: '.uagb-heading-text',
