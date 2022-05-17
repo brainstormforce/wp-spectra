@@ -1,92 +1,125 @@
 const addBlockEditorDynamicStyles = ( styleTagId, styling ) => {
 
-    // Static CSS.
+	setTimeout( () => {
 
-    const editorStaticCSSStylesTag = document.getElementById( 'uagb-editor-styles' );
-    let cloneEditorStaticCSSStylesTag = false;
+		// Static Editor CSS.
 
-    if ( editorStaticCSSStylesTag ) {
+		const editorStaticCSSStylesTag = document.getElementById( 'uagb-editor-styles' );
+		let cloneEditorStaticCSSStylesTag = false;
 
-        cloneEditorStaticCSSStylesTag = editorStaticCSSStylesTag.cloneNode( true );
-    }
+		if ( editorStaticCSSStylesTag ) {
 
-    // Static CSS Ends.
+			cloneEditorStaticCSSStylesTag = editorStaticCSSStylesTag.cloneNode( true );
+		}
 
-    // Slick CSS.
-    const slickStaticCSSStylesTag = document.getElementById( 'uagb-slick-css-css' );
-    let cloneSlickStaticCSSStylesTag = false;
+		// Static Editor CSS Ends.
 
-    if ( slickStaticCSSStylesTag ) {
+		// Static CSS.
 
-        cloneSlickStaticCSSStylesTag = slickStaticCSSStylesTag.cloneNode( true );
-    }
+		const staticCSSStylesTag = document.getElementById( 'uagb-block-css-css' );
+		let cloneStaticCSSStylesTag = false;
 
-    // Desktop.
-    const element = document.getElementById(
-        styleTagId
-    );
+		if ( staticCSSStylesTag ) {
 
-    if ( null === element || undefined === element ) {
+			cloneStaticCSSStylesTag = staticCSSStylesTag.cloneNode( true );
+		}
 
-        const $style = document.createElement( 'style' );
-        $style.setAttribute(
-            'id',
-            styleTagId
-        );
-        $style.innerHTML = styling;
-        document.head.appendChild( $style );
-    }
+		// Static CSS Ends.
 
-    if ( null !== element && undefined !== element ) {
-        element.innerHTML = styling;
-    }
-    // Desktop ends.
+		// Slick CSS.
+		const slickStaticCSSStylesTag = document.getElementById( 'uagb-slick-css-css' );
+		let cloneSlickStaticCSSStylesTag = false;
 
-    // Tablet / Mobile Starts.
-    const tabletPreview = document.getElementsByClassName( 'is-tablet-preview' );
-    const mobilePreview = document.getElementsByClassName( 'is-mobile-preview' );
+		if ( slickStaticCSSStylesTag ) {
 
-    if ( 0 !== tabletPreview.length || 0 !== mobilePreview.length ) {
+			cloneSlickStaticCSSStylesTag = slickStaticCSSStylesTag.cloneNode( true );
+		}
 
-        const preview = tabletPreview[0] || mobilePreview[0];
+		// Desktop.
+		const element = document.getElementById(
+			styleTagId
+		);
 
-        const iframe = preview.getElementsByTagName( 'iframe' )[0];
-        const iframeDocument = iframe.contentWindow.document || iframe.contentDocument;
+		if ( null === element || undefined === element ) {
 
-        let iframeElement = iframeDocument.getElementById(
-            styleTagId
-        );
-        if ( null === iframeElement || undefined === iframeElement ) {
+			const $style = document.createElement( 'style' );
+			$style.setAttribute(
+				'id',
+				styleTagId
+			);
+			$style.innerHTML = styling;
+			document.head.appendChild( $style );
+		}
 
-            const $style = document.createElement( 'style' );
-            $style.setAttribute(
-                'id',
-                styleTagId
-                );
+		if ( null !== element && undefined !== element ) {
+			element.innerHTML = styling;
+		}
+		// Desktop ends.
 
-            // Static CSS.
-            if ( cloneEditorStaticCSSStylesTag ) {
-                iframeDocument.head.appendChild( cloneEditorStaticCSSStylesTag );
-            }
+		// Tablet / Mobile Starts.
+		const tabletPreview = document.getElementsByClassName( 'is-tablet-preview' );
+		const mobilePreview = document.getElementsByClassName( 'is-mobile-preview' );
 
-            // Slick CSS.
-            if ( cloneSlickStaticCSSStylesTag ) {
-                iframeDocument.head.appendChild( cloneSlickStaticCSSStylesTag );
-            }
+		if ( 0 !== tabletPreview.length || 0 !== mobilePreview.length ) {
 
-            // Dynamic CSS.
-            iframeDocument.head.appendChild( $style );
+			const preview = tabletPreview[0] || mobilePreview[0];
 
-        }
+			const iframe = preview.getElementsByTagName( 'iframe' )[0];
+			const iframeDocument = iframe.contentWindow.document || iframe.contentDocument;
 
-        iframeElement = iframeDocument.getElementById(
-            styleTagId
-        );
+			// Static CSS.
+			if ( cloneStaticCSSStylesTag ) {
+				const iframeStaticCSSStylesTag = iframeDocument.getElementById( 'uagb-block-css-css' );
+				if ( iframeStaticCSSStylesTag ) {
+					iframeDocument.head.removeChild( iframeStaticCSSStylesTag );
+				}
+				iframeDocument.head.appendChild( cloneStaticCSSStylesTag );
+			}
 
-        if ( null !== iframeElement && undefined !== iframeElement ) {
-            iframeElement.innerHTML = styling;
-        }
-    }
+			// Static Editor CSS.
+			if ( cloneEditorStaticCSSStylesTag ) {
+				const iframeEditorStaticCSSStylesTag = iframeDocument.getElementById( 'uagb-editor-styles' );
+				if ( iframeEditorStaticCSSStylesTag ) {
+					iframeDocument.head.removeChild( iframeEditorStaticCSSStylesTag );
+				}
+				iframeDocument.head.appendChild( cloneEditorStaticCSSStylesTag );
+			}
+
+			// Slick CSS.
+			if ( cloneSlickStaticCSSStylesTag ) {
+				const iframeSlickStaticCSSStylesTag = iframeDocument.getElementById( 'uagb-slick-css-css' );
+				if ( iframeSlickStaticCSSStylesTag ) {
+					iframeDocument.head.removeChild( iframeSlickStaticCSSStylesTag );
+				}
+				iframeDocument.head.appendChild( cloneSlickStaticCSSStylesTag );
+			}
+
+			let iframeElement = iframeDocument.getElementById(
+				styleTagId
+			);
+
+			if ( null === iframeElement || undefined === iframeElement ) {
+
+				const $style = document.createElement( 'style' );
+				$style.setAttribute(
+					'id',
+					styleTagId
+				);
+
+				// Dynamic CSS.
+				iframeDocument.head.appendChild( $style );
+
+			}
+
+			iframeElement = iframeDocument.getElementById(
+				styleTagId
+			);
+
+			if ( null !== iframeElement && undefined !== iframeElement ) {
+				iframeElement.innerHTML = styling;
+			}
+		}
+	} );
 }
 
 export default addBlockEditorDynamicStyles;
