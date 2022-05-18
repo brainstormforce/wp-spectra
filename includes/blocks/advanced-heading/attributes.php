@@ -109,11 +109,11 @@ return array(
 	'blockMarginUnitMobile'        => 'px',
 	'blockMarginLink'              => '',
 	// link.
-	'linkColor'                    => '',
+	'linkColor'                    => '#6104ff',
 	'linkHColor'                   => '',
 	// Highlight.
-	'highLightColor'               => '#6104ff',
-	'highLightBackground'          => '',
+	'highLightColor'               => '#fff',
+	'highLightBackground'          => '#6104ff',
 	'highLightBorderWidth'         => '',
 	'highLightBorderRadius'        => '',
 	'highLightBorderStyle'         => 'none',
