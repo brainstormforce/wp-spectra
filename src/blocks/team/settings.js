@@ -1052,35 +1052,49 @@ const Settings = ( props ) => {
 				title={ __( 'Social Icons', 'ultimate-addons-for-gutenberg' ) }
 				initialOpen={ false }
 			>
-				<TypographyControl
-					label={ __(
-						'Typography',
+				<ResponsiveSlider
+					label={__(
+						'Icon Size',
 						'ultimate-addons-for-gutenberg'
-					) }
-					attributes={ attributes }
-					setAttributes={ setAttributes }
-					fontSizeType={ {
+					)}
+					data={{
+						desktop: {
+							value: socialFontSize,
+							label: 'socialFontSize',
+						},
+						tablet: {
+							value: socialFontSizeTablet,
+							label: 'socialFontSizeTablet',
+						},
+						mobile: {
+							value: socialFontSizeMobile,
+							label: 'socialFontSizeMobile',
+						},
+					}}
+					units={ [
+						{
+							name: __(
+								'Pixel',
+								'ultimate-addons-for-gutenberg'
+							),
+							unitValue: 'px',
+						},
+						{
+							name: __(
+								'EM',
+								'ultimate-addons-for-gutenberg'
+							),
+							unitValue: 'em',
+						},
+					] }
+					unit={ {
 						value: socialFontSizeType,
 						label: 'socialFontSizeType',
 					} }
-					fontSize={ {
-						value: socialFontSize,
-						label: 'socialFontSize',
-					} }
-					fontSizeMobile={ {
-						value: socialFontSizeMobile,
-						label: 'socialFontSizeMobile',
-					} }
-					fontSizeTablet={ {
-						value: socialFontSizeTablet,
-						label: 'socialFontSizeTablet',
-					} }
-					sizeText={ __(
-						'Icon Size',
-						'ultimate-addons-for-gutenberg'
-					) }
-					disableFontFamily={ true }
-					disableLineHeight={ true }
+					min={0}
+					limitMax={ { 'px': 100, 'em': 100 } }
+					displayUnit={true}
+					setAttributes={setAttributes}
 				/>
 				<ResponsiveSlider
 					label={ __(

@@ -40,6 +40,8 @@ function styling( props ) {
 		socialFontSizeType,
 		socialFontSizeMobile,
 		socialFontSizeTablet,
+		socialSpaceTablet,
+		socialSpaceMobile,
 		imgAlign,
 		imgWidth,
 		imgWidthTablet,
@@ -271,6 +273,26 @@ function styling( props ) {
 			'margin-left': generateCSSUnit( imageMarginLeftMobile, mobileImageMarginUnit ),
 			'margin-right': generateCSSUnit( imageMarginRightMobile, mobileImageMarginUnit ),
 		},
+		'.uagb-team__image-position-left .uagb-team__social-icon': {
+			'margin-right': generateCSSUnit( socialSpaceMobile, 'px' ),
+			'margin-left': '0',
+		},
+		'.uagb-team__image-position-right .uagb-team__social-icon': {
+			'margin-left': generateCSSUnit( socialSpaceMobile, 'px' ),
+			'margin-right': '0',
+		},
+		'.uagb-team__image-position-above.uagb-team__align-center .uagb-team__social-icon': {
+			'margin-right': generateCSSUnit( socialSpaceMobile / 2, 'px' ),
+			'margin-left': generateCSSUnit( socialSpaceMobile / 2, 'px' ),
+		},
+		'.uagb-team__image-position-above.uagb-team__align-left .uagb-team__social-icon': {
+			'margin-right': generateCSSUnit( socialSpaceMobile, 'px' ),
+			'margin-left': '0',
+		},
+		'.uagb-team__image-position-above.uagb-team__align-right .uagb-team__social-icon': {
+			'margin-left': generateCSSUnit( socialSpaceMobile, 'px' ),
+			'margin-right': '0',
+		},
 	};
 	mobileSelectors[
 		' ' +
@@ -325,6 +347,26 @@ function styling( props ) {
 			),
 			'margin-left': generateCSSUnit( imageMarginLeftTablet, tabletImageMarginUnit ),
 			'margin-right': generateCSSUnit( imageMarginRightTablet, tabletImageMarginUnit ),
+		},
+		'.uagb-team__image-position-left .uagb-team__social-icon': {
+			'margin-right': generateCSSUnit( socialSpaceTablet, 'px' ),
+			'margin-left': '0',
+		},
+		'.uagb-team__image-position-right .uagb-team__social-icon': {
+			'margin-left': generateCSSUnit( socialSpaceTablet, 'px' ),
+			'margin-right': '0',
+		},
+		'.uagb-team__image-position-above.uagb-team__align-center .uagb-team__social-icon': {
+			'margin-right': generateCSSUnit( socialSpaceTablet / 2, 'px' ),
+			'margin-left': generateCSSUnit( socialSpaceTablet / 2, 'px' ),
+		},
+		'.uagb-team__image-position-above.uagb-team__align-left .uagb-team__social-icon': {
+			'margin-right': generateCSSUnit( socialSpaceTablet, 'px' ),
+			'margin-left': '0',
+		},
+		'.uagb-team__image-position-above.uagb-team__align-right .uagb-team__social-icon': {
+			'margin-left': generateCSSUnit( socialSpaceTablet, 'px' ),
+			'margin-right': '0',
 		},
 	};
 	tabletSelectors[
