@@ -908,7 +908,7 @@ const Settings = ( props ) => {
 	const spacingSettings = (
 		<UAGAdvancedPanelBody
 			title={ __( 'Spacing', 'ultimate-addons-for-gutenberg' ) }
-			initialOpen={ false }
+			initialOpen={ true }
 		>
 			{ authorImage && (
 				<ResponsiveSlider
