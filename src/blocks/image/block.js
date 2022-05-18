@@ -12,7 +12,7 @@ import { registerBlockType } from '@wordpress/blocks';
 
 
 registerBlockType( 'uagb/image', {
-	title: __( 'Advanced Image', 'ultimate-addons-for-gutenberg' ),
+	title: __( 'Image', 'ultimate-addons-for-gutenberg' ),
 	description: __( 'This block let\'s you add an Image.', 'ultimate-addons-for-gutenberg' ),
 	icon: UAGB_Block_Icons.image,
 	keywords: [
@@ -39,6 +39,11 @@ registerBlockType( 'uagb/image', {
 				radius: true
 			}
 		}
+	},
+	getEditWrapperProps( { align } ) {
+		return {
+			'data-align': align,
+		};
 	},
 	category: uagb_blocks_info.category,
 	attributes,
