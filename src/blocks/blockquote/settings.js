@@ -1684,12 +1684,13 @@ const Settings = ( props ) => {
 						{ enableTweet && iconStyleSetting() }
 						{ quoteStyling }
 						{ authorStyling }
-						{ spacingSettings }
 					</InspectorTab>
 					<InspectorTab
 						{ ...UAGTabs.advance }
 						parentProps={ props }
-					></InspectorTab>
+					>
+						{ spacingSettings }
+					</InspectorTab>
 				</InspectorTabs>
 			</InspectorControls>
 			{ loadDescGoogleFonts }
