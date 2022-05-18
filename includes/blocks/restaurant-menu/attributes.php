@@ -16,7 +16,7 @@ return array(
 	'titleColor'                 => '#333',
 	'imagePosition'              => 'left',
 	'imageAlignment'             => 'top',
-	'titleFontSize'              => '',
+	'titleFontSize'              => 24,
 	'titleFontSizeType'          => 'px',
 	'titleFontSizeMobile'        => '',
 	'titleFontSizeTablet'        => '',

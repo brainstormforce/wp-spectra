@@ -51,6 +51,7 @@ const Render = ( props ) => {
 				required={ phoneRequired }
 				className="uagb-forms-phone-input uagb-forms-input"
 				name={ block_id }
+				autoComplete={ autocomplete }
 			/>
 		);
 	}

@@ -21,7 +21,7 @@ const Render = ( props ) => {
 	const {
 		className,
 		setAttributes,
-		attributes: { isPreview, rating, range, title },
+		attributes: { isPreview, rating, range, title, displayTitle },
 	} = props;
 
 	const rangeValue = parseInt( range );
@@ -43,16 +43,18 @@ const Render = ( props ) => {
 				`uagb-block-${ props.clientId.substr( 0, 8 ) }`
 			) }
 		>
-			<RichText
-				tagName="p"
-				placeholder={ __(
-					'Write a title',
-					'ultimate-addons-for-gutenberg'
-				) }
-				value={ title }
-				className="uag-star-rating__title"
-				onChange={ ( value ) => setAttributes( { title: value } ) }
-			/>
+			{ displayTitle && (
+				<RichText
+					tagName="p"
+					placeholder={ __(
+						'Write a title',
+						'ultimate-addons-for-gutenberg'
+					) }
+					value={ title }
+					className="uag-star-rating__title"
+					onChange={ ( value ) => setAttributes( { title: value } ) }
+				/>
+			) }
 			<div className="uag-star-rating" title={ `${ rating }/${ range }` }>
 				{ stars }
 			</div>

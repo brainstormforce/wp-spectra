@@ -8,6 +8,8 @@ import generateCSSUnit from '@Controls/generateCSSUnit';
 function testimonialStyle( props ) {
 	const {
 		headingAlign,
+		headingAlignTablet,
+		headingAlignMobile,
 		companyColor,
 		descColor,
 		authorColor,
@@ -296,6 +298,7 @@ function testimonialStyle( props ) {
 			),
 		},
 		' .uagb-testimonial__wrap .uagb-tm__image-content': {
+			'text-align': headingAlignMobile,
 			'padding-top': generateCSSUnit(
 				imgpaddingTopMobile,
 				imgmobilePaddingUnit
@@ -334,6 +337,7 @@ function testimonialStyle( props ) {
 			),
 		},
 		' .uagb-tm__content': {
+			'text-align': headingAlignMobile,
 			'padding-top': generateCSSUnit(
 				paddingTopMobile,
 				mobilePaddingUnit
@@ -367,6 +371,7 @@ function testimonialStyle( props ) {
 			'margin-bottom': generateCSSUnit( rowGapTablet, rowGapType ),
 		},
 		' .uagb-testimonial__wrap .uagb-tm__image-content': {
+			'text-align': headingAlignTablet,
 			'padding-top': generateCSSUnit(
 				imgpaddingTopTablet,
 				imgtabletPaddingUnit
@@ -385,6 +390,7 @@ function testimonialStyle( props ) {
 			),
 		},
 		' .uagb-tm__content': {
+			'text-align': headingAlignTablet,
 			'padding-top': generateCSSUnit(
 				paddingTopTablet,
 				tabletPaddingUnit
@@ -401,7 +407,6 @@ function testimonialStyle( props ) {
 				paddingRightTablet,
 				tabletPaddingUnit
 			),
-			'text-align': 'center',
 		},
 		' .uagb-tm__desc': {
 			'margin-bottom': generateCSSUnit( descSpaceTablet, descSpaceType ),

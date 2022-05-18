@@ -150,6 +150,11 @@ const Settings = ( props ) => {
 		backgroundVideo,
 		topInvert,
 		bottomInvert,
+
+		textColor,
+		linkColor,
+		linkHoverColor,
+		
 	} = attributes;
 
 	let currentDirection = directionDesktop;
@@ -832,6 +837,73 @@ const Settings = ( props ) => {
 		);
 	};
 
+	const linkColorMarkup = (
+		<AdvancedPopColorControl
+			label={ __(
+				'Link Color',
+				'ultimate-addons-for-gutenberg'
+			) }
+			colorValue={ linkColor }
+			onColorChange={ ( value ) =>
+				setAttributes( { linkColor: value } )
+			}
+		/>
+	);
+
+	const linkHoverColorMarkup = (
+		<AdvancedPopColorControl
+			label={ __(
+				'Link Hover Color',
+				'ultimate-addons-for-gutenberg'
+			) }
+			colorValue={ linkHoverColor }
+			onColorChange={ ( value ) =>
+				setAttributes( { linkHoverColor: value } )
+			}
+		/>
+	);
+
+	const colorSettings = () => {
+		return (
+			<UAGAdvancedPanelBody
+				title={ __( 'Color', 'ultimate-addons-for-gutenberg' ) }
+				initialOpen={ false }
+			>
+				<AdvancedPopColorControl
+					label={ __(
+						'Text Color',
+						'ultimate-addons-for-gutenberg'
+					) }
+					colorValue={ textColor }
+					onColorChange={ ( value ) =>
+						setAttributes( { textColor: value } )
+					}
+				/>
+				<UAGTabsControl
+						tabs={ [
+							{
+								name: 'normal',
+								title: __(
+									'Normal',
+									'ultimate-addons-for-gutenberg'
+								),
+							},
+							{
+								name: 'hover',
+								title: __(
+									'Hover',
+									'ultimate-addons-for-gutenberg'
+								),
+							},
+						] }
+						normal={ linkColorMarkup }
+						hover={ linkHoverColorMarkup }
+						disableBottomSeparator={ true }
+					/>
+			</UAGAdvancedPanelBody>
+		);
+	}
+
 	const borderSettings = () => {
 		return(
 			<UAGAdvancedPanelBody
@@ -1494,6 +1566,7 @@ const Settings = ( props ) => {
 					</InspectorTab>
 					<InspectorTab { ...UAGTabs.style }>
 						{ backgroundSettings() }
+						{ colorSettings() }
 						{ borderSettings() }
 						{ boxShadowSettings() }
 						{ shapeDividersSettings() }

@@ -24,9 +24,10 @@ const InspectorTab = ( props ) => {
 		if ( inspectorTabName && type === inspectorTabName && panelBodyClass ) {
 			const panelToActivate = tabRef.current.querySelector( `.${uagLastOpenedState.panelBodyClass}` );
 
-			if ( panelToActivate && ! panelToActivate.classList.contains( 'is-opened' ) ) {
-				panelToActivate.querySelector( '.components-button' ).click();
-
+			if ( panelToActivate ) {
+				if ( ! panelToActivate.classList.contains( 'is-opened' ) ) {
+					panelToActivate.querySelector( '.components-button' ).click();
+				}
 				if ( settingsPopup ) {
 					// Need a delay to open the popup as the makup load just after the above click function called.
 					setTimeout( function() {

@@ -287,6 +287,7 @@ const attributes = {
 		UAGCopyPaste: {
 			styleType: 'main-title-font-size'
 		},
+		default: 20
 	},
 	titleFontSizeTablet: {
 		type: 'number',

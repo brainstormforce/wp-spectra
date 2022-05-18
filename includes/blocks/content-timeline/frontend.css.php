@@ -123,13 +123,13 @@ $selectors = array(
 	'.uagb-timeline__center-block .uagb-timeline__right .uagb-timeline__arrow' => array(
 		'height' => $connector_size,
 	),
-	' .uagb-timeline__center-block .uagb-timeline__marker' => array(
-		'margin-left'  => UAGB_Helper::get_css_value( $left_margin, $attr['marginUnit'] ),
+	'.uagb-timeline__center-block .uagb-timeline__left .uagb-timeline__marker' => array(
+		'margin-left'  => UAGB_Helper::get_css_value( $left_margin + 3, $attr['marginUnit'] ),
 		'margin-right' => UAGB_Helper::get_css_value( $right_margin, $attr['marginUnit'] ),
 	),
-	'.uagb-timeline__center-block .uagb-timeline__marker'  => array(
+	'.uagb-timeline__center-block .uagb-timeline__right .uagb-timeline__marker' => array(
 		'margin-left'  => UAGB_Helper::get_css_value( $left_margin, $attr['marginUnit'] ),
-		'margin-right' => UAGB_Helper::get_css_value( $right_margin, $attr['marginUnit'] ),
+		'margin-right' => UAGB_Helper::get_css_value( $right_margin + 3, $attr['marginUnit'] ),
 	),
 	' .uagb-timeline__field'                               => array(
 		'margin-top'    => UAGB_Helper::get_css_value( $top_margin, $attr['marginUnit'] ),

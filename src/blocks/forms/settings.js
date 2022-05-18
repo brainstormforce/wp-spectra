@@ -55,7 +55,6 @@ const Settings = ( props ) => {
 		confirmationMessage,
 		failedMessage,
 		confirmationUrl,
-		sendAfterSubmitEmail,
 		afterSubmitToEmail,
 		afterSubmitCcEmail,
 		afterSubmitBccEmail,
@@ -542,103 +541,96 @@ const Settings = ( props ) => {
 				initialOpen={ false }
 				className="uagb__url-panel-body"
 			>
-				<ToggleControl
-					label={ __( 'Email', 'ultimate-addons-for-gutenberg' ) }
-					checked={ sendAfterSubmitEmail }
-					onChange={ () =>
-						setAttributes( {
-							sendAfterSubmitEmail: ! sendAfterSubmitEmail,
-						} )
-					}
-				/>
-				{ true === sendAfterSubmitEmail && (
-					<>
-						<UAGTabsControl
-							tabs={ [
-								{
-									name: 'to',
-									title: __(
-										'To',
-										'ultimate-addons-for-gutenberg'
-									),
-								},
-								{
-									name: 'cc',
-									title: __(
-										'CC',
-										'ultimate-addons-for-gutenberg'
-									),
-								},
-								{
-									name: 'bcc',
-									title: __(
-										'BCC',
-										'ultimate-addons-for-gutenberg'
-									),
-								},
-							] }
-							to={
-								<TextControl
-									placeholder={ __(
-										'Email',
-										'ultimate-addons-for-gutenberg'
-									) }
-									value={ afterSubmitToEmail }
-									onChange={ ( value ) =>
-										setAttributes( {
-											afterSubmitToEmail: value,
-										} )
-									}
-								/>
-							}
-							cc={
-								<TextControl
-									placeholder={ __(
-										'Email',
-										'ultimate-addons-for-gutenberg'
-									) }
-									value={ afterSubmitCcEmail }
-									onChange={ ( value ) =>
-										setAttributes( {
-											afterSubmitCcEmail: value,
-										} )
-									}
-								/>
-							}
-							bcc={
-								<TextControl
-									placeholder={ __(
-										'Email',
-										'ultimate-addons-for-gutenberg'
-									) }
-									value={ afterSubmitBccEmail }
-									onChange={ ( value ) =>
-										setAttributes( {
-											afterSubmitBccEmail: value,
-										} )
-									}
-								/>
-							}
-							disableBottomSeparator={ false }
-						/>
+				<p className="uagb-form-notice">
+					{ __(
+						'Note: It is required to enter an email ID to receive the data submitted via Form. Else you will not receive any data.',
+						'ultimate-addons-for-gutenberg'
+					) }
+				</p>
+				<UAGTabsControl
+					tabs={ [
+						{
+							name: 'to',
+							title: __(
+								'To',
+								'ultimate-addons-for-gutenberg'
+							),
+						},
+						{
+							name: 'cc',
+							title: __(
+								'CC',
+								'ultimate-addons-for-gutenberg'
+							),
+						},
+						{
+							name: 'bcc',
+							title: __(
+								'BCC',
+								'ultimate-addons-for-gutenberg'
+							),
+						},
+					] }
+					to={
 						<TextControl
-							label={ __(
-								'Subject',
-								'ultimate-addons-for-gutenberg'
-							) }
 							placeholder={ __(
-								'Subject',
+								'Email',
 								'ultimate-addons-for-gutenberg'
 							) }
-							value={ afterSubmitEmailSubject }
+							value={ afterSubmitToEmail }
 							onChange={ ( value ) =>
 								setAttributes( {
-									afterSubmitEmailSubject: value,
+									afterSubmitToEmail: value,
 								} )
 							}
 						/>
-					</>
-				) }
+					}
+					cc={
+						<TextControl
+							placeholder={ __(
+								'Email',
+								'ultimate-addons-for-gutenberg'
+							) }
+							value={ afterSubmitCcEmail }
+							onChange={ ( value ) =>
+								setAttributes( {
+									afterSubmitCcEmail: value,
+								} )
+							}
+						/>
+					}
+					bcc={
+						<TextControl
+							placeholder={ __(
+								'Email',
+								'ultimate-addons-for-gutenberg'
+							) }
+							value={ afterSubmitBccEmail }
+							onChange={ ( value ) =>
+								setAttributes( {
+									afterSubmitBccEmail: value,
+								} )
+							}
+						/>
+					}
+					disableBottomSeparator={ false }
+				/>
+				<TextControl
+					label={ __(
+						'Subject',
+						'ultimate-addons-for-gutenberg'
+					) }
+					placeholder={ __(
+						'Subject',
+						'ultimate-addons-for-gutenberg'
+					) }
+					value={ afterSubmitEmailSubject }
+					onChange={ ( value ) =>
+						setAttributes( {
+							afterSubmitEmailSubject: value,
+						} )
+					}
+				/>
 			</UAGAdvancedPanelBody>
 		);
 	};
@@ -1542,7 +1534,7 @@ const Settings = ( props ) => {
 			title={ __( 'Spacing', 'ultimate-addons-for-gutenberg' ) }
 			initialOpen={ false }
 			// className="uagb__url-panel-body"
-		>			
+		>
 			<SpacingControl
 				{ ...props }
 				label={ __(
