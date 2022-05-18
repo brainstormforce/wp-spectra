@@ -693,7 +693,7 @@ const attributes = {
 	},
 	linkHColor: {
 		type: 'string',
-		default: '#3a009f',
+		default: '',
 		UAGCopyPaste: {
 			styleType: 'link-hover-color'
 		}
