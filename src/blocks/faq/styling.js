@@ -405,7 +405,7 @@ function styling( props ) {
 		selectors[
 			' .block-editor-inner-blocks .uagb-faq-child__outer-wrap.uagb-faq-item .uagb-faq-questions-button .uagb-icon-active'
 		] = {
-			'display': 'inline-block',
+			'display': 'flex',
 		};
 		selectors[
 			' .block-editor-inner-blocks .uagb-faq-child__outer-wrap.uagb-faq-item .uagb-faq-questions-button .uagb-icon'
@@ -422,7 +422,7 @@ function styling( props ) {
 		selectors[
 			' .block-editor-block-list__layout > div:first-child > .uagb-faq-child__outer-wrap.uagb-faq-item .uagb-faq-questions-button .uagb-icon-active '
 		] = {
-			'display': 'inline-block',
+			'display': 'flex',
 		};
 		selectors[
 			' .block-editor-block-list__layout > div:first-child > .uagb-faq-child__outer-wrap.uagb-faq-item .uagb-faq-questions-button .uagb-icon '

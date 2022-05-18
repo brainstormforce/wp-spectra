@@ -79,6 +79,7 @@ const FilterTabs = () => {
             // Update Extensions Statuses.
             dispatch( {type: 'UPDATE_ENABLE_MASONRY_EXTENSION', payload: 'enabled' } );
             dispatch( {type: 'UPDATE_ENABLE_DISPLAY_CONDITIONS', payload: 'enabled' } );
+			dispatch( {type: 'UPDATE_ENABLE_RESPONSIVE_CONDITIONS', payload: 'enabled' } );
         }
 
 		const formData = new window.FormData();
@@ -95,6 +96,7 @@ const FilterTabs = () => {
 			method: 'POST',
 			body: formData,
 		} ).then( () => {
+			dispatch( {type: 'UPDATE_SETTINGS_SAVED_NOTIFICATION', payload: true } );
 		} );
 	};
 
@@ -116,6 +118,7 @@ const FilterTabs = () => {
             // Update Extensions Statuses.
             dispatch( {type: 'UPDATE_ENABLE_MASONRY_EXTENSION', payload: 'disabled' } );
             dispatch( {type: 'UPDATE_ENABLE_DISPLAY_CONDITIONS', payload: 'disabled' } );
+			dispatch( {type: 'UPDATE_ENABLE_RESPONSIVE_CONDITIONS', payload: 'disabled' } );
         }
 
 		const formData = new window.FormData();
@@ -132,6 +135,7 @@ const FilterTabs = () => {
 			method: 'POST',
 			body: formData,
 		} ).then( () => {
+			dispatch( {type: 'UPDATE_SETTINGS_SAVED_NOTIFICATION', payload: true } );
 		} );
 	};
 

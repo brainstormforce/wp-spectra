@@ -43,5 +43,9 @@ const attributes = {
 		type: 'string',
 		default: '',
 	},
+	autocomplete: {
+		type: 'string',
+		default: 'bday',
+	}
 };
 export default attributes;

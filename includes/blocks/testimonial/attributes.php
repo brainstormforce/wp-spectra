@@ -10,6 +10,8 @@
 return array(
 	'classMigrate'            => false,
 	'headingAlign'            => 'center',
+	'headingAlignTablet'      => 'center',
+	'headingAlignMobile'      => 'center',
 	'companyColor'            => '#888888',
 	'descColor'               => '#333',
 	'authorColor'             => '#333',
@@ -136,4 +138,5 @@ return array(
 	'gradientLocation2'       => 100,
 	'gradientAngle'           => 0,
 	'gradientPosition'        => 'center center',
+	'equalHeight'             => false,
 );

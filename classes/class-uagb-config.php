@@ -123,6 +123,10 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 						'src' => UAGB_Scripts_Utils::get_js_url( 'post' ),
 						'dep' => $post_js_dep,
 					),
+					'uagb-testimonial-js'    => array(
+						'src' => UAGB_Scripts_Utils::get_js_url( 'testimonial' ),
+						'dep' => array(),
+					),
 					'uagb-faq-js'            => array(
 						'src'        => UAGB_Scripts_Utils::get_js_url( 'faq' ),
 						'dep'        => array(),

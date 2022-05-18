@@ -76,8 +76,18 @@ $selectors = array(
 	'.uagb-block-' . $id . ':hover'                       => array(
 		'border-color' => $attr['borderHoverColor'],
 	),
+	'.uagb-block-' . $id . '.wp-block-uagb-container'     => array(
+		'color' => $attr['textColor'],
+	),
+	'.uagb-block-' . $id . ' a'                           => array(
+		'color' => $attr['linkColor'],
+	),
+	'.uagb-block-' . $id . ' a:hover'                     => array(
+		'color' => $attr['linkHoverColor'],
+	),
 	'.uagb-is-root-container .uagb-block-' . $id          => array( // phpcs:ignore WordPress.WP.GlobalVariablesOverride.Prohibited
 		'max-width' => UAGB_Helper::get_css_value( $attr['widthDesktop'], $attr['widthType'] ),
+		'width'     => UAGB_Helper::get_css_value( $attr['widthDesktop'], $attr['widthType'] ),
 	),
 	'.uagb-block-' . $id . ' .uagb-container__shape-top svg' => array(
 		'height' => UAGB_Helper::get_css_value( $attr['topHeight'], 'px' ),
@@ -146,6 +156,7 @@ $t_selectors = array(
 	'.uagb-block-' . $id                         => $container_tablet_css, // phpcs:ignore WordPress.WP.GlobalVariablesOverride.Prohibited
 	'.uagb-is-root-container .uagb-block-' . $id => array( // phpcs:ignore WordPress.WP.GlobalVariablesOverride.Prohibited
 		'max-width' => UAGB_Helper::get_css_value( $attr['widthTablet'], $attr['widthType'] ),
+		'width'     => UAGB_Helper::get_css_value( $attr['widthTablet'], $attr['widthType'] ),
 	),
 	'.uagb-block-' . $id . ' .uagb-container__shape-bottom svg' => array(
 		'height' => UAGB_Helper::get_css_value( $attr['bottomHeightTablet'], 'px' ),
@@ -196,6 +207,7 @@ $m_selectors = array(
 	'.uagb-block-' . $id                         => $container_mobile_css, // phpcs:ignore WordPress.WP.GlobalVariablesOverride.Prohibited
 	'.uagb-is-root-container .uagb-block-' . $id => array( // phpcs:ignore WordPress.WP.GlobalVariablesOverride.Prohibited
 		'max-width' => UAGB_Helper::get_css_value( $attr['widthMobile'], $attr['widthType'] ),
+		'width'     => UAGB_Helper::get_css_value( $attr['widthMobile'], $attr['widthType'] ),
 	),
 	'.uagb-block-' . $id . ' .uagb-container__shape-bottom svg' => array(
 		'height' => UAGB_Helper::get_css_value( $attr['bottomHeightMobile'], 'px' ),

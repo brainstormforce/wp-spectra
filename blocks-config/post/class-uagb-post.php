@@ -1646,9 +1646,9 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 				return;
 			}
 			$wrap = ( 'aboveTitle' === $attributes['displayPostTaxonomyAboveTitle'] ) ? array(
-				'uagb-post__taxonomy',
+				'uagb-post__taxonomy uagb-post__text',
 				$attributes['taxStyle'],
-			) : array( 'uagb-post__taxonomy' );
+			) : array( 'uagb-post__taxonomy uagb-post__text' );
 
 			if ( ( 'default' === $attributes['taxStyle'] && 'aboveTitle' === $attributes['displayPostTaxonomyAboveTitle'] ) || 'withMeta' === $attributes['displayPostTaxonomyAboveTitle'] ) {
 				?>

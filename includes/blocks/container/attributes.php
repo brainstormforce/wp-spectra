@@ -134,4 +134,7 @@ return array(
 	'backgroundVideoOpacity'         => 0.5,
 	'topInvert'                      => false,
 	'bottomInvert'                   => false,
+	'textColor'                      => 'inherit',
+	'linkColor'                      => '',
+	'linkHoverColor'                 => '',
 );

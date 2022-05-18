@@ -21,7 +21,7 @@ const Render = ( props ) => {
 
 	const { attributes, setAttributes, isSelected } = props;
 
-	const { block_id, phoneRequired, phoneName, pattern, selectPhoneCode } = attributes;
+	const { block_id, phoneRequired, phoneName, pattern, selectPhoneCode, autocomplete } = attributes;
 
 	let phone_html = '';
 
@@ -41,6 +41,7 @@ const Render = ( props ) => {
 				required={ phoneRequired }
 				className="uagb-forms-phone-input uagb-forms-input"
 				name={ block_id }
+				autoComplete={ autocomplete }
 			/>
 		);
 	} else {
@@ -50,6 +51,7 @@ const Render = ( props ) => {
 				required={ phoneRequired }
 				className="uagb-forms-phone-input uagb-forms-input"
 				name={ block_id }
+				autoComplete={ autocomplete }
 			/>
 		);
 	}
@@ -102,17 +104,19 @@ const Render = ( props ) => {
 					multiline={ false }
 					id={ block_id }
 				/>
-				<SelectControl
-					className= { 'uagb-forms-input uagb-form-phone-country uagb-form-phone-country-editor' }
-					options={ contryCode }
-					value={ selectPhoneCode }
-					onChange={ ( value ) =>
-						setAttributes( {
-							selectPhoneCode: value,
-						} )
-					}
-				/>
-				{ phone_html }
+				<div className="uagb-forms-phone-flex">
+					<SelectControl
+						className= { 'uagb-forms-input uagb-form-phone-country uagb-form-phone-country-editor' }
+						options={ contryCode }
+						value={ selectPhoneCode }
+						onChange={ ( value ) =>
+							setAttributes( {
+								selectPhoneCode: value,
+							} )
+						}
+					/>
+					{ phone_html }
+				</div>
 			</div>
 		</>
 	);
