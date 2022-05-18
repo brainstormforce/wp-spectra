@@ -1134,26 +1134,6 @@ const Settings = ( props ) => {
 					/>
 				</>
 			) }
-
-			{ ( enableTweet ) && (
-				<Range
-					label={ __(
-						'Stacked Twitter Gap',
-						'ultimate-addons-for-gutenberg'
-					) }
-					setAttributes={ setAttributes }
-					value={ tweetGap }
-					onChange={ ( value ) =>
-						setAttributes( { tweetGap: value } )
-					}
-					min={ 0 }
-					max={ 100 }
-					unit={ {
-						value: tweetGapUnit,
-						label: 'tweetGapUnit',
-					} }
-				/>
-			) }
 		</UAGAdvancedPanelBody>
 	);
 
