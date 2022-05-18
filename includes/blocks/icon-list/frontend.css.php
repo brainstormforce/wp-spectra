@@ -257,6 +257,7 @@ if ( 'right' === $attr['align'] && ! $attr['hideLabel'] ) {
 	);
 	$selectors[' .wp-block-uagb-icon-list-child  '] = array(
 		'flex-direction' => 'row-reverse',
+		'text-align'     => 'end',
 	);
 } else {
 	$selectors[' .uagb-icon-list__source-wrap']   = array(
@@ -268,6 +269,11 @@ if ( 'right' === $attr['align'] && ! $attr['hideLabel'] ) {
 	$t_selectors[' .uagb-icon-list__source-wrap'] = array(
 		'margin-right' => UAGB_Helper::get_css_value( $attr['innerGapTablet'], $attr['innerGapType'] ),
 	);
+	if ( 'center' === $attr['align'] ) {
+		$selectors[' .wp-block-uagb-icon-list-child  '] = array(
+			'text-align' => 'center',
+		);
+	}
 }
 
 $combined_selectors = array(
