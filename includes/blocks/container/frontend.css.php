@@ -76,6 +76,15 @@ $selectors = array(
 	'.uagb-block-' . $id . ':hover'                       => array(
 		'border-color' => $attr['borderHoverColor'],
 	),
+	'.uagb-block-' . $id . '.wp-block-uagb-container'     => array(
+		'color' => $attr['textColor'],
+	),
+	'.uagb-block-' . $id . ' a'                           => array(
+		'color' => $attr['linkColor'],
+	),
+	'.uagb-block-' . $id . ' a:hover'                     => array(
+		'color' => $attr['linkHoverColor'],
+	),
 	'.uagb-is-root-container .uagb-block-' . $id          => array( // phpcs:ignore WordPress.WP.GlobalVariablesOverride.Prohibited
 		'max-width' => UAGB_Helper::get_css_value( $attr['widthDesktop'], $attr['widthType'] ),
 		'width'     => UAGB_Helper::get_css_value( $attr['widthDesktop'], $attr['widthType'] ),

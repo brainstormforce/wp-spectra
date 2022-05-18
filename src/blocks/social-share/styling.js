@@ -92,7 +92,6 @@ function styling( props ) {
 		'width': generateCSSUnit( size, sizeType ),
 		'height': generateCSSUnit( size, sizeType ),
 		'font-size': generateCSSUnit( size, sizeType ),
-		'line-height': generateCSSUnit( size, sizeType ),
 	};
 
 	let alignment = 'center';
