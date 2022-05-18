@@ -183,24 +183,28 @@ const Settings = ( props ) => {
 				step={ 0.1 }
 				displayUnit={ false }
 			/>
-			<MultiButtonsControl
-				setAttributes={ setAttributes }
-				label={ __( 'Layout', 'ultimate-addons-for-gutenberg' ) }
-				data={ {
-					value: layout,
-					label: 'layout',
-				} }
-				options={ [
-					{
-						value: 'inline',
-						label: __( 'Inline', 'ultimate-addons-for-gutenberg' ),
-					},
-					{
-						value: 'stack',
-						label: __( 'Stack', 'ultimate-addons-for-gutenberg' ),
-					},
-				] }
-			/>
+			{ ( displayTitle ) && (
+
+				<MultiButtonsControl
+					setAttributes={ setAttributes }
+					label={ __( 'Layout', 'ultimate-addons-for-gutenberg' ) }
+					data={ {
+						value: layout,
+						label: 'layout',
+					} }
+					options={ [
+						{
+							value: 'inline',
+							label: __( 'Inline', 'ultimate-addons-for-gutenberg' ),
+						},
+						{
+							value: 'stack',
+							label: __( 'Stack', 'ultimate-addons-for-gutenberg' ),
+						},
+					] }
+				/>
+
+			) }
 			<MultiButtonsControl
 				setAttributes={ setAttributes }
 				label={ __( 'Alignment', 'ultimate-addons-for-gutenberg' ) }
