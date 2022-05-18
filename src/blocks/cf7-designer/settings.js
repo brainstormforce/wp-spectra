@@ -765,7 +765,7 @@ const Settings = ( props ) => {
 			/>
 			<ResponsiveSlider
 				label={ __(
-					'Spacing Between Labels & Input',
+					'Label & Input Gap',
 					'ultimate-addons-for-gutenberg'
 				) }
 				data={ {
@@ -828,7 +828,7 @@ const Settings = ( props ) => {
 						value: fieldBorderFocusColor,
 						label: 'fieldBorderFocusColor',
 						title: __(
-							'Active Color',
+							'Color',
 							'ultimate-addons-for-gutenberg'
 						),
 					} }
