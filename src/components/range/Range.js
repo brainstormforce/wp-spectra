@@ -104,7 +104,15 @@ const Range = ( props ) => {
 		const cachedValueUpdate = { ...cachedValue };
 
 		setValue( cachedValueUpdate.value );
-		props?.onChange( cachedValueUpdate.value );
+		props?.onChange
+			? props?.onChange( cachedValueUpdate.value )
+			: (
+				props.setAttributes && (
+					props.setAttributes( {
+						[ props.data.label ]: cachedValueUpdate.value,
+					} )
+				)
+			);
 		if( cachedValueUpdate.unit ){
 			onChangeUnits( cachedValueUpdate.unit );
 		}
