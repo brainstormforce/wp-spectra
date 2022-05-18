@@ -291,17 +291,6 @@ const Settings = ( props ) => {
 					} }
 					options={ [
 						{
-							value: 'span',
-							label: __(
-								'Span',
-								'ultimate-addons-for-gutenberg'
-							),
-						},
-						{
-							value: 'p',
-							label: __( 'P', 'ultimate-addons-for-gutenberg' ),
-						},
-						{
 							value: 'h1',
 							label: __( 'H1', 'ultimate-addons-for-gutenberg' ),
 						},
@@ -324,6 +313,17 @@ const Settings = ( props ) => {
 						{
 							value: 'h6',
 							label: __( 'H6', 'ultimate-addons-for-gutenberg' ),
+						},
+						{
+							value: 'span',
+							label: __(
+								'Span',
+								'ultimate-addons-for-gutenberg'
+							),
+						},
+						{
+							value: 'p',
+							label: __( 'P', 'ultimate-addons-for-gutenberg' ),
 						},
 					] }
 					onChange={ ( value ) => onchangeTag( value ) }
@@ -430,13 +430,13 @@ const Settings = ( props ) => {
 			>
 				<UAGIconPicker
 					label={ __( 'Icon', 'ultimate-addons-for-gutenberg' ) }
-					value={ iconActive }
-					onChange={ ( value ) => onchangeActiveIcon( value ) }
+					value={ icon }
+					onChange={ ( value ) => onchangeIcon( value ) }
 				/>
 				<UAGIconPicker
 					label={ __( 'Active Icon', 'ultimate-addons-for-gutenberg' ) }
-					value={ icon }
-					onChange={ ( value ) => onchangeIcon( value ) }
+					value={ iconActive }
+					onChange={ ( value ) => onchangeActiveIcon( value ) }
 				/>
 				<MultiButtonsControl
 					setAttributes={ setAttributes }
@@ -551,50 +551,64 @@ const Settings = ( props ) => {
 						label: 'questionLineHeightTablet',
 					} }
 				/>
-				<UAGTabsControl
-					tabs={ [
-						{
-							name: 'normal',
-							title: __(
-								'Normal',
-								'ultimate-addons-for-gutenberg'
-							),
-						},
-						{
-							name: 'active',
-							title: __(
-								'Active/Hover',
-								'ultimate-addons-for-gutenberg'
-							),
-						},
-					] }
-					normal={
-						<AdvancedPopColorControl
-							label={ __(
-								'Text Color',
-								'ultimate-addons-for-gutenberg'
-							) }
-							colorValue={ questionTextColor }
-							onColorChange={ ( value ) =>
-								setAttributes( { questionTextColor: value } )
-							}
-						/>
-					}
-					active={
-						<AdvancedPopColorControl
-							label={ __(
-								'Text Color',
-								'ultimate-addons-for-gutenberg'
-							) }
-							colorValue={ questionTextActiveColor }
-							onColorChange={ ( value ) =>
-								setAttributes( {
-									questionTextActiveColor: value,
-								} )
-							}
-						/>
-					}
-				/>
+				{ 'accordion' === layout && (
+					<UAGTabsControl
+						tabs={ [
+							{
+								name: 'normal',
+								title: __(
+									'Normal',
+									'ultimate-addons-for-gutenberg'
+								),
+							},
+							{
+								name: 'active',
+								title: __(
+									'Active/Hover',
+									'ultimate-addons-for-gutenberg'
+								),
+							},
+						] }
+						normal={
+							<AdvancedPopColorControl
+								label={ __(
+									'Text Color',
+									'ultimate-addons-for-gutenberg'
+								) }
+								colorValue={ questionTextColor }
+								onColorChange={ ( value ) =>
+									setAttributes( { questionTextColor: value } )
+								}
+							/>
+						}
+						active={
+							<AdvancedPopColorControl
+								label={ __(
+									'Text Color',
+									'ultimate-addons-for-gutenberg'
+								) }
+								colorValue={ questionTextActiveColor }
+								onColorChange={ ( value ) =>
+									setAttributes( {
+										questionTextActiveColor: value,
+									} )
+								}
+							/>
+						}
+					/>
+				)}
+				{ 'grid' === layout && (
+					<AdvancedPopColorControl
+						label={ __(
+							'Text Color',
+							'ultimate-addons-for-gutenberg'
+						) }
+						colorValue={ questionTextColor }
+						onColorChange={ ( value ) =>
+							setAttributes( { questionTextColor: value } )
+						}
+					/>
+				)}
 				<SpacingControl
 					{ ...props }
 					label={ __( 'Padding', 'ultimate-addons-for-gutenberg' ) }
