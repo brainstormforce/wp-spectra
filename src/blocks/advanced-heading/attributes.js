@@ -701,10 +701,11 @@ const attributes = {
 	// Highlight
 	highLightColor: {
 		type: 'string',
-		default: '#6104ff'
+		default: '#fff'
 	},
 	highLightBackground: {
 		type: 'string',
+		default: '#6104ff'
 	},
 	highLightBorderWidth: {
 		type: 'number',
