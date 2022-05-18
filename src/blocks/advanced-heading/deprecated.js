@@ -12,6 +12,10 @@ const attributes = {
 		type: "boolean",
 		default: false
 	},
+	headingTitleToggle: {
+		source: 'boolean',
+		default: true,
+	},
 	headingTitle: {
 		source: "html",
 		selector: "h1,h2,h3,h4,h5,h6",
