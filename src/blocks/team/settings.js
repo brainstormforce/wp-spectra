@@ -1092,7 +1092,7 @@ const Settings = ( props ) => {
 						label: 'socialFontSizeType',
 					} }
 					min={0}
-					limitMax={ { 'px': 100, 'em': 100 } }
+					limitMax={ { px: 100, em: 100 } }
 					displayUnit={true}
 					setAttributes={setAttributes}
 				/>
