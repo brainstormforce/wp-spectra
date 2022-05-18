@@ -808,7 +808,7 @@ const Settings = ( props ) => {
 			</UAGAdvancedPanelBody>
 		);
 	};
-
+	// eslint-disable-next-line
 	const presetSettings = () => {
 		return <UAGAdvancedPanelBody
 					title={ __( 'Presets', 'ultimate-addons-for-gutenberg' ) }
