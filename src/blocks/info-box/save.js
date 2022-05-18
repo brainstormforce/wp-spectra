@@ -100,7 +100,6 @@ export default function save( props ) {
 
 	// Get Title and Prefix components.
 	const titleText = (
-		showPrefix || showTitle &&
 			<div className="uagb-ifb-title-wrap">
 				{ showPrefix && '' !== prefixTitle && (
 					<Prefix
