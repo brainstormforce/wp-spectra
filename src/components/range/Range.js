@@ -104,7 +104,7 @@ const Range = ( props ) => {
 		const cachedValueUpdate = { ...cachedValue };
 
 		setValue( cachedValueUpdate.value );
-		props?.onChange
+		props?.onChange // eslint-disable-line no-unused-expressions
 			? props?.onChange( cachedValueUpdate.value )
 			: (
 				props.setAttributes && (
