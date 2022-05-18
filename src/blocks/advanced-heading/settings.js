@@ -346,7 +346,7 @@ const Settings = ( props ) => {
 				}
 				<ToggleControl
 					label={ __(
-						'Description',
+						'Sub Heading',
 						'ultimate-addons-for-gutenberg'
 					) }
 					checked={ headingDescToggle }
@@ -582,7 +582,7 @@ const Settings = ( props ) => {
 	const subHeadingStylePanel = () => {
 		return (
 			<UAGAdvancedPanelBody
-				title={ __( 'Description', 'ultimate-addons-for-gutenberg' ) }
+				title={ __( 'Sub Heading', 'ultimate-addons-for-gutenberg' ) }
 				initialOpen={ false }
 			>
 				<Suspense fallback={ lazyLoader() }>
