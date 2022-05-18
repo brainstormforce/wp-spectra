@@ -109,8 +109,6 @@ const Settings = ( props ) => {
 		tweetBtnLoadGoogleFonts,
 		tweetIconSpacing,
 		tweetIconSpacingUnit,
-		tweetGap,
-		tweetGapUnit,
 		iconView,
 		iconSkin,
 		iconLabel,
