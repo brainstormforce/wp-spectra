@@ -227,7 +227,7 @@ function styling( props ) {
 		'.uagb-blockquote__skin-quotation .uagb-blockquote__icon:hover': {
 			'background': quoteBgHoverColor,
 		},
-		'.uagb-blockquote__skin-quotation .uagb-blockquote__icon:hover .uagb-blockquote__icon svg': {
+		'.uagb-blockquote__skin-quotation .uagb-blockquote__icon:hover svg': {
 			'fill': quoteHoverColor,
 		},
 		'.uagb-blockquote__style-style_1 .uagb-blockquote': {
