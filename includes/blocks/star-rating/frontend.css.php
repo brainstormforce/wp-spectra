@@ -29,6 +29,30 @@ if ( '' !== $attr['align'] ) {
 	}
 }
 
+if ( ! function_exists( 'flex_alignment' ) ) {
+
+	/** Since title text is set to flex, we need this function so that stack alignment doesn't break.
+	 * It converts the normal text-align values to flex-alignment based values.
+	 *
+	 * @param string $textAlign Alignment value from text-align property.
+	 */
+	function flex_alignment( $textAlign ) {
+
+		switch ( $textAlign ) {
+
+			case 'left':
+				return 'start';
+			case 'center':
+				return 'center';
+			case 'right':
+				return 'end';
+			default:
+				return 'start';
+		}
+
+	}
+}
+
 $selectors = array(
 	' .uag-star-rating'           => array(
 		'font-size' => UAGB_Helper::get_css_value( $attr['size'], 'px' ),
@@ -59,6 +83,11 @@ if ( 'stack' === $attr['layout'] ) {
 	$selectors['.wp-block-uagb-star-rating '] = array(
 		'display'    => 'block',
 		'text-align' => $stack_alignment,
+	);
+
+	// Since title text is set to flex, we need this property that aligns flex objects.
+	$selectors[' .uag-star-rating__title '] = array(
+		'justify-content' => flex_alignment( $stack_alignment ),
 	);
 }
 
