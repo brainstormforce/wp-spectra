@@ -120,7 +120,11 @@ function styling( props ) {
 		backgroundVideoOpacity,
 		backgroundVideoColor,
 		innerContentCustomWidthType,
-		backgroundVideo
+		backgroundVideo,
+
+		textColor,
+		linkColor,
+		linkHoverColor,
 	} = attributes;
 
 
@@ -148,6 +152,15 @@ function styling( props ) {
 	const videoBackgroundCSS = generateBackgroundCSS( videoBackgroundAttributes );
 
 	const selectors = {
+		' .wp-block-uagb-container .block-editor-block-list__block' : {
+			'color': textColor,
+		},
+		' .wp-block-uagb-container .block-editor-block-list__block a' : {
+			'color': linkColor,
+		},
+		' .wp-block-uagb-container .block-editor-block-list__block a:hover' : {
+			'color': linkHoverColor,
+		},
 		' .uagb-container__shape-top svg' : {
 			'width': 'calc( ' + topWidth + '% + 1.3px )',
 			'height': generateCSSUnit( topHeight, 'px' )

@@ -788,6 +788,25 @@ const attributes = {
 		},
 		default: 0.5,
 	},
+	textColor: {
+		type: 'string',
+		UAGCopyPaste: {
+			styleType: 'desc-color'
+		},
+		default: 'inherit',
+	},
+	linkColor: {
+		type: 'string',
+		UAGCopyPaste: {
+			styleType: 'btn-color'
+		},
+	},
+	linkHoverColor: {
+		type: 'string',
+		UAGCopyPaste: {
+			styleType: 'btn-hover-color'
+		},
+	},
 };
 
 export default attributes;

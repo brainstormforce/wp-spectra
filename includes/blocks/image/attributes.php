@@ -8,6 +8,10 @@
  */
 
 return array(
+	'widthTablet'                 => '',
+	'heightTablet'                => '',
+	'widthMobile'                 => '',
+	'heightMobile'                => '',
 	'layout'                      => 'default',
 	// image.
 	'imageTopMargin'              => '',
