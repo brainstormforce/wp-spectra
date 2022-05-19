@@ -23,7 +23,7 @@ import SpacingControl from '@Components/spacing-control';
 import ColorSwitchControl from '@Components/color-switch-control';
 import TextShadowControl from '@Components/text-shadow';
 import Border from '@Components/border';
-
+import ResponsiveBorder from '@Components/responsive-border'
 
 
 
@@ -144,7 +144,35 @@ const Settings = ( props ) => {
 		highLightColor,
 		highLightBackground,
 		highLightBorderWidth,
-		highLightBorderRadius,
+		highLightBorderTopWidth,
+		highLightBorderLeftWidth,
+		highLightBorderRightWidth,
+		highLightBorderBottomWidth,
+		highLightBorderTopWidthTablet,
+		highLightBorderLeftWidthTablet,
+		highLightBorderRightWidthTablet,
+		highLightBorderBottomWidthTablet,
+		highLightBorderTopWidthMobile,
+		highLightBorderLeftWidthMobile,
+		highLightBorderRightWidthMobile,
+		highLightBorderBottomWidthMobile,
+		highLightBorderLink,
+		highLightBorderTopRadius,
+		highLightBorderLeftRadius,
+		highLightBorderRightRadius,
+		highLightBorderBottomRadius,
+		highLightBorderTopRadiusTablet,
+		highLightBorderLeftRadiusTablet,
+		highLightBorderRightRadiusTablet,
+		highLightBorderBottomRadiusTablet,
+		highLightBorderTopRadiusMobile,
+		highLightBorderLeftRadiusMobile,
+		highLightBorderRightRadiusMobile,
+		highLightBorderBottomRadiusMobile,
+		highLightBorderRadiusLink,
+		highLightBorderRadiusUnit,
+		highLightBorderRadiusTablet,
+		highLightBorderRadiusMobile,
 		highLightBorderStyle,
 		highLightBorderColor,
 		highLightBorderHColor,
@@ -1203,7 +1231,7 @@ const Settings = ( props ) => {
 						label: 'highLightPaddingLink',
 					} }
 				/>
-				<Border
+				<ResponsiveBorder
 					setAttributes={ setAttributes }
 					borderStyle={ {
 						value: highLightBorderStyle,
@@ -1211,14 +1239,126 @@ const Settings = ( props ) => {
 						title: __( 'Style', 'ultimate-addons-for-gutenberg' ),
 					} }
 					borderWidth={ {
-						value: highLightBorderWidth,
-						label: 'highLightBorderWidth',
-						title: __( 'Width', 'ultimate-addons-for-gutenberg' ),
+						label: __( 'Width', 'ultimate-addons-for-gutenberg' ),
+						valueTop: {
+							value: highLightBorderTopWidth,
+							label: 'highLightBorderTopWidth',
+						},
+						valueRight: {
+							value: highLightBorderRightWidth,
+							label: 'highLightBorderRightWidth',
+						},
+						valueBottom: {
+							value: highLightBorderBottomWidth,
+							label: 'highLightBorderBottomWidth',
+						},
+						valueLeft: {
+							value: highLightBorderLeftWidth,
+							label: 'highLightBorderLeftWidth',
+						},
+						valueTopTablet: {
+							value: highLightBorderTopWidthTablet,
+							label: 'highLightBorderTopWidthTablet',
+						},
+						valueRightTablet: {
+							value: highLightBorderRightWidthTablet,
+							label: 'highLightBorderRightWidthTablet',
+						},
+						valueBottomTablet: {
+							value: highLightBorderBottomWidthTablet,
+							label: 'highLightBorderBottomWidthTablet',
+						},
+						valueLeftTablet: {
+							value: highLightBorderLeftWidthTablet,
+							label: 'highLightBorderLeftWidthTablet',
+						},
+						valueTopMobile: {
+							value: highLightBorderTopWidthMobile,
+							label: 'highLightBorderTopWidthMobile',
+						},
+						valueRightMobile: {
+							value: highLightBorderRightWidthMobile,
+							label: 'highLightBorderRightWidthMobile',
+						},
+						valueBottomMobile: {
+							value: highLightBorderBottomWidthMobile,
+							label: 'highLightBorderBottomWidthMobile',
+						},
+						valueLeftMobile: {
+							value: highLightBorderLeftWidthMobile,
+							label: 'highLightBorderLeftWidthMobile',
+						},
+						link: {
+							value: highLightBorderLink,
+							label: 'highLightBorderLink',
+						}
 					} }
 					borderRadius={ {
-						value: highLightBorderRadius,
-						label: 'highLightBorderRadius',
-						title: __( 'Radius', 'ultimate-addons-for-gutenberg' ),
+						label: __( 'Radius', 'ultimate-addons-for-gutenberg' ),
+						valueTop: {
+							value: highLightBorderTopRadius,
+							label: 'highLightBorderTopRadius',
+						},
+						valueRight: {
+							value: highLightBorderRightRadius,
+							label: 'highLightBorderRightRadius',
+						},
+						valueBottom: {
+							value: highLightBorderBottomRadius,
+							label: 'highLightBorderBottomRadius',
+						},
+						valueLeft: {
+							value: highLightBorderLeftRadius,
+							label: 'highLightBorderLeftRadius',
+						},
+						valueTopTablet: {
+							value: highLightBorderTopRadiusTablet,
+							label: 'highLightBorderTopRadiusTablet',
+						},
+						valueRightTablet: {
+							value: highLightBorderRightRadiusTablet,
+							label: 'highLightBorderRightRadiusTablet',
+						},
+						valueBottomTablet: {
+							value: highLightBorderBottomRadiusTablet,
+							label: 'highLightBorderBottomRadiusTablet',
+						},
+						valueLeftTablet: {
+							value: highLightBorderLeftRadiusTablet,
+							label: 'highLightBorderLeftRadiusTablet',
+						},
+						valueTopMobile: {
+							value: highLightBorderTopRadiusMobile,
+							label: 'highLightBorderTopRadiusMobile',
+						},
+						valueRightMobile: {
+							value: highLightBorderRightRadiusMobile,
+							label: 'highLightBorderRightRadiusMobile',
+						},
+						valueBottomMobile: {
+							value: highLightBorderBottomRadiusMobile,
+							label: 'highLightBorderBottomRadiusMobile',
+						},
+						valueLeftMobile: {
+							value: highLightBorderLeftRadiusMobile,
+							label: 'highLightBorderLeftRadiusMobile',
+						},
+						link: {
+							value: highLightBorderRadiusLink,
+							label: 'highLightBorderRadiusLink',
+						},
+						unit:  {
+							value: highLightBorderRadiusUnit,
+							label: 'highLightBorderRadiusUnit',
+						},
+						mUnit: {
+							value: highLightBorderRadiusTablet,
+							label: 'highLightBorderRadiusTablet',
+						},
+						tUnit: {
+							value: highLightBorderRadiusMobile,
+							label: 'highLightBorderRadiusMobile',
+						}
 					} }
 					borderColor={ {
 						value: highLightBorderColor,
@@ -1233,6 +1373,8 @@ const Settings = ( props ) => {
 							'ultimate-addons-for-gutenberg'
 						),
 					} }
+					attributes={ attributes }
+					deviceType={deviceType}
 					disableBottomSeparator={ true }
 				/>
 			</UAGAdvancedPanelBody>

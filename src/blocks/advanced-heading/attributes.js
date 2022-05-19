@@ -707,13 +707,132 @@ const attributes = {
 		type: 'string',
 		default: '#6104ff'
 	},
-	highLightBorderWidth: {
+	// highLightBorderWidth: {
+	// 	type: 'number',
+	// 	default: '',
+	// },
+	highLightBorderTopWidth: {
 		type: 'number',
 		default: '',
 	},
-	highLightBorderRadius: {
+	highLightBorderLeftWidth: {
 		type: 'number',
 		default: '',
+	},
+	highLightBorderRightWidth: {
+		type: 'number',
+		default: '',
+	},
+	highLightBorderBottomWidth: {
+		type: 'number',
+		default: '',
+	},
+	highLightBorderTopWidthTablet: {
+		type: 'number',
+		default: '',
+	},
+	highLightBorderLeftWidthTablet: {
+		type: 'number',
+		default: '',
+	},
+	highLightBorderRightWidthTablet: {
+		type: 'number',
+		default: '',
+	},
+	highLightBorderBottomWidthTablet: {
+		type: 'number',
+		default: '',
+	},
+	highLightBorderTopWidthMobile: {
+		type: 'number',
+		default: '',
+	},
+	highLightBorderLeftWidthMobile: {
+		type: 'number',
+		default: '',
+	},
+	highLightBorderRightWidthMobile: {
+		type: 'number',
+		default: '',
+	},
+	highLightBorderBottomWidthMobile: {
+		type: 'number',
+		default: '',
+	},
+	highLightBorderLink: {
+		type: 'boolean',
+		default: true,
+	},
+	// highLightBorderRadius: {
+	// 	type: 'number',
+	// 	default: '',
+	// },
+	highLightBorderTopRadius: {
+		type: 'number',
+		default: '',
+	},
+	highLightBorderLeftRadius: {
+		type: 'number',
+		default: '',
+	},
+	highLightBorderRightRadius: {
+		type: 'number',
+		default: '',
+	},
+	highLightBorderBottomRadius: {
+		type: 'number',
+		default: '',
+	},
+	highLightBorderTopRadiusTablet: {
+		type: 'number',
+		default: '',
+	},
+	highLightBorderLeftRadiusTablet: {
+		type: 'number',
+		default: '',
+	},
+	highLightBorderRightRadiusTablet: {
+		type: 'number',
+		default: '',
+	},
+	highLightBorderBottomRadiusTablet: {
+		type: 'number',
+		default: '',
+	},
+	highLightBorderTopRadiusMobile: {
+		type: 'number',
+		default: '',
+	},
+	highLightBorderLeftRadiusMobile: {
+		type: 'number',
+		default: '',
+	},
+	highLightBorderRightRadiusMobile: {
+		type: 'number',
+		default: '',
+	},
+	highLightBorderBottomRadiusMobile: {
+		type: 'number',
+		default: '',
+	},
+	highLightBorderRadiusLink: {
+		type: 'boolean',
+		default: true,
+	},
+	highLightBorderRadiusUnit : {
+		type: 'string',
+		default: 'px',
+		isUAGStyle: true,
+	},
+	highLightBorderRadiusTablet: {
+		type: 'string',
+		default: 'px',
+		isUAGStyle: true,
+	},
+	highLightBorderRadiusMobile : {
+		type: 'string',
+		default: 'px',
+		isUAGStyle: true,
 	},
 	highLightBorderStyle: {
 		type: 'string',
