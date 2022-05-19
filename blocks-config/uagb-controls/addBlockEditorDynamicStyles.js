@@ -70,10 +70,9 @@ const addBlockEditorDynamicStyles = ( styleTagId, styling ) => {
 			// Static CSS.
 			if ( cloneStaticCSSStylesTag ) {
 				const iframeStaticCSSStylesTag = iframeDocument.getElementById( 'uagb-block-css-css' );
-				if ( iframeStaticCSSStylesTag ) {
-					iframeDocument.head.removeChild( iframeStaticCSSStylesTag );
+				if ( ! iframeStaticCSSStylesTag ) {
+					iframeDocument.head.appendChild( cloneStaticCSSStylesTag );
 				}
-				iframeDocument.head.appendChild( cloneStaticCSSStylesTag );
 			}
 
 			// Static Editor CSS.
@@ -88,10 +87,9 @@ const addBlockEditorDynamicStyles = ( styleTagId, styling ) => {
 			// Slick CSS.
 			if ( cloneSlickStaticCSSStylesTag ) {
 				const iframeSlickStaticCSSStylesTag = iframeDocument.getElementById( 'uagb-slick-css-css' );
-				if ( iframeSlickStaticCSSStylesTag ) {
-					iframeDocument.head.removeChild( iframeSlickStaticCSSStylesTag );
+				if ( ! iframeSlickStaticCSSStylesTag ) {
+					iframeDocument.head.appendChild( cloneSlickStaticCSSStylesTag );
 				}
-				iframeDocument.head.appendChild( cloneSlickStaticCSSStylesTag );
 			}
 
 			let iframeElement = iframeDocument.getElementById(
