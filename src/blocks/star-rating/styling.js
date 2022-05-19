@@ -53,6 +53,18 @@ function styling( props ) {
 		}
 	}
 
+	function flexAlignment( textAlign ) {
+
+		switch ( textAlign ) {
+
+			case 'left': return 'start';
+			case 'center': return 'center';
+			case 'right': return 'end';
+			default: return 'start';
+		}
+
+	}
+
 	const remainder = ( rating % 1 ).toFixed( 1 );
 	const width = remainder * 100;
 
@@ -85,6 +97,9 @@ function styling( props ) {
 		selectors[ '.wp-block-uagb-star-rating ' ] = {
 			'display' : 'block',
 			'text-align': stackAlignment,
+		};
+		selectors[ ' .uag-star-rating__title ' ] = {
+			'justify-content': flexAlignment( stackAlignment ),
 		};
 	}
 
