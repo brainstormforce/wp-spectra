@@ -32,6 +32,11 @@
 			box-sizing: border-box;
 		}
 
+		& .uagb-rest_menu__wrap .uagb-rm__content {
+			padding-left: unset;
+			padding-right: unset;
+		}
+
 		&.uagb-rm__desk-column-3 [data-type="uagb/restaurant-menu-child"] {
 			width: calc(100% / 3);
 			display: inline-flex;
@@ -55,6 +60,16 @@
 		.uagb-rest_menu__wrap.uagb-rm__align-left .uagb-rm__price {
 			display: table-cell;
 			text-align: right;
+		}
+
+		.uagb-rest_menu__wrap.uagb-rm__align-right{
+			& .uagb-rm-details{
+				display: table;
+				.uagb-rm__price {
+					display: table-cell;
+					text-align: left;
+				}
+			}
 		}
 
 		&.uagb-rm__desk-column-1 [data-type="uagb/restaurant-menu-child"] {
@@ -110,4 +125,3 @@
 		}
 	}
 }
-
