@@ -51,21 +51,21 @@ $content_bottom_padding_tablet = isset( $attr['contentBottomPaddingTablet'] ) ? 
 $content_left_padding_tablet   = isset( $attr['contentLeftPaddingTablet'] ) ? $attr['contentLeftPaddingTablet'] : $attr['contentHrPadding'];
 $content_right_padding_tablet  = isset( $attr['contentRightPaddingTablet'] ) ? $attr['contentRightPaddingTablet'] : $attr['contentHrPadding'];
 
-$pos_top_tab        = isset( $attr[ 'titleTopPaddingTablet' ] ) ? $attr[ 'titleTopPaddingTablet' ] : $attr[ 'titleTopPadding' ];
-$pos_left_tab       = isset( $attr[ 'titleLeftPaddingTablet' ] ) ? $attr[ 'titleLeftPaddingTablet' ] : $attr[ 'titleLeftPadding' ];
-$pos_right_tab      = isset( $attr[ 'titleRightPaddingTablet' ] ) ? $attr[ 'titleRightPaddingTablet' ] : $attr[ 'titleRightPadding' ];
-$pos_classic_tab    = isset( $attr[ 'highlightWidthTablet' ] ) ? $attr[ 'highlightWidthTablet' ] : $attr[ 'highlightWidth' ];
-$pos_top_unit_tab   = isset( $attr[ 'titleTopPaddingTablet' ] ) ? $attr[ 'tabletTitlePaddingUnit' ] : $attr[ 'titlePaddingUnit' ];
-$pos_left_unit_tab  = isset( $attr[ 'titleLeftPaddingTablet' ] ) ? $attr[ 'tabletTitlePaddingUnit' ] : $attr[ 'titlePaddingUnit' ];
-$pos_right_unit_tab = isset( $attr[ 'titleRightPaddingTablet' ] ) ? $attr[ 'tabletTitlePaddingUnit' ] : $attr[ 'titlePaddingUnit' ];
+$pos_top_tab        = isset( $attr['titleTopPaddingTablet'] ) ? $attr['titleTopPaddingTablet'] : $attr['titleTopPadding'];
+$pos_left_tab       = isset( $attr['titleLeftPaddingTablet'] ) ? $attr['titleLeftPaddingTablet'] : $attr['titleLeftPadding'];
+$pos_right_tab      = isset( $attr['titleRightPaddingTablet'] ) ? $attr['titleRightPaddingTablet'] : $attr['titleRightPadding'];
+$pos_classic_tab    = isset( $attr['highlightWidthTablet'] ) ? $attr['highlightWidthTablet'] : $attr['highlightWidth'];
+$pos_top_unit_tab   = isset( $attr['titleTopPaddingTablet'] ) ? $attr['tabletTitlePaddingUnit'] : $attr['titlePaddingUnit'];
+$pos_left_unit_tab  = isset( $attr['titleLeftPaddingTablet'] ) ? $attr['tabletTitlePaddingUnit'] : $attr['titlePaddingUnit'];
+$pos_right_unit_tab = isset( $attr['titleRightPaddingTablet'] ) ? $attr['tabletTitlePaddingUnit'] : $attr['titlePaddingUnit'];
 
-$pos_top_mob        = isset( $attr[ 'titleTopPaddingMobile' ] ) ? $attr[ 'titleTopPaddingMobile' ] : $pos_top_tab;
-$pos_left_mob       = isset( $attr[ 'titleLeftPaddingMobile' ] ) ? $attr[ 'titleLeftPaddingMobile' ] : $pos_left_tab;
-$pos_right_mob      = isset( $attr[ 'titleRightPaddingMobile' ] ) ? $attr[ 'titleRightPaddingMobile' ] : $pos_right_tab;
-$pos_classic_mob    = isset( $attr[ 'highlightWidthMobile' ] ) ? $attr[ 'highlightWidthMobile' ] : $pos_classic_tab;
-$pos_top_unit_mob   = isset( $attr[ 'titleTopPaddingMobile' ] ) ? $attr[ 'mobileTitlePaddingUnit' ] : $pos_top_unit_tab;
-$pos_left_unit_mob  = isset( $attr[ 'titleLeftPaddingMobile' ] ) ? $attr[ 'mobileTitlePaddingUnit' ] : $pos_left_unit_tab;
-$pos_right_unit_mob = isset( $attr[ 'titleRightPaddingMobile' ] ) ? $attr[ 'mobileTitlePaddingUnit' ] : $pos_right_unit_tab;
+$pos_top_mob        = isset( $attr['titleTopPaddingMobile'] ) ? $attr['titleTopPaddingMobile'] : $pos_top_tab;
+$pos_left_mob       = isset( $attr['titleLeftPaddingMobile'] ) ? $attr['titleLeftPaddingMobile'] : $pos_left_tab;
+$pos_right_mob      = isset( $attr['titleRightPaddingMobile'] ) ? $attr['titleRightPaddingMobile'] : $pos_right_tab;
+$pos_classic_mob    = isset( $attr['highlightWidthMobile'] ) ? $attr['highlightWidthMobile'] : $pos_classic_tab;
+$pos_top_unit_mob   = isset( $attr['titleTopPaddingMobile'] ) ? $attr['mobileTitlePaddingUnit'] : $pos_top_unit_tab;
+$pos_left_unit_mob  = isset( $attr['titleLeftPaddingMobile'] ) ? $attr['mobileTitlePaddingUnit'] : $pos_left_unit_tab;
+$pos_right_unit_mob = isset( $attr['titleRightPaddingMobile'] ) ? $attr['mobileTitlePaddingUnit'] : $pos_right_unit_tab;
 
 if ( $attr['noticeDismiss'] ) {
 	if ( 'left' === $attr['noticeAlignment'] || 'center' === $attr['noticeAlignment'] ) {
@@ -116,15 +116,15 @@ $selectors = array(
 		'color' => $attr['noticeDismissColor'],
 	),
 	'.uagb-dismissable > svg'               => array(
-		'width'  => UAGB_Helper::get_css_value( $attr[ 'iconSize' ], $attr[ 'iconSizeUnit' ] ),
-		'height' => UAGB_Helper::get_css_value( $attr[ 'iconSize' ], $attr[ 'iconSizeUnit' ] ),
-		'top'    => UAGB_Helper::get_css_value( $attr[ 'titleTopPadding' ], $attr[ 'titlePaddingUnit' ] ),
+		'width'  => UAGB_Helper::get_css_value( $attr['iconSize'], $attr['iconSizeUnit'] ),
+		'height' => UAGB_Helper::get_css_value( $attr['iconSize'], $attr['iconSizeUnit'] ),
+		'top'    => UAGB_Helper::get_css_value( $attr['titleTopPadding'], $attr['titlePaddingUnit'] ),
 	),
 	'.uagb-inline_notice__align-left svg'   => array(
-		'right' => UAGB_Helper::get_css_value( $attr[ 'titleRightPadding' ], $attr[ 'titlePaddingUnit' ] ),
+		'right' => UAGB_Helper::get_css_value( $attr['titleRightPadding'], $attr['titlePaddingUnit'] ),
 	),
 	'.uagb-inline_notice__align-center svg' => array(
-		'right' => UAGB_Helper::get_css_value( $attr[ 'titleRightPadding' ], $attr[ 'titlePaddingUnit' ] ),
+		'right' => UAGB_Helper::get_css_value( $attr['titleRightPadding'], $attr['titlePaddingUnit'] ),
 	),
 );
 
@@ -188,9 +188,9 @@ if ( 'modern' === $attr['layout'] ) {
 	$selectors[' .uagb-notice-text']['border-bottom-left-radius']  = '3px';
 	$selectors[' .uagb-notice-text']['border-bottom-right-radius'] = '3px';
 
-	$selectors[ '.uagb-inline_notice__align-right svg' ][ 'left' ]   = UAGB_Helper::get_css_value( $attr[ 'titleLeftPadding' ], $attr[ 'titlePaddingUnit' ] );
-	$t_selectors[ '.uagb-inline_notice__align-right svg' ][ 'left' ] = UAGB_Helper::get_css_value( $pos_left_tab, $pos_left_unit_tab );
-	$m_selectors[ '.uagb-inline_notice__align-right svg' ][ 'left' ] = UAGB_Helper::get_css_value( $pos_left_mob, $pos_left_unit_mob );
+	$selectors['.uagb-inline_notice__align-right svg']['left']   = UAGB_Helper::get_css_value( $attr['titleLeftPadding'], $attr['titlePaddingUnit'] );
+	$t_selectors['.uagb-inline_notice__align-right svg']['left'] = UAGB_Helper::get_css_value( $pos_left_tab, $pos_left_unit_tab );
+	$m_selectors['.uagb-inline_notice__align-right svg']['left'] = UAGB_Helper::get_css_value( $pos_left_mob, $pos_left_unit_mob );
 	
 } elseif ( 'simple' === $attr['layout'] ) {
 
@@ -204,9 +204,9 @@ if ( 'modern' === $attr['layout'] ) {
 	$t_selectors[' .uagb-notice-text']['border-left']    = UAGB_Helper::get_css_value( $attr['highlightWidthTablet'], 'px' ) . ' solid ' . $attr['noticeColor'];
 	$m_selectors[' .uagb-notice-text']['border-left']    = UAGB_Helper::get_css_value( $attr['highlightWidthMobile'], 'px' ) . ' solid ' . $attr['noticeColor'];
 
-	$selectors[ '.uagb-inline_notice__align-right svg' ][ 'left' ]   = 'calc(' . $attr[ 'titleLeftPadding' ] . $attr[ 'titlePaddingUnit' ] . ' + ' . $attr[ 'highlightWidth' ] . 'px)';
-	$t_selectors[ '.uagb-inline_notice__align-right svg' ][ 'left' ] = 'calc(' . $pos_left_tab . $pos_left_unit_tab . ' + ' . $pos_classic_tab . 'px)';
-	$m_selectors[ '.uagb-inline_notice__align-right svg' ][ 'left' ] = 'calc(' . $pos_left_mob . $pos_left_unit_mob . ' + ' . $pos_classic_mob . 'px)';
+	$selectors['.uagb-inline_notice__align-right svg']['left']   = 'calc(' . $attr['titleLeftPadding'] . $attr['titlePaddingUnit'] . ' + ' . $attr['highlightWidth'] . 'px)';
+	$t_selectors['.uagb-inline_notice__align-right svg']['left'] = 'calc(' . $pos_left_tab . $pos_left_unit_tab . ' + ' . $pos_classic_tab . 'px)';
+	$m_selectors['.uagb-inline_notice__align-right svg']['left'] = 'calc(' . $pos_left_mob . $pos_left_unit_mob . ' + ' . $pos_classic_mob . 'px)';
 
 }
 
