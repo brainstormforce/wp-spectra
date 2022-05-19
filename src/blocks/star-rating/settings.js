@@ -29,6 +29,8 @@ const Settings = ( props ) => {
 			rating,
 			range,
 			layout,
+			layoutTablet,
+			layoutMobile,
 			align,
 			size,
 			sizeTablet,
@@ -189,8 +191,18 @@ const Settings = ( props ) => {
 					setAttributes={ setAttributes }
 					label={ __( 'Layout', 'ultimate-addons-for-gutenberg' ) }
 					data={ {
-						value: layout,
-						label: 'layout',
+						desktop: {
+							value: layout,
+							label: 'layout',
+						},
+						tablet: {
+							value: layoutTablet,
+							label: 'layoutTablet',
+						},
+						mobile: {
+							value: layoutMobile,
+							label: 'layoutMobile',
+						},
 					} }
 					options={ [
 						{
@@ -202,6 +214,7 @@ const Settings = ( props ) => {
 							label: __( 'Stack', 'ultimate-addons-for-gutenberg' ),
 						},
 					] }
+					responsive={true}
 				/>
 
 			) }
