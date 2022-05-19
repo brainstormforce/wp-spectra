@@ -62,9 +62,11 @@
 			text-align: right;
 		}
 
-		.uagb-rest_menu__wrap.uagb-rm__align-right{
-			& .uagb-rm-details{
+		.uagb-rest_menu__wrap.uagb-rm__align-right {
+
+			& .uagb-rm-details {
 				display: table;
+
 				.uagb-rm__price {
 					display: table-cell;
 					text-align: left;

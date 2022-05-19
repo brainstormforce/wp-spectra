@@ -25,6 +25,13 @@
 		-o-transition: all 0.2s;
 		transition: all 0.2s;
 
+		&.uagb-rm__image-position-right {
+
+			.uagb-rm__price {
+				text-align: left !important;
+			}
+		}
+
 		.uagb-rm__content {
 			position: relative;
 			display: table;
