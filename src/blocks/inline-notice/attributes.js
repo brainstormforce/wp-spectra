@@ -74,6 +74,20 @@ const attributes = {
 		type: 'string',
 		default: 'fa fa-window-close',
 	},
+	iconSize: {
+		type: 'number',
+		default: 16,
+		UAGCopyPaste: {
+			styleType: 'btn-width'
+		},
+	},
+	iconSizeUnit: {
+		type: 'string',
+		default: 'px',
+		UAGCopyPaste: {
+			styleType: 'btn-width-unit'
+		},
+	},
 	noticeAlignment: {
 		type: 'string',
 		default: 'left',
@@ -333,24 +347,24 @@ const attributes = {
 	},
 	titlePaddingUnit: {
 		type: 'string',
+		default: 'px',
 		UAGCopyPaste: {
 			styleType: 'main-title-padding-unit'
 		},
-		default: 'px',
 	},
 	mobileTitlePaddingUnit: {
 		type: 'string',
+		default: 'px',
 		UAGCopyPaste: {
 			styleType: 'main-title-padding-unit-mobile'
 		},
-		default: 'px',
 	},
 	tabletTitlePaddingUnit: {
 		type: 'string',
+		default: 'px',
 		UAGCopyPaste: {
 			styleType: 'main-title-padding-unit-tablet'
 		},
-		default: 'px',
 	},
 	titlePaddingLink: {
 		type: 'boolean',
@@ -369,14 +383,14 @@ const attributes = {
 	},
 	highlightWidthTablet: {
 		type: 'number',
-		default: 0,
+		default: 10,
 		UAGCopyPaste: {
 			styleType: 'main-title-border-width'
 		},
 	},
 	highlightWidthMobile: {
 		type: 'number',
-		default: 0,
+		default: 10,
 		UAGCopyPaste: {
 			styleType: 'main-title-border-width'
 		},

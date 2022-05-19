@@ -13,6 +13,8 @@ function styling( props ) {
 		noticeColor,
 		contentBgColor,
 		noticeDismissColor,
+		iconSize,
+		iconSizeUnit,
 		titleFontFamily,
 		titleFontWeight,
 		titleFontSizeType,
@@ -109,6 +111,22 @@ function styling( props ) {
 		rPaddingTablet = titleRightPaddingTablet;
 	}
 
+	const posTopTab = ! isNaN( titleTopPaddingTablet ) ? titleTopPaddingTablet : titleTopPadding;
+	const posLeftTab = ! isNaN( titleLeftPaddingTablet ) ? titleLeftPaddingTablet : titleLeftPadding;
+	const posRightTab = ! isNaN( titleRightPaddingTablet ) ? titleRightPaddingTablet : titleRightPadding;
+	const posClassicTab = ! isNaN( highlightWidthTablet ) ? highlightWidthTablet : highlightWidth;
+	const posTopUnitTab = ! isNaN( titleTopPaddingTablet ) ? tabletTitlePaddingUnit : titlePaddingUnit;
+	const posLeftUnitTab = ! isNaN( titleLeftPaddingTablet ) ? tabletTitlePaddingUnit : titlePaddingUnit;
+	const posRightUnitTab = ! isNaN( titleRightPaddingTablet ) ? tabletTitlePaddingUnit : titlePaddingUnit;
+
+	const posTopMob = ! isNaN( titleTopPaddingMobile ) ? titleTopPaddingMobile : posTopTab;
+	const posLeftMob = ! isNaN( titleLeftPaddingMobile ) ? titleLeftPaddingMobile : posLeftTab;
+	const posRightMob = ! isNaN( titleRightPaddingMobile ) ? titleRightPaddingMobile : posRightTab;
+	const posClassicMob = ! isNaN( highlightWidthMobile ) ? highlightWidthMobile : posClassicTab;
+	const posTopUnitMob = ! isNaN( titleTopPaddingMobile ) ? mobileTitlePaddingUnit : posTopUnitTab;
+	const posLeftUnitMob = ! isNaN( titleLeftPaddingMobile ) ? mobileTitlePaddingUnit : posLeftUnitTab;
+	const posRightUnitMob = ! isNaN( titleRightPaddingMobile ) ? mobileTitlePaddingUnit : posRightUnitTab;
+
 	let tabletSelectors = {};
 	let mobileSelectors = {};
 
@@ -172,6 +190,32 @@ function styling( props ) {
 		' svg': {
 			'fill': noticeDismissColor,
 		},
+		'.uagb-dismissable > svg': {
+			'width': generateCSSUnit(
+				iconSize,
+				iconSizeUnit
+			),
+			'height': generateCSSUnit(
+				iconSize,
+				iconSizeUnit
+			),
+			'top': generateCSSUnit(
+				titleTopPadding,
+				titlePaddingUnit
+			),
+		},
+		'.uagb-inline_notice__align-left svg': {
+			'right': generateCSSUnit(
+				titleRightPadding,
+				titlePaddingUnit
+			),
+		},
+		'.uagb-inline_notice__align-center svg': {
+			'right': generateCSSUnit(
+				titleRightPadding,
+				titlePaddingUnit
+			),
+		},
 	};
 
 	mobileSelectors = {
@@ -228,6 +272,24 @@ function styling( props ) {
 			'padding-bottom': generateCSSUnit(
 				contentBottomPaddingMobile,
 				mobileContentPaddingUnit
+			),
+		},
+		'.uagb-dismissable > svg': {
+			'top': generateCSSUnit(
+				posTopMob,
+				posTopUnitMob
+			),
+		},
+		'.uagb-inline_notice__align-left svg': {
+			'right': generateCSSUnit(
+				posRightMob,
+				posRightUnitMob
+			),
+		},
+		'.uagb-inline_notice__align-center svg': {
+			'right': generateCSSUnit(
+				posRightMob,
+				posRightUnitMob
 			),
 		},
 	};
@@ -289,6 +351,24 @@ function styling( props ) {
 				tabletContentPaddingUnit
 			),
 		},
+		'.uagb-dismissable > svg': {
+			'top': generateCSSUnit(
+				posTopTab,
+				posTopUnitTab
+			),
+		},
+		'.uagb-inline_notice__align-left svg': {
+			'right': generateCSSUnit(
+				posRightTab,
+				posRightUnitTab
+			),
+		},
+		'.uagb-inline_notice__align-center svg': {
+			'right': generateCSSUnit(
+				posRightTab,
+				posRightUnitTab
+			),
+		},
 	};
 
 	if ( 'modern' === layout ) {
@@ -313,7 +393,24 @@ function styling( props ) {
 		selectors[
 			' .rich-text.block-editor-rich-text__editable.uagb-notice-text'
 		][ 'border-bottom-right-radius' ] = '3px';
-
+		selectors[ '.uagb-inline_notice__align-right svg' ] = {
+			'left': generateCSSUnit(
+				titleLeftPadding,
+				titlePaddingUnit
+			),
+		};
+		tabletSelectors[ '.uagb-inline_notice__align-right svg' ] = {
+			'left': generateCSSUnit(
+				posLeftTab,
+				posLeftUnitTab
+			),
+		};
+		mobileSelectors[ '.uagb-inline_notice__align-right svg' ] = {
+			'left': generateCSSUnit(
+				posLeftMob,
+				posLeftUnitMob
+			),
+		};
 	} else if ( 'simple' === layout ) {
 		selectors[
 			' .rich-text.block-editor-rich-text__editable.uagb-notice-title'
@@ -345,6 +442,33 @@ function styling( props ) {
 			' .rich-text.block-editor-rich-text__editable.uagb-notice-title'
 		][ 'border-left' ] =
 			generateCSSUnit( highlightWidthTablet, 'px' ) + ' solid ' + noticeColor;
+		selectors[ '.uagb-inline_notice__align-right svg' ] = {
+			'left': `calc(${ generateCSSUnit(
+				titleLeftPadding,
+				titlePaddingUnit
+			) } + ${ generateCSSUnit(
+				highlightWidth,
+				'px'
+			) })`,
+		};
+		tabletSelectors[ '.uagb-inline_notice__align-right svg' ] = {
+			'left': `calc(${ generateCSSUnit(
+				posLeftTab,
+				posLeftUnitTab
+			) } + ${ generateCSSUnit(
+				posClassicTab,
+				'px'
+			) })`,
+		};
+		mobileSelectors[ '.uagb-inline_notice__align-right svg' ] = {
+			'left': `calc(${ generateCSSUnit(
+				posLeftMob,
+				posLeftUnitMob
+			) } + ${ generateCSSUnit(
+				posClassicMob,
+				'px'
+			) })`,
+		};
 	}
 
 	const baseSelector = `.editor-styles-wrapper .uagb-block-${ block_id }`;

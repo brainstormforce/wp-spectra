@@ -28,6 +28,8 @@ const Settings = ( props ) => {
 	const { attributes, setAttributes } = props;
 	const {
 		icon,
+		iconSize,
+		iconSizeUnit,
 		noticeDismiss,
 		cookies,
 		close_cookie_days,
@@ -356,6 +358,23 @@ const Settings = ( props ) => {
 							onChange={ ( value ) =>
 								setAttributes( { icon: value } )
 							}
+						/>
+						<Range
+							setAttributes={ setAttributes }
+							label={ __(
+								'Button Size',
+								'ultimate-addons-for-gutenberg'
+							) }
+							value={ iconSize }
+							onChange={ ( value ) =>
+								setAttributes( { iconSize: value } )
+							}
+							min={ 0 }
+							max={ 100 }
+							unit={ {
+								value: iconSizeUnit,
+								label: 'iconSizeUnit',
+							} }
 						/>
 					</>
 				) }
