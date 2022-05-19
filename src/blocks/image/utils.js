@@ -18,6 +18,7 @@ export const pickRelevantMediaFiles = ( image, size ) => {
 			url: image?.media_details?.sizes[size]?.source_url,
 		}
 	}
+
 	return {
 		...imageProps,
 		url: image?.url
