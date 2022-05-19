@@ -565,11 +565,11 @@ const Settings = ( props ) => {
 					} }
 					mUnit={ {
 						value: mobileTitlePaddingUnit,
-						label: 'mobiletitlePaddingUnit',
+						label: 'mobileTitlePaddingUnit',
 					} }
 					tUnit={ {
 						value: tabletTitlePaddingUnit,
-						label: 'tablettitlePaddingUnit',
+						label: 'tabletTitlePaddingUnit',
 					} }
 					attributes={ attributes }
 					setAttributes={ setAttributes }
