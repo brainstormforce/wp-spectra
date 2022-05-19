@@ -191,7 +191,7 @@ if ( 'modern' === $attr['layout'] ) {
 	$selectors['.uagb-inline_notice__align-right svg']['left']   = UAGB_Helper::get_css_value( $attr['titleLeftPadding'], $attr['titlePaddingUnit'] );
 	$t_selectors['.uagb-inline_notice__align-right svg']['left'] = UAGB_Helper::get_css_value( $pos_left_tab, $pos_left_unit_tab );
 	$m_selectors['.uagb-inline_notice__align-right svg']['left'] = UAGB_Helper::get_css_value( $pos_left_mob, $pos_left_unit_mob );
-	
+
 } elseif ( 'simple' === $attr['layout'] ) {
 
 	$selectors[' .uagb-notice-title']['background-color'] = $attr['contentBgColor'];
