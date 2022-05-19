@@ -53,6 +53,8 @@ function styling( props ) {
 		}
 	}
 
+	// Since title text is set to flex, we need this function so that stack alignment doesn't break.
+	// It converts the normal text-align values to flex-alignment based values.
 	function flexAlignment( textAlign ) {
 
 		switch ( textAlign ) {
@@ -98,6 +100,8 @@ function styling( props ) {
 			'display' : 'block',
 			'text-align': stackAlignment,
 		};
+
+		// Since title text is set to flex, we need this property that aligns flex objects.
 		selectors[ ' .uag-star-rating__title ' ] = {
 			'justify-content': flexAlignment( stackAlignment ),
 		};
