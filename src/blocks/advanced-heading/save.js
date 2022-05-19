@@ -9,8 +9,10 @@ import { RichText } from '@wordpress/block-editor';
 export default function save( props ) {
 	const {
 		block_id,
+		headingTitleToggle,
 		headingTitle,
 		headingDesc,
+		headingDescToggle,
 		headingTag,
 		seperatorStyle,
 		headingId,
@@ -21,7 +23,7 @@ export default function save( props ) {
 		seprator = <div className="uagb-separator"></div>
 	}
 	let headingText = '';
-	if ( headingTitle !== '' ) {
+	if ( headingTitle ) {
 		headingText = (
 			<RichText.Content
 				tagName={ headingTag }
@@ -33,7 +35,7 @@ export default function save( props ) {
 	}
 	let descText = '';
 
-	if ( headingDesc !== '' ) {
+	if ( headingDesc ) {
 		descText = (
 			<RichText.Content
 				tagName="p"
@@ -50,9 +52,9 @@ export default function save( props ) {
 				`uagb-block-${ block_id }`
 			) }
 		>
-			{ headingText }
+			{ headingTitleToggle && headingText }
 			{ seprator }
-			{ descText }
+			{ headingDescToggle && descText }
 		</div>
 	);
 }
