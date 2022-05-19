@@ -98,9 +98,9 @@ const UAGBContainer = ( props ) => {
 				element.classList.add( 'uagb-container-has-children' );
 			}
 			if ( props.attributes.isBlockRootParent || isBlockRootParent ) {
-				element.classList.remove('alignfull');
-				element.classList.remove('alignwide');
-				element.classList.remove('default');
+				element.classList.remove( 'alignfull' );
+				element.classList.remove( 'alignwide' );
+				element.classList.remove( 'default' );
 				element.classList.add( props.attributes.contentWidth );
 			}
 		}
@@ -136,9 +136,9 @@ const UAGBContainer = ( props ) => {
 				element.classList.add( 'uagb-container-has-children' );
 			}
 			if ( props.attributes.isBlockRootParent ) {
-				element.classList.remove('alignfull');
-				element.classList.remove('alignwide');
-				element.classList.remove('default');
+				element.classList.remove( 'alignfull' );
+				element.classList.remove( 'alignwide' );
+				element.classList.remove( 'default' );
 				element.classList.add( props.attributes.contentWidth );
 			}
 		}
