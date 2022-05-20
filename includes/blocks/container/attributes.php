@@ -105,8 +105,8 @@ return array(
 	'contentWidth'                   => 'alignfull',
 	'innerContentWidth'              => 'alignwide',
 	'innerContentCustomWidthDesktop' => 1200,
-	'innerContentCustomWidthTablet'  => '',
-	'innerContentCustomWidthMobile'  => '',
+	'innerContentCustomWidthTablet'  => 768,
+	'innerContentCustomWidthMobile'  => 320,
 	'innerContentCustomWidthType'    => 'px',
 	'bottomType'                     => 'none',
 	'bottomColor'                    => '#333',
@@ -134,4 +134,7 @@ return array(
 	'backgroundVideoOpacity'         => 0.5,
 	'topInvert'                      => false,
 	'bottomInvert'                   => false,
+	'textColor'                      => 'inherit',
+	'linkColor'                      => '',
+	'linkHoverColor'                 => '',
 );
