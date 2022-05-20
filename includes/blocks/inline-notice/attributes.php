@@ -19,6 +19,8 @@ return array(
 	'fontSize'                 => '14',
 	'icon'                     => 'fa fa-window-close',
 	'iconSize'                 => 16,
+	'iconSizeTab'              => '',
+	'iconSizeMob'              => '',
 	'iconSizeUnit'             => 'px',
 	'noticeDismiss'            => '',
 	'noticeDismissColor'       => '',

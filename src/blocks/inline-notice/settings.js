@@ -29,6 +29,8 @@ const Settings = ( props ) => {
 	const {
 		icon,
 		iconSize,
+		iconSizeTab,
+		iconSizeMob,
 		iconSizeUnit,
 		noticeDismiss,
 		cookies,
@@ -359,22 +361,32 @@ const Settings = ( props ) => {
 								setAttributes( { icon: value } )
 							}
 						/>
-						<Range
-							setAttributes={ setAttributes }
+						<ResponsiveSlider
 							label={ __(
 								'Button Size',
 								'ultimate-addons-for-gutenberg'
 							) }
-							value={ iconSize }
-							onChange={ ( value ) =>
-								setAttributes( { iconSize: value } )
-							}
+							data={ {
+								desktop: {
+									value: iconSize,
+									label: 'iconSize',
+								},
+								tablet: {
+									value: iconSizeTab,
+									label: 'iconSizeTab',
+								},
+								mobile: {
+									value: iconSizeMob,
+									label: 'iconSizeMob',
+								},
+							} }
 							min={ 0 }
 							max={ 100 }
 							unit={ {
 								value: iconSizeUnit,
 								label: 'iconSizeUnit',
 							} }
+							setAttributes={ setAttributes }
 						/>
 					</>
 				) }

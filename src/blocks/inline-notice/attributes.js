@@ -81,6 +81,18 @@ const attributes = {
 			styleType: 'btn-width'
 		},
 	},
+	iconSizeTab: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'btn-width-tablet'
+		},
+	},
+	iconSizeMob: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'btn-width-mobile'
+		},
+	},
 	iconSizeUnit: {
 		type: 'string',
 		default: 'px',

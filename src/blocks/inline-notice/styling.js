@@ -14,6 +14,8 @@ function styling( props ) {
 		contentBgColor,
 		noticeDismissColor,
 		iconSize,
+		iconSizeTab,
+		iconSizeMob,
 		iconSizeUnit,
 		titleFontFamily,
 		titleFontWeight,
@@ -275,6 +277,14 @@ function styling( props ) {
 			),
 		},
 		'.uagb-dismissable > svg': {
+			'width': generateCSSUnit(
+				iconSizeMob,
+				iconSizeUnit
+			),
+			'height': generateCSSUnit(
+				iconSizeMob,
+				iconSizeUnit
+			),
 			'top': generateCSSUnit(
 				posTopMob,
 				posTopUnitMob
@@ -352,6 +362,14 @@ function styling( props ) {
 			),
 		},
 		'.uagb-dismissable > svg': {
+			'width': generateCSSUnit(
+				iconSizeTab,
+				iconSizeUnit
+			),
+			'height': generateCSSUnit(
+				iconSizeTab,
+				iconSizeUnit
+			),
 			'top': generateCSSUnit(
 				posTopTab,
 				posTopUnitTab
