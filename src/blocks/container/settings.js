@@ -1,4 +1,4 @@
-import React, { Suspense } from 'react';
+import React, { Suspense, useEffect } from 'react';
 import lazyLoader from '@Controls/lazy-loader';
 import InspectorTabs from '@Components/inspector-tabs/InspectorTabs.js';
 import InspectorTab, {
@@ -165,6 +165,16 @@ const Settings = ( props ) => {
 	}
 
 	const currentOppAxisDirection = 'row' === currentDirection ? 'column' : 'row';
+
+	useEffect( () => {
+		if ( backgroundType === 'color' ) {
+			setAttributes( { 
+				backgroundSizeDesktop: 'cover',
+				backgroundSizeTablet: 'cover',
+				backgroundSizeMobile: 'cover',
+			} );
+		}
+	}, [backgroundType] );
 
 	const generalSettings = () => {
 
