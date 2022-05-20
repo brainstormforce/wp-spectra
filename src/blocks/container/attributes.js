@@ -49,9 +49,11 @@ const attributes = {
 	},
 	innerContentCustomWidthTablet: {
 		type: 'number',
+		default: 768
 	},
 	innerContentCustomWidthMobile: {
 		type: 'number',
+		default: 320
 	},
 	innerContentCustomWidthType: {
 		type: 'string',
@@ -785,6 +787,25 @@ const attributes = {
 			styleType: 'bg-video-opacity'
 		},
 		default: 0.5,
+	},
+	textColor: {
+		type: 'string',
+		UAGCopyPaste: {
+			styleType: 'desc-color'
+		},
+		default: 'inherit',
+	},
+	linkColor: {
+		type: 'string',
+		UAGCopyPaste: {
+			styleType: 'btn-color'
+		},
+	},
+	linkHoverColor: {
+		type: 'string',
+		UAGCopyPaste: {
+			styleType: 'btn-hover-color'
+		},
 	},
 };
 

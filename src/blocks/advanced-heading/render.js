@@ -10,8 +10,10 @@ const Render = ( props ) => {
 		attributes: {
 			isPreview,
 			block_id,
+			headingTitleToggle,
 			headingTitle,
 			headingDesc,
+			headingDescToggle,
 			headingTag,
 			seperatorStyle,
 		},
@@ -64,9 +66,9 @@ const Render = ( props ) => {
 				`uagb-block-${ block_id }`
 			) }
 		>
-			{ headingText }
+			{ headingTitleToggle && headingText }
 			{ separator }
-			{ descText }
+			{ headingDescToggle && descText  }
 		</div>
 	);
 };

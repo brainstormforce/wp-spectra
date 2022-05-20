@@ -14,9 +14,21 @@ const attributes = {
 		type: 'string',
 		default: '',
 	},
+	urlTablet: {
+		type: 'string',
+		default: '',
+	},
+	urlMobile: {
+		type: 'string',
+		default: '',
+	},
 	alt: {
 		type: 'string',
 		default: '',
+	},
+	enableCaption: {
+		type: 'boolean',
+		default: false,
 	},
 	caption: {
 		type: 'string',
@@ -53,8 +65,50 @@ const attributes = {
 	width: {
 		type: 'integer',
 		default: '',
+		UAGCopyPaste: {
+			styleType: 'image-width'
+		}
+	},
+	widthTablet: {
+		type: 'integer',
+		default: '',
+		UAGCopyPaste: {
+			styleType: 'image-width-tablet'
+		}
+	},
+	widthMobile: {
+		type: 'integer',
+		default: '',
+		UAGCopyPaste: {
+			styleType: 'image-width-mobile'
+		}
 	},
 	height: {
+		type: 'integer',
+		default: '',
+		UAGCopyPaste: {
+			styleType: 'image-height'
+		}
+	},
+	heightTablet: {
+		type: 'integer',
+		default: '',
+		UAGCopyPaste: {
+			styleType: 'image-height-tablet'
+		}
+	},
+	heightMobile: {
+		type: 'integer',
+		default: '',
+		UAGCopyPaste: {
+			styleType: 'image-height-mobile'
+		}
+	},
+	naturalWidth: {
+		type: 'integer',
+		default: '',
+	},
+	naturalHeight: {
 		type: 'integer',
 		default: '',
 	},
@@ -63,6 +117,14 @@ const attributes = {
 		default: '',
 	},
 	sizeSlug: {
+		type: 'string',
+		default: '',
+	},
+	sizeSlugTablet: {
+		type: 'string',
+		default: '',
+	},
+	sizeSlugMobile: {
 		type: 'string',
 		default: '',
 	},
