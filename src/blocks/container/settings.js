@@ -166,6 +166,8 @@ const Settings = ( props ) => {
 
 	const currentOppAxisDirection = 'row' === currentDirection ? 'column' : 'row';
 
+	// This useEffect ensures that background size is set to cover, so as to ensure color takes up entire width and height,
+	// in case bg type was set to Image before and given a custom width and height.
 	useEffect( () => {
 		if ( backgroundType === 'color' ) {
 			setAttributes( { 
