@@ -1347,18 +1347,20 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 		 * @since 1.20.0
 		 */
 		public function render_innerblocks( $attributes ) {
-			$length = count( $attributes['layoutConfig'] );
+			$length   = count( $attributes['layoutConfig'] );
 			$img_atts = array();
 			for ( $i = 0; $i < $length; $i++ ) {
-				if( 'background' === $attributes['imgPosition'] && 'uagb/post-image' === $attributes['layoutConfig'][ $i ][0] ) {
-					// This is to avoid background image container as first child as we are targetting first child for top margin property. 
-					$img_atts = $attributes['layoutConfig'][ $i ][0]; 
+				if ( 'background' === $attributes['imgPosition'] && 'uagb/post-image' === $attributes['layoutConfig'][ $i ][0] ) {
+					// This is to avoid background image container as first child as we are targetting first child for top margin property.
+					$img_atts = $attributes['layoutConfig'][ $i ][0];
 					continue;
 				}
 				$this->render_layout( $attributes['layoutConfig'][ $i ][0], $attributes );
 			}
-			// Render background image container as a last child. 
-			if( ! empty( $img_atts ) ) $this->render_layout( $img_atts, $attributes );
+			// Render background image container as a last child.
+			if ( ! empty( $img_atts ) ) {
+				$this->render_layout( $img_atts, $attributes );
+			}
 		}
 		/**
 		 * Renders the post masonry related script.
