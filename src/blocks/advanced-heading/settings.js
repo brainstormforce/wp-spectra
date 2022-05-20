@@ -22,11 +22,7 @@ import { SelectControl, Icon, ToggleControl } from '@wordpress/components';
 import SpacingControl from '@Components/spacing-control';
 import ColorSwitchControl from '@Components/color-switch-control';
 import TextShadowControl from '@Components/text-shadow';
-import Border from '@Components/border';
 import ResponsiveBorder from '@Components/responsive-border'
-
-
-
 import ResponsiveSlider from '@Components/responsive-slider';
 // Extend component
 import UAGAdvancedPanelBody from '@Components/advanced-panel-body';

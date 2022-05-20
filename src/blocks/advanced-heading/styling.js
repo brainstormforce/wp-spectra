@@ -265,12 +265,12 @@ function styling( props ) {
 			'border-top-width': generateCSSUnit( highLightBorderTopWidth, 'px' ),
 			'border-right-width': generateCSSUnit( highLightBorderRightWidth, 'px' ),
 			'border-bottom-width': generateCSSUnit( highLightBorderBottomWidth, 'px' ),
-			'border-bottom-width': generateCSSUnit( highLightBorderLeftWidth, 'px' ),
+			'border-left-width': generateCSSUnit( highLightBorderLeftWidth, 'px' ),
 			'border-color': highLightBorderColor,
-			'border-top-left-radius': generateCSSUnit(highLightBorderTopLeftRadius, highLightBorderRadiusUnit),
-			'border-top-right-radius':  generateCSSUnit(highLightBorderTopRightRadius, highLightBorderRadiusUnit),
-			'border-bottom-left-radius':  generateCSSUnit(highLightBorderBottomLeftRadius, highLightBorderRadiusUnit),
-			'border-bottom-right-radius':  generateCSSUnit(highLightBorderBottomRightRadius, highLightBorderRadiusUnit),
+			'border-top-left-radius': generateCSSUnit( highLightBorderTopLeftRadius, highLightBorderRadiusUnit ),
+			'border-top-right-radius':  generateCSSUnit( highLightBorderTopRightRadius, highLightBorderRadiusUnit ),
+			'border-bottom-left-radius':  generateCSSUnit( highLightBorderBottomLeftRadius, highLightBorderRadiusUnit ),
+			'border-bottom-right-radius':  generateCSSUnit( highLightBorderBottomRightRadius, highLightBorderRadiusUnit ),
 			'padding-top': generateCSSUnit(
 				highLightTopPadding,
 				highLightPaddingUnit
@@ -429,11 +429,11 @@ function styling( props ) {
 		'border-top-width': generateCSSUnit( highLightBorderTopWidthTablet, 'px' ),
 		'border-right-width': generateCSSUnit( highLightBorderRightWidthTablet, 'px' ),
 		'border-bottom-width': generateCSSUnit( highLightBorderBottomWidthTablet, 'px' ),
-		'border-bottom-width': generateCSSUnit( highLightBorderLeftWidthTablet, 'px' ),
-		'border-top-left-radius': generateCSSUnit(highLightBorderTopLeftRadiusTablet, highLightBorderRadiusUnit),
-		'border-top-right-radius':  generateCSSUnit(highLightBorderTopRightRadiusTablet, highLightBorderRadiusUnit),
-		'border-bottom-left-radius':  generateCSSUnit(highLightBorderBottomLeftRadiusTablet, highLightBorderRadiusUnit),
-		'border-bottom-right-radius':  generateCSSUnit(highLightBorderBottomRightRadiusTablet, highLightBorderRadiusUnit),
+		'border-left-width': generateCSSUnit( highLightBorderLeftWidthTablet, 'px' ),
+		'border-top-left-radius': generateCSSUnit( highLightBorderTopLeftRadiusTablet, highLightBorderRadiusUnitTablet ),
+		'border-top-right-radius':  generateCSSUnit( highLightBorderTopRightRadiusTablet, highLightBorderRadiusUnitTablet ),
+		'border-bottom-left-radius':  generateCSSUnit( highLightBorderBottomLeftRadiusTablet, highLightBorderRadiusUnitTablet ),
+		'border-bottom-right-radius':  generateCSSUnit( highLightBorderBottomRightRadiusTablet, highLightBorderRadiusUnitTablet ),
 	};
 	// mobile
 	mobile_selectors['.wp-block-uagb-advanced-heading '] = {
@@ -524,11 +524,11 @@ function styling( props ) {
 		'border-top-width': generateCSSUnit( highLightBorderTopWidthMobile, 'px' ),
 		'border-right-width': generateCSSUnit( highLightBorderRightWidthMobile, 'px' ),
 		'border-bottom-width': generateCSSUnit( highLightBorderBottomWidthMobile, 'px' ),
-		'border-bottom-width': generateCSSUnit( highLightBorderLeftWidthMobile, 'px' ),
-		'border-top-left-radius': generateCSSUnit(highLightBorderTopLeftRadiusMobile, highLightBorderRadiusUnit),
-		'border-top-right-radius':  generateCSSUnit(highLightBorderTopRightRadiusMobile, highLightBorderRadiusUnit),
-		'border-bottom-left-radius':  generateCSSUnit(highLightBorderBottomLeftRadiusMobile, highLightBorderRadiusUnit),
-		'border-bottom-right-radius':  generateCSSUnit(highLightBorderBottomRightRadiusMobile, highLightBorderRadiusUnit),
+		'border-left-width': generateCSSUnit( highLightBorderLeftWidthMobile, 'px' ),
+		'border-top-left-radius': generateCSSUnit( highLightBorderTopLeftRadiusMobile, highLightBorderRadiusUnitMobile ),
+		'border-top-right-radius':  generateCSSUnit( highLightBorderTopRightRadiusMobile, highLightBorderRadiusUnitMobile ),
+		'border-bottom-left-radius':  generateCSSUnit( highLightBorderBottomLeftRadiusMobile, highLightBorderRadiusUnitMobile ),
+		'border-bottom-right-radius':  generateCSSUnit( highLightBorderBottomRightRadiusMobile, highLightBorderRadiusUnitMobile ),
 	};
 	mobile_selectors[ ' .uagb-separator' ] = {
 		'width': generateCSSUnit( separatorWidthMobile, separatorWidthType ),

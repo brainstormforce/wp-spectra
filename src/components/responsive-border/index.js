@@ -3,7 +3,6 @@
  *
  */
 import { __ } from '@wordpress/i18n';
-import Range from '@Components/range/Range.js';
 import AdvancedPopColorControl from '@Components/color-control/advanced-pop-color-control.js';
 import { SelectControl } from '@wordpress/components';
 import UAGTabsControl from '@Components/tabs';
