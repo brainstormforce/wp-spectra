@@ -338,6 +338,7 @@ function styling( props ) {
 			'align-content' : alignContentTablet,
 			'row-gap' : generateCSSUnit( rowGapTablet, rowGapType ),
 			'column-gap' : generateCSSUnit( columnGapTablet, columnGapType ),
+			'min-height' : generateCSSUnit( minHeightTablet, minHeightType ),
 		},
 		'.block-editor-block-list__block' : {
 			'min-height' : generateCSSUnit( minHeightTablet, minHeightType ),
@@ -395,6 +396,7 @@ function styling( props ) {
 			'align-content' : alignContentMobile,
 			'row-gap' : generateCSSUnit( rowGapMobile, rowGapType ),
 			'column-gap' : generateCSSUnit( columnGapMobile, columnGapType ),
+			'min-height' : generateCSSUnit( minHeightMobile, minHeightType ),
 		},
 		'.block-editor-block-list__block' : {
 			'min-height' : generateCSSUnit( minHeightMobile, minHeightType ),
