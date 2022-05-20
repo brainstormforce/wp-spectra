@@ -10,10 +10,14 @@ function styling( props ) {
 		headingAlign,
 		headingTag,
 		headingColor,
+		headingColorType,
+		headingGradientColor,
+		blockBackgroundType,
+		blockBackground,
+		blockGradientBackground,
 		headSpace,
 		headSpaceTablet,
 		headSpaceMobile,
-		headSpaceType,
 		seperatorStyle,
 		separatorHeight,
 		separatorHeightType,
@@ -38,6 +42,15 @@ function styling( props ) {
 		headLineHeightType,
 		headLineHeightMobile,
 		headLineHeightTablet,
+		headLetterSpacing,
+		headLetterSpacingTablet,
+		headLetterSpacingMobile,
+		headLetterSpacingType,
+		headShadowColor,
+		headShadowHOffset,
+		headShadowVOffset,
+		headShadowBlur,
+		// sub heading
 		subHeadFontFamily,
 		subHeadFontStyle,
 		subHeadFontWeight,
@@ -53,14 +66,137 @@ function styling( props ) {
 		headDecoration,
 		subHeadTransform,
 		subHeadDecoration,
+		subHeadLetterSpacing,
+		subHeadLetterSpacingTablet,
+		subHeadLetterSpacingMobile,
+		subHeadLetterSpacingType,
+		// padding
+		blockTopPadding,
+		blockRightPadding,
+		blockLeftPadding,
+		blockBottomPadding,
+		blockTopPaddingTablet,
+		blockRightPaddingTablet,
+		blockLeftPaddingTablet,
+		blockBottomPaddingTablet,
+		blockTopPaddingMobile,
+		blockRightPaddingMobile,
+		blockLeftPaddingMobile,
+		blockBottomPaddingMobile,
+		blockPaddingUnit,
+		blockPaddingUnitTablet,
+		blockPaddingUnitMobile,
+		// margin
+		blockTopMargin,
+		blockRightMargin,
+		blockLeftMargin,
+		blockBottomMargin,
+		blockTopMarginTablet,
+		blockRightMarginTablet,
+		blockLeftMarginTablet,
+		blockBottomMarginTablet,
+		blockTopMarginMobile,
+		blockRightMarginMobile,
+		blockLeftMarginMobile,
+		blockBottomMarginMobile,
+		blockMarginUnit,
+		blockMarginUnitTablet,
+		blockMarginUnitMobile,
+		// link
+		linkColor,
+		linkHColor,
+		// Highlight
+		highLightColor,
+		highLightBackground,
+		highLightBorderWidth,
+		highLightBorderRadius,
+		highLightBorderStyle,
+		highLightBorderColor,
+		highLightBorderHColor,
+		highLightFontFamily,
+		highLightFontWeight,
+		highLightFontStyle,
+		highLightTransform,
+		highLightDecoration,
+		highLightFontSizeType,
+		highLightLineHeightType,
+		highLightFontSize,
+		highLightFontSizeTablet,
+		highLightFontSizeMobile,
+		highLightLineHeight,
+		highLightLineHeightTablet,
+		highLightLineHeightMobile,
+		highLightLetterSpacing,
+		highLightLetterSpacingTablet,
+		highLightLetterSpacingMobile,
+		highLightLetterSpacingType,
+		highLightTopPadding,
+		highLightRightPadding,
+		highLightLeftPadding,
+		highLightBottomPadding,
+		highLightTopPaddingTablet,
+		highLightRightPaddingTablet,
+		highLightLeftPaddingTablet,
+		highLightBottomPaddingTablet,
+		highLightTopPaddingMobile,
+		highLightRightPaddingMobile,
+		highLightLeftPaddingMobile,
+		highLightBottomPaddingMobile,
+		highLightPaddingUnit,
+		highLightPaddingUnitTablet,
+		highLightPaddingUnitMobile,
 	} = props.attributes;
 
 	const tablet_selectors = {};
 	const mobile_selectors = {};
 
+	let gradientLinkColor = {}
+	let gradientLinkHoverColor = {}
+	if( 'gradient' === headingColorType ){
+		gradientLinkColor =  {
+			'-webkit-text-fill-color': linkColor
+		}
+		gradientLinkHoverColor =  {
+			'-webkit-text-fill-color': linkHColor
+		}
+	}
+
 	const selectors = {
 		'.wp-block-uagb-advanced-heading ':{
+			'background': 	'classic' === blockBackgroundType ? blockBackground : blockGradientBackground,
 			'text-align': headingAlign,
+			'margin-top': generateCSSUnit(
+				blockTopMargin,
+				blockMarginUnit
+			),
+			'margin-right': generateCSSUnit(
+				blockRightMargin,
+				blockMarginUnit
+			),
+			'margin-bottom': generateCSSUnit(
+				blockBottomMargin,
+				blockMarginUnit
+			),
+			'margin-left': generateCSSUnit(
+				blockLeftMargin,
+				blockMarginUnit
+			),
+			'padding-top': generateCSSUnit(
+				blockTopPadding,
+				blockPaddingUnit
+			),
+			'padding-right': generateCSSUnit(
+				blockRightPadding,
+				blockPaddingUnit
+			),
+			'padding-bottom': generateCSSUnit(
+				blockBottomPadding,
+				blockPaddingUnit
+			),
+			'padding-left': generateCSSUnit(
+				blockLeftPadding,
+				blockPaddingUnit
+			),
 		},
 		' .uagb-desc-text': {
 			'margin': 0,
@@ -77,10 +213,79 @@ function styling( props ) {
 				subHeadLineHeight,
 				subHeadLineHeightType
 			),
+			'letter-spacing': generateCSSUnit( subHeadLetterSpacing, subHeadLetterSpacingType ),
 			'color': subHeadingColor,
+		},
+		'.wp-block-uagb-advanced-heading a': {
+			'color': linkColor,
+			...gradientLinkColor
+		},
+		'.wp-block-uagb-advanced-heading a:hover': {
+			'color': linkHColor,
+			...gradientLinkHoverColor
+		},
+		'.wp-block-uagb-advanced-heading .uagb-highlight': {
+			'background': highLightBackground,
+			'color': highLightColor,
+			'-webkit-text-fill-color': highLightColor,
+			'font-family': highLightFontFamily,
+			'font-style' : highLightFontStyle,
+			'text-decoration': highLightDecoration,
+			'text-transform': highLightTransform,
+			'font-weight': highLightFontWeight,
+			'font-size': generateCSSUnit( highLightFontSize, highLightFontSizeType ),
+			'line-height': generateCSSUnit( highLightLineHeight, highLightLineHeightType ),
+			'letter-spacing': generateCSSUnit( highLightLetterSpacing, highLightLetterSpacingType ),
+			'border-style': highLightBorderStyle,
+			'border-width': generateCSSUnit( highLightBorderWidth, 'px' ),
+			'border-color': highLightBorderColor,
+			'border-radius': generateCSSUnit( highLightBorderRadius, 'px' ),
+			'padding-top': generateCSSUnit(
+				highLightTopPadding,
+				highLightPaddingUnit
+			),
+			'padding-right': generateCSSUnit(
+				highLightRightPadding,
+				highLightPaddingUnit
+			),
+			'padding-bottom': generateCSSUnit(
+				highLightBottomPadding,
+				highLightPaddingUnit
+			),
+			'padding-left': generateCSSUnit(
+				highLightLeftPadding,
+				highLightPaddingUnit
+			),
+		},
+		'.wp-block-uagb-advanced-heading .uagb-highlight:hover': {
+			'border-color': highLightBorderHColor,
 		}
 	};
 
+	// gradient text color
+	let headingGradientStyle  = {}
+	if( 'gradient' === headingColorType ){
+		headingGradientStyle =  {
+			'background': headingGradientColor,
+			'-webkit-background-clip': 'text',
+			'-webkit-text-fill-color': 'transparent'
+		}
+	}
+
+	// Text Selection & highlight
+	const highlightSelectionText = {
+		'color': highLightColor,
+		'background': highLightBackground,
+		'-webkit-text-fill-color': highLightColor
+	}
+	// selectors[ '.wp-block-uagb-advanced-heading .uagb-heading-text::-moz-selection' ] = highlightSelectionText
+	// selectors[ '.wp-block-uagb-advanced-heading .uagb-heading-text::selection' ] = highlightSelectionText
+	// selectors[ '.wp-block-uagb-advanced-heading .uagb-desc-text::-moz-selection' ] = highlightSelectionText
+	// selectors[ '.wp-block-uagb-advanced-heading .uagb-desc-text::selection' ] = highlightSelectionText
+	selectors[ '.wp-block-uagb-advanced-heading .uagb-highlight::-moz-selection' ] = highlightSelectionText
+	selectors[ '.wp-block-uagb-advanced-heading .uagb-highlight::selection' ] = highlightSelectionText
+
+	// heading
 	selectors[ ' ' + headingTag + '.uagb-heading-text' ] = {
 		'font-family': headFontFamily,
 		'font-style' : headFontStyle,
@@ -90,9 +295,13 @@ function styling( props ) {
 		'font-size': generateCSSUnit( headFontSize, headFontSizeType ),
 		'line-height': generateCSSUnit( headLineHeight, headLineHeightType ),
 		'color': headingColor,
-		'margin-bottom': generateCSSUnit( headSpace, headSpaceType ),
+		'margin-bottom': generateCSSUnit( headSpace, 'px' ),
+		'letter-spacing': generateCSSUnit( headLetterSpacing, headLetterSpacingType ),
+		'text-shadow': headShadowColor && generateCSSUnit( headShadowHOffset, 'px' ) + ' ' + generateCSSUnit( headShadowVOffset, 'px' ) + ' ' + generateCSSUnit( headShadowBlur, 'px' ) + ' ' +  headShadowColor,
+		...headingGradientStyle
 	};
 
+	// separator
 	if ( seperatorStyle !== 'none' ) {
 		selectors[ ' .uagb-separator' ] = {
 			'border-top-style': seperatorStyle,
@@ -103,13 +312,51 @@ function styling( props ) {
 		};
 	}
 
+
+	// tablet
+	tablet_selectors['.wp-block-uagb-advanced-heading '] = {
+		'margin-top': generateCSSUnit(
+			blockTopMarginTablet,
+			blockMarginUnitTablet
+		),
+		'margin-right': generateCSSUnit(
+			blockRightMarginTablet,
+			blockMarginUnitTablet
+		),
+		'margin-bottom': generateCSSUnit(
+			blockBottomMarginTablet,
+			blockMarginUnitTablet
+		),
+		'margin-left': generateCSSUnit(
+			blockLeftMarginTablet,
+			blockMarginUnitTablet
+		),
+		'padding-top': generateCSSUnit(
+			blockTopPaddingTablet,
+			blockPaddingUnitTablet
+		),
+		'padding-right': generateCSSUnit(
+			blockRightPaddingTablet,
+			blockPaddingUnitTablet
+		),
+		'padding-bottom': generateCSSUnit(
+			blockBottomPaddingTablet,
+			blockPaddingUnitTablet
+		),
+		'padding-left': generateCSSUnit(
+			blockLeftPaddingTablet,
+			blockPaddingUnitTablet
+		),
+	}
+
 	tablet_selectors[ ' ' + headingTag + '.uagb-heading-text' ] = {
 		'font-size': generateCSSUnit( headFontSizeTablet, headFontSizeType ),
 		'line-height': generateCSSUnit(
 			headLineHeightTablet,
 			headLineHeightType
 		),
-		'margin-bottom': generateCSSUnit( headSpaceTablet, headSpaceType ),
+		'letter-spacing': generateCSSUnit( headLetterSpacingTablet, headLetterSpacingType ),
+		'margin-bottom': generateCSSUnit( headSpaceTablet, 'px' ),
 	};
 	tablet_selectors[ ' .uagb-desc-text' ] = {
 		'font-size': generateCSSUnit(
@@ -120,7 +367,70 @@ function styling( props ) {
 			subHeadLineHeightTablet,
 			subHeadLineHeightType
 		),
+		'letter-spacing': generateCSSUnit( subHeadLetterSpacingTablet, subHeadLetterSpacingType ),
 	};
+	tablet_selectors[ '.wp-block-uagb-advanced-heading .uagb-highlight' ] = {
+		'font-size': generateCSSUnit(
+			highLightFontSizeTablet,
+			highLightFontSizeType
+		),
+		'line-height': generateCSSUnit(
+			highLightLineHeightTablet,
+			highLightLineHeightType
+		),
+		'letter-spacing': generateCSSUnit( highLightLetterSpacingTablet, highLightLetterSpacingType ),
+		'padding-top': generateCSSUnit(
+			highLightTopPaddingTablet,
+			highLightPaddingUnitTablet
+		),
+		'padding-right': generateCSSUnit(
+			highLightRightPaddingTablet,
+			highLightPaddingUnitTablet
+		),
+		'padding-bottom': generateCSSUnit(
+			highLightBottomPaddingTablet,
+			highLightPaddingUnitTablet
+		),
+		'padding-left': generateCSSUnit(
+			highLightLeftPaddingTablet,
+			highLightPaddingUnitTablet
+		),
+	};
+	// mobile
+	mobile_selectors['.wp-block-uagb-advanced-heading '] = {
+		'margin-top': generateCSSUnit(
+			blockTopMarginMobile,
+			blockMarginUnitMobile
+		),
+		'margin-right': generateCSSUnit(
+			blockRightMarginMobile,
+			blockMarginUnitMobile
+		),
+		'margin-bottom': generateCSSUnit(
+			blockBottomMarginMobile,
+			blockMarginUnitMobile
+		),
+		'margin-left': generateCSSUnit(
+			blockLeftMarginMobile,
+			blockMarginUnitMobile
+		),
+		'padding-top': generateCSSUnit(
+			blockTopPaddingMobile,
+			blockPaddingUnitMobile
+		),
+		'padding-right': generateCSSUnit(
+			blockRightPaddingMobile,
+			blockPaddingUnitMobile
+		),
+		'padding-bottom': generateCSSUnit(
+			blockBottomPaddingMobile,
+			blockPaddingUnitMobile
+		),
+		'padding-left': generateCSSUnit(
+			blockLeftPaddingMobile,
+			blockPaddingUnitMobile
+		),
+	}
 	tablet_selectors[ ' .uagb-separator' ] = {
 		'width': generateCSSUnit( separatorWidthTablet, separatorWidthType ),
 		'margin-bottom': generateCSSUnit( separatorSpaceTablet, separatorSpaceType ),
@@ -132,7 +442,8 @@ function styling( props ) {
 			headLineHeightMobile,
 			headLineHeightType
 		),
-		'margin-bottom': generateCSSUnit( headSpaceMobile, headSpaceType ),
+		'letter-spacing': generateCSSUnit( headLetterSpacingMobile, headLetterSpacingType ),
+		'margin-bottom': generateCSSUnit( headSpaceMobile, 'px' ),
 	};
 	mobile_selectors[ ' .uagb-desc-text' ] = {
 		'font-size': generateCSSUnit(
@@ -142,6 +453,34 @@ function styling( props ) {
 		'line-height': generateCSSUnit(
 			subHeadLineHeightMobile,
 			subHeadLineHeightType
+		),
+		'letter-spacing': generateCSSUnit( subHeadLetterSpacingMobile, subHeadLetterSpacingType ),
+	};
+	mobile_selectors[ '.wp-block-uagb-advanced-heading .uagb-highlight' ] = {
+		'font-size': generateCSSUnit(
+			highLightFontSizeMobile,
+			highLightFontSizeType
+		),
+		'line-height': generateCSSUnit(
+			highLightLineHeightMobile,
+			highLightLineHeightType
+		),
+		'letter-spacing': generateCSSUnit( highLightLetterSpacingMobile, highLightLetterSpacingType ),
+		'padding-top': generateCSSUnit(
+			highLightTopPaddingMobile,
+			highLightPaddingUnitMobile
+		),
+		'padding-right': generateCSSUnit(
+			highLightRightPaddingMobile,
+			highLightPaddingUnitMobile
+		),
+		'padding-bottom': generateCSSUnit(
+			highLightBottomPaddingMobile,
+			highLightPaddingUnitMobile
+		),
+		'padding-left': generateCSSUnit(
+			highLightLeftPaddingMobile,
+			highLightPaddingUnitMobile
 		),
 	};
 	mobile_selectors[ ' .uagb-separator' ] = {
