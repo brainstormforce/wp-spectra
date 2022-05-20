@@ -198,18 +198,18 @@ const ResponsiveBorder = ( props ) => {
 			<div className="uag-border-radius">
 				<SpacingControl
 					label={ borderRadius.label }
-					valueTop={ borderRadius.valueTop }
-					valueRight={ borderRadius.valueRight }
-					valueBottom={ borderRadius.valueBottom }
-					valueLeft={ borderRadius.valueLeft }
-					valueTopTablet={ borderRadius.valueTopTablet }
-					valueRightTablet={ borderRadius.valueRightTablet }
-					valueBottomTablet={ borderRadius.valueBottomTablet }
-					valueLeftTablet={  borderRadius.valueLeftTablet }
-					valueTopMobile={ borderRadius.valueTopMobile }
-					valueRightMobile={ borderRadius.valueRightMobile }
-					valueBottomMobile={ borderRadius.valueBottomMobile }
-					valueLeftMobile={ borderRadius.valueLeftMobile }
+					valueTop={ borderRadius.valueTopLeft }
+					valueRight={ borderRadius.valueTopRight }
+					valueBottom={ borderRadius.valueBottomRight }
+					valueLeft={ borderRadius.valueBottomLeft }
+					valueTopTablet={ borderRadius.valueTopLeftTablet }
+					valueRightTablet={ borderRadius.valueTopRightTablet }
+					valueBottomTablet={ borderRadius.valueBottomRightTablet }
+					valueLeftTablet={  borderRadius.valueBottomLeftTablet }
+					valueTopMobile={ borderRadius.valueTopLeftMobile }
+					valueRightMobile={ borderRadius.valueTopRightMobile }
+					valueBottomMobile={ borderRadius.valueBottomRightMobile }
+					valueLeftMobile={ borderRadius.valueBottomLeftMobile }
 					units={ [
 						{
 							name: __(

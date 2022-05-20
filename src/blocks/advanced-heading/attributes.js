@@ -707,10 +707,6 @@ const attributes = {
 		type: 'string',
 		default: '#6104ff'
 	},
-	// highLightBorderWidth: {
-	// 	type: 'number',
-	// 	default: '',
-	// },
 	highLightBorderTopWidth: {
 		type: 'number',
 		default: '',
@@ -763,55 +759,51 @@ const attributes = {
 		type: 'boolean',
 		default: true,
 	},
-	// highLightBorderRadius: {
-	// 	type: 'number',
-	// 	default: '',
-	// },
-	highLightBorderTopRadius: {
+	highLightBorderTopLeftRadius: {
 		type: 'number',
 		default: '',
 	},
-	highLightBorderLeftRadius: {
+	highLightBorderTopRightRadius: {
 		type: 'number',
 		default: '',
 	},
-	highLightBorderRightRadius: {
+	highLightBorderBottomLeftRadius: {
 		type: 'number',
 		default: '',
 	},
-	highLightBorderBottomRadius: {
+	highLightBorderBottomRightRadius: {
 		type: 'number',
 		default: '',
 	},
-	highLightBorderTopRadiusTablet: {
+	highLightBorderTopLeftRadiusTablet: {
 		type: 'number',
 		default: '',
 	},
-	highLightBorderLeftRadiusTablet: {
+	highLightBorderTopRightRadiusTablet: {
 		type: 'number',
 		default: '',
 	},
-	highLightBorderRightRadiusTablet: {
+	highLightBorderBottomLeftRadiusTablet: {
 		type: 'number',
 		default: '',
 	},
-	highLightBorderBottomRadiusTablet: {
+	highLightBorderBottomRightRadiusTablet: {
 		type: 'number',
 		default: '',
 	},
-	highLightBorderTopRadiusMobile: {
+	highLightBorderTopLeftRadiusMobile: {
 		type: 'number',
 		default: '',
 	},
-	highLightBorderLeftRadiusMobile: {
+	highLightBorderTopRightRadiusMobile: {
 		type: 'number',
 		default: '',
 	},
-	highLightBorderRightRadiusMobile: {
+	highLightBorderBottomLeftRadiusMobile: {
 		type: 'number',
 		default: '',
 	},
-	highLightBorderBottomRadiusMobile: {
+	highLightBorderBottomRightRadiusMobile: {
 		type: 'number',
 		default: '',
 	},

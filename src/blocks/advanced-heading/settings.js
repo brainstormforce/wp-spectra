@@ -143,7 +143,6 @@ const Settings = ( props ) => {
 		// Highlight
 		highLightColor,
 		highLightBackground,
-		highLightBorderWidth,
 		highLightBorderTopWidth,
 		highLightBorderLeftWidth,
 		highLightBorderRightWidth,
@@ -157,18 +156,18 @@ const Settings = ( props ) => {
 		highLightBorderRightWidthMobile,
 		highLightBorderBottomWidthMobile,
 		highLightBorderLink,
-		highLightBorderTopRadius,
-		highLightBorderLeftRadius,
-		highLightBorderRightRadius,
-		highLightBorderBottomRadius,
-		highLightBorderTopRadiusTablet,
-		highLightBorderLeftRadiusTablet,
-		highLightBorderRightRadiusTablet,
-		highLightBorderBottomRadiusTablet,
-		highLightBorderTopRadiusMobile,
-		highLightBorderLeftRadiusMobile,
-		highLightBorderRightRadiusMobile,
-		highLightBorderBottomRadiusMobile,
+		highLightBorderTopLeftRadius,
+		highLightBorderTopRightRadius,
+		highLightBorderBottomLeftRadius,
+		highLightBorderBottomRightRadius,
+		highLightBorderTopLeftRadiusTablet,
+		highLightBorderTopRightRadiusTablet,
+		highLightBorderBottomLeftRadiusTablet,
+		highLightBorderBottomRightRadiusTablet,
+		highLightBorderTopLeftRadiusMobile,
+		highLightBorderTopRightRadiusMobile,
+		highLightBorderBottomLeftRadiusMobile,
+		highLightBorderBottomRightRadiusMobile,
 		highLightBorderRadiusLink,
 		highLightBorderRadiusUnit,
 		highLightBorderRadiusTablet,
@@ -1295,53 +1294,53 @@ const Settings = ( props ) => {
 					} }
 					borderRadius={ {
 						label: __( 'Radius', 'ultimate-addons-for-gutenberg' ),
-						valueTop: {
-							value: highLightBorderTopRadius,
-							label: 'highLightBorderTopRadius',
+						valueTopLeft: {
+							value: highLightBorderTopLeftRadius,
+							label: 'highLightBorderTopLeftRadius',
 						},
-						valueRight: {
-							value: highLightBorderRightRadius,
-							label: 'highLightBorderRightRadius',
+						valueTopRight: {
+							value: highLightBorderTopRightRadius,
+							label: 'highLightBorderTopRightRadius',
 						},
-						valueBottom: {
-							value: highLightBorderBottomRadius,
-							label: 'highLightBorderBottomRadius',
+						valueBottomRight: {
+							value: highLightBorderBottomRightRadius,
+							label: 'highLightBorderBottomRightRadius',
 						},
-						valueLeft: {
-							value: highLightBorderLeftRadius,
-							label: 'highLightBorderLeftRadius',
+						valueBottomLeft: {
+							value: highLightBorderBottomLeftRadius,
+							label: 'highLightBorderBottomLeftRadius',
 						},
-						valueTopTablet: {
-							value: highLightBorderTopRadiusTablet,
-							label: 'highLightBorderTopRadiusTablet',
+						valueTopLeftTablet: {
+							value: highLightBorderTopLeftRadiusTablet,
+							label: 'highLightBorderTopLeftRadiusTablet',
 						},
-						valueRightTablet: {
-							value: highLightBorderRightRadiusTablet,
-							label: 'highLightBorderRightRadiusTablet',
+						valueTopRightTablet: {
+							value: highLightBorderTopRightRadiusTablet,
+							label: 'highLightBorderTopRightRadiusTablet',
 						},
-						valueBottomTablet: {
-							value: highLightBorderBottomRadiusTablet,
-							label: 'highLightBorderBottomRadiusTablet',
+						valueBottomRightTablet: {
+							value: highLightBorderBottomRightRadiusTablet,
+							label: 'highLightBorderBottomRightRadiusTablet',
 						},
-						valueLeftTablet: {
-							value: highLightBorderLeftRadiusTablet,
-							label: 'highLightBorderLeftRadiusTablet',
+						valueBottomLeftTablet: {
+							value: highLightBorderBottomLeftRadiusTablet,
+							label: 'highLightBorderBottomLeftRadiusTablet',
 						},
-						valueTopMobile: {
-							value: highLightBorderTopRadiusMobile,
-							label: 'highLightBorderTopRadiusMobile',
+						valueTopLeftMobile: {
+							value: highLightBorderTopLeftRadiusMobile,
+							label: 'highLightBorderTopLeftRadiusMobile',
 						},
-						valueRightMobile: {
-							value: highLightBorderRightRadiusMobile,
-							label: 'highLightBorderRightRadiusMobile',
+						valueTopRightMobile: {
+							value: highLightBorderTopRightRadiusMobile,
+							label: 'highLightBorderTopRightRadiusMobile',
 						},
-						valueBottomMobile: {
-							value: highLightBorderBottomRadiusMobile,
-							label: 'highLightBorderBottomRadiusMobile',
+						valueBottomRightMobile: {
+							value: highLightBorderBottomRightRadiusMobile,
+							label: 'highLightBorderBottomRightRadiusMobile',
 						},
-						valueLeftMobile: {
-							value: highLightBorderLeftRadiusMobile,
-							label: 'highLightBorderLeftRadiusMobile',
+						valueBottomLeftMobile: {
+							value: highLightBorderBottomLeftRadiusMobile,
+							label: 'highLightBorderBottomLeftRadiusMobile',
 						},
 						link: {
 							value: highLightBorderRadiusLink,
