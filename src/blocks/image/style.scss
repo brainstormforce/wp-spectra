@@ -5,6 +5,12 @@
 		display: inline-block;
 		max-width: 100%;
 		height: auto;
+		margin: 0;
+
+		img {
+			height: auto;
+			max-width: 100%;
+		}
 
 		> a {
 			display: inline-block;
