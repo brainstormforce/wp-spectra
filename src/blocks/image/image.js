@@ -16,6 +16,7 @@ import { useMemo, useEffect, useState, useRef } from '@wordpress/element';
 import { __, sprintf, isRTL } from '@wordpress/i18n';
 import { getFilename } from '@wordpress/url';
 import { crop } from '@wordpress/icons';
+import { useDeviceType } from '@Controls/getPreviewType';
 import useClientWidth from './use-client-width';
 import { MIN_SIZE, ALLOWED_MEDIA_TYPES } from './constants';
 import {isMediaDestroyed} from './utils'
@@ -25,11 +26,17 @@ export default function Image( {
 	temporaryURL,
 	attributes: {
 		url = '',
+		urlTablet = '',
+		urlMobile = '',
 		alt,
 		align,
 		id,
 		width,
+		widthTablet,
+		widthMobile,
 		height,
+		heightTablet,
+		heightMobile,
 	},
 	setAttributes,
 	isSelected,
@@ -45,6 +52,7 @@ export default function Image( {
 	const imageRef = useRef();
 	const { allowResize = true } = context;
 	const { toggleSelection } = useDispatch( blockEditorStore );
+	const deviceType = useDeviceType();
 
 	const { multiImageSelection } = useSelect(
 		( select ) => {
@@ -100,15 +108,14 @@ export default function Image( {
 	// width and height. This resolves an issue in Safari where the loaded natural
 	// witdth and height is otherwise lost when switching between alignments.
 	const { naturalWidth, naturalHeight } = useMemo( () => {
+		// eslint-disable-next-line
+		const naturalWidth = imageRef.current?.naturalWidth || loadedNaturalWidth || undefined;
+		// eslint-disable-next-line
+		const naturalHeight = imageRef.current?.naturalHeight || loadedNaturalHeight || undefined;
+		setAttributes( {naturalWidth, naturalHeight} )
 		return {
-			naturalWidth:
-				imageRef.current?.naturalWidth ||
-				loadedNaturalWidth ||
-				undefined,
-			naturalHeight:
-				imageRef.current?.naturalHeight ||
-				loadedNaturalHeight ||
-				undefined,
+			naturalWidth,
+			naturalHeight
 		};
 	}, [
 		loadedNaturalWidth,
@@ -137,6 +144,7 @@ export default function Image( {
 		// should direct focus to block.
 		<>
 			<img
+				srcSet={`${temporaryURL || url} 1024w${urlTablet ? ',' + urlTablet + ' 780w' : ''}${urlMobile ? ', ' + urlMobile + ' 360w' : ''}`}
 				src={ temporaryURL || url }
 				alt={ defaultedAlt }
 				onLoad={ ( event ) => {
@@ -195,7 +203,9 @@ export default function Image( {
 			/>
 		);
 	} else if ( ! isResizable || ! imageWidthWithinContainer ) {
-		img = <div style={ { width, height } }>{ img }</div>;
+		if( 'full' !== align ) {
+			img = <div>{ img }</div>;
+		}
 	} else {
 		const currentWidth = width || imageWidthWithinContainer;
 		const currentHeight = height || imageHeightWithinContainer;
@@ -245,11 +255,24 @@ export default function Image( {
 		}
 		/* eslint-enable no-lonely-if */
 
+		let resWidth = '';
+		let resHeight = '';
+		if( deviceType === 'Tablet' ){
+			resWidth = widthTablet;
+			resHeight = heightTablet;
+		} else if( deviceType === 'Mobile' ){
+			resWidth = widthMobile;
+			resHeight = heightMobile;
+		} else {
+			resWidth = width;
+			resHeight = height;
+		}
+
 		img = (
 			<ResizableBox
 				size={ {
-					width: width ? width : 'auto',
-					height: height ? height : 'auto',
+					width: resWidth ? resWidth : 'auto',
+					height: resHeight ? resHeight : 'auto',
 				} }
 				showHandle={ isSelected }
 				minWidth={ minWidth }
@@ -266,10 +289,24 @@ export default function Image( {
 				onResizeStart={ onResizeStart }
 				onResizeStop={ ( event, direction, elt, delta ) => {
 					onResizeStop();
-					setAttributes( {
-						width:  Math.abs( parseInt( currentWidth + delta.width, 10 ) ),
-						height: Math.abs( parseInt( currentHeight + delta.height, 10 ) ),
-					} );
+					if( deviceType === 'Tablet' ){
+						const tabletWidth = widthTablet ? widthTablet : 780;
+						setAttributes( {
+							widthTablet:  Math.abs( parseInt( tabletWidth + delta.width, 10 ) ),
+							heightTablet: Math.abs( parseInt( heightTablet + delta.height, 10 ) ),
+						} );
+					} else if( deviceType === 'Mobile' ){
+						const mobileWidth = widthMobile ? widthMobile : 320;
+						setAttributes( {
+							widthMobile:  Math.abs( parseInt( mobileWidth + delta.width, 10 ) ),
+							heightMobile: Math.abs( parseInt( heightMobile + delta.height, 10 ) ),
+						} );
+					} else {
+						setAttributes( {
+							width:  Math.abs( parseInt( currentWidth + delta.width, 10 ) ),
+							height: Math.abs( parseInt( currentHeight + delta.height, 10 ) ),
+						} );
+					}
 				} }
 			>
 				{ img }
