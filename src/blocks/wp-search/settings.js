@@ -38,10 +38,8 @@ const Settings = ( props ) => {
 		boxShadowBlur,
 		boxShadowSpread,
 		boxShadowPosition,
-
 		// borderWidth,
 		// borderRadius,
-
 		borderTopWidth,
 		borderLeftWidth,
 		borderRightWidth,
@@ -69,13 +67,11 @@ const Settings = ( props ) => {
 		borderBottomRightRadiusMobile,
 		borderRadiusLink,
 		borderRadiusUnit,
-		borderRadiusTablet,
-		borderRadiusMobile,
+		borderRadiusUnitTablet,
+		borderRadiusUnitMobile,
 		borderStyle,
 		borderColor,
 		borderHColor,
-
-
 		buttonBgColor,
 		buttonBgHoverColor,
 		buttonIconColor,
@@ -397,12 +393,12 @@ const Settings = ( props ) => {
 							label: 'borderRadiusUnit',
 						},
 						mUnit: {
-							value: borderRadiusTablet,
-							label: 'borderRadiusTablet',
+							value: borderRadiusUnitMobile,
+							label: 'borderRadiusUnitMobile',
 						},
 						tUnit: {
-							value: borderRadiusMobile,
-							label: 'borderRadiusMobile',
+							value: borderRadiusUnitTablet,
+							label: 'borderRadiusUnitTablet',
 						}
 					} }
 					borderColor={ {

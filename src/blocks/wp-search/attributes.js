@@ -208,12 +208,12 @@ const attributes = {
 		default: 'px',
 		isUAGStyle: true,
 	},
-	borderRadiusTablet: {
+	borderRadiusUnitTablet: {
 		type: 'string',
 		default: 'px',
 		isUAGStyle: true,
 	},
-	borderRadiusMobile : {
+	borderRadiusUnitMobile : {
 		type: 'string',
 		default: 'px',
 		isUAGStyle: true,
