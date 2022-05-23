@@ -18,17 +18,31 @@ import {
 	InspectorControls,
 } from '@wordpress/block-editor';
 import renderSVG from '@Controls/renderIcon';
-import { SelectControl, Icon } from '@wordpress/components';
+import { SelectControl, Icon, ToggleControl } from '@wordpress/components';
+import SpacingControl from '@Components/spacing-control';
+import ColorSwitchControl from '@Components/color-switch-control';
+import TextShadowControl from '@Components/text-shadow';
+import Border from '@Components/border';
+
+
+
+
 import ResponsiveSlider from '@Components/responsive-slider';
 // Extend component
 import UAGAdvancedPanelBody from '@Components/advanced-panel-body';
 
 const Settings = ( props ) => {
 	props = props.parentProps;
-	const { attributes, setAttributes } = props;
+	const { attributes, deviceType, setAttributes } = props;
 	const {
+		headingTitleToggle,
 		headingAlign,
+		headingColorType,
 		headingColor,
+		headingGradientColor,
+		blockBackgroundType,
+		blockBackground,
+		blockGradientBackground,
 		subHeadingColor,
 		separatorColor,
 		headingTag,
@@ -43,6 +57,16 @@ const Settings = ( props ) => {
 		headLineHeight,
 		headLineHeightMobile,
 		headLineHeightTablet,
+		headLetterSpacing,
+		headLetterSpacingTablet,
+		headLetterSpacingMobile,
+		headLetterSpacingType,
+		headShadowColor,
+		headShadowHOffset,
+		headShadowVOffset,
+		headShadowBlur,
+		// sub head
+		headingDescToggle,
 		subHeadFontFamily,
 		subHeadFontWeight,
 		subHeadFontStyle,
@@ -74,7 +98,90 @@ const Settings = ( props ) => {
 		separatorSpaceMobile,
 		separatorSpaceType,
 		headLoadGoogleFonts,
-		subHeadLoadGoogleFonts
+		subHeadLoadGoogleFonts,
+		subHeadLetterSpacing,
+		subHeadLetterSpacingTablet,
+		subHeadLetterSpacingMobile,
+		subHeadLetterSpacingType,
+		// padding
+		blockTopPadding,
+		blockRightPadding,
+		blockLeftPadding,
+		blockBottomPadding,
+		blockTopPaddingTablet,
+		blockRightPaddingTablet,
+		blockLeftPaddingTablet,
+		blockBottomPaddingTablet,
+		blockTopPaddingMobile,
+		blockRightPaddingMobile,
+		blockLeftPaddingMobile,
+		blockBottomPaddingMobile,
+		blockPaddingUnit,
+		blockPaddingUnitTablet,
+		blockPaddingUnitMobile,
+		blockPaddingLink,
+		// margin
+		blockTopMargin,
+		blockRightMargin,
+		blockLeftMargin,
+		blockBottomMargin,
+		blockTopMarginTablet,
+		blockRightMarginTablet,
+		blockLeftMarginTablet,
+		blockBottomMarginTablet,
+		blockTopMarginMobile,
+		blockRightMarginMobile,
+		blockLeftMarginMobile,
+		blockBottomMarginMobile,
+		blockMarginUnit,
+		blockMarginUnitTablet,
+		blockMarginUnitMobile,
+		blockMarginLink,
+		// link
+		linkColor,
+		linkHColor,
+		// Highlight
+		highLightColor,
+		highLightBackground,
+		highLightBorderWidth,
+		highLightBorderRadius,
+		highLightBorderStyle,
+		highLightBorderColor,
+		highLightBorderHColor,
+		highLightLoadGoogleFonts,
+		highLightFontFamily,
+		highLightFontWeight,
+		highLightFontStyle,
+		highLightTransform,
+		highLightDecoration,
+		highLightFontSizeType,
+		highLightLineHeightType,
+		highLightFontSize,
+		highLightFontSizeTablet,
+		highLightFontSizeMobile,
+		highLightLineHeight,
+		highLightLineHeightTablet,
+		highLightLineHeightMobile,
+		highLightLetterSpacing,
+		highLightLetterSpacingTablet,
+		highLightLetterSpacingMobile,
+		highLightLetterSpacingType,
+		highLightTopPadding,
+		highLightRightPadding,
+		highLightLeftPadding,
+		highLightBottomPadding,
+		highLightTopPaddingTablet,
+		highLightRightPaddingTablet,
+		highLightLeftPaddingTablet,
+		highLightBottomPaddingTablet,
+		highLightTopPaddingMobile,
+		highLightRightPaddingMobile,
+		highLightLeftPaddingMobile,
+		highLightBottomPaddingMobile,
+		highLightPaddingUnit,
+		highLightPaddingUnitTablet,
+		highLightPaddingUnitMobile,
+		highLightPaddingLink,
 	} = attributes;
 
 	let loadHeadingGoogleFonts;
@@ -128,7 +235,7 @@ const Settings = ( props ) => {
 		return (
 			<UAGAdvancedPanelBody
 				title={ __( 'Content', 'ultimate-addons-for-gutenberg' ) }
-				initialOpen={ false }
+				initialOpen={ true }
 			>
 				<MultiButtonsControl
 					setAttributes={ setAttributes }
@@ -178,42 +285,74 @@ const Settings = ( props ) => {
 					] }
 					showIcons={ true }
 				/>
-				<MultiButtonsControl
-					setAttributes={ setAttributes }
+				<ToggleControl
 					label={ __(
-						'Heading Tag',
+						'Heading',
 						'ultimate-addons-for-gutenberg'
 					) }
-					data={ {
-						value: headingTag,
-						label: 'headingTag',
-					} }
-					options={ [
-						{
-							value: 'h1',
-							label: __( 'H1', 'ultimate-addons-for-gutenberg' ),
-						},
-						{
-							value: 'h2',
-							label: __( 'H2', 'ultimate-addons-for-gutenberg' ),
-						},
-						{
-							value: 'h3',
-							label: __( 'H3', 'ultimate-addons-for-gutenberg' ),
-						},
-						{
-							value: 'h4',
-							label: __( 'H4', 'ultimate-addons-for-gutenberg' ),
-						},
-						{
-							value: 'h5',
-							label: __( 'H5', 'ultimate-addons-for-gutenberg' ),
-						},
-						{
-							value: 'h6',
-							label: __( 'H6', 'ultimate-addons-for-gutenberg' ),
-						},
-					] }
+					checked={ headingTitleToggle }
+					onChange={ () =>
+						setAttributes( { headingTitleToggle : ! headingTitleToggle } )
+					}
+				/>
+				{
+					headingTitleToggle && (
+						<MultiButtonsControl
+							setAttributes={ setAttributes }
+							label={ __(
+								'Heading Tag',
+								'ultimate-addons-for-gutenberg'
+							) }
+							data={ {
+								value: headingTag,
+								label: 'headingTag',
+							} }
+							options={ [
+								{
+									value: 'h1',
+									label: __( 'H1', 'ultimate-addons-for-gutenberg' ),
+								},
+								{
+									value: 'h2',
+									label: __( 'H2', 'ultimate-addons-for-gutenberg' ),
+								},
+								{
+									value: 'h3',
+									label: __( 'H3', 'ultimate-addons-for-gutenberg' ),
+								},
+								{
+									value: 'h4',
+									label: __( 'H4', 'ultimate-addons-for-gutenberg' ),
+								},
+								{
+									value: 'h5',
+									label: __( 'H5', 'ultimate-addons-for-gutenberg' ),
+								},
+								{
+									value: 'h6',
+									label: __( 'H6', 'ultimate-addons-for-gutenberg' ),
+								},
+								{
+									value: 'p',
+									label: __( 'P', 'ultimate-addons-for-gutenberg' ),
+								},
+								{
+									value: 'div',
+									label: __( 'Div', 'ultimate-addons-for-gutenberg' ),
+								},
+							] }
+						/>
+					)
+				}
+				<ToggleControl
+					label={ __(
+						'Sub Heading',
+						'ultimate-addons-for-gutenberg'
+					) }
+					checked={ headingDescToggle }
+					onChange={ () =>
+						setAttributes( { headingDescToggle : ! headingDescToggle } )
+					}
 				/>
 				<SelectControl
 					label={ __( 'Separator Style', 'ultimate-addons-for-gutenberg' ) }
@@ -263,12 +402,28 @@ const Settings = ( props ) => {
 		);
 	};
 
-	const headingPanel = () => {
+	const headingStylePanel = () => {
 		return (
 			<UAGAdvancedPanelBody
 				title={ __( 'Heading', 'ultimate-addons-for-gutenberg' ) }
 				initialOpen={ true }
 			>
+				<ColorSwitchControl
+					label={__( 'Text Color', 'ultimate-addons-for-gutenberg' )}
+					type={{
+						value: headingColorType,
+						label: 'headingColorType'
+					}}
+					classic={{
+						value: headingColor,
+						label: 'headingColor'
+					}}
+					gradient={{
+						value: headingGradientColor,
+						label: 'headingGradientColor'
+					}}
+					setAttributes={ setAttributes }
+				/>
 				<Suspense fallback={ lazyLoader() }>
 					<TypographyControl
 						label={ __(
@@ -333,14 +488,56 @@ const Settings = ( props ) => {
 							value: headLineHeightTablet,
 							label: 'headLineHeightTablet',
 						} }
+						letterSpacing={ {
+							value: headLetterSpacing,
+							label: 'headLetterSpacing',
+						} }
+						letterSpacingTablet={ {
+							value: headLetterSpacingTablet,
+							label: 'headLetterSpacingTablet',
+						} }
+						letterSpacingMobile={ {
+							value: headLetterSpacingMobile,
+							label: 'headLetterSpacingMobile',
+						} }
+						letterSpacingType={ {
+							value: headLetterSpacingType,
+							label: 'headLetterSpacingType',
+						} }
 					/>
 				</Suspense>
-				<AdvancedPopColorControl
-					label={ __( 'Color', 'ultimate-addons-for-gutenberg' ) }
-					colorValue={ headingColor ? headingColor : '' }
-					onColorChange={ ( value ) =>
-						setAttributes( { headingColor: value } )
-					}
+				<TextShadowControl
+					setAttributes={ setAttributes }
+					label={ __(
+						'Text Shadow',
+						'ultimate-addons-for-gutenberg'
+					) }
+					textShadowColor={ {
+						value: headShadowColor,
+						label: 'headShadowColor',
+						title: __( 'Color', 'ultimate-addons-for-gutenberg' ),
+					} }
+					textShadowHOffset={ {
+						value: headShadowHOffset,
+						label: 'headShadowHOffset',
+						title: __(
+							'Horizontal',
+							'ultimate-addons-for-gutenberg'
+						),
+					} }
+					textShadowVOffset={ {
+						value: headShadowVOffset,
+						label: 'headShadowVOffset',
+						title: __(
+							'Vertical',
+							'ultimate-addons-for-gutenberg'
+						),
+					} }
+					textShadowBlur={ {
+						value: headShadowBlur,
+						label: 'headShadowBlur',
+						title: __( 'Blur', 'ultimate-addons-for-gutenberg' ),
+					} }
 				/>
 				<ResponsiveSlider
 					label={ __(
@@ -382,10 +579,10 @@ const Settings = ( props ) => {
 		);
 	};
 
-	const subheadingPanel = () => {
+	const subHeadingStylePanel = () => {
 		return (
 			<UAGAdvancedPanelBody
-				title={ __( 'Description', 'ultimate-addons-for-gutenberg' ) }
+				title={ __( 'Sub Heading', 'ultimate-addons-for-gutenberg' ) }
 				initialOpen={ false }
 			>
 				<Suspense fallback={ lazyLoader() }>
@@ -451,6 +648,22 @@ const Settings = ( props ) => {
 						lineHeightTablet={ {
 							value: subHeadLineHeightTablet,
 							label: 'subHeadLineHeightTablet',
+						} }
+						letterSpacing={ {
+							value: subHeadLetterSpacing,
+							label: 'subHeadLetterSpacing',
+						} }
+						letterSpacingTablet={ {
+							value: subHeadLetterSpacingTablet,
+							label: 'subHeadLetterSpacingTablet',
+						} }
+						letterSpacingMobile={ {
+							value: subHeadLetterSpacingMobile,
+							label: 'subHeadLetterSpacingMobile',
+						} }
+						letterSpacingType={ {
+							value: subHeadLetterSpacingType,
+							label: 'subHeadLetterSpacingType',
 						} }
 					/>
 				</Suspense>
@@ -595,7 +808,7 @@ const Settings = ( props ) => {
 			</UAGAdvancedPanelBody>
 		);
 	};
-
+	// eslint-disable-next-line
 	const presetSettings = () => {
 		return <UAGAdvancedPanelBody
 					title={ __( 'Presets', 'ultimate-addons-for-gutenberg' ) }
@@ -608,19 +821,440 @@ const Settings = ( props ) => {
 					/>
 				</UAGAdvancedPanelBody>
 	};
+
+	const backgroundStylePanel = () => {
+		return (
+			<UAGAdvancedPanelBody
+				title={ __( 'Background', 'ultimate-addons-for-gutenberg' ) }
+				initialOpen={ false }
+			>
+				<ColorSwitchControl
+					label={__( 'Background Color', 'ultimate-addons-for-gutenberg' )}
+					type={{
+						value: blockBackgroundType,
+						label: 'blockBackgroundType'
+					}}
+					classic={{
+						value: blockBackground,
+						label: 'blockBackground'
+					}}
+					gradient={{
+						value: blockGradientBackground,
+						label: 'blockGradientBackground'
+					}}
+					setAttributes={ setAttributes }
+				/>
+			</UAGAdvancedPanelBody>
+		)
+	}
+
+	const spacingStylePanel = () => {
+		return (
+			<UAGAdvancedPanelBody
+				title={ __( 'Spacing', 'ultimate-addons-for-gutenberg' ) }
+				initialOpen={ false }
+			>
+				<SpacingControl
+					label={ __(
+						'Padding',
+						'ultimate-addons-for-gutenberg'
+					) }
+					valueTop={ {
+						value: blockTopPadding,
+						label: 'blockTopPadding',
+					} }
+					valueRight={ {
+						value: blockRightPadding,
+						label: 'blockRightPadding',
+					} }
+					valueBottom={ {
+						value: blockBottomPadding,
+						label: 'blockBottomPadding',
+					} }
+					valueLeft={ {
+						value: blockLeftPadding,
+						label: 'blockLeftPadding',
+					} }
+					valueTopTablet={ {
+						value: blockTopPaddingTablet,
+						label: 'blockTopPaddingTablet',
+					} }
+					valueRightTablet={ {
+						value: blockRightPaddingTablet,
+						label: 'blockRightPaddingTablet',
+					} }
+					valueBottomTablet={ {
+						value: blockBottomPaddingTablet,
+						label: 'blockBottomPaddingTablet',
+					} }
+					valueLeftTablet={ {
+						value: blockLeftPaddingTablet,
+						label: 'blockLeftPaddingTablet',
+					} }
+					valueTopMobile={ {
+						value: blockTopPaddingMobile,
+						label: 'blockTopPaddingMobile',
+					} }
+					valueRightMobile={ {
+						value: blockRightPaddingMobile,
+						label: 'blockRightPaddingMobile',
+					} }
+					valueBottomMobile={ {
+						value: blockBottomPaddingMobile,
+						label: 'blockBottomPaddingMobile',
+					} }
+					valueLeftMobile={ {
+						value: blockLeftPaddingMobile,
+						label: 'blockLeftPaddingMobile',
+					} }
+					unit={ {
+						value: blockPaddingUnit,
+						label: 'blockPaddingUnit',
+					} }
+					mUnit={ {
+						value: blockPaddingUnitMobile,
+						label: 'blockPaddingUnitMobile',
+					} }
+					tUnit={ {
+						value: blockPaddingUnitTablet,
+						label: 'blockPaddingUnitTablet',
+					} }
+					deviceType={ deviceType }
+					attributes={ attributes }
+					setAttributes={ setAttributes }
+					link={ {
+						value: blockPaddingLink,
+						label: 'blockPaddingLink',
+					} }
+				/>
+				<SpacingControl
+					label={ __(
+						'Margin',
+						'ultimate-addons-for-gutenberg'
+					) }
+					valueTop={ {
+						value: blockTopMargin,
+						label: 'blockTopMargin',
+					} }
+					valueRight={ {
+						value: blockRightMargin,
+						label: 'blockRightMargin',
+					} }
+					valueBottom={ {
+						value: blockBottomMargin,
+						label: 'blockBottomMargin',
+					} }
+					valueLeft={ {
+						value: blockLeftMargin,
+						label: 'blockLeftMargin',
+					} }
+					valueTopTablet={ {
+						value: blockTopMarginTablet,
+						label: 'blockTopMarginTablet',
+					} }
+					valueRightTablet={ {
+						value: blockRightMarginTablet,
+						label: 'blockRightMarginTablet',
+					} }
+					valueBottomTablet={ {
+						value: blockBottomMarginTablet,
+						label: 'blockBottomMarginTablet',
+					} }
+					valueLeftTablet={ {
+						value: blockLeftMarginTablet,
+						label: 'blockLeftMarginTablet',
+					} }
+					valueTopMobile={ {
+						value: blockTopMarginMobile,
+						label: 'blockTopMarginMobile',
+					} }
+					valueRightMobile={ {
+						value: blockRightMarginMobile,
+						label: 'blockRightMarginMobile',
+					} }
+					valueBottomMobile={ {
+						value: blockBottomMarginMobile,
+						label: 'blockBottomMarginMobile',
+					} }
+					valueLeftMobile={ {
+						value: blockLeftMarginMobile,
+						label: 'blockLeftMarginMobile',
+					} }
+					unit={ {
+						value: blockMarginUnit,
+						label: 'blockMarginUnit',
+					} }
+					mUnit={ {
+						value: blockMarginUnitMobile,
+						label: 'blockMarginUnitMobile',
+					} }
+					tUnit={ {
+						value: blockMarginUnitTablet,
+						label: 'blockMarginUnitTablet',
+					} }
+					deviceType={ deviceType }
+					attributes={ attributes }
+					setAttributes={ setAttributes }
+					link={ {
+						value: blockMarginLink,
+						label: 'blockMarginLink',
+					} }
+				/>
+			</UAGAdvancedPanelBody>
+		);
+	};
+
+	const linkStylePanel = () => {
+		return (
+			<UAGAdvancedPanelBody
+				title={ __( 'Link', 'ultimate-addons-for-gutenberg' ) }
+				initialOpen={ false }
+			>
+				<AdvancedPopColorControl
+					label={ __( 'Color', 'ultimate-addons-for-gutenberg' ) }
+					colorValue={ linkColor }
+					onColorChange={ ( value ) =>
+						setAttributes( { linkColor: value } )
+					}
+				/>
+				<AdvancedPopColorControl
+					label={ __( 'Hover Color', 'ultimate-addons-for-gutenberg' ) }
+					colorValue={ linkHColor }
+					onColorChange={ ( value ) =>
+						setAttributes( { linkHColor: value } )
+					}
+				/>
+			</UAGAdvancedPanelBody>
+		);
+	}
+
+	const highLightStylePanel = () => {
+		return (
+			<UAGAdvancedPanelBody
+				title={ __( 'Highlight', 'ultimate-addons-for-gutenberg' ) }
+				initialOpen={ false }
+			>
+				<AdvancedPopColorControl
+					label={ __( 'Background', 'ultimate-addons-for-gutenberg' ) }
+					colorValue={ highLightBackground }
+					onColorChange={ ( value ) =>
+						setAttributes( { highLightBackground: value } )
+					}
+				/>
+				<AdvancedPopColorControl
+					label={ __( 'Color', 'ultimate-addons-for-gutenberg' ) }
+					colorValue={ highLightColor }
+					onColorChange={ ( value ) =>
+						setAttributes( { highLightColor: value } )
+					}
+				/>
+				<Suspense fallback={ lazyLoader() }>
+					<TypographyControl
+						label={ __(
+							'Typography',
+							'ultimate-addons-for-gutenberg'
+						) }
+						attributes={ attributes }
+						setAttributes={ setAttributes }
+						loadGoogleFonts={ {
+							value: highLightLoadGoogleFonts,
+							label: 'highLightLoadGoogleFonts',
+						} }
+						fontFamily={ {
+							value: highLightFontFamily,
+							label: 'highLightFontFamily',
+						} }
+						fontWeight={ {
+							value: highLightFontWeight,
+							label: 'highLightFontWeight',
+						} }
+						fontStyle={ {
+							value: highLightFontStyle,
+							label: 'highLightFontStyle',
+						} }
+						transform={ {
+							value: highLightTransform,
+							label: 'highLightTransform',
+						} }
+						decoration={ {
+							value: highLightDecoration,
+							label: 'highLightDecoration',
+						} }
+						fontSizeType={ {
+							value: highLightFontSizeType,
+							label: 'highLightFontSizeType',
+						} }
+						fontSize={ {
+							value: highLightFontSize,
+							label: 'highLightFontSize',
+						} }
+						fontSizeMobile={ {
+							value: highLightFontSizeMobile,
+							label: 'highLightFontSizeMobile',
+						} }
+						fontSizeTablet={ {
+							value: highLightFontSizeTablet,
+							label: 'highLightFontSizeTablet',
+						} }
+						lineHeightType={ {
+							value: highLightLineHeightType,
+							label: 'highLightLineHeightType',
+						} }
+						lineHeight={ {
+							value: highLightLineHeight,
+							label: 'highLightLineHeight',
+						} }
+						lineHeightMobile={ {
+							value: highLightLineHeightMobile,
+							label: 'highLightLineHeightMobile',
+						} }
+						lineHeightTablet={ {
+							value: highLightLineHeightTablet,
+							label: 'highLightLineHeightTablet',
+						} }
+						letterSpacing={ {
+							value: highLightLetterSpacing,
+							label: 'highLightLetterSpacing',
+						} }
+						letterSpacingTablet={ {
+							value: highLightLetterSpacingTablet,
+							label: 'highLightLetterSpacingTablet',
+						} }
+						letterSpacingMobile={ {
+							value: highLightLetterSpacingMobile,
+							label: 'highLightLetterSpacingMobile',
+						} }
+						letterSpacingType={ {
+							value: highLightLetterSpacingType,
+							label: 'highLightLetterSpacingType',
+						} }
+					/>
+				</Suspense>
+				<SpacingControl
+					label={ __(
+						'Padding',
+						'ultimate-addons-for-gutenberg'
+					) }
+					valueTop={ {
+						value: highLightTopPadding,
+						label: 'highLightTopPadding',
+					} }
+					valueRight={ {
+						value: highLightRightPadding,
+						label: 'highLightRightPadding',
+					} }
+					valueBottom={ {
+						value: highLightBottomPadding,
+						label: 'highLightBottomPadding',
+					} }
+					valueLeft={ {
+						value: highLightLeftPadding,
+						label: 'highLightLeftPadding',
+					} }
+					valueTopTablet={ {
+						value: highLightTopPaddingTablet,
+						label: 'highLightTopPaddingTablet',
+					} }
+					valueRightTablet={ {
+						value: highLightRightPaddingTablet,
+						label: 'highLightRightPaddingTablet',
+					} }
+					valueBottomTablet={ {
+						value: highLightBottomPaddingTablet,
+						label: 'highLightBottomPaddingTablet',
+					} }
+					valueLeftTablet={ {
+						value: highLightLeftPaddingTablet,
+						label: 'highLightLeftPaddingTablet',
+					} }
+					valueTopMobile={ {
+						value: highLightTopPaddingMobile,
+						label: 'highLightTopPaddingMobile',
+					} }
+					valueRightMobile={ {
+						value: highLightRightPaddingMobile,
+						label: 'highLightRightPaddingMobile',
+					} }
+					valueBottomMobile={ {
+						value: highLightBottomPaddingMobile,
+						label: 'highLightBottomPaddingMobile',
+					} }
+					valueLeftMobile={ {
+						value: highLightLeftPaddingMobile,
+						label: 'highLightLeftPaddingMobile',
+					} }
+					unit={ {
+						value: highLightPaddingUnit,
+						label: 'highLightPaddingUnit',
+					} }
+					mUnit={ {
+						value: highLightPaddingUnitMobile,
+						label: 'highLightPaddingUnitMobile',
+					} }
+					tUnit={ {
+						value: highLightPaddingUnitTablet,
+						label: 'highLightPaddingUnitTablet',
+					} }
+					deviceType={ deviceType }
+					attributes={ attributes }
+					setAttributes={ setAttributes }
+					link={ {
+						value: highLightPaddingLink,
+						label: 'highLightPaddingLink',
+					} }
+				/>
+				<Border
+					setAttributes={ setAttributes }
+					borderStyle={ {
+						value: highLightBorderStyle,
+						label: 'highLightBorderStyle',
+						title: __( 'Style', 'ultimate-addons-for-gutenberg' ),
+					} }
+					borderWidth={ {
+						value: highLightBorderWidth,
+						label: 'highLightBorderWidth',
+						title: __( 'Width', 'ultimate-addons-for-gutenberg' ),
+					} }
+					borderRadius={ {
+						value: highLightBorderRadius,
+						label: 'highLightBorderRadius',
+						title: __( 'Radius', 'ultimate-addons-for-gutenberg' ),
+					} }
+					borderColor={ {
+						value: highLightBorderColor,
+						label: 'highLightBorderColor',
+						title: __( 'Color', 'ultimate-addons-for-gutenberg' ),
+					} }
+					borderHoverColor={ {
+						value: highLightBorderHColor,
+						label: 'highLightBorderHColor',
+						title: __(
+							'Hover Color',
+							'ultimate-addons-for-gutenberg'
+						),
+					} }
+					disableBottomSeparator={ true }
+				/>
+			</UAGAdvancedPanelBody>
+		)
+	}
+
 	return (
 		<div>
 			{ blockControlSettings() }
 			<InspectorControls>
 				<InspectorTabs>
 					<InspectorTab { ...UAGTabs.general }>
-						{ presetSettings() }
 						{ generalPanel() }
 					</InspectorTab>
 					<InspectorTab { ...UAGTabs.style }>
-						{ headingPanel() }
+						{ headingTitleToggle && headingStylePanel() }
 						{ 'none' !== seperatorStyle && seperatorSettings() }
-						{ subheadingPanel() }
+						{ headingDescToggle && subHeadingStylePanel() }
+						{linkStylePanel()}
+						{highLightStylePanel()}
+						{backgroundStylePanel()}
+						{spacingStylePanel()}
 					</InspectorTab>
 					<InspectorTab
 						{ ...UAGTabs.advance }

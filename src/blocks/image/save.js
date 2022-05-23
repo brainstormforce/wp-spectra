@@ -7,8 +7,11 @@ export default function Save( props ) {
 		block_id,
 		layout,
 		url,
+		urlTablet,
+		urlMobile,
 		alt,
 		caption,
+		enableCaption,
 		imageHoverEffect,
 		href,
 		linkClass,
@@ -28,6 +31,7 @@ export default function Save( props ) {
 	} = props.attributes;
 	const image = (
 		<img
+			srcSet={`${url} 1024w${urlTablet ? ',' + urlTablet + ' 780w' : ''}${urlMobile ? ', ' + urlMobile + ' 360w' : ''}`}
 			src={ url }
 			alt={ alt }
 			className={ id ? `uag-image-${ id }` : null }
@@ -113,7 +117,11 @@ export default function Save( props ) {
 							</div>
 						</>
 					) : (
-						imageCaption
+						<>
+							{
+								enableCaption && imageCaption
+							}
+						</>
 					)
 				}
 			</figure>

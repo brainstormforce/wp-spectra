@@ -64,9 +64,13 @@ const Render = ( props ) => {
 					{ ' ' }
 				</a>
 			) }
-			<span className="uagb-icon-list__source-wrap">
-				{ imageIconHtml }
-			</span>
+			{
+				imageIconHtml && (
+					<span className="uagb-icon-list__source-wrap">
+						{ imageIconHtml }
+					</span>
+				)
+			}
 			{ ! hideLabel && (
 				<RichText
 					tagName="span"
