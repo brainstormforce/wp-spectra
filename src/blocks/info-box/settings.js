@@ -1109,7 +1109,7 @@ const Settings = ( props ) => {
 													},
 												} }
 												min={ 0 }
-												max={ 500 }
+												limitMax={ { 'px': 500, '%': 100, 'em': 100 } } // eslint-disable-line quote-props
 												unit={ {
 													value: imageWidthUnit,
 													label: 'imageWidthUnit',
@@ -1128,6 +1128,13 @@ const Settings = ( props ) => {
 															'ultimate-addons-for-gutenberg'
 														),
 														unitValue: '%',
+													},
+													{
+														name: __(
+															'EM',
+															'ultimate-addons-for-gutenberg'
+														),
+														unitValue: 'em',
 													},
 												] }
 												setAttributes={ setAttributes }
@@ -1174,7 +1181,7 @@ const Settings = ( props ) => {
 							<SpacingControl
 								{ ...props }
 								label={ __(
-									'Margin',
+									'Padding',
 									'ultimate-addons-for-gutenberg'
 								) }
 								valueTop={ {
