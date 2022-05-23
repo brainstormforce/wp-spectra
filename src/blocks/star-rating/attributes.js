@@ -199,7 +199,11 @@ const attributes = {
 	isPreview: {
 		type: 'boolean',
 		default: false,
-	}
+	},
+	displayTitle: {
+		type: 'boolean',
+		default: true,
+	},
 };
 
 export default attributes;

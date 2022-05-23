@@ -55,17 +55,17 @@ const devicesSvgs = {
 };
 const devices = [
 	{
-		name: 'Desktop',
+		name: __( 'Desktop', 'ultimate-addons-for-gutenberg' ),
 		title: devicesSvgs.desktop,
 		itemClass: 'uagb-desktop-tab uagb-responsive-tabs',
 	},
 	{
-		name: 'Tablet',
+		name: __( 'Tablet', 'ultimate-addons-for-gutenberg' ),
 		title: devicesSvgs.tablet,
 		itemClass: 'uagb-tablet-tab uagb-responsive-tabs',
 	},
 	{
-		name: 'Mobile',
+		name: __( 'Mobile', 'ultimate-addons-for-gutenberg' ),
 		key: 'mobile',
 		title: devicesSvgs.mobile,
 		itemClass: 'uagb-mobile-tab uagb-responsive-tabs',
@@ -149,7 +149,7 @@ const devices = [
 						<Tooltip
 							text={ sprintf(
 								/* translators: abbreviation for units */
-								__( '%s device', 'ultimate-addons-for-gutenberg' ),
+								'%s',
 								name
 							) }
 							key={key}

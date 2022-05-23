@@ -1,6 +1,6 @@
 UAGBContainer = { // eslint-disable-line no-undef
 	init( id ) {
-		const rootContainer = document.querySelector( `${id}.uagb-is-root-container` );
+		const rootContainer = document.querySelector( `${id}.uagb-is-root-container:not(.alignwide)` );
 		if ( rootContainer ) {
 			const rootContainerFullWidth = rootContainer.clientWidth;
 			const innerContentCustomWidth = getComputedStyle( rootContainer ).getPropertyValue( '--inner-content-custom-width' ); // eslint-disable-line no-undef
