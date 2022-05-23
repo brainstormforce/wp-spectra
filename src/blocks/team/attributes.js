@@ -470,8 +470,7 @@ const attributes = {
 		type: 'number',
 		UAGCopyPaste: {
 			styleType: 'image-top-margin'
-		},
-		default: 15,
+		}
 	},
 	imgBottomMargin: {
 		type: 'number',

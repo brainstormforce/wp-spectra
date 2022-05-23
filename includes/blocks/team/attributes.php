@@ -73,7 +73,7 @@ return array(
 	'descSpaceMobile'         => 11,
 	'imgLeftMargin'           => 20,
 	'imgRightMargin'          => 20,
-	'imgTopMargin'            => 15,
+	'imgTopMargin'            => '',
 	'imgBottomMargin'         => 15,
 	'imageMarginLeftTablet'   => 'auto',
 	'imageMarginRightTablet'  => 'auto',
