@@ -154,22 +154,22 @@ $m_selectors = array(
 	),
 );
 // Checkbox Field css.
-$selectors[' .uagb-forms-checkbox-wrap input[type=checkbox] + label:before']         = array(
+$selectors[' .uagb-forms-checkbox-wrap input[type=checkbox] + label:before'] = array(
 	'background-color' => $attr['toggleColor'],
 	'width'            => UAGB_Helper::get_css_value( $attr['toggleSize'], $attr['toggleSizeType'] ),
 	'height'           => UAGB_Helper::get_css_value( $attr['toggleSize'], $attr['toggleSizeType'] ),
 );
-$selectors[' .uagb-forms-checkbox-wrap > label']                                     = array(
+$selectors[' .uagb-forms-checkbox-wrap > label']                             = array(
 	'color' => $attr['inputColor'],
 );
 
 // Radio Button Field css.
-$selectors[' .uagb-forms-radio-wrap input[type=radio] + label:before']         = array(
+$selectors[' .uagb-forms-radio-wrap input[type=radio] + label:before'] = array(
 	'background-color' => $attr['toggleColor'],
 	'width'            => UAGB_Helper::get_css_value( $attr['toggleSize'], $attr['toggleSizeType'] ),
 	'height'           => UAGB_Helper::get_css_value( $attr['toggleSize'], $attr['toggleSizeType'] ),
 );
-$selectors[' .uagb-forms-radio-wrap > label']                                  = array(
+$selectors[' .uagb-forms-radio-wrap > label']                          = array(
 	'color' => $attr['inputColor'],
 );
 
@@ -211,12 +211,12 @@ $selectors[' .uagb-switch input:focus + .uagb-slider']          = array(
 );
 
 // Accept Field css.
-$selectors[' .uagb-forms-accept-wrap input[type=checkbox] + label:before']         = array(
+$selectors[' .uagb-forms-accept-wrap input[type=checkbox] + label:before'] = array(
 	'background-color' => $attr['toggleColor'],
 	'width'            => UAGB_Helper::get_css_value( $attr['toggleSize'], $attr['toggleSizeType'] ),
 	'height'           => UAGB_Helper::get_css_value( $attr['toggleSize'], $attr['toggleSizeType'] ),
 );
-$selectors[' .uagb-forms-accept-wrap > label']                                     = array(
+$selectors[' .uagb-forms-accept-wrap > label']                             = array(
 	'color' => $attr['inputColor'],
 );
 
@@ -354,17 +354,17 @@ $selectors[' .uagb-forms-checkbox-wrap input[type=checkbox]:checked + label:befo
 	'border-color'     => $attr['toggleBorderActiveColor'],
 	'font-size'        => 'calc(' . $attr['toggleSize'] . $attr['toggleSizeType'] . ' / 1.2)',
 );
-$selectors[' .uagb-forms-radio-wrap input[type=radio]:checked + label:before'] = array(
+$selectors[' .uagb-forms-radio-wrap input[type=radio]:checked + label:before']       = array(
 	'background-color' => $attr['toggleDotActiveColor'],
 	'border-color'     => $attr['toggleBorderActiveColor'],
 	'box-shadow'       => 'inset 0 0 0 4px ' . $attr['toggleActiveColor'],
 	'font-size'        => 'calc(' . $attr['toggleSize'] . 'px / 1.2)',
 );
-$selectors[' .uagb-forms-accept-wrap input[type=checkbox]:checked + label:before'] = array(
+$selectors[' .uagb-forms-accept-wrap input[type=checkbox]:checked + label:before']   = array(
 	'color'            => $attr['toggleDotActiveColor'],
 	'background-color' => $attr['toggleActiveColor'],
 	'border-color'     => $attr['toggleBorderActiveColor'],
-	'font-size'    => 'calc(' . $attr['toggleSize'] . $attr['toggleSizeType'] . ' / 1.2)',
+	'font-size'        => 'calc(' . $attr['toggleSize'] . $attr['toggleSizeType'] . ' / 1.2)',
 );
 
 // Checkbox Field css.

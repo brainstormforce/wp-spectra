@@ -5,6 +5,26 @@
  */
 .wp-block-uagb-cf7-styler {
 
+	// We need this particular block to maintain consistent input field height across WP Editor and Frontend.
+	// And also because the min-height and line-height in the WP Editor were inherited from core WordPress directory: wp-admin/forms.css.
+	// All the selectors here are also copied from wp-admin/forms.css.
+	input[type="text"],
+	input[type="password"],
+	input[type="date"],
+	input[type="datetime"],
+	input[type="datetime-local"],
+	input[type="email"],
+	input[type="month"],
+	input[type="number"],
+	input[type="search"],
+	input[type="tel"],
+	input[type="time"],
+	input[type="url"],
+	input[type="week"] {
+		min-height: 30px;
+		line-height: 30px;
+	}
+
 	.wpcf7 *,
 	.wpcf7 ::after,
 	.wpcf7 ::before {
