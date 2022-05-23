@@ -56,7 +56,6 @@ const WebfontLoader = ( props ) => {
 				loading: handleLoading,
 				active: handleActive,
 				inactive: handleInactive,
-				context: frames['my-child']
 			} );
 			addFont( props.config.google.families[ 0 ] );
 		}
