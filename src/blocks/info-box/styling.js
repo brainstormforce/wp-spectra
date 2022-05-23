@@ -269,13 +269,6 @@ function styling( props ) {
 			'color': iconHover
 		},
 		'.uagb-infobox__content-wrap .uagb-ifb-image-content > img': {
-			'margin-left': generateCSSUnit( iconLeftMargin, iconMarginUnit ),
-			'margin-right': generateCSSUnit( iconRightMargin, iconMarginUnit ),
-			'margin-top': generateCSSUnit( iconTopMargin, iconMarginUnit ),
-			'margin-bottom': generateCSSUnit(
-				iconBottomMargin,
-				iconMarginUnit
-			),
 			'border-radius': generateCSSUnit(
 				iconimgBorderRadius,
 				iconimgBorderRadiusUnit
@@ -308,10 +301,10 @@ function styling( props ) {
 			),
 		},
 		'.uagb-infobox__content-wrap .uagb-ifb-content img': {
-			'margin-left': generateCSSUnit( iconLeftMargin, iconMarginUnit ),
-			'margin-right': generateCSSUnit( iconRightMargin, iconMarginUnit ),
-			'margin-top': generateCSSUnit( iconTopMargin, iconMarginUnit ),
-			'margin-bottom': generateCSSUnit(
+			'padding-left': generateCSSUnit( iconLeftMargin, iconMarginUnit ),
+			'padding-right': generateCSSUnit( iconRightMargin, iconMarginUnit ),
+			'padding-top': generateCSSUnit( iconTopMargin, iconMarginUnit ),
+			'padding-bottom': generateCSSUnit(
 				iconBottomMargin,
 				iconMarginUnit
 			),
@@ -976,53 +969,42 @@ function styling( props ) {
 		// Image
 		selectors[ '.uagb-infobox__content-wrap img' ] = {
 			'width': generateCSSUnit( imageWidth, imageWidthUnit ),
-			'max-width': generateCSSUnit( imageWidth, imageWidthUnit ),
 		};
 		selectors[ '.uagb-infobox__content-wrap .uagb-ifb-content .uagb-ifb-right-title-image > img' ] = {
 			'width': generateCSSUnit( imageWidth, imageWidthUnit ),
-			'max-width': generateCSSUnit( imageWidth, imageWidthUnit ),
 		};
 		selectors[ '.uagb-infobox__content-wrap .uagb-ifb-content .uagb-ifb-left-title-image > img' ] = {
 			'width': generateCSSUnit( imageWidth, imageWidthUnit ),
-			'max-width': generateCSSUnit( imageWidth, imageWidthUnit ),
 		};
 		selectors[ '.uagb-infobox__content-wrap .uagb-ifb-content .uagb-ifb-image-content > img' ] = {
 			'width': generateCSSUnit( imageWidth, imageWidthUnit ),
-			'max-width': generateCSSUnit( imageWidth, imageWidthUnit ),
 		};
 
 		tabletSelectors[ '.uagb-infobox__content-wrap img' ] = {
 			'width': generateCSSUnit( imageWidthTablet, imageWidthUnit ),
-			'max-width': generateCSSUnit( imageWidth, imageWidthUnit ),
 		};
 		tabletSelectors[ '.uagb-infobox__content-wrap .uagb-ifb-content .uagb-ifb-right-title-image > img' ] = {
 			'width': generateCSSUnit( imageWidthTablet, imageWidthUnit ),
-			'max-width': generateCSSUnit( imageWidth, imageWidthUnit ),
 		};
 		tabletSelectors[ '.uagb-infobox__content-wrap .uagb-ifb-content .uagb-ifb-left-title-image > img' ] = {
 			'width': generateCSSUnit( imageWidthTablet, imageWidthUnit ),
-			'max-width': generateCSSUnit( imageWidth, imageWidthUnit ),
 		};
 		tabletSelectors[ '.uagb-infobox__content-wrap .uagb-ifb-content .uagb-ifb-image-content > img' ] = {
 			'width': generateCSSUnit( imageWidthTablet, imageWidthUnit ),
-			'max-width': generateCSSUnit( imageWidth, imageWidthUnit ),
 		};
 
 		mobileSelectors[ '.uagb-infobox__content-wrap img' ] = {
 			'width': generateCSSUnit( imageWidthMobile, imageWidthUnit ),
-			'max-width': generateCSSUnit( imageWidth, imageWidthUnit ),
+
 		};
 		mobileSelectors[ '.uagb-infobox__content-wrap .uagb-ifb-content .uagb-ifb-right-title-image > img' ] = {
 			'width': generateCSSUnit( imageWidthMobile, imageWidthUnit ),
-			'max-width': generateCSSUnit( imageWidth, imageWidthUnit ),
 		};
 		mobileSelectors[ '.uagb-infobox__content-wrap .uagb-ifb-content .uagb-ifb-left-title-image > img' ] = {
 			'width': generateCSSUnit( imageWidthMobile, imageWidthUnit ),
-			'max-width': generateCSSUnit( imageWidth, imageWidthUnit ),
 		};
 		mobileSelectors[ '.uagb-infobox__content-wrap .uagb-ifb-content .uagb-ifb-image-content > img' ] = {
 			'width': generateCSSUnit( imageWidthMobile, imageWidthUnit ),
-			'max-width': generateCSSUnit( imageWidth, imageWidthUnit ),
 		};
 	}
 

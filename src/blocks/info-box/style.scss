@@ -145,6 +145,7 @@ a.uagb-infobox-link-wrap:hover,
 	-webkit-box-sizing: content-box;
 	-moz-box-sizing: content-box;
 	-webkit-border-radius: inherit;
+	box-sizing: border-box !important;
 }
 
 /* Info box complete box link css */

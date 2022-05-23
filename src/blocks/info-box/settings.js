@@ -1109,7 +1109,7 @@ const Settings = ( props ) => {
 													},
 												} }
 												min={ 0 }
-												max={ 500 }
+												limitMax={ { 'px': 500, '%': 100 } }
 												unit={ {
 													value: imageWidthUnit,
 													label: 'imageWidthUnit',
