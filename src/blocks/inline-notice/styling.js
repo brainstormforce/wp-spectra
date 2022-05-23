@@ -90,18 +90,18 @@ function styling( props ) {
 
 	if ( noticeDismiss ) {
 		if ( 'left' === noticeAlignment || 'center' === noticeAlignment ) {
-			rPadding = titleRightPadding + 13;
+			rPadding = titleRightPadding;
 			lPadding = titleLeftPadding;
 			lPaddingMobile = titleLeftPaddingMobile;
-			rPaddingMobile = titleRightPaddingMobile + 13;
-			lPaddingTablet = titleLeftPaddingTablet;
-			rPaddingTablet = titleRightPaddingTablet + 13;
-		} else {
-			lPadding = titleLeftPadding + 13;
-			rPadding = titleRightPadding;
-			lPaddingMobile = titleLeftPaddingMobile + 13;
 			rPaddingMobile = titleRightPaddingMobile;
-			lPaddingTablet = titleLeftPaddingTablet + 13;
+			lPaddingTablet = titleLeftPaddingTablet;
+			rPaddingTablet = titleRightPaddingTablet;
+		} else {
+			lPadding = titleLeftPadding;
+			rPadding = titleRightPadding;
+			lPaddingMobile = titleLeftPaddingMobile;
+			rPaddingMobile = titleRightPaddingMobile;
+			lPaddingTablet = titleLeftPaddingTablet;
 			rPaddingTablet = titleRightPaddingTablet;
 		}
 	} else {
