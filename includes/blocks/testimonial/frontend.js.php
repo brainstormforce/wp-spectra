@@ -49,7 +49,7 @@ $equal_height  = isset( $attr['equalHeight'] ) ? $attr['equalHeight'] : '';
 $settings      = wp_json_encode( $slick_options );
 $base_selector = ( isset( $attr['classMigrate'] ) && $attr['classMigrate'] ) ? '.uagb-block-' : '#uagb-testimonial-';
 $selector      = $base_selector . $id;
-
+ob_start();
 ?>
 jQuery( document ).ready( function() {
 	if( jQuery( '<?php echo esc_html( $selector ); ?>' ).length > 0 ){
