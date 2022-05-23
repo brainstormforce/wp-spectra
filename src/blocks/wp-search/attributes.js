@@ -80,25 +80,158 @@ const attributes = {
 			styleType: 'input-border-style'
 		}
 	},
-	borderWidth: {
-		type: 'number',
-		UAGCopyPaste: {
-			styleType: 'input-border-width'
-		}
-	},
-	borderRadius: {
-		type: 'number',
-		default: 3,
-		UAGCopyPaste: {
-			styleType: 'input-border-radius'
-		}
-	},
 	borderColor: {
 		type: 'string',
 		UAGCopyPaste: {
 			styleType: 'input-border-color'
 		}
 	},
+	// borderWidth: {
+	// 	type: 'number',
+	// 	UAGCopyPaste: {
+	// 		styleType: 'input-border-width'
+	// 	}
+	// },
+	// borderRadius: {
+	// 	type: 'number',
+	// 	default: 3,
+	// 	UAGCopyPaste: {
+	// 		styleType: 'input-border-radius'
+	// 	}
+	// },
+	borderTopWidth: {
+		type: 'number',
+		default: '',
+	},
+	borderLeftWidth: {
+		type: 'number',
+		default: '',
+	},
+	borderRightWidth: {
+		type: 'number',
+		default: '',
+	},
+	borderBottomWidth: {
+		type: 'number',
+		default: '',
+	},
+	borderTopWidthTablet: {
+		type: 'number',
+		default: '',
+	},
+	borderLeftWidthTablet: {
+		type: 'number',
+		default: '',
+	},
+	borderRightWidthTablet: {
+		type: 'number',
+		default: '',
+	},
+	borderBottomWidthTablet: {
+		type: 'number',
+		default: '',
+	},
+	borderTopWidthMobile: {
+		type: 'number',
+		default: '',
+	},
+	borderLeftWidthMobile: {
+		type: 'number',
+		default: '',
+	},
+	borderRightWidthMobile: {
+		type: 'number',
+		default: '',
+	},
+	borderBottomWidthMobile: {
+		type: 'number',
+		default: '',
+	},
+	borderLink: {
+		type: 'boolean',
+		default: true,
+	},
+	borderTopLeftRadius: {
+		type: 'number',
+		default: '',
+	},
+	borderTopRightRadius: {
+		type: 'number',
+		default: '',
+	},
+	borderBottomLeftRadius: {
+		type: 'number',
+		default: '',
+	},
+	borderBottomRightRadius: {
+		type: 'number',
+		default: '',
+	},
+	borderTopLeftRadiusTablet: {
+		type: 'number',
+		default: '',
+	},
+	borderTopRightRadiusTablet: {
+		type: 'number',
+		default: '',
+	},
+	borderBottomLeftRadiusTablet: {
+		type: 'number',
+		default: '',
+	},
+	borderBottomRightRadiusTablet: {
+		type: 'number',
+		default: '',
+	},
+	borderTopLeftRadiusMobile: {
+		type: 'number',
+		default: '',
+	},
+	borderTopRightRadiusMobile: {
+		type: 'number',
+		default: '',
+	},
+	borderBottomLeftRadiusMobile: {
+		type: 'number',
+		default: '',
+	},
+	borderBottomRightRadiusMobile: {
+		type: 'number',
+		default: '',
+	},
+	borderRadiusLink: {
+		type: 'boolean',
+		default: true,
+	},
+	borderRadiusUnit : {
+		type: 'string',
+		default: 'px',
+		isUAGStyle: true,
+	},
+	borderRadiusTablet: {
+		type: 'string',
+		default: 'px',
+		isUAGStyle: true,
+	},
+	borderRadiusMobile : {
+		type: 'string',
+		default: 'px',
+		isUAGStyle: true,
+	},
+	borderStyle: {
+		type: 'string',
+		default: 'none',
+	},
+	borderColor: {
+		type: 'string',
+		default: '',
+	},
+	borderHColor: {
+		type: 'string',
+		default: '',
+	},
+
+
 	buttonBgColor: {
 		type: 'string',
 		default: '#9d9d9d',

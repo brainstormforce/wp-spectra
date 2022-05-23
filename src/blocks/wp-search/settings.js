@@ -14,7 +14,7 @@ import InspectorTab, {
 } from '@Components/inspector-tabs/InspectorTab.js';
 import AdvancedPopColorControl from '@Components/color-control/advanced-pop-color-control.js';
 import { TextControl } from '@wordpress/components';
-
+import ResponsiveBorder from '@Components/responsive-border'
 import { InspectorControls } from '@wordpress/block-editor';
 
 
@@ -38,11 +38,44 @@ const Settings = ( props ) => {
 		boxShadowBlur,
 		boxShadowSpread,
 		boxShadowPosition,
+
+		// borderWidth,
+		// borderRadius,
+
+		borderTopWidth,
+		borderLeftWidth,
+		borderRightWidth,
+		borderBottomWidth,
+		borderTopWidthTablet,
+		borderLeftWidthTablet,
+		borderRightWidthTablet,
+		borderBottomWidthTablet,
+		borderTopWidthMobile,
+		borderLeftWidthMobile,
+		borderRightWidthMobile,
+		borderBottomWidthMobile,
+		borderLink,
+		borderTopLeftRadius,
+		borderTopRightRadius,
+		borderBottomLeftRadius,
+		borderBottomRightRadius,
+		borderTopLeftRadiusTablet,
+		borderTopRightRadiusTablet,
+		borderBottomLeftRadiusTablet,
+		borderBottomRightRadiusTablet,
+		borderTopLeftRadiusMobile,
+		borderTopRightRadiusMobile,
+		borderBottomLeftRadiusMobile,
+		borderBottomRightRadiusMobile,
+		borderRadiusLink,
+		borderRadiusUnit,
+		borderRadiusTablet,
+		borderRadiusMobile,
 		borderStyle,
-		borderWidth,
-		borderRadius,
-		borderHColor,
 		borderColor,
+		borderHColor,
+
+
 		buttonBgColor,
 		buttonBgHoverColor,
 		buttonIconColor,
@@ -243,26 +276,134 @@ const Settings = ( props ) => {
 						setAttributes( { inputBgColor: value } )
 					}
 				/>
-				<Border
-					disabledBorderTitle= {false}
+				<ResponsiveBorder
 					setAttributes={ setAttributes }
 					borderStyle={ {
 						value: borderStyle,
 						label: 'borderStyle',
-						title: __(
-							'Style',
-							'ultimate-addons-for-gutenberg'
-						),
+						title: __( 'Style', 'ultimate-addons-for-gutenberg' ),
 					} }
 					borderWidth={ {
-						value: borderWidth,
-						label: 'borderWidth',
-						title: __( 'Width', 'ultimate-addons-for-gutenberg' ),
+						label: __( 'Width', 'ultimate-addons-for-gutenberg' ),
+						valueTop: {
+							value: borderTopWidth,
+							label: 'borderTopWidth',
+						},
+						valueRight: {
+							value: borderRightWidth,
+							label: 'borderRightWidth',
+						},
+						valueBottom: {
+							value: borderBottomWidth,
+							label: 'borderBottomWidth',
+						},
+						valueLeft: {
+							value: borderLeftWidth,
+							label: 'borderLeftWidth',
+						},
+						valueTopTablet: {
+							value: borderTopWidthTablet,
+							label: 'borderTopWidthTablet',
+						},
+						valueRightTablet: {
+							value: borderRightWidthTablet,
+							label: 'borderRightWidthTablet',
+						},
+						valueBottomTablet: {
+							value: borderBottomWidthTablet,
+							label: 'borderBottomWidthTablet',
+						},
+						valueLeftTablet: {
+							value: borderLeftWidthTablet,
+							label: 'borderLeftWidthTablet',
+						},
+						valueTopMobile: {
+							value: borderTopWidthMobile,
+							label: 'borderTopWidthMobile',
+						},
+						valueRightMobile: {
+							value: borderRightWidthMobile,
+							label: 'borderRightWidthMobile',
+						},
+						valueBottomMobile: {
+							value: borderBottomWidthMobile,
+							label: 'borderBottomWidthMobile',
+						},
+						valueLeftMobile: {
+							value: borderLeftWidthMobile,
+							label: 'borderLeftWidthMobile',
+						},
+						link: {
+							value: borderLink,
+							label: 'borderLink',
+						}
 					} }
 					borderRadius={ {
-						value: borderRadius,
-						label: 'borderRadius',
-						title: __( 'Radius', 'ultimate-addons-for-gutenberg' ),
+						label: __( 'Radius', 'ultimate-addons-for-gutenberg' ),
+						valueTopLeft: {
+							value: borderTopLeftRadius,
+							label: 'borderTopLeftRadius',
+						},
+						valueTopRight: {
+							value: borderTopRightRadius,
+							label: 'borderTopRightRadius',
+						},
+						valueBottomRight: {
+							value: borderBottomRightRadius,
+							label: 'borderBottomRightRadius',
+						},
+						valueBottomLeft: {
+							value: borderBottomLeftRadius,
+							label: 'borderBottomLeftRadius',
+						},
+						valueTopLeftTablet: {
+							value: borderTopLeftRadiusTablet,
+							label: 'borderTopLeftRadiusTablet',
+						},
+						valueTopRightTablet: {
+							value: borderTopRightRadiusTablet,
+							label: 'borderTopRightRadiusTablet',
+						},
+						valueBottomRightTablet: {
+							value: borderBottomRightRadiusTablet,
+							label: 'borderBottomRightRadiusTablet',
+						},
+						valueBottomLeftTablet: {
+							value: borderBottomLeftRadiusTablet,
+							label: 'borderBottomLeftRadiusTablet',
+						},
+						valueTopLeftMobile: {
+							value: borderTopLeftRadiusMobile,
+							label: 'borderTopLeftRadiusMobile',
+						},
+						valueTopRightMobile: {
+							value: borderTopRightRadiusMobile,
+							label: 'borderTopRightRadiusMobile',
+						},
+						valueBottomRightMobile: {
+							value: borderBottomRightRadiusMobile,
+							label: 'borderBottomRightRadiusMobile',
+						},
+						valueBottomLeftMobile: {
+							value: borderBottomLeftRadiusMobile,
+							label: 'borderBottomLeftRadiusMobile',
+						},
+						link: {
+							value: borderRadiusLink,
+							label: 'borderRadiusLink',
+						},
+						unit:  {
+							value: borderRadiusUnit,
+							label: 'borderRadiusUnit',
+						},
+						mUnit: {
+							value: borderRadiusTablet,
+							label: 'borderRadiusTablet',
+						},
+						tUnit: {
+							value: borderRadiusMobile,
+							label: 'borderRadiusMobile',
+						}
 					} }
 					borderColor={ {
 						value: borderColor,
@@ -277,7 +418,11 @@ const Settings = ( props ) => {
 							'ultimate-addons-for-gutenberg'
 						),
 					} }
+					attributes={ attributes }
+					deviceType={deviceType}
+					disableBottomSeparator={ true }
 				/>
+
 				<SpacingControl
 					{ ...props }
 					label={ __( 'Padding', 'ultimate-addons-for-gutenberg' ) }

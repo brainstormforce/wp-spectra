@@ -17,10 +17,36 @@ function styling( props ) {
 		boxShadowBlur,
 		boxShadowSpread,
 		boxShadowPosition,
+		borderTopWidth,
+		borderLeftWidth,
+		borderRightWidth,
+		borderBottomWidth,
+		borderTopWidthTablet,
+		borderLeftWidthTablet,
+		borderRightWidthTablet,
+		borderBottomWidthTablet,
+		borderTopWidthMobile,
+		borderLeftWidthMobile,
+		borderRightWidthMobile,
+		borderBottomWidthMobile,
+		borderTopLeftRadius,
+		borderTopRightRadius,
+		borderBottomLeftRadius,
+		borderBottomRightRadius,
+		borderTopLeftRadiusTablet,
+		borderTopRightRadiusTablet,
+		borderBottomLeftRadiusTablet,
+		borderBottomRightRadiusTablet,
+		borderTopLeftRadiusMobile,
+		borderTopRightRadiusMobile,
+		borderBottomLeftRadiusMobile,
+		borderBottomRightRadiusMobile,
+		borderRadiusUnit,
+		borderRadiusUnitTablet,
+		borderRadiusUnitMobile,
 		borderStyle,
-		borderWidth,
-		borderRadius,
 		borderColor,
+		borderHColor,
 		buttonBgColor,
 		buttonBgHoverColor,
 		buttonIconColor,
@@ -72,7 +98,6 @@ function styling( props ) {
 		inputDecoration,
 		buttonTransform,
 		buttonDecoration,
-		borderHColor,
 		buttonIconSizeType,
 		buttonWidthType,
 		inputFontStyle,
@@ -129,10 +154,18 @@ function styling( props ) {
 	};
 	const boxCSS = {
 		'border-style': borderStyle,
-		'border-width': generateCSSUnit( borderWidth, 'px' ),
+		'border-top-width': generateCSSUnit( borderTopWidth, 'px' ),
+		'border-right-width': generateCSSUnit( borderRightWidth, 'px' ),
+		'border-bottom-width': generateCSSUnit( borderBottomWidth, 'px' ),
+		'border-left-width': generateCSSUnit( borderLeftWidth, 'px' ),
 		'border-color': borderColor,
+		'border-top-left-radius': generateCSSUnit( borderTopLeftRadius, borderRadiusUnit ),
+		'border-top-right-radius':  generateCSSUnit( borderTopRightRadius, borderRadiusUnit ),
+		'border-bottom-left-radius':  generateCSSUnit( borderBottomLeftRadius, borderRadiusUnit ),
+		'border-bottom-right-radius':  generateCSSUnit( borderBottomRightRadius, borderRadiusUnit ),
+
+
 		'outline': 'unset',
-		'border-radius': generateCSSUnit( borderRadius, 'px' ),
 		'box-shadow':
 			generateCSSUnit( boxShadowHOffset, 'px' ) +
 			' ' +
@@ -262,6 +295,16 @@ function styling( props ) {
 	};
 
 	mobileSelectors = {
+		' .uagb-search-wrapper .uagb-search-form__container': {
+			'border-top-width': generateCSSUnit( borderTopWidthMobile, 'px' ),
+			'border-right-width': generateCSSUnit( borderRightWidthMobile, 'px' ),
+			'border-bottom-width': generateCSSUnit( borderBottomWidthMobile, 'px' ),
+			'border-left-width': generateCSSUnit( borderLeftWidthMobile, 'px' ),
+			'border-top-left-radius': generateCSSUnit( borderTopLeftRadiusMobile, borderRadiusUnitMobile ),
+			'border-top-right-radius':  generateCSSUnit( borderTopRightRadiusMobile, borderRadiusUnitMobile ),
+			'border-bottom-left-radius':  generateCSSUnit( borderBottomLeftRadiusMobile, borderRadiusUnitMobile ),
+			'border-bottom-right-radius':  generateCSSUnit( borderBottomRightRadiusMobile, borderRadiusUnitMobile ),
+		},
 		' .uagb-search-wrapper .uagb-search-form__container .uagb-search-form__input': {
 			'font-size': generateCSSUnit(
 				inputFontSizeMobile,
@@ -315,6 +358,16 @@ function styling( props ) {
 	};
 
 	tabletSelectors = {
+		' .uagb-search-wrapper .uagb-search-form__container': {
+			'border-top-width': generateCSSUnit( borderTopWidthTablet, 'px' ),
+			'border-right-width': generateCSSUnit( borderRightWidthTablet, 'px' ),
+			'border-bottom-width': generateCSSUnit( borderBottomWidthTablet, 'px' ),
+			'border-left-width': generateCSSUnit( borderLeftWidthTablet, 'px' ),
+			'border-top-left-radius': generateCSSUnit( borderTopLeftRadiusTablet, borderRadiusUnitTablet ),
+			'border-top-right-radius':  generateCSSUnit( borderTopRightRadiusTablet, borderRadiusUnitTablet ),
+			'border-bottom-left-radius':  generateCSSUnit( borderBottomLeftRadiusTablet, borderRadiusUnitTablet ),
+			'border-bottom-right-radius':  generateCSSUnit( borderBottomRightRadiusTablet, borderRadiusUnitTablet ),
+		},
 		' .uagb-search-wrapper .uagb-search-form__container .uagb-search-form__input': {
 			'font-size': generateCSSUnit(
 				inputFontSizeTablet,
