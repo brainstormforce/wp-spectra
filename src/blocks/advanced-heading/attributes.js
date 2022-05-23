@@ -29,7 +29,7 @@ const attributes = {
 		}
 	},
 	headingTitleToggle: {
-		source: 'boolean',
+		type: 'boolean',
 		default: true,
 	},
 	headingTitle: {
@@ -41,7 +41,7 @@ const attributes = {
 		type: 'string',
 	},
 	headingDescToggle: {
-		source: 'boolean',
+		type: 'boolean',
 		default: false,
 	},
 	headingDesc: {
