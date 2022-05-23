@@ -708,7 +708,7 @@ const Settings = ( props ) => {
 				/>
 				<Range
 					label={ __(
-						'Connector Width',
+						'Connector Thickness',
 						'ultimate-addons-for-gutenberg'
 					) }
 					setAttributes={ setAttributes }
@@ -1112,7 +1112,7 @@ const Settings = ( props ) => {
 			<UAGAdvancedPanelBody>
 				<AdvancedPopColorControl
 					label={ __(
-						'Line Color',
+						'Connector Color',
 						'ultimate-addons-for-gutenberg'
 					) }
 					colorValue={ separatorColor ? separatorColor : '' }
@@ -1157,7 +1157,7 @@ const Settings = ( props ) => {
 			<UAGAdvancedPanelBody>
 				<AdvancedPopColorControl
 					label={ __(
-						'Line Color',
+						'Connector Color',
 						'ultimate-addons-for-gutenberg'
 					) }
 					colorValue={ separatorFillColor ? separatorFillColor : '' }
