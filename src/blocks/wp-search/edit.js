@@ -45,6 +45,16 @@ const UAGBWpSearchEdit = ( props ) => {
 		}
 
 		const {
+			borderWidth,
+			borderTopWidth,
+			borderLeftWidth,
+			borderRightWidth,
+			borderBottomWidth,
+			borderRadius,
+			borderTopLeftRadius,
+			borderTopRightRadius,
+			borderBottomLeftRadius,
+			borderBottomRightRadius,
 			vinputPaddingMobile,
 			vinputPaddingTablet,
 			vinputPaddingDesktop,
@@ -138,8 +148,28 @@ const UAGBWpSearchEdit = ( props ) => {
 			}
 		}
 
+		// border
+		if(borderWidth){
+			if(!borderTopWidth && !borderLeftWidth && !borderRightWidth && !borderBottomWidth){
+				props.setAttributes( {
+					borderTopWidth: borderWidth,
+					borderLeftWidth: borderWidth,
+					borderRightWidth: borderWidth,
+					borderBottomWidth: borderWidth,
+				} );
+			}
+		}
+		if(borderRadius){
+			if(!borderTopLeftRadius && !borderTopRightRadius && !borderBottomLeftRadius && !borderBottomRightRadius){
+				props.setAttributes( {
+					borderTopLeftRadius: borderRadius,
+					borderTopRightRadius: borderRadius,
+					borderBottomLeftRadius: borderRadius,
+					borderBottomRightRadius: borderRadius,
+				} );
+			}
+		}
 		const blockStyling = styling( props );
-
 		addBlockEditorDynamicStyles( 'uagb-style-wp-search-' + props.clientId.substr( 0, 8 ), blockStyling );
 	}, [ props ] );
 

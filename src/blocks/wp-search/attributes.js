@@ -86,19 +86,19 @@ const attributes = {
 			styleType: 'input-border-color'
 		}
 	},
-	// borderWidth: {
-	// 	type: 'number',
-	// 	UAGCopyPaste: {
-	// 		styleType: 'input-border-width'
-	// 	}
-	// },
-	// borderRadius: {
-	// 	type: 'number',
-	// 	default: 3,
-	// 	UAGCopyPaste: {
-	// 		styleType: 'input-border-radius'
-	// 	}
-	// },
+	borderWidth: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'input-border-width'
+		}
+	},
+	borderRadius: {
+		type: 'number',
+		default: 3,
+		UAGCopyPaste: {
+			styleType: 'input-border-radius'
+		}
+	},
 	borderTopWidth: {
 		type: 'number',
 		default: '',
