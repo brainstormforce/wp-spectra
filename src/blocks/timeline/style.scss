@@ -452,6 +452,20 @@
 	}
 }
 
+// If the orientation of the timeline is set to right, right-align the text.
+.uagb-timeline__right-block {
+
+	.uagb-timeline__right,
+	.uagb-timeline__left {
+
+		.uagb-timeline__events-inner-new {
+			text-align: right;
+		}
+
+	}
+
+}
+
 .uagb-timeline__events-inner-new {
 	padding: 40px;
 }
