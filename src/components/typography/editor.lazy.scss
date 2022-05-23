@@ -15,6 +15,7 @@
 .uag-typography-options {
 
 	margin-bottom: 24px;
+	position: relative;
 
 	/* Label & actions */
 	.uag-typography-option-actions {
@@ -55,8 +56,13 @@
 		border-radius: 3px;
 		padding: 15px;
 		margin: 10px 0;
-		position: relative;
 		box-shadow: 0 2px 15px rgba(0, 0, 0, 0.3);
+		position: absolute;
+		top: 25;
+		right: 0;
+		background: #fff;
+		z-index: 99;
+		width: 100%;
 
 		/* Common component control css */
 		.components-select-control {
