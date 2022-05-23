@@ -1072,5 +1072,27 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 
 			return $gen_bg_css;
 		}
+
+		/**
+		 * Since title text is set to flex, we need this function so that stack alignment doesn't break.
+		 * It converts the normal text-align values to flex-alignment based values.
+		 *
+		 * @param string $textAlign Alignment value from text-align property.
+		 */
+		public static function flex_alignment( $textAlign ) {
+
+			switch ( $textAlign ) {
+
+				case 'left':
+					return 'start';
+				case 'center':
+					return 'center';
+				case 'right':
+					return 'end';
+				default:
+					return 'start';
+			}
+
+		}
 	}
 }
