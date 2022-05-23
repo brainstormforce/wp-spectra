@@ -627,6 +627,7 @@ const attributes = {
 	},
 	ctaBorderStyle: {
 		type: 'string',
+		default: 'none',
 		UAGCopyPaste: {
 			styleType: 'btn-border-style'
 		}
@@ -703,18 +704,18 @@ const attributes = {
 		UAGCopyPaste: {
 			styleType: 'image-width'
 		},
-		default: 120,
+		default: '',
 	},
 	imageWidthMobile: {
 		type: 'number',
-		default: 0,
+		default: '',
 		UAGCopyPaste: {
 			styleType: 'image-width-mobile'
 		}
 	},
 	imageWidthTablet: {
 		type: 'number',
-		default: 0,
+		default: '',
 		UAGCopyPaste: {
 			styleType: 'image-width-tablet'
 		}

@@ -1,4 +1,4 @@
-import React, {Suspense} from 'react';
+import React, {Suspense, useEffect} from 'react';
 import lazyLoader from '@Controls/lazy-loader';
 import TypographyControl from '@Components/typography';
 import { useViewportMatch } from '@wordpress/compose';
@@ -16,9 +16,9 @@ import { useSelect } from '@wordpress/data';
 import { __ } from '@wordpress/i18n';
 import MultiButtonsControl from '@Components/multi-buttons-control';
 import UAGSelectControl from '@Components/select-control';
+import { useDeviceType } from '@Controls/getPreviewType';
 import {
 	store as blockEditorStore,
-	__experimentalImageSizeControl as ImageSizeControl,
 	InspectorControls,
 } from '@wordpress/block-editor';
 import {
@@ -26,9 +26,11 @@ import {
 	TextControl,
 	SelectControl,
 	__experimentalAlignmentMatrixControl as AlignmentMatrixControl,
-	Icon
+	Icon,
+	ToggleControl
 } from '@wordpress/components';
 import renderSVG from '@Controls/renderIcon';
+import ImageSizeControl from '@Components/image-size-control'
 
 import { store as coreStore } from '@wordpress/core-data';
 // Extend component
@@ -36,17 +38,27 @@ import UAGAdvancedPanelBody from '@Components/advanced-panel-body';
 
 
 export default function Settings( props ) {
+	const deviceType = useDeviceType();
 	props = props.parentProps;
-	const { attributes, setAttributes, deviceType, context, isSelected, clientId } = props;
+	const { attributes, setAttributes, context, isSelected, clientId } = props;
 	const {
 		layout,
 		id,
 		width,
+		widthTablet,
+		widthMobile,
 		height,
+		heightTablet,
+		heightMobile,
 		align,
 		alt,
 		sizeSlug,
+		sizeSlugTablet,
+		sizeSlugMobile,
+		enableCaption,
 		// image
+		naturalWidth,
+		naturalHeight,
 		imageTopMargin,
 		imageRightMargin,
 		imageLeftMargin,
@@ -190,6 +202,9 @@ export default function Settings( props ) {
 		maskPosition,
 		maskRepeat
 	} = attributes;
+
+
+
 	const {imageSizes} = useSelect(
 		( select ) => {
 			const {getSettings} = select( blockEditorStore );
@@ -210,11 +225,24 @@ export default function Settings( props ) {
 		[ id, isSelected ]
 	);
 
+	useEffect( () => {
+		if( !sizeSlug ) {
+			return;
+		}
+		if( 'Tablet' === deviceType ){
+			updateTabletImage( sizeSlugTablet )
+		} else if( 'Mobile' === deviceType ) {
+			updateMobileImage( sizeSlugMobile )
+		} else {
+			updateImage( sizeSlug )
+		}
+	}, [sizeSlug, sizeSlugTablet, sizeSlugMobile] )
+
 	const { allowResize = true } = context;
 	const isLargeViewport = useViewportMatch( 'medium' );
 	const isWideAligned = [ 'wide', 'full' ].includes( align );
 	const isResizable = allowResize && ! ( isWideAligned && isLargeViewport );
-	const imageSizeOptions = imageSizes.reduce( ( acc, item ) => {
+	const imageSizeOptions =  image?.media_details && imageSizes.reduce( ( acc, item ) => {
 		acc.push( { value: item.slug, label: item.name } )
 		return acc;
 	}, [] );
@@ -230,6 +258,32 @@ export default function Settings( props ) {
 			width: newUrl?.width,
 			height: newUrl?.height,
 			sizeSlug: newSizeSlug,
+		} );
+	}
+
+	function updateTabletImage( newSizeSlug ) {
+		const newUrl = image?.media_details?.sizes[newSizeSlug]
+		if ( ! newUrl ) {
+			return null;
+		}
+		setAttributes( {
+			urlTablet: newUrl?.source_url,
+			widthTablet: newUrl?.width,
+			heightTablet: newUrl?.height,
+			sizeSlugTablet: newSizeSlug,
+		} );
+	}
+
+	function updateMobileImage( newSizeSlug ) {
+		const newUrl = image?.media_details?.sizes[newSizeSlug]
+		if ( ! newUrl ) {
+			return null;
+		}
+		setAttributes( {
+			urlMobile: newUrl?.source_url,
+			widthMobile: newUrl?.width,
+			heightMobile: newUrl?.height,
+			sizeSlugMobile: newSizeSlug,
 		} );
 	}
 
@@ -290,18 +344,25 @@ export default function Settings( props ) {
 				showIcons={ false }
 			/>
 			{
-				id && isSelected && (
+				isSelected && (
 					<>
 						<ImageSizeControl
 							onChangeImage={ updateImage }
-							onChange={ ( value ) => setAttributes( value ) }
-							slug={ sizeSlug }
+							onChange={ ( value ) => setAttributes( value )}
+							sizeSlug={ sizeSlug }
+							sizeSlugTablet={ sizeSlugTablet }
+							sizeSlugMobile={ sizeSlugMobile }
 							width={ width }
+							widthTablet={widthTablet}
+							widthMobile={widthMobile}
 							height={ height }
+							heightTablet={heightTablet}
+							heightMobile={heightMobile}
+							setAttributes={setAttributes}
 							imageSizeOptions={ imageSizeOptions }
 							isResizable={ isResizable }
-							imageWidth={ image?.media_details?.width }
-							imageHeight={ image?.media_details?.height }
+							imageWidth={ naturalWidth }
+							imageHeight={ naturalHeight }
 						/>
 						<TextControl
 							label={ __( 'Alt Text', 'ultimate-addons-for-gutenberg' ) }
@@ -358,6 +419,19 @@ export default function Settings( props ) {
 					},
 				] }
 			/>
+
+			{
+				layout !== 'overlay' && (
+					<ToggleControl
+						label={ __( 'Enable Caption', 'ultimate-addons-for-gutenberg' ) }
+						checked={ enableCaption }
+						onChange={ () => {
+							setAttributes( {enableCaption: !enableCaption} );
+						} }
+					/>
+				)
+			}
+
 		</UAGAdvancedPanelBody>
 	)
 
