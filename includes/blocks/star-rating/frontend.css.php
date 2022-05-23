@@ -29,30 +29,6 @@ if ( '' !== $attr['align'] ) {
 	}
 }
 
-if ( ! function_exists( 'flex_alignment' ) ) {
-
-	/** Since title text is set to flex, we need this function so that stack alignment doesn't break.
-	 * It converts the normal text-align values to flex-alignment based values.
-	 *
-	 * @param string $textAlign Alignment value from text-align property.
-	 */
-	function flex_alignment( $textAlign ) {
-
-		switch ( $textAlign ) {
-
-			case 'left':
-				return 'start';
-			case 'center':
-				return 'center';
-			case 'right':
-				return 'end';
-			default:
-				return 'start';
-		}
-
-	}
-}
-
 $selectors = array(
 	' .uag-star-rating'           => array(
 		'font-size' => UAGB_Helper::get_css_value( $attr['size'], 'px' ),
@@ -87,10 +63,10 @@ if ( 'stack' === $attr['layout'] ) {
 
 	// Since title text is set to flex, we need this property that aligns flex objects.
 	$selectors[' .uag-star-rating__title '] = array(
-		'justify-content' => flex_alignment( $stack_alignment ),
+		'justify-content' => UAGB_Block_Helper::flex_alignment( $stack_alignment ),
 	);
 	$selectors[' div.uag-star-rating ']     = array(
-		'justify-content' => flex_alignment( $stack_alignment ),
+		'justify-content' => UAGB_Block_Helper::flex_alignment( $stack_alignment ),
 	);
 } else {
 	$index                                    = 'margin-right';
@@ -111,11 +87,11 @@ if ( 'stack' === $attr['layoutTablet'] ) {
 	// Keeping this here, in case responsive alignment is added in the future.
 	// Since title text is set to flex, we need this property that aligns flex objects.
 	$t_selectors[' .uag-star-rating__title '] = array(
-		'justify-content' => flex_alignment( $stack_alignment ),
+		'justify-content' => UAGB_Block_Helper::flex_alignment( $stack_alignment ),
 		'margin-right'    => 0,
 	);
 	$t_selectors[' div.uag-star-rating ']     = array(
-		'justify-content' => flex_alignment( $stack_alignment ),
+		'justify-content' => UAGB_Block_Helper::flex_alignment( $stack_alignment ),
 	);
 } else {
 	$index_tablet                               = 'margin-right';
@@ -139,11 +115,11 @@ if ( 'stack' === $attr['layoutMobile'] ) {
 	// Keeping this here, in case responsive alignment is added in the future.
 	// Since title text is set to flex, we need this property that aligns flex objects.
 	$m_selectors[' .uag-star-rating__title '] = array(
-		'justify-content' => flex_alignment( $stack_alignment ),
+		'justify-content' => UAGB_Block_Helper::flex_alignment( $stack_alignment ),
 		'margin-right'    => 0,
 	);
 	$m_selectors[' div.uag-star-rating ']     = array(
-		'justify-content' => flex_alignment( $stack_alignment ),
+		'justify-content' => UAGB_Block_Helper::flex_alignment( $stack_alignment ),
 	);
 } else {
 	$index_mobile                               = 'margin-right';
