@@ -63,10 +63,10 @@ if ( 'stack' === $attr['layout'] ) {
 
 	// Since title text is set to flex, we need this property that aligns flex objects.
 	$selectors[' .uag-star-rating__title '] = array(
-		'justify-content' => UAGB_Block_Helper::flex_alignment( $stack_alignment ),
+		'justify-content' => UAGB_Block_Helper::text_alignment_to_flex( $stack_alignment ),
 	);
 	$selectors[' div.uag-star-rating ']     = array(
-		'justify-content' => UAGB_Block_Helper::flex_alignment( $stack_alignment ),
+		'justify-content' => UAGB_Block_Helper::text_alignment_to_flex( $stack_alignment ),
 	);
 } else {
 	$index                                    = 'margin-right';
@@ -87,11 +87,11 @@ if ( 'stack' === $attr['layoutTablet'] ) {
 	// Keeping this here, in case responsive alignment is added in the future.
 	// Since title text is set to flex, we need this property that aligns flex objects.
 	$t_selectors[' .uag-star-rating__title '] = array(
-		'justify-content' => UAGB_Block_Helper::flex_alignment( $stack_alignment ),
+		'justify-content' => UAGB_Block_Helper::text_alignment_to_flex( $stack_alignment ),
 		'margin-right'    => 0,
 	);
 	$t_selectors[' div.uag-star-rating ']     = array(
-		'justify-content' => UAGB_Block_Helper::flex_alignment( $stack_alignment ),
+		'justify-content' => UAGB_Block_Helper::text_alignment_to_flex( $stack_alignment ),
 	);
 } else {
 	$index_tablet                               = 'margin-right';
@@ -115,11 +115,11 @@ if ( 'stack' === $attr['layoutMobile'] ) {
 	// Keeping this here, in case responsive alignment is added in the future.
 	// Since title text is set to flex, we need this property that aligns flex objects.
 	$m_selectors[' .uag-star-rating__title '] = array(
-		'justify-content' => UAGB_Block_Helper::flex_alignment( $stack_alignment ),
+		'justify-content' => UAGB_Block_Helper::text_alignment_to_flex( $stack_alignment ),
 		'margin-right'    => 0,
 	);
 	$m_selectors[' div.uag-star-rating ']     = array(
-		'justify-content' => UAGB_Block_Helper::flex_alignment( $stack_alignment ),
+		'justify-content' => UAGB_Block_Helper::text_alignment_to_flex( $stack_alignment ),
 	);
 } else {
 	$index_mobile                               = 'margin-right';
