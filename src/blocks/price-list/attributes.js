@@ -109,6 +109,7 @@ const attributes = {
 	},
 	imgPaddingBottom: {
 		type: 'number',
+		default: 10,
 		UAGCopyPaste: {
 			styleType: 'image-bottom-padding'
 		},

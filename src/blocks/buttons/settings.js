@@ -8,9 +8,9 @@ import MultiButtonsControl from '@Components/multi-buttons-control';
 import renderSVG from '@Controls/renderIcon';
 import ResponsiveSlider from '@Components/responsive-slider';
 import SpacingControl from '@Components/spacing-control';
+import ResponsiveSelectControl from '@Components/responsive-select';
 
-import { SelectControl,
-	Toolbar , Icon } from '@wordpress/components';
+import { Toolbar , Icon } from '@wordpress/components';
 import InspectorTabs from '@Components/inspector-tabs/InspectorTabs.js';
 import InspectorTab, {
 	UAGTabs,
@@ -47,6 +47,8 @@ const Settings = ( props ) => {
 		lineHeightMobile,
 		lineHeightTablet,
 		buttonSize,
+		buttonSizeTablet,
+		buttonSizeMobile,
 
 		paddingUnit,
 		mobilePaddingUnit,
@@ -84,6 +86,44 @@ const Settings = ( props ) => {
 		marginLink,
 
 	} = attributes;
+
+	const buttonSizeOptions = [
+		{
+			value: 'default',
+			label: __(
+				'Default',
+				'ultimate-addons-for-gutenberg'
+			),
+		},
+		{
+			value: 'small',
+			label: __(
+				'Small',
+				'ultimate-addons-for-gutenberg'
+			),
+		},
+		{
+			value: 'medium',
+			label: __(
+				'Medium',
+				'ultimate-addons-for-gutenberg'
+			),
+		},
+		{
+			value: 'large',
+			label: __(
+				'Large',
+				'ultimate-addons-for-gutenberg'
+			),
+		},
+		{
+			value: 'extralarge',
+			label: __(
+				'Extra Large',
+				'ultimate-addons-for-gutenberg'
+			),
+		}
+	];
 
 	let loadBtnGoogleFonts;
 
@@ -240,54 +280,28 @@ const Settings = ( props ) => {
 					displayUnit={ false }
 					setAttributes={ setAttributes }
 				/>
-				<SelectControl
-					label={ __(
-						'Button Size',
-						'ultimate-addons-for-gutenberg'
-					) }
-					value={ buttonSize }
-					onChange={ ( value ) =>
-						setAttributes( {
-							buttonSize: value,
-						} )
-					}
-					options={ [
-						{
-							value: 'default',
-							label: __(
-								'Default',
-								'ultimate-addons-for-gutenberg'
-							),
+				<ResponsiveSelectControl
+					label={ __( 'Button Size', 'ultimate-addons-for-gutenberg' ) }
+					data={ {
+						desktop: {
+							value: buttonSize,
+							label: 'buttonSize',
 						},
-						{
-							value: 'small',
-							label: __(
-								'Small',
-								'ultimate-addons-for-gutenberg'
-							),
+						tablet: {
+							value: buttonSizeTablet,
+							label: 'buttonSizeTablet',
 						},
-						{
-							value: 'medium',
-							label: __(
-								'Medium',
-								'ultimate-addons-for-gutenberg'
-							),
+						mobile: {
+							value: buttonSizeMobile,
+							label: 'buttonSizeMobile',
 						},
-						{
-							value: 'large',
-							label: __(
-								'Large',
-								'ultimate-addons-for-gutenberg'
-							),
-						},
-						{
-							value: 'extralarge',
-							label: __(
-								'Extra Large',
-								'ultimate-addons-for-gutenberg'
-							),
-						}
-					] }
+					} }
+					options={ {
+						desktop: buttonSizeOptions,
+						tablet: buttonSizeOptions,
+						mobile: buttonSizeOptions,
+					} }
+					setAttributes={ setAttributes }
 				/>
 			</UAGAdvancedPanelBody>
 		);

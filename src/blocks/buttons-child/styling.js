@@ -249,10 +249,10 @@ function styling( props ) {
 		const btnBackground = generateBackgroundCSS( backgroundAttributes );
 		selectors[ '.uagb-buttons__outer-wrap .wp-block-button__link.uagb-buttons-repeater' ] = btnBackground;
 	} else {
-		selectors[ '.uagb-buttons__outer-wrap .wp-block-button__link.uagb-buttons-repeater' ] = {
+		selectors[ '.uagb-buttons__outer-wrap.wp-block-button .wp-block-button__link.uagb-buttons-repeater' ] = {
 			'background': background,
 		}
-		selectors[ '.uagb-buttons__outer-wrap .wp-block-button__link.uagb-buttons-repeater:hover' ] = {
+		selectors[ '.uagb-buttons__outer-wrap.wp-block-button .wp-block-button__link.uagb-buttons-repeater:hover' ] = {
 			'background': hBackground,
 		}
 	}
