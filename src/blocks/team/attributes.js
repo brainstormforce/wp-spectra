@@ -568,6 +568,7 @@ const attributes = {
 	},
 	imageLeftMargin: {
 		type: 'number',
+		default: 20,
 		UAGCopyPaste: {
 			styleType: 'image-left-margin'
 		},
@@ -577,6 +578,7 @@ const attributes = {
 		UAGCopyPaste: {
 			styleType: 'image-right-margin'
 		},
+		default: 20,
 	},
 	imageTopMargin: {
 		type: 'number',
