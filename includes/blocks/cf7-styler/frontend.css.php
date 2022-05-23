@@ -401,7 +401,7 @@ $m_selectors = array(
 		'padding-left'   => UAGB_Helper::get_css_value( $attr['buttonLeftPaddingMobile'], $attr['buttonPaddingTypeMobile'] ),
 		'padding-right'  => UAGB_Helper::get_css_value( $attr['buttonRightPaddingMobile'], $attr['buttonPaddingTypeMobile'] ),
 	),
-	' .wpcf7 input:not([type=submit])'              => $field_padding_mobile,
+	' .uagb-cf7-styler__check-style-enabled .wpcf7 input:not([type=submit])'              => $field_padding_mobile,
 	' .wpcf7 select.wpcf7-form-control.wpcf7-select:not([multiple="multiple"])' => $field_padding_mobile,
 	' .wpcf7 select.wpcf7-select[multiple="multiple"] option' => $field_padding_mobile,
 	' .wpcf7 textarea'                              => $field_padding_mobile,
