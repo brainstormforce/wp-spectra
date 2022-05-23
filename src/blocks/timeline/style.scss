@@ -338,10 +338,10 @@
 		}
 	}
 
-	// If the orientation of the timeline is set to right, right-align the text.
 	.uagb-timeline__right,
 	.uagb-timeline__left {
 
+		// If the orientation of the timeline is set to right, right-align the text.
 		.uagb-timeline__events-inner-new {
 			text-align: right;
 		}
