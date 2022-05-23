@@ -139,8 +139,6 @@ function styling( props ) {
 		authorFontStyle,
 		tweetBtnFontStyle,
 		stack,
-		tweetGap,
-		tweetGapUnit,
 	} = props.attributes;
 
 	let tmpAuthorSpace = authorSpace;
@@ -229,7 +227,7 @@ function styling( props ) {
 		'.uagb-blockquote__skin-quotation .uagb-blockquote__icon:hover': {
 			'background': quoteBgHoverColor,
 		},
-		'.uagb-blockquote__skin-quotation .uagb-blockquote__icon:hover .uagb-blockquote__icon svg': {
+		'.uagb-blockquote__skin-quotation .uagb-blockquote__icon:hover svg': {
 			'fill': quoteHoverColor,
 		},
 		'.uagb-blockquote__style-style_1 .uagb-blockquote': {
@@ -621,23 +619,6 @@ function styling( props ) {
 			'margin-bottom': ( stack !== 'none' ) ? generateCSSUnit( authorImageGapMobile, authorImageGapUnit ) : '0px',
 		},
 	};
-
-	if ( enableTweet ){
-		switch ( stack ){
-			case 'tablet':
-				tabletSelectors[ ' a.uagb-blockquote__tweet-button' ] = {
-					...tabletSelectors[ ' a.uagb-blockquote__tweet-button' ],
-					'margin-top': generateCSSUnit( tweetGap, tweetGapUnit ),
-				}
-				break;
-			case 'mobile':
-				mobileSelectors[ ' a.uagb-blockquote__tweet-button' ] = {
-					...mobileSelectors[ ' a.uagb-blockquote__tweet-button' ],
-					'margin-top': generateCSSUnit( tweetGap, tweetGapUnit ),
-				}
-				break;
-		}
-	}
 
 	const baseSelector = `.editor-styles-wrapper .uagb-block-${ props.clientId.substr(
 		0,
