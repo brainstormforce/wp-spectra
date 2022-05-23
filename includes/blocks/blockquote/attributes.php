@@ -80,8 +80,6 @@ return array(
 	'tweetBtnLoadGoogleFonts'     => false,
 	'tweetBtnHrPadding'           => 10,
 	'tweetBtnVrPadding'           => 10,
-	'tweetGap'                    => 10,
-	'tweetGapUnit'                => 'px',
 	'paddingBtnLeftMobile'        => '',
 	'paddingBtnRightMobile'       => '',
 	'paddingBtnTopMobile'         => '',
