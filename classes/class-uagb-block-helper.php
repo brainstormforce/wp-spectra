@@ -117,7 +117,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					'border-color' => $attr['borderHColor'],
 				);
 			}
-			$selectors[ $wrapper . ' .uagb-button__link' ]      = array(
+			$selectors[ $wrapper . ' .uagb-button__link' ]                                  = array(
 				'font-family'     => $attr['fontFamily'],
 				'font-weight'     => $attr['fontWeight'],
 				'font-style'      => $attr['fontStyle'],
@@ -126,15 +126,15 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				'font-size'       => UAGB_Helper::get_css_value( $attr['size'], $attr['sizeType'] ),
 				'line-height'     => UAGB_Helper::get_css_value( $attr['lineHeight'], $attr['lineHeightType'] ),
 			);
-			$m_selectors[ $wrapper . ' .uagb-button__link' ]    = array(
+			$m_selectors[ $wrapper . ' .uagb-button__link' ]                                = array(
 				'font-size'   => UAGB_Helper::get_css_value( $attr['sizeMobile'], $attr['sizeType'] ),
 				'line-height' => UAGB_Helper::get_css_value( $attr['lineHeightMobile'], $attr['lineHeightType'] ),
 			);
-			$t_selectors[ $wrapper . ' .uagb-button__link' ]    = array(
+			$t_selectors[ $wrapper . ' .uagb-button__link' ]                                = array(
 				'font-size'   => UAGB_Helper::get_css_value( $attr['sizeTablet'], $attr['sizeType'] ),
 				'line-height' => UAGB_Helper::get_css_value( $attr['lineHeightTablet'], $attr['lineHeightType'] ),
 			);
-			$m_selectors[ $wrapper . '.wp-block-button__link' ] = array(
+			$m_selectors[ ' .uagb-button__wrapper ' . $wrapper . '.wp-block-button__link' ] = array(
 				'padding-top'    => UAGB_Helper::get_css_value( $attr['topMobilePadding'], $attr['mobilePaddingUnit'] ),
 				'padding-bottom' => UAGB_Helper::get_css_value( $attr['bottomMobilePadding'], $attr['mobilePaddingUnit'] ),
 				'padding-left'   => UAGB_Helper::get_css_value( $attr['leftMobilePadding'], $attr['mobilePaddingUnit'] ),
@@ -146,7 +146,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 
 			);
 
-			$t_selectors[ $wrapper . '.wp-block-button__link' ] = array(
+			$t_selectors[ ' .uagb-button__wrapper ' . $wrapper . '.wp-block-button__link' ] = array(
 				'padding-top'    => UAGB_Helper::get_css_value( $attr['topTabletPadding'], $attr['tabletPaddingUnit'] ),
 				'padding-bottom' => UAGB_Helper::get_css_value( $attr['bottomTabletPadding'], $attr['tabletPaddingUnit'] ),
 				'padding-left'   => UAGB_Helper::get_css_value( $attr['leftTabletPadding'], $attr['tabletPaddingUnit'] ),

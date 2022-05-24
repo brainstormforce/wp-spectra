@@ -152,11 +152,8 @@ function styling( props ) {
 	if ( 'undefined' !== typeof iconColor && '' !== iconColor ) {
 		tmpIconColor = iconColor;
 	}
-	if ( 'px' === inputSizeType ) {
-		boxCSS[ 'max-width' ] = generateCSSUnit( inputSize, inputSizeType );
-	} else {
-		boxCSS.width = generateCSSUnit( inputSize, inputSizeType );
-	}
+	
+	boxCSS.width = generateCSSUnit( inputSize, inputSizeType );
 
 	selectors = {
 		' .uagb-search-form__container .uagb-search-submit': {
