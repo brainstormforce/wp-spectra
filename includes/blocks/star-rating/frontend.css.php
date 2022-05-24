@@ -60,21 +60,91 @@ if ( 'stack' === $attr['layout'] ) {
 		'display'    => 'block',
 		'text-align' => $stack_alignment,
 	);
+
+	// Since title text is set to flex, we need this property that aligns flex objects.
+	$selectors[' .uag-star-rating__title '] = array(
+		'justify-content' => UAGB_Block_Helper::text_alignment_to_flex( $stack_alignment ),
+	);
+	$selectors[' div.uag-star-rating ']     = array(
+		'justify-content' => UAGB_Block_Helper::text_alignment_to_flex( $stack_alignment ),
+	);
+} else {
+	$index                                    = 'margin-right';
+	$selectors['.wp-block-uagb-star-rating '] = array(
+		'display'         => 'flex',
+		'justify-content' => $alignment,
+	);
 }
 
-$selectors[' .uag-star-rating__title'][ $index ]   = UAGB_Helper::get_css_value( $attr['titleGap'], 'px' );
-$t_selectors[' .uag-star-rating__title'][ $index ] = UAGB_Helper::get_css_value( $attr['titleGapTablet'], 'px' );
-$m_selectors[' .uag-star-rating__title'][ $index ] = UAGB_Helper::get_css_value( $attr['titleGapMobile'], 'px' );
-$t_selectors[' .uag-star-rating']                  = array(
+$index_tablet = 'margin-right';
+if ( 'stack' === $attr['layoutTablet'] ) {
+	$index_tablet                               = 'margin-bottom';
+	$t_selectors['.wp-block-uagb-star-rating '] = array(
+		'display'    => 'block',
+		'text-align' => $stack_alignment,
+	);
+
+	// Keeping this here, in case responsive alignment is added in the future.
+	// Since title text is set to flex, we need this property that aligns flex objects.
+	$t_selectors[' .uag-star-rating__title '] = array(
+		'justify-content' => UAGB_Block_Helper::text_alignment_to_flex( $stack_alignment ),
+		'margin-right'    => 0,
+	);
+	$t_selectors[' div.uag-star-rating ']     = array(
+		'justify-content' => UAGB_Block_Helper::text_alignment_to_flex( $stack_alignment ),
+	);
+} else {
+	$index_tablet                               = 'margin-right';
+	$t_selectors['.wp-block-uagb-star-rating '] = array(
+		'display'         => 'flex',
+		'justify-content' => $alignment,
+	);
+	$t_selectors[' .uag-star-rating__title ']   = array(
+		'margin-bottom' => 0,
+	);
+}
+
+$index_mobile = 'margin-right';
+if ( 'stack' === $attr['layoutMobile'] ) {
+	$index_mobile                               = 'margin-bottom';
+	$m_selectors['.wp-block-uagb-star-rating '] = array(
+		'display'    => 'block',
+		'text-align' => $stack_alignment,
+	);
+
+	// Keeping this here, in case responsive alignment is added in the future.
+	// Since title text is set to flex, we need this property that aligns flex objects.
+	$m_selectors[' .uag-star-rating__title '] = array(
+		'justify-content' => UAGB_Block_Helper::text_alignment_to_flex( $stack_alignment ),
+		'margin-right'    => 0,
+	);
+	$m_selectors[' div.uag-star-rating ']     = array(
+		'justify-content' => UAGB_Block_Helper::text_alignment_to_flex( $stack_alignment ),
+	);
+} else {
+	$index_mobile                               = 'margin-right';
+	$m_selectors['.wp-block-uagb-star-rating '] = array(
+		'display'         => 'flex',
+		'justify-content' => $alignment,
+	);
+	$m_selectors[' .uag-star-rating__title ']   = array(
+		'margin-bottom' => 0,
+	);
+}
+
+$selectors[' .uag-star-rating__title'][ $index ]          = UAGB_Helper::get_css_value( $attr['titleGap'], 'px' );
+$t_selectors[' .uag-star-rating__title'][ $index_tablet ] = UAGB_Helper::get_css_value( $attr['titleGapTablet'], 'px' );
+$m_selectors[' .uag-star-rating__title'][ $index_mobile ] = UAGB_Helper::get_css_value( $attr['titleGapMobile'], 'px' );
+$t_selectors[' .uag-star-rating']                         = array(
 	'font-size' => UAGB_Helper::get_css_value( $attr['sizeTablet'], 'px' ),
 );
-$t_selectors[' .uag-star-rating > span']           = array(
+$t_selectors[' .uag-star-rating > span']                  = array(
 	'margin-right' => UAGB_Helper::get_css_value( $attr['gapTablet'], 'px' ),
 );
-$m_selectors[' .uag-star-rating']                  = array(
+$m_selectors[' .uag-star-rating']                         = array(
 	'font-size' => UAGB_Helper::get_css_value( $attr['sizeMobile'], 'px' ),
 );
-$m_selectors[' .uag-star-rating > span']           = array(
+$m_selectors[' .uag-star-rating > span']                  = array(
 	'margin-right' => UAGB_Helper::get_css_value( $attr['gapMobile'], 'px' ),
 );
 
