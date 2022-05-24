@@ -13,6 +13,10 @@ function styling( props ) {
 		noticeColor,
 		contentBgColor,
 		noticeDismissColor,
+		iconSize,
+		iconSizeTab,
+		iconSizeMob,
+		iconSizeUnit,
 		titleFontFamily,
 		titleFontWeight,
 		titleFontSizeType,
@@ -86,18 +90,18 @@ function styling( props ) {
 
 	if ( noticeDismiss ) {
 		if ( 'left' === noticeAlignment || 'center' === noticeAlignment ) {
-			rPadding = titleRightPadding + 13;
+			rPadding = titleRightPadding;
 			lPadding = titleLeftPadding;
 			lPaddingMobile = titleLeftPaddingMobile;
-			rPaddingMobile = titleRightPaddingMobile + 13;
-			lPaddingTablet = titleLeftPaddingTablet;
-			rPaddingTablet = titleRightPaddingTablet + 13;
-		} else {
-			lPadding = titleLeftPadding + 13;
-			rPadding = titleRightPadding;
-			lPaddingMobile = titleLeftPaddingMobile + 13;
 			rPaddingMobile = titleRightPaddingMobile;
-			lPaddingTablet = titleLeftPaddingTablet + 13;
+			lPaddingTablet = titleLeftPaddingTablet;
+			rPaddingTablet = titleRightPaddingTablet;
+		} else {
+			lPadding = titleLeftPadding;
+			rPadding = titleRightPadding;
+			lPaddingMobile = titleLeftPaddingMobile;
+			rPaddingMobile = titleRightPaddingMobile;
+			lPaddingTablet = titleLeftPaddingTablet;
 			rPaddingTablet = titleRightPaddingTablet;
 		}
 	} else {
@@ -108,6 +112,22 @@ function styling( props ) {
 		lPaddingTablet = titleLeftPaddingTablet;
 		rPaddingTablet = titleRightPaddingTablet;
 	}
+
+	const posTopTab = ! isNaN( titleTopPaddingTablet ) ? titleTopPaddingTablet : titleTopPadding;
+	const posLeftTab = ! isNaN( titleLeftPaddingTablet ) ? titleLeftPaddingTablet : titleLeftPadding;
+	const posRightTab = ! isNaN( titleRightPaddingTablet ) ? titleRightPaddingTablet : titleRightPadding;
+	const posClassicTab = ! isNaN( highlightWidthTablet ) ? highlightWidthTablet : highlightWidth;
+	const posTopUnitTab = ! isNaN( titleTopPaddingTablet ) ? tabletTitlePaddingUnit : titlePaddingUnit;
+	const posLeftUnitTab = ! isNaN( titleLeftPaddingTablet ) ? tabletTitlePaddingUnit : titlePaddingUnit;
+	const posRightUnitTab = ! isNaN( titleRightPaddingTablet ) ? tabletTitlePaddingUnit : titlePaddingUnit;
+
+	const posTopMob = ! isNaN( titleTopPaddingMobile ) ? titleTopPaddingMobile : posTopTab;
+	const posLeftMob = ! isNaN( titleLeftPaddingMobile ) ? titleLeftPaddingMobile : posLeftTab;
+	const posRightMob = ! isNaN( titleRightPaddingMobile ) ? titleRightPaddingMobile : posRightTab;
+	const posClassicMob = ! isNaN( highlightWidthMobile ) ? highlightWidthMobile : posClassicTab;
+	const posTopUnitMob = ! isNaN( titleTopPaddingMobile ) ? mobileTitlePaddingUnit : posTopUnitTab;
+	const posLeftUnitMob = ! isNaN( titleLeftPaddingMobile ) ? mobileTitlePaddingUnit : posLeftUnitTab;
+	const posRightUnitMob = ! isNaN( titleRightPaddingMobile ) ? mobileTitlePaddingUnit : posRightUnitTab;
 
 	let tabletSelectors = {};
 	let mobileSelectors = {};
@@ -172,6 +192,32 @@ function styling( props ) {
 		' svg': {
 			'fill': noticeDismissColor,
 		},
+		'.uagb-dismissable > svg': {
+			'width': generateCSSUnit(
+				iconSize,
+				iconSizeUnit
+			),
+			'height': generateCSSUnit(
+				iconSize,
+				iconSizeUnit
+			),
+			'top': generateCSSUnit(
+				titleTopPadding,
+				titlePaddingUnit
+			),
+		},
+		'.uagb-inline_notice__align-left svg': {
+			'right': generateCSSUnit(
+				titleRightPadding,
+				titlePaddingUnit
+			),
+		},
+		'.uagb-inline_notice__align-center svg': {
+			'right': generateCSSUnit(
+				titleRightPadding,
+				titlePaddingUnit
+			),
+		},
 	};
 
 	mobileSelectors = {
@@ -228,6 +274,32 @@ function styling( props ) {
 			'padding-bottom': generateCSSUnit(
 				contentBottomPaddingMobile,
 				mobileContentPaddingUnit
+			),
+		},
+		'.uagb-dismissable > svg': {
+			'width': generateCSSUnit(
+				iconSizeMob,
+				iconSizeUnit
+			),
+			'height': generateCSSUnit(
+				iconSizeMob,
+				iconSizeUnit
+			),
+			'top': generateCSSUnit(
+				posTopMob,
+				posTopUnitMob
+			),
+		},
+		'.uagb-inline_notice__align-left svg': {
+			'right': generateCSSUnit(
+				posRightMob,
+				posRightUnitMob
+			),
+		},
+		'.uagb-inline_notice__align-center svg': {
+			'right': generateCSSUnit(
+				posRightMob,
+				posRightUnitMob
 			),
 		},
 	};
@@ -289,6 +361,32 @@ function styling( props ) {
 				tabletContentPaddingUnit
 			),
 		},
+		'.uagb-dismissable > svg': {
+			'width': generateCSSUnit(
+				iconSizeTab,
+				iconSizeUnit
+			),
+			'height': generateCSSUnit(
+				iconSizeTab,
+				iconSizeUnit
+			),
+			'top': generateCSSUnit(
+				posTopTab,
+				posTopUnitTab
+			),
+		},
+		'.uagb-inline_notice__align-left svg': {
+			'right': generateCSSUnit(
+				posRightTab,
+				posRightUnitTab
+			),
+		},
+		'.uagb-inline_notice__align-center svg': {
+			'right': generateCSSUnit(
+				posRightTab,
+				posRightUnitTab
+			),
+		},
 	};
 
 	if ( 'modern' === layout ) {
@@ -313,7 +411,24 @@ function styling( props ) {
 		selectors[
 			' .rich-text.block-editor-rich-text__editable.uagb-notice-text'
 		][ 'border-bottom-right-radius' ] = '3px';
-
+		selectors[ '.uagb-inline_notice__align-right svg' ] = {
+			'left': generateCSSUnit(
+				titleLeftPadding,
+				titlePaddingUnit
+			),
+		};
+		tabletSelectors[ '.uagb-inline_notice__align-right svg' ] = {
+			'left': generateCSSUnit(
+				posLeftTab,
+				posLeftUnitTab
+			),
+		};
+		mobileSelectors[ '.uagb-inline_notice__align-right svg' ] = {
+			'left': generateCSSUnit(
+				posLeftMob,
+				posLeftUnitMob
+			),
+		};
 	} else if ( 'simple' === layout ) {
 		selectors[
 			' .rich-text.block-editor-rich-text__editable.uagb-notice-title'
@@ -345,6 +460,33 @@ function styling( props ) {
 			' .rich-text.block-editor-rich-text__editable.uagb-notice-title'
 		][ 'border-left' ] =
 			generateCSSUnit( highlightWidthTablet, 'px' ) + ' solid ' + noticeColor;
+		selectors[ '.uagb-inline_notice__align-right svg' ] = {
+			'left': `calc(${ generateCSSUnit(
+				titleLeftPadding,
+				titlePaddingUnit
+			) } + ${ generateCSSUnit(
+				highlightWidth,
+				'px'
+			) })`,
+		};
+		tabletSelectors[ '.uagb-inline_notice__align-right svg' ] = {
+			'left': `calc(${ generateCSSUnit(
+				posLeftTab,
+				posLeftUnitTab
+			) } + ${ generateCSSUnit(
+				posClassicTab,
+				'px'
+			) })`,
+		};
+		mobileSelectors[ '.uagb-inline_notice__align-right svg' ] = {
+			'left': `calc(${ generateCSSUnit(
+				posLeftMob,
+				posLeftUnitMob
+			) } + ${ generateCSSUnit(
+				posClassicMob,
+				'px'
+			) })`,
+		};
 	}
 
 	const baseSelector = `.editor-styles-wrapper .uagb-block-${ block_id }`;
