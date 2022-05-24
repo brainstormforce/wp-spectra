@@ -717,126 +717,207 @@ const attributes = {
 		type: 'number',
 		default: '',
 		UAGCopyPaste: {
-			styleType: 'highlight-border-width'
+			styleType: 'highlight-border-top-width'
 		}
 	},
 	highLightBorderLeftWidth: {
 		type: 'number',
 		default: '',
 		UAGCopyPaste: {
-			styleType: 'highlight-border-radius'
+			styleType: 'highlight-border-left-width'
 		}
 	},
 	highLightBorderRightWidth: {
 		type: 'number',
 		default: '',
+		UAGCopyPaste: {
+			styleType: 'highlight-border-right-width'
+		}
 	},
 	highLightBorderBottomWidth: {
 		type: 'number',
 		default: '',
+		UAGCopyPaste: {
+			styleType: 'highlight-border-bottom-width'
+		}
 	},
 	highLightBorderTopWidthTablet: {
 		type: 'number',
 		default: '',
+		UAGCopyPaste: {
+			styleType: 'highlight-border-top-width-tablet'
+		}
 	},
 	highLightBorderLeftWidthTablet: {
 		type: 'number',
 		default: '',
+		UAGCopyPaste: {
+			styleType: 'highlight-border-left-width-tablet'
+		}
 	},
 	highLightBorderRightWidthTablet: {
 		type: 'number',
 		default: '',
+		UAGCopyPaste: {
+			styleType: 'highlight-border-right-width-tablet'
+		}
 	},
 	highLightBorderBottomWidthTablet: {
 		type: 'number',
 		default: '',
+		UAGCopyPaste: {
+			styleType: 'highlight-border-bottom-width-tablet'
+		}
 	},
 	highLightBorderTopWidthMobile: {
 		type: 'number',
 		default: '',
+		UAGCopyPaste: {
+			styleType: 'highlight-border-top-width-mobile'
+		}
 	},
 	highLightBorderLeftWidthMobile: {
 		type: 'number',
 		default: '',
+		UAGCopyPaste: {
+			styleType: 'highlight-border-left-width-mobile'
+		}
 	},
 	highLightBorderRightWidthMobile: {
 		type: 'number',
 		default: '',
+		UAGCopyPaste: {
+			styleType: 'highlight-border-right-width-mobile'
+		}
 	},
 	highLightBorderBottomWidthMobile: {
 		type: 'number',
 		default: '',
+		UAGCopyPaste: {
+			styleType: 'highlight-border-bottom-width-mobile'
+		}
 	},
 	highLightBorderLink: {
 		type: 'boolean',
 		default: true,
+		UAGCopyPaste: {
+			styleType: 'highlight-border-link'
+		}
 	},
 	highLightBorderTopLeftRadius: {
 		type: 'number',
 		default: '',
+		UAGCopyPaste: {
+			styleType: 'highlight-border-top-left-radius'
+		}
 	},
 	highLightBorderTopRightRadius: {
 		type: 'number',
 		default: '',
+		UAGCopyPaste: {
+			styleType: 'highlight-border-top-right-radius'
+		}
 	},
 	highLightBorderBottomLeftRadius: {
 		type: 'number',
 		default: '',
+		UAGCopyPaste: {
+			styleType: 'highlight-border-bottom-left-radius'
+		}
 	},
 	highLightBorderBottomRightRadius: {
 		type: 'number',
 		default: '',
+		UAGCopyPaste: {
+			styleType: 'highlight-border-bottom-right-radius'
+		}
 	},
 	highLightBorderTopLeftRadiusTablet: {
 		type: 'number',
 		default: '',
+		UAGCopyPaste: {
+			styleType: 'highlight-border-top-left-radius-tablet'
+		}
 	},
 	highLightBorderTopRightRadiusTablet: {
 		type: 'number',
 		default: '',
+		UAGCopyPaste: {
+			styleType: 'highlight-border-top-right-radius-tablet'
+		}
 	},
 	highLightBorderBottomLeftRadiusTablet: {
 		type: 'number',
 		default: '',
+		UAGCopyPaste: {
+			styleType: 'highlight-border-bottom-left-radius-tablet'
+		}
 	},
 	highLightBorderBottomRightRadiusTablet: {
 		type: 'number',
 		default: '',
+		UAGCopyPaste: {
+			styleType: 'highlight-border-bottom-right-radius-tablet'
+		}
 	},
 	highLightBorderTopLeftRadiusMobile: {
 		type: 'number',
 		default: '',
+		UAGCopyPaste: {
+			styleType: 'highlight-border-top-left-radius-mobile'
+		}
 	},
 	highLightBorderTopRightRadiusMobile: {
 		type: 'number',
 		default: '',
+		UAGCopyPaste: {
+			styleType: 'highlight-border-top-right-radius-mobile'
+		}
 	},
 	highLightBorderBottomLeftRadiusMobile: {
 		type: 'number',
 		default: '',
+		UAGCopyPaste: {
+			styleType: 'highlight-border-bottom-left-radius-mobile'
+		}
 	},
 	highLightBorderBottomRightRadiusMobile: {
 		type: 'number',
 		default: '',
+		UAGCopyPaste: {
+			styleType: 'highlight-border-bottom-right-radius-mobile'
+		}
 	},
 	highLightBorderRadiusLink: {
 		type: 'boolean',
 		default: true,
+		UAGCopyPaste: {
+			styleType: 'highlight-border-radius-link'
+		}
 	},
 	highLightBorderRadiusUnit : {
 		type: 'string',
 		default: 'px',
 		isUAGStyle: true,
+		UAGCopyPaste: {
+			styleType: 'highlight-border-radius-unit'
+		}
 	},
-	highLightBorderRadiusTablet: {
+	highLightBorderRadiusUnitTablet: {
 		type: 'string',
 		default: 'px',
 		isUAGStyle: true,
+		UAGCopyPaste: {
+			styleType: 'highlight-border-radius-unit-tablet'
+		}
 	},
-	highLightBorderRadiusMobile : {
+	highLightBorderRadiusUnitMobile : {
 		type: 'string',
 		default: 'px',
 		isUAGStyle: true,
+		UAGCopyPaste: {
+			styleType: 'highlight-border-radius-unit-mobile'
+		}
 	},
 	highLightBorderStyle: {
 		type: 'string',

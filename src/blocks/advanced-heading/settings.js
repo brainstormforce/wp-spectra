@@ -166,8 +166,8 @@ const Settings = ( props ) => {
 		highLightBorderBottomRightRadiusMobile,
 		highLightBorderRadiusLink,
 		highLightBorderRadiusUnit,
-		highLightBorderRadiusTablet,
-		highLightBorderRadiusMobile,
+		highLightBorderRadiusUnitTablet,
+		highLightBorderRadiusUnitMobile,
 		highLightBorderStyle,
 		highLightBorderColor,
 		highLightBorderHColor,
@@ -1347,12 +1347,12 @@ const Settings = ( props ) => {
 							label: 'highLightBorderRadiusUnit',
 						},
 						mUnit: {
-							value: highLightBorderRadiusTablet,
-							label: 'highLightBorderRadiusTablet',
+							value: highLightBorderRadiusUnitTablet,
+							label: 'highLightBorderRadiusUnitTablet',
 						},
 						tUnit: {
-							value: highLightBorderRadiusMobile,
-							label: 'highLightBorderRadiusMobile',
+							value: highLightBorderRadiusUnitMobile,
+							label: 'highLightBorderRadiusUnitMobile',
 						}
 					} }
 					borderColor={ {
