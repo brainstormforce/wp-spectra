@@ -212,15 +212,16 @@ function styling( props ) {
 			'background': bgColor,
 			'text-align': align,
 		},
-		' .uagb-post__inner-wrap .uagb-post__text': {
+		' .uagb-post__inner-wrap .uagb-post__text:not(.highlighted)': {
 			'margin-left': generateCSSUnit( paddingLeft, contentPaddingUnit ),
 			'margin-right': generateCSSUnit(
 				paddingRight,
 				contentPaddingUnit
 			),
 		},
-		' .uagb-post__inner-wrap .uagb-post__text:first-child': {
+		' .uagb-post__inner-wrap .uagb-post__text.highlighted:first-child': {
 			'margin-top': generateCSSUnit( paddingTop, contentPaddingUnit ),
+			'margin-left': generateCSSUnit( paddingLeft, contentPaddingUnit ),
 		},
 		' .uagb-post__inner-wrap .uagb-post__text:last-child': {
 			'margin-bottom': generateCSSUnit(
