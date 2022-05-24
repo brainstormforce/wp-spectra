@@ -645,54 +645,6 @@ const Settings = ( props ) => {
 			title={ __( 'Label', 'ultimate-addons-for-gutenberg' ) }
 			initialOpen={ true }
 		>
-			<UAGTabsControl
-				tabs={ [
-					{
-						name: 'normal',
-						title: __(
-							'Normal',
-							'ultimate-addons-for-gutenberg'
-						),
-					},
-					{
-						name: 'hover',
-						title: __(
-							'Hover',
-							'ultimate-addons-for-gutenberg'
-						),
-					},
-					{
-						name: 'active',
-						title: __(
-							'Active',
-							'ultimate-addons-for-gutenberg'
-						),
-					},
-				] }
-				normal={
-					<>
-						<AdvancedPopColorControl
-							label={ __( 'Label Color', 'ultimate-addons-for-gutenberg' ) }
-							colorValue={ labelColor ? labelColor : '' }
-							onColorChange={ ( value ) =>
-								setAttributes( { labelColor: value } )
-							}
-						/>
-					</>
-				}
-				hover={
-					<>
-						<AdvancedPopColorControl
-							label={ __( 'Label Color', 'ultimate-addons-for-gutenberg' ) }
-							colorValue={ labelHoverColor ? labelHoverColor : '' }
-							onColorChange={ ( value ) =>
-								setAttributes( { labelHoverColor: value } )
-							}
-						/>
-					</>
-				}
-				disableBottomSeparator={ true }
-			/>
 			<TypographyControl
 				label={ __(
 					'Typography',
@@ -756,6 +708,47 @@ const Settings = ( props ) => {
 					value: labelDecoration,
 					label: 'labelDecoration',
 				} }
+			/>
+			<UAGTabsControl
+				tabs={ [
+					{
+						name: 'normal',
+						title: __(
+							'Normal',
+							'ultimate-addons-for-gutenberg'
+						),
+					},
+					{
+						name: 'hover',
+						title: __(
+							'Hover',
+							'ultimate-addons-for-gutenberg'
+						),
+					}
+				] }
+				normal={
+					<>
+						<AdvancedPopColorControl
+							label={ __( 'Color', 'ultimate-addons-for-gutenberg' ) }
+							colorValue={ labelColor ? labelColor : '' }
+							onColorChange={ ( value ) =>
+								setAttributes( { labelColor: value } )
+							}
+						/>
+					</>
+				}
+				hover={
+					<>
+						<AdvancedPopColorControl
+							label={ __( 'Color', 'ultimate-addons-for-gutenberg' ) }
+							colorValue={ labelHoverColor ? labelHoverColor : '' }
+							onColorChange={ ( value ) =>
+								setAttributes( { labelHoverColor: value } )
+							}
+						/>
+					</>
+				}
+				disableBottomSeparator={ true }
 			/>
 		</UAGAdvancedPanelBody>
 	);
