@@ -192,7 +192,9 @@ function styling( props ) {
 		loaderSize,
 		loaderColor,
 		highlightedTextColor,
-		highlightedTextBgColor
+		highlightedTextBgColor,
+
+		imgPosition,
 	} = props.attributes;
 
 	let mobileSelectors = {};
@@ -949,6 +951,11 @@ function styling( props ) {
 			mobilePaddingUnit
 		),
 	};
+	if ( 'background' === imgPosition ){
+		selectors[ ' .uagb-post__inner-wrap .uagb-post__text:nth-child(2)' ] = {
+			'margin-top': generateCSSUnit( paddingTop, contentPaddingUnit ),
+		};
+	}
 
 	let stylingCss = '';
 
