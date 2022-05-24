@@ -14,6 +14,7 @@ $js_attr       = array(
 	'cookies'           => $attr['cookies'],
 	'close_cookie_days' => $attr['close_cookie_days'],
 	'noticeDismiss'     => $attr['noticeDismiss'],
+	'icon'              => $attr['icon'],
 );
 
 ob_start();
