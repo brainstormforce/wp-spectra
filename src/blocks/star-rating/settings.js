@@ -29,6 +29,8 @@ const Settings = ( props ) => {
 			rating,
 			range,
 			layout,
+			layoutTablet,
+			layoutMobile,
 			align,
 			size,
 			sizeTablet,
@@ -183,24 +185,39 @@ const Settings = ( props ) => {
 				step={ 0.1 }
 				displayUnit={ false }
 			/>
-			<MultiButtonsControl
-				setAttributes={ setAttributes }
-				label={ __( 'Layout', 'ultimate-addons-for-gutenberg' ) }
-				data={ {
-					value: layout,
-					label: 'layout',
-				} }
-				options={ [
-					{
-						value: 'inline',
-						label: __( 'Inline', 'ultimate-addons-for-gutenberg' ),
-					},
-					{
-						value: 'stack',
-						label: __( 'Stack', 'ultimate-addons-for-gutenberg' ),
-					},
-				] }
-			/>
+			{ ( displayTitle ) && (
+
+				<MultiButtonsControl
+					setAttributes={ setAttributes }
+					label={ __( 'Layout', 'ultimate-addons-for-gutenberg' ) }
+					data={ {
+						desktop: {
+							value: layout,
+							label: 'layout',
+						},
+						tablet: {
+							value: layoutTablet,
+							label: 'layoutTablet',
+						},
+						mobile: {
+							value: layoutMobile,
+							label: 'layoutMobile',
+						},
+					} }
+					options={ [
+						{
+							value: 'inline',
+							label: __( 'Inline', 'ultimate-addons-for-gutenberg' ),
+						},
+						{
+							value: 'stack',
+							label: __( 'Stack', 'ultimate-addons-for-gutenberg' ),
+						},
+					] }
+					responsive={true}
+				/>
+
+			) }
 			<MultiButtonsControl
 				setAttributes={ setAttributes }
 				label={ __( 'Alignment', 'ultimate-addons-for-gutenberg' ) }

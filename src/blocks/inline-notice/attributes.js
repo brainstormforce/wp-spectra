@@ -78,26 +78,26 @@ const attributes = {
 		type: 'number',
 		default: 16,
 		UAGCopyPaste: {
-			styleType: 'btn-width'
+			styleType: 'btn-size'
 		},
 	},
 	iconSizeTab: {
 		type: 'number',
 		UAGCopyPaste: {
-			styleType: 'btn-width-tablet'
+			styleType: 'btn-size-tablet'
 		},
 	},
 	iconSizeMob: {
 		type: 'number',
 		UAGCopyPaste: {
-			styleType: 'btn-width-mobile'
+			styleType: 'btn-size-mobile'
 		},
 	},
 	iconSizeUnit: {
 		type: 'string',
 		default: 'px',
 		UAGCopyPaste: {
-			styleType: 'btn-width-unit'
+			styleType: 'btn-size-unit'
 		},
 	},
 	noticeAlignment: {
