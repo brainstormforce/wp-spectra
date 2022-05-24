@@ -181,6 +181,8 @@ const Settings = ( props ) => {
 		imageWidthTablet,
 		imageWidthType,
 		imageWidthUnit,
+		imageWidthUnitTablet,
+		imageWidthUnitMobile,
 		stack,
 		showIcon,
 		showPrefix,
@@ -1096,24 +1098,31 @@ const Settings = ( props ) => {
 													desktop: {
 														value: imageWidth,
 														label: 'imageWidth',
+														unit: {
+															value: imageWidthUnit,
+															label: 'imageWidthUnit',
+														},
 													},
 													tablet: {
 														value: imageWidthTablet,
-														label:
-															'imageWidthTablet',
+														label: 'imageWidthTablet',
+														unit: {
+															value: imageWidthUnitTablet,
+															label: 'imageWidthUnitTablet',
+														},
+														
 													},
 													mobile: {
 														value: imageWidthMobile,
-														label:
-															'imageWidthMobile',
+														label: 'imageWidthMobile',
+														unit: {
+															value: imageWidthUnitMobile,
+															label: 'imageWidthUnitMobile',
+														},
 													},
 												} }
 												min={ 0 }
 												limitMax={ { 'px': 500, '%': 100, 'em': 100 } } // eslint-disable-line quote-props
-												unit={ {
-													value: imageWidthUnit,
-													label: 'imageWidthUnit',
-												} }
 												units={ [
 													{
 														name: __(

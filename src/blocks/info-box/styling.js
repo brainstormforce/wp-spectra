@@ -104,6 +104,8 @@ function styling( props ) {
 		imageWidthTablet,
 		imageWidthType,
 		imageWidthUnit,
+		imageWidthUnitTablet,
+		imageWidthUnitMobile,
 		ctaLinkHoverColor,
 		ctaBgHoverColor,
 		ctaBorderhoverColor,
@@ -992,37 +994,37 @@ function styling( props ) {
 		};
 
 		tabletSelectors[ '.uagb-infobox__content-wrap img' ] = {
-			'width': generateCSSUnit( imageWidthTablet, imageWidthUnit ),
-			'max-width': generateCSSUnit( imageWidth, imageWidthUnit ),
+			'width': generateCSSUnit( imageWidthTablet, imageWidthUnitTablet ),
+			'max-width': generateCSSUnit( imageWidthTablet, imageWidthUnitTablet ),
 		};
 		tabletSelectors[ '.uagb-infobox__content-wrap .uagb-ifb-content .uagb-ifb-right-title-image > img' ] = {
-			'width': generateCSSUnit( imageWidthTablet, imageWidthUnit ),
-			'max-width': generateCSSUnit( imageWidth, imageWidthUnit ),
+			'width': generateCSSUnit( imageWidthTablet, imageWidthUnitTablet ),
+			'max-width': generateCSSUnit( imageWidthTablet, imageWidthUnitTablet ),
 		};
 		tabletSelectors[ '.uagb-infobox__content-wrap .uagb-ifb-content .uagb-ifb-left-title-image > img' ] = {
-			'width': generateCSSUnit( imageWidthTablet, imageWidthUnit ),
-			'max-width': generateCSSUnit( imageWidth, imageWidthUnit ),
+			'width': generateCSSUnit( imageWidthTablet, imageWidthUnitTablet ),
+			'max-width': generateCSSUnit( imageWidthTablet, imageWidthUnitTablet ),
 		};
 		tabletSelectors[ '.uagb-infobox__content-wrap .uagb-ifb-content .uagb-ifb-image-content > img' ] = {
-			'width': generateCSSUnit( imageWidthTablet, imageWidthUnit ),
-			'max-width': generateCSSUnit( imageWidth, imageWidthUnit ),
+			'width': generateCSSUnit( imageWidthTablet, imageWidthUnitTablet ),
+			'max-width': generateCSSUnit( imageWidthTablet, imageWidthUnitTablet ),
 		};
 
 		mobileSelectors[ '.uagb-infobox__content-wrap img' ] = {
-			'width': generateCSSUnit( imageWidthMobile, imageWidthUnit ),
-			'max-width': generateCSSUnit( imageWidth, imageWidthUnit ),
+			'width': generateCSSUnit( imageWidthMobile, imageWidthUnitMobile ),
+			'max-width': generateCSSUnit( imageWidthMobile, imageWidthMobile ),
 		};
 		mobileSelectors[ '.uagb-infobox__content-wrap .uagb-ifb-content .uagb-ifb-right-title-image > img' ] = {
-			'width': generateCSSUnit( imageWidthMobile, imageWidthUnit ),
-			'max-width': generateCSSUnit( imageWidth, imageWidthUnit ),
+			'width': generateCSSUnit( imageWidthMobile, imageWidthMobile ),
+			'max-width': generateCSSUnit( imageWidthMobile, imageWidthMobile ),
 		};
 		mobileSelectors[ '.uagb-infobox__content-wrap .uagb-ifb-content .uagb-ifb-left-title-image > img' ] = {
-			'width': generateCSSUnit( imageWidthMobile, imageWidthUnit ),
-			'max-width': generateCSSUnit( imageWidth, imageWidthUnit ),
+			'width': generateCSSUnit( imageWidthMobile, imageWidthMobile ),
+			'max-width': generateCSSUnit( imageWidthMobile, imageWidthMobile ),
 		};
 		mobileSelectors[ '.uagb-infobox__content-wrap .uagb-ifb-content .uagb-ifb-image-content > img' ] = {
-			'width': generateCSSUnit( imageWidthMobile, imageWidthUnit ),
-			'max-width': generateCSSUnit( imageWidth, imageWidthUnit ),
+			'width': generateCSSUnit( imageWidthMobile, imageWidthMobile ),
+			'max-width': generateCSSUnit( imageWidthMobile, imageWidthMobile ),
 		};
 	}
 
