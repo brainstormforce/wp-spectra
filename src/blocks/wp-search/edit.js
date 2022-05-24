@@ -149,8 +149,8 @@ const UAGBWpSearchEdit = ( props ) => {
 		}
 
 		// border
-		if(borderWidth){
-			if(!borderTopWidth && !borderLeftWidth && !borderRightWidth && !borderBottomWidth){
+		if( borderWidth ){
+			if( !borderTopWidth && !borderLeftWidth && !borderRightWidth && !borderBottomWidth ){
 				props.setAttributes( {
 					borderTopWidth: borderWidth,
 					borderLeftWidth: borderWidth,
@@ -159,8 +159,8 @@ const UAGBWpSearchEdit = ( props ) => {
 				} );
 			}
 		}
-		if(borderRadius){
-			if(!borderTopLeftRadius && !borderTopRightRadius && !borderBottomLeftRadius && !borderBottomRightRadius){
+		if( borderRadius ){
+			if( !borderTopLeftRadius && !borderTopRightRadius && !borderBottomLeftRadius && !borderBottomRightRadius ){
 				props.setAttributes( {
 					borderTopLeftRadius: borderRadius,
 					borderTopRightRadius: borderRadius,

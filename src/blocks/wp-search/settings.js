@@ -4,7 +4,6 @@ import BoxShadowControl from '@Components/box-shadow';
 import MultiButtonsControl from '@Components/multi-buttons-control';
 import WebfontLoader from '@Components/typography/fontloader';
 import React from 'react';
-import Border from '@Components/border';
 import SpacingControl from '@Components/spacing-control';
 import Range from '@Components/range/Range.js';
 import UAGTabsControl from '@Components/tabs';
