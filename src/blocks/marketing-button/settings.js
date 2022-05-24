@@ -474,7 +474,7 @@ const Settings = ( props ) => {
 				{ showDescription && (
 				<ResponsiveSlider
 					label={ __(
-						'Bottom Spacing (px)',
+						'Bottom Spacing',
 						'ultimate-addons-for-gutenberg'
 					) }
 					data={ {
@@ -493,7 +493,15 @@ const Settings = ( props ) => {
 					} }
 					min={ 0 }
 					max={ 20 }
-					displayUnit={ false }
+					units={ [
+						{
+							name: __(
+								'Pixel',
+								'ultimate-addons-for-gutenberg'
+							),
+							unitValue: 'px',
+						}
+					] }
 					setAttributes={ setAttributes }
 					unit={ {
 						value: titleSpaceUnit,
