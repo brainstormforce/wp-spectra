@@ -1142,7 +1142,7 @@ const Settings = ( props ) => {
 										) }
 										<Range
 											label={ __(
-												'Rounded Corners',
+												'Border Radius',
 												'ultimate-addons-for-gutenberg'
 											) }
 											setAttributes={ setAttributes }
