@@ -1048,6 +1048,13 @@ function styling( props ) {
 		};
 	}
 
+	if ( '%' === imageWidthUnit ){
+		selectors[ '.uagb-infobox__content-wrap .uagb-ifb-content .uagb-ifb-image-content > img'] = {
+			...selectors[ '.uagb-infobox__content-wrap .uagb-ifb-content .uagb-ifb-image-content > img' ],
+			'box-sizing': 'border-box',
+		}
+	}
+
 	const id = `.editor-styles-wrapper .uagb-block-${ props.clientId.substr(
 		0,
 		8

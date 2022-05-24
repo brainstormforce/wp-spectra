@@ -522,6 +522,12 @@ if ( 'after' === $attr['ctaIconPosition'] ) {
 	);
 }
 
+
+
+if ( '%' === $attr['imageWidthUnit'] ) {
+	$selectors[' .uagb-ifb-content .uagb-ifb-image-content > img']['box-sizing'] = 'border-box';
+}
+
 $combined_selectors = array(
 	'desktop' => $selectors,
 	'tablet'  => $t_selectors,
