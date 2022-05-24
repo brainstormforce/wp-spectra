@@ -144,7 +144,6 @@ a.uagb-infobox-link-wrap:hover,
 	-webkit-box-sizing: content-box;
 	-moz-box-sizing: content-box;
 	-webkit-border-radius: inherit;
-	box-sizing: border-box !important;
 }
 
 /* Info box complete box link css */
@@ -251,7 +250,8 @@ a.uagb-infobox-link-wrap {
 	img,
 	svg {
 		display: inline-block;
-		box-sizing: content-box;
+		box-sizing: border-box;
+		max-width: 100%;
 	}
 }
 
