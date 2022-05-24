@@ -28,6 +28,10 @@ const Settings = ( props ) => {
 	const { attributes, setAttributes } = props;
 	const {
 		icon,
+		iconSize,
+		iconSizeTab,
+		iconSizeMob,
+		iconSizeUnit,
 		noticeDismiss,
 		cookies,
 		close_cookie_days,
@@ -357,6 +361,33 @@ const Settings = ( props ) => {
 								setAttributes( { icon: value } )
 							}
 						/>
+						<ResponsiveSlider
+							label={ __(
+								'Button Size',
+								'ultimate-addons-for-gutenberg'
+							) }
+							data={ {
+								desktop: {
+									value: iconSize,
+									label: 'iconSize',
+								},
+								tablet: {
+									value: iconSizeTab,
+									label: 'iconSizeTab',
+								},
+								mobile: {
+									value: iconSizeMob,
+									label: 'iconSizeMob',
+								},
+							} }
+							min={ 0 }
+							max={ 100 }
+							unit={ {
+								value: iconSizeUnit,
+								label: 'iconSizeUnit',
+							} }
+							setAttributes={ setAttributes }
+						/>
 					</>
 				) }
 				{ noticeDismiss && (
@@ -546,11 +577,11 @@ const Settings = ( props ) => {
 					} }
 					mUnit={ {
 						value: mobileTitlePaddingUnit,
-						label: 'mobiletitlePaddingUnit',
+						label: 'mobileTitlePaddingUnit',
 					} }
 					tUnit={ {
 						value: tabletTitlePaddingUnit,
-						label: 'tablettitlePaddingUnit',
+						label: 'tabletTitlePaddingUnit',
 					} }
 					attributes={ attributes }
 					setAttributes={ setAttributes }
