@@ -17,7 +17,11 @@ export default function save( props ) {
 		icon,
 		iconPosition,
 		removeText,
-		noFollow
+		noFollow,
+		backgroundType,
+		borderStyle,
+		background,
+		color
 	} = attributes;
 
 	const btnText = () => {
@@ -47,20 +51,25 @@ export default function save( props ) {
 		return null;
 	};
 	const openNewWindow = opensInNewTab ? '_blank' : '_self' ;
+	const hasBackground = background !== '' || backgroundType === 'transparent' ||  'gradient' === backgroundType ? 'has-background' : '';
+
 	return (
 		<div
 			className={ classnames(
 				className,
 				'uagb-buttons__outer-wrap',
 				`uagb-block-${ block_id }`,
-				'wp-block-button'
+				'wp-block-button',
+				borderStyle !== 'none' ? 'is-style-outline' : '',
 			) }
 		>
 			<div className="uagb-button__wrapper">
 				<a
 					className={ classnames(
 						'uagb-buttons-repeater',
-						'wp-block-button__link'
+						'wp-block-button__link',
+						hasBackground,
+						color !== '' ? 'has-text-color' : '',
 					) }
 					href={ link }
 					rel= { noFollow ? 'nofollow noopener ' : 'follow noopener' }

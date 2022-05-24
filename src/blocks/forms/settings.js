@@ -111,6 +111,11 @@ const Settings = ( props ) => {
 		toggleActiveColor,
 		toggleDotColor,
 		toggleDotActiveColor,
+		toggleBorderStyle,
+		toggleBorderWidth,
+		toggleBorderRadius,
+		toggleBorderColor,
+		toggleBorderActiveColor,
 		labelColor,
 		labelHoverColor,
 		inputColor,
@@ -635,14 +640,126 @@ const Settings = ( props ) => {
 		);
 	};
 
-	const fieldStyling = () => (
+	const labelStyling = () => (
 		<UAGAdvancedPanelBody
-			title={ __( 'Fields', 'ultimate-addons-for-gutenberg' ) }
+			title={ __( 'Label', 'ultimate-addons-for-gutenberg' ) }
 			initialOpen={ true }
-			// className="uagb__url-panel-body"
+		>
+			<TypographyControl
+				label={ __(
+					'Typography',
+					'ultimate-addons-for-gutenberg'
+				) }
+				attributes={ attributes }
+				setAttributes={ setAttributes }
+				loadGoogleFonts={ {
+					value: labelloadGoogleFonts,
+					label: 'labelloadGoogleFonts',
+				} }
+				fontFamily={ {
+					value: labelFontFamily,
+					label: 'labelFontFamily',
+				} }
+				fontWeight={ {
+					value: labelFontWeight,
+					label: 'labelFontWeight',
+				} }
+				fontStyle={ {
+					value: labelFontStyle,
+					label: 'labelFontStyle',
+				} }
+				fontSizeType={ {
+					value: labelFontSizeType,
+					label: 'labelFontSizeType',
+				} }
+				fontSize={ {
+					value: labelFontSize,
+					label: 'labelFontSize',
+				} }
+				fontSizeMobile={ {
+					value: labelFontSizeMobile,
+					label: 'labelFontSizeMobile',
+				} }
+				fontSizeTablet={ {
+					value: labelFontSizeTablet,
+					label: 'labelFontSizeTablet',
+				} }
+				lineHeightType={ {
+					value: labelLineHeightType,
+					label: 'labelLineHeightType',
+				} }
+				lineHeight={ {
+					value: labelLineHeight,
+					label: 'labelLineHeight',
+				} }
+				lineHeightMobile={ {
+					value: labelLineHeightMobile,
+					label: 'labelLineHeightMobile',
+				} }
+				lineHeightTablet={ {
+					value: labelLineHeightTablet,
+					label: 'labelLineHeightTablet',
+				} }
+				transform={ {
+					value: labelTransform,
+					label: 'labelTransform',
+				} }
+				decoration={ {
+					value: labelDecoration,
+					label: 'labelDecoration',
+				} }
+			/>
+			<UAGTabsControl
+				tabs={ [
+					{
+						name: 'normal',
+						title: __(
+							'Normal',
+							'ultimate-addons-for-gutenberg'
+						),
+					},
+					{
+						name: 'hover',
+						title: __(
+							'Hover',
+							'ultimate-addons-for-gutenberg'
+						),
+					}
+				] }
+				normal={
+					<>
+						<AdvancedPopColorControl
+							label={ __( 'Color', 'ultimate-addons-for-gutenberg' ) }
+							colorValue={ labelColor ? labelColor : '' }
+							onColorChange={ ( value ) =>
+								setAttributes( { labelColor: value } )
+							}
+						/>
+					</>
+				}
+				hover={
+					<>
+						<AdvancedPopColorControl
+							label={ __( 'Color', 'ultimate-addons-for-gutenberg' ) }
+							colorValue={ labelHoverColor ? labelHoverColor : '' }
+							onColorChange={ ( value ) =>
+								setAttributes( { labelHoverColor: value } )
+							}
+						/>
+					</>
+				}
+				disableBottomSeparator={ true }
+			/>
+		</UAGAdvancedPanelBody>
+	);
+
+	const inputStyling = () => (
+		<UAGAdvancedPanelBody
+			title={ __( 'Input', 'ultimate-addons-for-gutenberg' ) }
+			initialOpen={ false }
 		>
 			<AdvancedPopColorControl
-				label={ __( 'Input Color', 'ultimate-addons-for-gutenberg' ) }
+				label={ __( 'Color', 'ultimate-addons-for-gutenberg' ) }
 				colorValue={ inputColor ? inputColor : '' }
 				onColorChange={ ( value ) =>
 					setAttributes( { inputColor: value } )
@@ -686,13 +803,6 @@ const Settings = ( props ) => {
 								setAttributes( { inputplaceholderColor: value } )
 							}
 						/>
-						<AdvancedPopColorControl
-							label={ __( 'Label Color', 'ultimate-addons-for-gutenberg' ) }
-							colorValue={ labelColor ? labelColor : '' }
-							onColorChange={ ( value ) =>
-								setAttributes( { labelColor: value } )
-							}
-						/>
 						{ 'underlined' !== formStyle && (
 							<AdvancedPopColorControl
 								label={ __(
@@ -719,13 +829,6 @@ const Settings = ( props ) => {
 							}
 							onColorChange={ ( value ) =>
 								setAttributes( { inputplaceholderHoverColor: value } )
-							}
-						/>
-						<AdvancedPopColorControl
-							label={ __( 'Label Color', 'ultimate-addons-for-gutenberg' ) }
-							colorValue={ labelHoverColor ? labelHoverColor : '' }
-							onColorChange={ ( value ) =>
-								setAttributes( { labelHoverColor: value } )
 							}
 						/>
 						{ 'underlined' !== formStyle && (
@@ -885,70 +988,6 @@ const Settings = ( props ) => {
 				link={ {
 					value: paddingFieldLink,
 					label: 'paddingFieldLink',
-				} }
-			/>
-			<TypographyControl
-				label={ __(
-					'Label Typography',
-					'ultimate-addons-for-gutenberg'
-				) }
-				attributes={ attributes }
-				setAttributes={ setAttributes }
-				loadGoogleFonts={ {
-					value: labelloadGoogleFonts,
-					label: 'labelloadGoogleFonts',
-				} }
-				fontFamily={ {
-					value: labelFontFamily,
-					label: 'labelFontFamily',
-				} }
-				fontWeight={ {
-					value: labelFontWeight,
-					label: 'labelFontWeight',
-				} }
-				fontStyle={ {
-					value: labelFontStyle,
-					label: 'labelFontStyle',
-				} }
-				fontSizeType={ {
-					value: labelFontSizeType,
-					label: 'labelFontSizeType',
-				} }
-				fontSize={ {
-					value: labelFontSize,
-					label: 'labelFontSize',
-				} }
-				fontSizeMobile={ {
-					value: labelFontSizeMobile,
-					label: 'labelFontSizeMobile',
-				} }
-				fontSizeTablet={ {
-					value: labelFontSizeTablet,
-					label: 'labelFontSizeTablet',
-				} }
-				lineHeightType={ {
-					value: labelLineHeightType,
-					label: 'labelLineHeightType',
-				} }
-				lineHeight={ {
-					value: labelLineHeight,
-					label: 'labelLineHeight',
-				} }
-				lineHeightMobile={ {
-					value: labelLineHeightMobile,
-					label: 'labelLineHeightMobile',
-				} }
-				lineHeightTablet={ {
-					value: labelLineHeightTablet,
-					label: 'labelLineHeightTablet',
-				} }
-				transform={ {
-					value: labelTransform,
-					label: 'labelTransform',
-				} }
-				decoration={ {
-					value: labelDecoration,
-					label: 'labelDecoration',
 				} }
 			/>
 			<TypographyControl
@@ -1140,6 +1179,42 @@ const Settings = ( props ) => {
 						/>
 					</>
 				}
+				disableBottomSeparator={ false }
+			/>
+			<Border
+				disabledBorderTitle= { false }
+				setAttributes={ setAttributes }
+				borderStyle={ {
+					value: toggleBorderStyle,
+					label: 'toggleBorderStyle',
+					title: __(
+						'Style',
+						'ultimate-addons-for-gutenberg'
+					),
+				} }
+				borderWidth={ {
+					value: toggleBorderWidth,
+					label: 'toggleBorderWidth',
+					title: __( 'Width', 'ultimate-addons-for-gutenberg' ),
+				} }
+				borderRadius={ {
+					value: toggleBorderRadius,
+					label: 'toggleBorderRadius',
+					title: __( 'Checkbox Radius', 'ultimate-addons-for-gutenberg' ),
+				} }
+				borderColor={ {
+					value: toggleBorderColor,
+					label: 'toggleBorderColor',
+					title: __( 'Border Color', 'ultimate-addons-for-gutenberg' ),
+				} }
+				borderActiveColor={ {
+					value: toggleBorderActiveColor,
+					label: 'toggleBorderActiveColor',
+					title: __(
+						'Border Color',
+						'ultimate-addons-for-gutenberg'
+					),
+				} }
 				disableBottomSeparator={ true }
 			/>
 		</UAGAdvancedPanelBody>
@@ -1325,6 +1400,7 @@ const Settings = ( props ) => {
 					label: 'paddingspacingLink',
 				} }
 			/>
+			{ paddingBtnTopTablet }
 			<UAGTabsControl
 				tabs={ [
 					{
@@ -1856,7 +1932,8 @@ const Settings = ( props ) => {
 						{ googleReCaptcha() }
 					</InspectorTab>
 					<InspectorTab { ...UAGTabs.style }>
-						{ fieldStyling() }
+						{ labelStyling() }
+						{ inputStyling() }
 						{ elementStyling() }
 						{ submitStyling() }
 						{ messageStyling() }

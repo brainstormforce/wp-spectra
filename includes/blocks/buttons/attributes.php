@@ -61,12 +61,13 @@ return array(
 	'lineHeightMobile'    => '',
 	'lineHeightTablet'    => '',
 	'buttonSize'          => 'default',
+	'buttonSizeTablet'    => 'default',
+	'buttonSizeMobile'    => 'default',
 
 	'topPadding'          => '',
 	'rightPadding'        => '',
 	'bottomPadding'       => '',
 	'leftPadding'         => '',
-
 
 	'topTabletPadding'    => '',
 	'rightTabletPadding'  => '',
