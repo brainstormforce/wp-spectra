@@ -38,41 +38,6 @@ const Settings = ( props ) => {
 		boxShadowSpread,
 		boxShadowPosition,
 		// borderWidth,
-		// borderRadius,
-		inputBorderTopWidth,
-		inputBorderLeftWidth,
-		inputBorderRightWidth,
-		inputBorderBottomWidth,
-		inputBorderTopWidthTablet,
-		inputBorderLeftWidthTablet,
-		inputBorderRightWidthTablet,
-		inputBorderBottomWidthTablet,
-		inputBorderTopWidthMobile,
-		inputBorderLeftWidthMobile,
-		inputBorderRightWidthMobile,
-		inputBorderBottomWidthMobile,
-		inputBorderLink,
-		inputBorderTopLeftRadius,
-		inputBorderTopRightRadius,
-		inputBorderBottomLeftRadius,
-		inputBorderBottomRightRadius,
-		inputBorderTopLeftRadiusTablet,
-		inputBorderTopRightRadiusTablet,
-		inputBorderBottomLeftRadiusTablet,
-		inputBorderBottomRightRadiusTablet,
-		inputBorderTopLeftRadiusMobile,
-		inputBorderTopRightRadiusMobile,
-		inputBorderBottomLeftRadiusMobile,
-		inputBorderBottomRightRadiusMobile,
-		inputBorderRadiusUnit,
-		inputBorderRadiusUnitTablet,
-		inputBorderRadiusUnitMobile,
-		inputBorderRadiusLink,
-		inputBorderStyle,
-		inputBorderColor,
-		inputBorderHColor,
-
-
 		buttonBgColor,
 		buttonBgHoverColor,
 		buttonIconColor,
@@ -275,146 +240,15 @@ const Settings = ( props ) => {
 				/>
 				<ResponsiveBorder
 					setAttributes={ setAttributes }
-					borderStyle={ {
-						value: inputBorderStyle,
-						label: 'inputBorderStyle',
-						title: __( 'Style', 'ultimate-addons-for-gutenberg' ),
-					} }
-					borderWidth={ {
-						label: __( 'Width', 'ultimate-addons-for-gutenberg' ),
-						valueTop: {
-							value: inputBorderTopWidth,
-							label: 'inputBorderTopWidth',
-						},
-						valueRight: {
-							value: inputBorderRightWidth,
-							label: 'inputBorderRightWidth',
-						},
-						valueBottom: {
-							value: inputBorderBottomWidth,
-							label: 'inputBorderBottomWidth',
-						},
-						valueLeft: {
-							value: inputBorderLeftWidth,
-							label: 'inputBorderLeftWidth',
-						},
-						valueTopTablet: {
-							value: inputBorderTopWidthTablet,
-							label: 'inputBorderTopWidthTablet',
-						},
-						valueRightTablet: {
-							value: inputBorderRightWidthTablet,
-							label: 'inputBorderRightWidthTablet',
-						},
-						valueBottomTablet: {
-							value: inputBorderBottomWidthTablet,
-							label: 'inputBorderBottomWidthTablet',
-						},
-						valueLeftTablet: {
-							value: inputBorderLeftWidthTablet,
-							label: 'inputBorderLeftWidthTablet',
-						},
-						valueTopMobile: {
-							value: inputBorderTopWidthMobile,
-							label: 'inputBorderTopWidthMobile',
-						},
-						valueRightMobile: {
-							value: inputBorderRightWidthMobile,
-							label: 'inputBorderRightWidthMobile',
-						},
-						valueBottomMobile: {
-							value: inputBorderBottomWidthMobile,
-							label: 'inputBorderBottomWidthMobile',
-						},
-						valueLeftMobile: {
-							value: inputBorderLeftWidthMobile,
-							label: 'inputBorderLeftWidthMobile',
-						},
-						link: {
-							value: inputBorderLink,
-							label: 'inputBorderLink',
-						}
-					} }
-					borderRadius={ {
-						label: __( 'Radius', 'ultimate-addons-for-gutenberg' ),
-						valueTopLeft: {
-							value: inputBorderTopLeftRadius,
-							label: 'inputBorderTopLeftRadius',
-						},
-						valueTopRight: {
-							value: inputBorderTopRightRadius,
-							label: 'inputBorderTopRightRadius',
-						},
-						valueBottomRight: {
-							value: inputBorderBottomRightRadius,
-							label: 'inputBorderBottomRightRadius',
-						},
-						valueBottomLeft: {
-							value: inputBorderBottomLeftRadius,
-							label: 'inputBorderBottomLeftRadius',
-						},
-						valueTopLeftTablet: {
-							value: inputBorderTopLeftRadiusTablet,
-							label: 'inputBorderTopLeftRadiusTablet',
-						},
-						valueTopRightTablet: {
-							value: inputBorderTopRightRadiusTablet,
-							label: 'inputBorderTopRightRadiusTablet',
-						},
-						valueBottomRightTablet: {
-							value: inputBorderBottomRightRadiusTablet,
-							label: 'inputBorderBottomRightRadiusTablet',
-						},
-						valueBottomLeftTablet: {
-							value: inputBorderBottomLeftRadiusTablet,
-							label: 'inputBorderBottomLeftRadiusTablet',
-						},
-						valueTopLeftMobile: {
-							value: inputBorderTopLeftRadiusMobile,
-							label: 'inputBorderTopLeftRadiusMobile',
-						},
-						valueTopRightMobile: {
-							value: inputBorderTopRightRadiusMobile,
-							label: 'inputBorderTopRightRadiusMobile',
-						},
-						valueBottomRightMobile: {
-							value: inputBorderBottomRightRadiusMobile,
-							label: 'inputBorderBottomRightRadiusMobile',
-						},
-						valueBottomLeftMobile: {
-							value: inputBorderBottomLeftRadiusMobile,
-							label: 'inputBorderBottomLeftRadiusMobile',
-						},
-						link: {
-							value: inputBorderRadiusLink,
-							label: 'inputBorderRadiusLink',
-						},
-						unit:  {
-							value: inputBorderRadiusUnit,
-							label: 'inputBorderRadiusUnit',
-						},
-						mUnit: {
-							value: inputBorderRadiusUnitMobile,
-							label: 'inputBorderRadiusUnitMobile',
-						},
-						tUnit: {
-							value: inputBorderRadiusUnitTablet,
-							label: 'inputBorderRadiusUnitTablet',
-						}
-					} }
-					borderColor={ {
-						value: inputBorderColor,
-						label: 'inputBorderColor',
-						title: __( 'Color', 'ultimate-addons-for-gutenberg' ),
-					} }
-					borderHoverColor={ {
-						value: inputBorderHColor,
-						label: 'inputBorderHColor',
-						title: __(
-							'Hover Color',
-							'ultimate-addons-for-gutenberg'
-						),
-					} }
+					borderStyleLabel={__( 'Style', 'ultimate-addons-for-gutenberg' )}
+					borderWidthLabel={__( 'Width', 'ultimate-addons-for-gutenberg' )}
+					borderRadiusLabel={__( 'Radius', 'ultimate-addons-for-gutenberg' )}
+					borderColorLabel={__( 'Color', 'ultimate-addons-for-gutenberg' )}
+					borderHoverColorLabel={__(
+						'Hover Color',
+						'ultimate-addons-for-gutenberg'
+					)}
+					prefix={'input'}
 					attributes={ attributes }
 					deviceType={deviceType}
 					disableBottomSeparator={ true }
