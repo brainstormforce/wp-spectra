@@ -154,7 +154,7 @@ const attributes = {
 			styleType: 'btn-padding-unit'
 		}
 	},
-	normalgradientValue: {
+	gradientValue: {
 		type: 'string',
 		default: '',
 		UAGCopyPaste: {
@@ -351,7 +351,7 @@ const attributes = {
 			styleType: 'btn-decoration'
 		}
 	},
-	normalbackgroundType:{
+	backgroundType:{
 		type:'string',
 		default: 'color',
 		UAGCopyPaste: {

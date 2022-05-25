@@ -90,9 +90,9 @@ const Settings = ( props ) => {
 		fontStyle,
 		transform,
 		decoration,
-		normalbackgroundType,
+		backgroundType,
 		hoverbackgroundType,
-		normalgradientValue,
+		gradientValue,
 		hovergradientValue,
 		topMargin,
 		rightMargin,
@@ -371,8 +371,8 @@ const Settings = ( props ) => {
 									setAttributes={ setAttributes }
 									label={ __( 'Type', 'ultimate-addons-for-gutenberg' ) }
 									data={ {
-										value: normalbackgroundType,
-										label: 'normalbackgroundType',
+										value: backgroundType,
+										label: 'backgroundType',
 									} }
 									className="uagb-multi-button-alignment-control"
 									options={ [
@@ -399,7 +399,7 @@ const Settings = ( props ) => {
 											},
 									] }
 								/>
-								{ 'color' === normalbackgroundType && (
+								{ 'color' === backgroundType && (
 									<>
 										
 										<AdvancedPopColorControl
@@ -420,11 +420,11 @@ const Settings = ( props ) => {
 										/>
 									</>
 								) }
-								{ 'gradient' === normalbackgroundType && (
+								{ 'gradient' === backgroundType && (
 									<GradientSettings
 										backgroundGradient={ {
-											value: normalgradientValue,
-											label: 'normalgradientValue',
+											value: gradientValue,
+											label: 'gradientValue',
 										}}
 										setAttributes={ setAttributes }
 									/>
