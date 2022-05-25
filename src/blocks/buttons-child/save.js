@@ -18,7 +18,8 @@ export default function save( props ) {
 		iconPosition,
 		removeText,
 		noFollow,
-		backgroundType,
+		normalbackgroundType,
+		hoverbackgroundType,
 		borderStyle,
 		background,
 		color
@@ -51,7 +52,7 @@ export default function save( props ) {
 		return null;
 	};
 	const openNewWindow = opensInNewTab ? '_blank' : '_self' ;
-	const hasBackground = background !== '' || backgroundType === 'transparent' ||  'gradient' === backgroundType ? 'has-background' : '';
+	const hasBackground = background !== '' || normalbackgroundType === 'transparent' ||  'gradient' === hoverbackgroundType ? 'has-background' : '';
 
 	return (
 		<div

@@ -51,8 +51,10 @@ function styling( props ) {
 		fontStyle,
 		transform,
 		decoration,
-		backgroundType,
-		gradientValue,
+		normalbackgroundType,
+		hoverbackgroundType,
+		normalgradientValue,
+		hovergradientValue,
 		topMargin,
 		rightMargin,
 		bottomMargin,
@@ -236,22 +238,37 @@ function styling( props ) {
 		};
 	}
 
-	if ( 'transparent' === backgroundType ) {
+	if ( 'transparent' === normalbackgroundType ) {
 		selectors[ '.uagb-buttons__outer-wrap .wp-block-button__link.uagb-buttons-repeater' ]  = {
 			'background': 'transparent',
 		}
-	} else if ( 'gradient' === backgroundType ) {
+	} else if ( 'gradient' === normalbackgroundType ) {
 		const backgroundAttributes = {
 			'backgroundType': 'gradient',
-			'gradientValue': gradientValue,
+			'gradientValue': normalgradientValue,
 		};
 
 		const btnBackground = generateBackgroundCSS( backgroundAttributes );
 		selectors[ '.uagb-buttons__outer-wrap .wp-block-button__link.uagb-buttons-repeater' ] = btnBackground;
-	} else {
+	} else if ( 'color' === normalbackgroundType ) {
 		selectors[ '.uagb-buttons__outer-wrap.wp-block-button .wp-block-button__link.uagb-buttons-repeater' ] = {
 			'background': background,
 		}
+	}
+
+	if ( 'transparent' === hoverbackgroundType ) {
+		selectors[ '.uagb-buttons__outer-wrap.wp-block-button .wp-block-button__link.uagb-buttons-repeater:hover' ]  = {
+			'background': 'transparent',
+		}
+	} else if ( 'gradient' === hoverbackgroundType ) {
+		const backgroundAttributes = {
+			'backgroundType': 'gradient',
+			'gradientValue': hovergradientValue,
+		};
+
+		const btnhBackground = generateBackgroundCSS( backgroundAttributes );
+		selectors[ '.uagb-buttons__outer-wrap.wp-block-button .wp-block-button__link.uagb-buttons-repeater:hover' ] = btnhBackground;
+	} else if ( 'color' === hoverbackgroundType ) {
 		selectors[ '.uagb-buttons__outer-wrap.wp-block-button .wp-block-button__link.uagb-buttons-repeater:hover' ] = {
 			'background': hBackground,
 		}

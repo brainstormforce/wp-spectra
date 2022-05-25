@@ -154,7 +154,14 @@ const attributes = {
 			styleType: 'btn-padding-unit'
 		}
 	},
-	gradientValue: {
+	normalgradientValue: {
+		type: 'string',
+		default: '',
+		UAGCopyPaste: {
+			styleType: 'container-bg-gradient-value'
+		},
+	},
+	hovergradientValue: {
 		type: 'string',
 		default: '',
 		UAGCopyPaste: {
@@ -344,7 +351,14 @@ const attributes = {
 			styleType: 'btn-decoration'
 		}
 	},
-	backgroundType:{
+	normalbackgroundType:{
+		type:'string',
+		default: 'color',
+		UAGCopyPaste: {
+			styleType: 'btn-background-type'
+		}
+	},
+	hoverbackgroundType:{
 		type:'string',
 		default: 'color',
 		UAGCopyPaste: {
