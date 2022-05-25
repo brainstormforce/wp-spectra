@@ -147,7 +147,7 @@ const UAGBWpSearchEdit = ( props ) => {
 		}
 
 		// border
-		if( borderWidth || borderRadius, borderColor, borderHColor ){
+		if( borderWidth || borderRadius || borderColor || borderHColor || borderStyle ){
 			const migrationAttributes = migrateBorderAttributes( 'input', {
 				label: 'borderWidth',
 				value: borderWidth,
