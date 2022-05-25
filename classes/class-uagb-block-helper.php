@@ -47,18 +47,18 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				$box_shadow_position_css = '';
 			}
 
-			if ( 'transparent' === $attr['normalbackgroundType'] ) {
+			if ( 'transparent' === $attr['backgroundType'] ) {
 
 				$selectors[' .wp-block-button__link']['background'] = 'transparent';
 
-			} elseif ( 'color' === $attr['normalbackgroundType'] ) {
+			} elseif ( 'color' === $attr['backgroundType'] ) {
 
 				$selectors[' .wp-block-button__link']['background'] = $attr['background'];
 
-			} elseif ( 'gradient' === $attr['normalbackgroundType'] ) {
+			} elseif ( 'gradient' === $attr['backgroundType'] ) {
 				$bg_obj = array(
 					'backgroundType' => 'gradient',
-					'gradientValue'  => $attr['normalgradientValue'],
+					'gradientValue'  => $attr['gradientValue'],
 				);
 
 				$btn_bg_css                           = self::uag_get_background_obj( $bg_obj );

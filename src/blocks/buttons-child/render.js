@@ -24,7 +24,7 @@ const Render = ( props ) => {
 		iconPosition,
 		removeText,
 		noFollow,
-		normalbackgroundType,
+		backgroundType,
 		borderStyle,
 		background,
 		color
@@ -64,7 +64,7 @@ const Render = ( props ) => {
 
 	}
 
-	const hasBackground = background !== '' || normalbackgroundType === 'transparent' || 'gradient' === normalbackgroundType  ? 'has-background' : '';
+	const hasBackground = background !== '' || backgroundType === 'transparent' || 'gradient' === backgroundType  ? 'has-background' : '';
 	return (
 		<div
 			className={ classnames(

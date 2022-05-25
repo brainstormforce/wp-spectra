@@ -51,9 +51,9 @@ function styling( props ) {
 		fontStyle,
 		transform,
 		decoration,
-		normalbackgroundType,
+		backgroundType,
 		hoverbackgroundType,
-		normalgradientValue,
+		gradientValue,
 		hovergradientValue,
 		topMargin,
 		rightMargin,
@@ -238,19 +238,19 @@ function styling( props ) {
 		};
 	}
 
-	if ( 'transparent' === normalbackgroundType ) {
+	if ( 'transparent' === backgroundType ) {
 		selectors[ '.uagb-buttons__outer-wrap .wp-block-button__link.uagb-buttons-repeater' ]  = {
 			'background': 'transparent',
 		}
-	} else if ( 'gradient' === normalbackgroundType ) {
+	} else if ( 'gradient' === backgroundType ) {
 		const backgroundAttributes = {
 			'backgroundType': 'gradient',
-			'gradientValue': normalgradientValue,
+			'gradientValue': gradientValue,
 		};
 
 		const btnBackground = generateBackgroundCSS( backgroundAttributes );
 		selectors[ '.uagb-buttons__outer-wrap .wp-block-button__link.uagb-buttons-repeater' ] = btnBackground;
-	} else if ( 'color' === normalbackgroundType ) {
+	} else if ( 'color' === backgroundType ) {
 		selectors[ '.uagb-buttons__outer-wrap.wp-block-button .wp-block-button__link.uagb-buttons-repeater' ] = {
 			'background': background,
 		}
