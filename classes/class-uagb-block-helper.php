@@ -47,26 +47,46 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				$box_shadow_position_css = '';
 			}
 
-			if ( 'transparent' === $attr['backgroundType'] ) {
+			if ( 'transparent' === $attr['normalbackgroundType'] ) {
 
 				$selectors[' .wp-block-button__link']['background'] = 'transparent';
 
-			} elseif ( 'color' === $attr['backgroundType'] ) {
+			} elseif ( 'color' === $attr['normalbackgroundType'] ) {
 
 				$selectors[' .wp-block-button__link']['background'] = $attr['background'];
+
+			} elseif ( 'gradient' === $attr['normalbackgroundType'] ) {
+				$bg_obj = array(
+					'backgroundType' => 'gradient',
+					'gradientValue'  => $attr['normalgradientValue'],
+				);
+
+				$btn_bg_css                           = self::uag_get_background_obj( $bg_obj );
+				$selectors[' .wp-block-button__link'] = $btn_bg_css;
+			}
+
+			// Hover background color types.
+			if ( 'transparent' === $attr['hoverbackgroundType'] ) {
+
+				$selectors[' .wp-block-button__link:hover'] = array(
+					'background' => 'transparent',
+				);
+
+			} elseif ( 'color' === $attr['hoverbackgroundType'] ) {
 
 				$selectors[' .wp-block-button__link:hover'] = array(
 					'background' => $attr['hBackground'],
 				);
 
-			} elseif ( 'gradient' === $attr['backgroundType'] ) {
-				$bg_obj = array(
+			} elseif ( 'gradient' === $attr['hoverbackgroundType'] ) {
+				$bg_hover_obj = array(
 					'backgroundType' => 'gradient',
-					'gradientValue'  => $attr['gradientValue'],
+					'gradientValue'  => $attr['hovergradientValue'],
 				);
 
-				$btn_bg_css                           = self::uag_get_background_obj( $bg_obj );
-				$selectors[' .wp-block-button__link'] = $btn_bg_css;
+				$btn_hover_bg_css                           = self::uag_get_background_obj( $bg_hover_obj );
+				$selectors[' .wp-block-button__link:hover'] = $btn_hover_bg_css;
+				
 			}
 
 			$selectors[' .uagb-button__wrapper .uagb-buttons-repeater.wp-block-button__link'] = array(
