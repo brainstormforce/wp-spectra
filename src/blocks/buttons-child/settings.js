@@ -479,7 +479,7 @@ const Settings = ( props ) => {
 											}
 											onColorChange={ ( value ) =>
 												setAttributes( {
-													background: value,
+													hBackground: value,
 												} )
 											}
 										/>

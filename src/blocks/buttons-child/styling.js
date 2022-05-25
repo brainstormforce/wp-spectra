@@ -261,12 +261,12 @@ function styling( props ) {
 			'background': 'transparent',
 		}
 	} else if ( 'gradient' === hoverbackgroundType ) {
-		const backgroundAttributes = {
+		const hoverbackgroundAttributes = {
 			'backgroundType': 'gradient',
 			'gradientValue': hovergradientValue,
 		};
 
-		const btnhBackground = generateBackgroundCSS( backgroundAttributes );
+		const btnhBackground = generateBackgroundCSS( hoverbackgroundAttributes );
 		selectors[ '.uagb-buttons__outer-wrap.wp-block-button .wp-block-button__link.uagb-buttons-repeater:hover' ] = btnhBackground;
 	} else if ( 'color' === hoverbackgroundType ) {
 		selectors[ '.uagb-buttons__outer-wrap.wp-block-button .wp-block-button__link.uagb-buttons-repeater:hover' ] = {
