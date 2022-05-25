@@ -579,14 +579,14 @@ const Background = ( props ) => {
 										{
 											value: 'color',
 											label: __(
-												'Classic',
+												'Color',
 												'ultimate-addons-for-gutenberg'
 											),
 										},
 										{
-											value: 'gradient',
+											value: 'none',
 											label: __(
-												'Gradient',
+												'None',
 												'ultimate-addons-for-gutenberg'
 											),
 										},
@@ -666,14 +666,14 @@ const Background = ( props ) => {
 											{
 												value: 'color',
 												label: __(
-													'Classic',
+													'Color',
 													'ultimate-addons-for-gutenberg'
 												),
 											},
 											{
-												value: 'gradient',
+												value: 'none',
 												label: __(
-													'Gradient',
+													'None',
 													'ultimate-addons-for-gutenberg'
 												),
 											},
