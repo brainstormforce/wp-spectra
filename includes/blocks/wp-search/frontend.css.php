@@ -47,22 +47,25 @@ $inputCSS       = array(
 );
 
 
-$inputBorderCSS = UAGB_Block_Helper::uag_generate_border_css( $attr, 'input' );
-$inputBorderCSS = UAGB_Block_Helper::uag_generate_deprecated_border_css(
+$inputBorderCSS       = UAGB_Block_Helper::uag_generate_border_css( $attr, 'input' );
+$inputBorderCSS       = UAGB_Block_Helper::uag_generate_deprecated_border_css(
 	$inputBorderCSS,
-	(isset($attr['borderWidth']) ? $attr['borderWidth'] : ''),
-	(isset($attr['borderRadius']) ? $attr['borderRadius'] : ''),
-	(isset($attr['borderColor']) ? $attr['borderColor'] : ''),
-	(isset($attr['borderStyle']) ? $attr['borderStyle'] : '')
+	( isset( $attr['borderWidth'] ) ? $attr['borderWidth'] : '' ),
+	( isset( $attr['borderRadius'] ) ? $attr['borderRadius'] : '' ),
+	( isset( $attr['borderColor'] ) ? $attr['borderColor'] : '' ),
+	( isset( $attr['borderStyle'] ) ? $attr['borderStyle'] : '' )
 );
 $inputBorderCSSTablet = UAGB_Block_Helper::uag_generate_border_css( $attr, 'input', 'tablet' );
 $inputBorderCSSMobile = UAGB_Block_Helper::uag_generate_border_css( $attr, 'input', 'mobile' );
 
-$boxCSS         = array_merge($inputBorderCSS, array(
-	'outline'                    => 'unset',
-	'box-shadow'                 => UAGB_Helper::get_css_value( $attr['boxShadowHOffset'], 'px' ) . ' ' . UAGB_Helper::get_css_value( $attr['boxShadowVOffset'], 'px' ) . ' ' . UAGB_Helper::get_css_value( $attr['boxShadowBlur'], 'px' ) . ' ' . UAGB_Helper::get_css_value( $attr['boxShadowSpread'], 'px' ) . ' ' . $attr['boxShadowColor'] . ' ' . $boxShadowPositionCSS,
-	'transition'                 => 'all .5s',
-));
+$boxCSS = array_merge(
+	$inputBorderCSS,
+	array(
+		'outline'    => 'unset',
+		'box-shadow' => UAGB_Helper::get_css_value( $attr['boxShadowHOffset'], 'px' ) . ' ' . UAGB_Helper::get_css_value( $attr['boxShadowVOffset'], 'px' ) . ' ' . UAGB_Helper::get_css_value( $attr['boxShadowBlur'], 'px' ) . ' ' . UAGB_Helper::get_css_value( $attr['boxShadowSpread'], 'px' ) . ' ' . $attr['boxShadowColor'] . ' ' . $boxShadowPositionCSS,
+		'transition' => 'all .5s',
+	)
+);
 if ( 'px' === $attr['inputSizeType'] ) {
 	$boxCSS['max-width'] = UAGB_Helper::get_css_value( $attr['inputSize'], $attr['inputSizeType'] );
 } else {
