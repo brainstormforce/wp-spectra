@@ -1100,7 +1100,6 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 
 			$border_attr[ $prefix . 'BorderStyle' ]  = 'none';
 			$border_attr[ $prefix . 'BorderColor' ]  = '';
-			$border_attr[ $prefix . 'BorderHColor' ] = '';
 
 			return $border_attr;
 		}
