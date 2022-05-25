@@ -158,14 +158,14 @@ const attributes = {
 		type: 'string',
 		default: '',
 		UAGCopyPaste: {
-			styleType: 'container-bg-gradient-value'
+			styleType: 'btn-bg-gradient-value'
 		},
 	},
 	hovergradientValue: {
 		type: 'string',
 		default: '',
 		UAGCopyPaste: {
-			styleType: 'container-bg-gradient-value'
+			styleType: 'btn-hbg-gradient-value'
 		},
 	},
 	mobilePaddingUnit: {
@@ -362,7 +362,7 @@ const attributes = {
 		type:'string',
 		default: 'color',
 		UAGCopyPaste: {
-			styleType: 'btn-background-type'
+			styleType: 'btn-hbackground-type'
 		}
 	},
 	topMargin:{
