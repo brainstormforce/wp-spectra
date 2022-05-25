@@ -33,7 +33,10 @@ $container_bg_css_desktop = UAGB_Block_Helper::uag_get_background_obj( $bg_obj_d
 
 $video_bg_css = UAGB_Block_Helper::uag_get_background_obj( $bg_obj_desktop );
 
-// Spacing Variables.
+$borderAttribute  = UAGB_Block_Helper::uag_generate_border_attribute( '' );
+$borderCssDesktop = UAGB_Block_Helper::uag_generate_border_css( $borderAttribute, 'Desktop', $attr['borderWidth'], $attr['borderRadius'], $attr['borderColor'], $attr['borderStyle'], '' );
+$borderCssTablet  = UAGB_Block_Helper::uag_generate_border_css( $borderAttribute, 'Tablet', $attr['borderWidth'], $attr['borderRadius'], $attr['borderColor'], $attr['borderStyle'], '' );
+$borderCssMobile  = UAGB_Block_Helper::uag_generate_border_css( $borderAttribute, 'Mobile', $attr['borderWidth'], $attr['borderRadius'], $attr['borderColor'], $attr['borderStyle'], '' );
 
 // Desktop.
 $left_padding_desktop   = ! empty( $attr['leftPaddingDesktop'] ) ? $attr['leftPaddingDesktop'] : 0;
@@ -74,17 +77,13 @@ $bottom_margin_mobile = ! empty( $attr['bottomMarginMobile'] ) ? $attr['bottomMa
 
 $column_gap_mobile = ! empty( $attr['columnGapMobile'] ) ? $attr['columnGapMobile'] : $column_gap_tablet;
 
-$container_css = array(
+$container_css                  = array(
 	'min-height'      => UAGB_Helper::get_css_value( $attr['minHeightDesktop'], $attr['minHeightType'] ),
 	'flex-direction'  => $attr['directionDesktop'],
 	'align-items'     => $attr['alignItemsDesktop'],
 	'justify-content' => $attr['justifyContentDesktop'],
 	'flex-wrap'       => $attr['wrapDesktop'],
 	'align-content'   => $attr['alignContentDesktop'],
-	'border-style'    => $attr['borderStyle'],
-	'border-color'    => $attr['borderColor'],
-	'border-radius'   => UAGB_Helper::get_css_value( $attr['borderRadius'], 'px' ),
-	'border-width'    => UAGB_Helper::get_css_value( $attr['borderWidth'], 'px' ),
 	'row-gap'         => UAGB_Helper::get_css_value( $attr['rowGapDesktop'], $attr['rowGapType'] ),
 	'column-gap'      => UAGB_Helper::get_css_value( $attr['columnGapDesktop'], $attr['columnGapType'] ),
 	'box-shadow'      =>
@@ -108,8 +107,7 @@ $container_css = array(
 	'margin-left'     => UAGB_Helper::get_css_value( $left_margin_desktop, $attr['marginType'] ),
 	'margin-right'    => UAGB_Helper::get_css_value( $right_margin_desktop, $attr['marginType'] ),
 );
-
-$container_css                  = array_merge( $container_css, $container_bg_css_desktop );
+$container_css                  = array_merge( $container_css, $container_bg_css_desktop, $borderCssDesktop );
 $background_video_opacity_value = ( isset( $attr['backgroundVideoOpacity'] ) && 'none' !== $attr['overlayType'] && ( ( 'color' === $attr['overlayType'] && ! empty( $attr['backgroundVideoColor'] ) ) || ( 'gradient' === $attr['overlayType'] && ! empty( $attr['gradientValue'] ) ) ) ) ? 1 - $attr['backgroundVideoOpacity'] : 1;
 
 $selectors = array(
