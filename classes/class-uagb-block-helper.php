@@ -86,7 +86,6 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 
 				$btn_hover_bg_css                           = self::uag_get_background_obj( $bg_hover_obj );
 				$selectors[' .wp-block-button__link:hover'] = $btn_hover_bg_css;
-				
 			}
 
 			$selectors[' .uagb-button__wrapper .uagb-buttons-repeater.wp-block-button__link'] = array(
