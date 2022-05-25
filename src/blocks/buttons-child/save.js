@@ -52,7 +52,7 @@ export default function save( props ) {
 		return null;
 	};
 	const openNewWindow = opensInNewTab ? '_blank' : '_self' ;
-	const hasBackground = background !== '' || backgroundType === 'transparent' ||  'gradient' === hoverbackgroundType ? 'has-background' : '';
+	const hasBackground = background !== '' || backgroundType === 'transparent' ||  'gradient' === backgroundType ? 'has-background' : '';
 
 	return (
 		<div
