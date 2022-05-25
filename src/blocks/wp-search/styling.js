@@ -1,6 +1,7 @@
 /**
  * Returns Dynamic Generated CSS
  */
+import generateBorderCSS from '@Controls/generateBorderCSS';
 
 import generateCSS from '@Controls/generateCSS';
 import generateCSSUnit from '@Controls/generateCSSUnit';
@@ -18,35 +19,7 @@ function styling( props ) {
 		boxShadowSpread,
 		boxShadowPosition,
 
-		inputBorderTopWidth,
-		inputBorderLeftWidth,
-		inputBorderRightWidth,
-		inputBorderBottomWidth,
-		inputBorderTopWidthTablet,
-		inputBorderLeftWidthTablet,
-		inputBorderRightWidthTablet,
-		inputBorderBottomWidthTablet,
-		inputBorderTopWidthMobile,
-		inputBorderLeftWidthMobile,
-		inputBorderRightWidthMobile,
-		inputBorderBottomWidthMobile,
-		inputBorderTopLeftRadius,
-		inputBorderTopRightRadius,
-		inputBorderBottomLeftRadius,
-		inputBorderBottomRightRadius,
-		inputBorderTopLeftRadiusTablet,
-		inputBorderTopRightRadiusTablet,
-		inputBorderBottomLeftRadiusTablet,
-		inputBorderBottomRightRadiusTablet,
-		inputBorderTopLeftRadiusMobile,
-		inputBorderTopRightRadiusMobile,
-		inputBorderBottomLeftRadiusMobile,
-		inputBorderBottomRightRadiusMobile,
-		inputBorderRadiusUnit,
-		inputBorderRadiusUnitTablet,
-		inputBorderRadiusUnitMobile,
-		inputBorderStyle,
-		inputBorderColor,
+
 		inputBorderHColor,
 
 
@@ -123,6 +96,10 @@ function styling( props ) {
 		buttonIconSizeType
 	);
 
+	const inputBorderCSS = generateBorderCSS(props.attributes, 'input')
+	const inputBorderCSSTablet = generateBorderCSS(props.attributes, 'input', 'tablet')
+	const inputBorderCSSMobile = generateBorderCSS(props.attributes, 'input', 'mobile')
+
 	const inputCSS = {
 		'color': textColor,
 		'background-color': inputBgColor,
@@ -155,19 +132,9 @@ function styling( props ) {
 		),
 		'transition': 'all .5s',
 	};
+
 	const boxCSS = {
-		'border-style': inputBorderStyle,
-		'border-top-width': generateCSSUnit( inputBorderTopWidth, 'px' ),
-		'border-right-width': generateCSSUnit( inputBorderRightWidth, 'px' ),
-		'border-bottom-width': generateCSSUnit( inputBorderBottomWidth, 'px' ),
-		'border-left-width': generateCSSUnit( inputBorderLeftWidth, 'px' ),
-		'border-color': inputBorderColor,
-		'border-top-left-radius': generateCSSUnit( inputBorderTopLeftRadius, inputBorderRadiusUnit ),
-		'border-top-right-radius':  generateCSSUnit( inputBorderTopRightRadius, inputBorderRadiusUnit ),
-		'border-bottom-left-radius':  generateCSSUnit( inputBorderBottomLeftRadius, inputBorderRadiusUnit ),
-		'border-bottom-right-radius':  generateCSSUnit( inputBorderBottomRightRadius, inputBorderRadiusUnit ),
-
-
+		...inputBorderCSS,
 		'outline': 'unset',
 		'box-shadow':
 			generateCSSUnit( boxShadowHOffset, 'px' ) +
@@ -295,16 +262,7 @@ function styling( props ) {
 	};
 
 	mobileSelectors = {
-		' .uagb-search-wrapper .uagb-search-form__container': {
-			'border-top-width': generateCSSUnit( inputBorderTopWidthMobile, 'px' ),
-			'border-right-width': generateCSSUnit( inputBorderRightWidthMobile, 'px' ),
-			'border-bottom-width': generateCSSUnit( inputBorderBottomWidthMobile, 'px' ),
-			'border-left-width': generateCSSUnit( inputBorderLeftWidthMobile, 'px' ),
-			'border-top-left-radius': generateCSSUnit( inputBorderTopLeftRadiusMobile, inputBorderRadiusUnitMobile ),
-			'border-top-right-radius':  generateCSSUnit( inputBorderTopRightRadiusMobile, inputBorderRadiusUnitMobile ),
-			'border-bottom-left-radius':  generateCSSUnit( inputBorderBottomLeftRadiusMobile, inputBorderRadiusUnitMobile ),
-			'border-bottom-right-radius':  generateCSSUnit( inputBorderBottomRightRadiusMobile, inputBorderRadiusUnitMobile ),
-		},
+		' .uagb-search-wrapper .uagb-search-form__container': inputBorderCSSMobile,
 		' .uagb-search-wrapper .uagb-search-form__container .uagb-search-form__input': {
 			'font-size': generateCSSUnit(
 				inputFontSizeMobile,
@@ -358,16 +316,7 @@ function styling( props ) {
 	};
 
 	tabletSelectors = {
-		' .uagb-search-wrapper .uagb-search-form__container': {
-			'border-top-width': generateCSSUnit( inputBorderTopWidthTablet, 'px' ),
-			'border-right-width': generateCSSUnit( inputBorderRightWidthTablet, 'px' ),
-			'border-bottom-width': generateCSSUnit( inputBorderBottomWidthTablet, 'px' ),
-			'border-left-width': generateCSSUnit( inputBorderLeftWidthTablet, 'px' ),
-			'border-top-left-radius': generateCSSUnit( inputBorderTopLeftRadiusTablet, inputBorderRadiusUnitTablet ),
-			'border-top-right-radius':  generateCSSUnit( inputBorderTopRightRadiusTablet, inputBorderRadiusUnitTablet ),
-			'border-bottom-left-radius':  generateCSSUnit( inputBorderBottomLeftRadiusTablet, inputBorderRadiusUnitTablet ),
-			'border-bottom-right-radius':  generateCSSUnit( inputBorderBottomRightRadiusTablet, inputBorderRadiusUnitTablet ),
-		},
+		' .uagb-search-wrapper .uagb-search-form__container': inputBorderCSSTablet,
 		' .uagb-search-wrapper .uagb-search-form__container .uagb-search-form__input': {
 			'font-size': generateCSSUnit(
 				inputFontSizeTablet,

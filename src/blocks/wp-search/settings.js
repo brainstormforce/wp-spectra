@@ -25,7 +25,6 @@ const Settings = ( props ) => {
 
 	const { attributes, setAttributes, deviceType } = props;
 
-	console.log(attributes)
 	const {
 		layout,
 		placeholder,
