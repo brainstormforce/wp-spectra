@@ -147,8 +147,8 @@ const UAGBWpSearchEdit = ( props ) => {
 		}
 
 		// border
-		if( borderWidth || borderRadius, borderColor, borderHColor){
-			migrateBorderAttributes('input', {
+		if( borderWidth || borderRadius, borderColor, borderHColor ){
+			const migrationAttributes = migrateBorderAttributes( 'input', {
 				label: 'borderWidth',
 				value: borderWidth,
 			}, {
@@ -165,6 +165,7 @@ const UAGBWpSearchEdit = ( props ) => {
 				value: borderStyle
 			}
 			);
+			props.setAttributes( migrationAttributes )
 		}
 		const blockStyling = styling( props );
 		addBlockEditorDynamicStyles( 'uagb-style-wp-search-' + props.clientId.substr( 0, 8 ), blockStyling );

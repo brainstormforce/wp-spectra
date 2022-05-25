@@ -1,13 +1,13 @@
 
-export const getBorderAttributes = (prefix) => {
-	let attributes = {};
+export const getBorderAttributes = ( prefix ) => {
+	const attributes = {};
 	const devices = [
 		{devicePrefix: '', copyPastePrefix: ''},
 		{devicePrefix: 'Tablet', copyPastePrefix: '-tablet'},
 		{devicePrefix: 'Mobile', copyPastePrefix: '-mobile'},
 	];
 
-	devices.forEach(item => {
+	devices.forEach( item => {
 		// border width
 		attributes[prefix + 'BorderTopWidth' + item.devicePrefix] = {
 			type: 'number',
@@ -75,7 +75,7 @@ export const getBorderAttributes = (prefix) => {
 				styleType:  prefix + '-border-radius-unit' + item.copyPastePrefix
 			}
 		}
-	});
+	} );
 
 	attributes[prefix + 'BorderLink'] = {
 		type: 'boolean',
@@ -121,55 +121,42 @@ export const getBorderAttributes = (prefix) => {
 }
 
 
-export const migrateBorderAttributes = (prefix, borderWidth, borderRadius, color = {}, hoverColor = {}, borderStyle = {}) => {
-	if(borderWidth.value){
-		let widthObj = {}
-		widthObj[prefix + 'BorderTopWidth'] = borderWidth.value;
-		widthObj[prefix + 'HorderLeftWidth'] = borderWidth.value;
-		widthObj[prefix + 'BorderRightWidth'] = borderWidth.value;
-		widthObj[prefix + 'HorderBottomWidth'] = borderWidth.value;
+export const migrateBorderAttributes = ( prefix, borderWidth, borderRadius, color = {}, hoverColor = {}, borderStyle = {} ) => {
+	const attributes = {};
+	if( borderWidth.value ){
+		attributes[prefix + 'BorderTopWidth'] = borderWidth.value;
+		attributes[prefix + 'BorderLeftWidth'] = borderWidth.value;
+		attributes[prefix + 'BorderRightWidth'] = borderWidth.value;
+		attributes[prefix + 'BorderBottomWidth'] = borderWidth.value;
 		// reset
-		widthObj[borderWidth.label] = '',
-		// update attributes
-		props.setAttributes( {...widthObj} );
+		attributes[borderWidth.label] = '';
 	}
 
 	if( borderRadius.value ){
-		let radiusObj = {}
-		radiusObj[prefix + 'BorderTopLeftRadius'] = borderRadius.value;
-		radiusObj[prefix + 'BorderTopRightRadius'] = borderRadius.value;
-		radiusObj[prefix + 'BorderBottomLeftRadius'] = borderRadius.value;
-		radiusObj[prefix + 'BorderBottomRightRadius'] = borderRadius.value;
+		attributes[prefix + 'BorderTopLeftRadius'] = borderRadius.value;
+		attributes[prefix + 'BorderTopRightRadius'] = borderRadius.value;
+		attributes[prefix + 'BorderBottomLeftRadius'] = borderRadius.value;
+		attributes[prefix + 'BorderBottomRightRadius'] = borderRadius.value;
 		// reset
-		radiusObj[borderRadius.label] = '',
-		// update attributes
-		props.setAttributes( {...radiusObj} );
+		attributes[borderRadius.label] = '';
 	}
 
-	if(color.value){
-		let colorObj = {}
-		colorObj[prefix + 'BorderColor'] = color.value;
+	if( color.value ){
+		attributes[prefix + 'BorderColor'] = color.value;
 		// reset
-		colorObj[color.label] = '',
-		// update attributes
-		props.setAttributes( {...colorObj} );
+		attributes[color.label] = '';
 	}
 
-	if(hoverColor.value){
-		let colorHObj = {}
-		colorHObj[prefix + 'BorderHColor'] = hoverColor.value;
+	if( hoverColor.value ){
+		attributes[prefix + 'BorderHColor'] = hoverColor.value;
 		// reset
-		colorHObj[hoverColor.label] = '',
-		// update attributes
-		props.setAttributes( {...colorHObj} );
+		attributes[hoverColor.label] = '';
 	}
 
-	if(borderStyle.value){
-		let styleObj = {}
-		styleObj[prefix + 'BorderStyle'] = borderStyle.value;
+	if( borderStyle.value ){
+		attributes[prefix + 'BorderStyle'] = borderStyle.value;
 		// reset
-		styleObj[borderStyle.label] = '',
-		// update attributes
-		props.setAttributes( {...styleObj} );
+		attributes[borderStyle.label] = '';
 	}
+	return attributes;
 }

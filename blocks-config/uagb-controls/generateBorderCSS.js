@@ -4,7 +4,7 @@ const generateBorderCSS = ( attributes, prefix, deviceType = 'desktop' ) => {
 
 	const borderStyle = attributes[prefix + 'BorderStyle'];
 	const borderColor = attributes[prefix + 'BorderColor'];
-	if('tablet' === deviceType) {
+	if( 'tablet' === deviceType ) {
 		const borderTopWidthTablet = attributes[prefix + 'BorderTopWidthTablet'];
 		const borderLeftWidthTablet = attributes[prefix + 'BorderLeftWidthTablet'];
 		const borderRightWidthTablet = attributes[prefix + 'BorderRightWidthTablet'];
@@ -16,7 +16,7 @@ const generateBorderCSS = ( attributes, prefix, deviceType = 'desktop' ) => {
 		const borderRadiusUnitTablet = attributes[prefix + 'BorderRadiusUnitTablet'];
 		borderCSS['border-radius'] = generateBorderRadius( borderTopLeftRadiusTablet, borderTopRightRadiusTablet, borderBottomRightRadiusTablet, borderBottomLeftRadiusTablet, borderRadiusUnitTablet );
 		borderCSS['border-width'] = generateBorderWidth( borderTopWidthTablet, borderRightWidthTablet, borderBottomWidthTablet, borderLeftWidthTablet );
-	} else if('mobile' === deviceType) {
+	} else if( 'mobile' === deviceType ) {
 		const borderTopWidthMobile = attributes[prefix + 'BorderTopWidthMobile'];
 		const borderLeftWidthMobile = attributes[prefix + 'BorderLeftWidthMobile'];
 		const borderRightWidthMobile = attributes[prefix + 'BorderRightWidthMobile'];

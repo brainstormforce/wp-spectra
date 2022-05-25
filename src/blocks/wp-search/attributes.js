@@ -4,7 +4,7 @@
 
 import {getBorderAttributes} from '@Controls/generateAttributes';
 
-const inputBorderAttributes = getBorderAttributes('input')
+const inputBorderAttributes = getBorderAttributes( 'input' )
 
 const attributes = {
 	block_id: {

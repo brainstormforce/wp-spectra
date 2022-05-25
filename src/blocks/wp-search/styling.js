@@ -96,9 +96,9 @@ function styling( props ) {
 		buttonIconSizeType
 	);
 
-	const inputBorderCSS = generateBorderCSS(props.attributes, 'input')
-	const inputBorderCSSTablet = generateBorderCSS(props.attributes, 'input', 'tablet')
-	const inputBorderCSSMobile = generateBorderCSS(props.attributes, 'input', 'mobile')
+	const inputBorderCSS = generateBorderCSS( props.attributes, 'input' )
+	const inputBorderCSSTablet = generateBorderCSS( props.attributes, 'input', 'tablet' )
+	const inputBorderCSSMobile = generateBorderCSS( props.attributes, 'input', 'mobile' )
 
 	const inputCSS = {
 		'color': textColor,
