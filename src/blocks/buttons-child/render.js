@@ -25,7 +25,6 @@ const Render = ( props ) => {
 		removeText,
 		noFollow,
 		normalbackgroundType,
-		hoverbackgroundType,
 		borderStyle,
 		background,
 		color
