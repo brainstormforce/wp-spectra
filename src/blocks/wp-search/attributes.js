@@ -25,6 +25,23 @@ const attributes = {
 			styleType: 'input-size'
 		}
 	},
+	borderStyle: {
+		type: 'string',
+		default: 'none',
+	},
+	borderWidth: {
+		type: 'number',
+	},
+	borderRadius: {
+		type: 'number',
+		default: 3,
+	},
+	borderColor: {
+		type: 'string',
+	},
+	borderHColor: {
+		type: 'string',
+	},
 	textColor: {
 		type: 'string',
 		UAGCopyPaste: {

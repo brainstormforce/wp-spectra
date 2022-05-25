@@ -119,3 +119,57 @@ export const getBorderAttributes = (prefix) => {
 
     return attributes;
 }
+
+
+export const migrateBorderAttributes = (prefix, borderWidth, borderRadius, color = {}, hoverColor = {}, borderStyle = {}) => {
+	if(borderWidth.value){
+		let widthObj = {}
+		widthObj[prefix + 'BorderTopWidth'] = borderWidth.value;
+		widthObj[prefix + 'HorderLeftWidth'] = borderWidth.value;
+		widthObj[prefix + 'BorderRightWidth'] = borderWidth.value;
+		widthObj[prefix + 'HorderBottomWidth'] = borderWidth.value;
+		// reset
+		widthObj[borderWidth.label] = '',
+		// update attributes
+		props.setAttributes( {...widthObj} );
+	}
+
+	if( borderRadius.value ){
+		let radiusObj = {}
+		radiusObj[prefix + 'BorderTopLeftRadius'] = borderRadius.value;
+		radiusObj[prefix + 'BorderTopRightRadius'] = borderRadius.value;
+		radiusObj[prefix + 'BorderBottomLeftRadius'] = borderRadius.value;
+		radiusObj[prefix + 'BorderBottomRightRadius'] = borderRadius.value;
+		// reset
+		radiusObj[borderRadius.label] = '',
+		// update attributes
+		props.setAttributes( {...radiusObj} );
+	}
+
+	if(color.value){
+		let colorObj = {}
+		colorObj[prefix + 'BorderColor'] = color.value;
+		// reset
+		colorObj[color.label] = '',
+		// update attributes
+		props.setAttributes( {...colorObj} );
+	}
+
+	if(hoverColor.value){
+		let colorHObj = {}
+		colorHObj[prefix + 'BorderHColor'] = hoverColor.value;
+		// reset
+		colorHObj[hoverColor.label] = '',
+		// update attributes
+		props.setAttributes( {...colorHObj} );
+	}
+
+	if(borderStyle.value){
+		let styleObj = {}
+		styleObj[prefix + 'BorderStyle'] = borderStyle.value;
+		// reset
+		styleObj[borderStyle.label] = '',
+		// update attributes
+		props.setAttributes( {...styleObj} );
+	}
+}
