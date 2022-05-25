@@ -666,7 +666,7 @@ const Background = ( props ) => {
 											{
 												value: 'color',
 												label: __(
-													'Color',
+													'Classic',
 													'ultimate-addons-for-gutenberg'
 												),
 											},
