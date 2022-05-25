@@ -10,7 +10,7 @@ import maybeGetColorForVariable from '@Controls/maybeGetColorForVariable';
 
 function styling( props ) {
 	const { attributes } = props;
-	const {
+	let {
 		block_id,
 		widthDesktop,
 		widthTablet,
@@ -127,6 +127,29 @@ function styling( props ) {
 		linkHoverColor,
 	} = attributes;
 
+	topPaddingTablet = topPaddingTablet ? topPaddingTablet : topPaddingDesktop;
+	topPaddingMobile = topPaddingMobile ? topPaddingMobile : topPaddingTablet;
+
+	bottomPaddingTablet = bottomPaddingTablet ? bottomPaddingTablet : bottomPaddingDesktop;
+	bottomPaddingMobile = bottomPaddingMobile ? bottomPaddingMobile : bottomPaddingTablet;
+
+	leftPaddingTablet = leftPaddingTablet ? leftPaddingTablet : leftPaddingDesktop;
+	leftPaddingMobile = leftPaddingMobile ? leftPaddingMobile : leftPaddingTablet;
+
+	rightPaddingTablet = rightPaddingTablet ? rightPaddingTablet : rightPaddingDesktop;
+	rightPaddingMobile = rightPaddingMobile ? rightPaddingMobile : rightPaddingTablet;
+
+	topMarginTablet = topMarginTablet ? topMarginTablet : topMarginDesktop;
+	topMarginMobile = topMarginMobile ? topMarginMobile : topMarginTablet;
+
+	bottomMarginTablet = bottomMarginTablet ? bottomMarginTablet : bottomMarginDesktop;
+	bottomMarginMobile = bottomMarginMobile ? bottomMarginMobile : bottomMarginTablet;
+
+	leftMarginTablet = leftMarginTablet ? leftMarginTablet : leftMarginDesktop;
+	leftMarginMobile = leftMarginMobile ? leftMarginMobile : leftMarginTablet;
+
+	rightMarginTablet = rightMarginTablet ? rightMarginTablet : rightMarginDesktop;
+	rightMarginMobile = rightMarginMobile ? rightMarginMobile : rightMarginTablet;
 
 	const containerFullWidth = '100vw';
 
