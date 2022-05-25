@@ -1109,13 +1109,8 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 		 * Border CSS generation Function.
 		 *
 		 * @param  array $attr   Attribute List.
-		 * @param  array $device   Generate device specific css .
-		 * @param  array $border_width  To manage backward.
-		 * @param  array $border_radius   border_radius value.
-		 * @param  array $border_color   border_color value.
-		 * @param  array $border_style   border_style backward value.
-		 * @param  array $prefix   Check prefix css List.
-		 *
+		 * @param  string $prefix Attribuate prefix .
+		 * @param  string $device Responsive.
 		 * @return array         border css array.
 		 */
 		public static function uag_generate_border_css( $attr, $prefix, $device = 'desktop' ) {
@@ -1135,9 +1130,9 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				$gen_border_css['border-right-width']         = UAGB_Helper::get_css_value( $attr[ $prefix . 'BorderRightWidthMobile' ], 'px');
 				$gen_border_css['border-bottom-width']        = UAGB_Helper::get_css_value( $attr[ $prefix . 'BorderBottomWidthMobile' ], 'px');
 				$gen_border_css['border-top-left-radius']     = UAGB_Helper::get_css_value( $attr[ $prefix . 'BorderTopLeftRadiusMobile' ], $attr[ $prefix . 'BorderRadiusUnitMobile' ]);
-				$gen_border_css['border-top-right-radius']    = UAGB_Helper::get_css_value( $attr[ $prefix . 'BorderTopRightRadiusMobile' ], $attr[ $prefix . 'BorderRadiusUnitMobile' ]);;
-				$gen_border_css['border-bottom-left-radius']  = UAGB_Helper::get_css_value( $attr[ $prefix . 'BorderBottomRightRadiusMobile' ], $attr[ $prefix . 'BorderRadiusUnitMobile' ]);;
-				$gen_border_css['border-bottom-right-radius'] = UAGB_Helper::get_css_value( $attr[ $prefix . 'BorderTopLeftRadiusMobile' ], $attr[ $prefix . 'BorderRadiusUnitMobile' ]);;
+				$gen_border_css['border-top-right-radius']    = UAGB_Helper::get_css_value( $attr[ $prefix . 'BorderTopRightRadiusMobile' ], $attr[ $prefix . 'BorderRadiusUnitMobile' ]);
+				$gen_border_css['border-bottom-left-radius']  = UAGB_Helper::get_css_value( $attr[ $prefix . 'BorderBottomRightRadiusMobile' ], $attr[ $prefix . 'BorderRadiusUnitMobile' ]);
+				$gen_border_css['border-bottom-right-radius'] = UAGB_Helper::get_css_value( $attr[ $prefix . 'BorderTopLeftRadiusMobile' ], $attr[ $prefix . 'BorderRadiusUnitMobile' ]);
 			} else {
 				$gen_border_css['border-top-width']           = UAGB_Helper::get_css_value( $attr[ $prefix . 'BorderTopWidth' ], 'px');
 				$gen_border_css['border-left-width']          = UAGB_Helper::get_css_value( $attr[ $prefix . 'BorderLeftWidth' ], 'px');
@@ -1146,7 +1141,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				$gen_border_css['border-top-left-radius']     = UAGB_Helper::get_css_value( $attr[ $prefix . 'BorderTopLeftRadius' ], $attr[ $prefix . 'BorderRadiusUnit' ]);
 				$gen_border_css['border-top-right-radius']    = UAGB_Helper::get_css_value( $attr[ $prefix . 'BorderTopRightRadius' ], $attr[ $prefix . 'BorderRadiusUnit' ]);
 				$gen_border_css['border-bottom-left-radius']  = UAGB_Helper::get_css_value( $attr[ $prefix . 'BorderBottomLeftRadius' ], $attr[ $prefix . 'BorderRadiusUnit' ]);
-				$gen_border_css['border-bottom-right-radius'] = UAGB_Helper::get_css_value( $attr[ $prefix . 'BorderBottomRightRadius' ], $attr[ $prefix . 'BorderRadiusUnit' ]);;
+				$gen_border_css['border-bottom-right-radius'] = UAGB_Helper::get_css_value( $attr[ $prefix . 'BorderBottomRightRadius' ], $attr[ $prefix . 'BorderRadiusUnit' ]);
 				$borderStyle                   = $attr[ $prefix . 'BorderStyle' ];
 				$borderColor                   = $attr[ $prefix . 'BorderColor' ];
 				$gen_border_css['border-style'] = $borderStyle;
@@ -1155,6 +1150,42 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 
 			return $gen_border_css;
 		}
+
+		/**
+		 * Deprecated Border CSS generation Function.
+		 *
+		 * @param  array $current_css   Current style list.
+		 * @param  string $border_width   Border Width.
+		 * @param  string $border_radius Border Radius.
+		 * @param  string $border_color Border Color.
+		 * @return string $border_style Border Style.
+		 */
+		public static function uag_generate_deprecated_border_css($current_css, $border_width, $border_radius, $border_color = '', $border_style = ''){
+			$gen_border_css = [];
+			if($border_width){
+				$gen_border_css['border-top-width']           = UAGB_Helper::get_css_value( $border_width, 'px');
+				$gen_border_css['border-left-width']          = UAGB_Helper::get_css_value( $border_width, 'px');
+				$gen_border_css['border-right-width']         = UAGB_Helper::get_css_value( $border_width, 'px');
+				$gen_border_css['border-bottom-width']        = UAGB_Helper::get_css_value( $border_width, 'px');
+			}
+
+			if($border_radius){
+				$gen_border_css['border-top-left-radius']     = UAGB_Helper::get_css_value( $border_radius, 'px');
+				$gen_border_css['border-top-right-radius']    = UAGB_Helper::get_css_value( $border_radius, 'px');
+				$gen_border_css['border-bottom-left-radius']  = UAGB_Helper::get_css_value( $border_radius, 'px');
+				$gen_border_css['border-bottom-right-radius'] = UAGB_Helper::get_css_value( $border_radius, 'px');
+			}
+
+			if($border_style){
+				$gen_border_css['border-style'] = $border_style;
+			}
+
+			if($border_color){
+				$gen_border_css['border-style'] = $border_color;
+			}
+			return wp_parse_args(  $gen_border_css, $current_css );
+		}
+
 		/**
 		 * Since title text is set to flex, we need this function so that stack alignment doesn't break.
 		 * It converts the normal text-align values to flex-alignment based values.

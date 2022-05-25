@@ -22,7 +22,6 @@ return array_merge(array(
 	'boxShadowBlur'                 => '',
 	'boxShadowSpread'               => '',
 	'boxShadowPosition'             => 'outset',
-
 	'buttonBgColor'                 => '#9d9d9d',
 	'buttonBgHoverColor'            => '',
 	'buttonIconColor'               => '',

@@ -48,6 +48,13 @@ $inputCSS       = array(
 
 
 $inputBorderCSS = UAGB_Block_Helper::uag_generate_border_css( $attr, 'input' );
+$inputBorderCSS = UAGB_Block_Helper::uag_generate_deprecated_border_css($inputBorderCSS,
+	(isset($attr['borderWidth']) ? $attr['borderWidth'] : ''),
+	(isset($attr['borderRadius']) ? $attr['borderRadius'] : ''),
+	(isset($attr['borderColor']) ? $attr['borderColor'] : ''),
+	(isset($attr['borderHColor']) ? $attr['borderHColor'] : ''),
+	(isset($attr['borderStyle']) ? $attr['borderStyle'] : '')
+);
 $inputBorderCSSTablet = UAGB_Block_Helper::uag_generate_border_css( $attr, 'input', 'tablet' );
 $inputBorderCSSMobile = UAGB_Block_Helper::uag_generate_border_css( $attr, 'input', 'mobile' );
 
