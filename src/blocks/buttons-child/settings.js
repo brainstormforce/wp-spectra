@@ -399,24 +399,6 @@ const Settings = ( props ) => {
 											},
 									] }
 								/>
-								{ 'transparent' === normalbackgroundType && (												
-									<AdvancedPopColorControl
-										label={ __(
-											'Color',
-											'ultimate-addons-for-gutenberg'
-										) }
-										colorValue={
-											background
-												? background
-												: ''
-										}
-										onColorChange={ ( value ) =>
-											setAttributes( {
-												background: value,
-											} )
-										}
-									/>
-								) }
 								{ 'color' === normalbackgroundType && (
 									<>
 										
@@ -483,24 +465,6 @@ const Settings = ( props ) => {
 											},
 									] }
 								/>
-								{ 'transparent' === hoverbackgroundType && (												
-									<AdvancedPopColorControl
-										label={ __(
-											'Color',
-											'ultimate-addons-for-gutenberg'
-										) }
-										colorValue={
-											hBackground
-												? hBackground
-												: ''
-										}
-										onColorChange={ ( value ) =>
-											setAttributes( {
-												background: value,
-											} )
-										}
-									/>
-								) }
 								{ 'color' === hoverbackgroundType && (
 									<>
 										<AdvancedPopColorControl
