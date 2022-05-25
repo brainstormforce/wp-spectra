@@ -1176,12 +1176,12 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				$gen_border_css['border-bottom-right-radius'] = UAGB_Helper::get_css_value( $border_radius, 'px');
 			}
 
-			if($border_style){
-				$gen_border_css['border-style'] = $border_style;
+			if($border_color){
+				$gen_border_css['border-color'] = $border_color;
 			}
 
-			if($border_color){
-				$gen_border_css['border-style'] = $border_color;
+			if($border_style){
+				$gen_border_css['border-style'] = $border_style;
 			}
 			return wp_parse_args(  $gen_border_css, $current_css );
 		}
