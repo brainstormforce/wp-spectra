@@ -40,10 +40,8 @@ const ResponsiveBorder = ( props ) => {
 	const {
 		attributes,
 		setAttributes,
-		borderActiveColor,
 		disabledBorderTitle,
 		deviceType,
-
 
 		prefix,
 		borderStyleLabel,
