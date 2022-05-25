@@ -19,7 +19,6 @@ export default function save( props ) {
 		removeText,
 		noFollow,
 		normalbackgroundType,
-		hoverbackgroundType,
 		borderStyle,
 		background,
 		color
