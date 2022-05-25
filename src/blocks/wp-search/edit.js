@@ -7,6 +7,9 @@ import React, { useState, useEffect, lazy, Suspense } from 'react';
 import lazyLoader from '@Controls/lazy-loader';
 import { useDeviceType } from '@Controls/getPreviewType';
 import addBlockEditorDynamicStyles from '@Controls/addBlockEditorDynamicStyles';
+
+import {migrateBorderAttributes} from '@Controls/generateAttributes';
+
 const Settings = lazy( () =>
 	import( /* webpackChunkName: "chunks/wp-search/settings" */ './settings' )
 );
@@ -45,16 +48,11 @@ const UAGBWpSearchEdit = ( props ) => {
 		}
 
 		const {
+			borderStyle,
 			borderWidth,
-			borderTopWidth,
-			borderLeftWidth,
-			borderRightWidth,
-			borderBottomWidth,
+			borderColor,
+			borderHColor,
 			borderRadius,
-			borderTopLeftRadius,
-			borderTopRightRadius,
-			borderBottomLeftRadius,
-			borderBottomRightRadius,
 			vinputPaddingMobile,
 			vinputPaddingTablet,
 			vinputPaddingDesktop,
@@ -149,25 +147,25 @@ const UAGBWpSearchEdit = ( props ) => {
 		}
 
 		// border
-		if( borderWidth ){
-			if( !borderTopWidth && !borderLeftWidth && !borderRightWidth && !borderBottomWidth ){
-				props.setAttributes( {
-					borderTopWidth: borderWidth,
-					borderLeftWidth: borderWidth,
-					borderRightWidth: borderWidth,
-					borderBottomWidth: borderWidth,
-				} );
+		if( borderWidth || borderRadius || borderColor || borderHColor || borderStyle ){
+			const migrationAttributes = migrateBorderAttributes( 'input', {
+				label: 'borderWidth',
+				value: borderWidth,
+			}, {
+				label: 'borderRadius',
+				value: borderRadius
+			}, {
+				label: 'borderColor',
+				value: borderColor
+			}, {
+				label: 'borderHColor',
+				value: borderHColor
+			},{
+				label: 'borderStyle',
+				value: borderStyle
 			}
-		}
-		if( borderRadius ){
-			if( !borderTopLeftRadius && !borderTopRightRadius && !borderBottomLeftRadius && !borderBottomRightRadius ){
-				props.setAttributes( {
-					borderTopLeftRadius: borderRadius,
-					borderTopRightRadius: borderRadius,
-					borderBottomLeftRadius: borderRadius,
-					borderBottomRightRadius: borderRadius,
-				} );
-			}
+			);
+			props.setAttributes( migrationAttributes )
 		}
 		const blockStyling = styling( props );
 		addBlockEditorDynamicStyles( 'uagb-style-wp-search-' + props.clientId.substr( 0, 8 ), blockStyling );

@@ -1,13 +1,13 @@
 
-export const getBorderAttributes = (prefix) => {
-	let attributes = {};
+export const getBorderAttributes = ( prefix ) => {
+	const attributes = {};
 	const devices = [
 		{devicePrefix: '', copyPastePrefix: ''},
 		{devicePrefix: 'Tablet', copyPastePrefix: '-tablet'},
 		{devicePrefix: 'Mobile', copyPastePrefix: '-mobile'},
 	];
 
-	devices.forEach(item => {
+	devices.forEach( item => {
 		// border width
 		attributes[prefix + 'BorderTopWidth' + item.devicePrefix] = {
 			type: 'number',
@@ -75,7 +75,7 @@ export const getBorderAttributes = (prefix) => {
 				styleType:  prefix + '-border-radius-unit' + item.copyPastePrefix
 			}
 		}
-	});
+	} );
 
 	attributes[prefix + 'BorderLink'] = {
 		type: 'boolean',
@@ -118,4 +118,45 @@ export const getBorderAttributes = (prefix) => {
 	}
 
     return attributes;
+}
+
+
+export const migrateBorderAttributes = ( prefix, borderWidth, borderRadius, color = {}, hoverColor = {}, borderStyle = {} ) => {
+	const attributes = {};
+	if( borderWidth.value ){
+		attributes[prefix + 'BorderTopWidth'] = borderWidth.value;
+		attributes[prefix + 'BorderLeftWidth'] = borderWidth.value;
+		attributes[prefix + 'BorderRightWidth'] = borderWidth.value;
+		attributes[prefix + 'BorderBottomWidth'] = borderWidth.value;
+		// reset
+		attributes[borderWidth.label] = '';
+	}
+
+	if( borderRadius.value ){
+		attributes[prefix + 'BorderTopLeftRadius'] = borderRadius.value;
+		attributes[prefix + 'BorderTopRightRadius'] = borderRadius.value;
+		attributes[prefix + 'BorderBottomLeftRadius'] = borderRadius.value;
+		attributes[prefix + 'BorderBottomRightRadius'] = borderRadius.value;
+		// reset
+		attributes[borderRadius.label] = '';
+	}
+
+	if( color.value ){
+		attributes[prefix + 'BorderColor'] = color.value;
+		// reset
+		attributes[color.label] = '';
+	}
+
+	if( hoverColor.value ){
+		attributes[prefix + 'BorderHColor'] = hoverColor.value;
+		// reset
+		attributes[hoverColor.label] = '';
+	}
+
+	if( borderStyle.value ){
+		attributes[prefix + 'BorderStyle'] = borderStyle.value;
+		// reset
+		attributes[borderStyle.label] = '';
+	}
+	return attributes;
 }
