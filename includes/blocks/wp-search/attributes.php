@@ -7,7 +7,9 @@
  * @package uagb
  */
 
-return array(
+$borderAttribute  = UAGB_Block_Helper::uag_generate_border_attribute( 'input' );
+
+return array_merge(array(
 	'block_id'                      => '',
 	'layout'                        => 'input-button',
 	'placeholder'                   => 'Type & Hit Enter',
@@ -20,37 +22,7 @@ return array(
 	'boxShadowBlur'                 => '',
 	'boxShadowSpread'               => '',
 	'boxShadowPosition'             => 'outset',
-	'borderStyle'                   => 'none',
-	'borderTopWidth'                => '',
-	'borderRightWidth'              => '',
-	'borderBottomWidth'             => '',
-	'borderLeftWidth'               => '',
-	'borderTopWidthTablet'          => '',
-	'borderRightWidthTablet'        => '',
-	'borderBottomWidthTablet'       => '',
-	'borderLeftWidthTablet'         => '',
-	'borderTopWidthMobile'          => '',
-	'borderRightWidthMobile'        => '',
-	'borderBottomWidthMobile'       => '',
-	'borderLeftWidthMobile'         => '',
-	'borderTopLeftRadius'           => '',
-	'borderTopRightRadius'          => '',
-	'borderBottomLeftRadius'        => '',
-	'borderBottomRightRadius'       => '',
-	'borderTopLeftRadiusTablet'     => '',
-	'borderTopRightRadiusTablet'    => '',
-	'borderBottomLeftRadiusTablet'  => '',
-	'borderBottomRightRadiusTablet' => '',
-	'borderTopLeftRadiusMobile'     => '',
-	'borderTopRightRadiusMobile'    => '',
-	'borderBottomLeftRadiusMobile'  => '',
-	'borderBottomRightRadiusMobile' => '',
-	'borderRadiusUnit'              => 'px',
-	'borderRadiusUnitTablet'        => 'px',
-	'borderRadiusUnitMobile'        => 'px',
-	'borderStyle'                   => 'none',
-	'borderColor'                   => '',
-	'borderHColor'                  => '',
+
 	'buttonBgColor'                 => '#9d9d9d',
 	'buttonBgHoverColor'            => '',
 	'buttonIconColor'               => '',
@@ -105,4 +77,4 @@ return array(
 	'buttonWidthType'               => 'px',
 	'inputFontStyle'                => '',
 	'buttonFontStyle'               => '',
-);
+), $borderAttribute);
