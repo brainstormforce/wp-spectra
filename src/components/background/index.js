@@ -94,9 +94,8 @@ const Background = ( props ) => {
 			),
 		},
 	];
-
 	if ( gradientOverlay.value ) {
-		bgOptions.push( {
+		overlayOptions.push( {
 			value: 'gradient',
 			label: __(
 				'Gradient',
