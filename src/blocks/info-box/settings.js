@@ -181,6 +181,8 @@ const Settings = ( props ) => {
 		imageWidthTablet,
 		imageWidthType,
 		imageWidthUnit,
+		imageWidthUnitTablet,
+		imageWidthUnitMobile,
 		stack,
 		showIcon,
 		showPrefix,
@@ -1096,24 +1098,31 @@ const Settings = ( props ) => {
 													desktop: {
 														value: imageWidth,
 														label: 'imageWidth',
+														unit: {
+															value: imageWidthUnit,
+															label: 'imageWidthUnit',
+														},
 													},
 													tablet: {
 														value: imageWidthTablet,
-														label:
-															'imageWidthTablet',
+														label: 'imageWidthTablet',
+														unit: {
+															value: imageWidthUnitTablet,
+															label: 'imageWidthUnitTablet',
+														},
+														
 													},
 													mobile: {
 														value: imageWidthMobile,
-														label:
-															'imageWidthMobile',
+														label: 'imageWidthMobile',
+														unit: {
+															value: imageWidthUnitMobile,
+															label: 'imageWidthUnitMobile',
+														},
 													},
 												} }
 												min={ 0 }
-												max={ 500 }
-												unit={ {
-													value: imageWidthUnit,
-													label: 'imageWidthUnit',
-												} }
+												limitMax={ { 'px': 500, '%': 100, 'em': 100 } } // eslint-disable-line quote-props
 												units={ [
 													{
 														name: __(
@@ -1129,13 +1138,20 @@ const Settings = ( props ) => {
 														),
 														unitValue: '%',
 													},
+													{
+														name: __(
+															'EM',
+															'ultimate-addons-for-gutenberg'
+														),
+														unitValue: 'em',
+													},
 												] }
 												setAttributes={ setAttributes }
 											/>
 										) }
 										<Range
 											label={ __(
-												'Rounded Corners',
+												'Border Radius',
 												'ultimate-addons-for-gutenberg'
 											) }
 											setAttributes={ setAttributes }
@@ -1174,7 +1190,7 @@ const Settings = ( props ) => {
 							<SpacingControl
 								{ ...props }
 								label={ __(
-									'Margin',
+									'Padding',
 									'ultimate-addons-for-gutenberg'
 								) }
 								valueTop={ {
