@@ -72,7 +72,6 @@ const ResponsiveBorder = ( props ) => {
 
 
 	const borderStyle = attributes[prefix + 'BorderStyle'];
-	const borderColor = attributes[prefix + 'BorderColor'];
 
 
 	const tabOutputNormal = (
