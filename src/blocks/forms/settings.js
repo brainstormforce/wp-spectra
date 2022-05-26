@@ -202,6 +202,9 @@ const Settings = ( props ) => {
 		labelGapTablet,
 		labelGapMobile,
 		labelGapUnit,
+
+		displayLabels,
+
 	} = attributes;
 
 	const presetSettings = () => {
@@ -223,6 +226,16 @@ const Settings = ( props ) => {
 				initialOpen={ false }
 				className="uagb__url-panel-body"
 			>
+				<ToggleControl
+					label={ __(
+						'Display Labels?',
+						'ultimate-addons-for-gutenberg'
+					) }
+					checked={ displayLabels }
+					onChange={ () =>
+						setAttributes( { displayLabels : ! displayLabels } )
+					}
+				/>
 				<TextControl
 					label={ __(
 						'Hidden Field Label',
