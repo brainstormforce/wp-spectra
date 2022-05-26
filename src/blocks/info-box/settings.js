@@ -272,6 +272,9 @@ const Settings = ( props ) => {
 		subHeadLetterSpacingTablet,
 		subHeadLetterSpacingMobile,
 		subHeadLetterSpacingType,
+
+		iconView,
+		iconShape
 	} = attributes;
 
 	/*
@@ -1006,6 +1009,69 @@ const Settings = ( props ) => {
 						<>
 							{ source_type === 'icon' && (
 								<>
+									<SelectControl
+										label={ __(
+											'View',
+											'ultimate-addons-for-gutenberg'
+										) }
+										value={ iconView }
+										onChange={ ( value ) =>
+											setAttributes( { iconView: value } )
+										}
+										options={ [
+											{
+												value: 'none',
+												label: __(
+													'Default',
+													'ultimate-addons-for-gutenberg'
+												),
+											},
+											{
+												value: 'Stacked',
+												label: __(
+													'Stacked',
+													'ultimate-addons-for-gutenberg'
+												),
+											},
+											{
+												value: 'Framed',
+												label: __(
+													'Framed',
+													'ultimate-addons-for-gutenberg'
+												),
+											},
+										] }
+									/>
+									{ iconView !== 'none' &&
+									<>
+										<SelectControl
+											label={ __(
+												'Shape',
+												'ultimate-addons-for-gutenberg'
+											) }
+											value={ iconShape }
+											onChange={ ( value ) =>
+												setAttributes( { iconShape: value } )
+											}
+											options={ [
+												{
+													value: 'Circle',
+													label: __(
+														'Circle',
+														'ultimate-addons-for-gutenberg'
+													),
+												},
+												{
+													value: 'Square',
+													label: __(
+														'Square',
+														'ultimate-addons-for-gutenberg'
+													),
+												},
+											] }
+										/>
+									</> }
+
 									<UAGTabsControl
 										tabs={ [
 											{

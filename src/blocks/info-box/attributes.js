@@ -1378,7 +1378,16 @@ const attributes = {
 	isPreview: {
 		type: 'boolean',
 		default: false,
-	}
+	},
+	//
+	iconView: {
+		type: 'string',
+		default: 'none',
+	},
+	iconShape: {
+		type: 'string',
+		default: 'Circle',
+	},
 };
 
 export default attributes;
