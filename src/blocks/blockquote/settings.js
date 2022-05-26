@@ -109,8 +109,6 @@ const Settings = ( props ) => {
 		tweetBtnLoadGoogleFonts,
 		tweetIconSpacing,
 		tweetIconSpacingUnit,
-		tweetGap,
-		tweetGapUnit,
 		iconView,
 		iconSkin,
 		iconLabel,
@@ -277,120 +275,6 @@ const Settings = ( props ) => {
 				backgroundImage={ authorImage }
 				onRemoveImage={ onRemoveImage }
 			/>
-			{ authorImage &&
-				authorImage.url !== 'null' &&
-				authorImage.url !== '' && (
-					<>
-						<MultiButtonsControl
-							setAttributes={ setAttributes }
-							label={ __(
-								'Author Image Position',
-								'ultimate-addons-for-gutenberg'
-							) }
-							data={ {
-								value: authorImgPosition,
-								label: 'authorImgPosition',
-							} }
-							className="uagb-multi-button-alignment-control"
-							options={ [
-								{
-									value: 'left',
-									label: 'Left',
-								},
-								{
-									value: 'top',
-									label: 'Top',
-								},
-								{
-									value: 'right',
-									label: 'Right',
-								},
-							] }
-							showIcons={ false }
-						/>
-						<SelectControl
-							label={ __(
-								'Author Image Size',
-								'ultimate-addons-for-gutenberg'
-							) }
-							options={ imageSizeOptions }
-							value={ authorImageSize }
-							onChange={ ( value ) =>
-								setAttributes( { authorImageSize: value } )
-							}
-						/>
-						<ResponsiveSlider
-							label={ __(
-								'Author Image Width',
-								'ultimate-addons-for-gutenberg'
-							) }
-							data={ {
-								desktop: {
-									value: authorImageWidth,
-									label: 'authorImageWidth',
-								},
-								tablet: {
-									value: authorImageWidthTablet,
-									label: 'authorImageWidthTablet',
-								},
-								mobile: {
-									value: authorImageWidthMobile,
-									label: 'authorImageWidthMobile',
-								},
-							} }
-							min={ 0 }
-							max={ 500 }
-							unit={ {
-								value: authorImageWidthUnit,
-								label: 'authorImageWidthUnit',
-							} }
-							setAttributes={ setAttributes }
-						/>
-						<ResponsiveSlider
-							label={ __(
-								'Author Image Rounded Corners',
-								'ultimate-addons-for-gutenberg'
-							) }
-							data={ {
-								desktop: {
-									value: authorImgBorderRadius,
-									label: 'authorImgBorderRadius',
-								},
-								tablet: {
-									value: authorImgBorderRadiusTablet,
-									label: 'authorImgBorderRadiusTablet',
-								},
-								mobile: {
-									value: authorImgBorderRadiusMobile,
-									label: 'authorImgBorderRadiusMobile',
-								},
-							} }
-							min={ 0 }
-							max={ 50 }
-							unit={ {
-								value: authorImgBorderRadiusUnit,
-								label: 'authorImgBorderRadiusUnit',
-							} }
-							units={ [
-								{
-									name: __(
-										'Pixel',
-										'ultimate-addons-for-gutenberg'
-									),
-									unitValue: 'px',
-								},
-								{
-									name: __(
-										'%',
-										'ultimate-addons-for-gutenberg'
-									),
-									unitValue: '%',
-								},
-							] }
-							setAttributes={ setAttributes }
-						/>
-					</>
-				) }
 		</>
 	);
 
@@ -749,6 +633,120 @@ const Settings = ( props ) => {
 					/>
 				</>
 			)}
+			{ authorImage &&
+				authorImage.url !== 'null' &&
+				authorImage.url !== '' && (
+					<>
+						<MultiButtonsControl
+							setAttributes={ setAttributes }
+							label={ __(
+								'Author Image Position',
+								'ultimate-addons-for-gutenberg'
+							) }
+							data={ {
+								value: authorImgPosition,
+								label: 'authorImgPosition',
+							} }
+							className="uagb-multi-button-alignment-control"
+							options={ [
+								{
+									value: 'left',
+									label: 'Left',
+								},
+								{
+									value: 'top',
+									label: 'Top',
+								},
+								{
+									value: 'right',
+									label: 'Right',
+								},
+							] }
+							showIcons={ false }
+						/>
+						<SelectControl
+							label={ __(
+								'Author Image Size',
+								'ultimate-addons-for-gutenberg'
+							) }
+							options={ imageSizeOptions }
+							value={ authorImageSize }
+							onChange={ ( value ) =>
+								setAttributes( { authorImageSize: value } )
+							}
+						/>
+						<ResponsiveSlider
+							label={ __(
+								'Author Image Width',
+								'ultimate-addons-for-gutenberg'
+							) }
+							data={ {
+								desktop: {
+									value: authorImageWidth,
+									label: 'authorImageWidth',
+								},
+								tablet: {
+									value: authorImageWidthTablet,
+									label: 'authorImageWidthTablet',
+								},
+								mobile: {
+									value: authorImageWidthMobile,
+									label: 'authorImageWidthMobile',
+								},
+							} }
+							min={ 0 }
+							max={ 500 }
+							unit={ {
+								value: authorImageWidthUnit,
+								label: 'authorImageWidthUnit',
+							} }
+							setAttributes={ setAttributes }
+						/>
+						<ResponsiveSlider
+							label={ __(
+								'Image Border Radius',
+								'ultimate-addons-for-gutenberg'
+							) }
+							data={ {
+								desktop: {
+									value: authorImgBorderRadius,
+									label: 'authorImgBorderRadius',
+								},
+								tablet: {
+									value: authorImgBorderRadiusTablet,
+									label: 'authorImgBorderRadiusTablet',
+								},
+								mobile: {
+									value: authorImgBorderRadiusMobile,
+									label: 'authorImgBorderRadiusMobile',
+								},
+							} }
+							min={ 0 }
+							max={ 50 }
+							unit={ {
+								value: authorImgBorderRadiusUnit,
+								label: 'authorImgBorderRadiusUnit',
+							} }
+							units={ [
+								{
+									name: __(
+										'Pixel',
+										'ultimate-addons-for-gutenberg'
+									),
+									unitValue: 'px',
+								},
+								{
+									name: __(
+										'%',
+										'ultimate-addons-for-gutenberg'
+									),
+									unitValue: '%',
+								},
+							] }
+							setAttributes={ setAttributes }
+						/>
+					</>
+			) }
 		</UAGAdvancedPanelBody>
 	);
 
@@ -910,7 +908,7 @@ const Settings = ( props ) => {
 	const spacingSettings = (
 		<UAGAdvancedPanelBody
 			title={ __( 'Spacing', 'ultimate-addons-for-gutenberg' ) }
-			initialOpen={ false }
+			initialOpen={ true }
 		>
 			{ authorImage && (
 				<ResponsiveSlider
@@ -1133,26 +1131,6 @@ const Settings = ( props ) => {
 						setAttributes={ setAttributes }
 					/>
 				</>
-			) }
-
-			{ ( enableTweet ) && (
-				<Range
-					label={ __(
-						'Stacked Twitter Gap',
-						'ultimate-addons-for-gutenberg'
-					) }
-					setAttributes={ setAttributes }
-					value={ tweetGap }
-					onChange={ ( value ) =>
-						setAttributes( { tweetGap: value } )
-					}
-					min={ 0 }
-					max={ 100 }
-					unit={ {
-						value: tweetGapUnit,
-						label: 'tweetGapUnit',
-					} }
-				/>
 			) }
 		</UAGAdvancedPanelBody>
 	);
@@ -1706,12 +1684,13 @@ const Settings = ( props ) => {
 						{ enableTweet && iconStyleSetting() }
 						{ quoteStyling }
 						{ authorStyling }
-						{ spacingSettings }
 					</InspectorTab>
 					<InspectorTab
 						{ ...UAGTabs.advance }
 						parentProps={ props }
-					></InspectorTab>
+					>
+						{ spacingSettings }
+					</InspectorTab>
 				</InspectorTabs>
 			</InspectorControls>
 			{ loadDescGoogleFonts }

@@ -99,6 +99,7 @@ return array(
 	'contentPaddingUnit'         => 'px',
 	'contentMobilePaddingUnit'   => 'px',
 	'contentTabletPaddingUnit'   => 'px',
+	'imgPaddingBottom'           => '10',
 	'imgPaddingTopTablet'        => '',
 	'imgPaddingRightTablet'      => '',
 	'imgPaddingBottomTablet'     => '',

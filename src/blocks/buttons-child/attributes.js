@@ -188,7 +188,6 @@ const attributes = {
 	},
 	borderRadius: {
 		type: 'number',
-		default: '',
 		UAGCopyPaste: {
 			styleType: 'btn-border-radius'
 		}
@@ -509,7 +508,7 @@ const attributes = {
 		}
 	},
 	removeText:{
-		type:'string',
+		type:'boolean',
 		default: false
 	},
 };

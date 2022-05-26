@@ -6,6 +6,14 @@ const attributes = {
 		type: 'string',
 		default: 'inline',
 	},
+	layoutTablet: {
+		type: 'string',
+		default: 'inline',
+	},
+	layoutMobile: {
+		type: 'string',
+		default: 'stack',
+	},
 	rating: {
 		type: 'number',
 		default: 4,
