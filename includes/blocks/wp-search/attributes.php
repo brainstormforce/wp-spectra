@@ -7,7 +7,11 @@
  * @package uagb
  */
 
-$borderAttribute = UAGB_Block_Helper::uag_generate_border_attribute( 'input' );
+$inputBorderDefaults   = array(
+	'borderRadius' => 3,
+);
+
+$inputBorderAttributes = UAGB_Block_Helper::uag_generate_border_attribute( 'input', $inputBorderDefaults );
 
 return array_merge(
 	array(
@@ -78,5 +82,5 @@ return array_merge(
 		'inputFontStyle'          => '',
 		'buttonFontStyle'         => '',
 	),
-	$borderAttribute
+	$inputBorderAttributes,
 );

@@ -2,9 +2,13 @@
  * BLOCK: WP Search Block Attributes
  */
 
-import {getBorderAttributes} from '@Controls/generateAttributes';
+import { getBorderAttributes } from '@Controls/generateAttributes';
 
-const inputBorderAttributes = getBorderAttributes( 'input' )
+const inputBorderDefaults = {
+	borderRadius: 3,
+};
+
+const inputBorderAttributes = getBorderAttributes( 'input', inputBorderDefaults );
 
 const attributes = {
 	block_id: {
@@ -27,14 +31,12 @@ const attributes = {
 	},
 	borderStyle: {
 		type: 'string',
-		default: 'none',
 	},
 	borderWidth: {
 		type: 'number',
 	},
 	borderRadius: {
 		type: 'number',
-		default: 3,
 	},
 	borderColor: {
 		type: 'string',
