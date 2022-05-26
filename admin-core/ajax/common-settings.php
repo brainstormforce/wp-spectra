@@ -64,6 +64,7 @@ class Common_Settings extends Ajax_Base {
 			'preload_local_fonts',
 			'collapse_panels',
 			'copy_paste',
+			'content_width',
 			'blocks_editor_spacing',
 			'recaptcha_site_key_v2',
 			'recaptcha_secret_key_v2',
