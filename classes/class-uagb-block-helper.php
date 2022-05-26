@@ -49,13 +49,13 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 
 			if ( 'transparent' === $attr['backgroundType'] ) {
 
-				$selectors[' .uagb-button__wrapper .uagb-buttons-repeater.wp-block-button__link']['background'] = 'transparent';
+				$selectors[' .wp-block-button__link']['background'] = 'transparent';
 
 			} elseif ( 'color' === $attr['backgroundType'] ) {
 
-				$selectors[' .uagb-button__wrapper .uagb-buttons-repeater.wp-block-button__link']['background'] = $attr['background'];
+				$selectors[' .wp-block-button__link']['background'] = $attr['background'];
 
-				$selectors[' .uagb-button__wrapper .uagb-buttons-repeater.wp-block-button__link:hover'] = array(
+				$selectors[' .wp-block-button__link:hover'] = array(
 					'background' => $attr['hBackground'],
 				);
 
@@ -65,16 +65,17 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					'gradientValue'  => $attr['gradientValue'],
 				);
 
-				$btn_bg_css = self::uag_get_background_obj( $bg_obj );
-				$selectors[' .uagb-button__wrapper .uagb-buttons-repeater'] = $btn_bg_css;
+				$btn_bg_css                           = self::uag_get_background_obj( $bg_obj );
+				$selectors[' .wp-block-button__link'] = $btn_bg_css;
 			}
 
-			$selectors[ $wrapper . '.wp-block-button__link' ]       = array(
+			$selectors[' .uagb-button__wrapper .uagb-buttons-repeater.wp-block-button__link'] = array(
 				'font-family'     => $attr['fontFamily'],
 				'font-weight'     => $attr['fontWeight'],
 				'font-style'      => $attr['fontStyle'],
 				'text-transform'  => $attr['transform'],
 				'text-decoration' => $attr['decoration'],
+				'border-radius'   => UAGB_Helper::get_css_value( $attr['borderRadius'], 'px' ),
 				'font-size'       => UAGB_Helper::get_css_value( $attr['size'], $attr['sizeType'] ),
 				'line-height'     => UAGB_Helper::get_css_value( $attr['lineHeight'], $attr['lineHeightType'] ),
 				'padding-top'     => UAGB_Helper::get_css_value( $top_padding, $attr['paddingUnit'] ),
@@ -87,7 +88,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				'margin-left'     => UAGB_Helper::get_css_value( $attr['leftMargin'], $attr['marginType'] ),
 				'margin-right'    => UAGB_Helper::get_css_value( $attr['rightMargin'], $attr['marginType'] ),
 			);
-			$selectors[ $wrapper . '.wp-block-button__link:hover' ] = array(
+			$selectors[ $wrapper . '.wp-block-button__link:hover' ]                           = array(
 				'color' => $attr['hColor'],
 			);
 			if ( 0 !== $attr['boxShadowHOffset'] || 0 !== $attr['boxShadowVOffset'] ) {
@@ -108,16 +109,15 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 			}
 			if ( 'none' !== $attr['borderStyle'] ) {
 				$selectors[ $wrapper ]            = array(
-					'border-width'  => UAGB_Helper::get_css_value( $attr['borderWidth'], 'px' ),
-					'border-color'  => $attr['borderColor'],
-					'border-style'  => $attr['borderStyle'],
-					'border-radius' => UAGB_Helper::get_css_value( $attr['borderRadius'], 'px' ),
+					'border-width' => UAGB_Helper::get_css_value( $attr['borderWidth'], 'px' ),
+					'border-color' => $attr['borderColor'],
+					'border-style' => $attr['borderStyle'],
 				);
 				$selectors[ $wrapper . ':hover' ] = array(
 					'border-color' => $attr['borderHColor'],
 				);
 			}
-			$selectors[ $wrapper . ' .uagb-button__link' ]      = array(
+			$selectors[ $wrapper . ' .uagb-button__link' ]                                  = array(
 				'font-family'     => $attr['fontFamily'],
 				'font-weight'     => $attr['fontWeight'],
 				'font-style'      => $attr['fontStyle'],
@@ -126,15 +126,15 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				'font-size'       => UAGB_Helper::get_css_value( $attr['size'], $attr['sizeType'] ),
 				'line-height'     => UAGB_Helper::get_css_value( $attr['lineHeight'], $attr['lineHeightType'] ),
 			);
-			$m_selectors[ $wrapper . ' .uagb-button__link' ]    = array(
+			$m_selectors[ $wrapper . ' .uagb-button__link' ]                                = array(
 				'font-size'   => UAGB_Helper::get_css_value( $attr['sizeMobile'], $attr['sizeType'] ),
 				'line-height' => UAGB_Helper::get_css_value( $attr['lineHeightMobile'], $attr['lineHeightType'] ),
 			);
-			$t_selectors[ $wrapper . ' .uagb-button__link' ]    = array(
+			$t_selectors[ $wrapper . ' .uagb-button__link' ]                                = array(
 				'font-size'   => UAGB_Helper::get_css_value( $attr['sizeTablet'], $attr['sizeType'] ),
 				'line-height' => UAGB_Helper::get_css_value( $attr['lineHeightTablet'], $attr['lineHeightType'] ),
 			);
-			$m_selectors[ $wrapper . '.wp-block-button__link' ] = array(
+			$m_selectors[ ' .uagb-button__wrapper ' . $wrapper . '.wp-block-button__link' ] = array(
 				'padding-top'    => UAGB_Helper::get_css_value( $attr['topMobilePadding'], $attr['mobilePaddingUnit'] ),
 				'padding-bottom' => UAGB_Helper::get_css_value( $attr['bottomMobilePadding'], $attr['mobilePaddingUnit'] ),
 				'padding-left'   => UAGB_Helper::get_css_value( $attr['leftMobilePadding'], $attr['mobilePaddingUnit'] ),
@@ -146,7 +146,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 
 			);
 
-			$t_selectors[ $wrapper . '.wp-block-button__link' ] = array(
+			$t_selectors[ ' .uagb-button__wrapper ' . $wrapper . '.wp-block-button__link' ] = array(
 				'padding-top'    => UAGB_Helper::get_css_value( $attr['topTabletPadding'], $attr['tabletPaddingUnit'] ),
 				'padding-bottom' => UAGB_Helper::get_css_value( $attr['bottomTabletPadding'], $attr['tabletPaddingUnit'] ),
 				'padding-left'   => UAGB_Helper::get_css_value( $attr['leftTabletPadding'], $attr['tabletPaddingUnit'] ),
@@ -302,26 +302,27 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 
 			$selectors = array(
 				'.uagb-post__items'                        => array(
-					'margin-right' => UAGB_Helper::get_css_value( ( -$attr['rowGap'] / 2 ), $attr['rowGapUnit'] ),
-					'margin-left'  => UAGB_Helper::get_css_value( ( -$attr['rowGap'] / 2 ), $attr['rowGapUnit'] ),
+					'margin-right' => UAGB_Helper::get_css_value( (int) ( -$attr['rowGap'] / 2 ), $attr['rowGapUnit'] ),
+					'margin-left'  => UAGB_Helper::get_css_value( (int) ( -$attr['rowGap'] / 2 ), $attr['rowGapUnit'] ),
 				),
 				'.uagb-post__items article'                => array(
-					'padding-right' => UAGB_Helper::get_css_value( ( $attr['rowGap'] / 2 ), $attr['rowGapUnit'] ),
-					'padding-left'  => UAGB_Helper::get_css_value( ( $attr['rowGap'] / 2 ), $attr['rowGapUnit'] ),
+					'padding-right' => UAGB_Helper::get_css_value( (int) ( $attr['rowGap'] / 2 ), $attr['rowGapUnit'] ),
+					'padding-left'  => UAGB_Helper::get_css_value( (int) ( $attr['rowGap'] / 2 ), $attr['rowGapUnit'] ),
 					'margin-bottom' => UAGB_Helper::get_css_value( ( $attr['columnGap'] ), $attr['columnGapUnit'] ),
 				),
 				' .uagb-post__inner-wrap'                  => array(
 					'background' => $attr['bgColor'],
 					'text-align' => $attr['align'],
 				),
-				' .uagb-post__inner-wrap .uagb-post__text' => array(
+				' .uagb-post__inner-wrap .uagb-post__text:not(.highlighted)' => array(
 					'margin-left'  => UAGB_Helper::get_css_value( $paddingLeft, $attr['contentPaddingUnit'] ),
 					'margin-right' => UAGB_Helper::get_css_value( $paddingRight, $attr['contentPaddingUnit'] ),
 				),
-				' .uagb-post__inner-wrap .uagb-post__text:first-child' => array(
-					'margin-top' => UAGB_Helper::get_css_value( $paddingTop, $attr['contentPaddingUnit'] ),
+				' .uagb-post__inner-wrap .uagb-post__text:first-child.highlighted:first-child' => array(
+					'margin-top'  => UAGB_Helper::get_css_value( $paddingTop, $attr['contentPaddingUnit'] ),
+					'margin-left' => UAGB_Helper::get_css_value( $paddingLeft, $attr['contentPaddingUnit'] ),
 				),
-				' .uagb-post__inner-wrap .uagb-post__text.uagb-post__title' => array(
+				' .uagb-post__inner-wrap .uagb-post__text:first-child' => array(
 					'margin-top' => UAGB_Helper::get_css_value( $paddingTop, $attr['contentPaddingUnit'] ),
 				),
 				' .uagb-post__inner-wrap .uagb-post__text.uagb-post__cta:last-child' => array(
@@ -344,7 +345,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				),
 				' .uagb-post__image:before'                => array(
 					'background-color' => $attr['bgOverlayColor'],
-					'opacity'          => ( $attr['overlayOpacity'] / 100 ),
+					'opacity'          => ( (int) $attr['overlayOpacity'] / 100 ),
 				),
 			);
 
@@ -424,12 +425,12 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 
 			$m_selector = array(
 				'.uagb-post__items'         => array(
-					'margin-right' => UAGB_Helper::get_css_value( ( -$rowGapMobile / 2 ), $attr['rowGapUnit'] ),
-					'margin-left'  => UAGB_Helper::get_css_value( ( -$rowGapMobile / 2 ), $attr['rowGapUnit'] ),
+					'margin-right' => UAGB_Helper::get_css_value( ( - (int) $rowGapMobile / 2 ), $attr['rowGapUnit'] ),
+					'margin-left'  => UAGB_Helper::get_css_value( ( - (int) $rowGapMobile / 2 ), $attr['rowGapUnit'] ),
 				),
 				'.uagb-post__items article' => array(
-					'padding-right' => UAGB_Helper::get_css_value( ( $rowGapMobile / 2 ), $attr['rowGapUnit'] ),
-					'padding-left'  => UAGB_Helper::get_css_value( ( $rowGapMobile / 2 ), $attr['rowGapUnit'] ),
+					'padding-right' => UAGB_Helper::get_css_value( ( (int) $rowGapMobile / 2 ), $attr['rowGapUnit'] ),
+					'padding-left'  => UAGB_Helper::get_css_value( ( (int) $rowGapMobile / 2 ), $attr['rowGapUnit'] ),
 					'margin-bottom' => UAGB_Helper::get_css_value( ( $columnGapMobile ), $attr['columnGapUnit'] ),
 				),
 				' .uagb-post__inner-wrap .uagb-post__text.uagb-post__cta:last-child' => array(
@@ -488,12 +489,12 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 
 			$t_selector = array(
 				'.uagb-post__items'         => array(
-					'margin-right' => UAGB_Helper::get_css_value( ( -$rowGapTablet / 2 ), $attr['rowGapUnit'] ),
-					'margin-left'  => UAGB_Helper::get_css_value( ( -$rowGapTablet / 2 ), $attr['rowGapUnit'] ),
+					'margin-right' => UAGB_Helper::get_css_value( ( - (int) $rowGapTablet / 2 ), $attr['rowGapUnit'] ),
+					'margin-left'  => UAGB_Helper::get_css_value( ( - (int) $rowGapTablet / 2 ), $attr['rowGapUnit'] ),
 				),
 				'.uagb-post__items article' => array(
-					'padding-right' => UAGB_Helper::get_css_value( ( $rowGapTablet / 2 ), $attr['rowGapUnit'] ),
-					'padding-left'  => UAGB_Helper::get_css_value( ( $rowGapTablet / 2 ), $attr['rowGapUnit'] ),
+					'padding-right' => UAGB_Helper::get_css_value( ( (int) $rowGapTablet / 2 ), $attr['rowGapUnit'] ),
+					'padding-left'  => UAGB_Helper::get_css_value( ( (int) $rowGapTablet / 2 ), $attr['rowGapUnit'] ),
 					'margin-bottom' => UAGB_Helper::get_css_value( ( $columnGapTablet ), $attr['columnGapUnit'] ),
 				),
 				' .uagb-post__inner-wrap .uagb-post__text.uagb-post__cta:last-child' => array(
@@ -609,9 +610,13 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				'.uagb-timeline__center-block .uagb-timeline__right .uagb-timeline__arrow' => array(
 					'height' => $connector_size,
 				),
-				'.uagb-timeline__center-block .uagb-timeline__marker' => array(
-					'margin-left'  => UAGB_Helper::get_css_value( $left_margin, $attr['marginUnit'] ),
+				'.uagb-timeline__center-block .uagb-timeline__left .uagb-timeline__marker' => array(
+					'margin-left'  => UAGB_Helper::get_css_value( $left_margin + 3, $attr['marginUnit'] ),
 					'margin-right' => UAGB_Helper::get_css_value( $right_margin, $attr['marginUnit'] ),
+				),
+				'.uagb-timeline__center-block .uagb-timeline__right .uagb-timeline__marker' => array(
+					'margin-left'  => UAGB_Helper::get_css_value( $left_margin, $attr['marginUnit'] ),
+					'margin-right' => UAGB_Helper::get_css_value( $right_margin + 3, $attr['marginUnit'] ),
 				),
 				'.uagb-timeline__field:not(:last-child)' => array(
 					'margin-bottom' => UAGB_Helper::get_css_value( $bottom_margin, $attr['marginUnit'] ),
@@ -1070,6 +1075,29 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 			}
 
 			return $gen_bg_css;
+		}
+
+		/**
+		 * Since title text is set to flex, we need this function so that stack alignment doesn't break.
+		 * It converts the normal text-align values to flex-alignment based values.
+		 *
+		 * @since x.x.x
+		 * @param string $text_align Alignment value from text-align property.
+		 */
+		public static function text_alignment_to_flex( $text_align ) {
+
+			switch ( $text_align ) {
+
+				case 'left':
+					return 'start';
+				case 'center':
+					return 'center';
+				case 'right':
+					return 'end';
+				default:
+					return 'start';
+			}
+
 		}
 	}
 }

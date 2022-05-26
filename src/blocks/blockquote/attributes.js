@@ -365,7 +365,7 @@ const attributes = {
 	},
 	enableTweet: {
 		type: 'boolean',
-		default: false,
+		default: true,
 	},
 	iconView: {
 		type: 'string',
@@ -527,20 +527,6 @@ const attributes = {
 		default: 'px',
 		UAGCopyPaste: {
 			styleType: 'tweet-icon-spacing-unit'
-		}
-	},
-	tweetGap: {
-		type: 'number',
-		default: 10,
-		UAGCopyPaste: {
-			styleType: 'tweet-gap'
-		}
-	},
-	tweetGapUnit: {
-		type: 'string',
-		default: 'px',
-		UAGCopyPaste: {
-			styleType: 'tweet-gap-unit'
 		}
 	},
 	borderColor: {

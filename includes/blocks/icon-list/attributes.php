@@ -58,7 +58,7 @@ return array(
 	'fontSizeType'       => 'px',
 	'fontSizeMobile'     => '',
 	'fontSizeTablet'     => '',
-	'lineHeight'         => '',
+	'lineHeight'         => '1.17',
 	'lineHeightType'     => 'em',
 	'lineHeightMobile'   => '',
 	'lineHeightTablet'   => '',
@@ -70,6 +70,6 @@ return array(
 	'fontStyle'          => '',
 	'fontTransform'      => '',
 	'fontDecoration'     => '',
-	'hideLabel'          => true,
+	'hideLabel'          => false,
 	'iconPosition'       => 'middle',
 );

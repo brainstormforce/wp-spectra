@@ -285,6 +285,7 @@ function RestMenuStyle( props ) {
 			),
 		},
 		' .uagb-rm__content': {
+			'text-align': headingAlign,
 			'padding-left': generateCSSUnit(
 				contentPaddingLeftTablet,
 				contentTabletPaddingUnit
@@ -387,6 +388,7 @@ function RestMenuStyle( props ) {
 			),
 		},
 		' .uagb-rm__content': {
+			'text-align': headingAlign,
 			'padding-left': generateCSSUnit(
 				contentPaddingLeftMobile,
 				contentMobilePaddingUnit

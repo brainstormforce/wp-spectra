@@ -124,13 +124,14 @@ function styling( props ) {
 			'color': color,
 		}
 	};
-
+	selectors[' .uagb-button__wrapper .wp-block-button__link.uagb-buttons-repeater'] = {
+		'border-radius': generateCSSUnit( borderRadius, 'px' ),
+	};
 	if( 'none' !== borderStyle ) {
 		selectors[' .wp-block-button__link.uagb-buttons-repeater'] = {
 			'border-width': generateCSSUnit( borderWidth, 'px' ),
 			'border-style': borderStyle,
 			'border-color': borderColor,
-			'border-radius': generateCSSUnit( borderRadius, 'px' ),
 		};
 		selectors[ ' .wp-block-button__link.uagb-buttons-repeater:hover' ] = {
 			'border-color': borderHColor,
@@ -248,10 +249,10 @@ function styling( props ) {
 		const btnBackground = generateBackgroundCSS( backgroundAttributes );
 		selectors[ '.uagb-buttons__outer-wrap .wp-block-button__link.uagb-buttons-repeater' ] = btnBackground;
 	} else {
-		selectors[ '.uagb-buttons__outer-wrap .wp-block-button__link.uagb-buttons-repeater' ] = {
+		selectors[ '.uagb-buttons__outer-wrap.wp-block-button .wp-block-button__link.uagb-buttons-repeater' ] = {
 			'background': background,
 		}
-		selectors[ '.uagb-buttons__outer-wrap .wp-block-button__link.uagb-buttons-repeater:hover' ] = {
+		selectors[ '.uagb-buttons__outer-wrap.wp-block-button .wp-block-button__link.uagb-buttons-repeater:hover' ] = {
 			'background': hBackground,
 		}
 	}

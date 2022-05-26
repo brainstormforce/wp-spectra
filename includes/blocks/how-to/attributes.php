@@ -79,4 +79,6 @@ return array(
 	'subHeadDecoration'       => '',
 	'priceTransform'          => '',
 	'priceDecoration'         => '',
+	'rowGapTablet'            => 0,
+	'rowGapMobile'            => 0,
 );

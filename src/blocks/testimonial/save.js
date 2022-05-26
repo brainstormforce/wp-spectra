@@ -16,14 +16,18 @@ export default function save( props ) {
 		columns,
 		test_block,
 		imagePosition,
+		equalHeight
 	} = props.attributes;
-
+	const equalHeightClass = equalHeight
+	? 'uagb-post__carousel_equal-height'
+	: '';
 	return (
 		<div
 			className={ classnames(
 				className,
 				'uagb-slick-carousel uagb-tm__arrow-outside',
-				`uagb-block-${ block_id }`
+				`uagb-block-${ block_id }`,
+				`${ equalHeightClass }`,
 			) }
 		>
 			<div

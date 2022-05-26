@@ -6,6 +6,14 @@ const attributes = {
 		type: 'string',
 		default: 'inline',
 	},
+	layoutTablet: {
+		type: 'string',
+		default: 'inline',
+	},
+	layoutMobile: {
+		type: 'string',
+		default: 'stack',
+	},
 	rating: {
 		type: 'number',
 		default: 4,
@@ -26,14 +34,14 @@ const attributes = {
 		UAGCopyPaste: {
 			styleType: 'icon-size'
 		},
-		default: 0,
+		default: 18,
 	},
 	sizeMobile: {
 		type: 'number',
 		UAGCopyPaste: {
 			styleType: 'icon-size'
 		},
-		default: 0,
+		default: 18,
 	},
 	gap: {
 		type: 'number',
@@ -199,7 +207,11 @@ const attributes = {
 	isPreview: {
 		type: 'boolean',
 		default: false,
-	}
+	},
+	displayTitle: {
+		type: 'boolean',
+		default: true,
+	},
 };
 
 export default attributes;

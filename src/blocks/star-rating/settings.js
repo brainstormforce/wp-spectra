@@ -4,7 +4,7 @@ import TypographyControl from '@Components/typography';
 import WebfontLoader from '@Components/typography/fontloader';
 import { __ } from '@wordpress/i18n';
 import { InspectorControls } from '@wordpress/block-editor';
-import { Icon } from '@wordpress/components';
+import { Icon, ToggleControl } from '@wordpress/components';
 import InspectorTabs from '@Components/inspector-tabs/InspectorTabs.js';
 import InspectorTab, {
 	UAGTabs,
@@ -29,6 +29,8 @@ const Settings = ( props ) => {
 			rating,
 			range,
 			layout,
+			layoutTablet,
+			layoutMobile,
 			align,
 			size,
 			sizeTablet,
@@ -57,6 +59,7 @@ const Settings = ( props ) => {
 			fontStyle,
 			fontTransform,
 			fontDecoration,
+			displayTitle,
 		},
 	} = props;
 
@@ -146,7 +149,14 @@ const Settings = ( props ) => {
 	}
 
 	const generalSettings = (
-		<UAGAdvancedPanelBody title={ __( 'General', 'ultimate-addons-for-gutenberg' ) }>
+		<UAGAdvancedPanelBody>
+			<ToggleControl
+				label={ __( 'Enable Title', 'ultimate-addons-for-gutenberg' ) }
+				checked={ displayTitle }
+				onChange={ () =>
+					setAttributes( { displayTitle: ! displayTitle } )
+				}
+			/>
 			<MultiButtonsControl
 				setAttributes={ setAttributes }
 				label={ __( 'Range', 'ultimate-addons-for-gutenberg' ) }
@@ -175,24 +185,39 @@ const Settings = ( props ) => {
 				step={ 0.1 }
 				displayUnit={ false }
 			/>
-			<MultiButtonsControl
-				setAttributes={ setAttributes }
-				label={ __( 'Layout', 'ultimate-addons-for-gutenberg' ) }
-				data={ {
-					value: layout,
-					label: 'layout',
-				} }
-				options={ [
-					{
-						value: 'inline',
-						label: __( 'Inline', 'ultimate-addons-for-gutenberg' ),
-					},
-					{
-						value: 'stack',
-						label: __( 'Stack', 'ultimate-addons-for-gutenberg' ),
-					},
-				] }
-			/>
+			{ ( displayTitle ) && (
+
+				<MultiButtonsControl
+					setAttributes={ setAttributes }
+					label={ __( 'Layout', 'ultimate-addons-for-gutenberg' ) }
+					data={ {
+						desktop: {
+							value: layout,
+							label: 'layout',
+						},
+						tablet: {
+							value: layoutTablet,
+							label: 'layoutTablet',
+						},
+						mobile: {
+							value: layoutMobile,
+							label: 'layoutMobile',
+						},
+					} }
+					options={ [
+						{
+							value: 'inline',
+							label: __( 'Inline', 'ultimate-addons-for-gutenberg' ),
+						},
+						{
+							value: 'stack',
+							label: __( 'Stack', 'ultimate-addons-for-gutenberg' ),
+						},
+					] }
+					responsive={true}
+				/>
+
+			) }
 			<MultiButtonsControl
 				setAttributes={ setAttributes }
 				label={ __( 'Alignment', 'ultimate-addons-for-gutenberg' ) }
@@ -265,7 +290,7 @@ const Settings = ( props ) => {
 			/>
 			<ResponsiveSlider
 				label={ __(
-					'Gap',
+					'Gap Between Title And Stars',
 					'ultimate-addons-for-gutenberg'
 				) }
 				data={ {
@@ -335,7 +360,7 @@ const Settings = ( props ) => {
 			/>
 			<ResponsiveSlider
 				label={ __(
-					'Gap',
+					'Gap Between Stars',
 					'ultimate-addons-for-gutenberg'
 				) }
 				data={ {
@@ -368,7 +393,7 @@ const Settings = ( props ) => {
 					</InspectorTab>
 					<InspectorTab { ...UAGTabs.style }>
 						{ starStyling }
-						{ '' !== title && titleStyling }
+						{ ( displayTitle && '' !== title ) && titleStyling }
 					</InspectorTab>
 					<InspectorTab
 						{ ...UAGTabs.advance }

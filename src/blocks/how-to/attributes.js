@@ -481,14 +481,14 @@ const attributes = {
 		type: 'number',
 		default: 0,
 		UAGCopyPaste: {
-			styleType: 'row-gap'
+			styleType: 'row-gap-tablet'
 		},
 	},
 	rowGapMobile: {
 		type: 'number',
 		default: 0,
 		UAGCopyPaste: {
-			styleType: 'row-gap'
+			styleType: 'row-gap-mobile'
 		},
 	},
 	step_gap: {

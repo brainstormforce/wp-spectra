@@ -21,15 +21,17 @@ const Render = ( props ) => {
 
 	const { attributes, setAttributes, isSelected } = props;
 
-	const { block_id, phoneRequired, phoneName, pattern, selectPhoneCode } = attributes;
+	const { block_id, phoneRequired, phoneName, pattern, selectPhoneCode, autocomplete } = attributes;
 
 	let phone_html = '';
 
 	let placeholder = '';
-	if ( pattern === '[0-9]{3}-[0-9]{2}-[0-9]{3}' ) {
+	if ( pattern === '[0-9]{3}-?[0-9]{2}-?[0-9]{3}' ) {
 		placeholder = __( '123-45-678', 'ultimate-addons-for-gutenberg' );
-	} else if ( pattern === '[0-9]{3}-[0-9]{3}-[0-9]{4}' ) {
-		placeholder = __( '123-456-6789', 'ultimate-addons-for-gutenberg' );
+	} else if ( pattern === '[0-9]{3}-?[0-9]{3}-?[0-9]{4}' ) {
+		placeholder = __( '123-456-7890', 'ultimate-addons-for-gutenberg' );
+	} else if ( pattern === '[0-9]{3}\s?[0-9]{3}\s?[0-9]{4}' ) {
+		placeholder = __( '123 456 7890', 'ultimate-addons-for-gutenberg' );
 	}
 
 	if ( pattern !== '' ) {
@@ -41,6 +43,7 @@ const Render = ( props ) => {
 				required={ phoneRequired }
 				className="uagb-forms-phone-input uagb-forms-input"
 				name={ block_id }
+				autoComplete={ autocomplete }
 			/>
 		);
 	} else {
@@ -50,6 +53,7 @@ const Render = ( props ) => {
 				required={ phoneRequired }
 				className="uagb-forms-phone-input uagb-forms-input"
 				name={ block_id }
+				autoComplete={ autocomplete }
 			/>
 		);
 	}
@@ -102,17 +106,19 @@ const Render = ( props ) => {
 					multiline={ false }
 					id={ block_id }
 				/>
-				<SelectControl
-					className= { 'uagb-forms-input uagb-form-phone-country uagb-form-phone-country-editor' }
-					options={ contryCode }
-					value={ selectPhoneCode }
-					onChange={ ( value ) =>
-						setAttributes( {
-							selectPhoneCode: value,
-						} )
-					}
-				/>
-				{ phone_html }
+				<div className="uagb-forms-phone-flex">
+					<SelectControl
+						className= { 'uagb-forms-input uagb-form-phone-country uagb-form-phone-country-editor' }
+						options={ contryCode }
+						value={ selectPhoneCode }
+						onChange={ ( value ) =>
+							setAttributes( {
+								selectPhoneCode: value,
+							} )
+						}
+					/>
+					{ phone_html }
+				</div>
 			</div>
 		</>
 	);

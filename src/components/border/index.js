@@ -25,8 +25,35 @@ const Border = ( props ) => {
 		borderRadius,
 		borderStyle,
 		borderHoverColor,
-		disabledBorderTitle
+		borderActiveColor,
+		disabledBorderTitle,
 	} = props;
+
+	const tabsToUse = [ {
+		name: 'normal',
+		title: __(
+			'Normal',
+			'ultimate-addons-for-gutenberg'
+		),
+	} ];
+	if ( borderHoverColor ){
+		tabsToUse.push( {
+			name: 'hover',
+			title: __(
+				'Hover',
+				'ultimate-addons-for-gutenberg'
+			),
+		} );
+	}
+	if ( borderActiveColor ){
+		tabsToUse.push(  {
+			name: 'active',
+			title: __(
+				'Active',
+				'ultimate-addons-for-gutenberg'
+			),
+		} );
+	}
 
 	const tabOutputNormal = (
 		<AdvancedPopColorControl
@@ -38,6 +65,7 @@ const Border = ( props ) => {
 		/>
 	);
 	const tabOutputHover = (
+		borderHoverColor ? (
 		<AdvancedPopColorControl
 			label={ borderHoverColor.title }
 			colorValue={ borderHoverColor.value }
@@ -45,6 +73,18 @@ const Border = ( props ) => {
 				setAttributes( { [ borderHoverColor.label ]: value } )
 			}
 		/>
+		) : ''
+	);
+	const tabOutputActive = (
+		borderActiveColor ? (
+			<AdvancedPopColorControl
+				label={ borderActiveColor.title }
+				colorValue={ borderActiveColor.value }
+				onColorChange={ ( value ) =>
+					setAttributes( { [ borderActiveColor.label ]: value } )
+				}
+			/>
+		) : ''
 	);
 	const advancedControls = (
 		<>
@@ -174,24 +214,10 @@ const Border = ( props ) => {
 			</div>
 			{ 'none' !== borderStyle.value && (
 				<UAGTabsControl
-					tabs={ [
-						{
-							name: 'normal',
-							title: __(
-								'Normal',
-								'ultimate-addons-for-gutenberg'
-							),
-						},
-						{
-							name: 'hover',
-							title: __(
-								'Hover',
-								'ultimate-addons-for-gutenberg'
-							),
-						},
-					] }
+					tabs={ tabsToUse }
 					normal={ tabOutputNormal }
 					hover={ tabOutputHover }
+					active={ tabOutputActive }
 					disableBottomSeparator={ props.disableBottomSeparator }
 				/>
 			) }

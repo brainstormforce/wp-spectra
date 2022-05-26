@@ -23,3 +23,10 @@
 .uagb-lottie__left {
 	margin-right: auto;
 }
+// CSS to resolve Edit URL Button overflows outside the container, When the Replace BlockControl is opened.
+.block-editor .block-editor__container {
+
+	.block-editor-media-flow__url-input .block-editor-link-control {
+		width: auto;
+	}
+}

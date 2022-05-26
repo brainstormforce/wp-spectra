@@ -18,6 +18,9 @@ import React, { useLayoutEffect } from 'react';
 export { TypographyStyles };
 
 const TypographyControl = ( props ) => {
+
+	const [ showAdvancedControls, toggleAdvancedControls ] = useState( false );
+
 	// Add and remove the CSS on the drop and remove of the component.
 	useLayoutEffect( () => {
 		styles.use();
@@ -28,20 +31,15 @@ const TypographyControl = ( props ) => {
 
 	useLayoutEffect( () => {
 		window.addEventListener( 'click', function( e ){
-			const typoDiv = document.querySelector( '.uag-typography-options' );
+			const typoDiv = document.querySelector( '.uagb-typography-advanced' );
+			const actionsDiv = document.querySelector( '.uag-typography-button' );
 			if ( typoDiv ) {
-				if ( ! typoDiv.contains( e.target ) ){
-					if( typoDiv.classList.contains( 'active' ) ) {
-						typoDiv.classList.remove( 'active' );
-						typoDiv.querySelector( '.uagb-typography-advanced' ).style.visibility = 'hidden';
-						typoDiv.querySelector( '.uagb-typography-advanced' ).style.position = 'absolute';
-					}
+				if ( ! typoDiv.contains( e.target ) && ! actionsDiv.contains( e.target ) && ! e.target?.parentElement?.parentElement?.classList?.contains( 'uag-font-family-select__menu' ) && ! e.target?.classList?.contains( 'uag-responsive-common-button' ) && ! e.target?.closest( '.uag-responsive-common-button' ) && ! e.target?.closest( '.uagb-range-control-responsive' ) ){
+					toggleAdvancedControls( false )
 				}
 			}
 		  } );
 	}, [] );
-
-	const [ showAdvancedControls, toggleAdvancedControls ] = useState( false );
 
 	let fontSize;
 	let fontWeight;
@@ -51,6 +49,7 @@ const TypographyControl = ( props ) => {
 	let showAdvancedFontControls;
 	let transform;
 	let decoration;
+	let letterSpacing;
 	const activeClass = showAdvancedControls ? 'active' : '';
 
 	const {
@@ -87,6 +86,35 @@ const TypographyControl = ( props ) => {
 				) }
 				sizeText={ __(
 					'Line Height',
+					'ultimate-addons-for-gutenberg'
+				) }
+				steps={ 0.1 }
+				{ ...props }
+			/>
+		);
+	}
+
+	if ( props.letterSpacing ) {
+		letterSpacing = (
+			<RangeTypographyControl
+				type={ props.letterSpacingType }
+				typeLabel={ props.letterSpacingType.label }
+				sizeMobile={ props.letterSpacingMobile }
+				sizeMobileLabel={ props.letterSpacingMobile.label }
+				sizeTablet={ props.letterSpacingTablet }
+				sizeTabletLabel={ props.letterSpacingTablet.label }
+				size={ props.letterSpacing }
+				sizeLabel={ props.letterSpacing.label }
+				sizeMobileText={ __(
+					'Letter Spacing',
+					'ultimate-addons-for-gutenberg'
+				) }
+				sizeTabletText={ __(
+					'Letter Spacing',
+					'ultimate-addons-for-gutenberg'
+				) }
+				sizeText={ __(
+					'Letter Spacing',
 					'ultimate-addons-for-gutenberg'
 				) }
 				steps={ 0.1 }
@@ -245,6 +273,7 @@ const TypographyControl = ( props ) => {
 				{ fontFamily }
 				{ fontSize }
 				{ fontWeight }
+				{letterSpacing}
 				<div className="uag-typography-transform-decoration-wrap">
 					{ transform }
 					{ decoration }
@@ -259,6 +288,7 @@ const TypographyControl = ( props ) => {
 				{ fontFamily }
 				{ fontSize }
 				{ fontWeight }
+				{letterSpacing}
 				<div className="uag-typography-transform-decoration-wrap">
 					{ transform }
 					{ decoration }

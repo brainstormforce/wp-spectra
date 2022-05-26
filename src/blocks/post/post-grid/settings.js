@@ -503,6 +503,9 @@ const Settings = ( props ) => {
 					min={ 0 }
 					max={ 50 }
 					displayUnit={ false }
+					help= {__(
+						'P.S. Note that We need to add Offset Starting Post to start post loading from specific post order.',
+						'ultimate-addons-for-gutenberg' )}
 				/>
 				<MultiButtonsControl
 					setAttributes={ setAttributes }
@@ -1105,7 +1108,7 @@ const Settings = ( props ) => {
 					}
 				/>
 				<ResponsiveSlider
-					label={ __( 'Column Gap', 'ultimate-addons-for-gutenberg' ) }
+					label={ __( 'Row Gap', 'ultimate-addons-for-gutenberg' ) }
 					data={ {
 						desktop: {
 							value: columnGap,
@@ -1129,7 +1132,7 @@ const Settings = ( props ) => {
 					setAttributes={ setAttributes }
 				/>
 				<ResponsiveSlider
-					label={ __( 'Row Gap', 'ultimate-addons-for-gutenberg' ) }
+					label={ __( 'Column Gap', 'ultimate-addons-for-gutenberg' ) }
 					data={ {
 						desktop: {
 							value: rowGap,

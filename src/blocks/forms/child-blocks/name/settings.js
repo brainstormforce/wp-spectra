@@ -5,7 +5,7 @@ import InspectorTab, {
 	UAGTabs,
 } from '@Components/inspector-tabs/InspectorTab.js';
 
-import { ToggleControl, TextControl } from '@wordpress/components';
+import { ToggleControl, TextControl, SelectControl } from '@wordpress/components';
 
 import { InspectorControls } from '@wordpress/block-editor';
 
@@ -16,11 +16,39 @@ const Settings = ( props ) => {
 
 	const { attributes, setAttributes } = props;
 
-	const { nameRequired, placeholder } = attributes;
+	const { nameRequired, placeholder, autocomplete } = attributes;
 
 	const nameInspectorControls = () => {
 		return (
 			<UAGAdvancedPanelBody initialOpen={ true }>
+				<SelectControl
+					label={ __( 'Autocomplete', 'ultimate-addons-for-gutenberg' ) }
+					value={ autocomplete }
+					onChange={ ( value ) =>
+						setAttributes( { autocomplete: value } )
+					}
+				>
+					<option value="off">Off</option>
+					<option value="name">Full Name</option>
+					<optgroup label="Name Breakdown">
+						<option value="honorific-prefix">Prefix</option>
+						<option value="given-name">First Name</option>
+						<option value="additional-name">Middle Name</option>
+						<option value="family-name">Last Name</option>
+						<option value="honorific-suffix">Suffix</option>
+					</optgroup>
+					<option value="username">Username</option>
+					<option value="nickname">Nickname</option>
+					<option value="organization">Company Name</option>
+					<option value="organization-title">Job Title</option>
+					<optgroup label="Address Lines">
+						<option value="address-line1">Address Line 1</option>
+						<option value="address-line2">Address Line 2</option>
+						<option value="address-line3">Address Line 3</option>
+					</optgroup>
+					<option value="country-name">Country</option>
+					<option value="postal-code">Postal / ZIP Code</option>
+				</SelectControl>
 				<TextControl
 					label="Placeholder"
 					value={ placeholder }

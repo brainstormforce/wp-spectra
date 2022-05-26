@@ -8,6 +8,7 @@ import generateCSSUnit from '@Controls/generateCSSUnit';
 function styling( props ) {
 	const {
 		customWidth,
+		makeCollapsible,
 		widthDesktop,
 		widthTablet,
 		widthMobile,
@@ -234,6 +235,10 @@ function styling( props ) {
 			widthDesktop,
 			widthTypeDesktop
 		);
+	}
+
+	if ( customWidth && makeCollapsible ) {
+		selectors[ ' .uagb-toc__title']['justify-content'] = 'space-between';
 	}
 
 	if ( disableBullets ) {

@@ -101,9 +101,11 @@ function styling( props ) {
 		iconTabletMarginUnit,
 		imageWidth,
 		imageWidthMobile,
-imageWidthTablet,
+		imageWidthTablet,
 		imageWidthType,
 		imageWidthUnit,
+		imageWidthUnitTablet,
+		imageWidthUnitMobile,
 		ctaLinkHoverColor,
 		ctaBgHoverColor,
 		ctaBorderhoverColor,
@@ -199,10 +201,10 @@ imageWidthTablet,
 			'color': iconColor,
 			'fill': iconColor,
 			'line-height': generateCSSUnit( iconSize, iconSizeType ),
-			'margin-left': generateCSSUnit( iconLeftMargin, iconMarginUnit ),
-			'margin-right': generateCSSUnit( iconRightMargin, iconMarginUnit ),
-			'margin-top': generateCSSUnit( iconTopMargin, iconMarginUnit ),
-			'margin-bottom': generateCSSUnit(
+			'padding-left': generateCSSUnit( iconLeftMargin, iconMarginUnit ),
+			'padding-right': generateCSSUnit( iconRightMargin, iconMarginUnit ),
+			'padding-top': generateCSSUnit( iconTopMargin, iconMarginUnit ),
+			'padding-bottom': generateCSSUnit(
 				iconBottomMargin,
 				iconMarginUnit
 			),
@@ -214,10 +216,10 @@ imageWidthTablet,
 			'fill': iconColor,
 			'width': generateCSSUnit( iconSize, iconSizeType ),
 			'line-height': generateCSSUnit( iconSize, iconSizeType ),
-			'margin-left': generateCSSUnit( iconLeftMargin, iconMarginUnit ),
-			'margin-right': generateCSSUnit( iconRightMargin, iconMarginUnit ),
-			'margin-top': generateCSSUnit( iconTopMargin, iconMarginUnit ),
-			'margin-bottom': generateCSSUnit(
+			'padding-left': generateCSSUnit( iconLeftMargin, iconMarginUnit ),
+			'padding-right': generateCSSUnit( iconRightMargin, iconMarginUnit ),
+			'padding-top': generateCSSUnit( iconTopMargin, iconMarginUnit ),
+			'padding-bottom': generateCSSUnit(
 				iconBottomMargin,
 				iconMarginUnit
 			),
@@ -229,10 +231,10 @@ imageWidthTablet,
 			'fill': iconColor,
 			'width': generateCSSUnit( iconSize, iconSizeType ),
 			'line-height': generateCSSUnit( iconSize, iconSizeType ),
-			'margin-left': generateCSSUnit( iconLeftMargin, iconMarginUnit ),
-			'margin-right': generateCSSUnit( iconRightMargin, iconMarginUnit ),
-			'margin-top': generateCSSUnit( iconTopMargin, iconMarginUnit ),
-			'margin-bottom': generateCSSUnit(
+			'padding-left': generateCSSUnit( iconLeftMargin, iconMarginUnit ),
+			'padding-right': generateCSSUnit( iconRightMargin, iconMarginUnit ),
+			'padding-top': generateCSSUnit( iconTopMargin, iconMarginUnit ),
+			'padding-bottom': generateCSSUnit(
 				iconBottomMargin,
 				iconMarginUnit
 			),
@@ -244,10 +246,10 @@ imageWidthTablet,
 			'fill': iconColor,
 			'width': generateCSSUnit( iconSize, iconSizeType ),
 			'line-height': generateCSSUnit( iconSize, iconSizeType ),
-			'margin-left': generateCSSUnit( iconLeftMargin, iconMarginUnit ),
-			'margin-right': generateCSSUnit( iconRightMargin, iconMarginUnit ),
-			'margin-top': generateCSSUnit( iconTopMargin, iconMarginUnit ),
-			'margin-bottom': generateCSSUnit(
+			'padding-left': generateCSSUnit( iconLeftMargin, iconMarginUnit ),
+			'padding-right': generateCSSUnit( iconRightMargin, iconMarginUnit ),
+			'padding-top': generateCSSUnit( iconTopMargin, iconMarginUnit ),
+			'padding-bottom': generateCSSUnit(
 				iconBottomMargin,
 				iconMarginUnit
 			),
@@ -269,10 +271,10 @@ imageWidthTablet,
 			'color': iconHover
 		},
 		'.uagb-infobox__content-wrap .uagb-ifb-image-content > img': {
-			'margin-left': generateCSSUnit( iconLeftMargin, iconMarginUnit ),
-			'margin-right': generateCSSUnit( iconRightMargin, iconMarginUnit ),
-			'margin-top': generateCSSUnit( iconTopMargin, iconMarginUnit ),
-			'margin-bottom': generateCSSUnit(
+			'padding-left': generateCSSUnit( iconLeftMargin, iconMarginUnit ),
+			'padding-right': generateCSSUnit( iconRightMargin, iconMarginUnit ),
+			'padding-top': generateCSSUnit( iconTopMargin, iconMarginUnit ),
+			'padding-bottom': generateCSSUnit(
 				iconBottomMargin,
 				iconMarginUnit
 			),
@@ -282,10 +284,10 @@ imageWidthTablet,
 			),
 		},
 		'.uagb-infobox__content-wrap .uagb-ifb-content .uagb-ifb-right-title-image img': {
-			'margin-left': generateCSSUnit( iconLeftMargin, iconMarginUnit ),
-			'margin-right': generateCSSUnit( iconRightMargin, iconMarginUnit ),
-			'margin-top': generateCSSUnit( iconTopMargin, iconMarginUnit ),
-			'margin-bottom': generateCSSUnit(
+			'padding-left': generateCSSUnit( iconLeftMargin, iconMarginUnit ),
+			'padding-right': generateCSSUnit( iconRightMargin, iconMarginUnit ),
+			'padding-top': generateCSSUnit( iconTopMargin, iconMarginUnit ),
+			'padding-bottom': generateCSSUnit(
 				iconBottomMargin,
 				iconMarginUnit
 			),
@@ -295,10 +297,10 @@ imageWidthTablet,
 			),
 		},
 		'.uagb-infobox__content-wrap .uagb-ifb-content .uagb-ifb-left-title-image img': {
-			'margin-left': generateCSSUnit( iconLeftMargin, iconMarginUnit ),
-			'margin-right': generateCSSUnit( iconRightMargin, iconMarginUnit ),
-			'margin-top': generateCSSUnit( iconTopMargin, iconMarginUnit ),
-			'margin-bottom': generateCSSUnit(
+			'padding-left': generateCSSUnit( iconLeftMargin, iconMarginUnit ),
+			'padding-right': generateCSSUnit( iconRightMargin, iconMarginUnit ),
+			'padding-top': generateCSSUnit( iconTopMargin, iconMarginUnit ),
+			'padding-bottom': generateCSSUnit(
 				iconBottomMargin,
 				iconMarginUnit
 			),
@@ -308,10 +310,10 @@ imageWidthTablet,
 			),
 		},
 		'.uagb-infobox__content-wrap .uagb-ifb-content img': {
-			'margin-left': generateCSSUnit( iconLeftMargin, iconMarginUnit ),
-			'margin-right': generateCSSUnit( iconRightMargin, iconMarginUnit ),
-			'margin-top': generateCSSUnit( iconTopMargin, iconMarginUnit ),
-			'margin-bottom': generateCSSUnit(
+			'padding-left': generateCSSUnit( iconLeftMargin, iconMarginUnit ),
+			'padding-right': generateCSSUnit( iconRightMargin, iconMarginUnit ),
+			'padding-top': generateCSSUnit( iconTopMargin, iconMarginUnit ),
+			'padding-bottom': generateCSSUnit(
 				iconBottomMargin,
 				iconMarginUnit
 			),
@@ -344,9 +346,6 @@ imageWidthTablet,
 			'fill': ctaLinkHoverColor,
 		},
 		' .uagb-ifb-button-wrapper .uagb-infobox-cta-link': {
-			'border-style': ctaBorderStyle,
-			'border-color': ctaBorderColor,
-			'border-width': generateCSSUnit( ctaBorderWidth, 'px' ),
 			'color': ctaBtnLinkColor,
 			'background-color': ctaBgColor,
 			'border-radius': generateCSSUnit( ctaBorderRadius, 'px' ),
@@ -448,7 +447,13 @@ imageWidthTablet,
 			'margin-right': generateCSSUnit( separatorRightMargin, seperatorSpaceUnit ),
 		}
 	};
-
+	if( 'none' !== ctaBorderStyle ) {
+		selectors[' .uagb-infobox-cta-link'] = {
+			'border-style': ctaBorderStyle,
+			'border-color': ctaBorderColor,
+			'border-width': generateCSSUnit( ctaBorderWidth, 'px' ),
+		}
+	}
 	if (
 		iconimgPosition === 'above-title' ||
 		iconimgPosition === 'below-title'
@@ -502,200 +507,200 @@ imageWidthTablet,
 			),
 		},
 		' .uagb-ifb-icon-wrap > svg': {
-			'margin-top': generateCSSUnit(
+			'padding-top': generateCSSUnit(
 				iconMarginTopTablet,
 				iconTabletMarginUnit
 			),
-			'margin-right': generateCSSUnit(
+			'padding-right': generateCSSUnit(
 				iconMarginRightTablet,
 				iconTabletMarginUnit
 			),
-			'margin-bottom': generateCSSUnit(
+			'padding-bottom': generateCSSUnit(
 				iconMarginBottomTablet,
 				iconTabletMarginUnit
 			),
-			'margin-left': generateCSSUnit(
+			'padding-left': generateCSSUnit(
 				iconMarginLeftTablet,
 				iconTabletMarginUnit
 			),
 		},
 		'.uagb-infobox__content-wrap > svg': {
-			'margin-top': generateCSSUnit(
+			'padding-top': generateCSSUnit(
 				iconMarginTopTablet,
 				iconTabletMarginUnit
 			),
-			'margin-right': generateCSSUnit(
+			'padding-right': generateCSSUnit(
 				iconMarginRightTablet,
 				iconTabletMarginUnit
 			),
-			'margin-bottom': generateCSSUnit(
+			'padding-bottom': generateCSSUnit(
 				iconMarginBottomTablet,
 				iconTabletMarginUnit
 			),
-			'margin-left': generateCSSUnit(
+			'padding-left': generateCSSUnit(
 				iconMarginLeftTablet,
 				iconTabletMarginUnit
 			),
 		},
 		'.uagb-infobox__content-wrap .uagb-ifb-content .uagb-ifb-left-title-image img': {
-			'margin-top': generateCSSUnit(
+			'padding-top': generateCSSUnit(
 				iconMarginTopTablet,
 				iconTabletMarginUnit
 			),
-			'margin-right': generateCSSUnit(
+			'padding-right': generateCSSUnit(
 				iconMarginRightTablet,
 				iconTabletMarginUnit
 			),
-			'margin-bottom': generateCSSUnit(
+			'padding-bottom': generateCSSUnit(
 				iconMarginBottomTablet,
 				iconTabletMarginUnit
 			),
-			'margin-left': generateCSSUnit(
+			'padding-left': generateCSSUnit(
 				iconMarginLeftTablet,
 				iconTabletMarginUnit
 			),
 		},
 		'.uagb-infobox__content-wrap .uagb-ifb-content .uagb-ifb-right-title-image img': {
-			'margin-top': generateCSSUnit(
+			'padding-top': generateCSSUnit(
 				iconMarginTopTablet,
 				iconTabletMarginUnit
 			),
-			'margin-right': generateCSSUnit(
+			'padding-right': generateCSSUnit(
 				iconMarginRightTablet,
 				iconTabletMarginUnit
 			),
-			'margin-bottom': generateCSSUnit(
+			'padding-bottom': generateCSSUnit(
 				iconMarginBottomTablet,
 				iconTabletMarginUnit
 			),
-			'margin-left': generateCSSUnit(
+			'padding-left': generateCSSUnit(
 				iconMarginLeftTablet,
 				iconTabletMarginUnit
 			),
 		},
 		' .uagb-ifb-content > svg': {
-			'margin-top': generateCSSUnit(
+			'padding-top': generateCSSUnit(
 				iconMarginTopTablet,
 				iconTabletMarginUnit
 			),
-			'margin-right': generateCSSUnit(
+			'padding-right': generateCSSUnit(
 				iconMarginRightTablet,
 				iconTabletMarginUnit
 			),
-			'margin-bottom': generateCSSUnit(
+			'padding-bottom': generateCSSUnit(
 				iconMarginBottomTablet,
 				iconTabletMarginUnit
 			),
-			'margin-left': generateCSSUnit(
+			'padding-left': generateCSSUnit(
 				iconMarginLeftTablet,
 				iconTabletMarginUnit
 			),
 		},
 		' .uagb-ifb-content .uagb-ifb-left-title-image > svg': {
-			'margin-top': generateCSSUnit(
+			'padding-top': generateCSSUnit(
 				iconMarginTopTablet,
 				iconTabletMarginUnit
 			),
-			'margin-right': generateCSSUnit(
+			'padding-right': generateCSSUnit(
 				iconMarginRightTablet,
 				iconTabletMarginUnit
 			),
-			'margin-bottom': generateCSSUnit(
+			'padding-bottom': generateCSSUnit(
 				iconMarginBottomTablet,
 				iconTabletMarginUnit
 			),
-			'margin-left': generateCSSUnit(
+			'padding-left': generateCSSUnit(
 				iconMarginLeftTablet,
 				iconTabletMarginUnit
 			),
 		},
 		' .uagb-ifb-content .uagb-ifb-right-title-image > svg': {
-			'margin-top': generateCSSUnit(
+			'padding-top': generateCSSUnit(
 				iconMarginTopTablet,
 				iconTabletMarginUnit
 			),
-			'margin-right': generateCSSUnit(
+			'padding-right': generateCSSUnit(
 				iconMarginRightTablet,
 				iconTabletMarginUnit
 			),
-			'margin-bottom': generateCSSUnit(
+			'padding-bottom': generateCSSUnit(
 				iconMarginBottomTablet,
 				iconTabletMarginUnit
 			),
-			'margin-left': generateCSSUnit(
+			'padding-left': generateCSSUnit(
 				iconMarginLeftTablet,
 				iconTabletMarginUnit
 			),
 		},
 		//img
 		' .uagb-ifb-content .uagb-ifb-left-title-image > img ': {
-			'margin-top': generateCSSUnit(
+			'padding-top': generateCSSUnit(
 				iconMarginTopTablet,
 				iconTabletMarginUnit
 			),
-			'margin-right': generateCSSUnit(
+			'padding-right': generateCSSUnit(
 				iconMarginRightTablet,
 				iconTabletMarginUnit
 			),
-			'margin-bottom': generateCSSUnit(
+			'padding-bottom': generateCSSUnit(
 				iconMarginBottomTablet,
 				iconTabletMarginUnit
 			),
-			'margin-left': generateCSSUnit(
+			'padding-left': generateCSSUnit(
 				iconMarginLeftTablet,
 				iconTabletMarginUnit
 			),
 		},
 		' .uagb-ifb-content > svg ': {
-			'margin-top': generateCSSUnit(
+			'padding-top': generateCSSUnit(
 				iconMarginTopTablet,
 				iconTabletMarginUnit
 			),
-			'margin-right': generateCSSUnit(
+			'padding-right': generateCSSUnit(
 				iconMarginRightTablet,
 				iconTabletMarginUnit
 			),
-			'margin-bottom': generateCSSUnit(
+			'padding-bottom': generateCSSUnit(
 				iconMarginBottomTablet,
 				iconTabletMarginUnit
 			),
-			'margin-left': generateCSSUnit(
+			'padding-left': generateCSSUnit(
 				iconMarginLeftTablet,
 				iconTabletMarginUnit
 			),
 		},
 		' .uagb-ifb-content .uagb-ifb-right-title-image > img ': {
-			'margin-top': generateCSSUnit(
+			'padding-top': generateCSSUnit(
 				iconMarginTopTablet,
 				iconTabletMarginUnit
 			),
-			'margin-right': generateCSSUnit(
+			'padding-right': generateCSSUnit(
 				iconMarginRightTablet,
 				iconTabletMarginUnit
 			),
-			'margin-bottom': generateCSSUnit(
+			'padding-bottom': generateCSSUnit(
 				iconMarginBottomTablet,
 				iconTabletMarginUnit
 			),
-			'margin-left': generateCSSUnit(
+			'padding-left': generateCSSUnit(
 				iconMarginLeftTablet,
 				iconTabletMarginUnit
 			),
 		},
 		'.uagb-infobox__content-wrap img': {
-			'margin-top': generateCSSUnit(
+			'padding-top': generateCSSUnit(
 				iconMarginTopTablet,
 				iconTabletMarginUnit
 			),
-			'margin-right': generateCSSUnit(
+			'padding-right': generateCSSUnit(
 				iconMarginRightTablet,
 				iconTabletMarginUnit
 			),
-			'margin-bottom': generateCSSUnit(
+			'padding-bottom': generateCSSUnit(
 				iconMarginBottomTablet,
 				iconTabletMarginUnit
 			),
-			'margin-left': generateCSSUnit(
+			'padding-left': generateCSSUnit(
 				iconMarginLeftTablet,
 				iconTabletMarginUnit
 			),
@@ -791,145 +796,145 @@ imageWidthTablet,
 			'margin-right': generateCSSUnit( separatorMarginRightMobile, separatorMobileMarginUnit ),
 		},
 		' .uagb-ifb-icon-wrap > svg': {
-			'margin-top': generateCSSUnit(
+			'padding-top': generateCSSUnit(
 				iconMarginTopMobile,
 				iconMobileMarginUnit
 			),
-			'margin-right': generateCSSUnit(
+			'padding-right': generateCSSUnit(
 				iconMarginRightMobile,
 				iconMobileMarginUnit
 			),
-			'margin-bottom': generateCSSUnit(
+			'padding-bottom': generateCSSUnit(
 				iconMarginBottomMobile,
 				iconMobileMarginUnit
 			),
-			'margin-left': generateCSSUnit(
+			'padding-left': generateCSSUnit(
 				iconMarginLeftMobile,
 				iconMobileMarginUnit
 			),
 		},
 		'.uagb-infobox__content-wrap .uagb-ifb-content .uagb-ifb-left-title-image img': {
-			'margin-top': generateCSSUnit(
+			'padding-top': generateCSSUnit(
 				iconMarginTopMobile,
 				iconMobileMarginUnit
 			),
-			'margin-right': generateCSSUnit(
+			'padding-right': generateCSSUnit(
 				iconMarginRightMobile,
 				iconMobileMarginUnit
 			),
-			'margin-bottom': generateCSSUnit(
+			'padding-bottom': generateCSSUnit(
 				iconMarginBottomMobile,
 				iconMobileMarginUnit
 			),
-			'margin-left': generateCSSUnit(
+			'padding-left': generateCSSUnit(
 				iconMarginLeftMobile,
 				iconMobileMarginUnit
 			),
 		},
 		'.uagb-infobox__content-wrap .uagb-ifb-content .uagb-ifb-right-title-image img': {
-			'margin-top': generateCSSUnit(
+			'padding-top': generateCSSUnit(
 				iconMarginTopMobile,
 				iconMobileMarginUnit
 			),
-			'margin-right': generateCSSUnit(
+			'padding-right': generateCSSUnit(
 				iconMarginRightMobile,
 				iconMobileMarginUnit
 			),
-			'margin-bottom': generateCSSUnit(
+			'padding-bottom': generateCSSUnit(
 				iconMarginBottomMobile,
 				iconMobileMarginUnit
 			),
-			'margin-left': generateCSSUnit(
+			'padding-left': generateCSSUnit(
 				iconMarginLeftMobile,
 				iconMobileMarginUnit
 			),
 		},
 		'.uagb-infobox__content-wrap > svg': {
-			'margin-top': generateCSSUnit(
+			'padding-top': generateCSSUnit(
 				iconMarginTopMobile,
 				iconMobileMarginUnit
 			),
-			'margin-right': generateCSSUnit(
+			'padding-right': generateCSSUnit(
 				iconMarginRightMobile,
 				iconMobileMarginUnit
 			),
-			'margin-bottom': generateCSSUnit(
+			'padding-bottom': generateCSSUnit(
 				iconMarginBottomMobile,
 				iconMobileMarginUnit
 			),
-			'margin-left': generateCSSUnit(
+			'padding-left': generateCSSUnit(
 				iconMarginLeftMobile,
 				iconMobileMarginUnit
 			),
 		},
 		' .uagb-ifb-content > svg': {
-			'margin-top': generateCSSUnit(
+			'padding-top': generateCSSUnit(
 				iconMarginTopMobile,
 				iconMobileMarginUnit
 			),
-			'margin-right': generateCSSUnit(
+			'padding-right': generateCSSUnit(
 				iconMarginRightMobile,
 				iconMobileMarginUnit
 			),
-			'margin-bottom': generateCSSUnit(
+			'padding-bottom': generateCSSUnit(
 				iconMarginBottomMobile,
 				iconMobileMarginUnit
 			),
-			'margin-left': generateCSSUnit(
+			'padding-left': generateCSSUnit(
 				iconMarginLeftMobile,
 				iconMobileMarginUnit
 			),
 		},
 		' .uagb-ifb-content .uagb-ifb-left-title-image > svg': {
-			'margin-top': generateCSSUnit(
+			'padding-top': generateCSSUnit(
 				iconMarginTopMobile,
 				iconMobileMarginUnit
 			),
-			'margin-right': generateCSSUnit(
+			'padding-right': generateCSSUnit(
 				iconMarginRightMobile,
 				iconMobileMarginUnit
 			),
-			'margin-bottom': generateCSSUnit(
+			'padding-bottom': generateCSSUnit(
 				iconMarginBottomMobile,
 				iconMobileMarginUnit
 			),
-			'margin-left': generateCSSUnit(
+			'padding-left': generateCSSUnit(
 				iconMarginLeftMobile,
 				iconMobileMarginUnit
 			),
 		},
 		' .uagb-ifb-content .uagb-ifb-right-title-image > svg': {
-			'margin-top': generateCSSUnit(
+			'padding-top': generateCSSUnit(
 				iconMarginTopMobile,
 				iconMobileMarginUnit
 			),
-			'margin-right': generateCSSUnit(
+			'padding-right': generateCSSUnit(
 				iconMarginRightMobile,
 				iconMobileMarginUnit
 			),
-			'margin-bottom': generateCSSUnit(
+			'padding-bottom': generateCSSUnit(
 				iconMarginBottomMobile,
 				iconMobileMarginUnit
 			),
-			'margin-left': generateCSSUnit(
+			'padding-left': generateCSSUnit(
 				iconMarginLeftMobile,
 				iconMobileMarginUnit
 			),
 		},
 		'.uagb-infobox__content-wrap img': {
-			'margin-top': generateCSSUnit(
+			'padding-top': generateCSSUnit(
 				iconMarginTopMobile,
 				iconMobileMarginUnit
 			),
-			'margin-right': generateCSSUnit(
+			'padding-right': generateCSSUnit(
 				iconMarginRightMobile,
 				iconMobileMarginUnit
 			),
-			'margin-bottom': generateCSSUnit(
+			'padding-bottom': generateCSSUnit(
 				iconMarginBottomMobile,
 				iconMobileMarginUnit
 			),
-			'margin-left': generateCSSUnit(
+			'padding-left': generateCSSUnit(
 				iconMarginLeftMobile,
 				iconMobileMarginUnit
 			),
@@ -989,37 +994,37 @@ imageWidthTablet,
 		};
 
 		tabletSelectors[ '.uagb-infobox__content-wrap img' ] = {
-			'width': generateCSSUnit( imageWidthTablet, imageWidthUnit ),
-			'max-width': generateCSSUnit( imageWidth, imageWidthUnit ),
+			'width': generateCSSUnit( imageWidthTablet, imageWidthUnitTablet ),
+			'max-width': generateCSSUnit( imageWidthTablet, imageWidthUnitTablet ),
 		};
 		tabletSelectors[ '.uagb-infobox__content-wrap .uagb-ifb-content .uagb-ifb-right-title-image > img' ] = {
-			'width': generateCSSUnit( imageWidthTablet, imageWidthUnit ),
-			'max-width': generateCSSUnit( imageWidth, imageWidthUnit ),
+			'width': generateCSSUnit( imageWidthTablet, imageWidthUnitTablet ),
+			'max-width': generateCSSUnit( imageWidthTablet, imageWidthUnitTablet ),
 		};
 		tabletSelectors[ '.uagb-infobox__content-wrap .uagb-ifb-content .uagb-ifb-left-title-image > img' ] = {
-			'width': generateCSSUnit( imageWidthTablet, imageWidthUnit ),
-			'max-width': generateCSSUnit( imageWidth, imageWidthUnit ),
+			'width': generateCSSUnit( imageWidthTablet, imageWidthUnitTablet ),
+			'max-width': generateCSSUnit( imageWidthTablet, imageWidthUnitTablet ),
 		};
 		tabletSelectors[ '.uagb-infobox__content-wrap .uagb-ifb-content .uagb-ifb-image-content > img' ] = {
-			'width': generateCSSUnit( imageWidthTablet, imageWidthUnit ),
-			'max-width': generateCSSUnit( imageWidth, imageWidthUnit ),
+			'width': generateCSSUnit( imageWidthTablet, imageWidthUnitTablet ),
+			'max-width': generateCSSUnit( imageWidthTablet, imageWidthUnitTablet ),
 		};
 
 		mobileSelectors[ '.uagb-infobox__content-wrap img' ] = {
-			'width': generateCSSUnit( imageWidthMobile, imageWidthUnit ),
-			'max-width': generateCSSUnit( imageWidth, imageWidthUnit ),
+			'width': generateCSSUnit( imageWidthMobile, imageWidthUnitMobile ),
+			'max-width': generateCSSUnit( imageWidthMobile, imageWidthMobile ),
 		};
 		mobileSelectors[ '.uagb-infobox__content-wrap .uagb-ifb-content .uagb-ifb-right-title-image > img' ] = {
-			'width': generateCSSUnit( imageWidthMobile, imageWidthUnit ),
-			'max-width': generateCSSUnit( imageWidth, imageWidthUnit ),
+			'width': generateCSSUnit( imageWidthMobile, imageWidthMobile ),
+			'max-width': generateCSSUnit( imageWidthMobile, imageWidthMobile ),
 		};
 		mobileSelectors[ '.uagb-infobox__content-wrap .uagb-ifb-content .uagb-ifb-left-title-image > img' ] = {
-			'width': generateCSSUnit( imageWidthMobile, imageWidthUnit ),
-			'max-width': generateCSSUnit( imageWidth, imageWidthUnit ),
+			'width': generateCSSUnit( imageWidthMobile, imageWidthMobile ),
+			'max-width': generateCSSUnit( imageWidthMobile, imageWidthMobile ),
 		};
 		mobileSelectors[ '.uagb-infobox__content-wrap .uagb-ifb-content .uagb-ifb-image-content > img' ] = {
-			'width': generateCSSUnit( imageWidthMobile, imageWidthUnit ),
-			'max-width': generateCSSUnit( imageWidth, imageWidthUnit ),
+			'width': generateCSSUnit( imageWidthMobile, imageWidthMobile ),
+			'max-width': generateCSSUnit( imageWidthMobile, imageWidthMobile ),
 		};
 	}
 
@@ -1043,6 +1048,13 @@ imageWidthTablet,
 		mobileSelectors[ '.uagb-infobox__content-wrap .uagb-infobox-cta-link > svg'] = {
 			'margin-right': generateCSSUnit( ctaIconSpaceMobile, ctaIconSpaceType ),
 		};
+	}
+
+	if ( '%' === imageWidthUnit ){
+		selectors[ '.uagb-infobox__content-wrap .uagb-ifb-content .uagb-ifb-image-content > img'] = {
+			...selectors[ '.uagb-infobox__content-wrap .uagb-ifb-content .uagb-ifb-image-content > img' ],
+			'box-sizing': 'border-box',
+		}
 	}
 
 	const id = `.editor-styles-wrapper .uagb-block-${ props.clientId.substr(

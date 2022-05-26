@@ -118,6 +118,10 @@ if ( $attr['customWidth'] ) {
 	$selectors[' .uagb-toc__wrap']['width'] = UAGB_Helper::get_css_value( $attr['widthDesktop'], $attr['widthTypeDesktop'] );
 }
 
+if ( $attr['customWidth'] && $attr['makeCollapsible'] ) {
+	$selectors[' .uagb-toc__title']['justify-content'] = 'space-between';
+}
+
 if ( $attr['disableBullets'] ) {
 	$selectors[' .uagb-toc__list']                 = array(
 		'list-style-type' => 'none',

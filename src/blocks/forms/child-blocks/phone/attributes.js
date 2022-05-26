@@ -17,7 +17,7 @@ const attributes = {
 	pattern: {
 		type: 'string',
 		default: __(
-			'[0-9]{3}-[0-9]{3}-[0-9]{4}',
+			'[0-9]{3}\s?[0-9]{3}\s?[0-9]{4}',
 			'ultimate-addons-for-gutenberg'
 		),
 	},
@@ -25,5 +25,9 @@ const attributes = {
 		type: 'string',
 		default: '+44'
 	},
+	autocomplete: {
+		type: 'string',
+		default: 'tel-national',
+	}
 };
 export default attributes;

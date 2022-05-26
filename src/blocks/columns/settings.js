@@ -1050,8 +1050,8 @@ const Settings = ( props ) => {
 						{ layoutSettings() }
 					</InspectorTab>
 					<InspectorTab { ...UAGTabs.style }>
-						{ shapeDividersSettings() }
 						{ backgroundSettings() }
+						{ shapeDividersSettings() }
 						{ borderSettings() }
 						{ spacingSettings() }
 					</InspectorTab>

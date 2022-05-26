@@ -31,8 +31,9 @@ if ( 'desktop' === $attr['stack'] ) {
 
 } elseif ( 'tablet' === $attr['stack'] ) {
 
-	$selectors[' .uagb-buttons__wrap ']  = array(
-		'column-gap' => UAGB_Helper::get_css_value( $attr['gap'], 'px' ),
+	$selectors['.wp-block-uagb-buttons.uagb-buttons__outer-wrap  .uagb-buttons__wrap '] = array(
+		'column-gap'  => UAGB_Helper::get_css_value( $attr['gap'], 'px' ),
+		'align-items' => 'center',
 	);
 	$t_selectors[' .uagb-buttons__wrap'] = array(
 		'flex-direction' => 'column',
@@ -45,11 +46,13 @@ if ( 'desktop' === $attr['stack'] ) {
 
 } elseif ( 'mobile' === $attr['stack'] ) {
 
-	$selectors[' .uagb-buttons__wrap ']  = array(
-		'column-gap' => UAGB_Helper::get_css_value( $attr['gap'], 'px' ),
+	$selectors['.wp-block-uagb-buttons.uagb-buttons__outer-wrap .uagb-buttons__wrap ']  = array(
+		'column-gap'  => UAGB_Helper::get_css_value( $attr['gap'], 'px' ),
+		'align-items' => 'center',
 	);
-	$t_selectors[' .uagb-buttons__wrap'] = array(
-		'column-gap' => UAGB_Helper::get_css_value( $attr['gapTablet'], 'px' ),
+	$t_selectors['.wp-block-uagb-buttons.uagb-buttons__outer-wrap .uagb-buttons__wrap'] = array(
+		'column-gap'  => UAGB_Helper::get_css_value( $attr['gapTablet'], 'px' ),
+		'align-items' => 'center',
 	);
 	$m_selectors[' .uagb-buttons__wrap'] = array(
 		'flex-direction' => 'column',
@@ -57,14 +60,17 @@ if ( 'desktop' === $attr['stack'] ) {
 	);
 
 } elseif ( 'none' === $attr['stack'] ) {
-	$selectors[' .uagb-buttons__wrap ']  = array(
-		'column-gap' => UAGB_Helper::get_css_value( $attr['gap'], 'px' ),
+	$selectors['.wp-block-uagb-buttons.uagb-buttons__outer-wrap .uagb-buttons__wrap ']  = array(
+		'column-gap'  => UAGB_Helper::get_css_value( $attr['gap'], 'px' ),
+		'align-items' => 'center',
 	);
-	$t_selectors[' .uagb-buttons__wrap'] = array(
-		'column-gap' => UAGB_Helper::get_css_value( $attr['gapTablet'], 'px' ),
+	$t_selectors['.wp-block-uagb-buttons.uagb-buttons__outer-wrap .uagb-buttons__wrap'] = array(
+		'column-gap'  => UAGB_Helper::get_css_value( $attr['gapTablet'], 'px' ),
+		'align-items' => 'center',
 	);
-	$m_selectors[' .uagb-buttons__wrap'] = array(
-		'column-gap' => UAGB_Helper::get_css_value( $attr['gapMobile'], 'px' ),
+	$m_selectors['.wp-block-uagb-buttons.uagb-buttons__outer-wrap .uagb-buttons__wrap'] = array(
+		'column-gap'  => UAGB_Helper::get_css_value( $attr['gapMobile'], 'px' ),
+		'align-items' => 'center',
 	);
 }
 $alignment       = ( 'left' === $attr['align'] ) ? 'flex-start' : ( ( 'right' === $attr['align'] ) ? 'flex-end' : 'center' );

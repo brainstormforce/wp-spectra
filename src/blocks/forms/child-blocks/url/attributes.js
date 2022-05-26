@@ -19,5 +19,9 @@ const attributes = {
 		type: 'string',
 		default: __( 'https://example.com', 'ultimate-addons-for-gutenberg' ),
 	},
+	autocomplete: {
+		type: 'string',
+		default: 'url',
+	}
 };
 export default attributes;

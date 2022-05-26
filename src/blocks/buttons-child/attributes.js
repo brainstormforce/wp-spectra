@@ -188,7 +188,6 @@ const attributes = {
 	},
 	borderRadius: {
 		type: 'number',
-		default: '',
 		UAGCopyPaste: {
 			styleType: 'btn-border-radius'
 		}
@@ -443,27 +442,27 @@ const attributes = {
 		}
 	},
 	boxShadowHOffset:{
-		type:'string',
+		type:'number',
 		default : 0,
 		UAGCopyPaste: {
 			styleType: 'btn-box-shadow-h-offset'
 		}
 	},
 	boxShadowVOffset:{
-		type:'string',
+		type:'number',
 		default : 0,
 		UAGCopyPaste: {
 			styleType: 'btn-box-shadow-v-offset'
 		}
 	},
 	boxShadowBlur:{
-		type:'string',
+		type:'number',
 		UAGCopyPaste: {
 			styleType: 'btn-box-shadow-blur'
 		}
 	},
 	boxShadowSpread:{
-		type:'string',
+		type:'number',
 		UAGCopyPaste: {
 			styleType: 'btn-box-shadow-spread'
 		}
@@ -509,7 +508,7 @@ const attributes = {
 		}
 	},
 	removeText:{
-		type:'string',
+		type:'boolean',
 		default: false
 	},
 };

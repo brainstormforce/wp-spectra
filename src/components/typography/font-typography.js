@@ -29,7 +29,6 @@ function FontFamilyControl( props ) {
 	}
 
 	const fontWeightObj = [];
-	fontWeight.unshift( 'Default' );
 	fontWeight.forEach( function ( item ) {
 		fontWeightObj.push( { value: item, label: item } );
 	} );

@@ -24,14 +24,80 @@ UAGBTableOfContents = { // eslint-disable-line no-undef
 
 				if ( $root.classList.contains( 'uagb-toc__collapse' ) ) {
 					$root.classList.remove( 'uagb-toc__collapse' );
+					UAGBTableOfContents._slideDown(
+						document.querySelector( '.wp-block-uagb-table-of-contents .uagb-toc__list-wrap' ),
+						500
+					);
 				} else {
 					$root.classList.add( 'uagb-toc__collapse' );
+					UAGBTableOfContents._slideUp(
+						document.querySelector( '.wp-block-uagb-table-of-contents.uagb-toc__collapse .uagb-toc__list-wrap' ),
+						500
+					);
+
 				}
 			} );
 		}
 		document.addEventListener( 'scroll',
 			UAGBTableOfContents._showHideScroll// eslint-disable-line no-undef
 		);
+	},
+
+	_slideUp( target, duration ) {
+		target.style.transitionProperty = 'height, margin, padding';
+		target.style.transitionDuration = duration + 'ms';
+		target.style.boxSizing = 'border-box';
+		target.style.height = target.offsetHeight + 'px';
+		target.offsetHeight; // eslint-disable-line no-unused-expressions
+		target.style.overflow = 'hidden';
+		target.style.height = 0;
+		target.style.paddingTop = 0;
+		target.style.paddingBottom = 0;
+		target.style.marginTop = 0;
+		target.style.marginBottom = 0;
+		window.setTimeout( function () {
+			target.style.display = 'none';
+			target.style.removeProperty( 'height' );
+			target.style.removeProperty( 'padding-top' );
+			target.style.removeProperty( 'padding-bottom' );
+			target.style.removeProperty( 'margin-top' );
+			target.style.removeProperty( 'margin-bottom' );
+			target.style.removeProperty( 'overflow' );
+			target.style.removeProperty( 'transition-duration' );
+			target.style.removeProperty( 'transition-property' );
+		}, duration );
+	},
+
+	_slideDown( target, duration ) {
+
+		target.style?.removeProperty( 'display' );
+		let display = window?.getComputedStyle( target ).display;
+
+		if ( display === 'none' ) display = 'block';
+
+		target.style.display = display;
+		const height = target.offsetHeight;
+		target.style.overflow = 'hidden';
+		target.style.height = 0;
+		target.style.paddingTop = 0;
+		target.style.paddingBottom = 0;
+		target.style.marginTop = 0;
+		target.style.marginBottom = 0;
+		target.offsetHeight; // eslint-disable-line no-unused-expressions
+		target.style.boxSizing = 'border-box';
+		target.style.transitionProperty = 'height, margin, padding';
+		target.style.transitionDuration = duration + 'ms';
+		target.style.height = height + 'px';
+		target.style.removeProperty( 'padding-top' );
+		target.style.removeProperty( 'padding-bottom' );
+		target.style.removeProperty( 'margin-top' );
+		target.style.removeProperty( 'margin-bottom' );
+		window.setTimeout( function () {
+			target.style.removeProperty( 'height' );
+			target.style.removeProperty( 'overflow' );
+			target.style.removeProperty( 'transition-duration' );
+			target.style.removeProperty( 'transition-property' );
+		}, duration );
 	},
 
 	hyperLinks() {

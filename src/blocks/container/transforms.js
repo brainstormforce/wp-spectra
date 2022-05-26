@@ -149,6 +149,14 @@ const transforms = {
 					rightPadding,
 					topPadding,
 					bottomPadding,
+					backgroundImage,
+					backgroundSize,
+					backgroundRepeat,
+					backgroundAttachment,
+					backgroundVideoColor,
+					backgroundVideo,
+					overlayType,
+					backgroundImageColor
 				} = attributes;
 
 				const containerWidth = 'full_width' === contentWidth ? 'alignfull' : 'alignwide';
@@ -206,6 +214,14 @@ const transforms = {
 						rightPaddingDesktop: rightPadding,
 						topPaddingDesktop: topPadding,
 						bottomPaddingDesktop: bottomPadding,
+						backgroundImageDesktop : backgroundImage,
+						backgroundSizeDesktop : backgroundSize,
+						backgroundRepeatDesktop : backgroundRepeat,
+						backgroundAttachmentDesktop : backgroundAttachment,
+						backgroundVideoColor: backgroundVideoColor || '#00000011',
+						backgroundVideo,
+						overlayType,
+						backgroundImageColor: backgroundImageColor || '#00000000',
 						variationSelected: true
 					},
 					innerBlocks
@@ -264,10 +280,13 @@ const transforms = {
 					width,
 					columns,
 					backgroundImage,
-					backgroundPosition,
 					backgroundSize,
 					backgroundRepeat,
 					backgroundAttachment,
+					backgroundVideoColor,
+					backgroundVideo,
+					overlayType,
+					backgroundImageColor
 				} = attributes;
 
 				const containerWidth = 'full' === align ? 'alignfull' : 'alignwide';
@@ -411,11 +430,14 @@ const transforms = {
 						rightPaddingDesktop : rightPadding,
 						topPaddingDesktop : topPadding,
 						bottomPaddingDesktop : bottomPadding,
-						backgroundImage,
-						backgroundPosition,
-						backgroundSize,
-						backgroundRepeat,
-						backgroundAttachment,
+						backgroundImageDesktop : backgroundImage,
+						backgroundSizeDesktop : backgroundSize,
+						backgroundRepeatDesktop : backgroundRepeat,
+						backgroundAttachmentDesktop : backgroundAttachment,
+						backgroundVideoColor: backgroundVideoColor || '#00000011',
+						backgroundVideo,
+						overlayType,
+						backgroundImageColor: backgroundImageColor || '#00000000',
 						directionDesktop: 'row',
 						directionTablet: 'tablet' === stack ? 'column' : 'row',
 						directionMobile: 'mobile' === stack ? 'column' : 'row',

@@ -19,7 +19,10 @@ const UAGImage = ( props ) => {
 		onRemoveImage,
 		showVideoInput,
 		label,
+		disableRemove = false,
+		allow = [ 'image' ],
 	} = props;
+	// Need to refactor this code as per multi-image select for more diversity.
 	let labelText = __( 'Image', 'ultimate-addons-for-gutenberg' );
 	let selectImageLabel = __(
 		'Select Image',
@@ -53,6 +56,27 @@ const UAGImage = ( props ) => {
 	}
 	labelText = label ? label : labelText;
 	labelText = false === label ? label : labelText;
+	
+	// Newer Dynamic Code here ( Currently used in Lottie Block )
+	
+	if ( label === 'Lottie Animation' ){
+		// No Template Literals due to @wordpress/i18n-no-variables
+		selectImageLabel = __(
+			'Select Lottie Animation',
+			'ultimate-addons-for-gutenberg'
+		);
+		replaceImageLabel = __(
+			'Replace Lottie Animation',
+			'ultimate-addons-for-gutenberg'
+		);
+		removeImageLabel = __(
+			'Remove Lottie Animation',
+			'ultimate-addons-for-gutenberg'
+		);
+		allowedTypes = allow;
+	}
+	
+
 	return (
 		<BaseControl
 			className="editor-bg-image-control"
@@ -73,7 +97,7 @@ const UAGImage = ( props ) => {
 						</Button>
 					) }
 				/>
-				{ backgroundImage?.url && (
+				{ ( ! disableRemove && backgroundImage?.url ) && (
 					<Button
 						className="uagb-rm-btn"
 						onClick={ onRemoveImage }
