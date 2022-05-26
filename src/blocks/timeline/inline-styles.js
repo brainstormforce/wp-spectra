@@ -651,9 +651,9 @@ function contentTimelineStyle( props ) {
 			'margin-top': generateCSSUnit( authorSpaceMobile, 'px' ),
 		},
 		'.uagb-timeline__center-block .uagb-timeline__marker': {
-			'margin-left': ( stack === 'tablet' && timelinAlignment === 'center' ) ?
+			'margin-left': ( stack === 'tablet' || stack === 'mobile' ) && ( timelinAlignment === 'center' ) ?
 			0 : generateCSSUnit( leftMargin + 3, marginUnit ),
-			'margin-right': ( stack === 'tablet' && timelinAlignment === 'center' ) ?
+			'margin-right': ( stack === 'tablet' || stack === 'mobile' ) && ( timelinAlignment === 'center' ) ?
 			0 : generateCSSUnit( rightMargin, marginUnit ),
 		},
 		'.uagb-timeline__center-block .uagb-timeline__day-new.uagb-timeline__day-left': {
