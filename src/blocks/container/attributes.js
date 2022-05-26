@@ -1,3 +1,7 @@
+import { getBorderAttributes } from '@Controls/generateAttributes';
+
+const inputBorderAttributes = getBorderAttributes( 'input' )
+
 const attributes = {
 	block_id: {
 		type: 'string',
@@ -807,6 +811,7 @@ const attributes = {
 			styleType: 'btn-hover-color'
 		},
 	},
+	...inputBorderAttributes
 };
 
 export default attributes;
