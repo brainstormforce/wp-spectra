@@ -228,7 +228,7 @@ const Settings = ( props ) => {
 			>
 				<ToggleControl
 					label={ __(
-						'Display Labels?',
+						'Show Labels',
 						'ultimate-addons-for-gutenberg'
 					) }
 					checked={ displayLabels }
