@@ -769,7 +769,8 @@ const Settings = ( props ) => {
 	const inputStyling = () => (
 		<UAGAdvancedPanelBody
 			title={ __( 'Input', 'ultimate-addons-for-gutenberg' ) }
-			initialOpen={ false }
+			// If displayLabels is false, this panel would be shown first and hence it's initialOpen should be set to true.
+			initialOpen={ ! displayLabels }
 		>
 			<AdvancedPopColorControl
 				label={ __( 'Color', 'ultimate-addons-for-gutenberg' ) }
@@ -1945,7 +1946,9 @@ const Settings = ( props ) => {
 						{ googleReCaptcha() }
 					</InspectorTab>
 					<InspectorTab { ...UAGTabs.style }>
-						{ labelStyling() }
+						{ displayLabels &&
+							labelStyling()
+						}
 						{ inputStyling() }
 						{ elementStyling() }
 						{ submitStyling() }
