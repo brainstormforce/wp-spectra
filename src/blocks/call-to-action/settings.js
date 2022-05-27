@@ -110,10 +110,6 @@ const Settings = ( props ) => {
 		ctaBorderWidth,
 		ctaBorderRadius,
 		stack,
-		ctaLeftSpace,
-		ctaLeftSpaceTablet,
-		ctaLeftSpaceMobile,
-		ctaLeftSpaceType,
 		ctaRightSpace,
 		ctaRightSpaceTablet,
 		ctaRightSpaceMobile,
@@ -1417,46 +1413,6 @@ const Settings = ( props ) => {
 				title={ __( 'Spacing', 'ultimate-addons-for-gutenberg' ) }
 				initialOpen={ false }
 			>
-				{ ( ( 'left' === textAlign && 'Desktop' === deviceType ) || ( 'left' === textAlignTablet && 'Tablet' === deviceType ) || ( 'left' === textAlignMobile && 'Mobile' === deviceType  ) ) && (
-					<>
-					<ResponsiveSlider
-						label={ __(
-							'Content Left Margin',
-							'ultimate-addons-for-gutenberg'
-						) }
-						data={ {
-							desktop: {
-								value: ctaLeftSpace,
-								label: 'ctaLeftSpace',
-							},
-							tablet: {
-								value: ctaLeftSpaceTablet,
-								label: 'ctaLeftSpaceTablet',
-							},
-							mobile: {
-								value: ctaLeftSpaceMobile,
-								label: 'ctaLeftSpaceMobile',
-							},
-						} }
-						min={ 0 }
-						max={ 200 }
-						unit={ {
-							value: ctaLeftSpaceType,
-							label: 'ctaLeftSpaceType',
-						} }
-						units={ [
-							{
-								name: __(
-									'Pixel',
-									'ultimate-addons-for-gutenberg'
-								),
-								unitValue: 'px',
-							},
-						] }
-						setAttributes={ setAttributes }
-					/>
-					</>
-				) }
 				{ ( ( 'right' !== textAlign && 'none' === stack && 'Desktop' === deviceType ) || ( 'right' !== textAlignTablet && 'Tablet' === deviceType && 'none' === stack ) || ( 'right' !== textAlignMobile && 'Mobile' === deviceType && 'none' === stack ) ) && (
 						<ResponsiveSlider
 						label={ __(
