@@ -1096,18 +1096,6 @@ const Settings = ( props ) => {
 					} }
 					min={ 0 }
 					max={ 200 }
-					// unit={ {
-					// 	value: columnGapType,
-					// 	label: 'columnGapType',
-					// } }
-					// tUnit={ {
-					// 	value: columnGapTypeTablet,
-					// 	label: 'columnGapTypeTablet',
-					// } }
-					// mUnit={ {
-					// 	value: columnGapTypeMobile,
-					// 	label: 'columnGapTypeMobile',
-					// } }
 					units={ [
 						{
 							name: __(
