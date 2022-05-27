@@ -197,7 +197,6 @@ function styling( props ) {
 		// Icon css
 		' .uagb-ifb-content .uagb-ifb-icon-wrap > svg': {
 			'font-size': generateCSSUnit( iconSize, iconSizeType ),
-			'height': generateCSSUnit( iconSize, iconSizeType ),
 			'color': iconColor,
 			'fill': iconColor,
 			'line-height': generateCSSUnit( iconSize, iconSizeType ),
@@ -211,7 +210,6 @@ function styling( props ) {
 		},
 		' .uagb-ifb-content .uagb-ifb-left-title-image > svg': {
 			'font-size': generateCSSUnit( iconSize, iconSizeType ),
-			'height': generateCSSUnit( iconSize, iconSizeType ),
 			'color': iconColor,
 			'fill': iconColor,
 			'width': generateCSSUnit( iconSize, iconSizeType ),
@@ -226,7 +224,6 @@ function styling( props ) {
 		},
 		' .uagb-ifb-content .uagb-ifb-right-title-image > svg': {
 			'font-size': generateCSSUnit( iconSize, iconSizeType ),
-			'height': generateCSSUnit( iconSize, iconSizeType ),
 			'color': iconColor,
 			'fill': iconColor,
 			'width': generateCSSUnit( iconSize, iconSizeType ),
@@ -241,7 +238,6 @@ function styling( props ) {
 		},
 		'.uagb-infobox__content-wrap .uagb-ifb-icon-wrap > svg': {
 			'font-size': generateCSSUnit( iconSize, iconSizeType ),
-			'height': generateCSSUnit( iconSize, iconSizeType ),
 			'color': iconColor,
 			'fill': iconColor,
 			'width': generateCSSUnit( iconSize, iconSizeType ),

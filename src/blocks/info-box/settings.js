@@ -1047,7 +1047,7 @@ const Settings = ( props ) => {
 									/>
 									<Range
 										label={ __(
-											'Size',
+											'Width',
 											'ultimate-addons-for-gutenberg'
 										) }
 										setAttributes={ setAttributes }
@@ -1055,14 +1055,35 @@ const Settings = ( props ) => {
 										onChange={ ( value ) =>
 											setAttributes( { iconSize: value } )
 										}
-										min={ 0 }
-										max={ 300 }
-										limitMin={ { 'px': 0, 'em': 0 } } // eslint-disable-line quote-props
-										limitMax={ { 'px': 500, 'em': 10 } } // eslint-disable-line quote-props
+										limitMin={ { 'px': 0, '%': 0, 'em': 0 } } // eslint-disable-line quote-props
+										limitMax={ { 'px': 500, '%': 100, 'em': 100 } } // eslint-disable-line quote-props
 										unit={ {
 											value: iconSizeType,
 											label: 'iconSizeType',
 										} }
+										units={ [
+											{
+												name: __(
+													'Pixel',
+													'ultimate-addons-for-gutenberg'
+												),
+												unitValue: 'px',
+											},
+											{
+												name: __(
+													'%',
+													'ultimate-addons-for-gutenberg'
+												),
+												unitValue: '%',
+											},
+											{
+												name: __(
+													'EM',
+													'ultimate-addons-for-gutenberg'
+												),
+												unitValue: 'em',
+											},
+										] }
 									/>
 								</>
 							) }

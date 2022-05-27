@@ -25,13 +25,13 @@ $btnPaddingRight  = isset( $attr['paddingBtnRight'] ) ? $attr['paddingBtnRight']
 
 $selectors = array(
 	' .uagb-ifb-icon'                                      => array(
-		'height'      => $icon_size,
+		// 'height'      => $icon_size,
 		'width'       => $icon_size,
 		'line-height' => $icon_size,
 	),
 	' .uagb-ifb-icon > span'                               => array(
 		'font-size'   => $icon_size,
-		'height'      => $icon_size,
+		// 'height'      => $icon_size,
 		'width'       => $icon_size,
 		'line-height' => $icon_size,
 		'color'       => $attr['iconColor'],
@@ -40,7 +40,6 @@ $selectors = array(
 		'fill' => $attr['iconColor'],
 	),
 	'.uagb-infobox__content-wrap .uagb-ifb-icon-wrap > svg' => array(
-		'height'        => $icon_size,
 		'width'         => $icon_size,
 		'line-height'   => $icon_size,
 		'font-size'     => $icon_size,
@@ -52,7 +51,6 @@ $selectors = array(
 		'padding-bottom' => UAGB_Helper::get_css_value( $attr['iconBottomMargin'], 'px' ),
 	),
 	' .uagb-ifb-content .uagb-ifb-icon-wrap > svg'         => array(
-		'height'        => $icon_size,
 		'line-height'   => $icon_size,
 		'font-size'     => $icon_size,
 		'color'         => $attr['iconColor'],
@@ -63,7 +61,6 @@ $selectors = array(
 		'padding-bottom' => UAGB_Helper::get_css_value( $attr['iconBottomMargin'], 'px' ),
 	),
 	' .uagb-ifb-content .uagb-ifb-left-title-image > svg'  => array(
-		'height'        => $icon_size,
 		'width'         => $icon_size,
 		'line-height'   => $icon_size,
 		'font-size'     => $icon_size,
@@ -75,7 +72,6 @@ $selectors = array(
 		'padding-bottom' => UAGB_Helper::get_css_value( $attr['iconBottomMargin'], 'px' ),
 	),
 	' .uagb-ifb-content .uagb-ifb-right-title-image > svg' => array(
-		'height'        => $icon_size,
 		'width'         => $icon_size,
 		'line-height'   => $icon_size,
 		'font-size'     => $icon_size,
