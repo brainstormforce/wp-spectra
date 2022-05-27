@@ -8,6 +8,7 @@ import React, { lazy, useEffect, Suspense } from 'react';
 import lazyLoader from '@Controls/lazy-loader';
 import { useDeviceType } from '@Controls/getPreviewType';
 import addBlockEditorDynamicStyles from '@Controls/addBlockEditorDynamicStyles';
+import { migrateBorderAttributes } from '@Controls/generateAttributes';
 
 const Settings = lazy( () =>
 	import(
@@ -26,6 +27,14 @@ import { compose } from '@wordpress/compose';
 const UAGBTableOfContentsEdit = ( props ) => {
 
 	const deviceType = useDeviceType();
+
+	const {
+		borderStyle,
+		borderWidth,
+		borderColor,
+		borderHColor,
+		borderRadius,
+	} = props.attributes;
 
 	useEffect( () => {
 		// Assigning block_id in the attribute.
@@ -203,7 +212,28 @@ const UAGBTableOfContentsEdit = ( props ) => {
 		const blockStyling = styling( props );
 
 		addBlockEditorDynamicStyles( 'uagb-style-toc-' + props.clientId.substr( 0, 8 ), blockStyling );
-		
+
+		// Backward Border Migration
+		if( borderWidth || borderRadius || borderColor || borderHColor || borderStyle ){
+			const migrationAttributes = migrateBorderAttributes( 'overall', {
+				label: 'borderWidth',
+				value: borderWidth,
+			}, {
+				label: 'borderRadius',
+				value: borderRadius
+			}, {
+				label: 'borderColor',
+				value: borderColor
+			}, {
+				label: 'borderHColor',
+				value: borderHColor
+			},{
+				label: 'borderStyle',
+				value: borderStyle
+			}
+			);
+			props.setAttributes( migrationAttributes )
+		}		
 	}, [ props ] );
 
 	useEffect( () => {
