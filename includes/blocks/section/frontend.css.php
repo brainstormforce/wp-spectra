@@ -9,6 +9,18 @@
 
 global $content_width;
 
+$overallBorderCSS       = UAGB_Block_Helper::uag_generate_border_css( $attr, 'overall' );
+$overallBorderCSS       = UAGB_Block_Helper::uag_generate_deprecated_border_css(
+	$overallBorderCSS,
+	( isset( $attr['borderWidth'] ) ? $attr['borderWidth'] : '' ),
+	( isset( $attr['borderRadius'] ) ? $attr['borderRadius'] : '' ),
+	( isset( $attr['borderColor'] ) ? $attr['borderColor'] : '' ),
+	( isset( $attr['borderStyle'] ) ? $attr['borderStyle'] : '' )
+);
+$overallBorderCSSTablet = UAGB_Block_Helper::uag_generate_border_css( $attr, 'overall', 'tablet' );
+$overallBorderCSSMobile = UAGB_Block_Helper::uag_generate_border_css( $attr, 'overall', 'mobile' );
+
+
 $bg_type                 = ( isset( $attr['backgroundType'] ) ) ? $attr['backgroundType'] : 'none';
 $overlay_type            = ( isset( $attr['overlayType'] ) ) ? $attr['overlayType'] : 'color';
 $gradientOverlayPosition = ( isset( $attr['gradientOverlayPosition'] ) ) ? $attr['gradientOverlayPosition'] : 'center center';
@@ -24,7 +36,6 @@ $style = array(
 	'padding-bottom' => UAGB_Helper::get_css_value( $attr['bottomPadding'], $attr['desktopPaddingType'] ),
 	'padding-left'   => UAGB_Helper::get_css_value( $attr['leftPadding'], $attr['desktopPaddingType'] ),
 	'padding-right'  => UAGB_Helper::get_css_value( $attr['rightPadding'], $attr['desktopPaddingType'] ),
-	'border-radius'  => UAGB_Helper::get_css_value( $attr['borderRadius'], 'px' ),
 	'margin-top'     => UAGB_Helper::get_css_value( $attr['topMargin'], $attr['desktopMarginType'] ),
 	'margin-bottom'  => UAGB_Helper::get_css_value( $attr['bottomMargin'], $attr['desktopMarginType'] ),
 
@@ -51,11 +62,6 @@ if ( 'boxed' === $attr['contentWidth'] ) {
 if ( 'full_width' === $attr['contentWidth'] ) {
 	$style['margin-right'] = UAGB_Helper::get_css_value( $attr['rightMargin'], $attr['desktopMarginType'] );
 	$style['margin-left']  = UAGB_Helper::get_css_value( $attr['leftMargin'], $attr['desktopMarginType'] );
-}
-if ( 'none' !== $attr['borderStyle'] ) {
-	$style['border-style'] = $attr['borderStyle'];
-	$style['border-width'] = UAGB_Helper::get_css_value( $attr['borderWidth'], 'px' );
-	$style['border-color'] = $attr['borderColor'];
 }
 
 $position = str_replace( '-', ' ', $attr['backgroundPosition'] );
@@ -111,13 +117,11 @@ $selectors = array(
 		'box-shadow' => UAGB_Helper::get_css_value( $attr['boxShadowHOffset'], 'px' ) . ' ' . UAGB_Helper::get_css_value( $attr['boxShadowVOffset'], 'px' ) . ' ' . UAGB_Helper::get_css_value( $attr['boxShadowBlur'], 'px' ) . ' ' . UAGB_Helper::get_css_value( $attr['boxShadowSpread'], 'px' ) . ' ' . $attr['boxShadowColor'] . ' ' . $boxShadowPositionCSS,
 	),
 	'.uagb-section__wrap:hover'    => array(
-		'border-color' => $attr['borderHoverColor'],
+		'border-color' => $attr['overallBorderHColor'],
 	),
 );
 
-$selectors[' .uagb-section__overlay'] = array(
-	'border-radius' => UAGB_Helper::get_css_value( $attr['borderRadius'], 'px' ),
-);
+$selectors[' .uagb-section__overlay'] = $overallBorderCSS;
 
 if ( 'video' === $bg_type ) {
 	$selectors[' > .uagb-section__overlay'] = array(
@@ -166,6 +170,7 @@ $m_selectors = array(
 		'padding-left'   => UAGB_Helper::get_css_value( $attr['leftPaddingMobile'], $attr['mobilePaddingType'] ),
 		'padding-right'  => UAGB_Helper::get_css_value( $attr['rightPaddingMobile'], $attr['mobilePaddingType'] ),
 	),
+	' .uagb-section__overlay' => $overallBorderCSSMobile
 );
 
 $t_selectors                                      = array(
@@ -175,6 +180,7 @@ $t_selectors                                      = array(
 		'padding-left'   => UAGB_Helper::get_css_value( $attr['leftPaddingTablet'], $attr['tabletPaddingType'] ),
 		'padding-right'  => UAGB_Helper::get_css_value( $attr['rightPaddingTablet'], $attr['tabletPaddingType'] ),
 	),
+	' .uagb-section__overlay' => $overallBorderCSSTablet
 );
 $m_selectors['.uagb-section__wrap']['margin-top'] = UAGB_Helper::get_css_value( $attr['topMarginMobile'], $attr['mobileMarginType'] );
 $m_selectors['.uagb-section__wrap']['margin-bottom'] = UAGB_Helper::get_css_value( $attr['bottomMarginMobile'], $attr['mobileMarginType'] );

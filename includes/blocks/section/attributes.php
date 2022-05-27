@@ -7,7 +7,15 @@
  * @package uagb
  */
 
-return array(
+$overallBorderAttributes = UAGB_Block_Helper::uag_generate_border_attribute( 'overall', [
+	'borderTopWidth' => 1,
+	'borderRightWidth' => 1,
+	'borderLeftWidth' => 1,
+	'borderBottomWidth' => 1,
+] );
+
+
+return array_merge(array(
 	'classMigrate'             => false,
 	'topPadding'               => '20',
 	'bottomPadding'            => '20',
@@ -55,10 +63,6 @@ return array(
 	'backgroundVideoOpacity'   => '50',
 	'backgroundImageColor'     => '',
 	'align'                    => 'center',
-	'borderStyle'              => 'none',
-	'borderWidth'              => '1',
-	'borderRadius'             => '',
-	'borderColor'              => '',
 	'borderHoverColor'         => '',
 	'themeWidth'               => false,
 	'mobileMarginType'         => 'px',
@@ -82,4 +86,4 @@ return array(
 	'boxShadowSpread'          => '',
 	'boxShadowPosition'        => 'outset',
 	'gradientValue'            => '',
-);
+), $overallBorderAttributes);

@@ -13,7 +13,7 @@ import InspectorTab, {
 } from '@Components/inspector-tabs/InspectorTab.js';
 import AdvancedPopColorControl from '@Components/color-control/advanced-pop-color-control.js';
 import { TextControl } from '@wordpress/components';
-import ResponsiveBorder from '@Components/responsive-border'
+import ResponsiveBorder from '@Components/responsive-border';
 import { InspectorControls } from '@wordpress/block-editor';
 
 
