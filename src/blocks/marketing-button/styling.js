@@ -1,7 +1,7 @@
 /**
  * Returns Dynamic Generated CSS
  */
-
+import generateBorderCSS from '@Controls/generateBorderCSS';
 import generateCSS from '@Controls/generateCSS';
 import generateCSSUnit from '@Controls/generateCSSUnit';
 
@@ -28,11 +28,7 @@ function styling( props ) {
 		iconColor,
 		iconHoverColor,
 		//Border
-		borderStyle,
-		borderWidth,
-		borderRadius,
-		borderColor,
-		borderHoverColor,
+		btnBorderHColor,
 		//Background
 		backgroundType,
 		backgroundColor,
@@ -94,6 +90,11 @@ function styling( props ) {
 	const setIconColor = '' === iconColor ? titleColor : iconColor;
 	const setIconHoverColor =
 		'' === iconHoverColor ? titleHoverColor : iconHoverColor;
+
+	const btnBorderCSS = generateBorderCSS( props.attributes, 'btn' )
+	const btnBorderCSSTablet = generateBorderCSS( props.attributes, 'btn', 'tablet' )
+	const btnBorderCSSMobile = generateBorderCSS( props.attributes, 'btn', 'mobile' )
+
 	selectors = {
 		' .uagb-marketing-btn__prefix': {
 			'margin-top': generateCSSUnit( titleSpace, titleSpaceUnit ),
@@ -146,13 +147,10 @@ function styling( props ) {
 				paddingBtnBottom,
 				paddingBtnUnit
 			),
-			'border-style': borderStyle,
-			'border-width': generateCSSUnit( borderWidth, 'px' ),
-			'border-color': borderColor,
-			'border-radius': generateCSSUnit( borderRadius, 'px' ),
+			...btnBorderCSS,
 		},
 		' .uagb-marketing-btn__link:hover': {
-			'border-color': borderHoverColor,
+			'border-color': btnBorderHColor,
 		},
 	};
 
@@ -229,6 +227,7 @@ function styling( props ) {
 				paddingBtnBottomTablet,
 				tabletPaddingBtnUnit
 			),
+			...btnBorderCSSTablet,
 		},
 	};
 
@@ -277,6 +276,7 @@ function styling( props ) {
 				paddingBtnBottomMobile,
 				mobilePaddingBtnUnit
 			),
+			...btnBorderCSSMobile
 		},
 	};
 
