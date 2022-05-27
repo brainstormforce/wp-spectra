@@ -1,6 +1,10 @@
 /**
  * BLOCK: Call To Action - Attributes
  */
+import { getBorderAttributes } from '@Controls/generateAttributes';
+
+const borderAttributes = getBorderAttributes( 'cta' );
+const secondCtaBorderAttribute = getBorderAttributes( 'secondCta' );
 
 const attributes = {
 	inheritFromTheme: {
@@ -1145,6 +1149,8 @@ const attributes = {
 			styleType: 'main-button-unit-type'
 		},
 	},
+	...borderAttributes,
+	...secondCtaBorderAttribute
 };
 
 export default attributes;

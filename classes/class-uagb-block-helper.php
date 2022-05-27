@@ -33,6 +33,10 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 			$t_selectors = array();
 			$selectors   = array();
 
+			$borderCSS       = self::uag_generate_border_css( $attr, '' );
+			$borderCSSTablet = self::uag_generate_border_css( $attr, '', 'tablet' );
+			$borderCSSMobile = self::uag_generate_border_css( $attr, '', 'mobile' );
+
 			$top_padding    = isset( $attr['topPadding'] ) ? $attr['topPadding'] : $attr['vPadding'];
 			$bottom_padding = isset( $attr['bottomPadding'] ) ? $attr['bottomPadding'] : $attr['vPadding'];
 			$left_padding   = isset( $attr['leftPadding'] ) ? $attr['leftPadding'] : $attr['hPadding'];
@@ -108,11 +112,9 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				);
 			}
 			if ( 'none' !== $attr['borderStyle'] ) {
-				$selectors[ $wrapper ]            = array(
-					'border-width' => UAGB_Helper::get_css_value( $attr['borderWidth'], 'px' ),
-					'border-color' => $attr['borderColor'],
-					'border-style' => $attr['borderStyle'],
-				);
+				$selectors[ $wrapper ]            = $borderCSS;
+				$m_selectors[ $wrapper ]          = $borderCSSMobile;
+				$t_selectors[ $wrapper ]          = $borderCSSTablet;
 				$selectors[ $wrapper . ':hover' ] = array(
 					'border-color' => $attr['borderHColor'],
 				);

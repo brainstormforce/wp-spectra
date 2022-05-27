@@ -6,6 +6,7 @@
  *
  * @package uagb
  */
+$borderAttribute = UAGB_Block_Helper::uag_generate_border_attribute( '' );
 
 return array(
 	'inheritFromTheme'       => false,
@@ -30,11 +31,6 @@ return array(
 	'mobilePaddingUnit'      => 'px',
 	'tabletPaddingUnit'      => 'px',
 	'paddingLink'            => '',
-	'borderWidth'            => '',
-	'borderRadius'           => '',
-	'borderStyle'            => 'none',
-	'borderColor'            => '#000',
-	'borderHColor'           => '',
 	'color'                  => '',
 	'background'             => '',
 	'hColor'                 => '',
@@ -89,4 +85,5 @@ return array(
 	'gradientValue'          => '',
 	'backgroundOpacity'      => '',
 	'backgroundHoverOpacity' => '',
+	$borderAttribute
 );

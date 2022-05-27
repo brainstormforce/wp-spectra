@@ -1,6 +1,9 @@
 /**
  * BLOCK: Buttons Child - Attributes
  */
+import { getBorderAttributes } from '@Controls/generateAttributes';
+
+const borderAttributes = getBorderAttributes( '' );
 
 const attributes = {
 	inheritFromTheme: {
@@ -178,40 +181,6 @@ const attributes = {
 	paddingLink: {
 		type: 'boolean',
 		default: true,
-	},
-	borderWidth: {
-		type: 'number',
-		default: '',
-		UAGCopyPaste: {
-			styleType: 'btn-border-width'
-		}
-	},
-	borderRadius: {
-		type: 'number',
-		UAGCopyPaste: {
-			styleType: 'btn-border-radius'
-		}
-	},
-	borderStyle: {
-		type: 'string',
-		default: 'none',
-		UAGCopyPaste: {
-			styleType: 'btn-border-style'
-		}
-	},
-	borderColor: {
-		type: 'string',
-		UAGCopyPaste: {
-			styleType: 'btn-border-color'
-		},
-		default: '#000',
-	},
-	borderHColor: {
-		type: 'string',
-		default: '',
-		UAGCopyPaste: {
-			styleType: 'btn-border-hover-color'
-		}
 	},
 	color: {
 		type: 'string',
@@ -511,6 +480,41 @@ const attributes = {
 		type:'boolean',
 		default: false
 	},
+	borderWidth: {
+		type: 'number',
+		default: '',
+		UAGCopyPaste: {
+			styleType: 'btn-border-width'
+		}
+	},
+	borderRadius: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'btn-border-radius'
+		}
+	},
+	borderStyle: {
+		type: 'string',
+		default: 'none',
+		UAGCopyPaste: {
+			styleType: 'btn-border-style'
+		}
+	},
+	borderColor: {
+		type: 'string',
+		UAGCopyPaste: {
+			styleType: 'btn-border-color'
+		},
+		default: '#000',
+	},
+	borderHColor: {
+		type: 'string',
+		default: '',
+		UAGCopyPaste: {
+			styleType: 'btn-border-hover-color'
+		}
+	},
+	...borderAttributes
 };
 
 export default attributes;

@@ -33,10 +33,9 @@ $container_bg_css_desktop = UAGB_Block_Helper::uag_get_background_obj( $bg_obj_d
 
 $video_bg_css = UAGB_Block_Helper::uag_get_background_obj( $bg_obj_desktop );
 
-$borderAttribute  = UAGB_Block_Helper::uag_generate_border_attribute( '' );
-$borderCssDesktop = UAGB_Block_Helper::uag_generate_border_css( $borderAttribute, 'Desktop', $attr['borderWidth'], $attr['borderRadius'], $attr['borderColor'], $attr['borderStyle'], '' );
-$borderCssTablet  = UAGB_Block_Helper::uag_generate_border_css( $borderAttribute, 'Tablet', $attr['borderWidth'], $attr['borderRadius'], $attr['borderColor'], $attr['borderStyle'], '' );
-$borderCssMobile  = UAGB_Block_Helper::uag_generate_border_css( $borderAttribute, 'Mobile', $attr['borderWidth'], $attr['borderRadius'], $attr['borderColor'], $attr['borderStyle'], '' );
+$borderCSS       = UAGB_Block_Helper::uag_generate_border_css( $attr, '' );
+$borderCSSTablet = UAGB_Block_Helper::uag_generate_border_css( $attr, '', 'tablet' );
+$borderCSSMobile = UAGB_Block_Helper::uag_generate_border_css( $attr, '', 'mobile' );
 
 // Desktop.
 $left_padding_desktop   = ! empty( $attr['leftPaddingDesktop'] ) ? $attr['leftPaddingDesktop'] : 0;
@@ -106,8 +105,9 @@ $container_css                  = array(
 	'margin-bottom'   => UAGB_Helper::get_css_value( $bottom_margin_desktop, $attr['marginType'] ),
 	'margin-left'     => UAGB_Helper::get_css_value( $left_margin_desktop, $attr['marginType'] ),
 	'margin-right'    => UAGB_Helper::get_css_value( $right_margin_desktop, $attr['marginType'] ),
+	$borderCSS
 );
-$container_css                  = array_merge( $container_css, $container_bg_css_desktop, $borderCssDesktop );
+$container_css                  = array_merge( $container_css, $container_bg_css_desktop );
 $background_video_opacity_value = ( isset( $attr['backgroundVideoOpacity'] ) && 'none' !== $attr['overlayType'] && ( ( 'color' === $attr['overlayType'] && ! empty( $attr['backgroundVideoColor'] ) ) || ( 'gradient' === $attr['overlayType'] && ! empty( $attr['gradientValue'] ) ) ) ) ? 1 - $attr['backgroundVideoOpacity'] : 1;
 
 $selectors = array(
@@ -188,6 +188,7 @@ $container_tablet_css    = array(
 	'margin-bottom'   => UAGB_Helper::get_css_value( $bottom_margin_tablet, $attr['marginType'] ),
 	'margin-left'     => UAGB_Helper::get_css_value( $left_margin_tablet, $attr['marginType'] ),
 	'margin-right'    => UAGB_Helper::get_css_value( $right_margin_tablet, $attr['marginType'] ),
+	$borderCSSTablet
 );
 $container_tablet_css    = array_merge( $container_tablet_css, $container_bg_css_tablet );
 
@@ -239,6 +240,7 @@ $container_mobile_css    = array(
 	'margin-bottom'   => UAGB_Helper::get_css_value( $bottom_margin_mobile, $attr['marginType'] ),
 	'margin-left'     => UAGB_Helper::get_css_value( $left_margin_mobile, $attr['marginType'] ),
 	'margin-right'    => UAGB_Helper::get_css_value( $right_margin_mobile, $attr['marginType'] ),
+	$borderCSSMobile
 );
 $container_mobile_css    = array_merge( $container_mobile_css, $container_bg_css_mobile );
 

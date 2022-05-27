@@ -7,6 +7,9 @@
  * @package uagb
  */
 
+$ctaBorderCSS       = UAGB_Block_Helper::uag_generate_border_css( $attr, 'cta' );
+$ctaBorderCSSTablet = UAGB_Block_Helper::uag_generate_border_css( $attr, 'cta', 'tablet' );
+$ctaBorderCSSMobile = UAGB_Block_Helper::uag_generate_border_css( $attr, 'cta', 'mobile' );
 // Adds Fonts.
 UAGB_Block_JS::blocks_info_box_gfont( $attr );
 
@@ -219,7 +222,6 @@ if ( 'button' === $attr['ctaType'] ) {
 	$selectors[' .uagb-ifb-button-wrapper .uagb-infobox-cta-link']     = array(
 		'color'            => $attr['ctaBtnLinkColor'],
 		'background-color' => $attr['ctaBgColor'],
-		'border-radius'    => UAGB_Helper::get_css_value( $attr['ctaBorderRadius'], 'px' ),
 		'padding-top'      => UAGB_Helper::get_css_value( $btnPaddingTop, $attr['paddingBtnUnit'] ),
 		'padding-bottom'   => UAGB_Helper::get_css_value( $btnPaddingBottom, $attr['paddingBtnUnit'] ),
 		'padding-left'     => UAGB_Helper::get_css_value( $btnPaddingLeft, $attr['paddingBtnUnit'] ),
@@ -236,13 +238,10 @@ if ( 'button' === $attr['ctaType'] ) {
 	$selectors[' .uagb-ifb-button-wrapper .uagb-infobox-cta-link:hover svg'] = array(
 		'fill' => $attr['ctaLinkHoverColor'],
 	);
-	if ( 'none' !== $attr['ctaBorderStyle'] ) {
-		$selectors[' .uagb-infobox-cta-link'] = array(
-			'border-style' => $attr['ctaBorderStyle'],
-			'border-color' => $attr['ctaBorderColor'],
-			'border-width' => UAGB_Helper::get_css_value( $attr['ctaBorderWidth'], 'px' ),
-		);
-	}
+	$selectors[' .uagb-infobox-cta-link'] = $ctaBorderCSS;
+	$t_selectors[' .uagb-infobox-cta-link'] = $ctaBorderCSSTablet;
+	$m_selectors[' .uagb-infobox-cta-link'] = $ctaBorderCSSMobile;
+
 }
 
 if ( 'above-title' === $attr['iconimgPosition'] || 'below-title' === $attr['iconimgPosition'] ) {

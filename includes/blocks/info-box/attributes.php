@@ -6,7 +6,7 @@
  *
  * @package uagb
  */
-
+$ctaBorderAttribute = UAGB_Block_Helper::uag_generate_border_attribute( 'cta' );
 return array(
 	'classMigrate'               => false,
 	'inheritFromTheme'           => false,
@@ -95,10 +95,6 @@ return array(
 	'paddingBtnRightMobile'      => '',
 	'paddingBtnBottomMobile'     => '',
 	'paddingBtnLeftMobile'       => '',
-	'ctaBorderStyle'             => 'none',
-	'ctaBorderColor'             => '',
-	'ctaBorderWidth'             => '',
-	'ctaBorderRadius'            => '',
 	'iconLeftMargin'             => '10',
 	'iconRightMargin'            => '10',
 	'iconTopMargin'              => '5',
@@ -201,5 +197,5 @@ return array(
 	'prefixMarginLeftMobile'     => '',
 	'prefixMobileMarginUnit'     => 'px',
 	'prefixTabletMarginUnit'     => 'px',
-
+	...$ctaBorderAttribute
 );

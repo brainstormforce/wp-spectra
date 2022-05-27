@@ -7,6 +7,9 @@
  * @package uagb
  */
 
+$ctaBorderAttribute = UAGB_Block_Helper::uag_generate_border_attribute( 'cta' );
+$secondCtaBorderAttribute = UAGB_Block_Helper::uag_generate_border_attribute( 'secondCta' );
+
 return array(
 	'classMigrate'                    => false,
 	'inheritFromTheme'                => false,
@@ -63,13 +66,8 @@ return array(
 	'ctaBtnLinkColor'                 => '',
 	'ctaBgColor'                      => '',
 	'ctaBgHoverColor'                 => '',
-	'ctaBorderColor'                  => '',
-	'ctaBorderhoverColor'             => '',
-	'ctaBorderStyle'                  => 'none',
 	'ctaBtnVertPadding'               => '',
 	'ctaBtnHrPadding'                 => '',
-	'ctaBorderWidth'                  => '',
-	'ctaBorderRadius'                 => '',
 	'stack'                           => 'tablet',
 	'stackBtn'                        => 'none',
 	'showTitle'                       => true,
@@ -130,10 +128,6 @@ return array(
 	'secondCtaMobilePaddingUnit'      => 'px',
 	'secondCtaTabletPaddingUnit'      => 'px',
 	'secondCtaPaddingLink'            => '',
-	'secondCtaBorderWidth'            => '',
-	'secondCtaBorderRadius'           => '',
-	'secondCtaBorderStyle'            => 'none',
-	'secondCtaBorderColor'            => '',
 	'secondCtaBorderHColor'           => '',
 	'secondCtaColor'                  => '',
 	'secondCtaBackground'             => '',
@@ -188,4 +182,6 @@ return array(
 	'buttonRightSpaceTablet'          => 5,
 	'buttonRightSpaceMobile'          => 5,
 	'buttonRightSpaceType'            => 'px',
+	$secondCtaBorderAttribute,
+	$ctaBorderAttribute
 );

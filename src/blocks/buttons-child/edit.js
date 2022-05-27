@@ -80,6 +80,7 @@ const ButtonsChildComponent = ( props ) => {
 				parentProps={ props }
 				state={ state }
 				setStateValue={ setStateValue }
+				deviceType = { deviceType }
 			/>
 			<Render parentProps={ props } />
 		</Suspense>

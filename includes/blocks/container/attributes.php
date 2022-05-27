@@ -7,6 +7,8 @@
  * @package uagb
  */
 
+$borderAttribute = UAGB_Block_Helper::uag_generate_border_attribute( '' );
+
 return array(
 	'block_id'                       => '',
 	'widthDesktop'                   => 100,
@@ -55,11 +57,6 @@ return array(
 	'backgroundOpacity'              => '',
 	'backgroundImageColor'           => '#FFFFFF75',
 	'gradientValue'                  => 'linear-gradient(90deg, rgb(6, 147, 227) 0%, rgb(155, 81, 224) 100%)',
-	'borderStyle'                    => 'none',
-	'borderWidth'                    => 1,
-	'borderRadius'                   => '',
-	'borderColor'                    => '',
-	'borderHoverColor'               => '',
 	'boxShadowColor'                 => '',
 	'boxShadowHOffset'               => 0,
 	'boxShadowVOffset'               => 0,
@@ -137,4 +134,5 @@ return array(
 	'textColor'                      => 'inherit',
 	'linkColor'                      => '',
 	'linkHoverColor'                 => '',
+	$borderAttribute
 );
