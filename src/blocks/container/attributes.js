@@ -601,6 +601,20 @@ const attributes = {
 			styleType: 'container-row-gap-type'
 		},
 	},
+	rowGapTypeTablet: {
+		type: 'string',
+		default: 'px',
+		UAGCopyPaste: {
+			styleType: 'container-row-gap-type-tablet'
+		},
+	},
+	rowGapTypeMobile: {
+		type: 'string',
+		default: 'px',
+		UAGCopyPaste: {
+			styleType: 'container-row-gap-type-mobile'
+		},
+	},
 	columnGapDesktop: {
 		type: 'number',
 		UAGCopyPaste: {
@@ -625,6 +639,20 @@ const attributes = {
 		default: 'px',
 		UAGCopyPaste: {
 			styleType: 'container-column-gap-type'
+		},
+	},
+	columnGapTypeTablet: {
+		type: 'string',
+		default: 'px',
+		UAGCopyPaste: {
+			styleType: 'container-column-gap-type-tablet'
+		},
+	},
+	columnGapTypeMobile: {
+		type: 'string',
+		default: 'px',
+		UAGCopyPaste: {
+			styleType: 'container-column-gap-type-mobile'
 		},
 	},
 	isPreview: {
