@@ -4,11 +4,12 @@
 
 import { getBorderAttributes } from '@Controls/generateAttributes';
 
-const inputBorderDefaults = {
-	borderRadius: 3,
-};
-
-const inputBorderAttributes = getBorderAttributes( 'input', inputBorderDefaults );
+const inputBorderAttributes = getBorderAttributes( 'input', {
+	borderTopRadius: 3,
+	borderRightRadius: 3,
+	borderLeftRadius: 3,
+	borderBottomRadius: 3
+} );
 
 const attributes = {
 	block_id: {
