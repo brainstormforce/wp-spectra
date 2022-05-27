@@ -5,11 +5,11 @@ const Icon = ( props ) => {
 
 	return (
 		<>
-		{ ( attributes.showIcon ) && (
-		<div className="uagb-ifb-icon-wrap">
-		{ renderSVG( attributes.icon ) }
-		</div>
-		)}
+			{ ( attributes.showIcon ) && (
+				<div className="uagb-ifb-icon-wrap">
+						{ renderSVG( attributes.icon ) }
+				</div>
+			)}
 		</>
 	);
 };
