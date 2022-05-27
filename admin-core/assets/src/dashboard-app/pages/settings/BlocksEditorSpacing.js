@@ -39,7 +39,7 @@ const BlocksEditorSpacing = () => {
                     <p className="mt-[0.6rem] text-sm ">
                         {
                             // eslint-disable-next-line @wordpress/i18n-no-variables
-                            __( `This will apply spacing in between all blocks inside block editor. `, 'ultimate-addons-for-gutenberg' )
+                            __( `This setting will apply spacing in between all blocks inside block editor. `, 'ultimate-addons-for-gutenberg' )
                         }
                     </p>
                 </div>
