@@ -40,8 +40,6 @@ if ( ! class_exists( 'UAGB_Admin' ) ) {
 
 			add_filter( 'wp_kses_allowed_html', __CLASS__ . '::add_data_attributes', 10, 2 );
 
-			add_action( 'admin_enqueue_scripts', __CLASS__ . '::notice_styles_scripts' );
-
 			add_action( 'wp_ajax_uag-theme-activate', __CLASS__ . '::theme_activate' );
 
 			add_action( 'wp_ajax_uagb_file_generation', __CLASS__ . '::file_generation' );
@@ -123,7 +121,7 @@ if ( ! class_exists( 'UAGB_Admin' ) ) {
 									%2$s
 								</div>
 								%3$s<br />
-								<div class="uagb-review-notice-container">
+								<div class="astra-review-notice-container">
 									<a href="%4$s" class="astra-notice-close uagb-review-notice button-primary" target="_blank">
 									%5$s
 									</a>
@@ -257,16 +255,6 @@ if ( ! class_exists( 'UAGB_Admin' ) ) {
 			if ( $path && $base_path && strpos( $path, $base_path ) === 0 ) {
 				include_once $path;
 			}
-		}
-
-		/**
-		 * Enqueues the needed CSS/JS for the builder's admin settings page.
-		 *
-		 * @since 1.8.0
-		 */
-		public static function notice_styles_scripts() {
-			// Styles.
-			wp_enqueue_style( 'uagb-notice-settings', UAGB_URL . 'admin/assets/admin-notice.css', array(), UAGB_VER );
 		}
 
 		/**
