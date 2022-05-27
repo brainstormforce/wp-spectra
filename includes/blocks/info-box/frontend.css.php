@@ -25,13 +25,11 @@ $btnPaddingRight  = isset( $attr['paddingBtnRight'] ) ? $attr['paddingBtnRight']
 
 $selectors = array(
 	' .uagb-ifb-icon'                                      => array(
-		// 'height'      => $icon_size,
 		'width'       => $icon_size,
 		'line-height' => $icon_size,
 	),
 	' .uagb-ifb-icon > span'                               => array(
 		'font-size'   => $icon_size,
-		// 'height'      => $icon_size,
 		'width'       => $icon_size,
 		'line-height' => $icon_size,
 		'color'       => $attr['iconColor'],
