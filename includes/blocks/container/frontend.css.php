@@ -13,6 +13,12 @@ if ( 'outset' === $attr['boxShadowPosition'] ) {
 	$box_shadow_position_css = '';
 }
 
+$box_shadow_position_css_hover = $attr['boxShadowPositionHover'];
+
+if ( 'outset' === $attr['boxShadowPositionHover'] ) {
+	$box_shadow_position_css_hover = '';
+}
+
 $bg_obj_desktop           = array(
 	'backgroundType'           => $attr['backgroundType'],
 	'backgroundImage'          => $attr['backgroundImageDesktop'],
@@ -116,6 +122,18 @@ $selectors = array(
 	'.uagb-block-' . $id                                  => $container_css, // phpcs:ignore WordPress.WP.GlobalVariablesOverride.Prohibited
 	'.uagb-block-' . $id . ':hover'                       => array(
 		'border-color' => $attr['borderHoverColor'],
+		'box-shadow'      =>
+			UAGB_Helper::get_css_value( $attr['boxShadowHOffsetHover'], 'px' ) .
+			' ' .
+			UAGB_Helper::get_css_value( $attr['boxShadowVOffsetHover'], 'px' ) .
+			' ' .
+			UAGB_Helper::get_css_value( $attr['boxShadowBlurHover'], 'px' ) .
+			' ' .
+			UAGB_Helper::get_css_value( $attr['boxShadowSpreadHover'], 'px' ) .
+			' ' .
+			$attr['boxShadowColorHover'] .
+			' ' .
+			$box_shadow_position_css_hover,
 	),
 	'.uagb-block-' . $id . '.wp-block-uagb-container'     => array(
 		'color' => $attr['textColor'],
