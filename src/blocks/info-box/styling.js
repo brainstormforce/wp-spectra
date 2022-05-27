@@ -104,6 +104,8 @@ function styling( props ) {
 		imageWidthTablet,
 		imageWidthType,
 		imageWidthUnit,
+		imageWidthUnitTablet,
+		imageWidthUnitMobile,
 		ctaLinkHoverColor,
 		ctaBgHoverColor,
 		ctaBorderhoverColor,
@@ -199,10 +201,10 @@ function styling( props ) {
 			'color': iconColor,
 			'fill': iconColor,
 			'line-height': generateCSSUnit( iconSize, iconSizeType ),
-			'margin-left': generateCSSUnit( iconLeftMargin, iconMarginUnit ),
-			'margin-right': generateCSSUnit( iconRightMargin, iconMarginUnit ),
-			'margin-top': generateCSSUnit( iconTopMargin, iconMarginUnit ),
-			'margin-bottom': generateCSSUnit(
+			'padding-left': generateCSSUnit( iconLeftMargin, iconMarginUnit ),
+			'padding-right': generateCSSUnit( iconRightMargin, iconMarginUnit ),
+			'padding-top': generateCSSUnit( iconTopMargin, iconMarginUnit ),
+			'padding-bottom': generateCSSUnit(
 				iconBottomMargin,
 				iconMarginUnit
 			),
@@ -214,10 +216,10 @@ function styling( props ) {
 			'fill': iconColor,
 			'width': generateCSSUnit( iconSize, iconSizeType ),
 			'line-height': generateCSSUnit( iconSize, iconSizeType ),
-			'margin-left': generateCSSUnit( iconLeftMargin, iconMarginUnit ),
-			'margin-right': generateCSSUnit( iconRightMargin, iconMarginUnit ),
-			'margin-top': generateCSSUnit( iconTopMargin, iconMarginUnit ),
-			'margin-bottom': generateCSSUnit(
+			'padding-left': generateCSSUnit( iconLeftMargin, iconMarginUnit ),
+			'padding-right': generateCSSUnit( iconRightMargin, iconMarginUnit ),
+			'padding-top': generateCSSUnit( iconTopMargin, iconMarginUnit ),
+			'padding-bottom': generateCSSUnit(
 				iconBottomMargin,
 				iconMarginUnit
 			),
@@ -229,10 +231,10 @@ function styling( props ) {
 			'fill': iconColor,
 			'width': generateCSSUnit( iconSize, iconSizeType ),
 			'line-height': generateCSSUnit( iconSize, iconSizeType ),
-			'margin-left': generateCSSUnit( iconLeftMargin, iconMarginUnit ),
-			'margin-right': generateCSSUnit( iconRightMargin, iconMarginUnit ),
-			'margin-top': generateCSSUnit( iconTopMargin, iconMarginUnit ),
-			'margin-bottom': generateCSSUnit(
+			'padding-left': generateCSSUnit( iconLeftMargin, iconMarginUnit ),
+			'padding-right': generateCSSUnit( iconRightMargin, iconMarginUnit ),
+			'padding-top': generateCSSUnit( iconTopMargin, iconMarginUnit ),
+			'padding-bottom': generateCSSUnit(
 				iconBottomMargin,
 				iconMarginUnit
 			),
@@ -244,10 +246,10 @@ function styling( props ) {
 			'fill': iconColor,
 			'width': generateCSSUnit( iconSize, iconSizeType ),
 			'line-height': generateCSSUnit( iconSize, iconSizeType ),
-			'margin-left': generateCSSUnit( iconLeftMargin, iconMarginUnit ),
-			'margin-right': generateCSSUnit( iconRightMargin, iconMarginUnit ),
-			'margin-top': generateCSSUnit( iconTopMargin, iconMarginUnit ),
-			'margin-bottom': generateCSSUnit(
+			'padding-left': generateCSSUnit( iconLeftMargin, iconMarginUnit ),
+			'padding-right': generateCSSUnit( iconRightMargin, iconMarginUnit ),
+			'padding-top': generateCSSUnit( iconTopMargin, iconMarginUnit ),
+			'padding-bottom': generateCSSUnit(
 				iconBottomMargin,
 				iconMarginUnit
 			),
@@ -269,16 +271,23 @@ function styling( props ) {
 			'color': iconHover
 		},
 		'.uagb-infobox__content-wrap .uagb-ifb-image-content > img': {
+			'padding-left': generateCSSUnit( iconLeftMargin, iconMarginUnit ),
+			'padding-right': generateCSSUnit( iconRightMargin, iconMarginUnit ),
+			'padding-top': generateCSSUnit( iconTopMargin, iconMarginUnit ),
+			'padding-bottom': generateCSSUnit(
+				iconBottomMargin,
+				iconMarginUnit
+			),
 			'border-radius': generateCSSUnit(
 				iconimgBorderRadius,
 				iconimgBorderRadiusUnit
 			),
 		},
 		'.uagb-infobox__content-wrap .uagb-ifb-content .uagb-ifb-right-title-image img': {
-			'margin-left': generateCSSUnit( iconLeftMargin, iconMarginUnit ),
-			'margin-right': generateCSSUnit( iconRightMargin, iconMarginUnit ),
-			'margin-top': generateCSSUnit( iconTopMargin, iconMarginUnit ),
-			'margin-bottom': generateCSSUnit(
+			'padding-left': generateCSSUnit( iconLeftMargin, iconMarginUnit ),
+			'padding-right': generateCSSUnit( iconRightMargin, iconMarginUnit ),
+			'padding-top': generateCSSUnit( iconTopMargin, iconMarginUnit ),
+			'padding-bottom': generateCSSUnit(
 				iconBottomMargin,
 				iconMarginUnit
 			),
@@ -288,10 +297,10 @@ function styling( props ) {
 			),
 		},
 		'.uagb-infobox__content-wrap .uagb-ifb-content .uagb-ifb-left-title-image img': {
-			'margin-left': generateCSSUnit( iconLeftMargin, iconMarginUnit ),
-			'margin-right': generateCSSUnit( iconRightMargin, iconMarginUnit ),
-			'margin-top': generateCSSUnit( iconTopMargin, iconMarginUnit ),
-			'margin-bottom': generateCSSUnit(
+			'padding-left': generateCSSUnit( iconLeftMargin, iconMarginUnit ),
+			'padding-right': generateCSSUnit( iconRightMargin, iconMarginUnit ),
+			'padding-top': generateCSSUnit( iconTopMargin, iconMarginUnit ),
+			'padding-bottom': generateCSSUnit(
 				iconBottomMargin,
 				iconMarginUnit
 			),
@@ -498,200 +507,200 @@ function styling( props ) {
 			),
 		},
 		' .uagb-ifb-icon-wrap > svg': {
-			'margin-top': generateCSSUnit(
+			'padding-top': generateCSSUnit(
 				iconMarginTopTablet,
 				iconTabletMarginUnit
 			),
-			'margin-right': generateCSSUnit(
+			'padding-right': generateCSSUnit(
 				iconMarginRightTablet,
 				iconTabletMarginUnit
 			),
-			'margin-bottom': generateCSSUnit(
+			'padding-bottom': generateCSSUnit(
 				iconMarginBottomTablet,
 				iconTabletMarginUnit
 			),
-			'margin-left': generateCSSUnit(
+			'padding-left': generateCSSUnit(
 				iconMarginLeftTablet,
 				iconTabletMarginUnit
 			),
 		},
 		'.uagb-infobox__content-wrap > svg': {
-			'margin-top': generateCSSUnit(
+			'padding-top': generateCSSUnit(
 				iconMarginTopTablet,
 				iconTabletMarginUnit
 			),
-			'margin-right': generateCSSUnit(
+			'padding-right': generateCSSUnit(
 				iconMarginRightTablet,
 				iconTabletMarginUnit
 			),
-			'margin-bottom': generateCSSUnit(
+			'padding-bottom': generateCSSUnit(
 				iconMarginBottomTablet,
 				iconTabletMarginUnit
 			),
-			'margin-left': generateCSSUnit(
+			'padding-left': generateCSSUnit(
 				iconMarginLeftTablet,
 				iconTabletMarginUnit
 			),
 		},
 		'.uagb-infobox__content-wrap .uagb-ifb-content .uagb-ifb-left-title-image img': {
-			'margin-top': generateCSSUnit(
+			'padding-top': generateCSSUnit(
 				iconMarginTopTablet,
 				iconTabletMarginUnit
 			),
-			'margin-right': generateCSSUnit(
+			'padding-right': generateCSSUnit(
 				iconMarginRightTablet,
 				iconTabletMarginUnit
 			),
-			'margin-bottom': generateCSSUnit(
+			'padding-bottom': generateCSSUnit(
 				iconMarginBottomTablet,
 				iconTabletMarginUnit
 			),
-			'margin-left': generateCSSUnit(
+			'padding-left': generateCSSUnit(
 				iconMarginLeftTablet,
 				iconTabletMarginUnit
 			),
 		},
 		'.uagb-infobox__content-wrap .uagb-ifb-content .uagb-ifb-right-title-image img': {
-			'margin-top': generateCSSUnit(
+			'padding-top': generateCSSUnit(
 				iconMarginTopTablet,
 				iconTabletMarginUnit
 			),
-			'margin-right': generateCSSUnit(
+			'padding-right': generateCSSUnit(
 				iconMarginRightTablet,
 				iconTabletMarginUnit
 			),
-			'margin-bottom': generateCSSUnit(
+			'padding-bottom': generateCSSUnit(
 				iconMarginBottomTablet,
 				iconTabletMarginUnit
 			),
-			'margin-left': generateCSSUnit(
+			'padding-left': generateCSSUnit(
 				iconMarginLeftTablet,
 				iconTabletMarginUnit
 			),
 		},
 		' .uagb-ifb-content > svg': {
-			'margin-top': generateCSSUnit(
+			'padding-top': generateCSSUnit(
 				iconMarginTopTablet,
 				iconTabletMarginUnit
 			),
-			'margin-right': generateCSSUnit(
+			'padding-right': generateCSSUnit(
 				iconMarginRightTablet,
 				iconTabletMarginUnit
 			),
-			'margin-bottom': generateCSSUnit(
+			'padding-bottom': generateCSSUnit(
 				iconMarginBottomTablet,
 				iconTabletMarginUnit
 			),
-			'margin-left': generateCSSUnit(
+			'padding-left': generateCSSUnit(
 				iconMarginLeftTablet,
 				iconTabletMarginUnit
 			),
 		},
 		' .uagb-ifb-content .uagb-ifb-left-title-image > svg': {
-			'margin-top': generateCSSUnit(
+			'padding-top': generateCSSUnit(
 				iconMarginTopTablet,
 				iconTabletMarginUnit
 			),
-			'margin-right': generateCSSUnit(
+			'padding-right': generateCSSUnit(
 				iconMarginRightTablet,
 				iconTabletMarginUnit
 			),
-			'margin-bottom': generateCSSUnit(
+			'padding-bottom': generateCSSUnit(
 				iconMarginBottomTablet,
 				iconTabletMarginUnit
 			),
-			'margin-left': generateCSSUnit(
+			'padding-left': generateCSSUnit(
 				iconMarginLeftTablet,
 				iconTabletMarginUnit
 			),
 		},
 		' .uagb-ifb-content .uagb-ifb-right-title-image > svg': {
-			'margin-top': generateCSSUnit(
+			'padding-top': generateCSSUnit(
 				iconMarginTopTablet,
 				iconTabletMarginUnit
 			),
-			'margin-right': generateCSSUnit(
+			'padding-right': generateCSSUnit(
 				iconMarginRightTablet,
 				iconTabletMarginUnit
 			),
-			'margin-bottom': generateCSSUnit(
+			'padding-bottom': generateCSSUnit(
 				iconMarginBottomTablet,
 				iconTabletMarginUnit
 			),
-			'margin-left': generateCSSUnit(
+			'padding-left': generateCSSUnit(
 				iconMarginLeftTablet,
 				iconTabletMarginUnit
 			),
 		},
 		//img
 		' .uagb-ifb-content .uagb-ifb-left-title-image > img ': {
-			'margin-top': generateCSSUnit(
+			'padding-top': generateCSSUnit(
 				iconMarginTopTablet,
 				iconTabletMarginUnit
 			),
-			'margin-right': generateCSSUnit(
+			'padding-right': generateCSSUnit(
 				iconMarginRightTablet,
 				iconTabletMarginUnit
 			),
-			'margin-bottom': generateCSSUnit(
+			'padding-bottom': generateCSSUnit(
 				iconMarginBottomTablet,
 				iconTabletMarginUnit
 			),
-			'margin-left': generateCSSUnit(
+			'padding-left': generateCSSUnit(
 				iconMarginLeftTablet,
 				iconTabletMarginUnit
 			),
 		},
 		' .uagb-ifb-content > svg ': {
-			'margin-top': generateCSSUnit(
+			'padding-top': generateCSSUnit(
 				iconMarginTopTablet,
 				iconTabletMarginUnit
 			),
-			'margin-right': generateCSSUnit(
+			'padding-right': generateCSSUnit(
 				iconMarginRightTablet,
 				iconTabletMarginUnit
 			),
-			'margin-bottom': generateCSSUnit(
+			'padding-bottom': generateCSSUnit(
 				iconMarginBottomTablet,
 				iconTabletMarginUnit
 			),
-			'margin-left': generateCSSUnit(
+			'padding-left': generateCSSUnit(
 				iconMarginLeftTablet,
 				iconTabletMarginUnit
 			),
 		},
 		' .uagb-ifb-content .uagb-ifb-right-title-image > img ': {
-			'margin-top': generateCSSUnit(
+			'padding-top': generateCSSUnit(
 				iconMarginTopTablet,
 				iconTabletMarginUnit
 			),
-			'margin-right': generateCSSUnit(
+			'padding-right': generateCSSUnit(
 				iconMarginRightTablet,
 				iconTabletMarginUnit
 			),
-			'margin-bottom': generateCSSUnit(
+			'padding-bottom': generateCSSUnit(
 				iconMarginBottomTablet,
 				iconTabletMarginUnit
 			),
-			'margin-left': generateCSSUnit(
+			'padding-left': generateCSSUnit(
 				iconMarginLeftTablet,
 				iconTabletMarginUnit
 			),
 		},
 		'.uagb-infobox__content-wrap img': {
-			'margin-top': generateCSSUnit(
+			'padding-top': generateCSSUnit(
 				iconMarginTopTablet,
 				iconTabletMarginUnit
 			),
-			'margin-right': generateCSSUnit(
+			'padding-right': generateCSSUnit(
 				iconMarginRightTablet,
 				iconTabletMarginUnit
 			),
-			'margin-bottom': generateCSSUnit(
+			'padding-bottom': generateCSSUnit(
 				iconMarginBottomTablet,
 				iconTabletMarginUnit
 			),
-			'margin-left': generateCSSUnit(
+			'padding-left': generateCSSUnit(
 				iconMarginLeftTablet,
 				iconTabletMarginUnit
 			),
@@ -787,145 +796,145 @@ function styling( props ) {
 			'margin-right': generateCSSUnit( separatorMarginRightMobile, separatorMobileMarginUnit ),
 		},
 		' .uagb-ifb-icon-wrap > svg': {
-			'margin-top': generateCSSUnit(
+			'padding-top': generateCSSUnit(
 				iconMarginTopMobile,
 				iconMobileMarginUnit
 			),
-			'margin-right': generateCSSUnit(
+			'padding-right': generateCSSUnit(
 				iconMarginRightMobile,
 				iconMobileMarginUnit
 			),
-			'margin-bottom': generateCSSUnit(
+			'padding-bottom': generateCSSUnit(
 				iconMarginBottomMobile,
 				iconMobileMarginUnit
 			),
-			'margin-left': generateCSSUnit(
+			'padding-left': generateCSSUnit(
 				iconMarginLeftMobile,
 				iconMobileMarginUnit
 			),
 		},
 		'.uagb-infobox__content-wrap .uagb-ifb-content .uagb-ifb-left-title-image img': {
-			'margin-top': generateCSSUnit(
+			'padding-top': generateCSSUnit(
 				iconMarginTopMobile,
 				iconMobileMarginUnit
 			),
-			'margin-right': generateCSSUnit(
+			'padding-right': generateCSSUnit(
 				iconMarginRightMobile,
 				iconMobileMarginUnit
 			),
-			'margin-bottom': generateCSSUnit(
+			'padding-bottom': generateCSSUnit(
 				iconMarginBottomMobile,
 				iconMobileMarginUnit
 			),
-			'margin-left': generateCSSUnit(
+			'padding-left': generateCSSUnit(
 				iconMarginLeftMobile,
 				iconMobileMarginUnit
 			),
 		},
 		'.uagb-infobox__content-wrap .uagb-ifb-content .uagb-ifb-right-title-image img': {
-			'margin-top': generateCSSUnit(
+			'padding-top': generateCSSUnit(
 				iconMarginTopMobile,
 				iconMobileMarginUnit
 			),
-			'margin-right': generateCSSUnit(
+			'padding-right': generateCSSUnit(
 				iconMarginRightMobile,
 				iconMobileMarginUnit
 			),
-			'margin-bottom': generateCSSUnit(
+			'padding-bottom': generateCSSUnit(
 				iconMarginBottomMobile,
 				iconMobileMarginUnit
 			),
-			'margin-left': generateCSSUnit(
+			'padding-left': generateCSSUnit(
 				iconMarginLeftMobile,
 				iconMobileMarginUnit
 			),
 		},
 		'.uagb-infobox__content-wrap > svg': {
-			'margin-top': generateCSSUnit(
+			'padding-top': generateCSSUnit(
 				iconMarginTopMobile,
 				iconMobileMarginUnit
 			),
-			'margin-right': generateCSSUnit(
+			'padding-right': generateCSSUnit(
 				iconMarginRightMobile,
 				iconMobileMarginUnit
 			),
-			'margin-bottom': generateCSSUnit(
+			'padding-bottom': generateCSSUnit(
 				iconMarginBottomMobile,
 				iconMobileMarginUnit
 			),
-			'margin-left': generateCSSUnit(
+			'padding-left': generateCSSUnit(
 				iconMarginLeftMobile,
 				iconMobileMarginUnit
 			),
 		},
 		' .uagb-ifb-content > svg': {
-			'margin-top': generateCSSUnit(
+			'padding-top': generateCSSUnit(
 				iconMarginTopMobile,
 				iconMobileMarginUnit
 			),
-			'margin-right': generateCSSUnit(
+			'padding-right': generateCSSUnit(
 				iconMarginRightMobile,
 				iconMobileMarginUnit
 			),
-			'margin-bottom': generateCSSUnit(
+			'padding-bottom': generateCSSUnit(
 				iconMarginBottomMobile,
 				iconMobileMarginUnit
 			),
-			'margin-left': generateCSSUnit(
+			'padding-left': generateCSSUnit(
 				iconMarginLeftMobile,
 				iconMobileMarginUnit
 			),
 		},
 		' .uagb-ifb-content .uagb-ifb-left-title-image > svg': {
-			'margin-top': generateCSSUnit(
+			'padding-top': generateCSSUnit(
 				iconMarginTopMobile,
 				iconMobileMarginUnit
 			),
-			'margin-right': generateCSSUnit(
+			'padding-right': generateCSSUnit(
 				iconMarginRightMobile,
 				iconMobileMarginUnit
 			),
-			'margin-bottom': generateCSSUnit(
+			'padding-bottom': generateCSSUnit(
 				iconMarginBottomMobile,
 				iconMobileMarginUnit
 			),
-			'margin-left': generateCSSUnit(
+			'padding-left': generateCSSUnit(
 				iconMarginLeftMobile,
 				iconMobileMarginUnit
 			),
 		},
 		' .uagb-ifb-content .uagb-ifb-right-title-image > svg': {
-			'margin-top': generateCSSUnit(
+			'padding-top': generateCSSUnit(
 				iconMarginTopMobile,
 				iconMobileMarginUnit
 			),
-			'margin-right': generateCSSUnit(
+			'padding-right': generateCSSUnit(
 				iconMarginRightMobile,
 				iconMobileMarginUnit
 			),
-			'margin-bottom': generateCSSUnit(
+			'padding-bottom': generateCSSUnit(
 				iconMarginBottomMobile,
 				iconMobileMarginUnit
 			),
-			'margin-left': generateCSSUnit(
+			'padding-left': generateCSSUnit(
 				iconMarginLeftMobile,
 				iconMobileMarginUnit
 			),
 		},
 		'.uagb-infobox__content-wrap img': {
-			'margin-top': generateCSSUnit(
+			'padding-top': generateCSSUnit(
 				iconMarginTopMobile,
 				iconMobileMarginUnit
 			),
-			'margin-right': generateCSSUnit(
+			'padding-right': generateCSSUnit(
 				iconMarginRightMobile,
 				iconMobileMarginUnit
 			),
-			'margin-bottom': generateCSSUnit(
+			'padding-bottom': generateCSSUnit(
 				iconMarginBottomMobile,
 				iconMobileMarginUnit
 			),
-			'margin-left': generateCSSUnit(
+			'padding-left': generateCSSUnit(
 				iconMarginLeftMobile,
 				iconMobileMarginUnit
 			),
@@ -981,30 +990,29 @@ function styling( props ) {
 		};
 
 		tabletSelectors[ '.uagb-infobox__content-wrap img' ] = {
-			'width': generateCSSUnit( imageWidthTablet, imageWidthUnit ),
+			'width': generateCSSUnit( imageWidthTablet, imageWidthUnitTablet ),
 		};
 		tabletSelectors[ '.uagb-infobox__content-wrap .uagb-ifb-content .uagb-ifb-right-title-image > img' ] = {
-			'width': generateCSSUnit( imageWidthTablet, imageWidthUnit ),
+			'width': generateCSSUnit( imageWidthTablet, imageWidthUnitTablet ),
 		};
 		tabletSelectors[ '.uagb-infobox__content-wrap .uagb-ifb-content .uagb-ifb-left-title-image > img' ] = {
-			'width': generateCSSUnit( imageWidthTablet, imageWidthUnit ),
+			'width': generateCSSUnit( imageWidthTablet, imageWidthUnitTablet ),
 		};
 		tabletSelectors[ '.uagb-infobox__content-wrap .uagb-ifb-content .uagb-ifb-image-content > img' ] = {
-			'width': generateCSSUnit( imageWidthTablet, imageWidthUnit ),
+			'width': generateCSSUnit( imageWidthTablet, imageWidthUnitTablet ),
 		};
 
 		mobileSelectors[ '.uagb-infobox__content-wrap img' ] = {
-			'width': generateCSSUnit( imageWidthMobile, imageWidthUnit ),
-
+			'width': generateCSSUnit( imageWidthMobile, imageWidthUnitMobile ),
 		};
 		mobileSelectors[ '.uagb-infobox__content-wrap .uagb-ifb-content .uagb-ifb-right-title-image > img' ] = {
-			'width': generateCSSUnit( imageWidthMobile, imageWidthUnit ),
+			'width': generateCSSUnit( imageWidthMobile, imageWidthUnitMobile ),
 		};
 		mobileSelectors[ '.uagb-infobox__content-wrap .uagb-ifb-content .uagb-ifb-left-title-image > img' ] = {
-			'width': generateCSSUnit( imageWidthMobile, imageWidthUnit ),
+			'width': generateCSSUnit( imageWidthMobile, imageWidthUnitMobile ),
 		};
 		mobileSelectors[ '.uagb-infobox__content-wrap .uagb-ifb-content .uagb-ifb-image-content > img' ] = {
-			'width': generateCSSUnit( imageWidthMobile, imageWidthUnit ),
+			'width': generateCSSUnit( imageWidthMobile, imageWidthUnitMobile ),
 		};
 	}
 

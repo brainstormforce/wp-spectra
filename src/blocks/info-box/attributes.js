@@ -920,6 +920,20 @@ const attributes = {
 			styleType: 'image-width-unit'
 		}
 	},
+	imageWidthUnitTablet: {
+		type: 'string',
+		default: 'px',
+		UAGCopyPaste: {
+			styleType: 'image-width-unit-tablet'
+		}
+	},
+	imageWidthUnitMobile: {
+		type: 'string',
+		default: 'px',
+		UAGCopyPaste: {
+			styleType: 'image-width-unit-mobile'
+		}
+	},
 	iconimgBorderRadiusUnit: {
 		type: 'string',
 		default: 'px',
