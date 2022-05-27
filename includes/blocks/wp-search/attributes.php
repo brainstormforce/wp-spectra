@@ -7,7 +7,7 @@
  * @package uagb
  */
 
-$inputBorderDefaults   = array(
+$inputBorderDefaults = array(
 	'borderRadius' => 3,
 );
 
