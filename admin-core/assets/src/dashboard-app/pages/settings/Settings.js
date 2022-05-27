@@ -85,9 +85,9 @@ const Settings = () => {
 					{ 'global-settings' === activeSettingsNavigationTab &&
 						<>
 							<ContentWidth/>
+							<BlocksEditorSpacing/>
                             <CollapsePanels/>
                             <CopyPasteStyles/>
-							<BlocksEditorSpacing/>
                         </>
                     }
                     { 'asset-generation' === activeSettingsNavigationTab &&
