@@ -95,6 +95,8 @@ const Settings = ( props ) => {
 		leftPaddingMobile,
 		rightPaddingMobile,
 		paddingType,
+		paddingTypeTablet,
+		paddingTypeMobile,
 		paddingLink,
 		topMarginDesktop,
 		bottomMarginDesktop,
@@ -109,6 +111,8 @@ const Settings = ( props ) => {
 		leftMarginMobile,
 		rightMarginMobile,
 		marginType,
+		marginTypeTablet,
+		marginTypeMobile,
 		marginLink,
 		rowGapDesktop,
 		rowGapTablet,
@@ -1147,12 +1151,12 @@ const Settings = ( props ) => {
 						label: 'paddingType',
 					} }
 					mUnit={ {
-						value: paddingType,
-						label: 'paddingType',
+						value: paddingTypeMobile,
+						label: 'paddingTypeMobile',
 					} }
 					tUnit={ {
-						value: paddingType,
-						label: 'paddingType',
+						value: paddingTypeTablet,
+						label: 'paddingTypeTablet',
 					} }
 					attributes={ attributes }
 					setAttributes={ setAttributes }
@@ -1217,12 +1221,12 @@ const Settings = ( props ) => {
 						label: 'marginType',
 					} }
 					mUnit={ {
-						value: marginType,
-						label: 'marginType',
+						value: marginTypeMobile,
+						label: 'marginTypeMobile',
 					} }
 					tUnit={ {
-						value: marginType,
-						label: 'marginType',
+						value: marginTypeTablet,
+						label: 'marginTypeTablet',
 					} }
 					attributes={ attributes }
 					setAttributes={ setAttributes }
