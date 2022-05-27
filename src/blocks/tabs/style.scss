@@ -22,6 +22,7 @@
 		li.uagb-tab a {
 			position: relative;
 			padding: 6px 12px;
+			display: inline-flex;
 		}
 
 		p {
@@ -37,7 +38,8 @@
 			align-items: center;
 
 			.uagb-tabs__icon {
-				margin-top: 3px;
+				display: flex;
+				align-self: center;
 			}
 		}
 
@@ -61,7 +63,8 @@
 			display: block;
 
 			.uagb-tabs__icon {
-				margin-top: 3px;
+				display: flex;
+				align-self: center;
 			}
 		}
 	}

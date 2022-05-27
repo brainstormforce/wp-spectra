@@ -131,6 +131,8 @@ return array(
 	'subHeadTransform'           => '',
 	'subHeadDecoration'          => '',
 	'imageWidthUnit'             => 'px',
+	'imageWidthUnitTablet'       => 'px',
+	'imageWidthUnitMobile'       => 'px',
 	'iconimgBorderRadiusUnit'    => 'px',
 	'imageWidthMobile'           => '',
 	'imageWidthTablet'           => '',

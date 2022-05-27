@@ -314,9 +314,13 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					'background' => $attr['bgColor'],
 					'text-align' => $attr['align'],
 				),
-				' .uagb-post__inner-wrap .uagb-post__text' => array(
+				' .uagb-post__inner-wrap .uagb-post__text:not(.highlighted)' => array(
 					'margin-left'  => UAGB_Helper::get_css_value( $paddingLeft, $attr['contentPaddingUnit'] ),
 					'margin-right' => UAGB_Helper::get_css_value( $paddingRight, $attr['contentPaddingUnit'] ),
+				),
+				' .uagb-post__inner-wrap .uagb-post__text:first-child.highlighted:first-child' => array(
+					'margin-top'  => UAGB_Helper::get_css_value( $paddingTop, $attr['contentPaddingUnit'] ),
+					'margin-left' => UAGB_Helper::get_css_value( $paddingLeft, $attr['contentPaddingUnit'] ),
 				),
 				' .uagb-post__inner-wrap .uagb-post__text:first-child' => array(
 					'margin-top' => UAGB_Helper::get_css_value( $paddingTop, $attr['contentPaddingUnit'] ),
@@ -1071,6 +1075,29 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 			}
 
 			return $gen_bg_css;
+		}
+
+		/**
+		 * Since title text is set to flex, we need this function so that stack alignment doesn't break.
+		 * It converts the normal text-align values to flex-alignment based values.
+		 *
+		 * @since x.x.x
+		 * @param string $text_align Alignment value from text-align property.
+		 */
+		public static function text_alignment_to_flex( $text_align ) {
+
+			switch ( $text_align ) {
+
+				case 'left':
+					return 'start';
+				case 'center':
+					return 'center';
+				case 'right':
+					return 'end';
+				default:
+					return 'start';
+			}
+
 		}
 	}
 }

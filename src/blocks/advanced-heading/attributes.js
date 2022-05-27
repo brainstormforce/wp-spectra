@@ -29,7 +29,7 @@ const attributes = {
 		}
 	},
 	headingTitleToggle: {
-		source: 'boolean',
+		type: 'boolean',
 		default: true,
 	},
 	headingTitle: {
@@ -41,7 +41,7 @@ const attributes = {
 		type: 'string',
 	},
 	headingDescToggle: {
-		source: 'boolean',
+		type: 'boolean',
 		default: false,
 	},
 	headingDesc: {
@@ -701,213 +701,282 @@ const attributes = {
 	// Highlight
 	highLightColor: {
 		type: 'string',
-		default: '#fff'
+		default: '#fff',
+		UAGCopyPaste: {
+			styleType: 'highlight-color'
+		}
 	},
 	highLightBackground: {
 		type: 'string',
-		default: '#6104ff'
+		default: '#6104ff',
+		UAGCopyPaste: {
+			styleType: 'highlight-background'
+		}
 	},
 	highLightBorderWidth: {
 		type: 'number',
 		default: '',
+		UAGCopyPaste: {
+			styleType: 'highlight-border-width'
+		}
 	},
 	highLightBorderRadius: {
 		type: 'number',
 		default: '',
+		UAGCopyPaste: {
+			styleType: 'highlight-border-radius'
+		}
 	},
 	highLightBorderStyle: {
 		type: 'string',
 		default: 'none',
+		UAGCopyPaste: {
+			styleType: 'highlight-border-style'
+		}
 	},
 	highLightBorderColor: {
 		type: 'string',
 		default: '',
+		UAGCopyPaste: {
+			styleType: 'highlight-border-color'
+		}
 	},
 	highLightBorderHColor: {
 		type: 'string',
 		default: '',
+		UAGCopyPaste: {
+			styleType: 'highlight-border-hover-color'
+		}
 	},
 	highLightLoadGoogleFonts: {
 		type: 'boolean',
 		default: false,
 		UAGCopyPaste: {
-			styleType: 'main-title-load-google-fonts'
+			styleType: 'highlight-load-google-fonts'
 		}
 	},
 	highLightFontFamily: {
 		type: 'string',
 		default: 'Default',
 		UAGCopyPaste: {
-			styleType: 'main-title-font-family'
+			styleType: 'highlight-font-family'
 		}
 	},
 	highLightFontWeight: {
 		type: 'string',
 		UAGCopyPaste: {
-			styleType: 'main-title-font-weight'
+			styleType: 'highlight-font-weight'
 		}
 	},
 	highLightFontStyle: {
 		type: 'string',
 		default: 'normal',
 		UAGCopyPaste: {
-			styleType: 'main-title-font-style'
+			styleType: 'highlight-font-style'
 		}
 	},
 	highLightTransform: {
 		type: 'string',
 		UAGCopyPaste: {
-			styleType: 'main-title-transform'
+			styleType: 'highlight-font-transform'
 		}
 	},
 	highLightDecoration: {
 		type: 'string',
 		UAGCopyPaste: {
-			styleType: 'main-title-decoration'
+			styleType: 'highlight-font-decoration'
 		}
 	},
 	highLightFontSizeType: {
 		type: 'string',
 		default: 'px',
 		UAGCopyPaste: {
-			styleType: 'main-title-font-size-type'
+			styleType: 'highlight-font-size-type'
 		}
 	},
 	highLightLineHeightType: {
 		type: 'string',
 		default: 'em',
 		UAGCopyPaste: {
-			styleType: 'main-title-line-height-type'
+			styleType: 'highlight-line-height-type'
 		}
 	},
 	highLightFontSize: {
 		type: 'number',
 		UAGCopyPaste: {
-			styleType: 'main-title-font-size'
+			styleType: 'highlight-font-size'
 		}
 	},
 	highLightFontSizeTablet: {
 		type: 'number',
 		UAGCopyPaste: {
-			styleType: 'main-title-font-size-tablet'
+			styleType: 'highlight-font-size-tablet'
 		}
 	},
 	highLightFontSizeMobile: {
 		type: 'number',
 		UAGCopyPaste: {
-			styleType: 'main-title-font-size-mobile'
+			styleType: 'highlight-font-size-mobile'
 		}
 	},
 	highLightLineHeight: {
 		type: 'number',
 		UAGCopyPaste: {
-			styleType: 'main-title-line-height'
+			styleType: 'highlight-line-height'
 		}
 	},
 	highLightLineHeightTablet: {
 		type: 'number',
 		UAGCopyPaste: {
-			styleType: 'main-title-line-height-tablet'
+			styleType: 'highlight-line-height-tablet'
 		}
 	},
 	highLightLineHeightMobile: {
 		type: 'number',
 		UAGCopyPaste: {
-			styleType: 'main-title-line-height-mobile'
+			styleType: 'highlight-line-height-mobile'
 		}
 	},
 	highLightLetterSpacing: {
 		type: 'number',
 		UAGCopyPaste: {
-			styleType: 'main-title-letter-spacing'
+			styleType: 'highlight-letter-spacing'
 		}
 	},
 	highLightLetterSpacingTablet: {
 		type: 'number',
 		UAGCopyPaste: {
-			styleType: 'main-title-letter-spacing-tablet'
+			styleType: 'highlight-letter-spacing-tablet'
 		}
 	},
 	highLightLetterSpacingMobile: {
 		type: 'number',
 		UAGCopyPaste: {
-			styleType: 'main-title-letter-spacing-mobile'
+			styleType: 'highlight-letter-spacing-mobile'
 		}
 	},
 	highLightLetterSpacingType: {
 		type: 'string',
 		default: 'px',
 		UAGCopyPaste: {
-			styleType: 'main-title-letter-spacing-type'
+			styleType: 'highlight-letter-spacing-type'
 		}
 	},
 	highLightTopPadding : {
 		type: 'number',
 		isUAGStyle: true,
+		UAGCopyPaste: {
+			styleType: 'highlight-top-padding'
+		}
 	},
 	highLightRightPadding : {
 		type: 'number',
 		isUAGStyle: true,
+		UAGCopyPaste: {
+			styleType: 'highlight-right-padding'
+		}
 	},
 	highLightLeftPadding : {
 		type: 'number',
 		isUAGStyle: true,
+		UAGCopyPaste: {
+			styleType: 'highlight-left-padding'
+		}
 	},
 	highLightBottomPadding : {
 		type: 'number',
 		isUAGStyle: true,
+		UAGCopyPaste: {
+			styleType: 'highlight-bottom-padding'
+		}
 	},
 	highLightTopPaddingTablet: {
 		type: 'number',
 		isUAGStyle: true,
+		UAGCopyPaste: {
+			styleType: 'highlight-top-padding-tablet'
+		}
 	},
 	highLightRightPaddingTablet: {
 		type: 'number',
 		isUAGStyle: true,
+		UAGCopyPaste: {
+			styleType: 'highlight-right-padding-tablet'
+		}
 	},
 	highLightLeftPaddingTablet: {
 		type: 'number',
 		isUAGStyle: true,
+		UAGCopyPaste: {
+			styleType: 'highlight-left-padding-tablet'
+		}
 	},
 	highLightBottomPaddingTablet: {
 		type: 'number',
 		isUAGStyle: true,
+		UAGCopyPaste: {
+			styleType: 'highlight-bottom-padding-tablet'
+		}
 	},
 	highLightTopPaddingMobile: {
 		type: 'number',
 		isUAGStyle: true,
+		UAGCopyPaste: {
+			styleType: 'highlight-top-padding-mobile'
+		}
 	},
 	highLightRightPaddingMobile: {
 		type: 'number',
 		isUAGStyle: true,
+		UAGCopyPaste: {
+			styleType: 'highlight-right-padding-mobile'
+		}
 	},
 	highLightLeftPaddingMobile: {
 		type: 'number',
 		isUAGStyle: true,
+		UAGCopyPaste: {
+			styleType: 'highlight-left-padding-mobile'
+		}
 	},
 	highLightBottomPaddingMobile: {
 		type: 'number',
 		isUAGStyle: true,
+		UAGCopyPaste: {
+			styleType: 'highlight-bottom-padding-mobile'
+		}
 	},
 	highLightPaddingUnit : {
 		type: 'string',
 		default: 'px',
 		isUAGStyle: true,
+		UAGCopyPaste: {
+			styleType: 'highlight-padding-unit'
+		}
 	},
 	highLightPaddingUnitTablet: {
 		type: 'string',
 		default: 'px',
 		isUAGStyle: true,
+		UAGCopyPaste: {
+			styleType: 'highlight-padding-unit-tablet'
+		}
 	},
 	highLightPaddingUnitMobile : {
 		type: 'string',
 		default: 'px',
 		isUAGStyle: true,
+		UAGCopyPaste: {
+			styleType: 'highlight-padding-unit-mobile'
+		}
 	},
 	highLightPaddingLink: {
 		type: 'boolean',
 		default: false,
 		isUAGStyle: true,
+		UAGCopyPaste: {
+			styleType: 'highlight-padding-link'
+		}
 	},
 };
 
