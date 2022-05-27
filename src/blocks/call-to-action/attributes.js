@@ -512,20 +512,6 @@ const attributes = {
 		type: 'string',
 		default: 'tablet',
 	},
-	ctaLeftSpace: {
-		type: 'number',
-		UAGCopyPaste: {
-			styleType: 'btn-left-margin'
-		},
-		default: 5,
-	},
-	ctaLeftSpaceType: {
-		type: 'string',
-		default: 'px',
-		UAGCopyPaste: {
-			styleType: 'btn-margin-unit-type'
-		},
-	},
 	ctaRightSpace: {
 		type: 'number',
 		default: 5,
