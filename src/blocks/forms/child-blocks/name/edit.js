@@ -32,12 +32,12 @@ const UAGBFormsNameEdit = ( props ) => {
 
 	return (
 		<>
-		{ props.attributes.isPreview ? <img width='100%' src={ previewImageData } alt=''/> : (
-			<Suspense fallback={ lazyLoader() }>
-				<Settings parentProps={ props } />
-				<Render parentProps={ props } />
-			</Suspense>
-		) }
+			{ props.attributes.isPreview ? <img width='100%' src={ previewImageData } alt=''/> : (
+				<Suspense fallback={ lazyLoader() }>
+					<Settings parentProps={ props } />
+					<Render parentProps={ props } />
+				</Suspense>
+			) }
 		</>
 	);
 };
