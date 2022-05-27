@@ -78,6 +78,8 @@ function styling( props ) {
 		leftPaddingMobile,
 		rightPaddingMobile,
 		paddingType,
+		paddingTypeTablet,
+		paddingTypeMobile,
 		topMarginDesktop,
 		bottomMarginDesktop,
 		leftMarginDesktop,
@@ -91,6 +93,8 @@ function styling( props ) {
 		leftMarginMobile,
 		rightMarginMobile,
 		marginType,
+		marginTypeTablet,
+		marginTypeMobile,
 		rowGapDesktop,
 		rowGapTablet,
 		rowGapMobile,
@@ -319,14 +323,14 @@ function styling( props ) {
 
 	const tablet_selectors = {
 		'.wp-block' : {
-			'padding-top': generateCSSUnit( topPaddingTablet, paddingType ),
-			'padding-bottom': generateCSSUnit( bottomPaddingTablet, paddingType ),
-			'padding-left': generateCSSUnit( leftPaddingTablet, paddingType ),
-			'padding-right': generateCSSUnit( rightPaddingTablet, paddingType ),
-			'margin-top': generateCSSUnit( topMarginTablet, marginType ),
-			'margin-bottom': generateCSSUnit( bottomMarginTablet, marginType ),
-			'margin-left': generateCSSUnit( leftMarginTablet, marginType ),
-			'margin-right': generateCSSUnit( rightMarginTablet, marginType ),
+			'padding-top': generateCSSUnit( topPaddingTablet, paddingTypeTablet ),
+			'padding-bottom': generateCSSUnit( bottomPaddingTablet, paddingTypeTablet ),
+			'padding-left': generateCSSUnit( leftPaddingTablet, paddingTypeTablet ),
+			'padding-right': generateCSSUnit( rightPaddingTablet, paddingTypeTablet ),
+			'margin-top': generateCSSUnit( topMarginTablet, marginTypeTablet ),
+			'margin-bottom': generateCSSUnit( bottomMarginTablet, marginTypeTablet ),
+			'margin-left': generateCSSUnit( leftMarginTablet, marginTypeTablet ),
+			'margin-right': generateCSSUnit( rightMarginTablet, marginTypeTablet ),
 			'min-height' : generateCSSUnit( minHeightTablet, minHeightType ),
 			...containerBackgroundCSSTablet
 		},
@@ -376,14 +380,14 @@ function styling( props ) {
 
 	const mobile_selectors = {
 		'.wp-block' : {
-			'padding-top': generateCSSUnit( topPaddingMobile, paddingType ),
-			'padding-bottom': generateCSSUnit( bottomPaddingMobile, paddingType ),
-			'padding-left': generateCSSUnit( leftPaddingMobile, paddingType ),
-			'padding-right': generateCSSUnit( rightPaddingMobile, paddingType ),
-			'margin-top': generateCSSUnit( topMarginMobile, marginType ),
-			'margin-bottom': generateCSSUnit( bottomMarginMobile, marginType ),
-			'margin-left': generateCSSUnit( leftMarginMobile, marginType ),
-			'margin-right': generateCSSUnit( rightMarginMobile, marginType ),
+			'padding-top': generateCSSUnit( topPaddingMobile, paddingTypeMobile ),
+			'padding-bottom': generateCSSUnit( bottomPaddingMobile, paddingTypeMobile ),
+			'padding-left': generateCSSUnit( leftPaddingMobile, paddingTypeMobile ),
+			'padding-right': generateCSSUnit( rightPaddingMobile, paddingTypeMobile ),
+			'margin-top': generateCSSUnit( topMarginMobile, marginTypeMobile ),
+			'margin-bottom': generateCSSUnit( bottomMarginMobile, marginTypeMobile ),
+			'margin-left': generateCSSUnit( leftMarginMobile, marginTypeMobile ),
+			'margin-right': generateCSSUnit( rightMarginMobile, marginTypeMobile ),
 			'min-height' : generateCSSUnit( minHeightMobile, minHeightType ),
 			...containerBackgroundCSSMobile
 		},
