@@ -118,10 +118,14 @@ const Settings = ( props ) => {
 		rowGapTablet,
 		rowGapMobile,
 		rowGapType,
+		rowGapTypeTablet,
+		rowGapTypeMobile,
 		columnGapDesktop,
 		columnGapTablet,
 		columnGapMobile,
 		columnGapType,
+		columnGapTypeTablet,
+		columnGapTypeMobile,
 		contentWidth,
 		isBlockRootParent,
 		innerContentWidth,
@@ -1019,22 +1023,30 @@ const Settings = ( props ) => {
 						desktop: {
 							value: rowGapDesktop,
 							label: 'rowGapDesktop',
+							unit:  {
+								value: rowGapType,
+								label: 'rowGapType',
+							}
 						},
 						tablet: {
 							value: rowGapTablet,
 							label: 'rowGapTablet',
+							unit:  {
+								value: rowGapTypeTablet,
+								label: 'rowGapTypeTablet',
+							}
 						},
 						mobile: {
 							value: rowGapMobile,
 							label: 'rowGapMobile',
+							unit: {
+								value: rowGapTypeMobile,
+								label: 'rowGapTypeMobile',
+							},
 						},
 					} }
 					min={ 0 }
 					max={ 200 }
-					unit={ {
-						value: rowGapType,
-						label: 'rowGapType',
-					} }
 					units={ [
 						{
 							name: __(
@@ -1060,22 +1072,42 @@ const Settings = ( props ) => {
 						desktop: {
 							value: columnGapDesktop,
 							label: 'columnGapDesktop',
+							unit:  {
+								value: columnGapType,
+								label: 'columnGapType',
+							}
 						},
 						tablet: {
 							value: columnGapTablet,
 							label: 'columnGapTablet',
+							unit:  {
+								value: columnGapTypeTablet,
+								label: 'columnGapTypeTablet',
+							}
 						},
 						mobile: {
 							value: columnGapMobile,
 							label: 'columnGapMobile',
+							unit:  {
+								value: columnGapTypeMobile,
+								label: 'columnGapTypeMobile',
+							}
 						},
 					} }
 					min={ 0 }
 					max={ 200 }
-					unit={ {
-						value: columnGapType,
-						label: 'columnGapType',
-					} }
+					// unit={ {
+					// 	value: columnGapType,
+					// 	label: 'columnGapType',
+					// } }
+					// tUnit={ {
+					// 	value: columnGapTypeTablet,
+					// 	label: 'columnGapTypeTablet',
+					// } }
+					// mUnit={ {
+					// 	value: columnGapTypeMobile,
+					// 	label: 'columnGapTypeMobile',
+					// } }
 					units={ [
 						{
 							name: __(
