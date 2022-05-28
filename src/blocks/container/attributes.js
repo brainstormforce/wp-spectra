@@ -455,6 +455,20 @@ const attributes = {
 			styleType: 'container-padding-type'
 		},
 	},
+	paddingTypeTablet: {
+		type: 'string',
+		default: 'px',
+		UAGCopyPaste: {
+			styleType: 'container-padding-type-tablet'
+		},
+	},
+	paddingTypeMobile: {
+		type: 'string',
+		default: 'px',
+		UAGCopyPaste: {
+			styleType: 'container-padding-type-mobile'
+		},
+	},
 	paddingLink: {
 		type: 'boolean',
 		default: true,
@@ -539,6 +553,20 @@ const attributes = {
 			styleType: 'container-margin-type'
 		},
 	},
+	marginTypeTablet: {
+		type: 'string',
+		default: 'px',
+		UAGCopyPaste: {
+			styleType: 'container-margin-type-tablet'
+		},
+	},
+	marginTypeMobile: {
+		type: 'string',
+		default: 'px',
+		UAGCopyPaste: {
+			styleType: 'container-margin-type-mobile'
+		},
+	},
 	marginLink: {
 		type: 'boolean',
 		default: true,
@@ -573,6 +601,20 @@ const attributes = {
 			styleType: 'container-row-gap-type'
 		},
 	},
+	rowGapTypeTablet: {
+		type: 'string',
+		default: 'px',
+		UAGCopyPaste: {
+			styleType: 'container-row-gap-type-tablet'
+		},
+	},
+	rowGapTypeMobile: {
+		type: 'string',
+		default: 'px',
+		UAGCopyPaste: {
+			styleType: 'container-row-gap-type-mobile'
+		},
+	},
 	columnGapDesktop: {
 		type: 'number',
 		UAGCopyPaste: {
@@ -597,6 +639,20 @@ const attributes = {
 		default: 'px',
 		UAGCopyPaste: {
 			styleType: 'container-column-gap-type'
+		},
+	},
+	columnGapTypeTablet: {
+		type: 'string',
+		default: 'px',
+		UAGCopyPaste: {
+			styleType: 'container-column-gap-type-tablet'
+		},
+	},
+	columnGapTypeMobile: {
+		type: 'string',
+		default: 'px',
+		UAGCopyPaste: {
+			styleType: 'container-column-gap-type-mobile'
 		},
 	},
 	isPreview: {
