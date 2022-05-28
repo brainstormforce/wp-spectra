@@ -827,6 +827,9 @@ const Settings = ( props ) => {
 						value: overlayType,
 						label: 'overlayType'
 					}}
+					gradientOverlay={{
+						value: true,
+					}}
 					backgroundVideoType={ {
 						value: true,
 					} }

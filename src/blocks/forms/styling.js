@@ -144,6 +144,9 @@ function styling( props ) {
 		labelGapTablet,
 		labelGapMobile,
 		labelGapUnit,
+
+		displayLabels,
+
 	} = props.attributes;
 
 	let selectors = {};
@@ -159,6 +162,9 @@ function styling( props ) {
 		},
 		' form.uagb-forms-main-form, form.uagb-forms-main-form .uagb-forms-input, form.uagb-forms-main-form textarea': {
 			'text-align': overallAlignment,
+		},
+		' .uagb-forms-input-label': {
+			'display': displayLabels ? 'block' : 'none',
 		},
 
 		' .uagb-forms-main-form .uagb-forms-field-set': {
