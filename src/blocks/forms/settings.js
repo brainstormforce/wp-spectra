@@ -202,6 +202,9 @@ const Settings = ( props ) => {
 		labelGapTablet,
 		labelGapMobile,
 		labelGapUnit,
+
+		displayLabels,
+
 	} = attributes;
 
 	const presetSettings = () => {
@@ -223,6 +226,16 @@ const Settings = ( props ) => {
 				initialOpen={ false }
 				className="uagb__url-panel-body"
 			>
+				<ToggleControl
+					label={ __(
+						'Show Labels',
+						'ultimate-addons-for-gutenberg'
+					) }
+					checked={ displayLabels }
+					onChange={ () =>
+						setAttributes( { displayLabels : ! displayLabels } )
+					}
+				/>
 				<TextControl
 					label={ __(
 						'Hidden Field Label',
@@ -756,7 +769,8 @@ const Settings = ( props ) => {
 	const inputStyling = () => (
 		<UAGAdvancedPanelBody
 			title={ __( 'Input', 'ultimate-addons-for-gutenberg' ) }
-			initialOpen={ false }
+			// If displayLabels is false, this panel would be shown first and hence it's initialOpen should be set to true.
+			initialOpen={ ! displayLabels }
 		>
 			<AdvancedPopColorControl
 				label={ __( 'Color', 'ultimate-addons-for-gutenberg' ) }
@@ -1932,7 +1946,9 @@ const Settings = ( props ) => {
 						{ googleReCaptcha() }
 					</InspectorTab>
 					<InspectorTab { ...UAGTabs.style }>
-						{ labelStyling() }
+						{ displayLabels &&
+							labelStyling()
+						}
 						{ inputStyling() }
 						{ elementStyling() }
 						{ submitStyling() }
