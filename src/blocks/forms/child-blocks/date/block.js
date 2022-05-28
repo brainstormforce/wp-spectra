@@ -21,7 +21,11 @@ registerBlockType( 'uagb/forms-date', {
 	supports: {
 		anchor: true,
 	},
-	example: {},
+	example: {
+		attributes: {
+			isPreview: true,
+		}
+	},
 	save,
 	deprecated,
 } );
