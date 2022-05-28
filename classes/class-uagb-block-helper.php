@@ -55,10 +55,6 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 
 				$selectors[' .wp-block-button__link']['background'] = $attr['background'];
 
-				$selectors[' .wp-block-button__link:hover'] = array(
-					'background' => $attr['hBackground'],
-				);
-
 			} elseif ( 'gradient' === $attr['backgroundType'] ) {
 				$bg_obj = array(
 					'backgroundType' => 'gradient',
@@ -67,6 +63,29 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 
 				$btn_bg_css                           = self::uag_get_background_obj( $bg_obj );
 				$selectors[' .wp-block-button__link'] = $btn_bg_css;
+			}
+
+			// Hover background color types.
+			if ( 'transparent' === $attr['hoverbackgroundType'] ) {
+
+				$selectors[' .wp-block-button__link:hover'] = array(
+					'background' => 'transparent',
+				);
+
+			} elseif ( 'color' === $attr['hoverbackgroundType'] ) {
+
+				$selectors[' .wp-block-button__link:hover'] = array(
+					'background' => $attr['hBackground'],
+				);
+
+			} elseif ( 'gradient' === $attr['hoverbackgroundType'] ) {
+				$bg_hover_obj = array(
+					'backgroundType' => 'gradient',
+					'gradientValue'  => $attr['hovergradientValue'],
+				);
+
+				$btn_hover_bg_css                           = self::uag_get_background_obj( $bg_hover_obj );
+				$selectors[' .wp-block-button__link:hover'] = $btn_hover_bg_css;
 			}
 
 			$selectors[' .uagb-button__wrapper .uagb-buttons-repeater.wp-block-button__link'] = array(
