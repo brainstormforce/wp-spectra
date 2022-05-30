@@ -429,7 +429,7 @@ const Settings = ( props ) => {
 				className="uagb__url-panel-body"
 			>
 				<UAGIconPicker
-					label={ __( 'Icon', 'ultimate-addons-for-gutenberg' ) }
+					label={ __( 'Inactive Icon', 'ultimate-addons-for-gutenberg' ) }
 					value={ icon }
 					onChange={ ( value ) => onchangeIcon( value ) }
 				/>
