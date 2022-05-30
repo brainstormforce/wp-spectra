@@ -1,3 +1,12 @@
+import { getBorderAttributes } from '@Controls/generateAttributes';
+
+const overallBorderAttributes = getBorderAttributes( 'overall', {
+	borderTopWidth: 1,
+	borderRightWidth: 1,
+	borderBottomWidth: 1,
+	borderLeftWidth: 1,
+} );
+
 /**
  * BLOCK: UAGB column Attributes
  */
@@ -385,34 +394,19 @@ const attributes = {
 	borderStyle: {
 		type: 'string',
 		default: 'none',
-		UAGCopyPaste: {
-			styleType: 'overall-border-style'
-		},
 	},
 	borderWidth: {
 		type: 'number',
-		UAGCopyPaste: {
-			styleType: 'overall-border-width'
-		},
 		default: 1,
 	},
 	borderRadius: {
 		type: 'number',
-		UAGCopyPaste: {
-			styleType: 'overall-border-radius'
-		},
 	},
 	borderColor: {
 		type: 'string',
-		UAGCopyPaste: {
-			styleType: 'overall-border-color'
-		},
 	},
 	borderHoverColor: {
 		type: 'string',
-		UAGCopyPaste: {
-			styleType: 'overall-border-hover-color'
-		},
 	},
 	overlayType: {
 		type: 'string',
@@ -525,7 +519,8 @@ const attributes = {
 	isPreview: {
 		type: 'boolean',
 		default: false,
-	}
+	},
+	...overallBorderAttributes,
 };
 
 export default attributes;

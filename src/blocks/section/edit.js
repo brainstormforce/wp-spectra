@@ -7,6 +7,7 @@ import React, { lazy, Suspense, useEffect } from 'react';
 import lazyLoader from '@Controls/lazy-loader';
 import addBlockEditorDynamicStyles from '@Controls/addBlockEditorDynamicStyles';
 import { useDeviceType } from '@Controls/getPreviewType';
+import {migrateBorderAttributes} from '@Controls/generateAttributes';
 const Settings = lazy( () =>
 	import( /* webpackChunkName: "chunks/section/settings" */ './settings' )
 );
@@ -37,6 +38,14 @@ const UAGBSectionEdit = ( props ) => {
 
 		const { setAttributes, attributes } = props;
 
+		const {
+			borderStyle,
+			borderWidth,
+			borderColor,
+			borderHoverColor,
+			borderRadius,
+		} = props.attributes;
+
 		const { backgroundOpacity, backgroundImageColor } = attributes;
 
 		// Assigning block_id in the attribute.
@@ -44,13 +53,35 @@ const UAGBSectionEdit = ( props ) => {
 
 		setAttributes( { classMigrate: true } );
 
-		
+		// border
+		if( borderWidth || borderRadius || borderColor || borderHoverColor || borderStyle ){
+			const migrationAttributes = migrateBorderAttributes( 'overall', {
+				label: 'borderWidth',
+				value: borderWidth,
+			}, {
+				label: 'borderRadius',
+				value: borderRadius
+			}, {
+				label: 'borderColor',
+				value: borderColor
+			}, {
+				label: 'borderHoverColor',
+				value: borderHoverColor
+			},{
+				label: 'borderStyle',
+				value: borderStyle
+			}
+			);
+			props.setAttributes( migrationAttributes )
+		}
+
+
 		if ( 101 !== backgroundOpacity ) {
 			const color = hexToRGBA( maybeGetColorForVariable( backgroundImageColor ), backgroundOpacity );
 			setAttributes( { backgroundImageColor: color } );
 			setAttributes( { backgroundOpacity: 101 } );
 		}
-		
+
 	}, [] );
 
 	return (

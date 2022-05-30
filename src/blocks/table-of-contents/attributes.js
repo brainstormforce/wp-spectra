@@ -1,4 +1,18 @@
 import { __ } from '@wordpress/i18n';
+import { getBorderAttributes } from '@Controls/generateAttributes';
+
+
+const overallBorderAttributes = getBorderAttributes( 'overall', {
+	borderStyle: 'solid',
+	borderTopWidth: 1,
+	borderRightWidth: 1,
+	borderBottomWidth: 1,
+	borderLeftWidth: 1,
+	borderTopLeftRadius: 6,
+	borderTopRightRadius: 6,
+	borderBottomLeftRadius: 6,
+	borderBottomRightRadius: 6,
+} );
 
 const attributes = {
 	block_id: {
@@ -650,36 +664,18 @@ const attributes = {
 	// Border
 	borderStyle: {
 		type: 'string',
-		default: 'solid',
-		UAGCopyPaste: {
-			styleType: 'overall-border-style'
-		},
 	},
 	borderWidth: {
 		type: 'number',
-		UAGCopyPaste: {
-			styleType: 'overall-border-width'
-		},
-		default: 1,
 	},
 	borderRadius: {
 		type: 'number',
-		UAGCopyPaste: {
-			styleType: 'overall-border-radius'
-		},
-		default: 6,
 	},
 	borderColor: {
 		type: 'string',
-		UAGCopyPaste: {
-			styleType: 'overall-border-color'
-		},
 	},
-	borderHoverColor: {
+	borderHColor: {
 		type: 'string',
-		UAGCopyPaste: {
-			styleType: 'overall-border-hover-color'
-		},
 	},
 
 	// Link Font Family
@@ -889,7 +885,8 @@ const attributes = {
 	isPreview: {
 		type: 'boolean',
 		default: false,
-	}
+	},
+	...overallBorderAttributes,
 };
 
 export default attributes;
