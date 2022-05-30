@@ -52,6 +52,12 @@ function renderSVG( svg ) {
 						/>
 					</svg>
 				);
+			case 'align-justify':
+				return (
+					<svg width="18" height="12" viewBox="0 0 18 12" xmlns="http://www.w3.org/2000/svg">
+						<path d="M18 1H0M18 6.00001H0M18 11H0" stroke="#B1B1B1" stroke-width="2"/>
+					</svg>
+				);
 		}
 
 		return (
