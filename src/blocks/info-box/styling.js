@@ -203,11 +203,19 @@ function styling( props ) {
 		subHeadLetterSpacingTablet,
 		subHeadLetterSpacingMobile,
 		subHeadLetterSpacingType,
+
+		// icon attributes for icon view (circle and square)
+		iconView,
+		iconShape,
+		iconInnerPadding,
+		iconInnerPaddingType,
+		iconBackgroundColor,
+		iconBorderRadius
 	} = props.attributes;
 
 	const selectors = {
 		// Icon css
-		' .uagb-ifb-content .uagb-ifb-icon-wrap > svg': {
+		' .uagb-ifb-content .uagb-ifb-icon-wrap svg': {
 			'font-size': generateCSSUnit( iconSize, iconSizeType ),
 			'color': iconColor,
 			'fill': iconColor,
@@ -220,21 +228,12 @@ function styling( props ) {
 				iconMarginUnit
 			),
 		},
-		' .uagb-ifb-content .uagb-ifb-left-title-image > svg': {
-			'font-size': generateCSSUnit( iconSize, iconSizeType ),
-			'color': iconColor,
-			'fill': iconColor,
-			'width': generateCSSUnit( iconSize, iconSizeType ),
-			'line-height': generateCSSUnit( iconSize, iconSizeType ),
-			'padding-left': generateCSSUnit( iconLeftMargin, iconMarginUnit ),
-			'padding-right': generateCSSUnit( iconRightMargin, iconMarginUnit ),
-			'padding-top': generateCSSUnit( iconTopMargin, iconMarginUnit ),
-			'padding-bottom': generateCSSUnit(
-				iconBottomMargin,
-				iconMarginUnit
-			),
+		' .uagb-iconbox-icon-wrap': {
+			'margin' : 'auto',
+			'padding' : generateCSSUnit( iconInnerPadding, iconInnerPaddingType),
+			'display' : 'inline-block',
 		},
-		' .uagb-ifb-content .uagb-ifb-right-title-image > svg': {
+		' .uagb-ifb-content .uagb-ifb-left-title-image svg': {
 			'font-size': generateCSSUnit( iconSize, iconSizeType ),
 			'color': iconColor,
 			'fill': iconColor,
@@ -248,7 +247,21 @@ function styling( props ) {
 				iconMarginUnit
 			),
 		},
-		'.uagb-infobox__content-wrap .uagb-ifb-icon-wrap > svg': {
+		' .uagb-ifb-content .uagb-ifb-right-title-image svg': {
+			'font-size': generateCSSUnit( iconSize, iconSizeType ),
+			'color': iconColor,
+			'fill': iconColor,
+			'width': generateCSSUnit( iconSize, iconSizeType ),
+			'line-height': generateCSSUnit( iconSize, iconSizeType ),
+			'padding-left': generateCSSUnit( iconLeftMargin, iconMarginUnit ),
+			'padding-right': generateCSSUnit( iconRightMargin, iconMarginUnit ),
+			'padding-top': generateCSSUnit( iconTopMargin, iconMarginUnit ),
+			'padding-bottom': generateCSSUnit(
+				iconBottomMargin,
+				iconMarginUnit
+			),
+		},
+		'.uagb-infobox__content-wrap .uagb-ifb-icon-wrap svg': {
 			'font-size': generateCSSUnit( iconSize, iconSizeType ),
 			'color': iconColor,
 			'fill': iconColor,
@@ -458,6 +471,25 @@ function styling( props ) {
 			'margin-right': generateCSSUnit( separatorRightMargin, seperatorSpaceUnit ),
 		}
 	};
+
+	if( 'Stacked' === iconView ) {
+		selectors[ ' .uagb-iconbox-icon-wrap.uagb-infobox-shape-circle'] = {
+			'background-color' : iconBackgroundColor,
+			'border-radius' : '50%',
+		}
+		selectors[ ' .uagb-iconbox-icon-wrap.uagb-infobox-shape-squre'] = {
+			'background-color' : iconBackgroundColor,
+		}
+	}
+	else if( 'Framed' === iconView ) {
+		selectors[ ' .uagb-iconbox-icon-wrap.uagb-infobox-shape-circle'] = {
+			'border' : `${iconBorderRadius}px solid ${iconBackgroundColor}`,
+			'border-radius' : '50%',
+		}
+		selectors[ ' .uagb-iconbox-icon-wrap.uagb-infobox-shape-squre'] = {
+			'border' : `${iconBorderRadius}px solid ${iconBackgroundColor}`,
+		}
+	}
 	if( 'none' !== ctaBorderStyle ) {
 		selectors[' .uagb-infobox-cta-link'] = {
 			'border-style': ctaBorderStyle,

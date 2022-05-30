@@ -139,8 +139,7 @@ const Render = ( props ) => {
 
 	const output = (
 		<>
-			<div className={ iconView === 'none' ? 'spectra-infobox-none' : iconView === 'Stacked' ? 'spectra-infobox-stacked' : 'spectra-infobox-framed'}>
-				<div className={ iconView === 'none'? 'spectra-infobox-shape-none' : iconShape === 'Circle' ? 'spectra-infobox-shape-circle' : 'spectra-infobox-shape-squre' }>
+			{/* <div className={ iconView === 'none' ? 'spectra-infobox-none' : iconView === 'Stacked' ? 'spectra-infobox-stacked' : 'spectra-infobox-framed'}> */}
 					{ iconimgPosition === 'left' && iconImageHtml }
 					<div className="uagb-ifb-content">
 						{ iconimgPosition === 'above-title' && iconImageHtml }
@@ -185,9 +184,9 @@ const Render = ( props ) => {
 					</div>
 
 					{ iconimgPosition === 'right' && iconImageHtml }
-				</div>
 
-			</div>
+
+			{/* </div> */}
 		</>
 	);
 

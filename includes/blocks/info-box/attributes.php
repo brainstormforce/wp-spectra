@@ -216,4 +216,12 @@ return array(
 	'prefixLetterSpacingMobile'  => '',
 	'prefixLetterSpacingType'    => 'px',
 
+	// icon image
+	'iconView'    				 => 'none',
+	'iconShape'     => 'Circle',
+	'iconInnerPadding'    => 15,
+	'iconInnerPaddingType'     => 'px',
+	'iconBackgroundColor'     => '#6EC1E3',
+	'iconBorderRadius'     => 3,
+
 );

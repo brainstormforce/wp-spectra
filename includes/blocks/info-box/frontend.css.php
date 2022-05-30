@@ -37,44 +37,49 @@ $selectors = array(
 	' .uagb-ifb-icon svg'                                  => array( // For Backword.
 		'fill' => $attr['iconColor'],
 	),
-	'.uagb-infobox__content-wrap .uagb-ifb-icon-wrap > svg' => array(
-		'width'          => $icon_size,
-		'line-height'    => $icon_size,
-		'font-size'      => $icon_size,
-		'color'          => $attr['iconColor'],
-		'fill'           => $attr['iconColor'],
+	'.uagb-infobox__content-wrap .uagb-ifb-icon-wrap svg' => array(
+		'width'         => $icon_size,
+		'line-height'   => $icon_size,
+		'font-size'     => $icon_size,
+		'color'         => $attr['iconColor'],
+		'fill'          => $attr['iconColor'],
 		'padding-left'   => UAGB_Helper::get_css_value( $attr['iconLeftMargin'], 'px' ),
 		'padding-right'  => UAGB_Helper::get_css_value( $attr['iconRightMargin'], 'px' ),
 		'padding-top'    => UAGB_Helper::get_css_value( $attr['iconTopMargin'], 'px' ),
 		'padding-bottom' => UAGB_Helper::get_css_value( $attr['iconBottomMargin'], 'px' ),
 	),
-	' .uagb-ifb-content .uagb-ifb-icon-wrap > svg'         => array(
-		'line-height'    => $icon_size,
-		'font-size'      => $icon_size,
-		'color'          => $attr['iconColor'],
-		'fill'           => $attr['iconColor'],
+	' .uagb-ifb-content .uagb-ifb-icon-wrap svg'         => array(
+		'line-height'   => $icon_size,
+		'font-size'     => $icon_size,
+		'color'         => $attr['iconColor'],
+		'fill'          => $attr['iconColor'],
 		'padding-left'   => UAGB_Helper::get_css_value( $attr['iconLeftMargin'], 'px' ),
 		'padding-right'  => UAGB_Helper::get_css_value( $attr['iconRightMargin'], 'px' ),
 		'padding-top'    => UAGB_Helper::get_css_value( $attr['iconTopMargin'], 'px' ),
 		'padding-bottom' => UAGB_Helper::get_css_value( $attr['iconBottomMargin'], 'px' ),
 	),
-	' .uagb-ifb-content .uagb-ifb-left-title-image > svg'  => array(
-		'width'          => $icon_size,
-		'line-height'    => $icon_size,
-		'font-size'      => $icon_size,
-		'color'          => $attr['iconColor'],
-		'fill'           => $attr['iconColor'],
+	' .uagb-iconbox-icon-wrap' => array(
+		'margin' => 'auto',
+		'padding' => UAGB_Helper::get_css_value( $attr['iconInnerPadding'], $attr['iconInnerPaddingType']),
+		'display' => 'inline-block',
+	),
+	' .uagb-ifb-content .uagb-ifb-left-title-image svg'  => array(
+		'width'         => $icon_size,
+		'line-height'   => $icon_size,
+		'font-size'     => $icon_size,
+		'color'         => $attr['iconColor'],
+		'fill'          => $attr['iconColor'],
 		'padding-left'   => UAGB_Helper::get_css_value( $attr['iconLeftMargin'], 'px' ),
 		'padding-right'  => UAGB_Helper::get_css_value( $attr['iconRightMargin'], 'px' ),
 		'padding-top'    => UAGB_Helper::get_css_value( $attr['iconTopMargin'], 'px' ),
 		'padding-bottom' => UAGB_Helper::get_css_value( $attr['iconBottomMargin'], 'px' ),
 	),
-	' .uagb-ifb-content .uagb-ifb-right-title-image > svg' => array(
-		'width'          => $icon_size,
-		'line-height'    => $icon_size,
-		'font-size'      => $icon_size,
-		'color'          => $attr['iconColor'],
-		'fill'           => $attr['iconColor'],
+	' .uagb-ifb-content .uagb-ifb-right-title-image svg' => array(
+		'width'         => $icon_size,
+		'line-height'   => $icon_size,
+		'font-size'     => $icon_size,
+		'color'         => $attr['iconColor'],
+		'fill'          => $attr['iconColor'],
 		'padding-left'   => UAGB_Helper::get_css_value( $attr['iconLeftMargin'], 'px' ),
 		'padding-right'  => UAGB_Helper::get_css_value( $attr['iconRightMargin'], 'px' ),
 		'padding-top'    => UAGB_Helper::get_css_value( $attr['iconTopMargin'], 'px' ),
@@ -188,6 +193,24 @@ $selectors = array(
 		'margin-right' => UAGB_Helper::get_css_value( $attr['ctaIconSpace'], 'px' ),
 	),
 );
+if( 'Stacked' === $attr['iconView'] ) {
+	$selectors[ ' .uagb-iconbox-icon-wrap.uagb-infobox-shape-circle'] = array(
+		'background-color' => $attr['iconBackgroundColor'],
+		'border-radius' => '50%',
+	);
+	$selectors[ ' .uagb-iconbox-icon-wrap.uagb-infobox-shape-squre'] = array(
+		'background-color' => $attr['iconBackgroundColor'],
+	);
+}
+else if( 'Framed' === $attr['iconView'] ) {
+	$selectors[ ' .uagb-iconbox-icon-wrap.uagb-infobox-shape-circle'] = array(
+		'border' => $attr['iconBorderRadius'] . 'px solid'. $attr['iconBackgroundColor'],
+		'border-radius' => '50%',
+	);
+	$selectors[ ' .uagb-iconbox-icon-wrap.uagb-infobox-shape-squre'] = array(
+		'border' => $attr['iconBorderRadius'] . 'px solid'. $attr['iconBackgroundColor'],
+	);
+}
 if ( 'text' === $attr['ctaType'] ) {
 	$selectors[' .uagb-infobox-cta-link']           = array(
 		'color' => $attr['ctaLinkColor'],

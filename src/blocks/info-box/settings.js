@@ -274,7 +274,11 @@ const Settings = ( props ) => {
 		subHeadLetterSpacingType,
 
 		iconView,
-		iconShape
+		iconShape,
+		iconInnerPadding,
+		iconInnerPaddingType,
+		iconBackgroundColor,
+		iconBorderRadius
 	} = attributes;
 
 	/*
@@ -1071,6 +1075,86 @@ const Settings = ( props ) => {
 											] }
 										/>
 									</> }
+
+									{ iconView !== 'none' &&
+										<>
+											<Range
+												label={ __(
+													'Icon Inner Padding',
+													'ultimate-addons-for-gutenberg'
+												) }
+												setAttributes={ setAttributes }
+												value={ iconInnerPadding }
+												onChange={ ( value ) =>
+													setAttributes( { iconInnerPadding: value } )
+												}
+												min={ 0 }
+												limitMax={ { 'px': 50, '%': 50,} }
+												unit={ {
+													value: iconInnerPaddingType,
+													label:
+														'iconInnerPaddingType',
+												} }
+												units={ [
+													{
+														name: __(
+															'Pixel',
+															'ultimate-addons-for-gutenberg'
+														),
+														unitValue: 'px',
+													},
+													{
+														name: __(
+															'%',
+															'ultimate-addons-for-gutenberg'
+														),
+														unitValue: '%',
+													},
+												] }
+											/>
+											<AdvancedPopColorControl
+												label={ __(
+													'Icon back Ground Color',
+													'ultimate-addons-for-gutenberg'
+												) }
+												colorValue={
+													iconBackgroundColor ? iconBackgroundColor : ''
+												}
+												onColorChange={ ( value ) =>
+													setAttributes( {
+														iconBackgroundColor: value,
+													} )
+												}
+											/>
+										</>
+									}
+
+									{ iconView === 'Framed' &&
+										<>
+											<Range
+												label={ __(
+													'Set Border Radius',
+													'ultimate-addons-for-gutenberg'
+												) }
+												setAttributes={ setAttributes }
+												value={ iconBorderRadius }
+												onChange={ ( value ) =>
+													setAttributes( { iconBorderRadius: value } )
+												}
+												min={ 0 }
+												max={ 15 }
+												units={ [
+													{
+														name: __(
+															'Pixel',
+															'ultimate-addons-for-gutenberg'
+														),
+														unitValue: 'px',
+													},
+												] }
+											/>
+										</>
+									}
 
 									<UAGTabsControl
 										tabs={ [
