@@ -445,9 +445,6 @@ function styling( props ) {
 			'margin-right': generateCSSUnit( separatorRightMargin, seperatorSpaceUnit ),
 		}
 	};
-	selectors[' .uagb-infobox-cta-link'] = ctaBorderCSS;
-	tabletSelectors[' .uagb-infobox-cta-link'] = ctaBorderCSSTablet;
-	mobileSelectors[' .uagb-infobox-cta-link'] = ctaBorderCSSMobile;
 
 	if (
 		iconimgPosition === 'above-title' ||
@@ -968,6 +965,10 @@ function styling( props ) {
 			'width': generateCSSUnit( ctaFontSizeMobile, ctaFontSizeType ),
 		},
 	};
+
+	selectors[' .uagb-infobox-cta-link'] = ctaBorderCSS;
+	tabletSelectors[' .uagb-infobox-cta-link'] = ctaBorderCSSTablet;
+	mobileSelectors[' .uagb-infobox-cta-link'] = ctaBorderCSSMobile;
 
 	if ( imageWidthType ) {
 		// Image
