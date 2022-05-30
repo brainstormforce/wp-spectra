@@ -298,7 +298,7 @@ const attributes = {
 	},
 	gradientValue: {
 		type: 'string',
-		default: 'linear-gradient(90deg, rgb(6, 147, 227) 0%, rgb(155, 81, 224) 100%)',
+		default: 'linear-gradient(90deg, rgb(6, 147, 227, 0.5) 0%, rgb(155, 81, 224, 0.5) 100%)',
 		UAGCopyPaste: {
 			styleType: 'container-bg-gradient-value'
 		},
@@ -373,6 +373,46 @@ const attributes = {
 		default: 'outset',
 		UAGCopyPaste: {
 			styleType: 'container-box-shadow-position'
+		},
+	},
+	
+	boxShadowColorHover: {
+		type: 'string',
+		UAGCopyPaste: {
+			styleType: 'container-box-shadow-color-hover'
+		},
+	},
+	boxShadowHOffsetHover: {
+		type: 'number',
+		default: 0,
+		UAGCopyPaste: {
+			styleType: 'container-box-shadow-hoffset-hover'
+		},
+	},
+	boxShadowVOffsetHover: {
+		type: 'number',
+		default: 0,
+		UAGCopyPaste: {
+			styleType: 'container-box-shadow-voffset-hover'
+		},
+	},
+	boxShadowBlurHover: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'container-box-shadow-blur-hover'
+		},
+	},
+	boxShadowSpreadHover: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'container-box-shadow-spread-hover'
+		},
+	},
+	boxShadowPositionHover: {
+		type: 'string',
+		default: 'outset',
+		UAGCopyPaste: {
+			styleType: 'container-box-shadow-position-hover'
 		},
 	},
 
@@ -453,6 +493,20 @@ const attributes = {
 		default: 'px',
 		UAGCopyPaste: {
 			styleType: 'container-padding-type'
+		},
+	},
+	paddingTypeTablet: {
+		type: 'string',
+		default: 'px',
+		UAGCopyPaste: {
+			styleType: 'container-padding-type-tablet'
+		},
+	},
+	paddingTypeMobile: {
+		type: 'string',
+		default: 'px',
+		UAGCopyPaste: {
+			styleType: 'container-padding-type-mobile'
 		},
 	},
 	paddingLink: {
@@ -539,6 +593,20 @@ const attributes = {
 			styleType: 'container-margin-type'
 		},
 	},
+	marginTypeTablet: {
+		type: 'string',
+		default: 'px',
+		UAGCopyPaste: {
+			styleType: 'container-margin-type-tablet'
+		},
+	},
+	marginTypeMobile: {
+		type: 'string',
+		default: 'px',
+		UAGCopyPaste: {
+			styleType: 'container-margin-type-mobile'
+		},
+	},
 	marginLink: {
 		type: 'boolean',
 		default: true,
@@ -573,6 +641,20 @@ const attributes = {
 			styleType: 'container-row-gap-type'
 		},
 	},
+	rowGapTypeTablet: {
+		type: 'string',
+		default: 'px',
+		UAGCopyPaste: {
+			styleType: 'container-row-gap-type-tablet'
+		},
+	},
+	rowGapTypeMobile: {
+		type: 'string',
+		default: 'px',
+		UAGCopyPaste: {
+			styleType: 'container-row-gap-type-mobile'
+		},
+	},
 	columnGapDesktop: {
 		type: 'number',
 		UAGCopyPaste: {
@@ -597,6 +679,20 @@ const attributes = {
 		default: 'px',
 		UAGCopyPaste: {
 			styleType: 'container-column-gap-type'
+		},
+	},
+	columnGapTypeTablet: {
+		type: 'string',
+		default: 'px',
+		UAGCopyPaste: {
+			styleType: 'container-column-gap-type-tablet'
+		},
+	},
+	columnGapTypeMobile: {
+		type: 'string',
+		default: 'px',
+		UAGCopyPaste: {
+			styleType: 'container-column-gap-type-mobile'
 		},
 	},
 	isPreview: {

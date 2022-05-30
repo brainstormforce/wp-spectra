@@ -91,7 +91,9 @@ const Settings = ( props ) => {
 		transform,
 		decoration,
 		backgroundType,
+		hoverbackgroundType,
 		gradientValue,
+		hovergradientValue,
 		topMargin,
 		rightMargin,
 		bottomMargin,
@@ -346,110 +348,156 @@ const Settings = ( props ) => {
 					title={__( 'Background','ultimate-addons-for-gutenberg' )}
 					initialOpen={false}
 				>
-				<MultiButtonsControl
-					setAttributes={ setAttributes }
-					label={ __( 'Type', 'ultimate-addons-for-gutenberg' ) }
-					data={ {
-						value: backgroundType,
-						label: 'backgroundType',
-					} }
-					className="uagb-multi-button-alignment-control"
-					options={ [
-						{
-							value: 'transparent',
-							label: __(
-								'Transparent',
-								'ultimate-addons-for-gutenberg'
-							),
-						},
-						{
-							value: 'color',
-							label: __(
-								'Color',
-								'ultimate-addons-for-gutenberg'
-							),
+					<UAGTabsControl
+						tabs={ [
+							{
+								name: 'normal',
+								title: __(
+									'Normal',
+									'ultimate-addons-for-gutenberg'
+								),
 							},
-						{
-							value: 'gradient',
-							label: __(
-								'Gradient',
-								'ultimate-addons-for-gutenberg'
-							),
+							{
+								name: 'hover',
+								title: __(
+									'Hover',
+									'ultimate-addons-for-gutenberg'
+								),
 							},
-					] }
-				/>
-				{ 'color' === backgroundType && (
-					<>
-						<UAGTabsControl
-							tabs={ [
-								{
-									name: 'normal',
-									title: __(
-										'Normal',
-										'ultimate-addons-for-gutenberg'
-									),
-								},
-								{
-									name: 'hover',
-									title: __(
-										'Hover',
-										'ultimate-addons-for-gutenberg'
-									),
-								},
-							] }
-							normal={
-								<>
-									<AdvancedPopColorControl
-										label={ __(
-											'Color',
-											'ultimate-addons-for-gutenberg'
-										) }
-										colorValue={
-											background
-												? background
-												: ''
-										}
-										onColorChange={ ( value ) =>
-											setAttributes( {
-												background: value,
-											} )
-										}
+						] }
+						normal={
+							<>
+								<MultiButtonsControl
+									setAttributes={ setAttributes }
+									label={ __( 'Type', 'ultimate-addons-for-gutenberg' ) }
+									data={ {
+										value: backgroundType,
+										label: 'backgroundType',
+									} }
+									className="uagb-multi-button-alignment-control"
+									options={ [
+										{
+											value: 'transparent',
+											label: __(
+												'Transparent',
+												'ultimate-addons-for-gutenberg'
+											),
+										},
+										{
+											value: 'color',
+											label: __(
+												'Color',
+												'ultimate-addons-for-gutenberg'
+											),
+											},
+										{
+											value: 'gradient',
+											label: __(
+												'Gradient',
+												'ultimate-addons-for-gutenberg'
+											),
+											},
+									] }
+								/>
+								{ 'color' === backgroundType && (
+									<>
+										
+										<AdvancedPopColorControl
+											label={ __(
+												'Color',
+												'ultimate-addons-for-gutenberg'
+											) }
+											colorValue={
+												background
+													? background
+													: ''
+											}
+											onColorChange={ ( value ) =>
+												setAttributes( {
+													background: value,
+												} )
+											}
+										/>
+									</>
+								) }
+								{ 'gradient' === backgroundType && (
+									<GradientSettings
+										backgroundGradient={ {
+											value: gradientValue,
+											label: 'gradientValue',
+										}}
+										setAttributes={ setAttributes }
 									/>
-								</>
-							}
-							hover={
-								<>
-									<AdvancedPopColorControl
-										label={ __(
-											'Color',
-											'ultimate-addons-for-gutenberg'
-										) }
-										colorValue={
-											hBackground
-												? hBackground
-												: ''
-										}
-										onColorChange={ ( value ) =>
-											setAttributes( {
-												hBackground: value,
-											} )
-										}
+								) }
+							</>
+						}
+						hover={
+							<>
+								<MultiButtonsControl
+									setAttributes={ setAttributes }
+									label={ __( 'Type', 'ultimate-addons-for-gutenberg' ) }
+									data={ {
+										value: hoverbackgroundType,
+										label: 'hoverbackgroundType',
+									} }
+									className="uagb-multi-button-alignment-control"
+									options={ [
+										{
+											value: 'transparent',
+											label: __(
+												'Transparent',
+												'ultimate-addons-for-gutenberg'
+											),
+										},
+										{
+											value: 'color',
+											label: __(
+												'Color',
+												'ultimate-addons-for-gutenberg'
+											),
+											},
+										{
+											value: 'gradient',
+											label: __(
+												'Gradient',
+												'ultimate-addons-for-gutenberg'
+											),
+											},
+									] }
+								/>
+								{ 'color' === hoverbackgroundType && (
+									<>
+										<AdvancedPopColorControl
+											label={ __(
+												'Color',
+												'ultimate-addons-for-gutenberg'
+											) }
+											colorValue={
+												hBackground
+													? hBackground
+													: ''
+											}
+											onColorChange={ ( value ) =>
+												setAttributes( {
+													hBackground: value,
+												} )
+											}
+										/>
+									</>
+								) }
+								{ 'gradient' === hoverbackgroundType && (
+									<GradientSettings
+										backgroundGradient={ {
+											value: hovergradientValue,
+											label: 'hovergradientValue',
+										}}
+										setAttributes={ setAttributes }
 									/>
-								</>
-							}
-							disableBottomSeparator={ true }
-						/>
-					</>
-				) }
-				{ 'gradient' === backgroundType && (
-					<GradientSettings
-						backgroundGradient={ {
-							value: gradientValue,
-							label: 'gradientValue',
-						}}
-						setAttributes={ setAttributes }
+								) }
+							</>
+						}
+						disableBottomSeparator={ true }
 					/>
-				) }
 				</UAGAdvancedPanelBody>
 	};
 

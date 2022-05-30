@@ -35,6 +35,19 @@ const addBlockEditorDynamicStyles = ( styleTagId, styling ) => {
 			cloneSlickStaticCSSStylesTag = slickStaticCSSStylesTag.cloneNode( true );
 		}
 
+		// Slick CSS Ends.
+
+		// Block Editor Spacing CSS.
+		const blockEditorSpacingCSSStylesTag = document.getElementById( 'uagb-blocks-editor-spacing-style' );
+		let cloneBlockEditorSpacingCSSStylesTag = false;
+
+		if ( blockEditorSpacingCSSStylesTag ) {
+
+			cloneBlockEditorSpacingCSSStylesTag = blockEditorSpacingCSSStylesTag.cloneNode( true );
+		}
+
+		// Block Editor Spacing CSS Ends.
+
 		// Desktop.
 		const element = document.getElementById(
 			styleTagId
@@ -89,6 +102,14 @@ const addBlockEditorDynamicStyles = ( styleTagId, styling ) => {
 				const iframeSlickStaticCSSStylesTag = iframeDocument.getElementById( 'uagb-slick-css-css' );
 				if ( ! iframeSlickStaticCSSStylesTag ) {
 					iframeDocument.head.appendChild( cloneSlickStaticCSSStylesTag );
+				}
+			}
+
+			// Block Editor Spacing  CSS.
+			if ( cloneBlockEditorSpacingCSSStylesTag ) {
+				const iframeBlockEditorSpacingCSSStylesTag = iframeDocument.getElementById( 'uagb-blocks-editor-spacing-style' );
+				if ( ! iframeBlockEditorSpacingCSSStylesTag ) {
+					iframeDocument.head.appendChild( cloneBlockEditorSpacingCSSStylesTag );
 				}
 			}
 

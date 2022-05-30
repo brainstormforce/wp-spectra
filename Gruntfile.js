@@ -46,7 +46,7 @@ module.exports = function ( grunt ) {
 			main: {
 				options: {
 					archive:
-						'ultimate-addons-for-gutenberg-<%= pkg.version %>.zip',
+						'spectra-<%= pkg.version %>.zip',
 					mode: 'zip',
 				},
 				files: [
