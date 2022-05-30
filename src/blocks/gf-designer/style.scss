@@ -111,9 +111,10 @@
 .uagb-gf-styler__check-style-enabled .gform_wrapper .gform_body {
 	width: 100% !important;
 }
+
 .wp-block-uagb-gf-styler .gform_wrapper .gform_fields,
 .wp-block-uagb-gf-styler .gform_wrapper .gform_footer {
-    pointer-events: auto;
+	pointer-events: auto;
 }
 
 .uagb-gf-styler__check-style-enabled .gform_wrapper input[type="checkbox"]:checked + label::before,
