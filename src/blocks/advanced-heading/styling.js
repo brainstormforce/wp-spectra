@@ -2,6 +2,7 @@
  * Returns Dynamic Generated CSS
  */
 
+import generateBorderCSS from '@Controls/generateBorderCSS';
 import generateCSS from '@Controls/generateCSS';
 import generateCSSUnit from '@Controls/generateCSSUnit';
 
@@ -106,38 +107,9 @@ function styling( props ) {
 		linkColor,
 		linkHColor,
 		// Highlight
+		highLightBorderHColor,
 		highLightColor,
 		highLightBackground,
-		highLightBorderTopWidth,
-		highLightBorderLeftWidth,
-		highLightBorderRightWidth,
-		highLightBorderBottomWidth,
-		highLightBorderTopWidthTablet,
-		highLightBorderLeftWidthTablet,
-		highLightBorderRightWidthTablet,
-		highLightBorderBottomWidthTablet,
-		highLightBorderTopWidthMobile,
-		highLightBorderLeftWidthMobile,
-		highLightBorderRightWidthMobile,
-		highLightBorderBottomWidthMobile,
-		highLightBorderTopLeftRadius,
-		highLightBorderTopRightRadius,
-		highLightBorderBottomLeftRadius,
-		highLightBorderBottomRightRadius,
-		highLightBorderTopLeftRadiusTablet,
-		highLightBorderTopRightRadiusTablet,
-		highLightBorderBottomLeftRadiusTablet,
-		highLightBorderBottomRightRadiusTablet,
-		highLightBorderTopLeftRadiusMobile,
-		highLightBorderTopRightRadiusMobile,
-		highLightBorderBottomLeftRadiusMobile,
-		highLightBorderBottomRightRadiusMobile,
-		highLightBorderRadiusUnit,
-		highLightBorderRadiusUnitTablet,
-		highLightBorderRadiusUnitMobile,
-		highLightBorderStyle,
-		highLightBorderColor,
-		highLightBorderHColor,
 		highLightFontFamily,
 		highLightFontWeight,
 		highLightFontStyle,
@@ -185,6 +157,11 @@ function styling( props ) {
 			'-webkit-text-fill-color': linkHColor
 		}
 	}
+
+	const highLightBorderCSS = generateBorderCSS( props.attributes, 'highLight' )
+	const highLightBorderCSSTablet = generateBorderCSS( props.attributes, 'highLight', 'tablet' )
+	const highLightBorderCSSMobile = generateBorderCSS( props.attributes, 'highLight', 'mobile' )
+
 
 	const selectors = {
 		'.wp-block-uagb-advanced-heading ':{
@@ -261,16 +238,6 @@ function styling( props ) {
 			'font-size': generateCSSUnit( highLightFontSize, highLightFontSizeType ),
 			'line-height': generateCSSUnit( highLightLineHeight, highLightLineHeightType ),
 			'letter-spacing': generateCSSUnit( highLightLetterSpacing, highLightLetterSpacingType ),
-			'border-style': highLightBorderStyle,
-			'border-top-width': generateCSSUnit( highLightBorderTopWidth, 'px' ),
-			'border-right-width': generateCSSUnit( highLightBorderRightWidth, 'px' ),
-			'border-bottom-width': generateCSSUnit( highLightBorderBottomWidth, 'px' ),
-			'border-left-width': generateCSSUnit( highLightBorderLeftWidth, 'px' ),
-			'border-color': highLightBorderColor,
-			'border-top-left-radius': generateCSSUnit( highLightBorderTopLeftRadius, highLightBorderRadiusUnit ),
-			'border-top-right-radius':  generateCSSUnit( highLightBorderTopRightRadius, highLightBorderRadiusUnit ),
-			'border-bottom-left-radius':  generateCSSUnit( highLightBorderBottomLeftRadius, highLightBorderRadiusUnit ),
-			'border-bottom-right-radius':  generateCSSUnit( highLightBorderBottomRightRadius, highLightBorderRadiusUnit ),
 			'padding-top': generateCSSUnit(
 				highLightTopPadding,
 				highLightPaddingUnit
@@ -287,6 +254,7 @@ function styling( props ) {
 				highLightLeftPadding,
 				highLightPaddingUnit
 			),
+			...highLightBorderCSS,
 		},
 		'.wp-block-uagb-advanced-heading .uagb-highlight:hover': {
 			'border-color': highLightBorderHColor,
@@ -426,14 +394,7 @@ function styling( props ) {
 			highLightLeftPaddingTablet,
 			highLightPaddingUnitTablet
 		),
-		'border-top-width': generateCSSUnit( highLightBorderTopWidthTablet, 'px' ),
-		'border-right-width': generateCSSUnit( highLightBorderRightWidthTablet, 'px' ),
-		'border-bottom-width': generateCSSUnit( highLightBorderBottomWidthTablet, 'px' ),
-		'border-left-width': generateCSSUnit( highLightBorderLeftWidthTablet, 'px' ),
-		'border-top-left-radius': generateCSSUnit( highLightBorderTopLeftRadiusTablet, highLightBorderRadiusUnitTablet ),
-		'border-top-right-radius':  generateCSSUnit( highLightBorderTopRightRadiusTablet, highLightBorderRadiusUnitTablet ),
-		'border-bottom-left-radius':  generateCSSUnit( highLightBorderBottomLeftRadiusTablet, highLightBorderRadiusUnitTablet ),
-		'border-bottom-right-radius':  generateCSSUnit( highLightBorderBottomRightRadiusTablet, highLightBorderRadiusUnitTablet ),
+		...highLightBorderCSSTablet
 	};
 	// mobile
 	mobile_selectors['.wp-block-uagb-advanced-heading '] = {
@@ -521,14 +482,7 @@ function styling( props ) {
 			highLightLeftPaddingMobile,
 			highLightPaddingUnitMobile
 		),
-		'border-top-width': generateCSSUnit( highLightBorderTopWidthMobile, 'px' ),
-		'border-right-width': generateCSSUnit( highLightBorderRightWidthMobile, 'px' ),
-		'border-bottom-width': generateCSSUnit( highLightBorderBottomWidthMobile, 'px' ),
-		'border-left-width': generateCSSUnit( highLightBorderLeftWidthMobile, 'px' ),
-		'border-top-left-radius': generateCSSUnit( highLightBorderTopLeftRadiusMobile, highLightBorderRadiusUnitMobile ),
-		'border-top-right-radius':  generateCSSUnit( highLightBorderTopRightRadiusMobile, highLightBorderRadiusUnitMobile ),
-		'border-bottom-left-radius':  generateCSSUnit( highLightBorderBottomLeftRadiusMobile, highLightBorderRadiusUnitMobile ),
-		'border-bottom-right-radius':  generateCSSUnit( highLightBorderBottomRightRadiusMobile, highLightBorderRadiusUnitMobile ),
+		...highLightBorderCSSMobile
 	};
 	mobile_selectors[ ' .uagb-separator' ] = {
 		'width': generateCSSUnit( separatorWidthMobile, separatorWidthType ),
