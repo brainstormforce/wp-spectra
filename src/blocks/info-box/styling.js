@@ -197,7 +197,6 @@ function styling( props ) {
 		// Icon css
 		' .uagb-ifb-content .uagb-ifb-icon-wrap > svg': {
 			'font-size': generateCSSUnit( iconSize, iconSizeType ),
-			'height': generateCSSUnit( iconSize, iconSizeType ),
 			'color': iconColor,
 			'fill': iconColor,
 			'line-height': generateCSSUnit( iconSize, iconSizeType ),
@@ -211,7 +210,6 @@ function styling( props ) {
 		},
 		' .uagb-ifb-content .uagb-ifb-left-title-image > svg': {
 			'font-size': generateCSSUnit( iconSize, iconSizeType ),
-			'height': generateCSSUnit( iconSize, iconSizeType ),
 			'color': iconColor,
 			'fill': iconColor,
 			'width': generateCSSUnit( iconSize, iconSizeType ),
@@ -226,7 +224,6 @@ function styling( props ) {
 		},
 		' .uagb-ifb-content .uagb-ifb-right-title-image > svg': {
 			'font-size': generateCSSUnit( iconSize, iconSizeType ),
-			'height': generateCSSUnit( iconSize, iconSizeType ),
 			'color': iconColor,
 			'fill': iconColor,
 			'width': generateCSSUnit( iconSize, iconSizeType ),
@@ -241,7 +238,6 @@ function styling( props ) {
 		},
 		'.uagb-infobox__content-wrap .uagb-ifb-icon-wrap > svg': {
 			'font-size': generateCSSUnit( iconSize, iconSizeType ),
-			'height': generateCSSUnit( iconSize, iconSizeType ),
 			'color': iconColor,
 			'fill': iconColor,
 			'width': generateCSSUnit( iconSize, iconSizeType ),
@@ -978,53 +974,41 @@ function styling( props ) {
 		// Image
 		selectors[ '.uagb-infobox__content-wrap img' ] = {
 			'width': generateCSSUnit( imageWidth, imageWidthUnit ),
-			'max-width': generateCSSUnit( imageWidth, imageWidthUnit ),
 		};
 		selectors[ '.uagb-infobox__content-wrap .uagb-ifb-content .uagb-ifb-right-title-image > img' ] = {
 			'width': generateCSSUnit( imageWidth, imageWidthUnit ),
-			'max-width': generateCSSUnit( imageWidth, imageWidthUnit ),
 		};
 		selectors[ '.uagb-infobox__content-wrap .uagb-ifb-content .uagb-ifb-left-title-image > img' ] = {
 			'width': generateCSSUnit( imageWidth, imageWidthUnit ),
-			'max-width': generateCSSUnit( imageWidth, imageWidthUnit ),
 		};
 		selectors[ '.uagb-infobox__content-wrap .uagb-ifb-content .uagb-ifb-image-content > img' ] = {
 			'width': generateCSSUnit( imageWidth, imageWidthUnit ),
-			'max-width': generateCSSUnit( imageWidth, imageWidthUnit ),
 		};
 
 		tabletSelectors[ '.uagb-infobox__content-wrap img' ] = {
 			'width': generateCSSUnit( imageWidthTablet, imageWidthUnitTablet ),
-			'max-width': generateCSSUnit( imageWidthTablet, imageWidthUnitTablet ),
 		};
 		tabletSelectors[ '.uagb-infobox__content-wrap .uagb-ifb-content .uagb-ifb-right-title-image > img' ] = {
 			'width': generateCSSUnit( imageWidthTablet, imageWidthUnitTablet ),
-			'max-width': generateCSSUnit( imageWidthTablet, imageWidthUnitTablet ),
 		};
 		tabletSelectors[ '.uagb-infobox__content-wrap .uagb-ifb-content .uagb-ifb-left-title-image > img' ] = {
 			'width': generateCSSUnit( imageWidthTablet, imageWidthUnitTablet ),
-			'max-width': generateCSSUnit( imageWidthTablet, imageWidthUnitTablet ),
 		};
 		tabletSelectors[ '.uagb-infobox__content-wrap .uagb-ifb-content .uagb-ifb-image-content > img' ] = {
 			'width': generateCSSUnit( imageWidthTablet, imageWidthUnitTablet ),
-			'max-width': generateCSSUnit( imageWidthTablet, imageWidthUnitTablet ),
 		};
 
 		mobileSelectors[ '.uagb-infobox__content-wrap img' ] = {
 			'width': generateCSSUnit( imageWidthMobile, imageWidthUnitMobile ),
-			'max-width': generateCSSUnit( imageWidthMobile, imageWidthMobile ),
 		};
 		mobileSelectors[ '.uagb-infobox__content-wrap .uagb-ifb-content .uagb-ifb-right-title-image > img' ] = {
-			'width': generateCSSUnit( imageWidthMobile, imageWidthMobile ),
-			'max-width': generateCSSUnit( imageWidthMobile, imageWidthMobile ),
+			'width': generateCSSUnit( imageWidthMobile, imageWidthUnitMobile ),
 		};
 		mobileSelectors[ '.uagb-infobox__content-wrap .uagb-ifb-content .uagb-ifb-left-title-image > img' ] = {
-			'width': generateCSSUnit( imageWidthMobile, imageWidthMobile ),
-			'max-width': generateCSSUnit( imageWidthMobile, imageWidthMobile ),
+			'width': generateCSSUnit( imageWidthMobile, imageWidthUnitMobile ),
 		};
 		mobileSelectors[ '.uagb-infobox__content-wrap .uagb-ifb-content .uagb-ifb-image-content > img' ] = {
-			'width': generateCSSUnit( imageWidthMobile, imageWidthMobile ),
-			'max-width': generateCSSUnit( imageWidthMobile, imageWidthMobile ),
+			'width': generateCSSUnit( imageWidthMobile, imageWidthUnitMobile ),
 		};
 	}
 
@@ -1048,13 +1032,6 @@ function styling( props ) {
 		mobileSelectors[ '.uagb-infobox__content-wrap .uagb-infobox-cta-link > svg'] = {
 			'margin-right': generateCSSUnit( ctaIconSpaceMobile, ctaIconSpaceType ),
 		};
-	}
-
-	if ( '%' === imageWidthUnit ){
-		selectors[ '.uagb-infobox__content-wrap .uagb-ifb-content .uagb-ifb-image-content > img'] = {
-			...selectors[ '.uagb-infobox__content-wrap .uagb-ifb-content .uagb-ifb-image-content > img' ],
-			'box-sizing': 'border-box',
-		}
 	}
 
 	const id = `.editor-styles-wrapper .uagb-block-${ props.clientId.substr(

@@ -40,7 +40,8 @@ const Background = ( props ) => {
 		onOpacityChange,
 		backgroundCustomSize,
 		backgroundCustomSizeType,
-		imageResponsive
+		imageResponsive,
+		gradientOverlay
 	} = props;
 
 	const onRemoveImage = () => {
@@ -74,6 +75,34 @@ const Background = ( props ) => {
 		}
 		setAttributes( { [ backgroundVideo.label ]: media } );
 	};
+
+	let overlayOptions = [];
+
+	overlayOptions = [
+		{
+			value: 'none',
+			label: __(
+				'None',
+				'ultimate-addons-for-gutenberg'
+			),
+		},
+		{
+			value: 'color',
+			label: __(
+				'Classic',
+				'ultimate-addons-for-gutenberg'
+			),
+		},
+	];
+	if ( gradientOverlay.value ) {
+		overlayOptions.push( {
+			value: 'gradient',
+			label: __(
+				'Gradient',
+				'ultimate-addons-for-gutenberg'
+			),
+		} );
+	}
 
 	let bgOptions = [];
 
@@ -575,22 +604,7 @@ const Background = ( props ) => {
 										label: overlayType.label,
 									} }
 									className="uagb-multi-button-alignment-control"
-									options={ [
-										{
-											value: 'color',
-											label: __(
-												'Color',
-												'ultimate-addons-for-gutenberg'
-											),
-										},
-										{
-											value: 'none',
-											label: __(
-												'None',
-												'ultimate-addons-for-gutenberg'
-											),
-										},
-									] }
+									options={ overlayOptions }
 									showIcons={ false }
 								/>
 							</div>
@@ -626,7 +640,7 @@ const Background = ( props ) => {
 					}
 				</div>
 			) }
-			{ 'gradient' === backgroundType.value && (
+			{  gradientOverlay.value && 'gradient' === backgroundType.value && (
 				<div className="uag-background-gradient">
 					<GradientSettings
 						backgroundGradient={ props.backgroundGradient }
@@ -662,22 +676,7 @@ const Background = ( props ) => {
 											label: overlayType.label,
 										} }
 										className="uagb-multi-button-alignment-control"
-										options={ [
-											{
-												value: 'color',
-												label: __(
-													'Color',
-													'ultimate-addons-for-gutenberg'
-												),
-											},
-											{
-												value: 'none',
-												label: __(
-													'None',
-													'ultimate-addons-for-gutenberg'
-												),
-											},
-										] }
+										options={ overlayOptions }
 										showIcons={ false }
 									/>
 								</div>
@@ -700,7 +699,7 @@ const Background = ( props ) => {
 										/>
 									</div>
 								) }
-								{ 'gradient' === overlayType.value && (
+								{ gradientOverlay.value && 'gradient' === overlayType.value && (
 									<div className="uag-background-image-overlay-gradient">
 										<GradientSettings
 											backgroundGradient={
