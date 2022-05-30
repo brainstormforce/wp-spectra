@@ -92,7 +92,7 @@ const UAGBTabsEdit = ( props ) => {
 	};
 
 	useEffect( () => {
-		
+
 		// Replacement for componentDidUpdate.
 		const blockStyling = styling( props );
 
@@ -107,12 +107,12 @@ const UAGBTabsEdit = ( props ) => {
 		const blockStyling = styling( props );
 
 		addBlockEditorDynamicStyles( 'uagb-style-tab-' + props.clientId.substr( 0, 8 ), blockStyling );
-		
+
 	}, [ deviceType ] );
 
 	return (
 		<Suspense fallback={ lazyLoader() }>
-			<Settings parentProps={ props } />
+			<Settings parentProps={ props } deviceType = {deviceType} />
 			<Render parentProps={ props } />
 		</Suspense>
 	);

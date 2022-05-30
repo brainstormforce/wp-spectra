@@ -6,6 +6,46 @@
  *
  * @package uagb
  */
+$successMessageBorderDefaults = array(
+	'borderColor'      => 'green',
+	'borderStyle'      => 'solid',
+	'borderWidth'      => 3,
+	'borderRadius'     => 6,
+	'borderHoverColor' => 'yellowgreen',
+);
+$successMessageBorderAttribute = UAGB_Block_Helper::uag_generate_border_attribute( 'successMessage', $successMessageBorderDefaults );
+$failedMessageBorderDefaults = array(
+	'borderColor'       => 'red',
+	'borderStyle'       => 'solid',
+	'borderWidth'       => 3,
+	'borderRadius'      => 6,
+	'borderHoverColor'  => 'deeppink',
+);
+$failedMessageBorderAttribute = UAGB_Block_Helper::uag_generate_border_attribute( 'failedMessage', $successMessageBorderDefaults );
+$inputBorderDefaults = array(
+	'borderStyle'               => 'solid',
+	'borderWidth'               => 1,
+	'borderRadius'              => 3,
+	'borderColor'               => '#bdbdbd',
+	'borderHoverColor'          => '',
+);
+$inputBorderAttribute = UAGB_Block_Helper::uag_generate_border_attribute( 'input', $inputBorderDefaults );
+$toggleBorderDefaults = array(
+	'borderStyle'              => 'solid',
+	'borderWidth'              => 1,
+	'borderRadius'             => 3,
+	'borderColor'              => '#1e1e1e',
+	'borderHoverColor'        => '#017cba',
+);
+$toggleBorderAttribute = UAGB_Block_Helper::uag_generate_border_attribute( 'toggle', $toggleBorderDefaults );
+$submitBorderDefaults = array(
+	'borderWidth'              => 0,
+	'borderRadius'             => 3,
+	'borderColor'              => '',
+	'borderHoverColor'         => '',
+	'borderStyle'              => '',
+);
+$submitBorderAttribute = UAGB_Block_Helper::uag_generate_border_attribute( 'submit', $submitBorderDefaults );
 
 return array(
 	'block_id'                       => '',
@@ -35,7 +75,6 @@ return array(
 	'submitColorHover'               => '',
 	'submitBgColor'                  => '',
 	'submitBgColorHover'             => '',
-	'submitborderStyle'              => '',
 	'toggleSize'                     => 15,
 	'toggleSizeTablet'               => 15,
 	'toggleSizeMobile'               => 15,
@@ -43,21 +82,12 @@ return array(
 	'toggleActiveColor'              => '#017cba',
 	'toggleDotColor'                 => '#1e1e1e',
 	'toggleDotActiveColor'           => '#ffffff',
-	'toggleBorderStyle'              => 'solid',
-	'toggleBorderWidth'              => 1,
-	'toggleBorderRadius'             => 3,
-	'toggleBorderColor'              => '#1e1e1e',
-	'toggleBorderActiveColor'        => '#017cba',
 	'toggleWidthSize'                => 0,
 	'toggleWidthSizeTablet'          => 0,
 	'toggleWidthSizeMobile'          => 0,
 	'toggleHeightSize'               => 0,
 	'toggleHeightSizeTablet'         => 0,
 	'toggleHeightSizeMobile'         => 0,
-	'submitborderWidth'              => 0,
-	'submitborderRadius'             => 3,
-	'submitborderColor'              => '',
-	'submitborderHoverColor'         => '',
 	'vPaddingSubmit'                 => '',
 	'hPaddingSubmit'                 => '',
 	'submitTextloadGoogleFonts'      => false,
@@ -108,11 +138,6 @@ return array(
 	'inputplaceholderHoverColor'     => '',
 	'inputplaceholderActiveColor'    => '',
 	'inputactiveColor'               => '',
-	'inputborderStyle'               => 'solid',
-	'inputborderWidth'               => 1,
-	'inputborderRadius'              => 3,
-	'inputborderColor'               => '#bdbdbd',
-	'inputborderHoverColor'          => '',
 	'vPaddingField'                  => 10,
 	'hPaddingField'                  => 10,
 	'fieldGap'                       => 20,
@@ -122,15 +147,9 @@ return array(
 	'overallAlignment'               => 'left',
 	'successMessageTextColor'        => '',
 	'successMessageBGColor'          => '',
-	'successMessageBorderColor'      => 'green',
-	'successMessageBorderStyle'      => 'solid',
-	'successMessageBorderWidth'      => 3,
 	'failedMessage'                  => __( 'There has been some error while submitting the form. Please verify all form fields again.', 'ultimate-addons-for-gutenberg' ),
 	'failedMessageTextColor'         => '',
-	'failedMessageBorderColor'       => 'red',
 	'failedMessageBGColor'           => '',
-	'failedMessageBorderStyle'       => 'solid',
-	'failedMessageBorderWidth'       => 3,
 	'reCaptchaEnable'                => false,
 	'reCaptchaType'                  => 'v2',
 	'reCaptchaSiteKeyV2'             => '',
@@ -138,10 +157,6 @@ return array(
 	'reCaptchaSiteKeyV3'             => '',
 	'reCaptchaSecretKeyV3'           => '',
 	'hidereCaptchaBatch'             => false,
-	'successMessageBorderRadius'     => 6,
-	'successMessageHoverBorderColor' => 'yellowgreen',
-	'failedMessageBorderRadius'      => 6,
-	'failedMessageHoverBorderColor'  => 'deeppink',
 	'paddingBtnTopTablet'            => '',
 	'paddingBtnRightTablet'          => '',
 	'paddingBtnBottomTablet'         => '',
@@ -184,4 +199,9 @@ return array(
 	'labelGapTablet'                 => 10,
 	'labelGapMobile'                 => 10,
 	'labelGapUnit'                   => 'px',
+	$successMessageBorderAttribute,
+	$failedMessageBorderAttribute,
+	$inputBorderAttribute,
+	$toggleBorderAttribute,
+	$submitBorderAttribute,
 );

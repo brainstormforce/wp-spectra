@@ -5,6 +5,7 @@
 import inlineStyles from './inline-styles';
 import generateCSS from '@Controls/generateCSS';
 import generateCSSUnit from '@Controls/generateCSSUnit';
+import generateBorderCSS from '@Controls/generateBorderCSS';
 
 function styling( props ) {
 	const {
@@ -45,18 +46,17 @@ function styling( props ) {
 		backgroundAttachment,
 		backgroundRepeat,
 		backgroundSize,
-		borderStyle,
-		borderWidth,
-		borderRadius,
-		borderColor,
 		mobileMarginType,
 		tabletMarginType,
 		desktopMarginType,
 		mobilePaddingType,
 		tabletPaddingType,
-		desktopPaddingType,
-		borderHoverColor,
+		desktopPaddingType
 	} = props.attributes;
+
+	const borderCSS = generateBorderCSS( props.attributes, '', '' );
+	const borderCSSTablet = generateBorderCSS( props.attributes,'', 'tablet' );
+	const borderCSSMobile = generateBorderCSS( props.attributes,'', 'mobile' );
 
 	const position = backgroundPosition.replace( '-', ' ' );
 	let tabletSelectors = {};
@@ -71,14 +71,8 @@ function styling( props ) {
 		'margin-bottom': generateCSSUnit( bottomMargin, desktopMarginType ),
 		'margin-left': generateCSSUnit( leftMargin, desktopMarginType ),
 		'margin-right': generateCSSUnit( rightMargin, desktopMarginType ),
-		'border-radius': generateCSSUnit( borderRadius, desktopMarginType ),
+		...borderCSS
 	};
-
-	if ( borderStyle !== 'none' ) {
-		style[ 'border-style' ] = borderStyle;
-		style[ 'border-width' ] = generateCSSUnit( borderWidth, 'px' );
-		style[ 'border-color' ] = borderColor;
-	}
 
 	if ( 'image' === backgroundType ) {
 		style[ 'background-image' ] = backgroundImage
@@ -127,6 +121,7 @@ function styling( props ) {
 				rightMarginTablet,
 				tabletMarginType
 			),
+			...borderCSSTablet
 		},
 	};
 
@@ -161,6 +156,7 @@ function styling( props ) {
 				rightMarginMobile,
 				mobileMarginType
 			),
+			...borderCSSMobile
 		},
 	};
 
@@ -179,12 +175,6 @@ function styling( props ) {
 	if ( colWidthMobile !== '' && colWidthMobile !== 0 ) {
 		mobileSelectors[ '.block-editor-block-list__block' ] = {
 			'width': colWidthMobile + '%',
-		};
-	}
-
-	if ( 'none' !== borderStyle ) {
-		selectors[ '.block-editor-block-list__block:hover' ] = {
-			'border-color': borderHoverColor,
 		};
 	}
 

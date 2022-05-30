@@ -6,6 +6,11 @@
  *
  * @package uagb
  */
+$borderDefaults = array(
+	'borderStyle'              => 'none',
+	'borderWidth'              => 1,
+);
+$borderAttribute = UAGB_Block_Helper::uag_generate_border_attribute( '', $borderDefaults );
 
 return array(
 	'classMigrate'             => false,
@@ -51,11 +56,6 @@ return array(
 	'gradientLocation2'        => 100,
 	'gradientAngle'            => 0,
 	'backgroundImageColor'     => '',
-	'borderStyle'              => 'none',
-	'borderWidth'              => 1,
-	'borderRadius'             => '',
-	'borderColor'              => '',
-	'borderHoverColor'         => '',
 	'align'                    => 'center',
 	'alignMobile'              => '',
 	'alignTablet'              => '',
@@ -73,4 +73,5 @@ return array(
 	'gradientOverlayLocation2' => '100',
 	'gradientOverlayAngle'     => '0',
 	'gradientValue'            => '',
+	$borderAttribute
 );

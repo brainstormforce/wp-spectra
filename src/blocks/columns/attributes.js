@@ -1,7 +1,9 @@
 /**
  * BLOCK: Columns - Attributes
  */
+import { getBorderAttributes } from '@Controls/generateAttributes';
 
+const borderAttributes = getBorderAttributes( '' );
 const attributes = {
 	block_id: {
 		type: 'string',
@@ -368,7 +370,6 @@ const attributes = {
 	},
 	borderWidth: {
 		type: 'number',
-		default: 1,
 		UAGCopyPaste: {
 			styleType: 'column-border-width'
 		},
@@ -622,7 +623,8 @@ const attributes = {
 	isPreview: {
 		type: 'boolean',
 		default: false,
-	}
+	},
+	...borderAttributes
 };
 
 export default attributes;

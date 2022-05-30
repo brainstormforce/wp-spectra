@@ -7,6 +7,7 @@ import generateCSS from '@Controls/generateCSS'
 import hexToRgba from '@Controls/hexToRgba'
 import generateCSSUnit from '@Controls/generateCSSUnit'
 import maybeGetColorForVariable from '@Controls/maybeGetColorForVariable';
+import generateBorderCSS from '@Controls/generateBorderCSS';
 
 function styling( props ) {
 
@@ -65,6 +66,10 @@ function styling( props ) {
 		boxShadowPosition,
 		gradientValue
 	} = props.attributes
+
+	const borderCSS = generateBorderCSS( props.attributes, '', '' );
+	const borderCSSTablet = generateBorderCSS( props.attributes,'', 'tablet' );
+	const borderCSSMobile = generateBorderCSS( props.attributes,'', 'mobile' );
 
 	let max_width = '100%'
 

@@ -1,6 +1,23 @@
 /**
  * BLOCK: UAGB CF7 Attributes
  */
+ import { getBorderAttributes } from '@Controls/generateAttributes';
+ const fieldDefaults = {
+	borderStyle             :  'solid',
+	borderWidth             :  1,
+	borderRadius             :  0,
+	borderColor              :  '#eeeeee',
+	borderHoverColor         :  '',
+ }
+ const fieldBorderAttributes = getBorderAttributes( 'field', fieldDefaults );
+ const buttonDefaults = {
+	borderStyle         : 'solid',
+	borderWidth         : 1,
+	borderRadius        : 0,
+	borderColor         : '#333',
+	borderHoverColor        : '#333',
+ }
+ const buttonBorderAttributes = getBorderAttributes( 'button', buttonDefaults );
 
  const attributes = { // eslint-disable-line no-unused-vars
 	block_id                      : {
@@ -1269,6 +1286,8 @@
 	isPreview: {
 		type: 'boolean',
 		default: false,
-	}
+	},
+	...fieldBorderAttributes,
+	...buttonBorderAttributes
  }
  export default attributes;

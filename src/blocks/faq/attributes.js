@@ -1,3 +1,13 @@
+import { getBorderAttributes } from '@Controls/generateAttributes';
+const borderDefault = {
+	borderStyle: 'solid',
+	borderWidth: 1,
+	borderRadius: 2,
+	borderColor: '',
+	borderHoverColor: '',
+}
+const borderAttributes = getBorderAttributes( '', borderDefault );
+
 const attributes = {
 	block_id: {
 		type: 'string',
@@ -754,6 +764,7 @@ const attributes = {
 	isPreview: {
 		type: 'boolean',
 		default: false,
-	}
+	},
+	...borderAttributes
 };
 export default attributes;

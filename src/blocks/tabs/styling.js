@@ -4,6 +4,7 @@
 
 import generateCSS from '@Controls/generateCSS';
 import generateCSSUnit from '@Controls/generateCSSUnit';
+import generateBorderCSS from '@Controls/generateBorderCSS';
 
 function styling( props ) {
 	const {
@@ -35,10 +36,6 @@ function styling( props ) {
 		titleTransform,
 		titleDecoration,
 		//Border
-		borderWidth,
-		borderColor,
-		borderStyle,
-		borderRadius,
 		borderHoverColor,
 		iconColor,
 		iconSize,
@@ -106,6 +103,10 @@ function styling( props ) {
 		titleFontStyle,
 		tabAlign
 	} = props.attributes;
+
+	const borderCSS = generateBorderCSS( props.attributes, '', '' );
+	const borderCSSTablet = generateBorderCSS( props.attributes,'', 'tablet' );
+	const borderCSSMobile = generateBorderCSS( props.attributes,'', 'mobile' );
 
 	let selectors = {};
 	let tabletSelectors = {};
@@ -214,21 +215,11 @@ function styling( props ) {
 			'width': generateCSSUnit( iconSize, 'px' ),
 			'fill': iconColor,
 		},
-		'.uagb-tabs__wrap > .uagb-tabs__panel .uagb-tab': {
-			'border-width': generateCSSUnit( borderWidth, 'px' ),
-			'border-style': borderStyle,
-			'border-radius': generateCSSUnit( borderRadius, 'px' ),
-			'border-color': borderColor,
-		},
+		'.uagb-tabs__wrap > .uagb-tabs__panel .uagb-tab': borderCSS,
 		'.uagb-tabs__wrap > .uagb-tabs__panel .uagb-tab:hover': {
 			'border-color': borderHoverColor,
 		},
-		'.uagb-tabs__wrap > .uagb-tabs__body-wrap': {
-			'border-width': generateCSSUnit( borderWidth, 'px' ),
-			'border-style': borderStyle,
-			'border-radius': generateCSSUnit( borderRadius, 'px' ),
-			'border-color': borderColor,
-		},
+		'.uagb-tabs__wrap > .uagb-tabs__body-wrap': borderCSS,
 		'.uagb-tabs__wrap > .uagb-tabs__body-wrap:hover': {
 			'border-color': borderHoverColor,
 		},
@@ -462,10 +453,7 @@ function styling( props ) {
 	if ( tabsStyleD === 'hstyle5' ) {
 		selectors[ '.uagb-tabs__wrap.uagb-tabs__hstyle5-desktop ' ] = {
 			'background': bodyBgColor,
-			'border-color': borderColor,
-			'border-width': generateCSSUnit( borderWidth, 'px' ),
-			'border-style': borderStyle,
-			'border-radius': generateCSSUnit( borderRadius, 'px' ),
+			...borderCSS
 		};
 		selectors[ '.uagb-tabs__wrap.uagb-tabs__hstyle5-desktop:hover' ] = {
 			'border-color': borderHoverColor,
@@ -473,18 +461,13 @@ function styling( props ) {
 		selectors['.uagb-tabs__wrap > .uagb-tabs__body-wrap'] = {
 			'border-left-style': 'none',
 			'border-right-style':'none',
-			'border-top-style': borderStyle,
-			'border-color': borderColor,
-			'border-width': generateCSSUnit( borderWidth, 'px' ),
+			...borderCSS
 		};
 	}
 	if ( tabsStyleD === 'vstyle10' ) {
 		selectors[ '.uagb-tabs__wrap.uagb-tabs__vstyle10-desktop ' ] = {
 			'background': bodyBgColor,
-			'border-color': borderColor,
-			'border-width': generateCSSUnit( borderWidth, 'px' ),
-			'border-style': borderStyle,
-			'border-radius': generateCSSUnit( borderRadius, 'px' ),
+			...borderCSS
 		};
 		selectors[ '.uagb-tabs__wrap.uagb-tabs__vstyle10-desktop:hover' ] = {
 			'border-color': borderHoverColor,
@@ -493,10 +476,7 @@ function styling( props ) {
 	if ( tabsStyleT === 'hstyle5' ) {
 		tabletSelectors[ '.uagb-tabs__wrap.uagb-tabs__hstyle5-tablet' ] = {
 			'background': bodyBgColor,
-			'border-color': borderColor,
-			'border-width': generateCSSUnit( borderWidth, 'px' ),
-			'border-style': borderStyle,
-			'border-radius': generateCSSUnit( borderRadius, 'px' ),
+			...borderCSSTablet
 		};
 		tabletSelectors[
 			'.uagb-tabs__wrap.uagb-tabs__hstyle5-tablet:hover'
@@ -506,18 +486,13 @@ function styling( props ) {
 		tabletSelectors['.uagb-tabs__wrap > .uagb-tabs__body-wrap'] = {
 			'border-left-style': 'none',
 			'border-right-style':'none',
-			'border-top-style': borderStyle,
-			'border-color': borderColor,
-			'border-width': generateCSSUnit( borderWidth, 'px' ),
+			...borderCSSTablet
 		};
 	}
 	if ( tabsStyleT === 'vstyle10' ) {
 		tabletSelectors[ '.uagb-tabs__wrap.uagb-tabs__vstyle10-tablet' ] = {
 			'background': bodyBgColor,
-			'border-color': borderColor,
-			'border-width': generateCSSUnit( borderWidth, 'px' ),
-			'border-style': borderStyle,
-			'border-radius': generateCSSUnit( borderRadius, 'px' ),
+			...borderCSSTablet
 		};
 		tabletSelectors[
 			'.uagb-tabs__wrap.uagb-tabs__vstyle10-tablet:hover'
@@ -528,17 +503,12 @@ function styling( props ) {
 	if ( tabsStyleM === 'hstyle5' ) {
 		mobileSelectors[ '.uagb-tabs__wrap.uagb-tabs__hstyle5-mobile ' ] = {
 			'background': bodyBgColor,
-			'border-color': borderColor,
-			'border-width': generateCSSUnit( borderWidth, 'px' ),
-			'border-style': borderStyle,
-			'border-radius': generateCSSUnit( borderRadius, 'px' ),
+			...borderCSSMobile
 		};
 		mobileSelectors['.uagb-tabs__wrap > .uagb-tabs__body-wrap'] = {
 			'border-left-style': 'none',
 			'border-right-style':'none',
-			'border-top-style': borderStyle,
-			'border-color': borderColor,
-			'border-width': generateCSSUnit( borderWidth, 'px' ),
+			...borderCSSMobile
 		};
 		mobileSelectors[
 			'.uagb-tabs__wrap.uagb-tabs__hstyle5-mobile:hover'
@@ -549,10 +519,7 @@ function styling( props ) {
 	if ( tabsStyleM === 'vstyle10' ) {
 		mobileSelectors[ '.uagb-tabs__wrap.uagb-tabs__vstyle10-mobile ' ] = {
 			'background': bodyBgColor,
-			'border-color': borderColor,
-			'border-width': generateCSSUnit( borderWidth, 'px' ),
-			'border-style': borderStyle,
-			'border-radius': generateCSSUnit( borderRadius, 'px' ),
+			...borderCSSMobile
 		};
 		mobileSelectors[
 			'.uagb-tabs__wrap.uagb-tabs__vstyle10-mobile:hover'
@@ -563,10 +530,7 @@ function styling( props ) {
 	if ( tabsStyleM === 'stack4' ) {
 		mobileSelectors[ '.uagb-tabs__wrap.uagb-tabs__stack4-mobile' ] = {
 			'background': bodyBgColor,
-			'border-color': borderColor,
-			'border-width': generateCSSUnit( borderWidth, 'px' ),
-			'border-style': borderStyle,
-			'border-radius': generateCSSUnit( borderRadius, 'px' ),
+			...borderCSSMobile
 		};
 		mobileSelectors[ '.uagb-tabs__wrap.uagb-tabs__stack4-mobile:hover' ] = {
 			'border-color': borderHoverColor,

@@ -223,7 +223,7 @@ const FaqComponent = ( props ) => {
 
 	return (
 		<Suspense fallback={ lazyLoader() }>
-			<Settings parentProps={ props } />
+			<Settings parentProps={ props } deviceType = { deviceType } />
 			<Render parentProps={ props } />
 		</Suspense>
 	);
