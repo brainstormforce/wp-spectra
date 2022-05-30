@@ -154,6 +154,10 @@ return array(
 	'headMarginLeftMobile'       => '',
 	'headMobileMarginUnit'       => 'px',
 	'headTabletMarginUnit'       => 'px',
+	'headLetterSpacing'          => '',
+	'headLetterSpacingTablet'    => '',
+	'headLetterSpacingMobile'    => '',
+	'headLetterSpacingType'      => 'px',
 
 
 	'seperatorMobileSpace'       => '',
@@ -187,6 +191,10 @@ return array(
 	'subHeadMarginLeftMobile'    => '',
 	'subHeadMobileMarginUnit'    => 'px',
 	'subHeadTabletMarginUnit'    => 'px',
+	'subHeadLetterSpacing'       => '',
+	'subHeadLetterSpacingTablet' => '',
+	'subHeadLetterSpacingMobile' => '',
+	'subHeadLetterSpacingType'   => 'px',
 
 	'prefixTabletSpace'          => '',
 	'prefixMobileSpace'          => '',
@@ -203,5 +211,9 @@ return array(
 	'prefixMarginLeftMobile'     => '',
 	'prefixMobileMarginUnit'     => 'px',
 	'prefixTabletMarginUnit'     => 'px',
+	'prefixLetterSpacing'        => '',
+	'prefixLetterSpacingTablet'  => '',
+	'prefixLetterSpacingMobile'  => '',
+	'prefixLetterSpacingType'    => 'px',
 
 );
