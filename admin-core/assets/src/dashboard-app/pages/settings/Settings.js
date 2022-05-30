@@ -14,6 +14,7 @@ import PreloadLocalFonts from '@DashboardApp/pages/settings/PreloadLocalFonts';
 import CollapsePanels from '@DashboardApp/pages/settings/CollapsePanels';
 import CopyPasteStyles from '@DashboardApp/pages/settings/CopyPasteStyles';
 import ContentWidth from '@DashboardApp/pages/settings/ContentWidth';
+import BlocksEditorSpacing from '@DashboardApp/pages/settings/BlocksEditorSpacing';
 import ComingSoon from '@DashboardApp/pages/settings/ComingSoon';
 import SettingsSkeleton from '@DashboardApp/pages/settings/SettingsSkeleton';
 import BlockSettings from '@DashboardApp/pages/settings/BlockSettings';
@@ -84,6 +85,7 @@ const Settings = () => {
 					{ 'global-settings' === activeSettingsNavigationTab &&
 						<>
 							<ContentWidth/>
+							<BlocksEditorSpacing/>
                             <CollapsePanels/>
                             <CopyPasteStyles/>
                         </>

@@ -20,6 +20,10 @@ registerBlockType( 'uagb/forms-radio', {
 	supports: {
 		anchor: true,
 	},
-	example: {},
+	example: {
+		attributes: {
+			isPreview: true,
+		}
+	},
 	save,
 } );

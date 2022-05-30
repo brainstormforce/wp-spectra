@@ -26,6 +26,7 @@ const initialState = {
 	settingsSavedNotification: false,
 	enableComingSoonMode: 'disabled',
 	comingSoonPage: '',
+	blocksEditorSpacing: '',
 };
 
 const globalDataStore = createStore(
