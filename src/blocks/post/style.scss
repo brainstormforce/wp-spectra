@@ -18,10 +18,6 @@
 				margin: 5px 5px 5px 20px;
 			}
 
-			&:nth-child(2).highlighted {
-				margin-left: 20px;
-			}
-
 			&.highlighted {
 				background: #444;
 				color: #fff;
@@ -30,7 +26,8 @@
 				align-items: flex-end;
 				padding: 6px 8px;
 				line-height: 1;
-				margin: 5px 5px 5px 5px;
+				margin-right: 5px;
+				margin-bottom: 20px;
 
 				a {
 					color: #fff;

@@ -64,6 +64,12 @@ function styling( props ) {
 		boxShadowBlur,
 		boxShadowSpread,
 		boxShadowPosition,
+		boxShadowColorHover,
+		boxShadowHOffsetHover,
+		boxShadowVOffsetHover,
+		boxShadowBlurHover,
+		boxShadowSpreadHover,
+		boxShadowPositionHover,
 
 		topPaddingDesktop,
 		bottomPaddingDesktop,
@@ -78,6 +84,8 @@ function styling( props ) {
 		leftPaddingMobile,
 		rightPaddingMobile,
 		paddingType,
+		paddingTypeTablet,
+		paddingTypeMobile,
 		topMarginDesktop,
 		bottomMarginDesktop,
 		leftMarginDesktop,
@@ -91,14 +99,20 @@ function styling( props ) {
 		leftMarginMobile,
 		rightMarginMobile,
 		marginType,
+		marginTypeTablet,
+		marginTypeMobile,
 		rowGapDesktop,
 		rowGapTablet,
 		rowGapMobile,
 		rowGapType,
+		rowGapTypeTablet,
+		rowGapTypeMobile,
 		columnGapDesktop,
 		columnGapTablet,
 		columnGapMobile,
 		columnGapType,
+		columnGapTypeTablet,
+		columnGapTypeMobile,
 		contentWidth,
 		innerContentWidth,
 		bottomColor,
@@ -231,6 +245,12 @@ function styling( props ) {
 		boxShadowPositionCSS = '';
 	}
 
+	let boxShadowPositionCSSHover = boxShadowPositionHover;
+
+	if ( 'outset' === boxShadowPositionHover ) {
+		boxShadowPositionCSSHover = '';
+	}
+
 	const containerCSS = {
 		'padding-top': generateCSSUnit( topPaddingDesktop, paddingType ),
 		'padding-bottom': generateCSSUnit( bottomPaddingDesktop, paddingType ),
@@ -255,6 +275,10 @@ function styling( props ) {
 	selectors['.wp-block'] = containerCSS;
 	selectors['.wp-block:hover'] = {
 		'border-color': borderHoverColor,
+		'box-shadow':
+		generateCSSUnit( boxShadowHOffsetHover, 'px' ) + ' ' + generateCSSUnit( boxShadowVOffsetHover, 'px' ) +	' ' +
+		generateCSSUnit( boxShadowBlurHover, 'px' ) + ' ' +	generateCSSUnit( boxShadowSpreadHover, 'px' ) + ' ' +
+		boxShadowColorHover + ' ' +	boxShadowPositionCSSHover,
 	};
 
 	selectors[' > .wp-block-uagb-container > .uagb-container-inner-blocks-wrap > .block-editor-inner-blocks > .block-editor-block-list__layout'] = {
@@ -342,14 +366,14 @@ function styling( props ) {
 
 	const tablet_selectors = {
 		'.wp-block' : {
-			'padding-top': generateCSSUnit( topPaddingTablet, paddingType ),
-			'padding-bottom': generateCSSUnit( bottomPaddingTablet, paddingType ),
-			'padding-left': generateCSSUnit( leftPaddingTablet, paddingType ),
-			'padding-right': generateCSSUnit( rightPaddingTablet, paddingType ),
-			'margin-top': generateCSSUnit( topMarginTablet, marginType ),
-			'margin-bottom': generateCSSUnit( bottomMarginTablet, marginType ),
-			'margin-left': generateCSSUnit( leftMarginTablet, marginType ),
-			'margin-right': generateCSSUnit( rightMarginTablet, marginType ),
+			'padding-top': generateCSSUnit( topPaddingTablet, paddingTypeTablet ),
+			'padding-bottom': generateCSSUnit( bottomPaddingTablet, paddingTypeTablet ),
+			'padding-left': generateCSSUnit( leftPaddingTablet, paddingTypeTablet ),
+			'padding-right': generateCSSUnit( rightPaddingTablet, paddingTypeTablet ),
+			'margin-top': generateCSSUnit( topMarginTablet, marginTypeTablet ),
+			'margin-bottom': generateCSSUnit( bottomMarginTablet, marginTypeTablet ),
+			'margin-left': generateCSSUnit( leftMarginTablet, marginTypeTablet ),
+			'margin-right': generateCSSUnit( rightMarginTablet, marginTypeTablet ),
 			'min-height' : generateCSSUnit( minHeightTablet, minHeightType ),
 			...containerBackgroundCSSTablet
 		},
@@ -359,8 +383,8 @@ function styling( props ) {
 			'justify-content' : justifyContentTablet,
 			'flex-wrap' : wrapTablet,
 			'align-content' : alignContentTablet,
-			'row-gap' : generateCSSUnit( rowGapTablet, rowGapType ),
-			'column-gap' : generateCSSUnit( columnGapTablet, columnGapType ),
+			'row-gap' : generateCSSUnit( rowGapTablet, rowGapTypeTablet ),
+			'column-gap' : generateCSSUnit( columnGapTablet, columnGapTypeTablet ),
 		},
 		'.block-editor-block-list__block' : {
 			'min-height' : generateCSSUnit( minHeightTablet, minHeightType ),
@@ -399,14 +423,14 @@ function styling( props ) {
 
 	const mobile_selectors = {
 		'.wp-block' : {
-			'padding-top': generateCSSUnit( topPaddingMobile, paddingType ),
-			'padding-bottom': generateCSSUnit( bottomPaddingMobile, paddingType ),
-			'padding-left': generateCSSUnit( leftPaddingMobile, paddingType ),
-			'padding-right': generateCSSUnit( rightPaddingMobile, paddingType ),
-			'margin-top': generateCSSUnit( topMarginMobile, marginType ),
-			'margin-bottom': generateCSSUnit( bottomMarginMobile, marginType ),
-			'margin-left': generateCSSUnit( leftMarginMobile, marginType ),
-			'margin-right': generateCSSUnit( rightMarginMobile, marginType ),
+			'padding-top': generateCSSUnit( topPaddingMobile, paddingTypeMobile ),
+			'padding-bottom': generateCSSUnit( bottomPaddingMobile, paddingTypeMobile ),
+			'padding-left': generateCSSUnit( leftPaddingMobile, paddingTypeMobile ),
+			'padding-right': generateCSSUnit( rightPaddingMobile, paddingTypeMobile ),
+			'margin-top': generateCSSUnit( topMarginMobile, marginTypeMobile ),
+			'margin-bottom': generateCSSUnit( bottomMarginMobile, marginTypeMobile ),
+			'margin-left': generateCSSUnit( leftMarginMobile, marginTypeMobile ),
+			'margin-right': generateCSSUnit( rightMarginMobile, marginTypeMobile ),
 			'min-height' : generateCSSUnit( minHeightMobile, minHeightType ),
 			...containerBackgroundCSSMobile
 		},
@@ -416,8 +440,8 @@ function styling( props ) {
 			'justify-content' : justifyContentMobile,
 			'flex-wrap' : wrapMobile,
 			'align-content' : alignContentMobile,
-			'row-gap' : generateCSSUnit( rowGapMobile, rowGapType ),
-			'column-gap' : generateCSSUnit( columnGapMobile, columnGapType ),
+			'row-gap' : generateCSSUnit( rowGapMobile, rowGapTypeMobile ),
+			'column-gap' : generateCSSUnit( columnGapMobile, columnGapTypeMobile ),
 		},
 		'.block-editor-block-list__block' : {
 			'min-height' : generateCSSUnit( minHeightMobile, minHeightType ),

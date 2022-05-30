@@ -55,10 +55,6 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 
 				$selectors[' .wp-block-button__link']['background'] = $attr['background'];
 
-				$selectors[' .wp-block-button__link:hover'] = array(
-					'background' => $attr['hBackground'],
-				);
-
 			} elseif ( 'gradient' === $attr['backgroundType'] ) {
 				$bg_obj = array(
 					'backgroundType' => 'gradient',
@@ -67,6 +63,29 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 
 				$btn_bg_css                           = self::uag_get_background_obj( $bg_obj );
 				$selectors[' .wp-block-button__link'] = $btn_bg_css;
+			}
+
+			// Hover background color types.
+			if ( 'transparent' === $attr['hoverbackgroundType'] ) {
+
+				$selectors[' .wp-block-button__link:hover'] = array(
+					'background' => 'transparent',
+				);
+
+			} elseif ( 'color' === $attr['hoverbackgroundType'] ) {
+
+				$selectors[' .wp-block-button__link:hover'] = array(
+					'background' => $attr['hBackground'],
+				);
+
+			} elseif ( 'gradient' === $attr['hoverbackgroundType'] ) {
+				$bg_hover_obj = array(
+					'backgroundType' => 'gradient',
+					'gradientValue'  => $attr['hovergradientValue'],
+				);
+
+				$btn_hover_bg_css                           = self::uag_get_background_obj( $bg_hover_obj );
+				$selectors[' .wp-block-button__link:hover'] = $btn_hover_bg_css;
 			}
 
 			$selectors[' .uagb-button__wrapper .uagb-buttons-repeater.wp-block-button__link'] = array(
@@ -314,9 +333,13 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					'background' => $attr['bgColor'],
 					'text-align' => $attr['align'],
 				),
-				' .uagb-post__inner-wrap .uagb-post__text' => array(
+				' .uagb-post__inner-wrap .uagb-post__text:not(.highlighted)' => array(
 					'margin-left'  => UAGB_Helper::get_css_value( $paddingLeft, $attr['contentPaddingUnit'] ),
 					'margin-right' => UAGB_Helper::get_css_value( $paddingRight, $attr['contentPaddingUnit'] ),
+				),
+				' .uagb-post__inner-wrap .uagb-post__text:first-child.highlighted:first-child' => array(
+					'margin-top'  => UAGB_Helper::get_css_value( $paddingTop, $attr['contentPaddingUnit'] ),
+					'margin-left' => UAGB_Helper::get_css_value( $paddingLeft, $attr['contentPaddingUnit'] ),
 				),
 				' .uagb-post__inner-wrap .uagb-post__text:first-child' => array(
 					'margin-top' => UAGB_Helper::get_css_value( $paddingTop, $attr['contentPaddingUnit'] ),

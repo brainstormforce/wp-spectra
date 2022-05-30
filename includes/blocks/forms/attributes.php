@@ -184,4 +184,5 @@ return array(
 	'labelGapTablet'                 => 10,
 	'labelGapMobile'                 => 10,
 	'labelGapUnit'                   => 'px',
+	'displayLabels'                  => true,
 );
