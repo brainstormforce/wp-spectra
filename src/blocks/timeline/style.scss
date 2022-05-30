@@ -341,6 +341,11 @@
 	.uagb-timeline__right,
 	.uagb-timeline__left {
 
+		// If the orientation of the timeline is set to right, right-align the text.
+		.uagb-timeline__events-inner-new {
+			text-align: right;
+		}
+
 		.uagb-timeline__arrow::after {
 			top: 50%;
 			transform: translateY(-50%);

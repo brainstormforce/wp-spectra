@@ -19,12 +19,16 @@ const UAGBFormsToggleEdit = ( props ) => {
 		setAttributes( { block_id: props.clientId.substr( 0, 8 ) } );
 	}, [] );
 
+	const previewImageData = `${ uagb_blocks_info.uagb_url }/admin/assets/preview-images/form-toggle.svg`;
+
 	return (
 		<>
-			<Suspense fallback={ lazyLoader() }>
-				<Settings parentProps={ props } />
-				<Render parentProps={ props } />
-			</Suspense>
+			{ props.attributes.isPreview ? <img width='100%' src={ previewImageData } alt=''/> : (
+				<Suspense fallback={ lazyLoader() }>
+					<Settings parentProps={ props } />
+					<Render parentProps={ props } />
+				</Suspense>
+			) }
 		</>
 	);
 };
