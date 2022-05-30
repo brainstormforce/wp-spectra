@@ -64,6 +64,12 @@ function styling( props ) {
 		boxShadowBlur,
 		boxShadowSpread,
 		boxShadowPosition,
+		boxShadowColorHover,
+		boxShadowHOffsetHover,
+		boxShadowVOffsetHover,
+		boxShadowBlurHover,
+		boxShadowSpreadHover,
+		boxShadowPositionHover,
 
 		topPaddingDesktop,
 		bottomPaddingDesktop,
@@ -216,6 +222,12 @@ function styling( props ) {
 		boxShadowPositionCSS = '';
 	}
 
+	let boxShadowPositionCSSHover = boxShadowPositionHover;
+
+	if ( 'outset' === boxShadowPositionHover ) {
+		boxShadowPositionCSSHover = '';
+	}
+
 	const containerCSS = {
 		'padding-top': generateCSSUnit( topPaddingDesktop, paddingType ),
 		'padding-bottom': generateCSSUnit( bottomPaddingDesktop, paddingType ),
@@ -240,6 +252,10 @@ function styling( props ) {
 	selectors['.wp-block'] = containerCSS;
 	selectors['.wp-block:hover'] = {
 		'border-color': borderHoverColor,
+		'box-shadow':
+		generateCSSUnit( boxShadowHOffsetHover, 'px' ) + ' ' + generateCSSUnit( boxShadowVOffsetHover, 'px' ) +	' ' +
+		generateCSSUnit( boxShadowBlurHover, 'px' ) + ' ' +	generateCSSUnit( boxShadowSpreadHover, 'px' ) + ' ' +
+		boxShadowColorHover + ' ' +	boxShadowPositionCSSHover,
 	};
 
 	selectors[' > .wp-block-uagb-container > .uagb-container-inner-blocks-wrap > .block-editor-inner-blocks > .block-editor-block-list__layout'] = {

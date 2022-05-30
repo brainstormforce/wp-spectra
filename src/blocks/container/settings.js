@@ -81,6 +81,12 @@ const Settings = ( props ) => {
 		boxShadowBlur,
 		boxShadowSpread,
 		boxShadowPosition,
+		boxShadowColorHover,
+		boxShadowHOffsetHover,
+		boxShadowVOffsetHover,
+		boxShadowBlurHover,
+		boxShadowSpreadHover,
+		boxShadowPositionHover,
 
 		topPaddingDesktop,
 		bottomPaddingDesktop,
@@ -964,51 +970,125 @@ const Settings = ( props ) => {
 				title={ __( 'Box Shadow', 'ultimate-addons-for-gutenberg' ) }
 				initialOpen={ false }
 			>
-				<BoxShadowControl
-					setAttributes={ setAttributes }
-					label={ __(
-						'Box Shadow',
-						'ultimate-addons-for-gutenberg'
-					) }
-					boxShadowColor={ {
-						value: boxShadowColor,
-						label: 'boxShadowColor',
-						title: __( 'Color', 'ultimate-addons-for-gutenberg' ),
-					} }
-					boxShadowHOffset={ {
-						value: boxShadowHOffset,
-						label: 'boxShadowHOffset',
-						title: __(
-							'Horizontal',
-							'ultimate-addons-for-gutenberg'
-						),
-					} }
-					boxShadowVOffset={ {
-						value: boxShadowVOffset,
-						label: 'boxShadowVOffset',
-						title: __(
-							'Vertical',
-							'ultimate-addons-for-gutenberg'
-						),
-					} }
-					boxShadowBlur={ {
-						value: boxShadowBlur,
-						label: 'boxShadowBlur',
-						title: __( 'Blur', 'ultimate-addons-for-gutenberg' ),
-					} }
-					boxShadowSpread={ {
-						value: boxShadowSpread,
-						label: 'boxShadowSpread',
-						title: __( 'Spread', 'ultimate-addons-for-gutenberg' ),
-					} }
-					boxShadowPosition={ {
-						value: boxShadowPosition,
-						label: 'boxShadowPosition',
-						title: __(
-							'Position',
-							'ultimate-addons-for-gutenberg'
-						),
-					} }
+
+				<UAGTabsControl
+					tabs={ [
+						{
+							name: 'normal',
+							title: __(
+								'Normal',
+								'ultimate-addons-for-gutenberg'
+							),
+						},
+						{
+							name: 'hover',
+							title: __(
+								'Hover',
+								'ultimate-addons-for-gutenberg'
+							),
+						},
+					] }
+					normal={
+						<>
+							<BoxShadowControl
+								setAttributes={ setAttributes }
+								label={ __(
+									'Box Shadow',
+									'ultimate-addons-for-gutenberg'
+								) }
+								boxShadowColor={ {
+									value: boxShadowColor,
+									label: 'boxShadowColor',
+									title: __( 'Color', 'ultimate-addons-for-gutenberg' ),
+								} }
+								boxShadowHOffset={ {
+									value: boxShadowHOffset,
+									label: 'boxShadowHOffset',
+									title: __(
+										'Horizontal',
+										'ultimate-addons-for-gutenberg'
+									),
+								} }
+								boxShadowVOffset={ {
+									value: boxShadowVOffset,
+									label: 'boxShadowVOffset',
+									title: __(
+										'Vertical',
+										'ultimate-addons-for-gutenberg'
+									),
+								} }
+								boxShadowBlur={ {
+									value: boxShadowBlur,
+									label: 'boxShadowBlur',
+									title: __( 'Blur', 'ultimate-addons-for-gutenberg' ),
+								} }
+								boxShadowSpread={ {
+									value: boxShadowSpread,
+									label: 'boxShadowSpread',
+									title: __( 'Spread', 'ultimate-addons-for-gutenberg' ),
+								} }
+								boxShadowPosition={ {
+									value: boxShadowPosition,
+									label: 'boxShadowPosition',
+									title: __(
+										'Position',
+										'ultimate-addons-for-gutenberg'
+									),
+								} }
+							/>
+						</>
+					}
+					hover={
+						<>
+							<BoxShadowControl
+								setAttributes={ setAttributes }
+								label={ __(
+									'Box Shadow',
+									'ultimate-addons-for-gutenberg'
+								) }
+								boxShadowColor={ {
+									value: boxShadowColorHover,
+									label: 'boxShadowColorHover',
+									title: __( 'Color', 'ultimate-addons-for-gutenberg' ),
+								} }
+								boxShadowHOffset={ {
+									value: boxShadowHOffsetHover,
+									label: 'boxShadowHOffsetHover',
+									title: __(
+										'Horizontal',
+										'ultimate-addons-for-gutenberg'
+									),
+								} }
+								boxShadowVOffset={ {
+									value: boxShadowVOffsetHover,
+									label: 'boxShadowVOffsetHover',
+									title: __(
+										'Vertical',
+										'ultimate-addons-for-gutenberg'
+									),
+								} }
+								boxShadowBlur={ {
+									value: boxShadowBlurHover,
+									label: 'boxShadowBlurHover',
+									title: __( 'Blur', 'ultimate-addons-for-gutenberg' ),
+								} }
+								boxShadowSpread={ {
+									value: boxShadowSpreadHover,
+									label: 'boxShadowSpreadHover',
+									title: __( 'Spread', 'ultimate-addons-for-gutenberg' ),
+								} }
+								boxShadowPosition={ {
+									value: boxShadowPositionHover,
+									label: 'boxShadowPositionHover',
+									title: __(
+										'Position',
+										'ultimate-addons-for-gutenberg'
+									),
+								} }
+							/>
+						</>
+					}
+					disableBottomSeparator={ true }
 				/>
 			</UAGAdvancedPanelBody>
 		);
