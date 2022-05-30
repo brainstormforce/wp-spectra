@@ -81,6 +81,12 @@ const Settings = ( props ) => {
 		boxShadowBlur,
 		boxShadowSpread,
 		boxShadowPosition,
+		boxShadowColorHover,
+		boxShadowHOffsetHover,
+		boxShadowVOffsetHover,
+		boxShadowBlurHover,
+		boxShadowSpreadHover,
+		boxShadowPositionHover,
 
 		topPaddingDesktop,
 		bottomPaddingDesktop,
@@ -95,6 +101,8 @@ const Settings = ( props ) => {
 		leftPaddingMobile,
 		rightPaddingMobile,
 		paddingType,
+		paddingTypeTablet,
+		paddingTypeMobile,
 		paddingLink,
 		topMarginDesktop,
 		bottomMarginDesktop,
@@ -109,15 +117,21 @@ const Settings = ( props ) => {
 		leftMarginMobile,
 		rightMarginMobile,
 		marginType,
+		marginTypeTablet,
+		marginTypeMobile,
 		marginLink,
 		rowGapDesktop,
 		rowGapTablet,
 		rowGapMobile,
 		rowGapType,
+		rowGapTypeTablet,
+		rowGapTypeMobile,
 		columnGapDesktop,
 		columnGapTablet,
 		columnGapMobile,
 		columnGapType,
+		columnGapTypeTablet,
+		columnGapTypeMobile,
 		contentWidth,
 		isBlockRootParent,
 		innerContentWidth,
@@ -831,6 +845,9 @@ const Settings = ( props ) => {
 						value: overlayType,
 						label: 'overlayType'
 					}}
+					gradientOverlay={{
+						value: true,
+					}}
 					backgroundVideoType={ {
 						value: true,
 					} }
@@ -965,51 +982,125 @@ const Settings = ( props ) => {
 				title={ __( 'Box Shadow', 'ultimate-addons-for-gutenberg' ) }
 				initialOpen={ false }
 			>
-				<BoxShadowControl
-					setAttributes={ setAttributes }
-					label={ __(
-						'Box Shadow',
-						'ultimate-addons-for-gutenberg'
-					) }
-					boxShadowColor={ {
-						value: boxShadowColor,
-						label: 'boxShadowColor',
-						title: __( 'Color', 'ultimate-addons-for-gutenberg' ),
-					} }
-					boxShadowHOffset={ {
-						value: boxShadowHOffset,
-						label: 'boxShadowHOffset',
-						title: __(
-							'Horizontal',
-							'ultimate-addons-for-gutenberg'
-						),
-					} }
-					boxShadowVOffset={ {
-						value: boxShadowVOffset,
-						label: 'boxShadowVOffset',
-						title: __(
-							'Vertical',
-							'ultimate-addons-for-gutenberg'
-						),
-					} }
-					boxShadowBlur={ {
-						value: boxShadowBlur,
-						label: 'boxShadowBlur',
-						title: __( 'Blur', 'ultimate-addons-for-gutenberg' ),
-					} }
-					boxShadowSpread={ {
-						value: boxShadowSpread,
-						label: 'boxShadowSpread',
-						title: __( 'Spread', 'ultimate-addons-for-gutenberg' ),
-					} }
-					boxShadowPosition={ {
-						value: boxShadowPosition,
-						label: 'boxShadowPosition',
-						title: __(
-							'Position',
-							'ultimate-addons-for-gutenberg'
-						),
-					} }
+
+				<UAGTabsControl
+					tabs={ [
+						{
+							name: 'normal',
+							title: __(
+								'Normal',
+								'ultimate-addons-for-gutenberg'
+							),
+						},
+						{
+							name: 'hover',
+							title: __(
+								'Hover',
+								'ultimate-addons-for-gutenberg'
+							),
+						},
+					] }
+					normal={
+						<>
+							<BoxShadowControl
+								setAttributes={ setAttributes }
+								label={ __(
+									'Box Shadow',
+									'ultimate-addons-for-gutenberg'
+								) }
+								boxShadowColor={ {
+									value: boxShadowColor,
+									label: 'boxShadowColor',
+									title: __( 'Color', 'ultimate-addons-for-gutenberg' ),
+								} }
+								boxShadowHOffset={ {
+									value: boxShadowHOffset,
+									label: 'boxShadowHOffset',
+									title: __(
+										'Horizontal',
+										'ultimate-addons-for-gutenberg'
+									),
+								} }
+								boxShadowVOffset={ {
+									value: boxShadowVOffset,
+									label: 'boxShadowVOffset',
+									title: __(
+										'Vertical',
+										'ultimate-addons-for-gutenberg'
+									),
+								} }
+								boxShadowBlur={ {
+									value: boxShadowBlur,
+									label: 'boxShadowBlur',
+									title: __( 'Blur', 'ultimate-addons-for-gutenberg' ),
+								} }
+								boxShadowSpread={ {
+									value: boxShadowSpread,
+									label: 'boxShadowSpread',
+									title: __( 'Spread', 'ultimate-addons-for-gutenberg' ),
+								} }
+								boxShadowPosition={ {
+									value: boxShadowPosition,
+									label: 'boxShadowPosition',
+									title: __(
+										'Position',
+										'ultimate-addons-for-gutenberg'
+									),
+								} }
+							/>
+						</>
+					}
+					hover={
+						<>
+							<BoxShadowControl
+								setAttributes={ setAttributes }
+								label={ __(
+									'Box Shadow',
+									'ultimate-addons-for-gutenberg'
+								) }
+								boxShadowColor={ {
+									value: boxShadowColorHover,
+									label: 'boxShadowColorHover',
+									title: __( 'Color', 'ultimate-addons-for-gutenberg' ),
+								} }
+								boxShadowHOffset={ {
+									value: boxShadowHOffsetHover,
+									label: 'boxShadowHOffsetHover',
+									title: __(
+										'Horizontal',
+										'ultimate-addons-for-gutenberg'
+									),
+								} }
+								boxShadowVOffset={ {
+									value: boxShadowVOffsetHover,
+									label: 'boxShadowVOffsetHover',
+									title: __(
+										'Vertical',
+										'ultimate-addons-for-gutenberg'
+									),
+								} }
+								boxShadowBlur={ {
+									value: boxShadowBlurHover,
+									label: 'boxShadowBlurHover',
+									title: __( 'Blur', 'ultimate-addons-for-gutenberg' ),
+								} }
+								boxShadowSpread={ {
+									value: boxShadowSpreadHover,
+									label: 'boxShadowSpreadHover',
+									title: __( 'Spread', 'ultimate-addons-for-gutenberg' ),
+								} }
+								boxShadowPosition={ {
+									value: boxShadowPositionHover,
+									label: 'boxShadowPositionHover',
+									title: __(
+										'Position',
+										'ultimate-addons-for-gutenberg'
+									),
+								} }
+							/>
+						</>
+					}
+					disableBottomSeparator={ true }
 				/>
 			</UAGAdvancedPanelBody>
 		);
@@ -1027,22 +1118,30 @@ const Settings = ( props ) => {
 						desktop: {
 							value: rowGapDesktop,
 							label: 'rowGapDesktop',
+							unit:  {
+								value: rowGapType,
+								label: 'rowGapType',
+							}
 						},
 						tablet: {
 							value: rowGapTablet,
 							label: 'rowGapTablet',
+							unit:  {
+								value: rowGapTypeTablet,
+								label: 'rowGapTypeTablet',
+							}
 						},
 						mobile: {
 							value: rowGapMobile,
 							label: 'rowGapMobile',
+							unit: {
+								value: rowGapTypeMobile,
+								label: 'rowGapTypeMobile',
+							},
 						},
 					} }
 					min={ 0 }
 					max={ 200 }
-					unit={ {
-						value: rowGapType,
-						label: 'rowGapType',
-					} }
 					units={ [
 						{
 							name: __(
@@ -1068,22 +1167,30 @@ const Settings = ( props ) => {
 						desktop: {
 							value: columnGapDesktop,
 							label: 'columnGapDesktop',
+							unit:  {
+								value: columnGapType,
+								label: 'columnGapType',
+							}
 						},
 						tablet: {
 							value: columnGapTablet,
 							label: 'columnGapTablet',
+							unit:  {
+								value: columnGapTypeTablet,
+								label: 'columnGapTypeTablet',
+							}
 						},
 						mobile: {
 							value: columnGapMobile,
 							label: 'columnGapMobile',
+							unit:  {
+								value: columnGapTypeMobile,
+								label: 'columnGapTypeMobile',
+							}
 						},
 					} }
 					min={ 0 }
 					max={ 200 }
-					unit={ {
-						value: columnGapType,
-						label: 'columnGapType',
-					} }
 					units={ [
 						{
 							name: __(
@@ -1159,12 +1266,12 @@ const Settings = ( props ) => {
 						label: 'paddingType',
 					} }
 					mUnit={ {
-						value: paddingType,
-						label: 'paddingType',
+						value: paddingTypeMobile,
+						label: 'paddingTypeMobile',
 					} }
 					tUnit={ {
-						value: paddingType,
-						label: 'paddingType',
+						value: paddingTypeTablet,
+						label: 'paddingTypeTablet',
 					} }
 					attributes={ attributes }
 					setAttributes={ setAttributes }
@@ -1229,12 +1336,12 @@ const Settings = ( props ) => {
 						label: 'marginType',
 					} }
 					mUnit={ {
-						value: marginType,
-						label: 'marginType',
+						value: marginTypeMobile,
+						label: 'marginTypeMobile',
 					} }
 					tUnit={ {
-						value: marginType,
-						label: 'marginType',
+						value: marginTypeTablet,
+						label: 'marginTypeTablet',
 					} }
 					attributes={ attributes }
 					setAttributes={ setAttributes }

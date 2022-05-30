@@ -662,28 +662,24 @@ const attributes = {
 		UAGCopyPaste: {
 			styleType: 'icon-left-margin'
 		},
-		default: 10,
 	},
 	iconRightMargin: {
 		type: 'number',
 		UAGCopyPaste: {
 			styleType: 'icon-right-margin'
 		},
-		default: 10,
 	},
 	iconTopMargin: {
 		type: 'number',
 		UAGCopyPaste: {
 			styleType: 'icon-top-margin'
 		},
-		default: 5,
 	},
 	iconBottomMargin: {
 		type: 'number',
 		UAGCopyPaste: {
 			styleType: 'icon-bottom-margin'
 		},
-		default: 15,
 	},
 	iconImage: {
 		type: 'object',
@@ -922,6 +918,20 @@ const attributes = {
 		default: 'px',
 		UAGCopyPaste: {
 			styleType: 'image-width-unit'
+		}
+	},
+	imageWidthUnitTablet: {
+		type: 'string',
+		default: 'px',
+		UAGCopyPaste: {
+			styleType: 'image-width-unit-tablet'
+		}
+	},
+	imageWidthUnitMobile: {
+		type: 'string',
+		default: 'px',
+		UAGCopyPaste: {
+			styleType: 'image-width-unit-mobile'
 		}
 	},
 	iconimgBorderRadiusUnit: {

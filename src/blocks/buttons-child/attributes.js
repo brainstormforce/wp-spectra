@@ -158,7 +158,14 @@ const attributes = {
 		type: 'string',
 		default: '',
 		UAGCopyPaste: {
-			styleType: 'container-bg-gradient-value'
+			styleType: 'btn-bg-gradient-value'
+		},
+	},
+	hovergradientValue: {
+		type: 'string',
+		default: '',
+		UAGCopyPaste: {
+			styleType: 'btn-hbg-gradient-value'
 		},
 	},
 	mobilePaddingUnit: {
@@ -188,7 +195,6 @@ const attributes = {
 	},
 	borderRadius: {
 		type: 'number',
-		default: '',
 		UAGCopyPaste: {
 			styleType: 'btn-border-radius'
 		}
@@ -352,6 +358,13 @@ const attributes = {
 			styleType: 'btn-background-type'
 		}
 	},
+	hoverbackgroundType:{
+		type:'string',
+		default: 'color',
+		UAGCopyPaste: {
+			styleType: 'btn-hbackground-type'
+		}
+	},
 	topMargin:{
 		type:'number',
 		UAGCopyPaste: {
@@ -509,7 +522,7 @@ const attributes = {
 		}
 	},
 	removeText:{
-		type:'string',
+		type:'boolean',
 		default: false
 	},
 };

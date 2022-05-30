@@ -21,7 +21,11 @@ registerBlockType( 'uagb/forms-textarea', {
 	supports: {
 		anchor: true,
 	},
-	example: {},
+	example: {
+		attributes: {
+			isPreview: true,
+		}
+	},
 	save,
 	deprecated,
 } );

@@ -52,7 +52,9 @@ function styling( props ) {
 		transform,
 		decoration,
 		backgroundType,
+		hoverbackgroundType,
 		gradientValue,
+		hovergradientValue,
 		topMargin,
 		rightMargin,
 		bottomMargin,
@@ -248,11 +250,26 @@ function styling( props ) {
 
 		const btnBackground = generateBackgroundCSS( backgroundAttributes );
 		selectors[ '.uagb-buttons__outer-wrap .wp-block-button__link.uagb-buttons-repeater' ] = btnBackground;
-	} else {
-		selectors[ '.uagb-buttons__outer-wrap .wp-block-button__link.uagb-buttons-repeater' ] = {
+	} else if ( 'color' === backgroundType ) {
+		selectors[ '.uagb-buttons__outer-wrap.wp-block-button .wp-block-button__link.uagb-buttons-repeater' ] = {
 			'background': background,
 		}
-		selectors[ '.uagb-buttons__outer-wrap .wp-block-button__link.uagb-buttons-repeater:hover' ] = {
+	}
+
+	if ( 'transparent' === hoverbackgroundType ) {
+		selectors[ '.uagb-buttons__outer-wrap.wp-block-button .wp-block-button__link.uagb-buttons-repeater:hover' ]  = {
+			'background': 'transparent',
+		}
+	} else if ( 'gradient' === hoverbackgroundType ) {
+		const hoverbackgroundAttributes = {
+			'backgroundType': 'gradient',
+			'gradientValue': hovergradientValue,
+		};
+
+		const btnhBackground = generateBackgroundCSS( hoverbackgroundAttributes );
+		selectors[ '.uagb-buttons__outer-wrap.wp-block-button .wp-block-button__link.uagb-buttons-repeater:hover' ] = btnhBackground;
+	} else if ( 'color' === hoverbackgroundType ) {
+		selectors[ '.uagb-buttons__outer-wrap.wp-block-button .wp-block-button__link.uagb-buttons-repeater:hover' ] = {
 			'background': hBackground,
 		}
 	}
