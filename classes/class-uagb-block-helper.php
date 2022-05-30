@@ -55,10 +55,6 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 
 				$selectors[' .wp-block-button__link']['background'] = $attr['background'];
 
-				$selectors[' .wp-block-button__link:hover'] = array(
-					'background' => $attr['hBackground'],
-				);
-
 			} elseif ( 'gradient' === $attr['backgroundType'] ) {
 				$bg_obj = array(
 					'backgroundType' => 'gradient',
@@ -67,6 +63,29 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 
 				$btn_bg_css                           = self::uag_get_background_obj( $bg_obj );
 				$selectors[' .wp-block-button__link'] = $btn_bg_css;
+			}
+
+			// Hover background color types.
+			if ( 'transparent' === $attr['hoverbackgroundType'] ) {
+
+				$selectors[' .wp-block-button__link:hover'] = array(
+					'background' => 'transparent',
+				);
+
+			} elseif ( 'color' === $attr['hoverbackgroundType'] ) {
+
+				$selectors[' .wp-block-button__link:hover'] = array(
+					'background' => $attr['hBackground'],
+				);
+
+			} elseif ( 'gradient' === $attr['hoverbackgroundType'] ) {
+				$bg_hover_obj = array(
+					'backgroundType' => 'gradient',
+					'gradientValue'  => $attr['hovergradientValue'],
+				);
+
+				$btn_hover_bg_css                           = self::uag_get_background_obj( $bg_hover_obj );
+				$selectors[' .wp-block-button__link:hover'] = $btn_hover_bg_css;
 			}
 
 			$selectors[' .uagb-button__wrapper .uagb-buttons-repeater.wp-block-button__link'] = array(
@@ -117,7 +136,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					'border-color' => $attr['borderHColor'],
 				);
 			}
-			$selectors[ $wrapper . ' .uagb-button__link' ]      = array(
+			$selectors[ $wrapper . ' .uagb-button__link' ]                                  = array(
 				'font-family'     => $attr['fontFamily'],
 				'font-weight'     => $attr['fontWeight'],
 				'font-style'      => $attr['fontStyle'],
@@ -126,15 +145,15 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				'font-size'       => UAGB_Helper::get_css_value( $attr['size'], $attr['sizeType'] ),
 				'line-height'     => UAGB_Helper::get_css_value( $attr['lineHeight'], $attr['lineHeightType'] ),
 			);
-			$m_selectors[ $wrapper . ' .uagb-button__link' ]    = array(
+			$m_selectors[ $wrapper . ' .uagb-button__link' ]                                = array(
 				'font-size'   => UAGB_Helper::get_css_value( $attr['sizeMobile'], $attr['sizeType'] ),
 				'line-height' => UAGB_Helper::get_css_value( $attr['lineHeightMobile'], $attr['lineHeightType'] ),
 			);
-			$t_selectors[ $wrapper . ' .uagb-button__link' ]    = array(
+			$t_selectors[ $wrapper . ' .uagb-button__link' ]                                = array(
 				'font-size'   => UAGB_Helper::get_css_value( $attr['sizeTablet'], $attr['sizeType'] ),
 				'line-height' => UAGB_Helper::get_css_value( $attr['lineHeightTablet'], $attr['lineHeightType'] ),
 			);
-			$m_selectors[ $wrapper . '.wp-block-button__link' ] = array(
+			$m_selectors[ ' .uagb-button__wrapper ' . $wrapper . '.wp-block-button__link' ] = array(
 				'padding-top'    => UAGB_Helper::get_css_value( $attr['topMobilePadding'], $attr['mobilePaddingUnit'] ),
 				'padding-bottom' => UAGB_Helper::get_css_value( $attr['bottomMobilePadding'], $attr['mobilePaddingUnit'] ),
 				'padding-left'   => UAGB_Helper::get_css_value( $attr['leftMobilePadding'], $attr['mobilePaddingUnit'] ),
@@ -146,7 +165,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 
 			);
 
-			$t_selectors[ $wrapper . '.wp-block-button__link' ] = array(
+			$t_selectors[ ' .uagb-button__wrapper ' . $wrapper . '.wp-block-button__link' ] = array(
 				'padding-top'    => UAGB_Helper::get_css_value( $attr['topTabletPadding'], $attr['tabletPaddingUnit'] ),
 				'padding-bottom' => UAGB_Helper::get_css_value( $attr['bottomTabletPadding'], $attr['tabletPaddingUnit'] ),
 				'padding-left'   => UAGB_Helper::get_css_value( $attr['leftTabletPadding'], $attr['tabletPaddingUnit'] ),
@@ -314,9 +333,13 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					'background' => $attr['bgColor'],
 					'text-align' => $attr['align'],
 				),
-				' .uagb-post__inner-wrap .uagb-post__text' => array(
+				' .uagb-post__inner-wrap .uagb-post__text:not(.highlighted)' => array(
 					'margin-left'  => UAGB_Helper::get_css_value( $paddingLeft, $attr['contentPaddingUnit'] ),
 					'margin-right' => UAGB_Helper::get_css_value( $paddingRight, $attr['contentPaddingUnit'] ),
+				),
+				' .uagb-post__inner-wrap .uagb-post__text:first-child.highlighted:first-child' => array(
+					'margin-top'  => UAGB_Helper::get_css_value( $paddingTop, $attr['contentPaddingUnit'] ),
+					'margin-left' => UAGB_Helper::get_css_value( $paddingLeft, $attr['contentPaddingUnit'] ),
 				),
 				' .uagb-post__inner-wrap .uagb-post__text:first-child' => array(
 					'margin-top' => UAGB_Helper::get_css_value( $paddingTop, $attr['contentPaddingUnit'] ),
@@ -1071,6 +1094,29 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 			}
 
 			return $gen_bg_css;
+		}
+
+		/**
+		 * Since title text is set to flex, we need this function so that stack alignment doesn't break.
+		 * It converts the normal text-align values to flex-alignment based values.
+		 *
+		 * @since x.x.x
+		 * @param string $text_align Alignment value from text-align property.
+		 */
+		public static function text_alignment_to_flex( $text_align ) {
+
+			switch ( $text_align ) {
+
+				case 'left':
+					return 'start';
+				case 'center':
+					return 'center';
+				case 'right':
+					return 'end';
+				default:
+					return 'start';
+			}
+
 		}
 	}
 }

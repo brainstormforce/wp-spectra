@@ -1301,8 +1301,8 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 				?>
 				<?php do_action( "uagb_post_before_inner_wrap_{$attributes['post_type']}", get_the_ID(), $attributes ); ?>
 				<article <?php ( $post_class_enabled ) ? post_class( 'uagb-post__inner-wrap' ) : esc_html_e( 'class=uagb-post__inner-wrap' ); ?>>
-					<?php $this->render_complete_box_link( $attributes ); ?>
 					<?php $this->render_innerblocks( $attributes ); ?>
+					<?php $this->render_complete_box_link( $attributes ); ?>
 				</article>
 				<?php do_action( "uagb_post_after_inner_wrap_{$attributes['post_type']}", get_the_ID(), $attributes ); ?>
 				<?php
@@ -1347,9 +1347,19 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 		 * @since 1.20.0
 		 */
 		public function render_innerblocks( $attributes ) {
-			$length = count( $attributes['layoutConfig'] );
+			$length   = count( $attributes['layoutConfig'] );
+			$img_atts = array();
 			for ( $i = 0; $i < $length; $i++ ) {
+				if ( 'background' === $attributes['imgPosition'] && 'uagb/post-image' === $attributes['layoutConfig'][ $i ][0] ) {
+					// This is to avoid background image container as first child as we are targetting first child for top margin property.
+					$img_atts = $attributes['layoutConfig'][ $i ][0];
+					continue;
+				}
 				$this->render_layout( $attributes['layoutConfig'][ $i ][0], $attributes );
+			}
+			// Render background image container as a last child.
+			if ( ! empty( $img_atts ) ) {
+				$this->render_layout( $img_atts, $attributes );
 			}
 		}
 		/**

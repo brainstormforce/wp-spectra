@@ -102,9 +102,17 @@ const Range = ( props ) => {
 
 	const resetValues = () => {
 		const cachedValueUpdate = { ...cachedValue };
-
 		setValue( cachedValueUpdate.value );
-		props?.onChange( cachedValueUpdate.value );
+		const valueToUse = ( undefined === cachedValueUpdate.value ) ? '' : cachedValueUpdate.value;
+		props?.onChange // eslint-disable-line no-unused-expressions
+			? props?.onChange( valueToUse )
+			: (
+				props.setAttributes && (
+					props.setAttributes( {
+						[ props.data.label ]: valueToUse,
+					} )
+				)
+			);
 		if( cachedValueUpdate.unit ){
 			onChangeUnits( cachedValueUpdate.unit );
 		}

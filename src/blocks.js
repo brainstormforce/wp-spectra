@@ -9,13 +9,16 @@
  * Webpack is compiling as the input file.
  */
 
- import getUAGEditorStateLocalStorage from '@Controls/getUAGEditorStateLocalStorage';
+import getUAGEditorStateLocalStorage from '@Controls/getUAGEditorStateLocalStorage';
 
 // Delete the local storage on every refresh.
 const uagLocalStorage = getUAGEditorStateLocalStorage();
 if ( uagLocalStorage ) {
 	uagLocalStorage.removeItem( 'uagLastOpenedState' );
 }
+
+import blocksEditorSpacing from './blocks/extensions/blocks-editor-spacing';
+blocksEditorSpacing();
 
 __webpack_public_path__ = uagb_blocks_info.uagb_url + 'dist/';
 

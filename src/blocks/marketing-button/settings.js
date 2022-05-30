@@ -493,7 +493,15 @@ const Settings = ( props ) => {
 					} }
 					min={ 0 }
 					max={ 20 }
-					displayUnit={ false }
+					units={ [
+						{
+							name: __(
+								'Pixel',
+								'ultimate-addons-for-gutenberg'
+							),
+							unitValue: 'px',
+						}
+					] }
 					setAttributes={ setAttributes }
 					unit={ {
 						value: titleSpaceUnit,

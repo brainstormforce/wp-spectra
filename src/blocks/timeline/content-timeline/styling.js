@@ -102,6 +102,8 @@ function contentTimelineStyle( props ) {
 		subHeadDecoration,
 		dateDecoration,
 		iconFocus,
+		stack,
+		timelinAlignment,
 	} = props.attributes;
 
 	const respSelectors = 'left';
@@ -375,8 +377,10 @@ function contentTimelineStyle( props ) {
 			),
 		},
 		'.uagb-timeline__center-block .uagb-timeline__marker': {
-			'margin-left': 0,
-			'margin-right': 0,
+			'margin-left': ( stack === 'tablet' && timelinAlignment === 'center' ) ?
+			0 : generateCSSUnit( leftMargin + 3, marginUnit ),
+			'margin-right': ( stack === 'tablet' && timelinAlignment === 'center' ) ?
+			0 : generateCSSUnit( rightMargin, marginUnit ),
 		},
 		'.uagb-timeline__center-block .uagb-timeline__day-new.uagb-timeline__day-left': {
 			'margin-left': generateCSSUnit(
