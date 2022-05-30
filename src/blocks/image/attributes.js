@@ -1,3 +1,9 @@
+import {getBorderAttributes} from '@Controls/generateAttributes';
+
+const overlayBorderAttributes = getBorderAttributes( 'overlay' );
+const imageBorderAttributes = getBorderAttributes( 'image' );
+
+
 const attributes = {
 	block_id: {
 		type: 'string',
@@ -757,42 +763,6 @@ const attributes = {
 			styleType: 'overlay-hover-opacity'
 		}
 	},
-	overlayBorderWidth: {
-		type: 'number',
-		default: 2,
-		UAGCopyPaste: {
-			styleType: 'overlay-border-width'
-		}
-	},
-	overlayBorderStyle: {
-		type: 'string',
-		default: 'solid',
-		UAGCopyPaste: {
-			styleType: 'overlay-border-style'
-		}
-	},
-	overlayBorderRadius: {
-		type: 'number',
-		isUAGStyle: true,
-		default: '',
-		UAGCopyPaste: {
-			styleType: 'overlay-border-radius'
-		}
-	},
-	overlayBorderColor: {
-		type: 'string',
-		default: '#fff',
-		UAGCopyPaste: {
-			styleType: 'overlay-border-color'
-		}
-	},
-	overlayBorderHoverColor: {
-		type: 'string',
-		isUAGStyle: true,
-		UAGCopyPaste: {
-			styleType: 'overlay-border-hover-color'
-		}
-	},
 	// seperator.
 	seperatorShowOn: {
 		type: 'string',
@@ -962,46 +932,6 @@ const attributes = {
 		type: 'string',
 		default: 'static',
 	},
-	// image border.
-	imageBorderWidth: {
-		type: 'number',
-		isUAGStyle: true,
-		default: '',
-		UAGCopyPaste: {
-			styleType: 'image-border-width'
-		}
-	},
-	imageBorderStyle: {
-		type: 'string',
-		isUAGStyle: true,
-		default: 'none',
-		UAGCopyPaste: {
-			styleType: 'image-border-style'
-		}
-	},
-	imageBorderRadius: {
-		type: 'number',
-		isUAGStyle: true,
-		default: '',
-		UAGCopyPaste: {
-			styleType: 'image-border-radius'
-		}
-	},
-	imageBorderColor: {
-		type: 'string',
-		isUAGStyle: true,
-		UAGCopyPaste: {
-			styleType: 'image-border-color'
-		}
-	},
-	imageBorderhoverColor: {
-		type: 'string',
-		isUAGStyle: true,
-		default: '',
-		UAGCopyPaste: {
-			styleType: 'image-border-hover-color'
-		}
-	},
 	imageBoxShadowColor: {
 		type: 'string',
 		isUAGStyle: true,
@@ -1070,7 +1000,9 @@ const attributes = {
 	maskRepeat: {
 		type: 'string',
 		default: 'no-repeat'
-	}
+	},
+	...imageBorderAttributes,
+	...overlayBorderAttributes
 };
 
 export default attributes;
