@@ -2,6 +2,7 @@
  * Returns Dynamic Generated CSS
  */
 
+import generateBorderCSS from '@Controls/generateBorderCSS';
 import generateCSS from '@Controls/generateCSS';
 import generateCSSUnit from '@Controls/generateCSSUnit';
 
@@ -99,11 +100,7 @@ export default function styling( props ) {
 		overlayPositionFromEdge,
 		overlayPositionFromEdgeUnit,
 		overlayBackground,
-		overlayBorderStyle,
-		overlayBorderWidth,
-		overlayBorderRadius,
-		overlayBorderColor,
-		overlayBorderHoverColor,
+		overlayBorderHColor,
 		// seperator
 		seperatorShowOn,
 		seperatorStyle,
@@ -128,11 +125,7 @@ export default function styling( props ) {
 		seperatorMarginUnitTablet,
 		seperatorMarginUnitMobile,
 		// border
-		imageBorderWidth,
-		imageBorderStyle,
-		imageBorderRadius,
-		imageBorderColor,
-		imageBorderhoverColor,
+		imageBorderHColor,
 		// shadow
 		imageBoxShadowColor,
 		imageBoxShadowHOffset,
@@ -147,6 +140,15 @@ export default function styling( props ) {
 		maskPosition,
 		maskRepeat
 	} = props.attributes;
+
+	const overlayBorderCSS = generateBorderCSS( props.attributes, 'overlay' )
+	const overlayBorderCSSTablet = generateBorderCSS( props.attributes, 'overlay', 'tablet' )
+	const overlayBorderCSSMobile = generateBorderCSS( props.attributes, 'overlay', 'mobile' )
+	const imageBorderCSS = generateBorderCSS( props.attributes, 'image' )
+	const imageBorderCSSTablet = generateBorderCSS( props.attributes, 'image', 'tablet' )
+	const imageBorderCSSMobile = generateBorderCSS( props.attributes, 'image', 'mobile' )
+
+
 
 	const getImageShadowPosition = imageBoxShadowPosition !== 'outset' ? imageBoxShadowPosition : ''
 
@@ -173,11 +175,8 @@ export default function styling( props ) {
 		'.wp-block-uagb-image--layout-default img':{
 			'width': 'inherit',
 			'height': 'inherit',
-			'border-style': imageBorderStyle,
-			'border-color': imageBorderColor,
-			'border-radius': generateCSSUnit( imageBorderRadius, 'px' ),
-			'border-width': generateCSSUnit( imageBorderWidth, 'px' ),
 			'box-shadow': generateCSSUnit( imageBoxShadowHOffset, 'px' ) + ' ' + generateCSSUnit( imageBoxShadowVOffset, 'px' ) +	' ' + generateCSSUnit( imageBoxShadowBlur, 'px' ) + ' ' +	generateCSSUnit( imageBoxShadowSpread, 'px' ) + ' ' + imageBoxShadowColor + ' ' + getImageShadowPosition,
+			...imageBorderCSS,
 		},
 		'.wp-block-uagb-image--layout-overlay img':{
 			'width': 'inherit',
@@ -185,7 +184,7 @@ export default function styling( props ) {
 			'box-shadow': generateCSSUnit( imageBoxShadowHOffset, 'px' ) + ' ' + generateCSSUnit( imageBoxShadowVOffset, 'px' ) +	' ' + generateCSSUnit( imageBoxShadowBlur, 'px' ) + ' ' +	generateCSSUnit( imageBoxShadowSpread, 'px' ) + ' ' + imageBoxShadowColor + ' ' + getImageShadowPosition,
 		},
 		'.wp-block-uagb-image .wp-block-uagb-image__figure img:hover':{
-			'border-color': imageBorderhoverColor
+			'border-color': imageBorderHColor
 		},
 		'.wp-block-uagb-image .wp-block-uagb-image__figure figcaption': {
 			'font-family': captionFontFamily,
@@ -229,14 +228,11 @@ export default function styling( props ) {
 			'opacity': overlayOpacity,
 		},
 		'.wp-block-uagb-image--layout-overlay .wp-block-uagb-image--layout-overlay__inner': {
-			'border-style': overlayBorderStyle,
-			'border-color': overlayBorderColor,
-			'border-radius': generateCSSUnit( overlayBorderRadius, 'px' ),
-			'border-width': generateCSSUnit( overlayBorderWidth, 'px' ),
 			'left': generateCSSUnit( overlayPositionFromEdge, overlayPositionFromEdgeUnit ),
 			'right': generateCSSUnit( overlayPositionFromEdge, overlayPositionFromEdgeUnit ),
 			'top': generateCSSUnit( overlayPositionFromEdge, overlayPositionFromEdgeUnit ),
 			'bottom': generateCSSUnit( overlayPositionFromEdge, overlayPositionFromEdgeUnit ),
+			...overlayBorderCSS
 		},
 		'.wp-block-uagb-image--layout-overlay .wp-block-uagb-image--layout-overlay__inner .uagb-image-heading': {
 			'font-family': headingFontFamily,
@@ -278,7 +274,7 @@ export default function styling( props ) {
 			'opacity': captionShowOn === 'always' ? 1 : 0
 		},
 		'.wp-block-uagb-image--layout-overlay .wp-block-uagb-image__figure:hover .wp-block-uagb-image--layout-overlay__inner': {
-			'border-color': overlayBorderHoverColor,
+			'border-color': overlayBorderHColor,
 		},
 		'.wp-block-uagb-image--layout-overlay .wp-block-uagb-image__figure:hover .wp-block-uagb-image--layout-overlay__color-wrapper': {
 			'opacity': overlayHoverOpacity,
@@ -356,6 +352,9 @@ export default function styling( props ) {
 			'px'
 		),
 	}
+
+	tablet_selectors['.wp-block-uagb-image--layout-default img'] = imageBorderCSSTablet
+
 	tablet_selectors['.wp-block-uagb-image'] = {
 		'margin-top': generateCSSUnit(
 			imageTopMarginTablet,
@@ -400,6 +399,8 @@ export default function styling( props ) {
 			captionMarginUnitTablet
 		),
     }
+
+	tablet_selectors['.wp-block-uagb-image--layout-overlay .wp-block-uagb-image--layout-overlay__inner'] = overlayBorderCSSTablet
 
 	tablet_selectors['.wp-block-uagb-image .wp-block-uagb-image--layout-overlay__inner .uagb-image-heading'] = {
         'font-size': generateCSSUnit(
@@ -446,6 +447,9 @@ export default function styling( props ) {
 			'px'
 		),
 	}
+
+	mobile_selectors['.wp-block-uagb-image--layout-default img'] = imageBorderCSSMobile
+
 	mobile_selectors['.wp-block-uagb-image'] = {
 		'margin-top': generateCSSUnit(
 			imageTopMarginMobile,
@@ -491,6 +495,8 @@ export default function styling( props ) {
 			captionMarginUnitMobile
 		),
     }
+
+	mobile_selectors['.wp-block-uagb-image--layout-overlay .wp-block-uagb-image--layout-overlay__inner'] = overlayBorderCSSMobile
 
 	mobile_selectors['.wp-block-uagb-image .wp-block-uagb-image--layout-overlay__inner .uagb-image-heading'] = {
         'font-size': generateCSSUnit(
