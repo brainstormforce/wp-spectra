@@ -13,6 +13,8 @@
 UAGB_Block_JS::blocks_buttons_gfont( $attr );
 
 $alignment = ( 'left' === $attr['align'] ) ? 'flex-start' : ( ( 'right' === $attr['align'] ) ? 'flex-end' : 'center' );
+$tablet_alignment = ( 'left' === $attr['alignTablet'] ) ? 'flex-start' : ( ( 'right' === $attr['alignTablet'] ) ? 'flex-end' : 'center' );
+$mobile_alignment = ( 'left' === $attr['alignMobile'] ) ? 'flex-start' : ( ( 'right' === $attr['alignMobile'] ) ? 'flex-end' : 'center' );
 
 $m_selectors = array();
 $t_selectors = array();
@@ -61,7 +63,31 @@ if ( $attr['childMigrate'] ) {
 	);
 }
 
-
+$t_selectors = array(
+	' .uagb-icon-list__source-image' => array(
+		'width' => $t_icon_size,
+	),
+	' .wp-block-uagb-icon-list-child .uagb-icon-list__source-wrap svg' => array(
+		'width'     => $t_icon_size,
+		'height'    => $t_icon_size,
+		'font-size' => $t_icon_size,
+	),
+	' .wp-block-uagb-icon-list-child .uagb-icon-list__source-wrap ' => array(
+		'border-radius' => UAGB_Helper::get_css_value( $attr['borderRadiusTablet'], $attr['borderRadiusType'] ),
+		'padding'       => UAGB_Helper::get_css_value( $attr['bgSizeTablet'], 'px' ),
+		'border-style'  => ( $attr['borderTablet'] > 0 ) ? 'solid' : '',
+		'border-width'  => UAGB_Helper::get_css_value( $attr['borderTablet'], $attr['borderType'] ),
+	),
+	' .uagb-icon-list__wrap'         => array(
+		'justify-content'   => $tablet_alignment,
+		'-webkit-box-pack'  => $tablet_alignment,
+		'-ms-flex-pack'     => $tablet_alignment,
+		'justify-content'   => $tablet_alignment,
+		'-webkit-box-align' => $tablet_alignment,
+		'-ms-flex-align'    => $tablet_alignment,
+		'align-items'       => $tablet_alignment,
+	),
+);
 
 $m_selectors = array(
 	' .uagb-icon-list__source-image' => array(
@@ -78,22 +104,14 @@ $m_selectors = array(
 		'border-style'  => ( $attr['borderMobile'] > 0 ) ? 'solid' : '',
 		'border-width'  => UAGB_Helper::get_css_value( $attr['borderMobile'], $attr['borderType'] ),
 	),
-);
-
-$t_selectors = array(
-	' .uagb-icon-list__source-image' => array(
-		'width' => $t_icon_size,
-	),
-	' .wp-block-uagb-icon-list-child .uagb-icon-list__source-wrap svg' => array(
-		'width'     => $t_icon_size,
-		'height'    => $t_icon_size,
-		'font-size' => $t_icon_size,
-	),
-	' .wp-block-uagb-icon-list-child .uagb-icon-list__source-wrap ' => array(
-		'border-radius' => UAGB_Helper::get_css_value( $attr['borderRadiusTablet'], $attr['borderRadiusType'] ),
-		'padding'       => UAGB_Helper::get_css_value( $attr['bgSizeTablet'], 'px' ),
-		'border-style'  => ( $attr['borderTablet'] > 0 ) ? 'solid' : '',
-		'border-width'  => UAGB_Helper::get_css_value( $attr['borderTablet'], $attr['borderType'] ),
+	' .uagb-icon-list__wrap'         => array(
+		'justify-content'   => $mobile_alignment,
+		'-webkit-box-pack'  => $mobile_alignment,
+		'-ms-flex-pack'     => $mobile_alignment,
+		'justify-content'   => $mobile_alignment,
+		'-webkit-box-align' => $mobile_alignment,
+		'-ms-flex-align'    => $mobile_alignment,
+		'align-items'       => $mobile_alignment,
 	),
 );
 

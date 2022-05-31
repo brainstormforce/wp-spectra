@@ -8,6 +8,8 @@ import generateCSSUnit from '@Controls/generateCSSUnit';
 function styling( props ) {
 	const {
 		align,
+		alignTablet,
+		alignMobile,
 		gap,
 		gapTablet,
 		gapMobile,
@@ -55,12 +57,30 @@ function styling( props ) {
 	let tabletSelectors = {};
 	let mobileSelectors = {};
 	let alignment = '';
+	let tabletAlignment = '';
+	let mobileAlignment = '';
 	if ( align === 'left' ) {
 		alignment = 'flex-start';
 	} else if ( align === 'right' ) {
 		alignment = 'flex-end';
 	} else {
 		alignment = 'center';
+	}
+	
+	if ( alignTablet === 'left' ) {
+		tabletAlignment = 'flex-start';
+	} else if ( alignTablet === 'right' ) {
+		tabletAlignment = 'flex-end';
+	} else {
+		tabletAlignment = 'center';
+	}
+
+	if ( alignMobile === 'left' ) {
+		mobileAlignment = 'flex-start';
+	} else if ( alignMobile === 'right' ) {
+		mobileAlignment = 'flex-end';
+	} else {
+		mobileAlignment = 'center';
 	}
 
 	const editorGap = undefined !== typeof gap && '' !== gap ? gap : 15;
@@ -169,15 +189,25 @@ function styling( props ) {
 			'margin-right': generateCSSUnit( editorGap / 2, gapType ),
 			'display': 'inline-flex'
 		};
+		tabletSelectors[' .block-editor-block-list__layout .wp-block[data-type="uagb/icon-list-child"]' ] = {
+			'margin-left': generateCSSUnit( editorGapTablet / 2, gapType ),
+			'margin-right': generateCSSUnit( editorGapTablet / 2, gapType ),
+			'display': 'inline-flex'
+		};
+		tabletSelectors[' .uagb-icon-list__wrap .block-editor-block-list__layout' ] = {
+			'justify-content': tabletAlignment,
+			'-webkit-box-pack': tabletAlignment,
+			'-ms-flex-pack': tabletAlignment,
+		};
 		mobileSelectors[' .block-editor-block-list__layout .wp-block[data-type="uagb/icon-list-child"]' ] = {
 			'margin-left': generateCSSUnit( editorGapMobile / 2, gapType ),
 			'margin-right': generateCSSUnit( editorGapMobile / 2, gapType ),
 			'display': 'inline-flex'
 		};
-		tabletSelectors[' .block-editor-block-list__layout .wp-block[data-type="uagb/icon-list-child"]' ] = {
-			'margin-left': generateCSSUnit( editorGapTablet / 2, gapType ),
-			'margin-right': generateCSSUnit( editorGapTablet / 2, gapType ),
-			'display': 'inline-flex'
+		mobileSelectors[ ' .uagb-icon-list__wrap .block-editor-block-list__layout'] = {
+			'justify-content': mobileAlignment,
+			'-webkit-box-pack': mobileAlignment,
+			'-ms-flex-pack': mobileAlignment,
 		};
 	}
 	if( 'vertical' === icon_layout  ) {

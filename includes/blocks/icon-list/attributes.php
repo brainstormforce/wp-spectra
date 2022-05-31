@@ -11,6 +11,8 @@ return array(
 	'classMigrate'       => false,
 	'childMigrate'       => false,
 	'align'              => 'left',
+	'alignTablet'         => '',
+	'alignMobile'         => '',
 	'icon_count'         => '1',
 	'icons'              => array(
 		array(
