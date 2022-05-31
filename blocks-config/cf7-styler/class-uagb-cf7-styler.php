@@ -127,6 +127,14 @@ if ( ! class_exists( 'UAGB_CF7_Styler' ) ) {
 							'type'    => 'string',
 							'default' => 'left',
 						),
+						'buttonAlignmentTablet'               => array(
+							'type'    => 'string',
+							'default' => '',
+						),
+						'buttonAlignmentMobile'               => array(
+							'type'    => 'string',
+							'default' => '',
+						),
 						'buttonVrPadding'               => array(
 							'type'    => 'number',
 							'default' => 10,
@@ -784,6 +792,8 @@ if ( ! class_exists( 'UAGB_CF7_Styler' ) ) {
 				'uagb-cf7-styler__align-' . $attributes['align'],
 				'uagb-cf7-styler__field-style-' . $attributes['fieldStyle'],
 				'uagb-cf7-styler__btn-align-' . $attributes['buttonAlignment'],
+				'uagb-cf7-styler__btn-align-tablet-' . $attributes['buttonAlignmentTablet'],
+				'uagb-cf7-styler__btn-align-mobile-' . $attributes['buttonAlignmentMobile'],
 				'uagb-cf7-styler__highlight-style-' . $attributes['validationMsgPosition'],
 			);
 

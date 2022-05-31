@@ -1291,10 +1291,6 @@ const Settings = ( props ) => {
 					},
 				] }
 			/>
-
-
-
-
 			<MultiButtonsControl
 				setAttributes={ setAttributes }
 				label={ __( 'Button Alignment', 'ultimate-addons-for-gutenberg' ) }
