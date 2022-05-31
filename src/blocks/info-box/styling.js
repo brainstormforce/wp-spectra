@@ -232,6 +232,7 @@ function styling( props ) {
 			'margin' : 'auto',
 			'padding' : generateCSSUnit( iconInnerPadding, iconInnerPaddingType),
 			'display' : 'inline-block',
+			'line-height' : 0,
 		},
 		' .uagb-ifb-content .uagb-ifb-left-title-image svg': {
 			'font-size': generateCSSUnit( iconSize, iconSizeType ),

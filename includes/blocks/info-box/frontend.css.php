@@ -62,6 +62,12 @@ $selectors = array(
 		'margin' => 'auto',
 		'padding' => UAGB_Helper::get_css_value( $attr['iconInnerPadding'], $attr['iconInnerPaddingType']),
 		'display' => 'inline-block',
+		'line-height' => 0,
+
+	),
+	' .uagb-iconbox-icon-wrap svg' => array(
+		'padding' => 'unset !important',
+
 	),
 	' .uagb-ifb-content .uagb-ifb-left-title-image svg'  => array(
 		'width'         => $icon_size,
