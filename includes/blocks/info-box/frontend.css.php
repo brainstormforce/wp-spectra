@@ -60,13 +60,8 @@ $selectors = array(
 	),
 	' .uagb-iconbox-icon-wrap' => array(
 		'margin' => 'auto',
-		'padding' => UAGB_Helper::get_css_value( $attr['iconInnerPadding'], $attr['iconInnerPaddingType']),
 		'display' => 'inline-block',
 		'line-height' => 0,
-
-	),
-	' .uagb-iconbox-icon-wrap svg' => array(
-		'padding' => 'unset !important',
 
 	),
 	' .uagb-ifb-content .uagb-ifb-left-title-image svg'  => array(
@@ -210,11 +205,11 @@ if( 'Stacked' === $attr['iconView'] ) {
 }
 else if( 'Framed' === $attr['iconView'] ) {
 	$selectors[ ' .uagb-iconbox-icon-wrap.uagb-infobox-shape-circle'] = array(
-		'border' => $attr['iconBorderRadius'] . 'px solid'. $attr['iconBackgroundColor'],
+		'border' => $attr['iconBorderWidth'] . 'px solid'. $attr['iconBackgroundColor'],
 		'border-radius' => '50%',
 	);
 	$selectors[ ' .uagb-iconbox-icon-wrap.uagb-infobox-shape-squre'] = array(
-		'border' => $attr['iconBorderRadius'] . 'px solid'. $attr['iconBackgroundColor'],
+		'border' => $attr['iconBorderWidth'] . 'px solid'. $attr['iconBackgroundColor'],
 	);
 }
 if ( 'text' === $attr['ctaType'] ) {

@@ -207,10 +207,8 @@ function styling( props ) {
 		// icon attributes for icon view (circle and square)
 		iconView,
 		iconShape,
-		iconInnerPadding,
-		iconInnerPaddingType,
 		iconBackgroundColor,
-		iconBorderRadius
+		iconBorderWidth
 	} = props.attributes;
 
 	const selectors = {
@@ -230,7 +228,6 @@ function styling( props ) {
 		},
 		' .uagb-iconbox-icon-wrap': {
 			'margin' : 'auto',
-			'padding' : generateCSSUnit( iconInnerPadding, iconInnerPaddingType),
 			'display' : 'inline-block',
 			'line-height' : 0,
 		},
@@ -484,11 +481,11 @@ function styling( props ) {
 	}
 	else if( 'Framed' === iconView ) {
 		selectors[ ' .uagb-iconbox-icon-wrap.uagb-infobox-shape-circle'] = {
-			'border' : `${iconBorderRadius}px solid ${iconBackgroundColor}`,
+			'border' : `${iconBorderWidth}px solid ${iconBackgroundColor}`,
 			'border-radius' : '50%',
 		}
 		selectors[ ' .uagb-iconbox-icon-wrap.uagb-infobox-shape-squre'] = {
-			'border' : `${iconBorderRadius}px solid ${iconBackgroundColor}`,
+			'border' : `${iconBorderWidth}px solid ${iconBackgroundColor}`,
 		}
 	}
 	if( 'none' !== ctaBorderStyle ) {

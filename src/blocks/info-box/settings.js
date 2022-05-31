@@ -275,10 +275,8 @@ const Settings = ( props ) => {
 
 		iconView,
 		iconShape,
-		iconInnerPadding,
-		iconInnerPaddingType,
 		iconBackgroundColor,
-		iconBorderRadius
+		iconBorderWidth
 	} = attributes;
 
 	/*
@@ -1078,40 +1076,6 @@ const Settings = ( props ) => {
 
 									{ iconView !== 'none' &&
 										<>
-											<Range
-												label={ __(
-													'Icon Inner Padding',
-													'ultimate-addons-for-gutenberg'
-												) }
-												setAttributes={ setAttributes }
-												value={ iconInnerPadding }
-												onChange={ ( value ) =>
-													setAttributes( { iconInnerPadding: value } )
-												}
-												min={ 0 }
-												limitMax={ { 'px': 50, '%': 50,} }
-												unit={ {
-													value: iconInnerPaddingType,
-													label:
-														'iconInnerPaddingType',
-												} }
-												units={ [
-													{
-														name: __(
-															'Pixel',
-															'ultimate-addons-for-gutenberg'
-														),
-														unitValue: 'px',
-													},
-													{
-														name: __(
-															'%',
-															'ultimate-addons-for-gutenberg'
-														),
-														unitValue: '%',
-													},
-												] }
-											/>
 											<AdvancedPopColorControl
 												label={ __(
 													'Icon back Ground Color',
@@ -1133,13 +1097,13 @@ const Settings = ( props ) => {
 										<>
 											<Range
 												label={ __(
-													'Set Border Radius',
+													'Set Border Width',
 													'ultimate-addons-for-gutenberg'
 												) }
 												setAttributes={ setAttributes }
-												value={ iconBorderRadius }
+												value={ iconBorderWidth }
 												onChange={ ( value ) =>
-													setAttributes( { iconBorderRadius: value } )
+													setAttributes( { iconBorderWidth: value } )
 												}
 												min={ 0 }
 												max={ 15 }

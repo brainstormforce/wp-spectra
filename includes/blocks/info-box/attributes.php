@@ -218,10 +218,7 @@ return array(
 
 	// icon image
 	'iconView'    				 => 'none',
-	'iconShape'     => 'Circle',
-	'iconInnerPadding'    => 15,
-	'iconInnerPaddingType'     => 'px',
-	'iconBackgroundColor'     => '#6EC1E3',
-	'iconBorderRadius'     => 3,
-
+	'iconShape'     			 => 'Circle',
+	'iconBackgroundColor'     	 => '#6EC1E3',
+	'iconBorderWidth'     		 => 3,
 );

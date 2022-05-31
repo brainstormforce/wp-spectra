@@ -1388,19 +1388,11 @@ const attributes = {
 		type: 'string',
 		default: 'Circle',
 	},
-	iconInnerPadding: {
-		type: 'number',
-		default: 15,
-	},
-	iconInnerPaddingType: {
-		type: 'string',
-		default: 'px',
-	},
 	iconBackgroundColor: {
 		type: 'string',
 		default: '#6EC1E3',
 	},
-	iconBorderRadius: {
+	iconBorderWidth: {
 		type: 'number',
 		default: 3,
 	}
