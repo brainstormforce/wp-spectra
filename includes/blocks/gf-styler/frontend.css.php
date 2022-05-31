@@ -141,7 +141,8 @@ $selectors = array(
 		'margin-bottom'    => UAGB_Helper::get_css_value( $attr['fieldSpacing'], 'px' ),
 		'text-align'       => $attr['align'],
 		'height'           => $attr['textAreaHeight'],
-	),	
+    ),
+	
 	' .gform_wrapper.gravity-theme .gfield textarea.large:focus'         => array(
 		'border-color' => $attr['fieldBorderFocusColor'],
 	),
