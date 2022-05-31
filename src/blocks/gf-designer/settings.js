@@ -59,6 +59,8 @@ const Settings = ( props ) => {
 		textAreaHeightTablet,
 		textAreaHeightMobile,
 		buttonAlignment,
+		buttonAlignmentTablet,
+		buttonAlignmentMobile,
 		buttonTextColor,
 		buttonBgColor,
 		buttonTextHoverColor,
@@ -1318,10 +1320,19 @@ const Settings = ( props ) => {
 					setAttributes={ setAttributes }
 					label={ __( 'Alignment', 'ultimate-addons-for-gutenberg' ) }
 					data={ {
-						value: buttonAlignment,
-						label: 'buttonAlignment',
+						desktop: {
+							value: buttonAlignment,
+							label: 'buttonAlignment',
+						},
+						tablet: {
+							value: buttonAlignmentTablet,
+							label: 'buttonAlignmentTablet',
+						},
+						mobile: {
+							value: buttonAlignmentMobile,
+							label: 'buttonAlignmentMobile',
+						},
 					} }
-					className="uagb-multi-button-alignment-control"
 					options={ [
 						{
 							value: 'left',
@@ -1373,6 +1384,7 @@ const Settings = ( props ) => {
 						},
 					] }
 					showIcons={ true }
+					responsive={true}
 				/>
 				{ btnBorderSetting() }
 				<TypographyControl
