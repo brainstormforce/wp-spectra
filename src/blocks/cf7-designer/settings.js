@@ -621,6 +621,18 @@ const Settings = ( props ) => {
 							'ultimate-addons-for-gutenberg'
 						),
 					},
+					{
+						value: 'justify',
+						icon: (
+							<Icon
+								icon={ renderSVG( 'fa fa-align-justify' ) }
+							/>
+						),
+						tooltip: __(
+							'Justified',
+							'ultimate-addons-for-gutenberg'
+						),
+					},
 				] }
 				showIcons={ true }
 				responsive={true}
