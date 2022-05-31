@@ -104,17 +104,24 @@ function styling( props ) {
 		},
 	};
 
-	mobileSelectors = {
-		' .uagb-icon-list__source-image': {
-			'width': generateCSSUnit( sizeMobile, sizeType ),
-		},
-	};
-
 	tabletSelectors = {
 		' .uagb-icon-list__source-image': {
 			'width': generateCSSUnit( sizeTablet, sizeType ),
 		},
+		' .uagb-icon-list__wrap .block-editor-inner-blocks': {
+			'text-align': alignTablet,
+		},
 	};
+
+	mobileSelectors = {
+		' .uagb-icon-list__source-image': {
+			'width': generateCSSUnit( sizeMobile, sizeType ),
+		},
+		' .uagb-icon-list__wrap .block-editor-inner-blocks': {
+			'text-align': alignMobile,
+		},
+	};
+
 	selectors[ ' .uagb-icon-list__source-wrap svg' ] = {
 		'width': generateCSSUnit( size, sizeType ),
 		'height': generateCSSUnit( size, sizeType ),
@@ -139,7 +146,11 @@ function styling( props ) {
 				'margin-right': 0,
 				'margin-bottom': generateCSSUnit( editorGapTablet, gapType ),
 			};
-
+			tabletSelectors[
+				'.uagb-editor-preview-mode-tablet .uagb-icon-list__wrap .block-editor-inner-blocks'
+			] = {
+				'text-align': alignTablet,
+			};
 			tabletSelectors[
 				'.uagb-editor-preview-mode-tablet .block-editor-block-list__layout'
 			] = {
@@ -151,6 +162,11 @@ function styling( props ) {
 			] = {
 				'display': 'flex',
 				'flex-direction': 'column',
+			};
+			mobileSelectors[
+				'.uagb-editor-preview-mode-mobile .uagb-icon-list__wrap .block-editor-inner-blocks'
+			] = {
+				'text-align': alignMobile,
 			};
 			tabletSelectors[
 				' .uagb-icon-list__wrap .wp-block[data-type="uagb/icon-list-child"]:last-child'
@@ -177,6 +193,12 @@ function styling( props ) {
 				' .uagb-icon-list__wrap .wp-block-uagb-icon-list-child:last-child'
 			] = {
 				'margin-bottom': 0,
+			};
+			
+			mobileSelectors[
+				'.uagb-editor-preview-mode-mobile .uagb-icon-list__wrap .block-editor-inner-blocks'
+			] = {
+				'text-align': alignMobile,
 			};
 		}
 		selectors[ ' .uagb-icon-list__wrap .block-editor-block-list__layout'] = {
