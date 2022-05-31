@@ -4,8 +4,8 @@
 **Tags:** gutenberg, blocks, gutenberg blocks, editor, block  
 **Requires at least:** 4.7  
 **Requires PHP:** 5.6  
-**Tested up to:** 5.9  
-**Stable tag:** 1.25.4  
+**Tested up to:** 6.0  
+**Stable tag:** 1.25.6  
 **License:** GPLv2 or later  
 **License URI:** https://www.gnu.org/licenses/gpl-2.0.html  
 
@@ -168,6 +168,13 @@ When you use the Spectra along with the free Astra theme, you get a huge library
 1. /assets/screenshots/1.png
 
 ## Changelog ##
+
+### 1.25.6 - TUESDAY, 31ST MAY 2022 ###
+* Improvement: Updated Gutenberg Templates Library.
+* Improvement: Escaped URLs wherever required.
+
+### 1.25.5 - FRIDAY, 27TH MAY 2022 ###
+* Improvement: Updated the notice library.
 
 ### 1.25.4 - MONDAY, 7TH FEBRUARY 2022 ###
 * Fix: CSS was not applying on responsive devices.

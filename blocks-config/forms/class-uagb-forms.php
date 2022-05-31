@@ -77,13 +77,15 @@ if ( ! class_exists( 'UAGB_Forms' ) ) {
 
 				// calling google recaptcha api.
 				$google_url             = 'https://www.google.com/recaptcha/api/siteverify';
-				$google_response        = add_query_arg(
-					array(
-						'secret'   => $google_recaptcha_secret_key,
-						'response' => $google_recaptcha,
-						'remoteip' => $_SERVER['REMOTE_ADDR'],
-					),
-					$google_url
+				$google_response        = esc_url_raw(
+					add_query_arg(
+						array(
+							'secret'   => $google_recaptcha_secret_key,
+							'response' => $google_recaptcha,
+							'remoteip' => $_SERVER['REMOTE_ADDR'],
+						),
+						$google_url
+					)
 				);
 				$google_response        = wp_remote_get( $google_response );
 				$decode_google_response = json_decode( $google_response['body'] );
