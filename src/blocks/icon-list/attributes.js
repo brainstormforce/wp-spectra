@@ -327,7 +327,59 @@ const attributes = {
 	isPreview: {
 		type: 'boolean',
 		default: false,
-	}
+	},
+
+	icon_color: {
+		type: 'string',
+		default: '',
+		UAGCopyPaste: {
+			styleType: 'icon-color'
+		},
+	},
+	label_color: {
+		type: 'string',
+		UAGCopyPaste: {
+			styleType: 'main-title-color'
+		},
+	},
+	icon_hover_color: {
+		type: 'string',
+		UAGCopyPaste: {
+			styleType: 'icon-hover-color'
+		},
+	},
+	label_hover_color: {
+		type: 'string',
+		UAGCopyPaste: {
+			styleType: 'main-title-hover-color'
+		},
+	},
+	icon_bg_color: {
+		type: 'string',
+		UAGCopyPaste: {
+			styleType: 'icon-bg-color'
+		},
+		default: '',
+	},
+	icon_bg_hover_color: {
+		type: 'string',
+		UAGCopyPaste: {
+			styleType: 'icon-bg-hover-color'
+		},
+	},
+	icon_border_color: {
+		type: 'string',
+		UAGCopyPaste: {
+			styleType: 'icon-border-color'
+		},
+		default: '',
+	},
+	icon_border_hover_color: {
+		type: 'string',
+		UAGCopyPaste: {
+			styleType: 'icon-border-hover-color'
+		},
+	},
 };
 
 export default attributes;
