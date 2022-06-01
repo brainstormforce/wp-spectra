@@ -3,7 +3,7 @@ import renderSVG from '@Controls/renderIcon';
 const Icon = ( props ) => {
 	const { attributes } = props;
 	const { iconView, iconShape } = attributes
-	console.log(iconView)
+
 	return (
 		<>
 			{ ( attributes.showIcon ) && (
