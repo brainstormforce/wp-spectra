@@ -5,6 +5,7 @@
 import generateCSS from '@Controls/generateCSS';
 import generateCSSUnit from '@Controls/generateCSSUnit';
 import { blocksAttributes } from '@Controls/getBlocksDefaultAttributes';
+import { getFallbackNumber } from '@Controls/getAttributeFallback';
 
 function styling( props ) {
 	const {
@@ -299,9 +300,7 @@ function styling( props ) {
 		'line-height': generateCSSUnit( headLineHeight, headLineHeightType ),
 		'color': headingColor,
 		'margin-bottom': generateCSSUnit(
-			isNaN( headSpace )
-				? defaultAttributes.headSpace.default
-				: headSpace,
+			getFallbackNumber( headSpace, defaultAttributes.headSpace ),
 			'px'
 		),
 		'letter-spacing': generateCSSUnit( headLetterSpacing, headLetterSpacingType ),
@@ -314,22 +313,16 @@ function styling( props ) {
 		selectors[ ' .uagb-separator' ] = {
 			'border-top-style': seperatorStyle,
 			'border-top-width': generateCSSUnit(
-				isNaN( separatorHeight )
-					? defaultAttributes.separatorHeight.default
-					: separatorHeight,
+				getFallbackNumber( separatorHeight, defaultAttributes.separatorHeight ),
 				separatorHeightType
 			),
 			'width': generateCSSUnit(
-				isNaN( separatorWidth )
-					? defaultAttributes.separatorWidth.default
-					: separatorWidth,
+				getFallbackNumber( separatorWidth, defaultAttributes.separatorWidth ),
 				separatorWidthType
 			),
 			'border-color': separatorColor,
 			'margin-bottom': generateCSSUnit(
-				isNaN( separatorSpace )
-					? defaultAttributes.separatorSpace.default
-					: separatorSpace,
+				getFallbackNumber( separatorSpace, defaultAttributes.separatorSpace ),
 				separatorSpaceType
 			),
 		};
@@ -380,9 +373,7 @@ function styling( props ) {
 		),
 		'letter-spacing': generateCSSUnit( headLetterSpacingTablet, headLetterSpacingType ),
 		'margin-bottom': generateCSSUnit(
-			isNaN( headSpaceTablet )
-				? defaultAttributes.headSpaceTablet.default
-				: headSpaceTablet,
+			getFallbackNumber( headSpaceTablet, defaultAttributes.headSpaceTablet ),
 			'px'
 		),
 	};
@@ -461,15 +452,11 @@ function styling( props ) {
 	}
 	tablet_selectors[ ' .uagb-separator' ] = {
 		'width': generateCSSUnit(
-			isNaN( separatorWidthTablet )
-				? defaultAttributes.separatorWidthTablet.default
-				: separatorWidthTablet,
+			getFallbackNumber( separatorWidthTablet, defaultAttributes.separatorWidthTablet ),
 			separatorWidthType
 		),
 		'margin-bottom': generateCSSUnit(
-			isNaN( separatorSpaceTablet )
-				? defaultAttributes.separatorSpaceTablet.default
-				: separatorSpaceTablet,
+			getFallbackNumber( separatorSpaceTablet, defaultAttributes.separatorSpaceTablet ),
 			separatorSpaceType
 		),
 	};
@@ -482,9 +469,7 @@ function styling( props ) {
 		),
 		'letter-spacing': generateCSSUnit( headLetterSpacingMobile, headLetterSpacingType ),
 		'margin-bottom': generateCSSUnit(
-			isNaN( headSpaceMobile )
-				? defaultAttributes.headSpaceMobile.default
-				: headSpaceMobile,
+			getFallbackNumber( headSpaceMobile, defaultAttributes.headSpaceMobile ),
 			'px'
 		),
 	};
@@ -528,15 +513,11 @@ function styling( props ) {
 	};
 	mobile_selectors[ ' .uagb-separator' ] = {
 		'width': generateCSSUnit(
-			isNaN( separatorWidthMobile )
-				? defaultAttributes.separatorWidthMobile.default
-				: separatorWidthMobile,
+			getFallbackNumber( separatorWidthMobile, defaultAttributes.separatorWidthMobile ),
 			separatorWidthType
 		),
 		'margin-bottom': generateCSSUnit(
-			isNaN( separatorSpaceMobile )
-				? defaultAttributes.separatorSpaceMobile.default
-				: separatorSpaceMobile,
+			getFallbackNumber( separatorSpaceMobile, defaultAttributes.separatorSpaceMobile ),
 			separatorSpaceType
 		),
 	};

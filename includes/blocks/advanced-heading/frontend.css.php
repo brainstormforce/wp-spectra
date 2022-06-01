@@ -19,9 +19,7 @@ $selectors = array(
 	' .uagb-heading-text'                             => array(
 		'color'          => $attr['headingColor'],
 		'margin-bottom'  => UAGB_Helper::get_css_value(
-			isset( $attr['headSpace'] )
-				? $attr['headSpace']
-				: $block_defaults['headSpace'],
+			UAGB_Block_Helper::get_attribute_fallback( 'headSpace', $attr, $block_defaults ),
 			'px'
 		),
 		'letter-spacing' => UAGB_Helper::get_css_value( $attr['headLetterSpacing'], $attr['headLetterSpacingType'] ),
@@ -152,50 +150,36 @@ if ( 'none' !== $seperatorStyle ) {
 	$selectors['.wp-block-uagb-advanced-heading .uagb-separator']   = array(
 		'border-top-style' => $attr['seperatorStyle'],
 		'border-top-width' => UAGB_Helper::get_css_value(
-			isset( $attr['separatorHeight'] )
-				? $attr['separatorHeight']
-				: $block_defaults['separatorHeight'],
+			UAGB_Block_Helper::get_attribute_fallback( 'separatorHeight', $attr, $block_defaults ),
 			$attr['separatorHeightType']
 		),
 		'width'            => UAGB_Helper::get_css_value(
-			isset( $attr['separatorWidth'] )
-				? $attr['separatorWidth']
-				: $block_defaults['separatorWidth'],
+			UAGB_Block_Helper::get_attribute_fallback( 'separatorWidth', $attr, $block_defaults ),
 			$attr['separatorWidthType']
 		),
 		'border-color'     => $attr['separatorColor'],
 		'margin-bottom'    => UAGB_Helper::get_css_value(
-			isset( $attr['separatorSpace'] )
-				? $attr['separatorSpace']
-				: $block_defaults['separatorSpace'],
+			UAGB_Block_Helper::get_attribute_fallback( 'separatorSpace', $attr, $block_defaults ),
 			$attr['separatorSpaceType']
 		),
 	);
 	$t_selectors['.wp-block-uagb-advanced-heading .uagb-separator'] = array(
 		'width'         => UAGB_Helper::get_css_value(
-			isset( $attr['separatorWidthTablet'] )
-				? $attr['separatorWidthTablet']
-				: $block_defaults['separatorWidthTablet'],
+			UAGB_Block_Helper::get_attribute_fallback( 'separatorWidthTablet', $attr, $block_defaults ),
 			$attr['separatorWidthType']
 		),
 		'margin-bottom' => UAGB_Helper::get_css_value(
-			isset( $attr['separatorSpaceTablet'] )
-				? $attr['separatorSpaceTablet']
-				: $block_defaults['separatorSpaceTablet'],
+			UAGB_Block_Helper::get_attribute_fallback( 'separatorSpaceTablet', $attr, $block_defaults ),
 			$attr['separatorSpaceType']
 		),
 	);
 	$m_selectors['.wp-block-uagb-advanced-heading .uagb-separator'] = array(
 		'width'         => UAGB_Helper::get_css_value(
-			isset( $attr['separatorWidthMobile'] )
-				? $attr['separatorWidthMobile']
-				: $block_defaults['separatorWidthMobile'],
+			UAGB_Block_Helper::get_attribute_fallback( 'separatorWidthMobile', $attr, $block_defaults ),
 			$attr['separatorWidthType']
 		),
 		'margin-bottom' => UAGB_Helper::get_css_value(
-			isset( $attr['separatorSpaceMobile'] )
-				? $attr['separatorSpaceMobile']
-				: $block_defaults['separatorSpaceMobile'],
+			UAGB_Block_Helper::get_attribute_fallback( 'separatorSpaceMobile', $attr, $block_defaults ),
 			$attr['separatorSpaceType']
 		),
 	);
@@ -255,17 +239,13 @@ $m_selectors['.wp-block-uagb-advanced-heading .uagb-highlight'] = array(
 
 $t_selectors['.wp-block-uagb-advanced-heading .uagb-heading-text'] = array(
 	'margin-bottom' => UAGB_Helper::get_css_value(
-		isset( $attr['headSpaceTablet'] )
-			? $attr['headSpaceTablet']
-			: $block_defaults['headSpaceTablet'],
+		UAGB_Block_Helper::get_attribute_fallback( 'headSpaceTablet', $attr, $block_defaults ),
 		$attr['headSpaceType']
 	),
 );
 $m_selectors['.wp-block-uagb-advanced-heading .uagb-heading-text'] = array(
 	'margin-bottom' => UAGB_Helper::get_css_value(
-		isset( $attr['headSpaceMobile'] )
-			? $attr['headSpaceMobile']
-			: $block_defaults['headSpaceMobile'],
+		UAGB_Block_Helper::get_attribute_fallback( 'headSpaceMobile', $attr, $block_defaults ),
 		$attr['headSpaceType']
 	),
 );
