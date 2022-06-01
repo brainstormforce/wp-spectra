@@ -275,6 +275,7 @@ function styling( props ) {
 		'text-transform': fontTransform,
 		'font-weight': fontWeight,
 		'line-height': generateCSSUnit( lineHeight, lineHeightType ),
+		'color': label_color + ' !important',
 	};
 
 	mobileSelectors[ ' .wp-block-uagb-icon-list-child .uagb-icon-list__label' ] = {
