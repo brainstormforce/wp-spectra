@@ -147,6 +147,7 @@ if ( 'horizontal' === $attr['icon_layout'] ) {
 
 		$t_selectors[' .uagb-icon-list__wrap'] = array(
 			'flex-direction' => 'column',
+			'align-items'       => $tablet_alignment,
 		);
 
 		$t_selectors[' .uagb-icon-list__wrap .wp-block-uagb-icon-list-child:last-child'] = array(
@@ -163,6 +164,7 @@ if ( 'horizontal' === $attr['icon_layout'] ) {
 
 		$m_selectors[' .uagb-icon-list__wrap'] = array(
 			'flex-direction' => 'column',
+			'align-items'       => $mobile_alignment,
 		);
 
 		$m_selectors[' .uagb-icon-list__wrap .wp-block-uagb-icon-list-child:last-child'] = array(
