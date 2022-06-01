@@ -4,6 +4,7 @@
 
 import generateCSS from '@Controls/generateCSS';
 import generateCSSUnit from '@Controls/generateCSSUnit';
+import { blocksAttributes } from '@Controls/getBlocksDefaultAttributes';
 
 function styling( props ) {
 	const {
@@ -146,6 +147,8 @@ function styling( props ) {
 		highLightPaddingUnitTablet,
 		highLightPaddingUnitMobile,
 	} = props.attributes;
+
+	const defaultAttributes = blocksAttributes['advanced-heading'];
 
 	const tablet_selectors = {};
 	const mobile_selectors = {};
@@ -295,7 +298,12 @@ function styling( props ) {
 		'font-size': generateCSSUnit( headFontSize, headFontSizeType ),
 		'line-height': generateCSSUnit( headLineHeight, headLineHeightType ),
 		'color': headingColor,
-		'margin-bottom': generateCSSUnit( headSpace, 'px' ),
+		'margin-bottom': generateCSSUnit(
+			isNaN( headSpace )
+				? defaultAttributes.headSpace.default
+				: headSpace,
+			'px'
+		),
 		'letter-spacing': generateCSSUnit( headLetterSpacing, headLetterSpacingType ),
 		'text-shadow': headShadowColor && generateCSSUnit( headShadowHOffset, 'px' ) + ' ' + generateCSSUnit( headShadowVOffset, 'px' ) + ' ' + generateCSSUnit( headShadowBlur, 'px' ) + ' ' +  headShadowColor,
 		...headingGradientStyle
@@ -305,10 +313,25 @@ function styling( props ) {
 	if ( seperatorStyle !== 'none' ) {
 		selectors[ ' .uagb-separator' ] = {
 			'border-top-style': seperatorStyle,
-			'border-top-width': generateCSSUnit( separatorHeight, separatorHeightType ),
-			'width': generateCSSUnit( separatorWidth, separatorWidthType ),
+			'border-top-width': generateCSSUnit(
+				isNaN( separatorHeight )
+					? defaultAttributes.separatorHeight.default
+					: separatorHeight,
+				separatorHeightType
+			),
+			'width': generateCSSUnit(
+				isNaN( separatorWidth )
+					? defaultAttributes.separatorWidth.default
+					: separatorWidth,
+				separatorWidthType
+			),
 			'border-color': separatorColor,
-			'margin-bottom': generateCSSUnit( separatorSpace, separatorSpaceType ),
+			'margin-bottom': generateCSSUnit(
+				isNaN( separatorSpace )
+					? defaultAttributes.separatorSpace.default
+					: separatorSpace,
+				separatorSpaceType
+			),
 		};
 	}
 
@@ -356,7 +379,12 @@ function styling( props ) {
 			headLineHeightType
 		),
 		'letter-spacing': generateCSSUnit( headLetterSpacingTablet, headLetterSpacingType ),
-		'margin-bottom': generateCSSUnit( headSpaceTablet, 'px' ),
+		'margin-bottom': generateCSSUnit(
+			isNaN( headSpaceTablet )
+				? defaultAttributes.headSpaceTablet.default
+				: headSpaceTablet,
+			'px'
+		),
 	};
 	tablet_selectors[ ' .uagb-desc-text' ] = {
 		'font-size': generateCSSUnit(
@@ -432,8 +460,18 @@ function styling( props ) {
 		),
 	}
 	tablet_selectors[ ' .uagb-separator' ] = {
-		'width': generateCSSUnit( separatorWidthTablet, separatorWidthType ),
-		'margin-bottom': generateCSSUnit( separatorSpaceTablet, separatorSpaceType ),
+		'width': generateCSSUnit(
+			isNaN( separatorWidthTablet )
+				? defaultAttributes.separatorWidthTablet.default
+				: separatorWidthTablet,
+			separatorWidthType
+		),
+		'margin-bottom': generateCSSUnit(
+			isNaN( separatorSpaceTablet )
+				? defaultAttributes.separatorSpaceTablet.default
+				: separatorSpaceTablet,
+			separatorSpaceType
+		),
 	};
 
 	mobile_selectors[ ' ' + headingTag + '.uagb-heading-text' ] = {
@@ -443,7 +481,12 @@ function styling( props ) {
 			headLineHeightType
 		),
 		'letter-spacing': generateCSSUnit( headLetterSpacingMobile, headLetterSpacingType ),
-		'margin-bottom': generateCSSUnit( headSpaceMobile, 'px' ),
+		'margin-bottom': generateCSSUnit(
+			isNaN( headSpaceMobile )
+				? defaultAttributes.headSpaceMobile.default
+				: headSpaceMobile,
+			'px'
+		),
 	};
 	mobile_selectors[ ' .uagb-desc-text' ] = {
 		'font-size': generateCSSUnit(
@@ -484,8 +527,18 @@ function styling( props ) {
 		),
 	};
 	mobile_selectors[ ' .uagb-separator' ] = {
-		'width': generateCSSUnit( separatorWidthMobile, separatorWidthType ),
-		'margin-bottom': generateCSSUnit( separatorSpaceMobile, separatorSpaceType ),
+		'width': generateCSSUnit(
+			isNaN( separatorWidthMobile )
+				? defaultAttributes.separatorWidthMobile.default
+				: separatorWidthMobile,
+			separatorWidthType
+		),
+		'margin-bottom': generateCSSUnit(
+			isNaN( separatorSpaceMobile )
+				? defaultAttributes.separatorSpaceMobile.default
+				: separatorSpaceMobile,
+			separatorSpaceType
+		),
 	};
 
 	const base_selector = `.editor-styles-wrapper .uagb-block-${ props.clientId.substr(
