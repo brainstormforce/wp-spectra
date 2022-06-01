@@ -1119,7 +1119,6 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 
 		}
 
-
 		/**
 		 * Get a Block's Default Attributes.
 		 *
@@ -1128,6 +1127,17 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 		 */
 		public static function get_block_default_attributes( $block_name ) {
 			return require UAGB_DIR . 'includes/blocks/' . $block_name . '/attributes.php';
+		}
+
+		/**
+		 * Return the Current Attribute or the Default Attribute.
+		 *
+		 * @param string $key      Name of the attribute.
+		 * @param array  $attr     The current attributes of the block.
+		 * @param array  $default  The default attributes of the block.
+		 */
+		public static function get_attribute_fallback( $key, $attr, $default ) {
+			return isset( $attr[ $key ] ) ? $attr[ $key ] : $default[ $key ];
 		}
 	}
 }
