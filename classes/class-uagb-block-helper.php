@@ -1139,5 +1139,13 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 		public static function get_attribute_fallback( $key, $attr, $default ) {
 			return isset( $attr[ $key ] ) ? $attr[ $key ] : $default[ $key ];
 		}
+
+		/**
+		 * Return the Current Attribute or the Default Attribute for Numbers.
+		 * In PHP, this is used in places where a numeric variable is passed in place of the first attribute.
+		 */
+		public static function get_fallback_number( $attr, $default ) {
+			return is_numeric( $attr ) ? $attr : $default;
+		}
 	}
 }
