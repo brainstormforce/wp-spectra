@@ -10,6 +10,8 @@
 // Adds Fonts.
 UAGB_Block_JS::blocks_inline_notice_gfont( $attr );
 
+$block_defaults = UAGB_Block_Helper::get_block_default_attributes( 'inline-notice' );
+
 $t_selectors = array();
 $m_selectors = array();
 $selectors   = array();
@@ -54,7 +56,7 @@ $content_right_padding_tablet  = isset( $attr['contentRightPaddingTablet'] ) ? $
 $pos_top_tab        = isset( $attr['titleTopPaddingTablet'] ) ? $attr['titleTopPaddingTablet'] : $attr['titleTopPadding'];
 $pos_left_tab       = isset( $attr['titleLeftPaddingTablet'] ) ? $attr['titleLeftPaddingTablet'] : $attr['titleLeftPadding'];
 $pos_right_tab      = isset( $attr['titleRightPaddingTablet'] ) ? $attr['titleRightPaddingTablet'] : $attr['titleRightPadding'];
-$pos_classic_tab    = isset( $attr['highlightWidthTablet'] ) ? $attr['highlightWidthTablet'] : $attr['highlightWidth'];
+$pos_classic_tab    = isset( $attr['highlightWidthTablet'] ) ? $attr['highlightWidthTablet'] : UAGB_Block_Helper::get_attribute_fallback( 'highlightWidth', $attr, $block_defaults );
 $pos_top_unit_tab   = isset( $attr['titleTopPaddingTablet'] ) ? $attr['tabletTitlePaddingUnit'] : $attr['titlePaddingUnit'];
 $pos_left_unit_tab  = isset( $attr['titleLeftPaddingTablet'] ) ? $attr['tabletTitlePaddingUnit'] : $attr['titlePaddingUnit'];
 $pos_right_unit_tab = isset( $attr['titleRightPaddingTablet'] ) ? $attr['tabletTitlePaddingUnit'] : $attr['titlePaddingUnit'];
@@ -116,8 +118,8 @@ $selectors = array(
 		'color' => $attr['noticeDismissColor'],
 	),
 	'.uagb-dismissable > svg'               => array(
-		'width'  => UAGB_Helper::get_css_value( $attr['iconSize'], $attr['iconSizeUnit'] ),
-		'height' => UAGB_Helper::get_css_value( $attr['iconSize'], $attr['iconSizeUnit'] ),
+		'width'  => UAGB_Helper::get_css_value( UAGB_Block_Helper::get_attribute_fallback( 'iconSize', $attr, $block_defaults ), $attr['iconSizeUnit'] ),
+		'height' => UAGB_Helper::get_css_value( UAGB_Block_Helper::get_attribute_fallback( 'iconSize', $attr, $block_defaults ), $attr['iconSizeUnit'] ),
 		'top'    => UAGB_Helper::get_css_value( $attr['titleTopPadding'], $attr['titlePaddingUnit'] ),
 	),
 	'.uagb-inline_notice__align-left svg'   => array(
@@ -143,8 +145,8 @@ $m_selectors = array(
 		'padding-bottom' => UAGB_Helper::get_css_value( $title_bottom_padding_mobile, $attr['mobileTitlePaddingUnit'] ),
 	),
 	'.uagb-dismissable > svg'               => array(
-		'width'  => UAGB_Helper::get_css_value( $attr['iconSizeMob'], $attr['iconSizeUnit'] ),
-		'height' => UAGB_Helper::get_css_value( $attr['iconSizeMob'], $attr['iconSizeUnit'] ),
+		'width'  => UAGB_Helper::get_css_value( UAGB_Block_Helper::get_attribute_fallback( 'iconSizeMob', $attr, $block_defaults ), $attr['iconSizeUnit'] ),
+		'height' => UAGB_Helper::get_css_value( UAGB_Block_Helper::get_attribute_fallback( 'iconSizeMob', $attr, $block_defaults ), $attr['iconSizeUnit'] ),
 		'top'    => UAGB_Helper::get_css_value( $pos_top_mob, $pos_top_unit_mob ),
 	),
 	'.uagb-inline_notice__align-left svg'   => array(
@@ -169,8 +171,8 @@ $t_selectors = array(
 		'padding-bottom' => UAGB_Helper::get_css_value( $title_bottom_padding_tablet, $attr['tabletTitlePaddingUnit'] ),
 	),
 	'.uagb-dismissable > svg'               => array(
-		'width'  => UAGB_Helper::get_css_value( $attr['iconSizeTab'], $attr['iconSizeUnit'] ),
-		'height' => UAGB_Helper::get_css_value( $attr['iconSizeTab'], $attr['iconSizeUnit'] ),
+		'width'  => UAGB_Helper::get_css_value( UAGB_Block_Helper::get_attribute_fallback( 'iconSizeTab', $attr, $block_defaults ), $attr['iconSizeUnit'] ),
+		'height' => UAGB_Helper::get_css_value( UAGB_Block_Helper::get_attribute_fallback( 'iconSizeTab', $attr, $block_defaults ), $attr['iconSizeUnit'] ),
 		'top'    => UAGB_Helper::get_css_value( $pos_top_tab, $pos_top_unit_tab ),
 	),
 	'.uagb-inline_notice__align-left svg'   => array(
@@ -199,16 +201,16 @@ if ( 'modern' === $attr['layout'] ) {
 } elseif ( 'simple' === $attr['layout'] ) {
 
 	$selectors[' .uagb-notice-title']['background-color'] = $attr['contentBgColor'];
-	$selectors[' .uagb-notice-title']['border-left']      = UAGB_Helper::get_css_value( $attr['highlightWidth'], 'px' ) . ' solid ' . $attr['noticeColor'];
-	$t_selectors[' .uagb-notice-title']['border-left']    = UAGB_Helper::get_css_value( $attr['highlightWidthTablet'], 'px' ) . ' solid ' . $attr['noticeColor'];
-	$m_selectors[' .uagb-notice-title']['border-left']    = UAGB_Helper::get_css_value( $attr['highlightWidthMobile'], 'px' ) . ' solid ' . $attr['noticeColor'];
+	$selectors[' .uagb-notice-title']['border-left']      = UAGB_Helper::get_css_value( UAGB_Block_Helper::get_attribute_fallback( 'highlightWidth', $attr, $block_defaults ), 'px' ) . ' solid ' . $attr['noticeColor'];
+	$t_selectors[' .uagb-notice-title']['border-left']    = UAGB_Helper::get_css_value( UAGB_Block_Helper::get_attribute_fallback( 'highlightWidthTablet', $attr, $block_defaults ), 'px' ) . ' solid ' . $attr['noticeColor'];
+	$m_selectors[' .uagb-notice-title']['border-left']    = UAGB_Helper::get_css_value( UAGB_Block_Helper::get_attribute_fallback( 'highlightWidthMobile', $attr, $block_defaults ), 'px' ) . ' solid ' . $attr['noticeColor'];
 
 	$selectors[' .uagb-notice-text']['background-color'] = $attr['contentBgColor'];
-	$selectors[' .uagb-notice-text']['border-left']      = UAGB_Helper::get_css_value( $attr['highlightWidth'], 'px' ) . ' solid ' . $attr['noticeColor'];
-	$t_selectors[' .uagb-notice-text']['border-left']    = UAGB_Helper::get_css_value( $attr['highlightWidthTablet'], 'px' ) . ' solid ' . $attr['noticeColor'];
-	$m_selectors[' .uagb-notice-text']['border-left']    = UAGB_Helper::get_css_value( $attr['highlightWidthMobile'], 'px' ) . ' solid ' . $attr['noticeColor'];
+	$selectors[' .uagb-notice-text']['border-left']      = UAGB_Helper::get_css_value( UAGB_Block_Helper::get_attribute_fallback( 'highlightWidth', $attr, $block_defaults ), 'px' ) . ' solid ' . $attr['noticeColor'];
+	$t_selectors[' .uagb-notice-text']['border-left']    = UAGB_Helper::get_css_value( UAGB_Block_Helper::get_attribute_fallback( 'highlightWidthTablet', $attr, $block_defaults ), 'px' ) . ' solid ' . $attr['noticeColor'];
+	$m_selectors[' .uagb-notice-text']['border-left']    = UAGB_Helper::get_css_value( UAGB_Block_Helper::get_attribute_fallback( 'highlightWidthMobile', $attr, $block_defaults ), 'px' ) . ' solid ' . $attr['noticeColor'];
 
-	$selectors['.uagb-inline_notice__align-right svg']['left']   = 'calc(' . $attr['titleLeftPadding'] . $attr['titlePaddingUnit'] . ' + ' . $attr['highlightWidth'] . 'px)';
+	$selectors['.uagb-inline_notice__align-right svg']['left']   = 'calc(' . $attr['titleLeftPadding'] . $attr['titlePaddingUnit'] . ' + ' . UAGB_Block_Helper::get_attribute_fallback( 'highlightWidth', $attr, $block_defaults ) . 'px)';
 	$t_selectors['.uagb-inline_notice__align-right svg']['left'] = 'calc(' . $pos_left_tab . $pos_left_unit_tab . ' + ' . $pos_classic_tab . 'px)';
 	$m_selectors['.uagb-inline_notice__align-right svg']['left'] = 'calc(' . $pos_left_mob . $pos_left_unit_mob . ' + ' . $pos_classic_mob . 'px)';
 

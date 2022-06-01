@@ -4,6 +4,8 @@
 
 import generateCSS from '@Controls/generateCSS';
 import generateCSSUnit from '@Controls/generateCSSUnit';
+import { blocksAttributes } from '@Controls/getBlocksDefaultAttributes';
+import { getFallbackNumber } from '@Controls/getAttributeFallback';
 
 function styling( props ) {
 	const {
@@ -80,6 +82,8 @@ function styling( props ) {
 		titleFontStyle,
 		descFontStyle,
 	} = props.attributes;
+	
+	const defaultAttributes = blocksAttributes['inline-notice'];
 
 	let lPadding;
 	let rPadding;
@@ -113,10 +117,11 @@ function styling( props ) {
 		rPaddingTablet = titleRightPaddingTablet;
 	}
 
+	// Setting the Icon Position Defaults
 	const posTopTab = ! isNaN( titleTopPaddingTablet ) ? titleTopPaddingTablet : titleTopPadding;
 	const posLeftTab = ! isNaN( titleLeftPaddingTablet ) ? titleLeftPaddingTablet : titleLeftPadding;
 	const posRightTab = ! isNaN( titleRightPaddingTablet ) ? titleRightPaddingTablet : titleRightPadding;
-	const posClassicTab = ! isNaN( highlightWidthTablet ) ? highlightWidthTablet : highlightWidth;
+	const posClassicTab = ! isNaN( highlightWidthTablet ) ? highlightWidthTablet : getFallbackNumber( highlightWidth, defaultAttributes.highlightWidth );
 	const posTopUnitTab = ! isNaN( titleTopPaddingTablet ) ? tabletTitlePaddingUnit : titlePaddingUnit;
 	const posLeftUnitTab = ! isNaN( titleLeftPaddingTablet ) ? tabletTitlePaddingUnit : titlePaddingUnit;
 	const posRightUnitTab = ! isNaN( titleRightPaddingTablet ) ? tabletTitlePaddingUnit : titlePaddingUnit;
@@ -194,11 +199,11 @@ function styling( props ) {
 		},
 		'.uagb-dismissable > svg': {
 			'width': generateCSSUnit(
-				iconSize,
+				getFallbackNumber( iconSize, defaultAttributes.iconSize ),
 				iconSizeUnit
 			),
 			'height': generateCSSUnit(
-				iconSize,
+				getFallbackNumber( iconSize, defaultAttributes.iconSize ),
 				iconSizeUnit
 			),
 			'top': generateCSSUnit(
@@ -278,11 +283,11 @@ function styling( props ) {
 		},
 		'.uagb-dismissable > svg': {
 			'width': generateCSSUnit(
-				iconSizeMob,
+				getFallbackNumber( iconSizeMob, defaultAttributes.iconSizeMob ),
 				iconSizeUnit
 			),
 			'height': generateCSSUnit(
-				iconSizeMob,
+				getFallbackNumber( iconSizeMob, defaultAttributes.iconSizeMob ),
 				iconSizeUnit
 			),
 			'top': generateCSSUnit(
@@ -363,11 +368,11 @@ function styling( props ) {
 		},
 		'.uagb-dismissable > svg': {
 			'width': generateCSSUnit(
-				iconSizeTab,
+				getFallbackNumber( iconSizeTab, defaultAttributes.iconSizeTab ),
 				iconSizeUnit
 			),
 			'height': generateCSSUnit(
-				iconSizeTab,
+				getFallbackNumber( iconSizeTab, defaultAttributes.iconSizeTab ),
 				iconSizeUnit
 			),
 			'top': generateCSSUnit(
@@ -436,36 +441,54 @@ function styling( props ) {
 		selectors[
 			' .rich-text.block-editor-rich-text__editable.uagb-notice-title'
 		][ 'border-left' ] =
-			generateCSSUnit( highlightWidth, 'px' ) + ' solid ' + noticeColor;
+			generateCSSUnit(
+				getFallbackNumber( highlightWidth, defaultAttributes.highlightWidth ),
+				'px'
+			) + ' solid ' + noticeColor;
 		selectors[
 			' .rich-text.block-editor-rich-text__editable.uagb-notice-text'
 		][ 'background-color' ] = contentBgColor;
 		selectors[
 			' .rich-text.block-editor-rich-text__editable.uagb-notice-text'
 		][ 'border-left' ] =
-			generateCSSUnit( highlightWidth, 'px' ) + ' solid ' + noticeColor;
+			generateCSSUnit(
+				getFallbackNumber( highlightWidth, defaultAttributes.highlightWidth ),
+				'px'
+			) + ' solid ' + noticeColor;
 		mobileSelectors[
 			' .rich-text.block-editor-rich-text__editable.uagb-notice-text'
 		][ 'border-left' ] =
-			generateCSSUnit( highlightWidthMobile, 'px' ) + ' solid ' + noticeColor;
+			generateCSSUnit(
+				getFallbackNumber( highlightWidthMobile, defaultAttributes.highlightWidthMobile ),
+				'px'
+			) + ' solid ' + noticeColor;
 		mobileSelectors[
 			' .rich-text.block-editor-rich-text__editable.uagb-notice-title'
 		][ 'border-left' ] =
-			generateCSSUnit( highlightWidthMobile, 'px' ) + ' solid ' + noticeColor;
+			generateCSSUnit(
+				getFallbackNumber( highlightWidthMobile, defaultAttributes.highlightWidthMobile ),
+				'px'
+			) + ' solid ' + noticeColor;
 		tabletSelectors[
 			' .rich-text.block-editor-rich-text__editable.uagb-notice-text'
 		][ 'border-left' ] =
-			generateCSSUnit( highlightWidthTablet, 'px' ) + ' solid ' + noticeColor;
+			generateCSSUnit(
+				getFallbackNumber( highlightWidthTablet, defaultAttributes.highlightWidthTablet ),
+				'px'
+			) + ' solid ' + noticeColor;
 		tabletSelectors[
 			' .rich-text.block-editor-rich-text__editable.uagb-notice-title'
 		][ 'border-left' ] =
-			generateCSSUnit( highlightWidthTablet, 'px' ) + ' solid ' + noticeColor;
+			generateCSSUnit(
+				getFallbackNumber( highlightWidthTablet, defaultAttributes.highlightWidthTablet ),
+				'px'
+			) + ' solid ' + noticeColor;
 		selectors[ '.uagb-inline_notice__align-right svg' ] = {
 			'left': `calc(${ generateCSSUnit(
 				titleLeftPadding,
 				titlePaddingUnit
 			) } + ${ generateCSSUnit(
-				highlightWidth,
+				getFallbackNumber( highlightWidth, defaultAttributes.highlightWidth ),
 				'px'
 			) })`,
 		};
