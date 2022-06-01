@@ -188,10 +188,20 @@ if ( 'button' === $attr['ctaType'] ) {
 $selectors[' .uagb-cta__content-wrap'] = array(
 	'text-align' => $attr['textAlign'],
 );
-$selectors[' .uagb-cta__wrap']         = array(
-	'width'      => UAGB_Helper::get_css_value( $attr['contentWidth'], $attr['contentWidthType'] ),
-	'text-align' => $attr['textAlign'],
-);
+
+if(is_int($attr['contentWidth'])){
+	$selectors[' .uagb-cta__wrap']         = array(
+		'width'      => UAGB_Helper::get_css_value( $attr['contentWidth'], $attr['contentWidthType'] ),
+		'text-align' => $attr['textAlign'],
+	);
+}
+else{
+	$selectors[' .uagb-cta__wrap']         = array(
+		'text-align' => $attr['textAlign'],
+	);
+}
+
+
 
 $selectors['.wp-block-uagb-call-to-action'] = array(
 	'text-align'     => $attr['textAlign'],
@@ -450,12 +460,16 @@ if ( 'right' === $attr['ctaPosition'] && ( 'text' === $attr['ctaType'] || 'butto
 		'display'         => 'flex',
 		'justify-content' => 'space-between',
 	);
-	$selectors[' .uagb-cta__content-right .uagb-cta__left-right-wrap .uagb-cta__content']        = array(
-		'width' => UAGB_Helper::get_css_value( $attr['contentWidth'], $attr['contentWidthType'] ),
-	);
-	$selectors[' .uagb-cta__content-right .uagb-cta__left-right-wrap .uagb-cta__link-wrapper']   = array(
-		'width' => UAGB_Helper::get_css_value( ( 100 - $attr['contentWidth'] ), $attr['contentWidthType'] ),
-	);
+
+	if(is_int($attr['contentWidth'])){
+		$selectors[' .uagb-cta__content-right .uagb-cta__left-right-wrap .uagb-cta__content']        = array(
+			'width' => UAGB_Helper::get_css_value( $attr['contentWidth'], $attr['contentWidthType'] ),
+		);
+		$selectors[' .uagb-cta__content-right .uagb-cta__left-right-wrap .uagb-cta__link-wrapper']   = array(
+			'width' => UAGB_Helper::get_css_value( ( 100 - $attr['contentWidth'] ), $attr['contentWidthType'] ),
+		);
+	}
+
 	$t_selectors[' .uagb-cta__content-right .uagb-cta__left-right-wrap .uagb-cta__content']      = array(
 		'width' => UAGB_Helper::get_css_value( $attr['contentWidthTablet'], $attr['contentWidthType'] ),
 	);
