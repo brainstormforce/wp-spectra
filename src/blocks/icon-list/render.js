@@ -45,8 +45,7 @@ const Render = ( props ) => {
 			className={ classnames(
 				className,
 				`uagb-editor-preview-mode-${ deviceType.toLowerCase() }`,
-				`uagb-block-${ block_id }`,
-				'uagb-icon-list-outer-wrap'
+				`uagb-block-${ block_id }`
 			) }
 		>
 			<div className="uagb-icon-list__wrap">
