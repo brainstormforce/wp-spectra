@@ -25,6 +25,8 @@ import {
 import { InspectorControls, AlignmentToolbar, BlockControls } from '@wordpress/block-editor';
 
 import UAGAdvancedPanelBody from '@Components/advanced-panel-body';
+import boxShadowPresets from './presets';
+import UAGPresets from '@Components/presets';
 
 import apiFetch from '@wordpress/api-fetch';
 const Settings = ( props ) => {
@@ -1175,6 +1177,11 @@ const Settings = ( props ) => {
 				title={ __( 'Box Shadow', 'ultimate-addons-for-gutenberg' ) }
 				initialOpen={ false }
 			>
+				<UAGPresets
+					setAttributes = { setAttributes }
+					presets = { boxShadowPresets }
+					presetInputType = 'radioImage'
+				/>
 				<BoxShadowControl
 					setAttributes={ setAttributes }
 					label={ __(

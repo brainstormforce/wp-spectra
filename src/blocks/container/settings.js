@@ -21,6 +21,8 @@ import renderCustomIcon from '@Controls/renderCustomIcon';
 import UAGTabsControl from '@Components/tabs';
 import AdvancedPopColorControl from '@Components/color-control/advanced-pop-color-control';
 import Range from '@Components/range/Range';
+import boxShadowPresets, { boxShadowHoverPresets } from './presets';
+import UAGPresets from '@Components/presets';
 
 const Settings = ( props ) => {
 
@@ -168,7 +170,7 @@ const Settings = ( props ) => {
 		textColor,
 		linkColor,
 		linkHoverColor,
-		
+
 	} = attributes;
 
 	let currentDirection = directionDesktop;
@@ -184,7 +186,7 @@ const Settings = ( props ) => {
 	// in case bg type was set to Image before and given a custom width and height.
 	useEffect( () => {
 		if ( backgroundType === 'color' ) {
-			setAttributes( { 
+			setAttributes( {
 				backgroundSizeDesktop: 'cover',
 				backgroundSizeTablet: 'cover',
 				backgroundSizeMobile: 'cover',
@@ -1002,6 +1004,11 @@ const Settings = ( props ) => {
 					] }
 					normal={
 						<>
+							<UAGPresets
+								setAttributes = { setAttributes }
+								presets = { boxShadowPresets }
+								presetInputType = 'radioImage'
+							/>
 							<BoxShadowControl
 								setAttributes={ setAttributes }
 								label={ __(
@@ -1052,6 +1059,11 @@ const Settings = ( props ) => {
 					}
 					hover={
 						<>
+							<UAGPresets
+								setAttributes = { setAttributes }
+								presets = { boxShadowHoverPresets }
+								presetInputType = 'radioImage'
+							/>
 							<BoxShadowControl
 								setAttributes={ setAttributes }
 								label={ __(

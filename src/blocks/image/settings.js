@@ -35,7 +35,8 @@ import ImageSizeControl from '@Components/image-size-control'
 import { store as coreStore } from '@wordpress/core-data';
 // Extend component
 import UAGAdvancedPanelBody from '@Components/advanced-panel-body';
-
+import boxShadowPresets from './presets';
+import UAGPresets from '@Components/presets';
 
 export default function Settings( props ) {
 	const deviceType = useDeviceType();
@@ -1530,6 +1531,12 @@ export default function Settings( props ) {
 			/>
 			{
 				'static' === imageHoverEffect && (
+					<>
+					<UAGPresets
+					setAttributes = { setAttributes }
+					presets = { boxShadowPresets }
+					presetInputType = 'radioImage'
+					/>
 					<BoxShadowControl
 						setAttributes={ setAttributes }
 						label={ __(
@@ -1576,6 +1583,7 @@ export default function Settings( props ) {
 							),
 						} }
 					/>
+					</>
 				)
 			}
 		</UAGAdvancedPanelBody>
