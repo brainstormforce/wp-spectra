@@ -194,8 +194,7 @@ if ( is_int( $attr['contentWidth'] ) ) {
 		'width'      => UAGB_Helper::get_css_value( $attr['contentWidth'], $attr['contentWidthType'] ),
 		'text-align' => $attr['textAlign'],
 	);
-}
-else {
+} else {
 	$selectors[' .uagb-cta__wrap']         = array(
 		'text-align' => $attr['textAlign'],
 	);
@@ -461,7 +460,7 @@ if ( 'right' === $attr['ctaPosition'] && ( 'text' === $attr['ctaType'] || 'butto
 		'justify-content' => 'space-between',
 	);
 
-	if ( is_int ( $attr['contentWidth'] ) ) {
+	if (is_int ( $attr['contentWidth'] )) {
 		$selectors[' .uagb-cta__content-right .uagb-cta__left-right-wrap .uagb-cta__content']        = array(
 			'width' => UAGB_Helper::get_css_value( $attr['contentWidth'], $attr['contentWidthType'] ),
 		);
