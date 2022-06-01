@@ -57,8 +57,6 @@ function styling( props ) {
 	let tabletSelectors = {};
 	let mobileSelectors = {};
 	let alignment = '';
-	let tabletAlignment = '';
-	let mobileAlignment = '';
 	if ( align === 'left' ) {
 		alignment = 'flex-start';
 	} else if ( align === 'right' ) {
@@ -67,19 +65,23 @@ function styling( props ) {
 		alignment = 'center';
 	}
 	
+	let tabletAlignment = alignment;
+
 	if ( alignTablet === 'left' ) {
 		tabletAlignment = 'flex-start';
 	} else if ( alignTablet === 'right' ) {
 		tabletAlignment = 'flex-end';
-	} else {
+	} else if ( alignTablet === 'center' ) {
 		tabletAlignment = 'center';
 	}
+
+	let mobileAlignment = tabletAlignment;
 
 	if ( alignMobile === 'left' ) {
 		mobileAlignment = 'flex-start';
 	} else if ( alignMobile === 'right' ) {
 		mobileAlignment = 'flex-end';
-	} else {
+	} else if ( alignMobile === 'center' ) {
 		mobileAlignment = 'center';
 	}
 
@@ -205,6 +207,7 @@ function styling( props ) {
 			'justify-content': alignment,
 			'-webkit-box-pack': alignment,
 			'-ms-flex-pack': alignment,
+			'align-items' : alignment,
 		};
 		selectors[' .block-editor-block-list__layout .wp-block[data-type="uagb/icon-list-child"]' ] = {
 			'margin-left': generateCSSUnit( editorGap / 2, gapType ),
@@ -220,6 +223,7 @@ function styling( props ) {
 			'justify-content': tabletAlignment,
 			'-webkit-box-pack': tabletAlignment,
 			'-ms-flex-pack': tabletAlignment,
+			'align-items' : tabletAlignment,
 		};
 		mobileSelectors[' .block-editor-block-list__layout .wp-block[data-type="uagb/icon-list-child"]' ] = {
 			'margin-left': generateCSSUnit( editorGapMobile / 2, gapType ),
@@ -230,6 +234,7 @@ function styling( props ) {
 			'justify-content': mobileAlignment,
 			'-webkit-box-pack': mobileAlignment,
 			'-ms-flex-pack': mobileAlignment,
+			'align-items' : mobileAlignment,
 		};
 	}
 	if( 'vertical' === icon_layout  ) {
