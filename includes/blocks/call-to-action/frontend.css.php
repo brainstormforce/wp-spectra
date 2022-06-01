@@ -21,7 +21,7 @@ $btnPaddingTop    = isset( $attr['ctaTopPadding'] ) ? $attr['ctaTopPadding'] : $
 $btnPaddingBottom = isset( $attr['ctaBottomPadding'] ) ? $attr['ctaBottomPadding'] : $attr['ctaBtnVertPadding'];
 $btnPaddingLeft   = isset( $attr['ctaLeftPadding'] ) ? $attr['ctaLeftPadding'] : $attr['ctaBtnHrPadding'];
 $btnPaddingRight  = isset( $attr['ctaRightPadding'] ) ? $attr['ctaRightPadding'] : $attr['ctaBtnHrPadding'];
-$contentWidth 	  = is_int( $attr['contentWidth'] ) ? $attr['contentWidth'] : 70;
+$contentWidth     = is_int( $attr['contentWidth'] ) ? $attr['contentWidth'] : 70;
 
 if ( 'left' === $attr['textAlign'] ) {
 	$alignment = 'flex-start';
