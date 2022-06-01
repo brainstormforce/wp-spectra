@@ -127,6 +127,20 @@ const attributes = {
 		},
 		default: 'middle',
 	},
+	iconPositionTablet: {
+		type: 'string',
+		UAGCopyPaste: {
+			styleType: 'icon-position-tablet'
+		},
+		default: '',
+	},
+	iconPositionMobile: {
+		type: 'string',
+		UAGCopyPaste: {
+			styleType: 'icon-position-mobile'
+		},
+		default: '',
+	},
 	size: {
 		type: 'number',
 		UAGCopyPaste: {

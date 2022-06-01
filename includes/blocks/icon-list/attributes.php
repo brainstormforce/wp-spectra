@@ -74,4 +74,6 @@ return array(
 	'fontDecoration'     => '',
 	'hideLabel'          => false,
 	'iconPosition'       => 'middle',
+	'iconPositionTablet'       => '',
+	'iconPositionMobile'       => '',
 );

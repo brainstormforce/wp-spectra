@@ -50,6 +50,8 @@ function styling( props ) {
 		fontTransform,
 		fontDecoration,
 		iconPosition,
+		iconPositionTablet,
+		iconPositionMobile,
 		hideLabel,
 	} = props.attributes;
 
@@ -89,6 +91,26 @@ function styling( props ) {
 	const editorGapTablet = undefined !== typeof gapTablet && '' !== gapTablet ? gapTablet : 15;
 	const editorGapMobile = undefined !== typeof gapMobile && '' !== gapMobile ? gapMobile : 15;
 
+	const position = iconPosition === 'top' ? 'flex-start' : 'center';
+	let positionTablet = '';
+	let positionMobile = '';
+
+	if( iconPositionTablet === 'top' ) {
+		positionTablet = 'flex-start';
+	} else if( iconPositionTablet === 'middle' ) {
+		positionTablet = 'center';
+	} else {
+		positionTablet = position;
+	}
+
+	if( iconPositionMobile === 'top' ) {
+		positionMobile = 'flex-start';
+	} else if( iconPositionMobile === 'middle' ) {
+		positionMobile = 'center';
+	} else {
+		positionMobile = positionTablet;
+	}
+
 	selectors = {
 		' .wp-block-uagb-icon-list-child .uagb-icon-list__source-wrap': {
 			'padding': generateCSSUnit( bgSize, bgSizeType ),
@@ -96,7 +118,7 @@ function styling( props ) {
 			'border-style':
 				0 === border || undefined === border ? 'none' : 'solid',
 			'border-width': generateCSSUnit( border, borderType ),
-			'align-self' : iconPosition === 'top' ? 'flex-start' : 'center'
+			'align-self' : position
 		},
 		' .uagb-icon-list__source-image': {
 			'width': generateCSSUnit( size, sizeType ),
@@ -113,6 +135,7 @@ function styling( props ) {
 		' .uagb-icon-list__wrap .block-editor-inner-blocks': {
 			'text-align': alignTablet,
 		},
+		
 	};
 
 	mobileSelectors = {
@@ -134,6 +157,7 @@ function styling( props ) {
 		'height': generateCSSUnit( sizeTablet, sizeType ),
 		'font-size': generateCSSUnit( sizeTablet, sizeType ),
 	};
+	
 	mobileSelectors[' .uagb-icon-list__source-wrap svg' ] = {
 		'width': generateCSSUnit( sizeMobile, sizeType ),
 		'height': generateCSSUnit( sizeMobile, sizeType ),
@@ -320,6 +344,7 @@ function styling( props ) {
 		'padding': generateCSSUnit( bgSizeMobile, 'px' ),
 		'border-style':	0 === borderMobile || undefined === borderMobile ? 'none' : 'solid',
 		'border-width': generateCSSUnit( borderMobile, borderType ),
+		'align-self' : positionMobile,
 	};
 
 	tabletSelectors[ ' .wp-block-uagb-icon-list-child .uagb-icon-list__source-wrap' ] = {
@@ -327,6 +352,7 @@ function styling( props ) {
 		'padding': generateCSSUnit( bgSizeTablet, 'px' ),
 		'border-style':	0 === borderTablet || undefined === borderTablet ? 'none' : 'solid',
 		'border-width': generateCSSUnit( borderTablet, borderType ),
+		'align-self' : positionTablet,
 	};
 
 	let stylingCss = '';

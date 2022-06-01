@@ -23,6 +23,26 @@ $icon_size   = UAGB_Helper::get_css_value( $attr['size'], $attr['sizeType'] );
 $m_icon_size = UAGB_Helper::get_css_value( $attr['sizeMobile'], $attr['sizeType'] );
 $t_icon_size = UAGB_Helper::get_css_value( $attr['sizeTablet'], $attr['sizeType'] );
 
+$position = 'top' === $attr['iconPosition'] ? 'flex-start' : 'center';
+$tabletPosition = '';
+$mobilePosition = '';
+
+if( 'top' === $attr['iconPositionTablet'] ) {
+	$tabletPosition = 'flex-start';
+} else if( 'middle' === $attr['iconPositionTablet'] ) {
+	$tabletPosition = 'center';
+} else {
+	$tabletPosition = $position;
+}
+
+if( 'top' === $attr['iconPositionMobile'] ) {
+	$mobilePosition = 'flex-start';
+} else if( 'middle' === $attr['iconPositionMobile'] ) {
+	$mobilePosition = 'center';
+} else {
+	$mobilePosition = $tabletPosition;
+}
+
 $selectors = array(
 	// Desktop Icon Size CSS starts.
 	' .uagb-icon-list__source-image' => array(
@@ -38,7 +58,7 @@ $selectors = array(
 		'border-radius' => UAGB_Helper::get_css_value( $attr['borderRadius'], 'px' ),
 		'border-style'  => ( $attr['border'] > 0 ) ? 'solid' : '',
 		'border-width'  => UAGB_Helper::get_css_value( $attr['border'], $attr['borderType'] ),
-		'align-self'    => 'top' === $attr['iconPosition'] ? 'flex-start' : 'center',
+		'align-self'    => $position,
 	),
 	' .uagb-icon-list__wrap'         => array(
 		'justify-content'   => $alignment,
@@ -87,6 +107,9 @@ $t_selectors = array(
 		'-ms-flex-align'    => $tablet_alignment,
 		'align-items'       => $tablet_alignment,
 	),
+	' .wp-block-uagb-icon-list-child .uagb-icon-list__source-wrap ' => array(
+		'align-self'    => $tabletPosition,
+	),
 );
 
 $m_selectors = array(
@@ -112,6 +135,9 @@ $m_selectors = array(
 		'-webkit-box-align' => $mobile_alignment,
 		'-ms-flex-align'    => $mobile_alignment,
 		'align-items'       => $mobile_alignment,
+	),
+	' .wp-block-uagb-icon-list-child .uagb-icon-list__source-wrap ' => array(
+		'align-self'    => $mobilePosition,
 	),
 );
 
