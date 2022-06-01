@@ -1131,6 +1131,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 
 		/**
 		 * Return the Current Attribute or the Default Attribute.
+		 * In PHP, this is used wherever the fallback is needed, as validation of numbers is done in JS.
 		 *
 		 * @param string $key      Name of the attribute.
 		 * @param array  $attr     The current attributes of the block.
@@ -1138,6 +1139,14 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 		 */
 		public static function get_attribute_fallback( $key, $attr, $default ) {
 			return isset( $attr[ $key ] ) ? $attr[ $key ] : $default[ $key ];
+		}
+
+		/**
+		 * Return the Current Attribute or the Default Attribute for Numbers.
+		 * In PHP, this is used in places where a numeric variable is passed in place of the first attribute.
+		 */
+		public static function get_fallback_number( $attr, $default ) {
+			return is_numeric( $attr ) ? $attr : $default;
 		}
 	}
 }
