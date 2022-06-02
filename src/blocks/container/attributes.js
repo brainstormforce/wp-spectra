@@ -375,6 +375,46 @@ const attributes = {
 			styleType: 'container-box-shadow-position'
 		},
 	},
+	
+	boxShadowColorHover: {
+		type: 'string',
+		UAGCopyPaste: {
+			styleType: 'container-box-shadow-color-hover'
+		},
+	},
+	boxShadowHOffsetHover: {
+		type: 'number',
+		default: 0,
+		UAGCopyPaste: {
+			styleType: 'container-box-shadow-hoffset-hover'
+		},
+	},
+	boxShadowVOffsetHover: {
+		type: 'number',
+		default: 0,
+		UAGCopyPaste: {
+			styleType: 'container-box-shadow-voffset-hover'
+		},
+	},
+	boxShadowBlurHover: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'container-box-shadow-blur-hover'
+		},
+	},
+	boxShadowSpreadHover: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'container-box-shadow-spread-hover'
+		},
+	},
+	boxShadowPositionHover: {
+		type: 'string',
+		default: 'outset',
+		UAGCopyPaste: {
+			styleType: 'container-box-shadow-position-hover'
+		},
+	},
 
 	topPaddingDesktop: {
 		type: 'number',
