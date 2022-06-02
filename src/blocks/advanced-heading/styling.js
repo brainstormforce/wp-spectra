@@ -4,10 +4,12 @@
 
 import generateCSS from '@Controls/generateCSS';
 import generateCSSUnit from '@Controls/generateCSSUnit';
-import { blocksAttributes } from '@Controls/getBlocksDefaultAttributes';
 import { getFallbackNumber } from '@Controls/getAttributeFallback';
 
 function styling( props ) {
+
+	const blockName = props.name.replace( 'uagb/', '' );
+
 	const {
 		headingAlign,
 		headingTag,
@@ -148,8 +150,6 @@ function styling( props ) {
 		highLightPaddingUnitTablet,
 		highLightPaddingUnitMobile,
 	} = props.attributes;
-
-	const defaultAttributes = blocksAttributes['advanced-heading'];
 
 	const tablet_selectors = {};
 	const mobile_selectors = {};
@@ -300,7 +300,7 @@ function styling( props ) {
 		'line-height': generateCSSUnit( headLineHeight, headLineHeightType ),
 		'color': headingColor,
 		'margin-bottom': generateCSSUnit(
-			getFallbackNumber( headSpace, defaultAttributes.headSpace ),
+			getFallbackNumber( headSpace, 'headSpace', blockName ),
 			'px'
 		),
 		'letter-spacing': generateCSSUnit( headLetterSpacing, headLetterSpacingType ),
@@ -313,16 +313,16 @@ function styling( props ) {
 		selectors[ ' .uagb-separator' ] = {
 			'border-top-style': seperatorStyle,
 			'border-top-width': generateCSSUnit(
-				getFallbackNumber( separatorHeight, defaultAttributes.separatorHeight ),
+				getFallbackNumber( separatorHeight, 'separatorHeight', blockName ),
 				separatorHeightType
 			),
 			'width': generateCSSUnit(
-				getFallbackNumber( separatorWidth, defaultAttributes.separatorWidth ),
+				getFallbackNumber( separatorWidth, 'separatorWidth', blockName ),
 				separatorWidthType
 			),
 			'border-color': separatorColor,
 			'margin-bottom': generateCSSUnit(
-				getFallbackNumber( separatorSpace, defaultAttributes.separatorSpace ),
+				getFallbackNumber( separatorSpace, 'separatorSpace', blockName ),
 				separatorSpaceType
 			),
 		};
@@ -373,7 +373,7 @@ function styling( props ) {
 		),
 		'letter-spacing': generateCSSUnit( headLetterSpacingTablet, headLetterSpacingType ),
 		'margin-bottom': generateCSSUnit(
-			getFallbackNumber( headSpaceTablet, defaultAttributes.headSpaceTablet ),
+			getFallbackNumber( headSpaceTablet, 'headSpaceTablet', blockName ),
 			'px'
 		),
 	};
@@ -452,11 +452,11 @@ function styling( props ) {
 	}
 	tablet_selectors[ ' .uagb-separator' ] = {
 		'width': generateCSSUnit(
-			getFallbackNumber( separatorWidthTablet, defaultAttributes.separatorWidthTablet ),
+			getFallbackNumber( separatorWidthTablet, 'separatorWidthTablet', blockName ),
 			separatorWidthType
 		),
 		'margin-bottom': generateCSSUnit(
-			getFallbackNumber( separatorSpaceTablet, defaultAttributes.separatorSpaceTablet ),
+			getFallbackNumber( separatorSpaceTablet, 'separatorSpaceTablet', blockName ),
 			separatorSpaceType
 		),
 	};
@@ -469,7 +469,7 @@ function styling( props ) {
 		),
 		'letter-spacing': generateCSSUnit( headLetterSpacingMobile, headLetterSpacingType ),
 		'margin-bottom': generateCSSUnit(
-			getFallbackNumber( headSpaceMobile, defaultAttributes.headSpaceMobile ),
+			getFallbackNumber( headSpaceMobile, 'headSpaceMobile', blockName ),
 			'px'
 		),
 	};
@@ -513,11 +513,11 @@ function styling( props ) {
 	};
 	mobile_selectors[ ' .uagb-separator' ] = {
 		'width': generateCSSUnit(
-			getFallbackNumber( separatorWidthMobile, defaultAttributes.separatorWidthMobile ),
+			getFallbackNumber( separatorWidthMobile, 'separatorWidthMobile', blockName ),
 			separatorWidthType
 		),
 		'margin-bottom': generateCSSUnit(
-			getFallbackNumber( separatorSpaceMobile, defaultAttributes.separatorSpaceMobile ),
+			getFallbackNumber( separatorSpaceMobile, 'separatorSpaceMobile', blockName ),
 			separatorSpaceType
 		),
 	};
