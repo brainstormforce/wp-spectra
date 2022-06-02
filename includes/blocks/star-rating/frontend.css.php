@@ -14,8 +14,13 @@ $t_selectors = array();
 $m_selectors = array();
 $selectors   = array();
 
-$alignment       = 'flex-start';
-$stack_alignment = $attr['align'];
+$alignment              = 'flex-start';
+$alignment_tablet       = 'flex-start';
+$alignment_mobile       = 'flex-start';
+$stack_alignment        = $attr['align'];
+$stack_alignment_tablet = $attr['align'];
+$stack_alignment_mobile = $attr['align'];
+
 if ( '' !== $attr['align'] ) {
 	if ( 'right' === $attr['align'] ) {
 		$alignment = 'flex-end';
@@ -26,6 +31,32 @@ if ( '' !== $attr['align'] ) {
 	if ( 'full' === $attr['align'] ) {
 		$alignment       = 'space-between';
 		$stack_alignment = 'left';
+	}
+}
+
+if ( '' !== $attr['alignTablet'] ) {
+	if ( 'right' === $attr['alignTablet'] ) {
+		$alignment_tablet = 'flex-end';
+	}
+	if ( 'center' === $attr['alignTablet'] ) {
+		$alignment_tablet = 'center';
+	}
+	if ( 'full' === $attr['alignTablet'] ) {
+		$alignment_tablet       = 'space-between';
+		$stack_alignment_tablet = 'left';
+	}
+}
+
+if ( '' !== $attr['alignMobile'] ) {
+	if ( 'right' === $attr['alignMobile'] ) {
+		$alignment_mobile = 'flex-end';
+	}
+	if ( 'center' === $attr['alignMobile'] ) {
+		$alignment_mobile = 'center';
+	}
+	if ( 'full' === $attr['alignMobile'] ) {
+		$alignment_mobile       = 'space-between';
+		$stack_alignment_mobile = 'left';
 	}
 }
 
@@ -81,7 +112,7 @@ if ( 'stack' === $attr['layoutTablet'] ) {
 	$index_tablet                               = 'margin-bottom';
 	$t_selectors['.wp-block-uagb-star-rating '] = array(
 		'display'    => 'block',
-		'text-align' => $stack_alignment,
+		'text-align' => $stack_alignment_tablet,
 	);
 
 	// Keeping this here, in case responsive alignment is added in the future.
@@ -97,7 +128,7 @@ if ( 'stack' === $attr['layoutTablet'] ) {
 	$index_tablet                               = 'margin-right';
 	$t_selectors['.wp-block-uagb-star-rating '] = array(
 		'display'         => 'flex',
-		'justify-content' => $alignment,
+		'justify-content' => $alignment_tablet,
 	);
 	$t_selectors[' .uag-star-rating__title ']   = array(
 		'margin-bottom' => 0,
@@ -109,7 +140,7 @@ if ( 'stack' === $attr['layoutMobile'] ) {
 	$index_mobile                               = 'margin-bottom';
 	$m_selectors['.wp-block-uagb-star-rating '] = array(
 		'display'    => 'block',
-		'text-align' => $stack_alignment,
+		'text-align' => $stack_alignment_mobile,
 	);
 
 	// Keeping this here, in case responsive alignment is added in the future.
@@ -125,7 +156,7 @@ if ( 'stack' === $attr['layoutMobile'] ) {
 	$index_mobile                               = 'margin-right';
 	$m_selectors['.wp-block-uagb-star-rating '] = array(
 		'display'         => 'flex',
-		'justify-content' => $alignment,
+		'justify-content' => $alignment_mobile,
 	);
 	$m_selectors[' .uag-star-rating__title ']   = array(
 		'margin-bottom' => 0,

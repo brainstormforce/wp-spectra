@@ -32,6 +32,8 @@ const Settings = ( props ) => {
 			layoutTablet,
 			layoutMobile,
 			align,
+			alignTablet,
+			alignMobile,
 			size,
 			sizeTablet,
 			sizeMobile,
@@ -218,15 +220,27 @@ const Settings = ( props ) => {
 				/>
 
 			) }
+
 			<MultiButtonsControl
 				setAttributes={ setAttributes }
 				label={ __( 'Alignment', 'ultimate-addons-for-gutenberg' ) }
 				data={ {
-					value: align,
-					label: 'align',
+					desktop: {
+						value: align,
+						label: 'align',
+					},
+					tablet: {
+						value: alignTablet,
+						label: 'alignTablet',
+					},
+					mobile: {
+						value: alignMobile,
+						label: 'alignMobile',
+					},
 				} }
 				options={ alignmentOptions }
 				showIcons={ true }
+				responsive={true}
 			/>
 		</UAGAdvancedPanelBody>
 	);

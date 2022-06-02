@@ -15,6 +15,8 @@ return array(
 	'sizeTablet'       => 18,
 	'sizeMobile'       => 18,
 	'align'            => 'left',
+	'alignTablet'      => '',
+	'alignMobile'      => '',
 	'layout'           => 'inline',
 	'layoutTablet'     => 'inline',
 	'layoutMobile'     => 'stack',

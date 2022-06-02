@@ -71,6 +71,20 @@ const attributes = {
 			styleType: 'icon-align'
 		},
 	},
+	alignTablet: {
+		type: 'string',
+		default: '',
+		UAGCopyPaste: {
+			styleType: 'icon-align-tablet'
+		},
+	},
+	alignMobile: {
+		type: 'string',
+		default: '',
+		UAGCopyPaste: {
+			styleType: 'icon-align-mobile'
+		},
+	},
 	unmarkedColor: {
 		type: 'string',
 		default: '#ccd6df',
