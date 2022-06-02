@@ -1,15 +1,12 @@
 import { blocksAttributes } from '@Controls/getBlocksDefaultAttributes';
 
-const getAttributeFallback = ( attr, defaultAttr ) => ( attr ? attr : defaultAttr.default );
+// Parameters for these methods:
+// currentValue - any variable/attribute that is altered by settings.
+// key          - the key ouf the default attribute for that setting.
+// blockName    - the name of the block.
 
-export const getFallbackNumber = ( attr, defaultAttr ) => ( isNaN( attr ) ? defaultAttr.default : attr );
+const getAttributeFallback = ( currentValue, key, blockName ) => ( currentValue ? currentValue : blocksAttributes[blockName][key].default );
 
-export const getFallbackNumberV2 = ( key, blockName, $attr ) => (
-    isNaN( $attr[key] ) ? blocksAttributes[blockName][key].default : $attr[key]
-);
-
-export const getFallbackNumberV3 = ( currentValue, key, blockName ) => (
-    isNaN( currentValue ) ? blocksAttributes[blockName][key].default : currentValue
-);
+export const getFallbackNumber = ( currentValue, key, blockName ) => ( isNaN( currentValue ) ? blocksAttributes[blockName][key].default : currentValue );
 
 export default getAttributeFallback;
