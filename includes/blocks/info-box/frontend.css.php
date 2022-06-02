@@ -27,6 +27,13 @@ $iconPaddingBottom = is_int( $attr['iconBottomMargin'] ) ? $attr['iconBottomMarg
 $iconPaddingLeft   = is_int( $attr['iconLeftMargin'] ) ? $attr['iconLeftMargin'] : 0;
 $iconPaddingRight  = is_int( $attr['iconRightMargin'] ) ? $attr['iconRightMargin'] : 0;
 
+if( '%' === $attr['iconSizeType'] ){
+	$box_sizing = 'border-box';
+}
+else{
+	$box_sizing = 'content-box';
+}
+
 $selectors = array(
 	' .uagb-ifb-icon'                                      => array(
 		'width'       => $icon_size,
@@ -197,6 +204,9 @@ $selectors = array(
 	' .uagb-ifb-align-icon-before'                         => array(
 		'margin-right' => UAGB_Helper::get_css_value( $attr['ctaIconSpace'], 'px' ),
 	),
+	' .uagb-infobox__content-wrap  .uagb-ifb-content img,svg'=>  array(
+		'box-sizing'   => $box_sizing . '!important',
+	)
 );
 if( 'Stacked' === $attr['iconView'] ) {
 	$selectors[ ' .uagb-iconbox-icon-wrap.uagb-infobox-shape-circle'] = array(

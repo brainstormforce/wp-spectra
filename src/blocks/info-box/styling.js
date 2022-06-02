@@ -211,6 +211,15 @@ function styling( props ) {
 		iconBorderWidth
 	} = props.attributes;
 
+	let box_sizing = ''
+
+	if ( '%' === iconSizeType ){
+		box_sizing = 'border-box'
+	}
+	else {
+		box_sizing = 'content-box'
+	}
+
 	const selectors = {
 		// Icon css
 		' .uagb-ifb-content .uagb-ifb-icon-wrap svg': {
@@ -467,6 +476,9 @@ function styling( props ) {
 			'margin-top': generateCSSUnit( separatorTopMargin, seperatorSpaceUnit ),
 			'margin-left': generateCSSUnit( separatorLeftMargin, seperatorSpaceUnit ),
 			'margin-right': generateCSSUnit( separatorRightMargin, seperatorSpaceUnit ),
+		},
+		' .uagb-infobox__content-wrap  .uagb-ifb-content img,svg': {
+			'box-sizing' : `${box_sizing} !important`,
 		}
 	};
 
