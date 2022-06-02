@@ -181,6 +181,8 @@ const Settings = ( props ) => {
 		imageWidthTablet,
 		imageWidthType,
 		imageWidthUnit,
+		imageWidthUnitTablet,
+		imageWidthUnitMobile,
 		stack,
 		showIcon,
 		showPrefix,
@@ -190,6 +192,10 @@ const Settings = ( props ) => {
 		paddingspacingLink,
 		headTransform,
 		headDecoration,
+		headLetterSpacing,
+		headLetterSpacingTablet,
+		headLetterSpacingMobile,
+		headLetterSpacingType,
 
 		prefixTopMargin,
 		prefixRightMargin,
@@ -207,6 +213,10 @@ const Settings = ( props ) => {
 		prefixMobileMarginUnit,
 		prefixTabletMarginUnit,
 		spacingPrefixLink,
+		prefixLetterSpacing,
+		prefixLetterSpacingTablet,
+		prefixLetterSpacingMobile,
+		prefixLetterSpacingType,
 
 		headTopMargin,
 		headRightMargin,
@@ -258,6 +268,10 @@ const Settings = ( props ) => {
 		subHeadMobileMarginUnit,
 		subHeadTabletMarginUnit,
 		spacingSubheadLink,
+		subHeadLetterSpacing,
+		subHeadLetterSpacingTablet,
+		subHeadLetterSpacingMobile,
+		subHeadLetterSpacingType,
 	} = attributes;
 
 	/*
@@ -1045,7 +1059,7 @@ const Settings = ( props ) => {
 									/>
 									<Range
 										label={ __(
-											'Size',
+											'Width',
 											'ultimate-addons-for-gutenberg'
 										) }
 										setAttributes={ setAttributes }
@@ -1053,14 +1067,35 @@ const Settings = ( props ) => {
 										onChange={ ( value ) =>
 											setAttributes( { iconSize: value } )
 										}
-										min={ 0 }
-										max={ 300 }
-										limitMin={ { 'px': 0, 'em': 0 } } // eslint-disable-line quote-props
-										limitMax={ { 'px': 500, 'em': 100 } } // eslint-disable-line quote-props
+										limitMin={ { 'px': 0, '%': 0, 'em': 0 } } // eslint-disable-line quote-props
+										limitMax={ { 'px': 500, '%': 100, 'em': 100 } } // eslint-disable-line quote-props
 										unit={ {
 											value: iconSizeType,
 											label: 'iconSizeType',
 										} }
+										units={ [
+											{
+												name: __(
+													'Pixel',
+													'ultimate-addons-for-gutenberg'
+												),
+												unitValue: 'px',
+											},
+											{
+												name: __(
+													'%',
+													'ultimate-addons-for-gutenberg'
+												),
+												unitValue: '%',
+											},
+											{
+												name: __(
+													'EM',
+													'ultimate-addons-for-gutenberg'
+												),
+												unitValue: 'em',
+											},
+										] }
 									/>
 								</>
 							) }
@@ -1096,24 +1131,31 @@ const Settings = ( props ) => {
 													desktop: {
 														value: imageWidth,
 														label: 'imageWidth',
+														unit: {
+															value: imageWidthUnit,
+															label: 'imageWidthUnit',
+														},
 													},
 													tablet: {
 														value: imageWidthTablet,
-														label:
-															'imageWidthTablet',
+														label: 'imageWidthTablet',
+														unit: {
+															value: imageWidthUnitTablet,
+															label: 'imageWidthUnitTablet',
+														},
+
 													},
 													mobile: {
 														value: imageWidthMobile,
-														label:
-															'imageWidthMobile',
+														label: 'imageWidthMobile',
+														unit: {
+															value: imageWidthUnitMobile,
+															label: 'imageWidthUnitMobile',
+														},
 													},
 												} }
 												min={ 0 }
-												max={ 500 }
-												unit={ {
-													value: imageWidthUnit,
-													label: 'imageWidthUnit',
-												} }
+												limitMax={ { 'px': 500, '%': 100, 'em': 100 } } // eslint-disable-line quote-props
 												units={ [
 													{
 														name: __(
@@ -1129,13 +1171,20 @@ const Settings = ( props ) => {
 														),
 														unitValue: '%',
 													},
+													{
+														name: __(
+															'EM',
+															'ultimate-addons-for-gutenberg'
+														),
+														unitValue: 'em',
+													},
 												] }
 												setAttributes={ setAttributes }
 											/>
 										) }
 										<Range
 											label={ __(
-												'Rounded Corners',
+												'Border Radius',
 												'ultimate-addons-for-gutenberg'
 											) }
 											setAttributes={ setAttributes }
@@ -1174,7 +1223,7 @@ const Settings = ( props ) => {
 							<SpacingControl
 								{ ...props }
 								label={ __(
-									'Margin',
+									'Padding',
 									'ultimate-addons-for-gutenberg'
 								) }
 								valueTop={ {
@@ -1323,6 +1372,22 @@ const Settings = ( props ) => {
 								decoration={ {
 									value: prefixDecoration,
 									label: 'prefixDecoration',
+								} }
+								letterSpacing={ {
+									value: prefixLetterSpacing,
+									label: 'prefixLetterSpacing',
+								} }
+								letterSpacingTablet={ {
+									value: prefixLetterSpacingTablet,
+									label: 'prefixLetterSpacingTablet',
+								} }
+								letterSpacingMobile={ {
+									value: prefixLetterSpacingMobile,
+									label: 'prefixLetterSpacingMobile',
+								} }
+								letterSpacingType={ {
+									value: prefixLetterSpacingType,
+									label: 'prefixLetterSpacingType',
 								} }
 							/>
 							<SpacingControl
@@ -1476,6 +1541,22 @@ const Settings = ( props ) => {
 							decoration={ {
 								value: headDecoration,
 								label: 'headDecoration',
+							} }
+							letterSpacing={ {
+								value: headLetterSpacing,
+								label: 'headLetterSpacing',
+							} }
+							letterSpacingTablet={ {
+								value: headLetterSpacingTablet,
+								label: 'headLetterSpacingTablet',
+							} }
+							letterSpacingMobile={ {
+								value: headLetterSpacingMobile,
+								label: 'headLetterSpacingMobile',
+							} }
+							letterSpacingType={ {
+								value: headLetterSpacingType,
+								label: 'headLetterSpacingType',
 							} }
 						/>
 						<SpacingControl
@@ -1783,6 +1864,22 @@ const Settings = ( props ) => {
 								decoration={ {
 									value: subHeadDecoration,
 									label: 'subHeadDecoration',
+								} }
+								letterSpacing={ {
+									value: subHeadLetterSpacing,
+									label: 'subHeadLetterSpacing',
+								} }
+								letterSpacingTablet={ {
+									value: subHeadLetterSpacingTablet,
+									label: 'subHeadLetterSpacingTablet',
+								} }
+								letterSpacingMobile={ {
+									value: subHeadLetterSpacingMobile,
+									label: 'subHeadLetterSpacingMobile',
+								} }
+								letterSpacingType={ {
+									value: subHeadLetterSpacingType,
+									label: 'subHeadLetterSpacingType',
 								} }
 							/>
 							<SpacingControl

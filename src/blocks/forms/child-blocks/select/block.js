@@ -17,6 +17,10 @@ registerBlockType( 'uagb/forms-select', {
 	parent: [ 'uagb/forms' ],
 	attributes,
 	edit,
-	example: {},
+	example: {
+		attributes: {
+			isPreview: true,
+		}
+	},
 	save,
 } );

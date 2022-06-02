@@ -1187,6 +1187,15 @@ const attributes = {
 			styleType: 'input-font-style'
 		},
 	},
+
+	displayLabels: {
+		type: 'boolean',
+		default: true,
+		UAGCopyPaste: {
+			styleType: 'display-labels'
+		},
+	},
+
 	isPreview: {
 		type: 'boolean',
 		default: false,

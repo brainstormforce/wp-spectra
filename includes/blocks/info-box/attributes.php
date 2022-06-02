@@ -127,6 +127,8 @@ return array(
 	'subHeadTransform'           => '',
 	'subHeadDecoration'          => '',
 	'imageWidthUnit'             => 'px',
+	'imageWidthUnitTablet'       => 'px',
+	'imageWidthUnitMobile'       => 'px',
 	'iconimgBorderRadiusUnit'    => 'px',
 	'imageWidthMobile'           => '',
 	'imageWidthTablet'           => '',
@@ -148,6 +150,10 @@ return array(
 	'headMarginLeftMobile'       => '',
 	'headMobileMarginUnit'       => 'px',
 	'headTabletMarginUnit'       => 'px',
+	'headLetterSpacing'          => '',
+	'headLetterSpacingTablet'    => '',
+	'headLetterSpacingMobile'    => '',
+	'headLetterSpacingType'      => 'px',
 
 
 	'seperatorMobileSpace'       => '',
@@ -181,6 +187,10 @@ return array(
 	'subHeadMarginLeftMobile'    => '',
 	'subHeadMobileMarginUnit'    => 'px',
 	'subHeadTabletMarginUnit'    => 'px',
+	'subHeadLetterSpacing'       => '',
+	'subHeadLetterSpacingTablet' => '',
+	'subHeadLetterSpacingMobile' => '',
+	'subHeadLetterSpacingType'   => 'px',
 
 	'prefixTabletSpace'          => '',
 	'prefixMobileSpace'          => '',
@@ -197,5 +207,13 @@ return array(
 	'prefixMarginLeftMobile'     => '',
 	'prefixMobileMarginUnit'     => 'px',
 	'prefixTabletMarginUnit'     => 'px',
+<<<<<<< HEAD
 	...$ctaBorderAttribute,
+=======
+	'prefixLetterSpacing'        => '',
+	'prefixLetterSpacingTablet'  => '',
+	'prefixLetterSpacingMobile'  => '',
+	'prefixLetterSpacingType'    => 'px',
+
+>>>>>>> c508a1bcfedbd9020e52569ec63c2dfff4b99690
 );

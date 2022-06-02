@@ -765,7 +765,7 @@ const Settings = ( props ) => {
 			/>
 			<ResponsiveSlider
 				label={ __(
-					'Spacing Between Labels & Input',
+					'Label & Input Gap',
 					'ultimate-addons-for-gutenberg'
 				) }
 				data={ {
@@ -805,13 +805,6 @@ const Settings = ( props ) => {
 					disableBottomSeparator={ true }
 				/>
 			)}
-			<AdvancedPopColorControl
-				label={ __( 'Active Color', 'ultimate-addons-for-gutenberg' ) }
-				colorValue={ fieldBorderFocusColor }
-				onColorChange={ ( value ) =>
-				setAttributes( { fieldBorderFocusColor: value } )
-				}
-			/>
 			<ResponsiveSlider
 				label={ __(
 					'Fields Space',

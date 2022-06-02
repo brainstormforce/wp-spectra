@@ -21,7 +21,11 @@ registerBlockType( 'uagb/forms-url', {
 	supports: {
 		anchor: true,
 	},
-	example: {},
+	example: {
+		attributes: {
+			isPreview: true,
+		}
+	},
 	save,
 	deprecated,
 } );

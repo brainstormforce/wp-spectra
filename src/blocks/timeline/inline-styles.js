@@ -140,6 +140,9 @@ function contentTimelineStyle( props ) {
 		headTopSpacing,
 		headTopSpacingTablet,
 		headTopSpacingMobile,
+
+		stack,
+		timelinAlignment,
 	} = props.attributes;
 
 	const respSelectors = 'left';
@@ -455,8 +458,10 @@ function contentTimelineStyle( props ) {
 			'margin-top': generateCSSUnit( authorSpaceTablet, 'px' ),
 		},
 		'.uagb-timeline__center-block .uagb-timeline__marker': {
-			'margin-left': 0,
-			'margin-right': 0,
+			'margin-left': ( stack === 'tablet' && timelinAlignment === 'center' ) ?
+			0 : generateCSSUnit( leftMargin + 3, marginUnit ),
+			'margin-right': ( stack === 'tablet' && timelinAlignment === 'center' ) ?
+			0 : generateCSSUnit( rightMargin, marginUnit ),
 		},
 		'.uagb-timeline__center-block .uagb-timeline__day-new.uagb-timeline__day-left': {
 			'margin-left': generateCSSUnit(
@@ -646,8 +651,10 @@ function contentTimelineStyle( props ) {
 			'margin-top': generateCSSUnit( authorSpaceMobile, 'px' ),
 		},
 		'.uagb-timeline__center-block .uagb-timeline__marker': {
-			'margin-left': 0,
-			'margin-right': 0,
+			'margin-left': ( stack === 'tablet' || stack === 'mobile' ) && ( timelinAlignment === 'center' ) ?
+			0 : generateCSSUnit( leftMargin + 3, marginUnit ),
+			'margin-right': ( stack === 'tablet' || stack === 'mobile' ) && ( timelinAlignment === 'center' ) ?
+			0 : generateCSSUnit( rightMargin, marginUnit ),
 		},
 		'.uagb-timeline__center-block .uagb-timeline__day-new.uagb-timeline__day-left': {
 			'margin-left': generateCSSUnit(

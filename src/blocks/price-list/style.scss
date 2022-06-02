@@ -25,6 +25,13 @@
 		-o-transition: all 0.2s;
 		transition: all 0.2s;
 
+		&.uagb-rm__image-position-right {
+
+			.uagb-rm__price {
+				text-align: left !important;
+			}
+		}
+
 		.uagb-rm__content {
 			position: relative;
 			display: table;
@@ -100,10 +107,12 @@
 			}
 		}
 
-		&.uagb-rm__align-right .uagb-rm-details {
-			display: flex;
-			flex-direction: column;
-			width: 100%;
+		&.uagb-rm__align-right {
+
+			& .uagb-rm__price {
+				display: table-cell;
+				text-align: left;
+			}
 		}
 
 		&.uagb-rm__image-position-left.uagb-rm__align-left .uagb-rm__price {

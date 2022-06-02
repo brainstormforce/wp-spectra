@@ -185,14 +185,14 @@
 	},
 	fieldSpacingTablet: {
 		type: 'number',
-		default: 0,
+		default: '',
 		UAGCopyPaste: {
 			styleType: 'field-bottom-margin'
 		},
 	},
 	fieldSpacingMobile: {
 		type: 'number',
-		default: 0,
+		default: '',
 		UAGCopyPaste: {
 			styleType: 'field-bottom-margin'
 		},
@@ -206,16 +206,16 @@
 	},
 	fieldLabelSpacingTablet: {
 		type: 'number',
-		default: 0,
+		default: '',
 		UAGCopyPaste: {
-			styleType: 'main-title-bottom-margin'
+			styleType: 'main-title-bottom-margin-tablet'
 		},
 	},
 	fieldLabelSpacingMobile: {
 		type: 'number',
-		default: 0,
+		default: '',
 		UAGCopyPaste: {
-			styleType: 'main-title-bottom-margin'
+			styleType: 'main-title-bottom-margin-mobile'
 		},
 	},
 	labelFontSize                 : {
