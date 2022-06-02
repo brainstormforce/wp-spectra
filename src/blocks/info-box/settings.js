@@ -817,11 +817,6 @@ const Settings = ( props ) => {
 				) }
 				initialOpen={ false }
 			>
-				<UAGPresets
-					setAttributes = { setAttributes }
-					presets = { buttonsPresets }
-					presetInputType = 'radioImage'
-				/>
 				<SelectControl
 					label={ __( 'Type', 'ultimate-addons-for-gutenberg' ) }
 					value={ ctaType }
@@ -859,6 +854,13 @@ const Settings = ( props ) => {
 						},
 					] }
 				/>
+				{ 'button' === ctaType &&
+					<UAGPresets
+						setAttributes = { setAttributes }
+						presets = { buttonsPresets }
+						presetInputType = 'radioImage'
+					/>
+				}
 				{ ( ctaType === 'text' || ctaType === 'button' ) && (
 					<>
 						<TextControl
