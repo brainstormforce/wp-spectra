@@ -4,8 +4,12 @@
 
 import generateCSS from '@Controls/generateCSS';
 import generateCSSUnit from '@Controls/generateCSSUnit';
+import { getFallbackNumber } from '@Controls/getAttributeFallback';
 
 function CtaStyle( props ) {
+
+	const blockName = props.name.replace( 'uagb/', '' );
+
 	const {
 		stack,
 		textAlign,
@@ -205,7 +209,7 @@ function CtaStyle( props ) {
 				titleLineHeightType
 			),
 			'color': titleColor,
-			'margin-bottom': generateCSSUnit( titleSpace, titleSpaceType ),
+			'margin-bottom': generateCSSUnit( getFallbackNumber( titleSpace, 'titleSpace', blockName ), titleSpaceType ),
 		},
 
 		// Description Style
@@ -221,7 +225,7 @@ function CtaStyle( props ) {
 				descLineHeightType
 			),
 			'color': descColor,
-			'margin-bottom': generateCSSUnit( descSpace, descSpaceType ),
+			'margin-bottom': generateCSSUnit( getFallbackNumber( descSpace, 'descSpace', blockName ), descSpaceType ),
 		},
 	};
 
@@ -307,11 +311,11 @@ function CtaStyle( props ) {
 
 	if( secondCtaIconPosition === 'before' ){
 		selectors[ '.uagb-cta__outer-wrap a.uagb-cta-second__button > svg' ] = {
-			'margin-right': generateCSSUnit( secondCtaIconSpace, 'px' ),
+			'margin-right': generateCSSUnit( getFallbackNumber( secondCtaIconSpace, 'secondCtaIconSpace', blockName ), 'px' ),
 		};
 	}else{
 		selectors[ '.uagb-cta__outer-wrap a.uagb-cta-second__button > svg' ] = {
-			'margin-left': generateCSSUnit( secondCtaIconSpace, 'px' ),
+			'margin-left': generateCSSUnit( getFallbackNumber( secondCtaIconSpace, 'secondCtaIconSpace', blockName ), 'px' ),
 		};
 	}
 
@@ -513,11 +517,11 @@ function CtaStyle( props ) {
 
 	if ( textAlign === 'left' && ctaPosition === 'right' ) {
 		selectors[ ' .uagb-cta__left-right-wrap .uagb-cta__content' ] = {
-			'margin-left': generateCSSUnit( ctaLeftSpace, ctaLeftSpaceType ),
+			'margin-left': generateCSSUnit( getFallbackNumber( ctaLeftSpace, 'ctaLeftSpace', blockName ), ctaLeftSpaceType ),
 			'margin-right': '0',
 		};
 		selectors[ ' > .uagb-cta__wrap' ] = {
-			'margin-left': generateCSSUnit( ctaLeftSpace, ctaLeftSpaceType ),
+			'margin-left': generateCSSUnit( getFallbackNumber( ctaLeftSpace, 'ctaLeftSpace', blockName ), ctaLeftSpaceType ),
 			'margin-right': '0',
 		};
 
@@ -542,11 +546,11 @@ function CtaStyle( props ) {
 
 	if ( textAlign === 'right' && ctaPosition === 'right' ) {
 		selectors[ ' .uagb-cta__left-right-wrap .uagb-cta__content' ] = {
-			'margin-right': generateCSSUnit( ctaRightSpace, ctaRightSpaceType ),
+			'margin-right': generateCSSUnit( getFallbackNumber( ctaRightSpace, 'ctaRightSpace', blockName ), ctaRightSpaceType ),
 			'margin-left': '0',
 		};
 		selectors[ ' > .uagb-cta__wrap' ] = {
-			'margin-right': generateCSSUnit( ctaRightSpace, ctaRightSpaceType ),
+			'margin-right': generateCSSUnit( getFallbackNumber( ctaRightSpace, 'ctaRightSpace', blockName ), ctaRightSpaceType ),
 			'margin-left': '0',
 		};
 
@@ -571,7 +575,7 @@ function CtaStyle( props ) {
 
 	if( ctaIconPosition === 'before' ){
 		selectors[ '.uagb-cta__outer-wrap a.uagb-cta__button-link-wrapper > svg' ] = {
-			'margin-right': generateCSSUnit( ctaIconSpace, 'px' ),
+			'margin-right': generateCSSUnit( getFallbackNumber( ctaIconSpace, 'ctaIconSpace', blockName ), 'px' ),
 		};
 		tabletSelectors[ '.uagb-cta__outer-wrap a.uagb-cta__button-link-wrapper > svg' ] = {
 			'margin-right': generateCSSUnit( ctaIconSpaceTablet, 'px' ),
@@ -581,7 +585,7 @@ function CtaStyle( props ) {
 		};
 	}else{
 		selectors[ '.uagb-cta__outer-wrap a.uagb-cta__button-link-wrapper > svg' ] = {
-			'margin-left': generateCSSUnit( ctaIconSpace, 'px' ),
+			'margin-left': generateCSSUnit( getFallbackNumber( ctaIconSpace, 'ctaIconSpace', blockName ), 'px' ),
 		};
 		tabletSelectors[ '.uagb-cta__outer-wrap a.uagb-cta__button-link-wrapper > svg' ] = {
 			'margin-left': generateCSSUnit( ctaIconSpaceTablet, 'px' ),
@@ -593,7 +597,7 @@ function CtaStyle( props ) {
 
 	if ( ctaPosition === 'right' && ( ctaType === 'text' || ctaType === 'button' ) ) {
 		selectors[ ' .uagb-cta__wrap' ] = {
-			'width': generateCSSUnit( contentWidth, contentWidthType ),
+			'width': generateCSSUnit( getFallbackNumber( contentWidth, 'contentWidth', blockName ), contentWidthType ),
 		};
 		selectors[ '.uagb-cta__outer-wrap > a' ] = {
 			'align-self': 'top' === buttonAlign ? 'flex-start' : 'center',
@@ -628,7 +632,7 @@ function CtaStyle( props ) {
 	if ( 'desktop' === stackBtn ) {
 		selectors[ ' .uagb-cta__buttons' ] = {
 			'flex-direction': 'column',
-			'row-gap': generateCSSUnit( gapBtn, 'px' )
+			'row-gap': generateCSSUnit( getFallbackNumber( gapBtn, 'gapBtn', blockName ), 'px' )
 		};
 		tabletSelectors[ ' .uagb-cta__buttons' ] = {
 			'flex-direction': 'column',
@@ -640,7 +644,7 @@ function CtaStyle( props ) {
 		};
 	} else if ( 'tablet' === stackBtn ) {
 		selectors[ ' .uagb-cta__buttons' ] = {
-			'column-gap': generateCSSUnit( gapBtn , 'px' ),
+			'column-gap': generateCSSUnit( getFallbackNumber( gapBtn, 'gapBtn', blockName ), 'px' ),
 			'align-items': 'center'
 		};
 		tabletSelectors[' .uagb-cta__buttons'] = {
@@ -654,7 +658,7 @@ function CtaStyle( props ) {
 
 	} else if ( 'mobile' === stackBtn ) {
 		selectors[ ' .uagb-cta__buttons' ] = {
-			'column-gap': generateCSSUnit( gapBtn , 'px' ),
+			'column-gap': generateCSSUnit( getFallbackNumber( gapBtn, 'gapBtn', blockName ), 'px' ),
 			'align-items': 'center'
 		};
 		tabletSelectors[ ' .uagb-cta__buttons' ] = {
@@ -667,7 +671,7 @@ function CtaStyle( props ) {
 		};
 	} else if ( 'none' === stackBtn ) {
 		selectors[ ' .uagb-cta__buttons' ] = {
-			'column-gap': generateCSSUnit( gapBtn , 'px' ),
+			'column-gap': generateCSSUnit( getFallbackNumber( gapBtn, 'gapBtn', blockName ), 'px' ),
 			'align-items': 'center',
 		};
 		tabletSelectors[ ' .uagb-cta__buttons' ] = {
@@ -755,7 +759,7 @@ function CtaStyle( props ) {
 			'align-items':  'top' === buttonAlign ? 'flex-start' : 'center'
 		};
 		selectors[ ' .uagb-cta__buttons' ] = {
-			'margin-left': generateCSSUnit( buttonRightSpace, buttonRightSpaceType )
+			'margin-left': generateCSSUnit( getFallbackNumber( buttonRightSpace, 'buttonRightSpace', blockName ), buttonRightSpaceType )
 		};
 		tabletSelectors[ ' .uagb-cta__buttons' ] = {
 			'margin-left': generateCSSUnit( buttonRightSpaceTablet, buttonRightSpaceType )

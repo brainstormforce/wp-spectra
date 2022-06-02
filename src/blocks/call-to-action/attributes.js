@@ -239,14 +239,12 @@ const attributes = {
 	},
 	titleSpaceTablet: {
 		type: 'number',
-		default: 10,
 		UAGCopyPaste: {
 			styleType: 'main-title-bottom-margin-tablet'
 		},
 	},
 	titleSpaceMobile: {
 		type: 'number',
-		default: 10,
 		UAGCopyPaste: {
 			styleType: 'main-title-bottom-margin-mobile'
 		},
@@ -267,14 +265,12 @@ const attributes = {
 	},
 	descSpaceTablet: {
 		type: 'number',
-		default: 10,
 		UAGCopyPaste: {
 			styleType: 'desc-bottom-margin-tablet'
 		},
 	},
 	descSpaceMobile: {
 		type: 'number',
-		default: 10,
 		UAGCopyPaste: {
 			styleType: 'desc-bottom-margin-mobile'
 		},
@@ -414,14 +410,12 @@ const attributes = {
 	},
 	contentWidthTablet: {
 		type: 'number',
-		default: 70,
 		UAGCopyPaste: {
 			styleType: 'desc-width'
 		},
 	},
 	contentWidthMobile: {
 		type: 'number',
-		default: 70,
 		UAGCopyPaste: {
 			styleType: 'desc-width'
 		},
@@ -514,10 +508,22 @@ const attributes = {
 	},
 	ctaLeftSpace: {
 		type: 'number',
+		default: 5,
 		UAGCopyPaste: {
 			styleType: 'btn-left-margin'
 		},
-		default: 5,
+	},
+	ctaLeftSpaceTablet: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'btn-left-margin-tablet'
+		},
+	},
+	ctaLeftSpaceMobile: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'btn-left-margin-mobile'
+		},
 	},
 	ctaLeftSpaceType: {
 		type: 'string',
@@ -531,6 +537,18 @@ const attributes = {
 		default: 5,
 		UAGCopyPaste: {
 			styleType: 'btn-right-margin'
+		},
+	},
+	ctaRightSpaceTablet: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'btn-right-margin-tablet'
+		},
+	},
+	ctaRightSpaceMobile: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'btn-right-margin-mobile'
 		},
 	},
 	ctaRightSpaceType: {
@@ -909,11 +927,9 @@ const attributes = {
 	},
 	gapBtnTablet: {
 		type: 'number',
-		default: 15
 	},
 	gapBtnMobile: {
 		type: 'number',
-		default: 15
 	},
 	textAlignTablet: {
 		type: 'string',
@@ -1126,14 +1142,12 @@ const attributes = {
 	},
 	buttonRightSpaceTablet: {
 		type: 'number',
-		default: 10,
 		UAGCopyPaste: {
 			styleType: 'main-button-bottom-margin-tablet'
 		},
 	},
 	buttonRightSpaceMobile: {
 		type: 'number',
-		default: 10,
 		UAGCopyPaste: {
 			styleType: 'main-button-bottom-margin-mobile'
 		},

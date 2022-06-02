@@ -10,6 +10,8 @@
 // Adds Fonts.
 UAGB_Block_JS::blocks_call_to_action_gfont( $attr );
 
+$block_name = 'call-to-action';
+
 $t_selectors = array();
 $m_selectors = array();
 
@@ -21,6 +23,9 @@ $btnPaddingTop    = isset( $attr['ctaTopPadding'] ) ? $attr['ctaTopPadding'] : $
 $btnPaddingBottom = isset( $attr['ctaBottomPadding'] ) ? $attr['ctaBottomPadding'] : $attr['ctaBtnVertPadding'];
 $btnPaddingLeft   = isset( $attr['ctaLeftPadding'] ) ? $attr['ctaLeftPadding'] : $attr['ctaBtnHrPadding'];
 $btnPaddingRight  = isset( $attr['ctaRightPadding'] ) ? $attr['ctaRightPadding'] : $attr['ctaBtnHrPadding'];
+
+$content_width_tablet = is_numeric( $attr['contentWidthTablet'] ) ? $attr['contentWidthTablet'] : UAGB_Block_Helper::get_fallback_number( $attr['contentWidth'], 'contentWidth', $block_name );
+$content_width_mobile = is_numeric( $attr['contentWidthMobile'] ) ? $attr['contentWidthMobile'] : $content_width_tablet;
 
 if ( 'left' === $attr['textAlign'] ) {
 	$alignment = 'flex-start';
@@ -50,17 +55,17 @@ $selectors = array(
 	' .uagb-cta__title'                                    => array(
 		'line-height'   => UAGB_Helper::get_css_value( $attr['titleLineHeight'], $attr['titleLineHeightType'] ),
 		'color'         => $attr['titleColor'],
-		'margin-bottom' => UAGB_Helper::get_css_value( $attr['titleSpace'], $attr['titleSpaceType'] ),
+		'margin-bottom' => UAGB_Helper::get_css_value( UAGB_Block_Helper::get_fallback_number( $attr['titleSpace'], 'titleSpace', $block_name ), $attr['titleSpaceType'] ),
 	),
 	' .uagb-cta__desc'                                     => array(
 		'color'         => $attr['descColor'],
-		'margin-bottom' => UAGB_Helper::get_css_value( $attr['descSpace'], $attr['descSpaceType'] ),
+		'margin-bottom' => UAGB_Helper::get_css_value( UAGB_Block_Helper::get_fallback_number( $attr['descSpace'], 'descSpace', $block_name ), $attr['descSpaceType'] ),
 	),
 	' .uagb-cta__align-button-after'                       => array(
-		'margin-left' => UAGB_Helper::get_css_value( $attr['ctaIconSpace'], 'px' ),
+		'margin-left' => UAGB_Helper::get_css_value( UAGB_Block_Helper::get_fallback_number( $attr['ctaIconSpace'], 'ctaIconSpace', $block_name ), 'px' ),
 	),
 	' .uagb-cta__align-button-before'                      => array(
-		'margin-right' => UAGB_Helper::get_css_value( $attr['ctaIconSpace'], 'px' ),
+		'margin-right' => UAGB_Helper::get_css_value( UAGB_Block_Helper::get_fallback_number( $attr['ctaIconSpace'], 'ctaIconSpace', $block_name ), 'px' ),
 	),
 	' .uagb-cta__button-wrapper .uagb-cta-with-svg'        => array(
 		'font-size'   => $svg_size,
@@ -115,7 +120,7 @@ $selectors['.wp-block-uagb-call-to-action a.uagb-cta-second__button:hover'] = ar
 
 if ( 'before' === $attr['secondCtaIconPosition'] ) {
 	$selectors['.wp-block-uagb-call-to-action a.uagb-cta-second__button > svg'] = array(
-		'margin-right' => UAGB_Helper::get_css_value( $attr['secondCtaIconSpace'], 'px' ),
+		'margin-right' => UAGB_Helper::get_css_value( UAGB_Block_Helper::get_fallback_number( $attr['secondCtaIconSpace'], 'secondCtaIconSpace', $block_name ), 'px' ),
 		'font-size'    => UAGB_Helper::get_css_value( $attr['secondCtaFontSize'], $attr['secondCtaFontSizeType'] ),
 		'width'        => UAGB_Helper::get_css_value( $attr['secondCtaFontSize'], $attr['secondCtaFontSizeType'] ),
 		'height'       => UAGB_Helper::get_css_value( $attr['secondCtaFontSize'], $attr['secondCtaFontSizeType'] ),
@@ -124,7 +129,7 @@ if ( 'before' === $attr['secondCtaIconPosition'] ) {
 	);
 } else {
 	$selectors['.wp-block-uagb-call-to-action a.uagb-cta-second__button > svg'] = array(
-		'margin-left' => UAGB_Helper::get_css_value( $attr['secondCtaIconSpace'], 'px' ),
+		'margin-left' => UAGB_Helper::get_css_value( UAGB_Block_Helper::get_fallback_number( $attr['secondCtaIconSpace'], 'secondCtaIconSpace', $block_name ), 'px' ),
 		'font-size'   => UAGB_Helper::get_css_value( $attr['secondCtaFontSize'], $attr['secondCtaFontSizeType'] ),
 		'width'       => UAGB_Helper::get_css_value( $attr['secondCtaFontSize'], $attr['secondCtaFontSizeType'] ),
 		'height'      => UAGB_Helper::get_css_value( $attr['secondCtaFontSize'], $attr['secondCtaFontSizeType'] ),
@@ -189,7 +194,7 @@ $selectors[' .uagb-cta__content-wrap'] = array(
 	'text-align' => $attr['textAlign'],
 );
 $selectors[' .uagb-cta__wrap']         = array(
-	'width'      => UAGB_Helper::get_css_value( $attr['contentWidth'], $attr['contentWidthType'] ),
+	'width'      => UAGB_Helper::get_css_value( UAGB_Block_Helper::get_fallback_number( $attr['contentWidth'], 'contentWidth', $block_name ), $attr['contentWidthType'] ),
 	'text-align' => $attr['textAlign'],
 );
 
@@ -207,11 +212,11 @@ $selectors['.wp-block-uagb-call-to-action'] = array(
 
 if ( 'left' === $attr['textAlign'] && 'right' === $attr['ctaPosition'] ) {
 	$selectors[' .uagb-cta__left-right-wrap .uagb-cta__content']   = array(
-		'margin-left'  => UAGB_Helper::get_css_value( $attr['ctaLeftSpace'], $attr['ctaLeftSpaceType'] ),
+		'margin-left'  => UAGB_Helper::get_css_value( UAGB_Block_Helper::get_fallback_number( $attr['ctaLeftSpace'], 'ctaLeftSpace', $block_name ), $attr['ctaLeftSpaceType'] ),
 		'margin-right' => '0',
 	);
 	$selectors[' > .uagb-cta__wrap']                               = array(
-		'margin-left'  => UAGB_Helper::get_css_value( $attr['ctaLeftSpace'], $attr['ctaLeftSpaceType'] ),
+		'margin-left'  => UAGB_Helper::get_css_value( UAGB_Block_Helper::get_fallback_number( $attr['ctaLeftSpace'], 'ctaLeftSpace', $block_name ), $attr['ctaLeftSpaceType'] ),
 		'margin-right' => '0',
 	);
 	$t_selectors[' .uagb-cta__left-right-wrap .uagb-cta__content'] = array(
@@ -234,11 +239,11 @@ if ( 'left' === $attr['textAlign'] && 'right' === $attr['ctaPosition'] ) {
 
 if ( 'right' === $attr['textAlign'] && 'right' === $attr['ctaPosition'] ) {
 	$selectors[' .uagb-cta__left-right-wrap .uagb-cta__content']   = array(
-		'margin-right' => UAGB_Helper::get_css_value( $attr['ctaRightSpace'], $attr['ctaRightSpaceType'] ),
+		'margin-right' => UAGB_Helper::get_css_value( UAGB_Block_Helper::get_fallback_number( $attr['ctaRightSpace'], 'ctaRightSpace', $block_name ), $attr['ctaRightSpaceType'] ),
 		'margin-left'  => '0',
 	);
 	$selectors[' > .uagb-cta__wrap']                               = array(
-		'margin-right' => UAGB_Helper::get_css_value( $attr['ctaRightSpace'], $attr['ctaRightSpaceType'] ),
+		'margin-right' => UAGB_Helper::get_css_value( UAGB_Block_Helper::get_fallback_number( $attr['ctaRightSpace'], 'ctaRightSpace', $block_name ), $attr['ctaRightSpaceType'] ),
 		'margin-left'  => '0',
 	);
 	$t_selectors[' .uagb-cta__left-right-wrap .uagb-cta__content'] = array(
@@ -366,7 +371,7 @@ if ( 'desktop' === $attr['stackBtn'] ) {
 
 	$selectors[' .uagb-cta__buttons']    = array(
 		'flex-direction' => 'column',
-		'row-gap'        => UAGB_Helper::get_css_value( $attr['gapBtn'], 'px' ),
+		'row-gap'        => UAGB_Helper::get_css_value( UAGB_Block_Helper::get_fallback_number( $attr['gapBtn'], 'gapBtn', $block_name ), 'px' ),
 	);
 	$t_selectors[' .uagb-cta__buttons '] = array(
 		'row-gap' => UAGB_Helper::get_css_value( $attr['gapBtnTablet'], 'px' ),
@@ -378,7 +383,7 @@ if ( 'desktop' === $attr['stackBtn'] ) {
 } elseif ( 'tablet' === $attr['stackBtn'] ) {
 
 	$selectors[' .uagb-cta__buttons ']  = array(
-		'column-gap' => UAGB_Helper::get_css_value( $attr['gapBtn'], 'px' ),
+		'column-gap' => UAGB_Helper::get_css_value( UAGB_Block_Helper::get_fallback_number( $attr['gapBtn'], 'gapBtn', $block_name ), 'px' ),
 	);
 	$t_selectors[' .uagb-cta__buttons'] = array(
 		'flex-direction' => 'column',
@@ -392,7 +397,7 @@ if ( 'desktop' === $attr['stackBtn'] ) {
 } elseif ( 'mobile' === $attr['stackBtn'] ) {
 
 	$selectors[' .uagb-cta__buttons ']  = array(
-		'column-gap' => UAGB_Helper::get_css_value( $attr['gapBtn'], 'px' ),
+		'column-gap' => UAGB_Helper::get_css_value( UAGB_Block_Helper::get_fallback_number( $attr['gapBtn'], 'gapBtn', $block_name ), 'px' ),
 	);
 	$t_selectors[' .uagb-cta__buttons'] = array(
 		'column-gap' => UAGB_Helper::get_css_value( $attr['gapBtnTablet'], 'px' ),
@@ -404,7 +409,7 @@ if ( 'desktop' === $attr['stackBtn'] ) {
 
 } elseif ( 'none' === $attr['stackBtn'] ) {
 	$selectors[' .uagb-cta__buttons']   = array(
-		'column-gap' => UAGB_Helper::get_css_value( $attr['gapBtn'], 'px' ),
+		'column-gap' => UAGB_Helper::get_css_value( UAGB_Block_Helper::get_fallback_number( $attr['gapBtn'], 'gapBtn', $block_name ), 'px' ),
 	);
 	$t_selectors[' .uagb-cta__buttons'] = array(
 		'column-gap' => UAGB_Helper::get_css_value( $attr['gapBtnTablet'], 'px' ),
@@ -415,7 +420,7 @@ if ( 'desktop' === $attr['stackBtn'] ) {
 }
 if ( 'before' === $attr['ctaIconPosition'] ) {
 	$selectors['.wp-block-uagb-call-to-action a.uagb-cta__button-link-wrapper > svg']   = array(
-		'margin-right' => UAGB_Helper::get_css_value( $attr['ctaIconSpace'], 'px' ),
+		'margin-right' => UAGB_Helper::get_css_value( UAGB_Block_Helper::get_fallback_number( $attr['ctaIconSpace'], 'ctaIconSpace', $block_name ), 'px' ),
 		'font-size'    => $svg_size,
 		'width'        => $svg_size,
 		'height'       => $svg_size,
@@ -430,7 +435,7 @@ if ( 'before' === $attr['ctaIconPosition'] ) {
 	);
 } else {
 	$selectors['.wp-block-uagb-call-to-action a.uagb-cta__button-link-wrapper > svg']   = array(
-		'margin-left' => UAGB_Helper::get_css_value( $attr['ctaIconSpace'], 'px' ),
+		'margin-left' => UAGB_Helper::get_css_value( UAGB_Block_Helper::get_fallback_number( $attr['ctaIconSpace'], 'ctaIconSpace', $block_name ), 'px' ),
 		'font-size'   => $svg_size,
 		'width'       => $svg_size,
 		'height'      => $svg_size,
@@ -451,16 +456,16 @@ if ( 'right' === $attr['ctaPosition'] && ( 'text' === $attr['ctaType'] || 'butto
 		'justify-content' => 'space-between',
 	);
 	$selectors[' .uagb-cta__content-right .uagb-cta__left-right-wrap .uagb-cta__content']        = array(
-		'width' => UAGB_Helper::get_css_value( $attr['contentWidth'], $attr['contentWidthType'] ),
+		'width' => UAGB_Helper::get_css_value( UAGB_Block_Helper::get_fallback_number( $attr['contentWidth'], 'contentWidth', $block_name ), $attr['contentWidthType'] ),
 	);
 	$selectors[' .uagb-cta__content-right .uagb-cta__left-right-wrap .uagb-cta__link-wrapper']   = array(
-		'width' => UAGB_Helper::get_css_value( ( 100 - $attr['contentWidth'] ), $attr['contentWidthType'] ),
+		'width' => UAGB_Helper::get_css_value( ( 100 - UAGB_Block_Helper::get_fallback_number( $attr['contentWidth'], 'contentWidth', $block_name ) ), $attr['contentWidthType'] ),
 	);
 	$t_selectors[' .uagb-cta__content-right .uagb-cta__left-right-wrap .uagb-cta__content']      = array(
 		'width' => UAGB_Helper::get_css_value( $attr['contentWidthTablet'], $attr['contentWidthType'] ),
 	);
 	$t_selectors[' .uagb-cta__content-right .uagb-cta__left-right-wrap .uagb-cta__link-wrapper'] = array(
-		'width' => UAGB_Helper::get_css_value( ( 100 - $attr['contentWidthTablet'] ), $attr['contentWidthType'] ),
+		'width' => UAGB_Helper::get_css_value( ( 100 - $content_width_tablet ), $attr['contentWidthType'] ),
 	);
 	$t_selectors[' .uagb-cta__wrap'] = array(
 		'width'      => UAGB_Helper::get_css_value( $attr['contentWidthTablet'], $attr['contentWidthType'] ),
@@ -470,7 +475,7 @@ if ( 'right' === $attr['ctaPosition'] && ( 'text' === $attr['ctaType'] || 'butto
 		'width' => UAGB_Helper::get_css_value( $attr['contentWidthMobile'], $attr['contentWidthType'] ),
 	);
 	$m_selectors[' .uagb-cta__content-right .uagb-cta__left-right-wrap .uagb-cta__link-wrapper'] = array(
-		'width' => UAGB_Helper::get_css_value( ( 100 - $attr['contentWidthMobile'] ), $attr['contentWidthType'] ),
+		'width' => UAGB_Helper::get_css_value( ( 100 - $content_width_mobile ), $attr['contentWidthType'] ),
 	);
 	$m_selectors[' .uagb-cta__wrap'] = array(
 		'width'      => UAGB_Helper::get_css_value( $attr['contentWidthMobile'], $attr['contentWidthType'] ),
@@ -581,7 +586,7 @@ if ( 'desktop' === $attr['stack'] ) {
 		'flex-direction' => 'row',
 	);
 	$selectors['.wp-block-uagb-call-to-action .uagb-cta__buttons']   = array(
-		'margin-left' => UAGB_Helper::get_css_value( $attr['buttonRightSpace'], $attr['buttonRightSpaceType'] ),
+		'margin-left' => UAGB_Helper::get_css_value( UAGB_Block_Helper::get_fallback_number( $attr['buttonRightSpace'], 'buttonRightSpace', $block_name ), $attr['buttonRightSpaceType'] ),
 	);
 	$t_selectors['.wp-block-uagb-call-to-action .uagb-cta__buttons'] = array(
 		'margin-left' => UAGB_Helper::get_css_value( $attr['buttonRightSpaceTablet'], $attr['buttonRightSpaceType'] ),
