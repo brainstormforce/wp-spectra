@@ -125,6 +125,7 @@ const UAGBFormsEdit = ( props ) => {
 	}, [] );
 
 	useEffect( () => {
+
 		const blockStyling = styling( props );
 
         addBlockEditorDynamicStyles( 'uagb-style-forms-' + props.clientId.substr( 0, 8 ), blockStyling );

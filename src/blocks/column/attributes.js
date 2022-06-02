@@ -3,7 +3,7 @@
  */
 import { getBorderAttributes } from '@Controls/generateAttributes';
 
-const borderAttributes = getBorderAttributes( '' );
+const borderAttributes = getBorderAttributes( 'column' );
 
 const attributes = {
 	block_id: {
@@ -333,33 +333,18 @@ const attributes = {
 	borderStyle: {
 		type: 'string',
 		default: 'none',
-		UAGCopyPaste: {
-			styleType: 'overall-border-style'
-		}
 	},
 	borderWidth: {
 		type: 'number',
-		UAGCopyPaste: {
-			styleType: 'overall-border-width'
-		}
 	},
 	borderRadius: {
 		type: 'number',
-		UAGCopyPaste: {
-			styleType: 'overall-border-radius'
-		}
 	},
 	borderColor: {
 		type: 'string',
-		UAGCopyPaste: {
-			styleType: 'overall-border-color'
-		}
 	},
 	borderHoverColor: {
 		type: 'string',
-		UAGCopyPaste: {
-			styleType: 'overall-border-hover-color'
-		}
 	},
 	overlayType: {
 		type: 'string',

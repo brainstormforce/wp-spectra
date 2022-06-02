@@ -7,7 +7,6 @@ import generateCSS from '@Controls/generateCSS'
 import hexToRgba from '@Controls/hexToRgba'
 import generateCSSUnit from '@Controls/generateCSSUnit'
 import maybeGetColorForVariable from '@Controls/maybeGetColorForVariable';
-import generateBorderCSS from '@Controls/generateBorderCSS';
 
 function styling( props ) {
 
@@ -18,7 +17,6 @@ function styling( props ) {
 		backgroundOpacity,
 		backgroundColor,
 		backgroundVideoOpacity,
-		borderHoverColor,
 		contentWidth,
 		width,
 		widthType,
@@ -64,12 +62,9 @@ function styling( props ) {
 		boxShadowBlur,
 		boxShadowSpread,
 		boxShadowPosition,
-		gradientValue
+		gradientValue,
+		columnsBorderHColor
 	} = props.attributes
-
-	const borderCSS = generateBorderCSS( props.attributes, '', '' );
-	const borderCSSTablet = generateBorderCSS( props.attributes,'', 'tablet' );
-	const borderCSSMobile = generateBorderCSS( props.attributes,'', 'mobile' );
 
 	let max_width = '100%'
 
@@ -122,7 +117,7 @@ function styling( props ) {
 			'box-shadow': generateCSSUnit( boxShadowHOffset, 'px' ) + ' ' + generateCSSUnit( boxShadowVOffset, 'px' ) + ' ' + generateCSSUnit( boxShadowBlur, 'px' ) + ' ' + generateCSSUnit( boxShadowSpread, 'px' ) + ' ' + boxShadowColor + ' ' + boxShadowPositionCSS
 		},
 		'.uagb-columns__wrap:hover': {
-			'border-color': borderHoverColor,
+			'border-color': columnsBorderHColor,
 		}
 	}
 

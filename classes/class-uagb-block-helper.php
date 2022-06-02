@@ -33,9 +33,16 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 			$t_selectors = array();
 			$selectors   = array();
 
-			$borderCSS       = self::uag_generate_border_css( $attr, '' );
-			$borderCSSTablet = self::uag_generate_border_css( $attr, '', 'tablet' );
-			$borderCSSMobile = self::uag_generate_border_css( $attr, '', 'mobile' );
+			$borderCSS       = UAGB_Block_Helper::uag_generate_border_css( $attr, 'btn' );
+			$borderCSS       = UAGB_Block_Helper::uag_generate_deprecated_border_css(
+				$borderCSS,
+				( isset( $attr['borderWidth'] ) ? $attr['borderWidth'] : '' ),
+				( isset( $attr['borderRadius'] ) ? $attr['borderRadius'] : '' ),
+				( isset( $attr['borderColor'] ) ? $attr['borderColor'] : '' ),
+				( isset( $attr['borderStyle'] ) ? $attr['borderStyle'] : '' )
+			);
+			$borderCSSTablet = UAGB_Block_Helper::uag_generate_border_css( $attr, 'btn', 'tablet' );
+			$borderCSSMobile = UAGB_Block_Helper::uag_generate_border_css( $attr, 'btn', 'mobile' );
 
 			$top_padding    = isset( $attr['topPadding'] ) ? $attr['topPadding'] : $attr['vPadding'];
 			$bottom_padding = isset( $attr['bottomPadding'] ) ? $attr['bottomPadding'] : $attr['vPadding'];
@@ -111,14 +118,12 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					$box_shadow_position_css,
 				);
 			}
-			if ( 'none' !== $attr['borderStyle'] ) {
-				$selectors[ $wrapper ]            = $borderCSS;
-				$m_selectors[ $wrapper ]          = $borderCSSMobile;
-				$t_selectors[ $wrapper ]          = $borderCSSTablet;
-				$selectors[ $wrapper . ':hover' ] = array(
-					'border-color' => $attr['borderHColor'],
-				);
-			}
+			$selectors[ $wrapper ]            = $borderCSS;
+			$m_selectors[ $wrapper ]          = $borderCSSMobile;
+			$t_selectors[ $wrapper ]          = $borderCSSTablet;
+			$selectors[ $wrapper . ':hover' ] = array(
+				'border-color' => isset( $attr['borderHoverColor'] ) && !empty( $attr['borderHoverColor']) ? $attr['borderHoverColor'] : $attr['btnBorderHColor'],
+			);
 			$selectors[ $wrapper . ' .uagb-button__link' ]                                  = array(
 				'font-family'     => $attr['fontFamily'],
 				'font-weight'     => $attr['fontWeight'],

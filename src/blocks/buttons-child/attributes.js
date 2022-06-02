@@ -3,7 +3,7 @@
  */
 import { getBorderAttributes } from '@Controls/generateAttributes';
 
-const borderAttributes = getBorderAttributes( '' );
+const borderAttributes = getBorderAttributes( 'btn' );
 
 const attributes = {
 	inheritFromTheme: {
@@ -483,36 +483,21 @@ const attributes = {
 	borderWidth: {
 		type: 'number',
 		default: '',
-		UAGCopyPaste: {
-			styleType: 'btn-border-width'
-		}
 	},
 	borderRadius: {
 		type: 'number',
-		UAGCopyPaste: {
-			styleType: 'btn-border-radius'
-		}
 	},
 	borderStyle: {
 		type: 'string',
 		default: 'none',
-		UAGCopyPaste: {
-			styleType: 'btn-border-style'
-		}
 	},
 	borderColor: {
 		type: 'string',
-		UAGCopyPaste: {
-			styleType: 'btn-border-color'
-		},
 		default: '#000',
 	},
 	borderHColor: {
 		type: 'string',
 		default: '',
-		UAGCopyPaste: {
-			styleType: 'btn-border-hover-color'
-		}
 	},
 	...borderAttributes
 };

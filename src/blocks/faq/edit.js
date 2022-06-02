@@ -7,6 +7,7 @@ import React, { useEffect, lazy, Suspense } from 'react';
 import lazyLoader from '@Controls/lazy-loader';
 import { useDeviceType } from '@Controls/getPreviewType';
 import addBlockEditorDynamicStyles from '@Controls/addBlockEditorDynamicStyles';
+import {migrateBorderAttributes} from '@Controls/generateAttributes';
 
 const Settings = lazy( () =>
 	import( /* webpackChunkName: "chunks/faq/settings" */ './settings' )
@@ -211,6 +212,28 @@ const FaqComponent = ( props ) => {
 			} );
 
 			prevState = props.schemaJsonData;
+		}
+		const {borderStyle,borderWidth,borderRadius,borderColor,borderHoverColor} = props.attributes
+		// border migration
+		if( borderWidth || borderRadius || borderColor || borderHoverColor || borderStyle ){
+			const migrationAttributes = migrateBorderAttributes( 'overall', {
+				label: 'borderWidth',
+				value: borderWidth,
+			}, {
+				label: 'borderRadius',
+				value: borderRadius
+			}, {
+				label: 'borderColor',
+				value: borderColor
+			}, {
+				label: 'borderHoverColor',
+				value: borderHoverColor
+			},{
+				label: 'borderStyle',
+				value: borderStyle
+			}
+			);
+			props.setAttributes( migrationAttributes )
 		}
 	}, [ props ] );
 

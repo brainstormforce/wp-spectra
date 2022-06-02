@@ -970,7 +970,7 @@ const Settings = ( props ) => {
 				<hr className="uagb-editor__separator" />
 				<ResponsiveBorder
 					setAttributes={ setAttributes }
-					prefix={''}
+					prefix={ 'overall' }
 					disabledBorderTitle= {false}
 					attributes={ attributes }
 					deviceType={deviceType}

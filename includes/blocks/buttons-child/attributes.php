@@ -6,9 +6,9 @@
  *
  * @package uagb
  */
-$borderAttribute = UAGB_Block_Helper::uag_generate_border_attribute( '' );
+$borderAttribute = UAGB_Block_Helper::uag_generate_border_attribute( 'btn' );
 
-return array(
+return array_merge(array(
 	'inheritFromTheme'       => false,
 	'block_id'               => '',
 	'label'                  => '#Click Here',
@@ -85,5 +85,4 @@ return array(
 	'gradientValue'          => '',
 	'backgroundOpacity'      => '',
 	'backgroundHoverOpacity' => '',
-	$borderAttribute
-);
+	), $borderAttribute );

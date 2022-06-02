@@ -128,7 +128,7 @@ const UAGBContainer = ( props ) => {
 
 		// border
 		if( borderWidth || borderRadius || borderColor || borderHColor || borderStyle ){
-			const migrationAttributes = migrateBorderAttributes( 'input', {
+			const migrationAttributes = migrateBorderAttributes( 'container', {
 				label: 'borderWidth',
 				value: borderWidth,
 			}, {

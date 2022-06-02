@@ -7,6 +7,7 @@ import generateCSSUnit from '@Controls/generateCSSUnit';
 import generateBackgroundCSS from '@Controls/generateBackgroundCSS';
 import hexToRgba from '@Controls/hexToRgba';
 import maybeGetColorForVariable from '@Controls/maybeGetColorForVariable';
+import generateBorderCSS from '@Controls/generateBorderCSS';
 
 function styling( props ) {
 	const { attributes } = props;
@@ -53,11 +54,7 @@ function styling( props ) {
 		backgroundSizeTablet,
 		backgroundSizeMobile,
 		gradientValue,
-		borderStyle,
-		borderWidth,
-		borderRadius,
-		borderColor,
-		borderHoverColor,
+		containerBorderHColor,
 		boxShadowColor,
 		boxShadowHOffset,
 		boxShadowVOffset,
@@ -127,6 +124,9 @@ function styling( props ) {
 		linkHoverColor,
 	} = attributes;
 
+	const borderCSS = generateBorderCSS( props.attributes, 'container' );
+	const borderCSSTablet = generateBorderCSS( props.attributes, 'container', 'tablet' );
+	const borderCSSMobile = generateBorderCSS( props.attributes, 'container', 'mobile' );
 
 	const containerFullWidth = '100vw';
 
@@ -217,21 +217,18 @@ function styling( props ) {
 		'margin-bottom': generateCSSUnit( bottomMarginDesktop, marginType ),
 		'margin-left': generateCSSUnit( leftMarginDesktop, marginType ),
 		'margin-right': generateCSSUnit( rightMarginDesktop, marginType ),
-		'border-style': borderStyle,
-		'border-color': borderColor,
-		'border-radius': generateCSSUnit( borderRadius, 'px' ),
-		'border-width': generateCSSUnit( borderWidth, 'px' ),
 		...containerBackgroundCSSDesktop,
 		'box-shadow':
 		generateCSSUnit( boxShadowHOffset, 'px' ) + ' ' + generateCSSUnit( boxShadowVOffset, 'px' ) +	' ' +
 		generateCSSUnit( boxShadowBlur, 'px' ) + ' ' +	generateCSSUnit( boxShadowSpread, 'px' ) + ' ' +
 		boxShadowColor + ' ' +	boxShadowPositionCSS,
 		'min-height' : generateCSSUnit( minHeightDesktop, minHeightType ),
+		...borderCSS
 	}
 
 	selectors['.wp-block'] = containerCSS;
 	selectors['.wp-block:hover'] = {
-		'border-color': borderHoverColor,
+		'border-color': containerBorderHColor,
 	};
 
 	selectors[' > .wp-block-uagb-container > .uagb-container-inner-blocks-wrap > .block-editor-inner-blocks > .block-editor-block-list__layout'] = {
@@ -328,7 +325,8 @@ function styling( props ) {
 			'margin-left': generateCSSUnit( leftMarginTablet, marginType ),
 			'margin-right': generateCSSUnit( rightMarginTablet, marginType ),
 			'min-height' : generateCSSUnit( minHeightTablet, minHeightType ),
-			...containerBackgroundCSSTablet
+			...containerBackgroundCSSTablet,
+			...borderCSSTablet
 		},
 		' > .wp-block-uagb-container > .uagb-container-inner-blocks-wrap > .block-editor-inner-blocks > .block-editor-block-list__layout' : {
 			'flex-direction' : directionTablet,
@@ -385,7 +383,8 @@ function styling( props ) {
 			'margin-left': generateCSSUnit( leftMarginMobile, marginType ),
 			'margin-right': generateCSSUnit( rightMarginMobile, marginType ),
 			'min-height' : generateCSSUnit( minHeightMobile, minHeightType ),
-			...containerBackgroundCSSMobile
+			...containerBackgroundCSSMobile,
+			...borderCSSMobile
 		},
 		' > .wp-block-uagb-container > .uagb-container-inner-blocks-wrap > .block-editor-inner-blocks > .block-editor-block-list__layout' : {
 			'flex-direction' : directionMobile,

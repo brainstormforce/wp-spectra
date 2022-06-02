@@ -1,6 +1,6 @@
 import { getBorderAttributes } from '@Controls/generateAttributes';
 
-const inputBorderAttributes = getBorderAttributes( 'input' )
+const inputBorderAttributes = getBorderAttributes( 'container' )
 
 const attributes = {
 	block_id: {
@@ -311,34 +311,19 @@ const attributes = {
 	borderStyle: {
 		type: 'string',
 		default: 'none',
-		UAGCopyPaste: {
-			styleType: 'overall-border-style'
-		},
 	},
 	borderWidth: {
 		type: 'number',
 		default: 1,
-		UAGCopyPaste: {
-			styleType: 'overall-border-width'
-		},
 	},
 	borderRadius: {
 		type: 'number',
-		UAGCopyPaste: {
-			styleType: 'overall-border-radius'
-		},
 	},
 	borderColor: {
 		type: 'string',
-		UAGCopyPaste: {
-			styleType: 'overall-border-color'
-		},
 	},
 	borderHoverColor: {
 		type: 'string',
-		UAGCopyPaste: {
-			styleType: 'overall-border-hover-color'
-		},
 	},
 	boxShadowColor: {
 		type: 'string',

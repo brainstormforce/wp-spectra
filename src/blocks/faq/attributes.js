@@ -6,7 +6,7 @@ const borderDefault = {
 	borderColor: '',
 	borderHoverColor: '',
 }
-const borderAttributes = getBorderAttributes( '', borderDefault );
+const borderAttributes = getBorderAttributes( 'overall', borderDefault );
 
 const attributes = {
 	block_id: {
@@ -168,37 +168,22 @@ const attributes = {
 	borderStyle: {
 		type: 'string',
 		default: 'solid',
-		UAGCopyPaste: {
-			styleType: 'faq-border-style'
-		},
 	},
 	borderWidth: {
 		type: 'number',
 		default: 1,
-		UAGCopyPaste: {
-			styleType: 'faq-border-width'
-		},
 	},
 	borderRadius: {
 		type: 'number',
 		default: 2,
-		UAGCopyPaste: {
-			styleType: 'faq-border-radius'
-		},
 	},
 	borderColor: {
 		type: 'string',
 		default: '',
-		UAGCopyPaste: {
-			styleType: 'faq-border-color'
-		},
 	},
 	borderHoverColor: {
 		type: 'string',
 		default: '',
-		UAGCopyPaste: {
-			styleType: 'faq-border-hover-color'
-		},
 	},
 	questionTextColor: {
 		type: 'string',

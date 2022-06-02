@@ -29,7 +29,7 @@ function styling( props ) {
 		paddingUnit,
 		mobilePaddingUnit,
 		tabletPaddingUnit,
-		borderHColor,
+		btnBorderHColor,
 		color,
 		background,
 		hColor,
@@ -87,9 +87,9 @@ function styling( props ) {
 	if ( 'outset' === boxShadowPosition ) {
 		boxShadowPositionCSS = '';
 	}
-	const borderCSS = generateBorderCSS( props.attributes, '' )
-	const borderCSSTablet = generateBorderCSS( props.attributes, '', 'tablet' )
-	const borderCSSMobile = generateBorderCSS( props.attributes, '', 'mobile' )
+	const borderCSS = generateBorderCSS( props.attributes, 'btn' )
+	const borderCSSTablet = generateBorderCSS( props.attributes, 'btn', 'tablet' )
+	const borderCSSMobile = generateBorderCSS( props.attributes, 'btn', 'mobile' )
 
 	selectors = {
 		'.uagb-buttons__outer-wrap .uagb-button__wrapper .wp-block-button__link.uagb-buttons-repeater': {
@@ -125,8 +125,8 @@ function styling( props ) {
 		}
 	};
 	selectors[' .wp-block-button__link.uagb-buttons-repeater'] = borderCSS;
-	selectors[ ' .wp-block-button__link.uagb-buttons-repeater:hover' ] = {
-		'border-color': borderHColor,
+	selectors[' .wp-block-button__link.uagb-buttons-repeater:hover'] = {
+		'border-color': btnBorderHColor,
 	};
 
 	mobileSelectors[ '.uagb-buttons__outer-wrap .wp-block-button__link.uagb-buttons-repeater' ] = {

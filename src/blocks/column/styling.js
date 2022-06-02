@@ -51,12 +51,13 @@ function styling( props ) {
 		desktopMarginType,
 		mobilePaddingType,
 		tabletPaddingType,
-		desktopPaddingType
+		desktopPaddingType,
+		columnBorderHColor
 	} = props.attributes;
 
-	const borderCSS = generateBorderCSS( props.attributes, '', '' );
-	const borderCSSTablet = generateBorderCSS( props.attributes,'', 'tablet' );
-	const borderCSSMobile = generateBorderCSS( props.attributes,'', 'mobile' );
+	const borderCSS = generateBorderCSS( props.attributes, 'column', '' );
+	const borderCSSTablet = generateBorderCSS( props.attributes,'column', 'tablet' );
+	const borderCSSMobile = generateBorderCSS( props.attributes,'column', 'mobile' );
 
 	const position = backgroundPosition.replace( '-', ' ' );
 	let tabletSelectors = {};
@@ -88,6 +89,9 @@ function styling( props ) {
 		':before': inlineStyles( props ),
 		':after': inlineStyles( props ),
 		'': style,
+	};
+	selectors[ '.block-editor-block-list__block:hover' ] = {
+		'border-color': columnBorderHColor,
 	};
 
 	tabletSelectors = {

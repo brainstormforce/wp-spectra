@@ -33,9 +33,17 @@ $container_bg_css_desktop = UAGB_Block_Helper::uag_get_background_obj( $bg_obj_d
 
 $video_bg_css = UAGB_Block_Helper::uag_get_background_obj( $bg_obj_desktop );
 
-$borderCSS       = UAGB_Block_Helper::uag_generate_border_css( $attr, '' );
-$borderCSSTablet = UAGB_Block_Helper::uag_generate_border_css( $attr, '', 'tablet' );
-$borderCSSMobile = UAGB_Block_Helper::uag_generate_border_css( $attr, '', 'mobile' );
+
+$borderCSS       = UAGB_Block_Helper::uag_generate_border_css( $attr, 'container' );
+$borderCSS       = UAGB_Block_Helper::uag_generate_deprecated_border_css(
+	$borderCSS,
+	( isset( $attr['borderWidth'] ) ? $attr['borderWidth'] : '' ),
+	( isset( $attr['borderRadius'] ) ? $attr['borderRadius'] : '' ),
+	( isset( $attr['borderColor'] ) ? $attr['borderColor'] : '' ),
+	( isset( $attr['borderStyle'] ) ? $attr['borderStyle'] : '' )
+);
+$borderCSSTablet = UAGB_Block_Helper::uag_generate_border_css( $attr, 'container', 'tablet' );
+$borderCSSMobile = UAGB_Block_Helper::uag_generate_border_css( $attr, 'container', 'mobile' );
 
 // Desktop.
 $left_padding_desktop   = ! empty( $attr['leftPaddingDesktop'] ) ? $attr['leftPaddingDesktop'] : 0;
@@ -105,9 +113,9 @@ $container_css                  = array(
 	'margin-bottom'   => UAGB_Helper::get_css_value( $bottom_margin_desktop, $attr['marginType'] ),
 	'margin-left'     => UAGB_Helper::get_css_value( $left_margin_desktop, $attr['marginType'] ),
 	'margin-right'    => UAGB_Helper::get_css_value( $right_margin_desktop, $attr['marginType'] ),
-	$borderCSS
+
 );
-$container_css                  = array_merge( $container_css, $container_bg_css_desktop );
+$container_css                  = array_merge( $container_css, $container_bg_css_desktop, $borderCSS );
 $background_video_opacity_value = ( isset( $attr['backgroundVideoOpacity'] ) && 'none' !== $attr['overlayType'] && ( ( 'color' === $attr['overlayType'] && ! empty( $attr['backgroundVideoColor'] ) ) || ( 'gradient' === $attr['overlayType'] && ! empty( $attr['gradientValue'] ) ) ) ) ? 1 - $attr['backgroundVideoOpacity'] : 1;
 
 $selectors = array(

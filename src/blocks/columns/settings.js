@@ -957,7 +957,7 @@ const Settings = ( props ) => {
 			>
 				<ResponsiveBorder
 					setAttributes={ setAttributes }
-					prefix={''}
+					prefix={ 'columns' }
 					attributes={ attributes }
 					deviceType={deviceType}
 					disableBottomSeparator={ true }

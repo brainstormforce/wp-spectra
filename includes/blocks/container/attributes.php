@@ -7,7 +7,7 @@
  * @package uagb
  */
 
-$borderAttribute = UAGB_Block_Helper::uag_generate_border_attribute( '' );
+$borderAttribute = UAGB_Block_Helper::uag_generate_border_attribute( 'container' );
 
 return array(
 	'block_id'                       => '',

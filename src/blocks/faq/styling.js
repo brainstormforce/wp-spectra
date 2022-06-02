@@ -98,9 +98,9 @@ function styling( props ) {
 	} = props.attributes;
 
 
-	const borderCSS = generateBorderCSS( props.attributes, 'field', '' );
-	const borderCSSTablet = generateBorderCSS( props.attributes,'field', 'tablet' );
-	const borderCSSMobile = generateBorderCSS( props.attributes,'field', 'mobile' );
+	const borderCSS = generateBorderCSS( props.attributes, 'overall', '' );
+	const borderCSSTablet = generateBorderCSS( props.attributes,'overall', 'tablet' );
+	const borderCSSMobile = generateBorderCSS( props.attributes,'overall', 'mobile' );
 
 	let selectors = {};
 	let tabletSelectors = {};
@@ -248,6 +248,9 @@ function styling( props ) {
 				questionPaddingTypeTablet
 			),
 		},
+		' .uagb-faq-item': {
+			...borderCSSTablet
+		},
 		' .uagb-faq-content': {
 			'padding-top': generateCSSUnit(
 				answerTopPaddingTablet,
@@ -312,6 +315,9 @@ function styling( props ) {
 	};
 
 	mobileSelectors = {
+		' .uagb-faq-item': {
+			...borderCSSMobile
+		},
 		'.uagb-faq-icon-row .uagb-faq-item .uagb-faq-icon-wrap': {
 			'margin-right': generateCSSUnit( gapBtwIconQUestionMobile, 'px' ),
 		},
