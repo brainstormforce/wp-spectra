@@ -150,7 +150,6 @@ function styling( props ) {
 		},
 		' .uagb-faq-item.uagb-faq-item-active .uagb-question': {
 			'color': questionTextActiveColor,
-			'background-color': questionTextActiveBgColor,
 		},
 		' .uagb-faq-item:hover .uagb-question': {
 			'color': questionTextActiveColor,

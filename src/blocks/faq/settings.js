@@ -637,6 +637,16 @@ const Settings = ( props ) => {
 								setAttributes( { questionTextColor: value } )
 							}
 						/>
+						<AdvancedPopColorControl
+							label={ __(
+								'Background Color',
+								'ultimate-addons-for-gutenberg'
+							) }
+							colorValue={ questionTextBgColor }
+							onColorChange={ ( value ) =>
+								setAttributes( { questionTextBgColor: value } )
+							}
+						/>
 					</>
 				)}
 				<SpacingControl
