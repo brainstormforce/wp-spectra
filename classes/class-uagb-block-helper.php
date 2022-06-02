@@ -1125,27 +1125,32 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 		 * @param string $block_name  Name of the block to retrieve defaults.
 		 * @return array              All default attributes for the specified block.
 		 */
-		public static function get_block_default_attributes( $block_name ) {
+		private static function get_block_default_attributes( $block_name ) {
 			return require UAGB_DIR . 'includes/blocks/' . $block_name . '/attributes.php';
 		}
 
 		/**
 		 * Return the Current Attribute or the Default Attribute.
 		 *
-		 * @param string $key      Name of the attribute.
-		 * @param array  $attr     The current attributes of the block.
-		 * @param array  $default  The default attributes of the block.
+		 * @param array  $currentValue  The current variable / attribute that is altered by settings.
+		 * @param string $key           The key of the default attribute for that setting.
+		 * @param string $blockName     The name of the block.
 		 */
-		public static function get_attribute_fallback( $key, $attr, $default ) {
-			return isset( $attr[ $key ] ) ? $attr[ $key ] : $default[ $key ];
+		public static function get_attribute_fallback( $currentValue, $key, $blockName ) {
+			$default = self::get_block_default_attributes( $block_name );
+			return isset( $currentValue ) ? $currentValue : $default[ $key ];
 		}
 
 		/**
-		 * Return the Current Attribute or the Default Attribute for Numbers.
-		 * In PHP, this is used in places where a numeric variable is passed in place of the first attribute.
+		 * Return the Current Attribute or the Default Attribute for Numeric Data.
+		 *
+		 * @param array  $currentValue  The current variable / attribute that is altered by settings.
+		 * @param string $key           The key of the default attribute for that setting.
+		 * @param string $blockName     The name of the block.
 		 */
-		public static function get_fallback_number( $attr, $default ) {
-			return is_numeric( $attr ) ? $attr : $default;
+		public static function get_fallback_number( $currentValue, $key, $blockName ) {
+			$default = self::get_block_default_attributes( $block_name );
+			return is_numeric( $currentValue ) ? $currentValue : $default[ $key ];
 		}
 	}
 }
