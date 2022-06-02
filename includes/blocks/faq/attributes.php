@@ -36,6 +36,8 @@ return array(
 	'borderHoverColor'             => '',
 	'questionTextColor'            => '',
 	'questionTextActiveColor'      => '',
+	'questionTextBgColor'            => '',
+	'questionTextActiveBgColor'      => '',
 	'questionPaddingTypeDesktop'   => 'px',
 	'questionPaddingTypeTablet'    => 'px',
 	'questionPaddingTypeMobile'    => 'px',

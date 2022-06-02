@@ -202,6 +202,18 @@ const attributes = {
 			styleType: 'main-title-hover-color'
 		},
 	},
+	questionTextBgColor: {
+		type: 'string',
+		UAGCopyPaste: {
+			styleType: 'main-title-bg-color'
+		},
+	},
+	questionTextActiveBgColor: {
+		type: 'string',
+		UAGCopyPaste: {
+			styleType: 'main-title-hover-bg-color'
+		},
+	},
 	questionPaddingTypeDesktop: {
 		type: 'string',
 		UAGCopyPaste: {
