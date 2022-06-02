@@ -1,3 +1,19 @@
+import { getBorderAttributes } from '@Controls/generateAttributes';
+const borderDefault = {
+	borderStyle: 'solid',
+	borderTopWidth: 1,
+	borderRightWidth: 1,
+	borderBottomWidth: 1,
+	borderLeftWidth: 1,
+	borderTopRadius: 2,
+	borderRightRadius: 2,
+	borderBottomRadius: 2,
+	borderLeftRadius: 2,
+	borderColor: '',
+	borderHoverColor: '',
+}
+const borderAttributes = getBorderAttributes( 'overall', borderDefault );
+
 const attributes = {
 	block_id: {
 		type: 'string',
@@ -158,37 +174,22 @@ const attributes = {
 	borderStyle: {
 		type: 'string',
 		default: 'solid',
-		UAGCopyPaste: {
-			styleType: 'faq-border-style'
-		},
 	},
 	borderWidth: {
 		type: 'number',
 		default: 1,
-		UAGCopyPaste: {
-			styleType: 'faq-border-width'
-		},
 	},
 	borderRadius: {
 		type: 'number',
 		default: 2,
-		UAGCopyPaste: {
-			styleType: 'faq-border-radius'
-		},
 	},
 	borderColor: {
 		type: 'string',
 		default: '',
-		UAGCopyPaste: {
-			styleType: 'faq-border-color'
-		},
 	},
 	borderHoverColor: {
 		type: 'string',
 		default: '',
-		UAGCopyPaste: {
-			styleType: 'faq-border-hover-color'
-		},
 	},
 	questionTextColor: {
 		type: 'string',
@@ -754,6 +755,7 @@ const attributes = {
 	isPreview: {
 		type: 'boolean',
 		default: false,
-	}
+	},
+	...borderAttributes
 };
 export default attributes;

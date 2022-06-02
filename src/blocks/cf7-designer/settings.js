@@ -3,7 +3,7 @@ import { __ } from '@wordpress/i18n';
 import lazyLoader from '@Controls/lazy-loader';
 import WebfontLoader from '@Components/typography/fontloader';
 import TypographyControl from '@Components/typography';
-import Border from '@Components/border';
+import ResponsiveBorder from '@Components/responsive-border';
 import AdvancedPopColorControl from '@Components/color-control/advanced-pop-color-control.js';
 import InspectorTabs from '@Components/inspector-tabs/InspectorTabs.js';
 import InspectorTab, {
@@ -34,7 +34,7 @@ import UAGAdvancedPanelBody from '@Components/advanced-panel-body';
 const Settings = ( props ) => {
 	props = props.parentProps;
 
-	const { setAttributes, attributes } = props;
+	const { setAttributes, attributes, deviceType } = props;
 
 	const {
 		formId,
@@ -796,36 +796,13 @@ const Settings = ( props ) => {
 			initialOpen={ true }
 		>
 			{ fieldStyle === 'box' && (
-				<Border
+				<ResponsiveBorder
 					disabledBorderTitle= {false}
 					setAttributes={ setAttributes }
-					borderStyle={ {
-						value: fieldBorderStyle,
-						label: 'fieldBorderStyle',
-						title: __( 'Style', 'ultimate-addons-for-gutenberg' ),
-					} }
-					borderWidth={ {
-						value: fieldBorderWidth,
-						label: 'fieldBorderWidth',
-						title: __( 'Width', 'ultimate-addons-for-gutenberg' ),
-					} }
-					borderRadius={ {
-						value: fieldBorderRadius,
-						label: 'fieldBorderRadius',
-						title: __( 'Radius', 'ultimate-addons-for-gutenberg' ),
-						displayUnit: true,
-						unit: {
-							value: fieldBorderRadiusType,
-							label: 'fieldBorderRadiusType',
-						},
-					} }
-					borderColor={ {
-						value: fieldBorderColor,
-						label: 'fieldBorderColor',
-						title: __( 'Color', 'ultimate-addons-for-gutenberg' ),
-					} }
-					borderHoverColor={ false }
-					disableBottomSeparator={ false }
+					prefix={'field'}
+					attributes={ attributes }
+					deviceType={deviceType}
+					disableBottomSeparator={ true }
 				/>
 			)}
 			<AdvancedPopColorControl
@@ -1158,48 +1135,13 @@ const Settings = ( props ) => {
 				hover={ buttonHoverSettings }
 				disableBottomSeparator={ false }
 			/>
-			<Border
-				disabledBorderTitle= {false}
+			<ResponsiveBorder
 				setAttributes={ setAttributes }
-				borderStyle={ {
-					value: buttonBorderStyle,
-					label: 'buttonBorderStyle',
-					title: __(
-						'Style',
-						'ultimate-addons-for-gutenberg'
-					),
-				} }
-				borderWidth={ {
-					value: buttonBorderWidth,
-					label: 'buttonBorderWidth',
-					title: __( 'Width', 'ultimate-addons-for-gutenberg' ),
-				} }
-				borderRadius={ {
-					value: buttonBorderRadius,
-					label: 'buttonBorderRadius',
-					title: __( 'Radius', 'ultimate-addons-for-gutenberg' ),
-					displayUnit: true,
-					unit: {
-						value: buttonBorderRadiusType,
-						label: 'buttonBorderRadiusType',
-					},
-				} }
-				borderColor={ {
-					value: buttonBorderColor,
-					label: 'buttonBorderColor',
-					title: __(
-						'Border Color',
-						'ultimate-addons-for-gutenberg'
-					),
-				} }
-				borderHoverColor={ {
-					value: buttonBorderHoverColor,
-					label: 'buttonBorderHoverColor',
-					title: __(
-						'Border Color',
-						'ultimate-addons-for-gutenberg'
-					),
-				} }
+				prefix={'button'}
+				attributes={ attributes }
+				deviceType={deviceType}
+				disableBottomSeparator={ true }
+				disabledBorderTitle= {false}
 			/>
 			<TypographyControl
 				label={ __( 'Typography', 'ultimate-addons-for-gutenberg' ) }

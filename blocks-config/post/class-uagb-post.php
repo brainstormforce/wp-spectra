@@ -69,6 +69,8 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 				return;
 			}
 
+			$paginationMasonryBorderAttribute = UAGB_Block_Helper::uag_generate_border_attribute( 'paginationMasonry' );
+
 			$common_attributes = $this->get_post_attributes();
 
 			register_block_type(
@@ -241,69 +243,53 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 					'attributes'      => array_merge(
 						$common_attributes,
 						array(
-							'paginationType'               => array(
+							'paginationType'              => array(
 								'type'    => 'string',
 								'default' => 'none',
 							),
-							'paginationEventType'          => array(
+							'paginationEventType'         => array(
 								'type'    => 'string',
 								'default' => 'button',
 							),
-							'buttonText'                   => array(
+							'buttonText'                  => array(
 								'type'    => 'string',
 								'default' => 'Load More',
 							),
-							'paginationAlign'              => array(
+							'paginationAlign'             => array(
 								'type'    => 'string',
 								'default' => 'center',
 							),
-							'paginationTextColor'          => array(
+							'paginationTextColor'         => array(
 								'type'    => 'string',
 								'default' => '',
 							),
-							'paginationMasonryBgColor'     => array(
+							'paginationMasonryBgColor'    => array(
 								'type'    => 'string',
 								'default' => '',
 							),
-							'paginationBgHoverColor'       => array(
+							'paginationBgHoverColor'      => array(
 								'type' => 'string',
 							),
-							'paginationTextHoverColor'     => array(
+							'paginationTextHoverColor'    => array(
 								'type' => 'string',
-							),
-							'paginationMasonryBorderStyle' => array(
-								'type'    => 'string',
-								'default' => 'solid',
-							),
-							'paginationMasonryBorderWidth' => array(
-								'type'    => 'number',
-								'default' => 1,
-							),
-							'paginationMasonryBorderRadius' => array(
-								'type'    => 'number',
-								'default' => 2,
-							),
-							'paginationMasonryBorderColor' => array(
-								'type'    => 'string',
-								'default' => '',
 							),
 							'paginationMasonryBorderHColor' => array(
 								'type'    => 'string',
 								'default' => '',
 							),
-							'paginationFontSize'           => array(
+							'paginationFontSize'          => array(
 								'type'    => 'number',
 								'default' => 13,
 							),
-							'loaderColor'                  => array(
+							'loaderColor'                 => array(
 								'type'    => 'string',
 								'default' => '#0085ba',
 							),
-							'loaderSize'                   => array(
+							'loaderSize'                  => array(
 								'type'    => 'number',
 								'default' => 18,
 							),
-							'paginationButtonPaddingType'  => array(
+							'paginationButtonPaddingType' => array(
 								'type'    => 'string',
 								'default' => 'px',
 							),
@@ -331,7 +317,7 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 								'type'    => 'number',
 								'default' => 12,
 							),
-							'layoutConfig'                 => array(
+							'layoutConfig'                => array(
 								'type'    => 'array',
 								'default' => array(
 									array( 'uagb/post-image' ),
@@ -342,7 +328,7 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 									array( 'uagb/post-button' ),
 								),
 							),
-							'post_type'                    => array(
+							'post_type'                   => array(
 								'type'    => 'string',
 								'default' => 'masonry',
 							),
@@ -354,6 +340,8 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 								'type'    => 'string',
 								'default' => 'px',
 							),
+							$paginationMasonryBorderAttribute,
+
 						)
 					),
 					'render_callback' => array( $this, 'post_masonry_callback' ),
@@ -367,6 +355,7 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 		 * @since 0.0.1
 		 */
 		public function get_post_attributes() {
+			$btnBorderAttribute = UAGB_Block_Helper::uag_generate_border_attribute( 'btn' );
 
 			return array(
 				'inheritFromTheme'              => array(
@@ -475,10 +464,6 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 					'type'    => 'string',
 					'default' => __( 'Read More', 'ultimate-addons-for-gutenberg' ),
 				),
-				'borderWidth'                   => array(
-					'type'    => 'number',
-					'default' => '',
-				),
 				'btnHPadding'                   => array(
 					'type'    => 'number',
 					'default' => '',
@@ -487,20 +472,8 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 					'type'    => 'number',
 					'default' => '',
 				),
-				'borderStyle'                   => array(
-					'type'    => 'string',
-					'default' => 'none',
-				),
-				'borderColor'                   => array(
-					'type'    => 'string',
-					'default' => '',
-				),
-				'borderHColor'                  => array(
+				'btnBorderHColor'               => array(
 					'type' => 'string',
-				),
-				'borderRadius'                  => array(
-					'type'    => 'number',
-					'default' => '',
 				),
 				'columns'                       => array(
 					'type'    => 'number',
@@ -961,6 +934,7 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 					'type'    => 'string',
 					'default' => ', ',
 				),
+				$btnBorderAttribute,
 			);
 		}
 

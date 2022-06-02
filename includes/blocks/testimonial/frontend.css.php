@@ -16,8 +16,17 @@ if ( 'left' === $attr['headingAlign'] ) {
 } elseif ( 'right' === $attr['headingAlign'] ) {
 	$img_align = 'flex-end';
 }
-
-$position = str_replace( '-', ' ', $attr['backgroundPosition'] );
+$btnBorderCSS       = UAGB_Block_Helper::uag_generate_border_css( $attr, 'overall' );
+$btnBorderCSS       = UAGB_Block_Helper::uag_generate_deprecated_border_css(
+	$btnBorderCSS,
+	( isset( $attr['borderWidth'] ) ? $attr['borderWidth'] : '' ),
+	( isset( $attr['borderRadius'] ) ? $attr['borderRadius'] : '' ),
+	( isset( $attr['borderColor'] ) ? $attr['borderColor'] : '' ),
+	( isset( $attr['borderStyle'] ) ? $attr['borderStyle'] : '' )
+);
+$btnBorderCSSTablet = UAGB_Block_Helper::uag_generate_border_css( $attr, 'overall', 'tablet' );
+$btnBorderCSSMobile = UAGB_Block_Helper::uag_generate_border_css( $attr, 'overall', 'mobile' );
+$position           = str_replace( '-', ' ', $attr['backgroundPosition'] );
 
 $t_selectors = array();
 $m_selectors = array();
@@ -81,12 +90,7 @@ $selectors = array(
 		'background-color' => $attr['backgroundImageColor'],
 		'opacity'          => ( isset( $attr['backgroundOpacity'] ) && '' !== $attr['backgroundOpacity'] && 101 !== $attr['backgroundOpacity'] ) ? ( ( 100 - $attr['backgroundOpacity'] ) / 100 ) : '',
 	),
-	' .uagb-testimonial__wrap .uagb-tm__content'       => array(
-		'border-color'  => $attr['borderColor'],
-		'border-style'  => $attr['borderStyle'],
-		'border-width'  => UAGB_Helper::get_css_value( $attr['borderWidth'], 'px' ),
-		'border-radius' => UAGB_Helper::get_css_value( $attr['borderRadius'], 'px' ),
-	),
+	' .uagb-testimonial__wrap .uagb-tm__content'       => $btnBorderCSS,
 	' .uagb-testimonial__wrap .uagb-tm__content:hover' => array(
 		'border-color' => $attr['borderHoverColor'],
 	),
@@ -134,6 +138,8 @@ $m_selectors = array(
 	' .uagb-tm__author-name'                            => array(
 		'margin-bottom' => $attr['nameSpaceMobile'] . $attr['nameSpaceType'],
 	),
+
+	' .uagb-testimonial__wrap .uagb-tm__content'        => $btnBorderCSSMobile,
 	' .uagb-tm__desc'                                   => array(
 		'margin-bottom' => UAGB_Helper::get_css_value( $attr['descSpaceMobile'], $attr['descSpaceType'] ),
 	),
@@ -163,6 +169,8 @@ $t_selectors = array(
 	' .uagb-tm__desc'                                   => array(
 		'margin-bottom' => UAGB_Helper::get_css_value( $attr['descSpaceTablet'], $attr['descSpaceType'] ),
 	),
+
+	' .uagb-testimonial__wrap .uagb-tm__content'        => $btnBorderCSSTablet,
 	' .uagb-tm__content'                                => array(
 		'text-align'     => $attr['headingAlignTablet'],
 		'padding-top'    => UAGB_Helper::get_css_value( $attr['paddingTopTablet'], $attr['tabletPaddingUnit'] ),

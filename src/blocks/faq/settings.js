@@ -16,7 +16,7 @@ import InspectorTab, {
 	UAGTabs,
 } from '@Components/inspector-tabs/InspectorTab.js';
 import { __ } from '@wordpress/i18n';
-import Border from '@Components/border';
+import ResponsiveBorder from '@Components/responsive-border';
 import { select } from '@wordpress/data';
 import UAGIconPicker from '@Components/icon-picker';
 import UAGTabsControl from '@Components/tabs';
@@ -34,7 +34,7 @@ import UAGAdvancedPanelBody from '@Components/advanced-panel-body';
 const Settings = ( props ) => {
 	props = props.parentProps;
 
-	const { attributes, setAttributes } = props;
+	const { attributes, setAttributes, deviceType } = props;
 	const {
 		layout,
 		inactiveOtherItems,
@@ -968,37 +968,12 @@ const Settings = ( props ) => {
 					</>
 				) }
 				<hr className="uagb-editor__separator" />
-				<Border
-					disabledBorderTitle= {false}
+				<ResponsiveBorder
 					setAttributes={ setAttributes }
-					borderStyle={ {
-						value: borderStyle,
-						label: 'borderStyle',
-						title: __( 'Style', 'ultimate-addons-for-gutenberg' ),
-					} }
-					borderWidth={ {
-						value: borderWidth,
-						label: 'borderWidth',
-						title: __( 'Width', 'ultimate-addons-for-gutenberg' ),
-					} }
-					borderRadius={ {
-						value: borderRadius,
-						label: 'borderRadius',
-						title: __( 'Radius', 'ultimate-addons-for-gutenberg' ),
-					} }
-					borderColor={ {
-						value: borderColor,
-						label: 'borderColor',
-						title: __( 'Color', 'ultimate-addons-for-gutenberg' ),
-					} }
-					borderHoverColor={ {
-						value: borderHoverColor,
-						label: 'borderHoverColor',
-						title: __(
-							'Color',
-							'ultimate-addons-for-gutenberg'
-						),
-					} }
+					prefix={ 'overall' }
+					disabledBorderTitle= {false}
+					attributes={ attributes }
+					deviceType={deviceType}
 					disableBottomSeparator={ true }
 				/>
 			</UAGAdvancedPanelBody>

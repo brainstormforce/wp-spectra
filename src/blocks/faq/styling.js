@@ -4,6 +4,7 @@
 
 import generateCSS from '@Controls/generateCSS';
 import generateCSSUnit from '@Controls/generateCSSUnit';
+import generateBorderCSS from '@Controls/generateBorderCSS';
 
 function styling( props ) {
 	const {
@@ -21,10 +22,6 @@ function styling( props ) {
 		align,
 		enableSeparator,
 		boxBgColor,
-		borderStyle,
-		borderWidth,
-		borderRadius,
-		borderColor,
 		borderHoverColor,
 		questionTextColor,
 		questionTextActiveColor,
@@ -100,6 +97,11 @@ function styling( props ) {
 		questionDecoration,
 	} = props.attributes;
 
+
+	const borderCSS = generateBorderCSS( props.attributes, 'overall', '' );
+	const borderCSSTablet = generateBorderCSS( props.attributes,'overall', 'tablet' );
+	const borderCSSMobile = generateBorderCSS( props.attributes,'overall', 'mobile' );
+
 	let selectors = {};
 	let tabletSelectors = {};
 	let mobileSelectors = {};
@@ -135,10 +137,7 @@ function styling( props ) {
 		},
 		' .uagb-faq-item': {
 			'background-color': boxBgColor,
-			'border-style': borderStyle,
-			'border-width': generateCSSUnit( borderWidth, 'px' ),
-			'border-radius': generateCSSUnit( borderRadius, 'px' ),
-			'border-color': borderColor,
+			...borderCSS
 		},
 		' .uagb-faq-item:hover': {
 			'border-color': borderHoverColor,
@@ -249,6 +248,9 @@ function styling( props ) {
 				questionPaddingTypeTablet
 			),
 		},
+		' .uagb-faq-item': {
+			...borderCSSTablet
+		},
 		' .uagb-faq-content': {
 			'padding-top': generateCSSUnit(
 				answerTopPaddingTablet,
@@ -313,6 +315,9 @@ function styling( props ) {
 	};
 
 	mobileSelectors = {
+		' .uagb-faq-item': {
+			...borderCSSMobile
+		},
 		'.uagb-faq-icon-row .uagb-faq-item .uagb-faq-icon-wrap': {
 			'margin-right': generateCSSUnit( gapBtwIconQUestionMobile, 'px' ),
 		},
@@ -435,8 +440,7 @@ function styling( props ) {
 			'.uagb-faq__outer-wrap .uagb-faq-child__outer-wrap .uagb-faq-content '
 		] = {
 			'border-style': 'solid',
-			'border-top-color': borderColor,
-			'border-top-width': generateCSSUnit( borderWidth, 'px' ),
+			...borderCSS
 		};
 		selectors[
 			'.uagb-faq__outer-wrap .uagb-faq-child__outer-wrap .uagb-faq-content:hover '

@@ -17,7 +17,6 @@ function styling( props ) {
 		backgroundOpacity,
 		backgroundColor,
 		backgroundVideoOpacity,
-		borderHoverColor,
 		contentWidth,
 		width,
 		widthType,
@@ -63,7 +62,8 @@ function styling( props ) {
 		boxShadowBlur,
 		boxShadowSpread,
 		boxShadowPosition,
-		gradientValue
+		gradientValue,
+		columnsBorderHColor
 	} = props.attributes
 
 	let max_width = '100%'
@@ -117,7 +117,7 @@ function styling( props ) {
 			'box-shadow': generateCSSUnit( boxShadowHOffset, 'px' ) + ' ' + generateCSSUnit( boxShadowVOffset, 'px' ) + ' ' + generateCSSUnit( boxShadowBlur, 'px' ) + ' ' + generateCSSUnit( boxShadowSpread, 'px' ) + ' ' + boxShadowColor + ' ' + boxShadowPositionCSS
 		},
 		'.uagb-columns__wrap:hover': {
-			'border-color': borderHoverColor,
+			'border-color': columnsBorderHColor,
 		}
 	}
 

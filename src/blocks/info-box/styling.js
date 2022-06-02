@@ -4,6 +4,7 @@
 
 import generateCSS from '@Controls/generateCSS';
 import generateCSSUnit from '@Controls/generateCSSUnit';
+import generateBorderCSS from '@Controls/generateBorderCSS';
 
 function styling( props ) {
 	const {
@@ -80,10 +81,6 @@ function styling( props ) {
 		paddingBtnRightMobile,
 		paddingBtnBottomMobile,
 		paddingBtnLeftMobile,
-		ctaBorderStyle,
-		ctaBorderColor,
-		ctaBorderWidth,
-		ctaBorderRadius,
 		iconLeftMargin,
 		iconRightMargin,
 		iconTopMargin,
@@ -190,6 +187,10 @@ function styling( props ) {
 		subHeadMobileMarginUnit,
 		subHeadTabletMarginUnit
 	} = props.attributes;
+
+	const ctaBorderCSS = generateBorderCSS( props.attributes, 'cta' );
+	const ctaBorderCSSTablet = generateBorderCSS( props.attributes, 'cta', 'tablet' );
+	const ctaBorderCSSMobile = generateBorderCSS( props.attributes, 'cta', 'mobile' );
 
 	const selectors = {
 		// Icon css
@@ -346,7 +347,6 @@ function styling( props ) {
 		' .uagb-ifb-button-wrapper .uagb-infobox-cta-link': {
 			'color': ctaBtnLinkColor,
 			'background-color': ctaBgColor,
-			'border-radius': generateCSSUnit( ctaBorderRadius, 'px' ),
 			'padding-top': generateCSSUnit( paddingBtnTop, paddingBtnUnit ),
 			'padding-bottom': generateCSSUnit(
 				paddingBtnBottom,
@@ -445,13 +445,7 @@ function styling( props ) {
 			'margin-right': generateCSSUnit( separatorRightMargin, seperatorSpaceUnit ),
 		}
 	};
-	if( 'none' !== ctaBorderStyle ) {
-		selectors[' .uagb-infobox-cta-link'] = {
-			'border-style': ctaBorderStyle,
-			'border-color': ctaBorderColor,
-			'border-width': generateCSSUnit( ctaBorderWidth, 'px' ),
-		}
-	}
+
 	if (
 		iconimgPosition === 'above-title' ||
 		iconimgPosition === 'below-title'
@@ -971,6 +965,10 @@ function styling( props ) {
 			'width': generateCSSUnit( ctaFontSizeMobile, ctaFontSizeType ),
 		},
 	};
+
+	selectors[' .uagb-infobox-cta-link'] = ctaBorderCSS;
+	tabletSelectors[' .uagb-infobox-cta-link'] = ctaBorderCSSTablet;
+	mobileSelectors[' .uagb-infobox-cta-link'] = ctaBorderCSSMobile;
 
 	if ( imageWidthType ) {
 		// Image

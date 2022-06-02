@@ -1,6 +1,9 @@
 /**
  * BLOCK: Info Box - Attributes
  */
+import { getBorderAttributes } from '@Controls/generateAttributes';
+
+const borderAttributes = getBorderAttributes( 'cta' );
 
 const attributes = {
 	inheritFromTheme: {
@@ -622,8 +625,7 @@ const attributes = {
 		type: 'string',
 		UAGCopyPaste: {
 			styleType: 'btn-border-hover-color'
-		},
-		default: '',
+		}
 	},
 	ctaBorderStyle: {
 		type: 'string',
@@ -648,8 +650,7 @@ const attributes = {
 		type: 'number',
 		UAGCopyPaste: {
 			styleType: 'btn-border-width'
-		},
-		default: ''
+		}
 	},
 	ctaBorderRadius: {
 		type: 'number',
@@ -1293,7 +1294,8 @@ const attributes = {
 	isPreview: {
 		type: 'boolean',
 		default: false,
-	}
+	},
+	...borderAttributes
 };
 
 export default attributes;

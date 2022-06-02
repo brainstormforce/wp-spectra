@@ -6,7 +6,16 @@
  *
  * @package uagb
  */
-
+$overallBorderCSS       = UAGB_Block_Helper::uag_generate_border_css( $attr, 'tab' );
+$overallBorderCSS       = UAGB_Block_Helper::uag_generate_deprecated_border_css(
+	$overallBorderCSS,
+	( isset( $attr['borderWidth'] ) ? $attr['borderWidth'] : '' ),
+	( isset( $attr['borderRadius'] ) ? $attr['borderRadius'] : '' ),
+	( isset( $attr['borderColor'] ) ? $attr['borderColor'] : '' ),
+	( isset( $attr['borderStyle'] ) ? $attr['borderStyle'] : '' )
+);
+$overallBorderCSSTablet = UAGB_Block_Helper::uag_generate_border_css( $attr, 'tab', 'tablet' );
+$overallBorderCSSMobile = UAGB_Block_Helper::uag_generate_border_css( $attr, 'tab', 'mobile' );
 // Adds Fonts.
 UAGB_Block_JS::blocks_tabs_gfont( $attr );
 

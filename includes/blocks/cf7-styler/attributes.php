@@ -6,6 +6,22 @@
  *
  * @package uagb
  */
+$fieldBorderDefaults   = array(
+	'borderStyle'      => 'solid',
+	'borderWidth'      => 1,
+	'borderRadius'     => 0,
+	'borderColor'      => '#eeeeee',
+	'borderFocusColor' => '',
+);
+$fieldBorderAttribute  = UAGB_Block_Helper::uag_generate_border_attribute( 'field', $fieldBorderDefaults );
+$buttonBorderDefaults  = array(
+	'borderStyle'      => 'solid',
+	'borderWidth'      => 1,
+	'borderRadius'     => 0,
+	'borderColor'      => '#333',
+	'borderHoverColor' => '',
+);
+$buttonBorderAttribute = UAGB_Block_Helper::uag_generate_border_attribute( 'button', $buttonBorderDefaults );
 
 return array(
 	'block_id'                      => '',
@@ -17,11 +33,6 @@ return array(
 	'fieldBgColor'                  => '#fafafa',
 	'fieldLabelColor'               => '#333',
 	'fieldInputColor'               => '#333',
-	'fieldBorderStyle'              => 'solid',
-	'fieldBorderWidth'              => 1,
-	'fieldBorderRadius'             => 0,
-	'fieldBorderColor'              => '#eeeeee',
-	'fieldBorderFocusColor'         => '',
 	'buttonAlignment'               => 'left',
 	'buttonVrPadding'               => 10,
 	'buttonHrPadding'               => 25,
@@ -29,11 +40,6 @@ return array(
 	'buttonBgColor'                 => 'transparent',
 	'buttonTextHoverColor'          => '',
 	'buttonBgHoverColor'            => '',
-	'buttonBorderStyle'             => 'solid',
-	'buttonBorderWidth'             => 1,
-	'buttonBorderRadius'            => 0,
-	'buttonBorderColor'             => '#333',
-	'buttonBorderHoverColor'        => '',
 	'fieldSpacing'                  => '',
 	'fieldSpacingTablet'            => '',
 	'fieldSpacingMobile'            => '',
@@ -193,4 +199,6 @@ return array(
 	'fieldPaddingTypeTablet'        => 'px',
 	'fieldPaddingTypeMobile'        => 'px',
 	'fieldSpacingLink'              => false,
+	$fieldBorderAttribute,
+	$buttonBorderAttribute,
 );

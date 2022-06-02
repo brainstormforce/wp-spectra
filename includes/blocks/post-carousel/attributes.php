@@ -7,6 +7,7 @@
  * @package uagb
  */
 
+$btnBorderAttribute = UAGB_Block_Helper::uag_generate_border_attribute( 'btn' );
 return array(
 	'post_type'                => 'carousel',
 	'align'                    => 'left',
@@ -102,11 +103,7 @@ return array(
 	'overlayOpacity'           => '50',
 	'bgOverlayColor'           => '#ffffff',
 	'ctaText'                  => __( 'Read More', 'ultimate-addons-for-gutenberg' ),
-	'borderWidth'              => '',
-	'borderStyle'              => 'none',
-	'borderColor'              => '',
-	'borderHColor'             => '',
-	'borderRadius'             => '',
+	'btnBorderHColor'          => '',
 	'imgPosition'              => 'top',
 
 	'displayPostContentRadio'  => 'excerpt',
@@ -161,4 +158,5 @@ return array(
 		array( 'uagb/post-excerpt' ),
 		array( 'uagb/post-button' ),
 	),
+	$btnBorderAttribute,
 );

@@ -6,6 +6,7 @@
  */
 import generateCSS from '@Controls/generateCSS';
 import generateCSSUnit from '@Controls/generateCSSUnit';
+import generateBorderCSS from '@Controls/generateBorderCSS';
 
 function styling( props ) {
 	const {
@@ -13,10 +14,6 @@ function styling( props ) {
 		fieldBgColor,
 		fieldLabelColor,
 		fieldInputColor,
-		fieldBorderStyle,
-		fieldBorderWidth,
-		fieldBorderRadius,
-		fieldBorderColor,
 		fieldBorderFocusColor,
 		buttonTextColor,
 		buttonBgColor,
@@ -92,7 +89,6 @@ function styling( props ) {
 		validationMsgLineHeightTablet,
 		validationMsgLineHeightMobile,
 		radioCheckBorderRadiusType,
-		fieldBorderRadiusType,
 		buttonBorderRadiusType,
 		buttonTopPaddingDesktop,
 		buttonRightPaddingDesktop,
@@ -138,6 +134,14 @@ function styling( props ) {
 		radioCheckDecoration,
 	} = props.attributes;
 
+	const fieldBorderCSS = generateBorderCSS( props.attributes, 'field', '' );
+	const fieldBorderCSSTablet = generateBorderCSS( props.attributes,'field', 'tablet' );
+	const fieldBorderCSSMobile = generateBorderCSS( props.attributes,'field', 'mobile' );
+
+	const buttonBorderCSS = generateBorderCSS( props.attributes, 'button', '' );
+	const buttonBorderCSSTablet = generateBorderCSS( props.attributes, 'button', 'tablet' );
+	const buttonBorderCSSMobile = generateBorderCSS( props.attributes, 'button', 'mobile' );
+
 	const selectors = {
 		' .wpcf7 .wpcf7-form': {
 			'text-align': align,
@@ -148,13 +152,6 @@ function styling( props ) {
 		' .wpcf7 input:not([type=submit])': {
 			'background-color': fieldBgColor,
 			'color': fieldInputColor,
-			'border-style': fieldBorderStyle,
-			'border-color': fieldBorderColor,
-			'border-width': generateCSSUnit( fieldBorderWidth, 'px' ),
-			'border-radius': generateCSSUnit(
-				fieldBorderRadius,
-				fieldBorderRadiusType
-			),
 			'padding-left': generateCSSUnit(
 				fieldLeftPaddingDesktop,
 				fieldPaddingTypeDesktop
@@ -184,17 +181,12 @@ function styling( props ) {
 				inputLineHeightType
 			),
 			'text-align': align,
+			...fieldBorderCSS
 		},
 		' .wpcf7 select': {
 			'background-color': fieldBgColor,
 			'color': fieldLabelColor,
-			'border-style': fieldBorderStyle,
-			'border-color': fieldBorderColor,
-			'border-width': generateCSSUnit( fieldBorderWidth, 'px' ),
-			'border-radius': generateCSSUnit(
-				fieldBorderRadius,
-				fieldBorderRadiusType
-			),
+			...fieldBorderCSS,
 			'margin-top': generateCSSUnit( fieldLabelSpacing, 'px' ),
 			'margin-bottom': generateCSSUnit( fieldSpacing, 'px' ),
 			'font-size': generateCSSUnit( inputFontSize, inputFontSizeType ),
@@ -245,13 +237,7 @@ function styling( props ) {
 		' .wpcf7 textarea': {
 			'background-color': fieldBgColor,
 			'color': fieldInputColor,
-			'border-color': fieldBorderColor,
-			'border-width': generateCSSUnit( fieldBorderWidth, 'px' ),
-			'border-radius': generateCSSUnit(
-				fieldBorderRadius,
-				fieldBorderRadiusType
-			),
-			'border-style': fieldBorderStyle,
+			...fieldBorderCSS,
 			'padding-left': generateCSSUnit(
 				fieldLeftPaddingDesktop,
 				fieldPaddingTypeDesktop
@@ -313,15 +299,9 @@ function styling( props ) {
 		},
 
 		//Focus
-		' .wpcf7 form input:not([type=submit]):focus': {
-			'border-color': fieldBorderFocusColor,
-		},
-		' .wpcf7 form select:focus': {
-			'border-color': fieldBorderFocusColor,
-		},
-		' .wpcf7 textarea:focus': {
-			'border-color': fieldBorderFocusColor,
-		},
+		' .wpcf7 form input:not([type=submit]):focus': fieldBorderCSS,
+		' .wpcf7 form select:focus': fieldBorderCSS,
+		' .wpcf7 textarea:focus': fieldBorderCSS,
 
 		//Submit button
 		' .wpcf7 input.wpcf7-form-control.wpcf7-submit': {
@@ -382,13 +362,7 @@ function styling( props ) {
 			'height': generateCSSUnit( fieldTopPaddingDesktop, 'px' ),
 			'width': generateCSSUnit( fieldTopPaddingDesktop, 'px' ),
 			'font-size': 'calc( ' + fieldTopPaddingDesktop + 'px / 1.2 )',
-			'border-style': fieldBorderStyle,
-			'border-color': fieldBorderColor,
-			'border-width': generateCSSUnit( fieldBorderWidth, 'px' ),
-			'border-radius': generateCSSUnit(
-				fieldBorderRadius,
-				fieldBorderRadiusType
-			),
+			...fieldBorderCSS
 		},
 		" .wpcf7 .wpcf7-acceptance input[type='checkbox']:checked + span:before": {
 			'background-color': fieldBgColor,
@@ -401,57 +375,22 @@ function styling( props ) {
 			'height': generateCSSUnit( fieldTopPaddingDesktop, 'px' ),
 			'width': generateCSSUnit( fieldTopPaddingDesktop, 'px' ),
 			'font-size': 'calc( ' + fieldTopPaddingDesktop + 'px / 1.2 )',
-			'border-style': fieldBorderStyle,
-			'border-color': fieldBorderColor,
-			'border-width': generateCSSUnit( fieldBorderWidth, 'px' ),
-			'border-radius': generateCSSUnit(
-				fieldBorderRadius,
-				fieldBorderRadiusType
-			),
+			...fieldBorderCSS
 		},
 		" .wpcf7 .wpcf7-radio input[type='radio'] + span:before": {
 			'background-color': fieldBgColor,
 			'color': fieldInputColor,
 			'display': 'inline-flex',
 			'border-radius': '100%',
-			'border-style': fieldBorderStyle,
-			'border-color': fieldBorderColor,
-			'border-width': generateCSSUnit( fieldBorderWidth, 'px' ),
+			...fieldBorderCSS,
 			'height': 'calc( ' + fieldTopPaddingDesktop + 'px / 1.2 )',
 			'width': 'calc( ' + fieldTopPaddingDesktop + 'px / 1.2 )',
 		},
 
 		// underline border
-		' .uagb-cf7-styler__field-style-underline .wpcf7 input:not([type=submit])': {
-			'border-style': 'none',
-			'border-bottom-color': fieldBorderColor,
-			'border-bottom-style': 'solid',
-			'border-bottom-width': generateCSSUnit( fieldBorderWidth, 'px' ),
-			'border-radius': generateCSSUnit(
-				fieldBorderRadius,
-				fieldBorderRadiusType
-			),
-		},
-		' .uagb-cf7-styler__field-style-underline select': {
-			'border-style': 'none',
-			'border-bottom-color': fieldBorderColor,
-			'border-bottom-style': 'solid',
-			'border-bottom-width': generateCSSUnit( fieldBorderWidth, 'px' ),
-			'border-radius': generateCSSUnit(
-				fieldBorderRadius,
-				fieldBorderRadiusType
-			),
-		},
-		' .uagb-cf7-styler__field-style-underline textarea': {
-			'border-style': 'none',
-			'border-bottom-color': fieldBorderColor,
-			'border-bottom-style': 'solid',
-			'border-bottom-width': generateCSSUnit( fieldBorderWidth, 'px' ),
-			'border-radius': generateCSSUnit(
-				fieldBorderRadius,
-				fieldBorderRadiusType
-			),
-		},
+		' .uagb-cf7-styler__field-style-underline .wpcf7 input:not([type=submit])': fieldBorderCSS,
+		' .uagb-cf7-styler__field-style-underline select': fieldBorderCSS,
+		' .uagb-cf7-styler__field-style-underline textarea': fieldBorderCSS,
 		" .uagb-cf7-styler__field-style-underline .wpcf7-checkbox input[type='checkbox'] + span:before": {
 			'border-style': 'solid',
 		},
@@ -463,8 +402,8 @@ function styling( props ) {
 		},
 		" .wpcf7-radio input[type='radio']:checked + span:before": {
 			'background-color': fieldInputColor,
-			'border-color': fieldBorderFocusColor,
 			'display': 'inline-flex',
+			...fieldBorderCSS
 		},
 
 		// Override check box , Radio & acceptance.

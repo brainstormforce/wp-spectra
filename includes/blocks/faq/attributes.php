@@ -6,6 +6,12 @@
  *
  * @package uagb
  */
+$borderDefaults  = array(
+	'borderStyle'  => 'solid',
+	'borderWidth'  => 1,
+	'borderRadius' => 2,
+);
+$borderAttribute = UAGB_Block_Helper::uag_generate_border_attribute( '', $borderDefaults );
 
 return array(
 	'block_id'                     => '',
@@ -29,11 +35,6 @@ return array(
 	'hBoxPaddingTablet'            => 10,
 	'vBoxPaddingDesktop'           => 10,
 	'hBoxPaddingDesktop'           => 10,
-	'borderStyle'                  => 'solid',
-	'borderWidth'                  => 1,
-	'borderRadius'                 => 2,
-	'borderColor'                  => '',
-	'borderHoverColor'             => '',
 	'questionTextColor'            => '',
 	'questionTextActiveColor'      => '',
 	'questionPaddingTypeDesktop'   => 'px',
@@ -124,4 +125,5 @@ return array(
 	'answerFontStyle'              => '',
 	'answerTransform'              => '',
 	'answerDecoration'             => '',
+	$borderAttribute,
 );

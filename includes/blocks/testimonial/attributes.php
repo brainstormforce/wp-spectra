@@ -6,6 +6,7 @@
  *
  * @package uagb
  */
+$borderAttribute = UAGB_Block_Helper::uag_generate_border_attribute( 'btn' );
 
 return array(
 	'classMigrate'            => false,
@@ -72,10 +73,6 @@ return array(
 	'backgroundSize'          => 'cover',
 	'backgroundRepeat'        => 'no-repeat',
 	'backgroundImageColor'    => '',
-	'borderStyle'             => 'none',
-	'borderWidth'             => 1,
-	'borderRadius'            => 0,
-	'borderColor'             => '#333',
 	'arrowColor'              => '#333',
 	'arrowDots'               => 'arrowDots',
 	'arrowBorderSize'         => 0,
@@ -96,7 +93,7 @@ return array(
 	'columnGapType'           => 'px',
 	'descSpaceType'           => 'px',
 	'nameSpaceType'           => 'px',
-	'borderHoverColor'        => '',
+	'btnBorderHoverColor'     => '',
 	'overlayType'             => '',
 	'backgroundAttachment'    => '',
 	'gradientValue'           => '',
@@ -139,4 +136,5 @@ return array(
 	'gradientAngle'           => 0,
 	'gradientPosition'        => 'center center',
 	'equalHeight'             => false,
+	$borderAttribute,
 );

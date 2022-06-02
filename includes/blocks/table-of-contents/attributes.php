@@ -7,17 +7,20 @@
  * @package uagb
  */
 
-$borderAttributes = UAGB_Block_Helper::uag_generate_border_attribute( 'overall', array(
-	'borderStyle'             => 'solid',
-	'borderTopWidth'          => 1,
-	'borderRightWidth'        => 1,
-	'borderBottomWidth'       => 1,
-	'borderLeftWidth'         => 1,
-	'borderTopLeftRadius'     => 6,
-	'borderTopRightRadius'    => 6,
-	'borderBottomLeftRadius'  => 6,
-	'borderBottomRightRadius' => 6,
-) );
+$borderAttributes = UAGB_Block_Helper::uag_generate_border_attribute(
+	'overall',
+	array(
+		'borderStyle'             => 'solid',
+		'borderTopWidth'          => 1,
+		'borderRightWidth'        => 1,
+		'borderBottomWidth'       => 1,
+		'borderLeftWidth'         => 1,
+		'borderTopLeftRadius'     => 6,
+		'borderTopRightRadius'    => 6,
+		'borderBottomLeftRadius'  => 6,
+		'borderBottomRightRadius' => 6,
+	)
+);
 
 return array_merge(
 	array(

@@ -33,6 +33,17 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 			$t_selectors = array();
 			$selectors   = array();
 
+			$borderCSS       = self::uag_generate_border_css( $attr, 'btn' );
+			$borderCSS       = self::uag_generate_deprecated_border_css(
+				$borderCSS,
+				( isset( $attr['borderWidth'] ) ? $attr['borderWidth'] : '' ),
+				( isset( $attr['borderRadius'] ) ? $attr['borderRadius'] : '' ),
+				( isset( $attr['borderColor'] ) ? $attr['borderColor'] : '' ),
+				( isset( $attr['borderStyle'] ) ? $attr['borderStyle'] : '' )
+			);
+			$borderCSSTablet = self::uag_generate_border_css( $attr, 'btn', 'tablet' );
+			$borderCSSMobile = self::uag_generate_border_css( $attr, 'btn', 'mobile' );
+
 			$top_padding    = isset( $attr['topPadding'] ) ? $attr['topPadding'] : $attr['vPadding'];
 			$bottom_padding = isset( $attr['bottomPadding'] ) ? $attr['bottomPadding'] : $attr['vPadding'];
 			$left_padding   = isset( $attr['leftPadding'] ) ? $attr['leftPadding'] : $attr['hPadding'];
@@ -107,17 +118,13 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					$box_shadow_position_css,
 				);
 			}
-			if ( 'none' !== $attr['borderStyle'] ) {
-				$selectors[ $wrapper ]            = array(
-					'border-width' => UAGB_Helper::get_css_value( $attr['borderWidth'], 'px' ),
-					'border-color' => $attr['borderColor'],
-					'border-style' => $attr['borderStyle'],
-				);
-				$selectors[ $wrapper . ':hover' ] = array(
-					'border-color' => $attr['borderHColor'],
-				);
-			}
-			$selectors[ $wrapper . ' .uagb-button__link' ]                                  = array(
+			$selectors[ $wrapper ]                           = $borderCSS;
+			$m_selectors[ $wrapper ]                         = $borderCSSMobile;
+			$t_selectors[ $wrapper ]                         = $borderCSSTablet;
+			$selectors[ $wrapper . ':hover' ]                = array(
+				'border-color' => isset( $attr['borderHoverColor'] ) && ! empty( $attr['borderHoverColor'] ) ? $attr['borderHoverColor'] : $attr['btnBorderHColor'],
+			);
+			$selectors[ $wrapper . ' .uagb-button__link' ]   = array(
 				'font-family'     => $attr['fontFamily'],
 				'font-weight'     => $attr['fontWeight'],
 				'font-style'      => $attr['fontStyle'],
@@ -126,11 +133,11 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				'font-size'       => UAGB_Helper::get_css_value( $attr['size'], $attr['sizeType'] ),
 				'line-height'     => UAGB_Helper::get_css_value( $attr['lineHeight'], $attr['lineHeightType'] ),
 			);
-			$m_selectors[ $wrapper . ' .uagb-button__link' ]                                = array(
+			$m_selectors[ $wrapper . ' .uagb-button__link' ] = array(
 				'font-size'   => UAGB_Helper::get_css_value( $attr['sizeMobile'], $attr['sizeType'] ),
 				'line-height' => UAGB_Helper::get_css_value( $attr['lineHeightMobile'], $attr['lineHeightType'] ),
 			);
-			$t_selectors[ $wrapper . ' .uagb-button__link' ]                                = array(
+			$t_selectors[ $wrapper . ' .uagb-button__link' ] = array(
 				'font-size'   => UAGB_Helper::get_css_value( $attr['sizeTablet'], $attr['sizeType'] ),
 				'line-height' => UAGB_Helper::get_css_value( $attr['lineHeightTablet'], $attr['lineHeightType'] ),
 			);

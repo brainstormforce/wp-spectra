@@ -6,6 +6,8 @@
  *
  * @package uagb
  */
+$paginationMasonryBorderAttribute = UAGB_Block_Helper::uag_generate_border_attribute( 'paginationMasonry' );
+$btnBorderAttribute               = UAGB_Block_Helper::uag_generate_border_attribute( 'btn' );
 
 return array(
 	'post_type'                         => 'masonry',
@@ -98,11 +100,7 @@ return array(
 	'overlayOpacity'                    => '50',
 	'bgOverlayColor'                    => '#ffffff',
 	'ctaText'                           => __( 'Read More', 'ultimate-addons-for-gutenberg' ),
-	'borderWidth'                       => '',
-	'borderStyle'                       => 'none',
-	'borderColor'                       => '',
-	'borderHColor'                      => '',
-	'borderRadius'                      => '',
+	'btnBorderHColor'                   => '',
 	'paginationType'                    => 'none',
 	'paginationEventType'               => 'button',
 	'buttonText'                        => 'Load More',
@@ -111,10 +109,6 @@ return array(
 	'paginationMasonryBgColor'          => '',
 	'paginationBgHoverColor'            => '',
 	'paginationTextHoverColor'          => '',
-	'paginationMasonryBorderStyle'      => 'solid',
-	'paginationMasonryBorderWidth'      => 1,
-	'paginationMasonryBorderRadius'     => 2,
-	'paginationMasonryBorderColor'      => '',
 	'paginationMasonryBorderHColor'     => '',
 	'paginationFontSize'                => 13,
 	'loaderColor'                       => '#0085ba',
@@ -182,4 +176,6 @@ return array(
 		array( 'uagb/post-excerpt' ),
 		array( 'uagb/post-button' ),
 	),
+	$paginationMasonryBorderAttribute,
+	$btnBorderAttribute,
 );
