@@ -279,28 +279,31 @@ if ( 'alignwide' === $attr['innerContentWidth'] ) {
 
 	if ( 'default' === $attr['contentWidth'] || 'alignfull' === $attr['contentWidth'] ) {
 		$selectors[ '.uagb-is-root-container.uagb-block-' . $id ] = array( // phpcs:ignore WordPress.WP.GlobalVariablesOverride.Prohibited
+		'--inner-content-custom-width-final' => 'min( 100vw, '. $attr['innerContentCustomWidthDesktop'] . $attr['innerContentCustomWidthType'] . ')',
 		'--inner-content-custom-width' => $attr['innerContentCustomWidthDesktop'] . $attr['innerContentCustomWidthType'],
 		'--padding-left'               => $left_padding_desktop . $attr['paddingType'],
 		'--padding-right'              => $right_padding_desktop . $attr['paddingType'],
 		'--column-gap'                 => $column_gap_desktop . $attr['columnGapType'],
-		'padding-left'                 => 'calc( ( var(--root-container-full-width) - var( --inner-content-custom-width-final ) ) / 2 )',
-		'padding-right'                => 'calc( ( var(--root-container-full-width) - var( --inner-content-custom-width-final ) ) / 2 )',
+		'padding-left'                 => 'calc( ( 100vw - var( --inner-content-custom-width-final ) ) / 2 + var( --padding-left ) )',
+		'padding-right'               => 'calc( ( 100vw - var( --inner-content-custom-width-final ) ) / 2 + var( --padding-right ) )',
 		);
 
 		$t_selectors[ '.uagb-is-root-container.uagb-block-' . $id ] = array( // phpcs:ignore WordPress.WP.GlobalVariablesOverride.Prohibited
+		'--inner-content-custom-width-final' => 'min( 100vw, '. $attr['innerContentCustomWidthTablet'] . $attr['innerContentCustomWidthType'] . ' )',
 		'--inner-content-custom-width' => $attr['innerContentCustomWidthTablet'] . $attr['innerContentCustomWidthType'],
 		'--padding-left'               => $left_padding_tablet . $attr['paddingTypeTablet'],
 		'--padding-right'              => $right_padding_tablet . $attr['paddingTypeTablet'],
-		'padding-left'                 => 'calc( ( var(--root-container-full-width) - var( --inner-content-custom-width-final ) ) / 2 )',
-		'padding-right'                => 'calc( ( var(--root-container-full-width) - var( --inner-content-custom-width-final ) ) / 2 )',
+		'padding-left'                 => 'calc( ( 100vw - var( --inner-content-custom-width-final ) ) / 2 + var( --padding-left ) )',
+		'padding-right'               => 'calc( ( 100vw - var( --inner-content-custom-width-final ) ) / 2 + var( --padding-right ) )',
 		);
 
 		$m_selectors[ '.uagb-is-root-container.uagb-block-' . $id ] = array( // phpcs:ignore WordPress.WP.GlobalVariablesOverride.Prohibited
+		'--inner-content-custom-width-final' => 'min( 100vw, '. $attr['innerContentCustomWidthMobile'] . $attr['innerContentCustomWidthType'] .')',
 		'--inner-content-custom-width' => $attr['innerContentCustomWidthMobile'] . $attr['innerContentCustomWidthType'],
 		'--padding-left'               => $left_padding_mobile . $attr['paddingTypeMobile'],
 		'--padding-right'              => $right_padding_mobile . $attr['paddingTypeMobile'],
-		'padding-left'                 => 'calc( ( var(--root-container-full-width) - var( --inner-content-custom-width-final ) ) / 2 )',
-		'padding-right'                => 'calc( ( var(--root-container-full-width) - var( --inner-content-custom-width-final ) ) / 2 )',
+		'padding-left'                 => 'calc( ( 100vw - var( --inner-content-custom-width-final ) ) / 2 + var( --padding-left ) )',
+		'padding-right'               => 'calc( ( 100vw - var( --inner-content-custom-width-final ) ) / 2 + var( --padding-right ) )',
 		);
 	}
 }
