@@ -55,7 +55,7 @@ $overallBorderCSS       = UAGB_Block_Helper::uag_generate_deprecated_border_css(
 $overallBorderCSSTablet = UAGB_Block_Helper::uag_generate_border_css( $attr, 'overall', 'tablet' );
 $overallBorderCSSMobile = UAGB_Block_Helper::uag_generate_border_css( $attr, 'overall', 'mobile' );
 
-$selectors            = array(
+$selectors = array(
 	' .uagb-toc__list-wrap li a:hover'                    => array(
 		'color' => $attr['linkHoverColor'],
 	),

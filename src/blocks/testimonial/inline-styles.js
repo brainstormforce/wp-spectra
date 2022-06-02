@@ -4,6 +4,7 @@
 
 import generateCSS from '@Controls/generateCSS';
 import generateCSSUnit from '@Controls/generateCSSUnit';
+import generateBorderCSS from '@Controls/generateBorderCSS';
 
 function testimonialStyle( props ) {
 	const {
@@ -72,10 +73,6 @@ function testimonialStyle( props ) {
 		gradientType,
 		gradientAngle,
 		gradientPosition,
-		borderStyle,
-		borderWidth,
-		borderRadius,
-		borderColor,
 		arrowColor,
 		test_item_count,
 		columns,
@@ -129,7 +126,12 @@ function testimonialStyle( props ) {
 		nameFontStyle,
 		companyFontStyle,
 		descFontStyle,
+		btnBorderHoverColor
 	} = props.attributes;
+
+	const btnBorderCSS = generateBorderCSS( props.attributes, 'overall' )
+	const btnBorderCSSTablet = generateBorderCSS( props.attributes, 'overall', 'tablet' )
+	const btnBorderCSSMobile = generateBorderCSS( props.attributes, 'overall', 'mobile' )
 
 	let imgAlign = 'center';
 
@@ -243,14 +245,9 @@ function testimonialStyle( props ) {
 			'height': generateCSSUnit( arrowSize, arrowSizeType ),
 			'width': generateCSSUnit( arrowSize, arrowSizeType ),
 		},
-		' .uagb-testimonial__wrap .uagb-tm__content': {
-			'border-color': borderColor,
-			'border-style': borderStyle,
-			'border-width': generateCSSUnit( borderWidth, 'px' ),
-			'border-radius': generateCSSUnit( borderRadius, 'px' ),
-		},
+		' .uagb-testimonial__wrap .uagb-tm__content': btnBorderCSS,
 		' .uagb-testimonial__wrap .uagb-tm__content:hover': {
-			'border-color': borderHoverColor,
+			'border-color': btnBorderHoverColor,
 		}
 
 	};
@@ -297,6 +294,7 @@ function testimonialStyle( props ) {
 				descLineHeightType
 			),
 		},
+		' .uagb-testimonial__wrap .uagb-tm__content': btnBorderCSSMobile,
 		' .uagb-testimonial__wrap .uagb-tm__image-content': {
 			'text-align': headingAlignMobile,
 			'padding-top': generateCSSUnit(
@@ -370,6 +368,7 @@ function testimonialStyle( props ) {
 			'padding-right': generateCSSUnit( columnGapTablet / 2, columnGapType ),
 			'margin-bottom': generateCSSUnit( rowGapTablet, rowGapType ),
 		},
+		' .uagb-testimonial__wrap .uagb-tm__content': btnBorderCSSTablet,
 		' .uagb-testimonial__wrap .uagb-tm__image-content': {
 			'text-align': headingAlignTablet,
 			'padding-top': generateCSSUnit(

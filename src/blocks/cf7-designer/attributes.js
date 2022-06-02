@@ -4,16 +4,20 @@
  import { getBorderAttributes } from '@Controls/generateAttributes';
  const fieldDefaults = {
 	borderStyle             :  'solid',
-	borderWidth             :  1,
-	borderRadius             :  0,
+	borderTopWidth: 1,
+	borderRightWidth: 1,
+	borderBottomWidth: 1,
+	borderLeftWidth: 1,
 	borderColor              :  '#eeeeee',
 	borderHoverColor         :  '',
  }
  const fieldBorderAttributes = getBorderAttributes( 'field', fieldDefaults );
  const buttonDefaults = {
 	borderStyle         : 'solid',
-	borderWidth         : 1,
-	borderRadius        : 0,
+	borderTopWidth: 1,
+	borderRightWidth: 1,
+	borderBottomWidth: 1,
+	borderLeftWidth: 1,
 	borderColor         : '#333',
 	borderHoverColor        : '#333',
  }
@@ -86,37 +90,22 @@
 	fieldBorderStyle              : {
 		type    : 'string',
 		default : 'solid',
-		UAGCopyPaste: {
-			styleType: 'input-border-style'
-		},
 	},
 	fieldBorderWidth              : {
 		type    : 'number',
 		default : 1,
-		UAGCopyPaste: {
-			styleType: 'input-border-width'
-		},
 	},
 	fieldBorderRadius             : {
 		type    : 'number',
 		default : 0,
-		UAGCopyPaste: {
-			styleType: 'input-border-radius'
-		},
 	},
 	fieldBorderColor              : {
 		type    : 'string',
 		default : '#eeeeee',
-		UAGCopyPaste: {
-			styleType: 'input-border-color'
-		},
 	},
 	fieldBorderFocusColor         : {
 		type    : 'string',
 		default : '',
-		UAGCopyPaste: {
-			styleType: 'input-border-hover-color'
-		},
 	},
 	buttonAlignment               : {
 		type    : 'string',
@@ -142,30 +131,18 @@
 	buttonBorderStyle             : {
 		type    : 'string',
 		default : 'solid',
-		UAGCopyPaste: {
-			styleType: 'btn-border-style'
-		},
 	},
 	buttonBorderWidth             : {
 		type    : 'number',
 		default : 1,
-		UAGCopyPaste: {
-			styleType: 'btn-border-width'
-		},
 	},
 	buttonBorderRadius            : {
 		type    : 'number',
 		default : 0,
-		UAGCopyPaste: {
-			styleType: 'btn-border-radius'
-		},
 	},
 	buttonBorderColor             : {
 		type    : 'string',
 		default : '#333',
-		UAGCopyPaste: {
-			styleType: 'btn-border-color'
-		},
 	},
 	buttonTextColor               : {
 		type    : 'string',
@@ -184,9 +161,6 @@
 	buttonBorderHoverColor        : {
 		type    : 'string',
 		default : '#333',
-		UAGCopyPaste: {
-			styleType: 'btn-border-hover-color'
-		},
 	},
 	buttonTextHoverColor          : {
 		type    : 'string',
@@ -881,9 +855,6 @@
 	fieldBorderRadiusType         : {
 		type    : 'string',
 		default : 'px',
-		UAGCopyPaste: {
-			styleType: 'field-border-radius-type'
-		},
 	},
 	buttonBorderRadiusType        : {
 		type    : 'string',

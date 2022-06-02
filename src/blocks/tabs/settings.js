@@ -607,7 +607,7 @@ const Settings = ( props ) => {
 			>
 				<ResponsiveBorder
 					setAttributes={ setAttributes }
-					prefix={''}
+					prefix={'tab'}
 					attributes={ attributes }
 					deviceType={deviceType}
 					disableBottomSeparator={ true }

@@ -110,7 +110,7 @@ const UAGBTableOfContentsEdit = ( props ) => {
 				setAttributes( { bottomPadding: vPaddingDesktop } );
 			}
 		}
-		
+
 		if ( hPaddingDesktop ) {
 			if ( undefined === rightPadding ) {
 				setAttributes( { rightPadding: hPaddingDesktop } );
@@ -213,6 +213,7 @@ const UAGBTableOfContentsEdit = ( props ) => {
 
 		addBlockEditorDynamicStyles( 'uagb-style-toc-' + props.clientId.substr( 0, 8 ), blockStyling );
 
+		const {borderStyle,borderWidth,borderRadius,borderColor,borderHoverColor} = props.attributes;
 		// Backward Border Migration
 		if( borderWidth || borderRadius || borderColor || borderHColor || borderStyle ){
 			const migrationAttributes = migrateBorderAttributes( 'overall', {
@@ -233,7 +234,7 @@ const UAGBTableOfContentsEdit = ( props ) => {
 			}
 			);
 			props.setAttributes( migrationAttributes )
-		}		
+		}
 	}, [ props ] );
 
 	useEffect( () => {
@@ -241,7 +242,7 @@ const UAGBTableOfContentsEdit = ( props ) => {
 		const blockStyling = styling( props );
 
 		addBlockEditorDynamicStyles( 'uagb-style-toc-' + props.clientId.substr( 0, 8 ), blockStyling );
-		
+
 	}, [ deviceType ] );
 
 	const { scrollToTop } = props.attributes;

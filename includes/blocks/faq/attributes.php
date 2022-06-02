@@ -6,10 +6,10 @@
  *
  * @package uagb
  */
-$borderDefaults = array(
-	'borderStyle'                  => 'solid',
-	'borderWidth'                  => 1,
-	'borderRadius'                 => 2,
+$borderDefaults  = array(
+	'borderStyle'  => 'solid',
+	'borderWidth'  => 1,
+	'borderRadius' => 2,
 );
 $borderAttribute = UAGB_Block_Helper::uag_generate_border_attribute( '', $borderDefaults );
 
@@ -125,5 +125,5 @@ return array(
 	'answerFontStyle'              => '',
 	'answerTransform'              => '',
 	'answerDecoration'             => '',
-	$borderAttribute
+	$borderAttribute,
 );

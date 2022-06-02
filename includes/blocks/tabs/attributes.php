@@ -6,12 +6,12 @@
  *
  * @package uagb
  */
-$borderDefaults = array(
-	'borderWidth'                 => 1,
-	'borderColor'                 => '#e0e0e0',
-	'borderStyle'                 => 'solid',
+$borderDefaults  = array(
+	'borderWidth' => 1,
+	'borderColor' => '#e0e0e0',
+	'borderStyle' => 'solid',
 );
-$borderAttribute = UAGB_Block_Helper::uag_generate_border_attribute( '', $borderDefaults );
+$borderAttribute = UAGB_Block_Helper::uag_generate_border_attribute( 'tab', $borderDefaults );
 
 return array(
 	'tabHeaders'                  => array( 'Tab 1', 'Tab 2', 'Tab 3' ),
@@ -113,5 +113,5 @@ return array(
 	'iconSpacing'                 => 10,
 	'iconSpacingTablet'           => '',
 	'iconSpacingMobile'           => '',
-	$borderAttribute
+	$borderAttribute,
 );

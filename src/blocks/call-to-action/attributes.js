@@ -466,22 +466,13 @@ const attributes = {
 	},
 	ctaBorderColor: {
 		type: 'string',
-		UAGCopyPaste: {
-			styleType: 'btn-border-color'
-		},
 	},
 	ctaBorderhoverColor: {
 		type: 'string',
-		UAGCopyPaste: {
-			styleType: 'btn-border-hover-color'
-		},
 		default: '',
 	},
 	ctaBorderStyle: {
 		type: 'string',
-		UAGCopyPaste: {
-			styleType: 'btn-border-style'
-		},
 		default: 'none',
 	},
 	ctaBtnVertPadding: {
@@ -500,16 +491,10 @@ const attributes = {
 	},
 	ctaBorderWidth: {
 		type: 'number',
-		UAGCopyPaste: {
-			styleType: 'btn-border-width'
-		},
 		default: '',
 	},
 	ctaBorderRadius: {
 		type: 'number',
-		UAGCopyPaste: {
-			styleType: 'btn-border-radius'
-		},
 		default: '',
 	},
 	stack: {
@@ -796,37 +781,22 @@ const attributes = {
 	secondCtaBorderWidth: {
 		type: 'number',
 		default: '',
-		UAGCopyPaste: {
-			styleType: 'btn-border-width'
-		}
 	},
 	secondCtaBorderRadius: {
 		type: 'number',
 		default: '',
-		UAGCopyPaste: {
-			styleType: 'btn-border-radius'
-		}
 	},
 	secondCtaBorderStyle: {
 		type: 'string',
 		default: 'none',
-		UAGCopyPaste: {
-			styleType: 'btn-border-style'
-		}
 	},
 	secondCtaBorderColor: {
 		type: 'string',
-		UAGCopyPaste: {
-			styleType: 'btn-border-color'
-		},
 		default: '',
 	},
 	secondCtaBorderHColor: {
 		type: 'string',
 		default: '',
-		UAGCopyPaste: {
-			styleType: 'btn-border-hover-color'
-		}
 	},
 	secondCtaColor: {
 		type: 'string',

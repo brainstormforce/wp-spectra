@@ -89,6 +89,28 @@ const UAGBtestimonial = ( props ) => {
 		} else {
 			uagb_carousel_unset_height( props.clientId.substr( 0, 8 ) ); // eslint-disable-line no-undef
 		}
+		const {borderStyle,borderWidth,borderRadius,borderColor,borderHoverColor} = props.attributes;
+		// Backward Border Migration
+		if( borderWidth || borderRadius || borderColor || borderHColor || borderStyle ){
+			const migrationAttributes = migrateBorderAttributes( 'btn', {
+				label: 'borderWidth',
+				value: borderWidth,
+			}, {
+				label: 'borderRadius',
+				value: borderRadius
+			}, {
+				label: 'borderColor',
+				value: borderColor
+			}, {
+				label: 'borderHoverColor',
+				value: borderHoverColor
+			},{
+				label: 'borderStyle',
+				value: borderStyle
+			}
+			);
+			props.setAttributes( migrationAttributes )
+		}
 		const blockStyling = TestimonialStyle( props );
 
 		addBlockEditorDynamicStyles( 'uagb-testinomial-style-' + props.clientId.substr( 0, 8 ), blockStyling );

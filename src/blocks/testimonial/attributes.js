@@ -18,7 +18,17 @@ for ( let i = 1; i <= itemCount; i++ ) {
 		image: '',
 	} );
 }
-
+const overallBorderAttributes = getBorderAttributes( 'btn', {
+	borderStyle: 'solid',
+	borderTopWidth: 1,
+	borderRightWidth: 1,
+	borderBottomWidth: 1,
+	borderLeftWidth: 1,
+	borderTopLeftRadius: 6,
+	borderTopRightRadius: 6,
+	borderBottomLeftRadius: 6,
+	borderBottomRightRadius: 6,
+} );
 const attributes = {
 	test_item_count: {
 		type: 'number',
@@ -620,29 +630,16 @@ const attributes = {
 	},
 	borderStyle: {
 		type: 'string',
-		UAGCopyPaste: {
-			styleType: 'desc-border-style'
-		},
 		default: 'none',
 	},
 	borderWidth: {
 		type: 'number',
-		UAGCopyPaste: {
-			styleType: 'desc-border-width'
-		},
-		default: '1',
 	},
 	borderRadius: {
 		type: 'number',
-		UAGCopyPaste: {
-			styleType: 'desc-border-radius'
-		},
 	},
 	borderColor: {
 		type: 'string',
-		UAGCopyPaste: {
-			styleType: 'desc-border-color'
-		},
 	},
 	backgroundOpacity: {
 		type: 'number',
@@ -698,9 +695,6 @@ const attributes = {
 	},
 	borderHoverColor: {
 		type: 'string',
-		UAGCopyPaste: {
-			styleType: 'desc-border-hover-color'
-		},
 	},
 	overlayType: {
 		type: 'string',
@@ -1007,6 +1001,7 @@ const attributes = {
 			styleType: 'post-equal-height'
 		},
 	},
+	...overallBorderAttributes
 };
 
 export default attributes;

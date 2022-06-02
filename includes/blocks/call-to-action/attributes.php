@@ -7,7 +7,7 @@
  * @package uagb
  */
 
-$ctaBorderAttribute = UAGB_Block_Helper::uag_generate_border_attribute( 'cta' );
+$ctaBorderAttribute       = UAGB_Block_Helper::uag_generate_border_attribute( 'cta' );
 $secondCtaBorderAttribute = UAGB_Block_Helper::uag_generate_border_attribute( 'secondCta' );
 
 return array(
@@ -183,5 +183,5 @@ return array(
 	'buttonRightSpaceMobile'          => 5,
 	'buttonRightSpaceType'            => 'px',
 	$secondCtaBorderAttribute,
-	$ctaBorderAttribute
+	$ctaBorderAttribute,
 );

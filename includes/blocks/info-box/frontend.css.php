@@ -238,9 +238,9 @@ if ( 'button' === $attr['ctaType'] ) {
 	$selectors[' .uagb-ifb-button-wrapper .uagb-infobox-cta-link:hover svg'] = array(
 		'fill' => $attr['ctaLinkHoverColor'],
 	);
-	$selectors[' .uagb-infobox-cta-link'] = $ctaBorderCSS;
-	$t_selectors[' .uagb-infobox-cta-link'] = $ctaBorderCSSTablet;
-	$m_selectors[' .uagb-infobox-cta-link'] = $ctaBorderCSSMobile;
+	$selectors[' .uagb-infobox-cta-link']                                    = $ctaBorderCSS;
+	$t_selectors[' .uagb-infobox-cta-link']                                  = $ctaBorderCSSTablet;
+	$m_selectors[' .uagb-infobox-cta-link']                                  = $ctaBorderCSSMobile;
 
 }
 

@@ -62,14 +62,17 @@ $selectors = array(
 	' .uagb-marketing-btn__link:hover svg' => array(
 		'fill' => $icon_hover_color,
 	),
-	' .uagb-marketing-btn__link'           => array_merge(array(
-		'padding-left'   => UAGB_Helper::get_css_value( $btn_padding_left, $attr['paddingBtnUnit'] ),
-		'padding-right'  => UAGB_Helper::get_css_value( $btn_padding_right, $attr['paddingBtnUnit'] ),
-		'padding-top'    => UAGB_Helper::get_css_value( $btn_padding_top, $attr['paddingBtnUnit'] ),
-		'padding-bottom' => UAGB_Helper::get_css_value( $btn_padding_bottom, $attr['paddingBtnUnit'] ),
-	), $btnBorderCSS),
+	' .uagb-marketing-btn__link'           => array_merge(
+		array(
+			'padding-left'   => UAGB_Helper::get_css_value( $btn_padding_left, $attr['paddingBtnUnit'] ),
+			'padding-right'  => UAGB_Helper::get_css_value( $btn_padding_right, $attr['paddingBtnUnit'] ),
+			'padding-top'    => UAGB_Helper::get_css_value( $btn_padding_top, $attr['paddingBtnUnit'] ),
+			'padding-bottom' => UAGB_Helper::get_css_value( $btn_padding_bottom, $attr['paddingBtnUnit'] ),
+		),
+		$btnBorderCSS
+	),
 	' .uagb-marketing-btn__link:hover'     => array(
-		'border-color' => isset( $attr['borderHoverColor'] ) && !empty( $attr['borderHoverColor']) ? $attr['borderHoverColor'] : $attr['btnBorderHColor'],
+		'border-color' => isset( $attr['borderHoverColor'] ) && ! empty( $attr['borderHoverColor'] ) ? $attr['borderHoverColor'] : $attr['btnBorderHColor'],
 	),
 	'.uagb-marketing-btn__icon-after .uagb-marketing-btn__link svg' => array(
 		'margin-left' => UAGB_Helper::get_css_value( $attr['iconSpace'], 'px' ),
@@ -122,12 +125,15 @@ $m_selectors = array(
 		'width'  => UAGB_Helper::get_css_value( $attr['iconFontSizeMobile'], $attr['iconFontSizeType'] ),
 		'height' => UAGB_Helper::get_css_value( $attr['iconFontSizeMobile'], $attr['iconFontSizeType'] ),
 	),
-	' .uagb-marketing-btn__link'   => array_merge(array(
-		'padding-left'   => UAGB_Helper::get_css_value( $btn_padding_left_mobile, $attr['mobilePaddingBtnUnit'] ),
-		'padding-right'  => UAGB_Helper::get_css_value( $btn_padding_right_mobile, $attr['mobilePaddingBtnUnit'] ),
-		'padding-top'    => UAGB_Helper::get_css_value( $btn_padding_top_mobile, $attr['mobilePaddingBtnUnit'] ),
-		'padding-bottom' => UAGB_Helper::get_css_value( $btn_padding_bottom_mobile, $attr['mobilePaddingBtnUnit'] ),
-	), $btnBorderCSSMobile),
+	' .uagb-marketing-btn__link'   => array_merge(
+		array(
+			'padding-left'   => UAGB_Helper::get_css_value( $btn_padding_left_mobile, $attr['mobilePaddingBtnUnit'] ),
+			'padding-right'  => UAGB_Helper::get_css_value( $btn_padding_right_mobile, $attr['mobilePaddingBtnUnit'] ),
+			'padding-top'    => UAGB_Helper::get_css_value( $btn_padding_top_mobile, $attr['mobilePaddingBtnUnit'] ),
+			'padding-bottom' => UAGB_Helper::get_css_value( $btn_padding_bottom_mobile, $attr['mobilePaddingBtnUnit'] ),
+		),
+		$btnBorderCSSMobile
+	),
 	'.uagb-marketing-btn__icon-after .uagb-marketing-btn__link svg' => array(
 		'margin-left' => UAGB_Helper::get_css_value( $attr['iconSpaceMobile'], 'px' ),
 	),
@@ -147,12 +153,15 @@ $t_selectors = array(
 		'width'  => UAGB_Helper::get_css_value( $attr['iconFontSizeTablet'], $attr['iconFontSizeType'] ),
 		'height' => UAGB_Helper::get_css_value( $attr['iconFontSizeTablet'], $attr['iconFontSizeType'] ),
 	),
-	' .uagb-marketing-btn__link'   => array_merge(array(
-		'padding-left'   => UAGB_Helper::get_css_value( $btn_padding_left_tablet, $attr['tabletPaddingBtnUnit'] ),
-		'padding-right'  => UAGB_Helper::get_css_value( $btn_padding_right_tablet, $attr['tabletPaddingBtnUnit'] ),
-		'padding-top'    => UAGB_Helper::get_css_value( $btn_padding_top_tablet, $attr['tabletPaddingBtnUnit'] ),
-		'padding-bottom' => UAGB_Helper::get_css_value( $btn_padding_bottom_tablet, $attr['tabletPaddingBtnUnit'] ),
-	), $btnBorderCSSTablet),
+	' .uagb-marketing-btn__link'   => array_merge(
+		array(
+			'padding-left'   => UAGB_Helper::get_css_value( $btn_padding_left_tablet, $attr['tabletPaddingBtnUnit'] ),
+			'padding-right'  => UAGB_Helper::get_css_value( $btn_padding_right_tablet, $attr['tabletPaddingBtnUnit'] ),
+			'padding-top'    => UAGB_Helper::get_css_value( $btn_padding_top_tablet, $attr['tabletPaddingBtnUnit'] ),
+			'padding-bottom' => UAGB_Helper::get_css_value( $btn_padding_bottom_tablet, $attr['tabletPaddingBtnUnit'] ),
+		),
+		$btnBorderCSSTablet
+	),
 	'.uagb-marketing-btn__icon-after .uagb-marketing-btn__link svg' => array(
 		'margin-left' => UAGB_Helper::get_css_value( $attr['iconSpaceTablet'], 'px' ),
 	),

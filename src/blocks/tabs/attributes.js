@@ -9,7 +9,7 @@ const borderDefault = {
 	borderWidth: 1,
 	borderColor: '#e0e0e0',
 }
-const borderAttributes = getBorderAttributes( '', borderDefault );
+const borderAttributes = getBorderAttributes( 'tab', borderDefault );
 
 const attributes = {
 	block_id: {

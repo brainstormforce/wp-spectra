@@ -197,5 +197,5 @@ return array(
 	'prefixMarginLeftMobile'     => '',
 	'prefixMobileMarginUnit'     => 'px',
 	'prefixTabletMarginUnit'     => 'px',
-	...$ctaBorderAttribute
+	...$ctaBorderAttribute,
 );

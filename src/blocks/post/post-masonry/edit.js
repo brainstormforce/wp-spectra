@@ -7,7 +7,7 @@ import lazyLoader from '@Controls/lazy-loader';
 import styling from '.././styling';
 import { compose } from '@wordpress/compose';
 import TypographyControl from '@Components/typography';
-import Border from '@Components/border';
+import ResponsiveBorder from '@Components/responsive-border';
 import AdvancedPopColorControl from '@Components/color-control/advanced-pop-color-control.js';
 import InspectorTabs from '@Components/inspector-tabs/InspectorTabs.js';
 import InspectorTab, {
@@ -1056,50 +1056,13 @@ const UAGBPostMasonry = ( props ) => {
 								}
 								disableBottomSeparator={ false }
 							/>
-							<Border
-								disabledBorderTitle= {false}
+							<ResponsiveBorder
 								setAttributes={ setAttributes }
+								prefix={ 'paginationMasonry' }
+								attributes={ attributes }
+								deviceType={ deviceType }
 								disableBottomSeparator={ true }
-								borderStyle={ {
-									value: paginationMasonryBorderStyle,
-									label: 'paginationMasonryBorderStyle',
-									title: __(
-										'Style',
-										'ultimate-addons-for-gutenberg'
-									),
-								} }
-								borderWidth={ {
-									value: paginationMasonryBorderWidth,
-									label: 'paginationMasonryBorderWidth',
-									title: __(
-										'Width',
-										'ultimate-addons-for-gutenberg'
-									),
-								} }
-								borderRadius={ {
-									value: paginationMasonryBorderRadius,
-									label: 'paginationMasonryBorderRadius',
-									title: __(
-										'Radius',
-										'ultimate-addons-for-gutenberg'
-									),
-								} }
-								borderColor={ {
-									value: paginationMasonryBorderColor,
-									label: 'paginationMasonryBorderColor',
-									title: __(
-										'Color',
-										'ultimate-addons-for-gutenberg'
-									),
-								} }
-								borderHoverColor={ {
-									value: paginationMasonryBorderHColor,
-									label: 'paginationMasonryBorderHColor',
-									title: __(
-										'Hover Color',
-										'ultimate-addons-for-gutenberg'
-									),
-								} }
+								disabledBorderTitle= { true }
 							/>
 						</>
 					) }
@@ -2207,50 +2170,13 @@ const UAGBPostMasonry = ( props ) => {
 					} }
 					setAttributes={ setAttributes }
 				/>
-				<Border
-					disabledBorderTitle= {false}
+				<ResponsiveBorder
 					setAttributes={ setAttributes }
-					disableBottomSeparator={ false }
-					borderStyle={ {
-						value: borderStyle,
-						label: 'borderStyle',
-						title: __(
-							'Style',
-							'ultimate-addons-for-gutenberg'
-						),
-					} }
-					borderWidth={ {
-						value: borderWidth,
-						label: 'borderWidth',
-						title: __(
-							'Width',
-							'ultimate-addons-for-gutenberg'
-						),
-					} }
-					borderRadius={ {
-						value: borderRadius,
-						label: 'borderRadius',
-						title: __(
-							'Radius',
-							'ultimate-addons-for-gutenberg'
-						),
-					} }
-					borderColor={ {
-						value: borderColor,
-						label: 'borderColor',
-						title: __(
-							'Color',
-							'ultimate-addons-for-gutenberg'
-						),
-					} }
-					borderHoverColor={ {
-						value: borderHColor,
-						label: 'borderHColor',
-						title: __(
-							'Hover Color',
-							'ultimate-addons-for-gutenberg'
-						),
-					} }
+					prefix={ 'cta' }
+					attributes={ attributes }
+					deviceType={ deviceType }
+					disableBottomSeparator={ true }
+					disabledBorderTitle= { true }
 				/>
 				<SpacingControl
 					{ ...props }

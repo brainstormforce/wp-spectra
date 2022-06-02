@@ -314,7 +314,6 @@ const attributes = {
 	},
 	borderWidth: {
 		type: 'number',
-		default: 1,
 	},
 	borderRadius: {
 		type: 'number',

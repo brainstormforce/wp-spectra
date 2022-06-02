@@ -134,5 +134,5 @@ return array(
 	'textColor'                      => 'inherit',
 	'linkColor'                      => '',
 	'linkHoverColor'                 => '',
-	$borderAttribute
+	$borderAttribute,
 );

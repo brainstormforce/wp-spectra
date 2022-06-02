@@ -1,8 +1,14 @@
 import { getBorderAttributes } from '@Controls/generateAttributes';
 const borderDefault = {
 	borderStyle: 'solid',
-	borderWidth: 1,
-	borderRadius: 2,
+	borderTopWidth: 1,
+	borderRightWidth: 1,
+	borderBottomWidth: 1,
+	borderLeftWidth: 1,
+	borderTopRadius: 2,
+	borderRightRadius: 2,
+	borderBottomRadius: 2,
+	borderLeftRadius: 2,
 	borderColor: '',
 	borderHoverColor: '',
 }

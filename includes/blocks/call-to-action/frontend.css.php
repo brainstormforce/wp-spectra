@@ -108,7 +108,7 @@ $selectors['.wp-block-uagb-call-to-action a.uagb-cta-second__button']       = ar
 	'padding-right'    => UAGB_Helper::get_css_value( $attr['secondCtaRightPadding'], $attr['secondCtaPaddingUnit'] ),
 	'align-self'       => 'top' === $attr['buttonAlign'] ? 'flex-start' : 'center',
 	'height'           => 'fit-content',
-	$secondCtaBorderCSS
+	$secondCtaBorderCSS,
 );
 $selectors['.wp-block-uagb-call-to-action a.uagb-cta-second__button:hover'] = array(
 	'color'            => $attr['secondCtaHoverColor'],
@@ -159,7 +159,7 @@ if ( 'button' === $attr['ctaType'] ) {
 		'padding-bottom'   => UAGB_Helper::get_css_value( $btnPaddingBottom, $attr['ctaPaddingUnit'] ),
 		'padding-left'     => UAGB_Helper::get_css_value( $btnPaddingLeft, $attr['ctaPaddingUnit'] ),
 		'padding-right'    => UAGB_Helper::get_css_value( $btnPaddingRight, $attr['ctaPaddingUnit'] ),
-		$ctaBorderCSS
+		$ctaBorderCSS,
 	);
 	$selectors[' .uagb-cta__button-wrapper a.uagb-cta-typeof-button:hover']           = array(
 		'color'            => $attr['ctaLinkHoverColor'],
@@ -173,7 +173,7 @@ if ( 'button' === $attr['ctaType'] ) {
 		'padding-bottom'   => UAGB_Helper::get_css_value( $btnPaddingBottom, $attr['ctaPaddingUnit'] ),
 		'padding-left'     => UAGB_Helper::get_css_value( $btnPaddingLeft, $attr['ctaPaddingUnit'] ),
 		'padding-right'    => UAGB_Helper::get_css_value( $btnPaddingRight, $attr['ctaPaddingUnit'] ),
-		$ctaBorderCSS
+		$ctaBorderCSS,
 	);
 	$selectors['.wp-block-uagb-call-to-action a.uagb-cta__button-link-wrapper:hover'] = array(
 		'color'            => $attr['ctaLinkHoverColor'],
@@ -587,14 +587,14 @@ if ( 'desktop' === $attr['stack'] ) {
 		'margin-left' => UAGB_Helper::get_css_value( $attr['buttonRightSpaceMobile'], $attr['buttonRightSpaceType'] ),
 	);
 }
-$t_selectors['.wp-block-uagb-call-to-action a.uagb-cta-second__button']       = array(
-	$secondCtaBorderCSSTablet
+$t_selectors['.wp-block-uagb-call-to-action a.uagb-cta-second__button'] = array(
+	$secondCtaBorderCSSTablet,
 );
-$m_selectors['.wp-block-uagb-call-to-action a.uagb-cta-second__button']       = array(
-	$secondCtaBorderCSSMobile
+$m_selectors['.wp-block-uagb-call-to-action a.uagb-cta-second__button'] = array(
+	$secondCtaBorderCSSMobile,
 );
-$t_selectors[' .uagb-cta__button-wrapper a.uagb-cta-typeof-button']                 = $ctaBorderCSSTablet;
-$m_selectors[' .uagb-cta__button-wrapper a.uagb-cta-typeof-button']                 = $ctaBorderCSSMobile;
+$t_selectors[' .uagb-cta__button-wrapper a.uagb-cta-typeof-button']     = $ctaBorderCSSTablet;
+$m_selectors[' .uagb-cta__button-wrapper a.uagb-cta-typeof-button']     = $ctaBorderCSSMobile;
 $combined_selectors = array(
 	'desktop' => $selectors,
 	'tablet'  => $t_selectors,

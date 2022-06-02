@@ -7,14 +7,11 @@
 
 import generateCSS from '@Controls/generateCSS';
 import generateCSSUnit from '@Controls/generateCSSUnit';
+import generateBorderCSS from '@Controls/generateBorderCSS';
 
 function styling( props ) {
 	const {
-		borderWidth,
-		borderStyle,
-		borderColor,
-		borderHColor,
-		borderRadius,
+		btnborderHColor,
 		align,
 
 		titleColor,
@@ -167,10 +164,6 @@ function styling( props ) {
 		paginationAlign,
 		paginationTextColor,
 		paginationMasonryBgColor,
-		paginationMasonryBorderStyle,
-		paginationMasonryBorderWidth,
-		paginationMasonryBorderRadius,
-		paginationMasonryBorderColor,
 		paginationMasonryBorderHColor,
 		paginationButtonPaddingType,
 		paginationTextHoverColor,
@@ -194,6 +187,14 @@ function styling( props ) {
 		highlightedTextColor,
 		highlightedTextBgColor
 	} = props.attributes;
+
+	const borderCSS = generateBorderCSS( props.attributes, 'btn' );
+	const borderCSSTablet = generateBorderCSS( props.attributes, 'btn', 'tablet' );
+	const borderCSSMobile = generateBorderCSS( props.attributes, 'btn', 'mobile' );
+
+	const paginationMasonryBorderCSS = generateBorderCSS( props.attributes, 'paginationMasonry' );
+	const paginationMasonryBorderCSSTablet = generateBorderCSS( props.attributes, 'paginationMasonry', 'tablet' );
+	const paginationMasonryBorderCSSMobile = generateBorderCSS( props.attributes, 'paginationMasonry', 'mobile' );
 
 	let mobileSelectors = {};
 	let tabletSelectors = {};
@@ -422,20 +423,17 @@ function styling( props ) {
 		'text-decoration': ctaDecoration,
 		'padding-left': generateCSSUnit( paddingBtnLeft, paddingBtnUnit ),
 		'padding-right': generateCSSUnit( paddingBtnRight, paddingBtnUnit ),
-		'border-width': generateCSSUnit( borderWidth, 'px' ),
-		'border-radius': generateCSSUnit( borderRadius, 'px' ),
-		'border-color': borderColor,
-		'border-style': borderStyle,
+		...borderCSS
 	};
 	selectors[ ' .uagb-post__text .uagb-post__cta:hover' ] = {
 		'color': ctaHColor,
 		'background': ctaBgHColor,
-		'border-color': borderHColor,
+		'border-color': btnborderHColor,
 	};
 	selectors[ ' .uagb-post__text .uagb-post__cta:hover a' ] = {
 		'color': ctaHColor,
 		'background': ctaBgHColor,
-		'border-color': borderHColor,
+		'border-color': btnborderHColor,
 	};
 
 	if ( true === postPagination ) {
@@ -565,7 +563,7 @@ function styling( props ) {
 				};
 			}
 			if (
-				'undefined' === typeof paginationBorderActiveColor &&
+				'undefined' === typeof paginationBorderHColor &&
 				'undefined' === typeof paginationActiveColor
 			) {
 				selectors[
@@ -838,16 +836,6 @@ function styling( props ) {
 			] = {
 				'color': paginationTextColor,
 				'background-color': paginationMasonryBgColor,
-				'border-style': paginationMasonryBorderStyle,
-				'border-width': generateCSSUnit(
-					paginationMasonryBorderWidth,
-					'px'
-				),
-				'border-radius': generateCSSUnit(
-					paginationMasonryBorderRadius,
-					'px'
-				),
-				'border-color': paginationMasonryBorderColor,
 				'font-size': generateCSSUnit(
 					paginationFontSize,
 					'px'
@@ -868,6 +856,7 @@ function styling( props ) {
 					paginationButtonPaddingLeft,
 					paginationButtonPaddingType
 				),
+				...paginationMasonryBorderCSS
 			};
 			selectors[
 				' .uagb-post__load-more-wrap .uagb-post-pagination-button:hover'
@@ -949,6 +938,10 @@ function styling( props ) {
 			mobilePaddingUnit
 		),
 	};
+	tabletSelectors[ ' .uagb-post__cta .uagb-text-link' ] = borderCSSTablet;
+	mobileSelectors[ ' .uagb-post__cta .uagb-text-link' ] = borderCSSMobile;
+	tabletSelectors[ ' .uagb-post__load-more-wrap .uagb-post-pagination-button' ] = paginationMasonryBorderCSSTablet;
+	mobileSelectors[ ' .uagb-post__load-more-wrap .uagb-post-pagination-button' ] = paginationMasonryBorderCSSMobile;
 
 	let stylingCss = '';
 

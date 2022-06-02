@@ -84,7 +84,7 @@ $bottom_margin_mobile = ! empty( $attr['bottomMarginMobile'] ) ? $attr['bottomMa
 
 $column_gap_mobile = ! empty( $attr['columnGapMobile'] ) ? $attr['columnGapMobile'] : $column_gap_tablet;
 
-$container_css                  = array(
+$container_css = array(
 	'min-height'      => UAGB_Helper::get_css_value( $attr['minHeightDesktop'], $attr['minHeightType'] ),
 	'flex-direction'  => $attr['directionDesktop'],
 	'align-items'     => $attr['alignItemsDesktop'],
@@ -121,7 +121,7 @@ $background_video_opacity_value = ( isset( $attr['backgroundVideoOpacity'] ) && 
 $selectors = array(
 	'.uagb-block-' . $id                                  => $container_css, // phpcs:ignore WordPress.WP.GlobalVariablesOverride.Prohibited
 	'.uagb-block-' . $id . ':hover'                       => array(
-		'border-color' => $attr['borderHoverColor'],
+		'border-color' => $attr['containerBorderHColor'],
 	),
 	'.uagb-block-' . $id . '.wp-block-uagb-container'     => array(
 		'color' => $attr['textColor'],
@@ -196,7 +196,7 @@ $container_tablet_css    = array(
 	'margin-bottom'   => UAGB_Helper::get_css_value( $bottom_margin_tablet, $attr['marginType'] ),
 	'margin-left'     => UAGB_Helper::get_css_value( $left_margin_tablet, $attr['marginType'] ),
 	'margin-right'    => UAGB_Helper::get_css_value( $right_margin_tablet, $attr['marginType'] ),
-	$borderCSSTablet
+	$borderCSSTablet,
 );
 $container_tablet_css    = array_merge( $container_tablet_css, $container_bg_css_tablet );
 
@@ -248,7 +248,7 @@ $container_mobile_css    = array(
 	'margin-bottom'   => UAGB_Helper::get_css_value( $bottom_margin_mobile, $attr['marginType'] ),
 	'margin-left'     => UAGB_Helper::get_css_value( $left_margin_mobile, $attr['marginType'] ),
 	'margin-right'    => UAGB_Helper::get_css_value( $right_margin_mobile, $attr['marginType'] ),
-	$borderCSSMobile
+	$borderCSSMobile,
 );
 $container_mobile_css    = array_merge( $container_mobile_css, $container_bg_css_mobile );
 

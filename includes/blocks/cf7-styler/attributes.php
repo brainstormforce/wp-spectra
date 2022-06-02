@@ -6,20 +6,20 @@
  *
  * @package uagb
  */
-$fieldBorderDefaults = array(
-	'borderStyle'              => 'solid',
-	'borderWidth'              => 1,
-	'borderRadius'             => 0,
-	'borderColor'              => '#eeeeee',
-	'borderFocusColor' => ''
+$fieldBorderDefaults   = array(
+	'borderStyle'      => 'solid',
+	'borderWidth'      => 1,
+	'borderRadius'     => 0,
+	'borderColor'      => '#eeeeee',
+	'borderFocusColor' => '',
 );
-$fieldBorderAttribute = UAGB_Block_Helper::uag_generate_border_attribute( 'field', $fieldBorderDefaults );
-$buttonBorderDefaults = array(
-	'borderStyle'             => 'solid',
-	'borderWidth'             => 1,
-	'borderRadius'            => 0,
-	'borderColor'             => '#333',
-	'borderHoverColor'        => '',
+$fieldBorderAttribute  = UAGB_Block_Helper::uag_generate_border_attribute( 'field', $fieldBorderDefaults );
+$buttonBorderDefaults  = array(
+	'borderStyle'      => 'solid',
+	'borderWidth'      => 1,
+	'borderRadius'     => 0,
+	'borderColor'      => '#333',
+	'borderHoverColor' => '',
 );
 $buttonBorderAttribute = UAGB_Block_Helper::uag_generate_border_attribute( 'button', $buttonBorderDefaults );
 
@@ -200,5 +200,5 @@ return array(
 	'fieldPaddingTypeMobile'        => 'px',
 	'fieldSpacingLink'              => false,
 	$fieldBorderAttribute,
-	$buttonBorderAttribute
+	$buttonBorderAttribute,
 );
