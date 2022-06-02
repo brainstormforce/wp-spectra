@@ -1132,25 +1132,25 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 		/**
 		 * Return the Current Attribute or the Default Attribute.
 		 *
-		 * @param array  $currentValue  The current variable / attribute that is altered by settings.
+		 * @param array  $current_value  The current variable / attribute that is altered by settings.
 		 * @param string $key           The key of the default attribute for that setting.
-		 * @param string $blockName     The name of the block.
+		 * @param string $block_name     The name of the block.
 		 */
-		public static function get_attribute_fallback( $currentValue, $key, $blockName ) {
+		public static function get_attribute_fallback( $current_value, $key, $block_name ) {
 			$default = self::get_block_default_attributes( $block_name );
-			return isset( $currentValue ) ? $currentValue : $default[ $key ];
+			return isset( $current_value ) ? $current_value : $default[ $key ];
 		}
 
 		/**
 		 * Return the Current Attribute or the Default Attribute for Numeric Data.
 		 *
-		 * @param array  $currentValue  The current variable / attribute that is altered by settings.
+		 * @param array  $current_value  The current variable / attribute that is altered by settings.
 		 * @param string $key           The key of the default attribute for that setting.
-		 * @param string $blockName     The name of the block.
+		 * @param string $block_name     The name of the block.
 		 */
-		public static function get_fallback_number( $currentValue, $key, $blockName ) {
+		public static function get_fallback_number( $current_value, $key, $block_name ) {
 			$default = self::get_block_default_attributes( $block_name );
-			return is_numeric( $currentValue ) ? $currentValue : $default[ $key ];
+			return is_numeric( $current_value ) ? $current_value : $default[ $key ];
 		}
 	}
 }
