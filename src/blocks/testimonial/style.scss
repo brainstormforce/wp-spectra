@@ -213,12 +213,12 @@
 		&.uagb-tm__arrow-outside {
 
 			.slick-prev {
-				left: 15px;
+				left: -10px;
 				z-index: 1;
 			}
 
 			.slick-next {
-				right: 15px;
+				right: -10px;
 			}
 		}
 	}
