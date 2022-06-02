@@ -10,7 +10,7 @@ import maybeGetColorForVariable from '@Controls/maybeGetColorForVariable';
 
 function styling( props ) {
 	const { attributes } = props;
-	const {
+	let {
 		block_id,
 		widthDesktop,
 		widthTablet,
@@ -64,6 +64,12 @@ function styling( props ) {
 		boxShadowBlur,
 		boxShadowSpread,
 		boxShadowPosition,
+		boxShadowColorHover,
+		boxShadowHOffsetHover,
+		boxShadowVOffsetHover,
+		boxShadowBlurHover,
+		boxShadowSpreadHover,
+		boxShadowPositionHover,
 
 		topPaddingDesktop,
 		bottomPaddingDesktop,
@@ -135,6 +141,29 @@ function styling( props ) {
 		linkHoverColor,
 	} = attributes;
 
+	topPaddingTablet = topPaddingTablet ? topPaddingTablet : topPaddingDesktop;
+	topPaddingMobile = topPaddingMobile ? topPaddingMobile : topPaddingTablet;
+
+	bottomPaddingTablet = bottomPaddingTablet ? bottomPaddingTablet : bottomPaddingDesktop;
+	bottomPaddingMobile = bottomPaddingMobile ? bottomPaddingMobile : bottomPaddingTablet;
+
+	leftPaddingTablet = leftPaddingTablet ? leftPaddingTablet : leftPaddingDesktop;
+	leftPaddingMobile = leftPaddingMobile ? leftPaddingMobile : leftPaddingTablet;
+
+	rightPaddingTablet = rightPaddingTablet ? rightPaddingTablet : rightPaddingDesktop;
+	rightPaddingMobile = rightPaddingMobile ? rightPaddingMobile : rightPaddingTablet;
+
+	topMarginTablet = topMarginTablet ? topMarginTablet : topMarginDesktop;
+	topMarginMobile = topMarginMobile ? topMarginMobile : topMarginTablet;
+
+	bottomMarginTablet = bottomMarginTablet ? bottomMarginTablet : bottomMarginDesktop;
+	bottomMarginMobile = bottomMarginMobile ? bottomMarginMobile : bottomMarginTablet;
+
+	leftMarginTablet = leftMarginTablet ? leftMarginTablet : leftMarginDesktop;
+	leftMarginMobile = leftMarginMobile ? leftMarginMobile : leftMarginTablet;
+
+	rightMarginTablet = rightMarginTablet ? rightMarginTablet : rightMarginDesktop;
+	rightMarginMobile = rightMarginMobile ? rightMarginMobile : rightMarginTablet;
 
 	const containerFullWidth = '100vw';
 
@@ -216,6 +245,12 @@ function styling( props ) {
 		boxShadowPositionCSS = '';
 	}
 
+	let boxShadowPositionCSSHover = boxShadowPositionHover;
+
+	if ( 'outset' === boxShadowPositionHover ) {
+		boxShadowPositionCSSHover = '';
+	}
+
 	const containerCSS = {
 		'padding-top': generateCSSUnit( topPaddingDesktop, paddingType ),
 		'padding-bottom': generateCSSUnit( bottomPaddingDesktop, paddingType ),
@@ -240,6 +275,10 @@ function styling( props ) {
 	selectors['.wp-block'] = containerCSS;
 	selectors['.wp-block:hover'] = {
 		'border-color': borderHoverColor,
+		'box-shadow':
+		generateCSSUnit( boxShadowHOffsetHover, 'px' ) + ' ' + generateCSSUnit( boxShadowVOffsetHover, 'px' ) +	' ' +
+		generateCSSUnit( boxShadowBlurHover, 'px' ) + ' ' +	generateCSSUnit( boxShadowSpreadHover, 'px' ) + ' ' +
+		boxShadowColorHover + ' ' +	boxShadowPositionCSSHover,
 	};
 
 	selectors[' > .wp-block-uagb-container > .uagb-container-inner-blocks-wrap > .block-editor-inner-blocks > .block-editor-block-list__layout'] = {
@@ -346,6 +385,7 @@ function styling( props ) {
 			'align-content' : alignContentTablet,
 			'row-gap' : generateCSSUnit( rowGapTablet, rowGapTypeTablet ),
 			'column-gap' : generateCSSUnit( columnGapTablet, columnGapTypeTablet ),
+			'min-height' : generateCSSUnit( minHeightTablet, minHeightType ),
 		},
 		'.block-editor-block-list__block' : {
 			'min-height' : generateCSSUnit( minHeightTablet, minHeightType ),
@@ -403,6 +443,7 @@ function styling( props ) {
 			'align-content' : alignContentMobile,
 			'row-gap' : generateCSSUnit( rowGapMobile, rowGapTypeMobile ),
 			'column-gap' : generateCSSUnit( columnGapMobile, columnGapTypeMobile ),
+			'min-height' : generateCSSUnit( minHeightMobile, minHeightType ),
 		},
 		'.block-editor-block-list__block' : {
 			'min-height' : generateCSSUnit( minHeightMobile, minHeightType ),
