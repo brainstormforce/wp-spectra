@@ -4,8 +4,12 @@
 
 import generateCSS from '@Controls/generateCSS';
 import generateCSSUnit from '@Controls/generateCSSUnit';
+import { getFallbackNumber } from '@Controls/getAttributeFallback';
 
 function styling( props ) {
+
+	const blockName = props.name.replace( 'uagb/', '' );
+
 	const {
 		align,
 		gap,
@@ -63,21 +67,33 @@ function styling( props ) {
 		alignment = 'center';
 	}
 
-	const editorGap = undefined !== typeof gap && '' !== gap ? gap : 15;
-	const editorGapTablet = undefined !== typeof gapTablet && '' !== gapTablet ? gapTablet : 15;
-	const editorGapMobile = undefined !== typeof gapMobile && '' !== gapMobile ? gapMobile : 15;
+	const editorGap = undefined !== typeof getFallbackNumber( gap, 'gap', blockName ) && '' !== getFallbackNumber( gap, 'gap', blockName ) ?
+											getFallbackNumber( gap, 'gap', blockName ) :
+											15;
+	const editorGapTablet = undefined !== typeof getFallbackNumber( gapTablet, 'gapTablet', blockName ) && '' !== getFallbackNumber( gapTablet, 'gapTablet', blockName ) ?
+											getFallbackNumber( gapTablet, 'gapTablet', blockName ) :
+											15;
+	const editorGapMobile = undefined !== typeof getFallbackNumber( gapMobile, 'gapMobile', blockName ) && '' !== getFallbackNumber( gapMobile, 'gapMobile', blockName ) ?
+											getFallbackNumber( gapMobile, 'gapMobile', blockName ) :
+											15;
 
 	selectors = {
 		' .wp-block-uagb-icon-list-child .uagb-icon-list__source-wrap': {
-			'padding': generateCSSUnit( bgSize, bgSizeType ),
-			'border-radius': generateCSSUnit( borderRadius, borderRadiusType ),
+			'padding': generateCSSUnit( getFallbackNumber( bgSize, 'bgSize', blockName ), bgSizeType ),
+			'border-radius': generateCSSUnit( getFallbackNumber( borderRadius, 'borderRadius', blockName ), borderRadiusType ),
 			'border-style':
-				0 === border || undefined === border ? 'none' : 'solid',
-			'border-width': generateCSSUnit( border, borderType ),
+				0 === getFallbackNumber( border, 'border', blockName ) ||
+					undefined === getFallbackNumber( border, 'border', blockName ) ?
+					'none' :
+					'solid',
+			'border-width': generateCSSUnit( getFallbackNumber( border, 'border', blockName ), borderType ),
 			'align-self' : iconPosition === 'top' ? 'flex-start' : 'center'
 		},
 		' .uagb-icon-list__source-image': {
-			'width': generateCSSUnit( size, sizeType ),
+			'width': generateCSSUnit(
+						getFallbackNumber( size, 'size', blockName ),
+						sizeType
+					),
 		},
 		' .uagb-icon-list__wrap .block-editor-inner-blocks': {
 			'text-align': align,
@@ -86,29 +102,62 @@ function styling( props ) {
 
 	mobileSelectors = {
 		' .uagb-icon-list__source-image': {
-			'width': generateCSSUnit( sizeMobile, sizeType ),
+			'width': generateCSSUnit(
+				getFallbackNumber( sizeMobile, 'sizeMobile', blockName ),
+				sizeType
+			),
 		},
 	};
 
 	tabletSelectors = {
 		' .uagb-icon-list__source-image': {
-			'width': generateCSSUnit( sizeTablet, sizeType ),
+			'width': generateCSSUnit(
+					getFallbackNumber( sizeTablet, 'sizeTablet', blockName ),
+					sizeType
+				),
 		},
 	};
 	selectors[ ' .uagb-icon-list__source-wrap svg' ] = {
-		'width': generateCSSUnit( size, sizeType ),
-		'height': generateCSSUnit( size, sizeType ),
-		'font-size': generateCSSUnit( size, sizeType ),
+		'width': generateCSSUnit(
+					getFallbackNumber( size, 'size', blockName ),
+					sizeType
+				),
+		'height': generateCSSUnit(
+					getFallbackNumber( size, 'size', blockName ),
+					sizeType
+				),
+		'font-size': generateCSSUnit(
+					getFallbackNumber( size, 'size', blockName ),
+					sizeType
+				),
 	};
 	tabletSelectors[ ' .uagb-icon-list__source-wrap svg' ] = {
-		'width': generateCSSUnit( sizeTablet, sizeType ),
-		'height': generateCSSUnit( sizeTablet, sizeType ),
-		'font-size': generateCSSUnit( sizeTablet, sizeType ),
+		'width': generateCSSUnit(
+					getFallbackNumber( sizeTablet, 'sizeTablet', blockName ),
+					sizeType
+				),
+		'height': generateCSSUnit(
+					getFallbackNumber( sizeTablet, 'sizeTablet', blockName ),
+					sizeType
+				),
+		'font-size': generateCSSUnit(
+					getFallbackNumber( sizeTablet, 'sizeTablet', blockName ),
+					sizeType
+				),
 	};
 	mobileSelectors[' .uagb-icon-list__source-wrap svg' ] = {
-		'width': generateCSSUnit( sizeMobile, sizeType ),
-		'height': generateCSSUnit( sizeMobile, sizeType ),
-		'font-size': generateCSSUnit( sizeMobile, sizeType ),
+		'width': generateCSSUnit(
+				getFallbackNumber( sizeMobile, 'sizeMobile', blockName ),
+				sizeType
+			),
+		'height': generateCSSUnit(
+				getFallbackNumber( sizeMobile, 'sizeMobile', blockName ),
+				sizeType
+			),
+		'font-size': generateCSSUnit(
+				getFallbackNumber( sizeMobile, 'sizeMobile', blockName ),
+				sizeType
+			),
 	};
 	if ( 'horizontal' === icon_layout ) {
 		if ( 'tablet' === stack ) {
@@ -205,17 +254,26 @@ function styling( props ) {
 		selectors[
 			' .uagb-icon-list__source-wrap'
 		] = {
-			'margin-left': generateCSSUnit( inner_gap, innerGapType ),
+			'margin-left': generateCSSUnit(
+				getFallbackNumber( inner_gap, 'inner_gap', blockName ),
+				innerGapType
+			),
 		};
 		mobileSelectors[
 			' .uagb-icon-list__source-wrap'
 		] = {
-			'margin-left': generateCSSUnit( innerGapMobile, innerGapType ),
+			'margin-left': generateCSSUnit(
+				getFallbackNumber( innerGapMobile, 'innerGapMobile', blockName ),
+				innerGapType
+			),
 		};
 		tabletSelectors[
 			' .uagb-icon-list__source-wrap'
 		] = {
-			'margin-left': generateCSSUnit( innerGapTablet, innerGapType ),
+			'margin-left': generateCSSUnit(
+				getFallbackNumber( innerGapTablet, 'innerGapTablet', blockName ),
+				innerGapType
+			),
 		};
 		selectors[ ' .wp-block-uagb-icon-list-child ' ] = {
 			'flex-direction': 'row-reverse',
@@ -224,17 +282,26 @@ function styling( props ) {
 		selectors[
 			' .uagb-icon-list__source-wrap'
 		] = {
-			'margin-right': generateCSSUnit( inner_gap, innerGapType ),
+			'margin-right': generateCSSUnit(
+				getFallbackNumber( inner_gap, 'inner_gap', blockName ),
+				innerGapType
+			),
 		};
 		mobileSelectors[
 			' .uagb-icon-list__source-wrap'
 		] = {
-			'margin-right': generateCSSUnit( innerGapMobile, innerGapType ),
+			'margin-right': generateCSSUnit(
+				getFallbackNumber( innerGapMobile, 'innerGapMobile', blockName ),
+				innerGapType
+			),
 		};
 		tabletSelectors[
 			' .uagb-icon-list__source-wrap'
 		] = {
-			'margin-right': generateCSSUnit( innerGapTablet, innerGapType ),
+			'margin-right': generateCSSUnit(
+				getFallbackNumber( innerGapTablet, 'innerGapTablet', blockName ),
+				innerGapType
+			),
 		};
 	}
 
@@ -259,17 +326,17 @@ function styling( props ) {
 	};
 
 	mobileSelectors[ ' .wp-block-uagb-icon-list-child .uagb-icon-list__source-wrap' ] = {
-		'border-radius': generateCSSUnit( borderRadiusMobile, borderRadiusType ),
-		'padding': generateCSSUnit( bgSizeMobile, 'px' ),
-		'border-style':	0 === borderMobile || undefined === borderMobile ? 'none' : 'solid',
-		'border-width': generateCSSUnit( borderMobile, borderType ),
+		'border-radius': generateCSSUnit( getFallbackNumber( borderRadiusMobile, 'borderRadiusMobile', blockName ), borderRadiusType ),
+		'padding': generateCSSUnit( getFallbackNumber( bgSizeMobile, 'bgSizeMobile', blockName ), 'px' ),
+		'border-style':	0 === getFallbackNumber( borderMobile, 'borderMobile', blockName ) || undefined === getFallbackNumber( borderMobile, 'borderMobile', blockName ) ? 'none' : 'solid',
+		'border-width': generateCSSUnit( getFallbackNumber( borderMobile, 'borderMobile', blockName ), borderType ),
 	};
 
 	tabletSelectors[ ' .wp-block-uagb-icon-list-child .uagb-icon-list__source-wrap' ] = {
-		'border-radius': generateCSSUnit( borderRadiusTablet, borderRadiusType ),
-		'padding': generateCSSUnit( bgSizeTablet, 'px' ),
-		'border-style':	0 === borderTablet || undefined === borderTablet ? 'none' : 'solid',
-		'border-width': generateCSSUnit( borderTablet, borderType ),
+		'border-radius': generateCSSUnit( getFallbackNumber( borderRadiusTablet, 'borderRadiusTablet', blockName ), borderRadiusType ),
+		'padding': generateCSSUnit( getFallbackNumber( bgSizeTablet, 'bgSizeTablet', blockName ), 'px' ),
+		'border-style':	0 === getFallbackNumber( borderTablet, 'borderTablet', blockName ) || undefined === getFallbackNumber( borderTablet, 'borderTablet', blockName ) ? 'none' : 'solid',
+		'border-width': generateCSSUnit( getFallbackNumber( borderTablet, 'borderTablet', blockName ), borderType ),
 	};
 
 	let stylingCss = '';
