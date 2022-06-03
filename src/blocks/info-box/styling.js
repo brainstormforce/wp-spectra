@@ -211,14 +211,10 @@ function styling( props ) {
 		iconBorderWidth
 	} = props.attributes;
 
-	let box_sizing = ''
-
-	if ( '%' === iconSizeType ){
-		box_sizing = 'border-box'
-	}
-	else {
-		box_sizing = 'content-box'
-	}
+	let boxSizingIcon = ( '%' === iconSizeType ) ? 'border-box' : 'content-box'
+	let boxSizingImage = ( '%' === imageWidthUnit ) ? 'border-box' : 'content-box'
+	let boxSizingImageTablet = ( '%' === imageWidthUnitTablet ) ? 'border-box' : 'content-box'
+	let boxSizingImageMobile = ( '%' === imageWidthUnitMobile ) ? 'border-box' : 'content-box'
 
 	const selectors = {
 		// Icon css
@@ -477,9 +473,13 @@ function styling( props ) {
 			'margin-left': generateCSSUnit( separatorLeftMargin, seperatorSpaceUnit ),
 			'margin-right': generateCSSUnit( separatorRightMargin, seperatorSpaceUnit ),
 		},
-		' .uagb-infobox__content-wrap  .uagb-ifb-content img,svg': {
-			'box-sizing' : `${box_sizing} !important`,
-		}
+		// editor css is causing issue  thaat why i used important
+		' .uagb-infobox__content-wrap  .uagb-ifb-content svg': {
+			'box-sizing' : `${boxSizingIcon} !important`,
+		},
+		' .uagb-infobox__content-wrap  .uagb-ifb-content img': {
+			'box-sizing' : `${boxSizingImage} !important`,
+		},
 	};
 
 	if( 'Stacked' === iconView ) {
@@ -799,7 +799,10 @@ function styling( props ) {
 			'margin-top': generateCSSUnit( separatorMarginTopTablet, separatorTabletMarginUnit ),
 			'margin-left': generateCSSUnit( separatorMarginLeftTablet, separatorTabletMarginUnit ),
 			'margin-right': generateCSSUnit( separatorMarginRightTablet, separatorTabletMarginUnit ),
-		}
+		},
+		' .uagb-infobox__content-wrap  .uagb-ifb-content img': {
+			'box-sizing' : `${boxSizingImageTablet} !important`,
+		},
 	};
 
 	const mobileSelectors = {
@@ -1030,6 +1033,9 @@ function styling( props ) {
 				ctaFontSizeType
 			),
 			'width': generateCSSUnit( ctaFontSizeMobile, ctaFontSizeType ),
+		},
+		' .uagb-infobox__content-wrap  .uagb-ifb-content img': {
+			'box-sizing' : `${boxSizingImageMobile} !important`,
 		},
 	};
 
