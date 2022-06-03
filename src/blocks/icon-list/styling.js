@@ -78,8 +78,8 @@ function styling( props ) {
 
 	selectors = {
 		' .wp-block-uagb-icon-list-child .uagb-icon-list__source-wrap': {
-			'background': icon_bg_color + ' !important',
-			'border-color': icon_border_color + ' !important',
+			'background': icon_bg_color,
+			'border-color': icon_border_color,
 			'padding': generateCSSUnit( bgSize, bgSizeType ),
 			'border-radius': generateCSSUnit( borderRadius, borderRadiusType ),
 			'border-style':
@@ -94,22 +94,22 @@ function styling( props ) {
 			'text-align': align,
 		},
 		' .wp-block-uagb-icon-list-child .uagb-icon-list__source-wrap svg': {
-			'color': icon_color + ' !important',
-			'fill': icon_color + ' !important',
+			'color': icon_color,
+			'fill': icon_color,
 		},
 		' .wp-block-uagb-icon-list-child:hover .uagb-icon-list__source-wrap svg': {
-			'color': icon_hover_color + ' !important',
-			'fill': icon_hover_color + ' !important',
+			'color': icon_hover_color,
+			'fill': icon_hover_color,
 		},
 		' .wp-block-uagb-icon-list-child .uagb-icon-list__label': {
-			'color': label_color + ' !important',
+			'color': label_color,
 		},
 		' .wp-block-uagb-icon-list-child:hover .uagb-icon-list__label': {
-			'color': label_hover_color + ' !important',
+			'color': label_hover_color,
 		},
 		' .wp-block-uagb-icon-list-child:hover .uagb-icon-list__source-wrap': {
-			'background': icon_bg_hover_color + ' !important',
-			'border-color': icon_border_hover_color + ' !important',
+			'background': icon_bg_hover_color,
+			'border-color': icon_border_hover_color,
 		},
 	};
 
@@ -275,7 +275,7 @@ function styling( props ) {
 		'text-transform': fontTransform,
 		'font-weight': fontWeight,
 		'line-height': generateCSSUnit( lineHeight, lineHeightType ),
-		'color': label_color + ' !important',
+		'color': label_color,
 	};
 
 	mobileSelectors[ ' .wp-block-uagb-icon-list-child .uagb-icon-list__label' ] = {
