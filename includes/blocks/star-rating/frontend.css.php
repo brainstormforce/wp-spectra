@@ -10,6 +10,13 @@
 // Add fonts.
 UAGB_Block_JS::blocks_star_rating_gfont( $attr );
 
+$block_name = 'star-rating';
+
+$rating_fallback = UAGB_Block_Helper::get_fallback_number( $attr['rating'], 'rating', $block_name );
+$title_gap_fallback = UAGB_Block_Helper::get_fallback_number( $attr['titleGap'], 'titleGap', $block_name );
+$size_fallback = UAGB_Block_Helper::get_fallback_number( $attr['size'], 'size', $block_name );
+$gap_fallback = UAGB_Block_Helper::get_fallback_number( $attr['gap'], 'gap', $block_name );
+
 $t_selectors = array();
 $m_selectors = array();
 $selectors   = array();
@@ -31,13 +38,13 @@ if ( '' !== $attr['align'] ) {
 
 $selectors = array(
 	' .uag-star-rating'           => array(
-		'font-size' => UAGB_Helper::get_css_value( $attr['size'], 'px' ),
+		'font-size' => UAGB_Helper::get_css_value( $size_fallback, 'px' ),
 	),
 	' .uag-star-rating > span'    => array(
-		'margin-right' => UAGB_Helper::get_css_value( $attr['gap'], 'px' ),
+		'margin-right' => UAGB_Helper::get_css_value( $gap_fallback, 'px' ),
 		'color'        => $attr['unmarkedColor'],
 	),
-	' .uag-star:nth-child(-n+' . floor( $attr['rating'] ) . ')' => array(
+	' .uag-star:nth-child(-n+' . floor( $rating_fallback ) . ')' => array(
 		'color' => $attr['color'],
 	),
 	' .uag-star-rating__title'    => array(
@@ -132,7 +139,7 @@ if ( 'stack' === $attr['layoutMobile'] ) {
 	);
 }
 
-$selectors[' .uag-star-rating__title'][ $index ]          = UAGB_Helper::get_css_value( $attr['titleGap'], 'px' );
+$selectors[' .uag-star-rating__title'][ $index ]          = UAGB_Helper::get_css_value( $title_gap_fallback, 'px' );
 $t_selectors[' .uag-star-rating__title'][ $index_tablet ] = UAGB_Helper::get_css_value( $attr['titleGapTablet'], 'px' );
 $m_selectors[' .uag-star-rating__title'][ $index_mobile ] = UAGB_Helper::get_css_value( $attr['titleGapMobile'], 'px' );
 $t_selectors[' .uag-star-rating']                         = array(
@@ -148,18 +155,18 @@ $m_selectors[' .uag-star-rating > span']                  = array(
 	'margin-right' => UAGB_Helper::get_css_value( $attr['gapMobile'], 'px' ),
 );
 
-$remainder = ( $attr['rating'] - floor( $attr['rating'] ) );
+$remainder = ( $rating_fallback - floor( $rating_fallback ) );
 $width     = $remainder * 100;
 
 if ( 0 !== $width ) {
-	$selectors[ ' .uag-star:nth-child(' . ceil( $attr['rating'] ) . '):before' ] = array(
+	$selectors[ ' .uag-star:nth-child(' . ceil( $rating_fallback ) . '):before' ] = array(
 		'color'    => $attr['color'],
 		'width'    => UAGB_Helper::get_css_value( $width, '%' ),
 		'position' => 'absolute',
 		'content'  => "'★'",
 		'overflow' => 'hidden',
 	);
-	$selectors[ ' .uag-star:nth-child(' . ceil( $attr['rating'] ) . ')' ]        = array(
+	$selectors[ ' .uag-star:nth-child(' . ceil( $rating_fallback ) . ')' ]        = array(
 		'position' => 'relative',
 	);
 }
