@@ -9,6 +9,7 @@ import Company from './components/Company';
 import Description from './components/Description';
 import styles from './editor.lazy.scss';
 import { useDeviceType } from '@Controls/getPreviewType';
+import { getFallbackNumber } from '@Controls/getAttributeFallback';
 
 const Slider = lazy( () =>
 	import(
@@ -26,6 +27,7 @@ const Render = ( props ) => {
 
 	props = props.parentProps;
 	const deviceType = useDeviceType();
+	const blockName = props.name.replace( 'uagb/', '' );
 	const { className, setAttributes, attributes } = props;
 
 	// Setup the attributes.
@@ -61,7 +63,7 @@ const Render = ( props ) => {
 				style={ {
 					borderColor: arrowColor,
 					borderRadius: arrowBorderRadius,
-					borderWidth: arrowBorderSize,
+					borderWidth: getFallbackNumber( arrowBorderSize, 'arrowBorderSize', blockName ),
 				} }
 			>
 				{ UAGB_Block_Icons.carousel_right }
@@ -80,7 +82,7 @@ const Render = ( props ) => {
 				style={ {
 					borderColor: arrowColor,
 					borderRadius: arrowBorderRadius,
-					borderWidth: arrowBorderSize,
+					borderWidth: getFallbackNumber( arrowBorderSize, 'arrowBorderSize', blockName ),
 				} }
 			>
 				{ UAGB_Block_Icons.carousel_left }
@@ -99,13 +101,13 @@ const Render = ( props ) => {
 
 	const settings = {
 		accessibility: false,
-		slidesToShow: columns,
+		slidesToShow: getFallbackNumber( columns, 'columns', blockName ),
 		slidesToScroll: 1,
-		autoplaySpeed,
+		autoplaySpeed: getFallbackNumber( autoplaySpeed, 'autoplaySpeed', blockName ),
 		autoplay,
 		infinite: infiniteLoop,
 		pauseOnHover,
-		speed: transitionSpeed,
+		speed: getFallbackNumber( transitionSpeed, 'transitionSpeed', blockName ),
 		arrows,
 		dots,
 		rtl: false,
@@ -121,14 +123,14 @@ const Render = ( props ) => {
 			{
 				breakpoint: 1024,
 				settings: {
-					slidesToShow: tcolumns,
+					slidesToShow: getFallbackNumber( tcolumns, 'tcolumns', blockName ),
 					slidesToScroll: 1,
 				},
 			},
 			{
 				breakpoint: 767,
 				settings: {
-					slidesToShow: mcolumns,
+					slidesToShow: getFallbackNumber( mcolumns, 'mcolumns', blockName ),
 					slidesToScroll: 1,
 				},
 			},
@@ -152,7 +154,7 @@ const Render = ( props ) => {
 				<Slider
 					className={ classnames(
 						'is-carousel',
-						`uagb-tm__columns-${ columns }`,
+						`uagb-tm__columns-${ getFallbackNumber( columns, 'columns', blockName ) }`,
 						'uagb-tm__items'
 					) }
 					{ ...settings }
