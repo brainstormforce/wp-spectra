@@ -165,7 +165,6 @@ const attributes = {   // eslint-disable-line no-unused-vars
 	},
 	rowGapTablet                    : {
 		type    : 'number',
-		default : 20,
 		UAGCopyPaste: {
 			styleType: 'row-gap-tablet'
 		},
@@ -173,7 +172,6 @@ const attributes = {   // eslint-disable-line no-unused-vars
 	},
 	rowGapMobile                    : {
 		type    : 'number',
-		default : 20,
 		UAGCopyPaste: {
 			styleType: 'row-gap-mobile'
 		},
@@ -189,7 +187,6 @@ const attributes = {   // eslint-disable-line no-unused-vars
 	},
 	columnGapTablet                    : {
 		type    : 'number',
-		default : 20,
 		UAGCopyPaste: {
 			styleType: 'column-gap-tablet'
 		},
@@ -197,7 +194,6 @@ const attributes = {   // eslint-disable-line no-unused-vars
 	},
 	columnGapMobile                    : {
 		type    : 'number',
-		default : 20,
 		UAGCopyPaste: {
 			styleType: 'column-gap-mobile'
 		},
@@ -233,14 +229,12 @@ const attributes = {   // eslint-disable-line no-unused-vars
 	},
 	titleBottomSpaceMobile           : {
 		type    : 'number',
-		default : 5,
 		UAGCopyPaste: {
 			styleType: 'main-title-bottom-margin-mobile'
 		},
 	},
 	titleBottomSpaceTablet          : {
 		type    : 'number',
-		default : 5,
 		UAGCopyPaste: {
 			styleType: 'main-title-bottom-margin-tablet'
 		},

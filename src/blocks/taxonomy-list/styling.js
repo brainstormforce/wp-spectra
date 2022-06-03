@@ -4,8 +4,12 @@
 
 import generateCSS from '@Controls/generateCSS';
 import generateCSSUnit from '@Controls/generateCSSUnit';
+import { getFallbackNumber } from '@Controls/getAttributeFallback';
 
 function styling( props ) {
+
+	const blockName = props.name.replace( 'uagb/', '' );
+
 	const {
 		block_id,
 		columns,
@@ -102,6 +106,14 @@ function styling( props ) {
 		listDecoration,
 	} = props.attributes;
 
+	const listBottomMarginFallback = getFallbackNumber( listBottomMargin, 'listBottomMargin', blockName );
+	const columnsFallback = getFallbackNumber( columns, 'columns', blockName );
+	const tcolumnsFallback = getFallbackNumber( tcolumns, 'tcolumns', blockName );
+	const mcolumnsFallback = getFallbackNumber( mcolumns, 'mcolumns', blockName );
+	const titleBottomSpaceFallback = getFallbackNumber( titleBottomSpace, 'titleBottomSpace', blockName );
+	const rowGapFallback = getFallbackNumber( rowGap, 'rowGap', blockName );
+	const columnGapFallback = getFallbackNumber( columnGap, 'columnGap', blockName );
+
 	let selectors = {};
 	let tabletSelectors = {};
 	let mobileSelectors = {};
@@ -116,9 +128,9 @@ function styling( props ) {
 		//grid layout styling
 		'.uagb-taxonomy__outer-wrap.uagb-layout-grid': {
 			'display': 'grid',
-			'grid-template-columns': 'repeat(' + columns + ', 1fr)',
-			'grid-column-gap': generateCSSUnit( columnGap, 'px' ),
-			'grid-row-gap': generateCSSUnit( rowGap, 'px' ),
+			'grid-template-columns': 'repeat(' + columnsFallback + ', 1fr)',
+			'grid-column-gap': generateCSSUnit( columnGapFallback, 'px' ),
+			'grid-row-gap': generateCSSUnit( rowGapFallback, 'px' ),
 		},
 
 		'.uagb-layout-grid .uagb-taxomony-box': {
@@ -157,7 +169,7 @@ function styling( props ) {
 		'.uagb-layout-grid .uagb-tax-title': {
 			'color': titleColor,
 			'margin-top': '0',
-			'margin-bottom': generateCSSUnit( titleBottomSpace, 'px' ),
+			'margin-bottom': generateCSSUnit( titleBottomSpaceFallback, 'px' ),
 			'font-size': generateCSSUnit( titleFontSize, titleFontSizeType ),
 			'font-family': titleFontFamily,
 			'font-weight': titleFontWeight,
@@ -209,15 +221,15 @@ function styling( props ) {
 			'color': hoverlistTextColor,
 		},
 		'.uagb-layout-list .uagb-tax-list .uagb-tax-link-wrap': {
-			'margin-bottom': generateCSSUnit( listBottomMargin, 'px' ),
+			'margin-bottom': generateCSSUnit( listBottomMarginFallback, 'px' ),
 		},
 		/* start Backword */
 		//grid layout styling
 		' .uagb-taxonomy-wrap.uagb-layout-grid': {
 			'display': 'grid',
-			'grid-template-columns': 'repeat(' + columns + ', 1fr)',
-			'grid-column-gap': generateCSSUnit( columnGap, 'px' ),
-			'grid-row-gap': generateCSSUnit( rowGap, 'px' ),
+			'grid-template-columns': 'repeat(' + columnsFallback + ', 1fr)',
+			'grid-column-gap': generateCSSUnit( columnGapFallback, 'px' ),
+			'grid-row-gap': generateCSSUnit( rowGapFallback, 'px' ),
 		},
 		' .uagb-layout-grid .uagb-taxomony-box': {
 			'padding-top': generateCSSUnit(
@@ -254,7 +266,7 @@ function styling( props ) {
 		' .uagb-layout-grid .uagb-tax-title': {
 			'color': titleColor,
 			'margin-top': '0',
-			'margin-bottom': generateCSSUnit( titleBottomSpace, 'px' ),
+			'margin-bottom': generateCSSUnit( titleBottomSpaceFallback, 'px' ),
 			'font-size': generateCSSUnit( titleFontSize, titleFontSizeType ),
 			'font-family': titleFontFamily,
 			'font-weight': titleFontWeight,
@@ -304,7 +316,7 @@ function styling( props ) {
 			'color': hoverlistTextColor,
 		},
 		' .uagb-layout-list .uagb-tax-list .uagb-tax-link-wrap': {
-			'margin-bottom': generateCSSUnit( listBottomMargin, 'px' ),
+			'margin-bottom': generateCSSUnit( listBottomMarginFallback, 'px' ),
 		},
 		/* End Backword */
 	};
@@ -347,7 +359,7 @@ function styling( props ) {
 
 	mobileSelectors = {
 		'.uagb-taxonomy__outer-wrap.uagb-layout-grid': {
-			'grid-template-columns': 'repeat(' + mcolumns + ', 1fr)',
+			'grid-template-columns': 'repeat(' + mcolumnsFallback + ', 1fr)',
 			'grid-column-gap': generateCSSUnit( columnGapMobile , 'px' ),
 			'grid-row-gap': generateCSSUnit( rowGapMobile , 'px' ),
 		},
@@ -402,7 +414,7 @@ function styling( props ) {
 		},
 		/* For Backword */
 		' .uagb-taxonomy-wrap.uagb-layout-grid': {
-			'grid-template-columns': 'repeat(' + mcolumns + ', 1fr)',
+			'grid-template-columns': 'repeat(' + mcolumnsFallback + ', 1fr)',
 		},
 		' .uagb-layout-grid .uagb-taxomony-box': {
 			'padding-top': generateCSSUnit(
@@ -457,7 +469,7 @@ function styling( props ) {
 
 	tabletSelectors = {
 		'.uagb-taxonomy__outer-wrap.uagb-layout-grid': {
-			'grid-template-columns': 'repeat(' + tcolumns + ', 1fr)',
+			'grid-template-columns': 'repeat(' + tcolumnsFallback + ', 1fr)',
 			'grid-column-gap': generateCSSUnit( columnGapTablet , 'px' ),
 			'grid-row-gap': generateCSSUnit( rowGapTablet , 'px' ),
 		},
@@ -513,7 +525,7 @@ function styling( props ) {
 		},
 		/* For Backword. */
 		' .uagb-taxonomy-wrap.uagb-layout-grid': {
-			'grid-template-columns': 'repeat(' + tcolumns + ', 1fr)',
+			'grid-template-columns': 'repeat(' + tcolumnsFallback + ', 1fr)',
 		},
 		' .uagb-layout-grid .uagb-taxomony-box': {
 			'padding-top': generateCSSUnit(
