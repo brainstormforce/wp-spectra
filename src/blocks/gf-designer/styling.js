@@ -6,8 +6,12 @@
  */
 import generateCSS from '@Controls/generateCSS';
 import generateCSSUnit from '@Controls/generateCSSUnit';
+import { getFallbackNumber } from '@Controls/getAttributeFallback';
 
 function styling( props ) {
+
+	const blockName = props.name.replace( 'uagb/', '' );
+
 	const {
 		align,
 		titleDescAlignment,
@@ -268,7 +272,7 @@ function styling( props ) {
 			'border-color': fieldBorderColor,
 			'border-width': generateCSSUnit( fieldBorderWidth, fieldBorderWidthType ),
 			'border-radius': generateCSSUnit(
-				fieldBorderRadius,
+				getFallbackNumber( fieldBorderRadius, 'fieldBorderRadius', blockName ),
 				fieldBorderRadiusType
 			),
 			'margin-top': generateCSSUnit( fieldLabelSpacing, 'px' ),
@@ -305,7 +309,7 @@ function styling( props ) {
 			'border-color': fieldBorderColor,
 			'border-width': generateCSSUnit( fieldBorderWidth, fieldBorderWidthType ),
 			'border-radius': generateCSSUnit(
-				fieldBorderRadius,
+				getFallbackNumber( fieldBorderRadius, 'fieldBorderRadius', blockName ),
 				fieldBorderRadiusType
 			),
 			'margin-top': generateCSSUnit( fieldLabelSpacing, 'px' ),
@@ -375,7 +379,7 @@ function styling( props ) {
 			'border-color': fieldBorderColor,
 			'border-width': generateCSSUnit( fieldBorderWidth, fieldBorderWidthType ),
 			'border-radius': generateCSSUnit(
-				fieldBorderRadius,
+				getFallbackNumber( fieldBorderRadius, 'fieldBorderRadius', blockName ),
 				fieldBorderRadiusType
 			),
 			'border-style': fieldBorderStyle,
@@ -490,7 +494,7 @@ function styling( props ) {
 			'border-style': buttonBorderStyle,
 			'border-width': generateCSSUnit( buttonBorderWidth, buttonBorderWidthType ),
 			'border-radius': generateCSSUnit(
-				buttonBorderRadius,
+				getFallbackNumber( buttonBorderRadius, 'buttonBorderRadius', blockName ),
 				buttonBorderRadiusType
 			),
 			'padding-left': generateCSSUnit(
@@ -528,7 +532,7 @@ function styling( props ) {
 			'border-bottom-style': 'solid',
 			'border-bottom-width': generateCSSUnit( fieldBorderWidth, fieldBorderWidthType ),
 			'border-radius': generateCSSUnit(
-				fieldBorderRadius,
+				getFallbackNumber( fieldBorderRadius, 'fieldBorderRadius', blockName ),
 				fieldBorderRadiusType
 			),
 		},
@@ -548,7 +552,7 @@ function styling( props ) {
 			'border-bottom-style': 'solid',
 			'border-bottom-width': generateCSSUnit( fieldBorderWidth, fieldBorderWidthType ),
 			'border-radius': generateCSSUnit(
-				fieldBorderRadius,
+				getFallbackNumber( fieldBorderRadius, 'fieldBorderRadius', blockName ),
 				fieldBorderRadiusType
 			),
 		},
@@ -568,7 +572,7 @@ function styling( props ) {
 			'border-style': 'solid',
 			'border-width': generateCSSUnit( fieldBorderWidth, fieldBorderWidthType ),
 			'border-radius': generateCSSUnit(
-				fieldBorderRadius,
+				getFallbackNumber( fieldBorderRadius, 'fieldBorderRadius', blockName ),
 				fieldBorderRadiusType
 			),
 			'font-size': 'calc( ' + radioCheckSize + 'px / 1.2)',
@@ -588,7 +592,7 @@ function styling( props ) {
 			'border-style': 'solid',
 			'border-width': generateCSSUnit( radioCheckBorderWidth, radioCheckBorderWidthType ),
 			'border-radius': generateCSSUnit(
-				radioCheckBorderRadius,
+				getFallbackNumber( radioCheckBorderRadius, 'radioCheckBorderRadius', blockName ),
 				radioCheckBorderRadiusType
 			),
 		},
@@ -604,7 +608,7 @@ function styling( props ) {
 			'border-color': radioCheckBorderColor,
 			'border-width': generateCSSUnit( radioCheckBorderWidth, radioCheckBorderWidthType ),
 			'border-radius': generateCSSUnit(
-				radioCheckBorderRadius,
+				getFallbackNumber( radioCheckBorderRadius, 'radioCheckBorderRadius', blockName ),
 				radioCheckBorderRadiusType
 			),
 			'border-style': 'solid',
@@ -732,9 +736,12 @@ function styling( props ) {
 			'background-color': errorMsgBgColor,
 			'border-color': errorMsgBorderColor,
 			'border-style': 'solid',
-			'border-width': generateCSSUnit( msgBorderSize, msgBorderSizeType ),
+			'border-width': generateCSSUnit(
+				getFallbackNumber( msgBorderSize, 'msgBorderSize', blockName ),
+				msgBorderSizeType
+			),
 			'border-radius': generateCSSUnit(
-				msgBorderRadius,
+				getFallbackNumber( msgBorderRadius, 'msgBorderRadius', blockName ),
 				msgBorderRadiusType
 			),
 			'padding-left': generateCSSUnit( msgleftPadding, msgpaddingUnit ),
@@ -792,7 +799,7 @@ function styling( props ) {
 			'border-color': radioCheckBorderColor,
 			'border-style': 'solid',
 			'border-radius': generateCSSUnit(
-				radioCheckBorderRadius,
+				getFallbackNumber( radioCheckBorderRadius, 'radioCheckBorderRadius', blockName ),
 				radioCheckBorderRadiusType
 			),
 			'height': generateCSSUnit( radioCheckSizeTablet, 'px' ),
@@ -806,7 +813,7 @@ function styling( props ) {
 			'border-color': radioCheckBorderColor,
 			'border-style': 'solid',
 			'border-radius': generateCSSUnit(
-				radioCheckBorderRadius,
+				getFallbackNumber( radioCheckBorderRadius, 'radioCheckBorderRadius', blockName ),
 				radioCheckBorderRadiusType
 			),
 			'height': generateCSSUnit( radioCheckSizeTablet, 'px' ),
@@ -1045,7 +1052,7 @@ function styling( props ) {
 			'border-color': radioCheckBorderColor,
 			'border-style': 'solid',
 			'border-radius': generateCSSUnit(
-				radioCheckBorderRadius,
+				getFallbackNumber( radioCheckBorderRadius, 'radioCheckBorderRadius', blockName ),
 				radioCheckBorderRadiusType
 			),
 			'height': generateCSSUnit( radioCheckSizeMobile, 'px' ),
@@ -1059,7 +1066,7 @@ function styling( props ) {
 			'border-color': radioCheckBorderColor,
 			'border-style': 'solid',
 			'border-radius': generateCSSUnit(
-				radioCheckBorderRadius,
+				getFallbackNumber( radioCheckBorderRadius, 'radioCheckBorderRadius', blockName ),
 				radioCheckBorderRadiusType
 			),
 			'height': generateCSSUnit( radioCheckSizeMobile, 'px' ),
