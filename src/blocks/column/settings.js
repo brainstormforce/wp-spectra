@@ -324,10 +324,10 @@ const Settings = ( props ) => {
 				<ResponsiveBorder
 					setAttributes={ setAttributes }
 					prefix={'column'}
-					attributes={ attributes }
-					deviceType={deviceType}
+					attributes={ props.attributes }
+					deviceType={ deviceType }
 					disableBottomSeparator={ true }
-					disabledBorderTitle= {true}
+					disabledBorderTitle= { true }
 				/>
 			</UAGAdvancedPanelBody>
 		);

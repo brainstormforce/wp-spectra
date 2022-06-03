@@ -207,7 +207,7 @@ return array(
 	'prefixMarginLeftMobile'     => '',
 	'prefixMobileMarginUnit'     => 'px',
 	'prefixTabletMarginUnit'     => 'px',
-<<<<<<< HEAD
+<< << <<< HEAD
 	...$ctaBorderAttribute,
 =======
 	'prefixLetterSpacing'        => '',

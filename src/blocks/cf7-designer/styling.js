@@ -19,10 +19,6 @@ function styling( props ) {
 		buttonBgColor,
 		buttonTextHoverColor,
 		buttonBgHoverColor,
-		buttonBorderStyle,
-		buttonBorderWidth,
-		buttonBorderRadius,
-		buttonBorderColor,
 		buttonBorderHoverColor,
 		fieldSpacing,
 		fieldSpacingTablet,
@@ -89,7 +85,6 @@ function styling( props ) {
 		validationMsgLineHeightTablet,
 		validationMsgLineHeightMobile,
 		radioCheckBorderRadiusType,
-		buttonBorderRadiusType,
 		buttonTopPaddingDesktop,
 		buttonRightPaddingDesktop,
 		buttonBottomPaddingDesktop,
@@ -317,13 +312,6 @@ function styling( props ) {
 				buttonLineHeight,
 				buttonLineHeightType
 			),
-			'border-color': buttonBorderColor,
-			'border-style': buttonBorderStyle,
-			'border-width': generateCSSUnit( buttonBorderWidth, 'px' ),
-			'border-radius': generateCSSUnit(
-				buttonBorderRadius,
-				buttonBorderRadiusType
-			),
 			'padding-left': generateCSSUnit(
 				buttonLeftPaddingDesktop,
 				buttonPaddingTypeDesktop
@@ -340,6 +328,7 @@ function styling( props ) {
 				buttonBottomPaddingDesktop,
 				buttonPaddingTypeDesktop
 			),
+			...buttonBorderCSS
 		},
 
 		' .wpcf7 input.wpcf7-form-control.wpcf7-submit:hover': {
@@ -543,6 +532,8 @@ function styling( props ) {
 				inputLineHeightTablet,
 				inputLineHeightType
 			),
+			...fieldBorderCSSTablet,
+			...fieldPaddingTablet,
 		},
 		' .wpcf7 form label': {
 			'font-size': generateCSSUnit(
@@ -574,6 +565,7 @@ function styling( props ) {
 				buttonLineHeightTablet,
 				buttonLineHeightType
 			),
+			...buttonBorderCSSTablet
 		},
 		' .uagb-cf7-styler__check-style-enabled .wpcf7 form .wpcf7-list-item-label': {
 			'font-size': generateCSSUnit(
@@ -595,10 +587,9 @@ function styling( props ) {
 				validationMsgLineHeightType
 			),
 		},
-		' .wpcf7 input:not([type=submit])': fieldPaddingTablet, // eslint-disable-line no-dupe-keys
+		// eslint-disable-line no-dupe-keys
 		' .wpcf7 select.wpcf7-form-control.wpcf7-select:not([multiple="multiple"])': fieldPaddingTablet,
 		' .wpcf7 select.wpcf7-select[multiple="multiple"] option': fieldPaddingTablet,
-		' .wpcf7 textarea': fieldPaddingTablet, // eslint-disable-line no-dupe-keys
 		' .wpcf7 input.wpcf7-form-control.wpcf7-submit': { // eslint-disable-line no-dupe-keys
 			'padding-left': generateCSSUnit(
 				buttonLeftPaddingTablet,
@@ -617,6 +608,13 @@ function styling( props ) {
 				buttonPaddingTypeTablet
 			),
 		},
+		" .wpcf7 .wpcf7-checkbox input[type='checkbox'] + span:before": fieldBorderCSSTablet,
+		" .wpcf7 .wpcf7-acceptance input[type='checkbox'] + span:before": fieldBorderCSSTablet,
+		" .wpcf7 .wpcf7-radio input[type='radio'] + span:before": fieldBorderCSSTablet,
+		" .wpcf7-radio input[type='radio']:checked + span:before": fieldBorderCSSTablet,
+		' .uagb-cf7-styler__field-style-underline .wpcf7 input:not([type=submit])': fieldBorderCSSTablet,
+		' .uagb-cf7-styler__field-style-underline select': fieldBorderCSSTablet,
+		' .uagb-cf7-styler__field-style-underline textarea': fieldBorderCSSTablet,
 	};
 	const fieldPaddingMobile = {
 		'padding-left': generateCSSUnit(
@@ -676,16 +674,19 @@ function styling( props ) {
 				labelLineHeightMobile,
 				labelLineHeightType
 			),
+			...fieldBorderCSSMobile
 		},
 		' .wpcf7 textarea': {
 			'font-size': generateCSSUnit(
-				inputFontSizeTablet,
+				inputFontSizeMobile,
 				inputFontSizeType
 			),
 			'line-height': generateCSSUnit(
-				inputLineHeightTablet,
+				inputLineHeightMobile,
 				inputLineHeightType
 			),
+			...fieldBorderCSSMobile,
+			...fieldPaddingMobile
 		},
 		' .wpcf7 form label': {
 			'font-size': generateCSSUnit(
@@ -716,6 +717,7 @@ function styling( props ) {
 				buttonLineHeightMobile,
 				buttonLineHeightType
 			),
+			...buttonBorderCSSMobile
 		},
 		' .uagb-cf7-styler__check-style-enabled .wpcf7 form .wpcf7-list-item-label': {
 			'font-size': generateCSSUnit(
@@ -737,10 +739,13 @@ function styling( props ) {
 				validationMsgLineHeightType
 			),
 		},
-		' .wpcf7 input:not([type=submit])': fieldPaddingMobile, // eslint-disable-line no-dupe-keys
+		' .wpcf7 input:not([type=submit])': {
+			...fieldPaddingMobile,
+			...fieldBorderCSSMobile
+		}, // eslint-disable-line no-dupe-keys
 		' .wpcf7 select.wpcf7-form-control.wpcf7-select:not([multiple="multiple"])': fieldPaddingMobile,
 		' .wpcf7 select.wpcf7-select[multiple="multiple"] option': fieldPaddingMobile,
-		' .wpcf7 textarea': fieldPaddingMobile, // eslint-disable-line no-dupe-keys
+		 // eslint-disable-line no-dupe-keys
 		' .wpcf7 input.wpcf7-form-control.wpcf7-submit': { // eslint-disable-line no-dupe-keys
 			'padding-left': generateCSSUnit(
 				buttonLeftPaddingMobile,
@@ -759,6 +764,16 @@ function styling( props ) {
 				buttonPaddingTypeMobile
 			),
 		},
+		' .wpcf7 form input:not([type=submit]):focus': fieldBorderCSSMobile,
+		' .wpcf7 form select:focus': fieldBorderCSSMobile,
+		' .wpcf7 textarea:focus': fieldBorderCSSMobile,
+		" .wpcf7 .wpcf7-checkbox input[type='checkbox'] + span:before": fieldBorderCSSMobile,
+		" .wpcf7 .wpcf7-acceptance input[type='checkbox'] + span:before": fieldBorderCSSMobile,
+		" .wpcf7 .wpcf7-radio input[type='radio'] + span:before": fieldBorderCSSMobile,
+		" .wpcf7-radio input[type='radio']:checked + span:before": fieldBorderCSSMobile,
+		' .uagb-cf7-styler__field-style-underline .wpcf7 input:not([type=submit])': fieldBorderCSSMobile,
+		' .uagb-cf7-styler__field-style-underline select': fieldBorderCSSMobile,
+		' .uagb-cf7-styler__field-style-underline textarea': fieldBorderCSSMobile,
 	};
 
 	let stylingCss = generateCSS(

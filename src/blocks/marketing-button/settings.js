@@ -64,12 +64,6 @@ const Settings = ( props ) => {
 		prefixHoverColor,
 		iconColor,
 		iconHoverColor,
-		//Border
-		borderStyle,
-		borderWidth,
-		borderRadius,
-		borderColor,
-		borderHoverColor,
 		//Background
 		backgroundType,
 		backgroundColor,

@@ -4,6 +4,9 @@
 import TestimonialStyle from './inline-styles';
 import React, { lazy, Suspense, useEffect } from 'react';
 import lazyLoader from '@Controls/lazy-loader';
+
+import {migrateBorderAttributes} from '@Controls/generateAttributes';
+
 const Settings = lazy( () =>
 	import( /* webpackChunkName: "chunks/testimonial/settings" */ './settings' )
 );
@@ -91,7 +94,7 @@ const UAGBtestimonial = ( props ) => {
 		}
 		const {borderStyle,borderWidth,borderRadius,borderColor,borderHoverColor} = props.attributes;
 		// Backward Border Migration
-		if( borderWidth || borderRadius || borderColor || borderHColor || borderStyle ){
+		if( borderWidth || borderRadius || borderColor || borderHoverColor || borderStyle ){
 			const migrationAttributes = migrateBorderAttributes( 'btn', {
 				label: 'borderWidth',
 				value: borderWidth,

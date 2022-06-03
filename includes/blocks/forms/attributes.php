@@ -48,7 +48,7 @@ $submitBorderDefaults          = array(
 $submitBorderAttribute         = UAGB_Block_Helper::uag_generate_border_attribute( 'submit', $submitBorderDefaults );
 
 return array(
-<<<<<<< HEAD
+<< << <<< HEAD
 	'block_id'                    => '',
 	'formPaddingTop'              => 25,
 	'formPaddingRight'            => 25,

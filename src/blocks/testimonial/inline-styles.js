@@ -85,7 +85,6 @@ function testimonialStyle( props ) {
 		columnGapType,
 		descSpaceType,
 		nameSpaceType,
-		borderHoverColor,
 		gradientValue,
 		descTransform,
 		descDecoration,

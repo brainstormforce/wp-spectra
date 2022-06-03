@@ -28,14 +28,6 @@ const UAGBTableOfContentsEdit = ( props ) => {
 
 	const deviceType = useDeviceType();
 
-	const {
-		borderStyle,
-		borderWidth,
-		borderColor,
-		borderHColor,
-		borderRadius,
-	} = props.attributes;
-
 	useEffect( () => {
 		// Assigning block_id in the attribute.
 		props.setAttributes( { block_id: props.clientId.substr( 0, 8 ) } );
@@ -213,7 +205,7 @@ const UAGBTableOfContentsEdit = ( props ) => {
 
 		addBlockEditorDynamicStyles( 'uagb-style-toc-' + props.clientId.substr( 0, 8 ), blockStyling );
 
-		const {borderStyle,borderWidth,borderRadius,borderColor,borderHoverColor} = props.attributes;
+		const {borderStyle,borderWidth,borderRadius,borderColor,borderHColor} = props.attributes;
 		// Backward Border Migration
 		if( borderWidth || borderRadius || borderColor || borderHColor || borderStyle ){
 			const migrationAttributes = migrateBorderAttributes( 'overall', {

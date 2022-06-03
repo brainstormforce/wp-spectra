@@ -20,7 +20,7 @@ return array_merge(
 		'vPadding'               => '',
 		'hPadding'               => '',
 
-<<<<<<< HEAD
+<< << <<< HEAD
 		'topTabletPadding'       => '',
 		'rightTabletPadding'     => '',
 		'bottomTabletPadding'    => '',

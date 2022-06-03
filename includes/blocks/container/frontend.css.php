@@ -127,7 +127,7 @@ $background_video_opacity_value = ( isset( $attr['backgroundVideoOpacity'] ) && 
 $selectors = array(
 	'.uagb-block-' . $id                                  => $container_css, // phpcs:ignore WordPress.WP.GlobalVariablesOverride.Prohibited
 	'.uagb-block-' . $id . ':hover'                       => array(
-<<<<<<< HEAD
+<< << <<< HEAD
 		'border-color' => $attr['containerBorderHColor'],
 =======
 		'border-color' => $attr['borderHoverColor'],

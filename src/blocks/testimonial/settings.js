@@ -119,10 +119,6 @@ const Settings = ( props ) => {
 		backgroundSize,
 		backgroundRepeat,
 		backgroundImageColor,
-		borderStyle,
-		borderWidth,
-		borderRadius,
-		borderColor,
 		stack,
 
 		imageWidthType,
@@ -131,7 +127,6 @@ const Settings = ( props ) => {
 		columnGapType,
 		descSpaceType,
 		nameSpaceType,
-		borderHoverColor,
 		overlayType,
 		backgroundAttachment,
 		gradientValue,

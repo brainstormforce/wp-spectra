@@ -43,21 +43,11 @@ const Settings = ( props ) => {
 		fieldBgColor,
 		fieldLabelColor,
 		fieldInputColor,
-		fieldBorderStyle,
-		fieldBorderWidth,
-		fieldBorderRadius,
-		fieldBorderColor,
-		fieldBorderFocusColor,
 		buttonAlignment,
 		buttonTextColor,
 		buttonBgColor,
 		buttonTextHoverColor,
 		buttonBgHoverColor,
-		buttonBorderStyle,
-		buttonBorderWidth,
-		buttonBorderRadius,
-		buttonBorderColor,
-		buttonBorderHoverColor,
 		fieldSpacing,
 		fieldSpacingTablet,
 		fieldSpacingMobile,
@@ -159,8 +149,6 @@ const Settings = ( props ) => {
 		msgLoadGoogleFonts,
 		radioCheckBorderRadiusType,
 		msgBorderRadiusType,
-		fieldBorderRadiusType,
-		buttonBorderRadiusType,
 		messageTopPaddingDesktop,
 		messageRightPaddingDesktop,
 		messageBottomPaddingDesktop,
@@ -1021,56 +1009,54 @@ const Settings = ( props ) => {
 					setAttributes( { radioCheckSelectColor: value } )
 				}
 			/>
-			{ fieldBorderStyle !== 'none' && (
-				<>
-					<ResponsiveSlider
-						label={ __(
-							'Border Width',
-							'ultimate-addons-for-gutenberg'
-						) }
-						data={ {
-							desktop: {
-								value: radioCheckBorderWidth,
-								label: 'radioCheckBorderWidth',
-							},
-							tablet: {
-								value: radioCheckBorderWidthTablet,
-								label: 'radioCheckBorderWidthTablet',
-							},
-							mobile: {
-								value: radioCheckBorderWidthMobile,
-								label: 'radioCheckBorderWidthMobile',
-							},
-						} }
-						min={ 0 }
-						max={ 50 }
-						unit={ {
-							value: radioCheckBorderWidthUnit,
-							label:
-								'radioCheckBorderWidthUnit',
-						} }
-						units={ [
-							{
-								name: __(
-									'Pixel',
-									'ultimate-addons-for-gutenberg'
-								),
-								unitValue: 'px',
-							},
-						] }
-						setAttributes={ setAttributes }
-					/>
-					<AdvancedPopColorControl
-						label={ __( 'Color', 'ultimate-addons-for-gutenberg' ) }
-						colorValue={ radioCheckBorderColor }
-						onColorChange={ ( value ) =>
-							setAttributes( {
-								radioCheckBorderColor: value,
-							} )
-						}
-					/>
-				</>
-			) }
+			<>
+				<ResponsiveSlider
+					label={ __(
+						'Border Width',
+						'ultimate-addons-for-gutenberg'
+					) }
+					data={ {
+						desktop: {
+							value: radioCheckBorderWidth,
+							label: 'radioCheckBorderWidth',
+						},
+						tablet: {
+							value: radioCheckBorderWidthTablet,
+							label: 'radioCheckBorderWidthTablet',
+						},
+						mobile: {
+							value: radioCheckBorderWidthMobile,
+							label: 'radioCheckBorderWidthMobile',
+						},
+					} }
+					min={ 0 }
+					max={ 50 }
+					unit={ {
+						value: radioCheckBorderWidthUnit,
+						label:
+							'radioCheckBorderWidthUnit',
+					} }
+					units={ [
+						{
+							name: __(
+								'Pixel',
+								'ultimate-addons-for-gutenberg'
+							),
+							unitValue: 'px',
+						},
+					] }
+					setAttributes={ setAttributes }
+				/>
+				<AdvancedPopColorControl
+					label={ __( 'Color', 'ultimate-addons-for-gutenberg' ) }
+					colorValue={ radioCheckBorderColor }
+					onColorChange={ ( value ) =>
+						setAttributes( {
+							radioCheckBorderColor: value,
+						} )
+					}
+				/>
+			</>
 			<Range
 				label={ __(
 					'Checkbox Rounded Corners',

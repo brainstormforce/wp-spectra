@@ -18,6 +18,7 @@ for ( let i = 1; i <= itemCount; i++ ) {
 		image: '',
 	} );
 }
+import { getBorderAttributes } from '@Controls/generateAttributes';
 const overallBorderAttributes = getBorderAttributes( 'btn', {
 	borderStyle: 'solid',
 	borderTopWidth: 1,
