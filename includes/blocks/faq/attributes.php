@@ -7,12 +7,12 @@
  * @package uagb
  */
 
-$borderDefaults  = array(
+$border_defaults  = array(
 	'borderStyle'  => 'solid',
 	'borderWidth'  => 1,
 	'borderRadius' => 2,
 );
-$borderAttribute = UAGB_Block_Helper::uag_generate_border_attribute( '', $borderDefaults );
+$border_attribute = UAGB_Block_Helper::uag_generate_border_attribute( '', $border_defaults );
 
 return array(
 	'block_id'                     => '',
@@ -126,5 +126,5 @@ return array(
 	'answerFontStyle'              => '',
 	'answerTransform'              => '',
 	'answerDecoration'             => '',
-	$borderAttribute,
+	$border_attribute,
 );

@@ -31,16 +31,9 @@ $paginationButtonPaddingBottomMobile = isset( $attr['paginationButtonPaddingBott
 $paginationButtonPaddingLeftMobile   = isset( $attr['paginationButtonPaddingLeftMobile'] ) ? $attr['paginationButtonPaddingLeftMobile'] : $attr['hpaginationButtonPaddingMobile'];
 $paginationButtonPaddingRightMobile  = isset( $attr['paginationButtonPaddingRightMobile'] ) ? $attr['paginationButtonPaddingRightMobile'] : $attr['hpaginationButtonPaddingMobile'];
 
-$paginationMasonryBorderCSS       = UAGB_Block_Helper::uag_generate_border_css( $attr, 'paginationMasonry' );
-$paginationMasonryBorderCSS       = UAGB_Block_Helper::uag_generate_deprecated_border_css(
-	$paginationMasonryBorderCSS,
-	( isset( $attr['paginationMasonryBorderWidth'] ) ? $attr['paginationMasonryBorderWidth'] : '' ),
-	( isset( $attr['paginationMasonryBorderRadius'] ) ? $attr['paginationMasonryBorderRadius'] : '' ),
-	( isset( $attr['paginationMasonryBorderColor'] ) ? $attr['paginationMasonryBorderColor'] : '' ),
-	( isset( $attr['paginationMasonryBorderStyle'] ) ? $attr['paginationMasonryBorderStyle'] : '' )
-);
-$paginationMasonryBorderCSSTablet = UAGB_Block_Helper::uag_generate_border_css( $attr, 'paginationMasonry', 'tablet' );
-$paginationMasonryBorderCSSMobile = UAGB_Block_Helper::uag_generate_border_css( $attr, 'paginationMasonry', 'mobile' );
+$pagination_masonry_border_css       = UAGB_Block_Helper::uag_generate_border_css( $attr, 'paginationMasonry' );
+$pagination_masonry_border_css_tablet = UAGB_Block_Helper::uag_generate_border_css( $attr, 'paginationMasonry', 'tablet' );
+$pagination_masonry_border_css_mobile = UAGB_Block_Helper::uag_generate_border_css( $attr, 'paginationMasonry', 'mobile' );
 
 if ( 'infinite' === $attr['paginationType'] ) {
 
@@ -71,7 +64,7 @@ if ( 'infinite' === $attr['paginationType'] ) {
 				$attr['paginationButtonPaddingType']
 			),
 		),
-		$paginationMasonryBorderCSS
+		$pagination_masonry_border_css
 	);
 	$selectors[' .uagb-post__load-more-wrap .uagb-post-pagination-button:hover'] = array(
 		'color'            => $attr['paginationTextHoverColor'],
@@ -114,8 +107,8 @@ if ( 'infinite' === $attr['paginationType'] ) {
 			$attr['tabletpaginationButtonPaddingType']
 		),
 	);
-	$t_selectors[' .uagb-post__load-more-wrap .uagb-post-pagination-button']     = $paginationMasonryBorderCSSTablet;
-	$m_selectors[' .uagb-post__load-more-wrap .uagb-post-pagination-button']     = $paginationMasonryBorderCSSMobile;
+	$t_selectors[' .uagb-post__load-more-wrap .uagb-post-pagination-button']     = $pagination_masonry_border_css_tablet;
+	$m_selectors[' .uagb-post__load-more-wrap .uagb-post-pagination-button']     = $pagination_masonry_border_css_mobile;
 
 	$selectors['.uagb-post-grid .uagb-post-inf-loader div'] = array(
 		'width'            => UAGB_Helper::get_css_value( $attr['loaderSize'], 'px' ),

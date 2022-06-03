@@ -33,16 +33,16 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 			$t_selectors = array();
 			$selectors   = array();
 
-			$borderCSS       = self::uag_generate_border_css( $attr, 'btn' );
-			$borderCSS       = self::uag_generate_deprecated_border_css(
-				$borderCSS,
+			$border_css       = self::uag_generate_border_css( $attr, 'btn' );
+			$border_css       = self::uag_generate_deprecated_border_css(
+				$border_css,
 				( isset( $attr['borderWidth'] ) ? $attr['borderWidth'] : '' ),
 				( isset( $attr['borderRadius'] ) ? $attr['borderRadius'] : '' ),
 				( isset( $attr['borderColor'] ) ? $attr['borderColor'] : '' ),
 				( isset( $attr['borderStyle'] ) ? $attr['borderStyle'] : '' )
 			);
-			$borderCSSTablet = self::uag_generate_border_css( $attr, 'btn', 'tablet' );
-			$borderCSSMobile = self::uag_generate_border_css( $attr, 'btn', 'mobile' );
+			$border_css_tablet = self::uag_generate_border_css( $attr, 'btn', 'tablet' );
+			$border_css_mobile = self::uag_generate_border_css( $attr, 'btn', 'mobile' );
 
 			$top_padding    = isset( $attr['topPadding'] ) ? $attr['topPadding'] : $attr['vPadding'];
 			$bottom_padding = isset( $attr['bottomPadding'] ) ? $attr['bottomPadding'] : $attr['vPadding'];
@@ -137,9 +137,9 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					$box_shadow_position_css,
 				);
 			}
-			$selectors[ $wrapper ]                           = $borderCSS;
-			$m_selectors[ $wrapper ]                         = $borderCSSMobile;
-			$t_selectors[ $wrapper ]                         = $borderCSSTablet;
+			$selectors[ $wrapper ]                           = $border_css;
+			$m_selectors[ $wrapper ]                         = $border_css_mobile;
+			$t_selectors[ $wrapper ]                         = $border_css_tablet;
 			$selectors[ $wrapper . ':hover' ]                = array(
 				'border-color' => isset( $attr['borderHoverColor'] ) && ! empty( $attr['borderHoverColor'] ) ? $attr['borderHoverColor'] : $attr['btnBorderHColor'],
 			);
@@ -1106,8 +1106,8 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 		/**
 		 * Border attribute generation Function.
 		 *
+		 * @since x.x.x
 		 * @param  array $prefix   Attribute Prefix.
-		 *
 		 * @param array $default_args  default attributes args.
 		 * @return array
 		 */
@@ -1178,6 +1178,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 		/**
 		 * Border CSS generation Function.
 		 *
+		 * @since x.x.x
 		 * @param  array  $attr   Attribute List.
 		 * @param  string $prefix Attribuate prefix .
 		 * @param  string $device Responsive.
@@ -1229,6 +1230,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 		/**
 		 * Deprecated Border CSS generation Function.
 		 *
+		 * @since x.x.x
 		 * @param  array  $current_css   Current style list.
 		 * @param  string $border_width   Border Width.
 		 * @param  string $border_radius Border Radius.

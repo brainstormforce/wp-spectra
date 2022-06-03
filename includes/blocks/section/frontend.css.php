@@ -9,16 +9,9 @@
 
 global $content_width;
 
-$overallBorderCSS       = UAGB_Block_Helper::uag_generate_border_css( $attr, 'overall' );
-$overallBorderCSS       = UAGB_Block_Helper::uag_generate_deprecated_border_css(
-	$overallBorderCSS,
-	( isset( $attr['borderWidth'] ) ? $attr['borderWidth'] : '' ),
-	( isset( $attr['borderRadius'] ) ? $attr['borderRadius'] : '' ),
-	( isset( $attr['borderColor'] ) ? $attr['borderColor'] : '' ),
-	( isset( $attr['borderStyle'] ) ? $attr['borderStyle'] : '' )
-);
-$overallBorderCSSTablet = UAGB_Block_Helper::uag_generate_border_css( $attr, 'overall', 'tablet' );
-$overallBorderCSSMobile = UAGB_Block_Helper::uag_generate_border_css( $attr, 'overall', 'mobile' );
+$overall_border_css       = UAGB_Block_Helper::uag_generate_border_css( $attr, 'overall' );
+$overall_border_css_tablet = UAGB_Block_Helper::uag_generate_border_css( $attr, 'overall', 'tablet' );
+$overall_border_css_mobile = UAGB_Block_Helper::uag_generate_border_css( $attr, 'overall', 'mobile' );
 
 
 $bg_type                 = ( isset( $attr['backgroundType'] ) ) ? $attr['backgroundType'] : 'none';
@@ -121,7 +114,7 @@ $selectors = array(
 	),
 );
 
-$selectors[' .uagb-section__overlay'] = $overallBorderCSS;
+$selectors[' .uagb-section__overlay'] = $overall_border_css;
 
 if ( 'video' === $bg_type ) {
 	$selectors[' > .uagb-section__overlay'] = array(
@@ -170,7 +163,7 @@ $m_selectors = array(
 		'padding-left'   => UAGB_Helper::get_css_value( $attr['leftPaddingMobile'], $attr['mobilePaddingType'] ),
 		'padding-right'  => UAGB_Helper::get_css_value( $attr['rightPaddingMobile'], $attr['mobilePaddingType'] ),
 	),
-	' .uagb-section__overlay' => $overallBorderCSSMobile,
+	' .uagb-section__overlay' => $overall_border_css_mobile,
 );
 
 $t_selectors                                      = array(
@@ -180,7 +173,7 @@ $t_selectors                                      = array(
 		'padding-left'   => UAGB_Helper::get_css_value( $attr['leftPaddingTablet'], $attr['tabletPaddingType'] ),
 		'padding-right'  => UAGB_Helper::get_css_value( $attr['rightPaddingTablet'], $attr['tabletPaddingType'] ),
 	),
-	' .uagb-section__overlay' => $overallBorderCSSTablet,
+	' .uagb-section__overlay' => $overall_border_css_tablet,
 );
 $m_selectors['.uagb-section__wrap']['margin-top'] = UAGB_Helper::get_css_value( $attr['topMarginMobile'], $attr['mobileMarginType'] );
 $m_selectors['.uagb-section__wrap']['margin-bottom'] = UAGB_Helper::get_css_value( $attr['bottomMarginMobile'], $attr['mobileMarginType'] );

@@ -7,11 +7,11 @@
  * @package uagb
  */
 
-$borderDefaults  = array(
+$border_defaults  = array(
 	'borderStyle' => 'none',
 	'borderWidth' => 1,
 );
-$borderAttribute = UAGB_Block_Helper::uag_generate_border_attribute( '', $borderDefaults );
+$border_attribute = UAGB_Block_Helper::uag_generate_border_attribute( 'column', $border_defaults );
 
 return array(
 	'classMigrate'             => false,
@@ -74,5 +74,5 @@ return array(
 	'gradientOverlayLocation2' => '100',
 	'gradientOverlayAngle'     => '0',
 	'gradientValue'            => '',
-	$borderAttribute,
+	$border_attribute,
 );

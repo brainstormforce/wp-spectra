@@ -13,9 +13,9 @@ UAGB_Block_JS::blocks_advanced_heading_gfont( $attr );
 $m_selectors = array();
 $t_selectors = array();
 
-$highLightBorderCSS       = UAGB_Block_Helper::uag_generate_border_css( $attr, 'highLight' );
-$highLightBorderCSSTablet = UAGB_Block_Helper::uag_generate_border_css( $attr, 'highLight', 'tablet' );
-$highLightBorderCSSMobile = UAGB_Block_Helper::uag_generate_border_css( $attr, 'highLight', 'mobile' );
+$highLight_border_css       = UAGB_Block_Helper::uag_generate_border_css( $attr, 'highLight' );
+$highLight_border_css_tablet = UAGB_Block_Helper::uag_generate_border_css( $attr, 'highLight', 'tablet' );
+$highLight_border_css_mobile = UAGB_Block_Helper::uag_generate_border_css( $attr, 'highLight', 'mobile' );
 
 
 $selectors = array(
@@ -101,7 +101,7 @@ $selectors = array(
 				$attr['highLightPaddingUnit']
 			),
 		),
-		$highLightBorderCSS
+		$highLight_border_css
 	),
 	'.wp-block-uagb-advanced-heading .uagb-highlight:hover' => array(
 		'border-color' => $attr['highLightBorderHColor'],
@@ -189,7 +189,7 @@ $t_selectors['.wp-block-uagb-advanced-heading .uagb-highlight'] = array_merge(
 		'padding-bottom' => UAGB_Helper::get_css_value( $attr['highLightBottomPaddingTablet'], $attr['highLightPaddingUnitTablet'] ),
 		'padding-left'   => UAGB_Helper::get_css_value( $attr['highLightLeftPaddingTablet'], $attr['highLightPaddingUnitTablet'] ),
 	),
-	$highLightBorderCSSTablet
+	$highLight_border_css_tablet
 );
 
 $m_selectors[' .uagb-heading-text']                             = array(
@@ -218,7 +218,7 @@ $m_selectors['.wp-block-uagb-advanced-heading .uagb-highlight'] = array_merge(
 		'padding-bottom' => UAGB_Helper::get_css_value( $attr['highLightBottomPaddingMobile'], $attr['highLightPaddingUnitMobile'] ),
 		'padding-left'   => UAGB_Helper::get_css_value( $attr['highLightLeftPaddingMobile'], $attr['highLightPaddingUnitMobile'] ),
 	),
-	$highLightBorderCSSMobile
+	$highLight_border_css_mobile
 );
 
 $t_selectors['.wp-block-uagb-advanced-heading .uagb-heading-text'] = array(

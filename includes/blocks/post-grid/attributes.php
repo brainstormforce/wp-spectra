@@ -7,7 +7,7 @@
  * @package uagb
  */
 
-$btnBorderAttribute = UAGB_Block_Helper::uag_generate_border_attribute( 'btn' );
+$btn_border_attribute = UAGB_Block_Helper::uag_generate_border_attribute( 'btn' );
 return array(
 	'post_type'                   => 'grid',
 	'align'                       => 'left',
@@ -164,5 +164,5 @@ return array(
 		array( 'uagb/post-excerpt' ),
 		array( 'uagb/post-button' ),
 	),
-	$btnBorderAttribute,
+	$btn_border_attribute,
 );

@@ -7,11 +7,11 @@
  * @package uagb
  */
 
-$borderDefaults  = array(
+$border_defaults  = array(
 	'borderStyle' => 'none',
 	'borderWidth' => 1,
 );
-$borderAttribute = UAGB_Block_Helper::uag_generate_border_attribute( '', $borderDefaults );
+$border_attribute = UAGB_Block_Helper::uag_generate_border_attribute( '', $border_defaults );
 
 return array(
 	'classMigrate'           => false,
@@ -88,5 +88,5 @@ return array(
 	'boxShadowSpread'        => '',
 	'boxShadowPosition'      => 'outset',
 	'gradientValue'          => '',
-	$borderAttribute,
+	$border_attribute,
 );

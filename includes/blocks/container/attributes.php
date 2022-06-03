@@ -7,7 +7,7 @@
  * @package uagb
  */
 
-$borderAttribute = UAGB_Block_Helper::uag_generate_border_attribute( 'container' );
+$border_attribute = UAGB_Block_Helper::uag_generate_border_attribute( 'container' );
 
 return array(
 	'block_id'                       => '',
@@ -148,5 +148,5 @@ return array(
 	'textColor'                      => 'inherit',
 	'linkColor'                      => '',
 	'linkHoverColor'                 => '',
-	$borderAttribute,
+	$border_attribute,
 );

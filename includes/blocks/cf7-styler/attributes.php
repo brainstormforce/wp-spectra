@@ -7,22 +7,22 @@
  * @package uagb
  */
 
-$fieldBorderDefaults   = array(
+$field_border_defaults   = array(
 	'borderStyle'      => 'solid',
 	'borderWidth'      => 1,
 	'borderRadius'     => 0,
 	'borderColor'      => '#eeeeee',
 	'borderFocusColor' => '',
 );
-$fieldBorderAttribute  = UAGB_Block_Helper::uag_generate_border_attribute( 'field', $fieldBorderDefaults );
-$buttonBorderDefaults  = array(
+$field_border_attribute  = UAGB_Block_Helper::uag_generate_border_attribute( 'field', $field_border_defaults );
+$button_border_defaults  = array(
 	'borderStyle'      => 'solid',
 	'borderWidth'      => 1,
 	'borderRadius'     => 0,
 	'borderColor'      => '#333',
 	'borderHoverColor' => '',
 );
-$buttonBorderAttribute = UAGB_Block_Helper::uag_generate_border_attribute( 'button', $buttonBorderDefaults );
+$button_border_attribute = UAGB_Block_Helper::uag_generate_border_attribute( 'button', $button_border_defaults );
 
 return array(
 	'block_id'                      => '',
@@ -200,6 +200,6 @@ return array(
 	'fieldPaddingTypeTablet'        => 'px',
 	'fieldPaddingTypeMobile'        => 'px',
 	'fieldSpacingLink'              => false,
-	$fieldBorderAttribute,
-	$buttonBorderAttribute,
+	$field_border_attribute,
+	$button_border_attribute,
 );

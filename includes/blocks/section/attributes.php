@@ -7,7 +7,7 @@
  * @package uagb
  */
 
-$overallBorderAttributes = UAGB_Block_Helper::uag_generate_border_attribute(
+$overall_border_attributes = UAGB_Block_Helper::uag_generate_border_attribute(
 	'overall',
 	array(
 		'borderTopWidth'    => 1,
@@ -91,5 +91,5 @@ return array_merge(
 		'boxShadowPosition'        => 'outset',
 		'gradientValue'            => '',
 	),
-	$overallBorderAttributes
+	$overall_border_attributes
 );

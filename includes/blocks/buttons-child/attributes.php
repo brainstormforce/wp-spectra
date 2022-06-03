@@ -7,7 +7,7 @@
  * @package uagb
  */
 
-$borderAttribute = UAGB_Block_Helper::uag_generate_border_attribute( 'btn' );
+$border_attribute = UAGB_Block_Helper::uag_generate_border_attribute( 'btn' );
 
 return array_merge(
 	array(
@@ -94,5 +94,5 @@ return array_merge(
 		'backgroundOpacity'      => '',
 		'backgroundHoverOpacity' => '',
 	),
-	$borderAttribute
+	$border_attribute
 );

@@ -7,8 +7,8 @@
  * @package uagb
  */
 
-$imageAttribute   = UAGB_Block_Helper::uag_generate_border_attribute( 'image' );
-$overlayAttribute = UAGB_Block_Helper::uag_generate_border_attribute( 'overlay' );
+$image_attribute   = UAGB_Block_Helper::uag_generate_border_attribute( 'image' );
+$overlay_attribute = UAGB_Block_Helper::uag_generate_border_attribute( 'overlay' );
 
 return array_merge(
 	array(
@@ -141,6 +141,6 @@ return array_merge(
 		'maskPosition'                => 'center center',
 		'maskRepeat'                  => 'no-repeat',
 	),
-	$imageAttribute,
-	$overlayAttribute
+	$image_attribute,
+	$overlay_attribute
 );

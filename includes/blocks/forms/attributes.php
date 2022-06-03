@@ -7,53 +7,53 @@
  * @package uagb
  */
 
-$successMessageBorderDefaults  = array(
+$success_message_border_defaults  = array(
 	'borderColor'      => 'green',
 	'borderStyle'      => 'solid',
 	'borderWidth'      => 3,
 	'borderRadius'     => 6,
 	'borderHoverColor' => 'yellowgreen',
 );
-$successMessageBorderAttribute = UAGB_Block_Helper::uag_generate_border_attribute( 'successMessage', $successMessageBorderDefaults );
-$failedMessageBorderDefaults   = array(
+$success_message_border_attribute = UAGB_Block_Helper::uag_generate_border_attribute( 'successMessage', $success_message_border_defaults );
+$failed_message_border_defaults   = array(
 	'borderColor'      => 'red',
 	'borderStyle'      => 'solid',
 	'borderWidth'      => 3,
 	'borderRadius'     => 6,
 	'borderHoverColor' => 'deeppink',
 );
-$failedMessageBorderAttribute  = UAGB_Block_Helper::uag_generate_border_attribute( 'failedMessage', $successMessageBorderDefaults );
-$inputBorderDefaults           = array(
+$failed_message_border_attribute  = UAGB_Block_Helper::uag_generate_border_attribute( 'failedMessage', $failed_message_border_defaults );
+$input_border_defaults           = array(
 	'borderStyle'      => 'solid',
 	'borderWidth'      => 1,
 	'borderRadius'     => 3,
 	'borderColor'      => '#bdbdbd',
 	'borderHoverColor' => '',
 );
-$inputBorderAttribute          = UAGB_Block_Helper::uag_generate_border_attribute( 'input', $inputBorderDefaults );
-$toggleBorderDefaults          = array(
+$input_border_attribute          = UAGB_Block_Helper::uag_generate_border_attribute( 'input', $input_border_defaults );
+$toggle_border_defaults          = array(
 	'borderStyle'      => 'solid',
 	'borderWidth'      => 1,
 	'borderRadius'     => 3,
 	'borderColor'      => '#1e1e1e',
 	'borderHoverColor' => '#017cba',
 );
-$toggleBorderAttribute         = UAGB_Block_Helper::uag_generate_border_attribute( 'toggle', $toggleBorderDefaults );
-$submitBorderDefaults          = array(
+$toggle_border_attribute         = UAGB_Block_Helper::uag_generate_border_attribute( 'toggle', $toggle_border_defaults );
+$submit_border_defaults          = array(
 	'borderWidth'      => 0,
 	'borderRadius'     => 3,
 	'borderColor'      => '',
 	'borderHoverColor' => '',
 	'borderStyle'      => '',
 );
-$submitBorderAttribute         = UAGB_Block_Helper::uag_generate_border_attribute( 'submit', $submitBorderDefaults );
+$submit_border_attribute         = UAGB_Block_Helper::uag_generate_border_attribute( 'submit', $submit_border_defaults );
 
 return array(
-	$successMessageBorderAttribute,
-	$failedMessageBorderAttribute,
-	$inputBorderAttribute,
-	$toggleBorderAttribute,
-	$submitBorderAttribute,
+	$success_message_border_attribute,
+	$failed_message_border_attribute,
+	$input_border_attribute,
+	$toggle_border_attribute,
+	$submit_border_attribute,
 	'block_id'                       => '',
 	'formPaddingTop'                 => 25,
 	'formPaddingRight'               => 25,

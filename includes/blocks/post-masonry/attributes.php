@@ -7,8 +7,8 @@
  * @package uagb
  */
 
-$paginationMasonryBorderAttribute = UAGB_Block_Helper::uag_generate_border_attribute( 'paginationMasonry' );
-$btnBorderAttribute               = UAGB_Block_Helper::uag_generate_border_attribute( 'btn' );
+$pagination_masonry_border_attribute = UAGB_Block_Helper::uag_generate_border_attribute( 'paginationMasonry' );
+$btn_border_attribute               = UAGB_Block_Helper::uag_generate_border_attribute( 'btn' );
 
 return array(
 	'post_type'                         => 'masonry',
@@ -177,6 +177,6 @@ return array(
 		array( 'uagb/post-excerpt' ),
 		array( 'uagb/post-button' ),
 	),
-	$paginationMasonryBorderAttribute,
-	$btnBorderAttribute,
+	$pagination_masonry_border_attribute,
+	$btn_border_attribute,
 );

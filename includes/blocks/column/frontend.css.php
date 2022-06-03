@@ -12,6 +12,10 @@ global $content_width;
 $bg_type      = ( isset( $attr['backgroundType'] ) ) ? $attr['backgroundType'] : 'none';
 $overlay_type = ( isset( $attr['overlayType'] ) ) ? $attr['overlayType'] : 'none';
 
+$border       = UAGB_Block_Helper::uag_generate_border_css( $attr, 'column' );
+$border_tablet = UAGB_Block_Helper::uag_generate_border_css( $attr, 'column', 'tablet' );
+$border_mobile = UAGB_Block_Helper::uag_generate_border_css( $attr, 'column', 'mobile' );
+
 $style = array(
 	'padding-top'    => UAGB_Helper::get_css_value( $attr['topPadding'], $attr['desktopPaddingType'] ),
 	'padding-bottom' => UAGB_Helper::get_css_value( $attr['bottomPadding'], $attr['desktopPaddingType'] ),
@@ -21,17 +25,11 @@ $style = array(
 	'margin-bottom'  => UAGB_Helper::get_css_value( $attr['bottomMargin'], $attr['desktopMarginType'] ),
 	'margin-left'    => UAGB_Helper::get_css_value( $attr['leftMargin'], $attr['desktopMarginType'] ),
 	'margin-right'   => UAGB_Helper::get_css_value( $attr['rightMargin'], $attr['desktopMarginType'] ),
-	'border-radius'  => UAGB_Helper::get_css_value( $attr['borderRadius'], 'px' ),
+	$border
 );
 
 $m_selectors = array();
 $t_selectors = array();
-
-if ( 'none' !== $attr['borderStyle'] ) {
-	$style['border-style'] = $attr['borderStyle'];
-	$style['border-width'] = UAGB_Helper::get_css_value( $attr['borderWidth'], 'px' );
-	$style['border-color'] = $attr['borderColor'];
-}
 
 $position = str_replace( '-', ' ', $attr['backgroundPosition'] );
 
@@ -103,6 +101,7 @@ $m_selectors = array(
 		'margin-bottom'  => UAGB_Helper::get_css_value( $attr['bottomMarginMobile'], $attr['mobileMarginType'] ),
 		'margin-left'    => UAGB_Helper::get_css_value( $attr['leftMarginMobile'], $attr['mobileMarginType'] ),
 		'margin-right'   => UAGB_Helper::get_css_value( $attr['rightMarginMobile'], $attr['mobileMarginType'] ),
+		$border_mobile
 	),
 );
 
@@ -116,6 +115,7 @@ $t_selectors = array(
 		'margin-bottom'  => UAGB_Helper::get_css_value( $attr['bottomMarginTablet'], $attr['tabletMarginType'] ),
 		'margin-left'    => UAGB_Helper::get_css_value( $attr['leftMarginTablet'], $attr['tabletMarginType'] ),
 		'margin-right'   => UAGB_Helper::get_css_value( $attr['rightMarginTablet'], $attr['tabletMarginType'] ),
+		$border_tablet
 	),
 );
 

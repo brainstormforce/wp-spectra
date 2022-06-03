@@ -7,7 +7,7 @@
  * @package uagb
  */
 
-$highLightBorderAttribute = UAGB_Block_Helper::uag_generate_border_attribute( 'highLight' );
+$highLight_border_attribute = UAGB_Block_Helper::uag_generate_border_attribute( 'highLight' );
 return array_merge(
 	array(
 		'classMigrate'                 => false,
@@ -151,5 +151,5 @@ return array_merge(
 		'highLightPaddingUnitMobile'   => 'px',
 		'highLightPaddingLink'         => '',
 	),
-	$highLightBorderAttribute
+	$highLight_border_attribute
 );

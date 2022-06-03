@@ -19,12 +19,12 @@ if ( 'outset' === $attr['imageBoxShadowPosition'] ) {
 	$imageBoxShadowPosition = '';
 }
 
-$imageBorderCSS         = UAGB_Block_Helper::uag_generate_border_css( $attr, 'image' );
-$imageBorderCSSTablet   = UAGB_Block_Helper::uag_generate_border_css( $attr, 'image', 'tablet' );
-$imageBorderCSSMobile   = UAGB_Block_Helper::uag_generate_border_css( $attr, 'image', 'mobile' );
-$overlayBorderCSS       = UAGB_Block_Helper::uag_generate_border_css( $attr, 'overlay' );
-$overlayBorderCSSTablet = UAGB_Block_Helper::uag_generate_border_css( $attr, 'overlay', 'tablet' );
-$overlayBorderCSSMobile = UAGB_Block_Helper::uag_generate_border_css( $attr, 'overlay', 'mobile' );
+$image_border_css         = UAGB_Block_Helper::uag_generate_border_css( $attr, 'image' );
+$image_border_css_tablet   = UAGB_Block_Helper::uag_generate_border_css( $attr, 'image', 'tablet' );
+$image_border_css_mobile   = UAGB_Block_Helper::uag_generate_border_css( $attr, 'image', 'mobile' );
+$overlay_border_css       = UAGB_Block_Helper::uag_generate_border_css( $attr, 'overlay' );
+$overlay_border_css_tablet = UAGB_Block_Helper::uag_generate_border_css( $attr, 'overlay', 'tablet' );
+$overlay_border_css_mobile = UAGB_Block_Helper::uag_generate_border_css( $attr, 'overlay', 'mobile' );
 
 
 $selectors = array(
@@ -35,7 +35,7 @@ $selectors = array(
 		'margin-left'   => UAGB_Helper::get_css_value( $attr['imageLeftMargin'], $attr['imageMarginUnit'] ),
 	),
 	'.wp-block-uagb-image--layout-default img' => array_merge(
-		$imageBorderCSS,
+		$image_border_css,
 		array(
 			'box-shadow' => UAGB_Helper::get_css_value( $attr['imageBoxShadowHOffset'], 'px' ) . ' ' . UAGB_Helper::get_css_value( $attr['imageBoxShadowVOffset'], 'px' ) . ' ' . UAGB_Helper::get_css_value( $attr['imageBoxShadowBlur'], 'px' ) . ' ' . UAGB_Helper::get_css_value( $attr['imageBoxShadowSpread'], 'px' ) . ' ' . $attr['imageBoxShadowColor'] . ' ' . $imageBoxShadowPosition,
 		)
@@ -70,7 +70,7 @@ $selectors = array(
 		'opacity'    => $attr['overlayOpacity'],
 	),
 	'.wp-block-uagb-image--layout-overlay .wp-block-uagb-image--layout-overlay__inner' => array_merge(
-		$overlayBorderCSS,
+		$overlay_border_css,
 		array(
 			'left'   => UAGB_Helper::get_css_value( $attr['overlayPositionFromEdge'], $attr['overlayPositionFromEdgeUnit'] ),
 			'right'  => UAGB_Helper::get_css_value( $attr['overlayPositionFromEdge'], $attr['overlayPositionFromEdgeUnit'] ),
@@ -156,7 +156,7 @@ if ( 'none' !== $attr['maskShape'] ) {
 }
 
 // tablet.
-$t_selectors['.wp-block-uagb-image--layout-default img']              = $imageBorderCSSTablet;
+$t_selectors['.wp-block-uagb-image--layout-default img']              = $image_border_css_tablet;
 $t_selectors['.wp-block-uagb-image .wp-block-uagb-image__figure img'] = array(
 	'width' => UAGB_Helper::get_css_value( $attr['widthTablet'], 'px' ),
 );
@@ -174,7 +174,7 @@ $t_selectors['.wp-block-uagb-image .wp-block-uagb-image__figure figcaption']    
 	'margin-bottom' => UAGB_Helper::get_css_value( $attr['captionBottomMarginTablet'], $attr['captionMarginUnitTablet'] ),
 	'margin-left'   => UAGB_Helper::get_css_value( $attr['captionLeftMarginTablet'], $attr['captionMarginUnitTablet'] ),
 );
-$t_selectors['.wp-block-uagb-image--layout-overlay .wp-block-uagb-image--layout-overlay__inner']       = $overlayBorderCSSTablet;
+$t_selectors['.wp-block-uagb-image--layout-overlay .wp-block-uagb-image--layout-overlay__inner']       = $overlay_border_css_tablet;
 $t_selectors['.wp-block-uagb-image .wp-block-uagb-image--layout-overlay__inner .uagb-image-heading']   = array(
 	'font-size'     => UAGB_Helper::get_css_value( $attr['headingFontSizeTablet'], $attr['headingFontSizeType'] ),
 	'line-height'   => UAGB_Helper::get_css_value( $attr['headingLineHeightTablet'], $attr['headingLineHeightType'] ),
@@ -191,7 +191,7 @@ $t_selectors['.wp-block-uagb-image .wp-block-uagb-image--layout-overlay__inner .
 );
 
 // mobile.
-$m_selectors['.wp-block-uagb-image--layout-default img']              = $imageBorderCSSMobile;
+$m_selectors['.wp-block-uagb-image--layout-default img']              = $image_border_css_mobile;
 $m_selectors['.wp-block-uagb-image .wp-block-uagb-image__figure img'] = array(
 	'width' => UAGB_Helper::get_css_value( $attr['widthMobile'], 'px' ),
 );
@@ -218,7 +218,7 @@ $m_selectors['.wp-block-uagb-image .wp-block-uagb-image--layout-overlay__inner .
 	'margin-bottom' => UAGB_Helper::get_css_value( $attr['headingBottomMarginMobile'], $attr['headingMarginUnitMobile'] ),
 	'margin-left'   => UAGB_Helper::get_css_value( $attr['headingLeftMarginMobile'], $attr['headingMarginUnitMobile'] ),
 );
-$m_selectors['.wp-block-uagb-image--layout-overlay .wp-block-uagb-image--layout-overlay__inner']       = $overlayBorderCSSMobile;
+$m_selectors['.wp-block-uagb-image--layout-overlay .wp-block-uagb-image--layout-overlay__inner']       = $overlay_border_css_mobile;
 $m_selectors['.wp-block-uagb-image .wp-block-uagb-image--layout-overlay__inner .uagb-image-separator'] = array(
 	'margin-bottom' => UAGB_Helper::get_css_value( $attr['seperatorBottomMarginMobile'], $attr['seperatorMarginUnitMobile'] ),
 	'margin-top'    => UAGB_Helper::get_css_value( $attr['seperatorTopMarginMobile'], $attr['seperatorMarginUnitMobile'] ),

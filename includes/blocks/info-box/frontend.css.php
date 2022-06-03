@@ -7,9 +7,9 @@
  * @package uagb
  */
 
-$ctaBorderCSS       = UAGB_Block_Helper::uag_generate_border_css( $attr, 'cta' );
-$ctaBorderCSSTablet = UAGB_Block_Helper::uag_generate_border_css( $attr, 'cta', 'tablet' );
-$ctaBorderCSSMobile = UAGB_Block_Helper::uag_generate_border_css( $attr, 'cta', 'mobile' );
+$cta_border_css       = UAGB_Block_Helper::uag_generate_border_css( $attr, 'cta' );
+$cta_border_css_tablet = UAGB_Block_Helper::uag_generate_border_css( $attr, 'cta', 'tablet' );
+$cta_border_css_mobile = UAGB_Block_Helper::uag_generate_border_css( $attr, 'cta', 'mobile' );
 // Adds Fonts.
 UAGB_Block_JS::blocks_info_box_gfont( $attr );
 
@@ -235,9 +235,9 @@ if ( 'button' === $attr['ctaType'] ) {
 	$selectors[' .uagb-ifb-button-wrapper .uagb-infobox-cta-link:hover svg'] = array(
 		'fill' => $attr['ctaLinkHoverColor'],
 	);
-	$selectors[' .uagb-infobox-cta-link']                                    = $ctaBorderCSS;
-	$t_selectors[' .uagb-infobox-cta-link']                                  = $ctaBorderCSSTablet;
-	$m_selectors[' .uagb-infobox-cta-link']                                  = $ctaBorderCSSMobile;
+	$selectors[' .uagb-infobox-cta-link']                                    = $cta_border_css;
+	$t_selectors[' .uagb-infobox-cta-link']                                  = $cta_border_css_tablet;
+	$m_selectors[' .uagb-infobox-cta-link']                                  = $cta_border_css_mobile;
 
 }
 

@@ -7,7 +7,7 @@
  * @package uagb
  */
 
-$buttonAttribute = UAGB_Block_Helper::uag_generate_border_attribute( 'btn' );
+$button_attribute = UAGB_Block_Helper::uag_generate_border_attribute( 'btn' );
 
 return array_merge(
 	array(
@@ -86,5 +86,5 @@ return array_merge(
 		'prefixTransform'        => '',
 		'prefixDecoration'       => '',
 	),
-	$buttonAttribute
+	$button_attribute
 );

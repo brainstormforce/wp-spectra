@@ -7,16 +7,9 @@
  * @package uagb
  */
 
-$overallBorderCSS       = UAGB_Block_Helper::uag_generate_border_css( $attr, 'tab' );
-$overallBorderCSS       = UAGB_Block_Helper::uag_generate_deprecated_border_css(
-	$overallBorderCSS,
-	( isset( $attr['borderWidth'] ) ? $attr['borderWidth'] : '' ),
-	( isset( $attr['borderRadius'] ) ? $attr['borderRadius'] : '' ),
-	( isset( $attr['borderColor'] ) ? $attr['borderColor'] : '' ),
-	( isset( $attr['borderStyle'] ) ? $attr['borderStyle'] : '' )
-);
-$overallBorderCSSTablet = UAGB_Block_Helper::uag_generate_border_css( $attr, 'tab', 'tablet' );
-$overallBorderCSSMobile = UAGB_Block_Helper::uag_generate_border_css( $attr, 'tab', 'mobile' );
+$overall_border_css       = UAGB_Block_Helper::uag_generate_border_css( $attr, 'tab' );
+$overall_border_cssTablet = UAGB_Block_Helper::uag_generate_border_css( $attr, 'tab', 'tablet' );
+$overall_border_cssMobile = UAGB_Block_Helper::uag_generate_border_css( $attr, 'tab', 'mobile' );
 // Adds Fonts.
 UAGB_Block_JS::blocks_tabs_gfont( $attr );
 
@@ -34,10 +27,7 @@ $selectors = array(
 	' .uagb-tabs__panel .uagb-tab '                        => array(
 		'background'    => $attr['headerBgColor'],
 		'text-align'    => $attr['titleAlign'],
-		'border-color'  => $attr['borderColor'],
-		'border-width'  => UAGB_Helper::get_css_value( $attr['borderWidth'], 'px' ),
-		'border-style'  => $attr['borderStyle'],
-		'border-radius' => UAGB_Helper::get_css_value( $attr['borderRadius'], 'px' ),
+		$overall_border_css
 	),
 	'.uagb-tabs__wrap ul.uagb-tabs__panel li.uagb-tab a '  => array(
 		'padding-top'    => UAGB_Helper::get_css_value( $tab_title_top_padding, $attr['tabTitlePaddingUnit'] ),

@@ -19,6 +19,10 @@ if ( 'outset' === $attr['boxShadowPositionHover'] ) {
 	$box_shadow_position_css_hover = '';
 }
 
+$border       = UAGB_Block_Helper::uag_generate_border_css( $attr, 'container' );
+$border_tablet = UAGB_Block_Helper::uag_generate_border_css( $attr, 'container', 'tablet' );
+$border_mobile = UAGB_Block_Helper::uag_generate_border_css( $attr, 'container', 'mobile' );
+
 $bg_obj_desktop           = array(
 	'backgroundType'           => $attr['backgroundType'],
 	'backgroundImage'          => $attr['backgroundImageDesktop'],
@@ -38,18 +42,6 @@ $bg_obj_desktop           = array(
 $container_bg_css_desktop = UAGB_Block_Helper::uag_get_background_obj( $bg_obj_desktop );
 
 $video_bg_css = UAGB_Block_Helper::uag_get_background_obj( $bg_obj_desktop );
-
-
-$borderCSS       = UAGB_Block_Helper::uag_generate_border_css( $attr, 'container' );
-$borderCSS       = UAGB_Block_Helper::uag_generate_deprecated_border_css(
-	$borderCSS,
-	( isset( $attr['borderWidth'] ) ? $attr['borderWidth'] : '' ),
-	( isset( $attr['borderRadius'] ) ? $attr['borderRadius'] : '' ),
-	( isset( $attr['borderColor'] ) ? $attr['borderColor'] : '' ),
-	( isset( $attr['borderStyle'] ) ? $attr['borderStyle'] : '' )
-);
-$borderCSSTablet = UAGB_Block_Helper::uag_generate_border_css( $attr, 'container', 'tablet' );
-$borderCSSMobile = UAGB_Block_Helper::uag_generate_border_css( $attr, 'container', 'mobile' );
 
 // Desktop.
 $left_padding_desktop   = ! empty( $attr['leftPaddingDesktop'] ) ? $attr['leftPaddingDesktop'] : 0;
@@ -119,7 +111,7 @@ $container_css = array(
 	'margin-bottom'   => UAGB_Helper::get_css_value( $bottom_margin_desktop, $attr['marginType'] ),
 	'margin-left'     => UAGB_Helper::get_css_value( $left_margin_desktop, $attr['marginType'] ),
 	'margin-right'    => UAGB_Helper::get_css_value( $right_margin_desktop, $attr['marginType'] ),
-
+	$border
 );
 $container_css                  = array_merge( $container_css, $container_bg_css_desktop, $borderCSS );
 $background_video_opacity_value = ( isset( $attr['backgroundVideoOpacity'] ) && 'none' !== $attr['overlayType'] && ( ( 'color' === $attr['overlayType'] && ! empty( $attr['backgroundVideoColor'] ) ) || ( 'gradient' === $attr['overlayType'] && ! empty( $attr['gradientValue'] ) ) ) ) ? 1 - $attr['backgroundVideoOpacity'] : 1;
@@ -204,7 +196,7 @@ $container_tablet_css    = array(
 	'justify-content' => $attr['justifyContentTablet'],
 	'flex-wrap'       => $attr['wrapTablet'],
 	'align-content'   => $attr['alignContentTablet'],
-	$borderCSSTablet,
+	$border_tablet,
 	'row-gap'         => UAGB_Helper::get_css_value( $attr['rowGapTablet'], $attr['rowGapTypeTablet'] ),
 	'column-gap'      => UAGB_Helper::get_css_value( $attr['columnGapTablet'], $attr['columnGapTypeTablet'] ),
 	'padding-top'     => UAGB_Helper::get_css_value( $top_padding_tablet, $attr['paddingTypeTablet'] ),
@@ -256,7 +248,7 @@ $container_mobile_css    = array(
 	'justify-content' => $attr['justifyContentMobile'],
 	'flex-wrap'       => $attr['wrapMobile'],
 	'align-content'   => $attr['alignContentMobile'],
-	$borderCSSMobile,
+	$border_mobile,
 	'row-gap'         => UAGB_Helper::get_css_value( $attr['rowGapMobile'], $attr['rowGapTypeMobile'] ),
 	'column-gap'      => UAGB_Helper::get_css_value( $attr['columnGapMobile'], $attr['columnGapTypeMobile'] ),
 	'padding-top'     => UAGB_Helper::get_css_value( $top_padding_mobile, $attr['paddingTypeMobile'] ),

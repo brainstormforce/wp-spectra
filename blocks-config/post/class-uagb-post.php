@@ -69,7 +69,7 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 				return;
 			}
 
-			$paginationMasonryBorderAttribute = UAGB_Block_Helper::uag_generate_border_attribute( 'paginationMasonry' );
+			$pagination_masonry_border_attribute = UAGB_Block_Helper::uag_generate_border_attribute( 'paginationMasonry' );
 
 			$common_attributes = $this->get_post_attributes();
 
@@ -340,7 +340,7 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 								'type'    => 'string',
 								'default' => 'px',
 							),
-							$paginationMasonryBorderAttribute,
+							$pagination_masonry_border_attribute,
 
 						)
 					),
@@ -355,7 +355,7 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 		 * @since 0.0.1
 		 */
 		public function get_post_attributes() {
-			$btnBorderAttribute = UAGB_Block_Helper::uag_generate_border_attribute( 'btn' );
+			$btn_border_attribute = UAGB_Block_Helper::uag_generate_border_attribute( 'btn' );
 
 			return array(
 				'inheritFromTheme'              => array(
@@ -471,9 +471,6 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 				'btnVPadding'                   => array(
 					'type'    => 'number',
 					'default' => '',
-				),
-				'btnBorderHColor'               => array(
-					'type' => 'string',
 				),
 				'columns'                       => array(
 					'type'    => 'number',
@@ -934,7 +931,7 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 					'type'    => 'string',
 					'default' => ', ',
 				),
-				$btnBorderAttribute,
+				$btn_border_attribute,
 			);
 		}
 
