@@ -1118,5 +1118,39 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 			}
 
 		}
+
+		/**
+		 * Get a Block's Default Attributes.
+		 *
+		 * @param string $block_name  Name of the block to retrieve defaults.
+		 * @return array              All default attributes for the specified block.
+		 */
+		private static function get_block_default_attributes( $block_name ) {
+			return require UAGB_DIR . 'includes/blocks/' . $block_name . '/attributes.php';
+		}
+
+		/**
+		 * Return the Current Attribute or the Default Attribute.
+		 *
+		 * @param array  $current_value  The current variable / attribute that is altered by settings.
+		 * @param string $key           The key of the default attribute for that setting.
+		 * @param string $block_name     The name of the block.
+		 */
+		public static function get_attribute_fallback( $current_value, $key, $block_name ) {
+			$default = self::get_block_default_attributes( $block_name );
+			return isset( $current_value ) ? $current_value : $default[ $key ];
+		}
+
+		/**
+		 * Return the Current Attribute or the Default Attribute for Numeric Data.
+		 *
+		 * @param array  $current_value  The current variable / attribute that is altered by settings.
+		 * @param string $key           The key of the default attribute for that setting.
+		 * @param string $block_name     The name of the block.
+		 */
+		public static function get_fallback_number( $current_value, $key, $block_name ) {
+			$default = self::get_block_default_attributes( $block_name );
+			return is_numeric( $current_value ) ? $current_value : $default[ $key ];
+		}
 	}
 }
