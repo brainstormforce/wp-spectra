@@ -4,8 +4,12 @@
 
 import generateCSS from '@Controls/generateCSS';
 import generateCSSUnit from '@Controls/generateCSSUnit';
+import { getFallbackNumber } from '@Controls/getAttributeFallback';
 
 function styling( props ) {
+
+	const blockName = props.name.replace( 'uagb/', '' );
+
 	const {
 		tag,
 		align,
@@ -85,6 +89,16 @@ function styling( props ) {
 		prefixFontStyle,
 	} = props.attributes;
 
+	const imgWidthFallback = getFallbackNumber( imgWidth, 'imgWidth', blockName );
+	const titleSpaceFallback = getFallbackNumber( titleSpace, 'titleSpace', blockName );
+	const prefixSpaceFallback = getFallbackNumber( prefixSpace, 'prefixSpace', blockName );
+	const descSpaceFallback = getFallbackNumber( descSpace, 'descSpace', blockName );
+	const socialFontSizeFallback = getFallbackNumber( socialFontSize, 'socialFontSize', blockName );
+	const socialSpaceFallback = getFallbackNumber( socialSpace, 'socialSpace', blockName );
+
+	const socialSpaceTabletFallback = isNaN( socialSpaceTablet ) ? socialSpaceFallback : socialSpaceTablet;
+	const socialSpaceMobileFallback = isNaN( socialSpaceMobile ) ? socialSpaceTabletFallback : socialSpaceMobile;
+
 	let tabletSelectors = {};
 	let mobileSelectors = {};
 
@@ -101,8 +115,8 @@ function styling( props ) {
 			'text-transform': descTransform,
 			'font-weight': descFontWeight,
 			'color': descColor,
-			'margin-bottom': generateCSSUnit( descSpace, 'px' ),
-			'margin-top': generateCSSUnit( prefixSpace, 'px' ),
+			'margin-bottom': generateCSSUnit( descSpaceFallback, 'px' ),
+			'margin-top': generateCSSUnit( prefixSpaceFallback, 'px' ),
 		},
 		' .rich-text.block-editor-rich-text__editable.uagb-team__prefix': {
 			'font-family': prefixFontFamily,
@@ -119,18 +133,18 @@ function styling( props ) {
 		},
 		' .uagb-team__social-icon a': {
 			'color': socialColor,
-			'font-size': generateCSSUnit( socialFontSize, socialFontSizeType ),
-			'width': generateCSSUnit( socialFontSize, socialFontSizeType ),
-			'height': generateCSSUnit( socialFontSize, socialFontSizeType ),
+			'font-size': generateCSSUnit( socialFontSizeFallback, socialFontSizeType ),
+			'width': generateCSSUnit( socialFontSizeFallback, socialFontSizeType ),
+			'height': generateCSSUnit( socialFontSizeFallback, socialFontSizeType ),
 			'line-height': generateCSSUnit(
-				socialFontSize,
+				socialFontSizeFallback,
 				socialFontSizeType
 			),
 		},
 		' .uagb-team__social-icon svg': {
 			'fill': socialColor,
-			'width': generateCSSUnit( socialFontSize, socialFontSizeType ),
-			'height': generateCSSUnit( socialFontSize, socialFontSizeType ),
+			'width': generateCSSUnit( socialFontSizeFallback, socialFontSizeType ),
+			'height': generateCSSUnit( socialFontSizeFallback, socialFontSizeType ),
 		},
 		' .uagb-team__social-icon:hover a': {
 			'color': socialHoverColor,
@@ -139,23 +153,23 @@ function styling( props ) {
 			'fill': socialHoverColor,
 		},
 		'.uagb-team__image-position-left .uagb-team__social-icon': {
-			'margin-right': generateCSSUnit( socialSpace, 'px' ),
+			'margin-right': generateCSSUnit( socialSpaceFallback, 'px' ),
 			'margin-left': '0',
 		},
 		'.uagb-team__image-position-right .uagb-team__social-icon': {
-			'margin-left': generateCSSUnit( socialSpace, 'px' ),
+			'margin-left': generateCSSUnit( socialSpaceFallback, 'px' ),
 			'margin-right': '0',
 		},
 		'.uagb-team__image-position-above.uagb-team__align-center .uagb-team__social-icon': {
-			'margin-right': generateCSSUnit( socialSpace / 2, 'px' ),
-			'margin-left': generateCSSUnit( socialSpace / 2, 'px' ),
+			'margin-right': generateCSSUnit( socialSpaceFallback / 2, 'px' ),
+			'margin-left': generateCSSUnit( socialSpaceFallback / 2, 'px' ),
 		},
 		'.uagb-team__image-position-above.uagb-team__align-left .uagb-team__social-icon': {
-			'margin-right': generateCSSUnit( socialSpace, 'px' ),
+			'margin-right': generateCSSUnit( socialSpaceFallback, 'px' ),
 			'margin-left': '0',
 		},
 		'.uagb-team__image-position-above.uagb-team__align-right .uagb-team__social-icon': {
-			'margin-left': generateCSSUnit( socialSpace, 'px' ),
+			'margin-left': generateCSSUnit( socialSpaceFallback, 'px' ),
 			'margin-right': '0',
 		},
 		' .uagb-team__image-wrap': { // For Backword.
@@ -166,7 +180,7 @@ function styling( props ) {
 			),
 			'margin-left': generateCSSUnit( imageLeftMargin, imageMarginUnit ),
 			'margin-right': generateCSSUnit( imageRightMargin, imageMarginUnit ),
-			'width': generateCSSUnit( imgWidth, 'px' ),
+			'width': generateCSSUnit( imgWidthFallback, 'px' ),
 		},
 		' img': {
 			'margin-top': generateCSSUnit( imageTopMargin, imageMarginUnit ),
@@ -176,8 +190,8 @@ function styling( props ) {
 			),
 			'margin-left': generateCSSUnit( imageLeftMargin, imageMarginUnit ),
 			'margin-right': generateCSSUnit( imageRightMargin, imageMarginUnit ),
-			'width': generateCSSUnit( imgWidth, 'px' ),
-			'height': generateCSSUnit( imgWidth, 'px' ),
+			'width': generateCSSUnit( imgWidthFallback, 'px' ),
+			'height': generateCSSUnit( imgWidthFallback, 'px' ),
 		},
 	};
 
@@ -223,7 +237,7 @@ function styling( props ) {
 		'font-size': generateCSSUnit( titleFontSize, titleFontSizeType ),
 		'line-height': generateCSSUnit( titleLineHeight, titleLineHeightType ),
 		'color': titleColor,
-		'margin-bottom': generateCSSUnit( titleSpace, 'px' ),
+		'margin-bottom': generateCSSUnit( titleSpaceFallback, 'px' ),
 	};
 
 	mobileSelectors = {
@@ -282,8 +296,8 @@ function styling( props ) {
 			'margin-right': '0',
 		},
 		'.uagb-team__image-position-above.uagb-team__align-center .uagb-team__social-icon': {
-			'margin-right': generateCSSUnit( socialSpaceMobile / 2, 'px' ),
-			'margin-left': generateCSSUnit( socialSpaceMobile / 2, 'px' ),
+			'margin-right': generateCSSUnit( socialSpaceMobileFallback / 2, 'px' ),
+			'margin-left': generateCSSUnit( socialSpaceMobileFallback / 2, 'px' ),
 		},
 	};
 	mobileSelectors[
@@ -349,8 +363,8 @@ function styling( props ) {
 			'margin-right': '0',
 		},
 		'.uagb-team__image-position-above.uagb-team__align-center .uagb-team__social-icon': {
-			'margin-right': generateCSSUnit( socialSpaceTablet / 2, 'px' ),
-			'margin-left': generateCSSUnit( socialSpaceTablet / 2, 'px' ),
+			'margin-right': generateCSSUnit( socialSpaceTabletFallback / 2, 'px' ),
+			'margin-left': generateCSSUnit( socialSpaceTabletFallback / 2, 'px' ),
 		},
 	};
 	tabletSelectors[
