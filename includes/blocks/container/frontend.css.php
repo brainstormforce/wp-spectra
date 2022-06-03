@@ -293,8 +293,6 @@ if ( 'alignwide' === $attr['innerContentWidth'] ) {
 		'--inner-content-custom-width'       => $attr['innerContentCustomWidthTablet'] . $attr['innerContentCustomWidthType'],
 		'--padding-left'                     => $left_padding_tablet . $attr['paddingTypeTablet'],
 		'--padding-right'                    => $right_padding_tablet . $attr['paddingTypeTablet'],
-		'padding-left'                       => 'calc( ( 100vw - var( --inner-content-custom-width-final ) ) / 2 + var( --padding-left ) )',
-		'padding-right'                      => 'calc( ( 100vw - var( --inner-content-custom-width-final ) ) / 2 + var( --padding-right ) )',
 		);
 
 		$m_selectors[ '.uagb-is-root-container.uagb-block-' . $id ] = array( // phpcs:ignore WordPress.WP.GlobalVariablesOverride.Prohibited
@@ -302,8 +300,6 @@ if ( 'alignwide' === $attr['innerContentWidth'] ) {
 		'--inner-content-custom-width'       => $attr['innerContentCustomWidthMobile'] . $attr['innerContentCustomWidthType'],
 		'--padding-left'                     => $left_padding_mobile . $attr['paddingTypeMobile'],
 		'--padding-right'                    => $right_padding_mobile . $attr['paddingTypeMobile'],
-		'padding-left'                       => 'calc( ( 100vw - var( --inner-content-custom-width-final ) ) / 2 + var( --padding-left ) )',
-		'padding-right'                      => 'calc( ( 100vw - var( --inner-content-custom-width-final ) ) / 2 + var( --padding-right ) )',
 		);
 	}
 }
