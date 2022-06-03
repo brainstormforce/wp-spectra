@@ -158,14 +158,12 @@ const attributes = {
 		UAGCopyPaste: {
 			styleType: 'icon-bg-size-tablet'
 		},
-		default: 0,
 	},
 	bgSizeMobile: {
 		type: 'number',
 		UAGCopyPaste: {
 			styleType: 'icon-bg-size-mobile'
 		},
-		default: 0,
 	},
 	border: {
 		type: 'number',
@@ -176,14 +174,12 @@ const attributes = {
 	},
 	borderTablet: {
 		type: 'number',
-		default: 0,
 		UAGCopyPaste: {
 			styleType: 'icon-border-style'
 		},
 	},
 	borderMobile: {
 		type: 'number',
-		default: 0,
 		UAGCopyPaste: {
 			styleType: 'icon-border-style'
 		},
