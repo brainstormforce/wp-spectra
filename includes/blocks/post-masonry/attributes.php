@@ -6,6 +6,7 @@
  *
  * @package uagb
  */
+
 $paginationMasonryBorderAttribute = UAGB_Block_Helper::uag_generate_border_attribute( 'paginationMasonry' );
 $btnBorderAttribute               = UAGB_Block_Helper::uag_generate_border_attribute( 'btn' );
 

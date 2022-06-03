@@ -6,6 +6,7 @@
  *
  * @package uagb
  */
+
 $borderDefaults  = array(
 	'borderWidth' => 1,
 	'borderColor' => '#e0e0e0',

@@ -6,6 +6,7 @@
  *
  * @package uagb
  */
+
 $overallBorderCSS       = UAGB_Block_Helper::uag_generate_border_css( $attr, 'tab' );
 $overallBorderCSS       = UAGB_Block_Helper::uag_generate_deprecated_border_css(
 	$overallBorderCSS,

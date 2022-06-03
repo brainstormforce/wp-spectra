@@ -127,11 +127,8 @@ $background_video_opacity_value = ( isset( $attr['backgroundVideoOpacity'] ) && 
 $selectors = array(
 	'.uagb-block-' . $id                                  => $container_css, // phpcs:ignore WordPress.WP.GlobalVariablesOverride.Prohibited
 	'.uagb-block-' . $id . ':hover'                       => array(
-<< << <<< HEAD
 		'border-color' => $attr['containerBorderHColor'],
-=======
-		'border-color' => $attr['borderHoverColor'],
-		'box-shadow'      =>
+		'box-shadow'   =>
 			UAGB_Helper::get_css_value( $attr['boxShadowHOffsetHover'], 'px' ) .
 			' ' .
 			UAGB_Helper::get_css_value( $attr['boxShadowVOffsetHover'], 'px' ) .
@@ -143,7 +140,6 @@ $selectors = array(
 			$attr['boxShadowColorHover'] .
 			' ' .
 			$box_shadow_position_css_hover,
->>>>>>> c508a1bcfedbd9020e52569ec63c2dfff4b99690
 	),
 	'.uagb-block-' . $id . '.wp-block-uagb-container'     => array(
 		'color' => $attr['textColor'],
@@ -208,19 +204,7 @@ $container_tablet_css    = array(
 	'justify-content' => $attr['justifyContentTablet'],
 	'flex-wrap'       => $attr['wrapTablet'],
 	'align-content'   => $attr['alignContentTablet'],
-<<<<<<< HEAD
-	'row-gap'         => UAGB_Helper::get_css_value( $attr['rowGapTablet'], $attr['rowGapType'] ),
-	'column-gap'      => UAGB_Helper::get_css_value( $attr['columnGapTablet'], $attr['columnGapType'] ),
-	'padding-top'     => UAGB_Helper::get_css_value( $top_padding_tablet, $attr['paddingType'] ),
-	'padding-bottom'  => UAGB_Helper::get_css_value( $bottom_padding_tablet, $attr['paddingType'] ),
-	'padding-left'    => UAGB_Helper::get_css_value( $left_padding_tablet, $attr['paddingType'] ),
-	'padding-right'   => UAGB_Helper::get_css_value( $right_padding_tablet, $attr['paddingType'] ),
-	'margin-top'      => UAGB_Helper::get_css_value( $top_margin_tablet, $attr['marginType'] ),
-	'margin-bottom'   => UAGB_Helper::get_css_value( $bottom_margin_tablet, $attr['marginType'] ),
-	'margin-left'     => UAGB_Helper::get_css_value( $left_margin_tablet, $attr['marginType'] ),
-	'margin-right'    => UAGB_Helper::get_css_value( $right_margin_tablet, $attr['marginType'] ),
 	$borderCSSTablet,
-=======
 	'row-gap'         => UAGB_Helper::get_css_value( $attr['rowGapTablet'], $attr['rowGapTypeTablet'] ),
 	'column-gap'      => UAGB_Helper::get_css_value( $attr['columnGapTablet'], $attr['columnGapTypeTablet'] ),
 	'padding-top'     => UAGB_Helper::get_css_value( $top_padding_tablet, $attr['paddingTypeTablet'] ),
@@ -231,7 +215,6 @@ $container_tablet_css    = array(
 	'margin-bottom'   => UAGB_Helper::get_css_value( $bottom_margin_tablet, $attr['marginTypeTablet'] ),
 	'margin-left'     => UAGB_Helper::get_css_value( $left_margin_tablet, $attr['marginTypeTablet'] ),
 	'margin-right'    => UAGB_Helper::get_css_value( $right_margin_tablet, $attr['marginTypeTablet'] ),
->>>>>>> c508a1bcfedbd9020e52569ec63c2dfff4b99690
 );
 $container_tablet_css    = array_merge( $container_tablet_css, $container_bg_css_tablet );
 
@@ -273,19 +256,7 @@ $container_mobile_css    = array(
 	'justify-content' => $attr['justifyContentMobile'],
 	'flex-wrap'       => $attr['wrapMobile'],
 	'align-content'   => $attr['alignContentMobile'],
-<<<<<<< HEAD
-	'row-gap'         => UAGB_Helper::get_css_value( $attr['rowGapMobile'], $attr['rowGapType'] ),
-	'column-gap'      => UAGB_Helper::get_css_value( $attr['columnGapMobile'], $attr['columnGapType'] ),
-	'padding-top'     => UAGB_Helper::get_css_value( $top_padding_mobile, $attr['paddingType'] ),
-	'padding-bottom'  => UAGB_Helper::get_css_value( $bottom_padding_mobile, $attr['paddingType'] ),
-	'padding-left'    => UAGB_Helper::get_css_value( $left_padding_mobile, $attr['paddingType'] ),
-	'padding-right'   => UAGB_Helper::get_css_value( $right_padding_mobile, $attr['paddingType'] ),
-	'margin-top'      => UAGB_Helper::get_css_value( $top_margin_mobile, $attr['marginType'] ),
-	'margin-bottom'   => UAGB_Helper::get_css_value( $bottom_margin_mobile, $attr['marginType'] ),
-	'margin-left'     => UAGB_Helper::get_css_value( $left_margin_mobile, $attr['marginType'] ),
-	'margin-right'    => UAGB_Helper::get_css_value( $right_margin_mobile, $attr['marginType'] ),
 	$borderCSSMobile,
-=======
 	'row-gap'         => UAGB_Helper::get_css_value( $attr['rowGapMobile'], $attr['rowGapTypeMobile'] ),
 	'column-gap'      => UAGB_Helper::get_css_value( $attr['columnGapMobile'], $attr['columnGapTypeMobile'] ),
 	'padding-top'     => UAGB_Helper::get_css_value( $top_padding_mobile, $attr['paddingTypeMobile'] ),
@@ -296,7 +267,6 @@ $container_mobile_css    = array(
 	'margin-bottom'   => UAGB_Helper::get_css_value( $bottom_margin_mobile, $attr['marginTypeMobile'] ),
 	'margin-left'     => UAGB_Helper::get_css_value( $left_margin_mobile, $attr['marginTypeMobile'] ),
 	'margin-right'    => UAGB_Helper::get_css_value( $right_margin_mobile, $attr['marginTypeMobile'] ),
->>>>>>> c508a1bcfedbd9020e52569ec63c2dfff4b99690
 );
 $container_mobile_css    = array_merge( $container_mobile_css, $container_bg_css_mobile );
 

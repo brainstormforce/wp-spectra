@@ -6,6 +6,7 @@
  *
  * @package uagb
  */
+
 $ctaBorderCSS       = UAGB_Block_Helper::uag_generate_border_css( $attr, 'cta' );
 $ctaBorderCSSTablet = UAGB_Block_Helper::uag_generate_border_css( $attr, 'cta', 'tablet' );
 $ctaBorderCSSMobile = UAGB_Block_Helper::uag_generate_border_css( $attr, 'cta', 'mobile' );

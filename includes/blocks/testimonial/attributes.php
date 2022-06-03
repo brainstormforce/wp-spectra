@@ -6,6 +6,7 @@
  *
  * @package uagb
  */
+
 $borderAttribute = UAGB_Block_Helper::uag_generate_border_attribute( 'btn' );
 
 return array(

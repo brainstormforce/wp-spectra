@@ -6,6 +6,7 @@
  *
  * @package uagb
  */
+
 $ctaBorderAttribute = UAGB_Block_Helper::uag_generate_border_attribute( 'cta' );
 return array(
 	'classMigrate'               => false,
@@ -207,13 +208,9 @@ return array(
 	'prefixMarginLeftMobile'     => '',
 	'prefixMobileMarginUnit'     => 'px',
 	'prefixTabletMarginUnit'     => 'px',
-<< << <<< HEAD
 	...$ctaBorderAttribute,
-=======
 	'prefixLetterSpacing'        => '',
 	'prefixLetterSpacingTablet'  => '',
 	'prefixLetterSpacingMobile'  => '',
 	'prefixLetterSpacingType'    => 'px',
-
->>>>>>> c508a1bcfedbd9020e52569ec63c2dfff4b99690
 );

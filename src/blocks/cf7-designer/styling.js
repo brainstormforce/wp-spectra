@@ -4,6 +4,7 @@
  * @param  {Object} props - The block object.
  * @return {Object} The inline background type CSS.
  */
+
 import generateCSS from '@Controls/generateCSS';
 import generateCSSUnit from '@Controls/generateCSSUnit';
 import generateBorderCSS from '@Controls/generateBorderCSS';

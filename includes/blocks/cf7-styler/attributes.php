@@ -6,6 +6,7 @@
  *
  * @package uagb
  */
+
 $fieldBorderDefaults   = array(
 	'borderStyle'      => 'solid',
 	'borderWidth'      => 1,
