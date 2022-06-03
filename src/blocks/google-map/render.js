@@ -6,8 +6,6 @@ import { getFallbackNumber } from '@Controls/getAttributeFallback';
 
 const Render = ( props ) => {
 
-	const blockName = props.name.replace( 'uagb/', '' );
-
 	// Add and remove the CSS on the drop and remove of the component.
 	useLayoutEffect( () => {
 		styles.use();
@@ -17,6 +15,8 @@ const Render = ( props ) => {
 	}, [] );
 
 	props = props.parentProps;
+
+	const blockName = props.name.replace( 'uagb/', '' );
 
 	const {
 		className,

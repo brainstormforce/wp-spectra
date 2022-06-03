@@ -5,7 +5,7 @@ import { getFallbackNumber } from '@Controls/getAttributeFallback';
 
 export default function save( props ) {
 
-	const blockName = props.name.replace( 'uagb/', '' );
+	const blockName = 'google-map';
 
 	const { block_id, height, zoom, address, language } = props.attributes;
 	const encoded_address = encodeURI( address );
