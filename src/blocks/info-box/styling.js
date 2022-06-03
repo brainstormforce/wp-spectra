@@ -474,11 +474,11 @@ function styling( props ) {
 			'margin-right': generateCSSUnit( separatorRightMargin, seperatorSpaceUnit ),
 		},
 		// editor css is causing issue  thaat why i used important
-		' .uagb-infobox__content-wrap  .uagb-ifb-content svg': {
-			'box-sizing' : `${boxSizingIcon} !important`,
+		'.uagb-infobox__content-wrap  .uagb-ifb-content svg': {
+			'box-sizing' : `${boxSizingIcon}`,
 		},
-		' .uagb-infobox__content-wrap  .uagb-ifb-content img': {
-			'box-sizing' : `${boxSizingImage} !important`,
+		'.uagb-infobox__content-wrap  .uagb-ifb-content img': {
+			'box-sizing' : `${boxSizingImage}`,
 		},
 	};
 
@@ -800,8 +800,8 @@ function styling( props ) {
 			'margin-left': generateCSSUnit( separatorMarginLeftTablet, separatorTabletMarginUnit ),
 			'margin-right': generateCSSUnit( separatorMarginRightTablet, separatorTabletMarginUnit ),
 		},
-		' .uagb-infobox__content-wrap  .uagb-ifb-content img': {
-			'box-sizing' : `${boxSizingImageTablet} !important`,
+		'.uagb-infobox__content-wrap  .uagb-ifb-content img': {
+			'box-sizing' : `${boxSizingImageTablet}`,
 		},
 	};
 
@@ -1034,8 +1034,8 @@ function styling( props ) {
 			),
 			'width': generateCSSUnit( ctaFontSizeMobile, ctaFontSizeType ),
 		},
-		' .uagb-infobox__content-wrap  .uagb-ifb-content img': {
-			'box-sizing' : `${boxSizingImageMobile} !important`,
+		'.uagb-infobox__content-wrap  .uagb-ifb-content img': {
+			'box-sizing' : `${boxSizingImageMobile}`,
 		},
 	};
 

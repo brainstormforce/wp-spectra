@@ -26,13 +26,11 @@ $iconPaddingTop    = is_int( $attr['iconTopMargin'] ) ? $attr['iconTopMargin'] :
 $iconPaddingBottom = is_int( $attr['iconBottomMargin'] ) ? $attr['iconBottomMargin'] : 0;
 $iconPaddingLeft   = is_int( $attr['iconLeftMargin'] ) ? $attr['iconLeftMargin'] : 0;
 $iconPaddingRight  = is_int( $attr['iconRightMargin'] ) ? $attr['iconRightMargin'] : 0;
+$boxSizingIcon = ( '%' === $attr['iconSizeType'] ) ? 'border-box' : 'content-box';
+$boxSizingImage = ( '%' === $attr['imageWidthUnit'] ) ? 'border-box' : 'content-box';
+$boxSizingImageTablet = ( '%' === $attr['imageWidthUnitTablet'] ) ? 'border-box' : 'content-box';
+$boxSizingImageMobile = ( '%' === $attr['imageWidthUnitMobile'] ) ? 'border-box' : 'content-box';
 
-if( '%' === $attr['iconSizeType'] ){
-	$box_sizing = 'border-box';
-}
-else{
-	$box_sizing = 'content-box';
-}
 
 $selectors = array(
 	' .uagb-ifb-icon'                                      => array(
@@ -204,9 +202,13 @@ $selectors = array(
 	' .uagb-ifb-align-icon-before'                         => array(
 		'margin-right' => UAGB_Helper::get_css_value( $attr['ctaIconSpace'], 'px' ),
 	),
-	' .uagb-infobox__content-wrap  .uagb-ifb-content img,svg'=>  array(
-		'box-sizing'   => $box_sizing . '!important',
-	)
+	//image svg
+	'.uagb-infobox__content-wrap  .uagb-ifb-content svg'=>  array(
+		'box-sizing'   => $boxSizingIcon ,
+	),
+	'.uagb-infobox__content-wrap  .uagb-ifb-content img'=>  array(
+		'box-sizing'   => $boxSizingImage ,
+	),
 );
 if( 'Stacked' === $attr['iconView'] ) {
 	$selectors[ ' .uagb-iconbox-icon-wrap.uagb-infobox-shape-circle'] = array(
@@ -386,6 +388,9 @@ $m_selectors = array(
 	' .uagb-ifb-separator'                                 => array(
 		'width' => UAGB_Helper::get_css_value( $attr['seperatorWidthMobile'], $attr['separatorWidthType'] ),
 	),
+	'.uagb-infobox__content-wrap  .uagb-ifb-content img'=>  array(
+		'box-sizing'   => $boxSizingImageMobile ,
+	),
 );
 
 $t_selectors = array(
@@ -485,6 +490,9 @@ $t_selectors = array(
 	),
 	' .uagb-ifb-separator'                             => array(
 		'width' => UAGB_Helper::get_css_value( $attr['seperatorWidthTablet'], $attr['separatorWidthType'] ),
+	),
+	'.uagb-infobox__content-wrap  .uagb-ifb-content img'=>  array(
+		'box-sizing'   => $boxSizingImageTablet ,
 	),
 );
 
