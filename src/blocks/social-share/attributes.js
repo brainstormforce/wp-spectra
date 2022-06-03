@@ -58,14 +58,12 @@ const attributes = {
 	},
 	gapTablet: {
 		type: 'number',
-		default: 10,
 		UAGCopyPaste: {
 			styleType: 'icon-gap-tablet'
 		}
 	},
 	gapMobile: {
 		type: 'number',
-		default: 10,
 		UAGCopyPaste: {
 			styleType: 'icon-gap-mobile'
 		}
@@ -86,14 +84,12 @@ const attributes = {
 	},
 	sizeMobile: {
 		type: 'number',
-		default: 30,
 		UAGCopyPaste: {
 			styleType: 'icon-size-mobile'
 		}
 	},
 	sizeTablet: {
 		type: 'number',
-		default: 30,
 		UAGCopyPaste: {
 			styleType: 'icon-size-tablet'
 		}
@@ -138,14 +134,12 @@ const attributes = {
 		UAGCopyPaste: {
 			styleType: 'icon-border-radius-tablet'
 		},
-		default: 0,
 	},
 	borderRadiusMobile: {
 		type: 'number',
 		UAGCopyPaste: {
 			styleType: 'icon-border-radius-mobile'
 		},
-		default: 0,
 	},
 	social_layout: {
 		type: 'string',
