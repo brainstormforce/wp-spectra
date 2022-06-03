@@ -21,6 +21,8 @@ import renderSVG from '@Controls/renderIcon';
 import MultiButtonsControl from '@Components/multi-buttons-control';
 import UAGAdvancedPanelBody from '@Components/advanced-panel-body';
 import addBlockEditorDynamicStyles from '@Controls/addBlockEditorDynamicStyles';
+import {buttonsPresets} from './presets';
+import UAGPresets from '@Components/presets';
 
 const Settings = lazy( () =>
 	import(
@@ -2052,6 +2054,11 @@ const UAGBPostMasonry = ( props ) => {
 				) }
 				initialOpen={ false }
 			>
+				<UAGPresets
+					setAttributes = { setAttributes }
+					presets = { buttonsPresets }
+					presetInputType = 'radioImage'
+				/>
 				<UAGTabsControl
 					tabs={ [
 						{

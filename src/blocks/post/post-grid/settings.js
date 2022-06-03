@@ -19,6 +19,9 @@ import ResponsiveSlider from '@Components/responsive-slider';
 import MultiButtonsControl from '@Components/multi-buttons-control';
 import renderSVG from '@Controls/renderIcon';
 import UAGTabsControl from '@Components/tabs';
+import {buttonsPresets} from './presets';
+import UAGPresets from '@Components/presets';
+
 const MAX_POSTS_COLUMNS = 8;
 
 import {
@@ -1640,6 +1643,11 @@ const Settings = ( props ) => {
 				) }
 				initialOpen={ false }
 			>
+				<UAGPresets
+					setAttributes = { setAttributes }
+					presets = { buttonsPresets }
+					presetInputType = 'radioImage'
+				/>
 				<UAGTabsControl
 					tabs={ [
 						{
