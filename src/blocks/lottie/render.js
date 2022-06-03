@@ -3,6 +3,7 @@ import classnames from 'classnames';
 import lazyLoader from '@Controls/lazy-loader';
 import { Player } from '@lottiefiles/react-lottie-player';
 import styles from './editor.lazy.scss';
+import { getFallbackNumber } from '@Controls/getAttributeFallback';
 
 const Render = ( props ) => {
 	// Add and remove the CSS on the drop and remove of the component.
@@ -16,6 +17,8 @@ const Render = ( props ) => {
 	const { lottieplayer } = props;
 
 	props = props.parentProps;
+
+	const blockName = props.name.replace( 'uagb/', '' );
 
 	const { className, attributes } = props;
 
@@ -67,7 +70,7 @@ const Render = ( props ) => {
 					ref={ lottieplayer }
 					src={ lottieURl }
         			loop={loop}
-					speed={ speed }
+					speed={ getFallbackNumber( speed, 'speed', blockName ) }
 				>
 				</Player>
 			</Suspense>
