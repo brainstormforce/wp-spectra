@@ -530,7 +530,7 @@ const Settings = ( props ) => {
 						'Hover Color',
 						'ultimate-addons-for-gutenberg'
 					) }
-					prefix={ 'btn' }
+					prefix={ 'overall' }
 					attributes={ attributes }
 					deviceType={ deviceType }
 					disableBottomSeparator={ true }

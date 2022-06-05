@@ -125,12 +125,12 @@ function testimonialStyle( props ) {
 		nameFontStyle,
 		companyFontStyle,
 		descFontStyle,
-		btnBorderHoverColor
+		overallBorderHColor
 	} = props.attributes;
 
-	const btnBorderCSS = generateBorderCSS( props.attributes, 'overall' )
-	const btnBorderCSSTablet = generateBorderCSS( props.attributes, 'overall', 'tablet' )
-	const btnBorderCSSMobile = generateBorderCSS( props.attributes, 'overall', 'mobile' )
+	const overallBorderCSS = generateBorderCSS( props.attributes, 'overall' )
+	const overallBorderCSSTablet = generateBorderCSS( props.attributes, 'overall', 'tablet' )
+	const overallBorderCSSMobile = generateBorderCSS( props.attributes, 'overall', 'mobile' )
 
 	let imgAlign = 'center';
 
@@ -244,9 +244,9 @@ function testimonialStyle( props ) {
 			'height': generateCSSUnit( arrowSize, arrowSizeType ),
 			'width': generateCSSUnit( arrowSize, arrowSizeType ),
 		},
-		' .uagb-testimonial__wrap .uagb-tm__content': btnBorderCSS,
+		' .uagb-testimonial__wrap .uagb-tm__content': overallBorderCSS,
 		' .uagb-testimonial__wrap .uagb-tm__content:hover': {
-			'border-color': btnBorderHoverColor,
+			'border-color': overallBorderHColor,
 		}
 
 	};
@@ -293,7 +293,7 @@ function testimonialStyle( props ) {
 				descLineHeightType
 			),
 		},
-		' .uagb-testimonial__wrap .uagb-tm__content': btnBorderCSSMobile,
+		' .uagb-testimonial__wrap .uagb-tm__content': overallBorderCSSMobile,
 		' .uagb-testimonial__wrap .uagb-tm__image-content': {
 			'text-align': headingAlignMobile,
 			'padding-top': generateCSSUnit(
@@ -367,7 +367,7 @@ function testimonialStyle( props ) {
 			'padding-right': generateCSSUnit( columnGapTablet / 2, columnGapType ),
 			'margin-bottom': generateCSSUnit( rowGapTablet, rowGapType ),
 		},
-		' .uagb-testimonial__wrap .uagb-tm__content': btnBorderCSSTablet,
+		' .uagb-testimonial__wrap .uagb-tm__content': overallBorderCSSTablet,
 		' .uagb-testimonial__wrap .uagb-tm__image-content': {
 			'text-align': headingAlignTablet,
 			'padding-top': generateCSSUnit(

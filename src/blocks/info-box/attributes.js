@@ -667,22 +667,13 @@ const attributes = {
 	},
 	ctaBorderColor: {
 		type: 'string',
-		UAGCopyPaste: {
-			styleType: 'btn-border-color'
-		}
 	},
 	ctaBorderhoverColor: {
 		type: 'string',
-		UAGCopyPaste: {
-			styleType: 'btn-border-hover-color'
-		}
 	},
 	ctaBorderStyle: {
 		type: 'string',
 		default: 'none',
-		UAGCopyPaste: {
-			styleType: 'btn-border-style'
-		}
 	},
 	ctaBtnVertPadding: {
 		type: 'number',
@@ -698,15 +689,9 @@ const attributes = {
 	},
 	ctaBorderWidth: {
 		type: 'number',
-		UAGCopyPaste: {
-			styleType: 'btn-border-width'
-		}
 	},
 	ctaBorderRadius: {
 		type: 'number',
-		UAGCopyPaste: {
-			styleType: 'btn-border-radius'
-		}
 	},
 	iconLeftMargin: {
 		type: 'number',

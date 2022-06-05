@@ -114,7 +114,6 @@ return array(
 	'imageWidth'                 => '',
 	'ctaLinkHoverColor'          => '',
 	'ctaBgHoverColor'            => '',
-	'ctaBorderhoverColor'        => '',
 	'ctaIconSpace'               => '5',
 	'ctaIconSpaceTablet'         => '',
 	'ctaIconSpaceMobile'         => '',

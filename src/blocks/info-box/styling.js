@@ -113,7 +113,7 @@ function styling( props ) {
 		imageWidthUnitMobile,
 		ctaLinkHoverColor,
 		ctaBgHoverColor,
-		ctaBorderhoverColor,
+		ctaBorderHColor,
 		ctaIconSpace,
 		ctaIconSpaceTablet,
 		ctaIconSpaceMobile,
@@ -368,7 +368,7 @@ function styling( props ) {
 		' .uagb-ifb-button-wrapper .uagb-infobox-cta-link:hover': {
 			'color': ctaLinkHoverColor,
 			'background-color': ctaBgHoverColor,
-			'border-color': ctaBorderhoverColor,
+			'border-color': ctaBorderHColor,
 		},
 		' .uagb-ifb-button-wrapper .uagb-infobox-cta-link svg': {
 			'fill': ctaBtnLinkColor,

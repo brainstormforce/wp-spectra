@@ -71,35 +71,20 @@ const attributes = {
 	borderStyle: {
 		type: 'string',
 		default: 'solid',
-		UAGCopyPaste: {
-			styleType: 'desc-border-style'
-		},
 	},
 	borderWidth: {
 		type: 'number',
 		default: 1,
-		UAGCopyPaste: {
-			styleType: 'desc-border-width'
-		},
 	},
 	borderRadius: {
 		type: 'number',
-		UAGCopyPaste: {
-			styleType: 'desc-border-radius'
-		},
 	},
 	borderColor: {
 		type: 'string',
 		default: '#e0e0e0',
-		UAGCopyPaste: {
-			styleType: 'desc-border-color'
-		},
 	},
 	borderHoverColor: {
 		type: 'string',
-		UAGCopyPaste: {
-			styleType: 'desc-border-hover-color'
-		},
 	},
 	activeTabBgColor: {
 		type: 'string',

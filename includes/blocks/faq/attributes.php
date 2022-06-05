@@ -12,7 +12,7 @@ $border_defaults  = array(
 	'borderWidth'  => 1,
 	'borderRadius' => 2,
 );
-$border_attribute = UAGB_Block_Helper::uag_generate_border_attribute( '', $border_defaults );
+$border_attribute = UAGB_Block_Helper::uag_generate_border_attribute( 'faq', $border_defaults );
 
 return array(
 	'block_id'                     => '',

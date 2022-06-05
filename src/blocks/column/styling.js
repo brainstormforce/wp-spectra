@@ -55,7 +55,7 @@ function styling( props ) {
 		columnBorderHColor
 	} = props.attributes;
 
-	const borderCSS = generateBorderCSS( props.attributes, 'column', '' );
+	const borderCSS = generateBorderCSS( props.attributes, 'column' );
 	const borderCSSTablet = generateBorderCSS( props.attributes,'column', 'tablet' );
 	const borderCSSMobile = generateBorderCSS( props.attributes,'column', 'mobile' );
 

@@ -16,16 +16,9 @@ if ( 'left' === $attr['headingAlign'] ) {
 } elseif ( 'right' === $attr['headingAlign'] ) {
 	$img_align = 'flex-end';
 }
-$btnBorderCSS       = UAGB_Block_Helper::uag_generate_border_css( $attr, 'overall' );
-$btnBorderCSS       = UAGB_Block_Helper::uag_generate_deprecated_border_css(
-	$btnBorderCSS,
-	( isset( $attr['borderWidth'] ) ? $attr['borderWidth'] : '' ),
-	( isset( $attr['borderRadius'] ) ? $attr['borderRadius'] : '' ),
-	( isset( $attr['borderColor'] ) ? $attr['borderColor'] : '' ),
-	( isset( $attr['borderStyle'] ) ? $attr['borderStyle'] : '' )
-);
-$btnBorderCSSTablet = UAGB_Block_Helper::uag_generate_border_css( $attr, 'overall', 'tablet' );
-$btnBorderCSSMobile = UAGB_Block_Helper::uag_generate_border_css( $attr, 'overall', 'mobile' );
+$overall_border    = UAGB_Block_Helper::uag_generate_border_css( $attr, 'overall' );
+$overall_border_Tablet = UAGB_Block_Helper::uag_generate_border_css( $attr, 'overall', 'tablet' );
+$overall_border_Mobile = UAGB_Block_Helper::uag_generate_border_css( $attr, 'overall', 'mobile' );
 $position           = str_replace( '-', ' ', $attr['backgroundPosition'] );
 
 $t_selectors = array();
@@ -90,9 +83,9 @@ $selectors = array(
 		'background-color' => $attr['backgroundImageColor'],
 		'opacity'          => ( isset( $attr['backgroundOpacity'] ) && '' !== $attr['backgroundOpacity'] && 101 !== $attr['backgroundOpacity'] ) ? ( ( 100 - $attr['backgroundOpacity'] ) / 100 ) : '',
 	),
-	' .uagb-testimonial__wrap .uagb-tm__content'       => $btnBorderCSS,
+	' .uagb-testimonial__wrap .uagb-tm__content'       => $overall_border,
 	' .uagb-testimonial__wrap .uagb-tm__content:hover' => array(
-		'border-color' => $attr['borderHoverColor'],
+		'border-color' => $attr['overallBorderHColor'],
 	),
 	' ul.slick-dots li button:before'                  => array(
 		'color' => $attr['arrowColor'],
@@ -139,7 +132,7 @@ $m_selectors = array(
 		'margin-bottom' => $attr['nameSpaceMobile'] . $attr['nameSpaceType'],
 	),
 
-	' .uagb-testimonial__wrap .uagb-tm__content'        => $btnBorderCSSMobile,
+	' .uagb-testimonial__wrap .uagb-tm__content'        => $overall_border_mobile,
 	' .uagb-tm__desc'                                   => array(
 		'margin-bottom' => UAGB_Helper::get_css_value( $attr['descSpaceMobile'], $attr['descSpaceType'] ),
 	),
@@ -170,7 +163,7 @@ $t_selectors = array(
 		'margin-bottom' => UAGB_Helper::get_css_value( $attr['descSpaceTablet'], $attr['descSpaceType'] ),
 	),
 
-	' .uagb-testimonial__wrap .uagb-tm__content'        => $btnBorderCSSTablet,
+	' .uagb-testimonial__wrap .uagb-tm__content'        => $overall_border_tablet,
 	' .uagb-tm__content'                                => array(
 		'text-align'     => $attr['headingAlignTablet'],
 		'padding-top'    => UAGB_Helper::get_css_value( $attr['paddingTopTablet'], $attr['tabletPaddingUnit'] ),

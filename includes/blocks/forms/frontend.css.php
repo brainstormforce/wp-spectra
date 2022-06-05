@@ -24,6 +24,26 @@ $paddingFieldBottom = isset( $attr['paddingFieldBottom'] ) ? $attr['paddingField
 $paddingFieldLeft   = isset( $attr['paddingFieldLeft'] ) ? $attr['paddingFieldLeft'] : $attr['hPaddingField'];
 $paddingFieldRight  = isset( $attr['paddingFieldRight'] ) ? $attr['paddingFieldRight'] : $attr['hPaddingField'];
 
+$input_overall_border    = UAGB_Block_Helper::uag_generate_border_css( $attr, 'input' );
+$input_overall_border_Tablet = UAGB_Block_Helper::uag_generate_border_css( $attr, 'input', 'tablet' );
+$input_overall_border_Mobile = UAGB_Block_Helper::uag_generate_border_css( $attr, 'input', 'mobile' );
+
+$successMessage_border    = UAGB_Block_Helper::uag_generate_border_css( $attr, 'successMessage' );
+$successMessage_border_Tablet = UAGB_Block_Helper::uag_generate_border_css( $attr, 'successMessage', 'tablet' );
+$successMessage_border_Mobile = UAGB_Block_Helper::uag_generate_border_css( $attr, 'successMessage', 'mobile' );
+
+$failedMessage_border    = UAGB_Block_Helper::uag_generate_border_css( $attr, 'failedMessage' );
+$failedMessage_border_Tablet = UAGB_Block_Helper::uag_generate_border_css( $attr, 'failedMessage', 'tablet' );
+$failedMessage_border_Mobile = UAGB_Block_Helper::uag_generate_border_css( $attr, 'failedMessage', 'mobile' );
+
+$toggle_border    = UAGB_Block_Helper::uag_generate_border_css( $attr, 'toggle' );
+$toggle_border_Tablet = UAGB_Block_Helper::uag_generate_border_css( $attr, 'toggle', 'tablet' );
+$toggle_border_Mobile = UAGB_Block_Helper::uag_generate_border_css( $attr, 'toggle', 'mobile' );
+
+$btn_border    = UAGB_Block_Helper::uag_generate_border_css( $attr, 'btn' );
+$btn_border_Tablet = UAGB_Block_Helper::uag_generate_border_css( $attr, 'btn', 'tablet' );
+$btn_border_Mobile = UAGB_Block_Helper::uag_generate_border_css( $attr, 'btn', 'mobile' );
+
 $selectors = array(
 	'.uagb-forms__outer-wrap'                              => array(
 		'padding-top'    => UAGB_Helper::get_css_value( $attr['formPaddingTop'], $attr['formPaddingUnit'] ),

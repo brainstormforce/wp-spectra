@@ -38,42 +38,12 @@ const UAGBSectionEdit = ( props ) => {
 
 		const { setAttributes, attributes } = props;
 
-		const {
-			borderStyle,
-			borderWidth,
-			borderColor,
-			borderHoverColor,
-			borderRadius,
-		} = props.attributes;
-
 		const { backgroundOpacity, backgroundImageColor } = attributes;
 
 		// Assigning block_id in the attribute.
 		setAttributes( { block_id: props.clientId.substr( 0, 8 ) } );
 
 		setAttributes( { classMigrate: true } );
-
-		// border
-		if( borderWidth || borderRadius || borderColor || borderHoverColor || borderStyle ){
-			const migrationAttributes = migrateBorderAttributes( 'overall', {
-				label: 'borderWidth',
-				value: borderWidth,
-			}, {
-				label: 'borderRadius',
-				value: borderRadius
-			}, {
-				label: 'borderColor',
-				value: borderColor
-			}, {
-				label: 'borderHoverColor',
-				value: borderHoverColor
-			},{
-				label: 'borderStyle',
-				value: borderStyle
-			}
-			);
-			props.setAttributes( migrationAttributes )
-		}
 
 
 		if ( 101 !== backgroundOpacity ) {

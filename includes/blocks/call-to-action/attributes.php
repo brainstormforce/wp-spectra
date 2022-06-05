@@ -128,7 +128,6 @@ return array(
 	'secondCtaMobilePaddingUnit'      => 'px',
 	'secondCtaTabletPaddingUnit'      => 'px',
 	'secondCtaPaddingLink'            => '',
-	'secondCtaBorderHColor'           => '',
 	'secondCtaColor'                  => '',
 	'secondCtaBackground'             => '',
 	'secondCtaHoverColor'             => '',

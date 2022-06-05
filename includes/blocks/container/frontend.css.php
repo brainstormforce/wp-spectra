@@ -82,7 +82,7 @@ $bottom_margin_mobile = ! empty( $attr['bottomMarginMobile'] ) ? $attr['bottomMa
 
 $column_gap_mobile = ! empty( $attr['columnGapMobile'] ) ? $attr['columnGapMobile'] : $column_gap_tablet;
 
-$container_css = array(
+$container_css = array_merge( array(
 	'min-height'      => UAGB_Helper::get_css_value( $attr['minHeightDesktop'], $attr['minHeightType'] ),
 	'flex-direction'  => $attr['directionDesktop'],
 	'align-items'     => $attr['alignItemsDesktop'],
@@ -111,7 +111,7 @@ $container_css = array(
 	'margin-bottom'   => UAGB_Helper::get_css_value( $bottom_margin_desktop, $attr['marginType'] ),
 	'margin-left'     => UAGB_Helper::get_css_value( $left_margin_desktop, $attr['marginType'] ),
 	'margin-right'    => UAGB_Helper::get_css_value( $right_margin_desktop, $attr['marginType'] ),
-	$border
+	), $border
 );
 $container_css                  = array_merge( $container_css, $container_bg_css_desktop, $borderCSS );
 $background_video_opacity_value = ( isset( $attr['backgroundVideoOpacity'] ) && 'none' !== $attr['overlayType'] && ( ( 'color' === $attr['overlayType'] && ! empty( $attr['backgroundVideoColor'] ) ) || ( 'gradient' === $attr['overlayType'] && ! empty( $attr['gradientValue'] ) ) ) ) ? 1 - $attr['backgroundVideoOpacity'] : 1;
@@ -189,14 +189,13 @@ $bg_obj_tablet           = array(
 	'backgroundVideoColor'     => $attr['backgroundVideoColor'],
 );
 $container_bg_css_tablet = UAGB_Block_Helper::uag_get_background_obj( $bg_obj_tablet );
-$container_tablet_css    = array(
+$container_tablet_css    = array_merge ( array(
 	'min-height'      => UAGB_Helper::get_css_value( $attr['minHeightTablet'], $attr['minHeightType'] ),
 	'flex-direction'  => $attr['directionTablet'],
 	'align-items'     => $attr['alignItemsTablet'],
 	'justify-content' => $attr['justifyContentTablet'],
 	'flex-wrap'       => $attr['wrapTablet'],
 	'align-content'   => $attr['alignContentTablet'],
-	$border_tablet,
 	'row-gap'         => UAGB_Helper::get_css_value( $attr['rowGapTablet'], $attr['rowGapTypeTablet'] ),
 	'column-gap'      => UAGB_Helper::get_css_value( $attr['columnGapTablet'], $attr['columnGapTypeTablet'] ),
 	'padding-top'     => UAGB_Helper::get_css_value( $top_padding_tablet, $attr['paddingTypeTablet'] ),
@@ -207,7 +206,8 @@ $container_tablet_css    = array(
 	'margin-bottom'   => UAGB_Helper::get_css_value( $bottom_margin_tablet, $attr['marginTypeTablet'] ),
 	'margin-left'     => UAGB_Helper::get_css_value( $left_margin_tablet, $attr['marginTypeTablet'] ),
 	'margin-right'    => UAGB_Helper::get_css_value( $right_margin_tablet, $attr['marginTypeTablet'] ),
-);
+),
+$border_tablet );
 $container_tablet_css    = array_merge( $container_tablet_css, $container_bg_css_tablet );
 
 $t_selectors = array(
@@ -241,14 +241,13 @@ $bg_obj_mobile           = array(
 	'backgroundVideoColor'     => $attr['backgroundVideoColor'],
 );
 $container_bg_css_mobile = UAGB_Block_Helper::uag_get_background_obj( $bg_obj_mobile );
-$container_mobile_css    = array(
+$container_mobile_css    = array_merge ( array(
 	'min-height'      => UAGB_Helper::get_css_value( $attr['minHeightMobile'], $attr['minHeightType'] ),
 	'flex-direction'  => $attr['directionMobile'],
 	'align-items'     => $attr['alignItemsMobile'],
 	'justify-content' => $attr['justifyContentMobile'],
 	'flex-wrap'       => $attr['wrapMobile'],
 	'align-content'   => $attr['alignContentMobile'],
-	$border_mobile,
 	'row-gap'         => UAGB_Helper::get_css_value( $attr['rowGapMobile'], $attr['rowGapTypeMobile'] ),
 	'column-gap'      => UAGB_Helper::get_css_value( $attr['columnGapMobile'], $attr['columnGapTypeMobile'] ),
 	'padding-top'     => UAGB_Helper::get_css_value( $top_padding_mobile, $attr['paddingTypeMobile'] ),
@@ -259,7 +258,8 @@ $container_mobile_css    = array(
 	'margin-bottom'   => UAGB_Helper::get_css_value( $bottom_margin_mobile, $attr['marginTypeMobile'] ),
 	'margin-left'     => UAGB_Helper::get_css_value( $left_margin_mobile, $attr['marginTypeMobile'] ),
 	'margin-right'    => UAGB_Helper::get_css_value( $right_margin_mobile, $attr['marginTypeMobile'] ),
-);
+),
+$border_mobile );
 $container_mobile_css    = array_merge( $container_mobile_css, $container_bg_css_mobile );
 
 $m_selectors = array(

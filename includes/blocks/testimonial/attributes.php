@@ -7,7 +7,7 @@
  * @package uagb
  */
 
-$borderAttribute = UAGB_Block_Helper::uag_generate_border_attribute( 'btn' );
+$border_attribute = UAGB_Block_Helper::uag_generate_border_attribute( 'overall' );
 
 return array(
 	'classMigrate'            => false,
@@ -94,7 +94,6 @@ return array(
 	'columnGapType'           => 'px',
 	'descSpaceType'           => 'px',
 	'nameSpaceType'           => 'px',
-	'btnBorderHoverColor'     => '',
 	'overlayType'             => '',
 	'backgroundAttachment'    => '',
 	'gradientValue'           => '',
@@ -137,5 +136,5 @@ return array(
 	'gradientAngle'           => 0,
 	'gradientPosition'        => 'center center',
 	'equalHeight'             => false,
-	$borderAttribute,
+	$border_attribute,
 );

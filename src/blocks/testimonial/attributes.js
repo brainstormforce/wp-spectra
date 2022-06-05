@@ -19,7 +19,7 @@ for ( let i = 1; i <= itemCount; i++ ) {
 	} );
 }
 import { getBorderAttributes } from '@Controls/generateAttributes';
-const overallBorderAttributes = getBorderAttributes( 'btn', {
+const overallBorderAttributes = getBorderAttributes( 'overall', {
 	borderStyle: 'solid',
 	borderTopWidth: 1,
 	borderRightWidth: 1,

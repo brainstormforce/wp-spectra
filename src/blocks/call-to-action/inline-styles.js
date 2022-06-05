@@ -66,7 +66,7 @@ function CtaStyle( props ) {
 		tabletCTAPaddingUnit,
 		ctaLinkHoverColor,
 		ctaBgHoverColor,
-		ctaBorderhoverColor,
+		ctaBorderHColor,
 		ctaIconSpace,
 		ctaIconSpaceTablet,
 		ctaIconSpaceMobile,
@@ -167,9 +167,9 @@ function CtaStyle( props ) {
 		buttonRightSpaceType,
 	} = props.attributes;
 
-	const ctaBorderCSS = generateBorderCSS( props.attributes, 'cta' )
-	const ctaBorderCSSTablet = generateBorderCSS( props.attributes, 'cta', 'tablet' )
-	const ctaBorderCSSMobile = generateBorderCSS( props.attributes, 'cta', 'mobile' )
+	const ctaBorderCSS = generateBorderCSS( props.attributes, 'cta' );
+	const ctaBorderCSSTablet = generateBorderCSS( props.attributes, 'cta', 'tablet' );
+	const ctaBorderCSSMobile = generateBorderCSS( props.attributes, 'cta', 'mobile' );
 
 	const secondCtaBorderCSS = generateBorderCSS( props.attributes, 'secondCta' )
 	const secondCtaBorderCSSTablet = generateBorderCSS( props.attributes, 'secondCta', 'tablet' )
@@ -248,20 +248,7 @@ function CtaStyle( props ) {
 		'padding-right': generateCSSUnit( ctaRightPadding, ctaPaddingUnit ),
 		...ctaBorderCSS
 	};
-	selectors['.uagb-cta__outer-wrap a.uagb-cta__button-link-wrapper'] = {
-		'font-size': generateCSSUnit( ctaFontSize, ctaFontSizeType ),
-		'font-family': ctaFontFamily,
-		'font-style' : ctaFontStyle,
-		'text-decoration': ctaDecoration,
-		'text-transform': ctaTransform,
-		'font-weight': ctaFontWeight,
-		'color': ctaBtnLinkColor,
-		'background-color': ctaBgColor,
-		'padding-top': generateCSSUnit( ctaTopPadding, ctaPaddingUnit ),
-		'padding-bottom': generateCSSUnit( ctaBottomPadding, ctaPaddingUnit ),
-		'padding-left': generateCSSUnit( ctaLeftPadding, ctaPaddingUnit ),
-		'padding-right': generateCSSUnit( ctaRightPadding, ctaPaddingUnit ),
-	};
+
 
 	selectors['.uagb-cta__outer-wrap a.uagb-cta-second__button'] = {
 		'font-size': generateCSSUnit( secondCtaFontSize, secondCtaFontSizeType ),
@@ -289,7 +276,7 @@ function CtaStyle( props ) {
 	selectors['.uagb-cta__outer-wrap a.uagb-cta__button-link-wrapper:hover'] = {
 		'color': ctaLinkHoverColor,
 		'background-color': ctaBgHoverColor,
-		'border-color': ctaBorderhoverColor,
+		'border-color': ctaBorderHColor,
 	};
 
 	selectors['.uagb-cta__outer-wrap a.uagb-cta__button-link-wrapper svg' ] = {

@@ -34,13 +34,6 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 			$selectors   = array();
 
 			$border_css       = self::uag_generate_border_css( $attr, 'btn' );
-			$border_css       = self::uag_generate_deprecated_border_css(
-				$border_css,
-				( isset( $attr['borderWidth'] ) ? $attr['borderWidth'] : '' ),
-				( isset( $attr['borderRadius'] ) ? $attr['borderRadius'] : '' ),
-				( isset( $attr['borderColor'] ) ? $attr['borderColor'] : '' ),
-				( isset( $attr['borderStyle'] ) ? $attr['borderStyle'] : '' )
-			);
 			$border_css_tablet = self::uag_generate_border_css( $attr, 'btn', 'tablet' );
 			$border_css_mobile = self::uag_generate_border_css( $attr, 'btn', 'mobile' );
 
