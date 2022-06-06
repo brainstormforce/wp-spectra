@@ -12,7 +12,11 @@ UAGB_Block_JS::blocks_advanced_image_gfont( $attr );
 
 $m_selectors = array();
 $t_selectors = array();
+$block_name = 'image';
 
+$separator_width_fallback = UAGB_Block_Helper::get_fallback_number( $attr['seperatorWidth'], 'seperatorWidth', $block_name );
+$overlay_position_fallback = UAGB_Block_Helper::get_fallback_number( $attr['overlayPositionFromEdge'], 'overlayPositionFromEdge', $block_name );
+$separator_thickness_fallback = UAGB_Block_Helper::get_fallback_number( $attr['seperatorThickness'], 'seperatorThickness', $block_name );
 
 $imageBoxShadowPosition = $attr['imageBoxShadowPosition'];
 if ( 'outset' === $attr['imageBoxShadowPosition'] ) {
@@ -67,10 +71,10 @@ $selectors = array(
 		'border-color'  => $attr['overlayBorderColor'],
 		'border-radius' => UAGB_Helper::get_css_value( $attr['overlayBorderRadius'], 'px' ),
 		'border-width'  => UAGB_Helper::get_css_value( $attr['overlayBorderWidth'], 'px' ),
-		'left'          => UAGB_Helper::get_css_value( $attr['overlayPositionFromEdge'], $attr['overlayPositionFromEdgeUnit'] ),
-		'right'         => UAGB_Helper::get_css_value( $attr['overlayPositionFromEdge'], $attr['overlayPositionFromEdgeUnit'] ),
-		'top'           => UAGB_Helper::get_css_value( $attr['overlayPositionFromEdge'], $attr['overlayPositionFromEdgeUnit'] ),
-		'bottom'        => UAGB_Helper::get_css_value( $attr['overlayPositionFromEdge'], $attr['overlayPositionFromEdgeUnit'] ),
+		'left'          => UAGB_Helper::get_css_value( $overlay_position_fallback, $attr['overlayPositionFromEdgeUnit'] ),
+		'right'         => UAGB_Helper::get_css_value( $overlay_position_fallback, $attr['overlayPositionFromEdgeUnit'] ),
+		'top'           => UAGB_Helper::get_css_value( $overlay_position_fallback, $attr['overlayPositionFromEdgeUnit'] ),
+		'bottom'        => UAGB_Helper::get_css_value( $overlay_position_fallback, $attr['overlayPositionFromEdgeUnit'] ),
 	),
 	'.wp-block-uagb-image--layout-overlay .wp-block-uagb-image--layout-overlay__inner .uagb-image-heading' => array(
 		'font-family'     => $attr['headingFontFamily'],
@@ -101,8 +105,8 @@ $selectors = array(
 	),
 	// Seperator.
 	'.wp-block-uagb-image .wp-block-uagb-image--layout-overlay__inner .uagb-image-separator' => array(
-		'width'            => UAGB_Helper::get_css_value( $attr['seperatorWidth'], $attr['separatorWidthType'] ),
-		'border-top-width' => UAGB_Helper::get_css_value( $attr['seperatorThickness'], $attr['seperatorThicknessUnit'] ),
+		'width'            => UAGB_Helper::get_css_value( $separator_width_fallback, $attr['separatorWidthType'] ),
+		'border-top-width' => UAGB_Helper::get_css_value( $separator_thickness_fallback, $attr['seperatorThicknessUnit'] ),
 		'border-top-color' => $attr['seperatorColor'],
 		'border-top-style' => $attr['seperatorStyle'],
 		'margin-bottom'    => UAGB_Helper::get_css_value( $attr['seperatorBottomMargin'], $attr['seperatorMarginUnit'] ),
