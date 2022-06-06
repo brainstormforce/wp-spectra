@@ -101,7 +101,6 @@ return array(
 	'overlayOpacity'                    => '50',
 	'bgOverlayColor'                    => '#ffffff',
 	'ctaText'                           => __( 'Read More', 'ultimate-addons-for-gutenberg' ),
-	'btnBorderHColor'                   => '',
 	'paginationType'                    => 'none',
 	'paginationEventType'               => 'button',
 	'buttonText'                        => 'Load More',
