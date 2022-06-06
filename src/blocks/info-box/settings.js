@@ -1002,7 +1002,7 @@ const Settings = ( props ) => {
 		return (
 			<>
 				{ ( ( false !== showIcon && source_type !== 'icon' && iconImage && iconImage.url !== 'null' && iconImage.url !== '' ) || ( false !== showIcon && source_type === 'icon' && '' !== icon ) ) && (
-					<UAGAdvancedPanelBody title="Icon/Image" initialOpen={ false }>
+					<UAGAdvancedPanelBody title="Icon/Image" initialOpen={ true }>
 						<>
 							{ source_type === 'icon' && (
 								<>
