@@ -19,7 +19,7 @@ const ResponsiveSlider = ( props ) => {
 			<Range
 				{ ...props }
 				label={ props.label }
-				value={ props.data.desktop.value || '' }
+				value={ props.data.desktop.value }
 				onChange={ ( value ) => {
 					props.setAttributes( {
 						[ props.data.desktop.label ]: value,
