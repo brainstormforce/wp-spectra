@@ -143,6 +143,7 @@ const Settings = ( props ) => {
 		headingFontStyle,
 		headingTransform,
 		headingDecoration,
+		markerView,
 	} = attributes;
 
 	let loadGFonts;
@@ -792,6 +793,36 @@ const Settings = ( props ) => {
 						setAttributes={ setAttributes }
 					/>
 				) }
+
+				<MultiButtonsControl
+					setAttributes={ setAttributes }
+					label={ __(
+						'Marker View',
+						'ultimate-addons-for-gutenberg'
+					) }
+					data={ {
+						value: markerView,
+						label: 'markerView',
+					} }
+					className="uagb-multi-button-alignment-control"
+					options={ [
+						{
+							value: 'disc',
+							label: __(
+								'Bullets',
+								'ultimate-addons-for-gutenberg'
+							),
+						},
+						{
+							value: 'decimal',
+							label: __(
+								'Numbers',
+								'ultimate-addons-for-gutenberg'
+							),
+						},
+					] }
+				/>
+
 				<ToggleControl
 					label={ __(
 						'Disable Bullet Points',

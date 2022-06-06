@@ -106,7 +106,8 @@ function styling( props ) {
 		headingFontStyle,
 		headingTransform,
 		headingDecoration,
-		headingAlignment
+		headingAlignment,
+		markerView
 	} = props.attributes;
 
 	let selectors = {};
@@ -182,6 +183,7 @@ function styling( props ) {
 			'padding-bottom': 0,
 		},
 		' .uagb-toc__list-wrap ol.uagb-toc__list > li': {
+			'list-style-type': markerView,
 			'padding-top':
 				'calc( ' +
 				generateCSSUnit(
@@ -198,6 +200,7 @@ function styling( props ) {
 				' / 2 )',
 		},
 		' .uagb-toc__list-wrap ul.uagb-toc__list > li': {
+			'list-style-type': markerView,
 			'padding-top':
 				'calc( ' +
 				generateCSSUnit(
