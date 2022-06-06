@@ -49,14 +49,14 @@ function styling( props ) {
 		fontDecoration,
 		iconPosition,
 		hideLabel,
-		icon_color,
-		label_color,
-		icon_hover_color,
-		label_hover_color,
-		icon_bg_color,
-		icon_bg_hover_color,
-		icon_border_color,
-		icon_border_hover_color,
+		iconColor,
+		labelColor,
+		iconHoverColor,
+		labelHoverColor,
+		iconBgColor,
+		iconBgHoverColor,
+		iconBorderColor,
+		iconBorderHoverColor,
 
 	} = props.attributes;
 
@@ -78,8 +78,8 @@ function styling( props ) {
 
 	selectors = {
 		' .wp-block-uagb-icon-list-child .uagb-icon-list__source-wrap': {
-			'background': icon_bg_color,
-			'border-color': icon_border_color,
+			'background': iconBgColor,
+			'border-color': iconBorderColor,
 			'padding': generateCSSUnit( bgSize, bgSizeType ),
 			'border-radius': generateCSSUnit( borderRadius, borderRadiusType ),
 			'border-style':
@@ -94,22 +94,22 @@ function styling( props ) {
 			'text-align': align,
 		},
 		' .wp-block-uagb-icon-list-child .uagb-icon-list__source-wrap svg': {
-			'color': icon_color,
-			'fill': icon_color,
+			'color': iconColor,
+			'fill': iconColor,
 		},
 		' .wp-block-uagb-icon-list-child:hover .uagb-icon-list__source-wrap svg': {
-			'color': icon_hover_color,
-			'fill': icon_hover_color,
+			'color': iconHoverColor,
+			'fill': iconHoverColor,
 		},
 		' .wp-block-uagb-icon-list-child .uagb-icon-list__label': {
-			'color': label_color,
+			'color': labelColor,
 		},
 		' .wp-block-uagb-icon-list-child:hover .uagb-icon-list__label': {
-			'color': label_hover_color,
+			'color': labelHoverColor,
 		},
 		' .wp-block-uagb-icon-list-child:hover .uagb-icon-list__source-wrap': {
-			'background': icon_bg_hover_color,
-			'border-color': icon_border_hover_color,
+			'background': iconBgHoverColor,
+			'border-color': iconBorderHoverColor,
 		},
 	};
 
@@ -275,7 +275,7 @@ function styling( props ) {
 		'text-transform': fontTransform,
 		'font-weight': fontWeight,
 		'line-height': generateCSSUnit( lineHeight, lineHeightType ),
-		'color': label_color,
+		'color': labelColor,
 	};
 
 	mobileSelectors[ ' .wp-block-uagb-icon-list-child .uagb-icon-list__label' ] = {

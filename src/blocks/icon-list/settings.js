@@ -72,14 +72,14 @@ const Settings = ( props ) => {
 		fontStyle,
 		fontTransform,
 		fontDecoration,
-		icon_color,
-		label_color,
-		icon_hover_color,
-		label_hover_color,
-		icon_bg_color,
-		icon_bg_hover_color,
-		icon_border_color,
-		icon_border_hover_color,
+		iconColor,
+		labelColor,
+		iconHoverColor,
+		labelHoverColor,
+		iconBgColor,
+		iconBgHoverColor,
+		iconBorderColor,
+		iconBorderHoverColor,
 	} = attributes;
 
 	let googleFonts;
@@ -464,9 +464,9 @@ const Settings = ( props ) => {
 								'Color',
 								'ultimate-addons-for-gutenberg'
 							) }
-							colorValue={ label_color }
+							colorValue={ labelColor }
 							onColorChange={ ( value ) =>
-								setAttributes( { label_color: value } )
+								setAttributes( { labelColor: value } )
 							}
 						/>
 					}
@@ -477,10 +477,10 @@ const Settings = ( props ) => {
 								'ultimate-addons-for-gutenberg'
 							) }
 							colorValue={
-								label_hover_color
+								labelHoverColor
 							}
 							onColorChange={ ( value ) =>
-								setAttributes( { label_hover_color: value } )
+								setAttributes( { labelHoverColor: value } )
 							}
 						/>
 					}
@@ -674,9 +674,9 @@ const Settings = ( props ) => {
 									'Icon Color',
 									'ultimate-addons-for-gutenberg'
 								) }
-								colorValue={ icon_color ? icon_color : '' }
+								colorValue={ iconColor ? iconColor : '' }
 								onColorChange={ ( value ) =>
-									setAttributes( { icon_color: value } )
+									setAttributes( { iconColor: value } )
 								}
 							/>
 							<AdvancedPopColorControl
@@ -684,9 +684,9 @@ const Settings = ( props ) => {
 									'Background Color',
 									'ultimate-addons-for-gutenberg'
 								) }
-								colorValue={ icon_bg_color ? icon_bg_color : '' }
+								colorValue={ iconBgColor ? iconBgColor : '' }
 								onColorChange={ ( value ) =>
-									setAttributes( { icon_bg_color: value } )
+									setAttributes( { iconBgColor: value } )
 								}
 							/>
 							<AdvancedPopColorControl
@@ -695,10 +695,10 @@ const Settings = ( props ) => {
 									'ultimate-addons-for-gutenberg'
 								) }
 								colorValue={
-									icon_border_color ? icon_border_color : ''
+									iconBorderColor ? iconBorderColor : ''
 								}
 								onColorChange={ ( value ) =>
-									setAttributes( { icon_border_color: value } )
+									setAttributes( { iconBorderColor: value } )
 								}
 							/>
 						</>
@@ -711,10 +711,10 @@ const Settings = ( props ) => {
 									'ultimate-addons-for-gutenberg'
 								) }
 								colorValue={
-									icon_hover_color ? icon_hover_color : ''
+									iconHoverColor ? iconHoverColor : ''
 								}
 								onColorChange={ ( value ) =>
-									setAttributes( { icon_hover_color: value } )
+									setAttributes( { iconHoverColor: value } )
 								}
 							/>
 							<AdvancedPopColorControl
@@ -723,10 +723,10 @@ const Settings = ( props ) => {
 									'ultimate-addons-for-gutenberg'
 								) }
 								colorValue={
-									icon_bg_hover_color ? icon_bg_hover_color : ''
+									iconBgHoverColor ? iconBgHoverColor : ''
 								}
 								onColorChange={ ( value ) =>
-									setAttributes( { icon_bg_hover_color: value } )
+									setAttributes( { iconBgHoverColor: value } )
 								}
 							/>
 							<AdvancedPopColorControl
@@ -735,13 +735,13 @@ const Settings = ( props ) => {
 									'ultimate-addons-for-gutenberg'
 								) }
 								colorValue={
-									icon_border_hover_color
-										? icon_border_hover_color
+									iconBorderHoverColor
+										? iconBorderHoverColor
 										: ''
 								}
 								onColorChange={ ( value ) =>
 									setAttributes( {
-										icon_border_hover_color: value,
+										iconBorderHoverColor: value,
 									} )
 								}
 							/>
