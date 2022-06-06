@@ -337,14 +337,12 @@ const attributes = {
 	},
 	headSpaceTablet: {
 		type: 'number',
-		default: 0,
 		UAGCopyPaste: {
 			styleType: 'main-title-bottom-margin'
 		},
 	},
 	headSpaceMobile: {
 		type: 'number',
-		default: 0,
 		UAGCopyPaste: {
 			styleType: 'main-title-bottom-margin'
 		},
@@ -502,14 +500,12 @@ const attributes = {
 	},
 	dateBottomspaceTablet         : {
 		type    : 'number',
-		default : 0,
 		UAGCopyPaste: {
 			styleType: 'date-bottom-space'
 		},
 	},
 	dateBottomspaceMobile         : {
 		type    : 'number',
-		default : 0,
 		UAGCopyPaste: {
 			styleType: 'date-bottom-space'
 		},
@@ -535,14 +531,12 @@ const attributes = {
 	},
 	borderRadiusTablet            : {
 		type    : 'number',
-		default : 0,
 		UAGCopyPaste: {
 			styleType: 'overall-border-radius'
 		},
 	},
 	borderRadiusMobile            : {
 		type    : 'number',
-		default : 0,
 		UAGCopyPaste: {
 			styleType: 'overall-border-radius'
 		},
