@@ -33,7 +33,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 			$t_selectors = array();
 			$selectors   = array();
 
-			$border_css       = self::uag_generate_border_css( $attr, 'btn' );
+			$border_css        = self::uag_generate_border_css( $attr, 'btn' );
 			$border_css_tablet = self::uag_generate_border_css( $attr, 'btn', 'tablet' );
 			$border_css_mobile = self::uag_generate_border_css( $attr, 'btn', 'mobile' );
 

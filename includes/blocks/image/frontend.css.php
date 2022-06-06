@@ -19,10 +19,10 @@ if ( 'outset' === $attr['imageBoxShadowPosition'] ) {
 	$imageBoxShadowPosition = '';
 }
 
-$image_border_css         = UAGB_Block_Helper::uag_generate_border_css( $attr, 'image' );
+$image_border_css          = UAGB_Block_Helper::uag_generate_border_css( $attr, 'image' );
 $image_border_css_tablet   = UAGB_Block_Helper::uag_generate_border_css( $attr, 'image', 'tablet' );
 $image_border_css_mobile   = UAGB_Block_Helper::uag_generate_border_css( $attr, 'image', 'mobile' );
-$overlay_border_css       = UAGB_Block_Helper::uag_generate_border_css( $attr, 'overlay' );
+$overlay_border_css        = UAGB_Block_Helper::uag_generate_border_css( $attr, 'overlay' );
 $overlay_border_css_tablet = UAGB_Block_Helper::uag_generate_border_css( $attr, 'overlay', 'tablet' );
 $overlay_border_css_mobile = UAGB_Block_Helper::uag_generate_border_css( $attr, 'overlay', 'mobile' );
 

@@ -7,7 +7,7 @@
  * @package uagb
  */
 
-$cta_border_css       = UAGB_Block_Helper::uag_generate_border_css( $attr, 'cta' );
+$cta_border_css        = UAGB_Block_Helper::uag_generate_border_css( $attr, 'cta' );
 $cta_border_css_tablet = UAGB_Block_Helper::uag_generate_border_css( $attr, 'cta', 'tablet' );
 $cta_border_css_mobile = UAGB_Block_Helper::uag_generate_border_css( $attr, 'cta', 'mobile' );
 // Adds Fonts.

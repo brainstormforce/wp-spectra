@@ -9,7 +9,7 @@
 
 global $content_width;
 
-$overall_border_css       = UAGB_Block_Helper::uag_generate_border_css( $attr, 'overall' );
+$overall_border_css        = UAGB_Block_Helper::uag_generate_border_css( $attr, 'overall' );
 $overall_border_css_tablet = UAGB_Block_Helper::uag_generate_border_css( $attr, 'overall', 'tablet' );
 $overall_border_css_mobile = UAGB_Block_Helper::uag_generate_border_css( $attr, 'overall', 'mobile' );
 

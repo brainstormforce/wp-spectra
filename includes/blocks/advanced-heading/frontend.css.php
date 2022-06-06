@@ -13,7 +13,7 @@ UAGB_Block_JS::blocks_advanced_heading_gfont( $attr );
 $m_selectors = array();
 $t_selectors = array();
 
-$highLight_border_css       = UAGB_Block_Helper::uag_generate_border_css( $attr, 'highLight' );
+$highLight_border_css        = UAGB_Block_Helper::uag_generate_border_css( $attr, 'highLight' );
 $highLight_border_css_tablet = UAGB_Block_Helper::uag_generate_border_css( $attr, 'highLight', 'tablet' );
 $highLight_border_css_mobile = UAGB_Block_Helper::uag_generate_border_css( $attr, 'highLight', 'mobile' );
 

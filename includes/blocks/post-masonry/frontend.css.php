@@ -31,7 +31,7 @@ $paginationButtonPaddingBottomMobile = isset( $attr['paginationButtonPaddingBott
 $paginationButtonPaddingLeftMobile   = isset( $attr['paginationButtonPaddingLeftMobile'] ) ? $attr['paginationButtonPaddingLeftMobile'] : $attr['hpaginationButtonPaddingMobile'];
 $paginationButtonPaddingRightMobile  = isset( $attr['paginationButtonPaddingRightMobile'] ) ? $attr['paginationButtonPaddingRightMobile'] : $attr['hpaginationButtonPaddingMobile'];
 
-$pagination_masonry_border_css       = UAGB_Block_Helper::uag_generate_border_css( $attr, 'paginationMasonry' );
+$pagination_masonry_border_css        = UAGB_Block_Helper::uag_generate_border_css( $attr, 'paginationMasonry' );
 $pagination_masonry_border_css_tablet = UAGB_Block_Helper::uag_generate_border_css( $attr, 'paginationMasonry', 'tablet' );
 $pagination_masonry_border_css_mobile = UAGB_Block_Helper::uag_generate_border_css( $attr, 'paginationMasonry', 'mobile' );
 

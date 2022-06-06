@@ -11,7 +11,7 @@ global $content_width;
 
 $bg_type = ( isset( $attr['backgroundType'] ) ) ? $attr['backgroundType'] : 'none';
 
-$border       = UAGB_Block_Helper::uag_generate_border_css( $attr, 'columns' );
+$border        = UAGB_Block_Helper::uag_generate_border_css( $attr, 'columns' );
 $border_tablet = UAGB_Block_Helper::uag_generate_border_css( $attr, 'columns', 'tablet' );
 $border_mobile = UAGB_Block_Helper::uag_generate_border_css( $attr, 'columns', 'mobile' );
 
@@ -157,7 +157,7 @@ $m_selectors = array(
 	),
 );
 
-$t_selectors = array(
+$t_selectors                        = array(
 	'.uagb-columns__wrap'              => array(
 		'padding-top'    => UAGB_Helper::get_css_value( $attr['topPaddingTablet'], $attr['tabletPaddingType'] ),
 		'padding-bottom' => UAGB_Helper::get_css_value( $attr['bottomPaddingTablet'], $attr['tabletPaddingType'] ),
@@ -175,9 +175,9 @@ $t_selectors = array(
 		'height' => UAGB_Helper::get_css_value( $attr['topHeightTablet'], 'px' ),
 	),
 );
-$selectors['.uagb-columns__wrap']      = $border;
-$t_selectors['.uagb-columns__wrap']      = $border_tablet;
-$m_selectors['.uagb-columns__wrap']      = $border_mobile;
+$selectors['.uagb-columns__wrap']   = $border;
+$t_selectors['.uagb-columns__wrap'] = $border_tablet;
+$m_selectors['.uagb-columns__wrap'] = $border_mobile;
 
 $combined_selectors = array(
 	'desktop' => $selectors,

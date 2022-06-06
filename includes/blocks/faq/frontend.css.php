@@ -53,7 +53,7 @@ $answer_bottom_padding_mobile = isset( $attr['answerBottomPaddingMobile'] ) ? $a
 $answer_left_padding_mobile   = isset( $attr['answerLeftPaddingMobile'] ) ? $attr['answerLeftPaddingMobile'] : $attr['hanswerPaddingMobile'];
 $answer_right_padding_mobile  = isset( $attr['answerRightPaddingMobile'] ) ? $attr['answerRightPaddingMobile'] : $attr['hanswerPaddingMobile'];
 
-$border       = UAGB_Block_Helper::uag_generate_border_css( $attr, 'faq' );
+$border        = UAGB_Block_Helper::uag_generate_border_css( $attr, 'faq' );
 $border_tablet = UAGB_Block_Helper::uag_generate_border_css( $attr, 'faq', 'tablet' );
 $border_mobile = UAGB_Block_Helper::uag_generate_border_css( $attr, 'faq', 'mobile' );
 
@@ -73,9 +73,12 @@ $selectors = array(
 	' .uagb-faq-child__outer-wrap'                        => array(
 		'margin-bottom' => UAGB_Helper::get_css_value( $attr['rowsGap'], $attr['rowsGapUnit'] ),
 	),
-	' .uagb-faq-item'                                     => array_merge( array(
-		'background-color' => $attr['boxBgColor'],
-	), $border ),
+	' .uagb-faq-item'                                     => array_merge(
+		array(
+			'background-color' => $attr['boxBgColor'],
+		),
+		$border
+	),
 	' .uagb-faq-item:hover'                               => array(
 		'border-color' => $attr['faqBorderHColor'],
 	),
@@ -161,13 +164,13 @@ $t_selectors = array(
 	' .uagb-faq-child__outer-wrap' => array(
 		'margin-bottom' => UAGB_Helper::get_css_value( $attr['rowsGapTablet'], $attr['rowsGapUnit'] ),
 	),
-	' .uagb-faq-item'                                     =>  $border_tablet,
+	' .uagb-faq-item'              => $border_tablet,
 );
 $m_selectors = array(
 	'.uagb-faq-icon-row .uagb-faq-item .uagb-faq-icon-wrap' => array(
 		'margin-right' => UAGB_Helper::get_css_value( $attr['gapBtwIconQUestionMobile'], 'px' ),
 	),
-	' .uagb-faq-item'                                     =>  $border_mobile,
+	' .uagb-faq-item'              => $border_mobile,
 	'.uagb-faq-icon-row-reverse .uagb-faq-item .uagb-faq-icon-wrap' => array(
 		'margin-left' => UAGB_Helper::get_css_value( $attr['gapBtwIconQUestionMobile'], 'px' ),
 	),
@@ -221,12 +224,15 @@ if ( 'accordion' === $attr['layout'] && true === $attr['expandFirstItem'] ) {
 }
 if ( true === $attr['enableSeparator'] ) {
 
-	$selectors[' .uagb-faq-child__outer-wrap .uagb-faq-content ']       = array_merge ( array(
-		'border-style'        => 'solid',
-		'border-right-width'  => '0px',
-		'border-bottom-width' => '0px',
-		'border-left-width'   => '0px',
-	), $border );
+	$selectors[' .uagb-faq-child__outer-wrap .uagb-faq-content '] = array_merge(
+		array(
+			'border-style'        => 'solid',
+			'border-right-width'  => '0px',
+			'border-bottom-width' => '0px',
+			'border-left-width'   => '0px',
+		),
+		$border
+	);
 
 	$selectors[' .uagb-faq-child__outer-wrap .uagb-faq-content:hover '] = array(
 		'border-top-color' => $attr['faqBorderHColor'],

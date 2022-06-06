@@ -16,10 +16,10 @@ if ( 'left' === $attr['headingAlign'] ) {
 } elseif ( 'right' === $attr['headingAlign'] ) {
 	$img_align = 'flex-end';
 }
-$overall_border    = UAGB_Block_Helper::uag_generate_border_css( $attr, 'overall' );
+$overall_border        = UAGB_Block_Helper::uag_generate_border_css( $attr, 'overall' );
 $overall_border_Tablet = UAGB_Block_Helper::uag_generate_border_css( $attr, 'overall', 'tablet' );
 $overall_border_Mobile = UAGB_Block_Helper::uag_generate_border_css( $attr, 'overall', 'mobile' );
-$position           = str_replace( '-', ' ', $attr['backgroundPosition'] );
+$position              = str_replace( '-', ' ', $attr['backgroundPosition'] );
 
 $t_selectors = array();
 $m_selectors = array();

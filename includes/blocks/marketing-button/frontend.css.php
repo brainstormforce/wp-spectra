@@ -31,7 +31,7 @@ $btn_padding_right_tablet  = isset( $attr['paddingBtnRightTablet'] ) ? $attr['pa
 $icon_color       = ( '' === $attr['iconColor'] ) ? $attr['titleColor'] : $attr['iconColor'];
 $icon_hover_color = ( '' === $attr['iconHoverColor'] ) ? $attr['titleHoverColor'] : $attr['iconHoverColor'];
 
-$btn_border_css       = UAGB_Block_Helper::uag_generate_border_css( $attr, 'btn' );
+$btn_border_css        = UAGB_Block_Helper::uag_generate_border_css( $attr, 'btn' );
 $btn_border_css_tablet = UAGB_Block_Helper::uag_generate_border_css( $attr, 'btn', 'tablet' );
 $btn_border_css_mobile = UAGB_Block_Helper::uag_generate_border_css( $attr, 'btn', 'mobile' );
 
