@@ -210,18 +210,6 @@ const Settings = ( props ) => {
 	const marginSettings = () => {
 		return (
 			<UAGAdvancedPanelBody title={ __( 'Spacing' ) } initialOpen={ false }>
-				{/* <Range
-					label={ __( 'Row Gap' ) }
-					setAttributes={ setAttributes }
-					value={ rowGap }
-					onChange={ ( value ) => setAttributes( { rowGap: value } ) }
-					min={ 0 }
-					max={ 50 }
-					unit={ {
-						value: rowGapType,
-						label: 'rowGapType',
-					} }
-				/> */}
 				<ResponsiveSlider
 					label={ __(
 						'Row Gap',
@@ -265,20 +253,6 @@ const Settings = ( props ) => {
 					] }
 					setAttributes={ setAttributes }
 				/>
-				{/* <Range
-					label={ __( 'Column Gap' ) }
-					setAttributes={ setAttributes }
-					value={ columnGap }
-					onChange={ ( value ) =>
-						setAttributes( { columnGap: value } )
-					}
-					min={ 0 }
-					max={ 50 }
-					unit={ {
-						value: columnGapType,
-						label: 'columnGapType',
-					} }
-				/> */}
 				<ResponsiveSlider
 					label={ __(
 						'Column Gap',
