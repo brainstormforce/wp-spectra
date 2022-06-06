@@ -15,6 +15,8 @@ $t_selectors = array();
 
 $block_name = 'restaurant-menu';
 
+$seperator_thickness_fallback = UAGB_Block_Helper::get_fallback_number( $attr['seperatorThickness'], 'seperatorThickness', $block_name );
+
 $row_gap_fallback = UAGB_Block_Helper::get_fallback_number( $attr['rowGap'], 'rowGap', $block_name );
 $row_gap_tablet_fallback = UAGB_Block_Helper::get_fallback_number( $attr['rowGapTablet'], 'rowGapTablet', $block_name );
 $row_gap_mobile_fallback = UAGB_Block_Helper::get_fallback_number( $attr['rowGapMobile'], 'rowGapMobile', $block_name );
@@ -163,7 +165,7 @@ if ( 'none' !== $attr['seperatorStyle'] ) {
 	$selectors[' .uagb-rest_menu__wrap .uagb-rm__separator']   = array(
 		'border-top-color' => $attr['seperatorColor'],
 		'border-top-style' => $attr['seperatorStyle'],
-		'border-top-width' => UAGB_Helper::get_css_value( $attr['seperatorThickness'], 'px' ),
+		'border-top-width' => UAGB_Helper::get_css_value( $seperator_thickness_fallback, 'px' ),
 		'width'            => UAGB_Helper::get_css_value( $seperator_width_fallback, $attr['seperatorWidthType'] ),
 	);
 	$t_selectors[' .uagb-rest_menu__wrap .uagb-rm__separator'] = array(

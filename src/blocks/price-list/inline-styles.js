@@ -113,6 +113,9 @@ function RestMenuStyle( props ) {
 
 	const blockName = props.name.replace( 'uagb/', '' );
 
+
+	const seperatorThicknessFallback = getFallbackNumber( seperatorThickness, 'seperatorThickness', blockName );
+
 	const rowGapFallback = getFallbackNumber( rowGap, 'rowGap', blockName );
 	const rowGapTabletFallback = getFallbackNumber( rowGapTablet, 'rowGapTablet', blockName );
 	const rowGapMobileFallback = getFallbackNumber( rowGapMobile, 'rowGapMobile', blockName );
@@ -457,7 +460,7 @@ function RestMenuStyle( props ) {
 		selectors[ ' .uagb-rm__separator' ] = {
 			'border-top-color': seperatorColor,
 			'border-top-style': seperatorStyle,
-			'border-top-width': generateCSSUnit( seperatorThickness, 'px' ),
+			'border-top-width': generateCSSUnit( seperatorThicknessFallback, 'px' ),
 			'width': generateCSSUnit( seperatorWidthFallback, seperatorWidthType ),
 		};
 		tabletSelectors[ ' .uagb-rm__separator' ] = {
