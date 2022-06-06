@@ -31,10 +31,6 @@ function styling( props ) {
 		toggleWidthSize,
 		toggleWidthSizeTablet,
 		toggleWidthSizeMobile,
-		submitborderStyle,
-		submitborderWidth,
-		submitborderRadius,
-		submitborderColor,
 		btnBorderHColor,
 		submitTextFontFamily,
 		submitTextFontWeight,
@@ -85,10 +81,7 @@ function styling( props ) {
 		inputplaceholderHColor,
 		inputplaceholderActiveColor,
 		inputactiveColor,
-		inputborderStyle,
 		inputborderWidth,
-		inputborderRadius,
-		inputborderColor,
 		inputborderHColor,
 		fieldGap,
 		fieldGapTablet,
@@ -154,17 +147,17 @@ function styling( props ) {
 	let tabletSelectors = {};
 	let mobileSelectors = {};
 
-	const inputBorder = generateBorderCSS(props.atributes, 'input' );
-	const inputBorderTablet = generateBorderCSS(props.atributes, 'input', 'tablet' );
-	const inputBorderMobile = generateBorderCSS(props.atributes, 'input', 'mobile' );
+	const inputBorder = generateBorderCSS( props.atributes, 'input' );
+	const inputBorderTablet = generateBorderCSS( props.atributes, 'input', 'tablet' );
+	const inputBorderMobile = generateBorderCSS( props.atributes, 'input', 'mobile' );
 
-	const toggleBorder = generateBorderCSS(props.atributes, 'toggle' );
-	const toggleBorderTablet = generateBorderCSS(props.atributes, 'toggle', 'tablet' );
-	const toggleBorderMobile = generateBorderCSS(props.atributes, 'toggle', 'mobile' );
+	const toggleBorder = generateBorderCSS( props.atributes, 'toggle' );
+	const toggleBorderTablet = generateBorderCSS( props.atributes, 'toggle', 'tablet' );
+	const toggleBorderMobile = generateBorderCSS( props.atributes, 'toggle', 'mobile' );
 
-	const submitBorder = generateBorderCSS(props.atributes, 'submit' );
-	const submitBorderTablet = generateBorderCSS(props.atributes, 'submit', 'tablet' );
-	const submitBorderMobile = generateBorderCSS(props.atributes, 'submit', 'mobile' );
+	const submitBorder = generateBorderCSS( props.atributes, 'submit' );
+	const submitBorderTablet = generateBorderCSS( props.atributes, 'submit', 'tablet' );
+	const submitBorderMobile = generateBorderCSS( props.atributes, 'submit', 'mobile' );
 
 
 	selectors = {
