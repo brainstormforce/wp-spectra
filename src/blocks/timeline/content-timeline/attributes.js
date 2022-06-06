@@ -60,6 +60,10 @@ const attributes = {
 		type: 'string',
 		default: 'F j, Y',
 	},
+	blockName: {
+		type: 'string',
+		default : 'content-timeline',
+	},
 	align: {
 		type: 'string',
 		UAGCopyPaste: {

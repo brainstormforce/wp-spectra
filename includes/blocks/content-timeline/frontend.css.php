@@ -10,15 +10,13 @@
 // Adds Fonts.
 UAGB_Block_JS::blocks_content_timeline_gfont( $attr );
 
-$block_name = 'content-timeline';
-
-$icon_size_fallback = UAGB_Block_Helper::get_fallback_number( $attr['iconSize'], 'iconSize', $block_name );
-$connector_bg_size_fallback = UAGB_Block_Helper::get_fallback_number( $attr['connectorBgsize'], 'connectorBgsize', $block_name );
-$border_width_fallback = UAGB_Block_Helper::get_fallback_number( $attr['borderwidth'], 'borderwidth', $block_name );
-$separator_width_fallback = UAGB_Block_Helper::get_fallback_number( $attr['separatorwidth'], 'separatorwidth', $block_name );
-$head_space_fallback = UAGB_Block_Helper::get_fallback_number( $attr['headSpace'], 'headSpace', $block_name );
-$border_radius_fallback = UAGB_Block_Helper::get_fallback_number( $attr['borderRadius'], 'borderRadius', $block_name );
-$date_bottom_space_fallback = UAGB_Block_Helper::get_fallback_number( $attr['dateBottomspace'], 'dateBottomspace', $block_name );
+$icon_size_fallback         = UAGB_Block_Helper::get_fallback_number( $attr['iconSize'], 'iconSize', $attr['blockName'] );
+$connector_bg_size_fallback = UAGB_Block_Helper::get_fallback_number( $attr['connectorBgsize'], 'connectorBgsize', $attr['blockName'] );
+$border_width_fallback      = UAGB_Block_Helper::get_fallback_number( $attr['borderwidth'], 'borderwidth', $attr['blockName'] );
+$separator_width_fallback   = UAGB_Block_Helper::get_fallback_number( $attr['separatorwidth'], 'separatorwidth', $attr['blockName'] );
+$head_space_fallback        = UAGB_Block_Helper::get_fallback_number( $attr['headSpace'], 'headSpace', $attr['blockName'] );
+$border_radius_fallback     = UAGB_Block_Helper::get_fallback_number( $attr['borderRadius'], 'borderRadius', $attr['blockName'] );
+$date_bottom_space_fallback = UAGB_Block_Helper::get_fallback_number( $attr['dateBottomspace'], 'dateBottomspace', $attr['blockName'] );
 
 $selectors   = array();
 $t_selectors = array();

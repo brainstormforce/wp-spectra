@@ -859,20 +859,6 @@ const Settings = ( props ) => {
 						setAttributes( { linkTarget: ! linkTarget } )
 					}
 				/>
-				{/* <Range
-					label={ __(
-						'Rounded Corners',
-						'ultimate-addons-for-gutenberg'
-					) }
-					setAttributes={ setAttributes }
-					value={ borderRadius }
-					onChange={ ( value ) =>
-						setAttributes( { borderRadius: value } )
-					}
-					min={ 0 }
-					max={ 50 }
-					displayUnit={ false }
-				/> */}
 				<ResponsiveSlider
 					label={ __(
 						'Border Radius',
