@@ -22,7 +22,6 @@ import {
 	InspectorControls,
 } from '@wordpress/block-editor';
 import {
-	RangeControl,
 	TextControl,
 	SelectControl,
 	__experimentalAlignmentMatrixControl as AlignmentMatrixControl,
@@ -1593,11 +1592,12 @@ export default function Settings( props ) {
 					setAttributes( { overlayBackground: value } )
 				}
 			/>
-			<RangeControl
+			<Range
 				label={ __(
 					'Overlay Opacity',
 					'ultimate-addons-for-gutenberg'
 				) }
+				setAttributes={ setAttributes }
 				value={ overlayOpacity }
 				onChange={ ( value ) =>
 					setAttributes( {
@@ -1608,11 +1608,12 @@ export default function Settings( props ) {
 				max={ 1 }
 				step={0.1}
 			/>
-			<RangeControl
+			<Range
 				label={ __(
 					'Overlay Hover Opacity',
 					'ultimate-addons-for-gutenberg'
 				) }
+				setAttributes={ setAttributes }
 				value={ overlayHoverOpacity }
 				onChange={ ( value ) =>
 					setAttributes( {

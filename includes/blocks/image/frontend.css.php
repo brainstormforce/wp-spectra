@@ -17,6 +17,9 @@ $block_name = 'image';
 $separator_width_fallback = UAGB_Block_Helper::get_fallback_number( $attr['seperatorWidth'], 'seperatorWidth', $block_name );
 $overlay_position_fallback = UAGB_Block_Helper::get_fallback_number( $attr['overlayPositionFromEdge'], 'overlayPositionFromEdge', $block_name );
 $separator_thickness_fallback = UAGB_Block_Helper::get_fallback_number( $attr['seperatorThickness'], 'seperatorThickness', $block_name );
+$overlay_opacity_fallback = UAGB_Block_Helper::get_fallback_number( $attr['overlayOpacity'], 'overlayOpacity', $block_name );
+$overlay_opacity_hover_fallback = UAGB_Block_Helper::get_fallback_number( $attr['overlayHoverOpacity'], 'overlayHoverOpacity', $block_name );
+
 
 $imageBoxShadowPosition = $attr['imageBoxShadowPosition'];
 if ( 'outset' === $attr['imageBoxShadowPosition'] ) {
@@ -64,7 +67,7 @@ $selectors = array(
 	// overlay.
 	'.wp-block-uagb-image--layout-overlay .wp-block-uagb-image--layout-overlay__color-wrapper' => array(
 		'background' => $attr['overlayBackground'],
-		'opacity'    => $attr['overlayOpacity'],
+		'opacity'    => $overlay_opacity_fallback,
 	),
 	'.wp-block-uagb-image--layout-overlay .wp-block-uagb-image--layout-overlay__inner' => array(
 		'border-style'  => $attr['overlayBorderStyle'],
@@ -101,7 +104,7 @@ $selectors = array(
 		'border-color' => $attr['overlayBorderHoverColor'],
 	),
 	'.wp-block-uagb-image--layout-overlay .wp-block-uagb-image__figure:hover .wp-block-uagb-image--layout-overlay__color-wrapper' => array(
-		'opacity' => $attr['overlayHoverOpacity'],
+		'opacity' => $overlay_opacity_hover_fallback,
 	),
 	// Seperator.
 	'.wp-block-uagb-image .wp-block-uagb-image--layout-overlay__inner .uagb-image-separator' => array(

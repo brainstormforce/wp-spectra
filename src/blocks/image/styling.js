@@ -149,13 +149,14 @@ export default function styling( props ) {
 		maskRepeat
 	} = props.attributes;
 
-
 	const seperatorWidthFallback = getFallbackNumber( seperatorWidth, 'seperatorWidth', blockName );
 	const overlayPositionFromEdgeFallback = getFallbackNumber( overlayPositionFromEdge, 'overlayPositionFromEdge', blockName );
 	const seperatorThicknessFallback = getFallbackNumber( seperatorThickness, 'seperatorThickness', blockName );
 
-	const getImageShadowPosition = imageBoxShadowPosition !== 'outset' ? imageBoxShadowPosition : '';
+	const overlayOpacityFallback = getFallbackNumber( overlayOpacity, 'overlayOpacity', blockName );
+	const overlayHoverOpacityFallback = getFallbackNumber( overlayHoverOpacity, 'overlayHoverOpacity', blockName );
 
+	const getImageShadowPosition = imageBoxShadowPosition !== 'outset' ? imageBoxShadowPosition : '';
 
 	const selectors = {
 		'.wp-block-uagb-image':{
@@ -232,7 +233,7 @@ export default function styling( props ) {
 		// overlay
 		'.wp-block-uagb-image--layout-overlay .wp-block-uagb-image--layout-overlay__color-wrapper': {
 			'background': overlayBackground,
-			'opacity': overlayOpacity,
+			'opacity': overlayOpacityFallback,
 		},
 		'.wp-block-uagb-image--layout-overlay .wp-block-uagb-image--layout-overlay__inner': {
 			'border-style': overlayBorderStyle,
@@ -287,7 +288,7 @@ export default function styling( props ) {
 			'border-color': overlayBorderHoverColor,
 		},
 		'.wp-block-uagb-image--layout-overlay .wp-block-uagb-image__figure:hover .wp-block-uagb-image--layout-overlay__color-wrapper': {
-			'opacity': overlayHoverOpacity,
+			'opacity': overlayHoverOpacityFallback,
 		},
 		// Seperator
 		'.wp-block-uagb-image .wp-block-uagb-image--layout-overlay__inner .uagb-image-separator': {
