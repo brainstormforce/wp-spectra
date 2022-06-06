@@ -208,6 +208,7 @@ function styling( props ) {
 		iconView,
 		iconShape,
 		iconBackgroundColor,
+		iconBackgroundHoverColor,
 		iconBorderWidth
 	} = props.attributes;
 
@@ -292,7 +293,7 @@ function styling( props ) {
 		},
 		'.uagb-infobox_cta-type-all:hover .uagb-infobox__content-wrap svg': {
 			'fill': iconHover,
-			'color': iconHover
+			'color': iconHover,
 		},
 		'.uagb-infobox__content-wrap .uagb-ifb-image-content > img': {
 			'padding-left': generateCSSUnit( iconLeftMargin, iconMarginUnit ),
@@ -490,6 +491,9 @@ function styling( props ) {
 		selectors[ ' .uagb-iconbox-icon-wrap.uagb-infobox-shape-squre'] = {
 			'background-color' : iconBackgroundColor,
 		}
+		selectors[' .uagb-iconbox-icon-wrap:hover'] = {
+			'background-color' : `${iconBackgroundHoverColor} !important`,
+		};
 	}
 	else if( 'Framed' === iconView ) {
 		selectors[ ' .uagb-iconbox-icon-wrap.uagb-infobox-shape-circle'] = {
@@ -499,6 +503,9 @@ function styling( props ) {
 		selectors[ ' .uagb-iconbox-icon-wrap.uagb-infobox-shape-squre'] = {
 			'border' : `${iconBorderWidth}px solid ${iconBackgroundColor}`,
 		}
+		selectors[' .uagb-iconbox-icon-wrap:hover'] = {
+			'border' : `${iconBorderWidth} px solid ${iconBackgroundHoverColor}`,
+		};
 	}
 	if( 'none' !== ctaBorderStyle ) {
 		selectors[' .uagb-infobox-cta-link'] = {

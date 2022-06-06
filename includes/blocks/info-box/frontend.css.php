@@ -218,6 +218,9 @@ if( 'Stacked' === $attr['iconView'] ) {
 	$selectors[ ' .uagb-iconbox-icon-wrap.uagb-infobox-shape-squre'] = array(
 		'background-color' => $attr['iconBackgroundColor'],
 	);
+	$selectors[' .uagb-iconbox-icon-wrap:hover'] = array(
+		'background-color' => $attr['iconBackgroundHoverColor'] . ' !important',
+	);
 }
 else if( 'Framed' === $attr['iconView'] ) {
 	$selectors[ ' .uagb-iconbox-icon-wrap.uagb-infobox-shape-circle'] = array(
@@ -226,6 +229,9 @@ else if( 'Framed' === $attr['iconView'] ) {
 	);
 	$selectors[ ' .uagb-iconbox-icon-wrap.uagb-infobox-shape-squre'] = array(
 		'border' => $attr['iconBorderWidth'] . 'px solid'. $attr['iconBackgroundColor'],
+	);
+	$selectors[' .uagb-iconbox-icon-wrap:hover'] = array(
+		'border' => $attr['iconBorderWidth'] . 'px solid'. $attr['iconBackgroundHoverColor'],
 	);
 }
 if ( 'text' === $attr['ctaType'] ) {

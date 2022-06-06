@@ -220,5 +220,6 @@ return array(
 	'iconView'    				 => 'none',
 	'iconShape'     			 => 'Circle',
 	'iconBackgroundColor'     	 => '#6EC1E3',
+	'iconBackgroundHoverColor'   => '',
 	'iconBorderWidth'     		 => 3,
 );

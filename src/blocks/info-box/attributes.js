@@ -1392,6 +1392,10 @@ const attributes = {
 		type: 'string',
 		default: '#6EC1E3',
 	},
+	iconBackgroundHoverColor: {
+		type: 'string',
+		default: '',
+	},
 	iconBorderWidth: {
 		type: 'number',
 		default: 3,
