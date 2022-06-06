@@ -7,8 +7,12 @@ import generateCSSUnit from '@Controls/generateCSSUnit';
 import generateBackgroundCSS from '@Controls/generateBackgroundCSS';
 import hexToRgba from '@Controls/hexToRgba';
 import maybeGetColorForVariable from '@Controls/maybeGetColorForVariable';
+import { getFallbackNumber } from '@Controls/getAttributeFallback';
 
 function styling( props ) {
+
+	const blockName = props.name.replace( 'uagb/', '' );
+
 	const { attributes } = props;
 	let {
 		block_id,
@@ -139,7 +143,16 @@ function styling( props ) {
 		textColor,
 		linkColor,
 		linkHoverColor,
+
+		innerContentCustomWidthDesktop,
+		innerContentCustomWidthTablet,
+		innerContentCustomWidthMobile,
 	} = attributes;
+
+	const innerContentCustomWidthDesktopFallback = getFallbackNumber( innerContentCustomWidthDesktop, 'innerContentCustomWidthDesktop', blockName );
+	const widthDesktopFallback = getFallbackNumber( widthDesktop, 'widthDesktop', blockName );
+	const rowGapDesktopFallback = getFallbackNumber( rowGapDesktop, 'rowGapDesktop', blockName );
+	const columnGapDesktopFallback = getFallbackNumber( columnGapDesktop, 'columnGapDesktop', blockName );
 
 	topPaddingTablet = topPaddingTablet ? topPaddingTablet : topPaddingDesktop;
 	topPaddingMobile = topPaddingMobile ? topPaddingMobile : topPaddingTablet;
@@ -288,8 +301,8 @@ function styling( props ) {
 		'justify-content' : justifyContentDesktop,
 		'flex-wrap' : wrapDesktop,
 		'align-content' : alignContentDesktop,
-		'row-gap' : generateCSSUnit( rowGapDesktop, rowGapType ),
-		'column-gap' : generateCSSUnit( columnGapDesktop, columnGapType ),
+		'row-gap' : generateCSSUnit( rowGapDesktopFallback, rowGapType ),
+		'column-gap' : generateCSSUnit( columnGapDesktopFallback, columnGapType ),
 	}
 	selectors['.block-editor-block-list__block'] = {
 		'min-height' : generateCSSUnit( minHeightDesktop, minHeightType ),
@@ -302,8 +315,8 @@ function styling( props ) {
 
 	const widthSelectorsDesktop = {
 		[`.is-root-container > .block-editor-block-list__block .block-editor-block-list__block#block-${ props.clientId } `] : {
-			'max-width' : generateCSSUnit( widthDesktop, widthType ),
-			'width' : generateCSSUnit( widthDesktop, widthType ),
+			'max-width' : generateCSSUnit( widthDesktopFallback, widthType ),
+			'width' : generateCSSUnit( widthDesktopFallback, widthType ),
 		}
 	};
 
@@ -324,21 +337,21 @@ function styling( props ) {
 	if ( ( 'alignfull' === contentWidth || 'default' === contentWidth ) && 'alignwide' === innerContentWidth ) {
 
 		widthSelectorsDesktop[`.is-root-container > .block-editor-block-list__block > .wp-block-uagb-container.uagb-block-${ block_id } > .uagb-container-inner-blocks-wrap`] = {
-			'--inner-content-custom-width' : `min(${containerFullWidth},${attributes.innerContentCustomWidthDesktop}${innerContentCustomWidthType})`,
+			'--inner-content-custom-width' : `min(${ containerFullWidth },${ innerContentCustomWidthDesktopFallback }${ innerContentCustomWidthType })`,
 			'max-width' : 'var(--inner-content-custom-width)',
 			'margin-left': 'auto',
 			'margin-right': 'auto'
 		};
 
 		widthSelectorsTablet[`.is-root-container > .block-editor-block-list__block.uagb-editor-preview-mode-tablet > .wp-block-uagb-container.uagb-block-${ block_id } > .uagb-container-inner-blocks-wrap`] = {
-			'--inner-content-custom-width' : `min(${containerFullWidth},${attributes.innerContentCustomWidthTablet || attributes.innerContentCustomWidthDesktop}${innerContentCustomWidthType})`,
+			'--inner-content-custom-width' : `min(${ containerFullWidth },${ innerContentCustomWidthTablet || innerContentCustomWidthDesktopFallback }${ innerContentCustomWidthType })`,
 			'max-width' : 'var(--inner-content-custom-width)',
 			'margin-left': 'auto',
 			'margin-right': 'auto'
 		};
 
 		widthSelectorsMobile[`.is-root-container > .block-editor-block-list__block.uagb-editor-preview-mode-mobile > .wp-block-uagb-container.uagb-block-${ block_id } > .uagb-container-inner-blocks-wrap`] = {
-			'--inner-content-custom-width' : `min(${containerFullWidth},${ attributes.innerContentCustomWidthMobile || attributes.innerContentCustomWidthTablet || attributes.innerContentCustomWidthDesktop}${innerContentCustomWidthType})`,
+			'--inner-content-custom-width' : `min(${ containerFullWidth },${ innerContentCustomWidthMobile || innerContentCustomWidthTablet || innerContentCustomWidthDesktopFallback }${ innerContentCustomWidthType })`,
 			'max-width' : 'var(--inner-content-custom-width)',
 			'margin-left': 'auto',
 			'margin-right': 'auto'
@@ -462,8 +475,8 @@ function styling( props ) {
 	};
 
 	if ( 'default' === contentWidth ) {
-		selectors['.block-editor-block-list__block'].width = generateCSSUnit( widthDesktop, widthType );
-		selectors['.block-editor-block-list__block']['max-width'] = generateCSSUnit( widthDesktop, widthType );
+		selectors['.block-editor-block-list__block'].width = generateCSSUnit( widthDesktopFallback, widthType );
+		selectors['.block-editor-block-list__block']['max-width'] = generateCSSUnit( widthDesktopFallback, widthType );
 
 		tablet_selectors['.block-editor-block-list__block'].width = generateCSSUnit( widthTablet, widthType );
 		tablet_selectors['.block-editor-block-list__block']['max-width'] = generateCSSUnit( widthTablet, widthType );
