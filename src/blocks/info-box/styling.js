@@ -4,6 +4,7 @@
 
 import generateCSS from '@Controls/generateCSS';
 import generateCSSUnit from '@Controls/generateCSSUnit';
+import { getFallbackNumber } from '@Controls/getAttributeFallback';
 
 function styling( props ) {
 	const {
@@ -193,13 +194,31 @@ function styling( props ) {
 		subHeadTabletMarginUnit
 	} = props.attributes;
 
+	const blockName = props.name.replace( 'uagb/', '' );
+	//Range
+	const seperatorThicknessFallback = getFallbackNumber( seperatorThickness, 'seperatorThickness', blockName );
+	const iconSizeFallback = getFallbackNumber( iconSize, 'iconSize', blockName );
+	const iconimgBorderRadiusFallback = getFallbackNumber( iconimgBorderRadius, 'iconimgBorderRadius', blockName );
+	// Responsive Slider
+	const seperatorWidthFallback = getFallbackNumber( seperatorWidth, 'seperatorWidth', blockName );
+	const seperatorWidthFallbackTablet = getFallbackNumber( seperatorWidthTablet, 'seperatorWidthTablet', blockName );
+	const seperatorWidthFallbackMobile = getFallbackNumber( seperatorWidthMobile, 'seperatorWidthMobile', blockName );
+
+	const ctaIconSpaceFallback = getFallbackNumber( ctaIconSpace, 'ctaIconSpace', blockName );
+	const ctaIconSpaceFallbackTablet = getFallbackNumber( ctaIconSpaceTablet, 'ctaIconSpaceTablet', blockName );
+	const ctaIconSpaceFallbackMobile = getFallbackNumber( ctaIconSpaceMobile, 'ctaIconSpaceMobile', blockName );
+
+	const imageWidthFallback = getFallbackNumber( imageWidth, 'imageWidth', blockName );
+	const imageWidthFallbackTablet = getFallbackNumber( imageWidthTablet, 'imageWidthTablet', blockName );
+	const imageWidthFallbackMobile = getFallbackNumber( imageWidthMobile, 'imageWidthMobile', blockName );
+
 	const selectors = {
 		// Icon css
 		' .uagb-ifb-content .uagb-ifb-icon-wrap > svg': {
-			'font-size': generateCSSUnit( iconSize, iconSizeType ),
+			'font-size': generateCSSUnit( iconSizeFallback, iconSizeType ),
 			'color': iconColor,
 			'fill': iconColor,
-			'line-height': generateCSSUnit( iconSize, iconSizeType ),
+			'line-height': generateCSSUnit( iconSizeFallback, iconSizeType ),
 			'padding-left': generateCSSUnit( iconLeftMargin, iconMarginUnit ),
 			'padding-right': generateCSSUnit( iconRightMargin, iconMarginUnit ),
 			'padding-top': generateCSSUnit( iconTopMargin, iconMarginUnit ),
@@ -209,11 +228,11 @@ function styling( props ) {
 			),
 		},
 		' .uagb-ifb-content .uagb-ifb-left-title-image > svg': {
-			'font-size': generateCSSUnit( iconSize, iconSizeType ),
+			'font-size': generateCSSUnit( iconSizeFallback, iconSizeType ),
 			'color': iconColor,
 			'fill': iconColor,
-			'width': generateCSSUnit( iconSize, iconSizeType ),
-			'line-height': generateCSSUnit( iconSize, iconSizeType ),
+			'width': generateCSSUnit( iconSizeFallback, iconSizeType ),
+			'line-height': generateCSSUnit( iconSizeFallback, iconSizeType ),
 			'padding-left': generateCSSUnit( iconLeftMargin, iconMarginUnit ),
 			'padding-right': generateCSSUnit( iconRightMargin, iconMarginUnit ),
 			'padding-top': generateCSSUnit( iconTopMargin, iconMarginUnit ),
@@ -223,11 +242,11 @@ function styling( props ) {
 			),
 		},
 		' .uagb-ifb-content .uagb-ifb-right-title-image > svg': {
-			'font-size': generateCSSUnit( iconSize, iconSizeType ),
+			'font-size': generateCSSUnit( iconSizeFallback, iconSizeType ),
 			'color': iconColor,
 			'fill': iconColor,
-			'width': generateCSSUnit( iconSize, iconSizeType ),
-			'line-height': generateCSSUnit( iconSize, iconSizeType ),
+			'width': generateCSSUnit( iconSizeFallback, iconSizeType ),
+			'line-height': generateCSSUnit( iconSizeFallback, iconSizeType ),
 			'padding-left': generateCSSUnit( iconLeftMargin, iconMarginUnit ),
 			'padding-right': generateCSSUnit( iconRightMargin, iconMarginUnit ),
 			'padding-top': generateCSSUnit( iconTopMargin, iconMarginUnit ),
@@ -237,11 +256,11 @@ function styling( props ) {
 			),
 		},
 		'.uagb-infobox__content-wrap .uagb-ifb-icon-wrap > svg': {
-			'font-size': generateCSSUnit( iconSize, iconSizeType ),
+			'font-size': generateCSSUnit( iconSizeFallback, iconSizeType ),
 			'color': iconColor,
 			'fill': iconColor,
-			'width': generateCSSUnit( iconSize, iconSizeType ),
-			'line-height': generateCSSUnit( iconSize, iconSizeType ),
+			'width': generateCSSUnit( iconSizeFallback, iconSizeType ),
+			'line-height': generateCSSUnit( iconSizeFallback, iconSizeType ),
 			'padding-left': generateCSSUnit( iconLeftMargin, iconMarginUnit ),
 			'padding-right': generateCSSUnit( iconRightMargin, iconMarginUnit ),
 			'padding-top': generateCSSUnit( iconTopMargin, iconMarginUnit ),
@@ -275,7 +294,7 @@ function styling( props ) {
 				iconMarginUnit
 			),
 			'border-radius': generateCSSUnit(
-				iconimgBorderRadius,
+				iconimgBorderRadiusFallback,
 				iconimgBorderRadiusUnit
 			),
 		},
@@ -288,7 +307,7 @@ function styling( props ) {
 				iconMarginUnit
 			),
 			'border-radius': generateCSSUnit(
-				iconimgBorderRadius,
+				iconimgBorderRadiusFallback,
 				iconimgBorderRadiusUnit
 			),
 		},
@@ -301,7 +320,7 @@ function styling( props ) {
 				iconMarginUnit
 			),
 			'border-radius': generateCSSUnit(
-				iconimgBorderRadius,
+				iconimgBorderRadiusFallback,
 				iconimgBorderRadiusUnit
 			),
 		},
@@ -314,7 +333,7 @@ function styling( props ) {
 				iconMarginUnit
 			),
 			'border-radius': generateCSSUnit(
-				iconimgBorderRadius,
+				iconimgBorderRadiusFallback,
 				iconimgBorderRadiusUnit
 			),
 		},
@@ -427,9 +446,9 @@ function styling( props ) {
 		},
 		// Seperator
 		'.uagb-infobox__content-wrap .uagb-ifb-separator': {
-			'width': generateCSSUnit( seperatorWidth, separatorWidthType ),
+			'width': generateCSSUnit( seperatorWidthFallback, separatorWidthType ),
 			'border-top-width': generateCSSUnit(
-				seperatorThickness,
+				seperatorThicknessFallback,
 				thicknessUnit
 			),
 			'border-top-color': seperatorColor,
@@ -732,7 +751,7 @@ function styling( props ) {
 			'width': generateCSSUnit( ctaFontSizeTablet, ctaFontSizeType ),
 		},
 		'.uagb-infobox__content-wrap .uagb-ifb-separator': {
-			'width': generateCSSUnit( seperatorWidthTablet, separatorWidthType ),
+			'width': generateCSSUnit( seperatorWidthFallbackTablet, separatorWidthType ),
 		},
 		' .uagb-ifb-separator': {
 			'margin-bottom': generateCSSUnit( seperatorTabletSpace, separatorTabletMarginUnit ),
@@ -957,7 +976,7 @@ function styling( props ) {
 			'font-size': generateCSSUnit( ctaFontSizeMobile, ctaFontSizeType ),
 		},
 		'.uagb-infobox__content-wrap .uagb-ifb-separator': {
-			'width': generateCSSUnit( seperatorWidthMobile, separatorWidthType ),
+			'width': generateCSSUnit( seperatorWidthFallbackMobile, separatorWidthType ),
 		},
 		' .uagb-infobox-cta-link svg': {
 			'font-size': generateCSSUnit( ctaFontSizeMobile, ctaFontSizeType ),
@@ -973,64 +992,64 @@ function styling( props ) {
 	if ( imageWidthType ) {
 		// Image
 		selectors[ '.uagb-infobox__content-wrap img' ] = {
-			'width': generateCSSUnit( imageWidth, imageWidthUnit ),
+			'width': generateCSSUnit( imageWidthFallback, imageWidthUnit ),
 		};
 		selectors[ '.uagb-infobox__content-wrap .uagb-ifb-content .uagb-ifb-right-title-image > img' ] = {
-			'width': generateCSSUnit( imageWidth, imageWidthUnit ),
+			'width': generateCSSUnit( imageWidthFallback, imageWidthUnit ),
 		};
 		selectors[ '.uagb-infobox__content-wrap .uagb-ifb-content .uagb-ifb-left-title-image > img' ] = {
-			'width': generateCSSUnit( imageWidth, imageWidthUnit ),
+			'width': generateCSSUnit( imageWidthFallback, imageWidthUnit ),
 		};
 		selectors[ '.uagb-infobox__content-wrap .uagb-ifb-content .uagb-ifb-image-content > img' ] = {
-			'width': generateCSSUnit( imageWidth, imageWidthUnit ),
+			'width': generateCSSUnit( imageWidthFallback, imageWidthUnit ),
 		};
 
 		tabletSelectors[ '.uagb-infobox__content-wrap img' ] = {
-			'width': generateCSSUnit( imageWidthTablet, imageWidthUnitTablet ),
+			'width': generateCSSUnit( imageWidthFallbackTablet, imageWidthUnitTablet ),
 		};
 		tabletSelectors[ '.uagb-infobox__content-wrap .uagb-ifb-content .uagb-ifb-right-title-image > img' ] = {
-			'width': generateCSSUnit( imageWidthTablet, imageWidthUnitTablet ),
+			'width': generateCSSUnit( imageWidthFallbackTablet, imageWidthUnitTablet ),
 		};
 		tabletSelectors[ '.uagb-infobox__content-wrap .uagb-ifb-content .uagb-ifb-left-title-image > img' ] = {
-			'width': generateCSSUnit( imageWidthTablet, imageWidthUnitTablet ),
+			'width': generateCSSUnit( imageWidthFallbackTablet, imageWidthUnitTablet ),
 		};
 		tabletSelectors[ '.uagb-infobox__content-wrap .uagb-ifb-content .uagb-ifb-image-content > img' ] = {
-			'width': generateCSSUnit( imageWidthTablet, imageWidthUnitTablet ),
+			'width': generateCSSUnit( imageWidthFallbackTablet, imageWidthUnitTablet ),
 		};
 
 		mobileSelectors[ '.uagb-infobox__content-wrap img' ] = {
-			'width': generateCSSUnit( imageWidthMobile, imageWidthUnitMobile ),
+			'width': generateCSSUnit( imageWidthFallbackMobile, imageWidthUnitMobile ),
 		};
 		mobileSelectors[ '.uagb-infobox__content-wrap .uagb-ifb-content .uagb-ifb-right-title-image > img' ] = {
-			'width': generateCSSUnit( imageWidthMobile, imageWidthUnitMobile ),
+			'width': generateCSSUnit( imageWidthFallbackMobile, imageWidthUnitMobile ),
 		};
 		mobileSelectors[ '.uagb-infobox__content-wrap .uagb-ifb-content .uagb-ifb-left-title-image > img' ] = {
-			'width': generateCSSUnit( imageWidthMobile, imageWidthUnitMobile ),
+			'width': generateCSSUnit( imageWidthFallbackMobile, imageWidthUnitMobile ),
 		};
 		mobileSelectors[ '.uagb-infobox__content-wrap .uagb-ifb-content .uagb-ifb-image-content > img' ] = {
-			'width': generateCSSUnit( imageWidthMobile, imageWidthUnitMobile ),
+			'width': generateCSSUnit( imageWidthFallbackMobile, imageWidthUnitMobile ),
 		};
 	}
 
 	if( 'after' === ctaIconPosition ){
 		selectors[ '.uagb-infobox__content-wrap .uagb-infobox-cta-link > svg'] = {
-			'margin-left': generateCSSUnit( ctaIconSpace, ctaIconSpaceType ),
+			'margin-left': generateCSSUnit( ctaIconSpaceFallback, ctaIconSpaceType ),
 		};
 		tabletSelectors[ '.uagb-infobox__content-wrap .uagb-infobox-cta-link > svg'] = {
-			'margin-left': generateCSSUnit( ctaIconSpaceTablet, ctaIconSpaceType ),
+			'margin-left': generateCSSUnit( ctaIconSpaceFallbackTablet, ctaIconSpaceType ),
 		};
 		mobileSelectors[ '.uagb-infobox__content-wrap .uagb-infobox-cta-link > svg'] = {
-			'margin-left': generateCSSUnit( ctaIconSpaceMobile, ctaIconSpaceType ),
+			'margin-left': generateCSSUnit( ctaIconSpaceFallbackMobile, ctaIconSpaceType ),
 		};
 	}else{
 		selectors[ '.uagb-infobox__content-wrap .uagb-infobox-cta-link > svg'] = {
-			'margin-right': generateCSSUnit( ctaIconSpace, ctaIconSpaceType ),
+			'margin-right': generateCSSUnit( ctaIconSpaceFallback, ctaIconSpaceType ),
 		};
 		tabletSelectors[ '.uagb-infobox__content-wrap .uagb-infobox-cta-link > svg'] = {
-			'margin-right': generateCSSUnit( ctaIconSpaceTablet, ctaIconSpaceType ),
+			'margin-right': generateCSSUnit( ctaIconSpaceFallbackTablet, ctaIconSpaceType ),
 		};
 		mobileSelectors[ '.uagb-infobox__content-wrap .uagb-infobox-cta-link > svg'] = {
-			'margin-right': generateCSSUnit( ctaIconSpaceMobile, ctaIconSpaceType ),
+			'margin-right': generateCSSUnit( ctaIconSpaceFallbackMobile, ctaIconSpaceType ),
 		};
 	}
 
