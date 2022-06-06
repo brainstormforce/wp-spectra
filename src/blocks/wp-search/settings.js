@@ -220,7 +220,7 @@ const Settings = ( props ) => {
 		return (
 			<UAGAdvancedPanelBody
 				title={ __( 'Input Box', 'ultimate-addons-for-gutenberg' ) }
-				initialOpen={ false }
+				initialOpen={ true }
 				className="uagb__url-panel-body"
 			>
 				<AdvancedPopColorControl
