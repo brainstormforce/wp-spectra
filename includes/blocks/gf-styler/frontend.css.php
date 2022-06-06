@@ -55,10 +55,10 @@ $selectors = array(
 		'text-align'       => $attr['align'],
 	),
 	// Focus.
-	' .gform_wrapper.gravity-theme input:not([type=submit]):focus'                 => array(
+	' .gform_wrapper.gravity-theme input:not([type=submit]):focus' => array(
 		'border-color' => $attr['fieldBorderFocusColor'],
 	),
-	' .gform_wrapper.gravity-theme select:focus'                                   => array(
+	' .gform_wrapper.gravity-theme select:focus'           => array(
 		'border-color' => $attr['fieldBorderFocusColor'],
 	),
 	' .gform_wrapper.gravity-theme textarea:focus'         => array(
@@ -141,9 +141,9 @@ $selectors = array(
 		'margin-bottom'    => UAGB_Helper::get_css_value( $attr['fieldSpacing'], 'px' ),
 		'text-align'       => $attr['align'],
 		'height'           => $attr['textAreaHeight'],
-    ),
-	
-	' .gform_wrapper.gravity-theme .gfield textarea.large:focus'         => array(
+	),
+
+	' .gform_wrapper.gravity-theme .gfield textarea.large:focus' => array(
 		'border-color' => $attr['fieldBorderFocusColor'],
 	),
 	' textarea::placeholder'                               => array(
@@ -355,7 +355,7 @@ $selectors = array(
 	),
 	' .uagb-gf-styler__check-style-enabled .gfield_radio input[type="radio"]:checked + label:before' => array(
 		'background-color' => $attr['radioCheckSelectColor'],
-		'border-color' => $attr['fieldBorderFocusColor'],
+		'border-color'     => $attr['fieldBorderFocusColor'],
 	),
 	' .uagb-gf-styler__check-style-enabled form .gfield_radio label' => array(
 		'color' => $attr['radioCheckLableColor'],
