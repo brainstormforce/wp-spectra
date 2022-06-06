@@ -4,6 +4,7 @@ import { useState } from '@wordpress/element';
 import styles from './editor.lazy.scss';
 import React, { useLayoutEffect } from 'react';
 import { select, dispatch } from '@wordpress/data';
+import classnames from 'classnames';
 
 const UAGPresets = ( props ) => {
 
@@ -19,7 +20,8 @@ const UAGPresets = ( props ) => {
         setAttributes,
         presets,
         presetInputType,
-        label
+        label,
+		className
     } = props;
 
 	const [ selectedPresetState, setPreset ] = useState( '' );
@@ -169,11 +171,9 @@ const UAGPresets = ( props ) => {
             <>
                 <input key={key} className="uag-presets-radio-input" type="radio" value={key} checked={checked} onChange={() => updatePresets( key )} onClick={() => updatePresets( key )}/>
 
-                <label htmlFor={key} className="uag-presets-radio-input-label">
-                    <span dangerouslySetInnerHTML={{
+                <label htmlFor={key} className="uag-presets-radio-input-label" dangerouslySetInnerHTML={{
                         __html: preset.icon
-                    }}/>
-                    <span className="uag-presets-radio-image-clickable" onClick={() => updatePresets( key )} title={preset.label}></span> { /* eslint-disable-line */ }
+                    }} onClick={() => updatePresets( key )}>
                 </label>
             </>
         );
@@ -197,7 +197,10 @@ const UAGPresets = ( props ) => {
     );
 
     return (
-		<div className="uagb-presets-main-wrap">
+		<div className={ classnames(
+			className,
+			'uagb-presets-main-wrap'
+		) }>
 			<div className='uagb-presets-label-reset-wrap'>
 				<label htmlFor="uag-presets-label" className="uag-presets-label">{label}</label>
 				<Tooltip
