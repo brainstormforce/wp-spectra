@@ -794,38 +794,9 @@ const Settings = ( props ) => {
 					/>
 				) }
 
-				<MultiButtonsControl
-					setAttributes={ setAttributes }
-					label={ __(
-						'Marker View',
-						'ultimate-addons-for-gutenberg'
-					) }
-					data={ {
-						value: markerView,
-						label: 'markerView',
-					} }
-					className="uagb-multi-button-alignment-control"
-					options={ [
-						{
-							value: 'disc',
-							label: __(
-								'Bullets',
-								'ultimate-addons-for-gutenberg'
-							),
-						},
-						{
-							value: 'decimal',
-							label: __(
-								'Numbers',
-								'ultimate-addons-for-gutenberg'
-							),
-						},
-					] }
-				/>
-
 				<ToggleControl
 					label={ __(
-						'Disable Bullet Points',
+						'Disable Marker',
 						'ultimate-addons-for-gutenberg'
 					) }
 					checked={ disableBullets }
@@ -835,6 +806,38 @@ const Settings = ( props ) => {
 						} )
 					}
 				/>
+				{
+					!disableBullets && (
+						<MultiButtonsControl
+							setAttributes={ setAttributes }
+							label={ __(
+								'Marker View',
+								'ultimate-addons-for-gutenberg'
+							) }
+							data={ {
+								value: markerView,
+								label: 'markerView',
+							} }
+							className="uagb-multi-button-alignment-control"
+							options={ [
+								{
+									value: 'disc',
+									label: __(
+										'Bullets',
+										'ultimate-addons-for-gutenberg'
+									),
+								},
+								{
+									value: 'decimal',
+									label: __(
+										'Numbers',
+										'ultimate-addons-for-gutenberg'
+									),
+								},
+							] }
+						/>
+					)
+				}
 				<ToggleControl
 					label={ __(
 						'Make Content Collapsible',

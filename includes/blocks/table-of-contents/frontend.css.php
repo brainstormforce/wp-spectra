@@ -107,7 +107,7 @@ $selectors            = array(
 	),
 );
 
-$selectors[' .uagb-toc__list-wrap ol.uagb-toc__list > li']['list-style-type'] =  $attr['markerView'];
+$selectors[' .uagb-toc__list-wrap ol.uagb-toc__list > li']['list-style-type'] = $attr['markerView'];
 
 if ( '' !== $attr['contentPaddingDesktop'] ) {
 	$selectors[' .uagb-toc__list-wrap ol.uagb-toc__list > li']['padding-top']    = 'calc( ' . UAGB_Helper::get_css_value( $attr['contentPaddingDesktop'] . $attr['contentPaddingTypeDesktop'] ) . ' / 2 )';

@@ -107,5 +107,5 @@ return array(
 	'headingFontStyle'          => '',
 	'headingTransform'          => '',
 	'headingDecoration'         => '',
-	'markerView'				=> 'disc'
+	'markerView'                => 'disc',
 );
