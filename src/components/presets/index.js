@@ -171,7 +171,7 @@ const UAGPresets = ( props ) => {
             <>
                 <input key={key} className="uag-presets-radio-input" type="radio" value={key} checked={checked} onChange={() => updatePresets( key )} onClick={() => updatePresets( key )}/>
 
-                <label htmlFor={key} className="uag-presets-radio-input-label" dangerouslySetInnerHTML={{
+                <label htmlFor={key} className="uag-presets-radio-input-label" dangerouslySetInnerHTML={{// eslint-disable-line
                         __html: preset.icon
                     }} onClick={() => updatePresets( key )}>
                 </label>
