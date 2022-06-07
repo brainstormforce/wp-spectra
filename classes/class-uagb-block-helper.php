@@ -401,7 +401,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				'padding-right'  => UAGB_Helper::get_css_value( $paddingBtnRight, $attr['paddingBtnUnit'] ),
 
 			);
-			$selectors[' .uagb-post__text.uagb-post__cta:hover']   = array(
+			$selectors[' .uagb-post__text.uagb-post__cta:hover']                  = array(
 				'color'        => $attr['ctaHColor'],
 				'background'   => $attr['ctaBgHColor'],
 				'border-color' => $attr['borderHColor'],
