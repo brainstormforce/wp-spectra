@@ -516,7 +516,7 @@ const Settings = ( props ) => {
 		return (
 			<UAGAdvancedPanelBody
 				title={ __( 'Spacing', 'ultimate-addons-for-gutenberg' ) }
-				initialOpen={ false }
+				initialOpen={ true }
 			>
 				<SpacingControl
 					{ ...props }
