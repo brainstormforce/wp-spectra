@@ -762,7 +762,7 @@ button.components-button.uagb-review-select-btn.is-secondary {
 
 	// This helps to fix alignment of gradient control input fields.
 	.components-flex.components-custom-gradient-picker__ui-line {
-		align-items: center;
+		align-items: baseline;
 	}
 
 	.components-angle-picker-control {
@@ -782,5 +782,9 @@ button.components-button.uagb-review-select-btn.is-secondary {
 		display: flex;
 		flex-direction: row-reverse;
 		justify-content: space-between;
+	}
+
+	.components-angle-picker-control .components-input-control__label {
+		padding-bottom: 8px !important;
 	}
 }
