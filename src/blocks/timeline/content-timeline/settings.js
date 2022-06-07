@@ -87,9 +87,11 @@ const Settings = ( props ) => {
 			separatorwidth,
 			borderwidth,
 			connectorBgsize,
+			connectorBgsizeTablet,
+			connectorBgsizeMobile,
 			dateBottomspace,
-		dateBottomspaceTablet,
-		dateBottomspaceMobile,
+			dateBottomspaceTablet,
+			dateBottomspaceMobile,
 			align,
 			icon,
 			iconColor,
@@ -107,9 +109,11 @@ const Settings = ( props ) => {
 			dateLineHeightMobile,
 			dateLoadGoogleFonts,
 			iconSize,
+			iconSizeTablet,
+			iconSizeMobile,
 			borderRadius,
-		borderRadiusTablet,
-		borderRadiusMobile,
+			borderRadiusTablet,
+			borderRadiusMobile,
 			iconFocus,
 			iconBgFocus,
 			displayPostDate,
@@ -669,30 +673,54 @@ const Settings = ( props ) => {
 					onChange={ getTimelineicon }
 				/>
 				{ icon && (
-					<Range
+					<ResponsiveSlider
 						label={ __(
 							'Icon Size',
 							'ultimate-addons-for-gutenberg'
 						) }
-						setAttributes={ setAttributes }
-						value={ iconSize }
-						onChange={ geticonSize }
+						data={ {
+							desktop: {
+								value: iconSize,
+								label: 'iconSize',
+							},
+							tablet: {
+								value: iconSizeTablet,
+								label: 'iconSizeTablet',
+							},
+							mobile: {
+								value: iconSizeMobile,
+								label: 'iconSizeMobile',
+							},
+						} }
 						min={ 0 }
 						max={ 30 }
 						displayUnit={ false }
+						setAttributes={ setAttributes }
 					/>
 				) }
-				<Range
+				<ResponsiveSlider
 					label={ __(
 						'Icon Background Size',
 						'ultimate-addons-for-gutenberg'
 					) }
-					setAttributes={ setAttributes }
-					value={ connectorBgsize }
-					onChange={ getconnectorBgsize }
+					data={ {
+						desktop: {
+							value: connectorBgsize,
+							label: 'connectorBgsize',
+						},
+						tablet: {
+							value: connectorBgsizeTablet,
+							label: 'connectorBgsizeTablet',
+						},
+						mobile: {
+							value: connectorBgsizeMobile,
+							label: 'connectorBgsizeMobile',
+						},
+					} }
 					min={ 25 }
 					max={ 90 }
 					displayUnit={ false }
+					setAttributes={ setAttributes }
 				/>
 				<Range
 					label={ __(
