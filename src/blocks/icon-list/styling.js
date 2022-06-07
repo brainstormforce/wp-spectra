@@ -282,24 +282,21 @@ function styling( props ) {
 		};
 	}
 
-	if ( 'right' === align && ! hideLabel ) {
+	if ( 'right' === align && hideLabel ) {
 		selectors[
 			' .uagb-icon-list__source-wrap'
 		] = {
-			'margin-left': generateCSSUnit( inner_gap, innerGapType ),
+			'margin-right': '0px',
 		};
 		mobileSelectors[
 			' .uagb-icon-list__source-wrap'
 		] = {
-			'margin-left': generateCSSUnit( innerGapMobile, innerGapType ),
+			'margin-right': '0px',
 		};
 		tabletSelectors[
 			' .uagb-icon-list__source-wrap'
 		] = {
-			'margin-left': generateCSSUnit( innerGapTablet, innerGapType ),
-		};
-		selectors[ ' .wp-block-uagb-icon-list-child ' ] = {
-			'flex-direction': 'row-reverse',
+			'margin-right': '0px',
 		};
 	} else {
 		selectors[

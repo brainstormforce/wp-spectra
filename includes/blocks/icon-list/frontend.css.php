@@ -291,19 +291,15 @@ if ( ! $attr['childMigrate'] ) {
 	}
 }
 
-if ( 'right' === $attr['align'] && ! $attr['hideLabel'] ) {
+if ( 'right' === $attr['align'] && $attr['hideLabel'] ) {
 	$selectors[' .uagb-icon-list__source-wrap']     = array(
-		'margin-left' => UAGB_Helper::get_css_value( $attr['inner_gap'], $attr['innerGapType'] ),
+		'margin-right' => '0px',
 	);
 	$m_selectors[' .uagb-icon-list__source-wrap']   = array(
-		'margin-left' => UAGB_Helper::get_css_value( $attr['innerGapMobile'], $attr['innerGapType'] ),
+		'margin-right' => '0px',
 	);
 	$t_selectors[' .uagb-icon-list__source-wrap']   = array(
-		'margin-left' => UAGB_Helper::get_css_value( $attr['innerGapTablet'], $attr['innerGapType'] ),
-	);
-	$selectors[' .wp-block-uagb-icon-list-child  '] = array(
-		'flex-direction' => 'row-reverse',
-		'text-align'     => 'end',
+		'margin-right' => '0px',
 	);
 } else {
 	$selectors[' .uagb-icon-list__source-wrap']   = array(
