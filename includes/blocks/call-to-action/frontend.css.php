@@ -226,33 +226,6 @@ if ( 'left' === $attr['textAlign'] && 'right' === $attr['ctaPosition'] ) {
 	);
 }
 
-if ( 'right' === $attr['textAlign'] && 'right' === $attr['ctaPosition'] ) {
-	$selectors[' .uagb-cta__left-right-wrap .uagb-cta__content']   = array(
-		'margin-right' => UAGB_Helper::get_css_value( $attr['ctaRightSpace'], $attr['ctaRightSpaceType'] ),
-		'margin-left'  => '0',
-	);
-	$selectors[' > .uagb-cta__wrap']                               = array(
-		'margin-right' => UAGB_Helper::get_css_value( $attr['ctaRightSpace'], $attr['ctaRightSpaceType'] ),
-		'margin-left'  => '0',
-	);
-	$t_selectors[' .uagb-cta__left-right-wrap .uagb-cta__content'] = array(
-		'margin-right' => UAGB_Helper::get_css_value( $attr['ctaRightSpaceTablet'], $attr['ctaRightSpaceType'] ),
-		'margin-left'  => '0',
-	);
-	$t_selectors[' > .uagb-cta__wrap']                             = array(
-		'margin-right' => UAGB_Helper::get_css_value( $attr['ctaRightSpaceTablet'], $attr['ctaRightSpaceType'] ),
-		'margin-left'  => '0',
-	);
-	$m_selectors[' .uagb-cta__left-right-wrap .uagb-cta__content'] = array(
-		'margin-right' => UAGB_Helper::get_css_value( $attr['ctaRightSpaceMobile'], $attr['ctaRightSpaceType'] ),
-		'margin-left'  => '0',
-	);
-	$m_selectors[' > .uagb-cta__wrap']                             = array(
-		'margin-right' => UAGB_Helper::get_css_value( $attr['ctaRightSpaceMobile'], $attr['ctaRightSpaceType'] ),
-		'margin-left'  => '0',
-	);
-}
-
 $t_selectors = array(
 	' .uagb-cta__title'                                   => array(
 		'margin-bottom' => UAGB_Helper::get_css_value( $attr['titleSpaceTablet'], $attr['titleSpaceType'] ),

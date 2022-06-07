@@ -110,10 +110,6 @@ const Settings = ( props ) => {
 		ctaBorderWidth,
 		ctaBorderRadius,
 		stack,
-		ctaRightSpace,
-		ctaRightSpaceTablet,
-		ctaRightSpaceMobile,
-		ctaRightSpaceType,
 		ctaLinkHoverColor,
 		titleTransform,
 		titleDecoration,
@@ -1452,44 +1448,6 @@ const Settings = ( props ) => {
 					/>
 					)
 				}
-				{ ( ( 'right' === textAlign && 'Desktop' === deviceType ) || ( 'right' === textAlignTablet && 'Tablet' === deviceType ) || ( 'right' === textAlignMobile && 'Mobile' === deviceType  ) ) && (
-					<ResponsiveSlider
-						label={ __(
-							'Content Right Margin',
-							'ultimate-addons-for-gutenberg'
-						) }
-						data={ {
-							desktop: {
-								value: ctaRightSpace,
-								label: 'ctaRightSpace',
-							},
-							tablet: {
-								value: ctaRightSpaceTablet,
-								label: 'ctaRightSpaceTablet',
-							},
-							mobile: {
-								value: ctaRightSpaceMobile,
-								label: 'ctaRightSpaceMobile',
-							},
-						} }
-						min={ 0 }
-						max={ 200 }
-						unit={ {
-							value: ctaRightSpaceType,
-							label: 'ctaRightSpaceType',
-						} }
-						units={ [
-							{
-								name: __(
-									'Pixel',
-									'ultimate-addons-for-gutenberg'
-								),
-								unitValue: 'px',
-							},
-						] }
-						setAttributes={ setAttributes }
-					/>
-				) }
 				<SpacingControl
 					{ ...props }
 					label={ __( 'Padding', 'ultimate-addons-for-gutenberg' ) }

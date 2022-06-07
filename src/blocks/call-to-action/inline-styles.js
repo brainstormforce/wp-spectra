@@ -73,10 +73,6 @@ function CtaStyle( props ) {
 		ctaIconSpace,
 		ctaIconSpaceTablet,
 		ctaIconSpaceMobile,
-		ctaRightSpace,
-		ctaRightSpaceTablet,
-		ctaRightSpaceMobile,
-		ctaRightSpaceType,
 		contentWidth,
 		contentWidthTablet,
 		contentWidthMobile,
@@ -527,35 +523,6 @@ function CtaStyle( props ) {
 		};
 		mobileSelectors[ ' > .uagb-cta__wrap' ] = {
 			'margin-right': '0',
-		};
-	}
-
-	if ( textAlign === 'right' && ctaPosition === 'right' ) {
-		selectors[ ' .uagb-cta__left-right-wrap .uagb-cta__content' ] = {
-			'margin-right': generateCSSUnit( ctaRightSpace, ctaRightSpaceType ),
-			'margin-left': '0',
-		};
-		selectors[ ' > .uagb-cta__wrap' ] = {
-			'margin-right': generateCSSUnit( ctaRightSpace, ctaRightSpaceType ),
-			'margin-left': '0',
-		};
-
-		tabletSelectors[ ' .uagb-cta__left-right-wrap .uagb-cta__content' ] = {
-			'margin-right': generateCSSUnit( ctaRightSpaceTablet, ctaRightSpaceType ),
-			'margin-left': '0',
-		};
-		tabletSelectors[ ' > .uagb-cta__wrap' ] = {
-			'margin-right': generateCSSUnit( ctaRightSpaceTablet, ctaRightSpaceType ),
-			'margin-left': '0',
-		};
-
-		mobileSelectors[ ' .uagb-cta__left-right-wrap .uagb-cta__content' ] = {
-			'margin-right': generateCSSUnit( ctaRightSpaceMobile, ctaRightSpaceType ),
-			'margin-left': '0',
-		};
-		mobileSelectors[ ' > .uagb-cta__wrap' ] = {
-			'margin-right': generateCSSUnit( ctaRightSpaceMobile, ctaRightSpaceType ),
-			'margin-left': '0',
 		};
 	}
 
