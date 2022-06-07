@@ -279,7 +279,7 @@ function styling( props ) {
 				iconMarginUnit
 			),
 		},
-		' .uagb-ifb-content .uagb-ifb-icon-wrap > svg:hover': {
+		' .uagb-ifb-content .uagb-ifb-icon-wrap svg:hover': {
 			'fill': iconHover,
 		},
 		'.uagb-infobox-icon-left .uagb-ifb-icon-wrap > svg:hover': {
@@ -504,7 +504,7 @@ function styling( props ) {
 			'border' : `${iconBorderWidth}px solid ${iconBackgroundColor}`,
 		}
 		selectors[' .uagb-iconbox-icon-wrap:hover'] = {
-			'border' : `${iconBorderWidth} px solid ${iconBackgroundHoverColor}`,
+			'border' : `${iconBorderWidth}px solid ${iconBackgroundHoverColor}`,
 		};
 	}
 	if( 'none' !== ctaBorderStyle ) {
