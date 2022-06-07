@@ -112,4 +112,8 @@ return array(
 	'iconSpacing'                 => 10,
 	'iconSpacingTablet'           => '',
 	'iconSpacingMobile'           => '',
+	'titleLetterSpacing'            => '',
+	'titleLetterSpacingTablet'      => '',
+	'titleLetterSpacingMobile'      => '',
+	'titleLetterSpacingType'        => 'px',
 );

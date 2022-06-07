@@ -188,4 +188,12 @@ return array(
 	'buttonRightSpaceTablet'          => 5,
 	'buttonRightSpaceMobile'          => 5,
 	'buttonRightSpaceType'            => 'px',
+	'titleLetterSpacing'            => '',
+	'titleLetterSpacingTablet'      => '',
+	'titleLetterSpacingMobile'      => '',
+	'titleLetterSpacingType'        => 'px',
+	'descLetterSpacing'            => '',
+	'descLetterSpacingTablet'      => '',
+	'descLetterSpacingMobile'      => '',
+	'descLetterSpacingType'        => 'px',
 );
