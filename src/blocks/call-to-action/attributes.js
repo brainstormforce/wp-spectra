@@ -1145,6 +1145,56 @@ const attributes = {
 			styleType: 'main-button-unit-type'
 		},
 	},
+	titleLetterSpacing: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'main-title-letter-spacing'
+		}
+	},
+	titleLetterSpacingTablet: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'main-title-letter-spacing-tablet'
+		}
+	},
+	titleLetterSpacingMobile: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'main-title-letter-spacing-mobile'
+		}
+	},
+	titleLetterSpacingType: {
+		type: 'string',
+		default: 'px',
+		UAGCopyPaste: {
+			styleType: 'main-title-letter-spacing-type'
+		}
+	},
+	descLetterSpacing: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'desc-letter-spacing'
+		}
+	},
+	descLetterSpacingTablet: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'desc-letter-spacing-tablet'
+		}
+	},
+	descLetterSpacingMobile: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'desc-letter-spacing-mobile'
+		}
+	},
+	descLetterSpacingType: {
+		type: 'string',
+		default: 'px',
+		UAGCopyPaste: {
+			styleType: 'desc-letter-spacing-type'
+		}
+	},
 };
 
 export default attributes;

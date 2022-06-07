@@ -172,6 +172,14 @@ function CtaStyle( props ) {
 		buttonRightSpaceTablet,
 		buttonRightSpaceMobile,
 		buttonRightSpaceType,
+		titleLetterSpacing,
+		titleLetterSpacingTablet,
+		titleLetterSpacingMobile,
+		titleLetterSpacingType,
+		descLetterSpacing,
+		descLetterSpacingTablet,
+		descLetterSpacingMobile,
+		descLetterSpacingType,
 	} = props.attributes;
 
 	const selectors = {
@@ -204,6 +212,7 @@ function CtaStyle( props ) {
 				titleLineHeight,
 				titleLineHeightType
 			),
+			'letter-spacing': generateCSSUnit( titleLetterSpacing, titleLetterSpacingType ),
 			'color': titleColor,
 			'margin-bottom': generateCSSUnit( titleSpace, titleSpaceType ),
 		},
@@ -220,6 +229,7 @@ function CtaStyle( props ) {
 				descLineHeight,
 				descLineHeightType
 			),
+			'letter-spacing': generateCSSUnit( descLetterSpacing, descLetterSpacingType ),
 			'color': descColor,
 			'margin-bottom': generateCSSUnit( descSpace, descSpaceType ),
 		},
@@ -336,6 +346,7 @@ function CtaStyle( props ) {
 				titleLineHeightTablet,
 				titleLineHeightType
 			),
+			'letter-spacing': generateCSSUnit( titleLetterSpacingTablet, titleLetterSpacingType ),
 			'margin-bottom': generateCSSUnit( titleSpaceTablet, titleSpaceType ),
 		},
 		' .block-editor-rich-text__editable.uagb-cta__desc': {
@@ -347,6 +358,7 @@ function CtaStyle( props ) {
 				descLineHeightTablet,
 				descLineHeightType
 			),
+			'letter-spacing': generateCSSUnit( descLetterSpacingTablet, descLetterSpacingType ),
 			'margin-bottom': generateCSSUnit( descSpaceTablet, descSpaceType ),
 		},
 		'.uagb-cta__outer-wrap a.uagb-cta__button-link-wrapper': {
@@ -437,6 +449,7 @@ function CtaStyle( props ) {
 				titleLineHeightMobile,
 				titleLineHeightType
 			),
+			'letter-spacing': generateCSSUnit( titleLetterSpacingMobile, titleLetterSpacingType ),
 			'margin-bottom': generateCSSUnit( titleSpaceMobile, titleSpaceType ),
 		},
 		' .block-editor-rich-text__editable.uagb-cta__desc': {
@@ -448,6 +461,7 @@ function CtaStyle( props ) {
 				descLineHeightMobile,
 				descLineHeightType
 			),
+			'letter-spacing': generateCSSUnit( descLetterSpacingMobile, descLetterSpacingType ),
 			'margin-bottom': generateCSSUnit( descSpaceMobile, descSpaceType ),
 		},
 		' .uagb-cta__button-wrapper a.uagb-cta-typeof-text': {
