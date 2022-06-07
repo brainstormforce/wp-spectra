@@ -252,7 +252,7 @@ function styling( props ) {
 				titleBottomSpaceUnit
 			),
 			'margin-top': generateCSSUnit(
-				paddingRight,
+				paddingTop,
 				contentPaddingUnit
 			),
 		},
