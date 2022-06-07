@@ -411,17 +411,6 @@ html[dir="rtl"] .uagb-gf-styler__btn-align-left .gform_page .gform_page_footer i
 	margin-left: auto;
 }
 
-.uagb-gf-styler__btn-align-justify .gform_wrapper .gform_footer input[type="submit"],
-.uagb-gf-styler__btn-align-justify .gform_page .gform_page_footer input[type="button"],
-.uagb-gf-styler__btn-align-justify .gform_page .gform_page_footer input[type="submit"] {
-	-webkit-box-pack: center;
-	-ms-flex-pack: center;
-	-webkit-justify-content: center;
-	-moz-box-pack: center;
-	justify-content: center;
-	width: 100%;
-}
-
 .uagb-gf-styler__check-style-enabled .gform_body .ginput_container_checkbox .gfield_checkbox input[type="checkbox"],
 .uagb-gf-styler__check-style-enabled .gform_body .ginput_container_radio .gfield_radio input[type="radio"],
 .uagb-gf-styler__check-style-enabled .gform_body .ginput_container_consent input[type="checkbox"] {
@@ -605,6 +594,19 @@ html[dir="rtl"] .uagb-gf-styler__btn-align-left .gform_page .gform_page_footer i
 	}
 }
 
+@media (min-width: 780px){
+	.uagb-gf-styler__btn-align-justify .gform_wrapper .gform_footer input[type="submit"],
+	.uagb-gf-styler__btn-align-justify .gform_page .gform_page_footer input[type="button"],
+	.uagb-gf-styler__btn-align-justify .gform_page .gform_page_footer input[type="submit"] {
+		-webkit-box-pack: center;
+		-ms-flex-pack: center;
+		-webkit-justify-content: center;
+		-moz-box-pack: center;
+		justify-content: center;
+		width: 100%;
+	}
+}
+
 @media (max-width: 780px) {
 
 	.uagb-gf-styler__btn-align-tablet-center .gform_wrapper .gform_footer input[type="submit"],
@@ -645,6 +647,9 @@ html[dir="rtl"] .uagb-gf-styler__btn-align-left .gform_page .gform_page_footer i
 		margin-left: auto;
 	}
 
+}
+
+@media (min-width: 360px) and (max-width: 780px){
 	.uagb-gf-styler__btn-align-tablet-justify .gform_wrapper .gform_footer input[type="submit"],
 	.uagb-gf-styler__btn-align-tablet-justify .gform_page .gform_page_footer input[type="button"],
 	.uagb-gf-styler__btn-align-tablet-justify .gform_page .gform_page_footer input[type="submit"] {
@@ -653,9 +658,8 @@ html[dir="rtl"] .uagb-gf-styler__btn-align-left .gform_page .gform_page_footer i
 		-webkit-justify-content: center;
 		-moz-box-pack: center;
 		justify-content: center;
-		width: 100%;
+		width: 100% !important;
 	}
-
 }
 
 @media (max-width: 360px) {
@@ -706,6 +710,6 @@ html[dir="rtl"] .uagb-gf-styler__btn-align-left .gform_page .gform_page_footer i
 		-webkit-justify-content: center;
 		-moz-box-pack: center;
 		justify-content: center;
-		width: 100%;
+		width: 100% !important;
 	}
 }
