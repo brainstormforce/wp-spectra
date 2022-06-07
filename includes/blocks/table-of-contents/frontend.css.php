@@ -107,8 +107,6 @@ $selectors            = array(
 	),
 );
 
-$selectors[' .uagb-toc__list-wrap ol.uagb-toc__list > li']['list-style-type'] = $attr['markerView'];
-
 if ( '' !== $attr['contentPaddingDesktop'] ) {
 	$selectors[' .uagb-toc__list-wrap ol.uagb-toc__list > li']['padding-top']    = 'calc( ' . UAGB_Helper::get_css_value( $attr['contentPaddingDesktop'] . $attr['contentPaddingTypeDesktop'] ) . ' / 2 )';
 	$selectors[' .uagb-toc__list-wrap ol.uagb-toc__list > li']['padding-bottom'] = 'calc( ' . UAGB_Helper::get_css_value( $attr['contentPaddingDesktop'] . $attr['contentPaddingTypeDesktop'] ) . ' / 2 )';
@@ -126,10 +124,14 @@ if ( $attr['customWidth'] && $attr['makeCollapsible'] ) {
 
 if ( $attr['disableBullets'] ) {
 	$selectors[' .uagb-toc__list']                 = array(
-		'list-style-type' => 'none',
+		'list-style-type' => 'none !important',
 	);
 	$selectors[' .uagb-toc__list .uagb-toc__list'] = array(
-		'list-style-type' => 'none',
+		'list-style-type' => 'none !important',
+	);
+} else {
+	$selectors[' .uagb-toc__list .uagb-toc__list'] = array(
+		'list-style-type' => $attr['markerView'] . ' !important',
 	);
 }
 

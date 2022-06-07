@@ -183,7 +183,7 @@ function styling( props ) {
 			'padding-bottom': 0,
 		},
 		' .uagb-toc__list-wrap ol.uagb-toc__list > li': {
-			'list-style-type': markerView,
+			'list-style-type': disableBullets ? 'none !important' :  markerView + ' !important',
 			'padding-top':
 				'calc( ' +
 				generateCSSUnit(
@@ -200,7 +200,7 @@ function styling( props ) {
 				' / 2 )',
 		},
 		' .uagb-toc__list-wrap ul.uagb-toc__list > li': {
-			'list-style-type': markerView,
+			'list-style-type': disableBullets ? 'none !important' :  markerView + ' !important',
 			'padding-top':
 				'calc( ' +
 				generateCSSUnit(
@@ -246,13 +246,13 @@ function styling( props ) {
 
 	if ( disableBullets ) {
 		selectors[ '.wp-block-uagb-table-of-contents ol.uagb-toc__list>li' ] = {
-			'list-style-type': 'none',
+			'list-style-type': 'none !important',
 		};
 		selectors[ ' .uagb-toc__list' ] = {
-			'list-style-type': 'none',
+			'list-style-type': 'none  !important',
 		};
 		selectors[ ' .uagb-toc__list .uagb-toc__list' ] = {
-			'list-style-type': 'none',
+			'list-style-type': 'none !important',
 		};
 	}
 
