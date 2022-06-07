@@ -7,6 +7,25 @@
  * @package uagb
  */
 
+$border_defaults  = array(
+	'borderStyle'              => 'solid',
+	'borderWidth'          => 1,
+	'borderRadius'             => 3,
+	'borderColor'              => '#E0E0E0',
+	'borderHColor'         => '#E0E0E0',
+);
+$border_attribute = UAGB_Block_Helper::uag_generate_border_attribute( 'overall', $border_defaults );
+
+
+$sepearator_border_defaults  = array(
+	'borderStyle'           => 'none',
+	'borderWidth'           => 100,
+	'borderThickness'       => 1,
+	'borderColor'           => '#b2b4b5',
+	'borderHColor'      => '#b2b4b5',
+);
+$separator_border_attribute = UAGB_Block_Helper::uag_generate_border_attribute( 'seperator', $sepearator_border_defaults );
+
 return array(
 	'block_id'                 => '',
 	'postType'                 => 'post',
@@ -42,11 +61,6 @@ return array(
 	'listBottomMargin'         => 10,
 	'alignment'                => 'center',
 	'listStyle'                => 'disc',
-	'seperatorStyle'           => 'none',
-	'seperatorWidth'           => 100,
-	'seperatorThickness'       => 1,
-	'seperatorColor'           => '#b2b4b5',
-	'seperatorHoverColor'      => '#b2b4b5',
 	'boxShadowColor'           => '',
 	'boxShadowHOffset'         => 0,
 	'boxShadowVOffset'         => 0,
@@ -89,11 +103,6 @@ return array(
 	'listLineHeightTablet'     => '',
 	'listLineHeightMobile'     => '',
 	'listLoadGoogleFonts'      => false,
-	'borderStyle'              => 'solid',
-	'borderThickness'          => 1,
-	'borderRadius'             => 3,
-	'borderColor'              => '#E0E0E0',
-	'borderHoverColor'         => '#E0E0E0',
 	'noTaxDisplaytext'         => __( 'Taxonomy Not Available.', 'ultimate-addons-for-gutenberg' ),
 	'showCount'                => true,
 	'showEmptyTaxonomy'        => false,
@@ -109,4 +118,6 @@ return array(
 	'titleDecoration'          => '',
 	'countDecoration'          => '',
 	'listDecoration'           => '',
+	$separator_border_attribute,
+	$border_attribute
 );
