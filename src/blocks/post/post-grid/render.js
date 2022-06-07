@@ -40,6 +40,7 @@ const Render = ( props ) => {
 		latestPosts,
 		categoriesList,
 		deviceType,
+		name,
 	} = props.parentProps;
 
 	const renderEditMode = () => {
@@ -139,6 +140,7 @@ const Render = ( props ) => {
 						block_id={ props.parentProps.clientId.substr( 0, 8 ) }
 						categoriesList={ categoriesList }
 						deviceType={ deviceType }
+						name={ name }
 					/>
 				</Suspense>
 			</Disabled>

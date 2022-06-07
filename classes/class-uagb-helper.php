@@ -316,8 +316,8 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 
 			// Block type is grid/masonry/carousel/timeline.
 			$query_args = array(
-				'offset'              => ( isset( $attributes['postsOffset'] ) ) ? $attributes['postsOffset'] : 0,
-				'posts_per_page'      => ( isset( $attributes['postsToShow'] ) ) ? $attributes['postsToShow'] : 6,
+				'offset'              => UAGB_Block_Helper::get_fallback_number( $attributes['postsToShow'], 'postsToShow', $attributes['blockName'] ),
+				'posts_per_page'      => UAGB_Block_Helper::get_fallback_number( $attributes['postsOffset'], 'postsOffset', $attributes['blockName'] ),
 				'post_status'         => 'publish',
 				'post_type'           => ( isset( $attributes['postType'] ) ) ? $attributes['postType'] : 'post',
 				'order'               => ( isset( $attributes['order'] ) ) ? $attributes['order'] : 'desc',
@@ -1296,7 +1296,7 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 		 *
 		 * @since 2.0.0
 		 */
-		public static function uagb_get_excerpt( $post_id, $content, $length ) {
+		public static function uagb_get_excerpt( $post_id, $content, $length, $attribute_name, $block_name ) {
 
 			// If there's an excerpt provided from meta, use it.
 			$excerpt = get_post_field( 'post_excerpt', $post_id );
@@ -1311,7 +1311,7 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 			// Trim the excerpt.
 			if ( ! empty( $excerpt ) ) {
 				$excerpt        = explode( ' ', $excerpt );
-				$trim_to_length = ( isset( $length ) ) ? $length : 15;
+				$trim_to_length = UAGB_Block_Helper::get_fallback_number( $length, $attribute_name, $block_name );
 				if ( count( $excerpt ) > $trim_to_length ) {
 					$excerpt = implode( ' ', array_slice( $excerpt, 0, $trim_to_length ) ) . '...';
 				} else {

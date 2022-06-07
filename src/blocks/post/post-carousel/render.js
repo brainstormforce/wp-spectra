@@ -28,7 +28,7 @@ const Render = ( props ) => {
 
 	props = props.parentProps;
 
-	const { attributes, categoriesList, latestPosts, deviceType } = props;
+	const { attributes, categoriesList, latestPosts, deviceType, name } = props;
 
 	const renderEditMode = () => {
 		const onDone = () => {
@@ -120,6 +120,7 @@ const Render = ( props ) => {
 				block_id={ props.clientId.substr( 0, 8 ) }
 				categoriesList={ categoriesList }
 				deviceType={ deviceType }
+				name={ name }
 			/>
 		</Disabled>
 	);

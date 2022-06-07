@@ -7,9 +7,12 @@
 
 import generateCSS from '@Controls/generateCSS';
 import generateCSSUnit from '@Controls/generateCSSUnit';
+import { getFallbackNumber } from '@Controls/getAttributeFallback';
 
 function styling( props ) {
 	const {
+		blockName,
+
 		borderWidth,
 		borderStyle,
 		borderColor,
@@ -197,18 +200,37 @@ function styling( props ) {
 		imgPosition,
 	} = props.attributes;
 
+	const overlayOpacityFallback = getFallbackNumber( overlayOpacity, 'overlayOpacity', blockName );
+	const columnGapFallback = getFallbackNumber( columnGap, 'columnGap', blockName );
+	const rowGapFallback = getFallbackNumber( rowGap, 'rowGap', blockName );
+	const imageBottomSpaceFallback = getFallbackNumber( imageBottomSpace, 'imageBottomSpace', blockName );
+	const titleBottomSpaceFallback = getFallbackNumber( titleBottomSpace, 'titleBottomSpace', blockName );
+	const metaBottomSpaceFallback = getFallbackNumber( metaBottomSpace, 'metaBottomSpace', blockName );
+	const excerptBottomSpaceFallback = getFallbackNumber( excerptBottomSpace, 'excerptBottomSpace', blockName );
+	const ctaBottomSpaceFallback = getFallbackNumber( ctaBottomSpace, 'ctaBottomSpace', blockName );
+
+	const paginationSpacingFallback = undefined !== paginationSpacing ? getFallbackNumber( paginationSpacing, 'paginationSpacing', blockName ) : '';
+	const paginationBorderRadiusFallback = undefined !== paginationBorderRadius ? getFallbackNumber( paginationBorderRadius, 'paginationBorderRadius', blockName ) : '';
+	const paginationBorderSizeFallback = undefined !== paginationBorderSize ? getFallbackNumber( paginationBorderSize, 'paginationBorderSize', blockName ) : '';
+	const arrowSizeFallback = undefined !== arrowSize ? getFallbackNumber( arrowSize, 'arrowSize', blockName ) : '';
+	const paginationFontSizeFallback = undefined !== paginationFontSize ? getFallbackNumber( paginationFontSize, 'paginationFontSize', blockName ) : '';
+	const loaderSizeFallback = undefined !== loaderSize ? getFallbackNumber( loaderSize, 'loaderSize', blockName ) : '';
+
+	const rowGapTabletFallback = isNaN( rowGapTablet ) ? rowGapFallback : rowGapTablet;
+	const rowGapMobileFallback = isNaN( rowGapMobile ) ? rowGapTabletFallback : rowGapMobile;
+
 	let mobileSelectors = {};
 	let tabletSelectors = {};
 
 	const selectors = {
 		'.uagb-post__items': {
-			'margin-right': generateCSSUnit( -rowGap / 2, rowGapUnit ),
-			'margin-left': generateCSSUnit( -rowGap / 2, rowGapUnit ),
+			'margin-right': generateCSSUnit( -rowGapFallback / 2, rowGapUnit ),
+			'margin-left': generateCSSUnit( -rowGapFallback / 2, rowGapUnit ),
 		},
 		'.uagb-post__items article': {
-			'padding-right': generateCSSUnit( rowGap / 2, rowGapUnit ),
-			'padding-left': generateCSSUnit( rowGap / 2, rowGapUnit ),
-			'margin-bottom': generateCSSUnit( columnGap, columnGapUnit ),
+			'padding-right': generateCSSUnit( rowGapFallback / 2, rowGapUnit ),
+			'padding-left': generateCSSUnit( rowGapFallback / 2, rowGapUnit ),
+			'margin-bottom': generateCSSUnit( columnGapFallback, columnGapUnit ),
 		},
 		' .uagb-post__inner-wrap': {
 			'background': bgColor,
@@ -233,41 +255,41 @@ function styling( props ) {
 		},
 		' .uagb-post__inner-wrap .uagb-post__cta': {
 			'margin-bottom': generateCSSUnit(
-				ctaBottomSpace,
+				ctaBottomSpaceFallback,
 				ctaBottomSpaceUnit
 			),
 		},
 		' .uagb-post__inner-wrap .uagb-post__image': {
 			'margin-bottom': generateCSSUnit(
-				imageBottomSpace,
+				imageBottomSpaceFallback,
 				imageBottomSpaceUnit
 			),
 		},
 		' .uagb-post__inner-wrap .uagb-post__title': {
 			'margin-bottom': generateCSSUnit(
-				titleBottomSpace,
+				titleBottomSpaceFallback,
 				titleBottomSpaceUnit
 			),
 		},
 		' .uagb-post__inner-wrap .uagb-post-grid-byline': {
 			'margin-bottom': generateCSSUnit(
-				metaBottomSpace,
+				metaBottomSpaceFallback,
 				metaBottomSpaceUnit
 			),
 		},
 		' .uagb-post__inner-wrap .uagb-post__excerpt': {
 			'margin-bottom': generateCSSUnit(
-				excerptBottomSpace,
+				excerptBottomSpaceFallback,
 				excerptBottomSpaceUnit
 			),
 		},
 		' .uagb-post__image:before': {
 			'background-color': bgOverlayColor,
-			'opacity': overlayOpacity / 100,
+			'opacity': overlayOpacityFallback / 100,
 		},
 		' .uagb-post-pagination-wrap': {
 			'margin-top': generateCSSUnit(
-				paginationSpacing,
+				paginationSpacingFallback,
 				paginationSpacingUnit
 			),
 			'justify-content': paginationAlignment,
@@ -275,9 +297,9 @@ function styling( props ) {
 	};
 
 	if ( 'left' === paginationAlignment ) {
-		selectors[' .uagb-post-pagination-wrap']['margin-left'] = generateCSSUnit( rowGap / 2, rowGapUnit );
+		selectors[' .uagb-post-pagination-wrap']['margin-left'] = generateCSSUnit( rowGapFallback / 2, rowGapUnit );
 	} else if ( 'right' === paginationAlignment ) {
-		selectors[' .uagb-post-pagination-wrap']['margin-right'] = generateCSSUnit( rowGap / 2, rowGapUnit );
+		selectors[' .uagb-post-pagination-wrap']['margin-right'] = generateCSSUnit( rowGapFallback / 2, rowGapUnit );
 	}
 
 	selectors[ ' .uagb-post__title' ] = {
@@ -495,10 +517,10 @@ function styling( props ) {
 		if ( 'border' === paginationLayout ) {
 			selectors[ ' .uagb-post-pagination-wrap a' ] = {
 				'border-style': 'solid',
-				'border-width': generateCSSUnit( paginationBorderSize, 'px' ),
+				'border-width': generateCSSUnit( paginationBorderSizeFallback, 'px' ),
 				'border-color': paginationBorderColor,
 				'border-radius': generateCSSUnit(
-					paginationBorderRadius,
+					paginationBorderRadiusFallback,
 					'px'
 				),
 				'color': paginationColor,
@@ -513,12 +535,12 @@ function styling( props ) {
 				] = {
 					'border-style': 'solid',
 					'border-width': generateCSSUnit(
-						paginationBorderSize,
+						paginationBorderSizeFallback,
 						'px'
 					),
 					'border-color': paginationBorderActiveColor,
 					'border-radius': generateCSSUnit(
-						paginationBorderRadius,
+						paginationBorderRadiusFallback,
 						'px'
 					),
 					'color': paginationActiveColor,
@@ -534,12 +556,12 @@ function styling( props ) {
 				] = {
 					'border-style': 'solid',
 					'border-width': generateCSSUnit(
-						paginationBorderSize,
+						paginationBorderSizeFallback,
 						'px'
 					),
 					'border-color': paginationBorderColor,
 					'border-radius': generateCSSUnit(
-						paginationBorderRadius,
+						paginationBorderRadiusFallback,
 						'px'
 					),
 					'color': paginationActiveColor,
@@ -555,12 +577,12 @@ function styling( props ) {
 				] = {
 					'border-style': 'solid',
 					'border-width': generateCSSUnit(
-						paginationBorderSize,
+						paginationBorderSizeFallback,
 						'px'
 					),
 					'border-color': paginationBorderActiveColor,
 					'border-radius': generateCSSUnit(
-						paginationBorderRadius,
+						paginationBorderRadiusFallback,
 						'px'
 					),
 					'color': paginationColor,
@@ -576,12 +598,12 @@ function styling( props ) {
 				] = {
 					'border-style': 'solid',
 					'border-width': generateCSSUnit(
-						paginationBorderSize,
+						paginationBorderSizeFallback,
 						'px'
 					),
 					'border-color': paginationBorderColor,
 					'border-radius': generateCSSUnit(
-						paginationBorderRadius,
+						paginationBorderRadiusFallback,
 						'px'
 					),
 					'color': paginationColor,
@@ -597,8 +619,8 @@ function styling( props ) {
 
 	selectors[ ' .slick-arrow svg' ] = {
 		'fill': arrowColor,
-		'height': generateCSSUnit( arrowSize, 'px' ),
-		'width': generateCSSUnit( arrowSize, 'px' ),
+		'height': generateCSSUnit( arrowSizeFallback, 'px' ),
+		'width': generateCSSUnit( arrowSizeFallback, 'px' ),
 	};
 
 
@@ -705,12 +727,12 @@ function styling( props ) {
 			),
 		},
 		'.uagb-post__items': {
-			'margin-right': generateCSSUnit( -rowGapMobile / 2, rowGapUnit ),
-			'margin-left': generateCSSUnit( -rowGapMobile / 2, rowGapUnit ),
+			'margin-right': generateCSSUnit( -rowGapMobileFallback / 2, rowGapUnit ),
+			'margin-left': generateCSSUnit( -rowGapMobileFallback / 2, rowGapUnit ),
 		},
 		'.uagb-post__items article': {
-			'padding-right': generateCSSUnit( rowGapMobile / 2, rowGapUnit ),
-			'padding-left': generateCSSUnit( rowGapMobile / 2, rowGapUnit ),
+			'padding-right': generateCSSUnit( rowGapMobileFallback / 2, rowGapUnit ),
+			'padding-left': generateCSSUnit( rowGapMobileFallback / 2, rowGapUnit ),
 			'margin-bottom': generateCSSUnit( columnGapMobile, columnGapUnit ),
 		},
 	};
@@ -818,12 +840,12 @@ function styling( props ) {
 			),
 		},
 		'.uagb-post__items': {
-			'margin-right': generateCSSUnit( -rowGapTablet / 2, rowGapUnit ),
-			'margin-left': generateCSSUnit( -rowGapTablet / 2, rowGapUnit ),
+			'margin-right': generateCSSUnit( -rowGapTabletFallback / 2, rowGapUnit ),
+			'margin-left': generateCSSUnit( -rowGapTabletFallback / 2, rowGapUnit ),
 		},
 		'.uagb-post__items article': {
-			'padding-right': generateCSSUnit( rowGapTablet / 2, rowGapUnit ),
-			'padding-left': generateCSSUnit( rowGapTablet / 2, rowGapUnit ),
+			'padding-right': generateCSSUnit( rowGapTabletFallback / 2, rowGapUnit ),
+			'padding-left': generateCSSUnit( rowGapTabletFallback / 2, rowGapUnit ),
 			'margin-bottom': generateCSSUnit( columnGapTablet, columnGapUnit ),
 		},
 	};
@@ -852,7 +874,7 @@ function styling( props ) {
 				),
 				'border-color': paginationMasonryBorderColor,
 				'font-size': generateCSSUnit(
-					paginationFontSize,
+					paginationFontSizeFallback,
 					'px'
 				),
 				'padding-top': generateCSSUnit(
@@ -922,8 +944,8 @@ function styling( props ) {
 		}
 		if ( 'scroll' === paginationEventType ) {
 			selectors[ '.uagb-post-grid .uagb-post-inf-loader div' ] = {
-				'width': generateCSSUnit( loaderSize, 'px' ),
-				'height': generateCSSUnit( loaderSize, 'px' ),
+				'width': generateCSSUnit( loaderSizeFallback, 'px' ),
+				'height': generateCSSUnit( loaderSizeFallback, 'px' ),
 				'background-color': loaderColor,
 			};
 		}

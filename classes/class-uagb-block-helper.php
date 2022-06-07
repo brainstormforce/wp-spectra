@@ -309,6 +309,15 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 		 */
 		public static function get_post_selectors( $attr ) {
 
+			$overlay_opacity_fallback      = UAGB_Block_Helper::get_fallback_number( $attr['overlayOpacity'], 'overlayOpacity', $attr['blockName'] );
+			$column_gap_fallback           = UAGB_Block_Helper::get_fallback_number( $attr['columnGap'], 'columnGap', $attr['blockName'] );
+			$row_gap_fallback              = UAGB_Block_Helper::get_fallback_number( $attr['rowGap'], 'rowGap', $attr['blockName'] );
+			$image_bottom_space_fallback   = UAGB_Block_Helper::get_fallback_number( $attr['imageBottomSpace'], 'imageBottomSpace', $attr['blockName'] );
+			$title_bottom_space_fallback   = UAGB_Block_Helper::get_fallback_number( $attr['titleBottomSpace'], 'titleBottomSpace', $attr['blockName'] );
+			$meta_bottom_space_fallback    = UAGB_Block_Helper::get_fallback_number( $attr['metaBottomSpace'], 'metaBottomSpace', $attr['blockName'] );
+			$excerpt_bottom_space_fallback = UAGB_Block_Helper::get_fallback_number( $attr['excerptBottomSpace'], 'excerptBottomSpace', $attr['blockName'] );
+			$cta_bottom_space_fallback     = UAGB_Block_Helper::get_fallback_number( $attr['ctaBottomSpace'], 'ctaBottomSpace', $attr['blockName'] );
+
 			$paddingTop    = isset( $attr['paddingTop'] ) ? $attr['paddingTop'] : $attr['contentPadding'];
 			$paddingBottom = isset( $attr['paddingBottom'] ) ? $attr['paddingBottom'] : $attr['contentPadding'];
 			$paddingLeft   = isset( $attr['paddingLeft'] ) ? $attr['paddingLeft'] : $attr['contentPadding'];
@@ -321,13 +330,13 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 
 			$selectors = array(
 				'.uagb-post__items'                        => array(
-					'margin-right' => UAGB_Helper::get_css_value( (int) ( -$attr['rowGap'] / 2 ), $attr['rowGapUnit'] ),
-					'margin-left'  => UAGB_Helper::get_css_value( (int) ( -$attr['rowGap'] / 2 ), $attr['rowGapUnit'] ),
+					'margin-right' => UAGB_Helper::get_css_value( (int) ( -$row_gap_fallback / 2 ), $attr['rowGapUnit'] ),
+					'margin-left'  => UAGB_Helper::get_css_value( (int) ( -$row_gap_fallback / 2 ), $attr['rowGapUnit'] ),
 				),
 				'.uagb-post__items article'                => array(
-					'padding-right' => UAGB_Helper::get_css_value( (int) ( $attr['rowGap'] / 2 ), $attr['rowGapUnit'] ),
-					'padding-left'  => UAGB_Helper::get_css_value( (int) ( $attr['rowGap'] / 2 ), $attr['rowGapUnit'] ),
-					'margin-bottom' => UAGB_Helper::get_css_value( ( $attr['columnGap'] ), $attr['columnGapUnit'] ),
+					'padding-right' => UAGB_Helper::get_css_value( (int) ( $row_gap_fallback / 2 ), $attr['rowGapUnit'] ),
+					'padding-left'  => UAGB_Helper::get_css_value( (int) ( $row_gap_fallback / 2 ), $attr['rowGapUnit'] ),
+					'margin-bottom' => UAGB_Helper::get_css_value( ( $column_gap_fallback ), $attr['columnGapUnit'] ),
 				),
 				' .uagb-post__inner-wrap'                  => array(
 					'background' => $attr['bgColor'],
@@ -345,26 +354,26 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					'margin-top' => UAGB_Helper::get_css_value( $paddingTop, $attr['contentPaddingUnit'] ),
 				),
 				' .uagb-post__inner-wrap .uagb-post__text.uagb-post__cta:last-child' => array(
-					'margin-bottom' => UAGB_Helper::get_css_value( $attr['ctaBottomSpace'], $attr['ctaBottomSpaceUnit'] ),
+					'margin-bottom' => UAGB_Helper::get_css_value( $cta_bottom_space_fallback, $attr['ctaBottomSpaceUnit'] ),
 				),
 				' .uagb-post__inner-wrap .uagb-post__text:last-child' => array(
 					'margin-bottom' => UAGB_Helper::get_css_value( $paddingBottom, $attr['contentPaddingUnit'] ),
 				),
 				' .uagb-post__image'                       => array(
-					'margin-bottom' => UAGB_Helper::get_css_value( $attr['imageBottomSpace'], $attr['imageBottomSpaceUnit'] ),
+					'margin-bottom' => UAGB_Helper::get_css_value( $image_bottom_space_fallback, $attr['imageBottomSpaceUnit'] ),
 				),
 				' .uagb-post__title'                       => array(
-					'margin-bottom' => UAGB_Helper::get_css_value( $attr['titleBottomSpace'], $attr['titleBottomSpaceUnit'] ),
+					'margin-bottom' => UAGB_Helper::get_css_value( $title_bottom_space_fallback, $attr['titleBottomSpaceUnit'] ),
 				),
 				' .uagb-post-grid-byline'                  => array(
-					'margin-bottom' => UAGB_Helper::get_css_value( $attr['metaBottomSpace'], $attr['metaBottomSpaceUnit'] ),
+					'margin-bottom' => UAGB_Helper::get_css_value( $meta_bottom_space_fallback, $attr['metaBottomSpaceUnit'] ),
 				),
 				' .uagb-post__excerpt'                     => array(
-					'margin-bottom' => UAGB_Helper::get_css_value( $attr['excerptBottomSpace'], $attr['excerptBottomSpaceUnit'] ),
+					'margin-bottom' => UAGB_Helper::get_css_value( $excerpt_bottom_space_fallback, $attr['excerptBottomSpaceUnit'] ),
 				),
 				' .uagb-post__image:before'                => array(
 					'background-color' => $attr['bgOverlayColor'],
-					'opacity'          => ( (int) $attr['overlayOpacity'] / 100 ),
+					'opacity'          => ( (int) $overlay_opacity_fallback / 100 ),
 				),
 			);
 
@@ -423,6 +432,9 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 		 * @since 1.6.1
 		 */
 		public static function get_post_mobile_selectors( $attr ) {
+			$column_gap_fallback = UAGB_Block_Helper::get_fallback_number( $attr['columnGap'], 'columnGap', $attr['blockName'] );
+			$row_gap_fallback    = UAGB_Block_Helper::get_fallback_number( $attr['rowGap'], 'rowGap', $attr['blockName'] );
+
 			$paddingTopMobile    = isset( $attr['paddingTopMobile'] ) ? $attr['paddingTopMobile'] : $attr['contentPaddingMobile'];
 			$paddingBottomMobile = isset( $attr['paddingBottomMobile'] ) ? $attr['paddingBottomMobile'] : $attr['contentPaddingMobile'];
 			$paddingLeftMobile   = isset( $attr['paddingLeftMobile'] ) ? $attr['paddingLeftMobile'] : $attr['contentPaddingMobile'];
@@ -433,8 +445,8 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 			$paddingBtnLeftMobile   = isset( $attr['paddingBtnLeftMobile'] ) ? $attr['paddingBtnLeftMobile'] : $attr['btnHPadding'];
 			$paddingBtnRightMobile  = isset( $attr['paddingBtnRightMobile'] ) ? $attr['paddingBtnRightMobile'] : $attr['btnHPadding'];
 
-			$rowGapMobile    = isset( $attr['rowGapMobile'] ) ? $attr['rowGapMobile'] : $attr['rowGap'];
-			$columnGapMobile = isset( $attr['columnGapMobile'] ) ? $attr['columnGapMobile'] : $attr['columnGap'];
+			$rowGapMobile    = isset( $attr['rowGapMobile'] ) ? $attr['rowGapMobile'] : $row_gap_fallback;
+			$columnGapMobile = isset( $attr['columnGapMobile'] ) ? $attr['columnGapMobile'] : $column_gap_fallback;
 
 			$ctaBottomSpaceMobile     = isset( $attr['ctaBottomSpaceMobile'] ) ? $attr['ctaBottomSpaceMobile'] : '';
 			$imageBottomSpaceMobile   = isset( $attr['imageBottomSpaceMobile'] ) ? $attr['imageBottomSpaceMobile'] : '';
@@ -491,14 +503,16 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 		 * @since 1.8.2
 		 */
 		public static function get_post_tablet_selectors( $attr ) {
+			$column_gap_fallback = UAGB_Block_Helper::get_fallback_number( $attr['columnGap'], 'columnGap', $attr['blockName'] );
+			$row_gap_fallback    = UAGB_Block_Helper::get_fallback_number( $attr['rowGap'], 'rowGap', $attr['blockName'] );
 
 			$paddingBtnTopTablet    = isset( $attr['paddingBtnTopTablet'] ) ? $attr['paddingBtnTopTablet'] : $attr['btnVPadding'];
 			$paddingBtnBottomTablet = isset( $attr['paddingBtnBottomTablet'] ) ? $attr['paddingBtnBottomTablet'] : $attr['btnVPadding'];
 			$paddingBtnLeftTablet   = isset( $attr['paddingBtnLeftTablet'] ) ? $attr['paddingBtnLeftTablet'] : $attr['btnHPadding'];
 			$paddingBtnRightTablet  = isset( $attr['paddingBtnRightTablet'] ) ? $attr['paddingBtnRightTablet'] : $attr['btnHPadding'];
 
-			$rowGapTablet    = isset( $attr['rowGapTablet'] ) ? $attr['rowGapTablet'] : $attr['rowGap'];
-			$columnGapTablet = isset( $attr['columnGapTablet'] ) ? $attr['columnGapTablet'] : $attr['columnGap'];
+			$rowGapTablet    = isset( $attr['rowGapTablet'] ) ? $attr['rowGapTablet'] : $row_gap_fallback;
+			$columnGapTablet = isset( $attr['columnGapTablet'] ) ? $attr['columnGapTablet'] : $column_gap_fallback;
 
 			$ctaBottomSpaceTablet     = isset( $attr['ctaBottomSpaceTablet'] ) ? $attr['ctaBottomSpaceTablet'] : '';
 			$imageBottomSpaceTablet   = isset( $attr['imageBottomSpaceTablet'] ) ? $attr['imageBottomSpaceTablet'] : '';

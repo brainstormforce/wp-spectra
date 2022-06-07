@@ -8,11 +8,12 @@
  */
 
 return array(
+	'blockName'                   => 'post-grid',
 	'post_type'                   => 'grid',
 	'align'                       => 'left',
 	'rowGap'                      => '20',
-	'rowGapTablet'                => '20',
-	'rowGapMobile'                => '20',
+	'rowGapTablet'                => '',
+	'rowGapMobile'                => '',
 	'columnGap'                   => '20',
 	'columnGapTablet'             => '',
 	'columnGapMobile'             => '',
@@ -103,7 +104,7 @@ return array(
 	'borderHColor'                => '',
 	'borderRadius'                => '',
 	'postPagination'              => '',
-	'pageLimit'                   => '',
+	'pageLimit'                   => 10,
 	'paginationBgActiveColor'     => '#e4e4e4',
 	'paginationActiveColor'       => '#333333',
 	'paginationBgColor'           => '#e4e4e4',

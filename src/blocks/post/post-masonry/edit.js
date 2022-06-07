@@ -21,6 +21,7 @@ import renderSVG from '@Controls/renderIcon';
 import MultiButtonsControl from '@Components/multi-buttons-control';
 import UAGAdvancedPanelBody from '@Components/advanced-panel-body';
 import addBlockEditorDynamicStyles from '@Controls/addBlockEditorDynamicStyles';
+import { getFallbackNumber } from '@Controls/getAttributeFallback';
 
 const Settings = lazy( () =>
 	import(
@@ -2399,6 +2400,7 @@ const UAGBPostMasonry = ( props ) => {
 export default compose(
 	withSelect( ( select, props ) => {
 		const {
+			blockName,
 			categories,
 			postsToShow,
 			postsOffset,
@@ -2437,8 +2439,8 @@ export default compose(
 		const latestPostsQuery = {
 			order,
 			orderby: orderBy,
-			per_page: postsToShow,
-			offset: postsOffset
+			per_page: getFallbackNumber( postsToShow, 'postsToShow', blockName ),
+			offset: getFallbackNumber( postsOffset, 'postsOffset', blockName ),
 		};
 
 		if ( excludeCurrentPost ) {
