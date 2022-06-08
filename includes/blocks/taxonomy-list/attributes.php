@@ -16,7 +16,6 @@ $border_defaults  = array(
 );
 $border_attribute = UAGB_Block_Helper::uag_generate_border_attribute( 'overall', $border_defaults );
 
-
 $sepearator_border_defaults  = array(
 	'borderStyle'           => 'none',
 	'borderWidth'           => 100,
@@ -26,7 +25,7 @@ $sepearator_border_defaults  = array(
 );
 $separator_border_attribute = UAGB_Block_Helper::uag_generate_border_attribute( 'seperator', $sepearator_border_defaults );
 
-return array(
+return array_merge( array(
 	'block_id'                 => '',
 	'postType'                 => 'post',
 	'taxonomyType'             => 'category',
@@ -118,6 +117,6 @@ return array(
 	'titleDecoration'          => '',
 	'countDecoration'          => '',
 	'listDecoration'           => '',
-	$separator_border_attribute,
+), $separator_border_attribute,
 	$border_attribute
 );

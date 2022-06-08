@@ -534,6 +534,7 @@ const Settings = ( props ) => {
 					attributes={ attributes }
 					deviceType={ deviceType }
 					disableBottomSeparator={ true }
+					disabledBorderTitle= { true }
 				/>
 			</UAGAdvancedPanelBody>
 		);

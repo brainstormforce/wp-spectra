@@ -56,8 +56,8 @@ function styling( props ) {
 	} = props.attributes;
 
 	const borderCSS = generateBorderCSS( props.attributes, 'column' );
-	const borderCSSTablet = generateBorderCSS( props.attributes,'column', 'tablet' );
-	const borderCSSMobile = generateBorderCSS( props.attributes,'column', 'mobile' );
+	const borderCSSTablet = generateBorderCSS( props.attributes, 'column', 'tablet' );
+	const borderCSSMobile = generateBorderCSS( props.attributes, 'column', 'mobile' );
 
 	const position = backgroundPosition.replace( '-', ' ' );
 	let tabletSelectors = {};

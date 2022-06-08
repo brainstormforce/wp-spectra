@@ -357,7 +357,7 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 		public function get_post_attributes() {
 			$btn_border_attribute = UAGB_Block_Helper::uag_generate_border_attribute( 'btn' );
 
-			return array(
+			return array_merge( array(
 				'inheritFromTheme'              => array(
 					'type'    => 'boolean',
 					'default' => true,
@@ -931,8 +931,9 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 					'type'    => 'string',
 					'default' => ', ',
 				),
-				$btn_border_attribute,
-			);
+			),
+			$btn_border_attribute
+		);
 		}
 
 		/**

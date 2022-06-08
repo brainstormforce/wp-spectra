@@ -538,8 +538,9 @@ const Settings = ( props ) => {
 						setAttributes={ setAttributes }
 						prefix={'overall'}
 						attributes={ attributes }
-						deviceType={deviceType}
+						deviceType={ deviceType}
 						disableBottomSeparator={ true }
+						disabledBorderTitle= { true }
 					/>
 				</UAGAdvancedPanelBody>
 				<UAGAdvancedPanelBody title="Box Shadow" initialOpen={ false }>

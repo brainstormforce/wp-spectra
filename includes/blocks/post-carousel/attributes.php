@@ -8,7 +8,7 @@
  */
 
 $btn_border_attribute = UAGB_Block_Helper::uag_generate_border_attribute( 'btn' );
-return array(
+return array_merge( array(
 	'post_type'                => 'carousel',
 	'align'                    => 'left',
 	'rowGap'                   => 20,
@@ -158,5 +158,5 @@ return array(
 		array( 'uagb/post-excerpt' ),
 		array( 'uagb/post-button' ),
 	),
-	$btn_border_attribute,
+), $btn_border_attribute,
 );

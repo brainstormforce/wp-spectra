@@ -11,7 +11,7 @@ import generateBorderCSS from '@Controls/generateBorderCSS';
 
 function styling( props ) {
 	const {
-		btnborderHColor,
+		btnBorderHColor,
 		align,
 
 		titleColor,
@@ -431,12 +431,12 @@ function styling( props ) {
 	selectors[ ' .uagb-post__text .uagb-post__cta:hover' ] = {
 		'color': ctaHColor,
 		'background': ctaBgHColor,
-		'border-color': btnborderHColor,
+		'border-color': btnBorderHColor,
 	};
 	selectors[ ' .uagb-post__text .uagb-post__cta:hover a' ] = {
 		'color': ctaHColor,
 		'background': ctaBgHColor,
-		'border-color': btnborderHColor,
+		'border-color': btnBorderHColor,
 	};
 
 	if ( true === postPagination ) {

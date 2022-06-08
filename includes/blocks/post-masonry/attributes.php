@@ -10,7 +10,7 @@
 $pagination_masonry_border_attribute = UAGB_Block_Helper::uag_generate_border_attribute( 'paginationMasonry' );
 $btn_border_attribute                = UAGB_Block_Helper::uag_generate_border_attribute( 'btn' );
 
-return array(
+return array_merge( array(
 	'post_type'                         => 'masonry',
 	'postType'                          => 'post',
 	'align'                             => 'left',
@@ -176,6 +176,5 @@ return array(
 		array( 'uagb/post-excerpt' ),
 		array( 'uagb/post-button' ),
 	),
-	$pagination_masonry_border_attribute,
-	$btn_border_attribute,
+), $pagination_masonry_border_attribute, $btn_border_attribute,
 );

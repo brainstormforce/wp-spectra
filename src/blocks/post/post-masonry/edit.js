@@ -2162,7 +2162,7 @@ const UAGBPostMasonry = ( props ) => {
 				/>
 				<ResponsiveBorder
 					setAttributes={ setAttributes }
-					prefix={ 'cta' }
+					prefix={ 'btn' }
 					attributes={ attributes }
 					deviceType={ deviceType }
 					disableBottomSeparator={ true }
