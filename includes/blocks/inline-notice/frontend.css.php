@@ -99,6 +99,7 @@ $selectors = array(
 		'padding-top'    => UAGB_Helper::get_css_value( $title_top_padding, $attr['titlePaddingUnit'] ),
 		'padding-bottom' => UAGB_Helper::get_css_value( $title_bottom_padding, $attr['titlePaddingUnit'] ),
 		'color'          => $attr['titleColor'],
+		'letter-spacing' => UAGB_Helper::get_css_value( $attr['titleLetterSpacing'], $attr['titleLetterSpacingType'] ),
 	),
 	' .uagb-notice-text'                    => array(
 		'color'          => $attr['textColor'],
@@ -106,6 +107,7 @@ $selectors = array(
 		'padding-right'  => UAGB_Helper::get_css_value( $content_right_padding, $attr['contentPaddingUnit'] ),
 		'padding-top'    => UAGB_Helper::get_css_value( $content_top_padding, $attr['contentPaddingUnit'] ),
 		'padding-bottom' => UAGB_Helper::get_css_value( $content_bottom_padding, $attr['contentPaddingUnit'] ),
+		'letter-spacing' => UAGB_Helper::get_css_value( $attr['descLetterSpacing'], $attr['descLetterSpacingType'] ),
 	),
 	' span.uagb-notice-dismiss svg'         => array( // For Backward.
 		'fill'  => $attr['noticeDismissColor'],
@@ -135,12 +137,14 @@ $m_selectors = array(
 		'padding-right'  => UAGB_Helper::get_css_value( $content_right_padding_mobile, $attr['mobileContentPaddingUnit'] ),
 		'padding-top'    => UAGB_Helper::get_css_value( $content_top_padding_mobile, $attr['mobileContentPaddingUnit'] ),
 		'padding-bottom' => UAGB_Helper::get_css_value( $content_bottom_padding_mobile, $attr['mobileContentPaddingUnit'] ),
+		'letter-spacing' => UAGB_Helper::get_css_value( $attr['descLetterSpacingMobile'], $attr['descLetterSpacingType'] ),
 	),
 	' .uagb-notice-title'                   => array(
 		'padding-left'   => UAGB_Helper::get_css_value( $left_padding_mobile, $attr['mobileTitlePaddingUnit'] ),
 		'padding-right'  => UAGB_Helper::get_css_value( $right_padding_mobile, $attr['mobileTitlePaddingUnit'] ),
 		'padding-top'    => UAGB_Helper::get_css_value( $title_top_padding_mobile, $attr['mobileTitlePaddingUnit'] ),
 		'padding-bottom' => UAGB_Helper::get_css_value( $title_bottom_padding_mobile, $attr['mobileTitlePaddingUnit'] ),
+		'letter-spacing' => UAGB_Helper::get_css_value( $attr['titleLetterSpacingMobile'], $attr['titleLetterSpacingType'] ),
 	),
 	'.uagb-dismissable > svg'               => array(
 		'width'  => UAGB_Helper::get_css_value( $attr['iconSizeMob'], $attr['iconSizeUnit'] ),
@@ -161,12 +165,14 @@ $t_selectors = array(
 		'padding-right'  => UAGB_Helper::get_css_value( $content_right_padding_tablet, $attr['tabletContentPaddingUnit'] ),
 		'padding-top'    => UAGB_Helper::get_css_value( $content_top_padding_tablet, $attr['tabletContentPaddingUnit'] ),
 		'padding-bottom' => UAGB_Helper::get_css_value( $content_bottom_padding_tablet, $attr['tabletContentPaddingUnit'] ),
+		'letter-spacing' => UAGB_Helper::get_css_value( $attr['descLetterSpacingTablet'], $attr['descLetterSpacingType'] ),
 	),
 	' .uagb-notice-title'                   => array(
 		'padding-left'   => UAGB_Helper::get_css_value( $left_padding_tablet, $attr['tabletTitlePaddingUnit'] ),
 		'padding-right'  => UAGB_Helper::get_css_value( $right_padding_tablet, $attr['tabletTitlePaddingUnit'] ),
 		'padding-top'    => UAGB_Helper::get_css_value( $title_top_padding_tablet, $attr['tabletTitlePaddingUnit'] ),
 		'padding-bottom' => UAGB_Helper::get_css_value( $title_bottom_padding_tablet, $attr['tabletTitlePaddingUnit'] ),
+		'letter-spacing' => UAGB_Helper::get_css_value( $attr['titleLetterSpacingTablet'], $attr['titleLetterSpacingType'] ),
 	),
 	'.uagb-dismissable > svg'               => array(
 		'width'  => UAGB_Helper::get_css_value( $attr['iconSizeTab'], $attr['iconSizeUnit'] ),
