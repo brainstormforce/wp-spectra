@@ -7,6 +7,8 @@
 
 /* ------------------------------------------------------------------------------------------------*/
 
+@import 'styles/variables'; 
+
 /* Gutenberg Reset CSS */
 .block-editor-block-inspector {
 
@@ -58,7 +60,7 @@
 
 	.block-editor-block-list__block:hover::after,
 	.block-editor-block-list__block:not([contenteditable]):focus::after {
-		box-shadow: 0 0 0 1.5px #007cba;
+		box-shadow: 0 0 0 1.5px $spectra-color-primary;
 		border-radius: 2px;
 		z-index: 3;
 	}
@@ -79,7 +81,7 @@
 }
 
 .block-editor-block-list__layout .block-editor-block-list__block.is-selected { // Added CSS for better clarity to the users to indicates which block is selected & being edited.
-	box-shadow: 0 0 0 1.5px #007cba;
+	box-shadow: 0 0 0 1.5px $spectra-color-primary;
 	border-radius: 2px;
 }
 
@@ -160,7 +162,7 @@
 
 	button.active-tab svg,
 	button.active-tab svg:focus {
-		color: #007cba;
+		color: $spectra-color-primary;
 	}
 }
 
@@ -188,7 +190,7 @@
 .uagb-size-type-field-tabs .components-tab-panel__tabs button.active-tab,
 .uagb-size-type-field-tabs .components-tab-panel__tabs button.active-tab:focus {
 	box-shadow: none;
-	color: #007cba;
+	color: $spectra-color-primary;
 	border-radius: 100%;
 	padding: 0;
 	margin: 0;
@@ -620,7 +622,7 @@ button.components-button.uagb-review-select-btn.is-secondary {
 
 .uag-responsive-common-button {
 	box-shadow: none;
-	color: #007cba;
+	color: $spectra-color-primary;
 	border-radius: 100%;
 	border: 0;
 	border-bottom: 0;
@@ -637,7 +639,7 @@ button.components-button.uagb-review-select-btn.is-secondary {
 	margin-left: 5px;
 
 	svg {
-		color: #007cba;
+		color: $spectra-color-primary;
 	}
 }
 
@@ -650,7 +652,7 @@ button.components-button.uagb-review-select-btn.is-secondary {
 .components-button.uag-responsive-common-button:active {
 	box-shadow: none;
 	outline: none;
-	color: #007cba;
+	color: $spectra-color-primary;
 }
 
 .uag-responsive-label-wrap {
