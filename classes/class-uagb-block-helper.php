@@ -371,6 +371,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 			$selectors[' .uagb-post__text.uagb-post__title']['color']                            = $attr['titleColor'];
 			$selectors[' .uagb-post__text.uagb-post__title a']                                   = array(
 				'color' => $attr['titleColor'],
+				'letter-spacing' => UAGB_Helper::get_css_value( $attr['titleLetterSpacing'], $attr['titleLetterSpacingType'] ),
 			);
 			$selectors[' .uagb-post__text.uagb-post-grid-byline']['color']                       = $attr['metaColor'];
 			$selectors[' .uagb-post__text.uagb-post-grid-byline .uagb-post__author']             = array(

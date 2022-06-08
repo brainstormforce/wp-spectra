@@ -889,7 +889,57 @@ const attributes = {
 	isPreview: {
 		type: 'boolean',
 		default: false,
-	}
+	},
+	headingLetterSpacing: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'heading-letter-spacing'
+		}
+	},
+	headingLetterSpacingTablet: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'heading-letter-spacing-tablet'
+		}
+	},
+	headingLetterSpacingMobile: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'heading-letter-spacing-mobile'
+		}
+	},
+	headingLetterSpacingType: {
+		type: 'string',
+		default: 'px',
+		UAGCopyPaste: {
+			styleType: 'heading-letter-spacing-type'
+		}
+	},
+	listLetterSpacing: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'list-letter-spacing'
+		}
+	},
+	listLetterSpacingTablet: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'list-letter-spacing-tablet'
+		}
+	},
+	listLetterSpacingMobile: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'list-letter-spacing-mobile'
+		}
+	},
+	listLetterSpacingType: {
+		type: 'string',
+		default: 'px',
+		UAGCopyPaste: {
+			styleType: 'list-letter-spacing-type'
+		}
+	},
 };
 
 export default attributes;
