@@ -92,6 +92,13 @@ const attributes = {
 		},
 		default: ''
 	},
+	boxBgHoverColor: {
+		type: 'string',
+		UAGCopyPaste: {
+			styleType: 'faq-bg-hover-color'
+		},
+		default: ''
+	},
 	boxPaddingTypeMobile: {
 		type: 'string',
 		UAGCopyPaste: {

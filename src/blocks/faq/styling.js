@@ -21,6 +21,7 @@ function styling( props ) {
 		align,
 		enableSeparator,
 		boxBgColor,
+		boxBgHoverColor,
 		borderStyle,
 		borderWidth,
 		borderRadius,
@@ -144,6 +145,7 @@ function styling( props ) {
 		},
 		' .uagb-faq-item:hover': {
 			'border-color': borderHoverColor,
+			'background-color': boxBgHoverColor,
 		},
 		' .uagb-faq-item .uagb-question': {
 			'color': questionTextColor,

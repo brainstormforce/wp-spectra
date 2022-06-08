@@ -20,6 +20,7 @@ return array(
 	'rowsGapMobile'                => 10,
 	'rowsGapUnit'                  => 'px',
 	'boxBgColor'                   => '',
+	'boxBgHoverColor'              => '',
 	'boxPaddingTypeMobile'         => 'px',
 	'boxPaddingTypeTablet'         => 'px',
 	'boxPaddingTypeDesktop'        => 'px',

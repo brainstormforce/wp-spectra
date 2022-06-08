@@ -51,6 +51,7 @@ const Settings = ( props ) => {
 		align,
 		enableSeparator,
 		boxBgColor,
+		boxBgHoverColor,
 		borderStyle,
 		borderWidth,
 		borderRadius,
@@ -917,6 +918,16 @@ const Settings = ( props ) => {
 					colorValue={ boxBgColor }
 					onColorChange={ ( value ) =>
 						setAttributes( { boxBgColor: value } )
+					}
+				/>
+				<AdvancedPopColorControl
+					label={ __(
+						'Background Hover Color',
+						'ultimate-addons-for-gutenberg'
+					) }
+					colorValue={ boxBgHoverColor }
+					onColorChange={ ( value ) =>
+						setAttributes( { boxBgHoverColor: value } )
 					}
 				/>
 				<ResponsiveSlider
