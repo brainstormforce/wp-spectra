@@ -725,6 +725,7 @@ const Settings = ( props ) => {
 					] }
 					showIcons={ false }
 				/>
+				{ stack !== 'desktop' &&  (
 				<MultiButtonsControl
 					setAttributes={ setAttributes }
 					label={ __(
@@ -754,6 +755,7 @@ const Settings = ( props ) => {
 					] }
 					showIcons={ false }
 				/>
+				) }
 				{ ( ctaType === 'text' || ctaType === 'button' ) && (
 					<>
 						<TextControl
@@ -1781,35 +1783,6 @@ const Settings = ( props ) => {
 									/>
 							</>
 						) }
-						<MultiButtonsControl
-							setAttributes={ setAttributes }
-							label={ __(
-								'Vertical Alignment',
-								'ultimate-addons-for-gutenberg'
-							) }
-							data={ {
-								value: buttonAlign,
-								label: 'buttonAlign',
-							} }
-							className="uagb-multi-button-alignment-control"
-							options={ [
-								{
-									value: 'top',
-									label: __(
-										'Top',
-										'ultimate-addons-for-gutenberg'
-									),
-								},
-								{
-									value: 'middle',
-									label: __(
-										'Middle',
-										'ultimate-addons-for-gutenberg'
-									),
-								},
-							] }
-							showIcons={ false }
-						/>
 					</>
 				) }
 			</UAGAdvancedPanelBody>

@@ -712,12 +712,15 @@ function CtaStyle( props ) {
 			'align-items':  'top' === buttonAlign ? 'flex-start' : 'center'
 		};
 		selectors[ ' .uagb-cta__buttons' ] = {
+			'column-gap': generateCSSUnit( gapBtn , 'px' ),
 			'margin-left': generateCSSUnit( buttonRightSpace, buttonRightSpaceType )
 		};
 		tabletSelectors[ ' .uagb-cta__buttons' ] = {
+			'column-gap': generateCSSUnit( gapBtnTablet , 'px' ),
 			'margin-left': generateCSSUnit( buttonRightSpaceTablet, buttonRightSpaceType )
 		};
 		mobileSelectors[ ' .uagb-cta__buttons' ] = {
+			'column-gap': generateCSSUnit( gapBtnMobile, 'px' ),
 			'margin-left': generateCSSUnit( buttonRightSpaceMobile, buttonRightSpaceType )
 		};
 	}
