@@ -6,6 +6,7 @@
  *
  * @package uagb
  */
+
 $block_name = 'container';
 
 $inner_content_custom_width_desktop_fallback = UAGB_Block_Helper::get_fallback_number( $attr['innerContentCustomWidthDesktop'], 'innerContentCustomWidthDesktop', $block_name );
