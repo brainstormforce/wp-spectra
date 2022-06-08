@@ -44,6 +44,13 @@
 		fill: currentColor;
 	}
 
+	// Focus effects for better editing experience.
+	.uagb-cta__title[contenteditable="true"]:focus,
+	.uagb-cta__desc[contenteditable="true"]:focus {
+		border: 2px solid var(--wp-admin-theme-color);
+		border-radius: 8px;
+	}
+
 	.uagb-editor-preview-mode-tablet {
 
 		.uagb-cta__content-stacked-tablet .uagb-cta__left-right-wrap {
