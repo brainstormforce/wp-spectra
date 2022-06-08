@@ -21,6 +21,10 @@ function styling( props ) {
 		prefixLineHeight,
 		prefixLineHeightTablet,
 		prefixLineHeightMobile,
+		prefixLetterSpacing,
+		prefixLetterSpacingTablet,
+		prefixLetterSpacingMobile,
+		prefixLetterSpacingType,
 		headFontSize,
 		headFontSizeType,
 		headFontSizeTablet,
@@ -31,6 +35,10 @@ function styling( props ) {
 		headLineHeight,
 		headLineHeightTablet,
 		headLineHeightMobile,
+		headLetterSpacing,
+		headLetterSpacingTablet,
+		headLetterSpacingMobile,
+		headLetterSpacingType,
 		subHeadFontSize,
 		subHeadFontSizeType,
 		subHeadFontSizeTablet,
@@ -190,7 +198,11 @@ function styling( props ) {
 		subHeadMarginLeftMobile,
 		subHeadSpaceUnit,
 		subHeadMobileMarginUnit,
-		subHeadTabletMarginUnit
+		subHeadTabletMarginUnit,
+		subHeadLetterSpacing,
+		subHeadLetterSpacingTablet,
+		subHeadLetterSpacingMobile,
+		subHeadLetterSpacingType,
 	} = props.attributes;
 
 	const selectors = {
@@ -377,6 +389,7 @@ function styling( props ) {
 			'text-decoration': prefixDecoration,
 			'text-transform': prefixTransform,
 			'color': prefixColor,
+			'letter-spacing': generateCSSUnit( prefixLetterSpacing, prefixLetterSpacingType ),
 			'margin-bottom': generateCSSUnit( prefixSpace, prefixSpaceUnit ),
 			'margin-top': generateCSSUnit( prefixTopMargin, prefixSpaceUnit ),
 			'margin-left': generateCSSUnit( prefixLeftMargin, prefixSpaceUnit ),
@@ -398,6 +411,7 @@ function styling( props ) {
 			'font-style' : headFontStyle,
 			'text-decoration': headDecoration,
 			'text-transform': headTransform,
+			'letter-spacing': generateCSSUnit( headLetterSpacing, headLetterSpacingType ),
 			'color': headingColor,
 			'margin-top': generateCSSUnit( headTopMargin, headSpaceUnit ),
 			'margin-bottom': generateCSSUnit( headSpace, headSpaceUnit ),
@@ -419,6 +433,7 @@ function styling( props ) {
 			'font-style' : subHeadFontStyle,
 			'text-decoration': subHeadDecoration,
 			'text-transform': subHeadTransform,
+			'letter-spacing': generateCSSUnit( subHeadLetterSpacing, subHeadLetterSpacingType ),
 			'color': subHeadingColor,
 			'margin-bottom': generateCSSUnit( subHeadSpace, subHeadSpaceUnit ),
 			'margin-top': generateCSSUnit( subHeadTopMargin, subHeadSpaceUnit ),
@@ -473,6 +488,7 @@ function styling( props ) {
 				subHeadLineHeightTablet,
 				subHeadLineHeightType
 			),
+			'letter-spacing': generateCSSUnit( subHeadLetterSpacingTablet, subHeadLetterSpacingType ),
 		},
 		' .block-editor-rich-text__editable.uagb-ifb-title': {
 			'margin-top': generateCSSUnit( headMarginTopTablet, headMobileMarginUnit ),
@@ -487,6 +503,7 @@ function styling( props ) {
 				headLineHeightTablet,
 				headLineHeightType
 			),
+			'letter-spacing': generateCSSUnit( headLetterSpacingTablet, headLetterSpacingType ),
 		},
 		' .block-editor-rich-text__editable.uagb-ifb-title-prefix': {
 			'margin-bottom': generateCSSUnit( prefixTabletSpace, prefixTabletMarginUnit ),
@@ -501,6 +518,7 @@ function styling( props ) {
 				prefixLineHeightTablet,
 				prefixLineHeightType
 			),
+			'letter-spacing': generateCSSUnit( prefixLetterSpacingTablet, prefixLetterSpacingType ),
 		},
 		' .uagb-ifb-icon-wrap > svg': {
 			'padding-top': generateCSSUnit(
@@ -752,6 +770,7 @@ function styling( props ) {
 				subHeadLineHeightMobile,
 				subHeadLineHeightType
 			),
+			'letter-spacing': generateCSSUnit( subHeadLetterSpacingMobile, subHeadLetterSpacingType ),
 			'margin-bottom': generateCSSUnit( subHeadMobileSpace, subHeadMobileMarginUnit ),
 			'margin-top': generateCSSUnit( subHeadMarginTopMobile, subHeadMobileMarginUnit ),
 			'margin-left': generateCSSUnit( subHeadMarginLeftMobile, subHeadMobileMarginUnit ),
@@ -766,6 +785,7 @@ function styling( props ) {
 				headLineHeightMobile,
 				headLineHeightType
 			),
+			'letter-spacing': generateCSSUnit( headLetterSpacingMobile, headLetterSpacingType ),
 			'margin-top': generateCSSUnit( headMarginTopMobile, headTabletMarginUnit ),
 			'margin-bottom': generateCSSUnit( headMobileSpace, headTabletMarginUnit ),
 			'margin-left': generateCSSUnit( headMarginLeftMobile, headTabletMarginUnit ),
@@ -780,6 +800,7 @@ function styling( props ) {
 				prefixLineHeightMobile,
 				prefixLineHeightType
 			),
+			'letter-spacing': generateCSSUnit( prefixLetterSpacingMobile, prefixLetterSpacingType ),
 			'margin-bottom': generateCSSUnit( prefixMobileSpace, prefixMobileMarginUnit ),
 			'margin-top': generateCSSUnit( prefixMarginTopMobile, prefixMobileMarginUnit ),
 			'margin-left': generateCSSUnit( prefixMarginLeftMobile, prefixMobileMarginUnit ),
