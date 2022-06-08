@@ -7,6 +7,8 @@ import lazyLoader from '@Controls/lazy-loader';
 import { useDeviceType } from '@Controls/getPreviewType';
 import addBlockEditorDynamicStyles from '@Controls/addBlockEditorDynamicStyles';
 
+import { migrateBorderAttributes } from '@Controls/generateAttributes';
+
 const Render = lazy( () =>
 	import( /* webpackChunkName: "chunks/tabs/render" */ './render' )
 );
@@ -100,6 +102,28 @@ const UAGBTabsEdit = ( props ) => {
 
 		updateTabTitle();
 		props.resetTabOrder();
+
+		const { borderStyle,borderWidth,borderRadius,borderColor,borderHoverColor } = props.attributes;
+		// Backward Border Migration
+		if( borderWidth || borderRadius || borderColor || borderHoverColor || borderStyle ){
+			const migrationAttributes = migrateBorderAttributes( 'tab', {
+				label: 'borderWidth',
+				value: borderWidth,
+			}, {
+				label: 'borderRadius',
+				value: borderRadius
+			}, {
+				label: 'borderColor',
+				value: borderColor
+			}, {
+				label: 'borderHoverColor',
+				value: borderHoverColor
+			},{
+				label: 'borderStyle',
+				value: borderStyle
+			});
+			props.setAttributes( migrationAttributes )
+		}
 	}, [ props ] );
 
 	useEffect( () => {

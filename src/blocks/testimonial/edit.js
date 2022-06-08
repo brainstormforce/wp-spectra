@@ -5,7 +5,7 @@ import TestimonialStyle from './inline-styles';
 import React, { lazy, Suspense, useEffect } from 'react';
 import lazyLoader from '@Controls/lazy-loader';
 
-import {migrateBorderAttributes} from '@Controls/generateAttributes';
+import { migrateBorderAttributes } from '@Controls/generateAttributes';
 
 const Settings = lazy( () =>
 	import( /* webpackChunkName: "chunks/testimonial/settings" */ './settings' )
@@ -92,7 +92,7 @@ const UAGBtestimonial = ( props ) => {
 		} else {
 			uagb_carousel_unset_height( props.clientId.substr( 0, 8 ) ); // eslint-disable-line no-undef
 		}
-		const {borderStyle,borderWidth,borderRadius,borderColor,borderHoverColor} = props.attributes;
+		const { borderStyle,borderWidth,borderRadius,borderColor,borderHoverColor } = props.attributes;
 		// Backward Border Migration
 		if( borderWidth || borderRadius || borderColor || borderHoverColor || borderStyle ){
 			const migrationAttributes = migrateBorderAttributes( 'overall', {
