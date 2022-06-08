@@ -115,6 +115,12 @@ function styling( props ) {
 	let mobile_selectors = {};
 
 	selectors = {
+		' .uagb-toc__list-wrap ul li': {
+			'font-size': generateCSSUnit( fontSize, fontSizeType ),
+		},
+		' .uagb-toc__list-wrap ol li': {
+			'font-size': generateCSSUnit( fontSize, fontSizeType ),
+		},
 		' .uagb-toc__list-wrap ol li a': {
 			'font-size': generateCSSUnit( fontSize, fontSizeType ),
 			'line-height': generateCSSUnit( lineHeight, lineHeightType ),
@@ -257,6 +263,12 @@ function styling( props ) {
 	}
 
 	tablet_selectors = {
+		' .uagb-toc__list-wrap ul li': {
+			'font-size': generateCSSUnit( fontSizeTablet, fontSizeType ),
+		},
+		' .uagb-toc__list-wrap ol li': {
+			'font-size': generateCSSUnit( fontSizeTablet, fontSizeType ),
+		},
 		' .uagb-toc__list-wrap ol li a': {
 			'font-size': generateCSSUnit( fontSizeTablet, fontSizeType ),
 			'line-height': generateCSSUnit( lineHeightTablet, lineHeightType ),
@@ -358,6 +370,12 @@ function styling( props ) {
 	};
 
 	mobile_selectors = {
+		' .uagb-toc__list-wrap ul li': {
+			'font-size': generateCSSUnit( fontSizeMobile, fontSizeType ),
+		},
+		' .uagb-toc__list-wrap ol li': {
+			'font-size': generateCSSUnit( fontSizeMobile, fontSizeType ),
+		},
 		' .uagb-toc__list-wrap ol li a': {
 			'font-size': generateCSSUnit( fontSizeMobile, fontSizeType ),
 			'line-height': generateCSSUnit( lineHeightMobile, lineHeightType ),
