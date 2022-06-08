@@ -49,6 +49,10 @@ function styling( props ) {
 		fontDecoration,
 		iconPosition,
 		hideLabel,
+		labelLetterSpacing,
+		labelLetterSpacingTablet,
+		labelLetterSpacingMobile,
+		labelLetterSpacingType,
 	} = props.attributes;
 
 	let selectors = {};
@@ -246,16 +250,19 @@ function styling( props ) {
 		'text-transform': fontTransform,
 		'font-weight': fontWeight,
 		'line-height': generateCSSUnit( lineHeight, lineHeightType ),
+		'letter-spacing': generateCSSUnit( labelLetterSpacing, labelLetterSpacingType ),
 	};
 
 	mobileSelectors[ ' .wp-block-uagb-icon-list-child .uagb-icon-list__label' ] = {
 		'font-size': generateCSSUnit( fontSizeMobile, fontSizeType ),
 		'line-height': generateCSSUnit( lineHeightMobile, lineHeightType ),
+		'letter-spacing': generateCSSUnit( labelLetterSpacingMobile, labelLetterSpacingType ),
 	};
 
 	tabletSelectors[ ' .wp-block-uagb-icon-list-child .uagb-icon-list__label' ] = {
 		'font-size': generateCSSUnit( fontSizeTablet, fontSizeType ),
 		'line-height': generateCSSUnit( lineHeightTablet, lineHeightType ),
+		'letter-spacing': generateCSSUnit( labelLetterSpacingTablet, labelLetterSpacingType ),
 	};
 
 	mobileSelectors[ ' .wp-block-uagb-icon-list-child .uagb-icon-list__source-wrap' ] = {

@@ -327,7 +327,32 @@ const attributes = {
 	isPreview: {
 		type: 'boolean',
 		default: false,
-	}
+	},
+	labelLetterSpacing: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'label-letter-spacing'
+		}
+	},
+	labelLetterSpacingTablet: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'label-letter-spacing-tablet'
+		}
+	},
+	labelLetterSpacingMobile: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'label-letter-spacing-mobile'
+		}
+	},
+	labelLetterSpacingType: {
+		type: 'string',
+		default: 'px',
+		UAGCopyPaste: {
+			styleType: 'label-letter-spacing-type'
+		}
+	},
 };
 
 export default attributes;

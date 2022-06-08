@@ -21,7 +21,7 @@ $tab_body_left_padding   = isset( $attr['tabBodyLeftPadding'] ) ? $attr['tabBody
 $tab_body_right_padding  = isset( $attr['tabBodyRightPadding'] ) ? $attr['tabBodyRightPadding'] : $attr['tabBodyHrPadding'];
 
 $selectors = array(
-	' .uagb-tabs__panel .uagb-tab a'=> array(
+	' .uagb-tabs__panel .uagb-tab a'                       => array(
 		'letter-spacing' => UAGB_Helper::get_css_value( $attr['titleLetterSpacing'], $attr['titleLetterSpacingType'] ),
 	),
 	' .uagb-tabs__panel .uagb-tab '                        => array(
@@ -113,7 +113,7 @@ if ( 'left' === $attr['tabAlign'] ) {
 	);
 }
 $m_selectors = array(
-	' .uagb-tabs__panel .uagb-tab a'=> array(
+	' .uagb-tabs__panel .uagb-tab a'                       => array(
 		'letter-spacing' => UAGB_Helper::get_css_value( $attr['titleLetterSpacingMobile'], $attr['titleLetterSpacingType'] ),
 	),
 	' .uagb-tabs__icon svg'                                => array(
@@ -156,7 +156,7 @@ $m_selectors = array(
 	),
 );
 $t_selectors = array(
-	' .uagb-tabs__panel .uagb-tab a'=> array(
+	' .uagb-tabs__panel .uagb-tab a'                       => array(
 		'letter-spacing' => UAGB_Helper::get_css_value( $attr['titleLetterSpacingTablet'], $attr['titleLetterSpacingType'] ),
 	),
 	' .uagb-tabs__icon svg'                                => array(

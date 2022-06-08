@@ -69,6 +69,10 @@ const Settings = ( props ) => {
 		fontStyle,
 		fontTransform,
 		fontDecoration,
+		labelLetterSpacing,
+		labelLetterSpacingTablet,
+		labelLetterSpacingMobile,
+		labelLetterSpacingType,
 	} = attributes;
 
 	let googleFonts;
@@ -428,6 +432,22 @@ const Settings = ( props ) => {
 					lineHeightTablet={ {
 						value: lineHeightTablet,
 						label: 'lineHeightTablet',
+					} }
+					letterSpacing={ {
+						value: labelLetterSpacing,
+						label: 'labelLetterSpacing',
+					} }
+					letterSpacingTablet={ {
+						value: labelLetterSpacingTablet,
+						label: 'labelLetterSpacingTablet',
+					} }
+					letterSpacingMobile={ {
+						value: labelLetterSpacingMobile,
+						label: 'labelLetterSpacingMobile',
+					} }
+					letterSpacingType={ {
+						value: labelLetterSpacingType,
+						label: 'labelLetterSpacingType',
 					} }
 				/>
 			</UAGAdvancedPanelBody>

@@ -48,14 +48,14 @@ if ( 'left' === $attr['textAlignMobile'] ) {
 }
 $selectors = array(
 	' .uagb-cta__title'                                    => array(
-		'line-height'   => UAGB_Helper::get_css_value( $attr['titleLineHeight'], $attr['titleLineHeightType'] ),
-		'color'         => $attr['titleColor'],
-		'margin-bottom' => UAGB_Helper::get_css_value( $attr['titleSpace'], $attr['titleSpaceType'] ),
+		'line-height'    => UAGB_Helper::get_css_value( $attr['titleLineHeight'], $attr['titleLineHeightType'] ),
+		'color'          => $attr['titleColor'],
+		'margin-bottom'  => UAGB_Helper::get_css_value( $attr['titleSpace'], $attr['titleSpaceType'] ),
 		'letter-spacing' => UAGB_Helper::get_css_value( $attr['titleLetterSpacing'], $attr['titleLetterSpacingType'] ),
 	),
 	' .uagb-cta__desc'                                     => array(
-		'color'         => $attr['descColor'],
-		'margin-bottom' => UAGB_Helper::get_css_value( $attr['descSpace'], $attr['descSpaceType'] ),
+		'color'          => $attr['descColor'],
+		'margin-bottom'  => UAGB_Helper::get_css_value( $attr['descSpace'], $attr['descSpaceType'] ),
 		'letter-spacing' => UAGB_Helper::get_css_value( $attr['descLetterSpacing'], $attr['descLetterSpacingType'] ),
 	),
 	' .uagb-cta__align-button-after'                       => array(
@@ -263,11 +263,11 @@ if ( 'right' === $attr['textAlign'] && 'right' === $attr['ctaPosition'] ) {
 
 $t_selectors = array(
 	' .uagb-cta__title'                                   => array(
-		'margin-bottom' => UAGB_Helper::get_css_value( $attr['titleSpaceTablet'], $attr['titleSpaceType'] ),
+		'margin-bottom'  => UAGB_Helper::get_css_value( $attr['titleSpaceTablet'], $attr['titleSpaceType'] ),
 		'letter-spacing' => UAGB_Helper::get_css_value( $attr['titleLetterSpacingTablet'], $attr['titleLetterSpacingType'] ),
 	),
 	' .uagb-cta__desc'                                    => array(
-		'margin-bottom' => UAGB_Helper::get_css_value( $attr['descSpaceTablet'], $attr['descSpaceType'] ),
+		'margin-bottom'  => UAGB_Helper::get_css_value( $attr['descSpaceTablet'], $attr['descSpaceType'] ),
 		'letter-spacing' => UAGB_Helper::get_css_value( $attr['descLetterSpacingTablet'], $attr['descLetterSpacingType'] ),
 	),
 	' .uagb-cta__button-wrapper .uagb-cta-with-svg'       => array(
@@ -317,11 +317,11 @@ $t_selectors['.uagb-cta__content-stacked-tablet .uagb-cta__wrap']               
 
 $m_selectors = array(
 	' .uagb-cta__title'                                   => array(
-		'margin-bottom' => UAGB_Helper::get_css_value( $attr['titleSpaceMobile'], $attr['titleSpaceType'] ),
+		'margin-bottom'  => UAGB_Helper::get_css_value( $attr['titleSpaceMobile'], $attr['titleSpaceType'] ),
 		'letter-spacing' => UAGB_Helper::get_css_value( $attr['titleLetterSpacingMobile'], $attr['titleLetterSpacingType'] ),
 	),
 	' .uagb-cta__desc'                                    => array(
-		'margin-bottom' => UAGB_Helper::get_css_value( $attr['descSpaceMobile'], $attr['descSpaceType'] ),
+		'margin-bottom'  => UAGB_Helper::get_css_value( $attr['descSpaceMobile'], $attr['descSpaceType'] ),
 		'letter-spacing' => UAGB_Helper::get_css_value( $attr['descLetterSpacingMobile'], $attr['descLetterSpacingType'] ),
 	),
 	' .uagb-cta__button-wrapper .uagb-cta-with-svg'       => array(
