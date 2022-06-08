@@ -38,10 +38,12 @@ $selectors = array(
 		'color'         => $attr['descColor'],
 		'margin-bottom' => UAGB_Helper::get_css_value( $attr['descSpace'], $attr['descSpaceUnit'] ),
 		'text-align'    => $text_align,
+		'letter-spacing' => UAGB_Helper::get_css_value( $attr['quoteLetterSpacing'], $attr['quoteLetterSpacingType'] ),
 	),
 	' cite.uagb-blockquote__author'                    => array(
 		'color'      => $attr['authorColor'],
 		'text-align' => $text_align,
+		'letter-spacing' => UAGB_Helper::get_css_value( $attr['authorLetterSpacing'], $attr['authorLetterSpacingType'] ),
 	),
 	' .uagb-blockquote__skin-border blockquote.uagb-blockquote' => array( // for backward compatibility.
 		'border-color'      => $attr['borderColor'],
@@ -326,6 +328,7 @@ $t_selectors = array(
 	),
 	' .uagb-blockquote__content'           => array(
 		'margin-bottom' => UAGB_Helper::get_css_value( $attr['descSpaceTablet'], $attr['descSpaceUnit'] ),
+		'letter-spacing' => UAGB_Helper::get_css_value( $attr['quoteLetterSpacingTablet'], $attr['quoteLetterSpacingType'] ),
 	),
 	' .uagb-blockquote__author-wrap.uagb-blockquote__author-at-right img' => array(
 		'margin-left'   => ( 'tablet' === $attr['stack'] ) ? '0px' : UAGB_Helper::get_css_value( $attr['authorImageGapTablet'], $attr['authorImageGapUnit'] ),
@@ -337,6 +340,9 @@ $t_selectors = array(
 	' .uagb-blockquote__author-wrap.uagb-blockquote__author-at-left img' => array(
 		'margin-right'  => ( 'tablet' === $attr['stack'] ) ? '0px' : UAGB_Helper::get_css_value( $attr['authorImageGapTablet'], $attr['authorImageGapUnit'] ),
 		'margin-bottom' => ( 'tablet' === $attr['stack'] ) ? UAGB_Helper::get_css_value( $attr['authorImageGapTablet'], $attr['authorImageGapUnit'] ) : '0px',
+	),
+	' cite.uagb-blockquote__author'                    => array(
+		'letter-spacing' => UAGB_Helper::get_css_value( $attr['authorLetterSpacingTablet'], $attr['authorLetterSpacingType'] ),
 	),
 );
 
@@ -387,6 +393,7 @@ $m_selectors = array(
 	),
 	' .uagb-blockquote__content'           => array(
 		'margin-bottom' => UAGB_Helper::get_css_value( $attr['descSpaceMobile'], $attr['descSpaceUnit'] ),
+		'letter-spacing' => UAGB_Helper::get_css_value( $attr['quoteLetterSpacingMobile'], $attr['quoteLetterSpacingType'] ),
 	),
 	' .uagb-blockquote__author-wrap.uagb-blockquote__author-at-right img' => array(
 		'margin-left'   => ( 'none' !== $attr['stack'] ) ? '0px' : UAGB_Helper::get_css_value( $attr['authorImageGapMobile'], $attr['authorImageGapUnit'] ),
@@ -398,6 +405,9 @@ $m_selectors = array(
 	' .uagb-blockquote__author-wrap.uagb-blockquote__author-at-left img' => array(
 		'margin-right'  => ( 'none' !== $attr['stack'] ) ? '0px' : UAGB_Helper::get_css_value( $attr['authorImageGapMobile'], $attr['authorImageGapUnit'] ),
 		'margin-bottom' => ( 'none' !== $attr['stack'] ) ? UAGB_Helper::get_css_value( $attr['authorImageGapMobile'], $attr['authorImageGapUnit'] ) : '0px',
+	),
+	' cite.uagb-blockquote__author'                    => array(
+		'letter-spacing' => UAGB_Helper::get_css_value( $attr['authorLetterSpacingMobile'], $attr['authorLetterSpacingType'] ),
 	),
 );
 

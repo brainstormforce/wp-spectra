@@ -106,6 +106,7 @@ const Settings = ( props ) => {
 		descDecoration,
 		titleFontStyle,
 		descFontStyle,
+		// letter spacing
 		titleLetterSpacing,
 		titleLetterSpacingTablet,
 		titleLetterSpacingMobile,

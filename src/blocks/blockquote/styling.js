@@ -139,6 +139,15 @@ function styling( props ) {
 		authorFontStyle,
 		tweetBtnFontStyle,
 		stack,
+		// letter spacing
+		quoteLetterSpacing,
+		quoteLetterSpacingTablet,
+		quoteLetterSpacingMobile,
+		quoteLetterSpacingType,
+		authorLetterSpacing,
+		authorLetterSpacingTablet,
+		authorLetterSpacingMobile,
+		authorLetterSpacingType,
 	} = props.attributes;
 
 	let tmpAuthorSpace = authorSpace;
@@ -172,6 +181,7 @@ function styling( props ) {
 			'color': descColor,
 			'margin-bottom': generateCSSUnit( descSpace, descSpaceUnit ),
 			'text-align': textAlign,
+			'letter-spacing': generateCSSUnit( quoteLetterSpacing, quoteLetterSpacingType ),
 		},
 		' .uagb-blockquote__author.block-editor-rich-text__editable': {
 			'font-size': generateCSSUnit( authorFontSize, authorFontSizeType ),
@@ -186,6 +196,7 @@ function styling( props ) {
 			'text-transform': authorTransform,
 			'color': authorColor,
 			'text-align': textAlign,
+			'letter-spacing': generateCSSUnit( authorLetterSpacing, authorLetterSpacingType ),
 		},
 		'.uagb-blockquote__skin-border blockquote.uagb-blockquote': {
 			'border-color': borderColor,
@@ -415,6 +426,7 @@ function styling( props ) {
 				descLineHeightType
 			),
 			'margin-bottom': generateCSSUnit( descSpaceTablet, descSpaceUnit ),
+			'letter-spacing': generateCSSUnit( quoteLetterSpacingTablet, quoteLetterSpacingType ),
 		},
 		' .uagb-blockquote__author.block-editor-rich-text__editable': {
 			'font-size': generateCSSUnit(
@@ -425,6 +437,7 @@ function styling( props ) {
 				authorLineHeightTablet,
 				authorLineHeightType
 			),
+			'letter-spacing': generateCSSUnit( authorLetterSpacingTablet, authorLetterSpacingType ),
 		},
 		' a.uagb-blockquote__tweet-button': {
 			'font-size': generateCSSUnit(
@@ -532,6 +545,7 @@ function styling( props ) {
 				descLineHeightType
 			),
 			'margin-bottom': generateCSSUnit( descSpaceMobile, descSpaceUnit ),
+			'letter-spacing': generateCSSUnit( quoteLetterSpacingMobile, quoteLetterSpacingType ),
 		},
 		' .uagb-blockquote__author.block-editor-rich-text__editable': {
 			'font-size': generateCSSUnit(
@@ -542,6 +556,7 @@ function styling( props ) {
 				authorLineHeightMobile,
 				authorLineHeightType
 			),
+			'letter-spacing': generateCSSUnit( authorLetterSpacingMobile, authorLetterSpacingType ),
 		},
 		' a.uagb-blockquote__tweet-button': {
 			'font-size': generateCSSUnit(

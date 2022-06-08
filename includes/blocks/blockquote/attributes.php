@@ -148,4 +148,12 @@ return array(
 	'authorDecoration'            => '',
 	'tweetBtnDecoration'          => '',
 	'descriptionText'             => 'Click here to change this text. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.',
+	'quoteLetterSpacing'            => '',
+	'quoteLetterSpacingTablet'      => '',
+	'quoteLetterSpacingMobile'      => '',
+	'quoteLetterSpacingType'        => 'px',
+	'authorLetterSpacing'            => '',
+	'authorLetterSpacingTablet'      => '',
+	'authorLetterSpacingMobile'      => '',
+	'authorLetterSpacingType'        => 'px',
 );
