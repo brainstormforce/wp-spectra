@@ -396,7 +396,7 @@ $m_selectors = array(
 		'padding-bottom' => UAGB_Helper::get_css_value( $attr['verticalPaddingMobile'], $attr['verticalPaddingUnit'] ),
 	),
 	' .uagb-blockquote__content'           => array(
-		'margin-bottom' => UAGB_Helper::get_css_value( UAGB_Block_Helper::get_fallback_number( $attr['descSpaceMobile'], 'descSpaceMobile',  $block_name ), $attr['descSpaceUnit'] ),
+		'margin-bottom' => UAGB_Helper::get_css_value( UAGB_Block_Helper::get_fallback_number( $attr['descSpaceMobile'], 'descSpaceMobile', $block_name ), $attr['descSpaceUnit'] ),
 	),
 	' .uagb-blockquote__author-wrap.uagb-blockquote__author-at-right img' => array(
 		'margin-left'   => ( 'none' !== $attr['stack'] ) ? '0px' : UAGB_Helper::get_css_value( UAGB_Block_Helper::get_fallback_number( $attr['authorImageGapMobile'], 'authorImageGapMobile', $block_name ), $attr['authorImageGapUnit'] ),
