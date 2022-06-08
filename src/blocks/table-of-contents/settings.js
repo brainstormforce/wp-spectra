@@ -1077,7 +1077,7 @@ const Settings = ( props ) => {
 				/>
 				{ ! disableBullets &&
 				<AdvancedPopColorControl
-					label={ __( 'Color', 'ultimate-addons-for-gutenberg' ) }
+					label={ __( 'Marker Color', 'ultimate-addons-for-gutenberg' ) }
 					colorValue={ bulletColor ? bulletColor : '' }
 					onColorChange={ ( value ) =>
 						setAttributes( { bulletColor: value } )
