@@ -12,7 +12,7 @@ return array(
 	'image_icon'          => 'icon',
 	'icon'                => 'fab fa-facebook',
 	'image'               => '',
-	'icon_color'          => '#3a3a3a',
+	'icon_color'          => '',
 	'icon_hover_color'    => '',
 	'icon_bg_color'       => '',
 	'icon_bg_hover_color' => '',
