@@ -12,7 +12,7 @@
 // If need be please add a new function for Info Box and go ahead.
 UAGB_Block_JS::blocks_buttons_gfont( $attr );
 
-$alignment = ( 'left' === $attr['align'] ) ? 'flex-start' : ( ( 'right' === $attr['align'] ) ? 'flex-end' : 'center' );
+$alignment        = ( 'left' === $attr['align'] ) ? 'flex-start' : ( ( 'right' === $attr['align'] ) ? 'flex-end' : 'center' );
 $tablet_alignment = ( 'left' === $attr['alignTablet'] ) ? 'flex-start' : ( ( 'right' === $attr['alignTablet'] ) ? 'flex-end' : ( ( 'center' === $attr['alignTablet'] ) ? 'center' : $alignment ) );
 $mobile_alignment = ( 'left' === $attr['alignMobile'] ) ? 'flex-start' : ( ( 'right' === $attr['alignMobile'] ) ? 'flex-end' : ( ( 'center' === $attr['alignMobile'] ) ? 'center' : $tablet_alignment ) );
 
@@ -23,21 +23,21 @@ $icon_size   = UAGB_Helper::get_css_value( $attr['size'], $attr['sizeType'] );
 $m_icon_size = UAGB_Helper::get_css_value( $attr['sizeMobile'], $attr['sizeType'] );
 $t_icon_size = UAGB_Helper::get_css_value( $attr['sizeTablet'], $attr['sizeType'] );
 
-$position = 'top' === $attr['iconPosition'] ? 'flex-start' : 'center';
+$position       = 'top' === $attr['iconPosition'] ? 'flex-start' : 'center';
 $tabletPosition = '';
 $mobilePosition = '';
 
-if( 'top' === $attr['iconPositionTablet'] ) {
+if ( 'top' === $attr['iconPositionTablet'] ) {
 	$tabletPosition = 'flex-start';
-} else if( 'middle' === $attr['iconPositionTablet'] ) {
+} elseif ( 'middle' === $attr['iconPositionTablet'] ) {
 	$tabletPosition = 'center';
 } else {
 	$tabletPosition = $position;
 }
 
-if( 'top' === $attr['iconPositionMobile'] ) {
+if ( 'top' === $attr['iconPositionMobile'] ) {
 	$mobilePosition = 'flex-start';
-} else if( 'middle' === $attr['iconPositionMobile'] ) {
+} elseif ( 'middle' === $attr['iconPositionMobile'] ) {
 	$mobilePosition = 'center';
 } else {
 	$mobilePosition = $tabletPosition;
@@ -108,7 +108,7 @@ $t_selectors = array(
 		'align-items'       => $tablet_alignment,
 	),
 	' .wp-block-uagb-icon-list-child .uagb-icon-list__source-wrap ' => array(
-		'align-self'    => $tabletPosition,
+		'align-self' => $tabletPosition,
 	),
 );
 
@@ -137,7 +137,7 @@ $m_selectors = array(
 		'align-items'       => $mobile_alignment,
 	),
 	' .wp-block-uagb-icon-list-child .uagb-icon-list__source-wrap ' => array(
-		'align-self'    => $mobilePosition,
+		'align-self' => $mobilePosition,
 	),
 );
 
@@ -173,7 +173,7 @@ if ( 'horizontal' === $attr['icon_layout'] ) {
 
 		$t_selectors[' .uagb-icon-list__wrap'] = array(
 			'flex-direction' => 'column',
-			'align-items'       => $tablet_alignment,
+			'align-items'    => $tablet_alignment,
 		);
 
 		$t_selectors[' .uagb-icon-list__wrap .wp-block-uagb-icon-list-child:last-child'] = array(
@@ -190,7 +190,7 @@ if ( 'horizontal' === $attr['icon_layout'] ) {
 
 		$m_selectors[' .uagb-icon-list__wrap'] = array(
 			'flex-direction' => 'column',
-			'align-items'       => $mobile_alignment,
+			'align-items'    => $mobile_alignment,
 		);
 
 		$m_selectors[' .uagb-icon-list__wrap .wp-block-uagb-icon-list-child:last-child'] = array(
@@ -292,13 +292,13 @@ if ( ! $attr['childMigrate'] ) {
 }
 
 if ( 'right' === $attr['align'] && $attr['hideLabel'] ) {
-	$selectors[' .uagb-icon-list__source-wrap']     = array(
+	$selectors[' .uagb-icon-list__source-wrap']   = array(
 		'margin-right' => '0px',
 	);
-	$m_selectors[' .uagb-icon-list__source-wrap']   = array(
+	$m_selectors[' .uagb-icon-list__source-wrap'] = array(
 		'margin-right' => '0px',
 	);
-	$t_selectors[' .uagb-icon-list__source-wrap']   = array(
+	$t_selectors[' .uagb-icon-list__source-wrap'] = array(
 		'margin-right' => '0px',
 	);
 } else {
