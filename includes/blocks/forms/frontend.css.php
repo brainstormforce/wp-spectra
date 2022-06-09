@@ -40,9 +40,9 @@ $toggle_border        = UAGB_Block_Helper::uag_generate_border_css( $attr, 'togg
 $toggle_border_Tablet = UAGB_Block_Helper::uag_generate_border_css( $attr, 'toggle', 'tablet' );
 $toggle_border_Mobile = UAGB_Block_Helper::uag_generate_border_css( $attr, 'toggle', 'mobile' );
 
-$btn_border        = UAGB_Block_Helper::uag_generate_border_css( $attr, 'btn' );
-$btn_border_Tablet = UAGB_Block_Helper::uag_generate_border_css( $attr, 'btn', 'tablet' );
-$btn_border_Mobile = UAGB_Block_Helper::uag_generate_border_css( $attr, 'btn', 'mobile' );
+$btn_border        = UAGB_Block_Helper::uag_generate_border_css( $attr, 'submit' );
+$btn_border_Tablet = UAGB_Block_Helper::uag_generate_border_css( $attr, 'submit', 'tablet' );
+$btn_border_Mobile = UAGB_Block_Helper::uag_generate_border_css( $attr, 'submit', 'mobile' );
 
 $selectors = array(
 	'.uagb-forms__outer-wrap'                              => array(

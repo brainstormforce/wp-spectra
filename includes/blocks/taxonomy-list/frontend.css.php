@@ -192,11 +192,11 @@ $m_selectors = array(
 	),
 );
 
-$t_selectors['.uagb-layout-list .uagb-tax-separator']       = $seperator_border_cssTablet;
-$m_selectors['.uagb-layout-list .uagb-tax-separator']       = $seperator_border_cssMobile;
+$t_selectors['.uagb-layout-list .uagb-tax-separator'] = $seperator_border_cssTablet;
+$m_selectors['.uagb-layout-list .uagb-tax-separator'] = $seperator_border_cssMobile;
 
-$t_selectors[' .uagb-taxomony-box']       = $overall_border_cssTablet;
-$m_selectors[' .uagb-taxomony-box']       = $overall_border_cssMobile;
+$t_selectors[' .uagb-taxomony-box'] = $overall_border_cssTablet;
+$m_selectors[' .uagb-taxomony-box'] = $overall_border_cssMobile;
 
 $combined_selectors = array(
 	'desktop' => $selectors,

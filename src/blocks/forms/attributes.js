@@ -3,8 +3,32 @@ import { getBorderAttributes } from '@Controls/generateAttributes';
 
 const successMessageBorderAttributes = getBorderAttributes( 'successMessage' );
 const failedMessageBorderAttributes = getBorderAttributes( 'failedMessage' );
-const inputBorderAttributes = getBorderAttributes( 'input' );
-const toggleBorderAttributes = getBorderAttributes( 'toggle' );
+const inputBorderAttributes = getBorderAttributes( 'input' , {
+	borderStyle: 'solid',
+	borderTopRadius: 3,
+	borderRightRadius: 3,
+	borderLeftRadius: 3,
+	borderBottomRadius: 3,
+	borderTopRadius: 1,
+	borderRightRadius: 1,
+	borderLeftRadius: 1,
+	borderBottomRadius: 1,
+	borderColor:'#bdbdbd',
+	borderHColor: '',
+});
+const toggleBorderAttributes = getBorderAttributes( 'toggle' , {
+	borderStyle: 'solid',
+	borderTopRadius: 3,
+	borderRightRadius: 3,
+	borderLeftRadius: 3,
+	borderBottomRadius: 3,
+	borderTopRadius: 1,
+	borderRightRadius: 1,
+	borderLeftRadius: 1,
+	borderBottomRadius: 1,
+	borderColor:'#1e1e1e',
+	borderHColor: '#017cba',
+});
 const submitBorderAttributes = getBorderAttributes( 'submit' );
 
 const attributes = {
@@ -159,9 +183,6 @@ const attributes = {
 	},
 	failedMessageBorderColor  : {
 		type: 'string',
-		UAGCopyPaste: {
-			styleType: 'failed-msg-border-color'
-		},
 		default: 'red'
 	},
 	failedMessageBGColor      : {
@@ -173,17 +194,11 @@ const attributes = {
 	},
 	failedMessageBorderStyle  : {
 		type: 'string',
-		UAGCopyPaste: {
-			styleType: 'failed-msg-border-style'
-		},
 		default: 'solid'
 	},
 	failedMessageBorderWidth  : {
 		type: 'number',
 		default: 3,
-		UAGCopyPaste: {
-			styleType: 'failed-msg-border-width'
-		},
 	},
 	confirmationUrl: {
 		type: 'string',
@@ -246,36 +261,21 @@ const attributes = {
 	// Border
 	submitborderStyle: {
 		type: 'string',
-		UAGCopyPaste: {
-			styleType: 'btn-border-style'
-		},
 		default: 'none'
 	},
 	submitborderWidth: {
 		type: 'number',
-		UAGCopyPaste: {
-			styleType: 'btn-border-width'
-		},
 	},
 	submitborderRadius: {
 		type: 'number',
 		default: 3,
-		UAGCopyPaste: {
-			styleType: 'btn-border-radius'
-		},
 	},
 	submitborderColor: {
 		type: 'string',
-		UAGCopyPaste: {
-			styleType: 'btn-border-color'
-		},
 		default: '',
 	},
 	submitborderHoverColor: {
 		type: 'string',
-		UAGCopyPaste: {
-			styleType: 'btn-border-hover-color'
-		},
 	},
 	hPaddingSubmit: {
 		type: 'number',
@@ -612,37 +612,22 @@ const attributes = {
 	toggleBorderStyle: {
 		type: 'string',
 		default: 'solid',
-		UAGCopyPaste: {
-			styleType: 'toggle-border-style'
-		},
 	},
 	toggleBorderWidth: {
 		type: 'number',
 		default: 1,
-		UAGCopyPaste: {
-			styleType: 'toggle-border-width'
-		},
 	},
 	toggleBorderRadius: {
 		type: 'number',
 		default: 3,
-		UAGCopyPaste: {
-			styleType: 'toggle-border-radius'
-		},
 	},
 	toggleBorderColor: {
 		type: 'string',
 		default: '#1e1e1e',
-		UAGCopyPaste: {
-			styleType: 'toggle-border-color'
-		},
 	},
 	toggleBorderActiveColor: {
 		type: 'string',
 		default: '#017cba',
-		UAGCopyPaste: {
-			styleType: 'toggle-border-hover-color'
-		},
 	},
 
 	// Input Line Height
@@ -735,36 +720,21 @@ const attributes = {
 	inputborderStyle: {
 		type: 'string',
 		default: 'solid',
-		UAGCopyPaste: {
-			styleType: 'input-border-style'
-		},
 	},
 	inputborderWidth: {
 		type: 'number',
 		default: 1,
-		UAGCopyPaste: {
-			styleType: 'input-border-width'
-		},
 	},
 	inputborderRadius: {
 		type: 'number',
 		default: 3,
-		UAGCopyPaste: {
-			styleType: 'input-border-radius'
-		},
 	},
 	inputborderColor: {
 		type: 'string',
 		default: '#bdbdbd',
-		UAGCopyPaste: {
-			styleType: 'input-border-color'
-		},
 	},
 	inputborderHoverColor: {
 		type: 'string',
-		UAGCopyPaste: {
-			styleType: 'input-border-hover-color'
-		},
 	},
 	hPaddingField: {
 		type: 'number',
