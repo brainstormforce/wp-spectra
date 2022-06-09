@@ -124,6 +124,11 @@ const globalDataReducer = ( state = {}, action ) => {
 				...state,
 				comingSoonPage: action.payload,
 			};
+		case 'UPDATE_BLOCKS_EDITOR_SPACING':
+			return {
+				...state,
+				blocksEditorSpacing: action.payload,
+				};
         default:
             return state;
     }

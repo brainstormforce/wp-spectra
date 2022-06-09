@@ -29,36 +29,70 @@ if ( '' !== $attr['align'] ) {
 	}
 }
 
+$wrapperCSS = array(
+	'margin-top'     => UAGB_Helper::get_css_value(
+		$attr['blockTopMargin'],
+		$attr['blockMarginUnit']
+	),
+	'margin-right'   => UAGB_Helper::get_css_value(
+		$attr['blockRightMargin'],
+		$attr['blockMarginUnit']
+	),
+	'margin-bottom'  => UAGB_Helper::get_css_value(
+		$attr['blockBottomMargin'],
+		$attr['blockMarginUnit']
+	),
+	'margin-left'    => UAGB_Helper::get_css_value(
+		$attr['blockLeftMargin'],
+		$attr['blockMarginUnit']
+	),
+	'padding-top'    => UAGB_Helper::get_css_value(
+		$attr['blockTopPadding'],
+		$attr['blockPaddingUnit']
+	),
+	'padding-right'  => UAGB_Helper::get_css_value(
+		$attr['blockRightPadding'],
+		$attr['blockPaddingUnit']
+	),
+	'padding-bottom' => UAGB_Helper::get_css_value(
+		$attr['blockBottomPadding'],
+		$attr['blockPaddingUnit']
+	),
+	'padding-left'   => UAGB_Helper::get_css_value(
+		$attr['blockLeftPadding'],
+		$attr['blockPaddingUnit']
+	),
+);
+
 $selectors = array(
-	' .uag-star-rating'           => array(
+	' .uag-star-rating'        => array(
 		'font-size' => UAGB_Helper::get_css_value( $attr['size'], 'px' ),
 	),
-	' .uag-star-rating > span'    => array(
+	' .uag-star-rating > span' => array(
 		'margin-right' => UAGB_Helper::get_css_value( $attr['gap'], 'px' ),
 		'color'        => $attr['unmarkedColor'],
 	),
 	' .uag-star:nth-child(-n+' . floor( $attr['rating'] ) . ')' => array(
 		'color' => $attr['color'],
 	),
-	' .uag-star-rating__title'    => array(
+	' .uag-star-rating__title' => array(
 		'font-size'   => UAGB_Helper::get_css_value( $attr['fontSize'], $attr['fontSizeType'] ),
 		'font-family' => $attr['fontFamily'],
 		'font-weight' => $attr['fontWeight'],
 		'line-height' => UAGB_Helper::get_css_value( $attr['lineHeight'], $attr['lineHeightType'] ),
 		'color'       => $attr['titleColor'],
 	),
-	'.wp-block-uagb-star-rating ' => array(
-		'justify-content' => $alignment,
-		'text-align'      => $stack_alignment,
-	),
 );
 
 $index = 'margin-right';
 if ( 'stack' === $attr['layout'] ) {
 	$index                                    = 'margin-bottom';
-	$selectors['.wp-block-uagb-star-rating '] = array(
-		'display'    => 'block',
-		'text-align' => $stack_alignment,
+	$selectors['.wp-block-uagb-star-rating '] = array_merge(
+		array(
+			'display'    => 'block',
+			'text-align' => $stack_alignment,
+		),
+		$wrapperCSS
 	);
 
 	// Since title text is set to flex, we need this property that aligns flex objects.
@@ -70,18 +104,36 @@ if ( 'stack' === $attr['layout'] ) {
 	);
 } else {
 	$index                                    = 'margin-right';
-	$selectors['.wp-block-uagb-star-rating '] = array(
-		'display'         => 'flex',
-		'justify-content' => $alignment,
+	$selectors['.wp-block-uagb-star-rating '] = array_merge(
+		array(
+			'display'         => 'flex',
+			'justify-content' => $alignment,
+		),
+		$wrapperCSS
 	);
 }
+
+
+$wrapperCSSTablet = array(
+	'padding-top'    => UAGB_Helper::get_css_value( $attr['blockTopPaddingTablet'], $attr['blockPaddingUnitTablet'] ),
+	'padding-right'  => UAGB_Helper::get_css_value( $attr['blockRightPaddingTablet'], $attr['blockPaddingUnitTablet'] ),
+	'padding-bottom' => UAGB_Helper::get_css_value( $attr['blockBottomPaddingTablet'], $attr['blockPaddingUnitTablet'] ),
+	'padding-left'   => UAGB_Helper::get_css_value( $attr['blockLeftPaddingTablet'], $attr['blockPaddingUnitTablet'] ),
+	'margin-top'     => UAGB_Helper::get_css_value( $attr['blockTopMarginTablet'], $attr['blockMarginUnitTablet'] ),
+	'margin-right'   => UAGB_Helper::get_css_value( $attr['blockRightMarginTablet'], $attr['blockMarginUnitTablet'] ),
+	'margin-bottom'  => UAGB_Helper::get_css_value( $attr['blockBottomMarginTablet'], $attr['blockMarginUnitTablet'] ),
+	'margin-left'    => UAGB_Helper::get_css_value( $attr['blockLeftMarginTablet'], $attr['blockMarginUnitTablet'] ),
+);
 
 $index_tablet = 'margin-right';
 if ( 'stack' === $attr['layoutTablet'] ) {
 	$index_tablet                               = 'margin-bottom';
-	$t_selectors['.wp-block-uagb-star-rating '] = array(
-		'display'    => 'block',
-		'text-align' => $stack_alignment,
+	$t_selectors['.wp-block-uagb-star-rating '] = array_merge(
+		array(
+			'display'    => 'block',
+			'text-align' => $stack_alignment,
+		),
+		$wrapperCSSTablet
 	);
 
 	// Keeping this here, in case responsive alignment is added in the future.
@@ -95,21 +147,38 @@ if ( 'stack' === $attr['layoutTablet'] ) {
 	);
 } else {
 	$index_tablet                               = 'margin-right';
-	$t_selectors['.wp-block-uagb-star-rating '] = array(
-		'display'         => 'flex',
-		'justify-content' => $alignment,
+	$t_selectors['.wp-block-uagb-star-rating '] = array_merge(
+		array(
+			'display'         => 'flex',
+			'justify-content' => $alignment,
+		),
+		$wrapperCSSTablet
 	);
 	$t_selectors[' .uag-star-rating__title ']   = array(
 		'margin-bottom' => 0,
 	);
 }
 
+$wrapperCSSMobile = array(
+	'padding-top'    => UAGB_Helper::get_css_value( $attr['blockTopPaddingMobile'], $attr['blockPaddingUnitMobile'] ),
+	'padding-right'  => UAGB_Helper::get_css_value( $attr['blockRightPaddingMobile'], $attr['blockPaddingUnitMobile'] ),
+	'padding-bottom' => UAGB_Helper::get_css_value( $attr['blockBottomPaddingMobile'], $attr['blockPaddingUnitMobile'] ),
+	'padding-left'   => UAGB_Helper::get_css_value( $attr['blockLeftPaddingMobile'], $attr['blockPaddingUnitMobile'] ),
+	'margin-top'     => UAGB_Helper::get_css_value( $attr['blockTopMarginMobile'], $attr['blockMarginUnitMobile'] ),
+	'margin-right'   => UAGB_Helper::get_css_value( $attr['blockRightMarginMobile'], $attr['blockMarginUnitMobile'] ),
+	'margin-bottom'  => UAGB_Helper::get_css_value( $attr['blockBottomMarginMobile'], $attr['blockMarginUnitMobile'] ),
+	'margin-left'    => UAGB_Helper::get_css_value( $attr['blockLeftMarginMobile'], $attr['blockMarginUnitMobile'] ),
+);
+
 $index_mobile = 'margin-right';
 if ( 'stack' === $attr['layoutMobile'] ) {
 	$index_mobile                               = 'margin-bottom';
-	$m_selectors['.wp-block-uagb-star-rating '] = array(
-		'display'    => 'block',
-		'text-align' => $stack_alignment,
+	$m_selectors['.wp-block-uagb-star-rating '] = array_merge(
+		array(
+			'display'    => 'block',
+			'text-align' => $stack_alignment,
+		),
+		$wrapperCSSMobile
 	);
 
 	// Keeping this here, in case responsive alignment is added in the future.
@@ -123,9 +192,12 @@ if ( 'stack' === $attr['layoutMobile'] ) {
 	);
 } else {
 	$index_mobile                               = 'margin-right';
-	$m_selectors['.wp-block-uagb-star-rating '] = array(
-		'display'         => 'flex',
-		'justify-content' => $alignment,
+	$m_selectors['.wp-block-uagb-star-rating '] = array_merge(
+		array(
+			'display'         => 'flex',
+			'justify-content' => $alignment,
+		),
+		$wrapperCSSMobile
 	);
 	$m_selectors[' .uag-star-rating__title ']   = array(
 		'margin-bottom' => 0,

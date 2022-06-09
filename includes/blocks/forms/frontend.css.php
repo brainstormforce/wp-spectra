@@ -34,6 +34,9 @@ $selectors = array(
 	' form.uagb-forms-main-form, form.uagb-forms-main-form .uagb-forms-input, form.uagb-forms-main-form textarea' => array(
 		'text-align' => $attr['overallAlignment'],
 	),
+	' .uagb-forms-input-label'                             => array(
+		'display' => $attr['displayLabels'] ? 'block' : 'none',
+	),
 	' .uagb-forms-main-form .uagb-forms-field-set'         => array(
 		'margin-bottom' => UAGB_Helper::get_css_value( $attr['fieldGap'], $attr['fieldGapType'] ),
 	),

@@ -263,7 +263,7 @@ const Settings = ( props ) => {
 		return (
 			<UAGAdvancedPanelBody
 				title={ __( 'Background', 'ultimate-addons-for-gutenberg' ) }
-				initialOpen={ false }
+				initialOpen={ true }
 			>
 				<Background
 					setAttributes={ setAttributes }
@@ -279,6 +279,9 @@ const Settings = ( props ) => {
 						value: overlayType,
 						label: 'overlayType',
 					} }
+					gradientOverlay={{
+						value: false,
+					}}
 					backgroundSize={ {
 						value: backgroundSize,
 						label: 'backgroundSize',

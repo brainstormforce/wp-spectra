@@ -62,6 +62,7 @@ return array(
 	'transform'              => '',
 	'decoration'             => '',
 	'backgroundType'         => 'color',
+	'hoverbackgroundType'    => 'color',
 	'topMargin'              => '',
 	'rightMargin'            => '',
 	'bottomMargin'           => '',
@@ -87,6 +88,7 @@ return array(
 	'buttonSize'             => '',
 	'removeText'             => false,
 	'gradientValue'          => '',
+	'hovergradientValue'     => '',
 	'backgroundOpacity'      => '',
 	'backgroundHoverOpacity' => '',
 );
