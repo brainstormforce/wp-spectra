@@ -575,10 +575,12 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				' .uagb-timeline__heading'               => array(
 					'margin-top'    => UAGB_Helper::get_css_value( $headTopSpace, 'px' ),
 					'margin-bottom' => UAGB_Helper::get_css_value( $attr['headSpace'], 'px' ),
+					'letter-spacing' => UAGB_Helper::get_css_value( $attr['headLetterSpacing'], $attr['headLetterSpacingType'] ),
 				),
 				' .uagb-timeline-desc-content'           => array(
 					'text-align' => $attr['align'],
 					'color'      => $attr['subHeadingColor'],
+					'letter-spacing' => UAGB_Helper::get_css_value( $attr['subHeadLetterSpacing'], $attr['subHeadLetterSpacingType'] ),
 				),
 				' .uagb-timeline__day-new'               => array(
 					'text-align' => $attr['align'],
@@ -645,6 +647,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					'margin-bottom' => UAGB_Helper::get_css_value( $attr['dateBottomspace'], 'px' ),
 					'color'         => $attr['dateColor'],
 					'text-align'    => $attr['align'],
+					'letter-spacing' => UAGB_Helper::get_css_value( $attr['dateLetterSpacing'], $attr['dateLetterSpacingType'] ),
 				),
 				' .uagb-timeline__date-hide.uagb-timeline__date-inner' => array(
 					'margin-bottom' => UAGB_Helper::get_css_value( $attr['dateBottomspace'], 'px' ),
@@ -660,6 +663,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				' .uagb-timeline__date-new'              => array(
 					'color'     => $attr['dateColor'],
 					'font-size' => UAGB_Helper::get_css_value( $attr['dateFontsize'], $attr['dateFontsizeType'] ),
+					'letter-spacing' => UAGB_Helper::get_css_value( $attr['dateLetterSpacing'], $attr['dateLetterSpacingType'] ),
 				),
 				' .uagb-timeline__events-inner-new'      => array(
 					'background-color' => $attr['backgroundColor'],
@@ -700,9 +704,11 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				' .uagb-timeline__heading'          => array(
 					'margin-top'    => UAGB_Helper::get_css_value( $attr['headTopSpacingTablet'], 'px' ),
 					'margin-bottom' => UAGB_Helper::get_css_value( $attr['headSpaceTablet'], 'px' ),
+					'letter-spacing' => UAGB_Helper::get_css_value( $attr['headLetterSpacingTablet'], $attr['headLetterSpacingType'] ),
 				),
 				' .uagb-timeline__date-hide.uagb-timeline__inner-date-new' => array(
 					'margin-bottom' => UAGB_Helper::get_css_value( $attr['dateBottomspaceTablet'], 'px' ),
+					'letter-spacing' => UAGB_Helper::get_css_value( $attr['dateLetterSpacingTablet'], $attr['dateLetterSpacingType'] ),
 				),
 				'.uagb-timeline__center-block .uagb-timeline__marker' => array(
 					'margin-left'  => 0,
@@ -753,9 +759,11 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				' .uagb-timeline__heading'          => array(
 					'margin-top'    => UAGB_Helper::get_css_value( $attr['headTopSpacingMobile'], 'px' ),
 					'margin-bottom' => UAGB_Helper::get_css_value( $attr['headSpaceMobile'], 'px' ),
+					'letter-spacing' => UAGB_Helper::get_css_value( $attr['headLetterSpacingMobile'], $attr['headLetterSpacingType'] ),
 				),
 				' .uagb-timeline__date-hide.uagb-timeline__inner-date-new' => array(
 					'margin-bottom' => UAGB_Helper::get_css_value( $attr['dateBottomspaceMobile'], 'px' ),
+					'letter-spacing' => UAGB_Helper::get_css_value( $attr['dateLetterSpacingMobile'], $attr['dateLetterSpacingType'] ),
 				),
 				'.uagb-timeline__center-block .uagb-timeline__marker' => array(
 					'margin-left'  => 0,

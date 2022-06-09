@@ -673,6 +673,76 @@ if ( ! class_exists( 'UAGB_Post_Timeline' ) ) {
 							'type'    => 'boolean',
 							'default' => false,
 						),
+						'headLetterSpacing'                 => array(
+							'type'    => 'number',
+							'default' => '',
+						),
+						'headLetterSpacingType'             => array(
+							'type'    => 'string',
+							'default' => 'px',
+						),
+						'headLetterSpacingMobile'           => array(
+							'type' => 'number',
+						),
+						'headLetterSpacingTablet'           => array(
+							'type' => 'number',
+						),
+						'subHeadLetterSpacing'                 => array(
+							'type'    => 'number',
+							'default' => '',
+						),
+						'subHeadLetterSpacingType'             => array(
+							'type'    => 'string',
+							'default' => 'px',
+						),
+						'subHeadLetterSpacingMobile'           => array(
+							'type' => 'number',
+						),
+						'subHeadLetterSpacingTablet'           => array(
+							'type' => 'number',
+						),
+						'ctaLetterSpacing'                 => array(
+							'type'    => 'number',
+							'default' => '',
+						),
+						'ctaLetterSpacingType'             => array(
+							'type'    => 'string',
+							'default' => 'px',
+						),
+						'ctaLetterSpacingMobile'           => array(
+							'type' => 'number',
+						),
+						'ctaLetterSpacingTablet'           => array(
+							'type' => 'number',
+						),
+						'dateLetterSpacing'                 => array(
+							'type'    => 'number',
+							'default' => '',
+						),
+						'dateLetterSpacingType'             => array(
+							'type'    => 'string',
+							'default' => 'px',
+						),
+						'dateLetterSpacingMobile'           => array(
+							'type' => 'number',
+						),
+						'dateLetterSpacingTablet'           => array(
+							'type' => 'number',
+						),
+						'authorLetterSpacing'                 => array(
+							'type'    => 'number',
+							'default' => '',
+						),
+						'authorLetterSpacingType'             => array(
+							'type'    => 'string',
+							'default' => 'px',
+						),
+						'authorLetterSpacingMobile'           => array(
+							'type' => 'number',
+						),
+						'authorLetterSpacingTablet'           => array(
+							'type' => 'number',
+						),
 					),
 					'render_callback' => array( $this, 'post_timeline_callback' ),
 				)
