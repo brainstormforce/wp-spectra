@@ -910,24 +910,50 @@ const Settings = ( props ) => {
 				initialOpen={ true }
 				className="uagb__url-panel-body"
 			>
-				<AdvancedPopColorControl
-					label={ __(
-						'Background Color',
-						'ultimate-addons-for-gutenberg'
-					) }
-					colorValue={ boxBgColor }
-					onColorChange={ ( value ) =>
-						setAttributes( { boxBgColor: value } )
+				<UAGTabsControl
+					tabs={ [
+						{
+							name: 'normal',
+							title: __(
+								'Normal',
+								'ultimate-addons-for-gutenberg'
+							),
+						},
+						{
+							name: 'hover',
+							title: __(
+								'Hover',
+								'ultimate-addons-for-gutenberg'
+							),
+						},
+					] }
+					normal={
+						<>
+							<AdvancedPopColorControl
+								label={ __(
+									'Background Color',
+									'ultimate-addons-for-gutenberg'
+								) }
+								colorValue={ boxBgColor }
+								onColorChange={ ( value ) =>
+									setAttributes( { boxBgColor: value } )
+								}
+							/>
+						</>
 					}
-				/>
-				<AdvancedPopColorControl
-					label={ __(
-						'Background Hover Color',
-						'ultimate-addons-for-gutenberg'
-					) }
-					colorValue={ boxBgHoverColor }
-					onColorChange={ ( value ) =>
-						setAttributes( { boxBgHoverColor: value } )
+					hover={
+						<>
+							<AdvancedPopColorControl
+								label={ __(
+									'Background Color',
+									'ultimate-addons-for-gutenberg'
+								) }
+								colorValue={ boxBgHoverColor }
+								onColorChange={ ( value ) =>
+									setAttributes( { boxBgHoverColor: value } )
+								}
+							/>
+						</>
 					}
 				/>
 				<ResponsiveSlider
