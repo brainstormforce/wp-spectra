@@ -15,8 +15,7 @@ import MultiButtonsControl from '@Components/multi-buttons-control';
 import renderSVG from '@Controls/renderIcon';
 import React from 'react';
 import ResponsiveSlider from '@Components/responsive-slider';
-
-
+import SpacingControl from '@Components/spacing-control';
 import UAGAdvancedPanelBody from '@Components/advanced-panel-body';
 
 const Settings = ( props ) => {
@@ -60,7 +59,42 @@ const Settings = ( props ) => {
 			fontTransform,
 			fontDecoration,
 			displayTitle,
+			// padding
+			blockTopPadding,
+			blockRightPadding,
+			blockLeftPadding,
+			blockBottomPadding,
+			blockTopPaddingTablet,
+			blockRightPaddingTablet,
+			blockLeftPaddingTablet,
+			blockBottomPaddingTablet,
+			blockTopPaddingMobile,
+			blockRightPaddingMobile,
+			blockLeftPaddingMobile,
+			blockBottomPaddingMobile,
+			blockPaddingUnit,
+			blockPaddingUnitTablet,
+			blockPaddingUnitMobile,
+			blockPaddingLink,
+			// margin
+			blockTopMargin,
+			blockRightMargin,
+			blockLeftMargin,
+			blockBottomMargin,
+			blockTopMarginTablet,
+			blockRightMarginTablet,
+			blockLeftMarginTablet,
+			blockBottomMarginTablet,
+			blockTopMarginMobile,
+			blockRightMarginMobile,
+			blockLeftMarginMobile,
+			blockBottomMarginMobile,
+			blockMarginUnit,
+			blockMarginUnitTablet,
+			blockMarginUnitMobile,
+			blockMarginLink,
 		},
+		deviceType,
 	} = props;
 
 	let loadTitleGoogleFonts;
@@ -384,6 +418,161 @@ const Settings = ( props ) => {
 			/>
 		</UAGAdvancedPanelBody>
 	);
+
+	const spacingStylePanel = (
+		<UAGAdvancedPanelBody
+			title={ __( 'Spacing', 'ultimate-addons-for-gutenberg' ) }
+			initialOpen={ false }
+		>
+			<SpacingControl
+				label={ __(
+					'Padding',
+					'ultimate-addons-for-gutenberg'
+				) }
+				valueTop={ {
+					value: blockTopPadding,
+					label: 'blockTopPadding',
+				} }
+				valueRight={ {
+					value: blockRightPadding,
+					label: 'blockRightPadding',
+				} }
+				valueBottom={ {
+					value: blockBottomPadding,
+					label: 'blockBottomPadding',
+				} }
+				valueLeft={ {
+					value: blockLeftPadding,
+					label: 'blockLeftPadding',
+				} }
+				valueTopTablet={ {
+					value: blockTopPaddingTablet,
+					label: 'blockTopPaddingTablet',
+				} }
+				valueRightTablet={ {
+					value: blockRightPaddingTablet,
+					label: 'blockRightPaddingTablet',
+				} }
+				valueBottomTablet={ {
+					value: blockBottomPaddingTablet,
+					label: 'blockBottomPaddingTablet',
+				} }
+				valueLeftTablet={ {
+					value: blockLeftPaddingTablet,
+					label: 'blockLeftPaddingTablet',
+				} }
+				valueTopMobile={ {
+					value: blockTopPaddingMobile,
+					label: 'blockTopPaddingMobile',
+				} }
+				valueRightMobile={ {
+					value: blockRightPaddingMobile,
+					label: 'blockRightPaddingMobile',
+				} }
+				valueBottomMobile={ {
+					value: blockBottomPaddingMobile,
+					label: 'blockBottomPaddingMobile',
+				} }
+				valueLeftMobile={ {
+					value: blockLeftPaddingMobile,
+					label: 'blockLeftPaddingMobile',
+				} }
+				unit={ {
+					value: blockPaddingUnit,
+					label: 'blockPaddingUnit',
+				} }
+				mUnit={ {
+					value: blockPaddingUnitMobile,
+					label: 'blockPaddingUnitMobile',
+				} }
+				tUnit={ {
+					value: blockPaddingUnitTablet,
+					label: 'blockPaddingUnitTablet',
+				} }
+				deviceType={ deviceType }
+				attributes={ attributes }
+				setAttributes={ setAttributes }
+				link={ {
+					value: blockPaddingLink,
+					label: 'blockPaddingLink',
+				} }
+			/>
+			<SpacingControl
+				label={ __(
+					'Margin',
+					'ultimate-addons-for-gutenberg'
+				) }
+				valueTop={ {
+					value: blockTopMargin,
+					label: 'blockTopMargin',
+				} }
+				valueRight={ {
+					value: blockRightMargin,
+					label: 'blockRightMargin',
+				} }
+				valueBottom={ {
+					value: blockBottomMargin,
+					label: 'blockBottomMargin',
+				} }
+				valueLeft={ {
+					value: blockLeftMargin,
+					label: 'blockLeftMargin',
+				} }
+				valueTopTablet={ {
+					value: blockTopMarginTablet,
+					label: 'blockTopMarginTablet',
+				} }
+				valueRightTablet={ {
+					value: blockRightMarginTablet,
+					label: 'blockRightMarginTablet',
+				} }
+				valueBottomTablet={ {
+					value: blockBottomMarginTablet,
+					label: 'blockBottomMarginTablet',
+				} }
+				valueLeftTablet={ {
+					value: blockLeftMarginTablet,
+					label: 'blockLeftMarginTablet',
+				} }
+				valueTopMobile={ {
+					value: blockTopMarginMobile,
+					label: 'blockTopMarginMobile',
+				} }
+				valueRightMobile={ {
+					value: blockRightMarginMobile,
+					label: 'blockRightMarginMobile',
+				} }
+				valueBottomMobile={ {
+					value: blockBottomMarginMobile,
+					label: 'blockBottomMarginMobile',
+				} }
+				valueLeftMobile={ {
+					value: blockLeftMarginMobile,
+					label: 'blockLeftMarginMobile',
+				} }
+				unit={ {
+					value: blockMarginUnit,
+					label: 'blockMarginUnit',
+				} }
+				mUnit={ {
+					value: blockMarginUnitMobile,
+					label: 'blockMarginUnitMobile',
+				} }
+				tUnit={ {
+					value: blockMarginUnitTablet,
+					label: 'blockMarginUnitTablet',
+				} }
+				deviceType={ deviceType }
+				attributes={ attributes }
+				setAttributes={ setAttributes }
+				link={ {
+					value: blockMarginLink,
+					label: 'blockMarginLink',
+				} }
+			/>
+		</UAGAdvancedPanelBody>
+	);
+
 	return (
 		<>
 			<InspectorControls>
@@ -394,6 +583,7 @@ const Settings = ( props ) => {
 					<InspectorTab { ...UAGTabs.style }>
 						{ starStyling }
 						{ ( displayTitle && '' !== title ) && titleStyling }
+						{ spacingStylePanel }
 					</InspectorTab>
 					<InspectorTab
 						{ ...UAGTabs.advance }
