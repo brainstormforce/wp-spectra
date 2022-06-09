@@ -104,4 +104,17 @@ return array(
 	'titleFontStyle'          => '',
 	'descFontStyle'           => '',
 	'prefixFontStyle'         => '',
+	// letter spacing
+	'titleLetterSpacing'            => '',
+	'titleLetterSpacingTablet'      => '',
+	'titleLetterSpacingMobile'      => '',
+	'titleLetterSpacingType'        => 'px',
+	'prefixLetterSpacing'            => '',
+	'prefixLetterSpacingTablet'      => '',
+	'prefixLetterSpacingMobile'      => '',
+	'prefixLetterSpacingType'        => 'px',
+	'descLetterSpacing'            => '',
+	'descLetterSpacingTablet'      => '',
+	'descLetterSpacingMobile'      => '',
+	'descLetterSpacingType'        => 'px',
 );

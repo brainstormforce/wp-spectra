@@ -27,9 +27,11 @@ $selectors = array(
 		'color'         => $attr['descColor'],
 		'margin-bottom' => UAGB_Helper::get_css_value( $attr['descSpace'], 'px' ),
 		'margin-top'    => UAGB_Helper::get_css_value( $attr['prefixSpace'], 'px' ),
+		'letter-spacing' => UAGB_Helper::get_css_value( $attr['descLetterSpacing'], $attr['descLetterSpacingType'] ),
 	),
 	' .uagb-team__prefix'                   => array(
 		'color' => $attr['prefixColor'],
+		'letter-spacing' => UAGB_Helper::get_css_value( $attr['prefixLetterSpacing'], $attr['prefixLetterSpacingType'] ),
 	),
 	' .uagb-team__social-icon a'            => array(
 		'color'       => $attr['socialColor'],
@@ -131,6 +133,7 @@ if ( 'above' !== $attr['imgPosition'] ) {
 $selectors[ ' ' . $attr['tag'] . '.uagb-team__title' ] = array(
 	'color'         => $attr['titleColor'],
 	'margin-bottom' => UAGB_Helper::get_css_value( $attr['titleSpace'], 'px' ),
+	'letter-spacing' => UAGB_Helper::get_css_value( $attr['titleLetterSpacing'], $attr['titleLetterSpacingType'] ),
 );
 
 $m_selectors = array(
@@ -141,6 +144,7 @@ $m_selectors = array(
 	' p.uagb-team__desc'                    => array(
 		'margin-bottom' => UAGB_Helper::get_css_value( $attr['descSpaceMobile'], 'px' ),
 		'margin-top'    => UAGB_Helper::get_css_value( $attr['prefixSpaceMobile'], 'px' ),
+		'letter-spacing' => UAGB_Helper::get_css_value( $attr['descLetterSpacingMobile'], $attr['descLetterSpacingType'] ),
 	),
 	'.uagb-team__image-position-right .uagb-team__content + img' => array( // When Image position is right.
 		'width'  => UAGB_Helper::get_css_value( $attr['imgWidthMobile'], 'px' ),
@@ -186,9 +190,13 @@ $m_selectors = array(
 		'margin-left'  => UAGB_Helper::get_css_value( $attr['socialSpaceMobile'], 'px' ),
 		'margin-right' => UAGB_Helper::get_css_value( 0, 'px' ),
 	),
+	' .uagb-team__prefix'                   => array(
+		'letter-spacing' => UAGB_Helper::get_css_value( $attr['prefixLetterSpacingMobile'], $attr['prefixLetterSpacingType'] ),
+	),
 );
 $m_selectors[ ' ' . $attr['tag'] . '.uagb-team__title' ] = array(
 	'margin-bottom' => UAGB_Helper::get_css_value( $attr['titleSpaceMobile'], 'px' ),
+	'letter-spacing' => UAGB_Helper::get_css_value( $attr['titleLetterSpacingMobile'], $attr['titleLetterSpacingType'] ),
 );
 $t_selectors = array(
 	'.uagb-team__image-position-left > img' => array( // When Image position is left.
@@ -198,6 +206,7 @@ $t_selectors = array(
 	' p.uagb-team__desc'                    => array(
 		'margin-bottom' => UAGB_Helper::get_css_value( $attr['descSpaceTablet'], 'px' ),
 		'margin-top'    => UAGB_Helper::get_css_value( $attr['prefixSpaceTablet'], 'px' ),
+		'letter-spacing' => UAGB_Helper::get_css_value( $attr['descLetterSpacingTablet'], $attr['descLetterSpacingType'] ),
 	),
 	'.uagb-team__image-position-right .uagb-team__content + img' => array( // When Image position is right.
 		'width'  => UAGB_Helper::get_css_value( $attr['imgWidthTablet'], 'px' ),
@@ -243,9 +252,13 @@ $t_selectors = array(
 		'margin-left'  => UAGB_Helper::get_css_value( $attr['socialSpaceTablet'], 'px' ),
 		'margin-right' => UAGB_Helper::get_css_value( 0, 'px' ),
 	),
+	' .uagb-team__prefix'                   => array(
+		'letter-spacing' => UAGB_Helper::get_css_value( $attr['prefixLetterSpacingTablet'], $attr['prefixLetterSpacingType'] ),
+	),
 );
 $t_selectors[ ' ' . $attr['tag'] . '.uagb-team__title' ] = array(
 	'margin-bottom' => UAGB_Helper::get_css_value( $attr['titleSpaceTablet'], 'px' ),
+	'letter-spacing' => UAGB_Helper::get_css_value( $attr['titleLetterSpacingTablet'], $attr['titleLetterSpacingType'] ),
 );
 $combined_selectors                                      = array(
 	'desktop' => $selectors,
