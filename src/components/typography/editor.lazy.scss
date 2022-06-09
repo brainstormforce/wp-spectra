@@ -1,4 +1,7 @@
 /* Reset Gutenberg Css */
+
+@import '../../styles/variables';
+
 .block-editor-block-inspector .uag-typography-options {
 
 	.components-base-control,
@@ -32,8 +35,8 @@
 
 		.uag-typography-button {
 			margin: 0;
-			height: 28px;
-			width: 28px;
+			height: $spectra-control-circle-indicator;
+			width: $spectra-control-circle-indicator;
 			padding: 5px;
 			border: 1px solid #d3d3d3;
 			border-radius: 14px;
