@@ -203,10 +203,10 @@ $selectors = array(
 		'margin-right' => UAGB_Helper::get_css_value( $attr['ctaIconSpace'], 'px' ),
 	),
 	// image svg.
-	'.uagb-infobox__content-wrap  .uagb-ifb-content svg' =>  array(
+	'.uagb-infobox__content-wrap .uagb-ifb-content svg' =>  array(
 		'box-sizing' => $box_sizing_icon,
 	),
-	'.uagb-infobox__content-wrap  .uagb-ifb-content img' =>  array(
+	'.uagb-infobox__content-wrap .uagb-ifb-content img' =>  array(
 		'box-sizing' => $box_sizing_image,
 	),
 );
@@ -221,17 +221,16 @@ if ( 'Stacked' === $attr['iconView'] ) {
 	$selectors[' .uagb-iconbox-icon-wrap:hover'] = array(
 		'background-color' => $attr['iconBackgroundHoverColor'] . ' !important',
 	);
-}
-else if ( 'Framed' === $attr['iconView'] ) {
+} else if ( 'Framed' === $attr['iconView'] ) {
 	$selectors[' .uagb-iconbox-icon-wrap.uagb-infobox-shape-circle'] = array(
-		'border' => $attr['iconBorderWidth'] . 'px solid'. $attr['iconBackgroundColor'],
+		'border' => $attr['iconBorderWidth'] . 'px solid' . $attr['iconBackgroundColor'],
 		'border-radius' => '50%',
 	);
 	$selectors[' .uagb-iconbox-icon-wrap.uagb-infobox-shape-squre'] = array(
-		'border' => $attr['iconBorderWidth'] . 'px solid'. $attr['iconBackgroundColor'],
+		'border' => $attr['iconBorderWidth'] . 'px solid' . $attr['iconBackgroundColor'],
 	);
 	$selectors[' .uagb-iconbox-icon-wrap:hover'] = array(
-		'border' => $attr['iconBorderWidth'] . 'px solid'. $attr['iconBackgroundHoverColor'],
+		'border' => $attr['iconBorderWidth'] . 'px solid' . $attr['iconBackgroundHoverColor'],
 	);
 }
 if ( 'text' === $attr['ctaType'] ) {
