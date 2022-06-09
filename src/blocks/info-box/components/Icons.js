@@ -14,7 +14,8 @@ const Icon = ( props ) => {
 					</>
 					:
 					<>
-						<div className={ ( iconView === 'none' ) ? ( 'uagb-iconbox-icon-wrap' ) : ( ( iconShape === 'Circle' ) ? ( 'uagb-iconbox-icon-wrap uagb-infobox-shape-circle' ) : ( 'uagb-iconbox-icon-wrap uagb-infobox-shape-squre' ) ) }>
+						<div className={ ( iconView === 'none' ) // eslint-disable-line no-nested-ternary
+						? ( 'uagb-iconbox-icon-wrap' ) : ( ( iconShape === 'Circle' ) ? ( 'uagb-iconbox-icon-wrap uagb-infobox-shape-circle' ) : ( 'uagb-iconbox-icon-wrap uagb-infobox-shape-squre' ) ) }>
 							{ renderSVG( attributes.icon ) }
 						</div>
 					</>}
