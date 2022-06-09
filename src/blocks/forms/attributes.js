@@ -125,6 +125,14 @@ const attributes = {
 		type: 'string',
 		default: 'left',
 	},
+	buttonAlignTablet: {
+		type: 'string',
+		default: '',
+	},
+	buttonAlignMobile: {
+		type: 'string',
+		default: '',
+	},
 	confirmationType: {
 		type: 'string',
 		default: 'message',

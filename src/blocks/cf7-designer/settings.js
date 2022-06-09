@@ -49,6 +49,8 @@ const Settings = ( props ) => {
 		fieldBorderColor,
 		fieldBorderFocusColor,
 		buttonAlignment,
+		buttonAlignmentTablet,
+		buttonAlignmentMobile,
 		buttonTextColor,
 		buttonBgColor,
 		buttonTextHoverColor,
@@ -591,22 +593,40 @@ const Settings = ( props ) => {
 		>
 			<MultiButtonsControl
 				setAttributes={ setAttributes }
-				label={ __( 'Alignment', 'ultimate-addons-for-gutenberg' ) }
+				label={ __( 'Button Alignment', 'ultimate-addons-for-gutenberg' ) }
 				data={ {
-					value: buttonAlignment,
-					label: 'buttonAlignment',
+					desktop: {
+						value: buttonAlignment,
+						label: 'buttonAlignment',
+					},
+					tablet: {
+						value: buttonAlignmentTablet,
+						label: 'buttonAlignmentTablet',
+					},
+					mobile: {
+						value: buttonAlignmentMobile,
+						label: 'buttonAlignmentMobile',
+					},
 				} }
-				className="uagb-multi-button-alignment-control"
 				options={ [
 					{
 						value: 'left',
-						icon: <Icon icon={ renderSVG( 'fa fa-align-left' ) } />,
-						tooltip: __( 'Left', 'ultimate-addons-for-gutenberg' ),
+						icon: (
+							<Icon
+								icon={ renderSVG( 'fa fa-align-left' ) }
+							/>
+						),
+						tooltip: __(
+							'Left',
+							'ultimate-addons-for-gutenberg'
+						),
 					},
 					{
 						value: 'center',
 						icon: (
-							<Icon icon={ renderSVG( 'fa fa-align-center' ) } />
+							<Icon
+								icon={ renderSVG( 'fa fa-align-center' ) }
+							/>
 						),
 						tooltip: __(
 							'Center',
@@ -616,14 +636,21 @@ const Settings = ( props ) => {
 					{
 						value: 'right',
 						icon: (
-							<Icon icon={ renderSVG( 'fa fa-align-right' ) } />
+							<Icon
+								icon={ renderSVG( 'fa fa-align-right' ) }
+							/>
 						),
-						tooltip: __( 'Right', 'ultimate-addons-for-gutenberg' ),
+						tooltip: __(
+							'Right',
+							'ultimate-addons-for-gutenberg'
+						),
 					},
 					{
 						value: 'justify',
 						icon: (
-							<Icon icon={ renderSVG( 'fa fa-align-justify' ) } />
+							<Icon
+								icon={ renderSVG( 'fa fa-align-justify' ) }
+							/>
 						),
 						tooltip: __(
 							'Justified',
@@ -632,6 +659,7 @@ const Settings = ( props ) => {
 					},
 				] }
 				showIcons={ true }
+				responsive={true}
 			/>
 		</UAGAdvancedPanelBody>
 	);

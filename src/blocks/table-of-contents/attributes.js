@@ -940,6 +940,10 @@ const attributes = {
 			styleType: 'list-letter-spacing-type'
 		}
 	},
+	markerView: {
+		type: 'string',
+		default: 'disc'
+	},
 };
 
 export default attributes;

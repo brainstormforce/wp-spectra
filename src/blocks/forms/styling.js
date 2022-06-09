@@ -23,6 +23,8 @@ function styling( props ) {
 		formPaddingUnitTab,
 		formPaddingUnitMob,
 		buttonAlign,
+		buttonAlignTablet,
+		buttonAlignMobile,
 		submitColor,
 		submitColorHover,
 		submitBgColor,
@@ -711,6 +713,9 @@ function styling( props ) {
 			),
 			'letter-spacing': generateCSSUnit( inputLetterSpacingTablet, inputLetterSpacingType ),
 		},
+		' .uagb-forms-main-form .uagb-forms-main-submit-button-wrap': {
+			'text-align': buttonAlignTablet,
+		},
 	};
 
 	mobileSelectors = {
@@ -820,6 +825,9 @@ function styling( props ) {
 				inputLineHeightType
 			),
 			'letter-spacing': generateCSSUnit( inputLetterSpacingMobile, inputLetterSpacingType ),
+		},
+		' .uagb-forms-main-form .uagb-forms-main-submit-button-wrap': {
+			'text-align': buttonAlignMobile,
 		},
 	};
 

@@ -17,10 +17,11 @@ $svg_size   = UAGB_Helper::get_css_value( $attr['ctaFontSize'], $attr['ctaFontSi
 $m_svg_size = UAGB_Helper::get_css_value( $attr['ctaFontSizeMobile'], $attr['ctaFontSizeType'] );
 $t_svg_size = UAGB_Helper::get_css_value( $attr['ctaFontSizeTablet'], $attr['ctaFontSizeType'] );
 
-$btnPaddingTop    = isset( $attr['ctaTopPadding'] ) ? $attr['ctaTopPadding'] : $attr['ctaBtnVertPadding'];
-$btnPaddingBottom = isset( $attr['ctaBottomPadding'] ) ? $attr['ctaBottomPadding'] : $attr['ctaBtnVertPadding'];
-$btnPaddingLeft   = isset( $attr['ctaLeftPadding'] ) ? $attr['ctaLeftPadding'] : $attr['ctaBtnHrPadding'];
-$btnPaddingRight  = isset( $attr['ctaRightPadding'] ) ? $attr['ctaRightPadding'] : $attr['ctaBtnHrPadding'];
+$btn_padding_top    = isset( $attr['ctaTopPadding'] ) ? $attr['ctaTopPadding'] : $attr['ctaBtnVertPadding'];
+$btn_padding_bottom = isset( $attr['ctaBottomPadding'] ) ? $attr['ctaBottomPadding'] : $attr['ctaBtnVertPadding'];
+$btn_padding_left   = isset( $attr['ctaLeftPadding'] ) ? $attr['ctaLeftPadding'] : $attr['ctaBtnHrPadding'];
+$btn_padding_right  = isset( $attr['ctaRightPadding'] ) ? $attr['ctaRightPadding'] : $attr['ctaBtnHrPadding'];
+$content_width     = is_int( $attr['contentWidth'] ) ? $attr['contentWidth'] : 70;
 
 if ( 'left' === $attr['textAlign'] ) {
 	$alignment = 'flex-start';
@@ -158,10 +159,10 @@ if ( 'button' === $attr['ctaType'] ) {
 		'border-color'     => $attr['ctaBorderColor'] ? $attr['ctaBorderColor'] : '#000',
 		'border-radius'    => UAGB_Helper::get_css_value( $attr['ctaBorderRadius'], 'px' ),
 		'border-width'     => $attr['ctaBorderWidth'] ? UAGB_Helper::get_css_value( $attr['ctaBorderWidth'], 'px' ) : '1px',
-		'padding-top'      => UAGB_Helper::get_css_value( $btnPaddingTop, $attr['ctaPaddingUnit'] ),
-		'padding-bottom'   => UAGB_Helper::get_css_value( $btnPaddingBottom, $attr['ctaPaddingUnit'] ),
-		'padding-left'     => UAGB_Helper::get_css_value( $btnPaddingLeft, $attr['ctaPaddingUnit'] ),
-		'padding-right'    => UAGB_Helper::get_css_value( $btnPaddingRight, $attr['ctaPaddingUnit'] ),
+		'padding-top'      => UAGB_Helper::get_css_value( $btn_padding_top, $attr['ctaPaddingUnit'] ),
+		'padding-bottom'   => UAGB_Helper::get_css_value( $btn_padding_bottom, $attr['ctaPaddingUnit'] ),
+		'padding-left'     => UAGB_Helper::get_css_value( $btn_padding_left, $attr['ctaPaddingUnit'] ),
+		'padding-right'    => UAGB_Helper::get_css_value( $btn_padding_right, $attr['ctaPaddingUnit'] ),
 	);
 	$selectors[' .uagb-cta__button-wrapper a.uagb-cta-typeof-button:hover']           = array(
 		'color'            => $attr['ctaLinkHoverColor'],
@@ -175,10 +176,10 @@ if ( 'button' === $attr['ctaType'] ) {
 		'border-color'     => $attr['ctaBorderColor'],
 		'border-radius'    => UAGB_Helper::get_css_value( $attr['ctaBorderRadius'], 'px' ),
 		'border-width'     => UAGB_Helper::get_css_value( $attr['ctaBorderWidth'], 'px' ),
-		'padding-top'      => UAGB_Helper::get_css_value( $btnPaddingTop, $attr['ctaPaddingUnit'] ),
-		'padding-bottom'   => UAGB_Helper::get_css_value( $btnPaddingBottom, $attr['ctaPaddingUnit'] ),
-		'padding-left'     => UAGB_Helper::get_css_value( $btnPaddingLeft, $attr['ctaPaddingUnit'] ),
-		'padding-right'    => UAGB_Helper::get_css_value( $btnPaddingRight, $attr['ctaPaddingUnit'] ),
+		'padding-top'      => UAGB_Helper::get_css_value( $btn_padding_top, $attr['ctaPaddingUnit'] ),
+		'padding-bottom'   => UAGB_Helper::get_css_value( $btn_padding_bottom, $attr['ctaPaddingUnit'] ),
+		'padding-left'     => UAGB_Helper::get_css_value( $btn_padding_left, $attr['ctaPaddingUnit'] ),
+		'padding-right'    => UAGB_Helper::get_css_value( $btn_padding_right, $attr['ctaPaddingUnit'] ),
 	);
 	$selectors['.wp-block-uagb-call-to-action a.uagb-cta__button-link-wrapper:hover'] = array(
 		'color'            => $attr['ctaLinkHoverColor'],
@@ -191,9 +192,12 @@ $selectors[' .uagb-cta__content-wrap'] = array(
 	'text-align' => $attr['textAlign'],
 );
 $selectors[' .uagb-cta__wrap']         = array(
-	'width'      => UAGB_Helper::get_css_value( $attr['contentWidth'], $attr['contentWidthType'] ),
+	'width'      => UAGB_Helper::get_css_value( $content_width, $attr['contentWidthType'] ),
 	'text-align' => $attr['textAlign'],
 );
+
+
+
 
 $selectors['.wp-block-uagb-call-to-action'] = array(
 	'text-align'     => $attr['textAlign'],
@@ -457,11 +461,13 @@ if ( 'right' === $attr['ctaPosition'] && ( 'text' === $attr['ctaType'] || 'butto
 		'justify-content' => 'space-between',
 	);
 	$selectors[' .uagb-cta__content-right .uagb-cta__left-right-wrap .uagb-cta__content']        = array(
-		'width' => UAGB_Helper::get_css_value( $attr['contentWidth'], $attr['contentWidthType'] ),
+		'width' => UAGB_Helper::get_css_value( $content_width, $attr['contentWidthType'] ),
 	);
 	$selectors[' .uagb-cta__content-right .uagb-cta__left-right-wrap .uagb-cta__link-wrapper']   = array(
-		'width' => UAGB_Helper::get_css_value( ( 100 - $attr['contentWidth'] ), $attr['contentWidthType'] ),
+		'width' => UAGB_Helper::get_css_value( ( 100 - $content_width ), $attr['contentWidthType'] ),
 	);
+
+
 	$t_selectors[' .uagb-cta__content-right .uagb-cta__left-right-wrap .uagb-cta__content']      = array(
 		'width' => UAGB_Helper::get_css_value( $attr['contentWidthTablet'], $attr['contentWidthType'] ),
 	);

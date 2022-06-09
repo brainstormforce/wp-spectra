@@ -115,4 +115,5 @@ return array(
 	'listLetterSpacingTablet'    => '',
 	'listLetterSpacingMobile'    => '',
 	'listLetterSpacingType'      => 'px',
+	'markerView'                 => 'disc',
 );
