@@ -37,9 +37,6 @@ const Render = ( props ) => {
 		showTitle,
 		showDesc,
 		block_id,
-
-		iconView,
-		iconShape
 	} = attributes;
 	// Get icon/Image components.
 	let isImage = '';

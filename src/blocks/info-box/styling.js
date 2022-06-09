@@ -206,16 +206,15 @@ function styling( props ) {
 
 		// icon attributes for icon view (circle and square)
 		iconView,
-		iconShape,
 		iconBackgroundColor,
 		iconBackgroundHoverColor,
 		iconBorderWidth
 	} = props.attributes;
 
-	let boxSizingIcon = ( '%' === iconSizeType ) ? 'border-box' : 'content-box'
-	let boxSizingImage = ( '%' === imageWidthUnit ) ? 'border-box' : 'content-box'
-	let boxSizingImageTablet = ( '%' === imageWidthUnitTablet ) ? 'border-box' : 'content-box'
-	let boxSizingImageMobile = ( '%' === imageWidthUnitMobile ) ? 'border-box' : 'content-box'
+	const boxSizingIcon = ( '%' === iconSizeType ) ? 'border-box' : 'content-box'
+	const boxSizingImage = ( '%' === imageWidthUnit ) ? 'border-box' : 'content-box'
+	const boxSizingImageTablet = ( '%' === imageWidthUnitTablet ) ? 'border-box' : 'content-box'
+	const boxSizingImageMobile = ( '%' === imageWidthUnitMobile ) ? 'border-box' : 'content-box'
 
 	const selectors = {
 		// Icon css
