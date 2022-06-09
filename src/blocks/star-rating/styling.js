@@ -15,6 +15,8 @@ function styling( props ) {
 		sizeMobile,
 		sizeTablet,
 		align,
+		alignTablet,
+		alignMobile,
 		gap,
 		gapTablet,
 		gapMobile,
@@ -71,20 +73,39 @@ function styling( props ) {
 		blockMarginUnitMobile,
 	} = props.attributes;
 
-	let alignment = 'flex-start';
 	let stackAlignment = align;
+	let stackAlignmentTablet = alignTablet;
+	let stackAlignmentMobile = alignMobile;
 
-	if ( align ) {
-		if ( 'right' === align ) {
-			alignment = 'flex-end';
+	if ( 'full' === align ) {
+		stackAlignment = 'left';
+	}
+
+	if ( 'full' === alignTablet ) {
+		stackAlignmentTablet = 'left';
+	}
+
+	if ( 'full' === alignMobile ) {
+		stackAlignmentMobile = 'left';
+	}
+
+	const flexJustifyContent = ( JustifyContent ) => {
+		let alignment = '';
+		switch ( JustifyContent ) {
+			case 'right':
+				alignment = 'flex-end';
+				break;
+			case 'center':
+				alignment = 'center';
+				break;
+			case 'full':
+				alignment = 'space-between';
+				break;
+			default:
+				alignment = 'flex-start'
+				break;
 		}
-		if ( 'center' === align ) {
-			alignment = 'center';
-		}
-		if ( 'full' === align ) {
-			alignment = 'space-between';
-			stackAlignment = 'left';
-		}
+		return alignment;
 	}
 
 	// Since title text is set to flex, we need this function so that stack alignment doesn't break.
@@ -137,7 +158,7 @@ function styling( props ) {
 			blockLeftPadding,
 			blockPaddingUnit
 		),
-		'justify-content': alignment,
+		'justify-content': flexJustifyContent( align ),
 		'text-align': stackAlignment,
 	}
 
@@ -158,6 +179,10 @@ function styling( props ) {
 			'font-weight': fontWeight,
 			'line-height': generateCSSUnit( lineHeight, lineHeightType ),
 			'color': titleColor,
+		},
+		'.wp-block-uagb-star-rating ': {
+			'justify-content': flexJustifyContent( align ),
+			'text-align': stackAlignment,
 		},
 	};
 	let index = 'margin-right';
@@ -180,7 +205,7 @@ function styling( props ) {
 		index = 'margin-right';
 		selectors[ '.wp-block-uagb-star-rating ' ] = {
 			'display' : 'flex',
-			'justify-content' : alignment,
+			'justify-content' : flexJustifyContent( align ),
 			...wrapperCSS
 		};
 	}
@@ -245,6 +270,9 @@ function styling( props ) {
 	}
 
 	const tabletSelectors = {
+		'.wp-block-uagb-star-rating ': {
+			'justify-content': flexJustifyContent( alignTablet ),
+		},
 		' .uag-star-rating': {
 			'font-size': generateCSSUnit( sizeTablet, 'px' ),
 		},
@@ -262,29 +290,29 @@ function styling( props ) {
 		indexTablet = 'margin-bottom';
 		tabletSelectors[ '.wp-block-uagb-star-rating ' ] = {
 			'display' : 'block',
-			'text-align': stackAlignment,
+			'text-align': stackAlignmentTablet,
 			...wrapperCSSTablet
 		};
 
 		// Keeping this here, in case responsive alignment is added in the future.
 		// Since title text is set to flex, we need this property that aligns flex objects.
 		tabletSelectors[ ' .uag-star-rating__title' ] = {
-			'justify-content': flexAlignment( stackAlignment ),
+			'justify-content': flexAlignment( stackAlignmentTablet ),
 			'margin-right' : 0,
 		};
 
 		tabletSelectors[ ' div.uag-star-rating' ] = {
-			'justify-content': flexAlignment( stackAlignment ),
+			'justify-content': flexAlignment( stackAlignmentTablet ),
 		};
 	} else {
 		indexTablet = 'margin-right';
 		tabletSelectors[ '.wp-block-uagb-star-rating ' ] = {
 			'display' : 'flex',
-			'justify-content' : alignment,
+			'justify-content' : flexJustifyContent( alignTablet ),
 			...wrapperCSSTablet
 		};
 		tabletSelectors[ ' .uag-star-rating__title ' ] = {
-			'justify-content': flexAlignment( stackAlignment ),
+			'justify-content': flexAlignment( stackAlignmentTablet ),
 			'margin-bottom' : 0,
 		};
 	}
@@ -325,6 +353,9 @@ function styling( props ) {
 	}
 
 	const mobileSelectors = {
+		'.wp-block-uagb-star-rating ': {
+			'justify-content': flexJustifyContent( alignMobile ),
+		},
 		' .uag-star-rating': {
 			'font-size': generateCSSUnit( sizeMobile, 'px' ),
 		},
@@ -342,24 +373,24 @@ function styling( props ) {
 		indexMobile = 'margin-bottom';
 		mobileSelectors[ '.wp-block-uagb-star-rating ' ] = {
 			'display' : 'block',
-			'text-align': stackAlignment,
+			'text-align': stackAlignmentMobile,
 			...wrapperCSSMobile
 		};
 
 		// Keeping this here, in case responsive alignment is added in the future.
 		// Since title text is set to flex, we need this property that aligns flex objects.
 		mobileSelectors[ ' .uag-star-rating__title' ] = {
-			'justify-content': flexAlignment( stackAlignment ),
+			'justify-content': flexAlignment( stackAlignmentMobile ),
 			'margin-right' : 0,
 		};
 		mobileSelectors[ ' div.uag-star-rating ' ] = {
-			'justify-content': flexAlignment( stackAlignment ),
+			'justify-content': flexAlignment( stackAlignmentMobile ),
 		};
 	} else {
 		indexMobile = 'margin-right';
 		mobileSelectors[ '.wp-block-uagb-star-rating ' ] = {
 			'display' : 'flex',
-			'justify-content' : alignment,
+			'justify-content' : flexJustifyContent( alignMobile ),
 			'margin-bottom' : 0,
 			...wrapperCSSMobile
 		};
