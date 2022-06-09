@@ -106,7 +106,8 @@ function styling( props ) {
 		headingFontStyle,
 		headingTransform,
 		headingDecoration,
-		headingAlignment
+		headingAlignment,
+		markerView
 	} = props.attributes;
 
 	let selectors = {};
@@ -114,6 +115,12 @@ function styling( props ) {
 	let mobile_selectors = {};
 
 	selectors = {
+		' .uagb-toc__list-wrap ul li': {
+			'font-size': generateCSSUnit( fontSize, fontSizeType ),
+		},
+		' .uagb-toc__list-wrap ol li': {
+			'font-size': generateCSSUnit( fontSize, fontSizeType ),
+		},
 		' .uagb-toc__list-wrap ol li a': {
 			'font-size': generateCSSUnit( fontSize, fontSizeType ),
 			'line-height': generateCSSUnit( lineHeight, lineHeightType ),
@@ -182,6 +189,7 @@ function styling( props ) {
 			'padding-bottom': 0,
 		},
 		' .uagb-toc__list-wrap ol.uagb-toc__list > li': {
+			'list-style-type': disableBullets ? 'none !important' :  markerView + ' !important',
 			'padding-top':
 				'calc( ' +
 				generateCSSUnit(
@@ -198,6 +206,7 @@ function styling( props ) {
 				' / 2 )',
 		},
 		' .uagb-toc__list-wrap ul.uagb-toc__list > li': {
+			'list-style-type': disableBullets ? 'none !important' :  markerView + ' !important',
 			'padding-top':
 				'calc( ' +
 				generateCSSUnit(
@@ -243,17 +252,23 @@ function styling( props ) {
 
 	if ( disableBullets ) {
 		selectors[ '.wp-block-uagb-table-of-contents ol.uagb-toc__list>li' ] = {
-			'list-style-type': 'none',
+			'list-style-type': 'none !important',
 		};
 		selectors[ ' .uagb-toc__list' ] = {
-			'list-style-type': 'none',
+			'list-style-type': 'none  !important',
 		};
 		selectors[ ' .uagb-toc__list .uagb-toc__list' ] = {
-			'list-style-type': 'none',
+			'list-style-type': 'none !important',
 		};
 	}
 
 	tablet_selectors = {
+		' .uagb-toc__list-wrap ul li': {
+			'font-size': generateCSSUnit( fontSizeTablet, fontSizeType ),
+		},
+		' .uagb-toc__list-wrap ol li': {
+			'font-size': generateCSSUnit( fontSizeTablet, fontSizeType ),
+		},
 		' .uagb-toc__list-wrap ol li a': {
 			'font-size': generateCSSUnit( fontSizeTablet, fontSizeType ),
 			'line-height': generateCSSUnit( lineHeightTablet, lineHeightType ),
@@ -355,6 +370,12 @@ function styling( props ) {
 	};
 
 	mobile_selectors = {
+		' .uagb-toc__list-wrap ul li': {
+			'font-size': generateCSSUnit( fontSizeMobile, fontSizeType ),
+		},
+		' .uagb-toc__list-wrap ol li': {
+			'font-size': generateCSSUnit( fontSizeMobile, fontSizeType ),
+		},
 		' .uagb-toc__list-wrap ol li a': {
 			'font-size': generateCSSUnit( fontSizeMobile, fontSizeType ),
 			'line-height': generateCSSUnit( lineHeightMobile, lineHeightType ),
