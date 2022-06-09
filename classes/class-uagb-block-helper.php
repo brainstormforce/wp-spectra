@@ -106,6 +106,13 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				'margin-bottom'   => UAGB_Helper::get_css_value( $attr['bottomMargin'], $attr['marginType'] ),
 				'margin-left'     => UAGB_Helper::get_css_value( $attr['leftMargin'], $attr['marginType'] ),
 				'margin-right'    => UAGB_Helper::get_css_value( $attr['rightMargin'], $attr['marginType'] ),
+				'letter-spacing' => UAGB_Helper::get_css_value( $attr['fontLetterSpacing'], $attr['fontLetterSpacingType'] ),
+			);
+			$m_selector[' .uagb-button__wrapper .uagb-buttons-repeater.wp-block-button__link'] = array(
+				'letter-spacing' => UAGB_Helper::get_css_value( $attr['fontLetterSpacingMobile'], $attr['fontLetterSpacingType'] ),
+			);
+			$t_selectors[' .uagb-button__wrapper .uagb-buttons-repeater.wp-block-button__link'] = array(
+				'letter-spacing' => UAGB_Helper::get_css_value( $attr['fontLetterSpacingTablet'], $attr['fontLetterSpacingType'] ),
 			);
 			$selectors[ $wrapper . '.wp-block-button__link:hover' ]                           = array(
 				'color' => $attr['hColor'],

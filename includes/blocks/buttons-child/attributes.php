@@ -91,4 +91,9 @@ return array(
 	'hovergradientValue'     => '',
 	'backgroundOpacity'      => '',
 	'backgroundHoverOpacity' => '',
+	// letter spacing.
+	'fontLetterSpacing'            => '',
+	'fontLetterSpacingTablet'      => '',
+	'fontLetterSpacingMobile'      => '',
+	'fontLetterSpacingType'        => 'px',
 );
