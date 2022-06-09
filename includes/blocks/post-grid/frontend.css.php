@@ -19,40 +19,6 @@ $selectors[' .uagb-post-pagination-wrap'] = array(
 	'margin-' . $attr['paginationAlignment'] => '10px',
 );
 
-$selectors[' .uagb-post__text.uagb-post__title']                           = array(
-	'letter-spacing' => UAGB_Helper::get_css_value( $attr['titleLetterSpacing'], $attr['titleLetterSpacingType'] ),
-);
-$selectors[' .uagb-post__text.uagb-post-grid-byline > span']               = array(
-	'letter-spacing' => UAGB_Helper::get_css_value( $attr['metaLetterSpacing'], $attr['metaLetterSpacingType'] ),
-);
-$selectors[' .uagb-post__text.uagb-post-grid-byline time']                 = array(
-	'letter-spacing' => UAGB_Helper::get_css_value( $attr['metaLetterSpacing'], $attr['metaLetterSpacingType'] ),
-);
-$selectors[' .uagb-post__text.uagb-post-grid-byline .uagb-post__author']   = array(
-	'letter-spacing' => UAGB_Helper::get_css_value( $attr['metaLetterSpacing'], $attr['metaLetterSpacingType'] ),
-);
-$selectors[' .uagb-post__text.uagb-post-grid-byline .uagb-post__author a'] = array(
-	'letter-spacing' => UAGB_Helper::get_css_value( $attr['metaLetterSpacing'], $attr['metaLetterSpacingType'] ),
-);
-$selectors[' span.uagb-post__taxonomy']                                    = array(
-	'letter-spacing' => UAGB_Helper::get_css_value( $attr['metaLetterSpacing'], $attr['metaLetterSpacingType'] ),
-);
-$selectors[' .uagb-post__inner-wrap .uagb-post__taxonomy.highlighted']     = array(
-	'letter-spacing' => UAGB_Helper::get_css_value( $attr['metaLetterSpacing'], $attr['metaLetterSpacingType'] ),
-);
-
-
-$selectors[' .uagb-post__text.uagb-post__excerpt'] = array(
-	'letter-spacing' => UAGB_Helper::get_css_value( $attr['excerptLetterSpacing'], $attr['excerptLetterSpacingType'] ),
-);
-
-$selectors[' .uagb-post__text.uagb-post__cta']   = array(
-	'letter-spacing' => UAGB_Helper::get_css_value( $attr['ctaLetterSpacing'], $attr['ctaLetterSpacingType'] ),
-);
-$selectors[' .uagb-post__text.uagb-post__cta a'] = array(
-	'letter-spacing' => UAGB_Helper::get_css_value( $attr['ctaLetterSpacing'], $attr['ctaLetterSpacingType'] ),
-);
-
 if ( 'filled' === $attr['paginationLayout'] ) {
 	$selectors[' .uagb-post-pagination-wrap .page-numbers.current'] = array(
 
@@ -89,71 +55,7 @@ if ( 'filled' === $attr['paginationLayout'] ) {
 }
 
 $m_selectors = UAGB_Block_Helper::get_post_mobile_selectors( $attr );
-
-$m_selectors[' .uagb-post__text.uagb-post__title']                           = array(
-	'letter-spacing' => UAGB_Helper::get_css_value( $attr['titleLetterSpacingMobile'], $attr['titleLetterSpacingType'] ),
-);
-$m_selectors[' .uagb-post__text.uagb-post-grid-byline > span']               = array(
-	'letter-spacing' => UAGB_Helper::get_css_value( $attr['metaLetterSpacingMobile'], $attr['metaLetterSpacingType'] ),
-);
-$m_selectors[' .uagb-post__text.uagb-post-grid-byline time']                 = array(
-	'letter-spacing' => UAGB_Helper::get_css_value( $attr['metaLetterSpacingMobile'], $attr['metaLetterSpacingType'] ),
-);
-$m_selectors[' .uagb-post__text.uagb-post-grid-byline .uagb-post__author']   = array(
-	'letter-spacing' => UAGB_Helper::get_css_value( $attr['metaLetterSpacingMobile'], $attr['metaLetterSpacingType'] ),
-);
-$m_selectors[' .uagb-post__text.uagb-post-grid-byline .uagb-post__author a'] = array(
-	'letter-spacing' => UAGB_Helper::get_css_value( $attr['metaLetterSpacingMobile'], $attr['metaLetterSpacingType'] ),
-);
-$m_selectors[' span.uagb-post__taxonomy']                                    = array(
-	'letter-spacing' => UAGB_Helper::get_css_value( $attr['metaLetterSpacingMobile'], $attr['metaLetterSpacingType'] ),
-);
-$m_selectors[' .uagb-post__inner-wrap .uagb-post__taxonomy.highlighted']     = array(
-	'letter-spacing' => UAGB_Helper::get_css_value( $attr['metaLetterSpacingMobile'], $attr['metaLetterSpacingType'] ),
-);
-
-$m_selectors[' .uagb-post__text.uagb-post__excerpt'] = array(
-	'letter-spacing' => UAGB_Helper::get_css_value( $attr['excerptLetterSpacingMobile'], $attr['excerptLetterSpacingType'] ),
-);
-$m_selectors[' .uagb-post__text.uagb-post__cta']     = array(
-	'letter-spacing' => UAGB_Helper::get_css_value( $attr['ctaLetterSpacingMobile'], $attr['ctaLetterSpacingType'] ),
-);
-$m_selectors[' .uagb-post__text.uagb-post__cta a']   = array(
-	'letter-spacing' => UAGB_Helper::get_css_value( $attr['ctaLetterSpacingMobile'], $attr['ctaLetterSpacingType'] ),
-);
-
-$t_selectors                                       = UAGB_Block_Helper::get_post_tablet_selectors( $attr );
-$t_selectors[' .uagb-post__text.uagb-post__title'] = array(
-	'letter-spacing' => UAGB_Helper::get_css_value( $attr['titleLetterSpacingTablet'], $attr['titleLetterSpacingType'] ),
-);
-$t_selectors[' .uagb-post__text.uagb-post-grid-byline > span']               = array(
-	'letter-spacing' => UAGB_Helper::get_css_value( $attr['metaLetterSpacingTablet'], $attr['metaLetterSpacingType'] ),
-);
-$t_selectors[' .uagb-post__text.uagb-post-grid-byline time']                 = array(
-	'letter-spacing' => UAGB_Helper::get_css_value( $attr['metaLetterSpacingTablet'], $attr['metaLetterSpacingType'] ),
-);
-$t_selectors[' .uagb-post__text.uagb-post-grid-byline .uagb-post__author']   = array(
-	'letter-spacing' => UAGB_Helper::get_css_value( $attr['metaLetterSpacingTablet'], $attr['metaLetterSpacingType'] ),
-);
-$t_selectors[' .uagb-post__text.uagb-post-grid-byline .uagb-post__author a'] = array(
-	'letter-spacing' => UAGB_Helper::get_css_value( $attr['metaLetterSpacingTablet'], $attr['metaLetterSpacingType'] ),
-);
-$t_selectors[' span.uagb-post__taxonomy']                                    = array(
-	'letter-spacing' => UAGB_Helper::get_css_value( $attr['metaLetterSpacingTablet'], $attr['metaLetterSpacingType'] ),
-);
-$t_selectors[' .uagb-post__inner-wrap .uagb-post__taxonomy.highlighted']     = array(
-	'letter-spacing' => UAGB_Helper::get_css_value( $attr['metaLetterSpacingTablet'], $attr['metaLetterSpacingType'] ),
-);
-
-$t_selectors[' .uagb-post__text.uagb-post__excerpt'] = array(
-	'letter-spacing' => UAGB_Helper::get_css_value( $attr['excerptLetterSpacingTablet'], $attr['excerptLetterSpacingType'] ),
-);
-$t_selectors[' .uagb-post__text.uagb-post__cta']     = array(
-	'letter-spacing' => UAGB_Helper::get_css_value( $attr['ctaLetterSpacingTablet'], $attr['ctaLetterSpacingType'] ),
-);
-$t_selectors[' .uagb-post__text.uagb-post__cta a']   = array(
-	'letter-spacing' => UAGB_Helper::get_css_value( $attr['ctaLetterSpacingTablet'], $attr['ctaLetterSpacingType'] ),
-);
+$t_selectors = UAGB_Block_Helper::get_post_tablet_selectors( $attr );
 
 $combined_selectors = array(
 	'desktop' => $selectors,
