@@ -8,6 +8,8 @@ import generateCSSUnit from '@Controls/generateCSSUnit';
 function styling( props ) {
 	const {
 		align,
+		alignTablet,
+		alignMobile,
 		gap,
 		gapTablet,
 		gapMobile,
@@ -88,11 +90,17 @@ function styling( props ) {
 		' .uagb-icon-list__source-image': {
 			'width': generateCSSUnit( sizeMobile, sizeType ),
 		},
+		' .uagb-icon-list__wrap .block-editor-inner-blocks': {
+			'text-align': alignMobile,
+		},
 	};
 
 	tabletSelectors = {
 		' .uagb-icon-list__source-image': {
 			'width': generateCSSUnit( sizeTablet, sizeType ),
+		},
+		' .uagb-icon-list__wrap .block-editor-inner-blocks': {
+			'text-align': alignTablet,
 		},
 	};
 	selectors[ ' .uagb-icon-list__source-wrap svg' ] = {

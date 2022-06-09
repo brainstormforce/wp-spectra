@@ -27,6 +27,8 @@ const Settings = ( props ) => {
 
 	const {
 		align,
+		alignTablet,
+		alignMobile,
 		gap,
 		gapTablet,
 		gapMobile,
@@ -139,17 +141,24 @@ const Settings = ( props ) => {
 					] }
 					showIcons={ false }
 				/>
+
 				<MultiButtonsControl
 					setAttributes={ setAttributes }
-					label={ __(
-						'Alignment',
-						'ultimate-addons-for-gutenberg'
-					) }
+					label={ __( 'Alignment', 'ultimate-addons-for-gutenberg' ) }
 					data={ {
-						value: align,
-						label: 'align',
+						desktop: {
+							value: align,
+							label: 'align',
+						},
+						tablet: {
+							value: alignTablet,
+							label: 'alignTablet',
+						},
+						mobile: {
+							value: alignMobile,
+							label: 'alignMobile',
+						},
 					} }
-					className="uagb-multi-button-alignment-control"
 					options={ [
 						{
 							value: 'left',
@@ -167,9 +176,7 @@ const Settings = ( props ) => {
 							value: 'center',
 							icon: (
 								<Icon
-									icon={ renderSVG(
-										'fa fa-align-center'
-									) }
+									icon={ renderSVG( 'fa fa-align-center' ) }
 								/>
 							),
 							tooltip: __(
@@ -181,9 +188,7 @@ const Settings = ( props ) => {
 							value: 'right',
 							icon: (
 								<Icon
-									icon={ renderSVG(
-										'fa fa-align-right'
-									) }
+									icon={ renderSVG( 'fa fa-align-right' ) }
 								/>
 							),
 							tooltip: __(
@@ -193,7 +198,14 @@ const Settings = ( props ) => {
 						},
 					] }
 					showIcons={ true }
+					responsive={true}
 				/>
+
+
+
+
+
+
 				{ 'horizontal' === icon_layout && (
 					<>
 						<MultiButtonsControl
