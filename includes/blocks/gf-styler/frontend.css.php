@@ -53,6 +53,7 @@ $selectors = array(
 		'margin-top'       => UAGB_Helper::get_css_value( $attr['fieldLabelSpacing'], 'px' ),
 		'margin-bottom'    => UAGB_Helper::get_css_value( $attr['fieldSpacing'], 'px' ),
 		'text-align'       => $attr['align'],
+		'letter-spacing'   => UAGB_Helper::get_css_value( $attr['inputLetterSpacing'], $attr['inputLetterSpacingType'] ),
 	),
 	// Focus.
 	' .gform_wrapper.gravity-theme input:not([type=submit]):focus' => array(
@@ -75,6 +76,7 @@ $selectors = array(
 		'padding-right'    => UAGB_Helper::get_css_value( $button_right_padding, $attr['buttonpaddingUnit'] ),
 		'padding-top'      => UAGB_Helper::get_css_value( $button_top_padding, $attr['buttonpaddingUnit'] ),
 		'padding-bottom'   => UAGB_Helper::get_css_value( $button_bottom_padding, $attr['buttonpaddingUnit'] ),
+		'letter-spacing'   => UAGB_Helper::get_css_value( $attr['buttonLetterSpacing'], $attr['buttonLetterSpacingType'] ),
 	),
 	' input[type=button]:hover'                            => array(
 		'color'            => $attr['buttonTextHoverColor'],
@@ -141,6 +143,7 @@ $selectors = array(
 		'margin-bottom'    => UAGB_Helper::get_css_value( $attr['fieldSpacing'], 'px' ),
 		'text-align'       => $attr['align'],
 		'height'           => $attr['textAreaHeight'],
+		'letter-spacing'   => UAGB_Helper::get_css_value( $attr['inputLetterSpacing'], $attr['inputLetterSpacingType'] ),
 	),
 
 	' .gform_wrapper.gravity-theme .gfield textarea.large:focus' => array(
@@ -163,6 +166,7 @@ $selectors = array(
 		'font-style'      => $attr['labelFontStyle'],
 		'font-weight'     => $attr['labelFontWeight'],
 		'line-height'     => UAGB_Helper::get_css_value( $attr['labelLineHeight'], $attr['labelLineHeightType'] ),
+		'letter-spacing'  => UAGB_Helper::get_css_value( $attr['labelLetterSpacing'], $attr['labelLetterSpacingType'] ),
 	),
 	' form .gfield_radio label.gfield_label'               => array(
 		'color'           => $attr['fieldLabelColor'],
@@ -173,6 +177,7 @@ $selectors = array(
 		'font-style'      => $attr['labelFontStyle'],
 		'font-weight'     => $attr['labelFontWeight'],
 		'line-height'     => UAGB_Helper::get_css_value( $attr['labelLineHeight'], $attr['labelLineHeightType'] ),
+		'letter-spacing'  => UAGB_Helper::get_css_value( $attr['labelLetterSpacing'], $attr['labelLetterSpacingType'] ),
 	),
 	' form .gfield_checkbox label.gfield_label'            => array(
 		'color'           => $attr['fieldLabelColor'],
@@ -183,6 +188,7 @@ $selectors = array(
 		'font-style'      => $attr['labelFontStyle'],
 		'font-weight'     => $attr['labelFontWeight'],
 		'line-height'     => UAGB_Helper::get_css_value( $attr['labelLineHeight'], $attr['labelLineHeightType'] ),
+		'letter-spacing'  => UAGB_Helper::get_css_value( $attr['labelLetterSpacing'], $attr['labelLetterSpacingType'] ),
 	),
 	' .gform_wrapper.gravity-theme .gfield_checkbox '      => array(
 		'margin-top' => UAGB_Helper::get_css_value( $attr['fieldLabelSpacing'], 'px' ),
@@ -203,6 +209,7 @@ $selectors = array(
 		'padding-right'    => UAGB_Helper::get_css_value( $button_right_padding, $attr['buttonpaddingUnit'] ),
 		'padding-top'      => UAGB_Helper::get_css_value( $button_top_padding, $attr['buttonpaddingUnit'] ),
 		'padding-bottom'   => UAGB_Helper::get_css_value( $button_bottom_padding, $attr['buttonpaddingUnit'] ),
+		'letter-spacing'   => UAGB_Helper::get_css_value( $attr['buttonLetterSpacing'], $attr['buttonLetterSpacingType'] ),
 	),
 
 	' .gform_footer.top_label input[type="submit"]'        => array(
@@ -270,6 +277,7 @@ $selectors = array(
 		'border-bottom-style' => 'solid',
 		'border-bottom-width' => UAGB_Helper::get_css_value( $attr['fieldBorderWidth'], $attr['fieldBorderWidthType'] ),
 		'border-radius'       => UAGB_Helper::get_css_value( $attr['fieldBorderRadius'], $attr['fieldBorderRadiusType'] ),
+		'letter-spacing'      => UAGB_Helper::get_css_value( $attr['inputLetterSpacing'], $attr['inputLetterSpacingType'] ),
 	),
 	' .uagb-gf-styler__field-style-underline .gform_wrapper.gravity-theme .gfield textarea' => array(
 		'border-style'        => 'none',
@@ -358,14 +366,17 @@ $selectors = array(
 		'border-color'     => $attr['fieldBorderFocusColor'],
 	),
 	' .uagb-gf-styler__check-style-enabled form .gfield_radio label' => array(
-		'color' => $attr['radioCheckLableColor'],
+		'color'          => $attr['radioCheckLableColor'],
+		'letter-spacing' => UAGB_Helper::get_css_value( $attr['radioCheckLetterSpacing'], $attr['radioCheckLetterSpacingType'] ),
 	),
 	' .uagb-gf-styler__check-style-enabled form .gfield_checkbox label' => array(
-		'color' => $attr['radioCheckLableColor'],
+		'color'          => $attr['radioCheckLableColor'],
+		'letter-spacing' => UAGB_Helper::get_css_value( $attr['radioCheckLetterSpacing'], $attr['radioCheckLetterSpacingType'] ),
 	),
 	// Validation Errors.
 	' .gform_wrapper .gfield_description.validation_message' => array(
-		'color' => $attr['validationMsgColor'],
+		'color'          => $attr['validationMsgColor'],
+		'letter-spacing' => UAGB_Helper::get_css_value( $attr['validationMsgLetterSpacing'], $attr['validationMsgLetterSpacingType'] ),
 	),
 	' .uagb-gf-styler__error-yes .gform_wrapper .gfield.gfield_error' => array(
 		'background-color' => $attr['validationMsgBgColor'],
@@ -428,10 +439,12 @@ $selectors = array(
 		'padding-right'    => UAGB_Helper::get_css_value( $msg_right_padding, $attr['msgpaddingUnit'] ),
 		'padding-top'      => UAGB_Helper::get_css_value( $msg_top_padding, $attr['msgpaddingUnit'] ),
 		'padding-bottom'   => UAGB_Helper::get_css_value( $msg_bottom_padding, $attr['msgpaddingUnit'] ),
+		'letter-spacing'   => UAGB_Helper::get_css_value( $attr['msgLetterSpacing'], $attr['msgLetterSpacingType'] ),
 	),
 
 	' .gform_confirmation_message'                         => array(
-		'color' => $attr['successMsgColor'],
+		'color'          => $attr['successMsgColor'],
+		'letter-spacing' => UAGB_Helper::get_css_value( $attr['successMsgLetterSpacing'], $attr['successMsgLetterSpacingType'] ),
 	),
 );
 
@@ -472,6 +485,7 @@ $t_selectors = array(
 		'padding-bottom' => UAGB_Helper::get_css_value( $attr['fieldbottomTabletPadding'], $attr['fieldtabletPaddingUnit'] ),
 		'margin-top'     => UAGB_Helper::get_css_value( $attr['fieldLabelSpacingTablet'], 'px' ),
 		'margin-bottom'  => UAGB_Helper::get_css_value( $attr['fieldSpacingTablet'], 'px' ),
+		'letter-spacing' => UAGB_Helper::get_css_value( $attr['inputLetterSpacingTablet'], $attr['inputLetterSpacingType'] ),
 	),
 	' .gform_wrapper.gravity-theme .gfield textarea.large' => array(
 		'padding-left'   => UAGB_Helper::get_css_value( $attr['fieldleftTabletPadding'], $attr['fieldtabletPaddingUnit'] ),
@@ -481,6 +495,7 @@ $t_selectors = array(
 		'margin-top'     => UAGB_Helper::get_css_value( $attr['fieldLabelSpacingTablet'], 'px' ),
 		'margin-bottom'  => UAGB_Helper::get_css_value( $attr['fieldSpacingTablet'], 'px' ),
 		'height'         => $attr['textAreaHeightTablet'],
+		'letter-spacing' => UAGB_Helper::get_css_value( $attr['inputLetterSpacingTablet'], $attr['inputLetterSpacingType'] ),
 	),
 	' input.gform_button'                                  => array(
 		'padding-left'   => UAGB_Helper::get_css_value( $attr['buttonleftTabletPadding'], $attr['buttontabletPaddingUnit'] ),
@@ -488,12 +503,37 @@ $t_selectors = array(
 		'padding-top'    => UAGB_Helper::get_css_value( $attr['buttontopTabletPadding'], $attr['buttontabletPaddingUnit'] ),
 		'padding-bottom' => UAGB_Helper::get_css_value( $attr['buttonbottomTabletPadding'], $attr['buttontabletPaddingUnit'] ),
 		'border-width'   => UAGB_Helper::get_css_value( $attr['buttonBorderWidthTablet'], 'px' ),
+		'letter-spacing' => UAGB_Helper::get_css_value( $attr['buttonLetterSpacingTablet'], $attr['buttonLetterSpacingType'] ),
 	),
 	' .gform_wrapper div.validation_error'                 => array(
 		'padding-left'   => UAGB_Helper::get_css_value( $attr['msgleftTabletPadding'], $attr['msgtabletPaddingUnit'] ),
 		'padding-right'  => UAGB_Helper::get_css_value( $attr['msgrightTabletPadding'], $attr['msgtabletPaddingUnit'] ),
 		'padding-top'    => UAGB_Helper::get_css_value( $attr['msgtopTabletPadding'], $attr['msgtabletPaddingUnit'] ),
 		'padding-bottom' => UAGB_Helper::get_css_value( $attr['msgbottomTabletPadding'], $attr['msgtabletPaddingUnit'] ),
+	),
+	' .gform_confirmation_message'                         => array(
+		'letter-spacing' => UAGB_Helper::get_css_value( $attr['successMsgLetterSpacingTablet'], $attr['successMsgLetterSpacingType'] ),
+	),
+	' .gform_wrapper.gravity-theme div.validation_message' => array(
+		'letter-spacing' => UAGB_Helper::get_css_value( $attr['msgLetterSpacingTablet'], $attr['msgLetterSpacingType'] ),
+	),
+	' .gform_wrapper .gfield_description.validation_message' => array(
+		'letter-spacing' => UAGB_Helper::get_css_value( $attr['validationMsgLetterSpacingTablet'], $attr['validationMsgLetterSpacingType'] ),
+	),
+	' .gform_wrapper.gravity-theme .gfield_label'          => array(
+		'letter-spacing' => UAGB_Helper::get_css_value( $attr['labelLetterSpacingTablet'], $attr['labelLetterSpacingType'] ),
+	),
+	' form .gfield_radio label.gfield_label'               => array(
+		'letter-spacing' => UAGB_Helper::get_css_value( $attr['labelLetterSpacingTablet'], $attr['labelLetterSpacingType'] ),
+	),
+	' form .gfield_checkbox label.gfield_label'            => array(
+		'letter-spacing' => UAGB_Helper::get_css_value( $attr['labelLetterSpacingTablet'], $attr['labelLetterSpacingType'] ),
+	),
+	' .uagb-gf-styler__check-style-enabled form .gfield_checkbox label' => array(
+		'letter-spacing' => UAGB_Helper::get_css_value( $attr['radioCheckLetterSpacingTablet'], $attr['radioCheckLetterSpacingType'] ),
+	),
+	' .uagb-gf-styler__check-style-enabled form .gfield_radio label' => array(
+		'letter-spacing' => UAGB_Helper::get_css_value( $attr['radioCheckLetterSpacingTablet'], $attr['radioCheckLetterSpacingType'] ),
 	),
 );
 
@@ -532,6 +572,7 @@ $m_selectors = array(
 		'border-width'   => UAGB_Helper::get_css_value( $attr['fieldBorderWidthMobile'], $attr['fieldBorderWidthType'] ),
 		'margin-top'     => UAGB_Helper::get_css_value( $attr['fieldLabelSpacingMobile'], 'px' ),
 		'margin-bottom'  => UAGB_Helper::get_css_value( $attr['fieldSpacingMobile'], 'px' ),
+		'letter-spacing' => UAGB_Helper::get_css_value( $attr['inputLetterSpacingMobile'], $attr['inputLetterSpacingType'] ),
 	),
 	' .gform_wrapper.gravity-theme .gfield textarea.large' => array(
 		'padding-left'   => UAGB_Helper::get_css_value( $attr['fieldleftMobilePadding'], $attr['fieldmobilePaddingUnit'] ),
@@ -541,6 +582,7 @@ $m_selectors = array(
 		'margin-top'     => UAGB_Helper::get_css_value( $attr['fieldLabelSpacingMobile'], 'px' ),
 		'margin-bottom'  => UAGB_Helper::get_css_value( $attr['fieldSpacingMobile'], 'px' ),
 		'height'         => $attr['textAreaHeightMobile'],
+		'letter-spacing' => UAGB_Helper::get_css_value( $attr['inputLetterSpacingMobile'], $attr['inputLetterSpacingType'] ),
 	),
 	' input.gform_button'                                  => array(
 		'padding-left'   => UAGB_Helper::get_css_value( $attr['buttonleftMobilePadding'], $attr['buttonmobilePaddingUnit'] ),
@@ -548,12 +590,37 @@ $m_selectors = array(
 		'padding-top'    => UAGB_Helper::get_css_value( $attr['buttontopMobilePadding'], $attr['buttonmobilePaddingUnit'] ),
 		'padding-bottom' => UAGB_Helper::get_css_value( $attr['buttonbottomMobilePadding'], $attr['buttonmobilePaddingUnit'] ),
 		'border-width'   => UAGB_Helper::get_css_value( $attr['buttonBorderWidthMobile'], 'px' ),
+		'letter-spacing' => UAGB_Helper::get_css_value( $attr['buttonLetterSpacingMobile'], $attr['buttonLetterSpacingType'] ),
 	),
 	' .gform_wrapper div.validation_error'                 => array(
 		'padding-left'   => UAGB_Helper::get_css_value( $attr['msgleftMobilePadding'], $attr['msgmobilePaddingUnit'] ),
 		'padding-right'  => UAGB_Helper::get_css_value( $attr['msgrightMobilePadding'], $attr['msgmobilePaddingUnit'] ),
 		'padding-top'    => UAGB_Helper::get_css_value( $attr['msgtopMobilePadding'], $attr['msgmobilePaddingUnit'] ),
 		'padding-bottom' => UAGB_Helper::get_css_value( $attr['msgbottomMobilePadding'], $attr['msgmobilePaddingUnit'] ),
+	),
+	' .gform_confirmation_message'                         => array(
+		'letter-spacing' => UAGB_Helper::get_css_value( $attr['successMsgLetterSpacingMobile'], $attr['successMsgLetterSpacingType'] ),
+	),
+	' .gform_wrapper.gravity-theme div.validation_message' => array(
+		'letter-spacing' => UAGB_Helper::get_css_value( $attr['msgLetterSpacingMobile'], $attr['msgLetterSpacingType'] ),
+	),
+	' .gform_wrapper .gfield_description.validation_message' => array(
+		'letter-spacing' => UAGB_Helper::get_css_value( $attr['validationMsgLetterSpacingMobile'], $attr['validationMsgLetterSpacingType'] ),
+	),
+	' .gform_wrapper.gravity-theme .gfield_label'          => array(
+		'letter-spacing' => UAGB_Helper::get_css_value( $attr['labelLetterSpacingMobile'], $attr['labelLetterSpacingType'] ),
+	),
+	' form .gfield_radio label.gfield_label'               => array(
+		'letter-spacing' => UAGB_Helper::get_css_value( $attr['labelLetterSpacingMobile'], $attr['labelLetterSpacingMobileType'] ),
+	),
+	' form .gfield_checkbox label.gfield_label'            => array(
+		'letter-spacing' => UAGB_Helper::get_css_value( $attr['labelLetterSpacingMobile'], $attr['labelLetterSpacingMobileType'] ),
+	),
+	' .uagb-gf-styler__check-style-enabled form .gfield_checkbox label' => array(
+		'letter-spacing' => UAGB_Helper::get_css_value( $attr['radioCheckLetterSpacingMobile'], $attr['radioCheckLetterSpacingType'] ),
+	),
+	' .uagb-gf-styler__check-style-enabled form .gfield_radio label' => array(
+		'letter-spacing' => UAGB_Helper::get_css_value( $attr['radioCheckLetterSpacingMobile'], $attr['radioCheckLetterSpacingType'] ),
 	),
 );
 

@@ -961,60 +961,60 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 					'type'    => 'string',
 					'default' => ', ',
 				),
-				'titleLetterSpacing'                 => array(
+				'titleLetterSpacing'            => array(
 					'type'    => 'number',
 					'default' => '',
 				),
-				'titleLetterSpacingType'             => array(
+				'titleLetterSpacingType'        => array(
 					'type'    => 'string',
 					'default' => 'px',
 				),
-				'titleLetterSpacingMobile'           => array(
+				'titleLetterSpacingMobile'      => array(
 					'type' => 'number',
 				),
-				'titleLetterSpacingTablet'           => array(
+				'titleLetterSpacingTablet'      => array(
 					'type' => 'number',
 				),
-				'metaLetterSpacing'                 => array(
+				'metaLetterSpacing'             => array(
 					'type'    => 'number',
 					'default' => '',
 				),
-				'metaLetterSpacingType'             => array(
+				'metaLetterSpacingType'         => array(
 					'type'    => 'string',
 					'default' => 'px',
 				),
-				'metaLetterSpacingMobile'           => array(
+				'metaLetterSpacingMobile'       => array(
 					'type' => 'number',
 				),
-				'metaLetterSpacingTablet'           => array(
+				'metaLetterSpacingTablet'       => array(
 					'type' => 'number',
 				),
-				'ctaLetterSpacing'                 => array(
+				'ctaLetterSpacing'              => array(
 					'type'    => 'number',
 					'default' => '',
 				),
-				'ctaLetterSpacingType'             => array(
+				'ctaLetterSpacingType'          => array(
 					'type'    => 'string',
 					'default' => 'px',
 				),
-				'ctaLetterSpacingMobile'           => array(
+				'ctaLetterSpacingMobile'        => array(
 					'type' => 'number',
 				),
-				'ctaLetterSpacingTablet'           => array(
+				'ctaLetterSpacingTablet'        => array(
 					'type' => 'number',
 				),
-				'excerptLetterSpacing'                 => array(
+				'excerptLetterSpacing'          => array(
 					'type'    => 'number',
 					'default' => '',
 				),
-				'excerptLetterSpacingType'             => array(
+				'excerptLetterSpacingType'      => array(
 					'type'    => 'string',
 					'default' => 'px',
 				),
-				'excerptLetterSpacingMobile'           => array(
+				'excerptLetterSpacingMobile'    => array(
 					'type' => 'number',
 				),
-				'excerptLetterSpacingTablet'           => array(
+				'excerptLetterSpacingTablet'    => array(
 					'type' => 'number',
 				),
 			);
