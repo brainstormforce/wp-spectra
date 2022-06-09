@@ -203,19 +203,19 @@ $selectors = array(
 		'margin-right' => UAGB_Helper::get_css_value( $attr['ctaIconSpace'], 'px' ),
 	),
 	// image svg.
-	'.uagb-infobox__content-wrap  .uagb-ifb-content svg'=>  array(
+	'.uagb-infobox__content-wrap  .uagb-ifb-content svg' =>  array(
 		'box-sizing' => $box_sizing_icon,
 	),
-	'.uagb-infobox__content-wrap  .uagb-ifb-content img'=>  array(
+	'.uagb-infobox__content-wrap  .uagb-ifb-content img' =>  array(
 		'box-sizing' => $box_sizing_image,
 	),
 );
 if ( 'Stacked' === $attr['iconView'] ) {
-	$selectors[ ' .uagb-iconbox-icon-wrap.uagb-infobox-shape-circle'] = array(
+	$selectors[' .uagb-iconbox-icon-wrap.uagb-infobox-shape-circle'] = array(
 		'background-color' => $attr['iconBackgroundColor'],
 		'border-radius' => '50%',
 	);
-	$selectors[ ' .uagb-iconbox-icon-wrap.uagb-infobox-shape-squre'] = array(
+	$selectors[' .uagb-iconbox-icon-wrap.uagb-infobox-shape-squre'] = array(
 		'background-color' => $attr['iconBackgroundColor'],
 	);
 	$selectors[' .uagb-iconbox-icon-wrap:hover'] = array(
@@ -223,11 +223,11 @@ if ( 'Stacked' === $attr['iconView'] ) {
 	);
 }
 else if ( 'Framed' === $attr['iconView'] ) {
-	$selectors[ ' .uagb-iconbox-icon-wrap.uagb-infobox-shape-circle'] = array(
+	$selectors[' .uagb-iconbox-icon-wrap.uagb-infobox-shape-circle'] = array(
 		'border' => $attr['iconBorderWidth'] . 'px solid'. $attr['iconBackgroundColor'],
 		'border-radius' => '50%',
 	);
-	$selectors[ ' .uagb-iconbox-icon-wrap.uagb-infobox-shape-squre'] = array(
+	$selectors[' .uagb-iconbox-icon-wrap.uagb-infobox-shape-squre'] = array(
 		'border' => $attr['iconBorderWidth'] . 'px solid'. $attr['iconBackgroundColor'],
 	);
 	$selectors[' .uagb-iconbox-icon-wrap:hover'] = array(
@@ -394,8 +394,8 @@ $m_selectors = array(
 	' .uagb-ifb-separator'                                 => array(
 		'width' => UAGB_Helper::get_css_value( $attr['seperatorWidthMobile'], $attr['separatorWidthType'] ),
 	),
-	'.uagb-infobox__content-wrap .uagb-ifb-content img'=>  array(
-		'box-sizing' => $box_sizing_image_mobile ,
+	'.uagb-infobox__content-wrap .uagb-ifb-content img' => array(
+		'box-sizing' => $box_sizing_image_mobile,
 	),
 );
 
@@ -497,8 +497,8 @@ $t_selectors = array(
 	' .uagb-ifb-separator'                             => array(
 		'width' => UAGB_Helper::get_css_value( $attr['seperatorWidthTablet'], $attr['separatorWidthType'] ),
 	),
-	'.uagb-infobox__content-wrap .uagb-ifb-content img'=>  array(
-		'box-sizing' => $box_sizing_image_tablet ,
+	'.uagb-infobox__content-wrap .uagb-ifb-content img' => array(
+		'box-sizing' => $box_sizing_image_tablet,
 	),
 );
 
