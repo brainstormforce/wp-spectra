@@ -34,6 +34,7 @@ $icon_hover_color = ( '' === $attr['iconHoverColor'] ) ? $attr['titleHoverColor'
 $selectors = array(
 	' .uagb-marketing-btn__prefix'         => array(
 		'margin-top' => UAGB_Helper::get_css_value( $attr['titleSpace'], $attr['titleSpaceUnit'] ),
+		'letter-spacing' => UAGB_Helper::get_css_value( $attr['prefixLetterSpacing'], $attr['prefixLetterSpacingType'] ),
 	),
 	' svg'                                 => array(
 		'fill'   => $icon_color,
@@ -78,6 +79,15 @@ $selectors = array(
 
 $selectors[ ' ' . $attr['titleTag'] . '.uagb-marketing-btn__title' ] = array(
 	'color' => $attr['titleColor'],
+	'letter-spacing' => UAGB_Helper::get_css_value( $attr['titleLetterSpacing'], $attr['titleLetterSpacingType'] ),
+);
+
+$t_selectors[ ' ' . $attr['titleTag'] . '.uagb-marketing-btn__title' ] = array(
+	'letter-spacing' => UAGB_Helper::get_css_value( $attr['titleLetterSpacingTablet'], $attr['titleLetterSpacingType'] ),
+);
+
+$m_selectors[ ' ' . $attr['titleTag'] . '.uagb-marketing-btn__title' ] = array(
+	'letter-spacing' => UAGB_Helper::get_css_value( $attr['titleLetterSpacingMobile'], $attr['titleLetterSpacingType'] ),
 );
 
 $selectors[ ' .uagb-marketing-btn__link:hover ' . $attr['titleTag'] . '.uagb-marketing-btn__title' ] = array(
@@ -127,12 +137,14 @@ $m_selectors = array(
 	),
 	' .uagb-marketing-btn__prefix' => array(
 		'margin-top' => UAGB_Helper::get_css_value( $attr['titleSpaceMobile'], 'px' ),
+		'letter-spacing' => UAGB_Helper::get_css_value( $attr['prefixLetterSpacingMobile'], $attr['prefixLetterSpacingType'] ),
 	),
 );
 
 $t_selectors = array(
 	' .uagb-marketing-btn__prefix' => array(
 		'margin-top' => UAGB_Helper::get_css_value( $attr['titleSpaceTablet'], 'px' ),
+		'letter-spacing' => UAGB_Helper::get_css_value( $attr['prefixLetterSpacingTablet'], $attr['prefixLetterSpacingType'] ),
 	),
 	' svg'                         => array(
 		'width'  => UAGB_Helper::get_css_value( $attr['iconFontSizeTablet'], $attr['iconFontSizeType'] ),

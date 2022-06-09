@@ -69,7 +69,7 @@ return array(
 	'descDecoration'           => '',
 	'titleFontStyle'           => '',
 	'descFontStyle'            => '',
-	// letter spacing
+	// letter spacing.
 	'titleLetterSpacing'            => '',
 	'titleLetterSpacingTablet'      => '',
 	'titleLetterSpacingMobile'      => '',

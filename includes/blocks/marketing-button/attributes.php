@@ -87,4 +87,13 @@ return array(
 	'titleDecoration'        => '',
 	'prefixTransform'        => '',
 	'prefixDecoration'       => '',
+	// letter spacing.
+	'titleLetterSpacing'            => '',
+	'titleLetterSpacingTablet'      => '',
+	'titleLetterSpacingMobile'      => '',
+	'titleLetterSpacingType'        => 'px',
+	'prefixLetterSpacing'            => '',
+	'prefixLetterSpacingTablet'      => '',
+	'prefixLetterSpacingMobile'      => '',
+	'prefixLetterSpacingType'        => 'px',
 );
