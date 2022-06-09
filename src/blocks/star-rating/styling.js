@@ -158,7 +158,7 @@ function styling( props ) {
 			blockLeftPadding,
 			blockPaddingUnit
 		),
-		'justify-content': alignment,
+		'justify-content': flexJustifyContent( align ),
 		'text-align': stackAlignment,
 	}
 
