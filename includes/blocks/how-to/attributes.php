@@ -81,4 +81,17 @@ return array(
 	'priceDecoration'         => '',
 	'rowGapTablet'            => 0,
 	'rowGapMobile'            => 0,
+	// letter spacing
+	'headLetterSpacing'            => '',
+	'headLetterSpacingTablet'      => '',
+	'headLetterSpacingMobile'      => '',
+	'headLetterSpacingType'        => 'px',
+	'priceLetterSpacing'            => '',
+	'priceLetterSpacingTablet'      => '',
+	'priceLetterSpacingMobile'      => '',
+	'priceLetterSpacingType'        => 'px',
+	'subHeadLetterSpacing'            => '',
+	'subHeadLetterSpacingTablet'      => '',
+	'subHeadLetterSpacingMobile'      => '',
+	'subHeadLetterSpacingType'        => 'px',
 );
