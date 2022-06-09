@@ -203,10 +203,10 @@ $selectors = array(
 		'margin-right' => UAGB_Helper::get_css_value( $attr['ctaIconSpace'], 'px' ),
 	),
 	// image svg.
-	'.uagb-infobox__content-wrap .uagb-ifb-content svg' =>  array(
+	'.uagb-infobox__content-wrap .uagb-ifb-content svg' => array(
 		'box-sizing' => $box_sizing_icon,
 	),
-	'.uagb-infobox__content-wrap .uagb-ifb-content img' =>  array(
+	'.uagb-infobox__content-wrap .uagb-ifb-content img' => array(
 		'box-sizing' => $box_sizing_image,
 	),
 );
