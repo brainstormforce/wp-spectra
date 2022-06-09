@@ -10,9 +10,9 @@ const presets = [
 		value: 'preset-1',
 		label: __( 'Preset 1', 'ultimate-addons-for-gutenberg' ),
 		attributes: [
-			{ label: 'titleSpace', value: 20 },
+			{ label: 'titleSpace', value: 10 },
 			{ label: 'stack', value: 'desktop' },
-			{ label: 'descSpace', value: 39 },
+			{ label: 'descSpace', value: 20 },
 			{ label: 'ctaTopPadding', value: 10 },
 			{ label: 'ctaRightPadding', value: 14 },
 			{ label: 'ctaBottomPadding' , value: 10 },
@@ -31,9 +31,9 @@ const presets = [
 		value: 'preset-2',
 		label: __( 'Preset 2', 'ultimate-addons-for-gutenberg' ),
 		attributes: [
-			{ label: 'titleSpace', value: 20 },
+			{ label: 'titleSpace', value: 10 },
 			{ label: 'stack', value: 'desktop' },
-			{ label: 'descSpace', value: 39 },
+			{ label: 'descSpace', value: 20 },
 			{ label: 'ctaTopPadding', value: 10 },
 			{ label: 'ctaRightPadding', value: 14 },
 			{ label: 'ctaBottomPadding' , value: 10 },
