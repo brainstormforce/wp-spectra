@@ -147,6 +147,7 @@ if ( $attr['childMigrate'] ) {
 		'margin-bottom'  => UAGB_Helper::get_css_value( $attr['bottomMargin'], $attr['marginType'] ),
 		'margin-left'    => UAGB_Helper::get_css_value( $attr['leftMargin'], $attr['marginType'] ),
 		'margin-right'   => UAGB_Helper::get_css_value( $attr['rightMargin'], $attr['marginType'] ),
+		'letter-spacing' => UAGB_Helper::get_css_value( $attr['fontLetterSpacing'], $attr['fontLetterSpacingType'] ),
 	);
 	$t_selectors['.uagb-buttons__outer-wrap .uagb-buttons-repeater.wp-block-button__link'] = array(
 		'font-size'      => UAGB_Helper::get_css_value( $attr['fontSizeTablet'], $attr['fontSizeType'] ),
@@ -159,6 +160,7 @@ if ( $attr['childMigrate'] ) {
 		'margin-bottom'  => UAGB_Helper::get_css_value( $attr['bottomMarginTablet'], $attr['marginType'] ),
 		'margin-left'    => UAGB_Helper::get_css_value( $attr['leftMarginTablet'], $attr['marginType'] ),
 		'margin-right'   => UAGB_Helper::get_css_value( $attr['rightMarginTablet'], $attr['marginType'] ),
+		'letter-spacing' => UAGB_Helper::get_css_value( $attr['fontLetterSpacingTablet'], $attr['fontLetterSpacingType'] ),
 
 	);
 	$m_selectors['.uagb-buttons__outer-wrap .uagb-buttons-repeater.wp-block-button__link'] = array(
@@ -172,6 +174,7 @@ if ( $attr['childMigrate'] ) {
 		'margin-bottom'  => UAGB_Helper::get_css_value( $attr['bottomMarginMobile'], $attr['marginType'] ),
 		'margin-left'    => UAGB_Helper::get_css_value( $attr['leftMarginMobile'], $attr['marginType'] ),
 		'margin-right'   => UAGB_Helper::get_css_value( $attr['rightMarginMobile'], $attr['marginType'] ),
+		'letter-spacing' => UAGB_Helper::get_css_value( $attr['fontLetterSpacingMobile'], $attr['fontLetterSpacingType'] ),
 	);
 }
 

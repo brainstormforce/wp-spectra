@@ -100,4 +100,10 @@ return array(
 
 	'marginType'          => 'px',
 	'marginLink'          => '',
+
+	// letter spacing.
+	'fontLetterSpacing'            => '',
+	'fontLetterSpacingTablet'      => '',
+	'fontLetterSpacingMobile'      => '',
+	'fontLetterSpacingType'        => 'px',
 );
