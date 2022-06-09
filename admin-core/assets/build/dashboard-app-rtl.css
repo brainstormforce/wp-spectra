@@ -1148,6 +1148,9 @@ select {
 }.hover\:text-gray-500:hover {
   --tw-text-opacity: 1;
   color: rgb(107 114 128 / var(--tw-text-opacity));
+}.hover\:text-wpcolor:hover {
+  --tw-text-opacity: 1;
+  color: rgb(97 4 255 / var(--tw-text-opacity));
 }.hover\:text-wphovercolor:hover {
   --tw-text-opacity: 1;
   color: rgb(58 0 159 / var(--tw-text-opacity));
