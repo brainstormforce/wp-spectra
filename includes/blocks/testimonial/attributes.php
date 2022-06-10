@@ -139,4 +139,17 @@ return array(
 	'gradientAngle'           => 0,
 	'gradientPosition'        => 'center center',
 	'equalHeight'             => false,
+	// letter spacing.
+	'nameLetterSpacing'            => '',
+	'nameLetterSpacingTablet'      => '',
+	'nameLetterSpacingMobile'      => '',
+	'nameLetterSpacingType'        => 'px',
+	'descLetterSpacing'            => '',
+	'descLetterSpacingTablet'      => '',
+	'descLetterSpacingMobile'      => '',
+	'descLetterSpacingType'        => 'px',
+	'companyLetterSpacing'         => '',
+	'companyLetterSpacingTablet'   => '',
+	'companyLetterSpacingMobile'   => '',
+	'companyLetterSpacingType'     => 'px',
 );
