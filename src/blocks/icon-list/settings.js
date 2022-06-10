@@ -30,6 +30,8 @@ const Settings = ( props ) => {
 
 	const {
 		align,
+		alignTablet,
+		alignMobile,
 		gap,
 		gapTablet,
 		gapMobile,
@@ -41,6 +43,8 @@ const Settings = ( props ) => {
 		stack,
 		icon_layout,
 		iconPosition,
+		iconPositionTablet,
+		iconPositionMobile,
 		size,
 		sizeType,
 		sizeMobile,
@@ -157,8 +161,18 @@ const Settings = ( props ) => {
 						'ultimate-addons-for-gutenberg'
 					) }
 					data={ {
-						value: align,
-						label: 'align',
+						desktop: {
+							value: align,
+							label: 'align',
+						},
+						tablet: {
+							value: alignTablet,
+							label: 'alignTablet',
+						},
+						mobile: {
+							value: alignMobile,
+							label: 'alignMobile',
+						},
 					} }
 					className="uagb-multi-button-alignment-control"
 					options={ [
@@ -204,6 +218,7 @@ const Settings = ( props ) => {
 						},
 					] }
 					showIcons={ true }
+					responsive={true}
 				/>
 				{ 'horizontal' === icon_layout && (
 					<>
@@ -258,8 +273,18 @@ const Settings = ( props ) => {
 								'ultimate-addons-for-gutenberg'
 							) }
 							data={ {
-								value: iconPosition,
-								label: 'iconPosition',
+								desktop: {
+									value: iconPosition,
+									label: 'iconPosition',
+								},
+								tablet: {
+									value: iconPositionTablet,
+									label: 'iconPositionTablet',
+								},
+								mobile: {
+									value: iconPositionMobile,
+									label: 'iconPositionMobile',
+								},
 							} }
 							className="uagb-multi-button-alignment-control"
 							options={ [
@@ -277,6 +302,7 @@ const Settings = ( props ) => {
 								'Note: This manages the Icon Position with respect to the Label.',
 								'ultimate-addons-for-gutenberg'
 							) }
+							responsive={true}
 						/>
 					</>
 				) }
