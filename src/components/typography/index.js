@@ -64,7 +64,7 @@ const TypographyControl = ( props ) => {
 	if ( true !== disableFontFamily ) {
 		fontFamily = <FontFamilyControl { ...props } />;
 	}
-	const lineHeightStepsVal = ( 'em' === props.lineHeightType.value ? 0.1 : 1 );
+	const lineHeightStepsVal = ( 'em' === props.lineHeightType?.value ? 0.1 : 1 );
 
 	if ( true !== disableLineHeight ) {
 		fontWeight = (
