@@ -109,6 +109,10 @@ function styling( props ) {
 		countLetterSpacingTablet,
 		countLetterSpacingMobile,
 		countLetterSpacingType,
+		listLetterSpacing,
+		listLetterSpacingTablet,
+		listLetterSpacingMobile,
+		listLetterSpacingType,
 	} = props.attributes;
 
 	let selectors = {};
@@ -205,6 +209,7 @@ function styling( props ) {
 			'font-style': listFontStyle,
 			'text-decoration': listDecoration,
 			'text-transform': listTransform,
+			'letter-spacing': generateCSSUnit( listLetterSpacing, listLetterSpacingType ),
 		},
 		'.uagb-layout-list .uagb-tax-list:hover': { // For Bullets.
 			'color': hoverlistStyleColor,
@@ -411,6 +416,7 @@ function styling( props ) {
 				listLineHeightMobile,
 				listLineHeightType
 			),
+			'letter-spacing': generateCSSUnit( listLetterSpacingMobile, listLetterSpacingType ),
 		},
 		/* For Backword */
 		' .uagb-taxonomy-wrap.uagb-layout-grid': {
@@ -524,6 +530,7 @@ function styling( props ) {
 				listLineHeightTablet,
 				listLineHeightType
 			),
+			'letter-spacing': generateCSSUnit( listLetterSpacingTablet, listLetterSpacingType ),
 		},
 		/* For Backword. */
 		' .uagb-taxonomy-wrap.uagb-layout-grid': {

@@ -496,6 +496,19 @@ if ( ! class_exists( 'UAGB_Taxonomy_List' ) ) {
 							'type'    => 'string',
 							'default' => 'px',
 						),
+						'listLetterSpacing'         => array(
+							'type'    => 'number',
+						),
+						'listLetterSpacingTablet'   => array(
+							'type'    => 'number',
+						),
+						'listLetterSpacingMobile'   => array(
+							'type'    => 'number',
+						),
+						'listLetterSpacingType'     => array(
+							'type'    => 'string',
+							'default' => 'px',
+						),
 					),
 					'render_callback' => array( $this, 'render_html' ),
 				)

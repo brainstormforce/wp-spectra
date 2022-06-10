@@ -68,6 +68,7 @@ $selectors = array(
 	'.uagb-layout-list .uagb-tax-list'                     => array(
 		'list-style' => $attr['listStyle'],
 		'color'      => $attr['listStyleColor'],
+		'letter-spacing' => UAGB_Helper::get_css_value( $attr['listLetterSpacing'], $attr['listLetterSpacingType'] ),
 	),
 	'.uagb-layout-list .uagb-tax-list:hover'               => array( // For bullet.
 		'color' => $attr['hoverlistStyleColor'],
@@ -177,6 +178,9 @@ $t_selectors = array(
 	'.uagb-layout-grid .uagb-tax-link'                     => array(
 		'letter-spacing' => UAGB_Helper::get_css_value( $attr['countLetterSpacingTablet'], $attr['countLetterSpacingType'] ),
 	),
+	'.uagb-layout-list .uagb-tax-list'                     => array(
+		'letter-spacing' => UAGB_Helper::get_css_value( $attr['listLetterSpacingTablet'], $attr['listLetterSpacingType'] ),
+	),
 );
 
 $m_selectors = array(
@@ -202,6 +206,9 @@ $m_selectors = array(
 	),
 	'.uagb-taxomony-box .uagb-tax-link'                     => array(
 		'letter-spacing' => UAGB_Helper::get_css_value( $attr['countLetterSpacingMobile'], $attr['countLetterSpacingType'] ),
+	),
+	'.uagb-layout-list .uagb-tax-list'                     => array(
+		'letter-spacing' => UAGB_Helper::get_css_value( $attr['listLetterSpacingMobile'], $attr['listLetterSpacingType'] ),
 	),
 );
 

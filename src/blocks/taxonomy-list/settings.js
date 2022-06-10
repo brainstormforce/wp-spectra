@@ -155,6 +155,10 @@ const Settings = ( props ) => {
 		countLetterSpacingTablet,
 		countLetterSpacingMobile,
 		countLetterSpacingType,
+		listLetterSpacing,
+		listLetterSpacingTablet,
+		listLetterSpacingMobile,
+		listLetterSpacingType,
 	} = attributes;
 
 	const taxonomy_list_setting = showEmptyTaxonomy ? taxonomyList : termsList;
@@ -1139,6 +1143,22 @@ const Settings = ( props ) => {
 					decoration={ {
 						value: listDecoration,
 						label: 'listDecoration',
+					} }
+					letterSpacing={ {
+						value: listLetterSpacing,
+						label: 'listLetterSpacing',
+					} }
+					letterSpacingTablet={ {
+						value: listLetterSpacingTablet,
+						label: 'listLetterSpacingTablet',
+					} }
+					letterSpacingMobile={ {
+						value: listLetterSpacingMobile,
+						label: 'listLetterSpacingMobile',
+					} }
+					letterSpacingType={ {
+						value: listLetterSpacingType,
+						label: 'listLetterSpacingType',
 					} }
 				/>
 				<UAGTabsControl
