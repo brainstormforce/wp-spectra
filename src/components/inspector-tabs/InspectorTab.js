@@ -1,6 +1,7 @@
 import { applyFilters } from '@wordpress/hooks';
 import { useRef, useEffect  } from '@wordpress/element';
 import getUAGEditorStateLocalStorage from '@Controls/getUAGEditorStateLocalStorage';
+import { select } from '@wordpress/data';
 
 const InspectorTab = ( props ) => {
 	const { children, isActive, type } = props;
@@ -13,16 +14,18 @@ const InspectorTab = ( props ) => {
 			props.parentProps
 		);
 	};
+	const { getSelectedBlock } = select( 'core/block-editor' );
+	const blockName = getSelectedBlock()?.name;
+	const uagSettingState = getUAGEditorStateLocalStorage( 'uagSettingState' );
 
-	const uagLastOpenedState = getUAGEditorStateLocalStorage( 'uagLastOpenedState' );
-	const inspectorTabName = uagLastOpenedState?.inspectorTabName;
-	const panelBodyClass = uagLastOpenedState?.panelBodyClass;
-	const settingsPopup = uagLastOpenedState?.settingsPopup;
+	const inspectorTabName = uagSettingState[blockName]?.selectedTab;
+	const panelBodyClass = uagSettingState[blockName]?.selectedPanel;
+	const settingsPopup = uagSettingState[blockName]?.selectedSetting;
 
 	useEffect( () => {
 		// This code is to fix the side-effect of the editor responsive click settings panel refresh issue.
 		if ( inspectorTabName && type === inspectorTabName && panelBodyClass ) {
-			const panelToActivate = tabRef.current.querySelector( `.${uagLastOpenedState.panelBodyClass}` );
+			const panelToActivate = tabRef.current.querySelector( `.${panelBodyClass}` );
 
 			if ( panelToActivate ) {
 				if ( ! panelToActivate.classList.contains( 'is-opened' ) ) {
