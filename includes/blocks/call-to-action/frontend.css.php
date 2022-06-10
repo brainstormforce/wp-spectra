@@ -23,6 +23,8 @@ $btn_padding_left   = isset( $attr['ctaLeftPadding'] ) ? $attr['ctaLeftPadding']
 $btn_padding_right  = isset( $attr['ctaRightPadding'] ) ? $attr['ctaRightPadding'] : $attr['ctaBtnHrPadding'];
 $content_width      = is_int( $attr['contentWidth'] ) ? $attr['contentWidth'] : 70;
 
+$ctaLeftMargin = isset( $attr['ctaLeftSpace'] ) ? $attr['ctaLeftSpace'] : '5';
+
 if ( 'left' === $attr['textAlign'] ) {
 	$alignment = 'flex-start';
 } elseif ( 'right' === $attr['textAlign'] ) {
@@ -210,56 +212,9 @@ $selectors['.wp-block-uagb-call-to-action'] = array(
 );
 
 if ( 'left' === $attr['textAlign'] && 'right' === $attr['ctaPosition'] ) {
-	$selectors[' .uagb-cta__left-right-wrap .uagb-cta__content']   = array(
-		'margin-left'  => UAGB_Helper::get_css_value( $attr['ctaLeftSpace'], $attr['ctaLeftSpaceType'] ),
+	$selectors[' .uagb-cta__left-right-wrap .uagb-cta__content'] = array(
+		'margin-left'  => UAGB_Helper::get_css_value( $ctaLeftMargin, 'px' ),
 		'margin-right' => '0',
-	);
-	$selectors[' > .uagb-cta__wrap']                               = array(
-		'margin-left'  => UAGB_Helper::get_css_value( $attr['ctaLeftSpace'], $attr['ctaLeftSpaceType'] ),
-		'margin-right' => '0',
-	);
-	$t_selectors[' .uagb-cta__left-right-wrap .uagb-cta__content'] = array(
-		'margin-left'  => UAGB_Helper::get_css_value( $attr['ctaLeftSpaceTablet'], $attr['ctaLeftSpaceType'] ),
-		'margin-right' => '0',
-	);
-	$t_selectors[' > .uagb-cta__wrap']                             = array(
-		'margin-left'  => UAGB_Helper::get_css_value( $attr['ctaLeftSpaceTablet'], $attr['ctaLeftSpaceType'] ),
-		'margin-right' => '0',
-	);
-	$m_selectors[' .uagb-cta__left-right-wrap .uagb-cta__content'] = array(
-		'margin-left'  => UAGB_Helper::get_css_value( $attr['ctaLeftSpaceMobile'], $attr['ctaLeftSpaceType'] ),
-		'margin-right' => '0',
-	);
-	$m_selectors[' > .uagb-cta__wrap']                             = array(
-		'margin-left'  => UAGB_Helper::get_css_value( $attr['ctaLeftSpaceMobile'], $attr['ctaLeftSpaceType'] ),
-		'margin-right' => '0',
-	);
-}
-
-if ( 'right' === $attr['textAlign'] && 'right' === $attr['ctaPosition'] ) {
-	$selectors[' .uagb-cta__left-right-wrap .uagb-cta__content']   = array(
-		'margin-right' => UAGB_Helper::get_css_value( $attr['ctaRightSpace'], $attr['ctaRightSpaceType'] ),
-		'margin-left'  => '0',
-	);
-	$selectors[' > .uagb-cta__wrap']                               = array(
-		'margin-right' => UAGB_Helper::get_css_value( $attr['ctaRightSpace'], $attr['ctaRightSpaceType'] ),
-		'margin-left'  => '0',
-	);
-	$t_selectors[' .uagb-cta__left-right-wrap .uagb-cta__content'] = array(
-		'margin-right' => UAGB_Helper::get_css_value( $attr['ctaRightSpaceTablet'], $attr['ctaRightSpaceType'] ),
-		'margin-left'  => '0',
-	);
-	$t_selectors[' > .uagb-cta__wrap']                             = array(
-		'margin-right' => UAGB_Helper::get_css_value( $attr['ctaRightSpaceTablet'], $attr['ctaRightSpaceType'] ),
-		'margin-left'  => '0',
-	);
-	$m_selectors[' .uagb-cta__left-right-wrap .uagb-cta__content'] = array(
-		'margin-right' => UAGB_Helper::get_css_value( $attr['ctaRightSpaceMobile'], $attr['ctaRightSpaceType'] ),
-		'margin-left'  => '0',
-	);
-	$m_selectors[' > .uagb-cta__wrap']                             = array(
-		'margin-right' => UAGB_Helper::get_css_value( $attr['ctaRightSpaceMobile'], $attr['ctaRightSpaceType'] ),
-		'margin-left'  => '0',
 	);
 }
 
