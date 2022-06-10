@@ -19,6 +19,8 @@ function styling( props ) {
 		innerGapMobile,
 		innerGapType,
 		icon_layout,
+		iconLayoutTablet,
+		iconLayoutMobile,
 		size,
 		sizeType,
 		sizeTablet,
@@ -118,6 +120,7 @@ function styling( props ) {
 		'height': generateCSSUnit( sizeMobile, sizeType ),
 		'font-size': generateCSSUnit( sizeMobile, sizeType ),
 	};
+
 	if ( 'horizontal' === icon_layout ) {
 		if ( 'tablet' === stack ) {
 			tabletSelectors[
@@ -177,35 +180,45 @@ function styling( props ) {
 			'margin-right': generateCSSUnit( editorGap / 2, gapType ),
 			'display': 'inline-flex'
 		};
-		mobileSelectors[' .block-editor-block-list__layout .wp-block[data-type="uagb/icon-list-child"]' ] = {
-			'margin-left': generateCSSUnit( editorGapMobile / 2, gapType ),
-			'margin-right': generateCSSUnit( editorGapMobile / 2, gapType ),
-			'display': 'inline-flex'
+	} else if('vertical' === icon_layout) {
+		selectors[ ' .uagb-icon-list__wrap' ] = {
+			'flex-direction': 'column',
 		};
+		selectors[ ' .wp-block[data-type="uagb/icon-list-child"]' ] = {
+			'display': 'block',
+			'margin-left': 0,
+			'margin-right': 0,
+			'margin-bottom': generateCSSUnit( editorGap, gapType ),
+		};
+	}
+
+	if('horizontal' === iconLayoutTablet){
 		tabletSelectors[' .block-editor-block-list__layout .wp-block[data-type="uagb/icon-list-child"]' ] = {
 			'margin-left': generateCSSUnit( editorGapTablet / 2, gapType ),
 			'margin-right': generateCSSUnit( editorGapTablet / 2, gapType ),
 			'display': 'inline-flex'
 		};
-	}
-	if( 'vertical' === icon_layout  ) {
-		selectors[ ' .wp-block[data-type="uagb/icon-list-child"]' ] = {
-			'margin-left': 0,
-			'margin-right': 0,
-			'margin-bottom': generateCSSUnit( editorGap, gapType ),
-		};
-		mobileSelectors[ ' .wp-block[data-type="uagb/icon-list-child"]' ] = {
-			'margin-left': 0,
-			'margin-right': 0,
-			'margin-bottom': generateCSSUnit( editorGapMobile, gapType ),
-		};
+	} else if('vertical' === iconLayoutTablet) {
 		tabletSelectors[ ' .wp-block[data-type="uagb/icon-list-child"]' ] = {
+			'display': 'block',
 			'margin-left': 0,
 			'margin-right': 0,
 			'margin-bottom': generateCSSUnit( editorGapTablet, gapType ),
 		};
-		selectors[ ' .uagb-icon-list__wrap' ] = {
-			'flex-direction': 'column',
+	}
+
+	if('horizontal' === iconLayoutMobile){
+		mobileSelectors[' .block-editor-block-list__layout .wp-block[data-type="uagb/icon-list-child"]' ] = {
+			'margin-left': generateCSSUnit( editorGapMobile / 2, gapType ),
+			'margin-right': generateCSSUnit( editorGapMobile / 2, gapType ),
+			'display': 'inline-flex'
+		};
+	} else if('vertical' === iconLayoutMobile) {
+		mobileSelectors[ ' .wp-block[data-type="uagb/icon-list-child"]' ] = {
+			'display': 'block',
+			'margin-left': 0,
+			'margin-right': 0,
+			'margin-bottom': generateCSSUnit( editorGapMobile, gapType ),
 		};
 	}
 

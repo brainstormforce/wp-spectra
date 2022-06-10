@@ -39,6 +39,8 @@ const Settings = ( props ) => {
 		innerGapType,
 		stack,
 		icon_layout,
+		iconLayoutTablet,
+		iconLayoutMobile,
 		iconPosition,
 		size,
 		sizeType,
@@ -114,15 +116,23 @@ const Settings = ( props ) => {
 	const generalSetting = () => {
 		return (
 			<UAGAdvancedPanelBody title={ __( 'Content', 'ultimate-addons-for-gutenberg' ) } initialOpen={ true }>
-
 				<MultiButtonsControl
 					setAttributes={ setAttributes }
 					label={ __( 'Layout', 'ultimate-addons-for-gutenberg' ) }
 					data={ {
-						value: icon_layout,
-						label: 'icon_layout',
+						desktop: {
+							value: icon_layout,
+							label: 'icon_layout',
+						},
+						tablet: {
+							value: iconLayoutTablet,
+							label: 'iconLayoutTablet',
+						},
+						mobile: {
+							value: iconLayoutMobile,
+							label: 'iconLayoutMobile',
+						},
 					} }
-					className="uagb-multi-button-alignment-control"
 					options={ [
 						{
 							value: 'horizontal',
@@ -140,8 +150,8 @@ const Settings = ( props ) => {
 						},
 					] }
 					showIcons={ false }
+					responsive={true}
 				/>
-
 				<MultiButtonsControl
 					setAttributes={ setAttributes }
 					label={ __( 'Alignment', 'ultimate-addons-for-gutenberg' ) }

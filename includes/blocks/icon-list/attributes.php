@@ -68,6 +68,8 @@ return array(
 	'fontWeight'         => '',
 	'loadGoogleFonts'    => false,
 	'icon_layout'        => 'vertical',
+	'iconLayoutTablet'        => '',
+	'iconLayoutMobile'        => '',
 	'stack'              => 'none',
 	'fontStyle'          => '',
 	'fontTransform'      => '',

@@ -41,7 +41,18 @@ $selectors = array(
 		'border-width'  => UAGB_Helper::get_css_value( $attr['border'], $attr['borderType'] ),
 		'align-self'    => 'top' === $attr['iconPosition'] ? 'flex-start' : 'center',
 	),
-	' .uagb-icon-list__wrap'         => array(
+	' .wp-block-uagb-icon-list-child .uagb-icon-list__label' => array(
+		'font-size'       => UAGB_Helper::get_css_value( $attr['fontSize'], $attr['fontSizeType'] ),
+		'font-family'     => $attr['fontFamily'],
+		'text-transform'  => $attr['fontTransform'],
+		'text-decoration' => $attr['fontDecoration'] . '!important',
+		'font-style'      => $attr['fontStyle'],
+		'font-weight'     => $attr['fontWeight'],
+		'line-height'     => $attr['lineHeight'] . $attr['lineHeightType'],
+	),
+	' .uagb-icon-list__wrap' => array(
+		'display' => 'flex',
+		'flex-direction' => 'row',
 		'justify-content'   => $alignment,
 		'-webkit-box-pack'  => $alignment,
 		'-ms-flex-pack'     => $alignment,
@@ -49,7 +60,7 @@ $selectors = array(
 		'-webkit-box-align' => $alignment,
 		'-ms-flex-align'    => $alignment,
 		'align-items'       => $alignment,
-	),
+	)
 );
 
 if ( $attr['childMigrate'] ) {
@@ -64,6 +75,38 @@ if ( $attr['childMigrate'] ) {
 	);
 }
 
+
+$t_selectors = array(
+	' .uagb-icon-list__source-image' => array(
+		'width' => $t_icon_size,
+	),
+	' .wp-block-uagb-icon-list-child .uagb-icon-list__source-wrap svg' => array(
+		'width'     => $t_icon_size,
+		'height'    => $t_icon_size,
+		'font-size' => $t_icon_size,
+	),
+	' .wp-block-uagb-icon-list-child .uagb-icon-list__source-wrap ' => array(
+		'border-radius' => UAGB_Helper::get_css_value( $attr['borderRadiusTablet'], $attr['borderRadiusType'] ),
+		'padding'       => UAGB_Helper::get_css_value( $attr['bgSizeTablet'], 'px' ),
+		'border-style'  => ( $attr['borderTablet'] > 0 ) ? 'solid' : '',
+		'border-width'  => UAGB_Helper::get_css_value( $attr['borderTablet'], $attr['borderType'] ),
+	),
+	' .wp-block-uagb-icon-list-child .uagb-icon-list__label' => array(
+		'font-size'   => UAGB_Helper::get_css_value( $attr['fontSizeTablet'], $attr['fontSizeType'] ),
+		'line-height' => UAGB_Helper::get_css_value( $attr['lineHeightTablet'], $attr['lineHeightType'] ),
+	),
+	' .uagb-icon-list__wrap' => array(
+		'display' => 'flex',
+		'flex-direction' => 'row',
+		'justify-content'   => $alignmentTablet,
+		'-webkit-box-pack'  => $alignmentTablet,
+		'-ms-flex-pack'     => $alignmentTablet,
+		'justify-content'   => $alignmentTablet,
+		'-webkit-box-align' => $alignmentTablet,
+		'-ms-flex-align'    => $alignmentTablet,
+		'align-items'       => $alignmentTablet,
+	)
+);
 
 
 $m_selectors = array(
@@ -81,64 +124,23 @@ $m_selectors = array(
 		'border-style'  => ( $attr['borderMobile'] > 0 ) ? 'solid' : '',
 		'border-width'  => UAGB_Helper::get_css_value( $attr['borderMobile'], $attr['borderType'] ),
 	),
-);
-
-$t_selectors = array(
-	' .uagb-icon-list__source-image' => array(
-		'width' => $t_icon_size,
+	' .wp-block-uagb-icon-list-child .uagb-icon-list__label' => array(
+		'font-size'   => UAGB_Helper::get_css_value( $attr['fontSizeMobile'], $attr['fontSizeType'] ),
+		'line-height' => UAGB_Helper::get_css_value( $attr['lineHeightMobile'], $attr['lineHeightType'] ),
 	),
-	' .wp-block-uagb-icon-list-child .uagb-icon-list__source-wrap svg' => array(
-		'width'     => $t_icon_size,
-		'height'    => $t_icon_size,
-		'font-size' => $t_icon_size,
-	),
-	' .wp-block-uagb-icon-list-child .uagb-icon-list__source-wrap ' => array(
-		'border-radius' => UAGB_Helper::get_css_value( $attr['borderRadiusTablet'], $attr['borderRadiusType'] ),
-		'padding'       => UAGB_Helper::get_css_value( $attr['bgSizeTablet'], 'px' ),
-		'border-style'  => ( $attr['borderTablet'] > 0 ) ? 'solid' : '',
-		'border-width'  => UAGB_Helper::get_css_value( $attr['borderTablet'], $attr['borderType'] ),
-	),
+	' .uagb-icon-list__wrap' => array(
+		'display' => 'flex',
+		'flex-direction' => 'row',
+		'justify-content'   => $alignmentMobile,
+		'-webkit-box-pack'  => $alignmentMobile,
+		'-ms-flex-pack'     => $alignmentMobile,
+		'justify-content'   => $alignmentMobile,
+		'-webkit-box-align' => $alignmentMobile,
+		'-ms-flex-align'    => $alignmentMobile,
+		'align-items'       => $alignmentMobile,
+	)
 );
 
-$selectors[' .wp-block-uagb-icon-list-child .uagb-icon-list__label'] = array(
-	'font-size'       => UAGB_Helper::get_css_value( $attr['fontSize'], $attr['fontSizeType'] ),
-	'font-family'     => $attr['fontFamily'],
-	'text-transform'  => $attr['fontTransform'],
-	'text-decoration' => $attr['fontDecoration'] . '!important',
-	'font-style'      => $attr['fontStyle'],
-	'font-weight'     => $attr['fontWeight'],
-	'line-height'     => $attr['lineHeight'] . $attr['lineHeightType'],
-);
-
-$m_selectors[' .wp-block-uagb-icon-list-child .uagb-icon-list__label'] = array(
-	'font-size'   => UAGB_Helper::get_css_value( $attr['fontSizeMobile'], $attr['fontSizeType'] ),
-	'line-height' => UAGB_Helper::get_css_value( $attr['lineHeightMobile'], $attr['lineHeightType'] ),
-);
-
-$t_selectors[' .wp-block-uagb-icon-list-child .uagb-icon-list__label'] = array(
-	'font-size'   => UAGB_Helper::get_css_value( $attr['fontSizeTablet'], $attr['fontSizeType'] ),
-	'line-height' => UAGB_Helper::get_css_value( $attr['lineHeightTablet'], $attr['lineHeightType'] ),
-);
-
-$t_selectors[' .uagb-icon-list__wrap'] = array(
-	'justify-content'   => $alignmentTablet,
-	'-webkit-box-pack'  => $alignmentTablet,
-	'-ms-flex-pack'     => $alignmentTablet,
-	'justify-content'   => $alignmentTablet,
-	'-webkit-box-align' => $alignmentTablet,
-	'-ms-flex-align'    => $alignmentTablet,
-	'align-items'       => $alignmentTablet,
-);
-
-$m_selectors[' .uagb-icon-list__wrap'] = array(
-	'justify-content'   => $alignmentMobile,
-	'-webkit-box-pack'  => $alignmentMobile,
-	'-ms-flex-pack'     => $alignmentMobile,
-	'justify-content'   => $alignmentMobile,
-	'-webkit-box-align' => $alignmentMobile,
-	'-ms-flex-align'    => $alignmentMobile,
-	'align-items'       => $alignmentMobile,
-);
 
 if ( 'horizontal' === $attr['icon_layout'] ) {
 
@@ -175,53 +177,67 @@ if ( 'horizontal' === $attr['icon_layout'] ) {
 		'margin-right' => UAGB_Helper::get_css_value( ( $attr['gap'] / 2 ), $attr['gapType'] ),
 		'display'      => 'inline-flex',
 	);
-	$t_selectors['.wp-block-uagb-icon-list .wp-block-uagb-icon-list-child']           = array(
-		'margin-left'  => UAGB_Helper::get_css_value( ( $attr['gapTablet'] / 2 ), $attr['gapType'] ),
-		'margin-right' => UAGB_Helper::get_css_value( ( $attr['gapTablet'] / 2 ), $attr['gapType'] ),
-		'display'      => 'inline-flex',
-	);
-	$m_selectors['.wp-block-uagb-icon-list .wp-block-uagb-icon-list-child']           = array(
-		'margin-left'  => UAGB_Helper::get_css_value( ( $attr['gapMobile'] / 2 ), $attr['gapType'] ),
-		'margin-right' => UAGB_Helper::get_css_value( ( $attr['gapMobile'] / 2 ), $attr['gapType'] ),
-		'display'      => 'inline-flex',
-	);
+
 	$selectors['.wp-block-uagb-icon-list .wp-block-uagb-icon-list-child:first-child'] = array(
 		'margin-left' => 0,
 	);
 	$selectors['.wp-block-uagb-icon-list .wp-block-uagb-icon-list-child:last-child']  = array(
 		'margin-right' => 0,
 	);
-}
-if ( 'vertical' === $attr['icon_layout'] ) {
+} else if('vertical' === $attr['icon_layout'] ){
+	$selectors[' .uagb-icon-list__wrap']                     = array(
+		'flex-direction' => 'column',
+	);
 	$selectors['.wp-block-uagb-icon-list .wp-block-uagb-icon-list-child']            = array(
+		'display' => 'block',
 		'margin-left'   => 0,
 		'margin-right'  => 0,
 		'margin-bottom' => UAGB_Helper::get_css_value( $attr['gap'], $attr['gapType'] ),
-	);
-	$t_selectors['.wp-block-uagb-icon-list .wp-block-uagb-icon-list-child']          = array(
-		'margin-left'   => 0,
-		'margin-right'  => 0,
-		'margin-bottom' => UAGB_Helper::get_css_value( $attr['gapTablet'], $attr['gapType'] ),
-	);
-	$m_selectors['.wp-block-uagb-icon-list .wp-block-uagb-icon-list-child']          = array(
-		'margin-left'   => 0,
-		'margin-right'  => 0,
-		'margin-bottom' => UAGB_Helper::get_css_value( $attr['gapMobile'], $attr['gapType'] ),
-	);
-	$selectors[' .uagb-icon-list__wrap']                     = array(
-		'flex-direction' => 'column',
-		'justify-content'   => $alignment,
-		'-webkit-box-pack'  => $alignment,
-		'-ms-flex-pack'     => $alignment,
-		'justify-content'   => $alignment,
-		'-webkit-box-align' => $alignment,
-		'-ms-flex-align'    => $alignment,
-		'align-items'       => $alignment,
 	);
 	$selectors['.wp-block-uagb-icon-list .wp-block-uagb-icon-list-child:last-child'] = array(
 		'margin-bottom' => 0,
 	);
 }
+
+if( 'horizontal' === $attr['iconLayoutTablet'] ){
+	$t_selectors['.wp-block-uagb-icon-list .wp-block-uagb-icon-list-child']           = array(
+		'margin-left'  => UAGB_Helper::get_css_value( ( $attr['gapTablet'] / 2 ), $attr['gapType'] ),
+		'margin-right' => UAGB_Helper::get_css_value( ( $attr['gapTablet'] / 2 ), $attr['gapType'] ),
+		'display'      => 'inline-flex',
+	);
+
+} else if( 'vertical' === $attr['iconLayoutTablet'] ){
+	$t_selectors[' .uagb-icon-list__wrap'] = array(
+		'flex-direction' => 'column',
+	);
+	$t_selectors['.wp-block-uagb-icon-list .wp-block-uagb-icon-list-child']          = array(
+		'display' => 'block',
+		'margin-left'   => 0,
+		'margin-right'  => 0,
+		'margin-bottom' => UAGB_Helper::get_css_value( $attr['gapTablet'], $attr['gapType'] ),
+	);
+}
+
+
+if( 'horizontal' === $attr['iconLayoutMobile'] ){
+	$m_selectors['.wp-block-uagb-icon-list .wp-block-uagb-icon-list-child']           = array(
+		'margin-left'  => UAGB_Helper::get_css_value( ( $attr['gapMobile'] / 2 ), $attr['gapType'] ),
+		'margin-right' => UAGB_Helper::get_css_value( ( $attr['gapMobile'] / 2 ), $attr['gapType'] ),
+		'display'      => 'inline-flex',
+	);
+} else if( 'vertical' === $attr['iconLayoutMobile'] ){
+	$m_selectors[' .uagb-icon-list__wrap'] = array(
+		'flex-direction' => 'column',
+	);
+	$m_selectors['.wp-block-uagb-icon-list .wp-block-uagb-icon-list-child']          = array(
+		'display' => 'block',
+		'margin-left'   => 0,
+		'margin-right'  => 0,
+		'margin-bottom' => UAGB_Helper::get_css_value( $attr['gapMobile'], $attr['gapType'] ),
+	);
+}
+
+
 if ( ! $attr['childMigrate'] ) {
 
 	$defaults = UAGB_DIR . 'includes/blocks/icon-list-child/attributes.php';
