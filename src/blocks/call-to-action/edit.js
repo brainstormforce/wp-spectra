@@ -36,7 +36,8 @@ const UAGBCallToAction = ( props ) => {
 			ctaPosition,
 			stack,
 			ctaLeftSpace,
-			overallBlockLeftMargin
+			overallBlockLeftMargin,
+			textAlign
 		} = props.attributes;
 
 		if( stack === 'tablet' ) {
@@ -66,7 +67,7 @@ const UAGBCallToAction = ( props ) => {
 			}
 		}
 		if ( ctaLeftSpace ) {
-			if ( undefined === overallBlockLeftMargin ) {
+			if ( undefined === overallBlockLeftMargin && 'left' === textAlign && 'right' === ctaPosition ) {
 				props.setAttributes( { overallBlockLeftMargin: ctaLeftSpace } );
 			}
 		}
