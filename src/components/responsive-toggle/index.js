@@ -122,8 +122,6 @@ const devices = [
 
 	const uagLocalStorage = getUAGEditorStateLocalStorage();
 	if ( uagLocalStorage ) {
-		console.log(data);
-
 		uagLocalStorage.setItem( 'uagSettingState', JSON.stringify( data ) );
 	}
 
