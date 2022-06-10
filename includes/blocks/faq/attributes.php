@@ -124,4 +124,13 @@ return array(
 	'answerFontStyle'              => '',
 	'answerTransform'              => '',
 	'answerDecoration'             => '',
+	// letter spacing.
+	'questionLetterSpacing'            => '',
+	'questionLetterSpacingTablet'      => '',
+	'questionLetterSpacingMobile'      => '',
+	'questionLetterSpacingType'        => 'px',
+	'answerLetterSpacing'              => '',
+	'answerLetterSpacingTablet'        => '',
+	'answerLetterSpacingMobile'        => '',
+	'answerLetterSpacingType'          => 'px',
 );

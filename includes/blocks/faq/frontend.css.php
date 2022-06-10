@@ -81,6 +81,7 @@ $selectors = array(
 	),
 	' .uagb-faq-item .uagb-question'                      => array(
 		'color' => $attr['questionTextColor'],
+		'letter-spacing' => UAGB_Helper::get_css_value( $attr['questionLetterSpacing'], $attr['questionLetterSpacingType'] ),
 	),
 	' .uagb-faq-item.uagb-faq-item-active .uagb-question' => array(
 		'color' => $attr['questionTextActiveColor'],
@@ -120,6 +121,7 @@ $selectors = array(
 	),
 	' .uagb-faq-item .uagb-faq-content'                   => array(
 		'color' => $attr['answerTextColor'],
+		'letter-spacing' => UAGB_Helper::get_css_value( $attr['answerLetterSpacing'], $attr['answerLetterSpacingType'] ),
 	),
 );
 
@@ -161,6 +163,12 @@ $t_selectors = array(
 	' .uagb-faq-child__outer-wrap' => array(
 		'margin-bottom' => UAGB_Helper::get_css_value( $attr['rowsGapTablet'], $attr['rowsGapUnit'] ),
 	),
+	' .uagb-faq-item .uagb-faq-content'                   => array(
+		'letter-spacing' => UAGB_Helper::get_css_value( $attr['answerLetterSpacingTablet'], $attr['answerLetterSpacingType'] ),
+	),
+	' .uagb-faq-item .uagb-question'                      => array(
+		'letter-spacing' => UAGB_Helper::get_css_value( $attr['questionLetterSpacingTablet'], $attr['questionLetterSpacingType'] ),
+	),
 );
 $m_selectors = array(
 	'.uagb-faq-icon-row .uagb-faq-item .uagb-faq-icon-wrap' => array(
@@ -199,6 +207,12 @@ $m_selectors = array(
 		'width'     => $m_icon_size,
 		'height'    => $m_icon_size,
 		'font-size' => $m_icon_size,
+	),
+	' .uagb-faq-item .uagb-faq-content'                   => array(
+		'letter-spacing' => UAGB_Helper::get_css_value( $attr['answerLetterSpacingMobile'], $attr['answerLetterSpacingType'] ),
+	),
+	' .uagb-faq-item .uagb-question'                      => array(
+		'letter-spacing' => UAGB_Helper::get_css_value( $attr['questionLetterSpacingMobile'], $attr['questionLetterSpacingType'] ),
 	),
 );
 

@@ -137,6 +137,15 @@ const Settings = ( props ) => {
 		questionFontStyle,
 		questionTransform,
 		questionDecoration,
+		// letter spacing
+		questionLetterSpacing,
+		questionLetterSpacingTablet,
+		questionLetterSpacingMobile,
+		questionLetterSpacingType,
+		answerLetterSpacing,
+		answerLetterSpacingTablet,
+		answerLetterSpacingMobile,
+		answerLetterSpacingType,
 	} = attributes;
 
 	const onchangeIcon = ( value ) => {
@@ -550,6 +559,22 @@ const Settings = ( props ) => {
 						value: questionLineHeightTablet,
 						label: 'questionLineHeightTablet',
 					} }
+					letterSpacing={ {
+						value: questionLetterSpacing,
+						label: 'questionLetterSpacing',
+					} }
+					letterSpacingTablet={ {
+						value: questionLetterSpacingTablet,
+						label: 'questionLetterSpacingTablet',
+					} }
+					letterSpacingMobile={ {
+						value: questionLetterSpacingMobile,
+						label: 'questionLetterSpacingMobile',
+					} }
+					letterSpacingType={ {
+						value: questionLetterSpacingType,
+						label: 'questionLetterSpacingType',
+					} }
 				/>
 				{ 'accordion' === layout && (
 					<UAGTabsControl
@@ -774,6 +799,22 @@ const Settings = ( props ) => {
 					lineHeightTablet={ {
 						value: answerLineHeightTablet,
 						label: 'answerLineHeightTablet',
+					} }
+					letterSpacing={ {
+						value: answerLetterSpacing,
+						label: 'answerLetterSpacing',
+					} }
+					letterSpacingTablet={ {
+						value: answerLetterSpacingTablet,
+						label: 'answerLetterSpacingTablet',
+					} }
+					letterSpacingMobile={ {
+						value: answerLetterSpacingMobile,
+						label: 'answerLetterSpacingMobile',
+					} }
+					letterSpacingType={ {
+						value:answerLetterSpacingType,
+						label: 'answerLetterSpacingType',
 					} }
 				/>
 				<SpacingControl
