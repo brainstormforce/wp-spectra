@@ -104,7 +104,7 @@ const InspectorTabs = ( props ) => {
 		const data = {
 			...uagSettingState,
 			[blockName] : {
-				'selectedTab' : tab
+				selectedTab : tab
 			}
 		}
 		const uagLocalStorage = getUAGEditorStateLocalStorage();

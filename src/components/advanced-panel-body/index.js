@@ -29,8 +29,8 @@ const UAGAdvancedPanelBody = ( props ) => {
 
 		let match = false;
 		panelRef?.current?.classList.forEach(
-			function(value) {
-				if (value.includes('uag-advance-panel-body')) {
+			function( value ) {
+				if ( value.includes( 'uag-advance-panel-body' ) ) {
 					match = value
 				}
 			}
@@ -44,14 +44,13 @@ const UAGAdvancedPanelBody = ( props ) => {
 			...uagSettingState,
 			[blockName] : {
 				...uagSettingState[blockName],
-				'selectedPanel': match,
-				'selectedTab' : inspectorTabName
+				selectedPanel: match,
+				selectedTab : inspectorTabName
 			}
 		}
 
 		const uagLocalStorage = getUAGEditorStateLocalStorage();
 		if ( uagLocalStorage ) {
-			console.log(data);
 			uagLocalStorage.setItem( 'uagSettingState', JSON.stringify ( data ) );
 		}
     }

@@ -114,9 +114,9 @@ const devices = [
 	const data = {
 		...uagSettingState,
 		[blockName] : {
-			'selectedTab' : inspectorTabName,
-			'selectedPanel' : panelBodyClass,
-			'selectedSetting' : settingsPopup
+			selectedTab : inspectorTabName,
+			selectedPanel : panelBodyClass,
+			selectedSetting : settingsPopup
 		}
 	}
 
