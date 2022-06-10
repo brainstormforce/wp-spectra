@@ -162,7 +162,22 @@ function styling( props ) {
 				' ' +
 				boxShadowPositionCSS,
 		},
-
+		'.uagb-layout-grid .uagb-tax-link': {
+			'color': countColor,
+			'font-size': generateCSSUnit( countFontSize, countFontSizeType ),
+			'font-family': countFontFamily,
+			'font-weight': countFontWeight,
+			'line-height': generateCSSUnit(
+				countLineHeight,
+				countLineHeightType
+			),
+			'font-style': countFontStyle,
+			'text-decoration': countDecoration,
+			'text-transform': countTransform,
+		},
+		'.uagb-layout-grid .uagb-tax-link .uagb-taxonomy-count': {
+			'letter-spacing': generateCSSUnit( countLetterSpacing, countLetterSpacingType ),
+		},
 		'.uagb-layout-grid .uagb-tax-title': {
 			'color': titleColor,
 			'margin-top': '0',
@@ -177,21 +192,7 @@ function styling( props ) {
 			'font-style': titleFontStyle,
 			'text-decoration': titleDecoration,
 			'text-transform': titleTransform,
-			'letter-spacing': generateCSSUnit( titleLetterSpacing, titleLetterSpacingType ),
-		},
-		'.uagb-layout-grid .uagb-tax-link': {
-			'color': countColor,
-			'font-size': generateCSSUnit( countFontSize, countFontSizeType ),
-			'font-family': countFontFamily,
-			'font-weight': countFontWeight,
-			'line-height': generateCSSUnit(
-				countLineHeight,
-				countLineHeightType
-			),
-			'font-style': countFontStyle,
-			'text-decoration': countDecoration,
-			'text-transform': countTransform,
-			'letter-spacing': generateCSSUnit( countLetterSpacing, countLetterSpacingType ),
+			// 'letter-spacing': generateCSSUnit( titleLetterSpacing, titleLetterSpacingType ),
 		},
 		'.uagb-layout-list .uagb-tax-list': {
 			'list-style': listStyle,
@@ -402,7 +403,7 @@ function styling( props ) {
 				countLineHeightType
 			),
 		},
-		'.uagb-layout-grid a.uagb-tax-link': {
+		'.uagb-layout-grid .uagb-tax-link .uagb-taxonomy-count': {
 			'letter-spacing': generateCSSUnit( countLetterSpacingMobile, countLetterSpacingType ),
 		},
 		'.uagb-layout-list .uagb-tax-list': {
@@ -516,6 +517,8 @@ function styling( props ) {
 				countLineHeightTablet,
 				countLineHeightType
 			),
+		},
+		'.uagb-layout-grid .uagb-tax-link .uagb-taxonomy-count': {
 			'letter-spacing': generateCSSUnit( countLetterSpacingTablet, countLetterSpacingType ),
 		},
 		'.uagb-layout-list .uagb-tax-list': {

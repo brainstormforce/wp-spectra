@@ -58,14 +58,16 @@ const Render = ( props ) => {
 												__html: p.name,
 											} }
 										></Tag>
-										{ showCount && (
-<>
-												{ p.count }{ ' ' }
-												{ p.count > '1'
-													? `${ p.singular_name }s`
-													: p.singular_name }
-</>
-										) }
+										<div className='uagb-taxonomy-count'>
+											{ showCount && (
+												<>
+													{ p.count }{ ' ' }
+													{ p.count > '1'
+														? `${ p.singular_name }s`
+														: p.singular_name }
+												</>
+											) }
+										</div>
 									</a>
 								</div>
 							) ) }
