@@ -82,13 +82,7 @@ $selectors[ ' ' . $attr['titleTag'] . '.uagb-marketing-btn__title' ] = array(
 	'letter-spacing' => UAGB_Helper::get_css_value( $attr['titleLetterSpacing'], $attr['titleLetterSpacingType'] ),
 );
 
-$t_selectors[ ' ' . $attr['titleTag'] . '.uagb-marketing-btn__title' ] = array(
-	'letter-spacing' => UAGB_Helper::get_css_value( $attr['titleLetterSpacingTablet'], $attr['titleLetterSpacingType'] ),
-);
 
-$m_selectors[ ' ' . $attr['titleTag'] . '.uagb-marketing-btn__title' ] = array(
-	'letter-spacing' => UAGB_Helper::get_css_value( $attr['titleLetterSpacingMobile'], $attr['titleLetterSpacingType'] ),
-);
 
 $selectors[ ' .uagb-marketing-btn__link:hover ' . $attr['titleTag'] . '.uagb-marketing-btn__title' ] = array(
 	'color' => $attr['titleHoverColor'],
@@ -163,6 +157,14 @@ $t_selectors = array(
 		'margin-right' => UAGB_Helper::get_css_value( $attr['iconSpaceTablet'], 'px' ),
 	),
 
+);
+
+$m_selectors[ ' ' . $attr['titleTag'] . '.uagb-marketing-btn__title' ] = array(
+	'letter-spacing' => UAGB_Helper::get_css_value( $attr['titleLetterSpacingMobile'], $attr['titleLetterSpacingType'] ),
+);
+
+$t_selectors[ ' ' . $attr['titleTag'] . '.uagb-marketing-btn__title' ] = array(
+	'letter-spacing' => UAGB_Helper::get_css_value( $attr['titleLetterSpacingTablet'], $attr['titleLetterSpacingType'] ),
 );
 
 $combined_selectors = array(

@@ -717,7 +717,8 @@ const attributes = {   // eslint-disable-line no-unused-vars
 		type: 'number',
 		UAGCopyPaste: {
 			styleType: 'main-title-letter-spacing'
-		}
+		},
+		default:0,
 	},
 	titleLetterSpacingTablet: {
 		type: 'number',

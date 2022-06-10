@@ -174,8 +174,6 @@ function styling( props ) {
 			'font-style': countFontStyle,
 			'text-decoration': countDecoration,
 			'text-transform': countTransform,
-		},
-		'.uagb-layout-grid .uagb-tax-link .uagb-taxonomy-count': {
 			'letter-spacing': generateCSSUnit( countLetterSpacing, countLetterSpacingType ),
 		},
 		'.uagb-layout-grid .uagb-tax-title': {
@@ -192,7 +190,7 @@ function styling( props ) {
 			'font-style': titleFontStyle,
 			'text-decoration': titleDecoration,
 			'text-transform': titleTransform,
-			// 'letter-spacing': generateCSSUnit( titleLetterSpacing, titleLetterSpacingType ),
+			'letter-spacing': generateCSSUnit( titleLetterSpacing, titleLetterSpacingType ),
 		},
 		'.uagb-layout-list .uagb-tax-list': {
 			'list-style': listStyle,
@@ -402,8 +400,6 @@ function styling( props ) {
 				countLineHeightMobile,
 				countLineHeightType
 			),
-		},
-		'.uagb-layout-grid .uagb-tax-link .uagb-taxonomy-count': {
 			'letter-spacing': generateCSSUnit( countLetterSpacingMobile, countLetterSpacingType ),
 		},
 		'.uagb-layout-list .uagb-tax-list': {
@@ -517,8 +513,6 @@ function styling( props ) {
 				countLineHeightTablet,
 				countLineHeightType
 			),
-		},
-		'.uagb-layout-grid .uagb-tax-link .uagb-taxonomy-count': {
 			'letter-spacing': generateCSSUnit( countLetterSpacingTablet, countLetterSpacingType ),
 		},
 		'.uagb-layout-list .uagb-tax-list': {

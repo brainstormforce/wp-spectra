@@ -471,6 +471,7 @@ if ( ! class_exists( 'UAGB_Taxonomy_List' ) ) {
 						// letter spacing.
 						'titleLetterSpacing'         => array(
 							'type'    => 'number',
+							'default' => 0,
 						),
 						'titleLetterSpacingTablet'   => array(
 							'type'    => 'number',
@@ -541,13 +542,11 @@ if ( ! class_exists( 'UAGB_Taxonomy_List' ) ) {
 						<a class="uagb-tax-link" href= "<?php echo esc_url( get_term_link( $value->slug, $attributes['taxonomyType'] ) ); ?>">
 							<<?php echo esc_html( $titleTag ); ?> class="uagb-tax-title"><?php echo esc_attr( $value->name ); ?>
 							</<?php echo esc_html( $titleTag ); ?>>
-							<div class="uagb-taxonomy-count">
-								<?php if ( $showCount ) { ?>
-										<?php echo esc_attr( $value->count ); ?>
-										<?php $countName = ( $value->count > 1 ) ? esc_attr( $singular_name ) . 's' : esc_attr( $singular_name ); ?>
-										<?php echo esc_attr( apply_filters( 'uagb_taxonomy_count_text', $countName, $value->count ) ); ?>
-								<?php } ?>
-							</div>
+							<?php if ( $showCount ) { ?>
+									<?php echo esc_attr( $value->count ); ?>
+									<?php $countName = ( $value->count > 1 ) ? esc_attr( $singular_name ) . 's' : esc_attr( $singular_name ); ?>
+									<?php echo esc_attr( apply_filters( 'uagb_taxonomy_count_text', $countName, $value->count ) ); ?>
+							<?php } ?>
 						</a>
 					</div>
 					<?php
