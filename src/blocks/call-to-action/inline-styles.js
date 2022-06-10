@@ -503,17 +503,6 @@ function CtaStyle( props ) {
 		},
 	};
 
-	if ( textAlign === 'left' && ctaPosition === 'right' ) {
-		selectors[ ' .uagb-cta__left-right-wrap .uagb-cta__content' ] = {
-			'margin-left': generateCSSUnit( overallBlockLeftMargin, 'px' ),
-			'margin-right': '0',
-		};
-		selectors[ ' > .uagb-cta__wrap' ] = {
-			'margin-left': generateCSSUnit( overallBlockLeftMargin, 'px' ),
-			'margin-right': '0',
-		};
-	}
-
 	if( ctaIconPosition === 'before' ){
 		selectors[ '.uagb-cta__outer-wrap a.uagb-cta__button-link-wrapper > svg' ] = {
 			'margin-right': generateCSSUnit( ctaIconSpace, 'px' ),
