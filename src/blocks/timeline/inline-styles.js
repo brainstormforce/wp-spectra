@@ -48,6 +48,8 @@ function contentTimelineStyle( props ) {
 		headLineHeightTablet,
 		headLineHeightMobile,
 		align,
+		alignTablet,
+		alignMobile,
 		headingColor,
 		headSpace,
 		headSpaceTablet,
@@ -386,7 +388,14 @@ function contentTimelineStyle( props ) {
 
 	/* Generate Responsive CSS for timeline */
 	const tabletSelectors = {
+		' .uagb-timeline__day-new': {
+			'text-align': alignTablet,
+		},
+		' .uagb-timeline__date-inner': {
+			'text-align': alignTablet,
+		},
 		' .uagb-timeline__date-hide.uagb-timeline__date-inner': {
+			'text-align': alignTablet,
 			'font-size': generateCSSUnit(
 				dateFontsizeTablet,
 				dateFontsizeType
@@ -398,6 +407,7 @@ function contentTimelineStyle( props ) {
 			'margin-bottom': generateCSSUnit( dateBottomspaceTablet, 'px' ),
 		},
 		' .uagb-timeline__date-hide.uagb-timeline__inner-date-new': {
+			'text-align': alignTablet,
 			'font-size': generateCSSUnit(
 				dateFontsizeTablet,
 				dateFontsizeType
@@ -420,6 +430,7 @@ function contentTimelineStyle( props ) {
 			'margin-bottom': generateCSSUnit( dateBottomspaceTablet, 'px' ),
 		},
 		' .uagb-timeline__heading': {
+			'text-align': alignTablet,
 			'font-size': generateCSSUnit(
 				headFontSizeTablet,
 				headFontSizeType
@@ -432,6 +443,7 @@ function contentTimelineStyle( props ) {
 			'margin-top': generateCSSUnit( headTopSpacingTablet, 'px' ),
 		},
 		' .uagb-timeline__heading a': {
+			'text-align': alignTablet,
 			'font-size': generateCSSUnit(
 				headFontSizeTablet,
 				headFontSizeType
@@ -444,6 +456,7 @@ function contentTimelineStyle( props ) {
 			'margin-top': generateCSSUnit( headTopSpacingTablet, 'px' ),
 		},
 		' .uagb-timeline-desc-content': {
+			'text-align': alignTablet,
 			'font-size': generateCSSUnit(
 				subHeadFontSizeTablet,
 				subHeadFontSizeType
@@ -539,7 +552,11 @@ function contentTimelineStyle( props ) {
 				authorLineHeightType
 			),
 		},
+		' .uagb-timeline__link_parent': {
+			'text-align': alignTablet,
+		},
 		' .uagb-timeline__author-link': {
+			'text-align': alignTablet,
 			'font-size': generateCSSUnit(
 				authorFontSizeTablet,
 				authorFontSizeType
@@ -550,6 +567,7 @@ function contentTimelineStyle( props ) {
 			),
 		},
 		' .uagb-timeline__link': {
+			'text-align': alignTablet,
 			'font-size': generateCSSUnit( ctaFontSizeTablet, ctaFontSizeType ),
 			'line-height': generateCSSUnit(
 				ctaLineHeightTablet,
@@ -579,7 +597,14 @@ function contentTimelineStyle( props ) {
 	};
 
 	const mobileSelectors = {
+		' .uagb-timeline__day-new': {
+			'text-align': alignMobile,
+		},
+		' .uagb-timeline__date-inner': {
+			'text-align': alignMobile,
+		},
 		' .uagb-timeline__date-hide.uagb-timeline__date-inner': {
+			'text-align': alignMobile,
 			'font-size': generateCSSUnit(
 				dateFontsizeMobile,
 				dateFontsizeType
@@ -591,6 +616,7 @@ function contentTimelineStyle( props ) {
 			'margin-bottom': generateCSSUnit( dateBottomspaceMobile, 'px' ),
 		},
 		' .uagb-timeline__date-hide.uagb-timeline__inner-date-new': {
+			'text-align': alignMobile,
 			'font-size': generateCSSUnit(
 				dateFontsizeMobile,
 				dateFontsizeType
@@ -613,6 +639,7 @@ function contentTimelineStyle( props ) {
 			'margin-bottom': generateCSSUnit( dateBottomspaceMobile, 'px' ),
 		},
 		' .uagb-timeline__heading': {
+			'text-align': alignMobile,
 			'font-size': generateCSSUnit(
 				headFontSizeMobile,
 				headFontSizeType
@@ -625,6 +652,7 @@ function contentTimelineStyle( props ) {
 			'margin-top': generateCSSUnit( headTopSpacingMobile, 'px' ),
 		},
 		' .uagb-timeline__heading a': {
+			'text-align': alignMobile,
 			'font-size': generateCSSUnit(
 				headFontSizeMobile,
 				headFontSizeType
@@ -637,6 +665,7 @@ function contentTimelineStyle( props ) {
 			'margin-top': generateCSSUnit( headTopSpacingMobile, 'px' ),
 		},
 		' .uagb-timeline-desc-content': {
+			'text-align': alignMobile,
 			'font-size': generateCSSUnit(
 				subHeadFontSizeMobile,
 				subHeadFontSizeType
@@ -731,7 +760,11 @@ function contentTimelineStyle( props ) {
 				authorLineHeightType
 			),
 		},
+		' .uagb-timeline__link_parent': {
+			'text-align': alignMobile,
+		},
 		' .uagb-timeline__author-link': {
+			'text-align': alignMobile,
 			'font-size': generateCSSUnit(
 				authorFontSizeMobile,
 				authorFontSizeType
@@ -742,6 +775,7 @@ function contentTimelineStyle( props ) {
 			),
 		},
 		' .uagb-timeline__link': {
+			'text-align': alignMobile,
 			'font-size': generateCSSUnit( ctaFontSizeMobile, ctaFontSizeType ),
 			'line-height': generateCSSUnit(
 				ctaLineHeightMobile,

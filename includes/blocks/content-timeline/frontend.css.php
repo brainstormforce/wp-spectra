@@ -188,15 +188,25 @@ $selectors = array(
 
 	$m_selectors = array(
 		' .uagb-timeline__heading'          => array(
+			'text-align'    => $attr['alignMobile'],
 			'margin-bottom' => UAGB_Helper::get_css_value( $attr['headSpaceMobile'], 'px' ),
+		),
+		' .uagb-timeline-desc-content'                         => array(
+			'text-align' => $attr['alignMobile'],
+			'color'      => $attr['subHeadingColor'],
+		),
+		' .uagb-timeline__day-new'                             => array(
+			'text-align' => $attr['alignTablet'],
 		),
 		' .uagb-timeline__heading-text'     => array(
 			'margin-bottom' => UAGB_Helper::get_css_value( $attr['headSpaceMobile'], 'px' ),
 		),
 		' .uagb-timeline__date-hide.uagb-timeline__date-inner' => array(
+			'text-align'    => $attr['alignMobile'],
 			'margin-bottom' => UAGB_Helper::get_css_value( $attr['dateBottomspaceMobile'], 'px' ),
 		),
 		' .uagb-timeline__date-hide.uagb-timeline__inner-date-new' => array(
+			'text-align'    => $attr['alignMobile'],
 			'margin-bottom' => UAGB_Helper::get_css_value( $attr['dateBottomspaceMobile'], 'px' ),
 		),
 		'.uagb-timeline__center-block .uagb-timeline__day-right .uagb-timeline__arrow:after' => array(
@@ -241,15 +251,18 @@ $selectors = array(
 
 	$t_selectors = array(
 		' .uagb-timeline__heading'          => array(
+			'text-align'    => $attr['alignTablet'],
 			'margin-bottom' => UAGB_Helper::get_css_value( $attr['headSpaceTablet'], 'px' ),
 		),
 		' .uagb-timeline__heading-text'     => array(
 			'margin-bottom' => UAGB_Helper::get_css_value( $attr['headSpaceTablet'], 'px' ),
 		),
 		' .uagb-timeline__date-hide.uagb-timeline__date-inner' => array(
+			'text-align'    => $attr['alignTablet'],
 			'margin-bottom' => UAGB_Helper::get_css_value( $attr['dateBottomspaceTablet'], 'px' ),
 		),
 		' .uagb-timeline__date-hide.uagb-timeline__inner-date-new' => array(
+			'text-align'    => $attr['alignTablet'],
 			'margin-bottom' => UAGB_Helper::get_css_value( $attr['dateBottomspaceTablet'], 'px' ),
 		),
 		'.uagb-timeline__center-block .uagb-timeline__day-right .uagb-timeline__arrow:after' => array(

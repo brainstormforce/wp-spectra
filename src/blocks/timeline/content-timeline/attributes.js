@@ -66,6 +66,20 @@ const attributes = {
 			styleType: 'overall-alignment'
 		},
 	},
+	alignTablet: {
+		type: 'string',
+		default: '',
+		UAGCopyPaste: {
+			styleType: 'overall-alignment-tablet'
+		},
+	},
+	alignMobile: {
+		type: 'string',
+		default: '',
+		UAGCopyPaste: {
+			styleType: 'overall-alignment-mobile'
+		},
+	},
 	headingColor: {
 		type: 'string',
 		UAGCopyPaste: {

@@ -47,6 +47,8 @@ function contentTimelineStyle( props ) {
 		headLineHeightTablet,
 		headLineHeightMobile,
 		align,
+		alignTablet,
+		alignMobile,
 		headingColor,
 		headSpace,
 		headSpaceTablet,
@@ -312,6 +314,9 @@ function contentTimelineStyle( props ) {
 
 	/* Generate Responsive CSS for timeline */
 	const tabletSelectors = {
+		' .uagb-timeline__heading.rich-text': {
+			'text-align': alignTablet,
+		},
 		' .uagb-timeline__date-hide.uagb-timeline__date-inner': {
 			'font-size': generateCSSUnit(
 				dateFontsizeTablet,
@@ -365,6 +370,7 @@ function contentTimelineStyle( props ) {
 				headLineHeightTablet,
 				headLineHeightType
 			),
+			'text-align': alignTablet,
 		},
 		' p.uagb-timeline-desc-content': {
 			'font-size': generateCSSUnit(
@@ -375,6 +381,7 @@ function contentTimelineStyle( props ) {
 				subHeadLineHeightTablet,
 				subHeadLineHeightType
 			),
+			'text-align': alignTablet,
 		},
 		'.uagb-timeline__center-block .uagb-timeline__marker': {
 			'margin-left': ( stack === 'tablet' && timelinAlignment === 'center' ) ?
@@ -461,9 +468,18 @@ function contentTimelineStyle( props ) {
 			),
 			'border-radius': generateCSSUnit( borderRadiusTablet, 'px' ),
 		},
+		' .uagb-timeline__day-new': {
+			'text-align': alignTablet,
+		},
+		' .uagb-timeline__date-inner': {
+			'text-align': alignTablet,
+		},
 	};
 
 	const mobileSelectors = {
+		' .uagb-timeline__heading.rich-text': {
+			'text-align': alignMobile,
+		},
 		' .uagb-timeline__date-hide.uagb-timeline__date-inner': {
 			'font-size': generateCSSUnit(
 				dateFontsizeMobile,
@@ -517,6 +533,7 @@ function contentTimelineStyle( props ) {
 				headLineHeightMobile,
 				headLineHeightType
 			),
+			'text-align': alignMobile,
 		},
 		' p.uagb-timeline-desc-content': {
 			'font-size': generateCSSUnit(
@@ -527,6 +544,7 @@ function contentTimelineStyle( props ) {
 				subHeadLineHeightMobile,
 				subHeadLineHeightType
 			),
+			'text-align': alignMobile,
 		},
 		'.uagb-timeline__center-block .uagb-timeline__marker': {
 			'margin-left': 0,
@@ -610,6 +628,12 @@ function contentTimelineStyle( props ) {
 				mobilePaddingUnit
 			),
 			'border-radius': generateCSSUnit( borderRadiusMobile, 'px' ),
+		},
+		' .uagb-timeline__day-new': {
+			'text-align': alignMobile,
+		},
+		' .uagb-timeline__date-inner': {
+			'text-align': alignMobile,
 		},
 	};
 

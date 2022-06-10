@@ -72,6 +72,24 @@ $t_selectors = array(
 		'font-size'   => UAGB_Helper::get_css_value( $attr['authorFontSizeTablet'], $attr['authorFontSizeType'] ),
 		'line-height' => UAGB_Helper::get_css_value( $attr['authorLineHeightTablet'], $attr['authorLineHeightType'] ),
 	),
+	' .uagb-timeline__link_parent'  => array(
+		'text-align' => $attr['alignTablet'],
+	),
+	' .uagb-timeline__image a'      => array(
+		'text-align' => $attr['alignTablet'],
+	),
+	' a.uagb-timeline__image'       => array(
+		'text-align' => $attr['alignTablet'],
+	),
+	' .uagb-timeline__author-link'  => array(
+		'text-align' => $attr['alignTablet'],
+	),
+	' .uagb-timeline__heading'      => array(
+		'text-align' => $attr['alignTablet'],
+	),
+	' .uagb-timeline__heading a'    => array(
+		'text-align' => $attr['alignTablet'],
+	),
 	'.uagb-timeline__center-block.uagb-timeline__responsive-tablet .uagb-timeline__author-link' => array(
 		'text-align' => 'left',
 	),
@@ -88,6 +106,7 @@ $t_selectors = array(
 		'text-align' => 'left',
 	),
 	' .uagb-timeline__link'         => array(
+		'text-align'       => $attr['alignTablet'],
 		'margin-bottom' => UAGB_Helper::get_css_value( $attr['ctaBottomSpacingTablet'], 'px' ),
 	),
 	' .uagb-timeline__heading-text' => array(
@@ -127,8 +146,23 @@ $m_selectors = array(
 		'font-size'   => UAGB_Helper::get_css_value( $attr['authorFontSizeMobile'], $attr['authorFontSizeType'] ),
 		'line-height' => UAGB_Helper::get_css_value( $attr['authorLineHeightMobile'], $attr['authorLineHeightType'] ),
 	),
+	' .uagb-timeline__link_parent'  => array(
+		'text-align' => $attr['alignMobile'],
+	),
+	' .uagb-timeline__image a'      => array(
+		'text-align' => $attr['alignMobile'],
+	),
+	' a.uagb-timeline__image'       => array(
+		'text-align' => $attr['alignMobile'],
+	),
+	' .uagb-timeline__author-link'  => array(
+		'text-align' => $attr['alignMobile'],
+	),
+	' .uagb-timeline__heading a'    => array(
+		'text-align' => $attr['alignMobile'],
+	),
 	' .uagb-timeline__heading'      => array(
-		'text-align' => $attr['align'],
+		'text-align' => $attr['alignMobile'],
 	),
 	'.uagb-timeline__center-block.uagb-timeline__responsive-tablet .uagb-timeline__author-link' => array(
 		'text-align' => 'left',
@@ -146,6 +180,7 @@ $m_selectors = array(
 		'text-align' => 'left',
 	),
 	' .uagb-timeline__link'         => array(
+		'text-align'       => $attr['alignMobile'],
 		'margin-bottom' => UAGB_Helper::get_css_value( $attr['ctaBottomSpacingMobile'], 'px' ),
 	),
 	' .uagb-timeline__heading-text' => array(
