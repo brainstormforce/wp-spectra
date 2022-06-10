@@ -46,6 +46,20 @@ const attributes = {
 			styleType: 'overall-alignment'
 		},
 	},
+	alignTablet: {
+		type: 'string',
+		default: '',
+		UAGCopyPaste: {
+			styleType: 'overall-alignment-tablet'
+		}
+	},
+	alignMobile: {
+		type: 'string',
+		default: '',
+		UAGCopyPaste: {
+			styleType: 'overall-alignment-mobile'
+		}
+	},
 	icon_count: {
 		type: 'number',
 		default: itemCount,
@@ -112,6 +126,20 @@ const attributes = {
 			styleType: 'icon-position'
 		},
 		default: 'middle',
+	},
+	iconPositionTablet: {
+		type: 'string',
+		UAGCopyPaste: {
+			styleType: 'icon-position-tablet'
+		},
+		default: '',
+	},
+	iconPositionMobile: {
+		type: 'string',
+		UAGCopyPaste: {
+			styleType: 'icon-position-mobile'
+		},
+		default: '',
 	},
 	size: {
 		type: 'number',
