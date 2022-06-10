@@ -110,7 +110,7 @@ return array(
 	'countDecoration'          => '',
 	'listDecoration'           => '',
 	// letter spacing.
-	'titleLetterSpacing'            => '0',
+	'titleLetterSpacing'            => 0,
 	'titleLetterSpacingTablet'      => '',
 	'titleLetterSpacingMobile'      => '',
 	'titleLetterSpacingType'        => 'px',

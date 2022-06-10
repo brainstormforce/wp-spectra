@@ -175,7 +175,7 @@ $t_selectors = array(
 		'margin-bottom' => UAGB_Helper::get_css_value( $attr['titleBottomSpaceTablet'], 'px' ),
 		'letter-spacing' => UAGB_Helper::get_css_value( $attr['titleLetterSpacingTablet'], $attr['titleLetterSpacingType'] ),
 	),
-	'.uagb-layout-grid .uagb-tax-link'                     => array(
+	'.uagb-taxomony-box .uagb-tax-link'                     => array(
 		'letter-spacing' => UAGB_Helper::get_css_value( $attr['countLetterSpacingTablet'], $attr['countLetterSpacingType'] ),
 	),
 	'.uagb-layout-list .uagb-tax-list'                     => array(
