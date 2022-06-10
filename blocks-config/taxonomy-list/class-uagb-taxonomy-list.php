@@ -468,6 +468,33 @@ if ( ! class_exists( 'UAGB_Taxonomy_List' ) ) {
 							'type'    => 'boolean',
 							'default' => false,
 						),
+						// letter spacing.
+						'titleLetterSpacing'         => array(
+							'type'    => 'number',
+						),
+						'titleLetterSpacingTablet'   => array(
+							'type'    => 'number',
+						),
+						'titleLetterSpacingMobile'   => array(
+							'type'    => 'number',
+						),
+						'titleLetterSpacingType'     => array(
+							'type'    => 'string',
+							'default' => 'px',
+						),
+						'countLetterSpacing'         => array(
+							'type'    => 'number',
+						),
+						'countLetterSpacingTablet'   => array(
+							'type'    => 'number',
+						),
+						'countLetterSpacingMobile'   => array(
+							'type'    => 'number',
+						),
+						'countLetterSpacingType'     => array(
+							'type'    => 'string',
+							'default' => 'px',
+						),
 					),
 					'render_callback' => array( $this, 'render_html' ),
 				)

@@ -58,9 +58,11 @@ $selectors = array(
 		'color'         => $attr['titleColor'],
 		'margin-top'    => '0',
 		'margin-bottom' => UAGB_Helper::get_css_value( $attr['titleBottomSpace'], 'px' ),
+		'letter-spacing' => UAGB_Helper::get_css_value( $attr['titleLetterSpacing'], $attr['titleLetterSpacingType'] ),
 	),
 	'.uagb-layout-grid .uagb-tax-link'                     => array(
 		'color' => $attr['countColor'],
+		'letter-spacing' => UAGB_Helper::get_css_value( $attr['countLetterSpacing'], $attr['countLetterSpacingType'] ),
 	),
 	// List layout styling.
 	'.uagb-layout-list .uagb-tax-list'                     => array(
@@ -170,6 +172,10 @@ $t_selectors = array(
 	),
 	'.uagb-layout-grid .uagb-tax-title'           => array(
 		'margin-bottom' => UAGB_Helper::get_css_value( $attr['titleBottomSpaceTablet'], 'px' ),
+		'letter-spacing' => UAGB_Helper::get_css_value( $attr['titleLetterSpacingTablet'], $attr['titleLetterSpacingType'] ),
+	),
+	'.uagb-layout-grid .uagb-tax-link'                     => array(
+		'letter-spacing' => UAGB_Helper::get_css_value( $attr['countLetterSpacingTablet'], $attr['countLetterSpacingType'] ),
 	),
 );
 
@@ -192,9 +198,14 @@ $m_selectors = array(
 	),
 	'.uagb-layout-grid .uagb-tax-title'           => array(
 		'margin-bottom' => UAGB_Helper::get_css_value( $attr['titleBottomSpaceMobile'], 'px' ),
+		'letter-spacing' => UAGB_Helper::get_css_value( $attr['titleLetterSpacingMobile'], $attr['titleLetterSpacingType'] ),
+	),
+	'.uagb-taxomony-box a.uagb-tax-link'                     => array(
+		'letter-spacing' => UAGB_Helper::get_css_value( $attr['countLetterSpacingMobile'], $attr['countLetterSpacingType'] ),
 	),
 );
 
+// die($attr['countLetterSpacingMobile']. 'jelas');
 $combined_selectors = array(
 	'desktop' => $selectors,
 	'tablet'  => $t_selectors,

@@ -100,6 +100,15 @@ function styling( props ) {
 		titleDecoration,
 		countDecoration,
 		listDecoration,
+		// letter spacing
+		titleLetterSpacing,
+		titleLetterSpacingTablet,
+		titleLetterSpacingMobile,
+		titleLetterSpacingType,
+		countLetterSpacing,
+		countLetterSpacingTablet,
+		countLetterSpacingMobile,
+		countLetterSpacingType,
 	} = props.attributes;
 
 	let selectors = {};
@@ -168,6 +177,7 @@ function styling( props ) {
 			'font-style': titleFontStyle,
 			'text-decoration': titleDecoration,
 			'text-transform': titleTransform,
+			'letter-spacing': generateCSSUnit( titleLetterSpacing, titleLetterSpacingType ),
 		},
 		'.uagb-layout-grid .uagb-tax-link': {
 			'color': countColor,
@@ -181,6 +191,7 @@ function styling( props ) {
 			'font-style': countFontStyle,
 			'text-decoration': countDecoration,
 			'text-transform': countTransform,
+			'letter-spacing': generateCSSUnit( countLetterSpacing, countLetterSpacingType ),
 		},
 		'.uagb-layout-list .uagb-tax-list': {
 			'list-style': listStyle,
@@ -379,6 +390,7 @@ function styling( props ) {
 				titleLineHeightType
 			),
 			'margin-bottom': generateCSSUnit( titleBottomSpaceMobile, 'px' ),
+			'letter-spacing': generateCSSUnit( titleLetterSpacingMobile, titleLetterSpacingType ),
 		},
 		'.uagb-layout-grid .uagb-tax-link': {
 			'font-size': generateCSSUnit(
@@ -389,6 +401,9 @@ function styling( props ) {
 				countLineHeightMobile,
 				countLineHeightType
 			),
+		},
+		'.uagb-layout-grid a.uagb-tax-link': {
+			'letter-spacing': generateCSSUnit( countLetterSpacingMobile, countLetterSpacingType ),
 		},
 		'.uagb-layout-list .uagb-tax-list': {
 			'font-size': generateCSSUnit(
@@ -490,6 +505,7 @@ function styling( props ) {
 			),
 
 			'margin-bottom': generateCSSUnit( titleBottomSpaceTablet, 'px' ),
+			'letter-spacing': generateCSSUnit( titleLetterSpacingTablet, titleLetterSpacingType ),
 		},
 		'.uagb-layout-grid .uagb-tax-link': {
 			'font-size': generateCSSUnit(
@@ -500,6 +516,7 @@ function styling( props ) {
 				countLineHeightTablet,
 				countLineHeightType
 			),
+			'letter-spacing': generateCSSUnit( countLetterSpacingTablet, countLetterSpacingType ),
 		},
 		'.uagb-layout-list .uagb-tax-list': {
 			'font-size': generateCSSUnit(
