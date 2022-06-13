@@ -12,7 +12,7 @@
 // If need be please add a new function for Info Box and go ahead.
 UAGB_Block_JS::blocks_buttons_gfont( $attr );
 
-$alignment = ( 'left' === $attr['align'] ) ? 'flex-start' : ( ( 'right' === $attr['align'] ) ? 'flex-end' : 'center' );
+$alignment       = ( 'left' === $attr['align'] ) ? 'flex-start' : ( ( 'right' === $attr['align'] ) ? 'flex-end' : 'center' );
 $alignmentTablet = ( 'left' === $attr['alignTablet'] ) ? 'flex-start' : ( ( 'right' === $attr['alignTablet'] ) ? 'flex-end' : $attr['alignTablet'] );
 $alignmentMobile = ( 'left' === $attr['alignMobile'] ) ? 'flex-start' : ( ( 'right' === $attr['alignMobile'] ) ? 'flex-end' : $attr['alignMobile'] );
 
@@ -50,9 +50,9 @@ $selectors = array(
 		'font-weight'     => $attr['fontWeight'],
 		'line-height'     => $attr['lineHeight'] . $attr['lineHeightType'],
 	),
-	' .uagb-icon-list__wrap' => array(
-		'display' => 'flex',
-		'flex-direction' => 'row',
+	' .uagb-icon-list__wrap'         => array(
+		'display'           => 'flex',
+		'flex-direction'    => 'row',
 		'justify-content'   => $alignment,
 		'-webkit-box-pack'  => $alignment,
 		'-ms-flex-pack'     => $alignment,
@@ -60,7 +60,7 @@ $selectors = array(
 		'-webkit-box-align' => $alignment,
 		'-ms-flex-align'    => $alignment,
 		'align-items'       => $alignment,
-	)
+	),
 );
 
 if ( $attr['childMigrate'] ) {
@@ -95,9 +95,9 @@ $t_selectors = array(
 		'font-size'   => UAGB_Helper::get_css_value( $attr['fontSizeTablet'], $attr['fontSizeType'] ),
 		'line-height' => UAGB_Helper::get_css_value( $attr['lineHeightTablet'], $attr['lineHeightType'] ),
 	),
-	' .uagb-icon-list__wrap' => array(
-		'display' => 'flex',
-		'flex-direction' => 'row',
+	' .uagb-icon-list__wrap'         => array(
+		'display'           => 'flex',
+		'flex-direction'    => 'row',
 		'justify-content'   => $alignmentTablet,
 		'-webkit-box-pack'  => $alignmentTablet,
 		'-ms-flex-pack'     => $alignmentTablet,
@@ -105,7 +105,7 @@ $t_selectors = array(
 		'-webkit-box-align' => $alignmentTablet,
 		'-ms-flex-align'    => $alignmentTablet,
 		'align-items'       => $alignmentTablet,
-	)
+	),
 );
 
 
@@ -128,9 +128,9 @@ $m_selectors = array(
 		'font-size'   => UAGB_Helper::get_css_value( $attr['fontSizeMobile'], $attr['fontSizeType'] ),
 		'line-height' => UAGB_Helper::get_css_value( $attr['lineHeightMobile'], $attr['lineHeightType'] ),
 	),
-	' .uagb-icon-list__wrap' => array(
-		'display' => 'flex',
-		'flex-direction' => 'row',
+	' .uagb-icon-list__wrap'         => array(
+		'display'           => 'flex',
+		'flex-direction'    => 'row',
 		'justify-content'   => $alignmentMobile,
 		'-webkit-box-pack'  => $alignmentMobile,
 		'-ms-flex-pack'     => $alignmentMobile,
@@ -138,7 +138,7 @@ $m_selectors = array(
 		'-webkit-box-align' => $alignmentMobile,
 		'-ms-flex-align'    => $alignmentMobile,
 		'align-items'       => $alignmentMobile,
-	)
+	),
 );
 
 
@@ -172,7 +172,7 @@ if ( 'horizontal' === $attr['icon_layout'] ) {
 			'margin-bottom' => 0,
 		);
 	}
-	$selectors['.wp-block-uagb-icon-list .wp-block-uagb-icon-list-child']             = array(
+	$selectors['.wp-block-uagb-icon-list .wp-block-uagb-icon-list-child'] = array(
 		'margin-left'  => UAGB_Helper::get_css_value( ( $attr['gap'] / 2 ), $attr['gapType'] ),
 		'margin-right' => UAGB_Helper::get_css_value( ( $attr['gap'] / 2 ), $attr['gapType'] ),
 		'display'      => 'inline-flex',
@@ -184,11 +184,11 @@ if ( 'horizontal' === $attr['icon_layout'] ) {
 	$selectors['.wp-block-uagb-icon-list .wp-block-uagb-icon-list-child:last-child']  = array(
 		'margin-right' => 0,
 	);
-} else if('vertical' === $attr['icon_layout'] ){
-	$selectors[' .uagb-icon-list__wrap']                     = array(
+} elseif ( 'vertical' === $attr['icon_layout'] ) {
+	$selectors[' .uagb-icon-list__wrap']                                  = array(
 		'flex-direction' => 'column',
 	);
-	$selectors['.wp-block-uagb-icon-list .wp-block-uagb-icon-list-child']            = array(
+	$selectors['.wp-block-uagb-icon-list .wp-block-uagb-icon-list-child'] = array(
 		'margin-left'   => 0,
 		'margin-right'  => 0,
 		'margin-bottom' => UAGB_Helper::get_css_value( $attr['gap'], $attr['gapType'] ),
@@ -198,18 +198,18 @@ if ( 'horizontal' === $attr['icon_layout'] ) {
 	);
 }
 
-if( 'horizontal' === $attr['iconLayoutTablet'] ){
-	$t_selectors['.wp-block-uagb-icon-list .wp-block-uagb-icon-list-child']           = array(
+if ( 'horizontal' === $attr['iconLayoutTablet'] ) {
+	$t_selectors['.wp-block-uagb-icon-list .wp-block-uagb-icon-list-child'] = array(
 		'margin-left'  => UAGB_Helper::get_css_value( ( $attr['gapTablet'] / 2 ), $attr['gapType'] ),
 		'margin-right' => UAGB_Helper::get_css_value( ( $attr['gapTablet'] / 2 ), $attr['gapType'] ),
 		'display'      => 'inline-flex',
 	);
 
-} else if( 'vertical' === $attr['iconLayoutTablet'] ){
-	$t_selectors[' .uagb-icon-list__wrap'] = array(
+} elseif ( 'vertical' === $attr['iconLayoutTablet'] ) {
+	$t_selectors[' .uagb-icon-list__wrap']                                  = array(
 		'flex-direction' => 'column',
 	);
-	$t_selectors['.wp-block-uagb-icon-list .wp-block-uagb-icon-list-child']          = array(
+	$t_selectors['.wp-block-uagb-icon-list .wp-block-uagb-icon-list-child'] = array(
 		'margin-left'   => 0,
 		'margin-right'  => 0,
 		'margin-bottom' => UAGB_Helper::get_css_value( $attr['gapTablet'], $attr['gapType'] ),
@@ -217,17 +217,17 @@ if( 'horizontal' === $attr['iconLayoutTablet'] ){
 }
 
 
-if( 'horizontal' === $attr['iconLayoutMobile'] ){
-	$m_selectors['.wp-block-uagb-icon-list .wp-block-uagb-icon-list-child']           = array(
+if ( 'horizontal' === $attr['iconLayoutMobile'] ) {
+	$m_selectors['.wp-block-uagb-icon-list .wp-block-uagb-icon-list-child'] = array(
 		'margin-left'  => UAGB_Helper::get_css_value( ( $attr['gapMobile'] / 2 ), $attr['gapType'] ),
 		'margin-right' => UAGB_Helper::get_css_value( ( $attr['gapMobile'] / 2 ), $attr['gapType'] ),
 		'display'      => 'inline-flex',
 	);
-} else if( 'vertical' === $attr['iconLayoutMobile'] ){
-	$m_selectors[' .uagb-icon-list__wrap'] = array(
+} elseif ( 'vertical' === $attr['iconLayoutMobile'] ) {
+	$m_selectors[' .uagb-icon-list__wrap']                                  = array(
 		'flex-direction' => 'column',
 	);
-	$m_selectors['.wp-block-uagb-icon-list .wp-block-uagb-icon-list-child']          = array(
+	$m_selectors['.wp-block-uagb-icon-list .wp-block-uagb-icon-list-child'] = array(
 		'margin-left'   => 0,
 		'margin-right'  => 0,
 		'margin-bottom' => UAGB_Helper::get_css_value( $attr['gapMobile'], $attr['gapType'] ),
