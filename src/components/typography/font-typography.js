@@ -89,23 +89,23 @@ function FontFamilyControl( props ) {
 		} ),
 		control: ( provided ) => ( {
 			...provided,
-			border: '1px solid #757575',
+			border: '1px solid #E6E7E9',
 			boxShadow: 'none',
 			height: '30px',
 			minHeight: '30px',
-			borderRadius: '2px',
+			borderRadius: '3px',
 		} ),
 		placeholder: ( provided ) => ( {
 			...provided,
-			color: '#000',
+			color: '#50575E',
 		} ),
 		menu: ( provided ) => ( {
 			...provided,
-			color: '#000',
+			color: '#50575E',
 		} ),
 		singleValue: ( provided ) => ( {
 			...provided,
-			color: '#000',
+			color: '#50575E',
 			top: '50%',
 			transform: 'translateY(-50%);',
 		} ),
@@ -115,11 +115,12 @@ function FontFamilyControl( props ) {
 		} ),
 		dropdownIndicator: ( provided ) => ( {
 			...provided,
-			color: '#000',
+			color: '#50575E',
 		} ),
 		valueContainer: ( provided ) => ( {
 			...provided,
 			height: '30px',
+			padding: '0px 8px',
 		} ),
 	}
 
@@ -139,7 +140,7 @@ function FontFamilyControl( props ) {
 			<div className="components-base-control">
 				<label className="components-input-control__label" htmlFor="font-family">{ __( 'Font Family' ) }</label>
 				<Select
-					styles={customSelectStyles}
+					styles={ customSelectStyles }
 					placeholder={ __( 'Select the Font Family' ) }
 					onChange={ onFontfamilyChange }
 					options={ gFonts }

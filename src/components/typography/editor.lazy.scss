@@ -2,69 +2,61 @@
 
 @import '../../styles/variables';
 
-.spectra-control-popup__options {
-	/* Font options - family width subset */
-	.uag-typography-font-family-options {
+.spectra-control-popup__options .spectra-control-popup {
 
-		.uag-typography-font-family {
-			display: flex;
-			width: 100%;
-			flex-direction: column;
+	.uag-font-family-searchable-select {
+		display: flex;
+		width: 100%;
+		flex-direction: column;
+		margin-top: $spectra-control-label-bottom-margin;
 
-			& > label {
-				padding-bottom: 4px;
-			}
+		& > label {
+			padding-bottom: 4px;
+		}
 
-			.uag-font-family-select__input input {
-				box-shadow: none;
-				border: none;
-				min-height: 22px;
-			}
+		.uag-font-family-select__input input {
+			box-shadow: none;
+			border: none;
+			min-height: 30px;
+		}
 
-			.uag-font-family-select__control {
-				cursor: pointer;
+		.uag-font-family-select__control {
+			cursor: pointer;
 
-				&:hover {
-					border: 1px solid #757575;
-				}
-			}
-
-			.uag-font-family-select__menu {
-				z-index: 99999;
-			}
-
-			.uag-font-family-select__indicators {
-				height: 30px;
-			}
-
-			.uag-font-family-select__dropdown-indicator {
-
-				svg {
-					height: 14px;
-					width: 14px;
-				}
-			}
-
-			.uag-font-family-select__dropdown-indicator:hover {
-				color: #000;
-			}
-
-			.uag-font-family-select__value-container {
-
-				> div {
-					margin: 0;
-					padding: 0;
-				}
+			&:hover {
+				border: 1px solid $spectra-color-border;
 			}
 		}
 
-		.uag-typography-font-family-subset {
-			display: flex;
+		.uag-font-family-select__menu {
+			z-index: 99999;
 		}
 
-		.uag-typography-font-family,
-		.uag-typography-weight-style-wrap {
-			margin: 0 0 16px;
+		.uag-font-family-select__indicators {
+			height: 30px;
+		}
+
+		.uag-font-family-select__dropdown-indicator {
+
+			padding-left: 6px;
+			svg {
+				fill: $spectra-color-body;
+				height: 14px;
+				width: 14px;
+			}
+		}
+
+		.uag-font-family-select__dropdown-indicator:hover {
+			color: $spectra-color-body;
+		}
+
+		.uag-font-family-select__value-container {
+
+			top: 0;
+			> div {
+				margin: 0;
+				padding: 0;
+			}
 		}
 	}
 }

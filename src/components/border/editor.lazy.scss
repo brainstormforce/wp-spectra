@@ -1,3 +1,5 @@
+@import '../../styles/variables';
+
 .uag-border-select-control {
 
 	.uag-border-type .components-select-control {
@@ -10,10 +12,10 @@
 	.uag-border-radius,
 	.uag-border-color,
 	.uag-border-hv-color {
-		margin-top: 24px;
+		margin-top: $spectra-control-vertical-gap;
 	}
 
 	.uag-border-radius {
-		margin-bottom: 24px;
+		margin-bottom: $spectra-control-vertical-gap;
 	}
 }
