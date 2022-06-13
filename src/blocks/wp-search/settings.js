@@ -475,6 +475,7 @@ const Settings = ( props ) => {
 							'ultimate-addons-for-gutenberg'
 						),
 					} }
+					popup={ true }
 				/>
 			</UAGAdvancedPanelBody>
 		);
