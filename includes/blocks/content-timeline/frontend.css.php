@@ -257,6 +257,9 @@ $selectors = array(
 		' .uagb-timeline__heading-text'     => array(
 			'margin-bottom' => UAGB_Helper::get_css_value( $attr['headSpaceTablet'], 'px' ),
 		),
+		' .uagb-timeline-desc-content'                         => array(
+			'text-align' => $attr['alignTablet'],
+		),
 		' .uagb-timeline__day-new'                             => array(
 			'text-align' => $attr['alignTablet'],
 		),
