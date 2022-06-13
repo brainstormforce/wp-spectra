@@ -41,9 +41,9 @@ $selectors = array(
 		'margin-bottom' => UAGB_Helper::get_css_value( $attr['fieldGap'], $attr['fieldGapType'] ),
 	),
 	' .uagb-forms-main-form .uagb-forms-input-label'       => array(
-		'color'         => $attr['labelColor'],
-		'font-size'     => UAGB_Helper::get_css_value( $attr['labelFontSize'], $attr['labelFontSizeType'] ),
-		'margin-bottom' => UAGB_Helper::get_css_value( $attr['labelGap'], $attr['labelGapUnit'] ),
+		'color'          => $attr['labelColor'],
+		'font-size'      => UAGB_Helper::get_css_value( $attr['labelFontSize'], $attr['labelFontSizeType'] ),
+		'margin-bottom'  => UAGB_Helper::get_css_value( $attr['labelGap'], $attr['labelGapUnit'] ),
 		'letter-spacing' => UAGB_Helper::get_css_value( $attr['labelLetterSpacing'], $attr['labelLetterSpacingType'] ),
 	),
 	' .uagb-forms-success-message'                         => array(
@@ -89,7 +89,7 @@ $selectors = array(
 		'padding-bottom'   => UAGB_Helper::get_css_value( $btnPaddingBottom, $attr['paddingBtnUnit'] ),
 		'padding-left'     => UAGB_Helper::get_css_value( $btnPaddingLeft, $attr['paddingBtnUnit'] ),
 		'padding-right'    => UAGB_Helper::get_css_value( $btnPaddingRight, $attr['paddingBtnUnit'] ),
-		'letter-spacing' => UAGB_Helper::get_css_value( $attr['submitLetterSpacing'], $attr['submitLetterSpacingType'] ),
+		'letter-spacing'   => UAGB_Helper::get_css_value( $attr['submitLetterSpacing'], $attr['submitLetterSpacingType'] ),
 	),
 	' .uagb-forms-main-form .uagb-forms-main-submit-button:hover' => array(
 		'color'            => $attr['submitColorHover'],
@@ -123,7 +123,7 @@ $t_selectors = array(
 		'margin-bottom' => UAGB_Helper::get_css_value( $attr['fieldGapTablet'], $attr['fieldGapType'] ),
 	),
 	' .uagb-forms-main-form .uagb-forms-input-label' => array(
-		'margin-bottom' => UAGB_Helper::get_css_value( $attr['labelGapTablet'], $attr['labelGapUnit'] ),
+		'margin-bottom'  => UAGB_Helper::get_css_value( $attr['labelGapTablet'], $attr['labelGapUnit'] ),
 		'letter-spacing' => UAGB_Helper::get_css_value( $attr['labelLetterSpacingTablet'], $attr['labelLetterSpacingType'] ),
 	),
 	' .uagb-forms-main-form .uagb-forms-main-submit-button' => array(
@@ -135,6 +135,9 @@ $t_selectors = array(
 	),
 	' .uagb-slider.round'                            => array(
 		'border-radius' => UAGB_Helper::get_css_value( 20 + $attr['toggleWidthSizeTablet'], 'px' ),
+	),
+	' .uagb-forms-main-form .uagb-forms-main-submit-button-wrap' => array(
+		'text-align' => $attr['buttonAlignTablet'],
 	),
 );
 $m_selectors = array(
@@ -148,7 +151,7 @@ $m_selectors = array(
 		'margin-bottom' => UAGB_Helper::get_css_value( $attr['fieldGapMobile'], $attr['fieldGapType'] ),
 	),
 	' .uagb-forms-main-form .uagb-forms-input-label' => array(
-		'margin-bottom' => UAGB_Helper::get_css_value( $attr['labelGapMobile'], $attr['labelGapUnit'] ),
+		'margin-bottom'  => UAGB_Helper::get_css_value( $attr['labelGapMobile'], $attr['labelGapUnit'] ),
 		'letter-spacing' => UAGB_Helper::get_css_value( $attr['labelLetterSpacingMobile'], $attr['labelLetterSpacingType'] ),
 	),
 	' .uagb-forms-main-form .uagb-forms-main-submit-button' => array(
@@ -160,6 +163,9 @@ $m_selectors = array(
 	),
 	' .uagb-slider.round'                            => array(
 		'border-radius' => UAGB_Helper::get_css_value( 20 + $attr['toggleWidthSizeMobile'], 'px' ),
+	),
+	' .uagb-forms-main-form .uagb-forms-main-submit-button-wrap' => array(
+		'text-align' => $attr['buttonAlignMobile'],
 	),
 );
 // Checkbox Field css.

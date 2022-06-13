@@ -50,6 +50,8 @@ const Settings = ( props ) => {
 		formPaddingLink,
 		formLabel,
 		buttonAlign,
+		buttonAlignTablet,
+		buttonAlignMobile,
 		buttonSize,
 		confirmationType,
 		confirmationMessage,
@@ -1334,15 +1336,21 @@ const Settings = ( props ) => {
 			/>
 			<MultiButtonsControl
 				setAttributes={ setAttributes }
-				label={ __(
-					'Button Alignment',
-					'ultimate-addons-for-gutenberg'
-				) }
+				label={ __( 'Button Alignment', 'ultimate-addons-for-gutenberg' ) }
 				data={ {
-					value: buttonAlign,
-					label: 'buttonAlign',
+					desktop: {
+						value: buttonAlign,
+						label: 'buttonAlign',
+					},
+					tablet: {
+						value: buttonAlignTablet,
+						label: 'buttonAlignTablet',
+					},
+					mobile: {
+						value: buttonAlignMobile,
+						label: 'buttonAlignMobile',
+					},
 				} }
-				className="uagb-multi-button-alignment-control"
 				options={ [
 					{
 						value: 'left',
@@ -1382,6 +1390,7 @@ const Settings = ( props ) => {
 					},
 				] }
 				showIcons={ true }
+				responsive={true}
 			/>
 			<SpacingControl
 				{ ...props }
