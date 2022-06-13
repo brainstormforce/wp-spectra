@@ -20,6 +20,9 @@ import UAGPresets from '@Components/presets';
 import renderSVG from '@Controls/renderIcon';
 import { ToggleControl, Icon } from '@wordpress/components';
 import UAGAdvancedPanelBody from '@Components/advanced-panel-body';
+import UAGTabsControl from '@Components/tabs';
+import AdvancedPopColorControl from '@Components/color-control/advanced-pop-color-control.js';
+
 
 const Settings = ( props ) => {
 	props = props.parentProps;
@@ -73,6 +76,14 @@ const Settings = ( props ) => {
 		fontStyle,
 		fontTransform,
 		fontDecoration,
+		iconColor,
+		labelColor,
+		iconHoverColor,
+		labelHoverColor,
+		iconBgColor,
+		iconBgHoverColor,
+		iconBorderColor,
+		iconBorderHoverColor,
 	} = attributes;
 
 	let googleFonts;
@@ -456,6 +467,51 @@ const Settings = ( props ) => {
 						label: 'lineHeightTablet',
 					} }
 				/>
+				<UAGTabsControl
+					tabs={ [
+						{
+							name: 'normal',
+							title: __(
+								'Normal',
+								'ultimate-addons-for-gutenberg'
+							),
+						},
+						{
+							name: 'hover',
+							title: __(
+								'Hover',
+								'ultimate-addons-for-gutenberg'
+							),
+						},
+					] }
+					normal={
+						<AdvancedPopColorControl
+							label={ __(
+								'Color',
+								'ultimate-addons-for-gutenberg'
+							) }
+							colorValue={ labelColor }
+							onColorChange={ ( value ) =>
+								setAttributes( { labelColor: value } )
+							}
+						/>
+					}
+					hover={
+						<AdvancedPopColorControl
+							label={ __(
+								'Color',
+								'ultimate-addons-for-gutenberg'
+							) }
+							colorValue={
+								labelHoverColor
+							}
+							onColorChange={ ( value ) =>
+								setAttributes( { labelHoverColor: value } )
+							}
+						/>
+					}
+					disableBottomSeparator={ true }
+				/>
 			</UAGAdvancedPanelBody>
 		);
 	};
@@ -620,6 +676,105 @@ const Settings = ( props ) => {
 						'ultimate-addons-for-gutenberg'
 					) }
 				/>
+				<UAGTabsControl
+					tabs={ [
+						{
+							name: 'normal',
+							title: __(
+								'Normal',
+								'ultimate-addons-for-gutenberg'
+							),
+						},
+						{
+							name: 'hover',
+							title: __(
+								'Hover',
+								'ultimate-addons-for-gutenberg'
+							),
+						},
+					] }
+					normal={
+						<>
+							<AdvancedPopColorControl
+								label={ __(
+									'Icon Color',
+									'ultimate-addons-for-gutenberg'
+								) }
+								colorValue={ iconColor ? iconColor : '' }
+								onColorChange={ ( value ) =>
+									setAttributes( { iconColor: value } )
+								}
+							/>
+							<AdvancedPopColorControl
+								label={ __(
+									'Background Color',
+									'ultimate-addons-for-gutenberg'
+								) }
+								colorValue={ iconBgColor ? iconBgColor : '' }
+								onColorChange={ ( value ) =>
+									setAttributes( { iconBgColor: value } )
+								}
+							/>
+							<AdvancedPopColorControl
+								label={ __(
+									'Border Color',
+									'ultimate-addons-for-gutenberg'
+								) }
+								colorValue={
+									iconBorderColor ? iconBorderColor : ''
+								}
+								onColorChange={ ( value ) =>
+									setAttributes( { iconBorderColor: value } )
+								}
+							/>
+						</>
+					}
+					hover={
+						<>
+							<AdvancedPopColorControl
+								label={ __(
+									'Icon Color',
+									'ultimate-addons-for-gutenberg'
+								) }
+								colorValue={
+									iconHoverColor ? iconHoverColor : ''
+								}
+								onColorChange={ ( value ) =>
+									setAttributes( { iconHoverColor: value } )
+								}
+							/>
+							<AdvancedPopColorControl
+								label={ __(
+									'Background Color',
+									'ultimate-addons-for-gutenberg'
+								) }
+								colorValue={
+									iconBgHoverColor ? iconBgHoverColor : ''
+								}
+								onColorChange={ ( value ) =>
+									setAttributes( { iconBgHoverColor: value } )
+								}
+							/>
+							<AdvancedPopColorControl
+								label={ __(
+									'Border Color',
+									'ultimate-addons-for-gutenberg'
+								) }
+								colorValue={
+									iconBorderHoverColor
+										? iconBorderHoverColor
+										: ''
+								}
+								onColorChange={ ( value ) =>
+									setAttributes( {
+										iconBorderHoverColor: value,
+									} )
+								}
+							/>
+						</>
+					}
+					disableBottomSeparator={ true }
+				/>
 			</UAGAdvancedPanelBody>
 		);
 	};
@@ -635,6 +790,7 @@ const Settings = ( props ) => {
 					/>
 				</UAGAdvancedPanelBody>
 	};
+
 	return (
 		<Suspense fallback={ lazyLoader() }>
 			{ blockControls() }

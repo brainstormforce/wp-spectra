@@ -53,6 +53,15 @@ function styling( props ) {
 		iconPositionTablet,
 		iconPositionMobile,
 		hideLabel,
+		iconColor,
+		labelColor,
+		iconHoverColor,
+		labelHoverColor,
+		iconBgColor,
+		iconBgHoverColor,
+		iconBorderColor,
+		iconBorderHoverColor,
+
 	} = props.attributes;
 
 	let selectors = {};
@@ -113,6 +122,8 @@ function styling( props ) {
 
 	selectors = {
 		' .wp-block-uagb-icon-list-child .uagb-icon-list__source-wrap': {
+			'background': iconBgColor,
+			'border-color': iconBorderColor,
 			'padding': generateCSSUnit( bgSize, bgSizeType ),
 			'border-radius': generateCSSUnit( borderRadius, borderRadiusType ),
 			'border-style':
@@ -125,6 +136,24 @@ function styling( props ) {
 		},
 		' .uagb-icon-list__wrap .block-editor-inner-blocks': {
 			'text-align': align,
+		},
+		' .wp-block-uagb-icon-list-child .uagb-icon-list__source-wrap svg': {
+			'color': iconColor,
+			'fill': iconColor,
+		},
+		' .wp-block-uagb-icon-list-child:hover .uagb-icon-list__source-wrap svg': {
+			'color': iconHoverColor,
+			'fill': iconHoverColor,
+		},
+		' .wp-block-uagb-icon-list-child .uagb-icon-list__label': {
+			'color': labelColor,
+		},
+		' .wp-block-uagb-icon-list-child:hover .uagb-icon-list__label': {
+			'color': labelHoverColor,
+		},
+		' .wp-block-uagb-icon-list-child:hover .uagb-icon-list__source-wrap': {
+			'background': iconBgHoverColor,
+			'border-color': iconBorderHoverColor,
 		},
 	};
 
@@ -324,6 +353,7 @@ function styling( props ) {
 		'text-transform': fontTransform,
 		'font-weight': fontWeight,
 		'line-height': generateCSSUnit( lineHeight, lineHeightType ),
+		'color': labelColor,
 	};
 
 	mobileSelectors[ ' .wp-block-uagb-icon-list-child .uagb-icon-list__label' ] = {

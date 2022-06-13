@@ -76,4 +76,12 @@ return array(
 	'iconPosition'       => 'middle',
 	'iconPositionTablet' => '',
 	'iconPositionMobile' => '',
+	'iconColor'            => '',
+	'iconHoverColor'       => '',
+	'iconBgColor'          => '',
+	'iconBgHoverColor'     => '',
+	'iconBorderColor'      => '',
+	'iconBorderHoverColor' => '',
+	'labelColor'           => '',
+	'labelHoverColor'      => '',
 );

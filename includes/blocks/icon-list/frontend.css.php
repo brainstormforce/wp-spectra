@@ -52,8 +52,12 @@ $selectors = array(
 		'width'     => $icon_size,
 		'height'    => $icon_size,
 		'font-size' => $icon_size,
+		'color'     => $attr['iconColor'],
+		'fill'      => $attr['iconColor'],
 	),
-	' .wp-block-uagb-icon-list-child .uagb-icon-list__source-wrap ' => array(
+	' .wp-block-uagb-icon-list-child .uagb-icon-list__source-wrap' => array(
+		'background'    => $attr['iconBgColor'],
+		'border-color'  => $attr['iconBorderColor'],
 		'padding'       => UAGB_Helper::get_css_value( $attr['bgSize'], $attr['bgSizeType'] ),
 		'border-radius' => UAGB_Helper::get_css_value( $attr['borderRadius'], 'px' ),
 		'border-style'  => ( $attr['border'] > 0 ) ? 'solid' : '',
@@ -69,7 +73,19 @@ $selectors = array(
 		'-ms-flex-align'    => $alignment,
 		'align-items'       => $alignment,
 	),
+	' .wp-block-uagb-icon-list-child:hover .uagb-icon-list__source-wrap svg' => array(
+		'color' => $attr['iconHoverColor'],
+		'fill'  => $attr['iconHoverColor'],
+	),
+	' .wp-block-uagb-icon-list-child:hover .uagb-icon-list__label' => array(
+		'color' => $attr['labelHoverColor'],
+	),
+	' .wp-block-uagb-icon-list-child:hover .uagb-icon-list__source-wrap' => array(
+		'background'   => $attr['iconBgHoverColor'],
+		'border-color' => $attr['iconBorderHoverColor'],
+	),
 );
+
 
 if ( $attr['childMigrate'] ) {
 	$selectors[' .wp-block-uagb-icon-list-child'] = array(
@@ -149,6 +165,7 @@ $selectors[' .wp-block-uagb-icon-list-child .uagb-icon-list__label'] = array(
 	'font-style'      => $attr['fontStyle'],
 	'font-weight'     => $attr['fontWeight'],
 	'line-height'     => $attr['lineHeight'] . $attr['lineHeightType'],
+	'color'           => $attr['labelColor'],
 );
 
 $m_selectors[' .wp-block-uagb-icon-list-child .uagb-icon-list__label'] = array(

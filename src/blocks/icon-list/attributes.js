@@ -355,7 +355,59 @@ const attributes = {
 	isPreview: {
 		type: 'boolean',
 		default: false,
-	}
+	},
+
+	iconColor: {
+		type: 'string',
+		default: '',
+		UAGCopyPaste: {
+			styleType: 'icon-color'
+		},
+	},
+	labelColor: {
+		type: 'string',
+		UAGCopyPaste: {
+			styleType: 'main-title-color'
+		},
+	},
+	iconHoverColor: {
+		type: 'string',
+		UAGCopyPaste: {
+			styleType: 'icon-hover-color'
+		},
+	},
+	labelHoverColor: {
+		type: 'string',
+		UAGCopyPaste: {
+			styleType: 'main-title-hover-color'
+		},
+	},
+	iconBgColor: {
+		type: 'string',
+		UAGCopyPaste: {
+			styleType: 'icon-bg-color'
+		},
+		default: '',
+	},
+	iconBgHoverColor: {
+		type: 'string',
+		UAGCopyPaste: {
+			styleType: 'icon-bg-hover-color'
+		},
+	},
+	iconBorderColor: {
+		type: 'string',
+		UAGCopyPaste: {
+			styleType: 'icon-border-color'
+		},
+		default: '',
+	},
+	iconBorderHoverColor: {
+		type: 'string',
+		UAGCopyPaste: {
+			styleType: 'icon-border-hover-color'
+		},
+	},
 };
 
 export default attributes;
