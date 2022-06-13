@@ -1199,6 +1199,31 @@ const attributes = {
 			styleType: 'cta-letter-spacing-type'
 		}
 	},
+	secondCtaLetterSpacing: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'secondCta-letter-spacing'
+		}
+	},
+	secondCtaLetterSpacingTablet: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'secondCta-letter-spacing-tablet'
+		}
+	},
+	secondCtaLetterSpacingMobile: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'secondCta-letter-spacing-mobile'
+		}
+	},
+	secondCtaLetterSpacingType: {
+		type: 'string',
+		default: 'px',
+		UAGCopyPaste: {
+			styleType: 'secondCta-letter-spacing-type'
+		}
+	},
 };
 
 export default attributes;

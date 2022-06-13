@@ -216,6 +216,10 @@ const Settings = ( props ) => {
 ctaLetterSpacingTablet,
 ctaLetterSpacingMobile,
 ctaLetterSpacingType,
+secondCtaLetterSpacing,
+secondCtaLetterSpacingTablet,
+secondCtaLetterSpacingMobile,
+secondCtaLetterSpacingType,
 	} = attributes;
 
 	let loadCtaGoogleFonts;
@@ -513,6 +517,22 @@ ctaLetterSpacingType,
 					fontSizeTablet={ {
 						value: secondCtaFontSizeTablet,
 						label: 'secondCtaFontSizeTablet',
+					} }
+					letterSpacing={ {
+						value: secondCtaLetterSpacing,
+						label: 'secondCtaLetterSpacing',
+					} }
+					letterSpacingTablet={ {
+						value: secondCtaLetterSpacingTablet,
+						label: 'secondCtaLetterSpacingTablet',
+					} }
+					letterSpacingMobile={ {
+						value: secondCtaLetterSpacingMobile,
+						label: 'secondCtaLetterSpacingMobile',
+					} }
+					letterSpacingType={ {
+						value: secondCtaLetterSpacingType,
+						label: 'secondCtaLetterSpacingType',
 					} }
 					disableLineHeight={ true }
 				/>

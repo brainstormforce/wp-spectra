@@ -192,4 +192,8 @@ return array(
 	'ctaLetterSpacingTablet'          => '',
 	'ctaLetterSpacingMobile'          => '',
 	'ctaLetterSpacingType'            => 'px',
+	'secondCtaLetterSpacing'          => '',
+	'secondCtaLetterSpacingTablet'    => '',
+	'secondCtaLetterSpacingMobile'    => '',
+	'secondCtaLetterSpacingType'      => 'px',
 );

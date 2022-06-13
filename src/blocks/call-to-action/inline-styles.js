@@ -176,6 +176,10 @@ function CtaStyle( props ) {
 		ctaLetterSpacingTablet,
 		ctaLetterSpacingMobile,
 		ctaLetterSpacingType,
+		secondCtaLetterSpacing,
+		secondCtaLetterSpacingTablet,
+		secondCtaLetterSpacingMobile,
+		secondCtaLetterSpacingType,
 	} = props.attributes;
 
 	const selectors = {
@@ -277,6 +281,7 @@ function CtaStyle( props ) {
 		'padding-right': generateCSSUnit( secondCtaRightPadding, secondCtaPaddingUnit ),
 		'align-self': 'top' === buttonAlign ? 'flex-start' : 'center',
 		'height' : 'fit-content',
+		'letter-spacing': generateCSSUnit( secondCtaLetterSpacing, secondCtaLetterSpacingType ),
 	};
 	selectors['.uagb-cta__outer-wrap a.uagb-cta-second__button:hover'] = {
 		'color': secondCtaHoverColor,
@@ -407,6 +412,7 @@ function CtaStyle( props ) {
 				secondCtaRightTabletPadding,
 				secondCtaTabletPaddingUnit
 			),
+			'letter-spacing': generateCSSUnit( secondCtaLetterSpacingTablet, secondCtaLetterSpacingType ),
 		},
 		'.uagb-cta__outer-wrap a.uagb-cta-second__button svg': {
 			'font-size': generateCSSUnit( secondCtaFontSizeTablet, secondCtaFontSizeType ),
@@ -416,6 +422,7 @@ function CtaStyle( props ) {
 				secondCtaFontSizeTablet,
 				secondCtaFontSizeType
 			),
+			'letter-spacing': generateCSSUnit( secondCtaLetterSpacingTablet, secondCtaLetterSpacingType ),
 		},
 	};
 
@@ -516,6 +523,7 @@ function CtaStyle( props ) {
 				secondCtaRightMobilePadding,
 				secondCtaMobilePaddingUnit
 			),
+			'letter-spacing': generateCSSUnit( secondCtaLetterSpacingMobile, secondCtaLetterSpacingType ),
 		},
 		'.uagb-cta__outer-wrap a.uagb-cta-second__button svg': {
 			'font-size': generateCSSUnit( secondCtaFontSizeMobile, secondCtaFontSizeType ),
@@ -525,6 +533,7 @@ function CtaStyle( props ) {
 				secondCtaFontSizeMobile,
 				secondCtaFontSizeType
 			),
+			'letter-spacing': generateCSSUnit( secondCtaLetterSpacingMobile, secondCtaLetterSpacingType ),
 		},
 	};
 
