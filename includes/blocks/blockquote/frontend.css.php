@@ -35,15 +35,13 @@ if ( 'border' === $attr['skinStyle'] ) {
 
 $selectors = array(
 	' .uagb-blockquote__content'                       => array(
-		'color'          => $attr['descColor'],
-		'margin-bottom'  => UAGB_Helper::get_css_value( $attr['descSpace'], $attr['descSpaceUnit'] ),
-		'text-align'     => $text_align,
-		'letter-spacing' => UAGB_Helper::get_css_value( $attr['descLetterSpacing'], $attr['descLetterSpacingType'] ),
+		'color'         => $attr['descColor'],
+		'margin-bottom' => UAGB_Helper::get_css_value( $attr['descSpace'], $attr['descSpaceUnit'] ),
+		'text-align'    => $text_align,
 	),
 	' cite.uagb-blockquote__author'                    => array(
-		'color'          => $attr['authorColor'],
-		'text-align'     => $text_align,
-		'letter-spacing' => UAGB_Helper::get_css_value( $attr['authorLetterSpacing'], $attr['authorLetterSpacingType'] ),
+		'color'      => $attr['authorColor'],
+		'text-align' => $text_align,
 	),
 	' .uagb-blockquote__skin-border blockquote.uagb-blockquote' => array( // for backward compatibility.
 		'border-color'      => $attr['borderColor'],
@@ -161,7 +159,6 @@ if ( $attr['enableTweet'] ) {
 		'padding-right'    => UAGB_Helper::get_css_value( $tweetBtnPaddingRight, $attr['paddingBtnUnit'] ),
 		'padding-top'      => UAGB_Helper::get_css_value( $tweetBtnPaddingTop, $attr['paddingBtnUnit'] ),
 		'padding-bottom'   => UAGB_Helper::get_css_value( $tweetBtnPaddingTop, $attr['paddingBtnUnit'] ),
-		'letter-spacing'   => UAGB_Helper::get_css_value( $attr['tweetBtnLetterSpacing'], $attr['tweetBtnLetterSpacingType'] ),
 	);
 
 	$selectors['.uagb-blockquote__tweet-style-classic a.uagb-blockquote__tweet-button'] = array(
@@ -171,7 +168,6 @@ if ( $attr['enableTweet'] ) {
 		'padding-right'    => UAGB_Helper::get_css_value( $tweetBtnPaddingRight, $attr['paddingBtnUnit'] ),
 		'padding-top'      => UAGB_Helper::get_css_value( $tweetBtnPaddingTop, $attr['paddingBtnUnit'] ),
 		'padding-bottom'   => UAGB_Helper::get_css_value( $tweetBtnPaddingTop, $attr['paddingBtnUnit'] ),
-		'letter-spacing'   => UAGB_Helper::get_css_value( $attr['tweetBtnLetterSpacing'], $attr['tweetBtnLetterSpacingType'] ),
 	);
 
 	$selectors['.uagb-blockquote__tweet-style-classic a.uagb-blockquote__tweet-button svg'] = array(
@@ -185,7 +181,6 @@ if ( $attr['enableTweet'] ) {
 		'padding-right'    => UAGB_Helper::get_css_value( $tweetBtnPaddingRight, $attr['paddingBtnUnit'] ),
 		'padding-top'      => UAGB_Helper::get_css_value( $tweetBtnPaddingTop, $attr['paddingBtnUnit'] ),
 		'padding-bottom'   => UAGB_Helper::get_css_value( $tweetBtnPaddingBottom, $attr['paddingBtnUnit'] ),
-		'letter-spacing'   => UAGB_Helper::get_css_value( $attr['tweetBtnLetterSpacing'], $attr['tweetBtnLetterSpacingType'] ),
 	);
 
 	// Backword CSS.
@@ -196,7 +191,6 @@ if ( $attr['enableTweet'] ) {
 		'padding-right'    => UAGB_Helper::get_css_value( $tweetBtnPaddingRight, $attr['paddingBtnUnit'] ),
 		'padding-top'      => UAGB_Helper::get_css_value( $tweetBtnPaddingTop, $attr['paddingBtnUnit'] ),
 		'padding-bottom'   => UAGB_Helper::get_css_value( $tweetBtnPaddingBottom, $attr['paddingBtnUnit'] ),
-		'letter-spacing'   => UAGB_Helper::get_css_value( $attr['tweetBtnLetterSpacing'], $attr['tweetBtnLetterSpacingType'] ),
 	);
 
 	$selectors[' .uagb-blockquote__tweet-style-bubble a.uagb-blockquote__tweet-button:before'] = array(
@@ -305,14 +299,12 @@ $t_selectors = array(
 		'padding-right'  => UAGB_Helper::get_css_value( $attr['paddingBtnRightTablet'], $attr['tabletPaddingBtnUnit'] ),
 		'padding-top'    => UAGB_Helper::get_css_value( $attr['paddingBtnTopTablet'], $attr['tabletPaddingBtnUnit'] ),
 		'padding-bottom' => UAGB_Helper::get_css_value( $attr['paddingBtnBottomTablet'], $attr['tabletPaddingBtnUnit'] ),
-		'letter-spacing' => UAGB_Helper::get_css_value( $attr['tweetBtnLetterSpacingTablet'], $attr['tweetBtnLetterSpacingType'] ),
 	),
 	'.uagb-blockquote__tweet-style-bubble a.uagb-blockquote__tweet-button' => array(
 		'padding-left'   => UAGB_Helper::get_css_value( $attr['paddingBtnLeftTablet'], $attr['tabletPaddingBtnUnit'] ),
 		'padding-right'  => UAGB_Helper::get_css_value( $attr['paddingBtnRightTablet'], $attr['tabletPaddingBtnUnit'] ),
 		'padding-top'    => UAGB_Helper::get_css_value( $attr['paddingBtnTopTablet'], $attr['tabletPaddingBtnUnit'] ),
 		'padding-bottom' => UAGB_Helper::get_css_value( $attr['paddingBtnBottomTablet'], $attr['tabletPaddingBtnUnit'] ),
-		'letter-spacing' => UAGB_Helper::get_css_value( $attr['tweetBtnLetterSpacingTablet'], $attr['tweetBtnLetterSpacingType'] ),
 	),
 	// Backword css.
 	' .uagb-blockquote__skin-quotation .uagb-blockquote__icon svg' => array(
@@ -321,9 +313,6 @@ $t_selectors = array(
 	),
 	' .uagb-blockquote__author-wrap'       => array(
 		'margin-bottom' => UAGB_Helper::get_css_value( $author_space_tablet, 'px' ),
-	),
-	' .uagb-blockquote__author'            => array(
-		'letter-spacing' => UAGB_Helper::get_css_value( $attr['authorLetterSpacingTablet'], $attr['authorLetterSpacingType'] ),
 	),
 	' .uagb-blockquote__author-wrap img'   => array(
 		'width'         => UAGB_Helper::get_css_value( $attr['authorImageWidthTablet'], 'px' ),
@@ -336,8 +325,7 @@ $t_selectors = array(
 		'padding-bottom' => UAGB_Helper::get_css_value( $attr['verticalPaddingTablet'], $attr['verticalPaddingUnit'] ),
 	),
 	' .uagb-blockquote__content'           => array(
-		'margin-bottom'  => UAGB_Helper::get_css_value( $attr['descSpaceTablet'], $attr['descSpaceUnit'] ),
-		'letter-spacing' => UAGB_Helper::get_css_value( $attr['descLetterSpacingTablet'], $attr['descLetterSpacingType'] ),
+		'margin-bottom' => UAGB_Helper::get_css_value( $attr['descSpaceTablet'], $attr['descSpaceUnit'] ),
 	),
 	' .uagb-blockquote__author-wrap.uagb-blockquote__author-at-right img' => array(
 		'margin-left'   => ( 'tablet' === $attr['stack'] ) ? '0px' : UAGB_Helper::get_css_value( $attr['authorImageGapTablet'], $attr['authorImageGapUnit'] ),
@@ -373,14 +361,12 @@ $m_selectors = array(
 		'padding-right'  => UAGB_Helper::get_css_value( $attr['paddingBtnRightMobile'], $attr['mobilePaddingBtnUnit'] ),
 		'padding-top'    => UAGB_Helper::get_css_value( $attr['paddingBtnTopMobile'], $attr['mobilePaddingBtnUnit'] ),
 		'padding-bottom' => UAGB_Helper::get_css_value( $attr['paddingBtnBottomMobile'], $attr['mobilePaddingBtnUnit'] ),
-		'letter-spacing' => UAGB_Helper::get_css_value( $attr['tweetBtnLetterSpacingMobile'], $attr['tweetBtnLetterSpacingType'] ),
 	),
 	'.uagb-blockquote__tweet-style-bubble a.uagb-blockquote__tweet-button' => array(
 		'padding-left'   => UAGB_Helper::get_css_value( $attr['paddingBtnLeftMobile'], $attr['mobilePaddingBtnUnit'] ),
 		'padding-right'  => UAGB_Helper::get_css_value( $attr['paddingBtnRightMobile'], $attr['mobilePaddingBtnUnit'] ),
 		'padding-top'    => UAGB_Helper::get_css_value( $attr['paddingBtnTopMobile'], $attr['mobilePaddingBtnUnit'] ),
 		'padding-bottom' => UAGB_Helper::get_css_value( $attr['paddingBtnBottomMobile'], $attr['mobilePaddingBtnUnit'] ),
-		'letter-spacing' => UAGB_Helper::get_css_value( $attr['tweetBtnLetterSpacingMobile'], $attr['tweetBtnLetterSpacingType'] ),
 	),
 	' .uagb-blockquote__skin-quotation .uagb-blockquote__icon svg' => array(
 		'width'  => UAGB_Helper::get_css_value( $attr['quoteSizeMobile'], $attr['quoteSizeType'] ),
@@ -389,19 +375,15 @@ $m_selectors = array(
 	' .uagb-blockquote__author-wrap'       => array(
 		'margin-bottom' => UAGB_Helper::get_css_value( $author_space_mobile, 'px' ),
 	),
-	' .uagb-blockquote__author'            => array(
-		'letter-spacing' => UAGB_Helper::get_css_value( $attr['authorLetterSpacingMobile'], $attr['authorLetterSpacingType'] ),
-	),
 	' .uagb-blockquote__author-wrap img'   => array(
 		'width'         => UAGB_Helper::get_css_value( $attr['authorImageWidthMobile'], 'px' ),
 		'height'        => UAGB_Helper::get_css_value( $attr['authorImageWidthMobile'], 'px' ),
 		'border-radius' => UAGB_Helper::get_css_value( $attr['authorImgBorderRadiusMobile'], '%' ),
 	),
 	' .uagb-blockquote__author-wrap img'   => array(
-		'width'          => UAGB_Helper::get_css_value( $attr['authorImageWidthMobile'], 'px' ),
-		'height'         => UAGB_Helper::get_css_value( $attr['authorImageWidthMobile'], 'px' ),
-		'border-radius'  => UAGB_Helper::get_css_value( $attr['authorImgBorderRadiusMobile'], '%' ),
-		'letter-spacing' => UAGB_Helper::get_css_value( $attr['authorLetterSpacing'], $attr['authorLetterSpacingType'] ),
+		'width'         => UAGB_Helper::get_css_value( $attr['authorImageWidthMobile'], 'px' ),
+		'height'        => UAGB_Helper::get_css_value( $attr['authorImageWidthMobile'], 'px' ),
+		'border-radius' => UAGB_Helper::get_css_value( $attr['authorImgBorderRadiusMobile'], '%' ),
 	),
 	'.uagb-blockquote__skin-border blockquote.uagb-blockquote' => array(
 		'padding-left'   => UAGB_Helper::get_css_value( $attr['borderGapMobile'], $attr['borderGapUnit'] ),
@@ -409,8 +391,7 @@ $m_selectors = array(
 		'padding-bottom' => UAGB_Helper::get_css_value( $attr['verticalPaddingMobile'], $attr['verticalPaddingUnit'] ),
 	),
 	' .uagb-blockquote__content'           => array(
-		'margin-bottom'  => UAGB_Helper::get_css_value( $attr['descSpaceMobile'], $attr['descSpaceUnit'] ),
-		'letter-spacing' => UAGB_Helper::get_css_value( $attr['descLetterSpacingMobile'], $attr['descLetterSpacingType'] ),
+		'margin-bottom' => UAGB_Helper::get_css_value( $attr['descSpaceMobile'], $attr['descSpaceUnit'] ),
 	),
 	' .uagb-blockquote__author-wrap.uagb-blockquote__author-at-right img' => array(
 		'margin-left'   => ( 'none' !== $attr['stack'] ) ? '0px' : UAGB_Helper::get_css_value( $attr['authorImageGapMobile'], $attr['authorImageGapUnit'] ),

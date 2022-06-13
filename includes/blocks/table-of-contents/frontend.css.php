@@ -54,8 +54,7 @@ $selectors            = array(
 		'color' => $attr['linkHoverColor'],
 	),
 	' .uagb-toc__list-wrap li a'                          => array(
-		'color'          => $attr['linkColor'],
-		'letter-spacing' => UAGB_Helper::get_css_value( $attr['listLetterSpacing'], $attr['listLetterSpacingType'] ),
+		'color' => $attr['linkColor'],
 	),
 	' .uagb-toc__title-wrap'                              => array(
 		'justify-content' => $attr['align'],
@@ -65,7 +64,6 @@ $selectors            = array(
 		'color'           => $attr['headingColor'],
 		'justify-content' => $attr['headingAlignment'],
 		'margin-bottom'   => UAGB_Helper::get_css_value( $attr['headingBottom'], 'px' ),
-		'letter-spacing'  => UAGB_Helper::get_css_value( $attr['headingLetterSpacing'], $attr['headingLetterSpacingType'] ),
 	),
 	' .uagb-toc__wrap'                                    => array(
 		'border-style'   => $attr['borderStyle'],
@@ -151,8 +149,7 @@ $m_selectors = array(
 		'font-size' => UAGB_Helper::get_css_value( $attr['fontSizeMobile'], $attr['fontSizeType'] ),
 	),
 	' .uagb-toc__title'                                   => array(
-		'margin-bottom'  => UAGB_Helper::get_css_value( $attr['headingBottomMobile'], 'px' ),
-		'letter-spacing' => UAGB_Helper::get_css_value( $attr['headingLetterSpacingMobile'], $attr['headingLetterSpacingType'] ),
+		'margin-bottom' => UAGB_Helper::get_css_value( $attr['headingBottomMobile'], 'px' ),
 	),
 	' .uagb-toc__wrap'                                    => array(
 		'width'          => UAGB_Helper::get_css_value( $attr['widthMobile'], $attr['widthTypeMobile'] ),
@@ -187,8 +184,7 @@ $t_selectors = array(
 		'font-size' => UAGB_Helper::get_css_value( $attr['fontSizeTablet'], $attr['fontSizeType'] ),
 	),
 	' .uagb-toc__title'                                   => array(
-		'margin-bottom'  => UAGB_Helper::get_css_value( $attr['headingBottomTablet'], 'px' ),
-		'letter-spacing' => UAGB_Helper::get_css_value( $attr['headingLetterSpacingTablet'], $attr['headingLetterSpacingType'] ),
+		'margin-bottom' => UAGB_Helper::get_css_value( $attr['headingBottomTablet'], 'px' ),
 	),
 	' .uagb-toc__wrap'                                    => array(
 		'width'          => UAGB_Helper::get_css_value( $attr['widthTablet'], $attr['widthTypeTablet'] ),
@@ -236,13 +232,6 @@ if ( '' !== $attr['contentPaddingMobile'] ) {
 		'padding-bottom' => 'calc( ' . UAGB_Helper::get_css_value( $attr['contentPaddingMobile'] . $attr['contentPaddingTypeMobile'] ) . ' / 2 )',
 	);
 }
-
-$m_selectors[' .uagb-toc__list-wrap ol li a'] = array(
-	'letter-spacing' => UAGB_Helper::get_css_value( $attr['listLetterSpacingMobile'], $attr['listLetterSpacingType'] ),
-);
-$t_selectors[' .uagb-toc__list-wrap ol li a'] = array(
-	'letter-spacing' => UAGB_Helper::get_css_value( $attr['listLetterSpacingTablet'], $attr['listLetterSpacingType'] ),
-);
 
 $combined_selectors = array(
 	'desktop' => $selectors,
