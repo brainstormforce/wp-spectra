@@ -67,9 +67,9 @@ function styling( props ) {
 		alignment = 'center';
 	}
 
-	const editorGap = undefined !== typeof gap && '' !== gap ? gap : 15;
-	const editorGapTablet = undefined !== typeof gapTablet && '' !== gapTablet ? gapTablet : 15;
-	const editorGapMobile = undefined !== typeof gapMobile && '' !== gapMobile ? gapMobile : 15;
+	const editorGap = gap ? gap : 15;
+	const editorGapTablet = gapTablet ? gapTablet : 15;
+	const editorGapMobile = gapMobile ? gapMobile : 15;
 
 	selectors = {
 		' .wp-block-uagb-icon-list-child .uagb-icon-list__source-wrap': {
@@ -196,30 +196,34 @@ function styling( props ) {
 
 	if('horizontal' === iconLayoutTablet){
 		tabletSelectors[' .block-editor-block-list__layout .wp-block[data-type="uagb/icon-list-child"]' ] = {
-			'margin-left': generateCSSUnit( editorGapTablet / 2, gapType ),
 			'margin-right': generateCSSUnit( editorGapTablet / 2, gapType ),
 			'display': 'inline-flex'
+		};
+		tabletSelectors[' .block-editor-block-list__layout .wp-block[data-type="uagb/icon-list-child"]:not(:first-child)' ] = {
+			'margin-left': generateCSSUnit( editorGapTablet / 2, gapType ),
 		};
 	} else if('vertical' === iconLayoutTablet) {
 		tabletSelectors[ ' .wp-block[data-type="uagb/icon-list-child"]' ] = {
 			'display': 'block',
-			'margin-left': 0,
-			'margin-right': 0,
+			'margin-left': 0 + ' !important',
+			'margin-right': 0 + ' !important',
 			'margin-bottom': generateCSSUnit( editorGapTablet, gapType ),
 		};
 	}
 
 	if('horizontal' === iconLayoutMobile){
 		mobileSelectors[' .block-editor-block-list__layout .wp-block[data-type="uagb/icon-list-child"]' ] = {
-			'margin-left': generateCSSUnit( editorGapMobile / 2, gapType ),
 			'margin-right': generateCSSUnit( editorGapMobile / 2, gapType ),
 			'display': 'inline-flex'
+		};
+		mobileSelectors[' .block-editor-block-list__layout .wp-block[data-type="uagb/icon-list-child"]:not(:first-child)' ] = {
+			'margin-left': generateCSSUnit( editorGapMobile / 2, gapType ),
 		};
 	} else if('vertical' === iconLayoutMobile) {
 		mobileSelectors[ ' .wp-block[data-type="uagb/icon-list-child"]' ] = {
 			'display': 'block',
-			'margin-left': 0,
-			'margin-right': 0,
+			'margin-left': 0 + ' !important',
+			'margin-right': 0 + ' !important',
 			'margin-bottom': generateCSSUnit( editorGapMobile, gapType ),
 		};
 	}
