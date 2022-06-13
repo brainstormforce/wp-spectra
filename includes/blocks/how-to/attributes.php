@@ -81,7 +81,7 @@ return array(
 	'priceDecoration'         => '',
 	'rowGapTablet'            => 0,
 	'rowGapMobile'            => 0,
-	// letter spacing
+	// letter spacing.
 	'headLetterSpacing'            => '',
 	'headLetterSpacingTablet'      => '',
 	'headLetterSpacingMobile'      => '',

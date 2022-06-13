@@ -104,7 +104,7 @@ return array(
 	'titleFontStyle'          => '',
 	'descFontStyle'           => '',
 	'prefixFontStyle'         => '',
-	// letter spacing
+	// letter spacing.
 	'titleLetterSpacing'            => '',
 	'titleLetterSpacingTablet'      => '',
 	'titleLetterSpacingMobile'      => '',

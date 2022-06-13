@@ -40,7 +40,7 @@ return array(
 	'fontStyle'        => '',
 	'fontTransform'    => '',
 	'fontDecoration'   => '',
-	// letter spacing
+	// letter spacing.
 	'titleLetterSpacing'            => '',
 	'titleLetterSpacingTablet'      => '',
 	'titleLetterSpacingMobile'      => '',

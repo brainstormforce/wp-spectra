@@ -212,7 +212,6 @@ $m_selectors = array(
 	),
 );
 
-// die($attr['countLetterSpacingMobile']. 'jelas');
 $combined_selectors = array(
 	'desktop' => $selectors,
 	'tablet'  => $t_selectors,
