@@ -1055,7 +1055,7 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 			$attributes['postsOffset']        = UAGB_Block_Helper::get_fallback_number( $attributes['postsOffset'], 'postsOffset', $attributes['blockName'] );
 			$attributes['columns']            = UAGB_Block_Helper::get_fallback_number( $attributes['columns'], 'columns', $attributes['blockName'] );
 			$attributes['tcolumns']           = UAGB_Block_Helper::get_fallback_number( $attributes['tcolumns'], 'columns', $attributes['blockName'] );
-			$attributes['mcolumns']           = UAGB_Block_Helper::get_fallback_number( $attributes['mcolumns'],'mcolumns', $attributes['blockName'] );
+			$attributes['mcolumns']           = UAGB_Block_Helper::get_fallback_number( $attributes['mcolumns'], 'mcolumns', $attributes['blockName'] );
 			$attributes['excerptLength']      = UAGB_Block_Helper::get_fallback_number( $attributes['excerptLength'], 'excerptLength', $attributes['blockName'] );
 			$attributes['overlayOpacity']     = UAGB_Block_Helper::get_fallback_number( $attributes['overlayOpacity'], 'overlayOpacity', $attributes['blockName'] );
 			$attributes['columnGap']          = UAGB_Block_Helper::get_fallback_number( $attributes['columnGap'], 'columnGap', $attributes['blockName'] );
@@ -1069,31 +1069,31 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 			$attributes['rowGapTablet'] = is_numeric( $attributes['rowGapTablet'] ) ? $attributes['rowGapTablet'] : $attributes['rowGap'];
 			$attributes['rowGapMobile'] = is_numeric( $attributes['rowGapMobile'] ) ? $attributes['rowGapMobile'] : $attributes['rowGapTablet'];
 			// Grid / Carousel / Masonry Specific Attributes.
-			if ( isset( $attributes['autoplaySpeed'] ) ){
+			if ( isset( $attributes['autoplaySpeed'] ) ) {
 				$attributes['autoplaySpeed'] = UAGB_Block_Helper::get_fallback_number( $attributes['autoplaySpeed'], 'autoplaySpeed', $attributes['blockName'] );
 			}
-			if ( isset( $attributes['transitionSpeed'] ) ){
+			if ( isset( $attributes['transitionSpeed'] ) ) {
 				$attributes['transitionSpeed'] = UAGB_Block_Helper::get_fallback_number( $attributes['transitionSpeed'], 'transitionSpeed', $attributes['blockName'] );
 			}
-			if ( isset( $attributes['arrowSize'] ) ){
+			if ( isset( $attributes['arrowSize'] ) ) {
 				$attributes['arrowSize'] = UAGB_Block_Helper::get_fallback_number( $attributes['arrowSize'], 'arrowSize', $attributes['blockName'] );
 			}
-			if ( isset( $attributes['arrowBorderSize'] ) ){
+			if ( isset( $attributes['arrowBorderSize'] ) ) {
 				$attributes['arrowBorderSize'] = UAGB_Block_Helper::get_fallback_number( $attributes['arrowBorderSize'], 'arrowBorderSize', $attributes['blockName'] );
 			}
-			if ( isset( $attributes['paginationSpacing'] ) ){
+			if ( isset( $attributes['paginationSpacing'] ) ) {
 				$attributes['paginationSpacing'] = UAGB_Block_Helper::get_fallback_number( $attributes['paginationSpacing'], 'paginationSpacing', $attributes['blockName'] );
 			}
-			if ( isset( $attributes['paginationBorderRadius'] ) ){
+			if ( isset( $attributes['paginationBorderRadius'] ) ) {
 				$attributes['paginationBorderRadius'] = UAGB_Block_Helper::get_fallback_number( $attributes['paginationBorderRadius'], 'paginationBorderRadius', $attributes['blockName'] );
 			}
-			if ( isset( $attributes['paginationBorderSize'] ) ){
+			if ( isset( $attributes['paginationBorderSize'] ) ) {
 				$attributes['paginationBorderSize'] = UAGB_Block_Helper::get_fallback_number( $attributes['paginationBorderSize'], 'paginationBorderSize', $attributes['blockName'] );
 			}
-			if ( isset( $attributes['paginationFontSize'] ) ){
+			if ( isset( $attributes['paginationFontSize'] ) ) {
 				$attributes['paginationFontSize'] = UAGB_Block_Helper::get_fallback_number( $attributes['paginationFontSize'], 'paginationFontSize', $attributes['blockName'] );
 			}
-			if ( isset( $attributes['loaderSize'] ) ){
+			if ( isset( $attributes['loaderSize'] ) ) {
 				$attributes['loaderSize'] = UAGB_Block_Helper::get_fallback_number( $attributes['loaderSize'], 'loaderSize', $attributes['blockName'] );
 			}
 
@@ -1231,10 +1231,10 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 			$format              = UAGB_Helper::paged_format( $permalink_structure, $base );
 			$paged               = UAGB_Helper::get_paged( $query );
 			// Why defaulting the min when the range can be set to a higher max? Original commented below.
-			// $page_limit          = min( $attributes['pageLimit'], $query->max_num_pages );
-			$page_limit			 = UAGB_Block_Helper::get_fallback_number( $attributes['pageLimit'], 'pageLimit', $attributes['blockName'] );
+			// $page_limit          = min( $attributes['pageLimit'], $query->max_num_pages );.
+			$page_limit          = UAGB_Block_Helper::get_fallback_number( $attributes['pageLimit'], 'pageLimit', $attributes['blockName'] );
 			$page_limit          = isset( $page_limit ) ? $page_limit : UAGB_Block_Helper::get_fallback_number( $attributes['postsToShow'], 'postsToShow', $attributes['blockName'] );
-			
+
 			$links = paginate_links(
 				array(
 					'base'      => $base . '%_%',

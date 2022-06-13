@@ -1293,6 +1293,8 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 		 * @param int    $post_id for the block.
 		 * @param string $content for post content.
 		 * @param int    $length for excerpt.
+		 * @param int    $attribute_name for attribute name.
+		 * @param int    $block_name for block name.
 		 *
 		 * @since 2.0.0
 		 */

@@ -63,7 +63,7 @@ const Render = ( props ) => {
 		const onReset = () => {
 			const { block, replaceInnerBlocks } = props.parentProps;
 			const newBlocks = [];
-			DEFAULT_POST_LIST_LAYOUT.map( ( [ name, attribute ] ) => {
+			DEFAULT_POST_LIST_LAYOUT.map( ( [ name, attribute ] ) => { // eslint-disable-line no-shadow
 				newBlocks.push( createBlock( name, attribute ) );
 				return true;
 			} );

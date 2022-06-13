@@ -309,14 +309,14 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 		 */
 		public static function get_post_selectors( $attr ) {
 
-			$overlay_opacity_fallback      = UAGB_Block_Helper::get_fallback_number( $attr['overlayOpacity'], 'overlayOpacity', $attr['blockName'] );
-			$column_gap_fallback           = UAGB_Block_Helper::get_fallback_number( $attr['columnGap'], 'columnGap', $attr['blockName'] );
-			$row_gap_fallback              = UAGB_Block_Helper::get_fallback_number( $attr['rowGap'], 'rowGap', $attr['blockName'] );
-			$image_bottom_space_fallback   = UAGB_Block_Helper::get_fallback_number( $attr['imageBottomSpace'], 'imageBottomSpace', $attr['blockName'] );
-			$title_bottom_space_fallback   = UAGB_Block_Helper::get_fallback_number( $attr['titleBottomSpace'], 'titleBottomSpace', $attr['blockName'] );
-			$meta_bottom_space_fallback    = UAGB_Block_Helper::get_fallback_number( $attr['metaBottomSpace'], 'metaBottomSpace', $attr['blockName'] );
-			$excerpt_bottom_space_fallback = UAGB_Block_Helper::get_fallback_number( $attr['excerptBottomSpace'], 'excerptBottomSpace', $attr['blockName'] );
-			$cta_bottom_space_fallback     = UAGB_Block_Helper::get_fallback_number( $attr['ctaBottomSpace'], 'ctaBottomSpace', $attr['blockName'] );
+			$overlay_opacity_fallback      = self::get_fallback_number( $attr['overlayOpacity'], 'overlayOpacity', $attr['blockName'] );
+			$column_gap_fallback           = self::get_fallback_number( $attr['columnGap'], 'columnGap', $attr['blockName'] );
+			$row_gap_fallback              = self::get_fallback_number( $attr['rowGap'], 'rowGap', $attr['blockName'] );
+			$image_bottom_space_fallback   = self::get_fallback_number( $attr['imageBottomSpace'], 'imageBottomSpace', $attr['blockName'] );
+			$title_bottom_space_fallback   = self::get_fallback_number( $attr['titleBottomSpace'], 'titleBottomSpace', $attr['blockName'] );
+			$meta_bottom_space_fallback    = self::get_fallback_number( $attr['metaBottomSpace'], 'metaBottomSpace', $attr['blockName'] );
+			$excerpt_bottom_space_fallback = self::get_fallback_number( $attr['excerptBottomSpace'], 'excerptBottomSpace', $attr['blockName'] );
+			$cta_bottom_space_fallback     = self::get_fallback_number( $attr['ctaBottomSpace'], 'ctaBottomSpace', $attr['blockName'] );
 
 			$paddingTop    = isset( $attr['paddingTop'] ) ? $attr['paddingTop'] : $attr['contentPadding'];
 			$paddingBottom = isset( $attr['paddingBottom'] ) ? $attr['paddingBottom'] : $attr['contentPadding'];
