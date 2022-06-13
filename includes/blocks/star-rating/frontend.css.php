@@ -112,7 +112,6 @@ $selectors = array(
 		'font-weight' => $attr['fontWeight'],
 		'line-height' => UAGB_Helper::get_css_value( $attr['lineHeight'], $attr['lineHeightType'] ),
 		'color'       => $attr['titleColor'],
-		'letter-spacing' => UAGB_Helper::get_css_value( $attr['titleLetterSpacing'], $attr['titleLetterSpacingType'] ),
 	),
 );
 
@@ -173,7 +172,6 @@ if ( 'stack' === $attr['layoutTablet'] ) {
 	$t_selectors[' .uag-star-rating__title '] = array(
 		'justify-content' => UAGB_Block_Helper::text_alignment_to_flex( $stack_alignment_tablet ),
 		'margin-right'    => 0,
-		'letter-spacing' => UAGB_Helper::get_css_value( $attr['titleLetterSpacingTablet'], $attr['titleLetterSpacingType'] ),
 	);
 	$t_selectors[' div.uag-star-rating ']     = array(
 		'justify-content' => UAGB_Block_Helper::text_alignment_to_flex( $stack_alignment_tablet ),
@@ -189,7 +187,6 @@ if ( 'stack' === $attr['layoutTablet'] ) {
 	);
 	$t_selectors[' .uag-star-rating__title ']   = array(
 		'margin-bottom' => 0,
-		'letter-spacing' => UAGB_Helper::get_css_value( $attr['titleLetterSpacingTablet'], $attr['titleLetterSpacingType'] ),
 	);
 }
 
@@ -220,7 +217,6 @@ if ( 'stack' === $attr['layoutMobile'] ) {
 	$m_selectors[' .uag-star-rating__title '] = array(
 		'justify-content' => UAGB_Block_Helper::text_alignment_to_flex( $stack_alignment_mobile ),
 		'margin-right'    => 0,
-		'letter-spacing' => UAGB_Helper::get_css_value( $attr['titleLetterSpacingMobile'], $attr['titleLetterSpacingType'] ),
 	);
 	$m_selectors[' div.uag-star-rating ']     = array(
 		'justify-content' => UAGB_Block_Helper::text_alignment_to_flex( $stack_alignment_mobile ),
@@ -236,7 +232,6 @@ if ( 'stack' === $attr['layoutMobile'] ) {
 	);
 	$m_selectors[' .uag-star-rating__title ']   = array(
 		'margin-bottom' => 0,
-		'letter-spacing' => UAGB_Helper::get_css_value( $attr['titleLetterSpacingMobile'], $attr['titleLetterSpacingType'] ),
 	);
 }
 

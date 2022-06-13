@@ -60,16 +60,13 @@ $selectors = array(
 	' .uagb-tm__author-name'                           => array(
 		'color'         => $attr['authorColor'],
 		'margin-bottom' => $attr['nameSpace'] . $attr['nameSpaceType'],
-		'letter-spacing' => UAGB_Helper::get_css_value( $attr['nameLetterSpacing'], $attr['nameLetterSpacingType'] ),
 	),
 	' .uagb-tm__company'                               => array(
 		'color' => $attr['companyColor'],
-		'letter-spacing' => UAGB_Helper::get_css_value( $attr['companyLetterSpacing'], $attr['companyLetterSpacingType'] ),
 	),
 	' .uagb-tm__desc'                                  => array(
 		'color'         => $attr['descColor'],
 		'margin-bottom' => UAGB_Helper::get_css_value( $attr['descSpace'], $attr['descSpaceType'] ),
-		'letter-spacing' => UAGB_Helper::get_css_value( $attr['descLetterSpacing'], $attr['descLetterSpacingType'] ),
 	),
 	' .uagb-testimonial__wrap.uagb-tm__bg-type-color .uagb-tm__content' => array(
 		'background-color' => $attr['backgroundColor'],
@@ -136,14 +133,9 @@ $m_selectors = array(
 	),
 	' .uagb-tm__author-name'                            => array(
 		'margin-bottom' => $attr['nameSpaceMobile'] . $attr['nameSpaceType'],
-		'letter-spacing' => UAGB_Helper::get_css_value( $attr['nameLetterSpacingMobile'], $attr['nameLetterSpacingType'] ),
-	),
-	' .uagb-tm__company'                               => array(
-		'letter-spacing' => UAGB_Helper::get_css_value( $attr['companyLetterSpacingMobile'], $attr['companyLetterSpacingType'] ),
 	),
 	' .uagb-tm__desc'                                   => array(
 		'margin-bottom' => UAGB_Helper::get_css_value( $attr['descSpaceMobile'], $attr['descSpaceType'] ),
-		'letter-spacing' => UAGB_Helper::get_css_value( $attr['descLetterSpacingMobile'], $attr['descLetterSpacingType'] ),
 	),
 	' .uagb-tm__content'                                => array(
 		'text-align'     => $attr['headingAlignMobile'],
@@ -167,14 +159,9 @@ $t_selectors = array(
 	),
 	' .uagb-tm__author-name'                            => array(
 		'margin-bottom' => $attr['nameSpaceTablet'] . $attr['nameSpaceType'],
-		'letter-spacing' => UAGB_Helper::get_css_value( $attr['nameLetterSpacingTablet'], $attr['nameLetterSpacingType'] ),
-	),
-	' .uagb-tm__company'                               => array(
-		'letter-spacing' => UAGB_Helper::get_css_value( $attr['companyLetterSpacingTablet'], $attr['companyLetterSpacingType'] ),
 	),
 	' .uagb-tm__desc'                                   => array(
 		'margin-bottom' => UAGB_Helper::get_css_value( $attr['descSpaceTablet'], $attr['descSpaceType'] ),
-		'letter-spacing' => UAGB_Helper::get_css_value( $attr['descLetterSpacingTablet'], $attr['descLetterSpacingType'] ),
 	),
 	' .uagb-tm__content'                                => array(
 		'text-align'     => $attr['headingAlignTablet'],

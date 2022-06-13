@@ -106,13 +106,6 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				'margin-bottom'   => UAGB_Helper::get_css_value( $attr['bottomMargin'], $attr['marginType'] ),
 				'margin-left'     => UAGB_Helper::get_css_value( $attr['leftMargin'], $attr['marginType'] ),
 				'margin-right'    => UAGB_Helper::get_css_value( $attr['rightMargin'], $attr['marginType'] ),
-				'letter-spacing' => UAGB_Helper::get_css_value( $attr['fontLetterSpacing'], $attr['fontLetterSpacingType'] ),
-			);
-			$m_selector[' .uagb-button__wrapper .uagb-buttons-repeater.wp-block-button__link'] = array(
-				'letter-spacing' => UAGB_Helper::get_css_value( $attr['fontLetterSpacingMobile'], $attr['fontLetterSpacingType'] ),
-			);
-			$t_selectors[' .uagb-button__wrapper .uagb-buttons-repeater.wp-block-button__link'] = array(
-				'letter-spacing' => UAGB_Helper::get_css_value( $attr['fontLetterSpacingTablet'], $attr['fontLetterSpacingType'] ),
 			);
 			$selectors[ $wrapper . '.wp-block-button__link:hover' ]                           = array(
 				'color' => $attr['hColor'],
@@ -384,47 +377,16 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				),
 			);
 
-			$selectors[' .uagb-post__text.uagb-post__title']                           = array(
-				'letter-spacing' => UAGB_Helper::get_css_value( $attr['titleLetterSpacing'], $attr['titleLetterSpacingType'] ),
+			$selectors[' .uagb-post__text.uagb-post__title']['color']                            = $attr['titleColor'];
+			$selectors[' .uagb-post__text.uagb-post__title a']                                   = array(
+				'color' => $attr['titleColor'],
 			);
-			$selectors[' .uagb-post__text.uagb-post-grid-byline > span']               = array(
-				'letter-spacing' => UAGB_Helper::get_css_value( $attr['metaLetterSpacing'], $attr['metaLetterSpacingType'] ),
-			);
-			$selectors[' .uagb-post__text.uagb-post-grid-byline time']                 = array(
-				'letter-spacing' => UAGB_Helper::get_css_value( $attr['metaLetterSpacing'], $attr['metaLetterSpacingType'] ),
-			);
-			$selectors[' .uagb-post__text.uagb-post-grid-byline .uagb-post__author']   = array(
-				'letter-spacing' => UAGB_Helper::get_css_value( $attr['metaLetterSpacing'], $attr['metaLetterSpacingType'] ),
-			);
-			$selectors[' .uagb-post__text.uagb-post-grid-byline .uagb-post__author a'] = array(
-				'letter-spacing' => UAGB_Helper::get_css_value( $attr['metaLetterSpacing'], $attr['metaLetterSpacingType'] ),
-			);
-			$selectors[' span.uagb-post__taxonomy']                                    = array(
-				'letter-spacing' => UAGB_Helper::get_css_value( $attr['metaLetterSpacing'], $attr['metaLetterSpacingType'] ),
-			);
-			$selectors[' .uagb-post__inner-wrap .uagb-post__taxonomy.highlighted']     = array(
-				'letter-spacing' => UAGB_Helper::get_css_value( $attr['metaLetterSpacing'], $attr['metaLetterSpacingType'] ),
-			);
-			$selectors[' .uagb-post__text.uagb-post__excerpt']                         = array(
-				'letter-spacing' => UAGB_Helper::get_css_value( $attr['excerptLetterSpacing'], $attr['excerptLetterSpacingType'] ),
-			);
-			$selectors[' .uagb-post__text.uagb-post__cta']                             = array(
-				'letter-spacing' => UAGB_Helper::get_css_value( $attr['ctaLetterSpacing'], $attr['ctaLetterSpacingType'] ),
-			);
-			$selectors[' .uagb-post__text.uagb-post__cta a']                           = array(
-				'letter-spacing' => UAGB_Helper::get_css_value( $attr['ctaLetterSpacing'], $attr['ctaLetterSpacingType'] ),
-			);
-			$selectors[' .uagb-post__text.uagb-post__title']['color']                  = $attr['titleColor'];
-			$selectors[' .uagb-post__text.uagb-post__title a']                         = array(
-				'color'          => $attr['titleColor'],
-				'letter-spacing' => UAGB_Helper::get_css_value( $attr['titleLetterSpacing'], $attr['titleLetterSpacingType'] ),
-			);
-			$selectors[' .uagb-post__text.uagb-post-grid-byline']['color']             = $attr['metaColor'];
-			$selectors[' .uagb-post__text.uagb-post-grid-byline .uagb-post__author']   = array(
+			$selectors[' .uagb-post__text.uagb-post-grid-byline']['color']                       = $attr['metaColor'];
+			$selectors[' .uagb-post__text.uagb-post-grid-byline .uagb-post__author']             = array(
 				'color' => $attr['metaColor'],
 			);
-			$selectors[' .uagb-post__inner-wrap .uagb-post__taxonomy']['color']        = $attr['metaColor'];
-			$selectors[' .uagb-post__inner-wrap .uagb-post__taxonomy a']['color']      = $attr['metaColor'];
+			$selectors[' .uagb-post__inner-wrap .uagb-post__taxonomy']['color']                  = $attr['metaColor'];
+			$selectors[' .uagb-post__inner-wrap .uagb-post__taxonomy a']['color']                = $attr['metaColor'];
 			$selectors[' .uagb-post__inner-wrap .uagb-post__taxonomy.highlighted']['color']      = $attr['highlightedTextColor'];
 			$selectors[' .uagb-post__inner-wrap .uagb-post__taxonomy.highlighted a']['color']    = $attr['highlightedTextColor'];
 			$selectors[' .uagb-post__inner-wrap .uagb-post__taxonomy.highlighted']['background'] = $attr['highlightedTextBgColor'];
@@ -528,37 +490,6 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				),
 			);
 
-			$m_selectors[' .uagb-post__text.uagb-post__title']                           = array(
-				'letter-spacing' => UAGB_Helper::get_css_value( $attr['titleLetterSpacingMobile'], $attr['titleLetterSpacingType'] ),
-			);
-			$m_selectors[' .uagb-post__text.uagb-post-grid-byline > span']               = array(
-				'letter-spacing' => UAGB_Helper::get_css_value( $attr['metaLetterSpacingMobile'], $attr['metaLetterSpacingType'] ),
-			);
-			$m_selectors[' .uagb-post__text.uagb-post-grid-byline time']                 = array(
-				'letter-spacing' => UAGB_Helper::get_css_value( $attr['metaLetterSpacingMobile'], $attr['metaLetterSpacingType'] ),
-			);
-			$m_selectors[' .uagb-post__text.uagb-post-grid-byline .uagb-post__author']   = array(
-				'letter-spacing' => UAGB_Helper::get_css_value( $attr['metaLetterSpacingMobile'], $attr['metaLetterSpacingType'] ),
-			);
-			$m_selectors[' .uagb-post__text.uagb-post-grid-byline .uagb-post__author a'] = array(
-				'letter-spacing' => UAGB_Helper::get_css_value( $attr['metaLetterSpacingMobile'], $attr['metaLetterSpacingType'] ),
-			);
-			$m_selectors[' span.uagb-post__taxonomy']                                    = array(
-				'letter-spacing' => UAGB_Helper::get_css_value( $attr['metaLetterSpacingMobile'], $attr['metaLetterSpacingType'] ),
-			);
-			$m_selectors[' .uagb-post__inner-wrap .uagb-post__taxonomy.highlighted']     = array(
-				'letter-spacing' => UAGB_Helper::get_css_value( $attr['metaLetterSpacingMobile'], $attr['metaLetterSpacingType'] ),
-			);
-			$m_selectors[' .uagb-post__text.uagb-post__excerpt']                         = array(
-				'letter-spacing' => UAGB_Helper::get_css_value( $attr['excerptLetterSpacingMobile'], $attr['excerptLetterSpacingType'] ),
-			);
-			$m_selectors[' .uagb-post__text.uagb-post__cta']                             = array(
-				'letter-spacing' => UAGB_Helper::get_css_value( $attr['ctaLetterSpacingMobile'], $attr['ctaLetterSpacingType'] ),
-			);
-			$m_selectors[' .uagb-post__text.uagb-post__cta a']                           = array(
-				'letter-spacing' => UAGB_Helper::get_css_value( $attr['ctaLetterSpacingMobile'], $attr['ctaLetterSpacingType'] ),
-			);
-
 			return $m_selector;
 		}
 
@@ -623,37 +554,6 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				),
 			);
 
-			$t_selectors[' .uagb-post__text.uagb-post__title']                           = array(
-				'letter-spacing' => UAGB_Helper::get_css_value( $attr['titleLetterSpacingTablet'], $attr['titleLetterSpacingType'] ),
-			);
-			$t_selectors[' .uagb-post__text.uagb-post-grid-byline > span']               = array(
-				'letter-spacing' => UAGB_Helper::get_css_value( $attr['metaLetterSpacingTablet'], $attr['metaLetterSpacingType'] ),
-			);
-			$t_selectors[' .uagb-post__text.uagb-post-grid-byline time']                 = array(
-				'letter-spacing' => UAGB_Helper::get_css_value( $attr['metaLetterSpacingTablet'], $attr['metaLetterSpacingType'] ),
-			);
-			$t_selectors[' .uagb-post__text.uagb-post-grid-byline .uagb-post__author']   = array(
-				'letter-spacing' => UAGB_Helper::get_css_value( $attr['metaLetterSpacingTablet'], $attr['metaLetterSpacingType'] ),
-			);
-			$t_selectors[' .uagb-post__text.uagb-post-grid-byline .uagb-post__author a'] = array(
-				'letter-spacing' => UAGB_Helper::get_css_value( $attr['metaLetterSpacingTablet'], $attr['metaLetterSpacingType'] ),
-			);
-			$t_selectors[' span.uagb-post__taxonomy']                                    = array(
-				'letter-spacing' => UAGB_Helper::get_css_value( $attr['metaLetterSpacingTablet'], $attr['metaLetterSpacingType'] ),
-			);
-			$t_selectors[' .uagb-post__inner-wrap .uagb-post__taxonomy.highlighted']     = array(
-				'letter-spacing' => UAGB_Helper::get_css_value( $attr['metaLetterSpacingTablet'], $attr['metaLetterSpacingType'] ),
-			);
-			$t_selectors[' .uagb-post__text.uagb-post__excerpt']                         = array(
-				'letter-spacing' => UAGB_Helper::get_css_value( $attr['excerptLetterSpacingTablet'], $attr['excerptLetterSpacingType'] ),
-			);
-			$t_selectors[' .uagb-post__text.uagb-post__cta']                             = array(
-				'letter-spacing' => UAGB_Helper::get_css_value( $attr['ctaLetterSpacingTablet'], $attr['ctaLetterSpacingType'] ),
-			);
-			$t_selectors[' .uagb-post__text.uagb-post__cta a']                           = array(
-				'letter-spacing' => UAGB_Helper::get_css_value( $attr['ctaLetterSpacingTablet'], $attr['ctaLetterSpacingType'] ),
-			);
-
 			return $t_selector;
 		}
 
@@ -681,14 +581,12 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 
 			$selectors = array(
 				' .uagb-timeline__heading'               => array(
-					'margin-top'     => UAGB_Helper::get_css_value( $headTopSpace, 'px' ),
-					'margin-bottom'  => UAGB_Helper::get_css_value( $attr['headSpace'], 'px' ),
-					'letter-spacing' => UAGB_Helper::get_css_value( $attr['headLetterSpacing'], $attr['headLetterSpacingType'] ),
+					'margin-top'    => UAGB_Helper::get_css_value( $headTopSpace, 'px' ),
+					'margin-bottom' => UAGB_Helper::get_css_value( $attr['headSpace'], 'px' ),
 				),
 				' .uagb-timeline-desc-content'           => array(
-					'text-align'     => $attr['align'],
-					'color'          => $attr['subHeadingColor'],
-					'letter-spacing' => UAGB_Helper::get_css_value( $attr['subHeadLetterSpacing'], $attr['subHeadLetterSpacingType'] ),
+					'text-align' => $attr['align'],
+					'color'      => $attr['subHeadingColor'],
 				),
 				' .uagb-timeline__day-new'               => array(
 					'text-align' => $attr['align'],
@@ -752,10 +650,9 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					'margin-bottom' => UAGB_Helper::get_css_value( $bottom_margin, $attr['marginUnit'] ),
 				),
 				' .uagb-timeline__date-hide.uagb-timeline__inner-date-new' => array( // For New User.
-					'margin-bottom'  => UAGB_Helper::get_css_value( $attr['dateBottomspace'], 'px' ),
-					'color'          => $attr['dateColor'],
-					'text-align'     => $attr['align'],
-					'letter-spacing' => UAGB_Helper::get_css_value( $attr['dateLetterSpacing'], $attr['dateLetterSpacingType'] ),
+					'margin-bottom' => UAGB_Helper::get_css_value( $attr['dateBottomspace'], 'px' ),
+					'color'         => $attr['dateColor'],
+					'text-align'    => $attr['align'],
 				),
 				' .uagb-timeline__date-hide.uagb-timeline__date-inner' => array(
 					'margin-bottom' => UAGB_Helper::get_css_value( $attr['dateBottomspace'], 'px' ),
@@ -769,9 +666,8 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					'margin-right' => UAGB_Helper::get_css_value( $right_margin, $attr['marginUnit'] ),
 				),
 				' .uagb-timeline__date-new'              => array(
-					'color'          => $attr['dateColor'],
-					'font-size'      => UAGB_Helper::get_css_value( $attr['dateFontsize'], $attr['dateFontsizeType'] ),
-					'letter-spacing' => UAGB_Helper::get_css_value( $attr['dateLetterSpacing'], $attr['dateLetterSpacingType'] ),
+					'color'     => $attr['dateColor'],
+					'font-size' => UAGB_Helper::get_css_value( $attr['dateFontsize'], $attr['dateFontsizeType'] ),
 				),
 				' .uagb-timeline__events-inner-new'      => array(
 					'background-color' => $attr['backgroundColor'],
@@ -810,13 +706,11 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 		public static function get_timeline_tablet_selectors( $attr ) {
 			$tablet_selector = array(
 				' .uagb-timeline__heading'          => array(
-					'margin-top'     => UAGB_Helper::get_css_value( $attr['headTopSpacingTablet'], 'px' ),
-					'margin-bottom'  => UAGB_Helper::get_css_value( $attr['headSpaceTablet'], 'px' ),
-					'letter-spacing' => UAGB_Helper::get_css_value( $attr['headLetterSpacingTablet'], $attr['headLetterSpacingType'] ),
+					'margin-top'    => UAGB_Helper::get_css_value( $attr['headTopSpacingTablet'], 'px' ),
+					'margin-bottom' => UAGB_Helper::get_css_value( $attr['headSpaceTablet'], 'px' ),
 				),
 				' .uagb-timeline__date-hide.uagb-timeline__inner-date-new' => array(
-					'margin-bottom'  => UAGB_Helper::get_css_value( $attr['dateBottomspaceTablet'], 'px' ),
-					'letter-spacing' => UAGB_Helper::get_css_value( $attr['dateLetterSpacingTablet'], $attr['dateLetterSpacingType'] ),
+					'margin-bottom' => UAGB_Helper::get_css_value( $attr['dateBottomspaceTablet'], 'px' ),
 				),
 				'.uagb-timeline__center-block .uagb-timeline__marker' => array(
 					'margin-left'  => 0,
@@ -865,13 +759,11 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 		public static function get_timeline_mobile_selectors( $attr ) {
 			$m_selectors = array(
 				' .uagb-timeline__heading'          => array(
-					'margin-top'     => UAGB_Helper::get_css_value( $attr['headTopSpacingMobile'], 'px' ),
-					'margin-bottom'  => UAGB_Helper::get_css_value( $attr['headSpaceMobile'], 'px' ),
-					'letter-spacing' => UAGB_Helper::get_css_value( $attr['headLetterSpacingMobile'], $attr['headLetterSpacingType'] ),
+					'margin-top'    => UAGB_Helper::get_css_value( $attr['headTopSpacingMobile'], 'px' ),
+					'margin-bottom' => UAGB_Helper::get_css_value( $attr['headSpaceMobile'], 'px' ),
 				),
 				' .uagb-timeline__date-hide.uagb-timeline__inner-date-new' => array(
-					'margin-bottom'  => UAGB_Helper::get_css_value( $attr['dateBottomspaceMobile'], 'px' ),
-					'letter-spacing' => UAGB_Helper::get_css_value( $attr['dateLetterSpacingMobile'], $attr['dateLetterSpacingType'] ),
+					'margin-bottom' => UAGB_Helper::get_css_value( $attr['dateBottomspaceMobile'], 'px' ),
 				),
 				'.uagb-timeline__center-block .uagb-timeline__marker' => array(
 					'margin-left'  => 0,

@@ -41,10 +41,9 @@ $selectors = array(
 		'margin-bottom' => UAGB_Helper::get_css_value( $attr['fieldGap'], $attr['fieldGapType'] ),
 	),
 	' .uagb-forms-main-form .uagb-forms-input-label'       => array(
-		'color'          => $attr['labelColor'],
-		'font-size'      => UAGB_Helper::get_css_value( $attr['labelFontSize'], $attr['labelFontSizeType'] ),
-		'margin-bottom'  => UAGB_Helper::get_css_value( $attr['labelGap'], $attr['labelGapUnit'] ),
-		'letter-spacing' => UAGB_Helper::get_css_value( $attr['labelLetterSpacing'], $attr['labelLetterSpacingType'] ),
+		'color'         => $attr['labelColor'],
+		'font-size'     => UAGB_Helper::get_css_value( $attr['labelFontSize'], $attr['labelFontSizeType'] ),
+		'margin-bottom' => UAGB_Helper::get_css_value( $attr['labelGap'], $attr['labelGapUnit'] ),
 	),
 	' .uagb-forms-success-message'                         => array(
 		'border'           => UAGB_Helper::get_css_value( $attr['successMessageBorderWidth'], 'px' ) . ' ' . $attr['successMessageBorderStyle'],
@@ -89,7 +88,6 @@ $selectors = array(
 		'padding-bottom'   => UAGB_Helper::get_css_value( $btnPaddingBottom, $attr['paddingBtnUnit'] ),
 		'padding-left'     => UAGB_Helper::get_css_value( $btnPaddingLeft, $attr['paddingBtnUnit'] ),
 		'padding-right'    => UAGB_Helper::get_css_value( $btnPaddingRight, $attr['paddingBtnUnit'] ),
-		'letter-spacing'   => UAGB_Helper::get_css_value( $attr['submitLetterSpacing'], $attr['submitLetterSpacingType'] ),
 	),
 	' .uagb-forms-main-form .uagb-forms-main-submit-button:hover' => array(
 		'color'            => $attr['submitColorHover'],
@@ -123,15 +121,13 @@ $t_selectors = array(
 		'margin-bottom' => UAGB_Helper::get_css_value( $attr['fieldGapTablet'], $attr['fieldGapType'] ),
 	),
 	' .uagb-forms-main-form .uagb-forms-input-label' => array(
-		'margin-bottom'  => UAGB_Helper::get_css_value( $attr['labelGapTablet'], $attr['labelGapUnit'] ),
-		'letter-spacing' => UAGB_Helper::get_css_value( $attr['labelLetterSpacingTablet'], $attr['labelLetterSpacingType'] ),
+		'margin-bottom' => UAGB_Helper::get_css_value( $attr['labelGapTablet'], $attr['labelGapUnit'] ),
 	),
 	' .uagb-forms-main-form .uagb-forms-main-submit-button' => array(
 		'padding-top'    => UAGB_Helper::get_css_value( $attr['paddingBtnTopTablet'], $attr['tabletPaddingBtnUnit'] ),
 		'padding-bottom' => UAGB_Helper::get_css_value( $attr['paddingBtnBottomTablet'], $attr['tabletPaddingBtnUnit'] ),
 		'padding-left'   => UAGB_Helper::get_css_value( $attr['paddingBtnLeftTablet'], $attr['tabletPaddingBtnUnit'] ),
 		'padding-right'  => UAGB_Helper::get_css_value( $attr['paddingBtnRightTablet'], $attr['tabletPaddingBtnUnit'] ),
-		'letter-spacing' => UAGB_Helper::get_css_value( $attr['submitLetterSpacingTablet'], $attr['submitLetterSpacingType'] ),
 	),
 	' .uagb-slider.round'                            => array(
 		'border-radius' => UAGB_Helper::get_css_value( 20 + $attr['toggleWidthSizeTablet'], 'px' ),
@@ -151,15 +147,13 @@ $m_selectors = array(
 		'margin-bottom' => UAGB_Helper::get_css_value( $attr['fieldGapMobile'], $attr['fieldGapType'] ),
 	),
 	' .uagb-forms-main-form .uagb-forms-input-label' => array(
-		'margin-bottom'  => UAGB_Helper::get_css_value( $attr['labelGapMobile'], $attr['labelGapUnit'] ),
-		'letter-spacing' => UAGB_Helper::get_css_value( $attr['labelLetterSpacingMobile'], $attr['labelLetterSpacingType'] ),
+		'margin-bottom' => UAGB_Helper::get_css_value( $attr['labelGapMobile'], $attr['labelGapUnit'] ),
 	),
 	' .uagb-forms-main-form .uagb-forms-main-submit-button' => array(
 		'padding-top'    => UAGB_Helper::get_css_value( $attr['paddingBtnTopMobile'], $attr['mobilePaddingBtnUnit'] ),
 		'padding-bottom' => UAGB_Helper::get_css_value( $attr['paddingBtnBottomMobile'], $attr['mobilePaddingBtnUnit'] ),
 		'padding-left'   => UAGB_Helper::get_css_value( $attr['paddingBtnLeftMobile'], $attr['mobilePaddingBtnUnit'] ),
 		'padding-right'  => UAGB_Helper::get_css_value( $attr['paddingBtnRightMobile'], $attr['mobilePaddingBtnUnit'] ),
-		'letter-spacing' => UAGB_Helper::get_css_value( $attr['submitLetterSpacingMobile'], $attr['submitLetterSpacingType'] ),
 	),
 	' .uagb-slider.round'                            => array(
 		'border-radius' => UAGB_Helper::get_css_value( 20 + $attr['toggleWidthSizeMobile'], 'px' ),
@@ -285,20 +279,17 @@ if ( 'boxed' === $attr['formStyle'] ) {
 	);
 }
 
-$selectors[' .uagb-forms-main-form  .uagb-forms-input'] = array(
+$selectors[' .uagb-forms-main-form  .uagb-forms-input']   = array(
 	'padding-top'    => UAGB_Helper::get_css_value( $paddingFieldTop, $attr['paddingFieldUnit'] ),
 	'padding-bottom' => UAGB_Helper::get_css_value( $paddingFieldBottom, $attr['paddingFieldUnit'] ),
 	'padding-left'   => UAGB_Helper::get_css_value( $paddingFieldLeft, $attr['paddingFieldUnit'] ),
 	'padding-right'  => UAGB_Helper::get_css_value( $paddingFieldRight, $attr['paddingFieldUnit'] ),
-	'letter-spacing' => UAGB_Helper::get_css_value( $attr['inputLetterSpacing'], $attr['inputLetterSpacingType'] ),
-
 );
 $t_selectors[' .uagb-forms-main-form  .uagb-forms-input'] = array(
 	'padding-top'    => UAGB_Helper::get_css_value( $attr['paddingFieldTopTablet'], $attr['paddingFieldUnitTablet'] ),
 	'padding-bottom' => UAGB_Helper::get_css_value( $attr['paddingFieldBottomTablet'], $attr['paddingFieldUnitTablet'] ),
 	'padding-left'   => UAGB_Helper::get_css_value( $attr['paddingFieldLeftTablet'], $attr['paddingFieldUnitTablet'] ),
 	'padding-right'  => UAGB_Helper::get_css_value( $attr['paddingFieldRightTablet'], $attr['paddingFieldUnitTablet'] ),
-	'letter-spacing' => UAGB_Helper::get_css_value( $attr['inputLetterSpacingTablet'], $attr['inputLetterSpacingType'] ),
 
 );
 $t_selectors[' .uagb-forms-main-form  .uagb-forms-input.uagb-form-phone-country'] = array(
@@ -306,7 +297,6 @@ $t_selectors[' .uagb-forms-main-form  .uagb-forms-input.uagb-form-phone-country'
 	'padding-bottom' => UAGB_Helper::get_css_value( $attr['paddingFieldBottomTablet'], $attr['paddingFieldUnitTablet'] ),
 	'padding-left'   => UAGB_Helper::get_css_value( $attr['paddingFieldLeftTablet'], $attr['paddingFieldUnitTablet'] ),
 	'padding-right'  => UAGB_Helper::get_css_value( $attr['paddingFieldRightTablet'], $attr['paddingFieldUnitTablet'] ),
-	'letter-spacing' => UAGB_Helper::get_css_value( $attr['inputLetterSpacingTablet'], $attr['inputLetterSpacingType'] ),
 
 );
 $t_selectors[' .uagb-switch input:checked + .uagb-slider:before']                 = array(
@@ -320,16 +310,13 @@ $m_selectors[' .uagb-forms-main-form  .uagb-forms-input.uagb-form-phone-country'
 	'padding-bottom' => UAGB_Helper::get_css_value( $attr['paddingFieldBottomMobile'], $attr['paddingFieldUnitmobile'] ),
 	'padding-left'   => UAGB_Helper::get_css_value( $attr['paddingFieldLeftMobile'], $attr['paddingFieldUnitmobile'] ),
 	'padding-right'  => UAGB_Helper::get_css_value( $attr['paddingFieldRightMobile'], $attr['paddingFieldUnitmobile'] ),
-	'letter-spacing' => UAGB_Helper::get_css_value( $attr['inputLetterSpacingMobile'], $attr['inputLetterSpacingType'] ),
 
 );
-$m_selectors[' .uagb-forms-main-form  .uagb-forms-input'] = array(
+$m_selectors[' .uagb-forms-main-form  .uagb-forms-input']         = array(
 	'padding-top'    => UAGB_Helper::get_css_value( $attr['paddingFieldTopMobile'], $attr['paddingFieldUnitmobile'] ),
 	'padding-bottom' => UAGB_Helper::get_css_value( $attr['paddingFieldBottomMobile'], $attr['paddingFieldUnitmobile'] ),
 	'padding-left'   => UAGB_Helper::get_css_value( $attr['paddingFieldLeftMobile'], $attr['paddingFieldUnitmobile'] ),
 	'padding-right'  => UAGB_Helper::get_css_value( $attr['paddingFieldRightMobile'], $attr['paddingFieldUnitmobile'] ),
-	'letter-spacing' => UAGB_Helper::get_css_value( $attr['inputLetterSpacingMobile'], $attr['inputLetterSpacingType'] ),
-
 );
 $m_selectors[' .uagb-switch input:checked + .uagb-slider:before'] = array(
 	'transform' => 'translateX(' . UAGB_Helper::get_css_value(

@@ -22,7 +22,6 @@ $selectors = array(
 	),
 	'.uagb-how-to-main-wrap p.uagb-howto-desc-text'        => array(
 		'margin-bottom' => UAGB_Helper::get_css_value( $attr['row_gap'], 'px' ),
-		'letter-spacing' => UAGB_Helper::get_css_value( $attr['subHeadLetterSpacing'], $attr['subHeadLetterSpacingType'] ),
 	),
 
 	'.uagb-how-to-main-wrap .uagb-howto__source-wrap'      => array( // For Backword.
@@ -113,7 +112,6 @@ $selectors = array(
 
 	' ' . $attr['headingTag'] . '.uagb-howto-heading-text' => array(
 		'color' => $attr['headingColor'],
-		'letter-spacing' => UAGB_Helper::get_css_value( $attr['headLetterSpacing'], $attr['headLetterSpacingType'] ),
 	),
 
 	' p.uagb-howto-desc-text'                              => array(
@@ -130,7 +128,6 @@ $selectors = array(
 
 	' span.uagb-howto__time-wrap h4.uagb-howto-timeNeeded-text' => array(
 		'color' => $attr['showTotaltimecolor'],
-		'letter-spacing' => UAGB_Helper::get_css_value( $attr['subHeadLetterSpacing'], $attr['subHeadLetterSpacingType'] ),
 	),
 
 	' span.uagb-howto__cost-wrap h4.uagb-howto-estcost-text' => array(
@@ -166,7 +163,6 @@ $selectors[' .uagb-materials__label'] = array(
 $t_selectors = array(
 	'.uagb-how-to-main-wrap p.uagb-howto-desc-text'     => array(
 		'margin-bottom' => UAGB_Helper::get_css_value( $attr['rowGapTablet'], 'px' ),
-		'letter-spacing' => UAGB_Helper::get_css_value( $attr['subHeadLetterSpacingTablet'], $attr['subHeadLetterSpacingType'] ),
 	),
 	'.uagb-how-to-main-wrap .uagb-howto__source-image'  => array(
 		'margin-bottom' => UAGB_Helper::get_css_value( $attr['rowGapTablet'], 'px' ),
@@ -199,18 +195,11 @@ $t_selectors = array(
 	'.uagb-how-to-main-wrap .uagb-how-to-materials-child__wrapper:last-child' => array(
 		'margin-bottom' => UAGB_Helper::get_css_value( $attr['rowGapTablet'], 'px' ),
 	),
-	' span.uagb-howto__time-wrap h4.uagb-howto-timeNeeded-text' => array(
-		'letter-spacing' => UAGB_Helper::get_css_value( $attr['subHeadLetterSpacingTablet'], $attr['subHeadLetterSpacingType'] ),
-	),
-	' ' . $attr['headingTag'] . '.uagb-howto-heading-text' => array(
-		'letter-spacing' => UAGB_Helper::get_css_value( $attr['headLetterSpacingTablet'], $attr['headLetterSpacingType'] ),
-	),
 );
 
 $m_selectors = array(
 	'.uagb-how-to-main-wrap p.uagb-howto-desc-text'     => array(
 		'margin-bottom' => UAGB_Helper::get_css_value( $attr['rowGapMobile'], 'px' ),
-		'letter-spacing' => UAGB_Helper::get_css_value( $attr['subHeadLetterSpacingMobile'], $attr['subHeadLetterSpacingType'] ),
 	),
 	'.uagb-how-to-main-wrap .uagb-howto__source-image'  => array(
 		'margin-bottom' => UAGB_Helper::get_css_value( $attr['rowGapMobile'], 'px' ),
@@ -242,12 +231,6 @@ $m_selectors = array(
 
 	'.uagb-how-to-main-wrap .uagb-how-to-materials-child__wrapper:last-child' => array(
 		'margin-bottom' => UAGB_Helper::get_css_value( $attr['rowGapMobile'], 'px' ),
-	),
-	' span.uagb-howto__time-wrap h4.uagb-howto-timeNeeded-text' => array(
-		'letter-spacing' => UAGB_Helper::get_css_value( $attr['subHeadLetterSpacingMobile'], $attr['subHeadLetterSpacingType'] ),
-	),
-	' ' . $attr['headingTag'] . '.uagb-howto-heading-text' => array(
-		'letter-spacing' => UAGB_Helper::get_css_value( $attr['headLetterSpacingMobile'], $attr['headLetterSpacingType'] ),
 	),
 );
 

@@ -28,23 +28,20 @@ $connector_size = UAGB_Helper::get_css_value( $attr['connectorBgsize'], 'px' );
 
 $selectors = array(
 	' .uagb-timeline__heading'                             => array(
-		'text-align'     => $attr['align'],
-		'color'          => $attr['headingColor'],
-		'margin-bottom'  => UAGB_Helper::get_css_value( $attr['headSpace'], 'px' ),
-		'letter-spacing' => UAGB_Helper::get_css_value( $attr['headLetterSpacing'], $attr['headLetterSpacingType'] ),
+		'text-align'    => $attr['align'],
+		'color'         => $attr['headingColor'],
+		'margin-bottom' => UAGB_Helper::get_css_value( $attr['headSpace'], 'px' ),
 	),
 	' .uagb-timeline__marker.uagb-timeline__in-view-icon svg' => array(
 		'fill'  => $attr['iconFocus'],
 		'color' => $attr['iconFocus'],
 	),
 	' .uagb-timeline__heading-text'                        => array(
-		'margin-bottom'  => UAGB_Helper::get_css_value( $attr['headSpace'], 'px' ),
-		'letter-spacing' => UAGB_Helper::get_css_value( $attr['headLetterSpacing'], $attr['headLetterSpacingType'] ),
+		'margin-bottom' => UAGB_Helper::get_css_value( $attr['headSpace'], 'px' ),
 	),
 	' .uagb-timeline-desc-content'                         => array(
-		'text-align'     => $attr['align'],
-		'color'          => $attr['subHeadingColor'],
-		'letter-spacing' => UAGB_Helper::get_css_value( $attr['subHeadLetterSpacing'], $attr['subHeadLetterSpacingType'] ),
+		'text-align' => $attr['align'],
+		'color'      => $attr['subHeadingColor'],
 	),
 	' .uagb-timeline__day-new'                             => array(
 		'text-align' => $attr['align'],
@@ -139,16 +136,14 @@ $selectors = array(
 		'margin-bottom' => UAGB_Helper::get_css_value( $bottom_margin, $attr['marginUnit'] ),
 	),
 	' .uagb-timeline__date-hide.uagb-timeline__date-inner' => array(
-		'margin-bottom'  => UAGB_Helper::get_css_value( $attr['dateBottomspace'], 'px' ),
-		'color'          => $attr['dateColor'],
-		'text-align'     => $attr['align'],
-		'letter-spacing' => UAGB_Helper::get_css_value( $attr['dateLetterSpacing'], $attr['dateLetterSpacingType'] ),
+		'margin-bottom' => UAGB_Helper::get_css_value( $attr['dateBottomspace'], 'px' ),
+		'color'         => $attr['dateColor'],
+		'text-align'    => $attr['align'],
 	),
 	' .uagb-timeline__date-hide.uagb-timeline__inner-date-new' => array(
-		'margin-bottom'  => UAGB_Helper::get_css_value( $attr['dateBottomspace'], 'px' ),
-		'color'          => $attr['dateColor'],
-		'text-align'     => $attr['align'],
-		'letter-spacing' => UAGB_Helper::get_css_value( $attr['dateLetterSpacing'], $attr['dateLetterSpacingType'] ),
+		'margin-bottom' => UAGB_Helper::get_css_value( $attr['dateBottomspace'], 'px' ),
+		'color'         => $attr['dateColor'],
+		'text-align'    => $attr['align'],
 	),
 	'.uagb-timeline__right-block .uagb-timeline__day-new.uagb-timeline__day-left' => array(
 		'margin-right' => UAGB_Helper::get_css_value( $right_margin, $attr['marginUnit'] ),
@@ -163,17 +158,14 @@ $selectors = array(
 		'margin-right' => UAGB_Helper::get_css_value( $right_margin, $attr['marginUnit'] ),
 	),
 	' .uagb-timeline__date-new'                            => array(
-		'color'          => $attr['dateColor'],
-		'font-size'      => UAGB_Helper::get_css_value( $attr['dateFontsize'], $attr['dateFontsizeType'] ),
-		'letter-spacing' => UAGB_Helper::get_css_value( $attr['dateLetterSpacing'], $attr['dateLetterSpacingType'] ),
+		'color'     => $attr['dateColor'],
+		'font-size' => UAGB_Helper::get_css_value( $attr['dateFontsize'], $attr['dateFontsizeType'] ),
 	),
 	'.uagb-timeline__right-block .uagb-timeline__date-hide.uagb-timeline__date-inner' => array(
-		'font-size'      => UAGB_Helper::get_css_value( $attr['dateFontsize'], $attr['dateFontsizeType'] ),
-		'letter-spacing' => UAGB_Helper::get_css_value( $attr['dateLetterSpacing'], $attr['dateLetterSpacingType'] ),
+		'font-size' => UAGB_Helper::get_css_value( $attr['dateFontsize'], $attr['dateFontsizeType'] ),
 	),
 	'.uagb-timeline__left-block .uagb-timeline__date-hide.uagb-timeline__date-inner' => array(
-		'font-size'      => UAGB_Helper::get_css_value( $attr['dateFontsize'], $attr['dateFontsizeType'] ),
-		'letter-spacing' => UAGB_Helper::get_css_value( $attr['dateLetterSpacing'], $attr['dateLetterSpacingType'] ),
+		'font-size' => UAGB_Helper::get_css_value( $attr['dateFontsize'], $attr['dateFontsizeType'] ),
 	),
 	' .uagb-timeline__events-inner-new'                    => array(
 		'background-color' => $attr['backgroundColor'],
@@ -195,24 +187,17 @@ $selectors = array(
 );
 
 	$m_selectors = array(
-		' .uagb-timeline-desc-content'      => array(
-			'letter-spacing' => UAGB_Helper::get_css_value( $attr['subHeadLetterSpacingMobile'], $attr['subHeadLetterSpacingType'] ),
-		),
 		' .uagb-timeline__heading'          => array(
-			'margin-bottom'  => UAGB_Helper::get_css_value( $attr['headSpaceMobile'], 'px' ),
-			'letter-spacing' => UAGB_Helper::get_css_value( $attr['headLetterSpacingMobile'], $attr['headLetterSpacingType'] ),
+			'margin-bottom' => UAGB_Helper::get_css_value( $attr['headSpaceMobile'], 'px' ),
 		),
 		' .uagb-timeline__heading-text'     => array(
-			'margin-bottom'  => UAGB_Helper::get_css_value( $attr['headSpaceMobile'], 'px' ),
-			'letter-spacing' => UAGB_Helper::get_css_value( $attr['headLetterSpacingMobile'], $attr['headLetterSpacingType'] ),
+			'margin-bottom' => UAGB_Helper::get_css_value( $attr['headSpaceMobile'], 'px' ),
 		),
 		' .uagb-timeline__date-hide.uagb-timeline__date-inner' => array(
-			'margin-bottom'  => UAGB_Helper::get_css_value( $attr['dateBottomspaceMobile'], 'px' ),
-			'letter-spacing' => UAGB_Helper::get_css_value( $attr['dateLetterSpacingMobile'], $attr['dateLetterSpacingType'] ),
+			'margin-bottom' => UAGB_Helper::get_css_value( $attr['dateBottomspaceMobile'], 'px' ),
 		),
 		' .uagb-timeline__date-hide.uagb-timeline__inner-date-new' => array(
-			'margin-bottom'  => UAGB_Helper::get_css_value( $attr['dateBottomspaceMobile'], 'px' ),
-			'letter-spacing' => UAGB_Helper::get_css_value( $attr['dateLetterSpacingMobile'], $attr['dateLetterSpacingType'] ),
+			'margin-bottom' => UAGB_Helper::get_css_value( $attr['dateBottomspaceMobile'], 'px' ),
 		),
 		'.uagb-timeline__center-block .uagb-timeline__day-right .uagb-timeline__arrow:after' => array(
 			'border-right-color' => $attr['backgroundColor'],
@@ -256,23 +241,16 @@ $selectors = array(
 
 	$t_selectors = array(
 		' .uagb-timeline__heading'          => array(
-			'margin-bottom'  => UAGB_Helper::get_css_value( $attr['headSpaceTablet'], 'px' ),
-			'letter-spacing' => UAGB_Helper::get_css_value( $attr['headLetterSpacingTablet'], $attr['headLetterSpacingType'] ),
+			'margin-bottom' => UAGB_Helper::get_css_value( $attr['headSpaceTablet'], 'px' ),
 		),
 		' .uagb-timeline__heading-text'     => array(
-			'margin-bottom'  => UAGB_Helper::get_css_value( $attr['headSpaceTablet'], 'px' ),
-			'letter-spacing' => UAGB_Helper::get_css_value( $attr['headLetterSpacingTablet'], $attr['headLetterSpacingType'] ),
-		),
-		' .uagb-timeline-desc-content'      => array(
-			'letter-spacing' => UAGB_Helper::get_css_value( $attr['subHeadLetterSpacingTablet'], $attr['subHeadLetterSpacingType'] ),
+			'margin-bottom' => UAGB_Helper::get_css_value( $attr['headSpaceTablet'], 'px' ),
 		),
 		' .uagb-timeline__date-hide.uagb-timeline__date-inner' => array(
-			'margin-bottom'  => UAGB_Helper::get_css_value( $attr['dateBottomspaceTablet'], 'px' ),
-			'letter-spacing' => UAGB_Helper::get_css_value( $attr['dateLetterSpacingTablet'], $attr['dateLetterSpacingType'] ),
+			'margin-bottom' => UAGB_Helper::get_css_value( $attr['dateBottomspaceTablet'], 'px' ),
 		),
 		' .uagb-timeline__date-hide.uagb-timeline__inner-date-new' => array(
-			'margin-bottom'  => UAGB_Helper::get_css_value( $attr['dateBottomspaceTablet'], 'px' ),
-			'letter-spacing' => UAGB_Helper::get_css_value( $attr['dateLetterSpacingTablet'], $attr['dateLetterSpacingType'] ),
+			'margin-bottom' => UAGB_Helper::get_css_value( $attr['dateBottomspaceTablet'], 'px' ),
 		),
 		'.uagb-timeline__center-block .uagb-timeline__day-right .uagb-timeline__arrow:after' => array(
 			'border-right-color' => $attr['backgroundColor'],

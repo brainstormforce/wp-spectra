@@ -54,18 +54,15 @@ $selectors = array(
 		'padding-bottom' => UAGB_Helper::get_css_value( $contentPaddingBottom, $attr['contentPaddingUnit'] ),
 	),
 	' .uagb-rest_menu__wrap .uagb-rm__content .uagb-rm-details .uagb-rm__title' => array(
-		'color'          => $attr['titleColor'],
-		'margin-bottom'  => UAGB_Helper::get_css_value( $attr['titleSpace'], $attr['titleSpaceType'] ),
-		'letter-spacing' => UAGB_Helper::get_css_value( $attr['titleLetterSpacing'], $attr['titleLetterSpacingType'] ),
+		'color'         => $attr['titleColor'],
+		'margin-bottom' => UAGB_Helper::get_css_value( $attr['titleSpace'], $attr['titleSpaceType'] ),
 	),
 	' .uagb-rm__price'            => array(
-		'color'          => $attr['priceColor'],
-		'letter-spacing' => UAGB_Helper::get_css_value( $attr['priceLetterSpacing'], $attr['priceLetterSpacingType'] ),
+		'color' => $attr['priceColor'],
 	),
 	' .uagb-rm__desc'             => array(
-		'color'          => $attr['descColor'],
-		'margin-bottom'  => UAGB_Helper::get_css_value( $attr['descSpace'], 'px' ),
-		'letter-spacing' => UAGB_Helper::get_css_value( $attr['descLetterSpacing'], $attr['descLetterSpacingType'] ),
+		'color'         => $attr['descColor'],
+		'margin-bottom' => UAGB_Helper::get_css_value( $attr['descSpace'], 'px' ),
 	),
 );
 
@@ -76,8 +73,7 @@ $selectors[ ' .uagb-rest_menu__wrap.uagb-rm__desk-column-' . $attr['columns'] . 
 
 $t_selectors = array(
 	' .uagb-rest_menu__wrap .uagb-rm__content .uagb-rm-details .uagb-rm__title' => array(
-		'margin-bottom'  => UAGB_Helper::get_css_value( $attr['titleSpaceTablet'], $attr['titleSpaceType'] ),
-		'letter-spacing' => UAGB_Helper::get_css_value( $attr['titleLetterSpacingTablet'], $attr['titleLetterSpacingType'] ),
+		'margin-bottom' => UAGB_Helper::get_css_value( $attr['titleSpaceTablet'], $attr['titleSpaceType'] ),
 	),
 	' .uagb-rest_menu__wrap'     => array(
 		'padding-left'  => UAGB_Helper::get_css_value( ( $attr['columnGapTablet'] / 2 ), $attr['columnGapType'] ),
@@ -106,18 +102,11 @@ $t_selectors = array(
 		'padding-top'    => UAGB_Helper::get_css_value( $attr['contentPaddingTopTablet'], $attr['contentTabletPaddingUnit'] ),
 		'padding-bottom' => UAGB_Helper::get_css_value( $attr['contentPaddingBottomTablet'], $attr['contentTabletPaddingUnit'] ),
 	),
-	' .uagb-rm__desc'            => array(
-		'letter-spacing' => UAGB_Helper::get_css_value( $attr['descLetterSpacingTablet'], $attr['descLetterSpacingType'] ),
-	),
-	' .uagb-rm__price'           => array(
-		'letter-spacing' => UAGB_Helper::get_css_value( $attr['priceLetterSpacingTablet'], $attr['priceLetterSpacingType'] ),
-	),
 );
 
 $m_selectors = array(
 	' .uagb-rest_menu__wrap .uagb-rm__content .uagb-rm-details .uagb-rm__title' => array(
-		'margin-bottom'  => UAGB_Helper::get_css_value( $attr['titleSpaceMobile'], $attr['titleSpaceType'] ),
-		'letter-spacing' => UAGB_Helper::get_css_value( $attr['titleLetterSpacingMobile'], $attr['titleLetterSpacingType'] ),
+		'margin-bottom' => UAGB_Helper::get_css_value( $attr['titleSpaceMobile'], $attr['titleSpaceType'] ),
 	),
 	' .uagb-rest_menu__wrap'     => array(
 		'padding-left'  => UAGB_Helper::get_css_value( ( $attr['columnGapMobile'] / 2 ), $attr['columnGapType'] ),
@@ -145,12 +134,6 @@ $m_selectors = array(
 		'padding-right'  => UAGB_Helper::get_css_value( $attr['contentPaddingRightMobile'], $attr['contentMobilePaddingUnit'] ),
 		'padding-top'    => UAGB_Helper::get_css_value( $attr['contentPaddingTopMobile'], $attr['contentMobilePaddingUnit'] ),
 		'padding-bottom' => UAGB_Helper::get_css_value( $attr['contentPaddingBottomMobile'], $attr['contentMobilePaddingUnit'] ),
-	),
-	' .uagb-rm__desc'            => array(
-		'letter-spacing' => UAGB_Helper::get_css_value( $attr['descLetterSpacingMobile'], $attr['descLetterSpacingType'] ),
-	),
-	' .uagb-rm__price'           => array(
-		'letter-spacing' => UAGB_Helper::get_css_value( $attr['priceLetterSpacingMobile'], $attr['priceLetterSpacingType'] ),
 	),
 );
 
