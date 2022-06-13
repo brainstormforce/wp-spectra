@@ -12,7 +12,9 @@
 // If need be please add a new function for Info Box and go ahead.
 UAGB_Block_JS::blocks_buttons_gfont( $attr );
 
-$alignment = ( 'left' === $attr['align'] ) ? 'flex-start' : ( ( 'right' === $attr['align'] ) ? 'flex-end' : 'center' );
+$alignment        = ( 'left' === $attr['align'] ) ? 'flex-start' : ( ( 'right' === $attr['align'] ) ? 'flex-end' : 'center' );
+$tablet_alignment = ( 'left' === $attr['alignTablet'] ) ? 'flex-start' : ( ( 'right' === $attr['alignTablet'] ) ? 'flex-end' : ( ( 'center' === $attr['alignTablet'] ) ? 'center' : $alignment ) );
+$mobile_alignment = ( 'left' === $attr['alignMobile'] ) ? 'flex-start' : ( ( 'right' === $attr['alignMobile'] ) ? 'flex-end' : ( ( 'center' === $attr['alignMobile'] ) ? 'center' : $tablet_alignment ) );
 
 $m_selectors = array();
 $t_selectors = array();
@@ -20,6 +22,26 @@ $t_selectors = array();
 $icon_size   = UAGB_Helper::get_css_value( $attr['size'], $attr['sizeType'] );
 $m_icon_size = UAGB_Helper::get_css_value( $attr['sizeMobile'], $attr['sizeType'] );
 $t_icon_size = UAGB_Helper::get_css_value( $attr['sizeTablet'], $attr['sizeType'] );
+
+$position       = 'top' === $attr['iconPosition'] ? 'flex-start' : 'center';
+$tabletPosition = '';
+$mobilePosition = '';
+
+if ( 'top' === $attr['iconPositionTablet'] ) {
+	$tabletPosition = 'flex-start';
+} elseif ( 'middle' === $attr['iconPositionTablet'] ) {
+	$tabletPosition = 'center';
+} else {
+	$tabletPosition = $position;
+}
+
+if ( 'top' === $attr['iconPositionMobile'] ) {
+	$mobilePosition = 'flex-start';
+} elseif ( 'middle' === $attr['iconPositionMobile'] ) {
+	$mobilePosition = 'center';
+} else {
+	$mobilePosition = $tabletPosition;
+}
 
 $selectors = array(
 	// Desktop Icon Size CSS starts.
@@ -30,13 +52,17 @@ $selectors = array(
 		'width'     => $icon_size,
 		'height'    => $icon_size,
 		'font-size' => $icon_size,
+		'color'     => $attr['iconColor'],
+		'fill'      => $attr['iconColor'],
 	),
-	' .wp-block-uagb-icon-list-child .uagb-icon-list__source-wrap ' => array(
+	' .wp-block-uagb-icon-list-child .uagb-icon-list__source-wrap' => array(
+		'background'    => $attr['iconBgColor'],
+		'border-color'  => $attr['iconBorderColor'],
 		'padding'       => UAGB_Helper::get_css_value( $attr['bgSize'], $attr['bgSizeType'] ),
 		'border-radius' => UAGB_Helper::get_css_value( $attr['borderRadius'], 'px' ),
 		'border-style'  => ( $attr['border'] > 0 ) ? 'solid' : '',
 		'border-width'  => UAGB_Helper::get_css_value( $attr['border'], $attr['borderType'] ),
-		'align-self'    => 'top' === $attr['iconPosition'] ? 'flex-start' : 'center',
+		'align-self'    => $position,
 	),
 	' .uagb-icon-list__wrap'         => array(
 		'justify-content'   => $alignment,
@@ -47,7 +73,19 @@ $selectors = array(
 		'-ms-flex-align'    => $alignment,
 		'align-items'       => $alignment,
 	),
+	' .wp-block-uagb-icon-list-child:hover .uagb-icon-list__source-wrap svg' => array(
+		'color' => $attr['iconHoverColor'],
+		'fill'  => $attr['iconHoverColor'],
+	),
+	' .wp-block-uagb-icon-list-child:hover .uagb-icon-list__label' => array(
+		'color' => $attr['labelHoverColor'],
+	),
+	' .wp-block-uagb-icon-list-child:hover .uagb-icon-list__source-wrap' => array(
+		'background'   => $attr['iconBgHoverColor'],
+		'border-color' => $attr['iconBorderHoverColor'],
+	),
 );
+
 
 if ( $attr['childMigrate'] ) {
 	$selectors[' .wp-block-uagb-icon-list-child'] = array(
@@ -61,25 +99,6 @@ if ( $attr['childMigrate'] ) {
 		'letter-spacing'  => UAGB_Helper::get_css_value( $attr['labelLetterSpacing'], $attr['labelLetterSpacingType'] ),
 	);
 }
-
-
-
-$m_selectors = array(
-	' .uagb-icon-list__source-image' => array(
-		'width' => $m_icon_size,
-	),
-	' .wp-block-uagb-icon-list-child .uagb-icon-list__source-wrap svg' => array(
-		'width'     => $m_icon_size,
-		'height'    => $m_icon_size,
-		'font-size' => $m_icon_size,
-	),
-	' .wp-block-uagb-icon-list-child .uagb-icon-list__source-wrap ' => array(
-		'border-radius' => UAGB_Helper::get_css_value( $attr['borderRadiusMobile'], $attr['borderRadiusType'] ),
-		'padding'       => UAGB_Helper::get_css_value( $attr['bgSizeMobile'], 'px' ),
-		'border-style'  => ( $attr['borderMobile'] > 0 ) ? 'solid' : '',
-		'border-width'  => UAGB_Helper::get_css_value( $attr['borderMobile'], $attr['borderType'] ),
-	),
-);
 
 $t_selectors = array(
 	' .uagb-icon-list__source-image' => array(
@@ -96,6 +115,47 @@ $t_selectors = array(
 		'border-style'  => ( $attr['borderTablet'] > 0 ) ? 'solid' : '',
 		'border-width'  => UAGB_Helper::get_css_value( $attr['borderTablet'], $attr['borderType'] ),
 	),
+	' .uagb-icon-list__wrap'         => array(
+		'justify-content'   => $tablet_alignment,
+		'-webkit-box-pack'  => $tablet_alignment,
+		'-ms-flex-pack'     => $tablet_alignment,
+		'justify-content'   => $tablet_alignment,
+		'-webkit-box-align' => $tablet_alignment,
+		'-ms-flex-align'    => $tablet_alignment,
+		'align-items'       => $tablet_alignment,
+	),
+	' .wp-block-uagb-icon-list-child .uagb-icon-list__source-wrap ' => array(
+		'align-self' => $tabletPosition,
+	),
+);
+
+$m_selectors = array(
+	' .uagb-icon-list__source-image' => array(
+		'width' => $m_icon_size,
+	),
+	' .wp-block-uagb-icon-list-child .uagb-icon-list__source-wrap svg' => array(
+		'width'     => $m_icon_size,
+		'height'    => $m_icon_size,
+		'font-size' => $m_icon_size,
+	),
+	' .wp-block-uagb-icon-list-child .uagb-icon-list__source-wrap ' => array(
+		'border-radius' => UAGB_Helper::get_css_value( $attr['borderRadiusMobile'], $attr['borderRadiusType'] ),
+		'padding'       => UAGB_Helper::get_css_value( $attr['bgSizeMobile'], 'px' ),
+		'border-style'  => ( $attr['borderMobile'] > 0 ) ? 'solid' : '',
+		'border-width'  => UAGB_Helper::get_css_value( $attr['borderMobile'], $attr['borderType'] ),
+	),
+	' .uagb-icon-list__wrap'         => array(
+		'justify-content'   => $mobile_alignment,
+		'-webkit-box-pack'  => $mobile_alignment,
+		'-ms-flex-pack'     => $mobile_alignment,
+		'justify-content'   => $mobile_alignment,
+		'-webkit-box-align' => $mobile_alignment,
+		'-ms-flex-align'    => $mobile_alignment,
+		'align-items'       => $mobile_alignment,
+	),
+	' .wp-block-uagb-icon-list-child .uagb-icon-list__source-wrap ' => array(
+		'align-self' => $mobilePosition,
+	),
 );
 
 $selectors[' .wp-block-uagb-icon-list-child .uagb-icon-list__label'] = array(
@@ -107,6 +167,7 @@ $selectors[' .wp-block-uagb-icon-list-child .uagb-icon-list__label'] = array(
 	'font-weight'     => $attr['fontWeight'],
 	'line-height'     => $attr['lineHeight'] . $attr['lineHeightType'],
 	'letter-spacing'  => UAGB_Helper::get_css_value( $attr['labelLetterSpacing'], $attr['labelLetterSpacingType'] ),
+	'color'           => $attr['labelColor'],
 );
 
 $m_selectors[' .wp-block-uagb-icon-list-child .uagb-icon-list__label'] = array(
@@ -133,6 +194,7 @@ if ( 'horizontal' === $attr['icon_layout'] ) {
 
 		$t_selectors[' .uagb-icon-list__wrap'] = array(
 			'flex-direction' => 'column',
+			'align-items'    => $tablet_alignment,
 		);
 
 		$t_selectors[' .uagb-icon-list__wrap .wp-block-uagb-icon-list-child:last-child'] = array(
@@ -149,6 +211,7 @@ if ( 'horizontal' === $attr['icon_layout'] ) {
 
 		$m_selectors[' .uagb-icon-list__wrap'] = array(
 			'flex-direction' => 'column',
+			'align-items'    => $mobile_alignment,
 		);
 
 		$m_selectors[' .uagb-icon-list__wrap .wp-block-uagb-icon-list-child:last-child'] = array(
@@ -249,19 +312,15 @@ if ( ! $attr['childMigrate'] ) {
 	}
 }
 
-if ( 'right' === $attr['align'] && ! $attr['hideLabel'] ) {
-	$selectors[' .uagb-icon-list__source-wrap']     = array(
-		'margin-left' => UAGB_Helper::get_css_value( $attr['inner_gap'], $attr['innerGapType'] ),
+if ( 'right' === $attr['align'] && $attr['hideLabel'] ) {
+	$selectors[' .uagb-icon-list__source-wrap']   = array(
+		'margin-right' => '0px',
 	);
-	$m_selectors[' .uagb-icon-list__source-wrap']   = array(
-		'margin-left' => UAGB_Helper::get_css_value( $attr['innerGapMobile'], $attr['innerGapType'] ),
+	$m_selectors[' .uagb-icon-list__source-wrap'] = array(
+		'margin-right' => '0px',
 	);
-	$t_selectors[' .uagb-icon-list__source-wrap']   = array(
-		'margin-left' => UAGB_Helper::get_css_value( $attr['innerGapTablet'], $attr['innerGapType'] ),
-	);
-	$selectors[' .wp-block-uagb-icon-list-child  '] = array(
-		'flex-direction' => 'row-reverse',
-		'text-align'     => 'end',
+	$t_selectors[' .uagb-icon-list__source-wrap'] = array(
+		'margin-right' => '0px',
 	);
 } else {
 	$selectors[' .uagb-icon-list__source-wrap']   = array(

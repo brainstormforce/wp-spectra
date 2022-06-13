@@ -46,6 +46,20 @@ const attributes = {
 			styleType: 'overall-alignment'
 		},
 	},
+	alignTablet: {
+		type: 'string',
+		default: '',
+		UAGCopyPaste: {
+			styleType: 'overall-alignment-tablet'
+		}
+	},
+	alignMobile: {
+		type: 'string',
+		default: '',
+		UAGCopyPaste: {
+			styleType: 'overall-alignment-mobile'
+		}
+	},
 	icon_count: {
 		type: 'number',
 		default: itemCount,
@@ -112,6 +126,20 @@ const attributes = {
 			styleType: 'icon-position'
 		},
 		default: 'middle',
+	},
+	iconPositionTablet: {
+		type: 'string',
+		UAGCopyPaste: {
+			styleType: 'icon-position-tablet'
+		},
+		default: '',
+	},
+	iconPositionMobile: {
+		type: 'string',
+		UAGCopyPaste: {
+			styleType: 'icon-position-mobile'
+		},
+		default: '',
 	},
 	size: {
 		type: 'number',
@@ -352,6 +380,57 @@ const attributes = {
 		UAGCopyPaste: {
 			styleType: 'label-letter-spacing-type'
 		}
+	},
+	iconColor: {
+		type: 'string',
+		default: '',
+		UAGCopyPaste: {
+			styleType: 'icon-color'
+		},
+	},
+	labelColor: {
+		type: 'string',
+		UAGCopyPaste: {
+			styleType: 'main-title-color'
+		},
+	},
+	iconHoverColor: {
+		type: 'string',
+		UAGCopyPaste: {
+			styleType: 'icon-hover-color'
+		},
+	},
+	labelHoverColor: {
+		type: 'string',
+		UAGCopyPaste: {
+			styleType: 'main-title-hover-color'
+		},
+	},
+	iconBgColor: {
+		type: 'string',
+		UAGCopyPaste: {
+			styleType: 'icon-bg-color'
+		},
+		default: '',
+	},
+	iconBgHoverColor: {
+		type: 'string',
+		UAGCopyPaste: {
+			styleType: 'icon-bg-hover-color'
+		},
+	},
+	iconBorderColor: {
+		type: 'string',
+		UAGCopyPaste: {
+			styleType: 'icon-border-color'
+		},
+		default: '',
+	},
+	iconBorderHoverColor: {
+		type: 'string',
+		UAGCopyPaste: {
+			styleType: 'icon-border-hover-color'
+		},
 	},
 };
 
