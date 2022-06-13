@@ -176,9 +176,11 @@ function styling( props ) {
 			'-ms-flex-pack': alignment,
 		};
 		selectors[' .block-editor-block-list__layout .wp-block[data-type="uagb/icon-list-child"]' ] = {
-			'margin-left': generateCSSUnit( editorGap / 2, gapType ),
 			'margin-right': generateCSSUnit( editorGap / 2, gapType ),
 			'display': 'inline-flex'
+		};
+		selectors[' .block-editor-block-list__layout .wp-block[data-type="uagb/icon-list-child"]:not(:first-child)' ] = {
+			'margin-left': generateCSSUnit( editorGap / 2, gapType ),
 		};
 	} else if('vertical' === icon_layout) {
 		selectors[ ' .uagb-icon-list__wrap' ] = {
