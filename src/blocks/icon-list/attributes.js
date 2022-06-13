@@ -390,6 +390,7 @@ const attributes = {
 	},
 	labelColor: {
 		type: 'string',
+		default: '',
 		UAGCopyPaste: {
 			styleType: 'main-title-color'
 		},

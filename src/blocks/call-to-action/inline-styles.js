@@ -172,6 +172,10 @@ function CtaStyle( props ) {
 		descLetterSpacingTablet,
 		descLetterSpacingMobile,
 		descLetterSpacingType,
+		ctaLetterSpacing,
+		ctaLetterSpacingTablet,
+		ctaLetterSpacingMobile,
+		ctaLetterSpacingType,
 	} = props.attributes;
 
 	const selectors = {
@@ -251,6 +255,7 @@ function CtaStyle( props ) {
 		'padding-bottom': generateCSSUnit( ctaBottomPadding, ctaPaddingUnit ),
 		'padding-left': generateCSSUnit( ctaLeftPadding, ctaPaddingUnit ),
 		'padding-right': generateCSSUnit( ctaRightPadding, ctaPaddingUnit ),
+		'letter-spacing': generateCSSUnit( ctaLetterSpacing, ctaLetterSpacingType ),
 	};
 
 	selectors['.uagb-cta__outer-wrap a.uagb-cta-second__button'] = {
@@ -290,6 +295,7 @@ function CtaStyle( props ) {
 		'width': generateCSSUnit( ctaFontSize, ctaFontSizeType ),
 		'line-height': generateCSSUnit( ctaFontSize, ctaFontSizeType ),
 		'fill': ctaBtnLinkColor,
+		'letter-spacing': generateCSSUnit( ctaLetterSpacing, ctaLetterSpacingType ),
 	};
 
 	selectors['.uagb-cta__outer-wrap a.uagb-cta-second__button svg' ] = {
@@ -371,6 +377,7 @@ function CtaStyle( props ) {
 				ctaRightPaddingTablet,
 				tabletCTAPaddingUnit
 			),
+			'letter-spacing': generateCSSUnit( ctaLetterSpacingTablet, ctaLetterSpacingType ),
 		},
 		'.uagb-cta__outer-wrap a.uagb-cta__button-link-wrapper svg': {
 			'font-size': generateCSSUnit( ctaFontSizeTablet, ctaFontSizeType ),
@@ -380,6 +387,7 @@ function CtaStyle( props ) {
 				ctaFontSizeTablet,
 				ctaFontSizeType
 			),
+			'letter-spacing': generateCSSUnit( ctaLetterSpacingTablet, ctaLetterSpacingType ),
 		},
 		'.uagb-cta__outer-wrap a.uagb-cta-second__button': {
 			'font-size': generateCSSUnit( secondCtaFontSizeTablet, secondCtaFontSizeType ),
@@ -458,6 +466,7 @@ function CtaStyle( props ) {
 		},
 		' .uagb-cta__button-wrapper a.uagb-cta-typeof-text': {
 			'font-size': generateCSSUnit( ctaFontSizeMobile, ctaFontSizeType ),
+			'letter-spacing': generateCSSUnit( ctaLetterSpacingMobile, ctaLetterSpacingType ),
 		},
 		' .uagb-cta__button-wrapper a.uagb-cta-typeof-button': {
 			'font-size': generateCSSUnit( ctaFontSizeMobile, ctaFontSizeType ),
@@ -477,6 +486,7 @@ function CtaStyle( props ) {
 				ctaRightPaddingMobile,
 				mobileCTAPaddingUnit
 			),
+			'letter-spacing': generateCSSUnit( ctaLetterSpacingMobile, ctaLetterSpacingType ),
 		},
 		' .uagb-cta__button-wrapper .uagb-cta-with-svg': {
 			'font-size': generateCSSUnit( ctaFontSizeMobile, ctaFontSizeType ),
@@ -486,6 +496,7 @@ function CtaStyle( props ) {
 				ctaFontSizeMobile,
 				ctaFontSizeType
 			),
+			'letter-spacing': generateCSSUnit( ctaLetterSpacingMobile, ctaLetterSpacingType ),
 		},
 		'.uagb-cta__outer-wrap a.uagb-cta-second__button': {
 			'font-size': generateCSSUnit( secondCtaFontSizeMobile, secondCtaFontSizeType ),

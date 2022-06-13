@@ -188,4 +188,8 @@ return array(
 	'descLetterSpacingTablet'         => '',
 	'descLetterSpacingMobile'         => '',
 	'descLetterSpacingType'           => 'px',
+	'ctaLetterSpacing'                => '',
+	'ctaLetterSpacingTablet'          => '',
+	'ctaLetterSpacingMobile'          => '',
+	'ctaLetterSpacingType'            => 'px',
 );
