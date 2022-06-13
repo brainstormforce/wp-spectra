@@ -8,6 +8,8 @@ import generateCSSUnit from '@Controls/generateCSSUnit';
 function styling( props ) {
 	const {
 		headingAlign,
+		headingAlignTablet,
+		headingAlignMobile,
 		headingTag,
 		headingColor,
 		headingColorType,
@@ -315,6 +317,7 @@ function styling( props ) {
 
 	// tablet
 	tablet_selectors['.wp-block-uagb-advanced-heading '] = {
+		'text-align': headingAlignTablet,
 		'margin-top': generateCSSUnit(
 			blockTopMarginTablet,
 			blockMarginUnitTablet
@@ -398,6 +401,7 @@ function styling( props ) {
 	};
 	// mobile
 	mobile_selectors['.wp-block-uagb-advanced-heading '] = {
+		'text-align': headingAlignMobile,
 		'margin-top': generateCSSUnit(
 			blockTopMarginMobile,
 			blockMarginUnitMobile

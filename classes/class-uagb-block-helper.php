@@ -282,27 +282,36 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 
 			$wrapper = ( ! $childMigrate ) ? ' .uagb-icon-list-repeater-' . $id : '.wp-block-uagb-icon-list-child';
 
-			$selectors[ $wrapper . ' .uagb-icon-list__source-wrap svg' ]       = array(
-				'fill'  => $attr['icon_color'],
-				'color' => $attr['icon_color'],
+			if ( ! empty( $attr['icon_color'] ) ) {
+				$selectors[ $wrapper . ' .uagb-icon-list__source-wrap svg' ] = array(
+					'fill'  => $attr['icon_color'] . ' !important',
+					'color' => $attr['icon_color'] . ' !important',
+				);
+			}
+			if ( ! empty( $attr['icon_hover_color'] ) ) {
+				$selectors[ $wrapper . ':hover .uagb-icon-list__source-wrap svg' ] = array(
+					'fill'  => $attr['icon_hover_color'] . ' !important',
+					'color' => $attr['icon_hover_color'] . ' !important',
+				);
+			}
+			if ( ! empty( $attr['label_color'] ) ) {
+				$selectors[ $wrapper . ' .uagb-icon-list__label' ] = array(
+					'color' => $attr['label_color'] . ' !important',
+				);
+			}
+			if ( ! empty( $attr['label_hover_color'] ) ) {
+				$selectors[ $wrapper . ':hover .uagb-icon-list__label' ] = array(
+					'color' => $attr['label_hover_color'] . ' !important',
+				);
+			}
+
+			$selectors[ $wrapper . ' .uagb-icon-list__source-wrap' ]       = array(
+				'background'   => $attr['icon_bg_color'] . ' !important',
+				'border-color' => $attr['icon_border_color'] . ' !important',
 			);
-			$selectors[ $wrapper . ':hover .uagb-icon-list__source-wrap svg' ] = array(
-				'fill'  => $attr['icon_hover_color'],
-				'color' => $attr['icon_hover_color'],
-			);
-			$selectors[ $wrapper . ' .uagb-icon-list__label' ]                 = array(
-				'color' => $attr['label_color'],
-			);
-			$selectors[ $wrapper . ':hover .uagb-icon-list__label' ]           = array(
-				'color' => $attr['label_hover_color'],
-			);
-			$selectors[ $wrapper . ' .uagb-icon-list__source-wrap' ]           = array(
-				'background'   => $attr['icon_bg_color'],
-				'border-color' => $attr['icon_border_color'],
-			);
-			$selectors[ $wrapper . ':hover .uagb-icon-list__source-wrap' ]     = array(
-				'background'   => $attr['icon_bg_hover_color'],
-				'border-color' => $attr['icon_border_hover_color'],
+			$selectors[ $wrapper . ':hover .uagb-icon-list__source-wrap' ] = array(
+				'background'   => $attr['icon_bg_hover_color'] . ' !important',
+				'border-color' => $attr['icon_border_hover_color'] . ' !important',
 			);
 
 			return $selectors;
