@@ -102,6 +102,10 @@ function styling( props ) {
 	const editorGapTablet = gapTablet ? gapTablet : 15;
 	const editorGapMobile = gapMobile ? gapMobile : 15;
 
+	const iconListLayout = icon_layout
+	const iconListLayoutTablet = iconLayoutTablet ? iconLayoutTablet : iconListLayout
+	const iconListLayoutMobile = iconLayoutMobile ? iconLayoutMobile : iconListLayoutTablet
+
 	const position = iconPosition === 'top' ? 'flex-start' : 'center';
 	let positionTablet = '';
 	let positionMobile = '';
@@ -198,7 +202,7 @@ function styling( props ) {
 		'font-size': generateCSSUnit( sizeMobile, sizeType ),
 	};
 
-	if ( 'horizontal' === icon_layout ) {
+	if ( 'horizontal' === iconListLayout ) {
 		if ( 'tablet' === stack ) {
 			tabletSelectors[
 				' .uagb-icon-list__wrap .wp-block[data-type="uagb/icon-list-child"]'
@@ -275,7 +279,7 @@ function styling( props ) {
 		selectors[' .block-editor-block-list__layout .wp-block[data-type="uagb/icon-list-child"]:not(:first-child)' ] = {
 			'margin-left': generateCSSUnit( editorGap / 2, gapType ),
 		};
-	} else if( 'vertical' === icon_layout ) {
+	} else if( 'vertical' === iconListLayout ) {
 		selectors[ ' .uagb-icon-list__wrap' ] = {
 			'flex-direction': 'column',
 		};
@@ -287,7 +291,7 @@ function styling( props ) {
 		};
 	}
 
-	if( 'horizontal' === iconLayoutTablet ){
+	if( 'horizontal' === iconListLayoutTablet ){
 		tabletSelectors[' .block-editor-block-list__layout .wp-block[data-type="uagb/icon-list-child"]' ] = {
 			'margin-right': generateCSSUnit( editorGapTablet / 2, gapType ),
 			'display': 'inline-flex'
@@ -295,7 +299,7 @@ function styling( props ) {
 		tabletSelectors[' .block-editor-block-list__layout .wp-block[data-type="uagb/icon-list-child"]:not(:first-child)' ] = {
 			'margin-left': generateCSSUnit( editorGapTablet / 2, gapType ),
 		};
-	} else if( 'vertical' === iconLayoutTablet ) {
+	} else if( 'vertical' === iconListLayoutTablet ) {
 		tabletSelectors[ ' .wp-block[data-type="uagb/icon-list-child"]' ] = {
 			'display': 'block',
 			'margin-left': 0 + ' !important',
@@ -304,7 +308,7 @@ function styling( props ) {
 		};
 	}
 
-	if( 'horizontal' === iconLayoutMobile ){
+	if( 'horizontal' === iconListLayoutMobile ){
 		mobileSelectors[' .block-editor-block-list__layout .wp-block[data-type="uagb/icon-list-child"]' ] = {
 			'margin-right': generateCSSUnit( editorGapMobile / 2, gapType ),
 			'display': 'inline-flex'
@@ -312,7 +316,7 @@ function styling( props ) {
 		mobileSelectors[' .block-editor-block-list__layout .wp-block[data-type="uagb/icon-list-child"]:not(:first-child)' ] = {
 			'margin-left': generateCSSUnit( editorGapMobile / 2, gapType ),
 		};
-	} else if( 'vertical' === iconLayoutMobile ) {
+	} else if( 'vertical' === iconListLayoutMobile ) {
 		mobileSelectors[ ' .wp-block[data-type="uagb/icon-list-child"]' ] = {
 			'display': 'block',
 			'margin-left': 0 + ' !important',
