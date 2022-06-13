@@ -121,12 +121,12 @@ function RestMenuStyle( props ) {
 	const rowGapMobileFallback = getFallbackNumber( rowGapMobile, 'rowGapMobile', blockName );
 
 	const columnGapFallback = getFallbackNumber( columnGap, 'columnGap', blockName );
-	const columnGapTabletFallback = getFallbackNumber( columnGapTablet, 'columnGapTablet', blockName );
-	const columnGapMobileFallback = getFallbackNumber( columnGapMobile, 'columnGapMobile', blockName );
+	const columnGapTabletFallback = isNaN( columnGapTablet ) ? columnGapFallback : columnGapTablet;
+	const columnGapMobileFallback = isNaN( columnGapMobile ) ? columnGapTabletFallback : columnGapMobile;
 
 	const imageWidthFallback = getFallbackNumber( imageWidth, 'imageWidth', blockName );
-	const imageWidthTabletFallback = getFallbackNumber( imageWidthTablet, 'imageWidthTablet', blockName );
-	const imageWidthMobileFallback = getFallbackNumber( imageWidthMobile, 'imageWidthMobile', blockName );
+	const imageWidthTabletFallback = isNaN( imageWidthTablet ) ? imageWidthFallback : imageWidthTablet;
+	const imageWidthMobileFallback = isNaN( imageWidthMobile ) ? imageWidthTabletFallback : imageWidthMobile;
 
 	const seperatorWidthFallback = getFallbackNumber( seperatorWidth, 'seperatorWidth', blockName );
 	const seperatorWidthTabletFallback = getFallbackNumber( seperatorWidthTablet, 'seperatorWidthTablet', blockName );

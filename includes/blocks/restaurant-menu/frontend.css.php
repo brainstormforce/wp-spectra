@@ -22,12 +22,12 @@ $row_gap_tablet_fallback = UAGB_Block_Helper::get_fallback_number( $attr['rowGap
 $row_gap_mobile_fallback = UAGB_Block_Helper::get_fallback_number( $attr['rowGapMobile'], 'rowGapMobile', $block_name );
 
 $column_gap_fallback = UAGB_Block_Helper::get_fallback_number( $attr['columnGap'], 'columnGap', $block_name );
-$column_gap_tablet_fallback = UAGB_Block_Helper::get_fallback_number( $attr['columnGapTablet'], 'columnGapTablet', $block_name );
-$column_gap_mobile_fallback = UAGB_Block_Helper::get_fallback_number( $attr['columnGapMobile'], 'columnGapMobile', $block_name );
+$attr['columnGapTablet'] = is_numeric( $attr['columnGapTablet'] ) ? $attr['columnGapTablet'] : $attr['columnGap'];
+$attr['columnGapMobile'] = is_numeric( $attr['columnGapMobile'] ) ? $attr['columnGapMobile'] : $attr['columnGapTablet'];
 
 $image_width_fallback = UAGB_Block_Helper::get_fallback_number( $attr['imageWidth'], 'imageWidth', $block_name );
-$image_width_tablet_fallback = UAGB_Block_Helper::get_fallback_number( $attr['imageWidthTablet'], 'imageWidthTablet', $block_name );
-$image_width_mobile_fallback = UAGB_Block_Helper::get_fallback_number( $attr['imageWidthMobile'], 'imageWidthMobile', $block_name );
+$attr['imageWidthTablet'] = is_numeric( $attr['imageWidthTablet'] ) ? $attr['imageWidthTablet'] : $attr['imageWidth'];
+$attr['imageWidthMobile'] = is_numeric( $attr['imageWidthMobile'] ) ? $attr['imageWidthMobile'] : $attr['imageWidthTablet'];
 
 $seperator_width_fallback = UAGB_Block_Helper::get_fallback_number( $attr['seperatorWidth'], 'seperatorWidth', $block_name );
 $seperator_width_tablet_fallback = UAGB_Block_Helper::get_fallback_number( $attr['seperatorWidthTablet'], 'seperatorWidthTablet', $block_name );
@@ -100,8 +100,8 @@ $t_selectors = array(
 		'margin-bottom' => UAGB_Helper::get_css_value( $title_space_tablet_fallback, $attr['titleSpaceType'] ),
 	),
 	' .uagb-rest_menu__wrap'     => array(
-		'padding-left'  => UAGB_Helper::get_css_value( ( $column_gap_tablet_fallback / 2 ), $attr['columnGapType'] ),
-		'padding-right' => UAGB_Helper::get_css_value( ( $column_gap_tablet_fallback / 2 ), $attr['columnGapType'] ),
+		'padding-left'  => UAGB_Helper::get_css_value( ( $attr['columnGapTablet'] / 2 ), $attr['columnGapType'] ),
+		'padding-right' => UAGB_Helper::get_css_value( ( $attr['columnGapTablet'] / 2 ), $attr['columnGapType'] ),
 		'margin-bottom' => UAGB_Helper::get_css_value( $row_gap_tablet_fallback, $attr['rowGapType'] ),
 	),
 	' .uagb-rest_menu__wrap.uagb-rm__desk-column-' . $attr['columns'] . ':nth-child(' . $attr['columns'] . 'n+1)' => array(
@@ -117,8 +117,8 @@ $t_selectors = array(
 		'padding-right'  => UAGB_Helper::get_css_value( $attr['imgPaddingRightTablet'], $attr['imgTabletPaddingUnit'] ),
 		'padding-top'    => UAGB_Helper::get_css_value( $attr['imgPaddingTopTablet'], $attr['imgTabletPaddingUnit'] ),
 		'padding-bottom' => UAGB_Helper::get_css_value( $attr['imgPaddingBottomTablet'], $attr['imgTabletPaddingUnit'] ),
-		'width'          => UAGB_Helper::get_css_value( $image_width_tablet_fallback, $attr['imageWidthType'] ),
-		'max-width'      => UAGB_Helper::get_css_value( $image_width_tablet_fallback, $attr['imageWidthType'] ),
+		'width'          => UAGB_Helper::get_css_value( $attr['imageWidthTablet'], $attr['imageWidthType'] ),
+		'max-width'      => UAGB_Helper::get_css_value( $attr['imageWidthTablet'], $attr['imageWidthType'] ),
 	),
 	' .uagb-rm__content'         => array(
 		'padding-left'   => UAGB_Helper::get_css_value( $attr['contentPaddingLeftTablet'], $attr['contentTabletPaddingUnit'] ),
@@ -133,8 +133,8 @@ $m_selectors = array(
 		'margin-bottom' => UAGB_Helper::get_css_value( $title_space_mobile_fallback, $attr['titleSpaceType'] ),
 	),
 	' .uagb-rest_menu__wrap'     => array(
-		'padding-left'  => UAGB_Helper::get_css_value( ( $column_gap_mobile_fallback / 2 ), $attr['columnGapType'] ),
-		'padding-right' => UAGB_Helper::get_css_value( ( $column_gap_mobile_fallback / 2 ), $attr['columnGapType'] ),
+		'padding-left'  => UAGB_Helper::get_css_value( ( $attr['columnGapMobile'] / 2 ), $attr['columnGapType'] ),
+		'padding-right' => UAGB_Helper::get_css_value( ( $attr['columnGapMobile'] / 2 ), $attr['columnGapType'] ),
 		'margin-bottom' => UAGB_Helper::get_css_value( $row_gap_mobile_fallback, $attr['rowGapType'] ),
 	),
 	' .uagb-rest_menu__wrap.uagb-rm__desk-column-' . $attr['columns'] . ':nth-child(' . $attr['columns'] . 'n+1)' => array(
@@ -150,8 +150,8 @@ $m_selectors = array(
 		'padding-right'  => UAGB_Helper::get_css_value( $attr['imgPaddingRightMobile'], $attr['imgMobilePaddingUnit'] ),
 		'padding-top'    => UAGB_Helper::get_css_value( $attr['imgPaddingTopMobile'], $attr['imgMobilePaddingUnit'] ),
 		'padding-bottom' => UAGB_Helper::get_css_value( $attr['imgPaddingBottomMobile'], $attr['imgMobilePaddingUnit'] ),
-		'width'          => UAGB_Helper::get_css_value( $image_width_mobile_fallback, $attr['imageWidthType'] ),
-		'max-width'      => UAGB_Helper::get_css_value( $image_width_mobile_fallback, $attr['imageWidthType'] ),
+		'width'          => UAGB_Helper::get_css_value( $attr['imageWidthMobile'], $attr['imageWidthType'] ),
+		'max-width'      => UAGB_Helper::get_css_value( $attr['imageWidthMobile'], $attr['imageWidthType'] ),
 	),
 	' .uagb-rm__content'         => array(
 		'padding-left'   => UAGB_Helper::get_css_value( $attr['contentPaddingLeftMobile'], $attr['contentMobilePaddingUnit'] ),
