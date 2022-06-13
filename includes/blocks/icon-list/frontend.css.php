@@ -189,7 +189,6 @@ if ( 'horizontal' === $attr['icon_layout'] ) {
 		'flex-direction' => 'column',
 	);
 	$selectors['.wp-block-uagb-icon-list .wp-block-uagb-icon-list-child']            = array(
-		'display' => 'block',
 		'margin-left'   => 0,
 		'margin-right'  => 0,
 		'margin-bottom' => UAGB_Helper::get_css_value( $attr['gap'], $attr['gapType'] ),
@@ -211,7 +210,6 @@ if( 'horizontal' === $attr['iconLayoutTablet'] ){
 		'flex-direction' => 'column',
 	);
 	$t_selectors['.wp-block-uagb-icon-list .wp-block-uagb-icon-list-child']          = array(
-		'display' => 'block',
 		'margin-left'   => 0,
 		'margin-right'  => 0,
 		'margin-bottom' => UAGB_Helper::get_css_value( $attr['gapTablet'], $attr['gapType'] ),
@@ -230,7 +228,6 @@ if( 'horizontal' === $attr['iconLayoutMobile'] ){
 		'flex-direction' => 'column',
 	);
 	$m_selectors['.wp-block-uagb-icon-list .wp-block-uagb-icon-list-child']          = array(
-		'display' => 'block',
 		'margin-left'   => 0,
 		'margin-right'  => 0,
 		'margin-bottom' => UAGB_Helper::get_css_value( $attr['gapMobile'], $attr['gapType'] ),
