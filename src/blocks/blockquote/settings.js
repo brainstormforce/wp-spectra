@@ -177,16 +177,7 @@ const Settings = ( props ) => {
 		quoteBottomMarginMobile,
 		quoteLeftMarginMobile,
 		quoteRightMarginMobile,
-		author,
-		// letter spacing
-		quoteLetterSpacing,
-		quoteLetterSpacingTablet,
-		quoteLetterSpacingMobile,
-		quoteLetterSpacingType,
-		authorLetterSpacing,
-		authorLetterSpacingTablet,
-		authorLetterSpacingMobile,
-		authorLetterSpacingType,
+		author
 	} = attributes;
 	let loadDescGoogleFonts;
 	let loadAuthorGoogleFonts;
@@ -551,23 +542,6 @@ const Settings = ( props ) => {
 					value: descDecoration,
 					label: 'descDecoration',
 				} }
-				// letter spacing
-				letterSpacing={ {
-					value: quoteLetterSpacing,
-					label: 'quoteLetterSpacing',
-				} }
-				letterSpacingTablet={ {
-					value: quoteLetterSpacingTablet,
-					label: 'quoteLetterSpacingTablet',
-				} }
-				letterSpacingMobile={ {
-					value: quoteLetterSpacingMobile,
-					label: 'quoteLetterSpacingMobile',
-				} }
-				letterSpacingType={ {
-					value: quoteLetterSpacingType,
-					label: 'quoteLetterSpacingType',
-				} }
 			/>
 			<AdvancedPopColorControl
 				label={ __( 'Quote Color', 'ultimate-addons-for-gutenberg' ) }
@@ -648,23 +622,6 @@ const Settings = ( props ) => {
 						decoration={ {
 							value: authorDecoration,
 							label: 'authorDecoration',
-						} }
-						// letter spacing
-						letterSpacing={ {
-							value: authorLetterSpacing,
-							label: 'authorLetterSpacing',
-						} }
-						letterSpacingTablet={ {
-							value: authorLetterSpacingTablet,
-							label: 'authorLetterSpacingTablet',
-						} }
-						letterSpacingMobile={ {
-							value: authorLetterSpacingMobile,
-							label: 'authorLetterSpacingMobile',
-						} }
-						letterSpacingType={ {
-							value: authorLetterSpacingType,
-							label: 'authorLetterSpacingType',
 						} }
 					/>
 					<AdvancedPopColorControl

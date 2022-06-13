@@ -949,58 +949,7 @@ const attributes = {
 	isPreview: {
 		type: 'boolean',
 		default: false,
-	},
-	// letter spacing
-	authorLetterSpacing: {
-		type: 'number',
-		UAGCopyPaste: {
-			styleType: 'main-title-letter-spacing'
-		}
-	},
-	authorLetterSpacingTablet: {
-		type: 'number',
-		UAGCopyPaste: {
-			styleType: 'main-title-letter-spacing-tablet'
-		}
-	},
-	authorLetterSpacingMobile: {
-		type: 'number',
-		UAGCopyPaste: {
-			styleType: 'main-title-letter-spacing-mobile'
-		}
-	},
-	authorLetterSpacingType: {
-		type: 'string',
-		default: 'px',
-		UAGCopyPaste: {
-			styleType: 'main-title-letter-spacing-type'
-		}
-	},
-	quoteLetterSpacing: {
-		type: 'number',
-		UAGCopyPaste: {
-			styleType: 'desc-letter-spacing'
-		}
-	},
-	quoteLetterSpacingTablet: {
-		type: 'number',
-		UAGCopyPaste: {
-			styleType: 'desc-letter-spacing-tablet'
-		}
-	},
-	quoteLetterSpacingMobile: {
-		type: 'number',
-		UAGCopyPaste: {
-			styleType: 'desc-letter-spacing-mobile'
-		}
-	},
-	quoteLetterSpacingType: {
-		type: 'string',
-		default: 'px',
-		UAGCopyPaste: {
-			styleType: 'desc-letter-spacing-type'
-		}
-	},
+	}
 };
 
 export default attributes;
