@@ -55,6 +55,20 @@ const attributes = {
 			styleType: 'overall-alignment'
 		}
 	},
+	headingAlignTablet: {
+		type: 'string',
+		default: '',
+		UAGCopyPaste: {
+			styleType: 'overall-alignment-tablet'
+		}
+	},
+	headingAlignMobile: {
+		type: 'string',
+		default: '',
+		UAGCopyPaste: {
+			styleType: 'overall-alignment-mobile'
+		}
+	},
 	headingColorType: {
 		type: 'string',
 		default: 'classic',

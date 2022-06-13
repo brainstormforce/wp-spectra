@@ -20,6 +20,9 @@ import UAGPresets from '@Components/presets';
 import renderSVG from '@Controls/renderIcon';
 import { ToggleControl, Icon } from '@wordpress/components';
 import UAGAdvancedPanelBody from '@Components/advanced-panel-body';
+import UAGTabsControl from '@Components/tabs';
+import AdvancedPopColorControl from '@Components/color-control/advanced-pop-color-control.js';
+
 
 const Settings = ( props ) => {
 	props = props.parentProps;
@@ -42,6 +45,8 @@ const Settings = ( props ) => {
 		iconLayoutTablet,
 		iconLayoutMobile,
 		iconPosition,
+		iconPositionTablet,
+		iconPositionMobile,
 		size,
 		sizeType,
 		sizeMobile,
@@ -73,6 +78,14 @@ const Settings = ( props ) => {
 		fontStyle,
 		fontTransform,
 		fontDecoration,
+		iconColor,
+		labelColor,
+		iconHoverColor,
+		labelHoverColor,
+		iconBgColor,
+		iconBgHoverColor,
+		iconBorderColor,
+		iconBorderHoverColor,
 	} = attributes;
 
 	let googleFonts;
@@ -269,8 +282,18 @@ const Settings = ( props ) => {
 								'ultimate-addons-for-gutenberg'
 							) }
 							data={ {
-								value: iconPosition,
-								label: 'iconPosition',
+								desktop: {
+									value: iconPosition,
+									label: 'iconPosition',
+								},
+								tablet: {
+									value: iconPositionTablet,
+									label: 'iconPositionTablet',
+								},
+								mobile: {
+									value: iconPositionMobile,
+									label: 'iconPositionMobile',
+								},
 							} }
 							className="uagb-multi-button-alignment-control"
 							options={ [
@@ -288,6 +311,7 @@ const Settings = ( props ) => {
 								'Note: This manages the Icon Position with respect to the Label.',
 								'ultimate-addons-for-gutenberg'
 							) }
+							responsive={true}
 						/>
 					</>
 				) }
@@ -451,6 +475,51 @@ const Settings = ( props ) => {
 						value: lineHeightTablet,
 						label: 'lineHeightTablet',
 					} }
+				/>
+				<UAGTabsControl
+					tabs={ [
+						{
+							name: 'normal',
+							title: __(
+								'Normal',
+								'ultimate-addons-for-gutenberg'
+							),
+						},
+						{
+							name: 'hover',
+							title: __(
+								'Hover',
+								'ultimate-addons-for-gutenberg'
+							),
+						},
+					] }
+					normal={
+						<AdvancedPopColorControl
+							label={ __(
+								'Color',
+								'ultimate-addons-for-gutenberg'
+							) }
+							colorValue={ labelColor }
+							onColorChange={ ( value ) =>
+								setAttributes( { labelColor: value } )
+							}
+						/>
+					}
+					hover={
+						<AdvancedPopColorControl
+							label={ __(
+								'Color',
+								'ultimate-addons-for-gutenberg'
+							) }
+							colorValue={
+								labelHoverColor
+							}
+							onColorChange={ ( value ) =>
+								setAttributes( { labelHoverColor: value } )
+							}
+						/>
+					}
+					disableBottomSeparator={ true }
 				/>
 			</UAGAdvancedPanelBody>
 		);
@@ -616,6 +685,105 @@ const Settings = ( props ) => {
 						'ultimate-addons-for-gutenberg'
 					) }
 				/>
+				<UAGTabsControl
+					tabs={ [
+						{
+							name: 'normal',
+							title: __(
+								'Normal',
+								'ultimate-addons-for-gutenberg'
+							),
+						},
+						{
+							name: 'hover',
+							title: __(
+								'Hover',
+								'ultimate-addons-for-gutenberg'
+							),
+						},
+					] }
+					normal={
+						<>
+							<AdvancedPopColorControl
+								label={ __(
+									'Icon Color',
+									'ultimate-addons-for-gutenberg'
+								) }
+								colorValue={ iconColor ? iconColor : '' }
+								onColorChange={ ( value ) =>
+									setAttributes( { iconColor: value } )
+								}
+							/>
+							<AdvancedPopColorControl
+								label={ __(
+									'Background Color',
+									'ultimate-addons-for-gutenberg'
+								) }
+								colorValue={ iconBgColor ? iconBgColor : '' }
+								onColorChange={ ( value ) =>
+									setAttributes( { iconBgColor: value } )
+								}
+							/>
+							<AdvancedPopColorControl
+								label={ __(
+									'Border Color',
+									'ultimate-addons-for-gutenberg'
+								) }
+								colorValue={
+									iconBorderColor ? iconBorderColor : ''
+								}
+								onColorChange={ ( value ) =>
+									setAttributes( { iconBorderColor: value } )
+								}
+							/>
+						</>
+					}
+					hover={
+						<>
+							<AdvancedPopColorControl
+								label={ __(
+									'Icon Color',
+									'ultimate-addons-for-gutenberg'
+								) }
+								colorValue={
+									iconHoverColor ? iconHoverColor : ''
+								}
+								onColorChange={ ( value ) =>
+									setAttributes( { iconHoverColor: value } )
+								}
+							/>
+							<AdvancedPopColorControl
+								label={ __(
+									'Background Color',
+									'ultimate-addons-for-gutenberg'
+								) }
+								colorValue={
+									iconBgHoverColor ? iconBgHoverColor : ''
+								}
+								onColorChange={ ( value ) =>
+									setAttributes( { iconBgHoverColor: value } )
+								}
+							/>
+							<AdvancedPopColorControl
+								label={ __(
+									'Border Color',
+									'ultimate-addons-for-gutenberg'
+								) }
+								colorValue={
+									iconBorderHoverColor
+										? iconBorderHoverColor
+										: ''
+								}
+								onColorChange={ ( value ) =>
+									setAttributes( {
+										iconBorderHoverColor: value,
+									} )
+								}
+							/>
+						</>
+					}
+					disableBottomSeparator={ true }
+				/>
 			</UAGAdvancedPanelBody>
 		);
 	};
@@ -631,6 +799,7 @@ const Settings = ( props ) => {
 					/>
 				</UAGAdvancedPanelBody>
 	};
+
 	return (
 		<Suspense fallback={ lazyLoader() }>
 			{ blockControls() }
