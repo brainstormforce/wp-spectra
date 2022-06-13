@@ -161,7 +161,7 @@ const MultiButtonsControl = ( props ) => {
 			<div
 				className={ `components-base-control uagb-multi-buttons-control ${ iconsClass }` }
 			>
-				<div className="uagb-control__header uagb-multibuttons-header uagb-size-type-field-tabs">
+				<div className="uagb-control__header uagb-size-type-field-tabs">
 					<ResponsiveToggle
 						label= { label }
 						responsive= { responsive }

@@ -158,54 +158,52 @@ const TypographyControl = ( props ) => {
 
 	if ( ! disableTransform && props.transform ) {
 		transform = (
-			<div className="uag-typography-transform">
-				<SelectControl
-					label={ __( 'Transform', 'ultimate-addons-for-gutenberg' ) }
-					value={ props.transform.value }
-					onChange={ ( value ) =>
-						props.setAttributes( {
-							[ props.transform.label ]: value,
-						} )
-					}
-					options={ [
-						{
-							value: '',
-							label: __(
-								'Default',
-								'ultimate-addons-for-gutenberg'
-							),
-						},
-						{
-							value: 'normal',
-							label: __(
-								'Normal',
-								'ultimate-addons-for-gutenberg'
-							),
-						},
-						{
-							value: 'capitalize',
-							label: __(
-								'Capitalize',
-								'ultimate-addons-for-gutenberg'
-							),
-						},
-						{
-							value: 'uppercase',
-							label: __(
-								'Uppercase',
-								'ultimate-addons-for-gutenberg'
-							),
-						},
-						{
-							value: 'lowercase',
-							label: __(
-								'Lowercase',
-								'ultimate-addons-for-gutenberg'
-							),
-						},
-					] }
-				/>
-			</div>
+			<SelectControl
+				label={ __( 'Transform', 'ultimate-addons-for-gutenberg' ) }
+				value={ props.transform.value }
+				onChange={ ( value ) =>
+					props.setAttributes( {
+						[ props.transform.label ]: value,
+					} )
+				}
+				options={ [
+					{
+						value: '',
+						label: __(
+							'Default',
+							'ultimate-addons-for-gutenberg'
+						),
+					},
+					{
+						value: 'normal',
+						label: __(
+							'Normal',
+							'ultimate-addons-for-gutenberg'
+						),
+					},
+					{
+						value: 'capitalize',
+						label: __(
+							'Capitalize',
+							'ultimate-addons-for-gutenberg'
+						),
+					},
+					{
+						value: 'uppercase',
+						label: __(
+							'Uppercase',
+							'ultimate-addons-for-gutenberg'
+						),
+					},
+					{
+						value: 'lowercase',
+						label: __(
+							'Lowercase',
+							'ultimate-addons-for-gutenberg'
+						),
+					},
+				] }
+			/>
 		);
 	}
 	if ( ! disableDecoration && props.decoration ) {
@@ -259,7 +257,7 @@ const TypographyControl = ( props ) => {
 	if ( true !== disableFontFamily && true !== disableFontSize ) {
 		fontAdvancedControls = (
 			<Button
-				className="uag-typography-button"
+				className="uag-typography-button spectra-control-popup__options--action-button"
 				aria-pressed={ showAdvancedControls }
 				onClick={ () =>
 					toggleAdvancedControls( ! showAdvancedControls )
@@ -274,33 +272,29 @@ const TypographyControl = ( props ) => {
 				{ fontFamily }
 				{ fontSize }
 				{ fontWeight }
-				{letterSpacing}
-				<div className="uag-typography-transform-decoration-wrap">
-					{ transform }
-					{ decoration }
-				</div>
+				{ letterSpacing }
+				{ transform }
+				{ decoration }
 			</>
 		);
 	}
 
 	if ( showAdvancedControls === true ) {
 		showAdvancedFontControls = (
-			<div className="uagb-typography-advanced">
+			<div className="uagb-typography-advanced spectra-control-popup">
 				{ fontFamily }
 				{ fontSize }
 				{ fontWeight }
-				{letterSpacing}
-				<div className="uag-typography-transform-decoration-wrap">
-					{ transform }
-					{ decoration }
-				</div>
+				{ letterSpacing }
+				{ transform }
+				{ decoration }
 			</div>
 		);
 	}
 
 	if ( true !== disableFontFamily && true !== disableFontSize ) {
 		fontTypoAdvancedControls = (
-			<div className="uag-typography-option-actions">
+			<div className="spectra-control-popup__options--action-wrapper">
 				<span className="uag-control-label">{ props.label }</span>
 				{ fontAdvancedControls }
 			</div>
@@ -309,7 +303,7 @@ const TypographyControl = ( props ) => {
 
 	return (
 		<div
-			className={ `components-base-control uag-typography-options ${ activeClass }` }
+			className={ `components-base-control uag-typography-options spectra-control-popup__options ${ activeClass }` }
 		>
 			{ ! disableAdvancedOptions && (
 				<>

@@ -134,9 +134,10 @@ function FontFamilyControl( props ) {
 		} );
 	}
 	return (
-		<div className="uag-typography-font-family-options">
-			<div className="uag-typography-font-family">
-				<label htmlFor="font-family">{ __( 'Font Family' ) }</label>
+		<>
+			{ /* Font Family */ }
+			<div className="components-base-control">
+				<label className="components-input-control__label" htmlFor="font-family">{ __( 'Font Family' ) }</label>
 				<Select
 					styles={customSelectStyles}
 					placeholder={ __( 'Select the Font Family' ) }
@@ -149,61 +150,57 @@ function FontFamilyControl( props ) {
 					classNamePrefix="uag-font-family-select"
 				/>
 			</div>
-			<div className="uag-typography-weight-style-wrap">
-				<div className="uag-typography-font-family-weight">
-					<SelectControl
-						label={ __(
-							'Weight',
-							'ultimate-addons-for-gutenberg'
-						) }
-						value={ props.fontWeight.value }
-						onChange={ ( value ) =>
-							props.setAttributes( {
-								[ props.fontWeight.label ]: value,
-							} )
-						}
-						options={ fontWeightObj }
-						className="react-select-container"
-					/>
-				</div>
-				{ props.fontStyle &&
-					<div className="uag-typography-style">
-						<SelectControl
-							label={ __( 'Style', 'ultimate-addons-for-gutenberg' ) }
-							value={ props.fontStyle.value }
-							onChange={ ( value ) =>
-								props.setAttributes( {
-									[ props.fontStyle.label ]: value,
-								} )
-							}
-							options={ [
-								{
-									value: 'normal',
-									label: __(
-										'Default',
-										'ultimate-addons-for-gutenberg'
-									),
-								},
-								{
-									value: 'italic',
-									label: __(
-										'Italic',
-										'ultimate-addons-for-gutenberg'
-									),
-								},
-								{
-									value: 'oblique',
-									label: __(
-										'Oblique',
-										'ultimate-addons-for-gutenberg'
-									),
-								},
-							] }
-						/>
-					</div>
+			{ /* Font Weitght */ }
+			<SelectControl
+				label={ __(
+					'Weight',
+					'ultimate-addons-for-gutenberg'
+				) }
+				value={ props.fontWeight.value }
+				onChange={ ( value ) =>
+					props.setAttributes( {
+						[ props.fontWeight.label ]: value,
+					} )
 				}
-			</div>
-		</div>
+				options={ fontWeightObj }
+				className="react-select-container"
+			/>
+			{ /* Font Style */ }
+			{ props.fontStyle &&
+				<SelectControl
+					label={ __( 'Style', 'ultimate-addons-for-gutenberg' ) }
+					value={ props.fontStyle.value }
+					onChange={ ( value ) =>
+						props.setAttributes( {
+							[ props.fontStyle.label ]: value,
+						} )
+					}
+					options={ [
+						{
+							value: 'normal',
+							label: __(
+								'Default',
+								'ultimate-addons-for-gutenberg'
+							),
+						},
+						{
+							value: 'italic',
+							label: __(
+								'Italic',
+								'ultimate-addons-for-gutenberg'
+							),
+						},
+						{
+							value: 'oblique',
+							label: __(
+								'Oblique',
+								'ultimate-addons-for-gutenberg'
+							),
+						},
+					] }
+				/>
+			}
+		</>
 	);
 }
 

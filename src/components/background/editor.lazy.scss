@@ -1,3 +1,5 @@
+@import '../../styles/variables';
+
 .uag-bg-select-control {
 
 	.uag-background-type .components-select-control {
@@ -22,7 +24,7 @@
 	.uag-background-image-overlay-color,
 	.uag-background-image-overlay-gradient,
 	.uagb-responsive-select-control {
-		margin-top: 24px;
+		margin-top: $spectra-control-vertical-gap;
 	}
 
 	.uag-background-image > .uagb-responsive-select-control {

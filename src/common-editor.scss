@@ -94,27 +94,6 @@
 	color: rgb(117, 117, 117);
 }
 
-/* Reset CSS*/
-.components-panel__body {
-
-	.uagb-control__header {
-
-		.uagb-control__actions {
-
-			.uagb-reset {
-				padding: 0;
-				margin-right: 10px;
-			}
-
-			.uagb-spacing-control__units { /* Spacing control Units CSS*/
-				display: flex;
-				align-items: center;
-			}
-		}
-	}
-}
-
-
 /* UAG Control Label CSS*/
 .uag-control-label,
 .uagb-inspector-tab .components-base-control__label,
@@ -174,7 +153,7 @@
 
 .uagb-size-type-field-tabs .components-tab-panel__tabs button svg,
 .uagb-size-type-field-tabs .uag-responsive-label-wrap svg {
-	width: 10px;
+	width: auto;
 	height: 10px;
 }
 
@@ -579,106 +558,6 @@ button.components-button.uagb-review-select-btn.is-secondary {
 	margin-bottom: 10px;
 }
 
-.uagb-control__header {
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
-	margin-bottom: $spectra-control-label-bottom-margin;
-
-	.uag-control-label,
-	.uagb-inspector-tab .components-base-control__label,
-	.uagb-inspector-tab .components-panel__body label,
-	.uagb-extention-tab label {
-		margin-bottom: 0;
-	}
-
-	.uagb-control__inputs {
-		display: flex;
-	}
-
-	.uagb-control__label {
-		margin-bottom: 0;
-	}
-
-	.uagb-control__actions {
-		position: relative;
-		top: 0;
-		display: flex;
-
-		.uagb-reset {
-			padding: 0;
-			margin-right: 10px;
-
-			&:only-child {
-				margin-right: 0;
-			}
-		}
-
-		.uagb-control__units {
-			display: flex;
-			align-items: center;
-
-			.components-button {
-				font-size: 10px;
-				justify-content: center;
-				padding: 0;
-				text-align: center;
-				text-shadow: none;
-				text-transform: uppercase;
-				width: 100%;
-				cursor: pointer;
-				padding-right: 5px;
-
-				&.is-primary.is-small,
-				&.is-secondary.is-small {
-					box-shadow: unset;
-				}
-
-				&.is-primary {
-					background: unset;
-					background-color: unset;
-					color: $spectra-color-primary;
-					box-shadow: unset;
-
-					// &:hover:not(:disabled) {
-					// 	color: $spectra-color-primary;
-					// }
-				}
-
-				&.is-secondary,
-				&.is-tertiary {
-					background: unset;
-					background-color: unset;
-					color: $spectra-color-body;
-
-					&:hover:not(:disabled) {
-						color: $spectra-color-primary;
-					}
-				}
-			}
-
-			.components-button:last-child {
-				padding: 0;
-			}
-		}
-
-		.components-button.is-secondary:hover:not(:disabled) {
-			background: 0 0;
-			box-shadow: 0 0;
-		}
-
-		.components-button.is-secondary:disabled {
-			background: 0 0;
-			color: $spectra-color-icon-disabled;
-		}
-
-		.components-button.is-secondary {
-			color: $spectra-color-primary;
-			box-shadow: 0 0;
-		}
-	}
-}
-
 .components-panel__body .uagb-control__label {
 	margin-bottom: 0;
 }
@@ -736,23 +615,6 @@ button.components-button.uagb-review-select-btn.is-secondary {
 	svg {
 		color: $spectra-color-primary;
 	}
-}
-
-.uag-responsive-common-button .dashicon {
-	font-size: 15px;
-}
-
-.components-button.uag-responsive-common-button:hover,
-.components-button.uag-responsive-common-button:focus,
-.components-button.uag-responsive-common-button:active {
-	box-shadow: none;
-	outline: none;
-	color: $spectra-color-primary;
-}
-
-.uag-responsive-label-wrap {
-	display: flex;
-	align-items: center;
 }
 
 .components-panel__body.is-opened .uagb-range-control-responsive {
@@ -882,83 +744,8 @@ button.components-button.uagb-review-select-btn.is-secondary {
 	}
 }
 
-/* --------- Overwriting All Gutenberg Components inside Spectra Panels --------- */
+@import 'styles/gutenberg-override';
 
-.uagb-inspector-tab {
-
-	// Text and Number Controls
-	.components-text-control__input,
-	.components-input-control__input {
-		color: $spectra-color-body;
-		border-color: $spectra-color-border;
-		border-radius: $spectra-control-border-radius;
-		padding: $spectra-control-input-padding;
-
-		&:focus{
-			border-color: $spectra-color-border-hover;
-			box-shadow: 0 0 0 1px $spectra-color-border-hover;
-		}
-	}
-
-	// Toggle Control
-	.components-form-toggle {
-
-		.components-form-toggle__track {
-			background-color: $spectra-color-plain-background;
-			border-color: $spectra-color-icon;
-		}
-
-		.components-form-toggle__thumb {
-			background-color: $spectra-color-icon;
-			border-color: $spectra-color-icon;
-		}
-
-		.components-form-toggle__input:focus+.components-form-toggle__track{
-			box-shadow: 0 0 0 2px $spectra-color-plain-background, 0 0 0 4px $spectra-color-primary;
-		}
-
-		&.is-checked {
-
-			.components-form-toggle__track {
-				background-color: $spectra-color-primary;
-				border-color: transparent;
-			}
-
-			.components-form-toggle__thumb {
-				background-color: $spectra-color-plain-background;
-			}
-		}
-	}
-
-	// Select Control
-	.components-input-control__container {
-		// ----------------------------------------------------------------------------------------------------------
-		// NOTE: We will have to implement CustomSelectControl in place of SelectControl to style the Selected State.
-		// ----------------------------------------------------------------------------------------------------------
-		.components-select-control__input {
-			color: $spectra-color-body !important;
-		}
-
-		.components-input-control__backdrop {
-			border-color: $spectra-color-border !important;
-			border-radius: $spectra-control-border-radius !important;
-		}
-	}
-
-	// Range Control
-	.components-range-control__wrapper{
-
-		.components-range-control__track{
-			color: $spectra-color-primary;
-
-			& + span span {
-				background-color: $spectra-color-primary;
-				
-				&::before {
-					background-color: $spectra-color-primary;
-				}
-			}
-		}
-	}
-}
-
+@import 'styles/control-responsive';
+@import 'styles/control-header';
+@import 'styles/control-popup';
