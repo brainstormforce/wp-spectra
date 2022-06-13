@@ -420,36 +420,6 @@ function contentTimelineStyle( props ) {
 				tabletMarginUnit
 			),
 		},
-		' .uagb-timeline__center-block .uagb-timeline__heading': {
-			'text-align': respSelectors,
-		},
-		' .uagb-timeline__center-block p.uagb-timeline-desc-content': {
-			'text-align': respSelectors,
-		},
-		' .uagb-timeline__center-block .uagb-timeline__day-new': {
-			'text-align': respSelectors,
-		},
-		' .uagb-timeline__center-block .uagb-timeline__date-inner': {
-			'text-align': respSelectors,
-		},
-		' .uagb-timeline__center-block .uagb-timeline__date-hide.uagb-timeline__date-inner': {
-			'text-align': respSelectors,
-		},
-		' .uagb-timeline__center-block .uagb-timeline__day-right .uagb-timeline__arrow:after': {
-			'border-right-color': backgroundColor,
-		},
-		' .uagb-timeline__center-block .uagb-timeline__author-link': {
-			'text-align': respSelectors,
-		},
-		' .uagb-timeline__center-block .uagb-timeline__link_parent': {
-			'text-align': respSelectors,
-		},
-		' .uagb-timeline__center-block .uagb-timeline__image a': {
-			'text-align': respSelectors,
-		},
-		' .uagb-timeline__center-block a.uagb-timeline__image': {
-			'text-align': respSelectors,
-		},
 		' .uagb-timeline__events-inner-new': {
 			'padding-left': generateCSSUnit(
 				leftPaddingTablet,
@@ -473,6 +443,33 @@ function contentTimelineStyle( props ) {
 			'text-align': alignTablet,
 		},
 		' .uagb-timeline__date-inner': {
+			'text-align': alignTablet,
+		},
+		' .uagb-timeline__center-block .uagb-timeline__heading': {
+			'text-align': alignTablet,
+		},
+		' .uagb-timeline__center-block p.uagb-timeline-desc-content': {
+			'text-align': alignTablet,
+		},
+		' .uagb-timeline__center-block .uagb-timeline__day-new': {
+			'text-align': alignTablet,
+		},
+		' .uagb-timeline__center-block .uagb-timeline__date-inner': {
+			'text-align': alignTablet,
+		},
+		' .uagb-timeline__center-block .uagb-timeline__date-hide.uagb-timeline__date-inner': {
+			'text-align': alignTablet,
+		},
+		' .uagb-timeline__center-block .uagb-timeline__author-link': {
+			'text-align': alignTablet,
+		},
+		' .uagb-timeline__center-block .uagb-timeline__link_parent': {
+			'text-align': alignTablet,
+		},
+		' .uagb-timeline__center-block .uagb-timeline__image a': {
+			'text-align': alignTablet,
+		},
+		' .uagb-timeline__center-block a.uagb-timeline__image': {
 			'text-align': alignTablet,
 		},
 	};
@@ -582,36 +579,6 @@ function contentTimelineStyle( props ) {
 				mobileMarginUnit
 			),
 		},
-		'.uagb-timeline__center-block .uagb-timeline__heading': {
-			'text-align': respSelectors,
-		},
-		'.uagb-timeline__center-block p.uagb-timeline-desc-content': {
-			'text-align': respSelectors,
-		},
-		'.uagb-timeline__center-block .uagb-timeline__day-new': {
-			'text-align': respSelectors,
-		},
-		'.uagb-timeline__center-block .uagb-timeline__date-inner': {
-			'text-align': respSelectors,
-		},
-		'.uagb-timeline__center-block .uagb-timeline__date-hide.uagb-timeline__date-inner': {
-			'text-align': respSelectors,
-		},
-		'.uagb-timeline__center-block .uagb-timeline__day-right .uagb-timeline__arrow:after': {
-			'border-right-color': backgroundColor,
-		},
-		'.uagb-timeline__center-block .uagb-timeline__author-link': {
-			'text-align': respSelectors,
-		},
-		'.uagb-timeline__center-block .uagb-timeline__link_parent': {
-			'text-align': respSelectors,
-		},
-		'.uagb-timeline__center-block .uagb-timeline__image a': {
-			'text-align': respSelectors,
-		},
-		'.uagb-timeline__center-block a.uagb-timeline__image': {
-			'text-align': respSelectors,
-		},
 		' .uagb-timeline__events-inner-new': {
 			'padding-left': generateCSSUnit(
 				leftPaddingMobile,
@@ -635,6 +602,33 @@ function contentTimelineStyle( props ) {
 			'text-align': alignMobile,
 		},
 		' .uagb-timeline__date-inner': {
+			'text-align': alignMobile,
+		},
+		' .uagb-timeline__center-block .uagb-timeline__heading': {
+			'text-align': alignMobile,
+		},
+		' .uagb-timeline__center-block p.uagb-timeline-desc-content': {
+			'text-align': alignMobile,
+		},
+		' .uagb-timeline__center-block .uagb-timeline__day-new': {
+			'text-align': alignMobile,
+		},
+		' .uagb-timeline__center-block .uagb-timeline__date-inner': {
+			'text-align': alignMobile,
+		},
+		' .uagb-timeline__center-block .uagb-timeline__date-hide.uagb-timeline__date-inner': {
+			'text-align': alignMobile,
+		},
+		' .uagb-timeline__center-block .uagb-timeline__author-link': {
+			'text-align': alignMobile,
+		},
+		' .uagb-timeline__center-block .uagb-timeline__link_parent': {
+			'text-align': alignMobile,
+		},
+		' .uagb-timeline__center-block .uagb-timeline__image a': {
+			'text-align': alignMobile,
+		},
+		' .uagb-timeline__center-block a.uagb-timeline__image': {
 			'text-align': alignMobile,
 		},
 	};

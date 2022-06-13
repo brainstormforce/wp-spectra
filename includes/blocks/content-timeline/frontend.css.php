@@ -196,7 +196,7 @@ $selectors = array(
 			'color'      => $attr['subHeadingColor'],
 		),
 		' .uagb-timeline__day-new'                             => array(
-			'text-align' => $attr['alignTablet'],
+			'text-align' => $attr['alignMobile'],
 		),
 		' .uagb-timeline__heading-text'     => array(
 			'margin-bottom' => UAGB_Helper::get_css_value( $attr['headSpaceMobile'], 'px' ),
@@ -256,6 +256,9 @@ $selectors = array(
 		),
 		' .uagb-timeline__heading-text'     => array(
 			'margin-bottom' => UAGB_Helper::get_css_value( $attr['headSpaceTablet'], 'px' ),
+		),
+		' .uagb-timeline__day-new'                             => array(
+			'text-align' => $attr['alignTablet'],
 		),
 		' .uagb-timeline__date-hide.uagb-timeline__date-inner' => array(
 			'text-align'    => $attr['alignTablet'],

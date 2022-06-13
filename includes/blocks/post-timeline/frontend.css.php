@@ -105,6 +105,9 @@ $t_selectors = array(
 	'.uagb-timeline__center-block.uagb-timeline__responsive-tablet a.uagb-timeline__image' => array(
 		'text-align' => 'left',
 	),
+	'.uagb-timeline__center-block.uagb-timeline__responsive-tablet .uagb-timeline__inner-date-new' => array(
+		'text-align' => 'left',
+	),
 	' .uagb-timeline__link'         => array(
 		'text-align'       => $attr['alignTablet'],
 		'margin-bottom' => UAGB_Helper::get_css_value( $attr['ctaBottomSpacingTablet'], 'px' ),
