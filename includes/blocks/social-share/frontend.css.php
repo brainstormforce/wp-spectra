@@ -6,14 +6,15 @@
  *
  * @package uagb
  */
+
 $block_name = 'social-share';
 
 $bg_size_fallback = UAGB_Block_Helper::get_fallback_number( $attr['bgSize'], 'bgSize', $block_name );
 $size_fallback    = UAGB_Block_Helper::get_fallback_number( $attr['size'], 'size', $block_name );
 $gap_fallback     = UAGB_Block_Helper::get_fallback_number( $attr['gap'], 'gap', $block_name );
 
-$gap_tablet_fallback = is_numeric( $attr['gapTablet'] ) ? $attr['gapTablet'] : $gap_fallback ;
-$gap_mobile_fallback = is_numeric( $attr['gapMobile'] ) ? $attr['gapMobile'] : $gap_tablet_fallback ;
+$gap_tablet_fallback = is_numeric( $attr['gapTablet'] ) ? $attr['gapTablet'] : $gap_fallback;
+$gap_mobile_fallback = is_numeric( $attr['gapMobile'] ) ? $attr['gapMobile'] : $gap_tablet_fallback;
 
 $alignment = ( 'left' === $attr['align'] ) ? 'flex-start' : ( ( 'right' === $attr['align'] ) ? 'flex-end' : 'center' );
 
