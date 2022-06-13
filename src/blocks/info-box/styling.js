@@ -205,12 +205,12 @@ function styling( props ) {
 	const seperatorWidthFallbackMobile = getFallbackNumber( seperatorWidthMobile, 'seperatorWidthMobile', blockName );
 
 	const ctaIconSpaceFallback = getFallbackNumber( ctaIconSpace, 'ctaIconSpace', blockName );
-	const ctaIconSpaceFallbackTablet = getFallbackNumber( ctaIconSpaceTablet, 'ctaIconSpaceTablet', blockName );
-	const ctaIconSpaceFallbackMobile = getFallbackNumber( ctaIconSpaceMobile, 'ctaIconSpaceMobile', blockName );
+	const ctaIconSpaceFallbackTablet = isNaN( ctaIconSpaceTablet ) ? ctaIconSpaceFallback : ctaIconSpaceTablet;
+	const ctaIconSpaceFallbackMobile = isNaN( ctaIconSpaceMobile ) ? ctaIconSpaceFallbackTablet : ctaIconSpaceMobile;
 
 	const imageWidthFallback = getFallbackNumber( imageWidth, 'imageWidth', blockName );
-	const imageWidthFallbackTablet = getFallbackNumber( imageWidthTablet, 'imageWidthTablet', blockName );
-	const imageWidthFallbackMobile = getFallbackNumber( imageWidthMobile, 'imageWidthMobile', blockName );
+	const imageWidthFallbackTablet = isNaN( imageWidthTablet ) ? imageWidthFallback : imageWidthTablet;
+	const imageWidthFallbackMobile = isNaN( imageWidthMobile ) ? imageWidthFallbackTablet : imageWidthMobile;
 
 	const selectors = {
 		// Icon css
