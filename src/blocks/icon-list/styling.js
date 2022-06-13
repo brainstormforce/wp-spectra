@@ -161,9 +161,6 @@ function styling( props ) {
 			'background': iconBgHoverColor,
 			'border-color': iconBorderHoverColor,
 		},
-		' .uagb-icon-list__wrap .block-editor-inner-blocks': {
-			'text-align': alignMobile,
-		},
 	};
 
 	tabletSelectors = {
@@ -266,12 +263,14 @@ function styling( props ) {
 				'text-align': alignMobile,
 			};
 		}
+
 		selectors[ ' .uagb-icon-list__wrap .block-editor-block-list__layout'] = {
 			'justify-content': alignment,
 			'-webkit-box-pack': alignment,
 			'-ms-flex-pack': alignment,
 			'align-items' : alignment,
 		};
+
 		selectors[' .block-editor-block-list__layout .wp-block[data-type="uagb/icon-list-child"]' ] = {
 			'margin-right': generateCSSUnit( editorGap / 2, gapType ),
 			'display': 'inline-flex'

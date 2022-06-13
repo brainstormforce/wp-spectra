@@ -16,6 +16,7 @@ $alignment       = ( 'left' === $attr['align'] ) ? 'flex-start' : ( ( 'right' ==
 $alignmentTablet = ( 'left' === $attr['alignTablet'] ) ? 'flex-start' : ( ( 'right' === $attr['alignTablet'] ) ? 'flex-end' : ( ( 'center' === $attr['alignTablet'] ) ? 'center' : $alignment ) );
 $alignmentMobile = ( 'left' === $attr['alignMobile'] ) ? 'flex-start' : ( ( 'right' === $attr['alignMobile'] ) ? 'flex-end' : ( ( 'center' === $attr['alignMobile'] ) ? 'center' : $alignmentTablet ) );
 
+
 $iconLayout       = $attr['icon_layout'];
 $iconLayoutTablet = ! empty( $attr['iconLayoutTablet'] ) ? $attr['iconLayoutTablet'] : $iconLayout;
 $iconLayoutMobile = ! empty( $attr['iconLayoutMobile'] ) ? $attr['iconLayoutMobile'] : $iconLayoutTablet;
@@ -77,7 +78,7 @@ $selectors = array(
 		'font-weight'     => $attr['fontWeight'],
 		'line-height'     => $attr['lineHeight'] . $attr['lineHeightType'],
 	),
-	' .uagb-icon-list__wrap'         => array(
+	' .uagb-icon-list__wrap'=> array(
 		'display'           => 'flex',
 		'flex-direction'    => 'row',
 		'justify-content'   => $alignment,
@@ -250,9 +251,8 @@ if ( 'horizontal' === $iconLayout ) {
 		'margin-right' => 0,
 	);
 } elseif ( 'vertical' === $iconLayout ) {
-	$selectors[' .uagb-icon-list__wrap']                                  = array(
-		'flex-direction' => 'column',
-	);
+	$selectors[' .uagb-icon-list__wrap']['flex-direction'] = 'column';
+
 	$selectors['.wp-block-uagb-icon-list .wp-block-uagb-icon-list-child'] = array(
 		'margin-left'   => 0,
 		'margin-right'  => 0,
@@ -274,9 +274,7 @@ if ( 'horizontal' === $iconLayoutTablet ) {
 	);
 
 } elseif ( 'vertical' === $iconLayoutTablet ) {
-	$t_selectors[' .uagb-icon-list__wrap']                                  = array(
-		'flex-direction' => 'column',
-	);
+	$t_selectors[' .uagb-icon-list__wrap']['flex-direction'] = 'column';
 	$t_selectors['.wp-block-uagb-icon-list .wp-block-uagb-icon-list-child'] = array(
 		'margin-left'   => 0,
 		'margin-right'  => 0,
@@ -295,16 +293,13 @@ if ( 'horizontal' === $iconLayoutMobile ) {
 		'margin-left' => 0,
 	);
 } elseif ( 'vertical' === $iconLayoutMobile ) {
-	$m_selectors[' .uagb-icon-list__wrap']                                  = array(
-		'flex-direction' => 'column',
-	);
+	$m_selectors[' .uagb-icon-list__wrap']['flex-direction']  = 'column';
 	$m_selectors['.wp-block-uagb-icon-list .wp-block-uagb-icon-list-child'] = array(
 		'margin-left'   => 0,
 		'margin-right'  => 0,
 		'margin-bottom' => UAGB_Helper::get_css_value( $attr['gapMobile'], $attr['gapType'] ),
 	);
 }
-
 
 if ( ! $attr['childMigrate'] ) {
 
@@ -381,6 +376,7 @@ if ( 'right' === $attr['align'] && $attr['hideLabel'] ) {
 		);
 	}
 }
+
 
 $combined_selectors = array(
 	'desktop' => $selectors,
