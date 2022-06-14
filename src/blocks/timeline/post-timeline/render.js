@@ -63,8 +63,8 @@ const Render = ( props ) => {
 				? latestPosts.slice( 0, postsToShow )
 				: latestPosts;
 
-		let contentAlignClass = AlignClass( props.attributes, 0 ); // Get classname for layout alignment
-		let dayAlignClass = DayAlignClass( props.attributes, 0 ); // Get classname for day alignment.
+		let contentAlignClass = AlignClass( props.attributes, 0, deviceType ); // Get classname for layout alignment
+		let dayAlignClass = DayAlignClass( props.attributes, 0, deviceType ); // Get classname for day alignment.
 
 		let displayInnerDate = false;
 		const previewImageData = `${ uagb_blocks_info.uagb_url }/admin/assets/preview-images/post-timeline.png`;
@@ -76,11 +76,13 @@ const Render = ( props ) => {
 						displayInnerDate = true;
 						contentAlignClass = AlignClass(
 							props.attributes,
-							index
+							index,
+							deviceType
 						);
 						dayAlignClass = DayAlignClass(
 							props.attributes,
-							index
+							index,
+							deviceType
 						);
 					}
 
@@ -160,7 +162,7 @@ const Render = ( props ) => {
 				`uagb-editor-preview-mode-${ deviceType.toLowerCase() }`,
 				`uagb-block-${ props.clientId }`,
 				ctaEnable,
-				...ContentTmClasses( props.attributes )
+				...ContentTmClasses( props.attributes, deviceType )
 			) }
 		>
 			{ getContent() }

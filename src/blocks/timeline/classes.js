@@ -2,7 +2,7 @@
  * Returns Dynamic Generated Classes
  */
 
-function ContentTmClasses( attributes ) {
+function ContentTmClasses( attributes, deviceType ) {
 	/* Arrow position */
 	let arrowAlignClass = 'uagb-timeline__arrow-top' + ' ';
 	if ( attributes.arrowlinAlignment === 'center' ) {
@@ -11,11 +11,13 @@ function ContentTmClasses( attributes ) {
 		arrowAlignClass = 'uagb-timeline__arrow-bottom' + ' ';
 	}
 
+	const timelinAlignment = 'undefined' !== deviceType ? attributes['timelinAlignment' + deviceType ] : attributes.timelinAlignment;
+
 	/* Alignmnet */
 	let alignClass = 'uagb-timeline__center-block ' + ' ';
-	if ( attributes.timelinAlignment === 'left' ) {
+	if ( timelinAlignment === 'left' ) {
 		alignClass = 'uagb-timeline__left-block' + ' ';
-	} else if ( attributes.timelinAlignment === 'right' ) {
+	} else if ( timelinAlignment === 'right' ) {
 		alignClass = 'uagb-timeline__right-block' + ' ';
 	}
 	alignClass += arrowAlignClass + '';

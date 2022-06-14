@@ -93875,15 +93875,17 @@ __webpack_require__.r(__webpack_exports__);
  *
  * @param {Object[]} attributes settign array of attributes.
  * @param {number} index_val  index values.
+ * @param deviceType
  */
-function AlignClass(attributes, index_val) {
+function AlignClass(attributes, index_val, deviceType) {
   let alignClass = '';
+  const timelinAlignment = 'undefined' !== deviceType ? attributes['timelinAlignment' + deviceType] : attributes.timelinAlignment;
 
-  if ('left' === attributes.timelinAlignment) {
+  if ('left' === timelinAlignment) {
     alignClass = 'uagb-timeline__left';
-  } else if ('right' === attributes.timelinAlignment) {
+  } else if ('right' === timelinAlignment) {
     alignClass = 'uagb-timeline__right';
-  } else if ('center' === attributes.timelinAlignment) {
+  } else if ('center' === timelinAlignment) {
     if (index_val % 2 === 0) {
       alignClass = 'uagb-timeline__right';
     } else {
@@ -93910,7 +93912,7 @@ __webpack_require__.r(__webpack_exports__);
 /**
  * Returns Dynamic Generated Classes
  */
-function ContentTmClasses(attributes) {
+function ContentTmClasses(attributes, deviceType) {
   /* Arrow position */
   let arrowAlignClass = 'uagb-timeline__arrow-top' + ' ';
 
@@ -93919,14 +93921,15 @@ function ContentTmClasses(attributes) {
   } else if (attributes.arrowlinAlignment === 'bottom') {
     arrowAlignClass = 'uagb-timeline__arrow-bottom' + ' ';
   }
-  /* Alignmnet */
 
+  const timelinAlignment = 'undefined' !== deviceType ? attributes['timelinAlignment' + deviceType] : attributes.timelinAlignment;
+  /* Alignmnet */
 
   let alignClass = 'uagb-timeline__center-block ' + ' ';
 
-  if (attributes.timelinAlignment === 'left') {
+  if (timelinAlignment === 'left') {
     alignClass = 'uagb-timeline__left-block' + ' ';
-  } else if (attributes.timelinAlignment === 'right') {
+  } else if (timelinAlignment === 'right') {
     alignClass = 'uagb-timeline__right-block' + ' ';
   }
 
@@ -96373,14 +96376,15 @@ __webpack_require__.r(__webpack_exports__);
 /**
  * Returns Dynamic Generated Classes
  */
-function DayAlignClass(attributes, index_val) {
+function DayAlignClass(attributes, index_val, deviceType) {
   let dayAlignClass = '';
+  const timelinAlignment = 'undefined' !== deviceType ? attributes['timelinAlignment' + deviceType] : attributes.timelinAlignment;
 
-  if ('left' === attributes.timelinAlignment) {
+  if ('left' === timelinAlignment) {
     dayAlignClass = 'uagb-timeline__day-new uagb-timeline__day-left';
-  } else if ('right' === attributes.timelinAlignment) {
+  } else if ('right' === timelinAlignment) {
     dayAlignClass = 'uagb-timeline__day-new uagb-timeline__day-right';
-  } else if ('center' === attributes.timelinAlignment) {
+  } else if ('center' === timelinAlignment) {
     if (index_val % 2 === 0) {
       dayAlignClass = 'uagb-timeline__day-new uagb-timeline__day-right';
     } else {

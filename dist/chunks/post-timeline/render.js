@@ -440,9 +440,9 @@ const Render = props => {
 
 
     const displayPosts = latestPosts.length > postsToShow ? latestPosts.slice(0, postsToShow) : latestPosts;
-    let contentAlignClass = Object(_align_classes__WEBPACK_IMPORTED_MODULE_2__["default"])(props.attributes, 0); // Get classname for layout alignment
+    let contentAlignClass = Object(_align_classes__WEBPACK_IMPORTED_MODULE_2__["default"])(props.attributes, 0, deviceType); // Get classname for layout alignment
 
-    let dayAlignClass = Object(_day_align_classes__WEBPACK_IMPORTED_MODULE_3__["default"])(props.attributes, 0); // Get classname for day alignment.
+    let dayAlignClass = Object(_day_align_classes__WEBPACK_IMPORTED_MODULE_3__["default"])(props.attributes, 0, deviceType); // Get classname for day alignment.
 
     let displayInnerDate = false;
     const previewImageData = `${uagb_blocks_info.uagb_url}/admin/assets/preview-images/post-timeline.png`;
@@ -453,8 +453,8 @@ const Render = props => {
     }) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_14___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_14___default.a.Fragment, null, displayPosts.map((post, index) => {
       if (timelinAlignment === 'center') {
         displayInnerDate = true;
-        contentAlignClass = Object(_align_classes__WEBPACK_IMPORTED_MODULE_2__["default"])(props.attributes, index);
-        dayAlignClass = Object(_day_align_classes__WEBPACK_IMPORTED_MODULE_3__["default"])(props.attributes, index);
+        contentAlignClass = Object(_align_classes__WEBPACK_IMPORTED_MODULE_2__["default"])(props.attributes, index, deviceType);
+        dayAlignClass = Object(_day_align_classes__WEBPACK_IMPORTED_MODULE_3__["default"])(props.attributes, index, deviceType);
       }
 
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_14___default.a.createElement("article", {
@@ -500,7 +500,7 @@ const Render = props => {
   }
 
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_14___default.a.createElement("div", {
-    className: classnames__WEBPACK_IMPORTED_MODULE_0___default()(className, 'uagb-timeline__outer-wrap', 'uagb-timeline__content-wrap', `uagb-editor-preview-mode-${deviceType.toLowerCase()}`, `uagb-block-${props.clientId}`, ctaEnable, ...Object(_classes__WEBPACK_IMPORTED_MODULE_1__["default"])(props.attributes))
+    className: classnames__WEBPACK_IMPORTED_MODULE_0___default()(className, 'uagb-timeline__outer-wrap', 'uagb-timeline__content-wrap', `uagb-editor-preview-mode-${deviceType.toLowerCase()}`, `uagb-block-${props.clientId}`, ctaEnable, ...Object(_classes__WEBPACK_IMPORTED_MODULE_1__["default"])(props.attributes, deviceType))
   }, getContent(), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_14___default.a.createElement("div", {
     className: "uagb-timeline__line"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_14___default.a.createElement("div", {

@@ -2,14 +2,16 @@
  * Returns Dynamic Generated Classes
  */
 
-function DayAlignClass( attributes, index_val ) {
+function DayAlignClass( attributes, index_val, deviceType ) {
 	let dayAlignClass = '';
 
-	if ( 'left' === attributes.timelinAlignment ) {
+	const timelinAlignment = 'undefined' !== deviceType ? attributes['timelinAlignment' + deviceType ] : attributes.timelinAlignment;
+
+	if ( 'left' === timelinAlignment ) {
 		dayAlignClass = 'uagb-timeline__day-new uagb-timeline__day-left';
-	} else if ( 'right' === attributes.timelinAlignment ) {
+	} else if ( 'right' === timelinAlignment ) {
 		dayAlignClass = 'uagb-timeline__day-new uagb-timeline__day-right';
-	} else if ( 'center' === attributes.timelinAlignment ) {
+	} else if ( 'center' === timelinAlignment ) {
 		if ( index_val % 2 === 0 ) { 
 			dayAlignClass = 'uagb-timeline__day-new uagb-timeline__day-right';
 		} else {
