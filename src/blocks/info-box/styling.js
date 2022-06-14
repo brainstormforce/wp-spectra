@@ -21,6 +21,10 @@ function styling( props ) {
 		prefixLineHeight,
 		prefixLineHeightTablet,
 		prefixLineHeightMobile,
+		prefixLetterSpacing,
+		prefixLetterSpacingTablet,
+		prefixLetterSpacingMobile,
+		prefixLetterSpacingType,
 		headFontSize,
 		headFontSizeType,
 		headFontSizeTablet,
@@ -31,6 +35,10 @@ function styling( props ) {
 		headLineHeight,
 		headLineHeightTablet,
 		headLineHeightMobile,
+		headLetterSpacing,
+		headLetterSpacingTablet,
+		headLetterSpacingMobile,
+		headLetterSpacingType,
 		subHeadFontSize,
 		subHeadFontSizeType,
 		subHeadFontSizeTablet,
@@ -190,12 +198,27 @@ function styling( props ) {
 		subHeadMarginLeftMobile,
 		subHeadSpaceUnit,
 		subHeadMobileMarginUnit,
-		subHeadTabletMarginUnit
+		subHeadTabletMarginUnit,
+		subHeadLetterSpacing,
+		subHeadLetterSpacingTablet,
+		subHeadLetterSpacingMobile,
+		subHeadLetterSpacingType,
+
+		// icon attributes for icon view (circle and square)
+		iconView,
+		iconBackgroundColor,
+		iconBackgroundHoverColor,
+		iconBorderWidth
 	} = props.attributes;
+
+	const boxSizingIcon = ( '%' === iconSizeType ) ? 'border-box' : 'content-box'
+	const boxSizingImage = ( '%' === imageWidthUnit ) ? 'border-box' : 'content-box'
+	const boxSizingImageTablet = ( '%' === imageWidthUnitTablet ) ? 'border-box' : 'content-box'
+	const boxSizingImageMobile = ( '%' === imageWidthUnitMobile ) ? 'border-box' : 'content-box'
 
 	const selectors = {
 		// Icon css
-		' .uagb-ifb-content .uagb-ifb-icon-wrap > svg': {
+		' .uagb-ifb-content .uagb-ifb-icon-wrap svg': {
 			'font-size': generateCSSUnit( iconSize, iconSizeType ),
 			'color': iconColor,
 			'fill': iconColor,
@@ -208,21 +231,12 @@ function styling( props ) {
 				iconMarginUnit
 			),
 		},
-		' .uagb-ifb-content .uagb-ifb-left-title-image > svg': {
-			'font-size': generateCSSUnit( iconSize, iconSizeType ),
-			'color': iconColor,
-			'fill': iconColor,
-			'width': generateCSSUnit( iconSize, iconSizeType ),
-			'line-height': generateCSSUnit( iconSize, iconSizeType ),
-			'padding-left': generateCSSUnit( iconLeftMargin, iconMarginUnit ),
-			'padding-right': generateCSSUnit( iconRightMargin, iconMarginUnit ),
-			'padding-top': generateCSSUnit( iconTopMargin, iconMarginUnit ),
-			'padding-bottom': generateCSSUnit(
-				iconBottomMargin,
-				iconMarginUnit
-			),
+		' .uagb-iconbox-icon-wrap': {
+			'margin' : 'auto',
+			'display' : 'inline-block',
+			'line-height' : 0,
 		},
-		' .uagb-ifb-content .uagb-ifb-right-title-image > svg': {
+		' .uagb-ifb-content .uagb-ifb-left-title-image svg': {
 			'font-size': generateCSSUnit( iconSize, iconSizeType ),
 			'color': iconColor,
 			'fill': iconColor,
@@ -236,7 +250,7 @@ function styling( props ) {
 				iconMarginUnit
 			),
 		},
-		'.uagb-infobox__content-wrap .uagb-ifb-icon-wrap > svg': {
+		' .uagb-ifb-content .uagb-ifb-right-title-image svg': {
 			'font-size': generateCSSUnit( iconSize, iconSizeType ),
 			'color': iconColor,
 			'fill': iconColor,
@@ -250,7 +264,21 @@ function styling( props ) {
 				iconMarginUnit
 			),
 		},
-		' .uagb-ifb-content .uagb-ifb-icon-wrap > svg:hover': {
+		'.uagb-infobox__content-wrap .uagb-ifb-icon-wrap svg': {
+			'font-size': generateCSSUnit( iconSize, iconSizeType ),
+			'color': iconColor,
+			'fill': iconColor,
+			'width': generateCSSUnit( iconSize, iconSizeType ),
+			'line-height': generateCSSUnit( iconSize, iconSizeType ),
+			'padding-left': generateCSSUnit( iconLeftMargin, iconMarginUnit ),
+			'padding-right': generateCSSUnit( iconRightMargin, iconMarginUnit ),
+			'padding-top': generateCSSUnit( iconTopMargin, iconMarginUnit ),
+			'padding-bottom': generateCSSUnit(
+				iconBottomMargin,
+				iconMarginUnit
+			),
+		},
+		' .uagb-ifb-content .uagb-ifb-icon-wrap svg:hover': {
 			'fill': iconHover,
 		},
 		'.uagb-infobox-icon-left .uagb-ifb-icon-wrap > svg:hover': {
@@ -264,7 +292,7 @@ function styling( props ) {
 		},
 		'.uagb-infobox_cta-type-all:hover .uagb-infobox__content-wrap svg': {
 			'fill': iconHover,
-			'color': iconHover
+			'color': iconHover,
 		},
 		'.uagb-infobox__content-wrap .uagb-ifb-image-content > img': {
 			'padding-left': generateCSSUnit( iconLeftMargin, iconMarginUnit ),
@@ -377,6 +405,7 @@ function styling( props ) {
 			'text-decoration': prefixDecoration,
 			'text-transform': prefixTransform,
 			'color': prefixColor,
+			'letter-spacing': generateCSSUnit( prefixLetterSpacing, prefixLetterSpacingType ),
 			'margin-bottom': generateCSSUnit( prefixSpace, prefixSpaceUnit ),
 			'margin-top': generateCSSUnit( prefixTopMargin, prefixSpaceUnit ),
 			'margin-left': generateCSSUnit( prefixLeftMargin, prefixSpaceUnit ),
@@ -398,6 +427,7 @@ function styling( props ) {
 			'font-style' : headFontStyle,
 			'text-decoration': headDecoration,
 			'text-transform': headTransform,
+			'letter-spacing': generateCSSUnit( headLetterSpacing, headLetterSpacingType ),
 			'color': headingColor,
 			'margin-top': generateCSSUnit( headTopMargin, headSpaceUnit ),
 			'margin-bottom': generateCSSUnit( headSpace, headSpaceUnit ),
@@ -419,6 +449,7 @@ function styling( props ) {
 			'font-style' : subHeadFontStyle,
 			'text-decoration': subHeadDecoration,
 			'text-transform': subHeadTransform,
+			'letter-spacing': generateCSSUnit( subHeadLetterSpacing, subHeadLetterSpacingType ),
 			'color': subHeadingColor,
 			'margin-bottom': generateCSSUnit( subHeadSpace, subHeadSpaceUnit ),
 			'margin-top': generateCSSUnit( subHeadTopMargin, subHeadSpaceUnit ),
@@ -441,8 +472,40 @@ function styling( props ) {
 			'margin-top': generateCSSUnit( separatorTopMargin, seperatorSpaceUnit ),
 			'margin-left': generateCSSUnit( separatorLeftMargin, seperatorSpaceUnit ),
 			'margin-right': generateCSSUnit( separatorRightMargin, seperatorSpaceUnit ),
-		}
+		},
+		// editor css is causing issue  thaat why i used important
+		'.uagb-infobox__content-wrap  .uagb-ifb-content svg': {
+			'box-sizing' : `${boxSizingIcon}`,
+		},
+		'.uagb-infobox__content-wrap  .uagb-ifb-content img': {
+			'box-sizing' : `${boxSizingImage}`,
+		},
 	};
+
+	if( 'Stacked' === iconView ) {
+		selectors[ ' .uagb-iconbox-icon-wrap.uagb-infobox-shape-circle'] = {
+			'background-color' : iconBackgroundColor,
+			'border-radius' : '50%',
+		}
+		selectors[ ' .uagb-iconbox-icon-wrap.uagb-infobox-shape-squre'] = {
+			'background-color' : iconBackgroundColor,
+		}
+		selectors[' .uagb-iconbox-icon-wrap:hover'] = {
+			'background-color' : `${iconBackgroundHoverColor} !important`,
+		};
+	}
+	else if( 'Framed' === iconView ) {
+		selectors[ ' .uagb-iconbox-icon-wrap.uagb-infobox-shape-circle'] = {
+			'border' : `${iconBorderWidth}px solid ${iconBackgroundColor}`,
+			'border-radius' : '50%',
+		}
+		selectors[ ' .uagb-iconbox-icon-wrap.uagb-infobox-shape-squre'] = {
+			'border' : `${iconBorderWidth}px solid ${iconBackgroundColor}`,
+		}
+		selectors[' .uagb-iconbox-icon-wrap:hover'] = {
+			'border' : `${iconBorderWidth}px solid ${iconBackgroundHoverColor}`,
+		};
+	}
 	if( 'none' !== ctaBorderStyle ) {
 		selectors[' .uagb-infobox-cta-link'] = {
 			'border-style': ctaBorderStyle,
@@ -473,6 +536,7 @@ function styling( props ) {
 				subHeadLineHeightTablet,
 				subHeadLineHeightType
 			),
+			'letter-spacing': generateCSSUnit( subHeadLetterSpacingTablet, subHeadLetterSpacingType ),
 		},
 		' .block-editor-rich-text__editable.uagb-ifb-title': {
 			'margin-top': generateCSSUnit( headMarginTopTablet, headMobileMarginUnit ),
@@ -487,6 +551,7 @@ function styling( props ) {
 				headLineHeightTablet,
 				headLineHeightType
 			),
+			'letter-spacing': generateCSSUnit( headLetterSpacingTablet, headLetterSpacingType ),
 		},
 		' .block-editor-rich-text__editable.uagb-ifb-title-prefix': {
 			'margin-bottom': generateCSSUnit( prefixTabletSpace, prefixTabletMarginUnit ),
@@ -501,6 +566,7 @@ function styling( props ) {
 				prefixLineHeightTablet,
 				prefixLineHeightType
 			),
+			'letter-spacing': generateCSSUnit( prefixLetterSpacingTablet, prefixLetterSpacingType ),
 		},
 		' .uagb-ifb-icon-wrap > svg': {
 			'padding-top': generateCSSUnit(
@@ -739,7 +805,10 @@ function styling( props ) {
 			'margin-top': generateCSSUnit( separatorMarginTopTablet, separatorTabletMarginUnit ),
 			'margin-left': generateCSSUnit( separatorMarginLeftTablet, separatorTabletMarginUnit ),
 			'margin-right': generateCSSUnit( separatorMarginRightTablet, separatorTabletMarginUnit ),
-		}
+		},
+		'.uagb-infobox__content-wrap  .uagb-ifb-content img': {
+			'box-sizing' : `${boxSizingImageTablet}`,
+		},
 	};
 
 	const mobileSelectors = {
@@ -752,6 +821,7 @@ function styling( props ) {
 				subHeadLineHeightMobile,
 				subHeadLineHeightType
 			),
+			'letter-spacing': generateCSSUnit( subHeadLetterSpacingMobile, subHeadLetterSpacingType ),
 			'margin-bottom': generateCSSUnit( subHeadMobileSpace, subHeadMobileMarginUnit ),
 			'margin-top': generateCSSUnit( subHeadMarginTopMobile, subHeadMobileMarginUnit ),
 			'margin-left': generateCSSUnit( subHeadMarginLeftMobile, subHeadMobileMarginUnit ),
@@ -766,6 +836,7 @@ function styling( props ) {
 				headLineHeightMobile,
 				headLineHeightType
 			),
+			'letter-spacing': generateCSSUnit( headLetterSpacingMobile, headLetterSpacingType ),
 			'margin-top': generateCSSUnit( headMarginTopMobile, headTabletMarginUnit ),
 			'margin-bottom': generateCSSUnit( headMobileSpace, headTabletMarginUnit ),
 			'margin-left': generateCSSUnit( headMarginLeftMobile, headTabletMarginUnit ),
@@ -780,6 +851,7 @@ function styling( props ) {
 				prefixLineHeightMobile,
 				prefixLineHeightType
 			),
+			'letter-spacing': generateCSSUnit( prefixLetterSpacingMobile, prefixLetterSpacingType ),
 			'margin-bottom': generateCSSUnit( prefixMobileSpace, prefixMobileMarginUnit ),
 			'margin-top': generateCSSUnit( prefixMarginTopMobile, prefixMobileMarginUnit ),
 			'margin-left': generateCSSUnit( prefixMarginLeftMobile, prefixMobileMarginUnit ),
@@ -967,6 +1039,9 @@ function styling( props ) {
 				ctaFontSizeType
 			),
 			'width': generateCSSUnit( ctaFontSizeMobile, ctaFontSizeType ),
+		},
+		'.uagb-infobox__content-wrap  .uagb-ifb-content img': {
+			'box-sizing' : `${boxSizingImageMobile}`,
 		},
 	};
 

@@ -508,54 +508,9 @@ const attributes = {
 	},
 	ctaLeftSpace: {
 		type: 'number',
-		default: 5,
-		UAGCopyPaste: {
-			styleType: 'btn-left-margin'
-		},
-	},
-	ctaLeftSpaceTablet: {
-		type: 'number',
-		UAGCopyPaste: {
-			styleType: 'btn-left-margin-tablet'
-		},
-	},
-	ctaLeftSpaceMobile: {
-		type: 'number',
-		UAGCopyPaste: {
-			styleType: 'btn-left-margin-mobile'
-		},
-	},
-	ctaLeftSpaceType: {
-		type: 'string',
-		default: 'px',
-		UAGCopyPaste: {
-			styleType: 'btn-margin-unit-type'
-		},
-	},
-	ctaRightSpace: {
-		type: 'number',
-		default: 5,
+		default: 0,
 		UAGCopyPaste: {
 			styleType: 'btn-right-margin'
-		},
-	},
-	ctaRightSpaceTablet: {
-		type: 'number',
-		UAGCopyPaste: {
-			styleType: 'btn-right-margin-tablet'
-		},
-	},
-	ctaRightSpaceMobile: {
-		type: 'number',
-		UAGCopyPaste: {
-			styleType: 'btn-right-margin-mobile'
-		},
-	},
-	ctaRightSpaceType: {
-		type: 'string',
-		default: 'px',
-		UAGCopyPaste: {
-			styleType: 'btn-margin-unit-type'
 		},
 	},
 	ctaTopPadding: {
