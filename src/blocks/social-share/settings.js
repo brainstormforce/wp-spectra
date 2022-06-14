@@ -20,6 +20,8 @@ import {
 } from '@wordpress/block-editor';
 import { Icon } from '@wordpress/components';
 import UAGAdvancedPanelBody from '@Components/advanced-panel-body';
+import UAGTabsControl from '@Components/tabs';
+import AdvancedPopColorControl from '@Components/color-control/advanced-pop-color-control.js';
 import presets from './presets';
 import UAGPresets from '@Components/presets';
 const Settings = ( props ) => {
@@ -42,6 +44,10 @@ const Settings = ( props ) => {
 		sizeMobile,
 		sizeTablet,
 		bgSize,
+		iconColor,
+		iconHoverColor,
+		iconBgColor,
+		iconBgHoverColor,
 	} = attributes;
 
 	const blockControls = () => {
@@ -313,6 +319,80 @@ const Settings = ( props ) => {
 					/>
 				</UAGAdvancedPanelBody>
 	};
+
+	const iconColorSettings = () => {
+		return (
+			<UAGAdvancedPanelBody
+				title={ __( 'Icon Color', 'ultimate-addons-for-gutenberg' ) }
+				initialOpen={ true }
+			>
+				<UAGTabsControl
+					tabs={ [
+						{
+							name: 'normal',
+							title: __(
+								'Normal',
+								'ultimate-addons-for-gutenberg'
+							),
+						},
+						{
+							name: 'hover',
+							title: __(
+								'Hover',
+								'ultimate-addons-for-gutenberg'
+							),
+						},
+					] }
+					normal={
+						<>
+							<AdvancedPopColorControl
+								label={ __( 'Color', 'ultimate-addons-for-gutenberg' ) }
+								colorValue={ iconColor ? iconColor : '' }
+								onColorChange={ ( value ) =>
+									setAttributes( { iconColor: value } )
+								}
+							/>
+							<AdvancedPopColorControl
+								label={ __(
+									'Background Color',
+									'ultimate-addons-for-gutenberg'
+								) }
+								colorValue={ iconBgColor ? iconBgColor : '' }
+								onColorChange={ ( value ) =>
+									setAttributes( { iconBgColor: value } )
+								}
+							/>
+						</>
+					}
+					hover={
+						<>
+							<AdvancedPopColorControl
+								label={ __( 'Color', 'ultimate-addons-for-gutenberg' ) }
+								colorValue={ iconHoverColor ? iconHoverColor : '' }
+								onColorChange={ ( value ) =>
+									setAttributes( { iconHoverColor: value } )
+								}
+							/>
+							<AdvancedPopColorControl
+								label={ __(
+									'Background Color',
+									'ultimate-addons-for-gutenberg'
+								) }
+								colorValue={
+									iconBgHoverColor ? iconBgHoverColor : ''
+								}
+								onColorChange={ ( value ) =>
+									setAttributes( { iconBgHoverColor: value } )
+								}
+							/>
+						</>
+					}
+					disableBottomSeparator={ true }
+				/>
+			</UAGAdvancedPanelBody>
+		);
+	};
+
 	return (
 		<Suspense fallback={ lazyLoader() }>
 			{ blockControls() }
@@ -323,6 +403,7 @@ const Settings = ( props ) => {
 						{ generalSettings() }
 					</InspectorTab>
 					<InspectorTab { ...UAGTabs.style }>
+						{iconColorSettings()}
 						{ spacingSettings() }
 					</InspectorTab>
 					<InspectorTab
