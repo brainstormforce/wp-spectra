@@ -39,11 +39,14 @@ const UAGAdvancedPanelBody = ( props ) => {
 		if ( panelRef?.current?.parentElement?.classList.contains( 'uagb-tab-content-general' ) ) {
 			inspectorTabName = 'general';
 		}
+		if ( panelRef?.current?.parentElement?.classList.contains( 'uagb-tab-content-advance' ) ) {
+			inspectorTabName = 'advance';
+		}
 
 		const data = {
 			...uagSettingState,
 			[blockName] : {
-				...uagSettingState[blockName],
+				...uagSettingState?.[blockName],
 				selectedPanel: match,
 				selectedTab : inspectorTabName
 			}
