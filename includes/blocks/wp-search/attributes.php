@@ -28,7 +28,7 @@ return array(
 	'buttonBgHoverColor'      => '',
 	'buttonIconColor'         => '',
 	'buttonIconHoverColor'    => '',
-	'buttonWidth'             => 55,
+	'buttonWidth'             => 50,
 	'buttonIconSize'          => 17,
 	'iconColor'               => '',
 	'iconSize'                => 17,
