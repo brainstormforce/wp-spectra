@@ -18,7 +18,7 @@ const UAGB_Block_Icons = {
 	),
 	'buttons': el(
 		'svg',
-		{width: 34, height: 23, viewBox: '0 0 16 16', },
+		{width: 34, height: 34, viewBox: '0 0 20 20', },
 		el( 'path', {
 			fill: '#1e1e1e',
 			d: 'M4 4H12V3H4V4Z',
@@ -186,7 +186,7 @@ const UAGB_Block_Icons = {
 	),
 	'tabs': el(
 		'svg',
-		{ width: 24, height: 24, viewBox: '0 0 20 20', className: 'uagb-editor-icons'  },
+		{ width: 34, height: 34, viewBox: '0 0 24 24', className: 'uagb-editor-icons'  },
 		el( 'path', {
 			'fill': '#1e1e1e',
 			'fill-rule':'evenodd',
@@ -490,7 +490,7 @@ const UAGB_Block_Icons = {
 	),
 	'container': el(
 		'svg',
-		{ width: 36, height: 36, viewBox: '0 0 24 24' },
+		{ width: 34, height: 34, viewBox: '0 0 24 24' },
 		el( 'path', {
 			'fill': '#1e1e1e',
 			'fill-rule':'evenodd',
@@ -501,7 +501,7 @@ const UAGB_Block_Icons = {
 	),
 	'image': el(
 		'svg',
-		{ width: 36, height: 36, viewBox: '0 37.25 24 24' },
+		{ width: 34, height: 34, viewBox: '0 37.25 24 24' },
 		el( 'path', {
 			'fill': '#1e1e1e',
 			'fill-rule':'evenodd',
