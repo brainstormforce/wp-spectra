@@ -55,28 +55,28 @@ $bottom_margin_desktop = ! empty( $attr['bottomMarginDesktop'] ) ? $attr['bottom
 $column_gap_desktop = ! empty( $attr['columnGapDesktop'] ) ? $attr['columnGapDesktop'] : 0;
 
 // Tablet.
-$left_padding_tablet   = ! empty( $attr['leftPaddingTablet'] ) ? $attr['leftPaddingTablet'] : $left_padding_desktop;
-$right_padding_tablet  = ! empty( $attr['rightPaddingTablet'] ) ? $attr['rightPaddingTablet'] : $right_padding_desktop;
-$top_padding_tablet    = ! empty( $attr['topPaddingTablet'] ) ? $attr['topPaddingTablet'] : $top_padding_desktop;
-$bottom_padding_tablet = ! empty( $attr['bottomPaddingTablet'] ) ? $attr['bottomPaddingTablet'] : $bottom_padding_desktop;
+$left_padding_tablet   = '' !== $attr['leftPaddingTablet'] ? $attr['leftPaddingTablet'] : $left_padding_desktop;
+$right_padding_tablet  = '' !== $attr['rightPaddingTablet'] ? $attr['rightPaddingTablet'] : $right_padding_desktop;
+$top_padding_tablet    = '' !== $attr['topPaddingTablet'] ? $attr['topPaddingTablet'] : $top_padding_desktop;
+$bottom_padding_tablet = '' !== $attr['bottomPaddingTablet'] ? $attr['bottomPaddingTablet'] : $bottom_padding_desktop;
 
-$left_margin_tablet   = ! empty( $attr['leftMarginTablet'] ) ? $attr['leftMarginTablet'] : $left_margin_desktop;
-$right_margin_tablet  = ! empty( $attr['rightMarginTablet'] ) ? $attr['rightMarginTablet'] : $right_margin_desktop;
-$top_margin_tablet    = ! empty( $attr['topMarginTablet'] ) ? $attr['topMarginTablet'] : $top_margin_desktop;
-$bottom_margin_tablet = ! empty( $attr['bottomMarginTablet'] ) ? $attr['bottomMarginTablet'] : $bottom_margin_desktop;
+$left_margin_tablet   = '' !== $attr['leftMarginTablet'] ? $attr['leftMarginTablet'] : $left_margin_desktop;
+$right_margin_tablet  = '' !== $attr['rightMarginTablet'] ? $attr['rightMarginTablet'] : $right_margin_desktop;
+$top_margin_tablet    = '' !== $attr['topMarginTablet'] ? $attr['topMarginTablet'] : $top_margin_desktop;
+$bottom_margin_tablet = '' !== $attr['bottomMarginTablet'] ? $attr['bottomMarginTablet'] : $bottom_margin_desktop;
 
 $column_gap_tablet = ! empty( $attr['columnGapTablet'] ) ? $attr['columnGapTablet'] : $column_gap_desktop;
 
 // Mobile.
-$left_padding_mobile   = ! empty( $attr['leftPaddingMobile'] ) ? $attr['leftPaddingMobile'] : $left_padding_tablet;
-$right_padding_mobile  = ! empty( $attr['rightPaddingMobile'] ) ? $attr['rightPaddingMobile'] : $right_padding_tablet;
-$top_padding_mobile    = ! empty( $attr['topPaddingMobile'] ) ? $attr['topPaddingMobile'] : $top_padding_tablet;
-$bottom_padding_mobile = ! empty( $attr['bottomPaddingMobile'] ) ? $attr['bottomPaddingMobile'] : $bottom_padding_tablet;
+$left_padding_mobile   = '' !== $attr['leftPaddingMobile'] ? $attr['leftPaddingMobile'] : $left_padding_tablet;
+$right_padding_mobile  = '' !== $attr['rightPaddingMobile'] ? $attr['rightPaddingMobile'] : $right_padding_tablet;
+$top_padding_mobile    = '' !== $attr['topPaddingMobile'] ? $attr['topPaddingMobile'] : $top_padding_tablet;
+$bottom_padding_mobile = '' !== $attr['bottomPaddingMobile'] ? $attr['bottomPaddingMobile'] : $bottom_padding_tablet;
 
-$left_margin_mobile   = ! empty( $attr['leftMarginMobile'] ) ? $attr['leftMarginMobile'] : $left_margin_tablet;
-$right_margin_mobile  = ! empty( $attr['rightMarginMobile'] ) ? $attr['rightMarginMobile'] : $right_margin_tablet;
-$top_margin_mobile    = ! empty( $attr['topMarginMobile'] ) ? $attr['topMarginMobile'] : $top_margin_tablet;
-$bottom_margin_mobile = ! empty( $attr['bottomMarginMobile'] ) ? $attr['bottomMarginMobile'] : $bottom_margin_tablet;
+$left_margin_mobile   = '' !== $attr['leftMarginMobile'] ? $attr['leftMarginMobile'] : $left_margin_tablet;
+$right_margin_mobile  = '' !== $attr['rightMarginMobile'] ? $attr['rightMarginMobile'] : $right_margin_tablet;
+$top_margin_mobile    = '' !== $attr['topMarginMobile'] ? $attr['topMarginMobile'] : $top_margin_tablet;
+$bottom_margin_mobile = '' !== $attr['bottomMarginMobile'] ? $attr['bottomMarginMobile'] : $bottom_margin_tablet;
 
 $column_gap_mobile = ! empty( $attr['columnGapMobile'] ) ? $attr['columnGapMobile'] : $column_gap_tablet;
 
