@@ -116,7 +116,15 @@ if ( ! class_exists( 'UAGB_Post_Timeline' ) ) {
 							'type'    => 'number',
 							'default' => 15,
 						),
-						'timelinAlignment'        => array(
+						'timelinAlignmentDesktop'    => array(
+							'type'    => 'string',
+							'default' => 'center',
+						),
+						'timelinAlignmentTablet'     => array(
+							'type'    => 'string',
+							'default' => 'center',
+						),
+						'timelinAlignmentMobile'     => array(
 							'type'    => 'string',
 							'default' => 'center',
 						),

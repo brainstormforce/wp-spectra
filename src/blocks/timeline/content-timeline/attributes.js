@@ -226,12 +226,26 @@ const attributes = {
 		},
 		default: false,
 	},
-	timelinAlignment: {
-		type: 'string',
+	timelinAlignmentDesktop  : {
+		type    : 'string',
+		default : 'center',
 		UAGCopyPaste: {
-			styleType: 'overall-alignment'
+			styleType: 'overall-alignment-desktop'
 		},
-		default: 'center',
+	},
+	timelinAlignmentTablet  : {
+		type    : 'string',
+		default : 'center',
+		UAGCopyPaste: {
+			styleType: 'overall-alignment-tablet'
+		},
+	},
+	timelinAlignmentMobile  : {
+		type    : 'string',
+		default : 'center',
+		UAGCopyPaste: {
+			styleType: 'overall-alignment-mobile'
+		},
 	},
 	arrowlinAlignment: {
 		type: 'string',

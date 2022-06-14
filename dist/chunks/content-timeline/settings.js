@@ -114,7 +114,9 @@ const Settings = props => {
       headLineHeightTablet,
       headLineHeightMobile,
       headLoadGoogleFonts,
-      timelinAlignment,
+      timelinAlignmentDesktop,
+      timelinAlignmentTablet,
+      timelinAlignmentMobile,
       arrowlinAlignment,
       subHeadFontSizeType,
       subHeadFontSize,
@@ -300,8 +302,18 @@ const Settings = props => {
       setAttributes: setAttributes,
       label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_13__["__"])('Orientation', 'ultimate-addons-for-gutenberg'),
       data: {
-        value: timelinAlignment,
-        label: 'timelinAlignment'
+        desktop: {
+          value: timelinAlignmentDesktop,
+          label: 'timelinAlignmentDesktop'
+        },
+        tablet: {
+          value: timelinAlignmentTablet,
+          label: 'timelinAlignmentTablet'
+        },
+        mobile: {
+          value: timelinAlignmentMobile,
+          label: 'timelinAlignmentMobile'
+        }
       },
       className: "uagb-multi-button-alignment-control",
       options: [{
@@ -323,7 +335,8 @@ const Settings = props => {
         }),
         tooltip: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_13__["__"])('Right', 'ultimate-addons-for-gutenberg')
       }],
-      showIcons: true
+      showIcons: true,
+      responsive: true
     }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_Components_multi_buttons_control__WEBPACK_IMPORTED_MODULE_10__["default"], {
       setAttributes: setAttributes,
       label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_13__["__"])('Text Alignment', 'ultimate-addons-for-gutenberg'),

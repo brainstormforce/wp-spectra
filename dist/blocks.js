@@ -94545,12 +94545,26 @@ const attributes = {
     },
     default: false
   },
-  timelinAlignment: {
+  timelinAlignmentDesktop: {
     type: 'string',
+    default: 'center',
     UAGCopyPaste: {
-      styleType: 'overall-alignment'
-    },
-    default: 'center'
+      styleType: 'overall-alignment-desktop'
+    }
+  },
+  timelinAlignmentTablet: {
+    type: 'string',
+    default: 'center',
+    UAGCopyPaste: {
+      styleType: 'overall-alignment-tablet'
+    }
+  },
+  timelinAlignmentMobile: {
+    type: 'string',
+    default: 'center',
+    UAGCopyPaste: {
+      styleType: 'overall-alignment-mobile'
+    }
   },
   arrowlinAlignment: {
     type: 'string',

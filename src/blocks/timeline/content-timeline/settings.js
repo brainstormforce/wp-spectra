@@ -70,7 +70,9 @@ const Settings = ( props ) => {
 			headLineHeightTablet,
 			headLineHeightMobile,
 			headLoadGoogleFonts,
-			timelinAlignment,
+			timelinAlignmentDesktop,
+			timelinAlignmentTablet,
+			timelinAlignmentMobile,
 			arrowlinAlignment,
 			subHeadFontSizeType,
 			subHeadFontSize,
@@ -268,8 +270,18 @@ const Settings = ( props ) => {
 						'ultimate-addons-for-gutenberg'
 					) }
 					data={ {
-						value: timelinAlignment,
-						label: 'timelinAlignment',
+						desktop: {
+							value: timelinAlignmentDesktop,
+							label: 'timelinAlignmentDesktop',
+						},
+						tablet: {
+							value: timelinAlignmentTablet,
+							label: 'timelinAlignmentTablet',
+						},
+						mobile: {
+							value: timelinAlignmentMobile,
+							label: 'timelinAlignmentMobile',
+						},
 					} }
 					className="uagb-multi-button-alignment-control"
 					options={ [
@@ -311,6 +323,7 @@ const Settings = ( props ) => {
 						},
 					] }
 					showIcons={ true }
+					responsive={true}
 				/>
 				<MultiButtonsControl
 					setAttributes={ setAttributes }
