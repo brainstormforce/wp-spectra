@@ -4,6 +4,7 @@ import lazyLoader from '@Controls/lazy-loader';
 import { Player } from '@lottiefiles/react-lottie-player';
 import styles from './editor.lazy.scss';
 import { getFallbackNumber } from '@Controls/getAttributeFallback';
+import { useDeviceType } from '@Controls/getPreviewType';
 
 const Render = ( props ) => {
 	// Add and remove the CSS on the drop and remove of the component.
@@ -15,6 +16,8 @@ const Render = ( props ) => {
 	}, [] );
 
 	const { lottieplayer } = props;
+
+	const deviceType = useDeviceType();
 
 	props = props.parentProps;
 
@@ -46,7 +49,8 @@ const Render = ( props ) => {
 				className,
 				`uagb-block-${ props.clientId.substr( 0, 8 ) }`,
 				'uagb-lottie__outer-wrap',
-				`uagb-lottie__${ align }`
+				`uagb-lottie__${ align }`,
+				`uagb-editor-preview-mode-${ deviceType.toLowerCase() }`,
 			) }
 			onMouseEnter={
 				'hover' === playOn

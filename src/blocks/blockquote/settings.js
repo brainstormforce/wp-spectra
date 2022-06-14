@@ -910,7 +910,7 @@ const Settings = ( props ) => {
 			title={ __( 'Spacing', 'ultimate-addons-for-gutenberg' ) }
 			initialOpen={ true }
 		>
-			{ authorImage && (
+			{ ( authorImage && authorImage.url ) && (
 				<ResponsiveSlider
 					label={ __(
 						'Author - Image Gap',
