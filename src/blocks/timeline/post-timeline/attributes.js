@@ -80,11 +80,25 @@ const attributes = { // eslint-disable-line no-unused-vars
 			styleType: 'column-gap'
 		},
 	},
-	timelinAlignment        : {
+	timelinAlignmentDesktop  : {
 		type    : 'string',
 		default : 'center',
 		UAGCopyPaste: {
-			styleType: 'overall-alignment'
+			styleType: 'overall-alignment-desktop'
+		},
+	},
+	timelinAlignmentTablet  : {
+		type    : 'string',
+		default : 'center',
+		UAGCopyPaste: {
+			styleType: 'overall-alignment-tablet'
+		},
+	},
+	timelinAlignmentMobile  : {
+		type    : 'string',
+		default : 'center',
+		UAGCopyPaste: {
+			styleType: 'overall-alignment-mobile'
 		},
 	},
 	arrowlinAlignment       : {
