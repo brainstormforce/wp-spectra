@@ -72,42 +72,6 @@ $t_selectors = array(
 		'font-size'   => UAGB_Helper::get_css_value( $attr['authorFontSizeTablet'], $attr['authorFontSizeType'] ),
 		'line-height' => UAGB_Helper::get_css_value( $attr['authorLineHeightTablet'], $attr['authorLineHeightType'] ),
 	),
-	' .uagb-timeline__link_parent'  => array(
-		'text-align' => $attr['alignTablet'],
-	),
-	' .uagb-timeline__image a'      => array(
-		'text-align' => $attr['alignTablet'],
-	),
-	' a.uagb-timeline__image'       => array(
-		'text-align' => $attr['alignTablet'],
-	),
-	' .uagb-timeline__author-link'  => array(
-		'text-align' => $attr['alignTablet'],
-	),
-	' .uagb-timeline__heading'      => array(
-		'text-align' => $attr['alignTablet'],
-	),
-	' .uagb-timeline__heading a'    => array(
-		'text-align' => $attr['alignTablet'],
-	),
-	'.uagb-timeline__center-block.uagb-timeline__responsive-tablet .uagb-timeline__author-link' => array(
-		'text-align' => 'left',
-	),
-	'.uagb-timeline__center-block.uagb-timeline__responsive-tablet .uagb-timeline__link_parent' => array(
-		'text-align' => 'left',
-	),
-	'.uagb-timeline__center-block.uagb-timeline__responsive-tablet .uagb-timeline__link' => array(
-		'text-align' => 'left',
-	),
-	'.uagb-timeline__center-block.uagb-timeline__responsive-tablet .uagb-timeline__image a' => array(
-		'text-align' => 'left',
-	),
-	'.uagb-timeline__center-block.uagb-timeline__responsive-tablet a.uagb-timeline__image' => array(
-		'text-align' => 'left',
-	),
-	'.uagb-timeline__center-block.uagb-timeline__responsive-tablet .uagb-timeline__inner-date-new' => array(
-		'text-align' => 'left',
-	),
 	' .uagb-timeline__link'         => array(
 		'text-align'       => $attr['alignTablet'],
 		'margin-bottom' => UAGB_Helper::get_css_value( $attr['ctaBottomSpacingTablet'], 'px' ),
@@ -138,6 +102,27 @@ $t_selectors = array(
 							0 :
 							UAGB_Helper::get_css_value( $right_margin, $attr['marginUnit'] ),
 	),
+	'.uagb-timeline__right'  => array(
+		'text-align' => $attr['alignTablet'],
+	),
+	' .uagb-timeline__link_parent'  => array(
+		'text-align' => $attr['alignTablet'],
+	),
+	' .uagb-timeline__image a'      => array(
+		'text-align' => $attr['alignTablet'],
+	),
+	' a.uagb-timeline__image'       => array(
+		'text-align' => $attr['alignTablet'],
+	),
+	' .uagb-timeline__author-link'  => array(
+		'text-align' => $attr['alignTablet'],
+	),
+	' .uagb-timeline__heading'      => array(
+		'text-align' => $attr['alignTablet'],
+	),
+	' .uagb-timeline__heading a'    => array(
+		'text-align' => $attr['alignTablet'],
+	),
 );
 
 $tablet_selectors = UAGB_Block_Helper::get_timeline_tablet_selectors( $attr );
@@ -148,39 +133,6 @@ $m_selectors = array(
 	' .dashicons-admin-users'       => array(
 		'font-size'   => UAGB_Helper::get_css_value( $attr['authorFontSizeMobile'], $attr['authorFontSizeType'] ),
 		'line-height' => UAGB_Helper::get_css_value( $attr['authorLineHeightMobile'], $attr['authorLineHeightType'] ),
-	),
-	' .uagb-timeline__link_parent'  => array(
-		'text-align' => $attr['alignMobile'],
-	),
-	' .uagb-timeline__image a'      => array(
-		'text-align' => $attr['alignMobile'],
-	),
-	' a.uagb-timeline__image'       => array(
-		'text-align' => $attr['alignMobile'],
-	),
-	' .uagb-timeline__author-link'  => array(
-		'text-align' => $attr['alignMobile'],
-	),
-	' .uagb-timeline__heading a'    => array(
-		'text-align' => $attr['alignMobile'],
-	),
-	' .uagb-timeline__heading'      => array(
-		'text-align' => $attr['alignMobile'],
-	),
-	'.uagb-timeline__center-block.uagb-timeline__responsive-tablet .uagb-timeline__author-link' => array(
-		'text-align' => 'left',
-	),
-	'.uagb-timeline__center-block.uagb-timeline__responsive-tablet .uagb-timeline__link_parent' => array(
-		'text-align' => 'left',
-	),
-	'.uagb-timeline__center-block.uagb-timeline__responsive-tablet .uagb-timeline__link' => array(
-		'text-align' => 'left',
-	),
-	'.uagb-timeline__center-block.uagb-timeline__responsive-mobile .uagb-timeline__image a' => array(
-		'text-align' => 'left',
-	),
-	'.uagb-timeline__center-block.uagb-timeline__responsive-mobile a.uagb-timeline__image' => array(
-		'text-align' => 'left',
 	),
 	' .uagb-timeline__link'         => array(
 		'text-align'       => $attr['alignMobile'],
@@ -211,6 +163,27 @@ $m_selectors = array(
 		'margin-right' => ( 'tablet' === $attr['stack'] ) || ( 'mobile' === $attr['stack'] ) ?
 							0 :
 							UAGB_Helper::get_css_value( $right_margin, $attr['marginUnit'] ),
+	),
+	'.uagb-timeline__right'  => array(
+		'text-align' => $attr['alignMobile'],
+	),
+	' .uagb-timeline__link_parent'  => array(
+		'text-align' => $attr['alignMobile'],
+	),
+	' .uagb-timeline__image a'      => array(
+		'text-align' => $attr['alignMobile'],
+	),
+	' a.uagb-timeline__image'       => array(
+		'text-align' => $attr['alignMobile'],
+	),
+	' .uagb-timeline__author-link'  => array(
+		'text-align' => $attr['alignMobile'],
+	),
+	' .uagb-timeline__heading a'    => array(
+		'text-align' => $attr['alignMobile'],
+	),
+	' .uagb-timeline__heading'      => array(
+		'text-align' => $attr['alignMobile'],
 	),
 );
 

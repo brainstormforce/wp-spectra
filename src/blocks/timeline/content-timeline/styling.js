@@ -352,6 +352,7 @@ function contentTimelineStyle( props ) {
 			'margin-bottom': generateCSSUnit( dateBottomspaceTablet, 'px' ),
 		},
 		' .uagb-timeline__heading': {
+			'text-align': alignTablet,
 			'font-size': generateCSSUnit(
 				headFontSizeTablet,
 				headFontSizeType
@@ -522,6 +523,7 @@ function contentTimelineStyle( props ) {
 				headLineHeightType
 			),
 			'margin-bottom': generateCSSUnit( headSpaceMobile, 'px' ),
+			'text-align': alignMobile,
 		},
 		' .uagb-timeline__heading a': {
 			'font-size': generateCSSUnit(
