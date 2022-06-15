@@ -37,7 +37,7 @@ $title_space_fallback = UAGB_Block_Helper::get_fallback_number( $attr['titleSpac
 $title_space_tablet_fallback = UAGB_Block_Helper::get_fallback_number( $attr['titleSpaceTablet'], 'titleSpaceTablet', $block_name );
 $title_space_mobile_fallback = UAGB_Block_Helper::get_fallback_number( $attr['titleSpaceMobile'], 'titleSpaceMobile', $block_name );
 
-$column_fallback = UAGB_Block_Helper::get_fallback_number( $column_fallback, 'columns', $block_name );
+$column_fallback = UAGB_Block_Helper::get_fallback_number( $attr['columns'], 'columns', $block_name );
 $attr['tcolumns'] = is_numeric( $attr['tcolumns'] ) ? $attr['tcolumns'] : $column_fallback;
 $attr['mcolumns'] = is_numeric( $attr['mcolumns'] ) ? $attr['mcolumns'] : $attr['tcolumns'];
 
