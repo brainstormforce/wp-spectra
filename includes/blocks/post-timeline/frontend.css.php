@@ -102,10 +102,11 @@ $t_selectors = array(
 							0 :
 							UAGB_Helper::get_css_value( $right_margin, $attr['marginUnit'] ),
 	),
-	'.uagb-timeline__right'  => array(
+	' .uagb-timeline__right'  => array(
 		'text-align' => $attr['alignTablet'],
 	),
 	' .uagb-timeline__link_parent'  => array(
+		'display' => 'none',
 		'text-align' => $attr['alignTablet'],
 	),
 	' .uagb-timeline__image a'      => array(
