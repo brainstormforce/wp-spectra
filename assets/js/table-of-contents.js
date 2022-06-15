@@ -160,19 +160,16 @@ UAGBTableOfContents = { // eslint-disable-line no-undef
 			const scrollDelayTime = node.getAttribute( 'data-delay' );
 			if ( scrollData ) {
 				let offset = null;
-				setTimeout( () => {
-					if ( document.querySelector( hash ) ) {
+				if ( document.querySelector( hash ) ) {
 
-						offset = document.querySelector( hash ).getBoundingClientRect().top + window.scrollY;
-					}
-
-					if ( null !== offset ) {
-						scroll( { // eslint-disable-line no-undef
-							top: offset - scrollOffset,
-							behavior: 'smooth'
-						} );
-					}
-				}, scrollDelayTime );
+					offset = document.querySelector( hash ).getBoundingClientRect().top + window.scrollY;
+				}
+				if ( null !== offset ) {
+					scroll( { // eslint-disable-line no-undef
+						top: offset - scrollOffset,
+						behavior: 'smooth'
+					} );
+				}
 			}
 		}
 	},
