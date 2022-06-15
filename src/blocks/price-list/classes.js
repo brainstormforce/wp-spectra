@@ -3,7 +3,7 @@
  */
 
 import { getFallbackNumber } from '@Controls/getAttributeFallback';
-function PositionClasses( attributes ) {
+function PositionClasses( attributes , name = 'uagb/restaurant-menu' ) {
 	const {
 		columns,
 		tcolumns,
@@ -48,7 +48,7 @@ function PositionClasses( attributes ) {
 			}
 		}
 	}
-	const blockName = props.name.replace( 'uagb/', '' );
+	const blockName = name.replace( 'uagb/', '' );
 
 	const columnsFallback = getFallbackNumber( columns, 'columns', blockName );
 	const tcolumnsFallback = getFallbackNumber( tcolumns, 'tcolumns', blockName );
