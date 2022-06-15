@@ -7,7 +7,7 @@
 
 /* ------------------------------------------------------------------------------------------------*/
 
-@import 'styles/variables';
+@import "styles/variables";
 
 /* Gutenberg Reset CSS */
 .block-editor-block-inspector {
@@ -99,12 +99,13 @@
 .uagb-inspector-tab .components-base-control__label,
 .uagb-inspector-tab .components-panel__body label,
 .uagb-extention-tab label {
+	color: $spectra-color-body;
 	font-size: $spectra-font-size-label;
 	line-height: $spectra-line-height-label;
 	margin-bottom: $spectra-control-label-bottom-margin;
 }
 
-.uagb-inspector-tab label.components-toggle-control__label{
+.uagb-inspector-tab label.components-toggle-control__label {
 	margin-bottom: 0;
 }
 
@@ -736,6 +737,7 @@ button.components-button.uagb-review-select-btn.is-secondary {
 
 /* Toggle Control */
 .uagb-inspector-tab {
+
 	.components-toggle-control .components-base-control__field {
 		display: flex;
 		flex-direction: row-reverse;
@@ -744,8 +746,8 @@ button.components-button.uagb-review-select-btn.is-secondary {
 	}
 }
 
-@import 'styles/gutenberg-override';
-
-@import 'styles/control-responsive';
-@import 'styles/control-header';
-@import 'styles/control-popup';
+@import "styles/gutenberg-override";
+@import "styles/control-responsive";
+@import "styles/control-header";
+@import "styles/control-popup";
+@import "styles/control-media-picker";

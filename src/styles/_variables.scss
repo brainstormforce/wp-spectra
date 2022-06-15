@@ -3,6 +3,8 @@
 // Only the variables defined here will be used throughout Spectra based on their category.
 // Certain Variables will have the same value. This is for Consistency during usage, and will not affect perfomance as Sass is a preprocessor for CSS.
 
+/* stylelint-disable color-hex-case, color-hex-length */
+
 // -------------------------------------------
 // All General CSS Variables Below This Point.
 // -------------------------------------------
@@ -96,7 +98,7 @@ $spectra-text-transform-section-heading   : uppercase;
 
 // Spectra Letter Spacing.
 
-$spectra-letter-spacing : 0px;
+$spectra-letter-spacing : 0;
 
 // --------------------------------------------
 // All Specific CSS Variables Below This Point.
@@ -109,18 +111,20 @@ $spectra-panel-body-padding    : 16px;
 
 // Spectra Control UI.
 
-$spectra-control-vertical-gap        : 25px;
-$spectra-control-label-bottom-margin : 10px;
-$spectra-control-border-radius       : 3px;
-$spectra-control-input-padding       : 7px 12px;
-$spectra-control-circle-indicator    : 28px;
+$spectra-control-vertical-gap             : 25px;
+$spectra-control-label-bottom-margin      : 10px;
+$spectra-control-border-radius            : 3px;
+$spectra-control-input-padding            : 7px 12px;
+$spectra-control-circle-indicator         : 28px;
+$spectra-control-mediapicker-height       : 130px;
+$spectra-control-mediapicker-height-small : 96px;
 
 // Spectra Control Popup UI.
 
 $spectra-control-popup-padding       : 16px;
 $spectra-control-popup-vertical-gap  : 15px;
 $spectra-control-popup-border-radius : 2px;
-$spectra-control-popup-box-shadow    : 0px 2px 8px rgba(0, 0, 0, 0.2);
+$spectra-control-popup-box-shadow    : 0 2px 8px rgba(0, 0, 0, 0.2);
 
 // Spectra Fullscreen Popup UI.
 
@@ -128,4 +132,4 @@ $spectra-popup-heading-padding : 18px 66px 18px 30px;
 $spectra-popup-content-padding : 18px 30px;
 $spectra-popup-vertical-gap    : 30px;
 $spectra-popup-border-radius   : 2px;
-$spectra-popup-box-shadow      : 0px 4px 4px rgba(0, 0, 0, 0.25);
+$spectra-popup-box-shadow      : 0 4px 4px rgba(0, 0, 0, 0.25);

@@ -2,16 +2,17 @@ import { __ } from '@wordpress/i18n';
 import { BaseControl, Button } from '@wordpress/components';
 import { MediaUpload } from '@wordpress/block-editor';
 import React, { useLayoutEffect } from 'react';
-import styles from './editor.lazy.scss';
+import UAGB_Block_Icons from '@Controls/block-icons';
+// import styles from './editor.lazy.scss';
 
 const UAGImage = ( props ) => {
 	// Add and remove the CSS on the drop and remove of the component.
-	useLayoutEffect( () => {
-		styles.use();
-		return () => {
-			styles.unuse();
-		};
-	}, [] );
+	// useLayoutEffect( () => {
+	// 	styles.use();
+	// 	return () => {
+	// 		styles.unuse();
+	// 	};
+	// }, [] );
 
 	const {
 		onSelectImage,
@@ -29,7 +30,7 @@ const UAGImage = ( props ) => {
 		'ultimate-addons-for-gutenberg'
 	);
 	let replaceImageLabel = __(
-		'Replace Image',
+		'Change Image',
 		'ultimate-addons-for-gutenberg'
 	);
 	let removeImageLabel = __(
@@ -45,7 +46,7 @@ const UAGImage = ( props ) => {
 			'ultimate-addons-for-gutenberg'
 		);
 		replaceImageLabel = __(
-			'Replace Video',
+			'Change Video',
 			'ultimate-addons-for-gutenberg'
 		);
 		removeImageLabel = __(
@@ -66,7 +67,7 @@ const UAGImage = ( props ) => {
 			'ultimate-addons-for-gutenberg'
 		);
 		replaceImageLabel = __(
-			'Replace Lottie Animation',
+			'Change Lottie Animation',
 			'ultimate-addons-for-gutenberg'
 		);
 		removeImageLabel = __(
@@ -77,40 +78,96 @@ const UAGImage = ( props ) => {
 	}
 	
 
+	// return (
+	// 	<BaseControl
+	// 		className="editor-bg-image-control"
+	// 		id={ `uagb-option-selector-${ label }` }
+	// 		label={ labelText }
+	// 	>
+	// 		<div className="uagb-bg-image">
+	// 			<MediaUpload
+	// 				title={ selectImageLabel }
+	// 				onSelect={ onSelectImage }
+	// 				allowedTypes={ allowedTypes }
+	// 				value={ backgroundImage }
+	// 				render={ ( { open } ) => (
+	// 					<Button isSecondary onClick={ open }>
+	// 						{ ! backgroundImage?.url
+	// 							? selectImageLabel
+	// 							: replaceImageLabel }
+	// 					</Button>
+	// 				) }
+	// 			/>
+	// 			{ ( ! disableRemove && backgroundImage?.url ) && (
+	// 				<Button
+	// 					className="uagb-rm-btn"
+	// 					onClick={ onRemoveImage }
+	// 					isLink
+	// 					isDestructive
+	// 				>
+	// 					{ removeImageLabel }
+	// 				</Button>
+	// 			) }
+	// 			{ props.help && (
+	// 				<p className="uag-control-help-notice">{ props.help }</p>
+	// 			) }
+	// 		</div>
+	// 	</BaseControl>
+	// );
+	
+	const renderMediaUploader = ( open ) => {
+		const uploadType = backgroundImage?.url ? 'replace' : 'add';
+		return(
+			<div
+				className={ `spectra-media-control__clickable spectra-media-control__clickable--${ uploadType }` }
+				onClick={ open }
+			>
+				{ ( 'add' === uploadType ) ? (
+					renderButton( uploadType )
+				) : (
+					<div className='uag-control-label'>{ replaceImageLabel }</div>
+				) }
+			</div>
+		)
+	};
+
+	const renderButton = ( buttonType ) => (
+		<div className={ `spectra-media-control__button spectra-media-control__button--${ buttonType }` }>
+			{ UAGB_Block_Icons[ buttonType ] }
+		</div>
+	);
+
 	return (
 		<BaseControl
-			className="editor-bg-image-control"
+			className="spectra-media-control"
 			id={ `uagb-option-selector-${ label }` }
 			label={ labelText }
 		>
-			<div className="uagb-bg-image">
+			<div
+				className="spectra-media-control__wrapper"
+				style={ {
+					backgroundImage: backgroundImage?.url ? `url("${ backgroundImage?.url }")` : 'none',
+				} }
+			>
 				<MediaUpload
 					title={ selectImageLabel }
 					onSelect={ onSelectImage }
 					allowedTypes={ allowedTypes }
 					value={ backgroundImage }
-					render={ ( { open } ) => (
-						<Button isSecondary onClick={ open }>
-							{ ! backgroundImage?.url
-								? selectImageLabel
-								: replaceImageLabel }
-						</Button>
-					) }
+					render={ ( { open } ) => renderMediaUploader( open ) }
 				/>
-				{ ( ! disableRemove && backgroundImage?.url ) && (
-					<Button
-						className="uagb-rm-btn"
+	 			{ ( ! disableRemove && backgroundImage?.url ) && (
+					<div
+						className='spectra-media-control__clickable spectra-media-control__clickable--close'
 						onClick={ onRemoveImage }
-						isLink
-						isDestructive
 					>
-						{ removeImageLabel }
-					</Button>
-				) }
-				{ props.help && (
-					<p className="uag-control-help-notice">{ props.help }</p>
-				) }
+	 					{ renderButton( 'close' ) }
+	 				</div>
+	 			) }
 			</div>
+			{ props.help && (
+				<p className="uag-control-help-notice">{ props.help }</p>
+			) }
 		</BaseControl>
 	);
 };

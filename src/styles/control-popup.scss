@@ -10,9 +10,9 @@
     margin-bottom: $spectra-control-popup-vertical-gap + $spectra-control-vertical-gap;
     box-shadow: $spectra-control-popup-box-shadow;
     background: $spectra-color-plain-background;
-    
+
     // Important Required to override the common panel margins.
-    
+
     & > .components-base-control {
         margin-bottom: $spectra-control-popup-vertical-gap !important;
 
@@ -22,7 +22,7 @@
     }
 
     & > .uagb-size-type-field-tabs {
-        
+
         margin-bottom: $spectra-control-popup-vertical-gap !important;
 
         .components-base-control {
@@ -33,7 +33,7 @@
             margin-bottom: 0 !important;
         }
     }
-    
+
     // The Popup Option
     &__options {
         margin-bottom: $spectra-control-popup-vertical-gap;
@@ -70,7 +70,7 @@
                     box-shadow: none;
                     outline: none;
                 }
-                
+
                 &:hover {
                     color: $spectra-color-primary;
                 }
@@ -117,7 +117,7 @@
 }
 
 .components-base-control:last-child {
-    
+
     .spectra-control-popup {
         margin-bottom: $spectra-panel-body-padding;
     }
