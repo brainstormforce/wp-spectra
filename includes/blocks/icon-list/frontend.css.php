@@ -13,13 +13,13 @@
 UAGB_Block_JS::blocks_buttons_gfont( $attr );
 
 $alignment       = ( 'left' === $attr['align'] ) ? 'flex-start' : ( ( 'right' === $attr['align'] ) ? 'flex-end' : 'center' );
-$alignmentTablet = ( 'left' === $attr['alignTablet'] ) ? 'flex-start' : ( ( 'right' === $attr['alignTablet'] ) ? 'flex-end' : ( ( 'center' === $attr['alignTablet'] ) ? 'center' : $alignment ) );
-$alignmentMobile = ( 'left' === $attr['alignMobile'] ) ? 'flex-start' : ( ( 'right' === $attr['alignMobile'] ) ? 'flex-end' : ( ( 'center' === $attr['alignMobile'] ) ? 'center' : $alignmentTablet ) );
+$alignment_tablet = ( 'left' === $attr['alignTablet'] ) ? 'flex-start' : ( ( 'right' === $attr['alignTablet'] ) ? 'flex-end' : ( ( 'center' === $attr['alignTablet'] ) ? 'center' : $alignment ) );
+$alignment_mobile = ( 'left' === $attr['alignMobile'] ) ? 'flex-start' : ( ( 'right' === $attr['alignMobile'] ) ? 'flex-end' : ( ( 'center' === $attr['alignMobile'] ) ? 'center' : $alignment_tablet ) );
 
 
-$iconLayout       = $attr['icon_layout'];
-$iconLayoutTablet = ! empty( $attr['iconLayoutTablet'] ) ? $attr['iconLayoutTablet'] : $iconLayout;
-$iconLayoutMobile = ! empty( $attr['iconLayoutMobile'] ) ? $attr['iconLayoutMobile'] : $iconLayoutTablet;
+$icon_layout       = $attr['icon_layout'];
+$icon_layout_tablet = ! empty( $attr['iconLayoutTablet'] ) ? $attr['iconLayoutTablet'] : $icon_layout;
+$icon_layout_mobile = ! empty( $attr['iconLayoutMobile'] ) ? $attr['iconLayoutMobile'] : $icon_layout_tablet;
 
 $m_selectors = array();
 $t_selectors = array();
@@ -29,23 +29,23 @@ $m_icon_size = UAGB_Helper::get_css_value( $attr['sizeMobile'], $attr['sizeType'
 $t_icon_size = UAGB_Helper::get_css_value( $attr['sizeTablet'], $attr['sizeType'] );
 
 $position       = 'top' === $attr['iconPosition'] ? 'flex-start' : 'center';
-$tabletPosition = '';
-$mobilePosition = '';
+$tablet_position = '';
+$mobile_position = '';
 
 if ( 'top' === $attr['iconPositionTablet'] ) {
-	$tabletPosition = 'flex-start';
+	$tablet_position = 'flex-start';
 } elseif ( 'middle' === $attr['iconPositionTablet'] ) {
-	$tabletPosition = 'center';
+	$tablet_position = 'center';
 } else {
-	$tabletPosition = $position;
+	$tablet_position = $position;
 }
 
 if ( 'top' === $attr['iconPositionMobile'] ) {
-	$mobilePosition = 'flex-start';
+	$mobile_position = 'flex-start';
 } elseif ( 'middle' === $attr['iconPositionMobile'] ) {
-	$mobilePosition = 'center';
+	$mobile_position = 'center';
 } else {
-	$mobilePosition = $tabletPosition;
+	$mobile_position = $tablet_position;
 }
 
 $selectors = array(
@@ -130,7 +130,7 @@ $t_selectors = array(
 		'padding'       => UAGB_Helper::get_css_value( $attr['bgSizeTablet'], 'px' ),
 		'border-style'  => ( $attr['borderTablet'] > 0 ) ? 'solid' : '',
 		'border-width'  => UAGB_Helper::get_css_value( $attr['borderTablet'], $attr['borderType'] ),
-		'align-self'    => $tabletPosition,
+		'align-self'    => $tablet_position,
 	),
 	' .wp-block-uagb-icon-list-child .uagb-icon-list__label' => array(
 		'font-size'   => UAGB_Helper::get_css_value( $attr['fontSizeTablet'], $attr['fontSizeType'] ),
@@ -139,13 +139,13 @@ $t_selectors = array(
 	' .uagb-icon-list__wrap'         => array(
 		'display'           => 'flex',
 		'flex-direction'    => 'row',
-		'justify-content'   => $alignmentTablet,
-		'-webkit-box-pack'  => $alignmentTablet,
-		'-ms-flex-pack'     => $alignmentTablet,
-		'justify-content'   => $alignmentTablet,
-		'-webkit-box-align' => $alignmentTablet,
-		'-ms-flex-align'    => $alignmentTablet,
-		'align-items'       => $alignmentTablet,
+		'justify-content'   => $alignment_tablet,
+		'-webkit-box-pack'  => $alignment_tablet,
+		'-ms-flex-pack'     => $alignment_tablet,
+		'justify-content'   => $alignment_tablet,
+		'-webkit-box-align' => $alignment_tablet,
+		'-ms-flex-align'    => $alignment_tablet,
+		'align-items'       => $alignment_tablet,
 	),
 );
 
@@ -172,16 +172,16 @@ $m_selectors = array(
 	' .uagb-icon-list__wrap'         => array(
 		'display'           => 'flex',
 		'flex-direction'    => 'row',
-		'justify-content'   => $alignmentMobile,
-		'-webkit-box-pack'  => $alignmentMobile,
-		'-ms-flex-pack'     => $alignmentMobile,
-		'justify-content'   => $alignmentMobile,
-		'-webkit-box-align' => $alignmentMobile,
-		'-ms-flex-align'    => $alignmentMobile,
-		'align-items'       => $alignmentMobile,
+		'justify-content'   => $alignment_mobile,
+		'-webkit-box-pack'  => $alignment_mobile,
+		'-ms-flex-pack'     => $alignment_mobile,
+		'justify-content'   => $alignment_mobile,
+		'-webkit-box-align' => $alignment_mobile,
+		'-ms-flex-align'    => $alignment_mobile,
+		'align-items'       => $alignment_mobile,
 	),
 	' .wp-block-uagb-icon-list-child .uagb-icon-list__source-wrap ' => array(
-		'align-self' => $mobilePosition,
+		'align-self' => $mobile_position,
 	),
 );
 
@@ -206,7 +206,7 @@ $t_selectors[' .wp-block-uagb-icon-list-child .uagb-icon-list__label'] = array(
 	'line-height' => UAGB_Helper::get_css_value( $attr['lineHeightTablet'], $attr['lineHeightType'] ),
 );
 
-if ( 'horizontal' === $iconLayout ) {
+if ( 'horizontal' === $icon_layout ) {
 
 	if ( 'tablet' === $attr['stack'] ) {
 
@@ -217,7 +217,7 @@ if ( 'horizontal' === $iconLayout ) {
 		);
 
 		$t_selectors[' .uagb-icon-list__wrap']['flex-direction'] = 'column';
-		$t_selectors[' .uagb-icon-list__wrap']['align-items']    = $alignmentTablet;
+		$t_selectors[' .uagb-icon-list__wrap']['align-items']    = $alignment_tablet;
 
 		$t_selectors[' .uagb-icon-list__wrap .wp-block-uagb-icon-list-child:last-child'] = array(
 			'margin-bottom' => 0,
@@ -232,7 +232,7 @@ if ( 'horizontal' === $iconLayout ) {
 		);
 
 		$m_selectors[' .uagb-icon-list__wrap']['flex-direction'] = 'column';
-		$m_selectors[' .uagb-icon-list__wrap']['align-items']    = $alignmentMobile;
+		$m_selectors[' .uagb-icon-list__wrap']['align-items']    = $alignment_mobile;
 
 		$m_selectors[' .uagb-icon-list__wrap .wp-block-uagb-icon-list-child:last-child'] = array(
 			'margin-bottom' => 0,
@@ -250,7 +250,7 @@ if ( 'horizontal' === $iconLayout ) {
 	$selectors['.wp-block-uagb-icon-list .wp-block-uagb-icon-list-child:last-child']  = array(
 		'margin-right' => 0,
 	);
-} elseif ( 'vertical' === $iconLayout ) {
+} elseif ( 'vertical' === $icon_layout ) {
 	$selectors[' .uagb-icon-list__wrap']['flex-direction'] = 'column';
 
 	$selectors['.wp-block-uagb-icon-list .wp-block-uagb-icon-list-child']            = array(
@@ -263,7 +263,7 @@ if ( 'horizontal' === $iconLayout ) {
 	);
 }
 
-if ( 'horizontal' === $iconLayoutTablet ) {
+if ( 'horizontal' === $icon_layout_tablet ) {
 	$t_selectors['.wp-block-uagb-icon-list .wp-block-uagb-icon-list-child']             = array(
 		'margin-left'  => UAGB_Helper::get_css_value( ( $attr['gapTablet'] / 2 ), $attr['gapType'] ),
 		'margin-right' => UAGB_Helper::get_css_value( ( $attr['gapTablet'] / 2 ), $attr['gapType'] ),
@@ -273,7 +273,7 @@ if ( 'horizontal' === $iconLayoutTablet ) {
 		'margin-left' => 0,
 	);
 
-} elseif ( 'vertical' === $iconLayoutTablet ) {
+} elseif ( 'vertical' === $icon_layout_tablet ) {
 	$t_selectors[' .uagb-icon-list__wrap']['flex-direction']                = 'column';
 	$t_selectors['.wp-block-uagb-icon-list .wp-block-uagb-icon-list-child'] = array(
 		'margin-left'   => 0,
@@ -283,7 +283,7 @@ if ( 'horizontal' === $iconLayoutTablet ) {
 }
 
 
-if ( 'horizontal' === $iconLayoutMobile ) {
+if ( 'horizontal' === $icon_layout_mobile ) {
 	$m_selectors['.wp-block-uagb-icon-list .wp-block-uagb-icon-list-child']             = array(
 		'margin-left'  => UAGB_Helper::get_css_value( ( $attr['gapMobile'] / 2 ), $attr['gapType'] ),
 		'margin-right' => UAGB_Helper::get_css_value( ( $attr['gapMobile'] / 2 ), $attr['gapType'] ),
@@ -292,7 +292,7 @@ if ( 'horizontal' === $iconLayoutMobile ) {
 	$m_selectors['.wp-block-uagb-icon-list .wp-block-uagb-icon-list-child:first-child'] = array(
 		'margin-left' => 0,
 	);
-} elseif ( 'vertical' === $iconLayoutMobile ) {
+} elseif ( 'vertical' === $icon_layout_mobile ) {
 	$m_selectors[' .uagb-icon-list__wrap']['flex-direction']                = 'column';
 	$m_selectors['.wp-block-uagb-icon-list .wp-block-uagb-icon-list-child'] = array(
 		'margin-left'   => 0,
