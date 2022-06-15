@@ -157,10 +157,10 @@ UAGBTableOfContents = { // eslint-disable-line no-undef
 
 			scrollData = node.getAttribute( 'data-scroll' );
 			scrollOffset = node.getAttribute( 'data-offset' );
-			scrollDelayTime = node.getAttribute( 'data-delay' );
+			let scrollDelayTime = node.getAttribute( 'data-delay' );
 			if ( scrollData ) {
 				let offset = null;
-				setTimeout(() => {
+				setTimeout( () => {
 					if ( document.querySelector( hash ) ) {
 
 						offset = document.querySelector( hash ).getBoundingClientRect().top + window.scrollY;
