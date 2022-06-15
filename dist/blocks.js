@@ -96040,7 +96040,7 @@ function contentTimelineStyle(props) {
     dateDecoration,
     iconFocus,
     stack,
-    timelinAlignment
+    timelinAlignmentTablet
   } = props.attributes;
   const respSelectors = 'left';
   const selectors = {
@@ -96255,8 +96255,8 @@ function contentTimelineStyle(props) {
       'line-height': Object(_Controls_generateCSSUnit__WEBPACK_IMPORTED_MODULE_1__["default"])(subHeadLineHeightTablet, subHeadLineHeightType)
     },
     '.uagb-timeline__center-block .uagb-timeline__marker': {
-      'margin-left': stack === 'tablet' && timelinAlignment === 'center' ? 0 : Object(_Controls_generateCSSUnit__WEBPACK_IMPORTED_MODULE_1__["default"])(leftMargin + 3, marginUnit),
-      'margin-right': stack === 'tablet' && timelinAlignment === 'center' ? 0 : Object(_Controls_generateCSSUnit__WEBPACK_IMPORTED_MODULE_1__["default"])(rightMargin, marginUnit)
+      'margin-left': stack === 'tablet' && timelinAlignmentTablet === 'center' ? 0 : Object(_Controls_generateCSSUnit__WEBPACK_IMPORTED_MODULE_1__["default"])(leftMargin + 3, marginUnit),
+      'margin-right': stack === 'tablet' && timelinAlignmentTablet === 'center' ? 0 : Object(_Controls_generateCSSUnit__WEBPACK_IMPORTED_MODULE_1__["default"])(rightMargin, marginUnit)
     },
     '.uagb-timeline__center-block .uagb-timeline__day-new.uagb-timeline__day-left': {
       'margin-left': Object(_Controls_generateCSSUnit__WEBPACK_IMPORTED_MODULE_1__["default"])(leftMarginTablet, tabletMarginUnit),
