@@ -73,14 +73,6 @@ function CtaStyle( props ) {
 		ctaIconSpace,
 		ctaIconSpaceTablet,
 		ctaIconSpaceMobile,
-		ctaLeftSpace,
-		ctaLeftSpaceTablet,
-		ctaLeftSpaceMobile,
-		ctaLeftSpaceType,
-		ctaRightSpace,
-		ctaRightSpaceTablet,
-		ctaRightSpaceMobile,
-		ctaRightSpaceType,
 		contentWidth,
 		contentWidthTablet,
 		contentWidthMobile,
@@ -511,64 +503,6 @@ function CtaStyle( props ) {
 		},
 	};
 
-	if ( textAlign === 'left' && ctaPosition === 'right' ) {
-		selectors[ ' .uagb-cta__left-right-wrap .uagb-cta__content' ] = {
-			'margin-left': generateCSSUnit( ctaLeftSpace, ctaLeftSpaceType ),
-			'margin-right': '0',
-		};
-		selectors[ ' > .uagb-cta__wrap' ] = {
-			'margin-left': generateCSSUnit( ctaLeftSpace, ctaLeftSpaceType ),
-			'margin-right': '0',
-		};
-
-		tabletSelectors[ ' .uagb-cta__left-right-wrap .uagb-cta__content' ] = {
-			'margin-left': generateCSSUnit( ctaLeftSpaceTablet, ctaLeftSpaceType ),
-			'margin-right': '0',
-		};
-		tabletSelectors[ ' > .uagb-cta__wrap' ] = {
-			'margin-left': generateCSSUnit( ctaLeftSpaceTablet, ctaLeftSpaceType ),
-			'margin-right': '0',
-		};
-
-		mobileSelectors[ ' .uagb-cta__left-right-wrap .uagb-cta__content' ] = {
-			'margin-left': generateCSSUnit( ctaLeftSpaceMobile, ctaLeftSpaceType ),
-			'margin-right': '0',
-		};
-		mobileSelectors[ ' > .uagb-cta__wrap' ] = {
-			'margin-left': generateCSSUnit( ctaLeftSpaceMobile, ctaLeftSpaceType ),
-			'margin-right': '0',
-		};
-	}
-
-	if ( textAlign === 'right' && ctaPosition === 'right' ) {
-		selectors[ ' .uagb-cta__left-right-wrap .uagb-cta__content' ] = {
-			'margin-right': generateCSSUnit( ctaRightSpace, ctaRightSpaceType ),
-			'margin-left': '0',
-		};
-		selectors[ ' > .uagb-cta__wrap' ] = {
-			'margin-right': generateCSSUnit( ctaRightSpace, ctaRightSpaceType ),
-			'margin-left': '0',
-		};
-
-		tabletSelectors[ ' .uagb-cta__left-right-wrap .uagb-cta__content' ] = {
-			'margin-right': generateCSSUnit( ctaRightSpaceTablet, ctaRightSpaceType ),
-			'margin-left': '0',
-		};
-		tabletSelectors[ ' > .uagb-cta__wrap' ] = {
-			'margin-right': generateCSSUnit( ctaRightSpaceTablet, ctaRightSpaceType ),
-			'margin-left': '0',
-		};
-
-		mobileSelectors[ ' .uagb-cta__left-right-wrap .uagb-cta__content' ] = {
-			'margin-right': generateCSSUnit( ctaRightSpaceMobile, ctaRightSpaceType ),
-			'margin-left': '0',
-		};
-		mobileSelectors[ ' > .uagb-cta__wrap' ] = {
-			'margin-right': generateCSSUnit( ctaRightSpaceMobile, ctaRightSpaceType ),
-			'margin-left': '0',
-		};
-	}
-
 	if( ctaIconPosition === 'before' ){
 		selectors[ '.uagb-cta__outer-wrap a.uagb-cta__button-link-wrapper > svg' ] = {
 			'margin-right': generateCSSUnit( ctaIconSpace, 'px' ),
@@ -755,16 +689,16 @@ function CtaStyle( props ) {
 			'align-items':  'top' === buttonAlign ? 'flex-start' : 'center'
 		};
 		selectors[ ' .uagb-cta__buttons' ] = {
-			'margin-left': generateCSSUnit( buttonRightSpace, buttonRightSpaceType ),
-			'column-gap': generateCSSUnit( gapBtn, 'px' ),
+			'column-gap': generateCSSUnit( gapBtn , 'px' ),
+			'margin-left': generateCSSUnit( buttonRightSpace, buttonRightSpaceType )
 		};
 		tabletSelectors[ ' .uagb-cta__buttons' ] = {
-			'margin-left': generateCSSUnit( buttonRightSpaceTablet, buttonRightSpaceType ),
-			'column-gap': generateCSSUnit( gapBtnTablet, 'px' ),
+			'column-gap': generateCSSUnit( gapBtnTablet , 'px' ),
+			'margin-left': generateCSSUnit( buttonRightSpaceTablet, buttonRightSpaceType )
 		};
 		mobileSelectors[ ' .uagb-cta__buttons' ] = {
-			'margin-left': generateCSSUnit( buttonRightSpaceMobile, buttonRightSpaceType ),
 			'column-gap': generateCSSUnit( gapBtnMobile, 'px' ),
+			'margin-left': generateCSSUnit( buttonRightSpaceMobile, buttonRightSpaceType )
 		};
 	}
 
