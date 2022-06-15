@@ -33,7 +33,7 @@ const InspectorTab = ( props ) => {
 				if ( panelBodyClass ) {
 					panelToActivate = tabRef.current.querySelector( `.${panelBodyClass}` );
 				} else {
-					panelToActivate = tabRef.current.querySelector('.is-opened');
+					panelToActivate = tabRef.current.querySelector( '.is-opened' );
 				}
 
 				if ( panelToActivate ) {

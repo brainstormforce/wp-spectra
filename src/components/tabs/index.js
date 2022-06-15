@@ -23,12 +23,12 @@ const UAGTabsControl = ( props ) => {
 	const tabsCountClass =
 		3 === props.tabs.length ? 'uag-control-tabs-three-tabs ' : '';
 
-	const tabs = props.tabs.map((tab, index)=>{
+	const tabs = props.tabs.map( ( tab, index )=>{
 		return {
 			...tab,
 			className: `uagb-tab-${index + 1} ${tab?.name}`
 		}
-	});
+	} );
 
 	return (
 		<>
@@ -38,8 +38,8 @@ const UAGTabsControl = ( props ) => {
 				tabs={ tabs }
 				ref={tabRef}
 				onSelect= {
-					(tabName) => {
-						const selectedTab = document.getElementsByClassName('uag-control-tabs')[0]?.querySelector(`.${tabName}`);
+					( tabName ) => {
+						const selectedTab = document.getElementsByClassName( 'uag-control-tabs' )[0]?.querySelector( `.${tabName}` );
 						let selectedTabClass = false;
 						if ( selectedTab && selectedTab?.classList ) {
 							selectedTab?.classList.forEach( ( className ) => {
