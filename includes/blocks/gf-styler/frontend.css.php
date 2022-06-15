@@ -753,6 +753,24 @@ $t_selectors = array(
 		'padding-top'    => UAGB_Helper::get_css_value( $attr['msgtopTabletPadding'], $attr['msgtabletPaddingUnit'] ),
 		'padding-bottom' => UAGB_Helper::get_css_value( $attr['msgbottomTabletPadding'], $attr['msgtabletPaddingUnit'] ),
 	),
+	' .gform_wrapper.gravity-theme select '                => array(
+		'padding-left'   => UAGB_Helper::get_css_value( $attr['fieldleftTabletPadding'], $attr['fieldtabletPaddingUnit'] ),
+		'padding-right'  => UAGB_Helper::get_css_value( $attr['fieldrightTabletPadding'], $attr['fieldtabletPaddingUnit'] ),
+		'padding-top'    => UAGB_Helper::get_css_value( $attr['fieldtopTabletPadding'], $attr['fieldtabletPaddingUnit'] ),
+		'padding-bottom' => UAGB_Helper::get_css_value( $attr['fieldbottomTabletPadding'], $attr['fieldtabletPaddingUnit'] ),
+		'margin-top'     => UAGB_Helper::get_css_value(
+			UAGB_Block_Helper::get_fallback_number( $attr['fieldLabelSpacingTablet'], 'fieldLabelSpacingTablet', $block_name ),
+			'px'
+		),
+		'margin-bottom'  => UAGB_Helper::get_css_value(
+			UAGB_Block_Helper::get_fallback_number( $attr['fieldSpacingTablet'], 'fieldSpacingTablet', $block_name ),
+			'px'
+		),
+		'border-width'   => UAGB_Helper::get_css_value(
+			UAGB_Block_Helper::get_fallback_number( $attr['fieldBorderWidthTablet'], 'fieldBorderWidthTablet', $block_name ),
+			$attr['fieldBorderWidthType']
+		),
+	),
 );
 
 $m_selectors = array(
@@ -870,6 +888,24 @@ $m_selectors = array(
 		'padding-right'  => UAGB_Helper::get_css_value( $attr['msgrightMobilePadding'], $attr['msgmobilePaddingUnit'] ),
 		'padding-top'    => UAGB_Helper::get_css_value( $attr['msgtopMobilePadding'], $attr['msgmobilePaddingUnit'] ),
 		'padding-bottom' => UAGB_Helper::get_css_value( $attr['msgbottomMobilePadding'], $attr['msgmobilePaddingUnit'] ),
+	),
+	' .gform_wrapper.gravity-theme select '                => array(
+		'padding-left'   => UAGB_Helper::get_css_value( $attr['fieldleftTabletPadding'], $attr['fieldtabletPaddingUnit'] ),
+		'padding-right'  => UAGB_Helper::get_css_value( $attr['fieldrightTabletPadding'], $attr['fieldtabletPaddingUnit'] ),
+		'padding-top'    => UAGB_Helper::get_css_value( $attr['fieldtopTabletPadding'], $attr['fieldtabletPaddingUnit'] ),
+		'padding-bottom' => UAGB_Helper::get_css_value( $attr['fieldbottomTabletPadding'], $attr['fieldtabletPaddingUnit'] ),
+		'margin-top'     => UAGB_Helper::get_css_value(
+			UAGB_Block_Helper::get_fallback_number( $attr['fieldLabelSpacingTablet'], 'fieldLabelSpacingTablet', $block_name ),
+			'px'
+		),
+		'margin-bottom'  => UAGB_Helper::get_css_value(
+			UAGB_Block_Helper::get_fallback_number( $attr['fieldSpacingTablet'], 'fieldSpacingTablet', $block_name ),
+			'px'
+		),
+		'border-width'   => UAGB_Helper::get_css_value(
+			UAGB_Block_Helper::get_fallback_number( $attr['fieldBorderWidthTablet'], 'fieldBorderWidthTablet', $block_name ),
+			$attr['fieldBorderWidthType']
+		),
 	),
 );
 

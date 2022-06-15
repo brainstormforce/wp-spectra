@@ -909,7 +909,10 @@ function styling( props ) {
 				fieldbottomTabletPadding,
 				fieldtabletPaddingUnit
 			),
-			'border-width': generateCSSUnit( fieldBorderWidthTablet, fieldBorderWidthType ),
+			'border-width': generateCSSUnit(
+				getFallbackNumber( fieldBorderWidthTablet, 'fieldBorderWidthTablet', blockName ),
+				fieldBorderWidthType
+			),
 			'margin-top': generateCSSUnit(
 				getFallbackNumber( fieldLabelSpacingTablet, 'fieldLabelSpacingTablet', blockName ),
 				'px'
@@ -935,6 +938,10 @@ function styling( props ) {
 			'margin-bottom': generateCSSUnit(
 				getFallbackNumber( fieldSpacingTablet, 'fieldSpacingTablet', blockName ),
 				'px'
+			),
+			'border-width': generateCSSUnit(
+				getFallbackNumber( fieldBorderWidthTablet, 'fieldBorderWidthTablet', blockName ),
+				fieldBorderWidthType
 			),
 		},
 		' .gform_wrapper.gravity-theme .gfield textarea': {
@@ -974,6 +981,10 @@ function styling( props ) {
 				'auto' === getFallbackNumber( textAreaHeightTablet, 'textAreaHeightTablet', blockName )
 					? getFallbackNumber( textAreaHeightTablet, 'textAreaHeightTablet', blockName )
 					: getFallbackNumber( textAreaHeightTablet, 'textAreaHeightTablet', blockName ) + 'px',
+			'border-width': generateCSSUnit(
+				getFallbackNumber( fieldBorderWidthTablet, 'fieldBorderWidthTablet', blockName ),
+				fieldBorderWidthType
+			),
 		},
 		' form label': {
 			'font-size': generateCSSUnit(
