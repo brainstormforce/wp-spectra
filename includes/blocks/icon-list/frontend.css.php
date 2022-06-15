@@ -60,7 +60,7 @@ $selectors = array(
 			UAGB_Block_Helper::get_fallback_number( $attr['borderRadius'], 'borderRadius', $block_name ),
 			'px'
 		),
-		'border-style'  => ( $border_fallback > 0 ) ? 'solid' : '',
+		'border-style'  => 'solid',
 		'border-width'  => UAGB_Helper::get_css_value( $border_fallback, $attr['borderType'] ),
 		'align-self'    => 'top' === $attr['iconPosition'] ? 'flex-start' : 'center',
 	),
@@ -107,7 +107,7 @@ $m_selectors = array(
 			UAGB_Block_Helper::get_fallback_number( $attr['bgSizeMobile'], 'bgSizeMobile', $block_name ),
 			'px'
 		),
-		'border-style'  => ( $mborder_fallback > 0 ) ? 'solid' : '',
+		'border-style'  => 'solid',
 		'border-width'  => UAGB_Helper::get_css_value( $mborder_fallback, $attr['borderType'] ),
 	),
 );
@@ -130,7 +130,7 @@ $t_selectors = array(
 			UAGB_Block_Helper::get_fallback_number( $attr['bgSizeTablet'], 'bgSizeTablet', $block_name ),
 			'px'
 		),
-		'border-style'  => ( $tborder_fallback > 0 ) ? 'solid' : '',
+		'border-style'  => 'solid',
 		'border-width'  => UAGB_Helper::get_css_value( $tborder_fallback, $attr['borderType'] ),
 	),
 );
