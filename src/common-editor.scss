@@ -60,15 +60,10 @@
 	.block-editor-block-list__block:not([contenteditable]):focus::after {
 		box-shadow: 0 0 0 1.5px #007cba;
 		border-radius: 2px;
-		z-index: 3;
 	}
 
 
 	.block-editor-block-list__block:not([contenteditable]):focus {
-
-		&::after {
-			z-index: 999;
-		}
 		z-index: 1;
 	}
 
@@ -121,6 +116,7 @@
 	line-height: 1.4;
 }
 
+/* Editor panel sidebar - scrollbar design CSS */
 .interface-interface-skeleton__sidebar::-webkit-scrollbar {
 	width: 5px;
 }
