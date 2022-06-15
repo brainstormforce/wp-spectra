@@ -13,7 +13,7 @@ $border_defaults  = array(
 );
 $border_attribute = UAGB_Block_Helper::uag_generate_border_attribute( '', $border_defaults );
 
-return array(
+return array_merge( array(
 	'classMigrate'           => false,
 	'block_id'               => '',
 	'columns'                => '2',
@@ -88,5 +88,5 @@ return array(
 	'boxShadowSpread'        => '',
 	'boxShadowPosition'      => 'outset',
 	'gradientValue'          => '',
-	$border_attribute,
+), $border_attribute,
 );

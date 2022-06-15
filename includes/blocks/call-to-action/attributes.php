@@ -10,7 +10,7 @@
 $cta_border_attribute        = UAGB_Block_Helper::uag_generate_border_attribute( 'cta' );
 $second_cta_border_attribute = UAGB_Block_Helper::uag_generate_border_attribute( 'secondCta' );
 
-return array(
+return array_merge( array(
 	'classMigrate'                    => false,
 	'inheritFromTheme'                => false,
 	'textAlign'                       => 'left',
@@ -181,6 +181,5 @@ return array(
 	'buttonRightSpaceTablet'          => 5,
 	'buttonRightSpaceMobile'          => 5,
 	'buttonRightSpaceType'            => 'px',
-	$second_cta_border_attribute,
-	$cta_border_attribute,
+), $second_cta_border_attribute, $cta_border_attribute,
 );

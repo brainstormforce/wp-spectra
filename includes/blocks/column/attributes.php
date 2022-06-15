@@ -13,7 +13,7 @@ $border_defaults  = array(
 );
 $border_attribute = UAGB_Block_Helper::uag_generate_border_attribute( 'column', $border_defaults );
 
-return array(
+return array_merge( array(
 	'classMigrate'             => false,
 	'block_id'                 => '',
 	'topPadding'               => '',
@@ -74,5 +74,5 @@ return array(
 	'gradientOverlayLocation2' => '100',
 	'gradientOverlayAngle'     => '0',
 	'gradientValue'            => '',
-	$border_attribute,
+), $border_attribute,
 );

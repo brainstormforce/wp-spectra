@@ -14,7 +14,7 @@ $border_defaults  = array(
 );
 $border_attribute = UAGB_Block_Helper::uag_generate_border_attribute( 'tab', $border_defaults );
 
-return array(
+return array_merge( array(
 	'tabHeaders'                  => array( 'Tab 1', 'Tab 2', 'Tab 3' ),
 	'tabAlign'                    => 'left',
 	'tabActive'                   => 0,
@@ -114,5 +114,5 @@ return array(
 	'iconSpacing'                 => 10,
 	'iconSpacingTablet'           => '',
 	'iconSpacingMobile'           => '',
-	$border_attribute,
+), $border_attribute,
 );

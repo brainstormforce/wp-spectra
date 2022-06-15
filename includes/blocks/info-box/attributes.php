@@ -8,7 +8,7 @@
  */
 
 $cta_border_attribute = UAGB_Block_Helper::uag_generate_border_attribute( 'cta' );
-return array(
+return array_merge( array(
 	'classMigrate'               => false,
 	'inheritFromTheme'           => false,
 	'headingAlign'               => 'center',
@@ -207,9 +207,9 @@ return array(
 	'prefixMarginLeftMobile'     => '',
 	'prefixMobileMarginUnit'     => 'px',
 	'prefixTabletMarginUnit'     => 'px',
-	$cta_border_attribute,
 	'prefixLetterSpacing'        => '',
 	'prefixLetterSpacingTablet'  => '',
 	'prefixLetterSpacingMobile'  => '',
 	'prefixLetterSpacingType'    => 'px',
+), $cta_border_attribute
 );

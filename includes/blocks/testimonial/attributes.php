@@ -9,7 +9,7 @@
 
 $border_attribute = UAGB_Block_Helper::uag_generate_border_attribute( 'overall' );
 
-return array(
+return array_merge( array(
 	'classMigrate'            => false,
 	'headingAlign'            => 'center',
 	'headingAlignTablet'      => 'center',
@@ -136,5 +136,5 @@ return array(
 	'gradientAngle'           => 0,
 	'gradientPosition'        => 'center center',
 	'equalHeight'             => false,
-	$border_attribute,
+), $border_attribute,
 );

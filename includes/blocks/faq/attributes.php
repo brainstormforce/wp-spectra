@@ -14,7 +14,7 @@ $border_defaults  = array(
 );
 $border_attribute = UAGB_Block_Helper::uag_generate_border_attribute( 'faq', $border_defaults );
 
-return array(
+return array_merge( array(
 	'block_id'                     => '',
 	'layout'                       => 'accordion',
 	'inactiveOtherItems'           => true,
@@ -126,5 +126,5 @@ return array(
 	'answerFontStyle'              => '',
 	'answerTransform'              => '',
 	'answerDecoration'             => '',
-	$border_attribute,
+	), $border_attribute,
 );

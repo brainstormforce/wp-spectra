@@ -48,12 +48,7 @@ $submit_border_defaults           = array(
 );
 $submit_border_attribute          = UAGB_Block_Helper::uag_generate_border_attribute( 'submit', $submit_border_defaults );
 
-return array(
-	$success_message_border_attribute,
-	$failed_message_border_attribute,
-	$input_border_attribute,
-	$toggle_border_attribute,
-	$submit_border_attribute,
+return array_merge( array(
 	'block_id'                    => '',
 	'formPaddingTop'              => 25,
 	'formPaddingRight'            => 25,
@@ -206,4 +201,10 @@ return array(
 	'labelGapMobile'              => 10,
 	'labelGapUnit'                => 'px',
 	'displayLabels'               => true,
+),
+$success_message_border_attribute,
+$failed_message_border_attribute,
+$input_border_attribute,
+$toggle_border_attribute,
+$submit_border_attribute
 );

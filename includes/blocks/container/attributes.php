@@ -9,7 +9,7 @@
 
 $border_attribute = UAGB_Block_Helper::uag_generate_border_attribute( 'container' );
 
-return array(
+return array_merge( array(
 	'block_id'                       => '',
 	'widthDesktop'                   => 100,
 	'widthTablet'                    => '',
@@ -148,5 +148,5 @@ return array(
 	'textColor'                      => 'inherit',
 	'linkColor'                      => '',
 	'linkHoverColor'                 => '',
-	$border_attribute,
+), $border_attribute,
 );
