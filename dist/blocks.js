@@ -93994,6 +93994,27 @@ const attributes = {
       styleType: 'timeline-alignment'
     }
   },
+  timelinAlignmentDesktop: {
+    type: 'string',
+    default: 'center',
+    UAGCopyPaste: {
+      styleType: 'timeline-alignment-desktop'
+    }
+  },
+  timelinAlignmentTablet: {
+    type: 'string',
+    default: 'center',
+    UAGCopyPaste: {
+      styleType: 'timeline-alignment-tablet'
+    }
+  },
+  timelinAlignmentMobile: {
+    type: 'string',
+    default: 'center',
+    UAGCopyPaste: {
+      styleType: 'timeline-alignment-mobile'
+    }
+  },
   arrowlinAlignment: {
     type: 'string',
     default: 'center',
@@ -95805,13 +95826,14 @@ const ContentTimelineComponent = props => {
     }
 
     Object(_wordpress_data__WEBPACK_IMPORTED_MODULE_3__["select"])('core/block-editor').getBlocksByClientId(props.clientId)[0].innerBlocks.forEach(function (block, key) {
+      const timelinAlignment = 'undefined' !== deviceType ? block.attributes['timelinAlignment' + deviceType] : block.attributes.timelinAlignment;
       let alignClass = '';
 
-      if ('left' === block.attributes.timelinAlignment) {
+      if ('left' === timelinAlignment) {
         alignClass = 'uagb-timeline__left';
-      } else if ('right' === block.attributes.timelinAlignment) {
+      } else if ('right' === timelinAlignment) {
         alignClass = 'uagb-timeline__right';
-      } else if ('center' === block.attributes.timelinAlignment) {
+      } else if ('center' === timelinAlignment) {
         if (key % 2 === 0) {
           alignClass = 'uagb-timeline__right';
         } else {
@@ -95821,11 +95843,11 @@ const ContentTimelineComponent = props => {
 
       let dayAlignClass = '';
 
-      if ('left' === block.attributes.timelinAlignment) {
+      if ('left' === timelinAlignment) {
         dayAlignClass = 'uagb-timeline__day-new uagb-timeline__day-left';
-      } else if ('right' === block.attributes.timelinAlignment) {
+      } else if ('right' === timelinAlignment) {
         dayAlignClass = 'uagb-timeline__day-new uagb-timeline__day-right';
-      } else if ('center' === block.attributes.timelinAlignment) {
+      } else if ('center' === timelinAlignment) {
         if (key % 2 === 0) {
           dayAlignClass = 'uagb-timeline__day-new uagb-timeline__day-right';
         } else {

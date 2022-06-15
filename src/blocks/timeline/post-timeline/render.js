@@ -32,9 +32,10 @@ const Render = ( props ) => {
 	const {
 		isPreview,
 		displayPostLink,
-		timelinAlignment,
 		postsToShow,
 	} = attributes;
+
+	const timelinAlignment = 'undefined' !== attributes['timelinAlignment' + deviceType ] ? attributes['timelinAlignment' + deviceType ] :  attributes.timelinAlignment;
 
 	/* Render output at backend */
 	const getContent = () => {

@@ -25,12 +25,12 @@ const ContentTimelineComponent = ( props ) => {
     const deviceType = useDeviceType();
     useEffect( () => {
         const { setAttributes, clientId, attributes } = props;
+
         // Replacement for componentDidMount.
         //Store client id.
         setAttributes( { block_id: clientId } );
         setAttributes( { classMigrate: true } );
         setAttributes( { childMigrate: true } );
-
 
         const {
             verticalSpace,
@@ -92,15 +92,19 @@ const ContentTimelineComponent = ( props ) => {
         ) {
             return;
         }
+
         select( 'core/block-editor' )
             .getBlocksByClientId( props.clientId )[0]
             .innerBlocks.forEach( function( block, key ) {
+
+                const timelinAlignment = 'undefined' !== deviceType ? block.attributes['timelinAlignment' + deviceType ] : block.attributes.timelinAlignment;
+
                 let alignClass = '';
-                if ( 'left' === block.attributes.timelinAlignment ) {
+                if ( 'left' === timelinAlignment ) {
                     alignClass = 'uagb-timeline__left';
-                } else if ( 'right' === block.attributes.timelinAlignment ) {
+                } else if ( 'right' === timelinAlignment ) {
                     alignClass = 'uagb-timeline__right';
-                } else if ( 'center' === block.attributes.timelinAlignment ) {
+                } else if ( 'center' === timelinAlignment ) {
                     if ( key % 2 === 0 ) {
                         alignClass =
                             'uagb-timeline__right';
@@ -111,13 +115,13 @@ const ContentTimelineComponent = ( props ) => {
                 }
 
                 let dayAlignClass = '';
-                if ( 'left' === block.attributes.timelinAlignment ) {
+                if ( 'left' === timelinAlignment ) {
                     dayAlignClass =
                         'uagb-timeline__day-new uagb-timeline__day-left';
-                } else if ( 'right' === block.attributes.timelinAlignment ) {
+                } else if ( 'right' === timelinAlignment ) {
                     dayAlignClass =
                         'uagb-timeline__day-new uagb-timeline__day-right';
-                } else if ( 'center' === block.attributes.timelinAlignment ) {
+                } else if ( 'center' === timelinAlignment ) {
                     if ( key % 2 === 0 ) {
                         dayAlignClass =
                             'uagb-timeline__day-new uagb-timeline__day-right';

@@ -50,15 +50,16 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Components_responsive_slider__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! @Components/responsive-slider */ "./src/components/responsive-slider/index.js");
 /* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! @wordpress/i18n */ "@wordpress/i18n");
 /* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_13___default = /*#__PURE__*/__webpack_require__.n(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_13__);
-/* harmony import */ var _wordpress_date__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! @wordpress/date */ "@wordpress/date");
-/* harmony import */ var _wordpress_date__WEBPACK_IMPORTED_MODULE_14___default = /*#__PURE__*/__webpack_require__.n(_wordpress_date__WEBPACK_IMPORTED_MODULE_14__);
-/* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! @wordpress/block-editor */ "@wordpress/block-editor");
-/* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_15___default = /*#__PURE__*/__webpack_require__.n(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_15__);
-/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! @wordpress/components */ "@wordpress/components");
-/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_16___default = /*#__PURE__*/__webpack_require__.n(_wordpress_components__WEBPACK_IMPORTED_MODULE_16__);
-/* harmony import */ var _wordpress_data__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! @wordpress/data */ "@wordpress/data");
-/* harmony import */ var _wordpress_data__WEBPACK_IMPORTED_MODULE_17___default = /*#__PURE__*/__webpack_require__.n(_wordpress_data__WEBPACK_IMPORTED_MODULE_17__);
-/* harmony import */ var _Components_advanced_panel_body__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! @Components/advanced-panel-body */ "./src/components/advanced-panel-body/index.js");
+/* harmony import */ var _Controls_getPreviewType__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! @Controls/getPreviewType */ "./blocks-config/uagb-controls/getPreviewType.js");
+/* harmony import */ var _wordpress_date__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! @wordpress/date */ "@wordpress/date");
+/* harmony import */ var _wordpress_date__WEBPACK_IMPORTED_MODULE_15___default = /*#__PURE__*/__webpack_require__.n(_wordpress_date__WEBPACK_IMPORTED_MODULE_15__);
+/* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! @wordpress/block-editor */ "@wordpress/block-editor");
+/* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_16___default = /*#__PURE__*/__webpack_require__.n(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_16__);
+/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! @wordpress/components */ "@wordpress/components");
+/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_17___default = /*#__PURE__*/__webpack_require__.n(_wordpress_components__WEBPACK_IMPORTED_MODULE_17__);
+/* harmony import */ var _wordpress_data__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! @wordpress/data */ "@wordpress/data");
+/* harmony import */ var _wordpress_data__WEBPACK_IMPORTED_MODULE_18___default = /*#__PURE__*/__webpack_require__.n(_wordpress_data__WEBPACK_IMPORTED_MODULE_18__);
+/* harmony import */ var _Components_advanced_panel_body__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! @Components/advanced-panel-body */ "./src/components/advanced-panel-body/index.js");
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
 
 /**
@@ -84,8 +85,10 @@ function _extends() { _extends = Object.assign || function (target) { for (var i
 
 
 
+
 const Settings = props => {
-  props = props.parentProps; // Setup the attributes.
+  props = props.parentProps;
+  const deviceType = Object(_Controls_getPreviewType__WEBPACK_IMPORTED_MODULE_14__["useDeviceType"])(); // Setup the attributes.
 
   const {
     setAttributes,
@@ -201,9 +204,10 @@ const Settings = props => {
       dateDecoration
     }
   } = props;
+  const timelinAlignment = window['timelinAlignment' + deviceType];
 
   const getconnectorBgsize = value => {
-    const getChildBlocks = Object(_wordpress_data__WEBPACK_IMPORTED_MODULE_17__["select"])('core/block-editor').getBlocks(props.clientId);
+    const getChildBlocks = Object(_wordpress_data__WEBPACK_IMPORTED_MODULE_18__["select"])('core/block-editor').getBlocks(props.clientId);
     getChildBlocks.forEach(UAGBcontentTimelineChild => {
       UAGBcontentTimelineChild.attributes.connectorBgsize = value;
     });
@@ -213,7 +217,7 @@ const Settings = props => {
   };
 
   const getborderwidth = value => {
-    const getChildBlocks = Object(_wordpress_data__WEBPACK_IMPORTED_MODULE_17__["select"])('core/block-editor').getBlocks(props.clientId);
+    const getChildBlocks = Object(_wordpress_data__WEBPACK_IMPORTED_MODULE_18__["select"])('core/block-editor').getBlocks(props.clientId);
     getChildBlocks.forEach(UAGBcontentTimelineChild => {
       UAGBcontentTimelineChild.attributes.borderwidth = value;
     });
@@ -223,7 +227,7 @@ const Settings = props => {
   };
 
   const geticonSize = value => {
-    const getChildBlocks = Object(_wordpress_data__WEBPACK_IMPORTED_MODULE_17__["select"])('core/block-editor').getBlocks(props.clientId);
+    const getChildBlocks = Object(_wordpress_data__WEBPACK_IMPORTED_MODULE_18__["select"])('core/block-editor').getBlocks(props.clientId);
     getChildBlocks.forEach(UAGBcontentTimelineChild => {
       UAGBcontentTimelineChild.attributes.iconSize = value;
     });
@@ -233,7 +237,7 @@ const Settings = props => {
   };
 
   const getseparatorwidth = value => {
-    const getChildBlocks = Object(_wordpress_data__WEBPACK_IMPORTED_MODULE_17__["select"])('core/block-editor').getBlocks(props.clientId);
+    const getChildBlocks = Object(_wordpress_data__WEBPACK_IMPORTED_MODULE_18__["select"])('core/block-editor').getBlocks(props.clientId);
     getChildBlocks.forEach(UAGBcontentTimelineChild => {
       UAGBcontentTimelineChild.attributes.separatorwidth = value;
     });
@@ -243,7 +247,7 @@ const Settings = props => {
   };
 
   const getdateFormat = value => {
-    const getChildBlocks = Object(_wordpress_data__WEBPACK_IMPORTED_MODULE_17__["select"])('core/block-editor').getBlocks(props.clientId);
+    const getChildBlocks = Object(_wordpress_data__WEBPACK_IMPORTED_MODULE_18__["select"])('core/block-editor').getBlocks(props.clientId);
     getChildBlocks.forEach(UAGBcontentTimelineChild => {
       UAGBcontentTimelineChild.attributes.dateFormat = value;
     });
@@ -253,7 +257,7 @@ const Settings = props => {
   };
 
   const getTimelineicon = value => {
-    const getChildBlocks = Object(_wordpress_data__WEBPACK_IMPORTED_MODULE_17__["select"])('core/block-editor').getBlocks(props.clientId);
+    const getChildBlocks = Object(_wordpress_data__WEBPACK_IMPORTED_MODULE_18__["select"])('core/block-editor').getBlocks(props.clientId);
     getChildBlocks.forEach(UAGBcontentTimelineChild => {
       UAGBcontentTimelineChild.attributes.icon = value;
     });
@@ -263,7 +267,7 @@ const Settings = props => {
   };
 
   const toggleDisplayPostDate = () => {
-    const getChildBlocks = Object(_wordpress_data__WEBPACK_IMPORTED_MODULE_17__["select"])('core/block-editor').getBlocks(props.clientId);
+    const getChildBlocks = Object(_wordpress_data__WEBPACK_IMPORTED_MODULE_18__["select"])('core/block-editor').getBlocks(props.clientId);
     getChildBlocks.forEach(UAGBcontentTimelineChild => {
       UAGBcontentTimelineChild.attributes.displayPostDate = displayPostDate;
     });
@@ -275,7 +279,7 @@ const Settings = props => {
   const today = new Date();
 
   const blockControls = () => {
-    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_15__["BlockControls"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_15__["BlockAlignmentToolbar"], {
+    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_16__["BlockControls"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_16__["BlockAlignmentToolbar"], {
       value: timelinAlignment,
       onChange: value => {
         setAttributes({
@@ -283,7 +287,7 @@ const Settings = props => {
         });
       },
       controls: ['left', 'center', 'right']
-    }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_15__["AlignmentToolbar"], {
+    }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_16__["AlignmentToolbar"], {
       value: align,
       onChange: value => {
         setAttributes({
@@ -295,7 +299,7 @@ const Settings = props => {
   };
 
   const generalSettings = () => {
-    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_Components_advanced_panel_body__WEBPACK_IMPORTED_MODULE_18__["default"], {
+    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_Components_advanced_panel_body__WEBPACK_IMPORTED_MODULE_19__["default"], {
       title: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_13__["__"])('Layout', 'ultimate-addons-for-gutenberg'),
       initialOpen: true
     }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_Components_multi_buttons_control__WEBPACK_IMPORTED_MODULE_10__["default"], {
@@ -318,19 +322,19 @@ const Settings = props => {
       className: "uagb-multi-button-alignment-control",
       options: [{
         value: 'left',
-        icon: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_16__["Icon"], {
+        icon: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_17__["Icon"], {
           icon: Object(_Controls_renderIcon__WEBPACK_IMPORTED_MODULE_6__["default"])('fa fa-align-left')
         }),
         tooltip: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_13__["__"])('Left', 'ultimate-addons-for-gutenberg')
       }, {
         value: 'center',
-        icon: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_16__["Icon"], {
+        icon: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_17__["Icon"], {
           icon: Object(_Controls_renderIcon__WEBPACK_IMPORTED_MODULE_6__["default"])('fa fa-align-center')
         }),
         tooltip: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_13__["__"])('Center', 'ultimate-addons-for-gutenberg')
       }, {
         value: 'right',
-        icon: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_16__["Icon"], {
+        icon: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_17__["Icon"], {
           icon: Object(_Controls_renderIcon__WEBPACK_IMPORTED_MODULE_6__["default"])('fa fa-align-right')
         }),
         tooltip: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_13__["__"])('Right', 'ultimate-addons-for-gutenberg')
@@ -347,19 +351,19 @@ const Settings = props => {
       className: "uagb-multi-button-alignment-control",
       options: [{
         value: 'left',
-        icon: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_16__["Icon"], {
+        icon: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_17__["Icon"], {
           icon: Object(_Controls_renderIcon__WEBPACK_IMPORTED_MODULE_6__["default"])('fa fa-align-left')
         }),
         tooltip: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_13__["__"])('Left', 'ultimate-addons-for-gutenberg')
       }, {
         value: 'center',
-        icon: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_16__["Icon"], {
+        icon: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_17__["Icon"], {
           icon: Object(_Controls_renderIcon__WEBPACK_IMPORTED_MODULE_6__["default"])('fa fa-align-center')
         }),
         tooltip: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_13__["__"])('Center', 'ultimate-addons-for-gutenberg')
       }, {
         value: 'right',
-        icon: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_16__["Icon"], {
+        icon: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_17__["Icon"], {
           icon: Object(_Controls_renderIcon__WEBPACK_IMPORTED_MODULE_6__["default"])('fa fa-align-right')
         }),
         tooltip: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_13__["__"])('Right', 'ultimate-addons-for-gutenberg')
@@ -404,65 +408,65 @@ const Settings = props => {
       }],
       showIcons: false,
       help: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_13__["__"])('Note: Choose on what breakpoint the Content Timeline will stack. It will be visible on front end only.', 'ultimate-addons-for-gutenberg')
-    }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("h2", null, Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_13__["__"])('Date')), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_16__["ToggleControl"], {
+    }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("h2", null, Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_13__["__"])('Date')), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_17__["ToggleControl"], {
       label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_13__["__"])('Display Date', 'ultimate-addons-for-gutenberg'),
       checked: displayPostDate,
       onChange: toggleDisplayPostDate
-    }), displayPostDate && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_16__["SelectControl"], {
+    }), displayPostDate && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_17__["SelectControl"], {
       label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_13__["__"])('Date Format', 'ultimate-addons-for-gutenberg'),
       value: dateFormat,
       onChange: getdateFormat,
       options: [{
         value: 'M j, Y',
-        label: Object(_wordpress_date__WEBPACK_IMPORTED_MODULE_14__["dateI18n"])('M j, Y', today)
+        label: Object(_wordpress_date__WEBPACK_IMPORTED_MODULE_15__["dateI18n"])('M j, Y', today)
       }, {
         value: 'F j, Y',
-        label: Object(_wordpress_date__WEBPACK_IMPORTED_MODULE_14__["dateI18n"])('F j, Y', today)
+        label: Object(_wordpress_date__WEBPACK_IMPORTED_MODULE_15__["dateI18n"])('F j, Y', today)
       }, {
         value: 'm/d/Y',
-        label: Object(_wordpress_date__WEBPACK_IMPORTED_MODULE_14__["dateI18n"])('m/d/Y', today)
+        label: Object(_wordpress_date__WEBPACK_IMPORTED_MODULE_15__["dateI18n"])('m/d/Y', today)
       }, {
         value: 'm-d-Y',
-        label: Object(_wordpress_date__WEBPACK_IMPORTED_MODULE_14__["dateI18n"])('m-d-Y', today)
+        label: Object(_wordpress_date__WEBPACK_IMPORTED_MODULE_15__["dateI18n"])('m-d-Y', today)
       }, {
         value: 'm.d.Y',
-        label: Object(_wordpress_date__WEBPACK_IMPORTED_MODULE_14__["dateI18n"])('m.d.Y', today)
+        label: Object(_wordpress_date__WEBPACK_IMPORTED_MODULE_15__["dateI18n"])('m.d.Y', today)
       }, {
         value: 'd M Y',
-        label: Object(_wordpress_date__WEBPACK_IMPORTED_MODULE_14__["dateI18n"])('d M Y', today)
+        label: Object(_wordpress_date__WEBPACK_IMPORTED_MODULE_15__["dateI18n"])('d M Y', today)
       }, {
         value: 'd F Y',
-        label: Object(_wordpress_date__WEBPACK_IMPORTED_MODULE_14__["dateI18n"])('d F Y', today)
+        label: Object(_wordpress_date__WEBPACK_IMPORTED_MODULE_15__["dateI18n"])('d F Y', today)
       }, {
         value: 'd-m-Y',
-        label: Object(_wordpress_date__WEBPACK_IMPORTED_MODULE_14__["dateI18n"])('d-m-Y', today)
+        label: Object(_wordpress_date__WEBPACK_IMPORTED_MODULE_15__["dateI18n"])('d-m-Y', today)
       }, {
         value: 'd.m.Y',
-        label: Object(_wordpress_date__WEBPACK_IMPORTED_MODULE_14__["dateI18n"])('d.m.Y', today)
+        label: Object(_wordpress_date__WEBPACK_IMPORTED_MODULE_15__["dateI18n"])('d.m.Y', today)
       }, {
         value: 'd/m/Y',
-        label: Object(_wordpress_date__WEBPACK_IMPORTED_MODULE_14__["dateI18n"])('d/m/Y', today)
+        label: Object(_wordpress_date__WEBPACK_IMPORTED_MODULE_15__["dateI18n"])('d/m/Y', today)
       }, {
         value: 'Y-m-d',
-        label: Object(_wordpress_date__WEBPACK_IMPORTED_MODULE_14__["dateI18n"])('Y-m-d', today)
+        label: Object(_wordpress_date__WEBPACK_IMPORTED_MODULE_15__["dateI18n"])('Y-m-d', today)
       }, {
         value: 'Y.m.d',
-        label: Object(_wordpress_date__WEBPACK_IMPORTED_MODULE_14__["dateI18n"])('Y.m.d', today)
+        label: Object(_wordpress_date__WEBPACK_IMPORTED_MODULE_15__["dateI18n"])('Y.m.d', today)
       }, {
         value: 'Y/m/d',
-        label: Object(_wordpress_date__WEBPACK_IMPORTED_MODULE_14__["dateI18n"])('Y/m/d', today)
+        label: Object(_wordpress_date__WEBPACK_IMPORTED_MODULE_15__["dateI18n"])('Y/m/d', today)
       }, {
         value: 'M, Y',
-        label: Object(_wordpress_date__WEBPACK_IMPORTED_MODULE_14__["dateI18n"])('M, Y', today)
+        label: Object(_wordpress_date__WEBPACK_IMPORTED_MODULE_15__["dateI18n"])('M, Y', today)
       }, {
         value: 'M Y',
-        label: Object(_wordpress_date__WEBPACK_IMPORTED_MODULE_14__["dateI18n"])('M Y', today)
+        label: Object(_wordpress_date__WEBPACK_IMPORTED_MODULE_15__["dateI18n"])('M Y', today)
       }, {
         value: 'F, Y',
-        label: Object(_wordpress_date__WEBPACK_IMPORTED_MODULE_14__["dateI18n"])('F, Y', today)
+        label: Object(_wordpress_date__WEBPACK_IMPORTED_MODULE_15__["dateI18n"])('F, Y', today)
       }, {
         value: 'F Y',
-        label: Object(_wordpress_date__WEBPACK_IMPORTED_MODULE_14__["dateI18n"])('F Y', today)
+        label: Object(_wordpress_date__WEBPACK_IMPORTED_MODULE_15__["dateI18n"])('F Y', today)
       }, {
         value: 'custom',
         label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_13__["__"])('Normal Text', 'ultimate-addons-for-gutenberg')
@@ -471,7 +475,7 @@ const Settings = props => {
   };
 
   const spacingSettings = () => {
-    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_Components_advanced_panel_body__WEBPACK_IMPORTED_MODULE_18__["default"], {
+    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_Components_advanced_panel_body__WEBPACK_IMPORTED_MODULE_19__["default"], {
       title: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_13__["__"])('Spacing', 'ultimate-addons-for-gutenberg'),
       initialOpen: true
     }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_Components_spacing_control__WEBPACK_IMPORTED_MODULE_9__["default"], _extends({}, props, {
@@ -614,7 +618,7 @@ const Settings = props => {
   };
 
   const connectorSettings = () => {
-    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_Components_advanced_panel_body__WEBPACK_IMPORTED_MODULE_18__["default"], {
+    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_Components_advanced_panel_body__WEBPACK_IMPORTED_MODULE_19__["default"], {
       title: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_13__["__"])('Connector', 'ultimate-addons-for-gutenberg'),
       initialOpen: false
     }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_Components_icon_picker__WEBPACK_IMPORTED_MODULE_0__["default"], {
@@ -657,7 +661,7 @@ const Settings = props => {
   };
 
   const timelineItemSettings = () => {
-    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_Components_advanced_panel_body__WEBPACK_IMPORTED_MODULE_18__["default"], {
+    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_Components_advanced_panel_body__WEBPACK_IMPORTED_MODULE_19__["default"], {
       title: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_13__["__"])('Timeline Item', 'ultimate-addons-for-gutenberg'),
       initialOpen: false
     }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_Components_multi_buttons_control__WEBPACK_IMPORTED_MODULE_10__["default"], {
@@ -696,7 +700,7 @@ const Settings = props => {
   };
 
   const timelineItemColorSettings = () => {
-    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_Components_advanced_panel_body__WEBPACK_IMPORTED_MODULE_18__["default"], {
+    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_Components_advanced_panel_body__WEBPACK_IMPORTED_MODULE_19__["default"], {
       title: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_13__["__"])('Timeline Item', 'ultimate-addons-for-gutenberg'),
       initialOpen: false
     }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("h2", null, Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_13__["__"])('Heading', 'ultimate-addons-for-gutenberg')), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_Components_color_control_advanced_pop_color_control_js__WEBPACK_IMPORTED_MODULE_7__["default"], {
@@ -885,7 +889,7 @@ const Settings = props => {
   };
 
   const dateColorSettings = () => {
-    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_Components_advanced_panel_body__WEBPACK_IMPORTED_MODULE_18__["default"], {
+    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_Components_advanced_panel_body__WEBPACK_IMPORTED_MODULE_19__["default"], {
       title: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_13__["__"])('Date', 'ultimate-addons-for-gutenberg'),
       initialOpen: false
     }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_Components_color_control_advanced_pop_color_control_js__WEBPACK_IMPORTED_MODULE_7__["default"], {
@@ -978,7 +982,7 @@ const Settings = props => {
   };
 
   const connectorColorSettings = () => {
-    const iconColorSettings = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_Components_advanced_panel_body__WEBPACK_IMPORTED_MODULE_18__["default"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_Components_color_control_advanced_pop_color_control_js__WEBPACK_IMPORTED_MODULE_7__["default"], {
+    const iconColorSettings = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_Components_advanced_panel_body__WEBPACK_IMPORTED_MODULE_19__["default"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_Components_color_control_advanced_pop_color_control_js__WEBPACK_IMPORTED_MODULE_7__["default"], {
       label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_13__["__"])('Connector Color', 'ultimate-addons-for-gutenberg'),
       colorValue: separatorColor ? separatorColor : '',
       onColorChange: value => setAttributes({
@@ -1003,7 +1007,7 @@ const Settings = props => {
         separatorBorder: value
       })
     }));
-    const iconFocusSettings = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_Components_advanced_panel_body__WEBPACK_IMPORTED_MODULE_18__["default"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_Components_color_control_advanced_pop_color_control_js__WEBPACK_IMPORTED_MODULE_7__["default"], {
+    const iconFocusSettings = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_Components_advanced_panel_body__WEBPACK_IMPORTED_MODULE_19__["default"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_Components_color_control_advanced_pop_color_control_js__WEBPACK_IMPORTED_MODULE_7__["default"], {
       label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_13__["__"])('Connector Color', 'ultimate-addons-for-gutenberg'),
       colorValue: separatorFillColor ? separatorFillColor : '',
       onColorChange: value => setAttributes({
@@ -1028,7 +1032,7 @@ const Settings = props => {
         borderFocus: value
       })
     }));
-    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_Components_advanced_panel_body__WEBPACK_IMPORTED_MODULE_18__["default"], {
+    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_Components_advanced_panel_body__WEBPACK_IMPORTED_MODULE_19__["default"], {
       title: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_13__["__"])('Connector', 'ultimate-addons-for-gutenberg'),
       initialOpen: false
     }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_Components_tabs__WEBPACK_IMPORTED_MODULE_11__["default"], {
@@ -1082,7 +1086,7 @@ const Settings = props => {
     });
   }
 
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_1___default.a.Fragment, null, blockControls(), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_15__["InspectorControls"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_Components_inspector_tabs_InspectorTabs_js__WEBPACK_IMPORTED_MODULE_4__["default"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_Components_inspector_tabs_InspectorTab_js__WEBPACK_IMPORTED_MODULE_5__["default"], _Components_inspector_tabs_InspectorTab_js__WEBPACK_IMPORTED_MODULE_5__["UAGTabs"].general, generalSettings(), timelineItemSettings(), connectorSettings()), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_Components_inspector_tabs_InspectorTab_js__WEBPACK_IMPORTED_MODULE_5__["default"], _Components_inspector_tabs_InspectorTab_js__WEBPACK_IMPORTED_MODULE_5__["UAGTabs"].style, spacingSettings(), timelineItemColorSettings(), displayPostDate && dateColorSettings(), connectorColorSettings()), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_Components_inspector_tabs_InspectorTab_js__WEBPACK_IMPORTED_MODULE_5__["default"], _extends({}, _Components_inspector_tabs_InspectorTab_js__WEBPACK_IMPORTED_MODULE_5__["UAGTabs"].advance, {
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_1___default.a.Fragment, null, blockControls(), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_16__["InspectorControls"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_Components_inspector_tabs_InspectorTabs_js__WEBPACK_IMPORTED_MODULE_4__["default"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_Components_inspector_tabs_InspectorTab_js__WEBPACK_IMPORTED_MODULE_5__["default"], _Components_inspector_tabs_InspectorTab_js__WEBPACK_IMPORTED_MODULE_5__["UAGTabs"].general, generalSettings(), timelineItemSettings(), connectorSettings()), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_Components_inspector_tabs_InspectorTab_js__WEBPACK_IMPORTED_MODULE_5__["default"], _Components_inspector_tabs_InspectorTab_js__WEBPACK_IMPORTED_MODULE_5__["UAGTabs"].style, spacingSettings(), timelineItemColorSettings(), displayPostDate && dateColorSettings(), connectorColorSettings()), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_Components_inspector_tabs_InspectorTab_js__WEBPACK_IMPORTED_MODULE_5__["default"], _extends({}, _Components_inspector_tabs_InspectorTab_js__WEBPACK_IMPORTED_MODULE_5__["UAGTabs"].advance, {
     parentProps: props
   })))), loadHeadGoogleFonts, loadSubHeadGoogleFonts, loadDateGoogleFonts);
 };

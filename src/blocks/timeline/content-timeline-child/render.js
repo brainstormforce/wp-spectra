@@ -5,6 +5,7 @@ import styles from './editor.lazy.scss';
 import { dateI18n } from '@wordpress/date';
 
 import { __ } from '@wordpress/i18n';
+import { useDeviceType } from '@Controls/getPreviewType';
 
 import { createBlock } from '@wordpress/blocks';
 
@@ -19,6 +20,7 @@ const Render = ( props ) => {
 		};
 	}, [] );
 	props = props.parentProps;
+	const deviceType = useDeviceType();
 
 	// Setup the attributes.
 	const {
@@ -26,10 +28,10 @@ const Render = ( props ) => {
 		insertBlocksAfter,
 		mergeBlocks,
 		onReplace,
+		attributes,
 		attributes: {
 			block_id,
 			headingTag,
-			timelinAlignment,
 			icon,
 			t_date,
 			displayPostDate,
@@ -39,6 +41,9 @@ const Render = ( props ) => {
 			content,
 		},
 	} = props;
+
+	const timelinAlignment = 'undefined' !== deviceType ? attributes['timelinAlignment' + deviceType ] : attributes.timelinAlignment;
+
 
 	const splitBlock = ( before, after, ...blocks ) => {
 		if ( after ) {

@@ -18,6 +18,7 @@ import MultiButtonsControl from '@Components/multi-buttons-control';
 import UAGTabsControl from '@Components/tabs';
 import ResponsiveSlider from '@Components/responsive-slider';
 import { __ } from '@wordpress/i18n';
+import { useDeviceType } from '@Controls/getPreviewType';
 
 import { dateI18n } from '@wordpress/date';
 import {
@@ -35,12 +36,11 @@ import {
 
 import { select } from '@wordpress/data';
 
-
-
 import UAGAdvancedPanelBody from '@Components/advanced-panel-body';
 
 const Settings = ( props ) => {
 	props = props.parentProps;
+	const deviceType = useDeviceType();
 
 	// Setup the attributes.
 	const {
@@ -157,6 +157,8 @@ const Settings = ( props ) => {
 			dateDecoration,
 		},
 	} = props;
+
+	const timelinAlignment = window['timelinAlignment' + deviceType ];
 
 	const getconnectorBgsize = ( value ) => {
 		const getChildBlocks = select( 'core/block-editor' ).getBlocks(
