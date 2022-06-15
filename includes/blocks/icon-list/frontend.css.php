@@ -37,6 +37,9 @@ $gap_fallback  = UAGB_Block_Helper::get_fallback_number( $attr['gap'], 'gap', $b
 $mgap_fallback = UAGB_Block_Helper::get_fallback_number( $attr['gapMobile'], 'gapMobile', $block_name );
 $tgap_fallback = UAGB_Block_Helper::get_fallback_number( $attr['gapTablet'], 'gapTablet', $block_name );
 
+$border_fallback  = UAGB_Block_Helper::get_fallback_number( $attr['border'], 'border', $block_name );
+$mborder_fallback = UAGB_Block_Helper::get_fallback_number( $attr['borderMobile'], 'borderMobile', $block_name );
+$tborder_fallback = UAGB_Block_Helper::get_fallback_number( $attr['borderTablet'], 'borderTablet', $block_name );
 
 $selectors = array(
 	// Desktop Icon Size CSS starts.
@@ -49,10 +52,16 @@ $selectors = array(
 		'font-size' => $icon_size,
 	),
 	' .wp-block-uagb-icon-list-child .uagb-icon-list__source-wrap ' => array(
-		'padding'       => UAGB_Helper::get_css_value( $attr['bgSize'], $attr['bgSizeType'] ),
-		'border-radius' => UAGB_Helper::get_css_value( $attr['borderRadius'], 'px' ),
-		'border-style'  => ( $attr['border'] > 0 ) ? 'solid' : '',
-		'border-width'  => UAGB_Helper::get_css_value( $attr['border'], $attr['borderType'] ),
+		'padding'       => UAGB_Helper::get_css_value(
+			UAGB_Block_Helper::get_fallback_number( $attr['bgSize'], 'bgSize', $block_name ),
+			$attr['bgSizeType']
+		),
+		'border-radius' => UAGB_Helper::get_css_value(
+			UAGB_Block_Helper::get_fallback_number( $attr['borderRadius'], 'borderRadius', $block_name ),
+			'px'
+		),
+		'border-style'  => ( $border_fallback > 0 ) ? 'solid' : '',
+		'border-width'  => UAGB_Helper::get_css_value( $border_fallback, $attr['borderType'] ),
 		'align-self'    => 'top' === $attr['iconPosition'] ? 'flex-start' : 'center',
 	),
 	' .uagb-icon-list__wrap'         => array(
@@ -90,10 +99,16 @@ $m_selectors = array(
 		'font-size' => $m_icon_size,
 	),
 	' .wp-block-uagb-icon-list-child .uagb-icon-list__source-wrap ' => array(
-		'border-radius' => UAGB_Helper::get_css_value( $attr['borderRadiusMobile'], $attr['borderRadiusType'] ),
-		'padding'       => UAGB_Helper::get_css_value( $attr['bgSizeMobile'], 'px' ),
-		'border-style'  => ( $attr['borderMobile'] > 0 ) ? 'solid' : '',
-		'border-width'  => UAGB_Helper::get_css_value( $attr['borderMobile'], $attr['borderType'] ),
+		'border-radius' => UAGB_Helper::get_css_value(
+			UAGB_Block_Helper::get_fallback_number( $attr['borderRadiusMobile'], 'borderRadiusMobile', $block_name ),
+			$attr['borderRadiusType']
+		),
+		'padding'       => UAGB_Helper::get_css_value(
+			UAGB_Block_Helper::get_fallback_number( $attr['bgSizeMobile'], 'bgSizeMobile', $block_name ),
+			'px'
+		),
+		'border-style'  => ( $mborder_fallback > 0 ) ? 'solid' : '',
+		'border-width'  => UAGB_Helper::get_css_value( $mborder_fallback, $attr['borderType'] ),
 	),
 );
 
@@ -107,10 +122,16 @@ $t_selectors = array(
 		'font-size' => $t_icon_size,
 	),
 	' .wp-block-uagb-icon-list-child .uagb-icon-list__source-wrap ' => array(
-		'border-radius' => UAGB_Helper::get_css_value( $attr['borderRadiusTablet'], $attr['borderRadiusType'] ),
-		'padding'       => UAGB_Helper::get_css_value( $attr['bgSizeTablet'], 'px' ),
-		'border-style'  => ( $attr['borderTablet'] > 0 ) ? 'solid' : '',
-		'border-width'  => UAGB_Helper::get_css_value( $attr['borderTablet'], $attr['borderType'] ),
+		'border-radius' => UAGB_Helper::get_css_value(
+			UAGB_Block_Helper::get_fallback_number( $attr['borderRadiusTablet'], 'borderRadiusTablet', $block_name ),
+			$attr['borderRadiusType']
+		),
+		'padding'       => UAGB_Helper::get_css_value(
+			UAGB_Block_Helper::get_fallback_number( $attr['bgSizeTablet'], 'bgSizeTablet', $block_name ),
+			'px'
+		),
+		'border-style'  => ( $tborder_fallback > 0 ) ? 'solid' : '',
+		'border-width'  => UAGB_Helper::get_css_value( $tborder_fallback, $attr['borderType'] ),
 	),
 );
 
