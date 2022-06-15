@@ -37,6 +37,10 @@ $title_space_fallback = UAGB_Block_Helper::get_fallback_number( $attr['titleSpac
 $title_space_tablet_fallback = UAGB_Block_Helper::get_fallback_number( $attr['titleSpaceTablet'], 'titleSpaceTablet', $block_name );
 $title_space_mobile_fallback = UAGB_Block_Helper::get_fallback_number( $attr['titleSpaceMobile'], 'titleSpaceMobile', $block_name );
 
+$column_fallback = UAGB_Block_Helper::get_fallback_number( $column_fallback, 'columns', $block_name );
+$attr['tcolumns'] = is_numeric( $attr['tcolumns'] ) ? $attr['tcolumns'] : $column_fallback;
+$attr['mcolumns'] = is_numeric( $attr['mcolumns'] ) ? $attr['mcolumns'] : $attr['tcolumns'];
+
 $align = $attr['headingAlign'];
 if ( 'left' === $align ) {
 	$align = 'flex-start';
@@ -90,7 +94,7 @@ $selectors = array(
 	),
 );
 
-$selectors[ ' .uagb-rest_menu__wrap.uagb-rm__desk-column-' . $attr['columns'] . ':nth-child(' . $attr['columns'] . 'n+1)' ] = array(
+$selectors[ ' .uagb-rest_menu__wrap.uagb-rm__desk-column-' . $column_fallback . ':nth-child(' . $column_fallback . 'n+1)' ] = array(
 	'margin-left' => '0',
 	'clear'       => 'left',
 );
@@ -104,7 +108,7 @@ $t_selectors = array(
 		'padding-right' => UAGB_Helper::get_css_value( ( $attr['columnGapTablet'] / 2 ), $attr['columnGapType'] ),
 		'margin-bottom' => UAGB_Helper::get_css_value( $row_gap_tablet_fallback, $attr['rowGapType'] ),
 	),
-	' .uagb-rest_menu__wrap.uagb-rm__desk-column-' . $attr['columns'] . ':nth-child(' . $attr['columns'] . 'n+1)' => array(
+	' .uagb-rest_menu__wrap.uagb-rm__desk-column-' . $column_fallback . ':nth-child(' . $column_fallback . 'n+1)' => array(
 		'margin-left' => 'unset',
 		'clear'       => 'unset',
 	),
@@ -137,7 +141,7 @@ $m_selectors = array(
 		'padding-right' => UAGB_Helper::get_css_value( ( $attr['columnGapMobile'] / 2 ), $attr['columnGapType'] ),
 		'margin-bottom' => UAGB_Helper::get_css_value( $row_gap_mobile_fallback, $attr['rowGapType'] ),
 	),
-	' .uagb-rest_menu__wrap.uagb-rm__desk-column-' . $attr['columns'] . ':nth-child(' . $attr['columns'] . 'n+1)' => array(
+	' .uagb-rest_menu__wrap.uagb-rm__desk-column-' . $column_fallback . ':nth-child(' . $column_fallback . 'n+1)' => array(
 		'margin-left' => 'unset',
 		'clear'       => 'unset',
 	),
