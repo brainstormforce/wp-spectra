@@ -334,7 +334,7 @@ const Settings = ( props ) => {
 							setAttributes( { autoplaySpeed: value } )
 						}
 						min={ 100 }
-						max={ 10000 }
+						max={ 15000 }
 						displayUnit={ false }
 					/>
 				) }
