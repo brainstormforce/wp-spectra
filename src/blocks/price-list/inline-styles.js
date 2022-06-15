@@ -116,6 +116,10 @@ function RestMenuStyle( props ) {
 
 	const seperatorThicknessFallback = getFallbackNumber( seperatorThickness, 'seperatorThickness', blockName );
 
+	const columnsFallback = getFallbackNumber( columns, 'columns', blockName );
+	const tcolumnsFallback = isNaN( tcolumns ) ? columnsFallback : tcolumns;
+	const mcolumnsFallback = isNaN( mcolumns ) ? tcolumnsFallback : mcolumns;
+
 	const rowGapFallback = getFallbackNumber( rowGap, 'rowGap', blockName );
 	const rowGapTabletFallback = getFallbackNumber( rowGapTablet, 'rowGapTablet', blockName );
 	const rowGapMobileFallback = getFallbackNumber( rowGapMobile, 'rowGapMobile', blockName );
@@ -241,9 +245,9 @@ function RestMenuStyle( props ) {
 
 	selectors[
 		' .uagb-rest_menu__wrap.uagb-rm__desk-column-' +
-			columns +
+			columnsFallback +
 			':nth-child(' +
-			columns +
+			columnsFallback +
 			'n+1)'
 	] = {
 		'margin-left': 0,
@@ -333,9 +337,9 @@ function RestMenuStyle( props ) {
 
 	tabletSelectors[
 		' .uagb-rest_menu__wrap.uagb-rm__desk-column-' +
-			columns +
+			columnsFallback +
 			':nth-child(' +
-			columns +
+			columnsFallback +
 			'n+1)'
 	] = {
 		'margin-left': 'unset',
@@ -344,9 +348,9 @@ function RestMenuStyle( props ) {
 
 	tabletSelectors[
 		' .uagb-rest_menu__wrap.uagb-rm__tablet-column-' +
-			tcolumns +
+			tcolumnsFallback +
 			':nth-child(' +
-			tcolumns +
+			tcolumnsFallback +
 			'n+1)'
 	] = {
 		'margin-left': 0,
@@ -447,9 +451,9 @@ function RestMenuStyle( props ) {
 
 	mobileSelectors[
 		' .uagb-rest_menu__wrap.uagb-rm__mobile-column-' +
-			mcolumns +
+			mcolumnsFallback +
 			':nth-child(' +
-			mcolumns +
+			mcolumnsFallback +
 			'n+1)'
 	] = {
 		'margin-left': 0,

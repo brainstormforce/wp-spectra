@@ -150,11 +150,9 @@ const attributes = {
 	},
 	tcolumns: {
 		type: 'number',
-		default: 2,
 	},
 	mcolumns: {
 		type: 'number',
-		default: 1,
 	},
 	rowGap: {
 		type: 'number',
