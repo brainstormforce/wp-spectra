@@ -49,7 +49,7 @@ const attributes = {
 	},
 	smoothScrollDelay: {
 		type: 'number',
-		default: 800,
+		default: 200,
 	},
 	smoothScrollOffset: {
 		type: 'number',

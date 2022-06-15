@@ -577,7 +577,7 @@ if ( ! class_exists( 'UAGB_Table_Of_Content' ) ) {
 									),
 									'smoothScrollDelay'    => array(
 										'type'    => 'number',
-										'default' => 800,
+										'default' => 200,
 									),
 									'smoothScrollOffset'   => array(
 										'type'    => 'number',
