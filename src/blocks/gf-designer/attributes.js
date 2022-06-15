@@ -174,6 +174,18 @@ const attributes = { // eslint-disable-line no-unused-vars
 			styleType: 'btn-border-width'
 		},
 	},
+	buttonBorderWidthTablet: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'btn-border-width'
+		},
+	},
+	buttonBorderWidthMobile: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'btn-border-width'
+		},
+	},
 	buttonBorderWidthType: {
 		type: 'string',
 		default: 'px',
@@ -416,6 +428,7 @@ const attributes = { // eslint-disable-line no-unused-vars
 		UAGCopyPaste: {
 			styleType: 'textarea-height'
 		},
+		default: 'auto'
 	},
 	textAreaHeightTablet: {
 		type: 'number',

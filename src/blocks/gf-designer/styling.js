@@ -234,7 +234,7 @@ function styling( props ) {
 			'color': fieldInputColor,
 			'border-style': fieldBorderStyle,
 			'border-color': fieldBorderColor,
-			'border-width': generateCSSUnit( 
+			'border-width': generateCSSUnit(
 				getFallbackNumber( fieldBorderWidth, 'fieldBorderWidth', blockName ),
 				fieldBorderWidthType
 			),
@@ -400,7 +400,7 @@ function styling( props ) {
 				fieldpaddingUnit
 			),
 		},
-		' textarea': {
+		' .gform_wrapper.gravity-theme .gfield textarea': {
 			'background-color': fieldBgColor,
 			'color': fieldInputColor,
 			'border-color': fieldBorderColor,

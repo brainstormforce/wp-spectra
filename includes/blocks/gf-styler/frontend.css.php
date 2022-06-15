@@ -644,7 +644,7 @@ $t_selectors = array(
 	),
 	' .uagb-gf-styler__field-style-box input[type="checkbox"]:checked + label:before' => array(
 		'border-width' => UAGB_Helper::get_css_value(
-			UAGB_Block_Helper::get_fallback_number( $attr['fieldBorderWidth'], 'fieldBorderWidth', $block_name ),
+			UAGB_Block_Helper::get_fallback_number( $attr['fieldBorderWidthTablet'], 'fieldBorderWidthTablet', $block_name ),
 			$attr['fieldBorderWidthType']
 		),
 		'font-size'    => 'calc( ' . UAGB_Block_Helper::get_fallback_number( $attr['radioCheckSizeTablet'], 'radioCheckSizeTablet', $block_name ) . 'px / 1.2 )',
@@ -710,6 +710,10 @@ $t_selectors = array(
 			UAGB_Block_Helper::get_fallback_number( $attr['fieldSpacingTablet'], 'fieldSpacingTablet', $block_name ),
 			'px'
 		),
+		'border-width'   => UAGB_Helper::get_css_value(
+			UAGB_Block_Helper::get_fallback_number( $attr['fieldBorderWidthTablet'], 'fieldBorderWidthTablet', $block_name ),
+			$attr['fieldBorderWidthType']
+		),
 	),
 	' .gform_wrapper.gravity-theme .gfield textarea.large' => array(
 		'padding-left'   => UAGB_Helper::get_css_value( $attr['fieldleftTabletPadding'], $attr['fieldtabletPaddingUnit'] ),
@@ -724,7 +728,14 @@ $t_selectors = array(
 			UAGB_Block_Helper::get_fallback_number( $attr['fieldSpacingTablet'], 'fieldSpacingTablet', $block_name ),
 			'px'
 		),
-		'height'         => UAGB_Block_Helper::get_fallback_number( $attr['textAreaHeightTablet'], 'textAreaHeightTablet', $block_name ),
+		'height'         => 'auto' === UAGB_Block_Helper::get_fallback_number( $attr['textAreaHeightTablet'], 'textAreaHeightTablet', $block_name ) ? UAGB_Block_Helper::get_fallback_number( $attr['textAreaHeightTablet'], 'textAreaHeightTablet', $block_name ) : UAGB_Helper::get_css_value(
+			UAGB_Block_Helper::get_fallback_number( $attr['textAreaHeightTablet'], 'textAreaHeightTablet', $block_name ),
+			'px'
+		),
+		'border-width'   => UAGB_Helper::get_css_value(
+			UAGB_Block_Helper::get_fallback_number( $attr['fieldBorderWidthTablet'], 'fieldBorderWidthTablet', $block_name ),
+			$attr['fieldBorderWidthType']
+		),
 	),
 	' input.gform_button'                                  => array(
 		'padding-left'   => UAGB_Helper::get_css_value( $attr['buttonleftTabletPadding'], $attr['buttontabletPaddingUnit'] ),
@@ -754,7 +765,7 @@ $m_selectors = array(
 	),
 	' .uagb-gf-styler__field-style-box input[type="checkbox"]:checked + label:before' => array(
 		'border-width' => UAGB_Helper::get_css_value(
-			UAGB_Block_Helper::get_fallback_number( $attr['fieldBorderWidth'], 'fieldBorderWidth', $block_name ),
+			UAGB_Block_Helper::get_fallback_number( $attr['fieldBorderWidthMobile'], 'fieldBorderWidthMobile', $block_name ),
 			$attr['fieldBorderWidthType']
 		),
 		'font-size'    => 'calc( ' . UAGB_Block_Helper::get_fallback_number( $attr['radioCheckSizeMobile'], 'radioCheckSizeMobile', $block_name ) . 'px / 1.2 )',
@@ -804,15 +815,11 @@ $m_selectors = array(
 			'px'
 		),
 	),
-	' input:not([type=submit])'                            => array(
+	' .gform_wrapper.gravity-theme input:not([type=submit])' => array(
 		'padding-left'   => UAGB_Helper::get_css_value( $attr['fieldleftMobilePadding'], $attr['fieldmobilePaddingUnit'] ),
 		'padding-right'  => UAGB_Helper::get_css_value( $attr['fieldrightMobilePadding'], $attr['fieldmobilePaddingUnit'] ),
 		'padding-top'    => UAGB_Helper::get_css_value( $attr['fieldtopMobilePadding'], $attr['fieldmobilePaddingUnit'] ),
 		'padding-bottom' => UAGB_Helper::get_css_value( $attr['fieldbottomMobilePadding'], $attr['fieldmobilePaddingUnit'] ),
-		'border-width'   => UAGB_Helper::get_css_value(
-			UAGB_Block_Helper::get_fallback_number( $attr['fieldBorderWidthMobile'], 'fieldBorderWidthMobile', $block_name ),
-			$attr['fieldBorderWidthType']
-		),
 		'margin-top'     => UAGB_Helper::get_css_value(
 			UAGB_Block_Helper::get_fallback_number( $attr['fieldLabelSpacingMobile'], 'fieldLabelSpacingMobile', $block_name ),
 			'px'
@@ -820,6 +827,10 @@ $m_selectors = array(
 		'margin-bottom'  => UAGB_Helper::get_css_value(
 			UAGB_Block_Helper::get_fallback_number( $attr['fieldSpacingMobile'], 'fieldSpacingMobile', $block_name ),
 			'px'
+		),
+		'border-width'   => UAGB_Helper::get_css_value(
+			UAGB_Block_Helper::get_fallback_number( $attr['fieldBorderWidthMobile'], 'fieldBorderWidthMobile', $block_name ),
+			$attr['fieldBorderWidthType']
 		),
 	),
 	' .gform_wrapper.gravity-theme .gfield textarea.large' => array(
@@ -835,7 +846,14 @@ $m_selectors = array(
 			UAGB_Block_Helper::get_fallback_number( $attr['fieldSpacingMobile'], 'fieldSpacingMobile', $block_name ),
 			'px'
 		),
-		'height'         => UAGB_Block_Helper::get_fallback_number( $attr['textAreaHeightMobile'], 'textAreaHeightMobile', $block_name ),
+		'height'         => 'auto' === UAGB_Block_Helper::get_fallback_number( $attr['textAreaHeightMobile'], 'textAreaHeightMobile', $block_name ) ? UAGB_Block_Helper::get_fallback_number( $attr['textAreaHeightMobile'], 'textAreaHeightMobile', $block_name ) : UAGB_Helper::get_css_value(
+			UAGB_Block_Helper::get_fallback_number( $attr['textAreaHeightMobile'], 'textAreaHeightMobile', $block_name ),
+			'px'
+		),
+		'border-width'   => UAGB_Helper::get_css_value(
+			UAGB_Block_Helper::get_fallback_number( $attr['fieldBorderWidthMobile'], 'fieldBorderWidthMobile', $block_name ),
+			$attr['fieldBorderWidthType']
+		),
 	),
 	' input.gform_button'                                  => array(
 		'padding-left'   => UAGB_Helper::get_css_value( $attr['buttonleftMobilePadding'], $attr['buttonmobilePaddingUnit'] ),
