@@ -33,12 +33,6 @@ registerBlockType( 'uagb/image', {
 			text: false,
 			background: false
 		},
-		__experimentalBorder: {
-			radius: true,
-			__experimentalDefaultControls: {
-				radius: true
-			}
-		}
 	},
 	getEditWrapperProps( { align } ) {
 		return {
