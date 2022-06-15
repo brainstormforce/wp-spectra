@@ -90,6 +90,10 @@ const devices = [
 
 		settingsPopup = '.uag-typography-options';
 	}
+	if ( eventTriggerElement.closest( '.uag-box-shadow-options.active' ) ) {
+
+		settingsPopup = '.uag-box-shadow-options';
+	}
 	const { getSelectedBlock } = select( 'core/block-editor' );
 	const blockName = getSelectedBlock()?.name;
 	const uagSettingState = getUAGEditorStateLocalStorage( 'uagSettingState' );
