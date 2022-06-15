@@ -12,12 +12,12 @@
 // If need be please add a new function for Info Box and go ahead.
 UAGB_Block_JS::blocks_buttons_gfont( $attr );
 
-$alignment       = ( 'left' === $attr['align'] ) ? 'flex-start' : ( ( 'right' === $attr['align'] ) ? 'flex-end' : 'center' );
+$alignment        = ( 'left' === $attr['align'] ) ? 'flex-start' : ( ( 'right' === $attr['align'] ) ? 'flex-end' : 'center' );
 $alignment_tablet = ( 'left' === $attr['alignTablet'] ) ? 'flex-start' : ( ( 'right' === $attr['alignTablet'] ) ? 'flex-end' : ( ( 'center' === $attr['alignTablet'] ) ? 'center' : $alignment ) );
 $alignment_mobile = ( 'left' === $attr['alignMobile'] ) ? 'flex-start' : ( ( 'right' === $attr['alignMobile'] ) ? 'flex-end' : ( ( 'center' === $attr['alignMobile'] ) ? 'center' : $alignment_tablet ) );
 
 
-$icon_layout       = $attr['icon_layout'];
+$icon_layout        = $attr['icon_layout'];
 $icon_layout_tablet = ! empty( $attr['iconLayoutTablet'] ) ? $attr['iconLayoutTablet'] : $icon_layout;
 $icon_layout_mobile = ! empty( $attr['iconLayoutMobile'] ) ? $attr['iconLayoutMobile'] : $icon_layout_tablet;
 
@@ -28,7 +28,7 @@ $icon_size   = UAGB_Helper::get_css_value( $attr['size'], $attr['sizeType'] );
 $m_icon_size = UAGB_Helper::get_css_value( $attr['sizeMobile'], $attr['sizeType'] );
 $t_icon_size = UAGB_Helper::get_css_value( $attr['sizeTablet'], $attr['sizeType'] );
 
-$position       = 'top' === $attr['iconPosition'] ? 'flex-start' : 'center';
+$position        = 'top' === $attr['iconPosition'] ? 'flex-start' : 'center';
 $tablet_position = '';
 $mobile_position = '';
 
