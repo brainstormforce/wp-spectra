@@ -530,9 +530,9 @@
 }
 
 /* RIGHT CSS STARTS */
-.uagb-timeline__right {
-	text-align: right;
-}
+// .uagb-timeline__right {
+// 	text-align: right;
+// }
 
 .uagb-timeline__right-block .uagb-timeline__day-right .uagb-timeline__arrow::after {
 	border-left: 13px solid #eee;
@@ -1295,7 +1295,8 @@
 		-ms-transform: translateY(-50%);
 	}
 
-	.uagb-timeline__center-block.uagb-timeline__responsive-tablet {
+	.uagb-timeline__center-block.uagb-timeline__responsive-tablet,
+	.uagb-timeline__center-block.uagb-timeline__responsive-tablet .uagb-timeline__right {
 		text-align: left;
 	}
 
