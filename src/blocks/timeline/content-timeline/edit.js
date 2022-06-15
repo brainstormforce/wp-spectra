@@ -82,6 +82,7 @@ const ContentTimelineComponent = ( props ) => {
     useEffect( () => {
         // Replacement for componentDidUpdate.
         const blockStyling = contentTimelineStyle( props );
+        const { attributes } = props;
 
         addBlockEditorDynamicStyles( 'uagb-content-timeline-style-' + props.clientId.substr( 0, 8 ), blockStyling );
         if (
@@ -93,11 +94,11 @@ const ContentTimelineComponent = ( props ) => {
             return;
         }
 
+        const timelinAlignment = 'undefined' !== deviceType ? attributes['timelinAlignment' + deviceType ] : attributes.timelinAlignment;
+
         select( 'core/block-editor' )
             .getBlocksByClientId( props.clientId )[0]
             .innerBlocks.forEach( function( block, key ) {
-
-                const timelinAlignment = 'undefined' !== deviceType ? block.attributes['timelinAlignment' + deviceType ] : block.attributes.timelinAlignment;
 
                 let alignClass = '';
                 if ( 'left' === timelinAlignment ) {

@@ -95819,14 +95819,17 @@ const ContentTimelineComponent = props => {
   Object(react__WEBPACK_IMPORTED_MODULE_1__["useEffect"])(() => {
     // Replacement for componentDidUpdate.
     const blockStyling = Object(_styling__WEBPACK_IMPORTED_MODULE_0__["default"])(props);
+    const {
+      attributes
+    } = props;
     Object(_Controls_addBlockEditorDynamicStyles__WEBPACK_IMPORTED_MODULE_5__["default"])('uagb-content-timeline-style-' + props.clientId.substr(0, 8), blockStyling);
 
     if (null === Object(_wordpress_data__WEBPACK_IMPORTED_MODULE_3__["select"])('core/block-editor').getBlocksByClientId(props.clientId)[0]) {
       return;
     }
 
+    const timelinAlignment = 'undefined' !== deviceType ? attributes['timelinAlignment' + deviceType] : attributes.timelinAlignment;
     Object(_wordpress_data__WEBPACK_IMPORTED_MODULE_3__["select"])('core/block-editor').getBlocksByClientId(props.clientId)[0].innerBlocks.forEach(function (block, key) {
-      const timelinAlignment = 'undefined' !== deviceType ? block.attributes['timelinAlignment' + deviceType] : block.attributes.timelinAlignment;
       let alignClass = '';
 
       if ('left' === timelinAlignment) {

@@ -132,7 +132,7 @@ const Render = props => {
     src: previewImageData,
     alt: ""
   }) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("div", {
-    className: classnames__WEBPACK_IMPORTED_MODULE_0___default()(className, 'uagb-timeline__outer-wrap', `uagb-editor-preview-mode-${deviceType.toLowerCase()}`, `uagb-block-${props.clientId}`, 'uagb-timeline__content-wrap', ...Object(_classes__WEBPACK_IMPORTED_MODULE_1__["default"])(props.attributes))
+    className: classnames__WEBPACK_IMPORTED_MODULE_0___default()(className, 'uagb-timeline__outer-wrap', `uagb-editor-preview-mode-${deviceType.toLowerCase()}`, `uagb-block-${props.clientId}`, 'uagb-timeline__content-wrap', ...Object(_classes__WEBPACK_IMPORTED_MODULE_1__["default"])(props.attributes, deviceType))
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__["InnerBlocks"], {
     template: getContentTimelineTemplate,
     templateLock: false,
