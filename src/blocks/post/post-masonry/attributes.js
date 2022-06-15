@@ -308,7 +308,7 @@ const attributes = {
 	},
 	borderColor             : {
 		type    : 'string',
-		default : '#3b3b3b',
+		default : '#fafafa',
 		UAGCopyPaste: {
 			styleType: 'btn-border-color'
 		},

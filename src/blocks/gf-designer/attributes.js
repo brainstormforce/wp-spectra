@@ -146,6 +146,20 @@ const attributes = { // eslint-disable-line no-unused-vars
 			styleType: 'btn-align'
 		},
 	},
+	buttonAlignmentTablet: {
+		type: 'string',
+		default: '',
+		UAGCopyPaste: {
+			styleType: 'btn-align-tablet'
+		},
+	},
+	buttonAlignmentMobile: {
+		type: 'string',
+		default: '',
+		UAGCopyPaste: {
+			styleType: 'btn-align-mobile'
+		},
+	},
 	buttonVrPadding: {
 		type: 'number',
 		default: 10,

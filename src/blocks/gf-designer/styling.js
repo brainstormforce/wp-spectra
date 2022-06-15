@@ -681,6 +681,7 @@ function styling( props ) {
 		},
 		" .uagb-gf-styler__check-style-enabled .gfield_radio input[type='radio']:checked + label:before": {
 			'background-color': radioCheckSelectColor,
+			'border-color': fieldBorderFocusColor,
 		},
 		' .uagb-gf-styler__check-style-enabled form .gfield_radio label': {
 			'font-size': generateCSSUnit(

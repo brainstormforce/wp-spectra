@@ -64,6 +64,7 @@ const TypographyControl = ( props ) => {
 	if ( true !== disableFontFamily ) {
 		fontFamily = <FontFamilyControl { ...props } />;
 	}
+	const lineHeightStepsVal = ( 'em' === props.lineHeightType?.value ? 0.1 : 1 );
 
 	if ( true !== disableLineHeight ) {
 		fontWeight = (
@@ -88,7 +89,7 @@ const TypographyControl = ( props ) => {
 					'Line Height',
 					'ultimate-addons-for-gutenberg'
 				) }
-				steps={ 0.1 }
+				steps={ lineHeightStepsVal }
 				{ ...props }
 			/>
 		);
@@ -122,7 +123,7 @@ const TypographyControl = ( props ) => {
 			/>
 		);
 	}
-
+	const fontSizeStepsVal = ( 'em' === props.fontSizeType.value ? 0.1 : 1 );
 	if ( true !== disableFontSize ) {
 		fontSize = (
 			<RangeTypographyControl
@@ -149,7 +150,7 @@ const TypographyControl = ( props ) => {
 						? __( 'Font Size', 'ultimate-addons-for-gutenberg' )
 						: props.fontSizeLabel
 				}
-				steps={ 0.1 }
+				steps={ fontSizeStepsVal }
 				{ ...props }
 			/>
 		);
