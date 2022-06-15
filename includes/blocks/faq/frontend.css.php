@@ -234,7 +234,7 @@ if ( true === $attr['enableSeparator'] ) {
 		'border-left-width'   => '0px',
 	);
 
-	$t_selectors[' .uagb-faq-child__outer-wrap .uagb-faq-content '] =
+	$t_selectors[' .uagb-faq-child__outer-wrap .uagb-faq-content ']     =
 	array(
 		'border-style'        => 'solid',
 		'border-top-color'    => $attr['faqBorderColor'],
@@ -243,7 +243,7 @@ if ( true === $attr['enableSeparator'] ) {
 		'border-bottom-width' => '0px',
 		'border-left-width'   => '0px',
 	);
-	$m_selectors[' .uagb-faq-child__outer-wrap .uagb-faq-content '] =
+	$m_selectors[' .uagb-faq-child__outer-wrap .uagb-faq-content ']     =
 	array(
 		'border-style'        => 'solid',
 		'border-top-color'    => $attr['faqBorderColor'],
