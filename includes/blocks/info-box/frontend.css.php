@@ -86,8 +86,6 @@ $selectors = array(
 		'font-size'     => $icon_size,
 		'color'         => $attr['iconColor'],
 		'fill'          => $attr['iconColor'],
-	),
-	' .uagb-ifb-content .uagb-ifb-left-title-image'  => array(
 		'padding-left'   => UAGB_Helper::get_css_value( $attr['iconLeftMargin'], 'px' ),
 		'padding-right'  => UAGB_Helper::get_css_value( $attr['iconRightMargin'], 'px' ),
 		'padding-top'    => UAGB_Helper::get_css_value( $attr['iconTopMargin'], 'px' ),
@@ -98,9 +96,7 @@ $selectors = array(
 		'line-height'   => $icon_size,
 		'font-size'     => $icon_size,
 		'color'         => $attr['iconColor'],
-		'fill'          => $attr['iconColor']
-	),
-	' .uagb-ifb-content .uagb-ifb-right-title-image ' => array(
+		'fill'          => $attr['iconColor'],
 		'padding-left'   => UAGB_Helper::get_css_value( $attr['iconLeftMargin'], 'px' ),
 		'padding-right'  => UAGB_Helper::get_css_value( $attr['iconRightMargin'], 'px' ),
 		'padding-top'    => UAGB_Helper::get_css_value( $attr['iconTopMargin'], 'px' ),

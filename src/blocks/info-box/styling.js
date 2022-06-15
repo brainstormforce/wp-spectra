@@ -219,6 +219,8 @@ function styling( props ) {
 			'color': iconColor,
 			'fill': iconColor,
 			'line-height': generateCSSUnit( iconSizeFallback, iconSizeType ),
+		},
+		' .uagb-ifb-content .uagb-ifb-icon-wrap': {
 			'padding-left': generateCSSUnit( iconLeftMargin, iconMarginUnit ),
 			'padding-right': generateCSSUnit( iconRightMargin, iconMarginUnit ),
 			'padding-top': generateCSSUnit( iconTopMargin, iconMarginUnit ),
