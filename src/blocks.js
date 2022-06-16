@@ -14,7 +14,7 @@ import getUAGEditorStateLocalStorage from '@Controls/getUAGEditorStateLocalStora
 // Delete the local storage on every refresh.
 const uagLocalStorage = getUAGEditorStateLocalStorage();
 if ( uagLocalStorage ) {
-	uagLocalStorage.removeItem( 'uagLastOpenedState' );
+	uagLocalStorage.removeItem( 'uagSettingState' );
 }
 
 import blocksEditorSpacing from './blocks/extensions/blocks-editor-spacing';

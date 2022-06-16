@@ -348,6 +348,14 @@ const attributes = {
 		type: 'string',
 		default: 'vertical',
 	},
+	iconLayoutTablet: {
+		type: 'string',
+		default: '',
+	},
+	iconLayoutMobile: {
+		type: 'string',
+		default: '',
+	},
 	stack: {
 		type: 'string',
 		default: 'none',
