@@ -106,13 +106,13 @@ $selectors = array(
 
 	// Focus.
 	' .wpcf7 form input:not([type=submit]):focus'         => array(
-		'border-color' => $attr['fieldBorderFocusColor'],
+		'border-color' => $attr['fieldBorderHColor'],
 	),
 	' .wpcf7 form select:focus'                           => array(
-		'border-color' => $attr['fieldBorderFocusColor'],
+		'border-color' => $attr['fieldBorderHColor'],
 	),
 	' .wpcf7 textarea:focus'                              => array(
-		'border-color' => $attr['fieldBorderFocusColor'],
+		'border-color' => $attr['fieldBorderHColor'],
 	),
 
 	// Submit button.
@@ -130,7 +130,7 @@ $selectors = array(
 	' .wpcf7 input.wpcf7-form-control.wpcf7-submit:hover' => array(
 		'color'            => $attr['buttonTextHoverColor'],
 		'background-color' => $attr['buttonBgHoverColor'],
-		'border-color'     => $attr['buttonBorderHoverColor'],
+		'border-color'     => $attr['buttonBorderHColor'],
 	),
 
 	// Check box Radio.
@@ -138,7 +138,7 @@ $selectors = array(
 		'background-color' => $attr['fieldBgColor'],
 		'color'            => $attr['fieldInputColor'],
 		'font-size'        => 'calc( ' . $field_vr_padding . 'px / 1.2 )',
-		'border-color'     => $attr['fieldBorderFocusColor'],
+		'border-color'     => $attr['fieldBorderHColor'],
 	),
 	' .wpcf7 .wpcf7-checkbox input[type="checkbox"] + span:before' => array_merge(
 		array(
@@ -154,7 +154,7 @@ $selectors = array(
 		'background-color' => $attr['fieldBgColor'],
 		'color'            => $attr['fieldInputColor'],
 		'font-size'        => 'calc( ' . $field_vr_padding . 'px / 1.2 )',
-		'border-color'     => $attr['fieldBorderFocusColor'],
+		'border-color'     => $attr['fieldBorderHColor'],
 	),
 	' .wpcf7 .wpcf7-acceptance input[type="checkbox"] + span:before' => array_merge(
 		array(
@@ -179,7 +179,7 @@ $selectors = array(
 		'border-bottom-width' => UAGB_Helper::get_css_value( $attr['fieldBorderBottomWidth'], 'px' ),
 	),
 	' .wpcf7 .wpcf7-radio input[type="radio"]:checked + span:before' => array(
-		'border-color' => $attr['fieldBorderFocusColor'],
+		'border-color' => $attr['fieldBorderHColor'],
 	),
 
 	// Underline border.
@@ -188,40 +188,40 @@ $selectors = array(
 		'border-bottom-color'  => $attr['fieldBorderColor'],
 		'border-bottom-style'  => 'solid',
 		'border-bottom-width'  => UAGB_Helper::get_css_value( $attr['fieldBorderBottomWidth'], 'px' ),
-		'border-top-radius'    => UAGB_Helper::get_css_value( $attr['fieldBorderTopRadius'], 'px' ),
-		'border-left-radius'   => UAGB_Helper::get_css_value( $attr['fieldBorderLeftRadius'], 'px' ),
-		'border-right-radius'  => UAGB_Helper::get_css_value( $attr['fieldBorderRightRadius'], 'px' ),
-		'border-bottom-radius' => UAGB_Helper::get_css_value( $attr['fieldBorderBottomRadius'], 'px' ),
+		'border-top-left-radius'    => UAGB_Helper::get_css_value( $attr['fieldBorderTopLeftRadius'], 'px' ),
+		'border-top-right-radius'   => UAGB_Helper::get_css_value( $attr['fieldBorderTopRightRadius'], 'px' ),
+		'border-bottom-right-radius'  => UAGB_Helper::get_css_value( $attr['fieldBorderBottomRightRadius'], 'px' ),
+		'border-bottom-left-radius' => UAGB_Helper::get_css_value( $attr['fieldBorderBottomLeftRadius'], 'px' ),
 	),
 	' .uagb-cf7-styler__field-style-underline textarea'   => array(
 		'border-style'         => 'none',
 		'border-bottom-color'  => $attr['fieldBorderColor'],
 		'border-bottom-style'  => 'solid',
 		'border-bottom-width'  => UAGB_Helper::get_css_value( $attr['fieldBorderBottomWidth'], 'px' ),
-		'border-top-radius'    => UAGB_Helper::get_css_value( $attr['fieldBorderTopRadius'], 'px' ),
-		'border-left-radius'   => UAGB_Helper::get_css_value( $attr['fieldBorderLeftRadius'], 'px' ),
-		'border-right-radius'  => UAGB_Helper::get_css_value( $attr['fieldBorderRightRadius'], 'px' ),
-		'border-bottom-radius' => UAGB_Helper::get_css_value( $attr['fieldBorderBottomRadius'], 'px' ),
+		'border-top-left-radius'    => UAGB_Helper::get_css_value( $attr['fieldBorderTopLeftRadius'], 'px' ),
+		'border-top-right-radius'   => UAGB_Helper::get_css_value( $attr['fieldBorderTopRightRadius'], 'px' ),
+		'border-bottom-right-radius'  => UAGB_Helper::get_css_value( $attr['fieldBorderBottomRightRadius'], 'px' ),
+		'border-bottom-left-radius' => UAGB_Helper::get_css_value( $attr['fieldBorderBottomLeftRadius'], 'px' ),
 	),
 	' .uagb-cf7-styler__field-style-underline select'     => array(
 		'border-style'         => 'none',
 		'border-bottom-color'  => $attr['fieldBorderColor'],
 		'border-bottom-style'  => 'solid',
 		'border-bottom-width'  => UAGB_Helper::get_css_value( $attr['fieldBorderBottomWidth'], 'px' ),
-		'border-top-radius'    => UAGB_Helper::get_css_value( $attr['fieldBorderTopRadius'], 'px' ),
-		'border-left-radius'   => UAGB_Helper::get_css_value( $attr['fieldBorderLeftRadius'], 'px' ),
-		'border-right-radius'  => UAGB_Helper::get_css_value( $attr['fieldBorderRightRadius'], 'px' ),
-		'border-bottom-radius' => UAGB_Helper::get_css_value( $attr['fieldBorderBottomRadius'], 'px' ),
+		'border-top-left-radius'    => UAGB_Helper::get_css_value( $attr['fieldBorderTopLeftRadius'], 'px' ),
+		'border-top-right-radius'   => UAGB_Helper::get_css_value( $attr['fieldBorderTopRightRadius'], 'px' ),
+		'border-bottom-right-radius'  => UAGB_Helper::get_css_value( $attr['fieldBorderBottomRightRadius'], 'px' ),
+		'border-bottom-left-radius' => UAGB_Helper::get_css_value( $attr['fieldBorderBottomLeftRadius'], 'px' ),
 	),
 	' .uagb-cf7-styler__field-style-underline textarea'   => array(
 		'border-style'         => 'none',
 		'border-bottom-color'  => $attr['fieldBorderColor'],
 		'border-bottom-style'  => 'solid',
 		'border-bottom-width'  => UAGB_Helper::get_css_value( $attr['fieldBorderBottomWidth'], 'px' ),
-		'border-top-radius'    => UAGB_Helper::get_css_value( $attr['fieldBorderTopRadius'], 'px' ),
-		'border-left-radius'   => UAGB_Helper::get_css_value( $attr['fieldBorderLeftRadius'], 'px' ),
-		'border-right-radius'  => UAGB_Helper::get_css_value( $attr['fieldBorderRightRadius'], 'px' ),
-		'border-bottom-radius' => UAGB_Helper::get_css_value( $attr['fieldBorderBottomRadius'], 'px' ),
+		'border-top-left-radius'    => UAGB_Helper::get_css_value( $attr['fieldBorderTopLeftRadius'], 'px' ),
+		'border-top-right-radius'   => UAGB_Helper::get_css_value( $attr['fieldBorderTopRightRadius'], 'px' ),
+		'border-bottom-right-radius'  => UAGB_Helper::get_css_value( $attr['fieldBorderBottomRightRadius'], 'px' ),
+		'border-bottom-left-radius' => UAGB_Helper::get_css_value( $attr['fieldBorderBottomLeftRadius'], 'px' ),
 	),
 	' .uagb-cf7-styler__field-style-underline .wpcf7-checkbox input[type="checkbox"] + span:before' => array(
 		'border-style' => 'solid',
@@ -260,7 +260,7 @@ $selectors = array(
 		'border-radius'    => UAGB_Helper::get_css_value( $attr['radioCheckBorderRadius'], $attr['radioCheckBorderRadiusType'] ),
 	),
 	' .uagb-cf7-styler__check-style-enabled .wpcf7 .wpcf7-checkbox input[type="checkbox"]:checked + span:before' => array(
-		'border-color' => $attr['fieldBorderFocusColor'],
+		'border-color' => $attr['fieldBorderHColor'],
 	),
 	' .uagb-cf7-styler__check-style-enabled .wpcf7 .wpcf7-acceptance input[type="checkbox"] + span:before' => array(
 		'background-color' => $attr['radioCheckBgColor'],
@@ -273,7 +273,7 @@ $selectors = array(
 		'border-radius'    => UAGB_Helper::get_css_value( $attr['radioCheckBorderRadius'], $attr['radioCheckBorderRadiusType'] ),
 	),
 	' .uagb-cf7-styler__check-style-enabled .wpcf7 .wpcf7-acceptance input[type="checkbox"]:checked + span:before' => array(
-		'border-color' => $attr['fieldBorderFocusColor'],
+		'border-color' => $attr['fieldBorderHColor'],
 	),
 
 	' .uagb-cf7-styler__check-style-enabled .wpcf7 input[type="radio"] + span:before' => array(

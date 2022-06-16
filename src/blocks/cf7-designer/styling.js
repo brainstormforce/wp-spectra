@@ -15,12 +15,12 @@ function styling( props ) {
 		fieldBgColor,
 		fieldLabelColor,
 		fieldInputColor,
-		fieldBorderFocusColor,
+		fieldBorderHColor,
 		buttonTextColor,
 		buttonBgColor,
 		buttonTextHoverColor,
 		buttonBgHoverColor,
-		buttonBorderHoverColor,
+		buttonBorderHColor,
 		fieldSpacing,
 		fieldSpacingTablet,
 		fieldSpacingMobile,
@@ -335,7 +335,7 @@ function styling( props ) {
 		' .wpcf7 input.wpcf7-form-control.wpcf7-submit:hover': {
 			'color': buttonTextHoverColor,
 			'background-color': buttonBgHoverColor,
-			'border-color': buttonBorderHoverColor,
+			'border-color': buttonBorderHColor,
 		},
 
 		// Check box Radio.
@@ -343,7 +343,7 @@ function styling( props ) {
 			'background-color': fieldBgColor,
 			'color': fieldInputColor,
 			'font-size': 'calc( ' + fieldTopPaddingDesktop + 'px / 1.2 )',
-			'border-color': fieldBorderFocusColor,
+			'border-color': fieldBorderHColor,
 		},
 		" .wpcf7 .wpcf7-checkbox input[type='checkbox'] + span:before": {
 			'background-color': fieldBgColor,
@@ -357,7 +357,7 @@ function styling( props ) {
 		" .wpcf7 .wpcf7-acceptance input[type='checkbox']:checked + span:before": {
 			'background-color': fieldBgColor,
 			'color': fieldInputColor,
-			'border-color': fieldBorderFocusColor,
+			'border-color': fieldBorderHColor,
 		},
 		" .wpcf7 .wpcf7-acceptance input[type='checkbox'] + span:before": {
 			'background-color': fieldBgColor,
@@ -412,7 +412,7 @@ function styling( props ) {
 			),
 		},
 		" .uagb-cf7-styler__check-style-enabled .wpcf7 .wpcf7-checkbox input[type='checkbox']:checked + span:before": {
-			'border-color': fieldBorderFocusColor,
+			'border-color': fieldBorderHColor,
 		},
 		" .uagb-cf7-styler__check-style-enabled .wpcf7 .wpcf7-acceptance input[type='checkbox'] + span:before": {
 			'background-color': radioCheckBgColor,
@@ -430,7 +430,7 @@ function styling( props ) {
 			),
 		},
 		" .uagb-cf7-styler__check-style-enabled .wpcf7 .wpcf7-acceptance input[type='checkbox']:checked + span:before": {
-			'border-color': fieldBorderFocusColor,
+			'border-color': fieldBorderHColor,
 		},
 
 		" .uagb-cf7-styler__check-style-enabled .wpcf7 input[type='radio'] + span:before": {
@@ -445,7 +445,7 @@ function styling( props ) {
 
 		" .uagb-cf7-styler__check-style-enabled .wpcf7-radio input[type='radio']:checked + span:before": {
 			'background-color': radioCheckSelectColor,
-			'border-color': fieldBorderFocusColor,
+			'border-color': fieldBorderHColor,
 		},
 		' .uagb-cf7-styler__check-style-enabled .wpcf7 form .wpcf7-list-item-label': {
 			'font-size': generateCSSUnit(

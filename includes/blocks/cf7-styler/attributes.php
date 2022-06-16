@@ -9,16 +9,28 @@
 
 $field_border_defaults   = array(
 	'borderStyle'      => 'solid',
-	'borderWidth'      => 1,
-	'borderRadius'     => 0,
+	'borderTopWidth'          => 1,
+	'borderRightWidth'        => 1,
+	'borderBottomWidth'       => 1,
+	'borderLeftWidth'         => 1,
+	'borderTopLeftRadius'     => 0,
+	'borderTopRightRadius'    => 0,
+	'borderBottomLeftRadius'  => 0,
+	'borderBottomRightRadius' => 0,
 	'borderColor'      => '#eeeeee',
-	'borderFocusColor' => '',
+	'borderHColor' => '',
 );
 $field_border_attribute  = UAGB_Block_Helper::uag_generate_border_attribute( 'field', $field_border_defaults );
 $button_border_defaults  = array(
 	'borderStyle'      => 'solid',
-	'borderWidth'      => 1,
-	'borderRadius'     => 0,
+	'borderTopWidth'          => 1,
+	'borderRightWidth'        => 1,
+	'borderBottomWidth'       => 1,
+	'borderLeftWidth'         => 1,
+	'borderTopLeftRadius'     => 0,
+	'borderTopRightRadius'    => 0,
+	'borderBottomLeftRadius'  => 0,
+	'borderBottomRightRadius' => 0,
 	'borderColor'      => '#333',
 	'borderHoverColor' => '',
 );
