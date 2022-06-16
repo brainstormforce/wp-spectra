@@ -440,6 +440,9 @@ if ( 'button' === $attr['ctaType'] ) {
 		'background-color' => $attr['ctaBgHoverColor'],
 		'border-color'     => $attr['ctaBorderHColor'],
 	);
+	$selectors[' .uagb-infobox-cta-link:hover'] = array(
+		'border-color'     => $attr['ctaBorderHColor'],
+	);
 	$selectors[' .uagb-ifb-button-wrapper .uagb-infobox-cta-link:hover svg'] = array(
 		'fill' => $attr['ctaLinkHoverColor'],
 	);
