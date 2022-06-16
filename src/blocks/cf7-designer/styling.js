@@ -130,11 +130,11 @@ function styling( props ) {
 		radioCheckDecoration,
 	} = props.attributes;
 
-	const fieldBorderCSS = generateBorderCSS( props.attributes, 'field', '' );
+	const fieldBorderCSS = generateBorderCSS( props.attributes, 'field' );
 	const fieldBorderCSSTablet = generateBorderCSS( props.attributes,'field', 'tablet' );
 	const fieldBorderCSSMobile = generateBorderCSS( props.attributes,'field', 'mobile' );
 
-	const buttonBorderCSS = generateBorderCSS( props.attributes, 'button', '' );
+	const buttonBorderCSS = generateBorderCSS( props.attributes, 'button' );
 	const buttonBorderCSSTablet = generateBorderCSS( props.attributes, 'button', 'tablet' );
 	const buttonBorderCSSMobile = generateBorderCSS( props.attributes, 'button', 'mobile' );
 
