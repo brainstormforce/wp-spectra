@@ -108,8 +108,6 @@ function contentTimelineStyle( props ) {
 		timelinAlignment,
 	} = props.attributes;
 
-	const respSelectors = 'left';
-
 	const selectors = {
 		' .uagb-timeline__heading.rich-text': {
 			'font-size': generateCSSUnit( headFontSize, headFontSizeType ),
