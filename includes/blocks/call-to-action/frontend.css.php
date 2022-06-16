@@ -21,7 +21,7 @@ $btn_padding_top    = isset( $attr['ctaTopPadding'] ) ? $attr['ctaTopPadding'] :
 $btn_padding_bottom = isset( $attr['ctaBottomPadding'] ) ? $attr['ctaBottomPadding'] : $attr['ctaBtnVertPadding'];
 $btn_padding_left   = isset( $attr['ctaLeftPadding'] ) ? $attr['ctaLeftPadding'] : $attr['ctaBtnHrPadding'];
 $btn_padding_right  = isset( $attr['ctaRightPadding'] ) ? $attr['ctaRightPadding'] : $attr['ctaBtnHrPadding'];
-$content_width     = is_int( $attr['contentWidth'] ) ? $attr['contentWidth'] : 70;
+$content_width      = is_int( $attr['contentWidth'] ) ? $attr['contentWidth'] : 70;
 
 $ctaLeftMargin = isset( $attr['ctaLeftSpace'] ) ? $attr['ctaLeftSpace'] : '5';
 
@@ -409,10 +409,10 @@ if ( 'right' === $attr['ctaPosition'] && ( 'text' === $attr['ctaType'] || 'butto
 		'display'         => 'flex',
 		'justify-content' => 'space-between',
 	);
-	$selectors[' .uagb-cta__content-right .uagb-cta__left-right-wrap .uagb-cta__content']        = array(
+	$selectors[' .uagb-cta__content-right .uagb-cta__left-right-wrap .uagb-cta__content']      = array(
 		'width' => UAGB_Helper::get_css_value( $content_width, $attr['contentWidthType'] ),
 	);
-	$selectors[' .uagb-cta__content-right .uagb-cta__left-right-wrap .uagb-cta__link-wrapper']   = array(
+	$selectors[' .uagb-cta__content-right .uagb-cta__left-right-wrap .uagb-cta__link-wrapper'] = array(
 		'width' => UAGB_Helper::get_css_value( ( 100 - $content_width ), $attr['contentWidthType'] ),
 	);
 

@@ -338,7 +338,7 @@ const attributes = {
 		type    : 'string',
 		default : '#f6f6f6',
 		UAGCopyPaste: {
-			styleType: 'post-bottom-padding'
+			styleType: 'post-bg-color'
 		},
 	},
 
