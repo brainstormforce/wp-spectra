@@ -96417,7 +96417,7 @@ __webpack_require__.r(__webpack_exports__);
  */
 function DayAlignClass(attributes, index_val, deviceType) {
   let dayAlignClass = '';
-  const timelinAlignment = 'undefined' !== deviceType ? attributes['timelinAlignment' + deviceType] : attributes.timelinAlignment;
+  const timelinAlignment = 'undefined' !== typeof deviceType ? attributes['timelinAlignment' + deviceType] : attributes.timelinAlignment;
 
   if ('left' === timelinAlignment) {
     dayAlignClass = 'uagb-timeline__day-new uagb-timeline__day-left';
@@ -96589,9 +96589,10 @@ function contentTimelineStyle(props) {
     headTopSpacing,
     headTopSpacingTablet,
     headTopSpacingMobile,
-    stack,
-    timelinAlignment
+    stack
   } = props.attributes;
+  const deviceType = stack.charAt(0).toUpperCase() + stack.slice(1);
+  const timelinAlignment = 'undefined' !== typeof props.attributes['timelinAlignment' + deviceType] ? props.attributes['timelinAlignment' + deviceType] : props.attributes.timelinAlignment;
   const respSelectors = 'left';
   const selectors = {
     ' .uagb-timeline__heading': {

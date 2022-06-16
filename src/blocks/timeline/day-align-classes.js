@@ -5,7 +5,7 @@
 function DayAlignClass( attributes, index_val, deviceType ) {
 	let dayAlignClass = '';
 
-	const timelinAlignment = 'undefined' !== deviceType ? attributes['timelinAlignment' + deviceType ] : attributes.timelinAlignment;
+	const timelinAlignment = 'undefined' !== typeof deviceType ? attributes['timelinAlignment' + deviceType ] : attributes.timelinAlignment;
 
 	if ( 'left' === timelinAlignment ) {
 		dayAlignClass = 'uagb-timeline__day-new uagb-timeline__day-left';

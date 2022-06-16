@@ -142,8 +142,11 @@ function contentTimelineStyle( props ) {
 		headTopSpacingMobile,
 
 		stack,
-		timelinAlignment,
 	} = props.attributes;
+
+	const deviceType = stack.charAt( 0 ).toUpperCase() + stack.slice( 1 );
+
+	const timelinAlignment = 'undefined' !== typeof props.attributes['timelinAlignment' + deviceType] ? props.attributes['timelinAlignment' + deviceType] : props.attributes.timelinAlignment;
 
 	const respSelectors = 'left';
 
