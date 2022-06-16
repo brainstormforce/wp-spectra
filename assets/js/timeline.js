@@ -139,7 +139,7 @@ function UAGBTimelineClasses ( attributes, id ) {
 		content.classList.remove( 'uagb-timeline__left-block', 'uagb-timeline__right-block','uagb-timeline__center-block' );
 
 		let device = 'Desktop';
-		
+
 		if ( deviceWidth <= uagb_timeline_data.mobile_breakpoint ) {
 			device = 'Mobile';
 		} else if( deviceWidth <= uagb_timeline_data.tablet_breakpoint ) {
@@ -153,5 +153,28 @@ function UAGBTimelineClasses ( attributes, id ) {
 		} else {
 			content.classList.add( 'uagb-timeline__center-block' );
 		}
+
+		const timelineChild = content.querySelectorAll( '.wp-block-uagb-content-timeline-child' );
+		let childIndex = 0;
+
+		for ( const child of timelineChild ) {
+
+			child.classList.remove( 'uagb-timeline__left', 'uagb-timeline__right' );
+
+			if( 'left' === attributes['timelinAlignment' + device ] ) {
+				child.classList.add( 'uagb-timeline__left' );
+			} else if ( 'right' === attributes['timelinAlignment' + device ] ) {
+				child.classList.add( 'uagb-timeline__right' );
+			} else if( 'center' === attributes['timelinAlignment' + device ] ) {
+				if ( childIndex % 2 === 0 ) {
+					child.classList.add( 'uagb-timeline__right' );
+				} else {
+					child.classList.add( 'uagb-timeline__left' );
+				}
+			}
+
+			childIndex++;
+		}
+
 	}
 }
