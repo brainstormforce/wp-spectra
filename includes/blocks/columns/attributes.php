@@ -11,7 +11,7 @@ $border_defaults  = array(
 	'borderStyle' => 'none',
 	'borderWidth' => 1,
 );
-$border_attribute = UAGB_Block_Helper::uag_generate_border_attribute( '', $border_defaults );
+$border_attribute = UAGB_Block_Helper::uag_generate_border_attribute( 'columns', $border_defaults );
 
 return array_merge(
 	array(

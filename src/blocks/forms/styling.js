@@ -81,7 +81,7 @@ function styling( props ) {
 		inputplaceholderHColor,
 		inputplaceholderActiveColor,
 		inputactiveColor,
-		inputborderHColor,
+		inputBorderHColor,
 		fieldGap,
 		fieldGapTablet,
 		fieldGapMobile,
@@ -369,7 +369,7 @@ function styling( props ) {
 		},
 		' .uagb-forms-field-set:hover .uagb-forms-input': {
 			'background-color': bgHoverColor,
-			'border-color': inputborderHColor,
+			'border-color': inputBorderHColor,
 		},
 		' .uagb-forms-field-set:hover .uagb-forms-input::placeholder': {
 			'color': inputplaceholderHColor,

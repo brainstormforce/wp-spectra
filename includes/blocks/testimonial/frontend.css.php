@@ -16,9 +16,11 @@ if ( 'left' === $attr['headingAlign'] ) {
 } elseif ( 'right' === $attr['headingAlign'] ) {
 	$img_align = 'flex-end';
 }
+
 $overall_border        = UAGB_Block_Helper::uag_generate_border_css( $attr, 'overall' );
 $overall_border_Tablet = UAGB_Block_Helper::uag_generate_border_css( $attr, 'overall', 'tablet' );
 $overall_border_Mobile = UAGB_Block_Helper::uag_generate_border_css( $attr, 'overall', 'mobile' );
+
 $position              = str_replace( '-', ' ', $attr['backgroundPosition'] );
 
 $t_selectors = array();
@@ -132,7 +134,7 @@ $m_selectors = array(
 		'margin-bottom' => $attr['nameSpaceMobile'] . $attr['nameSpaceType'],
 	),
 
-	' .uagb-testimonial__wrap .uagb-tm__content'        => $overall_border_mobile,
+	' .uagb-testimonial__wrap .uagb-tm__content'        => $overall_border_Mobile,
 	' .uagb-tm__desc'                                   => array(
 		'margin-bottom' => UAGB_Helper::get_css_value( $attr['descSpaceMobile'], $attr['descSpaceType'] ),
 	),
@@ -163,7 +165,7 @@ $t_selectors = array(
 		'margin-bottom' => UAGB_Helper::get_css_value( $attr['descSpaceTablet'], $attr['descSpaceType'] ),
 	),
 
-	' .uagb-testimonial__wrap .uagb-tm__content'        => $overall_border_tablet,
+	' .uagb-testimonial__wrap .uagb-tm__content'        => $overall_border_Tablet,
 	' .uagb-tm__content'                                => array(
 		'text-align'     => $attr['headingAlignTablet'],
 		'padding-top'    => UAGB_Helper::get_css_value( $attr['paddingTopTablet'], $attr['tabletPaddingUnit'] ),

@@ -109,7 +109,7 @@ $selectors = array(
 	'.wp-block-uagb-section'       => array(
 		'box-shadow' => UAGB_Helper::get_css_value( $attr['boxShadowHOffset'], 'px' ) . ' ' . UAGB_Helper::get_css_value( $attr['boxShadowVOffset'], 'px' ) . ' ' . UAGB_Helper::get_css_value( $attr['boxShadowBlur'], 'px' ) . ' ' . UAGB_Helper::get_css_value( $attr['boxShadowSpread'], 'px' ) . ' ' . $attr['boxShadowColor'] . ' ' . $boxShadowPositionCSS,
 	),
-	'.uagb-section__wrap:hover'    => array(
+	' .uagb-section__overlay:hover'    => array(
 		'border-color' => $attr['overallBorderHColor'],
 	),
 );

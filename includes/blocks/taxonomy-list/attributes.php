@@ -9,8 +9,14 @@
 
 $border_defaults  = array(
 	'borderStyle'  => 'solid',
-	'borderWidth'  => 1,
-	'borderRadius' => 3,
+	'borderTopWidth'          => 1,
+	'borderRightWidth'        => 1,
+	'borderBottomWidth'       => 1,
+	'borderLeftWidth'         => 1,
+	'borderTopLeftRadius'     => 3,
+	'borderTopRightRadius'    => 3,
+	'borderBottomLeftRadius'  => 3,
+	'borderBottomRightRadius' => 3,
 	'borderColor'  => '#E0E0E0',
 	'borderHColor' => '#E0E0E0',
 );
@@ -18,8 +24,14 @@ $border_attribute = UAGB_Block_Helper::uag_generate_border_attribute( 'overall',
 
 $sepearator_border_defaults = array(
 	'borderStyle'     => 'none',
-	'borderWidth'     => 100,
-	'borderThickness' => 1,
+	'borderTopWidth'          => 100,
+	'borderRightWidth'        => 100,
+	'borderBottomWidth'       => 100,
+	'borderLeftWidth'         => 100,
+	'borderTopLeftRadius'     => 0,
+	'borderTopRightRadius'    => 0,
+	'borderBottomLeftRadius'  => 0,
+	'borderBottomRightRadius' => 0,
 	'borderColor'     => '#b2b4b5',
 	'borderHColor'    => '#b2b4b5',
 );

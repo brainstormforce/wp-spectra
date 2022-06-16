@@ -8,7 +8,10 @@
  */
 
 $border_defaults  = array(
-	'borderWidth' => 1,
+	'borderTopWidth'          => 1,
+	'borderRightWidth'        => 1,
+	'borderBottomWidth'       => 1,
+	'borderLeftWidth'         => 1,
 	'borderColor' => '#e0e0e0',
 	'borderStyle' => 'solid',
 );

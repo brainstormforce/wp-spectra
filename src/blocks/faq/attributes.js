@@ -10,7 +10,7 @@ const borderDefault = {
 	borderBottomRadius: 2,
 	borderLeftRadius: 2,
 	borderColor: '',
-	borderHoverColor: '',
+	borderHColor: '',
 }
 const borderAttributes = getBorderAttributes( 'overall', borderDefault );
 
