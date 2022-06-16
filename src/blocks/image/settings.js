@@ -44,6 +44,9 @@ export default function Settings( props ) {
 	const {
 		layout,
 		id,
+		url,
+		urlTablet,
+		urlMobile,
 		width,
 		widthTablet,
 		widthMobile,
@@ -250,7 +253,7 @@ export default function Settings( props ) {
 
 	function updateImage( newSizeSlug ) {
 		const newUrl = image?.media_details?.sizes[newSizeSlug]
-		if ( ! newUrl ) {
+		if ( ! newUrl || newUrl === url ) {
 			return null;
 		}
 		setAttributes( {
@@ -263,7 +266,7 @@ export default function Settings( props ) {
 
 	function updateTabletImage( newSizeSlug ) {
 		const newUrl = image?.media_details?.sizes[newSizeSlug]
-		if ( ! newUrl ) {
+		if ( ! newUrl || newUrl === urlTablet ) {
 			return null;
 		}
 		setAttributes( {
@@ -276,7 +279,7 @@ export default function Settings( props ) {
 
 	function updateMobileImage( newSizeSlug ) {
 		const newUrl = image?.media_details?.sizes[newSizeSlug]
-		if ( ! newUrl ) {
+		if ( ! newUrl || newUrl === urlMobile ) {
 			return null;
 		}
 		setAttributes( {
