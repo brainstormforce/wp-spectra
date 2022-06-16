@@ -253,7 +253,7 @@ export default function Settings( props ) {
 
 	function updateImage( newSizeSlug ) {
 		const newUrl = image?.media_details?.sizes[newSizeSlug]
-		if ( ! newUrl || newUrl === url ) {
+		if ( ! newUrl || newUrl?.source_url === url ) {
 			return null;
 		}
 		setAttributes( {
@@ -266,7 +266,7 @@ export default function Settings( props ) {
 
 	function updateTabletImage( newSizeSlug ) {
 		const newUrl = image?.media_details?.sizes[newSizeSlug]
-		if ( ! newUrl || newUrl === urlTablet ) {
+		if ( ! newUrl || newUrl?.source_url === urlTablet ) {
 			return null;
 		}
 		setAttributes( {
@@ -279,7 +279,7 @@ export default function Settings( props ) {
 
 	function updateMobileImage( newSizeSlug ) {
 		const newUrl = image?.media_details?.sizes[newSizeSlug]
-		if ( ! newUrl || newUrl === urlMobile ) {
+		if ( ! newUrl || newUrl?.source_url === urlMobile ) {
 			return null;
 		}
 		setAttributes( {
