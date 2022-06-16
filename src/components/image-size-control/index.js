@@ -1,7 +1,5 @@
 import React, { useLayoutEffect } from 'react';
 import {
-	Button,
-	ButtonGroup,
 	TextControl,
 } from '@wordpress/components';
 import ResponsiveSelectControl from '@Components/responsive-select';
@@ -10,8 +8,6 @@ import styles from './editor.lazy.scss';
 import useDimensionHandler from './use-dimension-handler';
 import { useDeviceType } from '@Controls/getPreviewType';
 import ResponsiveToggle from '../responsive-toggle';
-
-const IMAGE_SIZE_PRESETS = [ 25, 50, 75, 100 ];
 
 export default function ImageSizeControl( {
 	imageWidth,
@@ -46,7 +42,6 @@ export default function ImageSizeControl( {
 		currentHeight,
 		currentWidth,
 		updateDimension,
-		updateDimensions,
 	} = useDimensionHandler( height, width, imageHeight, imageWidth, onChange );
 
 	const output = {}
@@ -124,20 +119,6 @@ export default function ImageSizeControl( {
 			/>
 		</>
 	);
-
-	const imageSizePresetHandler = ( scaledHeight, scaledWidth ) => {
-		if( deviceType === 'Tablet' ){
-			setAttributes( { widthTablet: scaledWidth, heightTablet: scaledHeight} )
-		} else if( deviceType === 'Mobile' ){
-			setAttributes( { widthMobile: scaledWidth, heightMobile: scaledHeight} )
-		} else {
-			updateDimensions(
-				scaledHeight,
-				scaledWidth
-			)
-		}
-	}
-
 
 	return (
 		<>
