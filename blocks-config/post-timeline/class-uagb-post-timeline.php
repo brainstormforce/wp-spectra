@@ -116,6 +116,10 @@ if ( ! class_exists( 'UAGB_Post_Timeline' ) ) {
 							'type'    => 'number',
 							'default' => 15,
 						),
+						'timelinAlignment'    => array(
+							'type'    => 'string',
+							'default' => 'center',
+						),
 						'timelinAlignmentDesktop'    => array(
 							'type'    => 'string',
 							'default' => 'center',

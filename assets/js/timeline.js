@@ -123,3 +123,35 @@ function uagbTimelineInit() {
 		}
 	}
 }
+
+function UAGBTimelineClasses ( attributes, id ) {
+
+	const timeline = document.querySelectorAll( id );
+
+	if ( timeline.length === 0 ) {
+		return;
+	}
+
+	const deviceWidth = Math.max( window.screen.width, window.innerWidth );
+
+	for ( const content of timeline ) {
+
+		content.classList.remove( 'uagb-timeline__left-block', 'uagb-timeline__right-block','uagb-timeline__center-block' );
+
+		let device = 'Desktop';
+		
+		if ( deviceWidth <= uagb_timeline_data.mobile_breakpoint ) {
+			device = 'Mobile';
+		} else if( deviceWidth <= uagb_timeline_data.tablet_breakpoint ) {
+			device = 'Tablet';
+		}
+
+		if( 'left' === attributes['timelinAlignment' + device ] ) {
+			content.classList.add( 'uagb-timeline__left-block' );
+		} else if ( 'right' === attributes['timelinAlignment' + device ] ) {
+			content.classList.add( 'uagb-timeline__right-block' );
+		} else {
+			content.classList.add( 'uagb-timeline__center-block' );
+		}
+	}
+}
