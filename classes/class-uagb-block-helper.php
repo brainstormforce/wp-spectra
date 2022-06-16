@@ -308,6 +308,10 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 		 */
 		public static function get_post_selectors( $attr ) {
 
+			$border_css        = self::uag_generate_border_css( $attr, 'btn' );
+			$border_css_tablet = self::uag_generate_border_css( $attr, 'btn', 'tablet' );
+			$border_css_mobile = self::uag_generate_border_css( $attr, 'btn', 'mobile' );
+
 			$paddingTop    = isset( $attr['paddingTop'] ) ? $attr['paddingTop'] : $attr['contentPadding'];
 			$paddingBottom = isset( $attr['paddingBottom'] ) ? $attr['paddingBottom'] : $attr['contentPadding'];
 			$paddingLeft   = isset( $attr['paddingLeft'] ) ? $attr['paddingLeft'] : $attr['contentPadding'];
@@ -384,14 +388,10 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				'color' => $attr['metaColor'],
 			);
 			$selectors[' .uagb-post__text.uagb-post__excerpt']['color']                          = $attr['excerptColor'];
-			$selectors[' .uagb-post__text.uagb-post__cta .uagb-text-link']                       = array(
+			$selectors[' .uagb-post__text.uagb-post__cta .uagb-text-link']                       = array_merge( array(
 				'color'         => $attr['ctaColor'],
 				'background'    => $attr['ctaBgColor'],
-				'border-color'  => $attr['borderColor'],
-				'border-width'  => UAGB_Helper::get_css_value( $attr['borderWidth'], 'px' ),
-				'border-radius' => UAGB_Helper::get_css_value( $attr['borderRadius'], 'px' ),
-				'border-style'  => $attr['borderStyle'],
-			);
+			), $border_css);
 			$selectors[' .uagb-post__text.uagb-post__cta a']                                     = array(
 				'color'          => $attr['ctaColor'],
 				'padding-top'    => UAGB_Helper::get_css_value( $paddingBtnTop, $attr['paddingBtnUnit'] ),
@@ -403,12 +403,12 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 			$selectors[' .uagb-post__text.uagb-post__cta:hover']   = array(
 				'color'        => $attr['ctaHColor'],
 				'background'   => $attr['ctaBgHColor'],
-				'border-color' => $attr['borderHColor'],
+				'border-color' => $attr['btnBorderHColor'],
 			);
 			$selectors[' .uagb-post__text.uagb-post__cta:hover a'] = array(
 				'color'        => $attr['ctaHColor'],
 				'background'   => $attr['ctaBgHColor'],
-				'border-color' => $attr['borderHColor'],
+				'border-color' => $attr['btnBorderHColor'],
 			);
 
 			return $selectors;
