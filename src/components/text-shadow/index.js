@@ -50,8 +50,10 @@ const TextShadowControl = ( props ) => {
 						max={ 100 }
 						displayUnit={ false }
 						setAttributes={setAttributes}
-						data={{value:textShadowHOffset.value, label:textShadowHOffset.label}}
-						onChange={false}
+						data={ {
+							value: textShadowHOffset.value,
+							label: textShadowHOffset.label,
+						} }
 					/>
 				</div>
 				<div className="uagb-vertical-wrap">
@@ -62,8 +64,10 @@ const TextShadowControl = ( props ) => {
 						max={ 100 }
 						displayUnit={ false }
 						setAttributes={setAttributes}
-						data={{value:textShadowVOffset.value, label:textShadowVOffset.label}}
-						onChange={false}
+						data={ {
+							value: textShadowVOffset.value,
+							label: textShadowVOffset.label,
+						} }
 					/>
 				</div>
 				<div className="uagb-blur-wrap">
@@ -74,8 +78,10 @@ const TextShadowControl = ( props ) => {
 						max={ 100 }
 						displayUnit={ false }
 						setAttributes={setAttributes}
-						data={{value:textShadowBlur.value, label:textShadowBlur.label}}
-						onChange={false}
+						data={ {
+							value: textShadowBlur.value,
+							label: textShadowBlur.label,
+						} }
 					/>
 				</div>
 			</div>

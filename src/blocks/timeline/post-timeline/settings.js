@@ -816,9 +816,10 @@ const Settings = ( props ) => {
 						) }
 						setAttributes={ setAttributes }
 						value={ exerptLength }
-						onChange={ ( value ) =>
-							setAttributes( { exerptLength: value } )
-						}
+						data={ {
+							value: exerptLength,
+							label: 'exerptLength',
+						} }
 						min={ 1 }
 						max={ 50 }
 						displayUnit={ false }
@@ -859,20 +860,6 @@ const Settings = ( props ) => {
 						setAttributes( { linkTarget: ! linkTarget } )
 					}
 				/>
-				{/* <Range
-					label={ __(
-						'Rounded Corners',
-						'ultimate-addons-for-gutenberg'
-					) }
-					setAttributes={ setAttributes }
-					value={ borderRadius }
-					onChange={ ( value ) =>
-						setAttributes( { borderRadius: value } )
-					}
-					min={ 0 }
-					max={ 50 }
-					displayUnit={ false }
-				/> */}
 				<ResponsiveSlider
 					label={ __(
 						'Border Radius',
@@ -919,9 +906,10 @@ const Settings = ( props ) => {
 						) }
 						setAttributes={ setAttributes }
 						value={ iconSize }
-						onChange={ ( value ) =>
-							setAttributes( { iconSize: value } )
-						}
+						data={ {
+							value: iconSize,
+							label: 'iconSize',
+						} }
 						min={ 0 }
 						max={ 30 }
 						displayUnit={ false }
@@ -934,9 +922,10 @@ const Settings = ( props ) => {
 					) }
 					setAttributes={ setAttributes }
 					value={ connectorBgsize }
-					onChange={ ( value ) =>
-						setAttributes( { connectorBgsize: value } )
-					}
+					data={ {
+						value: connectorBgsize,
+						label: 'connectorBgsize',
+					} }
 					min={ 25 }
 					max={ 90 }
 					displayUnit={ false }
@@ -948,9 +937,10 @@ const Settings = ( props ) => {
 					) }
 					setAttributes={ setAttributes }
 					value={ borderwidth }
-					onChange={ ( value ) =>
-						setAttributes( { borderwidth: value } )
-					}
+					data={ {
+						value: borderwidth,
+						label: 'borderwidth',
+					} }
 					min={ 1 }
 					max={ 10 }
 					displayUnit={ false }
@@ -962,9 +952,10 @@ const Settings = ( props ) => {
 					) }
 					setAttributes={ setAttributes }
 					value={ separatorwidth }
-					onChange={ ( value ) =>
-						setAttributes( { separatorwidth: value } )
-					}
+					data={ {
+						value: separatorwidth,
+						label: 'separatorwidth',
+					} }
 					min={ 1 }
 					max={ 10 }
 					displayUnit={ false }
@@ -1406,9 +1397,10 @@ const Settings = ( props ) => {
 						) }
 						setAttributes={ setAttributes }
 						value={ contentSpace }
-						onChange={ ( value ) =>
-							setAttributes( { contentSpace: value } )
-						}
+						data={ {
+							value: contentSpace,
+							label: 'contentSpace',
+						} }
 						min={ 0 }
 						max={ 50 }
 						displayUnit={ false }

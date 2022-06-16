@@ -1480,9 +1480,10 @@ const Settings = ( props ) => {
 							) }
 							setAttributes={ setAttributes }
 							value={ topWidth }
-							onChange={ ( value ) =>
-								setAttributes( { topWidth: value } )
-							}
+							data={ {
+								value: topWidth,
+								label: 'topWidth',
+							} }
 							min={ 100 }
 							max={ 2000 }
 							displayUnit={ false }
@@ -1579,9 +1580,10 @@ const Settings = ( props ) => {
 							) }
 							setAttributes={ setAttributes }
 							value={ bottomWidth }
-							onChange={ ( value ) =>
-								setAttributes( { bottomWidth: value } )
-							}
+							data={ {
+								value: bottomWidth,
+								label: 'bottomWidth',
+							} }
 							min={ 100 }
 							max={ 2000 }
 							displayUnit={ false }

@@ -28,8 +28,10 @@ export default function RangeTypographyControl( props ) {
 				unit={ props.type }
 				responsive={ true }
 				setAttributes={props.setAttributes}
-				data={{value:props.size.value, label:props.sizeLabel}}
-				onChange={false}
+				data={ {
+					value: props.size.value,
+					label: props.sizeLabel,
+				} }
 			/>
 		</>
 	);
@@ -44,8 +46,10 @@ export default function RangeTypographyControl( props ) {
 				unit={ props.type }
 				responsive={ true }
 				setAttributes={props.setAttributes}
-				data={{value:props.sizeTablet.value, label:props.sizeTabletLabel}}
-				onChange={false}
+				data={ {
+					value: props.sizeTablet.value,
+					label: props.sizeTabletLabel,
+				} }
 			/>
 		</>
 	);
@@ -60,8 +64,10 @@ export default function RangeTypographyControl( props ) {
 				unit={ props.type }
 				responsive={ true }
 				setAttributes={props.setAttributes}
-				data={{value:props.sizeMobile.value, label:props.sizeMobileLabel}}
-				onChange={false}
+				data={ {
+					value: props.sizeMobile.value,
+					label: props.sizeMobileLabel,
+				} }
 			/>
 		</>
 	);

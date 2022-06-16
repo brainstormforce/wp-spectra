@@ -432,11 +432,10 @@ const Settings = ( props ) => {
 					) }
 					setAttributes={ setAttributes }
 					value={ secondCtaIconSpace }
-					onChange={ ( value ) =>
-						setAttributes( {
-							secondCtaIconSpace: value,
-						} )
-					}
+					data={ {
+						value: secondCtaIconSpace,
+						label: 'secondCtaIconSpace',
+					} }
 					min={ 0 }
 					max={ 50 }
 					displayUnit={ false }

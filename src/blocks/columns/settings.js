@@ -123,11 +123,10 @@ const Settings = ( props ) => {
 					label={ __( 'Columns', 'ultimate-addons-for-gutenberg' ) }
 					setAttributes={ setAttributes }
 					value={ columns }
-					onChange={ ( value ) =>
-						setAttributes( {
-							columns: value,
-						} )
-					}
+					data={ {
+						value: columns,
+						label: 'columns',
+					} }
 					min={ 0 }
 					max={ 6 }
 					displayUnit={ false }
@@ -261,9 +260,10 @@ const Settings = ( props ) => {
 							) }
 							setAttributes={ setAttributes }
 							value={ width }
-							onChange={ ( value ) =>
-								setAttributes( { width: value } )
-							}
+							data={ {
+								value: width,
+								label: 'width',
+							} }
 							min={ 0 }
 							max={ '%' === widthType ? 100 : 2000 }
 							unit={ {
@@ -783,9 +783,10 @@ const Settings = ( props ) => {
 							) }
 							setAttributes={ setAttributes }
 							value={ topWidth }
-							onChange={ ( value ) =>
-								setAttributes( { topWidth: value } )
-							}
+							data={ {
+								value: topWidth,
+								label: 'topWidth',
+							} }
 							min={ 100 }
 							max={ 2000 }
 							displayUnit={ false }
@@ -870,9 +871,10 @@ const Settings = ( props ) => {
 							) }
 							setAttributes={ setAttributes }
 							value={ bottomWidth }
-							onChange={ ( value ) =>
-								setAttributes( { bottomWidth: value } )
-							}
+							data={ {
+								value: bottomWidth,
+								label: 'bottomWidth',
+							} }
 							min={ 100 }
 							max={ 2000 }
 							displayUnit={ false }

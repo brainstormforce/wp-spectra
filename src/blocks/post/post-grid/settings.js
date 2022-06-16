@@ -487,6 +487,10 @@ const Settings = ( props ) => {
 					) }
 					setAttributes={ setAttributes }
 					value={ postsToShow }
+					data={ {
+						value: postsToShow,
+						label: 'postsToShow',
+					} }
 					onChange={ onChangePostsPerPage }
 					min={ 0 }
 					max={ 50 }
@@ -499,6 +503,10 @@ const Settings = ( props ) => {
 					) }
 					setAttributes={ setAttributes }
 					value={ postsOffset }
+					data={ {
+						value: postsOffset,
+						label: 'postsOffset',
+					} }
 					onChange={ onChangePostsOffset }
 					min={ 0 }
 					max={ 50 }
@@ -620,6 +628,10 @@ const Settings = ( props ) => {
 						) }
 						setAttributes={ setAttributes }
 						value={ pageLimit }
+						data={ {
+							value: pageLimit,
+							label: 'pageLimit',
+						} }
 						onChange={ onChangePageLimit }
 						min={ 0 }
 						max={ 100 }
@@ -1034,9 +1046,10 @@ const Settings = ( props ) => {
 							) }
 							setAttributes={ setAttributes }
 							value={ excerptLength }
-							onChange={ ( value ) =>
-								setAttributes( { excerptLength: value } )
-							}
+							data={ {
+								value: excerptLength,
+								label: 'excerptLength',
+							} }
 							min={ 1 }
 							max={ 100 }
 							displayUnit={ false }
@@ -1258,9 +1271,10 @@ const Settings = ( props ) => {
 						) }
 						setAttributes={ setAttributes }
 						value={ overlayOpacity }
-						onChange={ ( value ) =>
-							setAttributes( { overlayOpacity: value } )
-						}
+						data={ {
+							value: overlayOpacity,
+							label: 'overlayOpacity',
+						} }
 						min={ 0 }
 						max={ 100 }
 						displayUnit={ false }
@@ -2087,11 +2101,10 @@ const Settings = ( props ) => {
 								'ultimate-addons-for-gutenberg'
 							) }
 							value={ paginationBorderSize }
-							onChange={ ( value ) =>
-								setAttributes( {
-									paginationBorderSize: value,
-								} )
-							}
+							data={ {
+								value: paginationBorderSize,
+								label: 'paginationBorderSize',
+							} }
 							min={ 0 }
 							max={ 10 }
 							displayUnit={ false }
@@ -2103,11 +2116,10 @@ const Settings = ( props ) => {
 								'ultimate-addons-for-gutenberg'
 							) }
 							value={ paginationBorderRadius }
-							onChange={ ( value ) =>
-								setAttributes( {
-									paginationBorderRadius: value,
-								} )
-							}
+							data={ {
+								value: paginationBorderRadius,
+								label: 'paginationBorderRadius',
+							} }
 							displayUnit={ false }
 							min={ 0 }
 							max={ 100 }
@@ -2118,9 +2130,10 @@ const Settings = ( props ) => {
 					label={ __( 'Spacing', 'ultimate-addons-for-gutenberg' ) }
 					setAttributes={ setAttributes }
 					value={ paginationSpacing }
-					onChange={ ( value ) =>
-						setAttributes( { paginationSpacing: value } )
-					}
+					data={ {
+						value: paginationSpacing,
+						label: 'paginationSpacing',
+					} }
 					help={ __(
 						'This spacing is between the Post Grid and the Pagination',
 						'ultimate-addons-for-gutenberg'

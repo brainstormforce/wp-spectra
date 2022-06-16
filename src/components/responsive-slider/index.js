@@ -20,11 +20,11 @@ const ResponsiveSlider = ( props ) => {
 				{ ...props }
 				label={ props.label }
 				value={ props.data.desktop.value || '' }
+				data={ {
+					value: props.data.desktop.value,
+					label: props.data.desktop.label,
+				} }
 				onChange={ ( value ) => {
-					props.setAttributes( {
-						[ props.data.desktop.label ]: value,
-					} )
-
 					if ( props?.onChange ) {
 						props.onChange( value )
 					}
@@ -44,10 +44,11 @@ const ResponsiveSlider = ( props ) => {
 				{ ...props }
 				label={ props.label }
 				value={ props.data.tablet.value }
+				data={ {
+					value: props.data.tablet.value,
+					label: props.data.tablet.label,
+				} }
 				onChange={ ( value ) => {
-					props.setAttributes( {
-						[ props.data.tablet.label ]: value,
-					} )
 					if ( props?.onChange ) {
 						props.onChange( value )
 					}
@@ -66,10 +67,11 @@ const ResponsiveSlider = ( props ) => {
 				{ ...props }
 				label={ props.label }
 				value={ props.data.mobile.value }
+				data={ {
+					value: props.data.mobile.value,
+					label: props.data.mobile.label,
+				} }
 				onChange={ ( value ) => {
-					props.setAttributes( {
-						[ props.data.mobile.label ]: value,
-					} )
 					if ( props?.onChange ) {
 						props.onChange( value )
 					}

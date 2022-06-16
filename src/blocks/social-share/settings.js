@@ -243,7 +243,10 @@ const Settings = ( props ) => {
 					) }
 					setAttributes={ setAttributes }
 					value={ bgSize }
-					onChange={ ( value ) => setAttributes( { bgSize: value } ) }
+					data={ {
+						value: bgSize,
+						label: 'bgSize',
+					} }
 					min={ 0 }
 					max={ 100 }
 					displayUnit={ false }

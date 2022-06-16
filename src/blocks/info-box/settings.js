@@ -1084,9 +1084,10 @@ const Settings = ( props ) => {
 												) }
 												setAttributes={ setAttributes }
 												value={ iconBorderWidth }
-												onChange={ ( value ) =>
-													setAttributes( { iconBorderWidth: value } )
-												}
+												data={ {
+													value: iconBorderWidth,
+													label: 'iconBorderWidth',
+												} }
 												min={ 0 }
 												max={ 15 }
 												units={ [
@@ -1201,9 +1202,10 @@ const Settings = ( props ) => {
 										) }
 										setAttributes={ setAttributes }
 										value={ iconSize }
-										onChange={ ( value ) =>
-											setAttributes( { iconSize: value } )
-										}
+										data={ {
+											value: iconSize,
+											label: 'iconSize',
+										} }
 										limitMin={ { 'px': 0, '%': 0, 'em': 0 } } // eslint-disable-line quote-props
 										limitMax={ { 'px': 500, '%': 100, 'em': 100 } } // eslint-disable-line quote-props
 										unit={ {
@@ -1326,11 +1328,10 @@ const Settings = ( props ) => {
 											) }
 											setAttributes={ setAttributes }
 											value={ iconimgBorderRadius }
-											onChange={ ( value ) =>
-												setAttributes( {
-													iconimgBorderRadius: value,
-												} )
-											}
+											data={ {
+												value: iconimgBorderRadius,
+												label: 'iconimgBorderRadius',
+											} }
 											min={ 0 }
 											max={ 100 }
 											unit={ {
@@ -1824,11 +1825,10 @@ const Settings = ( props ) => {
 							) }
 							setAttributes={ setAttributes }
 							value={ seperatorThickness }
-							onChange={ ( value ) =>
-								setAttributes( {
-									seperatorThickness: value,
-								} )
-							}
+							data={ {
+								value: seperatorThickness,
+								label: 'seperatorThickness',
+							} }
 							min={ 0 }
 							max={ 10 }
 							unit={ {

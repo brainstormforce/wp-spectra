@@ -584,9 +584,10 @@ const Settings = ( props ) => {
 					label={ __( 'Radius', 'ultimate-addons-for-gutenberg' ) }
 					setAttributes={ setAttributes }
 					value={ fieldBorderRadius }
-					onChange={ ( value ) =>
-						setAttributes( { fieldBorderRadius: value } )
-					}
+					data={ {
+						value: fieldBorderRadius,
+						label: 'fieldBorderRadius',
+					} }
 					min={ 0 }
 					max={ 50 }
 					unit={ {
@@ -921,9 +922,10 @@ const Settings = ( props ) => {
 						) }
 						setAttributes={ setAttributes }
 						value={ formTabIndex }
-						onChange={ ( value ) =>
-							setAttributes( { formTabIndex: value } )
-						}
+						data={ {
+							value: formTabIndex,
+							label: 'formTabIndex',
+						} }
 						min={ 0 }
 						max={ 500 }
 						displayUnit={ false }
@@ -1191,9 +1193,10 @@ const Settings = ( props ) => {
 					label={ __( 'Radius', 'ultimate-addons-for-gutenberg' ) }
 					setAttributes={ setAttributes }
 					value={ buttonBorderRadius }
-					onChange={ ( value ) =>
-						setAttributes( { buttonBorderRadius: value } )
-					}
+					data={ {
+						value: buttonBorderRadius,
+						label: 'buttonBorderRadius',
+					} }
 					min={ 0 }
 					max={ 50 }
 					unit={ {
@@ -1819,11 +1822,10 @@ const Settings = ( props ) => {
 							) }
 							setAttributes={ setAttributes }
 							value={ radioCheckBorderRadius }
-							onChange={ ( value ) =>
-								setAttributes( {
-									radioCheckBorderRadius: value,
-								} )
-							}
+							data={ {
+								value: radioCheckBorderRadius,
+								label: 'radioCheckBorderRadius',
+							} }
 							min={ 0 }
 							max={ 50 }
 							unit={ {
@@ -2106,9 +2108,10 @@ const Settings = ( props ) => {
 					) }
 					setAttributes={ setAttributes }
 					value={ msgBorderSize }
-					onChange={ ( value ) =>
-						setAttributes( { msgBorderSize: value } )
-					}
+					data={ {
+						value: msgBorderSize,
+						label: 'msgBorderSize',
+					} }
 					min={ 0 }
 					max={ 50 }
 					unit={ {
@@ -2133,9 +2136,10 @@ const Settings = ( props ) => {
 					) }
 					setAttributes={ setAttributes }
 					value={ msgBorderRadius }
-					onChange={ ( value ) =>
-						setAttributes( { msgBorderRadius: value } )
-					}
+					data={ {
+						value: msgBorderRadius,
+						label: 'msgBorderRadius',
+					} }
 					min={ 0 }
 					max={ 50 }
 					unit={ {

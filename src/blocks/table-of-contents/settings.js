@@ -241,9 +241,10 @@ const Settings = ( props ) => {
 							) }
 							setAttributes={ setAttributes }
 							value={ smoothScrollOffset }
-							onChange={ ( value ) =>
-								setAttributes( { smoothScrollOffset: value } )
-							}
+							data={ {
+								value: smoothScrollOffset,
+								label: 'smoothScrollOffset',
+							} }
 							min={ 0 }
 							max={ 1000 }
 							unit={ {
@@ -267,9 +268,10 @@ const Settings = ( props ) => {
 							) }
 							setAttributes={ setAttributes }
 							value={ smoothScrollDelay }
-							onChange={ ( value ) =>
-								setAttributes( { smoothScrollDelay: value } )
-							}
+							data={ {
+								value: smoothScrollDelay,
+								label: 'smoothScrollDelay',
+							} }
 							min={ 100 }
 							max={ 5000 }
 							displayUnit={ false }
@@ -881,9 +883,10 @@ const Settings = ( props ) => {
 							) }
 							setAttributes={ setAttributes }
 							value={ iconSize }
-							onChange={ ( value ) =>
-								setAttributes( { iconSize: value } )
-							}
+							data={ {
+								value: iconSize,
+								label: 'iconSize',
+							} }
 							min={ 0 }
 							max={ 300 }
 							displayUnit={ false }

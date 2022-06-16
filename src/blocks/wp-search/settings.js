@@ -147,9 +147,10 @@ const Settings = ( props ) => {
 					) }
 					setAttributes={ setAttributes }
 					value={ inputSize }
-					onChange={ ( value ) =>
-						setAttributes( { inputSize: value } )
-					}
+					data={ {
+						value: inputSize,
+						label: 'inputSize',
+					} }
 					min={ 0 }
 					max={ 200 }
 					units={ [
@@ -572,10 +573,9 @@ const Settings = ( props ) => {
 						label={ __( 'Width', 'ultimate-addons-for-gutenberg' ) }
 						setAttributes={ setAttributes }
 						value={ buttonWidth }
-						onChange={ ( value ) => {
-							setAttributes( {
-								buttonWidth: value,
-							} );
+						data={ {
+							value: buttonWidth,
+							label: 'buttonWidth',
 						} }
 						min={ 0 }
 						max={ 500 }
@@ -593,10 +593,9 @@ const Settings = ( props ) => {
 								) }
 								setAttributes={ setAttributes }
 								value={ buttonIconSize }
-								onChange={ ( value ) => {
-									setAttributes( {
-										buttonIconSize: value,
-									} );
+								data={ {
+									value: buttonIconSize,
+									label: 'buttonIconSize',
 								} }
 								min={ 0 }
 								max={ 100 }
@@ -720,10 +719,9 @@ const Settings = ( props ) => {
 							) }
 							setAttributes={ setAttributes }
 							value={ iconSize }
-							onChange={ ( value ) => {
-								setAttributes( {
-									iconSize: value,
-								} );
+							data={ {
+								value: iconSize,
+								label: 'iconSize',
 							} }
 							min={ 0 }
 							max={ 100 }

@@ -330,9 +330,10 @@ const Settings = ( props ) => {
 						) }
 						setAttributes={ setAttributes }
 						value={ autoplaySpeed }
-						onChange={ ( value ) =>
-							setAttributes( { autoplaySpeed: value } )
-						}
+						data={ {
+							value: autoplaySpeed,
+							label: 'autoplaySpeed',
+						} }
 						min={ 100 }
 						max={ 10000 }
 						displayUnit={ false }
@@ -353,9 +354,10 @@ const Settings = ( props ) => {
 					) }
 					setAttributes={ setAttributes }
 					value={ transitionSpeed }
-					onChange={ ( value ) =>
-						setAttributes( { transitionSpeed: value } )
-					}
+					data={ {
+						value: transitionSpeed,
+						label: 'transitionSpeed',
+					} }
 					min={ 100 }
 					max={ 5000 }
 					displayUnit={ false }
@@ -414,9 +416,10 @@ const Settings = ( props ) => {
 							) }
 							setAttributes={ setAttributes }
 							value={ arrowSize }
-							onChange={ ( value ) =>
-								setAttributes( { arrowSize: value } )
-							}
+							data={ {
+								value: arrowSize,
+								label: 'arrowSize',
+							} }
 							min={ 0 }
 							max={ 50 }
 							unit={ {
@@ -431,9 +434,10 @@ const Settings = ( props ) => {
 							) }
 							setAttributes={ setAttributes }
 							value={ arrowBorderSize }
-							onChange={ ( value ) =>
-								setAttributes( { arrowBorderSize: value } )
-							}
+							data={ {
+								value: arrowBorderSize,
+								label: 'arrowBorderSize',
+							} }
 							min={ 0 }
 							max={ 50 }
 							unit={ {
@@ -458,9 +462,10 @@ const Settings = ( props ) => {
 							) }
 							setAttributes={ setAttributes }
 							value={ arrowBorderRadius }
-							onChange={ ( value ) =>
-								setAttributes( { arrowBorderRadius: value } )
-							}
+							data={ {
+								value: arrowBorderRadius,
+								label: 'arrowBorderRadius',
+							} }
 							min={ 0 }
 							max={ 50 }
 							unit={ {
@@ -1153,6 +1158,10 @@ const Settings = ( props ) => {
 									'ultimate-addons-for-gutenberg'
 								) }
 								value={ test_item_count }
+								data={ {
+									value: test_item_count,
+									label: 'test_item_count',
+								} }
 								onChange={ ( newCount ) => {
 									const cloneTest_block = [ ...test_block ];
 									if ( cloneTest_block.length < newCount ) {

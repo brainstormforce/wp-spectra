@@ -23,10 +23,6 @@ import SpacingControl from '@Components/spacing-control';
 import ColorSwitchControl from '@Components/color-switch-control';
 import TextShadowControl from '@Components/text-shadow';
 import Border from '@Components/border';
-
-
-
-
 import ResponsiveSlider from '@Components/responsive-slider';
 // Extend component
 import UAGAdvancedPanelBody from '@Components/advanced-panel-body';
@@ -746,11 +742,10 @@ const Settings = ( props ) => {
 					) }
 					setAttributes={ setAttributes }
 					value={ separatorHeight }
-					onChange={ ( value ) =>
-						setAttributes( {
-							separatorHeight: value,
-						} )
-					}
+					data={ {
+						value: separatorHeight,
+						label: 'separatorHeight',
+					} }
 					min={ 0 }
 					max={ 20 }
 					unit={ {

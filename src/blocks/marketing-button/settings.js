@@ -1041,11 +1041,10 @@ const Settings = ( props ) => {
 							) }
 							setAttributes={ setAttributes }
 							value={ gradientLocation1 }
-							onChange={ ( value ) =>
-								setAttributes( {
-									gradientLocation1: value,
-								} )
-							}
+							data={ {
+								value: gradientLocation1,
+								label: 'gradientLocation1',
+							} }
 							min={ 0 }
 							max={ 100 }
 							displayUnit={ false }
@@ -1057,11 +1056,10 @@ const Settings = ( props ) => {
 							) }
 							setAttributes={ setAttributes }
 							value={ gradientLocation2 }
-							onChange={ ( value ) =>
-								setAttributes( {
-									gradientLocation2: value,
-								} )
-							}
+							data={ {
+								value: gradientLocation2,
+								label: 'gradientLocation2',
+							} }
 							min={ 0 }
 							max={ 100 }
 							displayUnit={ false }
@@ -1074,11 +1072,10 @@ const Settings = ( props ) => {
 								) }
 								setAttributes={ setAttributes }
 								value={ gradientAngle }
-								onChange={ ( value ) =>
-									setAttributes( {
-										gradientAngle: value,
-									} )
-								}
+								data={ {
+									value: gradientAngle,
+									label: 'gradientAngle',
+								} }
 								min={ 0 }
 								max={ 360 }
 								displayUnit={ false }

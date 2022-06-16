@@ -621,9 +621,10 @@ const UAGBPostMasonry = ( props ) => {
 						'ultimate-addons-for-gutenberg'
 					) }
 					value={ postsToShow }
-					onChange={ ( value ) =>
-						setAttributes( { postsToShow: value } )
-					}
+					data={ {
+						value: postsToShow,
+						label: 'postsToShow',
+					} }
 					setAttributes={ setAttributes }
 					displayUnit={ false }
 					min={ 1 }
@@ -636,6 +637,10 @@ const UAGBPostMasonry = ( props ) => {
 					) }
 					setAttributes={ setAttributes }
 					value={ postsOffset }
+					data={ {
+						value: postsOffset,
+						label: 'postsOffset',
+					} }
 					onChange={ onChangePostsOffset }
 					min={ 0 }
 					max={ 100 }
@@ -889,11 +894,10 @@ const UAGBPostMasonry = ( props ) => {
 									'ultimate-addons-for-gutenberg'
 								) }
 								value={ paginationFontSize }
-								onChange={ ( value ) =>
-									setAttributes( {
-										paginationFontSize: value,
-									} )
-								}
+								data={ {
+									value: paginationFontSize,
+									label: 'paginationFontSize',
+								} }
 								setAttributes={ setAttributes }
 								min={ 0 }
 								max={ 100 }
@@ -1122,9 +1126,10 @@ const UAGBPostMasonry = ( props ) => {
 								) }
 								setAttributes={ setAttributes }
 								value={ loaderSize }
-								onChange={ ( value ) =>
-									setAttributes( { loaderSize: value } )
-								}
+								data={ {
+									value: loaderSize,
+									label: 'loaderSize',
+								} }
 								min={ 1 }
 								max={ 50 }
 								displayUnit={ false }
@@ -1402,9 +1407,10 @@ const UAGBPostMasonry = ( props ) => {
 							) }
 							setAttributes={ setAttributes }
 							value={ excerptLength }
-							onChange={ ( value ) =>
-								setAttributes( { excerptLength: value } )
-							}
+							data={ {
+								value: excerptLength,
+								label: 'excerptLength',
+							} }
 							min={ 1 }
 							max={ 100 }
 							displayUnit={ false }
@@ -1626,9 +1632,10 @@ const UAGBPostMasonry = ( props ) => {
 							) }
 							setAttributes={ setAttributes }
 							value={ overlayOpacity }
-							onChange={ ( value ) =>
-								setAttributes( { overlayOpacity: value } )
-							}
+							data={ {
+								value: overlayOpacity,
+								label: 'overlayOpacity',
+							} }
 							min={ 0 }
 							max={ 100 }
 							displayUnit={ false }

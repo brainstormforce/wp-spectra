@@ -977,9 +977,10 @@ const Settings = ( props ) => {
 						) }
 						setAttributes={ setAttributes }
 						value={ listBottomMargin }
-						onChange={ ( value ) =>
-							setAttributes( { listBottomMargin: value } )
-						}
+						data={ {
+							value: listBottomMargin,
+							label: 'listBottomMargin',
+						} }
 						min={ 0 }
 						max={ 100 }
 						displayUnit={ false }

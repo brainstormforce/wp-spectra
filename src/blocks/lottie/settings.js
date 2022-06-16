@@ -117,7 +117,7 @@ const Settings = ( props ) => {
 						allow={ [ 'application/json' ] }
 					/>
 				) }
-				{ lottieSource === 'url' && (					
+				{ lottieSource === 'url' && (
 					<TextControl
 						label={ __(
 							'Lottie Animation URL',
@@ -216,7 +216,10 @@ const Settings = ( props ) => {
 					label={ __( 'Speed', 'ultimate-addons-for-gutenberg' ) }
 					setAttributes={ setAttributes }
 					value={ speed }
-					onChange={ ( value ) => setAttributes( { speed: value } ) }
+					data={ {
+						value: speed,
+						label: 'speed',
+					} }
 					min={ 1 }
 					max={ 50 }
 					displayUnit={ false }

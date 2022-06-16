@@ -1136,11 +1136,10 @@ const Settings = ( props ) => {
 				) }
 				setAttributes={ setAttributes }
 				value={ radioCheckBorderRadius }
-				onChange={ ( value ) =>
-					setAttributes( {
-						radioCheckBorderRadius: value,
-					} )
-				}
+				data={ {
+					value: radioCheckBorderRadius,
+					label: 'radioCheckBorderRadius',
+				} }
 				min={ 0 }
 				max={ 100 }
 				unit={ {
@@ -1612,11 +1611,10 @@ const Settings = ( props ) => {
 				) }
 				setAttributes={ setAttributes }
 				value={ msgBorderSize }
-				onChange={ ( value ) =>
-					setAttributes( {
-						msgBorderSize: value,
-					} )
-				}
+				data={ {
+					value: msgBorderSize,
+					label: 'msgBorderSize',
+				} }
 				min={ 0 }
 				max={ 50 }
 				unit={ {
@@ -1638,11 +1636,10 @@ const Settings = ( props ) => {
 				label={ __( 'Border Radius', 'ultimate-addons-for-gutenberg' ) }
 				setAttributes={ setAttributes }
 				value={ msgBorderRadius }
-				onChange={ ( value ) =>
-					setAttributes( {
-						msgBorderRadius: value,
-					} )
-				}
+				data={ {
+					value: msgBorderRadius,
+					label: 'msgBorderRadius',
+				} }
 				min={ 0 }
 				max={ 100 }
 				unit={ {

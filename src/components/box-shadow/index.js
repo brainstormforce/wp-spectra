@@ -67,8 +67,10 @@ const BoxShadowControl = ( props ) => {
 						max={ 100 }
 						displayUnit={ false }
 						setAttributes={setAttributes}
-						data={{value:boxShadowHOffset.value, label:boxShadowHOffset.label}}
-						onChange={false}
+						data={ {
+							value: boxShadowHOffset.value,
+							label: boxShadowHOffset.label,
+						} }
 					/>
 				</div>
 				<div className="uagb-vertical-wrap">
@@ -79,8 +81,10 @@ const BoxShadowControl = ( props ) => {
 						max={ 100 }
 						displayUnit={ false }
 						setAttributes={setAttributes}
-						data={{value:boxShadowVOffset.value, label:boxShadowVOffset.label}}
-						onChange={false}
+						data={ {
+							value: boxShadowVOffset.value,
+							label: boxShadowVOffset.label,
+						} }
 					/>
 				</div>
 				<div className="uagb-blur-wrap">
@@ -91,8 +95,10 @@ const BoxShadowControl = ( props ) => {
 						max={ 100 }
 						displayUnit={ false }
 						setAttributes={setAttributes}
-						data={{value:boxShadowBlur.value, label:boxShadowBlur.label}}
-						onChange={false}
+						data={ {
+							value: boxShadowBlur.value,
+							label: boxShadowBlur.label,
+						} }
 					/>
 				</div>
 				<div className="uagb-spread-wrap">
@@ -103,8 +109,10 @@ const BoxShadowControl = ( props ) => {
 						max={ 100 }
 						displayUnit={ false }
 						setAttributes={setAttributes}
-						data={{value:boxShadowSpread.value, label:boxShadowSpread.label}}
-						onChange={false}
+						data={ {
+							value: boxShadowSpread.value,
+							label: boxShadowSpread.label,
+						} }
 					/>
 				</div>
 				<div className="uagb-shadow-type">

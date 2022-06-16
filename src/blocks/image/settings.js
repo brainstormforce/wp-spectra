@@ -1440,11 +1440,10 @@ export default function Settings( props ) {
 						) }
 						setAttributes={ setAttributes }
 						value={ overlayPositionFromEdge }
-						onChange={ ( value ) =>
-							setAttributes( {
-								overlayPositionFromEdge: value,
-							} )
-						}
+						data={ {
+							value: overlayPositionFromEdge,
+							label: 'overlayPositionFromEdge',
+						} }
 						min={ 0 }
 						max={ 100 }
 						unit={ {
@@ -1593,32 +1592,30 @@ export default function Settings( props ) {
 					setAttributes( { overlayBackground: value } )
 				}
 			/>
-			<RangeControl
+			<Range
 				label={ __(
 					'Overlay Opacity',
 					'ultimate-addons-for-gutenberg'
 				) }
 				value={ overlayOpacity }
-				onChange={ ( value ) =>
-					setAttributes( {
-						overlayOpacity: value,
-					} )
-				}
+				data={ {
+					value: overlayOpacity,
+					label: 'overlayOpacity',
+				} }
 				min={ 0 }
 				max={ 1 }
 				step={0.1}
 			/>
-			<RangeControl
+			<Range
 				label={ __(
 					'Overlay Hover Opacity',
 					'ultimate-addons-for-gutenberg'
 				) }
 				value={ overlayHoverOpacity }
-				onChange={ ( value ) =>
-					setAttributes( {
-						overlayHoverOpacity: value,
-					} )
-				}
+				data={ {
+					value: overlayHoverOpacity,
+					label: 'overlayHoverOpacity',
+				} }
 				min={ 0 }
 				max={ 1 }
 				step={0.1}
@@ -1635,11 +1632,10 @@ export default function Settings( props ) {
 				) }
 				setAttributes={ setAttributes }
 				value={ seperatorWidth }
-				onChange={ ( value ) =>
-					setAttributes( {
-						seperatorWidth: value,
-					} )
-				}
+				data={ {
+					value: seperatorWidth,
+					label: 'seperatorWidth',
+				} }
 				min={ 0 }
 				max={
 					'%' === separatorWidthType
@@ -1681,11 +1677,10 @@ export default function Settings( props ) {
 				) }
 				setAttributes={ setAttributes }
 				value={ seperatorThickness }
-				onChange={ ( value ) =>
-					setAttributes( {
-						seperatorThickness: value,
-					} )
-				}
+				data={ {
+					value: seperatorThickness,
+					label: 'seperatorThickness',
+				} }
 				min={ 0 }
 				max={ 10 }
 				unit={ {

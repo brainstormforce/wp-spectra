@@ -542,9 +542,10 @@ const UAGBPostCarousel = ( props ) => {
 						'ultimate-addons-for-gutenberg'
 					) }
 					value={ postsToShow }
-					onChange={ ( value ) =>
-						setAttributes( { postsToShow: value } )
-					}
+					data={ {
+						value: postsToShow,
+						label: 'postsToShow',
+					} }
 					setAttributes={ setAttributes }
 					displayUnit={ false }
 					min={ 1 }
@@ -557,9 +558,10 @@ const UAGBPostCarousel = ( props ) => {
 					) }
 					setAttributes={ setAttributes }
 					value={ postsOffset }
-					onChange={ ( value ) =>
-						setAttributes( { postsOffset: value } )
-					}
+					data={ {
+						value: postsOffset,
+						label: 'postsOffset',
+					} }
 					min={ 0 }
 					max={ 100 }
 					displayUnit={ false }
@@ -719,9 +721,10 @@ const UAGBPostCarousel = ( props ) => {
 							'ultimate-addons-for-gutenberg'
 						) }
 						value={ autoplaySpeed }
-						onChange={ ( value ) =>
-							setAttributes( { autoplaySpeed: value } )
-						}
+						data={ {
+							value: autoplaySpeed,
+							label: 'autoplaySpeed',
+						} }
 						setAttributes={ setAttributes }
 						displayUnit={ false }
 						min={ 100 }
@@ -746,9 +749,10 @@ const UAGBPostCarousel = ( props ) => {
 					setAttributes={ setAttributes }
 					displayUnit={ false }
 					value={ transitionSpeed }
-					onChange={ ( value ) =>
-						setAttributes( { transitionSpeed: value } )
-					}
+					data={ {
+						value: transitionSpeed,
+						label: 'transitionSpeed',
+					} }
 					min={ 100 }
 					max={ 5000 }
 				/>
@@ -1056,9 +1060,10 @@ const UAGBPostCarousel = ( props ) => {
 							) }
 							setAttributes={ setAttributes }
 							value={ excerptLength }
-							onChange={ ( value ) =>
-								setAttributes( { excerptLength: value } )
-							}
+							data={ {
+								value: excerptLength,
+								label: 'excerptLength',
+							} }
 							min={ 1 }
 							max={ 100 }
 							displayUnit={ false }
@@ -1258,9 +1263,10 @@ const UAGBPostCarousel = ( props ) => {
 						) }
 						setAttributes={ setAttributes }
 						value={ overlayOpacity }
-						onChange={ ( value ) =>
-							setAttributes( { overlayOpacity: value } )
-						}
+						data={ {
+							value: overlayOpacity,
+							label: 'overlayOpacity',
+						} }
 						min={ 0 }
 						max={ 100 }
 						displayUnit={ false }
@@ -1268,23 +1274,6 @@ const UAGBPostCarousel = ( props ) => {
 				</>
 			)}
 			{imgPosition === 'top' && (
-			// <Range
-			// 	label={ __(
-			// 		'Image Bottom Spacing',
-			// 		'ultimate-addons-for-gutenberg'
-			// 	) }
-			// 	setAttributes={ setAttributes }
-			// 	value={ imageBottomSpace }
-			// 	onChange={ ( value ) =>
-			// 		setAttributes( { imageBottomSpace: value } )
-			// 	}
-			// 	min={ 0 }
-			// 	max={ 50 }
-			// 	unit={ {
-			// 		value: imageBottomSpaceUnit,
-			// 		label: 'imageBottomSpaceUnit',
-			// 	} }
-			// />
 			<ResponsiveSlider
 				label={ __( 'Bottom Spacing', 'ultimate-addons-for-gutenberg' ) }
 				data={ {
@@ -1438,23 +1427,6 @@ const UAGBPostCarousel = ( props ) => {
 						label: 'titleDecoration',
 					} }
 				/>
-				{/* <Range
-					label={ __(
-						'Bottom Spacing',
-						'ultimate-addons-for-gutenberg'
-					) }
-					setAttributes={ setAttributes }
-					value={ titleBottomSpace }
-					onChange={ ( value ) =>
-						setAttributes( { titleBottomSpace: value } )
-					}
-					min={ 0 }
-					max={ 50 }
-					unit={ {
-						value: titleBottomSpaceUnit,
-						label: 'titleBottomSpaceUnit',
-					} }
-				/> */}
 				<ResponsiveSlider
 					label={ __( 'Bottom Spacing', 'ultimate-addons-for-gutenberg' ) }
 					data={ {
@@ -1578,24 +1550,6 @@ const UAGBPostCarousel = ( props ) => {
 						label: 'metaDecoration',
 					} }
 				/>
-
-				{/* <Range
-					label={ __(
-						'Bottom Spacing',
-						'ultimate-addons-for-gutenberg'
-					) }
-					setAttributes={ setAttributes }
-					value={ metaBottomSpace }
-					onChange={ ( value ) =>
-						setAttributes( { metaBottomSpace: value } )
-					}
-					min={ 0 }
-					max={ 50 }
-					unit={ {
-						value: metaBottomSpaceUnit,
-						label: 'metaBottomSpaceUnit',
-					} }
-				/> */}
 				<ResponsiveSlider
 					label={ __( 'Bottom Spacing', 'ultimate-addons-for-gutenberg' ) }
 					data={ {
@@ -1700,23 +1654,6 @@ const UAGBPostCarousel = ( props ) => {
 						label: 'excerptDecoration',
 					} }
 				/>
-				{/* <Range
-					label={ __(
-						'Bottom Spacing',
-						'ultimate-addons-for-gutenberg'
-					) }
-					setAttributes={ setAttributes }
-					value={ excerptBottomSpace }
-					onChange={ ( value ) =>
-						setAttributes( { excerptBottomSpace: value } )
-					}
-					min={ 0 }
-					max={ 50 }
-					unit={ {
-						value: excerptBottomSpaceUnit,
-						label: 'excerptBottomSpaceUnit',
-					} }
-				/> */}
 				<ResponsiveSlider
 					label={ __( 'Bottom Spacing', 'ultimate-addons-for-gutenberg' ) }
 					data={ {
@@ -1884,23 +1821,6 @@ const UAGBPostCarousel = ( props ) => {
 						label: 'ctaDecoration',
 					} }
 				/>
-				{/* <Range
-					label={ __(
-						'Bottom Spacing',
-						'ultimate-addons-for-gutenberg'
-					) }
-					setAttributes={ setAttributes }
-					value={ ctaBottomSpace }
-					onChange={ ( value ) =>
-						setAttributes( { ctaBottomSpace: value } )
-					}
-					min={ 0 }
-					max={ 200 }
-					unit={ {
-						value: ctaBottomSpaceUnit,
-						label: 'ctaBottomSpaceUnit',
-					} }
-				/> */}
 				<ResponsiveSlider
 					label={ __( 'Bottom Spacing', 'ultimate-addons-for-gutenberg' ) }
 					data={ {
@@ -2065,9 +1985,10 @@ const UAGBPostCarousel = ( props ) => {
 				<Range
 					label={ __( 'Size', 'ultimate-addons-for-gutenberg' ) }
 					value={ arrowSize }
-					onChange={ ( value ) =>
-						setAttributes( { arrowSize: value } )
-					}
+					data={ {
+						value: arrowSize,
+						label: 'arrowSize',
+					} }
 					min={ 0 }
 					max={ 50 }
 					setAttributes={ setAttributes }
@@ -2079,9 +2000,10 @@ const UAGBPostCarousel = ( props ) => {
 						'ultimate-addons-for-gutenberg'
 					) }
 					value={ arrowBorderSize }
-					onChange={ ( value ) =>
-						setAttributes( { arrowBorderSize: value } )
-					}
+					data={ {
+						value: arrowBorderSize,
+						label: 'arrowBorderSize',
+					} }
 					min={ 0 }
 					max={ 50 }
 					setAttributes={ setAttributes }
@@ -2095,11 +2017,10 @@ const UAGBPostCarousel = ( props ) => {
 					setAttributes={ setAttributes }
 					displayUnit={ false }
 					value={ arrowBorderRadius }
-					onChange={ ( value ) =>
-						setAttributes( {
-							arrowBorderRadius: value,
-						} )
-					}
+					data={ {
+						value: arrowBorderRadius,
+						label: 'arrowBorderRadius',
+					} }
 					min={ 0 }
 					max={ 50 }
 				/>

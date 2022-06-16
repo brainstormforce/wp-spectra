@@ -254,19 +254,6 @@ const Settings = ( props ) => {
 				/>
 
 				{ 'simple' === layout && (
-					// <Range
-					// 	label={ __(
-					// 		'Border Width',
-					// 		'ultimate-addons-for-gutenberg'
-					// 	) }
-					// 	value={ highlightWidth }
-					// 	onChange={ ( value ) =>
-					// 		setAttributes( { highlightWidth: value } )
-					// 	}
-					// 	min={ 0 }
-					// 	max={ 50 }
-					// 	displayUnit={ false }
-					// />
 					<ResponsiveSlider
 						label={ __(
 							'Border Width',
@@ -407,9 +394,10 @@ const Settings = ( props ) => {
 							'ultimate-addons-for-gutenberg'
 						) }
 						value={ close_cookie_days }
-						onChange={ ( value ) =>
-							setAttributes( { close_cookie_days: value } )
-						}
+						data={ {
+							value: close_cookie_days,
+							label: 'close_cookie_days',
+						} }
 						min={ 0 }
 						max={ 50 }
 						displayUnit={ false }

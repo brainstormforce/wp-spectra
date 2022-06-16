@@ -342,9 +342,10 @@ const Settings = ( props ) => {
 					) }
 					setAttributes={ setAttributes }
 					value={ quoteBorderRadius }
-					onChange={ ( value ) =>
-						setAttributes( { quoteBorderRadius: value } )
-					}
+					data={ {
+						value: quoteBorderRadius,
+						label: 'quoteBorderRadius',
+					} }
 					min={ 0 }
 					max={ 100 }
 					unit={ {
@@ -1322,9 +1323,10 @@ const Settings = ( props ) => {
 							) }
 							setAttributes={ setAttributes }
 							value={ borderWidth }
-							onChange={ ( value ) =>
-								setAttributes( { borderWidth: value } )
-							}
+							data={ {
+								value: borderWidth,
+								label: 'borderWidth',
+							} }
 							min={ 0 }
 							max={ 50 }
 							unit={ {
@@ -1514,9 +1516,10 @@ const Settings = ( props ) => {
 						) }
 						setAttributes={ setAttributes }
 						value={ tweetIconSpacing }
-						onChange={ ( value ) =>
-							setAttributes( { tweetIconSpacing: value } )
-						}
+						data={ {
+							value: tweetIconSpacing,
+							label: 'tweetIconSpacing',
+						} }
 						min={ 0 }
 						max={ 20 }
 						unit={ {

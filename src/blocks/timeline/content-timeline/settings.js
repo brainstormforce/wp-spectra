@@ -676,6 +676,10 @@ const Settings = ( props ) => {
 						) }
 						setAttributes={ setAttributes }
 						value={ iconSize }
+						data={ {
+							value: iconSize,
+							label: 'iconSize',
+						} }
 						onChange={ geticonSize }
 						min={ 0 }
 						max={ 30 }
@@ -689,6 +693,10 @@ const Settings = ( props ) => {
 					) }
 					setAttributes={ setAttributes }
 					value={ connectorBgsize }
+					data={ {
+						value: connectorBgsize,
+						label: 'connectorBgsize',
+					} }
 					onChange={ getconnectorBgsize }
 					min={ 25 }
 					max={ 90 }
@@ -701,6 +709,10 @@ const Settings = ( props ) => {
 					) }
 					setAttributes={ setAttributes }
 					value={ borderwidth }
+					data={ {
+						value: borderwidth,
+						label: 'borderwidth',
+					} }
 					onChange={ getborderwidth }
 					min={ 1 }
 					max={ 10 }
@@ -713,6 +725,10 @@ const Settings = ( props ) => {
 					) }
 					setAttributes={ setAttributes }
 					value={ separatorwidth }
+					data={ {
+						value: separatorwidth,
+						label: 'separatorwidth',
+					} }
 					onChange={ getseparatorwidth }
 					min={ 1 }
 					max={ 10 }

@@ -215,7 +215,10 @@ const Settings = ( props ) => {
 				label={ __( 'Rating', 'ultimate-addons-for-gutenberg' ) }
 				setAttributes={ setAttributes }
 				value={ rating }
-				onChange={ ( value ) => setAttributes( { rating: value } ) }
+				data={ {
+					value: rating,
+					label: 'rating',
+				} }
 				min={ 0 }
 				max={ range }
 				step={ 0.1 }
