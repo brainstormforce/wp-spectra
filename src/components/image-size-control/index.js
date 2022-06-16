@@ -178,41 +178,6 @@ export default function ImageSizeControl( {
 						<div className="block-editor-image-size-control__row">
 							{output[deviceType]}
 						</div>
-						<div className="block-editor-image-size-control__row">
-							<ButtonGroup aria-label={ __( 'Image Size Presets' ) }>
-								{ IMAGE_SIZE_PRESETS.map( ( scale ) => {
-									const scaledWidth = Math.round(
-										imageWidth * ( scale / 100 )
-									);
-									const scaledHeight = Math.round(
-										imageHeight * ( scale / 100 )
-									);
-
-									let isCurrent = currentWidth === scaledWidth
-									if( 'Tablet' === deviceType ){
-										isCurrent = widthTablet === scaledWidth;
-									} else if( 'Mobile' === deviceType ){
-										isCurrent = widthMobile === scaledWidth;
-									}
-									return (
-										<Button
-											key={ scale }
-											isSmall
-											variant={
-												isCurrent ? 'primary' : undefined
-											}
-											isPressed={ isCurrent }
-											onClick={ () => imageSizePresetHandler( scaledHeight,scaledWidth )}
-										>
-											{ scale }%
-										</Button>
-									);
-								} ) }
-							</ButtonGroup>
-							<Button isSmall onClick={ () => updateDimensions() }>
-								<span className="dashicon dashicons dashicons-image-rotate"></span>
-							</Button>
-						</div>
 					</div>
 				</div>
 			) }
