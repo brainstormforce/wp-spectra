@@ -193,7 +193,6 @@ $selectors = array(
 		),
 		' .uagb-timeline-desc-content'                         => array(
 			'text-align' => $attr['alignMobile'],
-			'color'      => $attr['subHeadingColor'],
 		),
 		' .uagb-timeline__day-new'                             => array(
 			'text-align' => $attr['alignMobile'],
