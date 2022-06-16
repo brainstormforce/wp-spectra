@@ -96589,10 +96589,10 @@ function contentTimelineStyle(props) {
     headTopSpacing,
     headTopSpacingTablet,
     headTopSpacingMobile,
+    timelinAlignmentTablet,
+    timelinAlignmentMobile,
     stack
   } = props.attributes;
-  const deviceType = stack.charAt(0).toUpperCase() + stack.slice(1);
-  const timelinAlignment = 'undefined' !== typeof props.attributes['timelinAlignment' + deviceType] ? props.attributes['timelinAlignment' + deviceType] : props.attributes.timelinAlignment;
   const respSelectors = 'left';
   const selectors = {
     ' .uagb-timeline__heading': {
@@ -96840,8 +96840,8 @@ function contentTimelineStyle(props) {
       'margin-top': Object(_Controls_generateCSSUnit__WEBPACK_IMPORTED_MODULE_1__["default"])(authorSpaceTablet, 'px')
     },
     '.uagb-timeline__center-block .uagb-timeline__marker': {
-      'margin-left': stack === 'tablet' && timelinAlignment === 'center' ? 0 : Object(_Controls_generateCSSUnit__WEBPACK_IMPORTED_MODULE_1__["default"])(leftMargin + 3, marginUnit),
-      'margin-right': stack === 'tablet' && timelinAlignment === 'center' ? 0 : Object(_Controls_generateCSSUnit__WEBPACK_IMPORTED_MODULE_1__["default"])(rightMargin, marginUnit)
+      'margin-left': stack === 'tablet' && timelinAlignmentTablet === 'center' ? 0 : Object(_Controls_generateCSSUnit__WEBPACK_IMPORTED_MODULE_1__["default"])(leftMargin + 3, marginUnit),
+      'margin-right': stack === 'tablet' && timelinAlignmentTablet === 'center' ? 0 : Object(_Controls_generateCSSUnit__WEBPACK_IMPORTED_MODULE_1__["default"])(rightMargin, marginUnit)
     },
     '.uagb-timeline__center-block .uagb-timeline__day-new.uagb-timeline__day-left': {
       'margin-left': Object(_Controls_generateCSSUnit__WEBPACK_IMPORTED_MODULE_1__["default"])(leftMarginTablet, tabletMarginUnit),
@@ -96947,8 +96947,8 @@ function contentTimelineStyle(props) {
       'margin-top': Object(_Controls_generateCSSUnit__WEBPACK_IMPORTED_MODULE_1__["default"])(authorSpaceMobile, 'px')
     },
     '.uagb-timeline__center-block .uagb-timeline__marker': {
-      'margin-left': (stack === 'tablet' || stack === 'mobile') && timelinAlignment === 'center' ? 0 : Object(_Controls_generateCSSUnit__WEBPACK_IMPORTED_MODULE_1__["default"])(leftMargin + 3, marginUnit),
-      'margin-right': (stack === 'tablet' || stack === 'mobile') && timelinAlignment === 'center' ? 0 : Object(_Controls_generateCSSUnit__WEBPACK_IMPORTED_MODULE_1__["default"])(rightMargin, marginUnit)
+      'margin-left': (stack === 'tablet' || stack === 'mobile') && timelinAlignmentMobile === 'center' ? 0 : Object(_Controls_generateCSSUnit__WEBPACK_IMPORTED_MODULE_1__["default"])(leftMargin + 3, marginUnit),
+      'margin-right': (stack === 'tablet' || stack === 'mobile') && timelinAlignmentMobile === 'center' ? 0 : Object(_Controls_generateCSSUnit__WEBPACK_IMPORTED_MODULE_1__["default"])(rightMargin, marginUnit)
     },
     '.uagb-timeline__center-block .uagb-timeline__day-new.uagb-timeline__day-left': {
       'margin-left': Object(_Controls_generateCSSUnit__WEBPACK_IMPORTED_MODULE_1__["default"])(leftMarginMobile, mobileMarginUnit),

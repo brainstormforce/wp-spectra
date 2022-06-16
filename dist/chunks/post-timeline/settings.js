@@ -536,26 +536,6 @@ const Settings = props => {
         label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__["__"])('Bottom', 'ultimate-addons-for-gutenberg')
       }],
       showIcons: false
-    }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement(_Components_multi_buttons_control__WEBPACK_IMPORTED_MODULE_10__["default"], {
-      setAttributes: setAttributes,
-      label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__["__"])('Stack On', 'ultimate-addons-for-gutenberg'),
-      data: {
-        value: stack,
-        label: 'stack'
-      },
-      className: "uagb-multi-button-alignment-control",
-      options: [{
-        value: 'none',
-        label: 'None'
-      }, {
-        value: 'tablet',
-        label: 'Tablet'
-      }, {
-        value: 'mobile',
-        label: 'Mobile'
-      }],
-      showIcons: false,
-      help: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__["__"])('Note: Choose on what breakpoint the Content Timeline will stack. It will be visible on front end only.', 'ultimate-addons-for-gutenberg')
     }));
   };
 

@@ -408,34 +408,6 @@ const Settings = ( props ) => {
 					] }
 					showIcons={ false }
 				/>
-				<MultiButtonsControl
-					setAttributes={ setAttributes }
-					label={ __( 'Stack On', 'ultimate-addons-for-gutenberg' ) }
-					data={ {
-						value: stack,
-						label: 'stack',
-					} }
-					className="uagb-multi-button-alignment-control"
-					options={ [
-						{
-							value: 'none',
-							label: 'None',
-						},
-						{
-							value: 'tablet',
-							label: 'Tablet',
-						},
-						{
-							value: 'mobile',
-							label: 'Mobile',
-						},
-					] }
-					showIcons={ false }
-					help={ __(
-						'Note: Choose on what breakpoint the Content Timeline will stack. It will be visible on front end only.',
-						'ultimate-addons-for-gutenberg'
-					) }
-				/>
 				<h2>{ __( 'Date' ) }</h2>
 				<ToggleControl
 					label={ __(
