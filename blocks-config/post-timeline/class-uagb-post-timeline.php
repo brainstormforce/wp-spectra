@@ -72,6 +72,14 @@ if ( ! class_exists( 'UAGB_Post_Timeline' ) ) {
 							'type'    => 'string',
 							'default' => '',
 						),
+						'alignTablet'                   => array(
+							'type'    => 'string',
+							'default' => '',
+						),
+						'alignMobile'                   => array(
+							'type'    => 'string',
+							'default' => '',
+						),
 						'headingColor'            => array(
 							'type'    => 'string',
 							'default' => '#333',

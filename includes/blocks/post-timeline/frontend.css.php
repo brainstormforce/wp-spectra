@@ -102,11 +102,10 @@ $t_selectors = array(
 							0 :
 							UAGB_Helper::get_css_value( $right_margin, $attr['marginUnit'] ),
 	),
-	' .uagb-timeline__right'  => array(
+	' .uagb-timeline__right .uagb-timeline__day-new'  => array(
 		'text-align' => $attr['alignTablet'],
 	),
-	' .uagb-timeline__link_parent'  => array(
-		'display' => 'none',
+	' .uagb-timeline__field .uagb-timeline__link_parent'  => array(
 		'text-align' => $attr['alignTablet'],
 	),
 	' .uagb-timeline__image a'      => array(
@@ -165,25 +164,34 @@ $m_selectors = array(
 							0 :
 							UAGB_Helper::get_css_value( $right_margin, $attr['marginUnit'] ),
 	),
-	'.uagb-timeline__right'  => array(
+	' .uagb-timeline__day-new .uagb-timeline__inner-date-new'     => array(
 		'text-align' => $attr['alignMobile'],
 	),
-	' .uagb-timeline__link_parent'  => array(
+	' .uagb-timeline__right .uagb-timeline__day-new'  => array(
 		'text-align' => $attr['alignMobile'],
 	),
-	' .uagb-timeline__image a'      => array(
+	' .uagb-timeline__day-new.uagb-timeline__events-inner-new'  => array(
 		'text-align' => $attr['alignMobile'],
 	),
-	' a.uagb-timeline__image'       => array(
+	' .uagb-timeline__day-new .uagb-timeline__link_parent'  => array(
 		'text-align' => $attr['alignMobile'],
 	),
-	' .uagb-timeline__author-link'  => array(
+	' .uagb-timeline__day-new .uagb-timeline__image a'      => array(
 		'text-align' => $attr['alignMobile'],
 	),
-	' .uagb-timeline__heading a'    => array(
+	' .uagb-timeline__day-new a.uagb-timeline__image'       => array(
 		'text-align' => $attr['alignMobile'],
 	),
-	' .uagb-timeline__heading'      => array(
+	' .uagb-timeline__day-new .uagb-timeline__author-link'  => array(
+		'text-align' => $attr['alignMobile'],
+	),
+	' .uagb-timeline__day-new .uagb-timeline__heading a'    => array(
+		'text-align' => $attr['alignMobile'],
+	),
+	' .uagb-timeline__day-new .uagb-timeline__heading'      => array(
+		'text-align' => $attr['alignMobile'],
+	),
+	' .uagb-timeline-desc-content'    => array(
 		'text-align' => $attr['alignMobile'],
 	),
 );
