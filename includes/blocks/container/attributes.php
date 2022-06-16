@@ -120,7 +120,7 @@ return array(
 	'innerContentWidth'              => 'alignwide',
 	'innerContentCustomWidthDesktop' => 1200,
 	'innerContentCustomWidthTablet'  => 768,
-	'innerContentCustomWidthMobile'  => 320,
+	'innerContentCustomWidthMobile'  => 426,
 	'innerContentCustomWidthType'    => 'px',
 	'bottomType'                     => 'none',
 	'bottomColor'                    => '#333',
