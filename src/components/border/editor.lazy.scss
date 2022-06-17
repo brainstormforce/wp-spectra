@@ -6,7 +6,8 @@
 
 		h2 {
 			font-weight: $spectra-font-weight-label;
-			margin-bottom: $spectra-control-vertical-gap;
+			color: $spectra-color-body;
+			margin: 0 0 $spectra-control-vertical-gap;
 		}
 	}
 
@@ -14,6 +15,7 @@
 	.uag-border-type {
 
 		label.components-input-control__label {
+			color: $spectra-color-body;
 			margin-bottom: 0;
 		}
 	}
