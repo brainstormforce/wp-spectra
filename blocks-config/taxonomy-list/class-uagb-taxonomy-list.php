@@ -61,20 +61,7 @@ if ( ! class_exists( 'UAGB_Taxonomy_List' ) ) {
 				return;
 			}
 
-			$border_attribute = UAGB_Block_Helper::uag_generate_post_border_attribute( 'overall' ,
-				array(
-					'borderStyle'             => 'solid',
-					'borderTopWidth'          => 1,
-					'borderRightWidth'        => 1,
-					'borderBottomWidth'       => 1,
-					'borderLeftWidth'         => 1,
-					'borderTopLeftRadius'     => 3,
-					'borderTopRightRadius'    => 3,
-					'borderBottomLeftRadius'  => 3,
-					'borderBottomRightRadius' => 3,
-					'borderColor'             =>'#E0E0E0',
-				),
-			);
+			$border_attribute = UAGB_Block_Helper::uag_generate_post_border_attribute( 'overall' );
 			register_block_type(
 				'uagb/taxonomy-list',
 				array(
