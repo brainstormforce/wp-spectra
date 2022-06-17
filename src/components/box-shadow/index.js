@@ -9,6 +9,9 @@ import { Button, Dashicon } from '@wordpress/components';
 import { useState } from '@wordpress/element';
 import MultiButtonsControl from '../multi-buttons-control/index';
 import React, { useLayoutEffect } from 'react';
+import { select } from '@wordpress/data'
+import getUAGEditorStateLocalStorage from '@Controls/getUAGEditorStateLocalStorage';
+
 const BoxShadowControl = ( props ) => {
 
 	const [ showAdvancedControls, toggleAdvancedControls ] = useState( false );
@@ -147,8 +150,26 @@ const BoxShadowControl = ( props ) => {
 			<Button
 				className={ 'uag-box-shadow-button spectra-control-popup__options--action-button' }
 				aria-pressed={ showAdvancedControls }
-				onClick={ () =>
-					toggleAdvancedControls( ! showAdvancedControls )
+				onClick={ () => {
+						toggleAdvancedControls( ! showAdvancedControls )
+						if ( ! showAdvancedControls ) {
+							const { getSelectedBlock } = select( 'core/block-editor' );
+							const blockName = getSelectedBlock()?.name;
+							const uagSettingState = getUAGEditorStateLocalStorage( 'uagSettingState' );
+							const data = {
+								...uagSettingState,
+								[blockName] : {
+									...uagSettingState?.[blockName],
+									selectedSetting : '.uag-box-shadow-options'
+								}
+							}
+
+							const uagLocalStorage = getUAGEditorStateLocalStorage();
+							if ( uagLocalStorage ) {
+								uagLocalStorage.setItem( 'uagSettingState', JSON.stringify( data ) );
+							}
+						}
+					}
 				}
 			>
 				<Dashicon icon="edit" />

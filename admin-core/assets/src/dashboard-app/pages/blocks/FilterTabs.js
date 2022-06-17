@@ -19,6 +19,7 @@ const FilterTabs = () => {
 
     const tabs = [
         { name: 'All', slug: 'all' },
+		{ name: 'Core', slug: 'core' },
         { name: 'Creative', slug: 'creative' },
         { name: 'Content', slug: 'content' },
         { name: 'Post', slug: 'post' },
@@ -180,14 +181,14 @@ const FilterTabs = () => {
                 <span className="z-0 flex shadow-sm rounded-[0.2rem] justify-center">
                     <button
                         type="button"
-                        className="-ml-px relative inline-flex items-center px-4 py-2 border border-gray-300 bg-white text-sm font-medium text-gray-70 focus:z-10 focus:outline-none rounded-l-md"
+                        className="hover:bg-wphoverbgcolor hover:text-wpcolor -ml-px relative inline-flex items-center px-4 py-2 border border-gray-300 bg-white text-sm font-medium text-gray-70 focus:z-10 focus:outline-none rounded-l-md"
                         onClick={activateAllBlocks}
                     >
                         Activate all
                     </button>
                     <button
                         type="button"
-                        className="-ml-px relative inline-flex items-center px-4 py-2 border border-gray-300 bg-white text-sm font-medium text-gray-70 focus:z-10 focus:outline-none rounded-r-md"
+                        className="hover:bg-wphoverbgcolor hover:text-wpcolor -ml-px relative inline-flex items-center px-4 py-2 border border-gray-300 bg-white text-sm font-medium text-gray-70 focus:z-10 focus:outline-none rounded-r-md"
                         onClick={deactivateAllBlocks}
                     >
                         Deactivate all
