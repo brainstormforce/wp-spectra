@@ -1267,6 +1267,14 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 			$border_attr[ "{$prefix}BorderStyle" ]  = $defaults['borderStyle'];
 			$border_attr[ "{$prefix}BorderColor" ]  = $defaults['borderColor'];
 			$border_attr[ "{$prefix}BorderHColor" ] = $defaults['borderHColor'];
+			$border_attr[ "{$prefix}BorderLink" ]       = array(
+				'type'    => 'boolean',
+				'default' => true,
+			);
+			$border_attr[ "{$prefix}BorderRadiusLink" ] = array(
+				'type'    => 'boolean',
+				'default' => true,
+			);
 
 			return $border_attr;
 		}
