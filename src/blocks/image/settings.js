@@ -301,7 +301,21 @@ export default function Settings( props ) {
 	 * Event to set Image as null while removing.
 	 */
 	const onRemoveImage = () => {
-		setAttributes( { url: '', urlTablet: '', urlMobile: '' } );
+		setAttributes( {
+			url: undefined,
+			urlTablet: undefined,
+			urlMobile: undefined,
+			alt: undefined,
+			id: undefined,
+			title: undefined,
+			caption: undefined,
+			width: undefined,
+			widthTablet: undefined,
+			widthMobile: undefined,
+			height: undefined,
+			heightTablet: undefined,
+			heightMobile: undefined
+		} );
 	};
 
 	/*
@@ -354,6 +368,14 @@ export default function Settings( props ) {
 			title={ __( 'Image', 'ultimate-addons-for-gutenberg' ) }
 			initialOpen={ true }
 		>
+			<UAGImage
+				label={' '}
+				onSelectImage={onSelectImage}
+				backgroundImage={{
+					url
+				}}
+				onRemoveImage={onRemoveImage}
+			/>
 			<MultiButtonsControl
 				setAttributes={ setAttributes }
 				label={ __(
@@ -382,13 +404,6 @@ export default function Settings( props ) {
 					},
 				] }
 				showIcons={ false }
-			/>
-			<UAGImage
-				onSelectImage={onSelectImage}
-				backgroundImage={{
-					url
-				}}
-				onRemoveImage={onRemoveImage}
 			/>
 			{
 				isSelected && (
