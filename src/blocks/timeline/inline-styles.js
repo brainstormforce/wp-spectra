@@ -458,10 +458,10 @@ function contentTimelineStyle( props ) {
 			'margin-top': generateCSSUnit( authorSpaceTablet, 'px' ),
 		},
 		'.uagb-timeline__center-block .uagb-timeline__marker': {
-			'margin-left': ( stack === 'tablet' && timelinAlignmentTablet === 'center' ) ?
-			0 : generateCSSUnit( leftMargin + 3, marginUnit ),
-			'margin-right': ( stack === 'tablet' && timelinAlignmentTablet === 'center' ) ?
-			0 : generateCSSUnit( rightMargin, marginUnit ),
+			'margin-left': ( timelinAlignmentTablet === 'center' ) ?
+		generateCSSUnit( leftMargin + 3, marginUnit ) : 0,
+			'margin-right': ( timelinAlignmentTablet === 'center' ) ?
+			generateCSSUnit( rightMargin, marginUnit ) : 0,
 		},
 		'.uagb-timeline__center-block .uagb-timeline__day-new.uagb-timeline__day-left': {
 			'margin-left': generateCSSUnit(
@@ -651,10 +651,10 @@ function contentTimelineStyle( props ) {
 			'margin-top': generateCSSUnit( authorSpaceMobile, 'px' ),
 		},
 		'.uagb-timeline__center-block .uagb-timeline__marker': {
-			'margin-left': ( stack === 'tablet' || stack === 'mobile' ) && ( timelinAlignmentMobile === 'center' ) ?
-			0 : generateCSSUnit( leftMargin + 3, marginUnit ),
-			'margin-right': ( stack === 'tablet' || stack === 'mobile' ) && ( timelinAlignmentMobile === 'center' ) ?
-			0 : generateCSSUnit( rightMargin, marginUnit ),
+			'margin-left': ( timelinAlignmentMobile === 'center' ) ?
+			generateCSSUnit( leftMargin + 3, marginUnit ) : 0,
+			'margin-right': ( timelinAlignmentMobile === 'center' ) ?
+			generateCSSUnit( rightMargin, marginUnit ) : 0,
 		},
 		'.uagb-timeline__center-block .uagb-timeline__day-new.uagb-timeline__day-left': {
 			'margin-left': generateCSSUnit(

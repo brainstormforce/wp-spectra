@@ -21,8 +21,7 @@ function ContentTmClasses( attributes, deviceType ) {
 		alignClass = 'uagb-timeline__right-block' + ' ';
 	}
 	alignClass += arrowAlignClass + '';
-	alignClass +=
-		'uagb-timeline__responsive-' + attributes.stack + ' uagb-timeline';
+	alignClass += ' uagb-timeline';
 
 	return [ alignClass ];
 }

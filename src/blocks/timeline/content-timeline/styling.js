@@ -377,9 +377,9 @@ function contentTimelineStyle( props ) {
 			),
 		},
 		'.uagb-timeline__center-block .uagb-timeline__marker': {
-			'margin-left': ( stack === 'tablet' && timelinAlignmentTablet === 'center' ) ?
+			'margin-left': ( timelinAlignmentTablet === 'center' ) ?
 			0 : generateCSSUnit( leftMargin + 3, marginUnit ),
-			'margin-right': ( stack === 'tablet' && timelinAlignmentTablet === 'center' ) ?
+			'margin-right': ( timelinAlignmentTablet === 'center' ) ?
 			0 : generateCSSUnit( rightMargin, marginUnit ),
 		},
 		'.uagb-timeline__center-block .uagb-timeline__day-new.uagb-timeline__day-left': {

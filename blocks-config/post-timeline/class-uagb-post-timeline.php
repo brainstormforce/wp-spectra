@@ -978,7 +978,6 @@ if ( ! class_exists( 'UAGB_Post_Timeline' ) ) {
 				$classes[] = 'uagb_timeline__cta-enable';
 			}
 
-			$classes[] = 'uagb-timeline__responsive-' . $attributes['stack'];
 			$classes[] = 'uagb-timeline';
 			$classes[] = 'uagb-timeline__content-wrap';
 

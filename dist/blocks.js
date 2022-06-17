@@ -93934,7 +93934,7 @@ function ContentTmClasses(attributes, deviceType) {
   }
 
   alignClass += arrowAlignClass + '';
-  alignClass += 'uagb-timeline__responsive-' + attributes.stack + ' uagb-timeline';
+  alignClass += ' uagb-timeline';
   return [alignClass];
 }
 
@@ -96255,8 +96255,8 @@ function contentTimelineStyle(props) {
       'line-height': Object(_Controls_generateCSSUnit__WEBPACK_IMPORTED_MODULE_1__["default"])(subHeadLineHeightTablet, subHeadLineHeightType)
     },
     '.uagb-timeline__center-block .uagb-timeline__marker': {
-      'margin-left': stack === 'tablet' && timelinAlignmentTablet === 'center' ? 0 : Object(_Controls_generateCSSUnit__WEBPACK_IMPORTED_MODULE_1__["default"])(leftMargin + 3, marginUnit),
-      'margin-right': stack === 'tablet' && timelinAlignmentTablet === 'center' ? 0 : Object(_Controls_generateCSSUnit__WEBPACK_IMPORTED_MODULE_1__["default"])(rightMargin, marginUnit)
+      'margin-left': timelinAlignmentTablet === 'center' ? 0 : Object(_Controls_generateCSSUnit__WEBPACK_IMPORTED_MODULE_1__["default"])(leftMargin + 3, marginUnit),
+      'margin-right': timelinAlignmentTablet === 'center' ? 0 : Object(_Controls_generateCSSUnit__WEBPACK_IMPORTED_MODULE_1__["default"])(rightMargin, marginUnit)
     },
     '.uagb-timeline__center-block .uagb-timeline__day-new.uagb-timeline__day-left': {
       'margin-left': Object(_Controls_generateCSSUnit__WEBPACK_IMPORTED_MODULE_1__["default"])(leftMarginTablet, tabletMarginUnit),
@@ -96840,8 +96840,8 @@ function contentTimelineStyle(props) {
       'margin-top': Object(_Controls_generateCSSUnit__WEBPACK_IMPORTED_MODULE_1__["default"])(authorSpaceTablet, 'px')
     },
     '.uagb-timeline__center-block .uagb-timeline__marker': {
-      'margin-left': stack === 'tablet' && timelinAlignmentTablet === 'center' ? 0 : Object(_Controls_generateCSSUnit__WEBPACK_IMPORTED_MODULE_1__["default"])(leftMargin + 3, marginUnit),
-      'margin-right': stack === 'tablet' && timelinAlignmentTablet === 'center' ? 0 : Object(_Controls_generateCSSUnit__WEBPACK_IMPORTED_MODULE_1__["default"])(rightMargin, marginUnit)
+      'margin-left': timelinAlignmentTablet === 'center' ? Object(_Controls_generateCSSUnit__WEBPACK_IMPORTED_MODULE_1__["default"])(leftMargin + 3, marginUnit) : 0,
+      'margin-right': timelinAlignmentTablet === 'center' ? Object(_Controls_generateCSSUnit__WEBPACK_IMPORTED_MODULE_1__["default"])(rightMargin, marginUnit) : 0
     },
     '.uagb-timeline__center-block .uagb-timeline__day-new.uagb-timeline__day-left': {
       'margin-left': Object(_Controls_generateCSSUnit__WEBPACK_IMPORTED_MODULE_1__["default"])(leftMarginTablet, tabletMarginUnit),
@@ -96947,8 +96947,8 @@ function contentTimelineStyle(props) {
       'margin-top': Object(_Controls_generateCSSUnit__WEBPACK_IMPORTED_MODULE_1__["default"])(authorSpaceMobile, 'px')
     },
     '.uagb-timeline__center-block .uagb-timeline__marker': {
-      'margin-left': (stack === 'tablet' || stack === 'mobile') && timelinAlignmentMobile === 'center' ? 0 : Object(_Controls_generateCSSUnit__WEBPACK_IMPORTED_MODULE_1__["default"])(leftMargin + 3, marginUnit),
-      'margin-right': (stack === 'tablet' || stack === 'mobile') && timelinAlignmentMobile === 'center' ? 0 : Object(_Controls_generateCSSUnit__WEBPACK_IMPORTED_MODULE_1__["default"])(rightMargin, marginUnit)
+      'margin-left': timelinAlignmentMobile === 'center' ? Object(_Controls_generateCSSUnit__WEBPACK_IMPORTED_MODULE_1__["default"])(leftMargin + 3, marginUnit) : 0,
+      'margin-right': timelinAlignmentMobile === 'center' ? Object(_Controls_generateCSSUnit__WEBPACK_IMPORTED_MODULE_1__["default"])(rightMargin, marginUnit) : 0
     },
     '.uagb-timeline__center-block .uagb-timeline__day-new.uagb-timeline__day-left': {
       'margin-left': Object(_Controls_generateCSSUnit__WEBPACK_IMPORTED_MODULE_1__["default"])(leftMarginMobile, mobileMarginUnit),
