@@ -86,4 +86,8 @@ return array(
 	'iconBorderHoverColor' => '',
 	'labelColor'           => '',
 	'labelHoverColor'      => '',
+	'labelLetterSpacing'       => '',
+	'labelLetterSpacingTablet' => '',
+	'labelLetterSpacingMobile' => '',
+	'labelLetterSpacingType'   => 'px',
 );

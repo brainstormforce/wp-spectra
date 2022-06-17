@@ -1159,7 +1159,107 @@ const attributes = {
 	highlightedTextBgColor: {
 		type    : 'string',
 		default : '',
-	}
+	},
+	titleLetterSpacing: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'title-letter-spacing'
+		}
+	},
+	titleLetterSpacingTablet: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'title-letter-spacing-tablet'
+		}
+	},
+	titleLetterSpacingMobile: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'title-letter-spacing-mobile'
+		}
+	},
+	titleLetterSpacingType: {
+		type: 'string',
+		default: 'px',
+		UAGCopyPaste: {
+			styleType: 'title-letter-spacing-type'
+		}
+	},
+	metaLetterSpacing: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'meta-letter-spacing'
+		}
+	},
+	metaLetterSpacingTablet: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'meta-letter-spacing-tablet'
+		}
+	},
+	metaLetterSpacingMobile: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'meta-letter-spacing-mobile'
+		}
+	},
+	metaLetterSpacingType: {
+		type: 'string',
+		default: 'px',
+		UAGCopyPaste: {
+			styleType: 'meta-letter-spacing-type'
+		}
+	},
+	excerptLetterSpacing: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'excerpt-letter-spacing'
+		}
+	},
+	excerptLetterSpacingTablet: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'excerpt-letter-spacing-tablet'
+		}
+	},
+	excerptLetterSpacingMobile: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'excerpt-letter-spacing-mobile'
+		}
+	},
+	excerptLetterSpacingType: {
+		type: 'string',
+		default: 'px',
+		UAGCopyPaste: {
+			styleType: 'excerpt-letter-spacing-type'
+		}
+	},
+	ctaLetterSpacing: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'cta-letter-spacing'
+		}
+	},
+	ctaLetterSpacingTablet: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'cta-letter-spacing-tablet'
+		}
+	},
+	ctaLetterSpacingMobile: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'cta-letter-spacing-mobile'
+		}
+	},
+	ctaLetterSpacingType: {
+		type: 'string',
+		default: 'px',
+		UAGCopyPaste: {
+			styleType: 'cta-letter-spacing-type'
+		}
+	},
 }
 
 export default attributes;

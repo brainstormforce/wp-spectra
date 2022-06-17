@@ -136,6 +136,25 @@ function styling( props ) {
 		radioCheckFontStyle,
 		radioCheckTransform,
 		radioCheckDecoration,
+		labelLetterSpacing,
+labelLetterSpacingTablet,
+labelLetterSpacingMobile,
+labelLetterSpacingType,
+inputLetterSpacing,
+inputLetterSpacingTablet,
+inputLetterSpacingMobile,
+inputLetterSpacingType,
+radioCheckLetterSpacing,
+radioCheckLetterSpacingTablet,
+radioCheckLetterSpacingMobile,
+radioCheckLetterSpacingType,
+buttonLetterSpacing,
+buttonLetterSpacingTablet,
+buttonLetterSpacingMobile,
+buttonLetterSpacingType,
+validationMsgLetterSpacingTablet,
+validationMsgLetterSpacingMobile,
+validationMsgLetterSpacingType,
 	} = props.attributes;
 
 	const selectors = {
@@ -184,6 +203,7 @@ function styling( props ) {
 				inputLineHeightType
 			),
 			'text-align': align,
+			'letter-spacing': generateCSSUnit( inputLetterSpacing, inputLetterSpacingType ),
 		},
 		' .wpcf7 select': {
 			'background-color': fieldBgColor,
@@ -205,6 +225,7 @@ function styling( props ) {
 				inputLineHeightType
 			),
 			'text-align': align,
+			'letter-spacing': generateCSSUnit( inputLetterSpacing, inputLetterSpacingType ),
 		},
 		" .wpcf7 select.wpcf7-form-control.wpcf7-select:not([multiple='multiple'])": {
 			'padding-left': generateCSSUnit(
@@ -278,6 +299,7 @@ function styling( props ) {
 				inputLineHeightType
 			),
 			'text-align': align,
+			'letter-spacing': generateCSSUnit( inputLetterSpacing, inputLetterSpacingType ),
 		},
 		' .wpcf7 input::placeholder': {
 			'color': fieldInputColor,
@@ -298,6 +320,7 @@ function styling( props ) {
 				labelLineHeight,
 				labelLineHeightType
 			),
+			'letter-spacing': generateCSSUnit( labelLetterSpacing, labelLetterSpacingType ),
 		},
 		' .wpcf7 form .wpcf7-list-item-label': {
 			'font-size': generateCSSUnit( labelFontSize, labelFontSizeType ),
@@ -310,6 +333,7 @@ function styling( props ) {
 				labelLineHeight,
 				labelLineHeightType
 			),
+			'letter-spacing': generateCSSUnit( labelLetterSpacing, labelLetterSpacingType ),
 		},
 
 		//Focus
@@ -360,6 +384,7 @@ function styling( props ) {
 				buttonBottomPaddingDesktop,
 				buttonPaddingTypeDesktop
 			),
+			'letter-spacing': generateCSSUnit( buttonLetterSpacing, buttonLetterSpacingType ),
 		},
 
 		' .wpcf7 input.wpcf7-form-control.wpcf7-submit:hover': {
@@ -533,6 +558,7 @@ function styling( props ) {
 				radioCheckLineHeightType
 			),
 			'color': radioCheckLableColor,
+			'letter-spacing': generateCSSUnit( radioCheckLetterSpacing, radioCheckLetterSpacingType ),
 		},
 	};
 
@@ -584,6 +610,7 @@ function styling( props ) {
 			),
 			'margin-top': generateCSSUnit( fieldLabelSpacingTablet, 'px' ),
 			'margin-bottom': generateCSSUnit( fieldSpacingTablet, 'px' ),
+			'letter-spacing': generateCSSUnit( inputLetterSpacingTablet, inputLetterSpacingType ),
 		},
 		' .wpcf7 select': {
 			'font-size': generateCSSUnit(
@@ -594,6 +621,7 @@ function styling( props ) {
 				labelLineHeightTablet,
 				labelLineHeightType
 			),
+			'letter-spacing': generateCSSUnit( labelLetterSpacingTablet, labelLetterSpacingType ),
 		},
 		' .wpcf7 textarea': {
 			'font-size': generateCSSUnit(
@@ -604,6 +632,7 @@ function styling( props ) {
 				inputLineHeightTablet,
 				inputLineHeightType
 			),
+			'letter-spacing': generateCSSUnit( inputLetterSpacingTablet, inputLetterSpacingType ),
 		},
 		' .wpcf7 form label': {
 			'font-size': generateCSSUnit(
@@ -614,6 +643,7 @@ function styling( props ) {
 				labelLineHeightTablet,
 				labelLineHeightType
 			),
+			'letter-spacing': generateCSSUnit( labelLetterSpacingTablet, labelLetterSpacingType ),
 		},
 
 		' .wpcf7 form .wpcf7-list-item-label': {
@@ -625,6 +655,7 @@ function styling( props ) {
 				labelLineHeightTablet,
 				labelLineHeightType
 			),
+			'letter-spacing': generateCSSUnit( labelLetterSpacingTablet, labelLetterSpacingType ),
 		},
 		' .wpcf7 input.wpcf7-form-control.wpcf7-submit': {
 			'font-size': generateCSSUnit(
@@ -635,6 +666,7 @@ function styling( props ) {
 				buttonLineHeightTablet,
 				buttonLineHeightType
 			),
+			'letter-spacing': generateCSSUnit( buttonLetterSpacingTablet, buttonLetterSpacingType ),
 		},
 		' .uagb-cf7-styler__check-style-enabled .wpcf7 form .wpcf7-list-item-label': {
 			'font-size': generateCSSUnit(
@@ -645,6 +677,7 @@ function styling( props ) {
 				radioCheckLineHeightTablet,
 				radioCheckLineHeightType
 			),
+			'letter-spacing': generateCSSUnit( radioCheckLetterSpacingTablet, radioCheckLetterSpacingType ),
 		},
 		' span.wpcf7-not-valid-tip': {
 			'font-size': generateCSSUnit(
@@ -655,6 +688,7 @@ function styling( props ) {
 				validationMsgLineHeightTablet,
 				validationMsgLineHeightType
 			),
+			'letter-spacing': generateCSSUnit( validationMsgLetterSpacingTablet, validationMsgLetterSpacingType ),
 		},
 		' .wpcf7 input:not([type=submit])': fieldPaddingTablet, // eslint-disable-line no-dupe-keys
 		' .wpcf7 select.wpcf7-form-control.wpcf7-select:not([multiple="multiple"])': fieldPaddingTablet,
@@ -727,6 +761,7 @@ function styling( props ) {
 			),
 			'margin-top': generateCSSUnit( fieldLabelSpacingMobile, 'px' ),
 			'margin-bottom': generateCSSUnit( fieldSpacingMobile, 'px' ),
+			'letter-spacing': generateCSSUnit( inputLetterSpacingTablet, inputLetterSpacingType ),
 		},
 		' .wpcf7 select': {
 			'font-size': generateCSSUnit(
@@ -737,6 +772,7 @@ function styling( props ) {
 				labelLineHeightMobile,
 				labelLineHeightType
 			),
+			'letter-spacing': generateCSSUnit( labelLetterSpacingMobile, labelLetterSpacingType ),
 		},
 		' .wpcf7 textarea': {
 			'font-size': generateCSSUnit(
@@ -747,6 +783,7 @@ function styling( props ) {
 				inputLineHeightTablet,
 				inputLineHeightType
 			),
+			'letter-spacing': generateCSSUnit( inputLetterSpacingMobile, inputLetterSpacingType ),
 		},
 		' .wpcf7 form label': {
 			'font-size': generateCSSUnit(
@@ -757,6 +794,7 @@ function styling( props ) {
 				inputLineHeightMobile,
 				inputLineHeightType
 			),
+			'letter-spacing': generateCSSUnit( inputLetterSpacingMobile, inputLetterSpacingType ),
 		},
 		' .wpcf7 form .wpcf7-list-item-label': {
 			'font-size': generateCSSUnit(
@@ -767,6 +805,7 @@ function styling( props ) {
 				labelLineHeightMobile,
 				labelLineHeightType
 			),
+			'letter-spacing': generateCSSUnit( labelLetterSpacingMobile, labelLetterSpacingType ),
 		},
 		' .wpcf7 input.wpcf7-form-control.wpcf7-submit': {
 			'font-size': generateCSSUnit(
@@ -777,6 +816,7 @@ function styling( props ) {
 				buttonLineHeightMobile,
 				buttonLineHeightType
 			),
+			'letter-spacing': generateCSSUnit( buttonLetterSpacingMobile, buttonLetterSpacingType ),
 		},
 		' .uagb-cf7-styler__check-style-enabled .wpcf7 form .wpcf7-list-item-label': {
 			'font-size': generateCSSUnit(
@@ -787,6 +827,7 @@ function styling( props ) {
 				radioCheckLineHeightMobile,
 				radioCheckLineHeightType
 			),
+			'letter-spacing': generateCSSUnit( radioCheckLetterSpacingMobile, radioCheckLetterSpacingType ),
 		},
 		' span.wpcf7-not-valid-tip': {
 			'font-size': generateCSSUnit(
@@ -797,6 +838,7 @@ function styling( props ) {
 				validationMsgLineHeightMobile,
 				validationMsgLineHeightType
 			),
+			'letter-spacing': generateCSSUnit( validationMsgLetterSpacingMobile, validationMsgLetterSpacingType ),
 		},
 		' .wpcf7 input:not([type=submit])': fieldPaddingMobile, // eslint-disable-line no-dupe-keys
 		' .wpcf7 select.wpcf7-form-control.wpcf7-select:not([multiple="multiple"])': fieldPaddingMobile,
