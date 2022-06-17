@@ -1,7 +1,7 @@
 import { __ } from '@wordpress/i18n';
 import { BaseControl } from '@wordpress/components';
 import { MediaUpload } from '@wordpress/block-editor';
-import React, { useState } from 'react';
+import React from 'react';
 import UAGB_Block_Icons from '@Controls/block-icons';
 
 const UAGImage = ( props ) => {
@@ -29,10 +29,6 @@ const UAGImage = ( props ) => {
 		'Change Image',
 		'ultimate-addons-for-gutenberg'
 	);
-	let removeImageLabel = __(
-		'Remove Image',
-		'ultimate-addons-for-gutenberg'
-	);
 	let allowedTypes = [ 'image' ];
 
 	if ( showVideoInput ) {
@@ -43,10 +39,6 @@ const UAGImage = ( props ) => {
 		);
 		replaceImageLabel = __(
 			'Change Video',
-			'ultimate-addons-for-gutenberg'
-		);
-		removeImageLabel = __(
-			'Remove Video',
 			'ultimate-addons-for-gutenberg'
 		);
 		allowedTypes = [ 'video' ];
@@ -67,10 +59,6 @@ const UAGImage = ( props ) => {
 			'Change Lottie Animation',
 			'ultimate-addons-for-gutenberg'
 		);
-		removeImageLabel = __(
-			'Remove Lottie Animation',
-			'ultimate-addons-for-gutenberg'
-		);
 		allowedTypes = allow;
 		placeholderIcon = UAGB_Block_Icons.lottie;
 	}
@@ -78,7 +66,7 @@ const UAGImage = ( props ) => {
 	const renderMediaUploader = ( open ) => {
 		const uploadType = backgroundImage?.url ? 'replace' : 'add';
 		return(
-			<div
+			<button
 				className={ `spectra-media-control__clickable spectra-media-control__clickable--${ uploadType }` }
 				onClick={ open }
 			>
@@ -87,7 +75,7 @@ const UAGImage = ( props ) => {
 				) : (
 					<div className='uag-control-label'>{ replaceImageLabel }</div>
 				) }
-			</div>
+			</button>
 		)
 	};
 
@@ -151,12 +139,12 @@ const UAGImage = ( props ) => {
 					render={ ( { open } ) => renderMediaUploader( open ) }
 				/>
 	 			{ ( ! disableRemove && backgroundImage?.url ) && (
-					<div
+					<button
 						className='spectra-media-control__clickable spectra-media-control__clickable--close'
 						onClick={ onRemoveImage }
 					>
 	 					{ renderButton( 'close' ) }
-	 				</div>
+	 				</button>
 	 			) }
 			</div>
 			{ props.help && (
