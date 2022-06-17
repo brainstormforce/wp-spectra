@@ -309,8 +309,14 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 		public static function get_post_selectors( $attr ) {
 
 			$border_css        = self::uag_generate_border_css( $attr, 'btn' );
-			$border_css_tablet = self::uag_generate_border_css( $attr, 'btn', 'tablet' );
-			$border_css_mobile = self::uag_generate_border_css( $attr, 'btn', 'mobile' );
+			$border_css       = UAGB_Block_Helper::uag_generate_deprecated_border_css(
+				$border_css,
+				( isset( $attr['borderWidth'] ) ? $attr['borderWidth'] : '' ),
+				( isset( $attr['borderRadius'] ) ? $attr['borderRadius'] : '' ),
+				( isset( $attr['borderColor'] ) ? $attr['borderColor'] : '' ),
+				( isset( $attr['borderStyle'] ) ? $attr['borderStyle'] : '' ),
+				( isset( $attr['borderHColor'] ) ? $attr['borderHColor'] : '' )
+			);
 
 			$paddingTop    = isset( $attr['paddingTop'] ) ? $attr['paddingTop'] : $attr['contentPadding'];
 			$paddingBottom = isset( $attr['paddingBottom'] ) ? $attr['paddingBottom'] : $attr['contentPadding'];
@@ -422,6 +428,9 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 		 * @since 1.6.1
 		 */
 		public static function get_post_mobile_selectors( $attr ) {
+
+			$border_css_mobile = self::uag_generate_border_css( $attr, 'btn', 'mobile' );
+
 			$paddingTopMobile    = isset( $attr['paddingTopMobile'] ) ? $attr['paddingTopMobile'] : $attr['contentPaddingMobile'];
 			$paddingBottomMobile = isset( $attr['paddingBottomMobile'] ) ? $attr['paddingBottomMobile'] : $attr['contentPaddingMobile'];
 			$paddingLeftMobile   = isset( $attr['paddingLeftMobile'] ) ? $attr['paddingLeftMobile'] : $attr['contentPaddingMobile'];
@@ -478,6 +487,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					'padding-left'   => UAGB_Helper::get_css_value( $paddingBtnLeftMobile, $attr['mobilePaddingBtnUnit'] ),
 					'padding-right'  => UAGB_Helper::get_css_value( $paddingBtnRightMobile, $attr['mobilePaddingBtnUnit'] ),
 				),
+				' .uagb-post__text.uagb-post__cta .uagb-text-link'                       => $border_css_mobile,
 			);
 
 			return $m_selector;
@@ -490,6 +500,9 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 		 * @since 1.8.2
 		 */
 		public static function get_post_tablet_selectors( $attr ) {
+
+
+			$border_css_tablet = self::uag_generate_border_css( $attr, 'btn', 'tablet' );
 
 			$paddingBtnTopTablet    = isset( $attr['paddingBtnTopTablet'] ) ? $attr['paddingBtnTopTablet'] : $attr['btnVPadding'];
 			$paddingBtnBottomTablet = isset( $attr['paddingBtnBottomTablet'] ) ? $attr['paddingBtnBottomTablet'] : $attr['btnVPadding'];
@@ -542,6 +555,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					'padding-left'   => UAGB_Helper::get_css_value( $paddingBtnLeftTablet, $attr['tabletPaddingBtnUnit'] ),
 					'padding-right'  => UAGB_Helper::get_css_value( $paddingBtnRightTablet, $attr['tabletPaddingBtnUnit'] ),
 				),
+				' .uagb-post__text.uagb-post__cta .uagb-text-link'                       => $border_css_tablet,
 			);
 
 			return $t_selector;

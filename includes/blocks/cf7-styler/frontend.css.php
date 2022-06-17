@@ -31,10 +31,26 @@ $field_right_padding_dekstop = isset( $attr['fieldRightPaddingDesktop'] ) ? UAGB
 $field_vr_padding = isset( $attr['fieldTopPaddingDesktop'] ) ? $attr['fieldTopPaddingDesktop'] : $attr['fieldVrPadding'];
 
 $border        = UAGB_Block_Helper::uag_generate_border_css( $attr, 'field' );
+$border       = UAGB_Block_Helper::uag_generate_deprecated_border_css(
+	$border,
+	( isset( $attr['fieldborderWidth'] ) ? $attr['fieldborderWidth'] : '' ),
+	( isset( $attr['fieldborderRadius'] ) ? $attr['fieldborderRadius'] : '' ),
+	( isset( $attr['fieldborderColor'] ) ? $attr['fieldborderColor'] : '' ),
+	( isset( $attr['fieldborderStyle'] ) ? $attr['fieldborderStyle'] : '' ),
+	( isset( $attr['fieldborderHColor'] ) ? $attr['fieldborderHColor'] : '' )
+);
 $border_tablet = UAGB_Block_Helper::uag_generate_border_css( $attr, 'field', 'tablet' );
 $border_mobile = UAGB_Block_Helper::uag_generate_border_css( $attr, 'field', 'mobile' );
 
 $btn_border        = UAGB_Block_Helper::uag_generate_border_css( $attr, 'button' );
+$btn_border       = UAGB_Block_Helper::uag_generate_deprecated_border_css(
+	$btn_border,
+	( isset( $attr['buttonborderWidth'] ) ? $attr['buttonborderWidth'] : '' ),
+	( isset( $attr['buttonborderRadius'] ) ? $attr['buttonborderRadius'] : '' ),
+	( isset( $attr['buttonborderColor'] ) ? $attr['buttonborderColor'] : '' ),
+	( isset( $attr['buttonborderStyle'] ) ? $attr['buttonborderStyle'] : '' ),
+	( isset( $attr['buttonborderHColor'] ) ? $attr['buttonborderHColor'] : '' )
+);
 $btn_border_tablet = UAGB_Block_Helper::uag_generate_border_css( $attr, 'button', 'tablet' );
 $btn_border_mobile = UAGB_Block_Helper::uag_generate_border_css( $attr, 'button', 'mobile' );
 

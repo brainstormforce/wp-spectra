@@ -20,6 +20,7 @@ const Render = lazy( () =>
 import { withSelect, withDispatch } from '@wordpress/data';
 import { compose } from '@wordpress/compose';
 import { Placeholder, Spinner } from '@wordpress/components';
+import { migrateBorderAttributes } from '@Controls/generateAttributes';
 
 const PostGridComponent = ( props ) => {
 
@@ -113,6 +114,34 @@ const PostGridComponent = ( props ) => {
 	}, [] );
 
 	useEffect( () => {
+		const {
+			borderStyle,
+			borderWidth,
+			borderColor,
+			borderHColor,
+			borderRadius
+		} = props.attributes;
+
+		if( borderWidth || borderRadius || borderColor || borderHColor || borderStyle ){
+			const migrationAttributes = migrateBorderAttributes( 'btn', {
+				label: 'borderWidth',
+				value: borderWidth,
+			}, {
+				label: 'borderRadius',
+				value: borderRadius
+			}, {
+				label: 'borderColor',
+				value: borderColor
+			}, {
+				label: 'borderHColor',
+				value: borderHColor
+			},{
+				label: 'borderStyle',
+				value: borderStyle
+			}
+			);
+			props.setAttributes( migrationAttributes )
+		}
 		// Replacement for componentDidUpdate.
 		const blockStyling = styling( props );
 

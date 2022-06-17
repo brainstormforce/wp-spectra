@@ -25,22 +25,62 @@ $paddingFieldLeft   = isset( $attr['paddingFieldLeft'] ) ? $attr['paddingFieldLe
 $paddingFieldRight  = isset( $attr['paddingFieldRight'] ) ? $attr['paddingFieldRight'] : $attr['hPaddingField'];
 
 $input_overall_border        = UAGB_Block_Helper::uag_generate_border_css( $attr, 'input' );
+$input_overall_border       = UAGB_Block_Helper::uag_generate_deprecated_border_css(
+	$input_overall_border,
+	( isset( $attr['inputborderWidth'] ) ? $attr['inputborderWidth'] : '' ),
+	( isset( $attr['inputborderRadius'] ) ? $attr['inputborderRadius'] : '' ),
+	( isset( $attr['inputborderColor'] ) ? $attr['inputborderColor'] : '' ),
+	( isset( $attr['inputborderStyle'] ) ? $attr['inputborderStyle'] : '' ),
+	( isset( $attr['inputborderHColor'] ) ? $attr['inputborderHColor'] : '' )
+);
 $input_overall_border_Tablet = UAGB_Block_Helper::uag_generate_border_css( $attr, 'input', 'tablet' );
 $input_overall_border_Mobile = UAGB_Block_Helper::uag_generate_border_css( $attr, 'input', 'mobile' );
 
 $successMessage_border        = UAGB_Block_Helper::uag_generate_border_css( $attr, 'successMessage' );
+$successMessage_border       = UAGB_Block_Helper::uag_generate_deprecated_border_css(
+	$successMessage_border,
+	( isset( $attr['successMessageborderWidth'] ) ? $attr['successMessageborderWidth'] : '' ),
+	( isset( $attr['successMessageborderRadius'] ) ? $attr['successMessageborderRadius'] : '' ),
+	( isset( $attr['successMessageborderColor'] ) ? $attr['successMessageborderColor'] : '' ),
+	( isset( $attr['successMessageborderStyle'] ) ? $attr['successMessageborderStyle'] : '' ),
+	( isset( $attr['successMessageborderHColor'] ) ? $attr['successMessageborderHColor'] : '' )
+);
 $successMessage_border_Tablet = UAGB_Block_Helper::uag_generate_border_css( $attr, 'successMessage', 'tablet' );
 $successMessage_border_Mobile = UAGB_Block_Helper::uag_generate_border_css( $attr, 'successMessage', 'mobile' );
 
 $failedMessage_border        = UAGB_Block_Helper::uag_generate_border_css( $attr, 'failedMessage' );
+$failedMessage_border       = UAGB_Block_Helper::uag_generate_deprecated_border_css(
+	$failedMessage_border,
+	( isset( $attr['failedMessageborderWidth'] ) ? $attr['failedMessageborderWidth'] : '' ),
+	( isset( $attr['failedMessageborderRadius'] ) ? $attr['failedMessageborderRadius'] : '' ),
+	( isset( $attr['failedMessageborderColor'] ) ? $attr['failedMessageborderColor'] : '' ),
+	( isset( $attr['failedMessageborderStyle'] ) ? $attr['failedMessageborderStyle'] : '' ),
+	( isset( $attr['failedMessageborderHColor'] ) ? $attr['failedMessageborderHColor'] : '' )
+);
 $failedMessage_border_Tablet = UAGB_Block_Helper::uag_generate_border_css( $attr, 'failedMessage', 'tablet' );
 $failedMessage_border_Mobile = UAGB_Block_Helper::uag_generate_border_css( $attr, 'failedMessage', 'mobile' );
 
 $toggle_border        = UAGB_Block_Helper::uag_generate_border_css( $attr, 'toggle' );
+$toggle_border       = UAGB_Block_Helper::uag_generate_deprecated_border_css(
+	$toggle_border,
+	( isset( $attr['toggleborderWidth'] ) ? $attr['toggleborderWidth'] : '' ),
+	( isset( $attr['toggleborderRadius'] ) ? $attr['toggleborderRadius'] : '' ),
+	( isset( $attr['toggleborderColor'] ) ? $attr['toggleborderColor'] : '' ),
+	( isset( $attr['toggleborderStyle'] ) ? $attr['toggleborderStyle'] : '' ),
+	( isset( $attr['toggleborderHColor'] ) ? $attr['toggleborderHColor'] : '' )
+);
 $toggle_border_Tablet = UAGB_Block_Helper::uag_generate_border_css( $attr, 'toggle', 'tablet' );
 $toggle_border_Mobile = UAGB_Block_Helper::uag_generate_border_css( $attr, 'toggle', 'mobile' );
 
 $btn_border        = UAGB_Block_Helper::uag_generate_border_css( $attr, 'submit' );
+$btn_border       = UAGB_Block_Helper::uag_generate_deprecated_border_css(
+	$btn_border,
+	( isset( $attr['submitborderWidth'] ) ? $attr['submitborderWidth'] : '' ),
+	( isset( $attr['submitborderRadius'] ) ? $attr['submitborderRadius'] : '' ),
+	( isset( $attr['submitborderColor'] ) ? $attr['submitborderColor'] : '' ),
+	( isset( $attr['submitborderStyle'] ) ? $attr['submitborderStyle'] : '' ),
+	( isset( $attr['submitborderHColor'] ) ? $attr['submitborderHColor'] : '' )
+);
 $btn_border_Tablet = UAGB_Block_Helper::uag_generate_border_css( $attr, 'submit', 'tablet' );
 $btn_border_Mobile = UAGB_Block_Helper::uag_generate_border_css( $attr, 'submit', 'mobile' );
 

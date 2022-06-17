@@ -7,7 +7,7 @@ import React, { useEffect, Suspense, lazy } from 'react';
 import lazyLoader from '@Controls/lazy-loader';
 import { useDeviceType } from '@Controls/getPreviewType';
 import addBlockEditorDynamicStyles from '@Controls/addBlockEditorDynamicStyles';
-import {migrateBorderAttributes} from '@Controls/generateAttributes';
+import { migrateBorderAttributes } from '@Controls/generateAttributes';
 const Settings = lazy( () =>
 	import(
 		/* webpackChunkName: "chunks/marketing-button/settings" */ './settings'

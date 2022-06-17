@@ -193,7 +193,6 @@ function styling( props ) {
 	} = props.attributes;
 
 	const borderCSS = generateBorderCSS( props.attributes, 'btn' );
-	console.log(borderCSS);
 	const borderCSSTablet = generateBorderCSS( props.attributes, 'btn', 'tablet' );
 	const borderCSSMobile = generateBorderCSS( props.attributes, 'btn', 'mobile' );
 
