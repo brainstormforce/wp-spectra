@@ -69,6 +69,15 @@
 
 			.components-focal-point-picker-control {
 				width: 100%;
+
+				.components-focal-point-picker {
+					border-radius: $spectra-control-border-radius;
+					border-color: $spectra-color-border;
+
+					img {
+						border-radius: $spectra-control-border-radius;
+					}
+				}
 			}
 		}
 	}
