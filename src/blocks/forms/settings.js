@@ -50,6 +50,8 @@ const Settings = ( props ) => {
 		formPaddingLink,
 		formLabel,
 		buttonAlign,
+		buttonAlignTablet,
+		buttonAlignMobile,
 		buttonSize,
 		confirmationType,
 		confirmationMessage,
@@ -204,7 +206,18 @@ const Settings = ( props ) => {
 		labelGapUnit,
 
 		displayLabels,
-
+		labelLetterSpacing,
+		labelLetterSpacingTablet,
+		labelLetterSpacingMobile,
+		labelLetterSpacingType,
+		inputLetterSpacing,
+		inputLetterSpacingTablet,
+		inputLetterSpacingMobile,
+		inputLetterSpacingType,
+		submitLetterSpacing,
+		submitLetterSpacingTablet,
+		submitLetterSpacingMobile,
+		submitLetterSpacingType,
 	} = attributes;
 
 	const presetSettings = () => {
@@ -713,6 +726,22 @@ const Settings = ( props ) => {
 					value: labelLineHeightTablet,
 					label: 'labelLineHeightTablet',
 				} }
+				letterSpacing={ {
+					value: labelLetterSpacing,
+					label: 'labelLetterSpacing',
+				} }
+				letterSpacingTablet={ {
+					value: labelLetterSpacingTablet,
+					label: 'labelLetterSpacingTablet',
+				} }
+				letterSpacingMobile={ {
+					value: labelLetterSpacingMobile,
+					label: 'labelLetterSpacingMobile',
+				} }
+				letterSpacingType={ {
+					value: labelLetterSpacingType,
+					label: 'labelLetterSpacingType',
+				} }
 				transform={ {
 					value: labelTransform,
 					label: 'labelTransform',
@@ -1059,6 +1088,22 @@ const Settings = ( props ) => {
 					value: inputLineHeightTablet,
 					label: 'inputLineHeightTablet',
 				} }
+				letterSpacing={ {
+					value: inputLetterSpacing,
+					label: 'inputLetterSpacing',
+				} }
+				letterSpacingTablet={ {
+					value: inputLetterSpacingTablet,
+					label: 'inputLetterSpacingTablet',
+				} }
+				letterSpacingMobile={ {
+					value: inputLetterSpacingMobile,
+					label: 'inputLetterSpacingMobile',
+				} }
+				letterSpacingType={ {
+					value: inputLetterSpacingType,
+					label: 'inputLetterSpacingType',
+				} }
 				transform={ {
 					value: inputTransform,
 					label: 'inputTransform',
@@ -1296,15 +1341,21 @@ const Settings = ( props ) => {
 			/>
 			<MultiButtonsControl
 				setAttributes={ setAttributes }
-				label={ __(
-					'Button Alignment',
-					'ultimate-addons-for-gutenberg'
-				) }
+				label={ __( 'Button Alignment', 'ultimate-addons-for-gutenberg' ) }
 				data={ {
-					value: buttonAlign,
-					label: 'buttonAlign',
+					desktop: {
+						value: buttonAlign,
+						label: 'buttonAlign',
+					},
+					tablet: {
+						value: buttonAlignTablet,
+						label: 'buttonAlignTablet',
+					},
+					mobile: {
+						value: buttonAlignMobile,
+						label: 'buttonAlignMobile',
+					},
 				} }
-				className="uagb-multi-button-alignment-control"
 				options={ [
 					{
 						value: 'left',
@@ -1344,6 +1395,7 @@ const Settings = ( props ) => {
 					},
 				] }
 				showIcons={ true }
+				responsive={true}
 			/>
 			<SpacingControl
 				{ ...props }
@@ -1581,6 +1633,22 @@ const Settings = ( props ) => {
 				lineHeightTablet={ {
 					value: submitTextLineHeightTablet,
 					label: 'submitTextLineHeightTablet',
+				} }
+				letterSpacing={ {
+					value: submitLetterSpacing,
+					label: 'submitLetterSpacing',
+				} }
+				letterSpacingTablet={ {
+					value: submitLetterSpacingTablet,
+					label: 'submitLetterSpacingTablet',
+				} }
+				letterSpacingMobile={ {
+					value: submitLetterSpacingMobile,
+					label: 'submitLetterSpacingMobile',
+				} }
+				letterSpacingType={ {
+					value: submitLetterSpacingType,
+					label: 'submitLetterSpacingType',
 				} }
 				transform={ {
 					value: submitTextTransform,

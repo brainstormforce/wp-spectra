@@ -92,6 +92,13 @@ const attributes = {
 		},
 		default: ''
 	},
+	boxBgHoverColor: {
+		type: 'string',
+		UAGCopyPaste: {
+			styleType: 'faq-bg-hover-color'
+		},
+		default: ''
+	},
 	boxPaddingTypeMobile: {
 		type: 'string',
 		UAGCopyPaste: {
@@ -200,6 +207,18 @@ const attributes = {
 		type: 'string',
 		UAGCopyPaste: {
 			styleType: 'main-title-hover-color'
+		},
+	},
+	questionTextBgColor: {
+		type: 'string',
+		UAGCopyPaste: {
+			styleType: 'main-title-bg-color'
+		},
+	},
+	questionTextActiveBgColor: {
+		type: 'string',
+		UAGCopyPaste: {
+			styleType: 'main-title-hover-bg-color'
 		},
 	},
 	questionPaddingTypeDesktop: {
@@ -754,6 +773,57 @@ const attributes = {
 	isPreview: {
 		type: 'boolean',
 		default: false,
-	}
+	},
+	// letter spacing
+	questionLetterSpacing: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'main-title-letter-spacing'
+		}
+	},
+	questionLetterSpacingTablet: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'main-title-letter-spacing-tablet'
+		}
+	},
+	questionLetterSpacingMobile: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'main-title-letter-spacing-mobile'
+		}
+	},
+	questionLetterSpacingType: {
+		type: 'string',
+		default: 'px',
+		UAGCopyPaste: {
+			styleType: 'main-title-letter-spacing-type'
+		}
+	},
+	answerLetterSpacing: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'desc-letter-spacing'
+		}
+	},
+	answerLetterSpacingTablet: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'desc-letter-spacing-tablet'
+		}
+	},
+	answerLetterSpacingMobile: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'desc-letter-spacing-mobile'
+		}
+	},
+	answerLetterSpacingType: {
+		type: 'string',
+		default: 'px',
+		UAGCopyPaste: {
+			styleType: 'desc-letter-spacing-type'
+		}
+	},
 };
 export default attributes;

@@ -110,14 +110,6 @@ const Settings = ( props ) => {
 		ctaBorderWidth,
 		ctaBorderRadius,
 		stack,
-		ctaLeftSpace,
-		ctaLeftSpaceTablet,
-		ctaLeftSpaceMobile,
-		ctaLeftSpaceType,
-		ctaRightSpace,
-		ctaRightSpaceTablet,
-		ctaRightSpaceMobile,
-		ctaRightSpaceType,
 		ctaLinkHoverColor,
 		titleTransform,
 		titleDecoration,
@@ -212,6 +204,22 @@ const Settings = ( props ) => {
 		buttonRightSpaceTablet,
 		buttonRightSpaceMobile,
 		buttonRightSpaceType,
+		titleLetterSpacing,
+		titleLetterSpacingTablet,
+		titleLetterSpacingMobile,
+		titleLetterSpacingType,
+		descLetterSpacing,
+		descLetterSpacingTablet,
+		descLetterSpacingMobile,
+		descLetterSpacingType,
+		ctaLetterSpacing,
+ctaLetterSpacingTablet,
+ctaLetterSpacingMobile,
+ctaLetterSpacingType,
+secondCtaLetterSpacing,
+secondCtaLetterSpacingTablet,
+secondCtaLetterSpacingMobile,
+secondCtaLetterSpacingType,
 	} = attributes;
 
 	let loadCtaGoogleFonts;
@@ -517,6 +525,22 @@ const Settings = ( props ) => {
 						value: secondCtaFontSizeTablet,
 						label: 'secondCtaFontSizeTablet',
 					} }
+					letterSpacing={ {
+						value: secondCtaLetterSpacing,
+						label: 'secondCtaLetterSpacing',
+					} }
+					letterSpacingTablet={ {
+						value: secondCtaLetterSpacingTablet,
+						label: 'secondCtaLetterSpacingTablet',
+					} }
+					letterSpacingMobile={ {
+						value: secondCtaLetterSpacingMobile,
+						label: 'secondCtaLetterSpacingMobile',
+					} }
+					letterSpacingType={ {
+						value: secondCtaLetterSpacingType,
+						label: 'secondCtaLetterSpacingType',
+					} }
 					disableLineHeight={ true }
 				/>
 				<UAGTabsControl
@@ -747,6 +771,7 @@ const Settings = ( props ) => {
 						presetInputType = 'radioImage'
 					/>
 				}
+				{ stack !== 'desktop' &&  (
 				<MultiButtonsControl
 					setAttributes={ setAttributes }
 					label={ __(
@@ -776,6 +801,7 @@ const Settings = ( props ) => {
 					] }
 					showIcons={ false }
 				/>
+				) }
 				{ ( ctaType === 'text' || ctaType === 'button' ) && (
 					<>
 						<TextControl
@@ -944,6 +970,22 @@ const Settings = ( props ) => {
 						fontSizeTablet={ {
 							value: ctaFontSizeTablet,
 							label: 'ctaFontSizeTablet',
+						} }
+						letterSpacing={ {
+							value: ctaLetterSpacing,
+							label: 'ctaLetterSpacing',
+						} }
+						letterSpacingTablet={ {
+							value: ctaLetterSpacingTablet,
+							label: 'ctaLetterSpacingTablet',
+						} }
+						letterSpacingMobile={ {
+							value: ctaLetterSpacingMobile,
+							label: 'ctaLetterSpacingMobile',
+						} }
+						letterSpacingType={ {
+							value: ctaLetterSpacingType,
+							label: 'ctaLetterSpacingType',
 						} }
 						disableLineHeight={ true }
 					/>
@@ -1261,6 +1303,22 @@ const Settings = ( props ) => {
 						value: titleLineHeightTablet,
 						label: 'titleLineHeightTablet',
 					} }
+					letterSpacing={ {
+						value: titleLetterSpacing,
+						label: 'titleLetterSpacing',
+					} }
+					letterSpacingTablet={ {
+						value: titleLetterSpacingTablet,
+						label: 'titleLetterSpacingTablet',
+					} }
+					letterSpacingMobile={ {
+						value: titleLetterSpacingMobile,
+						label: 'titleLetterSpacingMobile',
+					} }
+					letterSpacingType={ {
+						value: titleLetterSpacingType,
+						label: 'titleLetterSpacingType',
+					} }
 				/>
 				<AdvancedPopColorControl
 					label={ __( 'Color', 'ultimate-addons-for-gutenberg' ) }
@@ -1377,6 +1435,22 @@ const Settings = ( props ) => {
 						value: descLineHeightTablet,
 						label: 'descLineHeightTablet',
 					} }
+					letterSpacing={ {
+						value: descLetterSpacing,
+						label: 'descLetterSpacing',
+					} }
+					letterSpacingTablet={ {
+						value: descLetterSpacingTablet,
+						label: 'descLetterSpacingTablet',
+					} }
+					letterSpacingMobile={ {
+						value: descLetterSpacingMobile,
+						label: 'descLetterSpacingMobile',
+					} }
+					letterSpacingType={ {
+						value: descLetterSpacingType,
+						label: 'descLetterSpacingType',
+					} }
 				/>
 				<AdvancedPopColorControl
 					label={ __( 'Color', 'ultimate-addons-for-gutenberg' ) }
@@ -1431,46 +1505,6 @@ const Settings = ( props ) => {
 				title={ __( 'Spacing', 'ultimate-addons-for-gutenberg' ) }
 				initialOpen={ false }
 			>
-				{ ( ( 'left' === textAlign && 'Desktop' === deviceType ) || ( 'left' === textAlignTablet && 'Tablet' === deviceType ) || ( 'left' === textAlignMobile && 'Mobile' === deviceType  ) ) && (
-					<>
-					<ResponsiveSlider
-						label={ __(
-							'Content Left Margin',
-							'ultimate-addons-for-gutenberg'
-						) }
-						data={ {
-							desktop: {
-								value: ctaLeftSpace,
-								label: 'ctaLeftSpace',
-							},
-							tablet: {
-								value: ctaLeftSpaceTablet,
-								label: 'ctaLeftSpaceTablet',
-							},
-							mobile: {
-								value: ctaLeftSpaceMobile,
-								label: 'ctaLeftSpaceMobile',
-							},
-						} }
-						min={ 0 }
-						max={ 200 }
-						unit={ {
-							value: ctaLeftSpaceType,
-							label: 'ctaLeftSpaceType',
-						} }
-						units={ [
-							{
-								name: __(
-									'Pixel',
-									'ultimate-addons-for-gutenberg'
-								),
-								unitValue: 'px',
-							},
-						] }
-						setAttributes={ setAttributes }
-					/>
-					</>
-				) }
 				{ ( ( 'right' !== textAlign && 'none' === stack && 'Desktop' === deviceType ) || ( 'right' !== textAlignTablet && 'Tablet' === deviceType && 'none' === stack ) || ( 'right' !== textAlignMobile && 'Mobile' === deviceType && 'none' === stack ) ) && (
 						<ResponsiveSlider
 						label={ __(
@@ -1510,44 +1544,6 @@ const Settings = ( props ) => {
 					/>
 					)
 				}
-				{ ( ( 'right' === textAlign && 'Desktop' === deviceType ) || ( 'right' === textAlignTablet && 'Tablet' === deviceType ) || ( 'right' === textAlignMobile && 'Mobile' === deviceType  ) ) && (
-					<ResponsiveSlider
-						label={ __(
-							'Content Right Margin',
-							'ultimate-addons-for-gutenberg'
-						) }
-						data={ {
-							desktop: {
-								value: ctaRightSpace,
-								label: 'ctaRightSpace',
-							},
-							tablet: {
-								value: ctaRightSpaceTablet,
-								label: 'ctaRightSpaceTablet',
-							},
-							mobile: {
-								value: ctaRightSpaceMobile,
-								label: 'ctaRightSpaceMobile',
-							},
-						} }
-						min={ 0 }
-						max={ 200 }
-						unit={ {
-							value: ctaRightSpaceType,
-							label: 'ctaRightSpaceType',
-						} }
-						units={ [
-							{
-								name: __(
-									'Pixel',
-									'ultimate-addons-for-gutenberg'
-								),
-								unitValue: 'px',
-							},
-						] }
-						setAttributes={ setAttributes }
-					/>
-				) }
 				<SpacingControl
 					{ ...props }
 					label={ __( 'Padding', 'ultimate-addons-for-gutenberg' ) }
@@ -1881,35 +1877,6 @@ const Settings = ( props ) => {
 									/>
 							</>
 						) }
-						<MultiButtonsControl
-							setAttributes={ setAttributes }
-							label={ __(
-								'Vertical Alignment',
-								'ultimate-addons-for-gutenberg'
-							) }
-							data={ {
-								value: buttonAlign,
-								label: 'buttonAlign',
-							} }
-							className="uagb-multi-button-alignment-control"
-							options={ [
-								{
-									value: 'top',
-									label: __(
-										'Top',
-										'ultimate-addons-for-gutenberg'
-									),
-								},
-								{
-									value: 'middle',
-									label: __(
-										'Middle',
-										'ultimate-addons-for-gutenberg'
-									),
-								},
-							] }
-							showIcons={ false }
-						/>
 					</>
 				) }
 			</UAGAdvancedPanelBody>
