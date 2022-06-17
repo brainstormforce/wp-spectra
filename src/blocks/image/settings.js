@@ -1818,7 +1818,7 @@ export default function Settings( props ) {
 								</>
 							)
 						}
-						{ captionStylePanel }
+						{ enableCaption && captionStylePanel }
 						{ 'none' !== seperatorStyle && layout === 'overlay' && seperatorStylePanel}
 					</InspectorTab>
 					<InspectorTab

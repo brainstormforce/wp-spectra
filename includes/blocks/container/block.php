@@ -10,7 +10,7 @@
 $block_slug = 'uagb/container';
 $block_data = array(
 	'slug'             => '',
-	'admin_categories' => array( 'content' ),
+	'admin_categories' => array( 'content', 'core' ),
 	'link'             => 'container',
 	'doc'              => 'container',
 	'title'            => __( 'Container', 'ultimate-addons-for-gutenberg' ),
@@ -18,5 +18,4 @@ $block_data = array(
 	'default'          => true,
 	'extension'        => false,
 	'priority'         => 1,
-	'js_assets'        => array( 'uagb-container-js' ),
 );

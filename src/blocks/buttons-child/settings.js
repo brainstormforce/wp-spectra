@@ -123,7 +123,13 @@ const Settings = ( props ) => {
 		iconSizeTablet,
 		iconSizeMobile,
 		removeText,
-		noFollow
+		noFollow,
+
+		// letter spacing
+		fontLetterSpacing,
+		fontLetterSpacingTablet,
+		fontLetterSpacingMobile,
+		fontLetterSpacingType,
 
 	} = attributes;
 
@@ -228,7 +234,7 @@ const Settings = ( props ) => {
 		return (
 			<UAGAdvancedPanelBody
 				title={ __( 'Text', 'ultimate-addons-for-gutenberg' ) }
-				initialOpen={ false }
+				initialOpen={ true }
 			>
 				<TypographyControl
 					label={ __(
@@ -292,6 +298,22 @@ const Settings = ( props ) => {
 					lineHeightTablet={ {
 						value: lineHeightTablet,
 						label: 'lineHeightTablet',
+					} }
+					letterSpacing={ {
+						value: fontLetterSpacing,
+						label: 'fontLetterSpacing',
+					} }
+					letterSpacingTablet={ {
+						value: fontLetterSpacingTablet,
+						label: 'fontLetterSpacingTablet',
+					} }
+					letterSpacingMobile={ {
+						value: fontLetterSpacingMobile,
+						label: 'fontLetterSpacingMobile',
+					} }
+					letterSpacingType={ {
+						value: fontLetterSpacingType,
+						label: 'fontLetterSpacingType',
 					} }
 				/>
 				<UAGTabsControl

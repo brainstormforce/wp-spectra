@@ -13,6 +13,8 @@ import RangeTypographyControl from './range-typography';
 import TypographyStyles from './inline-styles';
 import styles from './editor.lazy.scss';
 import React, { useLayoutEffect } from 'react';
+import { select } from '@wordpress/data'
+import getUAGEditorStateLocalStorage from '@Controls/getUAGEditorStateLocalStorage';
 
 // Export for ease of importing in individual blocks.
 export { TypographyStyles };
@@ -64,6 +66,7 @@ const TypographyControl = ( props ) => {
 	if ( true !== disableFontFamily ) {
 		fontFamily = <FontFamilyControl { ...props } />;
 	}
+	const lineHeightStepsVal = ( 'em' === props.lineHeightType?.value ? 0.1 : 1 );
 
 	if ( true !== disableLineHeight ) {
 		fontWeight = (
@@ -88,7 +91,7 @@ const TypographyControl = ( props ) => {
 					'Line Height',
 					'ultimate-addons-for-gutenberg'
 				) }
-				steps={ 0.1 }
+				steps={ lineHeightStepsVal }
 				{ ...props }
 			/>
 		);
@@ -122,7 +125,7 @@ const TypographyControl = ( props ) => {
 			/>
 		);
 	}
-
+	const fontSizeStepsVal = ( 'em' === props.fontSizeType.value ? 0.1 : 1 );
 	if ( true !== disableFontSize ) {
 		fontSize = (
 			<RangeTypographyControl
@@ -149,7 +152,7 @@ const TypographyControl = ( props ) => {
 						? __( 'Font Size', 'ultimate-addons-for-gutenberg' )
 						: props.fontSizeLabel
 				}
-				steps={ 0.1 }
+				steps={ fontSizeStepsVal }
 				{ ...props }
 			/>
 		);
@@ -260,8 +263,27 @@ const TypographyControl = ( props ) => {
 			<Button
 				className="uag-typography-button"
 				aria-pressed={ showAdvancedControls }
-				onClick={ () =>
-					toggleAdvancedControls( ! showAdvancedControls )
+				onClick={ () => {
+						toggleAdvancedControls( ! showAdvancedControls )
+
+						if ( ! showAdvancedControls ) {
+							const { getSelectedBlock } = select( 'core/block-editor' );
+							const blockName = getSelectedBlock()?.name;
+							const uagSettingState = getUAGEditorStateLocalStorage( 'uagSettingState' );
+							const data = {
+								...uagSettingState,
+								[blockName] : {
+									...uagSettingState?.[blockName],
+									selectedSetting : '.uag-typography-options'
+								}
+							}
+
+							const uagLocalStorage = getUAGEditorStateLocalStorage();
+							if ( uagLocalStorage ) {
+								uagLocalStorage.setItem( 'uagSettingState', JSON.stringify( data ) );
+							}
+						}
+					}
 				}
 			>
 				<Dashicon icon="edit" />
