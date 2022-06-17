@@ -34,6 +34,10 @@
         }
     }
 
+    & .uagb-select-control--layout-inline .components-select-control {
+        margin-bottom: $spectra-control-popup-vertical-gap !important;
+    }
+
     // The Popup Option
     &__options {
         margin-bottom: $spectra-control-popup-vertical-gap;

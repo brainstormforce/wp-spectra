@@ -2,12 +2,13 @@
  * WordPress dependencies
  */
 import { __ } from '@wordpress/i18n';
-import { Button, Dashicon, SelectControl } from '@wordpress/components';
+import { Button, Dashicon } from '@wordpress/components';
 import { useState } from '@wordpress/element';
 
 /**
  * Internal dependencies
  */
+import UAGSelectControl from '@Components/select-control';
 import FontFamilyControl from './font-typography';
 import RangeTypographyControl from './range-typography';
 import TypographyStyles from './inline-styles';
@@ -41,8 +42,7 @@ const TypographyControl = ( props ) => {
 		  } );
 	}, [] );
 
-	let fontSize;
-	let fontWeight;
+	let lineHeight;
 	let fontFamily;
 	let fontAdvancedControls;
 	let fontTypoAdvancedControls;
@@ -67,7 +67,7 @@ const TypographyControl = ( props ) => {
 	const lineHeightStepsVal = ( 'em' === props.lineHeightType.value ? 0.1 : 1 );
 
 	if ( true !== disableLineHeight ) {
-		fontWeight = (
+		lineHeight = (
 			<RangeTypographyControl
 				type={ props.lineHeightType }
 				typeLabel={ props.lineHeightType.label }
@@ -123,49 +123,19 @@ const TypographyControl = ( props ) => {
 			/>
 		);
 	}
-	const fontSizeStepsVal = ( 'em' === props.fontSizeType.value ? 0.1 : 1 );
-	if ( true !== disableFontSize ) {
-		fontSize = (
-			<RangeTypographyControl
-				type={ props.fontSizeType }
-				typeLabel={ props.fontSizeType.label }
-				sizeMobile={ props.fontSizeMobile }
-				sizeMobileLabel={ props.fontSizeMobile.label }
-				sizeTablet={ props.fontSizeTablet }
-				sizeTabletLabel={ props.fontSizeTablet.label }
-				size={ props.fontSize }
-				sizeLabel={ props.fontSize.label }
-				sizeMobileText={
-					! props.fontSizeLabel
-						? __( 'Font Size', 'ultimate-addons-for-gutenberg' )
-						: props.fontSizeLabel
-				}
-				sizeTabletText={
-					! props.fontSizeLabel
-						? __( 'Font Size', 'ultimate-addons-for-gutenberg' )
-						: props.fontSizeLabel
-				}
-				sizeText={
-					! props.fontSizeLabel
-						? __( 'Font Size', 'ultimate-addons-for-gutenberg' )
-						: props.fontSizeLabel
-				}
-				steps={ fontSizeStepsVal }
-				{ ...props }
-			/>
-		);
-	}
 
 	if ( ! disableTransform && props.transform ) {
 		transform = (
-			<SelectControl
-				label={ __( 'Transform', 'ultimate-addons-for-gutenberg' ) }
-				value={ props.transform.value }
-				onChange={ ( value ) =>
-					props.setAttributes( {
-						[ props.transform.label ]: value,
-					} )
-				}
+			<UAGSelectControl
+				label={ __(
+					'Transform',
+					'ultimate-addons-for-gutenberg'
+				) }
+				data={ {
+					value: props.transform.value,
+					label: props.transform.label,
+				} }
+				setAttributes={ props.setAttributes }
 				options={ [
 					{
 						value: '',
@@ -209,17 +179,16 @@ const TypographyControl = ( props ) => {
 	if ( ! disableDecoration && props.decoration ) {
 		decoration = (
 			<div className="uag-typography-decoration">
-				<SelectControl
+				<UAGSelectControl
 					label={ __(
 						'Decoration',
 						'ultimate-addons-for-gutenberg'
 					) }
-					value={ props.decoration.value }
-					onChange={ ( value ) =>
-						props.setAttributes( {
-							[ props.decoration.label ]: value,
-						} )
-					}
+					data={ {
+						value: props.decoration.value,
+						label: props.decoration.label,
+					} }
+					setAttributes={ props.setAttributes }
 					options={ [
 						{
 							value: 'none',
@@ -270,11 +239,10 @@ const TypographyControl = ( props ) => {
 		showAdvancedFontControls = (
 			<>
 				{ fontFamily }
-				{ fontSize }
-				{ fontWeight }
-				{ letterSpacing }
 				{ transform }
 				{ decoration }
+				{ lineHeight }
+				{ letterSpacing }
 			</>
 		);
 	}
@@ -283,11 +251,10 @@ const TypographyControl = ( props ) => {
 		showAdvancedFontControls = (
 			<div className="uagb-typography-advanced spectra-control-popup">
 				{ fontFamily }
-				{ fontSize }
-				{ fontWeight }
-				{ letterSpacing }
 				{ transform }
 				{ decoration }
+				{ lineHeight }
+				{ letterSpacing }
 			</div>
 		);
 	}

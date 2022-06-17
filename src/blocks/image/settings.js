@@ -1575,6 +1575,7 @@ export default function Settings( props ) {
 								'ultimate-addons-for-gutenberg'
 							),
 						} }
+						popup={ true }
 					/>
 				)
 			}

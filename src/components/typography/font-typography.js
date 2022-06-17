@@ -2,7 +2,8 @@
  * WordPress dependencies
  */
 import { __ } from '@wordpress/i18n';
-import { SelectControl } from '@wordpress/components';
+import UAGSelectControl from '@Components/select-control';
+import RangeTypographyControl from './range-typography';
 import googleFonts from '@Controls/fonts';
 import Select from 'react-select';
 
@@ -134,10 +135,45 @@ function FontFamilyControl( props ) {
 			}
 		} );
 	}
+
+	let fontSize;
+	const fontSizeStepsVal = ( 'em' === props.fontSizeType.value ? 0.1 : 1 );
+	if ( true !== props.disableFontSize ) {
+		fontSize = (
+			<RangeTypographyControl
+				type={ props.fontSizeType }
+				typeLabel={ props.fontSizeType.label }
+				sizeMobile={ props.fontSizeMobile }
+				sizeMobileLabel={ props.fontSizeMobile.label }
+				sizeTablet={ props.fontSizeTablet }
+				sizeTabletLabel={ props.fontSizeTablet.label }
+				size={ props.fontSize }
+				sizeLabel={ props.fontSize.label }
+				sizeMobileText={
+					! props.fontSizeLabel
+						? __( 'Font Size', 'ultimate-addons-for-gutenberg' )
+						: props.fontSizeLabel
+				}
+				sizeTabletText={
+					! props.fontSizeLabel
+						? __( 'Font Size', 'ultimate-addons-for-gutenberg' )
+						: props.fontSizeLabel
+				}
+				sizeText={
+					! props.fontSizeLabel
+						? __( 'Font Size', 'ultimate-addons-for-gutenberg' )
+						: props.fontSizeLabel
+				}
+				steps={ fontSizeStepsVal }
+				{ ...props }
+			/>
+		);
+	}
+
 	return (
 		<>
 			{ /* Font Family */ }
-			<div className="components-base-control">
+			<div className="components-base-control uag-font-family-searchable-select__wrapper">
 				<label className="components-input-control__label" htmlFor="font-family">{ __( 'Font Family' ) }</label>
 				<Select
 					styles={ customSelectStyles }
@@ -151,31 +187,33 @@ function FontFamilyControl( props ) {
 					classNamePrefix="uag-font-family-select"
 				/>
 			</div>
+			{ /* Font Size*/ }
+			{ fontSize }
 			{ /* Font Weitght */ }
-			<SelectControl
+			<UAGSelectControl
 				label={ __(
 					'Weight',
 					'ultimate-addons-for-gutenberg'
 				) }
-				value={ props.fontWeight.value }
-				onChange={ ( value ) =>
-					props.setAttributes( {
-						[ props.fontWeight.label ]: value,
-					} )
-				}
+				data={ {
+					value: props.fontWeight.value,
+					label: props.fontWeight.label,
+				} }
+				setAttributes={ props.setAttributes }
 				options={ fontWeightObj }
-				className="react-select-container"
 			/>
 			{ /* Font Style */ }
 			{ props.fontStyle &&
-				<SelectControl
-					label={ __( 'Style', 'ultimate-addons-for-gutenberg' ) }
-					value={ props.fontStyle.value }
-					onChange={ ( value ) =>
-						props.setAttributes( {
-							[ props.fontStyle.label ]: value,
-						} )
-					}
+				<UAGSelectControl
+					label={ __(
+						'Style',
+						'ultimate-addons-for-gutenberg'
+					) }
+					data={ {
+						value: props.fontStyle.value,
+						label: props.fontStyle.label,
+					} }
+					setAttributes={ props.setAttributes }
 					options={ [
 						{
 							value: 'normal',
