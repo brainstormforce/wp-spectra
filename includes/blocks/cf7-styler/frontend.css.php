@@ -33,11 +33,11 @@ $field_vr_padding = isset( $attr['fieldTopPaddingDesktop'] ) ? $attr['fieldTopPa
 $border        = UAGB_Block_Helper::uag_generate_border_css( $attr, 'field' );
 $border       = UAGB_Block_Helper::uag_generate_deprecated_border_css(
 	$border,
-	( isset( $attr['fieldborderWidth'] ) ? $attr['fieldborderWidth'] : '' ),
-	( isset( $attr['fieldborderRadius'] ) ? $attr['fieldborderRadius'] : '' ),
-	( isset( $attr['fieldborderColor'] ) ? $attr['fieldborderColor'] : '' ),
-	( isset( $attr['fieldborderStyle'] ) ? $attr['fieldborderStyle'] : '' ),
-	( isset( $attr['fieldborderHColor'] ) ? $attr['fieldborderHColor'] : '' )
+	( isset( $attr['fieldBorderWidth'] ) ? $attr['fieldBorderWidth'] : '' ),
+	( isset( $attr['fieldBorderRadius'] ) ? $attr['fieldBorderRadius'] : '' ),
+	( isset( $attr['fieldBorderColor'] ) ? $attr['fieldBorderColor'] : '' ),
+	( isset( $attr['fieldBorderStyle'] ) ? $attr['fieldBorderStyle'] : '' ),
+	( isset( $attr['fieldBorderHColor'] ) ? $attr['fieldBorderHColor'] : '' )
 );
 $border_tablet = UAGB_Block_Helper::uag_generate_border_css( $attr, 'field', 'tablet' );
 $border_mobile = UAGB_Block_Helper::uag_generate_border_css( $attr, 'field', 'mobile' );
@@ -45,11 +45,11 @@ $border_mobile = UAGB_Block_Helper::uag_generate_border_css( $attr, 'field', 'mo
 $btn_border        = UAGB_Block_Helper::uag_generate_border_css( $attr, 'button' );
 $btn_border       = UAGB_Block_Helper::uag_generate_deprecated_border_css(
 	$btn_border,
-	( isset( $attr['buttonborderWidth'] ) ? $attr['buttonborderWidth'] : '' ),
-	( isset( $attr['buttonborderRadius'] ) ? $attr['buttonborderRadius'] : '' ),
-	( isset( $attr['buttonborderColor'] ) ? $attr['buttonborderColor'] : '' ),
-	( isset( $attr['buttonborderStyle'] ) ? $attr['buttonborderStyle'] : '' ),
-	( isset( $attr['buttonborderHColor'] ) ? $attr['buttonborderHColor'] : '' )
+	( isset( $attr['submitborderWidth'] ) ? $attr['submitborderWidth'] : '' ),
+	( isset( $attr['submitborderRadius'] ) ? $attr['submitborderRadius'] : '' ),
+	( isset( $attr['submitborderColor'] ) ? $attr['submitborderColor'] : '' ),
+	( isset( $attr['submitborderStyle'] ) ? $attr['submitborderStyle'] : '' ),
+	( isset( $attr['submitborderHColor'] ) ? $attr['submitborderHColor'] : '' )
 );
 $btn_border_tablet = UAGB_Block_Helper::uag_generate_border_css( $attr, 'button', 'tablet' );
 $btn_border_mobile = UAGB_Block_Helper::uag_generate_border_css( $attr, 'button', 'mobile' );
