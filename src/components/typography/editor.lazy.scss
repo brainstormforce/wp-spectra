@@ -1,6 +1,6 @@
 /* Reset Gutenberg Css */
 
-@import '../../styles/variables';
+@import "../../styles/variables";
 
 .spectra-control-popup__options .spectra-control-popup {
 
@@ -8,7 +8,7 @@
 		display: flex;
 		width: 100%;
 		flex-direction: column;
-		
+
 		// Note, the wrapper is used outside the actual component in the DOM.
 		&__wrapper {
 			align-items: center;
@@ -46,6 +46,7 @@
 		.uag-font-family-select__dropdown-indicator {
 
 			padding-left: 6px;
+
 			svg {
 				fill: $spectra-color-body;
 				height: 14px;
@@ -60,6 +61,7 @@
 		.uag-font-family-select__value-container {
 
 			top: 0;
+
 			> div {
 				margin: 0;
 				padding: 0;

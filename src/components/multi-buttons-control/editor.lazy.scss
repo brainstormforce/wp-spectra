@@ -1,6 +1,6 @@
 /* Multi Button Gap */
 
-@import '../../styles/variables';
+@import "../../styles/variables";
 
 .uagb-multi-button-button-group {
 	display: flex;
@@ -13,13 +13,13 @@
 		padding: 6px;
 		line-height: 14px;
 
-		&:first-child{
+		&:first-child {
 			-webkit-border-radius: $spectra-control-border-radius 0 0 $spectra-control-border-radius;
 			-moz-border-radius: $spectra-control-border-radius 0 0 $spectra-control-border-radius;
 			border-radius: $spectra-control-border-radius 0 0 $spectra-control-border-radius;
 		}
 
-		&:last-child{
+		&:last-child {
 			-webkit-border-radius: 0 $spectra-control-border-radius $spectra-control-border-radius 0;
 			-moz-border-radius: 0 $spectra-control-border-radius $spectra-control-border-radius 0;
 			border-radius: 0 $spectra-control-border-radius $spectra-control-border-radius 0;

@@ -1,4 +1,4 @@
-@import '../../styles/variables';
+@import "../../styles/variables";
 
 .uagb-spacing-control {
 	position: relative;
@@ -60,15 +60,15 @@
 	}
 
 	.uagb-spacing-control__inputs > :first-child.uagb-spacing-control__number {
-			-webkit-border-radius: $spectra-control-border-radius 0 0 $spectra-control-border-radius;
-			-moz-border-radius: $spectra-control-border-radius 0 0 $spectra-control-border-radius;
-			border-radius: $spectra-control-border-radius 0 0 $spectra-control-border-radius;
+		-webkit-border-radius: $spectra-control-border-radius 0 0 $spectra-control-border-radius;
+		-moz-border-radius: $spectra-control-border-radius 0 0 $spectra-control-border-radius;
+		border-radius: $spectra-control-border-radius 0 0 $spectra-control-border-radius;
 	}
 
 	.uagb-spacing-control__inputs > :last-child {
-			-webkit-border-radius: 0 $spectra-control-border-radius $spectra-control-border-radius 0;
-			-moz-border-radius: 0 $spectra-control-border-radius $spectra-control-border-radius 0;
-			border-radius: 0 $spectra-control-border-radius $spectra-control-border-radius 0;
+		-webkit-border-radius: 0 $spectra-control-border-radius $spectra-control-border-radius 0;
+		-moz-border-radius: 0 $spectra-control-border-radius $spectra-control-border-radius 0;
+		border-radius: 0 $spectra-control-border-radius $spectra-control-border-radius 0;
 	}
 
 	.uagb-control__actions .components-tab-panel__tabs {
