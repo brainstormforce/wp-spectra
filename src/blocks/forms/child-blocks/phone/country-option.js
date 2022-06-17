@@ -98,9 +98,6 @@ const countryOptions = [
 	<option key="" data-countryCode="CM" value="+237">
 		Cameroon (+237)
 	</option>,
-	<option key="" data-countryCode="CA" value="+1">
-		Canada / USA (+1)
-	</option>,
 	<option key="" data-countryCode="CV" value="+238">
 		Cape Verde Islands (+238)
 	</option>,
