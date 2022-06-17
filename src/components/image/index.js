@@ -1,18 +1,10 @@
 import { __ } from '@wordpress/i18n';
-import { BaseControl, Button } from '@wordpress/components';
+import { BaseControl } from '@wordpress/components';
 import { MediaUpload } from '@wordpress/block-editor';
-import React, { useLayoutEffect } from 'react';
+import React, { useState } from 'react';
 import UAGB_Block_Icons from '@Controls/block-icons';
-// import styles from './editor.lazy.scss';
 
 const UAGImage = ( props ) => {
-	// Add and remove the CSS on the drop and remove of the component.
-	// useLayoutEffect( () => {
-	// 	styles.use();
-	// 	return () => {
-	// 		styles.unuse();
-	// 	};
-	// }, [] );
 
 	const {
 		onSelectImage,
@@ -23,6 +15,10 @@ const UAGImage = ( props ) => {
 		disableRemove = false,
 		allow = [ 'image' ],
 	} = props;
+
+	// This is used to render an icon in place of the background image when needed.
+	let placeholderIcon;
+
 	// Need to refactor this code as per multi-image select for more diversity.
 	let labelText = __( 'Image', 'ultimate-addons-for-gutenberg' );
 	let selectImageLabel = __(
@@ -54,6 +50,7 @@ const UAGImage = ( props ) => {
 			'ultimate-addons-for-gutenberg'
 		);
 		allowedTypes = [ 'video' ];
+		placeholderIcon = UAGB_Block_Icons.video_placeholder;
 	}
 	labelText = label ? label : labelText;
 	labelText = false === label ? label : labelText;
@@ -75,45 +72,8 @@ const UAGImage = ( props ) => {
 			'ultimate-addons-for-gutenberg'
 		);
 		allowedTypes = allow;
+		placeholderIcon = UAGB_Block_Icons.lottie;
 	}
-	
-
-	// return (
-	// 	<BaseControl
-	// 		className="editor-bg-image-control"
-	// 		id={ `uagb-option-selector-${ label }` }
-	// 		label={ labelText }
-	// 	>
-	// 		<div className="uagb-bg-image">
-	// 			<MediaUpload
-	// 				title={ selectImageLabel }
-	// 				onSelect={ onSelectImage }
-	// 				allowedTypes={ allowedTypes }
-	// 				value={ backgroundImage }
-	// 				render={ ( { open } ) => (
-	// 					<Button isSecondary onClick={ open }>
-	// 						{ ! backgroundImage?.url
-	// 							? selectImageLabel
-	// 							: replaceImageLabel }
-	// 					</Button>
-	// 				) }
-	// 			/>
-	// 			{ ( ! disableRemove && backgroundImage?.url ) && (
-	// 				<Button
-	// 					className="uagb-rm-btn"
-	// 					onClick={ onRemoveImage }
-	// 					isLink
-	// 					isDestructive
-	// 				>
-	// 					{ removeImageLabel }
-	// 				</Button>
-	// 			) }
-	// 			{ props.help && (
-	// 				<p className="uag-control-help-notice">{ props.help }</p>
-	// 			) }
-	// 		</div>
-	// 	</BaseControl>
-	// );
 	
 	const renderMediaUploader = ( open ) => {
 		const uploadType = backgroundImage?.url ? 'replace' : 'add';
@@ -137,6 +97,33 @@ const UAGImage = ( props ) => {
 		</div>
 	);
 
+	// This Can Be Deprecated.
+	const generateBackground = ( media ) => {
+		const regex = /(?:\.([^.]+))?$/;
+		let mediaURL = media;
+		// console.log( String( mediaURL ) );
+		switch ( regex.exec( String( mediaURL ) )[1] ){
+			// For Lottie JSON Files.
+			case 'json':
+				mediaURL = '';
+				break;
+			// For Videos.
+			case 'avi':
+			case 'mpg':
+			case 'mp4':
+			case 'm4v':
+			case 'mov':
+			case 'ogv':
+			case 'vtt':
+			case 'wmv':
+			case '3gp':
+			case '3g2':
+				mediaURL = '';
+				break;
+		}
+		return mediaURL;
+	}
+
 	return (
 		<BaseControl
 			className="spectra-media-control"
@@ -146,9 +133,16 @@ const UAGImage = ( props ) => {
 			<div
 				className="spectra-media-control__wrapper"
 				style={ {
-					backgroundImage: backgroundImage?.url ? `url("${ backgroundImage?.url }")` : 'none',
+					backgroundImage: ( ! placeholderIcon && backgroundImage?.url ) && (
+						`url("${ generateBackground( backgroundImage?.url ) }")`
+					),
 				} }
 			>
+				{ ( placeholderIcon && backgroundImage?.url ) && (
+					<div className="spectra-media-control__icon">
+						{ placeholderIcon }
+					</div>
+				) }
 				<MediaUpload
 					title={ selectImageLabel }
 					onSelect={ onSelectImage }

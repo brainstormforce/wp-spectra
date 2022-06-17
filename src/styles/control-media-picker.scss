@@ -12,6 +12,11 @@
         background-position: center;
         background-repeat: no-repeat;
         background-size: cover;
+        -webkit-display: flex;
+        -moz-display: flex;
+        -ms-display: flex;
+        display: flex;
+        flex-direction: column;
 
         &--small {
             height: $spectra-control-mediapicker-height-small;
@@ -40,7 +45,7 @@
         }
 
         &--close {
-            background-color: $spectra-color-light-background;         
+            background-color: $spectra-color-light-background;
 
             svg path {
                 fill: $spectra-color-icon;
@@ -84,11 +89,36 @@
             }
         }
 
-
         &--close {
             position: absolute;
             top: 10px;
             right: 10px;
+        }
+    }
+
+    // The Icon Area Rendered when an Icon is Required
+    &__icon {
+        width: 100%;
+        flex: 1;
+        -webkit-display: flex;
+        -moz-display: flex;
+        -ms-display: flex;
+        display: flex;
+        -webkit-align-items: center;
+        align-items: center;
+        justify-content: center;
+
+        svg {
+            width: 30px;
+            height: 30px;
+            
+            path {
+                fill: $spectra-color-body;
+            }
+        }
+
+        & + .spectra-media-control__clickable--replace {
+            position: relative;
         }
     }
 }
