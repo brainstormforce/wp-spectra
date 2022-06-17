@@ -143,6 +143,15 @@ const Settings = ( props ) => {
 		headingFontStyle,
 		headingTransform,
 		headingDecoration,
+		headingLetterSpacing,
+		headingLetterSpacingTablet,
+		headingLetterSpacingMobile,
+		headingLetterSpacingType,
+		listLetterSpacing,
+		listLetterSpacingTablet,
+		listLetterSpacingMobile,
+		listLetterSpacingType,
+		markerView,
 	} = attributes;
 
 	let loadGFonts;
@@ -490,6 +499,22 @@ const Settings = ( props ) => {
 						value: headingLineHeightTablet,
 						label: 'headingLineHeightTablet',
 					} }
+					letterSpacing={ {
+						value: headingLetterSpacing,
+						label: 'headingLetterSpacing',
+					} }
+					letterSpacingTablet={ {
+						value: headingLetterSpacingTablet,
+						label: 'headingLetterSpacingTablet',
+					} }
+					letterSpacingMobile={ {
+						value: headingLetterSpacingMobile,
+						label: 'headingLetterSpacingMobile',
+					} }
+					letterSpacingType={ {
+						value: headingLetterSpacingType,
+						label: 'headingLetterSpacingType',
+					} }
 				/>
 				<ResponsiveSlider
 					label={ __( 'Bottom Spacing', 'ultimate-addons-for-gutenberg' ) }
@@ -792,9 +817,10 @@ const Settings = ( props ) => {
 						setAttributes={ setAttributes }
 					/>
 				) }
+
 				<ToggleControl
 					label={ __(
-						'Disable Bullet Points',
+						'Disable Marker',
 						'ultimate-addons-for-gutenberg'
 					) }
 					checked={ disableBullets }
@@ -804,6 +830,38 @@ const Settings = ( props ) => {
 						} )
 					}
 				/>
+				{
+					!disableBullets && (
+						<MultiButtonsControl
+							setAttributes={ setAttributes }
+							label={ __(
+								'Marker View',
+								'ultimate-addons-for-gutenberg'
+							) }
+							data={ {
+								value: markerView,
+								label: 'markerView',
+							} }
+							className="uagb-multi-button-alignment-control"
+							options={ [
+								{
+									value: 'disc',
+									label: __(
+										'Bullets',
+										'ultimate-addons-for-gutenberg'
+									),
+								},
+								{
+									value: 'decimal',
+									label: __(
+										'Numbers',
+										'ultimate-addons-for-gutenberg'
+									),
+								},
+							] }
+						/>
+					)
+				}
 				<ToggleControl
 					label={ __(
 						'Make Content Collapsible',
@@ -969,6 +1027,22 @@ const Settings = ( props ) => {
 						value: lineHeightTablet,
 						label: 'lineHeightTablet',
 					} }
+					letterSpacing={ {
+						value: listLetterSpacing,
+						label: 'listLetterSpacing',
+					} }
+					letterSpacingTablet={ {
+						value: listLetterSpacingTablet,
+						label: 'listLetterSpacingTablet',
+					} }
+					letterSpacingMobile={ {
+						value: listLetterSpacingMobile,
+						label: 'listLetterSpacingMobile',
+					} }
+					letterSpacingType={ {
+						value: listLetterSpacingType,
+						label: 'listLetterSpacingType',
+					} }
 				/>
 				<SpacingControl
 					{ ...props }
@@ -1043,7 +1117,7 @@ const Settings = ( props ) => {
 				/>
 				{ ! disableBullets &&
 				<AdvancedPopColorControl
-					label={ __( 'Color', 'ultimate-addons-for-gutenberg' ) }
+					label={ __( 'Marker Color', 'ultimate-addons-for-gutenberg' ) }
 					colorValue={ bulletColor ? bulletColor : '' }
 					onColorChange={ ( value ) =>
 						setAttributes( { bulletColor: value } )

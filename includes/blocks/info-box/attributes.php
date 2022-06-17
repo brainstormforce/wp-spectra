@@ -99,10 +99,10 @@ return array(
 	'ctaBorderColor'             => '',
 	'ctaBorderWidth'             => '',
 	'ctaBorderRadius'            => '',
-	'iconLeftMargin'             => '10',
-	'iconRightMargin'            => '10',
-	'iconTopMargin'              => '5',
-	'iconBottomMargin'           => '15',
+	'iconLeftMargin'             => '',
+	'iconRightMargin'            => '',
+	'iconTopMargin'              => '',
+	'iconBottomMargin'           => '',
 	'iconMarginLeftTablet'       => '',
 	'iconMarginRightTablet'      => '',
 	'iconMarginTopTablet'        => '',
@@ -216,4 +216,10 @@ return array(
 	'prefixLetterSpacingMobile'  => '',
 	'prefixLetterSpacingType'    => 'px',
 
+	// icon image.
+	'iconView'                   => 'none',
+	'iconShape'                  => 'Circle',
+	'iconBackgroundColor'        => '#6EC1E3',
+	'iconBackgroundHoverColor'   => '',
+	'iconBorderWidth'            => 3,
 );

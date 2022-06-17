@@ -1378,6 +1378,27 @@ const attributes = {
 	isPreview: {
 		type: 'boolean',
 		default: false,
+	},
+	//
+	iconView: {
+		type: 'string',
+		default: 'none',
+	},
+	iconShape: {
+		type: 'string',
+		default: 'Circle',
+	},
+	iconBackgroundColor: {
+		type: 'string',
+		default: '#6EC1E3',
+	},
+	iconBackgroundHoverColor: {
+		type: 'string',
+		default: '',
+	},
+	iconBorderWidth: {
+		type: 'number',
+		default: 3,
 	}
 };
 
