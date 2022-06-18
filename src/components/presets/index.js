@@ -199,7 +199,8 @@ const UAGPresets = ( props ) => {
     return (
 		<div className={ classnames(
 			className,
-			'uagb-presets-main-wrap'
+			'uagb-presets-main-wrap',
+			'components-base-control'
 		) }>
 			<div className='uagb-presets-label-reset-wrap'>
 				<label htmlFor="uag-presets-label" className="uag-presets-label">{label}</label>
