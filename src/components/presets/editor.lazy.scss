@@ -13,7 +13,7 @@
 	}
 
 	svg {
-		width: 72px;
+		width: 100%;
 		height: 70px;
 		margin-right: 10px;
 		margin-bottom: 10px;
@@ -47,4 +47,11 @@
 .uagb-presets-label-reset-wrap {
 	display: flex;
 	justify-content: space-between;
+}
+
+.uagb-presets-main-wrap {
+
+	&.border-none svg {
+		border: none;
+	}
 }
