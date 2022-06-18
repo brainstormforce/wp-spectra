@@ -244,7 +244,9 @@ export default function Settings( props ) {
 	const isWideAligned = [ 'wide', 'full' ].includes( align );
 	const isResizable = allowResize && ! ( isWideAligned && isLargeViewport );
 	const imageSizeOptions =  image?.media_details && imageSizes.reduce( ( acc, item ) => {
-		acc.push( { value: item.slug, label: item.name } )
+		if( image?.media_details?.sizes[item.slug] ){
+			acc.push( { value: item.slug, label: item.name } )
+		}
 		return acc;
 	}, [] );
 
