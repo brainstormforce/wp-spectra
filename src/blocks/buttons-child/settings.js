@@ -34,6 +34,9 @@ import {
 
 import UAGAdvancedPanelBody from '@Components/advanced-panel-body';
 
+import boxShadowPresets from './presets';
+import UAGPresets from '@Components/presets';
+
 const Settings = ( props ) => {
 
 	props = props.parentProps;
@@ -528,6 +531,11 @@ const Settings = ( props ) => {
 					title={__( 'Box Shadow','ultimate-addons-for-gutenberg' )}
 					initialOpen={false}
 				>
+					<UAGPresets
+						setAttributes = { setAttributes }
+						presets = { boxShadowPresets }
+						presetInputType = 'radioImage'
+					/>
 					<BoxShadowControl
 						setAttributes={ setAttributes }
 						boxShadowColor={ {

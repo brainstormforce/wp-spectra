@@ -493,7 +493,7 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 				),
 				'borderColor'                   => array(
 					'type'    => 'string',
-					'default' => '#fafafa',
+					'default' => '',
 				),
 				'borderHColor'                  => array(
 					'type' => 'string',
