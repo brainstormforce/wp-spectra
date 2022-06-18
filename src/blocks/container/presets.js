@@ -196,7 +196,7 @@ const innerContainerPresets = [
 			{ label: 'rightMarginDesktop', value: 10 },
 			{ label: 'marginLink', value: false }
 		],
-        icon: '<svg xmlns="http://www.w3.org/2000/svg" width="325" height="245" viewBox="0 0 325 245" fill="none"> <path d="M27 31.7987C27 29.1485 29.1527 27 31.8081 27H294.192C296.847 27 299 29.1485 299 31.7987V245H27V31.7987Z" fill="white"/> <rect x="63.75" y="89.75" width="198.5" height="93.5" stroke="#959595" stroke-width="1.5" fill="none" stroke-dasharray="4 4"/> <path d="M163 131L163 143" stroke="#959595" stroke-width="2" fill="none"/> <path d="M169 137L157 137" stroke="#959595" stroke-width="2" fill="none"/> </svg>',
+        icon: '<svg xmlns="http://www.w3.org/2000/svg" width="325" height="245" viewBox="0 0 325 245" fill="none"> <path d="M27 31.7987C27 29.1485 29.1527 27 31.8081 27H294.192C296.847 27 299 29.1485 299 31.7987V245H27V31.7987Z" fill="white"/> <rect x="63.75" y="101.75" width="198.5" height="68.5" stroke="#959595" stroke-width="1.5" stroke-dasharray="4 4" fill="none"/> <path d="M163 130L163 142" stroke="#959595" stroke-width="2" fill="none"/> <path d="M169 136L157 136" stroke="#959595" stroke-width="2" fill="none"/> </svg>',
     },
 	{
         value: 'preset-2',
