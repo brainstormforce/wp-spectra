@@ -54,20 +54,4 @@
 	&.border-none svg {
 		border: none;
 	}
-
-	&.uagb-presets-column-2 {
-
-		.uag-presets-radio-input-label {
-			width: 50%;
-
-			> .uagb-preset-svg-wrap {
-				width: 100%;
-
-				> svg {
-					width: 100%;
-					border: none;
-				}
-			}
-		}
-	}
 }

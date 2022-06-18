@@ -877,7 +877,6 @@ const Settings = ( props ) => {
 						setAttributes = { setAttributes }
 						presets = { buttonsPresets }
 						presetInputType = 'radioImage'
-						className="uagb-presets-column-2 border-none"
 					/>
 				}
 				{ ( ctaType === 'text' || ctaType === 'button' ) && (
