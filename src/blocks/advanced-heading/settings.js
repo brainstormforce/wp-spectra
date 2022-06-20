@@ -23,7 +23,7 @@ import SpacingControl from '@Components/spacing-control';
 import ColorSwitchControl from '@Components/color-switch-control';
 import TextShadowControl from '@Components/text-shadow';
 import Border from '@Components/border';
-
+import UAGTabsControl from '@Components/tabs';
 
 
 
@@ -1022,19 +1022,42 @@ const Settings = ( props ) => {
 				title={ __( 'Link', 'ultimate-addons-for-gutenberg' ) }
 				initialOpen={ false }
 			>
-				<AdvancedPopColorControl
-					label={ __( 'Color', 'ultimate-addons-for-gutenberg' ) }
-					colorValue={ linkColor }
-					onColorChange={ ( value ) =>
-						setAttributes( { linkColor: value } )
+				<UAGTabsControl
+					tabs={ [
+						{
+							name: 'normal',
+							title: __(
+								'Normal',
+								'ultimate-addons-for-gutenberg'
+							),
+						},
+						{
+							name: 'hover',
+							title: __(
+								'Hover',
+								'ultimate-addons-for-gutenberg'
+							),
+						},
+					] }
+					normal={
+						<AdvancedPopColorControl
+							label={ __( 'Color', 'ultimate-addons-for-gutenberg' ) }
+							colorValue={ linkColor }
+							onColorChange={ ( value ) =>
+								setAttributes( { linkColor: value } )
+							}
+						/>
 					}
-				/>
-				<AdvancedPopColorControl
-					label={ __( 'Hover Color', 'ultimate-addons-for-gutenberg' ) }
-					colorValue={ linkHColor }
-					onColorChange={ ( value ) =>
-						setAttributes( { linkHColor: value } )
+					hover={
+						<AdvancedPopColorControl
+							label={ __( 'Color', 'ultimate-addons-for-gutenberg' ) }
+							colorValue={ linkHColor }
+							onColorChange={ ( value ) =>
+								setAttributes( { linkHColor: value } )
+							}
+						/>
 					}
+					disableBottomSeparator={ true }
 				/>
 			</UAGAdvancedPanelBody>
 		);

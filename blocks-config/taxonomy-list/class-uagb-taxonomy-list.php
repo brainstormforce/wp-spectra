@@ -474,38 +474,38 @@ if ( ! class_exists( 'UAGB_Taxonomy_List' ) ) {
 							'default' => 0,
 						),
 						'titleLetterSpacingTablet'   => array(
-							'type'    => 'number',
+							'type' => 'number',
 						),
 						'titleLetterSpacingMobile'   => array(
-							'type'    => 'number',
+							'type' => 'number',
 						),
 						'titleLetterSpacingType'     => array(
 							'type'    => 'string',
 							'default' => 'px',
 						),
 						'countLetterSpacing'         => array(
-							'type'    => 'number',
+							'type' => 'number',
 						),
 						'countLetterSpacingTablet'   => array(
-							'type'    => 'number',
+							'type' => 'number',
 						),
 						'countLetterSpacingMobile'   => array(
-							'type'    => 'number',
+							'type' => 'number',
 						),
 						'countLetterSpacingType'     => array(
 							'type'    => 'string',
 							'default' => 'px',
 						),
-						'listLetterSpacing'         => array(
-							'type'    => 'number',
+						'listLetterSpacing'          => array(
+							'type' => 'number',
 						),
-						'listLetterSpacingTablet'   => array(
-							'type'    => 'number',
+						'listLetterSpacingTablet'    => array(
+							'type' => 'number',
 						),
-						'listLetterSpacingMobile'   => array(
-							'type'    => 'number',
+						'listLetterSpacingMobile'    => array(
+							'type' => 'number',
 						),
-						'listLetterSpacingType'     => array(
+						'listLetterSpacingType'      => array(
 							'type'    => 'string',
 							'default' => 'px',
 						),
