@@ -550,6 +550,7 @@ const Settings = ( props ) => {
 						label: 'headShadowBlur',
 						title: __( 'Blur', 'ultimate-addons-for-gutenberg' ),
 					} }
+					popup={ true }
 				/>
 				<ResponsiveSlider
 					label={ __(
