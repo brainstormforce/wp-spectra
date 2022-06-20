@@ -286,7 +286,7 @@ $selectors = array(
 	' .uagb-cf7-styler__highlight-style-bottom_right .wpcf7-not-valid-tip' => array(
 		'background-color' => $attr['validationMsgBgColor'],
 	),
-	' .wpcf7-response-output'                             => array(
+	' .wpcf7 form .wpcf7-response-output'                 => array(
 		'border-width'   => UAGB_Helper::get_css_value( $attr['msgBorderSize'], $attr['msgBorderSizeUnit'] ),
 		'border-radius'  => UAGB_Helper::get_css_value( $attr['msgBorderRadius'], $attr['msgBorderRadiusType'] ),
 		'padding-top'    => UAGB_Helper::get_css_value( $message_top_padding_dekstop, $attr['messagePaddingTypeDesktop'] ),
@@ -401,7 +401,7 @@ $m_selectors = array(
 		'padding-left'   => UAGB_Helper::get_css_value( $attr['buttonLeftPaddingMobile'], $attr['buttonPaddingTypeMobile'] ),
 		'padding-right'  => UAGB_Helper::get_css_value( $attr['buttonRightPaddingMobile'], $attr['buttonPaddingTypeMobile'] ),
 	),
-	' .uagb-cf7-styler__check-style-enabled .wpcf7 input:not([type=submit])'              => $field_padding_mobile,
+	' .uagb-cf7-styler__check-style-enabled .wpcf7 input:not([type=submit])' => $field_padding_mobile,
 	' .wpcf7 select.wpcf7-form-control.wpcf7-select:not([multiple="multiple"])' => $field_padding_mobile,
 	' .wpcf7 select.wpcf7-select[multiple="multiple"] option' => $field_padding_mobile,
 	' .wpcf7 textarea'                              => $field_padding_mobile,

@@ -25,13 +25,16 @@ function styling( props ) {
 		align,
 		enableSeparator,
 		boxBgColor,
+		boxBgHoverColor,
 		borderStyle,
 		borderWidth,
 		borderRadius,
 		borderColor,
 		borderHoverColor,
 		questionTextColor,
+		questionTextBgColor,
 		questionTextActiveColor,
+		questionTextActiveBgColor,
 		questionPaddingTypeDesktop,
 		questionPaddingTypeMobile,
 		questionPaddingTypeTablet,
@@ -146,6 +149,7 @@ function styling( props ) {
 		},
 		' .uagb-faq-item:hover': {
 			'border-color': borderHoverColor,
+			'background-color': boxBgHoverColor,
 		},
 		' .uagb-faq-item .uagb-question': {
 			'color': questionTextColor,
@@ -155,6 +159,12 @@ function styling( props ) {
 		},
 		' .uagb-faq-item:hover .uagb-question': {
 			'color': questionTextActiveColor,
+		},
+		' .uagb-faq-item.uagb-faq-item-active .uagb-faq-questions-button': {
+			'background-color': questionTextActiveBgColor,
+		},
+		' .uagb-faq-item:hover .uagb-faq-questions-button': {
+			'background-color': questionTextActiveBgColor,
 		},
 		' .uagb-faq-questions-button': {
 			'padding-top': generateCSSUnit(
@@ -173,6 +183,7 @@ function styling( props ) {
 				questionLeftPaddingDesktop,
 				questionPaddingTypeDesktop
 			),
+			'background-color': questionTextBgColor,
 		},
 		' .uagb-faq-content': {
 			'padding-top': generateCSSUnit(
