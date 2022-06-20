@@ -55,24 +55,24 @@ const UAGBInfoBox = ( props ) => {
 	}, [] );
 
 	useEffect( () => {
-		const { borderStyle,borderWidth,borderRadius,borderColor,borderHoverColor } = props.attributes;
+		const { ctaBorderStyle,ctaBorderWidth,ctaBorderRadius,ctaBorderColor,ctaBorderhoverColor } = props.attributes;
 		// Backward Border Migration
-		if( borderWidth || borderRadius || borderColor || borderHoverColor || borderStyle ){
+		if( ctaBorderWidth || ctaBorderRadius || ctaBorderColor || ctaBorderhoverColor || ctaBorderStyle ){
 			const migrationAttributes = migrateBorderAttributes( 'cta', {
-				label: 'borderWidth',
-				value: borderWidth,
+				label: 'ctaBorderWidth',
+				value: ctaBorderWidth,
 			}, {
-				label: 'borderRadius',
-				value: borderRadius
+				label: 'ctaBorderRadius',
+				value: ctaBorderRadius
 			}, {
-				label: 'borderColor',
-				value: borderColor
+				label: 'ctaBorderColor',
+				value: ctaBorderColor
 			}, {
-				label: 'borderHoverColor',
-				value: borderHoverColor
+				label: 'ctaBorderhoverColor',
+				value: ctaBorderhoverColor
 			},{
-				label: 'borderStyle',
-				value: borderStyle
+				label: 'ctaBorderStyle',
+				value: ctaBorderStyle
 			} );
 			props.setAttributes( migrationAttributes )
 		}

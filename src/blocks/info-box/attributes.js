@@ -673,7 +673,6 @@ const attributes = {
 	},
 	ctaBorderStyle: {
 		type: 'string',
-		default: 'none',
 	},
 	ctaBtnVertPadding: {
 		type: 'number',
