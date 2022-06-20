@@ -157,26 +157,26 @@ function styling( props ) {
 	topPaddingTablet = topPaddingTablet ? topPaddingTablet : topPaddingDesktop;
 	topPaddingMobile = topPaddingMobile ? topPaddingMobile : topPaddingTablet;
 
-	bottomPaddingTablet = bottomPaddingTablet ? bottomPaddingTablet : bottomPaddingDesktop;
-	bottomPaddingMobile = bottomPaddingMobile ? bottomPaddingMobile : bottomPaddingTablet;
+	bottomPaddingTablet = 'undefined' !== typeof bottomPaddingTablet ? bottomPaddingTablet : bottomPaddingDesktop;
+	bottomPaddingMobile = 'undefined' !== typeof bottomPaddingMobile ? bottomPaddingMobile : bottomPaddingTablet;
 
-	leftPaddingTablet = leftPaddingTablet ? leftPaddingTablet : leftPaddingDesktop;
-	leftPaddingMobile = leftPaddingMobile ? leftPaddingMobile : leftPaddingTablet;
+	leftPaddingTablet = 'undefined' !== typeof leftPaddingTablet ? leftPaddingTablet : leftPaddingDesktop;
+	leftPaddingMobile = 'undefined' !== typeof leftPaddingMobile ? leftPaddingMobile : leftPaddingTablet;
 
-	rightPaddingTablet = rightPaddingTablet ? rightPaddingTablet : rightPaddingDesktop;
-	rightPaddingMobile = rightPaddingMobile ? rightPaddingMobile : rightPaddingTablet;
+	rightPaddingTablet = 'undefined' !== typeof rightPaddingTablet ? rightPaddingTablet : rightPaddingDesktop;
+	rightPaddingMobile = 'undefined' !== typeof rightPaddingMobile ? rightPaddingMobile : rightPaddingTablet;
 
-	topMarginTablet = topMarginTablet ? topMarginTablet : topMarginDesktop;
-	topMarginMobile = topMarginMobile ? topMarginMobile : topMarginTablet;
+	topMarginTablet = 'undefined' !== typeof topMarginTablet ? topMarginTablet : topMarginDesktop;
+	topMarginMobile = 'undefined' !== typeof topMarginMobile ? topMarginMobile : topMarginTablet;
 
-	bottomMarginTablet = bottomMarginTablet ? bottomMarginTablet : bottomMarginDesktop;
-	bottomMarginMobile = bottomMarginMobile ? bottomMarginMobile : bottomMarginTablet;
+	bottomMarginTablet = 'undefined' !== typeof bottomMarginTablet ? bottomMarginTablet : bottomMarginDesktop;
+	bottomMarginMobile = 'undefined' !== typeof bottomMarginMobile ? bottomMarginMobile : bottomMarginTablet;
 
-	leftMarginTablet = leftMarginTablet ? leftMarginTablet : leftMarginDesktop;
-	leftMarginMobile = leftMarginMobile ? leftMarginMobile : leftMarginTablet;
+	leftMarginTablet = 'undefined' !== typeof leftMarginTablet ? leftMarginTablet : leftMarginDesktop;
+	leftMarginMobile = 'undefined' !== typeof leftMarginMobile ? leftMarginMobile : leftMarginTablet;
 
-	rightMarginTablet = rightMarginTablet ? rightMarginTablet : rightMarginDesktop;
-	rightMarginMobile = rightMarginMobile ? rightMarginMobile : rightMarginTablet;
+	rightMarginTablet = 'undefined' !== typeof rightMarginTablet ? rightMarginTablet : rightMarginDesktop;
+	rightMarginMobile = 'undefined' !== typeof rightMarginMobile ? rightMarginMobile : rightMarginTablet;
 
 	const containerFullWidth = '100vw';
 
