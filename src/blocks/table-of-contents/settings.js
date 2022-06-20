@@ -49,7 +49,6 @@ const Settings = ( props ) => {
 		smoothScroll,
 		smoothScrollOffset,
 		smoothScrollOffsetType,
-		smoothScrollDelay,
 		scrollToTop,
 		scrollToTopColor,
 		scrollToTopBgColor,
@@ -267,20 +266,6 @@ const Settings = ( props ) => {
 									unitValue: 'px',
 								},
 							] }
-						/>
-						<Range
-							label={ __(
-								'Scroll Animation Delay (ms)',
-								'ultimate-addons-for-gutenberg'
-							) }
-							setAttributes={ setAttributes }
-							value={ smoothScrollDelay }
-							onChange={ ( value ) =>
-								setAttributes( { smoothScrollDelay: value } )
-							}
-							min={ 100 }
-							max={ 5000 }
-							displayUnit={ false }
 						/>
 					</>
 				) }
