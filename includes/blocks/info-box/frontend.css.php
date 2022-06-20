@@ -8,7 +8,7 @@
  */
 
 $cta_border_css        = UAGB_Block_Helper::uag_generate_border_css( $attr, 'cta' );
-$cta_border_css       = UAGB_Block_Helper::uag_generate_deprecated_border_css(
+$cta_border_css        = UAGB_Block_Helper::uag_generate_deprecated_border_css(
 	$cta_border_css,
 	( isset( $attr['borderWidth'] ) ? $attr['borderWidth'] : '' ),
 	( isset( $attr['borderRadius'] ) ? $attr['borderRadius'] : '' ),
@@ -531,8 +531,8 @@ if ( 'button' === $attr['ctaType'] ) {
 		'background-color' => $attr['ctaBgHoverColor'],
 		'border-color'     => $attr['ctaBorderHColor'],
 	);
-	$selectors[' .uagb-infobox-cta-link:hover'] = array(
-		'border-color'     => $attr['ctaBorderHColor'],
+	$selectors[' .uagb-infobox-cta-link:hover']                              = array(
+		'border-color' => $attr['ctaBorderHColor'],
 	);
 	$selectors[' .uagb-ifb-button-wrapper .uagb-infobox-cta-link:hover svg'] = array(
 		'fill' => $attr['ctaLinkHoverColor'],

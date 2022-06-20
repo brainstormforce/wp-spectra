@@ -32,7 +32,7 @@ $icon_color       = ( '' === $attr['iconColor'] ) ? $attr['titleColor'] : $attr[
 $icon_hover_color = ( '' === $attr['iconHoverColor'] ) ? $attr['titleHoverColor'] : $attr['iconHoverColor'];
 
 $btn_border_css        = UAGB_Block_Helper::uag_generate_border_css( $attr, 'btn' );
-$btn_border_css       = UAGB_Block_Helper::uag_generate_deprecated_border_css(
+$btn_border_css        = UAGB_Block_Helper::uag_generate_deprecated_border_css(
 	$btn_border_css,
 	( isset( $attr['inputborderWidth'] ) ? $attr['inputborderWidth'] : '' ),
 	( isset( $attr['inputborderRadius'] ) ? $attr['inputborderRadius'] : '' ),

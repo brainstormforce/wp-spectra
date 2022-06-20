@@ -24,10 +24,12 @@ $tab_body_left_padding   = isset( $attr['tabBodyLeftPadding'] ) ? $attr['tabBody
 $tab_body_right_padding  = isset( $attr['tabBodyRightPadding'] ) ? $attr['tabBodyRightPadding'] : $attr['tabBodyHrPadding'];
 
 $selectors = array(
-	' .uagb-tabs__panel .uagb-tab '                        => array_merge( array(
-		'background' => $attr['headerBgColor'],
-		'text-align' => $attr['titleAlign'],
-	), $overall_border_css,
+	' .uagb-tabs__panel .uagb-tab '                        => array_merge(
+		array(
+			'background' => $attr['headerBgColor'],
+			'text-align' => $attr['titleAlign'],
+		),
+		$overall_border_css,
 	),
 	'.uagb-tabs__wrap ul.uagb-tabs__panel li.uagb-tab a '  => array(
 		'padding-top'    => UAGB_Helper::get_css_value( $tab_title_top_padding, $attr['tabTitlePaddingUnit'] ),

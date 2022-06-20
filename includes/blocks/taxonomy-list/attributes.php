@@ -8,7 +8,7 @@
  */
 
 $border_defaults  = array(
-	'borderStyle'  => 'solid',
+	'borderStyle'             => 'solid',
 	'borderTopWidth'          => 1,
 	'borderRightWidth'        => 1,
 	'borderBottomWidth'       => 1,
@@ -17,13 +17,13 @@ $border_defaults  = array(
 	'borderTopRightRadius'    => 3,
 	'borderBottomLeftRadius'  => 3,
 	'borderBottomRightRadius' => 3,
-	'borderColor'  => '#E0E0E0',
-	'borderHColor' => '#E0E0E0',
+	'borderColor'             => '#E0E0E0',
+	'borderHColor'            => '#E0E0E0',
 );
 $border_attribute = UAGB_Block_Helper::uag_generate_border_attribute( 'overall', $border_defaults );
 
 $sepearator_border_defaults = array(
-	'borderStyle'     => 'none',
+	'borderStyle'             => 'none',
 	'borderTopWidth'          => 100,
 	'borderRightWidth'        => 100,
 	'borderBottomWidth'       => 100,
@@ -32,8 +32,8 @@ $sepearator_border_defaults = array(
 	'borderTopRightRadius'    => 0,
 	'borderBottomLeftRadius'  => 0,
 	'borderBottomRightRadius' => 0,
-	'borderColor'     => '#b2b4b5',
-	'borderHColor'    => '#b2b4b5',
+	'borderColor'             => '#b2b4b5',
+	'borderHColor'            => '#b2b4b5',
 );
 $separator_border_attribute = UAGB_Block_Helper::uag_generate_border_attribute( 'seperator', $sepearator_border_defaults );
 

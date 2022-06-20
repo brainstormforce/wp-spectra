@@ -31,7 +31,7 @@ $field_right_padding_dekstop = isset( $attr['fieldRightPaddingDesktop'] ) ? UAGB
 $field_vr_padding = isset( $attr['fieldTopPaddingDesktop'] ) ? $attr['fieldTopPaddingDesktop'] : $attr['fieldVrPadding'];
 
 $border        = UAGB_Block_Helper::uag_generate_border_css( $attr, 'field' );
-$border       = UAGB_Block_Helper::uag_generate_deprecated_border_css(
+$border        = UAGB_Block_Helper::uag_generate_deprecated_border_css(
 	$border,
 	( isset( $attr['fieldBorderWidth'] ) ? $attr['fieldBorderWidth'] : '' ),
 	( isset( $attr['fieldBorderRadius'] ) ? $attr['fieldBorderRadius'] : '' ),
@@ -43,7 +43,7 @@ $border_tablet = UAGB_Block_Helper::uag_generate_border_css( $attr, 'field', 'ta
 $border_mobile = UAGB_Block_Helper::uag_generate_border_css( $attr, 'field', 'mobile' );
 
 $btn_border        = UAGB_Block_Helper::uag_generate_border_css( $attr, 'button' );
-$btn_border       = UAGB_Block_Helper::uag_generate_deprecated_border_css(
+$btn_border        = UAGB_Block_Helper::uag_generate_deprecated_border_css(
 	$btn_border,
 	( isset( $attr['submitborderWidth'] ) ? $attr['submitborderWidth'] : '' ),
 	( isset( $attr['submitborderRadius'] ) ? $attr['submitborderRadius'] : '' ),
@@ -200,44 +200,44 @@ $selectors = array(
 
 	// Underline border.
 	' .uagb-cf7-styler__field-style-underline .wpcf7 input:not([type=submit])' => array(
-		'border-style'         => 'none',
-		'border-bottom-color'  => $attr['fieldBorderColor'],
-		'border-bottom-style'  => 'solid',
-		'border-bottom-width'  => UAGB_Helper::get_css_value( $attr['fieldBorderBottomWidth'], 'px' ),
-		'border-top-left-radius'    => UAGB_Helper::get_css_value( $attr['fieldBorderTopLeftRadius'], 'px' ),
-		'border-top-right-radius'   => UAGB_Helper::get_css_value( $attr['fieldBorderTopRightRadius'], 'px' ),
-		'border-bottom-right-radius'  => UAGB_Helper::get_css_value( $attr['fieldBorderBottomRightRadius'], 'px' ),
-		'border-bottom-left-radius' => UAGB_Helper::get_css_value( $attr['fieldBorderBottomLeftRadius'], 'px' ),
+		'border-style'               => 'none',
+		'border-bottom-color'        => $attr['fieldBorderColor'],
+		'border-bottom-style'        => 'solid',
+		'border-bottom-width'        => UAGB_Helper::get_css_value( $attr['fieldBorderBottomWidth'], 'px' ),
+		'border-top-left-radius'     => UAGB_Helper::get_css_value( $attr['fieldBorderTopLeftRadius'], 'px' ),
+		'border-top-right-radius'    => UAGB_Helper::get_css_value( $attr['fieldBorderTopRightRadius'], 'px' ),
+		'border-bottom-right-radius' => UAGB_Helper::get_css_value( $attr['fieldBorderBottomRightRadius'], 'px' ),
+		'border-bottom-left-radius'  => UAGB_Helper::get_css_value( $attr['fieldBorderBottomLeftRadius'], 'px' ),
 	),
 	' .uagb-cf7-styler__field-style-underline textarea'   => array(
-		'border-style'         => 'none',
-		'border-bottom-color'  => $attr['fieldBorderColor'],
-		'border-bottom-style'  => 'solid',
-		'border-bottom-width'  => UAGB_Helper::get_css_value( $attr['fieldBorderBottomWidth'], 'px' ),
-		'border-top-left-radius'    => UAGB_Helper::get_css_value( $attr['fieldBorderTopLeftRadius'], 'px' ),
-		'border-top-right-radius'   => UAGB_Helper::get_css_value( $attr['fieldBorderTopRightRadius'], 'px' ),
-		'border-bottom-right-radius'  => UAGB_Helper::get_css_value( $attr['fieldBorderBottomRightRadius'], 'px' ),
-		'border-bottom-left-radius' => UAGB_Helper::get_css_value( $attr['fieldBorderBottomLeftRadius'], 'px' ),
+		'border-style'               => 'none',
+		'border-bottom-color'        => $attr['fieldBorderColor'],
+		'border-bottom-style'        => 'solid',
+		'border-bottom-width'        => UAGB_Helper::get_css_value( $attr['fieldBorderBottomWidth'], 'px' ),
+		'border-top-left-radius'     => UAGB_Helper::get_css_value( $attr['fieldBorderTopLeftRadius'], 'px' ),
+		'border-top-right-radius'    => UAGB_Helper::get_css_value( $attr['fieldBorderTopRightRadius'], 'px' ),
+		'border-bottom-right-radius' => UAGB_Helper::get_css_value( $attr['fieldBorderBottomRightRadius'], 'px' ),
+		'border-bottom-left-radius'  => UAGB_Helper::get_css_value( $attr['fieldBorderBottomLeftRadius'], 'px' ),
 	),
 	' .uagb-cf7-styler__field-style-underline select'     => array(
-		'border-style'         => 'none',
-		'border-bottom-color'  => $attr['fieldBorderColor'],
-		'border-bottom-style'  => 'solid',
-		'border-bottom-width'  => UAGB_Helper::get_css_value( $attr['fieldBorderBottomWidth'], 'px' ),
-		'border-top-left-radius'    => UAGB_Helper::get_css_value( $attr['fieldBorderTopLeftRadius'], 'px' ),
-		'border-top-right-radius'   => UAGB_Helper::get_css_value( $attr['fieldBorderTopRightRadius'], 'px' ),
-		'border-bottom-right-radius'  => UAGB_Helper::get_css_value( $attr['fieldBorderBottomRightRadius'], 'px' ),
-		'border-bottom-left-radius' => UAGB_Helper::get_css_value( $attr['fieldBorderBottomLeftRadius'], 'px' ),
+		'border-style'               => 'none',
+		'border-bottom-color'        => $attr['fieldBorderColor'],
+		'border-bottom-style'        => 'solid',
+		'border-bottom-width'        => UAGB_Helper::get_css_value( $attr['fieldBorderBottomWidth'], 'px' ),
+		'border-top-left-radius'     => UAGB_Helper::get_css_value( $attr['fieldBorderTopLeftRadius'], 'px' ),
+		'border-top-right-radius'    => UAGB_Helper::get_css_value( $attr['fieldBorderTopRightRadius'], 'px' ),
+		'border-bottom-right-radius' => UAGB_Helper::get_css_value( $attr['fieldBorderBottomRightRadius'], 'px' ),
+		'border-bottom-left-radius'  => UAGB_Helper::get_css_value( $attr['fieldBorderBottomLeftRadius'], 'px' ),
 	),
 	' .uagb-cf7-styler__field-style-underline textarea'   => array(
-		'border-style'         => 'none',
-		'border-bottom-color'  => $attr['fieldBorderColor'],
-		'border-bottom-style'  => 'solid',
-		'border-bottom-width'  => UAGB_Helper::get_css_value( $attr['fieldBorderBottomWidth'], 'px' ),
-		'border-top-left-radius'    => UAGB_Helper::get_css_value( $attr['fieldBorderTopLeftRadius'], 'px' ),
-		'border-top-right-radius'   => UAGB_Helper::get_css_value( $attr['fieldBorderTopRightRadius'], 'px' ),
-		'border-bottom-right-radius'  => UAGB_Helper::get_css_value( $attr['fieldBorderBottomRightRadius'], 'px' ),
-		'border-bottom-left-radius' => UAGB_Helper::get_css_value( $attr['fieldBorderBottomLeftRadius'], 'px' ),
+		'border-style'               => 'none',
+		'border-bottom-color'        => $attr['fieldBorderColor'],
+		'border-bottom-style'        => 'solid',
+		'border-bottom-width'        => UAGB_Helper::get_css_value( $attr['fieldBorderBottomWidth'], 'px' ),
+		'border-top-left-radius'     => UAGB_Helper::get_css_value( $attr['fieldBorderTopLeftRadius'], 'px' ),
+		'border-top-right-radius'    => UAGB_Helper::get_css_value( $attr['fieldBorderTopRightRadius'], 'px' ),
+		'border-bottom-right-radius' => UAGB_Helper::get_css_value( $attr['fieldBorderBottomRightRadius'], 'px' ),
+		'border-bottom-left-radius'  => UAGB_Helper::get_css_value( $attr['fieldBorderBottomLeftRadius'], 'px' ),
 	),
 	' .uagb-cf7-styler__field-style-underline .wpcf7-checkbox input[type="checkbox"] + span:before' => array(
 		'border-style' => 'solid',

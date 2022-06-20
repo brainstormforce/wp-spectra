@@ -158,8 +158,8 @@ $selectors['.uagb-layout-list .uagb-tax-separator']       = $seperator_border_cs
 $selectors['.uagb-layout-list .uagb-tax-separator:hover'] = array(
 	'border-top-color' => $attr['seperatorBorderHColor'],
 );
-$selectors[' .uagb-taxomony-box']       = $overall_border_css;
-$selectors[' .uagb-taxomony-box:hover'] = array(
+$selectors[' .uagb-taxomony-box']                         = $overall_border_css;
+$selectors[' .uagb-taxomony-box:hover']                   = array(
 	'border-color' => $attr['overallBorderHColor'],
 );
 

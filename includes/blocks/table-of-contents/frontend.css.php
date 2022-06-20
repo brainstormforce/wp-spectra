@@ -56,7 +56,7 @@ $overallBorderCSSTablet = UAGB_Block_Helper::uag_generate_border_css( $attr, 'ov
 $overallBorderCSSMobile = UAGB_Block_Helper::uag_generate_border_css( $attr, 'overall', 'mobile' );
 
 
-$selectors            = array(
+$selectors = array(
 	' .uagb-toc__list-wrap ul li'                         => array(
 		'font-size' => UAGB_Helper::get_css_value( $attr['fontSize'], $attr['fontSizeType'] ),
 	),

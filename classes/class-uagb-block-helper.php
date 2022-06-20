@@ -317,8 +317,8 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 		 */
 		public static function get_post_selectors( $attr ) {
 
-			$border_css        = self::uag_generate_border_css( $attr, 'btn' );
-			$border_css       = UAGB_Block_Helper::uag_generate_deprecated_border_css(
+			$border_css = self::uag_generate_border_css( $attr, 'btn' );
+			$border_css = self::uag_generate_deprecated_border_css(
 				$border_css,
 				( isset( $attr['borderWidth'] ) ? $attr['borderWidth'] : '' ),
 				( isset( $attr['borderRadius'] ) ? $attr['borderRadius'] : '' ),
@@ -403,10 +403,13 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				'color' => $attr['metaColor'],
 			);
 			$selectors[' .uagb-post__text.uagb-post__excerpt']['color']                          = $attr['excerptColor'];
-			$selectors[' .uagb-post__text.uagb-post__cta .uagb-text-link']                       = array_merge( array(
-				'color'         => $attr['ctaColor'],
-				'background'    => $attr['ctaBgColor'],
-			), $border_css);
+			$selectors[' .uagb-post__text.uagb-post__cta .uagb-text-link']                       = array_merge(
+				array(
+					'color'      => $attr['ctaColor'],
+					'background' => $attr['ctaBgColor'],
+				),
+				$border_css
+			);
 			$selectors[' .uagb-post__text.uagb-post__cta a']                                     = array(
 				'color'          => $attr['ctaColor'],
 				'padding-top'    => UAGB_Helper::get_css_value( $paddingBtnTop, $attr['paddingBtnUnit'] ),
@@ -496,7 +499,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					'padding-left'   => UAGB_Helper::get_css_value( $paddingBtnLeftMobile, $attr['mobilePaddingBtnUnit'] ),
 					'padding-right'  => UAGB_Helper::get_css_value( $paddingBtnRightMobile, $attr['mobilePaddingBtnUnit'] ),
 				),
-				' .uagb-post__text.uagb-post__cta .uagb-text-link'                       => $border_css_mobile,
+				' .uagb-post__text.uagb-post__cta .uagb-text-link' => $border_css_mobile,
 			);
 
 			return $m_selector;
@@ -509,7 +512,6 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 		 * @since 1.8.2
 		 */
 		public static function get_post_tablet_selectors( $attr ) {
-
 
 			$border_css_tablet = self::uag_generate_border_css( $attr, 'btn', 'tablet' );
 
@@ -564,7 +566,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					'padding-left'   => UAGB_Helper::get_css_value( $paddingBtnLeftTablet, $attr['tabletPaddingBtnUnit'] ),
 					'padding-right'  => UAGB_Helper::get_css_value( $paddingBtnRightTablet, $attr['tabletPaddingBtnUnit'] ),
 				),
-				' .uagb-post__text.uagb-post__cta .uagb-text-link'                       => $border_css_tablet,
+				' .uagb-post__text.uagb-post__cta .uagb-text-link' => $border_css_tablet,
 			);
 
 			return $t_selector;
@@ -1130,100 +1132,100 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				$default_args,
 				array(
 					// Width.
-					'borderTopWidth'                 => array(
+					'borderTopWidth'                => array(
 						'type'    => 'number',
 						'default' => '',
 					),
-					'borderRightWidth'               => array(
+					'borderRightWidth'              => array(
 						'type'    => 'number',
 						'default' => '',
 					),
-					'borderBottomWidth'              => array(
+					'borderBottomWidth'             => array(
 						'type'    => 'number',
 						'default' => '',
 					),
-					'borderLeftWidth'                => array(
+					'borderLeftWidth'               => array(
 						'type'    => 'number',
 						'default' => '',
 					),
-					'borderTopWidthTablet'           => array(
+					'borderTopWidthTablet'          => array(
 						'type'    => 'number',
 						'default' => '',
 					),
-					'borderRightWidthTablet'         => array(
+					'borderRightWidthTablet'        => array(
 						'type'    => 'number',
 						'default' => '',
 					),
-					'borderBottomWidthTablet'        => array(
+					'borderBottomWidthTablet'       => array(
 						'type'    => 'number',
 						'default' => '',
 					),
-					'borderLeftWidthTablet'          => array(
+					'borderLeftWidthTablet'         => array(
 						'type'    => 'number',
 						'default' => '',
 					),
-					'borderTopWidthMobile'           => array(
+					'borderTopWidthMobile'          => array(
 						'type'    => 'number',
 						'default' => '',
 					),
-					'borderRightWidthMobile'         => array(
+					'borderRightWidthMobile'        => array(
 						'type'    => 'number',
 						'default' => '',
 					),
-					'borderBottomWidthMobile'        => array(
+					'borderBottomWidthMobile'       => array(
 						'type'    => 'number',
 						'default' => '',
 					),
-					'borderLeftWidthMobile'          => array(
+					'borderLeftWidthMobile'         => array(
 						'type'    => 'number',
 						'default' => '',
 					),
 					// Radius.
-					'borderTopLeftRadius'            => array(
+					'borderTopLeftRadius'           => array(
 						'type'    => 'number',
 						'default' => '',
 					),
-					'borderTopRightRadius'           => array(
+					'borderTopRightRadius'          => array(
 						'type'    => 'number',
 						'default' => '',
 					),
-					'borderBottomRightRadius'        => array(
+					'borderBottomRightRadius'       => array(
 						'type'    => 'number',
 						'default' => '',
 					),
-					'borderBottomLeftRadius'         => array(
+					'borderBottomLeftRadius'        => array(
 						'type'    => 'number',
 						'default' => '',
 					),
-					'borderTopLeftRadiusTablet'      => array(
+					'borderTopLeftRadiusTablet'     => array(
 						'type'    => 'number',
 						'default' => '',
 					),
-					'borderTopRightRadiusTablet'     => array(
+					'borderTopRightRadiusTablet'    => array(
 						'type'    => 'number',
 						'default' => '',
 					),
-					'borderBottomRightRadiusTablet'  => array(
+					'borderBottomRightRadiusTablet' => array(
 						'type'    => 'number',
 						'default' => '',
 					),
-					'borderBottomLeftRadiusTablet'   => array(
+					'borderBottomLeftRadiusTablet'  => array(
 						'type'    => 'number',
 						'default' => '',
 					),
-					'borderTopLeftRadiusMobile'      => array(
+					'borderTopLeftRadiusMobile'     => array(
 						'type'    => 'number',
 						'default' => '',
 					),
-					'borderTopRightRadiusMobile'     => array(
+					'borderTopRightRadiusMobile'    => array(
 						'type'    => 'number',
 						'default' => '',
 					),
-					'borderBottomRightRadiusMobile'  => array(
+					'borderBottomRightRadiusMobile' => array(
 						'type'    => 'number',
 						'default' => '',
 					),
-					'borderBottomLeftRadiusMobile'   => array(
+					'borderBottomLeftRadiusMobile'  => array(
 						'type'    => 'number',
 						'default' => '',
 					),
@@ -1241,15 +1243,15 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 						'default' => 'px',
 					),
 					// common.
-					'borderStyle'                    => array(
+					'borderStyle'                   => array(
 						'type'    => 'string',
 						'default' => 'none',
 					),
-					'borderColor'                    => array(
+					'borderColor'                   => array(
 						'type'    => 'string',
 						'default' => '',
 					),
-					'borderHColor'                   => array(
+					'borderHColor'                  => array(
 						'type'    => 'string',
 						'default' => '',
 					),
@@ -1273,9 +1275,9 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				$border_attr[ "{$prefix}BorderRadiusUnit{$data}" ]        = $defaults[ "borderRadiusUnit{$data}" ];
 			}
 
-			$border_attr[ "{$prefix}BorderStyle" ]  = $defaults['borderStyle'];
-			$border_attr[ "{$prefix}BorderColor" ]  = $defaults['borderColor'];
-			$border_attr[ "{$prefix}BorderHColor" ] = $defaults['borderHColor'];
+			$border_attr[ "{$prefix}BorderStyle" ]      = $defaults['borderStyle'];
+			$border_attr[ "{$prefix}BorderColor" ]      = $defaults['borderColor'];
+			$border_attr[ "{$prefix}BorderHColor" ]     = $defaults['borderHColor'];
 			$border_attr[ "{$prefix}BorderLink" ]       = array(
 				'type'    => 'boolean',
 				'default' => true,
