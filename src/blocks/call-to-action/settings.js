@@ -560,9 +560,11 @@ secondCtaLetterSpacingType,
 									'ultimate-addons-for-gutenberg'
 								) }
 								colorValue={ secondCtaColor ? secondCtaColor : '' }
-								onColorChange={ ( value ) =>
-									setAttributes( { secondCtaColor: value } )
-								}
+								data={ {
+									value: secondCtaColor,
+									label: 'secondCtaColor',
+								} }
+								setAttributes={ setAttributes }
 							/>
 							<AdvancedPopColorControl
 								label={ __(
@@ -570,9 +572,11 @@ secondCtaLetterSpacingType,
 									'ultimate-addons-for-gutenberg'
 								) }
 								colorValue={ secondCtaBackground ? secondCtaBackground : '' }
-								onColorChange={ ( value ) =>
-									setAttributes( { secondCtaBackground: value } )
-								}
+								data={ {
+									value: secondCtaBackground,
+									label: 'secondCtaBackground',
+								} }
+								setAttributes={ setAttributes }
 							/>
 						</>
 					 }
@@ -584,9 +588,11 @@ secondCtaLetterSpacingType,
 									'ultimate-addons-for-gutenberg'
 								) }
 								colorValue={ secondCtaHoverColor ? secondCtaHoverColor : '' }
-								onColorChange={ ( value ) =>
-									setAttributes( { secondCtaHoverColor: value } )
-								}
+								data={ {
+									value: secondCtaHoverColor,
+									label: 'secondCtaHoverColor',
+								} }
+								setAttributes={ setAttributes }
 							/>
 							<AdvancedPopColorControl
 								label={ __(
@@ -594,9 +600,11 @@ secondCtaLetterSpacingType,
 									'ultimate-addons-for-gutenberg'
 								) }
 								colorValue={ secondCtaHoverBackground ? secondCtaHoverBackground : '' }
-								onColorChange={ ( value ) =>
-									setAttributes( { secondCtaHoverBackground: value } )
-								}
+								data={ {
+									value: secondCtaHoverBackground,
+									label: 'secondCtaHoverBackground',
+								} }
+								setAttributes={ setAttributes }
 							/>
 						</>
 					}
@@ -1142,9 +1150,11 @@ secondCtaLetterSpacingType,
 						'ultimate-addons-for-gutenberg'
 					) }
 					colorValue={ ctaBtnLinkColor ? ctaBtnLinkColor : '' }
-					onColorChange={ ( value ) =>
-						setAttributes( { ctaBtnLinkColor: value } )
-					}
+					data={ {
+						value: ctaBtnLinkColor,
+						label: 'ctaBtnLinkColor',
+					} }
+					setAttributes={ setAttributes }
 				/>
 				<AdvancedPopColorControl
 					label={ __(
@@ -1152,9 +1162,11 @@ secondCtaLetterSpacingType,
 						'ultimate-addons-for-gutenberg'
 					) }
 					colorValue={ ctaBgColor ? ctaBgColor : '' }
-					onColorChange={ ( value ) =>
-						setAttributes( { ctaBgColor: value } )
-					}
+					data={ {
+						value: ctaBgColor,
+						label: 'ctaBgColor',
+					} }
+					setAttributes={ setAttributes }
 				/>
 			</>
 		);
@@ -1168,9 +1180,11 @@ secondCtaLetterSpacingType,
 						'ultimate-addons-for-gutenberg'
 					) }
 					colorValue={ ctaLinkHoverColor ? ctaLinkHoverColor : '' }
-					onColorChange={ ( value ) =>
-						setAttributes( { ctaLinkHoverColor: value } )
-					}
+					data={ {
+						value: ctaLinkHoverColor,
+						label: 'ctaLinkHoverColor',
+					} }
+					setAttributes={ setAttributes }
 				/>
 				<AdvancedPopColorControl
 					label={ __(
@@ -1178,9 +1192,11 @@ secondCtaLetterSpacingType,
 						'ultimate-addons-for-gutenberg'
 					) }
 					colorValue={ ctaBgHoverColor ? ctaBgHoverColor : '' }
-					onColorChange={ ( value ) =>
-						setAttributes( { ctaBgHoverColor: value } )
-					}
+					data={ {
+						value: ctaBgHoverColor,
+						label: 'ctaBgHoverColor',
+					} }
+					setAttributes={ setAttributes }
 				/>
 			</>
 		);
@@ -1195,9 +1211,11 @@ secondCtaLetterSpacingType,
 						'ultimate-addons-for-gutenberg'
 					) }
 					colorValue={ ctaBtnLinkColor ? ctaBtnLinkColor : '' }
-					onColorChange={ ( value ) =>
-						setAttributes( { ctaBtnLinkColor: value } )
-					}
+					data={ {
+						value: ctaBtnLinkColor,
+						label: 'ctaBtnLinkColor',
+					} }
+					setAttributes={ setAttributes }
 				/>
 			</>
 		);
@@ -1211,9 +1229,11 @@ secondCtaLetterSpacingType,
 						'ultimate-addons-for-gutenberg'
 					) }
 					colorValue={ ctaLinkHoverColor ? ctaLinkHoverColor : '' }
-					onColorChange={ ( value ) =>
-						setAttributes( { ctaLinkHoverColor: value } )
-					}
+					data={ {
+						value: ctaLinkHoverColor,
+						label: 'ctaLinkHoverColor',
+					} }
+					setAttributes={ setAttributes }
 				/>
 			</>
 		);
@@ -1308,9 +1328,11 @@ secondCtaLetterSpacingType,
 				<AdvancedPopColorControl
 					label={ __( 'Color', 'ultimate-addons-for-gutenberg' ) }
 					colorValue={ titleColor ? titleColor : '' }
-					onColorChange={ ( value ) =>
-						setAttributes( { titleColor: value } )
-					}
+					data={ {
+						value: titleColor,
+						label: 'titleColor',
+					} }
+					setAttributes={ setAttributes }
 				/>
 				<ResponsiveSlider
 					label={ __(
@@ -1440,9 +1462,11 @@ secondCtaLetterSpacingType,
 				<AdvancedPopColorControl
 					label={ __( 'Color', 'ultimate-addons-for-gutenberg' ) }
 					colorValue={ descColor ? descColor : '' }
-					onColorChange={ ( value ) =>
-						setAttributes( { descColor: value } )
-					}
+					data={ {
+						value: descColor,
+						label: 'descColor',
+					} }
+					setAttributes={ setAttributes }
 				/>
 					<ResponsiveSlider
 						label={ __(

@@ -629,9 +629,11 @@ const Settings = ( props ) => {
 				<AdvancedPopColorControl
 					label={ __( 'Color', 'ultimate-addons-for-gutenberg' ) }
 					colorValue={ headingColor ? headingColor : '' }
-					onColorChange={ ( value ) =>
-						setAttributes( { headingColor: value } )
-					}
+					data={ {
+						value: headingColor,
+						label: 'headingColor',
+					} }
+					setAttributes={ setAttributes }
 				/>
 				<TypographyControl
 					label={ __(
@@ -725,9 +727,11 @@ const Settings = ( props ) => {
 				<AdvancedPopColorControl
 					label={ __( 'Color', 'ultimate-addons-for-gutenberg' ) }
 					colorValue={ showTotaltimecolor ? showTotaltimecolor : '' }
-					onColorChange={ ( value ) =>
-						setAttributes( { showTotaltimecolor: value } )
-					}
+					data={ {
+						value: showTotaltimecolor,
+						label: 'showTotaltimecolor',
+					} }
+					setAttributes={ setAttributes }
 				/>
 				<TypographyControl
 					label={ __(
@@ -821,9 +825,11 @@ const Settings = ( props ) => {
 				<AdvancedPopColorControl
 					label={ __( 'Color', 'ultimate-addons-for-gutenberg' ) }
 					colorValue={ subHeadingColor ? subHeadingColor : '' }
-					onColorChange={ ( value ) =>
-						setAttributes( { subHeadingColor: value } )
-					}
+					data={ {
+						value: subHeadingColor,
+						label: 'subHeadingColor',
+					} }
+					setAttributes={ setAttributes }
 				/>
 				<TypographyControl
 					label={ __(

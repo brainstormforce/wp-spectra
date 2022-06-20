@@ -338,9 +338,11 @@ const Settings = ( props ) => {
 									'ultimate-addons-for-gutenberg'
 								) }
 								colorValue={ color ? color : '' }
-								onColorChange={ ( value ) =>
-									setAttributes( { color: value } )
-								}
+								data={ {
+									value: color,
+									label: 'color',
+								} }
+								setAttributes={ setAttributes }
 							/>
 						</>
 					}
@@ -352,9 +354,11 @@ const Settings = ( props ) => {
 									'ultimate-addons-for-gutenberg'
 								) }
 								colorValue={ hColor ? hColor : '' }
-								onColorChange={ ( value ) =>
-									setAttributes( { hColor: value } )
-								}
+								data={ {
+									value: hColor,
+									label: 'hColor',
+								} }
+								setAttributes={ setAttributes }
 							/>
 						</>
 					}
@@ -434,11 +438,11 @@ const Settings = ( props ) => {
 													? background
 													: ''
 											}
-											onColorChange={ ( value ) =>
-												setAttributes( {
-													background: value,
-												} )
-											}
+											data={ {
+												value: background,
+												label: 'background',
+											} }
+											setAttributes={ setAttributes }
 										/>
 									</>
 								) }
@@ -499,11 +503,11 @@ const Settings = ( props ) => {
 													? hBackground
 													: ''
 											}
-											onColorChange={ ( value ) =>
-												setAttributes( {
-													hBackground: value,
-												} )
-											}
+											data={ {
+												value: hBackground,
+												label: 'hBackground',
+											} }
+											setAttributes={ setAttributes }
 										/>
 									</>
 								) }
@@ -653,9 +657,11 @@ const Settings = ( props ) => {
 									'ultimate-addons-for-gutenberg'
 								) }
 								colorValue={ iconColor ? iconColor : '' }
-								onColorChange={ ( value ) =>
-									setAttributes( { iconColor: value } )
-								}
+								data={ {
+									value: iconColor,
+									label: 'iconColor',
+								} }
+								setAttributes={ setAttributes }
 							/>
 					}
 					hover={
@@ -666,9 +672,11 @@ const Settings = ( props ) => {
 									'ultimate-addons-for-gutenberg'
 								) }
 								colorValue={ iconHColor ? iconHColor : '' }
-								onColorChange={ ( value ) =>
-									setAttributes( { iconHColor: value } )
-								}
+								data={ {
+									value: iconHColor,
+									label: 'iconHColor',
+								} }
+								setAttributes={ setAttributes }
 							/>
 						</>
 					}

@@ -3,7 +3,7 @@ import { select } from '@wordpress/data';
 import { Button, Tooltip, Dashicon } from '@wordpress/components';
 import { __ } from '@wordpress/i18n';
 
-const UAGReset = (props) => {
+const UAGReset = ( props ) => {
 
 	const {
 		onReset,
@@ -18,7 +18,7 @@ const UAGReset = (props) => {
 		const selectedBlockName = getSelectedBlock()?.name.replace( 'uagb/', '' );
 		let defaultValues = false;
 		if ( attributeNames ) {
-			attributeNames.map((attributeName) => {
+			attributeNames.map( ( attributeName ) => {
 				if ( attributeName ) {
 					const blockDefaultAttributeValue = blocksAttributes[selectedBlockName][attributeName].default;
 					if ( setAttributes ) {
@@ -31,12 +31,11 @@ const UAGReset = (props) => {
 				}
 
 				return attributeName;
-			});
+			} );
 		}
 
 		if ( onReset ) {
-			console.log(defaultValues);
-			onReset(defaultValues);
+			onReset( defaultValues );
 		}
 	};
 

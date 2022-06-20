@@ -418,11 +418,11 @@ const Settings = ( props ) => {
 						? successMessageTextColor
 						: ''
 				}
-				onColorChange={ ( value ) =>
-					setAttributes( {
-						successMessageTextColor: value,
-					} )
-				}
+				data={ {
+					value: successMessageTextColor,
+					label: 'successMessageTextColor',
+				} }
+				setAttributes={ setAttributes }
 			/>
 			<AdvancedPopColorControl
 				label={ __(
@@ -434,11 +434,11 @@ const Settings = ( props ) => {
 						? successMessageBGColor
 						: ''
 				}
-				onColorChange={ ( value ) =>
-					setAttributes( {
-						successMessageBGColor: value,
-					} )
-				}
+				data={ {
+					value: successMessageBGColor,
+					label: 'successMessageBGColor',
+				} }
+				setAttributes={ setAttributes }
 			/>
 			<Border
 				disabledBorderTitle= {false}
@@ -499,11 +499,11 @@ const Settings = ( props ) => {
 						? failedMessageTextColor
 						: ''
 				}
-				onColorChange={ ( value ) =>
-					setAttributes( {
-						failedMessageTextColor: value,
-					} )
-				}
+				data={ {
+					value: failedMessageTextColor,
+					label: 'failedMessageTextColor',
+				} }
+				setAttributes={ setAttributes }
 			/>
 			<AdvancedPopColorControl
 				label={ __(
@@ -513,9 +513,11 @@ const Settings = ( props ) => {
 				colorValue={
 					failedMessageBGColor ? failedMessageBGColor : ''
 				}
-				onColorChange={ ( value ) =>
-					setAttributes( { failedMessageBGColor: value } )
-				}
+				data={ {
+					value: failedMessageBGColor,
+					label: 'failedMessageBGColor',
+				} }
+				setAttributes={ setAttributes }
 			/>
 			<Border
 				disabledBorderTitle= {false}
@@ -773,9 +775,11 @@ const Settings = ( props ) => {
 						<AdvancedPopColorControl
 							label={ __( 'Color', 'ultimate-addons-for-gutenberg' ) }
 							colorValue={ labelColor ? labelColor : '' }
-							onColorChange={ ( value ) =>
-								setAttributes( { labelColor: value } )
-							}
+							data={ {
+								value: labelColor,
+								label: 'labelColor',
+							} }
+							setAttributes={ setAttributes }
 						/>
 					</>
 				}
@@ -784,9 +788,11 @@ const Settings = ( props ) => {
 						<AdvancedPopColorControl
 							label={ __( 'Color', 'ultimate-addons-for-gutenberg' ) }
 							colorValue={ labelHoverColor ? labelHoverColor : '' }
-							onColorChange={ ( value ) =>
-								setAttributes( { labelHoverColor: value } )
-							}
+							data={ {
+								value: labelHoverColor,
+								label: 'labelHoverColor',
+							} }
+							setAttributes={ setAttributes }
 						/>
 					</>
 				}
@@ -804,9 +810,11 @@ const Settings = ( props ) => {
 			<AdvancedPopColorControl
 				label={ __( 'Color', 'ultimate-addons-for-gutenberg' ) }
 				colorValue={ inputColor ? inputColor : '' }
-				onColorChange={ ( value ) =>
-					setAttributes( { inputColor: value } )
-				}
+				data={ {
+					value: inputColor,
+					label: 'inputColor',
+				} }
+				setAttributes={ setAttributes }
 			/>
 			<UAGTabsControl
 				tabs={ [
@@ -842,9 +850,11 @@ const Settings = ( props ) => {
 							colorValue={
 								inputplaceholderColor ? inputplaceholderColor : ''
 							}
-							onColorChange={ ( value ) =>
-								setAttributes( { inputplaceholderColor: value } )
-							}
+							data={ {
+								value: inputplaceholderColor,
+								label: 'inputplaceholderColor',
+							} }
+							setAttributes={ setAttributes }
 						/>
 						{ 'underlined' !== formStyle && (
 							<AdvancedPopColorControl
@@ -853,9 +863,11 @@ const Settings = ( props ) => {
 									'ultimate-addons-for-gutenberg'
 								) }
 								colorValue={ bgColor ? bgColor : '' }
-								onColorChange={ ( value ) =>
-									setAttributes( { bgColor: value } )
-								}
+								data={ {
+									value: bgColor,
+									label: 'bgColor',
+								} }
+								setAttributes={ setAttributes }
 							/>
 						) }
 					</>
@@ -870,9 +882,11 @@ const Settings = ( props ) => {
 							colorValue={
 								inputplaceholderHoverColor ? inputplaceholderHoverColor : ''
 							}
-							onColorChange={ ( value ) =>
-								setAttributes( { inputplaceholderHoverColor: value } )
-							}
+							data={ {
+								value: inputplaceholderHoverColor,
+								label: 'inputplaceholderHoverColor',
+							} }
+							setAttributes={ setAttributes }
 						/>
 						{ 'underlined' !== formStyle && (
 							<AdvancedPopColorControl
@@ -881,9 +895,11 @@ const Settings = ( props ) => {
 									'ultimate-addons-for-gutenberg'
 								) }
 								colorValue={ bgHoverColor ? bgHoverColor : '' }
-								onColorChange={ ( value ) =>
-									setAttributes( { bgHoverColor: value } )
-								}
+								data={ {
+									value: bgHoverColor,
+									label: 'bgHoverColor',
+								} }
+								setAttributes={ setAttributes }
 							/>
 						) }
 					</>
@@ -898,9 +914,11 @@ const Settings = ( props ) => {
 							colorValue={
 								inputplaceholderActiveColor ? inputplaceholderActiveColor : ''
 							}
-							onColorChange={ ( value ) =>
-								setAttributes( { inputplaceholderActiveColor: value } )
-							}
+							data={ {
+								value: inputplaceholderActiveColor,
+								label: 'inputplaceholderActiveColor',
+							} }
+							setAttributes={ setAttributes }
 						/>
 						{ 'underlined' !== formStyle && (
 							<AdvancedPopColorControl
@@ -909,9 +927,11 @@ const Settings = ( props ) => {
 									'ultimate-addons-for-gutenberg'
 								) }
 								colorValue={ bgActiveColor ? bgActiveColor : '' }
-								onColorChange={ ( value ) =>
-									setAttributes( { bgActiveColor: value } )
-								}
+								data={ {
+									value: bgActiveColor,
+									label: 'bgActiveColor',
+								} }
+								setAttributes={ setAttributes }
 							/>
 						) }
 					</>
@@ -1198,9 +1218,11 @@ const Settings = ( props ) => {
 								'ultimate-addons-for-gutenberg'
 							) }
 							colorValue={ toggleColor ? toggleColor : '' }
-							onColorChange={ ( value ) =>
-								setAttributes( { toggleColor: value } )
-							}
+							data={ {
+								value: toggleColor,
+								label: 'toggleColor',
+							} }
+							setAttributes={ setAttributes }
 						/>
 						<AdvancedPopColorControl
 							label={ __(
@@ -1208,9 +1230,11 @@ const Settings = ( props ) => {
 								'ultimate-addons-for-gutenberg'
 							) }
 							colorValue={ toggleDotColor ? toggleDotColor : '' }
-							onColorChange={ ( value ) =>
-								setAttributes( { toggleDotColor: value } )
-							}
+							data={ {
+								value: toggleDotColor,
+								label: 'toggleDotColor',
+							} }
+							setAttributes={ setAttributes }
 						/>
 					</>
 				}
@@ -1222,9 +1246,11 @@ const Settings = ( props ) => {
 								'ultimate-addons-for-gutenberg'
 							) }
 							colorValue={ toggleActiveColor ? toggleActiveColor : '' }
-							onColorChange={ ( value ) =>
-								setAttributes( { toggleActiveColor: value } )
-							}
+							data={ {
+								value: toggleActiveColor,
+								label: 'toggleActiveColor',
+							} }
+							setAttributes={ setAttributes }
 						/>
 						<AdvancedPopColorControl
 							label={ __(
@@ -1232,9 +1258,11 @@ const Settings = ( props ) => {
 								'ultimate-addons-for-gutenberg'
 							) }
 							colorValue={ toggleDotActiveColor ? toggleDotActiveColor : '' }
-							onColorChange={ ( value ) =>
-								setAttributes( { toggleDotActiveColor: value } )
-							}
+							data={ {
+								value: toggleDotActiveColor,
+								label: 'toggleDotActiveColor',
+							} }
+							setAttributes={ setAttributes }
 						/>
 					</>
 				}
@@ -1492,9 +1520,11 @@ const Settings = ( props ) => {
 								'ultimate-addons-for-gutenberg'
 							) }
 							colorValue={ submitColor ? submitColor : '' }
-							onColorChange={ ( value ) =>
-								setAttributes( { submitColor: value } )
-							}
+							data={ {
+								value: submitColor,
+								label: 'submitColor',
+							} }
+							setAttributes={ setAttributes }
 						/>
 						<AdvancedPopColorControl
 							label={ __(
@@ -1504,9 +1534,11 @@ const Settings = ( props ) => {
 							colorValue={
 								submitBgColor ? submitBgColor : ''
 							}
-							onColorChange={ ( value ) =>
-								setAttributes( { submitBgColor: value } )
-							}
+							data={ {
+								value: submitBgColor,
+								label: 'submitBgColor',
+							} }
+							setAttributes={ setAttributes }
 						/>
 					</>
 				}
@@ -1520,9 +1552,11 @@ const Settings = ( props ) => {
 							colorValue={
 								submitColorHover ? submitColorHover : ''
 							}
-							onColorChange={ ( value ) =>
-								setAttributes( { submitColorHover: value } )
-							}
+							data={ {
+								value: submitColorHover,
+								label: 'submitColorHover',
+							} }
+							setAttributes={ setAttributes }
 						/>
 						<AdvancedPopColorControl
 							label={ __(
@@ -1532,11 +1566,11 @@ const Settings = ( props ) => {
 							colorValue={
 								submitBgColorHover ? submitBgColorHover : ''
 							}
-							onColorChange={ ( value ) =>
-								setAttributes( {
-									submitBgColorHover: value,
-								} )
-							}
+							data={ {
+								value: submitBgColorHover,
+								label: 'submitBgColorHover',
+							} }
+							setAttributes={ setAttributes }
 						/>
 					</>
 				}

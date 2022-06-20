@@ -575,9 +575,11 @@ tweetBtnLetterSpacingType,
 			<AdvancedPopColorControl
 				label={ __( 'Quote Color', 'ultimate-addons-for-gutenberg' ) }
 				colorValue={ descColor ? descColor : '' }
-				onColorChange={ ( value ) =>
-					setAttributes( { descColor: value } )
-				}
+				data={ {
+					value: descColor,
+					label: 'descColor',
+				} }
+				setAttributes={ setAttributes }
 			/>
 		</UAGAdvancedPanelBody>
 	);
@@ -672,9 +674,11 @@ tweetBtnLetterSpacingType,
 					<AdvancedPopColorControl
 						label={ __( 'Author Color', 'ultimate-addons-for-gutenberg' ) }
 						colorValue={ authorColor ? authorColor : '' }
-						onColorChange={ ( value ) =>
-							setAttributes( { authorColor: value } )
-						}
+						data={ {
+							value: authorColor,
+							label: 'authorColor',
+						} }
+						setAttributes={ setAttributes }
 					/>
 				</>
 			)}
@@ -1189,9 +1193,11 @@ tweetBtnLetterSpacingType,
 						'ultimate-addons-for-gutenberg'
 					) }
 					colorValue={ quoteColor ? quoteColor : '' }
-					onColorChange={ ( value ) =>
-						setAttributes( { quoteColor: value } )
-					}
+					data={ {
+						value: quoteColor,
+						label: 'quoteColor',
+					} }
+					setAttributes={ setAttributes }
 				/>
 				<AdvancedPopColorControl
 					label={ __(
@@ -1199,9 +1205,11 @@ tweetBtnLetterSpacingType,
 						'ultimate-addons-for-gutenberg'
 					) }
 					colorValue={ quoteBgColor ? quoteBgColor : '' }
-					onColorChange={ ( value ) =>
-						setAttributes( { quoteBgColor: value } )
-					}
+					data={ {
+						value: quoteBgColor,
+						label: 'quoteBgColor',
+					} }
+					setAttributes={ setAttributes }
 				/>
 			</>
 		);
@@ -1213,9 +1221,11 @@ tweetBtnLetterSpacingType,
 						'ultimate-addons-for-gutenberg'
 					) }
 					colorValue={ quoteHoverColor ? quoteHoverColor : '' }
-					onColorChange={ ( value ) =>
-						setAttributes( { quoteHoverColor: value } )
-					}
+					data={ {
+						value: quoteHoverColor,
+						label: 'quoteHoverColor',
+					} }
+					setAttributes={ setAttributes }
 				/>
 				<AdvancedPopColorControl
 					label={ __(
@@ -1223,9 +1233,11 @@ tweetBtnLetterSpacingType,
 						'ultimate-addons-for-gutenberg'
 					) }
 					colorValue={ quoteBgHoverColor ? quoteBgHoverColor : '' }
-					onColorChange={ ( value ) =>
-						setAttributes( { quoteBgHoverColor: value } )
-					}
+					data={ {
+						value: quoteBgHoverColor,
+						label: 'quoteBgHoverColor',
+					} }
+					setAttributes={ setAttributes }
 				/>
 			</>
 		);
@@ -1267,18 +1279,22 @@ tweetBtnLetterSpacingType,
 			<AdvancedPopColorControl
 				label={ __( 'Border Color', 'ultimate-addons-for-gutenberg' ) }
 				colorValue={ borderColor ? borderColor : '' }
-				onColorChange={ ( value ) =>
-					setAttributes( { borderColor: value } )
-				}
+				data={ {
+					value: borderColor,
+					label: 'borderColor',
+				} }
+				setAttributes={ setAttributes }
 			/>
 		);
 		const tabOutputHover = (
 			<AdvancedPopColorControl
 				label={ __( 'Border Color', 'ultimate-addons-for-gutenberg' ) }
 				colorValue={ borderHoverColor ? borderHoverColor : '' }
-				onColorChange={ ( value ) =>
-					setAttributes( { borderHoverColor: value } )
-				}
+				data={ {
+					value: borderHoverColor,
+					label: 'borderHoverColor',
+				} }
+				setAttributes={ setAttributes }
 			/>
 		);
 		return (
@@ -1616,9 +1632,11 @@ tweetBtnLetterSpacingType,
 								colorValue={
 									tweetLinkColor ? tweetLinkColor : ''
 								}
-								onColorChange={ ( value ) =>
-									setAttributes( { tweetLinkColor: value } )
-								}
+								data={ {
+									value: tweetLinkColor,
+									label: 'tweetLinkColor',
+								} }
+								setAttributes={ setAttributes }
 							/>
 						}
 						hover={
@@ -1630,11 +1648,11 @@ tweetBtnLetterSpacingType,
 								colorValue={
 									tweetBtnHoverColor ? tweetBtnHoverColor : ''
 								}
-								onColorChange={ ( value ) =>
-									setAttributes( {
-										tweetBtnHoverColor: value,
-									} )
-								}
+								data={ {
+									value: tweetBtnHoverColor,
+									label: 'tweetBtnHoverColor',
+								} }
+								setAttributes={ setAttributes }
 							/>
 						}
 						disableBottomSeparator={ true }
@@ -1668,11 +1686,11 @@ tweetBtnLetterSpacingType,
 									colorValue={
 										tweetBtnColor ? tweetBtnColor : ''
 									}
-									onColorChange={ ( value ) =>
-										setAttributes( {
-											tweetBtnColor: value,
-										} )
-									}
+									data={ {
+										value: tweetBtnColor,
+										label: 'tweetBtnColor',
+									} }
+									setAttributes={ setAttributes }
 								/>
 								<AdvancedPopColorControl
 									label={ __(
@@ -1682,11 +1700,11 @@ tweetBtnLetterSpacingType,
 									colorValue={
 										tweetBtnBgColor ? tweetBtnBgColor : ''
 									}
-									onColorChange={ ( value ) =>
-										setAttributes( {
-											tweetBtnBgColor: value,
-										} )
-									}
+									data={ {
+										value: tweetBtnBgColor,
+										label: 'tweetBtnBgColor',
+									} }
+									setAttributes={ setAttributes }
 								/>
 							</>
 						}
@@ -1702,11 +1720,11 @@ tweetBtnLetterSpacingType,
 											? tweetBtnHoverColor
 											: ''
 									}
-									onColorChange={ ( value ) =>
-										setAttributes( {
-											tweetBtnHoverColor: value,
-										} )
-									}
+									data={ {
+										value: tweetBtnHoverColor,
+										label: 'tweetBtnHoverColor',
+									} }
+									setAttributes={ setAttributes }
 								/>
 								<AdvancedPopColorControl
 									label={ __(
@@ -1718,11 +1736,11 @@ tweetBtnLetterSpacingType,
 											? tweetBtnBgHoverColor
 											: ''
 									}
-									onColorChange={ ( value ) =>
-										setAttributes( {
-											tweetBtnBgHoverColor: value,
-										} )
-									}
+									data={ {
+										value: tweetBtnBgHoverColor,
+										label: 'tweetBtnBgHoverColor',
+									} }
+									setAttributes={ setAttributes }
 								/>
 							</>
 						}
