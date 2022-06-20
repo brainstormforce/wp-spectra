@@ -101,7 +101,7 @@ return array(
 	'ctaText'                           => __( 'Read More', 'ultimate-addons-for-gutenberg' ),
 	'borderWidth'                       => '',
 	'borderStyle'                       => 'none',
-	'borderColor'                       => '',
+	'borderColor'                       => '#fafafa',
 	'borderHColor'                      => '',
 	'borderRadius'                      => '',
 	'paginationType'                    => 'none',

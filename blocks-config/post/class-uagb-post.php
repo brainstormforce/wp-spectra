@@ -505,7 +505,7 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 				),
 				'borderColor'                   => array(
 					'type'    => 'string',
-					'default' => '',
+					'default' => '#fafafa',
 				),
 				'borderHColor'                  => array(
 					'type' => 'string',

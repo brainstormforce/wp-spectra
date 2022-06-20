@@ -265,10 +265,17 @@ function styling( props ) {
 				imageBottomSpaceUnit
 			),
 		},
+		' .uagb-post__inner-wrap .uagb-post__image + .uagb-post__title ': {
+			'margin-top': '0px',
+		},
 		' .uagb-post__inner-wrap .uagb-post__title': {
 			'margin-bottom': generateCSSUnit(
 				titleBottomSpaceFallback,
 				titleBottomSpaceUnit
+			),
+			'margin-top': generateCSSUnit(
+				paddingTop,
+				contentPaddingUnit
 			),
 		},
 		' .uagb-post__inner-wrap .uagb-post-grid-byline': {
