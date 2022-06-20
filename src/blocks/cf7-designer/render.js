@@ -25,6 +25,8 @@ const Render = ( props ) => {
 		formJson,
 		fieldStyle,
 		buttonAlignment,
+		buttonAlignmentTablet,
+		buttonAlignmentMobile,
 		enableOveride,
 		validationMsgPosition,
 		enableHighlightBorder,
@@ -73,7 +75,6 @@ const Render = ( props ) => {
 		);
 	}
 
-
 	return (
 		<div
 			className={ classnames(
@@ -88,6 +89,8 @@ const Render = ( props ) => {
 					`uagb-cf7-styler__align-${ align }`,
 					`uagb-cf7-styler__field-style-${ fieldStyle }`,
 					`uagb-cf7-styler__btn-align-${ buttonAlignment }`,
+					`uagb-cf7-styler__btn-align-tablet-${ buttonAlignmentTablet }`,
+					`uagb-cf7-styler__btn-align-mobile-${ buttonAlignmentMobile }`,
 					`uagb-cf7-styler__highlight-style-${ validationMsgPosition }`,
 					enableOveride ? 'uagb-cf7-styler__check-style-enabled' : '',
 					enableHighlightBorder
