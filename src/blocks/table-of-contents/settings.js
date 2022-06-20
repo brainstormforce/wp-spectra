@@ -143,6 +143,7 @@ const Settings = ( props ) => {
 		headingFontStyle,
 		headingTransform,
 		headingDecoration,
+		markerView,
 	} = attributes;
 
 	let loadGFonts;
@@ -297,7 +298,7 @@ const Settings = ( props ) => {
 		return (
 			<UAGAdvancedPanelBody
 				title={ __( 'General', 'ultimate-addons-for-gutenberg' ) }
-				initialOpen={ false }
+				initialOpen={ true }
 			>
 				<AdvancedPopColorControl
 					label={ __( 'Background', 'ultimate-addons-for-gutenberg' ) }
@@ -418,7 +419,7 @@ const Settings = ( props ) => {
 		return (
 			<UAGAdvancedPanelBody
 				title={ __( 'Title', 'ultimate-addons-for-gutenberg' ) }
-				initialOpen={ true }
+				initialOpen={ false }
 			>
 				<AdvancedPopColorControl
 					label={ __( 'Color', 'ultimate-addons-for-gutenberg' ) }
@@ -792,9 +793,10 @@ const Settings = ( props ) => {
 						setAttributes={ setAttributes }
 					/>
 				) }
+
 				<ToggleControl
 					label={ __(
-						'Disable Bullet Points',
+						'Disable Marker',
 						'ultimate-addons-for-gutenberg'
 					) }
 					checked={ disableBullets }
@@ -804,6 +806,38 @@ const Settings = ( props ) => {
 						} )
 					}
 				/>
+				{
+					!disableBullets && (
+						<MultiButtonsControl
+							setAttributes={ setAttributes }
+							label={ __(
+								'Marker View',
+								'ultimate-addons-for-gutenberg'
+							) }
+							data={ {
+								value: markerView,
+								label: 'markerView',
+							} }
+							className="uagb-multi-button-alignment-control"
+							options={ [
+								{
+									value: 'disc',
+									label: __(
+										'Bullets',
+										'ultimate-addons-for-gutenberg'
+									),
+								},
+								{
+									value: 'decimal',
+									label: __(
+										'Numbers',
+										'ultimate-addons-for-gutenberg'
+									),
+								},
+							] }
+						/>
+					)
+				}
 				<ToggleControl
 					label={ __(
 						'Make Content Collapsible',
@@ -1043,7 +1077,7 @@ const Settings = ( props ) => {
 				/>
 				{ ! disableBullets &&
 				<AdvancedPopColorControl
-					label={ __( 'Color', 'ultimate-addons-for-gutenberg' ) }
+					label={ __( 'Marker Color', 'ultimate-addons-for-gutenberg' ) }
 					colorValue={ bulletColor ? bulletColor : '' }
 					onColorChange={ ( value ) =>
 						setAttributes( { bulletColor: value } )
