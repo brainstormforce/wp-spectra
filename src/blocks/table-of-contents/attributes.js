@@ -889,7 +889,11 @@ const attributes = {
 	isPreview: {
 		type: 'boolean',
 		default: false,
-	}
+	},
+	markerView: {
+		type: 'string',
+		default: 'disc'
+	},
 };
 
 export default attributes;

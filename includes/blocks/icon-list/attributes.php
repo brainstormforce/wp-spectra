@@ -11,7 +11,9 @@ return array(
 	'classMigrate'       => false,
 	'childMigrate'       => false,
 	'align'              => 'left',
-	'icon_count'         => 1,
+	'alignTablet'        => '',
+	'alignMobile'        => '',
+	'icon_count'         => '1',
 	'icons'              => array(
 		array(
 			'label'                   => __( 'Label #1', 'ultimate-addons-for-gutenberg' ),
@@ -72,4 +74,14 @@ return array(
 	'fontDecoration'     => '',
 	'hideLabel'          => false,
 	'iconPosition'       => 'middle',
+	'iconPositionTablet' => '',
+	'iconPositionMobile' => '',
+	'iconColor'            => '',
+	'iconHoverColor'       => '',
+	'iconBgColor'          => '',
+	'iconBgHoverColor'     => '',
+	'iconBorderColor'      => '',
+	'iconBorderHoverColor' => '',
+	'labelColor'           => '',
+	'labelHoverColor'      => '',
 );

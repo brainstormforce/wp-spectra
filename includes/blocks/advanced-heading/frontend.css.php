@@ -165,6 +165,7 @@ $t_selectors[' .uagb-desc-text']                 = array(
 	'letter-spacing' => UAGB_Helper::get_css_value( $attr['subHeadLetterSpacingTablet'], $attr['subHeadLetterSpacingType'] ),
 );
 $t_selectors['.wp-block-uagb-advanced-heading '] = array(
+	'text-align'     => $attr['headingAlignTablet'],
 	'padding-top'    => UAGB_Helper::get_css_value( $attr['blockTopPaddingTablet'], $attr['blockPaddingUnitTablet'] ),
 	'padding-right'  => UAGB_Helper::get_css_value( $attr['blockRightPaddingTablet'], $attr['blockPaddingUnitTablet'] ),
 	'padding-bottom' => UAGB_Helper::get_css_value( $attr['blockBottomPaddingTablet'], $attr['blockPaddingUnitTablet'] ),
@@ -192,6 +193,7 @@ $m_selectors[' .uagb-desc-text']                                = array(
 	'letter-spacing' => UAGB_Helper::get_css_value( $attr['subHeadLetterSpacingMobile'], $attr['subHeadLetterSpacingType'] ),
 );
 $m_selectors['.wp-block-uagb-advanced-heading ']                = array(
+	'text-align'     => $attr['headingAlignMobile'],
 	'padding-top'    => UAGB_Helper::get_css_value( $attr['blockTopPaddingMobile'], $attr['blockPaddingUnitMobile'] ),
 	'padding-right'  => UAGB_Helper::get_css_value( $attr['blockRightPaddingMobile'], $attr['blockPaddingUnitMobile'] ),
 	'padding-bottom' => UAGB_Helper::get_css_value( $attr['blockBottomPaddingMobile'], $attr['blockPaddingUnitMobile'] ),
