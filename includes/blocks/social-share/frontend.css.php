@@ -25,6 +25,27 @@ $image_size   = UAGB_Helper::get_css_value( $size_fallback, $attr['sizeType'] );
 $m_image_size = UAGB_Helper::get_css_value( $attr['sizeMobile'], $attr['sizeType'] );
 $t_image_size = UAGB_Helper::get_css_value( $attr['sizeTablet'], $attr['sizeType'] );
 
+$selectors = array(
+	' .uagb-ss-repeater a.uagb-ss__link'           => array(
+		'color' => $attr['iconColor'],
+	),
+	' .uagb-ss-repeater a.uagb-ss__link svg'       => array(
+		'fill' => $attr['iconColor'],
+	),
+	' .uagb-ss-repeater:hover a.uagb-ss__link'     => array(
+		'color' => $attr['iconHoverColor'],
+	),
+	' .uagb-ss-repeater:hover a.uagb-ss__link svg' => array(
+		'fill' => $attr['iconHoverColor'],
+	),
+	' .uagb-ss-repeater.uagb-ss__wrapper'          => array(
+		'background' => $attr['iconBgColor'],
+	),
+	' .uagb-ss-repeater.uagb-ss__wrapper:hover'    => array(
+		'background' => $attr['iconBgHoverColor'],
+	),
+);
+
 $selectors['.uagb-social-share__outer-wrap .block-editor-inner-blocks'] = array(
 	'text-align' => UAGB_Helper::get_css_value( $attr['align'] ),
 );

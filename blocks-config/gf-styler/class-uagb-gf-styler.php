@@ -157,6 +157,14 @@ if ( ! class_exists( 'UAGB_GF_Styler' ) ) {
 							'type'    => 'string',
 							'default' => 'left',
 						),
+						'buttonAlignmentTablet'         => array(
+							'type'    => 'string',
+							'default' => '',
+						),
+						'buttonAlignmentMobile'         => array(
+							'type'    => 'string',
+							'default' => '',
+						),
 						'buttonVrPadding'               => array(
 							'type'    => 'number',
 							'default' => 10,
@@ -901,6 +909,8 @@ if ( ! class_exists( 'UAGB_GF_Styler' ) ) {
 				'uagb-gf-styler__field-style-' . $attributes['fieldStyle'],
 				'uagb-gf-styler__gform-heading-' . $attributes['titleDescStyle'],
 				'uagb-gf-styler__btn-align-' . $attributes['buttonAlignment'],
+				'uagb-gf-styler__btn-align-tablet-' . $attributes['buttonAlignmentTablet'],
+				'uagb-gf-styler__btn-align-mobile-' . $attributes['buttonAlignmentMobile'],
 			);
 
 			if ( $attributes['enableOveride'] ) {

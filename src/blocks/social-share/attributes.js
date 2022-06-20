@@ -152,7 +152,35 @@ const attributes = {
 	isPreview: {
 		type: 'boolean',
 		default: false,
-	}
+	},
+	iconColor: {
+		type: 'string',
+		default: '#3a3a3a',
+		UAGCopyPaste: {
+			styleType: 'icon-color'
+		},
+	},
+	iconHoverColor: {
+		type: 'string',
+		UAGCopyPaste: {
+			styleType: 'icon-hover-color'
+		},
+		default: '',
+	},
+	iconBgColor: {
+		type: 'string',
+		UAGCopyPaste: {
+			styleType: 'icon-bg-color'
+		},
+		default: '',
+	},
+	iconBgHoverColor: {
+		type: 'string',
+		UAGCopyPaste: {
+			styleType: 'icon-bg-hover-color'
+		},
+		default: '',
+	},
 };
 
 export default attributes;

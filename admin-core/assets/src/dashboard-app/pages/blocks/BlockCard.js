@@ -66,7 +66,7 @@ const BlockCard = ( props ) => {
             </div>
             <div className="flex-1 min-w-0">
                 <p className="text-sm font-medium text-gray-900 mb-[0.1875rem]">{title}</p>
-                <a className="text-sm underline text-gray-900 hover:text-gray-700 truncate" href={ `https://ultimategutenberg.com/blocks/${ link }` } target="_blank"rel="noreferrer">{__( 'Live Demo', 'ultimate-addons-for-gutenberg' )}</a>
+                <a className="hover:text-wpcolor text-sm underline text-gray-900 truncate" href={ `https://ultimategutenberg.com/blocks/${ link }` } target="_blank"rel="noreferrer">{__( 'Live Demo', 'ultimate-addons-for-gutenberg' )}</a>
             </div>
             <Switch
                 checked={blockActivationStatus}

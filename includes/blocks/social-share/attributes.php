@@ -40,4 +40,8 @@ return array(
 	'borderRadiusMobile' => '',
 	'social_layout'      => 'horizontal',
 	'stack'              => 'none',
+	'iconColor'          => '#3a3a3a',
+	'iconHoverColor'     => '',
+	'iconBgColor'        => '',
+	'iconBgHoverColor'   => '',
 );
