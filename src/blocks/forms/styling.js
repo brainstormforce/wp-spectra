@@ -23,6 +23,8 @@ function styling( props ) {
 		formPaddingUnitTab,
 		formPaddingUnitMob,
 		buttonAlign,
+		buttonAlignTablet,
+		buttonAlignMobile,
 		submitColor,
 		submitColorHover,
 		submitBgColor,
@@ -139,7 +141,7 @@ function styling( props ) {
 		submitTextFontStyle,
 		labelFontStyle,
 		inputFontStyle,
-		
+
 		labelGap,
 		labelGapTablet,
 		labelGapMobile,
@@ -692,6 +694,9 @@ function styling( props ) {
 				inputLineHeightType
 			),
 		},
+		' .uagb-forms-main-form .uagb-forms-main-submit-button-wrap': {
+			'text-align': buttonAlignTablet,
+		},
 	};
 
 	mobileSelectors = {
@@ -798,6 +803,9 @@ function styling( props ) {
 				inputLineHeightMobile,
 				inputLineHeightType
 			),
+		},
+		' .uagb-forms-main-form .uagb-forms-main-submit-button-wrap': {
+			'text-align': buttonAlignMobile,
 		},
 	};
 
