@@ -1,7 +1,7 @@
 import classnames from 'classnames';
 import PositionClasses from './classes';
 import UAGB_Block_Icons from '@Controls/block-icons';
-import React, { lazy, Suspense, useLayoutEffect } from 'react';
+import React, { lazy, Suspense, useLayoutEffect, useRef } from 'react';
 import lazyLoader from '@Controls/lazy-loader';
 import TestimonialImage from './components/Image';
 import AuthorName from './components/AuthorName';
@@ -52,7 +52,9 @@ const Render = ( props ) => {
 		equalHeight
 	} = attributes;
 
-	const NextArrow = () => {
+	const sliderRef = useRef();
+
+	const NextArrow = ( { onClick } ) => {
 		return (
 			<button
 				type="button"
@@ -65,13 +67,14 @@ const Render = ( props ) => {
 					borderRadius: arrowBorderRadius,
 					borderWidth: getFallbackNumber( arrowBorderSize, 'arrowBorderSize', blockName ),
 				} }
+				onClick = { onClick }
 			>
 				{ UAGB_Block_Icons.carousel_right }
 			</button>
 		);
 	};
 
-	const PrevArrow = () => {
+	const PrevArrow = ( { onClick } ) => {
 		return (
 			<button
 				type="button"
@@ -84,6 +87,7 @@ const Render = ( props ) => {
 					borderRadius: arrowBorderRadius,
 					borderWidth: getFallbackNumber( arrowBorderSize, 'arrowBorderSize', blockName ),
 				} }
+				onClick= { onClick }
 			>
 				{ UAGB_Block_Icons.carousel_left }
 			</button>
@@ -117,8 +121,8 @@ const Render = ( props ) => {
 			}
 		},
 		draggable: false,
-		nextArrow: <NextArrow arrowSize={ arrowSize } />,
-		prevArrow: <PrevArrow arrowSize={ arrowSize } />,
+		nextArrow: <NextArrow arrowSize={ arrowSize } onClick={sliderRef.slickNext} />,
+		prevArrow: <PrevArrow arrowSize={ arrowSize } onClick={sliderRef.slickPrev} />,
 		responsive: [
 			{
 				breakpoint: 1024,
@@ -158,6 +162,7 @@ const Render = ( props ) => {
 						'uagb-tm__items'
 					) }
 					{ ...settings }
+					ref={ sliderRef }
 				>
 					{ test_block.map( ( test, index ) => (
 						<div

@@ -171,7 +171,6 @@ const Range = ( props ) => {
 		return items;
 	};
 
-
 	return (
 		<div className="components-base-control uag-range-control uagb-size-type-field-tabs">
 			<div className="uagb-control__header">
@@ -217,7 +216,7 @@ const Range = ( props ) => {
 					allowReset={ false }
 					max={ max }
 					min={ min }
-					step={ props.step || 1 }
+					step={ props?.steps || 1 }
 					initialPosition = {props?.value}
 				/>
 				{ withInputField && isNumberControlSupported && (
@@ -228,7 +227,7 @@ const Range = ( props ) => {
 						min={ min }
 						onChange={ handleOnChange }
 						value={ props?.value }
-						step={ props.step || 1 }
+						step={ props?.steps || 1 }
 					/>
 				) }
 			</div>
