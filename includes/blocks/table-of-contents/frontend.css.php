@@ -43,7 +43,6 @@ $tablet_bottom_margin = isset( $attr['bottomMarginTablet'] ) ? $attr['bottomMarg
 $tablet_left_margin   = isset( $attr['leftMarginTablet'] ) ? $attr['leftMarginTablet'] : $attr['hMarginTablet'];
 $tablet_right_margin  = isset( $attr['rightMarginTablet'] ) ? $attr['rightMarginTablet'] : $attr['hMarginTablet'];
 $iconSize             = isset( $attr['iconSize'] ) ? UAGB_Helper::get_css_value( $attr['iconSize'], 'px' ) : '20px';
-<<<<<<< HEAD
 
 $overallBorderCSS       = UAGB_Block_Helper::uag_generate_border_css( $attr, 'overall' );
 $overallBorderCSS       = UAGB_Block_Helper::uag_generate_deprecated_border_css(
@@ -56,8 +55,7 @@ $overallBorderCSS       = UAGB_Block_Helper::uag_generate_deprecated_border_css(
 $overallBorderCSSTablet = UAGB_Block_Helper::uag_generate_border_css( $attr, 'overall', 'tablet' );
 $overallBorderCSSMobile = UAGB_Block_Helper::uag_generate_border_css( $attr, 'overall', 'mobile' );
 
-$selectors = array(
-=======
+
 $selectors            = array(
 	' .uagb-toc__list-wrap ul li'                         => array(
 		'font-size' => UAGB_Helper::get_css_value( $attr['fontSize'], $attr['fontSizeType'] ),
@@ -65,7 +63,6 @@ $selectors            = array(
 	' .uagb-toc__list-wrap ol li'                         => array(
 		'font-size' => UAGB_Helper::get_css_value( $attr['fontSize'], $attr['fontSizeType'] ),
 	),
->>>>>>> 5f057d899176581a58a420bf850bbdff6e0efd5a
 	' .uagb-toc__list-wrap li a:hover'                    => array(
 		'color' => $attr['linkHoverColor'],
 	),

@@ -262,8 +262,6 @@ if ( 'text' === $attr['ctaType'] ) {
 		'fill'        => $attr['ctaLinkColor'],
 	);
 }
-<<<<<<< HEAD
-=======
 if ( 'button' === $attr['ctaType'] ) {
 	$selectors[' .uagb-infobox-cta-link svg']                          = array(
 		'font-size'   => $cta_icon_size,
@@ -299,7 +297,6 @@ if ( 'button' === $attr['ctaType'] ) {
 		);
 	}
 }
->>>>>>> 5f057d899176581a58a420bf850bbdff6e0efd5a
 
 if ( 'above-title' === $attr['iconimgPosition'] || 'below-title' === $attr['iconimgPosition'] ) {
 	$selectors['.uagb-infobox__content-wrap']  = array(
