@@ -525,6 +525,32 @@ const attributes = {
 		type:'boolean',
 		default: false
 	},
+	// letter spacing.
+	fontLetterSpacing: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'main-title-letter-spacing'
+		}
+	},
+	fontLetterSpacingTablet: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'main-title-letter-spacing-tablet'
+		}
+	},
+	fontLetterSpacingMobile: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'main-title-letter-spacing-mobile'
+		}
+	},
+	fontLetterSpacingType: {
+		type: 'string',
+		default: 'px',
+		UAGCopyPaste: {
+			styleType: 'main-title-letter-spacing-type'
+		}
+	},
 };
 
 export default attributes;

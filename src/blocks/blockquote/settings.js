@@ -177,7 +177,19 @@ const Settings = ( props ) => {
 		quoteBottomMarginMobile,
 		quoteLeftMarginMobile,
 		quoteRightMarginMobile,
-		author
+		author,
+		descLetterSpacing,
+descLetterSpacingTablet,
+descLetterSpacingMobile,
+descLetterSpacingType,
+authorLetterSpacing,
+authorLetterSpacingTablet,
+authorLetterSpacingMobile,
+authorLetterSpacingType,
+tweetBtnLetterSpacing,
+tweetBtnLetterSpacingTablet,
+tweetBtnLetterSpacingMobile,
+tweetBtnLetterSpacingType,
 	} = attributes;
 	let loadDescGoogleFonts;
 	let loadAuthorGoogleFonts;
@@ -535,6 +547,22 @@ const Settings = ( props ) => {
 					value: descLineHeightTablet,
 					label: 'descLineHeightTablet',
 				} }
+				letterSpacing={ {
+					value: descLetterSpacing,
+					label: 'descLetterSpacing',
+				} }
+				letterSpacingTablet={ {
+					value: descLetterSpacingTablet,
+					label: 'descLetterSpacingTablet',
+				} }
+				letterSpacingMobile={ {
+					value: descLetterSpacingMobile,
+					label: 'descLetterSpacingMobile',
+				} }
+				letterSpacingType={ {
+					value: descLetterSpacingType,
+					label: 'descLetterSpacingType',
+				} }
 				transform={ {
 					value: descTransform,
 					label: 'descTransform',
@@ -615,6 +643,22 @@ const Settings = ( props ) => {
 						lineHeightTablet={ {
 							value: authorLineHeightTablet,
 							label: 'authorLineHeightTablet',
+						} }
+						letterSpacing={ {
+							value: authorLetterSpacing,
+							label: 'authorLetterSpacing',
+						} }
+						letterSpacingTablet={ {
+							value: authorLetterSpacingTablet,
+							label: 'authorLetterSpacingTablet',
+						} }
+						letterSpacingMobile={ {
+							value: authorLetterSpacingMobile,
+							label: 'authorLetterSpacingMobile',
+						} }
+						letterSpacingType={ {
+							value: authorLetterSpacingType,
+							label: 'authorLetterSpacingType',
 						} }
 						transform={ {
 							value: authorTransform,
@@ -1421,6 +1465,22 @@ const Settings = ( props ) => {
 						lineHeightTablet={ {
 							value: tweetBtnLineHeightTablet,
 							label: 'tweetBtnLineHeightTablet',
+						} }
+						letterSpacing={ {
+							value: tweetBtnLetterSpacing,
+							label: 'tweetBtnLetterSpacing',
+						} }
+						letterSpacingTablet={ {
+							value: tweetBtnLetterSpacingTablet,
+							label: 'tweetBtnLetterSpacingTablet',
+						} }
+						letterSpacingMobile={ {
+							value: tweetBtnLetterSpacingMobile,
+							label: 'tweetBtnLetterSpacingMobile',
+						} }
+						letterSpacingType={ {
+							value: tweetBtnLetterSpacingType,
+							label: 'tweetBtnLetterSpacingType',
 						} }
 						transform={ {
 							value: tweetBtnTransform,

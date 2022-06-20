@@ -690,7 +690,32 @@ const attributes = {
 	isPreview: {
 		type: 'boolean',
 		default: false,
-	}
+	},
+	titleLetterSpacing: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'main-title-letter-spacing'
+		}
+	},
+	titleLetterSpacingTablet: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'main-title-letter-spacing-tablet'
+		}
+	},
+	titleLetterSpacingMobile: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'main-title-letter-spacing-mobile'
+		}
+	},
+	titleLetterSpacingType: {
+		type: 'string',
+		default: 'px',
+		UAGCopyPaste: {
+			styleType: 'main-title-letter-spacing-type'
+		}
+	},
 };
 
 export default attributes;

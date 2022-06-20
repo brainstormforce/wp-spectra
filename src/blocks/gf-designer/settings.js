@@ -254,6 +254,34 @@ const Settings = ( props ) => {
 		successMsgDecoration,
 		successMsgFontStyle,
 		successMsgTransform,
+		labelLetterSpacing,
+labelLetterSpacingTablet,
+labelLetterSpacingMobile,
+labelLetterSpacingType,
+inputLetterSpacing,
+inputLetterSpacingTablet,
+inputLetterSpacingMobile,
+inputLetterSpacingType,
+radioCheckLetterSpacing,
+radioCheckLetterSpacingTablet,
+radioCheckLetterSpacingMobile,
+radioCheckLetterSpacingType,
+buttonLetterSpacing,
+buttonLetterSpacingTablet,
+buttonLetterSpacingMobile,
+buttonLetterSpacingType,
+validationMsgLetterSpacing,
+validationMsgLetterSpacingTablet,
+validationMsgLetterSpacingMobile,
+validationMsgLetterSpacingType,
+msgLetterSpacing,
+msgLetterSpacingTablet,
+msgLetterSpacingMobile,
+msgLetterSpacingType,
+successMsgLetterSpacing,
+successMsgLetterSpacingTablet,
+successMsgLetterSpacingMobile,
+successMsgLetterSpacingType,
 	} = attributes;
 
 	let loadInputGoogleFonts;
@@ -758,6 +786,22 @@ const Settings = ( props ) => {
 						value: inputLineHeightTablet,
 						label: 'inputLineHeightTablet',
 					} }
+					letterSpacing={ {
+						value: inputLetterSpacing,
+						label: 'inputLetterSpacing',
+					} }
+					letterSpacingTablet={ {
+						value: inputLetterSpacingTablet,
+						label: 'inputLetterSpacingTablet',
+					} }
+					letterSpacingMobile={ {
+						value: inputLetterSpacingMobile,
+						label: 'inputLetterSpacingMobile',
+					} }
+					letterSpacingType={ {
+						value: inputLetterSpacingType,
+						label: 'inputLetterSpacingType',
+					} }
 				/>
 				<ResponsiveSlider
 					label={ __(
@@ -876,6 +920,22 @@ const Settings = ( props ) => {
 							lineHeightTablet={ {
 								value: labelLineHeightTablet,
 								label: 'labelLineHeightTablet',
+							} }
+							letterSpacing={ {
+								value: labelLetterSpacing,
+								label: 'labelLetterSpacing',
+							} }
+							letterSpacingTablet={ {
+								value: labelLetterSpacingTablet,
+								label: 'labelLetterSpacingTablet',
+							} }
+							letterSpacingMobile={ {
+								value: labelLetterSpacingMobile,
+								label: 'labelLetterSpacingMobile',
+							} }
+							letterSpacingType={ {
+								value: labelLetterSpacingType,
+								label: 'labelLetterSpacingType',
 							} }
 						/>
 					</>
@@ -1453,6 +1513,22 @@ const Settings = ( props ) => {
 						value: buttonLineHeightTablet,
 						label: 'buttonLineHeightTablet',
 					} }
+					letterSpacing={ {
+						value: buttonLetterSpacing,
+						label: 'buttonLetterSpacing',
+					} }
+					letterSpacingTablet={ {
+						value: buttonLetterSpacingTablet,
+						label: 'buttonLetterSpacingTablet',
+					} }
+					letterSpacingMobile={ {
+						value: buttonLetterSpacingMobile,
+						label: 'buttonLetterSpacingMobile',
+					} }
+					letterSpacingType={ {
+						value: buttonLetterSpacingType,
+						label: 'buttonLetterSpacingType',
+					} }
 				/>
 				<SpacingControl
 					{ ...props }
@@ -1756,6 +1832,22 @@ const Settings = ( props ) => {
 								value: radioCheckLineHeightTablet,
 								label: 'radioCheckLineHeightTablet',
 							} }
+							letterSpacing={ {
+								value: radioCheckLetterSpacing,
+								label: 'radioCheckLetterSpacing',
+							} }
+							letterSpacingTablet={ {
+								value: radioCheckLetterSpacingTablet,
+								label: 'radioCheckLetterSpacingTablet',
+							} }
+							letterSpacingMobile={ {
+								value: radioCheckLetterSpacingMobile,
+								label: 'radioCheckLetterSpacingMobile',
+							} }
+							letterSpacingType={ {
+								value: radioCheckLetterSpacingType,
+								label: 'radioCheckLetterSpacingType',
+							} }
 						/>
 						{ fieldBorderStyle !== 'none' && (
 							<>
@@ -1945,6 +2037,22 @@ const Settings = ( props ) => {
 					lineHeightTablet={ {
 						value: validationMsgLineHeightTablet,
 						label: 'validationMsgLineHeightTablet',
+					} }
+					letterSpacing={ {
+						value: validationMsgLetterSpacing,
+						label: 'validationMsgLetterSpacing',
+					} }
+					letterSpacingTablet={ {
+						value: validationMsgLetterSpacingTablet,
+						label: 'validationMsgLetterSpacingTablet',
+					} }
+					letterSpacingMobile={ {
+						value: validationMsgLetterSpacingMobile,
+						label: 'validationMsgLetterSpacingMobile',
+					} }
+					letterSpacingType={ {
+						value: validationMsgLetterSpacingType,
+						label: 'validationMsgLetterSpacingType',
 					} }
 				/>
 				<SpacingControl
@@ -2220,6 +2328,22 @@ const Settings = ( props ) => {
 						value: msgLineHeightTablet,
 						label: 'msgLineHeightTablet',
 					} }
+					letterSpacing={ {
+						value: msgLetterSpacing,
+						label: 'msgLetterSpacing',
+					} }
+					letterSpacingTablet={ {
+						value: msgLetterSpacingTablet,
+						label: 'msgLetterSpacingTablet',
+					} }
+					letterSpacingMobile={ {
+						value: msgLetterSpacingMobile,
+						label: 'msgLetterSpacingMobile',
+					} }
+					letterSpacingType={ {
+						value: msgLetterSpacingType,
+						label: 'msgLetterSpacingType',
+					} }
 				/>
 				<h2>
 					{ __(
@@ -2296,6 +2420,22 @@ const Settings = ( props ) => {
 					lineHeightTablet={ {
 						value: successMsgLineHeightTablet,
 						label: 'successMsgLineHeightTablet',
+					} }
+					letterSpacing={ {
+						value: successMsgLetterSpacing,
+						label: 'successMsgLetterSpacing',
+					} }
+					letterSpacingTablet={ {
+						value: successMsgLetterSpacingTablet,
+						label: 'successMsgLetterSpacingTablet',
+					} }
+					letterSpacingMobile={ {
+						value: successMsgLetterSpacingMobile,
+						label: 'successMsgLetterSpacingMobile',
+					} }
+					letterSpacingType={ {
+						value: successMsgLetterSpacingType,
+						label: 'successMsgLetterSpacingType',
 					} }
 				/>
 			</UAGAdvancedPanelBody>

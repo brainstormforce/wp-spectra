@@ -204,6 +204,22 @@ const Settings = ( props ) => {
 		buttonRightSpaceTablet,
 		buttonRightSpaceMobile,
 		buttonRightSpaceType,
+		titleLetterSpacing,
+		titleLetterSpacingTablet,
+		titleLetterSpacingMobile,
+		titleLetterSpacingType,
+		descLetterSpacing,
+		descLetterSpacingTablet,
+		descLetterSpacingMobile,
+		descLetterSpacingType,
+		ctaLetterSpacing,
+ctaLetterSpacingTablet,
+ctaLetterSpacingMobile,
+ctaLetterSpacingType,
+secondCtaLetterSpacing,
+secondCtaLetterSpacingTablet,
+secondCtaLetterSpacingMobile,
+secondCtaLetterSpacingType,
 	} = attributes;
 
 	let loadCtaGoogleFonts;
@@ -500,6 +516,22 @@ const Settings = ( props ) => {
 					fontSizeTablet={ {
 						value: secondCtaFontSizeTablet,
 						label: 'secondCtaFontSizeTablet',
+					} }
+					letterSpacing={ {
+						value: secondCtaLetterSpacing,
+						label: 'secondCtaLetterSpacing',
+					} }
+					letterSpacingTablet={ {
+						value: secondCtaLetterSpacingTablet,
+						label: 'secondCtaLetterSpacingTablet',
+					} }
+					letterSpacingMobile={ {
+						value: secondCtaLetterSpacingMobile,
+						label: 'secondCtaLetterSpacingMobile',
+					} }
+					letterSpacingType={ {
+						value: secondCtaLetterSpacingType,
+						label: 'secondCtaLetterSpacingType',
 					} }
 					disableLineHeight={ true }
 				/>
@@ -924,6 +956,22 @@ const Settings = ( props ) => {
 							value: ctaFontSizeTablet,
 							label: 'ctaFontSizeTablet',
 						} }
+						letterSpacing={ {
+							value: ctaLetterSpacing,
+							label: 'ctaLetterSpacing',
+						} }
+						letterSpacingTablet={ {
+							value: ctaLetterSpacingTablet,
+							label: 'ctaLetterSpacingTablet',
+						} }
+						letterSpacingMobile={ {
+							value: ctaLetterSpacingMobile,
+							label: 'ctaLetterSpacingMobile',
+						} }
+						letterSpacingType={ {
+							value: ctaLetterSpacingType,
+							label: 'ctaLetterSpacingType',
+						} }
 						disableLineHeight={ true }
 					/>
 				) }
@@ -1240,6 +1288,22 @@ const Settings = ( props ) => {
 						value: titleLineHeightTablet,
 						label: 'titleLineHeightTablet',
 					} }
+					letterSpacing={ {
+						value: titleLetterSpacing,
+						label: 'titleLetterSpacing',
+					} }
+					letterSpacingTablet={ {
+						value: titleLetterSpacingTablet,
+						label: 'titleLetterSpacingTablet',
+					} }
+					letterSpacingMobile={ {
+						value: titleLetterSpacingMobile,
+						label: 'titleLetterSpacingMobile',
+					} }
+					letterSpacingType={ {
+						value: titleLetterSpacingType,
+						label: 'titleLetterSpacingType',
+					} }
 				/>
 				<AdvancedPopColorControl
 					label={ __( 'Color', 'ultimate-addons-for-gutenberg' ) }
@@ -1355,6 +1419,22 @@ const Settings = ( props ) => {
 					lineHeightTablet={ {
 						value: descLineHeightTablet,
 						label: 'descLineHeightTablet',
+					} }
+					letterSpacing={ {
+						value: descLetterSpacing,
+						label: 'descLetterSpacing',
+					} }
+					letterSpacingTablet={ {
+						value: descLetterSpacingTablet,
+						label: 'descLetterSpacingTablet',
+					} }
+					letterSpacingMobile={ {
+						value: descLetterSpacingMobile,
+						label: 'descLetterSpacingMobile',
+					} }
+					letterSpacingType={ {
+						value: descLetterSpacingType,
+						label: 'descLetterSpacingType',
 					} }
 				/>
 				<AdvancedPopColorControl
