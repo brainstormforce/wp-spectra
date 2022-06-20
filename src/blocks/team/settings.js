@@ -584,7 +584,7 @@ const Settings = ( props ) => {
 							}
 						/>
 						<p className="components-base-control__label">
-							{ __( 'Twitter', 'ultimate-addons-for-gutenberg' ) }
+							{ __( 'Item 1', 'ultimate-addons-for-gutenberg' ) }
 						</p>
 						<UAGIconPicker
 							label={ __(
@@ -610,7 +610,7 @@ const Settings = ( props ) => {
 										setAttributes( { twitterLink: value } )
 									}
 									placeholder={ __(
-										'Enter Twitter URL',
+										'Enter Item 1 URL',
 										'ultimate-addons-for-gutenberg'
 									) }
 								/>
@@ -618,7 +618,7 @@ const Settings = ( props ) => {
 						) }
 						<p className="components-base-control__label">
 							{ __(
-								'Facebook',
+								'Item 2',
 								'ultimate-addons-for-gutenberg'
 							) }
 						</p>
@@ -646,7 +646,7 @@ const Settings = ( props ) => {
 										setAttributes( { fbLink: value } )
 									}
 									placeholder={ __(
-										'Enter Facebook URL',
+										'Enter Item 2 URL',
 										'ultimate-addons-for-gutenberg'
 									) }
 								/>
@@ -654,7 +654,7 @@ const Settings = ( props ) => {
 						) }
 						<p className="components-base-control__label">
 							{ __(
-								'LinkedIn',
+								'Item 3',
 								'ultimate-addons-for-gutenberg'
 							) }
 						</p>
@@ -682,7 +682,7 @@ const Settings = ( props ) => {
 										setAttributes( { linkedinLink: value } )
 									}
 									placeholder={ __(
-										'Enter LinkedIn URL',
+										'Enter Item 3 URL',
 										'ultimate-addons-for-gutenberg'
 									) }
 								/>
@@ -690,7 +690,7 @@ const Settings = ( props ) => {
 						) }
 						<p className="components-base-control__label">
 							{ __(
-								'Pinterest',
+								'Item 4',
 								'ultimate-addons-for-gutenberg'
 							) }
 						</p>
@@ -718,7 +718,7 @@ const Settings = ( props ) => {
 										setAttributes( { pinLink: value } )
 									}
 									placeholder={ __(
-										'Enter Pinterest URL',
+										'Enter Item 4 URL',
 										'ultimate-addons-for-gutenberg'
 									) }
 								/>
