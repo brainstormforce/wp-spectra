@@ -247,6 +247,31 @@ const attributes = {
 			styleType: 'main-title-decoration'
 		}
 	},
+	headLetterSpacing: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'main-title-letter-spacing'
+		}
+	},
+	headLetterSpacingTablet: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'main-title-letter-spacing-tablet'
+		}
+	},
+	headLetterSpacingMobile: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'main-title-letter-spacing-mobile'
+		}
+	},
+	headLetterSpacingType: {
+		type: 'string',
+		default: 'px',
+		UAGCopyPaste: {
+			styleType: 'main-title-letter-spacing-type'
+		}
+	},
 	subHeadTransform: {
 		type: 'string',
 		UAGCopyPaste: {
@@ -365,6 +390,31 @@ const attributes = {
 		default: false,
 		UAGCopyPaste: {
 			styleType: 'desc-load-google-fonts'
+		}
+	},
+	subHeadLetterSpacing: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'desc-letter-spacing'
+		}
+	},
+	subHeadLetterSpacingTablet: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'desc-letter-spacing-tablet'
+		}
+	},
+	subHeadLetterSpacingMobile: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'desc-letter-spacing-mobile'
+		}
+	},
+	subHeadLetterSpacingType: {
+		type: 'string',
+		default: 'px',
+		UAGCopyPaste: {
+			styleType: 'desc-letter-spacing-type'
 		}
 	},
 	headSpace: {
@@ -1034,6 +1084,31 @@ const attributes = {
 			styleType: 'prefix-margin-tablet-unit'
 		}
 	},
+	prefixLetterSpacing: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'desc-letter-spacing'
+		}
+	},
+	prefixLetterSpacingTablet: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'desc-letter-spacing-tablet'
+		}
+	},
+	prefixLetterSpacingMobile: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'desc-letter-spacing-mobile'
+		}
+	},
+	prefixLetterSpacingType: {
+		type: 'string',
+		default: 'px',
+		UAGCopyPaste: {
+			styleType: 'desc-letter-spacing-type'
+		}
+	},
 
 	headTopMargin : {
 		type: 'number',
@@ -1301,6 +1376,27 @@ const attributes = {
 	isPreview: {
 		type: 'boolean',
 		default: false,
+	},
+	//
+	iconView: {
+		type: 'string',
+		default: 'none',
+	},
+	iconShape: {
+		type: 'string',
+		default: 'Circle',
+	},
+	iconBackgroundColor: {
+		type: 'string',
+		default: '#6EC1E3',
+	},
+	iconBackgroundHoverColor: {
+		type: 'string',
+		default: '',
+	},
+	iconBorderWidth: {
+		type: 'number',
+		default: 3,
 	}
 };
 

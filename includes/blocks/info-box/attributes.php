@@ -99,10 +99,10 @@ return array(
 	'ctaBorderColor'             => '',
 	'ctaBorderWidth'             => '',
 	'ctaBorderRadius'            => '',
-	'iconLeftMargin'             => '10',
-	'iconRightMargin'            => '10',
-	'iconTopMargin'              => '5',
-	'iconBottomMargin'           => '15',
+	'iconLeftMargin'             => '',
+	'iconRightMargin'            => '',
+	'iconTopMargin'              => '',
+	'iconBottomMargin'           => '',
 	'iconMarginLeftTablet'       => '',
 	'iconMarginRightTablet'      => '',
 	'iconMarginTopTablet'        => '',
@@ -154,6 +154,10 @@ return array(
 	'headMarginLeftMobile'       => '',
 	'headMobileMarginUnit'       => 'px',
 	'headTabletMarginUnit'       => 'px',
+	'headLetterSpacing'          => '',
+	'headLetterSpacingTablet'    => '',
+	'headLetterSpacingMobile'    => '',
+	'headLetterSpacingType'      => 'px',
 
 
 	'seperatorMobileSpace'       => '',
@@ -187,6 +191,10 @@ return array(
 	'subHeadMarginLeftMobile'    => '',
 	'subHeadMobileMarginUnit'    => 'px',
 	'subHeadTabletMarginUnit'    => 'px',
+	'subHeadLetterSpacing'       => '',
+	'subHeadLetterSpacingTablet' => '',
+	'subHeadLetterSpacingMobile' => '',
+	'subHeadLetterSpacingType'   => 'px',
 
 	'prefixTabletSpace'          => '',
 	'prefixMobileSpace'          => '',
@@ -203,5 +211,15 @@ return array(
 	'prefixMarginLeftMobile'     => '',
 	'prefixMobileMarginUnit'     => 'px',
 	'prefixTabletMarginUnit'     => 'px',
+	'prefixLetterSpacing'        => '',
+	'prefixLetterSpacingTablet'  => '',
+	'prefixLetterSpacingMobile'  => '',
+	'prefixLetterSpacingType'    => 'px',
 
+	// icon image.
+	'iconView'                   => 'none',
+	'iconShape'                  => 'Circle',
+	'iconBackgroundColor'        => '#6EC1E3',
+	'iconBackgroundHoverColor'   => '',
+	'iconBorderWidth'            => 3,
 );
