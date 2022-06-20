@@ -192,6 +192,10 @@ const Settings = ( props ) => {
 		paddingspacingLink,
 		headTransform,
 		headDecoration,
+		headLetterSpacing,
+		headLetterSpacingTablet,
+		headLetterSpacingMobile,
+		headLetterSpacingType,
 
 		prefixTopMargin,
 		prefixRightMargin,
@@ -209,6 +213,10 @@ const Settings = ( props ) => {
 		prefixMobileMarginUnit,
 		prefixTabletMarginUnit,
 		spacingPrefixLink,
+		prefixLetterSpacing,
+		prefixLetterSpacingTablet,
+		prefixLetterSpacingMobile,
+		prefixLetterSpacingType,
 
 		headTopMargin,
 		headRightMargin,
@@ -260,6 +268,16 @@ const Settings = ( props ) => {
 		subHeadMobileMarginUnit,
 		subHeadTabletMarginUnit,
 		spacingSubheadLink,
+		subHeadLetterSpacing,
+		subHeadLetterSpacingTablet,
+		subHeadLetterSpacingMobile,
+		subHeadLetterSpacingType,
+
+		iconView,
+		iconShape,
+		iconBackgroundColor,
+		iconBackgroundHoverColor,
+		iconBorderWidth
 	} = attributes;
 
 	/*
@@ -990,10 +1008,100 @@ const Settings = ( props ) => {
 		return (
 			<>
 				{ ( ( false !== showIcon && source_type !== 'icon' && iconImage && iconImage.url !== 'null' && iconImage.url !== '' ) || ( false !== showIcon && source_type === 'icon' && '' !== icon ) ) && (
-					<UAGAdvancedPanelBody title="Icon/Image" initialOpen={ false }>
+					<UAGAdvancedPanelBody title="Icon/Image" initialOpen={ true }>
 						<>
 							{ source_type === 'icon' && (
 								<>
+									<SelectControl
+										label={ __(
+											'View',
+											'ultimate-addons-for-gutenberg'
+										) }
+										value={ iconView }
+										onChange={ ( value ) =>
+											setAttributes( { iconView: value } )
+										}
+										options={ [
+											{
+												value: 'none',
+												label: __(
+													'Default',
+													'ultimate-addons-for-gutenberg'
+												),
+											},
+											{
+												value: 'Stacked',
+												label: __(
+													'Stacked',
+													'ultimate-addons-for-gutenberg'
+												),
+											},
+											{
+												value: 'Framed',
+												label: __(
+													'Framed',
+													'ultimate-addons-for-gutenberg'
+												),
+											},
+										] }
+									/>
+									{ iconView !== 'none' &&
+									<>
+										<SelectControl
+											label={ __(
+												'Shape',
+												'ultimate-addons-for-gutenberg'
+											) }
+											value={ iconShape }
+											onChange={ ( value ) =>
+												setAttributes( { iconShape: value } )
+											}
+											options={ [
+												{
+													value: 'Circle',
+													label: __(
+														'Circle',
+														'ultimate-addons-for-gutenberg'
+													),
+												},
+												{
+													value: 'Square',
+													label: __(
+														'Square',
+														'ultimate-addons-for-gutenberg'
+													),
+												},
+											] }
+										/>
+									</> }
+
+									{ iconView === 'Framed' &&
+										<>
+											<Range
+												label={ __(
+													'Set Border Width',
+													'ultimate-addons-for-gutenberg'
+												) }
+												setAttributes={ setAttributes }
+												value={ iconBorderWidth }
+												onChange={ ( value ) =>
+													setAttributes( { iconBorderWidth: value } )
+												}
+												min={ 0 }
+												max={ 15 }
+												units={ [
+													{
+														name: __(
+															'Pixel',
+															'ultimate-addons-for-gutenberg'
+														),
+														unitValue: 'px',
+													},
+												] }
+											/>
+										</>
+									}
+
 									<UAGTabsControl
 										tabs={ [
 											{
@@ -1012,36 +1120,77 @@ const Settings = ( props ) => {
 											},
 										] }
 										normal={
-											<AdvancedPopColorControl
-												label={ __(
-													'Color',
-													'ultimate-addons-for-gutenberg'
-												) }
-												colorValue={
-													iconColor ? iconColor : ''
+											<>
+												<AdvancedPopColorControl
+													label={ __(
+														'Color',
+														'ultimate-addons-for-gutenberg'
+													) }
+													colorValue={
+														iconColor ? iconColor : ''
+													}
+													onColorChange={ ( value ) =>
+														setAttributes( {
+															iconColor: value,
+														} )
+													}
+												/>
+												{ iconView !== 'none' &&
+													<>
+														<AdvancedPopColorControl
+															label={ __(
+																'Icon Background Color',
+																'ultimate-addons-for-gutenberg'
+															) }
+															colorValue={
+																iconBackgroundColor ? iconBackgroundColor : ''
+															}
+															onColorChange={ ( value ) =>
+																setAttributes( {
+																	iconBackgroundColor: value,
+																} )
+															}
+														/>
+													</>
 												}
-												onColorChange={ ( value ) =>
-													setAttributes( {
-														iconColor: value,
-													} )
-												}
-											/>
+											</>
+
 										}
 										hover={
-											<AdvancedPopColorControl
-												label={ __(
-													'Color',
-													'ultimate-addons-for-gutenberg'
-												) }
-												colorValue={
-													iconHover ? iconHover : ''
+											<>
+												<AdvancedPopColorControl
+													label={ __(
+														'Color',
+														'ultimate-addons-for-gutenberg'
+													) }
+													colorValue={
+														iconHover ? iconHover : ''
+													}
+													onColorChange={ ( value ) =>
+														setAttributes( {
+															iconHover: value,
+														} )
+													}
+												/>
+												{ iconView !== 'none' &&
+													<>
+														<AdvancedPopColorControl
+															label={ __(
+																'Icon Background Color',
+																'ultimate-addons-for-gutenberg'
+															) }
+															colorValue={
+																iconBackgroundHoverColor ? iconBackgroundHoverColor : ''
+															}
+															onColorChange={ ( value ) =>
+																setAttributes( {
+																	iconBackgroundHoverColor: value,
+																} )
+															}
+														/>
+													</>
 												}
-												onColorChange={ ( value ) =>
-													setAttributes( {
-														iconHover: value,
-													} )
-												}
-											/>
+											</>
 										 }
 										disableBottomSeparator={ false }
 									/>
@@ -1131,7 +1280,7 @@ const Settings = ( props ) => {
 															value: imageWidthUnitTablet,
 															label: 'imageWidthUnitTablet',
 														},
-														
+
 													},
 													mobile: {
 														value: imageWidthMobile,
@@ -1361,6 +1510,22 @@ const Settings = ( props ) => {
 									value: prefixDecoration,
 									label: 'prefixDecoration',
 								} }
+								letterSpacing={ {
+									value: prefixLetterSpacing,
+									label: 'prefixLetterSpacing',
+								} }
+								letterSpacingTablet={ {
+									value: prefixLetterSpacingTablet,
+									label: 'prefixLetterSpacingTablet',
+								} }
+								letterSpacingMobile={ {
+									value: prefixLetterSpacingMobile,
+									label: 'prefixLetterSpacingMobile',
+								} }
+								letterSpacingType={ {
+									value: prefixLetterSpacingType,
+									label: 'prefixLetterSpacingType',
+								} }
 							/>
 							<SpacingControl
 								{ ...props }
@@ -1513,6 +1678,22 @@ const Settings = ( props ) => {
 							decoration={ {
 								value: headDecoration,
 								label: 'headDecoration',
+							} }
+							letterSpacing={ {
+								value: headLetterSpacing,
+								label: 'headLetterSpacing',
+							} }
+							letterSpacingTablet={ {
+								value: headLetterSpacingTablet,
+								label: 'headLetterSpacingTablet',
+							} }
+							letterSpacingMobile={ {
+								value: headLetterSpacingMobile,
+								label: 'headLetterSpacingMobile',
+							} }
+							letterSpacingType={ {
+								value: headLetterSpacingType,
+								label: 'headLetterSpacingType',
 							} }
 						/>
 						<SpacingControl
@@ -1820,6 +2001,22 @@ const Settings = ( props ) => {
 								decoration={ {
 									value: subHeadDecoration,
 									label: 'subHeadDecoration',
+								} }
+								letterSpacing={ {
+									value: subHeadLetterSpacing,
+									label: 'subHeadLetterSpacing',
+								} }
+								letterSpacingTablet={ {
+									value: subHeadLetterSpacingTablet,
+									label: 'subHeadLetterSpacingTablet',
+								} }
+								letterSpacingMobile={ {
+									value: subHeadLetterSpacingMobile,
+									label: 'subHeadLetterSpacingMobile',
+								} }
+								letterSpacingType={ {
+									value: subHeadLetterSpacingType,
+									label: 'subHeadLetterSpacingType',
 								} }
 							/>
 							<SpacingControl

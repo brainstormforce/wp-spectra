@@ -18,46 +18,22 @@ const UAGB_Block_Icons = {
 	),
 	'buttons': el(
 		'svg',
-		{width: 34, height: 34, viewBox: '0 0 24 24', fill: 'none' },
+		{width: 34, height: 23, viewBox: '0 0 16 16', },
 		el( 'path', {
-			'fill': '#1e1e1e',
-			'fill-rule': 'evenodd',
-			'clip-rule': 'evenodd',
-			'd':
-				'M6 4H18C19.1 4 20 4.9 20 6V18C20 19.1 19.1 20 18 20H6C4.9 20 4 19.1 4 18V6C4 4.9 4.9 4 6 4ZM18 18.5C18.3 18.5 18.5 18.3 18.5 18V6C18.5 5.7 18.3 5.5 18 5.5H6C5.7 5.5 5.5 5.7 5.5 6V18C5.5 18.3 5.7 18.5 6 18.5H18Z',
-		} ),
-		el( 'path', {
-			'fill': '#1e1e1e',
-			'fill-rule': 'evenodd',
-			'clip-rule': 'evenodd',
-			'd':
-				'M8 7V10H16V7H8ZM7.81818 6C7.36631 6 7 6.36631 7 6.81818V10.1818C7 10.6337 7.36631 11 7.81818 11H16.1818C16.6337 11 17 10.6337 17 10.1818V6.81818C17 6.36631 16.6337 6 16.1818 6H7.81818Z',
+			fill: '#1e1e1e',
+			d: 'M4 4H12V3H4V4Z',
 		} ),
 		el( 'path', {
 			fill: '#1e1e1e',
-			d:
-				'M7 13.7576C7 13.3392 7.33918 13 7.75758 13H16.2424C16.6608 13 17 13.3392 17 13.7576V17.2424C17 17.6608 16.6608 18 16.2424 18H7.75758C7.33918 18 7 17.6608 7 17.2424V13.7576Z',
+			fillRule: 'evenodd',
+			clipRule: 'evenodd',
+			d: 'M0 1C0 0.447715 0.447715 0 1 0H15C15.5523 0 16 0.447715 16 1V6C16 6.55228 15.5523 7 15 7H1C0.447715 7 0 6.55228 0 6V1ZM1.2 5.8V1.2H14.8V5.8H1.2Z',
 		} ),
 		el( 'path', {
-			'fill': '#1e1e1e',
-			'fill-rule': 'evenodd',
-			'clip-rule': 'evenodd',
-			'd':
-				'M8 14V17H16V14H8ZM7.75758 13C7.33918 13 7 13.3392 7 13.7576V17.2424C7 17.6608 7.33918 18 7.75758 18H16.2424C16.6608 18 17 17.6608 17 17.2424V13.7576C17 13.3392 16.6608 13 16.2424 13H7.75758Z',
-		} ),
-		el( 'path', {
-			'fill': '#1e1e1e',
-			'fill-rule': 'evenodd',
-			'clip-rule': 'evenodd',
-			'd':
-				'M14 9H10V8H14V9Z',
-		} ),
-		el( 'path', {
-			'fill': 'white',
-			'fill-rule': 'evenodd',
-			'clip-rule': 'evenodd',
-			'd':
-				'M14 16L10 16V15L14 15V16Z',
+			fill: '#1e1e1e',
+			fillRule: 'evenodd',
+			clipRule: 'evenodd',
+			d: 'M1 9C0.447693 9 0 9.44772 0 10V15C0 15.5523 0.447693 16 1 16H15C15.5523 16 16 15.5523 16 15V10C16 9.44772 15.5523 9 15 9H1ZM4 13H12V12H4V13Z',
 		} ),
 	),
 	'advanced-heading': el(

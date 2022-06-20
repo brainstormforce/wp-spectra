@@ -142,6 +142,9 @@ $t_selectors = array(
 	' .uagb-slider.round'                            => array(
 		'border-radius' => UAGB_Helper::get_css_value( 20 + $toggle_width_size_number_tablet, 'px' ),
 	),
+	' .uagb-forms-main-form .uagb-forms-main-submit-button-wrap' => array(
+		'text-align' => $attr['buttonAlignTablet'],
+	),
 );
 $m_selectors = array(
 	'.uagb-forms__outer-wrap'                        => array(
@@ -164,6 +167,9 @@ $m_selectors = array(
 	),
 	' .uagb-slider.round'                            => array(
 		'border-radius' => UAGB_Helper::get_css_value( 20 + $toggle_width_size_number_mobile, 'px' ),
+	),
+	' .uagb-forms-main-form .uagb-forms-main-submit-button-wrap' => array(
+		'text-align' => $attr['buttonAlignMobile'],
 	),
 );
 // Checkbox Field css.
