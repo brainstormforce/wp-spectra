@@ -31,7 +31,34 @@ const UAGBWpSearchEdit = ( props ) => {
 		props.setAttributes( {
 			block_id: props.clientId.substr( 0, 8 ),
 		} );
-
+		const {
+			borderStyle,
+			borderWidth,
+			borderColor,
+			borderHColor,
+			borderRadius,
+		} = props.attributes;
+		// border
+		if( borderWidth || borderRadius || borderColor || borderHColor || borderStyle ){
+			const migrationAttributes = migrateBorderAttributes( 'input', {
+				label: 'borderWidth',
+				value: borderWidth,
+			}, {
+				label: 'borderRadius',
+				value: borderRadius
+			}, {
+				label: 'borderColor',
+				value: borderColor
+			}, {
+				label: 'borderHColor',
+				value: borderHColor
+			},{
+				label: 'borderStyle',
+				value: borderStyle
+			}
+			);
+			props.setAttributes( migrationAttributes )
+		}
 	}, [] );
 
 	// componentDidUpdate.
@@ -48,11 +75,6 @@ const UAGBWpSearchEdit = ( props ) => {
 		}
 
 		const {
-			borderStyle,
-			borderWidth,
-			borderColor,
-			borderHColor,
-			borderRadius,
 			vinputPaddingMobile,
 			vinputPaddingTablet,
 			vinputPaddingDesktop,
@@ -146,27 +168,6 @@ const UAGBWpSearchEdit = ( props ) => {
 			}
 		}
 
-		// border
-		if( borderWidth || borderRadius || borderColor || borderHColor || borderStyle ){
-			const migrationAttributes = migrateBorderAttributes( 'input', {
-				label: 'borderWidth',
-				value: borderWidth,
-			}, {
-				label: 'borderRadius',
-				value: borderRadius
-			}, {
-				label: 'borderColor',
-				value: borderColor
-			}, {
-				label: 'borderHColor',
-				value: borderHColor
-			},{
-				label: 'borderStyle',
-				value: borderStyle
-			}
-			);
-			props.setAttributes( migrationAttributes )
-		}
 		const blockStyling = styling( props );
 		addBlockEditorDynamicStyles( 'uagb-style-wp-search-' + props.clientId.substr( 0, 8 ), blockStyling );
 	}, [ props ] );

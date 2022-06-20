@@ -118,10 +118,6 @@ const UAGBTaxonomyList = ( props ) => {
 		} ).then( ( data ) => {
 			props.setAttributes( { listInJson: data } );
 		} );
-
-	}, [] );
-
-	useEffect( () => {
 		const { borderStyle,borderThickness,borderRadius,borderColor,borderHoverColor } = props.attributes;
 		// Backward Border Migration
 		if( borderThickness || borderRadius || borderColor || borderHoverColor || borderStyle ){
@@ -143,6 +139,10 @@ const UAGBTaxonomyList = ( props ) => {
 			} );
 			props.setAttributes( migrationAttributes )
 		}
+	}, [] );
+
+	useEffect( () => {
+		
 		const blockStyling = styling( props );
 
 		addBlockEditorDynamicStyles( 'uagb-style-taxonomy-list-' + props.clientId.substr( 0, 8 ), blockStyling );

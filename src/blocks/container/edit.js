@@ -111,13 +111,6 @@ const UAGBContainer = ( props ) => {
 		if ( descendants.length !== props.attributes.blockDescendants.length ) {
 			props.setAttributes( { blockDescendants: descendants } );
 		}
-	}, [] );
-
-	useEffect( () => {
-
-		const iframeEl = document.querySelector( `iframe[name='editor-canvas']` );
-		const hasChildren = 0 !== select( 'core/block-editor' ).getBlocks( props.clientId ).length;
-
 		const {
 			borderStyle,
 			borderWidth,
@@ -147,6 +140,13 @@ const UAGBContainer = ( props ) => {
 			);
 			props.setAttributes( migrationAttributes )
 		}
+
+	}, [] );
+
+	useEffect( () => {
+
+		const iframeEl = document.querySelector( `iframe[name='editor-canvas']` );
+		const hasChildren = 0 !== select( 'core/block-editor' ).getBlocks( props.clientId ).length;
 
 		let element;
 		if( iframeEl ){

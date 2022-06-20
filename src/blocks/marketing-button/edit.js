@@ -106,9 +106,6 @@ const UAGBMarketingButtonEdit = ( props ) => {
 				props.setAttributes( { paddingBtnLeftTablet: hPaddingTablet } );
 			}
 		}
-	}, [] );
-
-	useEffect( () => {
 		const {borderStyle,borderWidth,borderRadius,borderColor,borderHoverColor} = props.attributes
 		// border migration
 		if( borderWidth || borderRadius || borderColor || borderHoverColor || borderStyle ){
@@ -131,6 +128,9 @@ const UAGBMarketingButtonEdit = ( props ) => {
 			);
 			props.setAttributes( migrationAttributes )
 		}
+	}, [] );
+
+	useEffect( () => {
 
 		// Replacement for componentDidUpdate.
 		const blockStyling = styling( props );

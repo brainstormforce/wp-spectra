@@ -97,10 +97,6 @@ const ColumnsComponent = ( props ) => {
 			setAttributes( { backgroundImageColor: color } );
 			setAttributes( { backgroundOpacity: 101 } );
 		}
-
-	}, [] );
-
-	useEffect( () => {
 		const { borderStyle, borderWidth, borderRadius, borderColor, borderHoverColor } = props.attributes
 		// border migration
 		if( borderWidth || borderRadius || borderColor || borderHoverColor || borderStyle ){
@@ -123,6 +119,10 @@ const ColumnsComponent = ( props ) => {
 			);
 			props.setAttributes( migrationAttributes )
 		}
+	}, [] );
+
+	useEffect( () => {
+		
 		// Replacement for componentDidUpdate.
 		const blockStyling = styling( props );
 

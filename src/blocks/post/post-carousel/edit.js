@@ -160,9 +160,6 @@ const UAGBPostCarousel = ( props ) => {
 				} );
 			}
 		}
-	}, [] );
-
-	useEffect( () => {
 		const {
 			borderStyle,
 			borderWidth,
@@ -191,6 +188,10 @@ const UAGBPostCarousel = ( props ) => {
 			);
 			props.setAttributes( migrationAttributes )
 		};
+	}, [] );
+
+	useEffect( () => {
+	
 		const equalHeight = props.attributes.equalHeight;
 		if ( equalHeight ) {
 			uagb_carousel_height( props.clientId.substr( 0, 8 ) ); // eslint-disable-line no-undef

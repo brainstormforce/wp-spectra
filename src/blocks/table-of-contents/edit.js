@@ -197,14 +197,6 @@ const UAGBTableOfContentsEdit = ( props ) => {
 				setAttributes( { leftMarginTablet: hMarginTablet } );
 			}
 		}
-	}, [] );
-
-	useEffect( () => {
-		// Replacement for componentDidUpdate.
-		const blockStyling = styling( props );
-
-		addBlockEditorDynamicStyles( 'uagb-style-toc-' + props.clientId.substr( 0, 8 ), blockStyling );
-
 		const {borderStyle,borderWidth,borderRadius,borderColor,borderHColor} = props.attributes;
 		// Backward Border Migration
 		if( borderWidth || borderRadius || borderColor || borderHColor || borderStyle ){
@@ -227,6 +219,14 @@ const UAGBTableOfContentsEdit = ( props ) => {
 			);
 			props.setAttributes( migrationAttributes )
 		}
+	}, [] );
+
+	useEffect( () => {
+		// Replacement for componentDidUpdate.
+		const blockStyling = styling( props );
+
+		addBlockEditorDynamicStyles( 'uagb-style-toc-' + props.clientId.substr( 0, 8 ), blockStyling );
+
 	}, [ props ] );
 
 	useEffect( () => {

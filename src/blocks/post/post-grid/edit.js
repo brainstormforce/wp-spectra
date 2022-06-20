@@ -110,10 +110,6 @@ const PostGridComponent = ( props ) => {
 				} );
 			}
 		}
-
-	}, [] );
-
-	useEffect( () => {
 		const {
 			borderStyle,
 			borderWidth,
@@ -142,6 +138,10 @@ const PostGridComponent = ( props ) => {
 			);
 			props.setAttributes( migrationAttributes )
 		}
+	}, [] );
+
+	useEffect( () => {
+		
 		// Replacement for componentDidUpdate.
 		const blockStyling = styling( props );
 

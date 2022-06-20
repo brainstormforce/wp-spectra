@@ -22,7 +22,6 @@ import maybeGetColorForVariable from '@Controls/maybeGetColorForVariable';
 const UAGBSectionEdit = ( props ) => {
 	const deviceType = useDeviceType();
 	useEffect( () => {
-
 		const { borderStyle,borderWidth,borderRadius,borderColor,borderHoverColor } = props.attributes;
 		// Backward Border Migration
 		if( borderWidth || borderRadius || borderColor || borderHoverColor || borderStyle ){
@@ -44,6 +43,8 @@ const UAGBSectionEdit = ( props ) => {
 			} );
 			props.setAttributes( migrationAttributes )
 		}
+	}, [ ] );
+	useEffect( () => {
 
 		const blockStyling = styling( props );
 

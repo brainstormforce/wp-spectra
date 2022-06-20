@@ -82,16 +82,6 @@ const UAGBtestimonial = ( props ) => {
 			setAttributes( { backgroundImageColor: color } );
 			setAttributes( { backgroundOpacity: 101 } );
 		}
-
-	}, [] );
-
-	useEffect( () => {
-		const equalHeight = props.attributes.equalHeight;
-		if ( equalHeight ) {
-			uagb_carousel_height( props.clientId.substr( 0, 8 ) ); // eslint-disable-line no-undef
-		} else {
-			uagb_carousel_unset_height( props.clientId.substr( 0, 8 ) ); // eslint-disable-line no-undef
-		}
 		const { borderStyle,borderWidth,borderRadius,borderColor,borderHoverColor } = props.attributes;
 		// Backward Border Migration
 		if( borderWidth || borderRadius || borderColor || borderHoverColor || borderStyle ){
@@ -114,6 +104,16 @@ const UAGBtestimonial = ( props ) => {
 			);
 			props.setAttributes( migrationAttributes )
 		}
+	}, [] );
+
+	useEffect( () => {
+		const equalHeight = props.attributes.equalHeight;
+		if ( equalHeight ) {
+			uagb_carousel_height( props.clientId.substr( 0, 8 ) ); // eslint-disable-line no-undef
+		} else {
+			uagb_carousel_unset_height( props.clientId.substr( 0, 8 ) ); // eslint-disable-line no-undef
+		}
+		
 		const blockStyling = TestimonialStyle( props );
 
 		addBlockEditorDynamicStyles( 'uagb-testinomial-style-' + props.clientId.substr( 0, 8 ), blockStyling );

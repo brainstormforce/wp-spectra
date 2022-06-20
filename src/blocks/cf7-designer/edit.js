@@ -45,6 +45,17 @@ const UAGBCF7 = ( props ) => {
 			fieldBottomPaddingDesktop,
 			fieldRightPaddingDesktop,
 			fieldLeftPaddingDesktop,
+			
+			fieldBorderStyle,
+			fieldBorderWidth,
+			fieldBorderColor,
+			fieldBorderHColor,
+			fieldBorderRadius,
+			buttonBorderWidth,
+			buttonBorderRadius,
+			buttonBorderColor,
+			buttonBorderHColor,
+			buttonBorderStyle,
 		} = attributes;
 
 		if ( msgVrPadding ) {
@@ -99,28 +110,6 @@ const UAGBCF7 = ( props ) => {
 				setAttributes( { fieldLeftPaddingDesktop: fieldHrPadding } );
 			}
 		}
-	}, [] );
-
-	useEffect( () => {
-		const submitButton = document.querySelector( '.wpcf7-submit' );
-		if( submitButton !== null ){
-			submitButton.addEventListener( 'click', function ( event ) {
-				event.preventDefault();
-			} );
-		}
-		const {
-			fieldBorderStyle,
-			fieldBorderWidth,
-			fieldBorderColor,
-			fieldBorderHColor,
-			fieldBorderRadius,
-			buttonBorderWidth,
-			buttonBorderRadius,
-			buttonBorderColor,
-			buttonBorderHColor,
-			buttonBorderStyle,
-		} = props.attributes;
-
 		// fieldBorder
 		if( fieldBorderWidth || fieldBorderRadius || fieldBorderColor || fieldBorderHColor || fieldBorderStyle ){
 			const migrationAttributes = migrateBorderAttributes( 'field', {
@@ -160,6 +149,16 @@ const UAGBCF7 = ( props ) => {
 			);
 			props.setAttributes( btnMigrationAttributes )
 		}
+	}, [] );
+
+	useEffect( () => {
+		const submitButton = document.querySelector( '.wpcf7-submit' );
+		if( submitButton !== null ){
+			submitButton.addEventListener( 'click', function ( event ) {
+				event.preventDefault();
+			} );
+		}
+		
 		const blockStyling = styling( props );
 
 		addBlockEditorDynamicStyles( 'uagb-cf7-styler-' + props.clientId.substr( 0, 8 ), blockStyling );

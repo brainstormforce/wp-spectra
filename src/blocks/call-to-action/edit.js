@@ -38,7 +38,12 @@ const UAGBCallToAction = ( props ) => {
 			stack,
 			ctaLeftSpace,
 			overallBlockLeftMargin,
-			textAlign
+			textAlign,
+			borderStyle,
+			borderWidth,
+			borderColor,
+			borderHColor,
+			borderRadius
 		} = props.attributes;
 
 		if( stack === 'tablet' ) {
@@ -72,16 +77,6 @@ const UAGBCallToAction = ( props ) => {
 				props.setAttributes( { overallBlockLeftMargin: ctaLeftSpace } );
 			}
 		}
-	}, [] );
-
-	useEffect( () => {
-		const {
-			borderStyle,
-			borderWidth,
-			borderColor,
-			borderHColor,
-			borderRadius
-		} = props.attributes;
 
 		// border
 		if( borderWidth || borderRadius || borderColor || borderHColor || borderStyle ){
@@ -104,6 +99,10 @@ const UAGBCallToAction = ( props ) => {
 			);
 			props.setAttributes( migrationAttributes );
 		}
+	}, [] );
+
+	useEffect( () => {
+	
 		// Replacement for componentDidUpdate.
 		const blockStyling = CtaStyle( props );
 
