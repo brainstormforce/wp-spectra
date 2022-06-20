@@ -136,7 +136,7 @@ const UAGBCF7 = ( props ) => {
 			}
 			);
 			props.setAttributes( migrationAttributes );
-			const toggleMigrationAttributes = migrateBorderAttributes( 'button', {
+			const btnMigrationAttributes = migrateBorderAttributes( 'button', {
 				label: 'borderWidth',
 				value: borderWidth,
 			}, {
@@ -153,7 +153,7 @@ const UAGBCF7 = ( props ) => {
 				value: borderStyle
 			}
 			);
-			props.setAttributes( toggleMigrationAttributes )
+			props.setAttributes( btnMigrationAttributes )
 		}
 		const blockStyling = styling( props );
 

@@ -31,7 +31,7 @@ function styling( props ) {
 		toggleWidthSize,
 		toggleWidthSizeTablet,
 		toggleWidthSizeMobile,
-		btnBorderHColor,
+		submitBorderHColor,
 		submitTextFontFamily,
 		submitTextFontWeight,
 		submitTextFontSize,
@@ -81,8 +81,7 @@ function styling( props ) {
 		inputplaceholderHColor,
 		inputplaceholderActiveColor,
 		inputactiveColor,
-		inputborderWidth,
-		inputborderHColor,
+		inputBorderHColor,
 		fieldGap,
 		fieldGapTablet,
 		fieldGapMobile,
@@ -147,17 +146,17 @@ function styling( props ) {
 	let tabletSelectors = {};
 	let mobileSelectors = {};
 
-	const inputBorder = generateBorderCSS( props.atributes, 'input' );
-	const inputBorderTablet = generateBorderCSS( props.atributes, 'input', 'tablet' );
-	const inputBorderMobile = generateBorderCSS( props.atributes, 'input', 'mobile' );
+	const inputBorder = generateBorderCSS( props.attributes, 'input' );
+	const inputBorderTablet = generateBorderCSS( props.attributes, 'input', 'tablet' );
+	const inputBorderMobile = generateBorderCSS( props.attributes, 'input', 'mobile' );
 
-	const toggleBorder = generateBorderCSS( props.atributes, 'toggle' );
-	const toggleBorderTablet = generateBorderCSS( props.atributes, 'toggle', 'tablet' );
-	const toggleBorderMobile = generateBorderCSS( props.atributes, 'toggle', 'mobile' );
+	const toggleBorder = generateBorderCSS( props.attributes, 'toggle' );
+	const toggleBorderTablet = generateBorderCSS( props.attributes, 'toggle', 'tablet' );
+	const toggleBorderMobile = generateBorderCSS( props.attributes, 'toggle', 'mobile' );
 
-	const submitBorder = generateBorderCSS( props.atributes, 'submit' );
-	const submitBorderTablet = generateBorderCSS( props.atributes, 'submit', 'tablet' );
-	const submitBorderMobile = generateBorderCSS( props.atributes, 'submit', 'mobile' );
+	const submitBorder = generateBorderCSS( props.attributes, 'submit' );
+	const submitBorderTablet = generateBorderCSS( props.attributes, 'submit', 'tablet' );
+	const submitBorderMobile = generateBorderCSS( props.attributes, 'submit', 'mobile' );
 
 
 	selectors = {
@@ -245,8 +244,6 @@ function styling( props ) {
 				generateCSSUnit( paddingFieldTop, paddingFieldUnit )
 			} + ${
 				generateCSSUnit( paddingFieldBottom, paddingFieldUnit )
-			} + ${
-				generateCSSUnit( inputborderWidth * 2, 'px' )
 			})`,
 		},
 		' .uagb-forms-main-form .uagb-forms-main-submit-button-wrap': {
@@ -280,7 +277,7 @@ function styling( props ) {
 		' .uagb-forms-main-form .uagb-forms-main-submit-button:hover': {
 			'color': submitColorHover,
 			'background-color': submitBgColorHover,
-			'border-color': btnBorderHColor,
+			'border-color': submitBorderHColor,
 		},
 		' .uagb-switch': {
 			// 20 is the min size of the toggle.
@@ -372,7 +369,7 @@ function styling( props ) {
 		},
 		' .uagb-forms-field-set:hover .uagb-forms-input': {
 			'background-color': bgHoverColor,
-			'border-color': inputborderHColor,
+			'border-color': inputBorderHColor,
 		},
 		' .uagb-forms-field-set:hover .uagb-forms-input::placeholder': {
 			'color': inputplaceholderHColor,

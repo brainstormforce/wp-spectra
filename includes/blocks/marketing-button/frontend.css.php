@@ -32,6 +32,14 @@ $icon_color       = ( '' === $attr['iconColor'] ) ? $attr['titleColor'] : $attr[
 $icon_hover_color = ( '' === $attr['iconHoverColor'] ) ? $attr['titleHoverColor'] : $attr['iconHoverColor'];
 
 $btn_border_css        = UAGB_Block_Helper::uag_generate_border_css( $attr, 'btn' );
+$btn_border_css       = UAGB_Block_Helper::uag_generate_deprecated_border_css(
+	$btn_border_css,
+	( isset( $attr['inputborderWidth'] ) ? $attr['inputborderWidth'] : '' ),
+	( isset( $attr['inputborderRadius'] ) ? $attr['inputborderRadius'] : '' ),
+	( isset( $attr['inputborderColor'] ) ? $attr['inputborderColor'] : '' ),
+	( isset( $attr['inputborderStyle'] ) ? $attr['inputborderStyle'] : '' ),
+	( isset( $attr['inputborderHColor'] ) ? $attr['inputborderHColor'] : '' )
+);
 $btn_border_css_tablet = UAGB_Block_Helper::uag_generate_border_css( $attr, 'btn', 'tablet' );
 $btn_border_css_mobile = UAGB_Block_Helper::uag_generate_border_css( $attr, 'btn', 'mobile' );
 

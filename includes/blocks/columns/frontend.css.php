@@ -136,8 +136,6 @@ if ( 'video' === $bg_type ) {
 	}
 }
 
-$selectors[' > .uagb-columns__overlay']['border-radius'] = UAGB_Helper::get_css_value( $attr['borderRadius'], 'px' );
-
 $m_selectors = array(
 	'.uagb-columns__wrap'              => array(
 		'padding-top'    => UAGB_Helper::get_css_value( $attr['topPaddingMobile'], $attr['mobilePaddingType'] ),

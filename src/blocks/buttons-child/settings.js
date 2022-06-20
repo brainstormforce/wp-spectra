@@ -395,7 +395,7 @@ const Settings = ( props ) => {
 								/>
 								{ 'color' === backgroundType && (
 									<>
-										
+
 										<AdvancedPopColorControl
 											label={ __(
 												'Color',
@@ -663,6 +663,7 @@ const Settings = ( props ) => {
 					attributes={ attributes }
 					deviceType={deviceType}
 					disableBottomSeparator={ true }
+					disabledBorderTitle= { true }
 				/>
 			</UAGAdvancedPanelBody>
 		);

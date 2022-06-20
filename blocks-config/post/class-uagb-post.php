@@ -69,7 +69,7 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 				return;
 			}
 
-			$pagination_masonry_border_attribute = UAGB_Block_Helper::uag_generate_border_attribute( 'paginationMasonry' );
+			$pagination_masonry_border_attribute = UAGB_Block_Helper::uag_generate_php_border_attribute( 'paginationMasonry' );
 
 			$common_attributes = $this->get_post_attributes();
 
@@ -340,9 +340,8 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 								'type'    => 'string',
 								'default' => 'px',
 							),
-							$pagination_masonry_border_attribute,
-
-						)
+						),
+						$pagination_masonry_border_attribute,
 					),
 					'render_callback' => array( $this, 'post_masonry_callback' ),
 				)
@@ -355,9 +354,10 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 		 * @since 0.0.1
 		 */
 		public function get_post_attributes() {
-			$btn_border_attribute = UAGB_Block_Helper::uag_generate_border_attribute( 'btn' );
+			$btn_border_attribute = UAGB_Block_Helper::uag_generate_php_border_attribute( 'btn' );
 
 			return array_merge(
+				$btn_border_attribute,
 				array(
 					'inheritFromTheme'              => array(
 						'type'    => 'boolean',
@@ -933,7 +933,6 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 						'default' => ', ',
 					),
 				),
-				$btn_border_attribute
 			);
 		}
 

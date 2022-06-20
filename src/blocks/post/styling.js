@@ -8,7 +8,9 @@
 import generateCSS from '@Controls/generateCSS';
 import generateCSSUnit from '@Controls/generateCSSUnit';
 import generateBorderCSS from '@Controls/generateBorderCSS';
+import { getBorderAttributes } from '@Controls/generateAttributes';
 
+const btnBorder = getBorderAttributes( 'btn' );
 function styling( props ) {
 	const {
 		btnBorderHColor,
@@ -187,7 +189,7 @@ function styling( props ) {
 		highlightedTextColor,
 		highlightedTextBgColor,
 
-		imgPosition,
+		imgPosition
 	} = props.attributes;
 
 	const borderCSS = generateBorderCSS( props.attributes, 'btn' );

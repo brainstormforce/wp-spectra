@@ -155,19 +155,19 @@ if ( 'text' === $attr['ctaType'] ) {
 }
 
 if ( 'button' === $attr['ctaType'] ) {
-	$selectors[' .uagb-cta__button-wrapper a.uagb-cta-typeof-button']                 = array(
+	$selectors[' .uagb-cta__button-wrapper a.uagb-cta-typeof-button']                 = array_merge( array(
 		'color'            => $attr['ctaBtnLinkColor'] ? $attr['ctaBtnLinkColor'] : '#333',
 		'background-color' => $attr['ctaBgColor'],
 		'padding-top'      => UAGB_Helper::get_css_value( $btnPaddingTop, $attr['ctaPaddingUnit'] ),
 		'padding-bottom'   => UAGB_Helper::get_css_value( $btnPaddingBottom, $attr['ctaPaddingUnit'] ),
 		'padding-left'     => UAGB_Helper::get_css_value( $btnPaddingLeft, $attr['ctaPaddingUnit'] ),
 		'padding-right'    => UAGB_Helper::get_css_value( $btnPaddingRight, $attr['ctaPaddingUnit'] ),
-		$cta_border,
+	), $cta_border,
 	);
 	$selectors[' .uagb-cta__button-wrapper a.uagb-cta-typeof-button:hover']           = array(
 		'color'            => $attr['ctaLinkHoverColor'],
 		'background-color' => $attr['ctaBgHoverColor'],
-		'border-color'     => $attr['ctaBorderhoverColor'],
+		'border-color'     => $attr['ctaBorderHColor'],
 	);
 	$selectors['.wp-block-uagb-call-to-action a.uagb-cta__button-link-wrapper']       = array_merge(
 		array(

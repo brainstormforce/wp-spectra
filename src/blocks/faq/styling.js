@@ -22,7 +22,7 @@ function styling( props ) {
 		align,
 		enableSeparator,
 		boxBgColor,
-		borderHoverColor,
+		overallBorderHColor,
 		questionTextColor,
 		questionTextActiveColor,
 		questionPaddingTypeDesktop,
@@ -140,7 +140,7 @@ function styling( props ) {
 			...borderCSS
 		},
 		' .uagb-faq-item:hover': {
-			'border-color': borderHoverColor,
+			'border-color': overallBorderHColor,
 		},
 		' .uagb-faq-item .uagb-question': {
 			'color': questionTextColor,
@@ -445,7 +445,7 @@ function styling( props ) {
 		selectors[
 			'.uagb-faq__outer-wrap .uagb-faq-child__outer-wrap .uagb-faq-content:hover '
 		] = {
-			'border-top-color': borderHoverColor,
+			'border-top-color': overallBorderHColor,
 		};
 	}
 	if ( 'grid' === layout ) {

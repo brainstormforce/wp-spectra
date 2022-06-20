@@ -9,7 +9,7 @@
 	borderBottomWidth: 1,
 	borderLeftWidth: 1,
 	borderColor              :  '#eeeeee',
-	borderHoverColor         :  '',
+	borderHColor         :  '',
  }
  const fieldBorderAttributes = getBorderAttributes( 'field', fieldDefaults );
  const buttonDefaults = {
@@ -19,7 +19,7 @@
 	borderBottomWidth: 1,
 	borderLeftWidth: 1,
 	borderColor         : '#333',
-	borderHoverColor        : '#333',
+	borderHColor        : '#333',
  }
  const buttonBorderAttributes = getBorderAttributes( 'button', buttonDefaults );
 

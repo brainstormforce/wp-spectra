@@ -115,7 +115,7 @@ $container_css                  = array_merge(
 	),
 	$border
 );
-$container_css                  = array_merge( $container_css, $container_bg_css_desktop, $borderCSS );
+$container_css                  = array_merge( $container_css, $container_bg_css_desktop );
 $background_video_opacity_value = ( isset( $attr['backgroundVideoOpacity'] ) && 'none' !== $attr['overlayType'] && ( ( 'color' === $attr['overlayType'] && ! empty( $attr['backgroundVideoColor'] ) ) || ( 'gradient' === $attr['overlayType'] && ! empty( $attr['gradientValue'] ) ) ) ) ? 1 - $attr['backgroundVideoOpacity'] : 1;
 
 $selectors = array(
