@@ -98,8 +98,8 @@ const Render = ( props ) => {
 					? undefined
 					: InnerBlocks.ButtonBlockAppender }
 				/>
-				{ bottomDividerHtml }
 			</div>
+			{ bottomDividerHtml }
 		</div>
 	);
 };

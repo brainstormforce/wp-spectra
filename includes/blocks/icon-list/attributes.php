@@ -11,6 +11,8 @@ return array(
 	'classMigrate'       => false,
 	'childMigrate'       => false,
 	'align'              => 'left',
+	'alignTablet'        => '',
+	'alignMobile'        => '',
 	'icon_count'         => '1',
 	'icons'              => array(
 		array(
@@ -72,4 +74,14 @@ return array(
 	'fontDecoration'     => '',
 	'hideLabel'          => false,
 	'iconPosition'       => 'middle',
+	'iconPositionTablet' => '',
+	'iconPositionMobile' => '',
+	'iconColor'            => '',
+	'iconHoverColor'       => '',
+	'iconBgColor'          => '',
+	'iconBgHoverColor'     => '',
+	'iconBorderColor'      => '',
+	'iconBorderHoverColor' => '',
+	'labelColor'           => '',
+	'labelHoverColor'      => '',
 );
