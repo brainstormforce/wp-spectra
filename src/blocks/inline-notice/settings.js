@@ -387,7 +387,7 @@ const Settings = ( props ) => {
 						onChange={ updateCookieId }
 					/>
 				) }
-				{ cookies && (
+				{ ( cookies && noticeDismiss ) && (
 					<Range
 						label={ __(
 							'Show Closed Notice After (Days)',

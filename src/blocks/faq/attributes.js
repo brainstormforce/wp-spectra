@@ -92,6 +92,13 @@ const attributes = {
 		},
 		default: ''
 	},
+	boxBgHoverColor: {
+		type: 'string',
+		UAGCopyPaste: {
+			styleType: 'faq-bg-hover-color'
+		},
+		default: ''
+	},
 	boxPaddingTypeMobile: {
 		type: 'string',
 		UAGCopyPaste: {
@@ -200,6 +207,18 @@ const attributes = {
 		type: 'string',
 		UAGCopyPaste: {
 			styleType: 'main-title-hover-color'
+		},
+	},
+	questionTextBgColor: {
+		type: 'string',
+		UAGCopyPaste: {
+			styleType: 'main-title-bg-color'
+		},
+	},
+	questionTextActiveBgColor: {
+		type: 'string',
+		UAGCopyPaste: {
+			styleType: 'main-title-hover-bg-color'
 		},
 	},
 	questionPaddingTypeDesktop: {
