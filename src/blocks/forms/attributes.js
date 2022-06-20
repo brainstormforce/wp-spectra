@@ -261,18 +261,15 @@ const attributes = {
 	// Border
 	submitborderStyle: {
 		type: 'string',
-		default: 'none'
 	},
 	submitborderWidth: {
 		type: 'number',
 	},
 	submitborderRadius: {
 		type: 'number',
-		default: 3,
 	},
 	submitborderColor: {
 		type: 'string',
-		default: '',
 	},
 	submitborderHoverColor: {
 		type: 'string',
@@ -611,23 +608,18 @@ const attributes = {
 	// Toggle Border
 	toggleBorderStyle: {
 		type: 'string',
-		default: 'solid',
 	},
 	toggleBorderWidth: {
 		type: 'number',
-		default: 1,
 	},
 	toggleBorderRadius: {
 		type: 'number',
-		default: 3,
 	},
 	toggleBorderColor: {
 		type: 'string',
-		default: '#1e1e1e',
 	},
 	toggleBorderActiveColor: {
 		type: 'string',
-		default: '#017cba',
 	},
 
 	// Input Line Height
@@ -719,19 +711,15 @@ const attributes = {
 	// InputBorder
 	inputborderStyle: {
 		type: 'string',
-		default: 'solid',
 	},
 	inputborderWidth: {
 		type: 'number',
-		default: 1,
 	},
 	inputborderRadius: {
 		type: 'number',
-		default: 3,
 	},
 	inputborderColor: {
 		type: 'string',
-		default: '#bdbdbd',
 	},
 	inputborderHoverColor: {
 		type: 'string',

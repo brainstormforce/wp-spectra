@@ -173,23 +173,16 @@ const attributes = {
 	},
 	borderStyle: {
 		type: 'string',
-		default: 'solid',
 	},
 	borderWidth: {
-		type: 'number',
-		default: 1,
-	},
+		type: 'number',	},
 	borderRadius: {
-		type: 'number',
-		default: 2,
-	},
+		type: 'number',	},
 	borderColor: {
 		type: 'string',
-		default: '',
 	},
 	borderHoverColor: {
 		type: 'string',
-		default: '',
 	},
 	questionTextColor: {
 		type: 'string',

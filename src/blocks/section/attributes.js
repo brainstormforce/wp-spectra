@@ -393,11 +393,9 @@ const attributes = {
 	},
 	borderStyle: {
 		type: 'string',
-		default: 'none',
 	},
 	borderWidth: {
 		type: 'number',
-		default: 1,
 	},
 	borderRadius: {
 		type: 'number',
