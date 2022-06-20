@@ -225,7 +225,7 @@ const Settings = ( props ) => {
 		return (
 			<UAGAdvancedPanelBody
 				title={ __( 'Text', 'ultimate-addons-for-gutenberg' ) }
-				initialOpen={ false }
+				initialOpen={ true }
 			>
 				<TypographyControl
 					label={ __(
@@ -401,7 +401,7 @@ const Settings = ( props ) => {
 								/>
 								{ 'color' === backgroundType && (
 									<>
-										
+
 										<AdvancedPopColorControl
 											label={ __(
 												'Color',
