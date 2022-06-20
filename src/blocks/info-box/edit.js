@@ -73,7 +73,7 @@ const UAGBInfoBox = ( props ) => {
 			},{
 				label: 'borderStyle',
 				value: borderStyle
-			});
+			} );
 			props.setAttributes( migrationAttributes )
 		}
 		// Replacement for componentDidUpdate.

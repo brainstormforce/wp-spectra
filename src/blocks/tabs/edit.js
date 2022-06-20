@@ -121,7 +121,7 @@ const UAGBTabsEdit = ( props ) => {
 			},{
 				label: 'borderStyle',
 				value: borderStyle
-			});
+			} );
 			props.setAttributes( migrationAttributes )
 		}
 	}, [ props ] );

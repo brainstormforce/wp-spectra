@@ -28,7 +28,7 @@ const toggleBorderAttributes = getBorderAttributes( 'toggle' , {
 	borderBottomWidth: 1,
 	borderColor:'#1e1e1e',
 	borderHColor: '#017cba',
-});
+} );
 const submitBorderAttributes = getBorderAttributes( 'submit' );
 
 const attributes = {

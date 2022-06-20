@@ -41,7 +41,7 @@ const UAGBSectionEdit = ( props ) => {
 			},{
 				label: 'borderStyle',
 				value: borderStyle
-			});
+			} );
 			props.setAttributes( migrationAttributes )
 		}
 
