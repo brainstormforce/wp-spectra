@@ -54,6 +54,16 @@ $selectors = array(
 		'margin-bottom'    => UAGB_Helper::get_css_value( $attr['fieldSpacing'], 'px' ),
 		'text-align'       => $attr['align'],
 	),
+	// Focus.
+	' .gform_wrapper.gravity-theme input:not([type=submit]):focus' => array(
+		'border-color' => $attr['fieldBorderFocusColor'],
+	),
+	' .gform_wrapper.gravity-theme select:focus'           => array(
+		'border-color' => $attr['fieldBorderFocusColor'],
+	),
+	' .gform_wrapper.gravity-theme textarea:focus'         => array(
+		'border-color' => $attr['fieldBorderFocusColor'],
+	),
 	' input[type=button]'                                  => array(
 		'color'            => $attr['buttonTextColor'],
 		'background-color' => $attr['buttonBgColor'],
@@ -132,6 +142,10 @@ $selectors = array(
 		'text-align'       => $attr['align'],
 		'height'           => $attr['textAreaHeight'],
 	),
+
+	' .gform_wrapper.gravity-theme .gfield textarea.large:focus' => array(
+		'border-color' => $attr['fieldBorderFocusColor'],
+	),
 	' textarea::placeholder'                               => array(
 		'color'      => $attr['fieldInputColor'],
 		'text-align' => $attr['align'],
@@ -175,17 +189,6 @@ $selectors = array(
 	),
 	' .gform_wrapper.gravity-theme .gfield_radio '         => array(
 		'margin-top' => UAGB_Helper::get_css_value( $attr['fieldLabelSpacing'], 'px' ),
-	),
-
-	// Focus.
-	' form input:not([type=submit]):focus'                 => array(
-		'border-color' => $attr['fieldBorderFocusColor'],
-	),
-	' form select:focus'                                   => array(
-		'border-color' => $attr['fieldBorderFocusColor'],
-	),
-	' .gform_wrapper.gravity-theme textarea:focus'         => array(
-		'border-color' => $attr['fieldBorderFocusColor'],
 	),
 
 	// Submit button.
@@ -289,6 +292,7 @@ $selectors = array(
 		'border-bottom-width' => UAGB_Helper::get_css_value( $attr['fieldBorderWidth'], $attr['fieldBorderWidthType'] ),
 		'border-radius'       => UAGB_Helper::get_css_value( $attr['fieldBorderRadius'], $attr['fieldBorderRadiusType'] ),
 	),
+
 	' .uagb-gf-styler__check-style-enabled .gfield_checkbox input[type="checkbox"] + label:before' => array(
 		'border-style' => 'solid',
 	),
@@ -351,6 +355,7 @@ $selectors = array(
 	),
 	' .uagb-gf-styler__check-style-enabled .gfield_radio input[type="radio"]:checked + label:before' => array(
 		'background-color' => $attr['radioCheckSelectColor'],
+		'border-color'     => $attr['fieldBorderFocusColor'],
 	),
 	' .uagb-gf-styler__check-style-enabled form .gfield_radio label' => array(
 		'color' => $attr['radioCheckLableColor'],
