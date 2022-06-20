@@ -706,11 +706,11 @@ titleLetterSpacingType,
 				<AdvancedPopColorControl
 					label={ __( 'Color', 'ultimate-addons-for-gutenberg' ) }
 					colorValue={ descColor ? descColor : '' }
-					onColorChange={ ( value ) =>
-						setAttributes( {
-							descColor: value,
-						} )
-					}
+					data={ {
+						value: descColor.value,
+						label: descColor.label,
+					} }
+					setAttributes={ setAttributes }
 				/>
 				<TypographyControl
 					label={ __( 'Typography' ) }
@@ -885,11 +885,11 @@ titleLetterSpacingType,
 								'ultimate-addons-for-gutenberg'
 							) }
 							colorValue={ seperatorColor ? seperatorColor : '' }
-							onColorChange={ ( value ) =>
-								setAttributes( {
-									seperatorColor: value,
-								} )
-							}
+							data={ {
+								value: seperatorColor.value,
+								label: seperatorColor.label,
+							} }
+							setAttributes={ setAttributes }
 						/>
 					</>
 				) }
@@ -904,11 +904,11 @@ titleLetterSpacingType,
 				<AdvancedPopColorControl
 					label={ __( 'Color', 'ultimate-addons-for-gutenberg' ) }
 					colorValue={ priceColor ? priceColor : '' }
-					onColorChange={ ( value ) =>
-						setAttributes( {
-							priceColor: value,
-						} )
-					}
+					data={ {
+						value: priceColor.value,
+						label: priceColor.label,
+					} }
+					setAttributes={ setAttributes }
 				/>
 				<TypographyControl
 					label={ __( 'Typography' ) }
@@ -996,11 +996,11 @@ titleLetterSpacingType,
 				<AdvancedPopColorControl
 					label={ __( 'Color', 'ultimate-addons-for-gutenberg' ) }
 					colorValue={ titleColor ? titleColor : '' }
-					onColorChange={ ( value ) =>
-						setAttributes( {
-							titleColor: value,
-						} )
-					}
+					data={ {
+						value: titleColor.value,
+						label: titleColor.label,
+					} }
+					setAttributes={ setAttributes }
 				/>
 				<TypographyControl
 					label={ __( 'Typography' ) }

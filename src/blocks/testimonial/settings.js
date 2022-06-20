@@ -529,11 +529,11 @@ const Settings = ( props ) => {
 				<AdvancedPopColorControl
 					label={ __( 'Color', 'ultimate-addons-for-gutenberg' ) }
 					colorValue={ arrowColor ? arrowColor : '' }
-					onColorChange={ ( value ) =>
-						setAttributes( {
-							arrowColor: value,
-						} )
-					}
+					data={ {
+						value: arrowColor.value,
+						label: arrowColor.label,
+					} }
+					setAttributes={ setAttributes }
 				/>
 			</UAGAdvancedPanelBody>
 		);
@@ -652,11 +652,11 @@ const Settings = ( props ) => {
 				<AdvancedPopColorControl
 					label={ __( 'Color', 'ultimate-addons-for-gutenberg' ) }
 					colorValue={ authorColor ? authorColor : '' }
-					onColorChange={ ( value ) =>
-						setAttributes( {
-							authorColor: value,
-						} )
-					}
+					data={ {
+						value: authorColor.value,
+						label: authorColor.label,
+					} }
+					setAttributes={ setAttributes }
 				/>
 				<TypographyControl
 					label={ __(
@@ -777,11 +777,11 @@ const Settings = ( props ) => {
 				<AdvancedPopColorControl
 					label={ __( 'Color', 'ultimate-addons-for-gutenberg' ) }
 					colorValue={ descColor ? descColor : '' }
-					onColorChange={ ( value ) =>
-						setAttributes( {
-							descColor: value,
-						} )
-					}
+					data={ {
+						value: descColor.value,
+						label: descColor.label,
+					} }
+					setAttributes={ setAttributes }
 				/>
 				<TypographyControl
 					label={ __(
@@ -1000,11 +1000,11 @@ const Settings = ( props ) => {
 				<AdvancedPopColorControl
 					label={ __( 'Color', 'ultimate-addons-for-gutenberg' ) }
 					colorValue={ companyColor ? companyColor : '' }
-					onColorChange={ ( value ) =>
-						setAttributes( {
-							companyColor: value,
-						} )
-					}
+					data={ {
+						value: companyColor.value,
+						label: companyColor.label,
+					} }
+					setAttributes={ setAttributes }
 				/>
 				<TypographyControl
 					label={ __(

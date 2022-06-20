@@ -56,12 +56,12 @@ const Range = ( props ) => {
 		}
 	};
 
-	const resetValues = (defaultValues) => {
+	const resetValues = ( defaultValues ) => {
 		if ( props?.onChange ) [
 			props?.onChange( defaultValues[props?.data?.label] )
 		]
 		if ( props.displayUnit ) {
-			onChangeUnits( defaultValues[props?.unit?.label])
+			onChangeUnits( defaultValues[props?.unit?.label] )
 		}
 	};
 

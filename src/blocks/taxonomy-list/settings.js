@@ -233,9 +233,11 @@ const Settings = ( props ) => {
 			<AdvancedPopColorControl
 				label={ __( 'Text Color', 'ultimate-addons-for-gutenberg' ) }
 				colorValue={ listTextColor ? listTextColor : '' }
-				onColorChange={ ( value ) =>
-					setAttributes( { listTextColor: value } )
-				}
+				data={ {
+					value: listTextColor.value,
+					label: listTextColor.label,
+				} }
+				setAttributes={ setAttributes }
 			/>
 			<br />
 
@@ -247,9 +249,11 @@ const Settings = ( props ) => {
 							'ultimate-addons-for-gutenberg'
 						) }
 						colorValue={ listStyleColor ? listStyleColor : '' }
-						onColorChange={ ( value ) =>
-							setAttributes( { listStyleColor: value } )
-						}
+						data={ {
+							value: listStyleColor.value,
+							label: listStyleColor.label,
+						} }
+						setAttributes={ setAttributes }
 					/>
 				</>
 			) }
@@ -260,9 +264,11 @@ const Settings = ( props ) => {
 			<AdvancedPopColorControl
 				label={ __( 'Text Color', 'ultimate-addons-for-gutenberg' ) }
 				colorValue={ hoverlistTextColor ? hoverlistTextColor : '' }
-				onColorChange={ ( value ) =>
-					setAttributes( { hoverlistTextColor: value } )
-				}
+				data={ {
+					value: hoverlistTextColor.value,
+					label: hoverlistTextColor.label,
+				} }
+				setAttributes={ setAttributes }
 			/>
 			<br />
 			{ 'none' !== listStyle && (
@@ -275,9 +281,11 @@ const Settings = ( props ) => {
 						colorValue={
 							hoverlistStyleColor ? hoverlistStyleColor : ''
 						}
-						onColorChange={ ( value ) =>
-							setAttributes( { hoverlistStyleColor: value } )
-						}
+						data={ {
+							value: hoverlistStyleColor.value,
+							label: hoverlistStyleColor.label,
+						} }
+						setAttributes={ setAttributes }
 					/>
 				</>
 			) }
@@ -737,9 +745,11 @@ const Settings = ( props ) => {
 				<AdvancedPopColorControl
 					label={ __( 'Color', 'ultimate-addons-for-gutenberg' ) }
 					colorValue={ titleColor ? titleColor : '' }
-					onColorChange={ ( value ) =>
-						setAttributes( { titleColor: value } )
-					}
+					data={ {
+						value: titleColor.value,
+						label: titleColor.label,
+					} }
+					setAttributes={ setAttributes }
 				/>
 				{ showCount && (
 					<ResponsiveSlider
@@ -779,9 +789,11 @@ const Settings = ( props ) => {
 				<AdvancedPopColorControl
 					label={ __( 'Color', 'ultimate-addons-for-gutenberg' ) }
 					colorValue={ countColor ? countColor : '' }
-					onColorChange={ ( value ) =>
-						setAttributes( { countColor: value } )
-					}
+					data={ {
+						value: countColor.value,
+						label: countColor.label,
+					} }
+					setAttributes={ setAttributes }
 				/>
 				<TypographyControl
 					label={ __(
@@ -875,9 +887,11 @@ const Settings = ( props ) => {
 				<AdvancedPopColorControl
 					label={ __( 'Color', 'ultimate-addons-for-gutenberg' ) }
 					colorValue={ bgColor ? bgColor : '' }
-					onColorChange={ ( value ) =>
-						setAttributes( { bgColor: value } )
-					}
+					data={ {
+						value: bgColor.value,
+						label: bgColor.label,
+					} }
+					setAttributes={ setAttributes }
 				/>
 			</UAGAdvancedPanelBody>
 		);

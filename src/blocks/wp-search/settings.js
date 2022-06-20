@@ -230,9 +230,11 @@ const Settings = ( props ) => {
 						'ultimate-addons-for-gutenberg'
 					) }
 					colorValue={ textColor ? textColor : '' }
-					onColorChange={ ( value ) =>
-						setAttributes( { textColor: value } )
-					}
+					data={ {
+						value: textColor.value,
+						label: textColor.label,
+					} }
+					setAttributes={ setAttributes }
 				/>
 				<AdvancedPopColorControl
 					label={ __(
@@ -240,9 +242,11 @@ const Settings = ( props ) => {
 						'ultimate-addons-for-gutenberg'
 					) }
 					colorValue={ inputBgColor ? inputBgColor : '' }
-					onColorChange={ ( value ) =>
-						setAttributes( { inputBgColor: value } )
-					}
+					data={ {
+						value: inputBgColor.value,
+						label: inputBgColor.label,
+					} }
+					setAttributes={ setAttributes }
 				/>
 				<Border
 					disabledBorderTitle= {false}
@@ -490,9 +494,11 @@ const Settings = ( props ) => {
 						'ultimate-addons-for-gutenberg'
 					) }
 					colorValue={ buttonBgColor ? buttonBgColor : '' }
-					onColorChange={ ( value ) =>
-						setAttributes( { buttonBgColor: value } )
-					}
+					data={ {
+						value: buttonBgColor.value,
+						label: buttonBgColor.label,
+					} }
+					setAttributes={ setAttributes }
 				/>
 				{ 'text' === buttonType && (
 					<AdvancedPopColorControl
@@ -501,9 +507,11 @@ const Settings = ( props ) => {
 							'ultimate-addons-for-gutenberg'
 						) }
 						colorValue={ buttonTextColor ? buttonTextColor : '' }
-						onColorChange={ ( value ) =>
-							setAttributes( { buttonTextColor: value } )
-						}
+						data={ {
+							value: buttonTextColor.value,
+							label: buttonTextColor.label,
+						} }
+						setAttributes={ setAttributes }
 					/>
 				) }
 				{ 'icon' === buttonType && (
@@ -513,9 +521,11 @@ const Settings = ( props ) => {
 							'ultimate-addons-for-gutenberg'
 						) }
 						colorValue={ buttonIconColor ? buttonIconColor : '' }
-						onColorChange={ ( value ) =>
-							setAttributes( { buttonIconColor: value } )
-						}
+						data={ {
+							value: buttonIconColor.value,
+							label: buttonIconColor.label,
+						} }
+						setAttributes={ setAttributes }
 					/>
 				) }
 			</>
@@ -528,9 +538,11 @@ const Settings = ( props ) => {
 						'ultimate-addons-for-gutenberg'
 					) }
 					colorValue={ buttonBgHoverColor ? buttonBgHoverColor : '' }
-					onColorChange={ ( value ) =>
-						setAttributes( { buttonBgHoverColor: value } )
-					}
+					data={ {
+						value: buttonBgHoverColor.value,
+						label: buttonBgHoverColor.label,
+					} }
+					setAttributes={ setAttributes }
 				/>
 				{ 'text' === buttonType && (
 					<AdvancedPopColorControl
@@ -541,9 +553,11 @@ const Settings = ( props ) => {
 						colorValue={
 							buttonTextHoverColor ? buttonTextHoverColor : ''
 						}
-						onColorChange={ ( value ) =>
-							setAttributes( { buttonTextHoverColor: value } )
-						}
+						data={ {
+							value: buttonTextHoverColor.value,
+							label: buttonTextHoverColor.label,
+						} }
+						setAttributes={ setAttributes }
 					/>
 				) }
 				{ 'icon' === buttonType && (
@@ -555,9 +569,11 @@ const Settings = ( props ) => {
 						colorValue={
 							buttonIconHoverColor ? buttonIconHoverColor : ''
 						}
-						onColorChange={ ( value ) =>
-							setAttributes( { buttonIconHoverColor: value } )
-						}
+						data={ {
+							value: buttonIconHoverColor.value,
+							label: buttonIconHoverColor.label,
+						} }
+						setAttributes={ setAttributes }
 					/>
 				) }
 			</>
@@ -736,9 +752,11 @@ const Settings = ( props ) => {
 								'ultimate-addons-for-gutenberg'
 							) }
 							colorValue={ iconColor ? iconColor : '' }
-							onColorChange={ ( value ) =>
-								setAttributes( { iconColor: value } )
-							}
+							data={ {
+								value: iconColor.value,
+								label: iconColor.label,
+							} }
+							setAttributes={ setAttributes }
 						/>
 					</>
 				</UAGAdvancedPanelBody>

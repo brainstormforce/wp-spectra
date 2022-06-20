@@ -992,9 +992,11 @@ authorLetterSpacingType,
 						'ultimate-addons-for-gutenberg'
 					) }
 					colorValue={ separatorColor ? separatorColor : '' }
-					onColorChange={ ( value ) =>
-						setAttributes( { separatorColor: value } )
-					}
+					data={ {
+						value: separatorColor.value,
+						label: separatorColor.label,
+					} }
+					setAttributes={ setAttributes }
 				/>
 				<AdvancedPopColorControl
 					label={ __(
@@ -1002,9 +1004,11 @@ authorLetterSpacingType,
 						'ultimate-addons-for-gutenberg'
 					) }
 					colorValue={ iconColor ? iconColor : '' }
-					onColorChange={ ( value ) =>
-						setAttributes( { iconColor: value } )
-					}
+					data={ {
+						value: iconColor.value,
+						label: iconColor.label,
+					} }
+					setAttributes={ setAttributes }
 				/>
 				<AdvancedPopColorControl
 					label={ __(
@@ -1012,9 +1016,11 @@ authorLetterSpacingType,
 						'ultimate-addons-for-gutenberg'
 					) }
 					colorValue={ separatorBg ? separatorBg : '' }
-					onColorChange={ ( value ) =>
-						setAttributes( { separatorBg: value } )
-					}
+					data={ {
+						value: separatorBg.value,
+						label: separatorBg.label,
+					} }
+					setAttributes={ setAttributes }
 				/>
 				<AdvancedPopColorControl
 					label={ __(
@@ -1022,9 +1028,11 @@ authorLetterSpacingType,
 						'ultimate-addons-for-gutenberg'
 					) }
 					colorValue={ separatorBorder ? separatorBorder : '' }
-					onColorChange={ ( value ) =>
-						setAttributes( { separatorBorder: value } )
-					}
+					data={ {
+						value: separatorBorder.value,
+						label: separatorBorder.label,
+					} }
+					setAttributes={ setAttributes }
 				/>
 			</>
 		);
@@ -1037,9 +1045,11 @@ authorLetterSpacingType,
 						'ultimate-addons-for-gutenberg'
 					) }
 					colorValue={ separatorFillColor ? separatorFillColor : '' }
-					onColorChange={ ( value ) =>
-						setAttributes( { separatorFillColor: value } )
-					}
+					data={ {
+						value: separatorFillColor.value,
+						label: separatorFillColor.label,
+					} }
+					setAttributes={ setAttributes }
 				/>
 				<AdvancedPopColorControl
 					label={ __(
@@ -1047,9 +1057,11 @@ authorLetterSpacingType,
 						'ultimate-addons-for-gutenberg'
 					) }
 					colorValue={ iconFocus ? iconFocus : '' }
-					onColorChange={ ( value ) =>
-						setAttributes( { iconFocus: value } )
-					}
+					data={ {
+						value: iconFocus.value,
+						label: iconFocus.label,
+					} }
+					setAttributes={ setAttributes }
 				/>
 				<AdvancedPopColorControl
 					label={ __(
@@ -1057,9 +1069,11 @@ authorLetterSpacingType,
 						'ultimate-addons-for-gutenberg'
 					) }
 					colorValue={ iconBgFocus ? iconBgFocus : '' }
-					onColorChange={ ( value ) =>
-						setAttributes( { iconBgFocus: value } )
-					}
+					data={ {
+						value: iconBgFocus.value,
+						label: iconBgFocus.label,
+					} }
+					setAttributes={ setAttributes }
 				/>
 				<AdvancedPopColorControl
 					label={ __(
@@ -1067,9 +1081,11 @@ authorLetterSpacingType,
 						'ultimate-addons-for-gutenberg'
 					) }
 					colorValue={ borderFocus ? borderFocus : '' }
-					onColorChange={ ( value ) =>
-						setAttributes( { borderFocus: value } )
-					}
+					data={ {
+						value: borderFocus.value,
+						label: borderFocus.label,
+					} }
+					setAttributes={ setAttributes }
 				/>
 			</>
 		);
@@ -1112,9 +1128,11 @@ authorLetterSpacingType,
 				<AdvancedPopColorControl
 					label={ __( 'Color', 'ultimate-addons-for-gutenberg' ) }
 					colorValue={ headingColor ? headingColor : '' }
-					onColorChange={ ( value ) =>
-						setAttributes( { headingColor: value } )
-					}
+					data={ {
+						value: headingColor.value,
+						label: headingColor.label,
+					} }
+					setAttributes={ setAttributes }
 				/>
 				<TypographyControl
 					label={ __(
@@ -1253,9 +1271,11 @@ authorLetterSpacingType,
 				<AdvancedPopColorControl
 					label={ __( 'Color', 'ultimate-addons-for-gutenberg' ) }
 					colorValue={ authorColor ? authorColor : '' }
-					onColorChange={ ( value ) =>
-						setAttributes( { authorColor: value } )
-					}
+					data={ {
+						value: authorColor.value,
+						label: authorColor.label,
+					} }
+					setAttributes={ setAttributes }
 				/>
 				<TypographyControl
 					label={ __(
@@ -1373,9 +1393,11 @@ authorLetterSpacingType,
 				<AdvancedPopColorControl
 					label={ __( 'Color', 'ultimate-addons-for-gutenberg' ) }
 					colorValue={ subHeadingColor ? subHeadingColor : '' }
-					onColorChange={ ( value ) =>
-						setAttributes( { subHeadingColor: value } )
-					}
+					data={ {
+						value: subHeadingColor.value,
+						label: subHeadingColor.label,
+					} }
+					setAttributes={ setAttributes }
 				/>
 				<TypographyControl
 					label={ __(
@@ -1486,9 +1508,11 @@ authorLetterSpacingType,
 				<AdvancedPopColorControl
 					label={ __( 'Color', 'ultimate-addons-for-gutenberg' ) }
 					colorValue={ dateColor ? dateColor : '' }
-					onColorChange={ ( value ) =>
-						setAttributes( { dateColor: value } )
-					}
+					data={ {
+						value: dateColor.value,
+						label: dateColor.label,
+					} }
+					setAttributes={ setAttributes }
 				/>
 				<TypographyControl
 					label={ __(
@@ -1608,9 +1632,11 @@ authorLetterSpacingType,
 				<AdvancedPopColorControl
 					label={ __( 'Color', 'ultimate-addons-for-gutenberg' ) }
 					colorValue={ ctaColor ? ctaColor : '' }
-					onColorChange={ ( value ) =>
-						setAttributes( { ctaColor: value } )
-					}
+					data={ {
+						value: ctaColor.value,
+						label: ctaColor.label,
+					} }
+					setAttributes={ setAttributes }
 				/>
 				<AdvancedPopColorControl
 					label={ __(
@@ -1618,9 +1644,11 @@ authorLetterSpacingType,
 						'ultimate-addons-for-gutenberg'
 					) }
 					colorValue={ ctaBackground ? ctaBackground : '' }
-					onColorChange={ ( value ) =>
-						setAttributes( { ctaBackground: value } )
-					}
+					data={ {
+						value: ctaBackground.value,
+						label: ctaBackground.label,
+					} }
+					setAttributes={ setAttributes }
 				/>
 				<TypographyControl
 					label={ __(
@@ -1738,9 +1766,11 @@ authorLetterSpacingType,
 				<AdvancedPopColorControl
 					label={ __( 'Color', 'ultimate-addons-for-gutenberg' ) }
 					colorValue={ backgroundColor ? backgroundColor : '' }
-					onColorChange={ ( value ) =>
-						setAttributes( { backgroundColor: value } )
-					}
+					data={ {
+						value: backgroundColor.value,
+						label: backgroundColor.label,
+					} }
+					setAttributes={ setAttributes }
 				/>
 			</UAGAdvancedPanelBody>
 		);

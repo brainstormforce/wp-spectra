@@ -1132,9 +1132,11 @@ const Settings = ( props ) => {
 						'ultimate-addons-for-gutenberg'
 					) }
 					colorValue={ bgColor }
-					onColorChange={ ( value ) =>
-						setAttributes( { bgColor: value } )
-					}
+					data={ {
+						value: bgColor.value,
+						label: bgColor.label,
+					} }
+					setAttributes={ setAttributes }
 				/>
 				<ResponsiveSlider
 					label={ __( 'Row Gap', 'ultimate-addons-for-gutenberg' ) }
@@ -1276,9 +1278,11 @@ const Settings = ( props ) => {
 							'ultimate-addons-for-gutenberg'
 						) }
 						colorValue={ bgOverlayColor }
-						onColorChange={ ( value ) =>
-							setAttributes( { bgOverlayColor: value } )
-						}
+						data={ {
+							value: bgOverlayColor.value,
+							label: bgOverlayColor.label,
+						} }
+						setAttributes={ setAttributes }
 					/>
 					<Range
 						label={ __(
@@ -1339,9 +1343,11 @@ const Settings = ( props ) => {
 						'ultimate-addons-for-gutenberg'
 					) }
 					colorValue={ titleColor }
-					onColorChange={ ( value ) =>
-						setAttributes( { titleColor: value } )
-					}
+					data={ {
+						value: titleColor.value,
+						label: titleColor.label,
+					} }
+					setAttributes={ setAttributes }
 				/>
 				<TypographyControl
 					label={ __(
@@ -1459,25 +1465,31 @@ const Settings = ( props ) => {
 				<AdvancedPopColorControl
 					label={ __( 'Meta Color', 'ultimate-addons-for-gutenberg' ) }
 					colorValue={ metaColor }
-					onColorChange={ ( value ) =>
-						setAttributes( { metaColor: value } )
-					}
+					data={ {
+						value: metaColor.value,
+						label: metaColor.label,
+					} }
+					setAttributes={ setAttributes }
 				/>
 				{ ( 'aboveTitle' === displayPostTaxonomyAboveTitle && 'highlighted' === taxStyle ) && (
 					<>
 					<AdvancedPopColorControl
 						label={ __( 'Taxonomy Text Color', 'ultimate-addons-for-gutenberg' ) }
 						colorValue={ highlightedTextColor }
-						onColorChange={ ( value ) =>
-							setAttributes( { highlightedTextColor: value } )
-						}
+						data={ {
+							value: highlightedTextColor.value,
+							label: highlightedTextColor.label,
+						} }
+						setAttributes={ setAttributes }
 					/>
 					<AdvancedPopColorControl
 						label={ __( 'Highlighted Color', 'ultimate-addons-for-gutenberg' ) }
 						colorValue={ highlightedTextBgColor }
-						onColorChange={ ( value ) =>
-							setAttributes( { highlightedTextBgColor: value } )
-						}
+						data={ {
+							value: highlightedTextBgColor.value,
+							label: highlightedTextBgColor.label,
+						} }
+						setAttributes={ setAttributes }
 					/>
 					</>
 				)}
@@ -1598,9 +1610,11 @@ const Settings = ( props ) => {
 				<AdvancedPopColorControl
 					label={ __( 'Color', 'ultimate-addons-for-gutenberg' ) }
 					colorValue={ excerptColor }
-					onColorChange={ ( value ) =>
-						setAttributes( { excerptColor: value } )
-					}
+					data={ {
+						value: excerptColor.value,
+						label: excerptColor.label,
+					} }
+					setAttributes={ setAttributes }
 				/>
 				<TypographyControl
 					label={ __(
@@ -1743,9 +1757,11 @@ const Settings = ( props ) => {
 									'ultimate-addons-for-gutenberg'
 								) }
 								colorValue={ ctaColor }
-								onColorChange={ ( value ) =>
-									setAttributes( { ctaColor: value } )
-								}
+								data={ {
+									value: ctaColor.value,
+									label: ctaColor.label,
+								} }
+								setAttributes={ setAttributes }
 							/>
 							<AdvancedPopColorControl
 								label={ __(
@@ -1753,9 +1769,11 @@ const Settings = ( props ) => {
 									'ultimate-addons-for-gutenberg'
 								) }
 								colorValue={ ctaBgColor }
-								onColorChange={ ( value ) =>
-									setAttributes( { ctaBgColor: value } )
-								}
+								data={ {
+									value: ctaBgColor.value,
+									label: ctaBgColor.label,
+								} }
+								setAttributes={ setAttributes }
 							/>
 						</>
 					}
@@ -1767,9 +1785,11 @@ const Settings = ( props ) => {
 									'ultimate-addons-for-gutenberg'
 								) }
 								colorValue={ ctaHColor }
-								onColorChange={ ( value ) =>
-									setAttributes( { ctaHColor: value } )
-								}
+								data={ {
+									value: ctaHColor.value,
+									label: ctaHColor.label,
+								} }
+								setAttributes={ setAttributes }
 							/>
 							<AdvancedPopColorControl
 								label={ __(
@@ -1777,9 +1797,11 @@ const Settings = ( props ) => {
 									'ultimate-addons-for-gutenberg'
 								) }
 								colorValue={ ctaBgHColor }
-								onColorChange={ ( value ) =>
-									setAttributes( { ctaBgHColor: value } )
-								}
+								data={ {
+									value: ctaBgHColor.value,
+									label: ctaBgHColor.label,
+								} }
+								setAttributes={ setAttributes }
 							/>
 						</>
 					}
@@ -2092,9 +2114,11 @@ const Settings = ( props ) => {
 									'ultimate-addons-for-gutenberg'
 								) }
 								colorValue={ paginationColor }
-								onColorChange={ ( value ) =>
-									setAttributes( { paginationColor: value } )
-								}
+								data={ {
+									value: paginationColor.value,
+									label: paginationColor.label,
+								} }
+								setAttributes={ setAttributes }
 							/>
 							{ paginationLayout === 'filled' && (
 								<AdvancedPopColorControl
@@ -2103,11 +2127,11 @@ const Settings = ( props ) => {
 										'ultimate-addons-for-gutenberg'
 									) }
 									colorValue={ paginationBgColor }
-									onColorChange={ ( value ) =>
-										setAttributes( {
-											paginationBgColor: value,
-										} )
-									}
+									data={ {
+										value: paginationBgColor.value,
+										label: paginationBgColor.label,
+									} }
+									setAttributes={ setAttributes }
 								/>
 							) }
 							{ paginationLayout === 'border' && (
@@ -2117,11 +2141,11 @@ const Settings = ( props ) => {
 										'ultimate-addons-for-gutenberg'
 									) }
 									colorValue={ paginationBorderColor }
-									onColorChange={ ( value ) =>
-										setAttributes( {
-											paginationBorderColor: value,
-										} )
-									}
+									data={ {
+										value: paginationBorderColor.value,
+										label: paginationBorderColor.label,
+									} }
+									setAttributes={ setAttributes }
 								/>
 							) }
 						</>
@@ -2134,11 +2158,11 @@ const Settings = ( props ) => {
 									'ultimate-addons-for-gutenberg'
 								) }
 								colorValue={ paginationActiveColor }
-								onColorChange={ ( value ) =>
-									setAttributes( {
-										paginationActiveColor: value,
-									} )
-								}
+								data={ {
+									value: paginationActiveColor.value,
+									label: paginationActiveColor.label,
+								} }
+								setAttributes={ setAttributes }
 							/>
 							{ paginationLayout === 'filled' && (
 								<AdvancedPopColorControl
@@ -2147,11 +2171,11 @@ const Settings = ( props ) => {
 										'ultimate-addons-for-gutenberg'
 									) }
 									colorValue={ paginationBgActiveColor }
-									onColorChange={ ( value ) =>
-										setAttributes( {
-											paginationBgActiveColor: value,
-										} )
-									}
+									data={ {
+										value: paginationBgActiveColor.value,
+										label: paginationBgActiveColor.label,
+									} }
+									setAttributes={ setAttributes }
 								/>
 							) }
 							{ paginationLayout === 'border' && (
@@ -2161,11 +2185,11 @@ const Settings = ( props ) => {
 										'ultimate-addons-for-gutenberg'
 									) }
 									colorValue={ paginationBorderActiveColor }
-									onColorChange={ ( value ) =>
-										setAttributes( {
-											paginationBorderActiveColor: value,
-										} )
-									}
+									data={ {
+										value: paginationBorderActiveColor.value,
+										label: paginationBorderActiveColor.label,
+									} }
+									setAttributes={ setAttributes }
 								/>
 							) }
 						</>
