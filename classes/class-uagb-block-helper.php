@@ -1116,7 +1116,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 		 * @param array $default_args  default attributes args.
 		 * @return array
 		 */
-		public static function uag_generate_post_border_attribute( $prefix, $default_args = array() ) {
+		public static function uag_generate_php_border_attribute( $prefix, $default_args = array() ) {
 			$defaults = wp_parse_args(
 				$default_args,
 				array(

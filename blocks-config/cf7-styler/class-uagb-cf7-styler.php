@@ -53,8 +53,8 @@ if ( ! class_exists( 'UAGB_CF7_Styler' ) ) {
 			if ( ! function_exists( 'register_block_type' ) ) {
 				return;
 			}
-			$field_border_attribute = UAGB_Block_Helper::uag_generate_post_border_attribute( 'field' );
-			$btn_border_attribute = UAGB_Block_Helper::uag_generate_post_border_attribute( 'button' );
+			$field_border_attribute = UAGB_Block_Helper::uag_generate_php_border_attribute( 'field' );
+			$btn_border_attribute = UAGB_Block_Helper::uag_generate_php_border_attribute( 'button' );
 			register_block_type(
 				'uagb/cf7-styler',
 				array(

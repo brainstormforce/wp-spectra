@@ -61,7 +61,7 @@ if ( ! class_exists( 'UAGB_Taxonomy_List' ) ) {
 				return;
 			}
 
-			$border_attribute = UAGB_Block_Helper::uag_generate_post_border_attribute( 'overall' );
+			$border_attribute = UAGB_Block_Helper::uag_generate_php_border_attribute( 'overall' );
 			register_block_type(
 				'uagb/taxonomy-list',
 				array(
