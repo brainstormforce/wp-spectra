@@ -5,10 +5,10 @@ const successMessageBorderAttributes = getBorderAttributes( 'successMessage' );
 const failedMessageBorderAttributes = getBorderAttributes( 'failedMessage' );
 const inputBorderAttributes = getBorderAttributes( 'input' , {
 	borderStyle: 'solid',
-	borderTopRadius: 3,
-	borderRightRadius: 3,
-	borderLeftRadius: 3,
-	borderBottomRadius: 3,
+	borderTopLeftRadius: 3,
+	borderTopRightRadius: 3,
+	borderBottomLeftRadius: 3,
+	borderBottomRightRadius: 3,
 	borderTopWidth: 1,
 	borderRightWidth: 1,
 	borderLeftWidth: 1,
@@ -18,10 +18,10 @@ const inputBorderAttributes = getBorderAttributes( 'input' , {
 });
 const toggleBorderAttributes = getBorderAttributes( 'toggle' , {
 	borderStyle: 'solid',
-	borderTopRadius: 3,
-	borderRightRadius: 3,
-	borderLeftRadius: 3,
-	borderBottomRadius: 3,
+	borderTopLeftRadius: 3,
+	borderTopRightRadius: 3,
+	borderBottomLeftRadius: 3,
+	borderBottomRightRadius: 3,
 	borderTopWidth: 1,
 	borderRightWidth: 1,
 	borderLeftWidth: 1,

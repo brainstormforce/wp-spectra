@@ -128,7 +128,26 @@ function styling( props ) {
 		radioCheckFontStyle,
 		radioCheckTransform,
 		radioCheckDecoration,
-		fieldBottomBorderWidth
+		fieldBottomBorderWidth,
+		labelLetterSpacing,
+		labelLetterSpacingTablet,
+		labelLetterSpacingMobile,
+		labelLetterSpacingType,
+		inputLetterSpacing,
+		inputLetterSpacingTablet,
+		inputLetterSpacingMobile,
+		inputLetterSpacingType,
+		radioCheckLetterSpacing,
+		radioCheckLetterSpacingTablet,
+		radioCheckLetterSpacingMobile,
+		radioCheckLetterSpacingType,
+		buttonLetterSpacing,
+		buttonLetterSpacingTablet,
+		buttonLetterSpacingMobile,
+		buttonLetterSpacingType,
+		validationMsgLetterSpacingTablet,
+		validationMsgLetterSpacingMobile,
+		validationMsgLetterSpacingType,
 	} = props.attributes;
 
 	const fieldBorderCSS = generateBorderCSS( props.attributes, 'field' );
@@ -509,8 +528,6 @@ function styling( props ) {
 	};
 	const tabletSelectors = {
 		' .wpcf7 input:not([type=submit])': fieldBorderCSSTablet,
-		' .wpcf7 select': fieldBorderCSSTablet,
-		' .wpcf7 textarea': fieldBorderCSSTablet,
 		" .wpcf7 .wpcf7-checkbox input[type='checkbox'] + span:before": fieldBorderCSSTablet,
 		" .wpcf7 .wpcf7-acceptance input[type='checkbox'] + span:before": fieldBorderCSSTablet,
 		" .wpcf7 .wpcf7-radio input[type='radio'] + span:before": fieldBorderCSSTablet,
@@ -559,6 +576,7 @@ function styling( props ) {
 				labelLineHeightType
 			),
 			'letter-spacing': generateCSSUnit( labelLetterSpacingTablet, labelLetterSpacingType ),
+			...fieldBorderCSSTablet
 		},
 		' .wpcf7 textarea': {
 			'font-size': generateCSSUnit(
@@ -570,6 +588,7 @@ function styling( props ) {
 				inputLineHeightType
 			),
 			'letter-spacing': generateCSSUnit( inputLetterSpacingTablet, inputLetterSpacingType ),
+			...fieldBorderCSSTablet
 		},
 		' .wpcf7 form label': {
 			'font-size': generateCSSUnit(
@@ -604,6 +623,7 @@ function styling( props ) {
 				buttonLineHeightType
 			),
 			'letter-spacing': generateCSSUnit( buttonLetterSpacingTablet, buttonLetterSpacingType ),
+			...buttonBorderCSSTablet
 		},
 		' .uagb-cf7-styler__check-style-enabled .wpcf7 form .wpcf7-list-item-label': {
 			'font-size': generateCSSUnit(
@@ -648,7 +668,7 @@ function styling( props ) {
 				buttonBottomPaddingTablet,
 				buttonPaddingTypeTablet
 			),
-			...buq
+			...buttonBorderCSSTablet
 		},
 	};
 	const fieldPaddingMobile = {
@@ -671,8 +691,6 @@ function styling( props ) {
 	};
 	const mobileSelectors = {
 		' .wpcf7 input:not([type=submit])': fieldBorderCSSMobile,
-		' .wpcf7 select': fieldBorderCSSMobile,
-		' .wpcf7 textarea': fieldBorderCSSMobile,
 		" .wpcf7 .wpcf7-checkbox input[type='checkbox'] + span:before": fieldBorderCSSMobile,
 		" .wpcf7 .wpcf7-acceptance input[type='checkbox'] + span:before": fieldBorderCSSMobile,
 		" .wpcf7 .wpcf7-radio input[type='radio'] + span:before": fieldBorderCSSMobile,
@@ -721,6 +739,7 @@ function styling( props ) {
 				labelLineHeightType
 			),
 			'letter-spacing': generateCSSUnit( labelLetterSpacingMobile, labelLetterSpacingType ),
+			...fieldBorderCSSMobile
 		},
 		' .wpcf7 textarea': {
 			'font-size': generateCSSUnit(
@@ -732,6 +751,7 @@ function styling( props ) {
 				inputLineHeightType
 			),
 			'letter-spacing': generateCSSUnit( inputLetterSpacingMobile, inputLetterSpacingType ),
+			...fieldBorderCSSMobile
 		},
 		' .wpcf7 form label': {
 			'font-size': generateCSSUnit(
@@ -812,34 +832,12 @@ function styling( props ) {
 			),
 		},
 	};
+	const id = `.editor-styles-wrapper .uagb-block-${ props.clientId.substr( 0, 8 ) }`;
+	let stylingCss = generateCSS( selectors, `${ id }` );
 
-	let stylingCss = generateCSS(
-		selectors,
-		`.editor-styles-wrapper .uagb-block-${ props.clientId.substr(
-			0,
-			8
-		) }`
-	);
+	stylingCss += generateCSS( tabletSelectors, `${ id }.uagb-editor-preview-mode-tablet`, true, 'tablet' );
 
-	stylingCss += generateCSS(
-		tabletSelectors,
-		`.editor-styles-wrapper .uagb-block-${ props.clientId.substr(
-			0,
-			8
-		) }.uagb-editor-preview-mode-tablet`,
-		true,
-		'tablet'
-	);
-
-	stylingCss += generateCSS(
-		mobileSelectors,
-		`.editor-styles-wrapper .uagb-block-${ props.clientId.substr(
-			0,
-			8
-		) }.uagb-editor-preview-mode-mobile`,
-		true,
-		'mobile'
-	);
+	stylingCss += generateCSS( mobileSelectors, `${ id }.uagb-editor-preview-mode-mobile`, true, 'mobile' );
 
 	return stylingCss;
 }

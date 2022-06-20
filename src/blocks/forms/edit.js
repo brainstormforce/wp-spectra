@@ -155,24 +155,6 @@ const UAGBFormsEdit = ( props ) => {
 			}
 			);
 			props.setAttributes( migrationAttributes );
-			const toggleMigrationAttributes = migrateBorderAttributes( 'toggle', {
-				label: 'borderWidth',
-				value: borderWidth,
-			}, {
-				label: 'borderRadius',
-				value: borderRadius
-			}, {
-				label: 'borderColor',
-				value: borderColor
-			}, {
-				label: 'borderHColor',
-				value: borderHColor
-			},{
-				label: 'borderStyle',
-				value: borderStyle
-			}
-			);
-			props.setAttributes( toggleMigrationAttributes )
 		}
 		const blockStyling = styling( props );
 
