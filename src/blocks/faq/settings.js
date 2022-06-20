@@ -51,13 +51,16 @@ const Settings = ( props ) => {
 		align,
 		enableSeparator,
 		boxBgColor,
+		boxBgHoverColor,
 		borderStyle,
 		borderWidth,
 		borderRadius,
 		borderColor,
 		borderHoverColor,
 		questionTextColor,
+		questionTextBgColor,
 		questionTextActiveColor,
+		questionTextActiveBgColor,
 		questionPaddingTypeDesktop,
 		questionPaddingTypeMobile,
 		questionPaddingTypeTablet,
@@ -570,44 +573,82 @@ const Settings = ( props ) => {
 							},
 						] }
 						normal={
-							<AdvancedPopColorControl
-								label={ __(
-									'Text Color',
-									'ultimate-addons-for-gutenberg'
-								) }
-								colorValue={ questionTextColor }
-								onColorChange={ ( value ) =>
-									setAttributes( { questionTextColor: value } )
-								}
-							/>
+							<>
+								<AdvancedPopColorControl
+									label={ __(
+										'Text Color',
+										'ultimate-addons-for-gutenberg'
+									) }
+									colorValue={ questionTextColor }
+									onColorChange={ ( value ) =>
+										setAttributes( { questionTextColor: value } )
+									}
+								/>
+								<AdvancedPopColorControl
+									label={ __(
+										'Background Color',
+										'ultimate-addons-for-gutenberg'
+									) }
+									colorValue={ questionTextBgColor }
+									onColorChange={ ( value ) =>
+										setAttributes( { questionTextBgColor: value } )
+									}
+								/>
+							</>
 						}
 						active={
-							<AdvancedPopColorControl
-								label={ __(
-									'Text Color',
-									'ultimate-addons-for-gutenberg'
-								) }
-								colorValue={ questionTextActiveColor }
-								onColorChange={ ( value ) =>
-									setAttributes( {
-										questionTextActiveColor: value,
-									} )
-								}
-							/>
+							<>
+								<AdvancedPopColorControl
+									label={ __(
+										'Text Color',
+										'ultimate-addons-for-gutenberg'
+									) }
+									colorValue={ questionTextActiveColor }
+									onColorChange={ ( value ) =>
+										setAttributes( {
+											questionTextActiveColor: value,
+										} )
+									}
+								/>
+								<AdvancedPopColorControl
+									label={ __(
+										'Background Color',
+										'ultimate-addons-for-gutenberg'
+									) }
+									colorValue={ questionTextActiveBgColor }
+									onColorChange={ ( value ) =>
+										setAttributes( {
+											questionTextActiveBgColor: value,
+										} )
+									}
+								/>
+							</>
 						}
 					/>
 				)}
 				{ 'grid' === layout && (
-					<AdvancedPopColorControl
-						label={ __(
-							'Text Color',
-							'ultimate-addons-for-gutenberg'
-						) }
-						colorValue={ questionTextColor }
-						onColorChange={ ( value ) =>
-							setAttributes( { questionTextColor: value } )
-						}
-					/>
+					<>
+						<AdvancedPopColorControl
+							label={ __(
+								'Text Color',
+								'ultimate-addons-for-gutenberg'
+							) }
+							colorValue={ questionTextColor }
+							onColorChange={ ( value ) =>
+								setAttributes( { questionTextColor: value } )
+							}
+						/>
+						<AdvancedPopColorControl
+							label={ __(
+								'Background Color',
+								'ultimate-addons-for-gutenberg'
+							) }
+							colorValue={ questionTextBgColor }
+							onColorChange={ ( value ) =>
+								setAttributes( { questionTextBgColor: value } )
+							}
+						/>
+					</>
 				)}
 				<SpacingControl
 					{ ...props }
@@ -869,14 +910,50 @@ const Settings = ( props ) => {
 				initialOpen={ true }
 				className="uagb__url-panel-body"
 			>
-				<AdvancedPopColorControl
-					label={ __(
-						'Background Color',
-						'ultimate-addons-for-gutenberg'
-					) }
-					colorValue={ boxBgColor }
-					onColorChange={ ( value ) =>
-						setAttributes( { boxBgColor: value } )
+				<UAGTabsControl
+					tabs={ [
+						{
+							name: 'normal',
+							title: __(
+								'Normal',
+								'ultimate-addons-for-gutenberg'
+							),
+						},
+						{
+							name: 'hover',
+							title: __(
+								'Hover',
+								'ultimate-addons-for-gutenberg'
+							),
+						},
+					] }
+					normal={
+						<>
+							<AdvancedPopColorControl
+								label={ __(
+									'Background Color',
+									'ultimate-addons-for-gutenberg'
+								) }
+								colorValue={ boxBgColor }
+								onColorChange={ ( value ) =>
+									setAttributes( { boxBgColor: value } )
+								}
+							/>
+						</>
+					}
+					hover={
+						<>
+							<AdvancedPopColorControl
+								label={ __(
+									'Background Color',
+									'ultimate-addons-for-gutenberg'
+								) }
+								colorValue={ boxBgHoverColor }
+								onColorChange={ ( value ) =>
+									setAttributes( { boxBgHoverColor: value } )
+								}
+							/>
+						</>
 					}
 				/>
 				<ResponsiveSlider

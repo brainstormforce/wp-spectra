@@ -16,8 +16,8 @@ $cta_bottom_spacing_fallback = UAGB_Block_Helper::get_fallback_number( $attr['ct
 
 $t_selectors = array();
 
-$left_margin   = isset( $attr['leftMargin'] ) ? $attr['leftMargin'] : $attr['horizontalSpace'];
-$right_margin  = isset( $attr['rightMargin'] ) ? $attr['rightMargin'] : $attr['horizontalSpace'];
+$left_margin  = isset( $attr['leftMargin'] ) ? $attr['leftMargin'] : $attr['horizontalSpace'];
+$right_margin = isset( $attr['rightMargin'] ) ? $attr['rightMargin'] : $attr['horizontalSpace'];
 
 $selectors = array(
 	' .uagb-timeline__heading'      => array(

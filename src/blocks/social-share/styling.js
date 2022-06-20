@@ -21,9 +21,32 @@ function styling( props ) {
 		sizeTablet,
 		bgSize,
 		stack,
+		iconColor,
+		iconHoverColor,
+		iconBgColor,
+		iconBgHoverColor,
 	} = props.attributes;
 
-	const selectors = {};
+	const selectors = {
+		' .uagb-ss-repeater a.uagb-ss__link': {
+			'color': iconColor,
+		},
+		' .uagb-ss-repeater a.uagb-ss__link svg': {
+			'fill': iconColor,
+		},
+		' .uagb-ss-repeater:hover a.uagb-ss__link': {
+			'color': iconHoverColor,
+		},
+		' .uagb-ss-repeater:hover a.uagb-ss__link svg': {
+			'fill': iconHoverColor,
+		},
+		' .uagb-ss-repeater.uagb-ss__wrapper': {
+			'background': iconBgColor,
+		},
+		' .uagb-ss-repeater.uagb-ss__wrapper:hover': {
+			'background': iconBgHoverColor,
+		},
+	};
 	const tabletSelectors = {};
 	const mobileSelectors = {};
 
