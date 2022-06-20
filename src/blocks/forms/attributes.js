@@ -156,6 +156,14 @@ const attributes = {
 		type: 'string',
 		default: 'left',
 	},
+	buttonAlignTablet: {
+		type: 'string',
+		default: '',
+	},
+	buttonAlignMobile: {
+		type: 'string',
+		default: '',
+	},
 	confirmationType: {
 		type: 'string',
 		default: 'message',
@@ -1153,7 +1161,6 @@ const attributes = {
 			styleType: 'display-labels'
 		},
 	},
-
 	isPreview: {
 		type: 'boolean',
 		default: false,
@@ -1163,5 +1170,80 @@ const attributes = {
 	...inputBorderAttributes,
 	...toggleBorderAttributes,
 	...submitBorderAttributes,
+	labelLetterSpacing: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'label-letter-spacing'
+		}
+	},
+	labelLetterSpacingTablet: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'label-letter-spacing-tablet'
+		}
+	},
+	labelLetterSpacingMobile: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'label-letter-spacing-mobile'
+		}
+	},
+	labelLetterSpacingType: {
+		type: 'string',
+		default: 'px',
+		UAGCopyPaste: {
+			styleType: 'label-letter-spacing-type'
+		}
+	},
+	inputLetterSpacing: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'input-letter-spacing'
+		}
+	},
+	inputLetterSpacingTablet: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'input-letter-spacing-tablet'
+		}
+	},
+	inputLetterSpacingMobile: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'input-letter-spacing-mobile'
+		}
+	},
+	inputLetterSpacingType: {
+		type: 'string',
+		default: 'px',
+		UAGCopyPaste: {
+			styleType: 'input-letter-spacing-type'
+		}
+	},
+	submitLetterSpacing: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'submit-letter-spacing'
+		}
+	},
+	submitLetterSpacingTablet: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'submit-letter-spacing-tablet'
+		}
+	},
+	submitLetterSpacingMobile: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'submit-letter-spacing-mobile'
+		}
+	},
+	submitLetterSpacingType: {
+		type: 'string',
+		default: 'px',
+		UAGCopyPaste: {
+			styleType: 'submit-letter-spacing-type'
+		}
+	},
 };
 export default attributes;

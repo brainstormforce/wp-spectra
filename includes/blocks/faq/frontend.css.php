@@ -100,10 +100,17 @@ $selectors = array(
 		'color' => $attr['questionTextActiveColor'],
 	),
 	' .uagb-faq-questions-button'                         => array(
-		'padding-top'    => UAGB_Helper::get_css_value( $attr['vquestionPaddingDesktop'], $attr['questionPaddingTypeDesktop'] ),
-		'padding-bottom' => UAGB_Helper::get_css_value( $attr['questionBottomPaddingDesktop'], $attr['questionPaddingTypeDesktop'] ),
-		'padding-right'  => UAGB_Helper::get_css_value( $attr['hquestionPaddingDesktop'], $attr['questionPaddingTypeDesktop'] ),
-		'padding-left'   => UAGB_Helper::get_css_value( $attr['questionLeftPaddingDesktop'], $attr['questionPaddingTypeDesktop'] ),
+		'padding-top'      => UAGB_Helper::get_css_value( $attr['vquestionPaddingDesktop'], $attr['questionPaddingTypeDesktop'] ),
+		'padding-bottom'   => UAGB_Helper::get_css_value( $attr['questionBottomPaddingDesktop'], $attr['questionPaddingTypeDesktop'] ),
+		'padding-right'    => UAGB_Helper::get_css_value( $attr['hquestionPaddingDesktop'], $attr['questionPaddingTypeDesktop'] ),
+		'padding-left'     => UAGB_Helper::get_css_value( $attr['questionLeftPaddingDesktop'], $attr['questionPaddingTypeDesktop'] ),
+		'background-color' => $attr['questionTextBgColor'],
+	),
+	' .uagb-faq-item.uagb-faq-item-active .uagb-faq-questions-button' => array(
+		'background-color' => $attr['questionTextActiveBgColor'],
+	),
+	' .uagb-faq-item:hover .uagb-faq-questions-button'    => array(
+		'background-color' => $attr['questionTextActiveBgColor'],
 	),
 	' .uagb-faq-content'                                  => array(
 		'padding-top'    => UAGB_Helper::get_css_value( $answer_top_padding_desktop, $attr['answerPaddingTypeDesktop'] ),

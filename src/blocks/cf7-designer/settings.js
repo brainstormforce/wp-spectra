@@ -44,6 +44,8 @@ const Settings = ( props ) => {
 		fieldLabelColor,
 		fieldInputColor,
 		buttonAlignment,
+		buttonAlignmentTablet,
+		buttonAlignmentMobile,
 		buttonTextColor,
 		buttonBgColor,
 		buttonTextHoverColor,
@@ -215,6 +217,30 @@ const Settings = ( props ) => {
 		msgFontStyle,
 		msgTransform,
 		msgDecoration,
+		labelLetterSpacing,
+		labelLetterSpacingTablet,
+		labelLetterSpacingMobile,
+		labelLetterSpacingType,
+		inputLetterSpacing,
+		inputLetterSpacingTablet,
+		inputLetterSpacingMobile,
+		inputLetterSpacingType,
+		radioCheckLetterSpacing,
+		radioCheckLetterSpacingTablet,
+		radioCheckLetterSpacingMobile,
+		radioCheckLetterSpacingType,
+		buttonLetterSpacing,
+		buttonLetterSpacingTablet,
+		buttonLetterSpacingMobile,
+		buttonLetterSpacingType,
+		validationMsgLetterSpacing,
+		validationMsgLetterSpacingTablet,
+		validationMsgLetterSpacingMobile,
+		validationMsgLetterSpacingType,
+		msgLetterSpacing,
+		msgLetterSpacingTablet,
+		msgLetterSpacingMobile,
+		msgLetterSpacingType,
 	} = attributes;
 
 	let loadInputGoogleFonts;
@@ -555,22 +581,40 @@ const Settings = ( props ) => {
 		>
 			<MultiButtonsControl
 				setAttributes={ setAttributes }
-				label={ __( 'Alignment', 'ultimate-addons-for-gutenberg' ) }
+				label={ __( 'Button Alignment', 'ultimate-addons-for-gutenberg' ) }
 				data={ {
-					value: buttonAlignment,
-					label: 'buttonAlignment',
+					desktop: {
+						value: buttonAlignment,
+						label: 'buttonAlignment',
+					},
+					tablet: {
+						value: buttonAlignmentTablet,
+						label: 'buttonAlignmentTablet',
+					},
+					mobile: {
+						value: buttonAlignmentMobile,
+						label: 'buttonAlignmentMobile',
+					},
 				} }
-				className="uagb-multi-button-alignment-control"
 				options={ [
 					{
 						value: 'left',
-						icon: <Icon icon={ renderSVG( 'fa fa-align-left' ) } />,
-						tooltip: __( 'Left', 'ultimate-addons-for-gutenberg' ),
+						icon: (
+							<Icon
+								icon={ renderSVG( 'fa fa-align-left' ) }
+							/>
+						),
+						tooltip: __(
+							'Left',
+							'ultimate-addons-for-gutenberg'
+						),
 					},
 					{
 						value: 'center',
 						icon: (
-							<Icon icon={ renderSVG( 'fa fa-align-center' ) } />
+							<Icon
+								icon={ renderSVG( 'fa fa-align-center' ) }
+							/>
 						),
 						tooltip: __(
 							'Center',
@@ -580,14 +624,21 @@ const Settings = ( props ) => {
 					{
 						value: 'right',
 						icon: (
-							<Icon icon={ renderSVG( 'fa fa-align-right' ) } />
+							<Icon
+								icon={ renderSVG( 'fa fa-align-right' ) }
+							/>
 						),
-						tooltip: __( 'Right', 'ultimate-addons-for-gutenberg' ),
+						tooltip: __(
+							'Right',
+							'ultimate-addons-for-gutenberg'
+						),
 					},
 					{
 						value: 'justify',
 						icon: (
-							<Icon icon={ renderSVG( 'fa fa-align-justify' ) } />
+							<Icon
+								icon={ renderSVG( 'fa fa-align-justify' ) }
+							/>
 						),
 						tooltip: __(
 							'Justified',
@@ -596,6 +647,7 @@ const Settings = ( props ) => {
 					},
 				] }
 				showIcons={ true }
+				responsive={true}
 			/>
 		</UAGAdvancedPanelBody>
 	);
@@ -672,6 +724,22 @@ const Settings = ( props ) => {
 					value: labelLineHeightTablet,
 					label: 'labelLineHeightTablet',
 				} }
+				letterSpacing={ {
+					value: labelLetterSpacing,
+					label: 'labelLetterSpacing',
+				} }
+				letterSpacingTablet={ {
+					value: labelLetterSpacingTablet,
+					label: 'labelLetterSpacingTablet',
+				} }
+				letterSpacingMobile={ {
+					value: labelLetterSpacingMobile,
+					label: 'labelLetterSpacingMobile',
+				} }
+				letterSpacingType={ {
+					value: labelLetterSpacingType,
+					label: 'labelLetterSpacingType',
+				} }
 			/>
 			<AdvancedPopColorControl
 				label={ __( 'Input Color', 'ultimate-addons-for-gutenberg' ) }
@@ -739,6 +807,22 @@ const Settings = ( props ) => {
 				lineHeightTablet={ {
 					value: inputLineHeightTablet,
 					label: 'inputLineHeightTablet',
+				} }
+				letterSpacing={ {
+					value: inputLetterSpacing,
+					label: 'inputLetterSpacing',
+				} }
+				letterSpacingTablet={ {
+					value: inputLetterSpacingTablet,
+					label: 'inputLetterSpacingTablet',
+				} }
+				letterSpacingMobile={ {
+					value: inputLetterSpacingMobile,
+					label: 'inputLetterSpacingMobile',
+				} }
+				letterSpacingType={ {
+					value: inputLetterSpacingType,
+					label: 'inputLetterSpacingType',
 				} }
 			/>
 			<AdvancedPopColorControl
@@ -988,6 +1072,22 @@ const Settings = ( props ) => {
 					value: radioCheckLineHeightTablet,
 					label: 'radioCheckLineHeightTablet',
 				} }
+				letterSpacing={ {
+					value: radioCheckLetterSpacing,
+					label: 'radioCheckLetterSpacing',
+				} }
+				letterSpacingTablet={ {
+					value: radioCheckLetterSpacingTablet,
+					label: 'radioCheckLetterSpacingTablet',
+				} }
+				letterSpacingMobile={ {
+					value: radioCheckLetterSpacingMobile,
+					label: 'radioCheckLetterSpacingMobile',
+				} }
+				letterSpacingType={ {
+					value: radioCheckLetterSpacingType,
+					label: 'radioCheckLetterSpacingType',
+				} }
 			/>
 			<AdvancedPopColorControl
 				label={ __(
@@ -1179,6 +1279,22 @@ const Settings = ( props ) => {
 					value: buttonLineHeightTablet,
 					label: 'buttonLineHeightTablet',
 				} }
+				letterSpacing={ {
+					value: buttonLetterSpacing,
+					label: 'buttonLetterSpacing',
+				} }
+				letterSpacingTablet={ {
+					value: buttonLetterSpacingTablet,
+					label: 'buttonLetterSpacingTablet',
+				} }
+				letterSpacingMobile={ {
+					value: buttonLetterSpacingMobile,
+					label: 'buttonLetterSpacingMobile',
+				} }
+				letterSpacingType={ {
+					value: buttonLetterSpacingType,
+					label: 'buttonLetterSpacingType',
+				} }
 			/>
 			<SpacingControl
 				{ ...props }
@@ -1342,6 +1458,22 @@ const Settings = ( props ) => {
 					value: validationMsgLineHeightTablet,
 					label: 'validationMsgLineHeightTablet',
 				} }
+				letterSpacing={ {
+					value: validationMsgLetterSpacing,
+					label: 'validationMsgLetterSpacing',
+				} }
+				letterSpacingTablet={ {
+					value: validationMsgLetterSpacingTablet,
+					label: 'validationMsgLetterSpacingTablet',
+				} }
+				letterSpacingMobile={ {
+					value: validationMsgLetterSpacingMobile,
+					label: 'validationMsgLetterSpacingMobile',
+				} }
+				letterSpacingType={ {
+					value: validationMsgLetterSpacingType,
+					label: 'validationMsgLetterSpacingType',
+				} }
 			/>
 			{ validationMsgPosition === 'bottom_right' && (
 				<>
@@ -1430,6 +1562,22 @@ const Settings = ( props ) => {
 				lineHeightTablet={ {
 					value: msgLineHeightTablet,
 					label: 'msgLineHeightTablet',
+				} }
+				letterSpacing={ {
+					value: msgLetterSpacing,
+					label: 'msgLetterSpacing',
+				} }
+				letterSpacingTablet={ {
+					value: msgLetterSpacingTablet,
+					label: 'msgLetterSpacingTablet',
+				} }
+				letterSpacingMobile={ {
+					value: msgLetterSpacingMobile,
+					label: 'msgLetterSpacingMobile',
+				} }
+				letterSpacingType={ {
+					value: msgLetterSpacingType,
+					label: 'msgLetterSpacingType',
 				} }
 			/>
 			<hr className="uagb-editor__separator" />

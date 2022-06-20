@@ -52,7 +52,9 @@ const Settings = ( props ) => {
 		enableSeparator,
 		boxBgColor,
 		questionTextColor,
+		questionTextBgColor,
 		questionTextActiveColor,
+		questionTextActiveBgColor,
 		questionPaddingTypeDesktop,
 		questionPaddingTypeMobile,
 		questionPaddingTypeTablet,
@@ -132,6 +134,16 @@ const Settings = ( props ) => {
 		questionFontStyle,
 		questionTransform,
 		questionDecoration,
+		// letter spacing
+		questionLetterSpacing,
+		questionLetterSpacingTablet,
+		questionLetterSpacingMobile,
+		questionLetterSpacingType,
+		answerLetterSpacing,
+		answerLetterSpacingTablet,
+		answerLetterSpacingMobile,
+		answerLetterSpacingType,
+		boxBgHoverColor
 	} = attributes;
 
 	const onchangeIcon = ( value ) => {
@@ -545,6 +557,22 @@ const Settings = ( props ) => {
 						value: questionLineHeightTablet,
 						label: 'questionLineHeightTablet',
 					} }
+					letterSpacing={ {
+						value: questionLetterSpacing,
+						label: 'questionLetterSpacing',
+					} }
+					letterSpacingTablet={ {
+						value: questionLetterSpacingTablet,
+						label: 'questionLetterSpacingTablet',
+					} }
+					letterSpacingMobile={ {
+						value: questionLetterSpacingMobile,
+						label: 'questionLetterSpacingMobile',
+					} }
+					letterSpacingType={ {
+						value: questionLetterSpacingType,
+						label: 'questionLetterSpacingType',
+					} }
 				/>
 				{ 'accordion' === layout && (
 					<UAGTabsControl
@@ -565,44 +593,82 @@ const Settings = ( props ) => {
 							},
 						] }
 						normal={
-							<AdvancedPopColorControl
-								label={ __(
-									'Text Color',
-									'ultimate-addons-for-gutenberg'
-								) }
-								colorValue={ questionTextColor }
-								onColorChange={ ( value ) =>
-									setAttributes( { questionTextColor: value } )
-								}
-							/>
+							<>
+								<AdvancedPopColorControl
+									label={ __(
+										'Text Color',
+										'ultimate-addons-for-gutenberg'
+									) }
+									colorValue={ questionTextColor }
+									onColorChange={ ( value ) =>
+										setAttributes( { questionTextColor: value } )
+									}
+								/>
+								<AdvancedPopColorControl
+									label={ __(
+										'Background Color',
+										'ultimate-addons-for-gutenberg'
+									) }
+									colorValue={ questionTextBgColor }
+									onColorChange={ ( value ) =>
+										setAttributes( { questionTextBgColor: value } )
+									}
+								/>
+							</>
 						}
 						active={
-							<AdvancedPopColorControl
-								label={ __(
-									'Text Color',
-									'ultimate-addons-for-gutenberg'
-								) }
-								colorValue={ questionTextActiveColor }
-								onColorChange={ ( value ) =>
-									setAttributes( {
-										questionTextActiveColor: value,
-									} )
-								}
-							/>
+							<>
+								<AdvancedPopColorControl
+									label={ __(
+										'Text Color',
+										'ultimate-addons-for-gutenberg'
+									) }
+									colorValue={ questionTextActiveColor }
+									onColorChange={ ( value ) =>
+										setAttributes( {
+											questionTextActiveColor: value,
+										} )
+									}
+								/>
+								<AdvancedPopColorControl
+									label={ __(
+										'Background Color',
+										'ultimate-addons-for-gutenberg'
+									) }
+									colorValue={ questionTextActiveBgColor }
+									onColorChange={ ( value ) =>
+										setAttributes( {
+											questionTextActiveBgColor: value,
+										} )
+									}
+								/>
+							</>
 						}
 					/>
 				)}
 				{ 'grid' === layout && (
-					<AdvancedPopColorControl
-						label={ __(
-							'Text Color',
-							'ultimate-addons-for-gutenberg'
-						) }
-						colorValue={ questionTextColor }
-						onColorChange={ ( value ) =>
-							setAttributes( { questionTextColor: value } )
-						}
-					/>
+					<>
+						<AdvancedPopColorControl
+							label={ __(
+								'Text Color',
+								'ultimate-addons-for-gutenberg'
+							) }
+							colorValue={ questionTextColor }
+							onColorChange={ ( value ) =>
+								setAttributes( { questionTextColor: value } )
+							}
+						/>
+						<AdvancedPopColorControl
+							label={ __(
+								'Background Color',
+								'ultimate-addons-for-gutenberg'
+							) }
+							colorValue={ questionTextBgColor }
+							onColorChange={ ( value ) =>
+								setAttributes( { questionTextBgColor: value } )
+							}
+						/>
+					</>
 				)}
 				<SpacingControl
 					{ ...props }
@@ -770,6 +836,22 @@ const Settings = ( props ) => {
 						value: answerLineHeightTablet,
 						label: 'answerLineHeightTablet',
 					} }
+					letterSpacing={ {
+						value: answerLetterSpacing,
+						label: 'answerLetterSpacing',
+					} }
+					letterSpacingTablet={ {
+						value: answerLetterSpacingTablet,
+						label: 'answerLetterSpacingTablet',
+					} }
+					letterSpacingMobile={ {
+						value: answerLetterSpacingMobile,
+						label: 'answerLetterSpacingMobile',
+					} }
+					letterSpacingType={ {
+						value:answerLetterSpacingType,
+						label: 'answerLetterSpacingType',
+					} }
 				/>
 				<SpacingControl
 					{ ...props }
@@ -864,14 +946,50 @@ const Settings = ( props ) => {
 				initialOpen={ true }
 				className="uagb__url-panel-body"
 			>
-				<AdvancedPopColorControl
-					label={ __(
-						'Background Color',
-						'ultimate-addons-for-gutenberg'
-					) }
-					colorValue={ boxBgColor }
-					onColorChange={ ( value ) =>
-						setAttributes( { boxBgColor: value } )
+				<UAGTabsControl
+					tabs={ [
+						{
+							name: 'normal',
+							title: __(
+								'Normal',
+								'ultimate-addons-for-gutenberg'
+							),
+						},
+						{
+							name: 'hover',
+							title: __(
+								'Hover',
+								'ultimate-addons-for-gutenberg'
+							),
+						},
+					] }
+					normal={
+						<>
+							<AdvancedPopColorControl
+								label={ __(
+									'Background Color',
+									'ultimate-addons-for-gutenberg'
+								) }
+								colorValue={ boxBgColor }
+								onColorChange={ ( value ) =>
+									setAttributes( { boxBgColor: value } )
+								}
+							/>
+						</>
+					}
+					hover={
+						<>
+							<AdvancedPopColorControl
+								label={ __(
+									'Background Color',
+									'ultimate-addons-for-gutenberg'
+								) }
+								colorValue={ boxBgHoverColor }
+								onColorChange={ ( value ) =>
+									setAttributes( { boxBgHoverColor: value } )
+								}
+							/>
+						</>
 					}
 				/>
 				<ResponsiveSlider

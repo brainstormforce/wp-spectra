@@ -136,6 +136,19 @@ const Settings = ( props ) => {
 		titleDecoration,
 		countDecoration,
 		listDecoration,
+		// letter spacing
+		titleLetterSpacing,
+		titleLetterSpacingTablet,
+		titleLetterSpacingMobile,
+		titleLetterSpacingType,
+		countLetterSpacing,
+		countLetterSpacingTablet,
+		countLetterSpacingMobile,
+		countLetterSpacingType,
+		listLetterSpacing,
+		listLetterSpacingTablet,
+		listLetterSpacingMobile,
+		listLetterSpacingType,
 	} = attributes;
 
 	const taxonomy_list_setting = showEmptyTaxonomy ? taxonomyList : termsList;
@@ -694,6 +707,22 @@ const Settings = ( props ) => {
 						value: titleDecoration,
 						label: 'titleDecoration',
 					} }
+					letterSpacing={ {
+						value: titleLetterSpacing,
+						label: 'titleLetterSpacing',
+					} }
+					letterSpacingTablet={ {
+						value: titleLetterSpacingTablet,
+						label: 'titleLetterSpacingTablet',
+					} }
+					letterSpacingMobile={ {
+						value: titleLetterSpacingMobile,
+						label: 'titleLetterSpacingMobile',
+					} }
+					letterSpacingType={ {
+						value: titleLetterSpacingType,
+						label: 'titleLetterSpacingType',
+					} }
 				/>
 				<AdvancedPopColorControl
 					label={ __( 'Color', 'ultimate-addons-for-gutenberg' ) }
@@ -806,6 +835,22 @@ const Settings = ( props ) => {
 					decoration={ {
 						value: countDecoration,
 						label: 'countDecoration',
+					} }
+					letterSpacing={ {
+						value: countLetterSpacing,
+						label: 'countLetterSpacing',
+					} }
+					letterSpacingTablet={ {
+						value: countLetterSpacingTablet,
+						label: 'countLetterSpacingTablet',
+					} }
+					letterSpacingMobile={ {
+						value: countLetterSpacingMobile,
+						label: 'countLetterSpacingMobile',
+					} }
+					letterSpacingType={ {
+						value: countLetterSpacingType,
+						label: 'countLetterSpacingType',
 					} }
 				/>
 			</UAGAdvancedPanelBody>
@@ -1063,6 +1108,22 @@ const Settings = ( props ) => {
 					decoration={ {
 						value: listDecoration,
 						label: 'listDecoration',
+					} }
+					letterSpacing={ {
+						value: listLetterSpacing,
+						label: 'listLetterSpacing',
+					} }
+					letterSpacingTablet={ {
+						value: listLetterSpacingTablet,
+						label: 'listLetterSpacingTablet',
+					} }
+					letterSpacingMobile={ {
+						value: listLetterSpacingMobile,
+						label: 'listLetterSpacingMobile',
+					} }
+					letterSpacingType={ {
+						value: listLetterSpacingType,
+						label: 'listLetterSpacingType',
 					} }
 				/>
 				<UAGTabsControl

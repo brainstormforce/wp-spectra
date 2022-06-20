@@ -9,7 +9,7 @@ import {
 	useRef,
 	useEffect,
 } from '@wordpress/element';
-
+import { select } from '@wordpress/data';
 import getUAGEditorStateLocalStorage from '@Controls/getUAGEditorStateLocalStorage';
 
 const LAYOUT = 'general',
@@ -25,7 +25,8 @@ const InspectorTabs = ( props ) => {
 		};
 	}, [] );
 
-	const uagLastOpenedState = getUAGEditorStateLocalStorage( 'uagLastOpenedState' );
+	const uagSettingState = getUAGEditorStateLocalStorage( 'uagSettingState' );
+
 	const { defaultTab, children, tabs } = props;
 	const [ currentTab, setCurrentTab ] = useState( defaultTab ? defaultTab : tabs[ 0 ] );
 
@@ -62,9 +63,13 @@ const InspectorTabs = ( props ) => {
 
 		renderUAGTabsSettingsInOrder();
 
+		const { getSelectedBlock } = select( 'core/block-editor' );
+		const blockName = getSelectedBlock()?.name;
 		// This code is to fix the side-effect of the editor responsive click settings panel refresh issue.
-		if ( uagLastOpenedState && uagLastOpenedState?.inspectorTabName && currentTab !== uagLastOpenedState?.inspectorTabName ) {
-			setCurrentTab( uagLastOpenedState?.inspectorTabName )
+		if ( uagSettingState && uagSettingState[blockName] && currentTab !== uagSettingState[blockName]?.selectedTab ) {
+			setCurrentTab( uagSettingState[blockName]?.selectedTab || 'general' )
+		} else if ( sidebarPanel ) {
+			sidebarPanel.setAttribute( 'data-uagb-tab', 'general' );
 		}
 		// Above Section Ends.
 		// component will unmount
@@ -83,18 +88,27 @@ const InspectorTabs = ( props ) => {
 
 	}, [] );
 
-	useEffect( () => {
-		if ( sidebarPanel ) {
-			sidebarPanel.setAttribute( 'data-uagb-tab', defaultTab );
-		}
-	}, [ defaultTab ] );
-
 	const _onTabChange = ( tab ) => {
 		renderUAGTabsSettingsInOrder();
 		setCurrentTab( tab );
 
 		if ( sidebarPanel ) {
 			sidebarPanel.setAttribute( 'data-uagb-tab', tab );
+		}
+
+		// Below code is to set the setting state of Tab for each block.
+		const { getSelectedBlock } = select( 'core/block-editor' );
+		const blockName = getSelectedBlock()?.name;
+
+		const data = {
+			...uagSettingState,
+			[blockName] : {
+				selectedTab : tab
+			}
+		}
+		const uagLocalStorage = getUAGEditorStateLocalStorage();
+		if ( uagLocalStorage ) {
+			uagLocalStorage.setItem( 'uagSettingState', JSON.stringify( data ) );
 		}
 	};
 

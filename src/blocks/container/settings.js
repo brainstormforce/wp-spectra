@@ -179,7 +179,7 @@ const Settings = ( props ) => {
 	// in case bg type was set to Image before and given a custom width and height.
 	useEffect( () => {
 		if ( backgroundType === 'color' ) {
-			setAttributes( { 
+			setAttributes( {
 				backgroundSizeDesktop: 'cover',
 				backgroundSizeTablet: 'cover',
 				backgroundSizeMobile: 'cover',

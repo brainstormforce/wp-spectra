@@ -9,12 +9,15 @@
 
 $highLight_border_attribute = UAGB_Block_Helper::uag_generate_border_attribute( 'highLight' );
 return array_merge(
+	$highLight_border_attribute,
 	array(
 		'classMigrate'                 => false,
 		'blockBackground'              => '',
 		'blockBackgroundType'          => 'classic',
 		'blockGradientBackground'      => 'linear-gradient(90deg, rgb(6, 147, 227) 0%, rgb(155, 81, 224) 100%)',
 		'headingAlign'                 => 'left',
+		'headingAlignTablet'           => '',
+		'headingAlignMobile'           => '',
 		'headingColor'                 => '',
 		'headingColorType'             => 'classic',
 		'headingGradientColor'         => 'linear-gradient(90deg, rgb(155, 81, 224) 0%, rgb(6, 147, 227) 100%)',
@@ -150,6 +153,5 @@ return array_merge(
 		'highLightPaddingUnitTablet'   => 'px',
 		'highLightPaddingUnitMobile'   => 'px',
 		'highLightPaddingLink'         => '',
-	),
-	$highLight_border_attribute
+	)
 );

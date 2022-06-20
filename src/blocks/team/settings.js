@@ -145,6 +145,19 @@ const Settings = ( props ) => {
 		titleFontStyle,
 		descFontStyle,
 		prefixFontStyle,
+		// lettter spacing
+		titleLetterSpacing,
+		titleLetterSpacingTablet,
+		titleLetterSpacingMobile,
+		titleLetterSpacingType,
+		prefixLetterSpacing,
+		prefixLetterSpacingTablet,
+		prefixLetterSpacingMobile,
+		prefixLetterSpacingType,
+		descLetterSpacing,
+		descLetterSpacingTablet,
+		descLetterSpacingMobile,
+		descLetterSpacingType,
 	} = attributes;
 
 	/*
@@ -584,7 +597,7 @@ const Settings = ( props ) => {
 							}
 						/>
 						<p className="components-base-control__label">
-							{ __( 'Twitter', 'ultimate-addons-for-gutenberg' ) }
+							{ __( 'Item 1', 'ultimate-addons-for-gutenberg' ) }
 						</p>
 						<UAGIconPicker
 							label={ __(
@@ -610,7 +623,7 @@ const Settings = ( props ) => {
 										setAttributes( { twitterLink: value } )
 									}
 									placeholder={ __(
-										'Enter Twitter URL',
+										'Enter Item 1 URL',
 										'ultimate-addons-for-gutenberg'
 									) }
 								/>
@@ -618,7 +631,7 @@ const Settings = ( props ) => {
 						) }
 						<p className="components-base-control__label">
 							{ __(
-								'Facebook',
+								'Item 2',
 								'ultimate-addons-for-gutenberg'
 							) }
 						</p>
@@ -646,7 +659,7 @@ const Settings = ( props ) => {
 										setAttributes( { fbLink: value } )
 									}
 									placeholder={ __(
-										'Enter Facebook URL',
+										'Enter Item 2 URL',
 										'ultimate-addons-for-gutenberg'
 									) }
 								/>
@@ -654,7 +667,7 @@ const Settings = ( props ) => {
 						) }
 						<p className="components-base-control__label">
 							{ __(
-								'LinkedIn',
+								'Item 3',
 								'ultimate-addons-for-gutenberg'
 							) }
 						</p>
@@ -682,7 +695,7 @@ const Settings = ( props ) => {
 										setAttributes( { linkedinLink: value } )
 									}
 									placeholder={ __(
-										'Enter LinkedIn URL',
+										'Enter Item 3 URL',
 										'ultimate-addons-for-gutenberg'
 									) }
 								/>
@@ -690,7 +703,7 @@ const Settings = ( props ) => {
 						) }
 						<p className="components-base-control__label">
 							{ __(
-								'Pinterest',
+								'Item 4',
 								'ultimate-addons-for-gutenberg'
 							) }
 						</p>
@@ -718,7 +731,7 @@ const Settings = ( props ) => {
 										setAttributes( { pinLink: value } )
 									}
 									placeholder={ __(
-										'Enter Pinterest URL',
+										'Enter Item 4 URL',
 										'ultimate-addons-for-gutenberg'
 									) }
 								/>
@@ -805,6 +818,22 @@ const Settings = ( props ) => {
 					lineHeightTablet={ {
 						value: titleLineHeightTablet,
 						label: 'titleLineHeightTablet',
+					} }
+					letterSpacing={ {
+						value: titleLetterSpacing,
+						label: 'titleLetterSpacing',
+					} }
+					letterSpacingTablet={ {
+						value: titleLetterSpacingTablet,
+						label: 'titleLetterSpacingTablet',
+					} }
+					letterSpacingMobile={ {
+						value: titleLetterSpacingMobile,
+						label: 'titleLetterSpacingMobile',
+					} }
+					letterSpacingType={ {
+						value: titleLetterSpacingType,
+						label: 'titleLetterSpacingType',
 					} }
 				/>
 
@@ -912,6 +941,22 @@ const Settings = ( props ) => {
 						value: prefixLineHeightTablet,
 						label: 'prefixLineHeightTablet',
 					} }
+					letterSpacing={ {
+						value: prefixLetterSpacing,
+						label: 'prefixLetterSpacing',
+					} }
+					letterSpacingTablet={ {
+						value: prefixLetterSpacingTablet,
+						label: 'prefixLetterSpacingTablet',
+					} }
+					letterSpacingMobile={ {
+						value: prefixLetterSpacingMobile,
+						label: 'prefixLetterSpacingMobile',
+					} }
+					letterSpacingType={ {
+						value: prefixLetterSpacingType,
+						label: 'prefixLetterSpacingType',
+					} }
 				/>
 				<ResponsiveSlider
 					label={ __(
@@ -1016,6 +1061,22 @@ const Settings = ( props ) => {
 					lineHeightTablet={ {
 						value: descLineHeightTablet,
 						label: 'descLineHeightTablet',
+					} }
+					letterSpacing={ {
+						value: descLetterSpacing,
+						label: 'descLetterSpacing',
+					} }
+					letterSpacingTablet={ {
+						value: descLetterSpacingTablet,
+						label: 'descLetterSpacingTablet',
+					} }
+					letterSpacingMobile={ {
+						value: descLetterSpacingMobile,
+						label: 'descLetterSpacingMobile',
+					} }
+					letterSpacingType={ {
+						value: descLetterSpacingType,
+						label: 'descLetterSpacingType',
 					} }
 				/>
 				<ResponsiveSlider

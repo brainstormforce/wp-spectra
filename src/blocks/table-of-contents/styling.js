@@ -102,7 +102,16 @@ function styling( props ) {
 		headingFontStyle,
 		headingTransform,
 		headingDecoration,
-		headingAlignment
+		headingAlignment,
+		headingLetterSpacing,
+		headingLetterSpacingTablet,
+		headingLetterSpacingMobile,
+		headingLetterSpacingType,
+		listLetterSpacing,
+		listLetterSpacingTablet,
+		listLetterSpacingMobile,
+		listLetterSpacingType,
+		markerView
 	} = props.attributes;
 
 	let selectors = {};
@@ -114,6 +123,12 @@ function styling( props ) {
 	const overallBorderCSSMobile = generateBorderCSS( props.attributes, 'overall', 'mobile' )
 
 	selectors = {
+		' .uagb-toc__list-wrap ul li': {
+			'font-size': generateCSSUnit( fontSize, fontSizeType ),
+		},
+		' .uagb-toc__list-wrap ol li': {
+			'font-size': generateCSSUnit( fontSize, fontSizeType ),
+		},
 		' .uagb-toc__list-wrap ol li a': {
 			'font-size': generateCSSUnit( fontSize, fontSizeType ),
 			'line-height': generateCSSUnit( lineHeight, lineHeightType ),
@@ -123,6 +138,7 @@ function styling( props ) {
 			'text-transform': fontTransform,
 			'font-weight': fontWeight,
 			'color': linkColor,
+			'letter-spacing': generateCSSUnit( listLetterSpacing, listLetterSpacingType ),
 		},
 		' .uagb-toc__title-wrap': {
 			'justify-content': align,
@@ -145,6 +161,7 @@ function styling( props ) {
 			'text-transform': headingTransform,
 			'font-weight': headingFontWeight,
 			'color': headingColor,
+			'letter-spacing': generateCSSUnit( headingLetterSpacing, headingLetterSpacingType ),
 		},
 		' .uagb-toc__list-wrap ol li a:hover': {
 			'color': linkHoverColor,
@@ -179,6 +196,7 @@ function styling( props ) {
 			'padding-bottom': 0,
 		},
 		' .uagb-toc__list-wrap ol.uagb-toc__list > li': {
+			'list-style-type': disableBullets ? 'none !important' :  markerView + ' !important',
 			'padding-top':
 				'calc( ' +
 				generateCSSUnit(
@@ -195,6 +213,7 @@ function styling( props ) {
 				' / 2 )',
 		},
 		' .uagb-toc__list-wrap ul.uagb-toc__list > li': {
+			'list-style-type': disableBullets ? 'none !important' :  markerView + ' !important',
 			'padding-top':
 				'calc( ' +
 				generateCSSUnit(
@@ -240,20 +259,27 @@ function styling( props ) {
 
 	if ( disableBullets ) {
 		selectors[ '.wp-block-uagb-table-of-contents ol.uagb-toc__list>li' ] = {
-			'list-style-type': 'none',
+			'list-style-type': 'none !important',
 		};
 		selectors[ ' .uagb-toc__list' ] = {
-			'list-style-type': 'none',
+			'list-style-type': 'none  !important',
 		};
 		selectors[ ' .uagb-toc__list .uagb-toc__list' ] = {
-			'list-style-type': 'none',
+			'list-style-type': 'none !important',
 		};
 	}
 
 	tablet_selectors = {
+		' .uagb-toc__list-wrap ul li': {
+			'font-size': generateCSSUnit( fontSizeTablet, fontSizeType ),
+		},
+		' .uagb-toc__list-wrap ol li': {
+			'font-size': generateCSSUnit( fontSizeTablet, fontSizeType ),
+		},
 		' .uagb-toc__list-wrap ol li a': {
 			'font-size': generateCSSUnit( fontSizeTablet, fontSizeType ),
 			'line-height': generateCSSUnit( lineHeightTablet, lineHeightType ),
+			'letter-spacing': generateCSSUnit( listLetterSpacingTablet, listLetterSpacingType ),
 		},
 		' .uagb-toc__title': {
 			'font-size': generateCSSUnit(
@@ -265,6 +291,7 @@ function styling( props ) {
 				headingLineHeightType
 			),
 			'margin-bottom': generateCSSUnit( headingBottomTablet, headingBottomType ),
+			'letter-spacing': generateCSSUnit( headingLetterSpacingTablet, headingLetterSpacingType ),
 		},
 		' .uagb-toc__wrap': {
 			...overallBorderCSSTablet,
@@ -353,9 +380,16 @@ function styling( props ) {
 	};
 
 	mobile_selectors = {
+		' .uagb-toc__list-wrap ul li': {
+			'font-size': generateCSSUnit( fontSizeMobile, fontSizeType ),
+		},
+		' .uagb-toc__list-wrap ol li': {
+			'font-size': generateCSSUnit( fontSizeMobile, fontSizeType ),
+		},
 		' .uagb-toc__list-wrap ol li a': {
 			'font-size': generateCSSUnit( fontSizeMobile, fontSizeType ),
 			'line-height': generateCSSUnit( lineHeightMobile, lineHeightType ),
+			'letter-spacing': generateCSSUnit( listLetterSpacingMobile, listLetterSpacingType ),
 		},
 		' .uagb-toc__title': {
 			'font-size': generateCSSUnit(
@@ -367,6 +401,7 @@ function styling( props ) {
 				headingLineHeightType
 			),
 			'margin-bottom': generateCSSUnit( headingBottomMobile, headingBottomType ),
+			'letter-spacing': generateCSSUnit( headingLetterSpacingMobile, headingLetterSpacingType ),
 		},
 		' .uagb-toc__wrap': {
 			...overallBorderCSSMobile,

@@ -93,6 +93,19 @@ function styling( props ) {
 		titleDecoration,
 		countDecoration,
 		listDecoration,
+		// letter spacing
+		titleLetterSpacing,
+		titleLetterSpacingTablet,
+		titleLetterSpacingMobile,
+		titleLetterSpacingType,
+		countLetterSpacing,
+		countLetterSpacingTablet,
+		countLetterSpacingMobile,
+		countLetterSpacingType,
+		listLetterSpacing,
+		listLetterSpacingTablet,
+		listLetterSpacingMobile,
+		listLetterSpacingType,
 	} = props.attributes;
 
 	const borderCSS = generateBorderCSS( props.attributes, 'separator', '' );
@@ -154,7 +167,20 @@ function styling( props ) {
 				' ' +
 				boxShadowPositionCSS,
 		},
-
+		'.uagb-layout-grid .uagb-tax-link': {
+			'color': countColor,
+			'font-size': generateCSSUnit( countFontSize, countFontSizeType ),
+			'font-family': countFontFamily,
+			'font-weight': countFontWeight,
+			'line-height': generateCSSUnit(
+				countLineHeight,
+				countLineHeightType
+			),
+			'font-style': countFontStyle,
+			'text-decoration': countDecoration,
+			'text-transform': countTransform,
+			'letter-spacing': generateCSSUnit( countLetterSpacing, countLetterSpacingType ),
+		},
 		'.uagb-layout-grid .uagb-tax-title': {
 			'color': titleColor,
 			'margin-top': '0',
@@ -169,19 +195,7 @@ function styling( props ) {
 			'font-style': titleFontStyle,
 			'text-decoration': titleDecoration,
 			'text-transform': titleTransform,
-		},
-		'.uagb-layout-grid .uagb-tax-link': {
-			'color': countColor,
-			'font-size': generateCSSUnit( countFontSize, countFontSizeType ),
-			'font-family': countFontFamily,
-			'font-weight': countFontWeight,
-			'line-height': generateCSSUnit(
-				countLineHeight,
-				countLineHeightType
-			),
-			'font-style': countFontStyle,
-			'text-decoration': countDecoration,
-			'text-transform': countTransform,
+			'letter-spacing': generateCSSUnit( titleLetterSpacing, titleLetterSpacingType ),
 		},
 		'.uagb-layout-list .uagb-tax-list': {
 			'list-style': listStyle,
@@ -196,6 +210,7 @@ function styling( props ) {
 			'font-style': listFontStyle,
 			'text-decoration': listDecoration,
 			'text-transform': listTransform,
+			'letter-spacing': generateCSSUnit( listLetterSpacing, listLetterSpacingType ),
 		},
 		'.uagb-layout-list .uagb-tax-list:hover': { // For Bullets.
 			'color': hoverlistStyleColor,
@@ -362,6 +377,7 @@ function styling( props ) {
 				titleLineHeightType
 			),
 			'margin-bottom': generateCSSUnit( titleBottomSpaceMobile, 'px' ),
+			'letter-spacing': generateCSSUnit( titleLetterSpacingMobile, titleLetterSpacingType ),
 		},
 		'.uagb-layout-grid .uagb-tax-link': {
 			'font-size': generateCSSUnit(
@@ -372,6 +388,7 @@ function styling( props ) {
 				countLineHeightMobile,
 				countLineHeightType
 			),
+			'letter-spacing': generateCSSUnit( countLetterSpacingMobile, countLetterSpacingType ),
 		},
 		'.uagb-layout-list .uagb-tax-list': {
 			'font-size': generateCSSUnit(
@@ -382,6 +399,7 @@ function styling( props ) {
 				listLineHeightMobile,
 				listLineHeightType
 			),
+			'letter-spacing': generateCSSUnit( listLetterSpacingMobile, listLetterSpacingType ),
 		},
 		/* For Backword */
 		' .uagb-taxonomy-wrap.uagb-layout-grid': {
@@ -474,6 +492,7 @@ function styling( props ) {
 			),
 
 			'margin-bottom': generateCSSUnit( titleBottomSpaceTablet, 'px' ),
+			'letter-spacing': generateCSSUnit( titleLetterSpacingTablet, titleLetterSpacingType ),
 		},
 		'.uagb-layout-grid .uagb-tax-link': {
 			'font-size': generateCSSUnit(
@@ -484,6 +503,7 @@ function styling( props ) {
 				countLineHeightTablet,
 				countLineHeightType
 			),
+			'letter-spacing': generateCSSUnit( countLetterSpacingTablet, countLetterSpacingType ),
 		},
 		'.uagb-layout-list .uagb-tax-list': {
 			'font-size': generateCSSUnit(
@@ -494,6 +514,7 @@ function styling( props ) {
 				listLineHeightTablet,
 				listLineHeightType
 			),
+			'letter-spacing': generateCSSUnit( listLetterSpacingTablet, listLetterSpacingType ),
 		},
 		/* For Backword. */
 		' .uagb-taxonomy-wrap.uagb-layout-grid': {

@@ -767,6 +767,92 @@ if ( ! class_exists( 'UAGB_CF7_Styler' ) ) {
 								'type'    => 'boolean',
 								'default' => false,
 							),
+						
+							'labelLetterSpacing'               => array(
+								'type'    => 'number',
+								'default' => '',
+							),
+							'labelLetterSpacingType'           => array(
+								'type'    => 'string',
+								'default' => 'px',
+							),
+							'labelLetterSpacingMobile'         => array(
+								'type' => 'number',
+							),
+							'labelLetterSpacingTablet'         => array(
+								'type' => 'number',
+							),
+							'inputLetterSpacing'               => array(
+								'type'    => 'number',
+								'default' => '',
+							),
+							'inputLetterSpacingType'           => array(
+								'type'    => 'string',
+								'default' => 'px',
+							),
+							'inputLetterSpacingMobile'         => array(
+								'type' => 'number',
+							),
+							'inputLetterSpacingTablet'         => array(
+								'type' => 'number',
+							),
+							'buttonLetterSpacing'              => array(
+								'type'    => 'number',
+								'default' => '',
+							),
+							'buttonLetterSpacingType'          => array(
+								'type'    => 'string',
+								'default' => 'px',
+							),
+							'buttonLetterSpacingMobile'        => array(
+								'type' => 'number',
+							),
+							'buttonLetterSpacingTablet'        => array(
+								'type' => 'number',
+							),
+							'radioCheckLetterSpacing'          => array(
+								'type'    => 'number',
+								'default' => '',
+							),
+							'radioCheckLetterSpacingType'      => array(
+								'type'    => 'string',
+								'default' => 'px',
+							),
+							'radioCheckLetterSpacingMobile'    => array(
+								'type' => 'number',
+							),
+							'radioCheckLetterSpacingTablet'    => array(
+								'type' => 'number',
+							),
+							'validationMsgLetterSpacing'       => array(
+								'type'    => 'number',
+								'default' => '',
+							),
+							'validationMsgLetterSpacingType'   => array(
+								'type'    => 'string',
+								'default' => 'px',
+							),
+							'validationMsgLetterSpacingMobile' => array(
+								'type' => 'number',
+							),
+							'validationMsgLetterSpacingTablet' => array(
+								'type' => 'number',
+							),
+
+							'msgLetterSpacing'                 => array(
+								'type'    => 'number',
+								'default' => '',
+							),
+							'msgLetterSpacingType'             => array(
+								'type'    => 'string',
+								'default' => 'px',
+							),
+							'msgLetterSpacingMobile'           => array(
+								'type' => 'number',
+							),
+							'msgLetterSpacingTablet'           => array(
+								'type' => 'number',
+							),
 						),
 					),
 					'render_callback' => array( $this, 'render_html' ),
@@ -789,6 +875,8 @@ if ( ! class_exists( 'UAGB_CF7_Styler' ) ) {
 				'uagb-cf7-styler__align-' . $attributes['align'],
 				'uagb-cf7-styler__field-style-' . $attributes['fieldStyle'],
 				'uagb-cf7-styler__btn-align-' . $attributes['buttonAlignment'],
+				'uagb-cf7-styler__btn-align-tablet-' . $attributes['buttonAlignmentTablet'],
+				'uagb-cf7-styler__btn-align-mobile-' . $attributes['buttonAlignmentMobile'],
 				'uagb-cf7-styler__highlight-style-' . $attributes['validationMsgPosition'],
 			);
 

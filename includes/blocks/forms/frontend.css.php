@@ -341,12 +341,11 @@ if ( 'boxed' === $attr['formStyle'] ) {
 	$m_selectors[' .uagb-forms-main-form .uagb-forms-input'] = $input_overall_border_Tablet;
 }
 
-$selectors[' .uagb-forms-main-form  .uagb-forms-input'] = array(
+$selectors[' .uagb-forms-main-form  .uagb-forms-input']   = array(
 	'padding-top'    => UAGB_Helper::get_css_value( $paddingFieldTop, $attr['paddingFieldUnit'] ),
 	'padding-bottom' => UAGB_Helper::get_css_value( $paddingFieldBottom, $attr['paddingFieldUnit'] ),
 	'padding-left'   => UAGB_Helper::get_css_value( $paddingFieldLeft, $attr['paddingFieldUnit'] ),
 	'padding-right'  => UAGB_Helper::get_css_value( $paddingFieldRight, $attr['paddingFieldUnit'] ),
-
 );
 $t_selectors[' .uagb-forms-main-form  .uagb-forms-input'] = array(
 	'padding-top'    => UAGB_Helper::get_css_value( $attr['paddingFieldTopTablet'], $attr['paddingFieldUnitTablet'] ),
@@ -375,12 +374,11 @@ $m_selectors[' .uagb-forms-main-form  .uagb-forms-input.uagb-form-phone-country'
 	'padding-right'  => UAGB_Helper::get_css_value( $attr['paddingFieldRightMobile'], $attr['paddingFieldUnitmobile'] ),
 
 );
-$m_selectors[' .uagb-forms-main-form  .uagb-forms-input'] = array(
+$m_selectors[' .uagb-forms-main-form  .uagb-forms-input']         = array(
 	'padding-top'    => UAGB_Helper::get_css_value( $attr['paddingFieldTopMobile'], $attr['paddingFieldUnitmobile'] ),
 	'padding-bottom' => UAGB_Helper::get_css_value( $attr['paddingFieldBottomMobile'], $attr['paddingFieldUnitmobile'] ),
 	'padding-left'   => UAGB_Helper::get_css_value( $attr['paddingFieldLeftMobile'], $attr['paddingFieldUnitmobile'] ),
 	'padding-right'  => UAGB_Helper::get_css_value( $attr['paddingFieldRightMobile'], $attr['paddingFieldUnitmobile'] ),
-
 );
 $m_selectors[' .uagb-switch input:checked + .uagb-slider:before'] = array(
 	'transform' => 'translateX(' . UAGB_Helper::get_css_value(

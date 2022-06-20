@@ -88,6 +88,11 @@ return array_merge(
 		'hovergradientValue'     => '',
 		'backgroundOpacity'      => '',
 		'backgroundHoverOpacity' => '',
-	),
-	$border_attribute
+		// letter spacing.
+		'fontLetterSpacing'       => '',
+		'fontLetterSpacingTablet' => '',
+		'fontLetterSpacingMobile' => '',
+		'fontLetterSpacingType'   => 'px',
+		),
+		$border_attribute
 );

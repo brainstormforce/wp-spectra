@@ -200,15 +200,25 @@ function styling( props ) {
 		subHeadLetterSpacingTablet,
 		subHeadLetterSpacingMobile,
 		subHeadLetterSpacingType,
+
+		// icon attributes for icon view (circle and square)
+		iconView,
+		iconBackgroundColor,
+		iconBackgroundHoverColor,
+		iconBorderWidth
 	} = props.attributes;
 
 	const ctaBorderCSS = generateBorderCSS( props.attributes, 'cta' );
 	const ctaBorderCSSTablet = generateBorderCSS( props.attributes, 'cta', 'tablet' );
 	const ctaBorderCSSMobile = generateBorderCSS( props.attributes, 'cta', 'mobile' );
+	const boxSizingIcon = ( '%' === iconSizeType ) ? 'border-box' : 'content-box'
+	const boxSizingImage = ( '%' === imageWidthUnit ) ? 'border-box' : 'content-box'
+	const boxSizingImageTablet = ( '%' === imageWidthUnitTablet ) ? 'border-box' : 'content-box'
+	const boxSizingImageMobile = ( '%' === imageWidthUnitMobile ) ? 'border-box' : 'content-box'
 
 	const selectors = {
 		// Icon css
-		' .uagb-ifb-content .uagb-ifb-icon-wrap > svg': {
+		' .uagb-ifb-content .uagb-ifb-icon-wrap svg': {
 			'font-size': generateCSSUnit( iconSize, iconSizeType ),
 			'color': iconColor,
 			'fill': iconColor,
@@ -221,21 +231,12 @@ function styling( props ) {
 				iconMarginUnit
 			),
 		},
-		' .uagb-ifb-content .uagb-ifb-left-title-image > svg': {
-			'font-size': generateCSSUnit( iconSize, iconSizeType ),
-			'color': iconColor,
-			'fill': iconColor,
-			'width': generateCSSUnit( iconSize, iconSizeType ),
-			'line-height': generateCSSUnit( iconSize, iconSizeType ),
-			'padding-left': generateCSSUnit( iconLeftMargin, iconMarginUnit ),
-			'padding-right': generateCSSUnit( iconRightMargin, iconMarginUnit ),
-			'padding-top': generateCSSUnit( iconTopMargin, iconMarginUnit ),
-			'padding-bottom': generateCSSUnit(
-				iconBottomMargin,
-				iconMarginUnit
-			),
+		' .uagb-iconbox-icon-wrap': {
+			'margin' : 'auto',
+			'display' : 'inline-block',
+			'line-height' : 0,
 		},
-		' .uagb-ifb-content .uagb-ifb-right-title-image > svg': {
+		' .uagb-ifb-content .uagb-ifb-left-title-image svg': {
 			'font-size': generateCSSUnit( iconSize, iconSizeType ),
 			'color': iconColor,
 			'fill': iconColor,
@@ -249,7 +250,7 @@ function styling( props ) {
 				iconMarginUnit
 			),
 		},
-		'.uagb-infobox__content-wrap .uagb-ifb-icon-wrap > svg': {
+		' .uagb-ifb-content .uagb-ifb-right-title-image svg': {
 			'font-size': generateCSSUnit( iconSize, iconSizeType ),
 			'color': iconColor,
 			'fill': iconColor,
@@ -263,7 +264,21 @@ function styling( props ) {
 				iconMarginUnit
 			),
 		},
-		' .uagb-ifb-content .uagb-ifb-icon-wrap > svg:hover': {
+		'.uagb-infobox__content-wrap .uagb-ifb-icon-wrap svg': {
+			'font-size': generateCSSUnit( iconSize, iconSizeType ),
+			'color': iconColor,
+			'fill': iconColor,
+			'width': generateCSSUnit( iconSize, iconSizeType ),
+			'line-height': generateCSSUnit( iconSize, iconSizeType ),
+			'padding-left': generateCSSUnit( iconLeftMargin, iconMarginUnit ),
+			'padding-right': generateCSSUnit( iconRightMargin, iconMarginUnit ),
+			'padding-top': generateCSSUnit( iconTopMargin, iconMarginUnit ),
+			'padding-bottom': generateCSSUnit(
+				iconBottomMargin,
+				iconMarginUnit
+			),
+		},
+		' .uagb-ifb-content .uagb-ifb-icon-wrap svg:hover': {
 			'fill': iconHover,
 		},
 		'.uagb-infobox-icon-left .uagb-ifb-icon-wrap > svg:hover': {
@@ -277,7 +292,7 @@ function styling( props ) {
 		},
 		'.uagb-infobox_cta-type-all:hover .uagb-infobox__content-wrap svg': {
 			'fill': iconHover,
-			'color': iconHover
+			'color': iconHover,
 		},
 		'.uagb-infobox__content-wrap .uagb-ifb-image-content > img': {
 			'padding-left': generateCSSUnit( iconLeftMargin, iconMarginUnit ),
@@ -456,8 +471,40 @@ function styling( props ) {
 			'margin-top': generateCSSUnit( separatorTopMargin, seperatorSpaceUnit ),
 			'margin-left': generateCSSUnit( separatorLeftMargin, seperatorSpaceUnit ),
 			'margin-right': generateCSSUnit( separatorRightMargin, seperatorSpaceUnit ),
-		}
+		},
+		// editor css is causing issue  thaat why i used important
+		'.uagb-infobox__content-wrap  .uagb-ifb-content svg': {
+			'box-sizing' : `${boxSizingIcon}`,
+		},
+		'.uagb-infobox__content-wrap  .uagb-ifb-content img': {
+			'box-sizing' : `${boxSizingImage}`,
+		},
 	};
+
+	if( 'Stacked' === iconView ) {
+		selectors[ ' .uagb-iconbox-icon-wrap.uagb-infobox-shape-circle'] = {
+			'background-color' : iconBackgroundColor,
+			'border-radius' : '50%',
+		}
+		selectors[ ' .uagb-iconbox-icon-wrap.uagb-infobox-shape-squre'] = {
+			'background-color' : iconBackgroundColor,
+		}
+		selectors[' .uagb-iconbox-icon-wrap:hover'] = {
+			'background-color' : `${iconBackgroundHoverColor} !important`,
+		};
+	}
+	else if( 'Framed' === iconView ) {
+		selectors[ ' .uagb-iconbox-icon-wrap.uagb-infobox-shape-circle'] = {
+			'border' : `${iconBorderWidth}px solid ${iconBackgroundColor}`,
+			'border-radius' : '50%',
+		}
+		selectors[ ' .uagb-iconbox-icon-wrap.uagb-infobox-shape-squre'] = {
+			'border' : `${iconBorderWidth}px solid ${iconBackgroundColor}`,
+		}
+		selectors[' .uagb-iconbox-icon-wrap:hover'] = {
+			'border' : `${iconBorderWidth}px solid ${iconBackgroundHoverColor}`,
+		};
+	}
 
 	if (
 		iconimgPosition === 'above-title' ||
@@ -751,7 +798,10 @@ function styling( props ) {
 			'margin-top': generateCSSUnit( separatorMarginTopTablet, separatorTabletMarginUnit ),
 			'margin-left': generateCSSUnit( separatorMarginLeftTablet, separatorTabletMarginUnit ),
 			'margin-right': generateCSSUnit( separatorMarginRightTablet, separatorTabletMarginUnit ),
-		}
+		},
+		'.uagb-infobox__content-wrap  .uagb-ifb-content img': {
+			'box-sizing' : `${boxSizingImageTablet}`,
+		},
 	};
 
 	const mobileSelectors = {
@@ -982,6 +1032,9 @@ function styling( props ) {
 				ctaFontSizeType
 			),
 			'width': generateCSSUnit( ctaFontSizeMobile, ctaFontSizeType ),
+		},
+		'.uagb-infobox__content-wrap  .uagb-ifb-content img': {
+			'box-sizing' : `${boxSizingImageMobile}`,
 		},
 	};
 

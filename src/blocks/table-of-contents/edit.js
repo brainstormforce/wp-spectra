@@ -284,9 +284,16 @@ export default compose(
 
 		let level = 0;
 
-		const headerArray = jQuery( 'div.is-root-container' ).find(
-			'h1, h2, h3, h4, h5, h6'
-		);
+		let headerArray = [];
+		const iframeEl = jQuery( `iframe[name='editor-canvas']` );
+		let locateRootContainerInsideIframe;
+		if( iframeEl.contents().length > 0 ){
+			locateRootContainerInsideIframe = iframeEl.contents().find( 'div.is-root-container' );
+			headerArray = locateRootContainerInsideIframe.find( 'h1, h2, h3, h4, h5, h6' );
+		} else {
+			headerArray = jQuery( 'div.is-root-container' ).find( 'h1, h2, h3, h4, h5, h6' );
+		}
+
 		const headers = [];
 		if ( headerArray !== 'undefined' ) {
 			headerArray.each( function ( index, value ) {

@@ -61,10 +61,6 @@ const attributes = {
 		type: 'boolean',
 		default: true,
 	},
-	smoothScrollDelay: {
-		type: 'number',
-		default: 800,
-	},
 	smoothScrollOffset: {
 		type: 'number',
 		default: 30,
@@ -887,6 +883,60 @@ const attributes = {
 		default: false,
 	},
 	...overallBorderAttributes,
+	headingLetterSpacing: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'heading-letter-spacing'
+		}
+	},
+	headingLetterSpacingTablet: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'heading-letter-spacing-tablet'
+		}
+	},
+	headingLetterSpacingMobile: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'heading-letter-spacing-mobile'
+		}
+	},
+	headingLetterSpacingType: {
+		type: 'string',
+		default: 'px',
+		UAGCopyPaste: {
+			styleType: 'heading-letter-spacing-type'
+		}
+	},
+	listLetterSpacing: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'list-letter-spacing'
+		}
+	},
+	listLetterSpacingTablet: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'list-letter-spacing-tablet'
+		}
+	},
+	listLetterSpacingMobile: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'list-letter-spacing-mobile'
+		}
+	},
+	listLetterSpacingType: {
+		type: 'string',
+		default: 'px',
+		UAGCopyPaste: {
+			styleType: 'list-letter-spacing-type'
+		}
+	},
+	markerView: {
+		type: 'string',
+		default: 'disc'
+	},
 };
 
 export default attributes;

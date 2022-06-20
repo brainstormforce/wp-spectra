@@ -932,6 +932,62 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 						'type'    => 'string',
 						'default' => ', ',
 					),
+					'titleLetterSpacing'            => array(
+						'type'    => 'number',
+						'default' => '',
+					),
+					'titleLetterSpacingType'        => array(
+						'type'    => 'string',
+						'default' => 'px',
+					),
+					'titleLetterSpacingMobile'      => array(
+						'type' => 'number',
+					),
+					'titleLetterSpacingTablet'      => array(
+						'type' => 'number',
+					),
+					'metaLetterSpacing'             => array(
+						'type'    => 'number',
+						'default' => '',
+					),
+					'metaLetterSpacingType'         => array(
+						'type'    => 'string',
+						'default' => 'px',
+					),
+					'metaLetterSpacingMobile'       => array(
+						'type' => 'number',
+					),
+					'metaLetterSpacingTablet'       => array(
+						'type' => 'number',
+					),
+					'ctaLetterSpacing'              => array(
+						'type'    => 'number',
+						'default' => '',
+					),
+					'ctaLetterSpacingType'          => array(
+						'type'    => 'string',
+						'default' => 'px',
+					),
+					'ctaLetterSpacingMobile'        => array(
+						'type' => 'number',
+					),
+					'ctaLetterSpacingTablet'        => array(
+						'type' => 'number',
+					),
+					'excerptLetterSpacing'          => array(
+						'type'    => 'number',
+						'default' => '',
+					),
+					'excerptLetterSpacingType'      => array(
+						'type'    => 'string',
+						'default' => 'px',
+					),
+					'excerptLetterSpacingMobile'    => array(
+						'type' => 'number',
+					),
+					'excerptLetterSpacingTablet'    => array(
+						'type' => 'number',
+					),
 				),
 			);
 		}

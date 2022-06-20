@@ -24,6 +24,8 @@ function styling( props ) {
 		formPaddingUnitTab,
 		formPaddingUnitMob,
 		buttonAlign,
+		buttonAlignTablet,
+		buttonAlignMobile,
 		submitColor,
 		submitColorHover,
 		submitBgColor,
@@ -139,7 +141,18 @@ function styling( props ) {
 		labelGapUnit,
 
 		displayLabels,
-
+		labelLetterSpacing,
+		labelLetterSpacingTablet,
+		labelLetterSpacingMobile,
+		labelLetterSpacingType,
+		inputLetterSpacing,
+		inputLetterSpacingTablet,
+		inputLetterSpacingMobile,
+		inputLetterSpacingType,
+		submitLetterSpacing,
+		submitLetterSpacingTablet,
+		submitLetterSpacingMobile,
+		submitLetterSpacingType,
 	} = props.attributes;
 
 	let selectors = {};
@@ -189,6 +202,7 @@ function styling( props ) {
 			'font-weight': labelFontWeight,
 			'color': labelColor,
 			'margin-bottom': generateCSSUnit( labelGap, labelGapUnit ),
+			'letter-spacing': generateCSSUnit( labelLetterSpacing, labelLetterSpacingType ),
 		},
 		' .uagb-forms-main-form  .uagb-forms-input::placeholder': {
 			'font-size': generateCSSUnit( inputFontSize, inputFontSizeType ),
@@ -202,6 +216,7 @@ function styling( props ) {
 			'text-decoration': inputDecoration,
 			'font-weight': inputFontWeight,
 			'color': inputplaceholderColor,
+			'letter-spacing': generateCSSUnit( inputLetterSpacing, inputLetterSpacingType ),
 		},
 		' .uagb-forms-main-form input': {
 			'font-size': generateCSSUnit( inputFontSize, inputFontSizeType ),
@@ -215,6 +230,7 @@ function styling( props ) {
 			'text-decoration': inputDecoration,
 			'font-weight': inputFontWeight,
 			'color': inputplaceholderColor,
+			'letter-spacing': generateCSSUnit( inputLetterSpacing, inputLetterSpacingType ),
 		},
 		' .uagb-forms-main-form select': {
 			'font-size': generateCSSUnit( inputFontSize, inputFontSizeType ),
@@ -228,6 +244,7 @@ function styling( props ) {
 			'text-decoration': inputDecoration,
 			'font-weight': inputFontWeight,
 			'color': inputplaceholderColor,
+			'letter-spacing': generateCSSUnit( inputLetterSpacing, inputLetterSpacingType ),
 		},
 		' .uagb-forms-main-form .uagb-forms-input:focus': {
 			'outline': ' none !important',
@@ -273,6 +290,7 @@ function styling( props ) {
 			),
 			'padding-left': generateCSSUnit( paddingBtnLeft, paddingBtnUnit ),
 			'padding-right': generateCSSUnit( paddingBtnRight, paddingBtnUnit ),
+			'letter-spacing': generateCSSUnit( submitLetterSpacing, submitLetterSpacingType ),
 		},
 		' .uagb-forms-main-form .uagb-forms-main-submit-button:hover': {
 			'color': submitColorHover,
@@ -659,6 +677,7 @@ function styling( props ) {
 				submitTextLineHeightTablet,
 				submitTextLineHeightType
 			),
+			'letter-spacing': generateCSSUnit( submitLetterSpacingTablet, submitLetterSpacingType ),
 		},
 		' .uagb-forms-main-form .uagb-forms-input-label': {
 			'font-size': generateCSSUnit(
@@ -670,6 +689,7 @@ function styling( props ) {
 				labelLineHeightType
 			),
 			'margin-bottom': generateCSSUnit( labelGapTablet, labelGapUnit ),
+			'letter-spacing': generateCSSUnit( labelLetterSpacingTablet, labelLetterSpacingType ),
 		},
 		' .uagb-forms-main-form  .uagb-forms-input::placeholder': {
 			'font-size': generateCSSUnit(
@@ -680,6 +700,10 @@ function styling( props ) {
 				inputLineHeightTablet,
 				inputLineHeightType
 			),
+			'letter-spacing': generateCSSUnit( inputLetterSpacingTablet, inputLetterSpacingType ),
+		},
+		' .uagb-forms-main-form .uagb-forms-main-submit-button-wrap': {
+			'text-align': buttonAlignTablet,
 		},
 	};
 
@@ -766,7 +790,8 @@ function styling( props ) {
 				submitTextLineHeightMobile,
 				submitTextLineHeightType
 			),
-			...submitBorderMobile
+			...submitBorderMobile,
+			'letter-spacing': generateCSSUnit( submitLetterSpacingMobile, submitLetterSpacingType ),
 		},
 		' .uagb-forms-main-form .uagb-forms-input-label': {
 			'font-size': generateCSSUnit(
@@ -778,6 +803,7 @@ function styling( props ) {
 				labelLineHeightType
 			),
 			'margin-bottom': generateCSSUnit( labelGapMobile, labelGapUnit ),
+			'letter-spacing': generateCSSUnit( labelLetterSpacingMobile, labelLetterSpacingType ),
 		},
 		' .uagb-forms-main-form  .uagb-forms-input::placeholder': {
 			'font-size': generateCSSUnit(
@@ -788,6 +814,10 @@ function styling( props ) {
 				inputLineHeightMobile,
 				inputLineHeightType
 			),
+			'letter-spacing': generateCSSUnit( inputLetterSpacingMobile, inputLetterSpacingType ),
+		},
+		' .uagb-forms-main-form .uagb-forms-main-submit-button-wrap': {
+			'text-align': buttonAlignMobile,
 		},
 	};
 

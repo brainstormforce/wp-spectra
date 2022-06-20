@@ -4,7 +4,7 @@
  'use strict';
 
  window.XgUtils = window.XgUtils || ( function () {
- 
+
    function extend( object, defaultObject ) {
      const result = defaultObject || {};
      let key;
@@ -15,13 +15,13 @@
      }
      return result;
    }
- 
+
    //public interface
    return {
      extend
    };
  } )();
- 
+
  window.xsLocalStorage = window.xsLocalStorage || ( function () {
    const MESSAGE_NAMESPACE = 'cross-domain-local-message-uag';
    let options = {
@@ -34,14 +34,14 @@
    const requests = {};
    let wasInit = false;
    let iframeReady = true;
- 
+
    function applyCallback( data ) {
      if ( requests[data.id] ) {
        requests[data.id]( data );
        delete requests[data.id];
      }
    }
- 
+
    function receiveMessage( event ) {
      let data;
      try {
@@ -58,7 +58,7 @@
        }
      }
    }
- 
+
    function buildMessage( action, key, value, callback ) {
      requestId++;
      requests[requestId] = callback;
@@ -69,25 +69,25 @@
        key,
        value
      };
-     iframe.contentWindow.postMessage( JSON.stringify( data ), '*' );
+     iframe?.contentWindow.postMessage( JSON.stringify( data ), '*' );
    }
- 
+
    function init( customOptions ) {
       /* eslint-disable no-undef */
      options = XgUtils.extend( customOptions, options );
      const temp = document.createElement( 'div' );
- 
+
      if ( window.addEventListener ) {
        window.addEventListener( 'message', receiveMessage, false );
      } else {
        window.attachEvent( 'onmessage', receiveMessage );
      }
- 
+
      temp.innerHTML = '<iframe id="' + options.iframeId + '" src=' + options.iframeUrl + ' style="display: none;"></iframe>';
      document.body.appendChild( temp );
      iframe = document.getElementById( options.iframeId );
    }
- 
+
    function isApiReady() {
      if ( !wasInit ) {
        return false;
@@ -97,11 +97,11 @@
      }
      return true;
    }
- 
+
    function isDomReady() {
      return ( document.readyState === 'complete' );
    }
- 
+
    return {
      //callback is optional for cases you use the api before window load.
      init ( customOptions ) {
@@ -136,7 +136,7 @@
        }
        buildMessage( 'set', key, value, callback );
      },
- 
+
      getItem ( key, callback ) {
        if ( !isApiReady() ) {
          return;

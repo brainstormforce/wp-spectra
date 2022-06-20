@@ -101,7 +101,11 @@ function styling( props ) {
 		mobiletabBodyPaddingUnit,
 		mobiletabBodyMarginUnit,
 		titleFontStyle,
-		tabAlign
+		tabAlign,
+		titleLetterSpacing,
+		titleLetterSpacingTablet,
+		titleLetterSpacingMobile,
+		titleLetterSpacingType,
 	} = props.attributes;
 
 	const borderCSS = generateBorderCSS( props.attributes, 'tab', '' );
@@ -159,6 +163,7 @@ function styling( props ) {
 				titleLineHeight,
 				titleLineHeightType
 			),
+			'letter-spacing': generateCSSUnit( titleLetterSpacing, titleLetterSpacingType ),
 			'text-transform': titleTransform,
 			'text-decoration': titleDecoration,
 			'font-style' : titleFontStyle,
@@ -267,6 +272,7 @@ function styling( props ) {
 				titleLineHeightTablet,
 				titleLineHeightType
 			),
+			'letter-spacing': generateCSSUnit( titleLetterSpacingTablet, titleLetterSpacingType ),
 		},
 		' > .uagb-tabs__panel .uagb-tab a': {
 			'padding-top': generateCSSUnit(
@@ -365,6 +371,7 @@ function styling( props ) {
 				titleLineHeightMobile,
 				titleLineHeightType
 			),
+			'letter-spacing': generateCSSUnit( titleLetterSpacingMobile, titleLetterSpacingType ),
 		},
 		' > .uagb-tabs__panel .uagb-tab' :{
 			'margin-top': generateCSSUnit(

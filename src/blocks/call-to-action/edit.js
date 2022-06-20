@@ -35,7 +35,10 @@ const UAGBCallToAction = ( props ) => {
 			ctaBottomPadding,
 			ctaLeftPadding,
 			ctaPosition,
-			stack
+			stack,
+			ctaLeftSpace,
+			overallBlockLeftMargin,
+			textAlign
 		} = props.attributes;
 
 		if( stack === 'tablet' ) {
@@ -62,6 +65,11 @@ const UAGBCallToAction = ( props ) => {
 			}
 			if ( undefined === ctaLeftPadding ) {
 				props.setAttributes( { ctaLeftPadding: ctaBtnHrPadding } );
+			}
+		}
+		if ( ctaLeftSpace ) {
+			if ( undefined === overallBlockLeftMargin && 'left' === textAlign && 'right' === ctaPosition ) {
+				props.setAttributes( { overallBlockLeftMargin: ctaLeftSpace } );
 			}
 		}
 	}, [] );
