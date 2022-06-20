@@ -1,7 +1,7 @@
 import { getBorderAttributes } from '@Controls/generateAttributes';
 const borderDefault = {
 	borderStyle: 'solid',
-	borderTopWidth: 1,
+	borderTopLeftWidth: 1,
 	borderRightWidth: 1,
 	borderBottomWidth: 1,
 	borderLeftWidth: 1,

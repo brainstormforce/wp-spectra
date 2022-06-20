@@ -15,7 +15,7 @@ const inputBorderAttributes = getBorderAttributes( 'input' , {
 	borderBottomWidth: 1,
 	borderColor:'#bdbdbd',
 	borderHColor: '',
-});
+} );
 const toggleBorderAttributes = getBorderAttributes( 'toggle' , {
 	borderStyle: 'solid',
 	borderTopLeftRadius: 3,

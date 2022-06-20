@@ -21,6 +21,7 @@ import renderSVG from '@Controls/renderIcon';
 import MultiButtonsControl from '@Components/multi-buttons-control';
 import UAGAdvancedPanelBody from '@Components/advanced-panel-body';
 import addBlockEditorDynamicStyles from '@Controls/addBlockEditorDynamicStyles';
+import { migrateBorderAttributes } from '@Controls/generateAttributes';
 
 const Settings = lazy( () =>
 	import(
@@ -246,6 +247,35 @@ const UAGBPostMasonry = ( props ) => {
 	}, [] );
 
 	useEffect( () => {
+		const {
+			borderStyle,
+			borderWidth,
+			borderColor,
+			borderHColor,
+			borderRadius
+		} = props.attributes;
+
+		if( borderWidth || borderRadius || borderColor || borderHColor || borderStyle ){
+			const migrationAttributes = migrateBorderAttributes( 'btn', {
+				label: 'borderWidth',
+				value: borderWidth,
+			}, {
+				label: 'borderRadius',
+				value: borderRadius
+			}, {
+				label: 'borderColor',
+				value: borderColor
+			}, {
+				label: 'borderHColor',
+				value: borderHColor
+			},{
+				label: 'borderStyle',
+				value: borderStyle
+			}
+			);
+			props.setAttributes( migrationAttributes )
+		};
+	
 		// Replacement for componentDidUpdate.
 		const blockStyling = styling( props );
 

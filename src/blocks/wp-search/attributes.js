@@ -5,10 +5,10 @@
 import { getBorderAttributes } from '@Controls/generateAttributes';
 
 const inputBorderAttributes = getBorderAttributes( 'input', {
-	borderTopRadius: 3,
-	borderRightRadius: 3,
-	borderLeftRadius: 3,
-	borderBottomRadius: 3
+	borderTopLeftRadius: 3,
+	borderTopRightRadius: 3,
+	borderBottomLeftRadius: 3,
+	borderBottomRightRadius: 3,
 } );
 
 const attributes = {

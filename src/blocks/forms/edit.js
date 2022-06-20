@@ -1,8 +1,6 @@
 /**
  * BLOCK: Forms - Edit
- */
-
-import React, { useEffect, useCallback, Suspense, lazy } from 'react';
+ */import React, { useEffect, useCallback, Suspense, lazy } from 'react';
 import styling from './styling';
 import UAGB_Block_Icons from '@Controls/block-icons';
 import addBlockEditorDynamicStyles from '@Controls/addBlockEditorDynamicStyles';
@@ -128,30 +126,80 @@ const UAGBFormsEdit = ( props ) => {
 
 	useEffect( () => {
 		const {
-			borderStyle,
-			borderWidth,
-			borderColor,
-			borderHColor,
-			borderRadius
+			inputborderStyle,
+			inputborderWidth,
+			inputborderColor,
+			inputborderHColor,
+			inputborderRadius,
+			toggleBorderWidth,
+			toggleBorderRadius,
+			toggleBorderColor,
+			toggleBorderHColor,
+			toggleBorderStyle,
+			submitborderWidth,
+			submitborderRadius,
+			submitborderColor,
+			submitborderHColor,
+			submitborderStyle,
 		} = props.attributes;
 
-		// border
-		if( borderWidth || borderRadius || borderColor || borderHColor || borderStyle ){
+		// inputborder
+		if( inputborderWidth || inputborderRadius || inputborderColor || inputborderHColor || inputborderStyle ){
 			const migrationAttributes = migrateBorderAttributes( 'input', {
-				label: 'borderWidth',
-				value: borderWidth,
+				label: 'inputborderWidth',
+				value: inputborderWidth,
 			}, {
-				label: 'borderRadius',
-				value: borderRadius
+				label: 'inputborderRadius',
+				value: inputborderRadius
 			}, {
-				label: 'borderColor',
-				value: borderColor
+				label: 'inputborderColor',
+				value: inputborderColor
 			}, {
-				label: 'borderHColor',
-				value: borderHColor
+				label: 'inputborderHColor',
+				value: inputborderHColor
 			},{
-				label: 'borderStyle',
-				value: borderStyle
+				label: 'inputborderStyle',
+				value: inputborderStyle
+			}
+			);
+			props.setAttributes( migrationAttributes );
+		}
+		if( toggleBorderWidth || toggleBorderRadius || toggleBorderColor || toggleBorderHColor || toggleBorderStyle ){
+			const migrationAttributes = migrateBorderAttributes( 'toggle', {
+				label: 'toggleBorderWidth',
+				value: toggleBorderWidth,
+			}, {
+				label: 'toggleBorderRadius',
+				value: toggleBorderRadius
+			}, {
+				label: 'toggleBorderColor',
+				value: toggleBorderColor
+			}, {
+				label: 'toggleBorderHColor',
+				value: toggleBorderHColor
+			},{
+				label: 'toggleBorderStyle',
+				value: toggleBorderStyle
+			}
+			);
+			props.setAttributes( migrationAttributes );
+		}
+		if( submitborderWidth || submitborderRadius || submitborderColor || submitborderHColor || submitborderStyle ){
+			const migrationAttributes = migrateBorderAttributes( 'submit', {
+				label: 'submitborderWidth',
+				value: submitborderWidth,
+			}, {
+				label: 'submitborderRadius',
+				value: submitborderRadius
+			}, {
+				label: 'submitborderColor',
+				value: submitborderColor
+			}, {
+				label: 'submitborderHColor',
+				value: submitborderHColor
+			},{
+				label: 'submitborderStyle',
+				value: submitborderStyle
 			}
 			);
 			props.setAttributes( migrationAttributes );

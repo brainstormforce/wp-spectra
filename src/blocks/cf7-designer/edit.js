@@ -109,48 +109,53 @@ const UAGBCF7 = ( props ) => {
 			} );
 		}
 		const {
-			borderStyle,
-			borderWidth,
-			borderColor,
-			borderHColor,
-			borderRadius
+			fieldBorderStyle,
+			fieldBorderWidth,
+			fieldBorderColor,
+			fieldBorderHColor,
+			fieldBorderRadius,
+			buttonBorderWidth,
+			buttonBorderRadius,
+			buttonBorderColor,
+			buttonBorderHColor,
+			buttonBorderStyle,
 		} = props.attributes;
 
-		// border
-		if( borderWidth || borderRadius || borderColor || borderHColor || borderStyle ){
+		// fieldBorder
+		if( fieldBorderWidth || fieldBorderRadius || fieldBorderColor || fieldBorderHColor || fieldBorderStyle ){
 			const migrationAttributes = migrateBorderAttributes( 'field', {
-				label: 'borderWidth',
-				value: borderWidth,
+				label: 'fieldBorderWidth',
+				value: fieldBorderWidth,
 			}, {
-				label: 'borderRadius',
-				value: borderRadius
+				label: 'fieldBorderRadius',
+				value: fieldBorderRadius
 			}, {
-				label: 'borderColor',
-				value: borderColor
+				label: 'fieldBorderColor',
+				value: fieldBorderColor
 			}, {
-				label: 'borderHColor',
-				value: borderHColor
+				label: 'fieldBorderHColor',
+				value: fieldBorderHColor
 			},{
-				label: 'borderStyle',
-				value: borderStyle
+				label: 'fieldBorderStyle',
+				value: fieldBorderStyle
 			}
 			);
 			props.setAttributes( migrationAttributes );
 			const btnMigrationAttributes = migrateBorderAttributes( 'button', {
-				label: 'borderWidth',
-				value: borderWidth,
+				label: 'buttonBorderWidth',
+				value: buttonBorderWidth,
 			}, {
-				label: 'borderRadius',
-				value: borderRadius
+				label: 'buttonBorderRadius',
+				value: buttonBorderRadius
 			}, {
-				label: 'borderColor',
-				value: borderColor
+				label: 'buttonBorderColor',
+				value: buttonBorderColor
 			}, {
-				label: 'borderHColor',
-				value: borderHColor
+				label: 'buttonBorderHColor',
+				value: buttonBorderHColor
 			},{
-				label: 'borderStyle',
-				value: borderStyle
+				label: 'buttonBorderStyle',
+				value: buttonBorderStyle
 			}
 			);
 			props.setAttributes( btnMigrationAttributes )

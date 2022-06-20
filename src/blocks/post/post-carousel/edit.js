@@ -25,6 +25,7 @@ import renderSVG from '@Controls/renderIcon';
 import presets from './presets';
 import UAGPresets from '@Components/presets';
 import addBlockEditorDynamicStyles from '@Controls/addBlockEditorDynamicStyles';
+import { migrateBorderAttributes } from '@Controls/generateAttributes';
 
 const MAX_POSTS_COLUMNS = 8;
 
@@ -162,6 +163,34 @@ const UAGBPostCarousel = ( props ) => {
 	}, [] );
 
 	useEffect( () => {
+		const {
+			borderStyle,
+			borderWidth,
+			borderColor,
+			borderHColor,
+			borderRadius
+		} = props.attributes;
+
+		if( borderWidth || borderRadius || borderColor || borderHColor || borderStyle ){
+			const migrationAttributes = migrateBorderAttributes( 'btn', {
+				label: 'borderWidth',
+				value: borderWidth,
+			}, {
+				label: 'borderRadius',
+				value: borderRadius
+			}, {
+				label: 'borderColor',
+				value: borderColor
+			}, {
+				label: 'borderHColor',
+				value: borderHColor
+			},{
+				label: 'borderStyle',
+				value: borderStyle
+			}
+			);
+			props.setAttributes( migrationAttributes )
+		};
 		const equalHeight = props.attributes.equalHeight;
 		if ( equalHeight ) {
 			uagb_carousel_height( props.clientId.substr( 0, 8 ) ); // eslint-disable-line no-undef

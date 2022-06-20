@@ -122,12 +122,12 @@ const UAGBTaxonomyList = ( props ) => {
 	}, [] );
 
 	useEffect( () => {
-		const { borderStyle,borderWidth,borderRadius,borderColor,borderHoverColor } = props.attributes;
+		const { borderStyle,borderThickness,borderRadius,borderColor,borderHoverColor } = props.attributes;
 		// Backward Border Migration
-		if( borderWidth || borderRadius || borderColor || borderHoverColor || borderStyle ){
+		if( borderThickness || borderRadius || borderColor || borderHoverColor || borderStyle ){
 			const migrationAttributes = migrateBorderAttributes( 'overall', {
-				label: 'borderWidth',
-				value: borderWidth,
+				label: 'borderThickness',
+				value: borderThickness,
 			}, {
 				label: 'borderRadius',
 				value: borderRadius
@@ -140,7 +140,7 @@ const UAGBTaxonomyList = ( props ) => {
 			},{
 				label: 'borderStyle',
 				value: borderStyle
-			});
+			} );
 			props.setAttributes( migrationAttributes )
 		}
 		const blockStyling = styling( props );
