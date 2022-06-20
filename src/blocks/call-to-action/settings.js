@@ -110,14 +110,6 @@ const Settings = ( props ) => {
 		ctaBorderWidth,
 		ctaBorderRadius,
 		stack,
-		ctaLeftSpace,
-		ctaLeftSpaceTablet,
-		ctaLeftSpaceMobile,
-		ctaLeftSpaceType,
-		ctaRightSpace,
-		ctaRightSpaceTablet,
-		ctaRightSpaceMobile,
-		ctaRightSpaceType,
 		ctaLinkHoverColor,
 		titleTransform,
 		titleDecoration,
@@ -733,6 +725,7 @@ const Settings = ( props ) => {
 					] }
 					showIcons={ false }
 				/>
+				{ stack !== 'desktop' &&  (
 				<MultiButtonsControl
 					setAttributes={ setAttributes }
 					label={ __(
@@ -762,6 +755,7 @@ const Settings = ( props ) => {
 					] }
 					showIcons={ false }
 				/>
+				) }
 				{ ( ctaType === 'text' || ctaType === 'button' ) && (
 					<>
 						<TextControl
@@ -1417,46 +1411,6 @@ const Settings = ( props ) => {
 				title={ __( 'Spacing', 'ultimate-addons-for-gutenberg' ) }
 				initialOpen={ false }
 			>
-				{ ( ( 'left' === textAlign && 'Desktop' === deviceType ) || ( 'left' === textAlignTablet && 'Tablet' === deviceType ) || ( 'left' === textAlignMobile && 'Mobile' === deviceType  ) ) && (
-					<>
-					<ResponsiveSlider
-						label={ __(
-							'Content Left Margin',
-							'ultimate-addons-for-gutenberg'
-						) }
-						data={ {
-							desktop: {
-								value: ctaLeftSpace,
-								label: 'ctaLeftSpace',
-							},
-							tablet: {
-								value: ctaLeftSpaceTablet,
-								label: 'ctaLeftSpaceTablet',
-							},
-							mobile: {
-								value: ctaLeftSpaceMobile,
-								label: 'ctaLeftSpaceMobile',
-							},
-						} }
-						min={ 0 }
-						max={ 200 }
-						unit={ {
-							value: ctaLeftSpaceType,
-							label: 'ctaLeftSpaceType',
-						} }
-						units={ [
-							{
-								name: __(
-									'Pixel',
-									'ultimate-addons-for-gutenberg'
-								),
-								unitValue: 'px',
-							},
-						] }
-						setAttributes={ setAttributes }
-					/>
-					</>
-				) }
 				{ ( ( 'right' !== textAlign && 'none' === stack && 'Desktop' === deviceType ) || ( 'right' !== textAlignTablet && 'Tablet' === deviceType && 'none' === stack ) || ( 'right' !== textAlignMobile && 'Mobile' === deviceType && 'none' === stack ) ) && (
 						<ResponsiveSlider
 						label={ __(
@@ -1496,44 +1450,6 @@ const Settings = ( props ) => {
 					/>
 					)
 				}
-				{ ( ( 'right' === textAlign && 'Desktop' === deviceType ) || ( 'right' === textAlignTablet && 'Tablet' === deviceType ) || ( 'right' === textAlignMobile && 'Mobile' === deviceType  ) ) && (
-					<ResponsiveSlider
-						label={ __(
-							'Content Right Margin',
-							'ultimate-addons-for-gutenberg'
-						) }
-						data={ {
-							desktop: {
-								value: ctaRightSpace,
-								label: 'ctaRightSpace',
-							},
-							tablet: {
-								value: ctaRightSpaceTablet,
-								label: 'ctaRightSpaceTablet',
-							},
-							mobile: {
-								value: ctaRightSpaceMobile,
-								label: 'ctaRightSpaceMobile',
-							},
-						} }
-						min={ 0 }
-						max={ 200 }
-						unit={ {
-							value: ctaRightSpaceType,
-							label: 'ctaRightSpaceType',
-						} }
-						units={ [
-							{
-								name: __(
-									'Pixel',
-									'ultimate-addons-for-gutenberg'
-								),
-								unitValue: 'px',
-							},
-						] }
-						setAttributes={ setAttributes }
-					/>
-				) }
 				<SpacingControl
 					{ ...props }
 					label={ __( 'Padding', 'ultimate-addons-for-gutenberg' ) }
@@ -1867,35 +1783,6 @@ const Settings = ( props ) => {
 									/>
 							</>
 						) }
-						<MultiButtonsControl
-							setAttributes={ setAttributes }
-							label={ __(
-								'Vertical Alignment',
-								'ultimate-addons-for-gutenberg'
-							) }
-							data={ {
-								value: buttonAlign,
-								label: 'buttonAlign',
-							} }
-							className="uagb-multi-button-alignment-control"
-							options={ [
-								{
-									value: 'top',
-									label: __(
-										'Top',
-										'ultimate-addons-for-gutenberg'
-									),
-								},
-								{
-									value: 'middle',
-									label: __(
-										'Middle',
-										'ultimate-addons-for-gutenberg'
-									),
-								},
-							] }
-							showIcons={ false }
-						/>
 					</>
 				) }
 			</UAGAdvancedPanelBody>
