@@ -20,9 +20,7 @@ import UAGTabsControl from '@Components/tabs';
 import presets from './presets';
 import UAGPresets from '@Components/presets';
 import {
-	BlockControls,
 	InspectorControls,
-	AlignmentToolbar
 } from '@wordpress/block-editor';
 
 import {
@@ -126,6 +124,16 @@ const Settings = ( props ) => {
 		titleDecoration,
 		prefixTransform,
 		prefixDecoration,
+
+		// letter spacing
+		titleLetterSpacing,
+		titleLetterSpacingTablet,
+		titleLetterSpacingMobile,
+		titleLetterSpacingType,
+		prefixLetterSpacing,
+		prefixLetterSpacingTablet,
+		prefixLetterSpacingMobile,
+		prefixLetterSpacingType,
 	} = attributes;
 
 	// Load Google fonts for heading.
@@ -161,21 +169,6 @@ const Settings = ( props ) => {
 			<WebfontLoader config={ prefixconfig }></WebfontLoader>
 		);
 	}
-
-	const blockControls = () => {
-		return (
-			<BlockControls>
-				<AlignmentToolbar
-					value={ align }
-					onChange={ ( value ) => {
-						setAttributes( { align: value } );
-					} }
-					controls={ [ 'left', 'center', 'right', 'full' ] }
-				/>
-
-			</BlockControls>
-		);
-	};
 
 	const generalSettings = () => {
 		return (
@@ -571,6 +564,22 @@ const Settings = ( props ) => {
 						value: titleDecoration,
 						label: 'titleDecoration',
 					} }
+					letterSpacing={ {
+						value: titleLetterSpacing,
+						label: 'titleLetterSpacing',
+					} }
+					letterSpacingTablet={ {
+						value: titleLetterSpacingTablet,
+						label: 'titleLetterSpacingTablet',
+					} }
+					letterSpacingMobile={ {
+						value: titleLetterSpacingMobile,
+						label: 'titleLetterSpacingMobile',
+					} }
+					letterSpacingType={ {
+						value: titleLetterSpacingType,
+						label: 'titleLetterSpacingType',
+					} }
 				/>
 				<UAGTabsControl
 					tabs={ [
@@ -689,6 +698,22 @@ const Settings = ( props ) => {
 					decoration={ {
 						value: prefixDecoration,
 						label: 'prefixDecoration',
+					} }
+					letterSpacing={ {
+						value: prefixLetterSpacing,
+						label: 'prefixLetterSpacing',
+					} }
+					letterSpacingTablet={ {
+						value: prefixLetterSpacingTablet,
+						label: 'prefixLetterSpacingTablet',
+					} }
+					letterSpacingMobile={ {
+						value: prefixLetterSpacingMobile,
+						label: 'prefixLetterSpacingMobile',
+					} }
+					letterSpacingType={ {
+						value: prefixLetterSpacingType,
+						label: 'prefixLetterSpacingType',
 					} }
 				/>
 				<UAGTabsControl
@@ -1143,7 +1168,6 @@ const Settings = ( props ) => {
 	};
 	return (
 		<Suspense fallback={ lazyLoader() }>
-			{ blockControls() }
 			<InspectorControls>
 				<InspectorTabs>
 					<InspectorTab { ...UAGTabs.general }>

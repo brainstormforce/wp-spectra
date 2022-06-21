@@ -14,7 +14,7 @@ import UAGTabsControl from '@Components/tabs';
 import ResponsiveSlider from '@Components/responsive-slider';
 import React from 'react';
 import { __ } from '@wordpress/i18n';
-import { InspectorControls, BlockAlignmentToolbar, AlignmentToolbar, BlockControls } from '@wordpress/block-editor';
+import { InspectorControls } from '@wordpress/block-editor';
 
 import {
 	SelectControl,
@@ -122,6 +122,10 @@ const Settings = ( props ) => {
 		titleLineHeight,
 		titleLineHeightMobile,
 		titleLineHeightTablet,
+		titleLetterSpacing,
+		titleLetterSpacingTablet,
+		titleLetterSpacingMobile,
+		titleLetterSpacingType,
 		titleTransform,
 		titleDecoration,
 		titleAlign,
@@ -956,6 +960,22 @@ const Settings = ( props ) => {
 						value: titleLineHeightTablet,
 						label: 'titleLineHeightTablet',
 					} }
+					letterSpacing={ {
+						value: titleLetterSpacing,
+						label: 'titleLetterSpacing',
+					} }
+					letterSpacingTablet={ {
+						value: titleLetterSpacingTablet,
+						label: 'titleLetterSpacingTablet',
+					} }
+					letterSpacingMobile={ {
+						value: titleLetterSpacingMobile,
+						label: 'titleLetterSpacingMobile',
+					} }
+					letterSpacingType={ {
+						value: titleLetterSpacingType,
+						label: 'titleLetterSpacingType',
+					} }
 					transform={ {
 						value: titleTransform,
 						label: 'titleTransform',
@@ -1209,22 +1229,6 @@ const Settings = ( props ) => {
 	};
 	return (
 		<InspectorControls>
-			<BlockControls key="controls">
-				<BlockAlignmentToolbar
-					value={ tabAlign }
-					onChange={ ( value ) =>
-						setAttributes( { tabAlign: value } )
-					}
-					controls={ [ 'left', 'center', 'right' ] }
-				/>
-				<AlignmentToolbar
-					value={ titleAlign }
-					onChange={ ( value ) =>
-						setAttributes( { titleAlign: value } )
-					}
-					controls={ [ 'left', 'center', 'right' ] }
-				/>
-			</BlockControls>
 			<InspectorTabs>
 				<InspectorTab { ...UAGTabs.general }>
 					{ presetSettings() }

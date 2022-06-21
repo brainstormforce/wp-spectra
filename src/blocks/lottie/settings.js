@@ -17,7 +17,6 @@ import {
 	MediaPlaceholder,
 	BlockControls,
 	MediaReplaceFlow,
-	AlignmentToolbar
 } from '@wordpress/block-editor';
 
 import {
@@ -117,7 +116,7 @@ const Settings = ( props ) => {
 						allow={ [ 'application/json' ] }
 					/>
 				) }
-				{ lottieSource === 'url' && (					
+				{ lottieSource === 'url' && (
 					<TextControl
 						label={ __(
 							'Lottie Animation URL',
@@ -391,12 +390,6 @@ const Settings = ( props ) => {
 						onSelect={ onSelectLottieJSON }
 					/>
 				</ToolbarGroup>
-				<AlignmentToolbar
-					value={ align }
-					onChange={ ( value ) =>
-						setAttributes( { align: value } )
-					}
-				/>
 			</BlockControls>
 		);
 	};

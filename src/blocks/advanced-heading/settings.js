@@ -13,8 +13,6 @@ import { __ } from '@wordpress/i18n';
 import presets from './presets';
 import UAGPresets from '@Components/presets';
 import {
-	AlignmentToolbar,
-	BlockControls,
 	InspectorControls,
 } from '@wordpress/block-editor';
 import renderSVG from '@Controls/renderIcon';
@@ -218,19 +216,6 @@ const Settings = ( props ) => {
 			<WebfontLoader config={ sconfig }></WebfontLoader>
 		);
 	}
-
-	const blockControlSettings = () => {
-		return (
-			<BlockControls key="controls">
-				<AlignmentToolbar
-					value={ headingAlign }
-					onChange={ ( value ) =>
-						setAttributes( { headingAlign: value } )
-					}
-				/>
-			</BlockControls>
-		);
-	};
 
 	const generalPanel = () => {
 
@@ -1253,7 +1238,6 @@ const Settings = ( props ) => {
 
 	return (
 		<div>
-			{ blockControlSettings() }
 			<InspectorControls>
 				<InspectorTabs>
 					<InspectorTab { ...UAGTabs.general }>
