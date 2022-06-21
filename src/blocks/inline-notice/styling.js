@@ -4,8 +4,12 @@
 
 import generateCSS from '@Controls/generateCSS';
 import generateCSSUnit from '@Controls/generateCSSUnit';
+import { getFallbackNumber } from '@Controls/getAttributeFallback';
 
 function styling( props ) {
+
+	const blockName = props.name.replace( 'uagb/', '' );
+
 	const {
 		block_id,
 		textColor,
@@ -79,7 +83,23 @@ function styling( props ) {
 		descDecoration,
 		titleFontStyle,
 		descFontStyle,
+		// letter spaceing
+		titleLetterSpacing,
+		titleLetterSpacingTablet,
+		titleLetterSpacingMobile,
+		titleLetterSpacingType,
+		descLetterSpacing,
+		descLetterSpacingTablet,
+		descLetterSpacingMobile,
+		descLetterSpacingType,
 	} = props.attributes;
+
+	const iconSizeFallback = getFallbackNumber( iconSize, 'iconSize', blockName );
+	const iconSizeTabFallback = getFallbackNumber( iconSizeTab, 'iconSizeTab', blockName );
+	const iconSizeMobFallback = getFallbackNumber( iconSizeMob, 'iconSizeMob', blockName );
+	const highlightWidthFallback = getFallbackNumber( highlightWidth, 'highlightWidth', blockName );
+	const highlightWidthTabletFallback = getFallbackNumber( highlightWidthTablet, 'highlightWidthTablet', blockName );
+	const highlightWidthMobileFallback = getFallbackNumber( highlightWidthMobile, 'highlightWidthMobile', blockName );
 
 	let lPadding;
 	let rPadding;
@@ -113,10 +133,11 @@ function styling( props ) {
 		rPaddingTablet = titleRightPaddingTablet;
 	}
 
+	// Setting the Icon Position Defaults
 	const posTopTab = ! isNaN( titleTopPaddingTablet ) ? titleTopPaddingTablet : titleTopPadding;
 	const posLeftTab = ! isNaN( titleLeftPaddingTablet ) ? titleLeftPaddingTablet : titleLeftPadding;
 	const posRightTab = ! isNaN( titleRightPaddingTablet ) ? titleRightPaddingTablet : titleRightPadding;
-	const posClassicTab = ! isNaN( highlightWidthTablet ) ? highlightWidthTablet : highlightWidth;
+	const posClassicTab = ! isNaN( highlightWidthTablet ) ? highlightWidthTablet : highlightWidthFallback;
 	const posTopUnitTab = ! isNaN( titleTopPaddingTablet ) ? tabletTitlePaddingUnit : titlePaddingUnit;
 	const posLeftUnitTab = ! isNaN( titleLeftPaddingTablet ) ? tabletTitlePaddingUnit : titlePaddingUnit;
 	const posRightUnitTab = ! isNaN( titleRightPaddingTablet ) ? tabletTitlePaddingUnit : titlePaddingUnit;
@@ -152,6 +173,7 @@ function styling( props ) {
 				titleBottomPadding,
 				titlePaddingUnit
 			),
+			'letter-spacing': generateCSSUnit( titleLetterSpacing, titleLetterSpacingType ),
 		},
 		' .rich-text.block-editor-rich-text__editable.uagb-notice-text': {
 			'padding-left': generateCSSUnit(
@@ -184,6 +206,7 @@ function styling( props ) {
 				descLineHeightType
 			),
 			'color': textColor,
+			'letter-spacing': generateCSSUnit( descLetterSpacing , descLetterSpacingType ),
 		},
 
 		' span.uagb-notice-dismiss': { // For Backward.
@@ -193,14 +216,8 @@ function styling( props ) {
 			'fill': noticeDismissColor,
 		},
 		'.uagb-dismissable > svg': {
-			'width': generateCSSUnit(
-				iconSize,
-				iconSizeUnit
-			),
-			'height': generateCSSUnit(
-				iconSize,
-				iconSizeUnit
-			),
+			'width': generateCSSUnit( iconSizeFallback, iconSizeUnit ),
+			'height': generateCSSUnit( iconSizeFallback, iconSizeUnit ),
 			'top': generateCSSUnit(
 				titleTopPadding,
 				titlePaddingUnit
@@ -246,6 +263,7 @@ function styling( props ) {
 				titleBottomPaddingMobile,
 				mobileTitlePaddingUnit
 			),
+			'letter-spacing': generateCSSUnit( titleLetterSpacingMobile, titleLetterSpacingType ),
 		},
 
 		' .rich-text.block-editor-rich-text__editable.uagb-notice-text p': {
@@ -257,6 +275,7 @@ function styling( props ) {
 				descLineHeightMobile,
 				descLineHeightType
 			),
+			'letter-spacing': generateCSSUnit( descLetterSpacingMobile , descLetterSpacingType ),
 		},
 		' .rich-text.block-editor-rich-text__editable.uagb-notice-text': {
 			'padding-left': generateCSSUnit(
@@ -277,14 +296,8 @@ function styling( props ) {
 			),
 		},
 		'.uagb-dismissable > svg': {
-			'width': generateCSSUnit(
-				iconSizeMob,
-				iconSizeUnit
-			),
-			'height': generateCSSUnit(
-				iconSizeMob,
-				iconSizeUnit
-			),
+			'width': generateCSSUnit( iconSizeMobFallback, iconSizeUnit ),
+			'height': generateCSSUnit( iconSizeMobFallback, iconSizeUnit ),
 			'top': generateCSSUnit(
 				posTopMob,
 				posTopUnitMob
@@ -330,6 +343,7 @@ function styling( props ) {
 				titleBottomPaddingTablet,
 				tabletTitlePaddingUnit
 			),
+			'letter-spacing': generateCSSUnit( titleLetterSpacingTablet, titleLetterSpacingType ),
 		},
 
 		' .rich-text.block-editor-rich-text__editable.uagb-notice-text p': {
@@ -341,6 +355,7 @@ function styling( props ) {
 				descLineHeightTablet,
 				descLineHeightType
 			),
+			'letter-spacing': generateCSSUnit( descLetterSpacingTablet , descLetterSpacingType ),
 		},
 
 		' .rich-text.block-editor-rich-text__editable.uagb-notice-text': {
@@ -362,14 +377,8 @@ function styling( props ) {
 			),
 		},
 		'.uagb-dismissable > svg': {
-			'width': generateCSSUnit(
-				iconSizeTab,
-				iconSizeUnit
-			),
-			'height': generateCSSUnit(
-				iconSizeTab,
-				iconSizeUnit
-			),
+			'width': generateCSSUnit( iconSizeTabFallback, iconSizeUnit ),
+			'height': generateCSSUnit( iconSizeTabFallback, iconSizeUnit ),
 			'top': generateCSSUnit(
 				posTopTab,
 				posTopUnitTab
@@ -436,36 +445,54 @@ function styling( props ) {
 		selectors[
 			' .rich-text.block-editor-rich-text__editable.uagb-notice-title'
 		][ 'border-left' ] =
-			generateCSSUnit( highlightWidth, 'px' ) + ' solid ' + noticeColor;
+			generateCSSUnit(
+				highlightWidthFallback,
+				'px'
+			) + ' solid ' + noticeColor;
 		selectors[
 			' .rich-text.block-editor-rich-text__editable.uagb-notice-text'
 		][ 'background-color' ] = contentBgColor;
 		selectors[
 			' .rich-text.block-editor-rich-text__editable.uagb-notice-text'
 		][ 'border-left' ] =
-			generateCSSUnit( highlightWidth, 'px' ) + ' solid ' + noticeColor;
+			generateCSSUnit(
+				highlightWidthFallback,
+				'px'
+			) + ' solid ' + noticeColor;
 		mobileSelectors[
 			' .rich-text.block-editor-rich-text__editable.uagb-notice-text'
 		][ 'border-left' ] =
-			generateCSSUnit( highlightWidthMobile, 'px' ) + ' solid ' + noticeColor;
+			generateCSSUnit(
+				highlightWidthMobileFallback,
+				'px'
+			) + ' solid ' + noticeColor;
 		mobileSelectors[
 			' .rich-text.block-editor-rich-text__editable.uagb-notice-title'
 		][ 'border-left' ] =
-			generateCSSUnit( highlightWidthMobile, 'px' ) + ' solid ' + noticeColor;
+			generateCSSUnit(
+				highlightWidthMobileFallback,
+				'px'
+			) + ' solid ' + noticeColor;
 		tabletSelectors[
 			' .rich-text.block-editor-rich-text__editable.uagb-notice-text'
 		][ 'border-left' ] =
-			generateCSSUnit( highlightWidthTablet, 'px' ) + ' solid ' + noticeColor;
+			generateCSSUnit(
+				highlightWidthTabletFallback,
+				'px'
+			) + ' solid ' + noticeColor;
 		tabletSelectors[
 			' .rich-text.block-editor-rich-text__editable.uagb-notice-title'
 		][ 'border-left' ] =
-			generateCSSUnit( highlightWidthTablet, 'px' ) + ' solid ' + noticeColor;
+			generateCSSUnit(
+				highlightWidthTabletFallback,
+				'px'
+			) + ' solid ' + noticeColor;
 		selectors[ '.uagb-inline_notice__align-right svg' ] = {
 			'left': `calc(${ generateCSSUnit(
 				titleLeftPadding,
 				titlePaddingUnit
 			) } + ${ generateCSSUnit(
-				highlightWidth,
+				highlightWidthFallback,
 				'px'
 			) })`,
 		};

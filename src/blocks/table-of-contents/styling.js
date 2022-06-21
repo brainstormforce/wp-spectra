@@ -4,8 +4,12 @@
 
 import generateCSS from '@Controls/generateCSS';
 import generateCSSUnit from '@Controls/generateCSSUnit';
+import { getFallbackNumber } from '@Controls/getAttributeFallback';
 
 function styling( props ) {
+
+	const blockName = props.name.replace( 'uagb/', '' );
+
 	const {
 		customWidth,
 		makeCollapsible,
@@ -107,8 +111,21 @@ function styling( props ) {
 		headingTransform,
 		headingDecoration,
 		headingAlignment,
+		headingLetterSpacing,
+		headingLetterSpacingTablet,
+		headingLetterSpacingMobile,
+		headingLetterSpacingType,
+		listLetterSpacing,
+		listLetterSpacingTablet,
+		listLetterSpacingMobile,
+		listLetterSpacingType,
 		markerView
 	} = props.attributes;
+
+	const tColumnsDesktopFallback = getFallbackNumber( tColumnsDesktop, 'tColumnsDesktop', blockName );
+	const tColumnsTabletFallback = getFallbackNumber( tColumnsTablet, 'tColumnsTablet', blockName );
+	const tColumnsMobileFallback = getFallbackNumber( tColumnsMobile, 'tColumnsMobile', blockName );
+	const widthDesktopFallback = getFallbackNumber( widthDesktop, 'widthDesktop', blockName );
 
 	let selectors = {};
 	let tablet_selectors = {};
@@ -130,6 +147,7 @@ function styling( props ) {
 			'text-transform': fontTransform,
 			'font-weight': fontWeight,
 			'color': linkColor,
+			'letter-spacing': generateCSSUnit( listLetterSpacing, listLetterSpacingType ),
 		},
 		' .uagb-toc__title-wrap': {
 			'justify-content': align,
@@ -152,6 +170,7 @@ function styling( props ) {
 			'text-transform': headingTransform,
 			'font-weight': headingFontWeight,
 			'color': headingColor,
+			'letter-spacing': generateCSSUnit( headingLetterSpacing, headingLetterSpacingType ),
 		},
 		' .uagb-toc__list-wrap ol li a:hover': {
 			'color': linkHoverColor,
@@ -235,13 +254,13 @@ function styling( props ) {
 	};
 
 	selectors[ ' .uagb-toc__list-wrap' ] = {
-		'column-count': tColumnsDesktop,
+		'column-count': tColumnsDesktopFallback,
 		'overflow': 'hidden',
 	};
 
 	if ( customWidth ) {
 		selectors[ ' .uagb-toc__wrap' ].width = generateCSSUnit(
-			widthDesktop,
+			widthDesktopFallback,
 			widthTypeDesktop
 		);
 	}
@@ -272,6 +291,7 @@ function styling( props ) {
 		' .uagb-toc__list-wrap ol li a': {
 			'font-size': generateCSSUnit( fontSizeTablet, fontSizeType ),
 			'line-height': generateCSSUnit( lineHeightTablet, lineHeightType ),
+			'letter-spacing': generateCSSUnit( listLetterSpacingTablet, listLetterSpacingType ),
 		},
 		' .uagb-toc__title': {
 			'font-size': generateCSSUnit(
@@ -283,6 +303,7 @@ function styling( props ) {
 				headingLineHeightType
 			),
 			'margin-bottom': generateCSSUnit( headingBottomTablet, headingBottomType ),
+			'letter-spacing': generateCSSUnit( headingLetterSpacingTablet, headingLetterSpacingType ),
 		},
 		' .uagb-toc__wrap': {
 			'width': generateCSSUnit( widthTablet, widthTypeTablet ),
@@ -319,7 +340,7 @@ function styling( props ) {
 			),
 		},
 		' .uagb-toc__list-wrap': {
-			'column-count': tColumnsTablet,
+			'column-count': tColumnsTabletFallback,
 			'overflow': 'hidden',
 		},
 
@@ -379,6 +400,7 @@ function styling( props ) {
 		' .uagb-toc__list-wrap ol li a': {
 			'font-size': generateCSSUnit( fontSizeMobile, fontSizeType ),
 			'line-height': generateCSSUnit( lineHeightMobile, lineHeightType ),
+			'letter-spacing': generateCSSUnit( listLetterSpacingMobile, listLetterSpacingType ),
 		},
 		' .uagb-toc__title': {
 			'font-size': generateCSSUnit(
@@ -390,6 +412,7 @@ function styling( props ) {
 				headingLineHeightType
 			),
 			'margin-bottom': generateCSSUnit( headingBottomMobile, headingBottomType ),
+			'letter-spacing': generateCSSUnit( headingLetterSpacingMobile, headingLetterSpacingType ),
 		},
 		' .uagb-toc__wrap': {
 			'width': generateCSSUnit( widthMobile, widthTypeMobile ),
@@ -426,7 +449,7 @@ function styling( props ) {
 			),
 		},
 		' .uagb-toc__list-wrap': {
-			'column-count': tColumnsMobile,
+			'column-count': tColumnsMobileFallback,
 			'overflow': 'hidden',
 		},
 		' .uagb-toc__list-wrap > ol.uagb-toc__list > li:first-child': {
