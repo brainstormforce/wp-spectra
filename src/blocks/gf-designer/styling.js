@@ -213,6 +213,34 @@ function styling( props ) {
 		successMsgDecoration,
 		successMsgFontStyle,
 		successMsgTransform,
+		labelLetterSpacing,
+labelLetterSpacingTablet,
+labelLetterSpacingMobile,
+labelLetterSpacingType,
+inputLetterSpacing,
+inputLetterSpacingTablet,
+inputLetterSpacingMobile,
+inputLetterSpacingType,
+radioCheckLetterSpacing,
+radioCheckLetterSpacingTablet,
+radioCheckLetterSpacingMobile,
+radioCheckLetterSpacingType,
+buttonLetterSpacing,
+buttonLetterSpacingTablet,
+buttonLetterSpacingMobile,
+buttonLetterSpacingType,
+validationMsgLetterSpacing,
+validationMsgLetterSpacingTablet,
+validationMsgLetterSpacingMobile,
+validationMsgLetterSpacingType,
+msgLetterSpacing,
+msgLetterSpacingTablet,
+msgLetterSpacingMobile,
+msgLetterSpacingType,
+successMsgLetterSpacing,
+successMsgLetterSpacingTablet,
+successMsgLetterSpacingMobile,
+successMsgLetterSpacingType,
 	} = props.attributes;
 
 	const selectors = {
@@ -261,6 +289,7 @@ function styling( props ) {
 				inputLineHeightType
 			),
 			'text-align': align,
+			'letter-spacing': generateCSSUnit( inputLetterSpacing, inputLetterSpacingType ),
 		},
 		' select': {
 			'background-color': fieldBgColor,
@@ -298,6 +327,7 @@ function styling( props ) {
 				fieldbottomPadding,
 				fieldpaddingUnit
 			),
+			'letter-spacing': generateCSSUnit( inputLetterSpacing, inputLetterSpacingType ),
 		},
 		' .chosen-container-single span': {
 			'background-color': fieldBgColor,
@@ -335,6 +365,7 @@ function styling( props ) {
 				fieldbottomPadding,
 				fieldpaddingUnit
 			),
+			'letter-spacing': generateCSSUnit( inputLetterSpacing, inputLetterSpacingType ),
 		},
 		' .chosen-container-single.chosen-container-active .chosen-single span': {
 			'margin-bottom': 0,
@@ -409,6 +440,7 @@ function styling( props ) {
 				'auto' === textAreaHeight
 					? textAreaHeight
 					: textAreaHeight + 'px',
+			'letter-spacing': generateCSSUnit( inputLetterSpacing, inputLetterSpacingType ),
 		},
 		' textarea::placeholder': {
 			'color': fieldInputColor,
@@ -430,6 +462,7 @@ function styling( props ) {
 				labelLineHeight,
 				labelLineHeightType
 			),
+			'letter-spacing': generateCSSUnit( labelLetterSpacing, labelLetterSpacingType ),
 		},
 		' form .gfield_radio label.gfield_label': {
 			'color': fieldLabelColor,
@@ -443,6 +476,7 @@ function styling( props ) {
 				labelLineHeight,
 				labelLineHeightType
 			),
+			'letter-spacing': generateCSSUnit( labelLetterSpacing, labelLetterSpacingType ),
 		},
 		' form .gfield_checkbox label.gfield_label': {
 			'color': fieldLabelColor,
@@ -456,6 +490,7 @@ function styling( props ) {
 				labelLineHeight,
 				labelLineHeightType
 			),
+			'letter-spacing': generateCSSUnit( labelLetterSpacing, labelLetterSpacingType ),
 		},
 		" .wpgf .gfield_checkbox input[type='checkbox'] + label, .wpgf .gfield_checkbox input[type='checkbox'] + label": {
 			'margin-top': generateCSSUnit( fieldLabelSpacing, 'px' ),
@@ -509,6 +544,7 @@ function styling( props ) {
 				buttonbottomPadding,
 				buttonpaddingUnit
 			),
+			'letter-spacing': generateCSSUnit( buttonLetterSpacing, buttonLetterSpacingType ),
 		},
 		':hover input.gform_button': {
 			'color': buttonTextHoverColor,
@@ -637,6 +673,7 @@ function styling( props ) {
 				radioCheckLineHeightType
 			),
 			'color': radioCheckLableColor,
+			'letter-spacing': generateCSSUnit( radioCheckLetterSpacing, radioCheckLetterSpacingType ),
 		},
 		' .uagb-gf-styler__check-style-enabled form .gfield_checkbox label': {
 			'font-size': generateCSSUnit(
@@ -653,6 +690,7 @@ function styling( props ) {
 				radioCheckLineHeightType
 			),
 			'color': radioCheckLableColor,
+			'letter-spacing': generateCSSUnit( radioCheckLetterSpacing, radioCheckLetterSpacingType ),
 		},
 
 		' .gform_wrapper .gfield_description.validation_message': {
@@ -672,6 +710,7 @@ function styling( props ) {
 				validationMsgLineHeight,
 				validationMsgLineHeightType
 			),
+			'letter-spacing': generateCSSUnit( validationMsgLetterSpacing, validationMsgLetterSpacingType ),
 		},
 		' .uagb-gf-styler__error-yes .gform_wrapper .gfield.gfield_error': {
 			'background-color': validationMsgBgColor,
@@ -752,6 +791,7 @@ function styling( props ) {
 			'text-transform': msgTransform,
 			'font-weight': msgFontWeight,
 			'line-height': generateCSSUnit( msgLineHeight, msgLineHeightType ),
+			'letter-spacing': generateCSSUnit( msgLetterSpacing, msgLetterSpacingType ),
 		},
 
 		' .gform_confirmation_message': {
@@ -769,6 +809,7 @@ function styling( props ) {
 				successMsgLineHeight,
 				successMsgLineHeightType
 			),
+			'letter-spacing': generateCSSUnit( successMsgLetterSpacing, successMsgLetterSpacingType ),
 		},
 	};
 
@@ -843,6 +884,7 @@ function styling( props ) {
 			'border-width': generateCSSUnit( fieldBorderWidthTablet, fieldBorderWidthType ),
 			'margin-top': generateCSSUnit( fieldLabelSpacingTablet, 'px' ),
 			'margin-bottom': generateCSSUnit( fieldSpacingTablet, 'px' ),
+			'letter-spacing': generateCSSUnit( inputLetterSpacingTablet, inputLetterSpacingType ),
 		},
 		' select': {
 			'font-size': generateCSSUnit(
@@ -855,6 +897,7 @@ function styling( props ) {
 			),
 			'margin-top': generateCSSUnit( fieldLabelSpacingTablet, 'px' ),
 			'margin-bottom': generateCSSUnit( fieldSpacingTablet, 'px' ),
+			'letter-spacing': generateCSSUnit( labelLetterSpacingTablet, labelLetterSpacingType ),
 		},
 		' .gform_wrapper.gravity-theme .gfield textarea': {
 			'font-size': generateCSSUnit(
@@ -883,6 +926,7 @@ function styling( props ) {
 			),
 			'margin-top': generateCSSUnit( fieldLabelSpacingTablet, 'px' ),
 			'margin-bottom': generateCSSUnit( fieldSpacingTablet, 'px' ),
+			'letter-spacing': generateCSSUnit( inputLetterSpacingTablet, inputLetterSpacingType ),
 			'height':
 				'auto' === textAreaHeightTablet
 					? textAreaHeightTablet
@@ -897,6 +941,7 @@ function styling( props ) {
 				labelLineHeightTablet,
 				labelLineHeightType
 			),
+			'letter-spacing': generateCSSUnit( labelLetterSpacingTablet, labelLetterSpacingType ),
 		},
 
 		' form .gfield_radio label': {
@@ -908,6 +953,7 @@ function styling( props ) {
 				labelLineHeightTablet,
 				labelLineHeightType
 			),
+			'letter-spacing': generateCSSUnit( labelLetterSpacingTablet, labelLetterSpacingType ),
 		},
 		' form .gfield_checkbox label': {
 			'font-size': generateCSSUnit(
@@ -918,6 +964,7 @@ function styling( props ) {
 				labelLineHeightTablet,
 				labelLineHeightType
 			),
+			'letter-spacing': generateCSSUnit( labelLetterSpacingTablet, labelLetterSpacingType ),
 		},
 		' input.gform_button': {
 			'font-size': generateCSSUnit(
@@ -949,6 +996,7 @@ function styling( props ) {
 			'background-color': buttonBgColor,
 			'border-color': buttonBorderColor,
 			'border-style': buttonBorderStyle,
+			'letter-spacing': generateCSSUnit( buttonLetterSpacingTablet, buttonLetterSpacingType ),
 		},
 		' .uagb-gf-styler__check-style-enabled form .gfield_radio label': {
 			'font-size': generateCSSUnit(
@@ -959,6 +1007,7 @@ function styling( props ) {
 				radioCheckLineHeightTablet,
 				radioCheckLineHeightType
 			),
+			'letter-spacing': generateCSSUnit( radioCheckLetterSpacingTablet, radioCheckLetterSpacingType ),
 		},
 		' .uagb-gf-styler__check-style-enabled form .gfield_checkbox label': {
 			'font-size': generateCSSUnit(
@@ -969,6 +1018,7 @@ function styling( props ) {
 				radioCheckLineHeightTablet,
 				radioCheckLineHeightType
 			),
+			'letter-spacing': generateCSSUnit( radioCheckLetterSpacingTablet, radioCheckLetterSpacingType ),
 		},
 		' span.wpgf-not-valid-tip': {
 			'font-size': generateCSSUnit(
@@ -989,6 +1039,7 @@ function styling( props ) {
 				validationMsgLineHeightTablet,
 				validationMsgLineHeightType
 			),
+			'letter-spacing': generateCSSUnit( validationMsgLetterSpacingTablet, validationMsgLetterSpacingType ),
 		},
 		' .gform_wrapper div.validation_error': {
 			'font-size': generateCSSUnit( msgFontSizeTablet, msgFontSizeType ),
@@ -1012,6 +1063,7 @@ function styling( props ) {
 				msgbottomTabletPadding,
 				msgtabletPaddingUnit
 			),
+			'letter-spacing': generateCSSUnit( msgLetterSpacingTablet, msgLetterSpacingType ),
 		},
 		' .gform_confirmation_message': {
 			'font-size': generateCSSUnit(
@@ -1022,6 +1074,7 @@ function styling( props ) {
 				successMsgLineHeightTablet,
 				successMsgLineHeightType
 			),
+			'letter-spacing': generateCSSUnit( successMsgLetterSpacingTablet, successMsgLetterSpacingType ),
 		},
 	};
 
@@ -1096,6 +1149,7 @@ function styling( props ) {
 			'border-width': generateCSSUnit( fieldBorderWidthMobile, fieldBorderWidthType ),
 			'margin-top': generateCSSUnit( fieldLabelSpacingMobile, 'px' ),
 			'margin-bottom': generateCSSUnit( fieldSpacingMobile, 'px' ),
+			'letter-spacing': generateCSSUnit( inputLetterSpacingMobile, inputLetterSpacingType ),
 		},
 		' select': {
 			'font-size': generateCSSUnit(
@@ -1108,6 +1162,7 @@ function styling( props ) {
 			),
 			'margin-top': generateCSSUnit( fieldLabelSpacingMobile, 'px' ),
 			'margin-bottom': generateCSSUnit( fieldSpacingMobile, 'px' ),
+			'letter-spacing': generateCSSUnit( labelLetterSpacingMobile, labelLetterSpacingType ),
 		},
 		' .gform_wrapper.gravity-theme .gfield textarea': {
 			'font-size': generateCSSUnit(
@@ -1120,6 +1175,7 @@ function styling( props ) {
 			),
 			'margin-top': generateCSSUnit( fieldLabelSpacingMobile, 'px' ),
 			'margin-bottom': generateCSSUnit( fieldSpacingMobile, 'px' ),
+			'letter-spacing': generateCSSUnit( inputLetterSpacingMobile, inputLetterSpacingType ),
 			'height':
 				'auto' === textAreaHeightMobile
 					? textAreaHeightMobile
@@ -1150,6 +1206,7 @@ function styling( props ) {
 				fieldbottomMobilePadding,
 				fieldmobilePaddingUnit
 			),
+			'letter-spacing': generateCSSUnit( inputLetterSpacingMobile, inputLetterSpacingType ),
 		},
 		' form .gfield_radio label': {
 			'font-size': generateCSSUnit(
@@ -1160,6 +1217,7 @@ function styling( props ) {
 				labelLineHeightMobile,
 				labelLineHeightType
 			),
+			'letter-spacing': generateCSSUnit( labelLetterSpacingMobile, labelLetterSpacingType ),
 		},
 		' form .gfield_checkbox label': {
 			'font-size': generateCSSUnit(
@@ -1170,6 +1228,7 @@ function styling( props ) {
 				labelLineHeightMobile,
 				labelLineHeightType
 			),
+			'letter-spacing': generateCSSUnit( labelLetterSpacingMobile, labelLetterSpacingType ),
 		},
 		' input.gform_button': {
 			'font-size': generateCSSUnit(
@@ -1201,6 +1260,7 @@ function styling( props ) {
 			'background-color': buttonBgColor,
 			'border-color': buttonBorderColor,
 			'border-style': buttonBorderStyle,
+			'letter-spacing': generateCSSUnit( buttonLetterSpacingMobile, buttonLetterSpacingType ),
 		},
 		' .uagb-gf-styler__check-style-enabled form .gfield_radio label': {
 			'font-size': generateCSSUnit(
@@ -1211,6 +1271,7 @@ function styling( props ) {
 				radioCheckLineHeightMobile,
 				radioCheckLineHeightType
 			),
+			'letter-spacing': generateCSSUnit( radioCheckLetterSpacingMobile, radioCheckLetterSpacingType ),
 		},
 		' .uagb-gf-styler__check-style-enabled form .gfield_checkbox label': {
 			'font-size': generateCSSUnit(
@@ -1221,6 +1282,7 @@ function styling( props ) {
 				radioCheckLineHeightMobile,
 				radioCheckLineHeightType
 			),
+			'letter-spacing': generateCSSUnit( radioCheckLetterSpacingMobile, radioCheckLetterSpacingType ),
 		},
 		' span.wpgf-not-valid-tip': {
 			'font-size': generateCSSUnit(
@@ -1231,6 +1293,7 @@ function styling( props ) {
 				validationMsgLineHeightMobile,
 				validationMsgLineHeightType
 			),
+			'letter-spacing': generateCSSUnit( validationMsgLetterSpacingMobile, validationMsgLetterSpacingType ),
 		},
 		' .gform_wrapper .validation_message': {
 			'font-size': generateCSSUnit(
@@ -1241,6 +1304,7 @@ function styling( props ) {
 				validationMsgLineHeightMobile,
 				validationMsgLineHeightType
 			),
+			'letter-spacing': generateCSSUnit( validationMsgLetterSpacingMobile, validationMsgLetterSpacingType ),
 		},
 		' .gform_wrapper div.validation_error': {
 			'font-size': generateCSSUnit( msgFontSizeMobile, msgFontSizeType ),
@@ -1264,6 +1328,7 @@ function styling( props ) {
 				msgbottomMobilePadding,
 				msgmobilePaddingUnit
 			),
+			'letter-spacing': generateCSSUnit( msgLetterSpacingMobile, msgLetterSpacingType ),
 		},
 		' .gform_confirmation_message': {
 			'font-size': generateCSSUnit(
@@ -1274,6 +1339,7 @@ function styling( props ) {
 				successMsgLineHeightMobile,
 				successMsgLineHeightType
 			),
+			'letter-spacing': generateCSSUnit( successMsgLetterSpacingMobile, successMsgLetterSpacingType ),
 		},
 	};
 
