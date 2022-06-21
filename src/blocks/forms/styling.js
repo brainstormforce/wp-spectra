@@ -155,6 +155,9 @@ function styling( props ) {
 
 	} = props.attributes;
 
+	const fieldGapFallback = getFallbackNumber( fieldGap, 'fieldGap', blockName );
+	const labelGapFallback = getFallbackNumber( labelGap, 'labelGap', blockName );
+
 	let selectors = {};
 	let tabletSelectors = {};
 	let mobileSelectors = {};
@@ -163,6 +166,8 @@ function styling( props ) {
 	const toggleSizeNumber = getFallbackNumber( toggleSize, 'toggleSize', blockName );
 	const toggleSizeNumberTablet = isNaN( toggleSizeTablet ) ? toggleSizeNumber : toggleSizeTablet;
 	const toggleSizeNumberMobile = isNaN( toggleSizeMobile ) ? toggleSizeNumberTablet : toggleSizeMobile;
+	const toggleSizeTabletFallback = getFallbackNumber( toggleSizeTablet, 'toggleSizeTablet', blockName );
+	const toggleSizeMobileFallback = getFallbackNumber( toggleSizeMobile, 'toggleSizeMobile', blockName );
 
 	// Used for Calculations, needs to be numeric.
 	const toggleWidthSizeNumber = getFallbackNumber( toggleWidthSize, 'toggleWidthSize', blockName );
@@ -184,7 +189,7 @@ function styling( props ) {
 		},
 
 		' .uagb-forms-main-form .uagb-forms-field-set': {
-			'margin-bottom': generateCSSUnit( getFallbackNumber( fieldGap, 'fieldGap', blockName ), fieldGapType ),
+			'margin-bottom': generateCSSUnit( fieldGapFallback, fieldGapType ),
 		},
 		' .uagb-forms-main-form .uagb-forms-input-label': {
 			'font-size': generateCSSUnit( labelFontSize, labelFontSizeType ),
@@ -198,7 +203,7 @@ function styling( props ) {
 			'text-decoration': labelDecoration,
 			'font-weight': labelFontWeight,
 			'color': labelColor,
-			'margin-bottom': generateCSSUnit( getFallbackNumber( labelGap, 'labelGap', blockName ), labelGapUnit ),
+			'margin-bottom': generateCSSUnit( labelGapFallback, labelGapUnit ),
 		},
 		' .uagb-forms-main-form  .uagb-forms-input::placeholder': {
 			'font-size': generateCSSUnit( inputFontSize, inputFontSizeType ),
@@ -615,22 +620,22 @@ function styling( props ) {
 			'font-size': 'calc(' + toggleSizeNumberTablet + toggleSizeType + ' / 1.2 )',
 		},
 		' .uagb-forms-radio-wrap input[type=radio] + label:before': {
-			'width': generateCSSUnit( getFallbackNumber( toggleSizeTablet, 'toggleSizeTablet', blockName ), toggleSizeType ),
-			'height': generateCSSUnit( getFallbackNumber( toggleSizeTablet, 'toggleSizeTablet', blockName ), toggleSizeType ),
+			'width': generateCSSUnit( toggleSizeTabletFallback, toggleSizeType ),
+			'height': generateCSSUnit( toggleSizeTabletFallback, toggleSizeType ),
 		},
 		' .uagb-forms-checkbox-wrap input[type=checkbox]:checked + label:before': {
 			'font-size': 'calc(' + toggleSizeNumberTablet + 'px / 1.2 )',
 		},
 		' .uagb-forms-checkbox-wrap input[type=checkbox] + label:before': {
-			'width': generateCSSUnit( getFallbackNumber( toggleSizeTablet, 'toggleSizeTablet', blockName ), 'px' ),
-			'height': generateCSSUnit( getFallbackNumber( toggleSizeTablet, 'toggleSizeTablet', blockName ), 'px' ),
+			'width': generateCSSUnit( toggleSizeTabletFallback, 'px' ),
+			'height': generateCSSUnit( toggleSizeTabletFallback, 'px' ),
 		},
 		' .uagb-forms-accept-wrap input[type=checkbox]:checked + label:before': {
 			'font-size': 'calc(' + toggleSizeNumberTablet + 'px / 1.2 )',
 		},
 		' .uagb-forms-accept-wrap input[type=checkbox] + label:before': {
-			'width': generateCSSUnit( getFallbackNumber( toggleSizeTablet, 'toggleSizeTablet', blockName ), 'px' ),
-			'height': generateCSSUnit( getFallbackNumber( toggleSizeTablet, 'toggleSizeTablet', blockName ), 'px' ),
+			'width': generateCSSUnit( toggleSizeTabletFallback, 'px' ),
+			'height': generateCSSUnit( toggleSizeTabletFallback, 'px' ),
 		},
 		' .uagb-switch' : {
 			'height': generateCSSUnit(
@@ -724,22 +729,22 @@ function styling( props ) {
 			'font-size': 'calc(' + toggleSizeNumberMobile + toggleSizeType + ' / 1.2 )',
 		},
 		' .uagb-forms-radio-wrap input[type=radio] + label:before': {
-			'width': generateCSSUnit( getFallbackNumber( toggleSizeMobile, 'toggleSizeMobile', blockName ), toggleSizeType ),
-			'height': generateCSSUnit( getFallbackNumber( toggleSizeMobile, 'toggleSizeMobile', blockName ), toggleSizeType ),
+			'width': generateCSSUnit( toggleSizeMobileFallback, toggleSizeType ),
+			'height': generateCSSUnit( toggleSizeMobileFallback, toggleSizeType ),
 		},
 		' .uagb-forms-checkbox-wrap input[type=checkbox]:checked + label:before': {
 			'font-size': 'calc(' + toggleSizeNumberMobile + 'px / 1.2 )',
 		},
 		' .uagb-forms-checkbox-wrap input[type=checkbox] + label:before': {
-			'width': generateCSSUnit( getFallbackNumber( toggleSizeMobile, 'toggleSizeMobile', blockName ), 'px' ),
-			'height': generateCSSUnit( getFallbackNumber( toggleSizeMobile, 'toggleSizeMobile', blockName ), 'px' ),
+			'width': generateCSSUnit( toggleSizeMobileFallback, 'px' ),
+			'height': generateCSSUnit( toggleSizeMobileFallback, 'px' ),
 		},
 		' .uagb-forms-accept-wrap input[type=checkbox]:checked + label:before': {
 			'font-size': 'calc(' + toggleSizeNumberMobile + 'px / 1.2 )',
 		},
 		' .uagb-forms-accept-wrap input[type=checkbox] + label:before': {
-			'width': generateCSSUnit( getFallbackNumber( toggleSizeMobile, 'toggleSizeMobile', blockName ), 'px' ),
-			'height': generateCSSUnit( getFallbackNumber( toggleSizeMobile, 'toggleSizeMobile', blockName ), 'px' ),
+			'width': generateCSSUnit( toggleSizeMobileFallback, 'px' ),
+			'height': generateCSSUnit( toggleSizeMobileFallback, 'px' ),
 		},
 		' .uagb-forms-main-form .uagb-forms-field-set': {
 			'margin-bottom': generateCSSUnit( fieldGapMobile, fieldGapType ),

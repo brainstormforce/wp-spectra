@@ -12,6 +12,9 @@ UAGB_Block_JS::blocks_forms_gfont( $attr );
 
 $block_name = 'forms';
 
+$field_gap_fallback = UAGB_Block_Helper::get_fallback_number( $attr['fieldGap'], 'fieldGap', $block_name );
+$label_gap_fallback = UAGB_Block_Helper::get_fallback_number( $attr['labelGap'], 'labelGap', $block_name );
+
 $selectors   = array();
 $m_selectors = array();
 $t_selectors = array();
@@ -25,10 +28,12 @@ $paddingFieldTop    = isset( $attr['paddingFieldTop'] ) ? $attr['paddingFieldTop
 $paddingFieldBottom = isset( $attr['paddingFieldBottom'] ) ? $attr['paddingFieldBottom'] : $attr['vPaddingField'];
 $paddingFieldLeft   = isset( $attr['paddingFieldLeft'] ) ? $attr['paddingFieldLeft'] : $attr['hPaddingField'];
 $paddingFieldRight  = isset( $attr['paddingFieldRight'] ) ? $attr['paddingFieldRight'] : $attr['hPaddingField'];
-
-$toggle_size_number        = UAGB_Block_Helper::get_fallback_number( $attr['toggleSize'], 'toggleSize', $block_name );
-$toggle_size_number_tablet = is_numeric( $attr['toggleSizeTablet'] ) ? $attr['toggleSizeTablet'] : $toggle_size_number;
-$toggle_size_number_mobile = is_numeric( $attr['toggleSizeMobile'] ) ? $attr['toggleSizeMobile'] : $toggle_size_number_tablet;
+  
+$toggle_size_number          = UAGB_Block_Helper::get_fallback_number( $attr['toggleSize'], 'toggleSize', $block_name );
+$toggle_size_number_tablet   = is_numeric( $attr['toggleSizeTablet'] ) ? $attr['toggleSizeTablet'] : $toggle_size_number;
+$toggle_size_number_mobile   = is_numeric( $attr['toggleSizeMobile'] ) ? $attr['toggleSizeMobile'] : $toggle_size_number_tablet;
+$toggle_size_tablet_fallback = UAGB_Block_Helper::get_fallback_number( $attr['toggleSizeTablet'], 'toggleSizeTablet', $block_name );
+$toggle_size_mobile_fallback = UAGB_Block_Helper::get_fallback_number( $attr['toggleSizeMobile'], 'toggleSizeMobile', $block_name );
 
 $toggle_width_size_number        = UAGB_Block_Helper::get_fallback_number( $attr['toggleWidthSize'], 'toggleWidthSize', $block_name );
 $toggle_width_size_number_tablet = is_numeric( $attr['toggleWidthSizeTablet'] ) ? $attr['toggleWidthSizeTablet'] : $toggle_width_size_number;
@@ -48,12 +53,12 @@ $selectors = array(
 		'display' => $attr['displayLabels'] ? 'block' : 'none',
 	),
 	' .uagb-forms-main-form .uagb-forms-field-set'         => array(
-		'margin-bottom' => UAGB_Helper::get_css_value( UAGB_Block_Helper::get_fallback_number( $attr['fieldGap'], 'fieldGap', $block_name ), $attr['fieldGapType'] ),
+		'margin-bottom' => UAGB_Helper::get_css_value( $field_gap_fallback, $attr['fieldGapType'] ),
 	),
 	' .uagb-forms-main-form .uagb-forms-input-label'       => array(
 		'color'         => $attr['labelColor'],
 		'font-size'     => UAGB_Helper::get_css_value( $attr['labelFontSize'], $attr['labelFontSizeType'] ),
-		'margin-bottom' => UAGB_Helper::get_css_value( UAGB_Block_Helper::get_fallback_number( $attr['labelGap'], 'labelGap', $block_name ), $attr['labelGapUnit'] ),
+		'margin-bottom' => UAGB_Helper::get_css_value( $label_gap_fallback, $attr['labelGapUnit'] ),
 	),
 	' .uagb-forms-success-message'                         => array(
 		'border'           => UAGB_Helper::get_css_value( $attr['successMessageBorderWidth'], 'px' ) . ' ' . $attr['successMessageBorderStyle'],
@@ -391,24 +396,24 @@ $t_selectors[' .uagb-forms-checkbox-wrap input[type=checkbox]:checked + label:be
 	'font-size' => 'calc(' . $toggle_size_number_tablet . $attr['toggleSizeType'] . ' / 1.2)',
 );
 $t_selectors[' .uagb-forms-checkbox-wrap input[type=checkbox] + label:before']         = array(
-	'width'  => UAGB_Helper::get_css_value( UAGB_Block_Helper::get_fallback_number( $attr['toggleSizeTablet'], 'toggleSizeTablet', $block_name ), $attr['toggleSizeType'] ),
-	'height' => UAGB_Helper::get_css_value( UAGB_Block_Helper::get_fallback_number( $attr['toggleSizeTablet'], 'toggleSizeTablet', $block_name ), $attr['toggleSizeType'] ),
+	'width'  => UAGB_Helper::get_css_value( $toggle_size_tablet_fallback, $attr['toggleSizeType'] ),
+	'height' => UAGB_Helper::get_css_value( $toggle_size_tablet_fallback, $attr['toggleSizeType'] ),
 );
 // Radio Button Field css.
 $t_selectors[' .uagb-forms-radio-wrap input[type=radio]:checked + label:before'] = array(
 	'font-size' => 'calc(' . $toggle_size_number_tablet . 'px / 1.2)',
 );
 $t_selectors[' .uagb-forms-radio-wrap input[type=radio] + label:before']         = array(
-	'width'  => UAGB_Helper::get_css_value( UAGB_Block_Helper::get_fallback_number( $attr['toggleSizeTablet'], 'toggleSizeTablet', $block_name ), $attr['toggleSizeType'] ),
-	'height' => UAGB_Helper::get_css_value( UAGB_Block_Helper::get_fallback_number( $attr['toggleSizeTablet'], 'toggleSizeTablet', $block_name ), $attr['toggleSizeType'] ),
+	'width'  => UAGB_Helper::get_css_value( $toggle_size_tablet_fallback, $attr['toggleSizeType'] ),
+	'height' => UAGB_Helper::get_css_value( $toggle_size_tablet_fallback, $attr['toggleSizeType'] ),
 );
 // Accept Field css.
 $t_selectors[' .uagb-forms-accept-wrap input[type=checkbox]:checked + label:before'] = array(
 	'font-size' => 'calc(' . $toggle_size_number_tablet . $attr['toggleSizeType'] . ' / 1.2)',
 );
 $t_selectors[' .uagb-forms-accept-wrap input[type=checkbox] + label:before']         = array(
-	'width'  => UAGB_Helper::get_css_value( UAGB_Block_Helper::get_fallback_number( $attr['toggleSizeTablet'], 'toggleSizeTablet', $block_name ), $attr['toggleSizeType'] ),
-	'height' => UAGB_Helper::get_css_value( UAGB_Block_Helper::get_fallback_number( $attr['toggleSizeTablet'], 'toggleSizeTablet', $block_name ), $attr['toggleSizeType'] ),
+	'width'  => UAGB_Helper::get_css_value( $toggle_size_tablet_fallback, $attr['toggleSizeType'] ),
+	'height' => UAGB_Helper::get_css_value( $toggle_size_tablet_fallback, $attr['toggleSizeType'] ),
 );
 $t_selectors[' .uagb-forms-main-form .uagb-switch']                                  = array(
 	'height' => UAGB_Helper::get_css_value(
@@ -433,24 +438,24 @@ $m_selectors[' .uagb-forms-checkbox-wrap input[type=checkbox]:checked + label:be
 	'font-size' => 'calc(' . $toggle_size_number_mobile . $attr['toggleSizeType'] . ' / 1.2)',
 );
 $m_selectors[' .uagb-forms-checkbox-wrap input[type=checkbox] + label:before']         = array(
-	'width'  => UAGB_Helper::get_css_value( UAGB_Block_Helper::get_fallback_number( $attr['toggleSizeMobile'], 'toggleSizeMobile', $block_name ), $attr['toggleSizeType'] ),
-	'height' => UAGB_Helper::get_css_value( UAGB_Block_Helper::get_fallback_number( $attr['toggleSizeMobile'], 'toggleSizeMobile', $block_name ), $attr['toggleSizeType'] ),
+	'width'  => UAGB_Helper::get_css_value( $toggle_size_mobile_fallback, $attr['toggleSizeType'] ),
+	'height' => UAGB_Helper::get_css_value( $toggle_size_mobile_fallback, $attr['toggleSizeType'] ),
 );
 // Radio Button Field css.
 $m_selectors[' .uagb-forms-radio-wrap input[type=radio]:checked + label:before'] = array(
 	'font-size' => 'calc(' . $toggle_size_number_mobile . 'px / 1.2)',
 );
 $m_selectors[' .uagb-forms-radio-wrap input[type=radio] + label:before']         = array(
-	'width'  => UAGB_Helper::get_css_value( UAGB_Block_Helper::get_fallback_number( $attr['toggleSizeMobile'], 'toggleSizeMobile', $block_name ), $attr['toggleSizeType'] ),
-	'height' => UAGB_Helper::get_css_value( UAGB_Block_Helper::get_fallback_number( $attr['toggleSizeMobile'], 'toggleSizeMobile', $block_name ), $attr['toggleSizeType'] ),
+	'width'  => UAGB_Helper::get_css_value( $toggle_size_mobile_fallback, $attr['toggleSizeType'] ),
+	'height' => UAGB_Helper::get_css_value( $toggle_size_mobile_fallback, $attr['toggleSizeType'] ),
 );
 // Accept Field css.
 $m_selectors[' .uagb-forms-accept-wrap input[type=checkbox]:checked + label:before'] = array(
 	'font-size' => 'calc(' . $toggle_size_number_mobile . $attr['toggleSizeType'] . ' / 1.2)',
 );
 $m_selectors[' .uagb-forms-accept-wrap input[type=checkbox] + label:before']         = array(
-	'width'  => UAGB_Helper::get_css_value( UAGB_Block_Helper::get_fallback_number( $attr['toggleSizeMobile'], 'toggleSizeMobile', $block_name ), $attr['toggleSizeType'] ),
-	'height' => UAGB_Helper::get_css_value( UAGB_Block_Helper::get_fallback_number( $attr['toggleSizeMobile'], 'toggleSizeMobile', $block_name ), $attr['toggleSizeType'] ),
+	'width'  => UAGB_Helper::get_css_value( $toggle_size_mobile_fallback, $attr['toggleSizeType'] ),
+	'height' => UAGB_Helper::get_css_value( $toggle_size_mobile_fallback, $attr['toggleSizeType'] ),
 );
 $m_selectors[' .uagb-forms-main-form .uagb-switch']                                  = array(
 	'height' => UAGB_Helper::get_css_value(
