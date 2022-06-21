@@ -457,14 +457,12 @@ const attributes = {
 	},
 	labelGapTablet: {
 		type: 'number',
-		default: 10,
 		UAGCopyPaste: {
 			styleType: 'main-title-bottom-margin-tablet'
 		},
 	},
 	labelGapMobile: {
 		type: 'number',
-		default: 10,
 		UAGCopyPaste: {
 			styleType: 'main-title-margin-bottom-mobile'
 		},
@@ -553,14 +551,12 @@ const attributes = {
 		UAGCopyPaste: {
 			styleType: 'toggle-size'
 		},
-		default: 15,
 	},
 	toggleSizeMobile: {
 		type: 'number',
 		UAGCopyPaste: {
 			styleType: 'toggle-size'
 		},
-		default: 15,
 	},
 	toggleWidthSize: {
 		type: 'number',
@@ -790,14 +786,12 @@ const attributes = {
 	},
 	fieldGapTablet: {
 		type: 'number',
-		default: 20,
 		UAGCopyPaste: {
 			styleType: 'field-gap'
 		},
 	},
 	fieldGapMobile: {
 		type: 'number',
-		default: 20,
 		UAGCopyPaste: {
 			styleType: 'field-gap'
 		},
