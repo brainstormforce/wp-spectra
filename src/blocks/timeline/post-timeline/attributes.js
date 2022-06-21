@@ -6,6 +6,20 @@ const attributes = { // eslint-disable-line no-unused-vars
 			styleType: 'overall-alignment'
 		},
 	},
+	alignTablet          : {
+		type    : 'string',
+		default : '',
+		UAGCopyPaste: {
+			styleType: 'overall-alignment-tablet'
+		},
+	},
+	alignMobile                 : {
+		type    : 'string',
+		default : '',
+		UAGCopyPaste: {
+			styleType: 'overall-alignment-mobile'
+		},
+	},
 	headingColor            : {
 		type    : 'string',
 		default : '#333',

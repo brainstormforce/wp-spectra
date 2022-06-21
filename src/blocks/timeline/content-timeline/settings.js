@@ -91,6 +91,8 @@ const Settings = ( props ) => {
 		dateBottomspaceTablet,
 		dateBottomspaceMobile,
 			align,
+			alignTablet,
+			alignMobile,
 			icon,
 			iconColor,
 			dateColor,
@@ -328,8 +330,18 @@ const Settings = ( props ) => {
 					setAttributes={ setAttributes }
 					label={ __( 'Text Alignment', 'ultimate-addons-for-gutenberg' ) }
 					data={ {
-						value: align,
-						label: 'align',
+						desktop: {
+							value: align,
+							label: 'align',
+						},
+						tablet: {
+							value: alignTablet,
+							label: 'alignTablet',
+						},
+						mobile: {
+							value: alignMobile,
+							label: 'alignMobile',
+						},
 					} }
 					className="uagb-multi-button-alignment-control"
 					options={ [
@@ -371,6 +383,7 @@ const Settings = ( props ) => {
 						},
 					] }
 					showIcons={ true }
+					responsive={true}
 				/>
 				<MultiButtonsControl
 					setAttributes={ setAttributes }
