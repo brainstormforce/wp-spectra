@@ -105,6 +105,15 @@ function styling( props ) {
 		questionFontStyle,
 		questionTransform,
 		questionDecoration,
+		// letter spacing
+		questionLetterSpacing,
+		questionLetterSpacingTablet,
+		questionLetterSpacingMobile,
+		questionLetterSpacingType,
+		answerLetterSpacing,
+		answerLetterSpacingTablet,
+		answerLetterSpacingMobile,
+		answerLetterSpacingType,
 	} = props.attributes;
 
 	let selectors = {};
@@ -229,6 +238,7 @@ function styling( props ) {
 			'text-decoration': questionDecoration,
 			'text-transform': questionTransform,
 			'font-weight': questionFontWeight,
+			'letter-spacing': generateCSSUnit( questionLetterSpacing, questionLetterSpacingType ),
 		},
 		' .uagb-faq-item .uagb-faq-content': {
 			'font-size': generateCSSUnit( answerFontSize, answerFontSizeType ),
@@ -242,6 +252,7 @@ function styling( props ) {
 			'text-transform': answerTransform,
 			'font-weight': answerFontWeight,
 			'color': answerTextColor,
+			'letter-spacing': generateCSSUnit( answerLetterSpacing, answerLetterSpacingType ),
 		},
 	};
 
@@ -291,6 +302,7 @@ function styling( props ) {
 				questionLineHeightTablet,
 				questionLineHeightType
 			),
+			'letter-spacing': generateCSSUnit( questionLetterSpacingTablet, questionLetterSpacingType ),
 		},
 		' .uagb-faq-item .uagb-faq-content': {
 			'font-size': generateCSSUnit(
@@ -301,6 +313,7 @@ function styling( props ) {
 				answerLineHeightTablet,
 				answerLineHeightType
 			),
+			'letter-spacing': generateCSSUnit( answerLetterSpacingTablet, answerLetterSpacingType ),
 		},
 		' .uagb-icon svg': {
 			'width': generateCSSUnit( iconSizeTablet, iconSizeType ),
@@ -379,6 +392,7 @@ function styling( props ) {
 				questionLineHeightMobile,
 				questionLineHeightType
 			),
+			'letter-spacing': generateCSSUnit( questionLetterSpacingMobile, questionLetterSpacingType ),
 		},
 		' .uagb-faq-item .uagb-faq-content': {
 			'font-size': generateCSSUnit(
@@ -389,6 +403,7 @@ function styling( props ) {
 				answerLineHeightMobile,
 				answerLineHeightType
 			),
+			'letter-spacing': generateCSSUnit( answerLetterSpacingMobile, answerLetterSpacingType ),
 		},
 		' .uagb-icon svg': {
 			'width': generateCSSUnit( iconSizeMobile, iconSizeType ),

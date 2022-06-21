@@ -23,6 +23,8 @@ function styling( props ) {
 		innerGapMobile,
 		innerGapType,
 		icon_layout,
+		iconLayoutTablet,
+		iconLayoutMobile,
 		size,
 		sizeType,
 		sizeTablet,
@@ -57,6 +59,10 @@ function styling( props ) {
 		iconPositionTablet,
 		iconPositionMobile,
 		hideLabel,
+		labelLetterSpacing,
+		labelLetterSpacingTablet,
+		labelLetterSpacingMobile,
+		labelLetterSpacingType,
 		iconColor,
 		labelColor,
 		iconHoverColor,
@@ -65,12 +71,9 @@ function styling( props ) {
 		iconBgHoverColor,
 		iconBorderColor,
 		iconBorderHoverColor,
-
 	} = props.attributes;
 
 	const gapFallback = getFallbackNumber( gap, 'gap', blockName );
-	const gapTabletFallback = getFallbackNumber( gapTablet, 'gapTablet', blockName );
-	const gapMobileFallback = getFallbackNumber( gapMobile, 'gapMobile', blockName );
 	const bgSizeFallback = getFallbackNumber( bgSize, 'bgSize', blockName );
 	const bgSizeTabletFallback = getFallbackNumber( bgSizeTablet, 'bgSizeTablet', blockName );
 	const bgSizeMobileFallback = getFallbackNumber( bgSizeMobile, 'bgSizeMobile', blockName );
@@ -87,6 +90,9 @@ function styling( props ) {
 	const innerGapTabletFallback = getFallbackNumber( innerGapTablet, 'innerGapTablet', blockName );
 	const innerGapMobileFallback = getFallbackNumber( innerGapMobile, 'innerGapMobile', blockName );
 
+	const gapTabletFallback = isNaN( gapTablet ) ? gapFallback : gapTablet;
+	const gapMobileFallback = isNaN( gapMobile ) ? gapTabletFallback : gapMobile;
+
 	let selectors = {};
 	let tabletSelectors = {};
 	let mobileSelectors = {};
@@ -98,7 +104,7 @@ function styling( props ) {
 	} else {
 		alignment = 'center';
 	}
-	
+
 	let tabletAlignment = alignment;
 
 	if ( alignTablet === 'left' ) {
@@ -119,9 +125,9 @@ function styling( props ) {
 		mobileAlignment = 'center';
 	}
 
-	const editorGap = ( undefined !== typeof gapFallback && '' !== gapFallback ) ? gapFallback : 15;
-	const editorGapTablet = ( undefined !== typeof gapTabletFallback && '' !== gapTabletFallback ) ? gapTabletFallback : 15;
-	const editorGapMobile = ( undefined !== typeof gapMobileFallback && '' !== gapMobileFallback ) ? gapMobileFallback : 15;
+	const iconListLayout = icon_layout
+	const iconListLayoutTablet = iconLayoutTablet ? iconLayoutTablet : iconListLayout
+	const iconListLayoutMobile = iconLayoutMobile ? iconLayoutMobile : iconListLayoutTablet
 
 	const position = iconPosition === 'top' ? 'flex-start' : 'center';
 	let positionTablet = '';
@@ -186,7 +192,7 @@ function styling( props ) {
 		' .uagb-icon-list__wrap .block-editor-inner-blocks': {
 			'text-align': alignTablet,
 		},
-		
+
 	};
 
 	mobileSelectors = {
@@ -208,20 +214,21 @@ function styling( props ) {
 		'height': generateCSSUnit( sizeTabletFallback, sizeType ),
 		'font-size': generateCSSUnit( sizeTabletFallback, sizeType ),
 	};
-	
+
 	mobileSelectors[' .uagb-icon-list__source-wrap svg' ] = {
 		'width': generateCSSUnit( sizeMobileFallback, sizeType ),
 		'height': generateCSSUnit( sizeMobileFallback, sizeType ),
 		'font-size': generateCSSUnit( sizeMobileFallback, sizeType ),
 	};
-	if ( 'horizontal' === icon_layout ) {
+
+	if ( 'horizontal' === iconListLayout ) {
 		if ( 'tablet' === stack ) {
 			tabletSelectors[
 				' .uagb-icon-list__wrap .wp-block[data-type="uagb/icon-list-child"]'
 			] = {
 				'margin-left': 0,
 				'margin-right': 0,
-				'margin-bottom': generateCSSUnit( editorGapTablet, gapType ),
+				'margin-bottom': generateCSSUnit( gapTabletFallback, gapType ),
 			};
 			tabletSelectors[
 				'.uagb-editor-preview-mode-tablet .uagb-icon-list__wrap .block-editor-inner-blocks'
@@ -256,7 +263,7 @@ function styling( props ) {
 			] = {
 				'margin-left': 0,
 				'margin-right': 0,
-				'margin-bottom': generateCSSUnit( editorGapMobile, gapType ),
+				'margin-bottom': generateCSSUnit( gapMobileFallback, gapType ),
 			};
 
 			mobileSelectors[
@@ -271,65 +278,83 @@ function styling( props ) {
 			] = {
 				'margin-bottom': 0,
 			};
-			
+
 			mobileSelectors[
 				'.uagb-editor-preview-mode-mobile .uagb-icon-list__wrap .block-editor-inner-blocks'
 			] = {
 				'text-align': alignMobile,
 			};
 		}
+
 		selectors[ ' .uagb-icon-list__wrap .block-editor-block-list__layout'] = {
 			'justify-content': alignment,
 			'-webkit-box-pack': alignment,
 			'-ms-flex-pack': alignment,
 			'align-items' : alignment,
 		};
+
 		selectors[' .block-editor-block-list__layout .wp-block[data-type="uagb/icon-list-child"]' ] = {
-			'margin-left': generateCSSUnit( editorGap / 2, gapType ),
-			'margin-right': generateCSSUnit( editorGap / 2, gapType ),
+			'margin-right': generateCSSUnit( gapFallback / 2, gapType ),
 			'display': 'inline-flex'
 		};
-		tabletSelectors[' .block-editor-block-list__layout .wp-block[data-type="uagb/icon-list-child"]' ] = {
-			'margin-left': generateCSSUnit( editorGapTablet / 2, gapType ),
-			'margin-right': generateCSSUnit( editorGapTablet / 2, gapType ),
-			'display': 'inline-flex'
+		selectors[' .block-editor-block-list__layout .wp-block[data-type="uagb/icon-list-child"]:not(:first-child)' ] = {
+			'margin-left': generateCSSUnit( gapFallback / 2, gapType ),
 		};
-		tabletSelectors[' .uagb-icon-list__wrap .block-editor-block-list__layout' ] = {
+	} else if( 'vertical' === iconListLayout ) {
+		selectors[ ' .uagb-icon-list__wrap' ] = {
+			'flex-direction': 'column',
+		};
+		selectors[ ' .wp-block[data-type="uagb/icon-list-child"]' ] = {
+			'display': 'block',
+			'margin-left': 0,
+			'margin-right': 0,
+			'margin-bottom': generateCSSUnit( gapFallback, gapType ),
+		};
+	}
+
+	if( 'horizontal' === iconListLayoutTablet ){
+		tabletSelectors[ ' .uagb-icon-list__wrap .block-editor-block-list__layout'] = {
 			'justify-content': tabletAlignment,
 			'-webkit-box-pack': tabletAlignment,
 			'-ms-flex-pack': tabletAlignment,
 			'align-items' : tabletAlignment,
 		};
-		mobileSelectors[' .block-editor-block-list__layout .wp-block[data-type="uagb/icon-list-child"]' ] = {
-			'margin-left': generateCSSUnit( editorGapMobile / 2, gapType ),
-			'margin-right': generateCSSUnit( editorGapMobile / 2, gapType ),
+		tabletSelectors[' .block-editor-block-list__layout .wp-block[data-type="uagb/icon-list-child"]' ] = {
+			'margin-right': generateCSSUnit( gapTabletFallback / 2, gapType ),
 			'display': 'inline-flex'
 		};
+		tabletSelectors[' .block-editor-block-list__layout .wp-block[data-type="uagb/icon-list-child"]:not(:first-child)' ] = {
+			'margin-left': generateCSSUnit( gapTabletFallback / 2, gapType ),
+		};
+	} else if( 'vertical' === iconListLayoutTablet ) {
+		tabletSelectors[ ' .wp-block[data-type="uagb/icon-list-child"]' ] = {
+			'display': 'block',
+			'margin-left': 0 + ' !important',
+			'margin-right': 0 + ' !important',
+			'margin-bottom': generateCSSUnit( gapTabletFallback, gapType ),
+		};
+	}
+
+	if( 'horizontal' === iconListLayoutMobile ){
 		mobileSelectors[ ' .uagb-icon-list__wrap .block-editor-block-list__layout'] = {
 			'justify-content': mobileAlignment,
 			'-webkit-box-pack': mobileAlignment,
 			'-ms-flex-pack': mobileAlignment,
 			'align-items' : mobileAlignment,
 		};
-	}
-	if( 'vertical' === icon_layout  ) {
-		selectors[ ' .wp-block[data-type="uagb/icon-list-child"]' ] = {
-			'margin-left': 0,
-			'margin-right': 0,
-			'margin-bottom': generateCSSUnit( editorGap, gapType ),
+		mobileSelectors[' .block-editor-block-list__layout .wp-block[data-type="uagb/icon-list-child"]' ] = {
+			'margin-right': generateCSSUnit( gapMobileFallback / 2, gapType ),
+			'display': 'inline-flex'
 		};
+		mobileSelectors[' .block-editor-block-list__layout .wp-block[data-type="uagb/icon-list-child"]:not(:first-child)' ] = {
+			'margin-left': generateCSSUnit( gapMobileFallback / 2, gapType ),
+		};
+	} else if( 'vertical' === iconListLayoutMobile ) {
 		mobileSelectors[ ' .wp-block[data-type="uagb/icon-list-child"]' ] = {
-			'margin-left': 0,
-			'margin-right': 0,
-			'margin-bottom': generateCSSUnit( editorGapMobile, gapType ),
-		};
-		tabletSelectors[ ' .wp-block[data-type="uagb/icon-list-child"]' ] = {
-			'margin-left': 0,
-			'margin-right': 0,
-			'margin-bottom': generateCSSUnit( editorGapTablet, gapType ),
-		};
-		selectors[ ' .uagb-icon-list__wrap' ] = {
-			'flex-direction': 'column',
+			'display': 'block',
+			'margin-left': 0 + ' !important',
+			'margin-right': 0 + ' !important',
+			'margin-bottom': generateCSSUnit( gapMobileFallback, gapType ),
 		};
 	}
 
@@ -378,17 +403,20 @@ function styling( props ) {
 		'text-transform': fontTransform,
 		'font-weight': fontWeight,
 		'line-height': generateCSSUnit( lineHeight, lineHeightType ),
+		'letter-spacing': generateCSSUnit( labelLetterSpacing, labelLetterSpacingType ),
 		'color': labelColor,
 	};
 
 	mobileSelectors[ ' .wp-block-uagb-icon-list-child .uagb-icon-list__label' ] = {
 		'font-size': generateCSSUnit( fontSizeMobile, fontSizeType ),
 		'line-height': generateCSSUnit( lineHeightMobile, lineHeightType ),
+		'letter-spacing': generateCSSUnit( labelLetterSpacingMobile, labelLetterSpacingType ),
 	};
 
 	tabletSelectors[ ' .wp-block-uagb-icon-list-child .uagb-icon-list__label' ] = {
 		'font-size': generateCSSUnit( fontSizeTablet, fontSizeType ),
 		'line-height': generateCSSUnit( lineHeightTablet, lineHeightType ),
+		'letter-spacing': generateCSSUnit( labelLetterSpacingTablet, labelLetterSpacingType ),
 	};
 
 	mobileSelectors[ ' .wp-block-uagb-icon-list-child .uagb-icon-list__source-wrap' ] = {

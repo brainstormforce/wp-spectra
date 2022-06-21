@@ -85,6 +85,12 @@ function styling( props ) {
 		iconSizeTablet,
 		iconSizeMobile,
 		removeText,
+
+		// letter spacing
+		fontLetterSpacing,
+		fontLetterSpacingTablet,
+		fontLetterSpacingMobile,
+		fontLetterSpacingType,
 	} = props.attributes;
 
 	const tabletSelectors = {};
@@ -122,6 +128,7 @@ function styling( props ) {
 			generateCSSUnit( boxShadowHOffset, 'px' ) + ' ' + generateCSSUnit( boxShadowVOffset, 'px' ) +	' ' +
 			generateCSSUnit( boxShadowBlur, 'px' ) + ' ' +	generateCSSUnit( boxShadowSpread, 'px' ) + ' ' +
 			boxShadowColor + ' ' +	boxShadowPositionCSS,
+			'letter-spacing': generateCSSUnit( fontLetterSpacing, fontLetterSpacingType ),
 		},
 		'.uagb-buttons__outer-wrap .wp-block-button__link.uagb-buttons-repeater:hover .uagb-button__link': {
 			'color': hColor,
@@ -172,6 +179,10 @@ function styling( props ) {
 		),
 	};
 
+	mobileSelectors[ '.uagb-buttons__outer-wrap .uagb-button__wrapper .wp-block-button__link.uagb-buttons-repeater' ] = {
+		'letter-spacing': generateCSSUnit( fontLetterSpacingMobile, fontLetterSpacingType ),
+	};
+
 	tabletSelectors[ '.uagb-buttons__outer-wrap .wp-block-button__link.uagb-buttons-repeater' ] = {
 		'font-size': generateCSSUnit( sizeTablet, sizeType ),
 		'line-height': generateCSSUnit( lineHeightTablet, lineHeightType ),
@@ -198,6 +209,10 @@ function styling( props ) {
 			bottomMarginTablet,
 			marginType
 		),
+	};
+
+	tabletSelectors[ '.uagb-buttons__outer-wrap .uagb-button__wrapper .wp-block-button__link.uagb-buttons-repeater' ] = {
+		'letter-spacing': generateCSSUnit( fontLetterSpacingTablet, fontLetterSpacingType ),
 	};
 
 	selectors[ '.uagb-buttons__outer-wrap .wp-block-button__link.uagb-buttons-repeater .uagb-button__icon svg' ] = {

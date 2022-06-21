@@ -65,6 +65,12 @@ function styling( props ) {
 		leftMarginMobile,
 		marginType,
 
+		// letter spacing
+		fontLetterSpacing,
+		fontLetterSpacingTablet,
+		fontLetterSpacingMobile,
+		fontLetterSpacingType,
+
 	} = props.attributes;
 
 	const selectors = {};
@@ -100,6 +106,7 @@ function styling( props ) {
 			bottomMargin,
 			marginType
 		),
+		'letter-spacing': generateCSSUnit( fontLetterSpacing, fontLetterSpacingType ),
 	};
 	if ( 'desktop' === stack ) {
 		selectors[ '.uagb-editor-preview-mode-desktop .uagb-buttons-stack-desktop .block-editor-block-list__layout' ] = {
@@ -227,6 +234,10 @@ function styling( props ) {
 		),
 	};
 
+	tabletSelectors[ '.uagb-buttons__outer-wrap .uagb-button__wrapper .uagb-buttons-repeater.wp-block-button__link' ] = { // For new user.
+		'letter-spacing': generateCSSUnit( fontLetterSpacingTablet, fontLetterSpacingType ),
+	};
+
 	mobileSelectors[ ' .uagb-button__wrapper .uagb-buttons-repeater' ] = {
 		'font-size': generateCSSUnit( fontSizeMobile, fontSizeType ),
 		'line-height': generateCSSUnit( lineHeightMobile, lineHeightType ),
@@ -253,6 +264,10 @@ function styling( props ) {
 			bottomMarginMobile,
 			marginType
 		),
+	};
+
+	mobileSelectors[ '.uagb-buttons__outer-wrap .uagb-button__wrapper .uagb-buttons-repeater.wp-block-button__link' ] = { // For new user.
+		'letter-spacing': generateCSSUnit( fontLetterSpacingMobile, fontLetterSpacingType ),
 	};
 
 	const base_selector = ` .uagb-block-${ props.clientId.substr(
