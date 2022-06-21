@@ -69,7 +69,7 @@ $selectors = array(
 	' .uagb-desc-text'                                => array(
 		'color' => $attr['subHeadingColor'],
 	),
-	'.wp-block-uagb-advanced-heading .uagb-highlight' => array(
+	'.wp-block-uagb-advanced-heading .uagb-highlight' => array_merge( array(
 		'background'              => $attr['highLightBackground'],
 		'color'                   => $attr['highLightColor'],
 		'-webkit-text-fill-color' => $attr['highLightColor'],
@@ -96,7 +96,8 @@ $selectors = array(
 			$attr['highLightLeftPadding'],
 			$attr['highLightPaddingUnit']
 		),
-		$highLight_border_css,
+		
+	),$highLight_border_css
 	),
 	'.wp-block-uagb-advanced-heading .uagb-highlight:hover' => array(
 		'border-color' => $attr['highLightBorderHColor'],

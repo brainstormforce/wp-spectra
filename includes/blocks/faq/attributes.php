@@ -135,6 +135,8 @@ return array_merge(
 		'answerLetterSpacingTablet'    => '',
 		'answerLetterSpacingMobile'    => '',
 		'answerLetterSpacingType'      => 'px',
+		'questionTextBgColor'          => '',
+		'questionTextActiveBgColor'    => '',
 	),
 	$border_attribute,
 );
