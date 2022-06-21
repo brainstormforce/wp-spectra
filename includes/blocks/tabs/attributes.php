@@ -8,12 +8,12 @@
  */
 
 $border_defaults  = array(
-	'borderTopWidth'          => 1,
-	'borderRightWidth'        => 1,
-	'borderBottomWidth'       => 1,
-	'borderLeftWidth'         => 1,
-	'borderColor' => '#e0e0e0',
-	'borderStyle' => 'solid',
+	'borderTopWidth'    => 1,
+	'borderRightWidth'  => 1,
+	'borderBottomWidth' => 1,
+	'borderLeftWidth'   => 1,
+	'borderColor'       => '#e0e0e0',
+	'borderStyle'       => 'solid',
 );
 $border_attribute = UAGB_Block_Helper::uag_generate_border_attribute( 'tab', $border_defaults );
 

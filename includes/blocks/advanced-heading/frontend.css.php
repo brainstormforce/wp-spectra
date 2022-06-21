@@ -96,7 +96,7 @@ $selectors = array(
 			$attr['highLightLeftPadding'],
 			$attr['highLightPaddingUnit']
 		),
-		$highLight_border_css
+		$highLight_border_css,
 	),
 	'.wp-block-uagb-advanced-heading .uagb-highlight:hover' => array(
 		'border-color' => $attr['highLightBorderHColor'],

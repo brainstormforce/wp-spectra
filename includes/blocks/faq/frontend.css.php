@@ -54,7 +54,7 @@ $answer_left_padding_mobile   = isset( $attr['answerLeftPaddingMobile'] ) ? $att
 $answer_right_padding_mobile  = isset( $attr['answerRightPaddingMobile'] ) ? $attr['answerRightPaddingMobile'] : $attr['hanswerPaddingMobile'];
 
 $border        = UAGB_Block_Helper::uag_generate_border_css( $attr, 'overall' );
-$border       = UAGB_Block_Helper::uag_generate_deprecated_border_css(
+$border        = UAGB_Block_Helper::uag_generate_deprecated_border_css(
 	$border,
 	( isset( $attr['borderWidth'] ) ? $attr['borderWidth'] : '' ),
 	( isset( $attr['borderRadius'] ) ? $attr['borderRadius'] : '' ),
