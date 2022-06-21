@@ -154,6 +154,7 @@ const attributes = {
 	},
 	mcolumns: {
 		type: 'number',
+		default: 1,
 	},
 	rowGap: {
 		type: 'number',
