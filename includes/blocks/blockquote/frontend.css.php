@@ -413,6 +413,11 @@ $m_selectors = array(
 		'height'        => UAGB_Helper::get_css_value( $author_image_width_mobile_fallback, 'px' ),
 		'border-radius' => UAGB_Helper::get_css_value( $attr['authorImgBorderRadiusMobile'], '%' ),
 	),
+	' .uagb-blockquote__author-wrap img'   => array(
+		'width'         => UAGB_Helper::get_css_value( $attr['authorImageWidthMobile'], 'px' ),
+		'height'        => UAGB_Helper::get_css_value( $attr['authorImageWidthMobile'], 'px' ),
+		'border-radius' => UAGB_Helper::get_css_value( $attr['authorImgBorderRadiusMobile'], '%' ),
+	),
 	'.uagb-blockquote__skin-border blockquote.uagb-blockquote' => array(
 		'padding-left'   => UAGB_Helper::get_css_value( $border_gap_mobile_fallback, $attr['borderGapUnit'] ),
 		'padding-top'    => UAGB_Helper::get_css_value( $attr['verticalPaddingMobile'], $attr['verticalPaddingUnit'] ),
