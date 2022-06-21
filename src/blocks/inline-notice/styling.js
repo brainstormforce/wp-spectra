@@ -83,6 +83,15 @@ function styling( props ) {
 		descDecoration,
 		titleFontStyle,
 		descFontStyle,
+		// letter spaceing
+		titleLetterSpacing,
+		titleLetterSpacingTablet,
+		titleLetterSpacingMobile,
+		titleLetterSpacingType,
+		descLetterSpacing,
+		descLetterSpacingTablet,
+		descLetterSpacingMobile,
+		descLetterSpacingType,
 	} = props.attributes;
 
 	const iconSizeFallback = getFallbackNumber( iconSize, 'iconSize', blockName );
@@ -164,6 +173,7 @@ function styling( props ) {
 				titleBottomPadding,
 				titlePaddingUnit
 			),
+			'letter-spacing': generateCSSUnit( titleLetterSpacing, titleLetterSpacingType ),
 		},
 		' .rich-text.block-editor-rich-text__editable.uagb-notice-text': {
 			'padding-left': generateCSSUnit(
@@ -196,6 +206,7 @@ function styling( props ) {
 				descLineHeightType
 			),
 			'color': textColor,
+			'letter-spacing': generateCSSUnit( descLetterSpacing , descLetterSpacingType ),
 		},
 
 		' span.uagb-notice-dismiss': { // For Backward.
@@ -252,6 +263,7 @@ function styling( props ) {
 				titleBottomPaddingMobile,
 				mobileTitlePaddingUnit
 			),
+			'letter-spacing': generateCSSUnit( titleLetterSpacingMobile, titleLetterSpacingType ),
 		},
 
 		' .rich-text.block-editor-rich-text__editable.uagb-notice-text p': {
@@ -263,6 +275,7 @@ function styling( props ) {
 				descLineHeightMobile,
 				descLineHeightType
 			),
+			'letter-spacing': generateCSSUnit( descLetterSpacingMobile , descLetterSpacingType ),
 		},
 		' .rich-text.block-editor-rich-text__editable.uagb-notice-text': {
 			'padding-left': generateCSSUnit(
@@ -330,6 +343,7 @@ function styling( props ) {
 				titleBottomPaddingTablet,
 				tabletTitlePaddingUnit
 			),
+			'letter-spacing': generateCSSUnit( titleLetterSpacingTablet, titleLetterSpacingType ),
 		},
 
 		' .rich-text.block-editor-rich-text__editable.uagb-notice-text p': {
@@ -341,6 +355,7 @@ function styling( props ) {
 				descLineHeightTablet,
 				descLineHeightType
 			),
+			'letter-spacing': generateCSSUnit( descLetterSpacingTablet , descLetterSpacingType ),
 		},
 
 		' .rich-text.block-editor-rich-text__editable.uagb-notice-text': {
