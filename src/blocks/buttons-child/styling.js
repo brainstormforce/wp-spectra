@@ -5,8 +5,12 @@
 import generateCSS from '@Controls/generateCSS';
 import generateCSSUnit from '@Controls/generateCSSUnit';
 import generateBackgroundCSS from '@Controls/generateBackgroundCSS';
+import { getFallbackNumber } from '@Controls/getAttributeFallback';
 
 function styling( props ) {
+
+	const blockName = props.name.replace( 'uagb/', '' );
+
 	const {
 		fontFamily,
 		fontWeight,
@@ -197,8 +201,8 @@ function styling( props ) {
 	};
 
 	selectors[ '.uagb-buttons__outer-wrap .wp-block-button__link.uagb-buttons-repeater .uagb-button__icon svg' ] = {
-		'width': generateCSSUnit( iconSize, 'px' ),
-		'height': generateCSSUnit( iconSize, 'px' ),
+		'width': generateCSSUnit( getFallbackNumber( iconSize, 'iconSize', blockName ), 'px' ),
+		'height': generateCSSUnit( getFallbackNumber( iconSize, 'iconSize', blockName ), 'px' ),
 		'fill': iconColor,
 	};
 	tabletSelectors[ '.uagb-buttons__outer-wrap .wp-block-button__link.uagb-buttons-repeater .uagb-button__icon svg' ] = {
@@ -216,7 +220,7 @@ function styling( props ) {
 	};
 	if( ! removeText ) {
 		selectors[ ' .uagb-button__icon-position-after' ] = {
-			'margin-left': generateCSSUnit( iconSpace, 'px' ),
+			'margin-left': generateCSSUnit( getFallbackNumber( iconSpace, 'iconSpace', blockName ), 'px' ),
 		};
 
 		tabletSelectors[ ' .uagb-button__icon-position-before' ] = {
@@ -234,7 +238,7 @@ function styling( props ) {
 		};
 
 		selectors[ ' .uagb-button__icon-position-before' ] = {
-			'margin-right': generateCSSUnit( iconSpace, 'px' ),
+			'margin-right': generateCSSUnit( getFallbackNumber( iconSpace, 'iconSpace', blockName ), 'px' ),
 		};
 	}
 
