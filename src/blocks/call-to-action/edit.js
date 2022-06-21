@@ -39,11 +39,11 @@ const UAGBCallToAction = ( props ) => {
 			ctaLeftSpace,
 			overallBlockLeftMargin,
 			textAlign,
-			borderStyle,
-			borderWidth,
-			borderColor,
-			borderHColor,
-			borderRadius
+			ctaBorderStyle,
+			ctaBorderWidth,
+			ctaBorderColor,
+			ctaBorderHColor,
+			ctaBorderRadius
 		} = props.attributes;
 
 		if( stack === 'tablet' ) {
@@ -79,22 +79,22 @@ const UAGBCallToAction = ( props ) => {
 		}
 
 		// border
-		if( borderWidth || borderRadius || borderColor || borderHColor || borderStyle ){
+		if( ctaBorderWidth || ctaBorderRadius || ctaBorderColor || ctaBorderHColor || ctaBorderStyle ){
 			const migrationAttributes = migrateBorderAttributes( 'cta', {
-				label: 'borderWidth',
-				value: borderWidth,
+				label: 'ctaBorderWidth',
+				value: ctaBorderWidth,
 			}, {
-				label: 'borderRadius',
-				value: borderRadius
+				label: 'ctaBorderRadius',
+				value: ctaBorderRadius
 			}, {
-				label: 'borderColor',
-				value: borderColor
+				label: 'ctaBorderColor',
+				value: ctaBorderColor
 			}, {
-				label: 'borderHColor',
-				value: borderHColor
+				label: 'ctaBorderHColor',
+				value: ctaBorderHColor
 			},{
-				label: 'borderStyle',
-				value: borderStyle
+				label: 'ctaBorderStyle',
+				value: ctaBorderStyle
 			}
 			);
 			props.setAttributes( migrationAttributes );

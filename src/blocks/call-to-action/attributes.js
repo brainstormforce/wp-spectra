@@ -473,7 +473,6 @@ const attributes = {
 	},
 	ctaBorderStyle: {
 		type: 'string',
-		default: 'none',
 	},
 	ctaBtnVertPadding: {
 		type: 'number',
@@ -491,11 +490,9 @@ const attributes = {
 	},
 	ctaBorderWidth: {
 		type: 'number',
-		default: '',
 	},
 	ctaBorderRadius: {
 		type: 'number',
-		default: '',
 	},
 	stack: {
 		type: 'string',

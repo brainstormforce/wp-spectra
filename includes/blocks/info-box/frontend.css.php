@@ -10,11 +10,11 @@
 $cta_border_css        = UAGB_Block_Helper::uag_generate_border_css( $attr, 'cta' );
 $cta_border_css       = UAGB_Block_Helper::uag_generate_deprecated_border_css(
 	$cta_border_css,
-	( isset( $attr['borderWidth'] ) ? $attr['borderWidth'] : '' ),
-	( isset( $attr['borderRadius'] ) ? $attr['borderRadius'] : '' ),
-	( isset( $attr['borderColor'] ) ? $attr['borderColor'] : '' ),
-	( isset( $attr['borderStyle'] ) ? $attr['borderStyle'] : '' ),
-	( isset( $attr['borderHColor'] ) ? $attr['borderHColor'] : '' )
+	( isset( $attr['ctaBorderWidth'] ) ? $attr['ctaBorderWidth'] : '' ),
+	( isset( $attr['ctaBorderRadius'] ) ? $attr['ctaBorderRadius'] : '' ),
+	( isset( $attr['ctaBorderColor'] ) ? $attr['ctaBorderColor'] : '' ),
+	( isset( $attr['ctaBorderStyle'] ) ? $attr['ctaBorderStyle'] : '' ),
+	( isset( $attr['ctaBorderHColor'] ) ? $attr['ctaBorderHColor'] : '' )
 );
 $cta_border_css_tablet = UAGB_Block_Helper::uag_generate_border_css( $attr, 'cta', 'tablet' );
 $cta_border_css_mobile = UAGB_Block_Helper::uag_generate_border_css( $attr, 'cta', 'mobile' );
@@ -262,41 +262,7 @@ if ( 'text' === $attr['ctaType'] ) {
 		'fill'        => $attr['ctaLinkColor'],
 	);
 }
-if ( 'button' === $attr['ctaType'] ) {
-	$selectors[' .uagb-infobox-cta-link svg']                          = array(
-		'font-size'   => $cta_icon_size,
-		'height'      => $cta_icon_size,
-		'width'       => $cta_icon_size,
-		'line-height' => $cta_icon_size,
-	);
-	$selectors[' .uagb-ifb-button-wrapper .uagb-infobox-cta-link']     = array(
-		'color'            => $attr['ctaBtnLinkColor'],
-		'background-color' => $attr['ctaBgColor'],
-		'border-radius'    => UAGB_Helper::get_css_value( $attr['ctaBorderRadius'], 'px' ),
-		'padding-top'      => UAGB_Helper::get_css_value( $btn_padding_top, $attr['paddingBtnUnit'] ),
-		'padding-bottom'   => UAGB_Helper::get_css_value( $btn_padding_bottom, $attr['paddingBtnUnit'] ),
-		'padding-left'     => UAGB_Helper::get_css_value( $btn_padding_left, $attr['paddingBtnUnit'] ),
-		'padding-right'    => UAGB_Helper::get_css_value( $btn_padding_right, $attr['paddingBtnUnit'] ),
-	);
-	$selectors[' .uagb-ifb-button-wrapper .uagb-infobox-cta-link svg'] = array(
-		'fill' => $attr['ctaBtnLinkColor'],
-	);
-	$selectors[' .uagb-ifb-button-wrapper.wp-block-button:not(.is-style-outline) .wp-block-button__link:not(.has-background):hover'] = array(
-		'color'            => $attr['ctaLinkHoverColor'],
-		'background-color' => $attr['ctaBgHoverColor'],
-		'border-color'     => $attr['ctaBorderhoverColor'],
-	);
-	$selectors[' .uagb-ifb-button-wrapper .uagb-infobox-cta-link:hover svg'] = array(
-		'fill' => $attr['ctaLinkHoverColor'],
-	);
-	if ( 'none' !== $attr['ctaBorderStyle'] ) {
-		$selectors[' .uagb-infobox-cta-link'] = array(
-			'border-style' => $attr['ctaBorderStyle'],
-			'border-color' => $attr['ctaBorderColor'],
-			'border-width' => UAGB_Helper::get_css_value( $attr['ctaBorderWidth'], 'px' ),
-		);
-	}
-}
+
 
 if ( 'above-title' === $attr['iconimgPosition'] || 'below-title' === $attr['iconimgPosition'] ) {
 	$selectors['.uagb-infobox__content-wrap']  = array(
@@ -515,14 +481,14 @@ if ( 'button' === $attr['ctaType'] ) {
 		'width'       => $cta_icon_size,
 		'line-height' => $cta_icon_size,
 	);
-	$selectors[' .uagb-ifb-button-wrapper .uagb-infobox-cta-link']     = array(
+	$selectors[' .uagb-ifb-button-wrapper .uagb-infobox-cta-link']     = array_merge( array(
 		'color'            => $attr['ctaBtnLinkColor'],
 		'background-color' => $attr['ctaBgColor'],
-		'padding-top'      => UAGB_Helper::get_css_value( $btnPaddingTop, $attr['paddingBtnUnit'] ),
-		'padding-bottom'   => UAGB_Helper::get_css_value( $btnPaddingBottom, $attr['paddingBtnUnit'] ),
-		'padding-left'     => UAGB_Helper::get_css_value( $btnPaddingLeft, $attr['paddingBtnUnit'] ),
-		'padding-right'    => UAGB_Helper::get_css_value( $btnPaddingRight, $attr['paddingBtnUnit'] ),
-	);
+		'padding-top'      => UAGB_Helper::get_css_value( $btn_padding_top, $attr['paddingBtnUnit'] ),
+		'padding-bottom'   => UAGB_Helper::get_css_value( $btn_padding_bottom, $attr['paddingBtnUnit'] ),
+		'padding-left'     => UAGB_Helper::get_css_value( $btn_padding_left, $attr['paddingBtnUnit'] ),
+		'padding-right'    => UAGB_Helper::get_css_value( $btn_padding_right, $attr['paddingBtnUnit'] ),
+	), $cta_border_css );
 	$selectors[' .uagb-ifb-button-wrapper .uagb-infobox-cta-link svg'] = array(
 		'fill' => $attr['ctaBtnLinkColor'],
 	);
