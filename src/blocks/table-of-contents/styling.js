@@ -4,8 +4,12 @@
 
 import generateCSS from '@Controls/generateCSS';
 import generateCSSUnit from '@Controls/generateCSSUnit';
+import { getFallbackNumber } from '@Controls/getAttributeFallback';
 
 function styling( props ) {
+
+	const blockName = props.name.replace( 'uagb/', '' );
+
 	const {
 		customWidth,
 		makeCollapsible,
@@ -117,6 +121,11 @@ function styling( props ) {
 		listLetterSpacingType,
 		markerView
 	} = props.attributes;
+
+	const tColumnsDesktopFallback = getFallbackNumber( tColumnsDesktop, 'tColumnsDesktop', blockName );
+	const tColumnsTabletFallback = getFallbackNumber( tColumnsTablet, 'tColumnsTablet', blockName );
+	const tColumnsMobileFallback = getFallbackNumber( tColumnsMobile, 'tColumnsMobile', blockName );
+	const widthDesktopFallback = getFallbackNumber( widthDesktop, 'widthDesktop', blockName );
 
 	let selectors = {};
 	let tablet_selectors = {};
@@ -245,13 +254,13 @@ function styling( props ) {
 	};
 
 	selectors[ ' .uagb-toc__list-wrap' ] = {
-		'column-count': tColumnsDesktop,
+		'column-count': tColumnsDesktopFallback,
 		'overflow': 'hidden',
 	};
 
 	if ( customWidth ) {
 		selectors[ ' .uagb-toc__wrap' ].width = generateCSSUnit(
-			widthDesktop,
+			widthDesktopFallback,
 			widthTypeDesktop
 		);
 	}
@@ -331,7 +340,7 @@ function styling( props ) {
 			),
 		},
 		' .uagb-toc__list-wrap': {
-			'column-count': tColumnsTablet,
+			'column-count': tColumnsTabletFallback,
 			'overflow': 'hidden',
 		},
 
@@ -440,7 +449,7 @@ function styling( props ) {
 			),
 		},
 		' .uagb-toc__list-wrap': {
-			'column-count': tColumnsMobile,
+			'column-count': tColumnsMobileFallback,
 			'overflow': 'hidden',
 		},
 		' .uagb-toc__list-wrap > ol.uagb-toc__list > li:first-child': {
