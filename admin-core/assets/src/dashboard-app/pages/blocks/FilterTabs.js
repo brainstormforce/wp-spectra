@@ -19,6 +19,7 @@ const FilterTabs = () => {
 
     const tabs = [
         { name: 'All', slug: 'all' },
+		{ name: 'Core', slug: 'core' },
         { name: 'Creative', slug: 'creative' },
         { name: 'Content', slug: 'content' },
         { name: 'Post', slug: 'post' },
