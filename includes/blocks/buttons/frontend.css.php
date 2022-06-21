@@ -159,7 +159,6 @@ if ( $attr['childMigrate'] ) {
 		'margin-bottom'  => UAGB_Helper::get_css_value( $attr['bottomMarginTablet'], $attr['marginType'] ),
 		'margin-left'    => UAGB_Helper::get_css_value( $attr['leftMarginTablet'], $attr['marginType'] ),
 		'margin-right'   => UAGB_Helper::get_css_value( $attr['rightMarginTablet'], $attr['marginType'] ),
-
 	);
 	$m_selectors['.uagb-buttons__outer-wrap .uagb-buttons-repeater.wp-block-button__link'] = array(
 		'font-size'      => UAGB_Helper::get_css_value( $attr['fontSizeMobile'], $attr['fontSizeType'] ),
