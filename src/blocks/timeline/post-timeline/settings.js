@@ -203,6 +203,26 @@ const Settings = ( props ) => {
 		headTopSpacing,
 		headTopSpacingTablet,
 		headTopSpacingMobile,
+		headLetterSpacing,
+headLetterSpacingTablet,
+headLetterSpacingMobile,
+headLetterSpacingType,
+subHeadLetterSpacing,
+subHeadLetterSpacingTablet,
+subHeadLetterSpacingMobile,
+subHeadLetterSpacingType,
+dateLetterSpacing,
+dateLetterSpacingTablet,
+dateLetterSpacingMobile,
+dateLetterSpacingType,
+ctaLetterSpacing,
+ctaLetterSpacingTablet,
+ctaLetterSpacingMobile,
+ctaLetterSpacingType,
+authorLetterSpacing,
+authorLetterSpacingTablet,
+authorLetterSpacingMobile,
+authorLetterSpacingType,
 	} = attributes;
 
 	const onSelectPostType = ( value ) => {
@@ -1170,6 +1190,22 @@ const Settings = ( props ) => {
 						value: headLineHeightTablet,
 						label: 'headLineHeightTablet',
 					} }
+					letterSpacing={ {
+						value: headLetterSpacing,
+						label: 'headLetterSpacing',
+					} }
+					letterSpacingTablet={ {
+						value: headLetterSpacingTablet,
+						label: 'headLetterSpacingTablet',
+					} }
+					letterSpacingMobile={ {
+						value: headLetterSpacingMobile,
+						label: 'headLetterSpacingMobile',
+					} }
+					letterSpacingType={ {
+						value: headLetterSpacingType,
+						label: 'headLetterSpacingType',
+					} }
 					transform={ {
 						value: headTransform,
 						label: 'headTransform',
@@ -1298,6 +1334,22 @@ const Settings = ( props ) => {
 						value: authorLineHeightTablet,
 						label: 'authorLineHeightTablet',
 					} }
+					letterSpacing={ {
+						value: authorLetterSpacing,
+						label: 'authorLetterSpacing',
+					} }
+					letterSpacingTablet={ {
+						value: authorLetterSpacingTablet,
+						label: 'authorLetterSpacingTablet',
+					} }
+					letterSpacingMobile={ {
+						value: authorLetterSpacingMobile,
+						label: 'authorLetterSpacingMobile',
+					} }
+					letterSpacingType={ {
+						value: authorLetterSpacingType,
+						label: 'authorLetterSpacingType',
+					} }
 					transform={ {
 						value: authorTransform,
 						label: 'authorTransform',
@@ -1402,6 +1454,22 @@ const Settings = ( props ) => {
 						value: subHeadLineHeightTablet,
 						label: 'subHeadLineHeightTablet',
 					} }
+					letterSpacing={ {
+						value: subHeadLetterSpacing,
+						label: 'subHeadLetterSpacing',
+					} }
+					letterSpacingTablet={ {
+						value: subHeadLetterSpacingTablet,
+						label: 'subHeadLetterSpacingTablet',
+					} }
+					letterSpacingMobile={ {
+						value: subHeadLetterSpacingMobile,
+						label: 'subHeadLetterSpacingMobile',
+					} }
+					letterSpacingType={ {
+						value: subHeadLetterSpacingType,
+						label: 'subHeadLetterSpacingType',
+					} }
 					transform={ {
 						value: subHeadTransform,
 						label: 'subHeadTransform',
@@ -1497,6 +1565,22 @@ const Settings = ( props ) => {
 					lineHeightTablet={ {
 						value: dateLineHeightTablet,
 						label: 'dateLineHeightTablet',
+					} }
+					letterSpacing={ {
+						value: dateLetterSpacing,
+						label: 'dateLetterSpacing',
+					} }
+					letterSpacingTablet={ {
+						value: dateLetterSpacingTablet,
+						label: 'dateLetterSpacingTablet',
+					} }
+					letterSpacingMobile={ {
+						value: dateLetterSpacingMobile,
+						label: 'dateLetterSpacingMobile',
+					} }
+					letterSpacingType={ {
+						value: dateLetterSpacingType,
+						label: 'dateLetterSpacingType',
 					} }
 					transform={ {
 						value: dateTransform,
@@ -1613,6 +1697,22 @@ const Settings = ( props ) => {
 					lineHeightTablet={ {
 						value: ctaLineHeightTablet,
 						label: 'ctaLineHeightTablet',
+					} }
+					letterSpacing={ {
+						value: ctaLetterSpacing,
+						label: 'ctaLetterSpacing',
+					} }
+					letterSpacingTablet={ {
+						value: ctaLetterSpacingTablet,
+						label: 'ctaLetterSpacingTablet',
+					} }
+					letterSpacingMobile={ {
+						value: ctaLetterSpacingMobile,
+						label: 'ctaLetterSpacingMobile',
+					} }
+					letterSpacingType={ {
+						value: ctaLetterSpacingType,
+						label: 'ctaLetterSpacingType',
 					} }
 					transform={ {
 						value: ctaTransform,

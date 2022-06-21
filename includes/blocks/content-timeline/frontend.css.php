@@ -191,10 +191,10 @@ $selectors = array(
 			'text-align'    => $attr['alignMobile'],
 			'margin-bottom' => UAGB_Helper::get_css_value( $attr['headSpaceMobile'], 'px' ),
 		),
-		' .uagb-timeline-desc-content'                         => array(
+		' .uagb-timeline-desc-content'      => array(
 			'text-align' => $attr['alignMobile'],
 		),
-		' .uagb-timeline__day-new'                             => array(
+		' .uagb-timeline__day-new'          => array(
 			'text-align' => $attr['alignMobile'],
 		),
 		' .uagb-timeline__heading-text'     => array(
@@ -246,7 +246,7 @@ $selectors = array(
 			'padding-bottom' => UAGB_Helper::get_css_value( $attr['bottomPaddingMobile'], $attr['mobilePaddingUnit'] ),
 			'border-radius'  => UAGB_Helper::get_css_value( $attr['borderRadiusMobile'], 'px' ),
 		),
-		'.uagb-timeline__right'  => array(
+		'.uagb-timeline__right'             => array(
 			'text-align' => $attr['alignMobile'],
 		),
 	);
@@ -259,10 +259,10 @@ $selectors = array(
 		' .uagb-timeline__heading-text'     => array(
 			'margin-bottom' => UAGB_Helper::get_css_value( $attr['headSpaceTablet'], 'px' ),
 		),
-		' .uagb-timeline-desc-content'                         => array(
+		' .uagb-timeline-desc-content'      => array(
 			'text-align' => $attr['alignTablet'],
 		),
-		' .uagb-timeline__day-new'                             => array(
+		' .uagb-timeline__day-new'          => array(
 			'text-align' => $attr['alignTablet'],
 		),
 		' .uagb-timeline__date-hide.uagb-timeline__date-inner' => array(
@@ -311,7 +311,7 @@ $selectors = array(
 			'padding-bottom' => UAGB_Helper::get_css_value( $attr['bottomPaddingTablet'], $attr['tabletPaddingUnit'] ),
 			'border-radius'  => UAGB_Helper::get_css_value( $attr['borderRadiusTablet'], 'px' ),
 		),
-		'.uagb-timeline__right'  => array(
+		'.uagb-timeline__right'             => array(
 			'text-align' => $attr['alignTablet'],
 		),
 	);

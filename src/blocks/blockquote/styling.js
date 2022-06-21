@@ -139,6 +139,18 @@ function styling( props ) {
 		authorFontStyle,
 		tweetBtnFontStyle,
 		stack,
+		descLetterSpacing,
+descLetterSpacingTablet,
+descLetterSpacingMobile,
+descLetterSpacingType,
+authorLetterSpacing,
+authorLetterSpacingTablet,
+authorLetterSpacingMobile,
+authorLetterSpacingType,
+tweetBtnLetterSpacing,
+tweetBtnLetterSpacingTablet,
+tweetBtnLetterSpacingMobile,
+tweetBtnLetterSpacingType,
 	} = props.attributes;
 
 	let tmpAuthorSpace = authorSpace;
@@ -172,6 +184,7 @@ function styling( props ) {
 			'color': descColor,
 			'margin-bottom': generateCSSUnit( descSpace, descSpaceUnit ),
 			'text-align': textAlign,
+			'letter-spacing': generateCSSUnit( descLetterSpacing, descLetterSpacingType ),
 		},
 		' .uagb-blockquote__author.block-editor-rich-text__editable': {
 			'font-size': generateCSSUnit( authorFontSize, authorFontSizeType ),
@@ -186,6 +199,7 @@ function styling( props ) {
 			'text-transform': authorTransform,
 			'color': authorColor,
 			'text-align': textAlign,
+			'letter-spacing': generateCSSUnit( authorLetterSpacing, authorLetterSpacingType ),
 		},
 		'.uagb-blockquote__skin-border blockquote.uagb-blockquote': {
 			'border-color': borderColor,
@@ -269,6 +283,7 @@ function styling( props ) {
 			'font-style': tweetBtnFontStyle,
 			'text-decoration': tweetBtnDecoration,
 			'text-transform': tweetBtnTransform,
+			'letter-spacing': generateCSSUnit( tweetBtnLetterSpacing, tweetBtnLetterSpacingType ),
 		};
 		selectors[
 			'.uagb-blockquote__tweet-style-link a.uagb-blockquote__tweet-button'
@@ -415,6 +430,7 @@ function styling( props ) {
 				descLineHeightType
 			),
 			'margin-bottom': generateCSSUnit( descSpaceTablet, descSpaceUnit ),
+			'letter-spacing': generateCSSUnit( descLetterSpacingTablet, descLetterSpacingType ),
 		},
 		' .uagb-blockquote__author.block-editor-rich-text__editable': {
 			'font-size': generateCSSUnit(
@@ -425,6 +441,7 @@ function styling( props ) {
 				authorLineHeightTablet,
 				authorLineHeightType
 			),
+			'letter-spacing': generateCSSUnit( authorLetterSpacingTablet, authorLetterSpacingType ),
 		},
 		' a.uagb-blockquote__tweet-button': {
 			'font-size': generateCSSUnit(
@@ -435,6 +452,7 @@ function styling( props ) {
 				tweetBtnLineHeightTablet,
 				tweetBtnLineHeightType
 			),
+			'letter-spacing': generateCSSUnit( tweetBtnLetterSpacingTablet, tweetBtnLetterSpacingType ),
 		},
 		' a.uagb-blockquote__tweet-button svg': {
 			'width': generateCSSUnit(
@@ -532,6 +550,7 @@ function styling( props ) {
 				descLineHeightType
 			),
 			'margin-bottom': generateCSSUnit( descSpaceMobile, descSpaceUnit ),
+			'letter-spacing': generateCSSUnit( descLetterSpacingMobile, descLetterSpacingType ),
 		},
 		' .uagb-blockquote__author.block-editor-rich-text__editable': {
 			'font-size': generateCSSUnit(
@@ -542,6 +561,7 @@ function styling( props ) {
 				authorLineHeightMobile,
 				authorLineHeightType
 			),
+			'letter-spacing': generateCSSUnit( authorLetterSpacingMobile, authorLetterSpacingType ),
 		},
 		' a.uagb-blockquote__tweet-button': {
 			'font-size': generateCSSUnit(
@@ -552,6 +572,7 @@ function styling( props ) {
 				tweetBtnLineHeightMobile,
 				tweetBtnLineHeightType
 			),
+			'letter-spacing': generateCSSUnit( tweetBtnLetterSpacingMobile, tweetBtnLetterSpacingType ),
 		},
 		' a.uagb-blockquote__tweet-button svg': {
 			'width': generateCSSUnit(
