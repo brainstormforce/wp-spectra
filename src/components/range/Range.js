@@ -57,6 +57,7 @@ const Range = ( props ) => {
 	};
 
 	const resetValues = ( defaultValues ) => {
+
 		if ( props?.onChange ) {
 			props?.onChange( defaultValues[props?.data?.label] )
 		}
