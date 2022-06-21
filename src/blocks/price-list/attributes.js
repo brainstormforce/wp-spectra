@@ -150,6 +150,7 @@ const attributes = {
 	},
 	tcolumns: {
 		type: 'number',
+		default: 2,
 	},
 	mcolumns: {
 		type: 'number',
