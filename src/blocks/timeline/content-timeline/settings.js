@@ -91,6 +91,8 @@ const Settings = ( props ) => {
 		dateBottomspaceTablet,
 		dateBottomspaceMobile,
 			align,
+			alignTablet,
+			alignMobile,
 			icon,
 			iconColor,
 			dateColor,
@@ -152,6 +154,18 @@ const Settings = ( props ) => {
 			dateTransform,
 			headDecoration,
 			subHeadDecoration,
+			headLetterSpacing,
+			headLetterSpacingTablet,
+			headLetterSpacingMobile,
+			headLetterSpacingType,
+			subHeadLetterSpacing,
+			subHeadLetterSpacingTablet,
+			subHeadLetterSpacingMobile,
+			subHeadLetterSpacingType,
+			dateLetterSpacing,
+			dateLetterSpacingTablet,
+			dateLetterSpacingMobile,
+			dateLetterSpacingType,
 			dateDecoration,
 		},
 	} = props;
@@ -316,8 +330,18 @@ const Settings = ( props ) => {
 					setAttributes={ setAttributes }
 					label={ __( 'Text Alignment', 'ultimate-addons-for-gutenberg' ) }
 					data={ {
-						value: align,
-						label: 'align',
+						desktop: {
+							value: align,
+							label: 'align',
+						},
+						tablet: {
+							value: alignTablet,
+							label: 'alignTablet',
+						},
+						mobile: {
+							value: alignMobile,
+							label: 'alignMobile',
+						},
 					} }
 					className="uagb-multi-button-alignment-control"
 					options={ [
@@ -359,6 +383,7 @@ const Settings = ( props ) => {
 						},
 					] }
 					showIcons={ true }
+					responsive={true}
 				/>
 				<MultiButtonsControl
 					setAttributes={ setAttributes }
@@ -849,6 +874,22 @@ const Settings = ( props ) => {
 						value: headLineHeightTablet,
 						label: 'headLineHeightTablet',
 					} }
+					letterSpacing={ {
+						value: headLetterSpacing,
+						label: 'headLetterSpacing',
+					} }
+					letterSpacingTablet={ {
+						value: headLetterSpacingTablet,
+						label: 'headLetterSpacingTablet',
+					} }
+					letterSpacingMobile={ {
+						value: headLetterSpacingMobile,
+						label: 'headLetterSpacingMobile',
+					} }
+					letterSpacingType={ {
+						value: headLetterSpacingType,
+						label: 'headLetterSpacingType',
+					} }
 					transform={ {
 						value: headTransform,
 						label: 'headTransform',
@@ -950,6 +991,22 @@ const Settings = ( props ) => {
 					lineHeightTablet={ {
 						value: subHeadLineHeightTablet,
 						label: 'subHeadLineHeightTablet',
+					} }
+					letterSpacing={ {
+						value: subHeadLetterSpacing,
+						label: 'subHeadLetterSpacing',
+					} }
+					letterSpacingTablet={ {
+						value: subHeadLetterSpacingTablet,
+						label: 'subHeadLetterSpacingTablet',
+					} }
+					letterSpacingMobile={ {
+						value: subHeadLetterSpacingMobile,
+						label: 'subHeadLetterSpacingMobile',
+					} }
+					letterSpacingType={ {
+						value: subHeadLetterSpacingType,
+						label: 'subHeadLetterSpacingType',
 					} }
 					transform={ {
 						value: subHeadTransform,
@@ -1068,6 +1125,22 @@ const Settings = ( props ) => {
 					lineHeightTablet={ {
 						value: dateLineHeightTablet,
 						label: 'dateLineHeightTablet',
+					} }
+					letterSpacing={ {
+						value: dateLetterSpacing,
+						label: 'dateLetterSpacing',
+					} }
+					letterSpacingTablet={ {
+						value: dateLetterSpacingTablet,
+						label: 'dateLetterSpacingTablet',
+					} }
+					letterSpacingMobile={ {
+						value: dateLetterSpacingMobile,
+						label: 'dateLetterSpacingMobile',
+					} }
+					letterSpacingType={ {
+						value: dateLetterSpacingType,
+						label: 'dateLetterSpacingType',
 					} }
 					transform={ {
 						value: dateTransform,

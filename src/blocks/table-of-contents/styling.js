@@ -107,6 +107,14 @@ function styling( props ) {
 		headingTransform,
 		headingDecoration,
 		headingAlignment,
+		headingLetterSpacing,
+		headingLetterSpacingTablet,
+		headingLetterSpacingMobile,
+		headingLetterSpacingType,
+		listLetterSpacing,
+		listLetterSpacingTablet,
+		listLetterSpacingMobile,
+		listLetterSpacingType,
 		markerView
 	} = props.attributes;
 
@@ -130,6 +138,7 @@ function styling( props ) {
 			'text-transform': fontTransform,
 			'font-weight': fontWeight,
 			'color': linkColor,
+			'letter-spacing': generateCSSUnit( listLetterSpacing, listLetterSpacingType ),
 		},
 		' .uagb-toc__title-wrap': {
 			'justify-content': align,
@@ -152,6 +161,7 @@ function styling( props ) {
 			'text-transform': headingTransform,
 			'font-weight': headingFontWeight,
 			'color': headingColor,
+			'letter-spacing': generateCSSUnit( headingLetterSpacing, headingLetterSpacingType ),
 		},
 		' .uagb-toc__list-wrap ol li a:hover': {
 			'color': linkHoverColor,
@@ -272,6 +282,7 @@ function styling( props ) {
 		' .uagb-toc__list-wrap ol li a': {
 			'font-size': generateCSSUnit( fontSizeTablet, fontSizeType ),
 			'line-height': generateCSSUnit( lineHeightTablet, lineHeightType ),
+			'letter-spacing': generateCSSUnit( listLetterSpacingTablet, listLetterSpacingType ),
 		},
 		' .uagb-toc__title': {
 			'font-size': generateCSSUnit(
@@ -283,6 +294,7 @@ function styling( props ) {
 				headingLineHeightType
 			),
 			'margin-bottom': generateCSSUnit( headingBottomTablet, headingBottomType ),
+			'letter-spacing': generateCSSUnit( headingLetterSpacingTablet, headingLetterSpacingType ),
 		},
 		' .uagb-toc__wrap': {
 			'width': generateCSSUnit( widthTablet, widthTypeTablet ),
@@ -379,6 +391,7 @@ function styling( props ) {
 		' .uagb-toc__list-wrap ol li a': {
 			'font-size': generateCSSUnit( fontSizeMobile, fontSizeType ),
 			'line-height': generateCSSUnit( lineHeightMobile, lineHeightType ),
+			'letter-spacing': generateCSSUnit( listLetterSpacingMobile, listLetterSpacingType ),
 		},
 		' .uagb-toc__title': {
 			'font-size': generateCSSUnit(
@@ -390,6 +403,7 @@ function styling( props ) {
 				headingLineHeightType
 			),
 			'margin-bottom': generateCSSUnit( headingBottomMobile, headingBottomType ),
+			'letter-spacing': generateCSSUnit( headingLetterSpacingMobile, headingLetterSpacingType ),
 		},
 		' .uagb-toc__wrap': {
 			'width': generateCSSUnit( widthMobile, widthTypeMobile ),
