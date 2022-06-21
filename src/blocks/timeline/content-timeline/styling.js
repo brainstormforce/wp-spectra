@@ -47,6 +47,8 @@ function contentTimelineStyle( props ) {
 		headLineHeightTablet,
 		headLineHeightMobile,
 		align,
+		alignTablet,
+		alignMobile,
 		headingColor,
 		headSpace,
 		headSpaceTablet,
@@ -104,9 +106,19 @@ function contentTimelineStyle( props ) {
 		iconFocus,
 		stack,
 		timelinAlignment,
+		headLetterSpacing,
+		headLetterSpacingTablet,
+		headLetterSpacingMobile,
+		headLetterSpacingType,
+		subHeadLetterSpacing,
+		subHeadLetterSpacingTablet,
+		subHeadLetterSpacingMobile,
+		subHeadLetterSpacingType,
+		dateLetterSpacing,
+		dateLetterSpacingTablet,
+		dateLetterSpacingMobile,
+		dateLetterSpacingType,
 	} = props.attributes;
-
-	const respSelectors = 'left';
 
 	const selectors = {
 		' .uagb-timeline__heading.rich-text': {
@@ -122,6 +134,7 @@ function contentTimelineStyle( props ) {
 			'font-style': headFontStyle,
 			'text-decoration': headDecoration,
 			'text-transform': headTransform,
+			'letter-spacing': generateCSSUnit( headLetterSpacing, headLetterSpacingType ),
 		},
 		' .uagb-timeline__heading a': {
 			'font-size': generateCSSUnit( headFontSize, headFontSizeType ),
@@ -136,6 +149,7 @@ function contentTimelineStyle( props ) {
 			'font-style': headFontStyle,
 			'text-decoration': headDecoration,
 			'text-transform': headTransform,
+			'letter-spacing': generateCSSUnit( headLetterSpacing, headLetterSpacingType ),
 		},
 		' .uagb-timeline__heading': {
 			'margin-bottom': generateCSSUnit( headSpace, 'px' ),
@@ -156,6 +170,7 @@ function contentTimelineStyle( props ) {
 			'font-style': subHeadFontStyle,
 			'text-decoration': subHeadDecoration,
 			'text-transform': subHeadTransform,
+			'letter-spacing': generateCSSUnit( subHeadLetterSpacing, subHeadLetterSpacingType ),
 		},
 		' .uagb-timeline__day-new': {
 			'text-align': align,
@@ -247,6 +262,7 @@ function contentTimelineStyle( props ) {
 			'font-style': dateFontStyle,
 			'text-decoration': dateDecoration,
 			'text-transform': dateTransform,
+			'letter-spacing': generateCSSUnit( dateLetterSpacing, dateLetterSpacingType ),
 		},
 		' .uagb-timeline__date-hide.uagb-timeline__date-inner': {
 			'margin-bottom': generateCSSUnit( dateBottomspace, 'px' ),
@@ -262,6 +278,7 @@ function contentTimelineStyle( props ) {
 			'font-style': dateFontStyle,
 			'text-decoration': dateDecoration,
 			'text-transform': dateTransform,
+			'letter-spacing': generateCSSUnit( dateLetterSpacing, dateLetterSpacingType ),
 		},
 		'.uagb-timeline__right-block .uagb-timeline__day-new.uagb-timeline__day-left': {
 			'margin-right': generateCSSUnit( rightMargin, marginUnit ),
@@ -287,6 +304,7 @@ function contentTimelineStyle( props ) {
 			'font-style': dateFontStyle,
 			'text-decoration': dateDecoration,
 			'text-transform': dateTransform,
+			'letter-spacing': generateCSSUnit( dateLetterSpacing, dateLetterSpacingType ),
 		},
 		' .uagb-timeline__events-inner-new': {
 			'background-color': backgroundColor,
@@ -312,6 +330,9 @@ function contentTimelineStyle( props ) {
 
 	/* Generate Responsive CSS for timeline */
 	const tabletSelectors = {
+		' .uagb-timeline__heading.rich-text': {
+			'text-align': alignTablet,
+		},
 		' .uagb-timeline__date-hide.uagb-timeline__date-inner': {
 			'font-size': generateCSSUnit(
 				dateFontsizeTablet,
@@ -322,6 +343,7 @@ function contentTimelineStyle( props ) {
 				dateLineHeightType
 			),
 			'margin-bottom': generateCSSUnit( dateBottomspaceTablet, 'px' ),
+			'letter-spacing': generateCSSUnit( dateLetterSpacingTablet, dateLetterSpacingType ),
 		},
 		' .uagb-timeline__date-hide.uagb-timeline__inner-date-new': {
 			'font-size': generateCSSUnit(
@@ -333,6 +355,8 @@ function contentTimelineStyle( props ) {
 				dateLineHeightType
 			),
 			'margin-bottom': generateCSSUnit( dateBottomspaceTablet, 'px' ),
+			'text-align': alignTablet,
+			'letter-spacing': generateCSSUnit( dateLetterSpacingTablet, dateLetterSpacingType ),
 		},
 		' .uagb-timeline__date-new': {
 			'font-size': generateCSSUnit(
@@ -344,8 +368,10 @@ function contentTimelineStyle( props ) {
 				dateLineHeightType
 			),
 			'margin-bottom': generateCSSUnit( dateBottomspaceTablet, 'px' ),
+			'letter-spacing': generateCSSUnit( dateLetterSpacingTablet, dateLetterSpacingType ),
 		},
 		' .uagb-timeline__heading': {
+			'text-align': alignTablet,
 			'font-size': generateCSSUnit(
 				headFontSizeTablet,
 				headFontSizeType
@@ -355,6 +381,7 @@ function contentTimelineStyle( props ) {
 				headLineHeightType
 			),
 			'margin-bottom': generateCSSUnit( headSpaceTablet, 'px' ),
+			'letter-spacing': generateCSSUnit( headLetterSpacingTablet, headLetterSpacingType ),
 		},
 		' .uagb-timeline__heading a': {
 			'font-size': generateCSSUnit(
@@ -365,6 +392,8 @@ function contentTimelineStyle( props ) {
 				headLineHeightTablet,
 				headLineHeightType
 			),
+			'text-align': alignTablet,
+			'letter-spacing': generateCSSUnit( headLetterSpacingTablet, headLetterSpacingType ),
 		},
 		' p.uagb-timeline-desc-content': {
 			'font-size': generateCSSUnit(
@@ -375,6 +404,8 @@ function contentTimelineStyle( props ) {
 				subHeadLineHeightTablet,
 				subHeadLineHeightType
 			),
+			'text-align': alignTablet,
+			'letter-spacing': generateCSSUnit( subHeadLetterSpacingTablet, subHeadLetterSpacingType ),
 		},
 		'.uagb-timeline__center-block .uagb-timeline__marker': {
 			'margin-left': ( stack === 'tablet' && timelinAlignment === 'center' ) ?
@@ -412,36 +443,6 @@ function contentTimelineStyle( props ) {
 				tabletMarginUnit
 			),
 		},
-		' .uagb-timeline__center-block .uagb-timeline__heading': {
-			'text-align': respSelectors,
-		},
-		' .uagb-timeline__center-block p.uagb-timeline-desc-content': {
-			'text-align': respSelectors,
-		},
-		' .uagb-timeline__center-block .uagb-timeline__day-new': {
-			'text-align': respSelectors,
-		},
-		' .uagb-timeline__center-block .uagb-timeline__date-inner': {
-			'text-align': respSelectors,
-		},
-		' .uagb-timeline__center-block .uagb-timeline__date-hide.uagb-timeline__date-inner': {
-			'text-align': respSelectors,
-		},
-		' .uagb-timeline__center-block .uagb-timeline__day-right .uagb-timeline__arrow:after': {
-			'border-right-color': backgroundColor,
-		},
-		' .uagb-timeline__center-block .uagb-timeline__author-link': {
-			'text-align': respSelectors,
-		},
-		' .uagb-timeline__center-block .uagb-timeline__link_parent': {
-			'text-align': respSelectors,
-		},
-		' .uagb-timeline__center-block .uagb-timeline__image a': {
-			'text-align': respSelectors,
-		},
-		' .uagb-timeline__center-block a.uagb-timeline__image': {
-			'text-align': respSelectors,
-		},
 		' .uagb-timeline__events-inner-new': {
 			'padding-left': generateCSSUnit(
 				leftPaddingTablet,
@@ -461,9 +462,45 @@ function contentTimelineStyle( props ) {
 			),
 			'border-radius': generateCSSUnit( borderRadiusTablet, 'px' ),
 		},
+		' .uagb-timeline__day-new': {
+			'text-align': alignTablet,
+		},
+		' .uagb-timeline__date-inner': {
+			'text-align': alignTablet,
+		},
+		' .uagb-timeline__center-block .uagb-timeline__heading': {
+			'text-align': alignTablet,
+		},
+		' .uagb-timeline__center-block p.uagb-timeline-desc-content': {
+			'text-align': alignTablet,
+		},
+		' .uagb-timeline__center-block .uagb-timeline__day-new': {
+			'text-align': alignTablet,
+		},
+		' .uagb-timeline__center-block .uagb-timeline__date-inner': {
+			'text-align': alignTablet,
+		},
+		' .uagb-timeline__center-block .uagb-timeline__date-hide.uagb-timeline__date-inner': {
+			'text-align': alignTablet,
+		},
+		' .uagb-timeline__center-block .uagb-timeline__author-link': {
+			'text-align': alignTablet,
+		},
+		' .uagb-timeline__center-block .uagb-timeline__link_parent': {
+			'text-align': alignTablet,
+		},
+		' .uagb-timeline__center-block .uagb-timeline__image a': {
+			'text-align': alignTablet,
+		},
+		' .uagb-timeline__center-block a.uagb-timeline__image': {
+			'text-align': alignTablet,
+		},
 	};
 
 	const mobileSelectors = {
+		' .uagb-timeline__heading.rich-text': {
+			'text-align': alignMobile,
+		},
 		' .uagb-timeline__date-hide.uagb-timeline__date-inner': {
 			'font-size': generateCSSUnit(
 				dateFontsizeMobile,
@@ -474,6 +511,7 @@ function contentTimelineStyle( props ) {
 				dateLineHeightType
 			),
 			'margin-bottom': generateCSSUnit( dateBottomspaceMobile, 'px' ),
+			'letter-spacing': generateCSSUnit( dateLetterSpacingMobile, dateLetterSpacingType ),
 		},
 		' .uagb-timeline__date-hide.uagb-timeline__inner-date-new': {
 			'font-size': generateCSSUnit(
@@ -485,6 +523,8 @@ function contentTimelineStyle( props ) {
 				dateLineHeightType
 			),
 			'margin-bottom': generateCSSUnit( dateBottomspaceMobile, 'px' ),
+			'text-align': alignMobile,
+			'letter-spacing': generateCSSUnit( dateLetterSpacingMobile, dateLetterSpacingType ),
 		},
 		' .uagb-timeline__date-new': {
 			'font-size': generateCSSUnit(
@@ -496,6 +536,7 @@ function contentTimelineStyle( props ) {
 				dateLineHeightType
 			),
 			'margin-bottom': generateCSSUnit( dateBottomspaceMobile, 'px' ),
+			'letter-spacing': generateCSSUnit( dateLetterSpacingMobile, dateLetterSpacingType ),
 		},
 		' .uagb-timeline__heading': {
 			'font-size': generateCSSUnit(
@@ -507,6 +548,8 @@ function contentTimelineStyle( props ) {
 				headLineHeightType
 			),
 			'margin-bottom': generateCSSUnit( headSpaceMobile, 'px' ),
+			'text-align': alignMobile,
+			'letter-spacing': generateCSSUnit( headLetterSpacingMobile, headLetterSpacingType ),
 		},
 		' .uagb-timeline__heading a': {
 			'font-size': generateCSSUnit(
@@ -517,6 +560,8 @@ function contentTimelineStyle( props ) {
 				headLineHeightMobile,
 				headLineHeightType
 			),
+			'text-align': alignMobile,
+			'letter-spacing': generateCSSUnit( headLetterSpacingMobile, headLetterSpacingType ),
 		},
 		' p.uagb-timeline-desc-content': {
 			'font-size': generateCSSUnit(
@@ -527,6 +572,8 @@ function contentTimelineStyle( props ) {
 				subHeadLineHeightMobile,
 				subHeadLineHeightType
 			),
+			'text-align': alignMobile,
+			'letter-spacing': generateCSSUnit( subHeadLetterSpacingMobile, subHeadLetterSpacingType ),
 		},
 		'.uagb-timeline__center-block .uagb-timeline__marker': {
 			'margin-left': 0,
@@ -562,36 +609,6 @@ function contentTimelineStyle( props ) {
 				mobileMarginUnit
 			),
 		},
-		'.uagb-timeline__center-block .uagb-timeline__heading': {
-			'text-align': respSelectors,
-		},
-		'.uagb-timeline__center-block p.uagb-timeline-desc-content': {
-			'text-align': respSelectors,
-		},
-		'.uagb-timeline__center-block .uagb-timeline__day-new': {
-			'text-align': respSelectors,
-		},
-		'.uagb-timeline__center-block .uagb-timeline__date-inner': {
-			'text-align': respSelectors,
-		},
-		'.uagb-timeline__center-block .uagb-timeline__date-hide.uagb-timeline__date-inner': {
-			'text-align': respSelectors,
-		},
-		'.uagb-timeline__center-block .uagb-timeline__day-right .uagb-timeline__arrow:after': {
-			'border-right-color': backgroundColor,
-		},
-		'.uagb-timeline__center-block .uagb-timeline__author-link': {
-			'text-align': respSelectors,
-		},
-		'.uagb-timeline__center-block .uagb-timeline__link_parent': {
-			'text-align': respSelectors,
-		},
-		'.uagb-timeline__center-block .uagb-timeline__image a': {
-			'text-align': respSelectors,
-		},
-		'.uagb-timeline__center-block a.uagb-timeline__image': {
-			'text-align': respSelectors,
-		},
 		' .uagb-timeline__events-inner-new': {
 			'padding-left': generateCSSUnit(
 				leftPaddingMobile,
@@ -610,6 +627,39 @@ function contentTimelineStyle( props ) {
 				mobilePaddingUnit
 			),
 			'border-radius': generateCSSUnit( borderRadiusMobile, 'px' ),
+		},
+		' .uagb-timeline__day-new': {
+			'text-align': alignMobile,
+		},
+		' .uagb-timeline__date-inner': {
+			'text-align': alignMobile,
+		},
+		' .uagb-timeline__center-block .uagb-timeline__heading': {
+			'text-align': alignMobile,
+		},
+		' .uagb-timeline__center-block p.uagb-timeline-desc-content': {
+			'text-align': alignMobile,
+		},
+		' .uagb-timeline__center-block .uagb-timeline__day-new': {
+			'text-align': alignMobile,
+		},
+		' .uagb-timeline__center-block .uagb-timeline__date-inner': {
+			'text-align': alignMobile,
+		},
+		' .uagb-timeline__center-block .uagb-timeline__date-hide.uagb-timeline__date-inner': {
+			'text-align': alignMobile,
+		},
+		' .uagb-timeline__center-block .uagb-timeline__author-link': {
+			'text-align': alignMobile,
+		},
+		' .uagb-timeline__center-block .uagb-timeline__link_parent': {
+			'text-align': alignMobile,
+		},
+		' .uagb-timeline__center-block .uagb-timeline__image a': {
+			'text-align': alignMobile,
+		},
+		' .uagb-timeline__center-block a.uagb-timeline__image': {
+			'text-align': alignMobile,
 		},
 	};
 
