@@ -993,8 +993,8 @@ authorLetterSpacingType,
 					) }
 					colorValue={ separatorColor ? separatorColor : '' }
 					data={ {
-						value: separatorColor.value,
-						label: separatorColor.label,
+						value: separatorColor,
+						label: 'separatorColor',
 					} }
 					setAttributes={ setAttributes }
 				/>
@@ -1005,8 +1005,8 @@ authorLetterSpacingType,
 					) }
 					colorValue={ iconColor ? iconColor : '' }
 					data={ {
-						value: iconColor.value,
-						label: iconColor.label,
+						value: iconColor,
+						label: 'iconColor',
 					} }
 					setAttributes={ setAttributes }
 				/>
@@ -1017,8 +1017,8 @@ authorLetterSpacingType,
 					) }
 					colorValue={ separatorBg ? separatorBg : '' }
 					data={ {
-						value: separatorBg.value,
-						label: separatorBg.label,
+						value: separatorBg,
+						label: 'separatorBg',
 					} }
 					setAttributes={ setAttributes }
 				/>
@@ -1029,8 +1029,8 @@ authorLetterSpacingType,
 					) }
 					colorValue={ separatorBorder ? separatorBorder : '' }
 					data={ {
-						value: separatorBorder.value,
-						label: separatorBorder.label,
+						value: separatorBorder,
+						label: 'separatorBorder',
 					} }
 					setAttributes={ setAttributes }
 				/>
@@ -1046,8 +1046,8 @@ authorLetterSpacingType,
 					) }
 					colorValue={ separatorFillColor ? separatorFillColor : '' }
 					data={ {
-						value: separatorFillColor.value,
-						label: separatorFillColor.label,
+						value: separatorFillColor,
+						label: 'separatorFillColor',
 					} }
 					setAttributes={ setAttributes }
 				/>
@@ -1058,8 +1058,8 @@ authorLetterSpacingType,
 					) }
 					colorValue={ iconFocus ? iconFocus : '' }
 					data={ {
-						value: iconFocus.value,
-						label: iconFocus.label,
+						value: iconFocus,
+						label: 'iconFocus',
 					} }
 					setAttributes={ setAttributes }
 				/>
@@ -1070,8 +1070,8 @@ authorLetterSpacingType,
 					) }
 					colorValue={ iconBgFocus ? iconBgFocus : '' }
 					data={ {
-						value: iconBgFocus.value,
-						label: iconBgFocus.label,
+						value: iconBgFocus,
+						label: 'iconBgFocus',
 					} }
 					setAttributes={ setAttributes }
 				/>
@@ -1082,8 +1082,8 @@ authorLetterSpacingType,
 					) }
 					colorValue={ borderFocus ? borderFocus : '' }
 					data={ {
-						value: borderFocus.value,
-						label: borderFocus.label,
+						value: borderFocus,
+						label: 'borderFocus',
 					} }
 					setAttributes={ setAttributes }
 				/>
@@ -1129,8 +1129,8 @@ authorLetterSpacingType,
 					label={ __( 'Color', 'ultimate-addons-for-gutenberg' ) }
 					colorValue={ headingColor ? headingColor : '' }
 					data={ {
-						value: headingColor.value,
-						label: headingColor.label,
+						value: headingColor,
+						label: 'headingColor',
 					} }
 					setAttributes={ setAttributes }
 				/>
@@ -1272,8 +1272,8 @@ authorLetterSpacingType,
 					label={ __( 'Color', 'ultimate-addons-for-gutenberg' ) }
 					colorValue={ authorColor ? authorColor : '' }
 					data={ {
-						value: authorColor.value,
-						label: authorColor.label,
+						value: authorColor,
+						label: 'authorColor',
 					} }
 					setAttributes={ setAttributes }
 				/>
@@ -1394,8 +1394,8 @@ authorLetterSpacingType,
 					label={ __( 'Color', 'ultimate-addons-for-gutenberg' ) }
 					colorValue={ subHeadingColor ? subHeadingColor : '' }
 					data={ {
-						value: subHeadingColor.value,
-						label: subHeadingColor.label,
+						value: subHeadingColor,
+						label: 'subHeadingColor',
 					} }
 					setAttributes={ setAttributes }
 				/>
@@ -1509,8 +1509,8 @@ authorLetterSpacingType,
 					label={ __( 'Color', 'ultimate-addons-for-gutenberg' ) }
 					colorValue={ dateColor ? dateColor : '' }
 					data={ {
-						value: dateColor.value,
-						label: dateColor.label,
+						value: dateColor,
+						label: 'dateColor',
 					} }
 					setAttributes={ setAttributes }
 				/>
@@ -1633,8 +1633,8 @@ authorLetterSpacingType,
 					label={ __( 'Color', 'ultimate-addons-for-gutenberg' ) }
 					colorValue={ ctaColor ? ctaColor : '' }
 					data={ {
-						value: ctaColor.value,
-						label: ctaColor.label,
+						value: ctaColor,
+						label: 'ctaColor',
 					} }
 					setAttributes={ setAttributes }
 				/>
@@ -1645,8 +1645,8 @@ authorLetterSpacingType,
 					) }
 					colorValue={ ctaBackground ? ctaBackground : '' }
 					data={ {
-						value: ctaBackground.value,
-						label: ctaBackground.label,
+						value: ctaBackground,
+						label: 'ctaBackground',
 					} }
 					setAttributes={ setAttributes }
 				/>
@@ -1767,8 +1767,8 @@ authorLetterSpacingType,
 					label={ __( 'Color', 'ultimate-addons-for-gutenberg' ) }
 					colorValue={ backgroundColor ? backgroundColor : '' }
 					data={ {
-						value: backgroundColor.value,
-						label: backgroundColor.label,
+						value: backgroundColor,
+						label: 'backgroundColor',
 					} }
 					setAttributes={ setAttributes }
 				/>

@@ -352,8 +352,8 @@ const Settings = ( props ) => {
 								label={ __( 'Color', 'ultimate-addons-for-gutenberg' ) }
 								colorValue={ iconColor ? iconColor : '' }
 								data={ {
-									value: iconColor.value,
-									label: iconColor.label,
+									value: iconColor,
+									label: 'iconColor',
 								} }
 								setAttributes={ setAttributes }
 							/>
@@ -364,8 +364,8 @@ const Settings = ( props ) => {
 								) }
 								colorValue={ iconBgColor ? iconBgColor : '' }
 								data={ {
-									value: iconBgColor.value,
-									label: iconBgColor.label,
+									value: iconBgColor,
+									label: 'iconBgColor',
 								} }
 								setAttributes={ setAttributes }
 							/>
@@ -377,8 +377,8 @@ const Settings = ( props ) => {
 								label={ __( 'Color', 'ultimate-addons-for-gutenberg' ) }
 								colorValue={ iconHoverColor ? iconHoverColor : '' }
 								data={ {
-									value: iconHoverColor.value,
-									label: iconHoverColor.label,
+									value: iconHoverColor,
+									label: 'iconHoverColor',
 								} }
 								setAttributes={ setAttributes }
 							/>
@@ -391,8 +391,8 @@ const Settings = ( props ) => {
 									iconBgHoverColor ? iconBgHoverColor : ''
 								}
 								data={ {
-									value: iconBgHoverColor.value,
-									label: iconBgHoverColor.label,
+									value: iconBgHoverColor,
+									label: 'iconBgHoverColor',
 								} }
 								setAttributes={ setAttributes }
 							/>

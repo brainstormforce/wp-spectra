@@ -234,8 +234,8 @@ const Settings = ( props ) => {
 				label={ __( 'Text Color', 'ultimate-addons-for-gutenberg' ) }
 				colorValue={ listTextColor ? listTextColor : '' }
 				data={ {
-					value: listTextColor.value,
-					label: listTextColor.label,
+					value: listTextColor,
+					label: 'listTextColor',
 				} }
 				setAttributes={ setAttributes }
 			/>
@@ -250,8 +250,8 @@ const Settings = ( props ) => {
 						) }
 						colorValue={ listStyleColor ? listStyleColor : '' }
 						data={ {
-							value: listStyleColor.value,
-							label: listStyleColor.label,
+							value: listStyleColor,
+							label: 'listStyleColor',
 						} }
 						setAttributes={ setAttributes }
 					/>
@@ -265,8 +265,8 @@ const Settings = ( props ) => {
 				label={ __( 'Text Color', 'ultimate-addons-for-gutenberg' ) }
 				colorValue={ hoverlistTextColor ? hoverlistTextColor : '' }
 				data={ {
-					value: hoverlistTextColor.value,
-					label: hoverlistTextColor.label,
+					value: hoverlistTextColor,
+					label: 'hoverlistTextColor',
 				} }
 				setAttributes={ setAttributes }
 			/>
@@ -282,8 +282,8 @@ const Settings = ( props ) => {
 							hoverlistStyleColor ? hoverlistStyleColor : ''
 						}
 						data={ {
-							value: hoverlistStyleColor.value,
-							label: hoverlistStyleColor.label,
+							value: hoverlistStyleColor,
+							label: 'hoverlistStyleColor',
 						} }
 						setAttributes={ setAttributes }
 					/>
@@ -746,8 +746,8 @@ const Settings = ( props ) => {
 					label={ __( 'Color', 'ultimate-addons-for-gutenberg' ) }
 					colorValue={ titleColor ? titleColor : '' }
 					data={ {
-						value: titleColor.value,
-						label: titleColor.label,
+						value: titleColor,
+						label: 'titleColor',
 					} }
 					setAttributes={ setAttributes }
 				/>
@@ -790,8 +790,8 @@ const Settings = ( props ) => {
 					label={ __( 'Color', 'ultimate-addons-for-gutenberg' ) }
 					colorValue={ countColor ? countColor : '' }
 					data={ {
-						value: countColor.value,
-						label: countColor.label,
+						value: countColor,
+						label: 'countColor',
 					} }
 					setAttributes={ setAttributes }
 				/>
@@ -888,8 +888,8 @@ const Settings = ( props ) => {
 					label={ __( 'Color', 'ultimate-addons-for-gutenberg' ) }
 					colorValue={ bgColor ? bgColor : '' }
 					data={ {
-						value: bgColor.value,
-						label: bgColor.label,
+						value: bgColor,
+						label: 'bgColor',
 					} }
 					setAttributes={ setAttributes }
 				/>

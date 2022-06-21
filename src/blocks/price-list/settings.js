@@ -707,8 +707,8 @@ titleLetterSpacingType,
 					label={ __( 'Color', 'ultimate-addons-for-gutenberg' ) }
 					colorValue={ descColor ? descColor : '' }
 					data={ {
-						value: descColor.value,
-						label: descColor.label,
+						value: descColor,
+						label: 'descColor',
 					} }
 					setAttributes={ setAttributes }
 				/>
@@ -886,8 +886,8 @@ titleLetterSpacingType,
 							) }
 							colorValue={ seperatorColor ? seperatorColor : '' }
 							data={ {
-								value: seperatorColor.value,
-								label: seperatorColor.label,
+								value: seperatorColor,
+								label: 'seperatorColor',
 							} }
 							setAttributes={ setAttributes }
 						/>
@@ -905,8 +905,8 @@ titleLetterSpacingType,
 					label={ __( 'Color', 'ultimate-addons-for-gutenberg' ) }
 					colorValue={ priceColor ? priceColor : '' }
 					data={ {
-						value: priceColor.value,
-						label: priceColor.label,
+						value: priceColor,
+						label: 'priceColor',
 					} }
 					setAttributes={ setAttributes }
 				/>
@@ -997,8 +997,8 @@ titleLetterSpacingType,
 					label={ __( 'Color', 'ultimate-addons-for-gutenberg' ) }
 					colorValue={ titleColor ? titleColor : '' }
 					data={ {
-						value: titleColor.value,
-						label: titleColor.label,
+						value: titleColor,
+						label: 'titleColor',
 					} }
 					setAttributes={ setAttributes }
 				/>

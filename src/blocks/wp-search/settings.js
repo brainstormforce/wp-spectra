@@ -231,8 +231,8 @@ const Settings = ( props ) => {
 					) }
 					colorValue={ textColor ? textColor : '' }
 					data={ {
-						value: textColor.value,
-						label: textColor.label,
+						value: textColor,
+						label: 'textColor',
 					} }
 					setAttributes={ setAttributes }
 				/>
@@ -243,8 +243,8 @@ const Settings = ( props ) => {
 					) }
 					colorValue={ inputBgColor ? inputBgColor : '' }
 					data={ {
-						value: inputBgColor.value,
-						label: inputBgColor.label,
+						value: inputBgColor,
+						label: 'inputBgColor',
 					} }
 					setAttributes={ setAttributes }
 				/>
@@ -495,8 +495,8 @@ const Settings = ( props ) => {
 					) }
 					colorValue={ buttonBgColor ? buttonBgColor : '' }
 					data={ {
-						value: buttonBgColor.value,
-						label: buttonBgColor.label,
+						value: buttonBgColor,
+						label: 'buttonBgColor',
 					} }
 					setAttributes={ setAttributes }
 				/>
@@ -508,8 +508,8 @@ const Settings = ( props ) => {
 						) }
 						colorValue={ buttonTextColor ? buttonTextColor : '' }
 						data={ {
-							value: buttonTextColor.value,
-							label: buttonTextColor.label,
+							value: buttonTextColor,
+							label: 'buttonTextColor',
 						} }
 						setAttributes={ setAttributes }
 					/>
@@ -522,8 +522,8 @@ const Settings = ( props ) => {
 						) }
 						colorValue={ buttonIconColor ? buttonIconColor : '' }
 						data={ {
-							value: buttonIconColor.value,
-							label: buttonIconColor.label,
+							value: buttonIconColor,
+							label: 'buttonIconColor',
 						} }
 						setAttributes={ setAttributes }
 					/>
@@ -539,8 +539,8 @@ const Settings = ( props ) => {
 					) }
 					colorValue={ buttonBgHoverColor ? buttonBgHoverColor : '' }
 					data={ {
-						value: buttonBgHoverColor.value,
-						label: buttonBgHoverColor.label,
+						value: buttonBgHoverColor,
+						label: 'buttonBgHoverColor',
 					} }
 					setAttributes={ setAttributes }
 				/>
@@ -554,8 +554,8 @@ const Settings = ( props ) => {
 							buttonTextHoverColor ? buttonTextHoverColor : ''
 						}
 						data={ {
-							value: buttonTextHoverColor.value,
-							label: buttonTextHoverColor.label,
+							value: buttonTextHoverColor,
+							label: 'buttonTextHoverColor',
 						} }
 						setAttributes={ setAttributes }
 					/>
@@ -570,8 +570,8 @@ const Settings = ( props ) => {
 							buttonIconHoverColor ? buttonIconHoverColor : ''
 						}
 						data={ {
-							value: buttonIconHoverColor.value,
-							label: buttonIconHoverColor.label,
+							value: buttonIconHoverColor,
+							label: 'buttonIconHoverColor',
 						} }
 						setAttributes={ setAttributes }
 					/>
@@ -753,8 +753,8 @@ const Settings = ( props ) => {
 							) }
 							colorValue={ iconColor ? iconColor : '' }
 							data={ {
-								value: iconColor.value,
-								label: iconColor.label,
+								value: iconColor,
+								label: 'iconColor',
 							} }
 							setAttributes={ setAttributes }
 						/>

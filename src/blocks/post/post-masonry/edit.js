@@ -1021,8 +1021,8 @@ const UAGBPostMasonry = ( props ) => {
 											) }
 											colorValue={ paginationTextColor }
 											data={ {
-												value: paginationTextColor.value,
-												label: paginationTextColor.label,
+												value: paginationTextColor,
+												label: 'paginationTextColor',
 											} }
 											setAttributes={ setAttributes }
 										/>
@@ -1035,8 +1035,8 @@ const UAGBPostMasonry = ( props ) => {
 												paginationMasonryBgColor
 											}
 											data={ {
-												value: paginationMasonryBgColor.value,
-												label: paginationMasonryBgColor.label,
+												value: paginationMasonryBgColor,
+												label: 'paginationMasonryBgColor',
 											} }
 											setAttributes={ setAttributes }
 										/>
@@ -1053,8 +1053,8 @@ const UAGBPostMasonry = ( props ) => {
 												paginationTextHoverColor
 											}
 											data={ {
-												value: paginationTextHoverColor.value,
-												label: paginationTextHoverColor.label,
+												value: paginationTextHoverColor,
+												label: 'paginationTextHoverColor',
 											} }
 											setAttributes={ setAttributes }
 										/>
@@ -1067,8 +1067,8 @@ const UAGBPostMasonry = ( props ) => {
 												paginationBgHoverColor
 											}
 											data={ {
-												value: paginationBgHoverColor.value,
-												label: paginationBgHoverColor.label,
+												value: paginationBgHoverColor,
+												label: 'paginationBgHoverColor',
 											} }
 											setAttributes={ setAttributes }
 										/>
@@ -1132,8 +1132,8 @@ const UAGBPostMasonry = ( props ) => {
 								) }
 								colorValue={ loaderColor }
 								data={ {
-									value: loaderColor.value,
-									label: loaderColor.label,
+									value: loaderColor,
+									label: 'loaderColor',
 								} }
 								setAttributes={ setAttributes }
 							/>
@@ -1496,8 +1496,8 @@ const UAGBPostMasonry = ( props ) => {
 					) }
 					colorValue={ bgColor }
 					data={ {
-						value: bgColor.value,
-						label: bgColor.label,
+						value: bgColor,
+						label: 'bgColor',
 					} }
 					setAttributes={ setAttributes }
 				/>
@@ -1642,8 +1642,8 @@ const UAGBPostMasonry = ( props ) => {
 							) }
 							colorValue={ bgOverlayColor }
 							data={ {
-								value: bgOverlayColor.value,
-								label: bgOverlayColor.label,
+								value: bgOverlayColor,
+								label: 'bgOverlayColor',
 							} }
 							setAttributes={ setAttributes }
 						/>
@@ -1751,8 +1751,8 @@ const UAGBPostMasonry = ( props ) => {
 					) }
 					colorValue={ titleColor }
 					data={ {
-						value: titleColor.value,
-						label: titleColor.label,
+						value: titleColor,
+						label: 'titleColor',
 					} }
 					setAttributes={ setAttributes }
 				/>
@@ -1874,8 +1874,8 @@ const UAGBPostMasonry = ( props ) => {
 					label={ __( 'Color', 'ultimate-addons-for-gutenberg' ) }
 					colorValue={ metaColor }
 					data={ {
-						value: metaColor.value,
-						label: metaColor.label,
+						value: metaColor,
+						label: 'metaColor',
 					} }
 					setAttributes={ setAttributes }
 				/>
@@ -1885,8 +1885,8 @@ const UAGBPostMasonry = ( props ) => {
 						label={ __( 'Taxonomy Text Color', 'ultimate-addons-for-gutenberg' ) }
 						colorValue={ highlightedTextColor }
 						data={ {
-							value: highlightedTextColor.value,
-							label: highlightedTextColor.label,
+							value: highlightedTextColor,
+							label: 'highlightedTextColor',
 						} }
 						setAttributes={ setAttributes }
 					/>
@@ -1894,8 +1894,8 @@ const UAGBPostMasonry = ( props ) => {
 						label={ __( 'Highlighted Color', 'ultimate-addons-for-gutenberg' ) }
 						colorValue={ highlightedTextBgColor }
 						data={ {
-							value: highlightedTextBgColor.value,
-							label: highlightedTextBgColor.label,
+							value: highlightedTextBgColor,
+							label: 'highlightedTextBgColor',
 						} }
 						setAttributes={ setAttributes }
 					/>
@@ -2018,8 +2018,8 @@ const UAGBPostMasonry = ( props ) => {
 					label={ __( 'Color', 'ultimate-addons-for-gutenberg' ) }
 					colorValue={ excerptColor }
 					data={ {
-						value: excerptColor.value,
-						label: excerptColor.label,
+						value: excerptColor,
+						label: 'excerptColor',
 					} }
 					setAttributes={ setAttributes }
 				/>
@@ -2165,8 +2165,8 @@ const UAGBPostMasonry = ( props ) => {
 								) }
 								colorValue={ ctaColor }
 								data={ {
-									value: ctaColor.value,
-									label: ctaColor.label,
+									value: ctaColor,
+									label: 'ctaColor',
 								} }
 								setAttributes={ setAttributes }
 							/>
@@ -2177,8 +2177,8 @@ const UAGBPostMasonry = ( props ) => {
 								) }
 								colorValue={ ctaBgColor }
 								data={ {
-									value: ctaBgColor.value,
-									label: ctaBgColor.label,
+									value: ctaBgColor,
+									label: 'ctaBgColor',
 								} }
 								setAttributes={ setAttributes }
 							/>
@@ -2193,8 +2193,8 @@ const UAGBPostMasonry = ( props ) => {
 								) }
 								colorValue={ ctaHColor }
 								data={ {
-									value: ctaHColor.value,
-									label: ctaHColor.label,
+									value: ctaHColor,
+									label: 'ctaHColor',
 								} }
 								setAttributes={ setAttributes }
 							/>
@@ -2205,8 +2205,8 @@ const UAGBPostMasonry = ( props ) => {
 								) }
 								colorValue={ ctaBgHColor }
 								data={ {
-									value: ctaBgHColor.value,
-									label: ctaBgHColor.label,
+									value: ctaBgHColor,
+									label: 'ctaBgHColor',
 								} }
 								setAttributes={ setAttributes }
 							/>

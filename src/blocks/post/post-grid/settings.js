@@ -1133,8 +1133,8 @@ const Settings = ( props ) => {
 					) }
 					colorValue={ bgColor }
 					data={ {
-						value: bgColor.value,
-						label: bgColor.label,
+						value: bgColor,
+						label: 'bgColor',
 					} }
 					setAttributes={ setAttributes }
 				/>
@@ -1279,8 +1279,8 @@ const Settings = ( props ) => {
 						) }
 						colorValue={ bgOverlayColor }
 						data={ {
-							value: bgOverlayColor.value,
-							label: bgOverlayColor.label,
+							value: bgOverlayColor,
+							label: 'bgOverlayColor',
 						} }
 						setAttributes={ setAttributes }
 					/>
@@ -1344,8 +1344,8 @@ const Settings = ( props ) => {
 					) }
 					colorValue={ titleColor }
 					data={ {
-						value: titleColor.value,
-						label: titleColor.label,
+						value: titleColor,
+						label: 'titleColor',
 					} }
 					setAttributes={ setAttributes }
 				/>
@@ -1466,8 +1466,8 @@ const Settings = ( props ) => {
 					label={ __( 'Meta Color', 'ultimate-addons-for-gutenberg' ) }
 					colorValue={ metaColor }
 					data={ {
-						value: metaColor.value,
-						label: metaColor.label,
+						value: metaColor,
+						label: 'metaColor',
 					} }
 					setAttributes={ setAttributes }
 				/>
@@ -1477,8 +1477,8 @@ const Settings = ( props ) => {
 						label={ __( 'Taxonomy Text Color', 'ultimate-addons-for-gutenberg' ) }
 						colorValue={ highlightedTextColor }
 						data={ {
-							value: highlightedTextColor.value,
-							label: highlightedTextColor.label,
+							value: highlightedTextColor,
+							label: 'highlightedTextColor',
 						} }
 						setAttributes={ setAttributes }
 					/>
@@ -1486,8 +1486,8 @@ const Settings = ( props ) => {
 						label={ __( 'Highlighted Color', 'ultimate-addons-for-gutenberg' ) }
 						colorValue={ highlightedTextBgColor }
 						data={ {
-							value: highlightedTextBgColor.value,
-							label: highlightedTextBgColor.label,
+							value: highlightedTextBgColor,
+							label: 'highlightedTextBgColor',
 						} }
 						setAttributes={ setAttributes }
 					/>
@@ -1611,8 +1611,8 @@ const Settings = ( props ) => {
 					label={ __( 'Color', 'ultimate-addons-for-gutenberg' ) }
 					colorValue={ excerptColor }
 					data={ {
-						value: excerptColor.value,
-						label: excerptColor.label,
+						value: excerptColor,
+						label: 'excerptColor',
 					} }
 					setAttributes={ setAttributes }
 				/>
@@ -1758,8 +1758,8 @@ const Settings = ( props ) => {
 								) }
 								colorValue={ ctaColor }
 								data={ {
-									value: ctaColor.value,
-									label: ctaColor.label,
+									value: ctaColor,
+									label: 'ctaColor',
 								} }
 								setAttributes={ setAttributes }
 							/>
@@ -1770,8 +1770,8 @@ const Settings = ( props ) => {
 								) }
 								colorValue={ ctaBgColor }
 								data={ {
-									value: ctaBgColor.value,
-									label: ctaBgColor.label,
+									value: ctaBgColor,
+									label: 'ctaBgColor',
 								} }
 								setAttributes={ setAttributes }
 							/>
@@ -1786,8 +1786,8 @@ const Settings = ( props ) => {
 								) }
 								colorValue={ ctaHColor }
 								data={ {
-									value: ctaHColor.value,
-									label: ctaHColor.label,
+									value: ctaHColor,
+									label: 'ctaHColor',
 								} }
 								setAttributes={ setAttributes }
 							/>
@@ -1798,8 +1798,8 @@ const Settings = ( props ) => {
 								) }
 								colorValue={ ctaBgHColor }
 								data={ {
-									value: ctaBgHColor.value,
-									label: ctaBgHColor.label,
+									value: ctaBgHColor,
+									label: 'ctaBgHColor',
 								} }
 								setAttributes={ setAttributes }
 							/>
@@ -2115,8 +2115,8 @@ const Settings = ( props ) => {
 								) }
 								colorValue={ paginationColor }
 								data={ {
-									value: paginationColor.value,
-									label: paginationColor.label,
+									value: paginationColor,
+									label: 'paginationColor',
 								} }
 								setAttributes={ setAttributes }
 							/>
@@ -2128,8 +2128,8 @@ const Settings = ( props ) => {
 									) }
 									colorValue={ paginationBgColor }
 									data={ {
-										value: paginationBgColor.value,
-										label: paginationBgColor.label,
+										value: paginationBgColor,
+										label: 'paginationBgColor',
 									} }
 									setAttributes={ setAttributes }
 								/>
@@ -2142,8 +2142,8 @@ const Settings = ( props ) => {
 									) }
 									colorValue={ paginationBorderColor }
 									data={ {
-										value: paginationBorderColor.value,
-										label: paginationBorderColor.label,
+										value: paginationBorderColor,
+										label: 'paginationBorderColor',
 									} }
 									setAttributes={ setAttributes }
 								/>
@@ -2159,8 +2159,8 @@ const Settings = ( props ) => {
 								) }
 								colorValue={ paginationActiveColor }
 								data={ {
-									value: paginationActiveColor.value,
-									label: paginationActiveColor.label,
+									value: paginationActiveColor,
+									label: 'paginationActiveColor',
 								} }
 								setAttributes={ setAttributes }
 							/>
@@ -2172,8 +2172,8 @@ const Settings = ( props ) => {
 									) }
 									colorValue={ paginationBgActiveColor }
 									data={ {
-										value: paginationBgActiveColor.value,
-										label: paginationBgActiveColor.label,
+										value: paginationBgActiveColor,
+										label: 'paginationBgActiveColor',
 									} }
 									setAttributes={ setAttributes }
 								/>
@@ -2186,8 +2186,8 @@ const Settings = ( props ) => {
 									) }
 									colorValue={ paginationBorderActiveColor }
 									data={ {
-										value: paginationBorderActiveColor.value,
-										label: paginationBorderActiveColor.label,
+										value: paginationBorderActiveColor,
+										label: 'paginationBorderActiveColor',
 									} }
 									setAttributes={ setAttributes }
 								/>

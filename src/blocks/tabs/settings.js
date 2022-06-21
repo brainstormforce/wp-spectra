@@ -663,8 +663,8 @@ const Settings = ( props ) => {
 					) }
 					colorValue={ bodyTextColor }
 					data={ {
-						value: bodyTextColor.value,
-						label: bodyTextColor.label,
+						value: bodyTextColor,
+						label: 'bodyTextColor',
 					} }
 					setAttributes={ setAttributes }
 				/>
@@ -675,8 +675,8 @@ const Settings = ( props ) => {
 					) }
 					colorValue={ bodyBgColor }
 					data={ {
-						value: bodyBgColor.value,
-						label: bodyBgColor.label,
+						value: bodyBgColor,
+						label: 'bodyBgColor',
 					} }
 					setAttributes={ setAttributes }
 				/>
@@ -845,8 +845,8 @@ const Settings = ( props ) => {
 					) }
 					colorValue={ headerTextColor }
 					data={ {
-						value: headerTextColor.value,
-						label: headerTextColor.label,
+						value: headerTextColor,
+						label: 'headerTextColor',
 					} }
 					setAttributes={ setAttributes }
 				/>
@@ -857,8 +857,8 @@ const Settings = ( props ) => {
 					) }
 					colorValue={ headerBgColor }
 					data={ {
-						value: headerBgColor.value,
-						label: headerBgColor.label,
+						value: headerBgColor,
+						label: 'headerBgColor',
 					} }
 					setAttributes={ setAttributes }
 				/>
@@ -873,8 +873,8 @@ const Settings = ( props ) => {
 					) }
 					colorValue={ activeTabTextColor }
 					data={ {
-						value: activeTabTextColor.value,
-						label: activeTabTextColor.label,
+						value: activeTabTextColor,
+						label: 'activeTabTextColor',
 					} }
 					setAttributes={ setAttributes }
 				/>
@@ -885,8 +885,8 @@ const Settings = ( props ) => {
 					) }
 					colorValue={ activeTabBgColor }
 					data={ {
-						value: activeTabBgColor.value,
-						label: activeTabBgColor.label,
+						value: activeTabBgColor,
+						label: 'activeTabBgColor',
 					} }
 					setAttributes={ setAttributes }
 				/>
@@ -1150,8 +1150,8 @@ const Settings = ( props ) => {
 				label={ __( 'Color', 'ultimate-addons-for-gutenberg' ) }
 				colorValue={ iconColor }
 				data={ {
-					value: iconColor.value,
-					label: iconColor.label,
+					value: iconColor,
+					label: 'iconColor',
 				} }
 				setAttributes={ setAttributes }
 			/>
@@ -1161,8 +1161,8 @@ const Settings = ( props ) => {
 				label={ __( 'Color', 'ultimate-addons-for-gutenberg' ) }
 				colorValue={ activeiconColor }
 				data={ {
-					value: activeiconColor.value,
-					label: activeiconColor.label,
+					value: activeiconColor,
+					label: 'activeiconColor',
 				} }
 				setAttributes={ setAttributes }
 			/>

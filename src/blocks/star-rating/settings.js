@@ -295,8 +295,8 @@ const Settings = ( props ) => {
 				label={ __( 'Color', 'ultimate-addons-for-gutenberg' ) }
 				colorValue={ titleColor }
 				data={ {
-					value: titleColor.value,
-					label: titleColor.label,
+					value: titleColor,
+					label: 'titleColor',
 				} }
 				setAttributes={ setAttributes }
 			/>
@@ -397,8 +397,8 @@ const Settings = ( props ) => {
 				label={ __( 'Color', 'ultimate-addons-for-gutenberg' ) }
 				colorValue={ color }
 				data={ {
-					value: color.value,
-					label: color.label,
+					value: color,
+					label: 'color',
 				} }
 				setAttributes={ setAttributes }
 			/>
@@ -409,8 +409,8 @@ const Settings = ( props ) => {
 				) }
 				colorValue={ unmarkedColor }
 				data={ {
-					value: unmarkedColor.value,
-					label: unmarkedColor.label,
+					value: unmarkedColor,
+					label: 'unmarkedColor',
 				} }
 				setAttributes={ setAttributes }
 			/>

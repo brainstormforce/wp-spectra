@@ -530,8 +530,8 @@ const Settings = ( props ) => {
 					label={ __( 'Color', 'ultimate-addons-for-gutenberg' ) }
 					colorValue={ arrowColor ? arrowColor : '' }
 					data={ {
-						value: arrowColor.value,
-						label: arrowColor.label,
+						value: arrowColor,
+						label: 'arrowColor',
 					} }
 					setAttributes={ setAttributes }
 				/>
@@ -653,8 +653,8 @@ const Settings = ( props ) => {
 					label={ __( 'Color', 'ultimate-addons-for-gutenberg' ) }
 					colorValue={ authorColor ? authorColor : '' }
 					data={ {
-						value: authorColor.value,
-						label: authorColor.label,
+						value: authorColor,
+						label: 'authorColor',
 					} }
 					setAttributes={ setAttributes }
 				/>
@@ -778,8 +778,8 @@ const Settings = ( props ) => {
 					label={ __( 'Color', 'ultimate-addons-for-gutenberg' ) }
 					colorValue={ descColor ? descColor : '' }
 					data={ {
-						value: descColor.value,
-						label: descColor.label,
+						value: descColor,
+						label: 'descColor',
 					} }
 					setAttributes={ setAttributes }
 				/>
@@ -1001,8 +1001,8 @@ const Settings = ( props ) => {
 					label={ __( 'Color', 'ultimate-addons-for-gutenberg' ) }
 					colorValue={ companyColor ? companyColor : '' }
 					data={ {
-						value: companyColor.value,
-						label: companyColor.label,
+						value: companyColor,
+						label: 'companyColor',
 					} }
 					setAttributes={ setAttributes }
 				/>

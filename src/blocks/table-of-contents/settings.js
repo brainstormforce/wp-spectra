@@ -298,8 +298,8 @@ const Settings = ( props ) => {
 					label={ __( 'Background', 'ultimate-addons-for-gutenberg' ) }
 					colorValue={ backgroundColor ? backgroundColor : '' }
 					data={ {
-						value: backgroundColor.value,
-						label: backgroundColor.label,
+						value: backgroundColor,
+						label: 'backgroundColor',
 					} }
 					setAttributes={ setAttributes }
 				/>
@@ -421,8 +421,8 @@ const Settings = ( props ) => {
 					label={ __( 'Color', 'ultimate-addons-for-gutenberg' ) }
 					colorValue={ headingColor ? headingColor : '' }
 					data={ {
-						value: headingColor.value,
-						label: headingColor.label,
+						value: headingColor,
+						label: 'headingColor',
 					} }
 					setAttributes={ setAttributes }
 				/>
@@ -544,8 +544,8 @@ const Settings = ( props ) => {
 					label={ __( 'Icon Color', 'ultimate-addons-for-gutenberg' ) }
 					colorValue={ iconColor ? iconColor : '' }
 					data={ {
-						value: iconColor.value,
-						label: iconColor.label,
+						value: iconColor,
+						label: 'iconColor',
 					} }
 					setAttributes={ setAttributes }
 				/> }
@@ -942,8 +942,8 @@ const Settings = ( props ) => {
 							) }
 							colorValue={ linkColor ? linkColor : '' }
 							data={ {
-								value: linkColor.value,
-								label: linkColor.label,
+								value: linkColor,
+								label: 'linkColor',
 							} }
 							setAttributes={ setAttributes }
 						/>
@@ -956,8 +956,8 @@ const Settings = ( props ) => {
 							) }
 							colorValue={ linkHoverColor ? linkHoverColor : '' }
 							data={ {
-								value: linkHoverColor.value,
-								label: linkHoverColor.label,
+								value: linkHoverColor,
+								label: 'linkHoverColor',
 							} }
 							setAttributes={ setAttributes }
 						/>
@@ -1117,8 +1117,8 @@ const Settings = ( props ) => {
 					label={ __( 'Marker Color', 'ultimate-addons-for-gutenberg' ) }
 					colorValue={ bulletColor ? bulletColor : '' }
 					data={ {
-						value: bulletColor.value,
-						label: bulletColor.label,
+						value: bulletColor,
+						label: 'bulletColor',
 					} }
 					setAttributes={ setAttributes }
 				/>
@@ -1145,8 +1145,8 @@ const Settings = ( props ) => {
 						) }
 						colorValue={ scrollToTopColor ? scrollToTopColor : '' }
 						data={ {
-							value: scrollToTopColor.value,
-							label: scrollToTopColor.label,
+							value: scrollToTopColor,
+							label: 'scrollToTopColor',
 						} }
 						setAttributes={ setAttributes }
 					/>
@@ -1159,8 +1159,8 @@ const Settings = ( props ) => {
 							scrollToTopBgColor ? scrollToTopBgColor : ''
 						}
 						data={ {
-							value: scrollToTopBgColor.value,
-							label: scrollToTopBgColor.label,
+							value: scrollToTopBgColor,
+							label: 'scrollToTopBgColor',
 						} }
 						setAttributes={ setAttributes }
 					/>

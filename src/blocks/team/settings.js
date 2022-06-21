@@ -753,8 +753,8 @@ const Settings = ( props ) => {
 					label={ __( 'Color', 'ultimate-addons-for-gutenberg' ) }
 					colorValue={ titleColor ? titleColor : '' }
 					data={ {
-						value: titleColor.value,
-						label: titleColor.label,
+						value: titleColor,
+						label: 'titleColor',
 					} }
 					setAttributes={ setAttributes }
 				/>
@@ -877,8 +877,8 @@ const Settings = ( props ) => {
 					label={ __( 'Color', 'ultimate-addons-for-gutenberg' ) }
 					colorValue={ prefixColor ? prefixColor : '' }
 					data={ {
-						value: prefixColor.value,
-						label: prefixColor.label,
+						value: prefixColor,
+						label: 'prefixColor',
 					} }
 					setAttributes={ setAttributes }
 				/>
@@ -1000,8 +1000,8 @@ const Settings = ( props ) => {
 					label={ __( 'Color', 'ultimate-addons-for-gutenberg' ) }
 					colorValue={ descColor ? descColor : '' }
 					data={ {
-						value: descColor.value,
-						label: descColor.label,
+						value: descColor,
+						label: 'descColor',
 					} }
 					setAttributes={ setAttributes }
 				/>
@@ -1212,8 +1212,8 @@ const Settings = ( props ) => {
 							) }
 							colorValue={ socialColor ? socialColor : '' }
 							data={ {
-								value: socialColor.value,
-								label: socialColor.label,
+								value: socialColor,
+								label: 'socialColor',
 							} }
 							setAttributes={ setAttributes }
 						/>
@@ -1228,8 +1228,8 @@ const Settings = ( props ) => {
 								socialHoverColor ? socialHoverColor : ''
 							}
 							data={ {
-								value: socialHoverColor.value,
-								label: socialHoverColor.label,
+								value: socialHoverColor,
+								label: 'socialHoverColor',
 							} }
 							setAttributes={ setAttributes }
 						/>
