@@ -301,18 +301,22 @@ const Settings = ( props ) => {
 					<AdvancedPopColorControl
 						label={ __( 'Background Color', 'ultimate-addons-for-gutenberg' ) }
 						colorValue={ backgroundColor ? backgroundColor : '' }
-						onColorChange={ ( value ) =>
-							setAttributes( { backgroundColor: value } )
-						}
+						data={ {
+							value: backgroundColor,
+							label: 'backgroundColor',
+						} }
+						setAttributes={ setAttributes }
 					/>
 				}
 				hover={
 					<AdvancedPopColorControl
 						label={ __( 'Background Color', 'ultimate-addons-for-gutenberg' ) }
 						colorValue={ backgroundHColor ? backgroundHColor : '' }
-						onColorChange={ ( value ) =>
-							setAttributes( { backgroundHColor: value } )
-						}
+						data={ {
+							value: backgroundHColor,
+							label: 'backgroundHColor',
+						} }
+						setAttributes={ setAttributes }
 					/>
 				}
 				disableBottomSeparator={ true }

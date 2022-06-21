@@ -605,9 +605,11 @@ const Settings = ( props ) => {
 										'ultimate-addons-for-gutenberg'
 									) }
 									colorValue={ questionTextColor }
-									onColorChange={ ( value ) =>
-										setAttributes( { questionTextColor: value } )
-									}
+									data={ {
+										value: questionTextColor,
+										label: 'questionTextColor',
+									} }
+									setAttributes={ setAttributes }
 								/>
 								<AdvancedPopColorControl
 									label={ __(
@@ -615,9 +617,11 @@ const Settings = ( props ) => {
 										'ultimate-addons-for-gutenberg'
 									) }
 									colorValue={ questionTextBgColor }
-									onColorChange={ ( value ) =>
-										setAttributes( { questionTextBgColor: value } )
-									}
+									data={ {
+										value: questionTextBgColor,
+										label: 'questionTextBgColor',
+									} }
+									setAttributes={ setAttributes }
 								/>
 							</>
 						}
@@ -629,11 +633,11 @@ const Settings = ( props ) => {
 										'ultimate-addons-for-gutenberg'
 									) }
 									colorValue={ questionTextActiveColor }
-									onColorChange={ ( value ) =>
-										setAttributes( {
-											questionTextActiveColor: value,
-										} )
-									}
+									data={ {
+										value: questionTextActiveColor,
+										label: 'questionTextActiveColor',
+									} }
+									setAttributes={ setAttributes }
 								/>
 								<AdvancedPopColorControl
 									label={ __(
@@ -641,11 +645,11 @@ const Settings = ( props ) => {
 										'ultimate-addons-for-gutenberg'
 									) }
 									colorValue={ questionTextActiveBgColor }
-									onColorChange={ ( value ) =>
-										setAttributes( {
-											questionTextActiveBgColor: value,
-										} )
-									}
+									data={ {
+										value: questionTextActiveBgColor,
+										label: 'questionTextActiveBgColor',
+									} }
+									setAttributes={ setAttributes }
 								/>
 							</>
 						}
@@ -659,9 +663,11 @@ const Settings = ( props ) => {
 								'ultimate-addons-for-gutenberg'
 							) }
 							colorValue={ questionTextColor }
-							onColorChange={ ( value ) =>
-								setAttributes( { questionTextColor: value } )
-							}
+							data={ {
+								value: questionTextColor,
+								label: 'questionTextColor',
+							} }
+							setAttributes={ setAttributes }
 						/>
 						<AdvancedPopColorControl
 							label={ __(
@@ -669,9 +675,11 @@ const Settings = ( props ) => {
 								'ultimate-addons-for-gutenberg'
 							) }
 							colorValue={ questionTextBgColor }
-							onColorChange={ ( value ) =>
-								setAttributes( { questionTextBgColor: value } )
-							}
+							data={ {
+								value: questionTextBgColor,
+								label: 'questionTextBgColor',
+							} }
+							setAttributes={ setAttributes }
 						/>
 					</>
 				)}
@@ -774,9 +782,11 @@ const Settings = ( props ) => {
 						'ultimate-addons-for-gutenberg'
 					) }
 					colorValue={ answerTextColor }
-					onColorChange={ ( value ) =>
-						setAttributes( { answerTextColor: value } )
-					}
+					data={ {
+						value: answerTextColor,
+						label: 'answerTextColor',
+					} }
+					setAttributes={ setAttributes }
 				/>
 				<TypographyControl
 					label={ __(
@@ -976,9 +986,11 @@ const Settings = ( props ) => {
 									'ultimate-addons-for-gutenberg'
 								) }
 								colorValue={ boxBgColor }
-								onColorChange={ ( value ) =>
-									setAttributes( { boxBgColor: value } )
-								}
+								data={ {
+									value: boxBgColor,
+									label: 'boxBgColor',
+								} }
+								setAttributes={ setAttributes }
 							/>
 						</>
 					}
@@ -990,9 +1002,11 @@ const Settings = ( props ) => {
 									'ultimate-addons-for-gutenberg'
 								) }
 								colorValue={ boxBgHoverColor }
-								onColorChange={ ( value ) =>
-									setAttributes( { boxBgHoverColor: value } )
-								}
+								data={ {
+									value: boxBgHoverColor,
+									label: 'boxBgHoverColor',
+								} }
+								setAttributes={ setAttributes }
 							/>
 						</>
 					}
@@ -1197,9 +1211,11 @@ const Settings = ( props ) => {
 						'ultimate-addons-for-gutenberg'
 					) }
 					colorValue={ iconColor }
-					onColorChange={ ( value ) =>
-						setAttributes( { iconColor: value } )
-					}
+					data={ {
+						value: iconColor,
+						label: 'iconColor',
+					} }
+					setAttributes={ setAttributes }
 				/>
 				<AdvancedPopColorControl
 					label={ __(
@@ -1207,9 +1223,11 @@ const Settings = ( props ) => {
 						'ultimate-addons-for-gutenberg'
 					) }
 					colorValue={ iconActiveColor }
-					onColorChange={ ( value ) =>
-						setAttributes( { iconActiveColor: value } )
-					}
+					data={ {
+						value: iconActiveColor,
+						label: 'iconActiveColor',
+					} }
+					setAttributes={ setAttributes }
 				/>
 			</UAGAdvancedPanelBody>
 		);

@@ -15,9 +15,10 @@ import {
 	ColorPalette,
 } from '@wordpress/components';
 import { withSelect } from '@wordpress/data';
-import { useState, useEffect } from '@wordpress/element';
+import { useState } from '@wordpress/element';
 import styles from './editor.lazy.scss';
 import React, { useLayoutEffect } from 'react';
+import UAGReset from '../reset';
 
 const AdvancedPopColorControl = ( props ) => {
 	// Add and remove the CSS on the drop and remove of the component.
@@ -57,32 +58,6 @@ const AdvancedPopColorControl = ( props ) => {
 		refresh: false,
 	} );
 	const [ visible, setVisible ] = useState( { isVisible: false } );
-
-	const defaultCache = {
-		value,
-	};
-
-	const [ cachedValue, setCacheValue ] = useState( defaultCache );
-
-	useEffect( () => {
-		const cachedValueUpdate = { ...cachedValue };
-
-		if ( undefined !== value ) {
-			cachedValueUpdate.value = value;
-			setCacheValue( cachedValueUpdate );
-		}
-	}, [] );
-
-	useEffect( () => {
-		const cachedValueUpdate = { ...cachedValue };
-
-		if (
-			JSON.stringify( value ) !==
-			JSON.stringify( cachedValueUpdate.value )
-		) {
-			setCacheValue( cachedValueUpdate );
-		}
-	}, [ value ] );
 
 	const onChangeComplete = ( color, palette ) => {
 		let opacity = 100 === opacityUnit ? 100 : 1;
@@ -147,14 +122,11 @@ const AdvancedPopColorControl = ( props ) => {
 		}
 	};
 
-	const resetValues = () => {
-		const cachedValueUpdate = { ...cachedValue };
-
-		setValue( cachedValueUpdate.value );
-
-		onColorChange( cachedValueUpdate.value.currentColor );
-
-		setCacheValue( cachedValueUpdate );
+	const resetValues = ( resetValue ) => {
+		setValue( {
+			...value,
+			currentColor: resetValue[data?.label],
+		} );
 	};
 
 	const colorVal = value.currentColor ? value.currentColor : colorValue;
@@ -189,22 +161,13 @@ const AdvancedPopColorControl = ( props ) => {
 						{ label }
 					</span>
 				) }
-				<Tooltip
-					text={ __( 'Reset', 'ultimate-addons-for-gutenberg' )}
-					key={ 'reset' }
-				>
-				<Button
-					className="uagb-reset"
-					isSecondary
-					isSmall
-					onClick={ ( e ) => {
-						e.preventDefault();
-						resetValues();
-					} }
-				>
-					<Dashicon icon="image-rotate" />
-				</Button>
-				</Tooltip>
+				<UAGReset
+					onReset={resetValues}
+					attributeNames = {[
+						data?.label
+					]}
+					setAttributes={ setAttributes }
+				/>
 				<div className="uagb-beside-color-click">
 					{ visible.isVisible && (
 						<Popover
@@ -250,11 +213,7 @@ const AdvancedPopColorControl = ( props ) => {
 					{ visible.isVisible && (
 						<Tooltip text={ __( 'Select Color' ) }>
 							<Button
-								className={ `uagb-color-icon-indicate ${
-									value.alpha
-										? 'uagb-has-alpha'
-										: 'uagb-no-alpha'
-								}` }
+								className={ `uagb-color-icon-indicate uagb-has-alpha` }
 								onClick={ toggleClose }
 							>
 								<ColorIndicator
@@ -280,11 +239,7 @@ const AdvancedPopColorControl = ( props ) => {
 					{ ! visible.isVisible && (
 						<Tooltip text={ __( 'Select Color' ) }>
 							<Button
-								className={ `uagb-color-icon-indicate ${
-									value.alpha
-										? 'uagb-has-alpha'
-										: 'uagb-no-alpha'
-								}` }
+								className={ `uagb-color-icon-indicate uagb-has-alpha` }
 								onClick={ toggleVisible }
 							>
 								<ColorIndicator

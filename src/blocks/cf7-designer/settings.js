@@ -360,11 +360,11 @@ const Settings = ( props ) => {
 			<AdvancedPopColorControl
 				label={ __( 'Text Color', 'ultimate-addons-for-gutenberg' ) }
 				colorValue={ buttonTextColor }
-				onColorChange={ ( value ) =>
-					setAttributes( {
-						buttonTextColor: value,
-					} )
-				}
+				data={ {
+					value: buttonTextColor,
+					label: 'buttonTextColor',
+				} }
+				setAttributes={ setAttributes }
 			/>
 			<AdvancedPopColorControl
 				label={ __(
@@ -372,11 +372,11 @@ const Settings = ( props ) => {
 					'ultimate-addons-for-gutenberg'
 				) }
 				colorValue={ buttonBgColor }
-				onColorChange={ ( value ) =>
-					setAttributes( {
-						buttonBgColor: value,
-					} )
-				}
+				data={ {
+					value: buttonBgColor,
+					label: 'buttonBgColor',
+				} }
+				setAttributes={ setAttributes }
 			/>
 		</>
 	);
@@ -386,11 +386,11 @@ const Settings = ( props ) => {
 			<AdvancedPopColorControl
 				label={ __( 'Text Color', 'ultimate-addons-for-gutenberg' ) }
 				colorValue={ buttonTextHoverColor }
-				onColorChange={ ( value ) =>
-					setAttributes( {
-						buttonTextHoverColor: value,
-					} )
-				}
+				data={ {
+					value: buttonTextHoverColor,
+					label: 'buttonTextHoverColor',
+				} }
+				setAttributes={ setAttributes }
 			/>
 			<AdvancedPopColorControl
 				label={ __(
@@ -398,11 +398,11 @@ const Settings = ( props ) => {
 					'ultimate-addons-for-gutenberg'
 				) }
 				colorValue={ buttonBgHoverColor }
-				onColorChange={ ( value ) =>
-					setAttributes( {
-						buttonBgHoverColor: value,
-					} )
-				}
+				data={ {
+					value: buttonBgHoverColor,
+					label: 'buttonBgHoverColor',
+				} }
+				setAttributes={ setAttributes }
 			/>
 		</>
 	);
@@ -672,9 +672,11 @@ const Settings = ( props ) => {
 			<AdvancedPopColorControl
 				label={ __( 'Label Color', 'ultimate-addons-for-gutenberg' ) }
 				colorValue={ fieldLabelColor }
-				onColorChange={ ( value ) =>
-					setAttributes( { fieldLabelColor: value } )
-				}
+				data={ {
+					value: fieldLabelColor,
+					label: 'fieldLabelColor',
+				} }
+				setAttributes={ setAttributes }
 			/>
 			<TypographyControl
 				label={ __(
@@ -756,9 +758,11 @@ const Settings = ( props ) => {
 			<AdvancedPopColorControl
 				label={ __( 'Input Color', 'ultimate-addons-for-gutenberg' ) }
 				colorValue={ fieldInputColor }
-				onColorChange={ ( value ) =>
-					setAttributes( { fieldInputColor: value } )
-				}
+				data={ {
+					value: fieldInputColor,
+					label: 'fieldInputColor',
+				} }
+				setAttributes={ setAttributes }
 			/>
 			<TypographyControl
 				label={ __(
@@ -843,9 +847,11 @@ const Settings = ( props ) => {
 					'ultimate-addons-for-gutenberg'
 				) }
 				colorValue={ fieldBgColor }
-				onColorChange={ ( value ) =>
-					setAttributes( { fieldBgColor: value } )
-				}
+				data={ {
+					value: fieldBgColor,
+					label: 'fieldBgColor',
+				} }
+				setAttributes={ setAttributes }
 			/>
 			<ResponsiveSlider
 				label={ __(
@@ -1047,9 +1053,11 @@ const Settings = ( props ) => {
 			<AdvancedPopColorControl
 				label={ __( 'Label Color', 'ultimate-addons-for-gutenberg' ) }
 				colorValue={ radioCheckLableColor }
-				onColorChange={ ( value ) =>
-					setAttributes( { radioCheckLableColor: value } )
-				}
+				data={ {
+					value: radioCheckLableColor,
+					label: 'radioCheckLableColor',
+				} }
+				setAttributes={ setAttributes }
 			/>
 			<TypographyControl
 				label={ __(
@@ -1137,9 +1145,11 @@ const Settings = ( props ) => {
 					'ultimate-addons-for-gutenberg'
 				) }
 				colorValue={ radioCheckBgColor }
-				onColorChange={ ( value ) =>
-					setAttributes( { radioCheckBgColor: value } )
-				}
+				data={ {
+					value: radioCheckBgColor,
+					label: 'radioCheckBgColor',
+				} }
+				setAttributes={ setAttributes }
 			/>
 			<AdvancedPopColorControl
 				label={ __(
@@ -1147,9 +1157,11 @@ const Settings = ( props ) => {
 					'ultimate-addons-for-gutenberg'
 				) }
 				colorValue={ radioCheckSelectColor }
-				onColorChange={ ( value ) =>
-					setAttributes( { radioCheckSelectColor: value } )
-				}
+				data={ {
+					value: radioCheckSelectColor,
+					label: 'radioCheckSelectColor',
+				} }
+				setAttributes={ setAttributes }
 			/>
 			{ fieldBorderStyle !== 'none' && (
 				<>
@@ -1193,11 +1205,11 @@ const Settings = ( props ) => {
 					<AdvancedPopColorControl
 						label={ __( 'Color', 'ultimate-addons-for-gutenberg' ) }
 						colorValue={ radioCheckBorderColor }
-						onColorChange={ ( value ) =>
-							setAttributes( {
-								radioCheckBorderColor: value,
-							} )
-						}
+						data={ {
+							value: radioCheckBorderColor,
+							label: 'radioCheckBorderColor',
+						} }
+						setAttributes={ setAttributes }
 					/>
 				</>
 			) }
@@ -1467,11 +1479,11 @@ const Settings = ( props ) => {
 					'ultimate-addons-for-gutenberg'
 				) }
 				colorValue={ validationMsgColor }
-				onColorChange={ ( value ) =>
-					setAttributes( {
-						validationMsgColor: value,
-					} )
-				}
+				data={ {
+					value: validationMsgColor,
+					label: 'validationMsgColor',
+				} }
+				setAttributes={ setAttributes }
 			/>
 			<TypographyControl
 				label={ __(
@@ -1561,11 +1573,11 @@ const Settings = ( props ) => {
 							'ultimate-addons-for-gutenberg'
 						) }
 						colorValue={ validationMsgBgColor }
-						onColorChange={ ( value ) =>
-							setAttributes( {
-								validationMsgBgColor: value,
-							} )
-						}
+						data={ {
+							value: validationMsgBgColor,
+							label: 'validationMsgBgColor',
+						} }
+						setAttributes={ setAttributes }
 					/>
 				</>
 			) }
@@ -1578,11 +1590,11 @@ const Settings = ( props ) => {
 							'ultimate-addons-for-gutenberg'
 						) }
 						colorValue={ highlightBorderColor }
-						onColorChange={ ( value ) =>
-							setAttributes( {
-								highlightBorderColor: value,
-							} )
-						}
+						data={ {
+							value: highlightBorderColor,
+							label: 'highlightBorderColor',
+						} }
+						setAttributes={ setAttributes }
 					/>
 				</>
 			) }
@@ -1665,11 +1677,11 @@ const Settings = ( props ) => {
 			<AdvancedPopColorControl
 				label={ __( 'Color', 'ultimate-addons-for-gutenberg' ) }
 				colorValue={ successMsgColor }
-				onColorChange={ ( value ) =>
-					setAttributes( {
-						successMsgColor: value,
-					} )
-				}
+				data={ {
+					value: successMsgColor,
+					label: 'successMsgColor',
+				} }
+				setAttributes={ setAttributes }
 			/>
 			<AdvancedPopColorControl
 				label={ __(
@@ -1677,31 +1689,31 @@ const Settings = ( props ) => {
 					'ultimate-addons-for-gutenberg'
 				) }
 				colorValue={ successMsgBgColor }
-				onColorChange={ ( value ) =>
-					setAttributes( {
-						successMsgBgColor: value,
-					} )
-				}
+				data={ {
+					value: successMsgBgColor,
+					label: 'successMsgBgColor',
+				} }
+				setAttributes={ setAttributes }
 			/>
 			<AdvancedPopColorControl
 				label={ __( 'Border Color', 'ultimate-addons-for-gutenberg' ) }
 				colorValue={ successMsgBorderColor }
-				onColorChange={ ( value ) =>
-					setAttributes( {
-						successMsgBorderColor: value,
-					} )
-				}
+				data={ {
+					value: successMsgBorderColor,
+					label: 'successMsgBorderColor',
+				} }
+				setAttributes={ setAttributes }
 			/>
 			<hr className="uagb-editor__separator" />
 			<h2>{ __( 'Error Message', 'ultimate-addons-for-gutenberg' ) }</h2>
 			<AdvancedPopColorControl
 				label={ __( 'Color', 'ultimate-addons-for-gutenberg' ) }
 				colorValue={ errorMsgColor }
-				onColorChange={ ( value ) =>
-					setAttributes( {
-						errorMsgColor: value,
-					} )
-				}
+				data={ {
+					value: errorMsgColor,
+					label: 'errorMsgColor',
+				} }
+				setAttributes={ setAttributes }
 			/>
 			<AdvancedPopColorControl
 				label={ __(
@@ -1709,20 +1721,20 @@ const Settings = ( props ) => {
 					'ultimate-addons-for-gutenberg'
 				) }
 				colorValue={ errorMsgBgColor }
-				onColorChange={ ( value ) =>
-					setAttributes( {
-						errorMsgBgColor: value,
-					} )
-				}
+				data={ {
+					value: errorMsgBgColor,
+					label: 'errorMsgBgColor',
+				} }
+				setAttributes={ setAttributes }
 			/>
 			<AdvancedPopColorControl
 				label={ __( 'Border Color', 'ultimate-addons-for-gutenberg' ) }
 				colorValue={ errorMsgBorderColor }
-				onColorChange={ ( value ) =>
-					setAttributes( {
-						errorMsgBorderColor: value,
-					} )
-				}
+				data={ {
+					value: errorMsgBorderColor,
+					label: 'errorMsgBorderColor',
+				} }
+				setAttributes={ setAttributes }
 			/>
 			<Range
 				label={ __(

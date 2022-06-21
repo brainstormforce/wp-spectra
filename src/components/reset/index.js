@@ -35,7 +35,6 @@ const UAGReset = ( props ) => {
 		}
 
 		if ( onReset ) {
-			console.log( defaultValues );
 			onReset( defaultValues );
 		}
 	};

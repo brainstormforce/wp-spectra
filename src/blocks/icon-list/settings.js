@@ -520,9 +520,11 @@ const Settings = ( props ) => {
 								'ultimate-addons-for-gutenberg'
 							) }
 							colorValue={ labelColor }
-							onColorChange={ ( value ) =>
-								setAttributes( { labelColor: value } )
-							}
+							data={ {
+								value: labelColor,
+								label: 'labelColor',
+							} }
+							setAttributes={ setAttributes }
 						/>
 					}
 					hover={
@@ -534,9 +536,11 @@ const Settings = ( props ) => {
 							colorValue={
 								labelHoverColor
 							}
-							onColorChange={ ( value ) =>
-								setAttributes( { labelHoverColor: value } )
-							}
+							data={ {
+								value: labelHoverColor,
+								label: 'labelHoverColor',
+							} }
+							setAttributes={ setAttributes }
 						/>
 					}
 					disableBottomSeparator={ true }
@@ -730,9 +734,11 @@ const Settings = ( props ) => {
 									'ultimate-addons-for-gutenberg'
 								) }
 								colorValue={ iconColor ? iconColor : '' }
-								onColorChange={ ( value ) =>
-									setAttributes( { iconColor: value } )
-								}
+								data={ {
+									value: iconColor,
+									label: 'iconColor',
+								} }
+								setAttributes={ setAttributes }
 							/>
 							<AdvancedPopColorControl
 								label={ __(
@@ -740,9 +746,11 @@ const Settings = ( props ) => {
 									'ultimate-addons-for-gutenberg'
 								) }
 								colorValue={ iconBgColor ? iconBgColor : '' }
-								onColorChange={ ( value ) =>
-									setAttributes( { iconBgColor: value } )
-								}
+								data={ {
+									value: iconBgColor,
+									label: 'iconBgColor',
+								} }
+								setAttributes={ setAttributes }
 							/>
 							<AdvancedPopColorControl
 								label={ __(
@@ -752,9 +760,11 @@ const Settings = ( props ) => {
 								colorValue={
 									iconBorderColor ? iconBorderColor : ''
 								}
-								onColorChange={ ( value ) =>
-									setAttributes( { iconBorderColor: value } )
-								}
+								data={ {
+									value: iconBorderColor,
+									label: 'iconBorderColor',
+								} }
+								setAttributes={ setAttributes }
 							/>
 						</>
 					}
@@ -768,9 +778,11 @@ const Settings = ( props ) => {
 								colorValue={
 									iconHoverColor ? iconHoverColor : ''
 								}
-								onColorChange={ ( value ) =>
-									setAttributes( { iconHoverColor: value } )
-								}
+								data={ {
+									value: iconHoverColor,
+									label: 'iconHoverColor',
+								} }
+								setAttributes={ setAttributes }
 							/>
 							<AdvancedPopColorControl
 								label={ __(
@@ -780,9 +792,11 @@ const Settings = ( props ) => {
 								colorValue={
 									iconBgHoverColor ? iconBgHoverColor : ''
 								}
-								onColorChange={ ( value ) =>
-									setAttributes( { iconBgHoverColor: value } )
-								}
+								data={ {
+									value: iconBgHoverColor,
+									label: 'iconBgHoverColor',
+								} }
+								setAttributes={ setAttributes }
 							/>
 							<AdvancedPopColorControl
 								label={ __(
@@ -794,11 +808,11 @@ const Settings = ( props ) => {
 										? iconBorderHoverColor
 										: ''
 								}
-								onColorChange={ ( value ) =>
-									setAttributes( {
-										iconBorderHoverColor: value,
-									} )
-								}
+								data={ {
+									value: iconBorderHoverColor,
+									label: 'iconBorderHoverColor',
+								} }
+								setAttributes={ setAttributes }
 							/>
 						</>
 					}

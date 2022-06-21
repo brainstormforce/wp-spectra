@@ -425,9 +425,11 @@ const Settings = ( props ) => {
 				<AdvancedPopColorControl
 					label={ __( 'Color', 'ultimate-addons-for-gutenberg' ) }
 					colorValue={ titleColor ? titleColor : '' }
-					onColorChange={ ( value ) =>
-						setAttributes( { titleColor: value } )
-					}
+					data={ {
+						value: titleColor,
+						label: 'titleColor',
+					} }
+					setAttributes={ setAttributes }
 				/>
 				<AdvancedPopColorControl
 					label={ __(
@@ -435,9 +437,11 @@ const Settings = ( props ) => {
 						'ultimate-addons-for-gutenberg'
 					) }
 					colorValue={ noticeColor ? noticeColor : '' }
-					onColorChange={ ( value ) =>
-						setAttributes( { noticeColor: value } )
-					}
+					data={ {
+						value: noticeColor,
+						label: 'noticeColor',
+					} }
+					setAttributes={ setAttributes }
 				/>
 				{ noticeDismiss && (
 					<AdvancedPopColorControl
@@ -448,9 +452,11 @@ const Settings = ( props ) => {
 						colorValue={
 							noticeDismissColor ? noticeDismissColor : ''
 						}
-						onColorChange={ ( value ) =>
-							setAttributes( { noticeDismissColor: value } )
-						}
+						data={ {
+							value: noticeDismissColor,
+							label: 'noticeDismissColor',
+						} }
+						setAttributes={ setAttributes }
 					/>
 				) }
 				<TypographyControl
@@ -616,9 +622,11 @@ const Settings = ( props ) => {
 				<AdvancedPopColorControl
 					label={ __( 'Color', 'ultimate-addons-for-gutenberg' ) }
 					colorValue={ textColor ? textColor : '' }
-					onColorChange={ ( value ) =>
-						setAttributes( { textColor: value } )
-					}
+					data={ {
+						value: textColor,
+						label: 'textColor',
+					} }
+					setAttributes={ setAttributes }
 				/>
 				<AdvancedPopColorControl
 					label={ __(
@@ -626,9 +634,11 @@ const Settings = ( props ) => {
 						'ultimate-addons-for-gutenberg'
 					) }
 					colorValue={ contentBgColor ? contentBgColor : '' }
-					onColorChange={ ( value ) =>
-						setAttributes( { contentBgColor: value } )
-					}
+					data={ {
+						value: contentBgColor,
+						label: 'contentBgColor',
+					} }
+					setAttributes={ setAttributes }
 				/>
 				<TypographyControl
 					label={ __(
