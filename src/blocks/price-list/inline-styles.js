@@ -109,6 +109,18 @@ function RestMenuStyle( props ) {
 		priceFontStyle,
 		priceTransform,
 		priceDecoration,
+		descLetterSpacing,
+descLetterSpacingTablet,
+descLetterSpacingMobile,
+descLetterSpacingType,
+priceLetterSpacing,
+priceLetterSpacingTablet,
+priceLetterSpacingMobile,
+priceLetterSpacingType,
+titleLetterSpacing,
+titleLetterSpacingTablet,
+titleLetterSpacingMobile,
+titleLetterSpacingType,
 	} = props.attributes;
 
 	const blockName = props.name.replace( 'uagb/', '' );
@@ -210,6 +222,7 @@ function RestMenuStyle( props ) {
 				titleLineHeight,
 				titleLineHeightType
 			),
+			'letter-spacing': generateCSSUnit( titleLetterSpacing, titleLetterSpacingType ),
 		},
 		// Title Style
 		' .uagb-rm__price': {
@@ -224,6 +237,7 @@ function RestMenuStyle( props ) {
 				priceLineHeightType
 			),
 			'color': priceColor,
+			'letter-spacing': generateCSSUnit( priceLetterSpacing, priceLetterSpacingType ),
 		},
 		// Description Style
 		' .uagb-rm__desc': {
@@ -239,6 +253,7 @@ function RestMenuStyle( props ) {
 			),
 			'color': descColor,
 			'margin-bottom': generateCSSUnit( descSpace, 'px' ),
+			'letter-spacing': generateCSSUnit( descLetterSpacing, descLetterSpacingType ),
 		},
 	};
 
@@ -275,6 +290,7 @@ function RestMenuStyle( props ) {
 				titleLineHeightType
 			),
 			'margin-bottom': generateCSSUnit( titleSpaceTabletFallback, titleSpaceType ),
+			'letter-spacing': generateCSSUnit( titleLetterSpacingTablet, titleLetterSpacingType ),
 		},
 		' .uagb-rm__desc': {
 			'font-size': generateCSSUnit(
@@ -285,6 +301,7 @@ function RestMenuStyle( props ) {
 				descLineHeightTablet,
 				descLineHeightType
 			),
+			'letter-spacing': generateCSSUnit( descLetterSpacingTablet, descLetterSpacingType ),
 		},
 		' .uagb-rm__price': {
 			'font-size': generateCSSUnit(
@@ -295,6 +312,7 @@ function RestMenuStyle( props ) {
 				priceLineHeightTablet,
 				priceLineHeightType
 			),
+			'letter-spacing': generateCSSUnit( priceLetterSpacingTablet, priceLetterSpacingType ),
 		},
 		" [data-type='uagb/restaurant-menu-child'] img": {
 			'padding-left': generateCSSUnit(
@@ -378,6 +396,7 @@ function RestMenuStyle( props ) {
 				titleLineHeightType
 			),
 			'margin-bottom': generateCSSUnit( titleSpaceMobileFallback, titleSpaceType ),
+			'letter-spacing': generateCSSUnit( titleLetterSpacingMobile, titleLetterSpacingType ),
 		},
 		' .uagb-rm__desc': {
 			'font-size': generateCSSUnit(
@@ -388,6 +407,7 @@ function RestMenuStyle( props ) {
 				descLineHeightMobile,
 				descLineHeightType
 			),
+			'letter-spacing': generateCSSUnit( descLetterSpacingMobile, descLetterSpacingType ),
 		},
 		' .uagb-rm__price': {
 			'font-size': generateCSSUnit(
@@ -398,6 +418,7 @@ function RestMenuStyle( props ) {
 				priceLineHeightMobile,
 				priceLineHeightType
 			),
+			'letter-spacing': generateCSSUnit( priceLetterSpacingMobile, priceLetterSpacingType ),
 		},
 		" [data-type='uagb/restaurant-menu-child'] img": {
 			'padding-left': generateCSSUnit(

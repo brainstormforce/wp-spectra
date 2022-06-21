@@ -143,7 +143,19 @@ const Settings = ( props ) => {
 		priceTransform,
 		priceDecoration,
 		headingAlign,
-		imgAlign
+		imgAlign,
+		descLetterSpacing,
+descLetterSpacingTablet,
+descLetterSpacingMobile,
+descLetterSpacingType,
+priceLetterSpacing,
+priceLetterSpacingTablet,
+priceLetterSpacingMobile,
+priceLetterSpacingType,
+titleLetterSpacing,
+titleLetterSpacingTablet,
+titleLetterSpacingMobile,
+titleLetterSpacingType,
 	} = attributes;
 
 	const setimageSize = ( value ) => {
@@ -752,6 +764,22 @@ const Settings = ( props ) => {
 						value: descLineHeightTablet,
 						label: 'descLineHeightTablet',
 					} }
+					letterSpacing={ {
+						value: descLetterSpacing,
+						label: 'descLetterSpacing',
+					} }
+					letterSpacingTablet={ {
+						value: descLetterSpacingTablet,
+						label: 'descLetterSpacingTablet',
+					} }
+					letterSpacingMobile={ {
+						value: descLetterSpacingMobile,
+						label: 'descLetterSpacingMobile',
+					} }
+					letterSpacingType={ {
+						value: descLetterSpacingType,
+						label: 'descLetterSpacingType',
+					} }
 					transform={ {
 						value: descTransform,
 						label: 'descTransform',
@@ -933,6 +961,22 @@ const Settings = ( props ) => {
 						value: priceLineHeightTablet,
 						label: 'priceLineHeightTablet',
 					} }
+					letterSpacing={ {
+						value: priceLetterSpacing,
+						label: 'priceLetterSpacing',
+					} }
+					letterSpacingTablet={ {
+						value: priceLetterSpacingTablet,
+						label: 'priceLetterSpacingTablet',
+					} }
+					letterSpacingMobile={ {
+						value: priceLetterSpacingMobile,
+						label: 'priceLetterSpacingMobile',
+					} }
+					letterSpacingType={ {
+						value: priceLetterSpacingType,
+						label: 'priceLetterSpacingType',
+					} }
 					transform={ {
 						value: priceTransform,
 						label: 'priceTransform',
@@ -1008,6 +1052,22 @@ const Settings = ( props ) => {
 					lineHeightTablet={ {
 						value: titleLineHeightTablet,
 						label: 'titleLineHeightTablet',
+					} }
+					letterSpacing={ {
+						value: titleLetterSpacing,
+						label: 'titleLetterSpacing',
+					} }
+					letterSpacingTablet={ {
+						value: titleLetterSpacingTablet,
+						label: 'titleLetterSpacingTablet',
+					} }
+					letterSpacingMobile={ {
+						value: titleLetterSpacingMobile,
+						label: 'titleLetterSpacingMobile',
+					} }
+					letterSpacingType={ {
+						value: titleLetterSpacingType,
+						label: 'titleLetterSpacingType',
 					} }
 					transform={ {
 						value: titleTransform,
