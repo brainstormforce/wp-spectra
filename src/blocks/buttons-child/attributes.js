@@ -321,14 +321,12 @@ const attributes = {
 	},
 	iconSpaceTablet: {
 		type: 'number',
-		default: 8,
 		UAGCopyPaste: {
 			styleType: 'btn-icon-space-tablet'
 		}
 	},
 	iconSpaceMobile: {
 		type: 'number',
-		default: 8,
 		UAGCopyPaste: {
 			styleType: 'btn-icon-space-mobile'
 		}
@@ -509,14 +507,12 @@ const attributes = {
 	},
 	iconSizeTablet: {
 		type: 'number',
-		default: 15,
 		UAGCopyPaste: {
 			styleType: 'btn-icon-size-tablet'
 		}
 	},
 	iconSizeMobile: {
 		type: 'number',
-		default: 15,
 		UAGCopyPaste: {
 			styleType: 'btn-icon-size-mobile'
 		}
