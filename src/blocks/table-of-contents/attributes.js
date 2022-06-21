@@ -47,10 +47,6 @@ const attributes = {
 		type: 'boolean',
 		default: true,
 	},
-	smoothScrollDelay: {
-		type: 'number',
-		default: 800,
-	},
 	smoothScrollOffset: {
 		type: 'number',
 		default: 30,
