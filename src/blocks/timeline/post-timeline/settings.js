@@ -24,9 +24,6 @@ import {
 } from '@wordpress/components';
 import {
 	InspectorControls,
-	BlockAlignmentToolbar,
-	AlignmentToolbar,
-	BlockControls,
 } from '@wordpress/block-editor';
 import ResponsiveSlider from '@Components/responsive-slider';
 import UAGAdvancedPanelBody from '@Components/advanced-panel-body';
@@ -1921,29 +1918,9 @@ authorLetterSpacingType,
 			</UAGAdvancedPanelBody>
 		);
 	};
-	const blockControls = () => {
-		return (
-			<BlockControls>
-				<BlockAlignmentToolbar
-					value={ timelinAlignment }
-					onChange={ ( value ) => {
-						setAttributes( { timelinAlignment: value } );
-					} }
-					controls={ [ 'left', 'center', 'right' ] }
-				/>
-				<AlignmentToolbar
-					value={ align }
-					onChange={ ( value ) => {
-						setAttributes( { align: value } );
-					} }
-					controls={ [ 'left', 'center', 'right' ] }
-				/>
-			</BlockControls>
-		);
-	};
+
 	return (
 		<>
-			{ blockControls() }
 			<InspectorControls>
 				<InspectorTabs>
 					<InspectorTab { ...UAGTabs.general }>

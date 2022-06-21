@@ -21,10 +21,7 @@ import { __ } from '@wordpress/i18n';
 
 import { dateI18n } from '@wordpress/date';
 import {
-	BlockControls,
 	InspectorControls,
-	BlockAlignmentToolbar,
-	AlignmentToolbar
 } from '@wordpress/block-editor';
 
 import {
@@ -249,26 +246,6 @@ const Settings = ( props ) => {
 
 	const today = new Date();
 
-	const blockControls = () => {
-		return (
-			<BlockControls>
-				<BlockAlignmentToolbar
-					value={ timelinAlignment }
-					onChange={ ( value ) => {
-						setAttributes( { timelinAlignment: value } );
-					} }
-					controls={ [ 'left', 'center', 'right' ] }
-				/>
-				<AlignmentToolbar
-					value={ align }
-					onChange={ ( value ) => {
-						setAttributes( { align: value } );
-					} }
-					controls={ [ 'left', 'center', 'right' ] }
-				/>
-			</BlockControls>
-		);
-	};
 	const generalSettings = () => {
 		return (
 			<UAGAdvancedPanelBody
@@ -1351,7 +1328,6 @@ const Settings = ( props ) => {
 	}
 	return (
 		<>
-			{ blockControls() }
 			<InspectorControls>
 				<InspectorTabs>
 					<InspectorTab { ...UAGTabs.general }>

@@ -14,8 +14,6 @@ import MultiButtonsControl from '@Components/multi-buttons-control';
 import { __ } from '@wordpress/i18n';
 import renderSVG from '@Controls/renderIcon';
 import {
-	BlockControls,
-	BlockAlignmentToolbar,
 	InspectorControls,
 } from '@wordpress/block-editor';
 import { Icon } from '@wordpress/components';
@@ -49,20 +47,6 @@ const Settings = ( props ) => {
 		iconBgColor,
 		iconBgHoverColor,
 	} = attributes;
-
-	const blockControls = () => {
-		return (
-			<BlockControls>
-				<BlockAlignmentToolbar
-					value={ align }
-					onChange={ ( value ) => {
-						setAttributes( { align: value } );
-					} }
-					controls={ [ 'left', 'center', 'right' ] }
-				/>
-			</BlockControls>
-		);
-	};
 
 	const generalSettings = () => {
 		return (
@@ -395,7 +379,6 @@ const Settings = ( props ) => {
 
 	return (
 		<Suspense fallback={ lazyLoader() }>
-			{ blockControls() }
 			<InspectorControls>
 				<InspectorTabs>
 					<InspectorTab { ...UAGTabs.general }>
