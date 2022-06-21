@@ -5,8 +5,12 @@
 import generateCSS from '@Controls/generateCSS';
 import generateCSSUnit from '@Controls/generateCSSUnit';
 import generateBackgroundCSS from '@Controls/generateBackgroundCSS';
+import { getFallbackNumber } from '@Controls/getAttributeFallback';
 
 function styling( props ) {
+
+	const blockName = props.name.replace( 'uagb/', '' );
+
 	const {
 		fontFamily,
 		fontWeight,
@@ -81,6 +85,12 @@ function styling( props ) {
 		iconSizeTablet,
 		iconSizeMobile,
 		removeText,
+
+		// letter spacing
+		fontLetterSpacing,
+		fontLetterSpacingTablet,
+		fontLetterSpacingMobile,
+		fontLetterSpacingType,
 	} = props.attributes;
 
 	const tabletSelectors = {};
@@ -118,6 +128,7 @@ function styling( props ) {
 			generateCSSUnit( boxShadowHOffset, 'px' ) + ' ' + generateCSSUnit( boxShadowVOffset, 'px' ) +	' ' +
 			generateCSSUnit( boxShadowBlur, 'px' ) + ' ' +	generateCSSUnit( boxShadowSpread, 'px' ) + ' ' +
 			boxShadowColor + ' ' +	boxShadowPositionCSS,
+			'letter-spacing': generateCSSUnit( fontLetterSpacing, fontLetterSpacingType ),
 		},
 		'.uagb-buttons__outer-wrap .wp-block-button__link.uagb-buttons-repeater:hover .uagb-button__link': {
 			'color': hColor,
@@ -168,6 +179,10 @@ function styling( props ) {
 		),
 	};
 
+	mobileSelectors[ '.uagb-buttons__outer-wrap .uagb-button__wrapper .wp-block-button__link.uagb-buttons-repeater' ] = {
+		'letter-spacing': generateCSSUnit( fontLetterSpacingMobile, fontLetterSpacingType ),
+	};
+
 	tabletSelectors[ '.uagb-buttons__outer-wrap .wp-block-button__link.uagb-buttons-repeater' ] = {
 		'font-size': generateCSSUnit( sizeTablet, sizeType ),
 		'line-height': generateCSSUnit( lineHeightTablet, lineHeightType ),
@@ -196,9 +211,13 @@ function styling( props ) {
 		),
 	};
 
+	tabletSelectors[ '.uagb-buttons__outer-wrap .uagb-button__wrapper .wp-block-button__link.uagb-buttons-repeater' ] = {
+		'letter-spacing': generateCSSUnit( fontLetterSpacingTablet, fontLetterSpacingType ),
+	};
+
 	selectors[ '.uagb-buttons__outer-wrap .wp-block-button__link.uagb-buttons-repeater .uagb-button__icon svg' ] = {
-		'width': generateCSSUnit( iconSize, 'px' ),
-		'height': generateCSSUnit( iconSize, 'px' ),
+		'width': generateCSSUnit( getFallbackNumber( iconSize, 'iconSize', blockName ), 'px' ),
+		'height': generateCSSUnit( getFallbackNumber( iconSize, 'iconSize', blockName ), 'px' ),
 		'fill': iconColor,
 	};
 	tabletSelectors[ '.uagb-buttons__outer-wrap .wp-block-button__link.uagb-buttons-repeater .uagb-button__icon svg' ] = {
@@ -216,7 +235,7 @@ function styling( props ) {
 	};
 	if( ! removeText ) {
 		selectors[ ' .uagb-button__icon-position-after' ] = {
-			'margin-left': generateCSSUnit( iconSpace, 'px' ),
+			'margin-left': generateCSSUnit( getFallbackNumber( iconSpace, 'iconSpace', blockName ), 'px' ),
 		};
 
 		tabletSelectors[ ' .uagb-button__icon-position-before' ] = {
@@ -234,7 +253,7 @@ function styling( props ) {
 		};
 
 		selectors[ ' .uagb-button__icon-position-before' ] = {
-			'margin-right': generateCSSUnit( iconSpace, 'px' ),
+			'margin-right': generateCSSUnit( getFallbackNumber( iconSpace, 'iconSpace', blockName ), 'px' ),
 		};
 	}
 

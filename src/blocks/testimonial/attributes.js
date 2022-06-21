@@ -342,14 +342,12 @@ const attributes = {
 		UAGCopyPaste: {
 			styleType: 'author-bottom-margin-mobile'
 		},
-		default: 5,
 	},
 	nameSpaceTablet: {
 		type: 'number',
 		UAGCopyPaste: {
 			styleType: 'author-bottom-margin-tablet'
 		},
-		default: 5,
 	},
 	descSpace: {
 		type: 'number',
@@ -363,14 +361,12 @@ const attributes = {
 		UAGCopyPaste: {
 			styleType: 'desc-bottom-margin-tablet'
 		},
-		default: 20,
 	},
 	descSpaceMobile: {
 		type: 'number',
 		UAGCopyPaste: {
 			styleType: 'desc-bottom-margin-mobile'
 		},
-		default: 20,
 	},
 	block_id: {
 		type: 'string',
@@ -437,14 +433,12 @@ const attributes = {
 		UAGCopyPaste: {
 			styleType: 'image-width-mobile'
 		},
-		default: 60,
 	},
 	imageWidthTablet: {
 		type: 'number',
 		UAGCopyPaste: {
 			styleType: 'image-width-tablet'
 		},
-		default: 60,
 	},
 	columns: {
 		type: 'number',
@@ -533,14 +527,12 @@ const attributes = {
 	},
 	rowGapMobile: {
 		type: 'number',
-		default: 10,
 		UAGCopyPaste: {
 			styleType: 'row-gap-mobile'
 		},
 	},
 	rowGapTablet: {
 		type: 'number',
-		default: 10,
 		UAGCopyPaste: {
 			styleType: 'row-gap-tablet'
 		},
@@ -554,14 +546,12 @@ const attributes = {
 	},
 	columnGapMobile: {
 		type: 'number',
-		default: 10,
 		UAGCopyPaste: {
 			styleType: 'column-gap-mobile'
 		},
 	},
 	columnGapTablet: {
 		type: 'number',
-		default: 10,
 		UAGCopyPaste: {
 			styleType: 'column-gap-tablet'
 		},
@@ -1006,6 +996,82 @@ const attributes = {
 		UAGCopyPaste: {
 			styleType: 'post-equal-height'
 		},
+	},
+	// letter spacing
+	nameLetterSpacing: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'main-title-letter-spacing'
+		}
+	},
+	nameLetterSpacingTablet: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'main-title-letter-spacing-tablet'
+		}
+	},
+	nameLetterSpacingMobile: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'main-title-letter-spacing-mobile'
+		}
+	},
+	nameLetterSpacingType: {
+		type: 'string',
+		default: 'px',
+		UAGCopyPaste: {
+			styleType: 'main-title-letter-spacing-type'
+		}
+	},
+	descLetterSpacing: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'desc-letter-spacing'
+		}
+	},
+	descLetterSpacingTablet: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'desc-letter-spacing-tablet'
+		}
+	},
+	descLetterSpacingMobile: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'desc-letter-spacing-mobile'
+		}
+	},
+	descLetterSpacingType: {
+		type: 'string',
+		default: 'px',
+		UAGCopyPaste: {
+			styleType: 'desc-letter-spacing-type'
+		}
+	},
+	companyLetterSpacing: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'desc-letter-spacing'
+		}
+	},
+	companyLetterSpacingTablet: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'desc-letter-spacing-tablet'
+		}
+	},
+	companyLetterSpacingMobile: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'desc-letter-spacing-mobile'
+		}
+	},
+	companyLetterSpacingType: {
+		type: 'string',
+		default: 'px',
+		UAGCopyPaste: {
+			styleType: 'desc-letter-spacing-type'
+		}
 	},
 };
 

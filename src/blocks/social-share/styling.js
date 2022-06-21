@@ -4,8 +4,12 @@
 
 import generateCSS from '@Controls/generateCSS';
 import generateCSSUnit from '@Controls/generateCSSUnit';
+import { getFallbackNumber } from '@Controls/getAttributeFallback';
 
 function styling( props ) {
+
+	const blockName = props.name.replace( 'uagb/', '' );
+
 	const {
 		align,
 		gap,
@@ -26,6 +30,13 @@ function styling( props ) {
 		iconBgColor,
 		iconBgHoverColor,
 	} = props.attributes;
+
+	const bgSizeFallback = getFallbackNumber( bgSize, 'bgSize', blockName );
+	const sizeFallback = getFallbackNumber( size, 'size', blockName );
+	const gapFallback = getFallbackNumber( gap, 'gap', blockName );
+
+	const gapTabletFallback = isNaN( gapTablet ) ? gapFallback : gapTablet;
+	const gapMobileTabletFallback = isNaN( gapMobile ) ? gapTabletFallback : gapMobile;
 
 	const selectors = {
 		' .uagb-ss-repeater a.uagb-ss__link': {
@@ -51,10 +62,10 @@ function styling( props ) {
 	const mobileSelectors = {};
 
 	selectors[ '.uagb-social-share__layout-vertical .uagb-ss__wrapper' ] = {
-		'padding': generateCSSUnit( bgSize, 'px' ),
+		'padding': generateCSSUnit( bgSizeFallback, 'px' ),
 		'margin-left': 0,
 		'margin-right': 0,
-		'margin-bottom': generateCSSUnit( gap, 'px' ),
+		'margin-bottom': generateCSSUnit( gapFallback, 'px' ),
 	};
 	tabletSelectors[ '.uagb-social-share__layout-vertical .uagb-ss__wrapper' ] = {
 		'margin-left': 0,
@@ -74,18 +85,18 @@ function styling( props ) {
 	};
 
 	selectors[ '.uagb-social-share__layout-horizontal .uagb-ss__wrapper' ] = {
-		'padding': generateCSSUnit( bgSize, 'px' ),
-		'margin-left': generateCSSUnit( gap / 2, 'px' ),
-		'margin-right': generateCSSUnit( gap / 2, 'px' ),
+		'padding': generateCSSUnit( bgSizeFallback, 'px' ),
+		'margin-left': generateCSSUnit( gapFallback / 2, 'px' ),
+		'margin-right': generateCSSUnit( gapFallback / 2, 'px' ),
 	};
 
 	tabletSelectors[ '.uagb-social-share__layout-horizontal .uagb-ss__wrapper' ] = {
-		'margin-left': generateCSSUnit( gapTablet / 2, 'px' ),
-		'margin-right': generateCSSUnit( gapTablet / 2, 'px' ),
+		'margin-left': generateCSSUnit( gapTabletFallback / 2, 'px' ),
+		'margin-right': generateCSSUnit( gapTabletFallback / 2, 'px' ),
 	};
 	mobileSelectors[ '.uagb-social-share__layout-horizontal .uagb-ss__wrapper' ] = {
-		'margin-left': generateCSSUnit( gapMobile / 2, 'px' ),
-		'margin-right': generateCSSUnit( gapMobile / 2, 'px' ),
+		'margin-left': generateCSSUnit( gapMobileTabletFallback / 2, 'px' ),
+		'margin-right': generateCSSUnit( gapMobileTabletFallback / 2, 'px' ),
 	};
 
 	selectors[ ' .uagb-ss__wrapper.uagb-ss-repeater ' ] = {
@@ -99,22 +110,22 @@ function styling( props ) {
 	};
 
 	selectors[ ' .uagb-ss__source-image' ] = {
-		'width': generateCSSUnit( size, sizeType ),
+		'width': generateCSSUnit( sizeFallback, sizeType ),
 	};
 
 	selectors[ ' .uagb-ss__source-wrap' ] = {
-		'width': generateCSSUnit( size, sizeType ),
+		'width': generateCSSUnit( sizeFallback, sizeType ),
 	};
 
 	selectors[ ' .uagb-ss__source-wrap svg' ] = {
-		'width': generateCSSUnit( size, sizeType ),
-		'height': generateCSSUnit( size, sizeType ),
+		'width': generateCSSUnit( sizeFallback, sizeType ),
+		'height': generateCSSUnit( sizeFallback, sizeType ),
 	};
 
 	selectors[ ' .uagb-ss__source-icon' ] = {
-		'width': generateCSSUnit( size, sizeType ),
-		'height': generateCSSUnit( size, sizeType ),
-		'font-size': generateCSSUnit( size, sizeType ),
+		'width': generateCSSUnit( sizeFallback, sizeType ),
+		'height': generateCSSUnit( sizeFallback, sizeType ),
+		'font-size': generateCSSUnit( sizeFallback, sizeType ),
 	};
 
 	let alignment = 'center';
@@ -159,7 +170,7 @@ function styling( props ) {
 			selectors[ ' .uagb-ss__wrapper' ] = {
 				'margin-left': 0,
 				'margin-right': 0,
-				'margin-bottom': generateCSSUnit( gap, 'px' ),
+				'margin-bottom': generateCSSUnit( gapFallback, 'px' ),
 			};
 			tabletSelectors[ ' .uagb-ss__wrapper' ] = {
 				'margin-left': 0,
