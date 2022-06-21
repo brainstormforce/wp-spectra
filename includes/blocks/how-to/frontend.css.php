@@ -85,9 +85,6 @@ $selectors = array(
 		'margin-bottom' => UAGB_Helper::get_css_value( $row_gap_fallback, 'px' ),
 	),
 
-	' .uagb-how-to-main-wrap p.uagb-howto-desc-text'       => array(
-		'margin-bottom' => UAGB_Helper::get_css_value( $row_gap_fallback, 'px' ),
-	),
 	'.uagb-how-to-main-wrap p'                             => array(
 		'margin-bottom' => UAGB_Helper::get_css_value( $row_gap_fallback, 'px' ),
 	),
@@ -169,7 +166,6 @@ $selectors = array(
 		'color' => $attr['showTotaltimecolor'],
 	),
 );
-
 $selectors[' .uagb-tools__label'] = array(
 	'color' => $attr['subHeadingColor'],
 );

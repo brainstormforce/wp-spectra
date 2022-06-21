@@ -62,6 +62,19 @@ function styling( props ) {
 		subHeadFontStyle,
 		subHeadTransform,
 		subHeadDecoration,
+		// letter spacing
+		headLetterSpacing,
+		headLetterSpacingTablet,
+		headLetterSpacingMobile,
+		headLetterSpacingType,
+		priceLetterSpacing,
+		priceLetterSpacingTablet,
+		priceLetterSpacingMobile,
+		priceLetterSpacingType,
+		subHeadLetterSpacing,
+		subHeadLetterSpacingTablet,
+		subHeadLetterSpacingMobile,
+		subHeadLetterSpacingType,
 	} = props.attributes;
 
 	let tabletSelectors = {};
@@ -88,6 +101,7 @@ function styling( props ) {
 				subHeadLineHeightType
 			),
 			'color': subHeadingColor,
+			'letter-spacing': generateCSSUnit( subHeadLetterSpacing, subHeadLetterSpacingType ),
 		},
 		'.uagb-how-to-main-wrap p': {
 			'margin-bottom': generateCSSUnit( getFallbackNumber( row_gap, 'row_gap' , blockName ), 'px' ),
@@ -142,6 +156,7 @@ function styling( props ) {
 				priceLineHeightType
 			),
 			'color': showTotaltimecolor,
+			'letter-spacing': generateCSSUnit( priceLetterSpacing, priceLetterSpacingType ),
 		},
 		' .uagb-howto-timeNeeded-value': {
 			'font-family': subHeadFontFamily,
@@ -354,6 +369,7 @@ function styling( props ) {
 		'line-height': generateCSSUnit( headLineHeight, headLineHeightType ),
 		'color': headingColor,
 		'margin-bottom': generateCSSUnit( headSpace, 'px' ),
+		'letter-spacing': generateCSSUnit( headLetterSpacing, headLetterSpacingType ),
 	};
 
 	mobileSelectors = {
@@ -366,6 +382,7 @@ function styling( props ) {
 				headLineHeightMobile,
 				headLineHeightType
 			),
+		'letter-spacing': generateCSSUnit( headLetterSpacingMobile, headLetterSpacingType ),
 		},
 		' .block-editor-rich-text__editable.uagb-howto-desc-text': {
 			'font-size': generateCSSUnit(
@@ -376,6 +393,7 @@ function styling( props ) {
 				subHeadLineHeightMobile,
 				subHeadLineHeightType
 			),
+			'letter-spacing': generateCSSUnit( subHeadLetterSpacingMobile, subHeadLetterSpacingType ),
 		},
 		' .block-editor-rich-text__editable.uagb-howto-timeNeeded-text': {
 			'font-size': generateCSSUnit(
@@ -386,6 +404,7 @@ function styling( props ) {
 				priceLineHeightMobile,
 				priceLineHeightType
 			),
+			'letter-spacing': generateCSSUnit( priceLetterSpacingMobile, priceLetterSpacingType ),
 		},
 		' .uagb-howto-timeNeeded-value': {
 			'font-size': generateCSSUnit(
@@ -520,6 +539,7 @@ function styling( props ) {
 				headLineHeightTablet,
 				headLineHeightType
 			),
+		'letter-spacing': generateCSSUnit( headLetterSpacingTablet, headLetterSpacingType ),
 		},
 		' .block-editor-rich-text__editable.uagb-howto-desc-text': {
 			'font-size': generateCSSUnit(
@@ -530,6 +550,7 @@ function styling( props ) {
 				subHeadLineHeightTablet,
 				subHeadLineHeightType
 			),
+			'letter-spacing': generateCSSUnit( subHeadLetterSpacingTablet, subHeadLetterSpacingType ),
 		},
 		' .block-editor-rich-text__editable.uagb-howto-timeNeeded-text': {
 			'font-size': generateCSSUnit(
@@ -540,6 +561,7 @@ function styling( props ) {
 				priceLineHeightTablet,
 				priceLineHeightType
 			),
+			'letter-spacing': generateCSSUnit( priceLetterSpacingTablet, priceLetterSpacingType ),
 		},
 		' .uagb-howto-timeNeeded-value': {
 			'font-size': generateCSSUnit(

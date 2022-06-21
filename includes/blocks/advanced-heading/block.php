@@ -10,7 +10,7 @@
 $block_slug = 'uagb/advanced-heading';
 $block_data = array(
 	'slug'             => '',
-	'admin_categories' => array( 'content' ),
+	'admin_categories' => array( 'content', 'core' ),
 	'link'             => 'advanced-heading',
 	'doc'              => 'advanced-heading',
 	'title'            => __( 'Heading', 'ultimate-addons-for-gutenberg' ),
