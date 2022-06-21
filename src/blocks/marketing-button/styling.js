@@ -88,7 +88,16 @@ function styling( props ) {
 		prefixTransform,
 		prefixDecoration,
 		titleFontStyle,
-		prefixFontStyle
+		prefixFontStyle,
+		// letter spacing
+		titleLetterSpacing,
+		titleLetterSpacingTablet,
+		titleLetterSpacingMobile,
+		titleLetterSpacingType,
+		prefixLetterSpacing,
+		prefixLetterSpacingTablet,
+		prefixLetterSpacingMobile,
+		prefixLetterSpacingType,
 	} = props.attributes;
 
 	const gradientLocation1Fallback = getFallbackNumber( gradientLocation1, 'gradientLocation1', blockName );
@@ -121,6 +130,7 @@ function styling( props ) {
 			'text-transform': titleTransform,
 			'text-decoration': titleDecoration,
 			'color': titleColor,
+			'letter-spacing': generateCSSUnit( titleLetterSpacing, titleLetterSpacingType ),
 		},
 		' svg': {
 			'fill': setIconColor,
@@ -139,6 +149,7 @@ function styling( props ) {
 			'font-style': prefixFontStyle,
 			'text-transform': prefixTransform,
 			'text-decoration': prefixDecoration,
+			'letter-spacing': generateCSSUnit( prefixLetterSpacing, prefixLetterSpacingType ),
 		},
 		' .uagb-marketing-btn__link:hover .block-editor-rich-text__editable.uagb-marketing-btn__title': {
 			'color': titleHoverColor,
@@ -208,6 +219,7 @@ function styling( props ) {
 				titleLineHeightTablet,
 				titleLineHeightType
 			),
+			'letter-spacing': generateCSSUnit( titleLetterSpacingTablet, titleLetterSpacingType ),
 		},
 		' .block-editor-rich-text__editable.uagb-marketing-btn__prefix': {
 			'font-size': generateCSSUnit(
@@ -218,6 +230,7 @@ function styling( props ) {
 				prefixLineHeightTablet,
 				prefixLineHeightType
 			),
+			'letter-spacing': generateCSSUnit( prefixLetterSpacingTablet, prefixLetterSpacingType ),
 		},
 		' svg': {
 			'width': generateCSSUnit( iconFontSizeTablet, iconFontSizeType ),
@@ -256,6 +269,7 @@ function styling( props ) {
 				titleLineHeightMobile,
 				titleLineHeightType
 			),
+			'letter-spacing': generateCSSUnit( titleLetterSpacingMobile, titleLetterSpacingType ),
 		},
 		' .block-editor-rich-text__editable.uagb-marketing-btn__prefix': {
 			'font-size': generateCSSUnit(
@@ -266,6 +280,7 @@ function styling( props ) {
 				prefixLineHeightMobile,
 				prefixLineHeightType
 			),
+			'letter-spacing': generateCSSUnit( prefixLetterSpacingMobile, prefixLetterSpacingType ),
 		},
 		' svg': {
 			'width': generateCSSUnit( iconFontSizeMobile, iconFontSizeType ),
