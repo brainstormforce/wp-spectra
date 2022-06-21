@@ -172,7 +172,21 @@ const Settings = ( props ) => {
 		imgpaddingUnit,
 		imgmobilePaddingUnit,
 		imgtabletPaddingUnit,
-		equalHeight
+		equalHeight,
+
+		// letter spacing
+		nameLetterSpacing,
+		nameLetterSpacingTablet,
+		nameLetterSpacingMobile,
+		nameLetterSpacingType,
+		descLetterSpacing,
+		descLetterSpacingTablet,
+		descLetterSpacingMobile,
+		descLetterSpacingType,
+		companyLetterSpacing,
+		companyLetterSpacingTablet,
+		companyLetterSpacingMobile,
+		companyLetterSpacingType,
 	} = attributes;
 
 	const testItemCountFallback = getFallbackNumber( test_item_count, 'test_item_count', blockName );
@@ -335,7 +349,7 @@ const Settings = ( props ) => {
 							setAttributes( { autoplaySpeed: value } )
 						}
 						min={ 100 }
-						max={ 10000 }
+						max={ 15000 }
 						displayUnit={ false }
 					/>
 				) }
@@ -703,6 +717,22 @@ const Settings = ( props ) => {
 						value: nameDecoration,
 						label: 'nameDecoration',
 					} }
+					letterSpacing={ {
+						value: nameLetterSpacing,
+						label: 'nameLetterSpacing',
+					} }
+					letterSpacingTablet={ {
+						value: nameLetterSpacingTablet,
+						label: 'nameLetterSpacingTablet',
+					} }
+					letterSpacingMobile={ {
+						value: nameLetterSpacingMobile,
+						label: 'nameLetterSpacingMobile',
+					} }
+					letterSpacingType={ {
+						value: nameLetterSpacingType,
+						label: 'nameLetterSpacingType',
+					} }
 				/>
 				<ResponsiveSlider
 					label={ __(
@@ -811,6 +841,22 @@ const Settings = ( props ) => {
 					decoration={ {
 						value: descDecoration,
 						label: 'descDecoration',
+					} }
+					letterSpacing={ {
+						value: descLetterSpacing,
+						label: 'descLetterSpacing',
+					} }
+					letterSpacingTablet={ {
+						value: descLetterSpacingTablet,
+						label: 'descLetterSpacingTablet',
+					} }
+					letterSpacingMobile={ {
+						value: descLetterSpacingMobile,
+						label: 'descLetterSpacingMobile',
+					} }
+					letterSpacingType={ {
+						value: descLetterSpacingType,
+						label: 'descLetterSpacingType',
 					} }
 				/>
 				<ResponsiveSlider
@@ -1018,6 +1064,22 @@ const Settings = ( props ) => {
 					decoration={ {
 						value: companyDecoration,
 						label: 'companyDecoration',
+					} }
+					letterSpacing={ {
+						value: companyLetterSpacing,
+						label: 'companyLetterSpacing',
+					} }
+					letterSpacingTablet={ {
+						value: companyLetterSpacingTablet,
+						label: 'companyLetterSpacingTablet',
+					} }
+					letterSpacingMobile={ {
+						value: companyLetterSpacingMobile,
+						label: 'companyLetterSpacingMobile',
+					} }
+					letterSpacingType={ {
+						value: companyLetterSpacingType,
+						label: 'companyLetterSpacingType',
 					} }
 				/>
 			</UAGAdvancedPanelBody>
