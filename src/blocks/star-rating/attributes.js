@@ -69,14 +69,12 @@ const attributes = {
 	},
 	alignTablet: {
 		type: 'string',
-		default: '',
 		UAGCopyPaste: {
 			styleType: 'icon-align-tablet'
 		},
 	},
 	alignMobile: {
 		type: 'string',
-		default: '',
 		UAGCopyPaste: {
 			styleType: 'icon-align-mobile'
 		},
