@@ -7,7 +7,6 @@
  * @package uagb
  */
 
-
 $border_attribute = UAGB_Block_Helper::uag_generate_border_attribute( 'overall' );
 
 $sepearator_border_defaults = array(

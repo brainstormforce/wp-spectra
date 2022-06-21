@@ -131,15 +131,15 @@ if ( ! class_exists( 'UAGB_CF7_Styler' ) ) {
 								'type'    => 'string',
 								'default' => 'left',
 							),
-							'buttonAlignmentTablet'            => array(
+							'buttonAlignmentTablet'        => array(
 								'type'    => 'string',
 								'default' => '',
 							),
-							'buttonAlignmentMobile'            => array(
+							'buttonAlignmentMobile'        => array(
 								'type'    => 'string',
 								'default' => '',
 							),
-							'buttonVrPadding'               => array(
+							'buttonVrPadding'              => array(
 								'type'    => 'number',
 								'default' => 10,
 							),
