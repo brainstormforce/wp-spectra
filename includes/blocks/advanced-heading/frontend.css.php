@@ -16,7 +16,7 @@ $m_selectors = array();
 $t_selectors = array();
 
 $selectors = array(
-	' .uagb-heading-text'                             => array(		
+	' .uagb-heading-text'                             => array(
 		'color'         => $attr['headingColor'],
 		'margin-bottom' => UAGB_Helper::get_css_value(
 			UAGB_Block_Helper::get_fallback_number( $attr['headSpace'], 'headSpace', $block_name ),
