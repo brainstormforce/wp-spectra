@@ -145,6 +145,19 @@ const Settings = ( props ) => {
 		titleFontStyle,
 		descFontStyle,
 		prefixFontStyle,
+		// lettter spacing
+		titleLetterSpacing,
+		titleLetterSpacingTablet,
+		titleLetterSpacingMobile,
+		titleLetterSpacingType,
+		prefixLetterSpacing,
+		prefixLetterSpacingTablet,
+		prefixLetterSpacingMobile,
+		prefixLetterSpacingType,
+		descLetterSpacing,
+		descLetterSpacingTablet,
+		descLetterSpacingMobile,
+		descLetterSpacingType,
 	} = attributes;
 
 	/*
@@ -806,6 +819,22 @@ const Settings = ( props ) => {
 						value: titleLineHeightTablet,
 						label: 'titleLineHeightTablet',
 					} }
+					letterSpacing={ {
+						value: titleLetterSpacing,
+						label: 'titleLetterSpacing',
+					} }
+					letterSpacingTablet={ {
+						value: titleLetterSpacingTablet,
+						label: 'titleLetterSpacingTablet',
+					} }
+					letterSpacingMobile={ {
+						value: titleLetterSpacingMobile,
+						label: 'titleLetterSpacingMobile',
+					} }
+					letterSpacingType={ {
+						value: titleLetterSpacingType,
+						label: 'titleLetterSpacingType',
+					} }
 				/>
 
 				<ResponsiveSlider
@@ -912,6 +941,22 @@ const Settings = ( props ) => {
 						value: prefixLineHeightTablet,
 						label: 'prefixLineHeightTablet',
 					} }
+					letterSpacing={ {
+						value: prefixLetterSpacing,
+						label: 'prefixLetterSpacing',
+					} }
+					letterSpacingTablet={ {
+						value: prefixLetterSpacingTablet,
+						label: 'prefixLetterSpacingTablet',
+					} }
+					letterSpacingMobile={ {
+						value: prefixLetterSpacingMobile,
+						label: 'prefixLetterSpacingMobile',
+					} }
+					letterSpacingType={ {
+						value: prefixLetterSpacingType,
+						label: 'prefixLetterSpacingType',
+					} }
 				/>
 				<ResponsiveSlider
 					label={ __(
@@ -1016,6 +1061,22 @@ const Settings = ( props ) => {
 					lineHeightTablet={ {
 						value: descLineHeightTablet,
 						label: 'descLineHeightTablet',
+					} }
+					letterSpacing={ {
+						value: descLetterSpacing,
+						label: 'descLetterSpacing',
+					} }
+					letterSpacingTablet={ {
+						value: descLetterSpacingTablet,
+						label: 'descLetterSpacingTablet',
+					} }
+					letterSpacingMobile={ {
+						value: descLetterSpacingMobile,
+						label: 'descLetterSpacingMobile',
+					} }
+					letterSpacingType={ {
+						value: descLetterSpacingType,
+						label: 'descLetterSpacingType',
 					} }
 				/>
 				<ResponsiveSlider

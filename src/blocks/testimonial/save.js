@@ -8,6 +8,7 @@ import Company from './components/Company';
 import Description from './components/Description';
 import PositionClasses from './classes';
 import TestimonialImage from './components/Image';
+import { getFallbackNumber } from '@Controls/getAttributeFallback';
 
 export default function save( props ) {
 	const {
@@ -33,7 +34,7 @@ export default function save( props ) {
 			<div
 				className={ classnames(
 					'is-carousel',
-					`uagb-tm__columns-${ columns }`,
+					`uagb-tm__columns-${ getFallbackNumber( columns, 'columns', 'testimonial' ) }`,
 					'uagb-tm__items'
 				) }
 			>
