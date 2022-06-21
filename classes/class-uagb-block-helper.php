@@ -1142,6 +1142,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 
 		/**
 		 * Return the Current Attribute or the Default Attribute.
+		 * In PHP, this is used wherever the fallback is needed, as validation of numbers is done in JS.
 		 *
 		 * @param array  $current_value  The current variable / attribute that is altered by settings.
 		 * @param string $key           The key of the default attribute for that setting.
