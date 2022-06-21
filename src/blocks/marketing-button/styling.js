@@ -4,8 +4,12 @@
 
 import generateCSS from '@Controls/generateCSS';
 import generateCSSUnit from '@Controls/generateCSSUnit';
+import { getFallbackNumber } from '@Controls/getAttributeFallback';
 
 function styling( props ) {
+
+	const blockName = props.name.replace( 'uagb/', '' );
+
 	const {
 		titleSpace,
 		titleSpaceTablet,
@@ -96,6 +100,13 @@ function styling( props ) {
 		prefixLetterSpacingType,
 	} = props.attributes;
 
+	const gradientLocation1Fallback = getFallbackNumber( gradientLocation1, 'gradientLocation1', blockName );
+	const gradientLocation2Fallback = getFallbackNumber( gradientLocation2, 'gradientLocation2', blockName );
+	const gradientAngleFallback = getFallbackNumber( gradientAngle, 'gradientAngle', blockName );
+	const iconSpaceFallback = getFallbackNumber( iconSpace, 'iconSpace', blockName );
+	const iconFontSizeFallback = getFallbackNumber( iconFontSize, 'iconFontSize', blockName );
+	const titleSpaceFallback = getFallbackNumber( titleSpace, 'titleSpace', blockName );
+
 	let selectors = {};
 	let tabletSelectors = {};
 	let mobileSelectors = {};
@@ -105,7 +116,7 @@ function styling( props ) {
 		'' === iconHoverColor ? titleHoverColor : iconHoverColor;
 	selectors = {
 		' .uagb-marketing-btn__prefix': {
-			'margin-top': generateCSSUnit( titleSpace, titleSpaceUnit ),
+			'margin-top': generateCSSUnit( titleSpaceFallback, titleSpaceUnit ),
 		},
 		' .block-editor-rich-text__editable.uagb-marketing-btn__title': {
 			'font-size': generateCSSUnit( titleFontSize, titleFontSizeType ),
@@ -123,8 +134,8 @@ function styling( props ) {
 		},
 		' svg': {
 			'fill': setIconColor,
-			'width': generateCSSUnit( iconFontSize, iconFontSizeType ),
-			'height': generateCSSUnit( iconFontSize, iconFontSizeType ),
+			'width': generateCSSUnit( iconFontSizeFallback, iconFontSizeType ),
+			'height': generateCSSUnit( iconFontSizeFallback, iconFontSizeType ),
 		},
 		' .block-editor-rich-text__editable.uagb-marketing-btn__prefix': {
 			'font-size': generateCSSUnit( prefixFontSize, prefixFontSizeType ),
@@ -181,11 +192,11 @@ function styling( props ) {
 		if ( 'linear' === gradientType ) {
 			selectors[ ' .uagb-marketing-btn__link' ][
 				'background-image'
-			] = `linear-gradient(${ gradientAngle }deg, ${ gradientColor1 } ${ gradientLocation1 }%, ${	gradientColor2 } ${ gradientLocation2 }%)`;
+			] = `linear-gradient(${ gradientAngleFallback }deg, ${ gradientColor1 } ${ gradientLocation1Fallback }%, ${	gradientColor2 } ${ gradientLocation2Fallback }%)`;
 		} else {
 			selectors[ ' .uagb-marketing-btn__link' ][
 				'background-image'
-			] = `radial-gradient( at center center, ${ gradientColor1} ${ gradientLocation1 }%, ${ gradientColor2 } ${ gradientLocation2 }%)`;
+			] = `radial-gradient( at center center, ${ gradientColor1} ${ gradientLocation1Fallback }%, ${ gradientColor2 } ${ gradientLocation2Fallback }%)`;
 		}
 	}
 
@@ -193,7 +204,7 @@ function styling( props ) {
 
 	selectors[ ' svg' ][
 		marginType
-	] = generateCSSUnit( iconSpace, 'px' );
+	] = generateCSSUnit( iconSpaceFallback, 'px' );
 
 	tabletSelectors = {
 		' .uagb-marketing-btn__prefix': {
