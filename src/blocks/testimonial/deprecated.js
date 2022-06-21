@@ -9,6 +9,7 @@ import Description from './components/Description';
 import PositionClasses from './classes';
 import TestimonialImage from './components/TestimonialImage';
 import TestimonialImages from './components/Image';
+import React, { Fragment } from 'react';
 
 const ITEM_COUNT = 3
 

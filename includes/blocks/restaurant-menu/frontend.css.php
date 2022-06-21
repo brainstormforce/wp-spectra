@@ -13,6 +13,34 @@ UAGB_Block_JS::blocks_restaurant_menu_gfont( $attr );
 $m_selectors = array();
 $t_selectors = array();
 
+$block_name = 'restaurant-menu';
+
+$seperator_thickness_fallback = UAGB_Block_Helper::get_fallback_number( $attr['seperatorThickness'], 'seperatorThickness', $block_name );
+
+$row_gap_fallback = UAGB_Block_Helper::get_fallback_number( $attr['rowGap'], 'rowGap', $block_name );
+$row_gap_tablet_fallback = UAGB_Block_Helper::get_fallback_number( $attr['rowGapTablet'], 'rowGapTablet', $block_name );
+$row_gap_mobile_fallback = UAGB_Block_Helper::get_fallback_number( $attr['rowGapMobile'], 'rowGapMobile', $block_name );
+
+$column_gap_fallback = UAGB_Block_Helper::get_fallback_number( $attr['columnGap'], 'columnGap', $block_name );
+$attr['columnGapTablet'] = is_numeric( $attr['columnGapTablet'] ) ? $attr['columnGapTablet'] : $column_gap_fallback;
+$attr['columnGapMobile'] = is_numeric( $attr['columnGapMobile'] ) ? $attr['columnGapMobile'] : $attr['columnGapTablet'];
+
+$image_width_fallback = UAGB_Block_Helper::get_fallback_number( $attr['imageWidth'], 'imageWidth', $block_name );
+$attr['imageWidthTablet'] = is_numeric( $attr['imageWidthTablet'] ) ? $attr['imageWidthTablet'] : $image_width_fallback;
+$attr['imageWidthMobile'] = is_numeric( $attr['imageWidthMobile'] ) ? $attr['imageWidthMobile'] : $attr['imageWidthTablet'];
+
+$seperator_width_fallback = UAGB_Block_Helper::get_fallback_number( $attr['seperatorWidth'], 'seperatorWidth', $block_name );
+$seperator_width_tablet_fallback = UAGB_Block_Helper::get_fallback_number( $attr['seperatorWidthTablet'], 'seperatorWidthTablet', $block_name );
+$seperator_width_mobile_fallback = UAGB_Block_Helper::get_fallback_number( $attr['seperatorWidthMobile'], 'seperatorWidthMobile', $block_name );
+
+$title_space_fallback = UAGB_Block_Helper::get_fallback_number( $attr['titleSpace'], 'titleSpace', $block_name );
+$title_space_tablet_fallback = UAGB_Block_Helper::get_fallback_number( $attr['titleSpaceTablet'], 'titleSpaceTablet', $block_name );
+$title_space_mobile_fallback = UAGB_Block_Helper::get_fallback_number( $attr['titleSpaceMobile'], 'titleSpaceMobile', $block_name );
+
+$column_fallback = UAGB_Block_Helper::get_fallback_number( $attr['columns'], 'columns', $block_name );
+$attr['tcolumns'] = is_numeric( $attr['tcolumns'] ) ? $attr['tcolumns'] : $column_fallback;
+$attr['mcolumns'] = is_numeric( $attr['mcolumns'] ) ? $attr['mcolumns'] : $attr['tcolumns'];
+
 $align = $attr['headingAlign'];
 if ( 'left' === $align ) {
 	$align = 'flex-start';
@@ -31,17 +59,17 @@ $contentPaddingLeft   = isset( $attr['contentPaddingLeft'] ) ? $attr['contentPad
 
 $selectors = array(
 	' .uagb-rest_menu__wrap'      => array(
-		'padding-left'  => UAGB_Helper::get_css_value( ( $attr['columnGap'] / 2 ), $attr['columnGapType'] ),
-		'padding-right' => UAGB_Helper::get_css_value( ( $attr['columnGap'] / 2 ), $attr['columnGapType'] ),
-		'margin-bottom' => UAGB_Helper::get_css_value( $attr['rowGap'], $attr['rowGapType'] ),
+		'padding-left'  => UAGB_Helper::get_css_value( ( $column_gap_fallback / 2 ), $attr['columnGapType'] ),
+		'padding-right' => UAGB_Helper::get_css_value( ( $column_gap_fallback / 2 ), $attr['columnGapType'] ),
+		'margin-bottom' => UAGB_Helper::get_css_value( $row_gap_fallback, $attr['rowGapType'] ),
 	),
 	' .uagb-rest_menu__wrap img'  => array(
 		'padding-left'   => UAGB_Helper::get_css_value( $imgPaddingLeft, $attr['imgPaddingUnit'] ),
 		'padding-right'  => UAGB_Helper::get_css_value( $imgPaddingRight, $attr['imgPaddingUnit'] ),
 		'padding-top'    => UAGB_Helper::get_css_value( $imgPaddingTop, $attr['imgPaddingUnit'] ),
 		'padding-bottom' => UAGB_Helper::get_css_value( $imgPaddingBottom, $attr['imgPaddingUnit'] ),
-		'width'          => UAGB_Helper::get_css_value( $attr['imageWidth'], $attr['imageWidthType'] ),
-		'max-width'      => UAGB_Helper::get_css_value( $attr['imageWidth'], $attr['imageWidthType'] ),
+		'width'          => UAGB_Helper::get_css_value( $image_width_fallback, $attr['imageWidthType'] ),
+		'max-width'      => UAGB_Helper::get_css_value( $image_width_fallback, $attr['imageWidthType'] ),
 	),
 	' .uagb-rm__separator-parent' => array(
 		'justify-content' => $align,
@@ -55,7 +83,7 @@ $selectors = array(
 	),
 	' .uagb-rest_menu__wrap .uagb-rm__content .uagb-rm-details .uagb-rm__title' => array(
 		'color'         => $attr['titleColor'],
-		'margin-bottom' => UAGB_Helper::get_css_value( $attr['titleSpace'], $attr['titleSpaceType'] ),
+		'margin-bottom' => UAGB_Helper::get_css_value( $title_space_fallback, $attr['titleSpaceType'] ),
 	),
 	' .uagb-rm__price'            => array(
 		'color' => $attr['priceColor'],
@@ -66,21 +94,21 @@ $selectors = array(
 	),
 );
 
-$selectors[ ' .uagb-rest_menu__wrap.uagb-rm__desk-column-' . $attr['columns'] . ':nth-child(' . $attr['columns'] . 'n+1)' ] = array(
+$selectors[ ' .uagb-rest_menu__wrap.uagb-rm__desk-column-' . $column_fallback . ':nth-child(' . $column_fallback . 'n+1)' ] = array(
 	'margin-left' => '0',
 	'clear'       => 'left',
 );
 
 $t_selectors = array(
 	' .uagb-rest_menu__wrap .uagb-rm__content .uagb-rm-details .uagb-rm__title' => array(
-		'margin-bottom' => UAGB_Helper::get_css_value( $attr['titleSpaceTablet'], $attr['titleSpaceType'] ),
+		'margin-bottom' => UAGB_Helper::get_css_value( $title_space_tablet_fallback, $attr['titleSpaceType'] ),
 	),
 	' .uagb-rest_menu__wrap'     => array(
 		'padding-left'  => UAGB_Helper::get_css_value( ( $attr['columnGapTablet'] / 2 ), $attr['columnGapType'] ),
 		'padding-right' => UAGB_Helper::get_css_value( ( $attr['columnGapTablet'] / 2 ), $attr['columnGapType'] ),
-		'margin-bottom' => UAGB_Helper::get_css_value( $attr['rowGapTablet'], $attr['rowGapType'] ),
+		'margin-bottom' => UAGB_Helper::get_css_value( $row_gap_tablet_fallback, $attr['rowGapType'] ),
 	),
-	' .uagb-rest_menu__wrap.uagb-rm__desk-column-' . $attr['columns'] . ':nth-child(' . $attr['columns'] . 'n+1)' => array(
+	' .uagb-rest_menu__wrap.uagb-rm__desk-column-' . $column_fallback . ':nth-child(' . $column_fallback . 'n+1)' => array(
 		'margin-left' => 'unset',
 		'clear'       => 'unset',
 	),
@@ -106,14 +134,14 @@ $t_selectors = array(
 
 $m_selectors = array(
 	' .uagb-rest_menu__wrap .uagb-rm__content .uagb-rm-details .uagb-rm__title' => array(
-		'margin-bottom' => UAGB_Helper::get_css_value( $attr['titleSpaceMobile'], $attr['titleSpaceType'] ),
+		'margin-bottom' => UAGB_Helper::get_css_value( $title_space_mobile_fallback, $attr['titleSpaceType'] ),
 	),
 	' .uagb-rest_menu__wrap'     => array(
 		'padding-left'  => UAGB_Helper::get_css_value( ( $attr['columnGapMobile'] / 2 ), $attr['columnGapType'] ),
 		'padding-right' => UAGB_Helper::get_css_value( ( $attr['columnGapMobile'] / 2 ), $attr['columnGapType'] ),
-		'margin-bottom' => UAGB_Helper::get_css_value( $attr['rowGapMobile'], $attr['rowGapType'] ),
+		'margin-bottom' => UAGB_Helper::get_css_value( $row_gap_mobile_fallback, $attr['rowGapType'] ),
 	),
-	' .uagb-rest_menu__wrap.uagb-rm__desk-column-' . $attr['columns'] . ':nth-child(' . $attr['columns'] . 'n+1)' => array(
+	' .uagb-rest_menu__wrap.uagb-rm__desk-column-' . $column_fallback . ':nth-child(' . $column_fallback . 'n+1)' => array(
 		'margin-left' => 'unset',
 		'clear'       => 'unset',
 	),
@@ -141,14 +169,14 @@ if ( 'none' !== $attr['seperatorStyle'] ) {
 	$selectors[' .uagb-rest_menu__wrap .uagb-rm__separator']   = array(
 		'border-top-color' => $attr['seperatorColor'],
 		'border-top-style' => $attr['seperatorStyle'],
-		'border-top-width' => UAGB_Helper::get_css_value( $attr['seperatorThickness'], 'px' ),
-		'width'            => UAGB_Helper::get_css_value( $attr['seperatorWidth'], $attr['seperatorWidthType'] ),
+		'border-top-width' => UAGB_Helper::get_css_value( $seperator_thickness_fallback, 'px' ),
+		'width'            => UAGB_Helper::get_css_value( $seperator_width_fallback, $attr['seperatorWidthType'] ),
 	);
 	$t_selectors[' .uagb-rest_menu__wrap .uagb-rm__separator'] = array(
-		'width' => UAGB_Helper::get_css_value( $attr['seperatorWidthTablet'], $attr['seperatorWidthType'] ),
+		'width' => UAGB_Helper::get_css_value( $seperator_width_tablet_fallback, $attr['seperatorWidthType'] ),
 	);
 	$m_selectors[' .uagb-rest_menu__wrap .uagb-rm__separator'] = array(
-		'width' => UAGB_Helper::get_css_value( $attr['seperatorWidthMobile'], $attr['seperatorWidthType'] ),
+		'width' => UAGB_Helper::get_css_value( $seperator_width_mobile_fallback, $attr['seperatorWidthType'] ),
 	);
 }
 

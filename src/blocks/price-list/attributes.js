@@ -150,11 +150,9 @@ const attributes = {
 	},
 	tcolumns: {
 		type: 'number',
-		default: 2,
 	},
 	mcolumns: {
 		type: 'number',
-		default: 1,
 	},
 	rowGap: {
 		type: 'number',
@@ -229,14 +227,12 @@ const attributes = {
 	},
 	seperatorWidthTablet: {
 		type: 'number',
-		default: 100,
 		UAGCopyPaste: {
 			styleType: 'separator-width'
 		},
 	},
 	seperatorWidthMobile: {
 		type: 'number',
-		default: 100,
 		UAGCopyPaste: {
 			styleType: 'separator-width'
 		},
@@ -550,14 +546,12 @@ const attributes = {
 	},
 	imageWidthTablet: {
 		type: 'number',
-		default: 100,
 		UAGCopyPaste: {
 			styleType: 'image-width'
 		},
 	},
 	imageWidthMobile: {
 		type: 'number',
-		default: 100,
 		UAGCopyPaste: {
 			styleType: 'image-width'
 		},
@@ -789,7 +783,82 @@ const attributes = {
 	isPreview: {
 		type: 'boolean',
 		default: false,
-	}
+	},
+	descLetterSpacing: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'desc-letter-spacing'
+		}
+	},
+	descLetterSpacingTablet: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'desc-letter-spacing-tablet'
+		}
+	},
+	descLetterSpacingMobile: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'desc-letter-spacing-mobile'
+		}
+	},
+	descLetterSpacingType: {
+		type: 'string',
+		default: 'px',
+		UAGCopyPaste: {
+			styleType: 'desc-letter-spacing-type'
+		}
+	},
+	priceLetterSpacing: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'price-letter-spacing'
+		}
+	},
+	priceLetterSpacingTablet: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'price-letter-spacing-tablet'
+		}
+	},
+	priceLetterSpacingMobile: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'price-letter-spacing-mobile'
+		}
+	},
+	priceLetterSpacingType: {
+		type: 'string',
+		default: 'px',
+		UAGCopyPaste: {
+			styleType: 'price-letter-spacing-type'
+		}
+	},
+	titleLetterSpacing: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'title-letter-spacing'
+		}
+	},
+	titleLetterSpacingTablet: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'title-letter-spacing-tablet'
+		}
+	},
+	titleLetterSpacingMobile: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'title-letter-spacing-mobile'
+		}
+	},
+	titleLetterSpacingType: {
+		type: 'string',
+		default: 'px',
+		UAGCopyPaste: {
+			styleType: 'title-letter-spacing-type'
+		}
+	},
 };
 
 export default attributes;
