@@ -10,10 +10,11 @@
 // Adds Fonts.
 UAGB_Block_JS::blocks_post_timeline_gfont( $attr );
 
-$t_selectors = array();
+$head_top_spacing_fallback   = UAGB_Block_Helper::get_fallback_number( $attr['headTopSpacing'], 'headTopSpacing', $attr['blockName'] );
+$author_space_fallback       = UAGB_Block_Helper::get_fallback_number( $attr['authorSpace'], 'authorSpace', $attr['blockName'] );
+$cta_bottom_spacing_fallback = UAGB_Block_Helper::get_fallback_number( $attr['ctaBottomSpacing'], 'ctaBottomSpacing', $attr['blockName'] );
 
-$ctaBottomSpace = ( isset( $attr['ctaBottomSpacing'] ) && ! empty( $attr['ctaBottomSpacing'] ) ) ? $attr['ctaBottomSpacing'] : $attr['contentPadding'];
-$headTopSpace   = ( isset( $attr['headTopSpacing'] ) && ! empty( $attr['headTopSpacing'] ) ) ? $attr['headTopSpacing'] : $attr['contentPadding'];
+$t_selectors = array();
 
 $left_margin  = isset( $attr['leftMargin'] ) ? $attr['leftMargin'] : $attr['horizontalSpace'];
 $right_margin = isset( $attr['rightMargin'] ) ? $attr['rightMargin'] : $attr['horizontalSpace'];
@@ -45,7 +46,7 @@ $selectors = array(
 		'color'            => $attr['ctaColor'],
 		'background-color' => $attr['ctaBackground'],
 		'text-align'       => $attr['align'],
-		'margin-bottom'    => UAGB_Helper::get_css_value( $ctaBottomSpace, 'px' ),
+		'margin-bottom'    => UAGB_Helper::get_css_value( $cta_bottom_spacing_fallback, 'px' ),
 	),
 	' .uagb-timeline__heading a'    => array(
 		'text-align' => $attr['align'],
@@ -53,14 +54,14 @@ $selectors = array(
 	),
 	' .uagb-timeline__heading-text' => array(
 		'margin-bottom' => UAGB_Helper::get_css_value( $attr['headSpace'], 'px' ),
-		'margin-top'    => UAGB_Helper::get_css_value( $headTopSpace, 'px' ),
+		'margin-top'    => UAGB_Helper::get_css_value( $head_top_spacing_fallback, 'px' ),
 	),
 	'.uagb_timeline__cta-enable .uagb-timeline-desc-content' => array(
 		'margin-bottom' => UAGB_Helper::get_css_value( $attr['contentSpace'], 'px' ),
-		'margin-top'    => UAGB_Helper::get_css_value( $attr['authorSpace'], 'px' ),
+		'margin-top'    => UAGB_Helper::get_css_value( $author_space_fallback, 'px' ),
 	),
 	' .uagb-timeline__author-link + .uagb-timeline__link_parent' => array(
-		'margin-top' => UAGB_Helper::get_css_value( $attr['authorSpace'], 'px' ),
+		'margin-top' => UAGB_Helper::get_css_value( $author_space_fallback, 'px' ),
 	),
 );
 

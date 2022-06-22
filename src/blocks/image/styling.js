@@ -4,11 +4,12 @@
 
 import generateCSS from '@Controls/generateCSS';
 import generateCSSUnit from '@Controls/generateCSSUnit';
-
-
-
+import { getFallbackNumber } from '@Controls/getAttributeFallback';
 
 export default function styling( props ) {
+
+	const blockName = props.name.replace( 'uagb/', '' );
+
 	const {
 		widthTablet,
 		widthMobile,
@@ -148,8 +149,14 @@ export default function styling( props ) {
 		maskRepeat
 	} = props.attributes;
 
-	const getImageShadowPosition = imageBoxShadowPosition !== 'outset' ? imageBoxShadowPosition : ''
+	const seperatorWidthFallback = getFallbackNumber( seperatorWidth, 'seperatorWidth', blockName );
+	const overlayPositionFromEdgeFallback = getFallbackNumber( overlayPositionFromEdge, 'overlayPositionFromEdge', blockName );
+	const seperatorThicknessFallback = getFallbackNumber( seperatorThickness, 'seperatorThickness', blockName );
 
+	const overlayOpacityFallback = getFallbackNumber( overlayOpacity, 'overlayOpacity', blockName );
+	const overlayHoverOpacityFallback = getFallbackNumber( overlayHoverOpacity, 'overlayHoverOpacity', blockName );
+
+	const getImageShadowPosition = imageBoxShadowPosition !== 'outset' ? imageBoxShadowPosition : '';
 
 	const selectors = {
 		'.wp-block-uagb-image':{
@@ -226,17 +233,17 @@ export default function styling( props ) {
 		// overlay
 		'.wp-block-uagb-image--layout-overlay .wp-block-uagb-image--layout-overlay__color-wrapper': {
 			'background': overlayBackground,
-			'opacity': overlayOpacity,
+			'opacity': overlayOpacityFallback,
 		},
 		'.wp-block-uagb-image--layout-overlay .wp-block-uagb-image--layout-overlay__inner': {
 			'border-style': overlayBorderStyle,
 			'border-color': overlayBorderColor,
 			'border-radius': generateCSSUnit( overlayBorderRadius, 'px' ),
 			'border-width': generateCSSUnit( overlayBorderWidth, 'px' ),
-			'left': generateCSSUnit( overlayPositionFromEdge, overlayPositionFromEdgeUnit ),
-			'right': generateCSSUnit( overlayPositionFromEdge, overlayPositionFromEdgeUnit ),
-			'top': generateCSSUnit( overlayPositionFromEdge, overlayPositionFromEdgeUnit ),
-			'bottom': generateCSSUnit( overlayPositionFromEdge, overlayPositionFromEdgeUnit ),
+			'left': generateCSSUnit( overlayPositionFromEdgeFallback, overlayPositionFromEdgeUnit ),
+			'right': generateCSSUnit( overlayPositionFromEdgeFallback, overlayPositionFromEdgeUnit ),
+			'top': generateCSSUnit( overlayPositionFromEdgeFallback, overlayPositionFromEdgeUnit ),
+			'bottom': generateCSSUnit( overlayPositionFromEdgeFallback, overlayPositionFromEdgeUnit ),
 		},
 		'.wp-block-uagb-image--layout-overlay .wp-block-uagb-image--layout-overlay__inner .uagb-image-heading': {
 			'font-family': headingFontFamily,
@@ -281,13 +288,13 @@ export default function styling( props ) {
 			'border-color': overlayBorderHoverColor,
 		},
 		'.wp-block-uagb-image--layout-overlay .wp-block-uagb-image__figure:hover .wp-block-uagb-image--layout-overlay__color-wrapper': {
-			'opacity': overlayHoverOpacity,
+			'opacity': overlayHoverOpacityFallback,
 		},
 		// Seperator
 		'.wp-block-uagb-image .wp-block-uagb-image--layout-overlay__inner .uagb-image-separator': {
-			'width': generateCSSUnit( seperatorWidth, separatorWidthType ),
+			'width': generateCSSUnit( seperatorWidthFallback, separatorWidthType ),
 			'border-top-width': generateCSSUnit(
-				seperatorThickness,
+				seperatorThicknessFallback,
 				seperatorThicknessUnit
 			),
 			'border-top-color': seperatorColor,

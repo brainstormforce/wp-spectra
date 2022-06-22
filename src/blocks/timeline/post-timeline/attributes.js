@@ -1,4 +1,8 @@
 const attributes = { // eslint-disable-line no-unused-vars
+	blockName               : {
+		type    : 'string',
+		default : 'post-timeline',
+	},
 	align                   : {
 		type    : 'string',
 		default : '',
@@ -176,14 +180,12 @@ const attributes = { // eslint-disable-line no-unused-vars
 	},
 	headSpaceTablet               : {
 		type    : 'number',
-		default : 0,
 		UAGCopyPaste: {
 			styleType: 'main-title-bottom-margin'
 		},
 	},
 	headSpaceMobile               : {
 		type    : 'number',
-		default : 0,
 		UAGCopyPaste: {
 			styleType: 'main-title-bottom-margin'
 		},
@@ -197,14 +199,12 @@ const attributes = { // eslint-disable-line no-unused-vars
 	},
 	authorSpaceTablet             : {
 		type    : 'number',
-		default : 0,
 		UAGCopyPaste: {
 			styleType: 'author-bottom-margin'
 		},
 	},
 	authorSpaceMobile             : {
 		type    : 'number',
-		default : 0,
 		UAGCopyPaste: {
 			styleType: 'author-bottom-margin'
 		},
@@ -503,14 +503,12 @@ const attributes = { // eslint-disable-line no-unused-vars
 	},
 	dateBottomspaceTablet         : {
 		type    : 'number',
-		default : 0,
 		UAGCopyPaste: {
 			styleType: 'date-bottom-space'
 		},
 	},
 	dateBottomspaceMobile         : {
 		type    : 'number',
-		default : 0,
 		UAGCopyPaste: {
 			styleType: 'date-bottom-space'
 		},
@@ -675,14 +673,12 @@ const attributes = { // eslint-disable-line no-unused-vars
 	},
 	borderRadiusTablet            : {
 		type    : 'number',
-		default : 0,
 		UAGCopyPaste: {
 			styleType: 'overall-border-radius'
 		},
 	},
 	borderRadiusMobile            : {
 		type    : 'number',
-		default : 0,
 		UAGCopyPaste: {
 			styleType: 'overall-border-radius'
 		},
@@ -991,6 +987,7 @@ const attributes = { // eslint-disable-line no-unused-vars
 	},
 	ctaBottomSpacing : {
 		type: 'number',
+		default: 0,
 		UAGCopyPaste: {
 			styleType: 'cta-bottom-spacing'
 		},
@@ -1009,20 +1006,19 @@ const attributes = { // eslint-disable-line no-unused-vars
 	},
 	headTopSpacing : {
 		type: 'number',
+		default: 0,
 		UAGCopyPaste: {
 			styleType: 'main-title-top-spacing'
 		},
 	},
 	headTopSpacingMobile : {
 		type: 'number',
-		default : 0,
 		UAGCopyPaste: {
 			styleType: 'main-title-top-spacing'
 		},
 	},
 	headTopSpacingTablet : {
 		type: 'number',
-		default : 0,
 		UAGCopyPaste: {
 			styleType: 'main-title-top-spacing'
 		},
@@ -1030,7 +1026,132 @@ const attributes = { // eslint-disable-line no-unused-vars
 	isPreview: {
 		type: 'boolean',
 		default: false,
-	}
+	},
+	headLetterSpacing: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'head-letter-spacing'
+		}
+	},
+	headLetterSpacingTablet: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'head-letter-spacing-tablet'
+		}
+	},
+	headLetterSpacingMobile: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'head-letter-spacing-mobile'
+		}
+	},
+	headLetterSpacingType: {
+		type: 'string',
+		default: 'px',
+		UAGCopyPaste: {
+			styleType: 'head-letter-spacing-type'
+		}
+	},
+	subHeadLetterSpacing: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'subHead-letter-spacing'
+		}
+	},
+	subHeadLetterSpacingTablet: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'subHead-letter-spacing-tablet'
+		}
+	},
+	subHeadLetterSpacingMobile: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'subHead-letter-spacing-mobile'
+		}
+	},
+	subHeadLetterSpacingType: {
+		type: 'string',
+		default: 'px',
+		UAGCopyPaste: {
+			styleType: 'subHead-letter-spacing-type'
+		}
+	},
+	dateLetterSpacing: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'date-letter-spacing'
+		}
+	},
+	dateLetterSpacingTablet: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'date-letter-spacing-tablet'
+		}
+	},
+	dateLetterSpacingMobile: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'date-letter-spacing-mobile'
+		}
+	},
+	dateLetterSpacingType: {
+		type: 'string',
+		default: 'px',
+		UAGCopyPaste: {
+			styleType: 'date-letter-spacing-type'
+		}
+	},
+	ctaLetterSpacing: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'cta-letter-spacing'
+		}
+	},
+	ctaLetterSpacingTablet: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'cta-letter-spacing-tablet'
+		}
+	},
+	ctaLetterSpacingMobile: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'cta-letter-spacing-mobile'
+		}
+	},
+	ctaLetterSpacingType: {
+		type: 'string',
+		default: 'px',
+		UAGCopyPaste: {
+			styleType: 'cta-letter-spacing-type'
+		}
+	},
+	authorLetterSpacing: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'author-letter-spacing'
+		}
+	},
+	authorLetterSpacingTablet: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'author-letter-spacing-tablet'
+		}
+	},
+	authorLetterSpacingMobile: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'author-letter-spacing-mobile'
+		}
+	},
+	authorLetterSpacingType: {
+		type: 'string',
+		default: 'px',
+		UAGCopyPaste: {
+			styleType: 'author-letter-spacing-type'
+		}
+	},
 }
 
 export default attributes;
