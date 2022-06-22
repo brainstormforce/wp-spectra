@@ -1349,8 +1349,8 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 		 */
 		public function required_attribute_for_query( $attributes ) {
 			return array(
-				'postsOffset'        => UAGB_Block_Helper::get_fallback_number( sanitize_text_field( $attributes['postsToShow'] ), 'postsToShow', sanitize_text_field( $attributes['blockName'] ) ),
-				'postsToShow'        => UAGB_Block_Helper::get_fallback_number( sanitize_text_field( $attributes['postsOffset'] ), 'postsOffset', sanitize_text_field( $attributes['blockName'] ) ),
+				'postsOffset'        => UAGB_Block_Helper::get_fallback_number( sanitize_text_field( $attributes['postsOffset'] ), 'postsOffset', sanitize_text_field( $attributes['blockName'] ) ),
+				'postsToShow'        => UAGB_Block_Helper::get_fallback_number( sanitize_text_field( $attributes['postsToShow'] ), 'postsToShow', sanitize_text_field( $attributes['blockName'] ) ),
 				'postType'           => ( isset( $attributes['postType'] ) ) ? sanitize_text_field( $attributes['postType'] ) : 'post',
 				'order'              => ( isset( $attributes['order'] ) ) ? sanitize_text_field( $attributes['order'] ) : 'desc',
 				'orderBy'            => ( isset( $attributes['orderBy'] ) ) ? sanitize_text_field( $attributes['orderBy'] ) : 'date',
