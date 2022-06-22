@@ -22,6 +22,7 @@ $selectors[' .uagb-post-pagination-wrap'] = array(
 	'justify-content'                        => $attr['paginationAlignment'],
 	'margin-' . $attr['paginationAlignment'] => '10px',
 );
+
 if ( 'filled' === $attr['paginationLayout'] ) {
 	$selectors[' .uagb-post-pagination-wrap .page-numbers.current'] = array(
 
@@ -58,7 +59,6 @@ if ( 'filled' === $attr['paginationLayout'] ) {
 }
 
 $m_selectors = UAGB_Block_Helper::get_post_mobile_selectors( $attr );
-
 $t_selectors = UAGB_Block_Helper::get_post_tablet_selectors( $attr );
 
 $combined_selectors = array(

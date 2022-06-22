@@ -27,6 +27,8 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 		 */
 		public static function get_buttons_child_selectors( $attr, $id, $child_migrate ) {
 
+			$block_name = 'buttons-child';
+
 			$wrapper = ( ! $child_migrate ) ? ' .uagb-buttons-repeater-' . $id : ' .uagb-buttons-repeater';
 
 			$m_selectors = array();
@@ -178,8 +180,8 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 			);
 
 			$selectors[ $wrapper . ' .uagb-button__icon > svg' ]       = array(
-				'width'  => UAGB_Helper::get_css_value( $attr['iconSize'], 'px' ),
-				'height' => UAGB_Helper::get_css_value( $attr['iconSize'], 'px' ),
+				'width'  => UAGB_Helper::get_css_value( self::get_fallback_number( $attr['iconSize'], 'iconSize', $block_name ), 'px' ),
+				'height' => UAGB_Helper::get_css_value( self::get_fallback_number( $attr['iconSize'], 'iconSize', $block_name ), 'px' ),
 				'fill'   => $attr['iconColor'],
 			);
 			$t_selectors[ $wrapper . ' .uagb-button__icon > svg' ]     = array(
@@ -197,7 +199,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 			);
 			if ( ! $attr['removeText'] ) {
 				$selectors[ $wrapper . ' .uagb-button__icon-position-after' ]   = array(
-					'margin-left' => UAGB_Helper::get_css_value( $attr['iconSpace'], 'px' ),
+					'margin-left' => UAGB_Helper::get_css_value( self::get_fallback_number( $attr['iconSpace'], 'iconSpace', $block_name ), 'px' ),
 				);
 				$t_selectors[ $wrapper . ' .uagb-button__icon-position-after' ] = array(
 					'margin-left' => UAGB_Helper::get_css_value( $attr['iconSpaceTablet'], 'px' ),
@@ -207,7 +209,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				);
 
 				$selectors[ $wrapper . ' .uagb-button__icon-position-before' ]   = array(
-					'margin-right' => UAGB_Helper::get_css_value( $attr['iconSpace'], 'px' ),
+					'margin-right' => UAGB_Helper::get_css_value( self::get_fallback_number( $attr['iconSpace'], 'iconSpace', $block_name ), 'px' ),
 				);
 				$t_selectors[ $wrapper . ' .uagb-button__icon-position-before' ] = array(
 					'margin-right' => UAGB_Helper::get_css_value( $attr['iconSpaceTablet'], 'px' ),
@@ -589,14 +591,21 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 			$left_padding   = isset( $attr['leftPadding'] ) ? $attr['leftPadding'] : $attr['bgPadding'];
 			$right_padding  = isset( $attr['rightPadding'] ) ? $attr['rightPadding'] : $attr['bgPadding'];
 
-			$headTopSpace = ( isset( $attr['headTopSpacing'] ) && ! empty( $attr['headTopSpacing'] ) ) ? $attr['headTopSpacing'] : $attr['contentPadding'];
+			$icon_size_fallback         = self::get_fallback_number( $attr['iconSize'], 'iconSize', $attr['blockName'] );
+			$connector_bg_size_fallback = self::get_fallback_number( $attr['connectorBgsize'], 'connectorBgsize', $attr['blockName'] );
+			$border_width_fallback      = self::get_fallback_number( $attr['borderwidth'], 'borderwidth', $attr['blockName'] );
+			$separator_width_fallback   = self::get_fallback_number( $attr['separatorwidth'], 'separatorwidth', $attr['blockName'] );
+			$head_space_fallback        = self::get_fallback_number( $attr['headSpace'], 'headSpace', $attr['blockName'] );
+			$border_radius_fallback     = self::get_fallback_number( $attr['borderRadius'], 'borderRadius', $attr['blockName'] );
+			$date_bottom_space_fallback = self::get_fallback_number( $attr['dateBottomspace'], 'dateBottomspace', $attr['blockName'] );
+			$head_top_spacing_fallback  = 'post-timeline' === $attr['blockName'] ? self::get_fallback_number( $attr['headTopSpacing'], 'headTopSpacing', $attr['blockName'] ) : $attr['contentPadding'];
 
-			$connector_size = UAGB_Helper::get_css_value( $attr['connectorBgsize'], 'px' );
+			$connector_size = UAGB_Helper::get_css_value( $connector_bg_size_fallback, 'px' );
 
 			$selectors = array(
 				' .uagb-timeline__heading'               => array(
-					'margin-top'    => UAGB_Helper::get_css_value( $headTopSpace, 'px' ),
-					'margin-bottom' => UAGB_Helper::get_css_value( $attr['headSpace'], 'px' ),
+					'margin-top'    => UAGB_Helper::get_css_value( $head_top_spacing_fallback, 'px' ),
+					'margin-bottom' => UAGB_Helper::get_css_value( $head_space_fallback, 'px' ),
 				),
 				' .uagb-timeline-desc-content'           => array(
 					'text-align' => $attr['align'],
@@ -622,23 +631,23 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				),
 				' .uagb-timeline__line'                  => array(
 					'background-color' => $attr['separatorColor'],
-					'width'            => UAGB_Helper::get_css_value( $attr['separatorwidth'], 'px' ),
+					'width'            => UAGB_Helper::get_css_value( $separator_width_fallback, 'px' ),
 				),
 				'.uagb-timeline__right-block .uagb-timeline__line' => array(
-					'right' => 'calc( ' . $attr['connectorBgsize'] . 'px / 2 )',
+					'right' => 'calc( ' . $connector_bg_size_fallback . 'px / 2 )',
 				),
 				'.uagb-timeline__left-block .uagb-timeline__line' => array(
-					'left' => 'calc( ' . $attr['connectorBgsize'] . 'px / 2 )',
+					'left' => 'calc( ' . $connector_bg_size_fallback . 'px / 2 )',
 				),
 				'.uagb-timeline__center-block .uagb-timeline__line' => array(
-					'right' => 'calc( ' . $attr['connectorBgsize'] . 'px / 2 )',
+					'right' => 'calc( ' . $connector_bg_size_fallback . 'px / 2 )',
 				),
 				' .uagb-timeline__marker'                => array(
 					'background-color' => $attr['separatorBg'],
 					'min-height'       => $connector_size,
 					'min-width'        => $connector_size,
 					'line-height'      => $connector_size,
-					'border'           => $attr['borderwidth'] . 'px solid' . $attr['separatorBorder'],
+					'border'           => $border_width_fallback . 'px solid' . $attr['separatorBorder'],
 				),
 				'.uagb-timeline__left-block .uagb-timeline__left .uagb-timeline__arrow' => array(
 					'height' => $connector_size,
@@ -664,12 +673,12 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					'margin-bottom' => UAGB_Helper::get_css_value( $bottom_margin, $attr['marginUnit'] ),
 				),
 				' .uagb-timeline__date-hide.uagb-timeline__inner-date-new' => array( // For New User.
-					'margin-bottom' => UAGB_Helper::get_css_value( $attr['dateBottomspace'], 'px' ),
+					'margin-bottom' => UAGB_Helper::get_css_value( $date_bottom_space_fallback, 'px' ),
 					'color'         => $attr['dateColor'],
 					'text-align'    => $attr['align'],
 				),
 				' .uagb-timeline__date-hide.uagb-timeline__date-inner' => array(
-					'margin-bottom' => UAGB_Helper::get_css_value( $attr['dateBottomspace'], 'px' ),
+					'margin-bottom' => UAGB_Helper::get_css_value( $date_bottom_space_fallback, 'px' ),
 					'color'         => $attr['dateColor'],
 					'text-align'    => $attr['align'],
 				),
@@ -685,7 +694,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				),
 				' .uagb-timeline__events-inner-new'      => array(
 					'background-color' => $attr['backgroundColor'],
-					'border-radius'    => UAGB_Helper::get_css_value( $attr['borderRadius'], 'px' ),
+					'border-radius'    => UAGB_Helper::get_css_value( $border_radius_fallback, 'px' ),
 					'padding-left'     => UAGB_Helper::get_css_value( $top_padding, $attr['paddingUnit'] ),
 					'padding-right'    => UAGB_Helper::get_css_value( $right_padding, $attr['paddingUnit'] ),
 					'padding-top'      => UAGB_Helper::get_css_value( $top_padding, $attr['paddingUnit'] ),
@@ -693,8 +702,8 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				),
 				' svg'                                   => array(
 					'color'     => $attr['iconColor'],
-					'font-size' => UAGB_Helper::get_css_value( $attr['iconSize'], 'px' ),
-					'width'     => UAGB_Helper::get_css_value( $attr['iconSize'], 'px' ),
+					'font-size' => UAGB_Helper::get_css_value( $icon_size_fallback, 'px' ),
+					'width'     => UAGB_Helper::get_css_value( $icon_size_fallback, 'px' ),
 					'fill'      => $attr['iconColor'],
 				),
 				' .uagb-timeline__marker.uagb-timeline__in-view-icon svg' => array(
@@ -718,6 +727,9 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 		 * @since 1.8.2
 		 */
 		public static function get_timeline_tablet_selectors( $attr ) {
+
+			$connector_bg_size_fallback = self::get_fallback_number( $attr['connectorBgsize'], 'connectorBgsize', $attr['blockName'] );
+
 			$tablet_selector = array(
 				' .uagb-timeline__heading'          => array(
 					'margin-top'    => UAGB_Helper::get_css_value( $attr['headTopSpacingTablet'], 'px' ),
@@ -737,7 +749,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					'border-right-color' => $attr['backgroundColor'],
 				),
 				'.uagb-timeline__center-block.uagb-timeline__responsive-tablet .uagb-timeline__line' => array(
-					'left' => 'calc( ' . $attr['connectorBgsize'] . 'px / 2 )',
+					'left' => 'calc( ' . $connector_bg_size_fallback . 'px / 2 )',
 				),
 				'.uagb-timeline__center-block .uagb-timeline__day-new.uagb-timeline__day-left' => array(
 					'margin-left'   => UAGB_Helper::get_css_value( $attr['leftMarginTablet'], $attr['tabletMarginUnit'] ),
@@ -771,6 +783,9 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 		 * @since 1.8.2
 		 */
 		public static function get_timeline_mobile_selectors( $attr ) {
+
+			$connector_bg_size_fallback = self::get_fallback_number( $attr['connectorBgsize'], 'connectorBgsize', $attr['blockName'] );
+
 			$m_selectors = array(
 				' .uagb-timeline__heading'          => array(
 					'margin-top'    => UAGB_Helper::get_css_value( $attr['headTopSpacingMobile'], 'px' ),
@@ -793,7 +808,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					'border-right-color' => $attr['backgroundColor'],
 				),
 				'.uagb-timeline__center-block.uagb-timeline__responsive-mobile .uagb-timeline__line' => array(
-					'left' => 'calc( ' . $attr['connectorBgsize'] . 'px / 2 )',
+					'left' => 'calc( ' . $connector_bg_size_fallback . 'px / 2 )',
 				),
 				'.uagb-timeline__center-block .uagb-timeline__day-new.uagb-timeline__day-left' => array(
 					'margin-left'   => UAGB_Helper::get_css_value( $attr['leftMarginMobile'], $attr['mobileMarginUnit'] ),
@@ -1154,6 +1169,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 
 		/**
 		 * Return the Current Attribute or the Default Attribute.
+		 * In PHP, this is used wherever the fallback is needed, as validation of numbers is done in JS.
 		 *
 		 * @param array  $current_value  The current variable / attribute that is altered by settings.
 		 * @param string $key           The key of the default attribute for that setting.

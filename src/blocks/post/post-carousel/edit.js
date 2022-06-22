@@ -397,7 +397,23 @@ const UAGBPostCarousel = ( props ) => {
 		displayPostTaxonomyAboveTitle,
 		hideTaxonomyIcon,
 		highlightedTextColor,
-		highlightedTextBgColor
+		highlightedTextBgColor,
+		titleLetterSpacing,
+		titleLetterSpacingTablet,
+		titleLetterSpacingMobile,
+		titleLetterSpacingType,
+		metaLetterSpacing,
+		metaLetterSpacingTablet,
+		metaLetterSpacingMobile,
+		metaLetterSpacingType,
+		excerptLetterSpacing,
+		excerptLetterSpacingTablet,
+		excerptLetterSpacingMobile,
+		excerptLetterSpacingType,
+		ctaLetterSpacing,
+		ctaLetterSpacingTablet,
+		ctaLetterSpacingMobile,
+		ctaLetterSpacingType,
 	} = attributes;
 
 	const columnsFallback = getFallbackNumber( columns, 'columns', blockName );
@@ -1417,6 +1433,22 @@ const UAGBPostCarousel = ( props ) => {
 						value: titleLineHeightTablet,
 						label: 'titleLineHeightTablet',
 					} }
+					letterSpacing={ {
+						value: titleLetterSpacing,
+						label: 'titleLetterSpacing',
+					} }
+					letterSpacingTablet={ {
+						value: titleLetterSpacingTablet,
+						label: 'titleLetterSpacingTablet',
+					} }
+					letterSpacingMobile={ {
+						value: titleLetterSpacingMobile,
+						label: 'titleLetterSpacingMobile',
+					} }
+					letterSpacingType={ {
+						value: titleLetterSpacingType,
+						label: 'titleLetterSpacingType',
+					} }
 					transform={ {
 						value: titleTransform,
 						label: 'titleTransform',
@@ -1540,6 +1572,22 @@ const UAGBPostCarousel = ( props ) => {
 						value: metaLineHeightTablet,
 						label: 'metaLineHeightTablet',
 					} }
+					letterSpacing={ {
+						value: metaLetterSpacing,
+						label: 'metaLetterSpacing',
+					} }
+					letterSpacingTablet={ {
+						value: metaLetterSpacingTablet,
+						label: 'metaLetterSpacingTablet',
+					} }
+					letterSpacingMobile={ {
+						value: metaLetterSpacingMobile,
+						label: 'metaLetterSpacingMobile',
+					} }
+					letterSpacingType={ {
+						value: metaLetterSpacingType,
+						label: 'metaLetterSpacingType',
+					} }
 					transform={ {
 						value: metaTransform,
 						label: 'metaTransform',
@@ -1643,6 +1691,22 @@ const UAGBPostCarousel = ( props ) => {
 					lineHeightTablet={ {
 						value: excerptLineHeightTablet,
 						label: 'excerptLineHeightTablet',
+					} }
+					letterSpacing={ {
+						value: excerptLetterSpacing,
+						label: 'excerptLetterSpacing',
+					} }
+					letterSpacingTablet={ {
+						value: excerptLetterSpacingTablet,
+						label: 'excerptLetterSpacingTablet',
+					} }
+					letterSpacingMobile={ {
+						value: excerptLetterSpacingMobile,
+						label: 'excerptLetterSpacingMobile',
+					} }
+					letterSpacingType={ {
+						value: excerptLetterSpacingType,
+						label: 'excerptLetterSpacingType',
 					} }
 					transform={ {
 						value: excerptTransform,
@@ -1810,6 +1874,22 @@ const UAGBPostCarousel = ( props ) => {
 					lineHeightTablet={ {
 						value: ctaLineHeightTablet,
 						label: 'ctaLineHeightTablet',
+					} }
+					letterSpacing={ {
+						value: ctaLetterSpacing,
+						label: 'ctaLetterSpacing',
+					} }
+					letterSpacingTablet={ {
+						value: ctaLetterSpacingTablet,
+						label: 'ctaLetterSpacingTablet',
+					} }
+					letterSpacingMobile={ {
+						value: ctaLetterSpacingMobile,
+						label: 'ctaLetterSpacingMobile',
+					} }
+					letterSpacingType={ {
+						value: ctaLetterSpacingType,
+						label: 'ctaLetterSpacingType',
 					} }
 					transform={ {
 						value: ctaTransform,

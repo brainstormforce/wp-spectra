@@ -4,8 +4,12 @@
 
 import generateCSS from '@Controls/generateCSS';
 import generateCSSUnit from '@Controls/generateCSSUnit';
+import { getFallbackNumber } from '@Controls/getAttributeFallback';
 
 function styling( props ) {
+	
+	const blockName = props.name.replace( 'uagb/', '' );
+
 	const {
 		overallAlignment,
 		headingTag,
@@ -58,12 +62,27 @@ function styling( props ) {
 		subHeadFontStyle,
 		subHeadTransform,
 		subHeadDecoration,
+		// letter spacing
+		headLetterSpacing,
+		headLetterSpacingTablet,
+		headLetterSpacingMobile,
+		headLetterSpacingType,
+		priceLetterSpacing,
+		priceLetterSpacingTablet,
+		priceLetterSpacingMobile,
+		priceLetterSpacingType,
+		subHeadLetterSpacing,
+		subHeadLetterSpacingTablet,
+		subHeadLetterSpacingMobile,
+		subHeadLetterSpacingType,
 	} = props.attributes;
 
 	let tabletSelectors = {};
 	let mobileSelectors = {};
 
-	let sGap = '' !== step_gap ? step_gap : 0;
+	let sGap = '' !== getFallbackNumber( step_gap, 'step_gap', blockName ) ?
+					getFallbackNumber( step_gap, 'step_gap', blockName ) :
+					0;
 	sGap += 30;
 
 	const selectors = {
@@ -82,41 +101,42 @@ function styling( props ) {
 				subHeadLineHeightType
 			),
 			'color': subHeadingColor,
+			'letter-spacing': generateCSSUnit( subHeadLetterSpacing, subHeadLetterSpacingType ),
 		},
 		'.uagb-how-to-main-wrap p': {
-			'margin-bottom': generateCSSUnit( row_gap, 'px' ),
+			'margin-bottom': generateCSSUnit( getFallbackNumber( row_gap, 'row_gap' , blockName ), 'px' ),
 		},
 		'.uagb-how-to-main-wrap .uagb-how-to-tools__wrap': {
-			'margin-bottom': generateCSSUnit( row_gap, 'px' ),
+			'margin-bottom': generateCSSUnit( getFallbackNumber( row_gap, 'row_gap' , blockName ), 'px' ),
 		},
 
 		'.uagb-how-to-main-wrap .uagb-howto__source-wrap': { // For Backward
-			'margin-bottom': generateCSSUnit( row_gap, 'px' ),
+			'margin-bottom': generateCSSUnit( getFallbackNumber( row_gap, 'row_gap' , blockName ), 'px' ),
 		},
 		'.uagb-how-to-main-wrap .uagb-howto__source-image': {
-			'margin-bottom': generateCSSUnit( row_gap, 'px' ),
+			'margin-bottom': generateCSSUnit( getFallbackNumber( row_gap, 'row_gap' , blockName ), 'px' ),
 		},
 		'.uagb-how-to-main-wrap span.uagb-howto__time-wrap': {
-			'margin-bottom': generateCSSUnit( row_gap, 'px' ),
+			'margin-bottom': generateCSSUnit( getFallbackNumber( row_gap, 'row_gap' , blockName ), 'px' ),
 		},
 
 		'.uagb-how-to-main-wrap span.uagb-howto__cost-wrap': {
-			'margin-bottom': generateCSSUnit( row_gap, 'px' ),
+			'margin-bottom': generateCSSUnit( getFallbackNumber( row_gap, 'row_gap' , blockName ), 'px' ),
 		},
 
 		' .uagb-how-to-tools .uagb-how-to-tools-child__wrapper:last-child': {
-			'margin-bottom': generateCSSUnit( row_gap, 'px' ),
+			'margin-bottom': generateCSSUnit( getFallbackNumber( row_gap, 'row_gap' , blockName ), 'px' ),
 		},
 
 		'.uagb-how-to-main-wrap .uagb-how-to-materials-child__wrapper:last-child': {
-			'margin-bottom': generateCSSUnit( row_gap, 'px' ),
+			'margin-bottom': generateCSSUnit( getFallbackNumber( row_gap, 'row_gap' , blockName ), 'px' ),
 		},
 		' h4.uagb-howto-req-steps-text': {
-			'margin-top': generateCSSUnit( row_gap, 'px' ),
-			'margin-bottom': generateCSSUnit( row_gap, 'px' ),
+			'margin-top': generateCSSUnit( getFallbackNumber( row_gap, 'row_gap' , blockName ), 'px' ),
+			'margin-bottom': generateCSSUnit( getFallbackNumber( row_gap, 'row_gap' , blockName ), 'px' ),
 		},
 		' h4.uagb-howto-req-materials-text': {
-			'margin-top': generateCSSUnit( row_gap, 'px' ),
+			'margin-top': generateCSSUnit( getFallbackNumber( row_gap, 'row_gap' , blockName ), 'px' ),
 		},
 		' .uagb-infobox__content-wrap': {
 			'margin-bottom': generateCSSUnit( sGap, 'px' ),
@@ -136,6 +156,7 @@ function styling( props ) {
 				priceLineHeightType
 			),
 			'color': showTotaltimecolor,
+			'letter-spacing': generateCSSUnit( priceLetterSpacing, priceLetterSpacingType ),
 		},
 		' .uagb-howto-timeNeeded-value': {
 			'font-family': subHeadFontFamily,
@@ -152,7 +173,10 @@ function styling( props ) {
 				subHeadLineHeightType
 			),
 			'color': subHeadingColor,
-			'margin-left': generateCSSUnit( timeSpace, 'px' ),
+			'margin-left': generateCSSUnit(
+				getFallbackNumber( timeSpace, 'timeSpace', blockName ),
+				'px'
+			),
 		},
 		' .uagb-howto-timeINmin-text ': {
 			'font-family': subHeadFontFamily,
@@ -198,7 +222,10 @@ function styling( props ) {
 				subHeadLineHeightType
 			),
 			'color': subHeadingColor,
-			'margin-left': generateCSSUnit( costSpace, 'px' ),
+			'margin-left': generateCSSUnit(
+				getFallbackNumber( costSpace, 'costSpace', blockName ),
+				'px'
+				),
 		},
 
 		' h4.block-editor-rich-text__editable': {
@@ -342,6 +369,7 @@ function styling( props ) {
 		'line-height': generateCSSUnit( headLineHeight, headLineHeightType ),
 		'color': headingColor,
 		'margin-bottom': generateCSSUnit( headSpace, 'px' ),
+		'letter-spacing': generateCSSUnit( headLetterSpacing, headLetterSpacingType ),
 	};
 
 	mobileSelectors = {
@@ -354,6 +382,7 @@ function styling( props ) {
 				headLineHeightMobile,
 				headLineHeightType
 			),
+		'letter-spacing': generateCSSUnit( headLetterSpacingMobile, headLetterSpacingType ),
 		},
 		' .block-editor-rich-text__editable.uagb-howto-desc-text': {
 			'font-size': generateCSSUnit(
@@ -364,6 +393,7 @@ function styling( props ) {
 				subHeadLineHeightMobile,
 				subHeadLineHeightType
 			),
+			'letter-spacing': generateCSSUnit( subHeadLetterSpacingMobile, subHeadLetterSpacingType ),
 		},
 		' .block-editor-rich-text__editable.uagb-howto-timeNeeded-text': {
 			'font-size': generateCSSUnit(
@@ -374,6 +404,7 @@ function styling( props ) {
 				priceLineHeightMobile,
 				priceLineHeightType
 			),
+			'letter-spacing': generateCSSUnit( priceLetterSpacingMobile, priceLetterSpacingType ),
 		},
 		' .uagb-howto-timeNeeded-value': {
 			'font-size': generateCSSUnit(
@@ -466,35 +497,35 @@ function styling( props ) {
 			),
 		},
 		'.uagb-how-to-main-wrap p': {
-			'margin-bottom': generateCSSUnit( rowGapMobile, 'px' ),
+			'margin-bottom': generateCSSUnit( getFallbackNumber( rowGapMobile, 'rowGapMobile' , blockName ), 'px' ),
 		},
 		'.uagb-how-to-main-wrap .uagb-how-to-tools__wrap': {
-			'margin-bottom': generateCSSUnit( rowGapMobile, 'px' ),
+			'margin-bottom': generateCSSUnit( getFallbackNumber( rowGapMobile, 'rowGapMobile' , blockName ), 'px' ),
 		},
 		'.uagb-how-to-main-wrap .uagb-howto__source-image': {
-			'margin-bottom': generateCSSUnit( rowGapMobile, 'px' ),
+			'margin-bottom': generateCSSUnit( getFallbackNumber( rowGapMobile, 'rowGapMobile' , blockName ), 'px' ),
 		},
 		'.uagb-how-to-main-wrap span.uagb-howto__time-wrap': {
-			'margin-bottom': generateCSSUnit( rowGapMobile, 'px' ),
+			'margin-bottom': generateCSSUnit( getFallbackNumber( rowGapMobile, 'rowGapMobile' , blockName ), 'px' ),
 		},
 
 		'.uagb-how-to-main-wrap span.uagb-howto__cost-wrap': {
-			'margin-bottom': generateCSSUnit( rowGapMobile, 'px' ),
+			'margin-bottom': generateCSSUnit( getFallbackNumber( rowGapMobile, 'rowGapMobile' , blockName ), 'px' ),
 		},
 
 		' .uagb-how-to-tools .uagb-how-to-tools-child__wrapper:last-child': {
-			'margin-bottom': generateCSSUnit( rowGapMobile, 'px' ),
+			'margin-bottom': generateCSSUnit( getFallbackNumber( rowGapMobile, 'rowGapMobile' , blockName ), 'px' ),
 		},
 
 		'.uagb-how-to-main-wrap .uagb-how-to-materials-child__wrapper:last-child': {
-			'margin-bottom': generateCSSUnit( rowGapMobile, 'px' ),
+			'margin-bottom': generateCSSUnit( getFallbackNumber( rowGapMobile, 'rowGapMobile' , blockName ), 'px' ),
 		},
 		' h4.uagb-howto-req-steps-text': {
-			'margin-top': generateCSSUnit( rowGapMobile, 'px' ),
-			'margin-bottom': generateCSSUnit( rowGapMobile, 'px' ),
+			'margin-top': generateCSSUnit( getFallbackNumber( rowGapMobile, 'rowGapMobile' , blockName ), 'px' ),
+			'margin-bottom': generateCSSUnit( getFallbackNumber( rowGapMobile, 'rowGapMobile' , blockName ), 'px' ),
 		},
 		' h4.uagb-howto-req-materials-text': {
-			'margin-top': generateCSSUnit( rowGapMobile, 'px' ),
+			'margin-top': generateCSSUnit( getFallbackNumber( rowGapMobile, 'rowGapMobile' , blockName ), 'px' ),
 		},
 	};
 
@@ -508,6 +539,7 @@ function styling( props ) {
 				headLineHeightTablet,
 				headLineHeightType
 			),
+		'letter-spacing': generateCSSUnit( headLetterSpacingTablet, headLetterSpacingType ),
 		},
 		' .block-editor-rich-text__editable.uagb-howto-desc-text': {
 			'font-size': generateCSSUnit(
@@ -518,6 +550,7 @@ function styling( props ) {
 				subHeadLineHeightTablet,
 				subHeadLineHeightType
 			),
+			'letter-spacing': generateCSSUnit( subHeadLetterSpacingTablet, subHeadLetterSpacingType ),
 		},
 		' .block-editor-rich-text__editable.uagb-howto-timeNeeded-text': {
 			'font-size': generateCSSUnit(
@@ -528,6 +561,7 @@ function styling( props ) {
 				priceLineHeightTablet,
 				priceLineHeightType
 			),
+			'letter-spacing': generateCSSUnit( priceLetterSpacingTablet, priceLetterSpacingType ),
 		},
 		' .uagb-howto-timeNeeded-value': {
 			'font-size': generateCSSUnit(
@@ -620,35 +654,35 @@ function styling( props ) {
 			),
 		},
 		'.uagb-how-to-main-wrap p': {
-			'margin-bottom': generateCSSUnit( rowGapTablet, 'px' ),
+			'margin-bottom': generateCSSUnit( getFallbackNumber( rowGapTablet, 'rowGapTablet' , blockName ), 'px' ),
 		},
 		'.uagb-how-to-main-wrap .uagb-how-to-tools__wrap': {
-			'margin-bottom': generateCSSUnit( rowGapTablet, 'px' ),
+			'margin-bottom': generateCSSUnit( getFallbackNumber( rowGapTablet, 'rowGapTablet' , blockName ), 'px' ),
 		},
 		'.uagb-how-to-main-wrap .uagb-howto__source-image': {
-			'margin-bottom': generateCSSUnit( rowGapTablet, 'px' ),
+			'margin-bottom': generateCSSUnit( getFallbackNumber( rowGapTablet, 'rowGapTablet' , blockName ), 'px' ),
 		},
 		'.uagb-how-to-main-wrap span.uagb-howto__time-wrap': {
-			'margin-bottom': generateCSSUnit( rowGapTablet, 'px' ),
+			'margin-bottom': generateCSSUnit( getFallbackNumber( rowGapTablet, 'rowGapTablet' , blockName ), 'px' ),
 		},
 
 		'.uagb-how-to-main-wrap span.uagb-howto__cost-wrap': {
-			'margin-bottom': generateCSSUnit( rowGapTablet, 'px' ),
+			'margin-bottom': generateCSSUnit( getFallbackNumber( rowGapTablet, 'rowGapTablet' , blockName ), 'px' ),
 		},
 
 		' .uagb-how-to-tools .uagb-how-to-tools-child__wrapper:last-child': {
-			'margin-bottom': generateCSSUnit( rowGapTablet, 'px' ),
+			'margin-bottom': generateCSSUnit( getFallbackNumber( rowGapTablet, 'rowGapTablet' , blockName ), 'px' ),
 		},
 
 		'.uagb-how-to-main-wrap .uagb-how-to-materials-child__wrapper:last-child': {
-			'margin-bottom': generateCSSUnit( rowGapTablet, 'px' ),
+			'margin-bottom': generateCSSUnit( getFallbackNumber( rowGapTablet, 'rowGapTablet' , blockName ), 'px' ),
 		},
 		' h4.uagb-howto-req-steps-text': {
-			'margin-top': generateCSSUnit( rowGapTablet, 'px' ),
-			'margin-bottom': generateCSSUnit( rowGapTablet, 'px' ),
+			'margin-top': generateCSSUnit( getFallbackNumber( rowGapTablet, 'rowGapTablet' , blockName ), 'px' ),
+			'margin-bottom': generateCSSUnit( getFallbackNumber( rowGapTablet, 'rowGapTablet' , blockName ), 'px' ),
 		},
 		' h4.uagb-howto-req-materials-text': {
-			'margin-top': generateCSSUnit( rowGapTablet, 'px' ),
+			'margin-top': generateCSSUnit( getFallbackNumber( rowGapTablet, 'rowGapTablet' , blockName ), 'px' ),
 		},
 	};
 
