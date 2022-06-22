@@ -27,6 +27,8 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 		 */
 		public static function get_buttons_child_selectors( $attr, $id, $child_migrate ) {
 
+			$block_name = 'buttons-child';
+
 			$wrapper = ( ! $child_migrate ) ? ' .uagb-buttons-repeater-' . $id : ' .uagb-buttons-repeater';
 
 			$m_selectors = array();
@@ -178,8 +180,8 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 			);
 
 			$selectors[ $wrapper . ' .uagb-button__icon > svg' ]       = array(
-				'width'  => UAGB_Helper::get_css_value( $attr['iconSize'], 'px' ),
-				'height' => UAGB_Helper::get_css_value( $attr['iconSize'], 'px' ),
+				'width'  => UAGB_Helper::get_css_value( self::get_fallback_number( $attr['iconSize'], 'iconSize', $block_name ), 'px' ),
+				'height' => UAGB_Helper::get_css_value( self::get_fallback_number( $attr['iconSize'], 'iconSize', $block_name ), 'px' ),
 				'fill'   => $attr['iconColor'],
 			);
 			$t_selectors[ $wrapper . ' .uagb-button__icon > svg' ]     = array(
@@ -197,7 +199,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 			);
 			if ( ! $attr['removeText'] ) {
 				$selectors[ $wrapper . ' .uagb-button__icon-position-after' ]   = array(
-					'margin-left' => UAGB_Helper::get_css_value( $attr['iconSpace'], 'px' ),
+					'margin-left' => UAGB_Helper::get_css_value( self::get_fallback_number( $attr['iconSpace'], 'iconSpace', $block_name ), 'px' ),
 				);
 				$t_selectors[ $wrapper . ' .uagb-button__icon-position-after' ] = array(
 					'margin-left' => UAGB_Helper::get_css_value( $attr['iconSpaceTablet'], 'px' ),
@@ -207,7 +209,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				);
 
 				$selectors[ $wrapper . ' .uagb-button__icon-position-before' ]   = array(
-					'margin-right' => UAGB_Helper::get_css_value( $attr['iconSpace'], 'px' ),
+					'margin-right' => UAGB_Helper::get_css_value( self::get_fallback_number( $attr['iconSpace'], 'iconSpace', $block_name ), 'px' ),
 				);
 				$t_selectors[ $wrapper . ' .uagb-button__icon-position-before' ] = array(
 					'margin-right' => UAGB_Helper::get_css_value( $attr['iconSpaceTablet'], 'px' ),
@@ -1153,6 +1155,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 
 		/**
 		 * Return the Current Attribute or the Default Attribute.
+		 * In PHP, this is used wherever the fallback is needed, as validation of numbers is done in JS.
 		 *
 		 * @param array  $current_value  The current variable / attribute that is altered by settings.
 		 * @param string $key           The key of the default attribute for that setting.

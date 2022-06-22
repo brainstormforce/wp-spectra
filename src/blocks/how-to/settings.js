@@ -36,7 +36,7 @@ let imageSizeOptions = [
 ];
 
 
-
+import { getFallbackNumber } from '@Controls/getAttributeFallback';
 import UAGAdvancedPanelBody from '@Components/advanced-panel-body';
 
 const Settings = ( props ) => {
@@ -117,6 +117,19 @@ const Settings = ( props ) => {
 			subHeadFontStyle,
 			subHeadTransform,
 			subHeadDecoration,
+			// letter spacing
+			headLetterSpacing,
+			headLetterSpacingTablet,
+			headLetterSpacingMobile,
+			headLetterSpacingType,
+			priceLetterSpacing,
+			priceLetterSpacingTablet,
+			priceLetterSpacingMobile,
+			priceLetterSpacingType,
+			subHeadLetterSpacing,
+			subHeadLetterSpacingTablet,
+			subHeadLetterSpacingMobile,
+			subHeadLetterSpacingType,
 		},
 	} = props;
 
@@ -489,10 +502,11 @@ const Settings = ( props ) => {
 						value={ tools_count }
 						onChange={ ( newCount ) => {
 							const cloneIcons = [ ...tools ];
+							const newCountFallback = getFallbackNumber( newCount, 'tools_count', 'how-to' );
 
-							if ( cloneIcons.length < newCount ) {
+							if ( cloneIcons.length < newCountFallback ) {
 								const incAmount = Math.abs(
-									newCount - cloneIcons.length
+									newCountFallback - cloneIcons.length
 								);
 
 								{
@@ -508,7 +522,7 @@ const Settings = ( props ) => {
 								setAttributes( { tools: cloneIcons } );
 							} else {
 								const incAmount = Math.abs(
-									newCount - cloneIcons.length
+									newCountFallback - cloneIcons.length
 								);
 								const data_new = cloneIcons;
 								for ( let i = 0; i < incAmount; i++ ) {
@@ -516,7 +530,7 @@ const Settings = ( props ) => {
 								}
 								setAttributes( { tools: data_new } );
 							}
-							setAttributes( { tools_count: newCount } );
+							setAttributes( { tools_count: newCountFallback } );
 						} }
 						min={ 1 }
 						max={ 50 }
@@ -556,10 +570,11 @@ const Settings = ( props ) => {
 						value={ material_count }
 						onChange={ ( newCount ) => {
 							const cloneIcons = [ ...materials ];
+							const newCountFallback = getFallbackNumber( newCount, 'material_count', 'how-to' );
 
-							if ( cloneIcons.length < newCount ) {
+							if ( cloneIcons.length < newCountFallback ) {
 								const incAmount = Math.abs(
-									newCount - cloneIcons.length
+									newCountFallback - cloneIcons.length
 								);
 
 								{
@@ -575,7 +590,7 @@ const Settings = ( props ) => {
 								setAttributes( { materials: cloneIcons } );
 							} else {
 								const incAmount = Math.abs(
-									newCount - cloneIcons.length
+									newCountFallback - cloneIcons.length
 								);
 								const data_new = cloneIcons;
 								for ( let i = 0; i < incAmount; i++ ) {
@@ -583,7 +598,7 @@ const Settings = ( props ) => {
 								}
 								setAttributes( { materials: data_new } );
 							}
-							setAttributes( { material_count: newCount } );
+							setAttributes( { material_count: newCountFallback } );
 						} }
 						min={ 1 }
 						max={ 50 }
@@ -666,6 +681,22 @@ const Settings = ( props ) => {
 					lineHeightTablet={ {
 						value: headLineHeightTablet,
 						label: 'headLineHeightTablet',
+					} }
+					letterSpacing={ {
+						value: headLetterSpacing,
+						label: 'headLetterSpacing',
+					} }
+					letterSpacingTablet={ {
+						value: headLetterSpacingTablet,
+						label: 'headLetterSpacingTablet',
+					} }
+					letterSpacingMobile={ {
+						value: headLetterSpacingMobile,
+						label: 'headLetterSpacingMobile',
+					} }
+					letterSpacingType={ {
+						value: headLetterSpacingType,
+						label: 'headLetterSpacingType',
 					} }
 				/>
 			</UAGAdvancedPanelBody>
@@ -750,6 +781,22 @@ const Settings = ( props ) => {
 						value: priceLineHeightTablet,
 						label: 'priceLineHeightTablet',
 					} }
+					letterSpacing={ {
+						value: priceLetterSpacing,
+						label: 'priceLetterSpacing',
+					} }
+					letterSpacingTablet={ {
+						value: priceLetterSpacingTablet,
+						label: 'priceLetterSpacingTablet',
+					} }
+					letterSpacingMobile={ {
+						value: priceLetterSpacingMobile,
+						label: 'priceLetterSpacingMobile',
+					} }
+					letterSpacingType={ {
+						value: priceLetterSpacingType,
+						label: 'priceLetterSpacingType',
+					} }
 				/>
 			</UAGAdvancedPanelBody>
 		);
@@ -829,6 +876,22 @@ const Settings = ( props ) => {
 					lineHeightTablet={ {
 						value: subHeadLineHeightTablet,
 						label: 'subHeadLineHeightTablet',
+					} }
+					letterSpacing={ {
+						value: subHeadLetterSpacing,
+						label: 'subHeadLetterSpacing',
+					} }
+					letterSpacingTablet={ {
+						value: subHeadLetterSpacingTablet,
+						label: 'subHeadLetterSpacingTablet',
+					} }
+					letterSpacingMobile={ {
+						value: subHeadLetterSpacingMobile,
+						label: 'subHeadLetterSpacingMobile',
+					} }
+					letterSpacingType={ {
+						value: subHeadLetterSpacingType,
+						label: 'subHeadLetterSpacingType',
 					} }
 				/>
 			</UAGAdvancedPanelBody>

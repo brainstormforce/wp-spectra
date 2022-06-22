@@ -321,14 +321,12 @@ const attributes = {
 	},
 	iconSpaceTablet: {
 		type: 'number',
-		default: 8,
 		UAGCopyPaste: {
 			styleType: 'btn-icon-space-tablet'
 		}
 	},
 	iconSpaceMobile: {
 		type: 'number',
-		default: 8,
 		UAGCopyPaste: {
 			styleType: 'btn-icon-space-mobile'
 		}
@@ -509,14 +507,12 @@ const attributes = {
 	},
 	iconSizeTablet: {
 		type: 'number',
-		default: 15,
 		UAGCopyPaste: {
 			styleType: 'btn-icon-size-tablet'
 		}
 	},
 	iconSizeMobile: {
 		type: 'number',
-		default: 15,
 		UAGCopyPaste: {
 			styleType: 'btn-icon-size-mobile'
 		}
@@ -524,6 +520,32 @@ const attributes = {
 	removeText:{
 		type:'boolean',
 		default: false
+	},
+	// letter spacing.
+	fontLetterSpacing: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'main-title-letter-spacing'
+		}
+	},
+	fontLetterSpacingTablet: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'main-title-letter-spacing-tablet'
+		}
+	},
+	fontLetterSpacingMobile: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'main-title-letter-spacing-mobile'
+		}
+	},
+	fontLetterSpacingType: {
+		type: 'string',
+		default: 'px',
+		UAGCopyPaste: {
+			styleType: 'main-title-letter-spacing-type'
+		}
 	},
 };
 

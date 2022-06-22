@@ -60,15 +60,10 @@
 	.block-editor-block-list__block:not([contenteditable]):focus::after {
 		box-shadow: 0 0 0 1.5px #007cba;
 		border-radius: 2px;
-		z-index: 3;
 	}
 
 
 	.block-editor-block-list__block:not([contenteditable]):focus {
-
-		&::after {
-			z-index: 999;
-		}
 		z-index: 1;
 	}
 
@@ -120,6 +115,19 @@
 	font-size: 13px;
 	line-height: 1.4;
 }
+
+/* Editor panel sidebar - scrollbar design CSS start */
+
+.interface-interface-skeleton__sidebar::-webkit-scrollbar {
+	width: 5px;
+}
+
+.interface-interface-skeleton__sidebar::-webkit-scrollbar-thumb {
+	box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+	border-radius: 100px;
+}
+
+/* Editor panel sidebar - scrollbar design CSS end */
 
 /* Panel Body CSS*/
 .uagb-inspector-tab,

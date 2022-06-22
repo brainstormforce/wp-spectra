@@ -61,10 +61,10 @@ const PostTimelineComponent = ( props ) => {
 		}
 
 		if ( contentPadding ){
-			if ( ! ctaBottomSpacing ) {
+			if ( isNaN( ctaBottomSpacing ) ) {
 				props.setAttributes( { ctaBottomSpacing: contentPadding } );
 			}
-			if ( ! headTopSpacing ) {
+			if ( isNaN( headTopSpacing ) ) {
 				props.setAttributes( { headTopSpacing: contentPadding } );
 			}
 		}
