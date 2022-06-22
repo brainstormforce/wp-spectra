@@ -33,7 +33,7 @@ function styling( props ) {
 		toggleWidthSize,
 		toggleWidthSizeTablet,
 		toggleWidthSizeMobile,
-		submitBorderHColor,
+		btnBorderHColor,
 		submitTextFontFamily,
 		submitTextFontWeight,
 		submitTextFontSize,
@@ -72,7 +72,7 @@ function styling( props ) {
 		toggleBorderWidth,
 		toggleBorderRadius,
 		toggleBorderColor,
-		toggleBorderActiveColor,
+		checkBoxToggleBorderHColor,
 		labelColor,
 		labelHoverColor,
 		inputColor,
@@ -83,7 +83,7 @@ function styling( props ) {
 		inputplaceholderHColor,
 		inputplaceholderActiveColor,
 		inputactiveColor,
-		inputBorderHColor,
+		fieldBorderHColor,
 		fieldGap,
 		fieldGapTablet,
 		fieldGapMobile,
@@ -159,17 +159,17 @@ function styling( props ) {
 	let tabletSelectors = {};
 	let mobileSelectors = {};
 
-	const inputBorder = generateBorderCSS( props.attributes, 'input' );
-	const inputBorderTablet = generateBorderCSS( props.attributes, 'input', 'tablet' );
-	const inputBorderMobile = generateBorderCSS( props.attributes, 'input', 'mobile' );
+	const inputBorder = generateBorderCSS( props.attributes, 'field' );
+	const inputBorderTablet = generateBorderCSS( props.attributes, 'field', 'tablet' );
+	const inputBorderMobile = generateBorderCSS( props.attributes, 'field', 'mobile' );
 
-	const toggleBorder = generateBorderCSS( props.attributes, 'toggle' );
-	const toggleBorderTablet = generateBorderCSS( props.attributes, 'toggle', 'tablet' );
-	const toggleBorderMobile = generateBorderCSS( props.attributes, 'toggle', 'mobile' );
+	const toggleBorder = generateBorderCSS( props.attributes, 'checkBoxToggle' );
+	const toggleBorderTablet = generateBorderCSS( props.attributes, 'checkBoxToggle', 'tablet' );
+	const toggleBorderMobile = generateBorderCSS( props.attributes, 'checkBoxToggle', 'mobile' );
 
-	const submitBorder = generateBorderCSS( props.attributes, 'submit' );
-	const submitBorderTablet = generateBorderCSS( props.attributes, 'submit', 'tablet' );
-	const submitBorderMobile = generateBorderCSS( props.attributes, 'submit', 'mobile' );
+	const submitBorder = generateBorderCSS( props.attributes, 'btn' );
+	const submitBorderTablet = generateBorderCSS( props.attributes, 'btn', 'tablet' );
+	const submitBorderMobile = generateBorderCSS( props.attributes, 'btn', 'mobile' );
 
 
 	selectors = {
@@ -295,7 +295,7 @@ function styling( props ) {
 		' .uagb-forms-main-form .uagb-forms-main-submit-button:hover': {
 			'color': submitColorHover,
 			'background-color': submitBgColorHover,
-			'border-color': submitBorderHColor,
+			'border-color': btnBorderHColor,
 		},
 		' .uagb-switch': {
 			// 20 is the min size of the toggle.
@@ -311,7 +311,7 @@ function styling( props ) {
 		},
 		' .uagb-switch input:checked + .uagb-slider': {
 			'background-color': toggleActiveColor,
-			'border-color': toggleBorderActiveColor,
+			'border-color': checkBoxToggleBorderHColor,
 		},
 		' .uagb-switch input:checked + .uagb-slider:before': {
 			'background-color': toggleDotActiveColor,
@@ -339,7 +339,7 @@ function styling( props ) {
 		},
 		' .uagb-forms-radio-wrap input[type=radio]:checked + label:before': {
 			'background-color': toggleDotActiveColor,
-			'border-color': `${ toggleBorderActiveColor } !important`,
+			'border-color': `${ checkBoxToggleBorderHColor } !important`,
 			'box-shadow': `inset 0 0 0 4px ${ toggleActiveColor }`,
 			'font-size': 'calc(' + toggleSize + toggleSizeType + ' / 1.2 )',
 		},
@@ -354,7 +354,7 @@ function styling( props ) {
 		' .uagb-forms-checkbox-wrap input[type=checkbox]:checked + label:before': {
 			'color': toggleDotActiveColor,
 			'background-color': toggleActiveColor,
-			'border-color': `${ toggleBorderActiveColor } !important`,
+			'border-color': `${ checkBoxToggleBorderHColor } !important`,
 			'font-size': 'calc(' + toggleSize + 'px / 1.2 )',
 		},
 		' .uagb-forms-checkbox-wrap input[type=checkbox] + label:before': {
@@ -369,7 +369,7 @@ function styling( props ) {
 		' .uagb-forms-accept-wrap input[type=checkbox]:checked + label:before': {
 			'color': toggleDotActiveColor,
 			'background-color': toggleActiveColor,
-			'border-color': `${ toggleBorderActiveColor } !important`,
+			'border-color': `${ checkBoxToggleBorderHColor } !important`,
 			'font-size': 'calc(' + toggleSize + 'px / 1.2 )',
 		},
 		' .uagb-forms-accept-wrap input[type=checkbox] + label:before': {
@@ -387,7 +387,7 @@ function styling( props ) {
 		},
 		' .uagb-forms-field-set:hover .uagb-forms-input': {
 			'background-color': bgHoverColor,
-			'border-color': inputBorderHColor,
+			'border-color': fieldBorderHColor,
 		},
 		' .uagb-forms-field-set:hover .uagb-forms-input::placeholder': {
 			'color': inputplaceholderHColor,

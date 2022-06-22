@@ -416,7 +416,7 @@ const Settings = ( props ) => {
 			/>
 			<ResponsiveBorder
 				setAttributes={ setAttributes }
-				prefix={'successMessage'}
+				prefix={'successMsg'}
 				disabledBorderTitle= {false}
 				attributes={ attributes }
 				deviceType={deviceType}
@@ -456,7 +456,7 @@ const Settings = ( props ) => {
 			/>
 			<ResponsiveBorder
 				setAttributes={ setAttributes }
-				prefix={'failedMessage'}
+				prefix={'failedMsg'}
 				disabledBorderTitle= {false}
 				attributes={ attributes }
 				deviceType={deviceType}
@@ -820,7 +820,7 @@ const Settings = ( props ) => {
 			/>
 			<ResponsiveBorder
 				setAttributes={ setAttributes }
-				prefix={'input'}
+				prefix={'field'}
 				disabledBorderTitle= {false}
 				attributes={ attributes }
 				deviceType={deviceType}
@@ -1106,7 +1106,7 @@ const Settings = ( props ) => {
 			/>
 			<ResponsiveBorder
 				setAttributes={ setAttributes }
-				prefix={'toggle'}
+				prefix={'checkBoxToggle'}
 				disabledBorderTitle= {false}
 				attributes={ attributes }
 				deviceType={deviceType}
@@ -1379,7 +1379,7 @@ const Settings = ( props ) => {
 			/>
 			<ResponsiveBorder
 				setAttributes={ setAttributes }
-				prefix={'submit'}
+				prefix={'btn'}
 				disabledBorderTitle= {false}
 				attributes={ attributes }
 				deviceType={deviceType}

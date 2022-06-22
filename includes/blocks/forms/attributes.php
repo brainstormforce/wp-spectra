@@ -14,7 +14,7 @@ $success_message_border_defaults  = array(
 	'borderRadius' => 6,
 	'borderHColor' => 'yellowgreen',
 );
-$success_message_border_attribute = UAGB_Block_Helper::uag_generate_border_attribute( 'successMessage', $success_message_border_defaults );
+$success_message_border_attribute = UAGB_Block_Helper::uag_generate_border_attribute( 'successMsg', $success_message_border_defaults );
 $failed_message_border_defaults   = array(
 	'borderColor'  => 'red',
 	'borderStyle'  => 'solid',
@@ -22,7 +22,7 @@ $failed_message_border_defaults   = array(
 	'borderRadius' => 6,
 	'borderHColor' => 'deeppink',
 );
-$failed_message_border_attribute  = UAGB_Block_Helper::uag_generate_border_attribute( 'failedMessage', $failed_message_border_defaults );
+$failed_message_border_attribute  = UAGB_Block_Helper::uag_generate_border_attribute( 'failedMsg', $failed_message_border_defaults );
 $input_border_defaults            = array(
 	'borderStyle'  => 'solid',
 	'borderWidth'  => 1,
@@ -30,7 +30,7 @@ $input_border_defaults            = array(
 	'borderColor'  => '#bdbdbd',
 	'borderHColor' => '',
 );
-$input_border_attribute           = UAGB_Block_Helper::uag_generate_border_attribute( 'input', $input_border_defaults );
+$input_border_attribute           = UAGB_Block_Helper::uag_generate_border_attribute( 'field', $input_border_defaults );
 $toggle_border_defaults           = array(
 	'borderStyle'  => 'solid',
 	'borderWidth'  => 1,
@@ -38,7 +38,7 @@ $toggle_border_defaults           = array(
 	'borderColor'  => '#1e1e1e',
 	'borderHColor' => '#017cba',
 );
-$toggle_border_attribute          = UAGB_Block_Helper::uag_generate_border_attribute( 'toggle', $toggle_border_defaults );
+$toggle_border_attribute          = UAGB_Block_Helper::uag_generate_border_attribute( 'checkBoxToggle', $toggle_border_defaults );
 $submit_border_defaults           = array(
 	'borderWidth'  => 0,
 	'borderRadius' => 3,
@@ -46,7 +46,7 @@ $submit_border_defaults           = array(
 	'borderHColor' => '',
 	'borderStyle'  => '',
 );
-$submit_border_attribute          = UAGB_Block_Helper::uag_generate_border_attribute( 'submit', $submit_border_defaults );
+$submit_border_attribute          = UAGB_Block_Helper::uag_generate_border_attribute( 'btn', $submit_border_defaults );
 
 return array_merge(
 	array(

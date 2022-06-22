@@ -142,7 +142,7 @@ const UAGBFormsEdit = ( props ) => {
 
 		// inputborder
 		if( inputborderWidth || inputborderRadius || inputborderColor || inputborderHColor || inputborderStyle ){
-			const migrationAttributes = migrateBorderAttributes( 'input', {
+			const migrationAttributes = migrateBorderAttributes( 'field', {
 				label: 'inputborderWidth',
 				value: inputborderWidth,
 			}, {
@@ -162,7 +162,7 @@ const UAGBFormsEdit = ( props ) => {
 			props.setAttributes( migrationAttributes );
 		}
 		if( toggleBorderWidth || toggleBorderRadius || toggleBorderColor || toggleBorderHColor || toggleBorderStyle ){
-			const migrationAttributes = migrateBorderAttributes( 'toggle', {
+			const migrationAttributes = migrateBorderAttributes( 'checkBoxToggle', {
 				label: 'toggleBorderWidth',
 				value: toggleBorderWidth,
 			}, {
@@ -182,7 +182,7 @@ const UAGBFormsEdit = ( props ) => {
 			props.setAttributes( migrationAttributes );
 		}
 		if( submitborderWidth || submitborderRadius || submitborderColor || submitborderHColor || submitborderStyle ){
-			const migrationAttributes = migrateBorderAttributes( 'submit', {
+			const migrationAttributes = migrateBorderAttributes( 'btn', {
 				label: 'submitborderWidth',
 				value: submitborderWidth,
 			}, {

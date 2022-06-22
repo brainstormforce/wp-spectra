@@ -3,7 +3,7 @@ import { getBorderAttributes } from '@Controls/generateAttributes';
 
 const successMessageBorderAttributes = getBorderAttributes( 'successMessage' );
 const failedMessageBorderAttributes = getBorderAttributes( 'failedMessage' );
-const inputBorderAttributes = getBorderAttributes( 'input' , {
+const inputBorderAttributes = getBorderAttributes( 'field' , {
 	borderStyle: 'solid',
 	borderTopLeftRadius: 3,
 	borderTopRightRadius: 3,
@@ -16,7 +16,7 @@ const inputBorderAttributes = getBorderAttributes( 'input' , {
 	borderColor:'#bdbdbd',
 	borderHColor: '',
 } );
-const toggleBorderAttributes = getBorderAttributes( 'toggle' , {
+const toggleBorderAttributes = getBorderAttributes( 'checkBoxToggle' , {
 	borderStyle: 'solid',
 	borderTopLeftRadius: 3,
 	borderTopRightRadius: 3,
@@ -29,7 +29,7 @@ const toggleBorderAttributes = getBorderAttributes( 'toggle' , {
 	borderColor:'#1e1e1e',
 	borderHColor: '#017cba',
 } );
-const submitBorderAttributes = getBorderAttributes( 'submit' );
+const submitBorderAttributes = getBorderAttributes( 'btn' );
 
 const attributes = {
 	block_id: {
