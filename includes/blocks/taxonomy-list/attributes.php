@@ -109,4 +109,17 @@ return array(
 	'titleDecoration'          => '',
 	'countDecoration'          => '',
 	'listDecoration'           => '',
+	// letter spacing.
+	'titleLetterSpacing'       => 0,
+	'titleLetterSpacingTablet' => '',
+	'titleLetterSpacingMobile' => '',
+	'titleLetterSpacingType'   => 'px',
+	'countLetterSpacing'       => '',
+	'countLetterSpacingTablet' => '',
+	'countLetterSpacingMobile' => '',
+	'countLetterSpacingType'   => 'px',
+	'listLetterSpacing'        => '',
+	'listLetterSpacingTablet'  => '',
+	'listLetterSpacingMobile'  => '',
+	'listLetterSpacingType'    => 'px',
 );
