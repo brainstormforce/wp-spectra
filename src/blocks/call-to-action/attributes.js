@@ -3,7 +3,7 @@
  */
 import { getBorderAttributes } from '@Controls/generateAttributes';
 
-const borderAttributes = getBorderAttributes( 'cta' );
+const borderAttributes = getBorderAttributes( 'btn' );
 const secondCtaBorderAttribute = getBorderAttributes( 'secondCta' );
 
 const attributes = {

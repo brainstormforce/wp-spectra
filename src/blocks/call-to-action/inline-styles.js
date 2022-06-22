@@ -66,7 +66,7 @@ function CtaStyle( props ) {
 		tabletCTAPaddingUnit,
 		ctaLinkHoverColor,
 		ctaBgHoverColor,
-		ctaBorderHColor,
+		btnBorderHColor,
 		ctaIconSpace,
 		ctaIconSpaceTablet,
 		ctaIconSpaceMobile,
@@ -288,7 +288,7 @@ function CtaStyle( props ) {
 	selectors['.uagb-cta__outer-wrap a.uagb-cta__button-link-wrapper:hover'] = {
 		'color': ctaLinkHoverColor,
 		'background-color': ctaBgHoverColor,
-		'border-color': ctaBorderHColor,
+		'border-color': btnBorderHColor,
 	};
 
 	selectors['.uagb-cta__outer-wrap a.uagb-cta__button-link-wrapper svg' ] = {

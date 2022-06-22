@@ -16,7 +16,7 @@ const Settings = lazy( () =>
 	)
 );
 
-import {migrateBorderAttributes} from '@Controls/generateAttributes';
+import { migrateBorderAttributes } from '@Controls/generateAttributes';
 const UAGBCallToAction = ( props ) => {
 
 	const deviceType = useDeviceType();
@@ -80,7 +80,7 @@ const UAGBCallToAction = ( props ) => {
 
 		// border
 		if( ctaBorderWidth || ctaBorderRadius || ctaBorderColor || ctaBorderHColor || ctaBorderStyle ){
-			const migrationAttributes = migrateBorderAttributes( 'cta', {
+			const migrationAttributes = migrateBorderAttributes( 'btn', {
 				label: 'ctaBorderWidth',
 				value: ctaBorderWidth,
 			}, {
