@@ -9,6 +9,9 @@
 
 return array(
 	'blockName'                  => 'post-timeline',
+	'postsToShow'                => 6,
+	'postsOffset'                => 0,
+	'exerptLength'               => 15,
 	'align'                      => '',
 	'headingColor'               => '',
 	'subHeadingColor'            => '',

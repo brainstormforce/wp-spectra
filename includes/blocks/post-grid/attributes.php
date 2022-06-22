@@ -9,6 +9,8 @@
 
 return array(
 	'blockName'                   => 'post-grid',
+	'postsToShow'                 => 6,
+	'postsOffset'                 => 0,
 	'post_type'                   => 'grid',
 	'align'                       => 'left',
 	'rowGap'                      => '20',

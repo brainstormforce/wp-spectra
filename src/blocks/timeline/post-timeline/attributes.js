@@ -601,6 +601,10 @@ const attributes = { // eslint-disable-line no-unused-vars
 		type    : 'number',
 		default : 6,
 	},
+	postsOffset             : {
+		type    : 'number',
+		default : 0,
+	},
 	displayPostDate         : {
 		type    : 'boolean',
 		default : true,

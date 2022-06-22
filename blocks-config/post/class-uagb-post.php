@@ -1867,11 +1867,10 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 			global $post;
 
 			if ( 'full_post' === $attributes['displayPostContentRadio'] ) {
-
 				$excerpt = get_the_content();
 			} else {
-
-				$excerpt = UAGB_Helper::uagb_get_excerpt( $post->ID, $post->post_content, $attributes['excerptLength'], 'excerptLength', $attributes['blockName'] );
+				$excerpt_length_fallback = UAGB_Block_Helper::get_fallback_number( $attributes['excerptLength'], 'excerptLength', 'post-timeline' );
+				$excerpt = UAGB_Helper::uagb_get_excerpt( $post->ID, $post->post_content, $excerpt_length_fallback );
 			}
 
 			if ( ! $excerpt ) {

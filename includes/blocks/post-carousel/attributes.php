@@ -9,6 +9,8 @@
 
 return array(
 	'blockName'                  => 'post-carousel',
+	'postsToShow'                => 6,
+	'postsOffset'                => 0,
 	'post_type'                  => 'carousel',
 	'align'                      => 'left',
 	'rowGap'                     => 20,

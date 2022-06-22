@@ -9,6 +9,8 @@
 
 return array(
 	'blockName'                         => 'post-masonry',
+	'postsToShow'                       => 6,
+	'postsOffset'                       => 0,
 	'post_type'                         => 'masonry',
 	'postType'                          => 'post',
 	'align'                             => 'left',

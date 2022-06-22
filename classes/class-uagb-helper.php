@@ -1295,15 +1295,13 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 		/**
 		 * Get the excerpt.
 		 *
-		 * @param int    $post_id for the block.
-		 * @param string $content for post content.
-		 * @param int    $length for excerpt.
-		 * @param int    $attribute_name for attribute name.
-		 * @param int    $block_name for block name.
+		 * @param int    $post_id          for the block.
+		 * @param string $content          for post content.
+		 * @param int    $length_fallback  for excerpt, after fallback has been done.
 		 *
 		 * @since 2.0.0
 		 */
-		public static function uagb_get_excerpt( $post_id, $content, $length, $attribute_name, $block_name ) {
+		public static function uagb_get_excerpt( $post_id, $content, $length_fallback ) {
 
 			// If there's an excerpt provided from meta, use it.
 			$excerpt = get_post_field( 'post_excerpt', $post_id );
@@ -1318,9 +1316,8 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 			// Trim the excerpt.
 			if ( ! empty( $excerpt ) ) {
 				$excerpt        = explode( ' ', $excerpt );
-				$trim_to_length = UAGB_Block_Helper::get_fallback_number( $length, $attribute_name, $block_name );
-				if ( count( $excerpt ) > $trim_to_length ) {
-					$excerpt = implode( ' ', array_slice( $excerpt, 0, $trim_to_length ) ) . '...';
+				if ( count( $excerpt ) > $length_fallback ) {
+					$excerpt = implode( ' ', array_slice( $excerpt, 0, $length_fallback ) ) . '...';
 				} else {
 					$excerpt = implode( ' ', $excerpt );
 				}

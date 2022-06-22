@@ -412,6 +412,10 @@ if ( ! class_exists( 'UAGB_Post_Timeline' ) ) {
 							'type'    => 'number',
 							'default' => 6,
 						),
+						'postsOffset'                => array(
+							'type'    => 'number',
+							'default' => 0,
+						),
 						'displayPostDate'            => array(
 							'type'    => 'boolean',
 							'default' => true,
@@ -1002,7 +1006,7 @@ if ( ! class_exists( 'UAGB_Post_Timeline' ) ) {
 
 			global $post;
 
-			$excerpt_length_fallback = UAGB_Block_Helper::get_fallback_number( $attributes['exerptLength'], 'exerptLength', 'post-timeline' );
+			$excerpt_length_fallback = UAGB_Block_Helper::get_fallback_number( $attributes['exerptLength'], 'exerptLength', $attributes['blockName'] );
 
 			$excerpt = UAGB_Helper::uagb_get_excerpt( $post->ID, $post->post_content, $excerpt_length_fallback );
 
