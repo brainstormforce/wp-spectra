@@ -322,7 +322,7 @@ if ( 'boxed' === $attr['formStyle'] ) {
 	);
 
 	$selectors[' .uagb-forms-input:hover']        = array(
-		'border-color' => $attr['inputBorderHColor'],
+		'border-color' => $attr['fieldBorderHColor'],
 	);
 	$selectors[' .uagb-forms-input::placeholder'] = array(
 		'color' => $attr['inputplaceholderColor'],

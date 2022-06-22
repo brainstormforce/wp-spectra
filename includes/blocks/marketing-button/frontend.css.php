@@ -34,11 +34,11 @@ $icon_hover_color = ( '' === $attr['iconHoverColor'] ) ? $attr['titleHoverColor'
 $btn_border_css        = UAGB_Block_Helper::uag_generate_border_css( $attr, 'btn' );
 $btn_border_css        = UAGB_Block_Helper::uag_generate_deprecated_border_css(
 	$btn_border_css,
-	( isset( $attr['inputborderWidth'] ) ? $attr['inputborderWidth'] : '' ),
-	( isset( $attr['inputborderRadius'] ) ? $attr['inputborderRadius'] : '' ),
-	( isset( $attr['inputborderColor'] ) ? $attr['inputborderColor'] : '' ),
-	( isset( $attr['inputborderStyle'] ) ? $attr['inputborderStyle'] : '' ),
-	( isset( $attr['inputborderHColor'] ) ? $attr['inputborderHColor'] : '' )
+	( isset( $attr['borderWidth'] ) ? $attr['borderWidth'] : '' ),
+	( isset( $attr['borderRadius'] ) ? $attr['borderRadius'] : '' ),
+	( isset( $attr['borderColor'] ) ? $attr['borderColor'] : '' ),
+	( isset( $attr['borderStyle'] ) ? $attr['borderStyle'] : '' ),
+	( isset( $attr['borderHColor'] ) ? $attr['borderHColor'] : '' )
 );
 $btn_border_css_tablet = UAGB_Block_Helper::uag_generate_border_css( $attr, 'btn', 'tablet' );
 $btn_border_css_mobile = UAGB_Block_Helper::uag_generate_border_css( $attr, 'btn', 'mobile' );

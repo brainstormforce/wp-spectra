@@ -49,11 +49,10 @@ $selectors = array(
 	'.uagb-column__wrap' => $style,
 );
 
-if ( 'none' !== $attr['borderStyle'] ) {
-	$selectors['.uagb-column__wrap:hover'] = array(
-		'border-color' => $attr['columnBorderHColor'],
-	);
-}
+$selectors['.uagb-column__wrap:hover'] = array(
+	'border-color' => $attr['columnBorderHColor'],
+);
+
 
 if ( 'image' === $bg_type ) {
 	if ( 'color' === $overlay_type ) {

@@ -8,6 +8,13 @@
  */
 
 $overall_border_css       = UAGB_Block_Helper::uag_generate_border_css( $attr, 'tab' );
+$overall_border_css       = UAGB_Block_Helper::uag_generate_deprecated_border_css(
+	$overall_border_css,
+	( isset( $attr['borderWidth'] ) ? $attr['borderWidth'] : '' ),
+	( isset( $attr['borderRadius'] ) ? $attr['borderRadius'] : '' ),
+	( isset( $attr['borderColor'] ) ? $attr['borderColor'] : '' ),
+	( isset( $attr['borderStyle'] ) ? $attr['borderStyle'] : '' )
+);
 $overall_border_cssTablet = UAGB_Block_Helper::uag_generate_border_css( $attr, 'tab', 'tablet' );
 $overall_border_cssMobile = UAGB_Block_Helper::uag_generate_border_css( $attr, 'tab', 'mobile' );
 // Adds Fonts.

@@ -8,14 +8,15 @@
  */
 
 $cta_border        = UAGB_Block_Helper::uag_generate_border_css( $attr, 'btn' );
-$cta_border_css        = UAGB_Block_Helper::uag_generate_deprecated_border_css(
-	$cta_border_css,
+$cta_border        = UAGB_Block_Helper::uag_generate_deprecated_border_css(
+	$cta_border,
 	( isset( $attr['ctaBorderWidth'] ) ? $attr['ctaBorderWidth'] : '' ),
 	( isset( $attr['ctaBorderRadius'] ) ? $attr['ctaBorderRadius'] : '' ),
 	( isset( $attr['ctaBorderColor'] ) ? $attr['ctaBorderColor'] : '' ),
 	( isset( $attr['ctaBorderStyle'] ) ? $attr['ctaBorderStyle'] : '' ),
 	( isset( $attr['ctaBorderHColor'] ) ? $attr['ctaBorderHColor'] : '' )
 );
+echo $attr['ctaBorderStyle'];
 $cta_border_tablet = UAGB_Block_Helper::uag_generate_border_css( $attr, 'btn', 'tablet' );
 $cta_border_mobile = UAGB_Block_Helper::uag_generate_border_css( $attr, 'btn', 'mobile' );
 
@@ -196,7 +197,7 @@ if ( 'button' === $attr['ctaType'] ) {
 	$selectors['.wp-block-uagb-call-to-action a.uagb-cta__button-link-wrapper:hover'] = array(
 		'color'            => $attr['ctaLinkHoverColor'],
 		'background-color' => $attr['ctaBgHoverColor'],
-		'border-color'     => $attr['ctaBorderHColor'],
+		'border-color'     => $attr['btnBorderHColor'],
 	);
 }
 
