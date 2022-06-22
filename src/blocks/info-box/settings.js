@@ -2365,7 +2365,7 @@ const Settings = ( props ) => {
 										<ResponsiveBorder
 											disabledBorderTitle= {false}
 											setAttributes={ setAttributes }
-											prefix={'cta'}
+											prefix={'btn'}
 											attributes={ attributes }
 											deviceType={deviceType}
 											disableBottomSeparator={ true }

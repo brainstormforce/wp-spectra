@@ -7,7 +7,7 @@
  * @package uagb
  */
 
-$cta_border_css        = UAGB_Block_Helper::uag_generate_border_css( $attr, 'cta' );
+$cta_border_css        = UAGB_Block_Helper::uag_generate_border_css( $attr, 'btn' );
 $cta_border_css        = UAGB_Block_Helper::uag_generate_deprecated_border_css(
 	$cta_border_css,
 	( isset( $attr['ctaBorderWidth'] ) ? $attr['ctaBorderWidth'] : '' ),
@@ -16,8 +16,8 @@ $cta_border_css        = UAGB_Block_Helper::uag_generate_deprecated_border_css(
 	( isset( $attr['ctaBorderStyle'] ) ? $attr['ctaBorderStyle'] : '' ),
 	( isset( $attr['ctaBorderHColor'] ) ? $attr['ctaBorderHColor'] : '' )
 );
-$cta_border_css_tablet = UAGB_Block_Helper::uag_generate_border_css( $attr, 'cta', 'tablet' );
-$cta_border_css_mobile = UAGB_Block_Helper::uag_generate_border_css( $attr, 'cta', 'mobile' );
+$cta_border_css_tablet = UAGB_Block_Helper::uag_generate_border_css( $attr, 'btn', 'tablet' );
+$cta_border_css_mobile = UAGB_Block_Helper::uag_generate_border_css( $attr, 'btn', 'mobile' );
 // Adds Fonts.
 UAGB_Block_JS::blocks_info_box_gfont( $attr );
 
@@ -495,10 +495,10 @@ if ( 'button' === $attr['ctaType'] ) {
 	$selectors[' .uagb-ifb-button-wrapper.wp-block-button:not(.is-style-outline) .wp-block-button__link:not(.has-background):hover'] = array(
 		'color'            => $attr['ctaLinkHoverColor'],
 		'background-color' => $attr['ctaBgHoverColor'],
-		'border-color'     => $attr['ctaBorderHColor'],
+		'border-color'     => $attr['btnBorderHColor'],
 	);
 	$selectors[' .uagb-infobox-cta-link:hover']                              = array(
-		'border-color' => $attr['ctaBorderHColor'],
+		'border-color' => $attr['btnBorderHColor'],
 	);
 	$selectors[' .uagb-ifb-button-wrapper .uagb-infobox-cta-link:hover svg'] = array(
 		'fill' => $attr['ctaLinkHoverColor'],

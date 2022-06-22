@@ -161,38 +161,63 @@ export const getBorderAttributes = ( prefix, defaultArgs = {} ) => {
 
 export const migrateBorderAttributes = ( prefix, borderWidth, borderRadius, color = {}, hoverColor = {}, borderStyle = {} ) => {
 	const attributes = {};
+
 	if( borderWidth.value ){
-		attributes[ prefix + 'BorderTopWidth' ] = borderWidth.value;
-		attributes[ prefix + 'BorderLeftWidth' ] = borderWidth.value;
-		attributes[ prefix + 'BorderRightWidth' ] = borderWidth.value;
-		attributes[ prefix + 'BorderBottomWidth' ] = borderWidth.value;
+
+		if( undefined === attributes[ prefix + 'BorderTopWidth' ] ) {
+			attributes[ prefix + 'BorderTopWidth' ] = borderWidth.value;
+		}
+		if( undefined === attributes[ prefix + 'BorderLeftWidth' ] ) {
+			attributes[ prefix + 'BorderLeftWidth' ] = borderWidth.value;
+		}
+		if( undefined === attributes[ prefix + 'BorderRightWidth' ] ) {
+			attributes[ prefix + 'BorderRightWidth' ] = borderWidth.value;
+		}
+		if( undefined === attributes[ prefix + 'BorderBottomWidth' ] ) {
+			attributes[ prefix + 'BorderBottomWidth' ] = borderWidth.value;
+		}
 		// reset
 		attributes[borderWidth.label] = '';
 	}
 
 	if( borderRadius.value ){
-		attributes[ prefix + 'BorderTopLeftRadius' ] = borderRadius.value;
-		attributes[ prefix + 'BorderTopRightRadius' ] = borderRadius.value;
-		attributes[ prefix + 'BorderBottomLeftRadius' ] = borderRadius.value;
-		attributes[ prefix + 'BorderBottomRightRadius' ] = borderRadius.value;
+		
+		if( undefined === attributes[ prefix + 'BorderTopLeftRadius' ] ) {
+			attributes[ prefix + 'BorderTopLeftRadius' ] = borderRadius.value;
+		}
+		if( undefined === attributes[ prefix + 'BorderTopRightRadius' ] ) {
+			attributes[ prefix + 'BorderTopRightRadius' ] = borderRadius.value;
+		}
+		if( undefined === attributes[ prefix + 'BorderBottomLeftRadius' ] ) {
+			attributes[ prefix + 'BorderBottomLeftRadius' ] = borderRadius.value;
+		}
+		if( undefined === attributes[ prefix + 'BorderBottomRightRadius' ] ) {
+			attributes[ prefix + 'BorderBottomRightRadius' ] = borderRadius.value;
+		}
 		// reset
 		attributes[ borderRadius.label ] = '';
 	}
 
 	if( color.value ){
-		attributes[ prefix + 'BorderColor' ] = color.value;
+		if( undefined === attributes[ prefix + 'BorderColor' ] ) {
+			attributes[ prefix + 'BorderColor' ] = color.value;
+		}
 		// reset
 		attributes[ color.label ] = '';
 	}
 
 	if( hoverColor.value ){
-		attributes[ prefix + 'BorderHColor' ] = hoverColor.value;
+		if( undefined === attributes[ prefix + 'BorderHColor' ] ) {
+			attributes[ prefix + 'BorderHColor' ] = hoverColor.value;
+		}
 		// reset
 		attributes[ hoverColor.label ] = '';
 	}
 
 	if( borderStyle.value ){
-		attributes[ prefix + 'BorderStyle' ] = borderStyle.value;
+		if( undefined === attributes[ prefix + 'BorderStyle' ] ) {
+			attributes[ prefix + 'BorderStyle' ] = borderStyle.value;
+		}
 		// reset
 		attributes[ borderStyle.label ] = '';
 	}

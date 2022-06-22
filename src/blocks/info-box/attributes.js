@@ -1,11 +1,11 @@
 /**
  * BLOCK: Info Box - Attributes
  */
-import { getBorderAttributes } from '@Controls/generateAttributes';
+ import { getBorderAttributes } from '@Controls/generateAttributes';
 
-const borderAttributes = getBorderAttributes( 'cta' );
+ const borderAttributes = getBorderAttributes( 'btn' );
 
-const attributes = {
+ const attributes = {
 	inheritFromTheme: {
 		type: 'boolean',
 		default: true,
@@ -1364,7 +1364,6 @@ const attributes = {
 		type: 'boolean',
 		default: false,
 	},
-	...borderAttributes,
 	//
 	iconView: {
 		type: 'string',
@@ -1385,7 +1384,9 @@ const attributes = {
 	iconBorderWidth: {
 		type: 'number',
 		default: 3,
-	}
+	},
+	...borderAttributes
 };
 
 export default attributes;
+ 

@@ -25,27 +25,7 @@ const UAGBInfoBox = ( props ) => {
 		setAttributes( { block_id: props.clientId.substr( 0, 8 ) } );
 
 		setAttributes( { classMigrate: true } );
-		const { ctaBorderStyle,ctaBorderWidth,ctaBorderRadius,ctaBorderColor,ctaBorderhoverColor } = props.attributes;
-		// Backward Border Migration
-		if( ctaBorderWidth || ctaBorderRadius || ctaBorderColor || ctaBorderhoverColor || ctaBorderStyle ){
-			const migrationAttributes = migrateBorderAttributes( 'cta', {
-				label: 'ctaBorderWidth',
-				value: ctaBorderWidth,
-			}, {
-				label: 'ctaBorderRadius',
-				value: ctaBorderRadius
-			}, {
-				label: 'ctaBorderColor',
-				value: ctaBorderColor
-			}, {
-				label: 'ctaBorderhoverColor',
-				value: ctaBorderhoverColor
-			},{
-				label: 'ctaBorderStyle',
-				value: ctaBorderStyle
-			} );
-			props.setAttributes( migrationAttributes )
-		}
+		
 		const {
 			ctaBtnVertPadding,
 			ctaBtnHrPadding,
@@ -53,6 +33,11 @@ const UAGBInfoBox = ( props ) => {
 			paddingBtnBottom,
 			paddingBtnRight,
 			paddingBtnLeft,
+			ctaBorderStyle,
+			ctaBorderWidth,
+			ctaBorderRadius,
+			ctaBorderColor,
+			ctaBorderhoverColor 
 		} = props.attributes;
 
 		if ( ctaBtnVertPadding ) {
@@ -71,7 +56,27 @@ const UAGBInfoBox = ( props ) => {
 				props.setAttributes( { paddingBtnLeft: ctaBtnHrPadding } );
 			}
 		}
-
+		// Backward Border Migration
+		if( ctaBorderWidth || ctaBorderRadius || ctaBorderColor || ctaBorderhoverColor || ctaBorderStyle ){
+			
+			const migrationAttributes = migrateBorderAttributes( 'btn', {
+				label: 'ctaBorderWidth',
+				value: ctaBorderWidth,
+			}, {
+				label: 'ctaBorderRadius',
+				value: ctaBorderRadius
+			}, {
+				label: 'ctaBorderColor',
+				value: ctaBorderColor
+			}, {
+				label: 'ctaBorderhoverColor',
+				value: ctaBorderhoverColor
+			},{
+				label: 'ctaBorderStyle',
+				value: ctaBorderStyle
+			} );
+			props.setAttributes( migrationAttributes )
+		}
 	}, [] );
 
 	useEffect( () => {
