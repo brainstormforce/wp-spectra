@@ -22,7 +22,6 @@ import {
 	InspectorControls,
 } from '@wordpress/block-editor';
 import {
-	RangeControl,
 	TextControl,
 	SelectControl,
 	__experimentalAlignmentMatrixControl as AlignmentMatrixControl,
@@ -243,7 +242,9 @@ export default function Settings( props ) {
 	const isWideAligned = [ 'wide', 'full' ].includes( align );
 	const isResizable = allowResize && ! ( isWideAligned && isLargeViewport );
 	const imageSizeOptions =  image?.media_details && imageSizes.reduce( ( acc, item ) => {
-		acc.push( { value: item.slug, label: item.name } )
+		if( image?.media_details?.sizes[item.slug] ){
+			acc.push( { value: item.slug, label: item.name } )
+		}
 		return acc;
 	}, [] );
 
@@ -1593,11 +1594,12 @@ export default function Settings( props ) {
 					setAttributes( { overlayBackground: value } )
 				}
 			/>
-			<RangeControl
+			<Range
 				label={ __(
 					'Overlay Opacity',
 					'ultimate-addons-for-gutenberg'
 				) }
+				setAttributes={ setAttributes }
 				value={ overlayOpacity }
 				onChange={ ( value ) =>
 					setAttributes( {
@@ -1607,12 +1609,14 @@ export default function Settings( props ) {
 				min={ 0 }
 				max={ 1 }
 				step={0.1}
+				displayUnit={ false }
 			/>
-			<RangeControl
+			<Range
 				label={ __(
 					'Overlay Hover Opacity',
 					'ultimate-addons-for-gutenberg'
 				) }
+				setAttributes={ setAttributes }
 				value={ overlayHoverOpacity }
 				onChange={ ( value ) =>
 					setAttributes( {
@@ -1622,6 +1626,7 @@ export default function Settings( props ) {
 				min={ 0 }
 				max={ 1 }
 				step={0.1}
+				displayUnit={ false }
 			/>
 		</UAGAdvancedPanelBody>
 	)
@@ -1810,7 +1815,7 @@ export default function Settings( props ) {
 								</>
 							)
 						}
-						{ captionStylePanel }
+						{ enableCaption && captionStylePanel }
 						{ 'none' !== seperatorStyle && layout === 'overlay' && seperatorStylePanel}
 					</InspectorTab>
 					<InspectorTab

@@ -10,6 +10,16 @@
 // Adds Fonts.
 UAGB_Block_JS::blocks_taxonomy_list_gfont( $attr );
 
+$block_name = 'taxonomy-list';
+
+$list_bottom_margin_fallback = UAGB_Block_Helper::get_fallback_number( $attr['listBottomMargin'], 'listBottomMargin', $block_name );
+$columns_fallback = UAGB_Block_Helper::get_fallback_number( $attr['columns'], 'columns', $block_name );
+$tcolumns_fallback = UAGB_Block_Helper::get_fallback_number( $attr['tcolumns'], 'tcolumns', $block_name );
+$mcolumns_fallback = UAGB_Block_Helper::get_fallback_number( $attr['mcolumns'], 'mcolumns', $block_name );
+$title_bottom_space_fallback = UAGB_Block_Helper::get_fallback_number( $attr['titleBottomSpace'], 'titleBottomSpace', $block_name );
+$row_gap_fallback = UAGB_Block_Helper::get_fallback_number( $attr['rowGap'], 'rowGap', $block_name );
+$column_gap_fallback = UAGB_Block_Helper::get_fallback_number( $attr['columnGap'], 'columnGap', $block_name );
+
 $selectors   = array();
 $t_selectors = array();
 $m_selectors = array();
@@ -38,9 +48,9 @@ if ( 'outset' === $attr['boxShadowPosition'] ) {
 $selectors = array(
 	'.uagb-taxonomy__outer-wrap.uagb-layout-grid'          => array(
 		'display'               => 'grid',
-		'grid-template-columns' => 'repeat(' . $attr['columns'] . ', 1fr)',
-		'grid-column-gap'       => UAGB_Helper::get_css_value( $attr['columnGap'], 'px' ),
-		'grid-row-gap'          => UAGB_Helper::get_css_value( $attr['rowGap'], 'px' ),
+		'grid-template-columns' => 'repeat(' . $columns_fallback . ', 1fr)',
+		'grid-column-gap'       => UAGB_Helper::get_css_value( $column_gap_fallback, 'px' ),
+		'grid-row-gap'          => UAGB_Helper::get_css_value( $row_gap_fallback, 'px' ),
 
 	),
 	'.uagb-layout-grid .uagb-taxomony-box'                 => array(
@@ -48,7 +58,7 @@ $selectors = array(
 		'padding-right'    => UAGB_Helper::get_css_value( $right_padding, $attr['contentPaddingUnit'] ),
 		'padding-top'      => UAGB_Helper::get_css_value( $top_padding, $attr['contentPaddingUnit'] ),
 		'padding-bottom'   => UAGB_Helper::get_css_value( $bottom_padding, $attr['contentPaddingUnit'] ),
-		'grid-column-gap'  => UAGB_Helper::get_css_value( $attr['columnGap'], 'px' ),
+		'grid-column-gap'  => UAGB_Helper::get_css_value( $column_gap_fallback, 'px' ),
 		'background-color' => $attr['bgColor'],
 		'text-align'       => $attr['alignment'],
 		'box-shadow'       => UAGB_Helper::get_css_value( $attr['boxShadowHOffset'], 'px' ) . ' ' . UAGB_Helper::get_css_value( $attr['boxShadowVOffset'], 'px' ) . ' ' . UAGB_Helper::get_css_value( $attr['boxShadowBlur'], 'px' ) . ' ' . UAGB_Helper::get_css_value( $attr['boxShadowSpread'], 'px' ) . ' ' . $attr['boxShadowColor'] . ' ' . $boxShadowPositionCSS,
@@ -57,7 +67,7 @@ $selectors = array(
 	'.uagb-layout-grid .uagb-tax-title'                    => array(
 		'color'         => $attr['titleColor'],
 		'margin-top'    => '0',
-		'margin-bottom' => UAGB_Helper::get_css_value( $attr['titleBottomSpace'], 'px' ),
+		'margin-bottom' => UAGB_Helper::get_css_value( $title_bottom_space_fallback, 'px' ),
 	),
 	'.uagb-layout-grid .uagb-tax-link'                     => array(
 		'color' => $attr['countColor'],
@@ -80,14 +90,14 @@ $selectors = array(
 		'color' => $attr['hoverlistTextColor'],
 	),
 	'.uagb-layout-list .uagb-tax-list .uagb-tax-link-wrap' => array(
-		'margin-bottom' => UAGB_Helper::get_css_value( $attr['listBottomMargin'], 'px' ),
+		'margin-bottom' => UAGB_Helper::get_css_value( $list_bottom_margin_fallback, 'px' ),
 	),
 	/* For Backword */
 	' .uagb-taxonomy-wrap.uagb-layout-grid'                => array(
 		'display'               => 'grid',
-		'grid-template-columns' => 'repeat(' . $attr['columns'] . ', 1fr)',
-		'grid-column-gap'       => UAGB_Helper::get_css_value( $attr['columnGap'], 'px' ),
-		'grid-row-gap'          => UAGB_Helper::get_css_value( $attr['rowGap'], 'px' ),
+		'grid-template-columns' => 'repeat(' . $columns_fallback . ', 1fr)',
+		'grid-column-gap'       => UAGB_Helper::get_css_value( $column_gap_fallback, 'px' ),
+		'grid-row-gap'          => UAGB_Helper::get_css_value( $row_gap_fallback, 'px' ),
 
 	),
 	' .uagb-layout-grid .uagb-taxomony-box'                => array(
@@ -95,7 +105,7 @@ $selectors = array(
 		'padding-right'    => UAGB_Helper::get_css_value( $right_padding, $attr['contentPaddingUnit'] ),
 		'padding-top'      => UAGB_Helper::get_css_value( $top_padding, $attr['contentPaddingUnit'] ),
 		'padding-bottom'   => UAGB_Helper::get_css_value( $bottom_padding, $attr['contentPaddingUnit'] ),
-		'grid-column-gap'  => UAGB_Helper::get_css_value( $attr['columnGap'], 'px' ),
+		'grid-column-gap'  => UAGB_Helper::get_css_value( $column_gap_fallback, 'px' ),
 		'background-color' => $attr['bgColor'],
 		'text-align'       => $attr['alignment'],
 		'box-shadow'       => UAGB_Helper::get_css_value( $attr['boxShadowHOffset'], 'px' ) . ' ' . UAGB_Helper::get_css_value( $attr['boxShadowVOffset'], 'px' ) . ' ' . UAGB_Helper::get_css_value( $attr['boxShadowBlur'], 'px' ) . ' ' . UAGB_Helper::get_css_value( $attr['boxShadowSpread'], 'px' ) . ' ' . $attr['boxShadowColor'] . ' ' . $boxShadowPositionCSS,
@@ -104,7 +114,7 @@ $selectors = array(
 	' .uagb-layout-grid .uagb-tax-title'                   => array(
 		'color'         => $attr['titleColor'],
 		'margin-top'    => '0',
-		'margin-bottom' => UAGB_Helper::get_css_value( $attr['titleBottomSpace'], 'px' ),
+		'margin-bottom' => UAGB_Helper::get_css_value( $title_bottom_space_fallback, 'px' ),
 	),
 	' .uagb-layout-grid .uagb-tax-link'                    => array(
 		'color' => $attr['countColor'],
@@ -124,7 +134,7 @@ $selectors = array(
 		'color' => $attr['hoverlistTextColor'],
 	),
 	' .uagb-layout-list .uagb-tax-list .uagb-tax-link-wrap' => array(
-		'margin-bottom' => UAGB_Helper::get_css_value( $attr['listBottomMargin'], 'px' ),
+		'margin-bottom' => UAGB_Helper::get_css_value( $list_bottom_margin_fallback, 'px' ),
 	),
 	/* End Backword */
 
@@ -153,7 +163,7 @@ $selectors[' .uagb-taxomony-box:hover'] = array(
 
 $t_selectors = array(
 	'.uagb-taxonomy-wrap.uagb-layout-grid'        => array( // For Backword.
-		'grid-template-columns' => 'repeat(' . $attr['tcolumns'] . ', 1fr)',
+		'grid-template-columns' => 'repeat(' . $tcolumns_fallback . ', 1fr)',
 	),
 	'.uagb-taxonomy__outer-wrap.uagb-layout-grid' => array(
 		'grid-column-gap' => UAGB_Helper::get_css_value( $attr['columnGapTablet'], 'px' ),
@@ -175,7 +185,7 @@ $t_selectors = array(
 
 $m_selectors = array(
 	'.uagb-taxonomy__outer-wrap.uagb-layout-grid' => array(
-		'grid-template-columns' => 'repeat(' . $attr['mcolumns'] . ', 1fr)',
+		'grid-template-columns' => 'repeat(' . $mcolumns_fallback . ', 1fr)',
 	),
 	'.uagb-taxonomy__outer-wrap.uagb-layout-grid' => array(
 		'grid-column-gap' => UAGB_Helper::get_css_value( $attr['columnGapMobile'], 'px' ),

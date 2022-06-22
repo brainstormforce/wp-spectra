@@ -87,6 +87,19 @@ function styling( props ) {
 		titleFontStyle,
 		descFontStyle,
 		prefixFontStyle,
+		// letter spacing
+		titleLetterSpacing,
+		titleLetterSpacingTablet,
+		titleLetterSpacingMobile,
+		titleLetterSpacingType,
+		prefixLetterSpacing,
+		prefixLetterSpacingTablet,
+		prefixLetterSpacingMobile,
+		prefixLetterSpacingType,
+		descLetterSpacing,
+		descLetterSpacingTablet,
+		descLetterSpacingMobile,
+		descLetterSpacingType,
 	} = props.attributes;
 
 	const imgWidthFallback = getFallbackNumber( imgWidth, 'imgWidth', blockName );
@@ -117,6 +130,7 @@ function styling( props ) {
 			'color': descColor,
 			'margin-bottom': generateCSSUnit( descSpaceFallback, 'px' ),
 			'margin-top': generateCSSUnit( prefixSpaceFallback, 'px' ),
+			'letter-spacing': generateCSSUnit( descLetterSpacing, descLetterSpacingType ),
 		},
 		' .rich-text.block-editor-rich-text__editable.uagb-team__prefix': {
 			'font-family': prefixFontFamily,
@@ -130,6 +144,7 @@ function styling( props ) {
 				prefixLineHeightType
 			),
 			'color': prefixColor,
+			'letter-spacing': generateCSSUnit( prefixLetterSpacing, prefixLetterSpacingType ),
 		},
 		' .uagb-team__social-icon a': {
 			'color': socialColor,
@@ -238,6 +253,7 @@ function styling( props ) {
 		'line-height': generateCSSUnit( titleLineHeight, titleLineHeightType ),
 		'color': titleColor,
 		'margin-bottom': generateCSSUnit( titleSpaceFallback, 'px' ),
+		'letter-spacing': generateCSSUnit( titleLetterSpacing, titleLetterSpacingType ),
 	};
 
 	mobileSelectors = {
@@ -252,12 +268,14 @@ function styling( props ) {
 			),
 			'margin-top': generateCSSUnit( prefixSpaceMobile, 'px' ),
 			'margin-bottom': generateCSSUnit( descSpaceMobile, 'px' ),
+			'letter-spacing': generateCSSUnit( descLetterSpacingMobile, descLetterSpacingType ),
 		},
 		' .rich-text.block-editor-rich-text__editable.uagb-team__prefix': {
 			'font-size': generateCSSUnit(
 				prefixFontSizeMobile,
 				prefixFontSizeType
 			),
+			'letter-spacing': generateCSSUnit( prefixLetterSpacingMobile, prefixLetterSpacingType ),
 		},
 		' .uagb-team__social-icon a': {
 			'font-size': generateCSSUnit(
@@ -306,6 +324,7 @@ function styling( props ) {
 			'.rich-text.block-editor-rich-text__editable.uagb-team__title'
 	] = {
 		'margin-bottom': generateCSSUnit( titleSpaceMobile, 'px' ),
+		'letter-spacing': generateCSSUnit( titleLetterSpacingMobile, titleLetterSpacingType ),
 	};
 	tabletSelectors = {
 		' img': {
@@ -319,12 +338,14 @@ function styling( props ) {
 			),
 			'margin-top': generateCSSUnit( prefixSpaceTablet, 'px' ),
 			'margin-bottom': generateCSSUnit( descSpaceTablet, 'px' ),
+			'letter-spacing': generateCSSUnit( descLetterSpacingTablet, descLetterSpacingType ),
 		},
 		' .rich-text.block-editor-rich-text__editable.uagb-team__prefix': {
 			'font-size': generateCSSUnit(
 				prefixFontSizeTablet,
 				prefixFontSizeType
 			),
+			'letter-spacing': generateCSSUnit( prefixLetterSpacingTablet, prefixLetterSpacingType ),
 		},
 		' .uagb-team__social-icon a': {
 			'font-size': generateCSSUnit(
@@ -373,6 +394,7 @@ function styling( props ) {
 			'.rich-text.block-editor-rich-text__editable.uagb-team__title'
 	] = {
 		'margin-bottom': generateCSSUnit( titleSpaceTablet, 'px' ),
+		'letter-spacing': generateCSSUnit( titleLetterSpacingTablet, titleLetterSpacingType ),
 	};
 	mobileSelectors[ ' ' + tag + '.uagb-team__title' ] = {
 		'font-size': generateCSSUnit( titleFontSizeMobile, titleFontSizeType ),

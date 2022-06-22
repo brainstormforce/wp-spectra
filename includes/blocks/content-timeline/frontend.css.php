@@ -10,6 +10,14 @@
 // Adds Fonts.
 UAGB_Block_JS::blocks_content_timeline_gfont( $attr );
 
+$icon_size_fallback         = UAGB_Block_Helper::get_fallback_number( $attr['iconSize'], 'iconSize', $attr['blockName'] );
+$connector_bg_size_fallback = UAGB_Block_Helper::get_fallback_number( $attr['connectorBgsize'], 'connectorBgsize', $attr['blockName'] );
+$border_width_fallback      = UAGB_Block_Helper::get_fallback_number( $attr['borderwidth'], 'borderwidth', $attr['blockName'] );
+$separator_width_fallback   = UAGB_Block_Helper::get_fallback_number( $attr['separatorwidth'], 'separatorwidth', $attr['blockName'] );
+$head_space_fallback        = UAGB_Block_Helper::get_fallback_number( $attr['headSpace'], 'headSpace', $attr['blockName'] );
+$border_radius_fallback     = UAGB_Block_Helper::get_fallback_number( $attr['borderRadius'], 'borderRadius', $attr['blockName'] );
+$date_bottom_space_fallback = UAGB_Block_Helper::get_fallback_number( $attr['dateBottomspace'], 'dateBottomspace', $attr['blockName'] );
+
 $selectors   = array();
 $t_selectors = array();
 $m_selectors = array();
@@ -24,20 +32,20 @@ $bottom_padding = isset( $attr['bottomPadding'] ) ? $attr['bottomPadding'] : $at
 $left_padding   = isset( $attr['leftPadding'] ) ? $attr['leftPadding'] : $attr['bgPadding'];
 $right_padding  = isset( $attr['rightPadding'] ) ? $attr['rightPadding'] : $attr['bgPadding'];
 
-$connector_size = UAGB_Helper::get_css_value( $attr['connectorBgsize'], 'px' );
+$connector_size = UAGB_Helper::get_css_value( $connector_bg_size_fallback, 'px' );
 
 $selectors = array(
 	' .uagb-timeline__heading'                             => array(
 		'text-align'    => $attr['align'],
 		'color'         => $attr['headingColor'],
-		'margin-bottom' => UAGB_Helper::get_css_value( $attr['headSpace'], 'px' ),
+		'margin-bottom' => UAGB_Helper::get_css_value( $head_space_fallback, 'px' ),
 	),
 	' .uagb-timeline__marker.uagb-timeline__in-view-icon svg' => array(
 		'fill'  => $attr['iconFocus'],
 		'color' => $attr['iconFocus'],
 	),
 	' .uagb-timeline__heading-text'                        => array(
-		'margin-bottom' => UAGB_Helper::get_css_value( $attr['headSpace'], 'px' ),
+		'margin-bottom' => UAGB_Helper::get_css_value( $head_space_fallback, 'px' ),
 	),
 	' .uagb-timeline-desc-content'                         => array(
 		'text-align' => $attr['align'],
@@ -93,23 +101,23 @@ $selectors = array(
 	),
 	' .uagb-timeline__line'                                => array(
 		'background-color' => $attr['separatorColor'],
-		'width'            => UAGB_Helper::get_css_value( $attr['separatorwidth'], 'px' ),
+		'width'            => UAGB_Helper::get_css_value( $separator_width_fallback, 'px' ),
 	),
 	'.uagb-timeline__right-block .uagb-timeline__line'     => array(
-		'right' => 'calc( ' . $attr['connectorBgsize'] . 'px / 2 )',
+		'right' => 'calc( ' . $connector_bg_size_fallback . 'px / 2 )',
 	),
 	'.uagb-timeline__left-block .uagb-timeline__line'      => array(
-		'left' => 'calc( ' . $attr['connectorBgsize'] . 'px / 2 )',
+		'left' => 'calc( ' . $connector_bg_size_fallback . 'px / 2 )',
 	),
 	'.uagb-timeline__center-block .uagb-timeline__line'    => array(
-		'right' => 'calc( ' . $attr['connectorBgsize'] . 'px / 2 )',
+		'right' => 'calc( ' . $connector_bg_size_fallback . 'px / 2 )',
 	),
 	' .uagb-timeline__marker'                              => array(
 		'background-color' => $attr['separatorBg'],
 		'min-height'       => $connector_size,
 		'min-width'        => $connector_size,
 		'line-height'      => $connector_size,
-		'border'           => $attr['borderwidth'] . 'px solid' . $attr['separatorBorder'],
+		'border'           => $border_width_fallback . 'px solid' . $attr['separatorBorder'],
 	),
 	'.uagb-timeline__left-block .uagb-timeline__left .uagb-timeline__arrow' => array(
 		'height' => $connector_size,
@@ -136,12 +144,12 @@ $selectors = array(
 		'margin-bottom' => UAGB_Helper::get_css_value( $bottom_margin, $attr['marginUnit'] ),
 	),
 	' .uagb-timeline__date-hide.uagb-timeline__date-inner' => array(
-		'margin-bottom' => UAGB_Helper::get_css_value( $attr['dateBottomspace'], 'px' ),
+		'margin-bottom' => UAGB_Helper::get_css_value( $date_bottom_space_fallback, 'px' ),
 		'color'         => $attr['dateColor'],
 		'text-align'    => $attr['align'],
 	),
 	' .uagb-timeline__date-hide.uagb-timeline__inner-date-new' => array(
-		'margin-bottom' => UAGB_Helper::get_css_value( $attr['dateBottomspace'], 'px' ),
+		'margin-bottom' => UAGB_Helper::get_css_value( $date_bottom_space_fallback, 'px' ),
 		'color'         => $attr['dateColor'],
 		'text-align'    => $attr['align'],
 	),
@@ -169,7 +177,7 @@ $selectors = array(
 	),
 	' .uagb-timeline__events-inner-new'                    => array(
 		'background-color' => $attr['backgroundColor'],
-		'border-radius'    => UAGB_Helper::get_css_value( $attr['borderRadius'], 'px' ),
+		'border-radius'    => UAGB_Helper::get_css_value( $border_radius_fallback, 'px' ),
 		'padding-left'     => UAGB_Helper::get_css_value( $top_padding, $attr['paddingUnit'] ),
 		'padding-right'    => UAGB_Helper::get_css_value( $right_padding, $attr['paddingUnit'] ),
 		'padding-top'      => UAGB_Helper::get_css_value( $top_padding, $attr['paddingUnit'] ),
@@ -177,7 +185,7 @@ $selectors = array(
 	),
 	' .uagb-timeline__marker svg'                          => array(
 		'color' => $attr['iconColor'],
-		'width' => UAGB_Helper::get_css_value( $attr['iconSize'], 'px' ),
+		'width' => UAGB_Helper::get_css_value( $icon_size_fallback, 'px' ),
 		'fill'  => $attr['iconColor'],
 	),
 	' .uagb-timeline__marker.uagb-timeline__in-view-icon'  => array(

@@ -133,7 +133,7 @@ const attributes = {
 	},
 	buttonIconSize: {
 		type: 'number',
-		default: 15,
+		default: 17,
 		UAGCopyPaste: {
 			styleType: 'btn-icon-size'
 		}
