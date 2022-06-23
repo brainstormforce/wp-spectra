@@ -4,6 +4,7 @@
 
 import generateCSS from '@Controls/generateCSS';
 import generateCSSUnit from '@Controls/generateCSSUnit';
+import generateBorderCSS from '@Controls/generateBorderCSS';
 
 function testimonialStyle( props ) {
 	const {
@@ -72,10 +73,6 @@ function testimonialStyle( props ) {
 		gradientType,
 		gradientAngle,
 		gradientPosition,
-		borderStyle,
-		borderWidth,
-		borderRadius,
-		borderColor,
 		arrowColor,
 		test_item_count,
 		columns,
@@ -88,7 +85,6 @@ function testimonialStyle( props ) {
 		columnGapType,
 		descSpaceType,
 		nameSpaceType,
-		borderHoverColor,
 		gradientValue,
 		descTransform,
 		descDecoration,
@@ -129,6 +125,7 @@ function testimonialStyle( props ) {
 		nameFontStyle,
 		companyFontStyle,
 		descFontStyle,
+		overallBorderHColor,
 
 		// letter spacing
 		nameLetterSpacing,
@@ -144,6 +141,10 @@ function testimonialStyle( props ) {
 		companyLetterSpacingMobile,
 		companyLetterSpacingType,
 	} = props.attributes;
+
+	const overallBorderCSS = generateBorderCSS( props.attributes, 'overall' )
+	const overallBorderCSSTablet = generateBorderCSS( props.attributes, 'overall', 'tablet' )
+	const overallBorderCSSMobile = generateBorderCSS( props.attributes, 'overall', 'mobile' )
 
 	let imgAlign = 'center';
 
@@ -260,14 +261,9 @@ function testimonialStyle( props ) {
 			'height': generateCSSUnit( arrowSize, arrowSizeType ),
 			'width': generateCSSUnit( arrowSize, arrowSizeType ),
 		},
-		' .uagb-testimonial__wrap .uagb-tm__content': {
-			'border-color': borderColor,
-			'border-style': borderStyle,
-			'border-width': generateCSSUnit( borderWidth, 'px' ),
-			'border-radius': generateCSSUnit( borderRadius, 'px' ),
-		},
+		' .uagb-testimonial__wrap .uagb-tm__content': overallBorderCSS,
 		' .uagb-testimonial__wrap .uagb-tm__content:hover': {
-			'border-color': borderHoverColor,
+			'border-color': overallBorderHColor,
 		}
 
 	};
@@ -316,6 +312,7 @@ function testimonialStyle( props ) {
 			),
 			'letter-spacing': generateCSSUnit( descLetterSpacingMobile, descLetterSpacingType ),
 		},
+		' .uagb-testimonial__wrap .uagb-tm__content': overallBorderCSSMobile,
 		' .uagb-testimonial__wrap .uagb-tm__image-content': {
 			'text-align': headingAlignMobile,
 			'padding-top': generateCSSUnit(
@@ -391,6 +388,7 @@ function testimonialStyle( props ) {
 			'padding-right': generateCSSUnit( columnGapTablet / 2, columnGapType ),
 			'margin-bottom': generateCSSUnit( rowGapTablet, rowGapType ),
 		},
+		' .uagb-testimonial__wrap .uagb-tm__content': overallBorderCSSTablet,
 		' .uagb-testimonial__wrap .uagb-tm__image-content': {
 			'text-align': headingAlignTablet,
 			'padding-top': generateCSSUnit(

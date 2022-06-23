@@ -1,3 +1,7 @@
+import {getBorderAttributes} from '@Controls/generateAttributes';
+
+const btnBorderAttributes = getBorderAttributes( 'btn' )
+
 const attributes = {
 	block_id: {
 		type: 'string',
@@ -62,36 +66,21 @@ const attributes = {
 	borderStyle: {
 		type: 'string',
 		default: '',
-		UAGCopyPaste: {
-			styleType: 'btn-border-hover-color'
-		}
 	},
 	borderWidth: {
 		type: 'number',
 		default: '',
-		UAGCopyPaste: {
-			styleType: 'btn-border-width'
-		}
 	},
 	borderRadius: {
 		type: 'number',
 		default: '',
-		UAGCopyPaste: {
-			styleType: 'btn-border-radius'
-		}
 	},
 	borderColor: {
 		type: 'string',
 		default: '',
-		UAGCopyPaste: {
-			styleType: 'btn-border-color'
-		}
 	},
 	borderHoverColor: {
 		type: 'string',
-		UAGCopyPaste: {
-			styleType: 'btn-border-hover-color'
-		}
 	},
 
 	// Background
@@ -632,6 +621,7 @@ const attributes = {
 		type: 'boolean',
 		default: false,
 	},
+	...btnBorderAttributes,
 
 	// letter spacing
 	titleLetterSpacing: {

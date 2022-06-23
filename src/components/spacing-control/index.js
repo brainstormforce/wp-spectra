@@ -32,6 +32,7 @@ const SpacingControl = ( props ) => {
 		unit,
 		mUnit,
 		tUnit,
+		disableUnits,
 		valueBottom,
 		valueLeft,
 		valueRight,
@@ -525,7 +526,7 @@ const SpacingControl = ( props ) => {
 								'ultimate-addons-for-gutenberg'
 							) }
 						>
-							{ onUnitSizeClick( unitSizes ) }
+							{ !disableUnits && onUnitSizeClick( unitSizes ) }
 						</ButtonGroup>
 					</div>
 				</div>

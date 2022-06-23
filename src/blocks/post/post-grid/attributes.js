@@ -210,13 +210,6 @@ const attributes = {
 		type    : 'string',
 		default : __( 'Read More', 'ultimate-addons-for-gutenberg' ),
 	},
-	borderWidth             : {
-		type    : 'number',
-		UAGCopyPaste: {
-			styleType: 'post-border-width'
-		},
-		default : 1,
-	},
 	btnHPadding             : {
 		type    : 'number',
 		default : 10,
@@ -231,27 +224,34 @@ const attributes = {
 			styleType: 'btn-vertical-padding'
 		},
 	},
-	borderStyle             : {
+	btnBorderWidth             : {
+		type    : 'number',
+		UAGCopyPaste: {
+			styleType: 'post-border-width'
+		},
+		default : 1,
+	},
+	btnBorderStyle             : {
 		type    : 'string',
 		default : 'none',
 		UAGCopyPaste: {
 			styleType: 'btn-border-style'
 		},
 	},
-	borderColor             : {
+	btnBorderColor             : {
 		type    : 'string',
 		default : '#fafafa',
 		UAGCopyPaste: {
 			styleType: 'btn-border-color'
 		},
 	},
-	borderHColor            : {
+	btnBorderHColor            : {
 		type : 'string',
 		UAGCopyPaste: {
 			styleType: 'btn-border-hover-color'
 		},
 	},
-	borderRadius            : {
+	btnBorderRadius            : {
 		type    : 'number',
 		default : 0,
 		UAGCopyPaste: {
