@@ -1406,10 +1406,10 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				$gen_border_css['border-bottom-left-radius']  = UAGB_Helper::get_css_value( $attr[ $prefix . 'BorderBottomLeftRadius' ], $attr[ $prefix . 'BorderRadiusUnit' ] );
 				$gen_border_css['border-bottom-right-radius'] = UAGB_Helper::get_css_value( $attr[ $prefix . 'BorderBottomRightRadius' ], $attr[ $prefix . 'BorderRadiusUnit' ] );
 			}
-			$borderStyle                           = $attr[ $prefix . 'BorderStyle' ];
-			$borderColor                           = $attr[ $prefix . 'BorderColor' ];
-			$gen_border_css['border-style']        = $borderStyle;
-			$gen_border_css['border-color']        = $borderColor;
+			$borderStyle                    = $attr[ $prefix . 'BorderStyle' ];
+			$borderColor                    = $attr[ $prefix . 'BorderColor' ];
+			$gen_border_css['border-style'] = $borderStyle;
+			$gen_border_css['border-color'] = $borderColor;
 			return $gen_border_css;
 		}
 

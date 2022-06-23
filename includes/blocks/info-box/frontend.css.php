@@ -475,13 +475,13 @@ $t_selectors = array(
 	),
 );
 if ( 'button' === $attr['ctaType'] ) {
-	$selectors[' .uagb-infobox-cta-link svg']                          = array(
+	$selectors[' .uagb-infobox-cta-link svg']                      = array(
 		'font-size'   => $cta_icon_size,
 		'height'      => $cta_icon_size,
 		'width'       => $cta_icon_size,
 		'line-height' => $cta_icon_size,
 	);
-	$selectors[' .uagb-ifb-button-wrapper .uagb-infobox-cta-link']     = 
+	$selectors[' .uagb-ifb-button-wrapper .uagb-infobox-cta-link'] =
 		array(
 			'color'            => $attr['ctaBtnLinkColor'],
 			'background-color' => $attr['ctaBgColor'],
@@ -489,8 +489,8 @@ if ( 'button' === $attr['ctaType'] ) {
 			'padding-bottom'   => UAGB_Helper::get_css_value( $btn_padding_bottom, $attr['paddingBtnUnit'] ),
 			'padding-left'     => UAGB_Helper::get_css_value( $btn_padding_left, $attr['paddingBtnUnit'] ),
 			'padding-right'    => UAGB_Helper::get_css_value( $btn_padding_right, $attr['paddingBtnUnit'] ),
-		
-	);
+
+		);
 	$selectors[' .uagb-ifb-button-wrapper .uagb-infobox-cta-link svg'] = array(
 		'fill' => $attr['ctaBtnLinkColor'],
 	);
