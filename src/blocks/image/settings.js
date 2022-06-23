@@ -34,6 +34,8 @@ import ImageSizeControl from '@Components/image-size-control'
 import { store as coreStore } from '@wordpress/core-data';
 // Extend component
 import UAGAdvancedPanelBody from '@Components/advanced-panel-body';
+import {pickRelevantMediaFiles } from './utils'
+
 
 
 export default function Settings( props ) {
@@ -43,6 +45,7 @@ export default function Settings( props ) {
 	const {
 		layout,
 		id,
+		url,
 		width,
 		widthTablet,
 		widthMobile,
@@ -224,6 +227,13 @@ export default function Settings( props ) {
 		[ id, isSelected ]
 	);
 
+	const { imageDefaultSize } = useSelect( ( select ) => {
+		const { getSettings } = select( blockEditorStore );
+		// eslint-disable-next-line no-shadow
+		const {imageDefaultSize} = getSettings();
+		return {imageDefaultSize}
+	}, [] );
+
 	useEffect( () => {
 		if( !sizeSlug ) {
 			return;
@@ -289,6 +299,50 @@ export default function Settings( props ) {
 	}
 
 	/*
+	 * Event to set Image as null while removing.
+	 */
+	const onRemoveImage = () => {
+		setAttributes( {
+			url: undefined,
+			urlTablet: undefined,
+			urlMobile: undefined,
+			alt: undefined,
+			id: undefined,
+			title: undefined,
+			caption: undefined,
+			width: undefined,
+			widthTablet: undefined,
+			widthMobile: undefined,
+			height: undefined,
+			heightTablet: undefined,
+			heightMobile: undefined
+		} );
+	};
+
+	/*
+	 * Event to set Image as while adding.
+	 */
+	const onSelectImage = ( media ) => {
+		if ( ! media || ! media.url ) {
+			setAttributes( {
+				url: undefined,
+				alt: undefined,
+				id: undefined,
+				title: undefined,
+				caption: undefined,
+			} );
+
+			return;
+		}
+
+		const mediaAttributes = pickRelevantMediaFiles( media, imageDefaultSize );
+
+		setAttributes( mediaAttributes );
+	};
+
+
+
+	/*
 	 * Event to set Image as while adding.
 	 */
 	const onSelectCustomMaskShape = ( media ) => {
@@ -315,6 +369,14 @@ export default function Settings( props ) {
 			title={ __( 'Image', 'ultimate-addons-for-gutenberg' ) }
 			initialOpen={ true }
 		>
+			<UAGImage
+				label={' '}
+				onSelectImage={onSelectImage}
+				backgroundImage={{
+					url
+				}}
+				onRemoveImage={onRemoveImage}
+			/>
 			<MultiButtonsControl
 				setAttributes={ setAttributes }
 				label={ __(

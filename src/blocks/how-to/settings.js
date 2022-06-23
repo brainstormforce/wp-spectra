@@ -5,8 +5,6 @@ import TypographyControl from '@Components/typography';
 import './style.scss';
 import { __ } from '@wordpress/i18n';
 import {
-	AlignmentToolbar,
-	BlockControls,
 	InspectorControls,
 } from '@wordpress/block-editor';
 import AdvancedPopColorControl from '@Components/color-control/advanced-pop-color-control.js';
@@ -988,22 +986,9 @@ const Settings = ( props ) => {
 		);
 	};
 
-	const blockControls = () => {
-		return (
-			<BlockControls key="index">
-				<AlignmentToolbar
-					value={ overallAlignment }
-					onChange={ ( value ) =>
-						setAttributes( { overallAlignment: value } )
-					}
-				/>
-			</BlockControls>
-		);
-	};
 
 	return (
 		<Suspense fallback={ lazyLoader() }>
-			{ blockControls() }
 			<InspectorControls>
 				<InspectorTabs>
 					<InspectorTab { ...UAGTabs.general }>

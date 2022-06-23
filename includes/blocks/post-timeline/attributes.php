@@ -13,6 +13,8 @@ return array(
 	'postsOffset'                => 0,
 	'exerptLength'               => 15,
 	'align'                      => '',
+	'alignTablet'                => '',
+	'alignMobile'                => '',
 	'headingColor'               => '',
 	'subHeadingColor'            => '',
 	'separatorBg'                => '#eee',

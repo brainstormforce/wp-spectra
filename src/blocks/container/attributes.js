@@ -53,7 +53,7 @@ const attributes = {
 	},
 	innerContentCustomWidthMobile: {
 		type: 'number',
-		default: 320
+		default: 426
 	},
 	innerContentCustomWidthType: {
 		type: 'string',

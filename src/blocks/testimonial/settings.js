@@ -17,8 +17,6 @@ import InspectorTab, {
 	UAGTabs,
 } from '@Components/inspector-tabs/InspectorTab.js';
 import {
-	AlignmentToolbar,
-	BlockControls,
 	InspectorControls,
 } from '@wordpress/block-editor';
 import { SelectControl, ToggleControl, Icon } from '@wordpress/components';
@@ -1580,22 +1578,9 @@ const Settings = ( props ) => {
 		);
 	};
 
-	const blockControls = () => {
-		return (
-			<BlockControls key="controls">
-				<AlignmentToolbar
-					value={ headingAlign }
-					onChange={ ( value ) =>
-						setAttributes( { headingAlign: value } )
-					}
-				/>
-			</BlockControls>
-		);
-	};
 
 	return (
 		<Suspense fallback={ lazyLoader() }>
-			{ blockControls() }
 			{ inspectControl() }
 			{ loadNameGoogleFonts }
 			{ loadCompanyGoogleFonts }

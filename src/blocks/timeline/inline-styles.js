@@ -52,6 +52,8 @@ function contentTimelineStyle( props ) {
 		headLineHeightTablet,
 		headLineHeightMobile,
 		align,
+		alignTablet,
+		alignMobile,
 		headingColor,
 		headSpace,
 		headSpaceTablet,
@@ -179,8 +181,6 @@ function contentTimelineStyle( props ) {
 	const authorSpaceFallback = getFallbackNumber( authorSpace, 'authorSpace', blockName );
 	const dateBottomSpaceFallback = getFallbackNumber( dateBottomspace, 'dateBottomspace', blockName );
 	const ctaBottomSpacingFallback = getFallbackNumber( ctaBottomSpacing, 'ctaBottomSpacing', blockName );
-
-	const respSelectors = 'left';
 
 	const selectors = {
 		' .uagb-timeline__heading': {
@@ -430,7 +430,14 @@ function contentTimelineStyle( props ) {
 
 	/* Generate Responsive CSS for timeline */
 	const tabletSelectors = {
+		' .uagb-timeline__day-new': {
+			'text-align': alignTablet,
+		},
+		' .uagb-timeline__date-inner': {
+			'text-align': alignTablet,
+		},
 		' .uagb-timeline__date-hide.uagb-timeline__date-inner': {
+			'text-align': alignTablet,
 			'font-size': generateCSSUnit(
 				dateFontsizeTablet,
 				dateFontsizeType
@@ -443,6 +450,7 @@ function contentTimelineStyle( props ) {
 			'letter-spacing': generateCSSUnit( dateLetterSpacingTablet, dateLetterSpacingType ),
 		},
 		' .uagb-timeline__date-hide.uagb-timeline__inner-date-new': {
+			'text-align': alignTablet,
 			'font-size': generateCSSUnit(
 				dateFontsizeTablet,
 				dateFontsizeType
@@ -467,6 +475,7 @@ function contentTimelineStyle( props ) {
 			'letter-spacing': generateCSSUnit( dateLetterSpacingTablet, dateLetterSpacingType ),
 		},
 		' .uagb-timeline__heading': {
+			'text-align': alignTablet,
 			'font-size': generateCSSUnit(
 				headFontSizeTablet,
 				headFontSizeType
@@ -480,6 +489,7 @@ function contentTimelineStyle( props ) {
 			'letter-spacing': generateCSSUnit( headLetterSpacingTablet, headLetterSpacingType ),
 		},
 		' .uagb-timeline__heading a': {
+			'text-align': alignTablet,
 			'font-size': generateCSSUnit(
 				headFontSizeTablet,
 				headFontSizeType
@@ -493,6 +503,7 @@ function contentTimelineStyle( props ) {
 			'letter-spacing': generateCSSUnit( headLetterSpacingTablet, headLetterSpacingType ),
 		},
 		' .uagb-timeline-desc-content': {
+			'text-align': alignTablet,
 			'font-size': generateCSSUnit(
 				subHeadFontSizeTablet,
 				subHeadFontSizeType
@@ -543,40 +554,41 @@ function contentTimelineStyle( props ) {
 				tabletMarginUnit
 			),
 		},
-		'.uagb-timeline__center-block.uagb-timeline__responsive-tablet .uagb-timeline__heading': {
-			'text-align': respSelectors,
-		},
-		'.uagb-timeline__center-block.uagb-timeline__responsive-tablet .uagb-timeline-desc-content': {
-			'text-align': respSelectors,
-		},
-		'.uagb-timeline__center-block.uagb-timeline__responsive-tablet .uagb-timeline__day-new': {
-			'text-align': respSelectors,
-		},
-		'.uagb-timeline__center-block.uagb-timeline__responsive-tablet .uagb-timeline__date-inner': {
-			'text-align': respSelectors,
-		},
-		'.uagb-timeline__center-block.uagb-timeline__responsive-tablet .uagb-timeline__date-hide.uagb-timeline__date-inner': {
-			'text-align': respSelectors,
-		},
 		'.uagb-timeline__center-block.uagb-timeline__responsive-tablet .uagb-timeline__day-right .uagb-timeline__arrow:after': {
 			'border-right-color': backgroundColor,
 		},
+		// Responsive alignment CSS
+		
+		'.uagb-timeline__center-block.uagb-timeline__responsive-tablet .uagb-timeline__heading': {
+			'text-align': alignTablet,
+		},
+		'.uagb-timeline__center-block.uagb-timeline__responsive-tablet .uagb-timeline-desc-content': {
+			'text-align': alignTablet,
+		},
+		'.uagb-timeline__center-block.uagb-timeline__responsive-tablet .uagb-timeline__day-new': {
+			'text-align': alignTablet,
+		},
+		'.uagb-timeline__center-block.uagb-timeline__responsive-tablet .uagb-timeline__date-inner': {
+			'text-align': alignTablet,
+		},
+		'.uagb-timeline__center-block.uagb-timeline__responsive-tablet .uagb-timeline__date-hide.uagb-timeline__date-inner': {
+			'text-align': alignTablet,
+		},
 		'.uagb-timeline__center-block.uagb-timeline__responsive-tablet .uagb-timeline__author-link': {
-			'text-align': respSelectors,
+			'text-align': alignTablet,
 		},
 		'.uagb-timeline__center-block.uagb-timeline__responsive-tablet .uagb-timeline__link_parent': {
-			'text-align': respSelectors,
+			'text-align': alignTablet,
 		},
 		'.uagb-timeline__center-block.uagb-timeline__responsive-tablet .uagb-timeline__link': {
-			'text-align': respSelectors,
+			'text-align': alignTablet,
 		},
 		'.uagb-timeline__center-block.uagb-timeline__responsive-tablet .uagb-timeline__image a': {
-			'text-align': respSelectors,
+			'text-align': alignTablet,
 		},
 		'.uagb-timeline__center-block.uagb-timeline__responsive-tablet a.uagb-timeline__image': {
-			'text-align': respSelectors,
+			'text-align': alignTablet,
 		},
-
 
 		// CTA AUTHOR.
 		' .dashicons-admin-users': {
@@ -590,7 +602,11 @@ function contentTimelineStyle( props ) {
 			),
 			'letter-spacing': generateCSSUnit( authorLetterSpacingTablet, authorLetterSpacingType ),
 		},
+		' .uagb-timeline__link_parent': {
+			'text-align': alignTablet,
+		},
 		' .uagb-timeline__author-link': {
+			'text-align': alignTablet,
 			'font-size': generateCSSUnit(
 				authorFontSizeTablet,
 				authorFontSizeType
@@ -602,6 +618,7 @@ function contentTimelineStyle( props ) {
 			'letter-spacing': generateCSSUnit( authorLetterSpacingTablet, authorLetterSpacingType ),
 		},
 		' .uagb-timeline__link': {
+			'text-align': alignTablet,
 			'font-size': generateCSSUnit( ctaFontSizeTablet, ctaFontSizeType ),
 			'line-height': generateCSSUnit(
 				ctaLineHeightTablet,
@@ -632,7 +649,14 @@ function contentTimelineStyle( props ) {
 	};
 
 	const mobileSelectors = {
+		' .uagb-timeline__day-new': {
+			'text-align': alignMobile,
+		},
+		' .uagb-timeline__date-inner': {
+			'text-align': alignMobile,
+		},
 		' .uagb-timeline__date-hide.uagb-timeline__date-inner': {
+			'text-align': alignMobile,
 			'font-size': generateCSSUnit(
 				dateFontsizeMobile,
 				dateFontsizeType
@@ -645,6 +669,7 @@ function contentTimelineStyle( props ) {
 			'letter-spacing': generateCSSUnit( dateLetterSpacingMobile, dateLetterSpacingType ),
 		},
 		' .uagb-timeline__date-hide.uagb-timeline__inner-date-new': {
+			'text-align': alignMobile,
 			'font-size': generateCSSUnit(
 				dateFontsizeMobile,
 				dateFontsizeType
@@ -669,6 +694,7 @@ function contentTimelineStyle( props ) {
 			'letter-spacing': generateCSSUnit( dateLetterSpacingMobile, dateLetterSpacingType ),
 		},
 		' .uagb-timeline__heading': {
+			'text-align': alignMobile,
 			'font-size': generateCSSUnit(
 				headFontSizeMobile,
 				headFontSizeType
@@ -682,6 +708,7 @@ function contentTimelineStyle( props ) {
 			'letter-spacing': generateCSSUnit( headLetterSpacingMobile, headLetterSpacingType ),
 		},
 		' .uagb-timeline__heading a': {
+			'text-align': alignMobile,
 			'font-size': generateCSSUnit(
 				headFontSizeMobile,
 				headFontSizeType
@@ -695,6 +722,7 @@ function contentTimelineStyle( props ) {
 			'letter-spacing': generateCSSUnit( headLetterSpacingMobile, headLetterSpacingType ),
 		},
 		' .uagb-timeline-desc-content': {
+			'text-align': alignMobile,
 			'font-size': generateCSSUnit(
 				subHeadFontSizeMobile,
 				subHeadFontSizeType
@@ -745,38 +773,41 @@ function contentTimelineStyle( props ) {
 				mobileMarginUnit
 			),
 		},
-		'.uagb-timeline__center-block.uagb-timeline__responsive-mobile .uagb-timeline__heading': {
-			'text-align': respSelectors,
-		},
-		'.uagb-timeline__center-block.uagb-timeline__responsive-mobile .uagb-timeline-desc-content': {
-			'text-align': respSelectors,
-		},
-		'.uagb-timeline__center-block.uagb-timeline__responsive-mobile .uagb-timeline__day-new': {
-			'text-align': respSelectors,
-		},
-		'.uagb-timeline__center-block.uagb-timeline__responsive-mobile .uagb-timeline__date-inner': {
-			'text-align': respSelectors,
-		},
-		'.uagb-timeline__center-block.uagb-timeline__responsive-mobile .uagb-timeline__date-hide.uagb-timeline__date-inner': {
-			'text-align': respSelectors,
-		},
 		'.uagb-timeline__center-block.uagb-timeline__responsive-mobile .uagb-timeline__day-right .uagb-timeline__arrow:after': {
 			'border-right-color': backgroundColor,
 		},
+
+		//Responsive alignment CSS
+		
+		'.uagb-timeline__center-block.uagb-timeline__responsive-mobile .uagb-timeline__heading': {
+			'text-align': alignMobile,
+		},
+		'.uagb-timeline__center-block.uagb-timeline__responsive-mobile .uagb-timeline-desc-content': {
+			'text-align': alignMobile,
+		},
+		'.uagb-timeline__center-block.uagb-timeline__responsive-mobile .uagb-timeline__day-new': {
+			'text-align': alignMobile,
+		},
+		'.uagb-timeline__center-block.uagb-timeline__responsive-mobile .uagb-timeline__date-inner': {
+			'text-align': alignMobile,
+		},
+		'.uagb-timeline__center-block.uagb-timeline__responsive-mobile .uagb-timeline__date-hide.uagb-timeline__date-inner': {
+			'text-align': alignMobile,
+		},
 		'.uagb-timeline__center-block.uagb-timeline__responsive-mobile .uagb-timeline__author-link': {
-			'text-align': respSelectors,
+			'text-align': alignMobile,
 		},
 		'.uagb-timeline__center-block.uagb-timeline__responsive-mobile .uagb-timeline__link_parent': {
-			'text-align': respSelectors,
+			'text-align': alignMobile,
 		},
 		'.uagb-timeline__center-block.uagb-timeline__responsive-mobile .uagb-timeline__link': {
-			'text-align': respSelectors,
+			'text-align': alignMobile,
 		},
 		'.uagb-timeline__center-block.uagb-timeline__responsive-mobile .uagb-timeline__image a': {
-			'text-align': respSelectors,
+			'text-align': alignMobile,
 		},
 		'.uagb-timeline__center-block.uagb-timeline__responsive-mobile a.uagb-timeline__image': {
-			'text-align': respSelectors,
+			'text-align': alignMobile,
 		},
 
 		// CTA  AUthor
@@ -791,7 +822,11 @@ function contentTimelineStyle( props ) {
 			),
 			'letter-spacing': generateCSSUnit( authorLetterSpacingMobile, authorLetterSpacingType ),
 		},
+		' .uagb-timeline__link_parent': {
+			'text-align': alignMobile,
+		},
 		' .uagb-timeline__author-link': {
+			'text-align': alignMobile,
 			'font-size': generateCSSUnit(
 				authorFontSizeMobile,
 				authorFontSizeType
@@ -803,6 +838,7 @@ function contentTimelineStyle( props ) {
 			'letter-spacing': generateCSSUnit( authorLetterSpacingMobile, authorLetterSpacingType ),
 		},
 		' .uagb-timeline__link': {
+			'text-align': alignMobile,
 			'font-size': generateCSSUnit( ctaFontSizeMobile, ctaFontSizeType ),
 			'line-height': generateCSSUnit(
 				ctaLineHeightMobile,

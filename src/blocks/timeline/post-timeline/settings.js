@@ -24,9 +24,6 @@ import {
 } from '@wordpress/components';
 import {
 	InspectorControls,
-	BlockAlignmentToolbar,
-	AlignmentToolbar,
-	BlockControls,
 } from '@wordpress/block-editor';
 import ResponsiveSlider from '@Components/responsive-slider';
 import UAGAdvancedPanelBody from '@Components/advanced-panel-body';
@@ -104,6 +101,8 @@ const Settings = ( props ) => {
 		displayPostImage,
 		displayPostLink,
 		align,
+		alignTablet,
+		alignMobile,
 		order,
 		orderBy,
 		categories,
@@ -528,8 +527,18 @@ const Settings = ( props ) => {
 					setAttributes={ setAttributes }
 					label={ __( 'Text Alignment', 'ultimate-addons-for-gutenberg' ) }
 					data={ {
-						value: align,
-						label: 'align',
+						desktop: {
+							value: align,
+							label: 'align',
+						},
+						tablet: {
+							value: alignTablet,
+							label: 'alignTablet',
+						},
+						mobile: {
+							value: alignMobile,
+							label: 'alignMobile',
+						},
 					} }
 					className="uagb-multi-button-alignment-control"
 					options={ [
@@ -571,6 +580,7 @@ const Settings = ( props ) => {
 						},
 					] }
 					showIcons={ true }
+					responsive={true}
 				/>
 				<MultiButtonsControl
 					setAttributes={ setAttributes }
@@ -1894,29 +1904,9 @@ const Settings = ( props ) => {
 			</UAGAdvancedPanelBody>
 		);
 	};
-	const blockControls = () => {
-		return (
-			<BlockControls>
-				<BlockAlignmentToolbar
-					value={ timelinAlignment }
-					onChange={ ( value ) => {
-						setAttributes( { timelinAlignment: value } );
-					} }
-					controls={ [ 'left', 'center', 'right' ] }
-				/>
-				<AlignmentToolbar
-					value={ align }
-					onChange={ ( value ) => {
-						setAttributes( { align: value } );
-					} }
-					controls={ [ 'left', 'center', 'right' ] }
-				/>
-			</BlockControls>
-		);
-	};
+
 	return (
 		<>
-			{ blockControls() }
 			<InspectorControls>
 				<InspectorTabs>
 					<InspectorTab { ...UAGTabs.general }>
