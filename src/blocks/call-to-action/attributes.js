@@ -840,9 +840,21 @@ const attributes = {
 	},
 	secondCtaIconSpace: {
 		type: 'number',
-		default: 8,
+		default: 10,
 		UAGCopyPaste: {
 			styleType: 'btn-icon-space'
+		}
+	},
+	secondCtaIconSpaceTablet: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'btn-icon-space-tablet'
+		}
+	},
+	secondCtaIconSpaceMobile: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'btn-icon-space-mobile'
 		}
 	},
 	isPreview: {

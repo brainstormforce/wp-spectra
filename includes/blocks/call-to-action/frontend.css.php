@@ -131,26 +131,6 @@ $selectors['.wp-block-uagb-call-to-action a.uagb-cta-second__button:hover'] = ar
 	'border-color'     => $attr['secondCtaBorderHColor'],
 );
 
-if ( 'before' === $attr['secondCtaIconPosition'] ) {
-	$selectors['.wp-block-uagb-call-to-action a.uagb-cta-second__button > svg'] = array(
-		'margin-right' => UAGB_Helper::get_css_value( $attr['secondCtaIconSpace'], 'px' ),
-		'font-size'    => UAGB_Helper::get_css_value( $attr['secondCtaFontSize'], $attr['secondCtaFontSizeType'] ),
-		'width'        => UAGB_Helper::get_css_value( $attr['secondCtaFontSize'], $attr['secondCtaFontSizeType'] ),
-		'height'       => UAGB_Helper::get_css_value( $attr['secondCtaFontSize'], $attr['secondCtaFontSizeType'] ),
-		'line-height'  => UAGB_Helper::get_css_value( $attr['secondCtaFontSize'], $attr['secondCtaFontSizeType'] ),
-		'fill'         => $attr['secondCtaColor'],
-	);
-} else {
-	$selectors['.wp-block-uagb-call-to-action a.uagb-cta-second__button > svg'] = array(
-		'margin-left' => UAGB_Helper::get_css_value( $attr['secondCtaIconSpace'], 'px' ),
-		'font-size'   => UAGB_Helper::get_css_value( $attr['secondCtaFontSize'], $attr['secondCtaFontSizeType'] ),
-		'width'       => UAGB_Helper::get_css_value( $attr['secondCtaFontSize'], $attr['secondCtaFontSizeType'] ),
-		'height'      => UAGB_Helper::get_css_value( $attr['secondCtaFontSize'], $attr['secondCtaFontSizeType'] ),
-		'line-height' => UAGB_Helper::get_css_value( $attr['secondCtaFontSize'], $attr['secondCtaFontSizeType'] ),
-		'fill'        => $attr['secondCtaColor'],
-	);
-}
-
 if ( 'text' === $attr['ctaType'] ) {
 	$selectors[' .uagb-cta__button-wrapper a.uagb-cta-typeof-text']                    = array(
 		'color' => $attr['ctaBtnLinkColor'],
@@ -573,6 +553,38 @@ if ( 'desktop' === $attr['stack'] ) {
 $t_selectors['.wp-block-uagb-call-to-action a.uagb-cta-second__button'] = $second_cta_border_tablet;
 $m_selectors['.wp-block-uagb-call-to-action a.uagb-cta-second__button'] = $second_cta_border_mobile;
 
+
+if ( 'before' === $attr['secondCtaIconPosition'] ) {
+	$selectors['.wp-block-uagb-call-to-action a.uagb-cta-second__button > svg']   = array(
+		'margin-right' => UAGB_Helper::get_css_value( $attr['secondCtaIconSpace'], 'px' ),
+		'font-size'    => UAGB_Helper::get_css_value( $attr['secondCtaFontSize'], $attr['secondCtaFontSizeType'] ),
+		'width'        => UAGB_Helper::get_css_value( $attr['secondCtaFontSize'], $attr['secondCtaFontSizeType'] ),
+		'height'       => UAGB_Helper::get_css_value( $attr['secondCtaFontSize'], $attr['secondCtaFontSizeType'] ),
+		'line-height'  => UAGB_Helper::get_css_value( $attr['secondCtaFontSize'], $attr['secondCtaFontSizeType'] ),
+		'fill'         => $attr['secondCtaColor'],
+	);
+	$t_selectors['.wp-block-uagb-call-to-action a.uagb-cta-second__button > svg'] = array(
+		'margin-right' => UAGB_Helper::get_css_value( $attr['secondCtaIconSpaceTablet'], 'px' ),
+	);
+	$m_selectors['.wp-block-uagb-call-to-action a.uagb-cta-second__button > svg'] = array(
+		'margin-right' => UAGB_Helper::get_css_value( $attr['secondCtaIconSpaceMobile'], 'px' ),
+	);
+} else {
+	$selectors['.wp-block-uagb-call-to-action a.uagb-cta-second__button > svg']   = array(
+		'margin-left' => UAGB_Helper::get_css_value( $attr['secondCtaIconSpace'], 'px' ),
+		'font-size'   => UAGB_Helper::get_css_value( $attr['secondCtaFontSize'], $attr['secondCtaFontSizeType'] ),
+		'width'       => UAGB_Helper::get_css_value( $attr['secondCtaFontSize'], $attr['secondCtaFontSizeType'] ),
+		'height'      => UAGB_Helper::get_css_value( $attr['secondCtaFontSize'], $attr['secondCtaFontSizeType'] ),
+		'line-height' => UAGB_Helper::get_css_value( $attr['secondCtaFontSize'], $attr['secondCtaFontSizeType'] ),
+		'fill'        => $attr['secondCtaColor'],
+	);
+	$t_selectors['.wp-block-uagb-call-to-action a.uagb-cta-second__button > svg'] = array(
+		'margin-left' => UAGB_Helper::get_css_value( $attr['secondCtaIconSpaceTablet'], 'px' ),
+	);
+	$m_selectors['.wp-block-uagb-call-to-action a.uagb-cta-second__button > svg'] = array(
+		'margin-left' => UAGB_Helper::get_css_value( $attr['secondCtaIconSpaceMobile'], 'px' ),
+	);
+}
 $combined_selectors = array(
 	'desktop' => $selectors,
 	'tablet'  => $t_selectors,

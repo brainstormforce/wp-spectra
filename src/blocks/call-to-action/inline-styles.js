@@ -157,6 +157,8 @@ function CtaStyle( props ) {
 		buttonRightSpaceTablet,
 		buttonRightSpaceMobile,
 		buttonRightSpaceType,
+		secondCtaIconSpaceTablet,
+		secondCtaIconSpaceMobile,
 		titleLetterSpacing,
 		titleLetterSpacingTablet,
 		titleLetterSpacingMobile,
@@ -313,16 +315,6 @@ function CtaStyle( props ) {
 	selectors['.uagb-cta__outer-wrap a.uagb-cta-second__button:hover svg'] = {
 		'fill': secondCtaHoverColor,
 	};
-
-	if( secondCtaIconPosition === 'before' ){
-		selectors[ '.uagb-cta__outer-wrap a.uagb-cta-second__button > svg' ] = {
-			'margin-right': generateCSSUnit( secondCtaIconSpace, 'px' ),
-		};
-	}else{
-		selectors[ '.uagb-cta__outer-wrap a.uagb-cta-second__button > svg' ] = {
-			'margin-left': generateCSSUnit( secondCtaIconSpace, 'px' ),
-		};
-	}
 
 	const tabletSelectors = {
 		'.uagb-editor-preview-mode-tablet.uagb-cta__outer-wrap ': {
@@ -534,6 +526,28 @@ function CtaStyle( props ) {
 			'letter-spacing': generateCSSUnit( secondCtaLetterSpacingMobile, secondCtaLetterSpacingType ),
 		},
 	};
+
+	if( secondCtaIconPosition === 'before' ){
+		selectors[ '.uagb-cta__outer-wrap a.uagb-cta-second__button > svg' ] = {
+			'margin-right': generateCSSUnit( secondCtaIconSpace, 'px' ),
+		};
+		tabletSelectors[ '.uagb-cta__outer-wrap a.uagb-cta-second__button > svg' ] = {
+			'margin-right': generateCSSUnit( secondCtaIconSpaceTablet, 'px' ),
+		};
+		mobileSelectors[ '.uagb-cta__outer-wrap a.uagb-cta-second__button > svg' ] = {
+			'margin-right': generateCSSUnit( secondCtaIconSpaceMobile, 'px' ),
+		};
+	}else{
+		selectors[ '.uagb-cta__outer-wrap a.uagb-cta-second__button > svg' ] = {
+			'margin-left': generateCSSUnit( secondCtaIconSpace, 'px' ),
+		};
+		tabletSelectors[ '.uagb-cta__outer-wrap a.uagb-cta-second__button > svg' ] = {
+			'margin-left': generateCSSUnit( secondCtaIconSpaceTablet, 'px' ),
+		};
+		mobileSelectors[ '.uagb-cta__outer-wrap a.uagb-cta-second__button > svg' ] = {
+			'margin-left': generateCSSUnit( secondCtaIconSpaceMobile, 'px' ),
+		};
+	}
 
 	if( ctaIconPosition === 'before' ){
 		selectors[ '.uagb-cta__outer-wrap a.uagb-cta__button-link-wrapper > svg' ] = {

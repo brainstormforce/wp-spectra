@@ -31,7 +31,6 @@ import {
 
 import {
 	InspectorControls,
-	BlockAlignmentToolbar,
 	BlockControls,
 } from '@wordpress/block-editor';
 
@@ -311,13 +310,6 @@ const Settings = ( props ) => {
 
 		return (
 			<BlockControls>
-				<BlockAlignmentToolbar
-					value={ align }
-					onChange={ ( value ) => {
-						setAttributes( { align: value } );
-					} }
-					controls={ [ 'left', 'center', 'right' ] }
-				/>
 				<ToolbarGroup
 					controls={ [
 						{

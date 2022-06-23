@@ -12,7 +12,6 @@ import InspectorTabs from '@Components/inspector-tabs/InspectorTabs.js';
 import InspectorTab, {
 	UAGTabs,
 } from '@Components/inspector-tabs/InspectorTab.js';
-import Range from '@Components/range/Range.js';
 import MultiButtonsControl from '@Components/multi-buttons-control';
 import ResponsiveBorder from '@Components/responsive-border';
 import SpacingControl from '@Components/spacing-control';
@@ -194,6 +193,8 @@ const Settings = ( props ) => {
 		buttonRightSpaceTablet,
 		buttonRightSpaceMobile,
 		buttonRightSpaceType,
+		secondCtaIconSpaceTablet,
+		secondCtaIconSpaceMobile,
 		titleLetterSpacing,
 		titleLetterSpacingTablet,
 		titleLetterSpacingMobile,
@@ -203,13 +204,13 @@ const Settings = ( props ) => {
 		descLetterSpacingMobile,
 		descLetterSpacingType,
 		ctaLetterSpacing,
-ctaLetterSpacingTablet,
-ctaLetterSpacingMobile,
-ctaLetterSpacingType,
-secondCtaLetterSpacing,
-secondCtaLetterSpacingTablet,
-secondCtaLetterSpacingMobile,
-secondCtaLetterSpacingType,
+		ctaLetterSpacingTablet,
+		ctaLetterSpacingMobile,
+		ctaLetterSpacingType,
+		secondCtaLetterSpacing,
+		secondCtaLetterSpacingTablet,
+		secondCtaLetterSpacingMobile,
+		secondCtaLetterSpacingType,
 	} = attributes;
 
 	let loadCtaGoogleFonts;
@@ -431,21 +432,29 @@ secondCtaLetterSpacingType,
 					] }
 					showIcons={ false }
 				/>
-				<Range
+				<ResponsiveSlider
 					label={ __(
 						'Icon Spacing',
 						'ultimate-addons-for-gutenberg'
 					) }
-					setAttributes={ setAttributes }
-					value={ secondCtaIconSpace }
-					onChange={ ( value ) =>
-						setAttributes( {
-							secondCtaIconSpace: value,
-						} )
-					}
+					data={ {
+						desktop: {
+							value: secondCtaIconSpace,
+							label: 'secondCtaIconSpace',
+						},
+						tablet: {
+							value: secondCtaIconSpaceTablet,
+							label: 'secondCtaIconSpaceTablet',
+						},
+						mobile: {
+							value: secondCtaIconSpaceMobile,
+							label: 'secondCtaIconSpaceMobile',
+						},
+					} }
 					min={ 0 }
 					max={ 50 }
 					displayUnit={ false }
+					setAttributes={ setAttributes }
 				/>
 				</>
 				)}

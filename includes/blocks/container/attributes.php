@@ -261,4 +261,5 @@ return array_merge(
 		'linkColor'                      => '',
 		'linkHoverColor'                 => '',
 	),
+	$border_attribute
 );

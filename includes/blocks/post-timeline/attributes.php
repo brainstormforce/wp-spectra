@@ -9,6 +9,8 @@
 
 return array(
 	'align'                      => '',
+	'alignTablet'                => '',
+	'alignMobile'                => '',
 	'headingColor'               => '',
 	'subHeadingColor'            => '',
 	'separatorBg'                => '#eee',

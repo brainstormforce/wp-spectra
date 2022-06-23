@@ -19,8 +19,6 @@ import UAGTabsControl from '@Components/tabs';
 import presets from './presets';
 import UAGPresets from '@Components/presets';
 import {
-	AlignmentToolbar,
-	BlockControls,
 	InspectorControls,
 } from '@wordpress/block-editor';
 import { getImageSize } from '@Utils/Helpers';
@@ -370,19 +368,6 @@ const Settings = ( props ) => {
 			<WebfontLoader config={ ctaconfig }></WebfontLoader>
 		);
 	}
-
-	const blockControls = () => {
-		return (
-			<BlockControls key="controls">
-				<AlignmentToolbar
-					value={ headingAlign }
-					onChange={ ( value ) =>
-						setAttributes( { headingAlign: value } )
-					}
-				/>
-			</BlockControls>
-		);
-	};
 
 	// Global Controls.
 	const imageIconPanel = () => {
@@ -2393,9 +2378,6 @@ const Settings = ( props ) => {
 
 	return (
 		<>
-			{ ( iconimgPosition === 'above-title' ||
-				iconimgPosition === 'below-title' ) &&
-				blockControls() }
 			<InspectorControls>
 				<InspectorTabs>
 					<InspectorTab { ...UAGTabs.general }>

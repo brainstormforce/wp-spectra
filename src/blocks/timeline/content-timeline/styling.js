@@ -47,6 +47,8 @@ function contentTimelineStyle( props ) {
 		headLineHeightTablet,
 		headLineHeightMobile,
 		align,
+		alignTablet,
+		alignMobile,
 		headingColor,
 		headSpace,
 		headSpaceTablet,
@@ -117,8 +119,6 @@ function contentTimelineStyle( props ) {
 		dateLetterSpacingMobile,
 		dateLetterSpacingType,
 	} = props.attributes;
-
-	const respSelectors = 'left';
 
 	const selectors = {
 		' .uagb-timeline__heading.rich-text': {
@@ -330,6 +330,9 @@ function contentTimelineStyle( props ) {
 
 	/* Generate Responsive CSS for timeline */
 	const tabletSelectors = {
+		' .uagb-timeline__heading.rich-text': {
+			'text-align': alignTablet,
+		},
 		' .uagb-timeline__date-hide.uagb-timeline__date-inner': {
 			'font-size': generateCSSUnit(
 				dateFontsizeTablet,
@@ -352,6 +355,7 @@ function contentTimelineStyle( props ) {
 				dateLineHeightType
 			),
 			'margin-bottom': generateCSSUnit( dateBottomspaceTablet, 'px' ),
+			'text-align': alignTablet,
 			'letter-spacing': generateCSSUnit( dateLetterSpacingTablet, dateLetterSpacingType ),
 		},
 		' .uagb-timeline__date-new': {
@@ -367,6 +371,7 @@ function contentTimelineStyle( props ) {
 			'letter-spacing': generateCSSUnit( dateLetterSpacingTablet, dateLetterSpacingType ),
 		},
 		' .uagb-timeline__heading': {
+			'text-align': alignTablet,
 			'font-size': generateCSSUnit(
 				headFontSizeTablet,
 				headFontSizeType
@@ -387,6 +392,7 @@ function contentTimelineStyle( props ) {
 				headLineHeightTablet,
 				headLineHeightType
 			),
+			'text-align': alignTablet,
 			'letter-spacing': generateCSSUnit( headLetterSpacingTablet, headLetterSpacingType ),
 		},
 		' p.uagb-timeline-desc-content': {
@@ -398,6 +404,7 @@ function contentTimelineStyle( props ) {
 				subHeadLineHeightTablet,
 				subHeadLineHeightType
 			),
+			'text-align': alignTablet,
 			'letter-spacing': generateCSSUnit( subHeadLetterSpacingTablet, subHeadLetterSpacingType ),
 		},
 		'.uagb-timeline__center-block .uagb-timeline__marker': {
@@ -436,36 +443,6 @@ function contentTimelineStyle( props ) {
 				tabletMarginUnit
 			),
 		},
-		' .uagb-timeline__center-block .uagb-timeline__heading': {
-			'text-align': respSelectors,
-		},
-		' .uagb-timeline__center-block p.uagb-timeline-desc-content': {
-			'text-align': respSelectors,
-		},
-		' .uagb-timeline__center-block .uagb-timeline__day-new': {
-			'text-align': respSelectors,
-		},
-		' .uagb-timeline__center-block .uagb-timeline__date-inner': {
-			'text-align': respSelectors,
-		},
-		' .uagb-timeline__center-block .uagb-timeline__date-hide.uagb-timeline__date-inner': {
-			'text-align': respSelectors,
-		},
-		' .uagb-timeline__center-block .uagb-timeline__day-right .uagb-timeline__arrow:after': {
-			'border-right-color': backgroundColor,
-		},
-		' .uagb-timeline__center-block .uagb-timeline__author-link': {
-			'text-align': respSelectors,
-		},
-		' .uagb-timeline__center-block .uagb-timeline__link_parent': {
-			'text-align': respSelectors,
-		},
-		' .uagb-timeline__center-block .uagb-timeline__image a': {
-			'text-align': respSelectors,
-		},
-		' .uagb-timeline__center-block a.uagb-timeline__image': {
-			'text-align': respSelectors,
-		},
 		' .uagb-timeline__events-inner-new': {
 			'padding-left': generateCSSUnit(
 				leftPaddingTablet,
@@ -485,9 +462,45 @@ function contentTimelineStyle( props ) {
 			),
 			'border-radius': generateCSSUnit( borderRadiusTablet, 'px' ),
 		},
+		' .uagb-timeline__day-new': {
+			'text-align': alignTablet,
+		},
+		' .uagb-timeline__date-inner': {
+			'text-align': alignTablet,
+		},
+		' .uagb-timeline__center-block .uagb-timeline__heading': {
+			'text-align': alignTablet,
+		},
+		' .uagb-timeline__center-block p.uagb-timeline-desc-content': {
+			'text-align': alignTablet,
+		},
+		' .uagb-timeline__center-block .uagb-timeline__day-new': {
+			'text-align': alignTablet,
+		},
+		' .uagb-timeline__center-block .uagb-timeline__date-inner': {
+			'text-align': alignTablet,
+		},
+		' .uagb-timeline__center-block .uagb-timeline__date-hide.uagb-timeline__date-inner': {
+			'text-align': alignTablet,
+		},
+		' .uagb-timeline__center-block .uagb-timeline__author-link': {
+			'text-align': alignTablet,
+		},
+		' .uagb-timeline__center-block .uagb-timeline__link_parent': {
+			'text-align': alignTablet,
+		},
+		' .uagb-timeline__center-block .uagb-timeline__image a': {
+			'text-align': alignTablet,
+		},
+		' .uagb-timeline__center-block a.uagb-timeline__image': {
+			'text-align': alignTablet,
+		},
 	};
 
 	const mobileSelectors = {
+		' .uagb-timeline__heading.rich-text': {
+			'text-align': alignMobile,
+		},
 		' .uagb-timeline__date-hide.uagb-timeline__date-inner': {
 			'font-size': generateCSSUnit(
 				dateFontsizeMobile,
@@ -510,6 +523,7 @@ function contentTimelineStyle( props ) {
 				dateLineHeightType
 			),
 			'margin-bottom': generateCSSUnit( dateBottomspaceMobile, 'px' ),
+			'text-align': alignMobile,
 			'letter-spacing': generateCSSUnit( dateLetterSpacingMobile, dateLetterSpacingType ),
 		},
 		' .uagb-timeline__date-new': {
@@ -534,6 +548,7 @@ function contentTimelineStyle( props ) {
 				headLineHeightType
 			),
 			'margin-bottom': generateCSSUnit( headSpaceMobile, 'px' ),
+			'text-align': alignMobile,
 			'letter-spacing': generateCSSUnit( headLetterSpacingMobile, headLetterSpacingType ),
 		},
 		' .uagb-timeline__heading a': {
@@ -545,6 +560,7 @@ function contentTimelineStyle( props ) {
 				headLineHeightMobile,
 				headLineHeightType
 			),
+			'text-align': alignMobile,
 			'letter-spacing': generateCSSUnit( headLetterSpacingMobile, headLetterSpacingType ),
 		},
 		' p.uagb-timeline-desc-content': {
@@ -556,6 +572,7 @@ function contentTimelineStyle( props ) {
 				subHeadLineHeightMobile,
 				subHeadLineHeightType
 			),
+			'text-align': alignMobile,
 			'letter-spacing': generateCSSUnit( subHeadLetterSpacingMobile, subHeadLetterSpacingType ),
 		},
 		'.uagb-timeline__center-block .uagb-timeline__marker': {
@@ -592,36 +609,6 @@ function contentTimelineStyle( props ) {
 				mobileMarginUnit
 			),
 		},
-		'.uagb-timeline__center-block .uagb-timeline__heading': {
-			'text-align': respSelectors,
-		},
-		'.uagb-timeline__center-block p.uagb-timeline-desc-content': {
-			'text-align': respSelectors,
-		},
-		'.uagb-timeline__center-block .uagb-timeline__day-new': {
-			'text-align': respSelectors,
-		},
-		'.uagb-timeline__center-block .uagb-timeline__date-inner': {
-			'text-align': respSelectors,
-		},
-		'.uagb-timeline__center-block .uagb-timeline__date-hide.uagb-timeline__date-inner': {
-			'text-align': respSelectors,
-		},
-		'.uagb-timeline__center-block .uagb-timeline__day-right .uagb-timeline__arrow:after': {
-			'border-right-color': backgroundColor,
-		},
-		'.uagb-timeline__center-block .uagb-timeline__author-link': {
-			'text-align': respSelectors,
-		},
-		'.uagb-timeline__center-block .uagb-timeline__link_parent': {
-			'text-align': respSelectors,
-		},
-		'.uagb-timeline__center-block .uagb-timeline__image a': {
-			'text-align': respSelectors,
-		},
-		'.uagb-timeline__center-block a.uagb-timeline__image': {
-			'text-align': respSelectors,
-		},
 		' .uagb-timeline__events-inner-new': {
 			'padding-left': generateCSSUnit(
 				leftPaddingMobile,
@@ -640,6 +627,39 @@ function contentTimelineStyle( props ) {
 				mobilePaddingUnit
 			),
 			'border-radius': generateCSSUnit( borderRadiusMobile, 'px' ),
+		},
+		' .uagb-timeline__day-new': {
+			'text-align': alignMobile,
+		},
+		' .uagb-timeline__date-inner': {
+			'text-align': alignMobile,
+		},
+		' .uagb-timeline__center-block .uagb-timeline__heading': {
+			'text-align': alignMobile,
+		},
+		' .uagb-timeline__center-block p.uagb-timeline-desc-content': {
+			'text-align': alignMobile,
+		},
+		' .uagb-timeline__center-block .uagb-timeline__day-new': {
+			'text-align': alignMobile,
+		},
+		' .uagb-timeline__center-block .uagb-timeline__date-inner': {
+			'text-align': alignMobile,
+		},
+		' .uagb-timeline__center-block .uagb-timeline__date-hide.uagb-timeline__date-inner': {
+			'text-align': alignMobile,
+		},
+		' .uagb-timeline__center-block .uagb-timeline__author-link': {
+			'text-align': alignMobile,
+		},
+		' .uagb-timeline__center-block .uagb-timeline__link_parent': {
+			'text-align': alignMobile,
+		},
+		' .uagb-timeline__center-block .uagb-timeline__image a': {
+			'text-align': alignMobile,
+		},
+		' .uagb-timeline__center-block a.uagb-timeline__image': {
+			'text-align': alignMobile,
 		},
 	};
 

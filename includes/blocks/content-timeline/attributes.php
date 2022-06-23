@@ -10,6 +10,8 @@
 return array(
 	'classMigrate'               => false,
 	'align'                      => '',
+	'alignTablet'                => '',
+	'alignMobile'                => '',
 	'headingColor'               => '',
 	'subHeadingColor'            => '',
 	'separatorBg'                => '#eee',

@@ -20,9 +20,7 @@ import UAGTabsControl from '@Components/tabs';
 import presets from './presets';
 import UAGPresets from '@Components/presets';
 import {
-	BlockControls,
 	InspectorControls,
-	AlignmentToolbar
 } from '@wordpress/block-editor';
 
 import {
@@ -165,21 +163,6 @@ const Settings = ( props ) => {
 			<WebfontLoader config={ prefixconfig }></WebfontLoader>
 		);
 	}
-
-	const blockControls = () => {
-		return (
-			<BlockControls>
-				<AlignmentToolbar
-					value={ align }
-					onChange={ ( value ) => {
-						setAttributes( { align: value } );
-					} }
-					controls={ [ 'left', 'center', 'right', 'full' ] }
-				/>
-
-			</BlockControls>
-		);
-	};
 
 	const generalSettings = () => {
 		return (
@@ -1157,7 +1140,6 @@ const Settings = ( props ) => {
 	};
 	return (
 		<Suspense fallback={ lazyLoader() }>
-			{ blockControls() }
 			<InspectorControls>
 				<InspectorTabs>
 					<InspectorTab { ...UAGTabs.general }>
