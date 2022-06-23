@@ -1,3 +1,19 @@
+import { getBorderAttributes } from '@Controls/generateAttributes';
+const borderDefault = {
+	borderStyle: 'solid',
+	borderTopWidth: 1,
+	borderRightWidth: 1,
+	borderBottomWidth: 1,
+	borderLeftWidth: 1,
+	borderTopLeftRadius: 2,
+	borderTopRightRadius: 2,
+	borderBottomLeftRadius: 2,
+	borderBottomRightRadius: 2,
+	borderColor: '',
+	borderHColor: '',
+}
+const borderAttributes = getBorderAttributes( 'overall', borderDefault );
+
 const attributes = {
 	block_id: {
 		type: 'string',
@@ -164,38 +180,16 @@ const attributes = {
 	},
 	borderStyle: {
 		type: 'string',
-		default: 'solid',
-		UAGCopyPaste: {
-			styleType: 'faq-border-style'
-		},
 	},
 	borderWidth: {
-		type: 'number',
-		default: 1,
-		UAGCopyPaste: {
-			styleType: 'faq-border-width'
-		},
-	},
+		type: 'number',	},
 	borderRadius: {
-		type: 'number',
-		default: 2,
-		UAGCopyPaste: {
-			styleType: 'faq-border-radius'
-		},
-	},
+		type: 'number',	},
 	borderColor: {
 		type: 'string',
-		default: '',
-		UAGCopyPaste: {
-			styleType: 'faq-border-color'
-		},
 	},
 	borderHoverColor: {
 		type: 'string',
-		default: '',
-		UAGCopyPaste: {
-			styleType: 'faq-border-hover-color'
-		},
 	},
 	questionTextColor: {
 		type: 'string',
@@ -773,6 +767,58 @@ const attributes = {
 	isPreview: {
 		type: 'boolean',
 		default: false,
-	}
+	},
+	...borderAttributes,
+	// letter spacing
+	questionLetterSpacing: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'main-title-letter-spacing'
+		}
+	},
+	questionLetterSpacingTablet: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'main-title-letter-spacing-tablet'
+		}
+	},
+	questionLetterSpacingMobile: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'main-title-letter-spacing-mobile'
+		}
+	},
+	questionLetterSpacingType: {
+		type: 'string',
+		default: 'px',
+		UAGCopyPaste: {
+			styleType: 'main-title-letter-spacing-type'
+		}
+	},
+	answerLetterSpacing: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'desc-letter-spacing'
+		}
+	},
+	answerLetterSpacingTablet: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'desc-letter-spacing-tablet'
+		}
+	},
+	answerLetterSpacingMobile: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'desc-letter-spacing-mobile'
+		}
+	},
+	answerLetterSpacingType: {
+		type: 'string',
+		default: 'px',
+		UAGCopyPaste: {
+			styleType: 'desc-letter-spacing-type'
+		}
+	},
 };
 export default attributes;

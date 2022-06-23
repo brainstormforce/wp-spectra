@@ -21,10 +21,7 @@ import { __ } from '@wordpress/i18n';
 
 import { dateI18n } from '@wordpress/date';
 import {
-	BlockControls,
 	InspectorControls,
-	BlockAlignmentToolbar,
-	AlignmentToolbar
 } from '@wordpress/block-editor';
 
 import {
@@ -154,6 +151,18 @@ const Settings = ( props ) => {
 			dateTransform,
 			headDecoration,
 			subHeadDecoration,
+			headLetterSpacing,
+			headLetterSpacingTablet,
+			headLetterSpacingMobile,
+			headLetterSpacingType,
+			subHeadLetterSpacing,
+			subHeadLetterSpacingTablet,
+			subHeadLetterSpacingMobile,
+			subHeadLetterSpacingType,
+			dateLetterSpacing,
+			dateLetterSpacingTablet,
+			dateLetterSpacingMobile,
+			dateLetterSpacingType,
 			dateDecoration,
 		},
 	} = props;
@@ -237,26 +246,6 @@ const Settings = ( props ) => {
 
 	const today = new Date();
 
-	const blockControls = () => {
-		return (
-			<BlockControls>
-				<BlockAlignmentToolbar
-					value={ timelinAlignment }
-					onChange={ ( value ) => {
-						setAttributes( { timelinAlignment: value } );
-					} }
-					controls={ [ 'left', 'center', 'right' ] }
-				/>
-				<AlignmentToolbar
-					value={ align }
-					onChange={ ( value ) => {
-						setAttributes( { align: value } );
-					} }
-					controls={ [ 'left', 'center', 'right' ] }
-				/>
-			</BlockControls>
-		);
-	};
 	const generalSettings = () => {
 		return (
 			<UAGAdvancedPanelBody
@@ -862,6 +851,22 @@ const Settings = ( props ) => {
 						value: headLineHeightTablet,
 						label: 'headLineHeightTablet',
 					} }
+					letterSpacing={ {
+						value: headLetterSpacing,
+						label: 'headLetterSpacing',
+					} }
+					letterSpacingTablet={ {
+						value: headLetterSpacingTablet,
+						label: 'headLetterSpacingTablet',
+					} }
+					letterSpacingMobile={ {
+						value: headLetterSpacingMobile,
+						label: 'headLetterSpacingMobile',
+					} }
+					letterSpacingType={ {
+						value: headLetterSpacingType,
+						label: 'headLetterSpacingType',
+					} }
 					transform={ {
 						value: headTransform,
 						label: 'headTransform',
@@ -963,6 +968,22 @@ const Settings = ( props ) => {
 					lineHeightTablet={ {
 						value: subHeadLineHeightTablet,
 						label: 'subHeadLineHeightTablet',
+					} }
+					letterSpacing={ {
+						value: subHeadLetterSpacing,
+						label: 'subHeadLetterSpacing',
+					} }
+					letterSpacingTablet={ {
+						value: subHeadLetterSpacingTablet,
+						label: 'subHeadLetterSpacingTablet',
+					} }
+					letterSpacingMobile={ {
+						value: subHeadLetterSpacingMobile,
+						label: 'subHeadLetterSpacingMobile',
+					} }
+					letterSpacingType={ {
+						value: subHeadLetterSpacingType,
+						label: 'subHeadLetterSpacingType',
 					} }
 					transform={ {
 						value: subHeadTransform,
@@ -1081,6 +1102,22 @@ const Settings = ( props ) => {
 					lineHeightTablet={ {
 						value: dateLineHeightTablet,
 						label: 'dateLineHeightTablet',
+					} }
+					letterSpacing={ {
+						value: dateLetterSpacing,
+						label: 'dateLetterSpacing',
+					} }
+					letterSpacingTablet={ {
+						value: dateLetterSpacingTablet,
+						label: 'dateLetterSpacingTablet',
+					} }
+					letterSpacingMobile={ {
+						value: dateLetterSpacingMobile,
+						label: 'dateLetterSpacingMobile',
+					} }
+					letterSpacingType={ {
+						value: dateLetterSpacingType,
+						label: 'dateLetterSpacingType',
 					} }
 					transform={ {
 						value: dateTransform,
@@ -1291,7 +1328,6 @@ const Settings = ( props ) => {
 	}
 	return (
 		<>
-			{ blockControls() }
 			<InspectorControls>
 				<InspectorTabs>
 					<InspectorTab { ...UAGTabs.general }>

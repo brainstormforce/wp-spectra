@@ -5,8 +5,6 @@ import TypographyControl from '@Components/typography';
 import { __ } from '@wordpress/i18n';
 import { select } from '@wordpress/data';
 import {
-	BlockControls,
-	AlignmentToolbar,
 	InspectorControls,
 } from '@wordpress/block-editor';
 import InspectorTabs from '@Components/inspector-tabs/InspectorTabs.js';
@@ -78,6 +76,10 @@ const Settings = ( props ) => {
 		fontStyle,
 		fontTransform,
 		fontDecoration,
+		labelLetterSpacing,
+		labelLetterSpacingTablet,
+		labelLetterSpacingMobile,
+		labelLetterSpacingType,
 		iconColor,
 		labelColor,
 		iconHoverColor,
@@ -102,19 +104,6 @@ const Settings = ( props ) => {
 		googleFonts = <WebfontLoader config={ hconfig }></WebfontLoader>;
 	}
 
-	const blockControls = () => {
-		return (
-			<BlockControls>
-				<AlignmentToolbar
-					value={ align }
-					onChange={ ( value ) => {
-						setAttributes( { align: value } );
-					} }
-					controls={ [ 'left', 'center', 'right' ] }
-				/>
-			</BlockControls>
-		);
-	};
 	const changeChildAttr = ( value ) => {
 		const getChildBlocks = select( 'core/block-editor' ).getBlocks(
 			clientId
@@ -475,6 +464,22 @@ const Settings = ( props ) => {
 						value: lineHeightTablet,
 						label: 'lineHeightTablet',
 					} }
+					letterSpacing={ {
+						value: labelLetterSpacing,
+						label: 'labelLetterSpacing',
+					} }
+					letterSpacingTablet={ {
+						value: labelLetterSpacingTablet,
+						label: 'labelLetterSpacingTablet',
+					} }
+					letterSpacingMobile={ {
+						value: labelLetterSpacingMobile,
+						label: 'labelLetterSpacingMobile',
+					} }
+					letterSpacingType={ {
+						value: labelLetterSpacingType,
+						label: 'labelLetterSpacingType',
+					} }
 				/>
 				<UAGTabsControl
 					tabs={ [
@@ -802,7 +807,6 @@ const Settings = ( props ) => {
 
 	return (
 		<Suspense fallback={ lazyLoader() }>
-			{ blockControls() }
 			<InspectorControls>
 				<InspectorTabs>
 					<InspectorTab { ...UAGTabs.general }>

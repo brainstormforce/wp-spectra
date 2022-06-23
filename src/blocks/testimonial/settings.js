@@ -6,7 +6,7 @@ import WebfontLoader from '@Components/typography/fontloader';
 import Range from '@Components/range/Range.js';
 import ResponsiveSlider from '@Components/responsive-slider';
 import Background from '@Components/background';
-import Border from '@Components/border';
+import ResponsiveBorder from '@Components/responsive-border';
 import AdvancedPopColorControl from '@Components/color-control/advanced-pop-color-control.js';
 import SpacingControl from '@Components/spacing-control';
 import InspectorTabs from '@Components/inspector-tabs/InspectorTabs.js';
@@ -17,8 +17,6 @@ import InspectorTab, {
 	UAGTabs,
 } from '@Components/inspector-tabs/InspectorTab.js';
 import {
-	AlignmentToolbar,
-	BlockControls,
 	InspectorControls,
 } from '@wordpress/block-editor';
 
@@ -119,10 +117,6 @@ const Settings = ( props ) => {
 		backgroundSize,
 		backgroundRepeat,
 		backgroundImageColor,
-		borderStyle,
-		borderWidth,
-		borderRadius,
-		borderColor,
 		stack,
 
 		imageWidthType,
@@ -131,7 +125,6 @@ const Settings = ( props ) => {
 		columnGapType,
 		descSpaceType,
 		nameSpaceType,
-		borderHoverColor,
 		overlayType,
 		backgroundAttachment,
 		gradientValue,
@@ -173,7 +166,21 @@ const Settings = ( props ) => {
 		imgpaddingUnit,
 		imgmobilePaddingUnit,
 		imgtabletPaddingUnit,
-		equalHeight
+		equalHeight,
+
+		// letter spacing
+		nameLetterSpacing,
+		nameLetterSpacingTablet,
+		nameLetterSpacingMobile,
+		nameLetterSpacingType,
+		descLetterSpacing,
+		descLetterSpacingTablet,
+		descLetterSpacingMobile,
+		descLetterSpacingType,
+		companyLetterSpacing,
+		companyLetterSpacingTablet,
+		companyLetterSpacingMobile,
+		companyLetterSpacingType,
 	} = attributes;
 
 	let loadNameGoogleFonts;
@@ -334,7 +341,7 @@ const Settings = ( props ) => {
 							setAttributes( { autoplaySpeed: value } )
 						}
 						min={ 100 }
-						max={ 10000 }
+						max={ 15000 }
 						displayUnit={ false }
 					/>
 				) }
@@ -525,41 +532,21 @@ const Settings = ( props ) => {
 				title={ __( 'Border', 'ultimate-addons-for-gutenberg' ) }
 				initialOpen={ false }
 			>
-				<Border
-					disabledBorderTitle= {true}
+				<ResponsiveBorder
 					setAttributes={ setAttributes }
-					borderStyle={ {
-						value: borderStyle,
-						label: 'borderStyle',
-						title: __(
-							'Style',
-							'ultimate-addons-for-gutenberg'
-						),
-					} }
-					borderWidth={ {
-						value: borderWidth,
-						label: 'borderWidth',
-						title: __( 'Width', 'ultimate-addons-for-gutenberg' ),
-					} }
-					borderRadius={ {
-						value: borderRadius,
-						label: 'borderRadius',
-						title: __( 'Radius', 'ultimate-addons-for-gutenberg' ),
-					} }
-					borderColor={ {
-						value: borderColor,
-						label: 'borderColor',
-						title: __( 'Color', 'ultimate-addons-for-gutenberg' ),
-					} }
-					borderHoverColor={ {
-						value: borderHoverColor,
-						label: 'borderHoverColor',
-						title: __(
-							'Hover Color',
-							'ultimate-addons-for-gutenberg'
-						),
-					} }
+					borderStyleLabel={ __( 'Style', 'ultimate-addons-for-gutenberg' ) }
+					borderWidthLabel={ __( 'Width', 'ultimate-addons-for-gutenberg' ) }
+					borderRadiusLabel={ __( 'Radius', 'ultimate-addons-for-gutenberg' ) }
+					borderColorLabel={ __( 'Color', 'ultimate-addons-for-gutenberg' ) }
+					borderHoverColorLabel={ __(
+						'Hover Color',
+						'ultimate-addons-for-gutenberg'
+					) }
+					prefix={ 'overall' }
+					attributes={ attributes }
+					deviceType={ deviceType }
 					disableBottomSeparator={ true }
+					disabledBorderTitle= { true }
 				/>
 			</UAGAdvancedPanelBody>
 		);
@@ -702,6 +689,22 @@ const Settings = ( props ) => {
 						value: nameDecoration,
 						label: 'nameDecoration',
 					} }
+					letterSpacing={ {
+						value: nameLetterSpacing,
+						label: 'nameLetterSpacing',
+					} }
+					letterSpacingTablet={ {
+						value: nameLetterSpacingTablet,
+						label: 'nameLetterSpacingTablet',
+					} }
+					letterSpacingMobile={ {
+						value: nameLetterSpacingMobile,
+						label: 'nameLetterSpacingMobile',
+					} }
+					letterSpacingType={ {
+						value: nameLetterSpacingType,
+						label: 'nameLetterSpacingType',
+					} }
 				/>
 				<ResponsiveSlider
 					label={ __(
@@ -810,6 +813,22 @@ const Settings = ( props ) => {
 					decoration={ {
 						value: descDecoration,
 						label: 'descDecoration',
+					} }
+					letterSpacing={ {
+						value: descLetterSpacing,
+						label: 'descLetterSpacing',
+					} }
+					letterSpacingTablet={ {
+						value: descLetterSpacingTablet,
+						label: 'descLetterSpacingTablet',
+					} }
+					letterSpacingMobile={ {
+						value: descLetterSpacingMobile,
+						label: 'descLetterSpacingMobile',
+					} }
+					letterSpacingType={ {
+						value: descLetterSpacingType,
+						label: 'descLetterSpacingType',
 					} }
 				/>
 				<ResponsiveSlider
@@ -1017,6 +1036,22 @@ const Settings = ( props ) => {
 					decoration={ {
 						value: companyDecoration,
 						label: 'companyDecoration',
+					} }
+					letterSpacing={ {
+						value: companyLetterSpacing,
+						label: 'companyLetterSpacing',
+					} }
+					letterSpacingTablet={ {
+						value: companyLetterSpacingTablet,
+						label: 'companyLetterSpacingTablet',
+					} }
+					letterSpacingMobile={ {
+						value: companyLetterSpacingMobile,
+						label: 'companyLetterSpacingMobile',
+					} }
+					letterSpacingType={ {
+						value: companyLetterSpacingType,
+						label: 'companyLetterSpacingType',
 					} }
 				/>
 			</UAGAdvancedPanelBody>
@@ -1516,22 +1551,9 @@ const Settings = ( props ) => {
 		);
 	};
 
-	const blockControls = () => {
-		return (
-			<BlockControls key="controls">
-				<AlignmentToolbar
-					value={ headingAlign }
-					onChange={ ( value ) =>
-						setAttributes( { headingAlign: value } )
-					}
-				/>
-			</BlockControls>
-		);
-	};
 
 	return (
 		<Suspense fallback={ lazyLoader() }>
-			{ blockControls() }
 			{ inspectControl() }
 			{ loadNameGoogleFonts }
 			{ loadCompanyGoogleFonts }

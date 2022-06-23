@@ -4,6 +4,7 @@
 
 import generateCSS from '@Controls/generateCSS';
 import generateCSSUnit from '@Controls/generateCSSUnit';
+import generateBorderCSS from '@Controls/generateBorderCSS';
 
 function styling( props ) {
 	const {
@@ -21,12 +22,7 @@ function styling( props ) {
 		align,
 		enableSeparator,
 		boxBgColor,
-		boxBgHoverColor,
-		borderStyle,
-		borderWidth,
-		borderRadius,
-		borderColor,
-		borderHoverColor,
+		overallBorderHColor,
 		questionTextColor,
 		questionTextBgColor,
 		questionTextActiveColor,
@@ -101,7 +97,21 @@ function styling( props ) {
 		questionFontStyle,
 		questionTransform,
 		questionDecoration,
+		// letter spacing
+		questionLetterSpacing,
+		questionLetterSpacingTablet,
+		questionLetterSpacingMobile,
+		questionLetterSpacingType,
+		answerLetterSpacing,
+		answerLetterSpacingTablet,
+		answerLetterSpacingMobile,
+		answerLetterSpacingType,
 	} = props.attributes;
+
+
+	const borderCSS = generateBorderCSS( props.attributes, 'overall', '' );
+	const borderCSSTablet = generateBorderCSS( props.attributes,'overall', 'tablet' );
+	const borderCSSMobile = generateBorderCSS( props.attributes,'overall', 'mobile' );
 
 	let selectors = {};
 	let tabletSelectors = {};
@@ -138,14 +148,10 @@ function styling( props ) {
 		},
 		' .uagb-faq-item': {
 			'background-color': boxBgColor,
-			'border-style': borderStyle,
-			'border-width': generateCSSUnit( borderWidth, 'px' ),
-			'border-radius': generateCSSUnit( borderRadius, 'px' ),
-			'border-color': borderColor,
+			...borderCSS
 		},
 		' .uagb-faq-item:hover': {
-			'border-color': borderHoverColor,
-			'background-color': boxBgHoverColor,
+			'border-color': overallBorderHColor,
 		},
 		' .uagb-faq-item .uagb-question': {
 			'color': questionTextColor,
@@ -225,6 +231,7 @@ function styling( props ) {
 			'text-decoration': questionDecoration,
 			'text-transform': questionTransform,
 			'font-weight': questionFontWeight,
+			'letter-spacing': generateCSSUnit( questionLetterSpacing, questionLetterSpacingType ),
 		},
 		' .uagb-faq-item .uagb-faq-content': {
 			'font-size': generateCSSUnit( answerFontSize, answerFontSizeType ),
@@ -238,6 +245,7 @@ function styling( props ) {
 			'text-transform': answerTransform,
 			'font-weight': answerFontWeight,
 			'color': answerTextColor,
+			'letter-spacing': generateCSSUnit( answerLetterSpacing, answerLetterSpacingType ),
 		},
 	};
 
@@ -259,6 +267,9 @@ function styling( props ) {
 				questionLeftPaddingTablet,
 				questionPaddingTypeTablet
 			),
+		},
+		' .uagb-faq-item': {
+			...borderCSSTablet
 		},
 		' .uagb-faq-content': {
 			'padding-top': generateCSSUnit(
@@ -287,6 +298,7 @@ function styling( props ) {
 				questionLineHeightTablet,
 				questionLineHeightType
 			),
+			'letter-spacing': generateCSSUnit( questionLetterSpacingTablet, questionLetterSpacingType ),
 		},
 		' .uagb-faq-item .uagb-faq-content': {
 			'font-size': generateCSSUnit(
@@ -297,6 +309,7 @@ function styling( props ) {
 				answerLineHeightTablet,
 				answerLineHeightType
 			),
+			'letter-spacing': generateCSSUnit( answerLetterSpacingTablet, answerLetterSpacingType ),
 		},
 		' .uagb-icon svg': {
 			'width': generateCSSUnit( iconSizeTablet, iconSizeType ),
@@ -324,6 +337,9 @@ function styling( props ) {
 	};
 
 	mobileSelectors = {
+		' .uagb-faq-item': {
+			...borderCSSMobile
+		},
 		'.uagb-faq-icon-row .uagb-faq-item .uagb-faq-icon-wrap': {
 			'margin-right': generateCSSUnit( gapBtwIconQUestionMobile, 'px' ),
 		},
@@ -375,6 +391,7 @@ function styling( props ) {
 				questionLineHeightMobile,
 				questionLineHeightType
 			),
+			'letter-spacing': generateCSSUnit( questionLetterSpacingMobile, questionLetterSpacingType ),
 		},
 		' .uagb-faq-item .uagb-faq-content': {
 			'font-size': generateCSSUnit(
@@ -385,6 +402,7 @@ function styling( props ) {
 				answerLineHeightMobile,
 				answerLineHeightType
 			),
+			'letter-spacing': generateCSSUnit( answerLetterSpacingMobile, answerLetterSpacingType ),
 		},
 		' .uagb-icon svg': {
 			'width': generateCSSUnit( iconSizeMobile, iconSizeType ),
@@ -446,13 +464,12 @@ function styling( props ) {
 			'.uagb-faq__outer-wrap .uagb-faq-child__outer-wrap .uagb-faq-content '
 		] = {
 			'border-style': 'solid',
-			'border-top-color': borderColor,
-			'border-top-width': generateCSSUnit( borderWidth, 'px' ),
+			...borderCSS
 		};
 		selectors[
 			'.uagb-faq__outer-wrap .uagb-faq-child__outer-wrap .uagb-faq-content:hover '
 		] = {
-			'border-top-color': borderHoverColor,
+			'border-top-color': overallBorderHColor,
 		};
 	}
 	if ( 'grid' === layout ) {
