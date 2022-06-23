@@ -177,7 +177,7 @@ $t_selectors = array(
 		'margin-bottom' => UAGB_Helper::get_css_value( $attr['tabTitleBottomMarginTablet'], $attr['tablettabTitleMarginUnit'] ),
 	), $overall_border_tablet
 	),
-	' .uagb-tabs__body-wrap '                              => array_merge( array(
+	'.uagb-tabs__wrap .uagb-tabs__body-wrap '                              => array_merge( array(
 		'padding-top'    => UAGB_Helper::get_css_value( $attr['tabBodyTopPaddingTablet'], $attr['tablettabBodyPaddingUnit'] ),
 		'padding-bottom' => UAGB_Helper::get_css_value( $attr['tabBodyBottomPaddingTablet'], $attr['tablettabBodyPaddingUnit'] ),
 		'padding-left'   => UAGB_Helper::get_css_value( $attr['tabBodyLeftPaddingTablet'], $attr['tablettabBodyPaddingUnit'] ),
