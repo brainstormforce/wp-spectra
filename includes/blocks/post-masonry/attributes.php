@@ -8,12 +8,15 @@
  */
 
 return array(
+	'blockName'                         => 'post-masonry',
+	'postsToShow'                       => 6,
+	'postsOffset'                       => 0,
 	'post_type'                         => 'masonry',
 	'postType'                          => 'post',
 	'align'                             => 'left',
 	'rowGap'                            => 20,
-	'rowGapTablet'                      => 20,
-	'rowGapMobile'                      => 10,
+	'rowGapTablet'                      => '',
+	'rowGapMobile'                      => '',
 	'columnGap'                         => 20,
 	'columnGapTablet'                   => '',
 	'columnGapMobile'                   => '',
