@@ -59,9 +59,11 @@ const Border = ( props ) => {
 		<AdvancedPopColorControl
 			label={ borderColor.title }
 			colorValue={ borderColor.value }
-			onColorChange={ ( value ) =>
-				setAttributes( { [ borderColor.label ]: value } )
-			}
+			data={ {
+				value: borderColor.value,
+				label: borderColor.label,
+			} }
+			setAttributes={ setAttributes }
 		/>
 	);
 	const tabOutputHover = (
@@ -69,9 +71,11 @@ const Border = ( props ) => {
 		<AdvancedPopColorControl
 			label={ borderHoverColor.title }
 			colorValue={ borderHoverColor.value }
-			onColorChange={ ( value ) =>
-				setAttributes( { [ borderHoverColor.label ]: value } )
-			}
+			data={ {
+				value: borderHoverColor.value,
+				label: borderHoverColor.label,
+			} }
+			setAttributes={ setAttributes }
 		/>
 		) : ''
 	);
@@ -80,9 +84,11 @@ const Border = ( props ) => {
 			<AdvancedPopColorControl
 				label={ borderActiveColor.title }
 				colorValue={ borderActiveColor.value }
-				onColorChange={ ( value ) =>
-					setAttributes( { [ borderActiveColor.label ]: value } )
-				}
+				data={ {
+					value: borderActiveColor.value,
+					label: borderActiveColor.label,
+				} }
+				setAttributes={ setAttributes }
 			/>
 		) : ''
 	);

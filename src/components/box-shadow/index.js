@@ -57,9 +57,11 @@ const BoxShadowControl = ( props ) => {
 					<AdvancedPopColorControl
 						label={ boxShadowColor.title }
 						colorValue={ boxShadowColor.value }
-						onColorChange={ ( value ) =>
-							setAttributes( { [ boxShadowColor.label ]: value } )
-						}
+						data={ {
+							value: boxShadowColor.value,
+							label: boxShadowColor.label,
+						} }
+						setAttributes={ setAttributes }
 					/>
 				</div>
 				<div className="uagb-horizontal-wrap">
