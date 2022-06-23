@@ -253,7 +253,7 @@ a.uagb-infobox-link-wrap {
 	display: none;
 }
 
-.uagb-infobox__content-wrap  .uagb-ifb-content {
+.uagb-infobox__content-wrap .uagb-ifb-content {
 
 	img {
 		display: inline-block;
@@ -262,8 +262,10 @@ a.uagb-infobox-link-wrap {
 
 	svg {
 		display: inline-block;
-		box-sizing: content-box;
 	}
+}
+.uagb-infobox__content-wrap .uagb-ifb-icon-wrap {
+	box-sizing: content-box;
 }
 
 .uagb-infobox-cta-link > svg {
