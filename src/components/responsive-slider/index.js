@@ -24,11 +24,11 @@ const ResponsiveSlider = ( props ) => {
 					value: props.data.desktop.value,
 					label: props.data.desktop.label,
 				} }
-				onChange={ ( value ) => {
+				onChange={ props?.onChange ? ( value ) => {
 					if ( props?.onChange ) {
 						props.onChange( value )
 					}
-				}}
+				} : false }
 
 				min={ minDesk }
 				max={ maxDesk }
@@ -48,11 +48,11 @@ const ResponsiveSlider = ( props ) => {
 					value: props.data.tablet.value,
 					label: props.data.tablet.label,
 				} }
-				onChange={ ( value ) => {
+				onChange={ props?.onChange ? ( value ) => {
 					if ( props?.onChange ) {
 						props.onChange( value )
 					}
-				}}
+				} : false }
 				min={ minTab }
 				max={ maxTab }
 				unit={ props.data.tablet.unit || props.unit }
@@ -71,11 +71,11 @@ const ResponsiveSlider = ( props ) => {
 					value: props.data.mobile.value,
 					label: props.data.mobile.label,
 				} }
-				onChange={ ( value ) => {
+				onChange={ props?.onChange ? ( value ) => {
 					if ( props?.onChange ) {
 						props.onChange( value )
 					}
-				}}
+				} : false }
 				min={ minMob }
 				max={ maxMob }
 				unit={ props.data.mobile.unit || props.unit }
