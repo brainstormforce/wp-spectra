@@ -27,11 +27,13 @@ import {
 } from '@wordpress/block-editor';
 import ResponsiveSlider from '@Components/responsive-slider';
 import UAGAdvancedPanelBody from '@Components/advanced-panel-body';
+import { useDeviceType } from '@Controls/getPreviewType';
 
 const Settings = ( props ) => {
 	props = props.parentProps;
 
 	const { attributes, categoriesList, setAttributes, taxonomyList } = props;
+	const deviceType = useDeviceType();
 
 	const {
 		headingColor,
@@ -223,6 +225,8 @@ authorLetterSpacingTablet,
 authorLetterSpacingMobile,
 authorLetterSpacingType,
 	} = attributes;
+
+	const timelinAlignment = 'undefined' !== typeof attributes['timelinAlignment' + deviceType ] ? attributes['timelinAlignment' + deviceType ] :  attributes.timelinAlignment;
 
 	const onSelectPostType = ( value ) => {
 		setAttributes( { postType: value } );
@@ -1573,7 +1577,7 @@ authorLetterSpacingType,
 						label: 'dateDecoration',
 					} }
 				/>
-				{ timelinAlignmentDesktop !== 'center' && (
+				{ timelinAlignment !== 'center' && (
 					<ResponsiveSlider
 						label={ __(
 							'Bottom Spacing',

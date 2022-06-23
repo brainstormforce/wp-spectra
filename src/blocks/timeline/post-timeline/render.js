@@ -35,7 +35,7 @@ const Render = ( props ) => {
 		postsToShow,
 	} = attributes;
 
-	const timelinAlignment = 'undefined' !== attributes['timelinAlignment' + deviceType ] ? attributes['timelinAlignment' + deviceType ] :  attributes.timelinAlignment;
+	const timelinAlignment = 'undefined' !== typeof attributes['timelinAlignment' + deviceType ] ? attributes['timelinAlignment' + deviceType ] :  attributes.timelinAlignment;
 
 	/* Render output at backend */
 	const getContent = () => {

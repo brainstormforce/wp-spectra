@@ -8,7 +8,7 @@
  function AlignClass( attributes, index_val, deviceType ) {
 	let alignClass = '';
 
-	const timelinAlignment = 'undefined' !== deviceType ? attributes['timelinAlignment' + deviceType ] : attributes.timelinAlignment;
+	const timelinAlignment = 'undefined' !== typeof attributes['timelinAlignment' + deviceType ] ? attributes['timelinAlignment' + deviceType ] : attributes.timelinAlignment;
 
 	if ( 'left' === timelinAlignment ) {
 		alignClass = 'uagb-timeline__left';

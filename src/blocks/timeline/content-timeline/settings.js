@@ -34,6 +34,7 @@ import {
 import { select } from '@wordpress/data';
 
 import UAGAdvancedPanelBody from '@Components/advanced-panel-body';
+import attributes from '../post-timeline/attributes';
 
 const Settings = ( props ) => {
 	props = props.parentProps;
@@ -67,6 +68,7 @@ const Settings = ( props ) => {
 			headLineHeightTablet,
 			headLineHeightMobile,
 			headLoadGoogleFonts,
+			timelinAlignment,
 			timelinAlignmentDesktop,
 			timelinAlignmentTablet,
 			timelinAlignmentMobile,
@@ -168,8 +170,6 @@ const Settings = ( props ) => {
 			dateDecoration,
 		},
 	} = props;
-
-	const timelinAlignment = window['timelinAlignment' + deviceType ];
 
 	const getconnectorBgsize = ( value ) => {
 		const getChildBlocks = select( 'core/block-editor' ).getBlocks(

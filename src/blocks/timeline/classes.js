@@ -11,7 +11,7 @@ function ContentTmClasses( attributes, deviceType ) {
 		arrowAlignClass = 'uagb-timeline__arrow-bottom' + ' ';
 	}
 
-	const timelinAlignment = 'undefined' !== deviceType ? attributes['timelinAlignment' + deviceType ] : attributes.timelinAlignment;
+	const timelinAlignment = 'undefined' !== typeof attributes['timelinAlignment' + deviceType ] ? attributes['timelinAlignment' + deviceType ] : attributes.timelinAlignment;
 
 	/* Alignmnet */
 	let alignClass = 'uagb-timeline__center-block ' + ' ';

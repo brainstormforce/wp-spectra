@@ -42,7 +42,7 @@ const Render = ( props ) => {
 		},
 	} = props;
 
-	const timelinAlignment = 'undefined' !== deviceType ? attributes['timelinAlignment' + deviceType ] : attributes.timelinAlignment;
+	const timelinAlignment = 'undefined' !== typeof attributes['timelinAlignment' + deviceType ] ? attributes['timelinAlignment' + deviceType ] : attributes.timelinAlignment;
 
 
 	const splitBlock = ( before, after, ...blocks ) => {
