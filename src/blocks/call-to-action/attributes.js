@@ -1,6 +1,10 @@
 /**
  * BLOCK: Call To Action - Attributes
  */
+import { getBorderAttributes } from '@Controls/generateAttributes';
+
+const borderAttributes = getBorderAttributes( 'btn' );
+const secondCtaBorderAttribute = getBorderAttributes( 'secondCta' );
 
 const attributes = {
 	inheritFromTheme: {
@@ -462,23 +466,13 @@ const attributes = {
 	},
 	ctaBorderColor: {
 		type: 'string',
-		UAGCopyPaste: {
-			styleType: 'btn-border-color'
-		},
 	},
 	ctaBorderhoverColor: {
 		type: 'string',
-		UAGCopyPaste: {
-			styleType: 'btn-border-hover-color'
-		},
 		default: '',
 	},
 	ctaBorderStyle: {
 		type: 'string',
-		UAGCopyPaste: {
-			styleType: 'btn-border-style'
-		},
-		default: 'none',
 	},
 	ctaBtnVertPadding: {
 		type: 'number',
@@ -496,17 +490,9 @@ const attributes = {
 	},
 	ctaBorderWidth: {
 		type: 'number',
-		UAGCopyPaste: {
-			styleType: 'btn-border-width'
-		},
-		default: '',
 	},
 	ctaBorderRadius: {
 		type: 'number',
-		UAGCopyPaste: {
-			styleType: 'btn-border-radius'
-		},
-		default: '',
 	},
 	stack: {
 		type: 'string',
@@ -771,37 +757,22 @@ const attributes = {
 	secondCtaBorderWidth: {
 		type: 'number',
 		default: '',
-		UAGCopyPaste: {
-			styleType: 'btn-border-width'
-		}
 	},
 	secondCtaBorderRadius: {
 		type: 'number',
 		default: '',
-		UAGCopyPaste: {
-			styleType: 'btn-border-radius'
-		}
 	},
 	secondCtaBorderStyle: {
 		type: 'string',
 		default: 'none',
-		UAGCopyPaste: {
-			styleType: 'btn-border-style'
-		}
 	},
 	secondCtaBorderColor: {
 		type: 'string',
-		UAGCopyPaste: {
-			styleType: 'btn-border-color'
-		},
 		default: '',
 	},
 	secondCtaBorderHColor: {
 		type: 'string',
 		default: '',
-		UAGCopyPaste: {
-			styleType: 'btn-border-hover-color'
-		}
 	},
 	secondCtaColor: {
 		type: 'string',
@@ -869,9 +840,21 @@ const attributes = {
 	},
 	secondCtaIconSpace: {
 		type: 'number',
-		default: 8,
+		default: 10,
 		UAGCopyPaste: {
 			styleType: 'btn-icon-space'
+		}
+	},
+	secondCtaIconSpaceTablet: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'btn-icon-space-tablet'
+		}
+	},
+	secondCtaIconSpaceMobile: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'btn-icon-space-mobile'
 		}
 	},
 	isPreview: {
@@ -1123,6 +1106,108 @@ const attributes = {
 		UAGCopyPaste: {
 			styleType: 'main-button-unit-type'
 		},
+	},
+	...borderAttributes,
+	...secondCtaBorderAttribute,
+	titleLetterSpacing: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'main-title-letter-spacing'
+		}
+	},
+	titleLetterSpacingTablet: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'main-title-letter-spacing-tablet'
+		}
+	},
+	titleLetterSpacingMobile: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'main-title-letter-spacing-mobile'
+		}
+	},
+	titleLetterSpacingType: {
+		type: 'string',
+		default: 'px',
+		UAGCopyPaste: {
+			styleType: 'main-title-letter-spacing-type'
+		}
+	},
+	descLetterSpacing: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'desc-letter-spacing'
+		}
+	},
+	descLetterSpacingTablet: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'desc-letter-spacing-tablet'
+		}
+	},
+	descLetterSpacingMobile: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'desc-letter-spacing-mobile'
+		}
+	},
+	descLetterSpacingType: {
+		type: 'string',
+		default: 'px',
+		UAGCopyPaste: {
+			styleType: 'desc-letter-spacing-type'
+		}
+	},
+	ctaLetterSpacing: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'cta-letter-spacing'
+		}
+	},
+	ctaLetterSpacingTablet: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'cta-letter-spacing-tablet'
+		}
+	},
+	ctaLetterSpacingMobile: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'cta-letter-spacing-mobile'
+		}
+	},
+	ctaLetterSpacingType: {
+		type: 'string',
+		default: 'px',
+		UAGCopyPaste: {
+			styleType: 'cta-letter-spacing-type'
+		}
+	},
+	secondCtaLetterSpacing: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'secondCta-letter-spacing'
+		}
+	},
+	secondCtaLetterSpacingTablet: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'secondCta-letter-spacing-tablet'
+		}
+	},
+	secondCtaLetterSpacingMobile: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'secondCta-letter-spacing-mobile'
+		}
+	},
+	secondCtaLetterSpacingType: {
+		type: 'string',
+		default: 'px',
+		UAGCopyPaste: {
+			styleType: 'secondCta-letter-spacing-type'
+		}
 	},
 };
 

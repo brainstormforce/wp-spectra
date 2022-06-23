@@ -8,6 +8,7 @@ import addBlockEditorDynamicStyles from '@Controls/addBlockEditorDynamicStyles';
 import { useDeviceType } from '@Controls/getPreviewType';
 import React, { useEffect, lazy, Suspense, useLayoutEffect } from 'react';
 import lazyLoader from '@Controls/lazy-loader';
+import { migrateBorderAttributes } from '@Controls/generateAttributes';
 
 const Settings = lazy( () =>
 	import( /* webpackChunkName: "chunks/columns/settings" */ './settings' )
@@ -96,11 +97,32 @@ const ColumnsComponent = ( props ) => {
 			setAttributes( { backgroundImageColor: color } );
 			setAttributes( { backgroundOpacity: 101 } );
 		}
-
+		const { borderStyle, borderWidth, borderRadius, borderColor, borderHoverColor } = props.attributes
+		// border migration
+		if( borderWidth || borderRadius || borderColor || borderHoverColor || borderStyle ){
+			const migrationAttributes = migrateBorderAttributes( 'columns', {
+				label: 'borderWidth',
+				value: borderWidth,
+			}, {
+				label: 'borderRadius',
+				value: borderRadius
+			}, {
+				label: 'borderColor',
+				value: borderColor
+			}, {
+				label: 'borderHoverColor',
+				value: borderHoverColor
+			},{
+				label: 'borderStyle',
+				value: borderStyle
+			}
+			);
+			props.setAttributes( migrationAttributes )
+		}
 	}, [] );
 
 	useEffect( () => {
-
+		
 		// Replacement for componentDidUpdate.
 		const blockStyling = styling( props );
 
@@ -168,7 +190,7 @@ const ColumnsComponent = ( props ) => {
 
 	return (
 		<Suspense fallback={ lazyLoader() }>
-			<Settings parentProps={ props } />
+			<Settings parentProps={ props } deviceType = { deviceType } />
 			<Render parentProps={ props } />
 		</Suspense>
 	);

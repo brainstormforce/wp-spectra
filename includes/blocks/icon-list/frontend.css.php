@@ -193,17 +193,20 @@ $selectors[' .wp-block-uagb-icon-list-child .uagb-icon-list__label'] = array(
 	'font-style'      => $attr['fontStyle'],
 	'font-weight'     => $attr['fontWeight'],
 	'line-height'     => $attr['lineHeight'] . $attr['lineHeightType'],
+	'letter-spacing'  => UAGB_Helper::get_css_value( $attr['labelLetterSpacing'], $attr['labelLetterSpacingType'] ),
 	'color'           => $attr['labelColor'],
 );
 
 $m_selectors[' .wp-block-uagb-icon-list-child .uagb-icon-list__label'] = array(
-	'font-size'   => UAGB_Helper::get_css_value( $attr['fontSizeMobile'], $attr['fontSizeType'] ),
-	'line-height' => UAGB_Helper::get_css_value( $attr['lineHeightMobile'], $attr['lineHeightType'] ),
+	'font-size'      => UAGB_Helper::get_css_value( $attr['fontSizeMobile'], $attr['fontSizeType'] ),
+	'line-height'    => UAGB_Helper::get_css_value( $attr['lineHeightMobile'], $attr['lineHeightType'] ),
+	'letter-spacing' => UAGB_Helper::get_css_value( $attr['labelLetterSpacingMobile'], $attr['labelLetterSpacingType'] ),
 );
 
 $t_selectors[' .wp-block-uagb-icon-list-child .uagb-icon-list__label'] = array(
-	'font-size'   => UAGB_Helper::get_css_value( $attr['fontSizeTablet'], $attr['fontSizeType'] ),
-	'line-height' => UAGB_Helper::get_css_value( $attr['lineHeightTablet'], $attr['lineHeightType'] ),
+	'font-size'      => UAGB_Helper::get_css_value( $attr['fontSizeTablet'], $attr['fontSizeType'] ),
+	'line-height'    => UAGB_Helper::get_css_value( $attr['lineHeightTablet'], $attr['lineHeightType'] ),
+	'letter-spacing' => UAGB_Helper::get_css_value( $attr['labelLetterSpacingTablet'], $attr['labelLetterSpacingType'] ),
 );
 
 if ( 'horizontal' === $icon_layout ) {

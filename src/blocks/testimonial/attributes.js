@@ -18,7 +18,18 @@ for ( let i = 1; i <= itemCount; i++ ) {
 		image: '',
 	} );
 }
-
+import { getBorderAttributes } from '@Controls/generateAttributes';
+const overallBorderAttributes = getBorderAttributes( 'overall', {
+	borderStyle: 'solid',
+	borderTopWidth: 1,
+	borderRightWidth: 1,
+	borderBottomWidth: 1,
+	borderLeftWidth: 1,
+	borderTopLeftRadius: 6,
+	borderTopRightRadius: 6,
+	borderBottomLeftRadius: 6,
+	borderBottomRightRadius: 6,
+} );
 const attributes = {
 	test_item_count: {
 		type: 'number',
@@ -620,29 +631,16 @@ const attributes = {
 	},
 	borderStyle: {
 		type: 'string',
-		UAGCopyPaste: {
-			styleType: 'desc-border-style'
-		},
 		default: 'none',
 	},
 	borderWidth: {
 		type: 'number',
-		UAGCopyPaste: {
-			styleType: 'desc-border-width'
-		},
-		default: '1',
 	},
 	borderRadius: {
 		type: 'number',
-		UAGCopyPaste: {
-			styleType: 'desc-border-radius'
-		},
 	},
 	borderColor: {
 		type: 'string',
-		UAGCopyPaste: {
-			styleType: 'desc-border-color'
-		},
 	},
 	backgroundOpacity: {
 		type: 'number',
@@ -698,9 +696,6 @@ const attributes = {
 	},
 	borderHoverColor: {
 		type: 'string',
-		UAGCopyPaste: {
-			styleType: 'desc-border-hover-color'
-		},
 	},
 	overlayType: {
 		type: 'string',
@@ -1006,6 +1001,83 @@ const attributes = {
 		UAGCopyPaste: {
 			styleType: 'post-equal-height'
 		},
+	},
+	...overallBorderAttributes,
+	// letter spacing
+	nameLetterSpacing: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'main-title-letter-spacing'
+		}
+	},
+	nameLetterSpacingTablet: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'main-title-letter-spacing-tablet'
+		}
+	},
+	nameLetterSpacingMobile: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'main-title-letter-spacing-mobile'
+		}
+	},
+	nameLetterSpacingType: {
+		type: 'string',
+		default: 'px',
+		UAGCopyPaste: {
+			styleType: 'main-title-letter-spacing-type'
+		}
+	},
+	descLetterSpacing: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'desc-letter-spacing'
+		}
+	},
+	descLetterSpacingTablet: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'desc-letter-spacing-tablet'
+		}
+	},
+	descLetterSpacingMobile: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'desc-letter-spacing-mobile'
+		}
+	},
+	descLetterSpacingType: {
+		type: 'string',
+		default: 'px',
+		UAGCopyPaste: {
+			styleType: 'desc-letter-spacing-type'
+		}
+	},
+	companyLetterSpacing: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'desc-letter-spacing'
+		}
+	},
+	companyLetterSpacingTablet: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'desc-letter-spacing-tablet'
+		}
+	},
+	companyLetterSpacingMobile: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'desc-letter-spacing-mobile'
+		}
+	},
+	companyLetterSpacingType: {
+		type: 'string',
+		default: 'px',
+		UAGCopyPaste: {
+			styleType: 'desc-letter-spacing-type'
+		}
 	},
 };
 
