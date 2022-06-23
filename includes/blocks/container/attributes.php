@@ -60,7 +60,7 @@ return array(
 	'borderRadius'                   => '',
 	'borderColor'                    => '',
 	'borderHoverColor'               => '',
-	'boxShadowColor'                 => '',
+	'boxShadowColor'                 => '#000',
 	'boxShadowHOffset'               => 0,
 	'boxShadowVOffset'               => 0,
 	'boxShadowBlur'                  => '',
