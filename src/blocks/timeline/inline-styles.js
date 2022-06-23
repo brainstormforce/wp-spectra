@@ -144,8 +144,6 @@ function contentTimelineStyle( props ) {
 		headTopSpacingMobile,
 		timelinAlignmentTablet,
 		timelinAlignmentMobile,
-		stack,
-		timelinAlignment,
 		headLetterSpacing,
 headLetterSpacingTablet,
 headLetterSpacingMobile,

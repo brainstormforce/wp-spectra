@@ -149,7 +149,6 @@ const Settings = ( props ) => {
 		borderRadiusMobile,
 		iconFocus,
 		iconBgFocus,
-		stack,
 		linkTarget,
 		postType,
 		taxonomyType,

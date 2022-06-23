@@ -3,7 +3,7 @@
  *
  * @param {Object[]} attributes settign array of attributes.
  * @param {number} index_val  index values.
- * @param deviceType
+ * @param {string} deviceType device type. 
  */
  function AlignClass( attributes, index_val, deviceType ) {
 	let alignClass = '';

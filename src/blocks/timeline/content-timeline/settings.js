@@ -18,7 +18,6 @@ import MultiButtonsControl from '@Components/multi-buttons-control';
 import UAGTabsControl from '@Components/tabs';
 import ResponsiveSlider from '@Components/responsive-slider';
 import { __ } from '@wordpress/i18n';
-import { useDeviceType } from '@Controls/getPreviewType';
 
 import { dateI18n } from '@wordpress/date';
 import {
@@ -34,11 +33,9 @@ import {
 import { select } from '@wordpress/data';
 
 import UAGAdvancedPanelBody from '@Components/advanced-panel-body';
-import attributes from '../post-timeline/attributes';
 
 const Settings = ( props ) => {
 	props = props.parentProps;
-	const deviceType = useDeviceType();
 
 	// Setup the attributes.
 	const {
@@ -116,7 +113,6 @@ const Settings = ( props ) => {
 			iconFocus,
 			iconBgFocus,
 			displayPostDate,
-			stack,
 			dateFormat,
 			topMargin,
 			rightMargin,

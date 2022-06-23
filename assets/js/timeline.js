@@ -125,6 +125,7 @@ function uagbTimelineInit() {
 	}
 }
 
+// eslint-disable-next-line no-unused-vars
 function UAGBTimelineClasses ( attributes, id ) {
 
 	const timeline = document.querySelectorAll( id );
@@ -146,8 +147,6 @@ function UAGBTimelineClasses ( attributes, id ) {
 		} else if( deviceWidth <= uagb_timeline_data.tablet_breakpoint ) {
 			device = 'Tablet';
 		}
-
-		console.log( device );
 
 		if( 'left' === attributes['timelinAlignment' + device ] ) {
 			content.classList.add( 'uagb-timeline__left-block' );
