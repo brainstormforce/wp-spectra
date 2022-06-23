@@ -255,10 +255,13 @@ a.uagb-infobox-link-wrap {
 
 .uagb-infobox__content-wrap  .uagb-ifb-content {
 
-	img,
-	svg {
+	img {
 		display: inline-block;
 		max-width: 100%;
+	}
+
+	svg {
+		display: inline-block;
 	}
 }
 
