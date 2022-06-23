@@ -66,6 +66,8 @@ $selectors = array(
 
 $desktop_selectors = UAGB_Block_Helper::get_timeline_selectors( $attr );
 $selectors         = array_merge( $selectors, $desktop_selectors );
+$is_stack_tablet   = ( ( isset( $atts['timelinAlignmentTablet'] ) && 'center' === $atts['timelinAlignmentTablet'] ) || ( 'tablet' === $attr['stack'] ) ) ? false : true; 
+$is_stack_mobile   = ( ( isset( $atts['timelinAlignmentMobile'] ) && 'center' === $atts['timelinAlignmentMobile'] ) || ( 'tablet' === $attr['stack'] || 'mobile' === $attr['stack'] ) ) ? false : true; 
 
 $t_selectors = array(
 	' .dashicons-admin-users'       => array(
@@ -101,20 +103,12 @@ $t_selectors = array(
 		'margin-top' => UAGB_Helper::get_css_value( $attr['authorSpaceTablet'], 'px' ),
 	),
 	'.uagb-timeline__center-block .uagb-timeline__left .uagb-timeline__marker' => array(
-		'margin-left'  => ( 'tablet' === $attr['stack'] ) ?
-							0 :
-							UAGB_Helper::get_css_value( $left_margin + 3, $attr['marginUnit'] ),
-		'margin-right' => ( 'tablet' === $attr['stack'] ) ?
-							0 :
-							UAGB_Helper::get_css_value( $right_margin, $attr['marginUnit'] ),
+		'margin-left'  => $is_stack_tablet ? 0 : UAGB_Helper::get_css_value( $left_margin + 3, $attr['marginUnit'] ),
+		'margin-right' => $is_stack_tablet ? 0 : UAGB_Helper::get_css_value( $right_margin, $attr['marginUnit'] ),
 	),
 	'.uagb-timeline__center-block .uagb-timeline__right .uagb-timeline__marker' => array(
-		'margin-left'  => ( 'tablet' === $attr['stack'] ) ?
-							0 :
-							UAGB_Helper::get_css_value( $left_margin + 3, $attr['marginUnit'] ),
-		'margin-right' => ( 'tablet' === $attr['stack'] ) ?
-							0 :
-							UAGB_Helper::get_css_value( $right_margin, $attr['marginUnit'] ),
+		'margin-left'  => $is_stack_tablet ? 0 : UAGB_Helper::get_css_value( $left_margin + 3, $attr['marginUnit'] ),
+		'margin-right' => $is_stack_tablet ? 0 : UAGB_Helper::get_css_value( $right_margin, $attr['marginUnit'] ),
 	),
 );
 
@@ -159,20 +153,12 @@ $m_selectors = array(
 		'margin-top' => UAGB_Helper::get_css_value( $attr['authorSpaceMobile'], 'px' ),
 	),
 	'.uagb-timeline__center-block .uagb-timeline__left .uagb-timeline__marker' => array(
-		'margin-left'  => ( 'tablet' === $attr['stack'] ) || ( 'mobile' === $attr['stack'] ) ?
-							0 :
-							UAGB_Helper::get_css_value( $left_margin + 3, $attr['marginUnit'] ),
-		'margin-right' => ( 'tablet' === $attr['stack'] ) || ( 'mobile' === $attr['stack'] ) ?
-							0 :
-							UAGB_Helper::get_css_value( $right_margin, $attr['marginUnit'] ),
+		'margin-left'  => $is_stack_mobile ? 0 : UAGB_Helper::get_css_value( $left_margin + 3, $attr['marginUnit'] ),
+		'margin-right' => $is_stack_mobile ? 0 : UAGB_Helper::get_css_value( $right_margin, $attr['marginUnit'] ),
 	),
 	'.uagb-timeline__center-block .uagb-timeline__right .uagb-timeline__marker' => array(
-		'margin-left'  => ( 'tablet' === $attr['stack'] ) || ( 'mobile' === $attr['stack'] ) ?
-							0 :
-							UAGB_Helper::get_css_value( $left_margin + 3, $attr['marginUnit'] ),
-		'margin-right' => ( 'tablet' === $attr['stack'] ) || ( 'mobile' === $attr['stack'] ) ?
-							0 :
-							UAGB_Helper::get_css_value( $right_margin, $attr['marginUnit'] ),
+		'margin-left'  => $is_stack_mobile ? 0 : UAGB_Helper::get_css_value( $left_margin + 3, $attr['marginUnit'] ),
+		'margin-right' => $is_stack_mobile ? 0 : UAGB_Helper::get_css_value( $right_margin, $attr['marginUnit'] ),
 	),
 );
 
