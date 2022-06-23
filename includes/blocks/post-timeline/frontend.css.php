@@ -70,29 +70,15 @@ $is_stack_tablet   = ( ( isset( $atts['timelinAlignmentTablet'] ) && 'center' ==
 $is_stack_mobile   = ( ( isset( $atts['timelinAlignmentMobile'] ) && 'center' === $atts['timelinAlignmentMobile'] ) || ( 'tablet' === $attr['stack'] || 'mobile' === $attr['stack'] ) ) ? false : true; 
 
 $t_selectors = array(
-	' .dashicons-admin-users'       => array(
+	' .dashicons-admin-users'                              => array(
 		'font-size'   => UAGB_Helper::get_css_value( $attr['authorFontSizeTablet'], $attr['authorFontSizeType'] ),
 		'line-height' => UAGB_Helper::get_css_value( $attr['authorLineHeightTablet'], $attr['authorLineHeightType'] ),
 	),
-	'.uagb-timeline__center-block.uagb-timeline__responsive-tablet .uagb-timeline__author-link' => array(
-		'text-align' => 'left',
-	),
-	'.uagb-timeline__center-block.uagb-timeline__responsive-tablet .uagb-timeline__link_parent' => array(
-		'text-align' => 'left',
-	),
-	'.uagb-timeline__center-block.uagb-timeline__responsive-tablet .uagb-timeline__link' => array(
-		'text-align' => 'left',
-	),
-	'.uagb-timeline__center-block.uagb-timeline__responsive-tablet .uagb-timeline__image a' => array(
-		'text-align' => 'left',
-	),
-	'.uagb-timeline__center-block.uagb-timeline__responsive-tablet a.uagb-timeline__image' => array(
-		'text-align' => 'left',
-	),
-	' .uagb-timeline__link'         => array(
+	' .uagb-timeline__link'                                => array(
+		'text-align'    => $attr['alignTablet'],
 		'margin-bottom' => UAGB_Helper::get_css_value( $attr['ctaBottomSpacingTablet'], 'px' ),
 	),
-	' .uagb-timeline__heading-text' => array(
+	' .uagb-timeline__heading-text'                        => array(
 		'margin-bottom' => UAGB_Helper::get_css_value( $attr['headSpaceTablet'], 'px' ),
 		'margin-top'    => UAGB_Helper::get_css_value( $attr['headTopSpacingTablet'], 'px' ),
 	),
@@ -110,6 +96,36 @@ $t_selectors = array(
 		'margin-left'  => $is_stack_tablet ? 0 : UAGB_Helper::get_css_value( $left_margin + 3, $attr['marginUnit'] ),
 		'margin-right' => $is_stack_tablet ? 0 : UAGB_Helper::get_css_value( $right_margin, $attr['marginUnit'] ),
 	),
+	' .uagb-timeline__day-new .uagb-timeline__inner-date-new' => array(
+		'text-align' => $attr['alignTablet'],
+	),
+	' .uagb-timeline__right .uagb-timeline__day-new'       => array(
+		'text-align' => $attr['alignTablet'],
+	),
+	' .uagb-timeline__day-new.uagb-timeline__events-inner-new' => array(
+		'text-align' => $attr['alignTablet'],
+	),
+	' .uagb-timeline__day-new .uagb-timeline__link_parent' => array(
+		'text-align' => $attr['alignTablet'],
+	),
+	' .uagb-timeline__day-new .uagb-timeline__image a'     => array(
+		'text-align' => $attr['alignTablet'],
+	),
+	' .uagb-timeline__day-new a.uagb-timeline__image'      => array(
+		'text-align' => $attr['alignTablet'],
+	),
+	' .uagb-timeline__day-new .uagb-timeline__author-link' => array(
+		'text-align' => $attr['alignTablet'],
+	),
+	' .uagb-timeline__day-new .uagb-timeline__heading a'   => array(
+		'text-align' => $attr['alignTablet'],
+	),
+	' .uagb-timeline__day-new .uagb-timeline__heading'     => array(
+		'text-align' => $attr['alignTablet'],
+	),
+	' .uagb-timeline-desc-content'                         => array(
+		'text-align' => $attr['alignTablet'],
+	),
 );
 
 $tablet_selectors = UAGB_Block_Helper::get_timeline_tablet_selectors( $attr );
@@ -117,32 +133,15 @@ $t_selectors      = array_merge( $t_selectors, $tablet_selectors );
 
 // Mobile responsive CSS.
 $m_selectors = array(
-	' .dashicons-admin-users'       => array(
+	' .dashicons-admin-users'                              => array(
 		'font-size'   => UAGB_Helper::get_css_value( $attr['authorFontSizeMobile'], $attr['authorFontSizeType'] ),
 		'line-height' => UAGB_Helper::get_css_value( $attr['authorLineHeightMobile'], $attr['authorLineHeightType'] ),
 	),
-	' .uagb-timeline__heading'      => array(
-		'text-align' => $attr['align'],
-	),
-	'.uagb-timeline__center-block.uagb-timeline__responsive-tablet .uagb-timeline__author-link' => array(
-		'text-align' => 'left',
-	),
-	'.uagb-timeline__center-block.uagb-timeline__responsive-tablet .uagb-timeline__link_parent' => array(
-		'text-align' => 'left',
-	),
-	'.uagb-timeline__center-block.uagb-timeline__responsive-tablet .uagb-timeline__link' => array(
-		'text-align' => 'left',
-	),
-	'.uagb-timeline__center-block.uagb-timeline__responsive-mobile .uagb-timeline__image a' => array(
-		'text-align' => 'left',
-	),
-	'.uagb-timeline__center-block.uagb-timeline__responsive-mobile a.uagb-timeline__image' => array(
-		'text-align' => 'left',
-	),
-	' .uagb-timeline__link'         => array(
+	' .uagb-timeline__link'                                => array(
+		'text-align'    => $attr['alignMobile'],
 		'margin-bottom' => UAGB_Helper::get_css_value( $attr['ctaBottomSpacingMobile'], 'px' ),
 	),
-	' .uagb-timeline__heading-text' => array(
+	' .uagb-timeline__heading-text'                        => array(
 		'margin-bottom' => UAGB_Helper::get_css_value( $attr['headSpaceMobile'], 'px' ),
 		'margin-top'    => UAGB_Helper::get_css_value( $attr['headTopSpacingMobile'], 'px' ),
 	),
@@ -159,6 +158,36 @@ $m_selectors = array(
 	'.uagb-timeline__center-block .uagb-timeline__right .uagb-timeline__marker' => array(
 		'margin-left'  => $is_stack_mobile ? 0 : UAGB_Helper::get_css_value( $left_margin + 3, $attr['marginUnit'] ),
 		'margin-right' => $is_stack_mobile ? 0 : UAGB_Helper::get_css_value( $right_margin, $attr['marginUnit'] ),
+	),
+	' .uagb-timeline__day-new .uagb-timeline__inner-date-new' => array(
+		'text-align' => $attr['alignMobile'],
+	),
+	' .uagb-timeline__right .uagb-timeline__day-new'       => array(
+		'text-align' => $attr['alignMobile'],
+	),
+	' .uagb-timeline__day-new.uagb-timeline__events-inner-new' => array(
+		'text-align' => $attr['alignMobile'],
+	),
+	' .uagb-timeline__day-new .uagb-timeline__link_parent' => array(
+		'text-align' => $attr['alignMobile'],
+	),
+	' .uagb-timeline__day-new .uagb-timeline__image a'     => array(
+		'text-align' => $attr['alignMobile'],
+	),
+	' .uagb-timeline__day-new a.uagb-timeline__image'      => array(
+		'text-align' => $attr['alignMobile'],
+	),
+	' .uagb-timeline__day-new .uagb-timeline__author-link' => array(
+		'text-align' => $attr['alignMobile'],
+	),
+	' .uagb-timeline__day-new .uagb-timeline__heading a'   => array(
+		'text-align' => $attr['alignMobile'],
+	),
+	' .uagb-timeline__day-new .uagb-timeline__heading'     => array(
+		'text-align' => $attr['alignMobile'],
+	),
+	' .uagb-timeline-desc-content'                         => array(
+		'text-align' => $attr['alignMobile'],
 	),
 );
 

@@ -53,7 +53,7 @@ const attributes = {
 	},
 	innerContentCustomWidthMobile: {
 		type: 'number',
-		default: 320
+		default: 426
 	},
 	innerContentCustomWidthType: {
 		type: 'string',
@@ -375,7 +375,7 @@ const attributes = {
 			styleType: 'container-box-shadow-position'
 		},
 	},
-	
+
 	boxShadowColorHover: {
 		type: 'string',
 		UAGCopyPaste: {
@@ -804,7 +804,7 @@ const attributes = {
 	},
 	bottomInvert: {
 		type: 'boolean',
-		default: false,
+		default: true,
 		UAGCopyPaste: {
 			styleType: 'container-bottom-invert'
 		},

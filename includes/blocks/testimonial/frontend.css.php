@@ -127,6 +127,11 @@ if ( '1' === $attr['test_item_count'] || $attr['test_item_count'] === $attr['col
 }
 
 $m_selectors = array(
+	' .uagb-testimonial__wrap'                          => array(
+		'padding-left'  => UAGB_Helper::get_css_value( ( ( $attr['columnGapMobile'] ) / 2 ), $attr['columnGapType'] ),
+		'padding-right' => UAGB_Helper::get_css_value( ( ( $attr['columnGapMobile'] ) / 2 ), $attr['columnGapType'] ),
+		'margin-bottom' => UAGB_Helper::get_css_value( $attr['rowGapMobile'], $attr['rowGapType'] ),
+	),
 	' .uagb-tm__image img'                              => array(
 		'width'     => UAGB_Helper::get_css_value( $attr['imageWidthMobile'], $attr['imageWidthType'] ),
 		'max-width' => UAGB_Helper::get_css_value( $attr['imageWidthMobile'], $attr['imageWidthType'] ),
@@ -153,6 +158,11 @@ $m_selectors = array(
 	),
 );
 $t_selectors = array(
+	' .uagb-testimonial__wrap'                          => array(
+		'padding-left'  => UAGB_Helper::get_css_value( ( ( $attr['columnGapTablet'] ) / 2 ), $attr['columnGapType'] ),
+		'padding-right' => UAGB_Helper::get_css_value( ( ( $attr['columnGapTablet'] ) / 2 ), $attr['columnGapType'] ),
+		'margin-bottom' => UAGB_Helper::get_css_value( $attr['rowGapTablet'], $attr['rowGapType'] ),
+	),
 	' .uagb-tm__image img'                              => array(
 		'width'     => UAGB_Helper::get_css_value( $attr['imageWidthTablet'], $attr['imageWidthType'] ),
 		'max-width' => UAGB_Helper::get_css_value( $attr['imageWidthTablet'], $attr['imageWidthType'] ),

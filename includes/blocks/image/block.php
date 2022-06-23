@@ -10,7 +10,7 @@
 $block_slug = 'uagb/image';
 $block_data = array(
 	'slug'             => '',
-	'admin_categories' => array( 'content' ),
+	'admin_categories' => array( 'content', 'core' ),
 	'link'             => 'image',
 	'doc'              => 'image',
 	'title'            => __( 'Image', 'ultimate-addons-for-gutenberg' ),

@@ -1007,6 +1007,82 @@ const attributes = {
 			styleType: 'post-equal-height'
 		},
 	},
+	// letter spacing
+	nameLetterSpacing: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'main-title-letter-spacing'
+		}
+	},
+	nameLetterSpacingTablet: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'main-title-letter-spacing-tablet'
+		}
+	},
+	nameLetterSpacingMobile: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'main-title-letter-spacing-mobile'
+		}
+	},
+	nameLetterSpacingType: {
+		type: 'string',
+		default: 'px',
+		UAGCopyPaste: {
+			styleType: 'main-title-letter-spacing-type'
+		}
+	},
+	descLetterSpacing: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'desc-letter-spacing'
+		}
+	},
+	descLetterSpacingTablet: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'desc-letter-spacing-tablet'
+		}
+	},
+	descLetterSpacingMobile: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'desc-letter-spacing-mobile'
+		}
+	},
+	descLetterSpacingType: {
+		type: 'string',
+		default: 'px',
+		UAGCopyPaste: {
+			styleType: 'desc-letter-spacing-type'
+		}
+	},
+	companyLetterSpacing: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'desc-letter-spacing'
+		}
+	},
+	companyLetterSpacingTablet: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'desc-letter-spacing-tablet'
+		}
+	},
+	companyLetterSpacingMobile: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'desc-letter-spacing-mobile'
+		}
+	},
+	companyLetterSpacingType: {
+		type: 'string',
+		default: 'px',
+		UAGCopyPaste: {
+			styleType: 'desc-letter-spacing-type'
+		}
+	},
 };
 
 export default attributes;
