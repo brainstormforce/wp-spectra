@@ -104,6 +104,8 @@ function contentTimelineStyle( props ) {
 		subHeadDecoration,
 		dateDecoration,
 		iconFocus,
+		stack,
+		timelinAlignment,
 		timelinAlignmentTablet,
 		headLetterSpacing,
 		headLetterSpacingTablet,
@@ -118,6 +120,14 @@ function contentTimelineStyle( props ) {
 		dateLetterSpacingMobile,
 		dateLetterSpacingType,
 	} = props.attributes;
+
+	let timelinAlignmentTabletDevice = '';
+
+	if( 'undefined' !== typeof timelinAlignmentTablet  ) {
+		timelinAlignmentTabletDevice = timelinAlignmentTablet;
+	} else if( stack === 'tablet' && timelinAlignment === 'center' ) {
+		timelinAlignmentTabletDevice = timelinAlignment;
+	}
 
 	const selectors = {
 		' .uagb-timeline__heading.rich-text': {
@@ -407,9 +417,9 @@ function contentTimelineStyle( props ) {
 			'letter-spacing': generateCSSUnit( subHeadLetterSpacingTablet, subHeadLetterSpacingType ),
 		},
 		'.uagb-timeline__center-block .uagb-timeline__marker': {
-			'margin-left': ( timelinAlignmentTablet === 'center' ) ?
+			'margin-left': ( timelinAlignmentTabletDevice !== 'center' ) ?
 			0 : generateCSSUnit( leftMargin + 3, marginUnit ),
-			'margin-right': ( timelinAlignmentTablet === 'center' ) ?
+			'margin-right': ( timelinAlignmentTabletDevice !== 'center' ) ?
 			0 : generateCSSUnit( rightMargin, marginUnit ),
 		},
 		'.uagb-timeline__center-block .uagb-timeline__day-new.uagb-timeline__day-left': {
