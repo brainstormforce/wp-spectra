@@ -309,6 +309,7 @@ function styling( props ) {
 				tabTitleBottomMarginTablet,
 				tablettabTitleMarginUnit
 			),
+			...borderCSSTablet
 		},
 		' > .uagb-tabs__body-wrap ': {
 			'padding-top': generateCSSUnit(
@@ -343,6 +344,7 @@ function styling( props ) {
 				tabBodyBottomMarginTablet,
 				tablettabBodyMarginUnit
 			),
+			...borderCSSTablet
 		},
 		' .uagb-tabs__icon-position-left  .uagb-tabs__icon ': {
 			'margin-right': generateCSSUnit( iconSpacingTablet, 'px' ),
@@ -390,6 +392,7 @@ function styling( props ) {
 				tabTitleBottomMarginMobile,
 				mobiletabTitleMarginUnit
 			),
+			...borderCSSMobile
 		},
 		' > .uagb-tabs__panel .uagb-tab a': {
 			'padding-top': generateCSSUnit(
@@ -442,6 +445,7 @@ function styling( props ) {
 				tabBodyBottomMarginMobile,
 				mobiletabBodyMarginUnit
 			),
+			...borderCSSMobile
 		},
 		' .uagb-tabs__icon-position-left  .uagb-tabs__icon ': {
 			'margin-right': generateCSSUnit( iconSpacingMobile, 'px' ),
@@ -460,7 +464,6 @@ function styling( props ) {
 	if ( tabsStyleD === 'hstyle5' ) {
 		selectors[ '.uagb-tabs__wrap.uagb-tabs__hstyle5-desktop ' ] = {
 			'background': bodyBgColor,
-			...borderCSS
 		};
 		selectors[ '.uagb-tabs__wrap.uagb-tabs__hstyle5-desktop:hover' ] = {
 			'border-color': tabBorderHColor,
@@ -468,13 +471,11 @@ function styling( props ) {
 		selectors['.uagb-tabs__wrap > .uagb-tabs__body-wrap'] = {
 			'border-left-style': 'none',
 			'border-right-style':'none',
-			...borderCSS
 		};
 	}
 	if ( tabsStyleD === 'vstyle10' ) {
 		selectors[ '.uagb-tabs__wrap.uagb-tabs__vstyle10-desktop ' ] = {
 			'background': bodyBgColor,
-			...borderCSS
 		};
 		selectors[ '.uagb-tabs__wrap.uagb-tabs__vstyle10-desktop:hover' ] = {
 			'border-color': tabBorderHColor,
@@ -483,23 +484,16 @@ function styling( props ) {
 	if ( tabsStyleT === 'hstyle5' ) {
 		tabletSelectors[ '.uagb-tabs__wrap.uagb-tabs__hstyle5-tablet' ] = {
 			'background': bodyBgColor,
-			...borderCSSTablet
 		};
 		tabletSelectors[
 			'.uagb-tabs__wrap.uagb-tabs__hstyle5-tablet:hover'
 		] = {
 			'border-color': tabBorderHColor,
 		};
-		tabletSelectors['.uagb-tabs__wrap > .uagb-tabs__body-wrap'] = {
-			'border-left-style': 'none',
-			'border-right-style':'none',
-			...borderCSSTablet
-		};
 	}
 	if ( tabsStyleT === 'vstyle10' ) {
 		tabletSelectors[ '.uagb-tabs__wrap.uagb-tabs__vstyle10-tablet' ] = {
 			'background': bodyBgColor,
-			...borderCSSTablet
 		};
 		tabletSelectors[
 			'.uagb-tabs__wrap.uagb-tabs__vstyle10-tablet:hover'
@@ -510,12 +504,10 @@ function styling( props ) {
 	if ( tabsStyleM === 'hstyle5' ) {
 		mobileSelectors[ '.uagb-tabs__wrap.uagb-tabs__hstyle5-mobile ' ] = {
 			'background': bodyBgColor,
-			...borderCSSMobile
 		};
 		mobileSelectors['.uagb-tabs__wrap > .uagb-tabs__body-wrap'] = {
 			'border-left-style': 'none',
 			'border-right-style':'none',
-			...borderCSSMobile
 		};
 		mobileSelectors[
 			'.uagb-tabs__wrap.uagb-tabs__hstyle5-mobile:hover'
@@ -526,7 +518,6 @@ function styling( props ) {
 	if ( tabsStyleM === 'vstyle10' ) {
 		mobileSelectors[ '.uagb-tabs__wrap.uagb-tabs__vstyle10-mobile ' ] = {
 			'background': bodyBgColor,
-			...borderCSSMobile
 		};
 		mobileSelectors[
 			'.uagb-tabs__wrap.uagb-tabs__vstyle10-mobile:hover'
@@ -537,12 +528,12 @@ function styling( props ) {
 	if ( tabsStyleM === 'stack4' ) {
 		mobileSelectors[ '.uagb-tabs__wrap.uagb-tabs__stack4-mobile' ] = {
 			'background': bodyBgColor,
-			...borderCSSMobile
 		};
 		mobileSelectors[ '.uagb-tabs__wrap.uagb-tabs__stack4-mobile:hover' ] = {
 			'border-color': tabBorderHColor,
 		};
 	}
+	
 	const base_selector = `.editor-styles-wrapper .uagb-block-${ props.clientId.substr(
 		0,
 		8
