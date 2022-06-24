@@ -9,7 +9,7 @@ import React, { useState, useEffect, Suspense, lazy } from 'react';
 import lazyLoader from '@Controls/lazy-loader';
 import TypographyControl from '@Components/typography';
 import { decodeEntities } from '@wordpress/html-entities';
-import Border from '@Components/border';
+import ResponsiveBorder from '@Components/responsive-border';
 import AdvancedPopColorControl from '@Components/color-control/advanced-pop-color-control.js';
 import InspectorTabs from '@Components/inspector-tabs/InspectorTabs.js';
 import InspectorTab, {
@@ -25,6 +25,8 @@ import renderSVG from '@Controls/renderIcon';
 import presets from './presets';
 import UAGPresets from '@Components/presets';
 import addBlockEditorDynamicStyles from '@Controls/addBlockEditorDynamicStyles';
+import { getFallbackNumber } from '@Controls/getAttributeFallback';
+import { migrateBorderAttributes } from '@Controls/generateAttributes';
 
 const MAX_POSTS_COLUMNS = 8;
 
@@ -159,9 +161,38 @@ const UAGBPostCarousel = ( props ) => {
 				} );
 			}
 		}
+		const {
+			borderStyle,
+			borderWidth,
+			borderColor,
+			borderHColor,
+			borderRadius
+		} = props.attributes;
+
+		if( borderWidth || borderRadius || borderColor || borderHColor || borderStyle ){
+			const migrationAttributes = migrateBorderAttributes( 'btn', {
+				label: 'borderWidth',
+				value: borderWidth,
+			}, {
+				label: 'borderRadius',
+				value: borderRadius
+			}, {
+				label: 'borderColor',
+				value: borderColor
+			}, {
+				label: 'borderHColor',
+				value: borderHColor
+			},{
+				label: 'borderStyle',
+				value: borderStyle
+			}
+			);
+			props.setAttributes( migrationAttributes )
+		};
 	}, [] );
 
 	useEffect( () => {
+	
 		const equalHeight = props.attributes.equalHeight;
 		if ( equalHeight ) {
 			uagb_carousel_height( props.clientId.substr( 0, 8 ) ); // eslint-disable-line no-undef
@@ -223,6 +254,7 @@ const UAGBPostCarousel = ( props ) => {
 		taxonomyList,
 	} = props;
 	const {
+		blockName,
 		align,
 		displayPostTitle,
 		displayPostDate,
@@ -236,11 +268,6 @@ const UAGBPostCarousel = ( props ) => {
 		displayPostLink,
 		newTab,
 		ctaText,
-		borderWidth,
-		borderStyle,
-		borderColor,
-		borderHColor,
-		borderRadius,
 		columns,
 		tcolumns,
 		mcolumns,
@@ -413,6 +440,9 @@ const UAGBPostCarousel = ( props ) => {
 		ctaLetterSpacingMobile,
 		ctaLetterSpacingType,
 	} = attributes;
+
+	const columnsFallback = getFallbackNumber( columns, 'columns', blockName );
+
 	const taxonomyListOptions = [];
 
 	const categoryListOptions = [
@@ -672,7 +702,7 @@ const UAGBPostCarousel = ( props ) => {
 					displayUnit={ false }
 					setAttributes={ setAttributes }
 				/>
-				{ columns > 1 && (
+				{ columnsFallback > 1 && (
 				<ToggleControl
 					label={ __(
 						'Equal Height',
@@ -1947,50 +1977,13 @@ const UAGBPostCarousel = ( props ) => {
 					} }
 					setAttributes={ setAttributes }
 				/>
-				<Border
-					disabledBorderTitle= {false}
-					disableBottomSeparator={ false }
+				<ResponsiveBorder
 					setAttributes={ setAttributes }
-					borderStyle={ {
-						value: borderStyle,
-						label: 'borderStyle',
-						title: __(
-							'Style',
-							'ultimate-addons-for-gutenberg'
-						),
-					} }
-					borderWidth={ {
-						value: borderWidth,
-						label: 'borderWidth',
-						title: __(
-							'Width',
-							'ultimate-addons-for-gutenberg'
-						),
-					} }
-					borderRadius={ {
-						value: borderRadius,
-						label: 'borderRadius',
-						title: __(
-							'Radius',
-							'ultimate-addons-for-gutenberg'
-						),
-					} }
-					borderColor={ {
-						value: borderColor,
-						label: 'borderColor',
-						title: __(
-							'Color',
-							'ultimate-addons-for-gutenberg'
-						),
-					} }
-					borderHoverColor={ {
-						value: borderHColor,
-						label: 'borderHColor',
-						title: __(
-							'Hover Color',
-							'ultimate-addons-for-gutenberg'
-						),
-					} }
+					prefix={ 'btn' }
+					attributes={ attributes }
+					deviceType={ deviceType }
+					disableBottomSeparator={ true }
+					disabledBorderTitle= { true }
 				/>
 				<SpacingControl
 					{ ...props }
@@ -2203,6 +2196,7 @@ const UAGBPostCarousel = ( props ) => {
 export default compose(
 	withSelect( ( select, props ) => {
 		const {
+			blockName,
 			categories,
 			postsToShow,
 			postsOffset,
@@ -2241,8 +2235,8 @@ export default compose(
 		const latestPostsQuery = {
 			order,
 			orderby: orderBy,
-			per_page: postsToShow,
-			offset: postsOffset
+			per_page: getFallbackNumber( postsToShow, 'postsToShow', blockName ),
+			offset: getFallbackNumber( postsOffset, 'postsOffset', blockName ),
 		};
 
 		if ( excludeCurrentPost ) {

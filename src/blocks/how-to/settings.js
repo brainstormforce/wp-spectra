@@ -5,8 +5,6 @@ import TypographyControl from '@Components/typography';
 import './style.scss';
 import { __ } from '@wordpress/i18n';
 import {
-	AlignmentToolbar,
-	BlockControls,
 	InspectorControls,
 } from '@wordpress/block-editor';
 import AdvancedPopColorControl from '@Components/color-control/advanced-pop-color-control.js';
@@ -36,7 +34,7 @@ let imageSizeOptions = [
 ];
 
 
-
+import { getFallbackNumber } from '@Controls/getAttributeFallback';
 import UAGAdvancedPanelBody from '@Components/advanced-panel-body';
 
 const Settings = ( props ) => {
@@ -511,10 +509,11 @@ const Settings = ( props ) => {
 						} }
 						onChange={ ( newCount ) => {
 							const cloneIcons = [ ...tools ];
+							const newCountFallback = getFallbackNumber( newCount, 'tools_count', 'how-to' );
 
-							if ( cloneIcons.length < newCount ) {
+							if ( cloneIcons.length < newCountFallback ) {
 								const incAmount = Math.abs(
-									newCount - cloneIcons.length
+									newCountFallback - cloneIcons.length
 								);
 
 								{
@@ -530,7 +529,7 @@ const Settings = ( props ) => {
 								setAttributes( { tools: cloneIcons } );
 							} else {
 								const incAmount = Math.abs(
-									newCount - cloneIcons.length
+									newCountFallback - cloneIcons.length
 								);
 								const data_new = cloneIcons;
 								for ( let i = 0; i < incAmount; i++ ) {
@@ -538,7 +537,7 @@ const Settings = ( props ) => {
 								}
 								setAttributes( { tools: data_new } );
 							}
-							setAttributes( { tools_count: newCount } );
+							setAttributes( { tools_count: newCountFallback } );
 						} }
 						min={ 1 }
 						max={ 50 }
@@ -582,10 +581,11 @@ const Settings = ( props ) => {
 						} }
 						onChange={ ( newCount ) => {
 							const cloneIcons = [ ...materials ];
+							const newCountFallback = getFallbackNumber( newCount, 'material_count', 'how-to' );
 
-							if ( cloneIcons.length < newCount ) {
+							if ( cloneIcons.length < newCountFallback ) {
 								const incAmount = Math.abs(
-									newCount - cloneIcons.length
+									newCountFallback - cloneIcons.length
 								);
 
 								{
@@ -601,7 +601,7 @@ const Settings = ( props ) => {
 								setAttributes( { materials: cloneIcons } );
 							} else {
 								const incAmount = Math.abs(
-									newCount - cloneIcons.length
+									newCountFallback - cloneIcons.length
 								);
 								const data_new = cloneIcons;
 								for ( let i = 0; i < incAmount; i++ ) {
@@ -609,7 +609,7 @@ const Settings = ( props ) => {
 								}
 								setAttributes( { materials: data_new } );
 							}
-							setAttributes( { material_count: newCount } );
+							setAttributes( { material_count: newCountFallback } );
 						} }
 						min={ 1 }
 						max={ 50 }
@@ -997,22 +997,9 @@ const Settings = ( props ) => {
 		);
 	};
 
-	const blockControls = () => {
-		return (
-			<BlockControls key="index">
-				<AlignmentToolbar
-					value={ overallAlignment }
-					onChange={ ( value ) =>
-						setAttributes( { overallAlignment: value } )
-					}
-				/>
-			</BlockControls>
-		);
-	};
 
 	return (
 		<Suspense fallback={ lazyLoader() }>
-			{ blockControls() }
 			<InspectorControls>
 				<InspectorTabs>
 					<InspectorTab { ...UAGTabs.general }>

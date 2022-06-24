@@ -12,9 +12,8 @@ import InspectorTabs from '@Components/inspector-tabs/InspectorTabs.js';
 import InspectorTab, {
 	UAGTabs,
 } from '@Components/inspector-tabs/InspectorTab.js';
-import Range from '@Components/range/Range.js';
 import MultiButtonsControl from '@Components/multi-buttons-control';
-import Border from '@Components/border';
+import ResponsiveBorder from '@Components/responsive-border';
 import SpacingControl from '@Components/spacing-control';
 import UAGTabsControl from '@Components/tabs';
 import presets from './presets';
@@ -104,11 +103,6 @@ const Settings = ( props ) => {
 		mobileCTAPaddingUnit,
 		tabletCTAPaddingUnit,
 		ctaPaddingLink,
-		ctaBorderStyle,
-		ctaBorderColor,
-		ctaBorderhoverColor,
-		ctaBorderWidth,
-		ctaBorderRadius,
 		stack,
 		ctaLinkHoverColor,
 		titleTransform,
@@ -146,11 +140,6 @@ const Settings = ( props ) => {
 		secondCtaMobilePaddingUnit,
 		secondCtaTabletPaddingUnit,
 		secondCtaPaddingLink,
-		secondCtaBorderWidth,
-		secondCtaBorderRadius,
-		secondCtaBorderStyle,
-		secondCtaBorderColor,
-		secondCtaBorderHColor,
 		secondCtaColor,
 		secondCtaBackground,
 		secondCtaHoverColor,
@@ -204,6 +193,8 @@ const Settings = ( props ) => {
 		buttonRightSpaceTablet,
 		buttonRightSpaceMobile,
 		buttonRightSpaceType,
+		secondCtaIconSpaceTablet,
+		secondCtaIconSpaceMobile,
 		titleLetterSpacing,
 		titleLetterSpacingTablet,
 		titleLetterSpacingMobile,
@@ -213,13 +204,13 @@ const Settings = ( props ) => {
 		descLetterSpacingMobile,
 		descLetterSpacingType,
 		ctaLetterSpacing,
-ctaLetterSpacingTablet,
-ctaLetterSpacingMobile,
-ctaLetterSpacingType,
-secondCtaLetterSpacing,
-secondCtaLetterSpacingTablet,
-secondCtaLetterSpacingMobile,
-secondCtaLetterSpacingType,
+		ctaLetterSpacingTablet,
+		ctaLetterSpacingMobile,
+		ctaLetterSpacingType,
+		secondCtaLetterSpacing,
+		secondCtaLetterSpacingTablet,
+		secondCtaLetterSpacingMobile,
+		secondCtaLetterSpacingType,
 	} = attributes;
 
 	let loadCtaGoogleFonts;
@@ -441,20 +432,29 @@ secondCtaLetterSpacingType,
 					] }
 					showIcons={ false }
 				/>
-				<Range
+				<ResponsiveSlider
 					label={ __(
 						'Icon Spacing',
 						'ultimate-addons-for-gutenberg'
 					) }
-					setAttributes={ setAttributes }
-					value={ secondCtaIconSpace }
 					data={ {
-						value: secondCtaIconSpace,
-						label: 'secondCtaIconSpace',
+						desktop: {
+							value: secondCtaIconSpace,
+							label: 'secondCtaIconSpace',
+						},
+						tablet: {
+							value: secondCtaIconSpaceTablet,
+							label: 'secondCtaIconSpaceTablet',
+						},
+						mobile: {
+							value: secondCtaIconSpaceMobile,
+							label: 'secondCtaIconSpaceMobile',
+						},
 					} }
 					min={ 0 }
 					max={ 50 }
 					displayUnit={ false }
+					setAttributes={ setAttributes }
 				/>
 				</>
 				)}
@@ -610,38 +610,13 @@ secondCtaLetterSpacingType,
 					}
 					disableBottomSeparator={ false }
 				/>
-				<Border
-					disabledBorderTitle= {false}
+				<ResponsiveBorder
 					setAttributes={ setAttributes }
-					borderStyle={ {
-						value: secondCtaBorderStyle,
-						label: 'secondCtaBorderStyle',
-						title: __( 'Style', 'ultimate-addons-for-gutenberg' ),
-					} }
-					borderWidth={ {
-						value: secondCtaBorderWidth,
-						label: 'secondCtaBorderWidth',
-						title: __( 'Width', 'ultimate-addons-for-gutenberg' ),
-					} }
-					borderRadius={ {
-						value: secondCtaBorderRadius,
-						label: 'secondCtaBorderRadius',
-						title: __( 'Radius', 'ultimate-addons-for-gutenberg' ),
-					} }
-					borderColor={ {
-						value: secondCtaBorderColor,
-						label: 'secondCtaBorderColor',
-						title: __( 'Color', 'ultimate-addons-for-gutenberg' ),
-					} }
-					borderHoverColor={ {
-						value: secondCtaBorderHColor,
-						label: 'secondCtaBorderHColor',
-						title: __(
-							'Hover Color',
-							'ultimate-addons-for-gutenberg'
-						),
-					} }
+					prefix={'secondCta'}
+					attributes={ attributes }
+					deviceType={deviceType}
 					disableBottomSeparator={ true }
+					disabledBorderTitle= {false}
 				/>
 				<SpacingControl
 					{ ...props }
@@ -1029,38 +1004,13 @@ secondCtaLetterSpacingType,
 							hover={ ctaHoverSettings() }
 							disableBottomSeparator={ false }
 						/>
-						<Border
-							disabledBorderTitle= { false }
+						<ResponsiveBorder
 							setAttributes={ setAttributes }
-							borderStyle={ {
-								value: ctaBorderStyle,
-								label: 'ctaBorderStyle',
-								title: __( 'Style', 'ultimate-addons-for-gutenberg' ),
-							} }
-							borderWidth={ {
-								value: ctaBorderWidth,
-								label: 'ctaBorderWidth',
-								title: __( 'Width', 'ultimate-addons-for-gutenberg' ),
-							} }
-							borderRadius={ {
-								value: ctaBorderRadius,
-								label: 'ctaBorderRadius',
-								title: __( 'Radius', 'ultimate-addons-for-gutenberg' ),
-							} }
-							borderColor={ {
-								value: ctaBorderColor,
-								label: 'ctaBorderColor',
-								title: __( 'Color', 'ultimate-addons-for-gutenberg' ),
-							} }
-							borderHoverColor={ {
-								value: ctaBorderhoverColor,
-								label: 'ctaBorderhoverColor',
-								title: __(
-									'Hover Color',
-									'ultimate-addons-for-gutenberg'
-								),
-							} }
+							prefix={'btn'}
+							attributes={ attributes }
+							deviceType={deviceType}
 							disableBottomSeparator={ true }
+							disabledBorderTitle= {false}
 						/>
 						<SpacingControl
 							{ ...props }

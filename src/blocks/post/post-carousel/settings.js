@@ -2,7 +2,7 @@ import React, { Suspense } from 'react';
 import { __ } from '@wordpress/i18n';
 import lazyLoader from '@Controls/lazy-loader';
 import WebfontLoader from '@Components/typography/fontloader';
-import { BlockAlignmentToolbar, BlockControls } from '@wordpress/block-editor';
+import { BlockControls } from '@wordpress/block-editor';
 import { ToolbarGroup } from '@wordpress/components';
 
 
@@ -11,10 +11,9 @@ const Settings = ( props ) => {
 
 	props = props.parentProps;
 
-	const { attributes, setAttributes } = props;
+	const { attributes } = props;
 
 	const {
-		align,
 		titleFontFamily,
 		titleFontWeight,
 		titleLoadGoogleFonts,
@@ -115,13 +114,6 @@ const Settings = ( props ) => {
 		<Suspense fallback={ lazyLoader() }>
 			{ inspectorControls }
 			<BlockControls>
-				<BlockAlignmentToolbar
-					value={ align }
-					onChange={ ( value ) => {
-						setAttributes( { align: value } );
-					} }
-					controls={ [ 'left', 'center', 'right' ] }
-				/>
 				{ getBlockControls() }
 			</BlockControls>
 			{ loadTitleGoogleFonts }

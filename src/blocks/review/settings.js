@@ -5,8 +5,6 @@ import React, { Suspense } from 'react';
 import lazyLoader from '@Controls/lazy-loader';
 import {
 	InspectorControls,
-	AlignmentToolbar,
-	BlockControls,
 } from '@wordpress/block-editor';
 import AdvancedPopColorControl from '@Components/color-control/advanced-pop-color-control.js';
 import InspectorTabs from '@Components/inspector-tabs/InspectorTabs.js';
@@ -1202,19 +1200,6 @@ const Settings = ( props ) => {
 		);
 	};
 
-	const blockControls = () => {
-		return (
-			<BlockControls key="index">
-				<AlignmentToolbar
-					value={ overallAlignment }
-					onChange={ ( value ) =>
-						setAttributes( { overallAlignment: value } )
-					}
-				/>
-			</BlockControls>
-		);
-	};
-
 	let itemTypeExtras;
 
 	const subtypeCategories = {
@@ -1384,7 +1369,6 @@ const Settings = ( props ) => {
 
 	return (
 		<Suspense fallback={ lazyLoader() }>
-			{ blockControls() }
 			<InspectorControls>
 				<InspectorTabs>
 					<InspectorTab { ...UAGTabs.general }>

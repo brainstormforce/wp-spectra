@@ -1,5 +1,9 @@
 import { __ } from '@wordpress/i18n';
 const attributes = {
+	blockName                   : {
+		type    : 'string',
+		default : 'post-grid',
+	},
 	equalHeight                 : {
 		type    : 'boolean',
 		default : true,
@@ -210,13 +214,6 @@ const attributes = {
 		type    : 'string',
 		default : __( 'Read More', 'ultimate-addons-for-gutenberg' ),
 	},
-	borderWidth             : {
-		type    : 'number',
-		UAGCopyPaste: {
-			styleType: 'post-border-width'
-		},
-		default : 1,
-	},
 	btnHPadding             : {
 		type    : 'number',
 		default : 10,
@@ -231,27 +228,34 @@ const attributes = {
 			styleType: 'btn-vertical-padding'
 		},
 	},
-	borderStyle             : {
+	btnBorderWidth             : {
+		type    : 'number',
+		UAGCopyPaste: {
+			styleType: 'post-border-width'
+		},
+		default : 1,
+	},
+	btnBorderStyle             : {
 		type    : 'string',
 		default : 'none',
 		UAGCopyPaste: {
 			styleType: 'btn-border-style'
 		},
 	},
-	borderColor             : {
+	btnBorderColor             : {
 		type    : 'string',
 		default : '#fafafa',
 		UAGCopyPaste: {
 			styleType: 'btn-border-color'
 		},
 	},
-	borderHColor            : {
+	btnBorderHColor            : {
 		type : 'string',
 		UAGCopyPaste: {
 			styleType: 'btn-border-hover-color'
 		},
 	},
-	borderRadius            : {
+	btnBorderRadius            : {
 		type    : 'number',
 		default : 0,
 		UAGCopyPaste: {
@@ -301,14 +305,12 @@ const attributes = {
 	},
 	rowGapTablet                  : {
 		type    : 'number',
-		default : 20,
 		UAGCopyPaste: {
 			styleType: 'post-bottom-padding'
 		},
 	},
 	rowGapMobile                  : {
 		type    : 'number',
-		default : 10,
 		UAGCopyPaste: {
 			styleType: 'post-bottom-padding'
 		},
@@ -322,14 +324,12 @@ const attributes = {
 	},
 	columnGapTablet               : {
 		type    : 'number',
-		default : 0,
 		UAGCopyPaste: {
 			styleType: 'post-bottom-padding'
 		},
 	},
 	columnGapMobile               : {
 		type    : 'number',
-		default : 0,
 		UAGCopyPaste: {
 			styleType: 'post-bottom-padding'
 		},
@@ -823,14 +823,12 @@ const attributes = {
 		},
 		imageBottomSpaceTablet        : {
 			type    : 'number',
-			default : 0,
 			UAGCopyPaste: {
 				styleType: 'image-bottom-margin'
 			},
 		},
 		imageBottomSpaceMobile        : {
 			type    : 'number',
-			default : 0,
 			UAGCopyPaste: {
 				styleType: 'image-bottom-margin'
 			},
@@ -844,14 +842,12 @@ const attributes = {
 		},
 		titleBottomSpaceTablet        : {
 			type    : 'number',
-			default : 0,
 			UAGCopyPaste: {
 				styleType: 'main-title-bottom-margin'
 			},
 		},
 		titleBottomSpaceMobile        : {
 			type    : 'number',
-			default : 0,
 			UAGCopyPaste: {
 				styleType: 'main-title-bottom-margin'
 			},
@@ -865,14 +861,12 @@ const attributes = {
 		},
 		metaBottomSpaceTablet         : {
 			type    : 'number',
-			default : 0,
 			UAGCopyPaste: {
 				styleType: 'prefix-bottom-margin'
 			},
 		},
 		metaBottomSpaceMobile         : {
 			type    : 'number',
-			default : 0,
 			UAGCopyPaste: {
 				styleType: 'prefix-bottom-margin'
 			},
@@ -886,14 +880,12 @@ const attributes = {
 		},
 		excerptBottomSpaceTablet      : {
 			type    : 'number',
-			default : 0,
 			UAGCopyPaste: {
 				styleType: 'desc-bottom-margin'
 			},
 		},
 		excerptBottomSpaceMobile      : {
 			type    : 'number',
-			default : 0,
 			UAGCopyPaste: {
 				styleType: 'desc-bottom-margin'
 			},
