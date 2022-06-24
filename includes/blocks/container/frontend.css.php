@@ -154,8 +154,11 @@ $selectors = array(
 	),
 );
 
+var_dump( $attr['boxShadowBlurHover'] );
+var_dump( $attr['boxShadowColorHover'] );
+
 // If hover blur or hover color are set, show the hover shadow.
-if ( '' !== $attr['boxShadowColorHover'] || '' !== $attr['boxShadowBlurHover'] ) {
+if ( ( ( '' !== $attr['boxShadowBlurHover'] ) && ( null !== $attr['boxShadowBlurHover'] ) ) || '' !== $attr['boxShadowColorHover'] ) {
 
 	$selectors[ '.uagb-block-' . $id . ':hover' ]['box-shadow'] = UAGB_Helper::get_css_value( $attr['boxShadowHOffsetHover'], 'px' ) .
 																' ' .
