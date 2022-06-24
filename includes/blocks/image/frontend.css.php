@@ -12,6 +12,13 @@ UAGB_Block_JS::blocks_advanced_image_gfont( $attr );
 
 $m_selectors = array();
 $t_selectors = array();
+$block_name = 'image';
+
+$separator_width_fallback = UAGB_Block_Helper::get_fallback_number( $attr['seperatorWidth'], 'seperatorWidth', $block_name );
+$overlay_position_fallback = UAGB_Block_Helper::get_fallback_number( $attr['overlayPositionFromEdge'], 'overlayPositionFromEdge', $block_name );
+$separator_thickness_fallback = UAGB_Block_Helper::get_fallback_number( $attr['seperatorThickness'], 'seperatorThickness', $block_name );
+$overlay_opacity_fallback = UAGB_Block_Helper::get_fallback_number( $attr['overlayOpacity'], 'overlayOpacity', $block_name );
+$overlay_opacity_hover_fallback = UAGB_Block_Helper::get_fallback_number( $attr['overlayHoverOpacity'], 'overlayHoverOpacity', $block_name );
 
 
 $imageBoxShadowPosition = $attr['imageBoxShadowPosition'];
@@ -67,15 +74,15 @@ $selectors = array(
 	// overlay.
 	'.wp-block-uagb-image--layout-overlay .wp-block-uagb-image--layout-overlay__color-wrapper' => array(
 		'background' => $attr['overlayBackground'],
-		'opacity'    => $attr['overlayOpacity'],
+		'opacity'    => $overlay_opacity_fallback,
 	),
 	'.wp-block-uagb-image--layout-overlay .wp-block-uagb-image--layout-overlay__inner' => array_merge(
 		$overlay_border_css,
 		array(
-			'left'   => UAGB_Helper::get_css_value( $attr['overlayPositionFromEdge'], $attr['overlayPositionFromEdgeUnit'] ),
-			'right'  => UAGB_Helper::get_css_value( $attr['overlayPositionFromEdge'], $attr['overlayPositionFromEdgeUnit'] ),
-			'top'    => UAGB_Helper::get_css_value( $attr['overlayPositionFromEdge'], $attr['overlayPositionFromEdgeUnit'] ),
-			'bottom' => UAGB_Helper::get_css_value( $attr['overlayPositionFromEdge'], $attr['overlayPositionFromEdgeUnit'] ),
+			'left'   => UAGB_Helper::get_css_value( $overlay_position_fallback, $attr['overlayPositionFromEdgeUnit'] ),
+			'right'  => UAGB_Helper::get_css_value( $overlay_position_fallback, $attr['overlayPositionFromEdgeUnit'] ),
+			'top'    => UAGB_Helper::get_css_value( $overlay_position_fallback, $attr['overlayPositionFromEdgeUnit'] ),
+			'bottom' => UAGB_Helper::get_css_value( $overlay_position_fallback, $attr['overlayPositionFromEdgeUnit'] ),
 		)
 	),
 	'.wp-block-uagb-image--layout-overlay .wp-block-uagb-image--layout-overlay__inner .uagb-image-heading' => array(
@@ -103,12 +110,12 @@ $selectors = array(
 		'border-color' => $attr['overlayBorderHColor'],
 	),
 	'.wp-block-uagb-image--layout-overlay .wp-block-uagb-image__figure:hover .wp-block-uagb-image--layout-overlay__color-wrapper' => array(
-		'opacity' => $attr['overlayHoverOpacity'],
+		'opacity' => $overlay_opacity_hover_fallback,
 	),
 	// Seperator.
 	'.wp-block-uagb-image .wp-block-uagb-image--layout-overlay__inner .uagb-image-separator' => array(
-		'width'            => UAGB_Helper::get_css_value( $attr['seperatorWidth'], $attr['separatorWidthType'] ),
-		'border-top-width' => UAGB_Helper::get_css_value( $attr['seperatorThickness'], $attr['seperatorThicknessUnit'] ),
+		'width'            => UAGB_Helper::get_css_value( $separator_width_fallback, $attr['separatorWidthType'] ),
+		'border-top-width' => UAGB_Helper::get_css_value( $separator_thickness_fallback, $attr['seperatorThicknessUnit'] ),
 		'border-top-color' => $attr['seperatorColor'],
 		'border-top-style' => $attr['seperatorStyle'],
 		'margin-bottom'    => UAGB_Helper::get_css_value( $attr['seperatorBottomMargin'], $attr['seperatorMarginUnit'] ),

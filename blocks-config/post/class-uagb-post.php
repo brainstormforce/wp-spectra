@@ -79,6 +79,10 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 					'attributes'      => array_merge(
 						$common_attributes,
 						array(
+							'blockName'                   => array(
+								'type'    => 'string',
+								'default' => 'post-grid',
+							),
 							'equalHeight'                 => array(
 								'type'    => 'boolean',
 								'default' => true,
@@ -172,6 +176,10 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 					'attributes'      => array_merge(
 						$common_attributes,
 						array(
+							'blockName'                   => array(
+								'type'    => 'string',
+								'default' => 'post-carousel',
+							),
 							'pauseOnHover'      => array(
 								'type'    => 'boolean',
 								'default' => true,
@@ -243,6 +251,10 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 					'attributes'      => array_merge(
 						$common_attributes,
 						array(
+							'blockName'                   => array(
+								'type'    => 'string',
+								'default' => 'post-masonry',
+							),
 							'paginationType'              => array(
 								'type'    => 'string',
 								'default' => 'none',
@@ -1065,8 +1077,53 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 		 * @since 0.0.1
 		 */
 		public function get_post_html( $attributes, $query, $layout ) {
-
-			$attributes['post_type'] = $layout;
+			// Common Post Attributes.
+			$attributes['post_type']          = $layout;
+			$attributes['postsToShow']        = UAGB_Block_Helper::get_fallback_number( $attributes['postsToShow'], 'postsToShow', $attributes['blockName'] );
+			$attributes['postsOffset']        = UAGB_Block_Helper::get_fallback_number( $attributes['postsOffset'], 'postsOffset', $attributes['blockName'] );
+			$attributes['columns']            = UAGB_Block_Helper::get_fallback_number( $attributes['columns'], 'columns', $attributes['blockName'] );
+			$attributes['tcolumns']           = UAGB_Block_Helper::get_fallback_number( $attributes['tcolumns'], 'columns', $attributes['blockName'] );
+			$attributes['mcolumns']           = UAGB_Block_Helper::get_fallback_number( $attributes['mcolumns'], 'mcolumns', $attributes['blockName'] );
+			$attributes['excerptLength']      = UAGB_Block_Helper::get_fallback_number( $attributes['excerptLength'], 'excerptLength', $attributes['blockName'] );
+			$attributes['overlayOpacity']     = UAGB_Block_Helper::get_fallback_number( $attributes['overlayOpacity'], 'overlayOpacity', $attributes['blockName'] );
+			$attributes['columnGap']          = UAGB_Block_Helper::get_fallback_number( $attributes['columnGap'], 'columnGap', $attributes['blockName'] );
+			$attributes['rowGap']             = UAGB_Block_Helper::get_fallback_number( $attributes['rowGap'], 'rowGap', $attributes['blockName'] );
+			$attributes['imageBottomSpace']   = UAGB_Block_Helper::get_fallback_number( $attributes['imageBottomSpace'], 'imageBottomSpace', $attributes['blockName'] );
+			$attributes['titleBottomSpace']   = UAGB_Block_Helper::get_fallback_number( $attributes['titleBottomSpace'], 'titleBottomSpace', $attributes['blockName'] );
+			$attributes['metaBottomSpace']    = UAGB_Block_Helper::get_fallback_number( $attributes['metaBottomSpace'], 'metaBottomSpace', $attributes['blockName'] );
+			$attributes['excerptBottomSpace'] = UAGB_Block_Helper::get_fallback_number( $attributes['excerptBottomSpace'], 'excerptBottomSpace', $attributes['blockName'] );
+			$attributes['ctaBottomSpace']     = UAGB_Block_Helper::get_fallback_number( $attributes['ctaBottomSpace'], 'ctaBottomSpace', $attributes['blockName'] );
+			// Unique Responsive Attributes.
+			$attributes['rowGapTablet'] = is_numeric( $attributes['rowGapTablet'] ) ? $attributes['rowGapTablet'] : $attributes['rowGap'];
+			$attributes['rowGapMobile'] = is_numeric( $attributes['rowGapMobile'] ) ? $attributes['rowGapMobile'] : $attributes['rowGapTablet'];
+			// Grid / Carousel / Masonry Specific Attributes.
+			if ( isset( $attributes['autoplaySpeed'] ) ) {
+				$attributes['autoplaySpeed'] = UAGB_Block_Helper::get_fallback_number( $attributes['autoplaySpeed'], 'autoplaySpeed', $attributes['blockName'] );
+			}
+			if ( isset( $attributes['transitionSpeed'] ) ) {
+				$attributes['transitionSpeed'] = UAGB_Block_Helper::get_fallback_number( $attributes['transitionSpeed'], 'transitionSpeed', $attributes['blockName'] );
+			}
+			if ( isset( $attributes['arrowSize'] ) ) {
+				$attributes['arrowSize'] = UAGB_Block_Helper::get_fallback_number( $attributes['arrowSize'], 'arrowSize', $attributes['blockName'] );
+			}
+			if ( isset( $attributes['arrowBorderSize'] ) ) {
+				$attributes['arrowBorderSize'] = UAGB_Block_Helper::get_fallback_number( $attributes['arrowBorderSize'], 'arrowBorderSize', $attributes['blockName'] );
+			}
+			if ( isset( $attributes['paginationSpacing'] ) ) {
+				$attributes['paginationSpacing'] = UAGB_Block_Helper::get_fallback_number( $attributes['paginationSpacing'], 'paginationSpacing', $attributes['blockName'] );
+			}
+			if ( isset( $attributes['paginationBorderRadius'] ) ) {
+				$attributes['paginationBorderRadius'] = UAGB_Block_Helper::get_fallback_number( $attributes['paginationBorderRadius'], 'paginationBorderRadius', $attributes['blockName'] );
+			}
+			if ( isset( $attributes['paginationBorderSize'] ) ) {
+				$attributes['paginationBorderSize'] = UAGB_Block_Helper::get_fallback_number( $attributes['paginationBorderSize'], 'paginationBorderSize', $attributes['blockName'] );
+			}
+			if ( isset( $attributes['paginationFontSize'] ) ) {
+				$attributes['paginationFontSize'] = UAGB_Block_Helper::get_fallback_number( $attributes['paginationFontSize'], 'paginationFontSize', $attributes['blockName'] );
+			}
+			if ( isset( $attributes['loaderSize'] ) ) {
+				$attributes['loaderSize'] = UAGB_Block_Helper::get_fallback_number( $attributes['loaderSize'], 'loaderSize', $attributes['blockName'] );
+			}
 
 			$wrap = array(
 				'uagb-post__items uagb-post__columns-' . $attributes['columns'],
@@ -1201,9 +1258,10 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 			$base                = UAGB_Helper::build_base_url( $permalink_structure, $base );
 			$format              = UAGB_Helper::paged_format( $permalink_structure, $base );
 			$paged               = UAGB_Helper::get_paged( $query );
-			$page_limit          = min( $attributes['pageLimit'], $query->max_num_pages );
-			$page_limit          = isset( $page_limit ) ? $page_limit : $attributes['postsToShow'];
-			$attributes['postsToShow'];
+			// Why defaulting the min when the range can be set to a higher max? Original commented below.
+			// $page_limit          = min( $attributes['pageLimit'], $query->max_num_pages );.
+			$page_limit          = UAGB_Block_Helper::get_fallback_number( $attributes['pageLimit'], 'pageLimit', $attributes['blockName'] );
+			$page_limit          = isset( $page_limit ) ? $page_limit : UAGB_Block_Helper::get_fallback_number( $attributes['postsToShow'], 'postsToShow', $attributes['blockName'] );
 
 			$links = paginate_links(
 				array(
@@ -1262,10 +1320,9 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 		 * @since x.x.x
 		 */
 		public function required_attribute_for_query( $attributes ) {
-
 			return array(
-				'postsOffset'        => ( isset( $attributes['postsOffset'] ) ) ? sanitize_text_field( $attributes['postsOffset'] ) : 0,
-				'postsToShow'        => ( isset( $attributes['postsToShow'] ) ) ? sanitize_text_field( $attributes['postsToShow'] ) : 6,
+				'postsOffset'        => UAGB_Block_Helper::get_fallback_number( sanitize_text_field( $attributes['postsOffset'] ), 'postsOffset', sanitize_text_field( $attributes['blockName'] ) ),
+				'postsToShow'        => UAGB_Block_Helper::get_fallback_number( sanitize_text_field( $attributes['postsToShow'] ), 'postsToShow', sanitize_text_field( $attributes['blockName'] ) ),
 				'postType'           => ( isset( $attributes['postType'] ) ) ? sanitize_text_field( $attributes['postType'] ) : 'post',
 				'order'              => ( isset( $attributes['order'] ) ) ? sanitize_text_field( $attributes['order'] ) : 'desc',
 				'orderBy'            => ( isset( $attributes['orderBy'] ) ) ? sanitize_text_field( $attributes['orderBy'] ) : 'date',
@@ -1782,11 +1839,10 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 			global $post;
 
 			if ( 'full_post' === $attributes['displayPostContentRadio'] ) {
-
 				$excerpt = get_the_content();
 			} else {
-
-				$excerpt = UAGB_Helper::uagb_get_excerpt( $post->ID, $post->post_content, $attributes['excerptLength'] );
+				$excerpt_length_fallback = UAGB_Block_Helper::get_fallback_number( $attributes['excerptLength'], 'excerptLength', 'post-timeline' );
+				$excerpt = UAGB_Helper::uagb_get_excerpt( $post->ID, $post->post_content, $excerpt_length_fallback );
 			}
 
 			if ( ! $excerpt ) {

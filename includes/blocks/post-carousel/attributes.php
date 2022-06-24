@@ -10,11 +10,14 @@
 $btn_border_attribute = UAGB_Block_Helper::uag_generate_border_attribute( 'btn' );
 return array_merge(
 	array(
+		'blockName'                  => 'post-carousel',
+		'postsToShow'                => 6,
+		'postsOffset'                => 0,
 		'post_type'                  => 'carousel',
 		'align'                      => 'left',
 		'rowGap'                     => 20,
-		'rowGapTablet'               => 20,
-		'rowGapMobile'               => 10,
+		'rowGapTablet'               => '',
+		'rowGapMobile'               => '',
 		'columnGap'                  => 20,
 		'columnGapTablet'            => '',
 		'columnGapMobile'            => '',

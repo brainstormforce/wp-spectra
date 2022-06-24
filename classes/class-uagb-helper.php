@@ -316,8 +316,8 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 
 			// Block type is grid/masonry/carousel/timeline.
 			$query_args = array(
-				'offset'              => ( isset( $attributes['postsOffset'] ) ) ? $attributes['postsOffset'] : 0,
-				'posts_per_page'      => ( isset( $attributes['postsToShow'] ) ) ? $attributes['postsToShow'] : 6,
+				'offset'              => UAGB_Block_Helper::get_fallback_number( $attributes['postsOffset'], 'postsOffset', $attributes['blockName'] ),
+				'posts_per_page'      => UAGB_Block_Helper::get_fallback_number( $attributes['postsToShow'], 'postsToShow', $attributes['blockName'] ),
 				'post_status'         => 'publish',
 				'post_type'           => ( isset( $attributes['postType'] ) ) ? $attributes['postType'] : 'post',
 				'order'               => ( isset( $attributes['order'] ) ) ? $attributes['order'] : 'desc',
@@ -1295,13 +1295,13 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 		/**
 		 * Get the excerpt.
 		 *
-		 * @param int    $post_id for the block.
-		 * @param string $content for post content.
-		 * @param int    $length for excerpt.
+		 * @param int    $post_id          for the block.
+		 * @param string $content          for post content.
+		 * @param int    $length_fallback  for excerpt, after fallback has been done.
 		 *
 		 * @since 2.0.0
 		 */
-		public static function uagb_get_excerpt( $post_id, $content, $length ) {
+		public static function uagb_get_excerpt( $post_id, $content, $length_fallback ) {
 
 			// If there's an excerpt provided from meta, use it.
 			$excerpt = get_post_field( 'post_excerpt', $post_id );
@@ -1316,9 +1316,8 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 			// Trim the excerpt.
 			if ( ! empty( $excerpt ) ) {
 				$excerpt        = explode( ' ', $excerpt );
-				$trim_to_length = ( isset( $length ) ) ? $length : 15;
-				if ( count( $excerpt ) > $trim_to_length ) {
-					$excerpt = implode( ' ', array_slice( $excerpt, 0, $trim_to_length ) ) . '...';
+				if ( count( $excerpt ) > $length_fallback ) {
+					$excerpt = implode( ' ', array_slice( $excerpt, 0, $length_fallback ) ) . '...';
 				} else {
 					$excerpt = implode( ' ', $excerpt );
 				}

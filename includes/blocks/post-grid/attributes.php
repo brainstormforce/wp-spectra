@@ -10,11 +10,14 @@
 $btn_border_attribute = UAGB_Block_Helper::uag_generate_border_attribute( 'btn' );
 return array_merge(
 	array(
+		'blockName'                   => 'post-grid',
+		'postsToShow'                 => 6,
+		'postsOffset'                 => 0,
 		'post_type'                   => 'grid',
 		'align'                       => 'left',
 		'rowGap'                      => '20',
-		'rowGapTablet'                => '20',
-		'rowGapMobile'                => '20',
+		'rowGapTablet'                => '',
+		'rowGapMobile'                => '',
 		'columnGap'                   => '20',
 		'columnGapTablet'             => '',
 		'columnGapMobile'             => '',
@@ -101,7 +104,7 @@ return array_merge(
 		'ctaText'                     => __( 'Read More', 'ultimate-addons-for-gutenberg' ),
 		'borderHColor'                => '',
 		'postPagination'              => '',
-		'pageLimit'                   => '',
+		'pageLimit'                   => 10,
 		'paginationBgActiveColor'     => '#e4e4e4',
 		'paginationActiveColor'       => '#333333',
 		'paginationBgColor'           => '#e4e4e4',
