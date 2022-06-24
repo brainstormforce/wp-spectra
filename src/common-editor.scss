@@ -129,15 +129,6 @@
 /* GB Select Control CSS*/
 .uagb-inspector-tab .components-select-control {
 	height: auto;
-
-	// .components-input-control__label {
-	// 	margin-bottom: $spectra-control-label-bottom-margin !important;
-	// }
-
-	// .components-select-control__input {
-	// 	font-size: 12px !important;
-	// 	line-height: 2 !important;
-	// }
 }
 
 /* Tabs Pabel CSS for .uagb-size-type-field-tabs START*/
@@ -396,30 +387,6 @@ hr.uagb-editor__separator {
 	margin-bottom: 2em;
 }
 
-/*.uag-typography-option-actions .uagb-typography-reset-btn,
-.uag-typography-option-actions .uagb-typography-reset-btn:hover,
-.uag-typography-option-actions .uagb-typography-reset-btn:active:enabled {
-	float: right;
-	box-shadow: none;
-	background: none;
-	border: none;
-}
-
-.uag-typography-option-actions button svg {
-	width: 15px;
-	height: 15px;
-}
-
-.uag-typography-option-actions button svg:hover {
-	fill: #23282d;
-}
-
-.uag-typography-option-actions button.uagb-typography-reset-btn svg {
-	width: 13px;
-	height: 13px;
-	fill: #777;
-}*/
-
 .uagb__url-panel-body .block-editor-url-input input {
 	width: 100%;
 }
@@ -531,10 +498,6 @@ button.components-button.uagb-reset.is-secondary.is-small:not(:disabled) {
 	height: 10px;
 	font-size: 10px;
 }
-
-// .uagb-reset {
-// 	height: auto;
-// }
 
 button.components-button.uagb-reset.is-secondary.is-small {
 	box-shadow: unset;

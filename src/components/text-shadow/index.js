@@ -7,19 +7,11 @@ import Range from '@Components/range/Range.js';
 import AdvancedPopColorControl from '../color-control/advanced-pop-color-control';
 import { Button, Dashicon } from '@wordpress/components';
 import { useState } from '@wordpress/element';
-// import styles from './editor.lazy.scss';
 import React from 'react';
 import { select } from '@wordpress/data'
 import getUAGEditorStateLocalStorage from '@Controls/getUAGEditorStateLocalStorage';
 
 const TextShadowControl = ( props ) => {
-	// Add and remove the CSS on the drop and remove of the component.
-	// useLayoutEffect( () => {
-	// 	styles.use();
-	// 	return () => {
-	// 		styles.unuse();
-	// 	};
-	// }, [] );
 	const [ showAdvancedControls, toggleAdvancedControls ] = useState( false );
 
 	const {
