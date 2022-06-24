@@ -154,9 +154,6 @@ $selectors = array(
 	),
 );
 
-var_dump( $attr['boxShadowBlurHover'] );
-var_dump( $attr['boxShadowColorHover'] );
-
 // If hover blur or hover color are set, show the hover shadow.
 if ( ( ( '' !== $attr['boxShadowBlurHover'] ) && ( null !== $attr['boxShadowBlurHover'] ) ) || '' !== $attr['boxShadowColorHover'] ) {
 
