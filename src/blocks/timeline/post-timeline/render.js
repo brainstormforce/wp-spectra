@@ -15,6 +15,7 @@ import { __ } from '@wordpress/i18n';
 import { Placeholder, Spinner } from '@wordpress/components';
 import React, { useLayoutEffect } from 'react';
 import styles from '../editor.lazy.scss';
+import { getFallbackNumber } from '@Controls/getAttributeFallback';
 
 const Render = ( props ) => {
 	// Add and remove the CSS on the drop and remove of the component.
@@ -26,6 +27,7 @@ const Render = ( props ) => {
 	}, [] );
 
 	props = props.parentProps;
+	const blockName = props.name.replace( 'uagb/', '' );
 	const deviceType = useDeviceType();
 	const { attributes, className, latestPosts } = props;
 
@@ -36,6 +38,7 @@ const Render = ( props ) => {
 	} = attributes;
 
 	const timelinAlignment = 'undefined' !== typeof attributes['timelinAlignment' + deviceType ] ? attributes['timelinAlignment' + deviceType ] :  attributes.timelinAlignment;
+	const postsToShowFallback = getFallbackNumber( postsToShow, 'postsToShow', blockName );
 
 	/* Render output at backend */
 	const getContent = () => {
@@ -60,8 +63,8 @@ const Render = ( props ) => {
 		}
 		// Removing posts from display should be instant.
 		const displayPosts =
-			latestPosts.length > postsToShow
-				? latestPosts.slice( 0, postsToShow )
+			latestPosts.length > postsToShowFallback
+				? latestPosts.slice( 0, postsToShowFallback )
 				: latestPosts;
 
 		let contentAlignClass = AlignClass( props.attributes, 0, deviceType ); // Get classname for layout alignment

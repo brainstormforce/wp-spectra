@@ -1,3 +1,19 @@
+import { getBorderAttributes } from '@Controls/generateAttributes';
+const borderDefault = {
+	borderStyle: 'solid',
+	borderTopWidth: 1,
+	borderRightWidth: 1,
+	borderBottomWidth: 1,
+	borderLeftWidth: 1,
+	borderTopLeftRadius: 2,
+	borderTopRightRadius: 2,
+	borderBottomLeftRadius: 2,
+	borderBottomRightRadius: 2,
+	borderColor: '',
+	borderHColor: '',
+}
+const borderAttributes = getBorderAttributes( 'overall', borderDefault );
+
 const attributes = {
 	block_id: {
 		type: 'string',
@@ -38,14 +54,12 @@ const attributes = {
 	},
 	rowsGapTablet: {
 		type: 'number',
-		default: 10,
 		UAGCopyPaste: {
 			styleType: 'row-gap-tablet'
 		},
 	},
 	rowsGapMobile: {
 		type: 'number',
-		default: 10,
 		UAGCopyPaste: {
 			styleType: 'row-gap-mobile'
 		},
@@ -66,14 +80,12 @@ const attributes = {
 	},
 	columnsGapTablet: {
 		type: 'number',
-		default: 10,
 		UAGCopyPaste: {
 			styleType: 'column-gap-tablet'
 		},
 	},
 	columnsGapMobile: {
 		type: 'number',
-		default: 10,
 		UAGCopyPaste: {
 			styleType: 'column-gap-mobile'
 		},
@@ -164,38 +176,16 @@ const attributes = {
 	},
 	borderStyle: {
 		type: 'string',
-		default: 'solid',
-		UAGCopyPaste: {
-			styleType: 'faq-border-style'
-		},
 	},
 	borderWidth: {
-		type: 'number',
-		default: 1,
-		UAGCopyPaste: {
-			styleType: 'faq-border-width'
-		},
-	},
+		type: 'number',	},
 	borderRadius: {
-		type: 'number',
-		default: 2,
-		UAGCopyPaste: {
-			styleType: 'faq-border-radius'
-		},
-	},
+		type: 'number',	},
 	borderColor: {
 		type: 'string',
-		default: '',
-		UAGCopyPaste: {
-			styleType: 'faq-border-color'
-		},
 	},
 	borderHoverColor: {
 		type: 'string',
-		default: '',
-		UAGCopyPaste: {
-			styleType: 'faq-border-hover-color'
-		},
 	},
 	questionTextColor: {
 		type: 'string',
@@ -374,14 +364,12 @@ const attributes = {
 	},
 	gapBtwIconQUestionTablet: {
 		type: 'number',
-		default: 10,
 		UAGCopyPaste: {
 			styleType: 'icon-spacing-tablet'
 		},
 	},
 	gapBtwIconQUestionMobile: {
 		type: 'number',
-		default: 10,
 		UAGCopyPaste: {
 			styleType: 'icon-spacing-mobile'
 		},
@@ -588,14 +576,12 @@ const attributes = {
 	},
 	iconSizeTablet: {
 		type: 'number',
-		default: 12,
 		UAGCopyPaste: {
 			styleType: 'icon-size-tablet'
 		},
 	},
 	iconSizeMobile: {
 		type: 'number',
-		default: 12,
 		UAGCopyPaste: {
 			styleType: 'icon-size-mobile'
 		},
@@ -774,6 +760,7 @@ const attributes = {
 		type: 'boolean',
 		default: false,
 	},
+	...borderAttributes,
 	// letter spacing
 	questionLetterSpacing: {
 		type: 'number',

@@ -68,6 +68,10 @@ if ( ! class_exists( 'UAGB_Post_Timeline' ) ) {
 				'uagb/post-timeline',
 				array(
 					'attributes'      => array(
+						'blockName'                  => array(
+							'type'    => 'string',
+							'default' => 'post-timeline',
+						),
 						'align'                      => array(
 							'type'    => 'string',
 							'default' => '',
@@ -428,6 +432,10 @@ if ( ! class_exists( 'UAGB_Post_Timeline' ) ) {
 							'type'    => 'number',
 							'default' => 6,
 						),
+						'postsOffset'                => array(
+							'type'    => 'number',
+							'default' => 0,
+						),
 						'displayPostDate'            => array(
 							'type'    => 'boolean',
 							'default' => true,
@@ -511,7 +519,8 @@ if ( ! class_exists( 'UAGB_Post_Timeline' ) ) {
 							'default' => 10,
 						),
 						'ctaBottomSpacing'           => array(
-							'type' => 'number',
+							'type'    => 'number',
+							'default' => 0,
 						),
 						'ctaBottomSpacingTablet'     => array(
 							'type' => 'number',
@@ -520,15 +529,14 @@ if ( ! class_exists( 'UAGB_Post_Timeline' ) ) {
 							'type' => 'number',
 						),
 						'headTopSpacing'             => array(
-							'type' => 'number',
+							'type'    => 'number',
+							'default' => 0,
 						),
 						'headTopSpacingTablet'       => array(
 							'type'    => 'number',
-							'default' => 0,
 						),
 						'headTopSpacingMobile'       => array(
 							'type'    => 'number',
-							'default' => 0,
 						),
 						'iconSize'                   => array(
 							'type'    => 'number',
@@ -1018,7 +1026,9 @@ if ( ! class_exists( 'UAGB_Post_Timeline' ) ) {
 
 			global $post;
 
-			$excerpt = UAGB_Helper::uagb_get_excerpt( $post->ID, $post->post_content, $attributes['exerptLength'] );
+			$excerpt_length_fallback = UAGB_Block_Helper::get_fallback_number( $attributes['exerptLength'], 'exerptLength', $attributes['blockName'] );
+
+			$excerpt = UAGB_Helper::uagb_get_excerpt( $post->ID, $post->post_content, $excerpt_length_fallback );
 
 			if ( ! $excerpt ) {
 				$excerpt = null;

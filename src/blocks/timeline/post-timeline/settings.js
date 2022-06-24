@@ -204,25 +204,25 @@ const Settings = ( props ) => {
 		headTopSpacingTablet,
 		headTopSpacingMobile,
 		headLetterSpacing,
-headLetterSpacingTablet,
-headLetterSpacingMobile,
-headLetterSpacingType,
-subHeadLetterSpacing,
-subHeadLetterSpacingTablet,
-subHeadLetterSpacingMobile,
-subHeadLetterSpacingType,
-dateLetterSpacing,
-dateLetterSpacingTablet,
-dateLetterSpacingMobile,
-dateLetterSpacingType,
-ctaLetterSpacing,
-ctaLetterSpacingTablet,
-ctaLetterSpacingMobile,
-ctaLetterSpacingType,
-authorLetterSpacing,
-authorLetterSpacingTablet,
-authorLetterSpacingMobile,
-authorLetterSpacingType,
+		headLetterSpacingTablet,
+		headLetterSpacingMobile,
+		headLetterSpacingType,
+		subHeadLetterSpacing,
+		subHeadLetterSpacingTablet,
+		subHeadLetterSpacingMobile,
+		subHeadLetterSpacingType,
+		dateLetterSpacing,
+		dateLetterSpacingTablet,
+		dateLetterSpacingMobile,
+		dateLetterSpacingType,
+		ctaLetterSpacing,
+		ctaLetterSpacingTablet,
+		ctaLetterSpacingMobile,
+		ctaLetterSpacingType,
+		authorLetterSpacing,
+		authorLetterSpacingTablet,
+		authorLetterSpacingMobile,
+		authorLetterSpacingType,
 	} = attributes;
 
 	const timelinAlignment = 'undefined' !== typeof attributes['timelinAlignment' + deviceType ] ? attributes['timelinAlignment' + deviceType ] :  attributes.timelinAlignment;
@@ -877,20 +877,6 @@ authorLetterSpacingType,
 						setAttributes( { linkTarget: ! linkTarget } )
 					}
 				/>
-				{/* <Range
-					label={ __(
-						'Rounded Corners',
-						'ultimate-addons-for-gutenberg'
-					) }
-					setAttributes={ setAttributes }
-					value={ borderRadius }
-					onChange={ ( value ) =>
-						setAttributes( { borderRadius: value } )
-					}
-					min={ 0 }
-					max={ 50 }
-					displayUnit={ false }
-				/> */}
 				<ResponsiveSlider
 					label={ __(
 						'Border Radius',
