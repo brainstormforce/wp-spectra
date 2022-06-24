@@ -122,18 +122,6 @@ $selectors = array(
 	'.uagb-block-' . $id                                  => $container_css, // phpcs:ignore WordPress.WP.GlobalVariablesOverride.Prohibited
 	'.uagb-block-' . $id . ':hover'                       => array(
 		'border-color' => $attr['containerBorderHColor'],
-		'box-shadow'   =>
-			UAGB_Helper::get_css_value( $attr['boxShadowHOffsetHover'], 'px' ) .
-			' ' .
-			UAGB_Helper::get_css_value( $attr['boxShadowVOffsetHover'], 'px' ) .
-			' ' .
-			UAGB_Helper::get_css_value( $attr['boxShadowBlurHover'], 'px' ) .
-			' ' .
-			UAGB_Helper::get_css_value( $attr['boxShadowSpreadHover'], 'px' ) .
-			' ' .
-			$attr['boxShadowColorHover'] .
-			' ' .
-			$box_shadow_position_css_hover,
 	),
 	'.uagb-block-' . $id . '.wp-block-uagb-container'     => array(
 		'color' => $attr['textColor'],
@@ -165,6 +153,23 @@ $selectors = array(
 		'opacity' => $background_video_opacity_value,
 	),
 );
+
+// If hover blur or hover color are set, show the hover shadow.
+if ( '' !== $attr['boxShadowColorHover'] || '' !== $attr['boxShadowBlurHover'] ) {
+
+	$selectors[ '.uagb-block-' . $id . ':hover' ]['box-shadow'] = UAGB_Helper::get_css_value( $attr['boxShadowHOffsetHover'], 'px' ) .
+																' ' .
+																UAGB_Helper::get_css_value( $attr['boxShadowVOffsetHover'], 'px' ) .
+																' ' .
+																UAGB_Helper::get_css_value( $attr['boxShadowBlurHover'], 'px' ) .
+																' ' .
+																UAGB_Helper::get_css_value( $attr['boxShadowSpreadHover'], 'px' ) .
+																' ' .
+																$attr['boxShadowColorHover'] .
+																' ' .
+																$box_shadow_position_css_hover;
+
+}
 
 if ( '' !== $attr['topWidth'] ) {
 	$selectors[ '.uagb-block-' . $id . ' .uagb-container__shape-top svg' ]['width'] = 'calc( ' . $attr['topWidth'] . '% + 1.3px )';
