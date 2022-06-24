@@ -5,6 +5,7 @@
 import generateCSS from '@Controls/generateCSS';
 import generateCSSUnit from '@Controls/generateCSSUnit';
 import { getFallbackNumber } from '@Controls/getAttributeFallback';
+import generateBorderCSS from '@Controls/generateBorderCSS';
 
 function styling( props ) {
 	const {
@@ -89,10 +90,6 @@ function styling( props ) {
 		paddingBtnRightMobile,
 		paddingBtnBottomMobile,
 		paddingBtnLeftMobile,
-		ctaBorderStyle,
-		ctaBorderColor,
-		ctaBorderWidth,
-		ctaBorderRadius,
 		iconLeftMargin,
 		iconRightMargin,
 		iconTopMargin,
@@ -117,7 +114,7 @@ function styling( props ) {
 		imageWidthUnitMobile,
 		ctaLinkHoverColor,
 		ctaBgHoverColor,
-		ctaBorderhoverColor,
+		btnBorderHColor,
 		ctaIconSpace,
 		ctaIconSpaceTablet,
 		ctaIconSpaceMobile,
@@ -230,6 +227,10 @@ function styling( props ) {
 	const imageWidthFallbackTablet = isNaN( imageWidthTablet ) ? imageWidthFallback : imageWidthTablet;
 	const imageWidthFallbackMobile = isNaN( imageWidthMobile ) ? imageWidthFallbackTablet : imageWidthMobile;
 
+	const ctaBorderCSS = generateBorderCSS( props.attributes, 'btn' );
+	const ctaBorderCSSTablet = generateBorderCSS( props.attributes, 'btn', 'tablet' );
+	const ctaBorderCSSMobile = generateBorderCSS( props.attributes, 'btn', 'mobile' );
+
 	const boxSizingIcon = ( '%' === iconSizeType ) ? 'border-box' : 'content-box'
 	const boxSizingImage = ( '%' === imageWidthUnit ) ? 'border-box' : 'content-box'
 	const boxSizingImageTablet = ( '%' === imageWidthUnitTablet ) ? 'border-box' : 'content-box'
@@ -237,13 +238,11 @@ function styling( props ) {
 
 	const selectors = {
 		// Icon css
-		' .uagb-ifb-content .uagb-ifb-icon-wrap > svg': {
+		' .uagb-ifb-content .uagb-ifb-icon-wrap svg': {
 			'font-size': generateCSSUnit( iconSizeFallback, iconSizeType ),
 			'color': iconColor,
 			'fill': iconColor,
 			'line-height': generateCSSUnit( iconSizeFallback, iconSizeType ),
-		},
-		' .uagb-ifb-content .uagb-ifb-icon-wrap': {
 			'padding-left': generateCSSUnit( iconLeftMargin, iconMarginUnit ),
 			'padding-right': generateCSSUnit( iconRightMargin, iconMarginUnit ),
 			'padding-top': generateCSSUnit( iconTopMargin, iconMarginUnit ),
@@ -393,7 +392,6 @@ function styling( props ) {
 		' .uagb-ifb-button-wrapper .uagb-infobox-cta-link': {
 			'color': ctaBtnLinkColor,
 			'background-color': ctaBgColor,
-			'border-radius': generateCSSUnit( ctaBorderRadius, 'px' ),
 			'padding-top': generateCSSUnit( paddingBtnTop, paddingBtnUnit ),
 			'padding-bottom': generateCSSUnit(
 				paddingBtnBottom,
@@ -405,7 +403,7 @@ function styling( props ) {
 		' .uagb-ifb-button-wrapper .uagb-infobox-cta-link:hover': {
 			'color': ctaLinkHoverColor,
 			'background-color': ctaBgHoverColor,
-			'border-color': ctaBorderhoverColor,
+			'border-color': btnBorderHColor,
 		},
 		' .uagb-ifb-button-wrapper .uagb-infobox-cta-link svg': {
 			'fill': ctaBtnLinkColor,
@@ -527,13 +525,7 @@ function styling( props ) {
 			'border' : `${iconBorderWidth}px solid ${iconBackgroundHoverColor}`,
 		};
 	}
-	if( 'none' !== ctaBorderStyle ) {
-		selectors[' .uagb-infobox-cta-link'] = {
-			'border-style': ctaBorderStyle,
-			'border-color': ctaBorderColor,
-			'border-width': generateCSSUnit( ctaBorderWidth, 'px' ),
-		}
-	}
+	selectors[' .uagb-infobox-cta-link'] = ctaBorderCSS;
 	if (
 		iconimgPosition === 'above-title' ||
 		iconimgPosition === 'below-title'
@@ -1129,6 +1121,8 @@ function styling( props ) {
 			'margin-right': generateCSSUnit( ctaIconSpaceFallbackMobile, ctaIconSpaceType ),
 		};
 	}
+	mobileSelectors[' .uagb-infobox-cta-link'] = ctaBorderCSSMobile;
+	tabletSelectors[' .uagb-infobox-cta-link'] = ctaBorderCSSTablet;
 
 	const id = `.editor-styles-wrapper .uagb-block-${ props.clientId.substr(
 		0,

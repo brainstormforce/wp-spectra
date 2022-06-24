@@ -5,6 +5,7 @@
 import generateCSS from '@Controls/generateCSS';
 import generateCSSUnit from '@Controls/generateCSSUnit';
 import { getFallbackNumber } from '@Controls/getAttributeFallback';
+import generateBorderCSS from '@Controls/generateBorderCSS';
 
 function styling( props ) {
 
@@ -44,11 +45,7 @@ function styling( props ) {
 		titleBottomSpaceMobile,
 		alignment,
 		listStyle,
-		seperatorStyle,
-		seperatorWidth,
-		seperatorThickness,
-		seperatorColor,
-		seperatorHoverColor,
+		seperatorBorderHColor,
 		listTextColor,
 		hoverlistTextColor,
 		listBottomMargin,
@@ -90,11 +87,7 @@ function styling( props ) {
 		listLineHeight,
 		listLineHeightTablet,
 		listLineHeightMobile,
-		borderStyle,
-		borderThickness,
-		borderColor,
-		borderRadius,
-		borderHoverColor,
+		overallBorderHColor,
 		titleFontStyle,
 		countFontStyle,
 		listFontStyle,
@@ -126,6 +119,14 @@ function styling( props ) {
 	const titleBottomSpaceFallback = getFallbackNumber( titleBottomSpace, 'titleBottomSpace', blockName );
 	const rowGapFallback = getFallbackNumber( rowGap, 'rowGap', blockName );
 	const columnGapFallback = getFallbackNumber( columnGap, 'columnGap', blockName );
+
+	const borderCSS = generateBorderCSS( props.attributes, 'separator', '' );
+	const borderCSSTablet = generateBorderCSS( props.attributes,'separator', 'tablet' );
+	const borderCSSMobile = generateBorderCSS( props.attributes,'separator', 'mobile' );
+
+	const overallBorderCSS = generateBorderCSS( props.attributes, 'overall', '' );
+	const overallBorderCSSTablet = generateBorderCSS( props.attributes,'overall', 'tablet' );
+	const overallBorderCSSMobile = generateBorderCSS( props.attributes,'overall', 'mobile' );
 
 	let selectors = {};
 	let tabletSelectors = {};
@@ -336,41 +337,22 @@ function styling( props ) {
 		/* End Backword */
 	};
 
-	if ( seperatorStyle !== 'none' ) {
-		/* start Backword */
-		selectors[ ' .uagb-layout-list .uagb-tax-separator' ] = {
-			'border-top-color': seperatorColor,
-			'border-top-style': seperatorStyle,
-			'border-top-width': generateCSSUnit( seperatorThickness, 'px' ),
-			'width': generateCSSUnit( seperatorWidth, '%' ),
-		};
-		selectors[ ' .uagb-layout-list .uagb-tax-separator:hover' ] = {
-			'border-top-color': seperatorHoverColor,
-		};
-		/* End Backword */
-		selectors[ '.uagb-layout-list .uagb-tax-separator' ] = {
-			'border-top-color': seperatorColor,
-			'border-top-style': seperatorStyle,
-			'border-top-width': generateCSSUnit( seperatorThickness, 'px' ),
-			'width': generateCSSUnit( seperatorWidth, '%' ),
-		};
-		selectors[ '.uagb-layout-list .uagb-tax-separator:hover' ] = {
-			'border-top-color': seperatorHoverColor,
-		};
-	}
+	/* start Backword */
+	selectors[ ' .uagb-layout-list .uagb-tax-separator' ] = borderCSS;
+	selectors[ ' .uagb-layout-list .uagb-tax-separator:hover' ] = {
+		'border-top-color': seperatorBorderHColor,
+	};
+	/* End Backword */
+	selectors[ '.uagb-layout-list .uagb-tax-separator' ] = borderCSS;
+	selectors[ '.uagb-layout-list .uagb-tax-separator:hover' ] = {
+		'border-top-color': seperatorBorderHColor,
+	};
 
-		selectors[ ' .uagb-taxomony-box' ] = {
-			'border':
-				generateCSSUnit( borderThickness, 'px' ) +
-				' ' +
-				borderStyle +
-				' ' +
-				borderColor,
-			'border-radius': generateCSSUnit( borderRadius, 'px' ),
-		};
-		selectors[ ' .uagb-taxomony-box:hover' ] = {
-			'border-color': borderHoverColor,
-		};
+
+	selectors[ ' .uagb-taxomony-box' ] = overallBorderCSS;
+	selectors[ ' .uagb-taxomony-box:hover' ] = {
+		'border-color': overallBorderHColor,
+	};
 
 	mobileSelectors = {
 		'.uagb-taxonomy__outer-wrap.uagb-layout-grid': {
@@ -395,6 +377,7 @@ function styling( props ) {
 				contentRightPaddingMobile,
 				mobileContentPaddingUnit
 			),
+			...overallBorderCSSMobile
 		},
 		'.uagb-layout-grid .uagb-tax-title': {
 			'font-size': generateCSSUnit(
@@ -508,6 +491,7 @@ function styling( props ) {
 				contentRightPaddingTablet,
 				tabletContentPaddingUnit
 			),
+			...overallBorderCSSTablet
 		},
 		'.uagb-layout-grid .uagb-tax-title': {
 			'font-size': generateCSSUnit(
@@ -598,6 +582,11 @@ function styling( props ) {
 		},
 		/* End Backword */
 	};
+
+	tabletSelectors[ ' .uagb-layout-list .uagb-tax-separator' ] = borderCSSTablet;
+
+	mobileSelectors[ ' .uagb-layout-list .uagb-tax-separator' ] = borderCSSMobile;
+
 	let stylingCss = '';
 	const id = `.uagb-block-${ block_id }`;
 

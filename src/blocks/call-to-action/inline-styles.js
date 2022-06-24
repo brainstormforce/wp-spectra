@@ -5,6 +5,7 @@
 import generateCSS from '@Controls/generateCSS';
 import generateCSSUnit from '@Controls/generateCSSUnit';
 import { getFallbackNumber } from '@Controls/getAttributeFallback';
+import generateBorderCSS from '@Controls/generateBorderCSS';
 
 function CtaStyle( props ) {
 
@@ -67,13 +68,9 @@ function CtaStyle( props ) {
 		ctaPaddingUnit,
 		mobileCTAPaddingUnit,
 		tabletCTAPaddingUnit,
-		ctaBorderStyle,
-		ctaBorderColor,
-		ctaBorderWidth,
-		ctaBorderRadius,
 		ctaLinkHoverColor,
 		ctaBgHoverColor,
-		ctaBorderhoverColor,
+		btnBorderHColor,
 		ctaIconSpace,
 		ctaIconSpaceTablet,
 		ctaIconSpaceMobile,
@@ -119,10 +116,6 @@ function CtaStyle( props ) {
 		secondCtaPaddingUnit,
 		secondCtaMobilePaddingUnit,
 		secondCtaTabletPaddingUnit,
-		secondCtaBorderWidth,
-		secondCtaBorderRadius,
-		secondCtaBorderStyle,
-		secondCtaBorderColor,
 		secondCtaBorderHColor,
 		secondCtaColor,
 		secondCtaBackground,
@@ -196,6 +189,14 @@ function CtaStyle( props ) {
 	const gapBtnFallback = getFallbackNumber( gapBtn, 'gapBtn', blockName );
 	const buttonRightSpaceFallback = getFallbackNumber( buttonRightSpace, 'buttonRightSpace', blockName );
 	
+	const ctaBorderCSS = generateBorderCSS( props.attributes, 'cta' );
+	const ctaBorderCSSTablet = generateBorderCSS( props.attributes, 'cta', 'tablet' );
+	const ctaBorderCSSMobile = generateBorderCSS( props.attributes, 'cta', 'mobile' );
+
+	const secondCtaBorderCSS = generateBorderCSS( props.attributes, 'secondCta' )
+	const secondCtaBorderCSSTablet = generateBorderCSS( props.attributes, 'secondCta', 'tablet' )
+	const secondCtaBorderCSSMobile = generateBorderCSS( props.attributes, 'secondCta', 'mobile' )
+
 	const selectors = {
 		' .uagb-cta__content-wrap': {
 			'text-align': textAlign,
@@ -265,16 +266,14 @@ function CtaStyle( props ) {
 		'font-weight': ctaFontWeight,
 		'color': ctaBtnLinkColor,
 		'background-color': ctaBgColor,
-		'border-style': ctaBorderStyle,
-		'border-color': ctaBorderColor,
-		'border-radius': generateCSSUnit( ctaBorderRadius, 'px' ),
-		'border-width': generateCSSUnit( ctaBorderWidth, 'px' ),
 		'padding-top': generateCSSUnit( ctaTopPadding, ctaPaddingUnit ),
 		'padding-bottom': generateCSSUnit( ctaBottomPadding, ctaPaddingUnit ),
 		'padding-left': generateCSSUnit( ctaLeftPadding, ctaPaddingUnit ),
 		'padding-right': generateCSSUnit( ctaRightPadding, ctaPaddingUnit ),
+		...ctaBorderCSS,
 		'letter-spacing': generateCSSUnit( ctaLetterSpacing, ctaLetterSpacingType ),
 	};
+
 
 	selectors['.uagb-cta__outer-wrap a.uagb-cta-second__button'] = {
 		'font-size': generateCSSUnit( secondCtaFontSize, secondCtaFontSizeType ),
@@ -285,16 +284,13 @@ function CtaStyle( props ) {
 		'font-weight': secondCtaFontWeight,
 		'color': secondCtaColor,
 		'background-color': secondCtaBackground,
-		'border-style': secondCtaBorderStyle,
-		'border-color': secondCtaBorderColor,
-		'border-radius': generateCSSUnit( secondCtaBorderRadius, 'px' ),
-		'border-width': generateCSSUnit( secondCtaBorderWidth, 'px' ),
 		'padding-top': generateCSSUnit( secondCtaTopPadding, secondCtaPaddingUnit ),
 		'padding-bottom': generateCSSUnit( secondCtaBottomPadding, secondCtaPaddingUnit ),
 		'padding-left': generateCSSUnit( secondCtaLeftPadding, secondCtaPaddingUnit ),
 		'padding-right': generateCSSUnit( secondCtaRightPadding, secondCtaPaddingUnit ),
 		'align-self': 'top' === buttonAlign ? 'flex-start' : 'center',
 		'height' : 'fit-content',
+		...secondCtaBorderCSS,
 		'letter-spacing': generateCSSUnit( secondCtaLetterSpacing, secondCtaLetterSpacingType ),
 	};
 	selectors['.uagb-cta__outer-wrap a.uagb-cta-second__button:hover'] = {
@@ -306,7 +302,7 @@ function CtaStyle( props ) {
 	selectors['.uagb-cta__outer-wrap a.uagb-cta__button-link-wrapper:hover'] = {
 		'color': ctaLinkHoverColor,
 		'background-color': ctaBgHoverColor,
-		'border-color': ctaBorderhoverColor,
+		'border-color': btnBorderHColor,
 	};
 
 	selectors['.uagb-cta__outer-wrap a.uagb-cta__button-link-wrapper svg' ] = {
@@ -416,6 +412,7 @@ function CtaStyle( props ) {
 				secondCtaRightTabletPadding,
 				secondCtaTabletPaddingUnit
 			),
+			...secondCtaBorderCSSTablet,
 			'letter-spacing': generateCSSUnit( secondCtaLetterSpacingTablet, secondCtaLetterSpacingType ),
 		},
 		'.uagb-cta__outer-wrap a.uagb-cta-second__button svg': {
@@ -527,6 +524,7 @@ function CtaStyle( props ) {
 				secondCtaRightMobilePadding,
 				secondCtaMobilePaddingUnit
 			),
+			...secondCtaBorderCSSMobile,
 			'letter-spacing': generateCSSUnit( secondCtaLetterSpacingMobile, secondCtaLetterSpacingType ),
 		},
 		'.uagb-cta__outer-wrap a.uagb-cta-second__button svg': {
@@ -761,6 +759,8 @@ function CtaStyle( props ) {
 			'margin-left': generateCSSUnit( buttonRightSpaceMobile, buttonRightSpaceType )
 		};
 	}
+	tabletSelectors['.uagb-cta__outer-wrap a.uagb-cta__button-link-wrapper'] = ctaBorderCSSTablet;
+	mobileSelectors['.uagb-cta__outer-wrap a.uagb-cta__button-link-wrapper'] = ctaBorderCSSMobile;
 
 	const id = `.editor-styles-wrapper .uagb-block-${ props.clientId.substr( 0, 8 ) }`;
 

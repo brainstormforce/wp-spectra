@@ -2,6 +2,7 @@
  * Returns Dynamic Generated CSS
  */
 
+import generateBorderCSS from '@Controls/generateBorderCSS';
 import generateCSS from '@Controls/generateCSS';
 import generateCSSUnit from '@Controls/generateCSSUnit';
 import { getFallbackNumber } from '@Controls/getAttributeFallback';
@@ -76,11 +77,6 @@ function styling( props ) {
 		contentPaddingTypeDesktop,
 		contentPaddingTypeTablet,
 		contentPaddingTypeMobile,
-		//Border
-		borderStyle,
-		borderWidth,
-		borderRadius,
-		borderColor,
 		//Typography
 		fontFamily,
 		fontWeight,
@@ -103,7 +99,7 @@ function styling( props ) {
 		headingLineHeightTablet,
 		headingLineHeightMobile,
 		disableBullets,
-		borderHoverColor,
+		overallBorderHColor,
 		fontStyle,
 		fontTransform,
 		fontDecoration,
@@ -130,6 +126,10 @@ function styling( props ) {
 	let selectors = {};
 	let tablet_selectors = {};
 	let mobile_selectors = {};
+
+	const overallBorderCSS = generateBorderCSS( props.attributes, 'overall' )
+	const overallBorderCSSTablet = generateBorderCSS( props.attributes, 'overall', 'tablet' )
+	const overallBorderCSSMobile = generateBorderCSS( props.attributes, 'overall', 'mobile' )
 
 	selectors = {
 		' .uagb-toc__list-wrap ul li': {
@@ -176,10 +176,7 @@ function styling( props ) {
 			'color': linkHoverColor,
 		},
 		' .uagb-toc__wrap': {
-			'border-style': borderStyle,
-			'border-width': generateCSSUnit( borderWidth, 'px' ),
-			'border-color': borderColor,
-			'border-radius': generateCSSUnit( borderRadius, 'px' ),
+			...overallBorderCSS,
 			'padding-left': generateCSSUnit( leftPadding, paddingTypeDesktop ),
 			'padding-right': generateCSSUnit(
 				rightPadding,
@@ -193,7 +190,7 @@ function styling( props ) {
 			'background': backgroundColor,
 		},
 		' .uagb-toc__wrap:hover': {
-			'border-color': borderHoverColor,
+			'border-color': overallBorderHColor,
 		},
 		' .uagb-toc__list-wrap ol.uagb-toc__list:first-child': {
 			'margin-left': generateCSSUnit( leftMargin, marginTypeDesktop ),
@@ -306,6 +303,7 @@ function styling( props ) {
 			'letter-spacing': generateCSSUnit( headingLetterSpacingTablet, headingLetterSpacingType ),
 		},
 		' .uagb-toc__wrap': {
+			...overallBorderCSSTablet,
 			'width': generateCSSUnit( widthTablet, widthTypeTablet ),
 			'padding-left': generateCSSUnit(
 				leftPaddingTablet,
@@ -415,6 +413,7 @@ function styling( props ) {
 			'letter-spacing': generateCSSUnit( headingLetterSpacingMobile, headingLetterSpacingType ),
 		},
 		' .uagb-toc__wrap': {
+			...overallBorderCSSMobile,
 			'width': generateCSSUnit( widthMobile, widthTypeMobile ),
 			'padding-left': generateCSSUnit(
 				leftPaddingMobile,

@@ -8,16 +8,13 @@
 import generateCSS from '@Controls/generateCSS';
 import generateCSSUnit from '@Controls/generateCSSUnit';
 import { getFallbackNumber } from '@Controls/getAttributeFallback';
+import generateBorderCSS from '@Controls/generateBorderCSS';
 
 function styling( props ) {
 	const {
 		blockName,
 
-		borderWidth,
-		borderStyle,
-		borderColor,
-		borderHColor,
-		borderRadius,
+		btnBorderHColor,
 		align,
 
 		titleColor,
@@ -170,10 +167,6 @@ function styling( props ) {
 		paginationAlign,
 		paginationTextColor,
 		paginationMasonryBgColor,
-		paginationMasonryBorderStyle,
-		paginationMasonryBorderWidth,
-		paginationMasonryBorderRadius,
-		paginationMasonryBorderColor,
 		paginationMasonryBorderHColor,
 		paginationButtonPaddingType,
 		paginationTextHoverColor,
@@ -198,21 +191,21 @@ function styling( props ) {
 		highlightedTextBgColor,
 		imgPosition,
 		titleLetterSpacing,
-titleLetterSpacingTablet,
-titleLetterSpacingMobile,
-titleLetterSpacingType,
-metaLetterSpacing,
-metaLetterSpacingTablet,
-metaLetterSpacingMobile,
-metaLetterSpacingType,
-excerptLetterSpacing,
-excerptLetterSpacingTablet,
-excerptLetterSpacingMobile,
-excerptLetterSpacingType,
-ctaLetterSpacing,
-ctaLetterSpacingTablet,
-ctaLetterSpacingMobile,
-ctaLetterSpacingType,
+		titleLetterSpacingTablet,
+		titleLetterSpacingMobile,
+		titleLetterSpacingType,
+		metaLetterSpacing,
+		metaLetterSpacingTablet,
+		metaLetterSpacingMobile,
+		metaLetterSpacingType,
+		excerptLetterSpacing,
+		excerptLetterSpacingTablet,
+		excerptLetterSpacingMobile,
+		excerptLetterSpacingType,
+		ctaLetterSpacing,
+		ctaLetterSpacingTablet,
+		ctaLetterSpacingMobile,
+		ctaLetterSpacingType,
 	} = props.attributes;
 
 	const overlayOpacityFallback = getFallbackNumber( overlayOpacity, 'overlayOpacity', blockName );
@@ -233,6 +226,14 @@ ctaLetterSpacingType,
 
 	const rowGapTabletFallback = isNaN( rowGapTablet ) ? rowGapFallback : rowGapTablet;
 	const rowGapMobileFallback = isNaN( rowGapMobile ) ? rowGapTabletFallback : rowGapMobile;
+	
+	const borderCSS = generateBorderCSS( props.attributes, 'btn' );
+	const borderCSSTablet = generateBorderCSS( props.attributes, 'btn', 'tablet' );
+	const borderCSSMobile = generateBorderCSS( props.attributes, 'btn', 'mobile' );
+
+	const paginationMasonryBorderCSS = generateBorderCSS( props.attributes, 'paginationMasonry' );
+	const paginationMasonryBorderCSSTablet = generateBorderCSS( props.attributes, 'paginationMasonry', 'tablet' );
+	const paginationMasonryBorderCSSMobile = generateBorderCSS( props.attributes, 'paginationMasonry', 'mobile' );
 
 	let mobileSelectors = {};
 	let tabletSelectors = {};
@@ -479,21 +480,18 @@ ctaLetterSpacingType,
 		'text-decoration': ctaDecoration,
 		'padding-left': generateCSSUnit( paddingBtnLeft, paddingBtnUnit ),
 		'padding-right': generateCSSUnit( paddingBtnRight, paddingBtnUnit ),
-		'border-width': generateCSSUnit( borderWidth, 'px' ),
-		'border-radius': generateCSSUnit( borderRadius, 'px' ),
-		'border-color': borderColor,
-		'border-style': borderStyle,
+		...borderCSS,
 		'letter-spacing': generateCSSUnit( ctaLetterSpacing, ctaLetterSpacingType ),
 	};
 	selectors[ ' .uagb-post__text .uagb-post__cta:hover' ] = {
 		'color': ctaHColor,
 		'background': ctaBgHColor,
-		'border-color': borderHColor,
+		'border-color': btnBorderHColor,
 	};
 	selectors[ ' .uagb-post__text .uagb-post__cta:hover a' ] = {
 		'color': ctaHColor,
 		'background': ctaBgHColor,
-		'border-color': borderHColor,
+		'border-color': btnBorderHColor,
 	};
 
 	if ( true === postPagination ) {
@@ -623,7 +621,7 @@ ctaLetterSpacingType,
 				};
 			}
 			if (
-				'undefined' === typeof paginationBorderActiveColor &&
+				'undefined' === typeof paginationBorderHColor &&
 				'undefined' === typeof paginationActiveColor
 			) {
 				selectors[
@@ -913,16 +911,6 @@ ctaLetterSpacingType,
 			] = {
 				'color': paginationTextColor,
 				'background-color': paginationMasonryBgColor,
-				'border-style': paginationMasonryBorderStyle,
-				'border-width': generateCSSUnit(
-					paginationMasonryBorderWidth,
-					'px'
-				),
-				'border-radius': generateCSSUnit(
-					paginationMasonryBorderRadius,
-					'px'
-				),
-				'border-color': paginationMasonryBorderColor,
 				'font-size': generateCSSUnit(
 					paginationFontSizeFallback,
 					'px'
@@ -943,6 +931,7 @@ ctaLetterSpacingType,
 					paginationButtonPaddingLeft,
 					paginationButtonPaddingType
 				),
+				...paginationMasonryBorderCSS
 			};
 			selectors[
 				' .uagb-post__load-more-wrap .uagb-post-pagination-button:hover'
@@ -1024,6 +1013,10 @@ ctaLetterSpacingType,
 			mobilePaddingUnit
 		),
 	};
+	tabletSelectors[ ' .uagb-post__cta .uagb-text-link' ] = borderCSSTablet;
+	mobileSelectors[ ' .uagb-post__cta .uagb-text-link' ] = borderCSSMobile;
+	tabletSelectors[ ' .uagb-post__load-more-wrap .uagb-post-pagination-button' ] = paginationMasonryBorderCSSTablet;
+	mobileSelectors[ ' .uagb-post__load-more-wrap .uagb-post-pagination-button' ] = paginationMasonryBorderCSSMobile;
 	if ( 'background' === imgPosition ){
 		selectors[ ' .uagb-post__inner-wrap .uagb-post__text:nth-child(2)' ] = {
 			'margin-top': generateCSSUnit( paddingTop, contentPaddingUnit ),

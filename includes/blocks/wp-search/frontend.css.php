@@ -52,14 +52,26 @@ $inputCSS       = array(
 	'padding-right'    => $paddingInputRight,
 	'padding-left'     => $paddingInputLeft,
 );
-$boxCSS         = array(
-	'border-style'  => $attr['borderStyle'],
-	'border-width'  => UAGB_Helper::get_css_value( $attr['borderWidth'], 'px' ),
-	'border-color'  => $attr['borderColor'],
-	'outline'       => 'unset',
-	'border-radius' => UAGB_Helper::get_css_value( $attr['borderRadius'], 'px' ),
-	'box-shadow'    => UAGB_Helper::get_css_value( $attr['boxShadowHOffset'], 'px' ) . ' ' . UAGB_Helper::get_css_value( $attr['boxShadowVOffset'], 'px' ) . ' ' . UAGB_Helper::get_css_value( $attr['boxShadowBlur'], 'px' ) . ' ' . UAGB_Helper::get_css_value( $attr['boxShadowSpread'], 'px' ) . ' ' . $attr['boxShadowColor'] . ' ' . $boxShadowPositionCSS,
-	'transition'    => 'all .5s',
+
+
+$inputBorderCSS       = UAGB_Block_Helper::uag_generate_border_css( $attr, 'input' );
+$inputBorderCSS       = UAGB_Block_Helper::uag_generate_deprecated_border_css(
+	$inputBorderCSS,
+	( isset( $attr['borderWidth'] ) ? $attr['borderWidth'] : '' ),
+	( isset( $attr['borderRadius'] ) ? $attr['borderRadius'] : '' ),
+	( isset( $attr['borderColor'] ) ? $attr['borderColor'] : '' ),
+	( isset( $attr['borderStyle'] ) ? $attr['borderStyle'] : '' )
+);
+$inputBorderCSSTablet = UAGB_Block_Helper::uag_generate_border_css( $attr, 'input', 'tablet' );
+$inputBorderCSSMobile = UAGB_Block_Helper::uag_generate_border_css( $attr, 'input', 'mobile' );
+
+$boxCSS = array_merge(
+	$inputBorderCSS,
+	array(
+		'outline'    => 'unset',
+		'box-shadow' => UAGB_Helper::get_css_value( $attr['boxShadowHOffset'], 'px' ) . ' ' . UAGB_Helper::get_css_value( $attr['boxShadowVOffset'], 'px' ) . ' ' . UAGB_Helper::get_css_value( $attr['boxShadowBlur'], 'px' ) . ' ' . UAGB_Helper::get_css_value( $attr['boxShadowSpread'], 'px' ) . ' ' . $attr['boxShadowColor'] . ' ' . $boxShadowPositionCSS,
+		'transition' => 'all .5s',
+	)
 );
 if ( 'px' === $attr['inputSizeType'] ) {
 	$boxCSS['max-width'] = UAGB_Helper::get_css_value( $input_size_fallback, $attr['inputSizeType'] );
@@ -110,7 +122,7 @@ if ( 'input-button' === $attr['layout'] || 'input' === $attr['layout'] ) {
 
 	$selectors[' .uagb-search-wrapper .uagb-search-form__container']       = $boxCSS;
 	$selectors[' .uagb-search-wrapper .uagb-search-form__container:hover'] = array(
-		'border-color' => $attr['borderHColor'],
+		'border-color' => $attr['inputBorderHColor'],
 	);
 
 	if ( 'inset' === $attr['boxShadowPosition'] ) {
@@ -136,6 +148,7 @@ $selectors['.uagb-layout-input-button .uagb-search-wrapper .uagb-search-form__co
 );
 
 $m_selectors = array(
+	' .uagb-search-wrapper .uagb-search-form__container' => $inputBorderCSSMobile,
 	' .uagb-search-wrapper .uagb-search-form__container .uagb-search-form__input' => array(
 		'padding-top'    => $paddingInputTopMobile,
 		'padding-bottom' => $paddingInputBottomMobile,
@@ -150,6 +163,7 @@ $m_selectors = array(
 );
 
 $t_selectors        = array(
+	' .uagb-search-wrapper .uagb-search-form__container' => $inputBorderCSSTablet,
 	' .uagb-search-wrapper .uagb-search-form__container .uagb-search-form__input' => array(
 		'padding-top'    => $paddingInputTopTablet,
 		'padding-bottom' => $paddingInputBottomTablet,

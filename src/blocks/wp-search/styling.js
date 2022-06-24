@@ -1,6 +1,7 @@
 /**
  * Returns Dynamic Generated CSS
  */
+import generateBorderCSS from '@Controls/generateBorderCSS';
 
 import generateCSS from '@Controls/generateCSS';
 import generateCSSUnit from '@Controls/generateCSSUnit';
@@ -22,10 +23,11 @@ function styling( props ) {
 		boxShadowBlur,
 		boxShadowSpread,
 		boxShadowPosition,
-		borderStyle,
-		borderWidth,
-		borderRadius,
-		borderColor,
+
+
+		inputBorderHColor,
+
+
 		buttonBgColor,
 		buttonBgHoverColor,
 		buttonIconColor,
@@ -77,7 +79,6 @@ function styling( props ) {
 		inputDecoration,
 		buttonTransform,
 		buttonDecoration,
-		borderHColor,
 		buttonIconSizeType,
 		buttonWidthType,
 		inputFontStyle,
@@ -104,6 +105,10 @@ function styling( props ) {
 		buttonIconSizeFallback,
 		buttonIconSizeType
 	);
+
+	const inputBorderCSS = generateBorderCSS( props.attributes, 'input' )
+	const inputBorderCSSTablet = generateBorderCSS( props.attributes, 'input', 'tablet' )
+	const inputBorderCSSMobile = generateBorderCSS( props.attributes, 'input', 'mobile' )
 
 	const inputCSS = {
 		'color': textColor,
@@ -137,12 +142,10 @@ function styling( props ) {
 		),
 		'transition': 'all .5s',
 	};
+
 	const boxCSS = {
-		'border-style': borderStyle,
-		'border-width': generateCSSUnit( borderWidth, 'px' ),
-		'border-color': borderColor,
+		...inputBorderCSS,
 		'outline': 'unset',
-		'border-radius': generateCSSUnit( borderRadius, 'px' ),
 		'box-shadow':
 			generateCSSUnit( boxShadowHOffset, 'px' ) +
 			' ' +
@@ -219,7 +222,7 @@ function styling( props ) {
 		selectors[
 			' .uagb-search-wrapper .uagb-search-form__container:hover'
 		] = {
-			'border-color': borderHColor,
+			'border-color': inputBorderHColor,
 		};
 		if ( 'inset' === boxShadowPosition ) {
 			selectors[ ' .uagb-search-wrapper .uagb-search-form__input' ] = {
@@ -269,6 +272,7 @@ function styling( props ) {
 	};
 
 	mobileSelectors = {
+		' .uagb-search-wrapper .uagb-search-form__container': inputBorderCSSMobile,
 		' .uagb-search-wrapper .uagb-search-form__container .uagb-search-form__input': {
 			'font-size': generateCSSUnit(
 				inputFontSizeMobile,
@@ -322,6 +326,7 @@ function styling( props ) {
 	};
 
 	tabletSelectors = {
+		' .uagb-search-wrapper .uagb-search-form__container': inputBorderCSSTablet,
 		' .uagb-search-wrapper .uagb-search-form__container .uagb-search-form__input': {
 			'font-size': generateCSSUnit(
 				inputFontSizeTablet,

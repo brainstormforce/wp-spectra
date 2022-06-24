@@ -2,6 +2,7 @@
  * Returns Dynamic Generated CSS
  */
 
+import generateBorderCSS from '@Controls/generateBorderCSS';
 import generateCSS from '@Controls/generateCSS';
 import generateCSSUnit from '@Controls/generateCSSUnit';
 import { getFallbackNumber } from '@Controls/getAttributeFallback';
@@ -112,13 +113,9 @@ function styling( props ) {
 		linkColor,
 		linkHColor,
 		// Highlight
+		highLightBorderHColor,
 		highLightColor,
 		highLightBackground,
-		highLightBorderWidth,
-		highLightBorderRadius,
-		highLightBorderStyle,
-		highLightBorderColor,
-		highLightBorderHColor,
 		highLightFontFamily,
 		highLightFontWeight,
 		highLightFontStyle,
@@ -166,6 +163,11 @@ function styling( props ) {
 			'-webkit-text-fill-color': linkHColor
 		}
 	}
+
+	const highLightBorderCSS = generateBorderCSS( props.attributes, 'highLight' )
+	const highLightBorderCSSTablet = generateBorderCSS( props.attributes, 'highLight', 'tablet' )
+	const highLightBorderCSSMobile = generateBorderCSS( props.attributes, 'highLight', 'mobile' )
+
 
 	const selectors = {
 		'.wp-block-uagb-advanced-heading ':{
@@ -242,10 +244,6 @@ function styling( props ) {
 			'font-size': generateCSSUnit( highLightFontSize, highLightFontSizeType ),
 			'line-height': generateCSSUnit( highLightLineHeight, highLightLineHeightType ),
 			'letter-spacing': generateCSSUnit( highLightLetterSpacing, highLightLetterSpacingType ),
-			'border-style': highLightBorderStyle,
-			'border-width': generateCSSUnit( highLightBorderWidth, 'px' ),
-			'border-color': highLightBorderColor,
-			'border-radius': generateCSSUnit( highLightBorderRadius, 'px' ),
 			'padding-top': generateCSSUnit(
 				highLightTopPadding,
 				highLightPaddingUnit
@@ -262,6 +260,7 @@ function styling( props ) {
 				highLightLeftPadding,
 				highLightPaddingUnit
 			),
+			...highLightBorderCSS,
 		},
 		'.wp-block-uagb-advanced-heading .uagb-highlight:hover': {
 			'border-color': highLightBorderHColor,
@@ -417,6 +416,7 @@ function styling( props ) {
 			highLightLeftPaddingTablet,
 			highLightPaddingUnitTablet
 		),
+		...highLightBorderCSSTablet
 	};
 	// mobile
 	mobile_selectors['.wp-block-uagb-advanced-heading '] = {
@@ -514,6 +514,7 @@ function styling( props ) {
 			highLightLeftPaddingMobile,
 			highLightPaddingUnitMobile
 		),
+		...highLightBorderCSSMobile
 	};
 	mobile_selectors[ ' .uagb-separator' ] = {
 		'width': generateCSSUnit(
