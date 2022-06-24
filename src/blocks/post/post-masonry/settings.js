@@ -1,7 +1,7 @@
 import WebfontLoader from '@Components/typography/fontloader';
 import { __ } from '@wordpress/i18n';
 import React from 'react';
-import { BlockAlignmentToolbar, BlockControls } from '@wordpress/block-editor';
+import { BlockControls } from '@wordpress/block-editor';
 import { ToolbarGroup } from '@wordpress/components';
 import { decodeEntities } from '@wordpress/html-entities';
 
@@ -10,10 +10,9 @@ const Settings = ( props ) => {
 
 	props = props.parentProps;
 
-	const { attributes, categoriesList, setAttributes, taxonomyList } = props;
+	const { attributes, categoriesList, taxonomyList } = props;
 
 	const {
-		align,
 		titleFontFamily,
 		titleFontWeight,
 		titleLoadGoogleFonts,
@@ -138,13 +137,6 @@ const Settings = ( props ) => {
 		<>
 			{ inspectorControls }
 			<BlockControls>
-				<BlockAlignmentToolbar
-					value={ align }
-					onChange={ ( value ) => {
-						setAttributes( { align: value } );
-					} }
-					controls={ [ 'left', 'center', 'right' ] }
-				/>
 				{ getBlockControls() }
 			</BlockControls>
 			{ loadTitleGoogleFonts }

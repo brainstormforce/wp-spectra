@@ -7,7 +7,7 @@ import lazyLoader from '@Controls/lazy-loader';
 import WebfontLoader from '@Components/typography/fontloader';
 import TypographyControl from '@Components/typography';
 import { __ } from '@wordpress/i18n';
-import Border from '@Components/border';
+import ResponsiveBorder from '@Components/responsive-border';
 import AdvancedPopColorControl from '@Components/color-control/advanced-pop-color-control.js';
 import InspectorTabs from '@Components/inspector-tabs/InspectorTabs.js';
 import InspectorTab, {
@@ -31,7 +31,6 @@ import {
 
 import {
 	InspectorControls,
-	BlockAlignmentToolbar,
 	BlockControls,
 } from '@wordpress/block-editor';
 
@@ -64,11 +63,6 @@ const Settings = ( props ) => {
 		displayPostLink,
 		newTab,
 		ctaText,
-		borderWidth,
-		borderStyle,
-		borderColor,
-		borderHColor,
-		borderRadius,
 		align,
 		columns,
 		tcolumns,
@@ -316,13 +310,6 @@ const Settings = ( props ) => {
 
 		return (
 			<BlockControls>
-				<BlockAlignmentToolbar
-					value={ align }
-					onChange={ ( value ) => {
-						setAttributes( { align: value } );
-					} }
-					controls={ [ 'left', 'center', 'right' ] }
-				/>
 				<ToolbarGroup
 					controls={ [
 						{
@@ -1850,50 +1837,13 @@ const Settings = ( props ) => {
 						label: 'ctaDecoration',
 					} }
 				/>
-				<Border
-					disabledBorderTitle= {false}
-					disableBottomSeparator={ false }
+				<ResponsiveBorder
 					setAttributes={ setAttributes }
-					borderStyle={ {
-						value: borderStyle,
-						label: 'borderStyle',
-						title: __(
-							'Style',
-							'ultimate-addons-for-gutenberg'
-						),
-					} }
-					borderWidth={ {
-						value: borderWidth,
-						label: 'borderWidth',
-						title: __(
-							'Width',
-							'ultimate-addons-for-gutenberg'
-						),
-					} }
-					borderRadius={ {
-						value: borderRadius,
-						label: 'borderRadius',
-						title: __(
-							'Radius',
-							'ultimate-addons-for-gutenberg'
-						),
-					} }
-					borderColor={ {
-						value: borderColor,
-						label: 'borderColor',
-						title: __(
-							'Color',
-							'ultimate-addons-for-gutenberg'
-						),
-					} }
-					borderHoverColor={ {
-						value: borderHColor,
-						label: 'borderHColor',
-						title: __(
-							'Hover Color',
-							'ultimate-addons-for-gutenberg'
-						),
-					} }
+					prefix={ 'btn' }
+					attributes={ attributes }
+					deviceType={ deviceType }
+					disableBottomSeparator={ true }
+					disabledBorderTitle= { false }
 				/>
 				<ResponsiveSlider
 					label={ __( 'Bottom Spacing', 'ultimate-addons-for-gutenberg' ) }

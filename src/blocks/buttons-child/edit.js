@@ -8,6 +8,7 @@ import lazyLoader from '@Controls/lazy-loader';
 import React, { useEffect, useState, lazy, Suspense } from 'react';
 import { useDeviceType } from '@Controls/getPreviewType';
 import addBlockEditorDynamicStyles from '@Controls/addBlockEditorDynamicStyles';
+
 const Settings = lazy( () =>
 	import(
 		/* webpackChunkName: "chunks/buttons-child/settings" */ './settings'
@@ -58,10 +59,11 @@ const ButtonsChildComponent = ( props ) => {
 				setAttributes( { leftPadding: hPadding } );
 			}
 		}
+
 	}, [] );
 
 	useEffect( () => {
-
+		
 		const blockStyling = styling( props );
 
 		addBlockEditorDynamicStyles( 'uagb-style-button-' + props.clientId.substr( 0, 8 ), blockStyling );
@@ -80,6 +82,7 @@ const ButtonsChildComponent = ( props ) => {
 				parentProps={ props }
 				state={ state }
 				setStateValue={ setStateValue }
+				deviceType = { deviceType }
 			/>
 			<Render parentProps={ props } />
 		</Suspense>

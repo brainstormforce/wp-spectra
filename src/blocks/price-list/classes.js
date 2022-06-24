@@ -2,7 +2,14 @@
  * Returns Dynamic Generated Classes
  */
 
-function PositionClasses( attributes ) {
+import { getFallbackNumber } from '@Controls/getAttributeFallback';
+function PositionClasses( attributes , name = 'uagb/restaurant-menu' ) {
+	const {
+		columns,
+		tcolumns,
+		mcolumns
+	} = attributes;
+
 	let iconimgStyleClass = '';
 	let imgeCount = 0;
 	const image = attributes.image;
@@ -41,10 +48,15 @@ function PositionClasses( attributes ) {
 			}
 		}
 	}
+	const blockName = name.replace( 'uagb/', '' );
 
-	iconimgStyleClass += 'uagb-rm__desk-column-' + attributes.columns + ' ';
-	iconimgStyleClass += 'uagb-rm__tablet-column-' + attributes.tcolumns + ' ';
-	iconimgStyleClass += 'uagb-rm__mobile-column-' + attributes.mcolumns + ' ';
+	const columnsFallback = getFallbackNumber( columns, 'columns', blockName );
+	const tcolumnsFallback = getFallbackNumber( tcolumns, 'tcolumns', blockName );
+	const mcolumnsFallback = getFallbackNumber( mcolumns, 'mcolumns', blockName );
+
+	iconimgStyleClass += 'uagb-rm__desk-column-' + columnsFallback + ' ';
+	iconimgStyleClass += 'uagb-rm__tablet-column-' + tcolumnsFallback + ' ';
+	iconimgStyleClass += 'uagb-rm__mobile-column-' + mcolumnsFallback + ' ';
 
 	return [ iconimgStyleClass ];
 }

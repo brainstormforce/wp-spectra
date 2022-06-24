@@ -2,6 +2,18 @@
  * BLOCK: UAGB Tabs Block Attributes
  */
 import { __ } from '@wordpress/i18n';
+import { getBorderAttributes } from '@Controls/generateAttributes';
+
+const borderDefault = {
+	borderStyle: 'solid',
+	borderTopWidth: 1,
+	borderRightWidth: 1,
+	borderBottomWidth: 1,
+	borderLeftWidth: 1,
+	borderColor: '#e0e0e0',
+}
+const borderAttributes = getBorderAttributes( 'tab', borderDefault );
+
 const attributes = {
 	block_id: {
 		type: 'string',
@@ -61,36 +73,18 @@ const attributes = {
 	},
 	borderStyle: {
 		type: 'string',
-		default: 'solid',
-		UAGCopyPaste: {
-			styleType: 'desc-border-style'
-		},
 	},
 	borderWidth: {
 		type: 'number',
-		default: 1,
-		UAGCopyPaste: {
-			styleType: 'desc-border-width'
-		},
 	},
 	borderRadius: {
 		type: 'number',
-		UAGCopyPaste: {
-			styleType: 'desc-border-radius'
-		},
 	},
 	borderColor: {
 		type: 'string',
-		default: '#e0e0e0',
-		UAGCopyPaste: {
-			styleType: 'desc-border-color'
-		},
 	},
 	borderHoverColor: {
 		type: 'string',
-		UAGCopyPaste: {
-			styleType: 'desc-border-hover-color'
-		},
 	},
 	activeTabBgColor: {
 		type: 'string',
@@ -657,7 +651,7 @@ const attributes = {
 	},
 	iconSize: {
 		type: 'number',
-		default: 12,
+		default: 16,
 		UAGCopyPaste: {
 			styleType: 'icon-size'
 		},
@@ -691,6 +685,7 @@ const attributes = {
 		type: 'boolean',
 		default: false,
 	},
+	...borderAttributes,
 	titleLetterSpacing: {
 		type: 'number',
 		UAGCopyPaste: {

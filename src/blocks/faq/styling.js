@@ -4,8 +4,13 @@
 
 import generateCSS from '@Controls/generateCSS';
 import generateCSSUnit from '@Controls/generateCSSUnit';
+import { getFallbackNumber } from '@Controls/getAttributeFallback';
+import generateBorderCSS from '@Controls/generateBorderCSS';
 
 function styling( props ) {
+
+	const blockName = props.name.replace( 'uagb/', '' );
+
 	const {
 		layout,
 		inactiveOtherItems,
@@ -21,12 +26,7 @@ function styling( props ) {
 		align,
 		enableSeparator,
 		boxBgColor,
-		boxBgHoverColor,
-		borderStyle,
-		borderWidth,
-		borderRadius,
-		borderColor,
-		borderHoverColor,
+		overallBorderHColor,
 		questionTextColor,
 		questionTextBgColor,
 		questionTextActiveColor,
@@ -112,6 +112,11 @@ function styling( props ) {
 		answerLetterSpacingType,
 	} = props.attributes;
 
+
+	const borderCSS = generateBorderCSS( props.attributes, 'overall', '' );
+	const borderCSSTablet = generateBorderCSS( props.attributes,'overall', 'tablet' );
+	const borderCSSMobile = generateBorderCSS( props.attributes,'overall', 'mobile' );
+
 	let selectors = {};
 	let tabletSelectors = {};
 	let mobileSelectors = {};
@@ -127,34 +132,30 @@ function styling( props ) {
 
 	selectors = {
 		' .uagb-icon svg': {
-			'width': generateCSSUnit( iconSize, iconSizeType ),
-			'height': generateCSSUnit( iconSize, iconSizeType ),
-			'font-size': generateCSSUnit( iconSize, iconSizeType ),
+			'width': generateCSSUnit( getFallbackNumber( iconSize, 'iconSize', blockName ), iconSizeType ),
+			'height': generateCSSUnit( getFallbackNumber( iconSize, 'iconSize', blockName ), iconSizeType ),
+			'font-size': generateCSSUnit( getFallbackNumber( iconSize, 'iconSize', blockName ), iconSizeType ),
 			'fill': iconColorTemp,
 		},
 		' .uagb-icon-active svg': {
-			'width': generateCSSUnit( iconSize, iconSizeType ),
-			'height': generateCSSUnit( iconSize, iconSizeType ),
-			'font-size': generateCSSUnit( iconSize, iconSizeType ),
+			'width': generateCSSUnit( getFallbackNumber( iconSize, 'iconSize', blockName ), iconSizeType ),
+			'height': generateCSSUnit( getFallbackNumber( iconSize, 'iconSize', blockName ), iconSizeType ),
+			'font-size': generateCSSUnit( getFallbackNumber( iconSize, 'iconSize', blockName ), iconSizeType ),
 			'fill': iconActiveColorTemp,
 		},
 		' .uagb-faq-child__outer-wrap': {
-			'margin-bottom': generateCSSUnit( rowsGap, rowsGapUnit ),
+			'margin-bottom': generateCSSUnit( getFallbackNumber( rowsGap, 'rowsGap', blockName ), rowsGapUnit ),
 		},
 		'.uagb-faq-layout-grid .block-editor-inner-blocks .block-editor-block-list__layout': {
-			'grid-column-gap': generateCSSUnit( columnsGap, columnsGapUnit ),
-			'grid-row-gap': generateCSSUnit( rowsGap, rowsGapUnit ),
+			'grid-column-gap': generateCSSUnit( getFallbackNumber( columnsGap, 'columnsGap', blockName ), columnsGapUnit ),
+			'grid-row-gap': generateCSSUnit( getFallbackNumber( rowsGap, 'rowsGap', blockName ), rowsGapUnit ),
 		},
 		' .uagb-faq-item': {
 			'background-color': boxBgColor,
-			'border-style': borderStyle,
-			'border-width': generateCSSUnit( borderWidth, 'px' ),
-			'border-radius': generateCSSUnit( borderRadius, 'px' ),
-			'border-color': borderColor,
+			...borderCSS
 		},
 		' .uagb-faq-item:hover': {
-			'border-color': borderHoverColor,
-			'background-color': boxBgHoverColor,
+			'border-color': overallBorderHColor,
 		},
 		' .uagb-faq-item .uagb-question': {
 			'color': questionTextColor,
@@ -209,10 +210,10 @@ function styling( props ) {
 			),
 		},
 		'.uagb-faq-icon-row .uagb-faq-item .uagb-faq-icon-wrap': {
-			'margin-right': generateCSSUnit( gapBtwIconQUestion, 'px' ),
+			'margin-right': generateCSSUnit( getFallbackNumber( gapBtwIconQUestion, 'gapBtwIconQUestion', blockName ), 'px' ),
 		},
 		'.uagb-faq-icon-row-reverse .uagb-faq-item .uagb-faq-icon-wrap': {
-			'margin-left': generateCSSUnit( gapBtwIconQUestion, 'px' ),
+			'margin-left': generateCSSUnit( getFallbackNumber( gapBtwIconQUestion, 'gapBtwIconQUestion', blockName ), 'px' ),
 		},
 		' .uagb-faq-item:hover .uagb-icon svg': {
 			'fill': iconActiveColorTemp,
@@ -270,6 +271,9 @@ function styling( props ) {
 				questionLeftPaddingTablet,
 				questionPaddingTypeTablet
 			),
+		},
+		' .uagb-faq-item': {
+			...borderCSSTablet
 		},
 		' .uagb-faq-content': {
 			'padding-top': generateCSSUnit(
@@ -337,6 +341,9 @@ function styling( props ) {
 	};
 
 	mobileSelectors = {
+		' .uagb-faq-item': {
+			...borderCSSMobile
+		},
 		'.uagb-faq-icon-row .uagb-faq-item .uagb-faq-icon-wrap': {
 			'margin-right': generateCSSUnit( gapBtwIconQUestionMobile, 'px' ),
 		},
@@ -461,13 +468,12 @@ function styling( props ) {
 			'.uagb-faq__outer-wrap .uagb-faq-child__outer-wrap .uagb-faq-content '
 		] = {
 			'border-style': 'solid',
-			'border-top-color': borderColor,
-			'border-top-width': generateCSSUnit( borderWidth, 'px' ),
+			...borderCSS
 		};
 		selectors[
 			'.uagb-faq__outer-wrap .uagb-faq-child__outer-wrap .uagb-faq-content:hover '
 		] = {
-			'border-top-color': borderHoverColor,
+			'border-top-color': overallBorderHColor,
 		};
 	}
 	if ( 'grid' === layout ) {
@@ -479,17 +485,17 @@ function styling( props ) {
 		selectors[
 			'.uagb-faq-layout-grid .block-editor-inner-blocks > .block-editor-block-list__layout '
 		] = {
-			'grid-template-columns': 'repeat(' + columns + ', 1fr)',
+			'grid-template-columns': 'repeat(' + getFallbackNumber( columns, 'columns', blockName ) + ', 1fr)',
 		};
 		tabletSelectors[
 			'.uagb-faq-layout-grid .block-editor-inner-blocks > .block-editor-block-list__layout '
 		] = {
-			'grid-template-columns': 'repeat(' + tcolumns + ', 1fr)',
+			'grid-template-columns': 'repeat(' + getFallbackNumber( tcolumns, 'tcolumns', blockName ) + ', 1fr)',
 		};
 		mobileSelectors[
 			'.uagb-faq-layout-grid .block-editor-inner-blocks > .block-editor-block-list__layout '
 		] = {
-			'grid-template-columns': 'repeat(' + mcolumns + ', 1fr)',
+			'grid-template-columns': 'repeat(' + getFallbackNumber( mcolumns, 'mcolumns', blockName ) + ', 1fr)',
 		};
 	}
 

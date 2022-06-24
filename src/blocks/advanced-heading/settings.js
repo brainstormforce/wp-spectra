@@ -13,8 +13,6 @@ import { __ } from '@wordpress/i18n';
 import presets from './presets';
 import UAGPresets from '@Components/presets';
 import {
-	AlignmentToolbar,
-	BlockControls,
 	InspectorControls,
 } from '@wordpress/block-editor';
 import renderSVG from '@Controls/renderIcon';
@@ -22,11 +20,7 @@ import { SelectControl, Icon, ToggleControl } from '@wordpress/components';
 import SpacingControl from '@Components/spacing-control';
 import ColorSwitchControl from '@Components/color-switch-control';
 import TextShadowControl from '@Components/text-shadow';
-import Border from '@Components/border';
-
-
-
-
+import ResponsiveBorder from '@Components/responsive-border'
 import ResponsiveSlider from '@Components/responsive-slider';
 // Extend component
 import UAGAdvancedPanelBody from '@Components/advanced-panel-body';
@@ -145,11 +139,6 @@ const Settings = ( props ) => {
 		// Highlight
 		highLightColor,
 		highLightBackground,
-		highLightBorderWidth,
-		highLightBorderRadius,
-		highLightBorderStyle,
-		highLightBorderColor,
-		highLightBorderHColor,
 		highLightLoadGoogleFonts,
 		highLightFontFamily,
 		highLightFontWeight,
@@ -218,19 +207,6 @@ const Settings = ( props ) => {
 			<WebfontLoader config={ sconfig }></WebfontLoader>
 		);
 	}
-
-	const blockControlSettings = () => {
-		return (
-			<BlockControls key="controls">
-				<AlignmentToolbar
-					value={ headingAlign }
-					onChange={ ( value ) =>
-						setAttributes( { headingAlign: value } )
-					}
-				/>
-			</BlockControls>
-		);
-	};
 
 	const generalPanel = () => {
 
@@ -1216,36 +1192,11 @@ const Settings = ( props ) => {
 						label: 'highLightPaddingLink',
 					} }
 				/>
-				<Border
+				<ResponsiveBorder
 					setAttributes={ setAttributes }
-					borderStyle={ {
-						value: highLightBorderStyle,
-						label: 'highLightBorderStyle',
-						title: __( 'Style', 'ultimate-addons-for-gutenberg' ),
-					} }
-					borderWidth={ {
-						value: highLightBorderWidth,
-						label: 'highLightBorderWidth',
-						title: __( 'Width', 'ultimate-addons-for-gutenberg' ),
-					} }
-					borderRadius={ {
-						value: highLightBorderRadius,
-						label: 'highLightBorderRadius',
-						title: __( 'Radius', 'ultimate-addons-for-gutenberg' ),
-					} }
-					borderColor={ {
-						value: highLightBorderColor,
-						label: 'highLightBorderColor',
-						title: __( 'Color', 'ultimate-addons-for-gutenberg' ),
-					} }
-					borderHoverColor={ {
-						value: highLightBorderHColor,
-						label: 'highLightBorderHColor',
-						title: __(
-							'Hover Color',
-							'ultimate-addons-for-gutenberg'
-						),
-					} }
+					prefix={'highLight'}
+					attributes={ attributes }
+					deviceType={deviceType}
 					disableBottomSeparator={ true }
 				/>
 			</UAGAdvancedPanelBody>
@@ -1254,7 +1205,6 @@ const Settings = ( props ) => {
 
 	return (
 		<div>
-			{ blockControlSettings() }
 			<InspectorControls>
 				<InspectorTabs>
 					<InspectorTab { ...UAGTabs.general }>

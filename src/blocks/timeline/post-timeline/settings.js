@@ -24,9 +24,6 @@ import {
 } from '@wordpress/components';
 import {
 	InspectorControls,
-	BlockAlignmentToolbar,
-	AlignmentToolbar,
-	BlockControls,
 } from '@wordpress/block-editor';
 import ResponsiveSlider from '@Components/responsive-slider';
 import UAGAdvancedPanelBody from '@Components/advanced-panel-body';
@@ -104,6 +101,8 @@ const Settings = ( props ) => {
 		displayPostImage,
 		displayPostLink,
 		align,
+		alignTablet,
+		alignMobile,
 		order,
 		orderBy,
 		categories,
@@ -202,25 +201,25 @@ const Settings = ( props ) => {
 		headTopSpacingTablet,
 		headTopSpacingMobile,
 		headLetterSpacing,
-headLetterSpacingTablet,
-headLetterSpacingMobile,
-headLetterSpacingType,
-subHeadLetterSpacing,
-subHeadLetterSpacingTablet,
-subHeadLetterSpacingMobile,
-subHeadLetterSpacingType,
-dateLetterSpacing,
-dateLetterSpacingTablet,
-dateLetterSpacingMobile,
-dateLetterSpacingType,
-ctaLetterSpacing,
-ctaLetterSpacingTablet,
-ctaLetterSpacingMobile,
-ctaLetterSpacingType,
-authorLetterSpacing,
-authorLetterSpacingTablet,
-authorLetterSpacingMobile,
-authorLetterSpacingType,
+		headLetterSpacingTablet,
+		headLetterSpacingMobile,
+		headLetterSpacingType,
+		subHeadLetterSpacing,
+		subHeadLetterSpacingTablet,
+		subHeadLetterSpacingMobile,
+		subHeadLetterSpacingType,
+		dateLetterSpacing,
+		dateLetterSpacingTablet,
+		dateLetterSpacingMobile,
+		dateLetterSpacingType,
+		ctaLetterSpacing,
+		ctaLetterSpacingTablet,
+		ctaLetterSpacingMobile,
+		ctaLetterSpacingType,
+		authorLetterSpacing,
+		authorLetterSpacingTablet,
+		authorLetterSpacingMobile,
+		authorLetterSpacingType,
 	} = attributes;
 
 	const onSelectPostType = ( value ) => {
@@ -528,8 +527,18 @@ authorLetterSpacingType,
 					setAttributes={ setAttributes }
 					label={ __( 'Text Alignment', 'ultimate-addons-for-gutenberg' ) }
 					data={ {
-						value: align,
-						label: 'align',
+						desktop: {
+							value: align,
+							label: 'align',
+						},
+						tablet: {
+							value: alignTablet,
+							label: 'alignTablet',
+						},
+						mobile: {
+							value: alignMobile,
+							label: 'alignMobile',
+						},
 					} }
 					className="uagb-multi-button-alignment-control"
 					options={ [
@@ -571,6 +580,7 @@ authorLetterSpacingType,
 						},
 					] }
 					showIcons={ true }
+					responsive={true}
 				/>
 				<MultiButtonsControl
 					setAttributes={ setAttributes }
@@ -879,20 +889,6 @@ authorLetterSpacingType,
 						setAttributes( { linkTarget: ! linkTarget } )
 					}
 				/>
-				{/* <Range
-					label={ __(
-						'Rounded Corners',
-						'ultimate-addons-for-gutenberg'
-					) }
-					setAttributes={ setAttributes }
-					value={ borderRadius }
-					onChange={ ( value ) =>
-						setAttributes( { borderRadius: value } )
-					}
-					min={ 0 }
-					max={ 50 }
-					displayUnit={ false }
-				/> */}
 				<ResponsiveSlider
 					label={ __(
 						'Border Radius',
@@ -1908,29 +1904,9 @@ authorLetterSpacingType,
 			</UAGAdvancedPanelBody>
 		);
 	};
-	const blockControls = () => {
-		return (
-			<BlockControls>
-				<BlockAlignmentToolbar
-					value={ timelinAlignment }
-					onChange={ ( value ) => {
-						setAttributes( { timelinAlignment: value } );
-					} }
-					controls={ [ 'left', 'center', 'right' ] }
-				/>
-				<AlignmentToolbar
-					value={ align }
-					onChange={ ( value ) => {
-						setAttributes( { align: value } );
-					} }
-					controls={ [ 'left', 'center', 'right' ] }
-				/>
-			</BlockControls>
-		);
-	};
+
 	return (
 		<>
-			{ blockControls() }
 			<InspectorControls>
 				<InspectorTabs>
 					<InspectorTab { ...UAGTabs.general }>
