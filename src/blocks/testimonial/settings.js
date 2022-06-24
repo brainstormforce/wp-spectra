@@ -19,15 +19,14 @@ import InspectorTab, {
 import {
 	InspectorControls,
 } from '@wordpress/block-editor';
-
 import { SelectControl, ToggleControl, Icon } from '@wordpress/components';
-
-
+import { getFallbackNumber } from '@Controls/getAttributeFallback';
 
 import UAGAdvancedPanelBody from '@Components/advanced-panel-body';
 
 const Settings = ( props ) => {
 	props = props.parentProps;
+	const blockName = props.name.replace( 'uagb/', '' );
 	const { setAttributes, attributes, deviceType } = props;
 
 	// Setup the attributes.
@@ -183,6 +182,8 @@ const Settings = ( props ) => {
 		companyLetterSpacingType,
 	} = attributes;
 
+	const testItemCountFallback = getFallbackNumber( test_item_count, 'test_item_count', blockName );
+
 	let loadNameGoogleFonts;
 	let loadCompanyGoogleFonts;
 	let loadDescGoogleFonts;
@@ -276,7 +277,7 @@ const Settings = ( props ) => {
 
 	const getImageData = () => {
 		const getImages = [];
-		for ( let i = 0; i < test_item_count; i++ ) {
+		for ( let i = 0; i < testItemCountFallback; i++ ) {
 			getImages.push( tmControls( i ) );
 		}
 		return getImages;
@@ -1190,9 +1191,10 @@ const Settings = ( props ) => {
 								value={ test_item_count }
 								onChange={ ( newCount ) => {
 									const cloneTest_block = [ ...test_block ];
-									if ( cloneTest_block.length < newCount ) {
+									const newCountFallback = getFallbackNumber( newCount, 'test_item_count', 'testimonial' )
+									if ( cloneTest_block.length < newCountFallback ) {
 										const incAmount = Math.abs(
-											newCount - cloneTest_block.length
+											newCountFallback - cloneTest_block.length
 										);
 										for ( let i = 0; i < incAmount; i++ ) {
 											cloneTest_block.push( {
@@ -1211,7 +1213,7 @@ const Settings = ( props ) => {
 										} );
 									} else {
 										const incAmount = Math.abs(
-											newCount - cloneTest_block.length
+											newCountFallback - cloneTest_block.length
 										);
 										const data_new = cloneTest_block;
 										for ( let i = 0; i < incAmount; i++ ) {
@@ -1222,10 +1224,10 @@ const Settings = ( props ) => {
 										} );
 									}
 									setAttributes( {
-										test_item_count: newCount,
+										test_item_count: newCountFallback,
 									} );
 								} }
-								min={ 0 }
+								min={ 1 }
 								max={ 50 }
 								setAttributes={ setAttributes }
 								displayUnit={ false }
@@ -1250,7 +1252,7 @@ const Settings = ( props ) => {
 									},
 								} }
 								min={ 1 }
-								max={ test_item_count }
+								max={ testItemCountFallback }
 								displayUnit={ false }
 								setAttributes={ setAttributes }
 							/>

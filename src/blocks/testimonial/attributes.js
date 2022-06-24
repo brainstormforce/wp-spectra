@@ -353,14 +353,12 @@ const attributes = {
 		UAGCopyPaste: {
 			styleType: 'author-bottom-margin-mobile'
 		},
-		default: 5,
 	},
 	nameSpaceTablet: {
 		type: 'number',
 		UAGCopyPaste: {
 			styleType: 'author-bottom-margin-tablet'
 		},
-		default: 5,
 	},
 	descSpace: {
 		type: 'number',
@@ -374,14 +372,12 @@ const attributes = {
 		UAGCopyPaste: {
 			styleType: 'desc-bottom-margin-tablet'
 		},
-		default: 20,
 	},
 	descSpaceMobile: {
 		type: 'number',
 		UAGCopyPaste: {
 			styleType: 'desc-bottom-margin-mobile'
 		},
-		default: 20,
 	},
 	block_id: {
 		type: 'string',
@@ -448,14 +444,12 @@ const attributes = {
 		UAGCopyPaste: {
 			styleType: 'image-width-mobile'
 		},
-		default: 60,
 	},
 	imageWidthTablet: {
 		type: 'number',
 		UAGCopyPaste: {
 			styleType: 'image-width-tablet'
 		},
-		default: 60,
 	},
 	columns: {
 		type: 'number',
@@ -544,14 +538,12 @@ const attributes = {
 	},
 	rowGapMobile: {
 		type: 'number',
-		default: 10,
 		UAGCopyPaste: {
 			styleType: 'row-gap-mobile'
 		},
 	},
 	rowGapTablet: {
 		type: 'number',
-		default: 10,
 		UAGCopyPaste: {
 			styleType: 'row-gap-tablet'
 		},
@@ -565,14 +557,12 @@ const attributes = {
 	},
 	columnGapMobile: {
 		type: 'number',
-		default: 10,
 		UAGCopyPaste: {
 			styleType: 'column-gap-mobile'
 		},
 	},
 	columnGapTablet: {
 		type: 'number',
-		default: 10,
 		UAGCopyPaste: {
 			styleType: 'column-gap-tablet'
 		},

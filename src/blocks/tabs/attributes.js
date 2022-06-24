@@ -651,7 +651,7 @@ const attributes = {
 	},
 	iconSize: {
 		type: 'number',
-		default: 12,
+		default: 16,
 		UAGCopyPaste: {
 			styleType: 'icon-size'
 		},
