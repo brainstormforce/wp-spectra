@@ -11,7 +11,7 @@
 UAGB_Block_JS::blocks_post_gfont( $attr );
 
 $pagination_font_size_fallback = UAGB_Block_Helper::get_fallback_number( $attr['paginationFontSize'], 'paginationFontSize', $attr['blockName'] );
-$loader_size_fallback = UAGB_Block_Helper::get_fallback_number( $attr['loaderSize'], 'loaderSize', $attr['blockName'] );
+$loader_size_fallback          = UAGB_Block_Helper::get_fallback_number( $attr['loaderSize'], 'loaderSize', $attr['blockName'] );
 
 $selectors = UAGB_Block_Helper::get_post_selectors( $attr );
 

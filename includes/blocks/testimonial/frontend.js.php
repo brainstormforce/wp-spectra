@@ -9,9 +9,9 @@
 
 $block_name = 'testimonial';
 
-$arrow_size_fallback = UAGB_Block_Helper::get_fallback_number( $attr['arrowSize'], 'arrowSize', $block_name );
+$arrow_size_fallback        = UAGB_Block_Helper::get_fallback_number( $attr['arrowSize'], 'arrowSize', $block_name );
 $arrow_border_size_fallback = UAGB_Block_Helper::get_fallback_number( $attr['arrowBorderSize'], 'arrowBorderSize', $block_name );
-$columns_fallback = UAGB_Block_Helper::get_fallback_number( $attr['columns'], 'columns', $block_name );
+$columns_fallback           = UAGB_Block_Helper::get_fallback_number( $attr['columns'], 'columns', $block_name );
 
 $dots   = ( 'dots' === $attr['arrowDots'] || 'arrowDots' === $attr['arrowDots'] ) ? true : false;
 $arrows = ( 'arrows' === $attr['arrowDots'] || 'arrowDots' === $attr['arrowDots'] ) ? true : false;
