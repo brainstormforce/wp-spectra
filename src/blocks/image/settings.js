@@ -1136,7 +1136,7 @@ export default function Settings( props ) {
 	const captionStylePanel =  (
 		<UAGAdvancedPanelBody
 			title={ layout === 'overlay' ?  __( 'Description', 'ultimate-addons-for-gutenberg' ) : __( 'Caption', 'ultimate-addons-for-gutenberg' ) }
-			initialOpen={ true }
+			initialOpen={ false }
 		>
 			{
 				'default' === layout && (
@@ -1811,11 +1811,11 @@ export default function Settings( props ) {
 								<>
 									{overlayStylePanel}
 									{headingStylePanel}
-
+									{captionStylePanel}
 								</>
 							)
 						}
-						{ enableCaption && captionStylePanel }
+						{ enableCaption && layout !== 'overlay' && captionStylePanel }
 						{ 'none' !== seperatorStyle && layout === 'overlay' && seperatorStylePanel}
 					</InspectorTab>
 					<InspectorTab
