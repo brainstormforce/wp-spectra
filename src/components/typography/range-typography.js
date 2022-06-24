@@ -12,7 +12,7 @@ import { useSelect } from '@wordpress/data';
  */
 export default function RangeTypographyControl( props ) {
 	const deviceType = useSelect( ( select ) => {
-		return select( 'core/edit-post' ).__experimentalGetPreviewDeviceType();
+		return select( 'core/edit-post' )?.__experimentalGetPreviewDeviceType();
 	}, [] );
 
 	const output = {};
