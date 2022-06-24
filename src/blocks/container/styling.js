@@ -274,11 +274,23 @@ function styling( props ) {
 	selectors['.wp-block'] = containerCSS;
 	selectors['.wp-block:hover'] = {
 		'border-color': containerBorderHColor,
-		'box-shadow':
-		generateCSSUnit( boxShadowHOffsetHover, 'px' ) + ' ' + generateCSSUnit( boxShadowVOffsetHover, 'px' ) +	' ' +
-		generateCSSUnit( boxShadowBlurHover, 'px' ) + ' ' +	generateCSSUnit( boxShadowSpreadHover, 'px' ) + ' ' +
-		boxShadowColorHover + ' ' +	boxShadowPositionCSSHover,
+		'box-shadow': '',
 	};
+
+	boxShadowBlurHover = isNaN( boxShadowBlurHover ) ? '' : boxShadowBlurHover;
+	boxShadowColorHover = boxShadowColorHover ? boxShadowColorHover : '';
+
+	console.log( boxShadowBlurHover );
+
+	if( '' !== boxShadowColorHover || '' !== boxShadowBlurHover ) {
+
+		const boxShadowBlurHoverCSSUnit = ( '' === boxShadowBlurHover ) ? '' : generateCSSUnit( boxShadowBlurHover, 'px' );
+		console.log( 'CSS Unit: ', boxShadowBlurHoverCSSUnit )
+
+		selectors['.wp-block:hover']['box-shadow'] = generateCSSUnit( boxShadowHOffsetHover, 'px' ) + ' ' + generateCSSUnit( boxShadowVOffsetHover, 'px' ) +	' ' +
+													boxShadowBlurHoverCSSUnit + ' ' +	generateCSSUnit( boxShadowSpreadHover, 'px' ) + ' ' +
+													boxShadowColorHover + ' ' +	boxShadowPositionCSSHover;
+	}
 
 	selectors[' > .wp-block-uagb-container > .uagb-container-inner-blocks-wrap > .block-editor-inner-blocks > .block-editor-block-list__layout'] = {
 		'min-height' : generateCSSUnit( minHeightDesktop, minHeightType ),
