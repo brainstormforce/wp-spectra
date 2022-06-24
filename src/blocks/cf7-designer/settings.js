@@ -871,7 +871,7 @@ const Settings = ( props ) => {
 				<ResponsiveBorder
 					disabledBorderTitle= {false}
 					setAttributes={ setAttributes }
-					prefix={'field'}
+					prefix={'input'}
 					attributes={ attributes }
 					deviceType={deviceType}
 					disableBottomSeparator={ true }
@@ -1216,7 +1216,7 @@ const Settings = ( props ) => {
 			/>
 			<ResponsiveBorder
 				setAttributes={ setAttributes }
-				prefix={'button'}
+				prefix={'btn'}
 				attributes={ attributes }
 				deviceType={deviceType}
 				disableBottomSeparator={ true }

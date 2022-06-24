@@ -140,6 +140,8 @@ return array_merge(
 		'secondCtaIcon'                   => '',
 		'secondCtaIconPosition'           => 'right',
 		'secondCtaIconSpace'              => 10,
+		'secondCtaIconSpaceTablet'        => '',
+		'secondCtaIconSpaceMobile'        => '',
 		'stackBtn'                        => 'none',
 		'gapBtn'                          => 15,
 		'gapBtnTablet'                    => 15,

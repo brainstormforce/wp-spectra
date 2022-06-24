@@ -150,13 +150,13 @@ validationMsgLetterSpacingMobile,
 validationMsgLetterSpacingType,
 	} = props.attributes;
 
-	const fieldBorderCSS = generateBorderCSS( props.attributes, 'field' );
-	const fieldBorderCSSTablet = generateBorderCSS( props.attributes,'field', 'tablet' );
-	const fieldBorderCSSMobile = generateBorderCSS( props.attributes,'field', 'mobile' );
+	const fieldBorderCSS = generateBorderCSS( props.attributes, 'input' );
+	const fieldBorderCSSTablet = generateBorderCSS( props.attributes,'input', 'tablet' );
+	const fieldBorderCSSMobile = generateBorderCSS( props.attributes,'input', 'mobile' );
 
-	const buttonBorderCSS = generateBorderCSS( props.attributes, 'button' );
-	const buttonBorderCSSTablet = generateBorderCSS( props.attributes, 'button', 'tablet' );
-	const buttonBorderCSSMobile = generateBorderCSS( props.attributes, 'button', 'mobile' );
+	const buttonBorderCSS = generateBorderCSS( props.attributes, 'btn' );
+	const buttonBorderCSSTablet = generateBorderCSS( props.attributes, 'btn', 'tablet' );
+	const buttonBorderCSSMobile = generateBorderCSS( props.attributes, 'btn', 'mobile' );
 
 	const selectors = {
 		' .wpcf7 .wpcf7-form': {

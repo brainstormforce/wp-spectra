@@ -177,9 +177,9 @@ function CtaStyle( props ) {
 		secondCtaLetterSpacingType,
 	} = props.attributes;
 
-	const ctaBorderCSS = generateBorderCSS( props.attributes, 'cta' );
-	const ctaBorderCSSTablet = generateBorderCSS( props.attributes, 'cta', 'tablet' );
-	const ctaBorderCSSMobile = generateBorderCSS( props.attributes, 'cta', 'mobile' );
+	const ctaBorderCSS = generateBorderCSS( props.attributes, 'btn' );
+	const ctaBorderCSSTablet = generateBorderCSS( props.attributes, 'btn', 'tablet' );
+	const ctaBorderCSSMobile = generateBorderCSS( props.attributes, 'btn', 'mobile' );
 
 	const secondCtaBorderCSS = generateBorderCSS( props.attributes, 'secondCta' )
 	const secondCtaBorderCSSTablet = generateBorderCSS( props.attributes, 'secondCta', 'tablet' )
