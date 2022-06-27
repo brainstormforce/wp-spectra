@@ -41,7 +41,7 @@ const Render = ( props ) => {
 				className,
 				`uagb-editor-preview-mode-${ deviceType.toLowerCase() }`,
 				`uagb-block-${ props.clientId.substr( 0, 8 ) }`,
-				...PositionClasses( attributes )
+				...PositionClasses( attributes, props.name )
 			) }
 		>
 			<InnerBlocks

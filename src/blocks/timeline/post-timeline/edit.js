@@ -5,6 +5,8 @@ import React, { useEffect, lazy, Suspense } from 'react';
 import lazyLoader from '@Controls/lazy-loader';
 import addBlockEditorDynamicStyles from '@Controls/addBlockEditorDynamicStyles';
 import { useDeviceType } from '@Controls/getPreviewType';
+import { getFallbackNumber } from '@Controls/getAttributeFallback';
+
 // Import css for timeline.
 import contentTimelineStyle from '.././inline-styles';
 const Settings = lazy( () =>
@@ -59,10 +61,10 @@ const PostTimelineComponent = ( props ) => {
 		}
 
 		if ( contentPadding ){
-			if ( ! ctaBottomSpacing ) {
+			if ( isNaN( ctaBottomSpacing ) ) {
 				props.setAttributes( { ctaBottomSpacing: contentPadding } );
 			}
-			if ( ! headTopSpacing ) {
+			if ( isNaN( headTopSpacing ) ) {
 				props.setAttributes( { headTopSpacing: contentPadding } );
 			}
 		}
@@ -121,6 +123,8 @@ export default withSelect( ( select, props ) => {
 		taxonomyType,
 		excludeCurrentPost,
 	} = props.attributes;
+
+	const postsToShowFallback = getFallbackNumber( postsToShow, 'postsToShow', 'post-timeline' );
 	const { getEntityRecords } = select( 'core' );
 
 	const allTaxonomy = uagb_blocks_info.all_taxonomy;
@@ -147,7 +151,7 @@ export default withSelect( ( select, props ) => {
 	const latestPostsQuery = {
 		order,
 		orderby: orderBy,
-		per_page: postsToShow,
+		per_page: postsToShowFallback,
 	};
 
 	if ( excludeCurrentPost ) {

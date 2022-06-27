@@ -69,4 +69,13 @@ return array(
 	'descDecoration'           => '',
 	'titleFontStyle'           => '',
 	'descFontStyle'            => '',
+	// letter spacing.
+	'titleLetterSpacing'       => '',
+	'titleLetterSpacingTablet' => '',
+	'titleLetterSpacingMobile' => '',
+	'titleLetterSpacingType'   => 'px',
+	'descLetterSpacing'        => '',
+	'descLetterSpacingTablet'  => '',
+	'descLetterSpacingMobile'  => '',
+	'descLetterSpacingType'    => 'px',
 );

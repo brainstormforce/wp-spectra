@@ -13,8 +13,6 @@ import Range from '@Components/range/Range.js';
 import ResponsiveSlider from '@Components/responsive-slider';
 import MultiButtonsControl from '@Components/multi-buttons-control';
 import {
-	AlignmentToolbar,
-	BlockControls,
 	InspectorControls,
 } from '@wordpress/block-editor';
 
@@ -106,6 +104,15 @@ const Settings = ( props ) => {
 		descDecoration,
 		titleFontStyle,
 		descFontStyle,
+		// letter spacing
+		titleLetterSpacing,
+		titleLetterSpacingTablet,
+		titleLetterSpacingMobile,
+		titleLetterSpacingType,
+		descLetterSpacing,
+		descLetterSpacingTablet,
+		descLetterSpacingMobile,
+		descLetterSpacingType,
 	} = attributes;
 	let loadTitleGoogleFonts;
 	let loadDescriptionGoogleFonts;
@@ -149,18 +156,6 @@ const Settings = ( props ) => {
 		setAttributes( { cookies: value } );
 	};
 
-	const blockControls = () => {
-		return (
-			<BlockControls key="controls">
-				<AlignmentToolbar
-					value={ noticeAlignment }
-					onChange={ ( value ) =>
-						setAttributes( { noticeAlignment: value } )
-					}
-				/>
-			</BlockControls>
-		);
-	};
 
 	// Notice dismiss options
 	const noticeDismissOptions = [
@@ -254,19 +249,6 @@ const Settings = ( props ) => {
 				/>
 
 				{ 'simple' === layout && (
-					// <Range
-					// 	label={ __(
-					// 		'Border Width',
-					// 		'ultimate-addons-for-gutenberg'
-					// 	) }
-					// 	value={ highlightWidth }
-					// 	onChange={ ( value ) =>
-					// 		setAttributes( { highlightWidth: value } )
-					// 	}
-					// 	min={ 0 }
-					// 	max={ 50 }
-					// 	displayUnit={ false }
-					// />
 					<ResponsiveSlider
 						label={ __(
 							'Border Width',
@@ -519,6 +501,22 @@ const Settings = ( props ) => {
 						value: titleLineHeightTablet,
 						label: 'titleLineHeightTablet',
 					} }
+					letterSpacing={ {
+						value: titleLetterSpacing,
+						label: 'titleLetterSpacing',
+					} }
+					letterSpacingTablet={ {
+						value: titleLetterSpacingTablet,
+						label: 'titleLetterSpacingTablet',
+					} }
+					letterSpacingMobile={ {
+						value: titleLetterSpacingMobile,
+						label: 'titleLetterSpacingMobile',
+					} }
+					letterSpacingType={ {
+						value: titleLetterSpacingType,
+						label: 'titleLetterSpacingType',
+					} }
 				/>
 				<SpacingControl
 					{ ...props }
@@ -680,6 +678,22 @@ const Settings = ( props ) => {
 						value: descLineHeightTablet,
 						label: 'descLineHeightTablet',
 					} }
+					letterSpacing={ {
+						value: descLetterSpacing,
+						label: 'descLetterSpacing',
+					} }
+					letterSpacingTablet={ {
+						value: descLetterSpacingTablet,
+						label: 'descLetterSpacingTablet',
+					} }
+					letterSpacingMobile={ {
+						value: descLetterSpacingMobile,
+						label: 'descLetterSpacingMobile',
+					} }
+					letterSpacingType={ {
+						value: descLetterSpacingType,
+						label: 'descLetterSpacingType',
+					} }
 				/>
 				<SpacingControl
 					{ ...props }
@@ -757,7 +771,6 @@ const Settings = ( props ) => {
 
 	return (
 		<>
-			{ blockControls() }
 			<InspectorControls>
 				<InspectorTabs tabs={ [ 'general', 'style', 'advance' ] }>
 					<InspectorTab { ...UAGTabs.general }>
