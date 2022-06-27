@@ -730,7 +730,7 @@ const Settings = ( props ) => {
 					] }
 					showIcons={ false }
 				/>
-				{ stack !== 'desktop' &&  (
+				{ stack !== 'desktop' && ctaType !== 'all' && ctaType !== 'none' && (
 				<MultiButtonsControl
 					setAttributes={ setAttributes }
 					label={ __(
