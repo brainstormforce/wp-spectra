@@ -607,7 +607,6 @@ const Settings = ( props ) => {
 					prefix={'secondCta'}
 					attributes={ attributes }
 					deviceType={deviceType}
-					disableBottomSeparator={ true }
 					disabledBorderTitle= {false}
 				/>
 				<SpacingControl
@@ -731,7 +730,7 @@ const Settings = ( props ) => {
 					] }
 					showIcons={ false }
 				/>
-				{ stack !== 'desktop' &&  (
+				{ stack !== 'desktop' && ctaType !== 'all' && ctaType !== 'none' && (
 				<MultiButtonsControl
 					setAttributes={ setAttributes }
 					label={ __(
@@ -1001,7 +1000,6 @@ const Settings = ( props ) => {
 							prefix={'btn'}
 							attributes={ attributes }
 							deviceType={deviceType}
-							disableBottomSeparator={ true }
 							disabledBorderTitle= {false}
 						/>
 						<SpacingControl

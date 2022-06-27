@@ -4,9 +4,13 @@
 
 import generateCSS from '@Controls/generateCSS';
 import generateCSSUnit from '@Controls/generateCSSUnit';
+import { getFallbackNumber } from '@Controls/getAttributeFallback';
 import generateBorderCSS from '@Controls/generateBorderCSS';
 
 function CtaStyle( props ) {
+
+	const blockName = props.name.replace( 'uagb/', '' );
+
 	const {
 		stack,
 		textAlign,
@@ -177,9 +181,16 @@ function CtaStyle( props ) {
 		secondCtaLetterSpacingType,
 	} = props.attributes;
 
-	const ctaBorderCSS = generateBorderCSS( props.attributes, 'cta' );
-	const ctaBorderCSSTablet = generateBorderCSS( props.attributes, 'cta', 'tablet' );
-	const ctaBorderCSSMobile = generateBorderCSS( props.attributes, 'cta', 'mobile' );
+	const ctaBorderCSS = generateBorderCSS( props.attributes, 'btn' );
+	const ctaBorderCSSTablet = generateBorderCSS( props.attributes, 'btn', 'tablet' );
+	const ctaBorderCSSMobile = generateBorderCSS( props.attributes, 'btn', 'mobile' );
+	const titleSpaceFallback = getFallbackNumber( titleSpace, 'titleSpace', blockName );
+	const descSpaceFallback = getFallbackNumber( descSpace, 'descSpace', blockName );
+	const secondCtaIconSpaceFallback = getFallbackNumber( secondCtaIconSpace, 'secondCtaIconSpace', blockName );
+	const ctaIconSpaceFallback = getFallbackNumber( ctaIconSpace, 'ctaIconSpace', blockName );
+	const contentWidthFallback = getFallbackNumber( contentWidth, 'contentWidth', blockName );
+	const gapBtnFallback = getFallbackNumber( gapBtn, 'gapBtn', blockName );
+	const buttonRightSpaceFallback = getFallbackNumber( buttonRightSpace, 'buttonRightSpace', blockName );
 
 	const secondCtaBorderCSS = generateBorderCSS( props.attributes, 'secondCta' )
 	const secondCtaBorderCSSTablet = generateBorderCSS( props.attributes, 'secondCta', 'tablet' )
@@ -217,7 +228,7 @@ function CtaStyle( props ) {
 			),
 			'letter-spacing': generateCSSUnit( titleLetterSpacing, titleLetterSpacingType ),
 			'color': titleColor,
-			'margin-bottom': generateCSSUnit( titleSpace, titleSpaceType ),
+			'margin-bottom': generateCSSUnit( titleSpaceFallback, titleSpaceType ),
 		},
 
 		// Description Style
@@ -234,7 +245,7 @@ function CtaStyle( props ) {
 			),
 			'letter-spacing': generateCSSUnit( descLetterSpacing, descLetterSpacingType ),
 			'color': descColor,
-			'margin-bottom': generateCSSUnit( descSpace, descSpaceType ),
+			'margin-bottom': generateCSSUnit( descSpaceFallback, descSpaceType ),
 		},
 	};
 
@@ -371,6 +382,7 @@ function CtaStyle( props ) {
 				tabletCTAPaddingUnit
 			),
 			'letter-spacing': generateCSSUnit( ctaLetterSpacingTablet, ctaLetterSpacingType ),
+			...ctaBorderCSSTablet
 		},
 		'.uagb-cta__outer-wrap a.uagb-cta__button-link-wrapper svg': {
 			'font-size': generateCSSUnit( ctaFontSizeTablet, ctaFontSizeType ),
@@ -464,7 +476,7 @@ function CtaStyle( props ) {
 			'font-size': generateCSSUnit( ctaFontSizeMobile, ctaFontSizeType ),
 			'letter-spacing': generateCSSUnit( ctaLetterSpacingMobile, ctaLetterSpacingType ),
 		},
-		' .uagb-cta__button-wrapper a.uagb-cta-typeof-button': {
+		'.uagb-cta__outer-wrap a.uagb-cta__button-link-wrapper': {
 			'font-size': generateCSSUnit( ctaFontSizeMobile, ctaFontSizeType ),
 			'padding-top': generateCSSUnit(
 				ctaTopPaddingMobile,
@@ -483,6 +495,7 @@ function CtaStyle( props ) {
 				mobileCTAPaddingUnit
 			),
 			'letter-spacing': generateCSSUnit( ctaLetterSpacingMobile, ctaLetterSpacingType ),
+			...ctaBorderCSSMobile
 		},
 		' .uagb-cta__button-wrapper .uagb-cta-with-svg': {
 			'font-size': generateCSSUnit( ctaFontSizeMobile, ctaFontSizeType ),
@@ -527,9 +540,18 @@ function CtaStyle( props ) {
 		},
 	};
 
+	if ( ctaType === 'text' ) {
+		selectors['.uagb-cta__outer-wrap a.uagb-cta__button-link-wrapper']        = {
+			'color' : ctaBtnLinkColor,
+		};
+		selectors['.uagb-cta__outer-wrap a.uagb-cta__button-link-wrapper:hover '] = {
+			'color' : ctaLinkHoverColor,
+		};
+	}
+
 	if( secondCtaIconPosition === 'before' ){
 		selectors[ '.uagb-cta__outer-wrap a.uagb-cta-second__button > svg' ] = {
-			'margin-right': generateCSSUnit( secondCtaIconSpace, 'px' ),
+			'margin-right': generateCSSUnit( secondCtaIconSpaceFallback, 'px' ),
 		};
 		tabletSelectors[ '.uagb-cta__outer-wrap a.uagb-cta-second__button > svg' ] = {
 			'margin-right': generateCSSUnit( secondCtaIconSpaceTablet, 'px' ),
@@ -539,7 +561,7 @@ function CtaStyle( props ) {
 		};
 	}else{
 		selectors[ '.uagb-cta__outer-wrap a.uagb-cta-second__button > svg' ] = {
-			'margin-left': generateCSSUnit( secondCtaIconSpace, 'px' ),
+			'margin-left': generateCSSUnit( secondCtaIconSpaceFallback, 'px' ),
 		};
 		tabletSelectors[ '.uagb-cta__outer-wrap a.uagb-cta-second__button > svg' ] = {
 			'margin-left': generateCSSUnit( secondCtaIconSpaceTablet, 'px' ),
@@ -551,7 +573,7 @@ function CtaStyle( props ) {
 
 	if( ctaIconPosition === 'before' ){
 		selectors[ '.uagb-cta__outer-wrap a.uagb-cta__button-link-wrapper > svg' ] = {
-			'margin-right': generateCSSUnit( ctaIconSpace, 'px' ),
+			'margin-right': generateCSSUnit( ctaIconSpaceFallback, 'px' ),
 		};
 		tabletSelectors[ '.uagb-cta__outer-wrap a.uagb-cta__button-link-wrapper > svg' ] = {
 			'margin-right': generateCSSUnit( ctaIconSpaceTablet, 'px' ),
@@ -561,7 +583,7 @@ function CtaStyle( props ) {
 		};
 	}else{
 		selectors[ '.uagb-cta__outer-wrap a.uagb-cta__button-link-wrapper > svg' ] = {
-			'margin-left': generateCSSUnit( ctaIconSpace, 'px' ),
+			'margin-left': generateCSSUnit( ctaIconSpaceFallback, 'px' ),
 		};
 		tabletSelectors[ '.uagb-cta__outer-wrap a.uagb-cta__button-link-wrapper > svg' ] = {
 			'margin-left': generateCSSUnit( ctaIconSpaceTablet, 'px' ),
@@ -573,7 +595,7 @@ function CtaStyle( props ) {
 
 	if ( ctaPosition === 'right' && ( ctaType === 'text' || ctaType === 'button' ) ) {
 		selectors[ ' .uagb-cta__wrap' ] = {
-			'width': generateCSSUnit( contentWidth, contentWidthType ),
+			'width': generateCSSUnit( contentWidthFallback, contentWidthType ),
 		};
 		selectors[ '.uagb-cta__outer-wrap > a' ] = {
 			'align-self': 'top' === buttonAlign ? 'flex-start' : 'center',
@@ -608,7 +630,7 @@ function CtaStyle( props ) {
 	if ( 'desktop' === stackBtn ) {
 		selectors[ ' .uagb-cta__buttons' ] = {
 			'flex-direction': 'column',
-			'row-gap': generateCSSUnit( gapBtn, 'px' )
+			'row-gap': generateCSSUnit( gapBtnFallback, 'px' )
 		};
 		tabletSelectors[ ' .uagb-cta__buttons' ] = {
 			'flex-direction': 'column',
@@ -620,7 +642,7 @@ function CtaStyle( props ) {
 		};
 	} else if ( 'tablet' === stackBtn ) {
 		selectors[ ' .uagb-cta__buttons' ] = {
-			'column-gap': generateCSSUnit( gapBtn , 'px' ),
+			'column-gap': generateCSSUnit( gapBtnFallback, 'px' ),
 			'align-items': 'center'
 		};
 		tabletSelectors[' .uagb-cta__buttons'] = {
@@ -634,7 +656,7 @@ function CtaStyle( props ) {
 
 	} else if ( 'mobile' === stackBtn ) {
 		selectors[ ' .uagb-cta__buttons' ] = {
-			'column-gap': generateCSSUnit( gapBtn , 'px' ),
+			'column-gap': generateCSSUnit( gapBtnFallback, 'px' ),
 			'align-items': 'center'
 		};
 		tabletSelectors[ ' .uagb-cta__buttons' ] = {
@@ -647,7 +669,7 @@ function CtaStyle( props ) {
 		};
 	} else if ( 'none' === stackBtn ) {
 		selectors[ ' .uagb-cta__buttons' ] = {
-			'column-gap': generateCSSUnit( gapBtn , 'px' ),
+			'column-gap': generateCSSUnit( gapBtnFallback, 'px' ),
 			'align-items': 'center',
 		};
 		tabletSelectors[ ' .uagb-cta__buttons' ] = {
@@ -736,7 +758,7 @@ function CtaStyle( props ) {
 		};
 		selectors[ ' .uagb-cta__buttons' ] = {
 			'column-gap': generateCSSUnit( gapBtn , 'px' ),
-			'margin-left': generateCSSUnit( buttonRightSpace, buttonRightSpaceType )
+			'margin-left': generateCSSUnit( buttonRightSpaceFallback, buttonRightSpaceType ),
 		};
 		tabletSelectors[ ' .uagb-cta__buttons' ] = {
 			'column-gap': generateCSSUnit( gapBtnTablet , 'px' ),
@@ -747,8 +769,6 @@ function CtaStyle( props ) {
 			'margin-left': generateCSSUnit( buttonRightSpaceMobile, buttonRightSpaceType )
 		};
 	}
-	tabletSelectors['.uagb-cta__outer-wrap a.uagb-cta__button-link-wrapper'] = ctaBorderCSSTablet;
-	mobileSelectors['.uagb-cta__outer-wrap a.uagb-cta__button-link-wrapper'] = ctaBorderCSSMobile;
 
 	const id = `.editor-styles-wrapper .uagb-block-${ props.clientId.substr( 0, 8 ) }`;
 

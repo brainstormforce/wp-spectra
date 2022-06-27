@@ -53,8 +53,8 @@ if ( ! class_exists( 'UAGB_CF7_Styler' ) ) {
 			if ( ! function_exists( 'register_block_type' ) ) {
 				return;
 			}
-			$field_border_attribute = UAGB_Block_Helper::uag_generate_php_border_attribute( 'field' );
-			$btn_border_attribute   = UAGB_Block_Helper::uag_generate_php_border_attribute( 'button' );
+			$field_border_attribute = UAGB_Block_Helper::uag_generate_php_border_attribute( 'input' );
+			$btn_border_attribute   = UAGB_Block_Helper::uag_generate_php_border_attribute( 'btn' );
 			register_block_type(
 				'uagb/cf7-styler',
 				array(
@@ -107,26 +107,6 @@ if ( ! class_exists( 'UAGB_CF7_Styler' ) ) {
 								'type'    => 'string',
 								'default' => '#333',
 							),
-							'fieldBorderStyle'             => array(
-								'type'    => 'string',
-								'default' => 'solid',
-							),
-							'fieldBorderWidth'             => array(
-								'type'    => 'number',
-								'default' => 1,
-							),
-							'fieldBorderRadius'            => array(
-								'type'    => 'number',
-								'default' => 0,
-							),
-							'fieldBorderColor'             => array(
-								'type'    => 'string',
-								'default' => '#eeeeee',
-							),
-							'fieldBorderFocusColor'        => array(
-								'type'    => 'string',
-								'default' => '',
-							),
 							'buttonAlignment'              => array(
 								'type'    => 'string',
 								'default' => 'left',
@@ -147,22 +127,6 @@ if ( ! class_exists( 'UAGB_CF7_Styler' ) ) {
 								'type'    => 'number',
 								'default' => 25,
 							),
-							'buttonBorderStyle'            => array(
-								'type'    => 'string',
-								'default' => 'solid',
-							),
-							'buttonBorderWidth'            => array(
-								'type'    => 'number',
-								'default' => 1,
-							),
-							'buttonBorderRadius'           => array(
-								'type'    => 'number',
-								'default' => 0,
-							),
-							'buttonBorderColor'            => array(
-								'type'    => 'string',
-								'default' => '#333',
-							),
 							'buttonTextColor'              => array(
 								'type'    => 'string',
 								'default' => '#333',
@@ -170,10 +134,6 @@ if ( ! class_exists( 'UAGB_CF7_Styler' ) ) {
 							'buttonBgColor'                => array(
 								'type'    => 'string',
 								'default' => 'transparent',
-							),
-							'buttonBorderHoverColor'       => array(
-								'type'    => 'string',
-								'default' => '#333',
 							),
 							'buttonTextHoverColor'         => array(
 								'type'    => 'string',

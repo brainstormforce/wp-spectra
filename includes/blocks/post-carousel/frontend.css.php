@@ -10,13 +10,15 @@
 // Adds Fonts.
 UAGB_Block_JS::blocks_post_gfont( $attr );
 
+$arrow_size_fallback = UAGB_Block_Helper::get_fallback_number( $attr['arrowSize'], 'arrowSize', $attr['blockName'] );
+
 $selectors = UAGB_Block_Helper::get_post_selectors( $attr );
 
 $m_selectors = UAGB_Block_Helper::get_post_mobile_selectors( $attr );
 
 $t_selectors = UAGB_Block_Helper::get_post_tablet_selectors( $attr );
 
-$arrow_size                 = UAGB_Helper::get_css_value( $attr['arrowSize'], 'px' );
+$arrow_size                 = UAGB_Helper::get_css_value( $arrow_size_fallback, 'px' );
 $selectors[' .slick-arrow'] = array(
 	'border-color' => $attr['arrowColor'],
 );
