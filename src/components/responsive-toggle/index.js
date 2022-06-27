@@ -14,10 +14,12 @@ const { label, responsive } = props;
 	const [ displayResponsive, toggleResponsive ] = useState( false );
 
 	const customSetPreviewDeviceType = useCallback( device => {
-		const {
-			__experimentalSetPreviewDeviceType: setPreviewDeviceType,
-		} = dispatch( 'core/edit-post' )
-	setPreviewDeviceType( device );
+		if( null !== dispatch( 'core/edit-post' ) ){
+			const {
+				__experimentalSetPreviewDeviceType: setPreviewDeviceType,
+			} = dispatch( 'core/edit-post' )
+			setPreviewDeviceType( device );
+		}
 	toggleResponsive( displayResponsive );
 }, [] )
 
