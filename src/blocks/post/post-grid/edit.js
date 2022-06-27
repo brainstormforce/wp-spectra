@@ -9,6 +9,7 @@ import { __ } from '@wordpress/i18n';
 import apiFetch from '@wordpress/api-fetch';
 import { useDeviceType } from '@Controls/getPreviewType';
 import addBlockEditorDynamicStyles from '@Controls/addBlockEditorDynamicStyles';
+import { getFallbackNumber } from '@Controls/getAttributeFallback';
 
 const Settings = lazy( () =>
 	import( /* webpackChunkName: "chunks/post-grid/settings" */ './settings' )
@@ -217,6 +218,7 @@ const PostGridComponent = ( props ) => {
 export default compose(
 	withSelect( ( select, props ) => {
 		const {
+			blockName,
 			categories,
 			postsToShow,
 			order,
@@ -273,8 +275,8 @@ export default compose(
 		const latestPostsQuery = {
 			order,
 			orderby: orderBy,
-			per_page: postsToShow,
-			offset: postsOffset
+			per_page: getFallbackNumber( postsToShow, 'postsToShow', blockName ),
+			offset: getFallbackNumber( postsOffset, 'postsOffset', blockName ),
 		};
 		if ( excludeCurrentPost ) {
 			latestPostsQuery.exclude = select(

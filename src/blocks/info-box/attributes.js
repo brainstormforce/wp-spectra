@@ -739,14 +739,12 @@
 	},
 	imageWidthMobile: {
 		type: 'number',
-		default: '',
 		UAGCopyPaste: {
 			styleType: 'image-width-mobile'
 		}
 	},
 	imageWidthTablet: {
 		type: 'number',
-		default: '',
 		UAGCopyPaste: {
 			styleType: 'image-width-tablet'
 		}

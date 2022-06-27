@@ -40,6 +40,7 @@ const Render = ( props ) => {
 		latestPosts,
 		categoriesList,
 		deviceType,
+		name,
 	} = props.parentProps;
 
 	const renderEditMode = () => {
@@ -62,7 +63,7 @@ const Render = ( props ) => {
 		const onReset = () => {
 			const { block, replaceInnerBlocks } = props.parentProps;
 			const newBlocks = [];
-			DEFAULT_POST_LIST_LAYOUT.map( ( [ name, attribute ] ) => {
+			DEFAULT_POST_LIST_LAYOUT.map( ( [ name, attribute ] ) => { // eslint-disable-line no-shadow
 				newBlocks.push( createBlock( name, attribute ) );
 				return true;
 			} );
@@ -139,6 +140,7 @@ const Render = ( props ) => {
 						block_id={ props.parentProps.clientId.substr( 0, 8 ) }
 						categoriesList={ categoriesList }
 						deviceType={ deviceType }
+						name={ name }
 					/>
 				</Suspense>
 			</Disabled>

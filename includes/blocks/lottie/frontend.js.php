@@ -7,8 +7,10 @@
  * @package uagb
  */
 
+$block_name    = 'lottie';
 $base_selector = 'uagb-block-';
 $selector      = $base_selector . $id;
+$attr['speed'] = UAGB_Block_Helper::get_fallback_number( $attr['speed'], 'speed', $block_name );
 
 ob_start();
 ?>

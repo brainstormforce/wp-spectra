@@ -7,6 +7,15 @@
  * @package uagb
  */
 
+$block_name = 'container';
+
+$inner_content_custom_width_desktop_fallback = UAGB_Block_Helper::get_fallback_number( $attr['innerContentCustomWidthDesktop'], 'innerContentCustomWidthDesktop', $block_name );
+$inner_content_custom_width_tablet_fallback  = is_numeric( $attr['innerContentCustomWidthTablet'] ) ? $attr['innerContentCustomWidthTablet'] : $inner_content_custom_width_desktop_fallback;
+$inner_content_custom_width_mobile_fallback  = is_numeric( $attr['innerContentCustomWidthMobile'] ) ? $attr['innerContentCustomWidthMobile'] : $inner_content_custom_width_tablet_fallback;
+$width_desktop_fallback                      = UAGB_Block_Helper::get_fallback_number( $attr['widthDesktop'], 'widthDesktop', $block_name );
+$row_gap_desktop_fallback                    = UAGB_Block_Helper::get_fallback_number( $attr['rowGapDesktop'], 'rowGapDesktop', $block_name );
+$column_gap_desktop_fallback                 = UAGB_Block_Helper::get_fallback_number( $attr['columnGapDesktop'], 'columnGapDesktop', $block_name );
+
 $box_shadow_position_css = $attr['boxShadowPosition'];
 
 if ( 'outset' === $attr['boxShadowPosition'] ) {
@@ -54,7 +63,7 @@ $right_margin_desktop  = ! empty( $attr['rightMarginDesktop'] ) ? $attr['rightMa
 $top_margin_desktop    = ! empty( $attr['topMarginDesktop'] ) ? $attr['topMarginDesktop'] : 0;
 $bottom_margin_desktop = ! empty( $attr['bottomMarginDesktop'] ) ? $attr['bottomMarginDesktop'] : 0;
 
-$column_gap_desktop = ! empty( $attr['columnGapDesktop'] ) ? $attr['columnGapDesktop'] : 0;
+$column_gap_desktop = ! empty( $column_gap_desktop_fallback ) ? $column_gap_desktop_fallback : 0;
 
 // Tablet.
 $left_padding_tablet   = '' !== $attr['leftPaddingTablet'] ? $attr['leftPaddingTablet'] : $left_padding_desktop;
@@ -90,8 +99,8 @@ $container_css                  = array_merge(
 		'justify-content' => $attr['justifyContentDesktop'],
 		'flex-wrap'       => $attr['wrapDesktop'],
 		'align-content'   => $attr['alignContentDesktop'],
-		'row-gap'         => UAGB_Helper::get_css_value( $attr['rowGapDesktop'], $attr['rowGapType'] ),
-		'column-gap'      => UAGB_Helper::get_css_value( $attr['columnGapDesktop'], $attr['columnGapType'] ),
+		'row-gap'         => UAGB_Helper::get_css_value( $row_gap_desktop_fallback, $attr['rowGapType'] ),
+		'column-gap'      => UAGB_Helper::get_css_value( $column_gap_desktop_fallback, $attr['columnGapType'] ),
 		'box-shadow'      =>
 				UAGB_Helper::get_css_value( $attr['boxShadowHOffset'], 'px' ) .
 				' ' .
@@ -122,18 +131,6 @@ $selectors = array(
 	'.uagb-block-' . $id                                  => $container_css, // phpcs:ignore WordPress.WP.GlobalVariablesOverride.Prohibited
 	'.uagb-block-' . $id . ':hover'                       => array(
 		'border-color' => $attr['containerBorderHColor'],
-		'box-shadow'   =>
-			UAGB_Helper::get_css_value( $attr['boxShadowHOffsetHover'], 'px' ) .
-			' ' .
-			UAGB_Helper::get_css_value( $attr['boxShadowVOffsetHover'], 'px' ) .
-			' ' .
-			UAGB_Helper::get_css_value( $attr['boxShadowBlurHover'], 'px' ) .
-			' ' .
-			UAGB_Helper::get_css_value( $attr['boxShadowSpreadHover'], 'px' ) .
-			' ' .
-			$attr['boxShadowColorHover'] .
-			' ' .
-			$box_shadow_position_css_hover,
 	),
 	'.uagb-block-' . $id . '.wp-block-uagb-container'     => array(
 		'color' => $attr['textColor'],
@@ -145,8 +142,8 @@ $selectors = array(
 		'color' => $attr['linkHoverColor'],
 	),
 	'.uagb-is-root-container .uagb-block-' . $id          => array( // phpcs:ignore WordPress.WP.GlobalVariablesOverride.Prohibited
-		'max-width' => UAGB_Helper::get_css_value( $attr['widthDesktop'], $attr['widthType'] ),
-		'width'     => UAGB_Helper::get_css_value( $attr['widthDesktop'], $attr['widthType'] ),
+		'max-width' => UAGB_Helper::get_css_value( $width_desktop_fallback, $attr['widthType'] ),
+		'width'     => UAGB_Helper::get_css_value( $width_desktop_fallback, $attr['widthType'] ),
 	),
 	'.uagb-block-' . $id . ' .uagb-container__shape-top svg' => array(
 		'height' => UAGB_Helper::get_css_value( $attr['topHeight'], 'px' ),
@@ -165,6 +162,23 @@ $selectors = array(
 		'opacity' => $background_video_opacity_value,
 	),
 );
+
+// If hover blur or hover color are set, show the hover shadow.
+if ( ( ( '' !== $attr['boxShadowBlurHover'] ) && ( null !== $attr['boxShadowBlurHover'] ) ) || '' !== $attr['boxShadowColorHover'] ) {
+
+	$selectors[ '.uagb-block-' . $id . ':hover' ]['box-shadow'] = UAGB_Helper::get_css_value( $attr['boxShadowHOffsetHover'], 'px' ) .
+																' ' .
+																UAGB_Helper::get_css_value( $attr['boxShadowVOffsetHover'], 'px' ) .
+																' ' .
+																UAGB_Helper::get_css_value( $attr['boxShadowBlurHover'], 'px' ) .
+																' ' .
+																UAGB_Helper::get_css_value( $attr['boxShadowSpreadHover'], 'px' ) .
+																' ' .
+																$attr['boxShadowColorHover'] .
+																' ' .
+																$box_shadow_position_css_hover;
+
+}
 
 if ( '' !== $attr['topWidth'] ) {
 	$selectors[ '.uagb-block-' . $id . ' .uagb-container__shape-top svg' ]['width'] = 'calc( ' . $attr['topWidth'] . '% + 1.3px )';
@@ -285,8 +299,8 @@ if ( 'alignwide' === $attr['innerContentWidth'] ) {
 
 	if ( 'default' === $attr['contentWidth'] || 'alignfull' === $attr['contentWidth'] ) {
 		$selectors[ '.uagb-is-root-container.uagb-block-' . $id ] = array( // phpcs:ignore WordPress.WP.GlobalVariablesOverride.Prohibited
-		'--inner-content-custom-width-final' => 'min( 100vw, ' . $attr['innerContentCustomWidthDesktop'] . $attr['innerContentCustomWidthType'] . ')',
-		'--inner-content-custom-width'       => $attr['innerContentCustomWidthDesktop'] . $attr['innerContentCustomWidthType'],
+		'--inner-content-custom-width-final' => 'min( 100vw, ' . $inner_content_custom_width_desktop_fallback . $attr['innerContentCustomWidthType'] . ')',
+		'--inner-content-custom-width'       => $inner_content_custom_width_desktop_fallback . $attr['innerContentCustomWidthType'],
 		'--padding-left'                     => $left_padding_desktop . $attr['paddingType'],
 		'--padding-right'                    => $right_padding_desktop . $attr['paddingType'],
 		'--column-gap'                       => $column_gap_desktop . $attr['columnGapType'],
@@ -295,15 +309,15 @@ if ( 'alignwide' === $attr['innerContentWidth'] ) {
 		);
 
 		$t_selectors[ '.uagb-is-root-container.uagb-block-' . $id ] = array( // phpcs:ignore WordPress.WP.GlobalVariablesOverride.Prohibited
-		'--inner-content-custom-width-final' => 'min( 100vw, ' . $attr['innerContentCustomWidthTablet'] . $attr['innerContentCustomWidthType'] . ' )',
-		'--inner-content-custom-width'       => $attr['innerContentCustomWidthTablet'] . $attr['innerContentCustomWidthType'],
+		'--inner-content-custom-width-final' => 'min( 100vw, ' . $inner_content_custom_width_tablet_fallback . $attr['innerContentCustomWidthType'] . ' )',
+		'--inner-content-custom-width'       => $inner_content_custom_width_tablet_fallback . $attr['innerContentCustomWidthType'],
 		'--padding-left'                     => $left_padding_tablet . $attr['paddingTypeTablet'],
 		'--padding-right'                    => $right_padding_tablet . $attr['paddingTypeTablet'],
 		);
 
 		$m_selectors[ '.uagb-is-root-container.uagb-block-' . $id ] = array( // phpcs:ignore WordPress.WP.GlobalVariablesOverride.Prohibited
-		'--inner-content-custom-width-final' => 'min( 100vw, ' . $attr['innerContentCustomWidthMobile'] . $attr['innerContentCustomWidthType'] . ')',
-		'--inner-content-custom-width'       => $attr['innerContentCustomWidthMobile'] . $attr['innerContentCustomWidthType'],
+		'--inner-content-custom-width-final' => 'min( 100vw, ' . $inner_content_custom_width_mobile_fallback . $attr['innerContentCustomWidthType'] . ')',
+		'--inner-content-custom-width'       => $inner_content_custom_width_mobile_fallback . $attr['innerContentCustomWidthType'],
 		'--padding-left'                     => $left_padding_mobile . $attr['paddingTypeMobile'],
 		'--padding-right'                    => $right_padding_mobile . $attr['paddingTypeMobile'],
 		);
@@ -311,7 +325,7 @@ if ( 'alignwide' === $attr['innerContentWidth'] ) {
 }
 
 if ( 'default' === $attr['contentWidth'] ) {
-	$selectors[ '.uagb-block-' . $id ]['max-width']    = UAGB_Helper::get_css_value( $attr['widthDesktop'], $attr['widthType'] ) . ' !important';
+	$selectors[ '.uagb-block-' . $id ]['max-width']    = UAGB_Helper::get_css_value( $width_desktop_fallback, $attr['widthType'] ) . ' !important';
 	$selectors[ '.uagb-block-' . $id ]['margin-left']  = UAGB_Helper::get_css_value( $left_margin_desktop, $attr['marginType'] ) . ' !important';
 	$selectors[ '.uagb-block-' . $id ]['margin-right'] = UAGB_Helper::get_css_value( $right_margin_desktop, $attr['marginType'] ) . ' !important';
 
