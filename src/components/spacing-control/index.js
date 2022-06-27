@@ -520,7 +520,7 @@ const SpacingControl = ( props ) => {
 						</Button>
 						</Tooltip>
 						<ButtonGroup
-							className="uagb-spacing-control__units"
+							className="uagb-control__units"
 							aria-label={ __(
 								'Select Units',
 								'ultimate-addons-for-gutenberg'

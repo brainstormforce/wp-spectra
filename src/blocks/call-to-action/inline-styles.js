@@ -540,6 +540,15 @@ function CtaStyle( props ) {
 		},
 	};
 
+	if ( ctaType === 'text' ) {
+		selectors['.uagb-cta__outer-wrap a.uagb-cta__button-link-wrapper']        = {
+			'color' : ctaBtnLinkColor,
+		};
+		selectors['.uagb-cta__outer-wrap a.uagb-cta__button-link-wrapper:hover '] = {
+			'color' : ctaLinkHoverColor,
+		};
+	}
+
 	if( secondCtaIconPosition === 'before' ){
 		selectors[ '.uagb-cta__outer-wrap a.uagb-cta-second__button > svg' ] = {
 			'margin-right': generateCSSUnit( secondCtaIconSpaceFallback, 'px' ),
