@@ -521,10 +521,10 @@ if ( ! class_exists( 'UAGB_Post_Timeline' ) ) {
 							'default' => 0,
 						),
 						'headTopSpacingTablet'       => array(
-							'type'    => 'number',
+							'type' => 'number',
 						),
 						'headTopSpacingMobile'       => array(
-							'type'    => 'number',
+							'type' => 'number',
 						),
 						'iconSize'                   => array(
 							'type'    => 'number',

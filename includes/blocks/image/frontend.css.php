@@ -12,12 +12,12 @@ UAGB_Block_JS::blocks_advanced_image_gfont( $attr );
 
 $m_selectors = array();
 $t_selectors = array();
-$block_name = 'image';
+$block_name  = 'image';
 
-$separator_width_fallback = UAGB_Block_Helper::get_fallback_number( $attr['seperatorWidth'], 'seperatorWidth', $block_name );
-$overlay_position_fallback = UAGB_Block_Helper::get_fallback_number( $attr['overlayPositionFromEdge'], 'overlayPositionFromEdge', $block_name );
-$separator_thickness_fallback = UAGB_Block_Helper::get_fallback_number( $attr['seperatorThickness'], 'seperatorThickness', $block_name );
-$overlay_opacity_fallback = UAGB_Block_Helper::get_fallback_number( $attr['overlayOpacity'], 'overlayOpacity', $block_name );
+$separator_width_fallback       = UAGB_Block_Helper::get_fallback_number( $attr['seperatorWidth'], 'seperatorWidth', $block_name );
+$overlay_position_fallback      = UAGB_Block_Helper::get_fallback_number( $attr['overlayPositionFromEdge'], 'overlayPositionFromEdge', $block_name );
+$separator_thickness_fallback   = UAGB_Block_Helper::get_fallback_number( $attr['seperatorThickness'], 'seperatorThickness', $block_name );
+$overlay_opacity_fallback       = UAGB_Block_Helper::get_fallback_number( $attr['overlayOpacity'], 'overlayOpacity', $block_name );
 $overlay_opacity_hover_fallback = UAGB_Block_Helper::get_fallback_number( $attr['overlayHoverOpacity'], 'overlayHoverOpacity', $block_name );
 
 

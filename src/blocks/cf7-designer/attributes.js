@@ -11,7 +11,7 @@
 	borderColor              :  '#eeeeee',
 	borderHColor         :  '',
  }
- const fieldBorderAttributes = getBorderAttributes( 'field', fieldDefaults );
+ const fieldBorderAttributes = getBorderAttributes( 'input', fieldDefaults );
  const buttonDefaults = {
 	borderStyle         : 'solid',
 	borderTopWidth: 1,
@@ -21,7 +21,7 @@
 	borderColor         : '#333',
 	borderHColor        : '#333',
  }
- const buttonBorderAttributes = getBorderAttributes( 'button', buttonDefaults );
+ const buttonBorderAttributes = getBorderAttributes( 'btn', buttonDefaults );
 
  const attributes = { // eslint-disable-line no-unused-vars
 	block_id                      : {

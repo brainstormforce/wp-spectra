@@ -112,7 +112,7 @@ const UAGBCF7 = ( props ) => {
 		}
 		// fieldBorder
 		if( fieldBorderWidth || fieldBorderRadius || fieldBorderColor || fieldBorderHColor || fieldBorderStyle ){
-			const migrationAttributes = migrateBorderAttributes( 'field', {
+			const migrationAttributes = migrateBorderAttributes( 'input', {
 				label: 'fieldBorderWidth',
 				value: fieldBorderWidth,
 			}, {
@@ -130,7 +130,7 @@ const UAGBCF7 = ( props ) => {
 			}
 			);
 			props.setAttributes( migrationAttributes );
-			const btnMigrationAttributes = migrateBorderAttributes( 'button', {
+			const btnMigrationAttributes = migrateBorderAttributes( 'btn', {
 				label: 'buttonBorderWidth',
 				value: buttonBorderWidth,
 			}, {
