@@ -458,7 +458,7 @@ if ( ! class_exists( 'UAGB_Table_Of_Content' ) ) {
 			?>
 				<div class="<?php echo esc_html( implode( ' ', $wrap ) ); ?>"
 					data-scroll= "<?php echo esc_attr( $attributes['smoothScroll'] ); ?>"
-					data-offset= "<?php echo esc_attr( $attributes['smoothScrollOffset'] ); ?>"
+					data-offset= "<?php echo esc_attr( UAGB_Block_Helper::get_fallback_number( $attributes['smoothScrollOffset'], 'smoothScrollOffset', 'table-of-contents' ) ); ?>"
 				>
 				<div class="uagb-toc__wrap">
 						<div class="uagb-toc__title">

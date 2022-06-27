@@ -4,9 +4,13 @@
 
 import generateCSS from '@Controls/generateCSS';
 import generateCSSUnit from '@Controls/generateCSSUnit';
+import { getFallbackNumber } from '@Controls/getAttributeFallback';
 import generateBorderCSS from '@Controls/generateBorderCSS';
 
 function styling( props ) {
+
+	const blockName = props.name.replace( 'uagb/', '' );
+
 	const {
 		headerBgColor,
 		titleAlign,
@@ -108,6 +112,9 @@ function styling( props ) {
 		titleLetterSpacingType,
 	} = props.attributes;
 
+	const iconSizeFallback = getFallbackNumber( iconSize, 'iconSize', blockName );
+	const iconSpacingFallback = getFallbackNumber( iconSpacing, 'iconSpacing', blockName );
+	
 	const borderCSS = generateBorderCSS( props.attributes, 'tab', '' );
 	const borderCSSTablet = generateBorderCSS( props.attributes,'tab', 'tablet' );
 	const borderCSSMobile = generateBorderCSS( props.attributes,'tab', 'mobile' );
@@ -216,8 +223,8 @@ function styling( props ) {
 			'color': bodyTextColor,
 		},
 		' .uagb-tabs__icon svg': {
-			'height': generateCSSUnit( iconSize, 'px' ),
-			'width': generateCSSUnit( iconSize, 'px' ),
+			'height': generateCSSUnit( iconSizeFallback, 'px' ),
+			'width': generateCSSUnit( iconSizeFallback, 'px' ),
 			'fill': iconColor,
 		},
 		'.uagb-tabs__wrap > .uagb-tabs__panel .uagb-tab': borderCSS,
@@ -229,16 +236,16 @@ function styling( props ) {
 			'border-color': tabBorderHColor,
 		},
 		' .uagb-tabs__icon-position-left  .uagb-tabs__icon ': {
-			'margin-right': generateCSSUnit( iconSpacing, 'px' ),
+			'margin-right': generateCSSUnit( iconSpacingFallback, 'px' ),
 		},
 		' .uagb-tabs__icon-position-right  .uagb-tabs__icon ': {
-			'margin-left': generateCSSUnit( iconSpacing, 'px' ),
+			'margin-left': generateCSSUnit( iconSpacingFallback, 'px' ),
 		},
 		' .uagb-tabs__icon-position-top  .uagb-tabs__icon ': {
-			'margin-bottom': generateCSSUnit( iconSpacing, 'px' ),
+			'margin-bottom': generateCSSUnit( iconSpacingFallback, 'px' ),
 		},
 		' .uagb-tabs__icon-position-bottom  .uagb-tabs__icon ': {
-			'margin-top': generateCSSUnit( iconSpacing, 'px' ),
+			'margin-top': generateCSSUnit( iconSpacingFallback, 'px' ),
 		},
 	};
 

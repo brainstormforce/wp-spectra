@@ -874,7 +874,6 @@ const Settings = ( props ) => {
 					prefix={'field'}
 					attributes={ attributes }
 					deviceType={deviceType}
-					disableBottomSeparator={ true }
 				/>
 			)}
 			<ResponsiveSlider
@@ -1219,7 +1218,6 @@ const Settings = ( props ) => {
 				prefix={'button'}
 				attributes={ attributes }
 				deviceType={deviceType}
-				disableBottomSeparator={ true }
 				disabledBorderTitle= {false}
 			/>
 			<TypographyControl
