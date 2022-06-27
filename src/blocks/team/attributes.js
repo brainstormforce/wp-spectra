@@ -379,14 +379,12 @@ const attributes = {
 	},
 	imgWidthMobile: {
 		type: 'number',
-		default: 100,
 		UAGCopyPaste: {
 			styleType: 'image-width-mobile'
 		},
 	},
 	imgWidthTablet: {
 		type: 'number',
-		default: 100,
 		UAGCopyPaste: {
 			styleType: 'image-width-tablet'
 		},
@@ -403,14 +401,12 @@ const attributes = {
 		UAGCopyPaste: {
 			styleType: 'main-title-bottom-margin-mobile'
 		},
-		default: 6,
 	},
 	titleSpaceTablet: {
 		type: 'number',
 		UAGCopyPaste: {
 			styleType: 'main-title-bottom-margin-tablet'
 		},
-		default: 6,
 	},
 	prefixSpace: {
 		type: 'number',
@@ -424,14 +420,12 @@ const attributes = {
 		UAGCopyPaste: {
 			styleType: 'prefix-bottom-margin-tablet'
 		},
-		default: 11,
 	},
 	prefixSpaceMobile: {
 		type: 'number',
 		UAGCopyPaste: {
 			styleType: 'prefix-bottom-margin-mobile'
 		},
-		default: 11,
 	},
 	descSpace: {
 		type: 'number',
@@ -445,14 +439,12 @@ const attributes = {
 		UAGCopyPaste: {
 			styleType: 'desc-bottom-margin-tablet'
 		},
-		default: 11,
 	},
 	descSpaceMobile: {
 		type: 'number',
 		UAGCopyPaste: {
 			styleType: 'desc-bottom-margin-mobile'
 		},
-		default: 11,
 	},
 	imgLeftMargin: {
 		type: 'number',
@@ -495,14 +487,12 @@ const attributes = {
 		UAGCopyPaste: {
 			styleType: 'icon-bottom-margin-tablet'
 		},
-		default: 20,
 	},
 	socialSpaceMobile: {
 		type: 'number',
 		UAGCopyPaste: {
 			styleType: 'icon-bottom-margin-mobile'
 		},
-		default: 20,
 	},
 	socialTarget: {
 		type: 'boolean',

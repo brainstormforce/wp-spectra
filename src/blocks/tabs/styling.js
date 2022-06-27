@@ -4,8 +4,13 @@
 
 import generateCSS from '@Controls/generateCSS';
 import generateCSSUnit from '@Controls/generateCSSUnit';
+import { getFallbackNumber } from '@Controls/getAttributeFallback';
+import generateBorderCSS from '@Controls/generateBorderCSS';
 
 function styling( props ) {
+
+	const blockName = props.name.replace( 'uagb/', '' );
+
 	const {
 		headerBgColor,
 		titleAlign,
@@ -35,11 +40,7 @@ function styling( props ) {
 		titleTransform,
 		titleDecoration,
 		//Border
-		borderWidth,
-		borderColor,
-		borderStyle,
-		borderRadius,
-		borderHoverColor,
+		tabBorderHColor,
 		iconColor,
 		iconSize,
 		iconSizeTablet,
@@ -111,6 +112,13 @@ function styling( props ) {
 		titleLetterSpacingType,
 	} = props.attributes;
 
+	const iconSizeFallback = getFallbackNumber( iconSize, 'iconSize', blockName );
+	const iconSpacingFallback = getFallbackNumber( iconSpacing, 'iconSpacing', blockName );
+	
+	const borderCSS = generateBorderCSS( props.attributes, 'tab', '' );
+	const borderCSSTablet = generateBorderCSS( props.attributes,'tab', 'tablet' );
+	const borderCSSMobile = generateBorderCSS( props.attributes,'tab', 'mobile' );
+
 	let selectors = {};
 	let tabletSelectors = {};
 	let mobileSelectors = {};
@@ -134,6 +142,7 @@ function styling( props ) {
 				tabTitleBottomMargin,
 				tabTitleMarginUnit
 			),
+			...borderCSS
 		},
 		' > .uagb-tabs__panel .uagb-tab a': {
 			'padding-top': generateCSSUnit(
@@ -215,39 +224,28 @@ function styling( props ) {
 			'color': bodyTextColor,
 		},
 		' .uagb-tabs__icon svg': {
-			'height': generateCSSUnit( iconSize, 'px' ),
-			'width': generateCSSUnit( iconSize, 'px' ),
+			'height': generateCSSUnit( iconSizeFallback, 'px' ),
+			'width': generateCSSUnit( iconSizeFallback, 'px' ),
 			'fill': iconColor,
 		},
-		'.uagb-tabs__wrap > .uagb-tabs__panel .uagb-tab': {
-			'border-width': generateCSSUnit( borderWidth, 'px' ),
-			'border-style': borderStyle,
-			'border-radius': generateCSSUnit( borderRadius, 'px' ),
-			'border-color': borderColor,
-		},
 		'.uagb-tabs__wrap > .uagb-tabs__panel .uagb-tab:hover': {
-			'border-color': borderHoverColor,
+			'border-color': tabBorderHColor,
 		},
-		'.uagb-tabs__wrap > .uagb-tabs__body-wrap': {
-			'border-width': generateCSSUnit( borderWidth, 'px' ),
-			'border-style': borderStyle,
-			'border-radius': generateCSSUnit( borderRadius, 'px' ),
-			'border-color': borderColor,
-		},
+		'.uagb-tabs__wrap > .uagb-tabs__body-wrap': borderCSS,
 		'.uagb-tabs__wrap > .uagb-tabs__body-wrap:hover': {
-			'border-color': borderHoverColor,
+			'border-color': tabBorderHColor,
 		},
 		' .uagb-tabs__icon-position-left  .uagb-tabs__icon ': {
-			'margin-right': generateCSSUnit( iconSpacing, 'px' ),
+			'margin-right': generateCSSUnit( iconSpacingFallback, 'px' ),
 		},
 		' .uagb-tabs__icon-position-right  .uagb-tabs__icon ': {
-			'margin-left': generateCSSUnit( iconSpacing, 'px' ),
+			'margin-left': generateCSSUnit( iconSpacingFallback, 'px' ),
 		},
 		' .uagb-tabs__icon-position-top  .uagb-tabs__icon ': {
-			'margin-bottom': generateCSSUnit( iconSpacing, 'px' ),
+			'margin-bottom': generateCSSUnit( iconSpacingFallback, 'px' ),
 		},
 		' .uagb-tabs__icon-position-bottom  .uagb-tabs__icon ': {
-			'margin-top': generateCSSUnit( iconSpacing, 'px' ),
+			'margin-top': generateCSSUnit( iconSpacingFallback, 'px' ),
 		},
 	};
 
@@ -318,6 +316,7 @@ function styling( props ) {
 				tabTitleBottomMarginTablet,
 				tablettabTitleMarginUnit
 			),
+			...borderCSSTablet
 		},
 		' > .uagb-tabs__body-wrap ': {
 			'padding-top': generateCSSUnit(
@@ -352,6 +351,7 @@ function styling( props ) {
 				tabBodyBottomMarginTablet,
 				tablettabBodyMarginUnit
 			),
+			...borderCSSTablet
 		},
 		' .uagb-tabs__icon-position-left  .uagb-tabs__icon ': {
 			'margin-right': generateCSSUnit( iconSpacingTablet, 'px' ),
@@ -399,6 +399,7 @@ function styling( props ) {
 				tabTitleBottomMarginMobile,
 				mobiletabTitleMarginUnit
 			),
+			...borderCSSMobile
 		},
 		' > .uagb-tabs__panel .uagb-tab a': {
 			'padding-top': generateCSSUnit(
@@ -451,6 +452,7 @@ function styling( props ) {
 				tabBodyBottomMarginMobile,
 				mobiletabBodyMarginUnit
 			),
+			...borderCSSMobile
 		},
 		' .uagb-tabs__icon-position-left  .uagb-tabs__icon ': {
 			'margin-right': generateCSSUnit( iconSpacingMobile, 'px' ),
@@ -469,116 +471,76 @@ function styling( props ) {
 	if ( tabsStyleD === 'hstyle5' ) {
 		selectors[ '.uagb-tabs__wrap.uagb-tabs__hstyle5-desktop ' ] = {
 			'background': bodyBgColor,
-			'border-color': borderColor,
-			'border-width': generateCSSUnit( borderWidth, 'px' ),
-			'border-style': borderStyle,
-			'border-radius': generateCSSUnit( borderRadius, 'px' ),
 		};
 		selectors[ '.uagb-tabs__wrap.uagb-tabs__hstyle5-desktop:hover' ] = {
-			'border-color': borderHoverColor,
+			'border-color': tabBorderHColor,
 		};
 		selectors['.uagb-tabs__wrap > .uagb-tabs__body-wrap'] = {
 			'border-left-style': 'none',
 			'border-right-style':'none',
-			'border-top-style': borderStyle,
-			'border-color': borderColor,
-			'border-width': generateCSSUnit( borderWidth, 'px' ),
 		};
 	}
 	if ( tabsStyleD === 'vstyle10' ) {
 		selectors[ '.uagb-tabs__wrap.uagb-tabs__vstyle10-desktop ' ] = {
 			'background': bodyBgColor,
-			'border-color': borderColor,
-			'border-width': generateCSSUnit( borderWidth, 'px' ),
-			'border-style': borderStyle,
-			'border-radius': generateCSSUnit( borderRadius, 'px' ),
 		};
 		selectors[ '.uagb-tabs__wrap.uagb-tabs__vstyle10-desktop:hover' ] = {
-			'border-color': borderHoverColor,
+			'border-color': tabBorderHColor,
 		};
 	}
 	if ( tabsStyleT === 'hstyle5' ) {
 		tabletSelectors[ '.uagb-tabs__wrap.uagb-tabs__hstyle5-tablet' ] = {
 			'background': bodyBgColor,
-			'border-color': borderColor,
-			'border-width': generateCSSUnit( borderWidth, 'px' ),
-			'border-style': borderStyle,
-			'border-radius': generateCSSUnit( borderRadius, 'px' ),
 		};
 		tabletSelectors[
 			'.uagb-tabs__wrap.uagb-tabs__hstyle5-tablet:hover'
 		] = {
-			'border-color': borderHoverColor,
-		};
-		tabletSelectors['.uagb-tabs__wrap > .uagb-tabs__body-wrap'] = {
-			'border-left-style': 'none',
-			'border-right-style':'none',
-			'border-top-style': borderStyle,
-			'border-color': borderColor,
-			'border-width': generateCSSUnit( borderWidth, 'px' ),
+			'border-color': tabBorderHColor,
 		};
 	}
 	if ( tabsStyleT === 'vstyle10' ) {
 		tabletSelectors[ '.uagb-tabs__wrap.uagb-tabs__vstyle10-tablet' ] = {
 			'background': bodyBgColor,
-			'border-color': borderColor,
-			'border-width': generateCSSUnit( borderWidth, 'px' ),
-			'border-style': borderStyle,
-			'border-radius': generateCSSUnit( borderRadius, 'px' ),
 		};
 		tabletSelectors[
 			'.uagb-tabs__wrap.uagb-tabs__vstyle10-tablet:hover'
 		] = {
-			'border-color': borderHoverColor,
+			'border-color': tabBorderHColor,
 		};
 	}
 	if ( tabsStyleM === 'hstyle5' ) {
 		mobileSelectors[ '.uagb-tabs__wrap.uagb-tabs__hstyle5-mobile ' ] = {
 			'background': bodyBgColor,
-			'border-color': borderColor,
-			'border-width': generateCSSUnit( borderWidth, 'px' ),
-			'border-style': borderStyle,
-			'border-radius': generateCSSUnit( borderRadius, 'px' ),
 		};
 		mobileSelectors['.uagb-tabs__wrap > .uagb-tabs__body-wrap'] = {
 			'border-left-style': 'none',
 			'border-right-style':'none',
-			'border-top-style': borderStyle,
-			'border-color': borderColor,
-			'border-width': generateCSSUnit( borderWidth, 'px' ),
 		};
 		mobileSelectors[
 			'.uagb-tabs__wrap.uagb-tabs__hstyle5-mobile:hover'
 		] = {
-			'border-color': borderHoverColor,
+			'border-color': tabBorderHColor,
 		};
 	}
 	if ( tabsStyleM === 'vstyle10' ) {
 		mobileSelectors[ '.uagb-tabs__wrap.uagb-tabs__vstyle10-mobile ' ] = {
 			'background': bodyBgColor,
-			'border-color': borderColor,
-			'border-width': generateCSSUnit( borderWidth, 'px' ),
-			'border-style': borderStyle,
-			'border-radius': generateCSSUnit( borderRadius, 'px' ),
 		};
 		mobileSelectors[
 			'.uagb-tabs__wrap.uagb-tabs__vstyle10-mobile:hover'
 		] = {
-			'border-color': borderHoverColor,
+			'border-color': tabBorderHColor,
 		};
 	}
 	if ( tabsStyleM === 'stack4' ) {
 		mobileSelectors[ '.uagb-tabs__wrap.uagb-tabs__stack4-mobile' ] = {
 			'background': bodyBgColor,
-			'border-color': borderColor,
-			'border-width': generateCSSUnit( borderWidth, 'px' ),
-			'border-style': borderStyle,
-			'border-radius': generateCSSUnit( borderRadius, 'px' ),
 		};
 		mobileSelectors[ '.uagb-tabs__wrap.uagb-tabs__stack4-mobile:hover' ] = {
-			'border-color': borderHoverColor,
+			'border-color': tabBorderHColor,
 		};
 	}
+	
 	const base_selector = `.editor-styles-wrapper .uagb-block-${ props.clientId.substr(
 		0,
 		8

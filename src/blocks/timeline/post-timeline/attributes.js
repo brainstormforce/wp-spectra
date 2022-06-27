@@ -1,9 +1,27 @@
 const attributes = { // eslint-disable-line no-unused-vars
+	blockName               : {
+		type    : 'string',
+		default : 'post-timeline',
+	},
 	align                   : {
 		type    : 'string',
 		default : '',
 		UAGCopyPaste: {
 			styleType: 'overall-alignment'
+		},
+	},
+	alignTablet          : {
+		type    : 'string',
+		default : '',
+		UAGCopyPaste: {
+			styleType: 'overall-alignment-tablet'
+		},
+	},
+	alignMobile                 : {
+		type    : 'string',
+		default : '',
+		UAGCopyPaste: {
+			styleType: 'overall-alignment-mobile'
 		},
 	},
 	headingColor            : {
@@ -176,14 +194,12 @@ const attributes = { // eslint-disable-line no-unused-vars
 	},
 	headSpaceTablet               : {
 		type    : 'number',
-		default : 0,
 		UAGCopyPaste: {
 			styleType: 'main-title-bottom-margin'
 		},
 	},
 	headSpaceMobile               : {
 		type    : 'number',
-		default : 0,
 		UAGCopyPaste: {
 			styleType: 'main-title-bottom-margin'
 		},
@@ -197,14 +213,12 @@ const attributes = { // eslint-disable-line no-unused-vars
 	},
 	authorSpaceTablet             : {
 		type    : 'number',
-		default : 0,
 		UAGCopyPaste: {
 			styleType: 'author-bottom-margin'
 		},
 	},
 	authorSpaceMobile             : {
 		type    : 'number',
-		default : 0,
 		UAGCopyPaste: {
 			styleType: 'author-bottom-margin'
 		},
@@ -503,14 +517,12 @@ const attributes = { // eslint-disable-line no-unused-vars
 	},
 	dateBottomspaceTablet         : {
 		type    : 'number',
-		default : 0,
 		UAGCopyPaste: {
 			styleType: 'date-bottom-space'
 		},
 	},
 	dateBottomspaceMobile         : {
 		type    : 'number',
-		default : 0,
 		UAGCopyPaste: {
 			styleType: 'date-bottom-space'
 		},
@@ -603,6 +615,10 @@ const attributes = { // eslint-disable-line no-unused-vars
 		type    : 'number',
 		default : 6,
 	},
+	postsOffset             : {
+		type    : 'number',
+		default : 0,
+	},
 	displayPostDate         : {
 		type    : 'boolean',
 		default : true,
@@ -675,14 +691,12 @@ const attributes = { // eslint-disable-line no-unused-vars
 	},
 	borderRadiusTablet            : {
 		type    : 'number',
-		default : 0,
 		UAGCopyPaste: {
 			styleType: 'overall-border-radius'
 		},
 	},
 	borderRadiusMobile            : {
 		type    : 'number',
-		default : 0,
 		UAGCopyPaste: {
 			styleType: 'overall-border-radius'
 		},
@@ -991,6 +1005,7 @@ const attributes = { // eslint-disable-line no-unused-vars
 	},
 	ctaBottomSpacing : {
 		type: 'number',
+		default: 0,
 		UAGCopyPaste: {
 			styleType: 'cta-bottom-spacing'
 		},
@@ -1009,20 +1024,19 @@ const attributes = { // eslint-disable-line no-unused-vars
 	},
 	headTopSpacing : {
 		type: 'number',
+		default: 0,
 		UAGCopyPaste: {
 			styleType: 'main-title-top-spacing'
 		},
 	},
 	headTopSpacingMobile : {
 		type: 'number',
-		default : 0,
 		UAGCopyPaste: {
 			styleType: 'main-title-top-spacing'
 		},
 	},
 	headTopSpacingTablet : {
 		type: 'number',
-		default : 0,
 		UAGCopyPaste: {
 			styleType: 'main-title-top-spacing'
 		},
