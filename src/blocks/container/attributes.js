@@ -891,15 +891,54 @@ const attributes = {
 			styleType: 'btn-hover-color'
 		},
 	},
-	innerContentCustomWidthDesktopType: {
+	// responsive code
+	innerContentCustomWidthTypeTablet: {
 		type: 'string',
 		default: 'px',
 	},
-	innerContentCustomWidthTabletType: {
+	innerContentCustomWidthTypeMobile: {
 		type: 'string',
 		default: 'px',
 	},
-	innerContentCustomWidthMobileType: {
+
+	widthTypeTablet: {
+		type: 'string',
+		default: '%',
+	},
+	widthTypeMobile: {
+		type: 'string',
+		default: '%',
+	},
+	minHeightTypeTablet: {
+		type: 'string',
+		default: 'px',
+	},
+	minHeightTypeMobile: {
+		type: 'string',
+		default: 'px',
+	},
+	// correct formating
+	topHeightType: {
+		type: 'string',
+		default: 'px',
+	},
+	topHeightTypeTablet: {
+		type: 'string',
+		default: 'px',
+	},
+	topHeightTypeMobile: {
+		type: 'string',
+		default: 'px',
+	},
+	bottomHeightType: {
+		type: 'string',
+		default: 'px',
+	},
+	bottomHeightTypeTablet: {
+		type: 'string',
+		default: 'px',
+	},
+	bottomHeightTypeMobile: {
 		type: 'string',
 		default: 'px',
 	},
