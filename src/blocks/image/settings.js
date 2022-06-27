@@ -45,6 +45,8 @@ export default function Settings( props ) {
 		layout,
 		id,
 		url,
+		urlTablet,
+		urlMobile,
 		width,
 		widthTablet,
 		widthMobile,
@@ -249,7 +251,7 @@ export default function Settings( props ) {
 
 	function updateImage( newSizeSlug ) {
 		const newUrl = image?.media_details?.sizes[newSizeSlug]
-		if ( ! newUrl ) {
+		if ( ! newUrl || newUrl?.source_url === url ) {
 			return null;
 		}
 		setAttributes( {
@@ -262,7 +264,7 @@ export default function Settings( props ) {
 
 	function updateTabletImage( newSizeSlug ) {
 		const newUrl = image?.media_details?.sizes[newSizeSlug]
-		if ( ! newUrl ) {
+		if ( ! newUrl || newUrl?.source_url === urlTablet ) {
 			return null;
 		}
 		setAttributes( {
@@ -275,7 +277,7 @@ export default function Settings( props ) {
 
 	function updateMobileImage( newSizeSlug ) {
 		const newUrl = image?.media_details?.sizes[newSizeSlug]
-		if ( ! newUrl ) {
+		if ( ! newUrl || newUrl?.source_url === urlMobile ) {
 			return null;
 		}
 		setAttributes( {
@@ -1412,7 +1414,6 @@ export default function Settings( props ) {
 						prefix={'image'}
 						attributes={ attributes }
 						deviceType={deviceType}
-						disableBottomSeparator={ true }
 					/>
 				)
 			}
@@ -1432,7 +1433,6 @@ export default function Settings( props ) {
 						prefix={'overlay'}
 						attributes={ attributes }
 						deviceType={deviceType}
-						disableBottomSeparator={ true }
 					/>
 					<Range
 						label={ __(
@@ -1576,6 +1576,7 @@ export default function Settings( props ) {
 								'ultimate-addons-for-gutenberg'
 							),
 						} }
+						popup={ true }
 					/>
 				)
 			}
