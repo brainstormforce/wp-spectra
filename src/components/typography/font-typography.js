@@ -2,7 +2,8 @@
  * WordPress dependencies
  */
 import { __ } from '@wordpress/i18n';
-import { SelectControl } from '@wordpress/components';
+import UAGSelectControl from '@Components/select-control';
+import RangeTypographyControl from './range-typography';
 import googleFonts from '@Controls/fonts';
 import Select from 'react-select';
 
@@ -89,23 +90,23 @@ function FontFamilyControl( props ) {
 		} ),
 		control: ( provided ) => ( {
 			...provided,
-			border: '1px solid #757575',
+			border: '1px solid #E6E7E9',
 			boxShadow: 'none',
 			height: '30px',
 			minHeight: '30px',
-			borderRadius: '2px',
+			borderRadius: '3px',
 		} ),
 		placeholder: ( provided ) => ( {
 			...provided,
-			color: '#000',
+			color: '#50575E',
 		} ),
 		menu: ( provided ) => ( {
 			...provided,
-			color: '#000',
+			color: '#50575E',
 		} ),
 		singleValue: ( provided ) => ( {
 			...provided,
-			color: '#000',
+			color: '#50575E',
 			top: '50%',
 			transform: 'translateY(-50%);',
 		} ),
@@ -115,11 +116,12 @@ function FontFamilyControl( props ) {
 		} ),
 		dropdownIndicator: ( provided ) => ( {
 			...provided,
-			color: '#000',
+			color: '#50575E',
 		} ),
 		valueContainer: ( provided ) => ( {
 			...provided,
 			height: '30px',
+			padding: '0px 8px',
 		} ),
 	}
 
@@ -133,12 +135,48 @@ function FontFamilyControl( props ) {
 			}
 		} );
 	}
+
+	let fontSize;
+	const fontSizeStepsVal = ( 'em' === props.fontSizeType.value ? 0.1 : 1 );
+	if ( true !== props.disableFontSize ) {
+		fontSize = (
+			<RangeTypographyControl
+				type={ props.fontSizeType }
+				typeLabel={ props.fontSizeType.label }
+				sizeMobile={ props.fontSizeMobile }
+				sizeMobileLabel={ props.fontSizeMobile.label }
+				sizeTablet={ props.fontSizeTablet }
+				sizeTabletLabel={ props.fontSizeTablet.label }
+				size={ props.fontSize }
+				sizeLabel={ props.fontSize.label }
+				sizeMobileText={
+					! props.fontSizeLabel
+						? __( 'Font Size', 'ultimate-addons-for-gutenberg' )
+						: props.fontSizeLabel
+				}
+				sizeTabletText={
+					! props.fontSizeLabel
+						? __( 'Font Size', 'ultimate-addons-for-gutenberg' )
+						: props.fontSizeLabel
+				}
+				sizeText={
+					! props.fontSizeLabel
+						? __( 'Font Size', 'ultimate-addons-for-gutenberg' )
+						: props.fontSizeLabel
+				}
+				steps={ fontSizeStepsVal }
+				{ ...props }
+			/>
+		);
+	}
+
 	return (
-		<div className="uag-typography-font-family-options">
-			<div className="uag-typography-font-family">
-				<label htmlFor="font-family">{ __( 'Font Family' ) }</label>
+		<>
+			{ /* Font Family */ }
+			<div className="components-base-control uag-font-family-searchable-select__wrapper">
+				<label className="components-input-control__label" htmlFor="font-family">{ __( 'Font Family' ) }</label>
 				<Select
-					styles={customSelectStyles}
+					styles={ customSelectStyles }
 					placeholder={ __( 'Select the Font Family' ) }
 					onChange={ onFontfamilyChange }
 					options={ gFonts }
@@ -149,61 +187,59 @@ function FontFamilyControl( props ) {
 					classNamePrefix="uag-font-family-select"
 				/>
 			</div>
-			<div className="uag-typography-weight-style-wrap">
-				<div className="uag-typography-font-family-weight">
-					<SelectControl
-						label={ __(
-							'Weight',
-							'ultimate-addons-for-gutenberg'
-						) }
-						value={ props.fontWeight.value }
-						onChange={ ( value ) =>
-							props.setAttributes( {
-								[ props.fontWeight.label ]: value,
-							} )
-						}
-						options={ fontWeightObj }
-						className="react-select-container"
-					/>
-				</div>
-				{ props.fontStyle &&
-					<div className="uag-typography-style">
-						<SelectControl
-							label={ __( 'Style', 'ultimate-addons-for-gutenberg' ) }
-							value={ props.fontStyle.value }
-							onChange={ ( value ) =>
-								props.setAttributes( {
-									[ props.fontStyle.label ]: value,
-								} )
-							}
-							options={ [
-								{
-									value: 'normal',
-									label: __(
-										'Default',
-										'ultimate-addons-for-gutenberg'
-									),
-								},
-								{
-									value: 'italic',
-									label: __(
-										'Italic',
-										'ultimate-addons-for-gutenberg'
-									),
-								},
-								{
-									value: 'oblique',
-									label: __(
-										'Oblique',
-										'ultimate-addons-for-gutenberg'
-									),
-								},
-							] }
-						/>
-					</div>
-				}
-			</div>
-		</div>
+			{ /* Font Size*/ }
+			{ fontSize }
+			{ /* Font Weitght */ }
+			<UAGSelectControl
+				label={ __(
+					'Weight',
+					'ultimate-addons-for-gutenberg'
+				) }
+				data={ {
+					value: props.fontWeight.value,
+					label: props.fontWeight.label,
+				} }
+				setAttributes={ props.setAttributes }
+				options={ fontWeightObj }
+			/>
+			{ /* Font Style */ }
+			{ props.fontStyle &&
+				<UAGSelectControl
+					label={ __(
+						'Style',
+						'ultimate-addons-for-gutenberg'
+					) }
+					data={ {
+						value: props.fontStyle.value,
+						label: props.fontStyle.label,
+					} }
+					setAttributes={ props.setAttributes }
+					options={ [
+						{
+							value: 'normal',
+							label: __(
+								'Default',
+								'ultimate-addons-for-gutenberg'
+							),
+						},
+						{
+							value: 'italic',
+							label: __(
+								'Italic',
+								'ultimate-addons-for-gutenberg'
+							),
+						},
+						{
+							value: 'oblique',
+							label: __(
+								'Oblique',
+								'ultimate-addons-for-gutenberg'
+							),
+						},
+					] }
+				/>
+			}
+		</>
 	);
 }
 

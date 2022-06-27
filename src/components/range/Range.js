@@ -178,7 +178,7 @@ const Range = ( props ) => {
 					label= { props.label }
 					responsive= { props.responsive }
 				/>
-				<div className="uagb-range-control__actions">
+				<div className="uagb-control__actions uagb-range-control__actions">
 					<Tooltip
 						text={ __( 'Reset', 'ultimate-addons-for-gutenberg' )}
 						key={ 'reset' }
@@ -197,7 +197,7 @@ const Range = ( props ) => {
 					</Tooltip>
 					{ props.displayUnit && (
 						<ButtonGroup
-							className="uagb-range-control__units"
+							className="uagb-control__units"
 							aria-label={ __(
 								'Select Units',
 								'ultimate-addons-for-gutenberg'
