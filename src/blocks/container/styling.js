@@ -154,7 +154,7 @@ function styling( props ) {
 	const borderCSS = generateBorderCSS( props.attributes, 'container' );
 	const borderCSSTablet = generateBorderCSS( props.attributes, 'container', 'tablet' );
 	const borderCSSMobile = generateBorderCSS( props.attributes, 'container', 'mobile' );
-	
+
 	topPaddingTablet = topPaddingTablet ? topPaddingTablet : topPaddingDesktop;
 	topPaddingMobile = topPaddingMobile ? topPaddingMobile : topPaddingTablet;
 	topPaddingTablet = 'undefined' !== typeof topPaddingTablet ? topPaddingTablet : topPaddingDesktop;
@@ -294,12 +294,9 @@ function styling( props ) {
 	boxShadowBlurHover = isNaN( boxShadowBlurHover ) ? '' : boxShadowBlurHover;
 	boxShadowColorHover = boxShadowColorHover ? boxShadowColorHover : '';
 
-	console.log( boxShadowBlurHover );
-
 	if( '' !== boxShadowColorHover || '' !== boxShadowBlurHover ) {
 
 		const boxShadowBlurHoverCSSUnit = ( '' === boxShadowBlurHover ) ? '' : generateCSSUnit( boxShadowBlurHover, 'px' );
-		console.log( 'CSS Unit: ', boxShadowBlurHoverCSSUnit )
 
 		selectors['.wp-block:hover']['box-shadow'] = generateCSSUnit( boxShadowHOffsetHover, 'px' ) + ' ' + generateCSSUnit( boxShadowVOffsetHover, 'px' ) +	' ' +
 													boxShadowBlurHoverCSSUnit + ' ' +	generateCSSUnit( boxShadowSpreadHover, 'px' ) + ' ' +
