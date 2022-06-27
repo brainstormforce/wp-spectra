@@ -258,11 +258,19 @@ export default function Image( {
 		let resWidth = '';
 		let resHeight = '';
 		if( deviceType === 'Tablet' ){
-			resWidth = widthTablet;
-			resHeight = heightTablet;
+			resWidth = widthTablet ? widthTablet : width;
+			resHeight = heightTablet ? heightTablet : height;
 		} else if( deviceType === 'Mobile' ){
-			resWidth = widthMobile;
-			resHeight = heightMobile;
+			if( widthMobile ){
+				resWidth = widthMobile;
+			} else {
+				resWidth = widthTablet ? widthTablet : width;
+			}
+			if( heightMobile ){
+				resHeight = heightMobile
+			} else {
+				resHeight = heightTablet ? heightTablet : height;
+			}
 		} else {
 			resWidth = width;
 			resHeight = height;

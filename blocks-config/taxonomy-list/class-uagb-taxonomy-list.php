@@ -61,453 +61,436 @@ if ( ! class_exists( 'UAGB_Taxonomy_List' ) ) {
 				return;
 			}
 
+			$border_attribute = UAGB_Block_Helper::uag_generate_php_border_attribute( 'overall' );
 			register_block_type(
 				'uagb/taxonomy-list',
 				array(
-					'attributes'      => array(
+					'attributes'      => array_merge(
+						$border_attribute,
+						array(
 
-						'block_id'                   => array(
-							'type' => 'string',
-						),
-						'listInJson'                 => array(
-							'type'    => 'object',
-							'default' => null,
-						),
-						'postType'                   => array(
-							'type'    => 'string',
-							'default' => 'post',
-						),
-						'taxonomyType'               => array(
-							'type'    => 'string',
-							'default' => 'category',
-						),
-						'categories'                 => array(
-							'type' => 'string',
-						),
-						'order'                      => array(
-							'type'    => 'string',
-							'default' => 'desc',
-						),
-						'orderBy'                    => array(
-							'type'    => 'string',
-							'default' => 'date',
-						),
-						'postsToShow'                => array(
-							'type'    => 'number',
-							'default' => '8',
-						),
-						'layout'                     => array(
-							'type'    => 'string',
-							'default' => 'grid',
-						),
-						'columns'                    => array(
-							'type'    => 'number',
-							'default' => 3,
-						),
-						'tcolumns'                   => array(
-							'type'    => 'number',
-							'default' => 2,
-						),
-						'mcolumns'                   => array(
-							'type'    => 'number',
-							'default' => 1,
-						),
-						'noTaxDisplaytext'           => array(
-							'type'    => 'string',
-							'default' => __( 'Taxonomy Not Available.', 'ultimate-addons-for-gutenberg' ),
-						),
-						'boxShadowColor'             => array(
-							'type' => 'string',
-						),
-						'boxShadowHOffset'           => array(
-							'type'    => 'number',
-							'default' => 0,
-						),
-						'boxShadowVOffset'           => array(
-							'type'    => 'number',
-							'default' => 0,
-						),
-						'boxShadowBlur'              => array(
-							'type' => 'number',
-						),
-						'boxShadowSpread'            => array(
-							'type' => 'number',
-						),
-						'boxShadowPosition'          => array(
-							'type'    => 'string',
-							'default' => 'outset',
-						),
-						'showCount'                  => array(
-							'type'    => 'boolean',
-							'default' => true,
-						),
-						'showEmptyTaxonomy'          => array(
-							'type'    => 'boolean',
-							'default' => false,
-						),
-						'showhierarchy'              => array(
-							'type'    => 'boolean',
-							'default' => false,
-						),
-						'titleTag'                   => array(
-							'type'    => 'string',
-							'default' => '',
-						),
-						// Color Attributes.
-						'bgColor'                    => array(
-							'type'    => 'string',
-							'default' => '#f5f5f5',
-						),
-						'titleColor'                 => array(
-							'type'    => 'string',
-							'default' => '#3b3b3b',
-						),
-						'countColor'                 => array(
-							'type'    => 'string',
-							'default' => '#777777',
-						),
-						'listTextColor'              => array(
-							'type'    => 'string',
-							'default' => '#3b3b3b',
-						),
-						'hoverlistTextColor'         => array(
-							'type'    => 'string',
-							'default' => '#3b3b3b',
-						),
-						'listStyleColor'             => array(
-							'type'    => 'string',
-							'default' => '#3b3b3b',
-						),
-						'hoverlistStyleColor'        => array(
-							'type'    => 'string',
-							'default' => '#3b3b3b',
-						),
+							'block_id'                   => array(
+								'type' => 'string',
+							),
+							'listInJson'                 => array(
+								'type'    => 'object',
+								'default' => null,
+							),
+							'postType'                   => array(
+								'type'    => 'string',
+								'default' => 'post',
+							),
+							'taxonomyType'               => array(
+								'type'    => 'string',
+								'default' => 'category',
+							),
+							'categories'                 => array(
+								'type' => 'string',
+							),
+							'order'                      => array(
+								'type'    => 'string',
+								'default' => 'desc',
+							),
+							'orderBy'                    => array(
+								'type'    => 'string',
+								'default' => 'date',
+							),
+							'postsToShow'                => array(
+								'type'    => 'number',
+								'default' => '8',
+							),
+							'layout'                     => array(
+								'type'    => 'string',
+								'default' => 'grid',
+							),
+							'columns'                    => array(
+								'type'    => 'number',
+								'default' => 3,
+							),
+							'tcolumns'                   => array(
+								'type'    => 'number',
+								'default' => 2,
+							),
+							'mcolumns'                   => array(
+								'type'    => 'number',
+								'default' => 1,
+							),
+							'noTaxDisplaytext'           => array(
+								'type'    => 'string',
+								'default' => __( 'Taxonomy Not Available.', 'ultimate-addons-for-gutenberg' ),
+							),
+							'boxShadowColor'             => array(
+								'type' => 'string',
+							),
+							'boxShadowHOffset'           => array(
+								'type'    => 'number',
+								'default' => 0,
+							),
+							'boxShadowVOffset'           => array(
+								'type'    => 'number',
+								'default' => 0,
+							),
+							'boxShadowBlur'              => array(
+								'type' => 'number',
+							),
+							'boxShadowSpread'            => array(
+								'type' => 'number',
+							),
+							'boxShadowPosition'          => array(
+								'type'    => 'string',
+								'default' => 'outset',
+							),
+							'showCount'                  => array(
+								'type'    => 'boolean',
+								'default' => true,
+							),
+							'showEmptyTaxonomy'          => array(
+								'type'    => 'boolean',
+								'default' => false,
+							),
+							'showhierarchy'              => array(
+								'type'    => 'boolean',
+								'default' => false,
+							),
+							'titleTag'                   => array(
+								'type'    => 'string',
+								'default' => '',
+							),
+							// Color Attributes.
+							'bgColor'                    => array(
+								'type'    => 'string',
+								'default' => '#f5f5f5',
+							),
+							'titleColor'                 => array(
+								'type'    => 'string',
+								'default' => '#3b3b3b',
+							),
+							'countColor'                 => array(
+								'type'    => 'string',
+								'default' => '#777777',
+							),
+							'listTextColor'              => array(
+								'type'    => 'string',
+								'default' => '#3b3b3b',
+							),
+							'hoverlistTextColor'         => array(
+								'type'    => 'string',
+								'default' => '#3b3b3b',
+							),
+							'listStyleColor'             => array(
+								'type'    => 'string',
+								'default' => '#3b3b3b',
+							),
+							'hoverlistStyleColor'        => array(
+								'type'    => 'string',
+								'default' => '#3b3b3b',
+							),
 
-						// Spacing Attributes.
-						'rowGap'                     => array(
-							'type'    => 'number',
-							'default' => 20,
-						),
-						'columnGap'                  => array(
-							'type'    => 'number',
-							'default' => 20,
-						),
-						'contentPadding'             => array(
-							'type'    => 'number',
-							'default' => 20,
-						),
-						'contentPaddingTablet'       => array(
-							'type'    => 'number',
-							'default' => 15,
-						),
-						'contentPaddingMobile'       => array(
-							'type'    => 'number',
-							'default' => 15,
-						),
-						'titleBottomSpace'           => array(
-							'type'    => 'number',
-							'default' => 5,
-						),
-						'listBottomMargin'           => array(
-							'type'    => 'number',
-							'default' => 10,
-						),
+							// Spacing Attributes.
+							'rowGap'                     => array(
+								'type'    => 'number',
+								'default' => 20,
+							),
+							'columnGap'                  => array(
+								'type'    => 'number',
+								'default' => 20,
+							),
+							'contentPadding'             => array(
+								'type'    => 'number',
+								'default' => 20,
+							),
+							'contentPaddingTablet'       => array(
+								'type'    => 'number',
+								'default' => 15,
+							),
+							'contentPaddingMobile'       => array(
+								'type'    => 'number',
+								'default' => 15,
+							),
+							'titleBottomSpace'           => array(
+								'type'    => 'number',
+								'default' => 5,
+							),
+							'listBottomMargin'           => array(
+								'type'    => 'number',
+								'default' => 10,
+							),
 
-						// ALignment Attributes.
-						'alignment'                  => array(
-							'type'    => 'string',
-							'default' => 'center',
-						),
+							// ALignment Attributes.
+							'alignment'                  => array(
+								'type'    => 'string',
+								'default' => 'center',
+							),
 
-						// List Attributes.
-						'listStyle'                  => array(
-							'type'    => 'string',
-							'default' => 'disc',
-						),
-						'listDisplayStyle'           => array(
-							'type'    => 'string',
-							'default' => 'list',
-						),
+							// List Attributes.
+							'listStyle'                  => array(
+								'type'    => 'string',
+								'default' => 'disc',
+							),
+							'listDisplayStyle'           => array(
+								'type'    => 'string',
+								'default' => 'list',
+							),
 
-						// Seperator Attributes.
-						'seperatorStyle'             => array(
-							'type'    => 'string',
-							'default' => 'none',
-						),
-						'seperatorWidth'             => array(
-							'type'    => 'number',
-							'default' => 100,
-						),
-						'seperatorThickness'         => array(
-							'type'    => 'number',
-							'default' => 1,
-						),
-						'seperatorColor'             => array(
-							'type'    => 'string',
-							'default' => '#b2b4b5',
-						),
-						'seperatorHoverColor'        => array(
-							'type'    => 'string',
-							'default' => '#b2b4b5',
-						),
+							// Seperator Attributes.
+							'seperatorStyle'             => array(
+								'type'    => 'string',
+								'default' => 'none',
+							),
+							'seperatorWidth'             => array(
+								'type'    => 'number',
+								'default' => 100,
+							),
+							'seperatorThickness'         => array(
+								'type'    => 'number',
+								'default' => 1,
+							),
+							'seperatorColor'             => array(
+								'type'    => 'string',
+								'default' => '#b2b4b5',
+							),
+							'seperatorHoverColor'        => array(
+								'type'    => 'string',
+								'default' => '#b2b4b5',
+							),
 
-						// Grid Border attributes.
-						'borderColor'                => array(
-							'type'    => 'string',
-							'default' => '#E0E0E0',
-						),
-						'borderThickness'            => array(
-							'type'    => 'number',
-							'default' => 1,
-						),
-						'borderRadius'               => array(
-							'type'    => 'number',
-							'default' => 3,
-						),
-						'borderStyle'                => array(
-							'type'    => 'string',
-							'default' => 'solid',
-						),
-						'borderHoverColor'           => array(
-							'type'    => 'string',
-							'default' => '#E0E0E0',
-						),
-						// Typograpghy attributes.
-						'titleFontSize'              => array(
-							'type' => 'number',
-						),
-						'titleFontSizeType'          => array(
-							'type'    => 'string',
-							'default' => 'px',
-						),
-						'titleFontSizeMobile'        => array(
-							'type' => 'number',
-						),
-						'titleFontSizeTablet'        => array(
-							'type' => 'number',
-						),
-						'titleFontFamily'            => array(
-							'type'    => 'string',
-							'default' => 'Default',
-						),
-						'titleFontWeight'            => array(
-							'type' => 'string',
-						),
-						'titleFontStyle'             => array(
-							'type' => 'string',
-						),
-						'titleLineHeightType'        => array(
-							'type'    => 'string',
-							'default' => 'em',
-						),
-						'titleLineHeight'            => array(
-							'type' => 'number',
-						),
-						'titleLineHeightTablet'      => array(
-							'type' => 'number',
-						),
-						'titleLineHeightMobile'      => array(
-							'type' => 'number',
-						),
-						'titleLoadGoogleFonts'       => array(
-							'type'    => 'boolean',
-							'default' => false,
-						),
-						'countFontSize'              => array(
-							'type' => 'number',
-						),
-						'countFontSizeType'          => array(
-							'type'    => 'string',
-							'default' => 'px',
-						),
-						'countFontSizeMobile'        => array(
-							'type' => 'number',
-						),
-						'countFontSizeTablet'        => array(
-							'type' => 'number',
-						),
-						'countFontFamily'            => array(
-							'type'    => 'string',
-							'default' => 'Default',
-						),
-						'countFontWeight'            => array(
-							'type' => 'string',
-						),
-						'countFontStyle'             => array(
-							'type' => 'string',
-						),
-						'countLineHeightType'        => array(
-							'type'    => 'string',
-							'default' => 'em',
-						),
-						'countLineHeight'            => array(
-							'type' => 'number',
-						),
-						'countLineHeightTablet'      => array(
-							'type' => 'number',
-						),
-						'countLineHeightMobile'      => array(
-							'type' => 'number',
-						),
-						'countLoadGoogleFonts'       => array(
-							'type'    => 'boolean',
-							'default' => false,
-						),
+							// Typograpghy attributes.
+							'titleFontSize'              => array(
+								'type' => 'number',
+							),
+							'titleFontSizeType'          => array(
+								'type'    => 'string',
+								'default' => 'px',
+							),
+							'titleFontSizeMobile'        => array(
+								'type' => 'number',
+							),
+							'titleFontSizeTablet'        => array(
+								'type' => 'number',
+							),
+							'titleFontFamily'            => array(
+								'type'    => 'string',
+								'default' => 'Default',
+							),
+							'titleFontWeight'            => array(
+								'type' => 'string',
+							),
+							'titleFontStyle'             => array(
+								'type' => 'string',
+							),
+							'titleLineHeightType'        => array(
+								'type'    => 'string',
+								'default' => 'em',
+							),
+							'titleLineHeight'            => array(
+								'type' => 'number',
+							),
+							'titleLineHeightTablet'      => array(
+								'type' => 'number',
+							),
+							'titleLineHeightMobile'      => array(
+								'type' => 'number',
+							),
+							'titleLoadGoogleFonts'       => array(
+								'type'    => 'boolean',
+								'default' => false,
+							),
+							'countFontSize'              => array(
+								'type' => 'number',
+							),
+							'countFontSizeType'          => array(
+								'type'    => 'string',
+								'default' => 'px',
+							),
+							'countFontSizeMobile'        => array(
+								'type' => 'number',
+							),
+							'countFontSizeTablet'        => array(
+								'type' => 'number',
+							),
+							'countFontFamily'            => array(
+								'type'    => 'string',
+								'default' => 'Default',
+							),
+							'countFontWeight'            => array(
+								'type' => 'string',
+							),
+							'countFontStyle'             => array(
+								'type' => 'string',
+							),
+							'countLineHeightType'        => array(
+								'type'    => 'string',
+								'default' => 'em',
+							),
+							'countLineHeight'            => array(
+								'type' => 'number',
+							),
+							'countLineHeightTablet'      => array(
+								'type' => 'number',
+							),
+							'countLineHeightMobile'      => array(
+								'type' => 'number',
+							),
+							'countLoadGoogleFonts'       => array(
+								'type'    => 'boolean',
+								'default' => false,
+							),
 
-						'listFontSize'               => array(
-							'type' => 'number',
-						),
-						'listFontSizeType'           => array(
-							'type'    => 'string',
-							'default' => 'px',
-						),
-						'listFontSizeMobile'         => array(
-							'type' => 'number',
-						),
-						'listFontSizeTablet'         => array(
-							'type' => 'number',
-						),
-						'listFontFamily'             => array(
-							'type'    => 'string',
-							'default' => 'Default',
-						),
-						'listFontWeight'             => array(
-							'type' => 'string',
-						),
-						'listFontStyle'              => array(
-							'type' => 'string',
-						),
-						'listLineHeightType'         => array(
-							'type'    => 'string',
-							'default' => 'em',
-						),
-						'listLineHeight'             => array(
-							'type' => 'number',
-						),
-						'listLineHeightTablet'       => array(
-							'type' => 'number',
-						),
-						'listLineHeightMobile'       => array(
-							'type' => 'number',
-						),
-						'listLoadGoogleFonts'        => array(
-							'type'    => 'boolean',
-							'default' => false,
-						),
-						'contentLeftPadding'         => array(
-							'type' => 'number',
-						),
-						'contentRightPadding'        => array(
-							'type' => 'number',
-						),
-						'contentTopPadding'          => array(
-							'type' => 'number',
-						),
-						'contentBottomPadding'       => array(
-							'type' => 'number',
-						),
-						'contentLeftPaddingTablet'   => array(
-							'type' => 'number',
-						),
-						'contentRightPaddingTablet'  => array(
-							'type' => 'number',
-						),
-						'contentTopPaddingTablet'    => array(
-							'type' => 'number',
-						),
-						'contentBottomPaddingTablet' => array(
-							'type' => 'number',
-						),
-						'contentLeftPaddingMobile'   => array(
-							'type' => 'number',
-						),
-						'contentRightPaddingMobile'  => array(
-							'type' => 'number',
-						),
-						'contentTopPaddingMobile'    => array(
-							'type' => 'number',
-						),
-						'contentBottomPaddingMobile' => array(
-							'type' => 'number',
-						),
-						'contentPaddingUnit'         => array(
-							'type'    => 'string',
-							'default' => 'px',
-						),
-						'mobileContentPaddingUnit'   => array(
-							'type'    => 'string',
-							'default' => 'px',
-						),
-						'tabletContentPaddingUnit'   => array(
-							'type'    => 'string',
-							'default' => 'px',
-						),
-						'contentPaddingLink'         => array(
-							'type'    => 'boolean',
-							'default' => false,
-						),
-						'titleTransform'             => array(
-							'type' => 'string',
-						),
-						'countTransform'             => array(
-							'type' => 'string',
-						),
-						'listTransform'              => array(
-							'type' => 'string',
-						),
-						'titleDecoration'            => array(
-							'type' => 'string',
-						),
-						'countDecoration'            => array(
-							'type' => 'string',
-						),
-						'listDecoration'             => array(
-							'type' => 'string',
-						),
-						'isPreview'                  => array(
-							'type'    => 'boolean',
-							'default' => false,
-						),
-						// letter spacing.
-						'titleLetterSpacing'         => array(
-							'type'    => 'number',
-							'default' => 0,
-						),
-						'titleLetterSpacingTablet'   => array(
-							'type' => 'number',
-						),
-						'titleLetterSpacingMobile'   => array(
-							'type' => 'number',
-						),
-						'titleLetterSpacingType'     => array(
-							'type'    => 'string',
-							'default' => 'px',
-						),
-						'countLetterSpacing'         => array(
-							'type' => 'number',
-						),
-						'countLetterSpacingTablet'   => array(
-							'type' => 'number',
-						),
-						'countLetterSpacingMobile'   => array(
-							'type' => 'number',
-						),
-						'countLetterSpacingType'     => array(
-							'type'    => 'string',
-							'default' => 'px',
-						),
-						'listLetterSpacing'          => array(
-							'type' => 'number',
-						),
-						'listLetterSpacingTablet'    => array(
-							'type' => 'number',
-						),
-						'listLetterSpacingMobile'    => array(
-							'type' => 'number',
-						),
-						'listLetterSpacingType'      => array(
-							'type'    => 'string',
-							'default' => 'px',
+							'listFontSize'               => array(
+								'type' => 'number',
+							),
+							'listFontSizeType'           => array(
+								'type'    => 'string',
+								'default' => 'px',
+							),
+							'listFontSizeMobile'         => array(
+								'type' => 'number',
+							),
+							'listFontSizeTablet'         => array(
+								'type' => 'number',
+							),
+							'listFontFamily'             => array(
+								'type'    => 'string',
+								'default' => 'Default',
+							),
+							'listFontWeight'             => array(
+								'type' => 'string',
+							),
+							'listFontStyle'              => array(
+								'type' => 'string',
+							),
+							'listLineHeightType'         => array(
+								'type'    => 'string',
+								'default' => 'em',
+							),
+							'listLineHeight'             => array(
+								'type' => 'number',
+							),
+							'listLineHeightTablet'       => array(
+								'type' => 'number',
+							),
+							'listLineHeightMobile'       => array(
+								'type' => 'number',
+							),
+							'listLoadGoogleFonts'        => array(
+								'type'    => 'boolean',
+								'default' => false,
+							),
+							'contentLeftPadding'         => array(
+								'type' => 'number',
+							),
+							'contentRightPadding'        => array(
+								'type' => 'number',
+							),
+							'contentTopPadding'          => array(
+								'type' => 'number',
+							),
+							'contentBottomPadding'       => array(
+								'type' => 'number',
+							),
+							'contentLeftPaddingTablet'   => array(
+								'type' => 'number',
+							),
+							'contentRightPaddingTablet'  => array(
+								'type' => 'number',
+							),
+							'contentTopPaddingTablet'    => array(
+								'type' => 'number',
+							),
+							'contentBottomPaddingTablet' => array(
+								'type' => 'number',
+							),
+							'contentLeftPaddingMobile'   => array(
+								'type' => 'number',
+							),
+							'contentRightPaddingMobile'  => array(
+								'type' => 'number',
+							),
+							'contentTopPaddingMobile'    => array(
+								'type' => 'number',
+							),
+							'contentBottomPaddingMobile' => array(
+								'type' => 'number',
+							),
+							'contentPaddingUnit'         => array(
+								'type'    => 'string',
+								'default' => 'px',
+							),
+							'mobileContentPaddingUnit'   => array(
+								'type'    => 'string',
+								'default' => 'px',
+							),
+							'tabletContentPaddingUnit'   => array(
+								'type'    => 'string',
+								'default' => 'px',
+							),
+							'contentPaddingLink'         => array(
+								'type'    => 'boolean',
+								'default' => false,
+							),
+							'titleTransform'             => array(
+								'type' => 'string',
+							),
+							'countTransform'             => array(
+								'type' => 'string',
+							),
+							'listTransform'              => array(
+								'type' => 'string',
+							),
+							'titleDecoration'            => array(
+								'type' => 'string',
+							),
+							'countDecoration'            => array(
+								'type' => 'string',
+							),
+							'listDecoration'             => array(
+								'type' => 'string',
+							),
+							'isPreview'                  => array(
+								'type'    => 'boolean',
+								'default' => false,
+							),
+							// letter spacing.
+							'titleLetterSpacing'         => array(
+								'type'    => 'number',
+								'default' => 0,
+							),
+							'titleLetterSpacingTablet'   => array(
+								'type' => 'number',
+							),
+							'titleLetterSpacingMobile'   => array(
+								'type' => 'number',
+							),
+							'titleLetterSpacingType'     => array(
+								'type'    => 'string',
+								'default' => 'px',
+							),
+							'countLetterSpacing'         => array(
+								'type' => 'number',
+							),
+							'countLetterSpacingTablet'   => array(
+								'type' => 'number',
+							),
+							'countLetterSpacingMobile'   => array(
+								'type' => 'number',
+							),
+							'countLetterSpacingType'     => array(
+								'type'    => 'string',
+								'default' => 'px',
+							),
+							'listLetterSpacing'          => array(
+								'type' => 'number',
+							),
+							'listLetterSpacingTablet'    => array(
+								'type' => 'number',
+							),
+							'listLetterSpacingMobile'    => array(
+								'type' => 'number',
+							),
+							'listLetterSpacingType'      => array(
+								'type'    => 'string',
+								'default' => 'px',
+							),
 						),
 					),
 					'render_callback' => array( $this, 'render_html' ),

@@ -3,7 +3,7 @@ import { __ } from '@wordpress/i18n';
 import lazyLoader from '@Controls/lazy-loader';
 import TypographyControl from '@Components/typography';
 import WebfontLoader from '@Components/typography/fontloader';
-import Border from '@Components/border';
+import ResponsiveBorder from '@Components/responsive-border';
 import MultiButtonsControl from '@Components/multi-buttons-control';
 import InspectorTabs from '@Components/inspector-tabs/InspectorTabs.js';
 import InspectorTab, {
@@ -65,11 +65,6 @@ const Settings = ( props ) => {
 		submitColorHover,
 		submitBgColor,
 		submitBgColorHover,
-		submitborderStyle,
-		submitborderWidth,
-		submitborderRadius,
-		submitborderColor,
-		submitborderHoverColor,
 		submitTextloadGoogleFonts,
 		submitTextFontFamily,
 		submitTextFontWeight,
@@ -113,11 +108,6 @@ const Settings = ( props ) => {
 		toggleActiveColor,
 		toggleDotColor,
 		toggleDotActiveColor,
-		toggleBorderStyle,
-		toggleBorderWidth,
-		toggleBorderRadius,
-		toggleBorderColor,
-		toggleBorderActiveColor,
 		labelColor,
 		labelHoverColor,
 		inputColor,
@@ -127,12 +117,6 @@ const Settings = ( props ) => {
 		inputplaceholderColor,
 		inputplaceholderHoverColor,
 		inputplaceholderActiveColor,
-		inputactiveColor,
-		inputborderStyle,
-		inputborderWidth,
-		inputborderRadius,
-		inputborderColor,
-		inputborderHoverColor,
 		fieldGap,
 		fieldGapTablet,
 		fieldGapMobile,
@@ -142,19 +126,9 @@ const Settings = ( props ) => {
 		reCaptchaType,
 		successMessageTextColor,
 		successMessageBGColor,
-		successMessageBorderColor,
-		successMessageBorderStyle,
-		successMessageBorderWidth,
 		failedMessageTextColor,
-		failedMessageBorderColor,
-		failedMessageBorderStyle,
-		failedMessageBorderWidth,
 		failedMessageBGColor,
 
-		successMessageBorderRadius,
-		successMessageHoverBorderColor,
-		failedMessageBorderRadius,
-		failedMessageHoverBorderColor,
 		paddingBtnTop,
 		paddingBtnRight,
 		paddingBtnBottom,
@@ -440,49 +414,12 @@ const Settings = ( props ) => {
 					} )
 				}
 			/>
-			<Border
-				disabledBorderTitle= {false}
+			<ResponsiveBorder
 				setAttributes={ setAttributes }
-				borderStyle={ {
-					value: successMessageBorderStyle,
-					label: 'successMessageBorderStyle',
-					title: __(
-						'Style',
-						'ultimate-addons-for-gutenberg'
-					),
-				} }
-				borderWidth={ {
-					value: successMessageBorderWidth,
-					label: 'successMessageBorderWidth',
-					title: __(
-						'Width',
-						'ultimate-addons-for-gutenberg'
-					),
-				} }
-				borderRadius={ {
-					value: successMessageBorderRadius,
-					label: 'successMessageBorderRadius',
-					title: __(
-						'Radius',
-						'ultimate-addons-for-gutenberg'
-					),
-				} }
-				borderColor={ {
-					value: successMessageBorderColor,
-					label: 'successMessageBorderColor',
-					title: __(
-						'Success Border Color',
-						'ultimate-addons-for-gutenberg'
-					),
-				} }
-				borderHoverColor={ {
-					value: successMessageHoverBorderColor,
-					label: 'successMessageHoverBorderColor',
-					title: __(
-						'Success Border Color',
-						'ultimate-addons-for-gutenberg'
-					),
-				} }
+				prefix={'successMsg'}
+				disabledBorderTitle= {false}
+				attributes={ attributes }
+				deviceType={deviceType}
 				disableBottomSeparator={ true }
 			/>
 		</>
@@ -517,49 +454,12 @@ const Settings = ( props ) => {
 					setAttributes( { failedMessageBGColor: value } )
 				}
 			/>
-			<Border
-				disabledBorderTitle= {false}
+			<ResponsiveBorder
 				setAttributes={ setAttributes }
-				borderStyle={ {
-					value: failedMessageBorderStyle,
-					label: 'failedMessageBorderStyle',
-					title: __(
-						'Style',
-						'ultimate-addons-for-gutenberg'
-					),
-				} }
-				borderWidth={ {
-					value: failedMessageBorderWidth,
-					label: 'failedMessageBorderWidth',
-					title: __(
-						'Width',
-						'ultimate-addons-for-gutenberg'
-					),
-				} }
-				borderRadius={ {
-					value: failedMessageBorderRadius,
-					label: 'failedMessageBorderRadius',
-					title: __(
-						'Radius',
-						'ultimate-addons-for-gutenberg'
-					),
-				} }
-				borderColor={ {
-					value: failedMessageBorderColor,
-					label: 'failedMessageBorderColor',
-					title: __(
-						'Error Border Color',
-						'ultimate-addons-for-gutenberg'
-					),
-				} }
-				borderHoverColor={ {
-					value: failedMessageHoverBorderColor,
-					label: 'failedMessageHoverBorderColor',
-					title: __(
-						'Error Border Color',
-						'ultimate-addons-for-gutenberg'
-					),
-				} }
+				prefix={'failedMsg'}
+				disabledBorderTitle= {false}
+				attributes={ attributes }
+				deviceType={deviceType}
 				disableBottomSeparator={ true }
 			/>
 		</>
@@ -918,49 +818,12 @@ const Settings = ( props ) => {
 				}
 				disableBottomSeparator={ false }
 			/>
-			<Border
-				disabledBorderTitle= {false}
+			<ResponsiveBorder
 				setAttributes={ setAttributes }
-				borderStyle={ {
-					value: inputborderStyle,
-					label: 'inputborderStyle',
-					title: __(
-						'Style',
-						'ultimate-addons-for-gutenberg'
-					),
-				} }
-				borderWidth={ {
-					value: inputborderWidth,
-					label: 'inputborderWidth',
-					title: __( 'Width', 'ultimate-addons-for-gutenberg' ),
-				} }
-				borderRadius={ {
-					value: inputborderRadius,
-					label: 'inputborderRadius',
-					title: __( 'Radius', 'ultimate-addons-for-gutenberg' ),
-				} }
-				borderColor={ {
-					value: inputborderColor,
-					label: 'inputborderColor',
-					title: __( 'Border Color', 'ultimate-addons-for-gutenberg' ),
-				} }
-				borderHoverColor={ {
-					value: inputborderHoverColor,
-					label: 'inputborderHoverColor',
-					title: __(
-						'Border Color',
-						'ultimate-addons-for-gutenberg'
-					),
-				} }
-				borderActiveColor={ {
-					value: inputactiveColor,
-					label: 'inputactiveColor',
-					title: __(
-						'Border Color',
-						'ultimate-addons-for-gutenberg'
-					),
-				} }
-				disableBottomSeparator={ false }
+				prefix={'field'}
+				disabledBorderTitle= {false}
+				attributes={ attributes }
+				deviceType={deviceType}
 			/>
 			<SpacingControl
 				{ ...props }
@@ -1240,40 +1103,12 @@ const Settings = ( props ) => {
 				}
 				disableBottomSeparator={ false }
 			/>
-			<Border
-				disabledBorderTitle= { false }
+			<ResponsiveBorder
 				setAttributes={ setAttributes }
-				borderStyle={ {
-					value: toggleBorderStyle,
-					label: 'toggleBorderStyle',
-					title: __(
-						'Style',
-						'ultimate-addons-for-gutenberg'
-					),
-				} }
-				borderWidth={ {
-					value: toggleBorderWidth,
-					label: 'toggleBorderWidth',
-					title: __( 'Width', 'ultimate-addons-for-gutenberg' ),
-				} }
-				borderRadius={ {
-					value: toggleBorderRadius,
-					label: 'toggleBorderRadius',
-					title: __( 'Checkbox Radius', 'ultimate-addons-for-gutenberg' ),
-				} }
-				borderColor={ {
-					value: toggleBorderColor,
-					label: 'toggleBorderColor',
-					title: __( 'Border Color', 'ultimate-addons-for-gutenberg' ),
-				} }
-				borderActiveColor={ {
-					value: toggleBorderActiveColor,
-					label: 'toggleBorderActiveColor',
-					title: __(
-						'Border Color',
-						'ultimate-addons-for-gutenberg'
-					),
-				} }
+				prefix={'checkBoxToggle'}
+				disabledBorderTitle= {false}
+				attributes={ attributes }
+				deviceType={deviceType}
 				disableBottomSeparator={ true }
 			/>
 		</UAGAdvancedPanelBody>
@@ -1541,38 +1376,12 @@ const Settings = ( props ) => {
 					</>
 				}
 			/>
-			<Border
-				disabledBorderTitle= {false}
+			<ResponsiveBorder
 				setAttributes={ setAttributes }
-				borderStyle={ {
-					value: submitborderStyle,
-					label: 'submitborderStyle',
-					title: __(
-						'Style',
-						'ultimate-addons-for-gutenberg'
-					),
-				} }
-				borderWidth={ {
-					value: submitborderWidth,
-					label: 'submitborderWidth',
-					title: __( 'Width', 'ultimate-addons-for-gutenberg' ),
-				} }
-				borderRadius={ {
-					value: submitborderRadius,
-					label: 'submitborderRadius',
-					title: __( 'Radius', 'ultimate-addons-for-gutenberg' ),
-				} }
-				borderColor={ {
-					value: submitborderColor,
-					label: 'submitborderColor',
-					title: __( 'Border Color', 'ultimate-addons-for-gutenberg' ),
-				} }
-				borderHoverColor={ {
-					value: submitborderHoverColor,
-					label: 'submitborderHoverColor',
-					title: __( 'Border Color', 'ultimate-addons-for-gutenberg' ),
-				} }
-				disableBottomSeparator={ false }
+				prefix={'btn'}
+				disabledBorderTitle= {false}
+				attributes={ attributes }
+				deviceType={deviceType}
 			/>
 			<TypographyControl
 				label={ __(

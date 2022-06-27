@@ -1,6 +1,10 @@
 /**
  * BLOCK: Call To Action - Attributes
  */
+import { getBorderAttributes } from '@Controls/generateAttributes';
+
+const borderAttributes = getBorderAttributes( 'btn' );
+const secondCtaBorderAttribute = getBorderAttributes( 'secondCta' );
 
 const attributes = {
 	inheritFromTheme: {
@@ -239,14 +243,12 @@ const attributes = {
 	},
 	titleSpaceTablet: {
 		type: 'number',
-		default: 10,
 		UAGCopyPaste: {
 			styleType: 'main-title-bottom-margin-tablet'
 		},
 	},
 	titleSpaceMobile: {
 		type: 'number',
-		default: 10,
 		UAGCopyPaste: {
 			styleType: 'main-title-bottom-margin-mobile'
 		},
@@ -267,14 +269,12 @@ const attributes = {
 	},
 	descSpaceTablet: {
 		type: 'number',
-		default: 10,
 		UAGCopyPaste: {
 			styleType: 'desc-bottom-margin-tablet'
 		},
 	},
 	descSpaceMobile: {
 		type: 'number',
-		default: 10,
 		UAGCopyPaste: {
 			styleType: 'desc-bottom-margin-mobile'
 		},
@@ -414,14 +414,12 @@ const attributes = {
 	},
 	contentWidthTablet: {
 		type: 'number',
-		default: 70,
 		UAGCopyPaste: {
 			styleType: 'desc-width'
 		},
 	},
 	contentWidthMobile: {
 		type: 'number',
-		default: 70,
 		UAGCopyPaste: {
 			styleType: 'desc-width'
 		},
@@ -462,23 +460,13 @@ const attributes = {
 	},
 	ctaBorderColor: {
 		type: 'string',
-		UAGCopyPaste: {
-			styleType: 'btn-border-color'
-		},
 	},
 	ctaBorderhoverColor: {
 		type: 'string',
-		UAGCopyPaste: {
-			styleType: 'btn-border-hover-color'
-		},
 		default: '',
 	},
 	ctaBorderStyle: {
 		type: 'string',
-		UAGCopyPaste: {
-			styleType: 'btn-border-style'
-		},
-		default: 'none',
 	},
 	ctaBtnVertPadding: {
 		type: 'number',
@@ -496,17 +484,9 @@ const attributes = {
 	},
 	ctaBorderWidth: {
 		type: 'number',
-		UAGCopyPaste: {
-			styleType: 'btn-border-width'
-		},
-		default: '',
 	},
 	ctaBorderRadius: {
 		type: 'number',
-		UAGCopyPaste: {
-			styleType: 'btn-border-radius'
-		},
-		default: '',
 	},
 	stack: {
 		type: 'string',
@@ -514,7 +494,7 @@ const attributes = {
 	},
 	ctaLeftSpace: {
 		type: 'number',
-		default: 5,
+		default: 0,
 		UAGCopyPaste: {
 			styleType: 'btn-right-margin'
 		},
@@ -771,37 +751,22 @@ const attributes = {
 	secondCtaBorderWidth: {
 		type: 'number',
 		default: '',
-		UAGCopyPaste: {
-			styleType: 'btn-border-width'
-		}
 	},
 	secondCtaBorderRadius: {
 		type: 'number',
 		default: '',
-		UAGCopyPaste: {
-			styleType: 'btn-border-radius'
-		}
 	},
 	secondCtaBorderStyle: {
 		type: 'string',
 		default: 'none',
-		UAGCopyPaste: {
-			styleType: 'btn-border-style'
-		}
 	},
 	secondCtaBorderColor: {
 		type: 'string',
-		UAGCopyPaste: {
-			styleType: 'btn-border-color'
-		},
 		default: '',
 	},
 	secondCtaBorderHColor: {
 		type: 'string',
 		default: '',
-		UAGCopyPaste: {
-			styleType: 'btn-border-hover-color'
-		}
 	},
 	secondCtaColor: {
 		type: 'string',
@@ -900,11 +865,9 @@ const attributes = {
 	},
 	gapBtnTablet: {
 		type: 'number',
-		default: 15
 	},
 	gapBtnMobile: {
 		type: 'number',
-		default: 15
 	},
 	textAlignTablet: {
 		type: 'string',
@@ -1117,14 +1080,12 @@ const attributes = {
 	},
 	buttonRightSpaceTablet: {
 		type: 'number',
-		default: 10,
 		UAGCopyPaste: {
 			styleType: 'main-button-bottom-margin-tablet'
 		},
 	},
 	buttonRightSpaceMobile: {
 		type: 'number',
-		default: 10,
 		UAGCopyPaste: {
 			styleType: 'main-button-bottom-margin-mobile'
 		},
@@ -1136,6 +1097,8 @@ const attributes = {
 			styleType: 'main-button-unit-type'
 		},
 	},
+	...borderAttributes,
+	...secondCtaBorderAttribute,
 	titleLetterSpacing: {
 		type: 'number',
 		UAGCopyPaste: {

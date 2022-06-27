@@ -4,7 +4,7 @@ import React, { Suspense } from 'react';
 import lazyLoader from '@Controls/lazy-loader';
 import TypographyControl from '@Components/typography';
 import WebfontLoader from '@Components/typography/fontloader';
-import Border from '@Components/border';
+import ResponsiveBorder from '@Components/responsive-border';
 import AdvancedPopColorControl from '@Components/color-control/advanced-pop-color-control.js';
 import InspectorTabs from '@Components/inspector-tabs/InspectorTabs.js';
 import InspectorTab, {
@@ -152,11 +152,6 @@ const Settings = ( props ) => {
 		paddingBtnRightMobile,
 		paddingBtnBottomMobile,
 		paddingBtnLeftMobile,
-		ctaBorderStyle,
-		ctaBorderColor,
-		ctaBorderhoverColor,
-		ctaBorderWidth,
-		ctaBorderRadius,
 		iconLeftMargin,
 		iconRightMargin,
 		iconTopMargin,
@@ -2352,49 +2347,12 @@ const Settings = ( props ) => {
 											} }
 										/>
 										<hr className="uagb-editor__separator" />
-										<Border
+										<ResponsiveBorder
 											disabledBorderTitle= {false}
 											setAttributes={ setAttributes }
-											borderStyle={ {
-												value: ctaBorderStyle,
-												label: 'ctaBorderStyle',
-												title: __(
-													'Style',
-													'ultimate-addons-for-gutenberg'
-												),
-											} }
-											borderWidth={ {
-												value: ctaBorderWidth,
-												label: 'ctaBorderWidth',
-												title: __(
-													'Width',
-													'ultimate-addons-for-gutenberg'
-												),
-											} }
-											borderRadius={ {
-												value: ctaBorderRadius,
-												label: 'ctaBorderRadius',
-												title: __(
-													'Radius',
-													'ultimate-addons-for-gutenberg'
-												),
-											} }
-											borderColor={ {
-												value: ctaBorderColor,
-												label: 'ctaBorderColor',
-												title: __(
-													'Color',
-													'ultimate-addons-for-gutenberg'
-												),
-											} }
-											borderHoverColor={ {
-												value: ctaBorderhoverColor,
-												label: 'ctaBorderhoverColor',
-												title: __(
-													'Hover Color',
-													'ultimate-addons-for-gutenberg'
-												),
-											} }
+											prefix={'btn'}
+											attributes={ attributes }
+											deviceType={deviceType}
 											disableBottomSeparator={ true }
 										/>
 									</>

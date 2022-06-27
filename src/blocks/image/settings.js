@@ -9,7 +9,6 @@ import InspectorTab, {
 import AdvancedPopColorControl from '@Components/color-control/advanced-pop-color-control.js';
 import SpacingControl from '@Components/spacing-control';
 import Range from '@Components/range/Range.js';
-import Border from '@Components/border';
 import UAGImage from '@Components/image';
 import BoxShadowControl from '@Components/box-shadow';
 import { useSelect } from '@wordpress/data';
@@ -22,7 +21,6 @@ import {
 	InspectorControls,
 } from '@wordpress/block-editor';
 import {
-	RangeControl,
 	TextControl,
 	SelectControl,
 	__experimentalAlignmentMatrixControl as AlignmentMatrixControl,
@@ -31,7 +29,7 @@ import {
 } from '@wordpress/components';
 import renderSVG from '@Controls/renderIcon';
 import ImageSizeControl from '@Components/image-size-control'
-
+import ResponsiveBorder from '@Components/responsive-border'
 import { store as coreStore } from '@wordpress/core-data';
 // Extend component
 import UAGAdvancedPanelBody from '@Components/advanced-panel-body';
@@ -47,6 +45,8 @@ export default function Settings( props ) {
 		layout,
 		id,
 		url,
+		urlTablet,
+		urlMobile,
 		width,
 		widthTablet,
 		widthMobile,
@@ -153,11 +153,6 @@ export default function Settings( props ) {
 		overlayBackground,
 		overlayOpacity,
 		overlayHoverOpacity,
-		overlayBorderStyle,
-		overlayBorderWidth,
-		overlayBorderRadius,
-		overlayBorderColor,
-		overlayBorderHoverColor,
 		// seperator
 		seperatorShowOn,
 		seperatorStyle,
@@ -185,12 +180,6 @@ export default function Settings( props ) {
 		seperatorMarginLink,
 		// effect
 		imageHoverEffect,
-		// border
-		imageBorderWidth,
-		imageBorderStyle,
-		imageBorderRadius,
-		imageBorderColor,
-		imageBorderhoverColor,
 		// shadow
 		imageBoxShadowColor,
 		imageBoxShadowHOffset,
@@ -262,7 +251,7 @@ export default function Settings( props ) {
 
 	function updateImage( newSizeSlug ) {
 		const newUrl = image?.media_details?.sizes[newSizeSlug]
-		if ( ! newUrl ) {
+		if ( ! newUrl || newUrl?.source_url === url ) {
 			return null;
 		}
 		setAttributes( {
@@ -275,7 +264,7 @@ export default function Settings( props ) {
 
 	function updateTabletImage( newSizeSlug ) {
 		const newUrl = image?.media_details?.sizes[newSizeSlug]
-		if ( ! newUrl ) {
+		if ( ! newUrl || newUrl?.source_url === urlTablet ) {
 			return null;
 		}
 		setAttributes( {
@@ -288,7 +277,7 @@ export default function Settings( props ) {
 
 	function updateMobileImage( newSizeSlug ) {
 		const newUrl = image?.media_details?.sizes[newSizeSlug]
-		if ( ! newUrl ) {
+		if ( ! newUrl || newUrl?.source_url === urlMobile ) {
 			return null;
 		}
 		setAttributes( {
@@ -1420,37 +1409,11 @@ export default function Settings( props ) {
 			/>
 			{
 				layout === 'default' && (
-					<Border
+					<ResponsiveBorder
 						setAttributes={ setAttributes }
-						borderStyle={ {
-							value: imageBorderStyle,
-							label: 'imageBorderStyle',
-							title: __( 'Style', 'ultimate-addons-for-gutenberg' ),
-						} }
-						borderWidth={ {
-							value: imageBorderWidth,
-							label: 'imageBorderWidth',
-							title: __( 'Width', 'ultimate-addons-for-gutenberg' ),
-						} }
-						borderRadius={ {
-							value: imageBorderRadius,
-							label: 'imageBorderRadius',
-							title: __( 'Radius', 'ultimate-addons-for-gutenberg' ),
-						} }
-						borderColor={ {
-							value: imageBorderColor,
-							label: 'imageBorderColor',
-							title: __( 'Color', 'ultimate-addons-for-gutenberg' ),
-						} }
-						borderHoverColor={ {
-							value: imageBorderhoverColor,
-							label: 'imageBorderhoverColor',
-							title: __(
-								'Hover Color',
-								'ultimate-addons-for-gutenberg'
-							),
-						} }
-						disableBottomSeparator={ true }
+						prefix={'image'}
+						attributes={ attributes }
+						deviceType={deviceType}
 					/>
 				)
 			}
@@ -1465,37 +1428,11 @@ export default function Settings( props ) {
 						value={ overlayContentPosition }
 						onChange={ ( newAlignment ) =>  setAttributes( {overlayContentPosition: newAlignment} ) }
 					/>
-					<Border
+					<ResponsiveBorder
 						setAttributes={ setAttributes }
-						borderStyle={ {
-							value: overlayBorderStyle,
-							label: 'overlayBorderStyle',
-							title: __( 'Style', 'ultimate-addons-for-gutenberg' ),
-						} }
-						borderWidth={ {
-							value: overlayBorderWidth,
-							label: 'overlayBorderWidth',
-							title: __( 'Width', 'ultimate-addons-for-gutenberg' ),
-						} }
-						borderRadius={ {
-							value: overlayBorderRadius,
-							label: 'overlayBorderRadius',
-							title: __( 'Radius', 'ultimate-addons-for-gutenberg' ),
-						} }
-						borderColor={ {
-							value: overlayBorderColor,
-							label: 'overlayBorderColor',
-							title: __( 'Color', 'ultimate-addons-for-gutenberg' ),
-						} }
-						borderHoverColor={ {
-							value: overlayBorderHoverColor,
-							label: 'overlayBorderHoverColor',
-							title: __(
-								'Hover Color',
-								'ultimate-addons-for-gutenberg'
-							),
-						} }
-						disableBottomSeparator={ false }
+						prefix={'overlay'}
+						attributes={ attributes }
+						deviceType={deviceType}
 					/>
 					<Range
 						label={ __(
@@ -1639,6 +1576,7 @@ export default function Settings( props ) {
 								'ultimate-addons-for-gutenberg'
 							),
 						} }
+						popup={ true }
 					/>
 				)
 			}
@@ -1657,11 +1595,12 @@ export default function Settings( props ) {
 					setAttributes( { overlayBackground: value } )
 				}
 			/>
-			<RangeControl
+			<Range
 				label={ __(
 					'Overlay Opacity',
 					'ultimate-addons-for-gutenberg'
 				) }
+				setAttributes={ setAttributes }
 				value={ overlayOpacity }
 				onChange={ ( value ) =>
 					setAttributes( {
@@ -1671,12 +1610,14 @@ export default function Settings( props ) {
 				min={ 0 }
 				max={ 1 }
 				step={0.1}
+				displayUnit={ false }
 			/>
-			<RangeControl
+			<Range
 				label={ __(
 					'Overlay Hover Opacity',
 					'ultimate-addons-for-gutenberg'
 				) }
+				setAttributes={ setAttributes }
 				value={ overlayHoverOpacity }
 				onChange={ ( value ) =>
 					setAttributes( {
@@ -1686,6 +1627,7 @@ export default function Settings( props ) {
 				min={ 0 }
 				max={ 1 }
 				step={0.1}
+				displayUnit={ false }
 			/>
 		</UAGAdvancedPanelBody>
 	)

@@ -24,6 +24,10 @@
 	font-style: initial;
 }
 
+.uagb-ifb-content .uagb-ifb-icon-wrap svg {
+	box-sizing: content-box;
+}
+
 .uagb-ifb-button-wrapper:empty {
 	display: none;
 }

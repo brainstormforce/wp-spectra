@@ -28,7 +28,7 @@ const Render = ( props ) => {
 
 	props = props.parentProps;
 
-	const { attributes, categoriesList, latestPosts, deviceType } = props;
+	const { attributes, categoriesList, latestPosts, deviceType, name } = props;
 
 	const renderEditMode = () => {
 		const onDone = () => {
@@ -50,7 +50,7 @@ const Render = ( props ) => {
 		const onReset = () => {
 			const { block, replaceInnerBlocks } = props;
 			const newBlocks = [];
-			DEFAULT_POST_LIST_LAYOUT.map( ( [ name, attribute ] ) => {
+			DEFAULT_POST_LIST_LAYOUT.map( ( [ name, attribute ] ) => { // eslint-disable-line no-shadow
 				newBlocks.push( createBlock( name, attribute ) );
 				return true;
 			} );
@@ -120,6 +120,7 @@ const Render = ( props ) => {
 				block_id={ props.clientId.substr( 0, 8 ) }
 				categoriesList={ categoriesList }
 				deviceType={ deviceType }
+				name={ name }
 			/>
 		</Disabled>
 	);
