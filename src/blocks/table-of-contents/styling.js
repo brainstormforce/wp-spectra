@@ -2,10 +2,15 @@
  * Returns Dynamic Generated CSS
  */
 
+import generateBorderCSS from '@Controls/generateBorderCSS';
 import generateCSS from '@Controls/generateCSS';
 import generateCSSUnit from '@Controls/generateCSSUnit';
+import { getFallbackNumber } from '@Controls/getAttributeFallback';
 
 function styling( props ) {
+
+	const blockName = props.name.replace( 'uagb/', '' );
+
 	const {
 		customWidth,
 		makeCollapsible,
@@ -72,11 +77,6 @@ function styling( props ) {
 		contentPaddingTypeDesktop,
 		contentPaddingTypeTablet,
 		contentPaddingTypeMobile,
-		//Border
-		borderStyle,
-		borderWidth,
-		borderRadius,
-		borderColor,
 		//Typography
 		fontFamily,
 		fontWeight,
@@ -99,7 +99,7 @@ function styling( props ) {
 		headingLineHeightTablet,
 		headingLineHeightMobile,
 		disableBullets,
-		borderHoverColor,
+		overallBorderHColor,
 		fontStyle,
 		fontTransform,
 		fontDecoration,
@@ -107,12 +107,29 @@ function styling( props ) {
 		headingTransform,
 		headingDecoration,
 		headingAlignment,
+		headingLetterSpacing,
+		headingLetterSpacingTablet,
+		headingLetterSpacingMobile,
+		headingLetterSpacingType,
+		listLetterSpacing,
+		listLetterSpacingTablet,
+		listLetterSpacingMobile,
+		listLetterSpacingType,
 		markerView
 	} = props.attributes;
+
+	const tColumnsDesktopFallback = getFallbackNumber( tColumnsDesktop, 'tColumnsDesktop', blockName );
+	const tColumnsTabletFallback = getFallbackNumber( tColumnsTablet, 'tColumnsTablet', blockName );
+	const tColumnsMobileFallback = getFallbackNumber( tColumnsMobile, 'tColumnsMobile', blockName );
+	const widthDesktopFallback = getFallbackNumber( widthDesktop, 'widthDesktop', blockName );
 
 	let selectors = {};
 	let tablet_selectors = {};
 	let mobile_selectors = {};
+
+	const overallBorderCSS = generateBorderCSS( props.attributes, 'overall' )
+	const overallBorderCSSTablet = generateBorderCSS( props.attributes, 'overall', 'tablet' )
+	const overallBorderCSSMobile = generateBorderCSS( props.attributes, 'overall', 'mobile' )
 
 	selectors = {
 		' .uagb-toc__list-wrap ul li': {
@@ -130,6 +147,7 @@ function styling( props ) {
 			'text-transform': fontTransform,
 			'font-weight': fontWeight,
 			'color': linkColor,
+			'letter-spacing': generateCSSUnit( listLetterSpacing, listLetterSpacingType ),
 		},
 		' .uagb-toc__title-wrap': {
 			'justify-content': align,
@@ -152,15 +170,13 @@ function styling( props ) {
 			'text-transform': headingTransform,
 			'font-weight': headingFontWeight,
 			'color': headingColor,
+			'letter-spacing': generateCSSUnit( headingLetterSpacing, headingLetterSpacingType ),
 		},
 		' .uagb-toc__list-wrap ol li a:hover': {
 			'color': linkHoverColor,
 		},
 		' .uagb-toc__wrap': {
-			'border-style': borderStyle,
-			'border-width': generateCSSUnit( borderWidth, 'px' ),
-			'border-color': borderColor,
-			'border-radius': generateCSSUnit( borderRadius, 'px' ),
+			...overallBorderCSS,
 			'padding-left': generateCSSUnit( leftPadding, paddingTypeDesktop ),
 			'padding-right': generateCSSUnit(
 				rightPadding,
@@ -174,7 +190,7 @@ function styling( props ) {
 			'background': backgroundColor,
 		},
 		' .uagb-toc__wrap:hover': {
-			'border-color': borderHoverColor,
+			'border-color': overallBorderHColor,
 		},
 		' .uagb-toc__list-wrap ol.uagb-toc__list:first-child': {
 			'margin-left': generateCSSUnit( leftMargin, marginTypeDesktop ),
@@ -235,13 +251,13 @@ function styling( props ) {
 	};
 
 	selectors[ ' .uagb-toc__list-wrap' ] = {
-		'column-count': tColumnsDesktop,
+		'column-count': tColumnsDesktopFallback,
 		'overflow': 'hidden',
 	};
 
 	if ( customWidth ) {
 		selectors[ ' .uagb-toc__wrap' ].width = generateCSSUnit(
-			widthDesktop,
+			widthDesktopFallback,
 			widthTypeDesktop
 		);
 	}
@@ -272,6 +288,7 @@ function styling( props ) {
 		' .uagb-toc__list-wrap ol li a': {
 			'font-size': generateCSSUnit( fontSizeTablet, fontSizeType ),
 			'line-height': generateCSSUnit( lineHeightTablet, lineHeightType ),
+			'letter-spacing': generateCSSUnit( listLetterSpacingTablet, listLetterSpacingType ),
 		},
 		' .uagb-toc__title': {
 			'font-size': generateCSSUnit(
@@ -283,8 +300,10 @@ function styling( props ) {
 				headingLineHeightType
 			),
 			'margin-bottom': generateCSSUnit( headingBottomTablet, headingBottomType ),
+			'letter-spacing': generateCSSUnit( headingLetterSpacingTablet, headingLetterSpacingType ),
 		},
 		' .uagb-toc__wrap': {
+			...overallBorderCSSTablet,
 			'width': generateCSSUnit( widthTablet, widthTypeTablet ),
 			'padding-left': generateCSSUnit(
 				leftPaddingTablet,
@@ -319,7 +338,7 @@ function styling( props ) {
 			),
 		},
 		' .uagb-toc__list-wrap': {
-			'column-count': tColumnsTablet,
+			'column-count': tColumnsTabletFallback,
 			'overflow': 'hidden',
 		},
 
@@ -379,6 +398,7 @@ function styling( props ) {
 		' .uagb-toc__list-wrap ol li a': {
 			'font-size': generateCSSUnit( fontSizeMobile, fontSizeType ),
 			'line-height': generateCSSUnit( lineHeightMobile, lineHeightType ),
+			'letter-spacing': generateCSSUnit( listLetterSpacingMobile, listLetterSpacingType ),
 		},
 		' .uagb-toc__title': {
 			'font-size': generateCSSUnit(
@@ -390,8 +410,10 @@ function styling( props ) {
 				headingLineHeightType
 			),
 			'margin-bottom': generateCSSUnit( headingBottomMobile, headingBottomType ),
+			'letter-spacing': generateCSSUnit( headingLetterSpacingMobile, headingLetterSpacingType ),
 		},
 		' .uagb-toc__wrap': {
+			...overallBorderCSSMobile,
 			'width': generateCSSUnit( widthMobile, widthTypeMobile ),
 			'padding-left': generateCSSUnit(
 				leftPaddingMobile,
@@ -426,7 +448,7 @@ function styling( props ) {
 			),
 		},
 		' .uagb-toc__list-wrap': {
-			'column-count': tColumnsMobile,
+			'column-count': tColumnsMobileFallback,
 			'overflow': 'hidden',
 		},
 		' .uagb-toc__list-wrap > ol.uagb-toc__list > li:first-child': {

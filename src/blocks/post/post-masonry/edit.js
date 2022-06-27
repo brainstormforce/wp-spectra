@@ -7,7 +7,7 @@ import lazyLoader from '@Controls/lazy-loader';
 import styling from '.././styling';
 import { compose } from '@wordpress/compose';
 import TypographyControl from '@Components/typography';
-import Border from '@Components/border';
+import ResponsiveBorder from '@Components/responsive-border';
 import AdvancedPopColorControl from '@Components/color-control/advanced-pop-color-control.js';
 import InspectorTabs from '@Components/inspector-tabs/InspectorTabs.js';
 import InspectorTab, {
@@ -21,6 +21,8 @@ import renderSVG from '@Controls/renderIcon';
 import MultiButtonsControl from '@Components/multi-buttons-control';
 import UAGAdvancedPanelBody from '@Components/advanced-panel-body';
 import addBlockEditorDynamicStyles from '@Controls/addBlockEditorDynamicStyles';
+import { getFallbackNumber } from '@Controls/getAttributeFallback';
+import { migrateBorderAttributes } from '@Controls/generateAttributes';
 
 const Settings = lazy( () =>
 	import(
@@ -246,6 +248,35 @@ const UAGBPostMasonry = ( props ) => {
 	}, [] );
 
 	useEffect( () => {
+		const {
+			borderStyle,
+			borderWidth,
+			borderColor,
+			borderHColor,
+			borderRadius
+		} = props.attributes;
+
+		if( borderWidth || borderRadius || borderColor || borderHColor || borderStyle ){
+			const migrationAttributes = migrateBorderAttributes( 'btn', {
+				label: 'borderWidth',
+				value: borderWidth,
+			}, {
+				label: 'borderRadius',
+				value: borderRadius
+			}, {
+				label: 'borderColor',
+				value: borderColor
+			}, {
+				label: 'borderHColor',
+				value: borderHColor
+			},{
+				label: 'borderStyle',
+				value: borderStyle
+			}
+			);
+			props.setAttributes( migrationAttributes )
+		};
+	
 		// Replacement for componentDidUpdate.
 		const blockStyling = styling( props );
 
@@ -306,11 +337,6 @@ const UAGBPostMasonry = ( props ) => {
 		displayPostLink,
 		newTab,
 		ctaText,
-		borderWidth,
-		borderStyle,
-		borderColor,
-		borderHColor,
-		borderRadius,
 		columns,
 		tcolumns,
 		mcolumns,
@@ -411,11 +437,6 @@ const UAGBPostMasonry = ( props ) => {
 		paginationTextHoverColor,
 		paginationMasonryBgColor,
 		paginationBgHoverColor,
-		paginationMasonryBorderStyle,
-		paginationMasonryBorderWidth,
-		paginationMasonryBorderRadius,
-		paginationMasonryBorderColor,
-		paginationMasonryBorderHColor,
 		paginationFontSize,
 		loaderColor,
 		loaderSize,
@@ -489,7 +510,23 @@ const UAGBPostMasonry = ( props ) => {
 		displayPostTaxonomyAboveTitle,
 		hideTaxonomyIcon,
 		highlightedTextColor,
-		highlightedTextBgColor
+		highlightedTextBgColor,
+		titleLetterSpacing,
+		titleLetterSpacingTablet,
+		titleLetterSpacingMobile,
+		titleLetterSpacingType,
+		metaLetterSpacing,
+		metaLetterSpacingTablet,
+		metaLetterSpacingMobile,
+		metaLetterSpacingType,
+		excerptLetterSpacing,
+		excerptLetterSpacingTablet,
+		excerptLetterSpacingMobile,
+		excerptLetterSpacingType,
+		ctaLetterSpacing,
+		ctaLetterSpacingTablet,
+		ctaLetterSpacingMobile,
+		ctaLetterSpacingType,
 	} = attributes;
 
 	const taxonomyListOptions = [];
@@ -1056,50 +1093,13 @@ const UAGBPostMasonry = ( props ) => {
 								}
 								disableBottomSeparator={ false }
 							/>
-							<Border
-								disabledBorderTitle= {false}
+							<ResponsiveBorder
 								setAttributes={ setAttributes }
+								prefix={ 'paginationMasonry' }
+								attributes={ attributes }
+								deviceType={ deviceType }
 								disableBottomSeparator={ true }
-								borderStyle={ {
-									value: paginationMasonryBorderStyle,
-									label: 'paginationMasonryBorderStyle',
-									title: __(
-										'Style',
-										'ultimate-addons-for-gutenberg'
-									),
-								} }
-								borderWidth={ {
-									value: paginationMasonryBorderWidth,
-									label: 'paginationMasonryBorderWidth',
-									title: __(
-										'Width',
-										'ultimate-addons-for-gutenberg'
-									),
-								} }
-								borderRadius={ {
-									value: paginationMasonryBorderRadius,
-									label: 'paginationMasonryBorderRadius',
-									title: __(
-										'Radius',
-										'ultimate-addons-for-gutenberg'
-									),
-								} }
-								borderColor={ {
-									value: paginationMasonryBorderColor,
-									label: 'paginationMasonryBorderColor',
-									title: __(
-										'Color',
-										'ultimate-addons-for-gutenberg'
-									),
-								} }
-								borderHoverColor={ {
-									value: paginationMasonryBorderHColor,
-									label: 'paginationMasonryBorderHColor',
-									title: __(
-										'Hover Color',
-										'ultimate-addons-for-gutenberg'
-									),
-								} }
+								disabledBorderTitle= { true }
 							/>
 						</>
 					) }
@@ -1780,6 +1780,22 @@ const UAGBPostMasonry = ( props ) => {
 						value: titleLineHeightTablet,
 						label: 'titleLineHeightTablet',
 					} }
+					letterSpacing={ {
+						value: titleLetterSpacing,
+						label: 'titleLetterSpacing',
+					} }
+					letterSpacingTablet={ {
+						value: titleLetterSpacingTablet,
+						label: 'titleLetterSpacingTablet',
+					} }
+					letterSpacingMobile={ {
+						value: titleLetterSpacingMobile,
+						label: 'titleLetterSpacingMobile',
+					} }
+					letterSpacingType={ {
+						value: titleLetterSpacingType,
+						label: 'titleLetterSpacingType',
+					} }
 					transform={ {
 						value: titleTransform,
 						label: 'titleTransform',
@@ -1903,6 +1919,22 @@ const UAGBPostMasonry = ( props ) => {
 						value: metaLineHeightTablet,
 						label: 'metaLineHeightTablet',
 					} }
+					letterSpacing={ {
+						value: metaLetterSpacing,
+						label: 'metaLetterSpacing',
+					} }
+					letterSpacingTablet={ {
+						value: metaLetterSpacingTablet,
+						label: 'metaLetterSpacingTablet',
+					} }
+					letterSpacingMobile={ {
+						value: metaLetterSpacingMobile,
+						label: 'metaLetterSpacingMobile',
+					} }
+					letterSpacingType={ {
+						value: metaLetterSpacingType,
+						label: 'metaLetterSpacingType',
+					} }
 					transform={ {
 						value: metaTransform,
 						label: 'metaTransform',
@@ -2006,6 +2038,22 @@ const UAGBPostMasonry = ( props ) => {
 					lineHeightTablet={ {
 						value: excerptLineHeightTablet,
 						label: 'excerptLineHeightTablet',
+					} }
+					letterSpacing={ {
+						value: excerptLetterSpacing,
+						label: 'excerptLetterSpacing',
+					} }
+					letterSpacingTablet={ {
+						value: excerptLetterSpacingTablet,
+						label: 'excerptLetterSpacingTablet',
+					} }
+					letterSpacingMobile={ {
+						value: excerptLetterSpacingMobile,
+						label: 'excerptLetterSpacingMobile',
+					} }
+					letterSpacingType={ {
+						value: excerptLetterSpacingType,
+						label: 'excerptLetterSpacingType',
 					} }
 					transform={ {
 						value: excerptTransform,
@@ -2174,6 +2222,22 @@ const UAGBPostMasonry = ( props ) => {
 						value: ctaLineHeightTablet,
 						label: 'ctaLineHeightTablet',
 					} }
+					letterSpacing={ {
+						value: ctaLetterSpacing,
+						label: 'ctaLetterSpacing',
+					} }
+					letterSpacingTablet={ {
+						value: ctaLetterSpacingTablet,
+						label: 'ctaLetterSpacingTablet',
+					} }
+					letterSpacingMobile={ {
+						value: ctaLetterSpacingMobile,
+						label: 'ctaLetterSpacingMobile',
+					} }
+					letterSpacingType={ {
+						value: ctaLetterSpacingType,
+						label: 'ctaLetterSpacingType',
+					} }
 					transform={ {
 						value: ctaTransform,
 						label: 'ctaTransform',
@@ -2207,50 +2271,12 @@ const UAGBPostMasonry = ( props ) => {
 					} }
 					setAttributes={ setAttributes }
 				/>
-				<Border
-					disabledBorderTitle= {false}
+				<ResponsiveBorder
 					setAttributes={ setAttributes }
-					disableBottomSeparator={ false }
-					borderStyle={ {
-						value: borderStyle,
-						label: 'borderStyle',
-						title: __(
-							'Style',
-							'ultimate-addons-for-gutenberg'
-						),
-					} }
-					borderWidth={ {
-						value: borderWidth,
-						label: 'borderWidth',
-						title: __(
-							'Width',
-							'ultimate-addons-for-gutenberg'
-						),
-					} }
-					borderRadius={ {
-						value: borderRadius,
-						label: 'borderRadius',
-						title: __(
-							'Radius',
-							'ultimate-addons-for-gutenberg'
-						),
-					} }
-					borderColor={ {
-						value: borderColor,
-						label: 'borderColor',
-						title: __(
-							'Color',
-							'ultimate-addons-for-gutenberg'
-						),
-					} }
-					borderHoverColor={ {
-						value: borderHColor,
-						label: 'borderHColor',
-						title: __(
-							'Hover Color',
-							'ultimate-addons-for-gutenberg'
-						),
-					} }
+					prefix={ 'btn' }
+					attributes={ attributes }
+					deviceType={ deviceType }
+					disabledBorderTitle= { true }
 				/>
 				<SpacingControl
 					{ ...props }
@@ -2399,6 +2425,7 @@ const UAGBPostMasonry = ( props ) => {
 export default compose(
 	withSelect( ( select, props ) => {
 		const {
+			blockName,
 			categories,
 			postsToShow,
 			postsOffset,
@@ -2437,8 +2464,8 @@ export default compose(
 		const latestPostsQuery = {
 			order,
 			orderby: orderBy,
-			per_page: postsToShow,
-			offset: postsOffset
+			per_page: getFallbackNumber( postsToShow, 'postsToShow', blockName ),
+			offset: getFallbackNumber( postsOffset, 'postsOffset', blockName ),
 		};
 
 		if ( excludeCurrentPost ) {

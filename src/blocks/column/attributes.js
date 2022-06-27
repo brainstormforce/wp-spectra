@@ -1,6 +1,9 @@
 /**
  * BLOCK: Column - Attributes
  */
+import { getBorderAttributes } from '@Controls/generateAttributes';
+
+const borderAttributes = getBorderAttributes( 'column' );
 
 const attributes = {
 	block_id: {
@@ -330,34 +333,18 @@ const attributes = {
 	borderStyle: {
 		type: 'string',
 		default: 'none',
-		UAGCopyPaste: {
-			styleType: 'overall-border-style'
-		}
 	},
 	borderWidth: {
 		type: 'number',
-		default: 1,
-		UAGCopyPaste: {
-			styleType: 'overall-border-width'
-		}
 	},
 	borderRadius: {
 		type: 'number',
-		UAGCopyPaste: {
-			styleType: 'overall-border-radius'
-		}
 	},
 	borderColor: {
 		type: 'string',
-		UAGCopyPaste: {
-			styleType: 'overall-border-color'
-		}
 	},
 	borderHoverColor: {
 		type: 'string',
-		UAGCopyPaste: {
-			styleType: 'overall-border-hover-color'
-		}
 	},
 	overlayType: {
 		type: 'string',
@@ -455,6 +442,7 @@ const attributes = {
 			styleType: 'column-gradient-value'
 		}
 	},
+	...borderAttributes
 };
 
 export default attributes;

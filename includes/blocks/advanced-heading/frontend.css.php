@@ -10,15 +10,24 @@
 // Add fonts.
 UAGB_Block_JS::blocks_advanced_heading_gfont( $attr );
 
+$block_name = 'advanced-heading';
+
 $m_selectors = array();
 $t_selectors = array();
 
+$highLight_border_css        = UAGB_Block_Helper::uag_generate_border_css( $attr, 'highLight' );
+$highLight_border_css_tablet = UAGB_Block_Helper::uag_generate_border_css( $attr, 'highLight', 'tablet' );
+$highLight_border_css_mobile = UAGB_Block_Helper::uag_generate_border_css( $attr, 'highLight', 'mobile' );
+
+
 $selectors = array(
 	' .uagb-heading-text'                             => array(
-		'color'          => $attr['headingColor'],
-		'margin-bottom'  => UAGB_Helper::get_css_value( $attr['headSpace'], 'px' ),
-		'letter-spacing' => UAGB_Helper::get_css_value( $attr['headLetterSpacing'], $attr['headLetterSpacingType'] ),
-		'text-shadow'    => ( ! empty( $attr['headShadowColor'] ) ? UAGB_Helper::get_css_value( $attr['headShadowHOffset'], 'px' ) . ' ' . UAGB_Helper::get_css_value( $attr['headShadowVOffset'], 'px' ) . ' ' . UAGB_Helper::get_css_value( $attr['headShadowBlur'], 'px' ) . ' ' . $attr['headShadowColor'] : '' ),
+		'color'         => $attr['headingColor'],
+		'margin-bottom' => UAGB_Helper::get_css_value(
+			UAGB_Block_Helper::get_fallback_number( $attr['headSpace'], 'headSpace', $block_name ),
+			'px'
+		),
+		'text-shadow'   => ( ! empty( $attr['headShadowColor'] ) ? UAGB_Helper::get_css_value( $attr['headShadowHOffset'], 'px' ) . ' ' . UAGB_Helper::get_css_value( $attr['headShadowVOffset'], 'px' ) . ' ' . UAGB_Helper::get_css_value( $attr['headShadowBlur'], 'px' ) . ' ' . $attr['headShadowColor'] : '' ),
 	),
 	'.wp-block-uagb-advanced-heading '                => array(
 		'background'     => 'classic' === $attr['blockBackgroundType'] ? $attr['blockBackground'] : $attr['blockGradientBackground'],
@@ -63,41 +72,39 @@ $selectors = array(
 		'color' => $attr['linkHColor'],
 	),
 	' .uagb-desc-text'                                => array(
-		'letter-spacing' => UAGB_Helper::get_css_value( $attr['subHeadLetterSpacing'], $attr['subHeadLetterSpacingType'] ),
-		'color'          => $attr['subHeadingColor'],
+		'color' => $attr['subHeadingColor'],
 	),
-	'.wp-block-uagb-advanced-heading .uagb-highlight' => array(
-		'background'              => $attr['highLightBackground'],
-		'color'                   => $attr['highLightColor'],
-		'-webkit-text-fill-color' => $attr['highLightColor'],
-		'font-family'             => $attr['highLightFontFamily'],
-		'font-style'              => $attr['highLightFontStyle'],
-		'text-decoration'         => $attr['highLightDecoration'],
-		'text-transform'          => $attr['highLightTransform'],
-		'font-weight'             => $attr['highLightFontWeight'],
-		'font-size'               => UAGB_Helper::get_css_value( $attr['highLightFontSize'], $attr['highLightFontSizeType'] ),
-		'line-height'             => UAGB_Helper::get_css_value( $attr['highLightLineHeight'], $attr['highLightLineHeightType'] ),
-		'letter-spacing'          => UAGB_Helper::get_css_value( $attr['highLightLetterSpacing'], $attr['highLightLetterSpacingType'] ),
-		'border-style'            => $attr['highLightBorderStyle'],
-		'border-width'            => UAGB_Helper::get_css_value( $attr['highLightBorderWidth'], 'px' ),
-		'border-color'            => $attr['highLightBorderColor'],
-		'border-radius'           => UAGB_Helper::get_css_value( $attr['highLightBorderRadius'], 'px' ),
-		'padding-top'             => UAGB_Helper::get_css_value(
-			$attr['highLightTopPadding'],
-			$attr['highLightPaddingUnit']
+	'.wp-block-uagb-advanced-heading .uagb-highlight' => array_merge(
+		array(
+			'background'              => $attr['highLightBackground'],
+			'color'                   => $attr['highLightColor'],
+			'-webkit-text-fill-color' => $attr['highLightColor'],
+			'font-family'             => $attr['highLightFontFamily'],
+			'font-style'              => $attr['highLightFontStyle'],
+			'text-decoration'         => $attr['highLightDecoration'],
+			'text-transform'          => $attr['highLightTransform'],
+			'font-weight'             => $attr['highLightFontWeight'],
+			'font-size'               => UAGB_Helper::get_css_value( $attr['highLightFontSize'], $attr['highLightFontSizeType'] ),
+			'line-height'             => UAGB_Helper::get_css_value( $attr['highLightLineHeight'], $attr['highLightLineHeightType'] ),
+			'padding-top'             => UAGB_Helper::get_css_value(
+				$attr['highLightTopPadding'],
+				$attr['highLightPaddingUnit']
+			),
+			'padding-right'           => UAGB_Helper::get_css_value(
+				$attr['highLightRightPadding'],
+				$attr['highLightPaddingUnit']
+			),
+			'padding-bottom'          => UAGB_Helper::get_css_value(
+				$attr['highLightBottomPadding'],
+				$attr['highLightPaddingUnit']
+			),
+			'padding-left'            => UAGB_Helper::get_css_value(
+				$attr['highLightLeftPadding'],
+				$attr['highLightPaddingUnit']
+			),
+
 		),
-		'padding-right'           => UAGB_Helper::get_css_value(
-			$attr['highLightRightPadding'],
-			$attr['highLightPaddingUnit']
-		),
-		'padding-bottom'          => UAGB_Helper::get_css_value(
-			$attr['highLightBottomPadding'],
-			$attr['highLightPaddingUnit']
-		),
-		'padding-left'            => UAGB_Helper::get_css_value(
-			$attr['highLightLeftPadding'],
-			$attr['highLightPaddingUnit']
-		),
+		$highLight_border_css
 	),
 	'.wp-block-uagb-advanced-heading .uagb-highlight:hover' => array(
 		'border-color' => $attr['highLightBorderHColor'],
@@ -144,26 +151,41 @@ $seperatorStyle = isset( $attr['seperatorStyle'] ) ? $attr['seperatorStyle'] : '
 if ( 'none' !== $seperatorStyle ) {
 	$selectors['.wp-block-uagb-advanced-heading .uagb-separator']   = array(
 		'border-top-style' => $attr['seperatorStyle'],
-		'border-top-width' => UAGB_Helper::get_css_value( $attr['separatorHeight'], $attr['separatorHeightType'] ),
-		'width'            => UAGB_Helper::get_css_value( $attr['separatorWidth'], $attr['separatorWidthType'] ),
+		'border-top-width' => UAGB_Helper::get_css_value(
+			UAGB_Block_Helper::get_fallback_number( $attr['separatorHeight'], 'separatorHeight', $block_name ),
+			$attr['separatorHeightType']
+		),
+		'width'            => UAGB_Helper::get_css_value(
+			UAGB_Block_Helper::get_fallback_number( $attr['separatorWidth'], 'separatorWidth', $block_name ),
+			$attr['separatorWidthType']
+		),
 		'border-color'     => $attr['separatorColor'],
-		'margin-bottom'    => UAGB_Helper::get_css_value( $attr['separatorSpace'], $attr['separatorSpaceType'] ),
+		'margin-bottom'    => UAGB_Helper::get_css_value(
+			UAGB_Block_Helper::get_fallback_number( $attr['separatorSpace'], 'separatorSpace', $block_name ),
+			$attr['separatorSpaceType']
+		),
 	);
 	$t_selectors['.wp-block-uagb-advanced-heading .uagb-separator'] = array(
-		'width'         => UAGB_Helper::get_css_value( $attr['separatorWidthTablet'], $attr['separatorWidthType'] ),
-		'margin-bottom' => UAGB_Helper::get_css_value( $attr['separatorSpaceTablet'], $attr['separatorSpaceType'] ),
+		'width'         => UAGB_Helper::get_css_value(
+			UAGB_Block_Helper::get_fallback_number( $attr['separatorWidthTablet'], 'separatorWidthTablet', $block_name ),
+			$attr['separatorWidthType']
+		),
+		'margin-bottom' => UAGB_Helper::get_css_value(
+			UAGB_Block_Helper::get_fallback_number( $attr['separatorSpaceTablet'], 'separatorSpaceTablet', $block_name ),
+			$attr['separatorSpaceType']
+		),
 	);
 	$m_selectors['.wp-block-uagb-advanced-heading .uagb-separator'] = array(
-		'width'         => UAGB_Helper::get_css_value( $attr['separatorWidthMobile'], $attr['separatorWidthType'] ),
-		'margin-bottom' => UAGB_Helper::get_css_value( $attr['separatorSpaceMobile'], $attr['separatorSpaceType'] ),
+		'width'         => UAGB_Helper::get_css_value(
+			UAGB_Block_Helper::get_fallback_number( $attr['separatorWidthMobile'], 'separatorWidthMobile', $block_name ),
+			$attr['separatorWidthType']
+		),
+		'margin-bottom' => UAGB_Helper::get_css_value(
+			UAGB_Block_Helper::get_fallback_number( $attr['separatorSpaceMobile'], 'separatorSpaceMobile', $block_name ),
+			$attr['separatorSpaceType']
+		),
 	);
 }
-$t_selectors[' .uagb-heading-text']              = array(
-	'letter-spacing' => UAGB_Helper::get_css_value( $attr['headLetterSpacingTablet'], $attr['headLetterSpacingType'] ),
-);
-$t_selectors[' .uagb-desc-text']                 = array(
-	'letter-spacing' => UAGB_Helper::get_css_value( $attr['subHeadLetterSpacingTablet'], $attr['subHeadLetterSpacingType'] ),
-);
 $t_selectors['.wp-block-uagb-advanced-heading '] = array(
 	'text-align'     => $attr['headingAlignTablet'],
 	'padding-top'    => UAGB_Helper::get_css_value( $attr['blockTopPaddingTablet'], $attr['blockPaddingUnitTablet'] ),
@@ -176,22 +198,19 @@ $t_selectors['.wp-block-uagb-advanced-heading '] = array(
 	'margin-left'    => UAGB_Helper::get_css_value( $attr['blockLeftMarginTablet'], $attr['blockMarginUnitTablet'] ),
 );
 
-$t_selectors['.wp-block-uagb-advanced-heading .uagb-highlight'] = array(
-	'font-size'      => UAGB_Helper::get_css_value( $attr['highLightFontSizeTablet'], $attr['highLightFontSizeType'] ),
-	'line-height'    => UAGB_Helper::get_css_value( $attr['highLightLineHeightTablet'], $attr['highLightLineHeightType'] ),
-	'letter-spacing' => UAGB_Helper::get_css_value( $attr['highLightLetterSpacingTablet'], $attr['highLightLetterSpacingType'] ),
-	'padding-top'    => UAGB_Helper::get_css_value( $attr['highLightTopPaddingTablet'], $attr['highLightPaddingUnitTablet'] ),
-	'padding-right'  => UAGB_Helper::get_css_value( $attr['highLightRightPaddingTablet'], $attr['highLightPaddingUnitTablet'] ),
-	'padding-bottom' => UAGB_Helper::get_css_value( $attr['highLightBottomPaddingTablet'], $attr['highLightPaddingUnitTablet'] ),
-	'padding-left'   => UAGB_Helper::get_css_value( $attr['highLightLeftPaddingTablet'], $attr['highLightPaddingUnitTablet'] ),
+$t_selectors['.wp-block-uagb-advanced-heading .uagb-highlight'] = array_merge(
+	array(
+		'font-size'      => UAGB_Helper::get_css_value( $attr['highLightFontSizeTablet'], $attr['highLightFontSizeType'] ),
+		'line-height'    => UAGB_Helper::get_css_value( $attr['highLightLineHeightTablet'], $attr['highLightLineHeightType'] ),
+		'letter-spacing' => UAGB_Helper::get_css_value( $attr['highLightLetterSpacingTablet'], $attr['highLightLetterSpacingType'] ),
+		'padding-top'    => UAGB_Helper::get_css_value( $attr['highLightTopPaddingTablet'], $attr['highLightPaddingUnitTablet'] ),
+		'padding-right'  => UAGB_Helper::get_css_value( $attr['highLightRightPaddingTablet'], $attr['highLightPaddingUnitTablet'] ),
+		'padding-bottom' => UAGB_Helper::get_css_value( $attr['highLightBottomPaddingTablet'], $attr['highLightPaddingUnitTablet'] ),
+		'padding-left'   => UAGB_Helper::get_css_value( $attr['highLightLeftPaddingTablet'], $attr['highLightPaddingUnitTablet'] ),
+	),
+	$highLight_border_css_tablet
 );
 
-$m_selectors[' .uagb-heading-text']                             = array(
-	'letter-spacing' => UAGB_Helper::get_css_value( $attr['headLetterSpacingMobile'], $attr['headLetterSpacingType'] ),
-);
-$m_selectors[' .uagb-desc-text']                                = array(
-	'letter-spacing' => UAGB_Helper::get_css_value( $attr['subHeadLetterSpacingMobile'], $attr['subHeadLetterSpacingType'] ),
-);
 $m_selectors['.wp-block-uagb-advanced-heading ']                = array(
 	'text-align'     => $attr['headingAlignMobile'],
 	'padding-top'    => UAGB_Helper::get_css_value( $attr['blockTopPaddingMobile'], $attr['blockPaddingUnitMobile'] ),
@@ -203,21 +222,30 @@ $m_selectors['.wp-block-uagb-advanced-heading ']                = array(
 	'margin-bottom'  => UAGB_Helper::get_css_value( $attr['blockBottomMarginMobile'], $attr['blockMarginUnitMobile'] ),
 	'margin-left'    => UAGB_Helper::get_css_value( $attr['blockLeftMarginMobile'], $attr['blockMarginUnitMobile'] ),
 );
-$m_selectors['.wp-block-uagb-advanced-heading .uagb-highlight'] = array(
-	'font-size'      => UAGB_Helper::get_css_value( $attr['highLightFontSizeMobile'], $attr['highLightFontSizeType'] ),
-	'line-height'    => UAGB_Helper::get_css_value( $attr['highLightLineHeightMobile'], $attr['highLightLineHeightType'] ),
-	'letter-spacing' => UAGB_Helper::get_css_value( $attr['highLightLetterSpacingMobile'], $attr['highLightLetterSpacingType'] ),
-	'padding-top'    => UAGB_Helper::get_css_value( $attr['highLightTopPaddingMobile'], $attr['highLightPaddingUnitMobile'] ),
-	'padding-right'  => UAGB_Helper::get_css_value( $attr['highLightRightPaddingMobile'], $attr['highLightPaddingUnitMobile'] ),
-	'padding-bottom' => UAGB_Helper::get_css_value( $attr['highLightBottomPaddingMobile'], $attr['highLightPaddingUnitMobile'] ),
-	'padding-left'   => UAGB_Helper::get_css_value( $attr['highLightLeftPaddingMobile'], $attr['highLightPaddingUnitMobile'] ),
+$m_selectors['.wp-block-uagb-advanced-heading .uagb-highlight'] = array_merge(
+	array(
+		'font-size'      => UAGB_Helper::get_css_value( $attr['highLightFontSizeMobile'], $attr['highLightFontSizeType'] ),
+		'line-height'    => UAGB_Helper::get_css_value( $attr['highLightLineHeightMobile'], $attr['highLightLineHeightType'] ),
+		'letter-spacing' => UAGB_Helper::get_css_value( $attr['highLightLetterSpacingMobile'], $attr['highLightLetterSpacingType'] ),
+		'padding-top'    => UAGB_Helper::get_css_value( $attr['highLightTopPaddingMobile'], $attr['highLightPaddingUnitMobile'] ),
+		'padding-right'  => UAGB_Helper::get_css_value( $attr['highLightRightPaddingMobile'], $attr['highLightPaddingUnitMobile'] ),
+		'padding-bottom' => UAGB_Helper::get_css_value( $attr['highLightBottomPaddingMobile'], $attr['highLightPaddingUnitMobile'] ),
+		'padding-left'   => UAGB_Helper::get_css_value( $attr['highLightLeftPaddingMobile'], $attr['highLightPaddingUnitMobile'] ),
+	),
+	$highLight_border_css_mobile
 );
 
 $t_selectors['.wp-block-uagb-advanced-heading .uagb-heading-text'] = array(
-	'margin-bottom' => UAGB_Helper::get_css_value( $attr['headSpaceTablet'], $attr['headSpaceType'] ),
+	'margin-bottom' => UAGB_Helper::get_css_value(
+		UAGB_Block_Helper::get_fallback_number( $attr['headSpaceTablet'], 'headSpaceTablet', $block_name ),
+		$attr['headSpaceType']
+	),
 );
 $m_selectors['.wp-block-uagb-advanced-heading .uagb-heading-text'] = array(
-	'margin-bottom' => UAGB_Helper::get_css_value( $attr['headSpaceMobile'], $attr['headSpaceType'] ),
+	'margin-bottom' => UAGB_Helper::get_css_value(
+		UAGB_Block_Helper::get_fallback_number( $attr['headSpaceMobile'], 'headSpaceMobile', $block_name ),
+		$attr['headSpaceType']
+	),
 );
 
 
