@@ -12,12 +12,12 @@ UAGB_Block_JS::blocks_team_gfont( $attr );
 
 $block_name = 'team';
 
-$img_width_fallback = UAGB_Block_Helper::get_fallback_number( $attr['imgWidth'], 'imgWidth', $block_name );
-$title_space_fallback = UAGB_Block_Helper::get_fallback_number( $attr['titleSpace'], 'titleSpace', $block_name );
-$prefix_space_fallback = UAGB_Block_Helper::get_fallback_number( $attr['prefixSpace'], 'prefixSpace', $block_name );
-$desc_space_fallback = UAGB_Block_Helper::get_fallback_number( $attr['descSpace'], 'descSpace', $block_name );
+$img_width_fallback        = UAGB_Block_Helper::get_fallback_number( $attr['imgWidth'], 'imgWidth', $block_name );
+$title_space_fallback      = UAGB_Block_Helper::get_fallback_number( $attr['titleSpace'], 'titleSpace', $block_name );
+$prefix_space_fallback     = UAGB_Block_Helper::get_fallback_number( $attr['prefixSpace'], 'prefixSpace', $block_name );
+$desc_space_fallback       = UAGB_Block_Helper::get_fallback_number( $attr['descSpace'], 'descSpace', $block_name );
 $social_font_size_fallback = UAGB_Block_Helper::get_fallback_number( $attr['socialFontSize'], 'socialFontSize', $block_name );
-$social_space_fallback = UAGB_Block_Helper::get_fallback_number( $attr['socialSpace'], 'socialSpace', $block_name );
+$social_space_fallback     = UAGB_Block_Helper::get_fallback_number( $attr['socialSpace'], 'socialSpace', $block_name );
 
 $social_space_tablet_fallback = is_numeric( $attr['socialSpaceTablet'] ) ? $attr['socialSpaceTablet'] : $social_space_fallback;
 $social_space_mobile_fallback = is_numeric( $attr['socialSpaceMobile'] ) ? $attr['socialSpaceMobile'] : $social_space_tablet_fallback;

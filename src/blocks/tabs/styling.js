@@ -142,6 +142,7 @@ function styling( props ) {
 				tabTitleBottomMargin,
 				tabTitleMarginUnit
 			),
+			...borderCSS
 		},
 		' > .uagb-tabs__panel .uagb-tab a': {
 			'padding-top': generateCSSUnit(
@@ -227,7 +228,6 @@ function styling( props ) {
 			'width': generateCSSUnit( iconSizeFallback, 'px' ),
 			'fill': iconColor,
 		},
-		'.uagb-tabs__wrap > .uagb-tabs__panel .uagb-tab': borderCSS,
 		'.uagb-tabs__wrap > .uagb-tabs__panel .uagb-tab:hover': {
 			'border-color': tabBorderHColor,
 		},
