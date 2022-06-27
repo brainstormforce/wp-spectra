@@ -164,6 +164,10 @@ const Settings = ( props ) => {
 		linkColor,
 		linkHoverColor,
 
+		innerContentCustomWidthDesktopType,
+		innerContentCustomWidthTabletType,
+		innerContentCustomWidthMobileType
+
 	} = attributes;
 
 	let currentDirection = directionDesktop;
@@ -423,14 +427,26 @@ const Settings = ( props ) => {
 												desktop: {
 													value: innerContentCustomWidthDesktop,
 													label: 'innerContentCustomWidthDesktop',
+													unit: {
+														value: innerContentCustomWidthDesktopType,
+														label: 'innerContentCustomWidthDesktopType',
+													},
 												},
 												tablet: {
 													value: innerContentCustomWidthTablet,
 													label: 'innerContentCustomWidthTablet',
+													unit: {
+														value: innerContentCustomWidthTabletType,
+														label: 'innerContentCustomWidthTabletType',
+													},
 												},
 												mobile: {
 													value: innerContentCustomWidthMobile,
 													label: 'innerContentCustomWidthMobile',
+													unit: {
+														value: innerContentCustomWidthMobileType,
+														label: 'innerContentCustomWidthMobileType',
+													},
 												},
 											} }
 											min={ 0 }

@@ -891,6 +891,18 @@ const attributes = {
 			styleType: 'btn-hover-color'
 		},
 	},
+	innerContentCustomWidthDesktopType: {
+		type: 'string',
+		default: 'px',
+	},
+	innerContentCustomWidthTabletType: {
+		type: 'string',
+		default: 'px',
+	},
+	innerContentCustomWidthMobileType: {
+		type: 'string',
+		default: 'px',
+	},
 	...inputBorderAttributes
 };
 
