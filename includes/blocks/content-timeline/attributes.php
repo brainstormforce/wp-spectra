@@ -9,6 +9,7 @@
 
 return array(
 	'classMigrate'               => false,
+	'blockName'                  => 'content-timeline',
 	'align'                      => '',
 	'alignTablet'                => '',
 	'alignMobile'                => '',

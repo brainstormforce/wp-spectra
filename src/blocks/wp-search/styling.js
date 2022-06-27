@@ -5,7 +5,12 @@ import generateBorderCSS from '@Controls/generateBorderCSS';
 
 import generateCSS from '@Controls/generateCSS';
 import generateCSSUnit from '@Controls/generateCSSUnit';
+import { getFallbackNumber } from '@Controls/getAttributeFallback';
+
 function styling( props ) {
+
+	const blockName = props.name.replace( 'uagb/', '' );
+
 	const {
 		block_id,
 		layout,
@@ -80,6 +85,11 @@ function styling( props ) {
 		buttonFontStyle,
 	} = props.attributes;
 
+	const inputSizeFallback = getFallbackNumber( inputSize, 'inputSize', blockName );
+	const buttonWidthFallback = getFallbackNumber( buttonWidth, 'buttonWidth', blockName );
+	const buttonIconSizeFallback = getFallbackNumber( buttonIconSize, 'buttonIconSize', blockName );
+	const iconSizeFallback = getFallbackNumber( iconSize, 'iconSize', blockName );
+
 	let boxShadowPositionCSS = boxShadowPosition;
 
 	if ( 'outset' === boxShadowPosition ) {
@@ -90,9 +100,9 @@ function styling( props ) {
 	let tabletSelectors = {};
 	let mobileSelectors = {};
 
-	const $iconSize = generateCSSUnit( iconSize, iconSizeType );
+	const $iconSize = generateCSSUnit( iconSizeFallback, iconSizeType );
 	const $buttonIconSize = generateCSSUnit(
-		buttonIconSize,
+		buttonIconSizeFallback,
 		buttonIconSizeType
 	);
 
@@ -155,12 +165,12 @@ function styling( props ) {
 	if ( 'undefined' !== typeof iconColor && '' !== iconColor ) {
 		tmpIconColor = iconColor;
 	}
-
-	boxCSS.width = generateCSSUnit( inputSize, inputSizeType );
+	
+	boxCSS.width = generateCSSUnit( inputSizeFallback, inputSizeType );
 
 	selectors = {
 		' .uagb-search-form__container .uagb-search-submit': {
-			'width': generateCSSUnit( buttonWidth, buttonWidthType ),
+			'width': generateCSSUnit( buttonWidthFallback, buttonWidthType ),
 			'padding': 0,
 			'border': 0,
 		},

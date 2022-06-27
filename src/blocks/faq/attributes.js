@@ -54,14 +54,12 @@ const attributes = {
 	},
 	rowsGapTablet: {
 		type: 'number',
-		default: 10,
 		UAGCopyPaste: {
 			styleType: 'row-gap-tablet'
 		},
 	},
 	rowsGapMobile: {
 		type: 'number',
-		default: 10,
 		UAGCopyPaste: {
 			styleType: 'row-gap-mobile'
 		},
@@ -82,14 +80,12 @@ const attributes = {
 	},
 	columnsGapTablet: {
 		type: 'number',
-		default: 10,
 		UAGCopyPaste: {
 			styleType: 'column-gap-tablet'
 		},
 	},
 	columnsGapMobile: {
 		type: 'number',
-		default: 10,
 		UAGCopyPaste: {
 			styleType: 'column-gap-mobile'
 		},
@@ -368,14 +364,12 @@ const attributes = {
 	},
 	gapBtwIconQUestionTablet: {
 		type: 'number',
-		default: 10,
 		UAGCopyPaste: {
 			styleType: 'icon-spacing-tablet'
 		},
 	},
 	gapBtwIconQUestionMobile: {
 		type: 'number',
-		default: 10,
 		UAGCopyPaste: {
 			styleType: 'icon-spacing-mobile'
 		},
@@ -582,14 +576,12 @@ const attributes = {
 	},
 	iconSizeTablet: {
 		type: 'number',
-		default: 12,
 		UAGCopyPaste: {
 			styleType: 'icon-size-tablet'
 		},
 	},
 	iconSizeMobile: {
 		type: 'number',
-		default: 12,
 		UAGCopyPaste: {
 			styleType: 'icon-size-mobile'
 		},

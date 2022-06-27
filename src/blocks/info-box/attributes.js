@@ -739,14 +739,12 @@
 	},
 	imageWidthMobile: {
 		type: 'number',
-		default: '',
 		UAGCopyPaste: {
 			styleType: 'image-width-mobile'
 		}
 	},
 	imageWidthTablet: {
 		type: 'number',
-		default: '',
 		UAGCopyPaste: {
 			styleType: 'image-width-tablet'
 		}
@@ -1376,17 +1374,25 @@
 	iconBackgroundColor: {
 		type: 'string',
 		default: '#6EC1E3',
+		UAGCopyPaste: {
+			styleType: 'icon-bg-color'
+		},
 	},
 	iconBackgroundHoverColor: {
 		type: 'string',
 		default: '',
+		UAGCopyPaste: {
+			styleType: 'icon-bg-hover-color'
+		},
 	},
 	iconBorderWidth: {
 		type: 'number',
 		default: 3,
+		UAGCopyPaste: {
+			styleType: 'icon-border-width'
+		},
 	},
 	...borderAttributes
 };
 
 export default attributes;
- 

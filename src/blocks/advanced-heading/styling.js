@@ -5,8 +5,12 @@
 import generateBorderCSS from '@Controls/generateBorderCSS';
 import generateCSS from '@Controls/generateCSS';
 import generateCSSUnit from '@Controls/generateCSSUnit';
+import { getFallbackNumber } from '@Controls/getAttributeFallback';
 
 function styling( props ) {
+
+	const blockName = props.name.replace( 'uagb/', '' );
+
 	const {
 		headingAlign,
 		headingAlignTablet,
@@ -296,7 +300,10 @@ function styling( props ) {
 		'font-size': generateCSSUnit( headFontSize, headFontSizeType ),
 		'line-height': generateCSSUnit( headLineHeight, headLineHeightType ),
 		'color': headingColor,
-		'margin-bottom': generateCSSUnit( headSpace, 'px' ),
+		'margin-bottom': generateCSSUnit(
+			getFallbackNumber( headSpace, 'headSpace', blockName ),
+			'px'
+		),
 		'letter-spacing': generateCSSUnit( headLetterSpacing, headLetterSpacingType ),
 		'text-shadow': headShadowColor && generateCSSUnit( headShadowHOffset, 'px' ) + ' ' + generateCSSUnit( headShadowVOffset, 'px' ) + ' ' + generateCSSUnit( headShadowBlur, 'px' ) + ' ' +  headShadowColor,
 		...headingGradientStyle
@@ -306,10 +313,19 @@ function styling( props ) {
 	if ( seperatorStyle !== 'none' ) {
 		selectors[ ' .uagb-separator' ] = {
 			'border-top-style': seperatorStyle,
-			'border-top-width': generateCSSUnit( separatorHeight, separatorHeightType ),
-			'width': generateCSSUnit( separatorWidth, separatorWidthType ),
+			'border-top-width': generateCSSUnit(
+				getFallbackNumber( separatorHeight, 'separatorHeight', blockName ),
+				separatorHeightType
+			),
+			'width': generateCSSUnit(
+				getFallbackNumber( separatorWidth, 'separatorWidth', blockName ),
+				separatorWidthType
+			),
 			'border-color': separatorColor,
-			'margin-bottom': generateCSSUnit( separatorSpace, separatorSpaceType ),
+			'margin-bottom': generateCSSUnit(
+				getFallbackNumber( separatorSpace, 'separatorSpace', blockName ),
+				separatorSpaceType
+			),
 		};
 	}
 
@@ -358,7 +374,10 @@ function styling( props ) {
 			headLineHeightType
 		),
 		'letter-spacing': generateCSSUnit( headLetterSpacingTablet, headLetterSpacingType ),
-		'margin-bottom': generateCSSUnit( headSpaceTablet, 'px' ),
+		'margin-bottom': generateCSSUnit(
+			getFallbackNumber( headSpaceTablet, 'headSpaceTablet', blockName ),
+			'px'
+		),
 	};
 	tablet_selectors[ ' .uagb-desc-text' ] = {
 		'font-size': generateCSSUnit(
@@ -436,8 +455,14 @@ function styling( props ) {
 		),
 	}
 	tablet_selectors[ ' .uagb-separator' ] = {
-		'width': generateCSSUnit( separatorWidthTablet, separatorWidthType ),
-		'margin-bottom': generateCSSUnit( separatorSpaceTablet, separatorSpaceType ),
+		'width': generateCSSUnit(
+			getFallbackNumber( separatorWidthTablet, 'separatorWidthTablet', blockName ),
+			separatorWidthType
+		),
+		'margin-bottom': generateCSSUnit(
+			getFallbackNumber( separatorSpaceTablet, 'separatorSpaceTablet', blockName ),
+			separatorSpaceType
+		),
 	};
 
 	mobile_selectors[ ' ' + headingTag + '.uagb-heading-text' ] = {
@@ -447,7 +472,10 @@ function styling( props ) {
 			headLineHeightType
 		),
 		'letter-spacing': generateCSSUnit( headLetterSpacingMobile, headLetterSpacingType ),
-		'margin-bottom': generateCSSUnit( headSpaceMobile, 'px' ),
+		'margin-bottom': generateCSSUnit(
+			getFallbackNumber( headSpaceMobile, 'headSpaceMobile', blockName ),
+			'px'
+		),
 	};
 	mobile_selectors[ ' .uagb-desc-text' ] = {
 		'font-size': generateCSSUnit(
@@ -489,8 +517,14 @@ function styling( props ) {
 		...highLightBorderCSSMobile
 	};
 	mobile_selectors[ ' .uagb-separator' ] = {
-		'width': generateCSSUnit( separatorWidthMobile, separatorWidthType ),
-		'margin-bottom': generateCSSUnit( separatorSpaceMobile, separatorSpaceType ),
+		'width': generateCSSUnit(
+			getFallbackNumber( separatorWidthMobile, 'separatorWidthMobile', blockName ),
+			separatorWidthType
+		),
+		'margin-bottom': generateCSSUnit(
+			getFallbackNumber( separatorSpaceMobile, 'separatorSpaceMobile', blockName ),
+			separatorSpaceType
+		),
 	};
 
 	const base_selector = `.editor-styles-wrapper .uagb-block-${ props.clientId.substr(
