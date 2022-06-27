@@ -7,6 +7,9 @@ import React, { useState, useEffect, lazy, Suspense } from 'react';
 import lazyLoader from '@Controls/lazy-loader';
 import { useDeviceType } from '@Controls/getPreviewType';
 import addBlockEditorDynamicStyles from '@Controls/addBlockEditorDynamicStyles';
+
+import {migrateBorderAttributes} from '@Controls/generateAttributes';
+
 const Settings = lazy( () =>
 	import( /* webpackChunkName: "chunks/wp-search/settings" */ './settings' )
 );
@@ -28,7 +31,34 @@ const UAGBWpSearchEdit = ( props ) => {
 		props.setAttributes( {
 			block_id: props.clientId.substr( 0, 8 ),
 		} );
-
+		const {
+			borderStyle,
+			borderWidth,
+			borderColor,
+			borderHColor,
+			borderRadius,
+		} = props.attributes;
+		// border
+		if( borderWidth || borderRadius || borderColor || borderHColor || borderStyle ){
+			const migrationAttributes = migrateBorderAttributes( 'input', {
+				label: 'borderWidth',
+				value: borderWidth,
+			}, {
+				label: 'borderRadius',
+				value: borderRadius
+			}, {
+				label: 'borderColor',
+				value: borderColor
+			}, {
+				label: 'borderHColor',
+				value: borderHColor
+			},{
+				label: 'borderStyle',
+				value: borderStyle
+			}
+			);
+			props.setAttributes( migrationAttributes )
+		}
 	}, [] );
 
 	// componentDidUpdate.
@@ -139,7 +169,6 @@ const UAGBWpSearchEdit = ( props ) => {
 		}
 
 		const blockStyling = styling( props );
-
 		addBlockEditorDynamicStyles( 'uagb-style-wp-search-' + props.clientId.substr( 0, 8 ), blockStyling );
 	}, [ props ] );
 
