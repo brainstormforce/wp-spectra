@@ -4,9 +4,13 @@
 
 import generateCSS from '@Controls/generateCSS';
 import generateCSSUnit from '@Controls/generateCSSUnit';
+import { getFallbackNumber } from '@Controls/getAttributeFallback';
 import generateBorderCSS from '@Controls/generateBorderCSS';
 
 function styling( props ) {
+
+	const blockName = props.name.replace( 'uagb/', '' );
+
 	const {
 		layout,
 		inactiveOtherItems,
@@ -128,23 +132,23 @@ function styling( props ) {
 
 	selectors = {
 		' .uagb-icon svg': {
-			'width': generateCSSUnit( iconSize, iconSizeType ),
-			'height': generateCSSUnit( iconSize, iconSizeType ),
-			'font-size': generateCSSUnit( iconSize, iconSizeType ),
+			'width': generateCSSUnit( getFallbackNumber( iconSize, 'iconSize', blockName ), iconSizeType ),
+			'height': generateCSSUnit( getFallbackNumber( iconSize, 'iconSize', blockName ), iconSizeType ),
+			'font-size': generateCSSUnit( getFallbackNumber( iconSize, 'iconSize', blockName ), iconSizeType ),
 			'fill': iconColorTemp,
 		},
 		' .uagb-icon-active svg': {
-			'width': generateCSSUnit( iconSize, iconSizeType ),
-			'height': generateCSSUnit( iconSize, iconSizeType ),
-			'font-size': generateCSSUnit( iconSize, iconSizeType ),
+			'width': generateCSSUnit( getFallbackNumber( iconSize, 'iconSize', blockName ), iconSizeType ),
+			'height': generateCSSUnit( getFallbackNumber( iconSize, 'iconSize', blockName ), iconSizeType ),
+			'font-size': generateCSSUnit( getFallbackNumber( iconSize, 'iconSize', blockName ), iconSizeType ),
 			'fill': iconActiveColorTemp,
 		},
 		' .uagb-faq-child__outer-wrap': {
-			'margin-bottom': generateCSSUnit( rowsGap, rowsGapUnit ),
+			'margin-bottom': generateCSSUnit( getFallbackNumber( rowsGap, 'rowsGap', blockName ), rowsGapUnit ),
 		},
 		'.uagb-faq-layout-grid .block-editor-inner-blocks .block-editor-block-list__layout': {
-			'grid-column-gap': generateCSSUnit( columnsGap, columnsGapUnit ),
-			'grid-row-gap': generateCSSUnit( rowsGap, rowsGapUnit ),
+			'grid-column-gap': generateCSSUnit( getFallbackNumber( columnsGap, 'columnsGap', blockName ), columnsGapUnit ),
+			'grid-row-gap': generateCSSUnit( getFallbackNumber( rowsGap, 'rowsGap', blockName ), rowsGapUnit ),
 		},
 		' .uagb-faq-item': {
 			'background-color': boxBgColor,
@@ -206,10 +210,10 @@ function styling( props ) {
 			),
 		},
 		'.uagb-faq-icon-row .uagb-faq-item .uagb-faq-icon-wrap': {
-			'margin-right': generateCSSUnit( gapBtwIconQUestion, 'px' ),
+			'margin-right': generateCSSUnit( getFallbackNumber( gapBtwIconQUestion, 'gapBtwIconQUestion', blockName ), 'px' ),
 		},
 		'.uagb-faq-icon-row-reverse .uagb-faq-item .uagb-faq-icon-wrap': {
-			'margin-left': generateCSSUnit( gapBtwIconQUestion, 'px' ),
+			'margin-left': generateCSSUnit( getFallbackNumber( gapBtwIconQUestion, 'gapBtwIconQUestion', blockName ), 'px' ),
 		},
 		' .uagb-faq-item:hover .uagb-icon svg': {
 			'fill': iconActiveColorTemp,
@@ -481,17 +485,17 @@ function styling( props ) {
 		selectors[
 			'.uagb-faq-layout-grid .block-editor-inner-blocks > .block-editor-block-list__layout '
 		] = {
-			'grid-template-columns': 'repeat(' + columns + ', 1fr)',
+			'grid-template-columns': 'repeat(' + getFallbackNumber( columns, 'columns', blockName ) + ', 1fr)',
 		};
 		tabletSelectors[
 			'.uagb-faq-layout-grid .block-editor-inner-blocks > .block-editor-block-list__layout '
 		] = {
-			'grid-template-columns': 'repeat(' + tcolumns + ', 1fr)',
+			'grid-template-columns': 'repeat(' + getFallbackNumber( tcolumns, 'tcolumns', blockName ) + ', 1fr)',
 		};
 		mobileSelectors[
 			'.uagb-faq-layout-grid .block-editor-inner-blocks > .block-editor-block-list__layout '
 		] = {
-			'grid-template-columns': 'repeat(' + mcolumns + ', 1fr)',
+			'grid-template-columns': 'repeat(' + getFallbackNumber( mcolumns, 'mcolumns', blockName ) + ', 1fr)',
 		};
 	}
 

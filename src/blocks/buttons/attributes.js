@@ -76,14 +76,12 @@ const attributes = {
 	},
 	gapTablet: {
 		type: 'number',
-		default: 10,
 		UAGCopyPaste: {
 			styleType: 'btn-gap-tablet'
 		}
 	},
 	gapMobile: {
 		type: 'number',
-		default: 10,
 		UAGCopyPaste: {
 			styleType: 'btn-gap-mobile'
 		}

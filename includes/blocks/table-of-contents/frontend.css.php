@@ -10,6 +10,13 @@
 // Adds Fonts.
 UAGB_Block_JS::blocks_table_of_contents_gfont( $attr );
 
+$block_name = 'table-of-contents';
+
+$t_columns_desktop_fallback = UAGB_Block_Helper::get_fallback_number( $attr['tColumnsDesktop'], 'tColumnsDesktop', $block_name );
+$t_columns_tablet_fallback  = UAGB_Block_Helper::get_fallback_number( $attr['tColumnsTablet'], 'tColumnsTablet', $block_name );
+$t_columns_mobile_fallback  = UAGB_Block_Helper::get_fallback_number( $attr['tColumnsMobile'], 'tColumnsMobile', $block_name );
+$width_desktop_fallback  = UAGB_Block_Helper::get_fallback_number( $attr['widthDesktop'], 'widthDesktop', $block_name );
+
 $m_selectors = array();
 $t_selectors = array();
 
@@ -92,7 +99,7 @@ $selectors = array(
 		'border-color' => $attr['overallBorderHColor'],
 	),
 	' .uagb-toc__list-wrap'                               => array(
-		'column-count' => $attr['tColumnsDesktop'],
+		'column-count' => $t_columns_desktop_fallback,
 		'overflow'     => 'hidden',
 	),
 	' .uagb-toc__list-wrap > ul.uagb-toc__list > li:first-child' => array(
@@ -133,7 +140,7 @@ if ( '' !== $attr['contentPaddingDesktop'] ) {
 }
 
 if ( $attr['customWidth'] ) {
-	$selectors[' .uagb-toc__wrap']['width'] = UAGB_Helper::get_css_value( $attr['widthDesktop'], $attr['widthTypeDesktop'] );
+	$selectors[' .uagb-toc__wrap']['width'] = UAGB_Helper::get_css_value( $width_desktop_fallback, $attr['widthTypeDesktop'] );
 }
 
 if ( $attr['customWidth'] && $attr['makeCollapsible'] ) {
@@ -180,7 +187,7 @@ $m_selectors = array(
 		'margin-bottom' => UAGB_Helper::get_css_value( $mobile_bottom_margin, $attr['marginTypeMobile'] ),
 	),
 	' .uagb-toc__list-wrap'                               => array(
-		'column-count' => $attr['tColumnsMobile'],
+		'column-count' => $t_columns_mobile_fallback,
 		'overflow'     => 'hidden',
 	),
 	' .uagb-toc__list-wrap > ul.uagb-toc__list > li:first-child' => array(
@@ -218,7 +225,7 @@ $t_selectors = array(
 		'margin-bottom' => UAGB_Helper::get_css_value( $tablet_bottom_margin, $attr['marginTypeTablet'] ),
 	),
 	' .uagb-toc__list-wrap'                               => array(
-		'column-count' => $attr['tColumnsTablet'],
+		'column-count' => $t_columns_tablet_fallback,
 		'overflow'     => 'hidden',
 	),
 	' .uagb-toc__list-wrap > ul.uagb-toc__list > li:first-child' => array(

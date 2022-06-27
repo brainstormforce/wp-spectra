@@ -249,19 +249,6 @@ const Settings = ( props ) => {
 				/>
 
 				{ 'simple' === layout && (
-					// <Range
-					// 	label={ __(
-					// 		'Border Width',
-					// 		'ultimate-addons-for-gutenberg'
-					// 	) }
-					// 	value={ highlightWidth }
-					// 	onChange={ ( value ) =>
-					// 		setAttributes( { highlightWidth: value } )
-					// 	}
-					// 	min={ 0 }
-					// 	max={ 50 }
-					// 	displayUnit={ false }
-					// />
 					<ResponsiveSlider
 						label={ __(
 							'Border Width',

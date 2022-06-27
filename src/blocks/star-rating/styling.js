@@ -4,8 +4,12 @@
 
 import generateCSS from '@Controls/generateCSS';
 import generateCSSUnit from '@Controls/generateCSSUnit';
+import { getFallbackNumber } from '@Controls/getAttributeFallback';
 
 function styling( props ) {
+
+	const blockName = props.name.replace( 'uagb/', '' );
+
 	const {
 		layout,
 		layoutTablet,
@@ -78,6 +82,11 @@ function styling( props ) {
 		blockMarginUnitMobile,
 	} = props.attributes;
 
+	const ratingFallback = getFallbackNumber( rating, 'rating', blockName );
+	const titleGapFallback = getFallbackNumber( titleGap, 'titleGap', blockName );
+	const sizeFallback = getFallbackNumber( size, 'size', blockName );
+	const gapFallback = getFallbackNumber( gap, 'gap', blockName );
+
 	let stackAlignment = align;
 	let stackAlignmentTablet = alignTablet;
 	let stackAlignmentMobile = alignMobile;
@@ -127,7 +136,7 @@ function styling( props ) {
 
 	}
 
-	const remainder = ( rating % 1 ).toFixed( 1 );
+	const remainder = ( ratingFallback % 1 ).toFixed( 1 );
 	const width = remainder * 100;
 
 	const wrapperCSS = {
@@ -169,10 +178,10 @@ function styling( props ) {
 
 	const selectors = {
 		' .uag-star-rating': {
-			'font-size': generateCSSUnit( size, 'px' ),
+			'font-size': generateCSSUnit( sizeFallback, 'px' ),
 		},
 		' .uag-star-rating > span': {
-			'margin-right': generateCSSUnit( gap, 'px' ),
+			'margin-right': generateCSSUnit( gapFallback, 'px' ),
 			'color': unmarkedColor,
 		},
 		' .uag-star-rating__title.block-editor-rich-text__editable': {
@@ -218,11 +227,11 @@ function styling( props ) {
 
 	selectors[ ' .uag-star-rating__title.block-editor-rich-text__editable' ][
 		index
-	] = generateCSSUnit( titleGap, 'px' );
+	] = generateCSSUnit( titleGapFallback, 'px' );
 
 	if ( 0 !== width ) {
 		selectors[
-			' .uag-star:nth-child(' + Math.ceil( rating ) + '):before'
+			' .uag-star:nth-child(' + Math.ceil( ratingFallback ) + '):before'
 		] = {
 			'color': color,
 			'width': generateCSSUnit( width, '%' ),
@@ -231,12 +240,12 @@ function styling( props ) {
 			'overflow': 'hidden',
 		};
 
-		selectors[ ' .uag-star:nth-child(' + Math.ceil( rating ) + ')' ] = {
+		selectors[ ' .uag-star:nth-child(' + Math.ceil( ratingFallback ) + ')' ] = {
 			'position': 'relative',
 		};
 	}
 
-	selectors[ ' .uag-star:nth-child(-n+' + Math.floor( rating ) + ')' ] = {
+	selectors[ ' .uag-star:nth-child(-n+' + Math.floor( ratingFallback ) + ')' ] = {
 		'color': color,
 	};
 

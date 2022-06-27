@@ -1,5 +1,9 @@
 import { __ } from '@wordpress/i18n';
 const attributes = {
+	blockName               : {
+		type    : 'string',
+		default : 'post-carousel',
+	},
 	pauseOnHover            : {
 		type    : 'boolean',
 		default : true,
@@ -261,14 +265,12 @@ const attributes = {
 	},
 	rowGapTablet                  : {
 		type    : 'number',
-		default : 20,
 		UAGCopyPaste: {
 			styleType: 'post-bottom-padding'
 		},
 	},
 	rowGapMobile                  : {
 		type    : 'number',
-		default : 10,
 		UAGCopyPaste: {
 			styleType: 'post-bottom-padding'
 		},
@@ -282,14 +284,12 @@ const attributes = {
 	},
 	columnGapTablet               : {
 		type    : 'number',
-		default : 0,
 		UAGCopyPaste: {
 			styleType: 'post-bottom-padding'
 		},
 	},
 	columnGapMobile               : {
 		type    : 'number',
-		default : 0,
 		UAGCopyPaste: {
 			styleType: 'post-bottom-padding'
 		},
@@ -766,14 +766,12 @@ const attributes = {
 	},
 	ctaBottomSpaceTablet          : {
 		type    : 'number',
-		default : 0,
 		UAGCopyPaste: {
 			styleType: 'btn-bottom-margin'
 		},
 	},
 	ctaBottomSpaceMobile          : {
 		type    : 'number',
-		default : 0,
 		UAGCopyPaste: {
 			styleType: 'btn-bottom-margin'
 		},
@@ -787,14 +785,12 @@ const attributes = {
 	},
 	imageBottomSpaceTablet        : {
 		type    : 'number',
-		default : 0,
 		UAGCopyPaste: {
 			styleType: 'image-bottom-margin'
 		},
 	},
 	imageBottomSpaceMobile        : {
 		type    : 'number',
-		default : 0,
 		UAGCopyPaste: {
 			styleType: 'image-bottom-margin'
 		},
@@ -808,14 +804,12 @@ const attributes = {
 	},
 	titleBottomSpaceTablet        : {
 		type    : 'number',
-		default : 0,
 		UAGCopyPaste: {
 			styleType: 'main-title-bottom-margin'
 		},
 	},
 	titleBottomSpaceMobile        : {
 		type    : 'number',
-		default : 0,
 		UAGCopyPaste: {
 			styleType: 'main-title-bottom-margin'
 		},
@@ -829,14 +823,12 @@ const attributes = {
 	},
 	metaBottomSpaceTablet         : {
 		type    : 'number',
-		default : 0,
 		UAGCopyPaste: {
 			styleType: 'prefix-bottom-margin'
 		},
 	},
 	metaBottomSpaceMobile         : {
 		type    : 'number',
-		default : 0,
 		UAGCopyPaste: {
 			styleType: 'prefix-bottom-margin'
 		},
@@ -850,14 +842,12 @@ const attributes = {
 	},
 	excerptBottomSpaceTablet      : {
 		type    : 'number',
-		default : 0,
 		UAGCopyPaste: {
 			styleType: 'desc-bottom-margin'
 		},
 	},
 	excerptBottomSpaceMobile      : {
 		type    : 'number',
-		default : 0,
 		UAGCopyPaste: {
 			styleType: 'desc-bottom-margin'
 		},

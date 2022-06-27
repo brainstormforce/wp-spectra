@@ -1,7 +1,5 @@
 import React, { useLayoutEffect } from 'react';
 import {
-	Button,
-	ButtonGroup,
 	TextControl,
 } from '@wordpress/components';
 import ResponsiveSelectControl from '@Components/responsive-select';
@@ -10,8 +8,6 @@ import styles from './editor.lazy.scss';
 import useDimensionHandler from './use-dimension-handler';
 import { useDeviceType } from '@Controls/getPreviewType';
 import ResponsiveToggle from '../responsive-toggle';
-
-const IMAGE_SIZE_PRESETS = [ 25, 50, 75, 100 ];
 
 export default function ImageSizeControl( {
 	imageWidth,
@@ -46,7 +42,6 @@ export default function ImageSizeControl( {
 		currentHeight,
 		currentWidth,
 		updateDimension,
-		updateDimensions,
 	} = useDimensionHandler( height, width, imageHeight, imageWidth, onChange );
 
 	const output = {}
@@ -125,20 +120,6 @@ export default function ImageSizeControl( {
 		</>
 	);
 
-	const imageSizePresetHandler = ( scaledHeight, scaledWidth ) => {
-		if( deviceType === 'Tablet' ){
-			setAttributes( { widthTablet: scaledWidth, heightTablet: scaledHeight} )
-		} else if( deviceType === 'Mobile' ){
-			setAttributes( { widthMobile: scaledWidth, heightMobile: scaledHeight} )
-		} else {
-			updateDimensions(
-				scaledHeight,
-				scaledWidth
-			)
-		}
-	}
-
-
 	return (
 		<>
 			{ imageSizeOptions.length !== 0 && (
@@ -177,41 +158,6 @@ export default function ImageSizeControl( {
 						</div>
 						<div className="block-editor-image-size-control__row">
 							{output[deviceType]}
-						</div>
-						<div className="block-editor-image-size-control__row">
-							<ButtonGroup aria-label={ __( 'Image Size Presets' ) }>
-								{ IMAGE_SIZE_PRESETS.map( ( scale ) => {
-									const scaledWidth = Math.round(
-										imageWidth * ( scale / 100 )
-									);
-									const scaledHeight = Math.round(
-										imageHeight * ( scale / 100 )
-									);
-
-									let isCurrent = currentWidth === scaledWidth
-									if( 'Tablet' === deviceType ){
-										isCurrent = widthTablet === scaledWidth;
-									} else if( 'Mobile' === deviceType ){
-										isCurrent = widthMobile === scaledWidth;
-									}
-									return (
-										<Button
-											key={ scale }
-											isSmall
-											variant={
-												isCurrent ? 'primary' : undefined
-											}
-											isPressed={ isCurrent }
-											onClick={ () => imageSizePresetHandler( scaledHeight,scaledWidth )}
-										>
-											{ scale }%
-										</Button>
-									);
-								} ) }
-							</ButtonGroup>
-							<Button isSmall onClick={ () => updateDimensions() }>
-								<span className="dashicon dashicons dashicons-image-rotate"></span>
-							</Button>
 						</div>
 					</div>
 				</div>

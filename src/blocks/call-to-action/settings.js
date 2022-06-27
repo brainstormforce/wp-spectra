@@ -607,7 +607,6 @@ const Settings = ( props ) => {
 					prefix={'secondCta'}
 					attributes={ attributes }
 					deviceType={deviceType}
-					disableBottomSeparator={ true }
 					disabledBorderTitle= {false}
 				/>
 				<SpacingControl
@@ -1001,7 +1000,6 @@ const Settings = ( props ) => {
 							prefix={'btn'}
 							attributes={ attributes }
 							deviceType={deviceType}
-							disableBottomSeparator={ true }
 							disabledBorderTitle= {false}
 						/>
 						<SpacingControl
