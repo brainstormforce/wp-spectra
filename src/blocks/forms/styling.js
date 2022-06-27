@@ -190,7 +190,6 @@ function styling( props ) {
 	const submitBorderTablet = generateBorderCSS( props.attributes, 'btn', 'tablet' );
 	const submitBorderMobile = generateBorderCSS( props.attributes, 'btn', 'mobile' );
 
-
 	selectors = {
 		'.uagb-forms__outer-wrap': {
 			'padding-top': generateCSSUnit( formPaddingTop, formPaddingUnit ),
@@ -412,203 +411,6 @@ function styling( props ) {
 			'color': inputplaceholderHColor,
 		},
 	};
-
-	if ( 'boxed' === formStyle ) {
-		selectors[ ' .uagb-forms-main-form  .uagb-forms-input' ] = {
-			...inputBorder,
-			'background-color': bgColor,
-			'color': inputColor,
-			'padding-top': generateCSSUnit( paddingFieldTop, paddingFieldUnit ),
-			'padding-bottom': generateCSSUnit(
-				paddingFieldBottom,
-				paddingFieldUnit
-			),
-			'padding-left': generateCSSUnit(
-				paddingFieldLeft,
-				paddingFieldUnit
-			),
-			'padding-right': generateCSSUnit(
-				paddingFieldRight,
-				paddingFieldUnit
-			),
-		};
-		tabletSelectors[ ' .uagb-forms-main-form  .uagb-forms-input' ] = {
-			...inputBorderTablet,
-			'padding-top': generateCSSUnit(
-				paddingFieldTopTablet,
-				paddingFieldUnitTablet
-			),
-			'padding-bottom': generateCSSUnit(
-				paddingFieldBottomTablet,
-				paddingFieldUnitTablet
-			),
-			'padding-left': generateCSSUnit(
-				paddingFieldLeftTablet,
-				paddingFieldUnitTablet
-			),
-			'padding-right': generateCSSUnit(
-				paddingFieldRightTablet,
-				paddingFieldUnitTablet
-			),
-		};
-		mobileSelectors[ ' .uagb-forms-main-form  .uagb-forms-input' ] = {
-			...inputBorderMobile,
-			'padding-top': generateCSSUnit(
-				paddingFieldTopMobile,
-				paddingFieldUnitmobile
-			),
-			'padding-bottom': generateCSSUnit(
-				paddingFieldBottomMobile,
-				paddingFieldUnitmobile
-			),
-			'padding-left': generateCSSUnit(
-				paddingFieldLeftMobile,
-				paddingFieldUnitmobile
-			),
-			'padding-right': generateCSSUnit(
-				paddingFieldRightMobile,
-				paddingFieldUnitmobile
-			),
-		};
-		selectors[
-			' .uagb-forms-main-form .uagb-forms-checkbox-wrap input[type=checkbox] + label:before'
-		] = toggleBorder;
-		selectors[
-			' .uagb-forms-main-form .uagb-forms-accept-wrap input[type=checkbox] + label:before'
-		] = toggleBorder;
-		selectors[
-			' .uagb-forms-main-form .uagb-forms-radio-wrap input[type=radio] + label:before'
-		] = toggleBorder;
-		selectors[ ' .uagb-slider ' ] = {
-			...toggleBorder,
-			'background-color': toggleColor,
-		};
-
-		mobileSelectors[
-			' .uagb-forms-main-form .uagb-forms-checkbox-wrap input[type=checkbox] + label:before'
-		] = toggleBorderMobile;
-		mobileSelectors[
-			' .uagb-forms-main-form .uagb-forms-accept-wrap input[type=checkbox] + label:before'
-		] = toggleBorderMobile;
-		mobileSelectors[
-			' .uagb-forms-main-form .uagb-forms-radio-wrap input[type=radio] + label:before'
-		] = toggleBorderMobile;
-		mobileSelectors[ ' .uagb-slider ' ] = toggleBorderMobile;
-
-		tabletSelectors[
-			' .uagb-forms-main-form .uagb-forms-checkbox-wrap input[type=checkbox] + label:before'
-		] = toggleBorderTablet;
-		tabletSelectors[
-			' .uagb-forms-main-form .uagb-forms-accept-wrap input[type=checkbox] + label:before'
-		] = toggleBorderTablet;
-		tabletSelectors[
-			' .uagb-forms-main-form .uagb-forms-radio-wrap input[type=radio] + label:before'
-		] = toggleBorderTablet;
-		tabletSelectors[ ' .uagb-slider ' ] = toggleBorderTablet;
-		// Label Hovev Colors
-	} else if ( 'underlined' === formStyle ) {
-		selectors[ ' .uagb-forms-main-form  .uagb-forms-input' ] = {
-			'border': 0,
-			'outline': 0,
-			'border-radius': 0,
-			'background': 'transparent',
-			'border-top': 0,
-			'border-left': 0,
-			'border-right': 0,
-			...inputBorder,
-			'color': inputColor,
-			'padding-top': generateCSSUnit( paddingFieldTop, paddingFieldUnit ),
-			'padding-bottom': generateCSSUnit(
-				paddingFieldBottom,
-				paddingFieldUnit
-			),
-			'padding-left': generateCSSUnit(
-				paddingFieldLeft,
-				paddingFieldUnit
-			),
-			'padding-right': generateCSSUnit(
-				paddingFieldRight,
-				paddingFieldUnit
-			),
-		};
-		tabletSelectors[ ' .uagb-forms-main-form  .uagb-forms-input' ] = {
-			'padding-top': generateCSSUnit(
-				paddingFieldTopTablet,
-				paddingFieldUnitTablet
-			),
-			'padding-bottom': generateCSSUnit(
-				paddingFieldBottomTablet,
-				paddingFieldUnitTablet
-			),
-			'padding-left': generateCSSUnit(
-				paddingFieldLeftTablet,
-				paddingFieldUnitTablet
-			),
-			'padding-right': generateCSSUnit(
-				paddingFieldRightTablet,
-				paddingFieldUnitTablet
-			),
-			...inputBorderTablet
-		};
-		mobileSelectors[ ' .uagb-forms-main-form  .uagb-forms-input' ] = {
-			'padding-top': generateCSSUnit(
-				paddingFieldTopMobile,
-				paddingFieldUnitmobile
-			),
-			'padding-bottom': generateCSSUnit(
-				paddingFieldBottomMobile,
-				paddingFieldUnitmobile
-			),
-			'padding-left': generateCSSUnit(
-				paddingFieldLeftMobile,
-				paddingFieldUnitmobile
-			),
-			'padding-right': generateCSSUnit(
-				paddingFieldRightMobile,
-				paddingFieldUnitmobile
-			),
-			...inputBorderMobile
-		};
-		selectors[
-			' .uagb-forms-main-form .uagb-forms-checkbox-wrap input[type=checkbox] + label:before'
-		] = {
-			'border-bottom':
-				generateCSSUnit( toggleBorderWidth, 'px' ) +
-				' ' +
-				toggleBorderStyle +
-				' ' +
-				toggleBorderColor,
-		};
-		selectors[
-			' .uagb-forms-main-form .uagb-forms-accept-wrap input[type=checkbox] + label:before'
-		] = {
-			'border-bottom':
-				generateCSSUnit( toggleBorderWidth, 'px' ) +
-				' ' +
-				toggleBorderStyle +
-				' ' +
-				toggleBorderColor,
-		};
-		selectors[
-			' .uagb-forms-main-form .uagb-forms-radio-wrap input[type=radio] + label:before'
-		] = {
-			'border-bottom':
-				generateCSSUnit( toggleBorderWidth, 'px' ) +
-				' ' +
-				toggleBorderStyle +
-				' ' +
-				toggleBorderColor,
-		};
-		selectors[ ' .uagb-slider ' ] = {
-			'background-color': toggleColor,
-			'border-bottom':
-				generateCSSUnit( toggleBorderWidth, 'px' ) +
-				' ' +
-				toggleBorderStyle +
-				' ' +
-				toggleBorderColor,
-		};
-	}
 
 	tabletSelectors = {
 		'.uagb-forms__outer-wrap': {
@@ -839,6 +641,203 @@ function styling( props ) {
 			'text-align': buttonAlignMobile,
 		},
 	};
+
+	if ( 'boxed' === formStyle ) {
+		selectors[ ' .uagb-forms-main-form  .uagb-forms-input' ] = {
+			...inputBorder,
+			'background-color': bgColor,
+			'color': inputColor,
+			'padding-top': generateCSSUnit( paddingFieldTop, paddingFieldUnit ),
+			'padding-bottom': generateCSSUnit(
+				paddingFieldBottom,
+				paddingFieldUnit
+			),
+			'padding-left': generateCSSUnit(
+				paddingFieldLeft,
+				paddingFieldUnit
+			),
+			'padding-right': generateCSSUnit(
+				paddingFieldRight,
+				paddingFieldUnit
+			),
+		};
+		tabletSelectors[ ' .uagb-forms-main-form  .uagb-forms-input' ] = {
+			...inputBorderTablet,
+			'padding-top': generateCSSUnit(
+				paddingFieldTopTablet,
+				paddingFieldUnitTablet
+			),
+			'padding-bottom': generateCSSUnit(
+				paddingFieldBottomTablet,
+				paddingFieldUnitTablet
+			),
+			'padding-left': generateCSSUnit(
+				paddingFieldLeftTablet,
+				paddingFieldUnitTablet
+			),
+			'padding-right': generateCSSUnit(
+				paddingFieldRightTablet,
+				paddingFieldUnitTablet
+			),
+		};
+		mobileSelectors[ ' .uagb-forms-main-form  .uagb-forms-input' ] = {
+			...inputBorderMobile,
+			'padding-top': generateCSSUnit(
+				paddingFieldTopMobile,
+				paddingFieldUnitmobile
+			),
+			'padding-bottom': generateCSSUnit(
+				paddingFieldBottomMobile,
+				paddingFieldUnitmobile
+			),
+			'padding-left': generateCSSUnit(
+				paddingFieldLeftMobile,
+				paddingFieldUnitmobile
+			),
+			'padding-right': generateCSSUnit(
+				paddingFieldRightMobile,
+				paddingFieldUnitmobile
+			),
+		};
+		selectors[
+			' .uagb-forms-main-form .uagb-forms-checkbox-wrap input[type=checkbox] + label:before'
+		] = toggleBorder;
+		selectors[
+			' .uagb-forms-main-form .uagb-forms-accept-wrap input[type=checkbox] + label:before'
+		] = toggleBorder;
+		selectors[
+			' .uagb-forms-main-form .uagb-forms-radio-wrap input[type=radio] + label:before'
+		] = toggleBorder;
+		selectors[ ' .uagb-slider ' ] = {
+			...toggleBorder,
+			'background-color': toggleColor,
+		};
+
+		mobileSelectors[
+			' .uagb-forms-main-form .uagb-forms-checkbox-wrap input[type=checkbox] + label:before'
+		] = toggleBorderMobile;
+		mobileSelectors[
+			' .uagb-forms-main-form .uagb-forms-accept-wrap input[type=checkbox] + label:before'
+		] = toggleBorderMobile;
+		mobileSelectors[
+			' .uagb-forms-main-form .uagb-forms-radio-wrap input[type=radio] + label:before'
+		] = toggleBorderMobile;
+		mobileSelectors[ ' .uagb-slider ' ] = toggleBorderMobile;
+
+		tabletSelectors[
+			' .uagb-forms-main-form .uagb-forms-checkbox-wrap input[type=checkbox] + label:before'
+		] = toggleBorderTablet;
+		tabletSelectors[
+			' .uagb-forms-main-form .uagb-forms-accept-wrap input[type=checkbox] + label:before'
+		] = toggleBorderTablet;
+		tabletSelectors[
+			' .uagb-forms-main-form .uagb-forms-radio-wrap input[type=radio] + label:before'
+		] = toggleBorderTablet;
+		tabletSelectors[ ' .uagb-slider ' ] = toggleBorderTablet;
+		// Label Hovev Colors
+	} else if ( 'underlined' === formStyle ) {
+		selectors[ ' .uagb-forms-main-form  .uagb-forms-input' ] = {
+			'border': 0,
+			'outline': 0,
+			'border-radius': 0,
+			'background': 'transparent',
+			'border-top': 0,
+			'border-left': 0,
+			'border-right': 0,
+			...inputBorder,
+			'color': inputColor,
+			'padding-top': generateCSSUnit( paddingFieldTop, paddingFieldUnit ),
+			'padding-bottom': generateCSSUnit(
+				paddingFieldBottom,
+				paddingFieldUnit
+			),
+			'padding-left': generateCSSUnit(
+				paddingFieldLeft,
+				paddingFieldUnit
+			),
+			'padding-right': generateCSSUnit(
+				paddingFieldRight,
+				paddingFieldUnit
+			),
+		};
+		tabletSelectors[ ' .uagb-forms-main-form  .uagb-forms-input' ] = {
+			'padding-top': generateCSSUnit(
+				paddingFieldTopTablet,
+				paddingFieldUnitTablet
+			),
+			'padding-bottom': generateCSSUnit(
+				paddingFieldBottomTablet,
+				paddingFieldUnitTablet
+			),
+			'padding-left': generateCSSUnit(
+				paddingFieldLeftTablet,
+				paddingFieldUnitTablet
+			),
+			'padding-right': generateCSSUnit(
+				paddingFieldRightTablet,
+				paddingFieldUnitTablet
+			),
+			...inputBorderTablet
+		};
+		mobileSelectors[ ' .uagb-forms-main-form  .uagb-forms-input' ] = {
+			'padding-top': generateCSSUnit(
+				paddingFieldTopMobile,
+				paddingFieldUnitmobile
+			),
+			'padding-bottom': generateCSSUnit(
+				paddingFieldBottomMobile,
+				paddingFieldUnitmobile
+			),
+			'padding-left': generateCSSUnit(
+				paddingFieldLeftMobile,
+				paddingFieldUnitmobile
+			),
+			'padding-right': generateCSSUnit(
+				paddingFieldRightMobile,
+				paddingFieldUnitmobile
+			),
+			...inputBorderMobile
+		};
+		selectors[
+			' .uagb-forms-main-form .uagb-forms-checkbox-wrap input[type=checkbox] + label:before'
+		] = {
+			'border-bottom':
+				generateCSSUnit( toggleBorderWidth, 'px' ) +
+				' ' +
+				toggleBorderStyle +
+				' ' +
+				toggleBorderColor,
+		};
+		selectors[
+			' .uagb-forms-main-form .uagb-forms-accept-wrap input[type=checkbox] + label:before'
+		] = {
+			'border-bottom':
+				generateCSSUnit( toggleBorderWidth, 'px' ) +
+				' ' +
+				toggleBorderStyle +
+				' ' +
+				toggleBorderColor,
+		};
+		selectors[
+			' .uagb-forms-main-form .uagb-forms-radio-wrap input[type=radio] + label:before'
+		] = {
+			'border-bottom':
+				generateCSSUnit( toggleBorderWidth, 'px' ) +
+				' ' +
+				toggleBorderStyle +
+				' ' +
+				toggleBorderColor,
+		};
+		selectors[ ' .uagb-slider ' ] = {
+			'background-color': toggleColor,
+			'border-bottom':
+				generateCSSUnit( toggleBorderWidth, 'px' ) +
+				' ' +
+				toggleBorderStyle +
+				' ' +
+				toggleBorderColor,
+		};
+	}
 
 	let stylingCss = '';
 	const base_selector = `.editor-styles-wrapper .uagb-block-${ props.clientId.substr(
