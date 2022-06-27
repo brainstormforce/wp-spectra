@@ -111,6 +111,7 @@ return array(
 	'iconMarginRightMobile'      => '',
 	'iconMarginTopMobile'        => '',
 	'iconMarginBottomMobile'     => '',
+	'iconMarginUnit'       		 => 'px',
 	'iconTabletMarginUnit'       => 'px',
 	'iconMobileMarginUnit'       => 'px',
 	'imageSize'                  => 'thumbnail',
