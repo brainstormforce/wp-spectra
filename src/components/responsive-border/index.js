@@ -7,8 +7,7 @@ import AdvancedPopColorControl from '@Components/color-control/advanced-pop-colo
 import { SelectControl } from '@wordpress/components';
 import UAGTabsControl from '@Components/tabs';
 import SpacingControl from '@Components/spacing-control';
-import styles from './editor.lazy.scss';
-import React, { useLayoutEffect } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 
 const propTypes = {
@@ -31,16 +30,11 @@ const defaultProps = {
 };
 
 const ResponsiveBorder = ( props ) => {
-	useLayoutEffect( () => {
-		styles.use();
-		return () => {
-			styles.unuse();
-		};
-	}, [] );
 	const {
 		attributes,
 		setAttributes,
 		disabledBorderTitle,
+		disableBottomSeparator,
 		deviceType,
 
 		prefix,
@@ -48,7 +42,8 @@ const ResponsiveBorder = ( props ) => {
 		borderWidthLabel,
 		borderRadiusLabel,
 		borderColorLabel,
-		borderHoverColorLabel
+		borderHoverColorLabel,
+		label = __( 'Border', 'ultimate-addons-for-gutenberg' ),
 	} = props;
 
 	const tabsToUse = [ {
@@ -94,254 +89,243 @@ const ResponsiveBorder = ( props ) => {
 	const advancedControls = (
 		<>
 		{ ! disabledBorderTitle && (
-			<h2>{ __( 'Border', 'ultimate-addons-for-gutenberg' ) }</h2>
+			<h2>{ label }</h2>
 		)}
-			<div className="uag-border-type">
-				<SelectControl
-					label={ borderStyleLabel }
-					labelPosition="top"
-					value={ borderStyle }
-					onChange={ ( value ) =>
-						setAttributes( {
-							[ prefix + 'BorderStyle' ]: value,
-						} )
-					}
-					options={ [
-						{
-							value: 'none',
-							label: __(
-								'None',
-								'ultimate-addons-for-gutenberg'
-							),
-						},
-						{
-							value: 'solid',
-							label: __(
-								'Solid',
-								'ultimate-addons-for-gutenberg'
-							),
-						},
-						{
-							value: 'dotted',
-							label: __(
-								'Dotted',
-								'ultimate-addons-for-gutenberg'
-							),
-						},
-						{
-							value: 'dashed',
-							label: __(
-								'Dashed',
-								'ultimate-addons-for-gutenberg'
-							),
-						},
-						{
-							value: 'double',
-							label: __(
-								'Double',
-								'ultimate-addons-for-gutenberg'
-							),
-						},
-						{
-							value: 'groove',
-							label: __(
-								'Groove',
-								'ultimate-addons-for-gutenberg'
-							),
-						},
-						{
-							value: 'inset',
-							label: __(
-								'Inset',
-								'ultimate-addons-for-gutenberg'
-							),
-						},
-						{
-							value: 'outset',
-							label: __(
-								'Outset',
-								'ultimate-addons-for-gutenberg'
-							),
-						},
-						{
-							value: 'ridge',
-							label: __(
-								'Ridge',
-								'ultimate-addons-for-gutenberg'
-							),
-						},
-					] }
-				/>
-			</div>
-
+			<SelectControl
+				label={ borderStyleLabel }
+				labelPosition="top"
+				value={ borderStyle }
+				onChange={ ( value ) =>
+					setAttributes( {
+						[ prefix + 'BorderStyle' ]: value,
+					} )
+				}
+				options={ [
+					{
+						value: 'none',
+						label: __(
+							'None',
+							'ultimate-addons-for-gutenberg'
+						),
+					},
+					{
+						value: 'solid',
+						label: __(
+							'Solid',
+							'ultimate-addons-for-gutenberg'
+						),
+					},
+					{
+						value: 'dotted',
+						label: __(
+							'Dotted',
+							'ultimate-addons-for-gutenberg'
+						),
+					},
+					{
+						value: 'dashed',
+						label: __(
+							'Dashed',
+							'ultimate-addons-for-gutenberg'
+						),
+					},
+					{
+						value: 'double',
+						label: __(
+							'Double',
+							'ultimate-addons-for-gutenberg'
+						),
+					},
+					{
+						value: 'groove',
+						label: __(
+							'Groove',
+							'ultimate-addons-for-gutenberg'
+						),
+					},
+					{
+						value: 'inset',
+						label: __(
+							'Inset',
+							'ultimate-addons-for-gutenberg'
+						),
+					},
+					{
+						value: 'outset',
+						label: __(
+							'Outset',
+							'ultimate-addons-for-gutenberg'
+						),
+					},
+					{
+						value: 'ridge',
+						label: __(
+							'Ridge',
+							'ultimate-addons-for-gutenberg'
+						),
+					},
+				] }
+			/>
 			{ 'none' !== borderStyle && (
-				<div className="uag-border-width">
-					<SpacingControl
-						label={ borderWidthLabel }
-						valueTop={ {
-							value: attributes[prefix + 'BorderTopWidth'],
-							label: prefix + 'BorderTopWidth',
-						} }
-						valueRight={ {
-							value: attributes[prefix + 'BorderRightWidth'],
-							label: prefix + 'BorderRightWidth',
-						}  }
-						valueBottom={ {
-							value: attributes[prefix + 'BorderBottomWidth'],
-							label: prefix + 'BorderBottomWidth',
-						} }
-						valueLeft={  {
-							value: attributes[prefix + 'BorderLeftWidth'],
-							label: prefix + 'BorderLeftWidth',
-						} }
-						valueTopTablet={ {
-							value: attributes[prefix + 'BorderTopWidthTablet'],
-							label: prefix + 'BorderTopWidthTablet',
-						} }
-						valueRightTablet={ {
-							value: attributes[prefix + 'BorderRightWidthTablet'],
-							label: prefix + 'BorderRightWidthTablet',
-						} }
-						valueBottomTablet={ {
-							value: attributes[prefix + 'BorderBottomWidthTablet'],
-							label: prefix + 'BorderBottomWidthTablet',
-						} }
-						valueLeftTablet={ {
-							value: attributes[prefix + 'BorderLeftWidthTablet'],
-							label: prefix + 'BorderLeftWidthTablet',
-						} }
-						valueTopMobile={ {
-							value: attributes[prefix + 'BorderTopWidthMobile'],
-							label: prefix + 'BorderTopWidthMobile',
-						} }
-						valueRightMobile={ {
-							value: attributes[prefix + 'BorderRightWidthMobile'],
-							label: prefix + 'BorderRightWidthMobile',
-						} }
-						valueBottomMobile={ {
-							value: attributes[prefix + 'BorderBottomWidthMobile'],
-							label: prefix + 'BorderBottomWidthMobile',
-						} }
-						valueLeftMobile={ {
-							value: attributes[prefix + 'BorderLeftWidthMobile'],
-							label: prefix + 'BorderLeftWidthMobile',
-						} }
-						disableUnits={true}
-						deviceType={ deviceType }
-						attributes={ attributes }
-						setAttributes={ setAttributes }
-						link={ {
-							value: attributes[prefix + 'BorderLink'],
-							label: prefix + 'BorderLink',
-						} }
-					/>
-				</div>
-			) }
-			<div className="uag-border-radius">
 				<SpacingControl
-					label={ borderRadiusLabel }
+					label={ borderWidthLabel }
 					valueTop={ {
-						value: attributes[prefix + 'BorderTopLeftRadius'],
-						label: prefix + 'BorderTopLeftRadius',
+						value: attributes[prefix + 'BorderTopWidth'],
+						label: prefix + 'BorderTopWidth',
 					} }
 					valueRight={ {
-						value: attributes[prefix + 'BorderTopRightRadius'],
-						label: prefix + 'BorderTopRightRadius',
-					} }
+						value: attributes[prefix + 'BorderRightWidth'],
+						label: prefix + 'BorderRightWidth',
+					}  }
 					valueBottom={ {
-						value: attributes[prefix + 'BorderBottomRightRadius'],
-						label: prefix + 'BorderBottomRightRadius',
+						value: attributes[prefix + 'BorderBottomWidth'],
+						label: prefix + 'BorderBottomWidth',
 					} }
-					valueLeft={ {
-						value: attributes[prefix + 'BorderBottomLeftRadius'],
-						label: prefix + 'BorderBottomLeftRadius',
+					valueLeft={  {
+						value: attributes[prefix + 'BorderLeftWidth'],
+						label: prefix + 'BorderLeftWidth',
 					} }
-					valueTopTablet={{
-						value: attributes[prefix + 'BorderTopLeftRadiusTablet'],
-						label: prefix + 'BorderTopLeftRadiusTablet',
+					valueTopTablet={ {
+						value: attributes[prefix + 'BorderTopWidthTablet'],
+						label: prefix + 'BorderTopWidthTablet',
 					} }
 					valueRightTablet={ {
-						value: attributes[prefix + 'BorderTopRightRadiusTablet'],
-						label: prefix + 'BorderTopRightRadiusTablet',
+						value: attributes[prefix + 'BorderRightWidthTablet'],
+						label: prefix + 'BorderRightWidthTablet',
 					} }
-					valueBottomTablet={{
-						value: attributes[prefix + 'BorderBottomRightRadiusTablet'],
-						label: prefix + 'BorderBottomRightRadiusTablet',
+					valueBottomTablet={ {
+						value: attributes[prefix + 'BorderBottomWidthTablet'],
+						label: prefix + 'BorderBottomWidthTablet',
 					} }
 					valueLeftTablet={ {
-						value: attributes[prefix + 'BorderBottomLeftRadiusTablet'],
-						label: prefix + 'BorderBottomLeftRadiusTablet',
+						value: attributes[prefix + 'BorderLeftWidthTablet'],
+						label: prefix + 'BorderLeftWidthTablet',
 					} }
 					valueTopMobile={ {
-						value: attributes[prefix + 'BorderTopLeftRadiusMobile'],
-						label: prefix + 'BorderTopLeftRadiusMobile',
+						value: attributes[prefix + 'BorderTopWidthMobile'],
+						label: prefix + 'BorderTopWidthMobile',
 					} }
 					valueRightMobile={ {
-						value: attributes[prefix + 'BorderTopRightRadiusMobile'],
-						label: prefix + 'BorderTopRightRadiusMobile',
+						value: attributes[prefix + 'BorderRightWidthMobile'],
+						label: prefix + 'BorderRightWidthMobile',
 					} }
 					valueBottomMobile={ {
-						value: attributes[prefix + 'BorderBottomRightRadiusMobile'],
-						label: prefix + 'BorderBottomRightRadiusMobile',
+						value: attributes[prefix + 'BorderBottomWidthMobile'],
+						label: prefix + 'BorderBottomWidthMobile',
 					} }
 					valueLeftMobile={ {
-						value: attributes[prefix + 'BorderBottomLeftRadiusMobile'],
-						label: prefix + 'BorderBottomLeftRadiusMobile',
+						value: attributes[prefix + 'BorderLeftWidthMobile'],
+						label: prefix + 'BorderLeftWidthMobile',
 					} }
-					units={ [
-						{
-							name: __(
-								'Pixel',
-								'ultimate-addons-for-gutenberg'
-							),
-							unitValue: 'px',
-						},
-						{
-							name: __(
-								'%',
-								'ultimate-addons-for-gutenberg'
-							),
-							unitValue: '%',
-						},
-					] }
-					unit={{
-						value: attributes[prefix + 'BorderRadiusUnit'],
-						label: prefix + 'BorderRadiusUnit',
-					}}
-					mUnit={{
-						value: attributes[prefix + 'BorderRadiusUnitMobile'],
-						label: prefix + 'BorderRadiusUnitMobile',
-					}}
-					tUnit={{
-						value: attributes[prefix + 'BorderRadiusUnitTablet'],
-						label: prefix + 'BorderRadiusUnitTablet',
-					}}
+					disableUnits={true}
 					deviceType={ deviceType }
 					attributes={ attributes }
 					setAttributes={ setAttributes }
 					link={ {
-						value: attributes[prefix + 'BorderRadiusLink'],
-						label: prefix + 'BorderRadiusLink',
+						value: attributes[prefix + 'BorderLink'],
+						label: prefix + 'BorderLink',
 					} }
 				/>
-			</div>
+			) }
+			<SpacingControl
+				label={ borderRadiusLabel }
+				valueTop={ {
+					value: attributes[prefix + 'BorderTopLeftRadius'],
+					label: prefix + 'BorderTopLeftRadius',
+				} }
+				valueRight={ {
+					value: attributes[prefix + 'BorderTopRightRadius'],
+					label: prefix + 'BorderTopRightRadius',
+				} }
+				valueBottom={ {
+					value: attributes[prefix + 'BorderBottomRightRadius'],
+					label: prefix + 'BorderBottomRightRadius',
+				} }
+				valueLeft={ {
+					value: attributes[prefix + 'BorderBottomLeftRadius'],
+					label: prefix + 'BorderBottomLeftRadius',
+				} }
+				valueTopTablet={{
+					value: attributes[prefix + 'BorderTopLeftRadiusTablet'],
+					label: prefix + 'BorderTopLeftRadiusTablet',
+				} }
+				valueRightTablet={ {
+					value: attributes[prefix + 'BorderTopRightRadiusTablet'],
+					label: prefix + 'BorderTopRightRadiusTablet',
+				} }
+				valueBottomTablet={{
+					value: attributes[prefix + 'BorderBottomRightRadiusTablet'],
+					label: prefix + 'BorderBottomRightRadiusTablet',
+				} }
+				valueLeftTablet={ {
+					value: attributes[prefix + 'BorderBottomLeftRadiusTablet'],
+					label: prefix + 'BorderBottomLeftRadiusTablet',
+				} }
+				valueTopMobile={ {
+					value: attributes[prefix + 'BorderTopLeftRadiusMobile'],
+					label: prefix + 'BorderTopLeftRadiusMobile',
+				} }
+				valueRightMobile={ {
+					value: attributes[prefix + 'BorderTopRightRadiusMobile'],
+					label: prefix + 'BorderTopRightRadiusMobile',
+				} }
+				valueBottomMobile={ {
+					value: attributes[prefix + 'BorderBottomRightRadiusMobile'],
+					label: prefix + 'BorderBottomRightRadiusMobile',
+				} }
+				valueLeftMobile={ {
+					value: attributes[prefix + 'BorderBottomLeftRadiusMobile'],
+					label: prefix + 'BorderBottomLeftRadiusMobile',
+				} }
+				units={ [
+					{
+						name: __(
+							'Pixel',
+							'ultimate-addons-for-gutenberg'
+						),
+						unitValue: 'px',
+					},
+					{
+						name: __(
+							'%',
+							'ultimate-addons-for-gutenberg'
+						),
+						unitValue: '%',
+					},
+				] }
+				unit={{
+					value: attributes[prefix + 'BorderRadiusUnit'],
+					label: prefix + 'BorderRadiusUnit',
+				}}
+				mUnit={{
+					value: attributes[prefix + 'BorderRadiusUnitMobile'],
+					label: prefix + 'BorderRadiusUnitMobile',
+				}}
+				tUnit={{
+					value: attributes[prefix + 'BorderRadiusUnitTablet'],
+					label: prefix + 'BorderRadiusUnitTablet',
+				}}
+				deviceType={ deviceType }
+				attributes={ attributes }
+				setAttributes={ setAttributes }
+				link={ {
+					value: attributes[prefix + 'BorderRadiusLink'],
+					label: prefix + 'BorderRadiusLink',
+				} }
+			/>
 			{ 'none' !== borderStyle && (
 				<UAGTabsControl
 					tabs={ tabsToUse }
 					normal={ tabOutputNormal }
 					hover={ tabOutputHover }
 					active={ '' }
-					disableBottomSeparator={ props.disableBottomSeparator }
+					disableBottomSeparator={ disableBottomSeparator }
 				/>
 			) }
 		</>
 	);
 
-	return (
-		<div className="uag-border-select-control components-base-control">
-			{ advancedControls }
-		</div>
-	);
+	return ( advancedControls );
 };
 
 export default ResponsiveBorder;
