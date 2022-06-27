@@ -126,6 +126,15 @@ $selectors = array(
 	),
 );
 
+
+if( isset( $attr['objectFit'] ) && 'default' !== $attr['objectFit'] ) {
+	$selectors['.wp-block-uagb-image .wp-block-uagb-image__figure img'] = array(
+		'object-fit'  => $attr['objectFit'],
+		'width'       => $attr['width'] . 'px',
+		'height'      => $attr['height'] . 'px',
+	);
+}
+
 if ( 'hover' === $attr['headingShowOn'] ) {
 	$selectors['.wp-block-uagb-image .wp-block-uagb-image__figure:hover .wp-block-uagb-image--layout-overlay__inner .uagb-image-heading'] = array(
 		'opacity' => 1,
@@ -197,6 +206,15 @@ $t_selectors['.wp-block-uagb-image .wp-block-uagb-image--layout-overlay__inner .
 	'margin-right'  => UAGB_Helper::get_css_value( $attr['seperatorRightMarginTablet'], $attr['seperatorMarginUnitTablet'] ),
 );
 
+
+if( isset( $attr['objectFitTablet'] ) && 'default' !== $attr['objectFitTablet'] ) {
+	$t_selectors['.wp-block-uagb-image .wp-block-uagb-image__figure img'] = array(
+		'object-fit'  => $attr['objectFitTablet'],
+		'width'       => $attr['widthTablet'] . 'px',
+		'height'      => $attr['heightTablet'] . 'px',
+	);
+}
+
 // mobile.
 $m_selectors['.wp-block-uagb-image--layout-default img']              = $image_border_css_mobile;
 $m_selectors['.wp-block-uagb-image .wp-block-uagb-image__figure img'] = array(
@@ -232,6 +250,14 @@ $m_selectors['.wp-block-uagb-image .wp-block-uagb-image--layout-overlay__inner .
 	'margin-left'   => UAGB_Helper::get_css_value( $attr['seperatorLeftMarginMobile'], $attr['seperatorMarginUnitMobile'] ),
 	'margin-right'  => UAGB_Helper::get_css_value( $attr['seperatorRightMarginMobile'], $attr['seperatorMarginUnitMobile'] ),
 );
+
+if( isset( $attr['objectFitMobile'] ) && 'default' !== $attr['objectFitMobile'] ) {
+	$m_selectors['.wp-block-uagb-image .wp-block-uagb-image__figure img'] = array(
+		'object-fit'  => $attr['objectFitMobile'],
+		'width'       => $attr['widthMobile'] . 'px',
+		'height'      => $attr['heightMobile'] . 'px',
+	);
+}
 
 $combined_selectors = array(
 	'desktop' => $selectors,
