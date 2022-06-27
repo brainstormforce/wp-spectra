@@ -7,14 +7,14 @@
 
 import generateCSS from '@Controls/generateCSS';
 import generateCSSUnit from '@Controls/generateCSSUnit';
+import { getFallbackNumber } from '@Controls/getAttributeFallback';
+import generateBorderCSS from '@Controls/generateBorderCSS';
 
 function styling( props ) {
 	const {
-		borderWidth,
-		borderStyle,
-		borderColor,
-		borderHColor,
-		borderRadius,
+		blockName,
+
+		btnBorderHColor,
 		align,
 
 		titleColor,
@@ -167,10 +167,6 @@ function styling( props ) {
 		paginationAlign,
 		paginationTextColor,
 		paginationMasonryBgColor,
-		paginationMasonryBorderStyle,
-		paginationMasonryBorderWidth,
-		paginationMasonryBorderRadius,
-		paginationMasonryBorderColor,
 		paginationMasonryBorderHColor,
 		paginationButtonPaddingType,
 		paginationTextHoverColor,
@@ -193,22 +189,64 @@ function styling( props ) {
 		loaderColor,
 		highlightedTextColor,
 		highlightedTextBgColor,
-
 		imgPosition,
+		titleLetterSpacing,
+		titleLetterSpacingTablet,
+		titleLetterSpacingMobile,
+		titleLetterSpacingType,
+		metaLetterSpacing,
+		metaLetterSpacingTablet,
+		metaLetterSpacingMobile,
+		metaLetterSpacingType,
+		excerptLetterSpacing,
+		excerptLetterSpacingTablet,
+		excerptLetterSpacingMobile,
+		excerptLetterSpacingType,
+		ctaLetterSpacing,
+		ctaLetterSpacingTablet,
+		ctaLetterSpacingMobile,
+		ctaLetterSpacingType,
 	} = props.attributes;
+
+	const overlayOpacityFallback = getFallbackNumber( overlayOpacity, 'overlayOpacity', blockName );
+	const columnGapFallback = getFallbackNumber( columnGap, 'columnGap', blockName );
+	const rowGapFallback = getFallbackNumber( rowGap, 'rowGap', blockName );
+	const imageBottomSpaceFallback = getFallbackNumber( imageBottomSpace, 'imageBottomSpace', blockName );
+	const titleBottomSpaceFallback = getFallbackNumber( titleBottomSpace, 'titleBottomSpace', blockName );
+	const metaBottomSpaceFallback = getFallbackNumber( metaBottomSpace, 'metaBottomSpace', blockName );
+	const excerptBottomSpaceFallback = getFallbackNumber( excerptBottomSpace, 'excerptBottomSpace', blockName );
+	const ctaBottomSpaceFallback = getFallbackNumber( ctaBottomSpace, 'ctaBottomSpace', blockName );
+
+	const paginationSpacingFallback = undefined !== paginationSpacing ? getFallbackNumber( paginationSpacing, 'paginationSpacing', blockName ) : '';
+	const paginationBorderRadiusFallback = undefined !== paginationBorderRadius ? getFallbackNumber( paginationBorderRadius, 'paginationBorderRadius', blockName ) : '';
+	const paginationBorderSizeFallback = undefined !== paginationBorderSize ? getFallbackNumber( paginationBorderSize, 'paginationBorderSize', blockName ) : '';
+	const arrowSizeFallback = undefined !== arrowSize ? getFallbackNumber( arrowSize, 'arrowSize', blockName ) : '';
+	const paginationFontSizeFallback = undefined !== paginationFontSize ? getFallbackNumber( paginationFontSize, 'paginationFontSize', blockName ) : '';
+	const loaderSizeFallback = undefined !== loaderSize ? getFallbackNumber( loaderSize, 'loaderSize', blockName ) : '';
+
+	const rowGapTabletFallback = isNaN( rowGapTablet ) ? rowGapFallback : rowGapTablet;
+	const rowGapMobileFallback = isNaN( rowGapMobile ) ? rowGapTabletFallback : rowGapMobile;
+	
+	const borderCSS = generateBorderCSS( props.attributes, 'btn' );
+	const borderCSSTablet = generateBorderCSS( props.attributes, 'btn', 'tablet' );
+	const borderCSSMobile = generateBorderCSS( props.attributes, 'btn', 'mobile' );
+
+	const paginationMasonryBorderCSS = generateBorderCSS( props.attributes, 'paginationMasonry' );
+	const paginationMasonryBorderCSSTablet = generateBorderCSS( props.attributes, 'paginationMasonry', 'tablet' );
+	const paginationMasonryBorderCSSMobile = generateBorderCSS( props.attributes, 'paginationMasonry', 'mobile' );
 
 	let mobileSelectors = {};
 	let tabletSelectors = {};
 
 	const selectors = {
 		'.uagb-post__items': {
-			'margin-right': generateCSSUnit( -rowGap / 2, rowGapUnit ),
-			'margin-left': generateCSSUnit( -rowGap / 2, rowGapUnit ),
+			'margin-right': generateCSSUnit( -rowGapFallback / 2, rowGapUnit ),
+			'margin-left': generateCSSUnit( -rowGapFallback / 2, rowGapUnit ),
 		},
 		'.uagb-post__items article': {
-			'padding-right': generateCSSUnit( rowGap / 2, rowGapUnit ),
-			'padding-left': generateCSSUnit( rowGap / 2, rowGapUnit ),
-			'margin-bottom': generateCSSUnit( columnGap, columnGapUnit ),
+			'padding-right': generateCSSUnit( rowGapFallback / 2, rowGapUnit ),
+			'padding-left': generateCSSUnit( rowGapFallback / 2, rowGapUnit ),
+			'margin-bottom': generateCSSUnit( columnGapFallback, columnGapUnit ),
 		},
 		' .uagb-post__inner-wrap': {
 			'background': bgColor,
@@ -233,13 +271,13 @@ function styling( props ) {
 		},
 		' .uagb-post__inner-wrap .uagb-post__cta': {
 			'margin-bottom': generateCSSUnit(
-				ctaBottomSpace,
+				ctaBottomSpaceFallback,
 				ctaBottomSpaceUnit
 			),
 		},
 		' .uagb-post__inner-wrap .uagb-post__image': {
 			'margin-bottom': generateCSSUnit(
-				imageBottomSpace,
+				imageBottomSpaceFallback,
 				imageBottomSpaceUnit
 			),
 		},
@@ -248,7 +286,7 @@ function styling( props ) {
 		},
 		' .uagb-post__inner-wrap .uagb-post__title': {
 			'margin-bottom': generateCSSUnit(
-				titleBottomSpace,
+				titleBottomSpaceFallback,
 				titleBottomSpaceUnit
 			),
 			'margin-top': generateCSSUnit(
@@ -258,23 +296,23 @@ function styling( props ) {
 		},
 		' .uagb-post__inner-wrap .uagb-post-grid-byline': {
 			'margin-bottom': generateCSSUnit(
-				metaBottomSpace,
+				metaBottomSpaceFallback,
 				metaBottomSpaceUnit
 			),
 		},
 		' .uagb-post__inner-wrap .uagb-post__excerpt': {
 			'margin-bottom': generateCSSUnit(
-				excerptBottomSpace,
+				excerptBottomSpaceFallback,
 				excerptBottomSpaceUnit
 			),
 		},
 		' .uagb-post__image:before': {
 			'background-color': bgOverlayColor,
-			'opacity': overlayOpacity / 100,
+			'opacity': overlayOpacityFallback / 100,
 		},
 		' .uagb-post-pagination-wrap': {
 			'margin-top': generateCSSUnit(
-				paginationSpacing,
+				paginationSpacingFallback,
 				paginationSpacingUnit
 			),
 			'justify-content': paginationAlignment,
@@ -282,9 +320,9 @@ function styling( props ) {
 	};
 
 	if ( 'left' === paginationAlignment ) {
-		selectors[' .uagb-post-pagination-wrap']['margin-left'] = generateCSSUnit( rowGap / 2, rowGapUnit );
+		selectors[' .uagb-post-pagination-wrap']['margin-left'] = generateCSSUnit( rowGapFallback / 2, rowGapUnit );
 	} else if ( 'right' === paginationAlignment ) {
-		selectors[' .uagb-post-pagination-wrap']['margin-right'] = generateCSSUnit( rowGap / 2, rowGapUnit );
+		selectors[' .uagb-post-pagination-wrap']['margin-right'] = generateCSSUnit( rowGapFallback / 2, rowGapUnit );
 	}
 
 	selectors[ ' .uagb-post__title' ] = {
@@ -299,6 +337,7 @@ function styling( props ) {
 		'text-transform': titleTransform,
 		'text-decoration': titleDecoration,
 		'font-style': titleFontStyle,
+		'letter-spacing': generateCSSUnit( titleLetterSpacing, titleLetterSpacingType ),
 	};
 	selectors[ ' .uagb-post__title a' ] = {
 		'color': titleColor,
@@ -309,6 +348,7 @@ function styling( props ) {
 			titleLineHeight,
 			titleLineHeightType
 		),
+		'letter-spacing': generateCSSUnit( titleLetterSpacing, titleLetterSpacingType ),
 	};
 	selectors[ ' .uagb-post-grid-byline' ] = {
 		'color': metaColor,
@@ -322,6 +362,7 @@ function styling( props ) {
 		'text-transform': metaTransform,
 		'text-decoration': metaDecoration,
 		'font-style': metaFontStyle,
+		'letter-spacing': generateCSSUnit( metaLetterSpacing, metaLetterSpacingType ),
 	};
 	selectors[ ' .uagb-post-grid-byline time' ] = {
 		'font-size': generateCSSUnit( metaFontSize, metaFontSizeType ),
@@ -334,6 +375,7 @@ function styling( props ) {
 		'text-transform': metaTransform,
 		'text-decoration': metaDecoration,
 		'font-style': metaFontStyle,
+		'letter-spacing': generateCSSUnit( metaLetterSpacing, metaLetterSpacingType ),
 	};
 	selectors[ ' .uagb-post-grid-byline span.uagb-post__comment' ] = {
 		'font-size': generateCSSUnit( metaFontSize, metaFontSizeType ),
@@ -346,6 +388,7 @@ function styling( props ) {
 		'text-transform': metaTransform,
 		'text-decoration': metaDecoration,
 		'font-style': metaFontStyle,
+		'letter-spacing': generateCSSUnit( metaLetterSpacing, metaLetterSpacingType ),
 	};
 	selectors[ ' span.uagb-post__taxonomy' ] = {
 		'color': metaColor,
@@ -359,6 +402,7 @@ function styling( props ) {
 		'text-transform': metaTransform,
 		'text-decoration': metaDecoration,
 		'font-style': metaFontStyle,
+		'letter-spacing': generateCSSUnit( metaLetterSpacing, metaLetterSpacingType ),
 	};
 	selectors[ ' span.uagb-post__taxonomy.highlighted' ] = {
 		'color': highlightedTextColor,
@@ -373,6 +417,7 @@ function styling( props ) {
 		'text-transform': metaTransform,
 		'text-decoration': metaDecoration,
 		'font-style': metaFontStyle,
+		'letter-spacing': generateCSSUnit( metaLetterSpacing, metaLetterSpacingType ),
 	};
 	selectors[ ' .uagb-post-grid-byline .uagb-post__author' ] = {
 		'color': metaColor,
@@ -385,6 +430,7 @@ function styling( props ) {
 		),
 		'text-transform': metaTransform,
 		'text-decoration': metaDecoration,
+		'letter-spacing': generateCSSUnit( metaLetterSpacing, metaLetterSpacingType ),
 	};
 	selectors[ ' .uagb-post-grid-byline .uagb-post__author a' ] = {
 		'color': metaColor,
@@ -397,6 +443,7 @@ function styling( props ) {
 		),
 		'text-transform': metaTransform,
 		'text-decoration': metaDecoration,
+		'letter-spacing': generateCSSUnit( metaLetterSpacing, metaLetterSpacingType ),
 	};
 	selectors[ ' .uagb-post__excerpt' ] = {
 		'color': excerptColor,
@@ -413,6 +460,7 @@ function styling( props ) {
 		'font-style': excerptFontStyle,
 		'text-transform': excerptTransform,
 		'text-decoration': excerptDecoration,
+		'letter-spacing': generateCSSUnit( excerptLetterSpacing, excerptLetterSpacingType ),
 	};
 	selectors[ ' .uagb-post__cta .uagb-text-link' ] = {
 		'pointer-events': 'visible',
@@ -432,20 +480,18 @@ function styling( props ) {
 		'text-decoration': ctaDecoration,
 		'padding-left': generateCSSUnit( paddingBtnLeft, paddingBtnUnit ),
 		'padding-right': generateCSSUnit( paddingBtnRight, paddingBtnUnit ),
-		'border-width': generateCSSUnit( borderWidth, 'px' ),
-		'border-radius': generateCSSUnit( borderRadius, 'px' ),
-		'border-color': borderColor,
-		'border-style': borderStyle,
+		...borderCSS,
+		'letter-spacing': generateCSSUnit( ctaLetterSpacing, ctaLetterSpacingType ),
 	};
 	selectors[ ' .uagb-post__text .uagb-post__cta:hover' ] = {
 		'color': ctaHColor,
 		'background': ctaBgHColor,
-		'border-color': borderHColor,
+		'border-color': btnBorderHColor,
 	};
 	selectors[ ' .uagb-post__text .uagb-post__cta:hover a' ] = {
 		'color': ctaHColor,
 		'background': ctaBgHColor,
-		'border-color': borderHColor,
+		'border-color': btnBorderHColor,
 	};
 
 	if ( true === postPagination ) {
@@ -502,10 +548,10 @@ function styling( props ) {
 		if ( 'border' === paginationLayout ) {
 			selectors[ ' .uagb-post-pagination-wrap a' ] = {
 				'border-style': 'solid',
-				'border-width': generateCSSUnit( paginationBorderSize, 'px' ),
+				'border-width': generateCSSUnit( paginationBorderSizeFallback, 'px' ),
 				'border-color': paginationBorderColor,
 				'border-radius': generateCSSUnit(
-					paginationBorderRadius,
+					paginationBorderRadiusFallback,
 					'px'
 				),
 				'color': paginationColor,
@@ -520,12 +566,12 @@ function styling( props ) {
 				] = {
 					'border-style': 'solid',
 					'border-width': generateCSSUnit(
-						paginationBorderSize,
+						paginationBorderSizeFallback,
 						'px'
 					),
 					'border-color': paginationBorderActiveColor,
 					'border-radius': generateCSSUnit(
-						paginationBorderRadius,
+						paginationBorderRadiusFallback,
 						'px'
 					),
 					'color': paginationActiveColor,
@@ -541,12 +587,12 @@ function styling( props ) {
 				] = {
 					'border-style': 'solid',
 					'border-width': generateCSSUnit(
-						paginationBorderSize,
+						paginationBorderSizeFallback,
 						'px'
 					),
 					'border-color': paginationBorderColor,
 					'border-radius': generateCSSUnit(
-						paginationBorderRadius,
+						paginationBorderRadiusFallback,
 						'px'
 					),
 					'color': paginationActiveColor,
@@ -562,12 +608,12 @@ function styling( props ) {
 				] = {
 					'border-style': 'solid',
 					'border-width': generateCSSUnit(
-						paginationBorderSize,
+						paginationBorderSizeFallback,
 						'px'
 					),
 					'border-color': paginationBorderActiveColor,
 					'border-radius': generateCSSUnit(
-						paginationBorderRadius,
+						paginationBorderRadiusFallback,
 						'px'
 					),
 					'color': paginationColor,
@@ -575,7 +621,7 @@ function styling( props ) {
 				};
 			}
 			if (
-				'undefined' === typeof paginationBorderActiveColor &&
+				'undefined' === typeof paginationBorderHColor &&
 				'undefined' === typeof paginationActiveColor
 			) {
 				selectors[
@@ -583,12 +629,12 @@ function styling( props ) {
 				] = {
 					'border-style': 'solid',
 					'border-width': generateCSSUnit(
-						paginationBorderSize,
+						paginationBorderSizeFallback,
 						'px'
 					),
 					'border-color': paginationBorderColor,
 					'border-radius': generateCSSUnit(
-						paginationBorderRadius,
+						paginationBorderRadiusFallback,
 						'px'
 					),
 					'color': paginationColor,
@@ -604,8 +650,8 @@ function styling( props ) {
 
 	selectors[ ' .slick-arrow svg' ] = {
 		'fill': arrowColor,
-		'height': generateCSSUnit( arrowSize, 'px' ),
-		'width': generateCSSUnit( arrowSize, 'px' ),
+		'height': generateCSSUnit( arrowSizeFallback, 'px' ),
+		'width': generateCSSUnit( arrowSizeFallback, 'px' ),
 	};
 
 
@@ -627,6 +673,7 @@ function styling( props ) {
 				titleFontSizeType
 			),
 			'line-height': titleLineHeightMobile + titleLineHeightType,
+			'letter-spacing': generateCSSUnit( titleLetterSpacingMobile, titleLetterSpacingType ),
 		},
 		' .uagb-post__inner-wrap .uagb-post-grid-byline': {
 			'font-size': generateCSSUnit(
@@ -638,6 +685,7 @@ function styling( props ) {
 				metaBottomSpaceMobile,
 				metaBottomSpaceUnit
 			),
+			'letter-spacing': generateCSSUnit( metaLetterSpacingMobile, metaLetterSpacingType ),
 		},
 		' span.uagb-post__text.uagb-post__taxonomy.default': {
 			'font-size': generateCSSUnit(
@@ -645,6 +693,7 @@ function styling( props ) {
 				metaFontSizeType
 			),
 			'line-height': metaLineHeightMobile + metaLineHeightType,
+			'letter-spacing': generateCSSUnit( metaLetterSpacingMobile, metaLetterSpacingType ),
 		},
 		' .uagb-post-grid-byline .uagb-post__author': {
 			'font-size': generateCSSUnit(
@@ -652,6 +701,7 @@ function styling( props ) {
 				metaFontSizeType
 			),
 			'line-height': metaLineHeightMobile + metaLineHeightType,
+			'letter-spacing': generateCSSUnit( metaLetterSpacingMobile, metaLetterSpacingType ),
 		},
 		' .uagb-post-grid-byline .uagb-post__author a': {
 			'font-size': generateCSSUnit(
@@ -659,6 +709,7 @@ function styling( props ) {
 				metaFontSizeType
 			),
 			'line-height': metaLineHeightMobile + metaLineHeightType,
+			'letter-spacing': generateCSSUnit( metaLetterSpacingMobile, metaLetterSpacingType ),
 		},
 		' .uagb-post__inner-wrap .uagb-post__excerpt': {
 			'font-size': generateCSSUnit(
@@ -670,6 +721,7 @@ function styling( props ) {
 				excerptBottomSpaceMobile,
 				excerptBottomSpaceUnit
 			),
+			'letter-spacing': generateCSSUnit( excerptLetterSpacingMobile, excerptLetterSpacingType ),
 		},
 		' .uagb-post__inner-wrap .uagb-post__cta': {
 			'font-size': generateCSSUnit(
@@ -681,6 +733,7 @@ function styling( props ) {
 				ctaBottomSpaceMobile,
 				ctaBottomSpaceUnit
 			),
+			'letter-spacing': generateCSSUnit( ctaLetterSpacingMobile, ctaLetterSpacingType ),
 		},
 		' .uagb-post__inner-wrap .uagb-post__cta a': {
 			'font-size': generateCSSUnit(
@@ -704,6 +757,7 @@ function styling( props ) {
 				paddingBtnRightMobile,
 				mobilePaddingBtnUnit
 			),
+			'letter-spacing': generateCSSUnit( ctaLetterSpacingMobile, ctaLetterSpacingType ),
 		},
 		' .uagb-post__inner-wrap .uagb-post__image': {
 			'margin-bottom': generateCSSUnit(
@@ -712,12 +766,12 @@ function styling( props ) {
 			),
 		},
 		'.uagb-post__items': {
-			'margin-right': generateCSSUnit( -rowGapMobile / 2, rowGapUnit ),
-			'margin-left': generateCSSUnit( -rowGapMobile / 2, rowGapUnit ),
+			'margin-right': generateCSSUnit( -rowGapMobileFallback / 2, rowGapUnit ),
+			'margin-left': generateCSSUnit( -rowGapMobileFallback / 2, rowGapUnit ),
 		},
 		'.uagb-post__items article': {
-			'padding-right': generateCSSUnit( rowGapMobile / 2, rowGapUnit ),
-			'padding-left': generateCSSUnit( rowGapMobile / 2, rowGapUnit ),
+			'padding-right': generateCSSUnit( rowGapMobileFallback / 2, rowGapUnit ),
+			'padding-left': generateCSSUnit( rowGapMobileFallback / 2, rowGapUnit ),
 			'margin-bottom': generateCSSUnit( columnGapMobile, columnGapUnit ),
 		},
 	};
@@ -740,6 +794,7 @@ function styling( props ) {
 				titleFontSizeType
 			),
 			'line-height': titleLineHeightTablet + titleLineHeightType,
+			'letter-spacing': generateCSSUnit( titleLetterSpacingTablet, titleLetterSpacingType ),
 		},
 		' .uagb-post__inner-wrap .uagb-post-grid-byline': {
 			'font-size': generateCSSUnit(
@@ -751,6 +806,7 @@ function styling( props ) {
 				metaBottomSpaceTablet,
 				metaBottomSpaceUnit
 			),
+			'letter-spacing': generateCSSUnit( metaLetterSpacingTablet, metaLetterSpacingType ),
 		},
 		' span.uagb-post__text.uagb-post__taxonomy.default': {
 			'font-size': generateCSSUnit(
@@ -758,6 +814,7 @@ function styling( props ) {
 				metaFontSizeType
 			),
 			'line-height': metaLineHeightTablet + metaLineHeightType,
+			'letter-spacing': generateCSSUnit( metaLetterSpacingTablet, metaLetterSpacingType ),
 		},
 		' .uagb-post-grid-byline .uagb-post__author': {
 			'font-size': generateCSSUnit(
@@ -765,6 +822,7 @@ function styling( props ) {
 				metaFontSizeType
 			),
 			'line-height': metaLineHeightTablet + metaLineHeightType,
+			'letter-spacing': generateCSSUnit( metaLetterSpacingTablet, metaLetterSpacingType ),
 		},
 		' .uagb-post-grid-byline .uagb-post__author a': {
 			'font-size': generateCSSUnit(
@@ -772,6 +830,7 @@ function styling( props ) {
 				metaFontSizeType
 			),
 			'line-height': metaLineHeightTablet + metaLineHeightType,
+			'letter-spacing': generateCSSUnit( metaLetterSpacingTablet, metaLetterSpacingType ),
 		},
 		' .uagb-post__inner-wrap .uagb-post__excerpt': {
 			'font-size': generateCSSUnit(
@@ -783,6 +842,8 @@ function styling( props ) {
 				excerptBottomSpaceTablet,
 				excerptBottomSpaceUnit
 			),
+			'letter-spacing': generateCSSUnit( excerptLetterSpacingTablet, excerptLetterSpacingType ),
+
 		},
 		' .uagb-post__inner-wrap .uagb-post__cta': {
 			'font-size': generateCSSUnit(
@@ -794,6 +855,7 @@ function styling( props ) {
 				ctaBottomSpaceTablet,
 				ctaBottomSpaceUnit
 			),
+			'letter-spacing': generateCSSUnit( ctaLetterSpacingTablet, ctaLetterSpacingType ),
 		},
 		' .uagb-post__cta a': {
 			'font-size': generateCSSUnit(
@@ -817,6 +879,7 @@ function styling( props ) {
 				paddingBtnRightTablet,
 				tabletPaddingBtnUnit
 			),
+			'letter-spacing': generateCSSUnit( ctaLetterSpacingTablet, ctaLetterSpacingType ),
 		},
 		' .uagb-post__inner-wrap .uagb-post__image': {
 			'margin-bottom': generateCSSUnit(
@@ -825,12 +888,12 @@ function styling( props ) {
 			),
 		},
 		'.uagb-post__items': {
-			'margin-right': generateCSSUnit( -rowGapTablet / 2, rowGapUnit ),
-			'margin-left': generateCSSUnit( -rowGapTablet / 2, rowGapUnit ),
+			'margin-right': generateCSSUnit( -rowGapTabletFallback / 2, rowGapUnit ),
+			'margin-left': generateCSSUnit( -rowGapTabletFallback / 2, rowGapUnit ),
 		},
 		'.uagb-post__items article': {
-			'padding-right': generateCSSUnit( rowGapTablet / 2, rowGapUnit ),
-			'padding-left': generateCSSUnit( rowGapTablet / 2, rowGapUnit ),
+			'padding-right': generateCSSUnit( rowGapTabletFallback / 2, rowGapUnit ),
+			'padding-left': generateCSSUnit( rowGapTabletFallback / 2, rowGapUnit ),
 			'margin-bottom': generateCSSUnit( columnGapTablet, columnGapUnit ),
 		},
 	};
@@ -848,18 +911,8 @@ function styling( props ) {
 			] = {
 				'color': paginationTextColor,
 				'background-color': paginationMasonryBgColor,
-				'border-style': paginationMasonryBorderStyle,
-				'border-width': generateCSSUnit(
-					paginationMasonryBorderWidth,
-					'px'
-				),
-				'border-radius': generateCSSUnit(
-					paginationMasonryBorderRadius,
-					'px'
-				),
-				'border-color': paginationMasonryBorderColor,
 				'font-size': generateCSSUnit(
-					paginationFontSize,
+					paginationFontSizeFallback,
 					'px'
 				),
 				'padding-top': generateCSSUnit(
@@ -878,6 +931,7 @@ function styling( props ) {
 					paginationButtonPaddingLeft,
 					paginationButtonPaddingType
 				),
+				...paginationMasonryBorderCSS
 			};
 			selectors[
 				' .uagb-post__load-more-wrap .uagb-post-pagination-button:hover'
@@ -929,8 +983,8 @@ function styling( props ) {
 		}
 		if ( 'scroll' === paginationEventType ) {
 			selectors[ '.uagb-post-grid .uagb-post-inf-loader div' ] = {
-				'width': generateCSSUnit( loaderSize, 'px' ),
-				'height': generateCSSUnit( loaderSize, 'px' ),
+				'width': generateCSSUnit( loaderSizeFallback, 'px' ),
+				'height': generateCSSUnit( loaderSizeFallback, 'px' ),
 				'background-color': loaderColor,
 			};
 		}
@@ -959,6 +1013,10 @@ function styling( props ) {
 			mobilePaddingUnit
 		),
 	};
+	tabletSelectors[ ' .uagb-post__cta .uagb-text-link' ] = borderCSSTablet;
+	mobileSelectors[ ' .uagb-post__cta .uagb-text-link' ] = borderCSSMobile;
+	tabletSelectors[ ' .uagb-post__load-more-wrap .uagb-post-pagination-button' ] = paginationMasonryBorderCSSTablet;
+	mobileSelectors[ ' .uagb-post__load-more-wrap .uagb-post-pagination-button' ] = paginationMasonryBorderCSSMobile;
 	if ( 'background' === imgPosition ){
 		selectors[ ' .uagb-post__inner-wrap .uagb-post__text:nth-child(2)' ] = {
 			'margin-top': generateCSSUnit( paddingTop, contentPaddingUnit ),

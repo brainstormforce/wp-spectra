@@ -16,7 +16,7 @@ import InspectorTab, {
 	UAGTabs,
 } from '@Components/inspector-tabs/InspectorTab.js';
 import { __ } from '@wordpress/i18n';
-import Border from '@Components/border';
+import ResponsiveBorder from '@Components/responsive-border';
 import { select } from '@wordpress/data';
 import UAGIconPicker from '@Components/icon-picker';
 import UAGTabsControl from '@Components/tabs';
@@ -34,7 +34,7 @@ import UAGAdvancedPanelBody from '@Components/advanced-panel-body';
 const Settings = ( props ) => {
 	props = props.parentProps;
 
-	const { attributes, setAttributes } = props;
+	const { attributes, setAttributes, deviceType } = props;
 	const {
 		layout,
 		inactiveOtherItems,
@@ -51,12 +51,6 @@ const Settings = ( props ) => {
 		align,
 		enableSeparator,
 		boxBgColor,
-		boxBgHoverColor,
-		borderStyle,
-		borderWidth,
-		borderRadius,
-		borderColor,
-		borderHoverColor,
 		questionTextColor,
 		questionTextBgColor,
 		questionTextActiveColor,
@@ -140,6 +134,16 @@ const Settings = ( props ) => {
 		questionFontStyle,
 		questionTransform,
 		questionDecoration,
+		// letter spacing
+		questionLetterSpacing,
+		questionLetterSpacingTablet,
+		questionLetterSpacingMobile,
+		questionLetterSpacingType,
+		answerLetterSpacing,
+		answerLetterSpacingTablet,
+		answerLetterSpacingMobile,
+		answerLetterSpacingType,
+		boxBgHoverColor
 	} = attributes;
 
 	const onchangeIcon = ( value ) => {
@@ -553,6 +557,22 @@ const Settings = ( props ) => {
 						value: questionLineHeightTablet,
 						label: 'questionLineHeightTablet',
 					} }
+					letterSpacing={ {
+						value: questionLetterSpacing,
+						label: 'questionLetterSpacing',
+					} }
+					letterSpacingTablet={ {
+						value: questionLetterSpacingTablet,
+						label: 'questionLetterSpacingTablet',
+					} }
+					letterSpacingMobile={ {
+						value: questionLetterSpacingMobile,
+						label: 'questionLetterSpacingMobile',
+					} }
+					letterSpacingType={ {
+						value: questionLetterSpacingType,
+						label: 'questionLetterSpacingType',
+					} }
 				/>
 				{ 'accordion' === layout && (
 					<UAGTabsControl
@@ -816,6 +836,22 @@ const Settings = ( props ) => {
 						value: answerLineHeightTablet,
 						label: 'answerLineHeightTablet',
 					} }
+					letterSpacing={ {
+						value: answerLetterSpacing,
+						label: 'answerLetterSpacing',
+					} }
+					letterSpacingTablet={ {
+						value: answerLetterSpacingTablet,
+						label: 'answerLetterSpacingTablet',
+					} }
+					letterSpacingMobile={ {
+						value: answerLetterSpacingMobile,
+						label: 'answerLetterSpacingMobile',
+					} }
+					letterSpacingType={ {
+						value:answerLetterSpacingType,
+						label: 'answerLetterSpacingType',
+					} }
 				/>
 				<SpacingControl
 					{ ...props }
@@ -1045,37 +1081,12 @@ const Settings = ( props ) => {
 					</>
 				) }
 				<hr className="uagb-editor__separator" />
-				<Border
-					disabledBorderTitle= {false}
+				<ResponsiveBorder
 					setAttributes={ setAttributes }
-					borderStyle={ {
-						value: borderStyle,
-						label: 'borderStyle',
-						title: __( 'Style', 'ultimate-addons-for-gutenberg' ),
-					} }
-					borderWidth={ {
-						value: borderWidth,
-						label: 'borderWidth',
-						title: __( 'Width', 'ultimate-addons-for-gutenberg' ),
-					} }
-					borderRadius={ {
-						value: borderRadius,
-						label: 'borderRadius',
-						title: __( 'Radius', 'ultimate-addons-for-gutenberg' ),
-					} }
-					borderColor={ {
-						value: borderColor,
-						label: 'borderColor',
-						title: __( 'Color', 'ultimate-addons-for-gutenberg' ),
-					} }
-					borderHoverColor={ {
-						value: borderHoverColor,
-						label: 'borderHoverColor',
-						title: __(
-							'Color',
-							'ultimate-addons-for-gutenberg'
-						),
-					} }
+					prefix={ 'overall' }
+					disabledBorderTitle= {false}
+					attributes={ attributes }
+					deviceType={deviceType}
 					disableBottomSeparator={ true }
 				/>
 			</UAGAdvancedPanelBody>

@@ -34,14 +34,12 @@ const attributes = {
 		UAGCopyPaste: {
 			styleType: 'icon-size'
 		},
-		default: 18,
 	},
 	sizeMobile: {
 		type: 'number',
 		UAGCopyPaste: {
 			styleType: 'icon-size'
 		},
-		default: 18,
 	},
 	gap: {
 		type: 'number',
@@ -52,14 +50,12 @@ const attributes = {
 	},
 	gapTablet: {
 		type: 'number',
-		default: 0,
 		UAGCopyPaste: {
 			styleType: 'icon-gap'
 		},
 	},
 	gapMobile: {
 		type: 'number',
-		default: 0,
 		UAGCopyPaste: {
 			styleType: 'icon-gap'
 		},
@@ -73,14 +69,12 @@ const attributes = {
 	},
 	alignTablet: {
 		type: 'string',
-		default: '',
 		UAGCopyPaste: {
 			styleType: 'icon-align-tablet'
 		},
 	},
 	alignMobile: {
 		type: 'string',
-		default: '',
 		UAGCopyPaste: {
 			styleType: 'icon-align-mobile'
 		},
@@ -111,14 +105,12 @@ const attributes = {
 	},
 	titleGapTablet: {
 		type: 'number',
-		default: 10,
 		UAGCopyPaste: {
 			styleType: 'main-title-bottom-margin'
 		},
 	},
 	titleGapMobile: {
 		type: 'number',
-		default: 10,
 		UAGCopyPaste: {
 			styleType: 'main-title-bottom-margin'
 		},
@@ -225,6 +217,32 @@ const attributes = {
 	displayTitle: {
 		type: 'boolean',
 		default: true,
+	},
+	// letter spacing
+	titleLetterSpacing: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'main-title-letter-spacing'
+		}
+	},
+	titleLetterSpacingTablet: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'main-title-letter-spacing-tablet'
+		}
+	},
+	titleLetterSpacingMobile: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'main-title-letter-spacing-mobile'
+		}
+	},
+	titleLetterSpacingType: {
+		type: 'string',
+		default: 'px',
+		UAGCopyPaste: {
+			styleType: 'main-title-letter-spacing-type'
+		}
 	},
 	// padding
 	blockTopPadding : {

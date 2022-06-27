@@ -4,6 +4,9 @@ import lazyLoader from '@Controls/lazy-loader';
 import apiFetch from '@wordpress/api-fetch';
 import { useDeviceType } from '@Controls/getPreviewType';
 import addBlockEditorDynamicStyles from '@Controls/addBlockEditorDynamicStyles';
+
+import {migrateBorderAttributes} from '@Controls/generateAttributes';
+
 const Settings = lazy( () =>
 	import( /* webpackChunkName: "chunks/cf7-styler/settings" */ './settings' )
 );
@@ -42,6 +45,17 @@ const UAGBCF7 = ( props ) => {
 			fieldBottomPaddingDesktop,
 			fieldRightPaddingDesktop,
 			fieldLeftPaddingDesktop,
+			
+			fieldBorderStyle,
+			fieldBorderWidth,
+			fieldBorderColor,
+			fieldBorderHColor,
+			fieldBorderRadius,
+			buttonBorderWidth,
+			buttonBorderRadius,
+			buttonBorderColor,
+			buttonBorderHColor,
+			buttonBorderStyle,
 		} = attributes;
 
 		if ( msgVrPadding ) {
@@ -96,6 +110,45 @@ const UAGBCF7 = ( props ) => {
 				setAttributes( { fieldLeftPaddingDesktop: fieldHrPadding } );
 			}
 		}
+		// fieldBorder
+		if( fieldBorderWidth || fieldBorderRadius || fieldBorderColor || fieldBorderHColor || fieldBorderStyle ){
+			const migrationAttributes = migrateBorderAttributes( 'input', {
+				label: 'fieldBorderWidth',
+				value: fieldBorderWidth,
+			}, {
+				label: 'fieldBorderRadius',
+				value: fieldBorderRadius
+			}, {
+				label: 'fieldBorderColor',
+				value: fieldBorderColor
+			}, {
+				label: 'fieldBorderHColor',
+				value: fieldBorderHColor
+			},{
+				label: 'fieldBorderStyle',
+				value: fieldBorderStyle
+			}
+			);
+			props.setAttributes( migrationAttributes );
+			const btnMigrationAttributes = migrateBorderAttributes( 'btn', {
+				label: 'buttonBorderWidth',
+				value: buttonBorderWidth,
+			}, {
+				label: 'buttonBorderRadius',
+				value: buttonBorderRadius
+			}, {
+				label: 'buttonBorderColor',
+				value: buttonBorderColor
+			}, {
+				label: 'buttonBorderHColor',
+				value: buttonBorderHColor
+			},{
+				label: 'buttonBorderStyle',
+				value: buttonBorderStyle
+			}
+			);
+			props.setAttributes( btnMigrationAttributes )
+		}
 	}, [] );
 
 	useEffect( () => {
@@ -105,7 +158,7 @@ const UAGBCF7 = ( props ) => {
 				event.preventDefault();
 			} );
 		}
-
+		
 		const blockStyling = styling( props );
 
 		addBlockEditorDynamicStyles( 'uagb-cf7-styler-' + props.clientId.substr( 0, 8 ), blockStyling );
@@ -120,7 +173,7 @@ const UAGBCF7 = ( props ) => {
 
 	return (
 		<Suspense fallback={ lazyLoader() }>
-			<Settings parentProps={ props } />
+			<Settings parentProps={ props } deviceType = { deviceType }/>
 			<Render parentProps={ props } />
 		</Suspense>
 	);

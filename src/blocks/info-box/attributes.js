@@ -1,8 +1,11 @@
 /**
  * BLOCK: Info Box - Attributes
  */
+ import { getBorderAttributes } from '@Controls/generateAttributes';
 
-const attributes = {
+ const borderAttributes = getBorderAttributes( 'btn' );
+
+ const attributes = {
 	inheritFromTheme: {
 		type: 'boolean',
 		default: true,
@@ -664,23 +667,12 @@ const attributes = {
 	},
 	ctaBorderColor: {
 		type: 'string',
-		UAGCopyPaste: {
-			styleType: 'btn-border-color'
-		}
 	},
 	ctaBorderhoverColor: {
 		type: 'string',
-		UAGCopyPaste: {
-			styleType: 'btn-border-hover-color'
-		},
-		default: '',
 	},
 	ctaBorderStyle: {
 		type: 'string',
-		default: 'none',
-		UAGCopyPaste: {
-			styleType: 'btn-border-style'
-		}
 	},
 	ctaBtnVertPadding: {
 		type: 'number',
@@ -696,16 +688,9 @@ const attributes = {
 	},
 	ctaBorderWidth: {
 		type: 'number',
-		UAGCopyPaste: {
-			styleType: 'btn-border-width'
-		},
-		default: ''
 	},
 	ctaBorderRadius: {
 		type: 'number',
-		UAGCopyPaste: {
-			styleType: 'btn-border-radius'
-		}
 	},
 	iconLeftMargin: {
 		type: 'number',
@@ -754,14 +739,12 @@ const attributes = {
 	},
 	imageWidthMobile: {
 		type: 'number',
-		default: '',
 		UAGCopyPaste: {
 			styleType: 'image-width-mobile'
 		}
 	},
 	imageWidthTablet: {
 		type: 'number',
-		default: '',
 		UAGCopyPaste: {
 			styleType: 'image-width-tablet'
 		}
@@ -1391,15 +1374,25 @@ const attributes = {
 	iconBackgroundColor: {
 		type: 'string',
 		default: '#6EC1E3',
+		UAGCopyPaste: {
+			styleType: 'icon-bg-color'
+		},
 	},
 	iconBackgroundHoverColor: {
 		type: 'string',
 		default: '',
+		UAGCopyPaste: {
+			styleType: 'icon-bg-hover-color'
+		},
 	},
 	iconBorderWidth: {
 		type: 'number',
 		default: 3,
-	}
+		UAGCopyPaste: {
+			styleType: 'icon-border-width'
+		},
+	},
+	...borderAttributes
 };
 
 export default attributes;
