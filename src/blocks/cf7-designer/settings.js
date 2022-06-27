@@ -871,6 +871,10 @@ const Settings = ( props ) => {
 				<ResponsiveBorder
 					disabledBorderTitle= {false}
 					setAttributes={ setAttributes }
+					borderHoverColorLabel={__(
+						'Active Color',
+						'ultimate-addons-for-gutenberg'
+					)}
 					prefix={'input'}
 					attributes={ attributes }
 					deviceType={deviceType}

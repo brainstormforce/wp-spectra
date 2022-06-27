@@ -15,7 +15,7 @@ function styling( props ) {
 		fieldBgColor,
 		fieldLabelColor,
 		fieldInputColor,
-		fieldBorderHColor,
+		inputBorderHColor,
 		buttonTextColor,
 		buttonBgColor,
 		buttonTextHoverColor,
@@ -321,13 +321,13 @@ validationMsgLetterSpacingType,
 
 		//Focus
 		' .wpcf7 form input:not([type=submit]):focus': {
-			'border-color': fieldBorderHColor,
+			'border-color': inputBorderHColor,
 		},
 		' .wpcf7 form select:focus': {
-			'border-color': fieldBorderHColor,
+			'border-color': inputBorderHColor,
 		},
 		' .wpcf7 textarea:focus': {
-			'border-color': fieldBorderHColor,
+			'border-color': inputBorderHColor,
 		},
 
 		//Submit button
@@ -375,7 +375,7 @@ validationMsgLetterSpacingType,
 			'background-color': fieldBgColor,
 			'color': fieldInputColor,
 			'font-size': 'calc( ' + fieldTopPaddingDesktop + 'px / 1.2 )',
-			'border-color': fieldBorderHColor,
+			'border-color': inputBorderHColor,
 		},
 		" .wpcf7 .wpcf7-checkbox input[type='checkbox'] + span:before": {
 			'background-color': fieldBgColor,
@@ -389,7 +389,7 @@ validationMsgLetterSpacingType,
 		" .wpcf7 .wpcf7-acceptance input[type='checkbox']:checked + span:before": {
 			'background-color': fieldBgColor,
 			'color': fieldInputColor,
-			'border-color': fieldBorderHColor,
+			'border-color': inputBorderHColor,
 		},
 		" .wpcf7 .wpcf7-acceptance input[type='checkbox'] + span:before": {
 			'background-color': fieldBgColor,
@@ -434,7 +434,7 @@ validationMsgLetterSpacingType,
 		},
 		" .wpcf7-radio input[type='radio']:checked + span:before": {
 			'background-color': fieldInputColor,
-			'border-color': fieldBorderHColor,
+			'border-color': inputBorderHColor,
 			'display': 'inline-flex',
 		},
 
@@ -454,7 +454,7 @@ validationMsgLetterSpacingType,
 			),
 		},
 		" .uagb-cf7-styler__check-style-enabled .wpcf7 .wpcf7-checkbox input[type='checkbox']:checked + span:before": {
-			'border-color': fieldBorderHColor,
+			'border-color': inputBorderHColor,
 		},
 		" .uagb-cf7-styler__check-style-enabled .wpcf7 .wpcf7-acceptance input[type='checkbox'] + span:before": {
 			'background-color': radioCheckBgColor,
@@ -472,7 +472,7 @@ validationMsgLetterSpacingType,
 			),
 		},
 		" .uagb-cf7-styler__check-style-enabled .wpcf7 .wpcf7-acceptance input[type='checkbox']:checked + span:before": {
-			'border-color': fieldBorderHColor,
+			'border-color': inputBorderHColor,
 		},
 
 		" .uagb-cf7-styler__check-style-enabled .wpcf7 input[type='radio'] + span:before": {
@@ -487,7 +487,7 @@ validationMsgLetterSpacingType,
 
 		" .uagb-cf7-styler__check-style-enabled .wpcf7-radio input[type='radio']:checked + span:before": {
 			'background-color': radioCheckSelectColor,
-			'border-color': fieldBorderHColor,
+			'border-color': inputBorderHColor,
 		},
 		' .uagb-cf7-styler__check-style-enabled .wpcf7 form .wpcf7-list-item-label': {
 			'font-size': generateCSSUnit(
