@@ -69,6 +69,14 @@
 	}
 }
 
+@media only screen and (min-width: 1024px) {
+
+	.is-root-container {
+		margin-left: 10px;
+		margin-right: 10px;
+	}
+
+}
 
 .wp-block-uagb-container::before {
 	content: "";
