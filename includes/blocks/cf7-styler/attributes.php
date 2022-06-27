@@ -20,7 +20,7 @@ $field_border_defaults   = array(
 	'borderColor'             => '#eeeeee',
 	'borderHColor'            => '',
 );
-$field_border_attribute  = UAGB_Block_Helper::uag_generate_border_attribute( 'field', $field_border_defaults );
+$field_border_attribute  = UAGB_Block_Helper::uag_generate_border_attribute( 'input', $field_border_defaults );
 $button_border_defaults  = array(
 	'borderStyle'             => 'solid',
 	'borderTopWidth'          => 1,
@@ -34,7 +34,7 @@ $button_border_defaults  = array(
 	'borderColor'             => '#333',
 	'borderHoverColor'        => '',
 );
-$button_border_attribute = UAGB_Block_Helper::uag_generate_border_attribute( 'button', $button_border_defaults );
+$button_border_attribute = UAGB_Block_Helper::uag_generate_border_attribute( 'btn', $button_border_defaults );
 
 return array_merge(
 	array(
