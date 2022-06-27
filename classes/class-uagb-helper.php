@@ -1315,7 +1315,7 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 			}
 			// Trim the excerpt.
 			if ( ! empty( $excerpt ) ) {
-				$excerpt        = explode( ' ', $excerpt );
+				$excerpt = explode( ' ', $excerpt );
 				if ( count( $excerpt ) > $length_fallback ) {
 					$excerpt = implode( ' ', array_slice( $excerpt, 0, $length_fallback ) ) . '...';
 				} else {

@@ -176,7 +176,7 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 					'attributes'      => array_merge(
 						$common_attributes,
 						array(
-							'blockName'                   => array(
+							'blockName'         => array(
 								'type'    => 'string',
 								'default' => 'post-carousel',
 							),
@@ -1260,8 +1260,8 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 			$paged               = UAGB_Helper::get_paged( $query );
 			// Why defaulting the min when the range can be set to a higher max? Original commented below.
 			// $page_limit          = min( $attributes['pageLimit'], $query->max_num_pages );.
-			$page_limit          = UAGB_Block_Helper::get_fallback_number( $attributes['pageLimit'], 'pageLimit', $attributes['blockName'] );
-			$page_limit          = isset( $page_limit ) ? $page_limit : UAGB_Block_Helper::get_fallback_number( $attributes['postsToShow'], 'postsToShow', $attributes['blockName'] );
+			$page_limit = UAGB_Block_Helper::get_fallback_number( $attributes['pageLimit'], 'pageLimit', $attributes['blockName'] );
+			$page_limit = isset( $page_limit ) ? $page_limit : UAGB_Block_Helper::get_fallback_number( $attributes['postsToShow'], 'postsToShow', $attributes['blockName'] );
 
 			$links = paginate_links(
 				array(
@@ -1842,7 +1842,7 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 				$excerpt = get_the_content();
 			} else {
 				$excerpt_length_fallback = UAGB_Block_Helper::get_fallback_number( $attributes['excerptLength'], 'excerptLength', 'post-timeline' );
-				$excerpt = UAGB_Helper::uagb_get_excerpt( $post->ID, $post->post_content, $excerpt_length_fallback );
+				$excerpt                 = UAGB_Helper::uagb_get_excerpt( $post->ID, $post->post_content, $excerpt_length_fallback );
 			}
 
 			if ( ! $excerpt ) {
