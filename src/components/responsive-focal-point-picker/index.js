@@ -53,7 +53,7 @@
 			 <div className="uagb-size-type-field-tabs">
 				 <div className="uagb-control__header">
 					 <ResponsiveToggle
-						 label= { __( 'Image', 'ultimate-addons-for-gutenberg' ) }
+						 label= { __( 'Position', 'ultimate-addons-for-gutenberg' ) }
 						 responsive= { responsive }
 					 />
 				 </div>
