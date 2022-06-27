@@ -250,10 +250,8 @@ const Settings = ( props ) => {
 					)}
 					prefix={'input'}
 					attributes={ attributes }
-					deviceType={deviceType}
-					disableBottomSeparator={ true }
+					deviceType={ deviceType }
 				/>
-
 				<SpacingControl
 					{ ...props }
 					label={ __( 'Padding', 'ultimate-addons-for-gutenberg' ) }

@@ -1412,7 +1412,6 @@ export default function Settings( props ) {
 						prefix={'image'}
 						attributes={ attributes }
 						deviceType={deviceType}
-						disableBottomSeparator={ true }
 					/>
 				)
 			}
@@ -1432,7 +1431,6 @@ export default function Settings( props ) {
 						prefix={'overlay'}
 						attributes={ attributes }
 						deviceType={deviceType}
-						disableBottomSeparator={ true }
 					/>
 					<Range
 						label={ __(

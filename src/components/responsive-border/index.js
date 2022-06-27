@@ -5,6 +5,7 @@
 import { __ } from '@wordpress/i18n';
 import AdvancedPopColorControl from '@Components/color-control/advanced-pop-color-control.js';
 import { SelectControl } from '@wordpress/components';
+import UAGSelectControl from '@Components/select-control';
 import UAGTabsControl from '@Components/tabs';
 import SpacingControl from '@Components/spacing-control';
 import React from 'react';
@@ -34,7 +35,7 @@ const ResponsiveBorder = ( props ) => {
 		attributes,
 		setAttributes,
 		disabledBorderTitle,
-		disableBottomSeparator,
+		disableBottomSeparator = false,
 		deviceType,
 
 		prefix,
@@ -91,9 +92,81 @@ const ResponsiveBorder = ( props ) => {
 		{ ! disabledBorderTitle && (
 			<h2>{ label }</h2>
 		)}
-			<SelectControl
+			<UAGSelectControl
 				label={ borderStyleLabel }
-				labelPosition="top"
+				data={ {
+					value: borderStyle,
+					label: prefix + 'BorderStyle',
+				} }
+				setAttributes={ setAttributes }
+				options={ [
+					{
+						value: 'none',
+						label: __(
+							'None',
+							'ultimate-addons-for-gutenberg'
+						),
+					},
+					{
+						value: 'solid',
+						label: __(
+							'Solid',
+							'ultimate-addons-for-gutenberg'
+						),
+					},
+					{
+						value: 'dotted',
+						label: __(
+							'Dotted',
+							'ultimate-addons-for-gutenberg'
+						),
+					},
+					{
+						value: 'dashed',
+						label: __(
+							'Dashed',
+							'ultimate-addons-for-gutenberg'
+						),
+					},
+					{
+						value: 'double',
+						label: __(
+							'Double',
+							'ultimate-addons-for-gutenberg'
+						),
+					},
+					{
+						value: 'groove',
+						label: __(
+							'Groove',
+							'ultimate-addons-for-gutenberg'
+						),
+					},
+					{
+						value: 'inset',
+						label: __(
+							'Inset',
+							'ultimate-addons-for-gutenberg'
+						),
+					},
+					{
+						value: 'outset',
+						label: __(
+							'Outset',
+							'ultimate-addons-for-gutenberg'
+						),
+					},
+					{
+						value: 'ridge',
+						label: __(
+							'Ridge',
+							'ultimate-addons-for-gutenberg'
+						),
+					},
+				] }
+			/>
+			{/* <SelectControl
+				label={ borderStyleLabel }
 				value={ borderStyle }
 				onChange={ ( value ) =>
 					setAttributes( {
@@ -165,7 +238,7 @@ const ResponsiveBorder = ( props ) => {
 						),
 					},
 				] }
-			/>
+			/> */}
 			{ 'none' !== borderStyle && (
 				<SpacingControl
 					label={ borderWidthLabel }
