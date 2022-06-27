@@ -60,10 +60,28 @@ const attributes = {
 		type: 'string',
 		default: 'F j, Y',
 	},
+	blockName: {
+		type: 'string',
+		default : 'content-timeline',
+	},
 	align: {
 		type: 'string',
 		UAGCopyPaste: {
 			styleType: 'overall-alignment'
+		},
+	},
+	alignTablet: {
+		type: 'string',
+		default: '',
+		UAGCopyPaste: {
+			styleType: 'overall-alignment-tablet'
+		},
+	},
+	alignMobile: {
+		type: 'string',
+		default: '',
+		UAGCopyPaste: {
+			styleType: 'overall-alignment-mobile'
 		},
 	},
 	headingColor: {
@@ -337,14 +355,12 @@ const attributes = {
 	},
 	headSpaceTablet: {
 		type: 'number',
-		default: 0,
 		UAGCopyPaste: {
 			styleType: 'main-title-bottom-margin'
 		},
 	},
 	headSpaceMobile: {
 		type: 'number',
-		default: 0,
 		UAGCopyPaste: {
 			styleType: 'main-title-bottom-margin'
 		},
@@ -502,14 +518,12 @@ const attributes = {
 	},
 	dateBottomspaceTablet         : {
 		type    : 'number',
-		default : 0,
 		UAGCopyPaste: {
 			styleType: 'date-bottom-space'
 		},
 	},
 	dateBottomspaceMobile         : {
 		type    : 'number',
-		default : 0,
 		UAGCopyPaste: {
 			styleType: 'date-bottom-space'
 		},
@@ -535,14 +549,12 @@ const attributes = {
 	},
 	borderRadiusTablet            : {
 		type    : 'number',
-		default : 0,
 		UAGCopyPaste: {
 			styleType: 'overall-border-radius'
 		},
 	},
 	borderRadiusMobile            : {
 		type    : 'number',
-		default : 0,
 		UAGCopyPaste: {
 			styleType: 'overall-border-radius'
 		},
@@ -774,7 +786,82 @@ const attributes = {
 	isPreview: {
 		type: 'boolean',
 		default: false,
-	}
+	},
+	headLetterSpacing: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'head-letter-spacing'
+		}
+	},
+	headLetterSpacingTablet: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'head-letter-spacing-tablet'
+		}
+	},
+	headLetterSpacingMobile: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'head-letter-spacing-mobile'
+		}
+	},
+	headLetterSpacingType: {
+		type: 'string',
+		default: 'px',
+		UAGCopyPaste: {
+			styleType: 'head-letter-spacing-type'
+		}
+	},
+	subHeadLetterSpacing: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'subHead-letter-spacing'
+		}
+	},
+	subHeadLetterSpacingTablet: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'subHead-letter-spacing-tablet'
+		}
+	},
+	subHeadLetterSpacingMobile: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'subHead-letter-spacing-mobile'
+		}
+	},
+	subHeadLetterSpacingType: {
+		type: 'string',
+		default: 'px',
+		UAGCopyPaste: {
+			styleType: 'subHead-letter-spacing-type'
+		}
+	},
+	dateLetterSpacing: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'date-letter-spacing'
+		}
+	},
+	dateLetterSpacingTablet: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'date-letter-spacing-tablet'
+		}
+	},
+	dateLetterSpacingMobile: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'date-letter-spacing-mobile'
+		}
+	},
+	dateLetterSpacingType: {
+		type: 'string',
+		default: 'px',
+		UAGCopyPaste: {
+			styleType: 'date-letter-spacing-type'
+		}
+	},
 };
 
 export default attributes;

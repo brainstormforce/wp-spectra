@@ -35,6 +35,7 @@ const Range = ( props ) => {
 	const [ cachedValue, setCacheValue ] = useState( defaultCache );
 	let max = limitMax( props.unit?.value, props );
 	let min = limitMin( props.unit?.value, props );
+	const inputValue = isNaN( props?.value ) ? '' :  props?.value;
 
 	useEffect( () => {
 		const cachedValueUpdate = { ...cachedValue };
@@ -171,7 +172,6 @@ const Range = ( props ) => {
 		return items;
 	};
 
-
 	return (
 		<div className="components-base-control uag-range-control uagb-size-type-field-tabs">
 			<div className="uagb-control__header">
@@ -179,7 +179,7 @@ const Range = ( props ) => {
 					label= { props.label }
 					responsive= { props.responsive }
 				/>
-				<div className="uagb-range-control__actions">
+				<div className="uagb-control__actions uagb-range-control__actions">
 					<Tooltip
 						text={ __( 'Reset', 'ultimate-addons-for-gutenberg' )}
 						key={ 'reset' }
@@ -198,7 +198,7 @@ const Range = ( props ) => {
 					</Tooltip>
 					{ props.displayUnit && (
 						<ButtonGroup
-							className="uagb-range-control__units"
+							className="uagb-control__units"
 							aria-label={ __(
 								'Select Units',
 								'ultimate-addons-for-gutenberg'
@@ -211,14 +211,14 @@ const Range = ( props ) => {
 			</div>
 			<div className="uagb-range-control__mobile-controls">
 				<RangeControl
-					value={ props?.value }
+					value={ inputValue }
 					onChange={ handleOnChange }
 					withInputField={ false }
 					allowReset={ false }
 					max={ max }
 					min={ min }
-					step={ props.step || 1 }
-					initialPosition = {props?.value}
+					step={ props?.steps || 1 }
+					initialPosition = {inputValue}
 				/>
 				{ withInputField && isNumberControlSupported && (
 					<NumberControl
@@ -227,8 +227,8 @@ const Range = ( props ) => {
 						max={ max }
 						min={ min }
 						onChange={ handleOnChange }
-						value={ props?.value }
-						step={ props.step || 1 }
+						value={ inputValue }
+						step={ props?.steps || 1 }
 					/>
 				) }
 			</div>

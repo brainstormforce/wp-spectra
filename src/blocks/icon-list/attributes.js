@@ -46,6 +46,20 @@ const attributes = {
 			styleType: 'overall-alignment'
 		},
 	},
+	alignTablet: {
+		type: 'string',
+		default: '',
+		UAGCopyPaste: {
+			styleType: 'overall-alignment-tablet'
+		}
+	},
+	alignMobile: {
+		type: 'string',
+		default: '',
+		UAGCopyPaste: {
+			styleType: 'overall-alignment-mobile'
+		}
+	},
 	icon_count: {
 		type: 'number',
 		default: itemCount,
@@ -113,6 +127,20 @@ const attributes = {
 		},
 		default: 'middle',
 	},
+	iconPositionTablet: {
+		type: 'string',
+		UAGCopyPaste: {
+			styleType: 'icon-position-tablet'
+		},
+		default: '',
+	},
+	iconPositionMobile: {
+		type: 'string',
+		UAGCopyPaste: {
+			styleType: 'icon-position-mobile'
+		},
+		default: '',
+	},
 	size: {
 		type: 'number',
 		UAGCopyPaste: {
@@ -158,14 +186,12 @@ const attributes = {
 		UAGCopyPaste: {
 			styleType: 'icon-bg-size-tablet'
 		},
-		default: 0,
 	},
 	bgSizeMobile: {
 		type: 'number',
 		UAGCopyPaste: {
 			styleType: 'icon-bg-size-mobile'
 		},
-		default: 0,
 	},
 	border: {
 		type: 'number',
@@ -176,14 +202,12 @@ const attributes = {
 	},
 	borderTablet: {
 		type: 'number',
-		default: 0,
 		UAGCopyPaste: {
 			styleType: 'icon-border-style'
 		},
 	},
 	borderMobile: {
 		type: 'number',
-		default: 0,
 		UAGCopyPaste: {
 			styleType: 'icon-border-style'
 		},
@@ -320,6 +344,14 @@ const attributes = {
 		type: 'string',
 		default: 'vertical',
 	},
+	iconLayoutTablet: {
+		type: 'string',
+		default: '',
+	},
+	iconLayoutMobile: {
+		type: 'string',
+		default: '',
+	},
 	stack: {
 		type: 'string',
 		default: 'none',
@@ -327,7 +359,84 @@ const attributes = {
 	isPreview: {
 		type: 'boolean',
 		default: false,
-	}
+	},
+	labelLetterSpacing: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'label-letter-spacing'
+		}
+	},
+	labelLetterSpacingTablet: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'label-letter-spacing-tablet'
+		}
+	},
+	labelLetterSpacingMobile: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'label-letter-spacing-mobile'
+		}
+	},
+	labelLetterSpacingType: {
+		type: 'string',
+		default: 'px',
+		UAGCopyPaste: {
+			styleType: 'label-letter-spacing-type'
+		}
+	},
+	iconColor: {
+		type: 'string',
+		default: '',
+		UAGCopyPaste: {
+			styleType: 'icon-color'
+		},
+	},
+	labelColor: {
+		type: 'string',
+		default: '',
+		UAGCopyPaste: {
+			styleType: 'main-title-color'
+		},
+	},
+	iconHoverColor: {
+		type: 'string',
+		UAGCopyPaste: {
+			styleType: 'icon-hover-color'
+		},
+	},
+	labelHoverColor: {
+		type: 'string',
+		UAGCopyPaste: {
+			styleType: 'main-title-hover-color'
+		},
+	},
+	iconBgColor: {
+		type: 'string',
+		UAGCopyPaste: {
+			styleType: 'icon-bg-color'
+		},
+		default: '',
+	},
+	iconBgHoverColor: {
+		type: 'string',
+		UAGCopyPaste: {
+			styleType: 'icon-bg-hover-color'
+		},
+	},
+	iconBorderColor: {
+		type: 'string',
+		UAGCopyPaste: {
+			styleType: 'icon-border-color'
+		},
+		default: '',
+	},
+	iconBorderHoverColor: {
+		type: 'string',
+		UAGCopyPaste: {
+			styleType: 'icon-border-hover-color'
+		},
+	},
 };
 
 export default attributes;

@@ -3,7 +3,7 @@ import { __ } from '@wordpress/i18n';
 import lazyLoader from '@Controls/lazy-loader';
 import TypographyControl from '@Components/typography';
 import WebfontLoader from '@Components/typography/fontloader';
-import Border from '@Components/border';
+import ResponsiveBorder from '@Components/responsive-border';
 import MultiButtonsControl from '@Components/multi-buttons-control';
 import InspectorTabs from '@Components/inspector-tabs/InspectorTabs.js';
 import InspectorTab, {
@@ -50,6 +50,8 @@ const Settings = ( props ) => {
 		formPaddingLink,
 		formLabel,
 		buttonAlign,
+		buttonAlignTablet,
+		buttonAlignMobile,
 		buttonSize,
 		confirmationType,
 		confirmationMessage,
@@ -63,11 +65,6 @@ const Settings = ( props ) => {
 		submitColorHover,
 		submitBgColor,
 		submitBgColorHover,
-		submitborderStyle,
-		submitborderWidth,
-		submitborderRadius,
-		submitborderColor,
-		submitborderHoverColor,
 		submitTextloadGoogleFonts,
 		submitTextFontFamily,
 		submitTextFontWeight,
@@ -111,11 +108,6 @@ const Settings = ( props ) => {
 		toggleActiveColor,
 		toggleDotColor,
 		toggleDotActiveColor,
-		toggleBorderStyle,
-		toggleBorderWidth,
-		toggleBorderRadius,
-		toggleBorderColor,
-		toggleBorderActiveColor,
 		labelColor,
 		labelHoverColor,
 		inputColor,
@@ -125,12 +117,6 @@ const Settings = ( props ) => {
 		inputplaceholderColor,
 		inputplaceholderHoverColor,
 		inputplaceholderActiveColor,
-		inputactiveColor,
-		inputborderStyle,
-		inputborderWidth,
-		inputborderRadius,
-		inputborderColor,
-		inputborderHoverColor,
 		fieldGap,
 		fieldGapTablet,
 		fieldGapMobile,
@@ -140,19 +126,9 @@ const Settings = ( props ) => {
 		reCaptchaType,
 		successMessageTextColor,
 		successMessageBGColor,
-		successMessageBorderColor,
-		successMessageBorderStyle,
-		successMessageBorderWidth,
 		failedMessageTextColor,
-		failedMessageBorderColor,
-		failedMessageBorderStyle,
-		failedMessageBorderWidth,
 		failedMessageBGColor,
 
-		successMessageBorderRadius,
-		successMessageHoverBorderColor,
-		failedMessageBorderRadius,
-		failedMessageHoverBorderColor,
 		paddingBtnTop,
 		paddingBtnRight,
 		paddingBtnBottom,
@@ -204,7 +180,18 @@ const Settings = ( props ) => {
 		labelGapUnit,
 
 		displayLabels,
-
+		labelLetterSpacing,
+		labelLetterSpacingTablet,
+		labelLetterSpacingMobile,
+		labelLetterSpacingType,
+		inputLetterSpacing,
+		inputLetterSpacingTablet,
+		inputLetterSpacingMobile,
+		inputLetterSpacingType,
+		submitLetterSpacing,
+		submitLetterSpacingTablet,
+		submitLetterSpacingMobile,
+		submitLetterSpacingType,
 	} = attributes;
 
 	const presetSettings = () => {
@@ -427,49 +414,12 @@ const Settings = ( props ) => {
 					} )
 				}
 			/>
-			<Border
-				disabledBorderTitle= {false}
+			<ResponsiveBorder
 				setAttributes={ setAttributes }
-				borderStyle={ {
-					value: successMessageBorderStyle,
-					label: 'successMessageBorderStyle',
-					title: __(
-						'Style',
-						'ultimate-addons-for-gutenberg'
-					),
-				} }
-				borderWidth={ {
-					value: successMessageBorderWidth,
-					label: 'successMessageBorderWidth',
-					title: __(
-						'Width',
-						'ultimate-addons-for-gutenberg'
-					),
-				} }
-				borderRadius={ {
-					value: successMessageBorderRadius,
-					label: 'successMessageBorderRadius',
-					title: __(
-						'Radius',
-						'ultimate-addons-for-gutenberg'
-					),
-				} }
-				borderColor={ {
-					value: successMessageBorderColor,
-					label: 'successMessageBorderColor',
-					title: __(
-						'Success Border Color',
-						'ultimate-addons-for-gutenberg'
-					),
-				} }
-				borderHoverColor={ {
-					value: successMessageHoverBorderColor,
-					label: 'successMessageHoverBorderColor',
-					title: __(
-						'Success Border Color',
-						'ultimate-addons-for-gutenberg'
-					),
-				} }
+				prefix={'successMsg'}
+				disabledBorderTitle= {false}
+				attributes={ attributes }
+				deviceType={deviceType}
 				disableBottomSeparator={ true }
 			/>
 		</>
@@ -504,49 +454,12 @@ const Settings = ( props ) => {
 					setAttributes( { failedMessageBGColor: value } )
 				}
 			/>
-			<Border
-				disabledBorderTitle= {false}
+			<ResponsiveBorder
 				setAttributes={ setAttributes }
-				borderStyle={ {
-					value: failedMessageBorderStyle,
-					label: 'failedMessageBorderStyle',
-					title: __(
-						'Style',
-						'ultimate-addons-for-gutenberg'
-					),
-				} }
-				borderWidth={ {
-					value: failedMessageBorderWidth,
-					label: 'failedMessageBorderWidth',
-					title: __(
-						'Width',
-						'ultimate-addons-for-gutenberg'
-					),
-				} }
-				borderRadius={ {
-					value: failedMessageBorderRadius,
-					label: 'failedMessageBorderRadius',
-					title: __(
-						'Radius',
-						'ultimate-addons-for-gutenberg'
-					),
-				} }
-				borderColor={ {
-					value: failedMessageBorderColor,
-					label: 'failedMessageBorderColor',
-					title: __(
-						'Error Border Color',
-						'ultimate-addons-for-gutenberg'
-					),
-				} }
-				borderHoverColor={ {
-					value: failedMessageHoverBorderColor,
-					label: 'failedMessageHoverBorderColor',
-					title: __(
-						'Error Border Color',
-						'ultimate-addons-for-gutenberg'
-					),
-				} }
+				prefix={'failedMsg'}
+				disabledBorderTitle= {false}
+				attributes={ attributes }
+				deviceType={deviceType}
 				disableBottomSeparator={ true }
 			/>
 		</>
@@ -712,6 +625,22 @@ const Settings = ( props ) => {
 				lineHeightTablet={ {
 					value: labelLineHeightTablet,
 					label: 'labelLineHeightTablet',
+				} }
+				letterSpacing={ {
+					value: labelLetterSpacing,
+					label: 'labelLetterSpacing',
+				} }
+				letterSpacingTablet={ {
+					value: labelLetterSpacingTablet,
+					label: 'labelLetterSpacingTablet',
+				} }
+				letterSpacingMobile={ {
+					value: labelLetterSpacingMobile,
+					label: 'labelLetterSpacingMobile',
+				} }
+				letterSpacingType={ {
+					value: labelLetterSpacingType,
+					label: 'labelLetterSpacingType',
 				} }
 				transform={ {
 					value: labelTransform,
@@ -889,48 +818,12 @@ const Settings = ( props ) => {
 				}
 				disableBottomSeparator={ false }
 			/>
-			<Border
-				disabledBorderTitle= {false}
+			<ResponsiveBorder
 				setAttributes={ setAttributes }
-				borderStyle={ {
-					value: inputborderStyle,
-					label: 'inputborderStyle',
-					title: __(
-						'Style',
-						'ultimate-addons-for-gutenberg'
-					),
-				} }
-				borderWidth={ {
-					value: inputborderWidth,
-					label: 'inputborderWidth',
-					title: __( 'Width', 'ultimate-addons-for-gutenberg' ),
-				} }
-				borderRadius={ {
-					value: inputborderRadius,
-					label: 'inputborderRadius',
-					title: __( 'Radius', 'ultimate-addons-for-gutenberg' ),
-				} }
-				borderColor={ {
-					value: inputborderColor,
-					label: 'inputborderColor',
-					title: __( 'Border Color', 'ultimate-addons-for-gutenberg' ),
-				} }
-				borderHoverColor={ {
-					value: inputborderHoverColor,
-					label: 'inputborderHoverColor',
-					title: __(
-						'Border Color',
-						'ultimate-addons-for-gutenberg'
-					),
-				} }
-				borderActiveColor={ {
-					value: inputactiveColor,
-					label: 'inputactiveColor',
-					title: __(
-						'Border Color',
-						'ultimate-addons-for-gutenberg'
-					),
-				} }
+				prefix={'field'}
+				disabledBorderTitle= {false}
+				attributes={ attributes }
+				deviceType={deviceType}
 				disableBottomSeparator={ false }
 			/>
 			<SpacingControl
@@ -1058,6 +951,22 @@ const Settings = ( props ) => {
 				lineHeightTablet={ {
 					value: inputLineHeightTablet,
 					label: 'inputLineHeightTablet',
+				} }
+				letterSpacing={ {
+					value: inputLetterSpacing,
+					label: 'inputLetterSpacing',
+				} }
+				letterSpacingTablet={ {
+					value: inputLetterSpacingTablet,
+					label: 'inputLetterSpacingTablet',
+				} }
+				letterSpacingMobile={ {
+					value: inputLetterSpacingMobile,
+					label: 'inputLetterSpacingMobile',
+				} }
+				letterSpacingType={ {
+					value: inputLetterSpacingType,
+					label: 'inputLetterSpacingType',
 				} }
 				transform={ {
 					value: inputTransform,
@@ -1195,40 +1104,12 @@ const Settings = ( props ) => {
 				}
 				disableBottomSeparator={ false }
 			/>
-			<Border
-				disabledBorderTitle= { false }
+			<ResponsiveBorder
 				setAttributes={ setAttributes }
-				borderStyle={ {
-					value: toggleBorderStyle,
-					label: 'toggleBorderStyle',
-					title: __(
-						'Style',
-						'ultimate-addons-for-gutenberg'
-					),
-				} }
-				borderWidth={ {
-					value: toggleBorderWidth,
-					label: 'toggleBorderWidth',
-					title: __( 'Width', 'ultimate-addons-for-gutenberg' ),
-				} }
-				borderRadius={ {
-					value: toggleBorderRadius,
-					label: 'toggleBorderRadius',
-					title: __( 'Checkbox Radius', 'ultimate-addons-for-gutenberg' ),
-				} }
-				borderColor={ {
-					value: toggleBorderColor,
-					label: 'toggleBorderColor',
-					title: __( 'Border Color', 'ultimate-addons-for-gutenberg' ),
-				} }
-				borderActiveColor={ {
-					value: toggleBorderActiveColor,
-					label: 'toggleBorderActiveColor',
-					title: __(
-						'Border Color',
-						'ultimate-addons-for-gutenberg'
-					),
-				} }
+				prefix={'checkBoxToggle'}
+				disabledBorderTitle= {false}
+				attributes={ attributes }
+				deviceType={deviceType}
 				disableBottomSeparator={ true }
 			/>
 		</UAGAdvancedPanelBody>
@@ -1291,15 +1172,21 @@ const Settings = ( props ) => {
 			/>
 			<MultiButtonsControl
 				setAttributes={ setAttributes }
-				label={ __(
-					'Button Alignment',
-					'ultimate-addons-for-gutenberg'
-				) }
+				label={ __( 'Button Alignment', 'ultimate-addons-for-gutenberg' ) }
 				data={ {
-					value: buttonAlign,
-					label: 'buttonAlign',
+					desktop: {
+						value: buttonAlign,
+						label: 'buttonAlign',
+					},
+					tablet: {
+						value: buttonAlignTablet,
+						label: 'buttonAlignTablet',
+					},
+					mobile: {
+						value: buttonAlignMobile,
+						label: 'buttonAlignMobile',
+					},
 				} }
-				className="uagb-multi-button-alignment-control"
 				options={ [
 					{
 						value: 'left',
@@ -1339,6 +1226,7 @@ const Settings = ( props ) => {
 					},
 				] }
 				showIcons={ true }
+				responsive={true}
 			/>
 			<SpacingControl
 				{ ...props }
@@ -1489,37 +1377,12 @@ const Settings = ( props ) => {
 					</>
 				}
 			/>
-			<Border
-				disabledBorderTitle= {false}
+			<ResponsiveBorder
 				setAttributes={ setAttributes }
-				borderStyle={ {
-					value: submitborderStyle,
-					label: 'submitborderStyle',
-					title: __(
-						'Style',
-						'ultimate-addons-for-gutenberg'
-					),
-				} }
-				borderWidth={ {
-					value: submitborderWidth,
-					label: 'submitborderWidth',
-					title: __( 'Width', 'ultimate-addons-for-gutenberg' ),
-				} }
-				borderRadius={ {
-					value: submitborderRadius,
-					label: 'submitborderRadius',
-					title: __( 'Radius', 'ultimate-addons-for-gutenberg' ),
-				} }
-				borderColor={ {
-					value: submitborderColor,
-					label: 'submitborderColor',
-					title: __( 'Border Color', 'ultimate-addons-for-gutenberg' ),
-				} }
-				borderHoverColor={ {
-					value: submitborderHoverColor,
-					label: 'submitborderHoverColor',
-					title: __( 'Border Color', 'ultimate-addons-for-gutenberg' ),
-				} }
+				prefix={'btn'}
+				disabledBorderTitle= {false}
+				attributes={ attributes }
+				deviceType={deviceType}
 				disableBottomSeparator={ false }
 			/>
 			<TypographyControl
@@ -1576,6 +1439,22 @@ const Settings = ( props ) => {
 				lineHeightTablet={ {
 					value: submitTextLineHeightTablet,
 					label: 'submitTextLineHeightTablet',
+				} }
+				letterSpacing={ {
+					value: submitLetterSpacing,
+					label: 'submitLetterSpacing',
+				} }
+				letterSpacingTablet={ {
+					value: submitLetterSpacingTablet,
+					label: 'submitLetterSpacingTablet',
+				} }
+				letterSpacingMobile={ {
+					value: submitLetterSpacingMobile,
+					label: 'submitLetterSpacingMobile',
+				} }
+				letterSpacingType={ {
+					value: submitLetterSpacingType,
+					label: 'submitLetterSpacingType',
 				} }
 				transform={ {
 					value: submitTextTransform,

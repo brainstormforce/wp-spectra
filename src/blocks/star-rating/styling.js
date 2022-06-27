@@ -4,8 +4,12 @@
 
 import generateCSS from '@Controls/generateCSS';
 import generateCSSUnit from '@Controls/generateCSSUnit';
+import { getFallbackNumber } from '@Controls/getAttributeFallback';
 
 function styling( props ) {
+
+	const blockName = props.name.replace( 'uagb/', '' );
+
 	const {
 		layout,
 		layoutTablet,
@@ -15,6 +19,8 @@ function styling( props ) {
 		sizeMobile,
 		sizeTablet,
 		align,
+		alignTablet,
+		alignMobile,
 		gap,
 		gapTablet,
 		gapMobile,
@@ -37,22 +43,83 @@ function styling( props ) {
 		fontStyle,
 		fontTransform,
 		fontDecoration,
+		//letter spacing
+		titleLetterSpacing,
+		titleLetterSpacingTablet,
+		titleLetterSpacingMobile,
+		titleLetterSpacingType,
+		// padding
+		blockTopPadding,
+		blockRightPadding,
+		blockLeftPadding,
+		blockBottomPadding,
+		blockTopPaddingTablet,
+		blockRightPaddingTablet,
+		blockLeftPaddingTablet,
+		blockBottomPaddingTablet,
+		blockTopPaddingMobile,
+		blockRightPaddingMobile,
+		blockLeftPaddingMobile,
+		blockBottomPaddingMobile,
+		blockPaddingUnit,
+		blockPaddingUnitTablet,
+		blockPaddingUnitMobile,
+		// margin
+		blockTopMargin,
+		blockRightMargin,
+		blockLeftMargin,
+		blockBottomMargin,
+		blockTopMarginTablet,
+		blockRightMarginTablet,
+		blockLeftMarginTablet,
+		blockBottomMarginTablet,
+		blockTopMarginMobile,
+		blockRightMarginMobile,
+		blockLeftMarginMobile,
+		blockBottomMarginMobile,
+		blockMarginUnit,
+		blockMarginUnitTablet,
+		blockMarginUnitMobile,
 	} = props.attributes;
 
-	let alignment = 'flex-start';
-	let stackAlignment = align;
+	const ratingFallback = getFallbackNumber( rating, 'rating', blockName );
+	const titleGapFallback = getFallbackNumber( titleGap, 'titleGap', blockName );
+	const sizeFallback = getFallbackNumber( size, 'size', blockName );
+	const gapFallback = getFallbackNumber( gap, 'gap', blockName );
 
-	if ( align ) {
-		if ( 'right' === align ) {
-			alignment = 'flex-end';
+	let stackAlignment = align;
+	let stackAlignmentTablet = alignTablet;
+	let stackAlignmentMobile = alignMobile;
+
+	if ( 'full' === align ) {
+		stackAlignment = 'left';
+	}
+
+	if ( 'full' === alignTablet ) {
+		stackAlignmentTablet = 'left';
+	}
+
+	if ( 'full' === alignMobile ) {
+		stackAlignmentMobile = 'left';
+	}
+
+	const flexJustifyContent = ( JustifyContent ) => {
+		let alignment = '';
+		switch ( JustifyContent ) {
+			case 'right':
+				alignment = 'flex-end';
+				break;
+			case 'center':
+				alignment = 'center';
+				break;
+			case 'full':
+				alignment = 'space-between';
+				break;
+			default:
+				alignment = 'flex-start'
+				break;
 		}
-		if ( 'center' === align ) {
-			alignment = 'center';
-		}
-		if ( 'full' === align ) {
-			alignment = 'space-between';
-			stackAlignment = 'left';
-		}
+		return alignment;
 	}
 
 	// Since title text is set to flex, we need this function so that stack alignment doesn't break.
@@ -69,15 +136,52 @@ function styling( props ) {
 
 	}
 
-	const remainder = ( rating % 1 ).toFixed( 1 );
+	const remainder = ( ratingFallback % 1 ).toFixed( 1 );
 	const width = remainder * 100;
+
+	const wrapperCSS = {
+		'margin-top': generateCSSUnit(
+			blockTopMargin,
+			blockMarginUnit
+		),
+		'margin-right': generateCSSUnit(
+			blockRightMargin,
+			blockMarginUnit
+		),
+		'margin-bottom': generateCSSUnit(
+			blockBottomMargin,
+			blockMarginUnit
+		),
+		'margin-left': generateCSSUnit(
+			blockLeftMargin,
+			blockMarginUnit
+		),
+		'padding-top': generateCSSUnit(
+			blockTopPadding,
+			blockPaddingUnit
+		),
+		'padding-right': generateCSSUnit(
+			blockRightPadding,
+			blockPaddingUnit
+		),
+		'padding-bottom': generateCSSUnit(
+			blockBottomPadding,
+			blockPaddingUnit
+		),
+		'padding-left': generateCSSUnit(
+			blockLeftPadding,
+			blockPaddingUnit
+		),
+		'justify-content': flexJustifyContent( align ),
+		'text-align': stackAlignment,
+	}
 
 	const selectors = {
 		' .uag-star-rating': {
-			'font-size': generateCSSUnit( size, 'px' ),
+			'font-size': generateCSSUnit( sizeFallback, 'px' ),
 		},
 		' .uag-star-rating > span': {
-			'margin-right': generateCSSUnit( gap, 'px' ),
+			'margin-right': generateCSSUnit( gapFallback, 'px' ),
 			'color': unmarkedColor,
 		},
 		' .uag-star-rating__title.block-editor-rich-text__editable': {
@@ -89,9 +193,10 @@ function styling( props ) {
 			'font-weight': fontWeight,
 			'line-height': generateCSSUnit( lineHeight, lineHeightType ),
 			'color': titleColor,
+			'letter-spacing': generateCSSUnit( titleLetterSpacing, titleLetterSpacingType ),
 		},
 		'.wp-block-uagb-star-rating ': {
-			'justify-content': alignment,
+			'justify-content': flexJustifyContent( align ),
 			'text-align': stackAlignment,
 		},
 	};
@@ -101,6 +206,7 @@ function styling( props ) {
 		selectors[ '.wp-block-uagb-star-rating ' ] = {
 			'display' : 'block',
 			'text-align': stackAlignment,
+			...wrapperCSS
 		};
 
 		// Since title text is set to flex, we need this property that aligns flex objects.
@@ -114,17 +220,18 @@ function styling( props ) {
 		index = 'margin-right';
 		selectors[ '.wp-block-uagb-star-rating ' ] = {
 			'display' : 'flex',
-			'justify-content' : alignment,
+			'justify-content' : flexJustifyContent( align ),
+			...wrapperCSS
 		};
 	}
 
 	selectors[ ' .uag-star-rating__title.block-editor-rich-text__editable' ][
 		index
-	] = generateCSSUnit( titleGap, 'px' );
+	] = generateCSSUnit( titleGapFallback, 'px' );
 
 	if ( 0 !== width ) {
 		selectors[
-			' .uag-star:nth-child(' + Math.ceil( rating ) + '):before'
+			' .uag-star:nth-child(' + Math.ceil( ratingFallback ) + '):before'
 		] = {
 			'color': color,
 			'width': generateCSSUnit( width, '%' ),
@@ -133,16 +240,54 @@ function styling( props ) {
 			'overflow': 'hidden',
 		};
 
-		selectors[ ' .uag-star:nth-child(' + Math.ceil( rating ) + ')' ] = {
+		selectors[ ' .uag-star:nth-child(' + Math.ceil( ratingFallback ) + ')' ] = {
 			'position': 'relative',
 		};
 	}
 
-	selectors[ ' .uag-star:nth-child(-n+' + Math.floor( rating ) + ')' ] = {
+	selectors[ ' .uag-star:nth-child(-n+' + Math.floor( ratingFallback ) + ')' ] = {
 		'color': color,
 	};
 
+	const wrapperCSSTablet = {
+		'margin-top': generateCSSUnit(
+			blockTopMarginTablet,
+			blockMarginUnitTablet
+		),
+		'margin-right': generateCSSUnit(
+			blockRightMarginTablet,
+			blockMarginUnitTablet
+		),
+		'margin-bottom': generateCSSUnit(
+			blockBottomMarginTablet,
+			blockMarginUnitTablet
+		),
+		'margin-left': generateCSSUnit(
+			blockLeftMarginTablet,
+			blockMarginUnitTablet
+		),
+		'padding-top': generateCSSUnit(
+			blockTopPaddingTablet,
+			blockPaddingUnitTablet
+		),
+		'padding-right': generateCSSUnit(
+			blockRightPaddingTablet,
+			blockPaddingUnitTablet
+		),
+		'padding-bottom': generateCSSUnit(
+			blockBottomPaddingTablet,
+			blockPaddingUnitTablet
+		),
+		'padding-left': generateCSSUnit(
+			blockLeftPaddingTablet,
+			blockPaddingUnitTablet
+		),
+	}
+
 	const tabletSelectors = {
+		'.wp-block-uagb-star-rating ': {
+			'justify-content': flexJustifyContent( alignTablet ),
+		},
 		' .uag-star-rating': {
 			'font-size': generateCSSUnit( sizeTablet, 'px' ),
 		},
@@ -152,6 +297,7 @@ function styling( props ) {
 		' .uag-star-rating__title.block-editor-rich-text__editable': {
 			'font-size': generateCSSUnit( fontSizeTablet, fontSizeType ),
 			'line-height': generateCSSUnit( lineHeightTablet, lineHeightType ),
+			'letter-spacing': generateCSSUnit( titleLetterSpacingTablet, titleLetterSpacingType ),
 		},
 	};
 
@@ -160,32 +306,72 @@ function styling( props ) {
 		indexTablet = 'margin-bottom';
 		tabletSelectors[ '.wp-block-uagb-star-rating ' ] = {
 			'display' : 'block',
-			'text-align': stackAlignment,
+			'text-align': stackAlignmentTablet,
+			...wrapperCSSTablet
 		};
 
 		// Keeping this here, in case responsive alignment is added in the future.
 		// Since title text is set to flex, we need this property that aligns flex objects.
 		tabletSelectors[ ' .uag-star-rating__title' ] = {
-			'justify-content': flexAlignment( stackAlignment ),
+			'justify-content': flexAlignment( stackAlignmentTablet ),
 			'margin-right' : 0,
 		};
 
 		tabletSelectors[ ' div.uag-star-rating' ] = {
-			'justify-content': flexAlignment( stackAlignment ),
+			'justify-content': flexAlignment( stackAlignmentTablet ),
 		};
 	} else {
 		indexTablet = 'margin-right';
 		tabletSelectors[ '.wp-block-uagb-star-rating ' ] = {
 			'display' : 'flex',
-			'justify-content' : alignment,
+			'justify-content' : flexJustifyContent( alignTablet ),
+			...wrapperCSSTablet
 		};
 		tabletSelectors[ ' .uag-star-rating__title ' ] = {
-			'justify-content': flexAlignment( stackAlignment ),
+			'justify-content': flexAlignment( stackAlignmentTablet ),
 			'margin-bottom' : 0,
 		};
 	}
 
+	const wrapperCSSMobile = {
+		'margin-top': generateCSSUnit(
+			blockTopMarginMobile,
+			blockMarginUnitMobile
+		),
+		'margin-right': generateCSSUnit(
+			blockRightMarginMobile,
+			blockMarginUnitMobile
+		),
+		'margin-bottom': generateCSSUnit(
+			blockBottomMarginMobile,
+			blockMarginUnitMobile
+		),
+		'margin-left': generateCSSUnit(
+			blockLeftMarginMobile,
+			blockMarginUnitMobile
+		),
+		'padding-top': generateCSSUnit(
+			blockTopPaddingMobile,
+			blockPaddingUnitMobile
+		),
+		'padding-right': generateCSSUnit(
+			blockRightPaddingMobile,
+			blockPaddingUnitMobile
+		),
+		'padding-bottom': generateCSSUnit(
+			blockBottomPaddingMobile,
+			blockPaddingUnitMobile
+		),
+		'padding-left': generateCSSUnit(
+			blockLeftPaddingMobile,
+			blockPaddingUnitMobile
+		),
+	}
+
 	const mobileSelectors = {
+		'.wp-block-uagb-star-rating ': {
+			'justify-content': flexJustifyContent( alignMobile ),
+		},
 		' .uag-star-rating': {
 			'font-size': generateCSSUnit( sizeMobile, 'px' ),
 		},
@@ -195,6 +381,7 @@ function styling( props ) {
 		' .uag-star-rating__title.block-editor-rich-text__editable': {
 			'font-size': generateCSSUnit( fontSizeMobile, fontSizeType ),
 			'line-height': generateCSSUnit( lineHeightMobile, lineHeightType ),
+			'letter-spacing': generateCSSUnit( titleLetterSpacingMobile, titleLetterSpacingType ),
 		},
 	};
 
@@ -203,24 +390,26 @@ function styling( props ) {
 		indexMobile = 'margin-bottom';
 		mobileSelectors[ '.wp-block-uagb-star-rating ' ] = {
 			'display' : 'block',
-			'text-align': stackAlignment,
+			'text-align': stackAlignmentMobile,
+			...wrapperCSSMobile
 		};
 
 		// Keeping this here, in case responsive alignment is added in the future.
 		// Since title text is set to flex, we need this property that aligns flex objects.
 		mobileSelectors[ ' .uag-star-rating__title' ] = {
-			'justify-content': flexAlignment( stackAlignment ),
+			'justify-content': flexAlignment( stackAlignmentMobile ),
 			'margin-right' : 0,
 		};
 		mobileSelectors[ ' div.uag-star-rating ' ] = {
-			'justify-content': flexAlignment( stackAlignment ),
+			'justify-content': flexAlignment( stackAlignmentMobile ),
 		};
 	} else {
 		indexMobile = 'margin-right';
 		mobileSelectors[ '.wp-block-uagb-star-rating ' ] = {
 			'display' : 'flex',
-			'justify-content' : alignment,
+			'justify-content' : flexJustifyContent( alignMobile ),
 			'margin-bottom' : 0,
+			...wrapperCSSMobile
 		};
 		mobileSelectors[ ' .uag-star-rating__title ' ] = {
 			'margin-bottom' : 0,

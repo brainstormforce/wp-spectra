@@ -11,6 +11,10 @@ global $content_width;
 
 $bg_type = ( isset( $attr['backgroundType'] ) ) ? $attr['backgroundType'] : 'none';
 
+$border        = UAGB_Block_Helper::uag_generate_border_css( $attr, 'columns' );
+$border_tablet = UAGB_Block_Helper::uag_generate_border_css( $attr, 'columns', 'tablet' );
+$border_mobile = UAGB_Block_Helper::uag_generate_border_css( $attr, 'columns', 'mobile' );
+
 $top_margin    = isset( $attr['topMarginDesktop'] ) ? $attr['topMarginDesktop'] : $attr['topMargin'];
 $bottom_margin = isset( $attr['bottomMarginDesktop'] ) ? $attr['bottomMarginDesktop'] : $attr['bottomMargin'];
 $left_margin   = isset( $attr['leftMarginDesktop'] ) ? $attr['leftMarginDesktop'] : '';
@@ -96,13 +100,7 @@ $selectors = array(
 		'box-shadow' => UAGB_Helper::get_css_value( $attr['boxShadowHOffset'], 'px' ) . ' ' . UAGB_Helper::get_css_value( $attr['boxShadowVOffset'], 'px' ) . ' ' . UAGB_Helper::get_css_value( $attr['boxShadowBlur'], 'px' ) . ' ' . UAGB_Helper::get_css_value( $attr['boxShadowSpread'], 'px' ) . ' ' . $attr['boxShadowColor'] . ' ' . $boxShadowPositionCSS,
 	),
 );
-if ( 'none' !== $attr['borderStyle'] ) {
-	$selectors['.uagb-columns__wrap']['border-style']       = $attr['borderStyle'];
-	$selectors['.uagb-columns__wrap']['border-width']       = UAGB_Helper::get_css_value( $attr['borderWidth'], 'px' );
-	$selectors['.uagb-columns__wrap']['border-color']       = $attr['borderColor'];
-	$selectors['.uagb-columns__wrap']['border-radius']      = UAGB_Helper::get_css_value( $attr['borderRadius'], $attr['desktopMarginType'] );
-	$selectors['.uagb-columns__wrap:hover']['border-color'] = $attr['borderHoverColor'];
-}
+
 if ( '' !== $attr['topWidth'] ) {
 	$selectors[' .uagb-columns__shape-top svg']['width'] = 'calc( ' . $attr['topWidth'] . '% + 1.3px )';
 }
@@ -138,8 +136,6 @@ if ( 'video' === $bg_type ) {
 	}
 }
 
-$selectors[' > .uagb-columns__overlay']['border-radius'] = UAGB_Helper::get_css_value( $attr['borderRadius'], 'px' );
-
 $m_selectors = array(
 	'.uagb-columns__wrap'              => array(
 		'padding-top'    => UAGB_Helper::get_css_value( $attr['topPaddingMobile'], $attr['mobilePaddingType'] ),
@@ -159,7 +155,7 @@ $m_selectors = array(
 	),
 );
 
-$t_selectors = array(
+$t_selectors                        = array(
 	'.uagb-columns__wrap'              => array(
 		'padding-top'    => UAGB_Helper::get_css_value( $attr['topPaddingTablet'], $attr['tabletPaddingType'] ),
 		'padding-bottom' => UAGB_Helper::get_css_value( $attr['bottomPaddingTablet'], $attr['tabletPaddingType'] ),
@@ -177,6 +173,9 @@ $t_selectors = array(
 		'height' => UAGB_Helper::get_css_value( $attr['topHeightTablet'], 'px' ),
 	),
 );
+$selectors['.uagb-columns__wrap']   = $border;
+$t_selectors['.uagb-columns__wrap'] = $border_tablet;
+$m_selectors['.uagb-columns__wrap'] = $border_mobile;
 
 $combined_selectors = array(
 	'desktop' => $selectors,

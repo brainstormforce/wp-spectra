@@ -7,6 +7,7 @@ import React, { useEffect, Suspense, lazy } from 'react';
 import lazyLoader from '@Controls/lazy-loader';
 import { useDeviceType } from '@Controls/getPreviewType';
 import addBlockEditorDynamicStyles from '@Controls/addBlockEditorDynamicStyles';
+import { migrateBorderAttributes } from '@Controls/generateAttributes';
 const Settings = lazy( () =>
 	import(
 		/* webpackChunkName: "chunks/marketing-button/settings" */ './settings'
@@ -25,7 +26,6 @@ const UAGBMarketingButtonEdit = ( props ) => {
 		props.setAttributes( { block_id: props.clientId.substr( 0, 8 ) } );
 
 		props.setAttributes( { classMigrate: true } );
-
 
 		const {
 			vPadding,
@@ -106,12 +106,34 @@ const UAGBMarketingButtonEdit = ( props ) => {
 				props.setAttributes( { paddingBtnLeftTablet: hPaddingTablet } );
 			}
 		}
+		const {borderStyle,borderWidth,borderRadius,borderColor,borderHoverColor} = props.attributes
+		// border migration
+		if( borderWidth || borderRadius || borderColor || borderHoverColor || borderStyle ){
+			const migrationAttributes = migrateBorderAttributes( 'btn', {
+				label: 'borderWidth',
+				value: borderWidth,
+			}, {
+				label: 'borderRadius',
+				value: borderRadius
+			}, {
+				label: 'borderColor',
+				value: borderColor
+			}, {
+				label: 'borderHoverColor',
+				value: borderHoverColor
+			},{
+				label: 'borderStyle',
+				value: borderStyle
+			}
+			);
+			props.setAttributes( migrationAttributes )
+		}
 	}, [] );
 
 	useEffect( () => {
+
 		// Replacement for componentDidUpdate.
 		const blockStyling = styling( props );
-
 		addBlockEditorDynamicStyles( 'uagb-style-marketing-btn-' + props.clientId.substr( 0, 8 ), blockStyling );
 	}, [ props ] );
 

@@ -2,17 +2,20 @@
  * WordPress dependencies
  */
 import { __ } from '@wordpress/i18n';
-import { Button, Dashicon, SelectControl } from '@wordpress/components';
+import { Button, Dashicon } from '@wordpress/components';
 import { useState } from '@wordpress/element';
 
 /**
  * Internal dependencies
  */
+import UAGSelectControl from '@Components/select-control';
 import FontFamilyControl from './font-typography';
 import RangeTypographyControl from './range-typography';
 import TypographyStyles from './inline-styles';
 import styles from './editor.lazy.scss';
 import React, { useLayoutEffect } from 'react';
+import { select } from '@wordpress/data'
+import getUAGEditorStateLocalStorage from '@Controls/getUAGEditorStateLocalStorage';
 
 // Export for ease of importing in individual blocks.
 export { TypographyStyles };
@@ -41,8 +44,7 @@ const TypographyControl = ( props ) => {
 		  } );
 	}, [] );
 
-	let fontSize;
-	let fontWeight;
+	let lineHeight;
 	let fontFamily;
 	let fontAdvancedControls;
 	let fontTypoAdvancedControls;
@@ -64,9 +66,10 @@ const TypographyControl = ( props ) => {
 	if ( true !== disableFontFamily ) {
 		fontFamily = <FontFamilyControl { ...props } />;
 	}
+	const lineHeightStepsVal = ( 'em' === props.lineHeightType?.value ? 0.1 : 1 );
 
 	if ( true !== disableLineHeight ) {
-		fontWeight = (
+		lineHeight = (
 			<RangeTypographyControl
 				type={ props.lineHeightType }
 				typeLabel={ props.lineHeightType.label }
@@ -88,7 +91,7 @@ const TypographyControl = ( props ) => {
 					'Line Height',
 					'ultimate-addons-for-gutenberg'
 				) }
-				steps={ 0.1 }
+				steps={ lineHeightStepsVal }
 				{ ...props }
 			/>
 		);
@@ -123,104 +126,71 @@ const TypographyControl = ( props ) => {
 		);
 	}
 
-	if ( true !== disableFontSize ) {
-		fontSize = (
-			<RangeTypographyControl
-				type={ props.fontSizeType }
-				typeLabel={ props.fontSizeType.label }
-				sizeMobile={ props.fontSizeMobile }
-				sizeMobileLabel={ props.fontSizeMobile.label }
-				sizeTablet={ props.fontSizeTablet }
-				sizeTabletLabel={ props.fontSizeTablet.label }
-				size={ props.fontSize }
-				sizeLabel={ props.fontSize.label }
-				sizeMobileText={
-					! props.fontSizeLabel
-						? __( 'Font Size', 'ultimate-addons-for-gutenberg' )
-						: props.fontSizeLabel
-				}
-				sizeTabletText={
-					! props.fontSizeLabel
-						? __( 'Font Size', 'ultimate-addons-for-gutenberg' )
-						: props.fontSizeLabel
-				}
-				sizeText={
-					! props.fontSizeLabel
-						? __( 'Font Size', 'ultimate-addons-for-gutenberg' )
-						: props.fontSizeLabel
-				}
-				steps={ 0.1 }
-				{ ...props }
-			/>
-		);
-	}
-
 	if ( ! disableTransform && props.transform ) {
 		transform = (
-			<div className="uag-typography-transform">
-				<SelectControl
-					label={ __( 'Transform', 'ultimate-addons-for-gutenberg' ) }
-					value={ props.transform.value }
-					onChange={ ( value ) =>
-						props.setAttributes( {
-							[ props.transform.label ]: value,
-						} )
-					}
-					options={ [
-						{
-							value: '',
-							label: __(
-								'Default',
-								'ultimate-addons-for-gutenberg'
-							),
-						},
-						{
-							value: 'normal',
-							label: __(
-								'Normal',
-								'ultimate-addons-for-gutenberg'
-							),
-						},
-						{
-							value: 'capitalize',
-							label: __(
-								'Capitalize',
-								'ultimate-addons-for-gutenberg'
-							),
-						},
-						{
-							value: 'uppercase',
-							label: __(
-								'Uppercase',
-								'ultimate-addons-for-gutenberg'
-							),
-						},
-						{
-							value: 'lowercase',
-							label: __(
-								'Lowercase',
-								'ultimate-addons-for-gutenberg'
-							),
-						},
-					] }
-				/>
-			</div>
+			<UAGSelectControl
+				label={ __(
+					'Transform',
+					'ultimate-addons-for-gutenberg'
+				) }
+				data={ {
+					value: props.transform.value,
+					label: props.transform.label,
+				} }
+				setAttributes={ props.setAttributes }
+				options={ [
+					{
+						value: '',
+						label: __(
+							'Default',
+							'ultimate-addons-for-gutenberg'
+						),
+					},
+					{
+						value: 'normal',
+						label: __(
+							'Normal',
+							'ultimate-addons-for-gutenberg'
+						),
+					},
+					{
+						value: 'capitalize',
+						label: __(
+							'Capitalize',
+							'ultimate-addons-for-gutenberg'
+						),
+					},
+					{
+						value: 'uppercase',
+						label: __(
+							'Uppercase',
+							'ultimate-addons-for-gutenberg'
+						),
+					},
+					{
+						value: 'lowercase',
+						label: __(
+							'Lowercase',
+							'ultimate-addons-for-gutenberg'
+						),
+					},
+				] }
+			/>
 		);
 	}
 	if ( ! disableDecoration && props.decoration ) {
 		decoration = (
 			<div className="uag-typography-decoration">
-				<SelectControl
+				<UAGSelectControl
 					label={ __(
 						'Decoration',
 						'ultimate-addons-for-gutenberg'
 					) }
-					value={ props.decoration.value }
-					onChange={ ( value ) =>
-						props.setAttributes( {
-							[ props.decoration.label ]: value,
-						} )
-					}
+					data={ {
+						value: props.decoration.value,
+						label: props.decoration.label,
+					} }
+					setAttributes={ props.setAttributes }
 					options={ [
 						{
 							value: 'none',
@@ -258,10 +228,29 @@ const TypographyControl = ( props ) => {
 	if ( true !== disableFontFamily && true !== disableFontSize ) {
 		fontAdvancedControls = (
 			<Button
-				className="uag-typography-button"
+				className="uag-typography-button spectra-control-popup__options--action-button"
 				aria-pressed={ showAdvancedControls }
-				onClick={ () =>
-					toggleAdvancedControls( ! showAdvancedControls )
+				onClick={ () => {
+						toggleAdvancedControls( ! showAdvancedControls )
+
+						if ( ! showAdvancedControls ) {
+							const { getSelectedBlock } = select( 'core/block-editor' );
+							const blockName = getSelectedBlock()?.name;
+							const uagSettingState = getUAGEditorStateLocalStorage( 'uagSettingState' );
+							const data = {
+								...uagSettingState,
+								[blockName] : {
+									...uagSettingState?.[blockName],
+									selectedSetting : '.uag-typography-options'
+								}
+							}
+
+							const uagLocalStorage = getUAGEditorStateLocalStorage();
+							if ( uagLocalStorage ) {
+								uagLocalStorage.setItem( 'uagSettingState', JSON.stringify( data ) );
+							}
+						}
+					}
 				}
 			>
 				<Dashicon icon="edit" />
@@ -271,35 +260,29 @@ const TypographyControl = ( props ) => {
 		showAdvancedFontControls = (
 			<>
 				{ fontFamily }
-				{ fontSize }
-				{ fontWeight }
-				{letterSpacing}
-				<div className="uag-typography-transform-decoration-wrap">
-					{ transform }
-					{ decoration }
-				</div>
+				{ transform }
+				{ decoration }
+				{ lineHeight }
+				{ letterSpacing }
 			</>
 		);
 	}
 
 	if ( showAdvancedControls === true ) {
 		showAdvancedFontControls = (
-			<div className="uagb-typography-advanced">
+			<div className="uagb-typography-advanced spectra-control-popup">
 				{ fontFamily }
-				{ fontSize }
-				{ fontWeight }
-				{letterSpacing}
-				<div className="uag-typography-transform-decoration-wrap">
-					{ transform }
-					{ decoration }
-				</div>
+				{ transform }
+				{ decoration }
+				{ lineHeight }
+				{ letterSpacing }
 			</div>
 		);
 	}
 
 	if ( true !== disableFontFamily && true !== disableFontSize ) {
 		fontTypoAdvancedControls = (
-			<div className="uag-typography-option-actions">
+			<div className="spectra-control-popup__options--action-wrapper">
 				<span className="uag-control-label">{ props.label }</span>
 				{ fontAdvancedControls }
 			</div>
@@ -308,7 +291,7 @@ const TypographyControl = ( props ) => {
 
 	return (
 		<div
-			className={ `components-base-control uag-typography-options ${ activeClass }` }
+			className={ `components-base-control uag-typography-options spectra-control-popup__options ${ activeClass }` }
 		>
 			{ ! disableAdvancedOptions && (
 				<>

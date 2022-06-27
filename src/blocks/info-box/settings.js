@@ -4,7 +4,7 @@ import React, { Suspense } from 'react';
 import lazyLoader from '@Controls/lazy-loader';
 import TypographyControl from '@Components/typography';
 import WebfontLoader from '@Components/typography/fontloader';
-import Border from '@Components/border';
+import ResponsiveBorder from '@Components/responsive-border';
 import AdvancedPopColorControl from '@Components/color-control/advanced-pop-color-control.js';
 import InspectorTabs from '@Components/inspector-tabs/InspectorTabs.js';
 import InspectorTab, {
@@ -19,8 +19,6 @@ import UAGTabsControl from '@Components/tabs';
 import presets from './presets';
 import UAGPresets from '@Components/presets';
 import {
-	AlignmentToolbar,
-	BlockControls,
 	InspectorControls,
 } from '@wordpress/block-editor';
 import { getImageSize } from '@Utils/Helpers';
@@ -154,11 +152,6 @@ const Settings = ( props ) => {
 		paddingBtnRightMobile,
 		paddingBtnBottomMobile,
 		paddingBtnLeftMobile,
-		ctaBorderStyle,
-		ctaBorderColor,
-		ctaBorderhoverColor,
-		ctaBorderWidth,
-		ctaBorderRadius,
 		iconLeftMargin,
 		iconRightMargin,
 		iconTopMargin,
@@ -272,6 +265,12 @@ const Settings = ( props ) => {
 		subHeadLetterSpacingTablet,
 		subHeadLetterSpacingMobile,
 		subHeadLetterSpacingType,
+
+		iconView,
+		iconShape,
+		iconBackgroundColor,
+		iconBackgroundHoverColor,
+		iconBorderWidth
 	} = attributes;
 
 	/*
@@ -369,19 +368,6 @@ const Settings = ( props ) => {
 			<WebfontLoader config={ ctaconfig }></WebfontLoader>
 		);
 	}
-
-	const blockControls = () => {
-		return (
-			<BlockControls key="controls">
-				<AlignmentToolbar
-					value={ headingAlign }
-					onChange={ ( value ) =>
-						setAttributes( { headingAlign: value } )
-					}
-				/>
-			</BlockControls>
-		);
-	};
 
 	// Global Controls.
 	const imageIconPanel = () => {
@@ -1006,6 +992,96 @@ const Settings = ( props ) => {
 						<>
 							{ source_type === 'icon' && (
 								<>
+									<SelectControl
+										label={ __(
+											'View',
+											'ultimate-addons-for-gutenberg'
+										) }
+										value={ iconView }
+										onChange={ ( value ) =>
+											setAttributes( { iconView: value } )
+										}
+										options={ [
+											{
+												value: 'none',
+												label: __(
+													'Default',
+													'ultimate-addons-for-gutenberg'
+												),
+											},
+											{
+												value: 'Stacked',
+												label: __(
+													'Stacked',
+													'ultimate-addons-for-gutenberg'
+												),
+											},
+											{
+												value: 'Framed',
+												label: __(
+													'Framed',
+													'ultimate-addons-for-gutenberg'
+												),
+											},
+										] }
+									/>
+									{ iconView !== 'none' &&
+									<>
+										<SelectControl
+											label={ __(
+												'Shape',
+												'ultimate-addons-for-gutenberg'
+											) }
+											value={ iconShape }
+											onChange={ ( value ) =>
+												setAttributes( { iconShape: value } )
+											}
+											options={ [
+												{
+													value: 'Circle',
+													label: __(
+														'Circle',
+														'ultimate-addons-for-gutenberg'
+													),
+												},
+												{
+													value: 'Square',
+													label: __(
+														'Square',
+														'ultimate-addons-for-gutenberg'
+													),
+												},
+											] }
+										/>
+									</> }
+
+									{ iconView === 'Framed' &&
+										<>
+											<Range
+												label={ __(
+													'Set Border Width',
+													'ultimate-addons-for-gutenberg'
+												) }
+												setAttributes={ setAttributes }
+												value={ iconBorderWidth }
+												onChange={ ( value ) =>
+													setAttributes( { iconBorderWidth: value } )
+												}
+												min={ 0 }
+												max={ 15 }
+												units={ [
+													{
+														name: __(
+															'Pixel',
+															'ultimate-addons-for-gutenberg'
+														),
+														unitValue: 'px',
+													},
+												] }
+											/>
+										</>
+									}
+
 									<UAGTabsControl
 										tabs={ [
 											{
@@ -1024,36 +1100,77 @@ const Settings = ( props ) => {
 											},
 										] }
 										normal={
-											<AdvancedPopColorControl
-												label={ __(
-													'Color',
-													'ultimate-addons-for-gutenberg'
-												) }
-												colorValue={
-													iconColor ? iconColor : ''
+											<>
+												<AdvancedPopColorControl
+													label={ __(
+														'Color',
+														'ultimate-addons-for-gutenberg'
+													) }
+													colorValue={
+														iconColor ? iconColor : ''
+													}
+													onColorChange={ ( value ) =>
+														setAttributes( {
+															iconColor: value,
+														} )
+													}
+												/>
+												{ iconView !== 'none' &&
+													<>
+														<AdvancedPopColorControl
+															label={ __(
+																'Icon Background Color',
+																'ultimate-addons-for-gutenberg'
+															) }
+															colorValue={
+																iconBackgroundColor ? iconBackgroundColor : ''
+															}
+															onColorChange={ ( value ) =>
+																setAttributes( {
+																	iconBackgroundColor: value,
+																} )
+															}
+														/>
+													</>
 												}
-												onColorChange={ ( value ) =>
-													setAttributes( {
-														iconColor: value,
-													} )
-												}
-											/>
+											</>
+
 										}
 										hover={
-											<AdvancedPopColorControl
-												label={ __(
-													'Color',
-													'ultimate-addons-for-gutenberg'
-												) }
-												colorValue={
-													iconHover ? iconHover : ''
+											<>
+												<AdvancedPopColorControl
+													label={ __(
+														'Color',
+														'ultimate-addons-for-gutenberg'
+													) }
+													colorValue={
+														iconHover ? iconHover : ''
+													}
+													onColorChange={ ( value ) =>
+														setAttributes( {
+															iconHover: value,
+														} )
+													}
+												/>
+												{ iconView !== 'none' &&
+													<>
+														<AdvancedPopColorControl
+															label={ __(
+																'Icon Background Color',
+																'ultimate-addons-for-gutenberg'
+															) }
+															colorValue={
+																iconBackgroundHoverColor ? iconBackgroundHoverColor : ''
+															}
+															onColorChange={ ( value ) =>
+																setAttributes( {
+																	iconBackgroundHoverColor: value,
+																} )
+															}
+														/>
+													</>
 												}
-												onColorChange={ ( value ) =>
-													setAttributes( {
-														iconHover: value,
-													} )
-												}
-											/>
+											</>
 										 }
 										disableBottomSeparator={ false }
 									/>
@@ -2230,49 +2347,12 @@ const Settings = ( props ) => {
 											} }
 										/>
 										<hr className="uagb-editor__separator" />
-										<Border
+										<ResponsiveBorder
 											disabledBorderTitle= {false}
 											setAttributes={ setAttributes }
-											borderStyle={ {
-												value: ctaBorderStyle,
-												label: 'ctaBorderStyle',
-												title: __(
-													'Style',
-													'ultimate-addons-for-gutenberg'
-												),
-											} }
-											borderWidth={ {
-												value: ctaBorderWidth,
-												label: 'ctaBorderWidth',
-												title: __(
-													'Width',
-													'ultimate-addons-for-gutenberg'
-												),
-											} }
-											borderRadius={ {
-												value: ctaBorderRadius,
-												label: 'ctaBorderRadius',
-												title: __(
-													'Radius',
-													'ultimate-addons-for-gutenberg'
-												),
-											} }
-											borderColor={ {
-												value: ctaBorderColor,
-												label: 'ctaBorderColor',
-												title: __(
-													'Color',
-													'ultimate-addons-for-gutenberg'
-												),
-											} }
-											borderHoverColor={ {
-												value: ctaBorderhoverColor,
-												label: 'ctaBorderhoverColor',
-												title: __(
-													'Hover Color',
-													'ultimate-addons-for-gutenberg'
-												),
-											} }
+											prefix={'btn'}
+											attributes={ attributes }
+											deviceType={deviceType}
 											disableBottomSeparator={ true }
 										/>
 									</>
@@ -2298,9 +2378,6 @@ const Settings = ( props ) => {
 
 	return (
 		<>
-			{ ( iconimgPosition === 'above-title' ||
-				iconimgPosition === 'below-title' ) &&
-				blockControls() }
 			<InspectorControls>
 				<InspectorTabs>
 					<InspectorTab { ...UAGTabs.general }>

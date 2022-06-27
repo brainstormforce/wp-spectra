@@ -1,8 +1,6 @@
 /**
  * BLOCK: Forms - Edit
- */
-
-import React, { useEffect, useCallback, Suspense, lazy } from 'react';
+ */import React, { useEffect, useCallback, Suspense, lazy } from 'react';
 import styling from './styling';
 import UAGB_Block_Icons from '@Controls/block-icons';
 import addBlockEditorDynamicStyles from '@Controls/addBlockEditorDynamicStyles';
@@ -27,6 +25,8 @@ import { withNotices } from '@wordpress/components';
 import { __ } from '@wordpress/i18n';
 import lazyLoader from '@Controls/lazy-loader';
 import apiFetch from '@wordpress/api-fetch';
+
+import {migrateBorderAttributes} from '@Controls/generateAttributes';
 
 const UAGBFormsEdit = ( props ) => {
 	const deviceType = useDeviceType();
@@ -122,9 +122,89 @@ const UAGBFormsEdit = ( props ) => {
 				} );
 			}
 		}
+		const {
+			inputborderStyle,
+			inputborderWidth,
+			inputborderColor,
+			inputborderHColor,
+			inputborderRadius,
+			toggleBorderWidth,
+			toggleBorderRadius,
+			toggleBorderColor,
+			toggleBorderHColor,
+			toggleBorderStyle,
+			submitborderWidth,
+			submitborderRadius,
+			submitborderColor,
+			submitborderHColor,
+			submitborderStyle,
+		} = props.attributes;
+
+		// inputborder
+		if( inputborderWidth || inputborderRadius || inputborderColor || inputborderHColor || inputborderStyle ){
+			const migrationAttributes = migrateBorderAttributes( 'field', {
+				label: 'inputborderWidth',
+				value: inputborderWidth,
+			}, {
+				label: 'inputborderRadius',
+				value: inputborderRadius
+			}, {
+				label: 'inputborderColor',
+				value: inputborderColor
+			}, {
+				label: 'inputborderHColor',
+				value: inputborderHColor
+			},{
+				label: 'inputborderStyle',
+				value: inputborderStyle
+			}
+			);
+			props.setAttributes( migrationAttributes );
+		}
+		if( toggleBorderWidth || toggleBorderRadius || toggleBorderColor || toggleBorderHColor || toggleBorderStyle ){
+			const migrationAttributes = migrateBorderAttributes( 'checkBoxToggle', {
+				label: 'toggleBorderWidth',
+				value: toggleBorderWidth,
+			}, {
+				label: 'toggleBorderRadius',
+				value: toggleBorderRadius
+			}, {
+				label: 'toggleBorderColor',
+				value: toggleBorderColor
+			}, {
+				label: 'toggleBorderHColor',
+				value: toggleBorderHColor
+			},{
+				label: 'toggleBorderStyle',
+				value: toggleBorderStyle
+			}
+			);
+			props.setAttributes( migrationAttributes );
+		}
+		if( submitborderWidth || submitborderRadius || submitborderColor || submitborderHColor || submitborderStyle ){
+			const migrationAttributes = migrateBorderAttributes( 'btn', {
+				label: 'submitborderWidth',
+				value: submitborderWidth,
+			}, {
+				label: 'submitborderRadius',
+				value: submitborderRadius
+			}, {
+				label: 'submitborderColor',
+				value: submitborderColor
+			}, {
+				label: 'submitborderHColor',
+				value: submitborderHColor
+			},{
+				label: 'submitborderStyle',
+				value: submitborderStyle
+			}
+			);
+			props.setAttributes( migrationAttributes );
+		}
 	}, [] );
 
 	useEffect( () => {
+		
 		const blockStyling = styling( props );
 
         addBlockEditorDynamicStyles( 'uagb-style-forms-' + props.clientId.substr( 0, 8 ), blockStyling );

@@ -4,6 +4,8 @@
 
 import generateCSS from '@Controls/generateCSS';
 import generateCSSUnit from '@Controls/generateCSSUnit';
+import { getFallbackNumber } from '@Controls/getAttributeFallback';
+import generateBorderCSS from '@Controls/generateBorderCSS';
 
 function styling( props ) {
 	const {
@@ -88,10 +90,6 @@ function styling( props ) {
 		paddingBtnRightMobile,
 		paddingBtnBottomMobile,
 		paddingBtnLeftMobile,
-		ctaBorderStyle,
-		ctaBorderColor,
-		ctaBorderWidth,
-		ctaBorderRadius,
 		iconLeftMargin,
 		iconRightMargin,
 		iconTopMargin,
@@ -116,7 +114,7 @@ function styling( props ) {
 		imageWidthUnitMobile,
 		ctaLinkHoverColor,
 		ctaBgHoverColor,
-		ctaBorderhoverColor,
+		btnBorderHColor,
 		ctaIconSpace,
 		ctaIconSpaceTablet,
 		ctaIconSpaceMobile,
@@ -203,15 +201,48 @@ function styling( props ) {
 		subHeadLetterSpacingTablet,
 		subHeadLetterSpacingMobile,
 		subHeadLetterSpacingType,
+
+		// icon attributes for icon view (circle and square)
+		iconView,
+		iconBackgroundColor,
+		iconBackgroundHoverColor,
+		iconBorderWidth
 	} = props.attributes;
+
+	const blockName = props.name.replace( 'uagb/', '' );
+	//Range
+	const seperatorThicknessFallback = getFallbackNumber( seperatorThickness, 'seperatorThickness', blockName );
+	const iconSizeFallback = getFallbackNumber( iconSize, 'iconSize', blockName );
+	const iconimgBorderRadiusFallback = getFallbackNumber( iconimgBorderRadius, 'iconimgBorderRadius', blockName );
+	// Responsive Slider
+	const seperatorWidthFallback = getFallbackNumber( seperatorWidth, 'seperatorWidth', blockName );
+	const seperatorWidthFallbackTablet = getFallbackNumber( seperatorWidthTablet, 'seperatorWidthTablet', blockName );
+	const seperatorWidthFallbackMobile = getFallbackNumber( seperatorWidthMobile, 'seperatorWidthMobile', blockName );
+
+	const ctaIconSpaceFallback = getFallbackNumber( ctaIconSpace, 'ctaIconSpace', blockName );
+	const ctaIconSpaceFallbackTablet = isNaN( ctaIconSpaceTablet ) ? ctaIconSpaceFallback : ctaIconSpaceTablet;
+	const ctaIconSpaceFallbackMobile = isNaN( ctaIconSpaceMobile ) ? ctaIconSpaceFallbackTablet : ctaIconSpaceMobile;
+
+	const imageWidthFallback = getFallbackNumber( imageWidth, 'imageWidth', blockName );
+	const imageWidthFallbackTablet = isNaN( imageWidthTablet ) ? imageWidthFallback : imageWidthTablet;
+	const imageWidthFallbackMobile = isNaN( imageWidthMobile ) ? imageWidthFallbackTablet : imageWidthMobile;
+
+	const ctaBorderCSS = generateBorderCSS( props.attributes, 'btn' );
+	const ctaBorderCSSTablet = generateBorderCSS( props.attributes, 'btn', 'tablet' );
+	const ctaBorderCSSMobile = generateBorderCSS( props.attributes, 'btn', 'mobile' );
+
+	const boxSizingIcon = ( '%' === iconSizeType ) ? 'border-box' : 'content-box'
+	const boxSizingImage = ( '%' === imageWidthUnit ) ? 'border-box' : 'content-box'
+	const boxSizingImageTablet = ( '%' === imageWidthUnitTablet ) ? 'border-box' : 'content-box'
+	const boxSizingImageMobile = ( '%' === imageWidthUnitMobile ) ? 'border-box' : 'content-box'
 
 	const selectors = {
 		// Icon css
-		' .uagb-ifb-content .uagb-ifb-icon-wrap > svg': {
-			'font-size': generateCSSUnit( iconSize, iconSizeType ),
+		' .uagb-ifb-content .uagb-ifb-icon-wrap svg': {
+			'font-size': generateCSSUnit( iconSizeFallback, iconSizeType ),
 			'color': iconColor,
 			'fill': iconColor,
-			'line-height': generateCSSUnit( iconSize, iconSizeType ),
+			'line-height': generateCSSUnit( iconSizeFallback, iconSizeType ),
 			'padding-left': generateCSSUnit( iconLeftMargin, iconMarginUnit ),
 			'padding-right': generateCSSUnit( iconRightMargin, iconMarginUnit ),
 			'padding-top': generateCSSUnit( iconTopMargin, iconMarginUnit ),
@@ -220,12 +251,17 @@ function styling( props ) {
 				iconMarginUnit
 			),
 		},
-		' .uagb-ifb-content .uagb-ifb-left-title-image > svg': {
-			'font-size': generateCSSUnit( iconSize, iconSizeType ),
+		' .uagb-iconbox-icon-wrap': {
+			'margin' : 'auto',
+			'display' : 'inline-block',
+			'line-height' : 0,
+		},
+		' .uagb-ifb-content .uagb-ifb-left-title-image svg': {
+			'font-size': generateCSSUnit( iconSizeFallback, iconSizeType ),
 			'color': iconColor,
 			'fill': iconColor,
-			'width': generateCSSUnit( iconSize, iconSizeType ),
-			'line-height': generateCSSUnit( iconSize, iconSizeType ),
+			'width': generateCSSUnit( iconSizeFallback, iconSizeType ),
+			'line-height': generateCSSUnit( iconSizeFallback, iconSizeType ),
 			'padding-left': generateCSSUnit( iconLeftMargin, iconMarginUnit ),
 			'padding-right': generateCSSUnit( iconRightMargin, iconMarginUnit ),
 			'padding-top': generateCSSUnit( iconTopMargin, iconMarginUnit ),
@@ -234,12 +270,12 @@ function styling( props ) {
 				iconMarginUnit
 			),
 		},
-		' .uagb-ifb-content .uagb-ifb-right-title-image > svg': {
-			'font-size': generateCSSUnit( iconSize, iconSizeType ),
+		' .uagb-ifb-content .uagb-ifb-right-title-image svg': {
+			'font-size': generateCSSUnit( iconSizeFallback, iconSizeType ),
 			'color': iconColor,
 			'fill': iconColor,
-			'width': generateCSSUnit( iconSize, iconSizeType ),
-			'line-height': generateCSSUnit( iconSize, iconSizeType ),
+			'width': generateCSSUnit( iconSizeFallback, iconSizeType ),
+			'line-height': generateCSSUnit( iconSizeFallback, iconSizeType ),
 			'padding-left': generateCSSUnit( iconLeftMargin, iconMarginUnit ),
 			'padding-right': generateCSSUnit( iconRightMargin, iconMarginUnit ),
 			'padding-top': generateCSSUnit( iconTopMargin, iconMarginUnit ),
@@ -248,12 +284,12 @@ function styling( props ) {
 				iconMarginUnit
 			),
 		},
-		'.uagb-infobox__content-wrap .uagb-ifb-icon-wrap > svg': {
-			'font-size': generateCSSUnit( iconSize, iconSizeType ),
+		'.uagb-infobox__content-wrap .uagb-ifb-icon-wrap svg': {
+			'font-size': generateCSSUnit( iconSizeFallback, iconSizeType ),
 			'color': iconColor,
 			'fill': iconColor,
-			'width': generateCSSUnit( iconSize, iconSizeType ),
-			'line-height': generateCSSUnit( iconSize, iconSizeType ),
+			'width': generateCSSUnit( iconSizeFallback, iconSizeType ),
+			'line-height': generateCSSUnit( iconSizeFallback, iconSizeType ),
 			'padding-left': generateCSSUnit( iconLeftMargin, iconMarginUnit ),
 			'padding-right': generateCSSUnit( iconRightMargin, iconMarginUnit ),
 			'padding-top': generateCSSUnit( iconTopMargin, iconMarginUnit ),
@@ -262,7 +298,7 @@ function styling( props ) {
 				iconMarginUnit
 			),
 		},
-		' .uagb-ifb-content .uagb-ifb-icon-wrap > svg:hover': {
+		' .uagb-ifb-content .uagb-ifb-icon-wrap svg:hover': {
 			'fill': iconHover,
 		},
 		'.uagb-infobox-icon-left .uagb-ifb-icon-wrap > svg:hover': {
@@ -276,7 +312,7 @@ function styling( props ) {
 		},
 		'.uagb-infobox_cta-type-all:hover .uagb-infobox__content-wrap svg': {
 			'fill': iconHover,
-			'color': iconHover
+			'color': iconHover,
 		},
 		'.uagb-infobox__content-wrap .uagb-ifb-image-content > img': {
 			'padding-left': generateCSSUnit( iconLeftMargin, iconMarginUnit ),
@@ -287,7 +323,7 @@ function styling( props ) {
 				iconMarginUnit
 			),
 			'border-radius': generateCSSUnit(
-				iconimgBorderRadius,
+				iconimgBorderRadiusFallback,
 				iconimgBorderRadiusUnit
 			),
 		},
@@ -300,7 +336,7 @@ function styling( props ) {
 				iconMarginUnit
 			),
 			'border-radius': generateCSSUnit(
-				iconimgBorderRadius,
+				iconimgBorderRadiusFallback,
 				iconimgBorderRadiusUnit
 			),
 		},
@@ -313,7 +349,7 @@ function styling( props ) {
 				iconMarginUnit
 			),
 			'border-radius': generateCSSUnit(
-				iconimgBorderRadius,
+				iconimgBorderRadiusFallback,
 				iconimgBorderRadiusUnit
 			),
 		},
@@ -326,7 +362,7 @@ function styling( props ) {
 				iconMarginUnit
 			),
 			'border-radius': generateCSSUnit(
-				iconimgBorderRadius,
+				iconimgBorderRadiusFallback,
 				iconimgBorderRadiusUnit
 			),
 		},
@@ -356,7 +392,6 @@ function styling( props ) {
 		' .uagb-ifb-button-wrapper .uagb-infobox-cta-link': {
 			'color': ctaBtnLinkColor,
 			'background-color': ctaBgColor,
-			'border-radius': generateCSSUnit( ctaBorderRadius, 'px' ),
 			'padding-top': generateCSSUnit( paddingBtnTop, paddingBtnUnit ),
 			'padding-bottom': generateCSSUnit(
 				paddingBtnBottom,
@@ -368,7 +403,7 @@ function styling( props ) {
 		' .uagb-ifb-button-wrapper .uagb-infobox-cta-link:hover': {
 			'color': ctaLinkHoverColor,
 			'background-color': ctaBgHoverColor,
-			'border-color': ctaBorderhoverColor,
+			'border-color': btnBorderHColor,
 		},
 		' .uagb-ifb-button-wrapper .uagb-infobox-cta-link svg': {
 			'fill': ctaBtnLinkColor,
@@ -442,9 +477,9 @@ function styling( props ) {
 		},
 		// Seperator
 		'.uagb-infobox__content-wrap .uagb-ifb-separator': {
-			'width': generateCSSUnit( seperatorWidth, separatorWidthType ),
+			'width': generateCSSUnit( seperatorWidthFallback, separatorWidthType ),
 			'border-top-width': generateCSSUnit(
-				seperatorThickness,
+				seperatorThicknessFallback,
 				thicknessUnit
 			),
 			'border-top-color': seperatorColor,
@@ -456,15 +491,41 @@ function styling( props ) {
 			'margin-top': generateCSSUnit( separatorTopMargin, seperatorSpaceUnit ),
 			'margin-left': generateCSSUnit( separatorLeftMargin, seperatorSpaceUnit ),
 			'margin-right': generateCSSUnit( separatorRightMargin, seperatorSpaceUnit ),
-		}
+		},
+		// editor css is causing issue  thaat why i used important
+		'.uagb-infobox__content-wrap  .uagb-ifb-content svg': {
+			'box-sizing' : `${boxSizingIcon}`,
+		},
+		'.uagb-infobox__content-wrap  .uagb-ifb-content img': {
+			'box-sizing' : `${boxSizingImage}`,
+		},
 	};
-	if( 'none' !== ctaBorderStyle ) {
-		selectors[' .uagb-infobox-cta-link'] = {
-			'border-style': ctaBorderStyle,
-			'border-color': ctaBorderColor,
-			'border-width': generateCSSUnit( ctaBorderWidth, 'px' ),
+
+	if( 'Stacked' === iconView ) {
+		selectors[ ' .uagb-iconbox-icon-wrap.uagb-infobox-shape-circle'] = {
+			'background-color' : iconBackgroundColor,
+			'border-radius' : '50%',
 		}
+		selectors[ ' .uagb-iconbox-icon-wrap.uagb-infobox-shape-squre'] = {
+			'background-color' : iconBackgroundColor,
+		}
+		selectors[' .uagb-iconbox-icon-wrap:hover'] = {
+			'background-color' : `${iconBackgroundHoverColor} !important`,
+		};
 	}
+	else if( 'Framed' === iconView ) {
+		selectors[ ' .uagb-iconbox-icon-wrap.uagb-infobox-shape-circle'] = {
+			'border' : `${iconBorderWidth}px solid ${iconBackgroundColor}`,
+			'border-radius' : '50%',
+		}
+		selectors[ ' .uagb-iconbox-icon-wrap.uagb-infobox-shape-squre'] = {
+			'border' : `${iconBorderWidth}px solid ${iconBackgroundColor}`,
+		}
+		selectors[' .uagb-iconbox-icon-wrap:hover'] = {
+			'border' : `${iconBorderWidth}px solid ${iconBackgroundHoverColor}`,
+		};
+	}
+	selectors[' .uagb-infobox-cta-link'] = ctaBorderCSS;
 	if (
 		iconimgPosition === 'above-title' ||
 		iconimgPosition === 'below-title'
@@ -750,14 +811,17 @@ function styling( props ) {
 			'width': generateCSSUnit( ctaFontSizeTablet, ctaFontSizeType ),
 		},
 		'.uagb-infobox__content-wrap .uagb-ifb-separator': {
-			'width': generateCSSUnit( seperatorWidthTablet, separatorWidthType ),
+			'width': generateCSSUnit( seperatorWidthFallbackTablet, separatorWidthType ),
 		},
 		' .uagb-ifb-separator': {
 			'margin-bottom': generateCSSUnit( seperatorTabletSpace, separatorTabletMarginUnit ),
 			'margin-top': generateCSSUnit( separatorMarginTopTablet, separatorTabletMarginUnit ),
 			'margin-left': generateCSSUnit( separatorMarginLeftTablet, separatorTabletMarginUnit ),
 			'margin-right': generateCSSUnit( separatorMarginRightTablet, separatorTabletMarginUnit ),
-		}
+		},
+		'.uagb-infobox__content-wrap  .uagb-ifb-content img': {
+			'box-sizing' : `${boxSizingImageTablet}`,
+		},
 	};
 
 	const mobileSelectors = {
@@ -978,7 +1042,7 @@ function styling( props ) {
 			'font-size': generateCSSUnit( ctaFontSizeMobile, ctaFontSizeType ),
 		},
 		'.uagb-infobox__content-wrap .uagb-ifb-separator': {
-			'width': generateCSSUnit( seperatorWidthMobile, separatorWidthType ),
+			'width': generateCSSUnit( seperatorWidthFallbackMobile, separatorWidthType ),
 		},
 		' .uagb-infobox-cta-link svg': {
 			'font-size': generateCSSUnit( ctaFontSizeMobile, ctaFontSizeType ),
@@ -989,71 +1053,76 @@ function styling( props ) {
 			),
 			'width': generateCSSUnit( ctaFontSizeMobile, ctaFontSizeType ),
 		},
+		'.uagb-infobox__content-wrap  .uagb-ifb-content img': {
+			'box-sizing' : `${boxSizingImageMobile}`,
+		},
 	};
 
 	if ( imageWidthType ) {
 		// Image
 		selectors[ '.uagb-infobox__content-wrap img' ] = {
-			'width': generateCSSUnit( imageWidth, imageWidthUnit ),
+			'width': generateCSSUnit( imageWidthFallback, imageWidthUnit ),
 		};
 		selectors[ '.uagb-infobox__content-wrap .uagb-ifb-content .uagb-ifb-right-title-image > img' ] = {
-			'width': generateCSSUnit( imageWidth, imageWidthUnit ),
+			'width': generateCSSUnit( imageWidthFallback, imageWidthUnit ),
 		};
 		selectors[ '.uagb-infobox__content-wrap .uagb-ifb-content .uagb-ifb-left-title-image > img' ] = {
-			'width': generateCSSUnit( imageWidth, imageWidthUnit ),
+			'width': generateCSSUnit( imageWidthFallback, imageWidthUnit ),
 		};
 		selectors[ '.uagb-infobox__content-wrap .uagb-ifb-content .uagb-ifb-image-content > img' ] = {
-			'width': generateCSSUnit( imageWidth, imageWidthUnit ),
+			'width': generateCSSUnit( imageWidthFallback, imageWidthUnit ),
 		};
 
 		tabletSelectors[ '.uagb-infobox__content-wrap img' ] = {
-			'width': generateCSSUnit( imageWidthTablet, imageWidthUnitTablet ),
+			'width': generateCSSUnit( imageWidthFallbackTablet, imageWidthUnitTablet ),
 		};
 		tabletSelectors[ '.uagb-infobox__content-wrap .uagb-ifb-content .uagb-ifb-right-title-image > img' ] = {
-			'width': generateCSSUnit( imageWidthTablet, imageWidthUnitTablet ),
+			'width': generateCSSUnit( imageWidthFallbackTablet, imageWidthUnitTablet ),
 		};
 		tabletSelectors[ '.uagb-infobox__content-wrap .uagb-ifb-content .uagb-ifb-left-title-image > img' ] = {
-			'width': generateCSSUnit( imageWidthTablet, imageWidthUnitTablet ),
+			'width': generateCSSUnit( imageWidthFallbackTablet, imageWidthUnitTablet ),
 		};
 		tabletSelectors[ '.uagb-infobox__content-wrap .uagb-ifb-content .uagb-ifb-image-content > img' ] = {
-			'width': generateCSSUnit( imageWidthTablet, imageWidthUnitTablet ),
+			'width': generateCSSUnit( imageWidthFallbackTablet, imageWidthUnitTablet ),
 		};
 
 		mobileSelectors[ '.uagb-infobox__content-wrap img' ] = {
-			'width': generateCSSUnit( imageWidthMobile, imageWidthUnitMobile ),
+			'width': generateCSSUnit( imageWidthFallbackMobile, imageWidthUnitMobile ),
 		};
 		mobileSelectors[ '.uagb-infobox__content-wrap .uagb-ifb-content .uagb-ifb-right-title-image > img' ] = {
-			'width': generateCSSUnit( imageWidthMobile, imageWidthUnitMobile ),
+			'width': generateCSSUnit( imageWidthFallbackMobile, imageWidthUnitMobile ),
 		};
 		mobileSelectors[ '.uagb-infobox__content-wrap .uagb-ifb-content .uagb-ifb-left-title-image > img' ] = {
-			'width': generateCSSUnit( imageWidthMobile, imageWidthUnitMobile ),
+			'width': generateCSSUnit( imageWidthFallbackMobile, imageWidthUnitMobile ),
 		};
 		mobileSelectors[ '.uagb-infobox__content-wrap .uagb-ifb-content .uagb-ifb-image-content > img' ] = {
-			'width': generateCSSUnit( imageWidthMobile, imageWidthUnitMobile ),
+			'width': generateCSSUnit( imageWidthFallbackMobile, imageWidthUnitMobile ),
 		};
 	}
 
 	if( 'after' === ctaIconPosition ){
 		selectors[ '.uagb-infobox__content-wrap .uagb-infobox-cta-link > svg'] = {
-			'margin-left': generateCSSUnit( ctaIconSpace, ctaIconSpaceType ),
+			'margin-left': generateCSSUnit( ctaIconSpaceFallback, ctaIconSpaceType ),
 		};
 		tabletSelectors[ '.uagb-infobox__content-wrap .uagb-infobox-cta-link > svg'] = {
-			'margin-left': generateCSSUnit( ctaIconSpaceTablet, ctaIconSpaceType ),
+			'margin-left': generateCSSUnit( ctaIconSpaceFallbackTablet, ctaIconSpaceType ),
 		};
 		mobileSelectors[ '.uagb-infobox__content-wrap .uagb-infobox-cta-link > svg'] = {
-			'margin-left': generateCSSUnit( ctaIconSpaceMobile, ctaIconSpaceType ),
+			'margin-left': generateCSSUnit( ctaIconSpaceFallbackMobile, ctaIconSpaceType ),
 		};
 	}else{
 		selectors[ '.uagb-infobox__content-wrap .uagb-infobox-cta-link > svg'] = {
-			'margin-right': generateCSSUnit( ctaIconSpace, ctaIconSpaceType ),
+			'margin-right': generateCSSUnit( ctaIconSpaceFallback, ctaIconSpaceType ),
 		};
 		tabletSelectors[ '.uagb-infobox__content-wrap .uagb-infobox-cta-link > svg'] = {
-			'margin-right': generateCSSUnit( ctaIconSpaceTablet, ctaIconSpaceType ),
+			'margin-right': generateCSSUnit( ctaIconSpaceFallbackTablet, ctaIconSpaceType ),
 		};
 		mobileSelectors[ '.uagb-infobox__content-wrap .uagb-infobox-cta-link > svg'] = {
-			'margin-right': generateCSSUnit( ctaIconSpaceMobile, ctaIconSpaceType ),
+			'margin-right': generateCSSUnit( ctaIconSpaceFallbackMobile, ctaIconSpaceType ),
 		};
 	}
+	mobileSelectors[' .uagb-infobox-cta-link'] = ctaBorderCSSMobile;
+	tabletSelectors[' .uagb-infobox-cta-link'] = ctaBorderCSSTablet;
 
 	const id = `.editor-styles-wrapper .uagb-block-${ props.clientId.substr(
 		0,

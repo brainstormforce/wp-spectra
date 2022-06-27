@@ -1,3 +1,7 @@
+import { getBorderAttributes } from '@Controls/generateAttributes';
+
+const inputBorderAttributes = getBorderAttributes( 'container' )
+
 const attributes = {
 	block_id: {
 		type: 'string',
@@ -53,7 +57,7 @@ const attributes = {
 	},
 	innerContentCustomWidthMobile: {
 		type: 'number',
-		default: 320
+		default: 426
 	},
 	innerContentCustomWidthType: {
 		type: 'string',
@@ -307,34 +311,18 @@ const attributes = {
 	borderStyle: {
 		type: 'string',
 		default: 'none',
-		UAGCopyPaste: {
-			styleType: 'overall-border-style'
-		},
 	},
 	borderWidth: {
 		type: 'number',
-		default: 1,
-		UAGCopyPaste: {
-			styleType: 'overall-border-width'
-		},
 	},
 	borderRadius: {
 		type: 'number',
-		UAGCopyPaste: {
-			styleType: 'overall-border-radius'
-		},
 	},
 	borderColor: {
 		type: 'string',
-		UAGCopyPaste: {
-			styleType: 'overall-border-color'
-		},
 	},
 	borderHoverColor: {
 		type: 'string',
-		UAGCopyPaste: {
-			styleType: 'overall-border-hover-color'
-		},
 	},
 	boxShadowColor: {
 		type: 'string',
@@ -375,7 +363,7 @@ const attributes = {
 			styleType: 'container-box-shadow-position'
 		},
 	},
-	
+
 	boxShadowColorHover: {
 		type: 'string',
 		UAGCopyPaste: {
@@ -804,7 +792,7 @@ const attributes = {
 	},
 	bottomInvert: {
 		type: 'boolean',
-		default: false,
+		default: true,
 		UAGCopyPaste: {
 			styleType: 'container-bottom-invert'
 		},
@@ -903,6 +891,7 @@ const attributes = {
 			styleType: 'btn-hover-color'
 		},
 	},
+	...inputBorderAttributes
 };
 
 export default attributes;
