@@ -24,10 +24,28 @@ UAGB_Block_JS::blocks_info_box_gfont( $attr );
 $m_selectors = array();
 $t_selectors = array();
 
+$block_name = 'info-box';
+
+$seperator_thickness_fallback = UAGB_Block_Helper::get_fallback_number( $attr['seperatorThickness'], 'seperatorThickness', $block_name );
+$iconSize_fallback = UAGB_Block_Helper::get_fallback_number( $attr['iconSize'], 'iconSize', $block_name );
+$iconimg_border_radius_fallback = UAGB_Block_Helper::get_fallback_number( $attr['iconimgBorderRadius'], 'iconimgBorderRadius', $block_name );
+
+$seperator_width_fallback = UAGB_Block_Helper::get_fallback_number( $attr['seperatorWidth'], 'seperatorWidth', $block_name );
+$seperator_width_tablet_fallback = UAGB_Block_Helper::get_fallback_number( $attr['seperatorWidthTablet'], 'seperatorWidthTablet', $block_name );
+$seperator_width_mobile_fallback = UAGB_Block_Helper::get_fallback_number( $attr['seperatorWidthMobile'], 'seperatorWidthMobile', $block_name );
+
+$ctaIconSpace_fallback = UAGB_Block_Helper::get_fallback_number( $attr['ctaIconSpace'], 'ctaIconSpace', $block_name );
+$attr['ctaIconSpaceTablet'] = is_numeric( $attr['ctaIconSpaceTablet'] ) ? $attr['ctaIconSpaceTablet'] : $ctaIconSpace_fallback;
+$attr['ctaIconSpaceMobile'] = is_numeric( $attr['ctaIconSpaceMobile'] ) ? $attr['ctaIconSpaceMobile'] : $attr['ctaIconSpaceTablet'];
+
+$imageWidth_fallback = UAGB_Block_Helper::get_fallback_number( $attr['imageWidth'], 'imageWidth', $block_name );
+$attr['imageWidthTablet'] = is_numeric( $attr['imageWidthTablet'] ) ? $attr['imageWidthTablet'] : $imageWidth_fallback;
+$attr['imageWidthMobile'] = is_numeric( $attr['imageWidthMobile'] ) ? $attr['imageWidthMobile'] : $attr['imageWidthTablet'];
+
 $cta_icon_size   = UAGB_Helper::get_css_value( $attr['ctaFontSize'], $attr['ctaFontSizeType'] );
 $m_cta_icon_size = UAGB_Helper::get_css_value( $attr['ctaFontSizeMobile'], $attr['ctaFontSizeType'] );
 $t_cta_icon_size = UAGB_Helper::get_css_value( $attr['ctaFontSizeTablet'], $attr['ctaFontSizeType'] );
-$icon_size       = UAGB_Helper::get_css_value( $attr['iconSize'], $attr['iconSizeType'] );
+$icon_size       = UAGB_Helper::get_css_value( $iconSize_fallback, $attr['iconSizeType'] );
 
 $btn_padding_top         = isset( $attr['paddingBtnTop'] ) ? $attr['paddingBtnTop'] : $attr['ctaBtnVertPadding'];
 $btn_padding_bottom      = isset( $attr['paddingBtnBottom'] ) ? $attr['paddingBtnBottom'] : $attr['ctaBtnVertPadding'];
@@ -132,7 +150,7 @@ $selectors = array(
 		'padding-bottom' => UAGB_Helper::get_css_value( $icon_padding_bottom, 'px' ),
 	),
 	' .uagb-infobox .uagb-ifb-image-content img'          => array(
-		'border-radius' => UAGB_Helper::get_css_value( $attr['iconimgBorderRadius'], $attr['iconimgBorderRadiusUnit'] ),
+		'border-radius' => UAGB_Helper::get_css_value( $iconimg_border_radius_fallback, $attr['iconimgBorderRadiusUnit'] ),
 	),
 	'.uagb-infobox__content-wrap img'                     => array(
 		'padding-left'   => UAGB_Helper::get_css_value( $icon_padding_left, 'px' ),
@@ -191,8 +209,8 @@ $selectors = array(
 	),
 	// Seperator.
 	' .uagb-ifb-separator'                                => array(
-		'width'            => UAGB_Helper::get_css_value( $attr['seperatorWidth'], $attr['separatorWidthType'] ),
-		'border-top-width' => UAGB_Helper::get_css_value( $attr['seperatorThickness'], $attr['thicknessUnit'] ),
+		'width'            => UAGB_Helper::get_css_value( $seperator_width_fallback, $attr['separatorWidthType'] ),
+		'border-top-width' => UAGB_Helper::get_css_value( $seperator_thickness_fallback, $attr['thicknessUnit'] ),
 		'border-top-color' => $attr['seperatorColor'],
 		'border-top-style' => $attr['seperatorStyle'],
 		'margin-bottom'    => UAGB_Helper::get_css_value( $attr['seperatorSpace'], $attr['seperatorSpaceUnit'] ),
@@ -201,17 +219,17 @@ $selectors = array(
 		'margin-right'     => UAGB_Helper::get_css_value( $attr['separatorRightMargin'], $attr['seperatorSpaceUnit'] ),
 	),
 	' .uagb-infobox__content-wrap .uagb-ifb-separator'    => array(
-		'width'            => UAGB_Helper::get_css_value( $attr['seperatorWidth'], $attr['separatorWidthType'] ),
-		'border-top-width' => UAGB_Helper::get_css_value( $attr['seperatorThickness'], $attr['thicknessUnit'] ),
+		'width'            => UAGB_Helper::get_css_value( $seperator_width_fallback, $attr['separatorWidthType'] ),
+		'border-top-width' => UAGB_Helper::get_css_value( $seperator_thickness_fallback, $attr['thicknessUnit'] ),
 		'border-top-color' => $attr['seperatorColor'],
 		'border-top-style' => $attr['seperatorStyle'],
 	),
 	// CTA icon space for Backword compatibility.
 	' .uagb-ifb-align-icon-after'                         => array(
-		'margin-left' => UAGB_Helper::get_css_value( $attr['ctaIconSpace'], 'px' ),
+		'margin-left' => UAGB_Helper::get_css_value( $ctaIconSpace_fallback, 'px' ),
 	),
 	' .uagb-ifb-align-icon-before'                        => array(
-		'margin-right' => UAGB_Helper::get_css_value( $attr['ctaIconSpace'], 'px' ),
+		'margin-right' => UAGB_Helper::get_css_value( $ctaIconSpace_fallback, 'px' ),
 	),
 	// image svg.
 	'.uagb-infobox__content-wrap .uagb-ifb-content svg'   => array(
@@ -365,7 +383,7 @@ $m_selectors = array(
 
 	),
 	' .uagb-ifb-separator'                                 => array(
-		'width' => UAGB_Helper::get_css_value( $attr['seperatorWidthMobile'], $attr['separatorWidthType'] ),
+		'width' => UAGB_Helper::get_css_value( $seperator_width_mobile_fallback, $attr['separatorWidthType'] ),
 	),
 	'.uagb-infobox__content-wrap .uagb-ifb-content img'    => array(
 		'box-sizing' => $box_sizing_image_mobile,
@@ -468,7 +486,7 @@ $t_selectors = array(
 		'padding-bottom' => UAGB_Helper::get_css_value( $attr['iconMarginBottomTablet'], $attr['iconTabletMarginUnit'] ),
 	),
 	' .uagb-ifb-separator'                              => array(
-		'width' => UAGB_Helper::get_css_value( $attr['seperatorWidthTablet'], $attr['separatorWidthType'] ),
+		'width' => UAGB_Helper::get_css_value( $seperator_width_tablet_fallback, $attr['separatorWidthType'] ),
 	),
 	'.uagb-infobox__content-wrap .uagb-ifb-content img' => array(
 		'box-sizing' => $box_sizing_image_tablet,
@@ -513,16 +531,16 @@ if ( 'button' === $attr['ctaType'] ) {
 if ( $attr['imageWidthType'] ) {
 	// Image.
 	$selectors[' .uagb-ifb-content .uagb-ifb-image-content > img']            = array(
-		'width' => UAGB_Helper::get_css_value( $attr['imageWidth'], $attr['imageWidthUnit'] ),
+		'width' => UAGB_Helper::get_css_value( $imageWidth_fallback, $attr['imageWidthUnit'] ),
 	);
 	$selectors['.uagb-infobox__content-wrap .uagb-ifb-image-content > img']   = array(
-		'width' => UAGB_Helper::get_css_value( $attr['imageWidth'], $attr['imageWidthUnit'] ),
+		'width' => UAGB_Helper::get_css_value( $imageWidth_fallback, $attr['imageWidthUnit'] ),
 	);
 	$selectors[' .uagb-ifb-content .uagb-ifb-left-title-image > img']         = array(
-		'width' => UAGB_Helper::get_css_value( $attr['imageWidth'], $attr['imageWidthUnit'] ),
+		'width' => UAGB_Helper::get_css_value( $imageWidth_fallback, $attr['imageWidthUnit'] ),
 	);
 	$selectors[' .uagb-ifb-content .uagb-ifb-right-title-image > img']        = array(
-		'width' => UAGB_Helper::get_css_value( $attr['imageWidth'], $attr['imageWidthUnit'] ),
+		'width' => UAGB_Helper::get_css_value( $imageWidth_fallback, $attr['imageWidthUnit'] ),
 	);
 	$m_selectors[' .uagb-ifb-content .uagb-ifb-image-content > img']          = array(
 		'width' => UAGB_Helper::get_css_value( $attr['imageWidthMobile'], $attr['imageWidthUnitMobile'] ),
@@ -553,7 +571,7 @@ if ( $attr['imageWidthType'] ) {
 
 if ( 'after' === $attr['ctaIconPosition'] ) {
 	$selectors['.uagb-infobox__content-wrap .uagb-infobox-cta-link > svg ']   = array(
-		'margin-left' => UAGB_Helper::get_css_value( $attr['ctaIconSpace'], $attr['ctaIconSpaceType'] ),
+		'margin-left' => UAGB_Helper::get_css_value( $ctaIconSpace_fallback, $attr['ctaIconSpaceType'] ),
 	);
 	$t_selectors['.uagb-infobox__content-wrap .uagb-infobox-cta-link > svg '] = array(
 		'margin-left' => UAGB_Helper::get_css_value( $attr['ctaIconSpaceTablet'], $attr['ctaIconSpaceType'] ),
@@ -563,7 +581,7 @@ if ( 'after' === $attr['ctaIconPosition'] ) {
 	);
 } else {
 	$selectors['.uagb-infobox__content-wrap .uagb-infobox-cta-link > svg']   = array(
-		'margin-right' => UAGB_Helper::get_css_value( $attr['ctaIconSpace'], $attr['ctaIconSpaceType'] ),
+		'margin-right' => UAGB_Helper::get_css_value( $ctaIconSpace_fallback, $attr['ctaIconSpaceType'] ),
 	);
 	$t_selectors['.uagb-infobox__content-wrap .uagb-infobox-cta-link > svg'] = array(
 		'margin-right' => UAGB_Helper::get_css_value( $attr['ctaIconSpaceTablet'], $attr['ctaIconSpaceType'] ),

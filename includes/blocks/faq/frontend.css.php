@@ -10,6 +10,8 @@
 // Adds Fonts.
 UAGB_Block_JS::blocks_faq_gfont( $attr );
 
+$block_name = 'faq';
+
 $icon_color        = $attr['iconColor'];
 $icon_active_color = $attr['iconActiveColor'];
 
@@ -34,7 +36,7 @@ if ( ! isset( $attr['iconActiveColor'] ) || '' === $attr['iconActiveColor'] ) {
 	$icon_active_color = $attr['questionTextActiveColor'];
 }
 
-$icon_size   = UAGB_Helper::get_css_value( $attr['iconSize'], $attr['iconSizeType'] );
+$icon_size   = UAGB_Helper::get_css_value( UAGB_Block_Helper::get_fallback_number( $attr['iconSize'], 'iconSize', $block_name ), $attr['iconSizeType'] );
 $t_icon_size = UAGB_Helper::get_css_value( $attr['iconSizeTablet'], $attr['iconSizeType'] );
 $m_icon_size = UAGB_Helper::get_css_value( $attr['iconSizeMobile'], $attr['iconSizeType'] );
 
@@ -79,7 +81,7 @@ $selectors = array(
 		'fill'      => $icon_active_color,
 	),
 	' .uagb-faq-child__outer-wrap'                        => array(
-		'margin-bottom' => UAGB_Helper::get_css_value( $attr['rowsGap'], $attr['rowsGapUnit'] ),
+		'margin-bottom' => UAGB_Helper::get_css_value( UAGB_Block_Helper::get_fallback_number( $attr['rowsGap'], 'rowsGap', $block_name ), $attr['rowsGapUnit'] ),
 	),
 	' .uagb-faq-item'                                     => array_merge(
 		array(
@@ -125,10 +127,10 @@ $selectors = array(
 		'margin-left'   => UAGB_Helper::get_css_value( $answer_left_padding_desktop, $attr['answerPaddingTypeDesktop'] ),
 	),
 	'.uagb-faq-icon-row .uagb-faq-item .uagb-faq-icon-wrap' => array(
-		'margin-right' => UAGB_Helper::get_css_value( $attr['gapBtwIconQUestion'], 'px' ),
+		'margin-right' => UAGB_Helper::get_css_value( UAGB_Block_Helper::get_fallback_number( $attr['gapBtwIconQUestion'], 'gapBtwIconQUestion', $block_name ), 'px' ),
 	),
 	'.uagb-faq-icon-row-reverse .uagb-faq-item .uagb-faq-icon-wrap' => array(
-		'margin-left' => UAGB_Helper::get_css_value( $attr['gapBtwIconQUestion'], 'px' ),
+		'margin-left' => UAGB_Helper::get_css_value( UAGB_Block_Helper::get_fallback_number( $attr['gapBtwIconQUestion'], 'gapBtwIconQUestion', $block_name ), 'px' ),
 	),
 	' .uagb-faq-item:hover .uagb-icon svg'                => array(
 		'fill' => $icon_active_color,
@@ -282,36 +284,36 @@ if ( 'grid' === $attr['layout'] ) {
 	);
 
 	$selectors['.uagb-faq-layout-grid .uagb-faq__wrap.uagb-buttons-layout-wrap ']   = array(
-		'grid-template-columns' => 'repeat(' . $attr['columns'] . ', 1fr)',
-		'grid-column-gap'       => UAGB_Helper::get_css_value( $attr['columnsGap'], $attr['columnsGapUnit'] ),
-		'grid-row-gap'          => UAGB_Helper::get_css_value( $attr['rowsGap'], $attr['rowsGapUnit'] ),
+		'grid-template-columns' => 'repeat(' . UAGB_Block_Helper::get_fallback_number( $attr['columns'], 'columns', $block_name ) . ', 1fr)',
+		'grid-column-gap'       => UAGB_Helper::get_css_value( UAGB_Block_Helper::get_fallback_number( $attr['columnsGap'], 'columnsGap', $block_name ), $attr['columnsGapUnit'] ),
+		'grid-row-gap'          => UAGB_Helper::get_css_value( UAGB_Block_Helper::get_fallback_number( $attr['rowsGap'], 'rowsGap', $block_name ), $attr['rowsGapUnit'] ),
 		'display'               => 'grid',
 	);
 	$t_selectors['.uagb-faq-layout-grid .uagb-faq__wrap.uagb-buttons-layout-wrap '] = array(
 		'grid-column-gap'       => UAGB_Helper::get_css_value( $attr['columnsGapTablet'], $attr['columnsGapUnit'] ),
-		'grid-template-columns' => 'repeat(' . $attr['tcolumns'] . ', 1fr)',
+		'grid-template-columns' => 'repeat(' . UAGB_Block_Helper::get_fallback_number( $attr['tcolumns'], 'tcolumns', $block_name ) . ', 1fr)',
 		'grid-row-gap'          => UAGB_Helper::get_css_value( $attr['rowsGapTablet'], $attr['rowsGapUnit'] ),
 	);
 	$m_selectors['.uagb-faq-layout-grid .uagb-faq__wrap.uagb-buttons-layout-wrap '] = array(
-		'grid-template-columns' => 'repeat(' . $attr['mcolumns'] . ', 1fr)',
+		'grid-template-columns' => 'repeat(' . UAGB_Block_Helper::get_fallback_number( $attr['mcolumns'], 'mcolumns', $block_name ) . ', 1fr)',
 		'grid-column-gap'       => UAGB_Helper::get_css_value( $attr['columnsGapMobile'], $attr['columnsGapUnit'] ),
 		'grid-row-gap'          => UAGB_Helper::get_css_value( $attr['rowsGapMobile'], $attr['rowsGapUnit'] ),
 	);
 
 	$selectors['.uagb-faq-layout-grid.uagb-faq__wrap.uagb-buttons-layout-wrap '] = array(
-		'grid-template-columns' => 'repeat(' . $attr['columns'] . ', 1fr)',
-		'grid-column-gap'       => UAGB_Helper::get_css_value( $attr['columnsGap'], $attr['columnsGapUnit'] ),
-		'grid-row-gap'          => UAGB_Helper::get_css_value( $attr['rowsGap'], $attr['rowsGapUnit'] ),
+		'grid-template-columns' => 'repeat(' . UAGB_Block_Helper::get_fallback_number( $attr['columns'], 'columns', $block_name ) . ', 1fr)',
+		'grid-column-gap'       => UAGB_Helper::get_css_value( UAGB_Block_Helper::get_fallback_number( $attr['columnsGap'], 'columnsGap', $block_name ), $attr['columnsGapUnit'] ),
+		'grid-row-gap'          => UAGB_Helper::get_css_value( UAGB_Block_Helper::get_fallback_number( $attr['rowsGap'], 'rowsGap', $block_name ), $attr['rowsGapUnit'] ),
 		'display'               => 'grid',
 	);
 
 	$t_selectors['.uagb-faq-layout-grid.uagb-faq__wrap.uagb-buttons-layout-wrap '] = array(
-		'grid-template-columns' => 'repeat(' . $attr['tcolumns'] . ', 1fr)',
+		'grid-template-columns' => 'repeat(' . UAGB_Block_Helper::get_fallback_number( $attr['tcolumns'], 'tcolumns', $block_name ) . ', 1fr)',
 		'grid-column-gap'       => UAGB_Helper::get_css_value( $attr['columnsGapTablet'], $attr['columnsGapUnit'] ),
 		'grid-row-gap'          => UAGB_Helper::get_css_value( $attr['rowsGapTablet'], $attr['rowsGapUnit'] ),
 	);
 	$m_selectors['.uagb-faq-layout-grid.uagb-faq__wrap.uagb-buttons-layout-wrap '] = array(
-		'grid-template-columns' => 'repeat(' . $attr['mcolumns'] . ', 1fr)',
+		'grid-template-columns' => 'repeat(' . UAGB_Block_Helper::get_fallback_number( $attr['mcolumns'], 'mcolumns', $block_name ) . ', 1fr)',
 		'grid-column-gap'       => UAGB_Helper::get_css_value( $attr['columnsGapMobile'], $attr['columnsGapUnit'] ),
 		'grid-row-gap'          => UAGB_Helper::get_css_value( $attr['rowsGapMobile'], $attr['rowsGapUnit'] ),
 	);

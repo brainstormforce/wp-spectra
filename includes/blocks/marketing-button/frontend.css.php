@@ -10,6 +10,15 @@
 // Adds Fonts.
 UAGB_Block_JS::blocks_marketing_btn_gfont( $attr );
 
+$block_name = 'marketing-button';
+
+$gradient_location_1_fallback = UAGB_Block_Helper::get_fallback_number( $attr['gradientLocation1'], 'gradientLocation1', $block_name );
+$gradient_location_2_fallback = UAGB_Block_Helper::get_fallback_number( $attr['gradientLocation2'], 'gradientLocation2', $block_name );
+$gradient_angle_fallback      = UAGB_Block_Helper::get_fallback_number( $attr['gradientAngle'], 'gradientAngle', $block_name );
+$icon_space_fallback          = UAGB_Block_Helper::get_fallback_number( $attr['iconSpace'], 'iconSpace', $block_name );
+$icon_font_size_fallback      = UAGB_Block_Helper::get_fallback_number( $attr['iconFontSize'], 'iconFontSize', $block_name );
+$title_space_fallback         = UAGB_Block_Helper::get_fallback_number( $attr['titleSpace'], 'titleSpace', $block_name );
+
 $m_selectors = array();
 $t_selectors = array();
 
@@ -46,12 +55,12 @@ $btn_border_css_mobile = UAGB_Block_Helper::uag_generate_border_css( $attr, 'btn
 
 $selectors = array(
 	' .uagb-marketing-btn__prefix'         => array(
-		'margin-top' => UAGB_Helper::get_css_value( $attr['titleSpace'], $attr['titleSpaceUnit'] ),
+		'margin-top' => UAGB_Helper::get_css_value( $title_space_fallback, $attr['titleSpaceUnit'] ),
 	),
 	' svg'                                 => array(
 		'fill'   => $icon_color,
-		'width'  => UAGB_Helper::get_css_value( $attr['iconFontSize'], $attr['iconFontSizeType'] ),
-		'height' => UAGB_Helper::get_css_value( $attr['iconFontSize'], $attr['iconFontSizeType'] ),
+		'width'  => UAGB_Helper::get_css_value( $icon_font_size_fallback, $attr['iconFontSizeType'] ),
+		'height' => UAGB_Helper::get_css_value( $icon_font_size_fallback, $attr['iconFontSizeType'] ),
 	),
 	' p.uagb-marketing-btn__prefix'        => array(
 		'color' => $attr['prefixColor'],
@@ -75,16 +84,16 @@ $selectors = array(
 		'border-color' => isset( $attr['borderHoverColor'] ) && ! empty( $attr['borderHoverColor'] ) ? $attr['borderHoverColor'] : $attr['btnBorderHColor'],
 	),
 	'.uagb-marketing-btn__icon-after .uagb-marketing-btn__link svg' => array(
-		'margin-left' => UAGB_Helper::get_css_value( $attr['iconSpace'], 'px' ),
+		'margin-left' => UAGB_Helper::get_css_value( $icon_space_fallback, 'px' ),
 	),
 	'.uagb-marketing-btn__icon-before .uagb-marketing-btn__link svg' => array(
-		'margin-right' => UAGB_Helper::get_css_value( $attr['iconSpace'], 'px' ),
+		'margin-right' => UAGB_Helper::get_css_value( $icon_space_fallback, 'px' ),
 	),
 	'.uagb-marketing-btn__icon-after .uagb-marketing-btn__icon-wrap svg' => array( // For backword compatibility.
-		'margin-left' => UAGB_Helper::get_css_value( $attr['iconSpace'], 'px' ),
+		'margin-left' => UAGB_Helper::get_css_value( $icon_space_fallback, 'px' ),
 	),
 	'.uagb-marketing-btn__icon-before .uagb-marketing-btn__icon-wrap svg' => array( // For backword compatibility.
-		'margin-right' => UAGB_Helper::get_css_value( $attr['iconSpace'], 'px' ),
+		'margin-right' => UAGB_Helper::get_css_value( $icon_space_fallback, 'px' ),
 	),
 );
 
@@ -115,10 +124,10 @@ if ( 'transparent' === $attr['backgroundType'] ) {
 
 	if ( 'linear' === $attr['gradientType'] ) {
 
-		$selectors[' .uagb-marketing-btn__link']['background-image'] = 'linear-gradient(' . $attr['gradientAngle'] . 'deg, ' . UAGB_Helper::hex2rgba( $attr['gradientColor1'], $attr['backgroundOpacity'] ) . ' ' . $attr['gradientLocation1'] . '%, ' . UAGB_Helper::hex2rgba( $attr['gradientColor2'], $attr['backgroundOpacity'] ) . ' ' . $attr['gradientLocation2'] . '%)';
+		$selectors[' .uagb-marketing-btn__link']['background-image'] = 'linear-gradient(' . $gradient_angle_fallback . 'deg, ' . UAGB_Helper::hex2rgba( $attr['gradientColor1'], $attr['backgroundOpacity'] ) . ' ' . $gradient_location_1_fallback . '%, ' . UAGB_Helper::hex2rgba( $attr['gradientColor2'], $attr['backgroundOpacity'] ) . ' ' . $gradient_location_2_fallback . '%)';
 	} else {
 
-		$selectors[' .uagb-marketing-btn__link']['background-image'] = 'radial-gradient( at center center, ' . UAGB_Helper::hex2rgba( $attr['gradientColor1'], $attr['backgroundOpacity'] ) . ' ' . $attr['gradientLocation1'] . '%, ' . UAGB_Helper::hex2rgba( $attr['gradientColor2'], $attr['backgroundOpacity'] ) . ' ' . $attr['gradientLocation2'] . '%)';
+		$selectors[' .uagb-marketing-btn__link']['background-image'] = 'radial-gradient( at center center, ' . UAGB_Helper::hex2rgba( $attr['gradientColor1'], $attr['backgroundOpacity'] ) . ' ' . $gradient_location_1_fallback . '%, ' . UAGB_Helper::hex2rgba( $attr['gradientColor2'], $attr['backgroundOpacity'] ) . ' ' . $gradient_location_2_fallback . '%)';
 	}
 }
 

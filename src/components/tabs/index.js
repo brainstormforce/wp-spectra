@@ -1,6 +1,7 @@
 import { TabPanel } from '@wordpress/components';
 import styles from './editor.lazy.scss';
 import React, { useLayoutEffect } from 'react';
+import Separator from '@Components/separator';
 import { useRef } from '@wordpress/element';
 import { select } from '@wordpress/data'
 import getUAGEditorStateLocalStorage from '@Controls/getUAGEditorStateLocalStorage';
@@ -14,11 +15,8 @@ const UAGTabsControl = ( props ) => {
 		};
 	}, [] );
 
+	
 	const tabRef = useRef( null );
-
-	const bottomSeparatorClass = ! props?.disableBottomSeparator
-		? 'uag-control-tabs-bottom-separator '
-		: '';
 
 	const tabsCountClass =
 		3 === props.tabs.length ? 'uag-control-tabs-three-tabs ' : '';
@@ -33,18 +31,18 @@ const UAGTabsControl = ( props ) => {
 	return (
 		<>
 			<TabPanel
-				className={ `uag-control-tabs ${ bottomSeparatorClass } ${ tabsCountClass }` }
+				className={ `uag-control-tabs ${ tabsCountClass }` }
 				activeClass="active-tab"
 				tabs={ tabs }
-				ref={tabRef}
+				ref={ tabRef }
 				onSelect= {
 					( tabName ) => {
-						const selectedTab = document.getElementsByClassName( 'uag-control-tabs' )[0]?.querySelector( `.${tabName}` );
+						const selectedTab = document.getElementsByClassName( 'uag-control-tabs' )[0]?.querySelector( `.${ tabName }` );
 						let selectedTabClass = false;
 						if ( selectedTab && selectedTab?.classList ) {
 							selectedTab?.classList.forEach( ( className ) => {
 								if ( className.includes( 'uagb-tab' ) ) {
-									selectedTabClass = `.${className}`;
+									selectedTabClass = `.${ className }`;
 								}
 							} );
 						}
@@ -75,6 +73,7 @@ const UAGTabsControl = ( props ) => {
 					);
 				} }
 			</TabPanel>
+			{ ! props?.disableBottomSeparator && <Separator/> }
 		</>
 	);
 };

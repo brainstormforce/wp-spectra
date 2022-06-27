@@ -10,6 +10,9 @@
 // Adds Fonts.
 UAGB_Block_JS::blocks_post_gfont( $attr );
 
+$pagination_font_size_fallback = UAGB_Block_Helper::get_fallback_number( $attr['paginationFontSize'], 'paginationFontSize', $attr['blockName'] );
+$loader_size_fallback = UAGB_Block_Helper::get_fallback_number( $attr['loaderSize'], 'loaderSize', $attr['blockName'] );
+
 $selectors = UAGB_Block_Helper::get_post_selectors( $attr );
 
 $m_selectors = UAGB_Block_Helper::get_post_mobile_selectors( $attr );
@@ -46,7 +49,7 @@ if ( 'infinite' === $attr['paginationType'] ) {
 
 			'color'            => $attr['paginationTextColor'],
 			'background-color' => $attr['paginationMasonryBgColor'],
-			'font-size'        => UAGB_Helper::get_css_value( $attr['paginationFontSize'], 'px' ),
+			'font-size'        => UAGB_Helper::get_css_value( $pagination_font_size_fallback, 'px' ),
 			'padding-top'      => UAGB_Helper::get_css_value(
 				$paginationpaddingTop,
 				$attr['paginationButtonPaddingType']
@@ -111,8 +114,8 @@ if ( 'infinite' === $attr['paginationType'] ) {
 	$m_selectors[' .uagb-post__load-more-wrap .uagb-post-pagination-button']     = $pagination_masonry_border_css_mobile;
 
 	$selectors['.uagb-post-grid .uagb-post-inf-loader div'] = array(
-		'width'            => UAGB_Helper::get_css_value( $attr['loaderSize'], 'px' ),
-		'height'           => UAGB_Helper::get_css_value( $attr['loaderSize'], 'px' ),
+		'width'            => UAGB_Helper::get_css_value( $loader_size_fallback, 'px' ),
+		'height'           => UAGB_Helper::get_css_value( $loader_size_fallback, 'px' ),
 		'background-color' => $attr['loaderColor'],
 	);
 }
