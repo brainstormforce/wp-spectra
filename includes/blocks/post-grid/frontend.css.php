@@ -10,9 +10,9 @@
 // Adds Fonts.
 UAGB_Block_JS::blocks_post_gfont( $attr );
 
-$pagination_spacing_fallback = UAGB_Block_Helper::get_fallback_number( $attr['paginationSpacing'], 'paginationSpacing', $attr['blockName'] );
+$pagination_spacing_fallback       = UAGB_Block_Helper::get_fallback_number( $attr['paginationSpacing'], 'paginationSpacing', $attr['blockName'] );
 $pagination_border_radius_fallback = UAGB_Block_Helper::get_fallback_number( $attr['paginationBorderRadius'], 'paginationBorderRadius', $attr['blockName'] );
-$pagination_border_size_fallback = UAGB_Block_Helper::get_fallback_number( $attr['paginationBorderSize'], 'paginationBorderSize', $attr['blockName'] );
+$pagination_border_size_fallback   = UAGB_Block_Helper::get_fallback_number( $attr['paginationBorderSize'], 'paginationBorderSize', $attr['blockName'] );
 
 $selectors = UAGB_Block_Helper::get_post_selectors( $attr );
 // Pagination CSS.

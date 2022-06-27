@@ -17,27 +17,27 @@ $block_name = 'restaurant-menu';
 
 $seperator_thickness_fallback = UAGB_Block_Helper::get_fallback_number( $attr['seperatorThickness'], 'seperatorThickness', $block_name );
 
-$row_gap_fallback = UAGB_Block_Helper::get_fallback_number( $attr['rowGap'], 'rowGap', $block_name );
+$row_gap_fallback        = UAGB_Block_Helper::get_fallback_number( $attr['rowGap'], 'rowGap', $block_name );
 $row_gap_tablet_fallback = UAGB_Block_Helper::get_fallback_number( $attr['rowGapTablet'], 'rowGapTablet', $block_name );
 $row_gap_mobile_fallback = UAGB_Block_Helper::get_fallback_number( $attr['rowGapMobile'], 'rowGapMobile', $block_name );
 
-$column_gap_fallback = UAGB_Block_Helper::get_fallback_number( $attr['columnGap'], 'columnGap', $block_name );
+$column_gap_fallback     = UAGB_Block_Helper::get_fallback_number( $attr['columnGap'], 'columnGap', $block_name );
 $attr['columnGapTablet'] = is_numeric( $attr['columnGapTablet'] ) ? $attr['columnGapTablet'] : $column_gap_fallback;
 $attr['columnGapMobile'] = is_numeric( $attr['columnGapMobile'] ) ? $attr['columnGapMobile'] : $attr['columnGapTablet'];
 
-$image_width_fallback = UAGB_Block_Helper::get_fallback_number( $attr['imageWidth'], 'imageWidth', $block_name );
+$image_width_fallback     = UAGB_Block_Helper::get_fallback_number( $attr['imageWidth'], 'imageWidth', $block_name );
 $attr['imageWidthTablet'] = is_numeric( $attr['imageWidthTablet'] ) ? $attr['imageWidthTablet'] : $image_width_fallback;
 $attr['imageWidthMobile'] = is_numeric( $attr['imageWidthMobile'] ) ? $attr['imageWidthMobile'] : $attr['imageWidthTablet'];
 
-$seperator_width_fallback = UAGB_Block_Helper::get_fallback_number( $attr['seperatorWidth'], 'seperatorWidth', $block_name );
+$seperator_width_fallback        = UAGB_Block_Helper::get_fallback_number( $attr['seperatorWidth'], 'seperatorWidth', $block_name );
 $seperator_width_tablet_fallback = UAGB_Block_Helper::get_fallback_number( $attr['seperatorWidthTablet'], 'seperatorWidthTablet', $block_name );
 $seperator_width_mobile_fallback = UAGB_Block_Helper::get_fallback_number( $attr['seperatorWidthMobile'], 'seperatorWidthMobile', $block_name );
 
-$title_space_fallback = UAGB_Block_Helper::get_fallback_number( $attr['titleSpace'], 'titleSpace', $block_name );
+$title_space_fallback        = UAGB_Block_Helper::get_fallback_number( $attr['titleSpace'], 'titleSpace', $block_name );
 $title_space_tablet_fallback = UAGB_Block_Helper::get_fallback_number( $attr['titleSpaceTablet'], 'titleSpaceTablet', $block_name );
 $title_space_mobile_fallback = UAGB_Block_Helper::get_fallback_number( $attr['titleSpaceMobile'], 'titleSpaceMobile', $block_name );
 
-$column_fallback = UAGB_Block_Helper::get_fallback_number( $attr['columns'], 'columns', $block_name );
+$column_fallback  = UAGB_Block_Helper::get_fallback_number( $attr['columns'], 'columns', $block_name );
 $attr['tcolumns'] = is_numeric( $attr['tcolumns'] ) ? $attr['tcolumns'] : $column_fallback;
 $attr['mcolumns'] = is_numeric( $attr['mcolumns'] ) ? $attr['mcolumns'] : $attr['tcolumns'];
 
