@@ -328,21 +328,18 @@ const attributes = {
 	},
 	titleLineHeight: {
 		type: 'number',
-		default: 1,
 		UAGCopyPaste: {
 			styleType: 'main-title-line-height'
 		},
 	},
 	titleLineHeightTablet: {
 		type: 'number',
-		default: 1,
 		UAGCopyPaste: {
 			styleType: 'main-title-line-height-tablet'
 		},
 	},
 	titleLineHeightMobile: {
 		type: 'number',
-		default: 1,
 		UAGCopyPaste: {
 			styleType: 'main-title-line-height-mobile'
 		},
@@ -408,21 +405,18 @@ const attributes = {
 	},
 	priceLineHeight: {
 		type: 'number',
-		default: 1,
 		UAGCopyPaste: {
 			styleType: 'prefix-line-height'
 		},
 	},
 	priceLineHeightTablet: {
 		type: 'number',
-		default: 1,
 		UAGCopyPaste: {
 			styleType: 'prefix-line-height-tablet'
 		},
 	},
 	priceLineHeightMobile: {
 		type: 'number',
-		default: 1,
 		UAGCopyPaste: {
 			styleType: 'prefix-line-height-mobile'
 		},
