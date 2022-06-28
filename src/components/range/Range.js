@@ -45,14 +45,13 @@ const Range = ( props ) => {
 
 	const handleOnChange = ( newValue ) => {
 		const parsedValue = parseFloat( newValue );
-		if ( props?.onChange ) {
-			props.onChange( parsedValue );
-			return;
-		}
 		if ( props.setAttributes ) {
 			props.setAttributes( {
 				[ props.data.label ]: parsedValue,
 			} )
+		}
+		if ( props?.onChange ) {
+			props.onChange( parsedValue );
 		}
 	};
 
@@ -164,7 +163,7 @@ const Range = ( props ) => {
 						max={ max }
 						min={ min }
 						onChange={ handleOnChange }
-						value={ props?.value }
+						value={ props?.value || '' }
 						step={ props?.step || 1 }
 					/>
 				) }

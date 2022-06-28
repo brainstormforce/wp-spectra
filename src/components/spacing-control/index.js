@@ -438,21 +438,21 @@ const SpacingControl = ( props ) => {
 						<UAGReset
 							onReset={resetValues}
 							attributeNames = {[
-								valueTop.label,
-								valueRight.label,
-								valueBottom.label,
-								valueLeft.label,
-								valueTopTablet.label,
-								valueRightTablet.label,
-								valueBottomTablet.label,
-								valueLeftTablet.label,
-								valueTopMobile.label,
-								valueRightMobile.label,
-								valueBottomMobile.label,
-								valueLeftMobile.label,
-								unit.label,
-								tUnit.label,
-								mUnit.label
+								valueTop?.label,
+								valueRight?.label,
+								valueBottom?.label,
+								valueLeft?.label,
+								valueTopTablet?.label,
+								valueRightTablet?.label,
+								valueBottomTablet?.label,
+								valueLeftTablet?.label,
+								valueTopMobile?.label,
+								valueRightMobile?.label,
+								valueBottomMobile?.label,
+								valueLeftMobile?.label,
+								unit?.label,
+								tUnit?.label,
+								mUnit?.label
 							]}
 						/>
 						<ButtonGroup

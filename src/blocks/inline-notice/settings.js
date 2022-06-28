@@ -396,6 +396,7 @@ const Settings = ( props ) => {
 						min={ 0 }
 						max={ 50 }
 						displayUnit={ false }
+						setAttributes={ setAttributes }
 					/>
 				) }
 			</UAGAdvancedPanelBody>

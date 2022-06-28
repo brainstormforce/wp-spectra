@@ -20,7 +20,7 @@ const UAGReset = ( props ) => {
 		if ( attributeNames ) {
 			attributeNames.map( ( attributeName ) => {
 				if ( attributeName ) {
-					const blockDefaultAttributeValue = blocksAttributes[selectedBlockName][attributeName].default;
+					const blockDefaultAttributeValue = blocksAttributes[selectedBlockName][attributeName]?.default;
 					if ( setAttributes ) {
 						setAttributes( { [ attributeName ]: blockDefaultAttributeValue } )
 					}
