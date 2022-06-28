@@ -113,18 +113,8 @@
 		}
 	}
 
+	// Classes for Layout. "full" is supported by default.
 	&__layout {
-
-		&--full {
-
-			.uagb-multi-button {
-				width: 100%;
-				justify-content: center;
-				height: unset;
-				padding: 6px;
-				line-height: 14px;
-			}
-		}
 
 		&--inline {
 			align-items: center;
@@ -134,14 +124,6 @@
 			.uagb-control__header,
 			.uag-control-label {
 				margin-bottom: 0;
-			}
-
-			.uagb-multi-button {
-				width: 100%;
-				justify-content: center;
-				height: unset;
-				padding: 6px;
-				line-height: 14px;
 			}
 		}
 	}
