@@ -1,11 +1,15 @@
 /**
  * Returns Dynamic Generated CSS
  */
-
+import generateBorderCSS from '@Controls/generateBorderCSS';
 import generateCSS from '@Controls/generateCSS';
 import generateCSSUnit from '@Controls/generateCSSUnit';
+import { getFallbackNumber } from '@Controls/getAttributeFallback';
 
 function styling( props ) {
+
+	const blockName = props.name.replace( 'uagb/', '' );
+
 	const {
 		titleSpace,
 		titleSpaceTablet,
@@ -28,11 +32,7 @@ function styling( props ) {
 		iconColor,
 		iconHoverColor,
 		//Border
-		borderStyle,
-		borderWidth,
-		borderRadius,
-		borderColor,
-		borderHoverColor,
+		btnBorderHColor,
 		//Background
 		backgroundType,
 		backgroundColor,
@@ -84,8 +84,24 @@ function styling( props ) {
 		prefixTransform,
 		prefixDecoration,
 		titleFontStyle,
-		prefixFontStyle
+		prefixFontStyle,
+		// letter spacing
+		titleLetterSpacing,
+		titleLetterSpacingTablet,
+		titleLetterSpacingMobile,
+		titleLetterSpacingType,
+		prefixLetterSpacing,
+		prefixLetterSpacingTablet,
+		prefixLetterSpacingMobile,
+		prefixLetterSpacingType,
 	} = props.attributes;
+
+	const gradientLocation1Fallback = getFallbackNumber( gradientLocation1, 'gradientLocation1', blockName );
+	const gradientLocation2Fallback = getFallbackNumber( gradientLocation2, 'gradientLocation2', blockName );
+	const gradientAngleFallback = getFallbackNumber( gradientAngle, 'gradientAngle', blockName );
+	const iconSpaceFallback = getFallbackNumber( iconSpace, 'iconSpace', blockName );
+	const iconFontSizeFallback = getFallbackNumber( iconFontSize, 'iconFontSize', blockName );
+	const titleSpaceFallback = getFallbackNumber( titleSpace, 'titleSpace', blockName );
 
 	let selectors = {};
 	let tabletSelectors = {};
@@ -94,9 +110,14 @@ function styling( props ) {
 	const setIconColor = '' === iconColor ? titleColor : iconColor;
 	const setIconHoverColor =
 		'' === iconHoverColor ? titleHoverColor : iconHoverColor;
+
+	const btnBorderCSS = generateBorderCSS( props.attributes, 'btn' )
+	const btnBorderCSSTablet = generateBorderCSS( props.attributes, 'btn', 'tablet' )
+	const btnBorderCSSMobile = generateBorderCSS( props.attributes, 'btn', 'mobile' )
+
 	selectors = {
 		' .uagb-marketing-btn__prefix': {
-			'margin-top': generateCSSUnit( titleSpace, titleSpaceUnit ),
+			'margin-top': generateCSSUnit( titleSpaceFallback, titleSpaceUnit ),
 		},
 		' .block-editor-rich-text__editable.uagb-marketing-btn__title': {
 			'font-size': generateCSSUnit( titleFontSize, titleFontSizeType ),
@@ -110,11 +131,12 @@ function styling( props ) {
 			'text-transform': titleTransform,
 			'text-decoration': titleDecoration,
 			'color': titleColor,
+			'letter-spacing': generateCSSUnit( titleLetterSpacing, titleLetterSpacingType ),
 		},
 		' svg': {
 			'fill': setIconColor,
-			'width': generateCSSUnit( iconFontSize, iconFontSizeType ),
-			'height': generateCSSUnit( iconFontSize, iconFontSizeType ),
+			'width': generateCSSUnit( iconFontSizeFallback, iconFontSizeType ),
+			'height': generateCSSUnit( iconFontSizeFallback, iconFontSizeType ),
 		},
 		' .block-editor-rich-text__editable.uagb-marketing-btn__prefix': {
 			'font-size': generateCSSUnit( prefixFontSize, prefixFontSizeType ),
@@ -128,6 +150,7 @@ function styling( props ) {
 			'font-style': prefixFontStyle,
 			'text-transform': prefixTransform,
 			'text-decoration': prefixDecoration,
+			'letter-spacing': generateCSSUnit( prefixLetterSpacing, prefixLetterSpacingType ),
 		},
 		' .uagb-marketing-btn__link:hover .block-editor-rich-text__editable.uagb-marketing-btn__title': {
 			'color': titleHoverColor,
@@ -146,13 +169,10 @@ function styling( props ) {
 				paddingBtnBottom,
 				paddingBtnUnit
 			),
-			'border-style': borderStyle,
-			'border-width': generateCSSUnit( borderWidth, 'px' ),
-			'border-color': borderColor,
-			'border-radius': generateCSSUnit( borderRadius, 'px' ),
+			...btnBorderCSS,
 		},
 		' .uagb-marketing-btn__link:hover': {
-			'border-color': borderHoverColor,
+			'border-color': btnBorderHColor,
 		},
 	};
 
@@ -170,11 +190,11 @@ function styling( props ) {
 		if ( 'linear' === gradientType ) {
 			selectors[ ' .uagb-marketing-btn__link' ][
 				'background-image'
-			] = `linear-gradient(${ gradientAngle }deg, ${ gradientColor1 } ${ gradientLocation1 }%, ${	gradientColor2 } ${ gradientLocation2 }%)`;
+			] = `linear-gradient(${ gradientAngleFallback }deg, ${ gradientColor1 } ${ gradientLocation1Fallback }%, ${	gradientColor2 } ${ gradientLocation2Fallback }%)`;
 		} else {
 			selectors[ ' .uagb-marketing-btn__link' ][
 				'background-image'
-			] = `radial-gradient( at center center, ${ gradientColor1} ${ gradientLocation1 }%, ${ gradientColor2 } ${ gradientLocation2 }%)`;
+			] = `radial-gradient( at center center, ${ gradientColor1} ${ gradientLocation1Fallback }%, ${ gradientColor2 } ${ gradientLocation2Fallback }%)`;
 		}
 	}
 
@@ -182,7 +202,7 @@ function styling( props ) {
 
 	selectors[ ' svg' ][
 		marginType
-	] = generateCSSUnit( iconSpace, 'px' );
+	] = generateCSSUnit( iconSpaceFallback, 'px' );
 
 	tabletSelectors = {
 		' .uagb-marketing-btn__prefix': {
@@ -197,6 +217,7 @@ function styling( props ) {
 				titleLineHeightTablet,
 				titleLineHeightType
 			),
+			'letter-spacing': generateCSSUnit( titleLetterSpacingTablet, titleLetterSpacingType ),
 		},
 		' .block-editor-rich-text__editable.uagb-marketing-btn__prefix': {
 			'font-size': generateCSSUnit(
@@ -207,6 +228,7 @@ function styling( props ) {
 				prefixLineHeightTablet,
 				prefixLineHeightType
 			),
+			'letter-spacing': generateCSSUnit( prefixLetterSpacingTablet, prefixLetterSpacingType ),
 		},
 		' svg': {
 			'width': generateCSSUnit( iconFontSizeTablet, iconFontSizeType ),
@@ -229,6 +251,7 @@ function styling( props ) {
 				paddingBtnBottomTablet,
 				tabletPaddingBtnUnit
 			),
+			...btnBorderCSSTablet,
 		},
 	};
 
@@ -245,6 +268,7 @@ function styling( props ) {
 				titleLineHeightMobile,
 				titleLineHeightType
 			),
+			'letter-spacing': generateCSSUnit( titleLetterSpacingMobile, titleLetterSpacingType ),
 		},
 		' .block-editor-rich-text__editable.uagb-marketing-btn__prefix': {
 			'font-size': generateCSSUnit(
@@ -255,6 +279,7 @@ function styling( props ) {
 				prefixLineHeightMobile,
 				prefixLineHeightType
 			),
+			'letter-spacing': generateCSSUnit( prefixLetterSpacingMobile, prefixLetterSpacingType ),
 		},
 		' svg': {
 			'width': generateCSSUnit( iconFontSizeMobile, iconFontSizeType ),
@@ -277,6 +302,7 @@ function styling( props ) {
 				paddingBtnBottomMobile,
 				mobilePaddingBtnUnit
 			),
+			...btnBorderCSSMobile
 		},
 	};
 

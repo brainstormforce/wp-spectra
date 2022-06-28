@@ -8,6 +8,9 @@ import apiFetch from '@wordpress/api-fetch';
 import lazyLoader from '@Controls/lazy-loader';
 import { useDeviceType } from '@Controls/getPreviewType';
 import addBlockEditorDynamicStyles from '@Controls/addBlockEditorDynamicStyles';
+
+import { migrateBorderAttributes } from '@Controls/generateAttributes';
+
 const Settings = lazy( () =>
 	import(
 		/* webpackChunkName: "chunks/taxonomy-list/settings" */ './settings'
@@ -115,10 +118,31 @@ const UAGBTaxonomyList = ( props ) => {
 		} ).then( ( data ) => {
 			props.setAttributes( { listInJson: data } );
 		} );
-
+		const { borderStyle,borderThickness,borderRadius,borderColor,borderHoverColor } = props.attributes;
+		// Backward Border Migration
+		if( borderThickness || borderRadius || borderColor || borderHoverColor || borderStyle ){
+			const migrationAttributes = migrateBorderAttributes( 'overall', {
+				label: 'borderThickness',
+				value: borderThickness,
+			}, {
+				label: 'borderRadius',
+				value: borderRadius
+			}, {
+				label: 'borderColor',
+				value: borderColor
+			}, {
+				label: 'borderHoverColor',
+				value: borderHoverColor
+			},{
+				label: 'borderStyle',
+				value: borderStyle
+			} );
+			props.setAttributes( migrationAttributes )
+		}
 	}, [] );
 
 	useEffect( () => {
+		
 		const blockStyling = styling( props );
 
 		addBlockEditorDynamicStyles( 'uagb-style-taxonomy-list-' + props.clientId.substr( 0, 8 ), blockStyling );

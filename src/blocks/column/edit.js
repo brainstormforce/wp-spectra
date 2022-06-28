@@ -13,6 +13,7 @@ const Settings = lazy( () =>
 const Render = lazy( () =>
 	import( /* webpackChunkName: "chunks/column/render" */ './render' )
 );
+import {migrateBorderAttributes} from '@Controls/generateAttributes';
 
 import hexToRGBA from '@Controls/hexToRgba';
 
@@ -39,10 +40,33 @@ const ColumnComponent = ( props ) => {
 			setAttributes( { backgroundImageColor: color } );
 			setAttributes( { backgroundOpacity: 101 } );
 		}
+		const { borderStyle, borderWidth, borderRadius, borderColor, borderHoverColor } = props.attributes
+		// border migration
+		if( borderWidth || borderRadius || borderColor || borderHoverColor || borderStyle ){
+			const migrationAttributes = migrateBorderAttributes( 'column', {
+				label: 'borderWidth',
+				value: borderWidth,
+			}, {
+				label: 'borderRadius',
+				value: borderRadius
+			}, {
+				label: 'borderColor',
+				value: borderColor
+			}, {
+				label: 'borderHoverColor',
+				value: borderHoverColor
+			},{
+				label: 'borderStyle',
+				value: borderStyle
+			}
+			);
+			props.setAttributes( migrationAttributes )
+		}
 
 	}, [] );
 
 	useEffect( () => {
+		
 		// Replacement for componentDidUpdate.
 		const blockStyling = styling( props );
 
@@ -58,7 +82,7 @@ const ColumnComponent = ( props ) => {
 
 	return (
 		<Suspense fallback={ lazyLoader() }>
-			<Settings parentProps={ props } />
+			<Settings parentProps={ props } deviceType = { deviceType }/>
 			<Render parentProps={ props } />
 		</Suspense>
 	);

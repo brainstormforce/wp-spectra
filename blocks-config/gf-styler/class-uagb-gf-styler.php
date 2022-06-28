@@ -58,834 +58,931 @@ if ( ! class_exists( 'UAGB_GF_Styler' ) ) {
 				'uagb/gf-styler',
 				array(
 					'attributes'      => array(
-						'block_id'                      => array(
+						'block_id'                         => array(
 							'type' => 'string',
 						),
-						'align'                         => array(
+						'align'                            => array(
 							'type'    => 'string',
 							'default' => 'left',
 						),
-						'className'                     => array(
+						'className'                        => array(
 							'type' => 'string',
 						),
-						'formId'                        => array(
+						'formId'                           => array(
 							'type'    => 'string',
 							'default' => '0',
 						),
-						'isHtml'                        => array(
+						'isHtml'                           => array(
 							'type' => 'boolean',
 						),
-						'formJson'                      => array(
+						'formJson'                         => array(
 							'type'    => 'object',
 							'default' => null,
 						),
-						'enableAjax'                    => array(
+						'enableAjax'                       => array(
 							'type'    => 'boolean',
 							'default' => false,
 						),
-						'enableTabSupport'              => array(
+						'enableTabSupport'                 => array(
 							'type'    => 'boolean',
 							'default' => false,
 						),
-						'formTabIndex'                  => array(
+						'formTabIndex'                     => array(
 							'type'    => 'number',
 							'default' => 0,
 						),
-						'titleDescStyle'                => array(
+						'titleDescStyle'                   => array(
 							'type'    => 'string',
 							'default' => 'yes',
 						),
-						'titleDescAlignment'            => array(
+						'titleDescAlignment'               => array(
 							'type'    => 'string',
 							'default' => 'left',
 						),
-						'fieldStyle'                    => array(
+						'fieldStyle'                       => array(
 							'type'    => 'string',
 							'default' => 'box',
 						),
-						'fieldVrPadding'                => array(
+						'fieldVrPadding'                   => array(
 							'type'    => 'number',
 							'default' => 10,
 						),
-						'fieldHrPadding'                => array(
+						'fieldHrPadding'                   => array(
 							'type'    => 'number',
 							'default' => 10,
 						),
-						'fieldBgColor'                  => array(
+						'fieldBgColor'                     => array(
 							'type'    => 'string',
 							'default' => '#fafafa',
 						),
-						'fieldLabelColor'               => array(
+						'fieldLabelColor'                  => array(
 							'type'    => 'string',
 							'default' => '#333',
 						),
-						'fieldInputColor'               => array(
+						'fieldInputColor'                  => array(
 							'type'    => 'string',
 							'default' => '#333',
 						),
-						'fieldBorderStyle'              => array(
+						'fieldBorderStyle'                 => array(
 							'type'    => 'string',
 							'default' => 'solid',
 						),
-						'fieldBorderWidth'              => array(
+						'fieldBorderWidth'                 => array(
 							'type'    => 'number',
 							'default' => 1,
 						),
-						'fieldBorderWidthTablet'        => array(
+						'fieldBorderWidthTablet'           => array(
 							'type' => 'number',
 						),
-						'fieldBorderWidthMobile'        => array(
+						'fieldBorderWidthMobile'           => array(
 							'type' => 'number',
 						),
-						'fieldBorderWidthType'          => array(
+						'fieldBorderWidthType'             => array(
 							'type'    => 'string',
 							'default' => 'px',
 						),
-						'fieldBorderRadius'             => array(
+						'fieldBorderRadius'                => array(
 							'type'    => 'number',
 							'default' => 0,
 						),
-						'fieldBorderColor'              => array(
+						'fieldBorderColor'                 => array(
 							'type'    => 'string',
 							'default' => '#eeeeee',
 						),
-						'fieldBorderFocusColor'         => array(
+						'fieldBorderFocusColor'            => array(
 							'type'    => 'string',
 							'default' => '',
 						),
-						'buttonAlignment'               => array(
+						'buttonAlignment'                  => array(
 							'type'    => 'string',
 							'default' => 'left',
 						),
-						'buttonAlignmentTablet'         => array(
+						'buttonAlignmentTablet'            => array(
 							'type'    => 'string',
 							'default' => '',
 						),
-						'buttonAlignmentMobile'         => array(
+						'buttonAlignmentMobile'            => array(
 							'type'    => 'string',
 							'default' => '',
 						),
-						'buttonVrPadding'               => array(
+						'buttonVrPadding'                  => array(
 							'type'    => 'number',
 							'default' => 10,
 						),
-						'buttonHrPadding'               => array(
+						'buttonHrPadding'                  => array(
 							'type'    => 'number',
 							'default' => 25,
 						),
-						'buttonBorderStyle'             => array(
+						'buttonBorderStyle'                => array(
 							'type'    => 'string',
 							'default' => 'solid',
 						),
-						'buttonBorderWidth'             => array(
+						'buttonBorderWidth'                => array(
 							'type'    => 'number',
 							'default' => 1,
 						),
-						'buttonBorderWidthTablet'       => array(
+						'buttonBorderWidthTablet'          => array(
 							'type' => 'number',
 						),
-						'buttonBorderWidthMobile'       => array(
+						'buttonBorderWidthMobile'          => array(
 							'type' => 'number',
 						),
-						'buttonBorderWidthType'         => array(
+						'buttonBorderWidthType'            => array(
 							'type'    => 'string',
 							'default' => 'px',
 						),
-						'buttonBorderRadius'            => array(
+						'buttonBorderRadius'               => array(
 							'type'    => 'number',
 							'default' => 0,
 						),
-						'buttonBorderColor'             => array(
+						'buttonBorderColor'                => array(
 							'type'    => 'string',
 							'default' => '#333',
 						),
-						'buttonTextColor'               => array(
+						'buttonTextColor'                  => array(
 							'type'    => 'string',
 							'default' => '#333',
 						),
-						'buttonBgColor'                 => array(
+						'buttonBgColor'                    => array(
 							'type'    => 'string',
 							'default' => 'transparent',
 						),
-						'buttonBorderHoverColor'        => array(
+						'buttonBorderHoverColor'           => array(
 							'type'    => 'string',
 							'default' => '#333',
 						),
-						'buttonTextHoverColor'          => array(
+						'buttonTextHoverColor'             => array(
 							'type'    => 'string',
 							'default' => '#333',
 						),
-						'buttonBgHoverColor'            => array(
+						'buttonBgHoverColor'               => array(
 							'type'    => 'string',
 							'default' => 'transparent',
 						),
-						'fieldSpacing'                  => array(
+						'fieldSpacing'                     => array(
 							'type'    => 'number',
 							'default' => '',
 						),
-						'fieldSpacingTablet'            => array(
+						'fieldSpacingTablet'               => array(
 							'type' => 'number',
 						),
-						'fieldSpacingMobile'            => array(
+						'fieldSpacingMobile'               => array(
 							'type' => 'number',
 						),
-						'fieldLabelSpacing'             => array(
+						'fieldLabelSpacing'                => array(
 							'type'    => 'number',
 							'default' => '',
 						),
-						'fieldLabelSpacingTablet'       => array(
+						'fieldLabelSpacingTablet'          => array(
 							'type' => 'number',
 						),
-						'fieldLabelSpacingMobile'       => array(
+						'fieldLabelSpacingMobile'          => array(
 							'type' => 'number',
 						),
-						'enableLabel'                   => array(
+						'enableLabel'                      => array(
 							'type'    => 'boolean',
 							'default' => false,
 						),
-						'labelFontSize'                 => array(
+						'labelFontSize'                    => array(
 							'type'    => 'number',
 							'default' => '',
 						),
-						'labelFontSizeType'             => array(
+						'labelFontSizeType'                => array(
 							'type'    => 'string',
 							'default' => 'px',
 						),
-						'labelFontSizeTablet'           => array(
+						'labelFontSizeTablet'              => array(
 							'type' => 'number',
 						),
-						'labelFontSizeMobile'           => array(
+						'labelFontSizeMobile'              => array(
 							'type' => 'number',
 						),
-						'labelFontFamily'               => array(
+						'labelFontFamily'                  => array(
 							'type'    => 'string',
 							'default' => 'Default',
 						),
-						'labelFontWeight'               => array(
+						'labelFontWeight'                  => array(
 							'type' => 'string',
 						),
-						'labelLineHeightType'           => array(
+						'labelLineHeightType'              => array(
 							'type'    => 'string',
 							'default' => 'em',
 						),
-						'labelLineHeight'               => array(
+						'labelLineHeight'                  => array(
 							'type' => 'number',
 						),
-						'labelLineHeightTablet'         => array(
+						'labelLineHeightTablet'            => array(
 							'type' => 'number',
 						),
-						'labelLineHeightMobile'         => array(
+						'labelLineHeightMobile'            => array(
 							'type' => 'number',
 						),
-						'labelLoadGoogleFonts'          => array(
+						'labelLoadGoogleFonts'             => array(
 							'type'    => 'boolean',
 							'default' => false,
 						),
-						'inputFontSize'                 => array(
+						'inputFontSize'                    => array(
 							'type'    => 'number',
 							'default' => '',
 						),
-						'inputFontSizeType'             => array(
+						'inputFontSizeType'                => array(
 							'type'    => 'string',
 							'default' => 'px',
 						),
-						'inputFontSizeTablet'           => array(
+						'inputFontSizeTablet'              => array(
 							'type' => 'number',
 						),
-						'inputFontSizeMobile'           => array(
+						'inputFontSizeMobile'              => array(
 							'type' => 'number',
 						),
-						'inputFontFamily'               => array(
+						'inputFontFamily'                  => array(
 							'type'    => 'string',
 							'default' => 'Default',
 						),
-						'inputFontWeight'               => array(
+						'inputFontWeight'                  => array(
 							'type' => 'string',
 						),
-						'inputLineHeightType'           => array(
+						'inputLineHeightType'              => array(
 							'type'    => 'string',
 							'default' => 'em',
 						),
-						'inputLineHeight'               => array(
+						'inputLineHeight'                  => array(
 							'type' => 'number',
 						),
-						'inputLineHeightTablet'         => array(
+						'inputLineHeightTablet'            => array(
 							'type' => 'number',
 						),
-						'inputLineHeightMobile'         => array(
+						'inputLineHeightMobile'            => array(
 							'type' => 'number',
 						),
-						'inputLoadGoogleFonts'          => array(
+						'inputLoadGoogleFonts'             => array(
 							'type'    => 'boolean',
 							'default' => false,
 						),
-						'textAreaHeight'                => array(
+						'textAreaHeight'                   => array(
+							'type'    => 'number',
+							'default' => 'auto',
+						),
+						'textAreaHeightTablet'             => array(
 							'type' => 'number',
 						),
-						'textAreaHeightTablet'          => array(
+						'textAreaHeightMobile'             => array(
 							'type' => 'number',
 						),
-						'textAreaHeightMobile'          => array(
-							'type' => 'number',
-						),
-						'buttonFontSize'                => array(
+						'buttonFontSize'                   => array(
 							'type'    => 'number',
 							'default' => '',
 						),
-						'buttonFontSizeType'            => array(
+						'buttonFontSizeType'               => array(
 							'type'    => 'string',
 							'default' => 'px',
 						),
-						'buttonFontSizeTablet'          => array(
+						'buttonFontSizeTablet'             => array(
 							'type' => 'number',
 						),
-						'buttonFontSizeMobile'          => array(
+						'buttonFontSizeMobile'             => array(
 							'type' => 'number',
 						),
-						'buttonFontFamily'              => array(
+						'buttonFontFamily'                 => array(
 							'type'    => 'string',
 							'default' => 'Default',
 						),
-						'buttonFontWeight'              => array(
+						'buttonFontWeight'                 => array(
 							'type' => 'string',
 						),
-						'buttonLineHeightType'          => array(
+						'buttonLineHeightType'             => array(
 							'type'    => 'string',
 							'default' => 'em',
 						),
-						'buttonLineHeight'              => array(
+						'buttonLineHeight'                 => array(
 							'type' => 'number',
 						),
-						'buttonLineHeightTablet'        => array(
+						'buttonLineHeightTablet'           => array(
 							'type' => 'number',
 						),
-						'buttonLineHeightMobile'        => array(
+						'buttonLineHeightMobile'           => array(
 							'type' => 'number',
 						),
-						'buttonLoadGoogleFonts'         => array(
+						'buttonLoadGoogleFonts'            => array(
 							'type'    => 'boolean',
 							'default' => false,
 						),
-						'enableOveride'                 => array(
+						'enableOveride'                    => array(
 							'type'    => 'boolean',
 							'default' => true,
 						),
-						'radioCheckSize'                => array(
+						'radioCheckSize'                   => array(
 							'type'    => 'number',
 							'default' => '20',
 						),
-						'radioCheckSizeTablet'          => array(
+						'radioCheckSizeTablet'             => array(
 							'type' => 'number',
 						),
-						'radioCheckSizeMobile'          => array(
+						'radioCheckSizeMobile'             => array(
 							'type' => 'number',
 						),
-						'radioCheckBgColor'             => array(
+						'radioCheckBgColor'                => array(
 							'type'    => 'string',
 							'default' => '#fafafa',
 						),
-						'radioCheckSelectColor'         => array(
+						'radioCheckSelectColor'            => array(
 							'type'    => 'string',
 							'default' => '',
 						),
-						'radioCheckLableColor'          => array(
+						'radioCheckLableColor'             => array(
 							'type'    => 'string',
 							'default' => '',
 						),
-						'radioCheckBorderColor'         => array(
+						'radioCheckBorderColor'            => array(
 							'type'    => 'string',
 							'default' => '#cbcbcb',
 						),
-						'radioCheckBorderWidth'         => array(
+						'radioCheckBorderWidth'            => array(
 							'type'    => 'number',
 							'default' => '1',
 						),
-						'radioCheckBorderWidthTablet'   => array(
-							'type'    => 'number',
-							'default' => '1',
+						'radioCheckBorderWidthTablet'      => array(
+							'type' => 'number',
 						),
-						'radioCheckBorderWidthMobile'   => array(
-							'type'    => 'number',
-							'default' => '1',
+						'radioCheckBorderWidthMobile'      => array(
+							'type' => 'number',
 						),
-						'radioCheckBorderWidthType'     => array(
+						'radioCheckBorderWidthType'        => array(
 							'type'    => 'string',
 							'default' => 'px',
 						),
-						'radioCheckBorderRadius'        => array(
+						'radioCheckBorderRadius'           => array(
 							'type'    => 'number',
 							'default' => '',
 						),
-						'radioCheckFontSize'            => array(
+						'radioCheckFontSize'               => array(
 							'type'    => 'number',
 							'default' => '',
 						),
-						'radioCheckFontSizeType'        => array(
+						'radioCheckFontSizeType'           => array(
 							'type'    => 'string',
 							'default' => 'px',
 						),
-						'radioCheckFontSizeTablet'      => array(
+						'radioCheckFontSizeTablet'         => array(
 							'type' => 'number',
 						),
-						'radioCheckFontSizeMobile'      => array(
+						'radioCheckFontSizeMobile'         => array(
 							'type' => 'number',
 						),
-						'radioCheckFontFamily'          => array(
+						'radioCheckFontFamily'             => array(
 							'type'    => 'string',
 							'default' => 'Default',
 						),
-						'radioCheckFontWeight'          => array(
+						'radioCheckFontWeight'             => array(
 							'type' => 'string',
 						),
-						'radioCheckLineHeightType'      => array(
+						'radioCheckLineHeightType'         => array(
 							'type'    => 'string',
 							'default' => 'em',
 						),
-						'radioCheckLineHeight'          => array(
+						'radioCheckLineHeight'             => array(
 							'type' => 'number',
 						),
-						'radioCheckLineHeightTablet'    => array(
+						'radioCheckLineHeightTablet'       => array(
 							'type' => 'number',
 						),
-						'radioCheckLineHeightMobile'    => array(
+						'radioCheckLineHeightMobile'       => array(
 							'type' => 'number',
 						),
-						'radioCheckLoadGoogleFonts'     => array(
+						'radioCheckLoadGoogleFonts'        => array(
 							'type'    => 'boolean',
 							'default' => false,
 						),
-						'validationMsgColor'            => array(
+						'validationMsgColor'               => array(
 							'type'    => 'string',
 							'default' => '#ff0000',
 						),
-						'validationMsgBgColor'          => array(
+						'validationMsgBgColor'             => array(
 							'type'    => 'string',
 							'default' => '',
 						),
-						'advancedValidationSettings'    => array(
+						'advancedValidationSettings'       => array(
 							'type'    => 'boolean',
 							'default' => false,
 						),
-						'highlightBorderColor'          => array(
+						'highlightBorderColor'             => array(
 							'type'    => 'string',
 							'default' => '#ff0000',
 						),
-						'validationMsgFontSize'         => array(
+						'validationMsgFontSize'            => array(
 							'type'    => 'number',
 							'default' => '',
 						),
-						'validationMsgFontSizeType'     => array(
+						'validationMsgFontSizeType'        => array(
 							'type'    => 'string',
 							'default' => 'px',
 						),
-						'validationMsgFontSizeTablet'   => array(
+						'validationMsgFontSizeTablet'      => array(
 							'type' => 'number',
 						),
-						'validationMsgFontSizeMobile'   => array(
+						'validationMsgFontSizeMobile'      => array(
 							'type' => 'number',
 						),
-						'validationMsgFontFamily'       => array(
+						'validationMsgFontFamily'          => array(
 							'type'    => 'string',
 							'default' => 'Default',
 						),
-						'validationMsgFontWeight'       => array(
+						'validationMsgFontWeight'          => array(
 							'type' => 'string',
 						),
-						'validationMsgLineHeightType'   => array(
+						'validationMsgLineHeightType'      => array(
 							'type'    => 'string',
 							'default' => 'em',
 						),
-						'validationMsgLineHeight'       => array(
+						'validationMsgLineHeight'          => array(
 							'type' => 'number',
 						),
-						'validationMsgLineHeightTablet' => array(
+						'validationMsgLineHeightTablet'    => array(
 							'type' => 'number',
 						),
-						'validationMsgLineHeightMobile' => array(
+						'validationMsgLineHeightMobile'    => array(
 							'type' => 'number',
 						),
-						'validationMsgLoadGoogleFonts'  => array(
+						'validationMsgLoadGoogleFonts'     => array(
 							'type'    => 'boolean',
 							'default' => false,
 						),
-						'successMsgColor'               => array(
+						'successMsgColor'                  => array(
 							'type'    => 'string',
 							'default' => '',
 						),
-						'errorMsgColor'                 => array(
+						'errorMsgColor'                    => array(
 							'type'    => 'string',
 							'default' => '',
 						),
-						'errorMsgBgColor'               => array(
+						'errorMsgBgColor'                  => array(
 							'type'    => 'string',
 							'default' => '',
 						),
-						'errorMsgBorderColor'           => array(
+						'errorMsgBorderColor'              => array(
 							'type'    => 'string',
 							'default' => '',
 						),
-						'msgBorderSize'                 => array(
+						'msgBorderSize'                    => array(
 							'type'    => 'number',
 							'default' => '',
 						),
-						'msgBorderSizeType'             => array(
+						'msgBorderSizeType'                => array(
 							'type'    => 'string',
 							'default' => 'px',
 						),
-						'msgBorderRadius'               => array(
+						'msgBorderRadius'                  => array(
 							'type'    => 'number',
 							'default' => '',
 						),
-						'msgVrPadding'                  => array(
+						'msgVrPadding'                     => array(
 							'type'    => 'number',
 							'default' => '',
 						),
-						'msgHrPadding'                  => array(
+						'msgHrPadding'                     => array(
 							'type'    => 'number',
 							'default' => '',
 						),
-						'msgFontSize'                   => array(
+						'msgFontSize'                      => array(
 							'type'    => 'number',
 							'default' => '',
 						),
-						'msgFontSizeType'               => array(
+						'msgFontSizeType'                  => array(
 							'type'    => 'string',
 							'default' => 'px',
 						),
-						'msgFontSizeTablet'             => array(
+						'msgFontSizeTablet'                => array(
 							'type' => 'number',
 						),
-						'msgFontSizeMobile'             => array(
+						'msgFontSizeMobile'                => array(
 							'type' => 'number',
 						),
-						'msgFontFamily'                 => array(
+						'msgFontFamily'                    => array(
 							'type'    => 'string',
 							'default' => 'Default',
 						),
-						'msgFontWeight'                 => array(
+						'msgFontWeight'                    => array(
 							'type' => 'string',
 						),
-						'msgLineHeightType'             => array(
+						'msgLineHeightType'                => array(
 							'type'    => 'string',
 							'default' => 'em',
 						),
-						'msgLineHeight'                 => array(
+						'msgLineHeight'                    => array(
 							'type' => 'number',
 						),
-						'msgLineHeightTablet'           => array(
+						'msgLineHeightTablet'              => array(
 							'type' => 'number',
 						),
-						'msgLineHeightMobile'           => array(
+						'msgLineHeightMobile'              => array(
 							'type' => 'number',
 						),
-						'msgLoadGoogleFonts'            => array(
+						'msgLoadGoogleFonts'               => array(
 							'type'    => 'boolean',
 							'default' => false,
 						),
-						'radioCheckBorderRadiusType'    => array(
+						'radioCheckBorderRadiusType'       => array(
 							'type'    => 'string',
 							'default' => 'px',
 						),
-						'msgBorderRadiusType'           => array(
+						'msgBorderRadiusType'              => array(
 							'type'    => 'string',
 							'default' => 'px',
 						),
-						'fieldBorderRadiusType'         => array(
+						'fieldBorderRadiusType'            => array(
 							'type'    => 'string',
 							'default' => 'px',
 						),
-						'buttonBorderRadiusType'        => array(
+						'buttonBorderRadiusType'           => array(
 							'type'    => 'string',
 							'default' => 'px',
 						),
-						'successMsgFontSize'            => array(
+						'successMsgFontSize'               => array(
 							'type'    => 'number',
 							'default' => '',
 						),
-						'successMsgFontSizeType'        => array(
+						'successMsgFontSizeType'           => array(
 							'type'    => 'string',
 							'default' => 'px',
 						),
-						'successMsgFontSizeTablet'      => array(
+						'successMsgFontSizeTablet'         => array(
 							'type' => 'number',
 						),
-						'successMsgFontSizeMobile'      => array(
+						'successMsgFontSizeMobile'         => array(
 							'type' => 'number',
 						),
-						'successMsgFontFamily'          => array(
+						'successMsgFontFamily'             => array(
 							'type'    => 'string',
 							'default' => 'Default',
 						),
-						'successMsgFontWeight'          => array(
+						'successMsgFontWeight'             => array(
 							'type' => 'string',
 						),
-						'successMsgLineHeightType'      => array(
+						'successMsgLineHeightType'         => array(
 							'type'    => 'string',
 							'default' => 'em',
 						),
-						'successMsgLineHeight'          => array(
+						'successMsgLineHeight'             => array(
 							'type' => 'number',
 						),
-						'successMsgLineHeightTablet'    => array(
+						'successMsgLineHeightTablet'       => array(
 							'type' => 'number',
 						),
-						'successMsgLineHeightMobile'    => array(
+						'successMsgLineHeightMobile'       => array(
 							'type' => 'number',
 						),
-						'successMsgLoadGoogleFonts'     => array(
+						'successMsgLoadGoogleFonts'        => array(
 							'type'    => 'boolean',
 							'default' => false,
 						),
-						'msgleftPadding'                => array(
+						'msgleftPadding'                   => array(
 							'type'    => 'number',
 							'default' => '',
 						),
-						'msgrightPadding'               => array(
+						'msgrightPadding'                  => array(
 							'type'    => 'number',
 							'default' => '',
 						),
-						'msgtopPadding'                 => array(
+						'msgtopPadding'                    => array(
 							'type'    => 'number',
 							'default' => '',
 						),
-						'msgbottomPadding'              => array(
+						'msgbottomPadding'                 => array(
 							'type'    => 'number',
 							'default' => '',
 						),
-						'msgleftMobilePadding'          => array(
+						'msgleftMobilePadding'             => array(
 							'type'    => 'number',
 							'default' => '',
 						),
-						'msgrightMobilePadding'         => array(
+						'msgrightMobilePadding'            => array(
 							'type'    => 'number',
 							'default' => '',
 						),
-						'msgtopMobilePadding'           => array(
+						'msgtopMobilePadding'              => array(
 							'type'    => 'number',
 							'default' => '',
 						),
-						'msgbottomMobilePadding'        => array(
+						'msgbottomMobilePadding'           => array(
 							'type'    => 'number',
 							'default' => '',
 						),
-						'msgleftTabletPadding'          => array(
+						'msgleftTabletPadding'             => array(
 							'type'    => 'number',
 							'default' => '',
 						),
-						'msgrightTabletPadding'         => array(
+						'msgrightTabletPadding'            => array(
 							'type'    => 'number',
 							'default' => '',
 						),
-						'msgtopTabletPadding'           => array(
+						'msgtopTabletPadding'              => array(
 							'type'    => 'number',
 							'default' => '',
 						),
-						'msgbottomTabletPadding'        => array(
+						'msgbottomTabletPadding'           => array(
 							'type'    => 'number',
 							'default' => '',
 						),
-						'msgtabletPaddingUnit'          => array(
+						'msgtabletPaddingUnit'             => array(
 							'type'    => 'string',
 							'default' => 'px',
 						),
-						'msgmobilePaddingUnit'          => array(
+						'msgmobilePaddingUnit'             => array(
 							'type'    => 'string',
 							'default' => 'px',
 						),
-						'msgpaddingUnit'                => array(
+						'msgpaddingUnit'                   => array(
 							'type'    => 'string',
 							'default' => 'px',
 						),
-						'msgpaddingLink'                => array(
+						'msgpaddingLink'                   => array(
 							'type'    => 'boolean',
 							'default' => false,
 						),
-						'buttonleftPadding'             => array(
+						'buttonleftPadding'                => array(
 							'type' => 'number',
 						),
-						'buttonrightPadding'            => array(
+						'buttonrightPadding'               => array(
 							'type' => 'number',
 						),
-						'buttontopPadding'              => array(
+						'buttontopPadding'                 => array(
 							'type' => 'number',
 						),
-						'buttonbottomPadding'           => array(
+						'buttonbottomPadding'              => array(
 							'type' => 'number',
 						),
-						'buttonleftMobilePadding'       => array(
+						'buttonleftMobilePadding'          => array(
 							'type'    => 'number',
 							'default' => '',
 						),
-						'buttonrightMobilePadding'      => array(
+						'buttonrightMobilePadding'         => array(
 							'type'    => 'number',
 							'default' => '',
 						),
-						'buttontopMobilePadding'        => array(
+						'buttontopMobilePadding'           => array(
 							'type'    => 'number',
 							'default' => '',
 						),
-						'buttonbottomMobilePadding'     => array(
+						'buttonbottomMobilePadding'        => array(
 							'type'    => 'number',
 							'default' => '',
 						),
-						'buttonleftTabletPadding'       => array(
+						'buttonleftTabletPadding'          => array(
 							'type'    => 'number',
 							'default' => '',
 						),
-						'buttonrightTabletPadding'      => array(
+						'buttonrightTabletPadding'         => array(
 							'type'    => 'number',
 							'default' => '',
 						),
-						'buttontopTabletPadding'        => array(
+						'buttontopTabletPadding'           => array(
 							'type'    => 'number',
 							'default' => '',
 						),
-						'buttonbottomTabletPadding'     => array(
+						'buttonbottomTabletPadding'        => array(
 							'type'    => 'number',
 							'default' => '',
 						),
-						'buttonpaddingLink'             => array(
+						'buttonpaddingLink'                => array(
 							'type'    => 'boolean',
 							'default' => false,
 						),
-						'buttontabletPaddingUnit'       => array(
+						'buttontabletPaddingUnit'          => array(
 							'type'    => 'string',
 							'default' => 'px',
 						),
-						'buttonmobilePaddingUnit'       => array(
+						'buttonmobilePaddingUnit'          => array(
 							'type'    => 'string',
 							'default' => 'px',
 						),
-						'buttonpaddingUnit'             => array(
+						'buttonpaddingUnit'                => array(
 							'type'    => 'string',
 							'default' => 'px',
 						),
-						'fieldleftPadding'              => array(
+						'fieldleftPadding'                 => array(
 							'type' => 'number',
 						),
-						'fieldrightPadding'             => array(
+						'fieldrightPadding'                => array(
 							'type' => 'number',
 						),
-						'fieldtopPadding'               => array(
+						'fieldtopPadding'                  => array(
 							'type' => 'number',
 						),
-						'fieldbottomPadding'            => array(
+						'fieldbottomPadding'               => array(
 							'type' => 'number',
 						),
-						'fieldleftMobilePadding'        => array(
+						'fieldleftMobilePadding'           => array(
 							'type'    => 'number',
 							'default' => '',
 						),
-						'fieldrightMobilePadding'       => array(
+						'fieldrightMobilePadding'          => array(
 							'type'    => 'number',
 							'default' => '',
 						),
-						'fieldtopMobilePadding'         => array(
+						'fieldtopMobilePadding'            => array(
 							'type'    => 'number',
 							'default' => '',
 						),
-						'fieldbottomMobilePadding'      => array(
+						'fieldbottomMobilePadding'         => array(
 							'type'    => 'number',
 							'default' => '',
 						),
-						'fieldleftTabletPadding'        => array(
+						'fieldleftTabletPadding'           => array(
 							'type'    => 'number',
 							'default' => '',
 						),
-						'fieldrightTabletPadding'       => array(
+						'fieldrightTabletPadding'          => array(
 							'type'    => 'number',
 							'default' => '',
 						),
-						'fieldtopTabletPadding'         => array(
+						'fieldtopTabletPadding'            => array(
 							'type'    => 'number',
 							'default' => '',
 						),
-						'fieldbottomTabletPadding'      => array(
+						'fieldbottomTabletPadding'         => array(
 							'type'    => 'number',
 							'default' => '',
 						),
-						'fieldtabletPaddingUnit'        => array(
+						'fieldtabletPaddingUnit'           => array(
 							'type'    => 'string',
 							'default' => 'px',
 						),
-						'fieldmobilePaddingUnit'        => array(
+						'fieldmobilePaddingUnit'           => array(
 							'type'    => 'string',
 							'default' => 'px',
 						),
-						'fieldpaddingUnit'              => array(
+						'fieldpaddingUnit'                 => array(
 							'type'    => 'string',
 							'default' => 'px',
 						),
-						'fieldpaddingLink'              => array(
+						'fieldpaddingLink'                 => array(
 							'type'    => 'boolean',
 							'default' => false,
 						),
-						'labelTransform'                => array(
+						'labelTransform'                   => array(
 							'type' => 'string',
 						),
-						'labelDecoration'               => array(
+						'labelDecoration'                  => array(
 							'type' => 'string',
 						),
-						'labelFontStyle'                => array(
+						'labelFontStyle'                   => array(
 							'type' => 'string',
 						),
-						'inputTransform'                => array(
+						'inputTransform'                   => array(
 							'type' => 'string',
 						),
-						'inputDecoration'               => array(
+						'inputDecoration'                  => array(
 							'type' => 'string',
 						),
-						'inputFontStyle'                => array(
+						'inputFontStyle'                   => array(
 							'type' => 'string',
 						),
-						'buttonTransform'               => array(
+						'buttonTransform'                  => array(
 							'type' => 'string',
 						),
-						'buttonDecoration'              => array(
+						'buttonDecoration'                 => array(
 							'type' => 'string',
 						),
-						'buttonFontStyle'               => array(
+						'buttonFontStyle'                  => array(
 							'type' => 'string',
 						),
-						'radioCheckTransform'           => array(
+						'radioCheckTransform'              => array(
 							'type' => 'string',
 						),
-						'radioCheckDecoration'          => array(
+						'radioCheckDecoration'             => array(
 							'type' => 'string',
 						),
-						'radioCheckFontStyle'           => array(
+						'radioCheckFontStyle'              => array(
 							'type' => 'string',
 						),
-						'validationMsgTransform'        => array(
+						'validationMsgTransform'           => array(
 							'type' => 'string',
 						),
-						'validationMsgDecoration'       => array(
+						'validationMsgDecoration'          => array(
 							'type' => 'string',
 						),
-						'validationMsgFontStyle'        => array(
+						'validationMsgFontStyle'           => array(
 							'type' => 'string',
 						),
-						'msgTransform'                  => array(
+						'msgTransform'                     => array(
 							'type' => 'string',
 						),
-						'msgDecoration'                 => array(
+						'msgDecoration'                    => array(
 							'type' => 'string',
 						),
-						'msgFontStyle'                  => array(
+						'msgFontStyle'                     => array(
 							'type' => 'string',
 						),
-						'successMsgTransform'           => array(
+						'successMsgTransform'              => array(
 							'type' => 'string',
 						),
-						'successMsgDecoration'          => array(
+						'successMsgDecoration'             => array(
 							'type' => 'string',
 						),
-						'successMsgFontStyle'           => array(
+						'successMsgFontStyle'              => array(
 							'type' => 'string',
 						),
-						'isPreview'                     => array(
+						'isPreview'                        => array(
 							'type'    => 'boolean',
 							'default' => false,
+						),
+						'labelLetterSpacing'               => array(
+							'type'    => 'number',
+							'default' => '',
+						),
+						'labelLetterSpacingType'           => array(
+							'type'    => 'string',
+							'default' => 'px',
+						),
+						'labelLetterSpacingMobile'         => array(
+							'type' => 'number',
+						),
+						'labelLetterSpacingTablet'         => array(
+							'type' => 'number',
+						),
+						'inputLetterSpacing'               => array(
+							'type'    => 'number',
+							'default' => '',
+						),
+						'inputLetterSpacingType'           => array(
+							'type'    => 'string',
+							'default' => 'px',
+						),
+						'inputLetterSpacingMobile'         => array(
+							'type' => 'number',
+						),
+						'inputLetterSpacingTablet'         => array(
+							'type' => 'number',
+						),
+						'buttonLetterSpacing'              => array(
+							'type'    => 'number',
+							'default' => '',
+						),
+						'buttonLetterSpacingType'          => array(
+							'type'    => 'string',
+							'default' => 'px',
+						),
+						'buttonLetterSpacingMobile'        => array(
+							'type' => 'number',
+						),
+						'buttonLetterSpacingTablet'        => array(
+							'type' => 'number',
+						),
+						'radioCheckLetterSpacing'          => array(
+							'type'    => 'number',
+							'default' => '',
+						),
+						'radioCheckLetterSpacingType'      => array(
+							'type'    => 'string',
+							'default' => 'px',
+						),
+						'radioCheckLetterSpacingMobile'    => array(
+							'type' => 'number',
+						),
+						'radioCheckLetterSpacingTablet'    => array(
+							'type' => 'number',
+						),
+						'validationMsgLetterSpacing'       => array(
+							'type'    => 'number',
+							'default' => '',
+						),
+						'validationMsgLetterSpacingType'   => array(
+							'type'    => 'string',
+							'default' => 'px',
+						),
+						'validationMsgLetterSpacingMobile' => array(
+							'type' => 'number',
+						),
+						'validationMsgLetterSpacingTablet' => array(
+							'type' => 'number',
+						),
+						'msgLetterSpacing'                 => array(
+							'type'    => 'number',
+							'default' => '',
+						),
+						'msgLetterSpacingType'             => array(
+							'type'    => 'string',
+							'default' => 'px',
+						),
+						'msgLetterSpacingMobile'           => array(
+							'type' => 'number',
+						),
+						'msgLetterSpacingTablet'           => array(
+							'type' => 'number',
+						),
+						'successMsgLetterSpacing'          => array(
+							'type'    => 'number',
+							'default' => '',
+						),
+						'successMsgLetterSpacingType'      => array(
+							'type'    => 'string',
+							'default' => 'px',
+						),
+						'successMsgLetterSpacingMobile'    => array(
+							'type' => 'number',
+						),
+						'successMsgLetterSpacingTablet'    => array(
+							'type' => 'number',
 						),
 					),
 					'render_callback' => array( $this, 'render_html' ),

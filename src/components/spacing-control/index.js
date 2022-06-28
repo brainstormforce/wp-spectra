@@ -32,6 +32,7 @@ const SpacingControl = ( props ) => {
 		unit,
 		mUnit,
 		tUnit,
+		disableUnits,
 		valueBottom,
 		valueLeft,
 		valueRight,
@@ -519,13 +520,13 @@ const SpacingControl = ( props ) => {
 						</Button>
 						</Tooltip>
 						<ButtonGroup
-							className="uagb-spacing-control__units"
+							className="uagb-control__units"
 							aria-label={ __(
 								'Select Units',
 								'ultimate-addons-for-gutenberg'
 							) }
 						>
-							{ onUnitSizeClick( unitSizes ) }
+							{ !disableUnits && onUnitSizeClick( unitSizes ) }
 						</ButtonGroup>
 					</div>
 				</div>

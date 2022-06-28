@@ -2,6 +2,15 @@
  * BLOCK: WP Search Block Attributes
  */
 
+import { getBorderAttributes } from '@Controls/generateAttributes';
+
+const inputBorderAttributes = getBorderAttributes( 'input', {
+	borderTopLeftRadius: 3,
+	borderTopRightRadius: 3,
+	borderBottomLeftRadius: 3,
+	borderBottomRightRadius: 3,
+} );
+
 const attributes = {
 	block_id: {
 		type: 'string',
@@ -20,6 +29,21 @@ const attributes = {
 		UAGCopyPaste: {
 			styleType: 'input-size'
 		}
+	},
+	borderStyle: {
+		type: 'string',
+	},
+	borderWidth: {
+		type: 'number',
+	},
+	borderRadius: {
+		type: 'number',
+	},
+	borderColor: {
+		type: 'string',
+	},
+	borderHColor: {
+		type: 'string',
 	},
 	textColor: {
 		type: 'string',
@@ -73,32 +97,6 @@ const attributes = {
 			styleType: 'input-box-shadow-position'
 		}
 	},
-	borderStyle: {
-		type: 'string',
-		default: 'none',
-		UAGCopyPaste: {
-			styleType: 'input-border-style'
-		}
-	},
-	borderWidth: {
-		type: 'number',
-		UAGCopyPaste: {
-			styleType: 'input-border-width'
-		}
-	},
-	borderRadius: {
-		type: 'number',
-		default: 3,
-		UAGCopyPaste: {
-			styleType: 'input-border-radius'
-		}
-	},
-	borderColor: {
-		type: 'string',
-		UAGCopyPaste: {
-			styleType: 'input-border-color'
-		}
-	},
 	buttonBgColor: {
 		type: 'string',
 		default: '#9d9d9d',
@@ -133,7 +131,7 @@ const attributes = {
 	},
 	buttonIconSize: {
 		type: 'number',
-		default: 15,
+		default: 17,
 		UAGCopyPaste: {
 			styleType: 'btn-icon-size'
 		}
@@ -515,12 +513,6 @@ const attributes = {
 		},
 		type: 'string',
 	},
-	borderHColor: {
-		UAGCopyPaste: {
-			styleType: 'input-border-hover-color'
-		},
-		type: 'string',
-	},
 	buttonIconSizeType: {
 		UAGCopyPaste: {
 			styleType: 'btn-icon-size-type'
@@ -539,6 +531,7 @@ const attributes = {
 		type: 'boolean',
 		default: false,
 	},
+	...inputBorderAttributes
 };
 
 export default attributes;

@@ -5,7 +5,7 @@ import ResponsiveSelectControl from '@Components/responsive-select';
 import MultiButtonsControl from '@Components/multi-buttons-control';
 import AdvancedPopColorControl from '@Components/color-control/advanced-pop-color-control.js';
 import SpacingControl from '@Components/spacing-control';
-import Border from '@Components/border';
+import ResponsiveBorder from '@Components/responsive-border';
 import InspectorTabs from '@Components/inspector-tabs/InspectorTabs.js';
 import InspectorTab, {
 	UAGTabs,
@@ -14,7 +14,7 @@ import UAGTabsControl from '@Components/tabs';
 import ResponsiveSlider from '@Components/responsive-slider';
 import React from 'react';
 import { __ } from '@wordpress/i18n';
-import { InspectorControls, BlockAlignmentToolbar, AlignmentToolbar, BlockControls } from '@wordpress/block-editor';
+import { InspectorControls } from '@wordpress/block-editor';
 
 import {
 	SelectControl,
@@ -28,7 +28,7 @@ import UAGAdvancedPanelBody from '@Components/advanced-panel-body';
 
 const Settings = ( props ) => {
 	props = props.parentProps;
-	const { attributes, setAttributes } = props;
+	const { attributes, setAttributes , deviceType} = props;
 
 	const {
 		tabsStyleD,
@@ -37,11 +37,6 @@ const Settings = ( props ) => {
 		tabActiveFrontend,
 		tabHeaders,
 		headerBgColor,
-		borderStyle,
-		borderWidth,
-		borderRadius,
-		borderColor,
-		borderHoverColor,
 		headerTextColor,
 		activeTabBgColor,
 		activeTabTextColor,
@@ -122,6 +117,10 @@ const Settings = ( props ) => {
 		titleLineHeight,
 		titleLineHeightMobile,
 		titleLineHeightTablet,
+		titleLetterSpacing,
+		titleLetterSpacingTablet,
+		titleLetterSpacingMobile,
+		titleLetterSpacingType,
 		titleTransform,
 		titleDecoration,
 		titleAlign,
@@ -610,38 +609,13 @@ const Settings = ( props ) => {
 				title={ __( 'Border', 'ultimate-addons-for-gutenberg' ) }
 				initialOpen={ false }
 			>
-				<Border
-					disabledBorderTitle= {true}
+				<ResponsiveBorder
 					setAttributes={ setAttributes }
-					borderStyle={ {
-						value: borderStyle,
-						label: 'borderStyle',
-						title: __( 'Style', 'ultimate-addons-for-gutenberg' ),
-					} }
-					borderWidth={ {
-						value: borderWidth,
-						label: 'borderWidth',
-						title: __( 'Width', 'ultimate-addons-for-gutenberg' ),
-					} }
-					borderRadius={ {
-						value: borderRadius,
-						label: 'borderRadius',
-						title: __( 'Radius', 'ultimate-addons-for-gutenberg' ),
-					} }
-					borderColor={ {
-						value: borderColor,
-						label: 'borderColor',
-						title: __( 'Color', 'ultimate-addons-for-gutenberg' ),
-					} }
-					borderHoverColor={ {
-						value: borderHoverColor,
-						label: 'borderHoverColor',
-						title: __(
-							'Hover Color',
-							'ultimate-addons-for-gutenberg'
-						),
-					} }
+					prefix={'tab'}
+					attributes={ attributes }
+					deviceType={deviceType}
 					disableBottomSeparator={ true }
+					disabledBorderTitle= {true}
 				/>
 			</UAGAdvancedPanelBody>
 		);
@@ -956,6 +930,22 @@ const Settings = ( props ) => {
 						value: titleLineHeightTablet,
 						label: 'titleLineHeightTablet',
 					} }
+					letterSpacing={ {
+						value: titleLetterSpacing,
+						label: 'titleLetterSpacing',
+					} }
+					letterSpacingTablet={ {
+						value: titleLetterSpacingTablet,
+						label: 'titleLetterSpacingTablet',
+					} }
+					letterSpacingMobile={ {
+						value: titleLetterSpacingMobile,
+						label: 'titleLetterSpacingMobile',
+					} }
+					letterSpacingType={ {
+						value: titleLetterSpacingType,
+						label: 'titleLetterSpacingType',
+					} }
 					transform={ {
 						value: titleTransform,
 						label: 'titleTransform',
@@ -1209,22 +1199,6 @@ const Settings = ( props ) => {
 	};
 	return (
 		<InspectorControls>
-			<BlockControls key="controls">
-				<BlockAlignmentToolbar
-					value={ tabAlign }
-					onChange={ ( value ) =>
-						setAttributes( { tabAlign: value } )
-					}
-					controls={ [ 'left', 'center', 'right' ] }
-				/>
-				<AlignmentToolbar
-					value={ titleAlign }
-					onChange={ ( value ) =>
-						setAttributes( { titleAlign: value } )
-					}
-					controls={ [ 'left', 'center', 'right' ] }
-				/>
-			</BlockControls>
 			<InspectorTabs>
 				<InspectorTab { ...UAGTabs.general }>
 					{ presetSettings() }
