@@ -180,6 +180,7 @@ const attributes = {
 
 	backgroundType: {
 		type: 'string',
+		default: 'none',
 		UAGCopyPaste: {
 			styleType: 'container-bg-type'
 		},
