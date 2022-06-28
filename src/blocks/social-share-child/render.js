@@ -7,6 +7,7 @@ import classnames from 'classnames';
 import renderSVG from '@Controls/renderIcon';
 import styles from './editor.lazy.scss';
 import React, { useLayoutEffect } from 'react';
+import { useDeviceType } from '@Controls/getPreviewType';
 
 const Render = ( props ) => {
 	// Add and remove the CSS on the drop and remove of the component.
@@ -22,6 +23,8 @@ const Render = ( props ) => {
 	const { attributes } = props;
 
 	const { className, image_icon, icon, image } = attributes;
+
+	const deviceType = useDeviceType();
 
 	let imageIconHtml = '';
 
@@ -45,6 +48,7 @@ const Render = ( props ) => {
 				'uagb-ss-repeater',
 				'uagb-ss__wrapper',
 				className,
+				`uagb-editor-preview-mode-${ deviceType.toLowerCase() }`,
 				`uagb-block-${ props.clientId.substr( 0, 8 ) }`
 			) }
 		>
