@@ -1,6 +1,6 @@
 const countryOptionsOld = [
     <option data-countryCode="GB" value="+44">UK (+44)</option>, //eslint-disable-line react/jsx-key
-    <option data-countryCode="US" value="+1">USA / Canada (+1)</option>, //eslint-disable-line react/jsx-key
+    <option data-countryCode="US" value="+1">USA (+1)</option>, //eslint-disable-line react/jsx-key
     <option data-countryCode="DZ" value="+213">Algeria (+213)</option>, //eslint-disable-line react/jsx-key
     <option data-countryCode="AD" value="+376">Andorra (+376)</option>, //eslint-disable-line react/jsx-key
     <option data-countryCode="AO" value="+244">Angola (+244)</option>, //eslint-disable-line react/jsx-key
@@ -32,6 +32,7 @@ const countryOptionsOld = [
     <option data-countryCode="BI" value="+257">Burundi (+257)</option>, //eslint-disable-line react/jsx-key
     <option data-countryCode="KH" value="+855">Cambodia (+855)</option>, //eslint-disable-line react/jsx-key
     <option data-countryCode="CM" value="+237">Cameroon (+237)</option>, //eslint-disable-line react/jsx-key
+    <option data-countryCode="CA" value="+1">Canada (+1)</option>, //eslint-disable-line react/jsx-key
     <option data-countryCode="CV" value="+238">Cape Verde Islands (+238)</option>, //eslint-disable-line react/jsx-key
     <option data-countryCode="KY" value="+1345">Cayman Islands (+1345)</option>, //eslint-disable-line react/jsx-key
     <option data-countryCode="CF" value="+236">Central African Republic (+236)</option>, //eslint-disable-line react/jsx-key
