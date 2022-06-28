@@ -1744,12 +1744,12 @@ tweetBtnLetterSpacingType,
 						{ enableTweet && iconStyleSetting() }
 						{ quoteStyling }
 						{ authorStyling }
+						{ spacingSettings }
 					</InspectorTab>
 					<InspectorTab
 						{ ...UAGTabs.advance }
 						parentProps={ props }
 					>
-						{ spacingSettings }
 					</InspectorTab>
 				</InspectorTabs>
 			</InspectorControls>
