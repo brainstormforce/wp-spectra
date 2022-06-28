@@ -320,7 +320,7 @@ if ( ! class_exists( 'UAGB_GF_Styler' ) ) {
 							'default' => false,
 						),
 						'textAreaHeight'                   => array(
-							'type' => 'number',
+							'type'    => 'number',
 							'default' => 'auto',
 						),
 						'textAreaHeightTablet'             => array(
@@ -402,10 +402,10 @@ if ( ! class_exists( 'UAGB_GF_Styler' ) ) {
 							'default' => '1',
 						),
 						'radioCheckBorderWidthTablet'      => array(
-							'type'    => 'number',
+							'type' => 'number',
 						),
 						'radioCheckBorderWidthMobile'      => array(
-							'type'    => 'number',
+							'type' => 'number',
 						),
 						'radioCheckBorderWidthType'        => array(
 							'type'    => 'string',

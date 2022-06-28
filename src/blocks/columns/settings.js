@@ -969,7 +969,6 @@ const Settings = ( props ) => {
 					prefix={ 'columns' }
 					attributes={ attributes }
 					deviceType={deviceType}
-					disableBottomSeparator={ true }
 					disabledBorderTitle= {true}
 				/>
 				<BoxShadowControl

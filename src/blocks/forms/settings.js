@@ -844,7 +844,6 @@ const Settings = ( props ) => {
 				disabledBorderTitle= {false}
 				attributes={ attributes }
 				deviceType={deviceType}
-				disableBottomSeparator={ false }
 			/>
 			<SpacingControl
 				{ ...props }
@@ -1417,7 +1416,6 @@ const Settings = ( props ) => {
 				disabledBorderTitle= {false}
 				attributes={ attributes }
 				deviceType={deviceType}
-				disableBottomSeparator={ false }
 			/>
 			<TypographyControl
 				label={ __(

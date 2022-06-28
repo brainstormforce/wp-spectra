@@ -20,6 +20,7 @@ import { SelectControl, Icon, ToggleControl } from '@wordpress/components';
 import SpacingControl from '@Components/spacing-control';
 import ColorSwitchControl from '@Components/color-switch-control';
 import TextShadowControl from '@Components/text-shadow';
+import UAGTabsControl from '@Components/tabs';
 import ResponsiveBorder from '@Components/responsive-border'
 import ResponsiveSlider from '@Components/responsive-slider';
 // Extend component
@@ -526,6 +527,7 @@ const Settings = ( props ) => {
 						label: 'headShadowBlur',
 						title: __( 'Blur', 'ultimate-addons-for-gutenberg' ),
 					} }
+					popup={ true }
 				/>
 				<ResponsiveSlider
 					label={ __(
@@ -999,23 +1001,46 @@ const Settings = ( props ) => {
 				title={ __( 'Link', 'ultimate-addons-for-gutenberg' ) }
 				initialOpen={ false }
 			>
-				<AdvancedPopColorControl
-					label={ __( 'Color', 'ultimate-addons-for-gutenberg' ) }
-					colorValue={ linkColor }
-					data={ {
-						value: linkColor,
-						label: 'linkColor',
-					} }
-					setAttributes={ setAttributes }
-				/>
-				<AdvancedPopColorControl
-					label={ __( 'Hover Color', 'ultimate-addons-for-gutenberg' ) }
-					colorValue={ linkHColor }
-					data={ {
-						value: linkHColor,
-						label: 'linkHColor',
-					} }
-					setAttributes={ setAttributes }
+				<UAGTabsControl
+					tabs={ [
+						{
+							name: 'normal',
+							title: __(
+								'Normal',
+								'ultimate-addons-for-gutenberg'
+							),
+						},
+						{
+							name: 'hover',
+							title: __(
+								'Hover',
+								'ultimate-addons-for-gutenberg'
+							),
+						},
+					] }
+					normal={
+						<AdvancedPopColorControl
+							label={ __( 'Color', 'ultimate-addons-for-gutenberg' ) }
+							colorValue={ linkColor }
+							data={ {
+								value: linkColor,
+								label: 'linkColor',
+							} }
+							setAttributes={ setAttributes }
+						/>
+					}
+					hover={
+						<AdvancedPopColorControl
+							label={ __( 'Hover Color', 'ultimate-addons-for-gutenberg' ) }
+							colorValue={ linkHColor }
+							data={ {
+								value: linkHColor,
+								label: 'linkHColor',
+							} }
+							setAttributes={ setAttributes }
+						/>
+					}
+					disableBottomSeparator={ true }
 				/>
 			</UAGAdvancedPanelBody>
 		);

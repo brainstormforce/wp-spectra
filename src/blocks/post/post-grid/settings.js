@@ -1878,7 +1878,6 @@ const Settings = ( props ) => {
 					prefix={ 'btn' }
 					attributes={ attributes }
 					deviceType={ deviceType }
-					disableBottomSeparator={ true }
 					disabledBorderTitle= { false }
 				/>
 				<ResponsiveSlider

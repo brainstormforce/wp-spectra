@@ -877,10 +877,13 @@ const Settings = ( props ) => {
 				<ResponsiveBorder
 					disabledBorderTitle= {false}
 					setAttributes={ setAttributes }
-					prefix={'field'}
+					borderHoverColorLabel={__(
+						'Active Color',
+						'ultimate-addons-for-gutenberg'
+					)}
+					prefix={'input'}
 					attributes={ attributes }
 					deviceType={deviceType}
-					disableBottomSeparator={ true }
 				/>
 			)}
 			<ResponsiveSlider
@@ -1227,10 +1230,9 @@ const Settings = ( props ) => {
 			/>
 			<ResponsiveBorder
 				setAttributes={ setAttributes }
-				prefix={'button'}
+				prefix={'btn'}
 				attributes={ attributes }
 				deviceType={deviceType}
-				disableBottomSeparator={ true }
 				disabledBorderTitle= {false}
 			/>
 			<TypographyControl

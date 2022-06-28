@@ -12,10 +12,10 @@ UAGB_Block_JS::blocks_star_rating_gfont( $attr );
 
 $block_name = 'star-rating';
 
-$rating_fallback = UAGB_Block_Helper::get_fallback_number( $attr['rating'], 'rating', $block_name );
+$rating_fallback    = UAGB_Block_Helper::get_fallback_number( $attr['rating'], 'rating', $block_name );
 $title_gap_fallback = UAGB_Block_Helper::get_fallback_number( $attr['titleGap'], 'titleGap', $block_name );
-$size_fallback = UAGB_Block_Helper::get_fallback_number( $attr['size'], 'size', $block_name );
-$gap_fallback = UAGB_Block_Helper::get_fallback_number( $attr['gap'], 'gap', $block_name );
+$size_fallback      = UAGB_Block_Helper::get_fallback_number( $attr['size'], 'size', $block_name );
+$gap_fallback       = UAGB_Block_Helper::get_fallback_number( $attr['gap'], 'gap', $block_name );
 
 $t_selectors = array();
 $m_selectors = array();

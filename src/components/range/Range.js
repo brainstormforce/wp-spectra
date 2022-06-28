@@ -124,7 +124,7 @@ const Range = ( props ) => {
 					label= { props.label }
 					responsive= { props.responsive }
 				/>
-				<div className="uagb-range-control__actions">
+				<div className="uagb-range-control__actions uagb-control__actions">
 					<UAGReset
 						onReset={resetValues}
 						attributeNames = {[
@@ -135,7 +135,7 @@ const Range = ( props ) => {
 					/>
 					{ props.displayUnit && (
 						<ButtonGroup
-							className="uagb-range-control__units"
+							className="uagb-control__units"
 							aria-label={ __(
 								'Select Units',
 								'ultimate-addons-for-gutenberg'

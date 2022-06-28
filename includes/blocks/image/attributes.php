@@ -8,7 +8,12 @@
  */
 
 $image_attribute   = UAGB_Block_Helper::uag_generate_border_attribute( 'image' );
-$overlay_attribute = UAGB_Block_Helper::uag_generate_border_attribute( 'overlay' );
+$overlay_attribute = UAGB_Block_Helper::uag_generate_border_attribute(
+	'overlay',
+	array(
+		'borderStyle' => 'solid',
+	)
+);
 
 return array_merge(
 	array(
