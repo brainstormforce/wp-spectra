@@ -34,13 +34,13 @@
 	.uagb-multi-button.is-secondary:hover:not(:disabled),
 	.uagb-multi-button-grou[aria-label="Gap"]
 	.uagb-multi-button.is-tertiary:hover:not(:disabled) {
-		color: #000;
+		color: $spectra-color-heading;
 		box-shadow: inset 0 0 0 1px $spectra-color-border;
 	}
 
 	.uagb-multi-button.is-secondary,
 	.uagb-multi-button.is-tertiary {
-		color: #000;
+		color: $spectra-color-body;
 	}
 
 	.uagb-multi-button.is-primary:focus:not(:disabled) {
@@ -52,17 +52,6 @@
 	.uagb-multi-button.is-tertiary:active:not(:disabled) {
 		background: $spectra-color-plain-background;
 		box-shadow: inset 0 0 0 1px $spectra-color-border;
-	}
-
-	button.uagb-multi-button.is-primary.is-primary {
-		color: $spectra-color-primary;
-		background-color: $spectra-color-tab-background;
-		border-color: $spectra-color-tab-border;
-		box-shadow: inset 0 0 0 1px $spectra-color-tab-border;
-
-		svg {
-			fill: $spectra-color-primary;
-		}
 	}
 
 	button.uagb-multi-button {
@@ -80,5 +69,42 @@
 
 	&.uag-multibutton-icons .uagb-multi-button {
 		padding: 3px;
+	}
+}
+
+// Classes for Spectra Improvemnets (BEM Convention).
+.spectra-multi-buttons {
+
+	// Classes for Color Scheme.
+	&__color-scheme {
+
+		&--primary {
+
+			button.uagb-multi-button.is-primary.is-primary {
+				color: $spectra-color-primary;
+				background-color: $spectra-color-tab-background;
+				border-color: $spectra-color-tab-border;
+				box-shadow: inset 0 0 0 1px $spectra-color-tab-border;
+		
+				svg {
+					fill: $spectra-color-primary;
+				}
+			}
+
+		}
+
+		&--secondary {
+			
+			button.uagb-multi-button.is-primary.is-primary {
+				color: $spectra-color-plain-background;
+				background-color: $spectra-color-border-hover;
+				border-color: $spectra-color-border-hover;
+				box-shadow: inset 0 0 0 1px $spectra-color-border-hover;
+		
+				svg {
+					fill: $spectra-color-plain-background;
+				}
+			}
+		}
 	}
 }
