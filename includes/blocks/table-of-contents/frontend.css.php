@@ -15,7 +15,7 @@ $block_name = 'table-of-contents';
 $t_columns_desktop_fallback = UAGB_Block_Helper::get_fallback_number( $attr['tColumnsDesktop'], 'tColumnsDesktop', $block_name );
 $t_columns_tablet_fallback  = UAGB_Block_Helper::get_fallback_number( $attr['tColumnsTablet'], 'tColumnsTablet', $block_name );
 $t_columns_mobile_fallback  = UAGB_Block_Helper::get_fallback_number( $attr['tColumnsMobile'], 'tColumnsMobile', $block_name );
-$width_desktop_fallback  = UAGB_Block_Helper::get_fallback_number( $attr['widthDesktop'], 'widthDesktop', $block_name );
+$width_desktop_fallback     = UAGB_Block_Helper::get_fallback_number( $attr['widthDesktop'], 'widthDesktop', $block_name );
 
 $m_selectors = array();
 $t_selectors = array();

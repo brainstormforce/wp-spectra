@@ -13,12 +13,12 @@ UAGB_Block_JS::blocks_testimonial_gfont( $attr );
 $block_name = 'testimonial';
 
 $test_item_count_fallback = UAGB_Block_Helper::get_fallback_number( $attr['test_item_count'], 'test_item_count', $block_name );
-$row_gap_fallback = UAGB_Block_Helper::get_fallback_number( $attr['rowGap'], 'rowGap', $block_name );
-$name_space_fallback = UAGB_Block_Helper::get_fallback_number( $attr['nameSpace'], 'nameSpace', $block_name );
-$desc_space_fallback = UAGB_Block_Helper::get_fallback_number( $attr['descSpace'], 'descSpace', $block_name );
-$column_gap_fallback = UAGB_Block_Helper::get_fallback_number( $attr['columnGap'], 'columnGap', $block_name );
-$columns_fallback = UAGB_Block_Helper::get_fallback_number( $attr['columns'], 'columns', $block_name );
-$image_width_fallback = UAGB_Block_Helper::get_fallback_number( $attr['imageWidth'], 'imageWidth', $block_name );
+$row_gap_fallback         = UAGB_Block_Helper::get_fallback_number( $attr['rowGap'], 'rowGap', $block_name );
+$name_space_fallback      = UAGB_Block_Helper::get_fallback_number( $attr['nameSpace'], 'nameSpace', $block_name );
+$desc_space_fallback      = UAGB_Block_Helper::get_fallback_number( $attr['descSpace'], 'descSpace', $block_name );
+$column_gap_fallback      = UAGB_Block_Helper::get_fallback_number( $attr['columnGap'], 'columnGap', $block_name );
+$columns_fallback         = UAGB_Block_Helper::get_fallback_number( $attr['columns'], 'columns', $block_name );
+$image_width_fallback     = UAGB_Block_Helper::get_fallback_number( $attr['imageWidth'], 'imageWidth', $block_name );
 
 $row_gap_tablet_fallback    = is_numeric( $attr['rowGapTablet'] ) ? $attr['rowGapTablet'] : $row_gap_fallback;
 $row_gap_mobile_fallback    = is_numeric( $attr['rowGapMobile'] ) ? $attr['rowGapMobile'] : $row_gap_tablet_fallback;
