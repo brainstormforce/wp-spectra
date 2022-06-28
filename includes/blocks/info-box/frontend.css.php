@@ -252,14 +252,14 @@ if ( 'Stacked' === $attr['iconView'] ) {
 	);
 } elseif ( 'Framed' === $attr['iconView'] ) {
 	$selectors[' .uagb-iconbox-icon-wrap.uagb-infobox-shape-circle'] = array(
-		'border'        => $attr['iconBorderWidth'] . 'px solid' . $attr['iconBackgroundColor'],
+		'border'        => $attr['iconBorderWidth'] . 'px solid ' . $attr['iconBackgroundColor'],
 		'border-radius' => '50%',
 	);
 	$selectors[' .uagb-iconbox-icon-wrap.uagb-infobox-shape-squre']  = array(
-		'border' => $attr['iconBorderWidth'] . 'px solid' . $attr['iconBackgroundColor'],
+		'border' => $attr['iconBorderWidth'] . 'px solid ' . $attr['iconBackgroundColor'],
 	);
 	$selectors[' .uagb-iconbox-icon-wrap:hover']                     = array(
-		'border' => $attr['iconBorderWidth'] . 'px solid' . $attr['iconBackgroundHoverColor'],
+		'border' => $attr['iconBorderWidth'] . 'px solid ' . $attr['iconBackgroundHoverColor'],
 	);
 }
 if ( 'text' === $attr['ctaType'] ) {
