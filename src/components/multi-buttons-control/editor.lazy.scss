@@ -90,7 +90,7 @@
 				background-color: $spectra-color-tab-background;
 				border-color: $spectra-color-tab-border;
 				box-shadow: inset 0 0 0 1px $spectra-color-tab-border;
-		
+
 				svg {
 					fill: $spectra-color-primary;
 				}
@@ -99,13 +99,13 @@
 		}
 
 		&--secondary {
-			
+
 			button.uagb-multi-button.is-primary.is-primary {
 				color: $spectra-color-plain-background;
 				background-color: $spectra-color-border-hover;
 				border-color: $spectra-color-border-hover;
 				box-shadow: inset 0 0 0 1px $spectra-color-border-hover;
-		
+
 				svg {
 					fill: $spectra-color-plain-background;
 				}

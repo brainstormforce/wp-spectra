@@ -105,28 +105,7 @@ const Background = ( props ) => {
 		} );
 	}
 
-	let bgOptions = [];
-
-	bgOptions = [
-		{
-			value: 'none',
-			label: __( 'None', 'ultimate-addons-for-gutenberg' ),
-		},
-		{
-			value: 'color',
-			label: __( 'Color', 'ultimate-addons-for-gutenberg' ),
-		},
-		{
-			value: 'gradient',
-			label: __( 'Gradient', 'ultimate-addons-for-gutenberg' ),
-		},
-		{
-			value: 'image',
-			label: __( 'Image', 'ultimate-addons-for-gutenberg' ),
-		},
-	];
-
-	let bgIconOptions = [
+	const bgIconOptions = [
 		{
 			value: 'color',
 			icon: (
@@ -217,10 +196,6 @@ const Background = ( props ) => {
 	}
 
 	if ( backgroundVideoType.value ) {
-		bgOptions.push( {
-			value: 'video',
-			label: __( 'Video', 'ultimate-addons-for-gutenberg' ),
-		} );
 		bgIconOptions.push( {
 			value: 'video',
 			icon: (
