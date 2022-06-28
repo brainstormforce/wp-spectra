@@ -421,10 +421,10 @@ if ( 'right' === $attr['ctaPosition'] && ( 'text' === $attr['ctaType'] || 'butto
 		'display'         => 'flex',
 		'justify-content' => 'space-between',
 	);
-	$selectors[' .uagb-cta__content-right .uagb-cta__left-right-wrap .uagb-cta__content']        = array(
+	$selectors[' .uagb-cta__content-right .uagb-cta__left-right-wrap .uagb-cta__content']      = array(
 		'width' => UAGB_Helper::get_css_value( $content_width_fallback, $attr['contentWidthType'] ),
 	);
-	$selectors[' .uagb-cta__content-right .uagb-cta__left-right-wrap .uagb-cta__link-wrapper']   = array(
+	$selectors[' .uagb-cta__content-right .uagb-cta__left-right-wrap .uagb-cta__link-wrapper'] = array(
 		'width' => UAGB_Helper::get_css_value( ( 100 - $content_width_fallback ), $attr['contentWidthType'] ),
 	);
 

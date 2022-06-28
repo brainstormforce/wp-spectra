@@ -7,7 +7,7 @@
  * @package uagb
  */
 
-$block_name = 'inline-notice';
+$block_name    = 'inline-notice';
 $base_selector = '.uagb-block-';
 $selector      = $base_selector . $id;
 $js_attr       = array(
