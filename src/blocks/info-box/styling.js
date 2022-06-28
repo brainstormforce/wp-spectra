@@ -247,7 +247,6 @@ function styling( props ) {
 		' .uagb-iconbox-icon-wrap': {
 			'margin' : 'auto',
 			'display' : 'inline-block',
-			'line-height' : 0,
 			'box-sizing': 'content-box',
 			'width': generateCSSUnit( iconSizeFallback, iconSizeType ),
 			'height': generateCSSUnit( iconSizeFallback, iconSizeType ),
