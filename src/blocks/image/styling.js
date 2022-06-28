@@ -161,6 +161,11 @@ export default function styling( props ) {
 	const imageBorderCSSTablet = generateBorderCSS( props.attributes, 'image', 'tablet' )
 	const imageBorderCSSMobile = generateBorderCSS( props.attributes, 'image', 'mobile' )
 
+	const tabletWidth = '' !== widthTablet ? widthTablet : width;
+	const mobileWidth = '' !== widthMobile ? widthMobile : tabletWidth;
+
+	const tabletHeight = '' !== heightTablet ? heightTablet : height;
+	const mobileHeight = '' !== heightMobile ? heightMobile : tabletHeight;
 
 	const getImageShadowPosition = imageBoxShadowPosition !== 'outset' ? imageBoxShadowPosition : '';
 
@@ -454,8 +459,8 @@ export default function styling( props ) {
 
 	tablet_selectors['.wp-block-uagb-image .wp-block-uagb-image__figure img'] = {
 		'object-fit': objectFitTablet,
-		'width'     : widthTablet + 'px',
-		'height'    : heightTablet + 'px'
+		'width'     : tabletWidth + 'px',
+		'height'    : tabletHeight + 'px'
 	}
 
 	// Mobile
@@ -556,8 +561,8 @@ export default function styling( props ) {
 
 	mobile_selectors['.wp-block-uagb-image .wp-block-uagb-image__figure img'] = {
 		'object-fit': objectFitMobile,
-		'width'     : widthMobile + 'px',
-		'height'    : heightMobile + 'px'
+		'width'     : mobileWidth + 'px',
+		'height'    : mobileHeight + 'px'
 	}
 
 	let styling_css = generateCSS( selectors, base_selector );

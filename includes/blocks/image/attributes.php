@@ -147,7 +147,7 @@ return array_merge(
 		'maskRepeat'                  => 'no-repeat',
 		'objectFit'                   => 'default',
 		'objectFitTablet'             => 'default',
-		'objectFitMobile'             => 'default'
+		'objectFitMobile'             => 'default',
 	),
 	$image_attribute,
 	$overlay_attribute
