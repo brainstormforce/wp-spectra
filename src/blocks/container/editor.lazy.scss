@@ -68,17 +68,24 @@
 		}
 	}
 }
+
 // Container select layout view CSS for Astra customizer.
+
 #customize-theme-controls {
+
 	.uagb-container-variation-picker {
+
 		.block-editor-block-variation-picker__variations {
 			width: 300px;
 		}
+
 		.uagb-variation-close {
 			right: 0;
 			top: -8px;
 		}
+		
 		.components-placeholder__label {
+
 			.dashicon {
 				display: none;
 			}
