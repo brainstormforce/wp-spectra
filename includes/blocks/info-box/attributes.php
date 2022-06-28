@@ -109,7 +109,7 @@ return array_merge(
 		'iconMarginRightMobile'      => '',
 		'iconMarginTopMobile'        => '',
 		'iconMarginBottomMobile'     => '',
-		'iconMarginUnit'       		 => 'px',
+		'iconMarginUnit'             => 'px',
 		'iconTabletMarginUnit'       => 'px',
 		'iconMobileMarginUnit'       => 'px',
 		'imageSize'                  => 'thumbnail',
