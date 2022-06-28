@@ -11,7 +11,8 @@
 		justify-content: center;
 		height: unset;
 		padding: 6px;
-		line-height: 14px;
+		line-height: 16px;
+		min-height: 30px;
 
 		&:first-child {
 			-webkit-border-radius: $spectra-control-border-radius 0 0 $spectra-control-border-radius;
@@ -62,6 +63,10 @@
 	svg {
 		width: 18px;
 		fill: $spectra-color-body;
+
+		path {
+			fill: inherit;
+		}
 	}
 }
 

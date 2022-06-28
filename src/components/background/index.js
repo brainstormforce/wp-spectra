@@ -11,6 +11,7 @@ import { useDeviceType } from '@Controls/getPreviewType';
 import ResponsiveUAGImage from '@Components/responsive-image';
 import ResponsiveUAGFocalPointPicker from '@Components/responsive-focal-point-picker';
 import MultiButtonsControl from '@Components/multi-buttons-control';
+import UAGB_Block_Icons from '@Controls/block-icons';
 
 const Background = ( props ) => {
 	// Add and remove the CSS on the drop and remove of the component.
@@ -125,6 +126,39 @@ const Background = ( props ) => {
 		},
 	];
 
+	let bgIconOptions = [
+		{
+			value: 'color',
+			icon: (
+				UAGB_Block_Icons.bg_color
+			),
+			tooltip: __(
+				'Color',
+				'ultimate-addons-for-gutenberg'
+			),
+		},
+		{
+			value: 'gradient',
+			icon: (
+				UAGB_Block_Icons.bg_gradient
+			),
+			tooltip: __(
+				'Gradient',
+				'ultimate-addons-for-gutenberg'
+			),
+		},
+		{
+			value: 'image',
+			icon: (
+				UAGB_Block_Icons.bg_image
+			),
+			tooltip: __(
+				'Image',
+				'ultimate-addons-for-gutenberg'
+			),
+		},
+	];
+
 	let bgSizeOptions = [
 		{
 			value: 'auto',
@@ -187,20 +221,35 @@ const Background = ( props ) => {
 			value: 'video',
 			label: __( 'Video', 'ultimate-addons-for-gutenberg' ),
 		} );
+		bgIconOptions.push( {
+			value: 'video',
+			icon: (
+				UAGB_Block_Icons.bg_video
+			),
+			tooltip: __(
+				'Video',
+				'ultimate-addons-for-gutenberg'
+			),
+		} );
 	}
 
 	const advancedControls = (
 		<>
-			<div className="uag-background-type">
-				<SelectControl
-					value={ backgroundType.value }
-					onChange={ ( value ) =>
-						setAttributes( { [ backgroundType.label ]: value } )
-					}
-					options={ bgOptions }
-					label={ __( 'Type', 'ultimate-addons-for-gutenberg' ) }
-				/>
-			</div>
+			<MultiButtonsControl
+				setAttributes={ setAttributes }
+				label={ __(
+					'Type',
+					'ultimate-addons-for-gutenberg'
+				) }
+				data={ {
+					value: backgroundType.value,
+					label: backgroundType.label,
+				} }
+				options={ bgIconOptions }
+				showIcons={ true }
+				colorVariant="secondary"
+				layoutVariant="inline"
+			/>
 			{ 'color' === backgroundType.value && (
 				<div className="uag-background-color">
 					<AdvancedPopColorControl
