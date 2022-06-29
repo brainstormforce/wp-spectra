@@ -35,7 +35,7 @@ return array_merge(
 		'alignContentDesktop'            => '',
 		'alignContentTablet'             => '',
 		'alignContentMobile'             => '',
-		'backgroundType'                 => '',
+		'backgroundType'                 => 'none',
 		'backgroundImageDesktop'         => '',
 		'backgroundImageTablet'          => '',
 		'backgroundImageMobile'          => '',
