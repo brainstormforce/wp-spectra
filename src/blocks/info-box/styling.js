@@ -289,6 +289,7 @@ function styling( props ) {
 			'color': iconColor,
 			'fill': iconColor,
 			'width': generateCSSUnit( iconSizeFallback, iconSizeType ),
+			'height': generateCSSUnit( iconSizeFallback, iconSizeType ),
 			'line-height': generateCSSUnit( iconSizeFallback, iconSizeType ),
 			'padding-left': generateCSSUnit( iconLeftMargin, iconMarginUnit ),
 			'padding-right': generateCSSUnit( iconRightMargin, iconMarginUnit ),
