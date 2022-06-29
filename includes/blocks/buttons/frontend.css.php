@@ -128,6 +128,7 @@ if ( $attr['childMigrate'] ) {
 		'font-weight'     => $attr['fontWeight'],
 		'font-size'       => UAGB_Helper::get_css_value( $attr['fontSize'], $attr['fontSizeType'] ),
 		'line-height'     => UAGB_Helper::get_css_value( $attr['lineHeight'], $attr['lineHeightType'] ),
+		'letter-spacing'     => UAGB_Helper::get_css_value( $attr['fontLetterSpacing'], $attr['fontLetterSpacingType'] ),
 	);
 	$selectors[' .uagb-buttons-repeater .uagb-button__link']                               = array( // For New User.
 		'font-family'     => $attr['fontFamily'],
@@ -137,6 +138,7 @@ if ( $attr['childMigrate'] ) {
 		'font-weight'     => $attr['fontWeight'],
 		'font-size'       => UAGB_Helper::get_css_value( $attr['fontSize'], $attr['fontSizeType'] ),
 		'line-height'     => UAGB_Helper::get_css_value( $attr['lineHeight'], $attr['lineHeightType'] ),
+		'letter-spacing'     => UAGB_Helper::get_css_value( $attr['fontLetterSpacing'], $attr['fontLetterSpacingType'] ),
 	);
 	$selectors['.uagb-buttons__outer-wrap .uagb-buttons-repeater.wp-block-button__link']   = array( // For New User.
 		'padding-top'    => UAGB_Helper::get_css_value( $attr['topPadding'], $attr['paddingUnit'] ),
@@ -151,6 +153,7 @@ if ( $attr['childMigrate'] ) {
 	$t_selectors['.uagb-buttons__outer-wrap .uagb-buttons-repeater.wp-block-button__link'] = array(
 		'font-size'      => UAGB_Helper::get_css_value( $attr['fontSizeTablet'], $attr['fontSizeType'] ),
 		'line-height'    => UAGB_Helper::get_css_value( $attr['lineHeightTablet'], $attr['lineHeightType'] ),
+		'letter-spacing' => UAGB_Helper::get_css_value( $attr['fontLetterSpacingTablet'], $attr['fontLetterSpacingType'] ),
 		'padding-top'    => UAGB_Helper::get_css_value( $attr['topTabletPadding'], $attr['tabletPaddingUnit'] ),
 		'padding-bottom' => UAGB_Helper::get_css_value( $attr['bottomTabletPadding'], $attr['tabletPaddingUnit'] ),
 		'padding-left'   => UAGB_Helper::get_css_value( $attr['leftTabletPadding'], $attr['tabletPaddingUnit'] ),
@@ -163,6 +166,7 @@ if ( $attr['childMigrate'] ) {
 	$m_selectors['.uagb-buttons__outer-wrap .uagb-buttons-repeater.wp-block-button__link'] = array(
 		'font-size'      => UAGB_Helper::get_css_value( $attr['fontSizeMobile'], $attr['fontSizeType'] ),
 		'line-height'    => UAGB_Helper::get_css_value( $attr['lineHeightMobile'], $attr['lineHeightType'] ),
+		'letter-spacing' => UAGB_Helper::get_css_value( $attr['fontLetterSpacingMobile'], $attr['fontLetterSpacingType'] ),
 		'padding-top'    => UAGB_Helper::get_css_value( $attr['topMobilePadding'], $attr['mobilePaddingUnit'] ),
 		'padding-bottom' => UAGB_Helper::get_css_value( $attr['bottomMobilePadding'], $attr['mobilePaddingUnit'] ),
 		'padding-left'   => UAGB_Helper::get_css_value( $attr['leftMobilePadding'], $attr['mobilePaddingUnit'] ),
