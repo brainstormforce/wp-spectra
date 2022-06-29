@@ -164,6 +164,19 @@ const Settings = ( props ) => {
 		linkColor,
 		linkHoverColor,
 
+		// responsive
+		innerContentCustomWidthTypeTablet,
+		innerContentCustomWidthTypeMobile,
+		widthTypeTablet,
+		widthTypeMobile,
+		minHeightTypeTablet,
+		minHeightTypeMobile,
+		topHeightType,
+		topHeightTypeTablet,
+		topHeightTypeMobile,
+		bottomHeightType,
+		bottomHeightTypeTablet,
+		bottomHeightTypeMobile
 	} = attributes;
 
 	let currentDirection = directionDesktop;
@@ -423,14 +436,26 @@ const Settings = ( props ) => {
 												desktop: {
 													value: innerContentCustomWidthDesktop,
 													label: 'innerContentCustomWidthDesktop',
+													unit: {
+														value: innerContentCustomWidthType,
+														label: 'innerContentCustomWidthType',
+													},
 												},
 												tablet: {
 													value: innerContentCustomWidthTablet,
 													label: 'innerContentCustomWidthTablet',
+													unit: {
+														value: innerContentCustomWidthTypeTablet,
+														label: 'innerContentCustomWidthTypeTablet',
+													},
 												},
 												mobile: {
 													value: innerContentCustomWidthMobile,
 													label: 'innerContentCustomWidthMobile',
+													unit: {
+														value: innerContentCustomWidthTypeMobile,
+														label: 'innerContentCustomWidthTypeMobile',
+													},
 												},
 											} }
 											min={ 0 }
@@ -471,14 +496,26 @@ const Settings = ( props ) => {
 									desktop: {
 										value: widthDesktop,
 										label: 'widthDesktop',
+										unit: {
+											value: widthType,
+											label: 'widthType',
+										},
 									},
 									tablet: {
 										value: widthTablet,
 										label: 'widthTablet',
+										unit: {
+											value: widthTypeTablet,
+											label: 'widthTypeTablet',
+										},
 									},
 									mobile: {
 										value: widthMobile,
 										label: 'widthMobile',
+										unit: {
+											value: widthTypeMobile,
+											label: 'widthTypeMobile',
+										},
 									},
 								} }
 								min={ 0 }
@@ -529,14 +566,26 @@ const Settings = ( props ) => {
 										desktop: {
 											value: innerContentCustomWidthDesktop,
 											label: 'innerContentCustomWidthDesktop',
+											unit: {
+												value: innerContentCustomWidthType,
+												label: 'innerContentCustomWidthType',
+											},
 										},
 										tablet: {
 											value: innerContentCustomWidthTablet,
 											label: 'innerContentCustomWidthTablet',
+											unit: {
+												value: innerContentCustomWidthTypeTablet,
+												label: 'innerContentCustomWidthTypeTablet',
+											},
 										},
 										mobile: {
 											value: innerContentCustomWidthMobile,
 											label: 'innerContentCustomWidthMobile',
+											unit: {
+												value: innerContentCustomWidthTypeMobile,
+												label: 'innerContentCustomWidthTypeMobile',
+											},
 										},
 									} }
 									min={ 0 }
@@ -573,14 +622,26 @@ const Settings = ( props ) => {
 							desktop: {
 								value: minHeightDesktop,
 								label: 'minHeightDesktop',
+								unit: {
+									value: minHeightType,
+									label: 'minHeightType',
+								},
 							},
 							tablet: {
 								value: minHeightTablet,
 								label: 'minHeightTablet',
+								unit: {
+									value: minHeightTypeTablet,
+									label: 'minHeightTypeTablet',
+								},
 							},
 							mobile: {
 								value: minHeightMobile,
 								label: 'minHeightMobile',
+								unit: {
+									value: minHeightTypeMobile,
+									label: 'minHeightTypeMobile',
+								},
 							},
 						} }
 						min={ 0 }
@@ -1466,14 +1527,26 @@ const Settings = ( props ) => {
 								desktop: {
 									value: topHeight,
 									label: 'topHeight',
+									unit:  {
+										value: topHeightType,
+										label: 'topHeightType',
+									}
 								},
 								tablet: {
 									value: topHeightTablet,
 									label: 'topHeightTablet',
+									unit:  {
+										value: topHeightTypeTablet,
+										label: 'topHeightTypeTablet',
+									}
 								},
 								mobile: {
 									value: topHeightMobile,
 									label: 'topHeightMobile',
+									unit:  {
+										value: topHeightTypeMobile,
+										label: 'topHeightTypeMobile',
+									}
 								},
 							} }
 							min={ 0 }
@@ -1565,14 +1638,26 @@ const Settings = ( props ) => {
 								desktop: {
 									value: bottomHeight,
 									label: 'bottomHeight',
+									unit:  {
+										value: bottomHeightType,
+										label: 'bottomHeightType',
+									}
 								},
 								tablet: {
 									value: bottomHeightTablet,
 									label: 'bottomHeightTablet',
+									unit:  {
+										value: bottomHeightTypeTablet,
+										label: 'bottomHeightTypeTablet',
+									}
 								},
 								mobile: {
 									value: bottomHeightMobile,
 									label: 'bottomHeightMobile',
+									unit:  {
+										value: bottomHeightTypeMobile,
+										label: 'bottomHeightTypeMobile',
+									}
 								},
 							} }
 							min={ 0 }
