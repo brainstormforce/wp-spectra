@@ -128,7 +128,7 @@ if ( $attr['childMigrate'] ) {
 		'font-weight'     => $attr['fontWeight'],
 		'font-size'       => UAGB_Helper::get_css_value( $attr['fontSize'], $attr['fontSizeType'] ),
 		'line-height'     => UAGB_Helper::get_css_value( $attr['lineHeight'], $attr['lineHeightType'] ),
-		'letter-spacing'     => UAGB_Helper::get_css_value( $attr['fontLetterSpacing'], $attr['fontLetterSpacingType'] ),
+		'letter-spacing'  => UAGB_Helper::get_css_value( $attr['fontLetterSpacing'], $attr['fontLetterSpacingType'] ),
 	);
 	$selectors[' .uagb-buttons-repeater .uagb-button__link']                               = array( // For New User.
 		'font-family'     => $attr['fontFamily'],
@@ -138,7 +138,7 @@ if ( $attr['childMigrate'] ) {
 		'font-weight'     => $attr['fontWeight'],
 		'font-size'       => UAGB_Helper::get_css_value( $attr['fontSize'], $attr['fontSizeType'] ),
 		'line-height'     => UAGB_Helper::get_css_value( $attr['lineHeight'], $attr['lineHeightType'] ),
-		'letter-spacing'     => UAGB_Helper::get_css_value( $attr['fontLetterSpacing'], $attr['fontLetterSpacingType'] ),
+		'letter-spacing'  => UAGB_Helper::get_css_value( $attr['fontLetterSpacing'], $attr['fontLetterSpacingType'] ),
 	);
 	$selectors['.uagb-buttons__outer-wrap .uagb-buttons-repeater.wp-block-button__link']   = array( // For New User.
 		'padding-top'    => UAGB_Helper::get_css_value( $attr['topPadding'], $attr['paddingUnit'] ),
