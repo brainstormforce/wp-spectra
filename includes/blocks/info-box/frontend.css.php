@@ -252,27 +252,28 @@ if ( 'Stacked' === $attr['iconView'] ) {
 	);
 } elseif ( 'Framed' === $attr['iconView'] ) {
 	$selectors[' .uagb-iconbox-icon-wrap.uagb-infobox-shape-circle'] = array(
-		'border'        => $attr['iconBorderWidth'] . 'px solid' . $attr['iconBackgroundColor'],
+		'border'        => $attr['iconBorderWidth'] . 'px solid ' . $attr['iconBackgroundColor'],
 		'border-radius' => '50%',
 	);
 	$selectors[' .uagb-iconbox-icon-wrap.uagb-infobox-shape-squre']  = array(
-		'border' => $attr['iconBorderWidth'] . 'px solid' . $attr['iconBackgroundColor'],
+		'border' => $attr['iconBorderWidth'] . 'px solid ' . $attr['iconBackgroundColor'],
 	);
 	$selectors[' .uagb-iconbox-icon-wrap:hover']                     = array(
-		'border' => $attr['iconBorderWidth'] . 'px solid' . $attr['iconBackgroundHoverColor'],
+		'border' => $attr['iconBorderWidth'] . 'px solid ' . $attr['iconBackgroundHoverColor'],
 	);
 }
 if ( 'text' === $attr['ctaType'] ) {
-	$selectors[' .uagb-infobox-cta-link']           = array(
-		'color' => $attr['ctaLinkColor'],
+	$selectors[' div.uagb-ifb-button-wrapper a.uagb-infobox-cta-link'] = array(
+		'text-decoration' => $attr['ctaDecoration'],
+		'color'           => $attr['ctaLinkColor'],
 	);
-	$selectors[' .uagb-infobox-cta-link:hover']     = array(
+	$selectors[' .uagb-infobox-cta-link:hover']                        = array(
 		'color' => $attr['ctaLinkHoverColor'],
 	);
-	$selectors[' .uagb-infobox-cta-link:hover svg'] = array(
+	$selectors[' .uagb-infobox-cta-link:hover svg']                    = array(
 		'fill' => $attr['ctaLinkHoverColor'],
 	);
-	$selectors[' .uagb-infobox-cta-link svg']       = array(
+	$selectors[' .uagb-infobox-cta-link svg']                          = array(
 		'font-size'   => $cta_icon_size,
 		'height'      => $cta_icon_size,
 		'width'       => $cta_icon_size,
