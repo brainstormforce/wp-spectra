@@ -2,7 +2,6 @@ import { blocksAttributes } from '@Controls/getBlocksDefaultAttributes';
 import { select } from '@wordpress/data';
 import { Button, Tooltip, Dashicon } from '@wordpress/components';
 import { __ } from '@wordpress/i18n';
-import { useEffect, useState } from '@wordpress/element';
 
 const UAGReset = ( props ) => {
 
@@ -50,7 +49,7 @@ const UAGReset = ( props ) => {
 		return resetDisableState;
 	};
 
-	let resetDisableState = getResetState();
+	const resetDisableState = getResetState();
 
 	const resetHandler = () => {
 		const defaultValues = getBlockResetValue();
