@@ -762,6 +762,15 @@ function styling( props ) {
 				paddingFieldUnit
 			),
 		};
+		selectors[ ' .uagb-forms-main-form .uagb-forms-input:focus' ] = {
+			'border-top-width': 0,
+			'border-right-width': 0,
+			'border-left-width': 0,
+			'border-top': 0,
+			'border-left': 0,
+			'border-right': 0,
+			'box-shadow': 'unset',
+		};
 		tabletSelectors[ ' .uagb-forms-main-form  .uagb-forms-input' ] = {
 			'padding-top': generateCSSUnit(
 				paddingFieldTopTablet,
