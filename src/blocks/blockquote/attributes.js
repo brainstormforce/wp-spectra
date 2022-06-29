@@ -586,14 +586,12 @@ const attributes = {
 	},
 	verticalPaddingTablet: {
 		type: 'number',
-		default: 0,
 		UAGCopyPaste: {
 			styleType: 'desc-vertical-padding'
 		}
 	},
 	verticalPaddingMobile: {
 		type: 'number',
-		default: 0,
 		UAGCopyPaste: {
 			styleType: 'desc-vertical-padding'
 		}

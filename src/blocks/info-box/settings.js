@@ -1064,9 +1064,10 @@ const Settings = ( props ) => {
 												) }
 												setAttributes={ setAttributes }
 												value={ iconBorderWidth }
-												onChange={ ( value ) =>
-													setAttributes( { iconBorderWidth: value } )
-												}
+												data={ {
+													value: iconBorderWidth,
+													label: 'iconBorderWidth',
+												} }
 												min={ 0 }
 												max={ 15 }
 												units={ [
@@ -1109,11 +1110,11 @@ const Settings = ( props ) => {
 													colorValue={
 														iconColor ? iconColor : ''
 													}
-													onColorChange={ ( value ) =>
-														setAttributes( {
-															iconColor: value,
-														} )
-													}
+													data={ {
+														value: iconColor,
+														label: 'iconColor',
+													} }
+													setAttributes={ setAttributes }
 												/>
 												{ iconView !== 'none' &&
 													<>
@@ -1125,11 +1126,11 @@ const Settings = ( props ) => {
 															colorValue={
 																iconBackgroundColor ? iconBackgroundColor : ''
 															}
-															onColorChange={ ( value ) =>
-																setAttributes( {
-																	iconBackgroundColor: value,
-																} )
-															}
+															data={ {
+																value: iconBackgroundColor,
+																label: 'iconBackgroundColor',
+															} }
+															setAttributes={ setAttributes }
 														/>
 													</>
 												}
@@ -1146,11 +1147,11 @@ const Settings = ( props ) => {
 													colorValue={
 														iconHover ? iconHover : ''
 													}
-													onColorChange={ ( value ) =>
-														setAttributes( {
-															iconHover: value,
-														} )
-													}
+													data={ {
+														value: iconHover,
+														label: 'iconHover',
+													} }
+													setAttributes={ setAttributes }
 												/>
 												{ iconView !== 'none' &&
 													<>
@@ -1162,11 +1163,11 @@ const Settings = ( props ) => {
 															colorValue={
 																iconBackgroundHoverColor ? iconBackgroundHoverColor : ''
 															}
-															onColorChange={ ( value ) =>
-																setAttributes( {
-																	iconBackgroundHoverColor: value,
-																} )
-															}
+															data={ {
+																value: iconBackgroundHoverColor,
+																label: 'iconBackgroundHoverColor',
+															} }
+															setAttributes={ setAttributes }
 														/>
 													</>
 												}
@@ -1181,9 +1182,10 @@ const Settings = ( props ) => {
 										) }
 										setAttributes={ setAttributes }
 										value={ iconSize }
-										onChange={ ( value ) =>
-											setAttributes( { iconSize: value } )
-										}
+										data={ {
+											value: iconSize,
+											label: 'iconSize',
+										} }
 										limitMin={ { 'px': 0, '%': 0, 'em': 0 } } // eslint-disable-line quote-props
 										limitMax={ { 'px': 500, '%': 100, 'em': 100 } } // eslint-disable-line quote-props
 										unit={ {
@@ -1306,11 +1308,10 @@ const Settings = ( props ) => {
 											) }
 											setAttributes={ setAttributes }
 											value={ iconimgBorderRadius }
-											onChange={ ( value ) =>
-												setAttributes( {
-													iconimgBorderRadius: value,
-												} )
-											}
+											data={ {
+												value: iconimgBorderRadius,
+												label: 'iconimgBorderRadius',
+											} }
 											min={ 0 }
 											max={ 100 }
 											unit={ {
@@ -1439,9 +1440,11 @@ const Settings = ( props ) => {
 									'ultimate-addons-for-gutenberg'
 								) }
 								colorValue={ prefixColor ? prefixColor : '' }
-								onColorChange={ ( value ) =>
-									setAttributes( { prefixColor: value } )
-								}
+								data={ {
+									value: prefixColor,
+									label: 'prefixColor',
+								} }
+								setAttributes={ setAttributes }
 							/>
 							<TypographyControl
 								label={ __(
@@ -1608,9 +1611,11 @@ const Settings = ( props ) => {
 								'ultimate-addons-for-gutenberg'
 							) }
 							colorValue={ headingColor ? headingColor : '' }
-							onColorChange={ ( value ) =>
-								setAttributes( { headingColor: value } )
-							}
+							data={ {
+								value: headingColor,
+								label: 'headingColor',
+							} }
+							setAttributes={ setAttributes }
 						/>
 						<TypographyControl
 							label={ __(
@@ -1820,11 +1825,10 @@ const Settings = ( props ) => {
 							) }
 							setAttributes={ setAttributes }
 							value={ seperatorThickness }
-							onChange={ ( value ) =>
-								setAttributes( {
-									seperatorThickness: value,
-								} )
-							}
+							data={ {
+								value: seperatorThickness,
+								label: 'seperatorThickness',
+							} }
 							min={ 0 }
 							max={ 10 }
 							unit={ {
@@ -1840,9 +1844,11 @@ const Settings = ( props ) => {
 							colorValue={
 								seperatorColor ? seperatorColor : ''
 							}
-							onColorChange={ ( value ) =>
-								setAttributes( { seperatorColor: value } )
-							}
+							data={ {
+								value: seperatorColor,
+								label: 'seperatorColor',
+							} }
+							setAttributes={ setAttributes }
 						/>
 						<SpacingControl
 								{ ...props }
@@ -1931,9 +1937,11 @@ const Settings = ( props ) => {
 								colorValue={
 									subHeadingColor ? subHeadingColor : ''
 								}
-								onColorChange={ ( value ) =>
-									setAttributes( { subHeadingColor: value } )
-								}
+								data={ {
+									value: subHeadingColor,
+									label: 'subHeadingColor',
+								} }
+								setAttributes={ setAttributes }
 							/>
 							<TypographyControl
 								label={ __(
@@ -2123,11 +2131,11 @@ const Settings = ( props ) => {
 														'ultimate-addons-for-gutenberg'
 													) }
 													colorValue={ ctaLinkColor ? ctaLinkColor : '' }
-													onColorChange={ ( value ) =>
-														setAttributes( {
-															ctaLinkColor: value,
-														} )
-													}
+													data={ {
+														value: ctaLinkColor,
+														label: 'ctaLinkColor',
+													} }
+													setAttributes={ setAttributes }
 												/>
 											}
 											hover={
@@ -2139,11 +2147,11 @@ const Settings = ( props ) => {
 													colorValue={
 														ctaLinkHoverColor ? ctaLinkHoverColor : ''
 													}
-													onColorChange={ ( value ) =>
-														setAttributes( {
-															ctaLinkHoverColor: value,
-														} )
-													}
+													data={ {
+														value: ctaLinkHoverColor,
+														label: 'ctaLinkHoverColor',
+													} }
+													setAttributes={ setAttributes }
 												/>
 												}
 										/>
@@ -2229,11 +2237,11 @@ const Settings = ( props ) => {
 																? ctaBtnLinkColor
 																: ''
 														}
-														onColorChange={ ( value ) =>
-															setAttributes( {
-																ctaBtnLinkColor: value,
-															} )
-														}
+														data={ {
+															value: ctaBtnLinkColor,
+															label: 'ctaBtnLinkColor',
+														} }
+														setAttributes={ setAttributes }
 													/>
 													<AdvancedPopColorControl
 														label={ __(
@@ -2243,11 +2251,11 @@ const Settings = ( props ) => {
 														colorValue={
 															ctaBgColor ? ctaBgColor : ''
 														}
-														onColorChange={ ( value ) =>
-															setAttributes( {
-																ctaBgColor: value,
-															} )
-														}
+														data={ {
+															value: ctaBgColor,
+															label: 'ctaBgColor',
+														} }
+														setAttributes={ setAttributes }
 													/>
 													</>
 											}
@@ -2263,11 +2271,11 @@ const Settings = ( props ) => {
 																? ctaLinkHoverColor
 																: ''
 														}
-														onColorChange={ ( value ) =>
-															setAttributes( {
-																ctaLinkHoverColor: value,
-															} )
-														}
+														data={ {
+															value: ctaLinkHoverColor,
+															label: 'ctaLinkHoverColor',
+														} }
+														setAttributes={ setAttributes }
 													/>
 													<AdvancedPopColorControl
 														label={ __(
@@ -2279,11 +2287,11 @@ const Settings = ( props ) => {
 																? ctaBgHoverColor
 																: ''
 														}
-														onColorChange={ ( value ) =>
-															setAttributes( {
-																ctaBgHoverColor: value,
-															} )
-														}
+														data={ {
+															value: ctaBgHoverColor,
+															label: 'ctaBgHoverColor',
+														} }
+														setAttributes={ setAttributes }
 													/>
 													</>
 												}
