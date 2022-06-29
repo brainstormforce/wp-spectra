@@ -574,7 +574,7 @@ const Settings = ( props ) => {
 						label: 'overlayType',
 					} }
 					gradientOverlay={{
-						value: false,
+						value: true,
 					}}
 					backgroundSize={ {
 						value: backgroundSize,
