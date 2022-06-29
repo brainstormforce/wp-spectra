@@ -929,9 +929,11 @@ const Settings = ( props ) => {
 				'ultimate-addons-for-gutenberg'
 			) }
 			colorValue={ linkColor }
-			onColorChange={ ( value ) =>
-				setAttributes( { linkColor: value } )
-			}
+			data={ {
+				value: linkColor,
+				label: 'linkColor',
+			} }
+			setAttributes={ setAttributes }
 		/>
 	);
 
@@ -942,9 +944,11 @@ const Settings = ( props ) => {
 				'ultimate-addons-for-gutenberg'
 			) }
 			colorValue={ linkHoverColor }
-			onColorChange={ ( value ) =>
-				setAttributes( { linkHoverColor: value } )
-			}
+			data={ {
+				value: linkHoverColor,
+				label: 'linkHoverColor',
+			} }
+			setAttributes={ setAttributes }
 		/>
 	);
 
@@ -960,9 +964,11 @@ const Settings = ( props ) => {
 						'ultimate-addons-for-gutenberg'
 					) }
 					colorValue={ textColor }
-					onColorChange={ ( value ) =>
-						setAttributes( { textColor: value } )
-					}
+					data={ {
+						value: textColor,
+						label: 'textColor',
+					} }
+					setAttributes={ setAttributes }
 				/>
 				<UAGTabsControl
 						tabs={ [
@@ -1500,9 +1506,11 @@ const Settings = ( props ) => {
 								'ultimate-addons-for-gutenberg'
 							) }
 							colorValue={ topColor }
-							onColorChange={ ( value ) =>
-								setAttributes( { topColor: value } )
-							}
+							data={ {
+								value: topColor,
+								label: 'topColor',
+							} }
+							setAttributes={ setAttributes }
 						/>
 						<Range
 							label={ __(
@@ -1511,9 +1519,10 @@ const Settings = ( props ) => {
 							) }
 							setAttributes={ setAttributes }
 							value={ topWidth }
-							onChange={ ( value ) =>
-								setAttributes( { topWidth: value } )
-							}
+							data={ {
+								value: topWidth,
+								label: 'topWidth',
+							} }
 							min={ 100 }
 							max={ 2000 }
 							displayUnit={ false }
@@ -1611,9 +1620,11 @@ const Settings = ( props ) => {
 								'ultimate-addons-for-gutenberg'
 							) }
 							colorValue={ bottomColor }
-							onColorChange={ ( value ) =>
-								setAttributes( { bottomColor: value } )
-							}
+							data={ {
+								value: bottomColor,
+								label: 'bottomColor',
+							} }
+							setAttributes={ setAttributes }
 						/>
 						<Range
 							label={ __(
@@ -1622,9 +1633,10 @@ const Settings = ( props ) => {
 							) }
 							setAttributes={ setAttributes }
 							value={ bottomWidth }
-							onChange={ ( value ) =>
-								setAttributes( { bottomWidth: value } )
-							}
+							data={ {
+								value: bottomWidth,
+								label: 'bottomWidth',
+							} }
 							min={ 100 }
 							max={ 2000 }
 							displayUnit={ false }
