@@ -949,12 +949,14 @@ successMsgLetterSpacingType,
 			<UAGAdvancedPanelBody
 				title={ __( 'General', 'ultimate-addons-for-gutenberg' ) }
 			>
-				<SelectControl
+				<UAGSelectControl
 					label={ __(
 						'Select Form',
 						'ultimate-addons-for-gutenberg'
 					) }
-					value={ formId }
+					data={ {
+						value: formId,
+					} }
 					onChange={ onSelectForm }
 					options={ uagb_blocks_info.gf_forms }
 				/>
@@ -1137,12 +1139,16 @@ successMsgLetterSpacingType,
 	const btnBorderSetting = () => {
 		return (
 			<>
-				<SelectControl
-					label={ __( 'Style', 'ultimate-addons-for-gutenberg' ) }
-					value={ buttonBorderStyle }
-					onChange={ ( value ) =>
-						setAttributes( { buttonBorderStyle: value } )
-					}
+				<UAGSelectControl
+					label={ __(
+						'Style',
+						'ultimate-addons-for-gutenberg'
+					) }
+					data={ {
+						value: buttonBorderStyle,
+						label: 'buttonBorderStyle',
+					} }
+					setAttributes={ setAttributes }
 					options={ [
 						{
 							value: 'none',
