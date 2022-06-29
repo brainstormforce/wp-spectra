@@ -13,12 +13,12 @@ UAGB_Block_JS::blocks_taxonomy_list_gfont( $attr );
 $block_name = 'taxonomy-list';
 
 $list_bottom_margin_fallback = UAGB_Block_Helper::get_fallback_number( $attr['listBottomMargin'], 'listBottomMargin', $block_name );
-$columns_fallback = UAGB_Block_Helper::get_fallback_number( $attr['columns'], 'columns', $block_name );
-$tcolumns_fallback = UAGB_Block_Helper::get_fallback_number( $attr['tcolumns'], 'tcolumns', $block_name );
-$mcolumns_fallback = UAGB_Block_Helper::get_fallback_number( $attr['mcolumns'], 'mcolumns', $block_name );
+$columns_fallback            = UAGB_Block_Helper::get_fallback_number( $attr['columns'], 'columns', $block_name );
+$tcolumns_fallback           = UAGB_Block_Helper::get_fallback_number( $attr['tcolumns'], 'tcolumns', $block_name );
+$mcolumns_fallback           = UAGB_Block_Helper::get_fallback_number( $attr['mcolumns'], 'mcolumns', $block_name );
 $title_bottom_space_fallback = UAGB_Block_Helper::get_fallback_number( $attr['titleBottomSpace'], 'titleBottomSpace', $block_name );
-$row_gap_fallback = UAGB_Block_Helper::get_fallback_number( $attr['rowGap'], 'rowGap', $block_name );
-$column_gap_fallback = UAGB_Block_Helper::get_fallback_number( $attr['columnGap'], 'columnGap', $block_name );
+$row_gap_fallback            = UAGB_Block_Helper::get_fallback_number( $attr['rowGap'], 'rowGap', $block_name );
+$column_gap_fallback         = UAGB_Block_Helper::get_fallback_number( $attr['columnGap'], 'columnGap', $block_name );
 
 $selectors   = array();
 $t_selectors = array();

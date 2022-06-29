@@ -2,16 +2,15 @@ import {
 	ButtonGroup,
 	Button,
 	Tooltip,
-	Dashicon,
 	RangeControl,
 	__experimentalNumberControl as NumberControl,
 } from '@wordpress/components';
-import { useState, useEffect } from '@wordpress/element';
 import ResponsiveToggle from '../responsive-toggle';
 import { __, sprintf } from '@wordpress/i18n';
 import styles from './editor.lazy.scss';
 import React, { useLayoutEffect } from 'react';
 import { limitMax, limitMin } from '@Controls/unitWiseMinMaxOption';
+import UAGReset from '../reset';
 
 const isNumberControlSupported = !! NumberControl;
 
@@ -23,54 +22,12 @@ const Range = ( props ) => {
 			styles.unuse();
 		};
 	}, [] );
+
 	const { withInputField, isShiftStepEnabled } = props;
 
-	const [ value, setValue ] = useState( props.value );
-
-	const defaultCache = {
-		value: props.value,
-		unit: props.unit.value,
-	};
-
-	const [ cachedValue, setCacheValue ] = useState( defaultCache );
 	let max = limitMax( props.unit?.value, props );
 	let min = limitMin( props.unit?.value, props );
 	const inputValue = isNaN( props?.value ) ? '' :  props?.value;
-
-	useEffect( () => {
-		const cachedValueUpdate = { ...cachedValue };
-
-		if ( undefined !== value ) {
-			cachedValueUpdate.value = value;
-			setCacheValue( cachedValueUpdate );
-		}
-		if ( undefined !== props.unit.value ) {
-			cachedValueUpdate.unit = props.unit.value;
-			setCacheValue( cachedValueUpdate );
-		}
-	}, [] );
-
-	useEffect( () => {
-		const cachedValueUpdate = { ...cachedValue };
-
-		if (
-			JSON.stringify( value ) !==
-			JSON.stringify( cachedValueUpdate.value )
-		) {
-			setCacheValue( cachedValueUpdate );
-		}
-	}, [ props.value ] );
-
-	useEffect( () => {
-		const cachedValueUpdate = { ...cachedValue };
-
-		if (
-			JSON.stringify( props.unit.value ) !==
-			JSON.stringify( cachedValueUpdate.unit )
-		) {
-			setCacheValue( cachedValueUpdate );
-		}
-	}, [ props.unit ] );
 
 	let unitSizes = [
 		{
@@ -88,37 +45,25 @@ const Range = ( props ) => {
 	}
 
 	const handleOnChange = ( newValue ) => {
-		setValue( newValue );
 		const parsedValue = parseFloat( newValue );
-		if ( props?.onChange ) {
-			props.onChange( parsedValue );
-			return;
-		}
 		if ( props.setAttributes ) {
 			props.setAttributes( {
 				[ props.data.label ]: parsedValue,
 			} )
 		}
+		if ( props?.onChange ) {
+			props.onChange( parsedValue );
+		}
 	};
 
-	const resetValues = () => {
-		const cachedValueUpdate = { ...cachedValue };
-		setValue( cachedValueUpdate.value );
-		const valueToUse = ( undefined === cachedValueUpdate.value ) ? '' : cachedValueUpdate.value;
-		props?.onChange // eslint-disable-line no-unused-expressions
-			? props?.onChange( valueToUse )
-			: (
-				props.setAttributes && (
-					props.setAttributes( {
-						[ props.data.label ]: valueToUse,
-					} )
-				)
-			);
-		if( cachedValueUpdate.unit ){
-			onChangeUnits( cachedValueUpdate.unit );
-		}
+	const resetValues = ( defaultValues ) => {
 
-		setCacheValue( cachedValueUpdate );
+		if ( props?.onChange ) {
+			props?.onChange( defaultValues[props?.data?.label] )
+		}
+		if ( props.displayUnit ) {
+			onChangeUnits( defaultValues[props?.unit?.label] )
+		}
 	};
 
 	const onChangeUnits = ( newValue ) => {
@@ -179,23 +124,15 @@ const Range = ( props ) => {
 					label= { props.label }
 					responsive= { props.responsive }
 				/>
-				<div className="uagb-control__actions uagb-range-control__actions">
-					<Tooltip
-						text={ __( 'Reset', 'ultimate-addons-for-gutenberg' )}
-						key={ 'reset' }
-					>
-					<Button
-						className="uagb-reset"
-						isSecondary
-						isSmall
-						onClick={ ( e ) => {
-							e.preventDefault();
-							resetValues();
-						} }
-					>
-						<Dashicon icon="image-rotate" />
-					</Button>
-					</Tooltip>
+				<div className="uagb-range-control__actions uagb-control__actions">
+					<UAGReset
+						onReset={resetValues}
+						attributeNames = {[
+							props.data.label,
+							props.displayUnit ? props.unit.label : false
+						]}
+						setAttributes={ props.setAttributes }
+					/>
 					{ props.displayUnit && (
 						<ButtonGroup
 							className="uagb-control__units"
@@ -217,7 +154,7 @@ const Range = ( props ) => {
 					allowReset={ false }
 					max={ max }
 					min={ min }
-					step={ props?.steps || 1 }
+					step={ props?.step || 1 }
 					initialPosition = {inputValue}
 				/>
 				{ withInputField && isNumberControlSupported && (
@@ -228,7 +165,7 @@ const Range = ( props ) => {
 						min={ min }
 						onChange={ handleOnChange }
 						value={ inputValue }
-						step={ props?.steps || 1 }
+						step={ props?.step || 1 }
 					/>
 				) }
 			</div>
@@ -252,7 +189,6 @@ Range.defaultProps = {
 	unit: [ 'px', 'em' ],
 	displayUnit: true,
 	responsive: false,
-	onChange: () => {},
 };
 
 export default Range;

@@ -154,7 +154,7 @@ function styling( props ) {
 	const borderCSS = generateBorderCSS( props.attributes, 'container' );
 	const borderCSSTablet = generateBorderCSS( props.attributes, 'container', 'tablet' );
 	const borderCSSMobile = generateBorderCSS( props.attributes, 'container', 'mobile' );
-	
+
 	topPaddingTablet = topPaddingTablet ? topPaddingTablet : topPaddingDesktop;
 	topPaddingMobile = topPaddingMobile ? topPaddingMobile : topPaddingTablet;
 	topPaddingTablet = 'undefined' !== typeof topPaddingTablet ? topPaddingTablet : topPaddingDesktop;
@@ -288,11 +288,20 @@ function styling( props ) {
 	selectors['.wp-block'] = containerCSS;
 	selectors['.wp-block:hover'] = {
 		'border-color': containerBorderHColor,
-		'box-shadow':
-		generateCSSUnit( boxShadowHOffsetHover, 'px' ) + ' ' + generateCSSUnit( boxShadowVOffsetHover, 'px' ) +	' ' +
-		generateCSSUnit( boxShadowBlurHover, 'px' ) + ' ' +	generateCSSUnit( boxShadowSpreadHover, 'px' ) + ' ' +
-		boxShadowColorHover + ' ' +	boxShadowPositionCSSHover,
+		'box-shadow': '',
 	};
+
+	boxShadowBlurHover = isNaN( boxShadowBlurHover ) ? '' : boxShadowBlurHover;
+	boxShadowColorHover = boxShadowColorHover ? boxShadowColorHover : '';
+
+	if( '' !== boxShadowColorHover || '' !== boxShadowBlurHover ) {
+
+		const boxShadowBlurHoverCSSUnit = ( '' === boxShadowBlurHover ) ? '' : generateCSSUnit( boxShadowBlurHover, 'px' );
+
+		selectors['.wp-block:hover']['box-shadow'] = generateCSSUnit( boxShadowHOffsetHover, 'px' ) + ' ' + generateCSSUnit( boxShadowVOffsetHover, 'px' ) +	' ' +
+													boxShadowBlurHoverCSSUnit + ' ' +	generateCSSUnit( boxShadowSpreadHover, 'px' ) + ' ' +
+													boxShadowColorHover + ' ' +	boxShadowPositionCSSHover;
+	}
 
 	selectors[' > .wp-block-uagb-container > .uagb-container-inner-blocks-wrap > .block-editor-inner-blocks > .block-editor-block-list__layout'] = {
 		'min-height' : generateCSSUnit( minHeightDesktop, minHeightType ),

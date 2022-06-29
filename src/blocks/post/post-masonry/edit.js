@@ -658,9 +658,10 @@ const UAGBPostMasonry = ( props ) => {
 						'ultimate-addons-for-gutenberg'
 					) }
 					value={ postsToShow }
-					onChange={ ( value ) =>
-						setAttributes( { postsToShow: value } )
-					}
+					data={ {
+						value: postsToShow,
+						label: 'postsToShow',
+					} }
 					setAttributes={ setAttributes }
 					displayUnit={ false }
 					min={ 1 }
@@ -673,6 +674,10 @@ const UAGBPostMasonry = ( props ) => {
 					) }
 					setAttributes={ setAttributes }
 					value={ postsOffset }
+					data={ {
+						value: postsOffset,
+						label: 'postsOffset',
+					} }
 					onChange={ onChangePostsOffset }
 					min={ 0 }
 					max={ 100 }
@@ -926,11 +931,10 @@ const UAGBPostMasonry = ( props ) => {
 									'ultimate-addons-for-gutenberg'
 								) }
 								value={ paginationFontSize }
-								onChange={ ( value ) =>
-									setAttributes( {
-										paginationFontSize: value,
-									} )
-								}
+								data={ {
+									value: paginationFontSize,
+									label: 'paginationFontSize',
+								} }
 								setAttributes={ setAttributes }
 								min={ 0 }
 								max={ 100 }
@@ -1037,11 +1041,11 @@ const UAGBPostMasonry = ( props ) => {
 												'ultimate-addons-for-gutenberg'
 											) }
 											colorValue={ paginationTextColor }
-											onColorChange={ ( value ) =>
-												setAttributes( {
-													paginationTextColor: value,
-												} )
-											}
+											data={ {
+												value: paginationTextColor,
+												label: 'paginationTextColor',
+											} }
+											setAttributes={ setAttributes }
 										/>
 										<AdvancedPopColorControl
 											label={ __(
@@ -1051,11 +1055,11 @@ const UAGBPostMasonry = ( props ) => {
 											colorValue={
 												paginationMasonryBgColor
 											}
-											onColorChange={ ( value ) =>
-												setAttributes( {
-													paginationMasonryBgColor: value,
-												} )
-											}
+											data={ {
+												value: paginationMasonryBgColor,
+												label: 'paginationMasonryBgColor',
+											} }
+											setAttributes={ setAttributes }
 										/>
 									</>
 								}
@@ -1069,11 +1073,11 @@ const UAGBPostMasonry = ( props ) => {
 											colorValue={
 												paginationTextHoverColor
 											}
-											onColorChange={ ( value ) =>
-												setAttributes( {
-													paginationTextHoverColor: value,
-												} )
-											}
+											data={ {
+												value: paginationTextHoverColor,
+												label: 'paginationTextHoverColor',
+											} }
+											setAttributes={ setAttributes }
 										/>
 										<AdvancedPopColorControl
 											label={ __(
@@ -1083,11 +1087,11 @@ const UAGBPostMasonry = ( props ) => {
 											colorValue={
 												paginationBgHoverColor
 											}
-											onColorChange={ ( value ) =>
-												setAttributes( {
-													paginationBgHoverColor: value,
-												} )
-											}
+											data={ {
+												value: paginationBgHoverColor,
+												label: 'paginationBgHoverColor',
+											} }
+											setAttributes={ setAttributes }
 										/>
 									</>
 								}
@@ -1111,9 +1115,11 @@ const UAGBPostMasonry = ( props ) => {
 									'ultimate-addons-for-gutenberg'
 								) }
 								colorValue={ loaderColor }
-								onColorChange={ ( value ) =>
-									setAttributes( { loaderColor: value } )
-								}
+								data={ {
+									value: loaderColor,
+									label: 'loaderColor',
+								} }
+								setAttributes={ setAttributes }
 							/>
 							<Range
 								label={ __(
@@ -1122,9 +1128,10 @@ const UAGBPostMasonry = ( props ) => {
 								) }
 								setAttributes={ setAttributes }
 								value={ loaderSize }
-								onChange={ ( value ) =>
-									setAttributes( { loaderSize: value } )
-								}
+								data={ {
+									value: loaderSize,
+									label: 'loaderSize',
+								} }
 								min={ 1 }
 								max={ 50 }
 								displayUnit={ false }
@@ -1402,9 +1409,10 @@ const UAGBPostMasonry = ( props ) => {
 							) }
 							setAttributes={ setAttributes }
 							value={ excerptLength }
-							onChange={ ( value ) =>
-								setAttributes( { excerptLength: value } )
-							}
+							data={ {
+								value: excerptLength,
+								label: 'excerptLength',
+							} }
 							min={ 1 }
 							max={ 100 }
 							displayUnit={ false }
@@ -1471,9 +1479,11 @@ const UAGBPostMasonry = ( props ) => {
 						'ultimate-addons-for-gutenberg'
 					) }
 					colorValue={ bgColor }
-					onColorChange={ ( value ) =>
-						setAttributes( { bgColor: value } )
-					}
+					data={ {
+						value: bgColor,
+						label: 'bgColor',
+					} }
+					setAttributes={ setAttributes }
 				/>
 				<ResponsiveSlider
 					label={ __( 'Column Gap', 'ultimate-addons-for-gutenberg' ) }
@@ -1615,9 +1625,11 @@ const UAGBPostMasonry = ( props ) => {
 								'ultimate-addons-for-gutenberg'
 							) }
 							colorValue={ bgOverlayColor }
-							onColorChange={ ( value ) =>
-								setAttributes( { bgOverlayColor: value } )
-							}
+							data={ {
+								value: bgOverlayColor,
+								label: 'bgOverlayColor',
+							} }
+							setAttributes={ setAttributes }
 						/>
 						<Range
 							label={ __(
@@ -1626,9 +1638,10 @@ const UAGBPostMasonry = ( props ) => {
 							) }
 							setAttributes={ setAttributes }
 							value={ overlayOpacity }
-							onChange={ ( value ) =>
-								setAttributes( { overlayOpacity: value } )
-							}
+							data={ {
+								value: overlayOpacity,
+								label: 'overlayOpacity',
+							} }
 							min={ 0 }
 							max={ 100 }
 							displayUnit={ false }
@@ -1721,9 +1734,11 @@ const UAGBPostMasonry = ( props ) => {
 						'ultimate-addons-for-gutenberg'
 					) }
 					colorValue={ titleColor }
-					onColorChange={ ( value ) =>
-						setAttributes( { titleColor: value } )
-					}
+					data={ {
+						value: titleColor,
+						label: 'titleColor',
+					} }
+					setAttributes={ setAttributes }
 				/>
 				<TypographyControl
 					label={ __(
@@ -1842,25 +1857,31 @@ const UAGBPostMasonry = ( props ) => {
 				<AdvancedPopColorControl
 					label={ __( 'Color', 'ultimate-addons-for-gutenberg' ) }
 					colorValue={ metaColor }
-					onColorChange={ ( value ) =>
-						setAttributes( { metaColor: value } )
-					}
+					data={ {
+						value: metaColor,
+						label: 'metaColor',
+					} }
+					setAttributes={ setAttributes }
 				/>
 				{ ( 'aboveTitle' === displayPostTaxonomyAboveTitle && 'highlighted' === taxStyle ) && (
 					<>
 					<AdvancedPopColorControl
 						label={ __( 'Taxonomy Text Color', 'ultimate-addons-for-gutenberg' ) }
 						colorValue={ highlightedTextColor }
-						onColorChange={ ( value ) =>
-							setAttributes( { highlightedTextColor: value } )
-						}
+						data={ {
+							value: highlightedTextColor,
+							label: 'highlightedTextColor',
+						} }
+						setAttributes={ setAttributes }
 					/>
 					<AdvancedPopColorControl
 						label={ __( 'Highlighted Color', 'ultimate-addons-for-gutenberg' ) }
 						colorValue={ highlightedTextBgColor }
-						onColorChange={ ( value ) =>
-							setAttributes( { highlightedTextBgColor: value } )
-						}
+						data={ {
+							value: highlightedTextBgColor,
+							label: 'highlightedTextBgColor',
+						} }
+						setAttributes={ setAttributes }
 					/>
 					</>
 				)}
@@ -1980,9 +2001,11 @@ const UAGBPostMasonry = ( props ) => {
 				<AdvancedPopColorControl
 					label={ __( 'Color', 'ultimate-addons-for-gutenberg' ) }
 					colorValue={ excerptColor }
-					onColorChange={ ( value ) =>
-						setAttributes( { excerptColor: value } )
-					}
+					data={ {
+						value: excerptColor,
+						label: 'excerptColor',
+					} }
+					setAttributes={ setAttributes }
 				/>
 				<TypographyControl
 					label={ __(
@@ -2125,9 +2148,11 @@ const UAGBPostMasonry = ( props ) => {
 									'ultimate-addons-for-gutenberg'
 								) }
 								colorValue={ ctaColor }
-								onColorChange={ ( value ) =>
-									setAttributes( { ctaColor: value } )
-								}
+								data={ {
+									value: ctaColor,
+									label: 'ctaColor',
+								} }
+								setAttributes={ setAttributes }
 							/>
 							<AdvancedPopColorControl
 								label={ __(
@@ -2135,9 +2160,11 @@ const UAGBPostMasonry = ( props ) => {
 									'ultimate-addons-for-gutenberg'
 								) }
 								colorValue={ ctaBgColor }
-								onColorChange={ ( value ) =>
-									setAttributes( { ctaBgColor: value } )
-								}
+								data={ {
+									value: ctaBgColor,
+									label: 'ctaBgColor',
+								} }
+								setAttributes={ setAttributes }
 							/>
 						</>
 					}
@@ -2149,9 +2176,11 @@ const UAGBPostMasonry = ( props ) => {
 									'ultimate-addons-for-gutenberg'
 								) }
 								colorValue={ ctaHColor }
-								onColorChange={ ( value ) =>
-									setAttributes( { ctaHColor: value } )
-								}
+								data={ {
+									value: ctaHColor,
+									label: 'ctaHColor',
+								} }
+								setAttributes={ setAttributes }
 							/>
 							<AdvancedPopColorControl
 								label={ __(
@@ -2159,9 +2188,11 @@ const UAGBPostMasonry = ( props ) => {
 									'ultimate-addons-for-gutenberg'
 								) }
 								colorValue={ ctaBgHColor }
-								onColorChange={ ( value ) =>
-									setAttributes( { ctaBgHColor: value } )
-								}
+								data={ {
+									value: ctaBgHColor,
+									label: 'ctaBgHColor',
+								} }
+								setAttributes={ setAttributes }
 							/>
 						</>
 					}
@@ -2276,7 +2307,6 @@ const UAGBPostMasonry = ( props ) => {
 					prefix={ 'btn' }
 					attributes={ attributes }
 					deviceType={ deviceType }
-					disableBottomSeparator={ true }
 					disabledBorderTitle= { true }
 				/>
 				<SpacingControl
