@@ -100,6 +100,9 @@
 			&.uagb-rm__tablet-column-1 [data-type="uagb/restaurant-menu-child"] {
 				width: 100%;
 			}
+			.uagb-rm__content .uagb-rm-details .uagb-rm__title {
+				display: contents;
+			}
 		}
 
 		/*
@@ -121,6 +124,9 @@
 
 			&.uagb-rm__mobile-column-1 [data-type="uagb/restaurant-menu-child"] {
 				width: 100%;
+			}
+			.uagb-rm__content .uagb-rm-details .uagb-rm__title {
+				display: contents;
 			}
 		}
 	}

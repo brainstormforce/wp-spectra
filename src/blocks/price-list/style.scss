@@ -49,9 +49,15 @@
 				.uagb-rm__title {
 					display: block;
 					margin-bottom: 5px;
+					word-break: normal;
+					white-space: nowrap;
+				}
+				.uagb-rm__price {
+					word-break: normal;
 				}
 			}
-
+	
+			
 			.uagb-rm__separator {
 				display: -webkit-flex;
 				display: -moz-flexbox;
