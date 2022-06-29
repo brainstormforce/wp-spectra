@@ -31,6 +31,14 @@
 			padding: 0;
 			margin-right: 10px;
 
+			&:only-child, &:disabled {
+				margin-right: 0;
+			}
+		}
+		.disabled-element-wrapper {
+			padding: 0;
+			margin-right: 10px;
+
 			&:only-child {
 				margin-right: 0;
 			}

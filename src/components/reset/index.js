@@ -2,6 +2,7 @@ import { blocksAttributes } from '@Controls/getBlocksDefaultAttributes';
 import { select } from '@wordpress/data';
 import { Button, Tooltip, Dashicon } from '@wordpress/components';
 import { __ } from '@wordpress/i18n';
+import { useEffect, useState } from '@wordpress/element';
 
 const UAGReset = ( props ) => {
 
@@ -13,20 +14,52 @@ const UAGReset = ( props ) => {
 
 	const { getSelectedBlock } = select( 'core/block-editor' );
 
-	const resetHandler = () => {
-
+	const getBlockResetValue = () => {
 		const selectedBlockName = getSelectedBlock()?.name.replace( 'uagb/', '' );
 		let defaultValues = false;
+
 		if ( attributeNames ) {
 			attributeNames.map( ( attributeName ) => {
 				if ( attributeName ) {
 					const blockDefaultAttributeValue = blocksAttributes[selectedBlockName][attributeName]?.default;
-					if ( setAttributes ) {
-						setAttributes( { [ attributeName ]: blockDefaultAttributeValue } )
-					}
 					defaultValues = {
 						...defaultValues,
 						[attributeName] : blockDefaultAttributeValue,
+					}
+				}
+
+				return attributeName;
+			} );
+		}
+
+		return defaultValues;
+	}
+
+	const getResetState = () => {
+		const defaultValues = getBlockResetValue();
+		const selectedBlockAttributes = getSelectedBlock()?.attributes;
+		let resetDisableState = true;
+
+		attributeNames.map( ( attributeName ) => {
+			if ( selectedBlockAttributes?.[attributeName] !== defaultValues?.[attributeName] ) {
+				resetDisableState = false;
+			}
+			return attributeName;
+		} );
+
+		return resetDisableState;
+	};
+
+	let resetDisableState = getResetState();
+
+	const resetHandler = () => {
+		const defaultValues = getBlockResetValue();
+
+		if ( attributeNames ) {
+			attributeNames.map( ( attributeName ) => {
+				if ( attributeName ) {
+					if ( setAttributes ) {
+						setAttributes( { [ attributeName ]: defaultValues?.[attributeName] } )
 					}
 				}
 
@@ -52,6 +85,7 @@ const UAGReset = ( props ) => {
 				e.preventDefault();
 				resetHandler();
 			} }
+			disabled = {resetDisableState}
 		>
 			<Dashicon icon="image-rotate" />
 		</Button>
