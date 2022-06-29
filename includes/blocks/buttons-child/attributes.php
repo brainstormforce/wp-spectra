@@ -89,10 +89,10 @@ return array_merge(
 		'backgroundOpacity'       => '',
 		'backgroundHoverOpacity'  => '',
 		// letter spacing.
-		'fontLetterSpacing'       => '',
-		'fontLetterSpacingTablet' => '',
-		'fontLetterSpacingMobile' => '',
-		'fontLetterSpacingType'   => 'px',
+		'letterSpacing'       => '',
+		'letterSpacingTablet' => '',
+		'letterSpacingMobile' => '',
+		'letterSpacingType'   => 'px',
 	),
 	$border_attribute
 );

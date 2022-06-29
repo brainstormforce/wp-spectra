@@ -84,10 +84,10 @@ function styling( props ) {
 		removeText,
 
 		// letter spacing
-		fontLetterSpacing,
-		fontLetterSpacingTablet,
-		fontLetterSpacingMobile,
-		fontLetterSpacingType,
+		letterSpacing,
+		letterSpacingTablet,
+		letterSpacingMobile,
+		letterSpacingType,
 	} = props.attributes;
 
 	const tabletSelectors = {};
@@ -128,7 +128,7 @@ function styling( props ) {
 			generateCSSUnit( boxShadowHOffset, 'px' ) + ' ' + generateCSSUnit( boxShadowVOffset, 'px' ) +	' ' +
 			generateCSSUnit( boxShadowBlur, 'px' ) + ' ' +	generateCSSUnit( boxShadowSpread, 'px' ) + ' ' +
 			boxShadowColor + ' ' +	boxShadowPositionCSS,
-			'letter-spacing': generateCSSUnit( fontLetterSpacing, fontLetterSpacingType ),
+			'letter-spacing': generateCSSUnit( letterSpacing, letterSpacingType ),
 		},
 		'.uagb-buttons__outer-wrap .wp-block-button__link.uagb-buttons-repeater:hover .uagb-button__link': {
 			'color': hColor,
@@ -172,7 +172,7 @@ function styling( props ) {
 	};
 
 	mobileSelectors[ '.uagb-buttons__outer-wrap .uagb-button__wrapper .wp-block-button__link.uagb-buttons-repeater' ] = {
-		'letter-spacing': generateCSSUnit( fontLetterSpacingMobile, fontLetterSpacingType ),
+		'letter-spacing': generateCSSUnit( letterSpacingMobile, letterSpacingType ),
 	};
 
 	tabletSelectors[ '.uagb-buttons__outer-wrap .wp-block-button__link.uagb-buttons-repeater' ] = {
@@ -205,7 +205,7 @@ function styling( props ) {
 	};
 
 	tabletSelectors[ '.uagb-buttons__outer-wrap .uagb-button__wrapper .wp-block-button__link.uagb-buttons-repeater' ] = {
-		'letter-spacing': generateCSSUnit( fontLetterSpacingTablet, fontLetterSpacingType ),
+		'letter-spacing': generateCSSUnit( letterSpacingTablet, letterSpacingType ),
 	};
 
 	selectors[ '.uagb-buttons__outer-wrap .wp-block-button__link.uagb-buttons-repeater .uagb-button__icon svg' ] = {

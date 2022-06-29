@@ -117,10 +117,10 @@ const Settings = ( props ) => {
 		noFollow,
 
 		// letter spacing
-		fontLetterSpacing,
-		fontLetterSpacingTablet,
-		fontLetterSpacingMobile,
-		fontLetterSpacingType,
+		letterSpacing,
+		letterSpacingTablet,
+		letterSpacingMobile,
+		letterSpacingType,
 
 	} = attributes;
 
@@ -291,20 +291,20 @@ const Settings = ( props ) => {
 						label: 'lineHeightTablet',
 					} }
 					letterSpacing={ {
-						value: fontLetterSpacing,
-						label: 'fontLetterSpacing',
+						value: letterSpacing,
+						label: 'letterSpacing',
 					} }
 					letterSpacingTablet={ {
-						value: fontLetterSpacingTablet,
-						label: 'fontLetterSpacingTablet',
+						value: letterSpacingTablet,
+						label: 'letterSpacingTablet',
 					} }
 					letterSpacingMobile={ {
-						value: fontLetterSpacingMobile,
-						label: 'fontLetterSpacingMobile',
+						value: letterSpacingMobile,
+						label: 'letterSpacingMobile',
 					} }
 					letterSpacingType={ {
-						value: fontLetterSpacingType,
-						label: 'fontLetterSpacingType',
+						value: letterSpacingType,
+						label: 'letterSpacingType',
 					} }
 				/>
 				<UAGTabsControl
