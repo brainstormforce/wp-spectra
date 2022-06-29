@@ -326,6 +326,7 @@ const attributes = {
 	},
 	boxShadowColor: {
 		type: 'string',
+		default: '#00000070',
 		UAGCopyPaste: {
 			styleType: 'container-box-shadow-color'
 		},
@@ -890,6 +891,57 @@ const attributes = {
 		UAGCopyPaste: {
 			styleType: 'btn-hover-color'
 		},
+	},
+	// responsive code
+	innerContentCustomWidthTypeTablet: {
+		type: 'string',
+		default: 'px',
+	},
+	innerContentCustomWidthTypeMobile: {
+		type: 'string',
+		default: 'px',
+	},
+
+	widthTypeTablet: {
+		type: 'string',
+		default: '%',
+	},
+	widthTypeMobile: {
+		type: 'string',
+		default: '%',
+	},
+	minHeightTypeTablet: {
+		type: 'string',
+		default: 'px',
+	},
+	minHeightTypeMobile: {
+		type: 'string',
+		default: 'px',
+	},
+	// correct formating
+	topHeightType: {
+		type: 'string',
+		default: 'px',
+	},
+	topHeightTypeTablet: {
+		type: 'string',
+		default: 'px',
+	},
+	topHeightTypeMobile: {
+		type: 'string',
+		default: 'px',
+	},
+	bottomHeightType: {
+		type: 'string',
+		default: 'px',
+	},
+	bottomHeightTypeTablet: {
+		type: 'string',
+		default: 'px',
+	},
+	bottomHeightTypeMobile: {
+		type: 'string',
+		default: 'px',
 	},
 	...inputBorderAttributes
 };
