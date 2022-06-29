@@ -157,6 +157,20 @@ function styling( props ) {
 		submitLetterSpacingTablet,
 		submitLetterSpacingMobile,
 		submitLetterSpacingType,
+
+		checkBoxToggleBorderTopWidth,
+		checkBoxToggleBorderLeftWidth,
+		checkBoxToggleBorderRightWidth,
+		checkBoxToggleBorderBottomWidth,
+		checkBoxToggleBorderTopWidthTablet,
+		checkBoxToggleBorderLeftWidthTablet,
+		checkBoxToggleBorderRightWidthTablet,
+		checkBoxToggleBorderBottomWidthTablet,
+		checkBoxToggleBorderTopWidthMobile,
+		checkBoxToggleBorderLeftWidthMobile,
+		checkBoxToggleBorderRightWidthMobile,
+		checkBoxToggleBorderBottomWidthMobile,
+
 	} = props.attributes;
 
 	let selectors = {};
@@ -318,14 +332,14 @@ function styling( props ) {
 		' .uagb-switch': {
 			// 20 is the min size of the toggle.
 			// Space around the toggle dot is calculated as 1/6th the size of the toggle dot.
-			'height': generateCSSUnit(
-				parseInt( 20 + toggleWidthSizeNumber + ( toggleBorderWidth * 2 ) + ( ( 20 + toggleWidthSizeNumber ) / 3 ) ),
+			'height': `calc(${ toggleBorder['border-bottom-width'] } + ${ toggleBorder['border-top-width'] } + ${ generateCSSUnit(
+				parseInt( 20 + toggleWidthSizeNumber + ( ( 20 + toggleWidthSizeNumber ) / 3 ) ),
 				'px'
-			),
-			'width': generateCSSUnit(
-				parseInt( ( ( 20 + toggleWidthSizeNumber ) * 2.5 ) + ( toggleBorderWidth * 2 ) + ( ( 20 + toggleWidthSizeNumber ) / 3 ) ),
+			) })`,
+			'width': `calc(${ toggleBorder['border-left-width'] } + ${ toggleBorder['border-right-width'] } + ${ generateCSSUnit(
+				parseInt( ( ( 20 + toggleWidthSizeNumber ) * 2.5 ) + ( ( 20 + toggleWidthSizeNumber ) / 3 ) ),
 				'px'
-			),
+			) })`,
 		},
 		' .uagb-switch input:checked + .uagb-slider': {
 			'background-color': toggleActiveColor,
@@ -444,14 +458,14 @@ function styling( props ) {
 			'height': generateCSSUnit( toggleSizeTabletFallback, 'px' ),
 		},
 		' .uagb-switch' : {
-			'height': generateCSSUnit(
-				parseInt( 20 + toggleWidthSizeNumberTablet + ( toggleBorderWidth * 2 ) + ( ( 20 + toggleWidthSizeNumberTablet ) / 3 ) ),
+			'height': `calc(${ toggleBorderTablet['border-top-width'] } + ${ toggleBorderTablet['border-bottom-width'] } + ${ generateCSSUnit(
+				parseInt( 20 + toggleWidthSizeNumberTablet + ( ( 20 + toggleWidthSizeNumberTablet ) / 3 ) ),
 				'px'
-			),
-			'width': generateCSSUnit(
-				parseInt( ( ( 20 + toggleWidthSizeNumberTablet ) * 2.5 ) + ( toggleBorderWidth * 2 ) + ( ( 20 + toggleWidthSizeNumberTablet ) / 3 ) ),
+			) })`,
+			'width': `calc(${ toggleBorderTablet['border-left-width'] } + ${ toggleBorderTablet['border-right-width'] } + ${ generateCSSUnit(
+				parseInt( ( ( 20 + toggleWidthSizeNumberTablet ) * 2.5 ) + ( ( 20 + toggleWidthSizeNumberTablet ) / 3 ) ),
 				'px'
-			),
+			) })`,
 		},
 		' .uagb-switch .uagb-slider:before' : {
 			'height': generateCSSUnit( 20 + toggleWidthSizeNumberTablet, 'px' ),
@@ -560,14 +574,14 @@ function styling( props ) {
 			'margin-bottom': generateCSSUnit( fieldGapMobile, fieldGapType ),
 		},
 		' .uagb-switch' : {
-			'height': generateCSSUnit(
-				parseInt(  20 + toggleWidthSizeNumberMobile + ( toggleBorderWidth * 2 ) + ( ( 20 + toggleWidthSizeNumberMobile ) / 3 ) ),
+			'height': `calc(${ toggleBorderMobile['border-top-width'] } + ${ toggleBorderMobile['border-bottom-width'] } + ${ generateCSSUnit(
+				parseInt(  20 + toggleWidthSizeNumberMobile + ( ( 20 + toggleWidthSizeNumberMobile ) / 3 ) ),
 				'px'
-			),
-			'width': generateCSSUnit(
-				parseInt(  ( ( 20 + toggleWidthSizeNumberMobile ) * 2.5 ) + ( toggleBorderWidth * 2 ) + ( ( 20 + toggleWidthSizeNumberMobile ) / 3 ) ),
+			) })`,
+			'width': `calc(${ toggleBorderMobile['border-left-width'] } + ${ toggleBorderMobile['border-right-width'] } + ${ generateCSSUnit(
+				parseInt(  ( ( 20 + toggleWidthSizeNumberMobile ) * 2.5 ) + ( ( 20 + toggleWidthSizeNumberMobile ) / 3 ) ),
 				'px'
-			),
+			) })`,
 		},
 		' .uagb-switch .uagb-slider:before' : {
 			'height': generateCSSUnit( 20 + toggleWidthSizeNumberMobile, 'px' ),

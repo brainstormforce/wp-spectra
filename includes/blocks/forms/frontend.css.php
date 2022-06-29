@@ -87,6 +87,20 @@ $toggle_border        = UAGB_Block_Helper::uag_generate_deprecated_border_css(
 $toggle_border_Tablet = UAGB_Block_Helper::uag_generate_border_css( $attr, 'checkBoxToggle', 'tablet' );
 $toggle_border_Mobile = UAGB_Block_Helper::uag_generate_border_css( $attr, 'checkBoxToggle', 'mobile' );
 
+// Had to implement this fallback due to empty string defaults.
+$toggle_border_top_fallback           = $toggle_border['border-top-width'] ? $toggle_border['border-top-width'] : '1px';
+$toggle_border_left_fallback          = $toggle_border['border-left-width'] ? $toggle_border['border-left-width'] : '1px';
+$toggle_border_right_fallback         = $toggle_border['border-right-width'] ? $toggle_border['border-right-width'] : '1px';
+$toggle_border_bottom_fallback        = $toggle_border['border-bottom-width'] ? $toggle_border['border-bottom-width'] : '1px';
+$toggle_border_top_tablet_fallback    = $toggle_border_Tablet['border-top-width'] ? $toggle_border_Tablet['border-top-width'] : $toggle_border_top_fallback;
+$toggle_border_left_tablet_fallback   = $toggle_border_Tablet['border-left-width'] ? $toggle_border_Tablet['border-left-width'] : $toggle_border_left_fallback;
+$toggle_border_right_tablet_fallback  = $toggle_border_Tablet['border-right-width'] ? $toggle_border_Tablet['border-right-width'] : $toggle_border_right_fallback;
+$toggle_border_bottom_tablet_fallback = $toggle_border_Tablet['border-bottom-width'] ? $toggle_border_Tablet['border-bottom-width'] : $toggle_border_bottom_fallback;
+$toggle_border_top_mobile_fallback    = $toggle_border_Mobile['border-top-width'] ? $toggle_border_Mobile['border-top-width'] : $toggle_border_top_tablet_fallback;
+$toggle_border_left_mobile_fallback   = $toggle_border_Mobile['border-left-width'] ? $toggle_border_Mobile['border-left-width'] : $toggle_border_left_tablet_fallback;
+$toggle_border_right_mobile_fallback  = $toggle_border_Mobile['border-right-width'] ? $toggle_border_Mobile['border-right-width'] : $toggle_border_right_tablet_fallback;
+$toggle_border_bottom_mobile_fallback = $toggle_border_Mobile['border-bottom-width'] ? $toggle_border_Mobile['border-bottom-width'] : $toggle_border_bottom_tablet_fallback;
+
 $btn_border        = UAGB_Block_Helper::uag_generate_border_css( $attr, 'btn' );
 $btn_border        = UAGB_Block_Helper::uag_generate_deprecated_border_css(
 	$btn_border,
@@ -266,14 +280,14 @@ $selectors[' .uagb-slider']                                     = array(
 	'background-color' => $attr['toggleColor'],
 );
 $selectors[' .uagb-forms-main-form .uagb-switch']               = array(
-	'height' => UAGB_Helper::get_css_value(
+	'height' => 'calc(' . $toggle_border_top_fallback . ' + ' . $toggle_border_bottom_fallback . ' + ' . UAGB_Helper::get_css_value(
 		(int) ( 20 + $toggle_width_size_number + ( ( 20 + $toggle_width_size_number ) / 3 ) ),
 		'px'
-	),
-	'width'  => UAGB_Helper::get_css_value(
+	) . ')',
+	'width'  => 'calc(' . $toggle_border_left_fallback . ' + ' . $toggle_border_right_fallback . ' + ' . UAGB_Helper::get_css_value(
 		(int) ( ( ( 20 + $toggle_width_size_number ) * 2.5 ) + ( ( 20 + $toggle_width_size_number ) / 3 ) ),
 		'px'
-	),
+	) . ')',
 );
 $selectors[' .uagb-forms-main-form .uagb-slider:before']        = array(
 	'height'           => UAGB_Helper::get_css_value( 20 + $toggle_width_size_number, 'px' ),
@@ -476,14 +490,14 @@ $t_selectors[' .uagb-forms-accept-wrap input[type=checkbox] + label:before']    
 	'height' => UAGB_Helper::get_css_value( $toggle_size_tablet_fallback, $attr['toggleSizeType'] ),
 );
 $t_selectors[' .uagb-forms-main-form .uagb-switch']                                  = array(
-	'height' => UAGB_Helper::get_css_value(
+	'height' => 'calc(' . $toggle_border_top_tablet_fallback . ' + ' . $toggle_border_bottom_tablet_fallback . ' + ' . UAGB_Helper::get_css_value(
 		(int) ( 20 + $toggle_width_size_number_tablet + ( ( 20 + $toggle_width_size_number_tablet ) / 3 ) ),
 		'px'
-	),
-	'width'  => UAGB_Helper::get_css_value(
+	) . ')',
+	'width'  => 'calc(' . $toggle_border_left_tablet_fallback . ' + ' . $toggle_border_right_tablet_fallback . ' + ' . UAGB_Helper::get_css_value(
 		(int) ( ( ( 20 + $toggle_width_size_number_tablet ) * 2.5 ) + ( ( 20 + $toggle_width_size_number_tablet ) / 3 ) ),
 		'px'
-	),
+	) . ')',
 );
 $t_selectors[' .uagb-forms-main-form .uagb-slider:before']                           = array(
 	'height' => 'calc(20px + ' . $toggle_width_size_number_tablet . 'px)',
@@ -518,14 +532,14 @@ $m_selectors[' .uagb-forms-accept-wrap input[type=checkbox] + label:before']    
 	'height' => UAGB_Helper::get_css_value( $toggle_size_mobile_fallback, $attr['toggleSizeType'] ),
 );
 $m_selectors[' .uagb-forms-main-form .uagb-switch']                                  = array(
-	'height' => UAGB_Helper::get_css_value(
+	'height' => 'calc(' . $toggle_border_top_mobile_fallback . ' + ' . $toggle_border_bottom_mobile_fallback . ' + ' . UAGB_Helper::get_css_value(
 		(int) ( 20 + $toggle_width_size_number_mobile + ( ( 20 + $toggle_width_size_number_mobile ) / 3 ) ),
 		'px'
-	),
-	'width'  => UAGB_Helper::get_css_value(
+	) . ')',
+	'width'  => 'calc(' . $toggle_border_left_mobile_fallback . ' + ' . $toggle_border_right_mobile_fallback . ' + ' . UAGB_Helper::get_css_value(
 		(int) ( ( ( 20 + $toggle_width_size_number_mobile ) * 2.5 ) + ( ( 20 + $toggle_width_size_number_mobile ) / 3 ) ),
 		'px'
-	),
+	) . ')',
 );
 $m_selectors[' .uagb-forms-main-form .uagb-slider:before']                           = array(
 	'height' => 'calc(20px + ' . $toggle_width_size_number_mobile . 'px)',
