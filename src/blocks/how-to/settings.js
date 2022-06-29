@@ -17,13 +17,13 @@ import UAGImage from '@Components/image';
 import { getImageSize } from '@Utils/Helpers';
 import renderSVG from '@Controls/renderIcon';
 import {
-	SelectControl,
 	ToggleControl,
 	ExternalLink,
 	Icon
 } from '@wordpress/components';
 import MultiButtonsControl from '@Components/multi-buttons-control';
 import ResponsiveSlider from '@Components/responsive-slider';
+import UAGSelectControl from '@Components/select-control';
 let imageSizeOptions = [
 	{
 		value: 'thumbnail',
@@ -322,18 +322,17 @@ const Settings = ( props ) => {
 				{ mainimage &&
 					mainimage.url !== 'null' &&
 					mainimage.url !== '' && (
-						<SelectControl
+						<UAGSelectControl
 							label={ __(
 								'Image Size',
 								'ultimate-addons-for-gutenberg'
 							) }
+							data={ {
+								value: imgSize,
+								label: 'imgSize',
+							} }
+							setAttributes={ setAttributes }
 							options={ imageSizeOptions }
-							value={ imgSize }
-							onChange={ ( value ) =>
-								setAttributes( {
-									imgSize: value,
-								} )
-							}
 						/>
 					) }
 			</UAGAdvancedPanelBody>

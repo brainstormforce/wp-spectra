@@ -16,7 +16,8 @@ import Background from '@Components/background';
 import ResponsiveBorder from '@Components/responsive-border';
 import UAGAdvancedPanelBody from '@Components/advanced-panel-body';
 import MultiButtonsControl from '@Components/multi-buttons-control';
-import { Icon, SelectControl, ToggleControl } from '@wordpress/components';
+import UAGSelectControl from '@Components/select-control';
+import { Icon, ToggleControl } from '@wordpress/components';
 import renderCustomIcon from '@Controls/renderCustomIcon';
 import UAGTabsControl from '@Components/tabs';
 import AdvancedPopColorControl from '@Components/color-control/advanced-pop-color-control';
@@ -1423,12 +1424,16 @@ const Settings = ( props ) => {
 
 		const topSettings = (
 			<>
-				<SelectControl
-					label={ __( 'Type', 'ultimate-addons-for-gutenberg' ) }
-					value={ topType }
-					onChange={ ( value ) =>
-						setAttributes( { topType: value } )
-					}
+				<UAGSelectControl
+					label={ __(
+						'Type',
+						'ultimate-addons-for-gutenberg'
+					) }
+					data={ {
+						value: topType,
+						label: 'topType',
+					} }
+					setAttributes={ setAttributes }
 					options={ dividers }
 				/>
 				{ topType !== 'none' && (
@@ -1522,12 +1527,16 @@ const Settings = ( props ) => {
 
 		const bottomSettings = (
 			<>
-				<SelectControl
-					label={ __( 'Type', 'ultimate-addons-for-gutenberg' ) }
-					value={ bottomType }
-					onChange={ ( value ) =>
-						setAttributes( { bottomType: value } )
-					}
+				<UAGSelectControl
+					label={ __(
+						'Type',
+						'ultimate-addons-for-gutenberg'
+					) }
+					data={ {
+						value: bottomType,
+						label: 'bottomType',
+					} }
+					setAttributes={ setAttributes }
 					options={ dividers }
 				/>
 				{ bottomType !== 'none' && (

@@ -13,13 +13,14 @@ import InspectorTabs from '@Components/inspector-tabs/InspectorTabs.js';
 import UAGImage from '@Components/image';
 import MultiButtonsControl from '@Components/multi-buttons-control';
 import renderSVG from '@Controls/renderIcon';
+import UAGSelectControl from '@Components/select-control';
 import InspectorTab, {
 	UAGTabs,
 } from '@Components/inspector-tabs/InspectorTab.js';
 import {
 	InspectorControls,
 } from '@wordpress/block-editor';
-import { SelectControl, ToggleControl, Icon } from '@wordpress/components';
+import { ToggleControl, Icon } from '@wordpress/components';
 import { getFallbackNumber } from '@Controls/getAttributeFallback';
 
 import UAGAdvancedPanelBody from '@Components/advanced-panel-body';
@@ -1490,18 +1491,17 @@ const Settings = ( props ) => {
 											},
 										] }
 									/>
-									<SelectControl
+									<UAGSelectControl
 										label={ __(
 											'Size',
 											'ultimate-addons-for-gutenberg'
 										) }
+										data={ {
+											value: imageSize,
+											label: 'imageSize',
+										} }
+										setAttributes={ setAttributes }
 										options={ imageSizeOptions }
-										value={ imageSize }
-										onChange={ ( value ) =>
-											setAttributes( {
-												imageSize: value,
-											} )
-										}
 									/>
 									<ResponsiveSlider
 										label={ __(

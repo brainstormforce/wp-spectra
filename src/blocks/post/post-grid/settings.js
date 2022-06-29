@@ -17,12 +17,12 @@ import SpacingControl from '@Components/spacing-control';
 import Range from '@Components/range/Range.js';
 import ResponsiveSlider from '@Components/responsive-slider';
 import MultiButtonsControl from '@Components/multi-buttons-control';
+import UAGSelectControl from '@Components/select-control';
 import renderSVG from '@Controls/renderIcon';
 import UAGTabsControl from '@Components/tabs';
 const MAX_POSTS_COLUMNS = 8;
 
 import {
-	SelectControl,
 	ToggleControl,
 	ToolbarGroup,
 	TextControl,
@@ -442,31 +442,39 @@ const Settings = ( props ) => {
 					] }
 					showIcons={ true }
 				/>
-				<SelectControl
-					label={ __( 'Post Type', 'ultimate-addons-for-gutenberg' ) }
-					value={ postType }
-					onChange={ ( value ) => onSelectPostType( value ) }
+				<UAGSelectControl
+					label={ __(
+						'Post Type',
+						'ultimate-addons-for-gutenberg'
+					) }
+					data={ {
+						value: postType,
+					} }
+					onChange={ onSelectPostType }
 					options={ uagb_blocks_info.post_types }
 				/>
 				{ '' !== taxonomyList && (
-					<SelectControl
+					<UAGSelectControl
 						label={ __(
 							'Taxonomy',
 							'ultimate-addons-for-gutenberg'
 						) }
-						value={ taxonomyType }
-						onChange={ ( value ) => onSelectTaxonomyType( value ) }
+						data={ {
+							value: taxonomyType,
+						} }
+						onChange={ onSelectTaxonomyType }
 						options={ taxonomyListOptions }
 					/>
 				) }
 				{ '' != categoriesList && ( // eslint-disable-line eqeqeq
 					<>
-						<SelectControl
+						<UAGSelectControl
 							label={ taxonomyList[ taxonomyType ].label }
-							value={ categories }
-							onChange={ ( value ) =>
-								setAttributes( { categories: value } )
-							}
+							data={ {
+								value: categories,
+								label: 'categories',
+							} }
+							setAttributes={ setAttributes }
 							options={ categoryListOptions }
 						/>
 					</>
@@ -717,12 +725,16 @@ const Settings = ( props ) => {
 					}
 				/>
 				{ displayPostImage === true && (
-					<SelectControl
-						label={ __( 'Sizes', 'ultimate-addons-for-gutenberg' ) }
-						value={ imgSize }
-						onChange={ ( value ) =>
-							setAttributes( { imgSize: value } )
-						}
+					<UAGSelectControl
+						label={ __(
+							'Sizes',
+							'ultimate-addons-for-gutenberg'
+						) }
+						data={ {
+							value: imgSize,
+							label: 'imgSize',
+						} }
+						setAttributes={ setAttributes }
 						options={ uagb_blocks_info.image_sizes }
 					/>
 				) }

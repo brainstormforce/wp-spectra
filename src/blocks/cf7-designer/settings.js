@@ -15,6 +15,7 @@ import MultiButtonsControl from '@Components/multi-buttons-control';
 import UAGTabsControl from '@Components/tabs';
 import renderSVG from '@Controls/renderIcon';
 import ResponsiveSlider from '@Components/responsive-slider';
+import UAGSelectControl from '@Components/select-control';
 import {
 	AlignmentToolbar,
 	BlockControls,
@@ -22,7 +23,6 @@ import {
 } from '@wordpress/block-editor';
 
 import {
-	SelectControl,
 	ToggleControl,
 	Icon,
 } from '@wordpress/components';
@@ -411,9 +411,14 @@ const Settings = ( props ) => {
 
 	const generalSettings = (
 		<UAGAdvancedPanelBody title={ __( 'General', 'ultimate-addons-for-gutenberg' ) }>
-			<SelectControl
-				label={ __( 'Select Form', 'ultimate-addons-for-gutenberg' ) }
-				value={ formId }
+			<UAGSelectControl
+				label={ __(
+					'Select Form',
+					'ultimate-addons-for-gutenberg'
+				) }
+				data={ {
+					value: formId,
+				} }
 				onChange={ onSelectForm }
 				options={ uagb_blocks_info.cf7_forms }
 			/>

@@ -7,7 +7,7 @@ import UAGIconPicker from '@Components/icon-picker';
 import { __ } from '@wordpress/i18n';
 import React from 'react';
 import { InspectorControls } from '@wordpress/block-editor';
-import { SelectControl } from '@wordpress/components';
+import UAGSelectControl from '@Components/select-control';
 import AdvancedPopColorControl from '@Components/color-control/advanced-pop-color-control.js';
 import InspectorTabs from '@Components/inspector-tabs/InspectorTabs.js';
 import InspectorTab, {
@@ -93,9 +93,15 @@ const Settings = ( props ) => {
 	const generalSettings = () => {
 		return (
 			<UAGAdvancedPanelBody initialOpen={ true }>
-				<SelectControl
-					label={ __( 'Type' ) }
-					value={ type }
+				<UAGSelectControl
+					label={ __(
+						'Type',
+						'ultimate-addons-for-gutenberg'
+					) }
+					data={ {
+						value: type,
+					} }
+					onChange={ onChangeType }
 					options={ [
 						{
 							value: 'facebook',
@@ -235,7 +241,6 @@ const Settings = ( props ) => {
 							),
 						},
 					] }
-					onChange={ onChangeType }
 				/>
 				<MultiButtonsControl
 					setAttributes={ setAttributes }

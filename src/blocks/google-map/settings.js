@@ -6,7 +6,8 @@ import InspectorTabs from '@Components/inspector-tabs/InspectorTabs.js';
 import InspectorTab, {
 	UAGTabs,
 } from '@Components/inspector-tabs/InspectorTab.js';
-import { TextControl, SelectControl } from '@wordpress/components';
+import UAGSelectControl from '@Components/select-control';
+import { TextControl } from '@wordpress/components';
 
 import UAGAdvancedPanelBody from '@Components/advanced-panel-body';
 
@@ -76,17 +77,16 @@ const Settings = ( props ) => {
 							displayUnit={ false }
 							setAttributes={ setAttributes }
 						/>
-						<SelectControl
+						<UAGSelectControl
 							label={ __(
 								'Language',
 								'ultimate-addons-for-gutenberg'
 							) }
-							value={ language }
-							onChange={ ( value ) =>
-								setAttributes( {
-									language: value,
-								} )
-							}
+							data={ {
+								value: language,
+								label: 'language',
+							} }
+							setAttributes={ setAttributes }
 							options={ [
 								{
 									value: 'af',

@@ -14,6 +14,7 @@ import Range from '@Components/range/Range.js';
 import UAGTabsControl from '@Components/tabs';
 import SpacingControl from '@Components/spacing-control';
 import ResponsiveSlider from '@Components/responsive-slider';
+import UAGSelectControl from '@Components/select-control';
 import {
 	AlignmentToolbar,
 	BlockControls,
@@ -21,7 +22,6 @@ import {
 } from '@wordpress/block-editor';
 
 import {
-	SelectControl,
 	ToggleControl,
 	Icon,
 } from '@wordpress/components';
@@ -492,15 +492,16 @@ successMsgLetterSpacingType,
 					} }
 				/>
 				{ fieldStyle === 'box' && (
-					<SelectControl
+					<UAGSelectControl
 						label={ __(
 							'Border Style',
 							'ultimate-addons-for-gutenberg'
 						) }
-						value={ fieldBorderStyle }
-						onChange={ ( value ) =>
-							setAttributes( { fieldBorderStyle: value } )
-						}
+						data={ {
+							value: fieldBorderStyle,
+							label: 'fieldBorderStyle',
+						} }
+						setAttributes={ setAttributes }
 						options={ [
 							{
 								value: 'none',

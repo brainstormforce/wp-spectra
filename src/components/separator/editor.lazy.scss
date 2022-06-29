@@ -3,8 +3,18 @@
 .spectra-separator {
 	width: 100%;
 	height: 1px;
-	margin: $spectra-control-vertical-gap 0;
 	background-color: $spectra-color-border;
+
+	&__margin {
+
+		&--top {
+			margin-top: $spectra-control-vertical-gap;
+		}
+
+		&--bottom {
+			margin-bottom: $spectra-control-vertical-gap;
+		}
+	}	
 }
 
 .uagb-inspector-tab .components-panel__body .spectra-separator {

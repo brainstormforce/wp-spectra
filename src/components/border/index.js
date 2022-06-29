@@ -5,7 +5,7 @@
 import { __ } from '@wordpress/i18n';
 import Range from '@Components/range/Range.js';
 import AdvancedPopColorControl from '@Components/color-control/advanced-pop-color-control.js';
-import { SelectControl } from '@wordpress/components';
+import UAGSelectControl from '@Components/select-control';
 import UAGTabsControl from '@Components/tabs';
 
 import styles from './editor.lazy.scss';
@@ -92,15 +92,13 @@ const Border = ( props ) => {
 			<h2>{ __( 'Border', 'ultimate-addons-for-gutenberg' ) }</h2>
 		)}
 			<div className="uag-border-type">
-				<SelectControl
+				<UAGSelectControl
 					label={ borderStyle.title }
-					labelPosition="top"
-					value={ borderStyle.value }
-					onChange={ ( value ) =>
-						setAttributes( {
-							[ borderStyle.label ]: value,
-						} )
-					}
+					data={ {
+						value: borderStyle.value,
+						label: borderStyle.label,
+					} }
+					setAttributes={ setAttributes }
 					options={ [
 						{
 							value: 'none',
