@@ -105,7 +105,7 @@ const BlockSettings = () => {
 					) }
 				</a>
 			</div>
-			<section className='flex border-b border-solid border-slate-200'>
+			<section className='flex'>
 				<div className='pr-16 pb-8 w-[50%] spectra-recaptcha-input-field'>
 					<h3 className="mb-5 font-medium text-md text-gray-900">
 						{__( 'V2', 'ultimate-addons-for-gutenberg' )}
