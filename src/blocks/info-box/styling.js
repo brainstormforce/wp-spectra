@@ -367,7 +367,7 @@ function styling( props ) {
 			),
 		},
 		// CTA style
-		' .uagb-infobox-cta-link': {
+		' a.uagb-infobox-cta-link': {
 			'font-size': generateCSSUnit( ctaFontSize, ctaFontSizeType ),
 			'font-family': ctaFontFamily,
 			'font-weight': ctaFontWeight,
@@ -376,7 +376,7 @@ function styling( props ) {
 			'text-decoration': ctaDecoration,
 			'text-transform': ctaTransform,
 		},
-		' .uagb-infobox-cta-link:hover': {
+		' a.uagb-infobox-cta-link:hover': {
 			'color': ctaLinkHoverColor,
 		},
 		' .uagb-infobox-cta-link svg': {
