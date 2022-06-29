@@ -406,24 +406,28 @@ const attributes = {
 
 	topPaddingDesktop: {
 		type: 'number',
+		default: 10,
 		UAGCopyPaste: {
 			styleType: 'container-top-padding-desktop'
 		},
 	},
 	bottomPaddingDesktop: {
 		type: 'number',
+		default: 10,
 		UAGCopyPaste: {
 			styleType: 'container-bottom-padding-desktop'
 		},
 	},
 	leftPaddingDesktop: {
 		type: 'number',
+		default: 10,
 		UAGCopyPaste: {
 			styleType: 'container-left-padding-desktop'
 		},
 	},
 	rightPaddingDesktop: {
 		type: 'number',
+		default: 10,
 		UAGCopyPaste: {
 			styleType: 'container-right-padding-desktop'
 		},
