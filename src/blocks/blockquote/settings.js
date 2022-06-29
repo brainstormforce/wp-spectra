@@ -952,7 +952,7 @@ tweetBtnLetterSpacingType,
 	const spacingSettings = (
 		<UAGAdvancedPanelBody
 			title={ __( 'Spacing', 'ultimate-addons-for-gutenberg' ) }
-			initialOpen={ true }
+			initialOpen={ false }
 		>
 			{ ( authorImage && authorImage.url ) && (
 				<ResponsiveSlider
