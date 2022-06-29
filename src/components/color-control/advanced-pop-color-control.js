@@ -15,9 +15,10 @@ import {
 	ColorPalette,
 } from '@wordpress/components';
 import { withSelect } from '@wordpress/data';
-import { useState, useEffect } from '@wordpress/element';
+import { useState } from '@wordpress/element';
 import styles from './editor.lazy.scss';
 import React, { useLayoutEffect } from 'react';
+import UAGReset from '../reset';
 
 const AdvancedPopColorControl = ( props ) => {
 	// Add and remove the CSS on the drop and remove of the component.
@@ -28,56 +29,44 @@ const AdvancedPopColorControl = ( props ) => {
 		};
 	}, [] );
 
+	const {
+		alpha,
+		colorValue,
+		opacityValue,
+		opacityUnit,
+		onOpacityChange,
+		data,
+		setAttributes,
+		onColorChange,
+		label,
+		colors,
+		help
+	} = props;
+
 	const [ value, setValue ] = useState( {
-		alpha: false === props.alpha ? false : true,
+		alpha: false === alpha ? false : true,
 		colors: [],
 		classSat: 'first',
-		currentColor: props.colorValue,
+		currentColor: colorValue,
 		inherit: false,
 		currentOpacity:
-			props.opacityValue !== undefined ? props.opacityValue : 1,
+			opacityValue !== undefined ? opacityValue : 1,
 		isPalette:
-			props.colorValue && props.colorValue.startsWith( 'palette' )
+			colorValue && colorValue.startsWith( 'palette' )
 				? true
 				: false,
 		refresh: false,
 	} );
 	const [ visible, setVisible ] = useState( { isVisible: false } );
 
-	const defaultCache = {
-		value,
-	};
-
-	const [ cachedValue, setCacheValue ] = useState( defaultCache );
-
-	useEffect( () => {
-		const cachedValueUpdate = { ...cachedValue };
-
-		if ( undefined !== value ) {
-			cachedValueUpdate.value = value;
-			setCacheValue( cachedValueUpdate );
-		}
-	}, [] );
-
-	useEffect( () => {
-		const cachedValueUpdate = { ...cachedValue };
-
-		if (
-			JSON.stringify( value ) !==
-			JSON.stringify( cachedValueUpdate.value )
-		) {
-			setCacheValue( cachedValueUpdate );
-		}
-	}, [ value ] );
-
 	const onChangeComplete = ( color, palette ) => {
-		let opacity = 100 === props.opacityUnit ? 100 : 1;
+		let opacity = 100 === opacityUnit ? 100 : 1;
 		let newColor;
 		if ( palette ) {
 			newColor = color;
 		} else if (	color.rgb && color.rgb.a && 1 !== color.rgb.a ) {
 
-			if ( props.onOpacityChange ) {
+			if ( onOpacityChange ) {
 				opacity = color.rgb.a;
 			}
 
@@ -110,9 +99,15 @@ const AdvancedPopColorControl = ( props ) => {
 			} );
 		}
 
-		props.onColorChange( newColor );
-		if ( props.onOpacityChange ) {
-			props.onOpacityChange( opacity );
+		if ( data && setAttributes ) {
+			setAttributes( { [ data?.label ]: newColor } )
+		}
+		if ( onColorChange ) {
+			onColorChange( newColor );
+		}
+
+		if ( onOpacityChange ) {
+			onOpacityChange( opacity );
 		}
 
 	};
@@ -127,17 +122,14 @@ const AdvancedPopColorControl = ( props ) => {
 		}
 	};
 
-	const resetValues = () => {
-		const cachedValueUpdate = { ...cachedValue };
-
-		setValue( cachedValueUpdate.value );
-
-		props.onColorChange( cachedValueUpdate.value.currentColor );
-
-		setCacheValue( cachedValueUpdate );
+	const resetValues = ( resetValue ) => {
+		setValue( {
+			...value,
+			currentColor: resetValue[data?.label],
+		} );
 	};
 
-	const colorVal = value.currentColor ? value.currentColor : props.colorValue;
+	const colorVal = value.currentColor ? value.currentColor : colorValue;
 
 	const pickIconColorBasedOnBgColorAdvanced = ( color ) => {
 		const result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec( color );
@@ -164,27 +156,18 @@ const AdvancedPopColorControl = ( props ) => {
 	return (
 		<div className="uagb-color-popover-container components-base-control new-uagb-advanced-colors">
 			<div className="uagb-advanced-color-settings-container">
-				{ props.label && (
+				{ label && (
 					<span className="uagb-beside-color-label uag-control-label">
-						{ props.label }
+						{ label }
 					</span>
 				) }
-				<Tooltip
-					text={ __( 'Reset', 'ultimate-addons-for-gutenberg' )}
-					key={ 'reset' }
-				>
-				<Button
-					className="uagb-reset"
-					isSecondary
-					isSmall
-					onClick={ ( e ) => {
-						e.preventDefault();
-						resetValues();
-					} }
-				>
-					<Dashicon icon="image-rotate" />
-				</Button>
-				</Tooltip>
+				<UAGReset
+					onReset={resetValues}
+					attributeNames = {[
+						data?.label
+					]}
+					setAttributes={ setAttributes }
+				/>
 				<div className="uagb-beside-color-click">
 					{ visible.isVisible && (
 						<Popover
@@ -213,10 +196,10 @@ const AdvancedPopColorControl = ( props ) => {
 
 								</>
 							) }
-							{ props.colors && (
+							{ colors && (
 								<ColorPalette
 									color={ colorVal }
-									colors={ props.colors }
+									colors={ colors }
 									onChange={ ( color ) =>
 										onChangeComplete( color, true )
 									}
@@ -230,11 +213,7 @@ const AdvancedPopColorControl = ( props ) => {
 					{ visible.isVisible && (
 						<Tooltip text={ __( 'Select Color' ) }>
 							<Button
-								className={ `uagb-color-icon-indicate ${
-									value.alpha
-										? 'uagb-has-alpha'
-										: 'uagb-no-alpha'
-								}` }
+								className={ `uagb-color-icon-indicate uagb-has-alpha` }
 								onClick={ toggleClose }
 							>
 								<ColorIndicator
@@ -246,8 +225,8 @@ const AdvancedPopColorControl = ( props ) => {
 										{ cIcons.inherit }
 									</span>
 								) }
-								{ props.colorValue &&
-									props.colorValue.startsWith(
+								{ colorValue &&
+									colorValue.startsWith(
 										'palette'
 									) && (
 										<span className="color-indicator-icon">
@@ -260,11 +239,7 @@ const AdvancedPopColorControl = ( props ) => {
 					{ ! visible.isVisible && (
 						<Tooltip text={ __( 'Select Color' ) }>
 							<Button
-								className={ `uagb-color-icon-indicate ${
-									value.alpha
-										? 'uagb-has-alpha'
-										: 'uagb-no-alpha'
-								}` }
+								className={ `uagb-color-icon-indicate uagb-has-alpha` }
 								onClick={ toggleVisible }
 							>
 								<ColorIndicator
@@ -276,8 +251,8 @@ const AdvancedPopColorControl = ( props ) => {
 										{ cIcons.inherit }
 									</span>
 								) }
-								{ props.colorValue &&
-									props.colorValue.startsWith(
+								{ colorValue &&
+									colorValue.startsWith(
 										'palette'
 									) && (
 										<span className="color-indicator-icon">
@@ -289,8 +264,8 @@ const AdvancedPopColorControl = ( props ) => {
 					) }
 				</div>
 			</div>
-			{ props.help && (
-				<p className="uag-control-help-notice">{ props.help }</p>
+			{ help && (
+				<p className="uag-control-help-notice">{ help }</p>
 			) }
 		</div>
 	);
