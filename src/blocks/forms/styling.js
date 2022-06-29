@@ -157,20 +157,6 @@ function styling( props ) {
 		submitLetterSpacingTablet,
 		submitLetterSpacingMobile,
 		submitLetterSpacingType,
-
-		checkBoxToggleBorderTopWidth,
-		checkBoxToggleBorderLeftWidth,
-		checkBoxToggleBorderRightWidth,
-		checkBoxToggleBorderBottomWidth,
-		checkBoxToggleBorderTopWidthTablet,
-		checkBoxToggleBorderLeftWidthTablet,
-		checkBoxToggleBorderRightWidthTablet,
-		checkBoxToggleBorderBottomWidthTablet,
-		checkBoxToggleBorderTopWidthMobile,
-		checkBoxToggleBorderLeftWidthMobile,
-		checkBoxToggleBorderRightWidthMobile,
-		checkBoxToggleBorderBottomWidthMobile,
-
 	} = props.attributes;
 
 	let selectors = {};
