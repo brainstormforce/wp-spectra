@@ -952,7 +952,7 @@ tweetBtnLetterSpacingType,
 	const spacingSettings = (
 		<UAGAdvancedPanelBody
 			title={ __( 'Spacing', 'ultimate-addons-for-gutenberg' ) }
-			initialOpen={ true }
+			initialOpen={ false }
 		>
 			{ ( authorImage && authorImage.url ) && (
 				<ResponsiveSlider
@@ -1744,12 +1744,12 @@ tweetBtnLetterSpacingType,
 						{ enableTweet && iconStyleSetting() }
 						{ quoteStyling }
 						{ authorStyling }
+						{ spacingSettings }
 					</InspectorTab>
 					<InspectorTab
 						{ ...UAGTabs.advance }
 						parentProps={ props }
 					>
-						{ spacingSettings }
 					</InspectorTab>
 				</InspectorTabs>
 			</InspectorControls>
