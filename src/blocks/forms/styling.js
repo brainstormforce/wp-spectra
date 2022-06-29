@@ -737,13 +737,15 @@ function styling( props ) {
 		// Label Hovev Colors
 	} else if ( 'underlined' === formStyle ) {
 		selectors[ ' .uagb-forms-main-form  .uagb-forms-input' ] = {
-			'border': 0,
-			'outline': 0,
-			'border-radius': 0,
-			'background': 'transparent',
+			'border-top-width': 0,
+			'border-right-width': 0,
+			'border-left-width': 0,
 			'border-top': 0,
 			'border-left': 0,
 			'border-right': 0,
+			'outline': 0,
+			'border-radius': 0,
+			'background': 'transparent',
 			...inputBorder,
 			'color': inputColor,
 			'padding-top': generateCSSUnit( paddingFieldTop, paddingFieldUnit ),

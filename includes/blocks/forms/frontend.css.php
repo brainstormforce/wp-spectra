@@ -48,6 +48,7 @@ $input_overall_border        = UAGB_Block_Helper::uag_generate_deprecated_border
 	( isset( $attr['inputborderStyle'] ) ? $attr['inputborderStyle'] : '' ),
 	( isset( $attr['inputborderHColor'] ) ? $attr['inputborderHColor'] : '' )
 );
+$input_underline_border		 = ( isset( $attr['fieldBorderBottomWidth'] ) ?  UAGB_Helper::get_css_value( $attr['fieldBorderBottomWidth'], 'px' ) : '' );
 $input_overall_border_Tablet = UAGB_Block_Helper::uag_generate_border_css( $attr, 'field', 'tablet' );
 $input_overall_border_Mobile = UAGB_Block_Helper::uag_generate_border_css( $attr, 'field', 'mobile' );
 
@@ -414,15 +415,25 @@ if ( 'underlined' === $attr['formStyle'] ) {
 	$selectors[' .uagb-forms-main-form  .uagb-forms-radio-wrap input[type=radio] + label:before'] = array(
 		'border-bottom' => UAGB_Helper::get_css_value( $attr['toggleBorderBottomWidth'], 'px' ) . ' ' . $attr['toggleBorderStyle'] . ' ' . $attr['toggleBorderColor'],
 	);
-	$selectors[' .uagb-forms-main-form  .uagb-forms-input']                                       = array(
-		'border'        => 0,
-		'outline'       => 0,
-		'border-radius' => 0,
-		'background'    => 'transparent',
-		'border-bottom' => UAGB_Helper::get_css_value( $attr['inputBorderBottomWidth'], 'px' ) . ' ' . $attr['inputBorderStyle'] . ' ' . $attr['inputBorderColor'],
-		'color'         => $attr['inputColor'],
+	$selectors[' .uagb-forms-main-form  .uagb-forms-input']                                       = array_merge(
+		array(
+			'border-top'	=> 0,
+			'border-left'	=> 0,
+			'border-right'	=> 0,
+			'outline'       => 0,
+			'border-radius' => 0,
+			'background'    => 'transparent',
+			'border-bottom' => UAGB_Helper::get_css_value( $attr['inputBorderBottomWidth'], 'px' ) . ' ' . $attr['inputBorderStyle'] . ' ' . $attr['inputBorderColor'],
+			'color'         => $attr['inputColor'],
+		),
+		$input_overall_border
 	);
-
+	$selectors['.uagb-forms__outer-wrap .uagb-forms-main-form  .uagb-forms-input']                                       = array(
+		'border-top-width'	=> 0,
+		'border-right-width'	=> 0,
+		'border-left-width'	=> 0,
+		'border-bottom-width' => $input_underline_border,
+	);
 	$selectors[' .uagb-forms-input:hover']        = array(
 		'border-color' => $attr['inputBorderHColor'],
 	);
