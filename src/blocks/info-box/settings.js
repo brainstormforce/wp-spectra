@@ -1410,7 +1410,23 @@ const Settings = ( props ) => {
 								link={ {
 									value: spacingLink,
 									label: 'spacingLink',
-								} }
+								} }								
+								units={ [
+									{
+										name: __(
+											'Pixel',
+											'ultimate-addons-for-gutenberg'
+										),
+										unitValue: 'px',
+									},
+									{
+										name: __(
+											'EM',
+											'ultimate-addons-for-gutenberg'
+										),
+										unitValue: 'em',
+									},
+								] }
 							/>
 						</>
 					</UAGAdvancedPanelBody>
