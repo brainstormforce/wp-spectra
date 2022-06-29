@@ -4,8 +4,13 @@
 
 import generateCSS from '@Controls/generateCSS';
 import generateCSSUnit from '@Controls/generateCSSUnit';
+import { getFallbackNumber } from '@Controls/getAttributeFallback';
+import generateBorderCSS from '@Controls/generateBorderCSS';
 
 function CtaStyle( props ) {
+
+	const blockName = props.name.replace( 'uagb/', '' );
+
 	const {
 		stack,
 		textAlign,
@@ -63,13 +68,9 @@ function CtaStyle( props ) {
 		ctaPaddingUnit,
 		mobileCTAPaddingUnit,
 		tabletCTAPaddingUnit,
-		ctaBorderStyle,
-		ctaBorderColor,
-		ctaBorderWidth,
-		ctaBorderRadius,
 		ctaLinkHoverColor,
 		ctaBgHoverColor,
-		ctaBorderhoverColor,
+		btnBorderHColor,
 		ctaIconSpace,
 		ctaIconSpaceTablet,
 		ctaIconSpaceMobile,
@@ -115,10 +116,6 @@ function CtaStyle( props ) {
 		secondCtaPaddingUnit,
 		secondCtaMobilePaddingUnit,
 		secondCtaTabletPaddingUnit,
-		secondCtaBorderWidth,
-		secondCtaBorderRadius,
-		secondCtaBorderStyle,
-		secondCtaBorderColor,
 		secondCtaBorderHColor,
 		secondCtaColor,
 		secondCtaBackground,
@@ -164,7 +161,40 @@ function CtaStyle( props ) {
 		buttonRightSpaceTablet,
 		buttonRightSpaceMobile,
 		buttonRightSpaceType,
+		secondCtaIconSpaceTablet,
+		secondCtaIconSpaceMobile,
+		titleLetterSpacing,
+		titleLetterSpacingTablet,
+		titleLetterSpacingMobile,
+		titleLetterSpacingType,
+		descLetterSpacing,
+		descLetterSpacingTablet,
+		descLetterSpacingMobile,
+		descLetterSpacingType,
+		ctaLetterSpacing,
+		ctaLetterSpacingTablet,
+		ctaLetterSpacingMobile,
+		ctaLetterSpacingType,
+		secondCtaLetterSpacing,
+		secondCtaLetterSpacingTablet,
+		secondCtaLetterSpacingMobile,
+		secondCtaLetterSpacingType,
 	} = props.attributes;
+
+	const ctaBorderCSS = generateBorderCSS( props.attributes, 'btn' );
+	const ctaBorderCSSTablet = generateBorderCSS( props.attributes, 'btn', 'tablet' );
+	const ctaBorderCSSMobile = generateBorderCSS( props.attributes, 'btn', 'mobile' );
+	const titleSpaceFallback = getFallbackNumber( titleSpace, 'titleSpace', blockName );
+	const descSpaceFallback = getFallbackNumber( descSpace, 'descSpace', blockName );
+	const secondCtaIconSpaceFallback = getFallbackNumber( secondCtaIconSpace, 'secondCtaIconSpace', blockName );
+	const ctaIconSpaceFallback = getFallbackNumber( ctaIconSpace, 'ctaIconSpace', blockName );
+	const contentWidthFallback = getFallbackNumber( contentWidth, 'contentWidth', blockName );
+	const gapBtnFallback = getFallbackNumber( gapBtn, 'gapBtn', blockName );
+	const buttonRightSpaceFallback = getFallbackNumber( buttonRightSpace, 'buttonRightSpace', blockName );
+
+	const secondCtaBorderCSS = generateBorderCSS( props.attributes, 'secondCta' )
+	const secondCtaBorderCSSTablet = generateBorderCSS( props.attributes, 'secondCta', 'tablet' )
+	const secondCtaBorderCSSMobile = generateBorderCSS( props.attributes, 'secondCta', 'mobile' )
 
 	const selectors = {
 		' .uagb-cta__content-wrap': {
@@ -196,8 +226,9 @@ function CtaStyle( props ) {
 				titleLineHeight,
 				titleLineHeightType
 			),
+			'letter-spacing': generateCSSUnit( titleLetterSpacing, titleLetterSpacingType ),
 			'color': titleColor,
-			'margin-bottom': generateCSSUnit( titleSpace, titleSpaceType ),
+			'margin-bottom': generateCSSUnit( titleSpaceFallback, titleSpaceType ),
 		},
 
 		// Description Style
@@ -212,8 +243,9 @@ function CtaStyle( props ) {
 				descLineHeight,
 				descLineHeightType
 			),
+			'letter-spacing': generateCSSUnit( descLetterSpacing, descLetterSpacingType ),
 			'color': descColor,
-			'margin-bottom': generateCSSUnit( descSpace, descSpaceType ),
+			'margin-bottom': generateCSSUnit( descSpaceFallback, descSpaceType ),
 		},
 	};
 
@@ -233,15 +265,14 @@ function CtaStyle( props ) {
 		'font-weight': ctaFontWeight,
 		'color': ctaBtnLinkColor,
 		'background-color': ctaBgColor,
-		'border-style': ctaBorderStyle,
-		'border-color': ctaBorderColor,
-		'border-radius': generateCSSUnit( ctaBorderRadius, 'px' ),
-		'border-width': generateCSSUnit( ctaBorderWidth, 'px' ),
 		'padding-top': generateCSSUnit( ctaTopPadding, ctaPaddingUnit ),
 		'padding-bottom': generateCSSUnit( ctaBottomPadding, ctaPaddingUnit ),
 		'padding-left': generateCSSUnit( ctaLeftPadding, ctaPaddingUnit ),
 		'padding-right': generateCSSUnit( ctaRightPadding, ctaPaddingUnit ),
+		...ctaBorderCSS,
+		'letter-spacing': generateCSSUnit( ctaLetterSpacing, ctaLetterSpacingType ),
 	};
+
 
 	selectors['.uagb-cta__outer-wrap a.uagb-cta-second__button'] = {
 		'font-size': generateCSSUnit( secondCtaFontSize, secondCtaFontSizeType ),
@@ -252,16 +283,14 @@ function CtaStyle( props ) {
 		'font-weight': secondCtaFontWeight,
 		'color': secondCtaColor,
 		'background-color': secondCtaBackground,
-		'border-style': secondCtaBorderStyle,
-		'border-color': secondCtaBorderColor,
-		'border-radius': generateCSSUnit( secondCtaBorderRadius, 'px' ),
-		'border-width': generateCSSUnit( secondCtaBorderWidth, 'px' ),
 		'padding-top': generateCSSUnit( secondCtaTopPadding, secondCtaPaddingUnit ),
 		'padding-bottom': generateCSSUnit( secondCtaBottomPadding, secondCtaPaddingUnit ),
 		'padding-left': generateCSSUnit( secondCtaLeftPadding, secondCtaPaddingUnit ),
 		'padding-right': generateCSSUnit( secondCtaRightPadding, secondCtaPaddingUnit ),
 		'align-self': 'top' === buttonAlign ? 'flex-start' : 'center',
 		'height' : 'fit-content',
+		...secondCtaBorderCSS,
+		'letter-spacing': generateCSSUnit( secondCtaLetterSpacing, secondCtaLetterSpacingType ),
 	};
 	selectors['.uagb-cta__outer-wrap a.uagb-cta-second__button:hover'] = {
 		'color': secondCtaHoverColor,
@@ -272,7 +301,7 @@ function CtaStyle( props ) {
 	selectors['.uagb-cta__outer-wrap a.uagb-cta__button-link-wrapper:hover'] = {
 		'color': ctaLinkHoverColor,
 		'background-color': ctaBgHoverColor,
-		'border-color': ctaBorderhoverColor,
+		'border-color': btnBorderHColor,
 	};
 
 	selectors['.uagb-cta__outer-wrap a.uagb-cta__button-link-wrapper svg' ] = {
@@ -280,6 +309,7 @@ function CtaStyle( props ) {
 		'width': generateCSSUnit( ctaFontSize, ctaFontSizeType ),
 		'line-height': generateCSSUnit( ctaFontSize, ctaFontSizeType ),
 		'fill': ctaBtnLinkColor,
+		'letter-spacing': generateCSSUnit( ctaLetterSpacing, ctaLetterSpacingType ),
 	};
 
 	selectors['.uagb-cta__outer-wrap a.uagb-cta-second__button svg' ] = {
@@ -296,16 +326,6 @@ function CtaStyle( props ) {
 	selectors['.uagb-cta__outer-wrap a.uagb-cta-second__button:hover svg'] = {
 		'fill': secondCtaHoverColor,
 	};
-
-	if( secondCtaIconPosition === 'before' ){
-		selectors[ '.uagb-cta__outer-wrap a.uagb-cta-second__button > svg' ] = {
-			'margin-right': generateCSSUnit( secondCtaIconSpace, 'px' ),
-		};
-	}else{
-		selectors[ '.uagb-cta__outer-wrap a.uagb-cta-second__button > svg' ] = {
-			'margin-left': generateCSSUnit( secondCtaIconSpace, 'px' ),
-		};
-	}
 
 	const tabletSelectors = {
 		'.uagb-editor-preview-mode-tablet.uagb-cta__outer-wrap ': {
@@ -328,6 +348,7 @@ function CtaStyle( props ) {
 				titleLineHeightTablet,
 				titleLineHeightType
 			),
+			'letter-spacing': generateCSSUnit( titleLetterSpacingTablet, titleLetterSpacingType ),
 			'margin-bottom': generateCSSUnit( titleSpaceTablet, titleSpaceType ),
 		},
 		' .block-editor-rich-text__editable.uagb-cta__desc': {
@@ -339,6 +360,7 @@ function CtaStyle( props ) {
 				descLineHeightTablet,
 				descLineHeightType
 			),
+			'letter-spacing': generateCSSUnit( descLetterSpacingTablet, descLetterSpacingType ),
 			'margin-bottom': generateCSSUnit( descSpaceTablet, descSpaceType ),
 		},
 		'.uagb-cta__outer-wrap a.uagb-cta__button-link-wrapper': {
@@ -359,6 +381,8 @@ function CtaStyle( props ) {
 				ctaRightPaddingTablet,
 				tabletCTAPaddingUnit
 			),
+			'letter-spacing': generateCSSUnit( ctaLetterSpacingTablet, ctaLetterSpacingType ),
+			...ctaBorderCSSTablet
 		},
 		'.uagb-cta__outer-wrap a.uagb-cta__button-link-wrapper svg': {
 			'font-size': generateCSSUnit( ctaFontSizeTablet, ctaFontSizeType ),
@@ -368,6 +392,7 @@ function CtaStyle( props ) {
 				ctaFontSizeTablet,
 				ctaFontSizeType
 			),
+			'letter-spacing': generateCSSUnit( ctaLetterSpacingTablet, ctaLetterSpacingType ),
 		},
 		'.uagb-cta__outer-wrap a.uagb-cta-second__button': {
 			'font-size': generateCSSUnit( secondCtaFontSizeTablet, secondCtaFontSizeType ),
@@ -387,6 +412,8 @@ function CtaStyle( props ) {
 				secondCtaRightTabletPadding,
 				secondCtaTabletPaddingUnit
 			),
+			...secondCtaBorderCSSTablet,
+			'letter-spacing': generateCSSUnit( secondCtaLetterSpacingTablet, secondCtaLetterSpacingType ),
 		},
 		'.uagb-cta__outer-wrap a.uagb-cta-second__button svg': {
 			'font-size': generateCSSUnit( secondCtaFontSizeTablet, secondCtaFontSizeType ),
@@ -396,6 +423,7 @@ function CtaStyle( props ) {
 				secondCtaFontSizeTablet,
 				secondCtaFontSizeType
 			),
+			'letter-spacing': generateCSSUnit( secondCtaLetterSpacingTablet, secondCtaLetterSpacingType ),
 		},
 	};
 
@@ -429,6 +457,7 @@ function CtaStyle( props ) {
 				titleLineHeightMobile,
 				titleLineHeightType
 			),
+			'letter-spacing': generateCSSUnit( titleLetterSpacingMobile, titleLetterSpacingType ),
 			'margin-bottom': generateCSSUnit( titleSpaceMobile, titleSpaceType ),
 		},
 		' .block-editor-rich-text__editable.uagb-cta__desc': {
@@ -440,12 +469,14 @@ function CtaStyle( props ) {
 				descLineHeightMobile,
 				descLineHeightType
 			),
+			'letter-spacing': generateCSSUnit( descLetterSpacingMobile, descLetterSpacingType ),
 			'margin-bottom': generateCSSUnit( descSpaceMobile, descSpaceType ),
 		},
 		' .uagb-cta__button-wrapper a.uagb-cta-typeof-text': {
 			'font-size': generateCSSUnit( ctaFontSizeMobile, ctaFontSizeType ),
+			'letter-spacing': generateCSSUnit( ctaLetterSpacingMobile, ctaLetterSpacingType ),
 		},
-		' .uagb-cta__button-wrapper a.uagb-cta-typeof-button': {
+		'.uagb-cta__outer-wrap a.uagb-cta__button-link-wrapper': {
 			'font-size': generateCSSUnit( ctaFontSizeMobile, ctaFontSizeType ),
 			'padding-top': generateCSSUnit(
 				ctaTopPaddingMobile,
@@ -463,6 +494,8 @@ function CtaStyle( props ) {
 				ctaRightPaddingMobile,
 				mobileCTAPaddingUnit
 			),
+			'letter-spacing': generateCSSUnit( ctaLetterSpacingMobile, ctaLetterSpacingType ),
+			...ctaBorderCSSMobile
 		},
 		' .uagb-cta__button-wrapper .uagb-cta-with-svg': {
 			'font-size': generateCSSUnit( ctaFontSizeMobile, ctaFontSizeType ),
@@ -472,6 +505,7 @@ function CtaStyle( props ) {
 				ctaFontSizeMobile,
 				ctaFontSizeType
 			),
+			'letter-spacing': generateCSSUnit( ctaLetterSpacingMobile, ctaLetterSpacingType ),
 		},
 		'.uagb-cta__outer-wrap a.uagb-cta-second__button': {
 			'font-size': generateCSSUnit( secondCtaFontSizeMobile, secondCtaFontSizeType ),
@@ -491,6 +525,8 @@ function CtaStyle( props ) {
 				secondCtaRightMobilePadding,
 				secondCtaMobilePaddingUnit
 			),
+			...secondCtaBorderCSSMobile,
+			'letter-spacing': generateCSSUnit( secondCtaLetterSpacingMobile, secondCtaLetterSpacingType ),
 		},
 		'.uagb-cta__outer-wrap a.uagb-cta-second__button svg': {
 			'font-size': generateCSSUnit( secondCtaFontSizeMobile, secondCtaFontSizeType ),
@@ -500,12 +536,44 @@ function CtaStyle( props ) {
 				secondCtaFontSizeMobile,
 				secondCtaFontSizeType
 			),
+			'letter-spacing': generateCSSUnit( secondCtaLetterSpacingMobile, secondCtaLetterSpacingType ),
 		},
 	};
 
+	if ( ctaType === 'text' ) {
+		selectors['.uagb-cta__outer-wrap a.uagb-cta__button-link-wrapper']        = {
+			'color' : ctaBtnLinkColor,
+		};
+		selectors['.uagb-cta__outer-wrap a.uagb-cta__button-link-wrapper:hover '] = {
+			'color' : ctaLinkHoverColor,
+		};
+	}
+
+	if( secondCtaIconPosition === 'before' ){
+		selectors[ '.uagb-cta__outer-wrap a.uagb-cta-second__button > svg' ] = {
+			'margin-right': generateCSSUnit( secondCtaIconSpaceFallback, 'px' ),
+		};
+		tabletSelectors[ '.uagb-cta__outer-wrap a.uagb-cta-second__button > svg' ] = {
+			'margin-right': generateCSSUnit( secondCtaIconSpaceTablet, 'px' ),
+		};
+		mobileSelectors[ '.uagb-cta__outer-wrap a.uagb-cta-second__button > svg' ] = {
+			'margin-right': generateCSSUnit( secondCtaIconSpaceMobile, 'px' ),
+		};
+	}else{
+		selectors[ '.uagb-cta__outer-wrap a.uagb-cta-second__button > svg' ] = {
+			'margin-left': generateCSSUnit( secondCtaIconSpaceFallback, 'px' ),
+		};
+		tabletSelectors[ '.uagb-cta__outer-wrap a.uagb-cta-second__button > svg' ] = {
+			'margin-left': generateCSSUnit( secondCtaIconSpaceTablet, 'px' ),
+		};
+		mobileSelectors[ '.uagb-cta__outer-wrap a.uagb-cta-second__button > svg' ] = {
+			'margin-left': generateCSSUnit( secondCtaIconSpaceMobile, 'px' ),
+		};
+	}
+
 	if( ctaIconPosition === 'before' ){
 		selectors[ '.uagb-cta__outer-wrap a.uagb-cta__button-link-wrapper > svg' ] = {
-			'margin-right': generateCSSUnit( ctaIconSpace, 'px' ),
+			'margin-right': generateCSSUnit( ctaIconSpaceFallback, 'px' ),
 		};
 		tabletSelectors[ '.uagb-cta__outer-wrap a.uagb-cta__button-link-wrapper > svg' ] = {
 			'margin-right': generateCSSUnit( ctaIconSpaceTablet, 'px' ),
@@ -515,7 +583,7 @@ function CtaStyle( props ) {
 		};
 	}else{
 		selectors[ '.uagb-cta__outer-wrap a.uagb-cta__button-link-wrapper > svg' ] = {
-			'margin-left': generateCSSUnit( ctaIconSpace, 'px' ),
+			'margin-left': generateCSSUnit( ctaIconSpaceFallback, 'px' ),
 		};
 		tabletSelectors[ '.uagb-cta__outer-wrap a.uagb-cta__button-link-wrapper > svg' ] = {
 			'margin-left': generateCSSUnit( ctaIconSpaceTablet, 'px' ),
@@ -527,7 +595,7 @@ function CtaStyle( props ) {
 
 	if ( ctaPosition === 'right' && ( ctaType === 'text' || ctaType === 'button' ) ) {
 		selectors[ ' .uagb-cta__wrap' ] = {
-			'width': generateCSSUnit( contentWidth, contentWidthType ),
+			'width': generateCSSUnit( contentWidthFallback, contentWidthType ),
 		};
 		selectors[ '.uagb-cta__outer-wrap > a' ] = {
 			'align-self': 'top' === buttonAlign ? 'flex-start' : 'center',
@@ -562,7 +630,7 @@ function CtaStyle( props ) {
 	if ( 'desktop' === stackBtn ) {
 		selectors[ ' .uagb-cta__buttons' ] = {
 			'flex-direction': 'column',
-			'row-gap': generateCSSUnit( gapBtn, 'px' )
+			'row-gap': generateCSSUnit( gapBtnFallback, 'px' )
 		};
 		tabletSelectors[ ' .uagb-cta__buttons' ] = {
 			'flex-direction': 'column',
@@ -574,7 +642,7 @@ function CtaStyle( props ) {
 		};
 	} else if ( 'tablet' === stackBtn ) {
 		selectors[ ' .uagb-cta__buttons' ] = {
-			'column-gap': generateCSSUnit( gapBtn , 'px' ),
+			'column-gap': generateCSSUnit( gapBtnFallback, 'px' ),
 			'align-items': 'center'
 		};
 		tabletSelectors[' .uagb-cta__buttons'] = {
@@ -588,7 +656,7 @@ function CtaStyle( props ) {
 
 	} else if ( 'mobile' === stackBtn ) {
 		selectors[ ' .uagb-cta__buttons' ] = {
-			'column-gap': generateCSSUnit( gapBtn , 'px' ),
+			'column-gap': generateCSSUnit( gapBtnFallback, 'px' ),
 			'align-items': 'center'
 		};
 		tabletSelectors[ ' .uagb-cta__buttons' ] = {
@@ -601,7 +669,7 @@ function CtaStyle( props ) {
 		};
 	} else if ( 'none' === stackBtn ) {
 		selectors[ ' .uagb-cta__buttons' ] = {
-			'column-gap': generateCSSUnit( gapBtn , 'px' ),
+			'column-gap': generateCSSUnit( gapBtnFallback, 'px' ),
 			'align-items': 'center',
 		};
 		tabletSelectors[ ' .uagb-cta__buttons' ] = {
@@ -690,7 +758,7 @@ function CtaStyle( props ) {
 		};
 		selectors[ ' .uagb-cta__buttons' ] = {
 			'column-gap': generateCSSUnit( gapBtn , 'px' ),
-			'margin-left': generateCSSUnit( buttonRightSpace, buttonRightSpaceType )
+			'margin-left': generateCSSUnit( buttonRightSpaceFallback, buttonRightSpaceType ),
 		};
 		tabletSelectors[ ' .uagb-cta__buttons' ] = {
 			'column-gap': generateCSSUnit( gapBtnTablet , 'px' ),

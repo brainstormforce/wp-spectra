@@ -13,7 +13,7 @@ import {
 import BoxShadowControl from '@Components/box-shadow';
 import SpacingControl from '@Components/spacing-control';
 import Background from '@Components/background';
-import Border from '@Components/border';
+import ResponsiveBorder from '@Components/responsive-border';
 import UAGAdvancedPanelBody from '@Components/advanced-panel-body';
 import MultiButtonsControl from '@Components/multi-buttons-control';
 import { Icon, SelectControl, ToggleControl } from '@wordpress/components';
@@ -70,11 +70,6 @@ const Settings = ( props ) => {
 		backgroundSizeMobile,
 		backgroundImageColor,
 		gradientValue,
-		borderStyle,
-		borderWidth,
-		borderRadius,
-		borderColor,
-		borderHoverColor,
 		boxShadowColor,
 		boxShadowHOffset,
 		boxShadowVOffset,
@@ -169,6 +164,19 @@ const Settings = ( props ) => {
 		linkColor,
 		linkHoverColor,
 
+		// responsive
+		innerContentCustomWidthTypeTablet,
+		innerContentCustomWidthTypeMobile,
+		widthTypeTablet,
+		widthTypeMobile,
+		minHeightTypeTablet,
+		minHeightTypeMobile,
+		topHeightType,
+		topHeightTypeTablet,
+		topHeightTypeMobile,
+		bottomHeightType,
+		bottomHeightTypeTablet,
+		bottomHeightTypeMobile
 	} = attributes;
 
 	let currentDirection = directionDesktop;
@@ -428,14 +436,26 @@ const Settings = ( props ) => {
 												desktop: {
 													value: innerContentCustomWidthDesktop,
 													label: 'innerContentCustomWidthDesktop',
+													unit: {
+														value: innerContentCustomWidthType,
+														label: 'innerContentCustomWidthType',
+													},
 												},
 												tablet: {
 													value: innerContentCustomWidthTablet,
 													label: 'innerContentCustomWidthTablet',
+													unit: {
+														value: innerContentCustomWidthTypeTablet,
+														label: 'innerContentCustomWidthTypeTablet',
+													},
 												},
 												mobile: {
 													value: innerContentCustomWidthMobile,
 													label: 'innerContentCustomWidthMobile',
+													unit: {
+														value: innerContentCustomWidthTypeMobile,
+														label: 'innerContentCustomWidthTypeMobile',
+													},
 												},
 											} }
 											min={ 0 }
@@ -476,14 +496,26 @@ const Settings = ( props ) => {
 									desktop: {
 										value: widthDesktop,
 										label: 'widthDesktop',
+										unit: {
+											value: widthType,
+											label: 'widthType',
+										},
 									},
 									tablet: {
 										value: widthTablet,
 										label: 'widthTablet',
+										unit: {
+											value: widthTypeTablet,
+											label: 'widthTypeTablet',
+										},
 									},
 									mobile: {
 										value: widthMobile,
 										label: 'widthMobile',
+										unit: {
+											value: widthTypeMobile,
+											label: 'widthTypeMobile',
+										},
 									},
 								} }
 								min={ 0 }
@@ -534,14 +566,26 @@ const Settings = ( props ) => {
 										desktop: {
 											value: innerContentCustomWidthDesktop,
 											label: 'innerContentCustomWidthDesktop',
+											unit: {
+												value: innerContentCustomWidthType,
+												label: 'innerContentCustomWidthType',
+											},
 										},
 										tablet: {
 											value: innerContentCustomWidthTablet,
 											label: 'innerContentCustomWidthTablet',
+											unit: {
+												value: innerContentCustomWidthTypeTablet,
+												label: 'innerContentCustomWidthTypeTablet',
+											},
 										},
 										mobile: {
 											value: innerContentCustomWidthMobile,
 											label: 'innerContentCustomWidthMobile',
+											unit: {
+												value: innerContentCustomWidthTypeMobile,
+												label: 'innerContentCustomWidthTypeMobile',
+											},
 										},
 									} }
 									min={ 0 }
@@ -578,14 +622,26 @@ const Settings = ( props ) => {
 							desktop: {
 								value: minHeightDesktop,
 								label: 'minHeightDesktop',
+								unit: {
+									value: minHeightType,
+									label: 'minHeightType',
+								},
 							},
 							tablet: {
 								value: minHeightTablet,
 								label: 'minHeightTablet',
+								unit: {
+									value: minHeightTypeTablet,
+									label: 'minHeightTypeTablet',
+								},
 							},
 							mobile: {
 								value: minHeightMobile,
 								label: 'minHeightMobile',
+								unit: {
+									value: minHeightTypeMobile,
+									label: 'minHeightTypeMobile',
+								},
 							},
 						} }
 						min={ 0 }
@@ -939,38 +995,13 @@ const Settings = ( props ) => {
 				title={ __( 'Border', 'ultimate-addons-for-gutenberg' ) }
 				initialOpen={ false }
 			>
-				<Border
-					disabledBorderTitle= {true}
+				<ResponsiveBorder
 					setAttributes={ setAttributes }
-					borderStyle={ {
-						value: borderStyle,
-						label: 'borderStyle',
-						title: __( 'Style', 'ultimate-addons-for-gutenberg' ),
-					} }
-					borderWidth={ {
-						value: borderWidth,
-						label: 'borderWidth',
-						title: __( 'Width', 'ultimate-addons-for-gutenberg' ),
-					} }
-					borderRadius={ {
-						value: borderRadius,
-						label: 'borderRadius',
-						title: __( 'Radius', 'ultimate-addons-for-gutenberg' ),
-					} }
-					borderColor={ {
-						value: borderColor,
-						label: 'borderColor',
-						title: __( 'Color', 'ultimate-addons-for-gutenberg' ),
-					} }
-					borderHoverColor={ {
-						value: borderHoverColor,
-						label: 'borderHoverColor',
-						title: __(
-							'Hover Color',
-							'ultimate-addons-for-gutenberg'
-						),
-					} }
+					prefix={ 'container' }
+					attributes={ attributes }
+					deviceType={ deviceType }
 					disableBottomSeparator={ true }
+					disabledBorderTitle= { true }
 				/>
 			</UAGAdvancedPanelBody>
 		);
@@ -1496,14 +1527,26 @@ const Settings = ( props ) => {
 								desktop: {
 									value: topHeight,
 									label: 'topHeight',
+									unit:  {
+										value: topHeightType,
+										label: 'topHeightType',
+									}
 								},
 								tablet: {
 									value: topHeightTablet,
 									label: 'topHeightTablet',
+									unit:  {
+										value: topHeightTypeTablet,
+										label: 'topHeightTypeTablet',
+									}
 								},
 								mobile: {
 									value: topHeightMobile,
 									label: 'topHeightMobile',
+									unit:  {
+										value: topHeightTypeMobile,
+										label: 'topHeightTypeMobile',
+									}
 								},
 							} }
 							min={ 0 }
@@ -1595,14 +1638,26 @@ const Settings = ( props ) => {
 								desktop: {
 									value: bottomHeight,
 									label: 'bottomHeight',
+									unit:  {
+										value: bottomHeightType,
+										label: 'bottomHeightType',
+									}
 								},
 								tablet: {
 									value: bottomHeightTablet,
 									label: 'bottomHeightTablet',
+									unit:  {
+										value: bottomHeightTypeTablet,
+										label: 'bottomHeightTypeTablet',
+									}
 								},
 								mobile: {
 									value: bottomHeightMobile,
 									label: 'bottomHeightMobile',
+									unit:  {
+										value: bottomHeightTypeMobile,
+										label: 'bottomHeightTypeMobile',
+									}
 								},
 							} }
 							min={ 0 }

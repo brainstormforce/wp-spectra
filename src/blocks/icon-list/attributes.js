@@ -186,14 +186,12 @@ const attributes = {
 		UAGCopyPaste: {
 			styleType: 'icon-bg-size-tablet'
 		},
-		default: 0,
 	},
 	bgSizeMobile: {
 		type: 'number',
 		UAGCopyPaste: {
 			styleType: 'icon-bg-size-mobile'
 		},
-		default: 0,
 	},
 	border: {
 		type: 'number',
@@ -204,14 +202,12 @@ const attributes = {
 	},
 	borderTablet: {
 		type: 'number',
-		default: 0,
 		UAGCopyPaste: {
 			styleType: 'icon-border-style'
 		},
 	},
 	borderMobile: {
 		type: 'number',
-		default: 0,
 		UAGCopyPaste: {
 			styleType: 'icon-border-style'
 		},
@@ -364,7 +360,31 @@ const attributes = {
 		type: 'boolean',
 		default: false,
 	},
-
+	labelLetterSpacing: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'label-letter-spacing'
+		}
+	},
+	labelLetterSpacingTablet: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'label-letter-spacing-tablet'
+		}
+	},
+	labelLetterSpacingMobile: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'label-letter-spacing-mobile'
+		}
+	},
+	labelLetterSpacingType: {
+		type: 'string',
+		default: 'px',
+		UAGCopyPaste: {
+			styleType: 'label-letter-spacing-type'
+		}
+	},
 	iconColor: {
 		type: 'string',
 		default: '',
@@ -374,6 +394,7 @@ const attributes = {
 	},
 	labelColor: {
 		type: 'string',
+		default: '',
 		UAGCopyPaste: {
 			styleType: 'main-title-color'
 		},

@@ -1,3 +1,7 @@
+import { getBorderAttributes } from '@Controls/generateAttributes';
+
+const inputBorderAttributes = getBorderAttributes( 'container' )
+
 const attributes = {
 	block_id: {
 		type: 'string',
@@ -53,7 +57,7 @@ const attributes = {
 	},
 	innerContentCustomWidthMobile: {
 		type: 'number',
-		default: 320
+		default: 426
 	},
 	innerContentCustomWidthType: {
 		type: 'string',
@@ -307,34 +311,18 @@ const attributes = {
 	borderStyle: {
 		type: 'string',
 		default: 'none',
-		UAGCopyPaste: {
-			styleType: 'overall-border-style'
-		},
 	},
 	borderWidth: {
 		type: 'number',
-		default: 1,
-		UAGCopyPaste: {
-			styleType: 'overall-border-width'
-		},
 	},
 	borderRadius: {
 		type: 'number',
-		UAGCopyPaste: {
-			styleType: 'overall-border-radius'
-		},
 	},
 	borderColor: {
 		type: 'string',
-		UAGCopyPaste: {
-			styleType: 'overall-border-color'
-		},
 	},
 	borderHoverColor: {
 		type: 'string',
-		UAGCopyPaste: {
-			styleType: 'overall-border-hover-color'
-		},
 	},
 	boxShadowColor: {
 		type: 'string',
@@ -903,6 +891,58 @@ const attributes = {
 			styleType: 'btn-hover-color'
 		},
 	},
+	// responsive code
+	innerContentCustomWidthTypeTablet: {
+		type: 'string',
+		default: 'px',
+	},
+	innerContentCustomWidthTypeMobile: {
+		type: 'string',
+		default: 'px',
+	},
+
+	widthTypeTablet: {
+		type: 'string',
+		default: '%',
+	},
+	widthTypeMobile: {
+		type: 'string',
+		default: '%',
+	},
+	minHeightTypeTablet: {
+		type: 'string',
+		default: 'px',
+	},
+	minHeightTypeMobile: {
+		type: 'string',
+		default: 'px',
+	},
+	// correct formating
+	topHeightType: {
+		type: 'string',
+		default: 'px',
+	},
+	topHeightTypeTablet: {
+		type: 'string',
+		default: 'px',
+	},
+	topHeightTypeMobile: {
+		type: 'string',
+		default: 'px',
+	},
+	bottomHeightType: {
+		type: 'string',
+		default: 'px',
+	},
+	bottomHeightTypeTablet: {
+		type: 'string',
+		default: 'px',
+	},
+	bottomHeightTypeMobile: {
+		type: 'string',
+		default: 'px',
+	},
+	...inputBorderAttributes
 };
 
 export default attributes;

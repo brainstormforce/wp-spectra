@@ -4,8 +4,10 @@
  * @param  {Object} props - The block object.
  * @return {Object} The inline background type CSS.
  */
+
 import generateCSS from '@Controls/generateCSS';
 import generateCSSUnit from '@Controls/generateCSSUnit';
+import generateBorderCSS from '@Controls/generateBorderCSS';
 
 function styling( props ) {
 	const {
@@ -13,20 +15,12 @@ function styling( props ) {
 		fieldBgColor,
 		fieldLabelColor,
 		fieldInputColor,
-		fieldBorderStyle,
-		fieldBorderWidth,
-		fieldBorderRadius,
-		fieldBorderColor,
-		fieldBorderFocusColor,
+		inputBorderHColor,
 		buttonTextColor,
 		buttonBgColor,
 		buttonTextHoverColor,
 		buttonBgHoverColor,
-		buttonBorderStyle,
-		buttonBorderWidth,
-		buttonBorderRadius,
-		buttonBorderColor,
-		buttonBorderHoverColor,
+		buttonBorderHColor,
 		fieldSpacing,
 		fieldSpacingTablet,
 		fieldSpacingMobile,
@@ -92,8 +86,6 @@ function styling( props ) {
 		validationMsgLineHeightTablet,
 		validationMsgLineHeightMobile,
 		radioCheckBorderRadiusType,
-		fieldBorderRadiusType,
-		buttonBorderRadiusType,
 		buttonTopPaddingDesktop,
 		buttonRightPaddingDesktop,
 		buttonBottomPaddingDesktop,
@@ -136,7 +128,35 @@ function styling( props ) {
 		radioCheckFontStyle,
 		radioCheckTransform,
 		radioCheckDecoration,
+		fieldBottomBorderWidth,
+		labelLetterSpacing,
+labelLetterSpacingTablet,
+labelLetterSpacingMobile,
+labelLetterSpacingType,
+inputLetterSpacing,
+inputLetterSpacingTablet,
+inputLetterSpacingMobile,
+inputLetterSpacingType,
+radioCheckLetterSpacing,
+radioCheckLetterSpacingTablet,
+radioCheckLetterSpacingMobile,
+radioCheckLetterSpacingType,
+buttonLetterSpacing,
+buttonLetterSpacingTablet,
+buttonLetterSpacingMobile,
+buttonLetterSpacingType,
+validationMsgLetterSpacingTablet,
+validationMsgLetterSpacingMobile,
+validationMsgLetterSpacingType,
 	} = props.attributes;
+
+	const fieldBorderCSS = generateBorderCSS( props.attributes, 'input' );
+	const fieldBorderCSSTablet = generateBorderCSS( props.attributes,'input', 'tablet' );
+	const fieldBorderCSSMobile = generateBorderCSS( props.attributes,'input', 'mobile' );
+
+	const buttonBorderCSS = generateBorderCSS( props.attributes, 'btn' );
+	const buttonBorderCSSTablet = generateBorderCSS( props.attributes, 'btn', 'tablet' );
+	const buttonBorderCSSMobile = generateBorderCSS( props.attributes, 'btn', 'mobile' );
 
 	const selectors = {
 		' .wpcf7 .wpcf7-form': {
@@ -148,13 +168,6 @@ function styling( props ) {
 		' .wpcf7 input:not([type=submit])': {
 			'background-color': fieldBgColor,
 			'color': fieldInputColor,
-			'border-style': fieldBorderStyle,
-			'border-color': fieldBorderColor,
-			'border-width': generateCSSUnit( fieldBorderWidth, 'px' ),
-			'border-radius': generateCSSUnit(
-				fieldBorderRadius,
-				fieldBorderRadiusType
-			),
 			'padding-left': generateCSSUnit(
 				fieldLeftPaddingDesktop,
 				fieldPaddingTypeDesktop
@@ -184,17 +197,12 @@ function styling( props ) {
 				inputLineHeightType
 			),
 			'text-align': align,
+			'letter-spacing': generateCSSUnit( inputLetterSpacing, inputLetterSpacingType ),
+			...fieldBorderCSS
 		},
 		' .wpcf7 select': {
 			'background-color': fieldBgColor,
 			'color': fieldLabelColor,
-			'border-style': fieldBorderStyle,
-			'border-color': fieldBorderColor,
-			'border-width': generateCSSUnit( fieldBorderWidth, 'px' ),
-			'border-radius': generateCSSUnit(
-				fieldBorderRadius,
-				fieldBorderRadiusType
-			),
 			'margin-top': generateCSSUnit( fieldLabelSpacing, 'px' ),
 			'margin-bottom': generateCSSUnit( fieldSpacing, 'px' ),
 			'font-size': generateCSSUnit( inputFontSize, inputFontSizeType ),
@@ -205,6 +213,8 @@ function styling( props ) {
 				inputLineHeightType
 			),
 			'text-align': align,
+			'letter-spacing': generateCSSUnit( inputLetterSpacing, inputLetterSpacingType ),
+			...fieldBorderCSS
 		},
 		" .wpcf7 select.wpcf7-form-control.wpcf7-select:not([multiple='multiple'])": {
 			'padding-left': generateCSSUnit(
@@ -245,13 +255,7 @@ function styling( props ) {
 		' .wpcf7 textarea': {
 			'background-color': fieldBgColor,
 			'color': fieldInputColor,
-			'border-color': fieldBorderColor,
-			'border-width': generateCSSUnit( fieldBorderWidth, 'px' ),
-			'border-radius': generateCSSUnit(
-				fieldBorderRadius,
-				fieldBorderRadiusType
-			),
-			'border-style': fieldBorderStyle,
+			...fieldBorderCSS,
 			'padding-left': generateCSSUnit(
 				fieldLeftPaddingDesktop,
 				fieldPaddingTypeDesktop
@@ -278,6 +282,7 @@ function styling( props ) {
 				inputLineHeightType
 			),
 			'text-align': align,
+			'letter-spacing': generateCSSUnit( inputLetterSpacing, inputLetterSpacingType ),
 		},
 		' .wpcf7 input::placeholder': {
 			'color': fieldInputColor,
@@ -298,6 +303,7 @@ function styling( props ) {
 				labelLineHeight,
 				labelLineHeightType
 			),
+			'letter-spacing': generateCSSUnit( labelLetterSpacing, labelLetterSpacingType ),
 		},
 		' .wpcf7 form .wpcf7-list-item-label': {
 			'font-size': generateCSSUnit( labelFontSize, labelFontSizeType ),
@@ -310,17 +316,18 @@ function styling( props ) {
 				labelLineHeight,
 				labelLineHeightType
 			),
+			'letter-spacing': generateCSSUnit( labelLetterSpacing, labelLetterSpacingType ),
 		},
 
 		//Focus
 		' .wpcf7 form input:not([type=submit]):focus': {
-			'border-color': fieldBorderFocusColor,
+			'border-color': inputBorderHColor,
 		},
 		' .wpcf7 form select:focus': {
-			'border-color': fieldBorderFocusColor,
+			'border-color': inputBorderHColor,
 		},
 		' .wpcf7 textarea:focus': {
-			'border-color': fieldBorderFocusColor,
+			'border-color': inputBorderHColor,
 		},
 
 		//Submit button
@@ -337,13 +344,7 @@ function styling( props ) {
 				buttonLineHeight,
 				buttonLineHeightType
 			),
-			'border-color': buttonBorderColor,
-			'border-style': buttonBorderStyle,
-			'border-width': generateCSSUnit( buttonBorderWidth, 'px' ),
-			'border-radius': generateCSSUnit(
-				buttonBorderRadius,
-				buttonBorderRadiusType
-			),
+			...buttonBorderCSS,
 			'padding-left': generateCSSUnit(
 				buttonLeftPaddingDesktop,
 				buttonPaddingTypeDesktop
@@ -360,12 +361,13 @@ function styling( props ) {
 				buttonBottomPaddingDesktop,
 				buttonPaddingTypeDesktop
 			),
+			'letter-spacing': generateCSSUnit( buttonLetterSpacing, buttonLetterSpacingType ),
 		},
 
 		' .wpcf7 input.wpcf7-form-control.wpcf7-submit:hover': {
 			'color': buttonTextHoverColor,
 			'background-color': buttonBgHoverColor,
-			'border-color': buttonBorderHoverColor,
+			'border-color': buttonBorderHColor,
 		},
 
 		// Check box Radio.
@@ -373,7 +375,7 @@ function styling( props ) {
 			'background-color': fieldBgColor,
 			'color': fieldInputColor,
 			'font-size': 'calc( ' + fieldTopPaddingDesktop + 'px / 1.2 )',
-			'border-color': fieldBorderFocusColor,
+			'border-color': inputBorderHColor,
 		},
 		" .wpcf7 .wpcf7-checkbox input[type='checkbox'] + span:before": {
 			'background-color': fieldBgColor,
@@ -382,18 +384,12 @@ function styling( props ) {
 			'height': generateCSSUnit( fieldTopPaddingDesktop, 'px' ),
 			'width': generateCSSUnit( fieldTopPaddingDesktop, 'px' ),
 			'font-size': 'calc( ' + fieldTopPaddingDesktop + 'px / 1.2 )',
-			'border-style': fieldBorderStyle,
-			'border-color': fieldBorderColor,
-			'border-width': generateCSSUnit( fieldBorderWidth, 'px' ),
-			'border-radius': generateCSSUnit(
-				fieldBorderRadius,
-				fieldBorderRadiusType
-			),
+			...fieldBorderCSS
 		},
 		" .wpcf7 .wpcf7-acceptance input[type='checkbox']:checked + span:before": {
 			'background-color': fieldBgColor,
 			'color': fieldInputColor,
-			'border-color': fieldBorderFocusColor,
+			'border-color': inputBorderHColor,
 		},
 		" .wpcf7 .wpcf7-acceptance input[type='checkbox'] + span:before": {
 			'background-color': fieldBgColor,
@@ -401,56 +397,31 @@ function styling( props ) {
 			'height': generateCSSUnit( fieldTopPaddingDesktop, 'px' ),
 			'width': generateCSSUnit( fieldTopPaddingDesktop, 'px' ),
 			'font-size': 'calc( ' + fieldTopPaddingDesktop + 'px / 1.2 )',
-			'border-style': fieldBorderStyle,
-			'border-color': fieldBorderColor,
-			'border-width': generateCSSUnit( fieldBorderWidth, 'px' ),
-			'border-radius': generateCSSUnit(
-				fieldBorderRadius,
-				fieldBorderRadiusType
-			),
+			...fieldBorderCSS
 		},
 		" .wpcf7 .wpcf7-radio input[type='radio'] + span:before": {
 			'background-color': fieldBgColor,
 			'color': fieldInputColor,
 			'display': 'inline-flex',
 			'border-radius': '100%',
-			'border-style': fieldBorderStyle,
-			'border-color': fieldBorderColor,
-			'border-width': generateCSSUnit( fieldBorderWidth, 'px' ),
 			'height': 'calc( ' + fieldTopPaddingDesktop + 'px / 1.2 )',
 			'width': 'calc( ' + fieldTopPaddingDesktop + 'px / 1.2 )',
+			...fieldBorderCSS
 		},
 
 		// underline border
 		' .uagb-cf7-styler__field-style-underline .wpcf7 input:not([type=submit])': {
-			'border-style': 'none',
-			'border-bottom-color': fieldBorderColor,
-			'border-bottom-style': 'solid',
-			'border-bottom-width': generateCSSUnit( fieldBorderWidth, 'px' ),
-			'border-radius': generateCSSUnit(
-				fieldBorderRadius,
-				fieldBorderRadiusType
-			),
+			'border-bottom-width': generateCSSUnit( fieldBottomBorderWidth, 'px' ),
+			...fieldBorderCSS
 		},
 		' .uagb-cf7-styler__field-style-underline select': {
-			'border-style': 'none',
-			'border-bottom-color': fieldBorderColor,
-			'border-bottom-style': 'solid',
-			'border-bottom-width': generateCSSUnit( fieldBorderWidth, 'px' ),
-			'border-radius': generateCSSUnit(
-				fieldBorderRadius,
-				fieldBorderRadiusType
-			),
+			'border-bottom-width': generateCSSUnit( fieldBottomBorderWidth, 'px' ),
+			...fieldBorderCSS
 		},
 		' .uagb-cf7-styler__field-style-underline textarea': {
 			'border-style': 'none',
-			'border-bottom-color': fieldBorderColor,
 			'border-bottom-style': 'solid',
-			'border-bottom-width': generateCSSUnit( fieldBorderWidth, 'px' ),
-			'border-radius': generateCSSUnit(
-				fieldBorderRadius,
-				fieldBorderRadiusType
-			),
+			'border-bottom-width': generateCSSUnit( fieldBottomBorderWidth, 'px' ),
 		},
 		" .uagb-cf7-styler__field-style-underline .wpcf7-checkbox input[type='checkbox'] + span:before": {
 			'border-style': 'solid',
@@ -463,7 +434,7 @@ function styling( props ) {
 		},
 		" .wpcf7-radio input[type='radio']:checked + span:before": {
 			'background-color': fieldInputColor,
-			'border-color': fieldBorderFocusColor,
+			'border-color': inputBorderHColor,
 			'display': 'inline-flex',
 		},
 
@@ -483,7 +454,7 @@ function styling( props ) {
 			),
 		},
 		" .uagb-cf7-styler__check-style-enabled .wpcf7 .wpcf7-checkbox input[type='checkbox']:checked + span:before": {
-			'border-color': fieldBorderFocusColor,
+			'border-color': inputBorderHColor,
 		},
 		" .uagb-cf7-styler__check-style-enabled .wpcf7 .wpcf7-acceptance input[type='checkbox'] + span:before": {
 			'background-color': radioCheckBgColor,
@@ -501,7 +472,7 @@ function styling( props ) {
 			),
 		},
 		" .uagb-cf7-styler__check-style-enabled .wpcf7 .wpcf7-acceptance input[type='checkbox']:checked + span:before": {
-			'border-color': fieldBorderFocusColor,
+			'border-color': inputBorderHColor,
 		},
 
 		" .uagb-cf7-styler__check-style-enabled .wpcf7 input[type='radio'] + span:before": {
@@ -516,7 +487,7 @@ function styling( props ) {
 
 		" .uagb-cf7-styler__check-style-enabled .wpcf7-radio input[type='radio']:checked + span:before": {
 			'background-color': radioCheckSelectColor,
-			'border-color': fieldBorderFocusColor,
+			'border-color': inputBorderHColor,
 		},
 		' .uagb-cf7-styler__check-style-enabled .wpcf7 form .wpcf7-list-item-label': {
 			'font-size': generateCSSUnit(
@@ -533,6 +504,7 @@ function styling( props ) {
 				radioCheckLineHeightType
 			),
 			'color': radioCheckLableColor,
+			'letter-spacing': generateCSSUnit( radioCheckLetterSpacing, radioCheckLetterSpacingType ),
 		},
 	};
 
@@ -555,6 +527,14 @@ function styling( props ) {
 		),
 	};
 	const tabletSelectors = {
+		' .wpcf7 input:not([type=submit])': fieldBorderCSSTablet,
+		" .wpcf7 .wpcf7-checkbox input[type='checkbox'] + span:before": fieldBorderCSSTablet,
+		" .wpcf7 .wpcf7-acceptance input[type='checkbox'] + span:before": fieldBorderCSSTablet,
+		" .wpcf7 .wpcf7-radio input[type='radio'] + span:before": fieldBorderCSSTablet,
+
+		// underline border
+		' .uagb-cf7-styler__field-style-underline .wpcf7 input:not([type=submit])': fieldBorderCSSTablet,
+		' .uagb-cf7-styler__field-style-underline select': fieldBorderCSSTablet,
 		" .uagb-cf7-styler__check-style-enabled .wpcf7 .wpcf7-checkbox input[type='checkbox'] + span:before": {
 			'height': generateCSSUnit( radioCheckSizeTablet, 'px' ),
 			'width': generateCSSUnit( radioCheckSizeTablet, 'px' ),
@@ -584,6 +564,7 @@ function styling( props ) {
 			),
 			'margin-top': generateCSSUnit( fieldLabelSpacingTablet, 'px' ),
 			'margin-bottom': generateCSSUnit( fieldSpacingTablet, 'px' ),
+			'letter-spacing': generateCSSUnit( inputLetterSpacingTablet, inputLetterSpacingType ),
 		},
 		' .wpcf7 select': {
 			'font-size': generateCSSUnit(
@@ -594,6 +575,8 @@ function styling( props ) {
 				labelLineHeightTablet,
 				labelLineHeightType
 			),
+			'letter-spacing': generateCSSUnit( labelLetterSpacingTablet, labelLetterSpacingType ),
+			...fieldBorderCSSTablet
 		},
 		' .wpcf7 textarea': {
 			'font-size': generateCSSUnit(
@@ -604,6 +587,8 @@ function styling( props ) {
 				inputLineHeightTablet,
 				inputLineHeightType
 			),
+			'letter-spacing': generateCSSUnit( inputLetterSpacingTablet, inputLetterSpacingType ),
+			...fieldBorderCSSTablet
 		},
 		' .wpcf7 form label': {
 			'font-size': generateCSSUnit(
@@ -614,6 +599,7 @@ function styling( props ) {
 				labelLineHeightTablet,
 				labelLineHeightType
 			),
+			'letter-spacing': generateCSSUnit( labelLetterSpacingTablet, labelLetterSpacingType ),
 		},
 
 		' .wpcf7 form .wpcf7-list-item-label': {
@@ -625,6 +611,7 @@ function styling( props ) {
 				labelLineHeightTablet,
 				labelLineHeightType
 			),
+			'letter-spacing': generateCSSUnit( labelLetterSpacingTablet, labelLetterSpacingType ),
 		},
 		' .wpcf7 input.wpcf7-form-control.wpcf7-submit': {
 			'font-size': generateCSSUnit(
@@ -635,6 +622,8 @@ function styling( props ) {
 				buttonLineHeightTablet,
 				buttonLineHeightType
 			),
+			'letter-spacing': generateCSSUnit( buttonLetterSpacingTablet, buttonLetterSpacingType ),
+			...buttonBorderCSSTablet
 		},
 		' .uagb-cf7-styler__check-style-enabled .wpcf7 form .wpcf7-list-item-label': {
 			'font-size': generateCSSUnit(
@@ -645,6 +634,7 @@ function styling( props ) {
 				radioCheckLineHeightTablet,
 				radioCheckLineHeightType
 			),
+			'letter-spacing': generateCSSUnit( radioCheckLetterSpacingTablet, radioCheckLetterSpacingType ),
 		},
 		' span.wpcf7-not-valid-tip': {
 			'font-size': generateCSSUnit(
@@ -655,6 +645,7 @@ function styling( props ) {
 				validationMsgLineHeightTablet,
 				validationMsgLineHeightType
 			),
+			'letter-spacing': generateCSSUnit( validationMsgLetterSpacingTablet, validationMsgLetterSpacingType ),
 		},
 		' .wpcf7 input:not([type=submit])': fieldPaddingTablet, // eslint-disable-line no-dupe-keys
 		' .wpcf7 select.wpcf7-form-control.wpcf7-select:not([multiple="multiple"])': fieldPaddingTablet,
@@ -677,6 +668,7 @@ function styling( props ) {
 				buttonBottomPaddingTablet,
 				buttonPaddingTypeTablet
 			),
+			...buttonBorderCSSTablet
 		},
 	};
 	const fieldPaddingMobile = {
@@ -698,6 +690,14 @@ function styling( props ) {
 		),
 	};
 	const mobileSelectors = {
+		' .wpcf7 input:not([type=submit])': fieldBorderCSSMobile,
+		" .wpcf7 .wpcf7-checkbox input[type='checkbox'] + span:before": fieldBorderCSSMobile,
+		" .wpcf7 .wpcf7-acceptance input[type='checkbox'] + span:before": fieldBorderCSSMobile,
+		" .wpcf7 .wpcf7-radio input[type='radio'] + span:before": fieldBorderCSSMobile,
+
+		// underline border
+		' .uagb-cf7-styler__field-style-underline .wpcf7 input:not([type=submit])': fieldBorderCSSMobile,
+		' .uagb-cf7-styler__field-style-underline select': fieldBorderCSSMobile,
 		" .uagb-cf7-styler__check-style-enabled .wpcf7 .wpcf7-checkbox input[type='checkbox'] + span:before": {
 			'height': generateCSSUnit( radioCheckSizeMobile, 'px' ),
 			'width': generateCSSUnit( radioCheckSizeMobile, 'px' ),
@@ -727,6 +727,7 @@ function styling( props ) {
 			),
 			'margin-top': generateCSSUnit( fieldLabelSpacingMobile, 'px' ),
 			'margin-bottom': generateCSSUnit( fieldSpacingMobile, 'px' ),
+			'letter-spacing': generateCSSUnit( inputLetterSpacingTablet, inputLetterSpacingType ),
 		},
 		' .wpcf7 select': {
 			'font-size': generateCSSUnit(
@@ -737,6 +738,8 @@ function styling( props ) {
 				labelLineHeightMobile,
 				labelLineHeightType
 			),
+			'letter-spacing': generateCSSUnit( labelLetterSpacingMobile, labelLetterSpacingType ),
+			...fieldBorderCSSMobile
 		},
 		' .wpcf7 textarea': {
 			'font-size': generateCSSUnit(
@@ -747,6 +750,8 @@ function styling( props ) {
 				inputLineHeightTablet,
 				inputLineHeightType
 			),
+			'letter-spacing': generateCSSUnit( inputLetterSpacingMobile, inputLetterSpacingType ),
+			...fieldBorderCSSMobile
 		},
 		' .wpcf7 form label': {
 			'font-size': generateCSSUnit(
@@ -757,6 +762,7 @@ function styling( props ) {
 				inputLineHeightMobile,
 				inputLineHeightType
 			),
+			'letter-spacing': generateCSSUnit( inputLetterSpacingMobile, inputLetterSpacingType ),
 		},
 		' .wpcf7 form .wpcf7-list-item-label': {
 			'font-size': generateCSSUnit(
@@ -767,6 +773,7 @@ function styling( props ) {
 				labelLineHeightMobile,
 				labelLineHeightType
 			),
+			'letter-spacing': generateCSSUnit( labelLetterSpacingMobile, labelLetterSpacingType ),
 		},
 		' .wpcf7 input.wpcf7-form-control.wpcf7-submit': {
 			'font-size': generateCSSUnit(
@@ -777,6 +784,8 @@ function styling( props ) {
 				buttonLineHeightMobile,
 				buttonLineHeightType
 			),
+			'letter-spacing': generateCSSUnit( buttonLetterSpacingMobile, buttonLetterSpacingType ),
+			...buttonBorderCSSMobile
 		},
 		' .uagb-cf7-styler__check-style-enabled .wpcf7 form .wpcf7-list-item-label': {
 			'font-size': generateCSSUnit(
@@ -787,6 +796,7 @@ function styling( props ) {
 				radioCheckLineHeightMobile,
 				radioCheckLineHeightType
 			),
+			'letter-spacing': generateCSSUnit( radioCheckLetterSpacingMobile, radioCheckLetterSpacingType ),
 		},
 		' span.wpcf7-not-valid-tip': {
 			'font-size': generateCSSUnit(
@@ -797,6 +807,7 @@ function styling( props ) {
 				validationMsgLineHeightMobile,
 				validationMsgLineHeightType
 			),
+			'letter-spacing': generateCSSUnit( validationMsgLetterSpacingMobile, validationMsgLetterSpacingType ),
 		},
 		' .wpcf7 input:not([type=submit])': fieldPaddingMobile, // eslint-disable-line no-dupe-keys
 		' .wpcf7 select.wpcf7-form-control.wpcf7-select:not([multiple="multiple"])': fieldPaddingMobile,
@@ -821,34 +832,12 @@ function styling( props ) {
 			),
 		},
 	};
+	const id = `.editor-styles-wrapper .uagb-block-${ props.clientId.substr( 0, 8 ) }`;
+	let stylingCss = generateCSS( selectors, `${ id }` );
 
-	let stylingCss = generateCSS(
-		selectors,
-		`.editor-styles-wrapper .uagb-block-${ props.clientId.substr(
-			0,
-			8
-		) }`
-	);
+	stylingCss += generateCSS( tabletSelectors, `${ id }.uagb-editor-preview-mode-tablet`, true, 'tablet' );
 
-	stylingCss += generateCSS(
-		tabletSelectors,
-		`.editor-styles-wrapper .uagb-block-${ props.clientId.substr(
-			0,
-			8
-		) }.uagb-editor-preview-mode-tablet`,
-		true,
-		'tablet'
-	);
-
-	stylingCss += generateCSS(
-		mobileSelectors,
-		`.editor-styles-wrapper .uagb-block-${ props.clientId.substr(
-			0,
-			8
-		) }.uagb-editor-preview-mode-mobile`,
-		true,
-		'mobile'
-	);
+	stylingCss += generateCSS( mobileSelectors, `${ id }.uagb-editor-preview-mode-mobile`, true, 'mobile' );
 
 	return stylingCss;
 }

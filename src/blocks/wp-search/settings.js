@@ -4,7 +4,6 @@ import BoxShadowControl from '@Components/box-shadow';
 import MultiButtonsControl from '@Components/multi-buttons-control';
 import WebfontLoader from '@Components/typography/fontloader';
 import React from 'react';
-import Border from '@Components/border';
 import SpacingControl from '@Components/spacing-control';
 import Range from '@Components/range/Range.js';
 import UAGTabsControl from '@Components/tabs';
@@ -14,7 +13,7 @@ import InspectorTab, {
 } from '@Components/inspector-tabs/InspectorTab.js';
 import AdvancedPopColorControl from '@Components/color-control/advanced-pop-color-control.js';
 import { TextControl } from '@wordpress/components';
-
+import ResponsiveBorder from '@Components/responsive-border';
 import { InspectorControls } from '@wordpress/block-editor';
 
 
@@ -38,11 +37,7 @@ const Settings = ( props ) => {
 		boxShadowBlur,
 		boxShadowSpread,
 		boxShadowPosition,
-		borderStyle,
-		borderWidth,
-		borderRadius,
-		borderHColor,
-		borderColor,
+		// borderWidth,
 		buttonBgColor,
 		buttonBgHoverColor,
 		buttonIconColor,
@@ -243,40 +238,19 @@ const Settings = ( props ) => {
 						setAttributes( { inputBgColor: value } )
 					}
 				/>
-				<Border
-					disabledBorderTitle= {false}
+				<ResponsiveBorder
 					setAttributes={ setAttributes }
-					borderStyle={ {
-						value: borderStyle,
-						label: 'borderStyle',
-						title: __(
-							'Style',
-							'ultimate-addons-for-gutenberg'
-						),
-					} }
-					borderWidth={ {
-						value: borderWidth,
-						label: 'borderWidth',
-						title: __( 'Width', 'ultimate-addons-for-gutenberg' ),
-					} }
-					borderRadius={ {
-						value: borderRadius,
-						label: 'borderRadius',
-						title: __( 'Radius', 'ultimate-addons-for-gutenberg' ),
-					} }
-					borderColor={ {
-						value: borderColor,
-						label: 'borderColor',
-						title: __( 'Color', 'ultimate-addons-for-gutenberg' ),
-					} }
-					borderHoverColor={ {
-						value: borderHColor,
-						label: 'borderHColor',
-						title: __(
-							'Hover Color',
-							'ultimate-addons-for-gutenberg'
-						),
-					} }
+					borderStyleLabel={__( 'Style', 'ultimate-addons-for-gutenberg' )}
+					borderWidthLabel={__( 'Width', 'ultimate-addons-for-gutenberg' )}
+					borderRadiusLabel={__( 'Radius', 'ultimate-addons-for-gutenberg' )}
+					borderColorLabel={__( 'Color', 'ultimate-addons-for-gutenberg' )}
+					borderHoverColorLabel={__(
+						'Hover Color',
+						'ultimate-addons-for-gutenberg'
+					)}
+					prefix={'input'}
+					attributes={ attributes }
+					deviceType={ deviceType }
 				/>
 				<SpacingControl
 					{ ...props }
@@ -475,6 +449,7 @@ const Settings = ( props ) => {
 							'ultimate-addons-for-gutenberg'
 						),
 					} }
+					popup={ true }
 				/>
 			</UAGAdvancedPanelBody>
 		);

@@ -9,7 +9,6 @@ import InspectorTab, {
 import AdvancedPopColorControl from '@Components/color-control/advanced-pop-color-control.js';
 import SpacingControl from '@Components/spacing-control';
 import Range from '@Components/range/Range.js';
-import Border from '@Components/border';
 import UAGImage from '@Components/image';
 import BoxShadowControl from '@Components/box-shadow';
 import { useSelect } from '@wordpress/data';
@@ -22,7 +21,6 @@ import {
 	InspectorControls,
 } from '@wordpress/block-editor';
 import {
-	RangeControl,
 	TextControl,
 	SelectControl,
 	__experimentalAlignmentMatrixControl as AlignmentMatrixControl,
@@ -31,10 +29,12 @@ import {
 } from '@wordpress/components';
 import renderSVG from '@Controls/renderIcon';
 import ImageSizeControl from '@Components/image-size-control'
-
+import ResponsiveBorder from '@Components/responsive-border'
 import { store as coreStore } from '@wordpress/core-data';
 // Extend component
 import UAGAdvancedPanelBody from '@Components/advanced-panel-body';
+import {pickRelevantMediaFiles } from './utils'
+
 
 
 export default function Settings( props ) {
@@ -44,6 +44,9 @@ export default function Settings( props ) {
 	const {
 		layout,
 		id,
+		url,
+		urlTablet,
+		urlMobile,
 		width,
 		widthTablet,
 		widthMobile,
@@ -150,11 +153,6 @@ export default function Settings( props ) {
 		overlayBackground,
 		overlayOpacity,
 		overlayHoverOpacity,
-		overlayBorderStyle,
-		overlayBorderWidth,
-		overlayBorderRadius,
-		overlayBorderColor,
-		overlayBorderHoverColor,
 		// seperator
 		seperatorShowOn,
 		seperatorStyle,
@@ -182,12 +180,6 @@ export default function Settings( props ) {
 		seperatorMarginLink,
 		// effect
 		imageHoverEffect,
-		// border
-		imageBorderWidth,
-		imageBorderStyle,
-		imageBorderRadius,
-		imageBorderColor,
-		imageBorderhoverColor,
 		// shadow
 		imageBoxShadowColor,
 		imageBoxShadowHOffset,
@@ -225,6 +217,13 @@ export default function Settings( props ) {
 		[ id, isSelected ]
 	);
 
+	const { imageDefaultSize } = useSelect( ( select ) => {
+		const { getSettings } = select( blockEditorStore );
+		// eslint-disable-next-line no-shadow
+		const {imageDefaultSize} = getSettings();
+		return {imageDefaultSize}
+	}, [] );
+
 	useEffect( () => {
 		if( !sizeSlug ) {
 			return;
@@ -243,14 +242,16 @@ export default function Settings( props ) {
 	const isWideAligned = [ 'wide', 'full' ].includes( align );
 	const isResizable = allowResize && ! ( isWideAligned && isLargeViewport );
 	const imageSizeOptions =  image?.media_details && imageSizes.reduce( ( acc, item ) => {
-		acc.push( { value: item.slug, label: item.name } )
+		if( image?.media_details?.sizes[item.slug] ){
+			acc.push( { value: item.slug, label: item.name } )
+		}
 		return acc;
 	}, [] );
 
 
 	function updateImage( newSizeSlug ) {
 		const newUrl = image?.media_details?.sizes[newSizeSlug]
-		if ( ! newUrl ) {
+		if ( ! newUrl || newUrl?.source_url === url ) {
 			return null;
 		}
 		setAttributes( {
@@ -263,7 +264,7 @@ export default function Settings( props ) {
 
 	function updateTabletImage( newSizeSlug ) {
 		const newUrl = image?.media_details?.sizes[newSizeSlug]
-		if ( ! newUrl ) {
+		if ( ! newUrl || newUrl?.source_url === urlTablet ) {
 			return null;
 		}
 		setAttributes( {
@@ -276,7 +277,7 @@ export default function Settings( props ) {
 
 	function updateMobileImage( newSizeSlug ) {
 		const newUrl = image?.media_details?.sizes[newSizeSlug]
-		if ( ! newUrl ) {
+		if ( ! newUrl || newUrl?.source_url === urlMobile ) {
 			return null;
 		}
 		setAttributes( {
@@ -286,6 +287,50 @@ export default function Settings( props ) {
 			sizeSlugMobile: newSizeSlug,
 		} );
 	}
+
+	/*
+	 * Event to set Image as null while removing.
+	 */
+	const onRemoveImage = () => {
+		setAttributes( {
+			url: undefined,
+			urlTablet: undefined,
+			urlMobile: undefined,
+			alt: undefined,
+			id: undefined,
+			title: undefined,
+			caption: undefined,
+			width: undefined,
+			widthTablet: undefined,
+			widthMobile: undefined,
+			height: undefined,
+			heightTablet: undefined,
+			heightMobile: undefined
+		} );
+	};
+
+	/*
+	 * Event to set Image as while adding.
+	 */
+	const onSelectImage = ( media ) => {
+		if ( ! media || ! media.url ) {
+			setAttributes( {
+				url: undefined,
+				alt: undefined,
+				id: undefined,
+				title: undefined,
+				caption: undefined,
+			} );
+
+			return;
+		}
+
+		const mediaAttributes = pickRelevantMediaFiles( media, imageDefaultSize );
+
+		setAttributes( mediaAttributes );
+	};
+
+
 
 	/*
 	 * Event to set Image as while adding.
@@ -314,6 +359,14 @@ export default function Settings( props ) {
 			title={ __( 'Image', 'ultimate-addons-for-gutenberg' ) }
 			initialOpen={ true }
 		>
+			<UAGImage
+				label={' '}
+				onSelectImage={onSelectImage}
+				backgroundImage={{
+					url
+				}}
+				onRemoveImage={onRemoveImage}
+			/>
 			<MultiButtonsControl
 				setAttributes={ setAttributes }
 				label={ __(
@@ -1085,7 +1138,7 @@ export default function Settings( props ) {
 	const captionStylePanel =  (
 		<UAGAdvancedPanelBody
 			title={ layout === 'overlay' ?  __( 'Description', 'ultimate-addons-for-gutenberg' ) : __( 'Caption', 'ultimate-addons-for-gutenberg' ) }
-			initialOpen={ true }
+			initialOpen={ false }
 		>
 			{
 				'default' === layout && (
@@ -1356,37 +1409,11 @@ export default function Settings( props ) {
 			/>
 			{
 				layout === 'default' && (
-					<Border
+					<ResponsiveBorder
 						setAttributes={ setAttributes }
-						borderStyle={ {
-							value: imageBorderStyle,
-							label: 'imageBorderStyle',
-							title: __( 'Style', 'ultimate-addons-for-gutenberg' ),
-						} }
-						borderWidth={ {
-							value: imageBorderWidth,
-							label: 'imageBorderWidth',
-							title: __( 'Width', 'ultimate-addons-for-gutenberg' ),
-						} }
-						borderRadius={ {
-							value: imageBorderRadius,
-							label: 'imageBorderRadius',
-							title: __( 'Radius', 'ultimate-addons-for-gutenberg' ),
-						} }
-						borderColor={ {
-							value: imageBorderColor,
-							label: 'imageBorderColor',
-							title: __( 'Color', 'ultimate-addons-for-gutenberg' ),
-						} }
-						borderHoverColor={ {
-							value: imageBorderhoverColor,
-							label: 'imageBorderhoverColor',
-							title: __(
-								'Hover Color',
-								'ultimate-addons-for-gutenberg'
-							),
-						} }
-						disableBottomSeparator={ true }
+						prefix={'image'}
+						attributes={ attributes }
+						deviceType={deviceType}
 					/>
 				)
 			}
@@ -1401,37 +1428,11 @@ export default function Settings( props ) {
 						value={ overlayContentPosition }
 						onChange={ ( newAlignment ) =>  setAttributes( {overlayContentPosition: newAlignment} ) }
 					/>
-					<Border
+					<ResponsiveBorder
 						setAttributes={ setAttributes }
-						borderStyle={ {
-							value: overlayBorderStyle,
-							label: 'overlayBorderStyle',
-							title: __( 'Style', 'ultimate-addons-for-gutenberg' ),
-						} }
-						borderWidth={ {
-							value: overlayBorderWidth,
-							label: 'overlayBorderWidth',
-							title: __( 'Width', 'ultimate-addons-for-gutenberg' ),
-						} }
-						borderRadius={ {
-							value: overlayBorderRadius,
-							label: 'overlayBorderRadius',
-							title: __( 'Radius', 'ultimate-addons-for-gutenberg' ),
-						} }
-						borderColor={ {
-							value: overlayBorderColor,
-							label: 'overlayBorderColor',
-							title: __( 'Color', 'ultimate-addons-for-gutenberg' ),
-						} }
-						borderHoverColor={ {
-							value: overlayBorderHoverColor,
-							label: 'overlayBorderHoverColor',
-							title: __(
-								'Hover Color',
-								'ultimate-addons-for-gutenberg'
-							),
-						} }
-						disableBottomSeparator={ false }
+						prefix={'overlay'}
+						attributes={ attributes }
+						deviceType={deviceType}
 					/>
 					<Range
 						label={ __(
@@ -1575,6 +1576,7 @@ export default function Settings( props ) {
 								'ultimate-addons-for-gutenberg'
 							),
 						} }
+						popup={ true }
 					/>
 				)
 			}
@@ -1593,11 +1595,12 @@ export default function Settings( props ) {
 					setAttributes( { overlayBackground: value } )
 				}
 			/>
-			<RangeControl
+			<Range
 				label={ __(
 					'Overlay Opacity',
 					'ultimate-addons-for-gutenberg'
 				) }
+				setAttributes={ setAttributes }
 				value={ overlayOpacity }
 				onChange={ ( value ) =>
 					setAttributes( {
@@ -1607,12 +1610,14 @@ export default function Settings( props ) {
 				min={ 0 }
 				max={ 1 }
 				step={0.1}
+				displayUnit={ false }
 			/>
-			<RangeControl
+			<Range
 				label={ __(
 					'Overlay Hover Opacity',
 					'ultimate-addons-for-gutenberg'
 				) }
+				setAttributes={ setAttributes }
 				value={ overlayHoverOpacity }
 				onChange={ ( value ) =>
 					setAttributes( {
@@ -1622,6 +1627,7 @@ export default function Settings( props ) {
 				min={ 0 }
 				max={ 1 }
 				step={0.1}
+				displayUnit={ false }
 			/>
 		</UAGAdvancedPanelBody>
 	)
@@ -1806,11 +1812,11 @@ export default function Settings( props ) {
 								<>
 									{overlayStylePanel}
 									{headingStylePanel}
-
+									{captionStylePanel}
 								</>
 							)
 						}
-						{ enableCaption && captionStylePanel }
+						{ enableCaption && layout !== 'overlay' && captionStylePanel }
 						{ 'none' !== seperatorStyle && layout === 'overlay' && seperatorStylePanel}
 					</InspectorTab>
 					<InspectorTab
