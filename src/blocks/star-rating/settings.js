@@ -220,7 +220,10 @@ const Settings = ( props ) => {
 				label={ __( 'Rating', 'ultimate-addons-for-gutenberg' ) }
 				setAttributes={ setAttributes }
 				value={ rating }
-				onChange={ ( value ) => setAttributes( { rating: value } ) }
+				data={ {
+					value: rating,
+					label: 'rating',
+				} }
 				min={ 0 }
 				max={ range }
 				step={ 0.1 }
@@ -291,9 +294,11 @@ const Settings = ( props ) => {
 			<AdvancedPopColorControl
 				label={ __( 'Color', 'ultimate-addons-for-gutenberg' ) }
 				colorValue={ titleColor }
-				onColorChange={ ( value ) =>
-					setAttributes( { titleColor: value } )
-				}
+				data={ {
+					value: titleColor,
+					label: 'titleColor',
+				} }
+				setAttributes={ setAttributes }
 			/>
 			<TypographyControl
 				label={ __( 'Typography', 'ultimate-addons-for-gutenberg' ) }
@@ -391,7 +396,11 @@ const Settings = ( props ) => {
 			<AdvancedPopColorControl
 				label={ __( 'Color', 'ultimate-addons-for-gutenberg' ) }
 				colorValue={ color }
-				onColorChange={ ( value ) => setAttributes( { color: value } ) }
+				data={ {
+					value: color,
+					label: 'color',
+				} }
+				setAttributes={ setAttributes }
 			/>
 			<AdvancedPopColorControl
 				label={ __(
@@ -399,9 +408,11 @@ const Settings = ( props ) => {
 					'ultimate-addons-for-gutenberg'
 				) }
 				colorValue={ unmarkedColor }
-				onColorChange={ ( value ) =>
-					setAttributes( { unmarkedColor: value } )
-				}
+				data={ {
+					value: unmarkedColor,
+					label: 'unmarkedColor',
+				} }
+				setAttributes={ setAttributes }
 			/>
 			<ResponsiveSlider
 				label={ __(

@@ -71,18 +71,22 @@ const ResponsiveBorder = ( props ) => {
 		<AdvancedPopColorControl
 			label={ borderColorLabel }
 			colorValue={  attributes[prefix + 'BorderColor'] }
-			onColorChange={ ( value ) =>
-				setAttributes( { [  prefix + 'BorderColor' ]: value } )
-			}
+			data={ {
+				value: prefix + 'BorderColor'.value,
+				label: prefix + 'BorderColor'.label,
+			} }
+			setAttributes={ setAttributes }
 		/>
 	);
 	const tabOutputHover = (
 		<AdvancedPopColorControl
 			label={ borderHoverColorLabel }
 			colorValue={ attributes[prefix + 'BorderHColor'] }
-			onColorChange={ ( value ) =>
-				setAttributes( { [ prefix + 'BorderHColor' ]: value } )
-			}
+			data={ {
+				value: prefix + 'BorderHColor'.value,
+				label: prefix + 'BorderHColor'.label,
+			} }
+			setAttributes={ setAttributes }
 		/>
 	);
 
