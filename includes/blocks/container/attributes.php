@@ -146,7 +146,7 @@ return array_merge(
 		'backgroundVideo'                => '',
 		'backgroundVideoOpacity'         => 0.5,
 		'topInvert'                      => false,
-		'bottomInvert'                   => true,
+		'bottomInvert'                   => false,
 		'textColor'                      => 'inherit',
 		'linkColor'                      => '',
 		'linkHoverColor'                 => '',
