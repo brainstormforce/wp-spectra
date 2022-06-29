@@ -241,7 +241,7 @@ const UAGBContainer = ( props ) => {
 	const { variations } = props;
 
 	const { variationSelected, isPreview } = props.attributes;
-	console.log( variationSelected )
+
 	const previewImageData = `${ uagb_blocks_info.uagb_url }/admin/assets/preview-images/container.png`;
 
 	if ( ! variationSelected && 0 === select( 'core/block-editor' ).getBlockParents( props.clientId ).length ) {
