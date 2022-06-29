@@ -430,8 +430,8 @@ const Settings = ( props ) => {
 							setAttributes={ setAttributes }
 							value={ minsValue }
 							data={ {
-								value: minsValue,
-								label: 'minsValue',
+								value: timeInMins,
+								label: 'timeInMins',
 							} }
 							min={ 1 }
 							max={ 60 }
