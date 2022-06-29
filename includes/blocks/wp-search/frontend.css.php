@@ -12,10 +12,10 @@ UAGB_Block_JS::blocks_wp_search_gfont( $attr );
 
 $block_name = 'wp-search';
 
-$input_size_fallback = UAGB_Block_Helper::get_fallback_number( $attr['inputSize'], 'inputSize', $block_name );
-$button_width_fallback = UAGB_Block_Helper::get_fallback_number( $attr['buttonWidth'], 'buttonWidth', $block_name );
+$input_size_fallback       = UAGB_Block_Helper::get_fallback_number( $attr['inputSize'], 'inputSize', $block_name );
+$button_width_fallback     = UAGB_Block_Helper::get_fallback_number( $attr['buttonWidth'], 'buttonWidth', $block_name );
 $button_icon_size_fallback = UAGB_Block_Helper::get_fallback_number( $attr['buttonIconSize'], 'buttonIconSize', $block_name );
-$icon_size_fallback = UAGB_Block_Helper::get_fallback_number( $attr['iconSize'], 'iconSize', $block_name );
+$icon_size_fallback        = UAGB_Block_Helper::get_fallback_number( $attr['iconSize'], 'iconSize', $block_name );
 
 $selectors            = array();
 $t_selectors          = array();

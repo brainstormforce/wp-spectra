@@ -26,19 +26,19 @@ $t_selectors = array();
 
 $block_name = 'info-box';
 
-$seperator_thickness_fallback = UAGB_Block_Helper::get_fallback_number( $attr['seperatorThickness'], 'seperatorThickness', $block_name );
-$iconSize_fallback = UAGB_Block_Helper::get_fallback_number( $attr['iconSize'], 'iconSize', $block_name );
+$seperator_thickness_fallback   = UAGB_Block_Helper::get_fallback_number( $attr['seperatorThickness'], 'seperatorThickness', $block_name );
+$iconSize_fallback              = UAGB_Block_Helper::get_fallback_number( $attr['iconSize'], 'iconSize', $block_name );
 $iconimg_border_radius_fallback = UAGB_Block_Helper::get_fallback_number( $attr['iconimgBorderRadius'], 'iconimgBorderRadius', $block_name );
 
-$seperator_width_fallback = UAGB_Block_Helper::get_fallback_number( $attr['seperatorWidth'], 'seperatorWidth', $block_name );
+$seperator_width_fallback        = UAGB_Block_Helper::get_fallback_number( $attr['seperatorWidth'], 'seperatorWidth', $block_name );
 $seperator_width_tablet_fallback = UAGB_Block_Helper::get_fallback_number( $attr['seperatorWidthTablet'], 'seperatorWidthTablet', $block_name );
 $seperator_width_mobile_fallback = UAGB_Block_Helper::get_fallback_number( $attr['seperatorWidthMobile'], 'seperatorWidthMobile', $block_name );
 
-$ctaIconSpace_fallback = UAGB_Block_Helper::get_fallback_number( $attr['ctaIconSpace'], 'ctaIconSpace', $block_name );
+$ctaIconSpace_fallback      = UAGB_Block_Helper::get_fallback_number( $attr['ctaIconSpace'], 'ctaIconSpace', $block_name );
 $attr['ctaIconSpaceTablet'] = is_numeric( $attr['ctaIconSpaceTablet'] ) ? $attr['ctaIconSpaceTablet'] : $ctaIconSpace_fallback;
 $attr['ctaIconSpaceMobile'] = is_numeric( $attr['ctaIconSpaceMobile'] ) ? $attr['ctaIconSpaceMobile'] : $attr['ctaIconSpaceTablet'];
 
-$imageWidth_fallback = UAGB_Block_Helper::get_fallback_number( $attr['imageWidth'], 'imageWidth', $block_name );
+$imageWidth_fallback      = UAGB_Block_Helper::get_fallback_number( $attr['imageWidth'], 'imageWidth', $block_name );
 $attr['imageWidthTablet'] = is_numeric( $attr['imageWidthTablet'] ) ? $attr['imageWidthTablet'] : $imageWidth_fallback;
 $attr['imageWidthMobile'] = is_numeric( $attr['imageWidthMobile'] ) ? $attr['imageWidthMobile'] : $attr['imageWidthTablet'];
 
@@ -81,20 +81,20 @@ $selectors = array(
 		'font-size'      => $icon_size,
 		'color'          => $attr['iconColor'],
 		'fill'           => $attr['iconColor'],
-		'padding-left'   => UAGB_Helper::get_css_value( $icon_padding_left, 'px' ),
-		'padding-right'  => UAGB_Helper::get_css_value( $icon_padding_right, 'px' ),
-		'padding-top'    => UAGB_Helper::get_css_value( $icon_padding_top, 'px' ),
-		'padding-bottom' => UAGB_Helper::get_css_value( $icon_padding_bottom, 'px' ),
+		'padding-left'   => UAGB_Helper::get_css_value( $icon_padding_left, $attr['iconMarginUnit'] ),
+		'padding-right'  => UAGB_Helper::get_css_value( $icon_padding_right, $attr['iconMarginUnit'] ),
+		'padding-top'    => UAGB_Helper::get_css_value( $icon_padding_top, $attr['iconMarginUnit'] ),
+		'padding-bottom' => UAGB_Helper::get_css_value( $icon_padding_bottom, $attr['iconMarginUnit'] ),
 	),
 	' .uagb-ifb-content .uagb-ifb-icon-wrap svg'          => array(
 		'line-height'    => $icon_size,
 		'font-size'      => $icon_size,
 		'color'          => $attr['iconColor'],
 		'fill'           => $attr['iconColor'],
-		'padding-left'   => UAGB_Helper::get_css_value( $icon_padding_left, 'px' ),
-		'padding-right'  => UAGB_Helper::get_css_value( $icon_padding_right, 'px' ),
-		'padding-top'    => UAGB_Helper::get_css_value( $icon_padding_top, 'px' ),
-		'padding-bottom' => UAGB_Helper::get_css_value( $icon_padding_bottom, 'px' ),
+		'padding-left'   => UAGB_Helper::get_css_value( $icon_padding_left, $attr['iconMarginUnit'] ),
+		'padding-right'  => UAGB_Helper::get_css_value( $icon_padding_right, $attr['iconMarginUnit'] ),
+		'padding-top'    => UAGB_Helper::get_css_value( $icon_padding_top, $attr['iconMarginUnit'] ),
+		'padding-bottom' => UAGB_Helper::get_css_value( $icon_padding_bottom, $attr['iconMarginUnit'] ),
 	),
 	' .uagb-iconbox-icon-wrap'                            => array(
 		'margin'      => 'auto',
@@ -108,10 +108,10 @@ $selectors = array(
 		'font-size'      => $icon_size,
 		'color'          => $attr['iconColor'],
 		'fill'           => $attr['iconColor'],
-		'padding-left'   => UAGB_Helper::get_css_value( $icon_padding_left, 'px' ),
-		'padding-right'  => UAGB_Helper::get_css_value( $icon_padding_right, 'px' ),
-		'padding-top'    => UAGB_Helper::get_css_value( $icon_padding_top, 'px' ),
-		'padding-bottom' => UAGB_Helper::get_css_value( $icon_padding_bottom, 'px' ),
+		'padding-left'   => UAGB_Helper::get_css_value( $icon_padding_left, $attr['iconMarginUnit'] ),
+		'padding-right'  => UAGB_Helper::get_css_value( $icon_padding_right, $attr['iconMarginUnit'] ),
+		'padding-top'    => UAGB_Helper::get_css_value( $icon_padding_top, $attr['iconMarginUnit'] ),
+		'padding-bottom' => UAGB_Helper::get_css_value( $icon_padding_bottom, $attr['iconMarginUnit'] ),
 	),
 	' .uagb-ifb-content .uagb-ifb-right-title-image svg'  => array(
 		'width'          => $icon_size,
@@ -119,10 +119,10 @@ $selectors = array(
 		'font-size'      => $icon_size,
 		'color'          => $attr['iconColor'],
 		'fill'           => $attr['iconColor'],
-		'padding-left'   => UAGB_Helper::get_css_value( $icon_padding_left, 'px' ),
-		'padding-right'  => UAGB_Helper::get_css_value( $icon_padding_right, 'px' ),
-		'padding-top'    => UAGB_Helper::get_css_value( $icon_padding_top, 'px' ),
-		'padding-bottom' => UAGB_Helper::get_css_value( $icon_padding_bottom, 'px' ),
+		'padding-left'   => UAGB_Helper::get_css_value( $icon_padding_left, $attr['iconMarginUnit'] ),
+		'padding-right'  => UAGB_Helper::get_css_value( $icon_padding_right, $attr['iconMarginUnit'] ),
+		'padding-top'    => UAGB_Helper::get_css_value( $icon_padding_top, $attr['iconMarginUnit'] ),
+		'padding-bottom' => UAGB_Helper::get_css_value( $icon_padding_bottom, $attr['iconMarginUnit'] ),
 	),
 	' .uagb-ifb-content .uagb-ifb-icon-wrap svg:hover'    => array(
 		'fill'  => $attr['iconHover'],
@@ -144,40 +144,40 @@ $selectors = array(
 	),
 	// Img Style.
 	' .uagb-infobox__content-wrap .uagb-ifb-imgicon-wrap' => array(
-		'padding-left'   => UAGB_Helper::get_css_value( $icon_padding_left, 'px' ),
-		'padding-right'  => UAGB_Helper::get_css_value( $icon_padding_right, 'px' ),
-		'padding-top'    => UAGB_Helper::get_css_value( $icon_padding_top, 'px' ),
-		'padding-bottom' => UAGB_Helper::get_css_value( $icon_padding_bottom, 'px' ),
+		'padding-left'   => UAGB_Helper::get_css_value( $icon_padding_left, $attr['iconMarginUnit'] ),
+		'padding-right'  => UAGB_Helper::get_css_value( $icon_padding_right, $attr['iconMarginUnit'] ),
+		'padding-top'    => UAGB_Helper::get_css_value( $icon_padding_top, $attr['iconMarginUnit'] ),
+		'padding-bottom' => UAGB_Helper::get_css_value( $icon_padding_bottom, $attr['iconMarginUnit'] ),
 	),
 	' .uagb-infobox .uagb-ifb-image-content img'          => array(
 		'border-radius' => UAGB_Helper::get_css_value( $iconimg_border_radius_fallback, $attr['iconimgBorderRadiusUnit'] ),
 	),
 	'.uagb-infobox__content-wrap img'                     => array(
-		'padding-left'   => UAGB_Helper::get_css_value( $icon_padding_left, 'px' ),
-		'padding-right'  => UAGB_Helper::get_css_value( $icon_padding_right, 'px' ),
-		'padding-top'    => UAGB_Helper::get_css_value( $icon_padding_top, 'px' ),
-		'padding-bottom' => UAGB_Helper::get_css_value( $icon_padding_bottom, 'px' ),
+		'padding-left'   => UAGB_Helper::get_css_value( $icon_padding_left, $attr['iconMarginUnit'] ),
+		'padding-right'  => UAGB_Helper::get_css_value( $icon_padding_right, $attr['iconMarginUnit'] ),
+		'padding-top'    => UAGB_Helper::get_css_value( $icon_padding_top, $attr['iconMarginUnit'] ),
+		'padding-bottom' => UAGB_Helper::get_css_value( $icon_padding_bottom, $attr['iconMarginUnit'] ),
 		'border-radius'  => UAGB_Helper::get_css_value( $attr['iconimgBorderRadius'], $attr['iconimgBorderRadiusUnit'] ),
 	),
 	'.uagb-infobox__content-wrap .uagb-ifb-content .uagb-ifb-right-title-image > img' => array(
-		'padding-left'   => UAGB_Helper::get_css_value( $icon_padding_left, 'px' ),
-		'padding-right'  => UAGB_Helper::get_css_value( $icon_padding_right, 'px' ),
-		'padding-top'    => UAGB_Helper::get_css_value( $icon_padding_top, 'px' ),
-		'padding-bottom' => UAGB_Helper::get_css_value( $icon_padding_bottom, 'px' ),
+		'padding-left'   => UAGB_Helper::get_css_value( $icon_padding_left, $attr['iconMarginUnit'] ),
+		'padding-right'  => UAGB_Helper::get_css_value( $icon_padding_right, $attr['iconMarginUnit'] ),
+		'padding-top'    => UAGB_Helper::get_css_value( $icon_padding_top, $attr['iconMarginUnit'] ),
+		'padding-bottom' => UAGB_Helper::get_css_value( $icon_padding_bottom, $attr['iconMarginUnit'] ),
 		'border-radius'  => UAGB_Helper::get_css_value( $attr['iconimgBorderRadius'], $attr['iconimgBorderRadiusUnit'] ),
 	),
 	'.uagb-infobox__content-wrap .uagb-ifb-content .uagb-ifb-left-title-image > img' => array(
-		'padding-left'   => UAGB_Helper::get_css_value( $icon_padding_left, 'px' ),
-		'padding-right'  => UAGB_Helper::get_css_value( $icon_padding_right, 'px' ),
-		'padding-top'    => UAGB_Helper::get_css_value( $icon_padding_top, 'px' ),
-		'padding-bottom' => UAGB_Helper::get_css_value( $icon_padding_bottom, 'px' ),
+		'padding-left'   => UAGB_Helper::get_css_value( $icon_padding_left, $attr['iconMarginUnit'] ),
+		'padding-right'  => UAGB_Helper::get_css_value( $icon_padding_right, $attr['iconMarginUnit'] ),
+		'padding-top'    => UAGB_Helper::get_css_value( $icon_padding_top, $attr['iconMarginUnit'] ),
+		'padding-bottom' => UAGB_Helper::get_css_value( $icon_padding_bottom, $attr['iconMarginUnit'] ),
 		'border-radius'  => UAGB_Helper::get_css_value( $attr['iconimgBorderRadius'], $attr['iconimgBorderRadiusUnit'] ),
 	),
 	'.uagb-infobox__content-wrap .uagb-ifb-content > img' => array(
-		'padding-left'   => UAGB_Helper::get_css_value( $icon_padding_left, 'px' ),
-		'padding-right'  => UAGB_Helper::get_css_value( $icon_padding_right, 'px' ),
-		'padding-top'    => UAGB_Helper::get_css_value( $icon_padding_top, 'px' ),
-		'padding-bottom' => UAGB_Helper::get_css_value( $icon_padding_bottom, 'px' ),
+		'padding-left'   => UAGB_Helper::get_css_value( $icon_padding_left, $attr['iconMarginUnit'] ),
+		'padding-right'  => UAGB_Helper::get_css_value( $icon_padding_right, $attr['iconMarginUnit'] ),
+		'padding-top'    => UAGB_Helper::get_css_value( $icon_padding_top, $attr['iconMarginUnit'] ),
+		'padding-bottom' => UAGB_Helper::get_css_value( $icon_padding_bottom, $attr['iconMarginUnit'] ),
 		'border-radius'  => UAGB_Helper::get_css_value( $attr['iconimgBorderRadius'], $attr['iconimgBorderRadiusUnit'] ),
 	),
 	// Prefix Style.
@@ -252,14 +252,14 @@ if ( 'Stacked' === $attr['iconView'] ) {
 	);
 } elseif ( 'Framed' === $attr['iconView'] ) {
 	$selectors[' .uagb-iconbox-icon-wrap.uagb-infobox-shape-circle'] = array(
-		'border'        => $attr['iconBorderWidth'] . 'px solid' . $attr['iconBackgroundColor'],
+		'border'        => $attr['iconBorderWidth'] . 'px solid ' . $attr['iconBackgroundColor'],
 		'border-radius' => '50%',
 	);
 	$selectors[' .uagb-iconbox-icon-wrap.uagb-infobox-shape-squre']  = array(
-		'border' => $attr['iconBorderWidth'] . 'px solid' . $attr['iconBackgroundColor'],
+		'border' => $attr['iconBorderWidth'] . 'px solid ' . $attr['iconBackgroundColor'],
 	);
 	$selectors[' .uagb-iconbox-icon-wrap:hover']                     = array(
-		'border' => $attr['iconBorderWidth'] . 'px solid' . $attr['iconBackgroundHoverColor'],
+		'border' => $attr['iconBorderWidth'] . 'px solid ' . $attr['iconBackgroundHoverColor'],
 	);
 }
 if ( 'text' === $attr['ctaType'] ) {

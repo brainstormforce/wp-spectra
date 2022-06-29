@@ -22,7 +22,7 @@ UAGB_Block_JS::blocks_tabs_gfont( $attr );
 
 $block_name = 'tabs';
 
-$icon_size_fallback = UAGB_Block_Helper::get_fallback_number( $attr['iconSize'], 'iconSize', $block_name );
+$icon_size_fallback    = UAGB_Block_Helper::get_fallback_number( $attr['iconSize'], 'iconSize', $block_name );
 $icon_spacing_fallback = UAGB_Block_Helper::get_fallback_number( $attr['iconSpacing'], 'iconSpacing', $block_name );
 
 $tab_title_top_padding    = isset( $attr['tabTitleTopPadding'] ) ? $attr['tabTitleTopPadding'] : $attr['tabTitleVertPadding'];
