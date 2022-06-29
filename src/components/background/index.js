@@ -232,11 +232,11 @@ const Background = ( props ) => {
 						colorValue={
 							backgroundColor.value ? backgroundColor.value : ''
 						}
-						onColorChange={ ( value ) =>
-							setAttributes( {
-								[ backgroundColor.label ]: value,
-							} )
-						}
+						data={ {
+							value: backgroundColor.value,
+							label: backgroundColor.label,
+						} }
+						setAttributes={ setAttributes }
 					/>
 				</div>
 			) }
@@ -642,11 +642,11 @@ const Background = ( props ) => {
 										colorValue={
 											backgroundImageColor.value
 										}
-										onColorChange={ ( value ) =>
-											setAttributes( {
-												[ backgroundImageColor.label ]: value,
-											} )
-										}
+										data={ {
+											value: backgroundImageColor.value,
+											label: backgroundImageColor.label,
+										} }
+										setAttributes={ setAttributes }
 									/>
 								</div>
 							) }
@@ -714,11 +714,11 @@ const Background = ( props ) => {
 											colorValue={
 												backgroundVideoColor.value
 											}
-											onColorChange={ ( value ) =>
-												setAttributes( {
-													[ backgroundVideoColor.label ]: value,
-												} )
-											}
+											data={ {
+												value: backgroundVideoColor.value,
+												label: backgroundVideoColor.label,
+											} }
+											setAttributes={ setAttributes }
 											onOpacityChange={onOpacityChange}
 										/>
 									</div>
