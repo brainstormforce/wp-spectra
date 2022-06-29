@@ -184,7 +184,7 @@ function styling( props ) {
 			'margin-right': generateCSSUnit( gapFallback, 'px' ),
 			'color': unmarkedColor,
 		},
-		' .uag-star-rating__title.block-editor-rich-text__editable': {
+		' p.uag-star-rating__title.block-editor-rich-text__editable': {
 			'font-size': generateCSSUnit( fontSize, fontSizeType ),
 			'font-family': fontFamily,
 			'font-style' : fontStyle,
@@ -225,7 +225,7 @@ function styling( props ) {
 		};
 	}
 
-	selectors[ ' .uag-star-rating__title.block-editor-rich-text__editable' ][
+	selectors[ ' p.uag-star-rating__title.block-editor-rich-text__editable' ][
 		index
 	] = generateCSSUnit( titleGapFallback, 'px' );
 
