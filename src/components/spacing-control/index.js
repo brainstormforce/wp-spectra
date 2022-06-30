@@ -48,7 +48,6 @@ const SpacingControl = ( props ) => {
 		link,
 		setAttributes,
 	} = props;
-
 	useEffect( () => {
 		let cachedValueUpdate = { ...cachedValue };
 
@@ -115,7 +114,14 @@ const SpacingControl = ( props ) => {
 
 		if ( link.value ) {
 			changeLinkedValues( newValue, device );
+		} else{
+			newValue =
+				event.target.value === ''
+					? 0
+					: Number( event.target.value );
+			changedUnLinkedValues( deviceType );
 		}
+
 		switch ( device ) {
 			case 'desktop':
 				setAttributes( { [ valueTop.label ]: newValue } );
@@ -127,8 +133,35 @@ const SpacingControl = ( props ) => {
 				setAttributes( { [ valueTopMobile.label ]: newValue } );
 				break;
 		}
+		
 	};
-
+	const changedUnLinkedValues = () => {
+		
+		switch ( deviceType ) {
+			case 'Desktop':
+				// code block
+				setAttributes( { [ valueTop.label ]:  undefined === valueTop.value ? 0 : valueTop.value  } );
+				setAttributes( { [ valueRight.label ]:  undefined === valueRight.value ? 0 : valueRight.value  } );
+				setAttributes( { [ valueBottom.label ]:  undefined === valueBottom.value ? 0 : valueBottom.value  } );
+				setAttributes( { [ valueLeft.label ]:  undefined === valueLeft.value ? 0 : valueLeft.value  } );
+				break;
+			case 'Tablet':
+				// code block
+				setAttributes( { [ valueTopTablet.label ]:  undefined === valueTopTablet.value ? 0 : valueTopTablet.value } );
+				setAttributes( { [ valueRightTablet.label ]:  undefined === valueRightTablet.value ? 0 : valueRightTablet.value } );
+				setAttributes( { [ valueBottomTablet.label ]:  undefined === valueBottomTablet.value ? 0 : valueBottomTablet.value } );
+				setAttributes( { [ valueLeftTablet.label ]:  undefined === valueLeftTablet.value ? 0 : valueLeftTablet.value } );
+				break;
+			case 'Mobile':
+				// code block
+				setAttributes( { [ valueTopMobile.label ]:  undefined === valueTopTablet.value ? 0 : valueTopTablet.value } );
+				setAttributes( { [ valueRightMobile.label ]:  undefined === valueRightTablet.value ? 0 : valueRightTablet.value } );
+				setAttributes( { [ valueBottomMobile.label ]:  undefined === valueBottomTablet.value ? 0 : valueBottomTablet.value } );
+				setAttributes( { [ valueLeftMobile.label ]:  undefined === valueLeftTablet.value ? 0 : valueLeftTablet.value } );
+				break;
+		}		
+		
+	};
 	const onChangeRightValue = ( event, device, value = '' ) => {
 		let newValue = value;
 
@@ -140,7 +173,10 @@ const SpacingControl = ( props ) => {
 		}
 		if ( link.value ) {
 			changeLinkedValues( newValue, device );
+		}else {
+			changedUnLinkedValues( deviceType );
 		}
+		
 
 		switch ( device ) {
 			case 'desktop':
@@ -166,7 +202,10 @@ const SpacingControl = ( props ) => {
 		}
 		if ( link.value ) {
 			changeLinkedValues( newValue, device );
+		}else {
+			changedUnLinkedValues( deviceType );
 		}
+		
 
 		switch ( device ) {
 			case 'desktop':
@@ -192,7 +231,10 @@ const SpacingControl = ( props ) => {
 		}
 		if ( link.value ) {
 			changeLinkedValues( newValue, device );
+		}else {
+			changedUnLinkedValues( deviceType );
 		}
+		
 		switch ( device ) {
 			case 'desktop':
 				setAttributes( { [ valueLeft.label ]: newValue } );
