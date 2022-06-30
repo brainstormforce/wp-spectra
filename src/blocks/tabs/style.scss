@@ -23,6 +23,22 @@
 			position: relative;
 			padding: 6px 12px;
 			display: inline-flex;
+
+			&.uagb-tabs__icon-position-top {
+				display: block;
+
+				.uagb-tabs__icon {
+					display: block;
+				}
+			}
+
+			&.uagb-tabs__icon-position-bottom {
+				display: block;
+
+				.uagb-tabs__icon {
+					display: block;
+				}
+			}
 		}
 
 		p {
@@ -40,22 +56,6 @@
 			.uagb-tabs__icon {
 				display: flex;
 				align-self: center;
-			}
-		}
-
-		.uagb-tabs__icon-position-top {
-			display: block;
-
-			.uagb-tabs__icon {
-				display: block;
-			}
-		}
-
-		.uagb-tabs__icon-position-bottom {
-			display: block;
-
-			.uagb-tabs__icon {
-				display: block;
 			}
 		}
 
