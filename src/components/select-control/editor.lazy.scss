@@ -11,5 +11,11 @@
 			margin-bottom: $spectra-control-vertical-gap;
 			color: $spectra-color-body;
 		}
+
+		.uagb-control__header,
+		.uag-control-label,
+		.components-input-control__label label {
+			margin-bottom: 0;
+		}
 	}
 }
