@@ -16,7 +16,7 @@ import ResponsiveSlider from '@Components/responsive-slider';
 import UAGImage from '@Components/image';
 import MultiButtonsControl from '@Components/multi-buttons-control';
 import UAGTabsControl from '@Components/tabs';
-import presets from './presets';
+import infoBoxPresets, { buttonsPresets } from './presets';
 import UAGPresets from '@Components/presets';
 import {
 	InspectorControls,
@@ -860,6 +860,13 @@ const Settings = ( props ) => {
 						},
 					] }
 				/>
+				{ 'button' === ctaType &&
+					<UAGPresets
+						setAttributes = { setAttributes }
+						presets = { buttonsPresets }
+						presetInputType = 'radioImage'
+					/>
+				}
 				{ ( ctaType === 'text' || ctaType === 'button' ) && (
 					<>
 						<TextControl
@@ -2433,7 +2440,7 @@ const Settings = ( props ) => {
 				>
 					<UAGPresets
 						setAttributes = { setAttributes }
-						presets = { presets }
+						presets = { infoBoxPresets }
 						presetInputType = 'radioImage'
 					/>
 				</UAGAdvancedPanelBody>
