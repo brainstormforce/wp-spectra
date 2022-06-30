@@ -150,7 +150,8 @@
 	}
 
 	.uagb-slider.round::before {
-		border-radius: 50%;
+		// Important is added to override the Square Styling if Rounded is Selected.
+		border-radius: 50% !important;
 	}
 	// Toggle Css End
 }
