@@ -21,6 +21,8 @@ import renderSVG from '@Controls/renderIcon';
 import MultiButtonsControl from '@Components/multi-buttons-control';
 import UAGAdvancedPanelBody from '@Components/advanced-panel-body';
 import addBlockEditorDynamicStyles from '@Controls/addBlockEditorDynamicStyles';
+import {buttonsPresets} from './presets';
+import UAGPresets from '@Components/presets';
 import { getFallbackNumber } from '@Controls/getAttributeFallback';
 import { migrateBorderAttributes } from '@Controls/generateAttributes';
 
@@ -276,7 +278,7 @@ const UAGBPostMasonry = ( props ) => {
 			);
 			props.setAttributes( migrationAttributes )
 		};
-	
+
 		// Replacement for componentDidUpdate.
 		const blockStyling = styling( props );
 
@@ -2123,6 +2125,11 @@ const UAGBPostMasonry = ( props ) => {
 				) }
 				initialOpen={ false }
 			>
+				<UAGPresets
+					setAttributes = { setAttributes }
+					presets = { buttonsPresets }
+					presetInputType = 'radioImage'
+				/>
 				<UAGTabsControl
 					tabs={ [
 						{
