@@ -140,6 +140,7 @@ const SpacingControl = ( props ) => {
 		switch ( deviceType ) {
 			case 'Desktop':
 				// code block
+				console.log('sdf');
 				setAttributes( { [ valueTop.label ]:  undefined === valueTop.value ? 0 : valueTop.value  } );
 				setAttributes( { [ valueRight.label ]:  undefined === valueRight.value ? 0 : valueRight.value  } );
 				setAttributes( { [ valueBottom.label ]:  undefined === valueBottom.value ? 0 : valueBottom.value  } );

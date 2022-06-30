@@ -29,6 +29,8 @@ const MultiButtonsControl = ( props ) => {
 		setAttributes,
 		responsive,
 		onChange,
+		colorVariant = 'primary',
+		layoutVariant = 'full',
 	} = props;
 
 	const { getSelectedBlock } = select( 'core/block-editor' );
@@ -159,7 +161,7 @@ const MultiButtonsControl = ( props ) => {
 		);
 		return (
 			<div
-				className={ `components-base-control uagb-multi-buttons-control ${ iconsClass }` }
+				className={ `components-base-control uagb-multi-buttons-control ${ iconsClass } spectra-multi-buttons__color-scheme--${ colorVariant } spectra-multi-buttons__layout--${ layoutVariant }` }
 			>
 				<div className="uagb-control__header uagb-size-type-field-tabs">
 					<ResponsiveToggle
@@ -196,7 +198,7 @@ const MultiButtonsControl = ( props ) => {
 	};
 	return (
 		<div
-			className={ `components-base-control uagb-multi-buttons-control ${ iconsClass }` }
+			className={ `components-base-control uagb-multi-buttons-control ${ iconsClass } spectra-multi-buttons__color-scheme--${ colorVariant } spectra-multi-buttons__layout--${ layoutVariant }` }
 		>
 			<div className="uagb-multi-buttons-control__label uag-control-label">
 				{ label }
