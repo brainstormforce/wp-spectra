@@ -28,6 +28,8 @@ function styling( props ) {
 		boxBgColor,
 		boxBgHoverColor,
 		overallBorderHColor,
+		overallBorderColor,
+		overallBorderTopWidth,
 		questionTextColor,
 		questionTextBgColor,
 		questionTextActiveColor,
@@ -470,7 +472,8 @@ function styling( props ) {
 			'.uagb-faq__outer-wrap .uagb-faq-child__outer-wrap .uagb-faq-content '
 		] = {
 			'border-style': 'solid',
-			...borderCSS
+			'border-top-color' : overallBorderColor,
+            'border-top-width' : generateCSSUnit( overallBorderTopWidth, 'px' ),
 		};
 		selectors[
 			'.uagb-faq__outer-wrap .uagb-faq-child__outer-wrap .uagb-faq-content:hover '
