@@ -105,10 +105,11 @@ const Render = ( props ) => {
 
 	const settings = {
 		accessibility: false,
-		slidesToShow: ( // eslint-disable-line no-nested-ternary
+		slidesToShow: (
 			deviceType === 'Desktop' ? getFallbackNumber( columns, 'columns', blockName )
 			: deviceType === 'Tablet' ? getFallbackNumber( tcolumns, 'columns', blockName )
-			: getFallbackNumber( mcolumns, 'columns', blockName ) ),
+			: getFallbackNumber( mcolumns, 'columns', blockName ) // eslint-disable-line no-nested-ternary
+			),
 		slidesToScroll: 1,
 		autoplaySpeed: getFallbackNumber( autoplaySpeed, 'autoplaySpeed', blockName ),
 		autoplay,
