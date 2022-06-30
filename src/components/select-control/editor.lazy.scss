@@ -1,3 +1,5 @@
+@import "../../styles/variables";
+
 .uagb-select-control {
 
 	&--layout-inline {
@@ -6,6 +8,14 @@
 			align-items: center;
 			display: grid;
 			grid-template-columns: 50% 50%;
+			margin-bottom: $spectra-control-vertical-gap;
+			color: $spectra-color-body;
+		}
+
+		.uagb-control__header,
+		.uag-control-label,
+		.components-input-control__label label {
+			margin-bottom: 0;
 		}
 	}
 }

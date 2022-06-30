@@ -20,6 +20,7 @@ import { SelectControl, Icon, ToggleControl } from '@wordpress/components';
 import SpacingControl from '@Components/spacing-control';
 import ColorSwitchControl from '@Components/color-switch-control';
 import TextShadowControl from '@Components/text-shadow';
+import UAGTabsControl from '@Components/tabs';
 import ResponsiveBorder from '@Components/responsive-border'
 import ResponsiveSlider from '@Components/responsive-slider';
 // Extend component
@@ -526,6 +527,7 @@ const Settings = ( props ) => {
 						label: 'headShadowBlur',
 						title: __( 'Blur', 'ultimate-addons-for-gutenberg' ),
 					} }
+					popup={ true }
 				/>
 				<ResponsiveSlider
 					label={ __(
@@ -658,9 +660,11 @@ const Settings = ( props ) => {
 				<AdvancedPopColorControl
 					label={ __( 'Color', 'ultimate-addons-for-gutenberg' ) }
 					colorValue={ subHeadingColor ? subHeadingColor : '' }
-					onColorChange={ ( value ) =>
-						setAttributes( { subHeadingColor: value } )
-					}
+					data={ {
+						value: subHeadingColor,
+						label: 'subHeadingColor',
+					} }
+					setAttributes={ setAttributes }
 				/>
 			</UAGAdvancedPanelBody>
 		);
@@ -722,11 +726,10 @@ const Settings = ( props ) => {
 					) }
 					setAttributes={ setAttributes }
 					value={ separatorHeight }
-					onChange={ ( value ) =>
-						setAttributes( {
-							separatorHeight: value,
-						} )
-					}
+					data={ {
+						value: separatorHeight,
+						label: 'separatorHeight',
+					} }
 					min={ 0 }
 					max={ 20 }
 					unit={ {
@@ -751,11 +754,11 @@ const Settings = ( props ) => {
 					colorValue={
 						separatorColor ? separatorColor : ''
 					}
-					onColorChange={ ( value ) =>
-						setAttributes( {
-							separatorColor: value,
-						} )
-					}
+					data={ {
+						value: separatorColor,
+						label: 'separatorColor',
+					} }
+					setAttributes={ setAttributes }
 				/>
 				<ResponsiveSlider
 					label={ __(
@@ -998,19 +1001,46 @@ const Settings = ( props ) => {
 				title={ __( 'Link', 'ultimate-addons-for-gutenberg' ) }
 				initialOpen={ false }
 			>
-				<AdvancedPopColorControl
-					label={ __( 'Color', 'ultimate-addons-for-gutenberg' ) }
-					colorValue={ linkColor }
-					onColorChange={ ( value ) =>
-						setAttributes( { linkColor: value } )
+				<UAGTabsControl
+					tabs={ [
+						{
+							name: 'normal',
+							title: __(
+								'Normal',
+								'ultimate-addons-for-gutenberg'
+							),
+						},
+						{
+							name: 'hover',
+							title: __(
+								'Hover',
+								'ultimate-addons-for-gutenberg'
+							),
+						},
+					] }
+					normal={
+						<AdvancedPopColorControl
+							label={ __( 'Color', 'ultimate-addons-for-gutenberg' ) }
+							colorValue={ linkColor }
+							data={ {
+								value: linkColor,
+								label: 'linkColor',
+							} }
+							setAttributes={ setAttributes }
+						/>
 					}
-				/>
-				<AdvancedPopColorControl
-					label={ __( 'Hover Color', 'ultimate-addons-for-gutenberg' ) }
-					colorValue={ linkHColor }
-					onColorChange={ ( value ) =>
-						setAttributes( { linkHColor: value } )
+					hover={
+						<AdvancedPopColorControl
+							label={ __( 'Hover Color', 'ultimate-addons-for-gutenberg' ) }
+							colorValue={ linkHColor }
+							data={ {
+								value: linkHColor,
+								label: 'linkHColor',
+							} }
+							setAttributes={ setAttributes }
+						/>
 					}
+					disableBottomSeparator={ true }
 				/>
 			</UAGAdvancedPanelBody>
 		);
@@ -1025,16 +1055,20 @@ const Settings = ( props ) => {
 				<AdvancedPopColorControl
 					label={ __( 'Background', 'ultimate-addons-for-gutenberg' ) }
 					colorValue={ highLightBackground }
-					onColorChange={ ( value ) =>
-						setAttributes( { highLightBackground: value } )
-					}
+					data={ {
+						value: highLightBackground,
+						label: 'highLightBackground',
+					} }
+					setAttributes={ setAttributes }
 				/>
 				<AdvancedPopColorControl
 					label={ __( 'Color', 'ultimate-addons-for-gutenberg' ) }
 					colorValue={ highLightColor }
-					onColorChange={ ( value ) =>
-						setAttributes( { highLightColor: value } )
-					}
+					data={ {
+						value: highLightColor,
+						label: 'highLightColor',
+					} }
+					setAttributes={ setAttributes }
 				/>
 				<Suspense fallback={ lazyLoader() }>
 					<TypographyControl

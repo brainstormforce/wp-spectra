@@ -11,6 +11,7 @@ import { useDeviceType } from '@Controls/getPreviewType';
 import ResponsiveUAGImage from '@Components/responsive-image';
 import ResponsiveUAGFocalPointPicker from '@Components/responsive-focal-point-picker';
 import MultiButtonsControl from '@Components/multi-buttons-control';
+import UAGB_Block_Icons from '@Controls/block-icons';
 
 const Background = ( props ) => {
 	// Add and remove the CSS on the drop and remove of the component.
@@ -104,24 +105,36 @@ const Background = ( props ) => {
 		} );
 	}
 
-	let bgOptions = [];
-
-	bgOptions = [
-		{
-			value: 'none',
-			label: __( 'None', 'ultimate-addons-for-gutenberg' ),
-		},
+	const bgIconOptions = [
 		{
 			value: 'color',
-			label: __( 'Color', 'ultimate-addons-for-gutenberg' ),
+			icon: (
+				UAGB_Block_Icons.bg_color
+			),
+			tooltip: __(
+				'Color',
+				'ultimate-addons-for-gutenberg'
+			),
 		},
 		{
 			value: 'gradient',
-			label: __( 'Gradient', 'ultimate-addons-for-gutenberg' ),
+			icon: (
+				UAGB_Block_Icons.bg_gradient
+			),
+			tooltip: __(
+				'Gradient',
+				'ultimate-addons-for-gutenberg'
+			),
 		},
 		{
 			value: 'image',
-			label: __( 'Image', 'ultimate-addons-for-gutenberg' ),
+			icon: (
+				UAGB_Block_Icons.bg_image
+			),
+			tooltip: __(
+				'Image',
+				'ultimate-addons-for-gutenberg'
+			),
 		},
 	];
 
@@ -183,24 +196,35 @@ const Background = ( props ) => {
 	}
 
 	if ( backgroundVideoType.value ) {
-		bgOptions.push( {
+		bgIconOptions.push( {
 			value: 'video',
-			label: __( 'Video', 'ultimate-addons-for-gutenberg' ),
+			icon: (
+				UAGB_Block_Icons.bg_video
+			),
+			tooltip: __(
+				'Video',
+				'ultimate-addons-for-gutenberg'
+			),
 		} );
 	}
 
 	const advancedControls = (
 		<>
-			<div className="uag-background-type">
-				<SelectControl
-					value={ backgroundType.value }
-					onChange={ ( value ) =>
-						setAttributes( { [ backgroundType.label ]: value } )
-					}
-					options={ bgOptions }
-					label={ __( 'Type', 'ultimate-addons-for-gutenberg' ) }
-				/>
-			</div>
+			<MultiButtonsControl
+				setAttributes={ setAttributes }
+				label={ __(
+					'Type',
+					'ultimate-addons-for-gutenberg'
+				) }
+				data={ {
+					value: backgroundType.value,
+					label: backgroundType.label,
+				} }
+				options={ bgIconOptions }
+				showIcons={ true }
+				colorVariant="secondary"
+				layoutVariant="inline"
+			/>
 			{ 'color' === backgroundType.value && (
 				<div className="uag-background-color">
 					<AdvancedPopColorControl
@@ -208,11 +232,11 @@ const Background = ( props ) => {
 						colorValue={
 							backgroundColor.value ? backgroundColor.value : ''
 						}
-						onColorChange={ ( value ) =>
-							setAttributes( {
-								[ backgroundColor.label ]: value,
-							} )
-						}
+						data={ {
+							value: backgroundColor.value,
+							label: backgroundColor.label,
+						} }
+						setAttributes={ setAttributes }
 					/>
 				</div>
 			) }
@@ -618,11 +642,11 @@ const Background = ( props ) => {
 										colorValue={
 											backgroundImageColor.value
 										}
-										onColorChange={ ( value ) =>
-											setAttributes( {
-												[ backgroundImageColor.label ]: value,
-											} )
-										}
+										data={ {
+											value: backgroundImageColor.value,
+											label: backgroundImageColor.label,
+										} }
+										setAttributes={ setAttributes }
 									/>
 								</div>
 							) }
@@ -690,11 +714,11 @@ const Background = ( props ) => {
 											colorValue={
 												backgroundVideoColor.value
 											}
-											onColorChange={ ( value ) =>
-												setAttributes( {
-													[ backgroundVideoColor.label ]: value,
-												} )
-											}
+											data={ {
+												value: backgroundVideoColor.value,
+												label: backgroundVideoColor.label,
+											} }
+											setAttributes={ setAttributes }
 											onOpacityChange={onOpacityChange}
 										/>
 									</div>

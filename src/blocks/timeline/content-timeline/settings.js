@@ -661,6 +661,10 @@ const Settings = ( props ) => {
 						) }
 						setAttributes={ setAttributes }
 						value={ iconSize }
+						data={ {
+							value: iconSize,
+							label: 'iconSize',
+						} }
 						onChange={ geticonSize }
 						min={ 0 }
 						max={ 30 }
@@ -674,6 +678,10 @@ const Settings = ( props ) => {
 					) }
 					setAttributes={ setAttributes }
 					value={ connectorBgsize }
+					data={ {
+						value: connectorBgsize,
+						label: 'connectorBgsize',
+					} }
 					onChange={ getconnectorBgsize }
 					min={ 25 }
 					max={ 90 }
@@ -686,6 +694,10 @@ const Settings = ( props ) => {
 					) }
 					setAttributes={ setAttributes }
 					value={ borderwidth }
+					data={ {
+						value: borderwidth,
+						label: 'borderwidth',
+					} }
 					onChange={ getborderwidth }
 					min={ 1 }
 					max={ 10 }
@@ -698,6 +710,10 @@ const Settings = ( props ) => {
 					) }
 					setAttributes={ setAttributes }
 					value={ separatorwidth }
+					data={ {
+						value: separatorwidth,
+						label: 'separatorwidth',
+					} }
 					onChange={ getseparatorwidth }
 					min={ 1 }
 					max={ 10 }
@@ -778,9 +794,11 @@ const Settings = ( props ) => {
 				<AdvancedPopColorControl
 					label={ __( 'Color', 'ultimate-addons-for-gutenberg' ) }
 					colorValue={ headingColor ? headingColor : '' }
-					onColorChange={ ( value ) =>
-						setAttributes( { headingColor: value } )
-					}
+					data={ {
+						value: headingColor,
+						label: 'headingColor',
+					} }
+					setAttributes={ setAttributes }
 				/>
 				<TypographyControl
 					label={ __(
@@ -893,9 +911,11 @@ const Settings = ( props ) => {
 				<AdvancedPopColorControl
 					label={ __( 'Color', 'ultimate-addons-for-gutenberg' ) }
 					colorValue={ subHeadingColor ? subHeadingColor : '' }
-					onColorChange={ ( value ) =>
-						setAttributes( { subHeadingColor: value } )
-					}
+					data={ {
+						value: subHeadingColor,
+						label: 'subHeadingColor',
+					} }
+					setAttributes={ setAttributes }
 				/>
 				<TypographyControl
 					label={ __(
@@ -1011,9 +1031,11 @@ const Settings = ( props ) => {
 				<AdvancedPopColorControl
 					label={ __( 'Background Color', 'ultimate-addons-for-gutenberg' ) }
 					colorValue={ backgroundColor ? backgroundColor : '' }
-					onColorChange={ ( value ) =>
-						setAttributes( { backgroundColor: value } )
-					}
+					data={ {
+						value: backgroundColor,
+						label: 'backgroundColor',
+					} }
+					setAttributes={ setAttributes }
 				/>
 			</UAGAdvancedPanelBody>
 		)
@@ -1027,9 +1049,11 @@ const Settings = ( props ) => {
 				<AdvancedPopColorControl
 					label={ __( 'Color', 'ultimate-addons-for-gutenberg' ) }
 					colorValue={ dateColor ? dateColor : '' }
-					onColorChange={ ( value ) =>
-						setAttributes( { dateColor: value } )
-					}
+					data={ {
+						value: dateColor,
+						label: 'dateColor',
+					} }
+					setAttributes={ setAttributes }
 				/>
 				<TypographyControl
 					label={ __(
@@ -1149,9 +1173,11 @@ const Settings = ( props ) => {
 						'ultimate-addons-for-gutenberg'
 					) }
 					colorValue={ separatorColor ? separatorColor : '' }
-					onColorChange={ ( value ) =>
-						setAttributes( { separatorColor: value } )
-					}
+					data={ {
+						value: separatorColor,
+						label: 'separatorColor',
+					} }
+					setAttributes={ setAttributes }
 				/>
 				<AdvancedPopColorControl
 					label={ __(
@@ -1159,9 +1185,11 @@ const Settings = ( props ) => {
 						'ultimate-addons-for-gutenberg'
 					) }
 					colorValue={ iconColor ? iconColor : '' }
-					onColorChange={ ( value ) =>
-						setAttributes( { iconColor: value } )
-					}
+					data={ {
+						value: iconColor,
+						label: 'iconColor',
+					} }
+					setAttributes={ setAttributes }
 				/>
 				<AdvancedPopColorControl
 					label={ __(
@@ -1169,9 +1197,11 @@ const Settings = ( props ) => {
 						'ultimate-addons-for-gutenberg'
 					) }
 					colorValue={ separatorBg ? separatorBg : '' }
-					onColorChange={ ( value ) =>
-						setAttributes( { separatorBg: value } )
-					}
+					data={ {
+						value: separatorBg,
+						label: 'separatorBg',
+					} }
+					setAttributes={ setAttributes }
 				/>
 				<AdvancedPopColorControl
 					label={ __(
@@ -1179,9 +1209,11 @@ const Settings = ( props ) => {
 						'ultimate-addons-for-gutenberg'
 					) }
 					colorValue={ separatorBorder ? separatorBorder : '' }
-					onColorChange={ ( value ) =>
-						setAttributes( { separatorBorder: value } )
-					}
+					data={ {
+						value: separatorBorder,
+						label: 'separatorBorder',
+					} }
+					setAttributes={ setAttributes }
 				/>
 			</UAGAdvancedPanelBody>
 		);
@@ -1194,9 +1226,11 @@ const Settings = ( props ) => {
 						'ultimate-addons-for-gutenberg'
 					) }
 					colorValue={ separatorFillColor ? separatorFillColor : '' }
-					onColorChange={ ( value ) =>
-						setAttributes( { separatorFillColor: value } )
-					}
+					data={ {
+						value: separatorFillColor,
+						label: 'separatorFillColor',
+					} }
+					setAttributes={ setAttributes }
 				/>
 				<AdvancedPopColorControl
 					label={ __(
@@ -1204,9 +1238,11 @@ const Settings = ( props ) => {
 						'ultimate-addons-for-gutenberg'
 					) }
 					colorValue={ iconFocus ? iconFocus : '' }
-					onColorChange={ ( value ) =>
-						setAttributes( { iconFocus: value } )
-					}
+					data={ {
+						value: iconFocus,
+						label: 'iconFocus',
+					} }
+					setAttributes={ setAttributes }
 				/>
 				<AdvancedPopColorControl
 					label={ __(
@@ -1214,9 +1250,11 @@ const Settings = ( props ) => {
 						'ultimate-addons-for-gutenberg'
 					) }
 					colorValue={ iconBgFocus ? iconBgFocus : '' }
-					onColorChange={ ( value ) =>
-						setAttributes( { iconBgFocus: value } )
-					}
+					data={ {
+						value: iconBgFocus,
+						label: 'iconBgFocus',
+					} }
+					setAttributes={ setAttributes }
 				/>
 				<AdvancedPopColorControl
 					label={ __(
@@ -1224,9 +1262,11 @@ const Settings = ( props ) => {
 						'ultimate-addons-for-gutenberg'
 					) }
 					colorValue={ borderFocus ? borderFocus : '' }
-					onColorChange={ ( value ) =>
-						setAttributes( { borderFocus: value } )
-					}
+					data={ {
+						value: borderFocus,
+						label: 'borderFocus',
+					} }
+					setAttributes={ setAttributes }
 				/>
 			</UAGAdvancedPanelBody>
 		);

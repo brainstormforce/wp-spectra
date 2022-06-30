@@ -33,9 +33,9 @@ import ResponsiveBorder from '@Components/responsive-border'
 import { store as coreStore } from '@wordpress/core-data';
 // Extend component
 import UAGAdvancedPanelBody from '@Components/advanced-panel-body';
+import boxShadowPresets from './presets';
+import UAGPresets from '@Components/presets';
 import {pickRelevantMediaFiles } from './utils'
-
-
 
 export default function Settings( props ) {
 	const deviceType = useDeviceType();
@@ -45,6 +45,8 @@ export default function Settings( props ) {
 		layout,
 		id,
 		url,
+		urlTablet,
+		urlMobile,
 		width,
 		widthTablet,
 		widthMobile,
@@ -249,7 +251,7 @@ export default function Settings( props ) {
 
 	function updateImage( newSizeSlug ) {
 		const newUrl = image?.media_details?.sizes[newSizeSlug]
-		if ( ! newUrl ) {
+		if ( ! newUrl || newUrl?.source_url === url ) {
 			return null;
 		}
 		setAttributes( {
@@ -262,7 +264,7 @@ export default function Settings( props ) {
 
 	function updateTabletImage( newSizeSlug ) {
 		const newUrl = image?.media_details?.sizes[newSizeSlug]
-		if ( ! newUrl ) {
+		if ( ! newUrl || newUrl?.source_url === urlTablet ) {
 			return null;
 		}
 		setAttributes( {
@@ -275,7 +277,7 @@ export default function Settings( props ) {
 
 	function updateMobileImage( newSizeSlug ) {
 		const newUrl = image?.media_details?.sizes[newSizeSlug]
-		if ( ! newUrl ) {
+		if ( ! newUrl || newUrl?.source_url === urlMobile ) {
 			return null;
 		}
 		setAttributes( {
@@ -1053,9 +1055,11 @@ export default function Settings( props ) {
 			<AdvancedPopColorControl
 				label={ __( 'Color', 'ultimate-addons-for-gutenberg' ) }
 				colorValue={ headingColor ? headingColor : '' }
-				onColorChange={ ( value ) =>
-					setAttributes( { headingColor: value } )
-				}
+				data={ {
+					value: headingColor,
+					label: 'headingColor',
+				} }
+				setAttributes={ setAttributes }
 			/>
 			<SpacingControl
 				label={ __(
@@ -1136,7 +1140,7 @@ export default function Settings( props ) {
 	const captionStylePanel =  (
 		<UAGAdvancedPanelBody
 			title={ layout === 'overlay' ?  __( 'Description', 'ultimate-addons-for-gutenberg' ) : __( 'Caption', 'ultimate-addons-for-gutenberg' ) }
-			initialOpen={ true }
+			initialOpen={ false }
 		>
 			{
 				'default' === layout && (
@@ -1265,9 +1269,11 @@ export default function Settings( props ) {
 			<AdvancedPopColorControl
 				label={ __( 'Color', 'ultimate-addons-for-gutenberg' ) }
 				colorValue={ captionColor ? captionColor : '' }
-				onColorChange={ ( value ) =>
-					setAttributes( { captionColor: value } )
-				}
+				data={ {
+					value: captionColor,
+					label: 'captionColor',
+				} }
+				setAttributes={ setAttributes }
 			/>
 			<SpacingControl
 				label={ __(
@@ -1412,7 +1418,6 @@ export default function Settings( props ) {
 						prefix={'image'}
 						attributes={ attributes }
 						deviceType={deviceType}
-						disableBottomSeparator={ true }
 					/>
 				)
 			}
@@ -1432,7 +1437,6 @@ export default function Settings( props ) {
 						prefix={'overlay'}
 						attributes={ attributes }
 						deviceType={deviceType}
-						disableBottomSeparator={ true }
 					/>
 					<Range
 						label={ __(
@@ -1441,11 +1445,10 @@ export default function Settings( props ) {
 						) }
 						setAttributes={ setAttributes }
 						value={ overlayPositionFromEdge }
-						onChange={ ( value ) =>
-							setAttributes( {
-								overlayPositionFromEdge: value,
-							} )
-						}
+						data={ {
+							value: overlayPositionFromEdge,
+							label: 'overlayPositionFromEdge',
+						} }
 						min={ 0 }
 						max={ 100 }
 						unit={ {
@@ -1529,56 +1532,66 @@ export default function Settings( props ) {
 					label: 'imageMarginLink',
 				} }
 			/>
-			{
-				'static' === imageHoverEffect && (
-					<BoxShadowControl
-						setAttributes={ setAttributes }
-						label={ __(
-							'Box Shadow',
-							'ultimate-addons-for-gutenberg'
-						) }
-						boxShadowColor={ {
-							value: imageBoxShadowColor,
-							label: 'imageBoxShadowColor',
-							title: __( 'Color', 'ultimate-addons-for-gutenberg' ),
-						} }
-						boxShadowHOffset={ {
-							value: imageBoxShadowHOffset,
-							label: 'imageBoxShadowHOffset',
-							title: __(
-								'Horizontal',
-								'ultimate-addons-for-gutenberg'
-							),
-						} }
-						boxShadowVOffset={ {
-							value: imageBoxShadowVOffset,
-							label: 'imageBoxShadowVOffset',
-							title: __(
-								'Vertical',
-								'ultimate-addons-for-gutenberg'
-							),
-						} }
-						boxShadowBlur={ {
-							value: imageBoxShadowBlur,
-							label: 'imageBoxShadowBlur',
-							title: __( 'Blur', 'ultimate-addons-for-gutenberg' ),
-						} }
-						boxShadowSpread={ {
-							value: imageBoxShadowSpread,
-							label: 'imageBoxShadowSpread',
-							title: __( 'Spread', 'ultimate-addons-for-gutenberg' ),
-						} }
-						boxShadowPosition={ {
-							value: imageBoxShadowPosition,
-							label: 'imageBoxShadowPosition',
-							title: __(
-								'Position',
-								'ultimate-addons-for-gutenberg'
-							),
-						} }
-					/>
-				)
-			}
+		</UAGAdvancedPanelBody>
+	)
+
+	const imageBoxShadowStylePanel = (
+		<UAGAdvancedPanelBody
+			title={ __( 'Box Shadow', 'ultimate-addons-for-gutenberg' ) }
+			initialOpen={ false }
+		>
+			<UAGPresets
+				setAttributes = { setAttributes }
+				presets = { boxShadowPresets }
+				presetInputType = 'radioImage'
+			/>
+			<BoxShadowControl
+				setAttributes={ setAttributes }
+				label={ __(
+					'Box Shadow',
+					'ultimate-addons-for-gutenberg'
+				) }
+				boxShadowColor={ {
+					value: imageBoxShadowColor,
+					label: 'imageBoxShadowColor',
+					title: __( 'Color', 'ultimate-addons-for-gutenberg' ),
+				} }
+				boxShadowHOffset={ {
+					value: imageBoxShadowHOffset,
+					label: 'imageBoxShadowHOffset',
+					title: __(
+						'Horizontal',
+						'ultimate-addons-for-gutenberg'
+					),
+				} }
+				boxShadowVOffset={ {
+					value: imageBoxShadowVOffset,
+					label: 'imageBoxShadowVOffset',
+					title: __(
+						'Vertical',
+						'ultimate-addons-for-gutenberg'
+					),
+				} }
+				boxShadowBlur={ {
+					value: imageBoxShadowBlur,
+					label: 'imageBoxShadowBlur',
+					title: __( 'Blur', 'ultimate-addons-for-gutenberg' ),
+				} }
+				boxShadowSpread={ {
+					value: imageBoxShadowSpread,
+					label: 'imageBoxShadowSpread',
+					title: __( 'Spread', 'ultimate-addons-for-gutenberg' ),
+				} }
+				boxShadowPosition={ {
+					value: imageBoxShadowPosition,
+					label: 'imageBoxShadowPosition',
+					title: __(
+						'Position',
+						'ultimate-addons-for-gutenberg'
+					),
+				} }
+				popup={ false }
+			/>
 		</UAGAdvancedPanelBody>
 	)
 
@@ -1590,9 +1603,11 @@ export default function Settings( props ) {
 			<AdvancedPopColorControl
 				label={ __( 'Background', 'ultimate-addons-for-gutenberg' ) }
 				colorValue={ overlayBackground ? overlayBackground : '' }
-				onColorChange={ ( value ) =>
-					setAttributes( { overlayBackground: value } )
-				}
+				data={ {
+					value: overlayBackground,
+					label: 'overlayBackground',
+				} }
+				setAttributes={ setAttributes }
 			/>
 			<Range
 				label={ __(
@@ -1601,11 +1616,10 @@ export default function Settings( props ) {
 				) }
 				setAttributes={ setAttributes }
 				value={ overlayOpacity }
-				onChange={ ( value ) =>
-					setAttributes( {
-						overlayOpacity: value,
-					} )
-				}
+				data={ {
+					value: overlayOpacity,
+					label: 'overlayOpacity',
+				} }
 				min={ 0 }
 				max={ 1 }
 				step={0.1}
@@ -1618,11 +1632,10 @@ export default function Settings( props ) {
 				) }
 				setAttributes={ setAttributes }
 				value={ overlayHoverOpacity }
-				onChange={ ( value ) =>
-					setAttributes( {
-						overlayHoverOpacity: value,
-					} )
-				}
+				data={ {
+					value: overlayHoverOpacity,
+					label: 'overlayHoverOpacity',
+				} }
 				min={ 0 }
 				max={ 1 }
 				step={0.1}
@@ -1640,11 +1653,10 @@ export default function Settings( props ) {
 				) }
 				setAttributes={ setAttributes }
 				value={ seperatorWidth }
-				onChange={ ( value ) =>
-					setAttributes( {
-						seperatorWidth: value,
-					} )
-				}
+				data={ {
+					value: seperatorWidth,
+					label: 'seperatorWidth',
+				} }
 				min={ 0 }
 				max={
 					'%' === separatorWidthType
@@ -1686,11 +1698,10 @@ export default function Settings( props ) {
 				) }
 				setAttributes={ setAttributes }
 				value={ seperatorThickness }
-				onChange={ ( value ) =>
-					setAttributes( {
-						seperatorThickness: value,
-					} )
-				}
+				data={ {
+					value: seperatorThickness,
+					label: 'seperatorThickness',
+				} }
 				min={ 0 }
 				max={ 10 }
 				unit={ {
@@ -1706,9 +1717,11 @@ export default function Settings( props ) {
 				colorValue={
 					seperatorColor ? seperatorColor : ''
 				}
-				onColorChange={ ( value ) =>
-					setAttributes( { seperatorColor: value } )
-				}
+				data={ {
+					value: seperatorColor,
+					label: 'seperatorColor',
+				} }
+				setAttributes={ setAttributes }
 			/>
 			<SpacingControl
 				{ ...props }
@@ -1806,16 +1819,17 @@ export default function Settings( props ) {
 					</InspectorTab>
 					<InspectorTab { ...UAGTabs.style }>
 						{ImageStylePanel}
+						{ 'static' === imageHoverEffect && ( imageBoxShadowStylePanel ) }
 						{
 							layout === 'overlay' && (
 								<>
 									{overlayStylePanel}
 									{headingStylePanel}
-
+									{captionStylePanel}
 								</>
 							)
 						}
-						{ enableCaption && captionStylePanel }
+						{ enableCaption && layout !== 'overlay' && captionStylePanel }
 						{ 'none' !== seperatorStyle && layout === 'overlay' && seperatorStylePanel}
 					</InspectorTab>
 					<InspectorTab

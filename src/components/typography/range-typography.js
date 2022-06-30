@@ -12,7 +12,7 @@ import { useSelect } from '@wordpress/data';
  */
 export default function RangeTypographyControl( props ) {
 	const deviceType = useSelect( ( select ) => {
-		return select( 'core/edit-post' ).__experimentalGetPreviewDeviceType();
+		return select( 'core/edit-post' )?.__experimentalGetPreviewDeviceType();
 	}, [] );
 
 	const output = {};
@@ -28,8 +28,10 @@ export default function RangeTypographyControl( props ) {
 				unit={ props.type }
 				responsive={ true }
 				setAttributes={props.setAttributes}
-				data={{value:props.size.value, label:props.sizeLabel}}
-				onChange={false}
+				data={ {
+					value: props.size.value,
+					label: props.sizeLabel,
+				} }
 			/>
 		</>
 	);
@@ -44,8 +46,10 @@ export default function RangeTypographyControl( props ) {
 				unit={ props.type }
 				responsive={ true }
 				setAttributes={props.setAttributes}
-				data={{value:props.sizeTablet.value, label:props.sizeTabletLabel}}
-				onChange={false}
+				data={ {
+					value: props.sizeTablet.value,
+					label: props.sizeTabletLabel,
+				} }
 			/>
 		</>
 	);
@@ -60,20 +64,20 @@ export default function RangeTypographyControl( props ) {
 				unit={ props.type }
 				responsive={ true }
 				setAttributes={props.setAttributes}
-				data={{value:props.sizeMobile.value, label:props.sizeMobileLabel}}
-				onChange={false}
+				data={ {
+					value: props.sizeMobile.value,
+					label: props.sizeMobileLabel,
+				} }
 			/>
 		</>
 	);
 
 	return (
-		<div className={ 'uag-typography-range-options' }>
-			<div className="uagb-size-type-field-tabs">
-				<div className="uagb-responsive-control-inner">
-					{ output[ deviceType ]
-						? output[ deviceType ]
-						: output.Desktop }
-				</div>
+		<div className="uagb-size-type-field-tabs">
+			<div className="uagb-responsive-control-inner">
+				{ output[ deviceType ]
+					? output[ deviceType ]
+					: output.Desktop }
 			</div>
 		</div>
 	);
