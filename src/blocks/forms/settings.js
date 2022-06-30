@@ -23,7 +23,7 @@ import {
 	Icon,
 } from '@wordpress/components';
 
-import presets from './presets';
+import formsPresets, {buttonsPresets} from './presets';
 import UAGPresets from '@Components/presets';
 import UAGAdvancedPanelBody from '@Components/advanced-panel-body';
 
@@ -201,7 +201,7 @@ const Settings = ( props ) => {
 				>
 					<UAGPresets
 						setAttributes = { setAttributes }
-						presets = { presets }
+						presets = { formsPresets }
 						presetInputType = 'radioImage'
 					/>
 				</UAGAdvancedPanelBody>
@@ -1148,6 +1148,11 @@ const Settings = ( props ) => {
 			initialOpen={ false }
 			// className="uagb__url-panel-body"
 		>
+			<UAGPresets
+				setAttributes = { setAttributes }
+				presets = { buttonsPresets }
+				presetInputType = 'radioImage'
+			/>
 			<SelectControl
 				label={ __(
 					'Button Size',

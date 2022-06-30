@@ -244,8 +244,8 @@ if ( true === $attr['enableSeparator'] ) {
 	$selectors[' .uagb-faq-child__outer-wrap .uagb-faq-content '] =
 	array(
 		'border-style'        => 'solid',
-		'border-top-color'    => $attr['faqBorderColor'],
-		'border-top-width'    => UAGB_Helper::get_css_value( $attr['faqBorderTopWidth'], 'px' ),
+		'border-top-color'    => $attr['overallBorderColor'],
+		'border-top-width'    => UAGB_Helper::get_css_value( $attr['overallBorderTopWidth'], 'px' ),
 		'border-right-width'  => '0px',
 		'border-bottom-width' => '0px',
 		'border-left-width'   => '0px',
@@ -254,8 +254,8 @@ if ( true === $attr['enableSeparator'] ) {
 	$t_selectors[' .uagb-faq-child__outer-wrap .uagb-faq-content ']     =
 	array(
 		'border-style'        => 'solid',
-		'border-top-color'    => $attr['faqBorderColor'],
-		'border-top-width'    => UAGB_Helper::get_css_value( $attr['faqBorderTopWidthTablet'], 'px' ),
+		'border-top-color'    => $attr['overallBorderColor'],
+		'border-top-width'    => UAGB_Helper::get_css_value( $attr['overallBorderTopWidthTablet'], 'px' ),
 		'border-right-width'  => '0px',
 		'border-bottom-width' => '0px',
 		'border-left-width'   => '0px',
@@ -263,8 +263,8 @@ if ( true === $attr['enableSeparator'] ) {
 	$m_selectors[' .uagb-faq-child__outer-wrap .uagb-faq-content ']     =
 	array(
 		'border-style'        => 'solid',
-		'border-top-color'    => $attr['faqBorderColor'],
-		'border-top-width'    => UAGB_Helper::get_css_value( $attr['faqBorderTopWidthMobile'], 'px' ),
+		'border-top-color'    => $attr['overallBorderColor'],
+		'border-top-width'    => UAGB_Helper::get_css_value( $attr['overallBorderTopWidthMobile'], 'px' ),
 		'border-right-width'  => '0px',
 		'border-bottom-width' => '0px',
 		'border-left-width'   => '0px',
