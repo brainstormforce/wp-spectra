@@ -576,6 +576,7 @@ const attributes = {
 	},
 	backgroundType: {
 		type: 'string',
+		default: 'none',
 		UAGCopyPaste: {
 			styleType: 'column-bg-type'
 		},
