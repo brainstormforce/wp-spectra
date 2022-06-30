@@ -123,7 +123,7 @@ if ( $attr['childMigrate'] ) {
 	$selectors[' .uagb-buttons-repeater:not(.wp-block-button__link) .uagb-button__link']   = array( // For Backword user.
 		'font-family'     => $attr['fontFamily'],
 		'text-transform'  => $attr['fontTransform'],
-		'text-decoration' => $attr['fontDecoration'],
+		'text-decoration' => $attr['fontDecoration'] . ' !important',
 		'font-style'      => $attr['fontStyle'],
 		'font-weight'     => $attr['fontWeight'],
 		'font-size'       => UAGB_Helper::get_css_value( $attr['fontSize'], $attr['fontSizeType'] ),
@@ -133,7 +133,7 @@ if ( $attr['childMigrate'] ) {
 	$selectors[' .uagb-buttons-repeater .uagb-button__link']                               = array( // For New User.
 		'font-family'     => $attr['fontFamily'],
 		'text-transform'  => $attr['fontTransform'],
-		'text-decoration' => $attr['fontDecoration'],
+		'text-decoration' => $attr['fontDecoration'] . ' !important',
 		'font-style'      => $attr['fontStyle'],
 		'font-weight'     => $attr['fontWeight'],
 		'font-size'       => UAGB_Helper::get_css_value( $attr['fontSize'], $attr['fontSizeType'] ),
