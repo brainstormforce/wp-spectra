@@ -87,11 +87,11 @@ $toggle_border        = UAGB_Block_Helper::uag_generate_deprecated_border_css(
 $toggle_border_Tablet = UAGB_Block_Helper::uag_generate_border_css( $attr, 'checkBoxToggle', 'tablet' );
 $toggle_border_Mobile = UAGB_Block_Helper::uag_generate_border_css( $attr, 'checkBoxToggle', 'mobile' );
 
-// Had to implement this fallback due to empty string defaults.
-$toggle_border_top_fallback           = $toggle_border['border-top-width'] ? $toggle_border['border-top-width'] : '1px';
-$toggle_border_left_fallback          = $toggle_border['border-left-width'] ? $toggle_border['border-left-width'] : '1px';
-$toggle_border_right_fallback         = $toggle_border['border-right-width'] ? $toggle_border['border-right-width'] : '1px';
-$toggle_border_bottom_fallback        = $toggle_border['border-bottom-width'] ? $toggle_border['border-bottom-width'] : '1px';
+// Individual Toggle Border Fallback for Math Calculations.
+$toggle_border_top_fallback           = UAGB_Block_Helper::get_attribute_fallback( $toggle_border['border-top-width'], 'checkBoxToggleBorderTopWidth', $block_name );
+$toggle_border_left_fallback          = UAGB_Block_Helper::get_attribute_fallback( $toggle_border['border-left-width'], 'checkBoxToggleBorderLeftWidth', $block_name );
+$toggle_border_right_fallback         = UAGB_Block_Helper::get_attribute_fallback( $toggle_border['border-right-width'], 'checkBoxToggleBorderRightWidth', $block_name );
+$toggle_border_bottom_fallback        = UAGB_Block_Helper::get_attribute_fallback( $toggle_border['border-bottom-width'], 'checkBoxToggleBorderBottomWidth', $block_name );
 $toggle_border_top_tablet_fallback    = $toggle_border_Tablet['border-top-width'] ? $toggle_border_Tablet['border-top-width'] : $toggle_border_top_fallback;
 $toggle_border_left_tablet_fallback   = $toggle_border_Tablet['border-left-width'] ? $toggle_border_Tablet['border-left-width'] : $toggle_border_left_fallback;
 $toggle_border_right_tablet_fallback  = $toggle_border_Tablet['border-right-width'] ? $toggle_border_Tablet['border-right-width'] : $toggle_border_right_fallback;
