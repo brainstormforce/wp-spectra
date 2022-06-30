@@ -211,7 +211,7 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 
 			$css_val = '';
 
-			if ( isset( $value ) ) {
+			if ( ! empty( $value ) ) {
 				$css_val = esc_attr( $value ) . $unit;
 			}
 
