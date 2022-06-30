@@ -26,6 +26,7 @@ function styling( props ) {
 		align,
 		enableSeparator,
 		boxBgColor,
+		boxBgHoverColor,
 		overallBorderHColor,
 		questionTextColor,
 		questionTextBgColor,
@@ -155,6 +156,7 @@ function styling( props ) {
 			...borderCSS
 		},
 		' .uagb-faq-item:hover': {
+			'background-color': boxBgHoverColor,
 			'border-color': overallBorderHColor,
 		},
 		' .uagb-faq-item .uagb-question': {
