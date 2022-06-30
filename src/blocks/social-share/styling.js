@@ -39,10 +39,10 @@ function styling( props ) {
 	const gapMobileTabletFallback = isNaN( gapMobile ) ? gapTabletFallback : gapMobile;
 
 	const selectors = {
-		' .uagb-ss-repeater a.uagb-ss__link': {
+		' a.uagb-ss__link': {
 			'color': iconColor,
 		},
-		' .uagb-ss-repeater a.uagb-ss__link svg': {
+		' a.uagb-ss__link svg': {
 			'fill': iconColor,
 		},
 		' .uagb-ss-repeater:hover a.uagb-ss__link': {
@@ -51,10 +51,10 @@ function styling( props ) {
 		' .uagb-ss-repeater:hover a.uagb-ss__link svg': {
 			'fill': iconHoverColor,
 		},
-		' .uagb-ss-repeater.uagb-ss__wrapper': {
+		' .uagb-ss__wrapper': {
 			'background': iconBgColor,
 		},
-		' .uagb-ss-repeater.uagb-ss__wrapper:hover': {
+		' .uagb-ss__wrapper:hover': {
 			'background': iconBgHoverColor,
 		},
 	};
