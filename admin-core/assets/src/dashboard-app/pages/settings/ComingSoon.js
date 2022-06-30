@@ -94,13 +94,16 @@ const ComingSoon = () => {
 	};
 
 	return (
-        <section className='flex border-b border-solid border-slate-200'>
+        <section className='flex'>
             <div className='pr-16 pb-8 w-[78%]'>
                 <h3 className="text-lg leading-6 font-medium text-gray-900">
                     {__( 'Enable Coming Soon Mode', 'ultimate-addons-for-gutenberg' )}
                 </h3>
                 <p className="mt-[0.6rem] text-sm ">
-                    { __( 'Set your entire website as COMING SOON mode, meaning the site is offline until it is ready to be launched.', 'ultimate-addons-for-gutenberg' ) }
+                    { __( 'Is your website still in the making? Is it not yet ready for other people to see?', 'ultimate-addons-for-gutenberg' ) }
+                </p>
+				<p className="mt-[0.6rem] text-sm ">
+                    { __( 'Enable the coming soon mode. Only the page you select below will be displayed to people who are not logged in.', 'ultimate-addons-for-gutenberg' ) }
                 </p>
                 <Select
                     isMulti={false}

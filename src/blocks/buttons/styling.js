@@ -206,7 +206,7 @@ function styling( props ) {
 		};
 	}
 
-	tabletSelectors[ ' .uagb-button__wrapper .uagb-buttons-repeater' ] = {
+	tabletSelectors[ '.uagb-buttons__outer-wrap .uagb-button__wrapper .uagb-buttons-repeater.wp-block-button__link' ] = {
 		'font-size': generateCSSUnit( fontSizeTablet, fontSizeType ),
 		'line-height': generateCSSUnit( lineHeightTablet, lineHeightType ),
 		'padding-left': generateCSSUnit(
@@ -232,13 +232,10 @@ function styling( props ) {
 			bottomMarginTablet,
 			marginType
 		),
-	};
-
-	tabletSelectors[ '.uagb-buttons__outer-wrap .uagb-button__wrapper .uagb-buttons-repeater.wp-block-button__link' ] = { // For new user.
 		'letter-spacing': generateCSSUnit( fontLetterSpacingTablet, fontLetterSpacingType ),
 	};
 
-	mobileSelectors[ ' .uagb-button__wrapper .uagb-buttons-repeater' ] = {
+	mobileSelectors[ '.uagb-buttons__outer-wrap .uagb-button__wrapper .uagb-buttons-repeater.wp-block-button__link' ] = {
 		'font-size': generateCSSUnit( fontSizeMobile, fontSizeType ),
 		'line-height': generateCSSUnit( lineHeightMobile, lineHeightType ),
 		'padding-left': generateCSSUnit(
@@ -264,9 +261,6 @@ function styling( props ) {
 			bottomMarginMobile,
 			marginType
 		),
-	};
-
-	mobileSelectors[ '.uagb-buttons__outer-wrap .uagb-button__wrapper .uagb-buttons-repeater.wp-block-button__link' ] = { // For new user.
 		'letter-spacing': generateCSSUnit( fontLetterSpacingMobile, fontLetterSpacingType ),
 	};
 

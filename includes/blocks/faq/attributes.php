@@ -8,9 +8,15 @@
  */
 
 $border_defaults  = array(
-	'borderStyle'  => 'solid',
-	'borderWidth'  => 1,
-	'borderRadius' => 2,
+	'borderStyle'             => 'solid',
+	'borderTopWidth'          => 1,
+	'borderRightWidth'        => 1,
+	'borderBottomWidth'       => 1,
+	'borderLeftWidth'         => 1,
+	'borderTopLeftRadius'     => 2,
+	'borderTopRightRadius'    => 2,
+	'borderBottomLeftRadius'  => 2,
+	'borderBottomRightRadius' => 2,
 );
 $border_attribute = UAGB_Block_Helper::uag_generate_border_attribute( 'overall', $border_defaults );
 

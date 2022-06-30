@@ -1055,9 +1055,11 @@ export default function Settings( props ) {
 			<AdvancedPopColorControl
 				label={ __( 'Color', 'ultimate-addons-for-gutenberg' ) }
 				colorValue={ headingColor ? headingColor : '' }
-				onColorChange={ ( value ) =>
-					setAttributes( { headingColor: value } )
-				}
+				data={ {
+					value: headingColor,
+					label: 'headingColor',
+				} }
+				setAttributes={ setAttributes }
 			/>
 			<SpacingControl
 				label={ __(
@@ -1138,7 +1140,7 @@ export default function Settings( props ) {
 	const captionStylePanel =  (
 		<UAGAdvancedPanelBody
 			title={ layout === 'overlay' ?  __( 'Description', 'ultimate-addons-for-gutenberg' ) : __( 'Caption', 'ultimate-addons-for-gutenberg' ) }
-			initialOpen={ true }
+			initialOpen={ false }
 		>
 			{
 				'default' === layout && (
@@ -1267,9 +1269,11 @@ export default function Settings( props ) {
 			<AdvancedPopColorControl
 				label={ __( 'Color', 'ultimate-addons-for-gutenberg' ) }
 				colorValue={ captionColor ? captionColor : '' }
-				onColorChange={ ( value ) =>
-					setAttributes( { captionColor: value } )
-				}
+				data={ {
+					value: captionColor,
+					label: 'captionColor',
+				} }
+				setAttributes={ setAttributes }
 			/>
 			<SpacingControl
 				label={ __(
@@ -1441,11 +1445,10 @@ export default function Settings( props ) {
 						) }
 						setAttributes={ setAttributes }
 						value={ overlayPositionFromEdge }
-						onChange={ ( value ) =>
-							setAttributes( {
-								overlayPositionFromEdge: value,
-							} )
-						}
+						data={ {
+							value: overlayPositionFromEdge,
+							label: 'overlayPositionFromEdge',
+						} }
 						min={ 0 }
 						max={ 100 }
 						unit={ {
@@ -1600,9 +1603,11 @@ export default function Settings( props ) {
 			<AdvancedPopColorControl
 				label={ __( 'Background', 'ultimate-addons-for-gutenberg' ) }
 				colorValue={ overlayBackground ? overlayBackground : '' }
-				onColorChange={ ( value ) =>
-					setAttributes( { overlayBackground: value } )
-				}
+				data={ {
+					value: overlayBackground,
+					label: 'overlayBackground',
+				} }
+				setAttributes={ setAttributes }
 			/>
 			<Range
 				label={ __(
@@ -1611,11 +1616,10 @@ export default function Settings( props ) {
 				) }
 				setAttributes={ setAttributes }
 				value={ overlayOpacity }
-				onChange={ ( value ) =>
-					setAttributes( {
-						overlayOpacity: value,
-					} )
-				}
+				data={ {
+					value: overlayOpacity,
+					label: 'overlayOpacity',
+				} }
 				min={ 0 }
 				max={ 1 }
 				step={0.1}
@@ -1628,11 +1632,10 @@ export default function Settings( props ) {
 				) }
 				setAttributes={ setAttributes }
 				value={ overlayHoverOpacity }
-				onChange={ ( value ) =>
-					setAttributes( {
-						overlayHoverOpacity: value,
-					} )
-				}
+				data={ {
+					value: overlayHoverOpacity,
+					label: 'overlayHoverOpacity',
+				} }
 				min={ 0 }
 				max={ 1 }
 				step={0.1}
@@ -1650,11 +1653,10 @@ export default function Settings( props ) {
 				) }
 				setAttributes={ setAttributes }
 				value={ seperatorWidth }
-				onChange={ ( value ) =>
-					setAttributes( {
-						seperatorWidth: value,
-					} )
-				}
+				data={ {
+					value: seperatorWidth,
+					label: 'seperatorWidth',
+				} }
 				min={ 0 }
 				max={
 					'%' === separatorWidthType
@@ -1696,11 +1698,10 @@ export default function Settings( props ) {
 				) }
 				setAttributes={ setAttributes }
 				value={ seperatorThickness }
-				onChange={ ( value ) =>
-					setAttributes( {
-						seperatorThickness: value,
-					} )
-				}
+				data={ {
+					value: seperatorThickness,
+					label: 'seperatorThickness',
+				} }
 				min={ 0 }
 				max={ 10 }
 				unit={ {
@@ -1716,9 +1717,11 @@ export default function Settings( props ) {
 				colorValue={
 					seperatorColor ? seperatorColor : ''
 				}
-				onColorChange={ ( value ) =>
-					setAttributes( { seperatorColor: value } )
-				}
+				data={ {
+					value: seperatorColor,
+					label: 'seperatorColor',
+				} }
+				setAttributes={ setAttributes }
 			/>
 			<SpacingControl
 				{ ...props }
@@ -1822,11 +1825,11 @@ export default function Settings( props ) {
 								<>
 									{overlayStylePanel}
 									{headingStylePanel}
-
+									{captionStylePanel}
 								</>
 							)
 						}
-						{ enableCaption && captionStylePanel }
+						{ enableCaption && layout !== 'overlay' && captionStylePanel }
 						{ 'none' !== seperatorStyle && layout === 'overlay' && seperatorStylePanel}
 					</InspectorTab>
 					<InspectorTab
