@@ -71,6 +71,14 @@ function styling( props ) {
 		ctaFontSizeType,
 		ctaFontSizeMobile,
 		ctaFontSizeTablet,
+		ctaLineHeightType,
+		ctaLineHeight,
+		ctaLineHeightMobile,
+		ctaLineHeightTablet,
+		ctaLetterSpacingType,
+		ctaLetterSpacing,
+		ctaLetterSpacingTablet,
+		ctaLetterSpacingMobile,
 		ctaFontFamily,
 		ctaFontWeight,
 		ctaBtnLinkColor,
@@ -375,6 +383,11 @@ function styling( props ) {
 			'color': ctaLinkColor,
 			'text-decoration': ctaDecoration,
 			'text-transform': ctaTransform,
+			'letter-spacing': generateCSSUnit( ctaLetterSpacing, ctaLetterSpacingType ),
+			'line-height': generateCSSUnit(
+				ctaLineHeight,
+				ctaLineHeightType
+			),
 		},
 		' .uagb-infobox-cta-link:hover': {
 			'color': ctaLinkHoverColor,
@@ -525,7 +538,7 @@ function styling( props ) {
 			'border' : `${iconBorderWidth}px solid ${iconBackgroundHoverColor}`,
 		};
 	}
-	selectors[' .uagb-infobox-cta-link'] = ctaBorderCSS;
+	selectors[' .uagb-infobox-cta-link.wp-block-button__link'] = ctaBorderCSS;
 	if (
 		iconimgPosition === 'above-title' ||
 		iconimgPosition === 'below-title'
@@ -799,7 +812,12 @@ function styling( props ) {
 			),
 		},
 		' .uagb-infobox-cta-link': {
-			'font-size': generateCSSUnit( ctaFontSizeTablet, ctaFontSizeType ),
+			'font-size': generateCSSUnit( ctaFontSizeTablet, ctaFontSizeType ),			
+			'letter-spacing': generateCSSUnit( ctaLetterSpacingTablet, ctaLetterSpacingType ),
+			'line-height': generateCSSUnit(
+				ctaLineHeightTablet,
+				ctaLineHeightType
+			),
 		},
 		' .uagb-infobox-cta-link svg': {
 			'font-size': generateCSSUnit( ctaFontSizeTablet, ctaFontSizeType ),
@@ -1039,7 +1057,12 @@ function styling( props ) {
 			),
 		},
 		' .uagb-infobox-cta-link': {
-			'font-size': generateCSSUnit( ctaFontSizeMobile, ctaFontSizeType ),
+			'font-size': generateCSSUnit( ctaFontSizeMobile, ctaFontSizeType ),	
+			'letter-spacing': generateCSSUnit( ctaLetterSpacingMobile, ctaLetterSpacingType ),
+			'line-height': generateCSSUnit(
+				ctaLineHeightMobile,
+				ctaLineHeightType
+			),
 		},
 		'.uagb-infobox__content-wrap .uagb-ifb-separator': {
 			'width': generateCSSUnit( seperatorWidthFallbackMobile, separatorWidthType ),
@@ -1121,8 +1144,8 @@ function styling( props ) {
 			'margin-right': generateCSSUnit( ctaIconSpaceFallbackMobile, ctaIconSpaceType ),
 		};
 	}
-	mobileSelectors[' .uagb-infobox-cta-link'] = ctaBorderCSSMobile;
-	tabletSelectors[' .uagb-infobox-cta-link'] = ctaBorderCSSTablet;
+	mobileSelectors[' .uagb-infobox-cta-link.wp-block-button__link'] = ctaBorderCSSMobile;
+	tabletSelectors[' .uagb-infobox-cta-link.wp-block-button__link'] = ctaBorderCSSTablet;
 
 	const id = `.editor-styles-wrapper .uagb-block-${ props.clientId.substr(
 		0,
