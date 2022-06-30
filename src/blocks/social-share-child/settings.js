@@ -310,9 +310,11 @@ const Settings = ( props ) => {
 							'ultimate-addons-for-gutenberg'
 						) }
 						colorValue={ icon_bg_color ? icon_bg_color : '' }
-						onColorChange={ ( value ) =>
-							setAttributes( { icon_bg_color: value } )
-						}
+						data={ {
+							value: icon_bg_color,
+							label: 'icon_bg_color',
+						} }
+						setAttributes={ setAttributes }
 					/>
 				</>
 			);
@@ -326,9 +328,11 @@ const Settings = ( props ) => {
 						colorValue={
 							icon_bg_hover_color ? icon_bg_hover_color : ''
 						}
-						onColorChange={ ( value ) =>
-							setAttributes( { icon_bg_hover_color: value } )
-						}
+						data={ {
+							value: icon_bg_hover_color,
+							label: 'icon_bg_hover_color',
+						} }
+						setAttributes={ setAttributes }
 					/>
 				</>
 			);
@@ -338,9 +342,11 @@ const Settings = ( props ) => {
 					<AdvancedPopColorControl
 						label={ __( 'Color', 'ultimate-addons-for-gutenberg' ) }
 						colorValue={ icon_color ? icon_color : '' }
-						onColorChange={ ( value ) =>
-							setAttributes( { icon_color: value } )
-						}
+						data={ {
+							value: icon_color,
+							label: 'icon_color',
+						} }
+						setAttributes={ setAttributes }
 					/>
 					<AdvancedPopColorControl
 						label={ __(
@@ -348,9 +354,11 @@ const Settings = ( props ) => {
 							'ultimate-addons-for-gutenberg'
 						) }
 						colorValue={ icon_bg_color ? icon_bg_color : '' }
-						onColorChange={ ( value ) =>
-							setAttributes( { icon_bg_color: value } )
-						}
+						data={ {
+							value: icon_bg_color,
+							label: 'icon_bg_color',
+						} }
+						setAttributes={ setAttributes }
 					/>
 				</>
 			);
@@ -359,9 +367,11 @@ const Settings = ( props ) => {
 					<AdvancedPopColorControl
 						label={ __( 'Color', 'ultimate-addons-for-gutenberg' ) }
 						colorValue={ icon_hover_color ? icon_hover_color : '' }
-						onColorChange={ ( value ) =>
-							setAttributes( { icon_hover_color: value } )
-						}
+						data={ {
+							value: icon_hover_color,
+							label: 'icon_hover_color',
+						} }
+						setAttributes={ setAttributes }
 					/>
 					<AdvancedPopColorControl
 						label={ __(
@@ -371,9 +381,11 @@ const Settings = ( props ) => {
 						colorValue={
 							icon_bg_hover_color ? icon_bg_hover_color : ''
 						}
-						onColorChange={ ( value ) =>
-							setAttributes( { icon_bg_hover_color: value } )
-						}
+						data={ {
+							value: icon_bg_hover_color,
+							label: 'icon_bg_hover_color',
+						} }
+						setAttributes={ setAttributes }
 					/>
 				</>
 			);

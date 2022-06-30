@@ -52,11 +52,10 @@ const Settings = ( props ) => {
 							) }
 							value={ zoom }
 							setAttributes={ setAttributes }
-							onChange={ ( value ) =>
-								setAttributes( {
-									zoom: value,
-								} )
-							}
+							data={ {
+								value: zoom,
+								label: 'zoom',
+							} }
 							min={ 1 }
 							max={ 22 }
 							displayUnit={ false }
@@ -67,11 +66,10 @@ const Settings = ( props ) => {
 								'ultimate-addons-for-gutenberg'
 							) }
 							value={ height }
-							onChange={ ( value ) =>
-								setAttributes( {
-									height: value,
-								} )
-							}
+							data={ {
+								value: height,
+								label: 'height',
+							} }
 							min={ 0 }
 							max={ 1000 }
 							displayUnit={ false }

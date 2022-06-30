@@ -22,6 +22,8 @@ import renderCustomIcon from '@Controls/renderCustomIcon';
 import UAGTabsControl from '@Components/tabs';
 import AdvancedPopColorControl from '@Components/color-control/advanced-pop-color-control';
 import Range from '@Components/range/Range';
+import innerContainerPresets, { boxShadowPresets, boxShadowHoverPresets } from './presets';
+import UAGPresets from '@Components/presets';
 
 const Settings = ( props ) => {
 
@@ -492,7 +494,7 @@ const Settings = ( props ) => {
 					{ ( ( isBlockRootParent && 'default' === contentWidth ) || ( ! isBlockRootParent ) ) &&
 						<>
 							<ResponsiveSlider
-								label={ __( 'Custom Width', 'ultimate	-addons-for-gutenberg' ) }
+								label={ __( 'Custom Width', 'ultimate-addons-for-gutenberg' ) }
 								data={ {
 									desktop: {
 										value: widthDesktop,
@@ -930,9 +932,11 @@ const Settings = ( props ) => {
 				'ultimate-addons-for-gutenberg'
 			) }
 			colorValue={ linkColor }
-			onColorChange={ ( value ) =>
-				setAttributes( { linkColor: value } )
-			}
+			data={ {
+				value: linkColor,
+				label: 'linkColor',
+			} }
+			setAttributes={ setAttributes }
 		/>
 	);
 
@@ -943,9 +947,11 @@ const Settings = ( props ) => {
 				'ultimate-addons-for-gutenberg'
 			) }
 			colorValue={ linkHoverColor }
-			onColorChange={ ( value ) =>
-				setAttributes( { linkHoverColor: value } )
-			}
+			data={ {
+				value: linkHoverColor,
+				label: 'linkHoverColor',
+			} }
+			setAttributes={ setAttributes }
 		/>
 	);
 
@@ -961,9 +967,11 @@ const Settings = ( props ) => {
 						'ultimate-addons-for-gutenberg'
 					) }
 					colorValue={ textColor }
-					onColorChange={ ( value ) =>
-						setAttributes( { textColor: value } )
-					}
+					data={ {
+						value: textColor,
+						label: 'textColor',
+					} }
+					setAttributes={ setAttributes }
 				/>
 				<UAGTabsControl
 						tabs={ [
@@ -1034,6 +1042,11 @@ const Settings = ( props ) => {
 					] }
 					normal={
 						<>
+							<UAGPresets
+								setAttributes = { setAttributes }
+								presets = { boxShadowPresets }
+								presetInputType = 'radioImage'
+							/>
 							<BoxShadowControl
 								setAttributes={ setAttributes }
 								label={ __(
@@ -1084,6 +1097,11 @@ const Settings = ( props ) => {
 					}
 					hover={
 						<>
+							<UAGPresets
+								setAttributes = { setAttributes }
+								presets = { boxShadowHoverPresets }
+								presetInputType = 'radioImage'
+							/>
 							<BoxShadowControl
 								setAttributes={ setAttributes }
 								label={ __(
@@ -1505,9 +1523,11 @@ const Settings = ( props ) => {
 								'ultimate-addons-for-gutenberg'
 							) }
 							colorValue={ topColor }
-							onColorChange={ ( value ) =>
-								setAttributes( { topColor: value } )
-							}
+							data={ {
+								value: topColor,
+								label: 'topColor',
+							} }
+							setAttributes={ setAttributes }
 						/>
 						<Range
 							label={ __(
@@ -1516,9 +1536,10 @@ const Settings = ( props ) => {
 							) }
 							setAttributes={ setAttributes }
 							value={ topWidth }
-							onChange={ ( value ) =>
-								setAttributes( { topWidth: value } )
-							}
+							data={ {
+								value: topWidth,
+								label: 'topWidth',
+							} }
 							min={ 100 }
 							max={ 2000 }
 							displayUnit={ false }
@@ -1620,9 +1641,11 @@ const Settings = ( props ) => {
 								'ultimate-addons-for-gutenberg'
 							) }
 							colorValue={ bottomColor }
-							onColorChange={ ( value ) =>
-								setAttributes( { bottomColor: value } )
-							}
+							data={ {
+								value: bottomColor,
+								label: 'bottomColor',
+							} }
+							setAttributes={ setAttributes }
 						/>
 						<Range
 							label={ __(
@@ -1631,9 +1654,10 @@ const Settings = ( props ) => {
 							) }
 							setAttributes={ setAttributes }
 							value={ bottomWidth }
-							onChange={ ( value ) =>
-								setAttributes( { bottomWidth: value } )
-							}
+							data={ {
+								value: bottomWidth,
+								label: 'bottomWidth',
+							} }
 							min={ 100 }
 							max={ 2000 }
 							displayUnit={ false }
@@ -1740,11 +1764,25 @@ const Settings = ( props ) => {
 		);
 	};
 
+	const presetSettings = () => {
+		return <UAGAdvancedPanelBody
+					title={ __( 'Presets', 'ultimate-addons-for-gutenberg' ) }
+					initialOpen={ true }
+				>
+					<UAGPresets
+						setAttributes = { setAttributes }
+						presets = { innerContainerPresets }
+						presetInputType = 'radioImage'
+					/>
+				</UAGAdvancedPanelBody>
+	};
+
 	return (
 		<Suspense fallback={ lazyLoader() }>
 			<InspectorControls>
 				<InspectorTabs>
 					<InspectorTab { ...UAGTabs.general }>
+						{ isBlockRootParent && presetSettings() }
 						{ generalSettings() }
 					</InspectorTab>
 					<InspectorTab { ...UAGTabs.style }>

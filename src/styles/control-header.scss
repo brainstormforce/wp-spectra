@@ -5,7 +5,6 @@
 	justify-content: space-between;
 	align-items: center;
 	margin-bottom: $spectra-control-label-bottom-margin;
-	height: 16px;
 
 	.uag-control-label,
 	.uagb-inspector-tab .components-base-control__label,
@@ -28,6 +27,16 @@
 		display: flex;
 
 		.uagb-reset {
+			padding: 0;
+			margin-right: 10px;
+
+			&:only-child,
+			&:disabled {
+				margin-right: 0;
+			}
+		}
+
+		.disabled-element-wrapper {
 			padding: 0;
 			margin-right: 10px;
 

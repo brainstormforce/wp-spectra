@@ -182,9 +182,10 @@ const Settings = ( props ) => {
 						label={ __( 'Width', 'ultimate-addons-for-gutenberg' ) }
 						setAttributes={ setAttributes }
 						value={ width }
-						onChange={ ( value ) =>
-							setAttributes( { width: value } )
-						}
+						data={ {
+							value: width,
+							label: 'width',
+						} }
 						min={ 0 }
 						max={ 2000 }
 						displayUnit={ false }
@@ -211,9 +212,10 @@ const Settings = ( props ) => {
 						) }
 						setAttributes={ setAttributes }
 						value={ innerWidth }
-						onChange={ ( value ) =>
-							setAttributes( { innerWidth: value } )
-						}
+						data={ {
+							value: innerWidth,
+							label: 'innerWidth',
+						} }
 						min={ 0 }
 						max={ 2000 }
 						unit={ {

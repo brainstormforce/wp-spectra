@@ -256,9 +256,11 @@ const Settings = ( props ) => {
 					<AdvancedPopColorControl
 						label={ __( 'Color', 'ultimate-addons-for-gutenberg' ) }
 						colorValue={ authorColor }
-						onColorChange={ ( value ) =>
-							setAttributes( { authorColor: value } )
-						}
+						data={ {
+							value: authorColor,
+							label: 'authorColor',
+						} }
+						setAttributes={ setAttributes }
 					/>
 				</>
 			</UAGAdvancedPanelBody>
@@ -275,9 +277,11 @@ const Settings = ( props ) => {
 					<AdvancedPopColorControl
 						label={ __( 'Color', 'ultimate-addons-for-gutenberg' ) }
 						colorValue={ contentColor }
-						onColorChange={ ( value ) =>
-							setAttributes( { contentColor: value } )
-						}
+						data={ {
+							value: contentColor,
+							label: 'contentColor',
+						} }
+						setAttributes={ setAttributes }
 					/>
 				</>
 			</UAGAdvancedPanelBody>
@@ -293,9 +297,11 @@ const Settings = ( props ) => {
 				<AdvancedPopColorControl
 					label={ __( 'Color', 'ultimate-addons-for-gutenberg' ) }
 					colorValue={ summaryColor }
-					onColorChange={ ( value ) =>
-						setAttributes( { summaryColor: value } )
-					}
+					data={ {
+						value: summaryColor,
+						label: 'summaryColor',
+					} }
+					setAttributes={ setAttributes }
 				/>
 				<TypographyControl
 					label={ __(
@@ -377,9 +383,11 @@ const Settings = ( props ) => {
 						'ultimate-addons-for-gutenberg'
 					) }
 					colorValue={ starColor }
-					onColorChange={ ( value ) =>
-						setAttributes( { starColor: value } )
-					}
+					data={ {
+						value: starColor,
+						label: 'starColor',
+					} }
+					setAttributes={ setAttributes }
 				/>
 				<AdvancedPopColorControl
 					label={ __(
@@ -387,9 +395,11 @@ const Settings = ( props ) => {
 						'ultimate-addons-for-gutenberg'
 					) }
 					colorValue={ starActiveColor }
-					onColorChange={ ( value ) =>
-						setAttributes( { starActiveColor: value } )
-					}
+					data={ {
+						value: starActiveColor,
+						label: 'starActiveColor',
+					} }
+					setAttributes={ setAttributes }
 				/>
 				<AdvancedPopColorControl
 					label={ __(
@@ -397,9 +407,11 @@ const Settings = ( props ) => {
 						'ultimate-addons-for-gutenberg'
 					) }
 					colorValue={ starOutlineColor }
-					onColorChange={ ( value ) =>
-						setAttributes( { starOutlineColor: value } )
-					}
+					data={ {
+						value: starOutlineColor,
+						label: 'starOutlineColor',
+					} }
+					setAttributes={ setAttributes }
 				/>
 			</UAGAdvancedPanelBody>
 		);
@@ -414,9 +426,11 @@ const Settings = ( props ) => {
 				<AdvancedPopColorControl
 					label={ __( 'Color', 'ultimate-addons-for-gutenberg' ) }
 					colorValue={ titleColor }
-					onColorChange={ ( value ) =>
-						setAttributes( { titleColor: value } )
-					}
+					data={ {
+						value: titleColor,
+						label: 'titleColor',
+					} }
+					setAttributes={ setAttributes }
 				/>
 				<TypographyControl
 					label={ __(
@@ -497,9 +511,11 @@ const Settings = ( props ) => {
 								'ultimate-addons-for-gutenberg'
 							) }
 							colorValue={ descColor }
-							onColorChange={ ( value ) =>
-								setAttributes( { descColor: value } )
-							}
+							data={ {
+								value: descColor,
+								label: 'descColor',
+							} }
+							setAttributes={ setAttributes }
 						/>
 						<TypographyControl
 							label={ __(

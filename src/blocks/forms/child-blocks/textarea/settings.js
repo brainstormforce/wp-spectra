@@ -56,7 +56,10 @@ const Settings = ( props ) => {
 					) }
 					setAttributes={ setAttributes }
 					value={ rows }
-					onChange={ ( value ) => setAttributes( { rows: value } ) }
+					data={ {
+						value: rows,
+						label: 'rows',
+					} }
 					min={ 2 }
 					max={ 10 }
 					displayUnit={ false }

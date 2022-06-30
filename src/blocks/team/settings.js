@@ -753,9 +753,11 @@ const Settings = ( props ) => {
 				<AdvancedPopColorControl
 					label={ __( 'Color', 'ultimate-addons-for-gutenberg' ) }
 					colorValue={ titleColor ? titleColor : '' }
-					onColorChange={ ( value ) =>
-						setAttributes( { titleColor: value } )
-					}
+					data={ {
+						value: titleColor,
+						label: 'titleColor',
+					} }
+					setAttributes={ setAttributes }
 				/>
 				<TypographyControl
 					label={ __(
@@ -875,9 +877,11 @@ const Settings = ( props ) => {
 				<AdvancedPopColorControl
 					label={ __( 'Color', 'ultimate-addons-for-gutenberg' ) }
 					colorValue={ prefixColor ? prefixColor : '' }
-					onColorChange={ ( value ) =>
-						setAttributes( { prefixColor: value } )
-					}
+					data={ {
+						value: prefixColor,
+						label: 'prefixColor',
+					} }
+					setAttributes={ setAttributes }
 				/>
 				<TypographyControl
 					label={ __(
@@ -996,9 +1000,11 @@ const Settings = ( props ) => {
 				<AdvancedPopColorControl
 					label={ __( 'Color', 'ultimate-addons-for-gutenberg' ) }
 					colorValue={ descColor ? descColor : '' }
-					onColorChange={ ( value ) =>
-						setAttributes( { descColor: value } )
-					}
+					data={ {
+						value: descColor,
+						label: 'descColor',
+					} }
+					setAttributes={ setAttributes }
 				/>
 				<TypographyControl
 					label={ __(
@@ -1206,9 +1212,11 @@ const Settings = ( props ) => {
 								'ultimate-addons-for-gutenberg'
 							) }
 							colorValue={ socialColor ? socialColor : '' }
-							onColorChange={ ( value ) =>
-								setAttributes( { socialColor: value } )
-							}
+							data={ {
+								value: socialColor,
+								label: 'socialColor',
+							} }
+							setAttributes={ setAttributes }
 						/>
 					}
 					hover={
@@ -1220,9 +1228,11 @@ const Settings = ( props ) => {
 							colorValue={
 								socialHoverColor ? socialHoverColor : ''
 							}
-							onColorChange={ ( value ) =>
-								setAttributes( { socialHoverColor: value } )
-							}
+							data={ {
+								value: socialHoverColor,
+								label: 'socialHoverColor',
+							} }
+							setAttributes={ setAttributes }
 						/>
 					}
 					disableBottomSeparator={ true }
