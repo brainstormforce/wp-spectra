@@ -168,6 +168,12 @@ function contentTimelineStyle( props ) {
 		authorLetterSpacingTablet,
 		authorLetterSpacingMobile,
 		authorLetterSpacingType,
+		verticalSpace,
+		verticalSpaceTablet,
+		verticalSpaceMobile,
+		verticalSpaceUnit,
+		verticalSpaceUnitTablet,
+		verticalSpaceUnitMobile
 	} = props.attributes;
 
 	const iconSizeFallback = getFallbackNumber( iconSize, 'iconSize', blockName );
@@ -299,7 +305,7 @@ function contentTimelineStyle( props ) {
 			'margin-right': generateCSSUnit( rightMargin + 3, marginUnit ),
 		},
 		' .uagb-timeline__field:not(:last-child)': {
-			'margin-bottom': generateCSSUnit( bottomMargin, marginUnit ),
+			'margin-bottom': generateCSSUnit( verticalSpace, verticalSpaceUnit ),
 		},
 		' .uagb-timeline__date-hide.uagb-timeline__inner-date-new': {
 			'margin-bottom': generateCSSUnit( dateBottomSpaceFallback, 'px' ),
@@ -645,6 +651,9 @@ function contentTimelineStyle( props ) {
 			),
 			'border-radius': generateCSSUnit( borderRadiusTablet, 'px' ),
 		},
+		' .uagb-timeline__field:not(:last-child)': {
+			'margin-bottom': generateCSSUnit( verticalSpaceTablet, verticalSpaceUnitTablet ),
+		},
 	};
 
 	const mobileSelectors = {
@@ -864,6 +873,9 @@ function contentTimelineStyle( props ) {
 				mobilePaddingUnit
 			),
 			'border-radius': generateCSSUnit( borderRadiusMobile, 'px' ),
+		},
+		' .uagb-timeline__field:not(:last-child)': {
+			'margin-bottom': generateCSSUnit( verticalSpaceMobile, verticalSpaceUnitMobile ),
 		},
 	};
 

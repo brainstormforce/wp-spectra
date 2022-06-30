@@ -223,6 +223,12 @@ const Settings = ( props ) => {
 		authorLetterSpacingTablet,
 		authorLetterSpacingMobile,
 		authorLetterSpacingType,
+		verticalSpace,
+		verticalSpaceTablet,
+		verticalSpaceMobile,
+		verticalSpaceUnit,
+		verticalSpaceUnitTablet,
+		verticalSpaceUnitMobile
 	} = attributes;
 
 	const timelinAlignment = 'undefined' !== typeof attributes['timelinAlignment' + deviceType ] ? attributes['timelinAlignment' + deviceType ] :  attributes.timelinAlignment;
@@ -1782,7 +1788,7 @@ const Settings = ( props ) => {
 				<SpacingControl
 					{ ...props }
 					label={ __(
-						'Block Padding',
+						'Post Padding',
 						'ultimate-addons-for-gutenberg'
 					) }
 					valueTop={ {
@@ -1852,78 +1858,61 @@ const Settings = ( props ) => {
 						label: 'paddingLink',
 					} }
 				/>
-				<SpacingControl
-					{ ...props }
+				<ResponsiveSlider
 					label={ __(
-						'Block Margin',
+						'Gap Between Posts',
 						'ultimate-addons-for-gutenberg'
 					) }
-					valueTop={ {
-						value: topMargin,
-						label: 'topMargin',
+					data={ {
+						desktop: {
+							value: verticalSpace,
+							label: 'verticalSpace',
+							unit: {
+								value: verticalSpaceUnit,
+								label: 'verticalSpaceUnit',
+							},
+						},
+						tablet: {
+							value: verticalSpaceTablet,
+							label: 'verticalSpaceTablet',
+							unit: {
+								value: verticalSpaceUnitTablet,
+								label: 'verticalSpaceUnitTablet',
+							},
+						},
+						mobile: {
+							value: verticalSpaceMobile,
+							label: 'verticalSpaceMobile',
+							unit: {
+								value: verticalSpaceUnitMobile,
+								label: 'verticalSpaceUnitMobile',
+							},
+						},
 					} }
-					valueRight={ {
-						value: rightMargin,
-						label: 'rightMargin',
-					} }
-					valueBottom={ {
-						value: bottomMargin,
-						label: 'bottomMargin',
-					} }
-					valueLeft={ {
-						value: leftMargin,
-						label: 'leftMargin',
-					} }
-					valueTopTablet={ {
-						value: topMarginTablet,
-						label: 'topMarginTablet',
-					} }
-					valueRightTablet={ {
-						value: rightMarginTablet,
-						label: 'rightMarginTablet',
-					} }
-					valueBottomTablet={ {
-						value: bottomMarginTablet,
-						label: 'bottomMarginTablet',
-					} }
-					valueLeftTablet={ {
-						value: leftMarginTablet,
-						label: 'leftMarginTablet',
-					} }
-					valueTopMobile={ {
-						value: topMarginMobile,
-						label: 'topMarginMobile',
-					} }
-					valueRightMobile={ {
-						value: rightMarginMobile,
-						label: 'rightMarginMobile',
-					} }
-					valueBottomMobile={ {
-						value: bottomMarginMobile,
-						label: 'bottomMarginMobile',
-					} }
-					valueLeftMobile={ {
-						value: leftMarginMobile,
-						label: 'leftMarginMobile',
-					} }
+					min={ 0 }
+					limitMax={ { 'px': 100, '%': 100, 'em': 100 } }
+					units={ [
+						{
+							name: __(
+								'PX',
+								'ultimate-addons-for-gutenberg'
+							),
+							unitValue: 'px',
+						},
+						{
+							name: __( '%', 'ultimate-addons-for-gutenberg' ),
+							unitValue: '%',
+						},
+						{
+							name: __( 'EM', 'ultimate-addons-for-gutenberg' ),
+							unitValue: 'em',
+						},
+					] }
 					unit={ {
-						value: marginUnit,
-						label: 'marginUnit',
+						value: verticalSpaceUnit,
+						label: 'verticalSpaceUnit',
 					} }
-					mUnit={ {
-						value: mobileMarginUnit,
-						label: 'mobileMarginUnit',
-					} }
-					tUnit={ {
-						value: tabletMarginUnit,
-						label: 'tabletMarginUnit',
-					} }
-					attributes={ props }
 					setAttributes={ setAttributes }
-					link={ {
-						value: marginLink,
-						label: 'marginLink',
-					} }
 				/>
 			</UAGAdvancedPanelBody>
 		);

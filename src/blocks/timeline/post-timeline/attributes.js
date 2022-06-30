@@ -98,6 +98,32 @@ const attributes = { // eslint-disable-line no-unused-vars
 			styleType: 'column-gap'
 		},
 	},
+	verticalSpaceTablet      : {
+		type    : 'number',
+		default : 15,
+		UAGCopyPaste: {
+			styleType: 'column-gap-tablet'
+		},
+	},
+	verticalSpaceMobile     : {
+		type    : 'number',
+		default : 15,
+		UAGCopyPaste: {
+			styleType: 'column-gap-mobile'
+		},
+	},
+	verticalSpaceUnit      : {
+		type    : 'string',
+		default : 'px'
+	},
+	verticalSpaceUnitTablet : {
+		type    : 'string',
+		default : 'px'
+	},
+	verticalSpaceUnitMobile : {
+		type    : 'string',
+		default : 'px'
+	},
 	timelinAlignmentDesktop  : {
 		type    : 'string',
 		default : 'center',

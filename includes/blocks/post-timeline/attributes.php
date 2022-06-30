@@ -25,6 +25,7 @@ return array(
 	'borderFocus'                => '#5cb85c',
 	'horizontalSpace'            => 10,
 	'verticalSpace'              => 15,
+	'verticalSpaceUnit'          => 'px',
 	'headFontSizeType'           => 'px',
 	'headFontSize'               => '',
 	'headFontSizeTablet'         => '',
