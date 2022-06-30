@@ -15,13 +15,12 @@ import UAGTabsControl from '@Components/tabs';
 import UAGImage from '@Components/image';
 import MultiButtonsControl from '@Components/multi-buttons-control';
 import renderSVG from '@Controls/renderIcon';
+import UAGSelectControl from '@Components/select-control';
 import {
-	SelectControl,
 	TextControl,
 	ToggleControl,
 	Icon,
 } from '@wordpress/components';
-
 import {
 	BlockControls,
 	InspectorControls,
@@ -713,16 +712,17 @@ tweetBtnLetterSpacingType,
 							] }
 							showIcons={ false }
 						/>
-						<SelectControl
+						<UAGSelectControl
 							label={ __(
 								'Author Image Size',
 								'ultimate-addons-for-gutenberg'
 							) }
+							data={ {
+								value: authorImageSize,
+								label: 'authorImageSize',
+							} }
+							setAttributes={ setAttributes }
 							options={ imageSizeOptions }
-							value={ authorImageSize }
-							onChange={ ( value ) =>
-								setAttributes( { authorImageSize: value } )
-							}
 						/>
 						<ResponsiveSlider
 							label={ __(
@@ -1299,15 +1299,16 @@ tweetBtnLetterSpacingType,
 		);
 		return (
 			<>
-				<SelectControl
+				<UAGSelectControl
 					label={ __(
-						'Quote Border Style',
+						'Border Style',
 						'ultimate-addons-for-gutenberg'
 					) }
-					value={ borderStyle }
-					onChange={ ( value ) =>
-						setAttributes( { borderStyle: value } )
-					}
+					data={ {
+						value: borderStyle,
+						label: 'borderStyle',
+					} }
+					setAttributes={ setAttributes }
 					options={ [
 						{
 							value: 'none',

@@ -12,6 +12,7 @@ import ResponsiveBorder from '@Components/responsive-border';
 import AdvancedPopColorControl from '@Components/color-control/advanced-pop-color-control.js';
 import Range from '@Components/range/Range.js';
 import InspectorTabs from '@Components/inspector-tabs/InspectorTabs.js';
+import UAGSelectControl from '@Components/select-control';
 import InspectorTab, {
 	UAGTabs,
 } from '@Components/inspector-tabs/InspectorTab.js';
@@ -20,7 +21,7 @@ import UAGTabsControl from '@Components/tabs';
 import {
 	InspectorControls,
 } from '@wordpress/block-editor';
-import { SelectControl, ToggleControl } from '@wordpress/components';
+import { ToggleControl } from '@wordpress/components';
 
 import UAGAdvancedPanelBody from '@Components/advanced-panel-body';
 
@@ -354,10 +355,16 @@ const Settings = ( props ) => {
 						'ultimate-addons-for-gutenberg'
 					) }
 				/>
-				<SelectControl
-					label={ __( 'HTML Tag', 'ultimate-addons-for-gutenberg' ) }
-					value={ tag }
-					onChange={ ( value ) => setAttributes( { tag: value } ) }
+				<UAGSelectControl
+					label={ __(
+						'HTML Tag',
+						'ultimate-addons-for-gutenberg'
+					) }
+					data={ {
+						value: tag,
+						label: 'tag',
+					} }
+					setAttributes={ setAttributes }
 					options={ [
 						{
 							value: 'div',
@@ -751,12 +758,16 @@ const Settings = ( props ) => {
 
 		const topSettings = (
 			<>
-				<SelectControl
-					label={ __( 'Type', 'ultimate-addons-for-gutenberg' ) }
-					value={ topType }
-					onChange={ ( value ) =>
-						setAttributes( { topType: value } )
-					}
+				<UAGSelectControl
+					label={ __(
+						'Type',
+						'ultimate-addons-for-gutenberg'
+					) }
+					data={ {
+						value: topType,
+						label: 'topType',
+					} }
+					setAttributes={ setAttributes }
 					options={ dividers }
 				/>
 				{ topType !== 'none' && (
@@ -841,12 +852,16 @@ const Settings = ( props ) => {
 
 		const bottomSettings = (
 			<>
-				<SelectControl
-					label={ __( 'Type', 'ultimate-addons-for-gutenberg' ) }
-					value={ bottomType }
-					onChange={ ( value ) =>
-						setAttributes( { bottomType: value } )
-					}
+				<UAGSelectControl
+					label={ __(
+						'Type',
+						'ultimate-addons-for-gutenberg'
+					) }
+					data={ {
+						value: bottomType,
+						label: 'bottomType',
+					} }
+					setAttributes={ setAttributes }
 					options={ dividers }
 				/>
 				{ bottomType !== 'none' && (
