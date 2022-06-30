@@ -17,6 +17,10 @@
 
 		&.uagb-tabs__align-right {
 			justify-content: flex-end;
+
+			.uagb-tab:last-child {
+				margin-right: 0px;
+			}
 		}
 
 		li.uagb-tab a {
