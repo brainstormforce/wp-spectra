@@ -41,6 +41,20 @@ const attributes = {
 			styleType: 'overall-alignment'
 		}
 	},
+	alignTablet: {
+		type: 'string',
+		default: 'center',
+		UAGCopyPaste: {
+			styleType: 'overall-alignment'
+		}
+	},
+	alignMobile: {
+		type: 'string',
+		default: 'center',
+		UAGCopyPaste: {
+			styleType: 'overall-alignment'
+		}
+	},
 	social_count: {
 		type: 'number',
 		default: itemCount,
@@ -155,7 +169,7 @@ const attributes = {
 	},
 	iconColor: {
 		type: 'string',
-		default: '#3a3a3a',
+		default: '',
 		UAGCopyPaste: {
 			styleType: 'icon-color'
 		},
