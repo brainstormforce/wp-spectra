@@ -22,7 +22,6 @@ import {
 } from '@wordpress/block-editor';
 import {
 	TextControl,
-	SelectControl,
 	__experimentalAlignmentMatrixControl as AlignmentMatrixControl,
 	Icon,
 	ToggleControl
@@ -425,15 +424,16 @@ export default function Settings( props ) {
 					</>
 				)
 			}
-			<SelectControl
+			<UAGSelectControl
 				label={ __(
 					'On Hover Image',
 					'ultimate-addons-for-gutenberg'
 				) }
-				value={ imageHoverEffect }
-				onChange={ ( value ) =>
-					setAttributes( { imageHoverEffect: value } )
-				}
+				data={ {
+					value: imageHoverEffect,
+					label: 'imageHoverEffect',
+				} }
+				setAttributes={ setAttributes }
 				options={ [
 					{
 						value: 'static',
@@ -787,12 +787,16 @@ export default function Settings( props ) {
 						/>
 					)
 				}
-				<SelectControl
-					label={ __( 'Style' ) }
-					value={ seperatorStyle }
-					onChange={ ( value ) =>
-						setAttributes( { seperatorStyle: value } )
-					}
+				<UAGSelectControl
+					label={ __(
+						'Style',
+						'ultimate-addons-for-gutenberg'
+					) }
+					data={ {
+						value: seperatorStyle,
+						label: 'seperatorStyle',
+					} }
+					setAttributes={ setAttributes }
 					options={ [
 						{
 							value: 'none',
@@ -832,15 +836,16 @@ export default function Settings( props ) {
 					] }
 				/>
 				{ 'none' !== seperatorStyle && (
-					<SelectControl
+					<UAGSelectControl
 						label={ __(
 							'Position',
 							'ultimate-addons-for-gutenberg'
 						) }
-						value={ seperatorPosition }
-						onChange={ ( value ) =>
-							setAttributes( { seperatorPosition: value } )
-						}
+						data={ {
+							value: seperatorPosition,
+							label: 'seperatorPosition',
+						} }
+						setAttributes={ setAttributes }
 						options={ [
 							{
 								value: 'before_title',

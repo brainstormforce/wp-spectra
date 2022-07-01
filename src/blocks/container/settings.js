@@ -16,7 +16,8 @@ import Background from '@Components/background';
 import ResponsiveBorder from '@Components/responsive-border';
 import UAGAdvancedPanelBody from '@Components/advanced-panel-body';
 import MultiButtonsControl from '@Components/multi-buttons-control';
-import { Icon, SelectControl, ToggleControl } from '@wordpress/components';
+import UAGSelectControl from '@Components/select-control';
+import { Icon, ToggleControl } from '@wordpress/components';
 import renderCustomIcon from '@Controls/renderCustomIcon';
 import UAGTabsControl from '@Components/tabs';
 import AdvancedPopColorControl from '@Components/color-control/advanced-pop-color-control';
@@ -546,76 +547,6 @@ const Settings = ( props ) => {
 								setAttributes={ setAttributes }
 								onChange={onWidthChange}
 							/>
-						</>
-					}
-					{ isBlockRootParent && 'default' === contentWidth &&
-						<>
-							<MultiButtonsControl
-								setAttributes={ setAttributes }
-								label={ __( 'Content Width', 'ultimate-addons-for-gutenberg' ) }
-								data={ {
-									value: innerContentWidth,
-									label: 'innerContentWidth',
-								} }
-								options={ innerContentWidthOptions }
-								showIcons={ false }
-								responsive={false}
-							/>
-							{ 'alignwide' === innerContentWidth &&
-								<ResponsiveSlider
-									label={ __( 'Content Box Width', 'ultimate-addons-for-gutenberg' ) }
-									data={ {
-										desktop: {
-											value: innerContentCustomWidthDesktop,
-											label: 'innerContentCustomWidthDesktop',
-											unit: {
-												value: innerContentCustomWidthType,
-												label: 'innerContentCustomWidthType',
-											},
-										},
-										tablet: {
-											value: innerContentCustomWidthTablet,
-											label: 'innerContentCustomWidthTablet',
-											unit: {
-												value: innerContentCustomWidthTypeTablet,
-												label: 'innerContentCustomWidthTypeTablet',
-											},
-										},
-										mobile: {
-											value: innerContentCustomWidthMobile,
-											label: 'innerContentCustomWidthMobile',
-											unit: {
-												value: innerContentCustomWidthTypeMobile,
-												label: 'innerContentCustomWidthTypeMobile',
-											},
-										},
-									} }
-									min={ 0 }
-									limitMax={ { 'px': 1600, '%': 100, 'vw': 100 } }
-									units={ [
-										{
-											name: __(
-												'PX',
-												'ultimate-addons-for-gutenberg'
-											),
-											unitValue: 'px',
-										},
-										{
-											name: __( '%', 'ultimate-addons-for-gutenberg' ),
-											unitValue: '%',
-										},
-										{
-											name: __( 'VW', 'ultimate-addons-for-gutenberg' ),
-											unitValue: 'vw',
-										},
-									] }
-									unit={ {
-										value: innerContentCustomWidthType,
-										label: 'innerContentCustomWidthType',
-									} }
-									setAttributes={ setAttributes }
-								/>
-							}
 						</>
 					}
 					<ResponsiveSlider
@@ -1502,12 +1433,16 @@ const Settings = ( props ) => {
 
 		const topSettings = (
 			<>
-				<SelectControl
-					label={ __( 'Type', 'ultimate-addons-for-gutenberg' ) }
-					value={ topType }
-					onChange={ ( value ) =>
-						setAttributes( { topType: value } )
-					}
+				<UAGSelectControl
+					label={ __(
+						'Type',
+						'ultimate-addons-for-gutenberg'
+					) }
+					data={ {
+						value: topType,
+						label: 'topType',
+					} }
+					setAttributes={ setAttributes }
 					options={ dividers }
 				/>
 				{ topType !== 'none' && (
@@ -1616,12 +1551,16 @@ const Settings = ( props ) => {
 
 		const bottomSettings = (
 			<>
-				<SelectControl
-					label={ __( 'Type', 'ultimate-addons-for-gutenberg' ) }
-					value={ bottomType }
-					onChange={ ( value ) =>
-						setAttributes( { bottomType: value } )
-					}
+				<UAGSelectControl
+					label={ __(
+						'Type',
+						'ultimate-addons-for-gutenberg'
+					) }
+					data={ {
+						value: bottomType,
+						label: 'bottomType',
+					} }
+					setAttributes={ setAttributes }
 					options={ dividers }
 				/>
 				{ bottomType !== 'none' && (

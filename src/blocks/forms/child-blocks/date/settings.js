@@ -1,7 +1,9 @@
 import React from 'react';
 import { __ } from '@wordpress/i18n';
 
-import { SelectControl, ToggleControl } from '@wordpress/components';
+import { ToggleControl } from '@wordpress/components';
+import UAGSelectControl from '@Components/select-control';
+import Separator from '@Components/separator';
 import InspectorTabs from '@Components/inspector-tabs/InspectorTabs.js';
 import InspectorTab, {
 	UAGTabs,
@@ -101,66 +103,85 @@ const Settings = ( props ) => {
 				/>
 				{ additonalVal && (
 					<>
+						<Separator/>
 						<p>
 							{ __( 'From', 'ultimate-addons-for-gutenberg' ) } :
 						</p>
-						<SelectControl
-							className={ 'minDate' }
-							label="Year"
-							value={ minYear }
+						<UAGSelectControl
+							label={ __(
+								'Year',
+								'ultimate-addons-for-gutenberg'
+							) }
+							data={ {
+								value: minYear,
+								label: 'minYear',
+							} }
+							setAttributes={ setAttributes }
 							options={ YearDefaults }
-							onChange={ ( newMinYear ) =>
-								setAttributes( { newMinYear } )
-							}
 						/>
-						<SelectControl
-							className={ 'minDate' }
-							label="Month"
-							value={ minMonth }
+						<UAGSelectControl
+							label={ __(
+								'Month',
+								'ultimate-addons-for-gutenberg'
+							) }
+							data={ {
+								value: minMonth,
+								label: 'minMonth',
+							} }
+							setAttributes={ setAttributes }
 							options={ MonthsDefaults }
-							onChange={ ( newMinMonth ) =>
-								setAttributes( { newMinMonth } )
-							}
 						/>
-						<SelectControl
-							className={ 'minDate' }
-							label="Date"
-							value={ minDay }
+						<UAGSelectControl
+							label={ __(
+								'Date',
+								'ultimate-addons-for-gutenberg'
+							) }
+							data={ {
+								value: minDay,
+								label: 'minDay',
+							} }
+							setAttributes={ setAttributes }
 							options={ dateDefaults }
-							onChange={ ( newMinDay ) =>
-								setAttributes( { newMinDay } )
-							}
 						/>
+						<Separator/>
 						<p>
-							{ ' ' }
 							{ __( 'To', 'ultimate-addons-for-gutenberg' ) } :
 						</p>
-						<SelectControl
-							className={ 'maxDate' }
-							label="Year"
-							value={ maxYear }
+						<UAGSelectControl
+							label={ __(
+								'Year',
+								'ultimate-addons-for-gutenberg'
+							) }
+							data={ {
+								value: maxYear,
+								label: 'maxYear',
+							} }
+							setAttributes={ setAttributes }
 							options={ YearDefaults }
-							onChange={ ( newMaxYear ) =>
-								setAttributes( { newMaxYear } )
-							}
 						/>
-						<SelectControl
-							className={ 'maxDate' }
-							label="Month"
-							value={ maxMonth }
+						<UAGSelectControl
+							label={ __(
+								'Month',
+								'ultimate-addons-for-gutenberg'
+							) }
+							data={ {
+								value: maxMonth,
+								label: 'maxMonth',
+							} }
+							setAttributes={ setAttributes }
 							options={ MonthsDefaults }
-							onChange={ ( newMaxMonth ) =>
-								setAttributes( { newMaxMonth } )
-							}
 						/>
-						<SelectControl
-							className={ 'maxDate' }
-							label="Date"
-							value={ maxDay }
+						<UAGSelectControl
+							label={ __(
+								'Date',
+								'ultimate-addons-for-gutenberg'
+							) }
+							data={ {
+								value: maxDay,
+								label: 'maxDay',
+							} }
+							setAttributes={ setAttributes }
 							options={ dateDefaults }
-							onChange={ ( newMaxDay ) =>
-								setAttributes( { newMaxDay } )
-							}
 						/>
 						{ invalidDateErrorMsg }
 					</>
