@@ -368,7 +368,7 @@ function styling( props ) {
 			),
 		},
 		// CTA style
-		' .uagb-infobox-cta-link': {
+		' div.uagb-ifb-cta a.uagb-infobox-cta-link.uagb-infobox-cta-link': {
 			'font-size': generateCSSUnit( ctaFontSize, ctaFontSizeType ),
 			'font-family': ctaFontFamily,
 			'font-weight': ctaFontWeight,

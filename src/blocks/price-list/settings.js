@@ -9,6 +9,7 @@ import ResponsiveSlider from '@Components/responsive-slider';
 import AdvancedPopColorControl from '@Components/color-control/advanced-pop-color-control.js';
 import SpacingControl from '@Components/spacing-control';
 import MultiButtonsControl from '@Components/multi-buttons-control';
+import UAGSelectControl from '@Components/select-control';
 import InspectorTabs from '@Components/inspector-tabs/InspectorTabs.js';
 import InspectorTab, {
 	UAGTabs,
@@ -21,7 +22,7 @@ const maxColumns = 3;
 
 import { InspectorControls } from '@wordpress/block-editor';
 
-import { SelectControl, Icon } from '@wordpress/components';
+import { Icon } from '@wordpress/components';
 
 
 
@@ -568,11 +569,16 @@ titleLetterSpacingType,
 						/>
 					</>
 				) }
-				<SelectControl
-					label={ __( 'Size' ) }
-					options={ imageSizeOptions }
-					value={ imageSize }
+				<UAGSelectControl
+					label={ __(
+						'Size',
+						'ultimate-addons-for-gutenberg'
+					) }
+					data={ {
+						value: imageSize,
+					} }
 					onChange={ setimageSize }
+					options={ imageSizeOptions }
 				/>
 				<ResponsiveSlider
 					label={ __(
@@ -706,11 +712,11 @@ titleLetterSpacingType,
 				<AdvancedPopColorControl
 					label={ __( 'Color', 'ultimate-addons-for-gutenberg' ) }
 					colorValue={ descColor ? descColor : '' }
-					onColorChange={ ( value ) =>
-						setAttributes( {
-							descColor: value,
-						} )
-					}
+					data={ {
+						value: descColor,
+						label: 'descColor',
+					} }
+					setAttributes={ setAttributes }
 				/>
 				<TypographyControl
 					label={ __( 'Typography' ) }
@@ -797,12 +803,16 @@ titleLetterSpacingType,
 	const separatorSettings = () => {
 		return (
 			<UAGAdvancedPanelBody title={ __( 'Separator' ) } initialOpen={ false }>
-				<SelectControl
-					label={ __( 'Style' ) }
-					value={ seperatorStyle }
-					onChange={ ( value ) =>
-						setAttributes( { seperatorStyle: value } )
-					}
+				<UAGSelectControl
+					label={ __(
+						'Style',
+						'ultimate-addons-for-gutenberg'
+					) }
+					data={ {
+						value: seperatorStyle,
+						label: 'seperatorStyle',
+					} }
+					setAttributes={ setAttributes }
 					options={ [
 						{ value: 'none', label: __( 'None' ) },
 						{ value: 'solid', label: __( 'Solid' ) },
@@ -871,9 +881,10 @@ titleLetterSpacingType,
 							label={ __( 'Thickness' ) }
 							setAttributes={ setAttributes }
 							value={ seperatorThickness }
-							onChange={ ( value ) =>
-								setAttributes( { seperatorThickness: value } )
-							}
+							data={ {
+								value: seperatorThickness,
+								label: 'seperatorThickness',
+							} }
 							min={ 0 }
 							max={ 20 }
 							displayUnit={ false }
@@ -884,11 +895,11 @@ titleLetterSpacingType,
 								'ultimate-addons-for-gutenberg'
 							) }
 							colorValue={ seperatorColor ? seperatorColor : '' }
-							onColorChange={ ( value ) =>
-								setAttributes( {
-									seperatorColor: value,
-								} )
-							}
+							data={ {
+								value: seperatorColor,
+								label: 'seperatorColor',
+							} }
+							setAttributes={ setAttributes }
 						/>
 					</>
 				) }
@@ -903,11 +914,11 @@ titleLetterSpacingType,
 				<AdvancedPopColorControl
 					label={ __( 'Color', 'ultimate-addons-for-gutenberg' ) }
 					colorValue={ priceColor ? priceColor : '' }
-					onColorChange={ ( value ) =>
-						setAttributes( {
-							priceColor: value,
-						} )
-					}
+					data={ {
+						value: priceColor,
+						label: 'priceColor',
+					} }
+					setAttributes={ setAttributes }
 				/>
 				<TypographyControl
 					label={ __( 'Typography' ) }
@@ -995,11 +1006,11 @@ titleLetterSpacingType,
 				<AdvancedPopColorControl
 					label={ __( 'Color', 'ultimate-addons-for-gutenberg' ) }
 					colorValue={ titleColor ? titleColor : '' }
-					onColorChange={ ( value ) =>
-						setAttributes( {
-							titleColor: value,
-						} )
-					}
+					data={ {
+						value: titleColor,
+						label: 'titleColor',
+					} }
+					setAttributes={ setAttributes }
 				/>
 				<TypographyControl
 					label={ __( 'Typography' ) }
