@@ -231,6 +231,9 @@ const Settings = ( props ) => {
 		verticalSpaceUnitMobile
 	} = attributes;
 
+	console.log( props );
+	console.log( attributes );
+	console.log( verticalSpaceUnit );
 	const timelinAlignment = 'undefined' !== typeof attributes['timelinAlignment' + deviceType ] ? attributes['timelinAlignment' + deviceType ] :  attributes.timelinAlignment;
 
 	const onSelectPostType = ( value ) => {
@@ -1908,10 +1911,10 @@ const Settings = ( props ) => {
 							unitValue: 'em',
 						},
 					] }
-					unit={ {
-						value: verticalSpaceUnit,
-						label: 'verticalSpaceUnit',
-					} }
+					// unit={ {
+					// 	value: verticalSpaceUnit,
+					// 	label: 'verticalSpaceUnit',
+					// } }
 					setAttributes={ setAttributes }
 				/>
 			</UAGAdvancedPanelBody>

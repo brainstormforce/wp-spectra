@@ -114,15 +114,15 @@ const attributes = { // eslint-disable-line no-unused-vars
 	},
 	verticalSpaceUnit      : {
 		type    : 'string',
-		default : 'px'
+		default : 'px',
 	},
 	verticalSpaceUnitTablet : {
 		type    : 'string',
-		default : 'px'
+		default : 'px',
 	},
 	verticalSpaceUnitMobile : {
 		type    : 'string',
-		default : 'px'
+		default : 'px',
 	},
 	timelinAlignmentDesktop  : {
 		type    : 'string',

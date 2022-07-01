@@ -124,9 +124,29 @@ if ( ! class_exists( 'UAGB_Post_Timeline' ) ) {
 							'type'    => 'number',
 							'default' => 10,
 						),
-						'verticalSpace'              => array(
+						'verticalSpace'           => array(
 							'type'    => 'number',
 							'default' => 15,
+						),
+						'verticalSpaceTablet'     => array(
+							'type'    => 'number',
+							'default' => 15,
+						),
+						'verticalSpaceMobile'     => array(
+							'type'    => 'number',
+							'default' => 15,
+						),
+						'verticalSpaceUnit'       => array(
+							'type'    => 'string',
+							'default' => 'px',
+						),
+						'verticalSpaceUnitTablet' => array(
+							'type' => 'string',
+							'default' => 'px',
+						),
+						'verticalSpaceUnitMobile' => array(
+							'type' => 'string',
+							'default' => 'px',
 						),
 						'timelinAlignment'           => array(
 							'type'    => 'string',

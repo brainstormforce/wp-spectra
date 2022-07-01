@@ -68,14 +68,6 @@ const PostTimelineComponent = ( props ) => {
 				props.setAttributes( { headTopSpacing: contentPadding } );
 			}
 		}
-		if ( verticalSpace ) {
-			if ( ! topMargin ) {
-				props.setAttributes( { topMargin: verticalSpace } );
-			}
-			if ( ! bottomMargin ) {
-				props.setAttributes( { bottomMargin: verticalSpace } );
-			}
-		}
 		if ( horizontalSpace ) {
 			if ( ! rightMargin ) {
 				props.setAttributes( { rightMargin: horizontalSpace } );
