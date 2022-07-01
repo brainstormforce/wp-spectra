@@ -51,29 +51,29 @@ $input_overall_border        = UAGB_Block_Helper::uag_generate_deprecated_border
 $input_overall_border_Tablet = UAGB_Block_Helper::uag_generate_border_css( $attr, 'field', 'tablet' );
 $input_overall_border_Mobile = UAGB_Block_Helper::uag_generate_border_css( $attr, 'field', 'mobile' );
 
-$successMessage_border        = UAGB_Block_Helper::uag_generate_border_css( $attr, 'successMsg' );
-$successMessage_border        = UAGB_Block_Helper::uag_generate_deprecated_border_css(
-	$successMessage_border,
-	( isset( $attr['successMessageborderWidth'] ) ? $attr['successMessageborderWidth'] : '' ),
-	( isset( $attr['successMessageborderRadius'] ) ? $attr['successMessageborderRadius'] : '' ),
-	( isset( $attr['successMessageborderColor'] ) ? $attr['successMessageborderColor'] : '' ),
-	( isset( $attr['successMessageborderStyle'] ) ? $attr['successMessageborderStyle'] : '' ),
-	( isset( $attr['successMessageborderHColor'] ) ? $attr['successMessageborderHColor'] : '' )
+$success_message_border        = UAGB_Block_Helper::uag_generate_border_css( $attr, 'successMsg' );
+$success_message_border        = UAGB_Block_Helper::uag_generate_deprecated_border_css(
+	$success_message_border,
+	( isset( $attr['successMsgborderWidth'] ) ? $attr['successMsgborderWidth'] : '' ),
+	( isset( $attr['successMsgborderRadius'] ) ? $attr['successMsgborderRadius'] : '' ),
+	( isset( $attr['successMsgborderColor'] ) ? $attr['successMsgborderColor'] : '' ),
+	( isset( $attr['successMsgborderStyle'] ) ? $attr['successMsgborderStyle'] : '' ),
+	( isset( $attr['successMsgborderHColor'] ) ? $attr['successMsgborderHColor'] : '' )
 );
-$successMessage_border_Tablet = UAGB_Block_Helper::uag_generate_border_css( $attr, 'successMsg', 'tablet' );
-$successMessage_border_Mobile = UAGB_Block_Helper::uag_generate_border_css( $attr, 'successMsg', 'mobile' );
+$success_message_border_tablet = UAGB_Block_Helper::uag_generate_border_css( $attr, 'successMsg', 'tablet' );
+$success_message_border_mobile = UAGB_Block_Helper::uag_generate_border_css( $attr, 'successMsg', 'mobile' );
 
-$failedMessage_border        = UAGB_Block_Helper::uag_generate_border_css( $attr, 'failedMsg' );
-$failedMessage_border        = UAGB_Block_Helper::uag_generate_deprecated_border_css(
-	$failedMessage_border,
-	( isset( $attr['failedMessageborderWidth'] ) ? $attr['failedMessageborderWidth'] : '' ),
-	( isset( $attr['failedMessageborderRadius'] ) ? $attr['failedMessageborderRadius'] : '' ),
-	( isset( $attr['failedMessageborderColor'] ) ? $attr['failedMessageborderColor'] : '' ),
-	( isset( $attr['failedMessageborderStyle'] ) ? $attr['failedMessageborderStyle'] : '' ),
-	( isset( $attr['failedMessageborderHColor'] ) ? $attr['failedMessageborderHColor'] : '' )
+$failed_message_border        = UAGB_Block_Helper::uag_generate_border_css( $attr, 'errorMsg' );
+$failed_message_border        = UAGB_Block_Helper::uag_generate_deprecated_border_css(
+	$failed_message_border,
+	( isset( $attr['errorMsgborderWidth'] ) ? $attr['errorMsgborderWidth'] : '' ),
+	( isset( $attr['errorMsgborderRadius'] ) ? $attr['errorMsgborderRadius'] : '' ),
+	( isset( $attr['errorMsgborderColor'] ) ? $attr['errorMsgborderColor'] : '' ),
+	( isset( $attr['errorMsgborderStyle'] ) ? $attr['errorMsgborderStyle'] : '' ),
+	( isset( $attr['errorMsgborderHColor'] ) ? $attr['errorMsgborderHColor'] : '' )
 );
-$failedMessage_border_Tablet = UAGB_Block_Helper::uag_generate_border_css( $attr, 'failedMsg', 'tablet' );
-$failedMessage_border_Mobile = UAGB_Block_Helper::uag_generate_border_css( $attr, 'failedMsg', 'mobile' );
+$failed_message_border_tablet = UAGB_Block_Helper::uag_generate_border_css( $attr, 'errorMsg', 'tablet' );
+$failed_message_border_mobile = UAGB_Block_Helper::uag_generate_border_css( $attr, 'errorMsg', 'mobile' );
 
 $toggle_border        = UAGB_Block_Helper::uag_generate_border_css( $attr, 'checkBoxToggle' );
 $toggle_border        = UAGB_Block_Helper::uag_generate_deprecated_border_css(
@@ -125,7 +125,7 @@ $selectors = array(
 			'background-color' => $attr['successMessageBGColor'],
 			'color'            => $attr['successMessageTextColor'],
 		),
-		$successMessage_border
+		$success_message_border
 	),
 	' .uagb-forms-success-message:hover'                   => array(
 		'border-color' => $attr['successMsgBorderHColor'],
@@ -135,10 +135,10 @@ $selectors = array(
 			'background-color' => $attr['failedMessageBGColor'],
 			'color'            => $attr['failedMessageTextColor'],
 		),
-		$failedMessage_border
+		$failed_message_border
 	),
 	' .uagb-forms-failed-message:hover'                    => array(
-		'border-color' => $attr['failedMsgBorderHColor'],
+		'border-color' => $attr['errorMsgBorderHColor'],
 	),
 	' .uagb-forms-main-form .uagb-forms-main-submit-button-wrap' => array(
 		'text-align' => $attr['buttonAlign'],
@@ -210,8 +210,8 @@ $t_selectors = array(
 	' .uagb-slider.round'                            => array(
 		'border-radius' => UAGB_Helper::get_css_value( 20 + $toggle_width_size_number_tablet, 'px' ),
 	),
-	' .uagb-forms-success-message'                   => $successMessage_border_Tablet,
-	' .uagb-forms-failed-message'                    => $failedMessage_border_Tablet,
+	' .uagb-forms-success-message'                   => $success_message_border_tablet,
+	' .uagb-forms-failed-message'                    => $failed_message_border_tablet,
 );
 $m_selectors = array(
 	'.uagb-forms__outer-wrap'                        => array(
@@ -238,8 +238,8 @@ $m_selectors = array(
 	' .uagb-slider.round'                            => array(
 		'border-radius' => UAGB_Helper::get_css_value( 20 + $toggle_width_size_number_mobile, 'px' ),
 	),
-	' .uagb-forms-success-message'                   => $successMessage_border_Mobile,
-	' .uagb-forms-failed-message'                    => $failedMessage_border_Mobile,
+	' .uagb-forms-success-message'                   => $success_message_border_mobile,
+	' .uagb-forms-failed-message'                    => $failed_message_border_mobile,
 );
 // Checkbox Field css.
 $selectors[' .uagb-forms-checkbox-wrap input[type=checkbox] + label:before'] = array(
