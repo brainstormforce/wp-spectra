@@ -169,7 +169,7 @@ const attributes = {
 	},
 	iconColor: {
 		type: 'string',
-		default: '#3a3a3a',
+		default: '',
 		UAGCopyPaste: {
 			styleType: 'icon-color'
 		},
