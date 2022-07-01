@@ -19,19 +19,19 @@ $selectors   = array();
 
 $selectors = array(
 	' .uagb-google-map__iframe' => array(
-		'height' => $height_fallback,
+		'height' => UAGB_Helper::get_css_value( $height_fallback, 'px' ),
 	),
 );
 
 $m_selectors = array(
 	' .uagb-google-map__iframe' => array(
-		'height' => $m_height_fallback,
+		'height' => UAGB_Helper::get_css_value( $m_height_fallback, 'px' ),
 	),
 );
 
 $t_selectors = array(
 	' .uagb-google-map__iframe' => array(
-		'height' => $t_height_fallback,
+		'height' => UAGB_Helper::get_css_value( $t_height_fallback, 'px' ),
 	),
 );
 
