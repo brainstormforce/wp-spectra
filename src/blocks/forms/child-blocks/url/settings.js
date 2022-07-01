@@ -1,6 +1,7 @@
 import React from 'react';
 import { __ } from '@wordpress/i18n';
-import { ToggleControl, TextControl, SelectControl } from '@wordpress/components';
+import { ToggleControl, TextControl } from '@wordpress/components';
+import UAGSelectControl from '@Components/select-control';
 import InspectorTabs from '@Components/inspector-tabs/InspectorTabs.js';
 import InspectorTab, {
 	UAGTabs,
@@ -22,16 +23,20 @@ const Settings = ( props ) => {
 	const urlInspectorControls = () => {
 		return (
 			<UAGAdvancedPanelBody initialOpen={ true }>
-				<SelectControl
-					label={ __( 'Autocomplete', 'ultimate-addons-for-gutenberg' ) }
-					value={ autocomplete }
+				<UAGSelectControl
+					label={ __(
+						'Autocomplete',
+						'ultimate-addons-for-gutenberg'
+					) }
+					data={ {
+						value: autocomplete,
+						label: 'autocomplete',
+					} }
+					setAttributes={ setAttributes }
 					options={ [
 						{ label: __( 'Off', 'ultimate-addons-for-gutenberg' ), value: 'off' },
 						{ label: __( 'URL', 'ultimate-addons-for-gutenberg' ), value: 'url' },
 					] }
-					onChange={ ( value ) =>
-						setAttributes( { autocomplete: value } )
-					}
 				/>
 				<TextControl
 					label={ __(

@@ -2,13 +2,6 @@
 
 .uag-bg-select-control {
 
-	.uag-background-type .components-select-control {
-		align-items: center;
-		display: grid;
-		grid-template-columns: 50% 50%;
-	}
-
-	// .uag-background-type,
 	.uag-background-color,
 	.uag-background-image,
 	.uag-background-gradient,
@@ -59,7 +52,7 @@
 
 	.uag-background-image-size .uagb-responsive-control-inner > .components-base-control {
 		display: block;
-		margin-top: 24px;
+		margin-top: $spectra-control-vertical-gap;
 	}
 
 	.uag-background-image-position {

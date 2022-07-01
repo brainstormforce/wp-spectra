@@ -12,6 +12,7 @@ import ResponsiveBorder from '@Components/responsive-border';
 import AdvancedPopColorControl from '@Components/color-control/advanced-pop-color-control.js';
 import Range from '@Components/range/Range.js';
 import InspectorTabs from '@Components/inspector-tabs/InspectorTabs.js';
+import UAGSelectControl from '@Components/select-control';
 import InspectorTab, {
 	UAGTabs,
 } from '@Components/inspector-tabs/InspectorTab.js';
@@ -20,7 +21,7 @@ import UAGTabsControl from '@Components/tabs';
 import {
 	InspectorControls,
 } from '@wordpress/block-editor';
-import { SelectControl, ToggleControl } from '@wordpress/components';
+import { ToggleControl } from '@wordpress/components';
 
 import UAGAdvancedPanelBody from '@Components/advanced-panel-body';
 
@@ -118,11 +119,10 @@ const Settings = ( props ) => {
 					label={ __( 'Columns', 'ultimate-addons-for-gutenberg' ) }
 					setAttributes={ setAttributes }
 					value={ columns }
-					onChange={ ( value ) =>
-						setAttributes( {
-							columns: value,
-						} )
-					}
+					data={ {
+						value: columns,
+						label: 'columns',
+					} }
 					min={ 0 }
 					max={ 6 }
 					displayUnit={ false }
@@ -256,9 +256,10 @@ const Settings = ( props ) => {
 							) }
 							setAttributes={ setAttributes }
 							value={ width }
-							onChange={ ( value ) =>
-								setAttributes( { width: value } )
-							}
+							data={ {
+								value: width,
+								label: 'width',
+							} }
 							min={ 0 }
 							max={ '%' === widthType ? 100 : 2000 }
 							unit={ {
@@ -354,10 +355,16 @@ const Settings = ( props ) => {
 						'ultimate-addons-for-gutenberg'
 					) }
 				/>
-				<SelectControl
-					label={ __( 'HTML Tag', 'ultimate-addons-for-gutenberg' ) }
-					value={ tag }
-					onChange={ ( value ) => setAttributes( { tag: value } ) }
+				<UAGSelectControl
+					label={ __(
+						'HTML Tag',
+						'ultimate-addons-for-gutenberg'
+					) }
+					data={ {
+						value: tag,
+						label: 'tag',
+					} }
+					setAttributes={ setAttributes }
 					options={ [
 						{
 							value: 'div',
@@ -601,7 +608,7 @@ const Settings = ( props ) => {
 						label: 'overlayType',
 					} }
 					gradientOverlay={{
-						value: false,
+						value: true,
 					}}
 					backgroundSize={ {
 						value: backgroundSize,
@@ -751,12 +758,16 @@ const Settings = ( props ) => {
 
 		const topSettings = (
 			<>
-				<SelectControl
-					label={ __( 'Type', 'ultimate-addons-for-gutenberg' ) }
-					value={ topType }
-					onChange={ ( value ) =>
-						setAttributes( { topType: value } )
-					}
+				<UAGSelectControl
+					label={ __(
+						'Type',
+						'ultimate-addons-for-gutenberg'
+					) }
+					data={ {
+						value: topType,
+						label: 'topType',
+					} }
+					setAttributes={ setAttributes }
 					options={ dividers }
 				/>
 				{ topType !== 'none' && (
@@ -767,9 +778,11 @@ const Settings = ( props ) => {
 								'ultimate-addons-for-gutenberg'
 							) }
 							colorValue={ topColor }
-							onColorChange={ ( value ) =>
-								setAttributes( { topColor: value } )
-							}
+							data={ {
+								value: topColor,
+								label: 'topColor',
+							} }
+							setAttributes={ setAttributes }
 						/>
 						<Range
 							label={ __(
@@ -778,9 +791,10 @@ const Settings = ( props ) => {
 							) }
 							setAttributes={ setAttributes }
 							value={ topWidth }
-							onChange={ ( value ) =>
-								setAttributes( { topWidth: value } )
-							}
+							data={ {
+								value: topWidth,
+								label: 'topWidth',
+							} }
 							min={ 100 }
 							max={ 2000 }
 							displayUnit={ false }
@@ -838,12 +852,16 @@ const Settings = ( props ) => {
 
 		const bottomSettings = (
 			<>
-				<SelectControl
-					label={ __( 'Type', 'ultimate-addons-for-gutenberg' ) }
-					value={ bottomType }
-					onChange={ ( value ) =>
-						setAttributes( { bottomType: value } )
-					}
+				<UAGSelectControl
+					label={ __(
+						'Type',
+						'ultimate-addons-for-gutenberg'
+					) }
+					data={ {
+						value: bottomType,
+						label: 'bottomType',
+					} }
+					setAttributes={ setAttributes }
 					options={ dividers }
 				/>
 				{ bottomType !== 'none' && (
@@ -854,9 +872,11 @@ const Settings = ( props ) => {
 								'ultimate-addons-for-gutenberg'
 							) }
 							colorValue={ bottomColor }
-							onColorChange={ ( value ) =>
-								setAttributes( { bottomColor: value } )
-							}
+							data={ {
+								value: bottomColor,
+								label: 'bottomColor',
+							} }
+							setAttributes={ setAttributes }
 						/>
 						<Range
 							label={ __(
@@ -865,9 +885,10 @@ const Settings = ( props ) => {
 							) }
 							setAttributes={ setAttributes }
 							value={ bottomWidth }
-							onChange={ ( value ) =>
-								setAttributes( { bottomWidth: value } )
-							}
+							data={ {
+								value: bottomWidth,
+								label: 'bottomWidth',
+							} }
 							min={ 100 }
 							max={ 2000 }
 							displayUnit={ false }
