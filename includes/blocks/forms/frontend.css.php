@@ -353,7 +353,7 @@ if ( 'boxed' === $attr['formStyle'] ) {
 	$m_selectors[' .uagb-forms-main-form  .uagb-forms-radio-wrap input[type=radio] + label:before']       = $toggle_border_Tablet;
 	$m_selectors[' .uagb-forms-main-form .uagb-slider'] = $toggle_border_Tablet;
 	$m_selectors[' .uagb-forms-main-form  .uagb-forms-accept-wrap input[type=checkbox] + label:before'] = $toggle_border_Tablet;
-	$m_selectors[' .uagb-forms-main-form .uagb-forms-input'] = $input_overall_border_Tablet;
+	$m_selectors[' .uagb-forms-main-form .uagb-forms-input'] = $input_overall_border_Mobile;
 }
 
 $selectors[' .uagb-forms-main-form  .uagb-forms-input']   = array(
