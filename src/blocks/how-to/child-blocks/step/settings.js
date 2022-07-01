@@ -7,9 +7,9 @@ import { InspectorControls } from '@wordpress/block-editor';
 import TypographyControl from '@Components/typography';
 import WebfontLoader from '@Components/typography/fontloader';
 import AdvancedPopColorControl from '@Components/color-control/advanced-pop-color-control.js';
+import UAGSelectControl from '@Components/select-control';
 import { getImageSize } from '@Utils/Helpers';
 import {
-	SelectControl,
 	ToggleControl,
 	TextControl,
 } from '@wordpress/components';
@@ -172,32 +172,35 @@ const Settings = ( props ) => {
 					image.url !== 'null' &&
 					image.url !== '' && (
 						<>
-						<SelectControl
-							label={__(
-								'Image Size',
-								'ultimate-addons-for-gutenberg'
-							)}
-							options={imageSizeOptions}
-							value={imageSize}
-							onChange={( value ) =>
-								setAttributes( {
-									imageSize: value,
-								} )
-							}
-						/>
-						<SelectControl
-							label={__( 'Select Position' )}
-							value={imgPosition}
-							onChange={( value ) =>
-								setAttributes( { imgPosition: value } )
-							}
-							options={[
-								{ value: 'above-title', label: __( 'Above Title' ) },
-								{ value: 'left-title', label: __( 'Left of Title' ) },
-								{ value: 'right-title', label: __( 'Right of Title' ) }
-							]}
-						/>
-					</>
+							<UAGSelectControl
+								label={ __(
+									'Image Size',
+									'ultimate-addons-for-gutenberg'
+								) }
+								data={ {
+									value: imageSize,
+									label: 'imageSize',
+								} }
+								setAttributes={ setAttributes }
+								options={ imageSizeOptions }
+							/>
+							<UAGSelectControl
+								label={ __(
+									'Select Position',
+									'ultimate-addons-for-gutenberg'
+								) }
+								data={ {
+									value: imgPosition,
+									label: 'imgPosition',
+								} }
+								setAttributes={ setAttributes }
+								options={[
+									{ value: 'above-title', label: __( 'Above Title' ) },
+									{ value: 'left-title', label: __( 'Left of Title' ) },
+									{ value: 'right-title', label: __( 'Right of Title' ) }
+								]}
+							/>
+						</>
 					)
 
 				}
@@ -208,10 +211,16 @@ const Settings = ( props ) => {
 
 		return (
 			<UAGAdvancedPanelBody title={__( 'Add Link' )} initialOpen={false}>
-				<SelectControl
-					label={__( 'Type' )}
-					value={urlType}
-					onChange={( value ) => setAttributes( { urlType: value } )}
+				<UAGSelectControl
+					label={ __(
+						'Type',
+						'ultimate-addons-for-gutenberg'
+					) }
+					data={ {
+						value: urlType,
+						label: 'urlType',
+					} }
+					setAttributes={ setAttributes }
 					options={[
 						{ value: 'text', label: __( 'Text' ) },
 						{ value: 'all', label: __( 'Complete Box' ) },
@@ -302,9 +311,11 @@ const Settings = ( props ) => {
 				<AdvancedPopColorControl
 					label={ __( 'Color', 'ultimate-addons-for-gutenberg' ) }
 					colorValue={ urlColor ? urlColor : '' }
-					onColorChange={ ( value ) =>
-						setAttributes( { urlColor: value } )
-					}
+					data={ {
+						value: urlColor,
+						label: 'urlColor',
+					} }
+					setAttributes={ setAttributes }
 				/>
 			</UAGAdvancedPanelBody>
 		);
@@ -362,9 +373,11 @@ const Settings = ( props ) => {
 				<AdvancedPopColorControl
 					label={ __( 'Color', 'ultimate-addons-for-gutenberg' ) }
 					colorValue={ titleColor ? titleColor : '' }
-					onColorChange={ ( value ) =>
-						setAttributes( { titleColor: value } )
-					}
+					data={ {
+						value: titleColor,
+						label: 'titleColor',
+					} }
+					setAttributes={ setAttributes }
 				/>
 			</UAGAdvancedPanelBody>
 		);
@@ -423,9 +436,11 @@ const Settings = ( props ) => {
 				<AdvancedPopColorControl
 					label={ __( 'Color', 'ultimate-addons-for-gutenberg' ) }
 					colorValue={ descriptionColor ? descriptionColor : '' }
-					onColorChange={ ( value ) =>
-						setAttributes( { descriptionColor: value } )
-					}
+					data={ {
+						value: descriptionColor,
+						label: 'descriptionColor',
+					} }
+					setAttributes={ setAttributes }
 				/>
 			</UAGAdvancedPanelBody>
 		);

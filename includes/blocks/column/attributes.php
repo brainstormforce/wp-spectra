@@ -8,8 +8,11 @@
  */
 
 $border_defaults  = array(
-	'borderStyle' => 'none',
-	'borderWidth' => 1,
+	'borderStyle'       => 'none',
+	'borderTopWidth'    => 1,
+	'borderRightWidth'  => 1,
+	'borderBottomWidth' => 1,
+	'borderLeftWidth'   => 1,
 );
 $border_attribute = UAGB_Block_Helper::uag_generate_border_attribute( 'column', $border_defaults );
 
