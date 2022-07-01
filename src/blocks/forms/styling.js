@@ -84,7 +84,7 @@ function styling( props ) {
 		bgHoverColor,
 		bgActiveColor,
 		inputplaceholderColor,
-		inputplaceholderHColor,
+		inputplaceholderHoverColor,
 		inputplaceholderActiveColor,
 		inputactiveColor,
 		fieldBorderHColor,
@@ -408,7 +408,7 @@ function styling( props ) {
 			'border-color': fieldBorderHColor,
 		},
 		' .uagb-forms-field-set:hover .uagb-forms-input::placeholder': {
-			'color': inputplaceholderHColor,
+			'color': inputplaceholderHoverColor,
 		},
 	};
 
