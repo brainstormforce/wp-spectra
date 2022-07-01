@@ -25,13 +25,13 @@ $selectors = array(
 
 $m_selectors = array(
 	' .uagb-google-map__iframe' => array(
-		'height' => $t_height_fallback,
+		'height' => $m_height_fallback,
 	),
 );
 
 $t_selectors = array(
 	' .uagb-google-map__iframe' => array(
-		'height' => $m_height_fallback,
+		'height' => $t_height_fallback,
 	),
 );
 
