@@ -13,13 +13,14 @@ import InspectorTabs from '@Components/inspector-tabs/InspectorTabs.js';
 import UAGImage from '@Components/image';
 import MultiButtonsControl from '@Components/multi-buttons-control';
 import renderSVG from '@Controls/renderIcon';
+import UAGSelectControl from '@Components/select-control';
 import InspectorTab, {
 	UAGTabs,
 } from '@Components/inspector-tabs/InspectorTab.js';
 import {
 	InspectorControls,
 } from '@wordpress/block-editor';
-import { SelectControl, ToggleControl, Icon } from '@wordpress/components';
+import { ToggleControl, Icon } from '@wordpress/components';
 import { getFallbackNumber } from '@Controls/getAttributeFallback';
 
 import UAGAdvancedPanelBody from '@Components/advanced-panel-body';
@@ -338,9 +339,10 @@ const Settings = ( props ) => {
 						) }
 						setAttributes={ setAttributes }
 						value={ autoplaySpeed }
-						onChange={ ( value ) =>
-							setAttributes( { autoplaySpeed: value } )
-						}
+						data={ {
+							value: autoplaySpeed,
+							label: 'autoplaySpeed',
+						} }
 						min={ 100 }
 						max={ 15000 }
 						displayUnit={ false }
@@ -361,9 +363,10 @@ const Settings = ( props ) => {
 					) }
 					setAttributes={ setAttributes }
 					value={ transitionSpeed }
-					onChange={ ( value ) =>
-						setAttributes( { transitionSpeed: value } )
-					}
+					data={ {
+						value: transitionSpeed,
+						label: 'transitionSpeed',
+					} }
 					min={ 100 }
 					max={ 5000 }
 					displayUnit={ false }
@@ -422,9 +425,10 @@ const Settings = ( props ) => {
 							) }
 							setAttributes={ setAttributes }
 							value={ arrowSize }
-							onChange={ ( value ) =>
-								setAttributes( { arrowSize: value } )
-							}
+							data={ {
+								value: arrowSize,
+								label: 'arrowSize',
+							} }
 							min={ 0 }
 							max={ 50 }
 							unit={ {
@@ -439,9 +443,10 @@ const Settings = ( props ) => {
 							) }
 							setAttributes={ setAttributes }
 							value={ arrowBorderSize }
-							onChange={ ( value ) =>
-								setAttributes( { arrowBorderSize: value } )
-							}
+							data={ {
+								value: arrowBorderSize,
+								label: 'arrowBorderSize',
+							} }
 							min={ 0 }
 							max={ 50 }
 							unit={ {
@@ -466,9 +471,10 @@ const Settings = ( props ) => {
 							) }
 							setAttributes={ setAttributes }
 							value={ arrowBorderRadius }
-							onChange={ ( value ) =>
-								setAttributes( { arrowBorderRadius: value } )
-							}
+							data={ {
+								value: arrowBorderRadius,
+								label: 'arrowBorderRadius',
+							} }
 							min={ 0 }
 							max={ 50 }
 							unit={ {
@@ -518,11 +524,11 @@ const Settings = ( props ) => {
 				<AdvancedPopColorControl
 					label={ __( 'Color', 'ultimate-addons-for-gutenberg' ) }
 					colorValue={ arrowColor ? arrowColor : '' }
-					onColorChange={ ( value ) =>
-						setAttributes( {
-							arrowColor: value,
-						} )
-					}
+					data={ {
+						value: arrowColor,
+						label: 'arrowColor',
+					} }
+					setAttributes={ setAttributes }
 				/>
 			</UAGAdvancedPanelBody>
 		);
@@ -621,11 +627,11 @@ const Settings = ( props ) => {
 				<AdvancedPopColorControl
 					label={ __( 'Color', 'ultimate-addons-for-gutenberg' ) }
 					colorValue={ authorColor ? authorColor : '' }
-					onColorChange={ ( value ) =>
-						setAttributes( {
-							authorColor: value,
-						} )
-					}
+					data={ {
+						value: authorColor,
+						label: 'authorColor',
+					} }
+					setAttributes={ setAttributes }
 				/>
 				<TypographyControl
 					label={ __(
@@ -746,11 +752,11 @@ const Settings = ( props ) => {
 				<AdvancedPopColorControl
 					label={ __( 'Color', 'ultimate-addons-for-gutenberg' ) }
 					colorValue={ descColor ? descColor : '' }
-					onColorChange={ ( value ) =>
-						setAttributes( {
-							descColor: value,
-						} )
-					}
+					data={ {
+						value: descColor,
+						label: 'descColor',
+					} }
+					setAttributes={ setAttributes }
 				/>
 				<TypographyControl
 					label={ __(
@@ -969,11 +975,11 @@ const Settings = ( props ) => {
 				<AdvancedPopColorControl
 					label={ __( 'Color', 'ultimate-addons-for-gutenberg' ) }
 					colorValue={ companyColor ? companyColor : '' }
-					onColorChange={ ( value ) =>
-						setAttributes( {
-							companyColor: value,
-						} )
-					}
+					data={ {
+						value: companyColor,
+						label: 'companyColor',
+					} }
+					setAttributes={ setAttributes }
 				/>
 				<TypographyControl
 					label={ __(
@@ -1189,6 +1195,10 @@ const Settings = ( props ) => {
 									'ultimate-addons-for-gutenberg'
 								) }
 								value={ test_item_count }
+								data={ {
+									value: test_item_count,
+									label: 'test_item_count',
+								} }
 								onChange={ ( newCount ) => {
 									const cloneTest_block = [ ...test_block ];
 									const newCountFallback = getFallbackNumber( newCount, 'test_item_count', 'testimonial' )
@@ -1490,18 +1500,17 @@ const Settings = ( props ) => {
 											},
 										] }
 									/>
-									<SelectControl
+									<UAGSelectControl
 										label={ __(
 											'Size',
 											'ultimate-addons-for-gutenberg'
 										) }
+										data={ {
+											value: imageSize,
+											label: 'imageSize',
+										} }
+										setAttributes={ setAttributes }
 										options={ imageSizeOptions }
-										value={ imageSize }
-										onChange={ ( value ) =>
-											setAttributes( {
-												imageSize: value,
-											} )
-										}
 									/>
 									<ResponsiveSlider
 										label={ __(
