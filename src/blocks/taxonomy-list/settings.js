@@ -15,9 +15,9 @@ import SpacingControl from '@Components/spacing-control';
 import Range from '@Components/range/Range.js';
 import ResponsiveSlider from '@Components/responsive-slider';
 import MultiButtonsControl from '@Components/multi-buttons-control';
+import UAGSelectControl from '@Components/select-control';
 import UAGTabsControl from '@Components/tabs';
 import {
-	SelectControl,
 	TextControl,
 	Icon,
 	ToggleControl,
@@ -25,6 +25,8 @@ import {
 import { InspectorControls } from '@wordpress/block-editor';
 
 import UAGAdvancedPanelBody from '@Components/advanced-panel-body';
+import boxShadowPresets from './presets';
+import UAGPresets from '@Components/presets';
 
 import apiFetch from '@wordpress/api-fetch';
 const Settings = ( props ) => {
@@ -223,9 +225,11 @@ const Settings = ( props ) => {
 			<AdvancedPopColorControl
 				label={ __( 'Text Color', 'ultimate-addons-for-gutenberg' ) }
 				colorValue={ listTextColor ? listTextColor : '' }
-				onColorChange={ ( value ) =>
-					setAttributes( { listTextColor: value } )
-				}
+				data={ {
+					value: listTextColor,
+					label: 'listTextColor',
+				} }
+				setAttributes={ setAttributes }
 			/>
 			<br />
 
@@ -237,9 +241,11 @@ const Settings = ( props ) => {
 							'ultimate-addons-for-gutenberg'
 						) }
 						colorValue={ listStyleColor ? listStyleColor : '' }
-						onColorChange={ ( value ) =>
-							setAttributes( { listStyleColor: value } )
-						}
+						data={ {
+							value: listStyleColor,
+							label: 'listStyleColor',
+						} }
+						setAttributes={ setAttributes }
 					/>
 				</>
 			) }
@@ -250,9 +256,11 @@ const Settings = ( props ) => {
 			<AdvancedPopColorControl
 				label={ __( 'Text Color', 'ultimate-addons-for-gutenberg' ) }
 				colorValue={ hoverlistTextColor ? hoverlistTextColor : '' }
-				onColorChange={ ( value ) =>
-					setAttributes( { hoverlistTextColor: value } )
-				}
+				data={ {
+					value: hoverlistTextColor,
+					label: 'hoverlistTextColor',
+				} }
+				setAttributes={ setAttributes }
 			/>
 			<br />
 			{ 'none' !== listStyle && (
@@ -265,9 +273,11 @@ const Settings = ( props ) => {
 						colorValue={
 							hoverlistStyleColor ? hoverlistStyleColor : ''
 						}
-						onColorChange={ ( value ) =>
-							setAttributes( { hoverlistStyleColor: value } )
-						}
+						data={ {
+							value: hoverlistStyleColor,
+							label: 'hoverlistStyleColor',
+						} }
+						setAttributes={ setAttributes }
 					/>
 				</>
 			) }
@@ -562,20 +572,27 @@ const Settings = ( props ) => {
 				title={ __( 'Query', 'ultimate-addons-for-gutenberg' ) }
 				initialOpen={ true }
 			>
-				<SelectControl
-					label={ __( 'Post Type', 'ultimate-addons-for-gutenberg' ) }
-					value={ postType }
-					onChange={ ( value ) => onSelectPostType( value ) }
+				<UAGSelectControl
+					label={ __(
+						'Post Type',
+						'ultimate-addons-for-gutenberg'
+					) }
+					data={ {
+						value: postType,
+					} }
+					onChange={ onSelectPostType }
 					options={ uagb_blocks_info.post_types }
 				/>
 				{ '' !== taxonomyList && (
-					<SelectControl
+					<UAGSelectControl
 						label={ __(
 							'Taxonomy',
 							'ultimate-addons-for-gutenberg'
 						) }
-						value={ taxonomyType }
-						onChange={ ( value ) => onSelectTaxonomyType( value ) }
+						data={ {
+							value: taxonomyType,
+						} }
+						onChange={ onSelectTaxonomyType }
 						options={ taxonomyListOptions }
 					/>
 				) }
@@ -727,9 +744,11 @@ const Settings = ( props ) => {
 				<AdvancedPopColorControl
 					label={ __( 'Color', 'ultimate-addons-for-gutenberg' ) }
 					colorValue={ titleColor ? titleColor : '' }
-					onColorChange={ ( value ) =>
-						setAttributes( { titleColor: value } )
-					}
+					data={ {
+						value: titleColor,
+						label: 'titleColor',
+					} }
+					setAttributes={ setAttributes }
 				/>
 				{ showCount && (
 					<ResponsiveSlider
@@ -769,9 +788,11 @@ const Settings = ( props ) => {
 				<AdvancedPopColorControl
 					label={ __( 'Color', 'ultimate-addons-for-gutenberg' ) }
 					colorValue={ countColor ? countColor : '' }
-					onColorChange={ ( value ) =>
-						setAttributes( { countColor: value } )
-					}
+					data={ {
+						value: countColor,
+						label: 'countColor',
+					} }
+					setAttributes={ setAttributes }
 				/>
 				<TypographyControl
 					label={ __(
@@ -865,9 +886,11 @@ const Settings = ( props ) => {
 				<AdvancedPopColorControl
 					label={ __( 'Color', 'ultimate-addons-for-gutenberg' ) }
 					colorValue={ bgColor ? bgColor : '' }
-					onColorChange={ ( value ) =>
-						setAttributes( { bgColor: value } )
-					}
+					data={ {
+						value: bgColor,
+						label: 'bgColor',
+					} }
+					setAttributes={ setAttributes }
 				/>
 			</UAGAdvancedPanelBody>
 		);
@@ -1012,9 +1035,10 @@ const Settings = ( props ) => {
 						) }
 						setAttributes={ setAttributes }
 						value={ listBottomMargin }
-						onChange={ ( value ) =>
-							setAttributes( { listBottomMargin: value } )
-						}
+						data={ {
+							value: listBottomMargin,
+							label: 'listBottomMargin',
+						} }
 						min={ 0 }
 						max={ 100 }
 						displayUnit={ false }
@@ -1173,6 +1197,11 @@ const Settings = ( props ) => {
 				title={ __( 'Box Shadow', 'ultimate-addons-for-gutenberg' ) }
 				initialOpen={ false }
 			>
+				<UAGPresets
+					setAttributes = { setAttributes }
+					presets = { boxShadowPresets }
+					presetInputType = 'radioImage'
+				/>
 				<BoxShadowControl
 					setAttributes={ setAttributes }
 					label={ __(

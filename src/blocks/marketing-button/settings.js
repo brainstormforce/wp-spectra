@@ -599,9 +599,11 @@ const Settings = ( props ) => {
 								'ultimate-addons-for-gutenberg'
 							) }
 							colorValue={ titleColor ? titleColor : '' }
-							onColorChange={ ( value ) =>
-								setAttributes( { titleColor: value } )
-							}
+							data={ {
+								value: titleColor,
+								label: 'titleColor',
+							} }
+							setAttributes={ setAttributes }
 						/>
 					}
 					hover={
@@ -613,9 +615,11 @@ const Settings = ( props ) => {
 							colorValue={
 								titleHoverColor ? titleHoverColor : ''
 							}
-							onColorChange={ ( value ) =>
-								setAttributes( { titleHoverColor: value } )
-							}
+							data={ {
+								value: titleHoverColor,
+								label: 'titleHoverColor',
+							} }
+							setAttributes={ setAttributes }
 						/>
 					}
 					disableBottomSeparator={ true }
@@ -734,9 +738,11 @@ const Settings = ( props ) => {
 								'ultimate-addons-for-gutenberg'
 							) }
 							colorValue={ prefixColor ? prefixColor : '' }
-							onColorChange={ ( value ) =>
-								setAttributes( { prefixColor: value } )
-							}
+							data={ {
+								value: prefixColor,
+								label: 'prefixColor',
+							} }
+							setAttributes={ setAttributes }
 						/>
 					}
 					hover={
@@ -748,9 +754,11 @@ const Settings = ( props ) => {
 							colorValue={
 								prefixHoverColor ? prefixHoverColor : ''
 							}
-							onColorChange={ ( value ) =>
-								setAttributes( { prefixHoverColor: value } )
-							}
+							data={ {
+								value: prefixHoverColor,
+								label: 'prefixHoverColor',
+							} }
+							setAttributes={ setAttributes }
 						/>
 					}
 					disableBottomSeparator={ true }
@@ -789,9 +797,11 @@ const Settings = ( props ) => {
 								'ultimate-addons-for-gutenberg'
 							) }
 							colorValue={ iconColor ? iconColor : '' }
-							onColorChange={ ( value ) =>
-								setAttributes( { iconColor: value } )
-							}
+							data={ {
+								value: iconColor,
+								label: 'iconColor',
+							} }
+							setAttributes={ setAttributes }
 						/>
 					}
 					hover={
@@ -801,9 +811,11 @@ const Settings = ( props ) => {
 								'ultimate-addons-for-gutenberg'
 							) }
 							colorValue={ iconHoverColor ? iconHoverColor : '' }
-							onColorChange={ ( value ) =>
-								setAttributes( { iconHoverColor: value } )
-							}
+							data={ {
+								value: iconHoverColor,
+								label: 'iconHoverColor',
+							} }
+							setAttributes={ setAttributes }
 						/>
 					}
 					disableBottomSeparator={ true }
@@ -971,11 +983,11 @@ const Settings = ( props ) => {
 												? backgroundColor
 												: ''
 										}
-										onColorChange={ ( value ) =>
-											setAttributes( {
-												backgroundColor: value,
-											} )
-										}
+										data={ {
+											value: backgroundColor,
+											label: 'backgroundColor',
+										} }
+										setAttributes={ setAttributes }
 									/>
 								</>
 							}
@@ -991,11 +1003,11 @@ const Settings = ( props ) => {
 												? backgroundHoverColor
 												: ''
 										}
-										onColorChange={ ( value ) =>
-											setAttributes( {
-												backgroundHoverColor: value,
-											} )
-										}
+										data={ {
+											value: backgroundHoverColor,
+											label: 'backgroundHoverColor',
+										} }
+										setAttributes={ setAttributes }
 									/>
 								</>
 							}
@@ -1011,9 +1023,11 @@ const Settings = ( props ) => {
 								'ultimate-addons-for-gutenberg'
 							) }
 							colorValue={ gradientColor2 ? gradientColor2 : '' }
-							onColorChange={ ( value ) =>
-								setAttributes( { gradientColor2: value } )
-							}
+							data={ {
+								value: gradientColor2,
+								label: 'gradientColor2',
+							} }
+							setAttributes={ setAttributes }
 						/>
 						<AdvancedPopColorControl
 							label={ __(
@@ -1021,9 +1035,11 @@ const Settings = ( props ) => {
 								'ultimate-addons-for-gutenberg'
 							) }
 							colorValue={ gradientColor1 ? gradientColor1 : '' }
-							onColorChange={ ( value ) =>
-								setAttributes( { gradientColor1: value } )
-							}
+							data={ {
+								value: gradientColor1,
+								label: 'gradientColor1',
+							} }
+							setAttributes={ setAttributes }
 						/>
 						<MultiButtonsControl
 							setAttributes={ setAttributes }
@@ -1060,11 +1076,10 @@ const Settings = ( props ) => {
 							) }
 							setAttributes={ setAttributes }
 							value={ gradientLocation1 }
-							onChange={ ( value ) =>
-								setAttributes( {
-									gradientLocation1: value,
-								} )
-							}
+							data={ {
+								value: gradientLocation1,
+								label: 'gradientLocation1',
+							} }
 							min={ 0 }
 							max={ 100 }
 							displayUnit={ false }
@@ -1076,11 +1091,10 @@ const Settings = ( props ) => {
 							) }
 							setAttributes={ setAttributes }
 							value={ gradientLocation2 }
-							onChange={ ( value ) =>
-								setAttributes( {
-									gradientLocation2: value,
-								} )
-							}
+							data={ {
+								value: gradientLocation2,
+								label: 'gradientLocation2',
+							} }
 							min={ 0 }
 							max={ 100 }
 							displayUnit={ false }
@@ -1093,11 +1107,10 @@ const Settings = ( props ) => {
 								) }
 								setAttributes={ setAttributes }
 								value={ gradientAngle }
-								onChange={ ( value ) =>
-									setAttributes( {
-										gradientAngle: value,
-									} )
-								}
+								data={ {
+									value: gradientAngle,
+									label: 'gradientAngle',
+								} }
 								min={ 0 }
 								max={ 360 }
 								displayUnit={ false }

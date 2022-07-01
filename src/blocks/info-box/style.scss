@@ -34,7 +34,8 @@
 	display: none;
 }
 
-a.uagb-infobox-cta-link,
+div.uagb-ifb-button-wrapper a.uagb-infobox-cta-link,
+div.uagb-ifb-cta a.uagb-infobox-cta-link,
 .entry .entry-content a.uagb-infobox-cta-link,
 a.uagb-infobox-link-wrap,
 .entry .entry-content a.uagb-infobox-link-wrap {
@@ -130,12 +131,16 @@ a.uagb-infobox-link-wrap:hover,
 }
 
 .uagb-infobox-icon-left-title .uagb-ifb-left-title-image .uagb-ifb-image-content,
-.uagb-infobox-icon-right-title .uagb-ifb-right-title-image .uagb-ifb-image-content {
+.uagb-infobox-icon-right-title .uagb-ifb-right-title-image .uagb-ifb-image-content,
+.uagb-infobox-icon-left .uagb-ifb-image-content,
+.uagb-infobox-icon-right .uagb-ifb-image-content {
 	flex-shrink: 0;
 }
 
 .uagb-infobox-icon-left-title .uagb-ifb-left-title-image .uagb-ifb-title-wrap,
-.uagb-infobox-icon-right-title .uagb-ifb-right-title-image .uagb-ifb-title-wrap {
+.uagb-infobox-icon-right-title .uagb-ifb-right-title-image .uagb-ifb-title-wrap,
+.uagb-infobox-icon-left .uagb-ifb-content,
+.uagb-infobox-icon-right .uagb-ifb-content {
 	flex-grow: 1;
 }
 
@@ -273,7 +278,9 @@ a.uagb-infobox-link-wrap {
 	}
 }
 
-.uagb-infobox__content-wrap .uagb-ifb-icon-wrap {
+.uagb-infobox__content-wrap .uagb-ifb-icon-wrap,
+.uagb-infobox-icon-left .uagb-ifb-image-content,
+.uagb-infobox-icon-right .uagb-ifb-image-content {
 	box-sizing: content-box;
 }
 
