@@ -142,7 +142,6 @@ $selectors = array(
 	),
 	' .uagb-forms-main-form .uagb-forms-main-submit-button-wrap' => array(
 		'text-align' => $attr['buttonAlign'],
-
 	),
 	' .uagb-forms-main-form .uagb-forms-input:focus'       => array(
 		'outline'          => ' none !important',
@@ -207,6 +206,9 @@ $t_selectors = array(
 		),
 		$btn_border_Tablet
 	),
+	' .uagb-forms-main-form .uagb-forms-main-submit-button-wrap' => array(
+		'text-align' => $attr['buttonAlignTablet'],
+	),
 	' .uagb-slider.round'                            => array(
 		'border-radius' => UAGB_Helper::get_css_value( 20 + $toggle_width_size_number_tablet, 'px' ),
 	),
@@ -234,6 +236,9 @@ $m_selectors = array(
 			'padding-right'  => UAGB_Helper::get_css_value( $attr['paddingBtnRightMobile'], $attr['mobilePaddingBtnUnit'] ),
 		),
 		$btn_border_Mobile
+	),
+	' .uagb-forms-main-form .uagb-forms-main-submit-button-wrap' => array(
+		'text-align' => $attr['buttonAlignMobile'],
 	),
 	' .uagb-slider.round'                            => array(
 		'border-radius' => UAGB_Helper::get_css_value( 20 + $toggle_width_size_number_mobile, 'px' ),
