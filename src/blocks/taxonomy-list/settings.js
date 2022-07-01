@@ -15,9 +15,9 @@ import SpacingControl from '@Components/spacing-control';
 import Range from '@Components/range/Range.js';
 import ResponsiveSlider from '@Components/responsive-slider';
 import MultiButtonsControl from '@Components/multi-buttons-control';
+import UAGSelectControl from '@Components/select-control';
 import UAGTabsControl from '@Components/tabs';
 import {
-	SelectControl,
 	TextControl,
 	Icon,
 	ToggleControl,
@@ -25,6 +25,8 @@ import {
 import { InspectorControls } from '@wordpress/block-editor';
 
 import UAGAdvancedPanelBody from '@Components/advanced-panel-body';
+import boxShadowPresets from './presets';
+import UAGPresets from '@Components/presets';
 
 import apiFetch from '@wordpress/api-fetch';
 const Settings = ( props ) => {
@@ -570,20 +572,27 @@ const Settings = ( props ) => {
 				title={ __( 'Query', 'ultimate-addons-for-gutenberg' ) }
 				initialOpen={ true }
 			>
-				<SelectControl
-					label={ __( 'Post Type', 'ultimate-addons-for-gutenberg' ) }
-					value={ postType }
-					onChange={ ( value ) => onSelectPostType( value ) }
+				<UAGSelectControl
+					label={ __(
+						'Post Type',
+						'ultimate-addons-for-gutenberg'
+					) }
+					data={ {
+						value: postType,
+					} }
+					onChange={ onSelectPostType }
 					options={ uagb_blocks_info.post_types }
 				/>
 				{ '' !== taxonomyList && (
-					<SelectControl
+					<UAGSelectControl
 						label={ __(
 							'Taxonomy',
 							'ultimate-addons-for-gutenberg'
 						) }
-						value={ taxonomyType }
-						onChange={ ( value ) => onSelectTaxonomyType( value ) }
+						data={ {
+							value: taxonomyType,
+						} }
+						onChange={ onSelectTaxonomyType }
 						options={ taxonomyListOptions }
 					/>
 				) }
@@ -1188,6 +1197,11 @@ const Settings = ( props ) => {
 				title={ __( 'Box Shadow', 'ultimate-addons-for-gutenberg' ) }
 				initialOpen={ false }
 			>
+				<UAGPresets
+					setAttributes = { setAttributes }
+					presets = { boxShadowPresets }
+					presetInputType = 'radioImage'
+				/>
 				<BoxShadowControl
 					setAttributes={ setAttributes }
 					label={ __(

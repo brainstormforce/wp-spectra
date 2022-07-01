@@ -16,13 +16,14 @@ import {
 	InspectorControls,
 } from '@wordpress/block-editor';
 import renderSVG from '@Controls/renderIcon';
-import { SelectControl, Icon, ToggleControl } from '@wordpress/components';
+import { Icon, ToggleControl } from '@wordpress/components';
 import SpacingControl from '@Components/spacing-control';
 import ColorSwitchControl from '@Components/color-switch-control';
 import TextShadowControl from '@Components/text-shadow';
 import UAGTabsControl from '@Components/tabs';
 import ResponsiveBorder from '@Components/responsive-border'
 import ResponsiveSlider from '@Components/responsive-slider';
+import UAGSelectControl from '@Components/select-control';
 // Extend component
 import UAGAdvancedPanelBody from '@Components/advanced-panel-body';
 
@@ -343,12 +344,16 @@ const Settings = ( props ) => {
 						setAttributes( { headingDescToggle : ! headingDescToggle } )
 					}
 				/>
-				<SelectControl
-					label={ __( 'Separator Style', 'ultimate-addons-for-gutenberg' ) }
-					value={ seperatorStyle }
-					onChange={ ( value ) =>
-						setAttributes( { seperatorStyle: value } )
-					}
+				<UAGSelectControl
+					label={ __(
+						'Separator Style',
+						'ultimate-addons-for-gutenberg'
+					) }
+					data={ {
+						value: seperatorStyle,
+						label: 'seperatorStyle',
+					} }
+					setAttributes={ setAttributes }
 					options={ [
 						{
 							value: 'none',
