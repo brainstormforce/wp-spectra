@@ -20,7 +20,7 @@ const Render = ( props ) => {
 
 	const {
 		className,
-		attributes: { isPreview, height, zoom, address, language },
+		attributes: { isPreview, zoom, address, language },
 	} = props;
 
 	const encoded_address = encodeURI( address );
@@ -44,9 +44,6 @@ const Render = ( props ) => {
 					address
 				}
 				src={ url }
-				style={ {
-					height: getFallbackNumber( height, 'height', blockName ),
-				} }
 			></iframe>
 		</div>
 	);
