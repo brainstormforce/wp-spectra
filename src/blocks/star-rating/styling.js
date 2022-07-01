@@ -184,7 +184,7 @@ function styling( props ) {
 			'margin-right': generateCSSUnit( gapFallback, 'px' ),
 			'color': unmarkedColor,
 		},
-		' .uag-star-rating__title.block-editor-rich-text__editable': {
+		' p.uag-star-rating__title.block-editor-rich-text__editable': {
 			'font-size': generateCSSUnit( fontSize, fontSizeType ),
 			'font-family': fontFamily,
 			'font-style' : fontStyle,
@@ -225,7 +225,7 @@ function styling( props ) {
 		};
 	}
 
-	selectors[ ' .uag-star-rating__title.block-editor-rich-text__editable' ][
+	selectors[ ' p.uag-star-rating__title.block-editor-rich-text__editable' ][
 		index
 	] = generateCSSUnit( titleGapFallback, 'px' );
 
@@ -327,7 +327,7 @@ function styling( props ) {
 			'justify-content' : flexJustifyContent( alignTablet ),
 			...wrapperCSSTablet
 		};
-		tabletSelectors[ ' .uag-star-rating__title ' ] = {
+		tabletSelectors[ ' p.block-editor-rich-text__editable.uag-star-rating__title ' ] = {
 			'justify-content': flexAlignment( stackAlignmentTablet ),
 			'margin-bottom' : 0,
 		};
@@ -411,7 +411,7 @@ function styling( props ) {
 			'margin-bottom' : 0,
 			...wrapperCSSMobile
 		};
-		mobileSelectors[ ' .uag-star-rating__title ' ] = {
+		mobileSelectors[ ' p.block-editor-rich-text__editable.uag-star-rating__title ' ] = {
 			'margin-bottom' : 0,
 		};
 	}

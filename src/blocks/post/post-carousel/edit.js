@@ -21,8 +21,9 @@ import ResponsiveSlider from '@Components/responsive-slider';
 import UAGTabsControl from '@Components/tabs';
 import MultiButtonsControl from '@Components/multi-buttons-control';
 import UAGAdvancedPanelBody from '@Components/advanced-panel-body';
+import UAGSelectControl from '@Components/select-control';
 import renderSVG from '@Controls/renderIcon';
-import presets from './presets';
+import presets, {buttonsPresets} from './presets';
 import UAGPresets from '@Components/presets';
 import addBlockEditorDynamicStyles from '@Controls/addBlockEditorDynamicStyles';
 import { getFallbackNumber } from '@Controls/getAttributeFallback';
@@ -41,7 +42,6 @@ const Render = lazy( () =>
 
 import {
 	Placeholder,
-	SelectControl,
 	Spinner,
 	ToggleControl,
 	TextControl,
@@ -541,31 +541,39 @@ const UAGBPostCarousel = ( props ) => {
 					] }
 					showIcons={ true }
 				/>
-				<SelectControl
-					label={ __( 'Post Type', 'ultimate-addons-for-gutenberg' ) }
-					value={ postType }
-					onChange={ ( value ) => onSelectPostType( value ) }
+				<UAGSelectControl
+					label={ __(
+						'Post Type',
+						'ultimate-addons-for-gutenberg'
+					) }
+					data={ {
+						value: postType,
+					} }
+					onChange={ onSelectPostType }
 					options={ uagb_blocks_info.post_types }
 				/>
 				{ '' !== taxonomyList && (
-					<SelectControl
+					<UAGSelectControl
 						label={ __(
 							'Taxonomy',
 							'ultimate-addons-for-gutenberg'
 						) }
-						value={ taxonomyType }
-						onChange={ ( value ) => onSelectTaxonomyType( value ) }
+						data={ {
+							value: taxonomyType,
+						} }
+						onChange={ onSelectTaxonomyType }
 						options={ taxonomyListOptions }
 					/>
 				) }
 				{ '' != categoriesList && ( // eslint-disable-line eqeqeq
 					<>
-						<SelectControl
+						<UAGSelectControl
 							label={ taxonomyList[ taxonomyType ].label }
-							value={ categories }
-							onChange={ ( value ) =>
-								setAttributes( { categories: value } )
-							}
+							data={ {
+								value: categories,
+								label: 'categories',
+							} }
+							setAttributes={ setAttributes }
 							options={ categoryListOptions }
 						/>
 					</>
@@ -588,9 +596,10 @@ const UAGBPostCarousel = ( props ) => {
 						'ultimate-addons-for-gutenberg'
 					) }
 					value={ postsToShow }
-					onChange={ ( value ) =>
-						setAttributes( { postsToShow: value } )
-					}
+					data={ {
+						value: postsToShow,
+						label: 'postsToShow',
+					} }
 					setAttributes={ setAttributes }
 					displayUnit={ false }
 					min={ 1 }
@@ -603,9 +612,10 @@ const UAGBPostCarousel = ( props ) => {
 					) }
 					setAttributes={ setAttributes }
 					value={ postsOffset }
-					onChange={ ( value ) =>
-						setAttributes( { postsOffset: value } )
-					}
+					data={ {
+						value: postsOffset,
+						label: 'postsOffset',
+					} }
 					min={ 0 }
 					max={ 100 }
 					displayUnit={ false }
@@ -765,9 +775,10 @@ const UAGBPostCarousel = ( props ) => {
 							'ultimate-addons-for-gutenberg'
 						) }
 						value={ autoplaySpeed }
-						onChange={ ( value ) =>
-							setAttributes( { autoplaySpeed: value } )
-						}
+						data={ {
+							value: autoplaySpeed,
+							label: 'autoplaySpeed',
+						} }
 						setAttributes={ setAttributes }
 						displayUnit={ false }
 						min={ 100 }
@@ -792,9 +803,10 @@ const UAGBPostCarousel = ( props ) => {
 					setAttributes={ setAttributes }
 					displayUnit={ false }
 					value={ transitionSpeed }
-					onChange={ ( value ) =>
-						setAttributes( { transitionSpeed: value } )
-					}
+					data={ {
+						value: transitionSpeed,
+						label: 'transitionSpeed',
+					} }
 					min={ 100 }
 					max={ 5000 }
 				/>
@@ -855,12 +867,16 @@ const UAGBPostCarousel = ( props ) => {
 					}
 				/>
 				{ displayPostImage === true && (
-					<SelectControl
-						label={ __( 'Sizes', 'ultimate-addons-for-gutenberg' ) }
-						value={ imgSize }
-						onChange={ ( value ) =>
-							setAttributes( { imgSize: value } )
-						}
+					<UAGSelectControl
+						label={ __(
+							'Sizes',
+							'ultimate-addons-for-gutenberg'
+						) }
+						data={ {
+							value: imgSize,
+							label: 'imgSize',
+						} }
+						setAttributes={ setAttributes }
 						options={ uagb_blocks_info.image_sizes }
 					/>
 				) }
@@ -1102,9 +1118,10 @@ const UAGBPostCarousel = ( props ) => {
 							) }
 							setAttributes={ setAttributes }
 							value={ excerptLength }
-							onChange={ ( value ) =>
-								setAttributes( { excerptLength: value } )
-							}
+							data={ {
+								value: excerptLength,
+								label: 'excerptLength',
+							} }
 							min={ 1 }
 							max={ 100 }
 							displayUnit={ false }
@@ -1173,9 +1190,11 @@ const UAGBPostCarousel = ( props ) => {
 						'ultimate-addons-for-gutenberg'
 					) }
 					colorValue={ bgColor }
-					onColorChange={ ( value ) =>
-						setAttributes( { bgColor: value } )
-					}
+					data={ {
+						value: bgColor,
+						label: 'bgColor',
+					} }
+					setAttributes={ setAttributes }
 				/>
 				<ResponsiveSlider
 					label={ __( 'Column Gap', 'ultimate-addons-for-gutenberg' ) }
@@ -1293,9 +1312,11 @@ const UAGBPostCarousel = ( props ) => {
 							'ultimate-addons-for-gutenberg'
 						) }
 						colorValue={ bgOverlayColor }
-						onColorChange={ ( value ) =>
-							setAttributes( { bgOverlayColor: value } )
-						}
+						data={ {
+							value: bgOverlayColor,
+							label: 'bgOverlayColor',
+						} }
+						setAttributes={ setAttributes }
 					/>
 					<Range
 						label={ __(
@@ -1304,9 +1325,10 @@ const UAGBPostCarousel = ( props ) => {
 						) }
 						setAttributes={ setAttributes }
 						value={ overlayOpacity }
-						onChange={ ( value ) =>
-							setAttributes( { overlayOpacity: value } )
-						}
+						data={ {
+							value: overlayOpacity,
+							label: 'overlayOpacity',
+						} }
 						min={ 0 }
 						max={ 100 }
 						displayUnit={ false }
@@ -1399,9 +1421,11 @@ const UAGBPostCarousel = ( props ) => {
 						'ultimate-addons-for-gutenberg'
 					) }
 					colorValue={ titleColor }
-					onColorChange={ ( value ) =>
-						setAttributes( { titleColor: value } )
-					}
+					data={ {
+						value: titleColor,
+						label: 'titleColor',
+					} }
+					setAttributes={ setAttributes }
 				/>
 				<TypographyControl
 					label={ __(
@@ -1520,25 +1544,31 @@ const UAGBPostCarousel = ( props ) => {
 				<AdvancedPopColorControl
 					label={ __( 'Color', 'ultimate-addons-for-gutenberg' ) }
 					colorValue={ metaColor }
-					onColorChange={ ( value ) =>
-						setAttributes( { metaColor: value } )
-					}
+					data={ {
+						value: metaColor,
+						label: 'metaColor',
+					} }
+					setAttributes={ setAttributes }
 				/>
 				{ ( 'aboveTitle' === displayPostTaxonomyAboveTitle && 'highlighted' === taxStyle ) && (
 					<>
 					<AdvancedPopColorControl
 						label={ __( 'Taxonomy Text Color', 'ultimate-addons-for-gutenberg' ) }
 						colorValue={ highlightedTextColor }
-						onColorChange={ ( value ) =>
-							setAttributes( { highlightedTextColor: value } )
-						}
+						data={ {
+							value: highlightedTextColor,
+							label: 'highlightedTextColor',
+						} }
+						setAttributes={ setAttributes }
 					/>
 					<AdvancedPopColorControl
 						label={ __( 'Highlighted Color', 'ultimate-addons-for-gutenberg' ) }
 						colorValue={ highlightedTextBgColor }
-						onColorChange={ ( value ) =>
-							setAttributes( { highlightedTextBgColor: value } )
-						}
+						data={ {
+							value: highlightedTextBgColor,
+							label: 'highlightedTextBgColor',
+						} }
+						setAttributes={ setAttributes }
 					/>
 					</>
 				)}
@@ -1658,9 +1688,11 @@ const UAGBPostCarousel = ( props ) => {
 				<AdvancedPopColorControl
 					label={ __( 'Color', 'ultimate-addons-for-gutenberg' ) }
 					colorValue={ excerptColor }
-					onColorChange={ ( value ) =>
-						setAttributes( { excerptColor: value } )
-					}
+					data={ {
+						value: excerptColor,
+						label: 'excerptColor',
+					} }
+					setAttributes={ setAttributes }
 				/>
 				<TypographyControl
 					label={ __(
@@ -1778,6 +1810,11 @@ const UAGBPostCarousel = ( props ) => {
 				) }
 				initialOpen={ false }
 			>
+				<UAGPresets
+					setAttributes = { setAttributes }
+					presets = { buttonsPresets }
+					presetInputType = 'radioImage'
+				/>
 				<UAGTabsControl
 					tabs={ [
 						{
@@ -1803,9 +1840,11 @@ const UAGBPostCarousel = ( props ) => {
 									'ultimate-addons-for-gutenberg'
 								) }
 								colorValue={ ctaColor }
-								onColorChange={ ( value ) =>
-									setAttributes( { ctaColor: value } )
-								}
+								data={ {
+									value: ctaColor,
+									label: 'ctaColor',
+								} }
+								setAttributes={ setAttributes }
 							/>
 							<AdvancedPopColorControl
 								label={ __(
@@ -1813,9 +1852,11 @@ const UAGBPostCarousel = ( props ) => {
 									'ultimate-addons-for-gutenberg'
 								) }
 								colorValue={ ctaBgColor }
-								onColorChange={ ( value ) =>
-									setAttributes( { ctaBgColor: value } )
-								}
+								data={ {
+									value: ctaBgColor,
+									label: 'ctaBgColor',
+								} }
+								setAttributes={ setAttributes }
 							/>
 						</>
 					}
@@ -1827,9 +1868,11 @@ const UAGBPostCarousel = ( props ) => {
 									'ultimate-addons-for-gutenberg'
 								) }
 								colorValue={ ctaHColor }
-								onColorChange={ ( value ) =>
-									setAttributes( { ctaHColor: value } )
-								}
+								data={ {
+									value: ctaHColor,
+									label: 'ctaHColor',
+								} }
+								setAttributes={ setAttributes }
 							/>
 							<AdvancedPopColorControl
 								label={ __(
@@ -1837,9 +1880,11 @@ const UAGBPostCarousel = ( props ) => {
 									'ultimate-addons-for-gutenberg'
 								) }
 								colorValue={ ctaBgHColor }
-								onColorChange={ ( value ) =>
-									setAttributes( { ctaBgHColor: value } )
-								}
+								data={ {
+									value: ctaBgHColor,
+									label: 'ctaBgHColor',
+								} }
+								setAttributes={ setAttributes }
 							/>
 						</>
 					}
@@ -2042,18 +2087,21 @@ const UAGBPostCarousel = ( props ) => {
 						'ultimate-addons-for-gutenberg'
 					) }
 					colorValue={ arrowColor }
-					onColorChange={ ( value ) =>
-						setAttributes( { arrowColor: value } )
-					}
+					data={ {
+						value: arrowColor,
+						label: 'arrowColor',
+					} }
+					setAttributes={ setAttributes }
 				/>
 			{ 'dots' !== arrowDots &&
 				<>
 				<Range
 					label={ __( 'Size', 'ultimate-addons-for-gutenberg' ) }
 					value={ arrowSize }
-					onChange={ ( value ) =>
-						setAttributes( { arrowSize: value } )
-					}
+					data={ {
+						value: arrowSize,
+						label: 'arrowSize',
+					} }
 					min={ 0 }
 					max={ 50 }
 					setAttributes={ setAttributes }
@@ -2065,9 +2113,10 @@ const UAGBPostCarousel = ( props ) => {
 						'ultimate-addons-for-gutenberg'
 					) }
 					value={ arrowBorderSize }
-					onChange={ ( value ) =>
-						setAttributes( { arrowBorderSize: value } )
-					}
+					data={ {
+						value: arrowBorderSize,
+						label: 'arrowBorderSize',
+					} }
 					min={ 0 }
 					max={ 50 }
 					setAttributes={ setAttributes }
@@ -2081,11 +2130,10 @@ const UAGBPostCarousel = ( props ) => {
 					setAttributes={ setAttributes }
 					displayUnit={ false }
 					value={ arrowBorderRadius }
-					onChange={ ( value ) =>
-						setAttributes( {
-							arrowBorderRadius: value,
-						} )
-					}
+					data={ {
+						value: arrowBorderRadius,
+						label: 'arrowBorderRadius',
+					} }
 					min={ 0 }
 					max={ 50 }
 				/>

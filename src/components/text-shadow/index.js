@@ -45,9 +45,11 @@ const TextShadowControl = ( props ) => {
 			<AdvancedPopColorControl
 				label={ textShadowColor.title }
 				colorValue={ textShadowColor.value }
-				onColorChange={ ( value ) =>
-					setAttributes( { [ textShadowColor.label ]: value } )
-				}
+				data={ {
+					value: textShadowColor.value,
+					label: textShadowColor.label,
+				} }
+				setAttributes={ setAttributes }
 			/>
 			{ /* Horizontal */ }
 			<Range
@@ -56,9 +58,11 @@ const TextShadowControl = ( props ) => {
 				min={ 0 }
 				max={ 100 }
 				displayUnit={ false }
-				setAttributes={ setAttributes }
-				data={ { value:textShadowHOffset.value, label:textShadowHOffset.label } }
-				onChange={ false }
+				setAttributes={setAttributes}
+				data={ {
+					value: textShadowHOffset.value,
+					label: textShadowHOffset.label,
+				} }
 			/>
 			{ /* Vertical */ }
 			<Range
@@ -67,9 +71,11 @@ const TextShadowControl = ( props ) => {
 				min={ 0 }
 				max={ 100 }
 				displayUnit={ false }
-				setAttributes={ setAttributes }
-				data={ { value:textShadowVOffset.value, label:textShadowVOffset.label } }
-				onChange={ false }
+				setAttributes={setAttributes}
+				data={ {
+					value: textShadowVOffset.value,
+					label: textShadowVOffset.label,
+				} }
 			/>
 			{ /* Blur */ }
 			<Range
@@ -78,9 +84,11 @@ const TextShadowControl = ( props ) => {
 				min={ 0 }
 				max={ 100 }
 				displayUnit={ false }
-				setAttributes={ setAttributes }
-				data={ { value:textShadowBlur.value, label:textShadowBlur.label } }
-				onChange={ false }
+				setAttributes={setAttributes}
+				data={ {
+					value: textShadowBlur.value,
+					label: textShadowBlur.label,
+				} }
 			/>
 		</>
 	);
