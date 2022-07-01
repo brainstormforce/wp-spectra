@@ -14,10 +14,10 @@ import InspectorTab, {
 import UAGImage from '@Components/image';
 import SpacingControl from '@Components/spacing-control';
 import MultiButtonsControl from '@Components/multi-buttons-control';
+import UAGSelectControl from '@Components/select-control';
 import { getImageSize } from '@Utils/Helpers';
 import renderSVG from '@Controls/renderIcon';
 import {
-	SelectControl,
 	ToggleControl,
 	TextControl,
 	DateTimePicker,
@@ -148,6 +148,26 @@ const Settings = ( props ) => {
 		subHeadFontStyle,
 		contentFontStyle,
 	} = attributes;
+
+	const onItemTypeChange = ( value ) => {
+		setAttributes( { itemType: value } );
+		if ( itemType === 'Movie' ) {
+			setAttributes( { enableImage: true } );
+		}
+		if ( itemType === 'Course' ) {
+			setAttributes( { enableDescription: true } );
+		}
+		if (
+			! subtypeCategories.hasOwnProperty(
+				itemType
+			) ||
+			! subtypeCategories[ itemType ].includes(
+				itemSubtype
+			)
+		) {
+			setAttributes( { itemSubtype: 'None' } );
+		}
+	}
 
 	/*
 	 * Event to set Image as while adding.
@@ -574,31 +594,15 @@ const Settings = ( props ) => {
 					title={ __( 'Schema', 'ultimate-addons-for-gutenberg' ) }
 					initialOpen={ false }
 				>
-					<SelectControl
+					<UAGSelectControl
 						label={ __(
 							'Item Type',
 							'ultimate-addons-for-gutenberg'
 						) }
-						value={ itemType }
-						onChange={ ( value ) => {
-							setAttributes( { itemType: value } );
-							if ( itemType === 'Movie' ) {
-								setAttributes( { enableImage: true } );
-							}
-							if ( itemType === 'Course' ) {
-								setAttributes( { enableDescription: true } );
-							}
-							if (
-								! subtypeCategories.hasOwnProperty(
-									itemType
-								) ||
-								! subtypeCategories[ itemType ].includes(
-									itemSubtype
-								)
-							) {
-								setAttributes( { itemSubtype: 'None' } );
-							}
+						data={ {
+							value: itemType,
 						} }
+						onChange={ onItemTypeChange }
 						options={ [
 							{
 								value: 'Book',
@@ -638,11 +642,16 @@ const Settings = ( props ) => {
 						] }
 					/>
 					{ subtypeCategories.hasOwnProperty( itemType ) && (
-						<SelectControl
+						<UAGSelectControl
 							label={ __(
 								'Item Subtype',
 								'ultimate-addons-for-gutenberg'
 							) }
+							data={ {
+								value: itemSubtype,
+								label: 'itemSubtype',
+							} }
+							setAttributes={ setAttributes }
 							options={ [
 								{
 									value: 'none',
@@ -653,12 +662,6 @@ const Settings = ( props ) => {
 								},
 								...subtypeCategories[ itemType ],
 							] }
-							value={ itemSubtype }
-							onChange={ ( value ) =>
-								setAttributes( {
-									itemSubtype: value,
-								} )
-							}
 						/>
 					) }
 
@@ -729,12 +732,16 @@ const Settings = ( props ) => {
 											} )
 										}
 									/>
-									<SelectControl
+									<UAGSelectControl
 										label={ __(
 											'Identifier Type',
 											'ultimate-addons-for-gutenberg'
 										) }
-										value={ identifierType }
+										data={ {
+											value: identifierType,
+											label: 'identifierType',
+										} }
+										setAttributes={ setAttributes }
 										options={ [
 											'nsn',
 											'mpn',
@@ -747,11 +754,6 @@ const Settings = ( props ) => {
 											label: a.toUpperCase(),
 											value: a,
 										} ) ) }
-										onChange={ ( value ) =>
-											setAttributes( {
-												identifierType: value,
-											} )
-										}
 									/>
 								</>
 							) }
@@ -791,9 +793,16 @@ const Settings = ( props ) => {
 											'ultimate-addons-for-gutenberg'
 										) }
 									/>
-									<SelectControl
-										label={ __( 'Offer Status' ) }
-										value={ offerStatus }
+									<UAGSelectControl
+										label={ __(
+											'Offer Status',
+											'ultimate-addons-for-gutenberg'
+										) }
+										data={ {
+											value: offerStatus,
+											label: 'offerStatus',
+										} }
+										setAttributes={ props.setAttributes }
 										options={ [
 											{
 												value:
@@ -868,11 +877,6 @@ const Settings = ( props ) => {
 												),
 											},
 										] }
-										onChange={ ( value ) =>
-											props.setAttributes( {
-												offerStatus: value,
-											} )
-										}
 									/>
 									<h2>
 										{ __(
@@ -1183,16 +1187,17 @@ const Settings = ( props ) => {
 						mainimage !== 'null' &&
 						mainimage.url !== 'null' &&
 						mainimage.url !== '' && (
-							<SelectControl
+							<UAGSelectControl
 								label={ __(
 									'Size',
 									'ultimate-addons-for-gutenberg'
 								) }
+								data={ {
+									value: imgSize,
+									label: 'imgSize',
+								} }
+								setAttributes={ setAttributes }
 								options={ imageSizeOptions }
-								value={ imgSize }
-								onChange={ ( value ) =>
-									setAttributes( { imgSize: value } )
-								}
 							/>
 						) }
 				</>
