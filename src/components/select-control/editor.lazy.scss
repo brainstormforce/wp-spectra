@@ -14,8 +14,13 @@
 
 		.uagb-control__header,
 		.uag-control-label,
-		.components-input-control__label label {
+		.components-select-control label.components-input-control__label {
+			margin-bottom: 0;
+		}
+
+		&:last-child .components-select-control {
 			margin-bottom: 0;
 		}
 	}
+
 }
