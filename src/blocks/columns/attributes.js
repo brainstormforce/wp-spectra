@@ -601,10 +601,10 @@ const attributes = {
 	},
 	gradientValue: {
 		type: 'string',
+		default: 'linear-gradient(90deg, rgb(6, 147, 227, 0.5) 0%, rgb(155, 81, 224, 0.5) 100%)',
 		UAGCopyPaste: {
 			styleType: 'column-gradient-value'
 		},
-		default: '',
 	},
 	isPreview: {
 		type: 'boolean',
