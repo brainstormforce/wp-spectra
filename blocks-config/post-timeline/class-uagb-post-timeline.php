@@ -124,6 +124,26 @@ if ( ! class_exists( 'UAGB_Post_Timeline' ) ) {
 							'type'    => 'number',
 							'default' => 10,
 						),
+						'horizontalSpaceTablet'     => array(
+							'type'    => 'number',
+							'default' => 10,
+						),
+						'horizontalSpaceMobile'     => array(
+							'type'    => 'number',
+							'default' => 10,
+						),
+						'horizontalSpaceUnit'       => array(
+							'type'    => 'string',
+							'default' => 'px',
+						),
+						'horizontalSpaceUnitTablet' => array(
+							'type' => 'string',
+							'default' => 'px',
+						),
+						'horizontalSpaceUnitMobile' => array(
+							'type' => 'string',
+							'default' => 'px',
+						),
 						'verticalSpace'           => array(
 							'type'    => 'number',
 							'default' => 15,

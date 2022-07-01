@@ -228,12 +228,15 @@ const Settings = ( props ) => {
 		verticalSpaceMobile,
 		verticalSpaceUnit,
 		verticalSpaceUnitTablet,
-		verticalSpaceUnitMobile
+		verticalSpaceUnitMobile,
+		horizontalSpace,
+		horizontalSpaceTablet,
+		horizontalSpaceMobile,
+		horizontalSpaceUnit,
+		horizontalSpaceUnitTablet,
+		horizontalSpaceUnitMobile
 	} = attributes;
 
-	console.log( props );
-	console.log( attributes );
-	console.log( verticalSpaceUnit );
 	const timelinAlignment = 'undefined' !== typeof attributes['timelinAlignment' + deviceType ] ? attributes['timelinAlignment' + deviceType ] :  attributes.timelinAlignment;
 
 	const onSelectPostType = ( value ) => {
@@ -1915,6 +1918,58 @@ const Settings = ( props ) => {
 					// 	value: verticalSpaceUnit,
 					// 	label: 'verticalSpaceUnit',
 					// } }
+					setAttributes={ setAttributes }
+				/>
+				<ResponsiveSlider
+					label={ __(
+						'Post - Marker Gap',
+						'ultimate-addons-for-gutenberg'
+					) }
+					data={ {
+						desktop: {
+							value: horizontalSpace,
+							label: 'horizontalSpace',
+							unit: {
+								value: horizontalSpaceUnit,
+								label: 'horizontalSpaceUnit',
+							},
+						},
+						tablet: {
+							value: horizontalSpaceTablet,
+							label: 'horizontalSpaceTablet',
+							unit: {
+								value: horizontalSpaceUnitTablet,
+								label: 'horizontalSpaceUnitTablet',
+							},
+						},
+						mobile: {
+							value: horizontalSpaceMobile,
+							label: 'horizontalSpaceMobile',
+							unit: {
+								value: horizontalSpaceUnitMobile,
+								label: 'horizontalSpaceUnitMobile',
+							},
+						},
+					} }
+					min={ 0 }
+					limitMax={ { 'px': 100, '%': 100, 'em': 100 } }
+					units={ [
+						{
+							name: __(
+								'PX',
+								'ultimate-addons-for-gutenberg'
+							),
+							unitValue: 'px',
+						},
+						{
+							name: __( '%', 'ultimate-addons-for-gutenberg' ),
+							unitValue: '%',
+						},
+						{
+							name: __( 'EM', 'ultimate-addons-for-gutenberg' ),
+							unitValue: 'em',
+						},
+					] }
 					setAttributes={ setAttributes }
 				/>
 			</UAGAdvancedPanelBody>

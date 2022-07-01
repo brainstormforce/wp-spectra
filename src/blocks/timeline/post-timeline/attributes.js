@@ -91,6 +91,20 @@ const attributes = { // eslint-disable-line no-unused-vars
 			styleType: 'row-gap'
 		},
 	},
+	horizontalSpaceTablet         : {
+		type    : 'number',
+		default : 10,
+		UAGCopyPaste: {
+			styleType: 'row-gap-tablet'
+		},
+	},
+	horizontalSpaceMobile         : {
+		type    : 'number',
+		default : 10,
+		UAGCopyPaste: {
+			styleType: 'row-gap-mobile'
+		},
+	},
 	verticalSpace           : {
 		type    : 'number',
 		default : 15,
