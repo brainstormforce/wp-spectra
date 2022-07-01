@@ -137,6 +137,9 @@ class UAGB_Block_Module {
 		'image'              => array(
 			'dir' => 'image',
 		),
+		'google-map'         => array(
+			'dir' => 'google-map',
+		),
 	);
 
 	/**
