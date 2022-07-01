@@ -15,6 +15,8 @@
 	}
 
 	.components-button,
+	.components-button.is-secondary,
+	.components-button.is-tertiary,
 	.components-button:hover:not(:disabled) {
 		box-shadow: none;
 		outline: none;
@@ -43,10 +45,17 @@
 		border: 1px dashed #d5dadf;
 		box-shadow: none;
 
+		&.components-placeholder { // Keeps placeholder in center for all device.
+			align-items: center;
+		}
+
+		&.is-large .components-placeholder__label,
 		.components-placeholder__label {
 			font-size: 18px;
+			font-weight: 400;
 			margin-bottom: 0;
 			color: #556068;
+
 		}
 	}
 
@@ -72,6 +81,12 @@
 
 .uagb-editor-preview-mode-tablet,
 .uagb-editor-preview-mode-mobile {
+
+	.components-button.is-secondary:hover:not(:disabled) { // Disabled boxShadow and outline on responsive.
+		box-shadow: none;
+		outline: none;
+		color: #d5dadf;
+	}
 
 	.components-placeholder__fieldset {
 		max-width: 100% !important;
