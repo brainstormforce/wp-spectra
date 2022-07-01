@@ -39,7 +39,7 @@ const Render = ( props ) => {
 				className,
 				'uagb-google-map__wrap',
 				`uagb-block-${ props.clientId.substr( 0, 8 ) }`,
-				`uagb-editor-t preview-mode-${ deviceType.toLowerCase() }`,
+				`uagb-editor-preview-mode-${ deviceType.toLowerCase() }`,
 			) }
 		>
 			<iframe
