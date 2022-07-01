@@ -39,17 +39,17 @@ $toggle_width_size_number        = UAGB_Block_Helper::get_fallback_number( $attr
 $toggle_width_size_number_tablet = is_numeric( $attr['toggleWidthSizeTablet'] ) ? $attr['toggleWidthSizeTablet'] : $toggle_width_size_number;
 $toggle_width_size_number_mobile = is_numeric( $attr['toggleWidthSizeMobile'] ) ? $attr['toggleWidthSizeMobile'] : $toggle_width_size_number_tablet;
 
-$input_overall_border        = UAGB_Block_Helper::uag_generate_border_css( $attr, 'field' );
-$input_overall_border        = UAGB_Block_Helper::uag_generate_deprecated_border_css(
-	$input_overall_border,
+$inputOverallBorder        = UAGB_Block_Helper::uag_generate_border_css( $attr, 'field' );
+$inputOverallBorder        = UAGB_Block_Helper::uag_generate_deprecated_border_css(
+	$inputOverallBorder,
 	( isset( $attr['inputborderWidth'] ) ? $attr['inputborderWidth'] : '' ),
 	( isset( $attr['inputborderRadius'] ) ? $attr['inputborderRadius'] : '' ),
 	( isset( $attr['inputborderColor'] ) ? $attr['inputborderColor'] : '' ),
 	( isset( $attr['inputborderStyle'] ) ? $attr['inputborderStyle'] : '' ),
 	( isset( $attr['inputborderHColor'] ) ? $attr['inputborderHColor'] : '' )
 );
-$input_overall_border_Tablet = UAGB_Block_Helper::uag_generate_border_css( $attr, 'field', 'tablet' );
-$input_overall_border_Mobile = UAGB_Block_Helper::uag_generate_border_css( $attr, 'field', 'mobile' );
+$inputOverallBorderTablet = UAGB_Block_Helper::uag_generateBorder_css( $attr, 'field', 'tablet' );
+$inputOverallBorderMobile = UAGB_Block_Helper::uag_generate_border_css( $attr, 'field', 'mobile' );
 
 $successMessage_border        = UAGB_Block_Helper::uag_generate_border_css( $attr, 'successMsg' );
 $successMessage_border        = UAGB_Block_Helper::uag_generate_deprecated_border_css(
@@ -327,7 +327,7 @@ if ( 'boxed' === $attr['formStyle'] ) {
 			'background-color' => $attr['bgColor'],
 			'color'            => $attr['inputColor'],
 		),
-		$input_overall_border
+		$inputOverallBorder
 	);
 	$selectors[' .uagb-forms-main-form .uagb-forms-input.uagb-form-phone-country'] = array(
 		'padding-top'    => UAGB_Helper::get_css_value( ( $paddingFieldTop - 1 ), $attr['paddingFieldUnit'] ),
@@ -347,13 +347,13 @@ if ( 'boxed' === $attr['formStyle'] ) {
 	$t_selectors[' .uagb-forms-main-form  .uagb-forms-radio-wrap input[type=radio] + label:before']       = $toggle_border_Tablet;
 	$t_selectors[' .uagb-forms-main-form .uagb-slider'] = $toggle_border_Tablet;
 	$t_selectors[' .uagb-forms-main-form  .uagb-forms-accept-wrap input[type=checkbox] + label:before'] = $toggle_border_Tablet;
-	$t_selectors[' .uagb-forms-main-form .uagb-forms-input'] = $input_overall_border_Tablet;
+	$t_selectors[' .uagb-forms-main-form .uagb-forms-input'] = $inputOverallBorderTablet;
 
 	$m_selectors[' .uagb-forms-main-form  .uagb-forms-checkbox-wrap input[type=checkbox] + label:before'] = $toggle_border_Tablet;
 	$m_selectors[' .uagb-forms-main-form  .uagb-forms-radio-wrap input[type=radio] + label:before']       = $toggle_border_Tablet;
 	$m_selectors[' .uagb-forms-main-form .uagb-slider'] = $toggle_border_Tablet;
 	$m_selectors[' .uagb-forms-main-form  .uagb-forms-accept-wrap input[type=checkbox] + label:before'] = $toggle_border_Tablet;
-	$m_selectors[' .uagb-forms-main-form .uagb-forms-input'] = $input_overall_border_Mobile;
+	$m_selectors[' .uagb-forms-main-form .uagb-forms-input'] = $inputOverallBorderMobile;
 }
 
 $selectors[' .uagb-forms-main-form  .uagb-forms-input']   = array(
