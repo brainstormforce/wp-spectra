@@ -8,6 +8,7 @@
  */
 
 $border_attribute = UAGB_Block_Helper::uag_generate_border_attribute( 'container' );
+$default_width   = UAGB_Admin_Helper::get_global_content_width();
 
 return array_merge(
 	array(
@@ -35,7 +36,7 @@ return array_merge(
 		'alignContentDesktop'            => '',
 		'alignContentTablet'             => '',
 		'alignContentMobile'             => '',
-		'backgroundType'                 => '',
+		'backgroundType'                 => 'none',
 		'backgroundImageDesktop'         => '',
 		'backgroundImageTablet'          => '',
 		'backgroundImageMobile'          => '',
@@ -58,7 +59,7 @@ return array_merge(
 		'backgroundOpacity'              => '',
 		'backgroundImageColor'           => '#FFFFFF75',
 		'gradientValue'                  => 'linear-gradient(90deg, rgb(6, 147, 227) 0%, rgb(155, 81, 224) 100%)',
-		'boxShadowColor'                 => '',
+		'boxShadowColor'                 => '#00000070',
 		'boxShadowHOffset'               => 0,
 		'boxShadowVOffset'               => 0,
 		'boxShadowBlur'                  => '',
@@ -71,10 +72,10 @@ return array_merge(
 		'boxShadowSpreadHover'           => '',
 		'boxShadowPositionHover'         => 'outset',
 
-		'topPaddingDesktop'              => '',
-		'bottomPaddingDesktop'           => '',
-		'leftPaddingDesktop'             => '',
-		'rightPaddingDesktop'            => '',
+		'topPaddingDesktop'              => 20,
+		'bottomPaddingDesktop'           => 20,
+		'leftPaddingDesktop'             => 20,
+		'rightPaddingDesktop'            => 20,
 		'topPaddingTablet'               => '',
 		'bottomPaddingTablet'            => '',
 		'leftPaddingTablet'              => '',
@@ -117,7 +118,7 @@ return array_merge(
 		'columnGapTypeMobile'            => 'px',
 		'contentWidth'                   => 'alignfull',
 		'innerContentWidth'              => 'alignwide',
-		'innerContentCustomWidthDesktop' => 1200,
+		'innerContentCustomWidthDesktop' => $default_width,
 		'innerContentCustomWidthTablet'  => 768,
 		'innerContentCustomWidthMobile'  => 320,
 		'innerContentCustomWidthType'    => 'px',
