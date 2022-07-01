@@ -4,7 +4,11 @@ import { __ } from '@wordpress/i18n';
 import styles from './editor.lazy.scss';
 import { getFallbackNumber } from '@Controls/getAttributeFallback';
 
+import { useDeviceType } from '@Controls/getPreviewType';
+
 const Render = ( props ) => {
+
+	const deviceType = useDeviceType();
 
 	// Add and remove the CSS on the drop and remove of the component.
 	useLayoutEffect( () => {
@@ -34,7 +38,8 @@ const Render = ( props ) => {
 			className={ classnames(
 				className,
 				'uagb-google-map__wrap',
-				`uagb-block-${ props.clientId.substr( 0, 8 ) }`
+				`uagb-block-${ props.clientId.substr( 0, 8 ) }`,
+				`uagb-editor-t preview-mode-${ deviceType.toLowerCase() }`,
 			) }
 		>
 			<iframe
