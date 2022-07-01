@@ -6,7 +6,8 @@ import InspectorTabs from '@Components/inspector-tabs/InspectorTabs.js';
 import InspectorTab, {
 	UAGTabs,
 } from '@Components/inspector-tabs/InspectorTab.js';
-import { TextControl, SelectControl } from '@wordpress/components';
+import UAGSelectControl from '@Components/select-control';
+import { TextControl } from '@wordpress/components';
 
 import UAGAdvancedPanelBody from '@Components/advanced-panel-body';
 
@@ -51,11 +52,10 @@ const Settings = ( props ) => {
 							) }
 							value={ zoom }
 							setAttributes={ setAttributes }
-							onChange={ ( value ) =>
-								setAttributes( {
-									zoom: value,
-								} )
-							}
+							data={ {
+								value: zoom,
+								label: 'zoom',
+							} }
 							min={ 1 }
 							max={ 22 }
 							displayUnit={ false }
@@ -66,27 +66,25 @@ const Settings = ( props ) => {
 								'ultimate-addons-for-gutenberg'
 							) }
 							value={ height }
-							onChange={ ( value ) =>
-								setAttributes( {
-									height: value,
-								} )
-							}
+							data={ {
+								value: height,
+								label: 'height',
+							} }
 							min={ 0 }
 							max={ 1000 }
 							displayUnit={ false }
 							setAttributes={ setAttributes }
 						/>
-						<SelectControl
+						<UAGSelectControl
 							label={ __(
 								'Language',
 								'ultimate-addons-for-gutenberg'
 							) }
-							value={ language }
-							onChange={ ( value ) =>
-								setAttributes( {
-									language: value,
-								} )
-							}
+							data={ {
+								value: language,
+								label: 'language',
+							} }
+							setAttributes={ setAttributes }
 							options={ [
 								{
 									value: 'af',
