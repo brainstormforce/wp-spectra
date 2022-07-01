@@ -48,7 +48,7 @@ $input_overall_border        = UAGB_Block_Helper::uag_generate_deprecated_border
 	( isset( $attr['inputborderStyle'] ) ? $attr['inputborderStyle'] : '' ),
 	( isset( $attr['inputborderHColor'] ) ? $attr['inputborderHColor'] : '' )
 );
-$input_overall_border_tablet = UAGB_Block_Helper::uag_generateBorder_css( $attr, 'field', 'tablet' );
+$input_overall_border_tablet = UAGB_Block_Helper::uag_generate_border_css( $attr, 'field', 'tablet' );
 $input_overall_border_mobile = UAGB_Block_Helper::uag_generate_border_css( $attr, 'field', 'mobile' );
 
 $successMessage_border        = UAGB_Block_Helper::uag_generate_border_css( $attr, 'successMsg' );
