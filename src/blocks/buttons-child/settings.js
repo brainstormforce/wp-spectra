@@ -33,6 +33,9 @@ import {
 
 import UAGAdvancedPanelBody from '@Components/advanced-panel-body';
 
+import boxShadowPresets from './presets';
+import UAGPresets from '@Components/presets';
+
 const Settings = ( props ) => {
 
 	props = props.parentProps;
@@ -117,10 +120,10 @@ const Settings = ( props ) => {
 		noFollow,
 
 		// letter spacing
-		fontLetterSpacing,
-		fontLetterSpacingTablet,
-		fontLetterSpacingMobile,
-		fontLetterSpacingType,
+		letterSpacing,
+		letterSpacingTablet,
+		letterSpacingMobile,
+		letterSpacingType,
 
 	} = attributes;
 
@@ -291,20 +294,20 @@ const Settings = ( props ) => {
 						label: 'lineHeightTablet',
 					} }
 					letterSpacing={ {
-						value: fontLetterSpacing,
-						label: 'fontLetterSpacing',
+						value: letterSpacing,
+						label: 'letterSpacing',
 					} }
 					letterSpacingTablet={ {
-						value: fontLetterSpacingTablet,
-						label: 'fontLetterSpacingTablet',
+						value: letterSpacingTablet,
+						label: 'letterSpacingTablet',
 					} }
 					letterSpacingMobile={ {
-						value: fontLetterSpacingMobile,
-						label: 'fontLetterSpacingMobile',
+						value: letterSpacingMobile,
+						label: 'letterSpacingMobile',
 					} }
 					letterSpacingType={ {
-						value: fontLetterSpacingType,
-						label: 'fontLetterSpacingType',
+						value: letterSpacingType,
+						label: 'letterSpacingType',
 					} }
 				/>
 				<UAGTabsControl
@@ -526,6 +529,11 @@ const Settings = ( props ) => {
 					title={__( 'Box Shadow','ultimate-addons-for-gutenberg' )}
 					initialOpen={false}
 				>
+					<UAGPresets
+						setAttributes = { setAttributes }
+						presets = { boxShadowPresets }
+						presetInputType = 'radioImage'
+					/>
 					<BoxShadowControl
 						setAttributes={ setAttributes }
 						boxShadowColor={ {

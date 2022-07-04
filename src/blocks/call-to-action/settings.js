@@ -16,7 +16,7 @@ import MultiButtonsControl from '@Components/multi-buttons-control';
 import ResponsiveBorder from '@Components/responsive-border';
 import SpacingControl from '@Components/spacing-control';
 import UAGTabsControl from '@Components/tabs';
-import presets from './presets';
+import ctaPresets, {buttonsPresetsCTA, buttonsPresetsAdditionalButton} from './presets';
 import UAGPresets from '@Components/presets';
 import renderSVG from '@Controls/renderIcon';
 import { ToggleControl, TextControl, Icon } from '@wordpress/components';
@@ -295,6 +295,13 @@ const Settings = ( props ) => {
 				/>
 				{ enabledSecondCtaButton && (
 				<>
+
+				<UAGPresets
+					setAttributes = { setAttributes }
+					presets = { buttonsPresetsAdditionalButton }
+					presetInputType = 'radioImage'
+				/>
+
 				<MultiButtonsControl
 					setAttributes={ setAttributes }
 					label={ __( 'Stack Orientation', 'ultimate-addons-for-gutenberg' ) }
@@ -738,7 +745,15 @@ const Settings = ( props ) => {
 					] }
 					showIcons={ false }
 				/>
+				{ 'button' === ctaType &&
+					<UAGPresets
+						setAttributes = { setAttributes }
+						presets = { buttonsPresetsCTA }
+						presetInputType = 'radioImage'
+					/>
+				}
 				{ stack !== 'desktop' && ctaType !== 'all' && ctaType !== 'none' && (
+
 				<MultiButtonsControl
 					setAttributes={ setAttributes }
 					label={ __(
@@ -1847,7 +1862,7 @@ const Settings = ( props ) => {
 				>
 					<UAGPresets
 						setAttributes = { setAttributes }
-						presets = { presets }
+						presets = { ctaPresets }
 						presetInputType = 'radioImage'
 					/>
 				</UAGAdvancedPanelBody>

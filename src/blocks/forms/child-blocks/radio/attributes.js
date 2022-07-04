@@ -34,5 +34,9 @@ const attributes = {
 			},
 		],
 	},
+	layout: {
+		type: 'string',
+		default: 'round',
+	},
 };
 export default attributes;
