@@ -141,6 +141,10 @@ const UAGBContainer = ( props ) => {
 			props.setAttributes( migrationAttributes )
 		}
 
+		if( 0 !== select( 'core/block-editor' ).getBlockParents(  props.clientId ).length ){ // if there is no parent for container when child container moved outside root then do not show variations.
+			props.setAttributes( { variationSelected: true } );
+		}
+
 	}, [] );
 
 	useEffect( () => {
