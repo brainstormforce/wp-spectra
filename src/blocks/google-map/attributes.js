@@ -13,6 +13,20 @@ const attributes = {
 			styleType: 'map-height'
 		},
 	},
+	heightTablet: {
+		type: 'number',
+		default: 300,
+		UAGCopyPaste: {
+			styleType: 'map-height'
+		},
+	},
+	heightMobile: {
+		type: 'number',
+		default: 300,
+		UAGCopyPaste: {
+			styleType: 'map-height'
+		},
+	},
 	zoom: {
 		type: 'number',
 		default: 12,

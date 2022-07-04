@@ -17,6 +17,7 @@ import SpacingControl from '@Components/spacing-control';
 import MultiButtonsControl from '@Components/multi-buttons-control';
 import UAGTabsControl from '@Components/tabs';
 import ResponsiveSlider from '@Components/responsive-slider';
+import UAGSelectControl from '@Components/select-control';
 import { __ } from '@wordpress/i18n';
 
 import { dateI18n } from '@wordpress/date';
@@ -25,7 +26,6 @@ import {
 } from '@wordpress/block-editor';
 
 import {
-	SelectControl,
 	ToggleControl,
 	Icon,
 } from '@wordpress/components';
@@ -416,12 +416,14 @@ const Settings = ( props ) => {
 					onChange={ toggleDisplayPostDate }
 				/>
 				{ displayPostDate && (
-					<SelectControl
+					<UAGSelectControl
 						label={ __(
 							'Date Format',
 							'ultimate-addons-for-gutenberg'
 						) }
-						value={ dateFormat }
+						data={ {
+							value: dateFormat,
+						} }
 						onChange={ getdateFormat }
 						options={ [
 							{

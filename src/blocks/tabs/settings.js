@@ -6,6 +6,7 @@ import MultiButtonsControl from '@Components/multi-buttons-control';
 import AdvancedPopColorControl from '@Components/color-control/advanced-pop-color-control.js';
 import SpacingControl from '@Components/spacing-control';
 import ResponsiveBorder from '@Components/responsive-border';
+import UAGSelectControl from '@Components/select-control';
 import InspectorTabs from '@Components/inspector-tabs/InspectorTabs.js';
 import InspectorTab, {
 	UAGTabs,
@@ -17,7 +18,6 @@ import { __ } from '@wordpress/i18n';
 import { InspectorControls } from '@wordpress/block-editor';
 
 import {
-	SelectControl,
 	ToggleControl,
 	Icon,
 } from '@wordpress/components';
@@ -138,6 +138,12 @@ const Settings = ( props ) => {
 		activeiconColor,
 		titleFontStyle
 	} = attributes;
+
+	const onInitialTabChange = ( value ) => {
+		setAttributes( {
+			tabActiveFrontend: parseInt( value ),
+		} )
+	};
 
 	const tabStyleSettings = () => {
 		const tabsStyleOptions = {
@@ -419,20 +425,18 @@ const Settings = ( props ) => {
 				title={ __( 'Tabs Title', 'ultimate-addons-for-gutenberg' ) }
 				initialOpen={ false }
 			>
-				<SelectControl
+				<UAGSelectControl
 					label={ __(
 						'Initial Open Tab',
 						'ultimate-addons-for-gutenberg'
 					) }
-					value={ tabActiveFrontend }
+					data={ {
+						value: tabActiveFrontend,
+					} }
+					onChange={ onInitialTabChange }
 					options={ tabHeaders.map( ( tab, index ) => {
 						return { value: index, label: tab };
 					} ) }
-					onChange={ ( value ) =>
-						setAttributes( {
-							tabActiveFrontend: parseInt( value ),
-						} )
-					}
 				/>
 				<MultiButtonsControl
 					setAttributes={ setAttributes }
