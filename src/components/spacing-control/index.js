@@ -116,24 +116,24 @@ const SpacingControl = ( props ) => {
 		switch ( device ) {
 			case 'desktop':
 				// code block
-				setAttributes( { [ valueTop.label ]:  undefined === valueTop.value ? 0 : valueTop.value  } );
-				setAttributes( { [ valueRight.label ]:  undefined === valueRight.value ? 0 : valueRight.value  } );
-				setAttributes( { [ valueBottom.label ]:  undefined === valueBottom.value ? 0 : valueBottom.value  } );
-				setAttributes( { [ valueLeft.label ]:  undefined === valueLeft.value ? 0 : valueLeft.value  } );
+				setAttributes( { [ valueTop.label ]: ( '' === valueTop.value || undefined === valueTop.value ) ? 0 : valueTop.value  } );
+				setAttributes( { [ valueRight.label ]: ( '' === valueRight.value || undefined === valueRight.value ) ? 0 : valueRight.value  } );
+				setAttributes( { [ valueBottom.label ]: ( '' === valueBottom.value || undefined === valueBottom.value ) ? 0 : valueBottom.value  } );
+				setAttributes( { [ valueLeft.label ]: ( '' === valueLeft.value || undefined === valueLeft.value ) ? 0 : valueLeft.value  } );
 				break;
 			case 'tablet':
 				// code block
-				setAttributes( { [ valueTopTablet.label ]:  undefined === valueTopTablet.value ? 0 : valueTopTablet.value } );
-				setAttributes( { [ valueRightTablet.label ]:  undefined === valueRightTablet.value ? 0 : valueRightTablet.value } );
-				setAttributes( { [ valueBottomTablet.label ]:  undefined === valueBottomTablet.value ? 0 : valueBottomTablet.value } );
-				setAttributes( { [ valueLeftTablet.label ]:  undefined === valueLeftTablet.value ? 0 : valueLeftTablet.value } );
+				setAttributes( { [ valueTopTablet.label ]: ( undefined === valueTopTablet.value || '' === valueTopTablet.value) ? 0 : valueTopTablet.value } );
+				setAttributes( { [ valueRightTablet.label ]: ( undefined === valueRightTablet.value || '' === valueRightTablet.value) ? 0 : valueRightTablet.value } );
+				setAttributes( { [ valueBottomTablet.label ]: ( undefined === valueBottomTablet.value || '' === valueBottomTablet.value) ? 0 : valueBottomTablet.value } );
+				setAttributes( { [ valueLeftTablet.label ]: ( undefined === valueLeftTablet.value || '' === valueLeftTablet.value) ? 0 : valueLeftTablet.value } );
 				break;
 			case 'mobile':
 				// code block
-				setAttributes( { [ valueTopMobile.label ]:  undefined === valueTopTablet.value ? 0 : valueTopTablet.value } );
-				setAttributes( { [ valueRightMobile.label ]:  undefined === valueRightTablet.value ? 0 : valueRightTablet.value } );
-				setAttributes( { [ valueBottomMobile.label ]:  undefined === valueBottomTablet.value ? 0 : valueBottomTablet.value } );
-				setAttributes( { [ valueLeftMobile.label ]:  undefined === valueLeftTablet.value ? 0 : valueLeftTablet.value } );
+				setAttributes( { [ valueTopMobile.label ]: ( '' === valueTopTablet.value || undefined === valueTopTablet.value ) ? 0 : valueTopTablet.value } );
+				setAttributes( { [ valueRightMobile.label ]: ( '' === valueRightTablet.value || undefined === valueRightTablet.value ) ? 0 : valueRightTablet.value } );
+				setAttributes( { [ valueBottomMobile.label ]: ( '' === valueBottomTablet.value || undefined === valueBottomTablet.value ) ? 0 : valueBottomTablet.value } );
+				setAttributes( { [ valueLeftMobile.label ]: ( '' === valueLeftTablet.value || undefined === valueLeftTablet.value ) ? 0 : valueLeftTablet.value } );
 				break;
 		}		
 		
