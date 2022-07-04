@@ -208,8 +208,6 @@ function styling( props ) {
 	const submitBorderTablet = generateBorderCSS( props.attributes, 'btn', 'tablet' );
 	const submitBorderMobile = generateBorderCSS( props.attributes, 'btn', 'mobile' );
 
-	console.log( submitBorder );
-
 	selectors = {
 		'.uagb-forms__outer-wrap': {
 			'padding-top': generateCSSUnit( formPaddingTop, formPaddingUnit ),
