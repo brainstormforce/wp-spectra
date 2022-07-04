@@ -97,43 +97,45 @@ const Render = ( props ) => {
 						>
 							{ <Icon attributes={ attributes } /> }
 							<div className={ classnames( dayAlignClass, 'uagb-timeline__events-inner-new' ) }>
-								<PostDate
-									post={ post }
-									attributes={ attributes }
-									dateClass="uagb-timeline__date-hide uagb-timeline__inner-date-new"
-								/>
-								{
-									<FeaturedImage
+								<div className='uagb-timeline__events-inner--content'>
+									<PostDate
 										post={ post }
 										attributes={ attributes }
+										dateClass="uagb-timeline__date-hide uagb-timeline__inner-date-new"
 									/>
-								}
-									{
-										<Title
+									{	
+										<FeaturedImage
 											post={ post }
 											attributes={ attributes }
 										/>
 									}
-									{
-										<Author
-											post={ post }
-											attributes={ attributes }
-										/>
-									}
-									{
-										<Excerpt
-											post={ post }
-											attributes={ attributes }
-										/>
-									}
-									{
-										<CtaLink
-											post={ post }
-											attributes={ attributes }
-										/>
-									}
+										{
+											<Title
+												post={ post }
+												attributes={ attributes }
+											/>
+										}
+										{
+											<Author
+												post={ post }
+												attributes={ attributes }
+											/>
+										}
+										{
+											<Excerpt
+												post={ post }
+												attributes={ attributes }
+											/>
+										}
+										{
+											<CtaLink
+												post={ post }
+												attributes={ attributes }
+											/>
+										}
 
-									<div className="uagb-timeline__arrow"></div>
+										<div className="uagb-timeline__arrow"></div>
+									</div>
 							</div>
 							{ displayInnerDate && (
 								<>
