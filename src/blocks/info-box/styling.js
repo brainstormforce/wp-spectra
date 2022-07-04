@@ -243,6 +243,14 @@ function styling( props ) {
 			'color': iconColor,
 			'fill': iconColor,
 			'line-height': generateCSSUnit( iconSizeFallback, iconSizeType ),
+		},
+		' .uagb-iconbox-icon-wrap': {
+			'margin' : 'auto',
+			'display' : 'inline-block',
+			'box-sizing': 'content-box',
+			'width': generateCSSUnit( iconSizeFallback, iconSizeType ),
+			'height': generateCSSUnit( iconSizeFallback, iconSizeType ),
+			'line-height': generateCSSUnit( iconSizeFallback, iconSizeType ),
 			'padding-left': generateCSSUnit( iconLeftMargin, iconMarginUnit ),
 			'padding-right': generateCSSUnit( iconRightMargin, iconMarginUnit ),
 			'padding-top': generateCSSUnit( iconTopMargin, iconMarginUnit ),
@@ -250,11 +258,6 @@ function styling( props ) {
 				iconBottomMargin,
 				iconMarginUnit
 			),
-		},
-		' .uagb-iconbox-icon-wrap': {
-			'margin' : 'auto',
-			'display' : 'inline-block',
-			'line-height' : 0,
 		},
 		' .uagb-ifb-content .uagb-ifb-left-title-image svg': {
 			'font-size': generateCSSUnit( iconSizeFallback, iconSizeType ),
@@ -262,13 +265,6 @@ function styling( props ) {
 			'fill': iconColor,
 			'width': generateCSSUnit( iconSizeFallback, iconSizeType ),
 			'line-height': generateCSSUnit( iconSizeFallback, iconSizeType ),
-			'padding-left': generateCSSUnit( iconLeftMargin, iconMarginUnit ),
-			'padding-right': generateCSSUnit( iconRightMargin, iconMarginUnit ),
-			'padding-top': generateCSSUnit( iconTopMargin, iconMarginUnit ),
-			'padding-bottom': generateCSSUnit(
-				iconBottomMargin,
-				iconMarginUnit
-			),
 		},
 		' .uagb-ifb-content .uagb-ifb-right-title-image svg': {
 			'font-size': generateCSSUnit( iconSizeFallback, iconSizeType ),
@@ -276,27 +272,14 @@ function styling( props ) {
 			'fill': iconColor,
 			'width': generateCSSUnit( iconSizeFallback, iconSizeType ),
 			'line-height': generateCSSUnit( iconSizeFallback, iconSizeType ),
-			'padding-left': generateCSSUnit( iconLeftMargin, iconMarginUnit ),
-			'padding-right': generateCSSUnit( iconRightMargin, iconMarginUnit ),
-			'padding-top': generateCSSUnit( iconTopMargin, iconMarginUnit ),
-			'padding-bottom': generateCSSUnit(
-				iconBottomMargin,
-				iconMarginUnit
-			),
 		},
 		'.uagb-infobox__content-wrap .uagb-ifb-icon-wrap svg': {
 			'font-size': generateCSSUnit( iconSizeFallback, iconSizeType ),
 			'color': iconColor,
 			'fill': iconColor,
 			'width': generateCSSUnit( iconSizeFallback, iconSizeType ),
+			'height': generateCSSUnit( iconSizeFallback, iconSizeType ),
 			'line-height': generateCSSUnit( iconSizeFallback, iconSizeType ),
-			'padding-left': generateCSSUnit( iconLeftMargin, iconMarginUnit ),
-			'padding-right': generateCSSUnit( iconRightMargin, iconMarginUnit ),
-			'padding-top': generateCSSUnit( iconTopMargin, iconMarginUnit ),
-			'padding-bottom': generateCSSUnit(
-				iconBottomMargin,
-				iconMarginUnit
-			),
 		},
 		' .uagb-ifb-content .uagb-ifb-icon-wrap svg:hover': {
 			'fill': iconHover,
@@ -313,6 +296,24 @@ function styling( props ) {
 		'.uagb-infobox_cta-type-all:hover .uagb-infobox__content-wrap svg': {
 			'fill': iconHover,
 			'color': iconHover,
+		},
+		'.uagb-infobox__content-wrap .uagb-ifb-icon-wrap > svg': {
+			'padding-left': generateCSSUnit( iconLeftMargin, iconMarginUnit ),
+			'padding-right': generateCSSUnit( iconRightMargin, iconMarginUnit ),
+			'padding-top': generateCSSUnit( iconTopMargin, iconMarginUnit ),
+			'padding-bottom': generateCSSUnit(
+				iconBottomMargin,
+				iconMarginUnit
+			),
+		},
+		'.uagb-infobox__content-wrap .uagb-ifb-content .uagb-ifb-icon-wrap > svg': {
+			'padding-left': generateCSSUnit( iconLeftMargin, iconMarginUnit ),
+			'padding-right': generateCSSUnit( iconRightMargin, iconMarginUnit ),
+			'padding-top': generateCSSUnit( iconTopMargin, iconMarginUnit ),
+			'padding-bottom': generateCSSUnit(
+				iconBottomMargin,
+				iconMarginUnit
+			),
 		},
 		'.uagb-infobox__content-wrap .uagb-ifb-image-content > img': {
 			'padding-left': generateCSSUnit( iconLeftMargin, iconMarginUnit ),
@@ -367,7 +368,7 @@ function styling( props ) {
 			),
 		},
 		// CTA style
-		' .uagb-infobox-cta-link': {
+		' div.uagb-ifb-cta a.uagb-infobox-cta-link.uagb-infobox-cta-link': {
 			'font-size': generateCSSUnit( ctaFontSize, ctaFontSizeType ),
 			'font-family': ctaFontFamily,
 			'font-weight': ctaFontWeight,
