@@ -4,7 +4,7 @@
 
 import generateCSS from '@Controls/generateCSS';
 import generateCSSUnit from '@Controls/generateCSSUnit';
-import { getFallbackNumber } from '@Controls/getAttributeFallback';
+import getAttributeFallback, { getFallbackNumber } from '@Controls/getAttributeFallback';
 import generateBorderCSS from '@Controls/generateBorderCSS';
 
 function styling( props ) {
@@ -186,6 +186,24 @@ function styling( props ) {
 	const toggleBorderTablet = generateBorderCSS( props.attributes, 'checkBoxToggle', 'tablet' );
 	const toggleBorderMobile = generateBorderCSS( props.attributes, 'checkBoxToggle', 'mobile' );
 
+	// Individual Toggle Border Radius Fallback for Inner Dot.
+	let toggleBorderRadiusTLFallback = getAttributeFallback( toggleBorder['border-top-left-radius'], 'checkBoxToggleBorderTopLeftRadius', blockName );
+	let toggleBorderRadiusTRFallback = getAttributeFallback( toggleBorder['border-top-right-radius'], 'checkBoxToggleBorderTopRightRadius', blockName );
+	let toggleBorderRadiusBRFallback = getAttributeFallback( toggleBorder['border-bottom-right-radius'], 'checkBoxToggleBorderBottomRightRadius', blockName );
+	let toggleBorderRadiusBLFallback = getAttributeFallback( toggleBorder['border-bottom-left-radius'], 'checkBoxToggleBorderBottomLeftRadius', blockName );
+	toggleBorderRadiusTLFallback = isNaN( toggleBorderRadiusTLFallback ) ? toggleBorderRadiusTLFallback : `${ toggleBorderRadiusTLFallback }px`;
+	toggleBorderRadiusTRFallback = isNaN( toggleBorderRadiusTRFallback ) ? toggleBorderRadiusTRFallback : `${ toggleBorderRadiusTRFallback }px`;
+	toggleBorderRadiusBRFallback = isNaN( toggleBorderRadiusBRFallback ) ? toggleBorderRadiusBRFallback : `${ toggleBorderRadiusBRFallback }px`;
+	toggleBorderRadiusBLFallback = isNaN( toggleBorderRadiusBLFallback ) ? toggleBorderRadiusBLFallback : `${ toggleBorderRadiusBLFallback }px`;
+	const toggleBorderRadiusTLTabletFallback = ( undefined !== toggleBorderTablet['border-top-left-radius'] ) ? toggleBorderTablet['border-top-left-radius'] : toggleBorderRadiusTLFallback;
+	const toggleBorderRadiusTRTabletFallback = ( undefined !== toggleBorderTablet['border-top-right-radius'] ) ? toggleBorderTablet['border-top-right-radius'] : toggleBorderRadiusTRFallback;
+	const toggleBorderRadiusBRTabletFallback = ( undefined !== toggleBorderTablet['border-bottom-right-radius'] ) ? toggleBorderTablet['border-bottom-right-radius'] : toggleBorderRadiusBRFallback;
+	const toggleBorderRadiusBLTabletFallback = ( undefined !== toggleBorderTablet['border-bottom-left-radius'] ) ? toggleBorderTablet['border-bottom-left-radius'] : toggleBorderRadiusBLFallback;
+	const toggleBorderRadiusTLMobileFallback = ( undefined !== toggleBorderMobile['border-top-left-radius'] ) ? toggleBorderMobile['border-top-left-radius'] : toggleBorderRadiusTLTabletFallback;
+	const toggleBorderRadiusTRMobileFallback = ( undefined !== toggleBorderMobile['border-top-right-radius'] ) ? toggleBorderMobile['border-top-right-radius'] : toggleBorderRadiusTRTabletFallback;
+	const toggleBorderRadiusBRMobileFallback = ( undefined !== toggleBorderMobile['border-bottom-right-radius'] ) ? toggleBorderMobile['border-bottom-right-radius'] : toggleBorderRadiusBRTabletFallback;
+	const toggleBorderRadiusBLMobileFallback = ( undefined !== toggleBorderMobile['border-bottom-left-radius'] ) ? toggleBorderMobile['border-bottom-left-radius'] : toggleBorderRadiusBLTabletFallback;
+
 	const submitBorder = generateBorderCSS( props.attributes, 'btn' );
 	const submitBorderTablet = generateBorderCSS( props.attributes, 'btn', 'tablet' );
 	const submitBorderMobile = generateBorderCSS( props.attributes, 'btn', 'mobile' );
@@ -318,14 +336,14 @@ function styling( props ) {
 		' .uagb-switch': {
 			// 20 is the min size of the toggle.
 			// Space around the toggle dot is calculated as 1/6th the size of the toggle dot.
-			'height': generateCSSUnit(
-				parseInt( 20 + toggleWidthSizeNumber + ( toggleBorderWidth * 2 ) + ( ( 20 + toggleWidthSizeNumber ) / 3 ) ),
+			'height': `calc(${ toggleBorder['border-bottom-width'] } + ${ toggleBorder['border-top-width'] } + ${ generateCSSUnit(
+				parseInt( 20 + toggleWidthSizeNumber + ( ( 20 + toggleWidthSizeNumber ) / 3 ) ),
 				'px'
-			),
-			'width': generateCSSUnit(
-				parseInt( ( ( 20 + toggleWidthSizeNumber ) * 2.5 ) + ( toggleBorderWidth * 2 ) + ( ( 20 + toggleWidthSizeNumber ) / 3 ) ),
+			) })`,
+			'width': `calc(${ toggleBorder['border-left-width'] } + ${ toggleBorder['border-right-width'] } + ${ generateCSSUnit(
+				parseInt( ( ( 20 + toggleWidthSizeNumber ) * 2.5 ) + ( ( 20 + toggleWidthSizeNumber ) / 3 ) ),
 				'px'
-			),
+			) })`,
 		},
 		' .uagb-switch input:checked + .uagb-slider': {
 			'background-color': toggleActiveColor,
@@ -344,6 +362,7 @@ function styling( props ) {
 			'bottom': generateCSSUnit( parseInt( ( 20 + toggleWidthSizeNumber ) / 6 ), 'px' ),
 			'left': generateCSSUnit( parseInt( ( 20 + toggleWidthSizeNumber ) / 6 ), 'px' ),
 			'background-color': toggleDotColor,
+			'border-radius': `${ toggleBorderRadiusTLFallback } ${ toggleBorderRadiusTRFallback } ${ toggleBorderRadiusBRFallback } ${ toggleBorderRadiusBLFallback }`,
 		},
 		' .uagb-slider.round': {
 			'border-radius': generateCSSUnit( 20 + toggleWidthSizeNumber, 'px' ),
@@ -444,14 +463,14 @@ function styling( props ) {
 			'height': generateCSSUnit( toggleSizeTabletFallback, 'px' ),
 		},
 		' .uagb-switch' : {
-			'height': generateCSSUnit(
-				parseInt( 20 + toggleWidthSizeNumberTablet + ( toggleBorderWidth * 2 ) + ( ( 20 + toggleWidthSizeNumberTablet ) / 3 ) ),
+			'height': `calc(${ toggleBorderTablet['border-top-width'] } + ${ toggleBorderTablet['border-bottom-width'] } + ${ generateCSSUnit(
+				parseInt( 20 + toggleWidthSizeNumberTablet + ( ( 20 + toggleWidthSizeNumberTablet ) / 3 ) ),
 				'px'
-			),
-			'width': generateCSSUnit(
-				parseInt( ( ( 20 + toggleWidthSizeNumberTablet ) * 2.5 ) + ( toggleBorderWidth * 2 ) + ( ( 20 + toggleWidthSizeNumberTablet ) / 3 ) ),
+			) })`,
+			'width': `calc(${ toggleBorderTablet['border-left-width'] } + ${ toggleBorderTablet['border-right-width'] } + ${ generateCSSUnit(
+				parseInt( ( ( 20 + toggleWidthSizeNumberTablet ) * 2.5 ) + ( ( 20 + toggleWidthSizeNumberTablet ) / 3 ) ),
 				'px'
-			),
+			) })`,
 		},
 		' .uagb-switch .uagb-slider:before' : {
 			'height': generateCSSUnit( 20 + toggleWidthSizeNumberTablet, 'px' ),
@@ -460,6 +479,7 @@ function styling( props ) {
 			'bottom': generateCSSUnit( parseInt( ( 20 + toggleWidthSizeNumberTablet ) / 6 ), 'px' ),
 			'left': generateCSSUnit( parseInt( ( 20 + toggleWidthSizeNumberTablet ) / 6 ), 'px' ),
 			'background-color': toggleDotColor,
+			'border-radius': `${ toggleBorderRadiusTLTabletFallback } ${ toggleBorderRadiusTRTabletFallback } ${ toggleBorderRadiusBRTabletFallback } ${ toggleBorderRadiusBLTabletFallback }`,
 		},
 		' .uagb-slider.round': {
 			'border-radius': generateCSSUnit( 20 + toggleWidthSizeNumberTablet, 'px' ),
@@ -560,14 +580,14 @@ function styling( props ) {
 			'margin-bottom': generateCSSUnit( fieldGapMobile, fieldGapType ),
 		},
 		' .uagb-switch' : {
-			'height': generateCSSUnit(
-				parseInt(  20 + toggleWidthSizeNumberMobile + ( toggleBorderWidth * 2 ) + ( ( 20 + toggleWidthSizeNumberMobile ) / 3 ) ),
+			'height': `calc(${ toggleBorderMobile['border-top-width'] } + ${ toggleBorderMobile['border-bottom-width'] } + ${ generateCSSUnit(
+				parseInt(  20 + toggleWidthSizeNumberMobile + ( ( 20 + toggleWidthSizeNumberMobile ) / 3 ) ),
 				'px'
-			),
-			'width': generateCSSUnit(
-				parseInt(  ( ( 20 + toggleWidthSizeNumberMobile ) * 2.5 ) + ( toggleBorderWidth * 2 ) + ( ( 20 + toggleWidthSizeNumberMobile ) / 3 ) ),
+			) })`,
+			'width': `calc(${ toggleBorderMobile['border-left-width'] } + ${ toggleBorderMobile['border-right-width'] } + ${ generateCSSUnit(
+				parseInt(  ( ( 20 + toggleWidthSizeNumberMobile ) * 2.5 ) + ( ( 20 + toggleWidthSizeNumberMobile ) / 3 ) ),
 				'px'
-			),
+			) })`,
 		},
 		' .uagb-switch .uagb-slider:before' : {
 			'height': generateCSSUnit( 20 + toggleWidthSizeNumberMobile, 'px' ),
@@ -576,6 +596,7 @@ function styling( props ) {
 			'bottom': generateCSSUnit( parseInt( ( 20 + toggleWidthSizeNumberMobile ) / 6 ), 'px' ),
 			'left': generateCSSUnit( parseInt( ( 20 + toggleWidthSizeNumberMobile ) / 6 ), 'px' ),
 			'background-color': toggleDotColor,
+			'border-radius': `${ toggleBorderRadiusTLMobileFallback } ${ toggleBorderRadiusTRMobileFallback } ${ toggleBorderRadiusBRMobileFallback } ${ toggleBorderRadiusBLMobileFallback }`,
 		},
 		' .uagb-slider.round': {
 			'border-radius': generateCSSUnit( 20 + toggleWidthSizeNumberMobile, 'px' ),
