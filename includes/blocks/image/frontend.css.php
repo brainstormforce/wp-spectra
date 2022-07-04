@@ -40,6 +40,7 @@ $selectors = array(
 		'margin-right'  => UAGB_Helper::get_css_value( $attr['imageRightMargin'], $attr['imageMarginUnit'] ),
 		'margin-bottom' => UAGB_Helper::get_css_value( $attr['imageBottomMargin'], $attr['imageMarginUnit'] ),
 		'margin-left'   => UAGB_Helper::get_css_value( $attr['imageLeftMargin'], $attr['imageMarginUnit'] ),
+		'text-align'    => $attr['align']
 	),
 	'.wp-block-uagb-image--layout-default img' => array_merge(
 		$image_border_css,
@@ -172,6 +173,8 @@ $t_selectors['.wp-block-uagb-image']                                  = array(
 	'margin-right'  => UAGB_Helper::get_css_value( $attr['imageRightMarginTablet'], $attr['imageMarginUnitTablet'] ),
 	'margin-bottom' => UAGB_Helper::get_css_value( $attr['imageBottomMarginTablet'], $attr['imageMarginUnitTablet'] ),
 	'margin-left'   => UAGB_Helper::get_css_value( $attr['imageLeftMarginTablet'], $attr['imageMarginUnitTablet'] ),
+	'text-align'    => $attr['alignTablet'],
+	'float'    => 'center' !== $attr['alignTablet'] ?  $attr['alignTablet'] : 'none'
 );
 $t_selectors['.wp-block-uagb-image .wp-block-uagb-image__figure figcaption']                           = array(
 	'font-size'     => UAGB_Helper::get_css_value( $attr['captionFontSizeTablet'], $attr['captionFontSizeType'] ),
@@ -207,6 +210,8 @@ $m_selectors['.wp-block-uagb-image']                                  = array(
 	'margin-right'  => UAGB_Helper::get_css_value( $attr['imageRightMarginMobile'], $attr['imageMarginUnitMobile'] ),
 	'margin-bottom' => UAGB_Helper::get_css_value( $attr['imageBottomMarginMobile'], $attr['imageMarginUnitMobile'] ),
 	'margin-left'   => UAGB_Helper::get_css_value( $attr['imageLeftMarginMobile'], $attr['imageMarginUnitMobile'] ),
+	'text-align'    => $attr['alignMobile'],
+	'text-align'    => 'center' !== $attr['alignMobile'] ?  $attr['alignMobile'] : 'none'
 );
 $m_selectors['.wp-block-uagb-image .wp-block-uagb-image__figure figcaption'] = array(
 	'font-size'     => UAGB_Helper::get_css_value( $attr['captionFontSizeMobile'], $attr['captionFontSizeType'] ),

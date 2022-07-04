@@ -39,6 +39,8 @@ return array_merge(
 		'imageMarginUnitTablet'       => 'px',
 		'imageMarginUnitMobile'       => 'px',
 		'align'						  => '',
+		'alignTablet'				  => '',
+		'alignMobile'				  => '',
 		// heading.
 		'headingShowOn'               => 'always',
 		'headingLoadGoogleFonts'      => false,
