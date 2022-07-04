@@ -211,7 +211,7 @@ $m_selectors['.wp-block-uagb-image']                                  = array(
 	'margin-bottom' => UAGB_Helper::get_css_value( $attr['imageBottomMarginMobile'], $attr['imageMarginUnitMobile'] ),
 	'margin-left'   => UAGB_Helper::get_css_value( $attr['imageLeftMarginMobile'], $attr['imageMarginUnitMobile'] ),
 	'text-align'    => $attr['alignMobile'],
-	'text-align'    => 'center' !== $attr['alignMobile'] ?  $attr['alignMobile'] : 'none'
+	'float'    => 'center' !== $attr['alignMobile'] ?  $attr['alignMobile'] : 'none'
 );
 $m_selectors['.wp-block-uagb-image .wp-block-uagb-image__figure figcaption'] = array(
 	'font-size'     => UAGB_Helper::get_css_value( $attr['captionFontSizeMobile'], $attr['captionFontSizeType'] ),
