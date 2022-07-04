@@ -77,6 +77,12 @@
 	}
 }
 
+.uag-advance-panel-body-layout {
+	.uagb-responsive-select-control .uagb-size-type-field-tabs {
+		grid-template-columns: 40% 60%;
+	}
+}
+
 .edit-post-visual-editor .uagb-tabs__wrap .block-editor-button-block-appender {
 	display: none;
 }
