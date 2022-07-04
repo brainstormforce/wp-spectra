@@ -30,8 +30,7 @@ export const PostTitle = ( props ) => {
 					target={ target }
 					rel="noopener noreferrer"
 				>
-					{ decodeEntities( post.title.rendered.trim() ) ||
-						__( '(Untitled)' ) }
+					{ decodeEntities( post.title.rendered.trim() ) }
 				</a>
 			</Tag>
 		);
