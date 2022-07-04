@@ -487,9 +487,6 @@ function styling( props ) {
 				paddingBtnRightTablet,
 				tabletPaddingBtnUnit
 			),
-			...submitBorderTablet
-		},
-		' .uagb-forms-main-form .uagb-forms-main-submit-button': { // eslint-disable-line no-dupe-keys
 			'font-size': generateCSSUnit(
 				submitTextFontSizeTablet,
 				submitTextFontSizeType
@@ -498,7 +495,11 @@ function styling( props ) {
 				submitTextLineHeightTablet,
 				submitTextLineHeightType
 			),
-			'letter-spacing': generateCSSUnit( submitLetterSpacingTablet, submitLetterSpacingType ),
+			'letter-spacing': generateCSSUnit(
+				submitLetterSpacingTablet,
+				submitLetterSpacingType
+			),
+			...submitBorderTablet
 		},
 		' .uagb-forms-main-form .uagb-forms-input-label': {
 			'font-size': generateCSSUnit(
