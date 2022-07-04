@@ -208,6 +208,8 @@ function styling( props ) {
 	const submitBorderTablet = generateBorderCSS( props.attributes, 'btn', 'tablet' );
 	const submitBorderMobile = generateBorderCSS( props.attributes, 'btn', 'mobile' );
 
+	console.log( submitBorder );
+
 	selectors = {
 		'.uagb-forms__outer-wrap': {
 			'padding-top': generateCSSUnit( formPaddingTop, formPaddingUnit ),
@@ -430,6 +432,11 @@ function styling( props ) {
 			'color': inputplaceholderHColor,
 		},
 	};
+
+	// Browser's user-agennt adds a dfault border in editor, hence we remove it.
+	if( !( 'border-style' in submitBorder ) ) {
+		selectors[' .uagb-forms-main-form .uagb-forms-main-submit-button']['border-width'] = '0';
+	}
 
 	tabletSelectors = {
 		'.uagb-forms__outer-wrap': {
