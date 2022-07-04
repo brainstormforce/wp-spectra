@@ -39,6 +39,7 @@
 	li.uagb-tab.uagb-tabs__add-tab {
 		cursor: pointer;
 		display: block;
+
 		> span {
 			width: auto;
 			height: auto;
@@ -58,11 +59,13 @@
 	}
 
 	.uagb-tab.uagb-tabs__add-tab {
+
 		> span {
 			width: auto;
 			height: auto;
 			padding: 6px 12px;
 		}
+
 		.dashicon {
 			vertical-align: middle;
 		}
@@ -78,6 +81,7 @@
 }
 
 .uag-advance-panel-body-layout {
+
 	.uagb-responsive-select-control .uagb-size-type-field-tabs {
 		grid-template-columns: 40% 60%;
 	}
