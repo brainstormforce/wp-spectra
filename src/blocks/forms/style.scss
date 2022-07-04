@@ -21,7 +21,6 @@
 		.uagb-forms-input,
 		input[type="text"] {
 			min-height: 0 !important;
-			line-height: unset;
 			&::-webkit-input-placeholder {
 				overflow: unset;
 			}
