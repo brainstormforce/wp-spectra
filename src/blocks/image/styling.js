@@ -16,6 +16,7 @@ export default function styling( props ) {
 		widthMobile,
 		heightTablet,
 		heightMobile,
+		align,
 		// image
 		imageTopMargin,
 		imageRightMargin,
@@ -177,6 +178,7 @@ export default function styling( props ) {
 				imageLeftMargin,
 				imageMarginUnit
 			),
+			'text-align': align
 		},
 		'.wp-block-uagb-image--layout-default img':{
 			'width': 'inherit',

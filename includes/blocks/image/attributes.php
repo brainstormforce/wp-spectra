@@ -38,6 +38,7 @@ return array_merge(
 		'imageMarginUnit'             => 'px',
 		'imageMarginUnitTablet'       => 'px',
 		'imageMarginUnitMobile'       => 'px',
+		'align'						  => '',
 		// heading.
 		'headingShowOn'               => 'always',
 		'headingLoadGoogleFonts'      => false,
