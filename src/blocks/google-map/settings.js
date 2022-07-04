@@ -6,7 +6,9 @@ import InspectorTabs from '@Components/inspector-tabs/InspectorTabs.js';
 import InspectorTab, {
 	UAGTabs,
 } from '@Components/inspector-tabs/InspectorTab.js';
-import { TextControl, SelectControl } from '@wordpress/components';
+import UAGSelectControl from '@Components/select-control';
+import { TextControl } from '@wordpress/components';
+import ResponsiveSlider from '@Components/responsive-slider';
 
 import UAGAdvancedPanelBody from '@Components/advanced-panel-body';
 
@@ -15,7 +17,14 @@ const Settings = ( props ) => {
 
 	const {
 		setAttributes,
-		attributes: { height, zoom, address, language },
+		attributes: { 
+			height,
+			heightTablet,
+			heightMobile,
+			zoom,
+			address,
+			language,
+		},
 	} = props;
 
 	return (
@@ -59,32 +68,41 @@ const Settings = ( props ) => {
 							max={ 22 }
 							displayUnit={ false }
 						/>
-						<Range
+						<ResponsiveSlider
 							label={ __(
 								'Height',
 								'ultimate-addons-for-gutenberg'
 							) }
-							value={ height }
 							data={ {
-								value: height,
-								label: 'height',
+								desktop: {
+									value: height,
+									label: 'height',
+								},
+								tablet: {
+									value: heightTablet,
+									label: 'heightTablet',
+								},
+								mobile: {
+									value: heightMobile,
+									label: 'heightMobile',
+								},
 							} }
 							min={ 0 }
 							max={ 1000 }
 							displayUnit={ false }
 							setAttributes={ setAttributes }
+							responsive={ true }
 						/>
-						<SelectControl
+						<UAGSelectControl
 							label={ __(
 								'Language',
 								'ultimate-addons-for-gutenberg'
 							) }
-							value={ language }
-							onChange={ ( value ) =>
-								setAttributes( {
-									language: value,
-								} )
-							}
+							data={ {
+								value: language,
+								label: 'language',
+							} }
+							setAttributes={ setAttributes }
 							options={ [
 								{
 									value: 'af',

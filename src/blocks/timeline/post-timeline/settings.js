@@ -14,10 +14,10 @@ import MultiButtonsControl from '@Components/multi-buttons-control';
 import renderSVG from '@Controls/renderIcon';
 import UAGTabsControl from '@Components/tabs';
 import SpacingControl from '@Components/spacing-control';
+import UAGSelectControl from '@Components/select-control';
 import { dateI18n } from '@wordpress/date';
 import {
 	QueryControls,
-	SelectControl,
 	ToggleControl,
 	TextControl,
 	Icon,
@@ -349,31 +349,39 @@ const Settings = ( props ) => {
 				title={ __( 'Query', 'ultimate-addons-for-gutenberg' ) }
 				initialOpen={ true }
 			>
-				<SelectControl
-					label={ __( 'Post Type', 'ultimate-addons-for-gutenberg' ) }
-					value={ postType }
-					onChange={ ( value ) => onSelectPostType( value ) }
+				<UAGSelectControl
+					label={ __(
+						'Post Type',
+						'ultimate-addons-for-gutenberg'
+					) }
+					data={ {
+						value: postType,
+					} }
+					onChange={ onSelectPostType }
 					options={ uagb_blocks_info.post_types }
 				/>
 				{ '' !== taxonomyList && (
-					<SelectControl
+					<UAGSelectControl
 						label={ __(
 							'Taxonomy',
 							'ultimate-addons-for-gutenberg'
 						) }
-						value={ taxonomyType }
-						onChange={ ( value ) => onSelectTaxonomyType( value ) }
+						data={ {
+							value: taxonomyType,
+						} }
+						onChange={ onSelectTaxonomyType }
 						options={ taxonomyListOptions }
 					/>
 				) }
 				{ '' != categoriesList && ( // eslint-disable-line eqeqeq
 					<>
-						<SelectControl
+						<UAGSelectControl
 							label={ taxonomyList[ taxonomyType ].label }
-							value={ categories }
-							onChange={ ( value ) =>
-								setAttributes( { categories: value } )
-							}
+							data={ {
+								value: categories,
+								label: 'categories',
+							} }
+							setAttributes={ setAttributes }
 							options={ categoryListOptions }
 						/>
 					</>
@@ -665,16 +673,17 @@ const Settings = ( props ) => {
 					}
 				/>
 				{ displayPostImage && (
-					<SelectControl
+					<UAGSelectControl
 						label={ __(
-							'Featured Image Style',
+							'Image Size',
 							'ultimate-addons-for-gutenberg'
 						) }
+						data={ {
+							value: imageSize,
+							label: 'imageSize',
+						} }
+						setAttributes={ props.setAttributes }
 						options={ uagb_blocks_info.image_sizes }
-						value={ imageSize }
-						onChange={ ( value ) =>
-							props.setAttributes( { imageSize: value } )
-						}
 					/>
 				) }
 			</UAGAdvancedPanelBody>
@@ -757,15 +766,16 @@ const Settings = ( props ) => {
 					}
 				/>
 				{ displayPostDate && (
-					<SelectControl
+					<UAGSelectControl
 						label={ __(
 							'Date Format',
 							'ultimate-addons-for-gutenberg'
 						) }
-						value={ dateFormat }
-						onChange={ ( value ) =>
-							setAttributes( { dateFormat: value } )
-						}
+						data={ {
+							value: dateFormat,
+							label: 'dateFormat',
+						} }
+						setAttributes={ setAttributes }
 						options={ [
 							{
 								value: 'M j, Y',
