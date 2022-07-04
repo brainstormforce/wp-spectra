@@ -56,6 +56,12 @@
 	}
 }
 
+/* Gutenberg Image block right alignment causing image to go out of screen in the editor */
+.editor-styles-wrapper .block-editor-block-list__layout.is-root-container > .wp-block.alignright[data-type="uagb/image"], 
+.editor-styles-wrapper .block-editor-block-list__layout.is-root-container > .wp-block.alignleft[data-type="uagb/image"] {
+    margin-inline-start: 0;
+}
+
 /* Gutenberg Editor border hover */
 .edit-post-visual-editor .editor-styles-wrapper > .block-editor-block-list__layout {
 
