@@ -15,15 +15,15 @@ import ResponsiveSlider from '@Components/responsive-slider';
 import { InspectorControls } from '@wordpress/block-editor';
 import renderSVG from '@Controls/renderIcon';
 import UAGTabsControl from '@Components/tabs';
+import UAGSelectControl from '@Components/select-control';
 import {
-	SelectControl,
 	TextControl,
 	ToggleControl,
 	TextareaControl,
 	Icon,
 } from '@wordpress/components';
 
-import presets from './presets';
+import formsPresets, {buttonsPresets} from './presets';
 import UAGPresets from '@Components/presets';
 import UAGAdvancedPanelBody from '@Components/advanced-panel-body';
 
@@ -201,7 +201,7 @@ const Settings = ( props ) => {
 				>
 					<UAGPresets
 						setAttributes = { setAttributes }
-						presets = { presets }
+						presets = { formsPresets }
 						presetInputType = 'radioImage'
 					/>
 				</UAGAdvancedPanelBody>
@@ -1148,17 +1148,21 @@ const Settings = ( props ) => {
 			initialOpen={ false }
 			// className="uagb__url-panel-body"
 		>
-			<SelectControl
+			<UAGPresets
+				setAttributes = { setAttributes }
+				presets = { buttonsPresets }
+				presetInputType = 'radioImage'
+			/>
+			<UAGSelectControl
 				label={ __(
 					'Button Size',
 					'ultimate-addons-for-gutenberg'
 				) }
-				value={ buttonSize }
-				onChange={ ( value ) =>
-					setAttributes( {
-						buttonSize: value,
-					} )
-				}
+				data={ {
+					value: buttonSize,
+					label: 'buttonSize',
+				} }
+				setAttributes={ setAttributes }
 				options={ [
 					{
 						value: 'small',

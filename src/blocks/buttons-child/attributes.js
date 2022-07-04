@@ -511,25 +511,25 @@ const attributes = {
 	},
 	...borderAttributes,
 	// letter spacing.
-	fontLetterSpacing: {
+	letterSpacing: {
 		type: 'number',
 		UAGCopyPaste: {
 			styleType: 'main-title-letter-spacing'
 		}
 	},
-	fontLetterSpacingTablet: {
+	letterSpacingTablet: {
 		type: 'number',
 		UAGCopyPaste: {
 			styleType: 'main-title-letter-spacing-tablet'
 		}
 	},
-	fontLetterSpacingMobile: {
+	letterSpacingMobile: {
 		type: 'number',
 		UAGCopyPaste: {
 			styleType: 'main-title-letter-spacing-mobile'
 		}
 	},
-	fontLetterSpacingType: {
+	letterSpacingType: {
 		type: 'string',
 		default: 'px',
 		UAGCopyPaste: {
