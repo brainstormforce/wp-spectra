@@ -4,10 +4,10 @@
 import styles from './editor.lazy.scss';
 import React, { useLayoutEffect } from 'react';
 import { __, sprintf } from '@wordpress/i18n';
-import { ButtonGroup, Button, Tooltip, Dashicon } from '@wordpress/components';
-import { useState, useEffect } from '@wordpress/element';
+import { ButtonGroup, Button, Tooltip } from '@wordpress/components';
 import { useDeviceType } from '@Controls/getPreviewType';
 import ResponsiveToggle from '../responsive-toggle';
+import UAGReset from '../reset';
 
 const SpacingControl = ( props ) => {
 	// Add and remove the CSS on the drop and remove of the component.
@@ -20,12 +20,6 @@ const SpacingControl = ( props ) => {
 
 	const deviceType = useDeviceType();
 	const responsive = true;
-
-	const defaultCache = {
-		...props,
-	};
-
-	const [ cachedValue, setCacheValue ] = useState( defaultCache );
 
 	const {
 		label,
@@ -48,25 +42,6 @@ const SpacingControl = ( props ) => {
 		link,
 		setAttributes,
 	} = props;
-
-	useEffect( () => {
-		let cachedValueUpdate = { ...cachedValue };
-
-		if ( undefined !== props ) {
-			cachedValueUpdate = { ...props, ...cachedValue };
-			setCacheValue( cachedValueUpdate );
-		}
-	}, [] );
-
-	useEffect( () => {
-		const cachedValueUpdate = { ...cachedValue };
-		const propsValue = { ...props };
-		if (
-			JSON.stringify( cachedValueUpdate ) !== JSON.stringify( propsValue )
-		) {
-			setCacheValue( cachedValueUpdate );
-		}
-	}, [ props ] );
 
 	const onChangeUnits = ( value ) => {
 		if ( 'Mobile' === deviceType ) {
@@ -424,73 +399,30 @@ const SpacingControl = ( props ) => {
 		</>
 	);
 
-	const resetValues = () => {
+	const resetValues = ( defaultValues ) => {
 		const device = deviceType.toLowerCase();
-
-		const cachedValueUpdate = { ...cachedValue };
-		setCacheValue( cachedValueUpdate );
 
 		switch ( device ) {
 			case 'desktop':
-				onChangeTopValue( '', 'desktop', cachedValue?.valueTop?.value );
-				onChangeRightValue(
-					'',
-					'desktop',
-					cachedValue?.valueRight?.value
-				);
-				onChangeBottomValue(
-					'',
-					'desktop',
-					cachedValue?.valueBottom?.value
-				);
-				onChangeLeftValue( '', 'desktop', cachedValue?.valueLeft?.value );
-				setAttributes( { [ unit?.label ]: cachedValue?.unit?.value } );
+				onChangeTopValue( '', 'desktop', defaultValues[valueTop.label] );
+				onChangeRightValue( '', 'desktop', defaultValues[valueRight.label] );
+				onChangeBottomValue( '', 'desktop', defaultValues[valueBottom.label] );
+				onChangeLeftValue( '', 'desktop', defaultValues[valueLeft.label] );
+				setAttributes( { [ unit?.label ]: defaultValues[unit?.label] } );
 				break;
 			case 'tablet':
-				onChangeTopValue(
-					'',
-					'tablet',
-					cachedValue?.valueTopTablet?.value
-				);
-				onChangeRightValue(
-					'',
-					'tablet',
-					cachedValue?.valueRightTablet?.value
-				);
-				onChangeBottomValue(
-					'',
-					'tablet',
-					cachedValue?.valueBottomTablet?.value
-				);
-				onChangeLeftValue(
-					'',
-					'tablet',
-					cachedValue?.valueLeftTablet?.value
-				);
-				setAttributes( { [ tUnit?.label ]: cachedValue?.tUnit?.value } );
+				onChangeTopValue( '', 'tablet', defaultValues[valueTopTablet.label] );
+				onChangeRightValue( '', 'tablet', defaultValues[valueRightTablet.label] );
+				onChangeBottomValue( '', 'tablet', defaultValues[valueBottomTablet.label] );
+				onChangeLeftValue( '', 'tablet', defaultValues[valueLeftTablet.label] );
+				setAttributes( { [ tUnit?.label ]: defaultValues[tUnit?.label] } );
 				break;
 			case 'mobile':
-				onChangeTopValue(
-					'',
-					'mobile',
-					cachedValue?.valueTopMobile?.value
-				);
-				onChangeRightValue(
-					'',
-					'mobile',
-					cachedValue?.valueRightMobile?.value
-				);
-				onChangeBottomValue(
-					'',
-					'mobile',
-					cachedValue?.valueBottomMobile?.value
-				);
-				onChangeLeftValue(
-					'',
-					'mobile',
-					cachedValue?.valueLeftMobile?.value
-				);
-				setAttributes( { [ mUnit?.label ]: cachedValue?.mUnit?.value } );
+				onChangeTopValue( '', 'tablet', defaultValues[valueTopMobile.label] );
+				onChangeRightValue( '', 'tablet', defaultValues[valueRightMobile.label] );
+				onChangeBottomValue( '', 'tablet', defaultValues[valueBottomMobile.label] );
+				onChangeLeftValue( '', 'tablet', defaultValues[valueLeftMobile.label] );
+				setAttributes( { [ mUnit?.label ]: defaultValues[mUnit?.label] } );
 				break;
 		}
 	};
@@ -503,22 +435,26 @@ const SpacingControl = ( props ) => {
 					responsive= { responsive }
 				/>
 					<div className="uagb-control__actions">
-						<Tooltip
-							text={ __( 'Reset', 'ultimate-addons-for-gutenberg' )}
-							key={ 'reset' }
-						>
-						<Button
-							className="uagb-reset"
-							isSecondary
-							isSmall
-							onClick={ ( e ) => {
-								e.preventDefault();
-								resetValues();
-							} }
-						>
-							<Dashicon icon="image-rotate" />
-						</Button>
-						</Tooltip>
+						<UAGReset
+							onReset={resetValues}
+							attributeNames = {[
+								valueTop?.label,
+								valueRight?.label,
+								valueBottom?.label,
+								valueLeft?.label,
+								valueTopTablet?.label,
+								valueRightTablet?.label,
+								valueBottomTablet?.label,
+								valueLeftTablet?.label,
+								valueTopMobile?.label,
+								valueRightMobile?.label,
+								valueBottomMobile?.label,
+								valueLeftMobile?.label,
+								unit?.label,
+								tUnit?.label,
+								mUnit?.label
+							]}
+						/>
 						<ButtonGroup
 							className="uagb-control__units"
 							aria-label={ __(
