@@ -105,7 +105,7 @@ const Render = ( props ) => {
 
 	const settings = {
 		accessibility: false,
-		slidesToShow: getFallbackNumber( columns, 'columns', blockName ),
+		slidesToShow: ( deviceType === 'Desktop' ? getFallbackNumber( columns, 'columns', blockName ) : deviceType === 'Tablet' ? getFallbackNumber( tcolumns, 'columns', blockName ): getFallbackNumber( mcolumns, 'columns', blockName ) ), // eslint-disable-line no-nested-ternary
 		slidesToScroll: 1,
 		autoplaySpeed: getFallbackNumber( autoplaySpeed, 'autoplaySpeed', blockName ),
 		autoplay,
@@ -123,22 +123,6 @@ const Render = ( props ) => {
 		draggable: false,
 		nextArrow: <NextArrow arrowSize={ arrowSize } onClick={sliderRef.slickNext} />,
 		prevArrow: <PrevArrow arrowSize={ arrowSize } onClick={sliderRef.slickPrev} />,
-		responsive: [
-			{
-				breakpoint: 1024,
-				settings: {
-					slidesToShow: getFallbackNumber( tcolumns, 'tcolumns', blockName ),
-					slidesToScroll: 1,
-				},
-			},
-			{
-				breakpoint: 767,
-				settings: {
-					slidesToShow: getFallbackNumber( mcolumns, 'mcolumns', blockName ),
-					slidesToScroll: 1,
-				},
-			},
-		],
 	};
 
 	const previewImageData = `${ uagb_blocks_info.uagb_url }/admin/assets/preview-images/testimonials.png`;

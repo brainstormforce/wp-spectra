@@ -150,7 +150,8 @@
 	}
 
 	.uagb-slider.round::before {
-		border-radius: 50%;
+		// Important is added to override the Square Styling if Rounded is Selected.
+		border-radius: 50% !important;
 	}
 	// Toggle Css End
 }
@@ -166,10 +167,14 @@
 	margin-right: 10px;
 	margin-bottom: 5px;
 	box-sizing: content-box;
-	border-radius: 100%;
 	text-align: center;
 	line-height: 1.2;
 	content: "";
+}
+
+.uagb-forms-radio-wrap input[type="radio"].round + label::before {
+	// Important is added to override the Square Styling if Rounded is Selected.
+	border-radius: 100% !important;
 }
 
 select::after,

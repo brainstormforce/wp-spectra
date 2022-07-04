@@ -22,7 +22,7 @@ const UAGB_Block_Icons = {
 	),
 	section: el(
 		'svg',
-		{ width: 24, height: 24, viewBox: '1 1 20 20', fill: 'none', className: 'uagb-editor-icons' },
+		{ width: 24, height: 24, viewBox: '2 2 20 20', fill: 'none', className: 'uagb-editor-icons' },
 		el( 'path', {
 			'fill': iconColor,
 			'fill-rule': 'evenodd',
@@ -67,7 +67,7 @@ const UAGB_Block_Icons = {
 	),
 	advanced_heading: el(
 		'svg',
-		{ width: 24, height: 24, viewBox: '1 1 20 20', fill: 'none', className: 'uagb-editor-icons'  },
+		{ width: 24, height: 24, viewBox: '2 2 20 20', fill: 'none', className: 'uagb-editor-icons'  },
 		el( 'path', {
 			'fill': iconColor,
 			'fill-rule': 'evenodd',
@@ -78,7 +78,7 @@ const UAGB_Block_Icons = {
 	),
 	google_map: el(
 		'svg',
-		{ width: 24, height: 24, viewBox: '1 1 20 20', fill: 'none', className: 'uagb-editor-icons'  },
+		{ width: 24, height: 24, viewBox: '2 2 20 20', fill: 'none', className: 'uagb-editor-icons'  },
 		el( 'path', {
 			'fill': iconColor,
 			'fill-rule': 'evenodd',
@@ -89,7 +89,7 @@ const UAGB_Block_Icons = {
 	),
 	info_box: el(
 		'svg',
-		{ width: 24, height: 24, viewBox: '1 1 20 20', fill: 'none', className: 'uagb-editor-icons'   },
+		{ width: 24, height: 24, viewBox: '2 2 20 20', fill: 'none', className: 'uagb-editor-icons'   },
 		el( 'path', {
 			'fill': iconColor,
 			'fill-rule': 'evenodd',
@@ -100,7 +100,7 @@ const UAGB_Block_Icons = {
 	),
 	post_carousel: el(
 		'svg',
-		{ width: 24, height: 24, viewBox: '1 1 20 20', fill: 'none', className: 'uagb-editor-icons'  },
+		{ width: 24, height: 24, viewBox: '2 2 20 20', fill: 'none', className: 'uagb-editor-icons'  },
 		el( 'path', {
 			'fill': iconColor,
 			'fill-rule': 'evenodd',
@@ -111,7 +111,7 @@ const UAGB_Block_Icons = {
 	),
 	post_masonry: el(
 		'svg',
-		{ width: 24, height: 24, viewBox: '1 1 20 20', fill: 'none', className: 'uagb-editor-icons'  },
+		{ width: 24, height: 24, viewBox: '2 2 20 20', fill: 'none', className: 'uagb-editor-icons'  },
 		el( 'path', {
 			'fill': iconColor,
 			'fill-rule': 'evenodd',
@@ -122,7 +122,7 @@ const UAGB_Block_Icons = {
 	),
 	post_grid: el(
 		'svg',
-		{ width: 24, height: 24, viewBox: '1 1 20 20', fill: 'none', className: 'uagb-editor-icons'  },
+		{ width: 24, height: 24, viewBox: '2 2 20 20', fill: 'none', className: 'uagb-editor-icons'  },
 		el( 'path', {
 			fill: iconColor,
 			d:
@@ -131,7 +131,7 @@ const UAGB_Block_Icons = {
 	),
 	testimonial: el(
 		'svg',
-		{ width: 24, height: 24, viewBox: '1 1 20 20', fill: 'none', className: 'uagb-editor-icons'  },
+		{ width: 24, height: 24, viewBox: '2 2 20 20', fill: 'none', className: 'uagb-editor-icons'  },
 		el( 'path', {
 			'fill': iconColor,
 			'fill-rule': 'evenodd',
@@ -153,7 +153,7 @@ const UAGB_Block_Icons = {
 	),
 	gf_styler: el(
 		'svg',
-		{ width: 24, height: 24, viewBox: '1 1 20 20', className: 'uagb-editor-icons'  },
+		{ width: 24, height: 24, viewBox: '2 2 20 20', className: 'uagb-editor-icons'  },
 		el( 'path', {
 			fill: iconColor,
 			d:
@@ -162,7 +162,7 @@ const UAGB_Block_Icons = {
 	),
 	content_timeline: el(
 		'svg',
-		{ width: 24, height: 24, viewBox: '1 1 20 20', className: 'uagb-editor-icons'  },
+		{ width: 24, height: 24, viewBox: '2 2 20 20', className: 'uagb-editor-icons'  },
 		el( 'path', {
 			'fill': iconColor,
 			'fill-rule': 'evenodd',
@@ -173,7 +173,7 @@ const UAGB_Block_Icons = {
 	),
 	call_to_action: el(
 		'svg',
-		{ width: 24, height: 24, viewBox: '1 1 20 20', className: 'uagb-editor-icons'  },
+		{ width: 24, height: 24, viewBox: '2 2 20 20', className: 'uagb-editor-icons'  },
 		el( 'path', {
 			fill: iconColor,
 			d:
@@ -182,7 +182,7 @@ const UAGB_Block_Icons = {
 	),
 	post_timeline: el(
 		'svg',
-		{ width: 24, height: 24, viewBox: '1 1 20 20', className: 'uagb-editor-icons'  },
+		{ width: 24, height: 24, viewBox: '2 2 20 20', className: 'uagb-editor-icons'  },
 		el( 'path', {
 			'fill': iconColor,
 			'fill-rule':'evenodd',
@@ -193,7 +193,7 @@ const UAGB_Block_Icons = {
 	),
 	icon_list: el(
 		'svg',
-		{ width: 24, height: 24, viewBox: '1 1 20 20', fill: 'none', className: 'uagb-editor-icons'  },
+		{ width: 24, height: 24, viewBox: '2 2 20 20', fill: 'none', className: 'uagb-editor-icons'  },
 		el( 'path', {
 			'fill': iconColor,
 			'fill-rule':'evenodd',
@@ -215,7 +215,7 @@ const UAGB_Block_Icons = {
 	),
 	team: el(
 		'svg',
-		{ width: 24, height: 24, viewBox: '1 1 20 20', className: 'uagb-editor-icons'  },
+		{ width: 24, height: 24, viewBox: '2 2 20 20', className: 'uagb-editor-icons'  },
 		el( 'path', {
 			'fill': iconColor,
 			'fill-rule':'evenodd',
@@ -226,7 +226,7 @@ const UAGB_Block_Icons = {
 	),
 	tabs: el(
 		'svg',
-		{ width: 24, height: 24, viewBox: '1 1 20 20', className: 'uagb-editor-icons'  },
+		{ width: 24, height: 24, viewBox: '2 2 20 20', className: 'uagb-editor-icons'  },
 		el( 'path', {
 			'fill': iconColor,
 			'fill-rule':'evenodd',
@@ -269,7 +269,7 @@ const UAGB_Block_Icons = {
 	),
 	restaurant_menu: el(
 		'svg',
-		{ width: 24, height: 24, viewBox: '1 1 20 20', fill: 'none', className: 'uagb-editor-icons'  },
+		{ width: 24, height: 24, viewBox: '2 2 20 20', fill: 'none', className: 'uagb-editor-icons'  },
 		el( 'path', {
 			fill: iconColor,
 			d:
@@ -278,7 +278,7 @@ const UAGB_Block_Icons = {
 	),
 	blockquote: el(
 		'svg',
-		{ width: 24, height: 24, viewBox: '1 1 20 20', fill: 'none', className: 'uagb-editor-icons'  },
+		{ width: 24, height: 24, viewBox: '2 2 20 20', fill: 'none', className: 'uagb-editor-icons'  },
 		el( 'path', {
 			'fill': iconColor,
 			'fill-rule':'evenodd',
@@ -288,7 +288,7 @@ const UAGB_Block_Icons = {
 	),
 	columns: el(
 		'svg',
-		{ width: 24, height: 24, viewBox: '1 1 20 20', fill: 'none', className: 'uagb-editor-icons'  },
+		{ width: 24, height: 24, viewBox: '2 2 20 20', fill: 'none', className: 'uagb-editor-icons'  },
 		el( 'path', {
 			fill: iconColor,
 			d:
@@ -316,7 +316,7 @@ const UAGB_Block_Icons = {
 	),
 	marketing_button: el(
 		'svg',
-		{ width: 24, height: 24, viewBox: '1 1 20 20', fill: 'none', className: 'uagb-editor-icons'  },
+		{ width: 24, height: 24, viewBox: '2 2 20 20', fill: 'none', className: 'uagb-editor-icons'  },
 		el( 'path', {
 			'fill': iconColor,
 			'fill-rule':'evenodd',
@@ -327,7 +327,7 @@ const UAGB_Block_Icons = {
 	),
 	table_of_contents: el(
 		'svg',
-		{ width: 24, height: 24, viewBox: '1 1 20 20', fill: 'none', className: 'uagb-editor-icons'  },
+		{ width: 24, height: 24, viewBox: '2 2 20 20', fill: 'none', className: 'uagb-editor-icons'  },
 		el( 'path', {
 			'fill': iconColor,
 			'fill-rule': 'evenodd',
@@ -338,7 +338,7 @@ const UAGB_Block_Icons = {
 	),
 	faq: el(
 		'svg',
-		{ width: 24, height: 24, viewBox: '1 1 20 20', className: 'uagb-editor-icons'  },
+		{ width: 24, height: 24, viewBox: '2 2 20 20', className: 'uagb-editor-icons'  },
 		el( 'path', {
 			'fill': iconColor,
 			'fill-rule': 'evenodd',
@@ -349,7 +349,7 @@ const UAGB_Block_Icons = {
 	),
 	forms: el(
 		'svg',
-		{ width: 24, height: 24, viewBox: '1 1 20 20', className: 'uagb-editor-icons'  },
+		{ width: 24, height: 24, viewBox: '2 2 20 20', className: 'uagb-editor-icons'  },
 		el( 'path', {
 			fill: iconColor,
 			d:
@@ -363,7 +363,7 @@ const UAGB_Block_Icons = {
 	),
 	how_to: el(
 		'svg',
-		{ width: 24, height: 24, viewBox: '1 1 20 20', className: 'uagb-editor-icons'  },
+		{ width: 24, height: 24, viewBox: '2 2 20 20', className: 'uagb-editor-icons'  },
 		el( 'path', {
 			'fill': iconColor,
 			'fill-rule':'evenodd',
@@ -374,7 +374,7 @@ const UAGB_Block_Icons = {
 	),
 	inline_notice: el(
 		'svg',
-		{ width: 24, height: 24, viewBox: '1 1 20 20', className: 'uagb-editor-icons'  },
+		{ width: 24, height: 24, viewBox: '2 2 20 20', className: 'uagb-editor-icons'  },
 		el( 'path', {
 			'fill': iconColor,
 			'fill-rule':'evenodd',
@@ -385,7 +385,7 @@ const UAGB_Block_Icons = {
 	),
 	wp_search: el(
 		'svg',
-		{ width: 24, height: 24, viewBox: '1 1 20 20', className: 'uagb-editor-icons'  },
+		{ width: 24, height: 24, viewBox: '2 2 20 20', className: 'uagb-editor-icons'  },
 		el( 'path', {
 			'fill': iconColor,
 			'fill-rule':'evenodd',
@@ -396,7 +396,7 @@ const UAGB_Block_Icons = {
 	),
 	taxonomy_list: el(
 		'svg',
-		{ width: 24, height: 24, viewBox: '1 1 20 20', className: 'uagb-editor-icons'  },
+		{ width: 24, height: 24, viewBox: '2 2 20 20', className: 'uagb-editor-icons'  },
 		el( 'path', {
 			'fill': iconColor,
 			'fill-rule':'evenodd',
@@ -407,7 +407,7 @@ const UAGB_Block_Icons = {
 	),
 	review: el(
 		'svg',
-		{ width: 24, height: 24, viewBox: '1 1 20 20', className: 'uagb-editor-icons'  },
+		{ width: 24, height: 24, viewBox: '2 2 20 20', className: 'uagb-editor-icons'  },
 		el( 'path', {
 			'fill': iconColor,
 			'fill-rule':'evenodd',
@@ -418,7 +418,7 @@ const UAGB_Block_Icons = {
 	),
 	lottie: el(
 		'svg',
-		{ width: 24, height: 24, viewBox: '1 1 20 20', className: 'uagb-editor-icons'  },
+		{ width: 24, height: 24, viewBox: '2 2 20 20', className: 'uagb-editor-icons'  },
 		el( 'path', {
 			'fill': iconColor,
 			'fill-rule':'evenodd',
@@ -713,7 +713,7 @@ const UAGB_Block_Icons = {
 	),
 	star_rating: el(
 		'svg',
-		{ width: 24, height: 24, viewBox: '1 1 20 20', className: 'uagb-editor-icons'  },
+		{ width: 24, height: 24, viewBox: '2 2 20 20', className: 'uagb-editor-icons'  },
 		el( 'path', {
 			fill: iconColor,
 			d:
@@ -722,7 +722,7 @@ const UAGB_Block_Icons = {
 	),
 	container: el(
 		'svg',
-		{ width: 24, height: 24, viewBox: '1 1 20 20', className: 'uagb-editor-icons'  },
+		{ width: 24, height: 24, viewBox: '2 2 20 20', className: 'uagb-editor-icons'  },
 		el( 'path', {
 			'fill': iconColor,
 			'fill-rule':'evenodd',
