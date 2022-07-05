@@ -271,24 +271,6 @@
 
 .uagb-columns-variation-picker {
 
-	// This selector is apprently active for mobile preview.
-	.components-placeholder.is-medium {
-
-		.components-placeholder__fieldset {
-
-			// Since sub heading is hidden on mobile, we un-hide it.
-			.components-placeholder__instructions {
-				display: inline-block;
-			}
-		}
-
-	}
-
-	.components-placeholder__instructions {
-		width: 100%;
-		text-align: center;
-	}
-
 	.components-button,
 	.components-button:hover:not(:disabled) {
 		box-shadow: none;
