@@ -20,7 +20,7 @@ function styling( props ) {
 		buttonBgColor,
 		buttonTextHoverColor,
 		buttonBgHoverColor,
-		buttonBorderHColor,
+		btnBorderHColor,
 		fieldSpacing,
 		fieldSpacingTablet,
 		fieldSpacingMobile,
@@ -367,7 +367,7 @@ validationMsgLetterSpacingType,
 		' .wpcf7 input.wpcf7-form-control.wpcf7-submit:hover': {
 			'color': buttonTextHoverColor,
 			'background-color': buttonBgHoverColor,
-			'border-color': buttonBorderHColor,
+			'border-color': btnBorderHColor,
 		},
 
 		// Check box Radio.

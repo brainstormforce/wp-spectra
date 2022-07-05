@@ -1213,6 +1213,7 @@ const Settings = ( props ) => {
 			/>
 		</UAGAdvancedPanelBody>
 	);
+	console.log(radioCheckBorderColor)
 	const buttonStyling = (
 		<UAGAdvancedPanelBody
 			title={ __( 'Submit Button', 'ultimate-addons-for-gutenberg' ) }
