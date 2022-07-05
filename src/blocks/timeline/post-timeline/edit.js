@@ -87,7 +87,7 @@ const PostTimelineComponent = ( props ) => {
 			detail: {},
 		} );
 		document.dispatchEvent( loadPostTimelineEditor );
-	}, [ props ] );
+	}, [ props, deviceType ] );
 
 
 	useEffect( () => {

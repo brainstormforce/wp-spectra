@@ -28,7 +28,9 @@ function uagbTimelineInit() {
 		const timelineStartIcon = iconClass[0];
 		const timelineEndIcon = iconClass[iconClass.length - 1];
 
-		lineOuter.style.top = timelineStartIcon?.offsetTop + 'px';
+		setTimeout( () => {
+			lineOuter.style.top = timelineStartIcon?.offsetTop + 'px';
+		}, 300 );
 		const timelineCardHeight = cardLast?.offsetHeight;
 
 		if ( content.classList.contains( 'uagb-timeline__arrow-center' ) ) {

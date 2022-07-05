@@ -595,10 +595,9 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 		 */
 		public static function get_timeline_selectors( $attr ) {
 
-			$top_margin    = isset( $attr['topMargin'] ) ? $attr['topMargin'] : $attr['verticalSpace'];
-			$bottom_margin = isset( $attr['bottomMargin'] ) ? $attr['bottomMargin'] : $attr['verticalSpace'];
-			$left_margin   = isset( $attr['leftMargin'] ) ? $attr['leftMargin'] : $attr['horizontalSpace'];
-			$right_margin  = isset( $attr['rightMargin'] ) ? $attr['rightMargin'] : $attr['horizontalSpace'];
+			$bottom_margin = $attr['verticalSpace'];
+			$left_margin   = $attr['horizontalSpace'];
+			$right_margin  = $attr['horizontalSpace'];
 
 			$top_padding    = isset( $attr['topPadding'] ) ? $attr['topPadding'] : $attr['bgPadding'];
 			$bottom_padding = isset( $attr['bottomPadding'] ) ? $attr['bottomPadding'] : $attr['bgPadding'];
@@ -676,12 +675,12 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					'height' => $connector_size,
 				),
 				'.uagb-timeline__center-block .uagb-timeline__left .uagb-timeline__marker' => array(
-					'margin-left'  => UAGB_Helper::get_css_value( $left_margin + 3, $attr['marginUnit'] ),
+					'margin-left'  => UAGB_Helper::get_css_value( $left_margin, $attr['marginUnit'] ),
 					'margin-right' => UAGB_Helper::get_css_value( $right_margin, $attr['marginUnit'] ),
 				),
 				'.uagb-timeline__center-block .uagb-timeline__right .uagb-timeline__marker' => array(
 					'margin-left'  => UAGB_Helper::get_css_value( $left_margin, $attr['marginUnit'] ),
-					'margin-right' => UAGB_Helper::get_css_value( $right_margin + 3, $attr['marginUnit'] ),
+					'margin-right' => UAGB_Helper::get_css_value( $right_margin, $attr['marginUnit'] ),
 				),
 				'.uagb-timeline__field:not(:last-child)' => array(
 					'margin-bottom' => UAGB_Helper::get_css_value( $bottom_margin, $attr['marginUnit'] ),
