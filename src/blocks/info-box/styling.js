@@ -807,7 +807,12 @@ selectors[' .uagb-infobox-cta-link.wp-block-button__link'] = ctaBorderCSS;
 			),
 		},
 		' .uagb-infobox-cta-link': {
-			'font-size': generateCSSUnit( ctaFontSizeTablet, ctaFontSizeType ),
+			'font-size': generateCSSUnit( ctaFontSizeTablet, ctaFontSizeType ),						
+			'letter-spacing': generateCSSUnit( ctaLetterSpacingTablet, ctaLetterSpacingType ),
+			'line-height': generateCSSUnit(
+				ctaLineHeightTablet,
+				ctaLineHeightType
+			),
 		},
 		' .uagb-infobox-cta-link svg': {
 			'font-size': generateCSSUnit( ctaFontSizeTablet, ctaFontSizeType ),
