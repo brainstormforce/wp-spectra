@@ -24,6 +24,8 @@ function styling( props ) {
 		titleFontSizeTablet,
 		titleLineHeightType,
 		titleLineHeight,
+		titleLineHeightTablet,
+		titleLineHeightMobile,
 		prefixFontFamily,
 		prefixFontWeight,
 		prefixFontSizeType,
@@ -32,6 +34,8 @@ function styling( props ) {
 		prefixFontSizeTablet,
 		prefixLineHeightType,
 		prefixLineHeight,
+		prefixLineHeightTablet,
+		prefixLineHeightMobile,
 		descFontFamily,
 		descFontWeight,
 		descFontSizeType,
@@ -40,6 +44,8 @@ function styling( props ) {
 		descFontSizeTablet,
 		descLineHeightType,
 		descLineHeight,
+		descLineHeightTablet,
+		descLineHeightMobile,
 		socialFontSize,
 		socialFontSizeType,
 		socialFontSizeMobile,
@@ -269,6 +275,10 @@ function styling( props ) {
 			'margin-top': generateCSSUnit( prefixSpaceMobile, 'px' ),
 			'margin-bottom': generateCSSUnit( descSpaceMobile, 'px' ),
 			'letter-spacing': generateCSSUnit( descLetterSpacingMobile, descLetterSpacingType ),
+			'line-height': generateCSSUnit(
+				descLineHeightMobile,
+				descLineHeightType
+			),
 		},
 		' .rich-text.block-editor-rich-text__editable.uagb-team__prefix': {
 			'font-size': generateCSSUnit(
@@ -276,6 +286,10 @@ function styling( props ) {
 				prefixFontSizeType
 			),
 			'letter-spacing': generateCSSUnit( prefixLetterSpacingMobile, prefixLetterSpacingType ),
+			'line-height': generateCSSUnit(
+				prefixLineHeightMobile,
+				prefixLineHeightType
+			),
 		},
 		' .uagb-team__social-icon a': {
 			'font-size': generateCSSUnit(
@@ -325,6 +339,7 @@ function styling( props ) {
 	] = {
 		'margin-bottom': generateCSSUnit( titleSpaceMobile, 'px' ),
 		'letter-spacing': generateCSSUnit( titleLetterSpacingMobile, titleLetterSpacingType ),
+		'line-height': generateCSSUnit( titleLineHeightMobile, titleLineHeightType ),
 	};
 	tabletSelectors = {
 		' img': {
@@ -339,6 +354,10 @@ function styling( props ) {
 			'margin-top': generateCSSUnit( prefixSpaceTablet, 'px' ),
 			'margin-bottom': generateCSSUnit( descSpaceTablet, 'px' ),
 			'letter-spacing': generateCSSUnit( descLetterSpacingTablet, descLetterSpacingType ),
+			'line-height': generateCSSUnit(
+				descLineHeightTablet,
+				descLineHeightType
+			),
 		},
 		' .rich-text.block-editor-rich-text__editable.uagb-team__prefix': {
 			'font-size': generateCSSUnit(
@@ -346,6 +365,10 @@ function styling( props ) {
 				prefixFontSizeType
 			),
 			'letter-spacing': generateCSSUnit( prefixLetterSpacingTablet, prefixLetterSpacingType ),
+			'line-height': generateCSSUnit(
+				prefixLineHeightTablet,
+				prefixLineHeightType
+			),
 		},
 		' .uagb-team__social-icon a': {
 			'font-size': generateCSSUnit(
@@ -395,6 +418,7 @@ function styling( props ) {
 	] = {
 		'margin-bottom': generateCSSUnit( titleSpaceTablet, 'px' ),
 		'letter-spacing': generateCSSUnit( titleLetterSpacingTablet, titleLetterSpacingType ),
+		'line-height': generateCSSUnit( titleLineHeightTablet, titleLineHeightType ),
 	};
 	mobileSelectors[ ' ' + tag + '.uagb-team__title' ] = {
 		'font-size': generateCSSUnit( titleFontSizeMobile, titleFontSizeType ),
