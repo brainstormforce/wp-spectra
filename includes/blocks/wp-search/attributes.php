@@ -34,7 +34,7 @@ return array_merge(
 		'buttonBgHoverColor'      => '',
 		'buttonIconColor'         => '',
 		'buttonIconHoverColor'    => '',
-		'buttonWidth'             => 60,
+		'buttonWidth'             => 50,
 		'buttonIconSize'          => 17,
 		'iconColor'               => '',
 		'iconSize'                => 17,
