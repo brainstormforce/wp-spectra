@@ -55,6 +55,10 @@ function styling( props ) {
 		iconColor,
 		iconSize,
 		iconSizeType,
+		iconSizeTablet,
+		iconSizeMobile,
+		iconSizeUnitTablet,
+		iconSizeUnitMobile,
 		iconimgPosition,
 		iconHover,
 		iconimgBorderRadius,
@@ -212,7 +216,11 @@ function styling( props ) {
 	const blockName = props.name.replace( 'uagb/', '' );
 	//Range
 	const seperatorThicknessFallback = getFallbackNumber( seperatorThickness, 'seperatorThickness', blockName );
+
 	const iconSizeFallback = getFallbackNumber( iconSize, 'iconSize', blockName );
+	const iconSizeFallbackTablet = isNaN( iconSizeTablet ) ? iconSizeFallback : iconSizeTablet;
+	const iconSizeFallbackMobile = isNaN( iconSizeMobile ) ? iconSizeFallbackTablet : iconSizeMobile;
+
 	const iconimgBorderRadiusFallback = getFallbackNumber( iconimgBorderRadius, 'iconimgBorderRadius', blockName );
 	// Responsive Slider
 	const seperatorWidthFallback = getFallbackNumber( seperatorWidth, 'seperatorWidth', blockName );
@@ -727,24 +735,6 @@ function styling( props ) {
 				iconTabletMarginUnit
 			),
 		},
-		' .uagb-ifb-content > svg ': {
-			'padding-top': generateCSSUnit(
-				iconMarginTopTablet,
-				iconTabletMarginUnit
-			),
-			'padding-right': generateCSSUnit(
-				iconMarginRightTablet,
-				iconTabletMarginUnit
-			),
-			'padding-bottom': generateCSSUnit(
-				iconMarginBottomTablet,
-				iconTabletMarginUnit
-			),
-			'padding-left': generateCSSUnit(
-				iconMarginLeftTablet,
-				iconTabletMarginUnit
-			),
-		},
 		' .uagb-ifb-content .uagb-ifb-right-title-image > img ': {
 			'padding-top': generateCSSUnit(
 				iconMarginTopTablet,
@@ -822,6 +812,31 @@ function styling( props ) {
 		},
 		'.uagb-infobox__content-wrap  .uagb-ifb-content img': {
 			'box-sizing' : `${boxSizingImageTablet}`,
+		},
+		' .uagb-ifb-content .uagb-ifb-icon-wrap svg': {
+			'font-size': generateCSSUnit( iconSizeFallbackTablet, iconSizeUnitTablet ),
+			'line-height': generateCSSUnit( iconSizeFallbackTablet, iconSizeUnitTablet ),
+		},
+		' .uagb-iconbox-icon-wrap': {
+			'width': generateCSSUnit( iconSizeFallbackTablet, iconSizeUnitTablet ),
+			'height': generateCSSUnit( iconSizeFallbackTablet, iconSizeUnitTablet ),
+			'line-height': generateCSSUnit( iconSizeFallbackTablet, iconSizeUnitTablet ),
+		},
+		' .uagb-ifb-content .uagb-ifb-left-title-image svg': {
+			'font-size': generateCSSUnit( iconSizeFallbackTablet, iconSizeUnitTablet ),
+			'width': generateCSSUnit( iconSizeFallbackTablet, iconSizeUnitTablet ),
+			'line-height': generateCSSUnit( iconSizeFallbackTablet, iconSizeUnitTablet ),
+		},
+		' .uagb-ifb-content .uagb-ifb-right-title-image svg': {
+			'font-size': generateCSSUnit( iconSizeFallbackTablet, iconSizeUnitTablet ),
+			'width': generateCSSUnit( iconSizeFallbackTablet, iconSizeUnitTablet ),
+			'line-height': generateCSSUnit( iconSizeFallbackTablet, iconSizeUnitTablet ),
+		},
+		'.uagb-infobox__content-wrap .uagb-ifb-icon-wrap svg': {
+			'font-size': generateCSSUnit( iconSizeFallbackTablet, iconSizeUnitTablet ),
+			'width': generateCSSUnit( iconSizeFallbackTablet, iconSizeUnitTablet ),
+			'height': generateCSSUnit( iconSizeFallbackTablet, iconSizeUnitTablet ),
+			'line-height': generateCSSUnit( iconSizeFallbackTablet, iconSizeUnitTablet ),
 		},
 	};
 
@@ -1056,6 +1071,31 @@ function styling( props ) {
 		},
 		'.uagb-infobox__content-wrap  .uagb-ifb-content img': {
 			'box-sizing' : `${boxSizingImageMobile}`,
+		},
+		' .uagb-ifb-content .uagb-ifb-icon-wrap svg': {
+			'font-size': generateCSSUnit( iconSizeFallbackMobile, iconSizeUnitMobile ),
+			'line-height': generateCSSUnit( iconSizeFallbackMobile, iconSizeUnitMobile ),
+		},
+		' .uagb-iconbox-icon-wrap': {
+			'width': generateCSSUnit( iconSizeFallbackMobile, iconSizeUnitMobile ),
+			'height': generateCSSUnit( iconSizeFallbackMobile, iconSizeUnitMobile ),
+			'line-height': generateCSSUnit( iconSizeFallbackMobile, iconSizeUnitMobile ),
+		},
+		' .uagb-ifb-content .uagb-ifb-left-title-image svg': {
+			'font-size': generateCSSUnit( iconSizeFallbackMobile, iconSizeUnitMobile ),
+			'width': generateCSSUnit( iconSizeFallbackMobile, iconSizeUnitMobile ),
+			'line-height': generateCSSUnit( iconSizeFallbackMobile, iconSizeUnitMobile ),
+		},
+		' .uagb-ifb-content .uagb-ifb-right-title-image svg': {
+			'font-size': generateCSSUnit( iconSizeFallbackMobile, iconSizeUnitMobile ),
+			'width': generateCSSUnit( iconSizeFallbackMobile, iconSizeUnitMobile ),
+			'line-height': generateCSSUnit( iconSizeFallbackMobile, iconSizeUnitMobile ),
+		},
+		'.uagb-infobox__content-wrap .uagb-ifb-icon-wrap svg': {
+			'font-size': generateCSSUnit( iconSizeFallbackMobile, iconSizeUnitMobile ),
+			'width': generateCSSUnit( iconSizeFallbackMobile, iconSizeUnitMobile ),
+			'height': generateCSSUnit( iconSizeFallbackMobile, iconSizeUnitMobile ),
+			'line-height': generateCSSUnit( iconSizeFallbackMobile, iconSizeUnitMobile ),
 		},
 	};
 
