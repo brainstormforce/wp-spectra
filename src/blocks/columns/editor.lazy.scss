@@ -300,11 +300,6 @@
 		.components-placeholder__label {
 			font-size: 22px;
 			font-weight: 500;
-
-			// The heading has a dash-icon which is invisible but takes up some space, hence we set the it's display to none.
-			.dashicon {
-				display: none;
-			}
 		}
 	}
 
@@ -325,19 +320,4 @@
 			width: 80px;
 		}
 	}
-}
-@media screen and (max-width: 976px) {
-
-	.uagb-columns-variation-picker {
-
-		.components-placeholder__fieldset{
-			max-width: 100%;
-		}
-	
-		ul.block-editor-block-variation-picker__variations {
-			justify-content: center;
-			column-gap: 35px;
-		}
-	}
-
 }
