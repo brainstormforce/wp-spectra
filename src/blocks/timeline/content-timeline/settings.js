@@ -114,22 +114,6 @@ const Settings = ( props ) => {
 			iconBgFocus,
 			displayPostDate,
 			dateFormat,
-			topMargin,
-			rightMargin,
-			bottomMargin,
-			leftMargin,
-			topMarginTablet,
-			rightMarginTablet,
-			bottomMarginTablet,
-			leftMarginTablet,
-			topMarginMobile,
-			rightMarginMobile,
-			bottomMarginMobile,
-			leftMarginMobile,
-			marginUnit,
-			mobileMarginUnit,
-			tabletMarginUnit,
-			marginLink,
 			topPadding,
 			rightPadding,
 			bottomPadding,
@@ -164,6 +148,18 @@ const Settings = ( props ) => {
 			dateLetterSpacingMobile,
 			dateLetterSpacingType,
 			dateDecoration,
+			verticalSpace,
+			verticalSpaceTablet,
+			verticalSpaceMobile,
+			verticalSpaceUnit,
+			verticalSpaceUnitTablet,
+			verticalSpaceUnitMobile,
+			horizontalSpace,
+			horizontalSpaceTablet,
+			horizontalSpaceMobile,
+			horizontalSpaceUnit,
+			horizontalSpaceUnitTablet,
+			horizontalSpaceUnitMobile
 		},
 	} = props;
 
@@ -571,75 +567,113 @@ const Settings = ( props ) => {
 						label: 'paddingLink',
 					} }
 				/>
-				<SpacingControl
-					{ ...props }
-					label={ __( 'Margin', 'ultimate-addons-for-gutenberg' ) }
-					valueTop={ {
-						value: topMargin,
-						label: 'topMargin',
+				<ResponsiveSlider
+					label={ __(
+						'Timeline - Marker Gap',
+						'ultimate-addons-for-gutenberg'
+					) }
+					data={ {
+						desktop: {
+							value: horizontalSpace,
+							label: 'horizontalSpace',
+							unit: {
+								value: horizontalSpaceUnit,
+								label: 'horizontalSpaceUnit',
+							},
+						},
+						tablet: {
+							value: horizontalSpaceTablet,
+							label: 'horizontalSpaceTablet',
+							unit: {
+								value: horizontalSpaceUnitTablet,
+								label: 'horizontalSpaceUnitTablet',
+							},
+						},
+						mobile: {
+							value: horizontalSpaceMobile,
+							label: 'horizontalSpaceMobile',
+							unit: {
+								value: horizontalSpaceUnitMobile,
+								label: 'horizontalSpaceUnitMobile',
+							},
+						},
 					} }
-					valueRight={ {
-						value: rightMargin,
-						label: 'rightMargin',
-					} }
-					valueBottom={ {
-						value: bottomMargin,
-						label: 'bottomMargin',
-					} }
-					valueLeft={ {
-						value: leftMargin,
-						label: 'leftMargin',
-					} }
-					valueTopTablet={ {
-						value: topMarginTablet,
-						label: 'topMarginTablet',
-					} }
-					valueRightTablet={ {
-						value: rightMarginTablet,
-						label: 'rightMarginTablet',
-					} }
-					valueBottomTablet={ {
-						value: bottomMarginTablet,
-						label: 'bottomMarginTablet',
-					} }
-					valueLeftTablet={ {
-						value: leftMarginTablet,
-						label: 'leftMarginTablet',
-					} }
-					valueTopMobile={ {
-						value: topMarginMobile,
-						label: 'topMarginMobile',
-					} }
-					valueRightMobile={ {
-						value: rightMarginMobile,
-						label: 'rightMarginMobile',
-					} }
-					valueBottomMobile={ {
-						value: bottomMarginMobile,
-						label: 'bottomMarginMobile',
-					} }
-					valueLeftMobile={ {
-						value: leftMarginMobile,
-						label: 'leftMarginMobile',
-					} }
-					unit={ {
-						value: marginUnit,
-						label: 'marginUnit',
-					} }
-					mUnit={ {
-						value: mobileMarginUnit,
-						label: 'mobileMarginUnit',
-					} }
-					tUnit={ {
-						value: tabletMarginUnit,
-						label: 'tabletMarginUnit',
-					} }
-					attributes={ props }
+					min={ 0 }
+					limitMax={ { 'px': 50, '%': 100, 'em': 50 } }
+					units={ [
+						{
+							name: __(
+								'PX',
+								'ultimate-addons-for-gutenberg'
+							),
+							unitValue: 'px',
+						},
+						{
+							name: __( '%', 'ultimate-addons-for-gutenberg' ),
+							unitValue: '%',
+						},
+						{
+							name: __( 'EM', 'ultimate-addons-for-gutenberg' ),
+							unitValue: 'em',
+						},
+					] }
 					setAttributes={ setAttributes }
-					link={ {
-						value: marginLink,
-						label: 'marginLink',
+				/>
+				<ResponsiveSlider
+					label={ __(
+						'Gap Between Timeline Item',
+						'ultimate-addons-for-gutenberg'
+					) }
+					data={ {
+						desktop: {
+							value: verticalSpace,
+							label: 'verticalSpace',
+							unit: {
+								value: verticalSpaceUnit,
+								label: 'verticalSpaceUnit',
+							},
+						},
+						tablet: {
+							value: verticalSpaceTablet,
+							label: 'verticalSpaceTablet',
+							unit: {
+								value: verticalSpaceUnitTablet,
+								label: 'verticalSpaceUnitTablet',
+							},
+						},
+						mobile: {
+							value: verticalSpaceMobile,
+							label: 'verticalSpaceMobile',
+							unit: {
+								value: verticalSpaceUnitMobile,
+								label: 'verticalSpaceUnitMobile',
+							},
+						},
 					} }
+					min={ 0 }
+					limitMax={ { 'px': 100, '%': 100, 'em': 100 } }
+					units={ [
+						{
+							name: __(
+								'PX',
+								'ultimate-addons-for-gutenberg'
+							),
+							unitValue: 'px',
+						},
+						{
+							name: __( '%', 'ultimate-addons-for-gutenberg' ),
+							unitValue: '%',
+						},
+						{
+							name: __( 'EM', 'ultimate-addons-for-gutenberg' ),
+							unitValue: 'em',
+						},
+					] }
+					// unit={ {
+					// 	value: verticalSpaceUnit,
+					// 	label: 'verticalSpaceUnit',
+					// } }
+					setAttributes={ setAttributes }
 				/>
 			</UAGAdvancedPanelBody>
 		);

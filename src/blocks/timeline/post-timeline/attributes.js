@@ -105,6 +105,18 @@ const attributes = { // eslint-disable-line no-unused-vars
 			styleType: 'row-gap-mobile'
 		},
 	},
+	horizontalSpaceUnit      : {
+		type    : 'string',
+		default : 'px',
+	},
+	horizontalSpaceUnitTablet : {
+		type    : 'string',
+		default : 'px',
+	},
+	horizontalSpaceUnitMobile : {
+		type    : 'string',
+		default : 'px',
+	},
 	verticalSpace           : {
 		type    : 'number',
 		default : 15,

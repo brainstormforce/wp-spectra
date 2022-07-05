@@ -85,6 +85,7 @@ const Render = ( props ) => {
 						{ renderSVG( icon ) }
 				</div>
 				<div className={ classnames( props.attributes.dayalign_class, 'uagb-timeline__events-inner-new' ) } >
+					<div className='uagb-timeline__events-inner--content'>
 							{ displayPostDate !== true && t_date && (
 								<div
 									className={
@@ -142,6 +143,7 @@ const Render = ( props ) => {
 								onRemove={ () => onReplace( [] ) }
 							/>
 							<div className="uagb-timeline__arrow"></div>
+					</div>
 				</div>
 				{ displayInnerDate && (
 					<div className="uagb-timeline__date-new">

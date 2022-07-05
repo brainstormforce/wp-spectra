@@ -1908,10 +1908,6 @@ const Settings = ( props ) => {
 							unitValue: 'em',
 						},
 					] }
-					// unit={ {
-					// 	value: verticalSpaceUnit,
-					// 	label: 'verticalSpaceUnit',
-					// } }
 					setAttributes={ setAttributes }
 				/>
 				<ResponsiveSlider

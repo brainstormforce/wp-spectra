@@ -123,6 +123,18 @@ function contentTimelineStyle( props ) {
 		dateLetterSpacingTablet,
 		dateLetterSpacingMobile,
 		dateLetterSpacingType,
+		verticalSpace,
+		verticalSpaceTablet,
+		verticalSpaceMobile,
+		verticalSpaceUnit,
+		verticalSpaceUnitTablet,
+		verticalSpaceUnitMobile,
+		horizontalSpace,
+		horizontalSpaceTablet,
+		horizontalSpaceMobile,
+		horizontalSpaceUnit,
+		horizontalSpaceUnitTablet,
+		horizontalSpaceUnitMobile
 	} = props.attributes;
 
 	let timelinAlignmentTabletDevice = '';
@@ -257,12 +269,12 @@ function contentTimelineStyle( props ) {
 			'height': generateCSSUnit( connectorBgSizeFallback, 'px' ),
 		},
 		'.uagb-timeline__center-block .uagb-timeline__left .uagb-timeline__marker': {
-			'margin-left': generateCSSUnit( leftMargin + 3, marginUnit ),
-			'margin-right': generateCSSUnit( rightMargin, marginUnit ),
+			'margin-left': generateCSSUnit( horizontalSpace, horizontalSpaceUnit ),
+			'margin-right': generateCSSUnit( horizontalSpace, horizontalSpaceUnit ),
 		},
 		'.uagb-timeline__center-block .uagb-timeline__right .uagb-timeline__marker': {
-			'margin-left': generateCSSUnit( leftMargin, marginUnit ),
-			'margin-right': generateCSSUnit( rightMargin + 3, marginUnit ),
+			'margin-left': generateCSSUnit( horizontalSpace, horizontalSpaceUnit ),
+			'margin-right': generateCSSUnit( horizontalSpace, horizontalSpaceUnit ),
 		},
 		' .uagb-timeline__field': {
 			'margin-top': generateCSSUnit( topMargin, marginUnit ),
@@ -301,16 +313,16 @@ function contentTimelineStyle( props ) {
 			'letter-spacing': generateCSSUnit( dateLetterSpacing, dateLetterSpacingType ),
 		},
 		'.uagb-timeline__right-block .uagb-timeline__day-new.uagb-timeline__day-left': {
-			'margin-right': generateCSSUnit( rightMargin, marginUnit ),
+			'margin-right': generateCSSUnit( horizontalSpace, horizontalSpaceUnit ),
 		},
 		'.uagb-timeline__left-block .uagb-timeline__day-new.uagb-timeline__day-left': {
-			'margin-left': generateCSSUnit( leftMargin, marginUnit ),
+			'margin-left': generateCSSUnit( horizontalSpace, horizontalSpaceUnit ),
 		},
 		'.uagb-timeline__left-block .uagb-timeline__day-new.uagb-timeline__day-right': {
-			'margin-left': generateCSSUnit( leftMargin, marginUnit ),
+			'margin-left': generateCSSUnit( horizontalSpace, horizontalSpaceUnit ),
 		},
 		'.uagb-timeline__right-block .uagb-timeline__day-new.uagb-timeline__day-right': {
-			'margin-right': generateCSSUnit( rightMargin, marginUnit ),
+			'margin-right': generateCSSUnit( horizontalSpace, horizontalSpaceUnit ),
 		},
 		' .uagb-timeline__date-new': {
 			'color': dateColor,
@@ -329,6 +341,8 @@ function contentTimelineStyle( props ) {
 		' .uagb-timeline__events-inner-new': {
 			'background-color': backgroundColor,
 			'border-radius': generateCSSUnit( borderRadiusFallback, 'px' ),
+		},
+		' .uagb-timeline__events-inner--content': {
 			'padding-left': generateCSSUnit( leftPadding, paddingUnit ),
 			'padding-right': generateCSSUnit( rightPadding, paddingUnit ),
 			'padding-top': generateCSSUnit( topPadding, paddingUnit ),
@@ -428,10 +442,8 @@ function contentTimelineStyle( props ) {
 			'letter-spacing': generateCSSUnit( subHeadLetterSpacingTablet, subHeadLetterSpacingType ),
 		},
 		'.uagb-timeline__center-block .uagb-timeline__marker': {
-			'margin-left': ( timelinAlignmentTabletDevice !== 'center' ) ?
-			0 : generateCSSUnit( leftMargin + 3, marginUnit ),
-			'margin-right': ( timelinAlignmentTabletDevice !== 'center' ) ?
-			0 : generateCSSUnit( rightMargin, marginUnit ),
+			'margin-left': generateCSSUnit( horizontalSpaceTablet, horizontalSpaceUnitTablet ),
+			'margin-right': generateCSSUnit( horizontalSpaceTablet, horizontalSpaceUnitTablet ),
 		},
 		'.uagb-timeline__center-block .uagb-timeline__day-new.uagb-timeline__day-left': {
 			'margin-left': generateCSSUnit(
@@ -464,6 +476,9 @@ function contentTimelineStyle( props ) {
 			),
 		},
 		' .uagb-timeline__events-inner-new': {
+			'border-radius': generateCSSUnit( borderRadiusTablet, 'px' ),
+		},
+		' .uagb-timeline__events-inner--content' : {
 			'padding-left': generateCSSUnit(
 				leftPaddingTablet,
 				tabletPaddingUnit
@@ -480,7 +495,6 @@ function contentTimelineStyle( props ) {
 				bottomPaddingTablet,
 				tabletPaddingUnit
 			),
-			'border-radius': generateCSSUnit( borderRadiusTablet, 'px' ),
 		},
 		' .uagb-timeline__day-new': {
 			'text-align': alignTablet,
@@ -630,6 +644,9 @@ function contentTimelineStyle( props ) {
 			),
 		},
 		' .uagb-timeline__events-inner-new': {
+			'border-radius': generateCSSUnit( borderRadiusMobile, 'px' ),
+		},
+		' .uagb-timeline__events-inner--content' : {
 			'padding-left': generateCSSUnit(
 				leftPaddingMobile,
 				mobilePaddingUnit
@@ -646,7 +663,6 @@ function contentTimelineStyle( props ) {
 				bottomPaddingMobile,
 				mobilePaddingUnit
 			),
-			'border-radius': generateCSSUnit( borderRadiusMobile, 'px' ),
 		},
 		' .uagb-timeline__day-new': {
 			'text-align': alignMobile,

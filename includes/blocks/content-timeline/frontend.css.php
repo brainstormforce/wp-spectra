@@ -132,12 +132,12 @@ $selectors = array(
 		'height' => $connector_size,
 	),
 	'.uagb-timeline__center-block .uagb-timeline__left .uagb-timeline__marker' => array(
-		'margin-left'  => UAGB_Helper::get_css_value( $left_margin + 3, $attr['marginUnit'] ),
-		'margin-right' => UAGB_Helper::get_css_value( $right_margin, $attr['marginUnit'] ),
+		'margin-left'  => UAGB_Helper::get_css_value( $attr['horizontalSpace'], $attr['horizontalSpaceUnit'] ),
+		'margin-right' => UAGB_Helper::get_css_value( $attr['horizontalSpace'], $attr['horizontalSpaceUnit'] ),
 	),
 	'.uagb-timeline__center-block .uagb-timeline__right .uagb-timeline__marker' => array(
-		'margin-left'  => UAGB_Helper::get_css_value( $left_margin, $attr['marginUnit'] ),
-		'margin-right' => UAGB_Helper::get_css_value( $right_margin + 3, $attr['marginUnit'] ),
+		'margin-left'  => UAGB_Helper::get_css_value( $attr['horizontalSpace'], $attr['horizontalSpaceUnit'] ),
+		'margin-right' => UAGB_Helper::get_css_value( $attr['horizontalSpace'], $attr['horizontalSpaceUnit'] ),
 	),
 	' .uagb-timeline__field'                               => array(
 		'margin-top'    => UAGB_Helper::get_css_value( $top_margin, $attr['marginUnit'] ),
@@ -183,6 +183,12 @@ $selectors = array(
 		'padding-top'      => UAGB_Helper::get_css_value( $top_padding, $attr['paddingUnit'] ),
 		'padding-bottom'   => UAGB_Helper::get_css_value( $bottom_padding, $attr['paddingUnit'] ),
 	),
+	' .uagb-timeline__events-inner--content' => array(
+		'padding-left'     => UAGB_Helper::get_css_value( $top_padding, $attr['paddingUnit'] ),
+		'padding-right'    => UAGB_Helper::get_css_value( $right_padding, $attr['paddingUnit'] ),
+		'padding-top'      => UAGB_Helper::get_css_value( $top_padding, $attr['paddingUnit'] ),
+		'padding-bottom'   => UAGB_Helper::get_css_value( $bottom_padding, $attr['paddingUnit'] ),
+	),
 	' .uagb-timeline__marker svg'                          => array(
 		'color' => $attr['iconColor'],
 		'width' => UAGB_Helper::get_css_value( $icon_size_fallback, 'px' ),
@@ -220,20 +226,12 @@ $selectors = array(
 			'border-right-color' => $attr['backgroundColor'],
 		),
 		'.uagb-timeline__center-block .uagb-timeline__left .uagb-timeline__marker' => array(
-			'margin-left'  => ( 'tablet' === $attr['stack'] ) || ( 'mobile' === $attr['stack'] ) ?
-								0 :
-								UAGB_Helper::get_css_value( $left_margin + 3, $attr['marginUnit'] ),
-			'margin-right' => ( 'tablet' === $attr['stack'] ) || ( 'mobile' === $attr['stack'] ) ?
-								0 :
-								UAGB_Helper::get_css_value( $right_margin, $attr['marginUnit'] ),
+			'margin-left'  => UAGB_Helper::get_css_value( $attr['horizontalSpaceMobile'], $attr['horizontalSpaceUnitMobile'] ),
+			'margin-right' => UAGB_Helper::get_css_value( $attr['horizontalSpaceMobile'], $attr['horizontalSpaceUnitMobile'] ),
 		),
 		'.uagb-timeline__center-block .uagb-timeline__right .uagb-timeline__marker' => array(
-			'margin-left'  => ( 'tablet' === $attr['stack'] ) || ( 'mobile' === $attr['stack'] ) ?
-								0 :
-								UAGB_Helper::get_css_value( $left_margin + 3, $attr['marginUnit'] ),
-			'margin-right' => ( 'tablet' === $attr['stack'] ) || ( 'mobile' === $attr['stack'] ) ?
-								0 :
-								UAGB_Helper::get_css_value( $right_margin, $attr['marginUnit'] ),
+			'margin-left'  => UAGB_Helper::get_css_value( $attr['horizontalSpaceMobile'], $attr['horizontalSpaceUnitMobile'] ),
+			'margin-right' => UAGB_Helper::get_css_value( $attr['horizontalSpaceMobile'], $attr['horizontalSpaceUnitMobile'] ),
 		),
 		'.uagb-timeline__center-block .uagb-timeline__day-new.uagb-timeline__day-left' => array(
 			'margin-left'   => UAGB_Helper::get_css_value( $attr['leftMarginMobile'], $attr['mobileMarginUnit'] ),
@@ -285,20 +283,12 @@ $selectors = array(
 			'border-right-color' => $attr['backgroundColor'],
 		),
 		'.uagb-timeline__center-block .uagb-timeline__left .uagb-timeline__marker' => array(
-			'margin-left'  => ( 'tablet' === $attr['stack'] ) ?
-								0 :
-								UAGB_Helper::get_css_value( $left_margin + 3, $attr['marginUnit'] ),
-			'margin-right' => ( 'tablet' === $attr['stack'] ) ?
-								0 :
-								UAGB_Helper::get_css_value( $right_margin, $attr['marginUnit'] ),
+			'margin-left'  => UAGB_Helper::get_css_value( $attr['horizontalSpaceTablet'], $attr['horizontalSpaceUnitTablet'] ),
+			'margin-right' => UAGB_Helper::get_css_value( $attr['horizontalSpaceTablet'], $attr['horizontalSpaceUnitTablet'] ),
 		),
 		'.uagb-timeline__center-block .uagb-timeline__right .uagb-timeline__marker' => array(
-			'margin-left'  => ( 'tablet' === $attr['stack'] ) ?
-								0 :
-								UAGB_Helper::get_css_value( $left_margin + 3, $attr['marginUnit'] ),
-			'margin-right' => ( 'tablet' === $attr['stack'] ) ?
-								0 :
-								UAGB_Helper::get_css_value( $right_margin, $attr['marginUnit'] ),
+			'margin-left'  => UAGB_Helper::get_css_value( $attr['horizontalSpaceTablet'], $attr['horizontalSpaceUnitTablet'] ),
+			'margin-right' => UAGB_Helper::get_css_value( $attr['horizontalSpaceTablet'], $attr['horizontalSpaceUnitTablet'] ),
 		),
 		'.uagb-timeline__center-block .uagb-timeline__day-new.uagb-timeline__day-left' => array(
 			'margin-left'   => UAGB_Helper::get_css_value( $attr['leftMarginTablet'], $attr['tabletMarginUnit'] ),

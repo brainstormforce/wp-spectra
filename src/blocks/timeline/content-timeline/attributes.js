@@ -149,12 +149,64 @@ const attributes = {
 		},
 		default: 10,
 	},
+	horizontalSpaceTablet         : {
+		type    : 'number',
+		default : 10,
+		UAGCopyPaste: {
+			styleType: 'row-gap-tablet'
+		},
+	},
+	horizontalSpaceMobile         : {
+		type    : 'number',
+		default : 10,
+		UAGCopyPaste: {
+			styleType: 'row-gap-mobile'
+		},
+	},
+	horizontalSpaceUnit      : {
+		type    : 'string',
+		default : 'px',
+	},
+	horizontalSpaceUnitTablet : {
+		type    : 'string',
+		default : 'px',
+	},
+	horizontalSpaceUnitMobile : {
+		type    : 'string',
+		default : 'px',
+	},
 	verticalSpace: {
 		type: 'number',
 		UAGCopyPaste: {
 			styleType: 'column-gap'
 		},
 		default: 15,
+	},
+	verticalSpaceTablet      : {
+		type    : 'number',
+		default : 15,
+		UAGCopyPaste: {
+			styleType: 'column-gap-tablet'
+		},
+	},
+	verticalSpaceMobile     : {
+		type    : 'number',
+		default : 15,
+		UAGCopyPaste: {
+			styleType: 'column-gap-mobile'
+		},
+	},
+	verticalSpaceUnit      : {
+		type    : 'string',
+		default : 'px',
+	},
+	verticalSpaceUnitTablet : {
+		type    : 'string',
+		default : 'px',
+	},
+	verticalSpaceUnitMobile : {
+		type    : 'string',
+		default : 'px',
 	},
 	headFontSize: {
 		type: 'number',
