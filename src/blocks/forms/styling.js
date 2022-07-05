@@ -84,7 +84,7 @@ function styling( props ) {
 		bgHoverColor,
 		bgActiveColor,
 		inputplaceholderColor,
-		inputplaceholderHColor,
+		inputplaceholderHoverColor,
 		inputplaceholderActiveColor,
 		inputactiveColor,
 		fieldBorderHColor,
@@ -268,6 +268,20 @@ function styling( props ) {
 			'color': inputplaceholderColor,
 			'letter-spacing': generateCSSUnit( inputLetterSpacing, inputLetterSpacingType ),
 		},
+		' .uagb-forms-main-form textarea': {
+			'font-size': generateCSSUnit( inputFontSize, inputFontSizeType ),
+			'line-height': generateCSSUnit(
+				inputLineHeight,
+				inputLineHeightType
+			),
+			'font-family': inputFontFamily,
+			'font-style': inputFontStyle,
+			'text-transform': inputTransform,
+			'text-decoration': inputDecoration,
+			'font-weight': inputFontWeight,
+			'color': inputplaceholderColor,
+			'letter-spacing': generateCSSUnit( inputLetterSpacing, inputLetterSpacingType ),
+		},
 		' .uagb-forms-main-form select': {
 			'font-size': generateCSSUnit( inputFontSize, inputFontSizeType ),
 			'line-height': generateCSSUnit(
@@ -302,7 +316,7 @@ function styling( props ) {
 		' .uagb-forms-main-form .uagb-forms-main-submit-button-wrap': {
 			'text-align': buttonAlign,
 		},
-		' .uagb-forms-main-form .uagb-forms-main-submit-button': {
+		' .uagb-forms-main-form .uagb-forms-main-submit-button-wrap .uagb-forms-main-submit-button': {
 			'color': submitColor,
 			'font-size': generateCSSUnit(
 				submitTextFontSize,
@@ -427,7 +441,7 @@ function styling( props ) {
 			'border-color': fieldBorderHColor,
 		},
 		' .uagb-forms-field-set:hover .uagb-forms-input::placeholder': {
-			'color': inputplaceholderHColor,
+			'color': inputplaceholderHoverColor,
 		},
 	};
 
@@ -490,7 +504,7 @@ function styling( props ) {
 				'px'
 			) })`,
 		},
-		' .uagb-forms-main-form .uagb-forms-main-submit-button': {
+		' .uagb-forms-main-form .uagb-forms-main-submit-button-wrap .uagb-forms-main-submit-button': {
 			'padding-top': generateCSSUnit(
 				paddingBtnTopTablet,
 				tabletPaddingBtnUnit
@@ -507,7 +521,6 @@ function styling( props ) {
 				paddingBtnRightTablet,
 				tabletPaddingBtnUnit
 			),
-			...submitBorderTablet,
 			'font-size': generateCSSUnit(
 				submitTextFontSizeTablet,
 				submitTextFontSizeType
@@ -516,7 +529,11 @@ function styling( props ) {
 				submitTextLineHeightTablet,
 				submitTextLineHeightType
 			),
-			'letter-spacing': generateCSSUnit( submitLetterSpacingTablet, submitLetterSpacingType ),
+			'letter-spacing': generateCSSUnit(
+				submitLetterSpacingTablet,
+				submitLetterSpacingType
+			),
+			...submitBorderTablet
 		},
 		' .uagb-forms-main-form .uagb-forms-input-label': {
 			'font-size': generateCSSUnit(
@@ -605,7 +622,7 @@ function styling( props ) {
 				'px'
 			) })`,
 		},
-		' .uagb-forms-main-form .uagb-forms-main-submit-button': { // eslint-disable-line no-dupe-keys
+		' .uagb-forms-main-form .uagb-forms-main-submit-button-wrap .uagb-forms-main-submit-button': { // eslint-disable-line no-dupe-keys
 			'padding-top': generateCSSUnit(
 				paddingBtnTopMobile,
 				mobilePaddingBtnUnit
