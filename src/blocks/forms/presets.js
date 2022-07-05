@@ -11,7 +11,10 @@ const formsPresets = [
         label: __( 'Preset 1', 'ultimate-addons-for-gutenberg' ),
 		attributes: [
             { label: 'bgColor', value: '#ffffff' },
-            { label: 'inputborderRadius', value: 2 },
+            { label: 'fieldBorderTopLeftRadius', value: 2 },
+            { label: 'fieldBorderTopRightRadius', value: 2 },
+            { label: 'fieldBorderBottomLeftRadius', value: 2 },
+            { label: 'fieldBorderBottomRightRadius', value: 2 },
 			{ label: 'paddingFieldTop' , value: 12 },
 			{ label: 'paddingFieldRight' , value: 12 },
 			{ label: 'paddingFieldBottom' , value: 12 },
@@ -25,7 +28,10 @@ const formsPresets = [
         label: __( 'Preset 2', 'ultimate-addons-for-gutenberg' ),
 		attributes: [
             { label: 'bgColor', value: '#ffffff' },
-            { label: 'inputborderRadius', value: 3 },
+            { label: 'fieldBorderTopLeftRadius', value: 3 },
+            { label: 'fieldBorderTopRightRadius', value: 3 },
+            { label: 'fieldBorderBottomLeftRadius', value: 3 },
+            { label: 'fieldBorderBottomRightRadius', value: 3 },
 			{ label: 'paddingFieldTop' , value: 0 },
 			{ label: 'paddingFieldRight' , value: 10 },
 			{ label: 'paddingFieldBottom' , value: 10 },
