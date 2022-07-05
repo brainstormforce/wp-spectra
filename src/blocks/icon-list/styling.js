@@ -226,8 +226,8 @@ function styling( props ) {
 			tabletSelectors[
 				' .uagb-icon-list__wrap .wp-block[data-type="uagb/icon-list-child"]'
 			] = {
-				'margin-left': 0,
-				'margin-right': 0,
+				'margin-left': '0 !important',
+				'margin-right': '0 !important',
 				'margin-bottom': generateCSSUnit( gapTabletFallback, gapType ),
 			};
 			tabletSelectors[
@@ -257,12 +257,14 @@ function styling( props ) {
 			] = {
 				'margin-bottom': 0,
 			};
-		} else if ( 'mobile' === stack ) {
+		}
+		// Stack On Tablet + Mobile
+		if ( 'mobile' === stack || 'tablet' === stack ) {
 			mobileSelectors[
 				' .uagb-icon-list__wrap .wp-block[data-type="uagb/icon-list-child"]'
 			] = {
-				'margin-left': 0,
-				'margin-right': 0,
+				'margin-left': '0 !important',
+				'margin-right': '0 !important',
 				'margin-bottom': generateCSSUnit( gapMobileFallback, gapType ),
 			};
 

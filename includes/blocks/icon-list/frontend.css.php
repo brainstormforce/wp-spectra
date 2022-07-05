@@ -234,8 +234,8 @@ if ( 'horizontal' === $icon_layout ) {
 	if ( 'tablet' === $attr['stack'] ) {
 
 		$t_selectors[' .uagb-icon-list__wrap .wp-block-uagb-icon-list-child'] = array(
-			'margin-left'   => 0,
-			'margin-right'  => 0,
+			'margin-left'   => '0 !important',
+			'margin-right'  => '0 !important',
 			'margin-bottom' => UAGB_Helper::get_css_value( $gap_fallback, $attr['gapType'] ),
 		);
 
@@ -246,11 +246,13 @@ if ( 'horizontal' === $icon_layout ) {
 			'margin-bottom' => 0,
 		);
 
-	} elseif ( 'mobile' === $attr['stack'] ) {
+	}
+	// Stack On Tablet + Mobile.
+	if ( 'mobile' === $attr['stack'] || 'tablet' === $attr['stack'] ) {
 
 		$m_selectors[' .uagb-icon-list__wrap .wp-block-uagb-icon-list-child'] = array(
-			'margin-left'   => 0,
-			'margin-right'  => 0,
+			'margin-left'   => '0 !important',
+			'margin-right'  => '0 !important',
 			'margin-bottom' => UAGB_Helper::get_css_value( $gap_fallback, $attr['gapType'] ),
 		);
 
