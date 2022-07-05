@@ -268,6 +268,20 @@ function styling( props ) {
 			'color': inputplaceholderColor,
 			'letter-spacing': generateCSSUnit( inputLetterSpacing, inputLetterSpacingType ),
 		},
+		' .uagb-forms-main-form textarea': {
+			'font-size': generateCSSUnit( inputFontSize, inputFontSizeType ),
+			'line-height': generateCSSUnit(
+				inputLineHeight,
+				inputLineHeightType
+			),
+			'font-family': inputFontFamily,
+			'font-style': inputFontStyle,
+			'text-transform': inputTransform,
+			'text-decoration': inputDecoration,
+			'font-weight': inputFontWeight,
+			'color': inputplaceholderColor,
+			'letter-spacing': generateCSSUnit( inputLetterSpacing, inputLetterSpacingType ),
+		},
 		' .uagb-forms-main-form select': {
 			'font-size': generateCSSUnit( inputFontSize, inputFontSizeType ),
 			'line-height': generateCSSUnit(
