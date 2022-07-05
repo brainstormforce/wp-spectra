@@ -287,15 +287,6 @@ if ( 'text' === $attr['ctaType'] ) {
 	);
 }
 
-
-if ( 'above-title' === $attr['iconimgPosition'] || 'below-title' === $attr['iconimgPosition'] ) {
-	$selectors['.uagb-infobox__content-wrap']  = array(
-		'text-align' => $attr['headingAlign'],
-	);
-	$selectors[' .uagb-infobox__content-wrap'] = array(
-		'text-align' => $attr['headingAlign'],
-	);
-}
 $m_selectors = array(
 	' .uagb-ifb-title-prefix'                              => array(
 		'margin-bottom' => UAGB_Helper::get_css_value( $attr['prefixMobileSpace'], $attr['prefixMobileMarginUnit'] ),
@@ -498,6 +489,19 @@ $t_selectors = array(
 		'box-sizing' => $box_sizing_image_tablet,
 	),
 );
+
+if ( 'above-title' === $attr['iconimgPosition'] || 'below-title' === $attr['iconimgPosition'] ) {
+	$selectors['.uagb-infobox__content-wrap']   = array(
+		'text-align' => $attr['headingAlign'],
+	);
+	$t_selectors['.uagb-infobox__content-wrap'] = array(
+		'text-align' => $attr['headingAlignTablet'],
+	);
+	$m_selectors['.uagb-infobox__content-wrap'] = array(
+		'text-align' => $attr['headingAlignMobile'],
+	);
+}
+
 if ( 'button' === $attr['ctaType'] ) {
 	$selectors[' .uagb-infobox-cta-link svg']                      = array(
 		'font-size'   => $cta_icon_size,
