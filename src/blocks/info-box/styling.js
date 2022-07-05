@@ -10,6 +10,8 @@ import generateBorderCSS from '@Controls/generateBorderCSS';
 function styling( props ) {
 	const {
 		headingAlign,
+		headingAlignTablet,
+		headingAlignMobile,
 		headingColor,
 		subHeadingColor,
 		prefixColor,
@@ -527,14 +529,6 @@ function styling( props ) {
 		};
 	}
 	selectors[' .uagb-infobox-cta-link'] = ctaBorderCSS;
-	if (
-		iconimgPosition === 'above-title' ||
-		iconimgPosition === 'below-title'
-	) {
-		selectors[ '.uagb-infobox__content-wrap' ] = {
-			'text-align': headingAlign,
-		};
-	}
 
 	const tabletSelectors = {
 		' .block-editor-rich-text__editable.uagb-ifb-desc': {
@@ -1058,6 +1052,21 @@ function styling( props ) {
 			'box-sizing' : `${boxSizingImageMobile}`,
 		},
 	};
+
+	if (
+		iconimgPosition === 'above-title' ||
+		iconimgPosition === 'below-title'
+	) {
+		selectors[ '.uagb-infobox__content-wrap' ] = {
+			'text-align': headingAlign,
+		};
+		tabletSelectors[ '.uagb-infobox__content-wrap' ] = {
+			'text-align': headingAlignTablet,
+		};
+		mobileSelectors[ '.uagb-infobox__content-wrap' ] = {
+			'text-align': headingAlignMobile,
+		};
+	}
 
 	if ( imageWidthType ) {
 		// Image
