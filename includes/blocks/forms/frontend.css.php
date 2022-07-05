@@ -48,9 +48,9 @@ $input_overall_border        = UAGB_Block_Helper::uag_generate_deprecated_border
 	( isset( $attr['inputborderStyle'] ) ? $attr['inputborderStyle'] : '' ),
 	( isset( $attr['inputborderHColor'] ) ? $attr['inputborderHColor'] : '' )
 );
+$input_overall_border_tablet = UAGB_Block_Helper::uag_generate_border_css( $attr, 'field', 'tablet' );
+$input_overall_border_mobile = UAGB_Block_Helper::uag_generate_border_css( $attr, 'field', 'mobile' );
 $input_underline_border      = ( isset( $attr['fieldBorderBottomWidth'] ) ? UAGB_Helper::get_css_value( $attr['fieldBorderBottomWidth'], 'px' ) : '' );
-$input_overall_border_Tablet = UAGB_Block_Helper::uag_generate_border_css( $attr, 'field', 'tablet' );
-$input_overall_border_Mobile = UAGB_Block_Helper::uag_generate_border_css( $attr, 'field', 'mobile' );
 
 $success_message_border        = UAGB_Block_Helper::uag_generate_border_css( $attr, 'successMsg' );
 $success_message_border        = UAGB_Block_Helper::uag_generate_deprecated_border_css(
@@ -230,7 +230,7 @@ $t_selectors = array(
 	),
 	' .uagb-forms-main-form .uagb-forms-main-submit-button' => array_merge(
 		array(
-			'letter-spacing'   => UAGB_Helper::get_css_value( $attr['submitLetterSpacingTablet'], $attr['submitLetterSpacingType'] ),
+			'letter-spacing' => UAGB_Helper::get_css_value( $attr['submitLetterSpacingTablet'], $attr['submitLetterSpacingType'] ),
 			'padding-top'    => UAGB_Helper::get_css_value( $attr['paddingBtnTopTablet'], $attr['tabletPaddingBtnUnit'] ),
 			'padding-bottom' => UAGB_Helper::get_css_value( $attr['paddingBtnBottomTablet'], $attr['tabletPaddingBtnUnit'] ),
 			'padding-left'   => UAGB_Helper::get_css_value( $attr['paddingBtnLeftTablet'], $attr['tabletPaddingBtnUnit'] ),
@@ -263,7 +263,7 @@ $m_selectors = array(
 	),
 	' .uagb-forms-main-form .uagb-forms-main-submit-button' => array_merge(
 		array(
-			'letter-spacing'   => UAGB_Helper::get_css_value( $attr['submitLetterSpacingMobile'], $attr['submitLetterSpacingType'] ),
+			'letter-spacing' => UAGB_Helper::get_css_value( $attr['submitLetterSpacingMobile'], $attr['submitLetterSpacingType'] ),
 			'padding-top'    => UAGB_Helper::get_css_value( $attr['paddingBtnTopMobile'], $attr['mobilePaddingBtnUnit'] ),
 			'padding-bottom' => UAGB_Helper::get_css_value( $attr['paddingBtnBottomMobile'], $attr['mobilePaddingBtnUnit'] ),
 			'padding-left'   => UAGB_Helper::get_css_value( $attr['paddingBtnLeftMobile'], $attr['mobilePaddingBtnUnit'] ),
@@ -388,13 +388,13 @@ if ( 'boxed' === $attr['formStyle'] ) {
 	$t_selectors[' .uagb-forms-main-form  .uagb-forms-radio-wrap input[type=radio] + label:before']       = $toggle_border_tablet;
 	$t_selectors[' .uagb-forms-main-form .uagb-slider'] = $toggle_border_tablet;
 	$t_selectors[' .uagb-forms-main-form  .uagb-forms-accept-wrap input[type=checkbox] + label:before'] = $toggle_border_tablet;
-	$t_selectors[' .uagb-forms-main-form .uagb-forms-input'] = $input_overall_border_Tablet;
+	$t_selectors[' .uagb-forms-main-form .uagb-forms-input'] = $input_overall_border_tablet;
 
 	$m_selectors[' .uagb-forms-main-form  .uagb-forms-checkbox-wrap input[type=checkbox] + label:before'] = $toggle_border_mobile;
 	$m_selectors[' .uagb-forms-main-form  .uagb-forms-radio-wrap input[type=radio] + label:before']       = $toggle_border_mobile;
 	$m_selectors[' .uagb-forms-main-form .uagb-slider'] = $toggle_border_mobile;
 	$m_selectors[' .uagb-forms-main-form  .uagb-forms-accept-wrap input[type=checkbox] + label:before'] = $toggle_border_mobile;
-	$m_selectors[' .uagb-forms-main-form .uagb-forms-input'] = $input_overall_border_Tablet;
+	$m_selectors[' .uagb-forms-main-form .uagb-forms-input'] = $input_overall_border_mobile;
 }
 
 $selectors[' .uagb-forms-main-form  .uagb-forms-input']   = array(
