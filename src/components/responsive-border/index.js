@@ -62,18 +62,17 @@ const ResponsiveBorder = ( props ) => {
 		),
 	} );
 
-
-
 	const borderStyle = attributes[prefix + 'BorderStyle'];
-
 
 	const tabOutputNormal = (
 		<AdvancedPopColorControl
 			label={ borderColorLabel }
-			colorValue={  attributes[prefix + 'BorderColor'] }
+			colorValue={
+				attributes[prefix + 'BorderColor'] ? attributes[prefix + 'BorderColor'] : ''
+			}
 			data={ {
-				value: prefix + 'BorderColor'.value,
-				label: prefix + 'BorderColor'.label,
+				value: attributes[prefix + 'BorderColor'],
+				label: prefix + 'BorderColor',
 			} }
 			setAttributes={ setAttributes }
 		/>
@@ -81,10 +80,12 @@ const ResponsiveBorder = ( props ) => {
 	const tabOutputHover = (
 		<AdvancedPopColorControl
 			label={ borderHoverColorLabel }
-			colorValue={ attributes[prefix + 'BorderHColor'] }
+			colorValue={
+				attributes[prefix + 'BorderHColor'] ? attributes[prefix + 'BorderHColor'] : ''
+			}
 			data={ {
-				value: prefix + 'BorderHColor'.value,
-				label: prefix + 'BorderHColor'.label,
+				value: attributes[prefix + 'BorderHColor'],
+				label: prefix + 'BorderHColor',
 			} }
 			setAttributes={ setAttributes }
 		/>

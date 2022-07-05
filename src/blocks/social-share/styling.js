@@ -12,6 +12,8 @@ function styling( props ) {
 
 	const {
 		align,
+		alignTablet,
+		alignMobile,
 		gap,
 		gapTablet,
 		gapMobile,
@@ -128,14 +130,18 @@ function styling( props ) {
 		'font-size': generateCSSUnit( sizeFallback, sizeType ),
 	};
 
-	let alignment = 'center';
-	if ( align === 'left' ){
-		alignment = 'flex-start';
-	}else if( align === 'right' ){
-		alignment = 'flex-end'
-	}else{
-		alignment = 'center';
+	function getFlexAlignment( textalign ) {
+		if ( textalign === 'left' ){
+			return 'flex-start';
+		} else if( textalign === 'right' ){
+			return 'flex-end';
+		} 
+		return 'center';
 	}
+
+	const alignment = getFlexAlignment( align );
+	const alignmentTablet = getFlexAlignment( alignTablet );
+	const alignmentMobile = getFlexAlignment( alignMobile );
 
 	selectors[ '.uagb-social-share__outer-wrap .block-editor-inner-blocks' ] = {
 		'text-align': align,
@@ -148,6 +154,23 @@ function styling( props ) {
 		'-ms-flex-align': alignment,
 		'align-items': alignment,
 	};
+	tabletSelectors[ '.uagb-social-share__outer-wrap .block-editor-inner-blocks .block-editor-block-list__layout' ] = {
+		'justify-content': alignmentTablet,
+		'-webkit-box-pack': alignmentTablet,
+		'-ms-flex-pack': alignmentTablet,
+		'-webkit-box-align': alignmentTablet,
+		'-ms-flex-align': alignmentTablet,
+		'align-items': alignmentTablet,
+	};
+	mobileSelectors[ '.uagb-social-share__outer-wrap .block-editor-inner-blocks .block-editor-block-list__layout' ] = {
+		'justify-content': alignmentMobile,
+		'-webkit-box-pack': alignmentMobile,
+		'-ms-flex-pack': alignmentMobile,
+		'-webkit-box-align': alignmentMobile,
+		'-ms-flex-align': alignmentMobile,
+		'align-items': alignmentMobile,
+	};
+
 	selectors[
 		'.uagb-social-share__outer-wrap'
 	] = {
@@ -157,6 +180,28 @@ function styling( props ) {
 		'-webkit-box-align': alignment,
 		'-ms-flex-align': alignment,
 		'align-items': alignment,
+	};
+
+	tabletSelectors[
+		'.uagb-social-share__outer-wrap'
+	] = {
+		'justify-content': alignmentTablet,
+		'-webkit-box-pack': alignmentTablet,
+		'-ms-flex-pack': alignmentTablet,
+		'-webkit-box-align': alignmentTablet,
+		'-ms-flex-align': alignmentTablet,
+		'align-items': alignmentTablet,
+	};
+
+	mobileSelectors[
+		'.uagb-social-share__outer-wrap'
+	] = {
+		'justify-content': alignmentMobile,
+		'-webkit-box-pack': alignmentMobile,
+		'-ms-flex-pack': alignmentMobile,
+		'-webkit-box-align': alignmentMobile,
+		'-ms-flex-align': alignmentMobile,
+		'align-items': alignmentMobile,
 	};
 
 	if ( 'horizontal' === social_layout ) {
@@ -192,6 +237,26 @@ function styling( props ) {
 				'-ms-flex-align': alignment,
 				'align-items': alignment,
 			};
+
+			tabletSelectors[ '.uagb-social-share__outer-wrap' ] = {
+				'flex-direction': 'column',
+				'justify-content': alignmentTablet,
+				'-webkit-box-pack': alignmentTablet,
+				'-ms-flex-pack': alignmentTablet,
+				'-webkit-box-align': alignmentTablet,
+				'-ms-flex-align': alignmentTablet,
+				'align-items': alignmentTablet,
+			};
+
+			mobileSelectors[ '.uagb-social-share__outer-wrap' ] = {
+				'flex-direction': 'column',
+				'justify-content': alignmentMobile,
+				'-webkit-box-pack': alignmentMobile,
+				'-ms-flex-pack': alignmentMobile,
+				'-webkit-box-align': alignmentMobile,
+				'-ms-flex-align': alignmentMobile,
+				'align-items': alignmentMobile,
+			};
 		} else if ( 'tablet' === stack ) {
 			tabletSelectors[ ' .uagb-ss__wrapper' ] = {
 				'margin-left': 0,
@@ -215,6 +280,35 @@ function styling( props ) {
 				'margin-left': 0,
 				'margin-right': 0,
 			};
+			selectors[ '.uagb-social-share__outer-wrap' ] = {
+				'flex-direction': 'column',
+				'justify-content': alignment,
+				'-webkit-box-pack': alignment,
+				'-ms-flex-pack': alignment,
+				'-webkit-box-align': alignment,
+				'-ms-flex-align': alignment,
+				'align-items': alignment,
+			};
+
+			tabletSelectors[ '.uagb-social-share__outer-wrap' ] = {
+				'flex-direction': 'column',
+				'justify-content': alignmentTablet,
+				'-webkit-box-pack': alignmentTablet,
+				'-ms-flex-pack': alignmentTablet,
+				'-webkit-box-align': alignmentTablet,
+				'-ms-flex-align': alignmentTablet,
+				'align-items': alignmentTablet,
+			};
+
+			mobileSelectors[ '.uagb-social-share__outer-wrap' ] = {
+				'flex-direction': 'column',
+				'justify-content': alignmentMobile,
+				'-webkit-box-pack': alignmentMobile,
+				'-ms-flex-pack': alignmentMobile,
+				'-webkit-box-align': alignmentMobile,
+				'-ms-flex-align': alignmentMobile,
+				'align-items': alignmentMobile,
+			};
 		} else if ( 'mobile' === stack ) {
 			mobileSelectors[ ' .uagb-ss__wrapper' ] = {
 				'margin-left': 0,
@@ -233,6 +327,35 @@ function styling( props ) {
 			] = {
 				'margin-left': 0,
 				'margin-right': 0,
+			};
+			selectors[ '.uagb-social-share__outer-wrap' ] = {
+				'flex-direction': 'column',
+				'justify-content': alignment,
+				'-webkit-box-pack': alignment,
+				'-ms-flex-pack': alignment,
+				'-webkit-box-align': alignment,
+				'-ms-flex-align': alignment,
+				'align-items': alignment,
+			};
+
+			tabletSelectors[ '.uagb-social-share__outer-wrap' ] = {
+				'flex-direction': 'column',
+				'justify-content': alignmentTablet,
+				'-webkit-box-pack': alignmentTablet,
+				'-ms-flex-pack': alignmentTablet,
+				'-webkit-box-align': alignmentTablet,
+				'-ms-flex-align': alignmentTablet,
+				'align-items': alignmentTablet,
+			};
+
+			mobileSelectors[ '.uagb-social-share__outer-wrap' ] = {
+				'flex-direction': 'column',
+				'justify-content': alignmentMobile,
+				'-webkit-box-pack': alignmentMobile,
+				'-ms-flex-pack': alignmentMobile,
+				'-webkit-box-align': alignmentMobile,
+				'-ms-flex-align': alignmentMobile,
+				'align-items': alignmentMobile,
 			};
 		}
 	}

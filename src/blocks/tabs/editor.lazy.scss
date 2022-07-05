@@ -1,4 +1,4 @@
-.uagb-tabs__wrap {
+.editor-styles-wrapper .uagb-tabs__wrap {
 
 	.uagb-tabs-editor-controls {
 		position: absolute;
@@ -70,6 +70,10 @@
 
 	ul.uagb-tabs__panel {
 		margin-top: 12px;
+
+		p {
+			margin: 0;
+		}
 	}
 }
 
