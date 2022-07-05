@@ -507,9 +507,7 @@ function styling( props ) {
 				paddingBtnRightTablet,
 				tabletPaddingBtnUnit
 			),
-			...submitBorderTablet
-		},
-		' .uagb-forms-main-form .uagb-forms-main-submit-button': { // eslint-disable-line no-dupe-keys
+			...submitBorderTablet,
 			'font-size': generateCSSUnit(
 				submitTextFontSizeTablet,
 				submitTextFontSizeType
