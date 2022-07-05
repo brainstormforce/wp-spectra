@@ -124,48 +124,48 @@ if ( ! class_exists( 'UAGB_Post_Timeline' ) ) {
 							'type'    => 'number',
 							'default' => 10,
 						),
-						'horizontalSpaceTablet'     => array(
+						'horizontalSpaceTablet'      => array(
 							'type'    => 'number',
 							'default' => 10,
 						),
-						'horizontalSpaceMobile'     => array(
+						'horizontalSpaceMobile'      => array(
 							'type'    => 'number',
 							'default' => 10,
 						),
-						'horizontalSpaceUnit'       => array(
+						'horizontalSpaceUnit'        => array(
 							'type'    => 'string',
 							'default' => 'px',
 						),
-						'horizontalSpaceUnitTablet' => array(
-							'type' => 'string',
-							'default' => 'px',
-						),
-						'horizontalSpaceUnitMobile' => array(
-							'type' => 'string',
-							'default' => 'px',
-						),
-						'verticalSpace'           => array(
-							'type'    => 'number',
-							'default' => 15,
-						),
-						'verticalSpaceTablet'     => array(
-							'type'    => 'number',
-							'default' => 15,
-						),
-						'verticalSpaceMobile'     => array(
-							'type'    => 'number',
-							'default' => 15,
-						),
-						'verticalSpaceUnit'       => array(
+						'horizontalSpaceUnitTablet'  => array(
 							'type'    => 'string',
 							'default' => 'px',
 						),
-						'verticalSpaceUnitTablet' => array(
-							'type' => 'string',
+						'horizontalSpaceUnitMobile'  => array(
+							'type'    => 'string',
 							'default' => 'px',
 						),
-						'verticalSpaceUnitMobile' => array(
-							'type' => 'string',
+						'verticalSpace'              => array(
+							'type'    => 'number',
+							'default' => 15,
+						),
+						'verticalSpaceTablet'        => array(
+							'type'    => 'number',
+							'default' => 15,
+						),
+						'verticalSpaceMobile'        => array(
+							'type'    => 'number',
+							'default' => 15,
+						),
+						'verticalSpaceUnit'          => array(
+							'type'    => 'string',
+							'default' => 'px',
+						),
+						'verticalSpaceUnitTablet'    => array(
+							'type'    => 'string',
+							'default' => 'px',
+						),
+						'verticalSpaceUnitMobile'    => array(
+							'type'    => 'string',
 							'default' => 'px',
 						),
 						'timelinAlignment'           => array(
@@ -923,6 +923,7 @@ if ( ! class_exists( 'UAGB_Post_Timeline' ) ) {
 			<article class = "uagb-timeline__field <?php echo esc_html( $content_align_class ); ?>">
 					<?php $this->get_icon( $attributes ); ?>
 					<div class = "<?php echo esc_html( $day_align_class ); ?> uagb-timeline__events-inner-new" >
+						<div class="uagb-timeline__events-inner--content">
 								<?php $this->get_date( $attributes, 'uagb-timeline__date-hide uagb-timeline__inner-date-new' ); ?>
 							<?php ( $attributes['displayPostImage'] ) ? $this->get_image( $attributes ) : ''; ?>
 								<?php
@@ -932,6 +933,7 @@ if ( ! class_exists( 'UAGB_Post_Timeline' ) ) {
 									$this->get_cta( $attributes );
 								?>
 								<div class = "uagb-timeline__arrow"></div>
+						</div>
 					</div>
 					<?php if ( $display_inner_date ) { ?>
 						<?php $this->get_date( $attributes, 'uagb-timeline__date-new' ); ?>

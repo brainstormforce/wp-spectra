@@ -29,11 +29,8 @@ const PostTimelineComponent = ( props ) => {
 		props.setAttributes( { block_id: props.clientId } );
 
 		const {
-			verticalSpace,
 			horizontalSpace,
-			topMargin,
 			rightMargin,
-			bottomMargin,
 			leftMargin,
 			bgPadding,
 			topPadding,
