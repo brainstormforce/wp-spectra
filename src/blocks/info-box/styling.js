@@ -517,31 +517,31 @@ function styling( props ) {
 		},
 	};
 
-if( 'Stacked' === iconView ) {
-	selectors[ ' .uagb-iconbox-icon-wrap.uagb-infobox-shape-circle'] = {
-		'background-color' : iconBackgroundColor,
-		'border-radius' : '50%',
+	if( 'Stacked' === iconView ) {
+		selectors[ ' .uagb-iconbox-icon-wrap.uagb-infobox-shape-circle'] = {
+			'background-color' : iconBackgroundColor,
+			'border-radius' : '50%',
+		}
+		selectors[ ' .uagb-iconbox-icon-wrap.uagb-infobox-shape-squre'] = {
+			'background-color' : iconBackgroundColor,
+		}
+		selectors[' .uagb-iconbox-icon-wrap:hover'] = {
+			'background-color' : `${iconBackgroundHoverColor} !important`,
+		};
 	}
-	selectors[ ' .uagb-iconbox-icon-wrap.uagb-infobox-shape-squre'] = {
-		'background-color' : iconBackgroundColor,
+	else if( 'Framed' === iconView ) {
+		selectors[ ' .uagb-iconbox-icon-wrap.uagb-infobox-shape-circle'] = {
+			'border' : `${iconBorderWidth}px solid ${iconBackgroundColor}`,
+			'border-radius' : '50%',
+		}
+		selectors[ ' .uagb-iconbox-icon-wrap.uagb-infobox-shape-squre'] = {
+			'border' : `${iconBorderWidth}px solid ${iconBackgroundColor}`,
+		}
+		selectors[' .uagb-iconbox-icon-wrap:hover'] = {
+			'border' : `${iconBorderWidth}px solid ${iconBackgroundHoverColor}`,
+		};
 	}
-	selectors[' .uagb-iconbox-icon-wrap:hover'] = {
-		'background-color' : `${iconBackgroundHoverColor} !important`,
-	};
-}
-else if( 'Framed' === iconView ) {
-	selectors[ ' .uagb-iconbox-icon-wrap.uagb-infobox-shape-circle'] = {
-		'border' : `${iconBorderWidth}px solid ${iconBackgroundColor}`,
-		'border-radius' : '50%',
-	}
-	selectors[ ' .uagb-iconbox-icon-wrap.uagb-infobox-shape-squre'] = {
-		'border' : `${iconBorderWidth}px solid ${iconBackgroundColor}`,
-	}
-	selectors[' .uagb-iconbox-icon-wrap:hover'] = {
-		'border' : `${iconBorderWidth}px solid ${iconBackgroundHoverColor}`,
-	};
-}
-selectors[' .uagb-infobox-cta-link.wp-block-button__link'] = ctaBorderCSS;
+	selectors[' .uagb-infobox-cta-link.wp-block-button__link'] = ctaBorderCSS;
 
 	const tabletSelectors = {
 		' .block-editor-rich-text__editable.uagb-ifb-desc': {
