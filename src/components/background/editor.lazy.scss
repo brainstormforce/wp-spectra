@@ -18,6 +18,15 @@
 	.uag-background-image-overlay-gradient,
 	.uagb-responsive-select-control {
 		margin-top: $spectra-control-vertical-gap;
+
+		.uagb-size-type-field-tabs {
+			display: flex;
+			justify-content: space-between;
+
+			& > .components-base-control {
+				width: 45%;
+			}
+		}
 	}
 
 	.uag-background-image > .uagb-responsive-select-control {
@@ -31,12 +40,15 @@
 		}
 	}
 
-	.uagb-size-type-field-tabs {
-		display: flex;
-		justify-content: space-between;
+	.uag-background-image-attachment,
+	.uag-background-image-repeat,
+	.uag-background-image-size {
 
-		& > .components-base-control {
-			width: 45%;
+		.uagb-responsive-select-control {
+
+			.uagb-control__header {
+				margin: 0;
+			}
 		}
 	}
 
