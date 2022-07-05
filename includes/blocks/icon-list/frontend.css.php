@@ -181,11 +181,12 @@ $m_selectors = array(
 		'height'    => $m_icon_size,
 		'font-size' => $m_icon_size,
 	),
-	' .wp-block-uagb-icon-list-child .uagb-icon-list__source-wrap ' => array(
+	' .wp-block-uagb-icon-list-child .uagb-icon-list__source-wrap' => array(
 		'border-radius' => UAGB_Helper::get_css_value( $border_radius_mobile_fallback, $attr['borderRadiusType'] ),
 		'padding'       => UAGB_Helper::get_css_value( $bg_size_mobile_fallback, 'px' ),
 		'border-style'  => ( $mborder_fallback > 0 ) ? 'solid' : '',
 		'border-width'  => UAGB_Helper::get_css_value( $mborder_fallback, $attr['borderType'] ),
+		'align-self'    => $mobile_position,
 	),
 	' .wp-block-uagb-icon-list-child .uagb-icon-list__label' => array(
 		'font-size'   => UAGB_Helper::get_css_value( $attr['fontSizeMobile'], $attr['fontSizeType'] ),
@@ -201,9 +202,6 @@ $m_selectors = array(
 		'-webkit-box-align' => $alignment_mobile,
 		'-ms-flex-align'    => $alignment_mobile,
 		'align-items'       => $alignment_mobile,
-	),
-	' .wp-block-uagb-icon-list-child .uagb-icon-list__source-wrap ' => array(
-		'align-self' => $mobile_position,
 	),
 );
 
@@ -396,7 +394,7 @@ if ( 'right' === $attr['align'] && $attr['hideLabel'] ) {
 		'margin-right' => UAGB_Helper::get_css_value( $inner_gap_tablet_fallback, $attr['innerGapType'] ),
 	);
 	if ( 'center' === $attr['align'] ) {
-		$selectors[' .wp-block-uagb-icon-list-child  '] = array(
+		$selectors[' .wp-block-uagb-icon-list-child'] = array(
 			'text-align' => 'center',
 		);
 	}
