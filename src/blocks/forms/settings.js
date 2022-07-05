@@ -458,7 +458,7 @@ const Settings = ( props ) => {
 			/>
 			<ResponsiveBorder
 				setAttributes={ setAttributes }
-				prefix={'failedMsg'}
+				prefix={'errorMsg'}
 				disabledBorderTitle= {false}
 				attributes={ attributes }
 				deviceType={deviceType}
