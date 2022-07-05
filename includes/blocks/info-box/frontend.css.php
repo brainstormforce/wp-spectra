@@ -503,13 +503,16 @@ if ( 'above-title' === $attr['iconimgPosition'] || 'below-title' === $attr['icon
 }
 
 if ( 'button' === $attr['ctaType'] ) {
-	$selectors[' .uagb-infobox-cta-link svg']                      = array(
+	$selectors[' div.uagb-ifb-button-wrapper a.uagb-infobox-cta-link'] = array(
+		'text-decoration' => $attr['ctaDecoration'],
+	);
+	$selectors[' .uagb-infobox-cta-link svg']                          = array(
 		'font-size'   => $cta_icon_size,
 		'height'      => $cta_icon_size,
 		'width'       => $cta_icon_size,
 		'line-height' => $cta_icon_size,
 	);
-	$selectors[' .uagb-ifb-button-wrapper .uagb-infobox-cta-link'] =
+	$selectors[' .uagb-ifb-button-wrapper .uagb-infobox-cta-link']     =
 		array(
 			'color'            => $attr['ctaBtnLinkColor'],
 			'background-color' => $attr['ctaBgColor'],
