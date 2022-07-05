@@ -21,6 +21,10 @@
 		.uagb-forms-input,
 		input[type="text"] {
 			min-height: 0 !important;
+
+			&::-webkit-input-placeholder {
+				overflow: unset;
+			}
 		}
 
 		input:not([type="checkbox"]):not([type="radio"]):not([type="file"]),
