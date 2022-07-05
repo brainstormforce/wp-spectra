@@ -45,7 +45,7 @@ const generateBorderCSS = ( attributes, prefix, deviceType = 'desktop' ) => {
 		borderCSS['border-top-right-radius'] = borderTopRightRadiusTablet ? borderTopRightRadiusTablet : borderTopRightRadius;
 		borderCSS['border-bottom-right-radius'] = borderBottomRightRadiusTablet ? borderBottomRightRadiusTablet : borderBottomRightRadius;
 		borderCSS['border-bottom-left-radius'] = borderBottomLeftRadiusTablet ? borderBottomLeftRadiusTablet : borderBottomLeftRadius;
-		
+
 	} else if( 'mobile' === deviceType ) {
 		if( 'none' !== attributes[prefix + 'BorderStyle'] ){
 			borderCSS['border-top-width'] = borderTopWidthMobile ? borderTopWidthMobile : borderTopWidthTablet;
@@ -57,16 +57,16 @@ const generateBorderCSS = ( attributes, prefix, deviceType = 'desktop' ) => {
 		borderCSS['border-top-right-radius'] = borderTopRightRadiusMobile ? borderTopRightRadiusMobile : borderTopRightRadiusTablet;
 		borderCSS['border-bottom-right-radius'] = borderBottomRightRadiusMobile ? borderBottomRightRadiusMobile : borderBottomRightRadiusTablet;
 		borderCSS['border-bottom-left-radius'] = borderBottomLeftRadiusMobile ? borderBottomLeftRadiusMobile : borderBottomLeftRadiusTablet;
-		
+
 	} else {
 		if( 'none' !== attributes[prefix + 'BorderStyle'] ){
 			borderCSS['border-top-width'] = borderTopWidth;
 			borderCSS['border-right-width'] = borderRightWidth;
 			borderCSS['border-bottom-width'] = borderBottomWidth;
 			borderCSS['border-left-width'] = borderLeftWidth;
-			borderCSS['border-style'] = borderStyle;
 			borderCSS['border-color'] = borderColor;
 		}
+		borderCSS['border-style'] = borderStyle;
 		borderCSS['border-top-left-radius'] = borderTopLeftRadius;
 		borderCSS['border-top-right-radius'] = borderTopRightRadius;
 		borderCSS['border-bottom-right-radius'] = borderBottomRightRadius;
