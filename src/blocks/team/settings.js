@@ -15,6 +15,7 @@ import SpacingControl from '@Components/spacing-control';
 import MultiButtonsControl from '@Components/multi-buttons-control';
 import UAGImage from '@Components/image';
 import UAGTabsControl from '@Components/tabs';
+import UAGSelectControl from '@Components/select-control';
 import { getImageSize } from '@Utils/Helpers';
 import presets from './presets';
 import UAGPresets from '@Components/presets';
@@ -32,7 +33,6 @@ import {
 } from '@wordpress/block-editor';
 
 import {
-	SelectControl,
 	TextControl,
 	ToggleControl,
 	Icon,
@@ -525,16 +525,17 @@ const Settings = ( props ) => {
 				) }
 				{ image && (
 					<>
-						<SelectControl
+						<UAGSelectControl
 							label={ __(
 								'Size',
 								'ultimate-addons-for-gutenberg'
 							) }
+							data={ {
+								value: imgSize,
+								label: 'imgSize',
+							} }
+							setAttributes={ setAttributes }
 							options={ imageSizeOptions }
-							value={ imgSize }
-							onChange={ ( value ) =>
-								setAttributes( { imgSize: value } )
-							}
 						/>
 						<ResponsiveSlider
 							label={ __(

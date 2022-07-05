@@ -15,6 +15,7 @@ import Range from '@Components/range/Range.js';
 import ResponsiveSlider from '@Components/responsive-slider';
 import UAGImage from '@Components/image';
 import MultiButtonsControl from '@Components/multi-buttons-control';
+import UAGSelectControl from '@Components/select-control';
 import UAGTabsControl from '@Components/tabs';
 import infoBoxPresets, { buttonsPresets } from './presets';
 import UAGPresets from '@Components/presets';
@@ -23,7 +24,6 @@ import {
 } from '@wordpress/block-editor';
 import { getImageSize } from '@Utils/Helpers';
 import {
-	SelectControl,
 	ToggleControl,
 	TextControl,
 	Icon
@@ -49,6 +49,8 @@ const Settings = ( props ) => {
 	// Setup the attributes.
 	const {
 		headingAlign,
+		headingAlignTablet,
+		headingAlignMobile,
 		headingColor,
 		subHeadingColor,
 		prefixColor,
@@ -395,15 +397,16 @@ const Settings = ( props ) => {
 					) }
 				/>
 				{ showIcon && (
-				<SelectControl
+				<UAGSelectControl
 					label={ __(
 						'Select Position',
 						'ultimate-addons-for-gutenberg'
 					) }
-					value={ iconimgPosition }
-					onChange={ ( value ) =>
-						setAttributes( { iconimgPosition: value } )
-					}
+					data={ {
+						value: iconimgPosition,
+						label: 'iconimgPosition',
+					} }
+					setAttributes={ setAttributes }
 					options={ [
 						{
 							value: 'above-title',
@@ -452,12 +455,16 @@ const Settings = ( props ) => {
 				)}
 				{ ( iconimgPosition === 'left' ||
 					iconimgPosition === 'right' ) && (
-					<SelectControl
+					<UAGSelectControl
 						label={ __(
 							'Stack on',
 							'ultimate-addons-for-gutenberg'
 						) }
-						value={ stack }
+						data={ {
+							value: stack,
+							label: 'stack',
+						} }
+						setAttributes={ setAttributes }
 						options={ [
 							{
 								value: 'none',
@@ -485,9 +492,6 @@ const Settings = ( props ) => {
 							'Note: Choose on what breakpoint the Info Box will stack.',
 							'ultimate-addons-for-gutenberg'
 						) }
-						onChange={ ( value ) =>
-							setAttributes( { stack: value } )
-						}
 					/>
 				) }
 				{ iconimgPosition &&
@@ -575,18 +579,17 @@ const Settings = ( props ) => {
 						{ iconImage &&
 							iconImage.url !== 'null' &&
 							iconImage.url !== '' && (
-								<SelectControl
+								<UAGSelectControl
 									label={ __(
 										'Image Size',
 										'ultimate-addons-for-gutenberg'
 									) }
+									data={ {
+										value: imageSize,
+										label: 'imageSize',
+									} }
+									setAttributes={ setAttributes }
 									options={ imageSizeOptions }
-									value={ imageSize }
-									onChange={ ( value ) =>
-										setAttributes( {
-											imageSize: value,
-										} )
-									}
 								/>
 							) }
 					</>
@@ -608,9 +611,20 @@ const Settings = ( props ) => {
 						'Alignment',
 						'ultimate-addons-for-gutenberg'
 					) }
+					responsive={true}
 					data={ {
-						value: headingAlign,
-						label: 'headingAlign',
+						desktop: {
+							value: headingAlign,
+							label: 'headingAlign',
+						},
+						tablet: {
+							value: headingAlignTablet,
+							label: 'headingAlignTablet',
+						},
+						mobile: {
+							value: headingAlignMobile,
+							label: 'headingAlignMobile',
+						},
 					} }
 					className="uagb-multi-button-alignment-control"
 					options={ [
@@ -724,12 +738,16 @@ const Settings = ( props ) => {
 				title={ __( 'Separator', 'ultimate-addons-for-gutenberg' ) }
 				initialOpen={ false }
 			>
-				<SelectControl
-					label={ __( 'Style' ) }
-					value={ seperatorStyle }
-					onChange={ ( value ) =>
-						setAttributes( { seperatorStyle: value } )
-					}
+				<UAGSelectControl
+					label={ __(
+						'Style',
+						'ultimate-addons-for-gutenberg'
+					) }
+					data={ {
+						value: seperatorStyle,
+						label: 'seperatorStyle',
+					} }
+					setAttributes={ setAttributes }
 					options={ [
 						{
 							value: 'none',
@@ -769,15 +787,16 @@ const Settings = ( props ) => {
 					] }
 				/>
 				{ 'none' !== seperatorStyle && (
-					<SelectControl
+					<UAGSelectControl
 						label={ __(
 							'Position',
 							'ultimate-addons-for-gutenberg'
 						) }
-						value={ seperatorPosition }
-						onChange={ ( value ) =>
-							setAttributes( { seperatorPosition: value } )
-						}
+						data={ {
+							value: seperatorPosition,
+							label: 'seperatorPosition',
+						} }
+						setAttributes={ setAttributes }
 						options={ [
 							{
 								value: 'after_icon',
@@ -823,12 +842,16 @@ const Settings = ( props ) => {
 				) }
 				initialOpen={ false }
 			>
-				<SelectControl
-					label={ __( 'Type', 'ultimate-addons-for-gutenberg' ) }
-					value={ ctaType }
-					onChange={ ( value ) =>
-						setAttributes( { ctaType: value } )
-					}
+				<UAGSelectControl
+					label={ __(
+						'Type',
+						'ultimate-addons-for-gutenberg'
+					) }
+					data={ {
+						value: ctaType,
+						label: 'ctaType',
+					} }
+					setAttributes={ setAttributes }
 					options={ [
 						{
 							value: 'none',
@@ -911,17 +934,16 @@ const Settings = ( props ) => {
 				) }
 				{ ctaIcon !== '' && ctaType !== 'all' && ctaType !== 'none' && (
 					<>
-						<SelectControl
+						<UAGSelectControl
 							label={ __(
 								'Icon Position',
 								'ultimate-addons-for-gutenberg'
 							) }
-							value={ ctaIconPosition }
-							onChange={ ( value ) =>
-								setAttributes( {
-									ctaIconPosition: value,
-								} )
-							}
+							data={ {
+								value: ctaIconPosition,
+								label: 'ctaIconPosition',
+							} }
+							setAttributes={ setAttributes }
 							options={ [
 								{
 									value: 'before',
@@ -1007,15 +1029,16 @@ const Settings = ( props ) => {
 						<>
 							{ source_type === 'icon' && (
 								<>
-									<SelectControl
+									<UAGSelectControl
 										label={ __(
 											'View',
 											'ultimate-addons-for-gutenberg'
 										) }
-										value={ iconView }
-										onChange={ ( value ) =>
-											setAttributes( { iconView: value } )
-										}
+										data={ {
+											value: iconView,
+											label: 'iconView',
+										} }
+										setAttributes={ setAttributes }
 										options={ [
 											{
 												value: 'none',
@@ -1042,15 +1065,16 @@ const Settings = ( props ) => {
 									/>
 									{ iconView !== 'none' &&
 									<>
-										<SelectControl
+										<UAGSelectControl
 											label={ __(
 												'Shape',
 												'ultimate-addons-for-gutenberg'
 											) }
-											value={ iconShape }
-											onChange={ ( value ) =>
-												setAttributes( { iconShape: value } )
-											}
+											data={ {
+												value: iconShape,
+												label: 'iconShape',
+											} }
+											setAttributes={ setAttributes }
 											options={ [
 												{
 													value: 'Circle',

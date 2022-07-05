@@ -37,6 +37,20 @@
 			styleType: 'overall-alignment'
 		}
 	},
+	headingAlignTablet: {
+		type: 'string',
+		default: 'center',
+		UAGCopyPaste: {
+			styleType: 'overall-alignment-tablet'
+		}
+	},
+	headingAlignMobile: {
+		type: 'string',
+		default: 'center',
+		UAGCopyPaste: {
+			styleType: 'overall-alignment-mobile'
+		}
+	},
 	headingColor: {
 		type: 'string',
 		UAGCopyPaste: {
