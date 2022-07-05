@@ -13,6 +13,8 @@ return array_merge(
 		'classMigrate'               => false,
 		'inheritFromTheme'           => false,
 		'headingAlign'               => 'center',
+		'headingAlignTablet'         => 'center',
+		'headingAlignMobile'         => 'center',
 		'headingColor'               => '',
 		'subHeadingColor'            => '',
 		'prefixColor'                => '',
