@@ -177,7 +177,7 @@ function FontFamilyControl( props ) {
 				<label className="components-input-control__label" htmlFor="font-family">{ __( 'Font Family' ) }</label>
 				<Select
 					styles={ customSelectStyles }
-					placeholder={ __( 'Select the Font Family' ) }
+					placeholder={ __( 'Default', 'ultimate-addons-for-gutenberg' ) }
 					onChange={ onFontfamilyChange }
 					options={ gFonts }
 					value={ fontFamilyValue }

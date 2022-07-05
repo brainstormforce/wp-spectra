@@ -33,6 +33,9 @@ import {
 
 import UAGAdvancedPanelBody from '@Components/advanced-panel-body';
 
+import boxShadowPresets from './presets';
+import UAGPresets from '@Components/presets';
+
 const Settings = ( props ) => {
 
 	props = props.parentProps;
@@ -117,10 +120,10 @@ const Settings = ( props ) => {
 		noFollow,
 
 		// letter spacing
-		fontLetterSpacing,
-		fontLetterSpacingTablet,
-		fontLetterSpacingMobile,
-		fontLetterSpacingType,
+		letterSpacing,
+		letterSpacingTablet,
+		letterSpacingMobile,
+		letterSpacingType,
 
 	} = attributes;
 
@@ -291,20 +294,20 @@ const Settings = ( props ) => {
 						label: 'lineHeightTablet',
 					} }
 					letterSpacing={ {
-						value: fontLetterSpacing,
-						label: 'fontLetterSpacing',
+						value: letterSpacing,
+						label: 'letterSpacing',
 					} }
 					letterSpacingTablet={ {
-						value: fontLetterSpacingTablet,
-						label: 'fontLetterSpacingTablet',
+						value: letterSpacingTablet,
+						label: 'letterSpacingTablet',
 					} }
 					letterSpacingMobile={ {
-						value: fontLetterSpacingMobile,
-						label: 'fontLetterSpacingMobile',
+						value: letterSpacingMobile,
+						label: 'letterSpacingMobile',
 					} }
 					letterSpacingType={ {
-						value: fontLetterSpacingType,
-						label: 'fontLetterSpacingType',
+						value: letterSpacingType,
+						label: 'letterSpacingType',
 					} }
 				/>
 				<UAGTabsControl
@@ -332,9 +335,11 @@ const Settings = ( props ) => {
 									'ultimate-addons-for-gutenberg'
 								) }
 								colorValue={ color ? color : '' }
-								onColorChange={ ( value ) =>
-									setAttributes( { color: value } )
-								}
+								data={ {
+									value: color,
+									label: 'color',
+								} }
+								setAttributes={ setAttributes }
 							/>
 						</>
 					}
@@ -346,9 +351,11 @@ const Settings = ( props ) => {
 									'ultimate-addons-for-gutenberg'
 								) }
 								colorValue={ hColor ? hColor : '' }
-								onColorChange={ ( value ) =>
-									setAttributes( { hColor: value } )
-								}
+								data={ {
+									value: hColor,
+									label: 'hColor',
+								} }
+								setAttributes={ setAttributes }
 							/>
 						</>
 					}
@@ -428,11 +435,11 @@ const Settings = ( props ) => {
 													? background
 													: ''
 											}
-											onColorChange={ ( value ) =>
-												setAttributes( {
-													background: value,
-												} )
-											}
+											data={ {
+												value: background,
+												label: 'background',
+											} }
+											setAttributes={ setAttributes }
 										/>
 									</>
 								) }
@@ -493,11 +500,11 @@ const Settings = ( props ) => {
 													? hBackground
 													: ''
 											}
-											onColorChange={ ( value ) =>
-												setAttributes( {
-													hBackground: value,
-												} )
-											}
+											data={ {
+												value: hBackground,
+												label: 'hBackground',
+											} }
+											setAttributes={ setAttributes }
 										/>
 									</>
 								) }
@@ -522,6 +529,11 @@ const Settings = ( props ) => {
 					title={__( 'Box Shadow','ultimate-addons-for-gutenberg' )}
 					initialOpen={false}
 				>
+					<UAGPresets
+						setAttributes = { setAttributes }
+						presets = { boxShadowPresets }
+						presetInputType = 'radioImage'
+					/>
 					<BoxShadowControl
 						setAttributes={ setAttributes }
 						boxShadowColor={ {
@@ -647,9 +659,11 @@ const Settings = ( props ) => {
 									'ultimate-addons-for-gutenberg'
 								) }
 								colorValue={ iconColor ? iconColor : '' }
-								onColorChange={ ( value ) =>
-									setAttributes( { iconColor: value } )
-								}
+								data={ {
+									value: iconColor,
+									label: 'iconColor',
+								} }
+								setAttributes={ setAttributes }
 							/>
 					}
 					hover={
@@ -660,9 +674,11 @@ const Settings = ( props ) => {
 									'ultimate-addons-for-gutenberg'
 								) }
 								colorValue={ iconHColor ? iconHColor : '' }
-								onColorChange={ ( value ) =>
-									setAttributes( { iconHColor: value } )
-								}
+								data={ {
+									value: iconHColor,
+									label: 'iconHColor',
+								} }
+								setAttributes={ setAttributes }
 							/>
 						</>
 					}
