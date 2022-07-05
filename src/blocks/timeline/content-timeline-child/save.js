@@ -81,7 +81,7 @@ export default function save( props ) {
 						{ displayPostDate !== true && t_date && (	
 							<>
 							{ ( 'custom' !== dateFormat &&
-								dateI18n( dateFormat, postDate ) ) ||
+								dateI18n( dateFormat, t_date ) ) ||
 								postDate }
 							</>
 						) }
