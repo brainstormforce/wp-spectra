@@ -51,7 +51,7 @@ return array_merge(
 		'buttonVrPadding'                  => 10,
 		'buttonHrPadding'                  => 25,
 		'buttonTextColor'                  => '#333',
-		'buttonBgColor'                    => 'transparent',
+		'buttonBgColor'                    => '',
 		'buttonTextHoverColor'             => '',
 		'buttonBgHoverColor'               => '',
 		'fieldSpacing'                     => '',
