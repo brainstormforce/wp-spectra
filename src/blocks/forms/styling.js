@@ -521,7 +521,6 @@ function styling( props ) {
 				paddingBtnRightTablet,
 				tabletPaddingBtnUnit
 			),
-			...submitBorderTablet,
 			'font-size': generateCSSUnit(
 				submitTextFontSizeTablet,
 				submitTextFontSizeType
@@ -530,7 +529,11 @@ function styling( props ) {
 				submitTextLineHeightTablet,
 				submitTextLineHeightType
 			),
-			'letter-spacing': generateCSSUnit( submitLetterSpacingTablet, submitLetterSpacingType ),
+			'letter-spacing': generateCSSUnit(
+				submitLetterSpacingTablet,
+				submitLetterSpacingType
+			),
+			...submitBorderTablet
 		},
 		' .uagb-forms-main-form .uagb-forms-input-label': {
 			'font-size': generateCSSUnit(
