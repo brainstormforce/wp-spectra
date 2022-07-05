@@ -81,6 +81,7 @@ const SpacingControl = ( props ) => {
 		let newValue = value;
 
 		if ( '' === value && '' !== event ) {
+
 			newValue =
 				event.target.value === ''
 					? ''

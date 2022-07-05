@@ -1,16 +1,12 @@
 import React from 'react';
 import { __ } from '@wordpress/i18n';
+import MultiButtonsControl from '@Components/multi-buttons-control';
 import InspectorTabs from '@Components/inspector-tabs/InspectorTabs.js';
 import InspectorTab, {
 	UAGTabs,
 } from '@Components/inspector-tabs/InspectorTab.js';
-
 import { ToggleControl } from '@wordpress/components';
-
 import { InspectorControls } from '@wordpress/block-editor';
-
-
-
 import UAGAdvancedPanelBody from '@Components/advanced-panel-body';
 
 const Settings = ( props ) => {
@@ -18,7 +14,7 @@ const Settings = ( props ) => {
 
 	const { attributes, setAttributes } = props;
 
-	const { radioRequired } = attributes;
+	const { radioRequired, layout } = attributes;
 
 	const radioInspectorControls = () => {
 		return (
@@ -29,6 +25,26 @@ const Settings = ( props ) => {
 					onChange={ () =>
 						setAttributes( { radioRequired: ! radioRequired } )
 					}
+				/>
+				<MultiButtonsControl
+					setAttributes={ setAttributes }
+					label={ __( 'Layout', 'ultimate-addons-for-gutenberg' ) }
+					data={ {
+						value: layout,
+						label: 'layout',
+					} }
+					className="uagb-multi-button-alignment-control"
+					options={ [
+						{
+							value: '',
+							label: 'Square',
+						},
+						{
+							value: 'round',
+							label: 'Round',
+						},
+					] }
+					showIcons={ false }
 				/>
 			</UAGAdvancedPanelBody>
 		);

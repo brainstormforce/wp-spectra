@@ -675,7 +675,7 @@ const Settings = ( props ) => {
 				{ displayPostImage && (
 					<UAGSelectControl
 						label={ __(
-							'Featured Image Style',
+							'Image Size',
 							'ultimate-addons-for-gutenberg'
 						) }
 						data={ {
