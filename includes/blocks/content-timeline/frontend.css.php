@@ -154,16 +154,16 @@ $selectors = array(
 		'text-align'    => $attr['align'],
 	),
 	'.uagb-timeline__right-block .uagb-timeline__day-new.uagb-timeline__day-left' => array(
-		'margin-right' => UAGB_Helper::get_css_value( $right_margin, $attr['marginUnit'] ),
+		'margin-right' => UAGB_Helper::get_css_value( $attr['horizontalSpace'], $attr['horizontalSpaceUnit'] ),
 	),
 	'.uagb-timeline__left-block .uagb-timeline__day-new.uagb-timeline__day-left' => array(
-		'margin-left' => UAGB_Helper::get_css_value( $left_margin, $attr['marginUnit'] ),
+		'margin-left' => UAGB_Helper::get_css_value( $attr['horizontalSpace'], $attr['horizontalSpaceUnit'] ),
 	),
 	'.uagb-timeline__left-block .uagb-timeline__day-new.uagb-timeline__day-right' => array(
-		'margin-left' => UAGB_Helper::get_css_value( $left_margin, $attr['marginUnit'] ),
+		'margin-left' => UAGB_Helper::get_css_value( $attr['horizontalSpace'], $attr['horizontalSpaceUnit'] ),
 	),
 	'.uagb-timeline__right-block .uagb-timeline__day-new.uagb-timeline__day-right' => array(
-		'margin-right' => UAGB_Helper::get_css_value( $right_margin, $attr['marginUnit'] ),
+		'margin-right' => UAGB_Helper::get_css_value( $attr['horizontalSpace'], $attr['horizontalSpaceUnit'] ),
 	),
 	' .uagb-timeline__date-new'                            => array(
 		'color'     => $attr['dateColor'],
@@ -233,17 +233,17 @@ $selectors = array(
 			'margin-left'  => UAGB_Helper::get_css_value( $attr['horizontalSpaceMobile'], $attr['horizontalSpaceUnitMobile'] ),
 			'margin-right' => UAGB_Helper::get_css_value( $attr['horizontalSpaceMobile'], $attr['horizontalSpaceUnitMobile'] ),
 		),
-		'.uagb-timeline__center-block .uagb-timeline__day-new.uagb-timeline__day-left' => array(
-			'margin-left'   => UAGB_Helper::get_css_value( $attr['leftMarginMobile'], $attr['mobileMarginUnit'] ),
-			'margin-right'  => UAGB_Helper::get_css_value( $attr['rightMarginMobile'], $attr['mobileMarginUnit'] ),
-			'margin-top'    => UAGB_Helper::get_css_value( $attr['topMarginMobile'], $attr['mobileMarginUnit'] ),
-			'margin-bottom' => UAGB_Helper::get_css_value( $attr['bottomMarginMobile'], $attr['mobileMarginUnit'] ),
+		'.uagb-timeline__right-block .uagb-timeline__day-new.uagb-timeline__day-left' => array(
+			'margin-right' => UAGB_Helper::get_css_value( $attr['horizontalSpaceMobile'], $attr['horizontalSpaceUnitMobile'] ),
 		),
-		'.uagb-timeline__center-block .uagb-timeline__day-new.uagb-timeline__day-right' => array(
-			'margin-left'   => UAGB_Helper::get_css_value( $attr['leftMarginMobile'], $attr['mobileMarginUnit'] ),
-			'margin-right'  => UAGB_Helper::get_css_value( $attr['rightMarginMobile'], $attr['mobileMarginUnit'] ),
-			'margin-top'    => UAGB_Helper::get_css_value( $attr['topMarginMobile'], $attr['mobileMarginUnit'] ),
-			'margin-bottom' => UAGB_Helper::get_css_value( $attr['bottomMarginMobile'], $attr['mobileMarginUnit'] ),
+		'.uagb-timeline__left-block .uagb-timeline__day-new.uagb-timeline__day-left' => array(
+			'margin-left' => UAGB_Helper::get_css_value( $attr['horizontalSpaceMobile'], $attr['horizontalSpaceUnitMobile'] ),
+		),
+		'.uagb-timeline__left-block .uagb-timeline__day-new.uagb-timeline__day-right' => array(
+			'margin-left' => UAGB_Helper::get_css_value( $attr['horizontalSpaceMobile'], $attr['horizontalSpaceUnitMobile'] ),
+		),
+		'.uagb-timeline__right-block .uagb-timeline__day-new.uagb-timeline__day-right' => array(
+			'margin-right' => UAGB_Helper::get_css_value( $attr['horizontalSpaceMobile'], $attr['horizontalSpaceUnitMobile'] ),
 		),
 		' .uagb-timeline__events-inner-new' => array(
 			'padding-left'   => UAGB_Helper::get_css_value( $attr['topPaddingMobile'], $attr['mobilePaddingUnit'] ),
@@ -290,17 +290,17 @@ $selectors = array(
 			'margin-left'  => UAGB_Helper::get_css_value( $attr['horizontalSpaceTablet'], $attr['horizontalSpaceUnitTablet'] ),
 			'margin-right' => UAGB_Helper::get_css_value( $attr['horizontalSpaceTablet'], $attr['horizontalSpaceUnitTablet'] ),
 		),
-		'.uagb-timeline__center-block .uagb-timeline__day-new.uagb-timeline__day-left' => array(
-			'margin-left'   => UAGB_Helper::get_css_value( $attr['leftMarginTablet'], $attr['tabletMarginUnit'] ),
-			'margin-right'  => UAGB_Helper::get_css_value( $attr['rightMarginTablet'], $attr['tabletMarginUnit'] ),
-			'margin-top'    => UAGB_Helper::get_css_value( $attr['topMarginTablet'], $attr['tabletMarginUnit'] ),
-			'margin-bottom' => UAGB_Helper::get_css_value( $attr['bottomMarginTablet'], $attr['tabletMarginUnit'] ),
+		'.uagb-timeline__right-block .uagb-timeline__day-new.uagb-timeline__day-left' => array(
+			'margin-right' => UAGB_Helper::get_css_value( $attr['horizontalSpaceTablet'], $attr['horizontalSpaceUnitTablet'] ),
 		),
-		'.uagb-timeline__center-block .uagb-timeline__day-new.uagb-timeline__day-right' => array(
-			'margin-left'   => UAGB_Helper::get_css_value( $attr['leftMarginTablet'], $attr['tabletMarginUnit'] ),
-			'margin-right'  => UAGB_Helper::get_css_value( $attr['rightMarginTablet'], $attr['tabletMarginUnit'] ),
-			'margin-top'    => UAGB_Helper::get_css_value( $attr['topMarginTablet'], $attr['tabletMarginUnit'] ),
-			'margin-bottom' => UAGB_Helper::get_css_value( $attr['bottomMarginTablet'], $attr['tabletMarginUnit'] ),
+		'.uagb-timeline__left-block .uagb-timeline__day-new.uagb-timeline__day-left' => array(
+			'margin-left' => UAGB_Helper::get_css_value( $attr['horizontalSpaceTablet'], $attr['horizontalSpaceUnitTablet'] ),
+		),
+		'.uagb-timeline__left-block .uagb-timeline__day-new.uagb-timeline__day-right' => array(
+			'margin-left' => UAGB_Helper::get_css_value( $attr['horizontalSpaceTablet'], $attr['horizontalSpaceUnitTablet'] ),
+		),
+		'.uagb-timeline__right-block .uagb-timeline__day-new.uagb-timeline__day-right' => array(
+			'margin-right' => UAGB_Helper::get_css_value( $attr['horizontalSpaceTablet'], $attr['horizontalSpaceUnitTablet'] ),
 		),
 		' .uagb-timeline__events-inner-new' => array(
 			'padding-left'   => UAGB_Helper::get_css_value( $attr['topPaddingTablet'], $attr['tabletPaddingUnit'] ),
