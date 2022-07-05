@@ -110,11 +110,12 @@ function styling( props ) {
 		titleLetterSpacingTablet,
 		titleLetterSpacingMobile,
 		titleLetterSpacingType,
+		tabBorderStyle,
 	} = props.attributes;
 
 	const iconSizeFallback = getFallbackNumber( iconSize, 'iconSize', blockName );
 	const iconSpacingFallback = getFallbackNumber( iconSpacing, 'iconSpacing', blockName );
-	
+
 	const borderCSS = generateBorderCSS( props.attributes, 'tab', '' );
 	const borderCSSTablet = generateBorderCSS( props.attributes,'tab', 'tablet' );
 	const borderCSSMobile = generateBorderCSS( props.attributes,'tab', 'mobile' );
@@ -468,9 +469,19 @@ function styling( props ) {
 		},
 	};
 
+	if( tabsStyleD === 'vstyle8' ){
+		selectors[ '.uagb-tabs__wrap.uagb-tabs__vstyle8-desktop ul.uagb-tabs__panel .uagb-tab:last-child' ] = {
+			'border-style': tabBorderStyle,
+		};
+		selectors[ '.uagb-tabs__wrap.uagb-tabs__vstyle8-desktop ul.uagb-tabs__panel .uagb-tab' ] = {
+			'border-style': tabBorderStyle,
+		};
+	}
+
 	if ( tabsStyleD === 'hstyle5' ) {
 		selectors[ '.uagb-tabs__wrap.uagb-tabs__hstyle5-desktop ' ] = {
 			'background': bodyBgColor,
+			'border-style': tabBorderStyle,
 		};
 		selectors[ '.uagb-tabs__wrap.uagb-tabs__hstyle5-desktop:hover' ] = {
 			'border-color': tabBorderHColor,
@@ -483,6 +494,7 @@ function styling( props ) {
 	if ( tabsStyleD === 'vstyle10' ) {
 		selectors[ '.uagb-tabs__wrap.uagb-tabs__vstyle10-desktop ' ] = {
 			'background': bodyBgColor,
+			'border-style': tabBorderStyle,
 		};
 		selectors[ '.uagb-tabs__wrap.uagb-tabs__vstyle10-desktop:hover' ] = {
 			'border-color': tabBorderHColor,
@@ -540,7 +552,7 @@ function styling( props ) {
 			'border-color': tabBorderHColor,
 		};
 	}
-	
+
 	const base_selector = `.editor-styles-wrapper .uagb-block-${ props.clientId.substr(
 		0,
 		8
