@@ -230,39 +230,6 @@ $t_selectors[' .wp-block-uagb-icon-list-child .uagb-icon-list__label'] = array(
 );
 
 if ( 'horizontal' === $icon_layout ) {
-
-	if ( 'tablet' === $attr['stack'] ) {
-
-		$t_selectors[' .uagb-icon-list__wrap .wp-block-uagb-icon-list-child'] = array(
-			'margin-left'   => '0 !important',
-			'margin-right'  => '0 !important',
-			'margin-bottom' => UAGB_Helper::get_css_value( $gap_fallback, $attr['gapType'] ),
-		);
-
-		$t_selectors[' .uagb-icon-list__wrap']['flex-direction'] = 'column';
-		$t_selectors[' .uagb-icon-list__wrap']['align-items']    = $alignment_tablet;
-
-		$t_selectors[' .uagb-icon-list__wrap .wp-block-uagb-icon-list-child:last-child'] = array(
-			'margin-bottom' => 0,
-		);
-
-	}
-	// Stack On Tablet + Mobile.
-	if ( 'mobile' === $attr['stack'] || 'tablet' === $attr['stack'] ) {
-
-		$m_selectors[' .uagb-icon-list__wrap .wp-block-uagb-icon-list-child'] = array(
-			'margin-left'   => '0 !important',
-			'margin-right'  => '0 !important',
-			'margin-bottom' => UAGB_Helper::get_css_value( $gap_fallback, $attr['gapType'] ),
-		);
-
-		$m_selectors[' .uagb-icon-list__wrap']['flex-direction'] = 'column';
-		$m_selectors[' .uagb-icon-list__wrap']['align-items']    = $alignment_mobile;
-
-		$m_selectors[' .uagb-icon-list__wrap .wp-block-uagb-icon-list-child:last-child'] = array(
-			'margin-bottom' => 0,
-		);
-	}
 	$selectors['.wp-block-uagb-icon-list .wp-block-uagb-icon-list-child'] = array(
 		'margin-left'  => UAGB_Helper::get_css_value( ( $gap_fallback / 2 ), $attr['gapType'] ),
 		'margin-right' => UAGB_Helper::get_css_value( ( $gap_fallback / 2 ), $attr['gapType'] ),

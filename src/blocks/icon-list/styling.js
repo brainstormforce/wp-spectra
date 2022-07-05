@@ -39,7 +39,6 @@ function styling( props ) {
 		lineHeight,
 		lineHeightTablet,
 		lineHeightMobile,
-		stack,
 		border,
 		borderTablet,
 		borderMobile,
@@ -222,72 +221,6 @@ function styling( props ) {
 	};
 
 	if ( 'horizontal' === iconListLayout ) {
-		if ( 'tablet' === stack ) {
-			tabletSelectors[
-				' .uagb-icon-list__wrap .wp-block[data-type="uagb/icon-list-child"]'
-			] = {
-				'margin-left': '0 !important',
-				'margin-right': '0 !important',
-				'margin-bottom': generateCSSUnit( gapTabletFallback, gapType ),
-			};
-			tabletSelectors[
-				'.uagb-editor-preview-mode-tablet .uagb-icon-list__wrap .block-editor-inner-blocks'
-			] = {
-				'text-align': alignTablet,
-			};
-			tabletSelectors[
-				'.uagb-editor-preview-mode-tablet .block-editor-block-list__layout'
-			] = {
-				'display': 'flex',
-				'flex-direction': 'column',
-			};
-			mobileSelectors[
-				'.uagb-editor-preview-mode-mobile .block-editor-block-list__layout'
-			] = {
-				'display': 'flex',
-				'flex-direction': 'column',
-			};
-			mobileSelectors[
-				'.uagb-editor-preview-mode-mobile .uagb-icon-list__wrap .block-editor-inner-blocks'
-			] = {
-				'text-align': alignMobile,
-			};
-			tabletSelectors[
-				' .uagb-icon-list__wrap .wp-block[data-type="uagb/icon-list-child"]:last-child'
-			] = {
-				'margin-bottom': 0,
-			};
-		}
-		// Stack On Tablet + Mobile
-		if ( 'mobile' === stack || 'tablet' === stack ) {
-			mobileSelectors[
-				' .uagb-icon-list__wrap .wp-block[data-type="uagb/icon-list-child"]'
-			] = {
-				'margin-left': '0 !important',
-				'margin-right': '0 !important',
-				'margin-bottom': generateCSSUnit( gapMobileFallback, gapType ),
-			};
-
-			mobileSelectors[
-				'.uagb-editor-preview-mode-mobile .block-editor-block-list__layout'
-			] = {
-				'display': 'flex',
-				'flex-direction': 'column',
-			};
-
-			mobileSelectors[
-				' .uagb-icon-list__wrap .wp-block-uagb-icon-list-child:last-child'
-			] = {
-				'margin-bottom': 0,
-			};
-
-			mobileSelectors[
-				'.uagb-editor-preview-mode-mobile .uagb-icon-list__wrap .block-editor-inner-blocks'
-			] = {
-				'text-align': alignMobile,
-			};
-		}
-
 		selectors[ ' .uagb-icon-list__wrap .block-editor-block-list__layout'] = {
 			'justify-content': alignment,
 			'-webkit-box-pack': alignment,
