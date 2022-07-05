@@ -31,7 +31,7 @@ const TextShadowControl = ( props ) => {
 		window.addEventListener( 'click', function( e ){
 			const typoDiv = document.querySelector( '.uagb-text-shadow-advanced' );
 			const actionsDiv = document.querySelector( '.uag-text-shadow-button' );
-			if ( typoDiv ) {
+			if ( typoDiv && showAdvancedControls ) {
 				if ( ! typoDiv?.contains( e.target ) && ! actionsDiv?.contains( e.target ) && ! e.target?.classList?.contains( 'uagb-advanced-color-indicate' ) && ! e.target?.parentElement?.closest( '.uagb-popover-color' ) ){
 					toggleAdvancedControls( false )
 				}
