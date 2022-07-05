@@ -23,6 +23,14 @@
 	li.uagb-tab {
 		position: relative;
 
+		a.uagb-tabs-list {
+
+			p.block-editor-rich-text__editable.rich-text {
+				margin-bottom: 0;
+			}
+
+		}
+
 		a.uagb-tabs__icon-position-left {
 			display: inline-flex;
 		}
