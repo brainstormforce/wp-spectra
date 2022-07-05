@@ -49,6 +49,8 @@ const Settings = ( props ) => {
 	// Setup the attributes.
 	const {
 		headingAlign,
+		headingAlignTablet,
+		headingAlignMobile,
 		headingColor,
 		subHeadingColor,
 		prefixColor,
@@ -601,9 +603,20 @@ const Settings = ( props ) => {
 						'Alignment',
 						'ultimate-addons-for-gutenberg'
 					) }
+					responsive={true}
 					data={ {
-						value: headingAlign,
-						label: 'headingAlign',
+						desktop: {
+							value: headingAlign,
+							label: 'headingAlign',
+						},
+						tablet: {
+							value: headingAlignTablet,
+							label: 'headingAlignTablet',
+						},
+						mobile: {
+							value: headingAlignMobile,
+							label: 'headingAlignMobile',
+						},
 					} }
 					className="uagb-multi-button-alignment-control"
 					options={ [

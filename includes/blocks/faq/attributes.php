@@ -34,6 +34,7 @@ return array_merge(
 		'rowsGapMobile'                => '',
 		'rowsGapUnit'                  => 'px',
 		'boxBgColor'                   => '',
+		'boxBgHoverColor'              => '',
 		'boxPaddingTypeMobile'         => 'px',
 		'boxPaddingTypeTablet'         => 'px',
 		'boxPaddingTypeDesktop'        => 'px',

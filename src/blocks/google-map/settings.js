@@ -8,6 +8,7 @@ import InspectorTab, {
 } from '@Components/inspector-tabs/InspectorTab.js';
 import UAGSelectControl from '@Components/select-control';
 import { TextControl } from '@wordpress/components';
+import ResponsiveSlider from '@Components/responsive-slider';
 
 import UAGAdvancedPanelBody from '@Components/advanced-panel-body';
 
@@ -16,7 +17,14 @@ const Settings = ( props ) => {
 
 	const {
 		setAttributes,
-		attributes: { height, zoom, address, language },
+		attributes: { 
+			height,
+			heightTablet,
+			heightMobile,
+			zoom,
+			address,
+			language,
+		},
 	} = props;
 
 	return (
@@ -60,20 +68,30 @@ const Settings = ( props ) => {
 							max={ 22 }
 							displayUnit={ false }
 						/>
-						<Range
+						<ResponsiveSlider
 							label={ __(
 								'Height',
 								'ultimate-addons-for-gutenberg'
 							) }
-							value={ height }
 							data={ {
-								value: height,
-								label: 'height',
+								desktop: {
+									value: height,
+									label: 'height',
+								},
+								tablet: {
+									value: heightTablet,
+									label: 'heightTablet',
+								},
+								mobile: {
+									value: heightMobile,
+									label: 'heightMobile',
+								},
 							} }
 							min={ 0 }
 							max={ 1000 }
 							displayUnit={ false }
 							setAttributes={ setAttributes }
+							responsive={ true }
 						/>
 						<UAGSelectControl
 							label={ __(
