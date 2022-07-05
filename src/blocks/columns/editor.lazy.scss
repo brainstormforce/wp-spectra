@@ -344,14 +344,15 @@
 		}
 	}
 }
+
 @media screen and (max-width: 976px) {
 
 	.uagb-columns-variation-picker {
 
-		.components-placeholder__fieldset{
+		.components-placeholder__fieldset {
 			max-width: 100%;
 		}
-	
+
 		ul.block-editor-block-variation-picker__variations {
 			justify-content: center;
 			column-gap: 35px;
