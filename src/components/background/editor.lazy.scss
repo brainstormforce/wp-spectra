@@ -40,14 +40,12 @@
 		}
 	}
 
-	.uag-background-image-attachment,
-	.uag-background-image-repeat,
-	.uag-background-image-size {
+	.uag-responsive-image-select.uagb-responsive-select-control {
 
-		.uagb-responsive-select-control {
+		.uagb-size-type-field-tabs {
 
 			.uagb-control__header {
-				margin: 0;
+				margin-bottom: 10px;
 			}
 		}
 	}
@@ -71,6 +69,10 @@
 
 		.uagb-size-type-field-tabs {
 			flex-direction: column;
+
+			.uagb-control__header {
+				margin-bottom: 10px;
+			}
 
 			.components-focal-point-picker-control {
 				width: 100%;
