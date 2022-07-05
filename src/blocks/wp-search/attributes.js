@@ -124,7 +124,7 @@ const attributes = {
 	},
 	buttonWidth: {
 		type: 'number',
-		default: 60,
+		default: 50,
 		UAGCopyPaste: {
 			styleType: 'btn-width'
 		}
