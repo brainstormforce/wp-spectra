@@ -15,6 +15,7 @@ import SpacingControl from '@Components/spacing-control';
 import MultiButtonsControl from '@Components/multi-buttons-control';
 import UAGImage from '@Components/image';
 import UAGTabsControl from '@Components/tabs';
+import UAGSelectControl from '@Components/select-control';
 import { getImageSize } from '@Utils/Helpers';
 import presets from './presets';
 import UAGPresets from '@Components/presets';
@@ -32,7 +33,6 @@ import {
 } from '@wordpress/block-editor';
 
 import {
-	SelectControl,
 	TextControl,
 	ToggleControl,
 	Icon,
@@ -525,16 +525,17 @@ const Settings = ( props ) => {
 				) }
 				{ image && (
 					<>
-						<SelectControl
+						<UAGSelectControl
 							label={ __(
 								'Size',
 								'ultimate-addons-for-gutenberg'
 							) }
+							data={ {
+								value: imgSize,
+								label: 'imgSize',
+							} }
+							setAttributes={ setAttributes }
 							options={ imageSizeOptions }
-							value={ imgSize }
-							onChange={ ( value ) =>
-								setAttributes( { imgSize: value } )
-							}
 						/>
 						<ResponsiveSlider
 							label={ __(
@@ -752,9 +753,11 @@ const Settings = ( props ) => {
 				<AdvancedPopColorControl
 					label={ __( 'Color', 'ultimate-addons-for-gutenberg' ) }
 					colorValue={ titleColor ? titleColor : '' }
-					onColorChange={ ( value ) =>
-						setAttributes( { titleColor: value } )
-					}
+					data={ {
+						value: titleColor,
+						label: 'titleColor',
+					} }
+					setAttributes={ setAttributes }
 				/>
 				<TypographyControl
 					label={ __(
@@ -874,9 +877,11 @@ const Settings = ( props ) => {
 				<AdvancedPopColorControl
 					label={ __( 'Color', 'ultimate-addons-for-gutenberg' ) }
 					colorValue={ prefixColor ? prefixColor : '' }
-					onColorChange={ ( value ) =>
-						setAttributes( { prefixColor: value } )
-					}
+					data={ {
+						value: prefixColor,
+						label: 'prefixColor',
+					} }
+					setAttributes={ setAttributes }
 				/>
 				<TypographyControl
 					label={ __(
@@ -995,9 +1000,11 @@ const Settings = ( props ) => {
 				<AdvancedPopColorControl
 					label={ __( 'Color', 'ultimate-addons-for-gutenberg' ) }
 					colorValue={ descColor ? descColor : '' }
-					onColorChange={ ( value ) =>
-						setAttributes( { descColor: value } )
-					}
+					data={ {
+						value: descColor,
+						label: 'descColor',
+					} }
+					setAttributes={ setAttributes }
 				/>
 				<TypographyControl
 					label={ __(
@@ -1205,9 +1212,11 @@ const Settings = ( props ) => {
 								'ultimate-addons-for-gutenberg'
 							) }
 							colorValue={ socialColor ? socialColor : '' }
-							onColorChange={ ( value ) =>
-								setAttributes( { socialColor: value } )
-							}
+							data={ {
+								value: socialColor,
+								label: 'socialColor',
+							} }
+							setAttributes={ setAttributes }
 						/>
 					}
 					hover={
@@ -1219,9 +1228,11 @@ const Settings = ( props ) => {
 							colorValue={
 								socialHoverColor ? socialHoverColor : ''
 							}
-							onColorChange={ ( value ) =>
-								setAttributes( { socialHoverColor: value } )
-							}
+							data={ {
+								value: socialHoverColor,
+								label: 'socialHoverColor',
+							} }
+							setAttributes={ setAttributes }
 						/>
 					}
 					disableBottomSeparator={ true }

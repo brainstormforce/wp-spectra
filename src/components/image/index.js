@@ -46,9 +46,9 @@ const UAGImage = ( props ) => {
 	}
 	labelText = label ? label : labelText;
 	labelText = false === label ? label : labelText;
-	
+
 	// Newer Dynamic Code here ( Currently used in Lottie Block )
-	
+
 	if ( label === 'Lottie Animation' ){
 		// No Template Literals due to @wordpress/i18n-no-variables
 		selectImageLabel = __(
@@ -62,7 +62,7 @@ const UAGImage = ( props ) => {
 		allowedTypes = allow;
 		placeholderIcon = UAGB_Block_Icons.lottie;
 	}
-	
+
 	const renderMediaUploader = ( open ) => {
 		const uploadType = backgroundImage?.url ? 'replace' : 'add';
 		return(
@@ -89,7 +89,6 @@ const UAGImage = ( props ) => {
 	const generateBackground = ( media ) => {
 		const regex = /(?:\.([^.]+))?$/;
 		let mediaURL = media;
-		// console.log( String( mediaURL ) );
 		switch ( regex.exec( String( mediaURL ) )[1] ){
 			// For Lottie JSON Files.
 			case 'json':

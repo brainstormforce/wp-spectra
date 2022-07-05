@@ -49,9 +49,11 @@ const BoxShadowControl = ( props ) => {
 			<AdvancedPopColorControl
 				label={ boxShadowColor.title }
 				colorValue={ boxShadowColor.value }
-				onColorChange={ ( value ) =>
-					setAttributes( { [ boxShadowColor.label ]: value } )
-				}
+				data={ {
+					value: boxShadowColor.value,
+					label: boxShadowColor.label,
+				} }
+				setAttributes={ setAttributes }
 			/>
 			{ /* Horizontal Positioning */ }
 			<Range
@@ -60,9 +62,11 @@ const BoxShadowControl = ( props ) => {
 				min={ 0 }
 				max={ 100 }
 				displayUnit={ false }
-				setAttributes={ setAttributes }
-				data={ { value:boxShadowHOffset.value, label:boxShadowHOffset.label } }
-				onChange={ false }
+				setAttributes={setAttributes}
+				data={ {
+					value: boxShadowHOffset.value,
+					label: boxShadowHOffset.label,
+				} }
 			/>
 			{ /* Vertical Positioning */ }
 			<Range
@@ -71,9 +75,11 @@ const BoxShadowControl = ( props ) => {
 				min={ 0 }
 				max={ 100 }
 				displayUnit={ false }
-				setAttributes={ setAttributes }
-				data={ { value:boxShadowVOffset.value, label:boxShadowVOffset.label } }
-				onChange={ false }
+				setAttributes={setAttributes}
+				data={ {
+					value: boxShadowVOffset.value,
+					label: boxShadowVOffset.label,
+				} }
 			/>
 			{ /* Blur */ }
 			<Range
@@ -82,9 +88,11 @@ const BoxShadowControl = ( props ) => {
 				min={ 0 }
 				max={ 100 }
 				displayUnit={ false }
-				setAttributes={ setAttributes }
-				data={ { value:boxShadowBlur.value, label:boxShadowBlur.label } }
-				onChange={ false }
+				setAttributes={setAttributes}
+				data={ {
+					value: boxShadowBlur.value,
+					label: boxShadowBlur.label,
+				} }
 			/>
 			{ /* Blur */ }
 			<Range
@@ -93,9 +101,11 @@ const BoxShadowControl = ( props ) => {
 				min={ -100 }
 				max={ 100 }
 				displayUnit={ false }
-				setAttributes={ setAttributes }
-				data={ { value:boxShadowSpread.value, label:boxShadowSpread.label } }
-				onChange={ false }
+				setAttributes={setAttributes}
+				data={ {
+					value: boxShadowSpread.value,
+					label: boxShadowSpread.label,
+				} }
 			/>
 			{ /* Shadow Position */ }
 			<MultiButtonsControl

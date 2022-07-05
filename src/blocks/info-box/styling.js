@@ -314,6 +314,24 @@ function styling( props ) {
 			'fill': iconHover,
 			'color': iconHover,
 		},
+		'.uagb-infobox__content-wrap .uagb-ifb-icon-wrap > svg': {
+			'padding-left': generateCSSUnit( iconLeftMargin, iconMarginUnit ),
+			'padding-right': generateCSSUnit( iconRightMargin, iconMarginUnit ),
+			'padding-top': generateCSSUnit( iconTopMargin, iconMarginUnit ),
+			'padding-bottom': generateCSSUnit(
+				iconBottomMargin,
+				iconMarginUnit
+			),
+		},
+		'.uagb-infobox__content-wrap .uagb-ifb-content .uagb-ifb-icon-wrap > svg': {
+			'padding-left': generateCSSUnit( iconLeftMargin, iconMarginUnit ),
+			'padding-right': generateCSSUnit( iconRightMargin, iconMarginUnit ),
+			'padding-top': generateCSSUnit( iconTopMargin, iconMarginUnit ),
+			'padding-bottom': generateCSSUnit(
+				iconBottomMargin,
+				iconMarginUnit
+			),
+		},
 		'.uagb-infobox__content-wrap .uagb-ifb-image-content > img': {
 			'padding-left': generateCSSUnit( iconLeftMargin, iconMarginUnit ),
 			'padding-right': generateCSSUnit( iconRightMargin, iconMarginUnit ),
@@ -367,7 +385,7 @@ function styling( props ) {
 			),
 		},
 		// CTA style
-		' .uagb-infobox-cta-link': {
+		' div.uagb-ifb-cta a.uagb-infobox-cta-link.uagb-infobox-cta-link': {
 			'font-size': generateCSSUnit( ctaFontSize, ctaFontSizeType ),
 			'font-family': ctaFontFamily,
 			'font-weight': ctaFontWeight,
