@@ -99,6 +99,8 @@ return array_merge(
 		'submitButtonText'            => __( 'Submit', 'ultimate-addons-for-gutenberg' ),
 		'formLabel'                   => __( 'Spectra Form', 'ultimate-addons-for-gutenberg' ),
 		'buttonAlign'                 => 'left',
+		'buttonAlignTablet'           => '',
+		'buttonAlignMobile'           => '',
 		'confirmationType'            => 'message',
 		'confirmationMessage'         => __( 'The form has been submitted Successfully!', 'ultimate-addons-for-gutenberg' ),
 		'confirmationUrl'             => '',
