@@ -5,6 +5,7 @@ import styles from './editor.lazy.scss';
 import React, { useLayoutEffect } from 'react';
 import { select, dispatch } from '@wordpress/data';
 import classnames from 'classnames';
+import UAGReset from '../reset';
 
 const UAGPresets = ( props ) => {
 
@@ -23,6 +24,21 @@ const UAGPresets = ( props ) => {
         label,
 		className
     } = props;
+
+	let resetAttributes = [];
+
+	if ( presets ) {
+		presets.map((preset) => {
+			if ( preset?.attributes ) {
+				for ( const attribute of preset?.attributes ) {
+					if ( ! resetAttributes.includes(attribute?.label) ) {
+						resetAttributes.push(attribute?.label);
+					}
+				}
+			}
+
+		});
+	}
 
 	const [ selectedPresetState, setPreset ] = useState( '' );
 
@@ -204,22 +220,10 @@ const UAGPresets = ( props ) => {
 		) }>
 			<div className='uagb-presets-label-reset-wrap'>
 				<label htmlFor="uag-presets-label" className="uag-presets-label">{label}</label>
-				<Tooltip
-					text={ __( 'Reset', 'ultimate-addons-for-gutenberg' )}
-					key={ 'reset' }
-				>
-				<Button
-					className="uagb-reset"
-					isSecondary
-					isSmall
-					onClick={ ( e ) => {
-						e.preventDefault();
-						resetValues();
-					} }
-				>
-					<Dashicon icon="image-rotate" />
-				</Button>
-				</Tooltip>
+				<UAGReset
+					attributeNames = {resetAttributes}
+					setAttributes={ setAttributes }
+				/>
 			</div>
             { 'dropdown' === presetInputType && presetDropdown }
             { 'radioImage' === presetInputType && presetRadioImage }
