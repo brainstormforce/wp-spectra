@@ -114,22 +114,22 @@ $selectors = array(
 	),
 	' .uagb-timeline__marker'                              => array(
 		'background-color' => $attr['separatorBg'],
-		'min-height'       => $connector_bg_size_fallback,
-		'min-width'        => $connector_bg_size_fallback,
-		'line-height'      => $connector_bg_size_fallback,
+		'min-height'       => UAGB_Helper::get_css_value( $connector_bg_size_fallback, 'px'),
+		'min-width'        => UAGB_Helper::get_css_value( $connector_bg_size_fallback, 'px'),
+		'line-height'      => UAGB_Helper::get_css_value( $connector_bg_size_fallback, 'px'),
 		'border'           => $attr['borderwidth'] . 'px solid' . $attr['separatorBorder'],
 	),
 	'.uagb-timeline__left-block .uagb-timeline__left .uagb-timeline__arrow' => array(
-		'height' => $connector_bg_size_fallback,
+		'height' => UAGB_Helper::get_css_value( $connector_bg_size_fallback, 'px'),
 	),
 	'.uagb-timeline__right-block .uagb-timeline__right .uagb-timeline__arrow' => array(
-		'height' => $connector_bg_size_fallback,
+		'height' => UAGB_Helper::get_css_value( $connector_bg_size_fallback, 'px'),
 	),
 	'.uagb-timeline__center-block .uagb-timeline__left .uagb-timeline__arrow' => array(
-		'height' => $connector_bg_size_fallback,
+		'height' => UAGB_Helper::get_css_value( $connector_bg_size_fallback, 'px'),
 	),
 	'.uagb-timeline__center-block .uagb-timeline__right .uagb-timeline__arrow' => array(
-		'height' => $connector_bg_size_fallback,
+		'height' => UAGB_Helper::get_css_value( $connector_bg_size_fallback, 'px'),
 	),
 	'.uagb-timeline__center-block .uagb-timeline__left .uagb-timeline__marker' => array(
 		'margin-left'  => UAGB_Helper::get_css_value( $left_margin + 3, $attr['marginUnit'] ),
@@ -250,22 +250,22 @@ $selectors = array(
 		),
 		' .uagb-timeline__marker'                              => array(
 			'background-color' => $attr['separatorBg'],
-			'min-height'       => $connector_bg_size_mobile_fallback,
-			'min-width'        => $connector_bg_size_mobile_fallback,
-			'line-height'      => $connector_bg_size_mobile_fallback,
+			'min-height'       => UAGB_Helper::get_css_value( $connector_bg_size_mobile_fallback, 'px' ),
+			'min-width'        => UAGB_Helper::get_css_value( $connector_bg_size_mobile_fallback, 'px' ),
+			'line-height'      => UAGB_Helper::get_css_value( $connector_bg_size_mobile_fallback, 'px' ),
 			'border'           => $attr['borderwidth'] . 'px solid' . $attr['separatorBorder'],
 		),
 		'.uagb-timeline__left-block .uagb-timeline__left .uagb-timeline__arrow' => array(
-			'height' => $connector_bg_size_mobile_fallback,
+			'height' => UAGB_Helper::get_css_value( $connector_bg_size_mobile_fallback, 'px' ),
 		),
 		'.uagb-timeline__right-block .uagb-timeline__right .uagb-timeline__arrow' => array(
-			'height' => $connector_bg_size_mobile_fallback,
+			'height' => UAGB_Helper::get_css_value( $connector_bg_size_mobile_fallback, 'px' ),
 		),
 		'.uagb-timeline__center-block .uagb-timeline__left .uagb-timeline__arrow' => array(
-			'height' => $connector_bg_size_mobile_fallback,
+			'height' => UAGB_Helper::get_css_value( $connector_bg_size_mobile_fallback, 'px' ),
 		),
 		'.uagb-timeline__center-block .uagb-timeline__right .uagb-timeline__arrow' => array(
-			'height' => $connector_bg_size_mobile_fallback,
+			'height' => UAGB_Helper::get_css_value( $connector_bg_size_mobile_fallback, 'px' ),
 		),
 	);
 
@@ -328,22 +328,22 @@ $selectors = array(
 		),
 		' .uagb-timeline__marker'                              => array(
 			'background-color' => $attr['separatorBg'],
-			'min-height'       => $connector_bg_size_tablet_fallback,
-			'min-width'        => $connector_bg_size_tablet_fallback,
-			'line-height'      => $connector_bg_size_tablet_fallback,
+			'min-height'       => UAGB_Helper::get_css_value( $connector_bg_size_tablet_fallback , 'px' ),
+			'min-width'        => UAGB_Helper::get_css_value( $connector_bg_size_tablet_fallback , 'px' ),
+			'line-height'      => UAGB_Helper::get_css_value( $connector_bg_size_tablet_fallback , 'px' ),
 			'border'           => $attr['borderwidth'] . 'px solid' . $attr['separatorBorder'],
 		),
 		'.uagb-timeline__left-block .uagb-timeline__left .uagb-timeline__arrow' => array(
-			'height' => $connector_bg_size_tablet_fallback,
+			'height' => UAGB_Helper::get_css_value( $connector_bg_size_tablet_fallback , 'px' ),
 		),
 		'.uagb-timeline__right-block .uagb-timeline__right .uagb-timeline__arrow' => array(
-			'height' => $connector_bg_size_tablet_fallback,
+			'height' => UAGB_Helper::get_css_value( $connector_bg_size_tablet_fallback , 'px' ),
 		),
 		'.uagb-timeline__center-block .uagb-timeline__left .uagb-timeline__arrow' => array(
-			'height' => $connector_bg_size_tablet_fallback,
+			'height' => UAGB_Helper::get_css_value( $connector_bg_size_tablet_fallback , 'px' ),
 		),
 		'.uagb-timeline__center-block .uagb-timeline__right .uagb-timeline__arrow' => array(
-			'height' => $connector_bg_size_tablet_fallback,
+			'height' => UAGB_Helper::get_css_value( $connector_bg_size_tablet_fallback , 'px' ),
 		),
 	);
 
