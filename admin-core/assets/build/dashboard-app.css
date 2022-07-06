@@ -727,12 +727,12 @@ select {
   width: 0.75rem;
 }.w-\[78\%\] {
   width: 78%;
-}.w-20 {
-  width: 5rem;
 }.w-\[100\%\] {
   width: 100%;
 }.w-\[50\%\] {
   width: 50%;
+}.w-20 {
+  width: 5rem;
 }.w-12 {
   width: 3rem;
 }.min-w-0 {
@@ -1164,15 +1164,44 @@ select {
   color: rgb(17 24 39 / var(--tw-text-opacity));
 }.focus\:z-10:focus {
   z-index: 10;
+}.focus\:border-gray-300:focus {
+  --tw-border-opacity: 1;
+  border-color: rgb(209 213 219 / var(--tw-border-opacity));
 }.focus\:border-indigo-500:focus {
   --tw-border-opacity: 1;
   border-color: rgb(99 102 241 / var(--tw-border-opacity));
 }.focus\:border-gray-500:focus {
   --tw-border-opacity: 1;
   border-color: rgb(107 114 128 / var(--tw-border-opacity));
+}.focus\:border-wpcolor:focus {
+  --tw-border-opacity: 1;
+  border-color: rgb(97 4 255 / var(--tw-border-opacity));
+}.focus\:bg-wphoverbgcolor:focus {
+  background-color: #9d62ff14;
 }.focus\:bg-white:focus {
   --tw-bg-opacity: 1;
   background-color: rgb(255 255 255 / var(--tw-bg-opacity));
+}.focus\:bg-wphovercolor:focus {
+  --tw-bg-opacity: 1;
+  background-color: rgb(58 0 159 / var(--tw-bg-opacity));
+}.focus\:bg-red-700:focus {
+  --tw-bg-opacity: 1;
+  background-color: rgb(185 28 28 / var(--tw-bg-opacity));
+}.focus\:bg-gray-50:focus {
+  --tw-bg-opacity: 1;
+  background-color: rgb(249 250 251 / var(--tw-bg-opacity));
+}.focus\:text-wphovercolor:focus {
+  --tw-text-opacity: 1;
+  color: rgb(58 0 159 / var(--tw-text-opacity));
+}.focus\:text-gray-700:focus {
+  --tw-text-opacity: 1;
+  color: rgb(55 65 81 / var(--tw-text-opacity));
+}.focus\:text-wpcolor:focus {
+  --tw-text-opacity: 1;
+  color: rgb(97 4 255 / var(--tw-text-opacity));
+}.focus\:text-gray-900:focus {
+  --tw-text-opacity: 1;
+  color: rgb(17 24 39 / var(--tw-text-opacity));
 }.focus\:outline-none:focus {
   outline: 2px solid transparent;
   outline-offset: 2px;
@@ -1188,6 +1217,15 @@ select {
   --tw-ring-color: rgb(97 4 255 / var(--tw-ring-opacity));
 }.focus\:ring-offset-2:focus {
   --tw-ring-offset-width: 2px;
+}.active\:text-wphovercolor:active {
+  --tw-text-opacity: 1;
+  color: rgb(58 0 159 / var(--tw-text-opacity));
+}.active\:text-wpcolor:active {
+  --tw-text-opacity: 1;
+  color: rgb(97 4 255 / var(--tw-text-opacity));
+}.active\:text-gray-700:active {
+  --tw-text-opacity: 1;
+  color: rgb(55 65 81 / var(--tw-text-opacity));
 }@media (min-width: 640px) {
 
   .sm\:static {

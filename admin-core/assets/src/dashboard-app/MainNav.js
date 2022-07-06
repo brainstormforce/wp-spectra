@@ -54,8 +54,8 @@ export default function MainNav() {
                             } }
                             className={ `${
                                 activePage === menu.slug && activePath === menu.path
-                                    ? ' border-wpcolor hover:text-wphovercolor text-gray-900 inline-flex items-center px-1 border-b-2 text-[0.940rem] font-medium'
-                                    : 'border-transparent  hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 border-b-2 text-[0.940rem] font-medium'
+                                    ? ' border-wpcolor active:text-wphovercolor focus:text-wphovercolor hover:text-wphovercolor text-gray-900 inline-flex items-center px-1 border-b-2 text-[0.940rem] font-medium'
+                                    : 'border-transparent focus:border-gray-300 focus:text-gray-700 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 border-b-2 text-[0.940rem] font-medium'
                             }` }
                         >
                             { menu.name }

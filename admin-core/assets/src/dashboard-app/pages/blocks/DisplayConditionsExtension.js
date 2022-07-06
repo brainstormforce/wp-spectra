@@ -55,7 +55,7 @@ const DisplayConditionsExtension = () => {
             </div>
             <div className="flex-1 min-w-0">
                 <p className="text-sm font-medium text-gray-900 mb-[0.1875rem]">{__( 'Display Conditions', 'ultimate-addons-for-gutenberg' )}</p>
-                <a className="text-sm text-gray-900 hover:text-gray-700 truncate underline" href='https://ultimategutenberg.com/docs/display-conditions-blocks/' target="_blank"rel="noreferrer">{__( 'Documentation', 'ultimate-addons-for-gutenberg' )}</a>
+                <a className="text-sm text-gray-900 focus:text-gray-700 active:text-gray-700 hover:text-gray-700 truncate underline" href='https://ultimategutenberg.com/docs/display-conditions-blocks/' target="_blank"rel="noreferrer">{__( 'Documentation', 'ultimate-addons-for-gutenberg' )}</a>
             </div>
             <Switch
                 checked={displayConditionsStatus}
