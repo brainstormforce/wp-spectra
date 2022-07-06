@@ -621,7 +621,7 @@ const Settings = ( props ) => {
 				/>
 				<ResponsiveSlider
 					label={ __(
-						'Gap Between Timeline Item',
+						'Timeline Item Gap',
 						'ultimate-addons-for-gutenberg'
 					) }
 					data={ {

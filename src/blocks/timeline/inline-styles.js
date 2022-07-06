@@ -406,7 +406,6 @@ function contentTimelineStyle( props ) {
 			'text-align': align,
 			'letter-spacing': generateCSSUnit( authorLetterSpacing, authorLetterSpacingType ),
 		},
-
 		' .uagb-timeline__link_parent': {
 			'text-align': align,
 		},

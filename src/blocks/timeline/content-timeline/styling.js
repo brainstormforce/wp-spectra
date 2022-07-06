@@ -68,21 +68,6 @@ function contentTimelineStyle( props ) {
 		subHeadLineHeightTablet,
 		subHeadLineHeightMobile,
 		subHeadingColor,
-		topMargin,
-		rightMargin,
-		bottomMargin,
-		leftMargin,
-		topMarginTablet,
-		rightMarginTablet,
-		bottomMarginTablet,
-		leftMarginTablet,
-		topMarginMobile,
-		rightMarginMobile,
-		bottomMarginMobile,
-		leftMarginMobile,
-		marginUnit,
-		mobileMarginUnit,
-		tabletMarginUnit,
 		topPadding,
 		rightPadding,
 		bottomPadding,
@@ -108,9 +93,6 @@ function contentTimelineStyle( props ) {
 		subHeadDecoration,
 		dateDecoration,
 		iconFocus,
-		stack,
-		timelinAlignment,
-		timelinAlignmentTablet,
 		headLetterSpacing,
 		headLetterSpacingTablet,
 		headLetterSpacingMobile,
@@ -137,13 +119,6 @@ function contentTimelineStyle( props ) {
 		horizontalSpaceUnitMobile
 	} = props.attributes;
 
-	let timelinAlignmentTabletDevice = '';
-
-	if( 'undefined' !== typeof timelinAlignmentTablet  ) {
-		timelinAlignmentTabletDevice = timelinAlignmentTablet;
-	} else if( stack === 'tablet' && timelinAlignment === 'center' ) {
-		timelinAlignmentTabletDevice = timelinAlignment;
-	}
 	const iconSizeFallback = getFallbackNumber( iconSize, 'iconSize', blockName );
 	const connectorBgSizeFallback = getFallbackNumber( connectorBgsize, 'connectorBgsize', blockName );
 	const borderWidthFallback = getFallbackNumber( borderwidth, 'borderwidth', blockName );
@@ -277,8 +252,7 @@ function contentTimelineStyle( props ) {
 			'margin-right': generateCSSUnit( horizontalSpace, horizontalSpaceUnit ),
 		},
 		' .uagb-timeline__field': {
-			'margin-top': generateCSSUnit( topMargin, marginUnit ),
-			'margin-bottom': generateCSSUnit( bottomMargin, marginUnit ),
+			'margin-bottom': generateCSSUnit( verticalSpace, verticalSpaceUnit ),
 		},
 		' .uagb-timeline__date-hide.uagb-timeline__inner-date-new': {
 			'margin-bottom': generateCSSUnit( dateBottomSpaceFallback, 'px' ),
@@ -445,35 +419,20 @@ function contentTimelineStyle( props ) {
 			'margin-left': generateCSSUnit( horizontalSpaceTablet, horizontalSpaceUnitTablet ),
 			'margin-right': generateCSSUnit( horizontalSpaceTablet, horizontalSpaceUnitTablet ),
 		},
-		'.uagb-timeline__center-block .uagb-timeline__day-new.uagb-timeline__day-left': {
-			'margin-left': generateCSSUnit(
-				leftMarginTablet,
-				tabletMarginUnit
-			),
-			'margin-right': generateCSSUnit(
-				rightMarginTablet,
-				tabletMarginUnit
-			),
-			'margin-top': generateCSSUnit( topMarginTablet, tabletMarginUnit ),
-			'margin-bottom': generateCSSUnit(
-				bottomMarginTablet,
-				tabletMarginUnit
-			),
+		'.uagb-timeline__right-block .uagb-timeline__day-new.uagb-timeline__day-left': {
+			'margin-right': generateCSSUnit( horizontalSpaceTablet, horizontalSpaceUnitTablet ),
 		},
-		'.uagb-timeline__center-block .uagb-timeline__day-new.uagb-timeline__day-right': {
-			'margin-left': generateCSSUnit(
-				leftMarginTablet,
-				tabletMarginUnit
-			),
-			'margin-right': generateCSSUnit(
-				rightMarginTablet,
-				tabletMarginUnit
-			),
-			'margin-top': generateCSSUnit( topMarginTablet, tabletMarginUnit ),
-			'margin-bottom': generateCSSUnit(
-				bottomMarginTablet,
-				tabletMarginUnit
-			),
+		'.uagb-timeline__left-block .uagb-timeline__day-new.uagb-timeline__day-left': {
+			'margin-left': generateCSSUnit( horizontalSpaceTablet, horizontalSpaceUnitTablet ),
+		},
+		'.uagb-timeline__left-block .uagb-timeline__day-new.uagb-timeline__day-right': {
+			'margin-left': generateCSSUnit( horizontalSpaceTablet, horizontalSpaceUnitTablet ),
+		},
+		'.uagb-timeline__right-block .uagb-timeline__day-new.uagb-timeline__day-right': {
+			'margin-right': generateCSSUnit( horizontalSpaceTablet, horizontalSpaceUnitTablet ),
+		},
+		' .uagb-timeline__field': {
+			'margin-bottom': generateCSSUnit( verticalSpaceTablet, verticalSpaceUnitTablet ),
 		},
 		' .uagb-timeline__events-inner-new': {
 			'border-radius': generateCSSUnit( borderRadiusTablet, 'px' ),
@@ -613,35 +572,17 @@ function contentTimelineStyle( props ) {
 			'margin-left': 0,
 			'margin-right': 0,
 		},
-		'.uagb-timeline__center-block .uagb-timeline__day-new.uagb-timeline__day-left': {
-			'margin-left': generateCSSUnit(
-				leftMarginMobile,
-				mobileMarginUnit
-			),
-			'margin-right': generateCSSUnit(
-				rightMarginMobile,
-				mobileMarginUnit
-			),
-			'margin-top': generateCSSUnit( topMarginMobile, mobileMarginUnit ),
-			'margin-bottom': generateCSSUnit(
-				bottomMarginMobile,
-				mobileMarginUnit
-			),
+		'.uagb-timeline__right-block .uagb-timeline__day-new.uagb-timeline__day-left': {
+			'margin-right': generateCSSUnit( horizontalSpaceMobile, horizontalSpaceUnitMobile ),
 		},
-		'.uagb-timeline__center-block .uagb-timeline__day-new.uagb-timeline__day-right': {
-			'margin-left': generateCSSUnit(
-				leftMarginMobile,
-				mobileMarginUnit
-			),
-			'margin-right': generateCSSUnit(
-				rightMarginMobile,
-				mobileMarginUnit
-			),
-			'margin-top': generateCSSUnit( topMarginMobile, mobileMarginUnit ),
-			'margin-bottom': generateCSSUnit(
-				bottomMarginMobile,
-				mobileMarginUnit
-			),
+		'.uagb-timeline__left-block .uagb-timeline__day-new.uagb-timeline__day-left': {
+			'margin-left': generateCSSUnit( horizontalSpaceMobile, horizontalSpaceUnitMobile ),
+		},
+		'.uagb-timeline__left-block .uagb-timeline__day-new.uagb-timeline__day-right': {
+			'margin-left': generateCSSUnit( horizontalSpaceMobile, horizontalSpaceUnitMobile ),
+		},
+		'.uagb-timeline__right-block .uagb-timeline__day-new.uagb-timeline__day-right': {
+			'margin-right': generateCSSUnit( horizontalSpaceMobile, horizontalSpaceUnitMobile ),
 		},
 		' .uagb-timeline__events-inner-new': {
 			'border-radius': generateCSSUnit( borderRadiusMobile, 'px' ),
@@ -663,6 +604,9 @@ function contentTimelineStyle( props ) {
 				bottomPaddingMobile,
 				mobilePaddingUnit
 			),
+		},
+		' .uagb-timeline__field': {
+			'margin-bottom': generateCSSUnit( verticalSpaceMobile, verticalSpaceUnitMobile ),
 		},
 		' .uagb-timeline__day-new': {
 			'text-align': alignMobile,
