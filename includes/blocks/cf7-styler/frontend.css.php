@@ -437,6 +437,34 @@ $field_padding_mobile = array(
 );
 
 $m_selectors = array(
+	' .wpcf7 input:not([type=submit])'              => array_merge(
+		$border_mobile,
+		$field_padding_mobile,
+	),
+	' .wpcf7 select'                                => array_merge(
+		$border_mobile,
+		$field_padding_mobile,
+	),
+	' .wpcf7 .wpcf7-checkbox input[type="checkbox"] + span:before' => array_merge(
+		$border_mobile,
+		$field_padding_mobile,
+	),
+	' .wpcf7 .wpcf7-acceptance input[type="checkbox"] + span:before' => array_merge(
+		$border_mobile,
+		$field_padding_mobile,
+	),
+	' .uagb-cf7-styler__field-style-box .wpcf7-checkbox input[type="checkbox"]:checked + span:before' => array_merge(
+		$border_mobile,
+		$field_padding_mobile,
+	),
+	' .uagb-cf7-styler__field-style-box .wpcf7-acceptance input[type="checkbox"]:checked + span:before' => array_merge(
+		$border_mobile,
+		$field_padding_mobile,
+	),
+	' .wpcf7 textarea'                              => array_merge(
+		$border_mobile,
+		$field_padding_mobile,
+	),
 	' .uagb-cf7-styler__check-style-enabled .wpcf7 .wpcf7-checkbox input[type="checkbox"] + span:before' => array(
 		'height'       => UAGB_Helper::get_css_value( $attr['radioCheckSizeMobile'], 'px' ),
 		'width'        => UAGB_Helper::get_css_value( $attr['radioCheckSizeMobile'], 'px' ),
@@ -476,7 +504,6 @@ $m_selectors = array(
 	' .uagb-cf7-styler__check-style-enabled .wpcf7 input:not([type=submit])' => $field_padding_mobile,
 	' .wpcf7 select.wpcf7-form-control.wpcf7-select:not([multiple="multiple"])' => $field_padding_mobile,
 	' .wpcf7 select.wpcf7-select[multiple="multiple"] option' => $field_padding_mobile,
-	' .wpcf7 textarea'                              => $field_padding_mobile,
 );
 
 $combined_selectors = array(
