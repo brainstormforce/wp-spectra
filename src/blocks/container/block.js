@@ -24,6 +24,13 @@ registerBlockType( 'uagb/container', {
 		__( 'uag', 'ultimate-addons-for-gutenberg' ),
 		__( 'flex', 'ultimate-addons-for-gutenberg' ),
 	],
+	getEditWrapperProps( attribute ) {
+		if( attribute.isBlockRootParent ){
+			return {
+				'data-align': attribute.contentWidth,
+			};
+		}
+	},
 	supports: {
 		anchor: true,
 	},

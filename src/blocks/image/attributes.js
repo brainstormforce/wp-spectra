@@ -934,6 +934,18 @@ const attributes = {
 		type: 'string',
 		default: 'static',
 	},
+	objectFit: {
+		type: 'string',
+		default: 'default'
+	},
+	objectFitTablet: {
+		type: 'string',
+		default: 'default'
+	},
+	objectFitMobile: {
+		type: 'string',
+		default: 'default'
+	},
 	imageBoxShadowColor: {
 		type: 'string',
 		isUAGStyle: true,
