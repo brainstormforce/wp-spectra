@@ -179,14 +179,14 @@ const UAGBContainer = ( props ) => {
 				element.classList.add( props.attributes.contentWidth );
 			}
 
-			setTimeout(() => {
+			setTimeout( () => {
 				if ( props.attributes.isBlockRootParent ) {
 					element.classList.remove( 'alignfull' );
 					element.classList.remove( 'alignwide' );
 					element.classList.remove( 'default' );
 					element.classList.add( props.attributes.contentWidth );
 				}
-			});
+			} );
 		}
 
 		const blockStyling = styling( props );
