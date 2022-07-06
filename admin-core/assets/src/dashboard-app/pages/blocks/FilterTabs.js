@@ -167,7 +167,7 @@ const FilterTabs = () => {
 						} }
                         key={tab.name}
                         className={classNames(
-                        tab.slug === activeBlocksFilterTab ? 'bg-wphoverbgcolor text-wpcolor focus:text-wphovercolor hover:text-wphovercolor active:text-wpcolor' : ' focus:text-wphovercolor active:text-wphovercolor hover:text-wphovercolor',
+                        tab.slug === activeBlocksFilterTab ? 'bg-wphoverbgcolor text-wpcolor focus:text-wphovercolor hover:text-wphovercolor active:text-wpcolor' : ' focus:text-wphovercolor active:text-wpcolor hover:text-wphovercolor',
                         'px-3 py-2 font-medium text-sm rounded-[0.2rem] cursor-pointer'
                         )}
                         onClick={ () => {

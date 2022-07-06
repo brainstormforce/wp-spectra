@@ -67,7 +67,7 @@ const Settings = () => {
                             key={item.name}
                             className={classNames(
                             activeSettingsNavigationTab === item.slug
-                            ? 'bg-gray-50 text-wpcolor focus:text-wphovercolor active:text-wphovercolor hover:text-wphovercolor fill-wpcolor'
+                            ? 'bg-gray-50 text-wpcolor focus:text-wphovercolor active:text-wpcolor hover:text-wphovercolor fill-wpcolor'
                             : 'text-gray-900 fill-gray-900 focus:text-gray-900 focus:bg-gray-50 hover:text-gray-900 hover:bg-gray-50',
                             'group cursor-pointer rounded-[0.2rem] p-3 flex items-center text-sm font-medium'
                             )}
