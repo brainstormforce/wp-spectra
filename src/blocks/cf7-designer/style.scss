@@ -25,6 +25,10 @@
 		line-height: 30px;
 	}
 
+	textarea {
+		resize: none;
+	}
+
 	.wpcf7 *,
 	.wpcf7 ::after,
 	.wpcf7 ::before {
