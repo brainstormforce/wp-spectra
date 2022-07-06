@@ -296,7 +296,7 @@ $m_selectors = array(
 );
 if ( 'alignwide' === $attr['innerContentWidth'] ) {
 
-	if ( 'default' === $attr['contentWidth'] || 'alignfull' === $attr['contentWidth'] ) {
+	if ( 'default' === $attr['contentWidth'] || 'full' === $attr['contentWidth'] ) {
 		$selectors[ '.uagb-is-root-container.uagb-block-' . $id ] = array( // phpcs:ignore WordPress.WP.GlobalVariablesOverride.Prohibited
 		'--inner-content-custom-width-final' => 'min( 100vw, ' . $inner_content_custom_width_desktop_fallback . $attr['innerContentCustomWidthType'] . ')',
 		'--inner-content-custom-width'       => $inner_content_custom_width_desktop_fallback . $attr['innerContentCustomWidthType'],

@@ -10,6 +10,8 @@
 function styling( props ) {
 	const {
 		headingAlign,
+		headingAlignTablet,
+		headingAlignMobile,
 		headingColor,
 		subHeadingColor,
 		prefixColor,
@@ -75,6 +77,14 @@ function styling( props ) {
 		ctaFontSizeType,
 		ctaFontSizeMobile,
 		ctaFontSizeTablet,
+		ctaLineHeightType,
+		ctaLineHeight,
+		ctaLineHeightMobile,
+		ctaLineHeightTablet,
+		ctaLetterSpacingType,
+		ctaLetterSpacing,
+		ctaLetterSpacingTablet,
+		ctaLetterSpacingMobile,
 		ctaFontFamily,
 		ctaFontWeight,
 		ctaBtnLinkColor,
@@ -384,6 +394,11 @@ function styling( props ) {
 			 'color': ctaLinkColor,
 			 'text-decoration': ctaDecoration,
 			 'text-transform': ctaTransform,
+			 'letter-spacing': generateCSSUnit( ctaLetterSpacing, ctaLetterSpacingType ),
+			 'line-height': generateCSSUnit(
+				ctaLineHeight,
+				ctaLineHeightType
+			 ),
 		 },
 		 ' .uagb-infobox-cta-link:hover': {
 			 'color': ctaLinkHoverColor,
@@ -510,39 +525,31 @@ function styling( props ) {
 		 },
 	 };
 
-	 if( 'Stacked' === iconView ) {
-		 selectors[ ' .uagb-iconbox-icon-wrap.uagb-infobox-shape-circle'] = {
-			 'background-color' : iconBackgroundColor,
-			 'border-radius' : '50%',
-		 }
-		 selectors[ ' .uagb-iconbox-icon-wrap.uagb-infobox-shape-squre'] = {
-			 'background-color' : iconBackgroundColor,
-		 }
-		 selectors[' .uagb-iconbox-icon-wrap:hover'] = {
-			 'background-color' : `${iconBackgroundHoverColor} !important`,
-		 };
-	 }
-	 else if( 'Framed' === iconView ) {
-		 selectors[ ' .uagb-iconbox-icon-wrap.uagb-infobox-shape-circle'] = {
-			 'border' : `${iconBorderWidth}px solid ${iconBackgroundColor}`,
-			 'border-radius' : '50%',
-		 }
-		 selectors[ ' .uagb-iconbox-icon-wrap.uagb-infobox-shape-squre'] = {
-			 'border' : `${iconBorderWidth}px solid ${iconBackgroundColor}`,
-		 }
-		 selectors[' .uagb-iconbox-icon-wrap:hover'] = {
-			 'border' : `${iconBorderWidth}px solid ${iconBackgroundHoverColor}`,
-		 };
-	 }
-	 selectors[' .uagb-infobox-cta-link'] = ctaBorderCSS;
-	 if (
-		 iconimgPosition === 'above-title' ||
-		 iconimgPosition === 'below-title'
-	 ) {
-		 selectors[ '.uagb-infobox__content-wrap' ] = {
-			 'text-align': headingAlign,
-		 };
-	 }
+	if( 'Stacked' === iconView ) {
+		selectors[ ' .uagb-iconbox-icon-wrap.uagb-infobox-shape-circle'] = {
+			'background-color' : iconBackgroundColor,
+			'border-radius' : '50%',
+		}
+		selectors[ ' .uagb-iconbox-icon-wrap.uagb-infobox-shape-squre'] = {
+			'background-color' : iconBackgroundColor,
+		}
+		selectors[' .uagb-iconbox-icon-wrap:hover'] = {
+			'background-color' : `${iconBackgroundHoverColor} !important`,
+		};
+	}
+	else if( 'Framed' === iconView ) {
+		selectors[ ' .uagb-iconbox-icon-wrap.uagb-infobox-shape-circle'] = {
+			'border' : `${iconBorderWidth}px solid ${iconBackgroundColor}`,
+			'border-radius' : '50%',
+		}
+		selectors[ ' .uagb-iconbox-icon-wrap.uagb-infobox-shape-squre'] = {
+			'border' : `${iconBorderWidth}px solid ${iconBackgroundColor}`,
+		}
+		selectors[' .uagb-iconbox-icon-wrap:hover'] = {
+			'border' : `${iconBorderWidth}px solid ${iconBackgroundHoverColor}`,
+		};
+	}
+	selectors[' .uagb-infobox-cta-link.wp-block-button__link'] = ctaBorderCSS;
 
 	const tabletSelectors = {
 		' .block-editor-rich-text__editable.uagb-ifb-desc': {
@@ -1099,20 +1106,35 @@ function styling( props ) {
 		},
 	};
 
-	 if ( imageWidthType ) {
-		 // Image
-		 selectors[ '.uagb-infobox__content-wrap img' ] = {
-			 'width': generateCSSUnit( imageWidthFallback, imageWidthUnit ),
-		 };
-		 selectors[ '.uagb-infobox__content-wrap .uagb-ifb-content .uagb-ifb-right-title-image > img' ] = {
-			 'width': generateCSSUnit( imageWidthFallback, imageWidthUnit ),
-		 };
-		 selectors[ '.uagb-infobox__content-wrap .uagb-ifb-content .uagb-ifb-left-title-image > img' ] = {
-			 'width': generateCSSUnit( imageWidthFallback, imageWidthUnit ),
-		 };
-		 selectors[ '.uagb-infobox__content-wrap .uagb-ifb-content .uagb-ifb-image-content > img' ] = {
-			 'width': generateCSSUnit( imageWidthFallback, imageWidthUnit ),
-		 };
+	if (
+		iconimgPosition === 'above-title' ||
+		iconimgPosition === 'below-title'
+	) {
+		selectors[ '.uagb-infobox__content-wrap' ] = {
+			'text-align': headingAlign,
+		};
+		tabletSelectors[ '.uagb-infobox__content-wrap' ] = {
+			'text-align': headingAlignTablet,
+		};
+		mobileSelectors[ '.uagb-infobox__content-wrap' ] = {
+			'text-align': headingAlignMobile,
+		};
+	}
+
+	if ( imageWidthType ) {
+		// Image
+		selectors[ '.uagb-infobox__content-wrap img' ] = {
+			'width': generateCSSUnit( imageWidthFallback, imageWidthUnit ),
+		};
+		selectors[ '.uagb-infobox__content-wrap .uagb-ifb-content .uagb-ifb-right-title-image > img' ] = {
+			'width': generateCSSUnit( imageWidthFallback, imageWidthUnit ),
+		};
+		selectors[ '.uagb-infobox__content-wrap .uagb-ifb-content .uagb-ifb-left-title-image > img' ] = {
+			'width': generateCSSUnit( imageWidthFallback, imageWidthUnit ),
+		};
+		selectors[ '.uagb-infobox__content-wrap .uagb-ifb-content .uagb-ifb-image-content > img' ] = {
+			'width': generateCSSUnit( imageWidthFallback, imageWidthUnit ),
+		};
 
 		 tabletSelectors[ '.uagb-infobox__content-wrap img' ] = {
 			 'width': generateCSSUnit( imageWidthFallbackTablet, imageWidthUnitTablet ),
@@ -1162,8 +1184,8 @@ function styling( props ) {
 			 'margin-right': generateCSSUnit( ctaIconSpaceFallbackMobile, ctaIconSpaceType ),
 		 };
 	 }
-	 mobileSelectors[' .uagb-infobox-cta-link'] = ctaBorderCSSMobile;
-	 tabletSelectors[' .uagb-infobox-cta-link'] = ctaBorderCSSTablet;
+	 mobileSelectors[' .uagb-infobox-cta-link.wp-block-button__link'] = ctaBorderCSSMobile;
+	 tabletSelectors[' .uagb-infobox-cta-link.wp-block-button__link'] = ctaBorderCSSTablet;
 
 	 const id = `.editor-styles-wrapper .uagb-block-${ props.clientId.substr(
 		 0,

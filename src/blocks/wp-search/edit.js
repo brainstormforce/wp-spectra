@@ -31,13 +31,105 @@ const UAGBWpSearchEdit = ( props ) => {
 		props.setAttributes( {
 			block_id: props.clientId.substr( 0, 8 ),
 		} );
+
 		const {
+			vinputPaddingMobile,
+			vinputPaddingTablet,
+			vinputPaddingDesktop,
+			hinputPaddingMobile,
+			hinputPaddingTablet,
+			hinputPaddingDesktop,
+			paddingInputTop,
+			paddingInputRight,
+			paddingInputBottom,
+			paddingInputLeft,
+			paddingInputTopTablet,
+			paddingInputBottomTablet,
+			paddingInputRightTablet,
+			paddingInputLeftTablet,
+			paddingInputTopMobile,
+			paddingInputRightMobile,
+			paddingInputBottomMobile,
+			paddingInputLeftMobile,
 			borderStyle,
 			borderWidth,
 			borderColor,
 			borderHColor,
 			borderRadius,
 		} = props.attributes;
+
+		if ( vinputPaddingDesktop ) {
+			if ( undefined === paddingInputTop ) {
+				props.setAttributes( {
+					paddingInputTop: vinputPaddingDesktop,
+				} );
+			}
+			if ( undefined ===paddingInputBottom ) {
+				props.setAttributes( {
+					paddingInputBottom: vinputPaddingDesktop,
+				} );
+			}
+		}
+		if ( hinputPaddingDesktop ) {
+			if ( undefined === paddingInputRight ) {
+				props.setAttributes( {
+					paddingInputRight: hinputPaddingDesktop,
+				} );
+			}
+			if ( undefined === paddingInputLeft ) {
+				props.setAttributes( {
+					paddingInputLeft: hinputPaddingDesktop,
+				} );
+			}
+		}
+		if ( vinputPaddingTablet ) {
+			if ( undefined === paddingInputTopTablet ) {
+				props.setAttributes( {
+					paddingInputTopTablet: vinputPaddingTablet,
+				} );
+			}
+			if ( undefined === paddingInputBottomTablet ) {
+				props.setAttributes( {
+					paddingInputBottomTablet: vinputPaddingTablet,
+				} );
+			}
+		}
+		if ( hinputPaddingTablet ) {
+			if ( undefined === paddingInputRightTablet ) {
+				props.setAttributes( {
+					paddingInputRightTablet: hinputPaddingTablet,
+				} );
+			}
+			if ( undefined === paddingInputLeftTablet ) {
+				props.setAttributes( {
+					paddingInputLeftTablet: hinputPaddingTablet,
+				} );
+			}
+		}
+		if ( vinputPaddingMobile ) {
+			if ( undefined === paddingInputTopMobile ) {
+				props.setAttributes( {
+					paddingInputTopMobile: vinputPaddingMobile,
+				} );
+			}
+			if ( undefined === paddingInputBottomMobile ) {
+				props.setAttributes( {
+					paddingInputBottomMobile: vinputPaddingMobile,
+				} );
+			}
+		}
+		if ( hinputPaddingMobile ) {
+			if ( undefined === paddingInputRightMobile ) {
+				props.setAttributes( {
+					paddingInputRightMobile: hinputPaddingMobile,
+				} );
+			}
+			if ( undefined === paddingInputLeftMobile ) {
+				props.setAttributes( {
+					paddingInputLeftMobile: hinputPaddingMobile,
+				} );
+			}
+		}
 		// border
 		if( borderWidth || borderRadius || borderColor || borderHColor || borderStyle ){
 			const migrationAttributes = migrateBorderAttributes( 'input', {
@@ -72,100 +164,6 @@ const UAGBWpSearchEdit = ( props ) => {
 			setState( {
 				isFocused: true,
 			} );
-		}
-
-		const {
-			vinputPaddingMobile,
-			vinputPaddingTablet,
-			vinputPaddingDesktop,
-			hinputPaddingMobile,
-			hinputPaddingTablet,
-			hinputPaddingDesktop,
-			paddingInputTop,
-			paddingInputRight,
-			paddingInputBottom,
-			paddingInputLeft,
-			paddingInputTopTablet,
-			paddingInputBottomTablet,
-			paddingInputRightTablet,
-			paddingInputLeftTablet,
-			paddingInputTopMobile,
-			paddingInputRightMobile,
-			paddingInputBottomMobile,
-			paddingInputLeftMobile,
-		} = props.attributes;
-
-		if ( vinputPaddingDesktop ) {
-			if ( ! paddingInputTop ) {
-				props.setAttributes( {
-					paddingInputTop: vinputPaddingDesktop,
-				} );
-			}
-			if ( ! paddingInputBottom ) {
-				props.setAttributes( {
-					paddingInputBottom: vinputPaddingDesktop,
-				} );
-			}
-		}
-		if ( hinputPaddingDesktop ) {
-			if ( ! paddingInputRight ) {
-				props.setAttributes( {
-					paddingInputRight: hinputPaddingDesktop,
-				} );
-			}
-			if ( ! paddingInputLeft ) {
-				props.setAttributes( {
-					paddingInputLeft: hinputPaddingDesktop,
-				} );
-			}
-		}
-		if ( vinputPaddingTablet ) {
-			if ( ! paddingInputTopTablet ) {
-				props.setAttributes( {
-					paddingInputTopTablet: vinputPaddingTablet,
-				} );
-			}
-			if ( ! paddingInputBottomTablet ) {
-				props.setAttributes( {
-					paddingInputBottomTablet: vinputPaddingTablet,
-				} );
-			}
-		}
-		if ( hinputPaddingTablet ) {
-			if ( ! paddingInputRightTablet ) {
-				props.setAttributes( {
-					paddingInputRightTablet: hinputPaddingTablet,
-				} );
-			}
-			if ( ! paddingInputLeftTablet ) {
-				props.setAttributes( {
-					paddingInputLeftTablet: hinputPaddingTablet,
-				} );
-			}
-		}
-		if ( vinputPaddingMobile ) {
-			if ( ! paddingInputTopMobile ) {
-				props.setAttributes( {
-					paddingInputTopMobile: vinputPaddingMobile,
-				} );
-			}
-			if ( ! paddingInputBottomMobile ) {
-				props.setAttributes( {
-					paddingInputBottomMobile: vinputPaddingMobile,
-				} );
-			}
-		}
-		if ( hinputPaddingMobile ) {
-			if ( ! paddingInputRightMobile ) {
-				props.setAttributes( {
-					paddingInputRightMobile: hinputPaddingMobile,
-				} );
-			}
-			if ( ! paddingInputLeftMobile ) {
-				props.setAttributes( {
-					paddingInputLeftMobile: hinputPaddingMobile,
-				} );
-			}
 		}
 
 		const blockStyling = styling( props );

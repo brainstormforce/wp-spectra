@@ -37,6 +37,20 @@
 			styleType: 'overall-alignment'
 		}
 	},
+	headingAlignTablet: {
+		type: 'string',
+		default: 'center',
+		UAGCopyPaste: {
+			styleType: 'overall-alignment-tablet'
+		}
+	},
+	headingAlignMobile: {
+		type: 'string',
+		default: 'center',
+		UAGCopyPaste: {
+			styleType: 'overall-alignment-mobile'
+		}
+	},
 	headingColor: {
 		type: 'string',
 		UAGCopyPaste: {
@@ -657,6 +671,56 @@
 		type: 'string',
 		UAGCopyPaste: {
 			styleType: 'btn-font-style'
+		}
+	},
+	ctaLineHeightType: {
+		type: 'string',
+		default: 'em',
+		UAGCopyPaste: {
+			styleType: 'cta-line-height-type'
+		}
+	},
+	ctaLineHeight: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'cta-line-height'
+		}
+	},
+    ctaLineHeightTablet: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'cta-line-height-tablet'
+		}
+	},
+    ctaLineHeightMobile: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'cta-line-height-mobile'
+		}
+	},
+	ctaLetterSpacing: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'cta-letter-spacing'
+		}
+	},
+	ctaLetterSpacingTablet: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'cta-letter-spacing-tablet'
+		}
+	},
+	ctaLetterSpacingMobile: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'cta-letter-spacing-mobile'
+		}
+	},
+	ctaLetterSpacingType: {
+		type: 'string',
+		default: 'px',
+		UAGCopyPaste: {
+			styleType: 'cta-letter-spacing-type'
 		}
 	},
 	ctaLoadGoogleFonts: {

@@ -49,6 +49,8 @@ const Settings = ( props ) => {
 	// Setup the attributes.
 	const {
 		headingAlign,
+		headingAlignTablet,
+		headingAlignMobile,
 		headingColor,
 		subHeadingColor,
 		prefixColor,
@@ -136,6 +138,14 @@ const Settings = ( props ) => {
 		ctaFontFamily,
 		ctaFontWeight,
 		ctaFontStyle,
+		ctaLineHeightType,
+		ctaLineHeight,
+		ctaLineHeightMobile,
+		ctaLineHeightTablet,
+		ctaLetterSpacingType,
+		ctaLetterSpacing,
+		ctaLetterSpacingTablet,
+		ctaLetterSpacingMobile,
 		ctaLoadGoogleFonts,
 		ctaBtnLinkColor,
 		ctaLinkHoverColor,
@@ -605,9 +615,20 @@ const Settings = ( props ) => {
 						'Alignment',
 						'ultimate-addons-for-gutenberg'
 					) }
+					responsive={true}
 					data={ {
-						value: headingAlign,
-						label: 'headingAlign',
+						desktop: {
+							value: headingAlign,
+							label: 'headingAlign',
+						},
+						tablet: {
+							value: headingAlignTablet,
+							label: 'headingAlignTablet',
+						},
+						mobile: {
+							value: headingAlignMobile,
+							label: 'headingAlignMobile',
+						},
 					} }
 					className="uagb-multi-button-alignment-control"
 					options={ [
@@ -2333,6 +2354,22 @@ const Settings = ( props ) => {
 										value: ctaFontSizeTablet,
 										label: 'ctaFontSizeTablet',
 									} }
+									lineHeightType={ {
+										value: ctaLineHeightType,
+										label: 'ctaLineHeightType',
+									} }
+									lineHeight={ {
+										value: ctaLineHeight,
+										label: 'ctaLineHeight',
+									} }
+									lineHeightMobile={ {
+										value: ctaLineHeightMobile,
+										label: 'ctaLineHeightMobile',
+									} }
+									lineHeightTablet={ {
+										value: ctaLineHeightTablet,
+										label: 'ctaLineHeightTablet',
+									} }
 									transform={ {
 										value: ctaTransform,
 										label: 'ctaTransform',
@@ -2341,7 +2378,22 @@ const Settings = ( props ) => {
 										value: ctaDecoration,
 										label: 'ctaDecoration',
 									} }
-									disableLineHeight={ true }
+									letterSpacing={ {
+										value: ctaLetterSpacing,
+										label: 'ctaLetterSpacing',
+									} }
+									letterSpacingTablet={ {
+										value: ctaLetterSpacingTablet,
+										label: 'ctaLetterSpacingTablet',
+									} }
+									letterSpacingMobile={ {
+										value: ctaLetterSpacingMobile,
+										label: 'ctaLetterSpacingMobile',
+									} }
+									letterSpacingType={ {
+										value: ctaLetterSpacingType,
+										label: 'ctaLetterSpacingType',
+									} }
 								/>
 								{  ctaType === 'button' && (
 									<>

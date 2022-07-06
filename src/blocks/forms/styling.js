@@ -84,7 +84,7 @@ function styling( props ) {
 		bgHoverColor,
 		bgActiveColor,
 		inputplaceholderColor,
-		inputplaceholderHColor,
+		inputplaceholderHoverColor,
 		inputplaceholderActiveColor,
 		inputactiveColor,
 		fieldBorderHColor,
@@ -316,7 +316,7 @@ function styling( props ) {
 		' .uagb-forms-main-form .uagb-forms-main-submit-button-wrap': {
 			'text-align': buttonAlign,
 		},
-		' .uagb-forms-main-form .uagb-forms-main-submit-button': {
+		' .uagb-forms-main-form .uagb-forms-main-submit-button-wrap .uagb-forms-main-submit-button': {
 			'color': submitColor,
 			'font-size': generateCSSUnit(
 				submitTextFontSize,
@@ -441,7 +441,7 @@ function styling( props ) {
 			'border-color': fieldBorderHColor,
 		},
 		' .uagb-forms-field-set:hover .uagb-forms-input::placeholder': {
-			'color': inputplaceholderHColor,
+			'color': inputplaceholderHoverColor,
 		},
 	};
 
@@ -504,7 +504,7 @@ function styling( props ) {
 				'px'
 			) })`,
 		},
-		' .uagb-forms-main-form .uagb-forms-main-submit-button': {
+		' .uagb-forms-main-form .uagb-forms-main-submit-button-wrap .uagb-forms-main-submit-button': {
 			'padding-top': generateCSSUnit(
 				paddingBtnTopTablet,
 				tabletPaddingBtnUnit
@@ -622,7 +622,7 @@ function styling( props ) {
 				'px'
 			) })`,
 		},
-		' .uagb-forms-main-form .uagb-forms-main-submit-button': { // eslint-disable-line no-dupe-keys
+		' .uagb-forms-main-form .uagb-forms-main-submit-button-wrap .uagb-forms-main-submit-button': { // eslint-disable-line no-dupe-keys
 			'padding-top': generateCSSUnit(
 				paddingBtnTopMobile,
 				mobilePaddingBtnUnit
