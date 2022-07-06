@@ -130,24 +130,24 @@ function styling( props ) {
 		radioCheckDecoration,
 		fieldBottomBorderWidth,
 		labelLetterSpacing,
-labelLetterSpacingTablet,
-labelLetterSpacingMobile,
-labelLetterSpacingType,
-inputLetterSpacing,
-inputLetterSpacingTablet,
-inputLetterSpacingMobile,
-inputLetterSpacingType,
-radioCheckLetterSpacing,
-radioCheckLetterSpacingTablet,
-radioCheckLetterSpacingMobile,
-radioCheckLetterSpacingType,
-buttonLetterSpacing,
-buttonLetterSpacingTablet,
-buttonLetterSpacingMobile,
-buttonLetterSpacingType,
-validationMsgLetterSpacingTablet,
-validationMsgLetterSpacingMobile,
-validationMsgLetterSpacingType,
+		labelLetterSpacingTablet,
+		labelLetterSpacingMobile,
+		labelLetterSpacingType,
+		inputLetterSpacing,
+		inputLetterSpacingTablet,
+		inputLetterSpacingMobile,
+		inputLetterSpacingType,
+		radioCheckLetterSpacing,
+		radioCheckLetterSpacingTablet,
+		radioCheckLetterSpacingMobile,
+		radioCheckLetterSpacingType,
+		buttonLetterSpacing,
+		buttonLetterSpacingTablet,
+		buttonLetterSpacingMobile,
+		buttonLetterSpacingType,
+		validationMsgLetterSpacingTablet,
+		validationMsgLetterSpacingMobile,
+		validationMsgLetterSpacingType,
 	} = props.attributes;
 
 	const fieldBorderCSS = generateBorderCSS( props.attributes, 'input' );
@@ -157,7 +157,9 @@ validationMsgLetterSpacingType,
 	const buttonBorderCSS = generateBorderCSS( props.attributes, 'btn' );
 	const buttonBorderCSSTablet = generateBorderCSS( props.attributes, 'btn', 'tablet' );
 	const buttonBorderCSSMobile = generateBorderCSS( props.attributes, 'btn', 'mobile' );
-
+	console.log(' Dekstop ',buttonBorderCSS)
+	console.log(' Tablet ',buttonBorderCSSTablet)
+	console.log(' Mobile ',buttonBorderCSSMobile)
 	const selectors = {
 		' .wpcf7 .wpcf7-form': {
 			'text-align': align,
@@ -775,18 +777,6 @@ validationMsgLetterSpacingType,
 			),
 			'letter-spacing': generateCSSUnit( labelLetterSpacingMobile, labelLetterSpacingType ),
 		},
-		' .wpcf7 input.wpcf7-form-control.wpcf7-submit': {
-			'font-size': generateCSSUnit(
-				buttonFontSizeMobile,
-				buttonFontSizeType
-			),
-			'line-height': generateCSSUnit(
-				buttonLineHeightMobile,
-				buttonLineHeightType
-			),
-			'letter-spacing': generateCSSUnit( buttonLetterSpacingMobile, buttonLetterSpacingType ),
-			...buttonBorderCSSMobile
-		},
 		' .uagb-cf7-styler__check-style-enabled .wpcf7 form .wpcf7-list-item-label': {
 			'font-size': generateCSSUnit(
 				radioCheckFontSizeMobile,
@@ -830,6 +820,16 @@ validationMsgLetterSpacingType,
 				buttonBottomPaddingMobile,
 				buttonPaddingTypeMobile
 			),
+			'font-size': generateCSSUnit(
+				buttonFontSizeMobile,
+				buttonFontSizeType
+			),
+			'line-height': generateCSSUnit(
+				buttonLineHeightMobile,
+				buttonLineHeightType
+			),
+			'letter-spacing': generateCSSUnit( buttonLetterSpacingMobile, buttonLetterSpacingType ),
+			...buttonBorderCSSMobile
 		},
 	};
 	const id = `.editor-styles-wrapper .uagb-block-${ props.clientId.substr( 0, 8 ) }`;
