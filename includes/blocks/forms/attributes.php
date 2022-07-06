@@ -34,7 +34,7 @@ $failed_message_border_defaults   = array(
 	'borderBottomRightRadius' => 6,
 	'borderHColor'            => 'deeppink',
 );
-$failed_message_border_attribute  = UAGB_Block_Helper::uag_generate_border_attribute( 'failedMsg', $failed_message_border_defaults );
+$failed_message_border_attribute  = UAGB_Block_Helper::uag_generate_border_attribute( 'errorMsg', $failed_message_border_defaults );
 $input_border_defaults            = array(
 	'borderStyle'             => 'solid',
 	'borderTopWidth'          => 1,

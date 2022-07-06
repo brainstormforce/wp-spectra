@@ -8,7 +8,7 @@
  */
 
 $border_attribute = UAGB_Block_Helper::uag_generate_border_attribute( 'container' );
-$default_width   = UAGB_Admin_Helper::get_global_content_width();
+$default_width    = UAGB_Admin_Helper::get_global_content_width();
 
 return array_merge(
 	array(
@@ -116,7 +116,7 @@ return array_merge(
 		'columnGapType'                  => 'px',
 		'columnGapTypeTablet'            => 'px',
 		'columnGapTypeMobile'            => 'px',
-		'contentWidth'                   => 'alignfull',
+		'contentWidth'                   => 'full',
 		'innerContentWidth'              => 'alignwide',
 		'innerContentCustomWidthDesktop' => $default_width,
 		'innerContentCustomWidthTablet'  => 768,

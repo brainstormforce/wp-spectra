@@ -218,7 +218,8 @@ $t_selectors = array(
 // Desktop.
 if ( 'hstyle5' === $attr['tabsStyleD'] ) {
 	$selectors['.uagb-tabs__wrap.uagb-tabs__hstyle5-desktop']       = array(
-		'background' => $attr['bodyBgColor'],
+		'background'   => $attr['bodyBgColor'],
+		'border-style' => $attr['tabBorderStyle'],
 	);
 	$selectors['.uagb-tabs__wrap.uagb-tabs__hstyle5-desktop:hover'] = array(
 		'border-color' => $attr['tabBorderHColor'],
@@ -230,7 +231,8 @@ if ( 'hstyle5' === $attr['tabsStyleD'] ) {
 }
 if ( 'vstyle10' === $attr['tabsStyleD'] ) {
 	$selectors['.uagb-tabs__wrap.uagb-tabs__vstyle10-desktop']       = array(
-		'background' => $attr['bodyBgColor'],
+		'background'   => $attr['bodyBgColor'],
+		'border-style' => $attr['tabBorderStyle'],
 	);
 	$selectors['.uagb-tabs__wrap.uagb-tabs__vstyle10-desktop:hover'] = array(
 		'border-color' => $attr['tabBorderHColor'],
