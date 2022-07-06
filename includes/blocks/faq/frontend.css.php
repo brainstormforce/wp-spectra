@@ -91,7 +91,7 @@ $selectors = array(
 	),
 	' .uagb-faq-item:hover'                               => array(
 		'background-color' => $attr['boxBgHoverColor'],
-		'border-color' => $attr['overallBorderHColor'],
+		'border-color'     => $attr['overallBorderHColor'],
 	),
 	' .uagb-faq-item .uagb-question'                      => array(
 		'color' => $attr['questionTextColor'],

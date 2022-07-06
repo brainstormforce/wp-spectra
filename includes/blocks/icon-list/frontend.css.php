@@ -269,7 +269,7 @@ if ( 'horizontal' === $icon_layout ) {
 } elseif ( 'vertical' === $icon_layout ) {
 	$selectors[' .uagb-icon-list__wrap']['flex-direction'] = 'column';
 
-	$selectors['.wp-block-uagb-icon-list .wp-block-uagb-icon-list-child']            = array(
+	$selectors['.wp-block-uagb-icon-list .wp-block-uagb-icon-list-child'] = array(
 		'margin-left'   => 0,
 		'margin-right'  => 0,
 		'margin-bottom' => UAGB_Helper::get_css_value( $gap_fallback, $attr['gapType'] ),
