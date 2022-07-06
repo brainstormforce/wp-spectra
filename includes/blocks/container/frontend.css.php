@@ -52,17 +52,17 @@ $container_bg_css_desktop = UAGB_Block_Helper::uag_get_background_obj( $bg_obj_d
 $video_bg_css = UAGB_Block_Helper::uag_get_background_obj( $bg_obj_desktop );
 
 // Desktop.
-$left_padding_desktop   = ! empty( $attr['leftPaddingDesktop'] ) ? $attr['leftPaddingDesktop'] : 0;
-$right_padding_desktop  = ! empty( $attr['rightPaddingDesktop'] ) ? $attr['rightPaddingDesktop'] : 0;
-$top_padding_desktop    = ! empty( $attr['topPaddingDesktop'] ) ? $attr['topPaddingDesktop'] : 0;
-$bottom_padding_desktop = ! empty( $attr['bottomPaddingDesktop'] ) ? $attr['bottomPaddingDesktop'] : 0;
+$left_padding_desktop   = ! empty( $attr['leftPaddingDesktop'] ) ? $attr['leftPaddingDesktop'] : '';
+$right_padding_desktop  = ! empty( $attr['rightPaddingDesktop'] ) ? $attr['rightPaddingDesktop'] : '';
+$top_padding_desktop    = ! empty( $attr['topPaddingDesktop'] ) ? $attr['topPaddingDesktop'] : '';
+$bottom_padding_desktop = ! empty( $attr['bottomPaddingDesktop'] ) ? $attr['bottomPaddingDesktop'] : '';
 
-$left_margin_desktop   = ! empty( $attr['leftMarginDesktop'] ) ? $attr['leftMarginDesktop'] : 0;
-$right_margin_desktop  = ! empty( $attr['rightMarginDesktop'] ) ? $attr['rightMarginDesktop'] : 0;
-$top_margin_desktop    = ! empty( $attr['topMarginDesktop'] ) ? $attr['topMarginDesktop'] : 0;
-$bottom_margin_desktop = ! empty( $attr['bottomMarginDesktop'] ) ? $attr['bottomMarginDesktop'] : 0;
+$left_margin_desktop   = ! empty( $attr['leftMarginDesktop'] ) ? $attr['leftMarginDesktop'] : '';
+$right_margin_desktop  = ! empty( $attr['rightMarginDesktop'] ) ? $attr['rightMarginDesktop'] : '';
+$top_margin_desktop    = ! empty( $attr['topMarginDesktop'] ) ? $attr['topMarginDesktop'] : '';
+$bottom_margin_desktop = ! empty( $attr['bottomMarginDesktop'] ) ? $attr['bottomMarginDesktop'] : '';
 
-$column_gap_desktop = ! empty( $column_gap_desktop_fallback ) ? $column_gap_desktop_fallback : 0;
+$column_gap_desktop = ! empty( $column_gap_desktop_fallback ) ? $column_gap_desktop_fallback : '';
 
 // Tablet.
 $left_padding_tablet   = '' !== $attr['leftPaddingTablet'] ? $attr['leftPaddingTablet'] : $left_padding_desktop;
