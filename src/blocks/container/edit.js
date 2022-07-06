@@ -98,12 +98,6 @@ const UAGBContainer = ( props ) => {
 			if ( hasChildren ) {
 				element.classList.add( 'uagb-container-has-children' );
 			}
-			if ( props.attributes.isBlockRootParent || isBlockRootParent ) {
-				element.classList.remove( 'alignfull' );
-				element.classList.remove( 'alignwide' );
-				element.classList.remove( 'default' );
-				element.classList.add( props.attributes.contentWidth );
-			}
 		}
 
 		const descendants = select( 'core/block-editor' ).getBlocks( props.clientId );
@@ -170,12 +164,6 @@ const UAGBContainer = ( props ) => {
 			if ( hasChildren ) {
 				element.classList.add( 'uagb-container-has-children' );
 			}
-			if ( props.attributes.isBlockRootParent ) {
-				element.classList.remove( 'alignfull' );
-				element.classList.remove( 'alignwide' );
-				element.classList.remove( 'default' );
-				element.classList.add( props.attributes.contentWidth );
-			}
 		}
 
 		const blockStyling = styling( props );
@@ -191,20 +179,6 @@ const UAGBContainer = ( props ) => {
 	}, [ props ] );
 
 	useEffect( () => {
-		const iframeEl = document.querySelector( `iframe[name='editor-canvas']` );
-		let element;
-		if( iframeEl ){
-			element = iframeEl.contentDocument.getElementById( 'block-' + props.clientId )
-		} else {
-			element = document.getElementById( 'block-' + props.clientId )
-		}
-
-		if ( element ) {
-			element.classList.remove( `uagb-editor-preview-mode-desktop` );
-			element.classList.remove( `uagb-editor-preview-mode-tablet` );
-			element.classList.remove( `uagb-editor-preview-mode-mobile` );
-			element.classList.add( `uagb-editor-preview-mode-${deviceType.toLowerCase() }` );
-		}
 
 		const blockStyling = styling( props );
 

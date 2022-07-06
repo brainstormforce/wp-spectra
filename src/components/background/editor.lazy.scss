@@ -18,6 +18,15 @@
 	.uag-background-image-overlay-gradient,
 	.uagb-responsive-select-control {
 		margin-top: $spectra-control-vertical-gap;
+
+		.uagb-size-type-field-tabs {
+			display: flex;
+			justify-content: space-between;
+
+			& > .components-base-control {
+				width: 45%;
+			}
+		}
 	}
 
 	.uag-background-image > .uagb-responsive-select-control {
@@ -31,12 +40,13 @@
 		}
 	}
 
-	.uagb-size-type-field-tabs {
-		display: flex;
-		justify-content: space-between;
+	.uag-responsive-image-select.uagb-responsive-select-control {
 
-		& > .components-base-control {
-			width: 45%;
+		.uagb-size-type-field-tabs {
+
+			.uagb-control__header {
+				margin-bottom: 10px;
+			}
 		}
 	}
 
@@ -59,6 +69,10 @@
 
 		.uagb-size-type-field-tabs {
 			flex-direction: column;
+
+			.uagb-control__header {
+				margin-bottom: 10px;
+			}
 
 			.components-focal-point-picker-control {
 				width: 100%;
