@@ -1102,104 +1102,200 @@ const Settings = ( props ) => {
 													},
 												] }
 											/>
+											<UAGTabsControl
+												tabs={ [
+													{
+														name: 'normal',
+														title: __(
+															'Normal',
+															'ultimate-addons-for-gutenberg'
+														),
+													},
+													{
+														name: 'hover',
+														title: __(
+															'Hover',
+															'ultimate-addons-for-gutenberg'
+														),
+													},
+												] }
+												normal={
+													<>
+														<AdvancedPopColorControl
+															label={ __(
+																'Color',
+																'ultimate-addons-for-gutenberg'
+															) }
+															colorValue={
+																iconColor ? iconColor : ''
+															}
+															data={ {
+																value: iconColor,
+																label: 'iconColor',
+															} }
+															setAttributes={ setAttributes }
+														/>
+														{ iconView !== 'none' &&
+															<>
+																<AdvancedPopColorControl
+																	label={ __(
+																		'Border Color',
+																		'ultimate-addons-for-gutenberg'
+																	) }
+																	colorValue={
+																		iconBackgroundColor ? iconBackgroundColor : ''
+																	}
+																	data={ {
+																		value: iconBackgroundColor,
+																		label: 'iconBackgroundColor',
+																	} }
+																	setAttributes={ setAttributes }
+																/>
+															</>
+														}
+													</>
+
+												}
+												hover={
+													<>
+														<AdvancedPopColorControl
+															label={ __(
+																'Color',
+																'ultimate-addons-for-gutenberg'
+															) }
+															colorValue={
+																iconHover ? iconHover : ''
+															}
+															data={ {
+																value: iconHover,
+																label: 'iconHover',
+															} }
+															setAttributes={ setAttributes }
+														/>
+														{ iconView !== 'none' &&
+															<>
+																<AdvancedPopColorControl
+																	label={ __(
+																		' Color',
+																		'ultimate-addons-for-gutenberg'
+																	) }
+																	colorValue={
+																		iconBackgroundHoverColor ? iconBackgroundHoverColor : ''
+																	}
+																	data={ {
+																		value: iconBackgroundHoverColor,
+																		label: 'iconBackgroundHoverColor',
+																	} }
+																	setAttributes={ setAttributes }
+																/>
+															</>
+														}
+													</>
+												}
+												disableBottomSeparator={ false }
+											/>
 										</>
 									}
-
-									<UAGTabsControl
-										tabs={ [
-											{
-												name: 'normal',
-												title: __(
-													'Normal',
-													'ultimate-addons-for-gutenberg'
-												),
-											},
-											{
-												name: 'hover',
-												title: __(
-													'Hover',
-													'ultimate-addons-for-gutenberg'
-												),
-											},
-										] }
-										normal={
-											<>
-												<AdvancedPopColorControl
-													label={ __(
-														'Color',
-														'ultimate-addons-for-gutenberg'
-													) }
-													colorValue={
-														iconColor ? iconColor : ''
-													}
-													data={ {
-														value: iconColor,
-														label: 'iconColor',
-													} }
-													setAttributes={ setAttributes }
-												/>
-												{ iconView !== 'none' &&
+									{ iconView === 'Stacked' &&
+										<>
+											<UAGTabsControl
+												tabs={ [
+													{
+														name: 'normal',
+														title: __(
+															'Normal',
+															'ultimate-addons-for-gutenberg'
+														),
+													},
+													{
+														name: 'hover',
+														title: __(
+															'Hover',
+															'ultimate-addons-for-gutenberg'
+														),
+													},
+												] }
+												normal={
 													<>
 														<AdvancedPopColorControl
 															label={ __(
-																'Icon Background Color',
+																'Color',
 																'ultimate-addons-for-gutenberg'
 															) }
 															colorValue={
-																iconBackgroundColor ? iconBackgroundColor : ''
+																iconColor ? iconColor : ''
 															}
 															data={ {
-																value: iconBackgroundColor,
-																label: 'iconBackgroundColor',
+																value: iconColor,
+																label: 'iconColor',
 															} }
 															setAttributes={ setAttributes }
 														/>
+														{ iconView !== 'none' &&
+															<>
+																<AdvancedPopColorControl
+																	label={ __(
+																		'Icon Background Color',
+																		'ultimate-addons-for-gutenberg'
+																	) }
+																	colorValue={
+																		iconBackgroundColor ? iconBackgroundColor : ''
+																	}
+																	data={ {
+																		value: iconBackgroundColor,
+																		label: 'iconBackgroundColor',
+																	} }
+																	setAttributes={ setAttributes }
+																/>
+															</>
+														}
 													</>
-												}
-											</>
 
-										}
-										hover={
-											<>
-												<AdvancedPopColorControl
-													label={ __(
-														'Color',
-														'ultimate-addons-for-gutenberg'
-													) }
-													colorValue={
-														iconHover ? iconHover : ''
-													}
-													data={ {
-														value: iconHover,
-														label: 'iconHover',
-													} }
-													setAttributes={ setAttributes }
-												/>
-												{ iconView !== 'none' &&
+												}
+												hover={
 													<>
 														<AdvancedPopColorControl
 															label={ __(
-																'Icon Background Color',
+																'Color',
 																'ultimate-addons-for-gutenberg'
 															) }
 															colorValue={
-																iconBackgroundHoverColor ? iconBackgroundHoverColor : ''
+																iconHover ? iconHover : ''
 															}
 															data={ {
-																value: iconBackgroundHoverColor,
-																label: 'iconBackgroundHoverColor',
+																value: iconHover,
+																label: 'iconHover',
 															} }
 															setAttributes={ setAttributes }
 														/>
+														{ iconView !== 'none' &&
+															<>
+																<AdvancedPopColorControl
+																	label={ __(
+																		'Icon Background Color',
+																		'ultimate-addons-for-gutenberg'
+																	) }
+																	colorValue={
+																		iconBackgroundHoverColor ? iconBackgroundHoverColor : ''
+																	}
+																	data={ {
+																		value: iconBackgroundHoverColor,
+																		label: 'iconBackgroundHoverColor',
+																	} }
+																	setAttributes={ setAttributes }
+																/>
+															</>
+														}
 													</>
 												}
-											</>
-										 }
-										disableBottomSeparator={ false }
-									/>
+												disableBottomSeparator={ false }
+											/>
+										</>
+									}
+									
 									<ResponsiveSlider
 										label={ __(
-											'Width',
+											'Size',
 											'ultimate-addons-for-gutenberg'
 										) }
 										data={ {
