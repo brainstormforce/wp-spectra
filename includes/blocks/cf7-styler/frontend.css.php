@@ -440,7 +440,7 @@ $m_selectors = array(
 			'padding-left'   => UAGB_Helper::get_css_value( $attr['buttonLeftPaddingMobile'], $attr['buttonPaddingTypeMobile'] ),
 			'padding-right'  => UAGB_Helper::get_css_value( $attr['buttonRightPaddingMobile'], $attr['buttonPaddingTypeMobile'] ),
 		),
-		$btn_border_tablet
+		$btn_border_mobile
 	),
 	' .wpcf7 form.wpcf7-form:not(input)'            => array(
 		'color' => $attr['fieldLabelColor'],
