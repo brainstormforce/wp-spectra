@@ -1,8 +1,8 @@
 import { __ } from '@wordpress/i18n';
 import { getBorderAttributes } from '@Controls/generateAttributes';
 
-const successMessageBorderAttributes = getBorderAttributes( 'successMessage' );
-const failedMessageBorderAttributes = getBorderAttributes( 'failedMessage' );
+const successMessageBorderAttributes = getBorderAttributes( 'successMsg' );
+const failedMessageBorderAttributes = getBorderAttributes( 'errorMsg' );
 const inputBorderAttributes = getBorderAttributes( 'field' , {
 	borderStyle: 'solid',
 	borderTopLeftRadius: 3,
