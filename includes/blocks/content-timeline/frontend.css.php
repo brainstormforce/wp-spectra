@@ -183,11 +183,11 @@ $selectors = array(
 		'padding-top'      => UAGB_Helper::get_css_value( $top_padding, $attr['paddingUnit'] ),
 		'padding-bottom'   => UAGB_Helper::get_css_value( $bottom_padding, $attr['paddingUnit'] ),
 	),
-	' .uagb-timeline__events-inner--content' => array(
-		'padding-left'     => UAGB_Helper::get_css_value( $top_padding, $attr['paddingUnit'] ),
-		'padding-right'    => UAGB_Helper::get_css_value( $right_padding, $attr['paddingUnit'] ),
-		'padding-top'      => UAGB_Helper::get_css_value( $top_padding, $attr['paddingUnit'] ),
-		'padding-bottom'   => UAGB_Helper::get_css_value( $bottom_padding, $attr['paddingUnit'] ),
+	' .uagb-timeline__events-inner--content'               => array(
+		'padding-left'   => UAGB_Helper::get_css_value( $top_padding, $attr['paddingUnit'] ),
+		'padding-right'  => UAGB_Helper::get_css_value( $right_padding, $attr['paddingUnit'] ),
+		'padding-top'    => UAGB_Helper::get_css_value( $top_padding, $attr['paddingUnit'] ),
+		'padding-bottom' => UAGB_Helper::get_css_value( $bottom_padding, $attr['paddingUnit'] ),
 	),
 	' .uagb-timeline__marker svg'                          => array(
 		'color' => $attr['iconColor'],
