@@ -15,15 +15,15 @@ import Range from '@Components/range/Range.js';
 import ResponsiveSlider from '@Components/responsive-slider';
 import UAGImage from '@Components/image';
 import MultiButtonsControl from '@Components/multi-buttons-control';
+import UAGSelectControl from '@Components/select-control';
 import UAGTabsControl from '@Components/tabs';
-import presets from './presets';
+import infoBoxPresets, { buttonsPresets } from './presets';
 import UAGPresets from '@Components/presets';
 import {
 	InspectorControls,
 } from '@wordpress/block-editor';
 import { getImageSize } from '@Utils/Helpers';
 import {
-	SelectControl,
 	ToggleControl,
 	TextControl,
 	Icon
@@ -49,6 +49,8 @@ const Settings = ( props ) => {
 	// Setup the attributes.
 	const {
 		headingAlign,
+		headingAlignTablet,
+		headingAlignMobile,
 		headingColor,
 		subHeadingColor,
 		prefixColor,
@@ -132,6 +134,14 @@ const Settings = ( props ) => {
 		ctaFontFamily,
 		ctaFontWeight,
 		ctaFontStyle,
+		ctaLineHeightType,
+		ctaLineHeight,
+		ctaLineHeightMobile,
+		ctaLineHeightTablet,
+		ctaLetterSpacingType,
+		ctaLetterSpacing,
+		ctaLetterSpacingTablet,
+		ctaLetterSpacingMobile,
 		ctaLoadGoogleFonts,
 		ctaBtnLinkColor,
 		ctaLinkHoverColor,
@@ -387,15 +397,16 @@ const Settings = ( props ) => {
 					) }
 				/>
 				{ showIcon && (
-				<SelectControl
+				<UAGSelectControl
 					label={ __(
 						'Select Position',
 						'ultimate-addons-for-gutenberg'
 					) }
-					value={ iconimgPosition }
-					onChange={ ( value ) =>
-						setAttributes( { iconimgPosition: value } )
-					}
+					data={ {
+						value: iconimgPosition,
+						label: 'iconimgPosition',
+					} }
+					setAttributes={ setAttributes }
 					options={ [
 						{
 							value: 'above-title',
@@ -444,12 +455,16 @@ const Settings = ( props ) => {
 				)}
 				{ ( iconimgPosition === 'left' ||
 					iconimgPosition === 'right' ) && (
-					<SelectControl
+					<UAGSelectControl
 						label={ __(
 							'Stack on',
 							'ultimate-addons-for-gutenberg'
 						) }
-						value={ stack }
+						data={ {
+							value: stack,
+							label: 'stack',
+						} }
+						setAttributes={ setAttributes }
 						options={ [
 							{
 								value: 'none',
@@ -477,9 +492,6 @@ const Settings = ( props ) => {
 							'Note: Choose on what breakpoint the Info Box will stack.',
 							'ultimate-addons-for-gutenberg'
 						) }
-						onChange={ ( value ) =>
-							setAttributes( { stack: value } )
-						}
 					/>
 				) }
 				{ iconimgPosition &&
@@ -567,18 +579,17 @@ const Settings = ( props ) => {
 						{ iconImage &&
 							iconImage.url !== 'null' &&
 							iconImage.url !== '' && (
-								<SelectControl
+								<UAGSelectControl
 									label={ __(
 										'Image Size',
 										'ultimate-addons-for-gutenberg'
 									) }
+									data={ {
+										value: imageSize,
+										label: 'imageSize',
+									} }
+									setAttributes={ setAttributes }
 									options={ imageSizeOptions }
-									value={ imageSize }
-									onChange={ ( value ) =>
-										setAttributes( {
-											imageSize: value,
-										} )
-									}
 								/>
 							) }
 					</>
@@ -600,9 +611,20 @@ const Settings = ( props ) => {
 						'Alignment',
 						'ultimate-addons-for-gutenberg'
 					) }
+					responsive={true}
 					data={ {
-						value: headingAlign,
-						label: 'headingAlign',
+						desktop: {
+							value: headingAlign,
+							label: 'headingAlign',
+						},
+						tablet: {
+							value: headingAlignTablet,
+							label: 'headingAlignTablet',
+						},
+						mobile: {
+							value: headingAlignMobile,
+							label: 'headingAlignMobile',
+						},
 					} }
 					className="uagb-multi-button-alignment-control"
 					options={ [
@@ -716,12 +738,16 @@ const Settings = ( props ) => {
 				title={ __( 'Separator', 'ultimate-addons-for-gutenberg' ) }
 				initialOpen={ false }
 			>
-				<SelectControl
-					label={ __( 'Style' ) }
-					value={ seperatorStyle }
-					onChange={ ( value ) =>
-						setAttributes( { seperatorStyle: value } )
-					}
+				<UAGSelectControl
+					label={ __(
+						'Style',
+						'ultimate-addons-for-gutenberg'
+					) }
+					data={ {
+						value: seperatorStyle,
+						label: 'seperatorStyle',
+					} }
+					setAttributes={ setAttributes }
 					options={ [
 						{
 							value: 'none',
@@ -761,15 +787,16 @@ const Settings = ( props ) => {
 					] }
 				/>
 				{ 'none' !== seperatorStyle && (
-					<SelectControl
+					<UAGSelectControl
 						label={ __(
 							'Position',
 							'ultimate-addons-for-gutenberg'
 						) }
-						value={ seperatorPosition }
-						onChange={ ( value ) =>
-							setAttributes( { seperatorPosition: value } )
-						}
+						data={ {
+							value: seperatorPosition,
+							label: 'seperatorPosition',
+						} }
+						setAttributes={ setAttributes }
 						options={ [
 							{
 								value: 'after_icon',
@@ -815,12 +842,16 @@ const Settings = ( props ) => {
 				) }
 				initialOpen={ false }
 			>
-				<SelectControl
-					label={ __( 'Type', 'ultimate-addons-for-gutenberg' ) }
-					value={ ctaType }
-					onChange={ ( value ) =>
-						setAttributes( { ctaType: value } )
-					}
+				<UAGSelectControl
+					label={ __(
+						'Type',
+						'ultimate-addons-for-gutenberg'
+					) }
+					data={ {
+						value: ctaType,
+						label: 'ctaType',
+					} }
+					setAttributes={ setAttributes }
 					options={ [
 						{
 							value: 'none',
@@ -852,6 +883,13 @@ const Settings = ( props ) => {
 						},
 					] }
 				/>
+				{ 'button' === ctaType &&
+					<UAGPresets
+						setAttributes = { setAttributes }
+						presets = { buttonsPresets }
+						presetInputType = 'radioImage'
+					/>
+				}
 				{ ( ctaType === 'text' || ctaType === 'button' ) && (
 					<>
 						<TextControl
@@ -896,17 +934,16 @@ const Settings = ( props ) => {
 				) }
 				{ ctaIcon !== '' && ctaType !== 'all' && ctaType !== 'none' && (
 					<>
-						<SelectControl
+						<UAGSelectControl
 							label={ __(
 								'Icon Position',
 								'ultimate-addons-for-gutenberg'
 							) }
-							value={ ctaIconPosition }
-							onChange={ ( value ) =>
-								setAttributes( {
-									ctaIconPosition: value,
-								} )
-							}
+							data={ {
+								value: ctaIconPosition,
+								label: 'ctaIconPosition',
+							} }
+							setAttributes={ setAttributes }
 							options={ [
 								{
 									value: 'before',
@@ -992,15 +1029,16 @@ const Settings = ( props ) => {
 						<>
 							{ source_type === 'icon' && (
 								<>
-									<SelectControl
+									<UAGSelectControl
 										label={ __(
 											'View',
 											'ultimate-addons-for-gutenberg'
 										) }
-										value={ iconView }
-										onChange={ ( value ) =>
-											setAttributes( { iconView: value } )
-										}
+										data={ {
+											value: iconView,
+											label: 'iconView',
+										} }
+										setAttributes={ setAttributes }
 										options={ [
 											{
 												value: 'none',
@@ -1027,15 +1065,16 @@ const Settings = ( props ) => {
 									/>
 									{ iconView !== 'none' &&
 									<>
-										<SelectControl
+										<UAGSelectControl
 											label={ __(
 												'Shape',
 												'ultimate-addons-for-gutenberg'
 											) }
-											value={ iconShape }
-											onChange={ ( value ) =>
-												setAttributes( { iconShape: value } )
-											}
+											data={ {
+												value: iconShape,
+												label: 'iconShape',
+											} }
+											setAttributes={ setAttributes }
 											options={ [
 												{
 													value: 'Circle',
@@ -1064,9 +1103,10 @@ const Settings = ( props ) => {
 												) }
 												setAttributes={ setAttributes }
 												value={ iconBorderWidth }
-												onChange={ ( value ) =>
-													setAttributes( { iconBorderWidth: value } )
-												}
+												data={ {
+													value: iconBorderWidth,
+													label: 'iconBorderWidth',
+												} }
 												min={ 0 }
 												max={ 15 }
 												units={ [
@@ -1109,11 +1149,11 @@ const Settings = ( props ) => {
 													colorValue={
 														iconColor ? iconColor : ''
 													}
-													onColorChange={ ( value ) =>
-														setAttributes( {
-															iconColor: value,
-														} )
-													}
+													data={ {
+														value: iconColor,
+														label: 'iconColor',
+													} }
+													setAttributes={ setAttributes }
 												/>
 												{ iconView !== 'none' &&
 													<>
@@ -1125,11 +1165,11 @@ const Settings = ( props ) => {
 															colorValue={
 																iconBackgroundColor ? iconBackgroundColor : ''
 															}
-															onColorChange={ ( value ) =>
-																setAttributes( {
-																	iconBackgroundColor: value,
-																} )
-															}
+															data={ {
+																value: iconBackgroundColor,
+																label: 'iconBackgroundColor',
+															} }
+															setAttributes={ setAttributes }
 														/>
 													</>
 												}
@@ -1146,11 +1186,11 @@ const Settings = ( props ) => {
 													colorValue={
 														iconHover ? iconHover : ''
 													}
-													onColorChange={ ( value ) =>
-														setAttributes( {
-															iconHover: value,
-														} )
-													}
+													data={ {
+														value: iconHover,
+														label: 'iconHover',
+													} }
+													setAttributes={ setAttributes }
 												/>
 												{ iconView !== 'none' &&
 													<>
@@ -1162,11 +1202,11 @@ const Settings = ( props ) => {
 															colorValue={
 																iconBackgroundHoverColor ? iconBackgroundHoverColor : ''
 															}
-															onColorChange={ ( value ) =>
-																setAttributes( {
-																	iconBackgroundHoverColor: value,
-																} )
-															}
+															data={ {
+																value: iconBackgroundHoverColor,
+																label: 'iconBackgroundHoverColor',
+															} }
+															setAttributes={ setAttributes }
 														/>
 													</>
 												}
@@ -1181,9 +1221,10 @@ const Settings = ( props ) => {
 										) }
 										setAttributes={ setAttributes }
 										value={ iconSize }
-										onChange={ ( value ) =>
-											setAttributes( { iconSize: value } )
-										}
+										data={ {
+											value: iconSize,
+											label: 'iconSize',
+										} }
 										limitMin={ { 'px': 0, '%': 0, 'em': 0 } } // eslint-disable-line quote-props
 										limitMax={ { 'px': 500, '%': 100, 'em': 100 } } // eslint-disable-line quote-props
 										unit={ {
@@ -1306,11 +1347,10 @@ const Settings = ( props ) => {
 											) }
 											setAttributes={ setAttributes }
 											value={ iconimgBorderRadius }
-											onChange={ ( value ) =>
-												setAttributes( {
-													iconimgBorderRadius: value,
-												} )
-											}
+											data={ {
+												value: iconimgBorderRadius,
+												label: 'iconimgBorderRadius',
+											} }
 											min={ 0 }
 											max={ 100 }
 											unit={ {
@@ -1409,7 +1449,23 @@ const Settings = ( props ) => {
 								link={ {
 									value: spacingLink,
 									label: 'spacingLink',
-								} }
+								} }								
+								units={ [
+									{
+										name: __(
+											'Pixel',
+											'ultimate-addons-for-gutenberg'
+										),
+										unitValue: 'px',
+									},
+									{
+										name: __(
+											'EM',
+											'ultimate-addons-for-gutenberg'
+										),
+										unitValue: 'em',
+									},
+								] }
 							/>
 						</>
 					</UAGAdvancedPanelBody>
@@ -1423,9 +1479,11 @@ const Settings = ( props ) => {
 									'ultimate-addons-for-gutenberg'
 								) }
 								colorValue={ prefixColor ? prefixColor : '' }
-								onColorChange={ ( value ) =>
-									setAttributes( { prefixColor: value } )
-								}
+								data={ {
+									value: prefixColor,
+									label: 'prefixColor',
+								} }
+								setAttributes={ setAttributes }
 							/>
 							<TypographyControl
 								label={ __(
@@ -1592,9 +1650,11 @@ const Settings = ( props ) => {
 								'ultimate-addons-for-gutenberg'
 							) }
 							colorValue={ headingColor ? headingColor : '' }
-							onColorChange={ ( value ) =>
-								setAttributes( { headingColor: value } )
-							}
+							data={ {
+								value: headingColor,
+								label: 'headingColor',
+							} }
+							setAttributes={ setAttributes }
 						/>
 						<TypographyControl
 							label={ __(
@@ -1804,11 +1864,10 @@ const Settings = ( props ) => {
 							) }
 							setAttributes={ setAttributes }
 							value={ seperatorThickness }
-							onChange={ ( value ) =>
-								setAttributes( {
-									seperatorThickness: value,
-								} )
-							}
+							data={ {
+								value: seperatorThickness,
+								label: 'seperatorThickness',
+							} }
 							min={ 0 }
 							max={ 10 }
 							unit={ {
@@ -1824,9 +1883,11 @@ const Settings = ( props ) => {
 							colorValue={
 								seperatorColor ? seperatorColor : ''
 							}
-							onColorChange={ ( value ) =>
-								setAttributes( { seperatorColor: value } )
-							}
+							data={ {
+								value: seperatorColor,
+								label: 'seperatorColor',
+							} }
+							setAttributes={ setAttributes }
 						/>
 						<SpacingControl
 								{ ...props }
@@ -1915,9 +1976,11 @@ const Settings = ( props ) => {
 								colorValue={
 									subHeadingColor ? subHeadingColor : ''
 								}
-								onColorChange={ ( value ) =>
-									setAttributes( { subHeadingColor: value } )
-								}
+								data={ {
+									value: subHeadingColor,
+									label: 'subHeadingColor',
+								} }
+								setAttributes={ setAttributes }
 							/>
 							<TypographyControl
 								label={ __(
@@ -2107,11 +2170,11 @@ const Settings = ( props ) => {
 														'ultimate-addons-for-gutenberg'
 													) }
 													colorValue={ ctaLinkColor ? ctaLinkColor : '' }
-													onColorChange={ ( value ) =>
-														setAttributes( {
-															ctaLinkColor: value,
-														} )
-													}
+													data={ {
+														value: ctaLinkColor,
+														label: 'ctaLinkColor',
+													} }
+													setAttributes={ setAttributes }
 												/>
 											}
 											hover={
@@ -2123,11 +2186,11 @@ const Settings = ( props ) => {
 													colorValue={
 														ctaLinkHoverColor ? ctaLinkHoverColor : ''
 													}
-													onColorChange={ ( value ) =>
-														setAttributes( {
-															ctaLinkHoverColor: value,
-														} )
-													}
+													data={ {
+														value: ctaLinkHoverColor,
+														label: 'ctaLinkHoverColor',
+													} }
+													setAttributes={ setAttributes }
 												/>
 												}
 										/>
@@ -2172,6 +2235,22 @@ const Settings = ( props ) => {
 										value: ctaFontSizeTablet,
 										label: 'ctaFontSizeTablet',
 									} }
+									lineHeightType={ {
+										value: ctaLineHeightType,
+										label: 'ctaLineHeightType',
+									} }
+									lineHeight={ {
+										value: ctaLineHeight,
+										label: 'ctaLineHeight',
+									} }
+									lineHeightMobile={ {
+										value: ctaLineHeightMobile,
+										label: 'ctaLineHeightMobile',
+									} }
+									lineHeightTablet={ {
+										value: ctaLineHeightTablet,
+										label: 'ctaLineHeightTablet',
+									} }
 									transform={ {
 										value: ctaTransform,
 										label: 'ctaTransform',
@@ -2180,7 +2259,22 @@ const Settings = ( props ) => {
 										value: ctaDecoration,
 										label: 'ctaDecoration',
 									} }
-									disableLineHeight={ true }
+									letterSpacing={ {
+										value: ctaLetterSpacing,
+										label: 'ctaLetterSpacing',
+									} }
+									letterSpacingTablet={ {
+										value: ctaLetterSpacingTablet,
+										label: 'ctaLetterSpacingTablet',
+									} }
+									letterSpacingMobile={ {
+										value: ctaLetterSpacingMobile,
+										label: 'ctaLetterSpacingMobile',
+									} }
+									letterSpacingType={ {
+										value: ctaLetterSpacingType,
+										label: 'ctaLetterSpacingType',
+									} }
 								/>
 								{  ctaType === 'button' && (
 									<>
@@ -2213,11 +2307,11 @@ const Settings = ( props ) => {
 																? ctaBtnLinkColor
 																: ''
 														}
-														onColorChange={ ( value ) =>
-															setAttributes( {
-																ctaBtnLinkColor: value,
-															} )
-														}
+														data={ {
+															value: ctaBtnLinkColor,
+															label: 'ctaBtnLinkColor',
+														} }
+														setAttributes={ setAttributes }
 													/>
 													<AdvancedPopColorControl
 														label={ __(
@@ -2227,11 +2321,11 @@ const Settings = ( props ) => {
 														colorValue={
 															ctaBgColor ? ctaBgColor : ''
 														}
-														onColorChange={ ( value ) =>
-															setAttributes( {
-																ctaBgColor: value,
-															} )
-														}
+														data={ {
+															value: ctaBgColor,
+															label: 'ctaBgColor',
+														} }
+														setAttributes={ setAttributes }
 													/>
 													</>
 											}
@@ -2247,11 +2341,11 @@ const Settings = ( props ) => {
 																? ctaLinkHoverColor
 																: ''
 														}
-														onColorChange={ ( value ) =>
-															setAttributes( {
-																ctaLinkHoverColor: value,
-															} )
-														}
+														data={ {
+															value: ctaLinkHoverColor,
+															label: 'ctaLinkHoverColor',
+														} }
+														setAttributes={ setAttributes }
 													/>
 													<AdvancedPopColorControl
 														label={ __(
@@ -2263,11 +2357,11 @@ const Settings = ( props ) => {
 																? ctaBgHoverColor
 																: ''
 														}
-														onColorChange={ ( value ) =>
-															setAttributes( {
-																ctaBgHoverColor: value,
-															} )
-														}
+														data={ {
+															value: ctaBgHoverColor,
+															label: 'ctaBgHoverColor',
+														} }
+														setAttributes={ setAttributes }
 													/>
 													</>
 												}
@@ -2370,7 +2464,7 @@ const Settings = ( props ) => {
 				>
 					<UAGPresets
 						setAttributes = { setAttributes }
-						presets = { presets }
+						presets = { infoBoxPresets }
 						presetInputType = 'radioImage'
 					/>
 				</UAGAdvancedPanelBody>

@@ -243,9 +243,10 @@ const Settings = ( props ) => {
 							) }
 							setAttributes={ setAttributes }
 							value={ smoothScrollOffset }
-							onChange={ ( value ) =>
-								setAttributes( { smoothScrollOffset: value } )
-							}
+							data={ {
+								value: smoothScrollOffset,
+								label: 'smoothScrollOffset',
+							} }
 							min={ 0 }
 							max={ 1000 }
 							unit={ {
@@ -291,9 +292,11 @@ const Settings = ( props ) => {
 				<AdvancedPopColorControl
 					label={ __( 'Background', 'ultimate-addons-for-gutenberg' ) }
 					colorValue={ backgroundColor ? backgroundColor : '' }
-					onColorChange={ ( value ) =>
-						setAttributes( { backgroundColor: value } )
-					}
+					data={ {
+						value: backgroundColor,
+						label: 'backgroundColor',
+					} }
+					setAttributes={ setAttributes }
 				/>
 				<SpacingControl
 					{ ...props }
@@ -394,9 +397,11 @@ const Settings = ( props ) => {
 				<AdvancedPopColorControl
 					label={ __( 'Color', 'ultimate-addons-for-gutenberg' ) }
 					colorValue={ headingColor ? headingColor : '' }
-					onColorChange={ ( value ) =>
-						setAttributes( { headingColor: value } )
-					}
+					data={ {
+						value: headingColor,
+						label: 'headingColor',
+					} }
+					setAttributes={ setAttributes }
 				/>
 				<TypographyControl
 					label={ __(
@@ -515,9 +520,11 @@ const Settings = ( props ) => {
 				<AdvancedPopColorControl
 					label={ __( 'Icon Color', 'ultimate-addons-for-gutenberg' ) }
 					colorValue={ iconColor ? iconColor : '' }
-					onColorChange={ ( value ) =>
-						setAttributes( { iconColor: value } )
-					}
+					data={ {
+						value: iconColor,
+						label: 'iconColor',
+					} }
+					setAttributes={ setAttributes }
 				/> }
 			</UAGAdvancedPanelBody>
 		);
@@ -867,9 +874,10 @@ const Settings = ( props ) => {
 							) }
 							setAttributes={ setAttributes }
 							value={ iconSize }
-							onChange={ ( value ) =>
-								setAttributes( { iconSize: value } )
-							}
+							data={ {
+								value: iconSize,
+								label: 'iconSize',
+							} }
 							min={ 0 }
 							max={ 300 }
 							displayUnit={ false }
@@ -910,9 +918,11 @@ const Settings = ( props ) => {
 								'ultimate-addons-for-gutenberg'
 							) }
 							colorValue={ linkColor ? linkColor : '' }
-							onColorChange={ ( value ) =>
-								setAttributes( { linkColor: value } )
-							}
+							data={ {
+								value: linkColor,
+								label: 'linkColor',
+							} }
+							setAttributes={ setAttributes }
 						/>
 					}
 					hover={
@@ -922,9 +932,11 @@ const Settings = ( props ) => {
 								'ultimate-addons-for-gutenberg'
 							) }
 							colorValue={ linkHoverColor ? linkHoverColor : '' }
-							onColorChange={ ( value ) =>
-								setAttributes( { linkHoverColor: value } )
-							}
+							data={ {
+								value: linkHoverColor,
+								label: 'linkHoverColor',
+							} }
+							setAttributes={ setAttributes }
 						/>
 					}
 					disableBottomSeparator={ false }
@@ -1081,9 +1093,11 @@ const Settings = ( props ) => {
 				<AdvancedPopColorControl
 					label={ __( 'Marker Color', 'ultimate-addons-for-gutenberg' ) }
 					colorValue={ bulletColor ? bulletColor : '' }
-					onColorChange={ ( value ) =>
-						setAttributes( { bulletColor: value } )
-					}
+					data={ {
+						value: bulletColor,
+						label: 'bulletColor',
+					} }
+					setAttributes={ setAttributes }
 				/>
 				}
 
@@ -1107,9 +1121,11 @@ const Settings = ( props ) => {
 							'ultimate-addons-for-gutenberg'
 						) }
 						colorValue={ scrollToTopColor ? scrollToTopColor : '' }
-						onColorChange={ ( value ) =>
-							setAttributes( { scrollToTopColor: value } )
-						}
+						data={ {
+							value: scrollToTopColor,
+							label: 'scrollToTopColor',
+						} }
+						setAttributes={ setAttributes }
 					/>
 					<AdvancedPopColorControl
 						label={ __(
@@ -1119,9 +1135,11 @@ const Settings = ( props ) => {
 						colorValue={
 							scrollToTopBgColor ? scrollToTopBgColor : ''
 						}
-						onColorChange={ ( value ) =>
-							setAttributes( { scrollToTopBgColor: value } )
-						}
+						data={ {
+							value: scrollToTopBgColor,
+							label: 'scrollToTopBgColor',
+						} }
+						setAttributes={ setAttributes }
 					/>
 				</>
 			</UAGAdvancedPanelBody>

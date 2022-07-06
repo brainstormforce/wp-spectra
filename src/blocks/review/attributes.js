@@ -373,24 +373,28 @@ const attributes = {
 		UAGCopyPaste: {
 			styleType: 'overall-top-padding'
 		},
+		default: 15,
 	},
 	bottomPadding: {
 		type: 'number',
 		UAGCopyPaste: {
 			styleType: 'overall-bottom-padding'
 		},
+		default: 15,
 	},
 	rightPadding: {
 		type: 'number',
 		UAGCopyPaste: {
 			styleType: 'overall-right-padding'
 		},
+		default: 50,
 	},
 	leftPadding: {
 		type: 'number',
 		UAGCopyPaste: {
 			styleType: 'overall-left-padding'
 		},
+		default: 50,
 	},
 	//Mobile
 	paddingTopMobile: {

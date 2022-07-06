@@ -7,8 +7,7 @@
  * @package uagb
  */
 
-$block_name = 'container';
-
+$block_name                                  = 'container';
 $inner_content_custom_width_desktop_fallback = UAGB_Block_Helper::get_fallback_number( $attr['innerContentCustomWidthDesktop'], 'innerContentCustomWidthDesktop', $block_name );
 $inner_content_custom_width_tablet_fallback  = is_numeric( $attr['innerContentCustomWidthTablet'] ) ? $attr['innerContentCustomWidthTablet'] : $inner_content_custom_width_desktop_fallback;
 $inner_content_custom_width_mobile_fallback  = is_numeric( $attr['innerContentCustomWidthMobile'] ) ? $attr['innerContentCustomWidthMobile'] : $inner_content_custom_width_tablet_fallback;
@@ -297,7 +296,7 @@ $m_selectors = array(
 );
 if ( 'alignwide' === $attr['innerContentWidth'] ) {
 
-	if ( 'default' === $attr['contentWidth'] || 'alignfull' === $attr['contentWidth'] ) {
+	if ( 'default' === $attr['contentWidth'] || 'full' === $attr['contentWidth'] ) {
 		$selectors[ '.uagb-is-root-container.uagb-block-' . $id ] = array( // phpcs:ignore WordPress.WP.GlobalVariablesOverride.Prohibited
 		'--inner-content-custom-width-final' => 'min( 100vw, ' . $inner_content_custom_width_desktop_fallback . $attr['innerContentCustomWidthType'] . ')',
 		'--inner-content-custom-width'       => $inner_content_custom_width_desktop_fallback . $attr['innerContentCustomWidthType'],
@@ -326,16 +325,16 @@ if ( 'alignwide' === $attr['innerContentWidth'] ) {
 
 if ( 'default' === $attr['contentWidth'] ) {
 	$selectors[ '.uagb-block-' . $id ]['max-width']    = UAGB_Helper::get_css_value( $width_desktop_fallback, $attr['widthType'] ) . ' !important';
-	$selectors[ '.uagb-block-' . $id ]['margin-left']  = UAGB_Helper::get_css_value( $left_margin_desktop, $attr['marginType'] ) . ' !important';
-	$selectors[ '.uagb-block-' . $id ]['margin-right'] = UAGB_Helper::get_css_value( $right_margin_desktop, $attr['marginType'] ) . ' !important';
+	$selectors[ '.uagb-block-' . $id ]['margin-left']  = ( '' !== $attr['leftMarginDesktop'] ? UAGB_Helper::get_css_value( $left_margin_desktop, $attr['marginType'] ) . ' !important' : '' );
+	$selectors[ '.uagb-block-' . $id ]['margin-right'] = ( '' !== $attr['rightMarginDesktop'] ? UAGB_Helper::get_css_value( $right_margin_desktop, $attr['marginType'] ) . ' !important' : '' );
 
 	$t_selectors[ '.uagb-block-' . $id ]['max-width']    = UAGB_Helper::get_css_value( $attr['widthTablet'], $attr['widthType'] ) . ' !important';
-	$t_selectors[ '.uagb-block-' . $id ]['margin-left']  = UAGB_Helper::get_css_value( $left_margin_tablet, $attr['marginTypeTablet'] ) . ' !important';
-	$t_selectors[ '.uagb-block-' . $id ]['margin-right'] = UAGB_Helper::get_css_value( $right_margin_tablet, $attr['marginTypeTablet'] ) . ' !important';
+	$t_selectors[ '.uagb-block-' . $id ]['margin-left']  = ( '' !== $attr['leftMarginTablet'] ? UAGB_Helper::get_css_value( $left_margin_tablet, $attr['marginTypeTablet'] ) . ' !important' : '' );
+	$t_selectors[ '.uagb-block-' . $id ]['margin-right'] = ( '' !== $attr['rightMarginTablet'] ? UAGB_Helper::get_css_value( $right_margin_tablet, $attr['marginTypeTablet'] ) . ' !important' : '' );
 
 	$m_selectors[ '.uagb-block-' . $id ]['max-width']    = UAGB_Helper::get_css_value( $attr['widthMobile'], $attr['widthType'] ) . ' !important';
-	$m_selectors[ '.uagb-block-' . $id ]['margin-left']  = UAGB_Helper::get_css_value( $left_margin_mobile, $attr['marginTypeMobile'] ) . ' !important';
-	$m_selectors[ '.uagb-block-' . $id ]['margin-right'] = UAGB_Helper::get_css_value( $right_margin_mobile, $attr['marginTypeMobile'] ) . ' !important';
+	$m_selectors[ '.uagb-block-' . $id ]['margin-left']  = ( '' !== $attr['leftMarginMobile'] ? UAGB_Helper::get_css_value( $left_margin_mobile, $attr['marginTypeMobile'] ) . ' !important' : '' );
+	$m_selectors[ '.uagb-block-' . $id ]['margin-right'] = ( '' !== $attr['rightMarginMobile'] ? UAGB_Helper::get_css_value( $right_margin_mobile, $attr['marginTypeMobile'] ) . ' !important' : '' );
 }
 
 $combined_selectors = array(

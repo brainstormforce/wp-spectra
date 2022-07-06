@@ -8,7 +8,10 @@
  */
 
 $inputBorderDefaults = array(
-	'borderRadius' => 3,
+	'borderTopLeftRadius'     => 3,
+	'borderTopRightRadius'    => 3,
+	'borderBottomLeftRadius'  => 3,
+	'borderBottomRightRadius' => 3,
 );
 
 $inputBorderAttributes = UAGB_Block_Helper::uag_generate_border_attribute( 'input', $inputBorderDefaults );
@@ -31,7 +34,7 @@ return array_merge(
 		'buttonBgHoverColor'      => '',
 		'buttonIconColor'         => '',
 		'buttonIconHoverColor'    => '',
-		'buttonWidth'             => 50,
+		'buttonWidth'             => 60,
 		'buttonIconSize'          => 17,
 		'iconColor'               => '',
 		'iconSize'                => 17,
