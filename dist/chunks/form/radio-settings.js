@@ -1,1 +1,82 @@
-(window.webpackJsonp_ultimate_addons_for_gutenberg=window.webpackJsonp_ultimate_addons_for_gutenberg||[]).push([[44],{474:function(e,a,t){"use strict";t.r(a);var n=t(0),l=t.n(n),o=t(1),r=t(22),u=t(84),s=t(29),c=t(7),d=t(5),i=t(17);const b=e=>{e=e.parentProps;const{attributes:a,setAttributes:t}=e,{radioRequired:n,layout:b}=a;return l.a.createElement(d.InspectorControls,null,l.a.createElement(u.a,{tabs:["general","advance"]},l.a.createElement(s.b,s.a.general,l.a.createElement(i.a,{initialOpen:!0},l.a.createElement(c.ToggleControl,{label:Object(o.__)("Required","ultimate-addons-for-gutenberg"),checked:n,onChange:()=>t({radioRequired:!n})}),l.a.createElement(r.a,{setAttributes:t,label:Object(o.__)("Layout","ultimate-addons-for-gutenberg"),data:{value:b,label:"layout"},className:"uagb-multi-button-alignment-control",options:[{value:"",label:"Square"},{value:"round",label:"Round"}],showIcons:!1}))),l.a.createElement(s.b,s.a.advance)))};a.default=l.a.memo(b)}}]);
+(window["webpackJsonp_ultimate_addons_for_gutenberg"] = window["webpackJsonp_ultimate_addons_for_gutenberg"] || []).push([["chunks/form/radio-settings"],{
+
+/***/ "./src/blocks/forms/child-blocks/radio/settings.js":
+/*!*********************************************************!*\
+  !*** ./src/blocks/forms/child-blocks/radio/settings.js ***!
+  \*********************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/i18n */ "@wordpress/i18n");
+/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _Components_multi_buttons_control__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @Components/multi-buttons-control */ "./src/components/multi-buttons-control/index.js");
+/* harmony import */ var _Components_inspector_tabs_InspectorTabs_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @Components/inspector-tabs/InspectorTabs.js */ "./src/components/inspector-tabs/InspectorTabs.js");
+/* harmony import */ var _Components_inspector_tabs_InspectorTab_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @Components/inspector-tabs/InspectorTab.js */ "./src/components/inspector-tabs/InspectorTab.js");
+/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @wordpress/components */ "@wordpress/components");
+/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_wordpress_components__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @wordpress/block-editor */ "@wordpress/block-editor");
+/* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_6__);
+/* harmony import */ var _Components_advanced_panel_body__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @Components/advanced-panel-body */ "./src/components/advanced-panel-body/index.js");
+
+
+
+
+
+
+
+
+
+const Settings = props => {
+  props = props.parentProps;
+  const {
+    attributes,
+    setAttributes
+  } = props;
+  const {
+    radioRequired,
+    layout
+  } = attributes;
+
+  const radioInspectorControls = () => {
+    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Components_advanced_panel_body__WEBPACK_IMPORTED_MODULE_7__["default"], {
+      initialOpen: true
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_5__["ToggleControl"], {
+      label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__["__"])('Required', 'ultimate-addons-for-gutenberg'),
+      checked: radioRequired,
+      onChange: () => setAttributes({
+        radioRequired: !radioRequired
+      })
+    }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Components_multi_buttons_control__WEBPACK_IMPORTED_MODULE_2__["default"], {
+      setAttributes: setAttributes,
+      label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__["__"])('Layout', 'ultimate-addons-for-gutenberg'),
+      data: {
+        value: layout,
+        label: 'layout'
+      },
+      className: "uagb-multi-button-alignment-control",
+      options: [{
+        value: '',
+        label: 'Square'
+      }, {
+        value: 'round',
+        label: 'Round'
+      }],
+      showIcons: false
+    }));
+  };
+
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_6__["InspectorControls"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Components_inspector_tabs_InspectorTabs_js__WEBPACK_IMPORTED_MODULE_3__["default"], {
+    tabs: ['general', 'advance']
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Components_inspector_tabs_InspectorTab_js__WEBPACK_IMPORTED_MODULE_4__["default"], _Components_inspector_tabs_InspectorTab_js__WEBPACK_IMPORTED_MODULE_4__["UAGTabs"].general, radioInspectorControls()), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Components_inspector_tabs_InspectorTab_js__WEBPACK_IMPORTED_MODULE_4__["default"], _Components_inspector_tabs_InspectorTab_js__WEBPACK_IMPORTED_MODULE_4__["UAGTabs"].advance)));
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (/*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.memo(Settings));
+
+/***/ })
+
+}]);
+//# sourceMappingURL=radio-settings.js.map
