@@ -529,7 +529,6 @@ function styling( props ) {
 		),
 	};
 	const tabletSelectors = {
-		' .wpcf7 input:not([type=submit])': fieldBorderCSSTablet,
 		" .wpcf7 .wpcf7-checkbox input[type='checkbox'] + span:before": fieldBorderCSSTablet,
 		" .wpcf7 .wpcf7-acceptance input[type='checkbox'] + span:before": fieldBorderCSSTablet,
 		" .wpcf7 .wpcf7-radio input[type='radio'] + span:before": fieldBorderCSSTablet,
@@ -589,8 +588,15 @@ function styling( props ) {
 				inputLineHeightTablet,
 				inputLineHeightType
 			),
+			'margin-top': generateCSSUnit( fieldLabelSpacingTablet, 'px' ),
+			'margin-bottom': generateCSSUnit( fieldSpacingTablet, 'px' ),
 			'letter-spacing': generateCSSUnit( inputLetterSpacingTablet, inputLetterSpacingType ),
-			...fieldBorderCSSTablet
+			...fieldBorderCSSTablet,
+			fieldPaddingTablet,
+		},
+		' .wpcf7 input:not([type=submit])': {
+			fieldBorderCSSTablet,
+			fieldPaddingTablet,
 		},
 		' .wpcf7 form label': {
 			'font-size': generateCSSUnit(
@@ -649,10 +655,8 @@ function styling( props ) {
 			),
 			'letter-spacing': generateCSSUnit( validationMsgLetterSpacingTablet, validationMsgLetterSpacingType ),
 		},
-		' .wpcf7 input:not([type=submit])': fieldPaddingTablet, // eslint-disable-line no-dupe-keys
 		' .wpcf7 select.wpcf7-form-control.wpcf7-select:not([multiple="multiple"])': fieldPaddingTablet,
 		' .wpcf7 select.wpcf7-select[multiple="multiple"] option': fieldPaddingTablet,
-		' .wpcf7 textarea': fieldPaddingTablet, // eslint-disable-line no-dupe-keys
 		' .wpcf7 input.wpcf7-form-control.wpcf7-submit': { // eslint-disable-line no-dupe-keys
 			'padding-left': generateCSSUnit(
 				buttonLeftPaddingTablet,
@@ -752,7 +756,10 @@ function styling( props ) {
 				inputLineHeightTablet,
 				inputLineHeightType
 			),
+			'margin-top': generateCSSUnit( fieldLabelSpacingMobile, 'px' ),
+			'margin-bottom': generateCSSUnit( fieldSpacingMobile, 'px' ),
 			'letter-spacing': generateCSSUnit( inputLetterSpacingMobile, inputLetterSpacingType ),
+			fieldPaddingMobile,
 			...fieldBorderCSSMobile
 		},
 		' .wpcf7 form label': {
@@ -802,7 +809,6 @@ function styling( props ) {
 		' .wpcf7 input:not([type=submit])': fieldPaddingMobile, // eslint-disable-line no-dupe-keys
 		' .wpcf7 select.wpcf7-form-control.wpcf7-select:not([multiple="multiple"])': fieldPaddingMobile,
 		' .wpcf7 select.wpcf7-select[multiple="multiple"] option': fieldPaddingMobile,
-		' .wpcf7 textarea': fieldPaddingMobile, // eslint-disable-line no-dupe-keys
 		' .wpcf7 input.wpcf7-form-control.wpcf7-submit': { // eslint-disable-line no-dupe-keys
 			'padding-left': generateCSSUnit(
 				buttonLeftPaddingMobile,
