@@ -48,6 +48,8 @@ return array_merge(
 		'fieldLabelColor'                  => '#333',
 		'fieldInputColor'                  => '#333',
 		'buttonAlignment'                  => 'left',
+		'buttonAlignmentTablet'            => '',
+		'buttonAlignmentMobile'            => '',
 		'buttonVrPadding'                  => 10,
 		'buttonHrPadding'                  => 25,
 		'buttonTextColor'                  => '#333',
