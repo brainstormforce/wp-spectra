@@ -343,7 +343,7 @@ function styling( props ) {
 		},
 	};
 
-	if ( ( 'full' === contentWidth || 'default' === contentWidth ) && 'alignwide' === innerContentWidth ) {
+	if ( 'alignfull' === contentWidth && 'alignwide' === innerContentWidth ) {
 
 		widthSelectorsDesktop[`.is-root-container > .block-editor-block-list__block > .wp-block-uagb-container.uagb-block-${ block_id } > .uagb-container-inner-blocks-wrap`] = {
 			'--inner-content-custom-width' : `min(${ containerFullWidth },${ innerContentCustomWidthDesktopFallback }${ innerContentCustomWidthType })`,

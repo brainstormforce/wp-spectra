@@ -98,6 +98,12 @@ const UAGBContainer = ( props ) => {
 			if ( hasChildren ) {
 				element.classList.add( 'uagb-container-has-children' );
 			}
+			if ( props.attributes.isBlockRootParent || isBlockRootParent ) {
+				element.classList.remove( 'alignfull' );
+				element.classList.remove( 'alignwide' );
+				element.classList.remove( 'default' );
+				element.classList.add( props.attributes.contentWidth );
+			}
 		}
 
 		const descendants = select( 'core/block-editor' ).getBlocks( props.clientId );
@@ -164,6 +170,23 @@ const UAGBContainer = ( props ) => {
 			if ( hasChildren ) {
 				element.classList.add( 'uagb-container-has-children' );
 			}
+
+			if ( props.attributes.isBlockRootParent ) {
+
+				element.classList.remove( 'alignfull' );
+				element.classList.remove( 'alignwide' );
+				element.classList.remove( 'default' );
+				element.classList.add( props.attributes.contentWidth );
+			}
+
+			setTimeout( () => {
+				if ( props.attributes.isBlockRootParent ) {
+					element.classList.remove( 'alignfull' );
+					element.classList.remove( 'alignwide' );
+					element.classList.remove( 'default' );
+					element.classList.add( props.attributes.contentWidth );
+				}
+			} );
 		}
 
 		const blockStyling = styling( props );
