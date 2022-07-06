@@ -25,6 +25,10 @@
 		line-height: 30px;
 	}
 
+	textarea {
+		resize: none;
+	}
+
 	.wpcf7 *,
 	.wpcf7 ::after,
 	.wpcf7 ::before {
@@ -133,12 +137,11 @@
 		top: 100%;
 		right: 0;
 		display: inline-block;
+		position: absolute;
 		float: right;
 		padding: 0.1em 0.5em;
 		margin-top: 5px;
-		background-color: rgba(255, 0, 0, 0.6);
 		border-radius: 2px;
-		color: #fff;
 		font-size: 0.9em;
 		-webkit-border-radius: 2px;
 	}
