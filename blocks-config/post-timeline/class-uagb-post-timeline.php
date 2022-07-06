@@ -1010,7 +1010,7 @@ if ( ! class_exists( 'UAGB_Post_Timeline' ) ) {
 			?>
 				<?php do_action( "uagb_single_post_before_title_{$attributes['post_type']}", get_the_ID(), $attributes ); ?>
 				<<?php echo esc_html( $tag ); ?> class="uagb-timeline__heading" >
-					<a href="<?php echo esc_url( apply_filters( "uagb_single_post_link_{$attributes['post_type']}", get_the_permalink(), get_the_ID(), $attributes ) ); ?>" target="<?php echo esc_html( $target ); ?>" rel="noopener noreferrer"><?php ( '' !== get_the_title( $post->ID ) ) ? the_title() : esc_html_e( 'Untitled', 'ultimate-addons-for-gutenberg' ); ?></a>
+					<a href="<?php echo esc_url( apply_filters( "uagb_single_post_link_{$attributes['post_type']}", get_the_permalink(), get_the_ID(), $attributes ) ); ?>" target="<?php echo esc_html( $target ); ?>" rel="noopener noreferrer"><?php the_title(); ?></a>
 				</<?php echo esc_html( $tag ); ?>>
 				<?php do_action( "uagb_single_post_after_title_{$attributes['post_type']}", get_the_ID(), $attributes ); ?>
 			<?php

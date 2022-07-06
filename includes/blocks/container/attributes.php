@@ -116,7 +116,7 @@ return array_merge(
 		'columnGapType'                  => 'px',
 		'columnGapTypeTablet'            => 'px',
 		'columnGapTypeMobile'            => 'px',
-		'contentWidth'                   => 'alignfull',
+		'contentWidth'                   => 'full',
 		'innerContentWidth'              => 'alignwide',
 		'innerContentCustomWidthDesktop' => $default_width,
 		'innerContentCustomWidthTablet'  => 768,
