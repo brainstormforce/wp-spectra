@@ -158,22 +158,28 @@ function UAGBTimelineClasses ( attributes, id ) {
 			content.classList.add( 'uagb-timeline__center-block' );
 		}
 
-		const timelineChild = content.querySelectorAll( '.wp-block-uagb-content-timeline-child' );
+		const timelineChild  = content.querySelectorAll( '.wp-block-uagb-content-timeline-child' );
 		let childIndex = 0;
 
 		for ( const child of timelineChild ) {
 
 			child.classList.remove( 'uagb-timeline__left', 'uagb-timeline__right' );
+			const timelineMarker = child.querySelectorAll( '.uagb-timeline__marker' )[0];
+			timelineMarker.classList.remove( 'uagb-timeline__left', 'uagb-timeline__right' );
 
 			if( 'left' === attributes['timelinAlignment' + device ] ) {
 				child.classList.add( 'uagb-timeline__left' );
+				timelineMarker.classList.add( 'uagb-timeline__left' );
 			} else if ( 'right' === attributes['timelinAlignment' + device ] ) {
 				child.classList.add( 'uagb-timeline__right' );
+				timelineMarker.classList.add( 'uagb-timeline__left' );
 			} else if( 'center' === attributes['timelinAlignment' + device ] ) {
 				if ( childIndex % 2 === 0 ) {
 					child.classList.add( 'uagb-timeline__right' );
+					timelineMarker.classList.add( 'uagb-timeline__right' );
 				} else {
 					child.classList.add( 'uagb-timeline__left' );
+					timelineMarker.classList.add( 'uagb-timeline__left' );
 				}
 			}
 

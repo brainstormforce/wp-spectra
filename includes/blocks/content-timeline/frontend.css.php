@@ -139,9 +139,8 @@ $selectors = array(
 		'margin-left'  => UAGB_Helper::get_css_value( $attr['horizontalSpace'], $attr['horizontalSpaceUnit'] ),
 		'margin-right' => UAGB_Helper::get_css_value( $attr['horizontalSpace'], $attr['horizontalSpaceUnit'] ),
 	),
-	' .uagb-timeline__field'                               => array(
-		'margin-top'    => UAGB_Helper::get_css_value( $top_margin, $attr['marginUnit'] ),
-		'margin-bottom' => UAGB_Helper::get_css_value( $bottom_margin, $attr['marginUnit'] ),
+	' .uagb-timeline__field:not(:last-child)'                               => array(
+		'margin-bottom' => UAGB_Helper::get_css_value( $attr['verticalSpace'], $attr['verticalSpaceUnit'] ),
 	),
 	' .uagb-timeline__date-hide.uagb-timeline__date-inner' => array(
 		'margin-bottom' => UAGB_Helper::get_css_value( $date_bottom_space_fallback, 'px' ),
@@ -255,6 +254,9 @@ $selectors = array(
 		'.uagb-timeline__right'             => array(
 			'text-align' => $attr['alignMobile'],
 		),
+		' .uagb-timeline__field:not(:last-child)'                               => array(
+			'margin-bottom' => UAGB_Helper::get_css_value( $attr['verticalSpaceMobile'], $attr['verticalSpaceUnitMobile'] ),
+		),
 	);
 
 	$t_selectors = array(
@@ -311,6 +313,9 @@ $selectors = array(
 		),
 		'.uagb-timeline__right'             => array(
 			'text-align' => $attr['alignTablet'],
+		),
+		' .uagb-timeline__field:not(:last-child)'                               => array(
+			'margin-bottom' => UAGB_Helper::get_css_value( $attr['verticalSpaceTablet'], $attr['verticalSpaceUnitTablet'] ),
 		),
 	);
 

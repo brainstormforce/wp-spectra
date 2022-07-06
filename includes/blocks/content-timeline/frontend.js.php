@@ -12,7 +12,7 @@ $js_attr  = array(
 	'block_id'                => $attr['block_id'],
 	'timelinAlignmentDesktop' => $attr['timelinAlignmentDesktop'],
 	'timelinAlignmentTablet'  => $attr['timelinAlignmentTablet'],
-	'timelinAlignmentTablet'  => $attr['timelinAlignmentTablet'],
+	'timelinAlignmentMobile'  => $attr['timelinAlignmentTablet'],
 );
 ob_start();
 ?>
