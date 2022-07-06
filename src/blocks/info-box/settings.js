@@ -1235,7 +1235,7 @@ const Settings = ( props ) => {
 															<>
 																<AdvancedPopColorControl
 																	label={ __(
-																		'Icon Background Color',
+																		'Background Color',
 																		'ultimate-addons-for-gutenberg'
 																	) }
 																	colorValue={
