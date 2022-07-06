@@ -752,7 +752,7 @@ $t_selectors = array(
 			'px'
 		),
 	),
-	' .gform_wrapper div.validation_error'                 => array(
+	' .gform_wrapper.gravity-theme div.validation_message'                 => array(
 		'padding-left'   => UAGB_Helper::get_css_value( $attr['msgleftTabletPadding'], $attr['msgtabletPaddingUnit'] ),
 		'padding-right'  => UAGB_Helper::get_css_value( $attr['msgrightTabletPadding'], $attr['msgtabletPaddingUnit'] ),
 		'padding-top'    => UAGB_Helper::get_css_value( $attr['msgtopTabletPadding'], $attr['msgtabletPaddingUnit'] ),
@@ -888,7 +888,7 @@ $m_selectors = array(
 			'px'
 		),
 	),
-	' .gform_wrapper div.validation_error'                 => array(
+	' .gform_wrapper.gravity-theme div.validation_message'                 => array(
 		'padding-left'   => UAGB_Helper::get_css_value( $attr['msgleftMobilePadding'], $attr['msgmobilePaddingUnit'] ),
 		'padding-right'  => UAGB_Helper::get_css_value( $attr['msgrightMobilePadding'], $attr['msgmobilePaddingUnit'] ),
 		'padding-top'    => UAGB_Helper::get_css_value( $attr['msgtopMobilePadding'], $attr['msgmobilePaddingUnit'] ),
