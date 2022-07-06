@@ -141,19 +141,19 @@ const attributes = {
 		}
 	},
 	fontSize: {
-		type: 'string',
+		type: 'number',
 		UAGCopyPaste: {
 			styleType: 'btn-font-size'
 		}
 	},
 	fontSizeMobile: {
-		type: 'string',
+		type: 'number',
 		UAGCopyPaste: {
 			styleType: 'btn-font-size-mobile'
 		}
 	},
 	fontSizeTablet: {
-		type: 'string',
+		type: 'number',
 		UAGCopyPaste: {
 			styleType: 'btn-font-size-tablet'
 		}
@@ -166,19 +166,19 @@ const attributes = {
 		}
 	},
 	lineHeight: {
-		type: 'string',
+		type: 'number',
 		UAGCopyPaste: {
 			styleType: 'btn-line-height'
 		}
 	},
 	lineHeightMobile: {
-		type: 'string',
+		type: 'number',
 		UAGCopyPaste: {
 			styleType: 'btn-line-height-mobile'
 		}
 	},
 	lineHeightTablet: {
-		type: 'string',
+		type: 'number',
 		UAGCopyPaste: {
 			styleType: 'btn-line-height-tablet'
 		}

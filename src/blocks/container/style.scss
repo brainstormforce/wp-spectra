@@ -5,6 +5,9 @@
 	margin-left: auto;
 	margin-right: auto;
 	z-index: 2;
+	transition-property: box-shadow;
+	transition-duration: 0.2s;
+	transition-timing-function: ease;
 
 	&.alignfull.uagb-is-root-container .uagb-container-inner-blocks-wrap {
 		display: flex;

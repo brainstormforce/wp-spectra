@@ -34,7 +34,7 @@ $failed_message_border_defaults   = array(
 	'borderBottomRightRadius' => 6,
 	'borderHColor'            => 'deeppink',
 );
-$failed_message_border_attribute  = UAGB_Block_Helper::uag_generate_border_attribute( 'failedMsg', $failed_message_border_defaults );
+$failed_message_border_attribute  = UAGB_Block_Helper::uag_generate_border_attribute( 'errorMsg', $failed_message_border_defaults );
 $input_border_defaults            = array(
 	'borderStyle'             => 'solid',
 	'borderTopWidth'          => 1,
@@ -99,6 +99,8 @@ return array_merge(
 		'submitButtonText'            => __( 'Submit', 'ultimate-addons-for-gutenberg' ),
 		'formLabel'                   => __( 'Spectra Form', 'ultimate-addons-for-gutenberg' ),
 		'buttonAlign'                 => 'left',
+		'buttonAlignTablet'           => '',
+		'buttonAlignMobile'           => '',
 		'confirmationType'            => 'message',
 		'confirmationMessage'         => __( 'The form has been submitted Successfully!', 'ultimate-addons-for-gutenberg' ),
 		'confirmationUrl'             => '',

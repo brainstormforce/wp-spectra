@@ -372,11 +372,11 @@ const Settings = ( props ) => {
 
 		const contentWidthOptions = [
 			{
-				value: 'alignfull',
+				value: 'full',
 				label: __( 'Full Width', 'ultimate-addons-for-gutenberg' ),
 			},
 			{
-				value: 'alignwide',
+				value: 'wide',
 				label: __( 'Boxed', 'ultimate-addons-for-gutenberg' ),
 			},
 			{
@@ -419,7 +419,7 @@ const Settings = ( props ) => {
 								showIcons={ false }
 								responsive={false}
 							/>
-							{ 'alignfull' === contentWidth &&
+							{ 'full' === contentWidth &&
 								<>
 									<MultiButtonsControl
 										setAttributes={ setAttributes }
@@ -547,76 +547,6 @@ const Settings = ( props ) => {
 								setAttributes={ setAttributes }
 								onChange={onWidthChange}
 							/>
-						</>
-					}
-					{ isBlockRootParent && 'default' === contentWidth &&
-						<>
-							<MultiButtonsControl
-								setAttributes={ setAttributes }
-								label={ __( 'Content Width', 'ultimate-addons-for-gutenberg' ) }
-								data={ {
-									value: innerContentWidth,
-									label: 'innerContentWidth',
-								} }
-								options={ innerContentWidthOptions }
-								showIcons={ false }
-								responsive={false}
-							/>
-							{ 'alignwide' === innerContentWidth &&
-								<ResponsiveSlider
-									label={ __( 'Content Box Width', 'ultimate-addons-for-gutenberg' ) }
-									data={ {
-										desktop: {
-											value: innerContentCustomWidthDesktop,
-											label: 'innerContentCustomWidthDesktop',
-											unit: {
-												value: innerContentCustomWidthType,
-												label: 'innerContentCustomWidthType',
-											},
-										},
-										tablet: {
-											value: innerContentCustomWidthTablet,
-											label: 'innerContentCustomWidthTablet',
-											unit: {
-												value: innerContentCustomWidthTypeTablet,
-												label: 'innerContentCustomWidthTypeTablet',
-											},
-										},
-										mobile: {
-											value: innerContentCustomWidthMobile,
-											label: 'innerContentCustomWidthMobile',
-											unit: {
-												value: innerContentCustomWidthTypeMobile,
-												label: 'innerContentCustomWidthTypeMobile',
-											},
-										},
-									} }
-									min={ 0 }
-									limitMax={ { 'px': 1600, '%': 100, 'vw': 100 } }
-									units={ [
-										{
-											name: __(
-												'PX',
-												'ultimate-addons-for-gutenberg'
-											),
-											unitValue: 'px',
-										},
-										{
-											name: __( '%', 'ultimate-addons-for-gutenberg' ),
-											unitValue: '%',
-										},
-										{
-											name: __( 'VW', 'ultimate-addons-for-gutenberg' ),
-											unitValue: 'vw',
-										},
-									] }
-									unit={ {
-										value: innerContentCustomWidthType,
-										label: 'innerContentCustomWidthType',
-									} }
-									setAttributes={ setAttributes }
-								/>
-							}
 						</>
 					}
 					<ResponsiveSlider

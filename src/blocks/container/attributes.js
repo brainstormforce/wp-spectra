@@ -8,7 +8,7 @@ const attributes = {
 	},
 	contentWidth: {
 		type: 'string',
-		default: 'alignfull',
+		default: 'full',
 		UAGCopyPaste: {
 			styleType: 'content-width'
 		}
@@ -408,24 +408,28 @@ const attributes = {
 
 	topPaddingDesktop: {
 		type: 'number',
+		default: 20,
 		UAGCopyPaste: {
 			styleType: 'container-top-padding-desktop'
 		},
 	},
 	bottomPaddingDesktop: {
 		type: 'number',
+		default: 20,
 		UAGCopyPaste: {
 			styleType: 'container-bottom-padding-desktop'
 		},
 	},
 	leftPaddingDesktop: {
 		type: 'number',
+		default: 20,
 		UAGCopyPaste: {
 			styleType: 'container-left-padding-desktop'
 		},
 	},
 	rightPaddingDesktop: {
 		type: 'number',
+		default: 20,
 		UAGCopyPaste: {
 			styleType: 'container-right-padding-desktop'
 		},
