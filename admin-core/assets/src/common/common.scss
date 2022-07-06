@@ -222,3 +222,14 @@
 		border: 0;
 	}
 }
+
+.spectra-admin {
+
+	&__input-field {
+
+		&:focus {
+			border-color: $spectra-wpcolor !important;
+			box-shadow: $spectra-wpcolor 0 0 0 1px !important;
+		}
+	}
+}

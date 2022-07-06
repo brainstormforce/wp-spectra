@@ -32,7 +32,7 @@ const RollBack = () => {
                     <select
                         id="location"
                         name="location"
-                        className="block w-20 h-9 pl-3 pr-10 py-2 mr-3 text-base border-gray-300 focus:outline-none focus:ring-wpcolor focus:border-wpcolor sm:text-sm rounded-[0.2rem]"
+                        className="block w-20 h-9 pl-3 pr-10 py-2 mr-3 text-base border-gray-300 focus:outline-none focus:ring-wpcolor focus:border-wpcolor sm:text-sm rounded-[0.2rem] spectra-admin__input-field"
                         onBlur={ ( e ) => { setPreviousVersion( e.target.value ); } }
                     >
                         {
