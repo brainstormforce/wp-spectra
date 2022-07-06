@@ -80,7 +80,7 @@ export default function save( props ) {
 					) }
 				</div>
 			) }
-			{ isBlockRootParent && 'alignfull' === contentWidth && 'alignwide' === innerContentWidth
+			{ isBlockRootParent && 'full' === contentWidth && 'alignwide' === innerContentWidth
 				?  (
 						<div className='uagb-container-inner-blocks-wrap'>
 							<InnerBlocks.Content />

@@ -127,7 +127,7 @@ $inner_container_css = array(
 	'column-gap'      => UAGB_Helper::get_css_value( $column_gap_desktop_fallback, $attr['columnGapType'] ),
 );
 
-if ( ! ( 'alignwide' === $attr['innerContentWidth'] && 'alignfull' === $attr['contentWidth'] ) ) {
+if ( ! ( 'alignwide' === $attr['innerContentWidth'] && 'full' === $attr['contentWidth'] ) ) {
 	$container_css = array_merge( $container_css, $inner_container_css );
 }
 
@@ -235,7 +235,7 @@ $inner_container_tablet_css = array(
 	'row-gap'         => UAGB_Helper::get_css_value( $attr['rowGapTablet'], $attr['rowGapTypeTablet'] ),
 	'column-gap'      => UAGB_Helper::get_css_value( $attr['columnGapTablet'], $attr['columnGapTypeTablet'] ),
 );
-if ( ! ( 'alignwide' === $attr['innerContentWidth'] && 'alignfull' === $attr['contentWidth'] ) ) {
+if ( ! ( 'alignwide' === $attr['innerContentWidth'] && 'full' === $attr['contentWidth'] ) ) {
 	$container_tablet_css = array_merge( $container_tablet_css, $inner_container_tablet_css );
 }
 $t_selectors = array(
@@ -293,7 +293,7 @@ $inner_container_mobile_css = array(
 	'row-gap'         => UAGB_Helper::get_css_value( $attr['rowGapMobile'], $attr['rowGapTypeMobile'] ),
 	'column-gap'      => UAGB_Helper::get_css_value( $attr['columnGapMobile'], $attr['columnGapTypeMobile'] ),
 );
-if ( ! ( 'alignwide' === $attr['innerContentWidth'] && 'alignfull' === $attr['contentWidth'] ) ) {
+if ( ! ( 'alignwide' === $attr['innerContentWidth'] && 'full' === $attr['contentWidth'] ) ) {
 	$container_mobile_css = array_merge( $container_mobile_css, $inner_container_mobile_css );
 }
 $m_selectors = array(
@@ -309,7 +309,7 @@ $m_selectors = array(
 		'height' => UAGB_Helper::get_css_value( $attr['topHeightMobile'], 'px' ),
 	),
 );
-if ( 'alignwide' === $attr['innerContentWidth'] && 'alignfull' === $attr['contentWidth'] ) {
+if ( 'alignwide' === $attr['innerContentWidth'] && 'full' === $attr['contentWidth'] ) {
 	$selectors[ '.uagb-is-root-container.alignfull.uagb-block-' . $id . ' > .uagb-container-inner-blocks-wrap' ] = array_merge(
 		array( // phpcs:ignore WordPress.WP.GlobalVariablesOverride.Prohibited
 		'--inner-content-custom-width' => 'min( 100%, ' . $inner_content_custom_width_desktop_fallback . $attr['innerContentCustomWidthType'] . ')',
