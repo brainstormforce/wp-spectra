@@ -439,24 +439,24 @@ $selectors = array(
 	' .uagb-gf-styler__field-style-box .gfield_checkbox input[type="checkbox"]:checked + label:before' => array(
 		'border-style'  => 'solid',
 		'border-width'  => UAGB_Helper::get_css_value(
-			UAGB_Block_Helper::get_fallback_number( $attr['fieldBorderWidth'], 'fieldBorderWidth', $block_name ),
-			$attr['fieldBorderWidthType']
+			UAGB_Block_Helper::get_fallback_number( $attr['radioCheckBorderWidth'], 'radioCheckBorderWidth', $block_name ),
+			'px'
 		),
 		'border-radius' => UAGB_Helper::get_css_value(
-			UAGB_Block_Helper::get_fallback_number( $attr['fieldBorderRadius'], 'fieldBorderRadius', $block_name ),
-			$attr['fieldBorderRadiusType']
+			UAGB_Block_Helper::get_fallback_number( $attr['radioCheckBorderRadius'], 'radioCheckBorderRadius', $block_name ),
+			$attr['radioCheckBorderRadiusType']
 		),
 		'font-size'     => 'calc( ' . UAGB_Block_Helper::get_fallback_number( $attr['radioCheckSize'], 'radioCheckSize', $block_name ) . 'px / 1.2 )',
 	),
 	' .uagb-gf-styler__field-style-box input[type="checkbox"]:checked + label:before' => array(
 		'border-style'  => 'solid',
 		'border-width'  => UAGB_Helper::get_css_value(
-			UAGB_Block_Helper::get_fallback_number( $attr['fieldBorderWidth'], 'fieldBorderWidth', $block_name ),
-			$attr['fieldBorderWidthType']
+			UAGB_Block_Helper::get_fallback_number( $attr['radioCheckBorderWidth'], 'radioCheckBorderWidth', $block_name ),
+			'px'
 		),
 		'border-radius' => UAGB_Helper::get_css_value(
-			UAGB_Block_Helper::get_fallback_number( $attr['fieldBorderRadius'], 'fieldBorderRadius', $block_name ),
-			$attr['fieldBorderRadiusType']
+			UAGB_Block_Helper::get_fallback_number( $attr['radioCheckBorderRadius'], 'radioCheckBorderRadius', $block_name ),
+			$attr['radioCheckBorderRadiusType']
 		),
 		'font-size'     => 'calc( ' . UAGB_Block_Helper::get_fallback_number( $attr['radioCheckSize'], 'radioCheckSize', $block_name ) . 'px / 1.2 )',
 	),
@@ -541,6 +541,14 @@ $selectors = array(
 		'border-width'     => UAGB_Helper::get_css_value(
 			UAGB_Block_Helper::get_fallback_number( $attr['radioCheckBorderWidth'], 'radioCheckBorderWidth', $block_name ),
 			'px'
+		),
+		'border-radius'    => UAGB_Helper::get_css_value(
+			UAGB_Block_Helper::get_fallback_number(
+				$attr['radioCheckBorderRadius'],
+				'radioCheckBorderRadius',
+				$block_name
+			),
+			$attr['radioCheckBorderRadiusType']
 		),
 	),
 	' .uagb-gf-styler__check-style-enabled .gfield_radio input[type="radio"]:checked + label:before' => array(
@@ -642,15 +650,15 @@ $selectors = array(
 $t_selectors = array(
 	' .uagb-gf-styler__field-style-box .gfield_checkbox input[type="checkbox"]:checked + label:before' => array(
 		'border-width' => UAGB_Helper::get_css_value(
-			UAGB_Block_Helper::get_fallback_number( $attr['fieldBorderWidthTablet'], 'fieldBorderWidthTablet', $block_name ),
-			$attr['fieldBorderWidthType']
+			UAGB_Block_Helper::get_fallback_number( $attr['radioCheckBorderWidthTablet'], 'radioCheckBorderWidthTablet', $block_name ),
+			'px'
 		),
 		'font-size'    => 'calc( ' . UAGB_Block_Helper::get_fallback_number( $attr['radioCheckSizeTablet'], 'radioCheckSizeTablet', $block_name ) . 'px / 1.2 )',
 	),
 	' .uagb-gf-styler__field-style-box input[type="checkbox"]:checked + label:before' => array(
 		'border-width' => UAGB_Helper::get_css_value(
-			UAGB_Block_Helper::get_fallback_number( $attr['fieldBorderWidthTablet'], 'fieldBorderWidthTablet', $block_name ),
-			$attr['fieldBorderWidthType']
+			UAGB_Block_Helper::get_fallback_number( $attr['radioCheckBorderWidthTablet'], 'radioCheckBorderWidthTablet', $block_name ),
+			'px'
 		),
 		'font-size'    => 'calc( ' . UAGB_Block_Helper::get_fallback_number( $attr['radioCheckSizeTablet'], 'radioCheckSizeTablet', $block_name ) . 'px / 1.2 )',
 	),
@@ -752,7 +760,7 @@ $t_selectors = array(
 			'px'
 		),
 	),
-	' .gform_wrapper.gravity-theme div.validation_message'                 => array(
+	' .gform_wrapper.gravity-theme div.validation_message' => array(
 		'padding-left'   => UAGB_Helper::get_css_value( $attr['msgleftTabletPadding'], $attr['msgtabletPaddingUnit'] ),
 		'padding-right'  => UAGB_Helper::get_css_value( $attr['msgrightTabletPadding'], $attr['msgtabletPaddingUnit'] ),
 		'padding-top'    => UAGB_Helper::get_css_value( $attr['msgtopTabletPadding'], $attr['msgtabletPaddingUnit'] ),
@@ -781,15 +789,15 @@ $t_selectors = array(
 $m_selectors = array(
 	' .uagb-gf-styler__field-style-box .gfield_checkbox input[type="checkbox"]:checked + label:before' => array(
 		'border-width' => UAGB_Helper::get_css_value(
-			UAGB_Block_Helper::get_fallback_number( $attr['fieldBorderWidthMobile'], 'fieldBorderWidthMobile', $block_name ),
-			$attr['fieldBorderWidthType']
+			UAGB_Block_Helper::get_fallback_number( $attr['radioCheckBorderWidthMobile'], 'radioCheckBorderWidthMobile', $block_name ),
+			'px'
 		),
 		'font-size'    => 'calc( ' . UAGB_Block_Helper::get_fallback_number( $attr['radioCheckSizeMobile'], 'radioCheckSizeMobile', $block_name ) . 'px / 1.2 )',
 	),
 	' .uagb-gf-styler__field-style-box input[type="checkbox"]:checked + label:before' => array(
 		'border-width' => UAGB_Helper::get_css_value(
-			UAGB_Block_Helper::get_fallback_number( $attr['fieldBorderWidthMobile'], 'fieldBorderWidthMobile', $block_name ),
-			$attr['fieldBorderWidthType']
+			UAGB_Block_Helper::get_fallback_number( $attr['radioCheckBorderWidthMobile'], 'radioCheckBorderWidthMobile', $block_name ),
+			'px'
 		),
 		'font-size'    => 'calc( ' . UAGB_Block_Helper::get_fallback_number( $attr['radioCheckSizeMobile'], 'radioCheckSizeMobile', $block_name ) . 'px / 1.2 )',
 	),
@@ -888,7 +896,7 @@ $m_selectors = array(
 			'px'
 		),
 	),
-	' .gform_wrapper.gravity-theme div.validation_message'                 => array(
+	' .gform_wrapper.gravity-theme div.validation_message' => array(
 		'padding-left'   => UAGB_Helper::get_css_value( $attr['msgleftMobilePadding'], $attr['msgmobilePaddingUnit'] ),
 		'padding-right'  => UAGB_Helper::get_css_value( $attr['msgrightMobilePadding'], $attr['msgmobilePaddingUnit'] ),
 		'padding-top'    => UAGB_Helper::get_css_value( $attr['msgtopMobilePadding'], $attr['msgmobilePaddingUnit'] ),
