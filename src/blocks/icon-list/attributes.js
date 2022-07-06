@@ -352,10 +352,6 @@ const attributes = {
 		type: 'string',
 		default: '',
 	},
-	stack: {
-		type: 'string',
-		default: 'none',
-	},
 	isPreview: {
 		type: 'boolean',
 		default: false,
