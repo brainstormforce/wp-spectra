@@ -17,6 +17,8 @@ $overlay_attribute = UAGB_Block_Helper::uag_generate_border_attribute(
 
 return array_merge(
 	array(
+		'height'                      => '',
+		'width'                       => '',
 		'widthTablet'                 => '',
 		'heightTablet'                => '',
 		'widthMobile'                 => '',
