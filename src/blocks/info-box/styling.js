@@ -223,19 +223,19 @@ function styling( props ) {
 		 iconBorderWidth
 	 } = props.attributes;
 
-	const blockName = props.name.replace( 'uagb/', '' );
-	//Range
-	const seperatorThicknessFallback = getFallbackNumber( seperatorThickness, 'seperatorThickness', blockName );
+	 const blockName = props.name.replace( 'uagb/', '' );
+	 //Range
+	 const seperatorThicknessFallback = getFallbackNumber( seperatorThickness, 'seperatorThickness', blockName );
 
-	const iconSizeFallback = getFallbackNumber( iconSize, 'iconSize', blockName );
-	const iconSizeFallbackTablet = isNaN( iconSizeTablet ) ? iconSizeFallback : iconSizeTablet;
-	const iconSizeFallbackMobile = isNaN( iconSizeMobile ) ? iconSizeFallbackTablet : iconSizeMobile;
+	 const iconSizeFallback = getFallbackNumber( iconSize, 'iconSize', blockName );
+	 const iconSizeFallbackTablet = isNaN( iconSizeTablet ) ? iconSizeFallback : iconSizeTablet;
+	 const iconSizeFallbackMobile = isNaN( iconSizeMobile ) ? iconSizeFallbackTablet : iconSizeMobile;
 
-	const iconimgBorderRadiusFallback = getFallbackNumber( iconimgBorderRadius, 'iconimgBorderRadius', blockName );
-	// Responsive Slider
-	const seperatorWidthFallback = getFallbackNumber( seperatorWidth, 'seperatorWidth', blockName );
-	const seperatorWidthFallbackTablet = getFallbackNumber( seperatorWidthTablet, 'seperatorWidthTablet', blockName );
-	const seperatorWidthFallbackMobile = getFallbackNumber( seperatorWidthMobile, 'seperatorWidthMobile', blockName );
+	 const iconimgBorderRadiusFallback = getFallbackNumber( iconimgBorderRadius, 'iconimgBorderRadius', blockName );
+	 // Responsive Slider
+	 const seperatorWidthFallback = getFallbackNumber( seperatorWidth, 'seperatorWidth', blockName );
+	 const seperatorWidthFallbackTablet = getFallbackNumber( seperatorWidthTablet, 'seperatorWidthTablet', blockName );
+	 const seperatorWidthFallbackMobile = getFallbackNumber( seperatorWidthMobile, 'seperatorWidthMobile', blockName );
 
 	 const ctaIconSpaceFallback = getFallbackNumber( ctaIconSpace, 'ctaIconSpace', blockName );
 	 const ctaIconSpaceFallbackTablet = isNaN( ctaIconSpaceTablet ) ? ctaIconSpaceFallback : ctaIconSpaceTablet;
@@ -742,6 +742,24 @@ function styling( props ) {
 				iconTabletMarginUnit
 			),
 		},
+		' .uagb-ifb-content > svg ': {
+			'padding-top': generateCSSUnit(
+				iconMarginTopTablet,
+				iconTabletMarginUnit
+			),
+			'padding-right': generateCSSUnit(
+				iconMarginRightTablet,
+				iconTabletMarginUnit
+			),
+			'padding-bottom': generateCSSUnit(
+				iconMarginBottomTablet,
+				iconTabletMarginUnit
+			),
+			'padding-left': generateCSSUnit(
+				iconMarginLeftTablet,
+				iconTabletMarginUnit
+			),
+		},
 		' .uagb-ifb-content .uagb-ifb-right-title-image > img ': {
 			'padding-top': generateCSSUnit(
 				iconMarginTopTablet,
@@ -800,8 +818,8 @@ function styling( props ) {
 			'font-size': generateCSSUnit( ctaFontSizeTablet, ctaFontSizeType ),
 			'letter-spacing': generateCSSUnit( ctaLetterSpacingTablet, ctaLetterSpacingType ),
 			'line-height': generateCSSUnit(
-				ctaLineHeightTablet,
-				ctaLineHeightType
+			ctaLineHeightTablet,
+			ctaLineHeightType
 			),
 		},
 		' .uagb-infobox-cta-link svg': {
@@ -1070,8 +1088,8 @@ function styling( props ) {
 			'font-size': generateCSSUnit( ctaFontSizeMobile, ctaFontSizeType ),
 			'letter-spacing': generateCSSUnit( ctaLetterSpacingMobile, ctaLetterSpacingType ),
 			'line-height': generateCSSUnit(
-			   ctaLineHeightMobile,
-			   ctaLineHeightType
+			ctaLineHeightMobile,
+			ctaLineHeightType
 			),
 		},
 		'.uagb-infobox__content-wrap .uagb-ifb-separator': {
