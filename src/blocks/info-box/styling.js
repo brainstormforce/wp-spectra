@@ -798,6 +798,11 @@ function styling( props ) {
 		},
 		' .uagb-infobox-cta-link': {
 			'font-size': generateCSSUnit( ctaFontSizeTablet, ctaFontSizeType ),
+			'letter-spacing': generateCSSUnit( ctaLetterSpacingTablet, ctaLetterSpacingType ),
+			'line-height': generateCSSUnit(
+				ctaLineHeightTablet,
+				ctaLineHeightType
+			),
 		},
 		' .uagb-infobox-cta-link svg': {
 			'font-size': generateCSSUnit( ctaFontSizeTablet, ctaFontSizeType ),
@@ -1063,6 +1068,11 @@ function styling( props ) {
 		},
 		' .uagb-infobox-cta-link': {
 			'font-size': generateCSSUnit( ctaFontSizeMobile, ctaFontSizeType ),
+			'letter-spacing': generateCSSUnit( ctaLetterSpacingMobile, ctaLetterSpacingType ),
+			'line-height': generateCSSUnit(
+			   ctaLineHeightMobile,
+			   ctaLineHeightType
+			),
 		},
 		'.uagb-infobox__content-wrap .uagb-ifb-separator': {
 			'width': generateCSSUnit( seperatorWidthFallbackMobile, separatorWidthType ),
