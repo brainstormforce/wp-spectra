@@ -64,7 +64,7 @@ export default function save( props ) {
 			className={ classnames(
 				props.className,
 				`uagb-block-${ block_id }`,
-				isBlockRootParent ?  `align${contentWidth} uagb-is-root-container` : '',
+				isBlockRootParent ?  `${contentWidth} uagb-is-root-container` : '',
 			) }
 		>
 			{ topDividerHtml }
@@ -80,7 +80,7 @@ export default function save( props ) {
 					) }
 				</div>
 			) }
-			{ isBlockRootParent && 'full' === contentWidth && 'alignwide' === innerContentWidth
+			{ isBlockRootParent && 'alignfull' === contentWidth && 'alignwide' === innerContentWidth
 				?  (
 						<div className='uagb-container-inner-blocks-wrap'>
 							<InnerBlocks.Content />
