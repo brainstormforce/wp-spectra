@@ -316,8 +316,10 @@ $selectors = array(
 	' .uagb-cf7-styler__highlight-border .wpcf7-form-control.wpcf7-not-valid .wpcf7-list-item-label:before' => array(
 		'border-color' => $attr['highlightBorderColor'] . '!important',
 	),
-	' .uagb-cf7-styler__highlight-style-bottom_right .wpcf7-not-valid-tip' => array(
+	' .uagb-cf7-styler__highlight-style-bottom_right .wpcf7-form-control-wrap .wpcf7-not-valid-tip' => array(
 		'background-color' => $attr['validationMsgBgColor'],
+		'left'  => ( 'right' === $attr['align'] ) ? 0 : 'unset',
+		'right' => ( 'right' === $attr['align'] ) ? 'unset' : 0,
 	),
 	' .wpcf7 form .wpcf7-response-output'                 => array(
 		'border-width'   => UAGB_Helper::get_css_value( $attr['msgBorderSize'], $attr['msgBorderSizeUnit'] ),
