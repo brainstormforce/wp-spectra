@@ -372,11 +372,11 @@ const Settings = ( props ) => {
 
 		const contentWidthOptions = [
 			{
-				value: 'alignfull',
+				value: 'full',
 				label: __( 'Full Width', 'ultimate-addons-for-gutenberg' ),
 			},
 			{
-				value: 'alignwide',
+				value: 'wide',
 				label: __( 'Boxed', 'ultimate-addons-for-gutenberg' ),
 			},
 			{
@@ -419,7 +419,7 @@ const Settings = ( props ) => {
 								showIcons={ false }
 								responsive={false}
 							/>
-							{ 'alignfull' === contentWidth &&
+							{ 'full' === contentWidth &&
 								<>
 									<MultiButtonsControl
 										setAttributes={ setAttributes }

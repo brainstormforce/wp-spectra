@@ -3,6 +3,7 @@ import lazyLoader from '@Controls/lazy-loader';
 import TypographyControl from '@Components/typography';
 import { useViewportMatch } from '@wordpress/compose';
 import InspectorTabs from '@Components/inspector-tabs/InspectorTabs.js';
+import ResponsiveSelectControl from '@Components/responsive-select';
 import InspectorTab, {
 	UAGTabs,
 } from '@Components/inspector-tabs/InspectorTab.js';
@@ -41,6 +42,9 @@ export default function Settings( props ) {
 	props = props.parentProps;
 	const { attributes, setAttributes, context, isSelected, clientId } = props;
 	const {
+		objectFit,
+		objectFitTablet,
+		objectFitMobile,
 		layout,
 		id,
 		url,
@@ -351,7 +355,98 @@ export default function Settings( props ) {
 		setAttributes( { maskCustomShape: null } );
 	};
 
-
+	const objectFitOptions = {
+		desktop: [
+			{
+				value: 'default',
+				label: __(
+					'Default',
+					'ultimate-addons-for-gutenberg'
+				),
+			},
+			{
+				value: 'fill',
+				label: __(
+					'Fill',
+					'ultimate-addons-for-gutenberg'
+				),
+			},
+			{
+				value: 'cover',
+				label: __(
+					'Cover',
+					'ultimate-addons-for-gutenberg'
+				),
+			},
+			{
+				value: 'contain',
+				label: __(
+					'Contain',
+					'ultimate-addons-for-gutenberg'
+				),
+			}
+		],
+		tablet: [
+			{
+				value: 'default',
+				label: __(
+					'Default',
+					'ultimate-addons-for-gutenberg'
+				),
+			},
+			{
+				value: 'fill',
+				label: __(
+					'Fill',
+					'ultimate-addons-for-gutenberg'
+				),
+			},
+			{
+				value: 'cover',
+				label: __(
+					'Cover',
+					'ultimate-addons-for-gutenberg'
+				),
+			},
+			{
+				value: 'contain',
+				label: __(
+					'Contain',
+					'ultimate-addons-for-gutenberg'
+				),
+			}
+		],
+		mobile: [
+			{
+				value: 'default',
+				label: __(
+					'Default',
+					'ultimate-addons-for-gutenberg'
+				),
+			},
+			{
+				value: 'fill',
+				label: __(
+					'Fill',
+					'ultimate-addons-for-gutenberg'
+				),
+			},
+			{
+				value: 'cover',
+				label: __(
+					'Cover',
+					'ultimate-addons-for-gutenberg'
+				),
+			},
+			{
+				value: 'contain',
+				label: __(
+					'Contain',
+					'ultimate-addons-for-gutenberg'
+				),
+			}
+		],
+	};
 
 	const generalPanel = (
 		<UAGAdvancedPanelBody
@@ -424,6 +519,25 @@ export default function Settings( props ) {
 					</>
 				)
 			}
+			<ResponsiveSelectControl
+					label={ __( 'Object Fit', 'ultimate-addons-for-gutenberg' ) }
+					data={ {
+						desktop: {
+							value: objectFit,
+							label: 'objectFit',
+						},
+						tablet: {
+							value: objectFitTablet,
+							label: 'objectFitTablet',
+						},
+						mobile: {
+							value: objectFitMobile,
+							label: 'objectFitMobile',
+						},
+					} }
+					options={ objectFitOptions }
+					setAttributes={ setAttributes }
+			/>
 			<UAGSelectControl
 				label={ __(
 					'On Hover Image',
