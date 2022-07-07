@@ -352,6 +352,7 @@ module.exports = function ( grunt ) {
 						delete fonts[key].label;
 						delete fonts[key].voted;
 						delete fonts[key].free;
+						delete fonts[key].aliases;
 						return key;
 					} );
 
