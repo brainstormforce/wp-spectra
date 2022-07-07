@@ -128,8 +128,8 @@ function contentTimelineStyle( props ) {
 		dateLetterSpacingType,
 	} = props.attributes;
 
-	const connectorBgSizeFallback = getFallbackNumber( connectorBgsize, 'connectorBgsize', blockName );
 	const borderWidthFallback = getFallbackNumber( borderwidth, 'borderwidth', blockName );
+
 	const separatorWidthFallback = getFallbackNumber( separatorwidth, 'separatorwidth', blockName );
 	const headSpaceFallback = getFallbackNumber( headSpace, 'headSpace', blockName );
 	const borderRadiusFallback = getFallbackNumber( borderRadius, 'borderRadius', blockName );
@@ -142,8 +142,6 @@ function contentTimelineStyle( props ) {
 	const connectorBgsizeFallback = getFallbackNumber( connectorBgsize, 'connectorBgsize', blockName );
 	const connectorBgsizeTabletFallback = getFallbackNumber( connectorBgsizeTablet, 'connectorBgsizeTablet', blockName );
 	const connectorBgsizeMobileFallback = getFallbackNumber( connectorBgsizeMobile, 'connectorBgsizeMobile', blockName );
-
-	const respSelectors = 'left';
 
 	const selectors = {
 		' .uagb-timeline__heading.rich-text': {
@@ -247,7 +245,7 @@ function contentTimelineStyle( props ) {
 			'min-height': generateCSSUnit( connectorBgsizeFallback, 'px' ),
 			'min-width': generateCSSUnit( connectorBgsizeFallback, 'px' ),
 			'line-height': generateCSSUnit( connectorBgsizeFallback, 'px' ),
-			'border': borderwidth + 'px solid' + separatorBorder,
+			'border': borderWidthFallback + 'px solid' + separatorBorder,
 		},
 		'.uagb-timeline__left-block .uagb-timeline__left .uagb-timeline__arrow': {
 			'height': generateCSSUnit( connectorBgsizeFallback, 'px' ),

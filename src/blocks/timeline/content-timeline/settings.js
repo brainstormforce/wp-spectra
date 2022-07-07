@@ -32,8 +32,6 @@ import {
 
 import { select } from '@wordpress/data';
 
-
-
 import UAGAdvancedPanelBody from '@Components/advanced-panel-body';
 
 const Settings = ( props ) => {
@@ -171,17 +169,6 @@ const Settings = ( props ) => {
 		},
 	} = props;
 
-	const getconnectorBgsize = ( value ) => {
-		const getChildBlocks = select( 'core/block-editor' ).getBlocks(
-			props.clientId
-		);
-
-		getChildBlocks.forEach( ( UAGBcontentTimelineChild ) => {
-			UAGBcontentTimelineChild.attributes.connectorBgsize = value;
-		} );
-		setAttributes( { connectorBgsize: value } );
-	};
-
 	const getborderwidth = ( value ) => {
 		const getChildBlocks = select( 'core/block-editor' ).getBlocks(
 			props.clientId
@@ -191,17 +178,6 @@ const Settings = ( props ) => {
 			UAGBcontentTimelineChild.attributes.borderwidth = value;
 		} );
 		setAttributes( { borderwidth: value } );
-	};
-
-	const geticonSize = ( value ) => {
-		const getChildBlocks = select( 'core/block-editor' ).getBlocks(
-			props.clientId
-		);
-
-		getChildBlocks.forEach( ( UAGBcontentTimelineChild ) => {
-			UAGBcontentTimelineChild.attributes.iconSize = value;
-		} );
-		setAttributes( { iconSize: value } );
 	};
 
 	const getseparatorwidth = ( value ) => {
