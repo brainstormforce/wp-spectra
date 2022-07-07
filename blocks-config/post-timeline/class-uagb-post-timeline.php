@@ -172,10 +172,6 @@ if ( ! class_exists( 'UAGB_Post_Timeline' ) ) {
 							'type'    => 'string',
 							'default' => 'center',
 						),
-						'timelinAlignmentDesktop'    => array(
-							'type'    => 'string',
-							'default' => 'center',
-						),
 						'timelinAlignmentTablet'     => array(
 							'type'    => 'string',
 							'default' => 'center',

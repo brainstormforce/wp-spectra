@@ -48,7 +48,6 @@ return array(
 	'headLineHeightMobile'       => '',
 	'headLoadGoogleFonts'        => false,
 	'timelinAlignment'           => 'center',
-	'timelinAlignmentDesktop'    => 'center',
 	'timelinAlignmentTablet'     => 'center',
 	'timelinAlignmentMobile'     => 'center',
 	'arrowlinAlignment'          => 'center',

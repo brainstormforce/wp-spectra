@@ -10,9 +10,9 @@
 $selector = '.uagb-block-' . $id;
 $js_attr  = array(
 	'block_id'                => $attr['block_id'],
-	'timelinAlignmentDesktop' => $attr['timelinAlignmentDesktop'],
+	'timelinAlignment'        => $attr['timelinAlignment'],
 	'timelinAlignmentTablet'  => $attr['timelinAlignmentTablet'],
-	'timelinAlignmentMobile'  => $attr['timelinAlignmentTablet'],
+	'timelinAlignmentMobile'  => $attr['timelinAlignmentMobile'],
 );
 ob_start();
 ?>
