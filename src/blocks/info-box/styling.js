@@ -2,554 +2,546 @@
  * Returns Dynamic Generated CSS
  */
 
- import generateCSS from '@Controls/generateCSS';
- import generateCSSUnit from '@Controls/generateCSSUnit';
- import { getFallbackNumber } from '@Controls/getAttributeFallback';
- import generateBorderCSS from '@Controls/generateBorderCSS';
+import generateCSS from '@Controls/generateCSS';
+import generateCSSUnit from '@Controls/generateCSSUnit';
+import { getFallbackNumber } from '@Controls/getAttributeFallback';
+import generateBorderCSS from '@Controls/generateBorderCSS';
 
 function styling( props ) {
-	const {
-		headingAlign,
-		headingAlignTablet,
-		headingAlignMobile,
-		headingColor,
-		subHeadingColor,
-		prefixColor,
-		prefixFontSize,
-		prefixFontSizeType,
-		prefixFontSizeTablet,
-		prefixFontSizeMobile,
-		prefixFontFamily,
-		prefixFontWeight,
-		prefixLineHeightType,
-		prefixLineHeight,
-		prefixLineHeightTablet,
-		prefixLineHeightMobile,
-		prefixLetterSpacing,
-		prefixLetterSpacingTablet,
-		prefixLetterSpacingMobile,
-		prefixLetterSpacingType,
-		headFontSize,
-		headFontSizeType,
-		headFontSizeTablet,
-		headFontSizeMobile,
-		headFontFamily,
-		headFontWeight,
-		headLineHeightType,
-		headLineHeight,
-		headLineHeightTablet,
-		headLineHeightMobile,
-		headLetterSpacing,
-		headLetterSpacingTablet,
-		headLetterSpacingMobile,
-		headLetterSpacingType,
-		subHeadFontSize,
-		subHeadFontSizeType,
-		subHeadFontSizeTablet,
-		subHeadFontSizeMobile,
-		subHeadFontFamily,
-		subHeadFontWeight,
-		subHeadLineHeightType,
-		subHeadLineHeight,
-		subHeadLineHeightTablet,
-		subHeadLineHeightMobile,
-		separatorWidthType,
-		iconColor,
-		iconSize,
-		iconSizeType,
-		iconSizeTablet,
-		iconSizeMobile,
-		iconSizeUnitTablet,
-		iconSizeUnitMobile,
-		iconimgPosition,
-		iconHover,
-		iconimgBorderRadius,
-		iconimgBorderRadiusUnit,
-		seperatorStyle,
-		seperatorWidth,
-		seperatorWidthTablet,
-		seperatorWidthMobile,
-		seperatorColor,
-		seperatorThickness,
-		thicknessUnit,
-		ctaLinkColor,
-		ctaFontSize,
-		ctaFontSizeType,
-		ctaFontSizeMobile,
-		ctaFontSizeTablet,
-		ctaLineHeightType,
-		ctaLineHeight,
-		ctaLineHeightMobile,
-		ctaLineHeightTablet,
-		ctaLetterSpacingType,
-		ctaLetterSpacing,
-		ctaLetterSpacingTablet,
-		ctaLetterSpacingMobile,
-		ctaFontFamily,
-		ctaFontWeight,
-		ctaBtnLinkColor,
-		ctaBgColor,
-		paddingBtnUnit,
-		mobilePaddingBtnUnit,
-		tabletPaddingBtnUnit,
-		paddingBtnTop,
-		paddingBtnBottom,
-		paddingBtnLeft,
-		paddingBtnRight,
-		paddingBtnTopTablet,
-		paddingBtnRightTablet,
-		paddingBtnBottomTablet,
-		paddingBtnLeftTablet,
-		paddingBtnTopMobile,
-		paddingBtnRightMobile,
-		paddingBtnBottomMobile,
-		paddingBtnLeftMobile,
-		iconLeftMargin,
-		iconRightMargin,
-		iconTopMargin,
-		iconBottomMargin,
-		iconMarginTopTablet,
-		iconMarginRightTablet,
-		iconMarginBottomTablet,
-		iconMarginLeftTablet,
-		iconMarginTopMobile,
-		iconMarginRightMobile,
-		iconMarginBottomMobile,
-		iconMarginLeftMobile,
-		iconMarginUnit,
-		iconMobileMarginUnit,
-		iconTabletMarginUnit,
-		imageWidth,
-		imageWidthMobile,
-		imageWidthTablet,
-		imageWidthType,
-		imageWidthUnit,
-		imageWidthUnitTablet,
-		imageWidthUnitMobile,
-		ctaLinkHoverColor,
-		ctaBgHoverColor,
-		btnBorderHColor,
-		ctaIconSpace,
-		ctaIconSpaceTablet,
-		ctaIconSpaceMobile,
-		ctaIconSpaceType,
-		ctaTransform,
-		ctaDecoration,
-		prefixTransform,
-		prefixDecoration,
-		headTransform,
-		headDecoration,
-		subHeadTransform,
-		subHeadDecoration,
+const {
+	headingAlign,
+	headingAlignTablet,
+	headingAlignMobile,
+	headingColor,
+	subHeadingColor,
+	prefixColor,
+	prefixFontSize,
+	prefixFontSizeType,
+	prefixFontSizeTablet,
+	prefixFontSizeMobile,
+	prefixFontFamily,
+	prefixFontWeight,
+	prefixLineHeightType,
+	prefixLineHeight,
+	prefixLineHeightTablet,
+	prefixLineHeightMobile,
+	prefixLetterSpacing,
+	prefixLetterSpacingTablet,
+	prefixLetterSpacingMobile,
+	prefixLetterSpacingType,
+	headFontSize,
+	headFontSizeType,
+	headFontSizeTablet,
+	headFontSizeMobile,
+	headFontFamily,
+	headFontWeight,
+	headLineHeightType,
+	headLineHeight,
+	headLineHeightTablet,
+	headLineHeightMobile,
+	headLetterSpacing,
+	headLetterSpacingTablet,
+	headLetterSpacingMobile,
+	headLetterSpacingType,
+	subHeadFontSize,
+	subHeadFontSizeType,
+	subHeadFontSizeTablet,
+	subHeadFontSizeMobile,
+	subHeadFontFamily,
+	subHeadFontWeight,
+	subHeadLineHeightType,
+	subHeadLineHeight,
+	subHeadLineHeightTablet,
+	subHeadLineHeightMobile,
+	separatorWidthType,
+	iconColor,
+	iconSize,
+	iconSizeType,
+	iconimgPosition,
+	iconHover,
+	iconimgBorderRadius,
+	iconimgBorderRadiusUnit,
+	seperatorStyle,
+	seperatorWidth,
+	seperatorWidthTablet,
+	seperatorWidthMobile,
+	seperatorColor,
+	seperatorThickness,
+	thicknessUnit,
+	ctaLinkColor,
+	ctaFontSize,
+	ctaFontSizeType,
+	ctaFontSizeMobile,
+	ctaFontSizeTablet,
+	ctaLineHeightType,
+	ctaLineHeight,
+	ctaLineHeightMobile,
+	ctaLineHeightTablet,
+	ctaLetterSpacingType,
+	ctaLetterSpacing,
+	ctaLetterSpacingTablet,
+	ctaLetterSpacingMobile,
+	ctaFontFamily,
+	ctaFontWeight,
+	ctaBtnLinkColor,
+	ctaBgColor,
+	paddingBtnUnit,
+	mobilePaddingBtnUnit,
+	tabletPaddingBtnUnit,
+	paddingBtnTop,
+	paddingBtnBottom,
+	paddingBtnLeft,
+	paddingBtnRight,
+	paddingBtnTopTablet,
+	paddingBtnRightTablet,
+	paddingBtnBottomTablet,
+	paddingBtnLeftTablet,
+	paddingBtnTopMobile,
+	paddingBtnRightMobile,
+	paddingBtnBottomMobile,
+	paddingBtnLeftMobile,
+	iconLeftMargin,
+	iconRightMargin,
+	iconTopMargin,
+	iconBottomMargin,
+	iconMarginTopTablet,
+	iconMarginRightTablet,
+	iconMarginBottomTablet,
+	iconMarginLeftTablet,
+	iconMarginTopMobile,
+	iconMarginRightMobile,
+	iconMarginBottomMobile,
+	iconMarginLeftMobile,
+	iconMarginUnit,
+	iconMobileMarginUnit,
+	iconTabletMarginUnit,
+	imageWidth,
+	imageWidthMobile,
+	imageWidthTablet,
+	imageWidthType,
+	imageWidthUnit,
+	imageWidthUnitTablet,
+	imageWidthUnitMobile,
+	ctaLinkHoverColor,
+	ctaBgHoverColor,
+	btnBorderHColor,
+	ctaIconSpace,
+	ctaIconSpaceTablet,
+	ctaIconSpaceMobile,
+	ctaIconSpaceType,
+	ctaTransform,
+	ctaDecoration,
+	prefixTransform,
+	prefixDecoration,
+	headTransform,
+	headDecoration,
+	subHeadTransform,
+	subHeadDecoration,
 
-		 prefixFontStyle,
-		 headFontStyle,
-		 subHeadFontStyle,
-		 ctaFontStyle,
-		 ctaIconPosition,
+		prefixFontStyle,
+		headFontStyle,
+		subHeadFontStyle,
+		ctaFontStyle,
+		ctaIconPosition,
 
-		 prefixTopMargin,
-		 prefixRightMargin,
-		 prefixSpace,
-		 prefixLeftMargin,
-		 prefixMarginTopTablet,
-		 prefixMarginRightTablet,
-		 prefixTabletSpace,
-		 prefixMarginLeftTablet,
-		 prefixMarginTopMobile,
-		 prefixMarginRightMobile,
-		 prefixMobileSpace,
-		 prefixMarginLeftMobile,
-		 prefixSpaceUnit,
-		 prefixMobileMarginUnit,
-		 prefixTabletMarginUnit,
+		prefixTopMargin,
+		prefixRightMargin,
+		prefixSpace,
+		prefixLeftMargin,
+		prefixMarginTopTablet,
+		prefixMarginRightTablet,
+		prefixTabletSpace,
+		prefixMarginLeftTablet,
+		prefixMarginTopMobile,
+		prefixMarginRightMobile,
+		prefixMobileSpace,
+		prefixMarginLeftMobile,
+		prefixSpaceUnit,
+		prefixMobileMarginUnit,
+		prefixTabletMarginUnit,
 
-		 headTopMargin,
-		 headRightMargin,
-		 headSpace,
-		 headLeftMargin,
-		 headMarginTopTablet,
-		 headMarginRightTablet,
-		 headTabletSpace,
-		 headMarginLeftTablet,
-		 headMarginTopMobile,
-		 headMarginRightMobile,
-		 headMobileSpace,
-		 headMarginLeftMobile,
-		 headSpaceUnit,
-		 headMobileMarginUnit,
-		 headTabletMarginUnit,
+		headTopMargin,
+		headRightMargin,
+		headSpace,
+		headLeftMargin,
+		headMarginTopTablet,
+		headMarginRightTablet,
+		headTabletSpace,
+		headMarginLeftTablet,
+		headMarginTopMobile,
+		headMarginRightMobile,
+		headMobileSpace,
+		headMarginLeftMobile,
+		headSpaceUnit,
+		headMobileMarginUnit,
+		headTabletMarginUnit,
 
-		 separatorTopMargin,
-		 separatorRightMargin,
-		 seperatorSpace,
-		 separatorLeftMargin,
-		 separatorMarginTopTablet,
-		 separatorMarginRightTablet,
-		 seperatorTabletSpace,
-		 separatorMarginLeftTablet,
-		 separatorMarginTopMobile,
-		 separatorMarginRightMobile,
-		 seperatorMobileSpace,
-		 separatorMarginLeftMobile,
-		 seperatorSpaceUnit,
-		 separatorMobileMarginUnit,
-		 separatorTabletMarginUnit,
+		separatorTopMargin,
+		separatorRightMargin,
+		seperatorSpace,
+		separatorLeftMargin,
+		separatorMarginTopTablet,
+		separatorMarginRightTablet,
+		seperatorTabletSpace,
+		separatorMarginLeftTablet,
+		separatorMarginTopMobile,
+		separatorMarginRightMobile,
+		seperatorMobileSpace,
+		separatorMarginLeftMobile,
+		seperatorSpaceUnit,
+		separatorMobileMarginUnit,
+		separatorTabletMarginUnit,
 
-		 subHeadTopMargin,
-		 subHeadRightMargin,
-		 subHeadSpace,
-		 subHeadLeftMargin,
-		 subHeadMarginTopTablet,
-		 subHeadMarginRightTablet,
-		 subHeadTabletSpace,
-		 subHeadMarginLeftTablet,
-		 subHeadMarginTopMobile,
-		 subHeadMarginRightMobile,
-		 subHeadMobileSpace,
-		 subHeadMarginLeftMobile,
-		 subHeadSpaceUnit,
-		 subHeadMobileMarginUnit,
-		 subHeadTabletMarginUnit,
-		 subHeadLetterSpacing,
-		 subHeadLetterSpacingTablet,
-		 subHeadLetterSpacingMobile,
-		 subHeadLetterSpacingType,
+		subHeadTopMargin,
+		subHeadRightMargin,
+		subHeadSpace,
+		subHeadLeftMargin,
+		subHeadMarginTopTablet,
+		subHeadMarginRightTablet,
+		subHeadTabletSpace,
+		subHeadMarginLeftTablet,
+		subHeadMarginTopMobile,
+		subHeadMarginRightMobile,
+		subHeadMobileSpace,
+		subHeadMarginLeftMobile,
+		subHeadSpaceUnit,
+		subHeadMobileMarginUnit,
+		subHeadTabletMarginUnit,
+		subHeadLetterSpacing,
+		subHeadLetterSpacingTablet,
+		subHeadLetterSpacingMobile,
+		subHeadLetterSpacingType,
 
-		 // icon attributes for icon view (circle and square)
-		 iconView,
-		 iconBackgroundColor,
-		 iconBackgroundHoverColor,
-		 iconBorderWidth
-	 } = props.attributes;
+		// icon attributes for icon view (circle and square)
+		iconView,
+		iconBackgroundColor,
+		iconBackgroundHoverColor,
+		iconBorderWidth
+	} = props.attributes;
 
-	 const blockName = props.name.replace( 'uagb/', '' );
-	 //Range
-	 const seperatorThicknessFallback = getFallbackNumber( seperatorThickness, 'seperatorThickness', blockName );
+	const blockName = props.name.replace( 'uagb/', '' );
+	//Range
+	const seperatorThicknessFallback = getFallbackNumber( seperatorThickness, 'seperatorThickness', blockName );
+	const iconSizeFallback = getFallbackNumber( iconSize, 'iconSize', blockName );
+	const iconimgBorderRadiusFallback = getFallbackNumber( iconimgBorderRadius, 'iconimgBorderRadius', blockName );
+	// Responsive Slider
+	const seperatorWidthFallback = getFallbackNumber( seperatorWidth, 'seperatorWidth', blockName );
+	const seperatorWidthFallbackTablet = getFallbackNumber( seperatorWidthTablet, 'seperatorWidthTablet', blockName );
+	const seperatorWidthFallbackMobile = getFallbackNumber( seperatorWidthMobile, 'seperatorWidthMobile', blockName );
 
-	 const iconSizeFallback = getFallbackNumber( iconSize, 'iconSize', blockName );
-	 const iconSizeFallbackTablet = isNaN( iconSizeTablet ) ? iconSizeFallback : iconSizeTablet;
-	 const iconSizeFallbackMobile = isNaN( iconSizeMobile ) ? iconSizeFallbackTablet : iconSizeMobile;
+	const ctaIconSpaceFallback = getFallbackNumber( ctaIconSpace, 'ctaIconSpace', blockName );
+	const ctaIconSpaceFallbackTablet = isNaN( ctaIconSpaceTablet ) ? ctaIconSpaceFallback : ctaIconSpaceTablet;
+	const ctaIconSpaceFallbackMobile = isNaN( ctaIconSpaceMobile ) ? ctaIconSpaceFallbackTablet : ctaIconSpaceMobile;
 
-	 const iconimgBorderRadiusFallback = getFallbackNumber( iconimgBorderRadius, 'iconimgBorderRadius', blockName );
-	 // Responsive Slider
-	 const seperatorWidthFallback = getFallbackNumber( seperatorWidth, 'seperatorWidth', blockName );
-	 const seperatorWidthFallbackTablet = getFallbackNumber( seperatorWidthTablet, 'seperatorWidthTablet', blockName );
-	 const seperatorWidthFallbackMobile = getFallbackNumber( seperatorWidthMobile, 'seperatorWidthMobile', blockName );
+	const imageWidthFallback = getFallbackNumber( imageWidth, 'imageWidth', blockName );
+	const imageWidthFallbackTablet = isNaN( imageWidthTablet ) ? imageWidthFallback : imageWidthTablet;
+	const imageWidthFallbackMobile = isNaN( imageWidthMobile ) ? imageWidthFallbackTablet : imageWidthMobile;
 
-	 const ctaIconSpaceFallback = getFallbackNumber( ctaIconSpace, 'ctaIconSpace', blockName );
-	 const ctaIconSpaceFallbackTablet = isNaN( ctaIconSpaceTablet ) ? ctaIconSpaceFallback : ctaIconSpaceTablet;
-	 const ctaIconSpaceFallbackMobile = isNaN( ctaIconSpaceMobile ) ? ctaIconSpaceFallbackTablet : ctaIconSpaceMobile;
+	const ctaBorderCSS = generateBorderCSS( props.attributes, 'btn' );
+	const ctaBorderCSSTablet = generateBorderCSS( props.attributes, 'btn', 'tablet' );
+	const ctaBorderCSSMobile = generateBorderCSS( props.attributes, 'btn', 'mobile' );
 
-	 const imageWidthFallback = getFallbackNumber( imageWidth, 'imageWidth', blockName );
-	 const imageWidthFallbackTablet = isNaN( imageWidthTablet ) ? imageWidthFallback : imageWidthTablet;
-	 const imageWidthFallbackMobile = isNaN( imageWidthMobile ) ? imageWidthFallbackTablet : imageWidthMobile;
+	const boxSizingIcon = ( '%' === iconSizeType ) ? 'border-box' : 'content-box'
+	const boxSizingImage = ( '%' === imageWidthUnit ) ? 'border-box' : 'content-box'
+	const boxSizingImageTablet = ( '%' === imageWidthUnitTablet ) ? 'border-box' : 'content-box'
+	const boxSizingImageMobile = ( '%' === imageWidthUnitMobile ) ? 'border-box' : 'content-box'
 
-	 const ctaBorderCSS = generateBorderCSS( props.attributes, 'btn' );
-	 const ctaBorderCSSTablet = generateBorderCSS( props.attributes, 'btn', 'tablet' );
-	 const ctaBorderCSSMobile = generateBorderCSS( props.attributes, 'btn', 'mobile' );
+	const selectors = {
+		// Icon css
+		' .uagb-ifb-content .uagb-ifb-icon-wrap svg': {
+			'font-size': generateCSSUnit( iconSizeFallback, iconSizeType ),
+			'color': iconColor,
+			'fill': iconColor,
+			'line-height': generateCSSUnit( iconSizeFallback, iconSizeType ),
+		},
+		' .uagb-iconbox-icon-wrap': {
+			'margin' : 'auto',
+			'display' : 'inline-block',
+			'box-sizing': 'content-box',
+			'width': generateCSSUnit( iconSizeFallback, iconSizeType ),
+			'height': generateCSSUnit( iconSizeFallback, iconSizeType ),
+			'line-height': generateCSSUnit( iconSizeFallback, iconSizeType ),
+			'padding-left': generateCSSUnit( iconLeftMargin, iconMarginUnit ),
+			'padding-right': generateCSSUnit( iconRightMargin, iconMarginUnit ),
+			'padding-top': generateCSSUnit( iconTopMargin, iconMarginUnit ),
+			'padding-bottom': generateCSSUnit(
+				iconBottomMargin,
+				iconMarginUnit
+			),
+		},
+		' .uagb-ifb-content .uagb-ifb-left-title-image svg': {
+			'font-size': generateCSSUnit( iconSizeFallback, iconSizeType ),
+			'color': iconColor,
+			'fill': iconColor,
+			'width': generateCSSUnit( iconSizeFallback, iconSizeType ),
+			'line-height': generateCSSUnit( iconSizeFallback, iconSizeType ),
+		},
+		' .uagb-ifb-content .uagb-ifb-right-title-image svg': {
+			'font-size': generateCSSUnit( iconSizeFallback, iconSizeType ),
+			'color': iconColor,
+			'fill': iconColor,
+			'width': generateCSSUnit( iconSizeFallback, iconSizeType ),
+			'line-height': generateCSSUnit( iconSizeFallback, iconSizeType ),
+		},
+		'.uagb-infobox__content-wrap .uagb-ifb-icon-wrap svg': {
+			'font-size': generateCSSUnit( iconSizeFallback, iconSizeType ),
+			'color': iconColor,
+			'fill': iconColor,
+			'width': generateCSSUnit( iconSizeFallback, iconSizeType ),
+			'height': generateCSSUnit( iconSizeFallback, iconSizeType ),
+			'line-height': generateCSSUnit( iconSizeFallback, iconSizeType ),
+		},
+		' .uagb-ifb-content .uagb-ifb-icon-wrap svg:hover': {
+			'fill': iconHover,
+		},
+		'.uagb-infobox-icon-left .uagb-ifb-icon-wrap > svg:hover': {
+			'fill': iconHover,
+		},
+		'.uagb-infobox-icon-right .uagb-ifb-icon-wrap:hover > svg:hover': {
+			'fill': iconHover,
+		},
+		'.uagb-infobox__content-wrap .uagb-ifb-icon-wrap > svg:hover': {
+			'fill': iconHover,
+		},
+		'.uagb-infobox_cta-type-all:hover .uagb-infobox__content-wrap svg': {
+			'fill': iconHover,
+			'color': iconHover,
+		},
+		'.uagb-infobox__content-wrap .uagb-ifb-icon-wrap > svg': {
+			'padding-left': generateCSSUnit( iconLeftMargin, iconMarginUnit ),
+			'padding-right': generateCSSUnit( iconRightMargin, iconMarginUnit ),
+			'padding-top': generateCSSUnit( iconTopMargin, iconMarginUnit ),
+			'padding-bottom': generateCSSUnit(
+				iconBottomMargin,
+				iconMarginUnit
+			),
+		},
+		'.uagb-infobox__content-wrap .uagb-ifb-content .uagb-ifb-icon-wrap > svg': {
+			'padding-left': generateCSSUnit( iconLeftMargin, iconMarginUnit ),
+			'padding-right': generateCSSUnit( iconRightMargin, iconMarginUnit ),
+			'padding-top': generateCSSUnit( iconTopMargin, iconMarginUnit ),
+			'padding-bottom': generateCSSUnit(
+				iconBottomMargin,
+				iconMarginUnit
+			),
+		},
+		'.uagb-infobox__content-wrap .uagb-ifb-image-content > img': {
+			'padding-left': generateCSSUnit( iconLeftMargin, iconMarginUnit ),
+			'padding-right': generateCSSUnit( iconRightMargin, iconMarginUnit ),
+			'padding-top': generateCSSUnit( iconTopMargin, iconMarginUnit ),
+			'padding-bottom': generateCSSUnit(
+				iconBottomMargin,
+				iconMarginUnit
+			),
+			'border-radius': generateCSSUnit(
+				iconimgBorderRadiusFallback,
+				iconimgBorderRadiusUnit
+			),
+		},
+		'.uagb-infobox__content-wrap .uagb-ifb-content .uagb-ifb-right-title-image img': {
+			'padding-left': generateCSSUnit( iconLeftMargin, iconMarginUnit ),
+			'padding-right': generateCSSUnit( iconRightMargin, iconMarginUnit ),
+			'padding-top': generateCSSUnit( iconTopMargin, iconMarginUnit ),
+			'padding-bottom': generateCSSUnit(
+				iconBottomMargin,
+				iconMarginUnit
+			),
+			'border-radius': generateCSSUnit(
+				iconimgBorderRadiusFallback,
+				iconimgBorderRadiusUnit
+			),
+		},
+		'.uagb-infobox__content-wrap .uagb-ifb-content .uagb-ifb-left-title-image img': {
+			'padding-left': generateCSSUnit( iconLeftMargin, iconMarginUnit ),
+			'padding-right': generateCSSUnit( iconRightMargin, iconMarginUnit ),
+			'padding-top': generateCSSUnit( iconTopMargin, iconMarginUnit ),
+			'padding-bottom': generateCSSUnit(
+				iconBottomMargin,
+				iconMarginUnit
+			),
+			'border-radius': generateCSSUnit(
+				iconimgBorderRadiusFallback,
+				iconimgBorderRadiusUnit
+			),
+		},
+		'.uagb-infobox__content-wrap .uagb-ifb-content img': {
+			'padding-left': generateCSSUnit( iconLeftMargin, iconMarginUnit ),
+			'padding-right': generateCSSUnit( iconRightMargin, iconMarginUnit ),
+			'padding-top': generateCSSUnit( iconTopMargin, iconMarginUnit ),
+			'padding-bottom': generateCSSUnit(
+				iconBottomMargin,
+				iconMarginUnit
+			),
+			'border-radius': generateCSSUnit(
+				iconimgBorderRadiusFallback,
+				iconimgBorderRadiusUnit
+			),
+		},
+		// CTA style
+		' div.uagb-ifb-cta a.uagb-infobox-cta-link.uagb-infobox-cta-link': {
+			'font-size': generateCSSUnit( ctaFontSize, ctaFontSizeType ),
+			'font-family': ctaFontFamily,
+			'font-weight': ctaFontWeight,
+			'font-style': ctaFontStyle,
+			'color': ctaLinkColor,
+			'text-decoration': ctaDecoration,
+			'text-transform': ctaTransform,
+			'letter-spacing': generateCSSUnit( ctaLetterSpacing, ctaLetterSpacingType ),
+			'line-height': generateCSSUnit(
+			ctaLineHeight,
+			ctaLineHeightType
+			),
+		},
+		' .uagb-infobox-cta-link:hover': {
+			'color': ctaLinkHoverColor,
+		},
+		' .uagb-infobox-cta-link svg': {
+			'font-size': generateCSSUnit( ctaFontSize, ctaFontSizeType ),
+			'height': generateCSSUnit( ctaFontSize, ctaFontSizeType ),
+			'width': generateCSSUnit( ctaFontSize, ctaFontSizeType ),
+			'line-height': generateCSSUnit( ctaFontSize, ctaFontSizeType ),
+			'fill': ctaLinkColor,
+		},
+		' .uagb-infobox-cta-link:hover svg': {
+			'fill': ctaLinkHoverColor,
+		},
+		' .uagb-ifb-button-wrapper .uagb-infobox-cta-link': {
+			'color': ctaBtnLinkColor,
+			'background-color': ctaBgColor,
+			'padding-top': generateCSSUnit( paddingBtnTop, paddingBtnUnit ),
+			'padding-bottom': generateCSSUnit(
+				paddingBtnBottom,
+				paddingBtnUnit
+			),
+			'padding-left': generateCSSUnit( paddingBtnLeft, paddingBtnUnit ),
+			'padding-right': generateCSSUnit( paddingBtnRight, paddingBtnUnit ),
+		},
+		' .uagb-ifb-button-wrapper .uagb-infobox-cta-link:hover': {
+			'color': ctaLinkHoverColor,
+			'background-color': ctaBgHoverColor,
+			'border-color': btnBorderHColor,
+		},
+		' .uagb-ifb-button-wrapper .uagb-infobox-cta-link svg': {
+			'fill': ctaBtnLinkColor,
+		},
+		' .uagb-ifb-button-wrapper .uagb-infobox-cta-link:hover svg': {
+			'fill': ctaLinkHoverColor,
+		},
+		// Prefix Style
+		' .block-editor-rich-text__editable.uagb-ifb-title-prefix': {
+			'font-size': generateCSSUnit( prefixFontSize, prefixFontSizeType ),
+			'font-family': prefixFontFamily,
+			'font-weight': prefixFontWeight,
+			'line-height': generateCSSUnit(
+				prefixLineHeight,
+				prefixLineHeightType
+			),
+			'font-style' : prefixFontStyle,
+			'text-decoration': prefixDecoration,
+			'text-transform': prefixTransform,
+			'color': prefixColor,
+			'letter-spacing': generateCSSUnit( prefixLetterSpacing, prefixLetterSpacingType ),
+			'margin-bottom': generateCSSUnit( prefixSpace, prefixSpaceUnit ),
+			'margin-top': generateCSSUnit( prefixTopMargin, prefixSpaceUnit ),
+			'margin-left': generateCSSUnit( prefixLeftMargin, prefixSpaceUnit ),
+			'margin-right': generateCSSUnit( prefixRightMargin, prefixSpaceUnit ),
 
-	 const boxSizingIcon = ( '%' === iconSizeType ) ? 'border-box' : 'content-box'
-	 const boxSizingImage = ( '%' === imageWidthUnit ) ? 'border-box' : 'content-box'
-	 const boxSizingImageTablet = ( '%' === imageWidthUnitTablet ) ? 'border-box' : 'content-box'
-	 const boxSizingImageMobile = ( '%' === imageWidthUnitMobile ) ? 'border-box' : 'content-box'
+		},
+		// Title Style
+		' .block-editor-rich-text__editable.uagb-ifb-title a': {
+			'color': headingColor,
+		},
+		' .block-editor-rich-text__editable.uagb-ifb-title': {
+			'font-size': generateCSSUnit( headFontSize, headFontSizeType ),
+			'font-family': headFontFamily,
+			'font-weight': headFontWeight,
+			'line-height': generateCSSUnit(
+				headLineHeight,
+				headLineHeightType
+			),
+			'font-style' : headFontStyle,
+			'text-decoration': headDecoration,
+			'text-transform': headTransform,
+			'letter-spacing': generateCSSUnit( headLetterSpacing, headLetterSpacingType ),
+			'color': headingColor,
+			'margin-top': generateCSSUnit( headTopMargin, headSpaceUnit ),
+			'margin-bottom': generateCSSUnit( headSpace, headSpaceUnit ),
+			'margin-left': generateCSSUnit( headLeftMargin, headSpaceUnit ),
+			'margin-right': generateCSSUnit( headRightMargin, headSpaceUnit ),
+		},
+		// Description Style
+		' .block-editor-rich-text__editable.uagb-ifb-desc': {
+			'font-size': generateCSSUnit(
+				subHeadFontSize,
+				subHeadFontSizeType
+			),
+			'font-family': subHeadFontFamily,
+			'font-weight': subHeadFontWeight,
+			'line-height': generateCSSUnit(
+				subHeadLineHeight,
+				subHeadLineHeightType
+			),
+			'font-style' : subHeadFontStyle,
+			'text-decoration': subHeadDecoration,
+			'text-transform': subHeadTransform,
+			'letter-spacing': generateCSSUnit( subHeadLetterSpacing, subHeadLetterSpacingType ),
+			'color': subHeadingColor,
+			'margin-bottom': generateCSSUnit( subHeadSpace, subHeadSpaceUnit ),
+			'margin-top': generateCSSUnit( subHeadTopMargin, subHeadSpaceUnit ),
+			'margin-left': generateCSSUnit( subHeadLeftMargin, subHeadSpaceUnit ),
+			'margin-right': generateCSSUnit( subHeadRightMargin, subHeadSpaceUnit ),
+		},
+		// Seperator
+		'.uagb-infobox__content-wrap .uagb-ifb-separator': {
+			'width': generateCSSUnit( seperatorWidthFallback, separatorWidthType ),
+			'border-top-width': generateCSSUnit(
+				seperatorThicknessFallback,
+				thicknessUnit
+			),
+			'border-top-color': seperatorColor,
+			'border-top-style': seperatorStyle,
+		},
 
-	 const selectors = {
-		 // Icon css
-		 ' .uagb-ifb-content .uagb-ifb-icon-wrap svg': {
-			 'font-size': generateCSSUnit( iconSizeFallback, iconSizeType ),
-			 'color': iconColor,
-			 'fill': iconColor,
-			 'line-height': generateCSSUnit( iconSizeFallback, iconSizeType ),
-		 },
-		 ' .uagb-iconbox-icon-wrap': {
-			 'margin' : 'auto',
-			 'display' : 'inline-block',
-			 'box-sizing': 'content-box',
-			 'width': generateCSSUnit( iconSizeFallback, iconSizeType ),
-			 'height': generateCSSUnit( iconSizeFallback, iconSizeType ),
-			 'line-height': generateCSSUnit( iconSizeFallback, iconSizeType ),
-			 'padding-left': generateCSSUnit( iconLeftMargin, iconMarginUnit ),
-			 'padding-right': generateCSSUnit( iconRightMargin, iconMarginUnit ),
-			 'padding-top': generateCSSUnit( iconTopMargin, iconMarginUnit ),
-			 'padding-bottom': generateCSSUnit(
-				 iconBottomMargin,
-				 iconMarginUnit
-			 ),
-		 },
-		 ' .uagb-ifb-content .uagb-ifb-left-title-image svg': {
-			 'font-size': generateCSSUnit( iconSizeFallback, iconSizeType ),
-			 'color': iconColor,
-			 'fill': iconColor,
-			 'width': generateCSSUnit( iconSizeFallback, iconSizeType ),
-			 'line-height': generateCSSUnit( iconSizeFallback, iconSizeType ),
-		 },
-		 ' .uagb-ifb-content .uagb-ifb-right-title-image svg': {
-			 'font-size': generateCSSUnit( iconSizeFallback, iconSizeType ),
-			 'color': iconColor,
-			 'fill': iconColor,
-			 'width': generateCSSUnit( iconSizeFallback, iconSizeType ),
-			 'line-height': generateCSSUnit( iconSizeFallback, iconSizeType ),
-		 },
-		 '.uagb-infobox__content-wrap .uagb-ifb-icon-wrap svg': {
-			 'font-size': generateCSSUnit( iconSizeFallback, iconSizeType ),
-			 'color': iconColor,
-			 'fill': iconColor,
-			 'width': generateCSSUnit( iconSizeFallback, iconSizeType ),
-			 'height': generateCSSUnit( iconSizeFallback, iconSizeType ),
-			 'line-height': generateCSSUnit( iconSizeFallback, iconSizeType ),
-		 },
-		 ' .uagb-ifb-content .uagb-ifb-icon-wrap svg:hover': {
-			 'fill': iconHover,
-		 },
-		 '.uagb-infobox-icon-left .uagb-ifb-icon-wrap > svg:hover': {
-			 'fill': iconHover,
-		 },
-		 '.uagb-infobox-icon-right .uagb-ifb-icon-wrap:hover > svg:hover': {
-			 'fill': iconHover,
-		 },
-		 '.uagb-infobox__content-wrap .uagb-ifb-icon-wrap > svg:hover': {
-			 'fill': iconHover,
-		 },
-		 '.uagb-infobox_cta-type-all:hover .uagb-infobox__content-wrap svg': {
-			 'fill': iconHover,
-			 'color': iconHover,
-		 },
-		 '.uagb-infobox__content-wrap .uagb-ifb-icon-wrap > svg': {
-			 'padding-left': generateCSSUnit( iconLeftMargin, iconMarginUnit ),
-			 'padding-right': generateCSSUnit( iconRightMargin, iconMarginUnit ),
-			 'padding-top': generateCSSUnit( iconTopMargin, iconMarginUnit ),
-			 'padding-bottom': generateCSSUnit(
-				 iconBottomMargin,
-				 iconMarginUnit
-			 ),
-		 },
-		 '.uagb-infobox__content-wrap .uagb-ifb-content .uagb-ifb-icon-wrap > svg': {
-			 'padding-left': generateCSSUnit( iconLeftMargin, iconMarginUnit ),
-			 'padding-right': generateCSSUnit( iconRightMargin, iconMarginUnit ),
-			 'padding-top': generateCSSUnit( iconTopMargin, iconMarginUnit ),
-			 'padding-bottom': generateCSSUnit(
-				 iconBottomMargin,
-				 iconMarginUnit
-			 ),
-		 },
-		 '.uagb-infobox__content-wrap .uagb-ifb-image-content > img': {
-			 'padding-left': generateCSSUnit( iconLeftMargin, iconMarginUnit ),
-			 'padding-right': generateCSSUnit( iconRightMargin, iconMarginUnit ),
-			 'padding-top': generateCSSUnit( iconTopMargin, iconMarginUnit ),
-			 'padding-bottom': generateCSSUnit(
-				 iconBottomMargin,
-				 iconMarginUnit
-			 ),
-			 'border-radius': generateCSSUnit(
-				 iconimgBorderRadiusFallback,
-				 iconimgBorderRadiusUnit
-			 ),
-		 },
-		 '.uagb-infobox__content-wrap .uagb-ifb-content .uagb-ifb-right-title-image img': {
-			 'padding-left': generateCSSUnit( iconLeftMargin, iconMarginUnit ),
-			 'padding-right': generateCSSUnit( iconRightMargin, iconMarginUnit ),
-			 'padding-top': generateCSSUnit( iconTopMargin, iconMarginUnit ),
-			 'padding-bottom': generateCSSUnit(
-				 iconBottomMargin,
-				 iconMarginUnit
-			 ),
-			 'border-radius': generateCSSUnit(
-				 iconimgBorderRadiusFallback,
-				 iconimgBorderRadiusUnit
-			 ),
-		 },
-		 '.uagb-infobox__content-wrap .uagb-ifb-content .uagb-ifb-left-title-image img': {
-			 'padding-left': generateCSSUnit( iconLeftMargin, iconMarginUnit ),
-			 'padding-right': generateCSSUnit( iconRightMargin, iconMarginUnit ),
-			 'padding-top': generateCSSUnit( iconTopMargin, iconMarginUnit ),
-			 'padding-bottom': generateCSSUnit(
-				 iconBottomMargin,
-				 iconMarginUnit
-			 ),
-			 'border-radius': generateCSSUnit(
-				 iconimgBorderRadiusFallback,
-				 iconimgBorderRadiusUnit
-			 ),
-		 },
-		 '.uagb-infobox__content-wrap .uagb-ifb-content img': {
-			 'padding-left': generateCSSUnit( iconLeftMargin, iconMarginUnit ),
-			 'padding-right': generateCSSUnit( iconRightMargin, iconMarginUnit ),
-			 'padding-top': generateCSSUnit( iconTopMargin, iconMarginUnit ),
-			 'padding-bottom': generateCSSUnit(
-				 iconBottomMargin,
-				 iconMarginUnit
-			 ),
-			 'border-radius': generateCSSUnit(
-				 iconimgBorderRadiusFallback,
-				 iconimgBorderRadiusUnit
-			 ),
-		 },
-		 // CTA style
-		 ' div.uagb-ifb-cta a.uagb-infobox-cta-link.uagb-infobox-cta-link': {
-			 'font-size': generateCSSUnit( ctaFontSize, ctaFontSizeType ),
-			 'font-family': ctaFontFamily,
-			 'font-weight': ctaFontWeight,
-			 'font-style': ctaFontStyle,
-			 'color': ctaLinkColor,
-			 'text-decoration': ctaDecoration,
-			 'text-transform': ctaTransform,
-			 'letter-spacing': generateCSSUnit( ctaLetterSpacing, ctaLetterSpacingType ),
-			 'line-height': generateCSSUnit(
-				ctaLineHeight,
-				ctaLineHeightType
-			 ),
-		 },
-		 ' .uagb-infobox-cta-link:hover': {
-			 'color': ctaLinkHoverColor,
-		 },
-		 ' .uagb-infobox-cta-link svg': {
-			 'font-size': generateCSSUnit( ctaFontSize, ctaFontSizeType ),
-			 'height': generateCSSUnit( ctaFontSize, ctaFontSizeType ),
-			 'width': generateCSSUnit( ctaFontSize, ctaFontSizeType ),
-			 'line-height': generateCSSUnit( ctaFontSize, ctaFontSizeType ),
-			 'fill': ctaLinkColor,
-		 },
-		 ' .uagb-infobox-cta-link:hover svg': {
-			 'fill': ctaLinkHoverColor,
-		 },
-		 ' .uagb-ifb-button-wrapper .uagb-infobox-cta-link': {
-			 'color': ctaBtnLinkColor,
-			 'background-color': ctaBgColor,
-			 'padding-top': generateCSSUnit( paddingBtnTop, paddingBtnUnit ),
-			 'padding-bottom': generateCSSUnit(
-				 paddingBtnBottom,
-				 paddingBtnUnit
-			 ),
-			 'padding-left': generateCSSUnit( paddingBtnLeft, paddingBtnUnit ),
-			 'padding-right': generateCSSUnit( paddingBtnRight, paddingBtnUnit ),
-		 },
-		 ' .uagb-ifb-button-wrapper .uagb-infobox-cta-link:hover': {
-			 'color': ctaLinkHoverColor,
-			 'background-color': ctaBgHoverColor,
-			 'border-color': btnBorderHColor,
-		 },
-		 ' .uagb-ifb-button-wrapper .uagb-infobox-cta-link svg': {
-			 'fill': ctaBtnLinkColor,
-		 },
-		 ' .uagb-ifb-button-wrapper .uagb-infobox-cta-link:hover svg': {
-			 'fill': ctaLinkHoverColor,
-		 },
-		 // Prefix Style
-		 ' .block-editor-rich-text__editable.uagb-ifb-title-prefix': {
-			 'font-size': generateCSSUnit( prefixFontSize, prefixFontSizeType ),
-			 'font-family': prefixFontFamily,
-			 'font-weight': prefixFontWeight,
-			 'line-height': generateCSSUnit(
-				 prefixLineHeight,
-				 prefixLineHeightType
-			 ),
-			 'font-style' : prefixFontStyle,
-			 'text-decoration': prefixDecoration,
-			 'text-transform': prefixTransform,
-			 'color': prefixColor,
-			 'letter-spacing': generateCSSUnit( prefixLetterSpacing, prefixLetterSpacingType ),
-			 'margin-bottom': generateCSSUnit( prefixSpace, prefixSpaceUnit ),
-			 'margin-top': generateCSSUnit( prefixTopMargin, prefixSpaceUnit ),
-			 'margin-left': generateCSSUnit( prefixLeftMargin, prefixSpaceUnit ),
-			 'margin-right': generateCSSUnit( prefixRightMargin, prefixSpaceUnit ),
+		' .uagb-ifb-separator': {
+			'margin-bottom': generateCSSUnit( seperatorSpace, seperatorSpaceUnit ),
+			'margin-top': generateCSSUnit( separatorTopMargin, seperatorSpaceUnit ),
+			'margin-left': generateCSSUnit( separatorLeftMargin, seperatorSpaceUnit ),
+			'margin-right': generateCSSUnit( separatorRightMargin, seperatorSpaceUnit ),
+		},
+		// editor css is causing issue  thaat why i used important
+		'.uagb-infobox__content-wrap  .uagb-ifb-content svg': {
+			'box-sizing' : `${boxSizingIcon}`,
+		},
+		'.uagb-infobox__content-wrap  .uagb-ifb-content img': {
+			'box-sizing' : `${boxSizingImage}`,
+		},
+	};
 
-		 },
-		 // Title Style
-		 ' .block-editor-rich-text__editable.uagb-ifb-title a': {
-			 'color': headingColor,
-		 },
-		 ' .block-editor-rich-text__editable.uagb-ifb-title': {
-			 'font-size': generateCSSUnit( headFontSize, headFontSizeType ),
-			 'font-family': headFontFamily,
-			 'font-weight': headFontWeight,
-			 'line-height': generateCSSUnit(
-				 headLineHeight,
-				 headLineHeightType
-			 ),
-			 'font-style' : headFontStyle,
-			 'text-decoration': headDecoration,
-			 'text-transform': headTransform,
-			 'letter-spacing': generateCSSUnit( headLetterSpacing, headLetterSpacingType ),
-			 'color': headingColor,
-			 'margin-top': generateCSSUnit( headTopMargin, headSpaceUnit ),
-			 'margin-bottom': generateCSSUnit( headSpace, headSpaceUnit ),
-			 'margin-left': generateCSSUnit( headLeftMargin, headSpaceUnit ),
-			 'margin-right': generateCSSUnit( headRightMargin, headSpaceUnit ),
-		 },
-		 // Description Style
-		 ' .block-editor-rich-text__editable.uagb-ifb-desc': {
-			 'font-size': generateCSSUnit(
-				 subHeadFontSize,
-				 subHeadFontSizeType
-			 ),
-			 'font-family': subHeadFontFamily,
-			 'font-weight': subHeadFontWeight,
-			 'line-height': generateCSSUnit(
-				 subHeadLineHeight,
-				 subHeadLineHeightType
-			 ),
-			 'font-style' : subHeadFontStyle,
-			 'text-decoration': subHeadDecoration,
-			 'text-transform': subHeadTransform,
-			 'letter-spacing': generateCSSUnit( subHeadLetterSpacing, subHeadLetterSpacingType ),
-			 'color': subHeadingColor,
-			 'margin-bottom': generateCSSUnit( subHeadSpace, subHeadSpaceUnit ),
-			 'margin-top': generateCSSUnit( subHeadTopMargin, subHeadSpaceUnit ),
-			 'margin-left': generateCSSUnit( subHeadLeftMargin, subHeadSpaceUnit ),
-			 'margin-right': generateCSSUnit( subHeadRightMargin, subHeadSpaceUnit ),
-		 },
-		 // Seperator
-		 '.uagb-infobox__content-wrap .uagb-ifb-separator': {
-			 'width': generateCSSUnit( seperatorWidthFallback, separatorWidthType ),
-			 'border-top-width': generateCSSUnit(
-				 seperatorThicknessFallback,
-				 thicknessUnit
-			 ),
-			 'border-top-color': seperatorColor,
-			 'border-top-style': seperatorStyle,
-		 },
-
-		 ' .uagb-ifb-separator': {
-			 'margin-bottom': generateCSSUnit( seperatorSpace, seperatorSpaceUnit ),
-			 'margin-top': generateCSSUnit( separatorTopMargin, seperatorSpaceUnit ),
-			 'margin-left': generateCSSUnit( separatorLeftMargin, seperatorSpaceUnit ),
-			 'margin-right': generateCSSUnit( separatorRightMargin, seperatorSpaceUnit ),
-		 },
-		 // editor css is causing issue  thaat why i used important
-		 '.uagb-infobox__content-wrap  .uagb-ifb-content svg': {
-			 'box-sizing' : `${boxSizingIcon}`,
-		 },
-		 '.uagb-infobox__content-wrap  .uagb-ifb-content img': {
-			 'box-sizing' : `${boxSizingImage}`,
-		 },
-	 };
-
-	if( 'Stacked' === iconView ) {
-		selectors[ ' .uagb-iconbox-icon-wrap.uagb-infobox-shape-circle'] = {
-			'background-color' : iconBackgroundColor,
-			'border-radius' : '50%',
-		}
-		selectors[ ' .uagb-iconbox-icon-wrap.uagb-infobox-shape-squre'] = {
-			'background-color' : iconBackgroundColor,
-		}
-		selectors[' .uagb-iconbox-icon-wrap:hover'] = {
-			'background-color' : `${iconBackgroundHoverColor} !important`,
-		};
+if( 'Stacked' === iconView ) {
+	selectors[ ' .uagb-iconbox-icon-wrap.uagb-infobox-shape-circle'] = {
+		'background-color' : iconBackgroundColor,
+		'border-radius' : '50%',
 	}
-	else if( 'Framed' === iconView ) {
-		selectors[ ' .uagb-iconbox-icon-wrap.uagb-infobox-shape-circle'] = {
-			'border' : `${iconBorderWidth}px solid ${iconBackgroundColor}`,
-			'border-radius' : '50%',
-		}
-		selectors[ ' .uagb-iconbox-icon-wrap.uagb-infobox-shape-squre'] = {
-			'border' : `${iconBorderWidth}px solid ${iconBackgroundColor}`,
-		}
-		selectors[' .uagb-iconbox-icon-wrap:hover'] = {
-			'border' : `${iconBorderWidth}px solid ${iconBackgroundHoverColor}`,
-		};
+	selectors[ ' .uagb-iconbox-icon-wrap.uagb-infobox-shape-squre'] = {
+		'background-color' : iconBackgroundColor,
 	}
-	selectors[' .uagb-infobox-cta-link.wp-block-button__link'] = ctaBorderCSS;
+	selectors[' .uagb-iconbox-icon-wrap:hover'] = {
+		'background-color' : `${iconBackgroundHoverColor} !important`,
+	};
+}
+else if( 'Framed' === iconView ) {
+	selectors[ ' .uagb-iconbox-icon-wrap.uagb-infobox-shape-circle'] = {
+		'border' : `${iconBorderWidth}px solid ${iconBackgroundColor}`,
+		'border-radius' : '50%',
+	}
+	selectors[ ' .uagb-iconbox-icon-wrap.uagb-infobox-shape-squre'] = {
+		'border' : `${iconBorderWidth}px solid ${iconBackgroundColor}`,
+	}
+	selectors[' .uagb-iconbox-icon-wrap:hover'] = {
+		'border' : `${iconBorderWidth}px solid ${iconBackgroundHoverColor}`,
+	};
+}
+selectors[' .uagb-infobox-cta-link.wp-block-button__link'] = ctaBorderCSS;
 
 	const tabletSelectors = {
 		' .block-editor-rich-text__editable.uagb-ifb-desc': {
@@ -843,31 +835,6 @@ function styling( props ) {
 		'.uagb-infobox__content-wrap  .uagb-ifb-content img': {
 			'box-sizing' : `${boxSizingImageTablet}`,
 		},
-		' .uagb-ifb-content .uagb-ifb-icon-wrap svg': {
-			'font-size': generateCSSUnit( iconSizeFallbackTablet, iconSizeUnitTablet ),
-			'line-height': generateCSSUnit( iconSizeFallbackTablet, iconSizeUnitTablet ),
-		},
-		' .uagb-iconbox-icon-wrap': {
-			'width': generateCSSUnit( iconSizeFallbackTablet, iconSizeUnitTablet ),
-			'height': generateCSSUnit( iconSizeFallbackTablet, iconSizeUnitTablet ),
-			'line-height': generateCSSUnit( iconSizeFallbackTablet, iconSizeUnitTablet ),
-		},
-		' .uagb-ifb-content .uagb-ifb-left-title-image svg': {
-			'font-size': generateCSSUnit( iconSizeFallbackTablet, iconSizeUnitTablet ),
-			'width': generateCSSUnit( iconSizeFallbackTablet, iconSizeUnitTablet ),
-			'line-height': generateCSSUnit( iconSizeFallbackTablet, iconSizeUnitTablet ),
-		},
-		' .uagb-ifb-content .uagb-ifb-right-title-image svg': {
-			'font-size': generateCSSUnit( iconSizeFallbackTablet, iconSizeUnitTablet ),
-			'width': generateCSSUnit( iconSizeFallbackTablet, iconSizeUnitTablet ),
-			'line-height': generateCSSUnit( iconSizeFallbackTablet, iconSizeUnitTablet ),
-		},
-		'.uagb-infobox__content-wrap .uagb-ifb-icon-wrap svg': {
-			'font-size': generateCSSUnit( iconSizeFallbackTablet, iconSizeUnitTablet ),
-			'width': generateCSSUnit( iconSizeFallbackTablet, iconSizeUnitTablet ),
-			'height': generateCSSUnit( iconSizeFallbackTablet, iconSizeUnitTablet ),
-			'line-height': generateCSSUnit( iconSizeFallbackTablet, iconSizeUnitTablet ),
-		},
 	};
 
 	const mobileSelectors = {
@@ -1107,134 +1074,109 @@ function styling( props ) {
 		'.uagb-infobox__content-wrap  .uagb-ifb-content img': {
 			'box-sizing' : `${boxSizingImageMobile}`,
 		},
-		' .uagb-ifb-content .uagb-ifb-icon-wrap svg': {
-			'font-size': generateCSSUnit( iconSizeFallbackMobile, iconSizeUnitMobile ),
-			'line-height': generateCSSUnit( iconSizeFallbackMobile, iconSizeUnitMobile ),
-		},
-		' .uagb-iconbox-icon-wrap': {
-			'width': generateCSSUnit( iconSizeFallbackMobile, iconSizeUnitMobile ),
-			'height': generateCSSUnit( iconSizeFallbackMobile, iconSizeUnitMobile ),
-			'line-height': generateCSSUnit( iconSizeFallbackMobile, iconSizeUnitMobile ),
-		},
-		' .uagb-ifb-content .uagb-ifb-left-title-image svg': {
-			'font-size': generateCSSUnit( iconSizeFallbackMobile, iconSizeUnitMobile ),
-			'width': generateCSSUnit( iconSizeFallbackMobile, iconSizeUnitMobile ),
-			'line-height': generateCSSUnit( iconSizeFallbackMobile, iconSizeUnitMobile ),
-		},
-		' .uagb-ifb-content .uagb-ifb-right-title-image svg': {
-			'font-size': generateCSSUnit( iconSizeFallbackMobile, iconSizeUnitMobile ),
-			'width': generateCSSUnit( iconSizeFallbackMobile, iconSizeUnitMobile ),
-			'line-height': generateCSSUnit( iconSizeFallbackMobile, iconSizeUnitMobile ),
-		},
-		'.uagb-infobox__content-wrap .uagb-ifb-icon-wrap svg': {
-			'font-size': generateCSSUnit( iconSizeFallbackMobile, iconSizeUnitMobile ),
-			'width': generateCSSUnit( iconSizeFallbackMobile, iconSizeUnitMobile ),
-			'height': generateCSSUnit( iconSizeFallbackMobile, iconSizeUnitMobile ),
-			'line-height': generateCSSUnit( iconSizeFallbackMobile, iconSizeUnitMobile ),
-		},
 	};
 
-	if (
-		iconimgPosition === 'above-title' ||
-		iconimgPosition === 'below-title'
-	) {
-		selectors[ '.uagb-infobox__content-wrap' ] = {
-			'text-align': headingAlign,
+if (
+	iconimgPosition === 'above-title' ||
+	iconimgPosition === 'below-title'
+) {
+	selectors[ '.uagb-infobox__content-wrap' ] = {
+		'text-align': headingAlign,
+	};
+	tabletSelectors[ '.uagb-infobox__content-wrap' ] = {
+		'text-align': headingAlignTablet,
+	};
+	mobileSelectors[ '.uagb-infobox__content-wrap' ] = {
+		'text-align': headingAlignMobile,
+	};
+}
+
+if ( imageWidthType ) {
+	// Image
+	selectors[ '.uagb-infobox__content-wrap img' ] = {
+		'width': generateCSSUnit( imageWidthFallback, imageWidthUnit ),
+	};
+	selectors[ '.uagb-infobox__content-wrap .uagb-ifb-content .uagb-ifb-right-title-image > img' ] = {
+		'width': generateCSSUnit( imageWidthFallback, imageWidthUnit ),
+	};
+	selectors[ '.uagb-infobox__content-wrap .uagb-ifb-content .uagb-ifb-left-title-image > img' ] = {
+		'width': generateCSSUnit( imageWidthFallback, imageWidthUnit ),
+	};
+	selectors[ '.uagb-infobox__content-wrap .uagb-ifb-content .uagb-ifb-image-content > img' ] = {
+		'width': generateCSSUnit( imageWidthFallback, imageWidthUnit ),
+	};
+
+		tabletSelectors[ '.uagb-infobox__content-wrap img' ] = {
+			'width': generateCSSUnit( imageWidthFallbackTablet, imageWidthUnitTablet ),
 		};
-		tabletSelectors[ '.uagb-infobox__content-wrap' ] = {
-			'text-align': headingAlignTablet,
+		tabletSelectors[ '.uagb-infobox__content-wrap .uagb-ifb-content .uagb-ifb-right-title-image > img' ] = {
+			'width': generateCSSUnit( imageWidthFallbackTablet, imageWidthUnitTablet ),
 		};
-		mobileSelectors[ '.uagb-infobox__content-wrap' ] = {
-			'text-align': headingAlignMobile,
+		tabletSelectors[ '.uagb-infobox__content-wrap .uagb-ifb-content .uagb-ifb-left-title-image > img' ] = {
+			'width': generateCSSUnit( imageWidthFallbackTablet, imageWidthUnitTablet ),
+		};
+		tabletSelectors[ '.uagb-infobox__content-wrap .uagb-ifb-content .uagb-ifb-image-content > img' ] = {
+			'width': generateCSSUnit( imageWidthFallbackTablet, imageWidthUnitTablet ),
+		};
+
+		mobileSelectors[ '.uagb-infobox__content-wrap img' ] = {
+			'width': generateCSSUnit( imageWidthFallbackMobile, imageWidthUnitMobile ),
+		};
+		mobileSelectors[ '.uagb-infobox__content-wrap .uagb-ifb-content .uagb-ifb-right-title-image > img' ] = {
+			'width': generateCSSUnit( imageWidthFallbackMobile, imageWidthUnitMobile ),
+		};
+		mobileSelectors[ '.uagb-infobox__content-wrap .uagb-ifb-content .uagb-ifb-left-title-image > img' ] = {
+			'width': generateCSSUnit( imageWidthFallbackMobile, imageWidthUnitMobile ),
+		};
+		mobileSelectors[ '.uagb-infobox__content-wrap .uagb-ifb-content .uagb-ifb-image-content > img' ] = {
+			'width': generateCSSUnit( imageWidthFallbackMobile, imageWidthUnitMobile ),
 		};
 	}
 
-	if ( imageWidthType ) {
-		// Image
-		selectors[ '.uagb-infobox__content-wrap img' ] = {
-			'width': generateCSSUnit( imageWidthFallback, imageWidthUnit ),
+	if( 'after' === ctaIconPosition ){
+		selectors[ '.uagb-infobox__content-wrap .uagb-infobox-cta-link > svg'] = {
+			'margin-left': generateCSSUnit( ctaIconSpaceFallback, ctaIconSpaceType ),
 		};
-		selectors[ '.uagb-infobox__content-wrap .uagb-ifb-content .uagb-ifb-right-title-image > img' ] = {
-			'width': generateCSSUnit( imageWidthFallback, imageWidthUnit ),
+		tabletSelectors[ '.uagb-infobox__content-wrap .uagb-infobox-cta-link > svg'] = {
+			'margin-left': generateCSSUnit( ctaIconSpaceFallbackTablet, ctaIconSpaceType ),
 		};
-		selectors[ '.uagb-infobox__content-wrap .uagb-ifb-content .uagb-ifb-left-title-image > img' ] = {
-			'width': generateCSSUnit( imageWidthFallback, imageWidthUnit ),
+		mobileSelectors[ '.uagb-infobox__content-wrap .uagb-infobox-cta-link > svg'] = {
+			'margin-left': generateCSSUnit( ctaIconSpaceFallbackMobile, ctaIconSpaceType ),
 		};
-		selectors[ '.uagb-infobox__content-wrap .uagb-ifb-content .uagb-ifb-image-content > img' ] = {
-			'width': generateCSSUnit( imageWidthFallback, imageWidthUnit ),
+	}else{
+		selectors[ '.uagb-infobox__content-wrap .uagb-infobox-cta-link > svg'] = {
+			'margin-right': generateCSSUnit( ctaIconSpaceFallback, ctaIconSpaceType ),
 		};
+		tabletSelectors[ '.uagb-infobox__content-wrap .uagb-infobox-cta-link > svg'] = {
+			'margin-right': generateCSSUnit( ctaIconSpaceFallbackTablet, ctaIconSpaceType ),
+		};
+		mobileSelectors[ '.uagb-infobox__content-wrap .uagb-infobox-cta-link > svg'] = {
+			'margin-right': generateCSSUnit( ctaIconSpaceFallbackMobile, ctaIconSpaceType ),
+		};
+	}
+	mobileSelectors[' .uagb-infobox-cta-link.wp-block-button__link'] = ctaBorderCSSMobile;
+	tabletSelectors[' .uagb-infobox-cta-link.wp-block-button__link'] = ctaBorderCSSTablet;
 
-		 tabletSelectors[ '.uagb-infobox__content-wrap img' ] = {
-			 'width': generateCSSUnit( imageWidthFallbackTablet, imageWidthUnitTablet ),
-		 };
-		 tabletSelectors[ '.uagb-infobox__content-wrap .uagb-ifb-content .uagb-ifb-right-title-image > img' ] = {
-			 'width': generateCSSUnit( imageWidthFallbackTablet, imageWidthUnitTablet ),
-		 };
-		 tabletSelectors[ '.uagb-infobox__content-wrap .uagb-ifb-content .uagb-ifb-left-title-image > img' ] = {
-			 'width': generateCSSUnit( imageWidthFallbackTablet, imageWidthUnitTablet ),
-		 };
-		 tabletSelectors[ '.uagb-infobox__content-wrap .uagb-ifb-content .uagb-ifb-image-content > img' ] = {
-			 'width': generateCSSUnit( imageWidthFallbackTablet, imageWidthUnitTablet ),
-		 };
+	const id = `.editor-styles-wrapper .uagb-block-${ props.clientId.substr(
+		0,
+		8
+	) }`;
+	let stylingCss = generateCSS( selectors, id );
 
-		 mobileSelectors[ '.uagb-infobox__content-wrap img' ] = {
-			 'width': generateCSSUnit( imageWidthFallbackMobile, imageWidthUnitMobile ),
-		 };
-		 mobileSelectors[ '.uagb-infobox__content-wrap .uagb-ifb-content .uagb-ifb-right-title-image > img' ] = {
-			 'width': generateCSSUnit( imageWidthFallbackMobile, imageWidthUnitMobile ),
-		 };
-		 mobileSelectors[ '.uagb-infobox__content-wrap .uagb-ifb-content .uagb-ifb-left-title-image > img' ] = {
-			 'width': generateCSSUnit( imageWidthFallbackMobile, imageWidthUnitMobile ),
-		 };
-		 mobileSelectors[ '.uagb-infobox__content-wrap .uagb-ifb-content .uagb-ifb-image-content > img' ] = {
-			 'width': generateCSSUnit( imageWidthFallbackMobile, imageWidthUnitMobile ),
-		 };
-	 }
+	stylingCss += generateCSS(
+		tabletSelectors,
+		`${ id }.uagb-editor-preview-mode-tablet`,
+		true,
+		'tablet'
+	);
 
-	 if( 'after' === ctaIconPosition ){
-		 selectors[ '.uagb-infobox__content-wrap .uagb-infobox-cta-link > svg'] = {
-			 'margin-left': generateCSSUnit( ctaIconSpaceFallback, ctaIconSpaceType ),
-		 };
-		 tabletSelectors[ '.uagb-infobox__content-wrap .uagb-infobox-cta-link > svg'] = {
-			 'margin-left': generateCSSUnit( ctaIconSpaceFallbackTablet, ctaIconSpaceType ),
-		 };
-		 mobileSelectors[ '.uagb-infobox__content-wrap .uagb-infobox-cta-link > svg'] = {
-			 'margin-left': generateCSSUnit( ctaIconSpaceFallbackMobile, ctaIconSpaceType ),
-		 };
-	 }else{
-		 selectors[ '.uagb-infobox__content-wrap .uagb-infobox-cta-link > svg'] = {
-			 'margin-right': generateCSSUnit( ctaIconSpaceFallback, ctaIconSpaceType ),
-		 };
-		 tabletSelectors[ '.uagb-infobox__content-wrap .uagb-infobox-cta-link > svg'] = {
-			 'margin-right': generateCSSUnit( ctaIconSpaceFallbackTablet, ctaIconSpaceType ),
-		 };
-		 mobileSelectors[ '.uagb-infobox__content-wrap .uagb-infobox-cta-link > svg'] = {
-			 'margin-right': generateCSSUnit( ctaIconSpaceFallbackMobile, ctaIconSpaceType ),
-		 };
-	 }
-	 mobileSelectors[' .uagb-infobox-cta-link.wp-block-button__link'] = ctaBorderCSSMobile;
-	 tabletSelectors[' .uagb-infobox-cta-link.wp-block-button__link'] = ctaBorderCSSTablet;
+	stylingCss += generateCSS(
+		mobileSelectors,
+		`${ id }.uagb-editor-preview-mode-mobile`,
+		true,
+		'mobile'
+	);
+	return stylingCss;
+}
 
-	 const id = `.editor-styles-wrapper .uagb-block-${ props.clientId.substr(
-		 0,
-		 8
-	 ) }`;
-	 let stylingCss = generateCSS( selectors, id );
-
-	 stylingCss += generateCSS(
-		 tabletSelectors,
-		 `${ id }.uagb-editor-preview-mode-tablet`,
-		 true,
-		 'tablet'
-	 );
-
-	 stylingCss += generateCSS(
-		 mobileSelectors,
-		 `${ id }.uagb-editor-preview-mode-mobile`,
-		 true,
-		 'mobile'
-	 );
-	 return stylingCss;
- }
-
- export default styling;
+export default styling;

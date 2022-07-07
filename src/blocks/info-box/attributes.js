@@ -91,32 +91,6 @@
 			styleType: 'icon-size-type'
 		}
 	},
-	iconSizeTablet: {
-		type: 'number',
-		UAGCopyPaste: {
-			styleType: 'icon-size-tablet'
-		}
-	},
-	iconSizeMobile: {
-		type: 'number',
-		UAGCopyPaste: {
-			styleType: 'icon-size-mobile'
-		}
-	},
-	iconSizeUnitTablet: {
-		type: 'String',
-		default: 'px',
-		UAGCopyPaste: {
-			styleType: 'icon-size-type-tablet'
-		}
-	},
-	iconSizeUnitMobile: {
-		type: 'String',
-		default: 'px',
-		UAGCopyPaste: {
-			styleType: 'icon-size-type-mobile'
-		}
-	},
 	iconHover: {
 		type: 'string',
 		default: '',
