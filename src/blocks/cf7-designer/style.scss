@@ -134,16 +134,15 @@
 
 	/* Form validation */
 	.uagb-cf7-styler__highlight-style-bottom_right span.wpcf7-not-valid-tip {
-		top: 100%;
-		right: 0;
-		display: inline-block;
-		position: absolute;
-		float: right;
+		display: block;
 		padding: 0.1em 0.5em;
 		margin-top: 5px;
 		border-radius: 2px;
 		font-size: 0.9em;
 		-webkit-border-radius: 2px;
+		width: fit-content;
+		margin-left: auto;
+		margin-right: 0;
 	}
 
 	.wpcf7 input[type="number"] {
