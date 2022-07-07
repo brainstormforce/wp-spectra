@@ -1,8 +1,8 @@
 import { __ } from '@wordpress/i18n';
 import { getBorderAttributes } from '@Controls/generateAttributes';
 
-const successMessageBorderAttributes = getBorderAttributes( 'successMessage' );
-const failedMessageBorderAttributes = getBorderAttributes( 'failedMessage' );
+const successMessageBorderAttributes = getBorderAttributes( 'successMsg' );
+const failedMessageBorderAttributes = getBorderAttributes( 'errorMsg' );
 const inputBorderAttributes = getBorderAttributes( 'field' , {
 	borderStyle: 'solid',
 	borderTopLeftRadius: 3,
@@ -1214,25 +1214,25 @@ const attributes = {
 			styleType: 'input-letter-spacing-type'
 		}
 	},
-	submitLetterSpacing: {
+	submitTextLetterSpacing: {
 		type: 'number',
 		UAGCopyPaste: {
 			styleType: 'submit-letter-spacing'
 		}
 	},
-	submitLetterSpacingTablet: {
+	submitTextLetterSpacingTablet: {
 		type: 'number',
 		UAGCopyPaste: {
 			styleType: 'submit-letter-spacing-tablet'
 		}
 	},
-	submitLetterSpacingMobile: {
+	submitTextLetterSpacingMobile: {
 		type: 'number',
 		UAGCopyPaste: {
 			styleType: 'submit-letter-spacing-mobile'
 		}
 	},
-	submitLetterSpacingType: {
+	submitTextLetterSpacingType: {
 		type: 'string',
 		default: 'px',
 		UAGCopyPaste: {

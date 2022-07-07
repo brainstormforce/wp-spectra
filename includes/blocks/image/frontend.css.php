@@ -33,6 +33,11 @@ $overlay_border_css        = UAGB_Block_Helper::uag_generate_border_css( $attr, 
 $overlay_border_css_tablet = UAGB_Block_Helper::uag_generate_border_css( $attr, 'overlay', 'tablet' );
 $overlay_border_css_mobile = UAGB_Block_Helper::uag_generate_border_css( $attr, 'overlay', 'mobile' );
 
+$width_tablet = '' !== $attr['widthTablet'] ? $attr['widthTablet'] . 'px' : $attr['width'] . 'px';
+$width_mobile = '' !== $attr['widthMobile'] ? $attr['widthMobile'] . 'px' : $width_tablet;
+
+$height_tablet = '' !== $attr['heightTablet'] ? $attr['heightTablet'] . 'px' : $attr['height'] . 'px';
+$height_mobile = '' !== $attr['heightMobile'] ? $attr['heightMobile'] . 'px' : $height_tablet;
 
 $selectors = array(
 	'.wp-block-uagb-image'                     => array(
@@ -55,19 +60,12 @@ $selectors = array(
 		'border-color' => $attr['imageBorderHColor'],
 	),
 	'.wp-block-uagb-image .wp-block-uagb-image__figure figcaption' => array(
-		'font-family'     => $attr['captionFontFamily'],
-		'font-style'      => $attr['captionFontStyle'],
-		'text-decoration' => $attr['captionDecoration'],
-		'text-transform'  => $attr['captionTransform'],
-		'font-weight'     => $attr['captionFontWeight'],
-		'font-size'       => UAGB_Helper::get_css_value( $attr['captionFontSize'], $attr['captionFontSizeType'] ),
-		'line-height'     => UAGB_Helper::get_css_value( $attr['captionLineHeight'], $attr['captionLineHeightType'] ),
-		'color'           => $attr['captionColor'],
-		'margin-top'      => UAGB_Helper::get_css_value( $attr['captionTopMargin'], $attr['captionMarginUnit'] ),
-		'margin-right'    => UAGB_Helper::get_css_value( $attr['captionRightMargin'], $attr['captionMarginUnit'] ),
-		'margin-bottom'   => UAGB_Helper::get_css_value( $attr['captionBottomMargin'], $attr['captionMarginUnit'] ),
-		'margin-left'     => UAGB_Helper::get_css_value( $attr['captionLeftMargin'], $attr['captionMarginUnit'] ),
-		'text-align'      => $attr['captionAlign'],
+		'color'         => $attr['captionColor'],
+		'margin-top'    => UAGB_Helper::get_css_value( $attr['captionTopMargin'], $attr['captionMarginUnit'] ),
+		'margin-right'  => UAGB_Helper::get_css_value( $attr['captionRightMargin'], $attr['captionMarginUnit'] ),
+		'margin-bottom' => UAGB_Helper::get_css_value( $attr['captionBottomMargin'], $attr['captionMarginUnit'] ),
+		'margin-left'   => UAGB_Helper::get_css_value( $attr['captionLeftMargin'], $attr['captionMarginUnit'] ),
+		'text-align'    => $attr['captionAlign'],
 	),
 	'.wp-block-uagb-image .wp-block-uagb-image__figure figcaption a' => array(
 		'color' => $attr['captionColor'],
@@ -87,19 +85,12 @@ $selectors = array(
 		)
 	),
 	'.wp-block-uagb-image--layout-overlay .wp-block-uagb-image--layout-overlay__inner .uagb-image-heading' => array(
-		'font-family'     => $attr['headingFontFamily'],
-		'font-style'      => $attr['headingFontStyle'],
-		'text-decoration' => $attr['headingDecoration'],
-		'text-transform'  => $attr['headingTransform'],
-		'font-weight'     => $attr['headingFontWeight'],
-		'font-size'       => UAGB_Helper::get_css_value( $attr['headingFontSize'], $attr['headingFontSizeType'] ),
-		'line-height'     => UAGB_Helper::get_css_value( $attr['headingLineHeight'], $attr['headingLineHeightType'] ),
-		'color'           => $attr['headingColor'],
-		'margin-top'      => UAGB_Helper::get_css_value( $attr['headingTopMargin'], $attr['headingMarginUnit'] ),
-		'margin-right'    => UAGB_Helper::get_css_value( $attr['headingRightMargin'], $attr['headingMarginUnit'] ),
-		'margin-bottom'   => UAGB_Helper::get_css_value( $attr['headingBottomMargin'], $attr['headingMarginUnit'] ),
-		'margin-left'     => UAGB_Helper::get_css_value( $attr['headingLeftMargin'], $attr['headingMarginUnit'] ),
-		'opacity'         => 'always' === $attr['headingShowOn'] ? 1 : 0,
+		'color'         => $attr['headingColor'],
+		'margin-top'    => UAGB_Helper::get_css_value( $attr['headingTopMargin'], $attr['headingMarginUnit'] ),
+		'margin-right'  => UAGB_Helper::get_css_value( $attr['headingRightMargin'], $attr['headingMarginUnit'] ),
+		'margin-bottom' => UAGB_Helper::get_css_value( $attr['headingBottomMargin'], $attr['headingMarginUnit'] ),
+		'margin-left'   => UAGB_Helper::get_css_value( $attr['headingLeftMargin'], $attr['headingMarginUnit'] ),
+		'opacity'       => 'always' === $attr['headingShowOn'] ? 1 : 0,
 	),
 	'.wp-block-uagb-image--layout-overlay .wp-block-uagb-image--layout-overlay__inner .uagb-image-heading a' => array(
 		'color' => $attr['headingColor'],
@@ -125,6 +116,12 @@ $selectors = array(
 		'margin-right'     => UAGB_Helper::get_css_value( $attr['seperatorRightMargin'], $attr['seperatorMarginUnit'] ),
 		'opacity'          => 'always' === $attr['seperatorShowOn'] ? 1 : 0,
 	),
+);
+
+$selectors['.wp-block-uagb-image .wp-block-uagb-image__figure img'] = array(
+	'object-fit' => $attr['objectFit'],
+	'width'      => $attr['width'] . 'px',
+	'height'     => $attr['height'] . 'px',
 );
 
 if ( 'hover' === $attr['headingShowOn'] ) {
@@ -177,8 +174,6 @@ $t_selectors['.wp-block-uagb-image']                                  = array(
 	'float'    => 'center' !== $attr['alignTablet'] ?  $attr['alignTablet'] : 'none'
 );
 $t_selectors['.wp-block-uagb-image .wp-block-uagb-image__figure figcaption']                           = array(
-	'font-size'     => UAGB_Helper::get_css_value( $attr['captionFontSizeTablet'], $attr['captionFontSizeType'] ),
-	'line-height'   => UAGB_Helper::get_css_value( $attr['captionLineHeightTablet'], $attr['captionLineHeightType'] ),
 	'margin-top'    => UAGB_Helper::get_css_value( $attr['captionTopMarginTablet'], $attr['captionMarginUnitTablet'] ),
 	'margin-right'  => UAGB_Helper::get_css_value( $attr['captionRightMarginTablet'], $attr['captionMarginUnitTablet'] ),
 	'margin-bottom' => UAGB_Helper::get_css_value( $attr['captionBottomMarginTablet'], $attr['captionMarginUnitTablet'] ),
@@ -186,8 +181,6 @@ $t_selectors['.wp-block-uagb-image .wp-block-uagb-image__figure figcaption']    
 );
 $t_selectors['.wp-block-uagb-image--layout-overlay .wp-block-uagb-image--layout-overlay__inner']       = $overlay_border_css_tablet;
 $t_selectors['.wp-block-uagb-image .wp-block-uagb-image--layout-overlay__inner .uagb-image-heading']   = array(
-	'font-size'     => UAGB_Helper::get_css_value( $attr['headingFontSizeTablet'], $attr['headingFontSizeType'] ),
-	'line-height'   => UAGB_Helper::get_css_value( $attr['headingLineHeightTablet'], $attr['headingLineHeightType'] ),
 	'margin-top'    => UAGB_Helper::get_css_value( $attr['headingTopMarginTablet'], $attr['headingMarginUnitTablet'] ),
 	'margin-right'  => UAGB_Helper::get_css_value( $attr['headingRightMarginTablet'], $attr['headingMarginUnitTablet'] ),
 	'margin-bottom' => UAGB_Helper::get_css_value( $attr['headingBottomMarginTablet'], $attr['headingMarginUnitTablet'] ),
@@ -198,6 +191,12 @@ $t_selectors['.wp-block-uagb-image .wp-block-uagb-image--layout-overlay__inner .
 	'margin-top'    => UAGB_Helper::get_css_value( $attr['seperatorTopMarginTablet'], $attr['seperatorMarginUnitTablet'] ),
 	'margin-left'   => UAGB_Helper::get_css_value( $attr['seperatorLeftMarginTablet'], $attr['seperatorMarginUnitTablet'] ),
 	'margin-right'  => UAGB_Helper::get_css_value( $attr['seperatorRightMarginTablet'], $attr['seperatorMarginUnitTablet'] ),
+);
+
+$t_selectors['.wp-block-uagb-image .wp-block-uagb-image__figure img'] = array(
+	'object-fit' => $attr['objectFitTablet'],
+	'width'      => $width_tablet,
+	'height'     => $height_tablet,
 );
 
 // mobile.
@@ -214,8 +213,6 @@ $m_selectors['.wp-block-uagb-image']                                  = array(
 	'float'    => 'center' !== $attr['alignMobile'] ?  $attr['alignMobile'] : 'none'
 );
 $m_selectors['.wp-block-uagb-image .wp-block-uagb-image__figure figcaption'] = array(
-	'font-size'     => UAGB_Helper::get_css_value( $attr['captionFontSizeMobile'], $attr['captionFontSizeType'] ),
-	'line-height'   => UAGB_Helper::get_css_value( $attr['captionLineHeightMobile'], $attr['captionLineHeightType'] ),
 	'margin-top'    => UAGB_Helper::get_css_value( $attr['captionTopMarginMobile'], $attr['captionMarginUnitMobile'] ),
 	'margin-right'  => UAGB_Helper::get_css_value( $attr['captionRightMarginMobile'], $attr['captionMarginUnitMobile'] ),
 	'margin-bottom' => UAGB_Helper::get_css_value( $attr['captionBottomMarginMobile'], $attr['captionMarginUnitMobile'] ),
@@ -223,8 +220,6 @@ $m_selectors['.wp-block-uagb-image .wp-block-uagb-image__figure figcaption'] = a
 );
 
 $m_selectors['.wp-block-uagb-image .wp-block-uagb-image--layout-overlay__inner .uagb-image-heading']   = array(
-	'font-size'     => UAGB_Helper::get_css_value( $attr['headingFontSizeMobile'], $attr['headingFontSizeType'] ),
-	'line-height'   => UAGB_Helper::get_css_value( $attr['headingLineHeightMobile'], $attr['headingLineHeightType'] ),
 	'margin-top'    => UAGB_Helper::get_css_value( $attr['headingTopMarginMobile'], $attr['headingMarginUnitMobile'] ),
 	'margin-right'  => UAGB_Helper::get_css_value( $attr['headingRightMarginMobile'], $attr['headingMarginUnitMobile'] ),
 	'margin-bottom' => UAGB_Helper::get_css_value( $attr['headingBottomMarginMobile'], $attr['headingMarginUnitMobile'] ),
@@ -238,6 +233,12 @@ $m_selectors['.wp-block-uagb-image .wp-block-uagb-image--layout-overlay__inner .
 	'margin-right'  => UAGB_Helper::get_css_value( $attr['seperatorRightMarginMobile'], $attr['seperatorMarginUnitMobile'] ),
 );
 
+$m_selectors['.wp-block-uagb-image .wp-block-uagb-image__figure img'] = array(
+	'object-fit' => $attr['objectFitMobile'],
+	'width'      => $width_mobile,
+	'height'     => $height_mobile,
+);
+
 $combined_selectors = array(
 	'desktop' => $selectors,
 	'tablet'  => $t_selectors,
@@ -245,5 +246,8 @@ $combined_selectors = array(
 );
 
 $base_selector = '.uagb-block-';
+
+$combined_selectors = UAGB_Helper::get_typography_css( $attr, 'heading', '.wp-block-uagb-image--layout-overlay .wp-block-uagb-image--layout-overlay__inner .uagb-image-heading', $combined_selectors );
+$combined_selectors = UAGB_Helper::get_typography_css( $attr, 'caption', '.wp-block-uagb-image .wp-block-uagb-image__figure figcaption', $combined_selectors );
 
 return UAGB_Helper::generate_all_css( $combined_selectors, $base_selector . $id );
