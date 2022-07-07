@@ -378,6 +378,4 @@ module.exports = function ( grunt ) {
 	grunt.registerTask( 'minify', [ 'rtlcss', 'cssmin', 'uglify' ] );
 
 	grunt.registerTask( 'font-awesome-php-array-update', [ 'json2php' ] );
-
-	grunt.registerTask( 'font-awesome-v6-php-array-update', [ 'json2php' ] );
 };

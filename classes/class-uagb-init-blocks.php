@@ -577,6 +577,7 @@ class UAGB_Init_Blocks {
 				'enableMasonryGallery'               => apply_filters( 'uag_enable_masonry_gallery', UAGB_Admin_Helper::get_admin_settings_option( 'uag_enable_masonry_gallery', 'enabled' ) ),
 				'enableResponsiveConditions'         => apply_filters( 'enable_block_responsive', UAGB_Admin_Helper::get_admin_settings_option( 'uag_enable_block_responsive', 'enabled' ) ),
 				'uagb_svg_icons'                     => UAGB_Helper::backend_load_font_awesome_icons(),
+				'spectra_font_awesome_version'       => UAGB_Helper::get_font_awesome_version(),
 				'uagb_enable_extensions_for_blocks'  => apply_filters( 'uagb_enable_extensions_for_blocks', array() ),
 				'uagb_exclude_blocks_from_extension' => $uagb_exclude_blocks_from_extension,
 				'uag_load_select_font_globally'      => $enable_selected_fonts,
