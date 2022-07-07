@@ -23,6 +23,8 @@ function contentTimelineStyle( props ) {
 		separatorwidth,
 		borderwidth,
 		connectorBgsize,
+		connectorBgsizeTablet,
+		connectorBgsizeMobile,
 		borderRadius,
 		borderRadiusTablet,
 		borderRadiusMobile,
@@ -39,6 +41,8 @@ function contentTimelineStyle( props ) {
 		dateLineHeightMobile,
 		dateColor,
 		iconSize,
+		iconSizeTablet,
+		iconSizeMobile,
 		iconBgFocus,
 		headFontSizeType,
 		headFontSize,
@@ -124,13 +128,22 @@ function contentTimelineStyle( props ) {
 		dateLetterSpacingType,
 	} = props.attributes;
 
-	const iconSizeFallback = getFallbackNumber( iconSize, 'iconSize', blockName );
 	const connectorBgSizeFallback = getFallbackNumber( connectorBgsize, 'connectorBgsize', blockName );
 	const borderWidthFallback = getFallbackNumber( borderwidth, 'borderwidth', blockName );
 	const separatorWidthFallback = getFallbackNumber( separatorwidth, 'separatorwidth', blockName );
 	const headSpaceFallback = getFallbackNumber( headSpace, 'headSpace', blockName );
 	const borderRadiusFallback = getFallbackNumber( borderRadius, 'borderRadius', blockName );
 	const dateBottomSpaceFallback = getFallbackNumber( dateBottomspace, 'dateBottomspace', blockName );
+
+	const iconSizeFallback = getFallbackNumber( iconSize, 'iconSize', blockName );
+	const iconSizeTabletFallback = getFallbackNumber( iconSizeTablet, 'iconSizeTablet', blockName );
+	const iconSizeMobileFallback = getFallbackNumber( iconSizeMobile, 'iconSizeMobile', blockName );
+
+	const connectorBgsizeFallback = getFallbackNumber( connectorBgsize, 'connectorBgsize', blockName );
+	const connectorBgsizeTabletFallback = getFallbackNumber( connectorBgsizeTablet, 'connectorBgsizeTablet', blockName );
+	const connectorBgsizeMobileFallback = getFallbackNumber( connectorBgsizeMobile, 'connectorBgsizeMobile', blockName );
+
+	const respSelectors = 'left';
 
 	const selectors = {
 		' .uagb-timeline__heading.rich-text': {
@@ -221,32 +234,32 @@ function contentTimelineStyle( props ) {
 			'width': generateCSSUnit( separatorWidthFallback, 'px' ),
 		},
 		'.uagb-timeline__right-block .uagb-timeline__line': {
-			'right': 'calc( ' + connectorBgSizeFallback + 'px / 2 )',
+			'right': 'calc( ' + connectorBgsizeFallback + 'px / 2 )',
 		},
 		'.uagb-timeline__left-block .uagb-timeline__line': {
-			'left': 'calc( ' + connectorBgSizeFallback + 'px / 2 )',
+			'left': 'calc( ' + connectorBgsizeFallback + 'px / 2 )',
 		},
 		'.uagb-timeline__center-block .uagb-timeline__line': {
-			'right': 'calc( ' + connectorBgSizeFallback + 'px / 2 )',
+			'right': 'calc( ' + connectorBgsizeFallback + 'px / 2 )',
 		},
 		' .uagb-timeline__marker': {
 			'background-color': separatorBg,
-			'min-height': generateCSSUnit( connectorBgSizeFallback, 'px' ),
-			'min-width': generateCSSUnit( connectorBgSizeFallback, 'px' ),
-			'line-height': generateCSSUnit( connectorBgSizeFallback, 'px' ),
-			'border': borderWidthFallback + 'px solid' + separatorBorder,
+			'min-height': generateCSSUnit( connectorBgsizeFallback, 'px' ),
+			'min-width': generateCSSUnit( connectorBgsizeFallback, 'px' ),
+			'line-height': generateCSSUnit( connectorBgsizeFallback, 'px' ),
+			'border': borderwidth + 'px solid' + separatorBorder,
 		},
 		'.uagb-timeline__left-block .uagb-timeline__left .uagb-timeline__arrow': {
-			'height': generateCSSUnit( connectorBgSizeFallback, 'px' ),
+			'height': generateCSSUnit( connectorBgsizeFallback, 'px' ),
 		},
 		'.uagb-timeline__right-block .uagb-timeline__right .uagb-timeline__arrow': {
-			'height': generateCSSUnit( connectorBgSizeFallback, 'px' ),
+			'height': generateCSSUnit( connectorBgsizeFallback, 'px' ),
 		},
 		'.uagb-timeline__center-block .uagb-timeline__left .uagb-timeline__arrow': {
-			'height': generateCSSUnit( connectorBgSizeFallback, 'px' ),
+			'height': generateCSSUnit( connectorBgsizeFallback, 'px' ),
 		},
 		'.uagb-timeline__center-block .uagb-timeline__right .uagb-timeline__arrow': {
-			'height': generateCSSUnit( connectorBgSizeFallback, 'px' ),
+			'height': generateCSSUnit( connectorBgsizeFallback, 'px' ),
 		},
 		'.uagb-timeline__center-block .uagb-timeline__left .uagb-timeline__marker': {
 			'margin-left': generateCSSUnit( leftMargin + 3, marginUnit ),
@@ -356,6 +369,10 @@ function contentTimelineStyle( props ) {
 			),
 			'margin-bottom': generateCSSUnit( dateBottomspaceTablet, 'px' ),
 			'letter-spacing': generateCSSUnit( dateLetterSpacingTablet, dateLetterSpacingType ),
+		},
+		' svg': {
+			'font-size': generateCSSUnit( iconSizeTabletFallback, 'px' ),
+			'width': generateCSSUnit( iconSizeTabletFallback, 'px' ),
 		},
 		' .uagb-timeline__date-hide.uagb-timeline__inner-date-new': {
 			'font-size': generateCSSUnit(
@@ -474,38 +491,31 @@ function contentTimelineStyle( props ) {
 			),
 			'border-radius': generateCSSUnit( borderRadiusTablet, 'px' ),
 		},
-		' .uagb-timeline__day-new': {
-			'text-align': alignTablet,
+		'.uagb-timeline__right-block .uagb-timeline__line': {
+			'right': 'calc( ' + connectorBgsizeTabletFallback + 'px / 2 )',
 		},
-		' .uagb-timeline__date-inner': {
-			'text-align': alignTablet,
+		'.uagb-timeline__left-block .uagb-timeline__line': {
+			'left': 'calc( ' + connectorBgsizeTabletFallback + 'px / 2 )',
 		},
-		' .uagb-timeline__center-block .uagb-timeline__heading': {
-			'text-align': alignTablet,
+		'.uagb-timeline__center-block .uagb-timeline__line': {
+			'right': 'calc( ' + connectorBgsizeTabletFallback + 'px / 2 )',
 		},
-		' .uagb-timeline__center-block p.uagb-timeline-desc-content': {
-			'text-align': alignTablet,
+		' .uagb-timeline__marker': {
+			'min-height': generateCSSUnit( connectorBgsizeTabletFallback, 'px' ),
+			'min-width': generateCSSUnit( connectorBgsizeTabletFallback, 'px' ),
+			'line-height': generateCSSUnit( connectorBgsizeTabletFallback, 'px' ),
 		},
-		' .uagb-timeline__center-block .uagb-timeline__day-new': {
-			'text-align': alignTablet,
+		'.uagb-timeline__left-block .uagb-timeline__left .uagb-timeline__arrow': {
+			'height': generateCSSUnit( connectorBgsizeTabletFallback, 'px' ),
 		},
-		' .uagb-timeline__center-block .uagb-timeline__date-inner': {
-			'text-align': alignTablet,
+		'.uagb-timeline__right-block .uagb-timeline__right .uagb-timeline__arrow': {
+			'height': generateCSSUnit( connectorBgsizeTabletFallback, 'px' ),
 		},
-		' .uagb-timeline__center-block .uagb-timeline__date-hide.uagb-timeline__date-inner': {
-			'text-align': alignTablet,
+		'.uagb-timeline__center-block .uagb-timeline__left .uagb-timeline__arrow': {
+			'height': generateCSSUnit( connectorBgsizeTabletFallback, 'px' ),
 		},
-		' .uagb-timeline__center-block .uagb-timeline__author-link': {
-			'text-align': alignTablet,
-		},
-		' .uagb-timeline__center-block .uagb-timeline__link_parent': {
-			'text-align': alignTablet,
-		},
-		' .uagb-timeline__center-block .uagb-timeline__image a': {
-			'text-align': alignTablet,
-		},
-		' .uagb-timeline__center-block a.uagb-timeline__image': {
-			'text-align': alignTablet,
+		'.uagb-timeline__center-block .uagb-timeline__right .uagb-timeline__arrow': {
+			'height': generateCSSUnit( connectorBgsizeTabletFallback, 'px' ),
 		},
 	};
 
@@ -524,6 +534,10 @@ function contentTimelineStyle( props ) {
 			),
 			'margin-bottom': generateCSSUnit( dateBottomspaceMobile, 'px' ),
 			'letter-spacing': generateCSSUnit( dateLetterSpacingMobile, dateLetterSpacingType ),
+		},
+		' svg': {
+			'font-size': generateCSSUnit( iconSizeMobileFallback, 'px' ),
+			'width': generateCSSUnit( iconSizeMobileFallback, 'px' ),
 		},
 		' .uagb-timeline__date-hide.uagb-timeline__inner-date-new': {
 			'font-size': generateCSSUnit(
@@ -640,38 +654,31 @@ function contentTimelineStyle( props ) {
 			),
 			'border-radius': generateCSSUnit( borderRadiusMobile, 'px' ),
 		},
-		' .uagb-timeline__day-new': {
-			'text-align': alignMobile,
+		'.uagb-timeline__right-block .uagb-timeline__line': {
+			'right': 'calc( ' + connectorBgsizeMobileFallback + 'px / 2 )',
 		},
-		' .uagb-timeline__date-inner': {
-			'text-align': alignMobile,
+		'.uagb-timeline__left-block .uagb-timeline__line': {
+			'left': 'calc( ' + connectorBgsizeMobileFallback + 'px / 2 )',
 		},
-		' .uagb-timeline__center-block .uagb-timeline__heading': {
-			'text-align': alignMobile,
+		'.uagb-timeline__center-block .uagb-timeline__line': {
+			'right': 'calc( ' + connectorBgsizeMobileFallback + 'px / 2 )',
 		},
-		' .uagb-timeline__center-block p.uagb-timeline-desc-content': {
-			'text-align': alignMobile,
+		' .uagb-timeline__marker': {
+			'min-height': generateCSSUnit( connectorBgsizeMobileFallback, 'px' ),
+			'min-width': generateCSSUnit( connectorBgsizeMobileFallback, 'px' ),
+			'line-height': generateCSSUnit( connectorBgsizeMobileFallback, 'px' ),
 		},
-		' .uagb-timeline__center-block .uagb-timeline__day-new': {
-			'text-align': alignMobile,
+		'.uagb-timeline__left-block .uagb-timeline__left .uagb-timeline__arrow': {
+			'height': generateCSSUnit( connectorBgsizeMobileFallback, 'px' ),
 		},
-		' .uagb-timeline__center-block .uagb-timeline__date-inner': {
-			'text-align': alignMobile,
+		'.uagb-timeline__right-block .uagb-timeline__right .uagb-timeline__arrow': {
+			'height': generateCSSUnit( connectorBgsizeMobileFallback, 'px' ),
 		},
-		' .uagb-timeline__center-block .uagb-timeline__date-hide.uagb-timeline__date-inner': {
-			'text-align': alignMobile,
+		'.uagb-timeline__center-block .uagb-timeline__left .uagb-timeline__arrow': {
+			'height': generateCSSUnit( connectorBgsizeMobileFallback, 'px' ),
 		},
-		' .uagb-timeline__center-block .uagb-timeline__author-link': {
-			'text-align': alignMobile,
-		},
-		' .uagb-timeline__center-block .uagb-timeline__link_parent': {
-			'text-align': alignMobile,
-		},
-		' .uagb-timeline__center-block .uagb-timeline__image a': {
-			'text-align': alignMobile,
-		},
-		' .uagb-timeline__center-block a.uagb-timeline__image': {
-			'text-align': alignMobile,
+		'.uagb-timeline__center-block .uagb-timeline__right .uagb-timeline__arrow': {
+			'height': generateCSSUnit( connectorBgsizeMobileFallback, 'px' ),
 		},
 	};
 
