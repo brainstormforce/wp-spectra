@@ -138,7 +138,7 @@ function styling( props ) {
 		' .uagb-toc__list-wrap ol li': {
 			'font-size': generateCSSUnit( fontSize, fontSizeType ),
 		},
-		' .uagb-toc__list-wrap ol li a': {
+		' .uagb-toc__list-wrap li a': {
 			'font-size': generateCSSUnit( fontSize, fontSizeType ),
 			'line-height': generateCSSUnit( lineHeight, lineHeightType ),
 			'font-family': fontFamily,
