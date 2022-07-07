@@ -44,6 +44,9 @@ const ContentTimelineComponent = ( props ) => {
             rightPadding,
             bottomPadding,
             leftPadding,
+            timelinAlignment,
+            timelinAlignmentTablet,
+            timelinAlignmentMobile
         } = attributes;
 
         if ( bgPadding ) {
@@ -61,20 +64,12 @@ const ContentTimelineComponent = ( props ) => {
             }
         }
 
-        if ( verticalSpace ) {
-            if ( undefined === topMargin ) {
-                setAttributes( { topMargin: verticalSpace } );
+        if( timelinAlignment ) {
+            if( undefined === timelinAlignmentTablet ) {
+                setAttributes( { timelinAlignmentTablet: timelinAlignment } );
             }
-            if ( undefined === bottomMargin ) {
-                setAttributes( { bottomMargin: verticalSpace } );
-            }
-        }
-        if ( horizontalSpace ) {
-            if ( undefined === rightMargin ) {
-                setAttributes( { rightMargin: horizontalSpace } );
-            }
-            if ( undefined === leftMargin ) {
-                setAttributes( { leftMargin: horizontalSpace } );
+            if( undefined === timelinAlignmentMobile ) {
+                setAttributes( { timelinAlignmentMobile: timelinAlignment } );
             }
         }
     }, [] );
