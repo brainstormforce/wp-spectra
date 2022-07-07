@@ -94,11 +94,11 @@ const BlockSettings = () => {
 					{__( 'Form - Google reCAPTCHA', 'ultimate-addons-for-gutenberg' )}
 				</h3>
 				<p className='mt-[0.6rem] mb-[0.6rem] text-sm '>{ __( 'To enable reCAPTCHA feature on your forms blocks Please enable reCAPTCHA option on your blocks setting and select version. Add google reCAPTCHA secret and site key here. reCAPTCHA will be added to your page on front-end.', 'ultimate-addons-for-gutenberg' ) }</p>
-				<a className='text-wpcolor hover:text-wphovercolor' href="https://www.google.com/recaptcha/admin/create">
+				<a className='text-wpcolor hover:text-wphovercolor' href="https://www.google.com/recaptcha/admin/create" target="_blank">
 					{ __( 'Get Keys', 'ultimate-addons-for-gutenberg' ) }
 				</a>
 				{ __( ' | ', 'ultimate-addons-for-gutenberg' ) }
-				<a className='text-wpcolor hover:text-wphovercolor' href="https://developers.google.com/recaptcha/intro">
+				<a className='text-wpcolor hover:text-wphovercolor' href="https://developers.google.com/recaptcha/intro" target="_blank">
 					{ __(
 						' Documentation',
 						'ultimate-addons-for-gutenberg'
