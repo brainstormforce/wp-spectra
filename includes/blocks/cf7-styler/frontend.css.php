@@ -295,16 +295,16 @@ $selectors = array(
 		'background-color' => $attr['radioCheckSelectColor'],
 	),
 	' .uagb-cf7-styler__check-style-enabled .wpcf7 form .wpcf7-list-item-label' => array(
-		'color'            => $attr['radioCheckLableColor'],
+		'color' => $attr['radioCheckLableColor'],
 	),
 	' span.wpcf7-not-valid-tip'                           => array(
-		'color'            => $attr['validationMsgColor'],
+		'color' => $attr['validationMsgColor'],
 	),
 	' .uagb-cf7-styler__highlight-border input.wpcf7-form-control.wpcf7-not-valid' => array(
-		'border-color'     => $attr['highlightBorderColor'],
+		'border-color' => $attr['highlightBorderColor'],
 	),
 	' .uagb-cf7-styler__highlight-border .wpcf7-form-control.wpcf7-not-valid .wpcf7-list-item-label:before' => array(
-		'border-color'     => $attr['highlightBorderColor'] . '!important',
+		'border-color' => $attr['highlightBorderColor'] . '!important',
 	),
 	' .uagb-cf7-styler__highlight-style-bottom_right .wpcf7-form-control-wrap .wpcf7-not-valid-tip' => array(
 		'background-color' => $attr['validationMsgBgColor'],
@@ -347,11 +347,11 @@ $field_padding_tablet = array(
 );
 
 $t_selectors = array(
-	' .wpcf7 input:not([type=submit])'              => array_merge(
+	' .wpcf7 input:not([type=submit])'                  => array_merge(
 		$border_tablet,
 		$field_padding_tablet,
 	),
-	' .wpcf7 select'                                => array_merge(
+	' .wpcf7 select'                                    => array_merge(
 		$border_tablet,
 		$field_padding_tablet,
 	),
@@ -371,7 +371,7 @@ $t_selectors = array(
 		$border_tablet,
 		$field_padding_tablet,
 	),
-	' .wpcf7 textarea'                              => array_merge(
+	' .wpcf7 textarea'                                  => array_merge(
 		$border_tablet,
 		$field_padding_tablet,
 	),
@@ -393,16 +393,16 @@ $t_selectors = array(
 		'font-size'    => 'calc( ' . $attr['radioCheckSizeTablet'] . 'px / 1.2 )',
 		'border-width' => UAGB_Helper::get_css_value( $attr['radioCheckBorderWidthTablet'], 'px' ),
 	),
-	' .wpcf7 form.wpcf7-form:not(input)'            => array(
+	' .wpcf7 form.wpcf7-form:not(input)'                => array(
 		'color' => $attr['fieldLabelColor'],
 	),
-	' .wpcf7-response-output'                       => array(
+	' .wpcf7-response-output'                           => array(
 		'padding-top'    => UAGB_Helper::get_css_value( $attr['messageTopPaddingTablet'], $attr['messagePaddingTypeTablet'] ),
 		'padding-bottom' => UAGB_Helper::get_css_value( $attr['messageBottomPaddingTablet'], $attr['messagePaddingTypeTablet'] ),
 		'padding-left'   => UAGB_Helper::get_css_value( $attr['messageLeftPaddingTablet'], $attr['messagePaddingTypeTablet'] ),
 		'padding-right'  => UAGB_Helper::get_css_value( $attr['messageRightPaddingTablet'], $attr['messagePaddingTypeTablet'] ),
 	),
-	' .wpcf7 input.wpcf7-form-control.wpcf7-submit' => array_merge(
+	' .wpcf7 input.wpcf7-form-control.wpcf7-submit'     => array_merge(
 		array(
 			'padding-top'    => UAGB_Helper::get_css_value( $attr['buttonTopPaddingTablet'], $attr['buttonPaddingTypeTablet'] ),
 			'padding-bottom' => UAGB_Helper::get_css_value( $attr['buttonBottomPaddingTablet'], $attr['buttonPaddingTypeTablet'] ),
@@ -465,11 +465,11 @@ $field_padding_mobile = array(
 );
 
 $m_selectors = array(
-	' .wpcf7 input:not([type=submit])'              => array_merge(
+	' .wpcf7 input:not([type=submit])'                  => array_merge(
 		$border_mobile,
 		$field_padding_mobile,
 	),
-	' .wpcf7 select'                                => array_merge(
+	' .wpcf7 select'                                    => array_merge(
 		$border_mobile,
 		$field_padding_mobile,
 	),
@@ -489,7 +489,7 @@ $m_selectors = array(
 		$border_mobile,
 		$field_padding_mobile,
 	),
-	' .wpcf7 textarea'                              => array_merge(
+	' .wpcf7 textarea'                                  => array_merge(
 		$border_mobile,
 		$field_padding_mobile,
 	),
@@ -511,13 +511,13 @@ $m_selectors = array(
 		'font-size'    => 'calc( ' . $attr['radioCheckSizeMobile'] . 'px / 1.2 )',
 		'border-width' => UAGB_Helper::get_css_value( $attr['radioCheckBorderWidthMobile'], 'px' ),
 	),
-	' .wpcf7-response-output'                       => array(
+	' .wpcf7-response-output'                           => array(
 		'padding-top'    => UAGB_Helper::get_css_value( $attr['messageTopPaddingMobile'], $attr['messagePaddingTypeMobile'] ),
 		'padding-bottom' => UAGB_Helper::get_css_value( $attr['messageBottomPaddingMobile'], $attr['messagePaddingTypeMobile'] ),
 		'padding-left'   => UAGB_Helper::get_css_value( $attr['messageLeftPaddingMobile'], $attr['messagePaddingTypeMobile'] ),
 		'padding-right'  => UAGB_Helper::get_css_value( $attr['messageRightPaddingMobile'], $attr['messagePaddingTypeMobile'] ),
 	),
-	' .wpcf7 input.wpcf7-form-control.wpcf7-submit' => array_merge(
+	' .wpcf7 input.wpcf7-form-control.wpcf7-submit'     => array_merge(
 		array(
 			'padding-top'    => UAGB_Helper::get_css_value( $attr['buttonTopPaddingMobile'], $attr['buttonPaddingTypeMobile'] ),
 			'padding-bottom' => UAGB_Helper::get_css_value( $attr['buttonBottomPaddingMobile'], $attr['buttonPaddingTypeMobile'] ),
@@ -526,7 +526,7 @@ $m_selectors = array(
 		),
 		$btn_border_mobile
 	),
-	' .wpcf7 form.wpcf7-form:not(input)'            => array(
+	' .wpcf7 form.wpcf7-form:not(input)'                => array(
 		'color' => $attr['fieldLabelColor'],
 	),
 	// underline border.
