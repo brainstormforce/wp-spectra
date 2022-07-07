@@ -9,6 +9,15 @@
 	transition-duration: 0.2s;
 	transition-timing-function: ease;
 
+	&.alignfull.uagb-is-root-container .uagb-container-inner-blocks-wrap {
+		display: flex;
+		position: relative;
+		box-sizing: border-box;
+		margin-left: auto !important;
+		margin-right: auto !important;
+		z-index: 2;
+	}
+
 	& > *:not(.uagb-container__shape) {
 		z-index: 2;
 	}
