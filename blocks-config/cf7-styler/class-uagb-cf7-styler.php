@@ -133,7 +133,7 @@ if ( ! class_exists( 'UAGB_CF7_Styler' ) ) {
 							),
 							'buttonBgColor'                => array(
 								'type'    => 'string',
-								'default' => 'transparent',
+								'default' => '',
 							),
 							'buttonTextHoverColor'         => array(
 								'type'    => 'string',
@@ -141,7 +141,7 @@ if ( ! class_exists( 'UAGB_CF7_Styler' ) ) {
 							),
 							'buttonBgHoverColor'           => array(
 								'type'    => 'string',
-								'default' => 'transparent',
+								'default' => '',
 							),
 							'fieldSpacing'                 => array(
 								'type'    => 'number',
