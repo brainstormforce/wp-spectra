@@ -2,6 +2,7 @@ import { blocksAttributes } from '@Controls/getBlocksDefaultAttributes';
 import { select } from '@wordpress/data';
 import { Button, Tooltip, Dashicon } from '@wordpress/components';
 import { __ } from '@wordpress/i18n';
+import { useState } from '@wordpress/element';
 
 const UAGReset = ( props ) => {
 
@@ -10,6 +11,8 @@ const UAGReset = ( props ) => {
 		attributeNames,
 		setAttributes
 	} = props;
+
+	const [ refreshPresets, toggleRefreshPresets ] = useState( false );
 
 	const { getSelectedBlock } = select( 'core/block-editor' );
 
@@ -61,7 +64,7 @@ const UAGReset = ( props ) => {
 						setAttributes( { [ attributeName ]: defaultValues?.[attributeName] } )
 					}
 				}
-
+				toggleRefreshPresets( !refreshPresets );
 				return attributeName;
 			} );
 		}
