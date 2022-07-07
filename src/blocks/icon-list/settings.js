@@ -38,7 +38,6 @@ const Settings = ( props ) => {
 		innerGapTablet,
 		innerGapMobile,
 		innerGapType,
-		stack,
 		icon_layout,
 		iconLayoutTablet,
 		iconLayoutMobile,
@@ -117,7 +116,7 @@ const Settings = ( props ) => {
 
 	const generalSetting = () => {
 		return (
-			<UAGAdvancedPanelBody title={ __( 'Content', 'ultimate-addons-for-gutenberg' ) } initialOpen={ true }>
+			<UAGAdvancedPanelBody title={ __( 'Content', 'ultimate-addons-for-gutenberg' ) } initialOpen={ false }>
 				<MultiButtonsControl
 					setAttributes={ setAttributes }
 					label={ __( 'Layout', 'ultimate-addons-for-gutenberg' ) }
@@ -212,56 +211,6 @@ const Settings = ( props ) => {
 					showIcons={ true }
 					responsive={true}
 				/>
-
-
-
-
-
-
-				{ 'horizontal' === icon_layout && (
-					<>
-						<MultiButtonsControl
-							setAttributes={ setAttributes }
-							label={ __(
-								'Stack On',
-								'ultimate-addons-for-gutenberg'
-							) }
-							data={ {
-								value: stack,
-								label: 'stack',
-							} }
-							className="uagb-multi-button-alignment-control"
-							options={ [
-								{
-									value: 'none',
-									label: __(
-										'None',
-										'ultimate-addons-for-gutenberg'
-									),
-								},
-								{
-									value: 'tablet',
-									label: __(
-										'Tablet + Mobile',
-										'ultimate-addons-for-gutenberg'
-									),
-								},
-								{
-									value: 'mobile',
-									label: __(
-										'Mobile',
-										'ultimate-addons-for-gutenberg'
-									),
-								},
-							] }
-							showIcons={ false }
-							help={ __(
-								'Note: Choose on what breakpoint the Icons will stack.',
-								'ultimate-addons-for-gutenberg'
-							) }
-						/>
-					</>
-				) }
 				{ ! hideLabel && (
 					<>
 						<MultiButtonsControl

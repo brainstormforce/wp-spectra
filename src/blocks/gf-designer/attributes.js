@@ -230,7 +230,6 @@ const attributes = { // eslint-disable-line no-unused-vars
 	},
 	buttonBgColor: {
 		type: 'string',
-		default: 'transparent',
 		UAGCopyPaste: {
 			styleType: 'btn-bg-color'
 		},
@@ -251,7 +250,6 @@ const attributes = { // eslint-disable-line no-unused-vars
 	},
 	buttonBgHoverColor: {
 		type: 'string',
-		default: 'transparent',
 		UAGCopyPaste: {
 			styleType: 'btn-bg-hover-color'
 		},
