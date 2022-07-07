@@ -372,11 +372,11 @@ const Settings = ( props ) => {
 
 		const contentWidthOptions = [
 			{
-				value: 'full',
+				value: 'alignfull',
 				label: __( 'Full Width', 'ultimate-addons-for-gutenberg' ),
 			},
 			{
-				value: 'wide',
+				value: 'alignwide',
 				label: __( 'Boxed', 'ultimate-addons-for-gutenberg' ),
 			},
 			{
@@ -404,7 +404,7 @@ const Settings = ( props ) => {
 			<>
 				<UAGAdvancedPanelBody
 					title={ __( 'Size', 'ultimate-addons-for-gutenberg' ) }
-					initialOpen={ true }
+					initialOpen={ false }
 				>
 					{ isBlockRootParent &&
 						<>
@@ -419,7 +419,7 @@ const Settings = ( props ) => {
 								showIcons={ false }
 								responsive={false}
 							/>
-							{ 'full' === contentWidth &&
+							{ 'alignfull' === contentWidth &&
 								<>
 									<MultiButtonsControl
 										setAttributes={ setAttributes }
