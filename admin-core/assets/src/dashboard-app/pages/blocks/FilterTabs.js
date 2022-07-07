@@ -167,7 +167,7 @@ const FilterTabs = () => {
 						} }
                         key={tab.name}
                         className={classNames(
-                        tab.slug === activeBlocksFilterTab ? 'bg-wphoverbgcolor text-wpcolor hover:text-wphovercolor' : ' hover:text-wphovercolor',
+                        tab.slug === activeBlocksFilterTab ? 'bg-wphoverbgcolor text-wpcolor focus:text-wphovercolor hover:text-wphovercolor active:text-wpcolor' : ' focus:text-wphovercolor active:text-wpcolor hover:text-wphovercolor',
                         'px-3 py-2 font-medium text-sm rounded-[0.2rem] cursor-pointer'
                         )}
                         onClick={ () => {
@@ -181,14 +181,14 @@ const FilterTabs = () => {
                 <span className="z-0 flex shadow-sm rounded-[0.2rem] justify-center">
                     <button
                         type="button"
-                        className="hover:bg-wphoverbgcolor hover:text-wpcolor -ml-px relative inline-flex items-center px-4 py-2 border border-gray-300 bg-white text-sm font-medium text-gray-70 focus:z-10 focus:outline-none rounded-l-md"
+                        className="focus:bg-wphoverbgcolor focus:text-wpcolor hover:bg-wphoverbgcolor hover:text-wpcolor -ml-px relative inline-flex items-center px-4 py-2 border border-gray-300 bg-white text-sm font-medium text-gray-70 focus:z-10 focus:outline-none rounded-l-md"
                         onClick={activateAllBlocks}
                     >
                         Activate all
                     </button>
                     <button
                         type="button"
-                        className="hover:bg-wphoverbgcolor hover:text-wpcolor -ml-px relative inline-flex items-center px-4 py-2 border border-gray-300 bg-white text-sm font-medium text-gray-70 focus:z-10 focus:outline-none rounded-r-md"
+                        className="focus:bg-wphoverbgcolor focus:text-wpcolor hover:bg-wphoverbgcolor hover:text-wpcolor -ml-px relative inline-flex items-center px-4 py-2 border border-gray-300 bg-white text-sm font-medium text-gray-70 focus:z-10 focus:outline-none rounded-r-md"
                         onClick={deactivateAllBlocks}
                     >
                         Deactivate all
