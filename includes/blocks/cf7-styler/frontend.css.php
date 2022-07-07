@@ -529,6 +529,42 @@ $m_selectors = array(
 	' .wpcf7 form.wpcf7-form:not(input)'            => array(
 		'color' => $attr['fieldLabelColor'],
 	),
+	// underline border.
+	' .uagb-cf7-styler__field-style-underline .wpcf7 input:not([type=submit])' => array(
+		'border-style'        => 'none',
+		'border-bottom-style' => 'solid',
+		'border-bottom-width' => UAGB_Helper::get_css_value( $attr['inputBorderBottomWidthMobile'], 'px' ),
+	),
+	' .uagb-cf7-styler__field-style-underline select'   => array(
+		'border-style'        => 'none',
+		'border-bottom-style' => 'solid',
+		'border-bottom-width' => UAGB_Helper::get_css_value( $attr['inputBorderBottomWidthMobile'], 'px' ),
+	),
+	" .uagb-cf7-styler__field-style-underline .wpcf7-checkbox input[type='checkbox'] + span:before" => array(
+		'border-style'        => 'none',
+		'border-bottom-style' => 'solid',
+		'border-bottom-width' => UAGB_Helper::get_css_value( $attr['inputBorderBottomWidthMobile'], 'px' ),
+	),
+	" .uagb-cf7-styler__field-style-underline .wpcf7 input[type='radio'] + span:before" => array(
+		'border-style'        => 'none',
+		'border-bottom-style' => 'solid',
+		'border-bottom-width' => UAGB_Helper::get_css_value( $attr['inputBorderBottomWidthMobile'], 'px' ),
+	),
+	" .uagb-cf7-styler__field-style-underline .wpcf7-acceptance input[type='checkbox'] + span:before" => array(
+		'border-style'        => 'none',
+		'border-bottom-style' => 'solid',
+		'border-bottom-width' => UAGB_Helper::get_css_value( $attr['inputBorderBottomWidthMobile'], 'px' ),
+	),
+	' .uagb-cf7-styler__field-style-underline textarea' => array(
+		'border-style'               => 'none',
+		'border-bottom-color'        => $attr['inputBorderColor'],
+		'border-bottom-style'        => 'solid',
+		'border-bottom-width'        => UAGB_Helper::get_css_value( $attr['inputBorderBottomWidthMobile'], 'px' ),
+		'border-top-left-radius'     => UAGB_Helper::get_css_value( $attr['inputBorderTopLeftRadiusMobile'], 'px' ),
+		'border-top-right-radius'    => UAGB_Helper::get_css_value( $attr['inputBorderTopRightRadiusMobile'], 'px' ),
+		'border-bottom-right-radius' => UAGB_Helper::get_css_value( $attr['inputBorderBottomRightRadiusMobile'], 'px' ),
+		'border-bottom-left-radius'  => UAGB_Helper::get_css_value( $attr['inputBorderBottomLeftRadiusMobile'], 'px' ),
+	),
 	' .uagb-cf7-styler__check-style-enabled .wpcf7 input:not([type=submit])' => $field_padding_mobile,
 	' .wpcf7 select.wpcf7-form-control.wpcf7-select:not([multiple="multiple"])' => $field_padding_mobile,
 	' .wpcf7 select.wpcf7-select[multiple="multiple"] option' => $field_padding_mobile,
