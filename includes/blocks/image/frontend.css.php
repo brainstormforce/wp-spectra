@@ -45,6 +45,7 @@ $selectors = array(
 		'margin-right'  => UAGB_Helper::get_css_value( $attr['imageRightMargin'], $attr['imageMarginUnit'] ),
 		'margin-bottom' => UAGB_Helper::get_css_value( $attr['imageBottomMargin'], $attr['imageMarginUnit'] ),
 		'margin-left'   => UAGB_Helper::get_css_value( $attr['imageLeftMargin'], $attr['imageMarginUnit'] ),
+		'text-align'    => $attr['align'],
 	),
 	'.wp-block-uagb-image--layout-default img' => array_merge(
 		$image_border_css,
@@ -169,6 +170,7 @@ $t_selectors['.wp-block-uagb-image']                                  = array(
 	'margin-right'  => UAGB_Helper::get_css_value( $attr['imageRightMarginTablet'], $attr['imageMarginUnitTablet'] ),
 	'margin-bottom' => UAGB_Helper::get_css_value( $attr['imageBottomMarginTablet'], $attr['imageMarginUnitTablet'] ),
 	'margin-left'   => UAGB_Helper::get_css_value( $attr['imageLeftMarginTablet'], $attr['imageMarginUnitTablet'] ),
+	'text-align'    => $attr['alignTablet'],
 );
 $t_selectors['.wp-block-uagb-image .wp-block-uagb-image__figure figcaption']                           = array(
 	'margin-top'    => UAGB_Helper::get_css_value( $attr['captionTopMarginTablet'], $attr['captionMarginUnitTablet'] ),
@@ -206,6 +208,7 @@ $m_selectors['.wp-block-uagb-image']                                  = array(
 	'margin-right'  => UAGB_Helper::get_css_value( $attr['imageRightMarginMobile'], $attr['imageMarginUnitMobile'] ),
 	'margin-bottom' => UAGB_Helper::get_css_value( $attr['imageBottomMarginMobile'], $attr['imageMarginUnitMobile'] ),
 	'margin-left'   => UAGB_Helper::get_css_value( $attr['imageLeftMarginMobile'], $attr['imageMarginUnitMobile'] ),
+	'text-align'    => $attr['alignMobile'],
 );
 $m_selectors['.wp-block-uagb-image .wp-block-uagb-image__figure figcaption'] = array(
 	'margin-top'    => UAGB_Helper::get_css_value( $attr['captionTopMarginMobile'], $attr['captionMarginUnitMobile'] ),

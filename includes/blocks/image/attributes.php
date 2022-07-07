@@ -40,6 +40,9 @@ return array_merge(
 		'imageMarginUnit'             => 'px',
 		'imageMarginUnitTablet'       => 'px',
 		'imageMarginUnitMobile'       => 'px',
+		'align'                       => '',
+		'alignTablet'                 => '',
+		'alignMobile'                 => '',
 		// heading.
 		'headingShowOn'               => 'always',
 		'headingLoadGoogleFonts'      => false,

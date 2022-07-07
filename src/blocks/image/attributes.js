@@ -46,6 +46,14 @@ const attributes = {
 		type: 'string',
 		default: '',
 	},
+	alignTablet: {
+		type: 'string',
+		default: '',
+	},
+	alignMobile: {
+		type: 'string',
+		default: '',
+	},
 	id: {
 		type: 'integer',
 		default: '',
