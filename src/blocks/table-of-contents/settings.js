@@ -141,10 +141,10 @@ const Settings = ( props ) => {
 		headingLetterSpacingTablet,
 		headingLetterSpacingMobile,
 		headingLetterSpacingType,
-		listLetterSpacing,
-		listLetterSpacingTablet,
-		listLetterSpacingMobile,
-		listLetterSpacingType,
+		letterSpacing,
+		letterSpacingTablet,
+		letterSpacingMobile,
+		letterSpacingType,
 		markerView,
 	} = attributes;
 
@@ -1002,20 +1002,20 @@ const Settings = ( props ) => {
 						label: 'lineHeightTablet',
 					} }
 					letterSpacing={ {
-						value: listLetterSpacing,
-						label: 'listLetterSpacing',
+						value: letterSpacing,
+						label: 'letterSpacing',
 					} }
 					letterSpacingTablet={ {
-						value: listLetterSpacingTablet,
-						label: 'listLetterSpacingTablet',
+						value: letterSpacingTablet,
+						label: 'letterSpacingTablet',
 					} }
 					letterSpacingMobile={ {
-						value: listLetterSpacingMobile,
-						label: 'listLetterSpacingMobile',
+						value: letterSpacingMobile,
+						label: 'letterSpacingMobile',
 					} }
 					letterSpacingType={ {
-						value: listLetterSpacingType,
-						label: 'listLetterSpacingType',
+						value: letterSpacingType,
+						label: 'letterSpacingType',
 					} }
 				/>
 				<SpacingControl

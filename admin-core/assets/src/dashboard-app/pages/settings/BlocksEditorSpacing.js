@@ -44,8 +44,8 @@ const BlocksEditorSpacing = () => {
                     </p>
                 </div>
                 <div className='flex spectra-content-width-input-wrap'>
-					<input className="appearance-none block w-20 h-8 bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 pr-0 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-zip" value={blocksEditorSpacing} onChange={updateBlocksEditorSpacing} type="number" placeholder="1200" min={0} max={1600} />
-					<span className="inline-flex h-8 items-center px-3 rounded-r-md border border-l-0 border-gray-200 bg-white text-gray-500 sm:text-sm">
+					<input className="appearance-none block w-20 h-8 bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 pr-0 leading-tight focus:outline-none focus:bg-white focus:border-gray-500 spectra-admin__input-field" id="grid-zip" value={blocksEditorSpacing} onChange={updateBlocksEditorSpacing} type="number" placeholder="1200" min={0} max={1600} />
+					<span className="inline-flex h-8 items-center px-3 rounded-r-md border border-l-0 border-gray-200 bg-white text-gray-500 sm:text-sm spectra-admin__input-field--end-display">
 						{ __( 'px', 'ultimate-addons-for-gutenberg' ) }
 					</span>
                 </div>
