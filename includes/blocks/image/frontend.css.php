@@ -45,7 +45,7 @@ $selectors = array(
 		'margin-right'  => UAGB_Helper::get_css_value( $attr['imageRightMargin'], $attr['imageMarginUnit'] ),
 		'margin-bottom' => UAGB_Helper::get_css_value( $attr['imageBottomMargin'], $attr['imageMarginUnit'] ),
 		'margin-left'   => UAGB_Helper::get_css_value( $attr['imageLeftMargin'], $attr['imageMarginUnit'] ),
-		'text-align'    => $attr['align']
+		'text-align'    => $attr['align'],
 	),
 	'.wp-block-uagb-image--layout-default img' => array_merge(
 		$image_border_css,
