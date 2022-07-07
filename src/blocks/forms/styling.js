@@ -153,10 +153,10 @@ function styling( props ) {
 		inputLetterSpacingTablet,
 		inputLetterSpacingMobile,
 		inputLetterSpacingType,
-		submitLetterSpacing,
-		submitLetterSpacingTablet,
-		submitLetterSpacingMobile,
-		submitLetterSpacingType,
+		submitTextLetterSpacing,
+		submitTextLetterSpacingTablet,
+		submitTextLetterSpacingMobile,
+		submitTextLetterSpacingType,
 	} = props.attributes;
 
 	let selectors = {};
@@ -340,7 +340,7 @@ function styling( props ) {
 			),
 			'padding-left': generateCSSUnit( paddingBtnLeft, paddingBtnUnit ),
 			'padding-right': generateCSSUnit( paddingBtnRight, paddingBtnUnit ),
-			'letter-spacing': generateCSSUnit( submitLetterSpacing, submitLetterSpacingType ),
+			'letter-spacing': generateCSSUnit( submitTextLetterSpacing, submitTextLetterSpacingType ),
 		},
 		' .uagb-forms-main-form .uagb-forms-main-submit-button:hover': {
 			'color': submitColorHover,
@@ -530,8 +530,8 @@ function styling( props ) {
 				submitTextLineHeightType
 			),
 			'letter-spacing': generateCSSUnit(
-				submitLetterSpacingTablet,
-				submitLetterSpacingType
+				submitTextLetterSpacingTablet,
+				submitTextLetterSpacingType
 			),
 			...submitBorderTablet
 		},
@@ -648,7 +648,7 @@ function styling( props ) {
 				submitTextLineHeightType
 			),
 			...submitBorderMobile,
-			'letter-spacing': generateCSSUnit( submitLetterSpacingMobile, submitLetterSpacingType ),
+			'letter-spacing': generateCSSUnit( submitTextLetterSpacingMobile, submitTextLetterSpacingType ),
 		},
 		' .uagb-forms-main-form .uagb-forms-input-label': {
 			'font-size': generateCSSUnit(
