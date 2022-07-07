@@ -1454,7 +1454,6 @@ export default function Settings( props ) {
 							value: overlayPositionFromEdge,
 							label: 'overlayPositionFromEdge',
 						} }
-						min={ 0 }
 						max={ 100 }
 						unit={ {
 							value: overlayPositionFromEdgeUnit,
