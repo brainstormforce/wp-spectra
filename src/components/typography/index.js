@@ -34,21 +34,12 @@ const TypographyControl = ( props ) => {
 
 	useLayoutEffect( () => {
 		window.addEventListener( 'click', function( e ){
-			const typoDiv = document.querySelector( '.uagb-typography-advanced' );
-			const actionsDiv = document.querySelector( '.uag-typography-button' );
-			if ( typoDiv && showAdvancedControls ) {
-				if (
-					! typoDiv.contains( e.target ) &&
-					! actionsDiv.contains( e.target ) &&
-					! e.target?.parentElement?.parentElement?.classList?.contains( 'uag-font-family-select__menu' ) &&
-					! e.target?.classList?.contains( 'uag-responsive-common-button' ) &&
-					! e.target?.closest( '.uag-responsive-common-button' ) &&
-					! e.target?.closest( '.uagb-range-control-responsive' )
-				){
-					toggleAdvancedControls( false )
-				}
+			const popupWrapper = document.querySelector( '.spectra-control-popup__options.active' );
+			if (!popupWrapper?.contains(e.target)) {
+				popupWrapper?.classList.remove("active");
+				toggleAdvancedControls( false )
 			}
-		  } );
+		} );
 	}, [] );
 
 	let lineHeight;
