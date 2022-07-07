@@ -42,6 +42,11 @@ const UAGPresets = ( props ) => {
 
 	const [ selectedPresetState, setPreset ] = useState( '' );
 
+	const onReset = () => {
+		setPreset('');
+		resetChildBlockAttributes();
+	};
+
     const updatePresets = ( selectedPreset ) => {
 
         setPreset( selectedPreset );
@@ -107,44 +112,7 @@ const UAGPresets = ( props ) => {
         } );
     }
 
-	const resetValues = () => {
-		let defaultAttributes = null;
-		let defaultChildAttributes = null;
-
-		presets.map( ( preset ) => {
-
-			if ( preset.defaultAttributes ) {
-				defaultAttributes = preset.defaultAttributes;
-			}
-
-			if ( preset.defaultChildAttributes ) {
-				defaultChildAttributes = preset.defaultChildAttributes;
-			}
-
-			if ( defaultAttributes && preset.value && selectedPresetState === preset.value ) {
-				if ( preset.attributes ) {
-					preset.attributes.map( ( presetItem ) => {
-						if ( defaultAttributes[presetItem.label] && undefined !== defaultAttributes[presetItem.label].default ) {
-							setAttributes( { [presetItem.label]: defaultAttributes[presetItem.label].default } )
-						}
-						return presetItem;
-					} );
-				}
-
-				if ( preset.childAttributes && defaultChildAttributes ) {
-					resetChildBlockAttributes( preset, defaultChildAttributes );
-				}
-			}
-			if ( selectedPresetState === preset.value ){
-				setPreset( { selectedPreset: '' } );
-			}
-
-			return preset;
-		} );
-
-	};
-
-	const resetChildBlockAttributes = ( preset, defaultChildAttributes ) => {
+	const resetChildBlockAttributes = () => {
 		const { getSelectedBlock } = select( 'core/block-editor' );
 
         let childBlocks = [];
@@ -164,12 +132,16 @@ const UAGPresets = ( props ) => {
 
         const childBlocksAttributes = {};
 
-        preset.childAttributes.map( ( attr ) => {
-			if ( defaultChildAttributes[attr.label] && undefined !== defaultChildAttributes[attr.label].default ) {
-            	childBlocksAttributes[attr.label] = defaultChildAttributes[attr.label].default;
+		presets.map((preset) => {
+			if ( preset?.childAttributes ) {
+				preset?.childAttributes.map( ( attr ) => {
+					if ( presets[1]?.defaultChildAttributes && presets[1]?.defaultChildAttributes[attr.label] && undefined !== presets[1]?.defaultChildAttributes[attr.label].default ) {
+						childBlocksAttributes[attr.label] = presets[1]?.defaultChildAttributes[attr.label].default;
+					}
+					return attr;
+				} );
 			}
-            return attr;
-        } );
+		});
 
         childBlocksClientIds.map( ( clientId ) => {
             dispatch( 'core/block-editor' ).updateBlockAttributes( clientId, childBlocksAttributes );
@@ -223,6 +195,7 @@ const UAGPresets = ( props ) => {
 				<UAGReset
 					attributeNames = {resetAttributes}
 					setAttributes={ setAttributes }
+					onReset={onReset}
 				/>
 			</div>
             { 'dropdown' === presetInputType && presetDropdown }
