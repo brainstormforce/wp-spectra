@@ -408,7 +408,6 @@ export default function styling( props ) {
 			imageMarginUnitTablet
 		),
 		'text-align': alignTablet,
-		'float': 'center' !== alignTablet ? alignTablet : 'unset',
 	}
 	tablet_selectors['.wp-block-uagb-image .wp-block-uagb-image__figure figcaption'] = {
         'font-size': generateCSSUnit(
@@ -513,7 +512,6 @@ export default function styling( props ) {
 			imageMarginUnitMobile
 		),
 		'text-align': alignMobile,
-		'float': 'center' !== alignMobile ? alignMobile : 'unset',
 	}
 
 	mobile_selectors['.wp-block-uagb-image .wp-block-uagb-image__figure figcaption'] = {
