@@ -908,25 +908,25 @@ const attributes = {
 			styleType: 'heading-letter-spacing-type'
 		}
 	},
-	listLetterSpacing: {
+	letterSpacing: {
 		type: 'number',
 		UAGCopyPaste: {
 			styleType: 'list-letter-spacing'
 		}
 	},
-	listLetterSpacingTablet: {
+	letterSpacingTablet: {
 		type: 'number',
 		UAGCopyPaste: {
 			styleType: 'list-letter-spacing-tablet'
 		}
 	},
-	listLetterSpacingMobile: {
+	letterSpacingMobile: {
 		type: 'number',
 		UAGCopyPaste: {
 			styleType: 'list-letter-spacing-mobile'
 		}
 	},
-	listLetterSpacingType: {
+	letterSpacingType: {
 		type: 'string',
 		default: 'px',
 		UAGCopyPaste: {
