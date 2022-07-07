@@ -147,6 +147,18 @@ const Settings = ( props ) => {
 		headFontStyle,
 		subHeadFontStyle,
 		contentFontStyle,
+		headLetterSpacing,
+		headLetterSpacingTablet,
+		headLetterSpacingMobile,
+		headLetterSpacingType,
+		subHeadLetterSpacing,
+		subHeadLetterSpacingTablet,
+		subHeadLetterSpacingMobile,
+		subHeadLetterSpacingType,
+		contentLetterSpacing,
+		contentLetterSpacingTablet,
+		contentLetterSpacingMobile,
+		contentLetterSpacingType,
 	} = attributes;
 
 	const onItemTypeChange = ( value ) => {
@@ -366,6 +378,22 @@ const Settings = ( props ) => {
 						value: contentLineHeightTablet,
 						label: 'contentLineHeightTablet',
 					} }
+					letterSpacing={ {
+						value: contentLetterSpacing,
+						label: 'contentLetterSpacing',
+					} }
+					letterSpacingTablet={ {
+						value: contentLetterSpacingTablet,
+						label: 'contentLetterSpacingTablet',
+					} }
+					letterSpacingMobile={ {
+						value: contentLetterSpacingMobile,
+						label: 'contentLetterSpacingMobile',
+					} }
+					letterSpacingType={ {
+						value: contentLetterSpacingType,
+						label: 'contentLetterSpacingType',
+					} }
 				/>
 			</UAGAdvancedPanelBody>
 		);
@@ -492,6 +520,22 @@ const Settings = ( props ) => {
 						value: headLineHeightTablet,
 						label: 'headLineHeightTablet',
 					} }
+					letterSpacing={ {
+						value: headLetterSpacing,
+						label: 'headLetterSpacing',
+					} }
+					letterSpacingTablet={ {
+						value: headLetterSpacingTablet,
+						label: 'headLetterSpacingTablet',
+					} }
+					letterSpacingMobile={ {
+						value: headLetterSpacingMobile,
+						label: 'headLetterSpacingMobile',
+					} }
+					letterSpacingType={ {
+						value: headLetterSpacingType,
+						label: 'headLetterSpacingType',
+					} }
 				/>
 			</UAGAdvancedPanelBody>
 		);
@@ -579,6 +623,22 @@ const Settings = ( props ) => {
 							lineHeightTablet={ {
 								value: subHeadLineHeightTablet,
 								label: 'subHeadLineHeightTablet',
+							} }
+							letterSpacing={ {
+								value: subHeadLetterSpacing,
+								label: 'subHeadLetterSpacing',
+							} }
+							letterSpacingTablet={ {
+								value: subHeadLetterSpacingTablet,
+								label: 'subHeadLetterSpacingTablet',
+							} }
+							letterSpacingMobile={ {
+								value: subHeadLetterSpacingMobile,
+								label: 'subHeadLetterSpacingMobile',
+							} }
+							letterSpacingType={ {
+								value: subHeadLetterSpacingType,
+								label: 'subHeadLetterSpacingType',
 							} }
 						/>
 					</>
