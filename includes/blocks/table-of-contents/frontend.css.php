@@ -75,7 +75,6 @@ $selectors = array(
 	),
 	' .uagb-toc__list-wrap li a'                          => array(
 		'color' => $attr['linkColor'],
-		'letter-spacing'  => UAGB_Helper::get_css_value( $attr['listLetterSpacing'], $attr['listLetterSpacingType'] ),
 	),
 	' .uagb-toc__title-wrap'                              => array(
 		'justify-content' => $attr['align'],
@@ -85,7 +84,6 @@ $selectors = array(
 		'color'           => $attr['headingColor'],
 		'justify-content' => $attr['headingAlignment'],
 		'margin-bottom'   => UAGB_Helper::get_css_value( $attr['headingBottom'], 'px' ),
-		'letter-spacing'  => UAGB_Helper::get_css_value( $attr['headingLetterSpacing'], $attr['headingLetterSpacingType'] ),
 	),
 	' .uagb-toc__wrap'                                    => array_merge(
 		$overallBorderCSS,
@@ -169,12 +167,8 @@ $m_selectors = array(
 	' .uagb-toc__list-wrap ol li'                         => array(
 		'font-size' => UAGB_Helper::get_css_value( $attr['fontSizeMobile'], $attr['fontSizeType'] ),
 	),
-	' .uagb-toc__list-wrap li a'                          => array(
-		'letter-spacing'  => UAGB_Helper::get_css_value( $attr['listLetterSpacingMobile'], $attr['listLetterSpacingType'] ),
-	),
 	' .uagb-toc__title'                                   => array(
 		'margin-bottom' => UAGB_Helper::get_css_value( $attr['headingBottomMobile'], 'px' ),
-		'letter-spacing'  => UAGB_Helper::get_css_value( $attr['headingLetterSpacingMobile'], $attr['headingLetterSpacingType'] ),
 	),
 	' .uagb-toc__wrap'                                    => array_merge(
 		$overallBorderCSSMobile,
@@ -211,12 +205,8 @@ $t_selectors = array(
 	' .uagb-toc__list-wrap ol li'                         => array(
 		'font-size' => UAGB_Helper::get_css_value( $attr['fontSizeTablet'], $attr['fontSizeType'] ),
 	),
-	' .uagb-toc__list-wrap li a'                          => array(
-		'letter-spacing'  => UAGB_Helper::get_css_value( $attr['listLetterSpacingTablet'], $attr['listLetterSpacingType'] ),
-	),
 	' .uagb-toc__title'                                   => array(
 		'margin-bottom' => UAGB_Helper::get_css_value( $attr['headingBottomTablet'], 'px' ),
-		'letter-spacing'  => UAGB_Helper::get_css_value( $attr['headingLetterSpacingTablet'], $attr['headingLetterSpacingType'] ),
 	),
 	' .uagb-toc__wrap'                                    => array_merge(
 		$overallBorderCSSTablet,
