@@ -5,7 +5,7 @@
 import classnames from 'classnames';
 import renderSVG from '@Controls/renderIcon';
 
-import { dateI18n } from '@wordpress/date';
+import { format } from '@wordpress/date';
 
 import { RichText } from '@wordpress/block-editor';
 
@@ -24,8 +24,8 @@ export default function save( props ) {
 	const displayInnerDate = true;
 	let postDate = t_date;
 	if ( 'custom' !== dateFormat ) {
-		postDate = dateI18n( dateFormat, t_date );
-		if ( postDate === 'Invalid date' ) {
+		postDate = format( dateFormat, t_date );
+		if ( format( dateFormat, postDate ) === 'Invalid date' ) {
 			postDate = t_date;
 		}
 	}
@@ -81,7 +81,7 @@ export default function save( props ) {
 						{ displayPostDate !== true && t_date && (	
 							<>
 							{ ( 'custom' !== dateFormat &&
-								dateI18n( dateFormat, t_date ) ) ||
+								format( dateFormat, postDate ) ) ||
 								postDate }
 							</>
 						) }
