@@ -214,18 +214,18 @@ function styling( props ) {
 		' .wp-block-uagb-container .block-editor-block-list__block a:hover' : {
 			'color': linkHoverColor,
 		},
-		' .uagb-container__shape-top svg' : {
+		' > .wp-block-uagb-container > .uagb-container__shape-top svg' : {
 			'width': 'calc( ' + topWidth + '% + 1.3px )',
 			'height': generateCSSUnit( topHeight, 'px' )
 		},
-		' .uagb-container__shape-top .uagb-container__shape-fill' : {
+		' > .wp-block-uagb-container > .uagb-container__shape-top .uagb-container__shape-fill' : {
 			'fill': hexToRgba( maybeGetColorForVariable( topColor ), 100 ),
 		},
-		' .uagb-container__shape-bottom svg' : {
+		' > .wp-block-uagb-container > .uagb-container__shape-bottom svg' : {
 			'width': 'calc( ' + bottomWidth + '% + 1.3px )',
 			'height': generateCSSUnit( bottomHeight, 'px' )
 		},
-		' .uagb-container__shape-bottom .uagb-container__shape-fill' : {
+		' > .wp-block-uagb-container > .uagb-container__shape-bottom .uagb-container__shape-fill' : {
 			'fill': hexToRgba( maybeGetColorForVariable( bottomColor ), 100 ),
 		},
 		' .uagb-container__video-wrap' : {
@@ -343,7 +343,7 @@ function styling( props ) {
 		},
 	};
 
-	if ( ( 'full' === contentWidth || 'default' === contentWidth ) && 'alignwide' === innerContentWidth ) {
+	if ( 'alignfull' === contentWidth && 'alignwide' === innerContentWidth ) {
 
 		widthSelectorsDesktop[`.is-root-container > .block-editor-block-list__block > .wp-block-uagb-container.uagb-block-${ block_id } > .uagb-container-inner-blocks-wrap`] = {
 			'--inner-content-custom-width' : `min(${ containerFullWidth },${ innerContentCustomWidthDesktopFallback }${ innerContentCustomWidthType })`,
@@ -418,10 +418,10 @@ function styling( props ) {
 			'flex-wrap' : wrapTablet,
 			'align-content' : alignContentTablet,
 		},
-		' .uagb-container__shape-top svg' : {
+		' > .wp-block-uagb-container > .uagb-container__shape-top svg' : {
 			'height': generateCSSUnit( topHeightTablet, 'px' )
 		},
-		' .uagb-container__shape-bottom svg' : {
+		' > .wp-block-uagb-container > .uagb-container__shape-bottom svg' : {
 			'height': generateCSSUnit( bottomHeightTablet, 'px' )
 		},
 	};
@@ -477,10 +477,10 @@ function styling( props ) {
 			'flex-wrap' : wrapMobile,
 			'align-content' : alignContentMobile,
 		},
-		' .uagb-container__shape-top svg' : {
+		' > .wp-block-uagb-container > .uagb-container__shape-top svg' : {
 			'height': generateCSSUnit( topHeightMobile, 'px' )
 		},
-		' .uagb-container__shape-bottom svg' : {
+		' > .wp-block-uagb-container > .uagb-container__shape-bottom svg' : {
 			'height': generateCSSUnit( bottomHeightMobile, 'px' )
 		},
 	};

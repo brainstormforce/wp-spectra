@@ -8,7 +8,7 @@ const attributes = {
 	},
 	contentWidth: {
 		type: 'string',
-		default: 'full',
+		default: 'alignfull',
 		UAGCopyPaste: {
 			styleType: 'content-width'
 		}

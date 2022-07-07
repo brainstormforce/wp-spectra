@@ -76,6 +76,30 @@ const Settings = ( props ) => {
 		descriptionFontStyle,
 		descriptionTransform,
 		descriptionDecoration,
+		titleLetterSpacing,
+		titleLetterSpacingTablet,
+		titleLetterSpacingMobile,
+		titleLetterSpacingType,
+		descriptionLetterSpacing,
+		descriptionLetterSpacingTablet,
+		descriptionLetterSpacingMobile,
+		descriptionLetterSpacingType,
+		titleLineHeight,
+		titleLineHeightTablet,
+		titleLineHeightMobile,
+		titleLineHeightType,
+		descriptionLineHeight,
+		descriptionLineHeightType,
+		descriptionLineHeightTablet,
+		descriptionLineHeightMobile,
+		urlLineHeight,
+		urlLineHeightTablet,
+		urlLineHeightMobile,
+		urlLineHeightType,
+		urlLetterSpacing,
+		urlLetterSpacingTablet,
+		urlLetterSpacingMobile,
+		urlLetterSpacingType,
 	} = attributes;
 	/*
 	 * Event to set Image as while adding.
@@ -306,7 +330,38 @@ const Settings = ( props ) => {
 						value: urlFontSizeTablet,
 						label: 'urlFontSizeTablet',
 					}}
-					disableLineHeight={true}
+					lineHeightType={ {
+						value: urlLineHeightType,
+						label: 'urlLineHeightType',
+					} }
+					lineHeight={ {
+						value: urlLineHeight,
+						label: 'urlLineHeight',
+					} }
+					lineHeightMobile={ {
+						value: urlLineHeightMobile,
+						label: 'urlLineHeightMobile',
+					} }
+					lineHeightTablet={ {
+						value: urlLineHeightTablet,
+						label: 'urlLineHeightTablet',
+					} }
+					letterSpacing={ {
+						value: urlLetterSpacing,
+						label: 'urlLetterSpacing',
+					} }
+					letterSpacingTablet={ {
+						value: urlLetterSpacingTablet,
+						label: 'urlLetterSpacingTablet',
+					} }
+					letterSpacingMobile={ {
+						value: urlLetterSpacingMobile,
+						label: 'urlLetterSpacingMobile',
+					} }
+					letterSpacingType={ {
+						value: urlLetterSpacingType,
+						label: 'urlLetterSpacingType',
+					} }
 				/>
 				<AdvancedPopColorControl
 					label={ __( 'Color', 'ultimate-addons-for-gutenberg' ) }
@@ -368,7 +423,38 @@ const Settings = ( props ) => {
 						value: titleFontSizeTablet,
 						label: 'titleFontSizeTablet',
 					}}
-					disableLineHeight={true}
+					lineHeightType={ {
+						value: titleLineHeightType,
+						label: 'titleLineHeightType',
+					} }
+					lineHeight={ {
+						value: titleLineHeight,
+						label: 'titleLineHeight',
+					} }
+					lineHeightMobile={ {
+						value: titleLineHeightMobile,
+						label: 'titleLineHeightMobile',
+					} }
+					lineHeightTablet={ {
+						value: titleLineHeightTablet,
+						label: 'titleLineHeightTablet',
+					} }
+					letterSpacing={ {
+						value: titleLetterSpacing,
+						label: 'titleLetterSpacing',
+					} }
+					letterSpacingTablet={ {
+						value: titleLetterSpacingTablet,
+						label: 'titleLetterSpacingTablet',
+					} }
+					letterSpacingMobile={ {
+						value: titleLetterSpacingMobile,
+						label: 'titleLetterSpacingMobile',
+					} }
+					letterSpacingType={ {
+						value: titleLetterSpacingType,
+						label: 'titleLetterSpacingType',
+					} }
 				/>
 				<AdvancedPopColorControl
 					label={ __( 'Color', 'ultimate-addons-for-gutenberg' ) }
@@ -431,7 +517,38 @@ const Settings = ( props ) => {
 						value: descriptionFontSizeTablet,
 						label: 'descriptionFontSizeTablet',
 					}}
-					disableLineHeight={true}
+					lineHeightType={ {
+						value: descriptionLineHeightType,
+						label: 'descriptionLineHeightType',
+					} }
+					lineHeight={ {
+						value: descriptionLineHeight,
+						label: 'descriptionLineHeight',
+					} }
+					lineHeightMobile={ {
+						value: descriptionLineHeightMobile,
+						label: 'descriptionLineHeightMobile',
+					} }
+					lineHeightTablet={ {
+						value: descriptionLineHeightTablet,
+						label: 'descriptionLineHeightTablet',
+					} }
+					letterSpacing={ {
+						value: descriptionLetterSpacing,
+						label: 'descriptionLetterSpacing',
+					} }
+					letterSpacingTablet={ {
+						value: descriptionLetterSpacingTablet,
+						label: 'descriptionLetterSpacingTablet',
+					} }
+					letterSpacingMobile={ {
+						value: descriptionLetterSpacingMobile,
+						label: 'descriptionLetterSpacingMobile',
+					} }
+					letterSpacingType={ {
+						value: descriptionLetterSpacingType,
+						label: 'descriptionLetterSpacingType',
+					} }
 				/>
 				<AdvancedPopColorControl
 					label={ __( 'Color', 'ultimate-addons-for-gutenberg' ) }
