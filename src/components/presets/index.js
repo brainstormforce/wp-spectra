@@ -1,4 +1,4 @@
-import { SelectControl, Button, Dashicon, Tooltip } from '@wordpress/components';
+import { SelectControl } from '@wordpress/components';
 import { __ } from '@wordpress/i18n';
 import { useState } from '@wordpress/element';
 import styles from './editor.lazy.scss';
@@ -25,25 +25,26 @@ const UAGPresets = ( props ) => {
 		className
     } = props;
 
-	let resetAttributes = [];
+	const resetAttributes = [];
 
 	if ( presets ) {
-		presets.map((preset) => {
+		presets.map( ( preset ) => {
 			if ( preset?.attributes ) {
 				for ( const attribute of preset?.attributes ) {
-					if ( ! resetAttributes.includes(attribute?.label) ) {
-						resetAttributes.push(attribute?.label);
+					if ( ! resetAttributes.includes( attribute?.label ) ) {
+						resetAttributes.push( attribute?.label );
 					}
 				}
 			}
 
-		});
+			return preset;
+		} );
 	}
 
 	const [ selectedPresetState, setPreset ] = useState( '' );
 
 	const onReset = () => {
-		setPreset('');
+		setPreset( '' );
 		resetChildBlockAttributes();
 	};
 
@@ -132,7 +133,7 @@ const UAGPresets = ( props ) => {
 
         const childBlocksAttributes = {};
 
-		presets.map((preset) => {
+		presets.map( ( preset ) => {
 			if ( preset?.childAttributes ) {
 				preset?.childAttributes.map( ( attr ) => {
 					if ( presets[1]?.defaultChildAttributes && presets[1]?.defaultChildAttributes[attr.label] && undefined !== presets[1]?.defaultChildAttributes[attr.label].default ) {
@@ -141,7 +142,8 @@ const UAGPresets = ( props ) => {
 					return attr;
 				} );
 			}
-		});
+			return preset;
+		} );
 
         childBlocksClientIds.map( ( clientId ) => {
             dispatch( 'core/block-editor' ).updateBlockAttributes( clientId, childBlocksAttributes );
