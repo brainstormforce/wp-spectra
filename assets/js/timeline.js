@@ -142,7 +142,7 @@ function UAGBTimelineClasses ( attributes, id ) {
 
 		content.classList.remove( 'uagb-timeline__left-block', 'uagb-timeline__right-block','uagb-timeline__center-block' );
 
-		let device = 'Desktop';
+		let device = '';
 
 		if ( deviceWidth <= uagb_timeline_data.mobile_breakpoint ) {
 			device = 'Mobile';
