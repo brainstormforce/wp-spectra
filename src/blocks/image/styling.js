@@ -144,7 +144,15 @@ export default function styling( props ) {
 		maskCustomShape,
 		maskSize,
 		maskPosition,
-		maskRepeat
+		maskRepeat,
+		headingLetterSpacing,
+		headingLetterSpacingTablet,
+		headingLetterSpacingMobile,
+		headingLetterSpacingType,
+		captionLetterSpacing,
+		captionLetterSpacingTablet,
+		captionLetterSpacingMobile,
+		captionLetterSpacingType,
 	} = props.attributes;
 
 	const seperatorWidthFallback = getFallbackNumber( seperatorWidth, 'seperatorWidth', blockName );
@@ -216,6 +224,7 @@ export default function styling( props ) {
 				captionLineHeight,
 				captionLineHeightType
 			),
+			'letter-spacing': generateCSSUnit( captionLetterSpacing, captionLetterSpacingType ),
 			'color': captionColor,
 			'margin-top': generateCSSUnit(
 				captionTopMargin,
@@ -264,6 +273,7 @@ export default function styling( props ) {
 				headingLineHeight,
 				headingLineHeightType
 			),
+			'letter-spacing': generateCSSUnit( headingLetterSpacing, headingLetterSpacingType ),
 			'color': headingColor,
 			'margin-top': generateCSSUnit(
 				headingTopMargin,
@@ -403,6 +413,7 @@ export default function styling( props ) {
             captionLineHeightTablet,
             captionLineHeightType
         ),
+		'letter-spacing': generateCSSUnit( captionLetterSpacingTablet, captionLetterSpacingType ),
 		'margin-top': generateCSSUnit(
 			captionTopMarginTablet,
 			captionMarginUnitTablet
@@ -432,6 +443,7 @@ export default function styling( props ) {
             headingLineHeightTablet,
             headingLineHeightType
         ),
+		'letter-spacing': generateCSSUnit( headingLetterSpacingTablet, headingLetterSpacingType ),
 		'margin-top': generateCSSUnit(
 			headingTopMarginTablet,
 			headingMarginUnitTablet
@@ -505,6 +517,7 @@ export default function styling( props ) {
             captionLineHeightMobile,
             captionLineHeightType
         ),
+		'letter-spacing': generateCSSUnit( captionLetterSpacingMobile, captionLetterSpacingType ),
 		'margin-top': generateCSSUnit(
 			captionTopMarginMobile,
 			captionMarginUnitMobile
@@ -534,6 +547,7 @@ export default function styling( props ) {
             headingLineHeightMobile,
             headingLineHeightType
         ),
+		'letter-spacing': generateCSSUnit( headingLetterSpacingMobile, headingLetterSpacingType ),
 		'margin-top': generateCSSUnit(
 			headingTopMarginMobile,
 			headingMarginUnitMobile

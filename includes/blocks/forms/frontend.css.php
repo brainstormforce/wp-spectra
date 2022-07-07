@@ -183,7 +183,6 @@ $selectors = array(
 	' .uagb-forms-main-form .uagb-forms-main-submit-button' => array_merge(
 		array(
 			'font-size'        => UAGB_Helper::get_css_value( $attr['submitTextFontSize'], $attr['submitTextFontSizeType'] ),
-			'letter-spacing'   => UAGB_Helper::get_css_value( $attr['submitLetterSpacing'], $attr['submitLetterSpacingType'] ),
 			'color'            => $attr['submitColor'],
 			'background-color' => $attr['submitBgColor'],
 			'padding-top'      => UAGB_Helper::get_css_value( $btnPaddingTop, $attr['paddingBtnUnit'] ),
@@ -230,7 +229,6 @@ $t_selectors = array(
 	),
 	' .uagb-forms-main-form .uagb-forms-main-submit-button' => array_merge(
 		array(
-			'letter-spacing' => UAGB_Helper::get_css_value( $attr['submitLetterSpacingTablet'], $attr['submitLetterSpacingType'] ),
 			'padding-top'    => UAGB_Helper::get_css_value( $attr['paddingBtnTopTablet'], $attr['tabletPaddingBtnUnit'] ),
 			'padding-bottom' => UAGB_Helper::get_css_value( $attr['paddingBtnBottomTablet'], $attr['tabletPaddingBtnUnit'] ),
 			'padding-left'   => UAGB_Helper::get_css_value( $attr['paddingBtnLeftTablet'], $attr['tabletPaddingBtnUnit'] ),
@@ -263,7 +261,6 @@ $m_selectors = array(
 	),
 	' .uagb-forms-main-form .uagb-forms-main-submit-button' => array_merge(
 		array(
-			'letter-spacing' => UAGB_Helper::get_css_value( $attr['submitLetterSpacingMobile'], $attr['submitLetterSpacingType'] ),
 			'padding-top'    => UAGB_Helper::get_css_value( $attr['paddingBtnTopMobile'], $attr['mobilePaddingBtnUnit'] ),
 			'padding-bottom' => UAGB_Helper::get_css_value( $attr['paddingBtnBottomMobile'], $attr['mobilePaddingBtnUnit'] ),
 			'padding-left'   => UAGB_Helper::get_css_value( $attr['paddingBtnLeftMobile'], $attr['mobilePaddingBtnUnit'] ),
