@@ -91,10 +91,6 @@ const SpacingControl = ( props ) => {
 		if ( link.value ) {
 			changeLinkedValues( newValue, device );
 		} else{
-			newValue =
-				event.target.value === ''
-					? 0
-					: Number( event.target.value );
 			changedUnLinkedValues( device );
 		}
 
