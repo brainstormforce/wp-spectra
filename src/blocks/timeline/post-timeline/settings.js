@@ -57,7 +57,6 @@ const Settings = ( props ) => {
 		headLineHeightTablet,
 		headLineHeightMobile,
 		headLoadGoogleFonts,
-		timelinAlignmentDesktop,
 		timelinAlignmentTablet,
 		timelinAlignmentMobile,
 		arrowlinAlignment,
@@ -221,7 +220,14 @@ const Settings = ( props ) => {
 		horizontalSpaceUnitMobile
 	} = attributes;
 
-	const timelinAlignment = 'undefined' !== typeof attributes['timelinAlignment' + deviceType ] ? attributes['timelinAlignment' + deviceType ] :  attributes.timelinAlignment;
+	let device = deviceType;
+
+	// For desktop, attribute name does not have `desktop` suffix to support backward compatibility. 
+	if( 'Desktop' === deviceType ) {
+		device = '';
+	}
+
+	const timelinAlignment = 'undefined' !== typeof attributes['timelinAlignment' + device ] ? attributes['timelinAlignment' + device ] :  attributes.timelinAlignment;
 
 	const onSelectPostType = ( value ) => {
 		setAttributes( { postType: value } );
@@ -489,8 +495,8 @@ const Settings = ( props ) => {
 					) }
 					data={ {
 						desktop: {
-							value: timelinAlignmentDesktop,
-							label: 'timelinAlignmentDesktop',
+							value: timelinAlignment,
+							label: 'timelinAlignment',
 						},
 						tablet: {
 							value: timelinAlignmentTablet,

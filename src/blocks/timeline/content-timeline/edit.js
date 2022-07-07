@@ -94,7 +94,14 @@ const ContentTimelineComponent = ( props ) => {
             return;
         }
 
-        const timelinAlignment = 'undefined' !== typeof attributes['timelinAlignment' + deviceType ] ? attributes['timelinAlignment' + deviceType ] : attributes.timelinAlignment;
+        let device = deviceType;
+
+        // For desktop, attribute name does not have `desktop` suffix to support backward compatibility. 
+        if( 'Desktop' === deviceType ) {
+            device = '';
+        }
+
+        const timelinAlignment = 'undefined' !== typeof attributes['timelinAlignment' + device ] ? attributes['timelinAlignment' + device ] : attributes.timelinAlignment;
 
         select( 'core/block-editor' )
             .getBlocksByClientId( props.clientId )[0]

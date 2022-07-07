@@ -296,11 +296,11 @@ const attributes = {
 		},
 		default: false,
 	},
-	timelinAlignmentDesktop  : {
+	timelinAlignment  : {
 		type    : 'string',
 		default : 'center',
 		UAGCopyPaste: {
-			styleType: 'overall-alignment-desktop'
+			styleType: 'overall-alignment'
 		},
 	},
 	timelinAlignmentTablet  : {

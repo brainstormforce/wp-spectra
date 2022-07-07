@@ -66,7 +66,6 @@ const Settings = ( props ) => {
 			headLineHeightMobile,
 			headLoadGoogleFonts,
 			timelinAlignment,
-			timelinAlignmentDesktop,
 			timelinAlignmentTablet,
 			timelinAlignmentMobile,
 			arrowlinAlignment,
@@ -256,8 +255,8 @@ const Settings = ( props ) => {
 					) }
 					data={ {
 						desktop: {
-							value: timelinAlignmentDesktop,
-							label: 'timelinAlignmentDesktop',
+							value: timelinAlignment,
+							label: 'timelinAlignment',
 						},
 						tablet: {
 							value: timelinAlignmentTablet,

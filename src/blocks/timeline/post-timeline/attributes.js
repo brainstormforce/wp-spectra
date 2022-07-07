@@ -150,7 +150,7 @@ const attributes = { // eslint-disable-line no-unused-vars
 		type    : 'string',
 		default : 'px',
 	},
-	timelinAlignmentDesktop  : {
+	timelinAlignment  : {
 		type    : 'string',
 		default : 'center',
 		UAGCopyPaste: {

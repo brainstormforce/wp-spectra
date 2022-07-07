@@ -7,8 +7,14 @@
  */
  function AlignClass( attributes, index_val, deviceType ) {
 	let alignClass = '';
+	let device = deviceType;
 
-	const timelinAlignment = 'undefined' !== typeof attributes['timelinAlignment' + deviceType ] ? attributes['timelinAlignment' + deviceType ] : attributes.timelinAlignment;
+	// For desktop, attribute name does not have `desktop` suffix to support backward compatibility. 
+	if( 'Desktop' === deviceType ) {
+		device = '';
+	}
+
+	const timelinAlignment = 'undefined' !== typeof attributes['timelinAlignment' + device ] ? attributes['timelinAlignment' + device ] : attributes.timelinAlignment;
 
 	if ( 'left' === timelinAlignment ) {
 		alignClass = 'uagb-timeline__left';
