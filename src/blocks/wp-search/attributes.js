@@ -124,7 +124,7 @@ const attributes = {
 	},
 	buttonWidth: {
 		type: 'number',
-		default: 50,
+		default: 60,
 		UAGCopyPaste: {
 			styleType: 'btn-width'
 		}
@@ -386,28 +386,24 @@ const attributes = {
 		UAGCopyPaste: {
 			styleType: 'input-padding-top'
 		},
-		default: 12,
 	},
 	paddingInputRight: {
 		type: 'number',
 		UAGCopyPaste: {
 			styleType: 'input-padding-right'
 		},
-		default: 20,
 	},
 	paddingInputBottom: {
 		type: 'number',
 		UAGCopyPaste: {
 			styleType: 'input-padding-bottom'
 		},
-		default: 12,
 	},
 	paddingInputLeft: {
 		type: 'number',
 		UAGCopyPaste: {
 			styleType: 'input-padding-left'
 		},
-		default: 15,
 	},
 	paddingInputTopTablet: {
 		UAGCopyPaste: {

@@ -111,10 +111,10 @@ function styling( props ) {
 		headingLetterSpacingTablet,
 		headingLetterSpacingMobile,
 		headingLetterSpacingType,
-		listLetterSpacing,
-		listLetterSpacingTablet,
-		listLetterSpacingMobile,
-		listLetterSpacingType,
+		letterSpacing,
+		letterSpacingTablet,
+		letterSpacingMobile,
+		letterSpacingType,
 		markerView
 	} = props.attributes;
 
@@ -147,7 +147,7 @@ function styling( props ) {
 			'text-transform': fontTransform,
 			'font-weight': fontWeight,
 			'color': linkColor,
-			'letter-spacing': generateCSSUnit( listLetterSpacing, listLetterSpacingType ),
+			'letter-spacing': generateCSSUnit( letterSpacing, letterSpacingType ),
 		},
 		' .uagb-toc__title-wrap': {
 			'justify-content': align,
@@ -288,7 +288,7 @@ function styling( props ) {
 		' .uagb-toc__list-wrap ol li a': {
 			'font-size': generateCSSUnit( fontSizeTablet, fontSizeType ),
 			'line-height': generateCSSUnit( lineHeightTablet, lineHeightType ),
-			'letter-spacing': generateCSSUnit( listLetterSpacingTablet, listLetterSpacingType ),
+			'letter-spacing': generateCSSUnit( letterSpacingTablet, letterSpacingType ),
 		},
 		' .uagb-toc__title': {
 			'font-size': generateCSSUnit(
@@ -398,7 +398,7 @@ function styling( props ) {
 		' .uagb-toc__list-wrap ol li a': {
 			'font-size': generateCSSUnit( fontSizeMobile, fontSizeType ),
 			'line-height': generateCSSUnit( lineHeightMobile, lineHeightType ),
-			'letter-spacing': generateCSSUnit( listLetterSpacingMobile, listLetterSpacingType ),
+			'letter-spacing': generateCSSUnit( letterSpacingMobile, letterSpacingType ),
 		},
 		' .uagb-toc__title': {
 			'font-size': generateCSSUnit(

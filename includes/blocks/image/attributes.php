@@ -17,6 +17,8 @@ $overlay_attribute = UAGB_Block_Helper::uag_generate_border_attribute(
 
 return array_merge(
 	array(
+		'height'                      => '',
+		'width'                       => '',
 		'widthTablet'                 => '',
 		'heightTablet'                => '',
 		'widthMobile'                 => '',
@@ -145,6 +147,17 @@ return array_merge(
 		'maskSize'                    => 'auto',
 		'maskPosition'                => 'center center',
 		'maskRepeat'                  => 'no-repeat',
+		'objectFit'                   => 'default',
+		'objectFitTablet'             => 'default',
+		'objectFitMobile'             => 'default',
+		'headingLetterSpacing'        => '',
+		'headingLetterSpacingTablet'  => '',
+		'headingLetterSpacingMobile'  => '',
+		'headingLetterSpacingType'    => 'px',
+		'captionLetterSpacing'        => '',
+		'captionLetterSpacingTablet'  => '',
+		'captionLetterSpacingMobile'  => '',
+		'captionLetterSpacingType'    => 'px',
 	),
 	$image_attribute,
 	$overlay_attribute

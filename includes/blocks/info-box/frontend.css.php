@@ -187,7 +187,6 @@ $selectors = array(
 	),
 	// Prefix Style.
 	' .uagb-ifb-title-prefix'                             => array(
-		'letter-spacing' => UAGB_Helper::get_css_value( $attr['prefixLetterSpacing'], $attr['prefixLetterSpacingType'] ),
 		'color'          => $attr['prefixColor'],
 		'margin-bottom'  => UAGB_Helper::get_css_value( $attr['prefixSpace'], $attr['prefixSpaceUnit'] ),
 		'margin-top'     => UAGB_Helper::get_css_value( $attr['prefixTopMargin'], $attr['prefixSpaceUnit'] ),
@@ -196,7 +195,6 @@ $selectors = array(
 	),
 	// Title Style.
 	' .uagb-ifb-title'                                    => array(
-		'letter-spacing' => UAGB_Helper::get_css_value( $attr['headLetterSpacing'], $attr['headLetterSpacingType'] ),
 		'color'          => $attr['headingColor'],
 		'margin-bottom'  => UAGB_Helper::get_css_value( $attr['headSpace'], $attr['headSpaceUnit'] ),
 		'margin-top'     => UAGB_Helper::get_css_value( $attr['headTopMargin'], $attr['headSpaceUnit'] ),
@@ -205,7 +203,6 @@ $selectors = array(
 	),
 	// Description Style.
 	' .uagb-ifb-desc'                                     => array(
-		'letter-spacing' => UAGB_Helper::get_css_value( $attr['subHeadLetterSpacing'], $attr['subHeadLetterSpacingType'] ),
 		'color'          => $attr['subHeadingColor'],
 		'margin-bottom'  => UAGB_Helper::get_css_value( $attr['subHeadSpace'], $attr['subHeadSpaceUnit'] ),
 		'margin-top'     => UAGB_Helper::get_css_value( $attr['subHeadTopMargin'], $attr['subHeadSpaceUnit'] ),
@@ -287,15 +284,6 @@ if ( 'text' === $attr['ctaType'] ) {
 	);
 }
 
-
-if ( 'above-title' === $attr['iconimgPosition'] || 'below-title' === $attr['iconimgPosition'] ) {
-	$selectors['.uagb-infobox__content-wrap']  = array(
-		'text-align' => $attr['headingAlign'],
-	);
-	$selectors[' .uagb-infobox__content-wrap'] = array(
-		'text-align' => $attr['headingAlign'],
-	);
-}
 $m_selectors = array(
 	' .uagb-ifb-title-prefix'                              => array(
 		'margin-bottom' => UAGB_Helper::get_css_value( $attr['prefixMobileSpace'], $attr['prefixMobileMarginUnit'] ),
@@ -398,21 +386,18 @@ $m_selectors = array(
 
 $t_selectors = array(
 	' .uagb-ifb-title-prefix'                           => array(
-		'letter-spacing' => UAGB_Helper::get_css_value( $attr['prefixLetterSpacingTablet'], $attr['prefixLetterSpacingType'] ),
 		'margin-bottom'  => UAGB_Helper::get_css_value( $attr['prefixTabletSpace'], $attr['prefixTabletMarginUnit'] ),
 		'margin-top'     => UAGB_Helper::get_css_value( $attr['prefixMarginTopTablet'], $attr['prefixTabletMarginUnit'] ),
 		'margin-left'    => UAGB_Helper::get_css_value( $attr['prefixMarginLeftTablet'], $attr['prefixTabletMarginUnit'] ),
 		'margin-right'   => UAGB_Helper::get_css_value( $attr['prefixMarginRightTablet'], $attr['prefixTabletMarginUnit'] ),
 	),
 	' .uagb-ifb-title'                                  => array(
-		'letter-spacing' => UAGB_Helper::get_css_value( $attr['headLetterSpacingTablet'], $attr['headLetterSpacingType'] ),
 		'margin-bottom'  => UAGB_Helper::get_css_value( $attr['headTabletSpace'] . $attr['headTabletMarginUnit'] ),
 		'margin-top'     => UAGB_Helper::get_css_value( $attr['headMarginTopTablet'], $attr['headTabletMarginUnit'] ),
 		'margin-left'    => UAGB_Helper::get_css_value( $attr['headMarginLeftTablet'], $attr['headTabletMarginUnit'] ),
 		'margin-right'   => UAGB_Helper::get_css_value( $attr['headMarginRightTablet'], $attr['headTabletMarginUnit'] ),
 	),
 	' .uagb-ifb-desc'                                   => array(
-		'letter-spacing' => UAGB_Helper::get_css_value( $attr['subHeadLetterSpacingTablet'], $attr['subHeadLetterSpacingType'] ),
 		'margin-bottom'  => UAGB_Helper::get_css_value( $attr['subHeadTabletSpace'], $attr['subHeadTabletMarginUnit'] ),
 		'margin-top'     => UAGB_Helper::get_css_value( $attr['subHeadMarginTopTablet'], $attr['subHeadTabletMarginUnit'] ),
 		'margin-left'    => UAGB_Helper::get_css_value( $attr['subHeadMarginLeftTablet'], $attr['subHeadTabletMarginUnit'] ),
@@ -498,14 +483,30 @@ $t_selectors = array(
 		'box-sizing' => $box_sizing_image_tablet,
 	),
 );
+
+if ( 'above-title' === $attr['iconimgPosition'] || 'below-title' === $attr['iconimgPosition'] ) {
+	$selectors['.uagb-infobox__content-wrap']   = array(
+		'text-align' => $attr['headingAlign'],
+	);
+	$t_selectors['.uagb-infobox__content-wrap'] = array(
+		'text-align' => $attr['headingAlignTablet'],
+	);
+	$m_selectors['.uagb-infobox__content-wrap'] = array(
+		'text-align' => $attr['headingAlignMobile'],
+	);
+}
+
 if ( 'button' === $attr['ctaType'] ) {
-	$selectors[' .uagb-infobox-cta-link svg']                      = array(
+	$selectors[' div.uagb-ifb-button-wrapper a.uagb-infobox-cta-link'] = array(
+		'text-decoration' => $attr['ctaDecoration'],
+	);
+	$selectors[' .uagb-infobox-cta-link svg']                          = array(
 		'font-size'   => $cta_icon_size,
 		'height'      => $cta_icon_size,
 		'width'       => $cta_icon_size,
 		'line-height' => $cta_icon_size,
 	);
-	$selectors[' .uagb-ifb-button-wrapper .uagb-infobox-cta-link'] =
+	$selectors[' .uagb-ifb-button-wrapper .uagb-infobox-cta-link']     =
 		array(
 			'color'            => $attr['ctaBtnLinkColor'],
 			'background-color' => $attr['ctaBgColor'],
