@@ -70,7 +70,6 @@ return array(
 	'icon_layout'              => 'vertical',
 	'iconLayoutTablet'         => '',
 	'iconLayoutMobile'         => '',
-	'stack'                    => 'none',
 	'fontStyle'                => '',
 	'fontTransform'            => '',
 	'fontDecoration'           => '',

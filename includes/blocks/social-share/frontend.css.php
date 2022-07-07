@@ -48,7 +48,7 @@ $selectors = array(
 	),
 );
 
-$selectors['.uagb-social-share__outer-wrap .block-editor-inner-blocks'] = array(
+$selectors['.uagb-social-share__outer-wrap .block-editor-inner-blocks']   = array(
 	'text-align' => UAGB_Helper::get_css_value( $attr['align'] ),
 );
 $t_selectors['.uagb-social-share__outer-wrap .block-editor-inner-blocks'] = array(

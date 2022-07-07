@@ -4,7 +4,6 @@
 
 import classnames from 'classnames';
 import attributes from './attributes';
-import contentTimelineStyle from '.././inline-styles';
 import ContentTmClasses from '.././classes';
 import AlignClass from '.././align-classes';
 import DayAlignClass from '.././day-align-classes';
@@ -27,9 +26,6 @@ const deprecated = [
 				stack,
 				className,
 			} = props.attributes;
-
-			/* Style for elements */
-			const front_style = contentTimelineStyle( props );
 
 			const hasItems = Array.isArray( tm_content ) && tm_content.length;
 
@@ -201,9 +197,6 @@ const deprecated = [
 				className,
 			} = props.attributes;
 
-			/* Style for elements */
-			const front_style = contentTimelineStyle( props );
-
 			const hasItems = Array.isArray( tm_content ) && tm_content.length;
 
 			const dateFormat = __experimentalGetSettings().formats.date;
@@ -372,9 +365,6 @@ const deprecated = [
 				stack,
 				timelineItem,
 			} = props.attributes;
-
-			/* Style for elements */
-			const front_style = contentTimelineStyle( props );
 
 			const hasItems = Array.isArray( tm_content ) && tm_content.length;
 
@@ -552,9 +542,6 @@ const deprecated = [
 				timelineItem,
 				dateFormat,
 			} = props.attributes;
-
-			/* Style for elements */
-			const front_style = contentTimelineStyle( props );
 
 			const hasItems = Array.isArray( tm_content ) && tm_content.length;
 
