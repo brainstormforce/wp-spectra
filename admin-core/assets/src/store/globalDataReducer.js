@@ -129,6 +129,11 @@ const globalDataReducer = ( state = {}, action ) => {
 				...state,
 				blocksEditorSpacing: action.payload,
 				};
+        case 'UPDATE_ENABLE_FONT_AWESOME_5':
+            return {
+                ...state,
+                enableFontAwesome5: action.payload,
+            };
         default:
             return state;
     }

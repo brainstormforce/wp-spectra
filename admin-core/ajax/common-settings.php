@@ -73,6 +73,7 @@ class Common_Settings extends Ajax_Base {
 			'enable_coming_soon_mode',
 			'coming_soon_page',
 			'fetch_pages',
+			'load_font_awesome_5',
 		);
 
 		$this->init_ajax_events( $ajax_events );
@@ -928,5 +929,48 @@ class Common_Settings extends Ajax_Base {
 		}
 
 		return $new_settings;
+	}
+
+	/**
+	 * Save settings.
+	 *
+	 * @return void
+	 */
+	public function load_font_awesome_5() {
+
+		$response_data = array( 'messsage' => $this->get_error_msg( 'permission' ) );
+
+		if ( ! current_user_can( 'manage_options' ) ) {
+			wp_send_json_error( $response_data );
+		}
+
+		/**
+		 * Nonce verification
+		 */
+		if ( ! check_ajax_referer( 'uag_load_font_awesome_5', 'security', false ) ) {
+			$response_data = array( 'messsage' => $this->get_error_msg( 'nonce' ) );
+			wp_send_json_error( $response_data );
+		}
+
+		if ( empty( $_POST ) ) {
+			$response_data = array( 'messsage' => __( 'No post data found!', 'ultimate-addons-for-gutenberg' ) );
+			wp_send_json_error( $response_data );
+		}
+
+		\UAGB_Admin_Helper::update_admin_settings_option( 'uag_load_font_awesome_5', sanitize_text_field( $_POST['value'] ) );
+
+		if ( 'disabled' !== sanitize_text_field( $_POST['value'] ) ) {
+			$polyfiller_array = \UAGB_Admin_Helper::generate_font_awesome_5_polyfiller();
+			\UAGB_Admin_Helper::update_admin_settings_option( 'spectra_font_awesome_5_polyfiller', $polyfiller_array );
+		}
+		else {
+			\UAGB_Admin_Helper::update_admin_settings_option( 'spectra_font_awesome_5_polyfiller', '' );
+		}
+
+		$response_data = array(
+			'messsage' => __( 'Successfully saved data!', 'ultimate-addons-for-gutenberg' ),
+		);
+		wp_send_json_success( $response_data );
+
 	}
 }

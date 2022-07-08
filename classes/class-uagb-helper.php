@@ -50,14 +50,6 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 		public static $icon_json;
 
 		/**
-		 * Get Spectra Font Awesome Version.
-		 *
-		 * @since 2.0.0
-		 * @var spectra_fa_icon_version
-		 */
-		public static $spectra_fa_icon_version = 6;
-
-		/**
 		 * Google fonts to enqueue
 		 *
 		 * @var array
@@ -259,19 +251,8 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 		 */
 		public static function backend_load_font_awesome_icons() {
 
-			$json_file;
-
-			switch ( self::$spectra_fa_icon_version ) {
-				case 4:
-					$json_file = UAGB_DIR . 'blocks-config/uagb-controls/uagb-icons.php';
-					break;
-				case 6:
-					$json_file = UAGB_DIR . 'blocks-config/uagb-controls/spectra-icons-v6.php';
-					break;
-				default:
-					$json_file = UAGB_DIR . 'blocks-config/uagb-controls/spectra-icons-v6.php';
-					break;
-			}
+			// $json_file = UAGB_DIR . 'blocks-config/uagb-controls/uagb-icons.php';
+			$json_file = UAGB_DIR . 'blocks-config/uagb-controls/spectra-icons-v6.php';
 
 			if ( ! file_exists( $json_file ) ) {
 				return array();
@@ -286,18 +267,6 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 
 			return self::$icon_json;
 		}
-
-		/**
-		 * Get Spectra Font Awesome Version.
-		 *
-		 * @since 1.8.1
-		 * @return integer
-		 */
-		public static function get_font_awesome_version() {
-			return self::$spectra_fa_icon_version;
-		}
-
-
 
 		/**
 		 * Generate SVG.

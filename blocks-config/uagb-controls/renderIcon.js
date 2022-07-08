@@ -10,7 +10,20 @@ import parseSVG from './parseIcon';
 function renderSVG( svg ) {
 	svg = parseSVG( svg );
 
-	const fontAwesome = uagb_blocks_info.uagb_svg_icons[ svg ];
+	let fontAwesome;
+
+	// Load Polyfiller Array if needed.
+	if ( 'disabled' !== uagb_blocks_info.load_font_awesome_5 ) {
+		fontAwesome = uagb_blocks_info.uagb_svg_icons[ uagb_blocks_info.font_awesome_5_polyfiller[ svg ] ];
+		console.log( `%c${ fontAwesome }`, 'color: mediumspringgreen; font-size: 16px; font-weight: bold; text-shadow: 2px 2px 4px black;' );
+		if ( ! fontAwesome ) {
+			fontAwesome = uagb_blocks_info.uagb_svg_icons[ svg ];
+			console.log( `%c${ fontAwesome }`, 'color: salmon; font-size: 16px; font-weight: bold; text-shadow: 2px 2px 4px black;' );
+		}
+	}
+	else {
+		fontAwesome = uagb_blocks_info.uagb_svg_icons[ svg ];
+	}
 
 	if ( 'undefined' !== typeof fontAwesome ) {
 		const viewbox_array = fontAwesome.svg.hasOwnProperty( 'brands' )
