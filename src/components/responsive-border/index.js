@@ -49,7 +49,7 @@ const ResponsiveBorder = ( props ) => {
 			'ultimate-addons-for-gutenberg'
 		),
 		hoverTabLabel = __(
-			'Normal',
+			'Hover',
 			'ultimate-addons-for-gutenberg'
 		),
 	} = props;
