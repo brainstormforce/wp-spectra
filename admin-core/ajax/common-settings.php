@@ -959,14 +959,6 @@ class Common_Settings extends Ajax_Base {
 
 		\UAGB_Admin_Helper::update_admin_settings_option( 'uag_load_font_awesome_5', sanitize_text_field( $_POST['value'] ) );
 
-		if ( 'disabled' !== sanitize_text_field( $_POST['value'] ) ) {
-			$polyfiller_array = \UAGB_Admin_Helper::generate_font_awesome_5_polyfiller();
-			\UAGB_Admin_Helper::update_admin_settings_option( 'spectra_font_awesome_5_polyfiller', $polyfiller_array );
-		}
-		else {
-			\UAGB_Admin_Helper::update_admin_settings_option( 'spectra_font_awesome_5_polyfiller', '' );
-		}
-
 		$response_data = array(
 			'messsage' => __( 'Successfully saved data!', 'ultimate-addons-for-gutenberg' ),
 		);

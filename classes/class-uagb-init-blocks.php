@@ -591,7 +591,7 @@ class UAGB_Init_Blocks {
 				'recaptcha_secret_key_v3'            => UAGB_Admin_Helper::get_admin_settings_option( 'uag_recaptcha_secret_key_v3', '' ),
 				'blocks_editor_spacing'              => UAGB_Admin_Helper::get_admin_settings_option( 'uag_blocks_editor_spacing', 0 ),
 				'load_font_awesome_5'                => UAGB_Admin_Helper::get_admin_settings_option( 'uag_load_font_awesome_5', 'disabled' ),
-				'font_awesome_5_polyfiller'          => UAGB_Admin_Helper::get_admin_settings_option( 'spectra_font_awesome_5_polyfiller', '' ),
+				'font_awesome_5_polyfill'            => UAGB_Admin_Helper::$font_awesome_5_polyfiller,
 			)
 		);
 		// To match the editor with frontend.

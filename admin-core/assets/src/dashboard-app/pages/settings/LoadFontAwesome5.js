@@ -23,23 +23,19 @@ const LoadFontAwesome5 = () => {
             assetStatus = 'disabled';
 		}
 
-        console.log( '%cDispatching', 'color: cadetblue; font-size: 16px; font-weight: bold; text-shadow: 2px 2px 4px black;' );
         dispatch( { type: 'UPDATE_ENABLE_FONT_AWESOME_5', payload: assetStatus } );
 
-        console.log( '%cAppending', 'color: lightseagreen; font-size: 16px; font-weight: bold; text-shadow: 2px 2px 4px black;' );
 		const formData = new window.FormData();
 
 		formData.append( 'action', 'uag_load_font_awesome_5' );
 		formData.append( 'security', uag_react.load_font_awesome_5_nonce );
 		formData.append( 'value', assetStatus );
 
-        console.log( '%cFetching', 'color: mediumseagreen; font-size: 16px; font-weight: bold; text-shadow: 2px 2px 4px black;' );
 		apiFetch( {
 			url: uag_react.ajax_url,
 			method: 'POST',
 			body: formData,
 		} ).then( () => {
-            console.log( '%cDone', 'color: mediumspringgreen; font-size: 16px; font-weight: bold; text-shadow: 2px 2px 4px black;' );
 			dispatch( { type: 'UPDATE_SETTINGS_SAVED_NOTIFICATION', payload: true } );
 		} );
     };
