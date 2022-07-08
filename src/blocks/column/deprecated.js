@@ -5,9 +5,6 @@
 // Import block dependencies and components.
 import classnames from 'classnames';
 
-// Import icon.
-// import attributes from './attributes';
-
 import { InnerBlocks } from '@wordpress/block-editor';
 
 import { __ } from '@wordpress/i18n';
