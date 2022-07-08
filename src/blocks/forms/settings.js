@@ -1137,6 +1137,8 @@ const Settings = ( props ) => {
 				disabledBorderTitle= {false}
 				attributes={ attributes }
 				deviceType={deviceType}
+				borderHoverColorLabel={ __( 'Color', 'ultimate-addons-for-gutenberg' )}
+				hoverTabLabel={ __( 'Active', 'ultimate-addons-for-gutenberg' )}
 				disableBottomSeparator={ true }
 			/>
 		</UAGAdvancedPanelBody>
