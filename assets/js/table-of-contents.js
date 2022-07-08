@@ -157,18 +157,23 @@ UAGBTableOfContents = { // eslint-disable-line no-undef
 
 			scrollData = node.getAttribute( 'data-scroll' );
 			scrollOffset = node.getAttribute( 'data-offset' );
-			if ( scrollData ) {
-				let offset = null;
-				if ( document.querySelector( hash ) ) {
+			let offset = null;
+			if ( document.querySelector( hash ) ) {
 
-					offset = document.querySelector( hash ).getBoundingClientRect().top + window.scrollY;
-				}
+				offset = document.querySelector( hash ).getBoundingClientRect().top + window.scrollY;
+			}
+			if ( scrollData ) {
 				if ( null !== offset ) {
 					scroll( { // eslint-disable-line no-undef
 						top: offset - scrollOffset,
 						behavior: 'smooth'
 					} );
 				}
+			} else {
+				scroll( { // eslint-disable-line no-undef
+					top: offset,
+					behavior: 'auto'
+				} );
 			}
 		}
 	},
