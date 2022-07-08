@@ -605,9 +605,9 @@ const Settings = ( props ) => {
 				title={ __( 'Content', 'ultimate-addons-for-gutenberg' ) }
 				initialOpen={ false }
 			>
-				{ iconimgPosition &&
+				{ ( false === showIcon || ( iconimgPosition &&
 					( iconimgPosition === 'above-title' ||
-					iconimgPosition === 'below-title' ) && (
+					iconimgPosition === 'below-title' ) ) ) && (
 						<MultiButtonsControl
 							setAttributes={ setAttributes }
 							label={ __(
