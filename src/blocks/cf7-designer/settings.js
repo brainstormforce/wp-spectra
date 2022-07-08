@@ -26,7 +26,6 @@ import {
 	ToggleControl,
 	Icon,
 } from '@wordpress/components';
-import generateBorderCSS from '@Controls/generateBorderCSS';
 
 
 import UAGAdvancedPanelBody from '@Components/advanced-panel-body';
