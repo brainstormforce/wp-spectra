@@ -383,7 +383,6 @@ function styling( props ) {
 			 'font-family': ctaFontFamily,
 			 'font-weight': ctaFontWeight,
 			 'font-style': ctaFontStyle,
-			 'color': ctaLinkColor,
 			 'text-decoration': ctaDecoration,
 			 'text-transform': ctaTransform,
 			 'letter-spacing': generateCSSUnit( ctaLetterSpacing, ctaLetterSpacingType ),
