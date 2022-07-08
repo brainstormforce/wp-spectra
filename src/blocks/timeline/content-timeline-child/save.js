@@ -59,7 +59,9 @@ export default function save( props ) {
 											'uagb-timeline__date-hide uagb-timeline__inner-date-new'
 										}
 									>
-										{ postDate }
+										{ ( 'custom' !== dateFormat &&
+										format( dateFormat, postDate ) ) ||
+										postDate }
 									</div>
 								) }
 									<RichText.Content
