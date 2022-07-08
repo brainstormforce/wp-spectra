@@ -36,7 +36,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 			$selectors   = array();
 
 			$border_css        = self::uag_generate_border_css( $attr, 'btn' );
-			$border_css = UAGB_Block_Helper::uag_generate_deprecated_border_css(
+			$border_css        = self::uag_generate_deprecated_border_css(
 				$border_css,
 				( isset( $attr['borderWidth'] ) ? $attr['borderWidth'] : '' ),
 				( isset( $attr['borderRadius'] ) ? $attr['borderRadius'] : '' ),
@@ -68,7 +68,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 			} elseif ( 'color' === $attr['backgroundType'] ) {
 
 				$selectors['.wp-block-uagb-buttons-child .uagb-buttons-repeater']['background'] = $attr['background'];
-				$selectors[' .wp-block-button__link']['background'] = $attr['background'];
+				$selectors[' .wp-block-button__link']['background']                             = $attr['background'];
 
 			} elseif ( 'gradient' === $attr['backgroundType'] ) {
 				$bg_obj = array(
@@ -122,7 +122,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				'margin-right'    => UAGB_Helper::get_css_value( $attr['rightMargin'], $attr['marginType'] ),
 			);
 
-			$selectors[ $wrapper . '.wp-block-button__link:hover' ]                           = array(
+			$selectors[ $wrapper . '.wp-block-button__link:hover' ] = array(
 				'color' => $attr['hColor'],
 			);
 			if ( 0 !== $attr['boxShadowHOffset'] || 0 !== $attr['boxShadowVOffset'] ) {
