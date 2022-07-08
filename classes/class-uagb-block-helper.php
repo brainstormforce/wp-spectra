@@ -36,14 +36,6 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 			$selectors   = array();
 
 			$border_css        = self::uag_generate_border_css( $attr, 'btn' );
-			$border_css        = self::uag_generate_deprecated_border_css(
-				$border_css,
-				( isset( $attr['borderWidth'] ) ? $attr['borderWidth'] : '' ),
-				( isset( $attr['borderRadius'] ) ? $attr['borderRadius'] : '' ),
-				( isset( $attr['borderColor'] ) ? $attr['borderColor'] : '' ),
-				( isset( $attr['borderStyle'] ) ? $attr['borderStyle'] : '' ),
-				( isset( $attr['borderHColor'] ) ? $attr['borderHColor'] : '' )
-			);
 			$border_css_tablet = self::uag_generate_border_css( $attr, 'btn', 'tablet' );
 			$border_css_mobile = self::uag_generate_border_css( $attr, 'btn', 'mobile' );
 
@@ -67,8 +59,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 
 			} elseif ( 'color' === $attr['backgroundType'] ) {
 
-				$selectors['.wp-block-uagb-buttons-child .uagb-buttons-repeater']['background'] = $attr['background'];
-				$selectors[' .wp-block-button__link']['background']                             = $attr['background'];
+				$selectors[' .wp-block-button__link']['background'] = $attr['background'];
 
 			} elseif ( 'gradient' === $attr['backgroundType'] ) {
 				$bg_obj = array(
@@ -121,8 +112,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				'margin-left'     => UAGB_Helper::get_css_value( $attr['leftMargin'], $attr['marginType'] ),
 				'margin-right'    => UAGB_Helper::get_css_value( $attr['rightMargin'], $attr['marginType'] ),
 			);
-
-			$selectors[ $wrapper . '.wp-block-button__link:hover' ] = array(
+			$selectors[ $wrapper . '.wp-block-button__link:hover' ]                           = array(
 				'color' => $attr['hColor'],
 			);
 			if ( 0 !== $attr['boxShadowHOffset'] || 0 !== $attr['boxShadowVOffset'] ) {
@@ -148,7 +138,6 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				'border-color' => isset( $attr['borderHoverColor'] ) && ! empty( $attr['borderHoverColor'] ) ? $attr['borderHoverColor'] : $attr['btnBorderHColor'],
 			);
 			$selectors[ $wrapper . ' .uagb-button__link' ]   = array(
-				'color'           => $attr['color'],
 				'font-family'     => $attr['fontFamily'],
 				'font-weight'     => $attr['fontWeight'],
 				'font-style'      => $attr['fontStyle'],
