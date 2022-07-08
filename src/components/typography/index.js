@@ -34,9 +34,8 @@ const TypographyControl = ( props ) => {
 
 	useLayoutEffect( () => {
 		window.addEventListener( 'click', function( e ){
-			const popupWrapper = document.querySelector( '.spectra-control-popup__options.active' );
-			if (!popupWrapper?.contains(e.target)) {
-				popupWrapper?.classList.remove("active");
+			const popupButton = document.querySelector( `.active.popup-${props?.attributes?.block_id} .spectra-control-popup__options--action-button` );
+			if ( popupButton && ! popupButton?.contains(e.target)) {
 				toggleAdvancedControls( false )
 			}
 		} );
@@ -229,6 +228,14 @@ const TypographyControl = ( props ) => {
 				className="uag-typography-button spectra-control-popup__options--action-button"
 				aria-pressed={ showAdvancedControls }
 				onClick={ () => {
+
+						const allPopups = document.querySelectorAll('.spectra-control-popup__options');
+						if ( allPopups && 0 < allPopups.length ) {
+							for ( let i = 0; i < allPopups.length; i++ ) {
+								const popupButton = allPopups[i]?.querySelector( '.spectra-control-popup__options.active .spectra-control-popup__options--action-button' );
+								popupButton?.click();
+							}
+						}
 						toggleAdvancedControls( ! showAdvancedControls )
 
 						if ( ! showAdvancedControls ) {
@@ -289,7 +296,7 @@ const TypographyControl = ( props ) => {
 
 	return (
 		<div
-			className={ `components-base-control uag-typography-options spectra-control-popup__options ${ activeClass }` }
+			className={ `components-base-control uag-typography-options spectra-control-popup__options popup-${props?.attributes?.block_id} ${ activeClass }` }
 		>
 			{ ! disableAdvancedOptions && (
 				<>
