@@ -500,6 +500,12 @@ function styling( props ) {
 			'border-color': tabBorderHColor,
 		};
 	}
+	tabletSelectors[ '.uagb-tabs__wrap.uagb-tabs__hstyle5-desktop' ] = {
+		'border-style': 'none',
+	};
+	tabletSelectors[ '.uagb-tabs__wrap.uagb-tabs__vstyle10-desktop' ] = {
+		'border-style': 'none',
+	};
 	if ( tabsStyleT === 'hstyle5' ) {
 		tabletSelectors[ '.uagb-tabs__wrap.uagb-tabs__hstyle5-tablet' ] = {
 			'background': bodyBgColor,
@@ -544,6 +550,9 @@ function styling( props ) {
 			'border-color': tabBorderHColor,
 		};
 	}
+	mobileSelectors[ '.uagb-tabs__wrap.uagb-tabs__vstyle10-desktop' ] = {
+		'border-style': 'none',
+	};
 	if ( tabsStyleM === 'stack4' ) {
 		mobileSelectors[ '.uagb-tabs__wrap.uagb-tabs__stack4-mobile' ] = {
 			'background': bodyBgColor,
