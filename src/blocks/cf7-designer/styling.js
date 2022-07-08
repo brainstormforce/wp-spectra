@@ -384,7 +384,6 @@ function styling( props ) {
 			'height': generateCSSUnit( fieldTopPaddingDesktop, 'px' ),
 			'width': generateCSSUnit( fieldTopPaddingDesktop, 'px' ),
 			'font-size': 'calc( ' + fieldTopPaddingDesktop + 'px / 1.2 )',
-			...fieldBorderCSS
 		},
 		" .wpcf7 .wpcf7-acceptance input[type='checkbox']:checked + span:before": {
 			'background-color': fieldBgColor,
@@ -406,7 +405,6 @@ function styling( props ) {
 			'border-radius': '100%',
 			'height': 'calc( ' + fieldTopPaddingDesktop + 'px / 1.2 )',
 			'width': 'calc( ' + fieldTopPaddingDesktop + 'px / 1.2 )',
-			...fieldBorderCSS
 		},
 
 		// underline border
