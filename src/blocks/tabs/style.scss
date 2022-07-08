@@ -289,7 +289,9 @@
 	.uagb-tabs__wrap.uagb-tabs__hstyle5-desktop {
 		border-style: solid;
 	}
+
 	.uagb-tabs__wrap.uagb-tabs__hstyle2-desktop {
+
 		ul.uagb-tabs__panel {
 			border-bottom: 1px solid #b3b6b9;
 		}
@@ -302,6 +304,7 @@
 		}
 	}
 	.uagb-tabs__wrap.uagb-tabs__vstyle8-desktop {
+
 		ul.uagb-tabs__panel {
 
 			.uagb-tab {
@@ -326,7 +329,7 @@
 			padding: 0;
 			max-width: 100%;
 			display: flex;
-			flex-direction: row;	
+			flex-direction: row;
 			flex-wrap: unset;
 		}
 
@@ -608,7 +611,7 @@
 
 		.uagb-tab {
 			border-radius: unset;
-			
+
 			p {
 				margin: 0;
 			}
