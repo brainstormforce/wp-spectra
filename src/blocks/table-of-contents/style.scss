@@ -109,3 +109,8 @@ body[class*="astra"] {
 		line-height: normal;
 	}
 }
+
+// Needed for a layout fix in TwentyTwentyTwo theme.
+.uagb-toc__list {
+	margin-top: 0;
+}
