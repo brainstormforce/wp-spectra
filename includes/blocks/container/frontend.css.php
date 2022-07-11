@@ -138,8 +138,9 @@ $selectors = array(
 	'.uagb-block-' . $id . ':hover'                       => array(
 		'border-color' => $attr['containerBorderHColor'],
 	),
-	'.uagb-block-' . $id . '.wp-block-uagb-container'     => array(
-		'color' => $attr['textColor'],
+	'.uagb-block-' . $id . '.wp-block-uagb-container'    => array(
+		'color'        => $attr['textColor'],
+		'border-color' => $border['border-color'] ? $border['border-color'] : '#4B4F58',
 	),
 	'.uagb-block-' . $id . ' a'                           => array(
 		'color' => $attr['linkColor'],
