@@ -43,6 +43,7 @@ const Settings = ( props ) => {
 
 	// Caching all attributes.
 	const {
+		block_id,
 		postType,
 		taxonomyType,
 		layout,
@@ -1203,6 +1204,7 @@ const Settings = ( props ) => {
 					presetInputType = 'radioImage'
 				/>
 				<BoxShadowControl
+					blockId={ block_id }
 					setAttributes={ setAttributes }
 					label={ __(
 						'Box Shadow',

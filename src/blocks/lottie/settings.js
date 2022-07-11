@@ -208,7 +208,8 @@ const Settings = ( props ) => {
 					checked={ loop }
 					onChange={ loopLottie }
 					help={ __(
-						"Enabling this will show the animation in the loop. This setting will only take effect once you are on the live page, and not while you're editing."
+						"Enabling this will show the animation in the loop. This setting will only take effect once you are on the live page, and not while you're editing.",
+						'ultimate-addons-for-gutenberg'
 					) }
 				/>
 				<Range
@@ -222,6 +223,10 @@ const Settings = ( props ) => {
 					min={ 1 }
 					max={ 50 }
 					displayUnit={ false }
+					help={ __(
+						'This setting will only take effect once you refresh the editor page.',
+						'ultimate-addons-for-gutenberg'
+					) }
 				/>
 				{ loop && (
 					<ToggleControl
