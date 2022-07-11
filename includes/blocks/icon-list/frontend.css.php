@@ -109,7 +109,7 @@ $selectors = array(
 		'justify-content'   => $alignment,
 		'-webkit-box-align' => $alignment,
 		'-ms-flex-align'    => $alignment,
-		'align-items'       => $alignment,
+		'align-items'       => 'center',
 	),
 	' .wp-block-uagb-icon-list-child:hover .uagb-icon-list__source-wrap svg' => array(
 		'color' => $attr['iconHoverColor'],
@@ -167,7 +167,7 @@ $t_selectors = array(
 		'justify-content'   => $alignment_tablet,
 		'-webkit-box-align' => $alignment_tablet,
 		'-ms-flex-align'    => $alignment_tablet,
-		'align-items'       => $alignment_tablet,
+		'align-items'       => 'center',
 	),
 );
 
@@ -201,7 +201,7 @@ $m_selectors = array(
 		'justify-content'   => $alignment_mobile,
 		'-webkit-box-align' => $alignment_mobile,
 		'-ms-flex-align'    => $alignment_mobile,
-		'align-items'       => $alignment_mobile,
+		'align-items'       => 'center',
 	),
 );
 
