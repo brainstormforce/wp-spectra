@@ -35,7 +35,7 @@ const TypographyControl = ( props ) => {
 	useLayoutEffect( () => {
 		window.addEventListener( 'click', function( e ){
 			const popupButton = document.querySelector( `.active.popup-${props?.attributes?.block_id} .spectra-control-popup__options--action-button` );
-			if ( popupButton && ! popupButton?.contains(e.target)) {
+			if ( popupButton && ! popupButton?.contains( e.target ) ) {
 				toggleAdvancedControls( false )
 			}
 		} );
@@ -230,7 +230,7 @@ const TypographyControl = ( props ) => {
 				aria-pressed={ showAdvancedControls }
 				onClick={ () => {
 
-						const allPopups = document.querySelectorAll('.spectra-control-popup__options');
+						const allPopups = document.querySelectorAll( '.spectra-control-popup__options' );
 						if ( allPopups && 0 < allPopups.length ) {
 							for ( let i = 0; i < allPopups.length; i++ ) {
 								const popupButton = allPopups[i]?.querySelector( '.spectra-control-popup__options.active .spectra-control-popup__options--action-button' );
