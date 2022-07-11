@@ -42,6 +42,7 @@ export default function Settings( props ) {
 	props = props.parentProps;
 	const { attributes, setAttributes, context, isSelected, clientId } = props;
 	const {
+		block_id,
 		objectFit,
 		objectFitTablet,
 		objectFitMobile,
@@ -1717,6 +1718,7 @@ export default function Settings( props ) {
 				presetInputType = 'radioImage'
 			/>
 			<BoxShadowControl
+				blockId={ block_id }
 				setAttributes={ setAttributes }
 				label={ __(
 					'Box Shadow',

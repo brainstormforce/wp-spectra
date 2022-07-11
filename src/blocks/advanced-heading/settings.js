@@ -31,6 +31,7 @@ const Settings = ( props ) => {
 	props = props.parentProps;
 	const { attributes, deviceType, setAttributes } = props;
 	const {
+		block_id,
 		headingTitleToggle,
 		headingAlign,
 		headingAlignTablet,
@@ -501,6 +502,7 @@ const Settings = ( props ) => {
 					/>
 				</Suspense>
 				<TextShadowControl
+					blockId={ block_id }
 					setAttributes={ setAttributes }
 					label={ __(
 						'Text Shadow',
