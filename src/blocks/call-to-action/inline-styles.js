@@ -541,10 +541,10 @@ function CtaStyle( props ) {
 	};
 
 	if ( ctaType === 'text' ) {
-		selectors['.uagb-cta__outer-wrap a.uagb-cta__button-link-wrapper']        = {
+		selectors[' a.uagb-cta__button-link-wrapper']        = {
 			'color' : ctaBtnLinkColor,
 		};
-		selectors['.uagb-cta__outer-wrap a.uagb-cta__button-link-wrapper:hover '] = {
+		selectors[' a.uagb-cta__button-link-wrapper:hover '] = {
 			'color' : ctaLinkHoverColor,
 		};
 	}
