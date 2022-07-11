@@ -32,8 +32,6 @@ import {
 
 import { select } from '@wordpress/data';
 
-
-
 import UAGAdvancedPanelBody from '@Components/advanced-panel-body';
 
 const Settings = ( props ) => {
@@ -84,9 +82,11 @@ const Settings = ( props ) => {
 			separatorwidth,
 			borderwidth,
 			connectorBgsize,
+			connectorBgsizeTablet,
+			connectorBgsizeMobile,
 			dateBottomspace,
-		dateBottomspaceTablet,
-		dateBottomspaceMobile,
+			dateBottomspaceTablet,
+			dateBottomspaceMobile,
 			align,
 			alignTablet,
 			alignMobile,
@@ -106,9 +106,11 @@ const Settings = ( props ) => {
 			dateLineHeightMobile,
 			dateLoadGoogleFonts,
 			iconSize,
+			iconSizeTablet,
+			iconSizeMobile,
 			borderRadius,
-		borderRadiusTablet,
-		borderRadiusMobile,
+			borderRadiusTablet,
+			borderRadiusMobile,
 			iconFocus,
 			iconBgFocus,
 			displayPostDate,
@@ -167,17 +169,6 @@ const Settings = ( props ) => {
 		},
 	} = props;
 
-	const getconnectorBgsize = ( value ) => {
-		const getChildBlocks = select( 'core/block-editor' ).getBlocks(
-			props.clientId
-		);
-
-		getChildBlocks.forEach( ( UAGBcontentTimelineChild ) => {
-			UAGBcontentTimelineChild.attributes.connectorBgsize = value;
-		} );
-		setAttributes( { connectorBgsize: value } );
-	};
-
 	const getborderwidth = ( value ) => {
 		const getChildBlocks = select( 'core/block-editor' ).getBlocks(
 			props.clientId
@@ -187,17 +178,6 @@ const Settings = ( props ) => {
 			UAGBcontentTimelineChild.attributes.borderwidth = value;
 		} );
 		setAttributes( { borderwidth: value } );
-	};
-
-	const geticonSize = ( value ) => {
-		const getChildBlocks = select( 'core/block-editor' ).getBlocks(
-			props.clientId
-		);
-
-		getChildBlocks.forEach( ( UAGBcontentTimelineChild ) => {
-			UAGBcontentTimelineChild.attributes.iconSize = value;
-		} );
-		setAttributes( { iconSize: value } );
 	};
 
 	const getseparatorwidth = ( value ) => {
@@ -673,38 +653,54 @@ const Settings = ( props ) => {
 					onChange={ getTimelineicon }
 				/>
 				{ icon && (
-					<Range
+					<ResponsiveSlider
 						label={ __(
 							'Icon Size',
 							'ultimate-addons-for-gutenberg'
 						) }
-						setAttributes={ setAttributes }
-						value={ iconSize }
 						data={ {
-							value: iconSize,
-							label: 'iconSize',
+							desktop: {
+								value: iconSize,
+								label: 'iconSize',
+							},
+							tablet: {
+								value: iconSizeTablet,
+								label: 'iconSizeTablet',
+							},
+							mobile: {
+								value: iconSizeMobile,
+								label: 'iconSizeMobile',
+							},
 						} }
-						onChange={ geticonSize }
 						min={ 0 }
 						max={ 30 }
 						displayUnit={ false }
+						setAttributes={ setAttributes }
 					/>
 				) }
-				<Range
+				<ResponsiveSlider
 					label={ __(
 						'Icon Background Size',
 						'ultimate-addons-for-gutenberg'
 					) }
-					setAttributes={ setAttributes }
-					value={ connectorBgsize }
 					data={ {
-						value: connectorBgsize,
-						label: 'connectorBgsize',
+						desktop: {
+							value: connectorBgsize,
+							label: 'connectorBgsize',
+						},
+						tablet: {
+							value: connectorBgsizeTablet,
+							label: 'connectorBgsizeTablet',
+						},
+						mobile: {
+							value: connectorBgsizeMobile,
+							label: 'connectorBgsizeMobile',
+						},
 					} }
-					onChange={ getconnectorBgsize }
 					min={ 25 }
 					max={ 90 }
 					displayUnit={ false }
+					setAttributes={ setAttributes }
 				/>
 				<Range
 					label={ __(

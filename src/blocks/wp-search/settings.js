@@ -26,6 +26,7 @@ const Settings = ( props ) => {
 	const { attributes, setAttributes, deviceType } = props;
 
 	const {
+		block_id,
 		layout,
 		placeholder,
 		inputSize,
@@ -410,6 +411,7 @@ const Settings = ( props ) => {
 					} }
 				/>
 				<BoxShadowControl
+					blockId={ block_id }
 					setAttributes={ setAttributes }
 					label={ __(
 						'Box Shadow',
