@@ -32,6 +32,7 @@ export default function RangeTypographyControl( props ) {
 					value: props.size.value,
 					label: props.sizeLabel,
 				} }
+				step={ props?.step }
 			/>
 		</>
 	);
@@ -50,6 +51,7 @@ export default function RangeTypographyControl( props ) {
 					value: props.sizeTablet.value,
 					label: props.sizeTabletLabel,
 				} }
+				step={ props?.step }
 			/>
 		</>
 	);
@@ -68,6 +70,7 @@ export default function RangeTypographyControl( props ) {
 					value: props.sizeMobile.value,
 					label: props.sizeMobileLabel,
 				} }
+				step={ props?.step }
 			/>
 		</>
 	);

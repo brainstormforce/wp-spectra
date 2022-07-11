@@ -130,6 +130,9 @@ function styling( props ) {
 			boxShadowColor + ' ' +	boxShadowPositionCSS,
 			'letter-spacing': generateCSSUnit( letterSpacing, letterSpacingType ),
 		},
+		'.uagb-buttons__outer-wrap .wp-block-button__link.uagb-buttons-repeater:hover': {
+			'color': hColor,
+		},
 		'.uagb-buttons__outer-wrap .wp-block-button__link.uagb-buttons-repeater:hover .uagb-button__link': {
 			'color': hColor,
 		},

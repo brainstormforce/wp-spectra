@@ -63,7 +63,7 @@ const ButtonsChildComponent = ( props ) => {
 	}, [] );
 
 	useEffect( () => {
-		
+
 		const blockStyling = styling( props );
 
 		addBlockEditorDynamicStyles( 'uagb-style-button-' + props.clientId.substr( 0, 8 ), blockStyling );

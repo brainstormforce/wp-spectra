@@ -63,8 +63,8 @@ const TypographyControl = ( props ) => {
 	if ( true !== disableFontFamily ) {
 		fontFamily = <FontFamilyControl { ...props } />;
 	}
-	const lineHeightStepsVal = ( 'em' === props.lineHeightType?.value ? 0.1 : 1 );
-	const letterSpacingStepsVal = ( 'em' === props.letterSpacingType?.value ? 0.1 : 1 ); // decimal point value when unit is em.
+	const lineHeightStepsVal = ( 'em' === props.lineHeightType?.value ? 0.1 : 1 ); // fractional value when unit is em.
+	const letterSpacingStepsVal = ( 'em' === props.letterSpacingType?.value ? 0.1 : 1 ); // fractional value when unit is em.
 
 	if ( true !== disableLineHeight ) {
 		lineHeight = (
@@ -89,7 +89,7 @@ const TypographyControl = ( props ) => {
 					'Line Height',
 					'ultimate-addons-for-gutenberg'
 				) }
-				steps={ lineHeightStepsVal }
+				step={ lineHeightStepsVal }
 				{ ...props }
 			/>
 		);
@@ -118,7 +118,7 @@ const TypographyControl = ( props ) => {
 					'Letter Spacing',
 					'ultimate-addons-for-gutenberg'
 				) }
-				steps={ letterSpacingStepsVal }
+				step={ letterSpacingStepsVal }
 				{ ...props }
 			/>
 		);

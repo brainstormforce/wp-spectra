@@ -445,7 +445,7 @@ $combined_selectors = array(
 	'mobile'  => $m_selectors,
 );
 
-$combined_selectors = UAGB_Helper::get_typography_css( $attr, 'tweetBtn', ' a.uagb-blockquote__tweet-button', $combined_selectors );
+$combined_selectors = UAGB_Helper::get_typography_css( $attr, 'tweetBtn', ' .uagb-blockquote a.uagb-blockquote__tweet-button', $combined_selectors );
 $combined_selectors = UAGB_Helper::get_typography_css( $attr, 'author', ' cite.uagb-blockquote__author', $combined_selectors );
 $combined_selectors = UAGB_Helper::get_typography_css( $attr, 'desc', ' .uagb-blockquote__content', $combined_selectors );
 

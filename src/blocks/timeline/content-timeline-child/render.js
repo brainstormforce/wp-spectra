@@ -2,7 +2,7 @@ import classnames from 'classnames';
 import renderSVG from '@Controls/renderIcon';
 import React, { useLayoutEffect } from 'react';
 import styles from './editor.lazy.scss';
-import { dateI18n } from '@wordpress/date';
+import { format } from '@wordpress/date';
 
 import { __ } from '@wordpress/i18n';
 
@@ -87,7 +87,7 @@ const Render = ( props ) => {
 									}
 								>
 									{ ( 'custom' !== dateFormat &&
-										dateI18n( dateFormat, postDate ) ) ||
+										format( dateFormat, postDate ) ) ||
 										postDate }
 								</div>
 							) }
@@ -143,7 +143,7 @@ const Render = ( props ) => {
 						{ displayPostDate !== true && t_date && (
 							<>
 								{ ( 'custom' !== dateFormat &&
-									dateI18n( dateFormat, postDate ) ) ||
+									format( dateFormat, postDate ) ) ||
 									postDate }
 							</>
 						) }
