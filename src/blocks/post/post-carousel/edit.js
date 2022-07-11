@@ -162,7 +162,7 @@ const UAGBPostCarousel = ( props ) => {
 		}
 		const {
 			borderStyle,
-			borderThickness,
+			borderWidth,
 			borderRadius,
 			borderColor,
 			borderHColor,
@@ -179,20 +179,20 @@ const UAGBPostCarousel = ( props ) => {
 			btnBorderStyle,
 		} = props.attributes;
 
-		if( borderThickness ){
+		if( borderWidth ){
 			if( undefined === btnBorderTopWidth ) {
 				props.setAttributes( {
-					btnBorderTopWidth: borderThickness,
+					btnBorderTopWidth: borderWidth,
 				} );
 			}
 			if( undefined === btnBorderLeftWidth ) {
-				props.setAttributes( { btnBorderLeftWidth : borderThickness} );
+				props.setAttributes( { btnBorderLeftWidth : borderWidth} );
 			}
 			if( undefined === btnBorderRightWidth ) {
-				props.setAttributes( { btnBorderRightWidth : borderThickness} );
+				props.setAttributes( { btnBorderRightWidth : borderWidth} );
 			}
 			if( undefined === btnBorderBottomWidth ) {
-				props.setAttributes( { btnBorderBottomWidth : borderThickness} );
+				props.setAttributes( { btnBorderBottomWidth : borderWidth} );
 			}
 		}
 
