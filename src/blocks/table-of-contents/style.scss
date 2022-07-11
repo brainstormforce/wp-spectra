@@ -26,24 +26,6 @@
 		}
 	}
 
-	&.uagb-toc__align-left .uagb-toc__list-wrap {
-		display: flex;
-		flex-direction: column;
-		align-items: flex-start;
-	}
-
-	&.uagb-toc__align-center .uagb-toc__list-wrap {
-		display: flex;
-		flex-direction: column;
-		align-items: center;
-	}
-
-	&.uagb-toc__align-right .uagb-toc__list-wrap {
-		display: flex;
-		flex-direction: column;
-		align-items: flex-end;
-	}
-
 	ul li:empty {
 		display: none;
 	}
@@ -118,4 +100,17 @@ ol.uagb-toc__list > li {
 	&.uagb-toc__show-scroll {
 		display: inline-table;
 	}
+}
+
+// These fixes are specific to the Astra theme.
+body[class*="astra"] {
+
+	.uagb-toc__list {
+		line-height: normal;
+	}
+}
+
+// Needed for a layout fix in TwentyTwentyTwo theme.
+.uagb-toc__list {
+	margin-top: 0;
 }
