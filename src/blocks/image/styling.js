@@ -12,10 +12,15 @@ export default function styling( props ) {
 	const blockName = props.name.replace( 'uagb/', '' );
 
 	const {
+		width,
 		widthTablet,
 		widthMobile,
+		height,
 		heightTablet,
 		heightMobile,
+		align,
+		alignTablet,
+		alignMobile,
 		// image
 		imageTopMargin,
 		imageRightMargin,
@@ -95,6 +100,9 @@ export default function styling( props ) {
 		headingMarginUnit,
 		headingMarginUnitTablet,
 		headingMarginUnitMobile,
+		objectFit,
+		objectFitTablet,
+		objectFitMobile,
 		// overlay
 		overlayOpacity,
 		overlayHoverOpacity,
@@ -139,7 +147,15 @@ export default function styling( props ) {
 		maskCustomShape,
 		maskSize,
 		maskPosition,
-		maskRepeat
+		maskRepeat,
+		headingLetterSpacing,
+		headingLetterSpacingTablet,
+		headingLetterSpacingMobile,
+		headingLetterSpacingType,
+		captionLetterSpacing,
+		captionLetterSpacingTablet,
+		captionLetterSpacingMobile,
+		captionLetterSpacingType,
 	} = props.attributes;
 
 	const seperatorWidthFallback = getFallbackNumber( seperatorWidth, 'seperatorWidth', blockName );
@@ -156,6 +172,11 @@ export default function styling( props ) {
 	const imageBorderCSSTablet = generateBorderCSS( props.attributes, 'image', 'tablet' )
 	const imageBorderCSSMobile = generateBorderCSS( props.attributes, 'image', 'mobile' )
 
+	const tabletWidth = '' !== widthTablet ? widthTablet : width;
+	const mobileWidth = '' !== widthMobile ? widthMobile : tabletWidth;
+
+	const tabletHeight = '' !== heightTablet ? heightTablet : height;
+	const mobileHeight = '' !== heightMobile ? heightMobile : tabletHeight;
 
 	const getImageShadowPosition = imageBoxShadowPosition !== 'outset' ? imageBoxShadowPosition : '';
 
@@ -177,12 +198,13 @@ export default function styling( props ) {
 				imageLeftMargin,
 				imageMarginUnit
 			),
+			'text-align': align
 		},
 		'.wp-block-uagb-image--layout-default img':{
 			'width': 'inherit',
 			'height': 'inherit',
 			'box-shadow': generateCSSUnit( imageBoxShadowHOffset, 'px' ) + ' ' + generateCSSUnit( imageBoxShadowVOffset, 'px' ) +	' ' + generateCSSUnit( imageBoxShadowBlur, 'px' ) + ' ' +	generateCSSUnit( imageBoxShadowSpread, 'px' ) + ' ' + imageBoxShadowColor + ' ' + getImageShadowPosition,
-			...imageBorderCSS,
+			...imageBorderCSS
 		},
 		'.wp-block-uagb-image--layout-overlay img':{
 			'width': 'inherit',
@@ -206,6 +228,7 @@ export default function styling( props ) {
 				captionLineHeight,
 				captionLineHeightType
 			),
+			'letter-spacing': generateCSSUnit( captionLetterSpacing, captionLetterSpacingType ),
 			'color': captionColor,
 			'margin-top': generateCSSUnit(
 				captionTopMargin,
@@ -254,6 +277,7 @@ export default function styling( props ) {
 				headingLineHeight,
 				headingLineHeightType
 			),
+			'letter-spacing': generateCSSUnit( headingLetterSpacing, headingLetterSpacingType ),
 			'color': headingColor,
 			'margin-top': generateCSSUnit(
 				headingTopMargin,
@@ -299,7 +323,13 @@ export default function styling( props ) {
 			'margin-left': generateCSSUnit( seperatorLeftMargin, seperatorMarginUnit ),
 			'margin-right': generateCSSUnit( seperatorRightMargin, seperatorMarginUnit ),
 			'opacity': seperatorShowOn === 'always' ? 1 : 0
-		},
+		}
+	}
+
+	selectors['.wp-block-uagb-image .wp-block-uagb-image__figure img'] = {
+		'object-fit': objectFit,
+		'width'     : width + 'px',
+		'height'    : height + 'px'
 	}
 
 	if( headingShowOn === 'hover' ){
@@ -317,7 +347,6 @@ export default function styling( props ) {
 			'opacity': 1
 		}
 	}
-
 
 	if( maskShape !== 'none' ){
 		let imagePath =  `${window?.uagb_blocks_info?.uagb_url}assets/images/masks/${maskShape}.svg`;
@@ -378,6 +407,7 @@ export default function styling( props ) {
 			imageLeftMarginTablet,
 			imageMarginUnitTablet
 		),
+		'text-align': alignTablet,
 	}
 	tablet_selectors['.wp-block-uagb-image .wp-block-uagb-image__figure figcaption'] = {
         'font-size': generateCSSUnit(
@@ -388,6 +418,7 @@ export default function styling( props ) {
             captionLineHeightTablet,
             captionLineHeightType
         ),
+		'letter-spacing': generateCSSUnit( captionLetterSpacingTablet, captionLetterSpacingType ),
 		'margin-top': generateCSSUnit(
 			captionTopMarginTablet,
 			captionMarginUnitTablet
@@ -417,6 +448,7 @@ export default function styling( props ) {
             headingLineHeightTablet,
             headingLineHeightType
         ),
+		'letter-spacing': generateCSSUnit( headingLetterSpacingTablet, headingLetterSpacingType ),
 		'margin-top': generateCSSUnit(
 			headingTopMarginTablet,
 			headingMarginUnitTablet
@@ -442,6 +474,12 @@ export default function styling( props ) {
 		'margin-right': generateCSSUnit( seperatorRightMarginTablet, seperatorMarginUnitTablet ),
 	}
 
+	tablet_selectors['.wp-block-uagb-image .wp-block-uagb-image__figure img'] = {
+		'object-fit': objectFitTablet,
+		'width'     : tabletWidth + 'px',
+		'height'    : tabletHeight + 'px'
+	}
+
 	// Mobile
 	mobile_selectors['.wp-block-uagb-image .components-resizable-box__container'] = {
 		'width': generateCSSUnit(
@@ -454,7 +492,7 @@ export default function styling( props ) {
 		),
 	}
 
-	mobile_selectors['.wp-block-uagb-image--layout-default img'] = imageBorderCSSMobile
+	mobile_selectors['.wp-block-uagb-image--layout-default img'] = imageBorderCSSMobile;
 
 	mobile_selectors['.wp-block-uagb-image'] = {
 		'margin-top': generateCSSUnit(
@@ -473,6 +511,7 @@ export default function styling( props ) {
 			imageLeftMarginMobile,
 			imageMarginUnitMobile
 		),
+		'text-align': alignMobile,
 	}
 
 	mobile_selectors['.wp-block-uagb-image .wp-block-uagb-image__figure figcaption'] = {
@@ -484,6 +523,7 @@ export default function styling( props ) {
             captionLineHeightMobile,
             captionLineHeightType
         ),
+		'letter-spacing': generateCSSUnit( captionLetterSpacingMobile, captionLetterSpacingType ),
 		'margin-top': generateCSSUnit(
 			captionTopMarginMobile,
 			captionMarginUnitMobile
@@ -513,6 +553,7 @@ export default function styling( props ) {
             headingLineHeightMobile,
             headingLineHeightType
         ),
+		'letter-spacing': generateCSSUnit( headingLetterSpacingMobile, headingLetterSpacingType ),
 		'margin-top': generateCSSUnit(
 			headingTopMarginMobile,
 			headingMarginUnitMobile
@@ -536,6 +577,12 @@ export default function styling( props ) {
 		'margin-top': generateCSSUnit( seperatorTopMarginMobile, seperatorMarginUnitMobile ),
 		'margin-left': generateCSSUnit( seperatorLeftMarginMobile, seperatorMarginUnitMobile ),
 		'margin-right': generateCSSUnit( seperatorRightMarginMobile, seperatorMarginUnitMobile ),
+	}
+
+	mobile_selectors['.wp-block-uagb-image .wp-block-uagb-image__figure img'] = {
+		'object-fit': objectFitMobile,
+		'width'     : mobileWidth + 'px',
+		'height'    : mobileHeight + 'px'
 	}
 
 	let styling_css = generateCSS( selectors, base_selector );

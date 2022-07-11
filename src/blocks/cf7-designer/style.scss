@@ -25,6 +25,10 @@
 		line-height: 30px;
 	}
 
+	textarea {
+		resize: vertical;
+	}
+
 	.wpcf7 *,
 	.wpcf7 ::after,
 	.wpcf7 ::before {
@@ -130,17 +134,15 @@
 
 	/* Form validation */
 	.uagb-cf7-styler__highlight-style-bottom_right span.wpcf7-not-valid-tip {
-		top: 100%;
-		right: 0;
-		display: inline-block;
-		float: right;
+		display: block;
 		padding: 0.1em 0.5em;
 		margin-top: 5px;
-		background-color: rgba(255, 0, 0, 0.6);
 		border-radius: 2px;
-		color: #fff;
 		font-size: 0.9em;
 		-webkit-border-radius: 2px;
+		width: fit-content;
+		margin-left: auto;
+		margin-right: 0;
 	}
 
 	.wpcf7 input[type="number"] {
@@ -248,7 +250,7 @@
 	}
 }
 
-@media (min-width: 360px) and (max-width: 780px) {
+@media (min-width: 641px) and (max-width: 780px) {
 
 	.uagb-cf7-styler__btn-align-tablet-justify input.wpcf7-form-control.wpcf7-submit {
 		-webkit-box-pack: center;
@@ -260,7 +262,7 @@
 	}
 }
 
-@media (max-width: 360px) {
+@media (max-width: 641px) {
 
 	.uagb-cf7-styler__btn-align-mobile-right input.wpcf7-form-control.wpcf7-submit {
 		margin-right: 0;

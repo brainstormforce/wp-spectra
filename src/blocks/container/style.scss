@@ -5,6 +5,18 @@
 	margin-left: auto;
 	margin-right: auto;
 	z-index: 2;
+	transition-property: box-shadow;
+	transition-duration: 0.2s;
+	transition-timing-function: ease;
+
+	&.alignfull.uagb-is-root-container .uagb-container-inner-blocks-wrap {
+		display: flex;
+		position: relative;
+		box-sizing: border-box;
+		margin-left: auto !important;
+		margin-right: auto !important;
+		z-index: 2;
+	}
 
 	& > *:not(.uagb-container__shape) {
 		z-index: 2;
@@ -96,7 +108,8 @@
 	// Background Video CSS End.
 }
 
-.entry-content .wp-block-uagb-container > *:not(.wp-block-uagb-container):not(.wp-block-uagb-column):not(.wp-block-uagb-container):not(.wp-block-uagb-section):not(.uagb-container__shape):not(.uagb-container__video-wrap) {
+.entry-content .wp-block-uagb-container > .uagb-container-inner-blocks-wrap > *:not(.wp-block-uagb-container):not(.wp-block-uagb-column):not(.wp-block-uagb-container):not(.wp-block-uagb-section):not(.uagb-container__shape):not(.uagb-container__video-wrap),
+.entry-content .wp-block-uagb-container > .uagb-container-inner-blocks-wrap {
 	min-width: unset !important;
 	width: 100%;
 }

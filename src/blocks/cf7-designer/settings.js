@@ -241,6 +241,9 @@ const Settings = ( props ) => {
 		msgLetterSpacingTablet,
 		msgLetterSpacingMobile,
 		msgLetterSpacingType,
+		inputBorderBottomWidth,
+		inputBorderBottomWidthTablet,
+		inputBorderBottomWidthMobile,
 	} = attributes;
 
 	let loadInputGoogleFonts;
@@ -891,6 +894,32 @@ const Settings = ( props ) => {
 					deviceType={deviceType}
 				/>
 			)}
+			{ fieldStyle === 'underline' && (
+				<ResponsiveSlider
+				label={ __(
+					'Border Bottom',
+					'ultimate-addons-for-gutenberg'
+				) }
+				data={ {
+					desktop: {
+						value: inputBorderBottomWidth,
+						label: 'inputBorderBottomWidth',
+					},
+					tablet: {
+						value: inputBorderBottomWidthTablet,
+						label: 'inputBorderBottomWidthTablet',
+					},
+					mobile: {
+						value: inputBorderBottomWidthMobile,
+						label: 'inputBorderBottomWidthMobile',
+					},
+				} }
+				min={ 0 }
+				max={ 20 }
+				displayUnit={ false }
+				setAttributes={ setAttributes }
+			/>
+			)}
 			<ResponsiveSlider
 				label={ __(
 					'Fields Space',
@@ -1213,6 +1242,7 @@ const Settings = ( props ) => {
 			/>
 		</UAGAdvancedPanelBody>
 	);
+
 	const buttonStyling = (
 		<UAGAdvancedPanelBody
 			title={ __( 'Submit Button', 'ultimate-addons-for-gutenberg' ) }

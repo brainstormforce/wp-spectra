@@ -188,10 +188,10 @@ const Settings = ( props ) => {
 		inputLetterSpacingTablet,
 		inputLetterSpacingMobile,
 		inputLetterSpacingType,
-		submitLetterSpacing,
-		submitLetterSpacingTablet,
-		submitLetterSpacingMobile,
-		submitLetterSpacingType,
+		submitTextLetterSpacing,
+		submitTextLetterSpacingTablet,
+		submitTextLetterSpacingMobile,
+		submitTextLetterSpacingType,
 	} = attributes;
 
 	const presetSettings = () => {
@@ -458,7 +458,7 @@ const Settings = ( props ) => {
 			/>
 			<ResponsiveBorder
 				setAttributes={ setAttributes }
-				prefix={'failedMsg'}
+				prefix={'errorMsg'}
 				disabledBorderTitle= {false}
 				attributes={ attributes }
 				deviceType={deviceType}
@@ -1333,7 +1333,6 @@ const Settings = ( props ) => {
 					label: 'paddingspacingLink',
 				} }
 			/>
-			{ paddingBtnTopTablet }
 			<UAGTabsControl
 				tabs={ [
 					{
@@ -1477,20 +1476,20 @@ const Settings = ( props ) => {
 					label: 'submitTextLineHeightTablet',
 				} }
 				letterSpacing={ {
-					value: submitLetterSpacing,
-					label: 'submitLetterSpacing',
+					value: submitTextLetterSpacing,
+					label: 'submitTextLetterSpacing',
 				} }
 				letterSpacingTablet={ {
-					value: submitLetterSpacingTablet,
-					label: 'submitLetterSpacingTablet',
+					value: submitTextLetterSpacingTablet,
+					label: 'submitTextLetterSpacingTablet',
 				} }
 				letterSpacingMobile={ {
-					value: submitLetterSpacingMobile,
-					label: 'submitLetterSpacingMobile',
+					value: submitTextLetterSpacingMobile,
+					label: 'submitTextLetterSpacingMobile',
 				} }
 				letterSpacingType={ {
-					value: submitLetterSpacingType,
-					label: 'submitLetterSpacingType',
+					value: submitTextLetterSpacingType,
+					label: 'submitTextLetterSpacingType',
 				} }
 				transform={ {
 					value: submitTextTransform,

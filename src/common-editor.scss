@@ -447,8 +447,11 @@ label.wp-block-uagb-blockquote__via-label svg {
 	vertical-align: middle;
 }
 
-.components-select-control__input {
+// Select control text going out of screen.
+
+.uagb-inspector-tab .components-select-control .components-input-control__container .components-select-control__input {
 	text-transform: capitalize;
+	line-height: 30px;
 }
 
 .components-panel__body.uagb-repeater-panel {
@@ -652,6 +655,15 @@ button.components-button.uagb-review-select-btn.is-secondary {
 
 	> path {
 		fill: #fff;
+	}
+}
+
+/* Block Editor Block Icons Color*/
+.block-editor-block-icon.has-colors svg.uagb-editor-icons {
+	fill: $spectra-color-secondary;
+
+	path {
+		fill: $spectra-color-secondary;
 	}
 }
 
