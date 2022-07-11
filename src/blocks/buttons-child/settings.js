@@ -43,6 +43,7 @@ const Settings = ( props ) => {
 	const { attributes, setAttributes, deviceType } = props;
 
 	const {
+		block_id,
 		link,
 		size,
 		topPadding,
@@ -535,6 +536,7 @@ const Settings = ( props ) => {
 						presetInputType = 'radioImage'
 					/>
 					<BoxShadowControl
+						blockId={ block_id }
 						setAttributes={ setAttributes }
 						boxShadowColor={ {
 							value: boxShadowColor,
@@ -629,7 +631,6 @@ const Settings = ( props ) => {
 								label: 'iconSpaceMobile',
 							},
 						} }
-						min={ 0 }
 						max={ 200 }
 						displayUnit={ false }
 						setAttributes={ setAttributes }

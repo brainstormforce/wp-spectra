@@ -137,7 +137,7 @@ function FontFamilyControl( props ) {
 	}
 
 	let fontSize;
-	const fontSizeStepsVal = ( 'em' === props.fontSizeType.value ? 0.1 : 1 );
+	const fontSizeStepsVal = ( 'em' === props.fontSizeType.value ? 0.1 : 1 ); // fractional value when unit is em.
 	if ( true !== props.disableFontSize ) {
 		fontSize = (
 			<RangeTypographyControl
@@ -164,7 +164,7 @@ function FontFamilyControl( props ) {
 						? __( 'Font Size', 'ultimate-addons-for-gutenberg' )
 						: props.fontSizeLabel
 				}
-				steps={ fontSizeStepsVal }
+				step={ fontSizeStepsVal }
 				{ ...props }
 			/>
 		);
