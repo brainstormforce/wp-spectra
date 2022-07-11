@@ -55,7 +55,6 @@ const TextShadowControl = ( props ) => {
 			<Range
 				label={ textShadowHOffset.title }
 				value={ textShadowHOffset.value }
-				min={ 0 }
 				max={ 100 }
 				displayUnit={ false }
 				setAttributes={setAttributes}
@@ -68,7 +67,6 @@ const TextShadowControl = ( props ) => {
 			<Range
 				label={ textShadowVOffset.title }
 				value={ textShadowVOffset.value }
-				min={ 0 }
 				max={ 100 }
 				displayUnit={ false }
 				setAttributes={setAttributes}
