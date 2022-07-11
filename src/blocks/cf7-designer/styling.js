@@ -158,6 +158,10 @@ function styling( props ) {
 	const buttonBorderCSSTablet = generateBorderCSS( props.attributes, 'btn', 'tablet' );
 	const buttonBorderCSSMobile = generateBorderCSS( props.attributes, 'btn', 'mobile' );
 
+	fieldBorderCSS['border-color'] = fieldBorderCSS['border-color'] === '' ? '#EEEEEE' : fieldBorderCSS['border-color']
+	fieldBorderCSSTablet['border-color'] = fieldBorderCSSTablet['border-color'] === '' ? '#EEEEEE' : fieldBorderCSSTablet['border-color']
+	fieldBorderCSSMobile['border-color'] = fieldBorderCSSMobile['border-color'] === '' ? '#EEEEEE' : fieldBorderCSSMobile['border-color']
+
 	const selectors = {
 		' .wpcf7 .wpcf7-form': {
 			'text-align': align,
@@ -198,7 +202,7 @@ function styling( props ) {
 			),
 			'text-align': align,
 			'letter-spacing': generateCSSUnit( inputLetterSpacing, inputLetterSpacingType ),
-			...fieldBorderCSS
+			...fieldBorderCSS,
 		},
 		' .wpcf7 select': {
 			'background-color': fieldBgColor,
@@ -384,7 +388,6 @@ function styling( props ) {
 			'height': generateCSSUnit( fieldTopPaddingDesktop, 'px' ),
 			'width': generateCSSUnit( fieldTopPaddingDesktop, 'px' ),
 			'font-size': 'calc( ' + fieldTopPaddingDesktop + 'px / 1.2 )',
-			...fieldBorderCSS
 		},
 		" .wpcf7 .wpcf7-acceptance input[type='checkbox']:checked + span:before": {
 			'background-color': fieldBgColor,
@@ -406,38 +409,37 @@ function styling( props ) {
 			'border-radius': '100%',
 			'height': 'calc( ' + fieldTopPaddingDesktop + 'px / 1.2 )',
 			'width': 'calc( ' + fieldTopPaddingDesktop + 'px / 1.2 )',
-			...fieldBorderCSS
 		},
 
 		// underline border
 		' .uagb-cf7-styler__field-style-underline .wpcf7 input:not([type=submit])': {
 			'border-style': 'none',
-			'border-bottom-style': 'solid',
+			'border-bottom-style': fieldBorderCSS['border-style'],
 			'border-bottom-width': generateCSSUnit( inputBorderBottomWidth, 'px' ),
 		},
 		' .uagb-cf7-styler__field-style-underline select': {
 			'border-style': 'none',
-			'border-bottom-style': 'solid',
+			'border-bottom-style': fieldBorderCSS['border-style'],
 			'border-bottom-width': generateCSSUnit( inputBorderBottomWidth, 'px' ),
 		},
 		' .uagb-cf7-styler__field-style-underline textarea': {
 			'border-style': 'none',
-			'border-bottom-style': 'solid',
+			'border-bottom-style': fieldBorderCSS['border-style'],
 			'border-bottom-width': generateCSSUnit( inputBorderBottomWidth, 'px' ),
 		},
 		" .uagb-cf7-styler__field-style-underline .wpcf7-checkbox input[type='checkbox'] + span:before": {
 			'border-style': 'none',
-			'border-bottom-style': 'solid',
+			'border-bottom-style': fieldBorderCSS['border-style'],
 			'border-bottom-width': generateCSSUnit( inputBorderBottomWidth, 'px' ),
 		},
 		" .uagb-cf7-styler__field-style-underline .wpcf7 input[type='radio'] + span:before": {
 			'border-style': 'none',
-			'border-bottom-style': 'solid',
+			'border-bottom-style': fieldBorderCSS['border-style'],
 			'border-bottom-width': generateCSSUnit( inputBorderBottomWidth, 'px' ),
 		},
 		" .uagb-cf7-styler__field-style-underline .wpcf7-acceptance input[type='checkbox'] + span:before": {
 			'border-style': 'none',
-			'border-bottom-style': 'solid',
+			'border-bottom-style': fieldBorderCSS['border-style'],
 			'border-bottom-width': generateCSSUnit( inputBorderBottomWidth, 'px' ),
 		},
 		" .wpcf7-radio input[type='radio']:checked + span:before": {

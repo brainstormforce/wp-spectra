@@ -605,72 +605,77 @@ const Settings = ( props ) => {
 				title={ __( 'Content', 'ultimate-addons-for-gutenberg' ) }
 				initialOpen={ false }
 			>
-				<MultiButtonsControl
-					setAttributes={ setAttributes }
-					label={ __(
-						'Alignment',
-						'ultimate-addons-for-gutenberg'
-					) }
-					responsive={true}
-					data={ {
-						desktop: {
-							value: headingAlign,
-							label: 'headingAlign',
-						},
-						tablet: {
-							value: headingAlignTablet,
-							label: 'headingAlignTablet',
-						},
-						mobile: {
-							value: headingAlignMobile,
-							label: 'headingAlignMobile',
-						},
-					} }
-					className="uagb-multi-button-alignment-control"
-					options={ [
-						{
-							value: 'left',
-							icon: (
-								<Icon
-									icon={ renderSVG( 'fa fa-align-left' ) }
-								/>
-							),
-							tooltip: __(
-								'Left',
+				{ ( false === showIcon || ( iconimgPosition &&
+					( iconimgPosition === 'above-title' ||
+					iconimgPosition === 'below-title' ) ) ) && (
+						<MultiButtonsControl
+							setAttributes={ setAttributes }
+							label={ __(
+								'Alignment',
 								'ultimate-addons-for-gutenberg'
-							),
-						},
-						{
-							value: 'center',
-							icon: (
-								<Icon
-									icon={ renderSVG(
-										'fa fa-align-center'
-									) }
-								/>
-							),
-							tooltip: __(
-								'Center',
-								'ultimate-addons-for-gutenberg'
-							),
-						},
-						{
-							value: 'right',
-							icon: (
-								<Icon
-									icon={ renderSVG(
-										'fa fa-align-right'
-									) }
-								/>
-							),
-							tooltip: __(
-								'Right',
-								'ultimate-addons-for-gutenberg'
-							),
-						},
-					] }
-					showIcons={ true }
-				/>
+							) }
+							responsive={true}
+							data={ {
+								desktop: {
+									value: headingAlign,
+									label: 'headingAlign',
+								},
+								tablet: {
+									value: headingAlignTablet,
+									label: 'headingAlignTablet',
+								},
+								mobile: {
+									value: headingAlignMobile,
+									label: 'headingAlignMobile',
+								},
+							} }
+							className="uagb-multi-button-alignment-control"
+							options={ [
+								{
+									value: 'left',
+									icon: (
+										<Icon
+											icon={ renderSVG( 'fa fa-align-left' ) }
+										/>
+									),
+									tooltip: __(
+										'Left',
+										'ultimate-addons-for-gutenberg'
+									),
+								},
+								{
+									value: 'center',
+									icon: (
+										<Icon
+											icon={ renderSVG(
+												'fa fa-align-center'
+											) }
+										/>
+									),
+									tooltip: __(
+										'Center',
+										'ultimate-addons-for-gutenberg'
+									),
+								},
+								{
+									value: 'right',
+									icon: (
+										<Icon
+											icon={ renderSVG(
+												'fa fa-align-right'
+											) }
+										/>
+									),
+									tooltip: __(
+										'Right',
+										'ultimate-addons-for-gutenberg'
+									),
+								},
+							] }
+							showIcons={ true }
+						/>
+					)
+				}
 
 				<ToggleControl
 					checked={ showPrefix }
@@ -980,7 +985,6 @@ const Settings = ( props ) => {
 									label: 'ctaIconSpaceMobile',
 								},
 							} }
-							min={ 0 }
 							max={ 50 }
 							unit={ {
 								value: ctaIconSpaceType,
@@ -1449,7 +1453,7 @@ const Settings = ( props ) => {
 								link={ {
 									value: spacingLink,
 									label: 'spacingLink',
-								} }								
+								} }
 								units={ [
 									{
 										name: __(
