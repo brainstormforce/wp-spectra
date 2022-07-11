@@ -30,6 +30,7 @@ const Settings = ( props ) => {
 	const { attributes, setAttributes, deviceType } = props;
 
 	const {
+		block_id,
 		align,
 		contentWidth,
 		width,
@@ -554,6 +555,7 @@ const Settings = ( props ) => {
 				</UAGAdvancedPanelBody>
 				<UAGAdvancedPanelBody title="Box Shadow" initialOpen={ false }>
 					<BoxShadowControl
+						blockId={ block_id }
 						setAttributes={ setAttributes }
 						label={ __(
 							'Box Shadow',
