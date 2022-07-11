@@ -22,6 +22,7 @@ const TextShadowControl = ( props ) => {
 		textShadowBlur,
 		label = __( 'Text Shadow', 'ultimate-addons-for-gutenberg' ),
 		popup = false,
+		blockId
 	} = props;
 
 	let advancedControls;
@@ -29,12 +30,9 @@ const TextShadowControl = ( props ) => {
 
 	useLayoutEffect( () => {
 		window.addEventListener( 'click', function( e ){
-			const typoDiv = document.querySelector( '.uagb-text-shadow-advanced' );
-			const actionsDiv = document.querySelector( '.uag-text-shadow-button' );
-			if ( typoDiv ) {
-				if ( ! typoDiv?.contains( e.target ) && ! actionsDiv?.contains( e.target ) && ! e.target?.classList?.contains( 'uagb-advanced-color-indicate' ) && ! e.target?.parentElement?.closest( '.uagb-popover-color' ) ){
-					toggleAdvancedControls( false )
-				}
+			const popupButton = document.querySelector( `.active.popup-${blockId} .spectra-control-popup__options--action-button` );
+			if ( popupButton && ! popupButton?.contains( e.target ) ) {
+				toggleAdvancedControls( false )
 			}
 		  } );
 	}, [] );
@@ -55,7 +53,6 @@ const TextShadowControl = ( props ) => {
 			<Range
 				label={ textShadowHOffset.title }
 				value={ textShadowHOffset.value }
-				min={ 0 }
 				max={ 100 }
 				displayUnit={ false }
 				setAttributes={setAttributes}
@@ -68,7 +65,6 @@ const TextShadowControl = ( props ) => {
 			<Range
 				label={ textShadowVOffset.title }
 				value={ textShadowVOffset.value }
-				min={ 0 }
 				max={ 100 }
 				displayUnit={ false }
 				setAttributes={setAttributes}
@@ -110,6 +106,13 @@ const TextShadowControl = ( props ) => {
 				className={ 'uag-text-shadow-button spectra-control-popup__options--action-button' }
 				aria-pressed={ showAdvancedControls }
 				onClick={ () => {
+						const allPopups = document.querySelectorAll( '.spectra-control-popup__options' );
+						if ( allPopups && 0 < allPopups.length ) {
+							for ( let i = 0; i < allPopups.length; i++ ) {
+								const popupButton = allPopups[i]?.querySelector( '.spectra-control-popup__options.active .spectra-control-popup__options--action-button' );
+								popupButton?.click();
+							}
+						}
 						toggleAdvancedControls( ! showAdvancedControls )
 						if ( ! showAdvancedControls ) {
 							const { getSelectedBlock } = select( 'core/block-editor' );
@@ -138,7 +141,7 @@ const TextShadowControl = ( props ) => {
 
 	return popup ? (
 		<div
-			className={ `components-base-control uag-text-shadow-options spectra-control-popup__options ${ activeClass }` }
+			className={ `components-base-control uag-text-shadow-options spectra-control-popup__options popup-${blockId} ${ activeClass }` }
 		>
 			{ textShadowAdvancedControls }
 			{ showAdvancedControls && advancedControls }
