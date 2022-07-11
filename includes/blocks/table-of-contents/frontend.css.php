@@ -101,6 +101,7 @@ $selectors = array(
 	' .uagb-toc__list-wrap'                               => array(
 		'column-count' => $t_columns_desktop_fallback,
 		'overflow'     => 'hidden',
+		'text-align'   => $attr['align'],
 	),
 	' .uagb-toc__list-wrap > ul.uagb-toc__list > li:first-child' => array(
 		'padding-top' => 0,
@@ -189,6 +190,7 @@ $m_selectors = array(
 	' .uagb-toc__list-wrap'                               => array(
 		'column-count' => $t_columns_mobile_fallback,
 		'overflow'     => 'hidden',
+		'text-align'   => $attr['align'],
 	),
 	' .uagb-toc__list-wrap > ul.uagb-toc__list > li:first-child' => array(
 		'padding-top' => 0,
@@ -227,6 +229,7 @@ $t_selectors = array(
 	' .uagb-toc__list-wrap'                               => array(
 		'column-count' => $t_columns_tablet_fallback,
 		'overflow'     => 'hidden',
+		'text-align'   => $attr['align'],
 	),
 	' .uagb-toc__list-wrap > ul.uagb-toc__list > li:first-child' => array(
 		'padding-top' => 0,
