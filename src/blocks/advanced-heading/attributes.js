@@ -314,7 +314,7 @@ const attributes = {
 	// sub headline.
 	subHeadFontFamily: {
 		type: 'string',
-		default: '',
+		default: 'Default',
 		UAGCopyPaste: {
 			styleType: 'desc-font-family'
 		}
