@@ -45,22 +45,24 @@ const ResponsiveBorder = ( props ) => {
 		borderHoverColorLabel,
 		showWidth,
 		label = __( 'Border', 'ultimate-addons-for-gutenberg' ),
+		normalTabLabel = __(
+			'Normal',
+			'ultimate-addons-for-gutenberg'
+		),
+		hoverTabLabel = __(
+			'Hover',
+			'ultimate-addons-for-gutenberg'
+		),
 	} = props;
 
 	const tabsToUse = [ {
 		name: 'normal',
-		title: __(
-			'Normal',
-			'ultimate-addons-for-gutenberg'
-		),
+		title: normalTabLabel,
 	} ];
 
 	tabsToUse.push( {
 		name: 'hover',
-		title: __(
-			'Hover',
-			'ultimate-addons-for-gutenberg'
-		),
+		title: hoverTabLabel,
 	} );
 
 	const borderStyle = attributes[prefix + 'BorderStyle'];
