@@ -985,7 +985,6 @@ const Settings = ( props ) => {
 									label: 'ctaIconSpaceMobile',
 								},
 							} }
-							min={ 0 }
 							max={ 50 }
 							unit={ {
 								value: ctaIconSpaceType,
@@ -1454,7 +1453,7 @@ const Settings = ( props ) => {
 								link={ {
 									value: spacingLink,
 									label: 'spacingLink',
-								} }								
+								} }
 								units={ [
 									{
 										name: __(

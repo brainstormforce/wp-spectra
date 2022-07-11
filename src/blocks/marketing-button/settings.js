@@ -417,7 +417,6 @@ const Settings = ( props ) => {
 									label: 'iconSpaceMobile',
 								},
 							} }
-							min={ 0 }
 							max={ 50 }
 							displayUnit={ false }
 							setAttributes={ setAttributes }
