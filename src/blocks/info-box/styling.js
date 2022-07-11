@@ -238,6 +238,10 @@ function styling( props ) {
 	 const imageWidthFallbackMobile = isNaN( imageWidthMobile ) ? imageWidthFallbackTablet : imageWidthMobile;
 
 	 const ctaBorderCSS = generateBorderCSS( props.attributes, 'btn' );
+
+	//  console.log( ctaBorderCSS );
+	//  console.log( "========================================================================" );
+
 	 const ctaBorderCSSTablet = generateBorderCSS( props.attributes, 'btn', 'tablet' );
 	 const ctaBorderCSSMobile = generateBorderCSS( props.attributes, 'btn', 'mobile' );
 
