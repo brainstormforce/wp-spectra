@@ -9,8 +9,6 @@ import lazyLoader from '@Controls/lazy-loader';
 import { useDeviceType } from '@Controls/getPreviewType';
 import addBlockEditorDynamicStyles from '@Controls/addBlockEditorDynamicStyles';
 
-import { migratePhpBorderAttributes } from '@Controls/generateAttributes';
-
 const Settings = lazy( () =>
 	import(
 		/* webpackChunkName: "chunks/taxonomy-list/settings" */ './settings'
@@ -144,47 +142,47 @@ const UAGBTaxonomyList = ( props ) => {
 				} );
 			}
 			if( undefined === overallBorderLeftWidth ) {
-				props.setAttributes({ overallBorderLeftWidth : borderThickness});
+				props.setAttributes( { overallBorderLeftWidth : borderThickness} );
 			}
 			if( undefined === overallBorderRightWidth ) {
-				props.setAttributes({ overallBorderRightWidth : borderThickness});
+				props.setAttributes( { overallBorderRightWidth : borderThickness} );
 			}
 			if( undefined === overallBorderBottomWidth ) {
-				props.setAttributes({ overallBorderBottomWidth : borderThickness});
+				props.setAttributes( { overallBorderBottomWidth : borderThickness} );
 			}
 		}
 
 		if( borderRadius ){
 
 			if( undefined === overallBorderTopLeftRadius ) {
-				props.setAttributes({ overallBorderTopLeftRadius : borderRadius});
+				props.setAttributes( { overallBorderTopLeftRadius : borderRadius} );
 			}
 			if( undefined === overallBorderTopRightRadius ) {
-				props.setAttributes({ overallBorderTopRightRadius : borderRadius});
+				props.setAttributes( { overallBorderTopRightRadius : borderRadius} );
 			}
 			if( undefined === overallBorderBottomLeftRadius ) {
-				props.setAttributes({ overallBorderBottomLeftRadius : borderRadius});
+				props.setAttributes( { overallBorderBottomLeftRadius : borderRadius} );
 			}
 			if( undefined === overallBorderBottomRightRadius ) {
-				props.setAttributes({ overallBorderBottomRightRadius : borderRadius});
+				props.setAttributes( { overallBorderBottomRightRadius : borderRadius} );
 			}
 		}
 
 		if( borderColor ){
 			if( undefined === overallBorderColor ) {
-				props.setAttributes({ overallBorderColor : borderColor});
+				props.setAttributes( { overallBorderColor : borderColor} );
 			}
 		}
 
 		if( borderHoverColor ){
 			if( undefined === overallBorderHColor ) {
-				props.setAttributes({ overallBorderHColor : borderHoverColor});
+				props.setAttributes( { overallBorderHColor : borderHoverColor} );
 			}
 		}
 
 		if( borderStyle ){
 			if( undefined === overallBorderStyle ) {
-				props.setAttributes({ overallBorderStyle : borderStyle});
+				props.setAttributes( { overallBorderStyle : borderStyle} );
 			}
 		}
 	}, [] );

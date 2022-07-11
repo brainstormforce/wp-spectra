@@ -275,47 +275,47 @@ const UAGBPostMasonry = ( props ) => {
 				} );
 			}
 			if( undefined === btnBorderLeftWidth ) {
-				props.setAttributes({ btnBorderLeftWidth : borderThickness});
+				props.setAttributes( { btnBorderLeftWidth : borderThickness} );
 			}
 			if( undefined === btnBorderRightWidth ) {
-				props.setAttributes({ btnBorderRightWidth : borderThickness});
+				props.setAttributes( { btnBorderRightWidth : borderThickness} );
 			}
 			if( undefined === btnBorderBottomWidth ) {
-				props.setAttributes({ btnBorderBottomWidth : borderThickness});
+				props.setAttributes( { btnBorderBottomWidth : borderThickness} );
 			}
 		}
 
 		if( borderRadius ){
 
 			if( undefined === btnBorderTopLeftRadius ) {
-				props.setAttributes({ btnBorderTopLeftRadius : borderRadius});
+				props.setAttributes( { btnBorderTopLeftRadius : borderRadius} );
 			}
 			if( undefined === btnBorderTopRightRadius ) {
-				props.setAttributes({ btnBorderTopRightRadius : borderRadius});
+				props.setAttributes( { btnBorderTopRightRadius : borderRadius} );
 			}
 			if( undefined === btnBorderBottomLeftRadius ) {
-				props.setAttributes({ btnBorderBottomLeftRadius : borderRadius});
+				props.setAttributes( { btnBorderBottomLeftRadius : borderRadius} );
 			}
 			if( undefined === btnBorderBottomRightRadius ) {
-				props.setAttributes({ btnBorderBottomRightRadius : borderRadius});
+				props.setAttributes( { btnBorderBottomRightRadius : borderRadius} );
 			}
 		}
 
 		if( borderColor ){
 			if( undefined === btnBorderColor ) {
-				props.setAttributes({ btnBorderColor : borderColor});
+				props.setAttributes( { btnBorderColor : borderColor} );
 			}
 		}
 
 		if( borderHColor ){
 			if( undefined === btnBorderHColor ) {
-				props.setAttributes({ btnBorderHColor : borderHColor});
+				props.setAttributes( { btnBorderHColor : borderHColor} );
 			}
 		}
 
 		if( borderStyle ){
 			if( undefined === btnBorderStyle ) {
-				props.setAttributes({ btnBorderStyle : borderStyle});
+				props.setAttributes( { btnBorderStyle : borderStyle} );
 			}
 		}
 

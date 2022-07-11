@@ -1193,13 +1193,13 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 			}
 
 			$border_attr[ "{$prefix}BorderStyle" ]      = array(
-					'type' => 'number',
+				'type' => 'number',
 			);
 			$border_attr[ "{$prefix}BorderColor" ]      = array(
-					'type' => 'number',
+				'type' => 'number',
 			);
 			$border_attr[ "{$prefix}BorderHColor" ]     = array(
-					'type' => 'number',
+				'type' => 'number',
 			);
 			$border_attr[ "{$prefix}BorderLink" ]       = array(
 				'type'    => 'boolean',
