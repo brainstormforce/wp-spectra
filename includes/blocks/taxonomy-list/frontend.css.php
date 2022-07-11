@@ -25,6 +25,14 @@ $t_selectors = array();
 $m_selectors = array();
 
 $overall_border_css       = UAGB_Block_Helper::uag_generate_border_css( $attr, 'overall' );
+$overall_border_css       = UAGB_Block_Helper::uag_generate_deprecated_border_css(
+	$overall_border_css,
+	( isset( $attr['borderThickness'] ) ? $attr['borderThickness'] : '' ),
+	( isset( $attr['borderRadius'] ) ? $attr['borderRadius'] : '' ),
+	( isset( $attr['borderColor'] ) ? $attr['borderColor'] : '' ),
+	( isset( $attr['borderStyle'] ) ? $attr['borderStyle'] : '' ),
+	( isset( $attr['borderHColor'] ) ? $attr['borderHColor'] : '' )
+);
 $overall_border_cssTablet = UAGB_Block_Helper::uag_generate_border_css( $attr, 'overall', 'tablet' );
 $overall_border_cssMobile = UAGB_Block_Helper::uag_generate_border_css( $attr, 'overall', 'mobile' );
 
