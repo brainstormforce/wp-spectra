@@ -70,6 +70,22 @@ function styling( props ) {
 		iconBgHoverColor,
 		iconBorderColor,
 		iconBorderHoverColor,
+		// margin
+		blockTopMargin,
+		blockRightMargin,
+		blockLeftMargin,
+		blockBottomMargin,
+		blockTopMarginTablet,
+		blockRightMarginTablet,
+		blockLeftMarginTablet,
+		blockBottomMarginTablet,
+		blockTopMarginMobile,
+		blockRightMarginMobile,
+		blockLeftMarginMobile,
+		blockBottomMarginMobile,
+		blockMarginUnit,
+		blockMarginUnitTablet,
+		blockMarginUnitMobile,
 	} = props.attributes;
 
 	const gapFallback = getFallbackNumber( gap, 'gap', blockName );
@@ -163,6 +179,22 @@ function styling( props ) {
 		},
 		' .uagb-icon-list__wrap .block-editor-inner-blocks': {
 			'text-align': align,
+			'margin-top': generateCSSUnit(
+				blockTopMargin,
+				blockMarginUnit
+			),
+			'margin-right': generateCSSUnit(
+				blockRightMargin,
+				blockMarginUnit
+			),
+			'margin-bottom': generateCSSUnit(
+				blockBottomMargin,
+				blockMarginUnit
+			),
+			'margin-left': generateCSSUnit(
+				blockLeftMargin,
+				blockMarginUnit
+			),
 		},
 		' .wp-block-uagb-icon-list-child .uagb-icon-list__source-wrap svg': {
 			'color': iconColor,
@@ -190,8 +222,23 @@ function styling( props ) {
 		},
 		' .uagb-icon-list__wrap .block-editor-inner-blocks': {
 			'text-align': alignTablet,
+			'margin-top': generateCSSUnit(
+				blockTopMarginTablet,
+				blockMarginUnitTablet
+			),
+			'margin-right': generateCSSUnit(
+				blockRightMarginTablet,
+				blockMarginUnitTablet
+			),
+			'margin-bottom': generateCSSUnit(
+				blockBottomMarginTablet,
+				blockMarginUnitTablet
+			),
+			'margin-left': generateCSSUnit(
+				blockLeftMarginTablet,
+				blockMarginUnitTablet
+			),
 		},
-
 	};
 
 	mobileSelectors = {
@@ -200,6 +247,22 @@ function styling( props ) {
 		},
 		' .uagb-icon-list__wrap .block-editor-inner-blocks': {
 			'text-align': alignMobile,
+			'margin-top': generateCSSUnit(
+				blockTopMarginMobile,
+				blockMarginUnitMobile
+			),
+			'margin-right': generateCSSUnit(
+				blockRightMarginMobile,
+				blockMarginUnitMobile
+			),
+			'margin-bottom': generateCSSUnit(
+				blockBottomMarginMobile,
+				blockMarginUnitMobile
+			),
+			'margin-left': generateCSSUnit(
+				blockLeftMarginMobile,
+				blockMarginUnitMobile
+			),
 		},
 	};
 
