@@ -44,10 +44,10 @@ function styling( props ) {
 		fontTransform,
 		fontDecoration,
 		//letter spacing
-		titleLetterSpacing,
-		titleLetterSpacingTablet,
-		titleLetterSpacingMobile,
-		titleLetterSpacingType,
+		letterSpacing,
+		letterSpacingTablet,
+		letterSpacingMobile,
+		letterSpacingType,
 		// padding
 		blockTopPadding,
 		blockRightPadding,
@@ -193,7 +193,7 @@ function styling( props ) {
 			'font-weight': fontWeight,
 			'line-height': generateCSSUnit( lineHeight, lineHeightType ),
 			'color': titleColor,
-			'letter-spacing': generateCSSUnit( titleLetterSpacing, titleLetterSpacingType ),
+			'letter-spacing': generateCSSUnit( letterSpacing, letterSpacingType ),
 		},
 		'.wp-block-uagb-star-rating ': {
 			'justify-content': flexJustifyContent( align ),
@@ -297,7 +297,7 @@ function styling( props ) {
 		' .uag-star-rating__title.block-editor-rich-text__editable': {
 			'font-size': generateCSSUnit( fontSizeTablet, fontSizeType ),
 			'line-height': generateCSSUnit( lineHeightTablet, lineHeightType ),
-			'letter-spacing': generateCSSUnit( titleLetterSpacingTablet, titleLetterSpacingType ),
+			'letter-spacing': generateCSSUnit( letterSpacingTablet, letterSpacingType ),
 		},
 	};
 
@@ -381,7 +381,7 @@ function styling( props ) {
 		' .uag-star-rating__title.block-editor-rich-text__editable': {
 			'font-size': generateCSSUnit( fontSizeMobile, fontSizeType ),
 			'line-height': generateCSSUnit( lineHeightMobile, lineHeightType ),
-			'letter-spacing': generateCSSUnit( titleLetterSpacingMobile, titleLetterSpacingType ),
+			'letter-spacing': generateCSSUnit( letterSpacingMobile, letterSpacingType ),
 		},
 	};
 

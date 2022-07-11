@@ -56,3 +56,8 @@
 		box-sizing: border-box;
 	}
 }
+
+// WordPress adds a margin to list elements, due to which there's inconsistent layout on enditor and frontend.
+ol.uagb-toc__list {
+	margin-top: 0;
+}
