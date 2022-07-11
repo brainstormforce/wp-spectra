@@ -28,7 +28,6 @@ import {
 } from '@wordpress/components';
 
 
-
 import UAGAdvancedPanelBody from '@Components/advanced-panel-body';
 
 const Settings = ( props ) => {
@@ -252,7 +251,6 @@ const Settings = ( props ) => {
 	let loadRadioGoogleFonts;
 	let loadValidationGoogleFonts;
 	let loadMsgGoogleFonts;
-
 	if ( labelLoadGoogleFonts === true ) {
 		const labelconfig = {
 			google: {
@@ -881,19 +879,6 @@ const Settings = ( props ) => {
 			title={ __( 'Field', 'ultimate-addons-for-gutenberg' ) }
 			initialOpen={ true }
 		>
-			{ fieldStyle === 'box' && (
-				<ResponsiveBorder
-					disabledBorderTitle= {false}
-					setAttributes={ setAttributes }
-					borderHoverColorLabel={__(
-						'Active Color',
-						'ultimate-addons-for-gutenberg'
-					)}
-					prefix={'input'}
-					attributes={ attributes }
-					deviceType={deviceType}
-				/>
-			)}
 			{ fieldStyle === 'underline' && (
 				<ResponsiveSlider
 				label={ __(
@@ -920,6 +905,18 @@ const Settings = ( props ) => {
 				setAttributes={ setAttributes }
 			/>
 			)}
+			<ResponsiveBorder
+				disabledBorderTitle= {false}
+				setAttributes={ setAttributes }
+				borderHoverColorLabel={__(
+					'Active Color',
+					'ultimate-addons-for-gutenberg'
+				)}
+				prefix={'input'}
+				attributes={ attributes }
+				deviceType={deviceType}
+				showWidth = {fieldStyle === 'box' ? true : false}
+			/>
 			<ResponsiveSlider
 				label={ __(
 					'Fields Space',
