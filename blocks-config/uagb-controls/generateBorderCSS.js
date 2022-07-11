@@ -20,8 +20,8 @@ const generateBorderCSS = ( attributes, prefix, deviceType = 'desktop' ) => {
 	const borderLeftWidthTablet = ! isNaN( attributes[prefix + 'BorderLeftWidthTablet'] ) ? attributes[prefix + 'BorderLeftWidthTablet']+'px' : '' ;
 
 	const borderRadiusUnit = ( attributes[prefix + 'BorderRadiusUnit'] ) ? attributes[prefix + 'BorderRadiusUnit'] : 'px';
-	const borderRadiusUnitTablet = ( attributes[prefix + 'BorderBottomLeftRadiusTablet'] ) ? attributes[prefix + 'BorderBottomLeftRadiusTablet'] : 'px';
-	const borderRadiusUnitMobile = ( attributes[prefix + 'BorderBottomRightRadiusMobile'] ) ? attributes[prefix + 'BorderBottomRightRadiusMobile'] : 'px';
+	const borderRadiusUnitTablet = ( attributes[prefix + 'BorderRadiusUnitTablet'] ) ? attributes[prefix + 'BorderRadiusUnitTablet'] : 'px';
+	const borderRadiusUnitMobile = ( attributes[prefix + 'BorderRadiusUnitMobile'] ) ? attributes[prefix + 'BorderRadiusUnitMobile'] : 'px';
 
 	const borderTopLeftRadius = ! isNaN( attributes[prefix + 'BorderTopLeftRadius'] ) ? attributes[prefix + 'BorderTopLeftRadius']+borderRadiusUnit : '' ;
 	const borderTopRightRadius = ! isNaN( attributes[prefix + 'BorderTopRightRadius'] ) ? attributes[prefix + 'BorderTopRightRadius']+borderRadiusUnit : '' ;
