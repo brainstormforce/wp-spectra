@@ -124,7 +124,7 @@ if ( $attr['childMigrate'] ) {
 	$button_desktop_style = array( // For Backword user.
 		'font-family'     => $attr['fontFamily'],
 		'text-transform'  => $attr['fontTransform'],
-		'text-decoration' => $attr['fontDecoration'] . ' !important',
+		'text-decoration' => $attr['fontDecoration'],
 		'font-style'      => $attr['fontStyle'],
 		'font-weight'     => $attr['fontWeight'],
 		'font-size'       => UAGB_Helper::get_css_value( $attr['fontSize'], $attr['fontSizeType'] ),
@@ -168,12 +168,12 @@ if ( $attr['childMigrate'] ) {
 		'margin-right'   => UAGB_Helper::get_css_value( $attr['rightMarginMobile'], $attr['marginType'] ),
 	);
 
-	$selectors[' .uagb-buttons-repeater:not(.wp-block-button__link) .uagb-button__link']   = $button_desktop_style; // For Backword user.
-	$selectors[' .uagb-buttons-repeater .uagb-button__link']                               = $button_desktop_style; // For New User.
-	$t_selectors[' .uagb-buttons-repeater:not(.wp-block-button__link) .uagb-button__link'] = $button_tablet_style; // For Backword user.
-	$t_selectors[' .uagb-buttons-repeater .uagb-button__link']                             = $button_tablet_style; // For New User.
-	$m_selectors[' .uagb-buttons-repeater:not(.wp-block-button__link) .uagb-button__link'] = $button_mobile_style; // For Backword user.
-	$m_selectors[' .uagb-buttons-repeater .uagb-button__link']                             = $button_mobile_style; // For New User.
+	$selectors[' .uagb-buttons-repeater:not(.wp-block-button__link)']   = $button_desktop_style; // For Backword user.
+	$selectors[' .uagb-buttons-repeater.wp-block-button__link']         = $button_desktop_style; // For New User.
+	$t_selectors[' .uagb-buttons-repeater:not(.wp-block-button__link)'] = $button_tablet_style; // For Backword user.
+	$t_selectors[' .uagb-buttons-repeater.wp-block-button__link']       = $button_tablet_style; // For New User.
+	$m_selectors[' .uagb-buttons-repeater:not(.wp-block-button__link)'] = $button_mobile_style; // For Backword user.
+	$m_selectors[' .uagb-buttons-repeater.wp-block-button__link']       = $button_mobile_style; // For New User.
 }
 
 if ( ! $attr['childMigrate'] ) {
@@ -193,7 +193,7 @@ if ( ! $attr['childMigrate'] ) {
 		$selectors[ $wrapper ] = array(
 			'font-family'     => $attr['fontFamily'],
 			'text-transform'  => $attr['fontTransform'],
-			'text-decoration' => $attr['fontDecoration'] . '!important',
+			'text-decoration' => $attr['fontDecoration'],
 			'font-style'      => $attr['fontStyle'],
 			'font-weight'     => $attr['fontWeight'],
 		);

@@ -64,6 +64,7 @@ const TypographyControl = ( props ) => {
 		fontFamily = <FontFamilyControl { ...props } />;
 	}
 	const lineHeightStepsVal = ( 'em' === props.lineHeightType?.value ? 0.1 : 1 );
+	const letterSpacingStepsVal = ( 'em' === props.letterSpacingType?.value ? 0.1 : 1 ); // decimal point value when unit is em.
 
 	if ( true !== disableLineHeight ) {
 		lineHeight = (
@@ -117,7 +118,7 @@ const TypographyControl = ( props ) => {
 					'Letter Spacing',
 					'ultimate-addons-for-gutenberg'
 				) }
-				steps={ 0.1 }
+				steps={ letterSpacingStepsVal }
 				{ ...props }
 			/>
 		);

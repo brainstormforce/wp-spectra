@@ -58,6 +58,8 @@ export default function Settings( props ) {
 		heightTablet,
 		heightMobile,
 		align,
+		alignTablet,
+		alignMobile,
 		alt,
 		sizeSlug,
 		sizeSlugTablet,
@@ -196,7 +198,15 @@ export default function Settings( props ) {
 		maskCustomShape,
 		maskSize,
 		maskPosition,
-		maskRepeat
+		maskRepeat,
+		headingLetterSpacing,
+		headingLetterSpacingTablet,
+		headingLetterSpacingMobile,
+		headingLetterSpacingType,
+		captionLetterSpacing,
+		captionLetterSpacingTablet,
+		captionLetterSpacingMobile,
+		captionLetterSpacingType,
 	} = attributes;
 
 
@@ -1170,6 +1180,22 @@ export default function Settings( props ) {
 						value: headingLineHeightTablet,
 						label: 'headingLineHeightTablet',
 					} }
+					letterSpacing={ {
+						value: headingLetterSpacing,
+						label: 'headingLetterSpacing',
+					} }
+					letterSpacingTablet={ {
+						value: headingLetterSpacingTablet,
+						label: 'headingLetterSpacingTablet',
+					} }
+					letterSpacingMobile={ {
+						value: headingLetterSpacingMobile,
+						label: 'headingLetterSpacingMobile',
+					} }
+					letterSpacingType={ {
+						value: headingLetterSpacingType,
+						label: 'headingLetterSpacingType',
+					} }
 				/>
 			</Suspense>
 			<AdvancedPopColorControl
@@ -1384,6 +1410,22 @@ export default function Settings( props ) {
 						value: captionLineHeightTablet,
 						label: 'captionLineHeightTablet',
 					} }
+					letterSpacing={ {
+						value: captionLetterSpacing,
+						label: 'captionLetterSpacing',
+					} }
+					letterSpacingTablet={ {
+						value: captionLetterSpacingTablet,
+						label: 'captionLetterSpacingTablet',
+					} }
+					letterSpacingMobile={ {
+						value: captionLetterSpacingMobile,
+						label: 'captionLetterSpacingMobile',
+					} }
+					letterSpacingType={ {
+						value: captionLetterSpacingType,
+						label: 'captionLetterSpacingType',
+					} }
 				/>
 			</Suspense>
 			<AdvancedPopColorControl
@@ -1483,8 +1525,18 @@ export default function Settings( props ) {
 					'ultimate-addons-for-gutenberg'
 				) }
 				data={ {
-					value: align,
-					label: 'align',
+					desktop: {
+						value: align,
+						label: 'align',
+					},
+					tablet: {
+						value: alignTablet,
+						label: 'alignTablet',
+					},
+					mobile: {
+						value: alignMobile,
+						label: 'alignMobile',
+					},
 				} }
 				className="uagb-multi-button-alignment-control"
 				options={ [
@@ -1530,6 +1582,7 @@ export default function Settings( props ) {
 					},
 				] }
 				showIcons={ true }
+				responsive={ true }
 			/>
 			{
 				layout === 'default' && (
@@ -1569,7 +1622,6 @@ export default function Settings( props ) {
 							value: overlayPositionFromEdge,
 							label: 'overlayPositionFromEdge',
 						} }
-						min={ 0 }
 						max={ 100 }
 						unit={ {
 							value: overlayPositionFromEdgeUnit,

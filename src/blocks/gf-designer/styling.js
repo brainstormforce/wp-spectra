@@ -714,6 +714,10 @@ successMsgLetterSpacingType,
 			'font-size': 'calc( ' + getFallbackNumber( radioCheckSize, 'radioCheckSize', blockName ) + 'px / 1.2 )',
 			'border-color': radioCheckBorderColor,
 			'border-width': generateCSSUnit( getFallbackNumber( radioCheckBorderWidth, 'radioCheckBorderWidth', blockName ), radioCheckBorderWidthType ),
+			'border-radius': generateCSSUnit(
+				getFallbackNumber( radioCheckBorderRadius, 'radioCheckBorderRadius', blockName ),
+				radioCheckBorderRadiusType
+			),
 		},
 		" .uagb-gf-styler__check-style-enabled .gfield_radio input[type='radio']:checked + label:before": {
 			'background-color': radioCheckSelectColor,
