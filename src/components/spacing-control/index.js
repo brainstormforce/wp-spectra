@@ -341,28 +341,24 @@ const SpacingControl = ( props ) => {
 					type="number"
 					onChange={ ( e ) => onChangeTopValue( e, 'desktop' ) }
 					value={ valueTop.value }
-					min={ 0 }
 				/>
 				<input
 					className="uagb-spacing-control__number"
 					type="number"
 					onChange={ ( e ) => onChangeRightValue( e, 'desktop' ) }
 					value={ valueRight.value }
-					min={ 0 }
 				/>
 				<input
 					className="uagb-spacing-control__number"
 					type="number"
 					onChange={ ( e ) => onChangeBottomValue( e, 'desktop' ) }
 					value={ valueBottom.value }
-					min={ 0 }
 				/>
 				<input
 					className="uagb-spacing-control__number"
 					type="number"
 					onChange={ ( e ) => onChangeLeftValue( e, 'desktop' ) }
 					value={ valueLeft.value }
-					min={ 0 }
 				/>
 				{ linkHtml }
 			</div>
@@ -376,28 +372,24 @@ const SpacingControl = ( props ) => {
 					type="number"
 					onChange={ ( e ) => onChangeTopValue( e, 'tablet' ) }
 					value={ valueTopTablet.value }
-					min={ 0 }
 				/>
 				<input
 					className="uagb-spacing-control__number"
 					type="number"
 					onChange={ ( e ) => onChangeRightValue( e, 'tablet' ) }
 					value={ valueRightTablet.value }
-					min={ 0 }
 				/>
 				<input
 					className="uagb-spacing-control__number"
 					type="number"
 					onChange={ ( e ) => onChangeBottomValue( e, 'tablet' ) }
 					value={ valueBottomTablet.value }
-					min={ 0 }
 				/>
 				<input
 					className="uagb-spacing-control__number"
 					type="number"
 					onChange={ ( e ) => onChangeLeftValue( e, 'tablet' ) }
 					value={ valueLeftTablet.value }
-					min={ 0 }
 				/>
 				{ linkHtml }
 			</div>
@@ -411,28 +403,24 @@ const SpacingControl = ( props ) => {
 					type="number"
 					onChange={ ( e ) => onChangeTopValue( e, 'mobile' ) }
 					value={ valueTopMobile.value }
-					min={ 0 }
 				/>
 				<input
 					className="uagb-spacing-control__number"
 					type="number"
 					onChange={ ( e ) => onChangeRightValue( e, 'mobile' ) }
 					value={ valueRightMobile.value }
-					min={ 0 }
 				/>
 				<input
 					className="uagb-spacing-control__number"
 					type="number"
 					onChange={ ( e ) => onChangeBottomValue( e, 'mobile' ) }
 					value={ valueBottomMobile.value }
-					min={ 0 }
 				/>
 				<input
 					className="uagb-spacing-control__number"
 					type="number"
 					onChange={ ( e ) => onChangeLeftValue( e, 'mobile' ) }
 					value={ valueLeftMobile.value }
-					min={ 0 }
 				/>
 				{ linkHtml }
 			</div>
