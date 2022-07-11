@@ -12,7 +12,17 @@ const addBlockEditorDynamicStyles = ( styleTagId, styling ) => {
 			cloneEditorStaticCSSStylesTag = editorStaticCSSStylesTag.cloneNode( true );
 		}
 
-		// Static Editor CSS Ends.
+		// Dashicons Editor CSS.
+
+		const editorDashiconsCSSStylesTag = document.getElementById( 'dashicons-css' );
+		let cloneEditorDashiconsCSSStylesTag = false;
+
+		if ( editorDashiconsCSSStylesTag ) {
+
+			cloneEditorDashiconsCSSStylesTag = editorDashiconsCSSStylesTag.cloneNode( true );
+		}
+
+		// Dashicons Editor CSS Ends.
 
 		// Static CSS.
 
@@ -95,6 +105,15 @@ const addBlockEditorDynamicStyles = ( styleTagId, styling ) => {
 					iframeDocument.head.removeChild( iframeEditorStaticCSSStylesTag );
 				}
 				iframeDocument.head.appendChild( cloneEditorStaticCSSStylesTag );
+			}
+
+			// Dashicons CSS.
+			if ( cloneEditorDashiconsCSSStylesTag ) {
+				const iframeEditorDashiconsCSSStylesTag = iframeDocument.getElementById( 'dashicons-css' );
+				if ( iframeEditorDashiconsCSSStylesTag ) {
+					iframeDocument.head.removeChild( iframeEditorDashiconsCSSStylesTag );
+				}
+				iframeDocument.head.appendChild( cloneEditorDashiconsCSSStylesTag );
 			}
 
 			// Slick CSS.

@@ -43,6 +43,7 @@ const ResponsiveBorder = ( props ) => {
 		borderRadiusLabel,
 		borderColorLabel,
 		borderHoverColorLabel,
+		showWidth,
 		label = __( 'Border', 'ultimate-addons-for-gutenberg' ),
 		normalTabLabel = __(
 			'Normal',
@@ -172,7 +173,8 @@ const ResponsiveBorder = ( props ) => {
 				] }
 			/>
 			{ 'none' !== borderStyle && (
-				<SpacingControl
+				showWidth !== false &&
+					<SpacingControl
 					label={ borderWidthLabel }
 					valueTop={ {
 						value: attributes[prefix + 'BorderTopWidth'],

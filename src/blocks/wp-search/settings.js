@@ -26,6 +26,7 @@ const Settings = ( props ) => {
 	const { attributes, setAttributes, deviceType } = props;
 
 	const {
+		block_id,
 		layout,
 		placeholder,
 		inputSize,
@@ -410,6 +411,7 @@ const Settings = ( props ) => {
 					} }
 				/>
 				<BoxShadowControl
+					blockId={ block_id }
 					setAttributes={ setAttributes }
 					label={ __(
 						'Box Shadow',
@@ -575,6 +577,75 @@ const Settings = ( props ) => {
 							label: 'buttonWidthType',
 						} }
 					/>
+					{ 'text' === buttonType && (
+						<>
+						<TypographyControl
+							label={ __(
+								'Typography',
+								'ultimate-addons-for-gutenberg'
+							) }
+							attributes={ attributes }
+							setAttributes={ setAttributes }
+							loadGoogleFonts={ {
+								value: buttonloadGoogleFonts,
+								label: 'buttonloadGoogleFonts',
+							} }
+							fontFamily={ {
+								value: buttonFontFamily,
+								label: 'buttonFontFamily',
+							} }
+							fontWeight={ {
+								value: buttonFontWeight,
+								label: 'buttonFontWeight',
+							} }
+							fontStyle={ {
+								value: buttonFontStyle,
+								label: 'buttonFontStyle',
+							} }
+							fontSizeType={ {
+								value: buttonFontSizeType,
+								label: 'buttonFontSizeType',
+							} }
+							fontSize={ {
+								value: buttonFontSize,
+								label: 'buttonFontSize',
+							} }
+							fontSizeMobile={ {
+								value: buttonFontSizeMobile,
+								label: 'buttonFontSizeMobile',
+							} }
+							fontSizeTablet={ {
+								value: buttonFontSizeTablet,
+								label: 'buttonFontSizeTablet',
+							} }
+							lineHeightType={ {
+								value: buttonLineHeightType,
+								label: 'buttonLineHeightType',
+							} }
+							lineHeight={ {
+								value: buttonLineHeight,
+								label: 'buttonLineHeight',
+							} }
+							lineHeightMobile={ {
+								value: buttonLineHeightMobile,
+								label: 'buttonLineHeightMobile',
+							} }
+							lineHeightTablet={ {
+								value: buttonLineHeightTablet,
+								label: 'buttonLineHeightTablet',
+							} }
+							transform={ {
+								value: buttonTransform,
+								label: 'buttonTransform',
+							} }
+							decoration={ {
+								value: buttonDecoration,
+								label: 'buttonDecoration',
+							} }
+						/>
+						</>
+						)
+					}
 					{ 'icon' === buttonType && (
 						<>
 							<Range
@@ -618,75 +689,6 @@ const Settings = ( props ) => {
 						hover={ tabOutputHover }
 						disableBottomSeparator={ true }
 					/>
-					{ 'text' === buttonType && (
-						<>
-					<TypographyControl
-						label={ __(
-							'Typography',
-							'ultimate-addons-for-gutenberg'
-						) }
-						attributes={ attributes }
-						setAttributes={ setAttributes }
-						loadGoogleFonts={ {
-							value: buttonloadGoogleFonts,
-							label: 'buttonloadGoogleFonts',
-						} }
-						fontFamily={ {
-							value: buttonFontFamily,
-							label: 'buttonFontFamily',
-						} }
-						fontWeight={ {
-							value: buttonFontWeight,
-							label: 'buttonFontWeight',
-						} }
-						fontStyle={ {
-							value: buttonFontStyle,
-							label: 'buttonFontStyle',
-						} }
-						fontSizeType={ {
-							value: buttonFontSizeType,
-							label: 'buttonFontSizeType',
-						} }
-						fontSize={ {
-							value: buttonFontSize,
-							label: 'buttonFontSize',
-						} }
-						fontSizeMobile={ {
-							value: buttonFontSizeMobile,
-							label: 'buttonFontSizeMobile',
-						} }
-						fontSizeTablet={ {
-							value: buttonFontSizeTablet,
-							label: 'buttonFontSizeTablet',
-						} }
-						lineHeightType={ {
-							value: buttonLineHeightType,
-							label: 'buttonLineHeightType',
-						} }
-						lineHeight={ {
-							value: buttonLineHeight,
-							label: 'buttonLineHeight',
-						} }
-						lineHeightMobile={ {
-							value: buttonLineHeightMobile,
-							label: 'buttonLineHeightMobile',
-						} }
-						lineHeightTablet={ {
-							value: buttonLineHeightTablet,
-							label: 'buttonLineHeightTablet',
-						} }
-						transform={ {
-							value: buttonTransform,
-							label: 'buttonTransform',
-						} }
-						decoration={ {
-							value: buttonDecoration,
-							label: 'buttonDecoration',
-						} }
-					/>
-					</>
-					)
-				}
 				</UAGAdvancedPanelBody>
 			);
 		}
