@@ -26,6 +26,7 @@ const Settings = ( props ) => {
 	const { attributes, setAttributes, deviceType } = props;
 
 	const {
+		block_id,
 		layout,
 		placeholder,
 		inputSize,
@@ -142,9 +143,10 @@ const Settings = ( props ) => {
 					) }
 					setAttributes={ setAttributes }
 					value={ inputSize }
-					onChange={ ( value ) =>
-						setAttributes( { inputSize: value } )
-					}
+					data={ {
+						value: inputSize,
+						label: 'inputSize',
+					} }
 					min={ 0 }
 					max={ 200 }
 					units={ [
@@ -224,9 +226,11 @@ const Settings = ( props ) => {
 						'ultimate-addons-for-gutenberg'
 					) }
 					colorValue={ textColor ? textColor : '' }
-					onColorChange={ ( value ) =>
-						setAttributes( { textColor: value } )
-					}
+					data={ {
+						value: textColor,
+						label: 'textColor',
+					} }
+					setAttributes={ setAttributes }
 				/>
 				<AdvancedPopColorControl
 					label={ __(
@@ -234,9 +238,11 @@ const Settings = ( props ) => {
 						'ultimate-addons-for-gutenberg'
 					) }
 					colorValue={ inputBgColor ? inputBgColor : '' }
-					onColorChange={ ( value ) =>
-						setAttributes( { inputBgColor: value } )
-					}
+					data={ {
+						value: inputBgColor,
+						label: 'inputBgColor',
+					} }
+					setAttributes={ setAttributes }
 				/>
 				<ResponsiveBorder
 					setAttributes={ setAttributes }
@@ -405,6 +411,7 @@ const Settings = ( props ) => {
 					} }
 				/>
 				<BoxShadowControl
+					blockId={ block_id }
 					setAttributes={ setAttributes }
 					label={ __(
 						'Box Shadow',
@@ -464,9 +471,11 @@ const Settings = ( props ) => {
 						'ultimate-addons-for-gutenberg'
 					) }
 					colorValue={ buttonBgColor ? buttonBgColor : '' }
-					onColorChange={ ( value ) =>
-						setAttributes( { buttonBgColor: value } )
-					}
+					data={ {
+						value: buttonBgColor,
+						label: 'buttonBgColor',
+					} }
+					setAttributes={ setAttributes }
 				/>
 				{ 'text' === buttonType && (
 					<AdvancedPopColorControl
@@ -475,9 +484,11 @@ const Settings = ( props ) => {
 							'ultimate-addons-for-gutenberg'
 						) }
 						colorValue={ buttonTextColor ? buttonTextColor : '' }
-						onColorChange={ ( value ) =>
-							setAttributes( { buttonTextColor: value } )
-						}
+						data={ {
+							value: buttonTextColor,
+							label: 'buttonTextColor',
+						} }
+						setAttributes={ setAttributes }
 					/>
 				) }
 				{ 'icon' === buttonType && (
@@ -487,9 +498,11 @@ const Settings = ( props ) => {
 							'ultimate-addons-for-gutenberg'
 						) }
 						colorValue={ buttonIconColor ? buttonIconColor : '' }
-						onColorChange={ ( value ) =>
-							setAttributes( { buttonIconColor: value } )
-						}
+						data={ {
+							value: buttonIconColor,
+							label: 'buttonIconColor',
+						} }
+						setAttributes={ setAttributes }
 					/>
 				) }
 			</>
@@ -502,9 +515,11 @@ const Settings = ( props ) => {
 						'ultimate-addons-for-gutenberg'
 					) }
 					colorValue={ buttonBgHoverColor ? buttonBgHoverColor : '' }
-					onColorChange={ ( value ) =>
-						setAttributes( { buttonBgHoverColor: value } )
-					}
+					data={ {
+						value: buttonBgHoverColor,
+						label: 'buttonBgHoverColor',
+					} }
+					setAttributes={ setAttributes }
 				/>
 				{ 'text' === buttonType && (
 					<AdvancedPopColorControl
@@ -515,9 +530,11 @@ const Settings = ( props ) => {
 						colorValue={
 							buttonTextHoverColor ? buttonTextHoverColor : ''
 						}
-						onColorChange={ ( value ) =>
-							setAttributes( { buttonTextHoverColor: value } )
-						}
+						data={ {
+							value: buttonTextHoverColor,
+							label: 'buttonTextHoverColor',
+						} }
+						setAttributes={ setAttributes }
 					/>
 				) }
 				{ 'icon' === buttonType && (
@@ -529,9 +546,11 @@ const Settings = ( props ) => {
 						colorValue={
 							buttonIconHoverColor ? buttonIconHoverColor : ''
 						}
-						onColorChange={ ( value ) =>
-							setAttributes( { buttonIconHoverColor: value } )
-						}
+						data={ {
+							value: buttonIconHoverColor,
+							label: 'buttonIconHoverColor',
+						} }
+						setAttributes={ setAttributes }
 					/>
 				) }
 			</>
@@ -547,10 +566,9 @@ const Settings = ( props ) => {
 						label={ __( 'Width', 'ultimate-addons-for-gutenberg' ) }
 						setAttributes={ setAttributes }
 						value={ buttonWidth }
-						onChange={ ( value ) => {
-							setAttributes( {
-								buttonWidth: value,
-							} );
+						data={ {
+							value: buttonWidth,
+							label: 'buttonWidth',
 						} }
 						min={ 0 }
 						max={ 500 }
@@ -568,10 +586,9 @@ const Settings = ( props ) => {
 								) }
 								setAttributes={ setAttributes }
 								value={ buttonIconSize }
-								onChange={ ( value ) => {
-									setAttributes( {
-										buttonIconSize: value,
-									} );
+								data={ {
+									value: buttonIconSize,
+									label: 'buttonIconSize',
 								} }
 								min={ 0 }
 								max={ 100 }
@@ -695,10 +712,9 @@ const Settings = ( props ) => {
 							) }
 							setAttributes={ setAttributes }
 							value={ iconSize }
-							onChange={ ( value ) => {
-								setAttributes( {
-									iconSize: value,
-								} );
+							data={ {
+								value: iconSize,
+								label: 'iconSize',
 							} }
 							min={ 0 }
 							max={ 100 }
@@ -713,9 +729,11 @@ const Settings = ( props ) => {
 								'ultimate-addons-for-gutenberg'
 							) }
 							colorValue={ iconColor ? iconColor : '' }
-							onColorChange={ ( value ) =>
-								setAttributes( { iconColor: value } )
-							}
+							data={ {
+								value: iconColor,
+								label: 'iconColor',
+							} }
+							setAttributes={ setAttributes }
 						/>
 					</>
 				</UAGAdvancedPanelBody>

@@ -38,7 +38,6 @@ const Settings = ( props ) => {
 		innerGapTablet,
 		innerGapMobile,
 		innerGapType,
-		stack,
 		icon_layout,
 		iconLayoutTablet,
 		iconLayoutMobile,
@@ -117,7 +116,7 @@ const Settings = ( props ) => {
 
 	const generalSetting = () => {
 		return (
-			<UAGAdvancedPanelBody title={ __( 'Content', 'ultimate-addons-for-gutenberg' ) } initialOpen={ true }>
+			<UAGAdvancedPanelBody title={ __( 'Content', 'ultimate-addons-for-gutenberg' ) } initialOpen={ false }>
 				<MultiButtonsControl
 					setAttributes={ setAttributes }
 					label={ __( 'Layout', 'ultimate-addons-for-gutenberg' ) }
@@ -212,56 +211,6 @@ const Settings = ( props ) => {
 					showIcons={ true }
 					responsive={true}
 				/>
-
-
-
-
-
-
-				{ 'horizontal' === icon_layout && (
-					<>
-						<MultiButtonsControl
-							setAttributes={ setAttributes }
-							label={ __(
-								'Stack On',
-								'ultimate-addons-for-gutenberg'
-							) }
-							data={ {
-								value: stack,
-								label: 'stack',
-							} }
-							className="uagb-multi-button-alignment-control"
-							options={ [
-								{
-									value: 'none',
-									label: __(
-										'None',
-										'ultimate-addons-for-gutenberg'
-									),
-								},
-								{
-									value: 'tablet',
-									label: __(
-										'Tablet + Mobile',
-										'ultimate-addons-for-gutenberg'
-									),
-								},
-								{
-									value: 'mobile',
-									label: __(
-										'Mobile',
-										'ultimate-addons-for-gutenberg'
-									),
-								},
-							] }
-							showIcons={ false }
-							help={ __(
-								'Note: Choose on what breakpoint the Icons will stack.',
-								'ultimate-addons-for-gutenberg'
-							) }
-						/>
-					</>
-				) }
 				{ ! hideLabel && (
 					<>
 						<MultiButtonsControl
@@ -386,7 +335,6 @@ const Settings = ( props ) => {
 							label: 'innerGapMobile',
 						},
 					} }
-					min={ 0 }
 					max={ 100 }
 					unit={ {
 						value: innerGapType,
@@ -505,9 +453,11 @@ const Settings = ( props ) => {
 								'ultimate-addons-for-gutenberg'
 							) }
 							colorValue={ labelColor }
-							onColorChange={ ( value ) =>
-								setAttributes( { labelColor: value } )
-							}
+							data={ {
+								value: labelColor,
+								label: 'labelColor',
+							} }
+							setAttributes={ setAttributes }
 						/>
 					}
 					hover={
@@ -519,9 +469,11 @@ const Settings = ( props ) => {
 							colorValue={
 								labelHoverColor
 							}
-							onColorChange={ ( value ) =>
-								setAttributes( { labelHoverColor: value } )
-							}
+							data={ {
+								value: labelHoverColor,
+								label: 'labelHoverColor',
+							} }
+							setAttributes={ setAttributes }
 						/>
 					}
 					disableBottomSeparator={ true }
@@ -715,9 +667,11 @@ const Settings = ( props ) => {
 									'ultimate-addons-for-gutenberg'
 								) }
 								colorValue={ iconColor ? iconColor : '' }
-								onColorChange={ ( value ) =>
-									setAttributes( { iconColor: value } )
-								}
+								data={ {
+									value: iconColor,
+									label: 'iconColor',
+								} }
+								setAttributes={ setAttributes }
 							/>
 							<AdvancedPopColorControl
 								label={ __(
@@ -725,9 +679,11 @@ const Settings = ( props ) => {
 									'ultimate-addons-for-gutenberg'
 								) }
 								colorValue={ iconBgColor ? iconBgColor : '' }
-								onColorChange={ ( value ) =>
-									setAttributes( { iconBgColor: value } )
-								}
+								data={ {
+									value: iconBgColor,
+									label: 'iconBgColor',
+								} }
+								setAttributes={ setAttributes }
 							/>
 							<AdvancedPopColorControl
 								label={ __(
@@ -737,9 +693,11 @@ const Settings = ( props ) => {
 								colorValue={
 									iconBorderColor ? iconBorderColor : ''
 								}
-								onColorChange={ ( value ) =>
-									setAttributes( { iconBorderColor: value } )
-								}
+								data={ {
+									value: iconBorderColor,
+									label: 'iconBorderColor',
+								} }
+								setAttributes={ setAttributes }
 							/>
 						</>
 					}
@@ -753,9 +711,11 @@ const Settings = ( props ) => {
 								colorValue={
 									iconHoverColor ? iconHoverColor : ''
 								}
-								onColorChange={ ( value ) =>
-									setAttributes( { iconHoverColor: value } )
-								}
+								data={ {
+									value: iconHoverColor,
+									label: 'iconHoverColor',
+								} }
+								setAttributes={ setAttributes }
 							/>
 							<AdvancedPopColorControl
 								label={ __(
@@ -765,9 +725,11 @@ const Settings = ( props ) => {
 								colorValue={
 									iconBgHoverColor ? iconBgHoverColor : ''
 								}
-								onColorChange={ ( value ) =>
-									setAttributes( { iconBgHoverColor: value } )
-								}
+								data={ {
+									value: iconBgHoverColor,
+									label: 'iconBgHoverColor',
+								} }
+								setAttributes={ setAttributes }
 							/>
 							<AdvancedPopColorControl
 								label={ __(
@@ -779,11 +741,11 @@ const Settings = ( props ) => {
 										? iconBorderHoverColor
 										: ''
 								}
-								onColorChange={ ( value ) =>
-									setAttributes( {
-										iconBorderHoverColor: value,
-									} )
-								}
+								data={ {
+									value: iconBorderHoverColor,
+									label: 'iconBorderHoverColor',
+								} }
+								setAttributes={ setAttributes }
 							/>
 						</>
 					}

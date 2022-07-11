@@ -4,7 +4,7 @@
 
 import generateCSS from '@Controls/generateCSS';
 import generateCSSUnit from '@Controls/generateCSSUnit';
-import { getFallbackNumber } from '@Controls/getAttributeFallback';
+import getAttributeFallback, { getFallbackNumber } from '@Controls/getAttributeFallback';
 import generateBorderCSS from '@Controls/generateBorderCSS';
 
 function styling( props ) {
@@ -84,7 +84,7 @@ function styling( props ) {
 		bgHoverColor,
 		bgActiveColor,
 		inputplaceholderColor,
-		inputplaceholderHColor,
+		inputplaceholderHoverColor,
 		inputplaceholderActiveColor,
 		inputactiveColor,
 		fieldBorderHColor,
@@ -153,10 +153,10 @@ function styling( props ) {
 		inputLetterSpacingTablet,
 		inputLetterSpacingMobile,
 		inputLetterSpacingType,
-		submitLetterSpacing,
-		submitLetterSpacingTablet,
-		submitLetterSpacingMobile,
-		submitLetterSpacingType,
+		submitTextLetterSpacing,
+		submitTextLetterSpacingTablet,
+		submitTextLetterSpacingMobile,
+		submitTextLetterSpacingType,
 	} = props.attributes;
 
 	let selectors = {};
@@ -185,6 +185,24 @@ function styling( props ) {
 	const toggleBorder = generateBorderCSS( props.attributes, 'checkBoxToggle' );
 	const toggleBorderTablet = generateBorderCSS( props.attributes, 'checkBoxToggle', 'tablet' );
 	const toggleBorderMobile = generateBorderCSS( props.attributes, 'checkBoxToggle', 'mobile' );
+
+	// Individual Toggle Border Radius Fallback for Inner Dot.
+	let toggleBorderRadiusTLFallback = getAttributeFallback( toggleBorder['border-top-left-radius'], 'checkBoxToggleBorderTopLeftRadius', blockName );
+	let toggleBorderRadiusTRFallback = getAttributeFallback( toggleBorder['border-top-right-radius'], 'checkBoxToggleBorderTopRightRadius', blockName );
+	let toggleBorderRadiusBRFallback = getAttributeFallback( toggleBorder['border-bottom-right-radius'], 'checkBoxToggleBorderBottomRightRadius', blockName );
+	let toggleBorderRadiusBLFallback = getAttributeFallback( toggleBorder['border-bottom-left-radius'], 'checkBoxToggleBorderBottomLeftRadius', blockName );
+	toggleBorderRadiusTLFallback = isNaN( toggleBorderRadiusTLFallback ) ? toggleBorderRadiusTLFallback : `${ toggleBorderRadiusTLFallback }px`;
+	toggleBorderRadiusTRFallback = isNaN( toggleBorderRadiusTRFallback ) ? toggleBorderRadiusTRFallback : `${ toggleBorderRadiusTRFallback }px`;
+	toggleBorderRadiusBRFallback = isNaN( toggleBorderRadiusBRFallback ) ? toggleBorderRadiusBRFallback : `${ toggleBorderRadiusBRFallback }px`;
+	toggleBorderRadiusBLFallback = isNaN( toggleBorderRadiusBLFallback ) ? toggleBorderRadiusBLFallback : `${ toggleBorderRadiusBLFallback }px`;
+	const toggleBorderRadiusTLTabletFallback = ( undefined !== toggleBorderTablet['border-top-left-radius'] ) ? toggleBorderTablet['border-top-left-radius'] : toggleBorderRadiusTLFallback;
+	const toggleBorderRadiusTRTabletFallback = ( undefined !== toggleBorderTablet['border-top-right-radius'] ) ? toggleBorderTablet['border-top-right-radius'] : toggleBorderRadiusTRFallback;
+	const toggleBorderRadiusBRTabletFallback = ( undefined !== toggleBorderTablet['border-bottom-right-radius'] ) ? toggleBorderTablet['border-bottom-right-radius'] : toggleBorderRadiusBRFallback;
+	const toggleBorderRadiusBLTabletFallback = ( undefined !== toggleBorderTablet['border-bottom-left-radius'] ) ? toggleBorderTablet['border-bottom-left-radius'] : toggleBorderRadiusBLFallback;
+	const toggleBorderRadiusTLMobileFallback = ( undefined !== toggleBorderMobile['border-top-left-radius'] ) ? toggleBorderMobile['border-top-left-radius'] : toggleBorderRadiusTLTabletFallback;
+	const toggleBorderRadiusTRMobileFallback = ( undefined !== toggleBorderMobile['border-top-right-radius'] ) ? toggleBorderMobile['border-top-right-radius'] : toggleBorderRadiusTRTabletFallback;
+	const toggleBorderRadiusBRMobileFallback = ( undefined !== toggleBorderMobile['border-bottom-right-radius'] ) ? toggleBorderMobile['border-bottom-right-radius'] : toggleBorderRadiusBRTabletFallback;
+	const toggleBorderRadiusBLMobileFallback = ( undefined !== toggleBorderMobile['border-bottom-left-radius'] ) ? toggleBorderMobile['border-bottom-left-radius'] : toggleBorderRadiusBLTabletFallback;
 
 	const submitBorder = generateBorderCSS( props.attributes, 'btn' );
 	const submitBorderTablet = generateBorderCSS( props.attributes, 'btn', 'tablet' );
@@ -250,6 +268,20 @@ function styling( props ) {
 			'color': inputplaceholderColor,
 			'letter-spacing': generateCSSUnit( inputLetterSpacing, inputLetterSpacingType ),
 		},
+		' .uagb-forms-main-form textarea': {
+			'font-size': generateCSSUnit( inputFontSize, inputFontSizeType ),
+			'line-height': generateCSSUnit(
+				inputLineHeight,
+				inputLineHeightType
+			),
+			'font-family': inputFontFamily,
+			'font-style': inputFontStyle,
+			'text-transform': inputTransform,
+			'text-decoration': inputDecoration,
+			'font-weight': inputFontWeight,
+			'color': inputplaceholderColor,
+			'letter-spacing': generateCSSUnit( inputLetterSpacing, inputLetterSpacingType ),
+		},
 		' .uagb-forms-main-form select': {
 			'font-size': generateCSSUnit( inputFontSize, inputFontSizeType ),
 			'line-height': generateCSSUnit(
@@ -284,7 +316,7 @@ function styling( props ) {
 		' .uagb-forms-main-form .uagb-forms-main-submit-button-wrap': {
 			'text-align': buttonAlign,
 		},
-		' .uagb-forms-main-form .uagb-forms-main-submit-button': {
+		' .uagb-forms-main-form .uagb-forms-main-submit-button-wrap .uagb-forms-main-submit-button': {
 			'color': submitColor,
 			'font-size': generateCSSUnit(
 				submitTextFontSize,
@@ -308,7 +340,7 @@ function styling( props ) {
 			),
 			'padding-left': generateCSSUnit( paddingBtnLeft, paddingBtnUnit ),
 			'padding-right': generateCSSUnit( paddingBtnRight, paddingBtnUnit ),
-			'letter-spacing': generateCSSUnit( submitLetterSpacing, submitLetterSpacingType ),
+			'letter-spacing': generateCSSUnit( submitTextLetterSpacing, submitTextLetterSpacingType ),
 		},
 		' .uagb-forms-main-form .uagb-forms-main-submit-button:hover': {
 			'color': submitColorHover,
@@ -318,14 +350,14 @@ function styling( props ) {
 		' .uagb-switch': {
 			// 20 is the min size of the toggle.
 			// Space around the toggle dot is calculated as 1/6th the size of the toggle dot.
-			'height': generateCSSUnit(
-				parseInt( 20 + toggleWidthSizeNumber + ( toggleBorderWidth * 2 ) + ( ( 20 + toggleWidthSizeNumber ) / 3 ) ),
+			'height': `calc(${ toggleBorder['border-bottom-width'] } + ${ toggleBorder['border-top-width'] } + ${ generateCSSUnit(
+				parseInt( 20 + toggleWidthSizeNumber + ( ( 20 + toggleWidthSizeNumber ) / 3 ) ),
 				'px'
-			),
-			'width': generateCSSUnit(
-				parseInt( ( ( 20 + toggleWidthSizeNumber ) * 2.5 ) + ( toggleBorderWidth * 2 ) + ( ( 20 + toggleWidthSizeNumber ) / 3 ) ),
+			) })`,
+			'width': `calc(${ toggleBorder['border-left-width'] } + ${ toggleBorder['border-right-width'] } + ${ generateCSSUnit(
+				parseInt( ( ( 20 + toggleWidthSizeNumber ) * 2.5 ) + ( ( 20 + toggleWidthSizeNumber ) / 3 ) ),
 				'px'
-			),
+			) })`,
 		},
 		' .uagb-switch input:checked + .uagb-slider': {
 			'background-color': toggleActiveColor,
@@ -344,6 +376,7 @@ function styling( props ) {
 			'bottom': generateCSSUnit( parseInt( ( 20 + toggleWidthSizeNumber ) / 6 ), 'px' ),
 			'left': generateCSSUnit( parseInt( ( 20 + toggleWidthSizeNumber ) / 6 ), 'px' ),
 			'background-color': toggleDotColor,
+			'border-radius': `${ toggleBorderRadiusTLFallback } ${ toggleBorderRadiusTRFallback } ${ toggleBorderRadiusBRFallback } ${ toggleBorderRadiusBLFallback }`,
 		},
 		' .uagb-slider.round': {
 			'border-radius': generateCSSUnit( 20 + toggleWidthSizeNumber, 'px' ),
@@ -408,7 +441,7 @@ function styling( props ) {
 			'border-color': fieldBorderHColor,
 		},
 		' .uagb-forms-field-set:hover .uagb-forms-input::placeholder': {
-			'color': inputplaceholderHColor,
+			'color': inputplaceholderHoverColor,
 		},
 	};
 
@@ -444,14 +477,14 @@ function styling( props ) {
 			'height': generateCSSUnit( toggleSizeTabletFallback, 'px' ),
 		},
 		' .uagb-switch' : {
-			'height': generateCSSUnit(
-				parseInt( 20 + toggleWidthSizeNumberTablet + ( toggleBorderWidth * 2 ) + ( ( 20 + toggleWidthSizeNumberTablet ) / 3 ) ),
+			'height': `calc(${ toggleBorderTablet['border-top-width'] } + ${ toggleBorderTablet['border-bottom-width'] } + ${ generateCSSUnit(
+				parseInt( 20 + toggleWidthSizeNumberTablet + ( ( 20 + toggleWidthSizeNumberTablet ) / 3 ) ),
 				'px'
-			),
-			'width': generateCSSUnit(
-				parseInt( ( ( 20 + toggleWidthSizeNumberTablet ) * 2.5 ) + ( toggleBorderWidth * 2 ) + ( ( 20 + toggleWidthSizeNumberTablet ) / 3 ) ),
+			) })`,
+			'width': `calc(${ toggleBorderTablet['border-left-width'] } + ${ toggleBorderTablet['border-right-width'] } + ${ generateCSSUnit(
+				parseInt( ( ( 20 + toggleWidthSizeNumberTablet ) * 2.5 ) + ( ( 20 + toggleWidthSizeNumberTablet ) / 3 ) ),
 				'px'
-			),
+			) })`,
 		},
 		' .uagb-switch .uagb-slider:before' : {
 			'height': generateCSSUnit( 20 + toggleWidthSizeNumberTablet, 'px' ),
@@ -460,6 +493,7 @@ function styling( props ) {
 			'bottom': generateCSSUnit( parseInt( ( 20 + toggleWidthSizeNumberTablet ) / 6 ), 'px' ),
 			'left': generateCSSUnit( parseInt( ( 20 + toggleWidthSizeNumberTablet ) / 6 ), 'px' ),
 			'background-color': toggleDotColor,
+			'border-radius': `${ toggleBorderRadiusTLTabletFallback } ${ toggleBorderRadiusTRTabletFallback } ${ toggleBorderRadiusBRTabletFallback } ${ toggleBorderRadiusBLTabletFallback }`,
 		},
 		' .uagb-slider.round': {
 			'border-radius': generateCSSUnit( 20 + toggleWidthSizeNumberTablet, 'px' ),
@@ -470,7 +504,7 @@ function styling( props ) {
 				'px'
 			) })`,
 		},
-		' .uagb-forms-main-form .uagb-forms-main-submit-button': {
+		' .uagb-forms-main-form .uagb-forms-main-submit-button-wrap .uagb-forms-main-submit-button': {
 			'padding-top': generateCSSUnit(
 				paddingBtnTopTablet,
 				tabletPaddingBtnUnit
@@ -487,9 +521,6 @@ function styling( props ) {
 				paddingBtnRightTablet,
 				tabletPaddingBtnUnit
 			),
-			...submitBorderTablet
-		},
-		' .uagb-forms-main-form .uagb-forms-main-submit-button': { // eslint-disable-line no-dupe-keys
 			'font-size': generateCSSUnit(
 				submitTextFontSizeTablet,
 				submitTextFontSizeType
@@ -498,7 +529,11 @@ function styling( props ) {
 				submitTextLineHeightTablet,
 				submitTextLineHeightType
 			),
-			'letter-spacing': generateCSSUnit( submitLetterSpacingTablet, submitLetterSpacingType ),
+			'letter-spacing': generateCSSUnit(
+				submitTextLetterSpacingTablet,
+				submitTextLetterSpacingType
+			),
+			...submitBorderTablet
 		},
 		' .uagb-forms-main-form .uagb-forms-input-label': {
 			'font-size': generateCSSUnit(
@@ -560,14 +595,14 @@ function styling( props ) {
 			'margin-bottom': generateCSSUnit( fieldGapMobile, fieldGapType ),
 		},
 		' .uagb-switch' : {
-			'height': generateCSSUnit(
-				parseInt(  20 + toggleWidthSizeNumberMobile + ( toggleBorderWidth * 2 ) + ( ( 20 + toggleWidthSizeNumberMobile ) / 3 ) ),
+			'height': `calc(${ toggleBorderMobile['border-top-width'] } + ${ toggleBorderMobile['border-bottom-width'] } + ${ generateCSSUnit(
+				parseInt(  20 + toggleWidthSizeNumberMobile + ( ( 20 + toggleWidthSizeNumberMobile ) / 3 ) ),
 				'px'
-			),
-			'width': generateCSSUnit(
-				parseInt(  ( ( 20 + toggleWidthSizeNumberMobile ) * 2.5 ) + ( toggleBorderWidth * 2 ) + ( ( 20 + toggleWidthSizeNumberMobile ) / 3 ) ),
+			) })`,
+			'width': `calc(${ toggleBorderMobile['border-left-width'] } + ${ toggleBorderMobile['border-right-width'] } + ${ generateCSSUnit(
+				parseInt(  ( ( 20 + toggleWidthSizeNumberMobile ) * 2.5 ) + ( ( 20 + toggleWidthSizeNumberMobile ) / 3 ) ),
 				'px'
-			),
+			) })`,
 		},
 		' .uagb-switch .uagb-slider:before' : {
 			'height': generateCSSUnit( 20 + toggleWidthSizeNumberMobile, 'px' ),
@@ -576,6 +611,7 @@ function styling( props ) {
 			'bottom': generateCSSUnit( parseInt( ( 20 + toggleWidthSizeNumberMobile ) / 6 ), 'px' ),
 			'left': generateCSSUnit( parseInt( ( 20 + toggleWidthSizeNumberMobile ) / 6 ), 'px' ),
 			'background-color': toggleDotColor,
+			'border-radius': `${ toggleBorderRadiusTLMobileFallback } ${ toggleBorderRadiusTRMobileFallback } ${ toggleBorderRadiusBRMobileFallback } ${ toggleBorderRadiusBLMobileFallback }`,
 		},
 		' .uagb-slider.round': {
 			'border-radius': generateCSSUnit( 20 + toggleWidthSizeNumberMobile, 'px' ),
@@ -586,7 +622,7 @@ function styling( props ) {
 				'px'
 			) })`,
 		},
-		' .uagb-forms-main-form .uagb-forms-main-submit-button': { // eslint-disable-line no-dupe-keys
+		' .uagb-forms-main-form .uagb-forms-main-submit-button-wrap .uagb-forms-main-submit-button': { // eslint-disable-line no-dupe-keys
 			'padding-top': generateCSSUnit(
 				paddingBtnTopMobile,
 				mobilePaddingBtnUnit
@@ -612,7 +648,7 @@ function styling( props ) {
 				submitTextLineHeightType
 			),
 			...submitBorderMobile,
-			'letter-spacing': generateCSSUnit( submitLetterSpacingMobile, submitLetterSpacingType ),
+			'letter-spacing': generateCSSUnit( submitTextLetterSpacingMobile, submitTextLetterSpacingType ),
 		},
 		' .uagb-forms-main-form .uagb-forms-input-label': {
 			'font-size': generateCSSUnit(
@@ -737,13 +773,15 @@ function styling( props ) {
 		// Label Hovev Colors
 	} else if ( 'underlined' === formStyle ) {
 		selectors[ ' .uagb-forms-main-form  .uagb-forms-input' ] = {
-			'border': 0,
-			'outline': 0,
-			'border-radius': 0,
-			'background': 'transparent',
+			'border-top-width': 0,
+			'border-right-width': 0,
+			'border-left-width': 0,
 			'border-top': 0,
 			'border-left': 0,
 			'border-right': 0,
+			'outline': 0,
+			'border-radius': 0,
+			'background': 'transparent',
 			...inputBorder,
 			'color': inputColor,
 			'padding-top': generateCSSUnit( paddingFieldTop, paddingFieldUnit ),
@@ -759,6 +797,15 @@ function styling( props ) {
 				paddingFieldRight,
 				paddingFieldUnit
 			),
+		};
+		selectors[ ' .uagb-forms-main-form .uagb-forms-input:focus' ] = {
+			'border-top-width': 0,
+			'border-right-width': 0,
+			'border-left-width': 0,
+			'border-top': 0,
+			'border-left': 0,
+			'border-right': 0,
+			'box-shadow': 'unset',
 		};
 		tabletSelectors[ ' .uagb-forms-main-form  .uagb-forms-input' ] = {
 			'padding-top': generateCSSUnit(

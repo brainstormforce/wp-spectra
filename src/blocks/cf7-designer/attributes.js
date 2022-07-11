@@ -158,7 +158,7 @@
 	},
 	buttonBgColor                 : {
 		type    : 'string',
-		default : 'transparent',
+		default : '',
 		UAGCopyPaste: {
 			styleType: 'btn-bg-color'
 		},
@@ -176,7 +176,7 @@
 	},
 	buttonBgHoverColor            : {
 		type    : 'string',
-		default : 'transparent',
+		default : '',
 		UAGCopyPaste: {
 			styleType: 'btn-bg-hover-color'
 		},
@@ -442,21 +442,21 @@
 	},
 	radioCheckSize                : {
 		type    : 'number',
-		default : '',
+		default : 10,
 		UAGCopyPaste: {
 			styleType: 'radio-size'
 		},
 	},
 	radioCheckSizeTablet: {
 		type: 'number',
-		default: 0,
+		default: 10,
 		UAGCopyPaste: {
 			styleType: 'radio-size'
 		},
 	},
 	radioCheckSizeMobile: {
 		type: 'number',
-		default: 0,
+		default: 10,
 		UAGCopyPaste: {
 			styleType: 'radio-size'
 		},

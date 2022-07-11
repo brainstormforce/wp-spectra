@@ -11,13 +11,14 @@ import Range from '@Components/range/Range.js';
 import Background from '@Components/background';
 import ResponsiveBorder from '@Components/responsive-border';
 import MultiButtonsControl from '@Components/multi-buttons-control';
+import UAGSelectControl from '@Components/select-control';
 import renderSVG from '@Controls/renderIcon';
 import {
 	BlockControls,
 	AlignmentToolbar,
 	InspectorControls,
 } from '@wordpress/block-editor';
-import { SelectControl, ToggleControl, Icon } from '@wordpress/components';
+import { ToggleControl, Icon } from '@wordpress/components';
 
 
 
@@ -29,6 +30,7 @@ const Settings = ( props ) => {
 	const { attributes, setAttributes, deviceType } = props;
 
 	const {
+		block_id,
 		align,
 		contentWidth,
 		width,
@@ -181,9 +183,10 @@ const Settings = ( props ) => {
 						label={ __( 'Width', 'ultimate-addons-for-gutenberg' ) }
 						setAttributes={ setAttributes }
 						value={ width }
-						onChange={ ( value ) =>
-							setAttributes( { width: value } )
-						}
+						data={ {
+							value: width,
+							label: 'width',
+						} }
 						min={ 0 }
 						max={ 2000 }
 						displayUnit={ false }
@@ -210,9 +213,10 @@ const Settings = ( props ) => {
 						) }
 						setAttributes={ setAttributes }
 						value={ innerWidth }
-						onChange={ ( value ) =>
-							setAttributes( { innerWidth: value } )
-						}
+						data={ {
+							value: innerWidth,
+							label: 'innerWidth',
+						} }
 						min={ 0 }
 						max={ 2000 }
 						unit={ {
@@ -244,10 +248,16 @@ const Settings = ( props ) => {
 						] }
 					/>
 				) }
-				<SelectControl
-					label={ __( 'HTML Tag', 'ultimate-addons-for-gutenberg' ) }
-					value={ tag }
-					onChange={ ( value ) => setAttributes( { tag: value } ) }
+				<UAGSelectControl
+					label={ __(
+						'HTML Tag',
+						'ultimate-addons-for-gutenberg'
+					) }
+					data={ {
+						value: tag,
+						label: 'tag',
+					} }
+					setAttributes={ setAttributes }
 					options={ [
 						{
 							value: 'div',
@@ -475,7 +485,7 @@ const Settings = ( props ) => {
 						label: 'overlayType',
 					} }
 					gradientOverlay={{
-						value: false,
+						value: true,
 					}}
 					backgroundSize={ {
 						value: backgroundSize,
@@ -545,6 +555,7 @@ const Settings = ( props ) => {
 				</UAGAdvancedPanelBody>
 				<UAGAdvancedPanelBody title="Box Shadow" initialOpen={ false }>
 					<BoxShadowControl
+						blockId={ block_id }
 						setAttributes={ setAttributes }
 						label={ __(
 							'Box Shadow',

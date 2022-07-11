@@ -16,13 +16,14 @@ import {
 	InspectorControls,
 } from '@wordpress/block-editor';
 import renderSVG from '@Controls/renderIcon';
-import { SelectControl, Icon, ToggleControl } from '@wordpress/components';
+import { Icon, ToggleControl } from '@wordpress/components';
 import SpacingControl from '@Components/spacing-control';
 import ColorSwitchControl from '@Components/color-switch-control';
 import TextShadowControl from '@Components/text-shadow';
 import UAGTabsControl from '@Components/tabs';
 import ResponsiveBorder from '@Components/responsive-border'
 import ResponsiveSlider from '@Components/responsive-slider';
+import UAGSelectControl from '@Components/select-control';
 // Extend component
 import UAGAdvancedPanelBody from '@Components/advanced-panel-body';
 
@@ -30,6 +31,7 @@ const Settings = ( props ) => {
 	props = props.parentProps;
 	const { attributes, deviceType, setAttributes } = props;
 	const {
+		block_id,
 		headingTitleToggle,
 		headingAlign,
 		headingAlignTablet,
@@ -343,12 +345,16 @@ const Settings = ( props ) => {
 						setAttributes( { headingDescToggle : ! headingDescToggle } )
 					}
 				/>
-				<SelectControl
-					label={ __( 'Separator Style', 'ultimate-addons-for-gutenberg' ) }
-					value={ seperatorStyle }
-					onChange={ ( value ) =>
-						setAttributes( { seperatorStyle: value } )
-					}
+				<UAGSelectControl
+					label={ __(
+						'Separator Style',
+						'ultimate-addons-for-gutenberg'
+					) }
+					data={ {
+						value: seperatorStyle,
+						label: 'seperatorStyle',
+					} }
+					setAttributes={ setAttributes }
 					options={ [
 						{
 							value: 'none',
@@ -496,6 +502,7 @@ const Settings = ( props ) => {
 					/>
 				</Suspense>
 				<TextShadowControl
+					blockId={ block_id }
 					setAttributes={ setAttributes }
 					label={ __(
 						'Text Shadow',
@@ -660,9 +667,11 @@ const Settings = ( props ) => {
 				<AdvancedPopColorControl
 					label={ __( 'Color', 'ultimate-addons-for-gutenberg' ) }
 					colorValue={ subHeadingColor ? subHeadingColor : '' }
-					onColorChange={ ( value ) =>
-						setAttributes( { subHeadingColor: value } )
-					}
+					data={ {
+						value: subHeadingColor,
+						label: 'subHeadingColor',
+					} }
+					setAttributes={ setAttributes }
 				/>
 			</UAGAdvancedPanelBody>
 		);
@@ -724,11 +733,10 @@ const Settings = ( props ) => {
 					) }
 					setAttributes={ setAttributes }
 					value={ separatorHeight }
-					onChange={ ( value ) =>
-						setAttributes( {
-							separatorHeight: value,
-						} )
-					}
+					data={ {
+						value: separatorHeight,
+						label: 'separatorHeight',
+					} }
 					min={ 0 }
 					max={ 20 }
 					unit={ {
@@ -753,11 +761,11 @@ const Settings = ( props ) => {
 					colorValue={
 						separatorColor ? separatorColor : ''
 					}
-					onColorChange={ ( value ) =>
-						setAttributes( {
-							separatorColor: value,
-						} )
-					}
+					data={ {
+						value: separatorColor,
+						label: 'separatorColor',
+					} }
+					setAttributes={ setAttributes }
 				/>
 				<ResponsiveSlider
 					label={ __(
@@ -1021,18 +1029,22 @@ const Settings = ( props ) => {
 						<AdvancedPopColorControl
 							label={ __( 'Color', 'ultimate-addons-for-gutenberg' ) }
 							colorValue={ linkColor }
-							onColorChange={ ( value ) =>
-								setAttributes( { linkColor: value } )
-							}
+							data={ {
+								value: linkColor,
+								label: 'linkColor',
+							} }
+							setAttributes={ setAttributes }
 						/>
 					}
 					hover={
 						<AdvancedPopColorControl
-							label={ __( 'Color', 'ultimate-addons-for-gutenberg' ) }
+							label={ __( 'Hover Color', 'ultimate-addons-for-gutenberg' ) }
 							colorValue={ linkHColor }
-							onColorChange={ ( value ) =>
-								setAttributes( { linkHColor: value } )
-							}
+							data={ {
+								value: linkHColor,
+								label: 'linkHColor',
+							} }
+							setAttributes={ setAttributes }
 						/>
 					}
 					disableBottomSeparator={ true }
@@ -1050,16 +1062,20 @@ const Settings = ( props ) => {
 				<AdvancedPopColorControl
 					label={ __( 'Background', 'ultimate-addons-for-gutenberg' ) }
 					colorValue={ highLightBackground }
-					onColorChange={ ( value ) =>
-						setAttributes( { highLightBackground: value } )
-					}
+					data={ {
+						value: highLightBackground,
+						label: 'highLightBackground',
+					} }
+					setAttributes={ setAttributes }
 				/>
 				<AdvancedPopColorControl
 					label={ __( 'Color', 'ultimate-addons-for-gutenberg' ) }
 					colorValue={ highLightColor }
-					onColorChange={ ( value ) =>
-						setAttributes( { highLightColor: value } )
-					}
+					data={ {
+						value: highLightColor,
+						label: 'highLightColor',
+					} }
+					setAttributes={ setAttributes }
 				/>
 				<Suspense fallback={ lazyLoader() }>
 					<TypographyControl

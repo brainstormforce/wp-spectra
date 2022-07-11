@@ -14,10 +14,10 @@ import InspectorTab, {
 import UAGImage from '@Components/image';
 import SpacingControl from '@Components/spacing-control';
 import MultiButtonsControl from '@Components/multi-buttons-control';
+import UAGSelectControl from '@Components/select-control';
 import { getImageSize } from '@Utils/Helpers';
 import renderSVG from '@Controls/renderIcon';
 import {
-	SelectControl,
 	ToggleControl,
 	TextControl,
 	DateTimePicker,
@@ -147,7 +147,39 @@ const Settings = ( props ) => {
 		headFontStyle,
 		subHeadFontStyle,
 		contentFontStyle,
+		headLetterSpacing,
+		headLetterSpacingTablet,
+		headLetterSpacingMobile,
+		headLetterSpacingType,
+		subHeadLetterSpacing,
+		subHeadLetterSpacingTablet,
+		subHeadLetterSpacingMobile,
+		subHeadLetterSpacingType,
+		contentLetterSpacing,
+		contentLetterSpacingTablet,
+		contentLetterSpacingMobile,
+		contentLetterSpacingType,
 	} = attributes;
+
+	const onItemTypeChange = ( value ) => {
+		setAttributes( { itemType: value } );
+		if ( itemType === 'Movie' ) {
+			setAttributes( { enableImage: true } );
+		}
+		if ( itemType === 'Course' ) {
+			setAttributes( { enableDescription: true } );
+		}
+		if (
+			! subtypeCategories.hasOwnProperty(
+				itemType
+			) ||
+			! subtypeCategories[ itemType ].includes(
+				itemSubtype
+			)
+		) {
+			setAttributes( { itemSubtype: 'None' } );
+		}
+	}
 
 	/*
 	 * Event to set Image as while adding.
@@ -236,9 +268,11 @@ const Settings = ( props ) => {
 					<AdvancedPopColorControl
 						label={ __( 'Color', 'ultimate-addons-for-gutenberg' ) }
 						colorValue={ authorColor }
-						onColorChange={ ( value ) =>
-							setAttributes( { authorColor: value } )
-						}
+						data={ {
+							value: authorColor,
+							label: 'authorColor',
+						} }
+						setAttributes={ setAttributes }
 					/>
 				</>
 			</UAGAdvancedPanelBody>
@@ -255,9 +289,11 @@ const Settings = ( props ) => {
 					<AdvancedPopColorControl
 						label={ __( 'Color', 'ultimate-addons-for-gutenberg' ) }
 						colorValue={ contentColor }
-						onColorChange={ ( value ) =>
-							setAttributes( { contentColor: value } )
-						}
+						data={ {
+							value: contentColor,
+							label: 'contentColor',
+						} }
+						setAttributes={ setAttributes }
 					/>
 				</>
 			</UAGAdvancedPanelBody>
@@ -273,9 +309,11 @@ const Settings = ( props ) => {
 				<AdvancedPopColorControl
 					label={ __( 'Color', 'ultimate-addons-for-gutenberg' ) }
 					colorValue={ summaryColor }
-					onColorChange={ ( value ) =>
-						setAttributes( { summaryColor: value } )
-					}
+					data={ {
+						value: summaryColor,
+						label: 'summaryColor',
+					} }
+					setAttributes={ setAttributes }
 				/>
 				<TypographyControl
 					label={ __(
@@ -340,6 +378,22 @@ const Settings = ( props ) => {
 						value: contentLineHeightTablet,
 						label: 'contentLineHeightTablet',
 					} }
+					letterSpacing={ {
+						value: contentLetterSpacing,
+						label: 'contentLetterSpacing',
+					} }
+					letterSpacingTablet={ {
+						value: contentLetterSpacingTablet,
+						label: 'contentLetterSpacingTablet',
+					} }
+					letterSpacingMobile={ {
+						value: contentLetterSpacingMobile,
+						label: 'contentLetterSpacingMobile',
+					} }
+					letterSpacingType={ {
+						value: contentLetterSpacingType,
+						label: 'contentLetterSpacingType',
+					} }
 				/>
 			</UAGAdvancedPanelBody>
 		);
@@ -357,9 +411,11 @@ const Settings = ( props ) => {
 						'ultimate-addons-for-gutenberg'
 					) }
 					colorValue={ starColor }
-					onColorChange={ ( value ) =>
-						setAttributes( { starColor: value } )
-					}
+					data={ {
+						value: starColor,
+						label: 'starColor',
+					} }
+					setAttributes={ setAttributes }
 				/>
 				<AdvancedPopColorControl
 					label={ __(
@@ -367,9 +423,11 @@ const Settings = ( props ) => {
 						'ultimate-addons-for-gutenberg'
 					) }
 					colorValue={ starActiveColor }
-					onColorChange={ ( value ) =>
-						setAttributes( { starActiveColor: value } )
-					}
+					data={ {
+						value: starActiveColor,
+						label: 'starActiveColor',
+					} }
+					setAttributes={ setAttributes }
 				/>
 				<AdvancedPopColorControl
 					label={ __(
@@ -377,9 +435,11 @@ const Settings = ( props ) => {
 						'ultimate-addons-for-gutenberg'
 					) }
 					colorValue={ starOutlineColor }
-					onColorChange={ ( value ) =>
-						setAttributes( { starOutlineColor: value } )
-					}
+					data={ {
+						value: starOutlineColor,
+						label: 'starOutlineColor',
+					} }
+					setAttributes={ setAttributes }
 				/>
 			</UAGAdvancedPanelBody>
 		);
@@ -394,9 +454,11 @@ const Settings = ( props ) => {
 				<AdvancedPopColorControl
 					label={ __( 'Color', 'ultimate-addons-for-gutenberg' ) }
 					colorValue={ titleColor }
-					onColorChange={ ( value ) =>
-						setAttributes( { titleColor: value } )
-					}
+					data={ {
+						value: titleColor,
+						label: 'titleColor',
+					} }
+					setAttributes={ setAttributes }
 				/>
 				<TypographyControl
 					label={ __(
@@ -458,6 +520,22 @@ const Settings = ( props ) => {
 						value: headLineHeightTablet,
 						label: 'headLineHeightTablet',
 					} }
+					letterSpacing={ {
+						value: headLetterSpacing,
+						label: 'headLetterSpacing',
+					} }
+					letterSpacingTablet={ {
+						value: headLetterSpacingTablet,
+						label: 'headLetterSpacingTablet',
+					} }
+					letterSpacingMobile={ {
+						value: headLetterSpacingMobile,
+						label: 'headLetterSpacingMobile',
+					} }
+					letterSpacingType={ {
+						value: headLetterSpacingType,
+						label: 'headLetterSpacingType',
+					} }
 				/>
 			</UAGAdvancedPanelBody>
 		);
@@ -477,9 +555,11 @@ const Settings = ( props ) => {
 								'ultimate-addons-for-gutenberg'
 							) }
 							colorValue={ descColor }
-							onColorChange={ ( value ) =>
-								setAttributes( { descColor: value } )
-							}
+							data={ {
+								value: descColor,
+								label: 'descColor',
+							} }
+							setAttributes={ setAttributes }
 						/>
 						<TypographyControl
 							label={ __(
@@ -544,6 +624,22 @@ const Settings = ( props ) => {
 								value: subHeadLineHeightTablet,
 								label: 'subHeadLineHeightTablet',
 							} }
+							letterSpacing={ {
+								value: subHeadLetterSpacing,
+								label: 'subHeadLetterSpacing',
+							} }
+							letterSpacingTablet={ {
+								value: subHeadLetterSpacingTablet,
+								label: 'subHeadLetterSpacingTablet',
+							} }
+							letterSpacingMobile={ {
+								value: subHeadLetterSpacingMobile,
+								label: 'subHeadLetterSpacingMobile',
+							} }
+							letterSpacingType={ {
+								value: subHeadLetterSpacingType,
+								label: 'subHeadLetterSpacingType',
+							} }
 						/>
 					</>
 				) }
@@ -558,31 +654,15 @@ const Settings = ( props ) => {
 					title={ __( 'Schema', 'ultimate-addons-for-gutenberg' ) }
 					initialOpen={ false }
 				>
-					<SelectControl
+					<UAGSelectControl
 						label={ __(
 							'Item Type',
 							'ultimate-addons-for-gutenberg'
 						) }
-						value={ itemType }
-						onChange={ ( value ) => {
-							setAttributes( { itemType: value } );
-							if ( itemType === 'Movie' ) {
-								setAttributes( { enableImage: true } );
-							}
-							if ( itemType === 'Course' ) {
-								setAttributes( { enableDescription: true } );
-							}
-							if (
-								! subtypeCategories.hasOwnProperty(
-									itemType
-								) ||
-								! subtypeCategories[ itemType ].includes(
-									itemSubtype
-								)
-							) {
-								setAttributes( { itemSubtype: 'None' } );
-							}
+						data={ {
+							value: itemType,
 						} }
+						onChange={ onItemTypeChange }
 						options={ [
 							{
 								value: 'Book',
@@ -622,11 +702,16 @@ const Settings = ( props ) => {
 						] }
 					/>
 					{ subtypeCategories.hasOwnProperty( itemType ) && (
-						<SelectControl
+						<UAGSelectControl
 							label={ __(
 								'Item Subtype',
 								'ultimate-addons-for-gutenberg'
 							) }
+							data={ {
+								value: itemSubtype,
+								label: 'itemSubtype',
+							} }
+							setAttributes={ setAttributes }
 							options={ [
 								{
 									value: 'none',
@@ -637,12 +722,6 @@ const Settings = ( props ) => {
 								},
 								...subtypeCategories[ itemType ],
 							] }
-							value={ itemSubtype }
-							onChange={ ( value ) =>
-								setAttributes( {
-									itemSubtype: value,
-								} )
-							}
 						/>
 					) }
 
@@ -713,12 +792,16 @@ const Settings = ( props ) => {
 											} )
 										}
 									/>
-									<SelectControl
+									<UAGSelectControl
 										label={ __(
 											'Identifier Type',
 											'ultimate-addons-for-gutenberg'
 										) }
-										value={ identifierType }
+										data={ {
+											value: identifierType,
+											label: 'identifierType',
+										} }
+										setAttributes={ setAttributes }
 										options={ [
 											'nsn',
 											'mpn',
@@ -731,11 +814,6 @@ const Settings = ( props ) => {
 											label: a.toUpperCase(),
 											value: a,
 										} ) ) }
-										onChange={ ( value ) =>
-											setAttributes( {
-												identifierType: value,
-											} )
-										}
 									/>
 								</>
 							) }
@@ -775,9 +853,16 @@ const Settings = ( props ) => {
 											'ultimate-addons-for-gutenberg'
 										) }
 									/>
-									<SelectControl
-										label={ __( 'Offer Status' ) }
-										value={ offerStatus }
+									<UAGSelectControl
+										label={ __(
+											'Offer Status',
+											'ultimate-addons-for-gutenberg'
+										) }
+										data={ {
+											value: offerStatus,
+											label: 'offerStatus',
+										} }
+										setAttributes={ props.setAttributes }
 										options={ [
 											{
 												value:
@@ -852,11 +937,6 @@ const Settings = ( props ) => {
 												),
 											},
 										] }
-										onChange={ ( value ) =>
-											props.setAttributes( {
-												offerStatus: value,
-											} )
-										}
 									/>
 									<h2>
 										{ __(
@@ -1167,16 +1247,17 @@ const Settings = ( props ) => {
 						mainimage !== 'null' &&
 						mainimage.url !== 'null' &&
 						mainimage.url !== '' && (
-							<SelectControl
+							<UAGSelectControl
 								label={ __(
 									'Size',
 									'ultimate-addons-for-gutenberg'
 								) }
+								data={ {
+									value: imgSize,
+									label: 'imgSize',
+								} }
+								setAttributes={ setAttributes }
 								options={ imageSizeOptions }
-								value={ imgSize }
-								onChange={ ( value ) =>
-									setAttributes( { imgSize: value } )
-								}
 							/>
 						) }
 				</>

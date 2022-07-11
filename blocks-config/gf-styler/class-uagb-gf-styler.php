@@ -205,7 +205,6 @@ if ( ! class_exists( 'UAGB_GF_Styler' ) ) {
 						),
 						'buttonBgColor'                    => array(
 							'type'    => 'string',
-							'default' => 'transparent',
 						),
 						'buttonBorderHoverColor'           => array(
 							'type'    => 'string',
@@ -217,7 +216,6 @@ if ( ! class_exists( 'UAGB_GF_Styler' ) ) {
 						),
 						'buttonBgHoverColor'               => array(
 							'type'    => 'string',
-							'default' => 'transparent',
 						),
 						'fieldSpacing'                     => array(
 							'type'    => 'number',

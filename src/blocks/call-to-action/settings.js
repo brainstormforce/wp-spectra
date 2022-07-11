@@ -16,7 +16,7 @@ import MultiButtonsControl from '@Components/multi-buttons-control';
 import ResponsiveBorder from '@Components/responsive-border';
 import SpacingControl from '@Components/spacing-control';
 import UAGTabsControl from '@Components/tabs';
-import presets from './presets';
+import ctaPresets, {buttonsPresetsCTA, buttonsPresetsAdditionalButton} from './presets';
 import UAGPresets from '@Components/presets';
 import renderSVG from '@Controls/renderIcon';
 import { ToggleControl, TextControl, Icon } from '@wordpress/components';
@@ -295,6 +295,13 @@ const Settings = ( props ) => {
 				/>
 				{ enabledSecondCtaButton && (
 				<>
+
+				<UAGPresets
+					setAttributes = { setAttributes }
+					presets = { buttonsPresetsAdditionalButton }
+					presetInputType = 'radioImage'
+				/>
+
 				<MultiButtonsControl
 					setAttributes={ setAttributes }
 					label={ __( 'Stack Orientation', 'ultimate-addons-for-gutenberg' ) }
@@ -451,7 +458,6 @@ const Settings = ( props ) => {
 							label: 'secondCtaIconSpaceMobile',
 						},
 					} }
-					min={ 0 }
 					max={ 50 }
 					displayUnit={ false }
 					setAttributes={ setAttributes }
@@ -560,9 +566,11 @@ const Settings = ( props ) => {
 									'ultimate-addons-for-gutenberg'
 								) }
 								colorValue={ secondCtaColor ? secondCtaColor : '' }
-								onColorChange={ ( value ) =>
-									setAttributes( { secondCtaColor: value } )
-								}
+								data={ {
+									value: secondCtaColor,
+									label: 'secondCtaColor',
+								} }
+								setAttributes={ setAttributes }
 							/>
 							<AdvancedPopColorControl
 								label={ __(
@@ -570,9 +578,11 @@ const Settings = ( props ) => {
 									'ultimate-addons-for-gutenberg'
 								) }
 								colorValue={ secondCtaBackground ? secondCtaBackground : '' }
-								onColorChange={ ( value ) =>
-									setAttributes( { secondCtaBackground: value } )
-								}
+								data={ {
+									value: secondCtaBackground,
+									label: 'secondCtaBackground',
+								} }
+								setAttributes={ setAttributes }
 							/>
 						</>
 					 }
@@ -584,9 +594,11 @@ const Settings = ( props ) => {
 									'ultimate-addons-for-gutenberg'
 								) }
 								colorValue={ secondCtaHoverColor ? secondCtaHoverColor : '' }
-								onColorChange={ ( value ) =>
-									setAttributes( { secondCtaHoverColor: value } )
-								}
+								data={ {
+									value: secondCtaHoverColor,
+									label: 'secondCtaHoverColor',
+								} }
+								setAttributes={ setAttributes }
 							/>
 							<AdvancedPopColorControl
 								label={ __(
@@ -594,9 +606,11 @@ const Settings = ( props ) => {
 									'ultimate-addons-for-gutenberg'
 								) }
 								colorValue={ secondCtaHoverBackground ? secondCtaHoverBackground : '' }
-								onColorChange={ ( value ) =>
-									setAttributes( { secondCtaHoverBackground: value } )
-								}
+								data={ {
+									value: secondCtaHoverBackground,
+									label: 'secondCtaHoverBackground',
+								} }
+								setAttributes={ setAttributes }
 							/>
 						</>
 					}
@@ -730,7 +744,15 @@ const Settings = ( props ) => {
 					] }
 					showIcons={ false }
 				/>
+				{ 'button' === ctaType &&
+					<UAGPresets
+						setAttributes = { setAttributes }
+						presets = { buttonsPresetsCTA }
+						presetInputType = 'radioImage'
+					/>
+				}
 				{ stack !== 'desktop' && ctaType !== 'all' && ctaType !== 'none' && (
+
 				<MultiButtonsControl
 					setAttributes={ setAttributes }
 					label={ __(
@@ -862,7 +884,6 @@ const Settings = ( props ) => {
 												label: 'ctaIconSpaceMobile',
 											},
 										} }
-										min={ 0 }
 										max={ 50 }
 										displayUnit={ false }
 										setAttributes={ setAttributes }
@@ -1090,9 +1111,11 @@ const Settings = ( props ) => {
 						'ultimate-addons-for-gutenberg'
 					) }
 					colorValue={ ctaBtnLinkColor ? ctaBtnLinkColor : '' }
-					onColorChange={ ( value ) =>
-						setAttributes( { ctaBtnLinkColor: value } )
-					}
+					data={ {
+						value: ctaBtnLinkColor,
+						label: 'ctaBtnLinkColor',
+					} }
+					setAttributes={ setAttributes }
 				/>
 				<AdvancedPopColorControl
 					label={ __(
@@ -1100,9 +1123,11 @@ const Settings = ( props ) => {
 						'ultimate-addons-for-gutenberg'
 					) }
 					colorValue={ ctaBgColor ? ctaBgColor : '' }
-					onColorChange={ ( value ) =>
-						setAttributes( { ctaBgColor: value } )
-					}
+					data={ {
+						value: ctaBgColor,
+						label: 'ctaBgColor',
+					} }
+					setAttributes={ setAttributes }
 				/>
 			</>
 		);
@@ -1116,9 +1141,11 @@ const Settings = ( props ) => {
 						'ultimate-addons-for-gutenberg'
 					) }
 					colorValue={ ctaLinkHoverColor ? ctaLinkHoverColor : '' }
-					onColorChange={ ( value ) =>
-						setAttributes( { ctaLinkHoverColor: value } )
-					}
+					data={ {
+						value: ctaLinkHoverColor,
+						label: 'ctaLinkHoverColor',
+					} }
+					setAttributes={ setAttributes }
 				/>
 				<AdvancedPopColorControl
 					label={ __(
@@ -1126,9 +1153,11 @@ const Settings = ( props ) => {
 						'ultimate-addons-for-gutenberg'
 					) }
 					colorValue={ ctaBgHoverColor ? ctaBgHoverColor : '' }
-					onColorChange={ ( value ) =>
-						setAttributes( { ctaBgHoverColor: value } )
-					}
+					data={ {
+						value: ctaBgHoverColor,
+						label: 'ctaBgHoverColor',
+					} }
+					setAttributes={ setAttributes }
 				/>
 			</>
 		);
@@ -1143,9 +1172,11 @@ const Settings = ( props ) => {
 						'ultimate-addons-for-gutenberg'
 					) }
 					colorValue={ ctaBtnLinkColor ? ctaBtnLinkColor : '' }
-					onColorChange={ ( value ) =>
-						setAttributes( { ctaBtnLinkColor: value } )
-					}
+					data={ {
+						value: ctaBtnLinkColor,
+						label: 'ctaBtnLinkColor',
+					} }
+					setAttributes={ setAttributes }
 				/>
 			</>
 		);
@@ -1159,9 +1190,11 @@ const Settings = ( props ) => {
 						'ultimate-addons-for-gutenberg'
 					) }
 					colorValue={ ctaLinkHoverColor ? ctaLinkHoverColor : '' }
-					onColorChange={ ( value ) =>
-						setAttributes( { ctaLinkHoverColor: value } )
-					}
+					data={ {
+						value: ctaLinkHoverColor,
+						label: 'ctaLinkHoverColor',
+					} }
+					setAttributes={ setAttributes }
 				/>
 			</>
 		);
@@ -1256,9 +1289,11 @@ const Settings = ( props ) => {
 				<AdvancedPopColorControl
 					label={ __( 'Color', 'ultimate-addons-for-gutenberg' ) }
 					colorValue={ titleColor ? titleColor : '' }
-					onColorChange={ ( value ) =>
-						setAttributes( { titleColor: value } )
-					}
+					data={ {
+						value: titleColor,
+						label: 'titleColor',
+					} }
+					setAttributes={ setAttributes }
 				/>
 				<ResponsiveSlider
 					label={ __(
@@ -1388,9 +1423,11 @@ const Settings = ( props ) => {
 				<AdvancedPopColorControl
 					label={ __( 'Color', 'ultimate-addons-for-gutenberg' ) }
 					colorValue={ descColor ? descColor : '' }
-					onColorChange={ ( value ) =>
-						setAttributes( { descColor: value } )
-					}
+					data={ {
+						value: descColor,
+						label: 'descColor',
+					} }
+					setAttributes={ setAttributes }
 				/>
 					<ResponsiveSlider
 						label={ __(
@@ -1823,7 +1860,7 @@ const Settings = ( props ) => {
 				>
 					<UAGPresets
 						setAttributes = { setAttributes }
-						presets = { presets }
+						presets = { ctaPresets }
 						presetInputType = 'radioImage'
 					/>
 				</UAGAdvancedPanelBody>

@@ -16,7 +16,9 @@ $gap_fallback     = UAGB_Block_Helper::get_fallback_number( $attr['gap'], 'gap',
 $gap_tablet_fallback = is_numeric( $attr['gapTablet'] ) ? $attr['gapTablet'] : $gap_fallback;
 $gap_mobile_fallback = is_numeric( $attr['gapMobile'] ) ? $attr['gapMobile'] : $gap_tablet_fallback;
 
-$alignment = ( 'left' === $attr['align'] ) ? 'flex-start' : ( ( 'right' === $attr['align'] ) ? 'flex-end' : 'center' );
+$alignment   = ( 'left' === $attr['align'] ) ? 'flex-start' : ( ( 'right' === $attr['align'] ) ? 'flex-end' : 'center' );
+$t_alignment = ( 'left' === $attr['alignTablet'] ) ? 'flex-start' : ( ( 'right' === $attr['alignTablet'] ) ? 'flex-end' : 'center' );
+$m_alignment = ( 'left' === $attr['alignMobile'] ) ? 'flex-start' : ( ( 'right' === $attr['alignMobile'] ) ? 'flex-end' : 'center' );
 
 $m_selectors = array();
 $t_selectors = array();
@@ -46,8 +48,14 @@ $selectors = array(
 	),
 );
 
-$selectors['.uagb-social-share__outer-wrap .block-editor-inner-blocks'] = array(
+$selectors['.uagb-social-share__outer-wrap .block-editor-inner-blocks']   = array(
 	'text-align' => UAGB_Helper::get_css_value( $attr['align'] ),
+);
+$t_selectors['.uagb-social-share__outer-wrap .block-editor-inner-blocks'] = array(
+	'text-align' => UAGB_Helper::get_css_value( $attr['alignTablet'] ),
+);
+$m_selectors['.uagb-social-share__outer-wrap .block-editor-inner-blocks'] = array(
+	'text-align' => UAGB_Helper::get_css_value( $attr['alignMobile'] ),
 );
 
 $selectors['.uagb-social-share__layout-vertical .uagb-ss__wrapper']     = array(
@@ -168,6 +176,26 @@ $selectors['.uagb-social-share__outer-wrap'] = array(
 	'align-items'       => $alignment,
 );
 
+$t_selectors['.uagb-social-share__outer-wrap'] = array(
+	'justify-content'   => $t_alignment,
+	'-webkit-box-pack'  => $t_alignment,
+	'-ms-flex-pack'     => $t_alignment,
+	'justify-content'   => $t_alignment,
+	'-webkit-box-align' => $t_alignment,
+	'-ms-flex-align'    => $t_alignment,
+	'align-items'       => $t_alignment,
+);
+
+$m_selectors['.uagb-social-share__outer-wrap'] = array(
+	'justify-content'   => $m_alignment,
+	'-webkit-box-pack'  => $m_alignment,
+	'-ms-flex-pack'     => $m_alignment,
+	'justify-content'   => $m_alignment,
+	'-webkit-box-align' => $m_alignment,
+	'-ms-flex-align'    => $m_alignment,
+	'align-items'       => $m_alignment,
+);
+
 if ( ! $attr['childMigrate'] ) {
 
 	$defaults = UAGB_DIR . 'includes/blocks/social-share-child/attributes.php';
@@ -220,6 +248,28 @@ if ( 'horizontal' === $attr['social_layout'] ) {
 			'align-items'       => $alignment,
 		);
 
+		$t_selectors['.uagb-social-share__outer-wrap'] = array(
+			'flex-direction'    => 'column',
+			'justify-content'   => $t_alignment,
+			'-webkit-box-pack'  => $t_alignment,
+			'-ms-flex-pack'     => $t_alignment,
+			'justify-content'   => $t_alignment,
+			'-webkit-box-align' => $t_alignment,
+			'-ms-flex-align'    => $t_alignment,
+			'align-items'       => $t_alignment,
+		);
+
+		$m_selectors['.uagb-social-share__outer-wrap'] = array(
+			'flex-direction'    => 'column',
+			'justify-content'   => $m_alignment,
+			'-webkit-box-pack'  => $m_alignment,
+			'-ms-flex-pack'     => $m_alignment,
+			'justify-content'   => $m_alignment,
+			'-webkit-box-align' => $m_alignment,
+			'-ms-flex-align'    => $m_alignment,
+			'align-items'       => $m_alignment,
+		);
+
 	} elseif ( 'tablet' === $attr['stack'] ) {
 
 		$t_selectors[' .uagb-ss__wrapper'] = array(
@@ -230,13 +280,13 @@ if ( 'horizontal' === $attr['social_layout'] ) {
 
 		$t_selectors['.uagb-social-share__outer-wrap'] = array(
 			'flex-direction'    => 'column',
-			'justify-content'   => $alignment,
-			'-webkit-box-pack'  => $alignment,
-			'-ms-flex-pack'     => $alignment,
-			'justify-content'   => $alignment,
-			'-webkit-box-align' => $alignment,
-			'-ms-flex-align'    => $alignment,
-			'align-items'       => $alignment,
+			'justify-content'   => $t_alignment,
+			'-webkit-box-pack'  => $t_alignment,
+			'-ms-flex-pack'     => $t_alignment,
+			'justify-content'   => $t_alignment,
+			'-webkit-box-align' => $t_alignment,
+			'-ms-flex-align'    => $t_alignment,
+			'align-items'       => $t_alignment,
 		);
 
 	} elseif ( 'mobile' === $attr['stack'] ) {
@@ -249,13 +299,13 @@ if ( 'horizontal' === $attr['social_layout'] ) {
 
 		$m_selectors['.uagb-social-share__outer-wrap'] = array(
 			'flex-direction'    => 'column',
-			'justify-content'   => $alignment,
-			'-webkit-box-pack'  => $alignment,
-			'-ms-flex-pack'     => $alignment,
-			'justify-content'   => $alignment,
-			'-webkit-box-align' => $alignment,
-			'-ms-flex-align'    => $alignment,
-			'align-items'       => $alignment,
+			'justify-content'   => $m_alignment,
+			'-webkit-box-pack'  => $m_alignment,
+			'-ms-flex-pack'     => $m_alignment,
+			'justify-content'   => $m_alignment,
+			'-webkit-box-align' => $m_alignment,
+			'-ms-flex-align'    => $m_alignment,
+			'align-items'       => $m_alignment,
 		);
 	}
 }

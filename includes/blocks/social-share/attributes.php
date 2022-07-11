@@ -11,6 +11,8 @@ return array(
 	'classMigrate'       => false,
 	'childMigrate'       => false,
 	'align'              => 'center',
+	'alignTablet'        => 'center',
+	'alignMobile'        => 'center',
 	'social_count'       => '1',
 	'socials'            => array(
 		array(
