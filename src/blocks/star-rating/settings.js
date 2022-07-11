@@ -62,10 +62,10 @@ const Settings = ( props ) => {
 			fontDecoration,
 			displayTitle,
 			//letter spacing
-			titleLetterSpacing,
-			titleLetterSpacingTablet,
-			titleLetterSpacingMobile,
-			titleLetterSpacingType,
+			letterSpacing,
+			letterSpacingTablet,
+			letterSpacingMobile,
+			letterSpacingType,
 			// padding
 			blockTopPadding,
 			blockRightPadding,
@@ -346,20 +346,20 @@ const Settings = ( props ) => {
 					label: 'lineHeightTablet',
 				} }
 				letterSpacing={ {
-					value: titleLetterSpacing,
-					label: 'titleLetterSpacing',
+					value: letterSpacing,
+					label: 'letterSpacing',
 				} }
 				letterSpacingTablet={ {
-					value: titleLetterSpacingTablet,
-					label: 'titleLetterSpacingTablet',
+					value: letterSpacingTablet,
+					label: 'letterSpacingTablet',
 				} }
 				letterSpacingMobile={ {
-					value: titleLetterSpacingMobile,
-					label: 'titleLetterSpacingMobile',
+					value: letterSpacingMobile,
+					label: 'letterSpacingMobile',
 				} }
 				letterSpacingType={ {
-					value: titleLetterSpacingType,
-					label: 'titleLetterSpacingType',
+					value: letterSpacingType,
+					label: 'letterSpacingType',
 				} }
 			/>
 			<ResponsiveSlider

@@ -219,25 +219,25 @@ const attributes = {
 		default: true,
 	},
 	// letter spacing
-	titleLetterSpacing: {
+	letterSpacing: {
 		type: 'number',
 		UAGCopyPaste: {
 			styleType: 'main-title-letter-spacing'
 		}
 	},
-	titleLetterSpacingTablet: {
+	letterSpacingTablet: {
 		type: 'number',
 		UAGCopyPaste: {
 			styleType: 'main-title-letter-spacing-tablet'
 		}
 	},
-	titleLetterSpacingMobile: {
+	letterSpacingMobile: {
 		type: 'number',
 		UAGCopyPaste: {
 			styleType: 'main-title-letter-spacing-mobile'
 		}
 	},
-	titleLetterSpacingType: {
+	letterSpacingType: {
 		type: 'string',
 		default: 'px',
 		UAGCopyPaste: {
