@@ -158,6 +158,10 @@ function styling( props ) {
 	const buttonBorderCSSTablet = generateBorderCSS( props.attributes, 'btn', 'tablet' );
 	const buttonBorderCSSMobile = generateBorderCSS( props.attributes, 'btn', 'mobile' );
 
+	fieldBorderCSS['border-color'] = fieldBorderCSS['border-color'] === '' ? '#EEEEEE' : fieldBorderCSS['border-color']
+	fieldBorderCSSTablet['border-color'] = fieldBorderCSSTablet['border-color'] === '' ? '#EEEEEE' : fieldBorderCSSTablet['border-color']
+	fieldBorderCSSMobile['border-color'] = fieldBorderCSSMobile['border-color'] === '' ? '#EEEEEE' : fieldBorderCSSMobile['border-color']
+
 	const selectors = {
 		' .wpcf7 .wpcf7-form': {
 			'text-align': align,
@@ -198,7 +202,7 @@ function styling( props ) {
 			),
 			'text-align': align,
 			'letter-spacing': generateCSSUnit( inputLetterSpacing, inputLetterSpacingType ),
-			...fieldBorderCSS
+			...fieldBorderCSS,
 		},
 		' .wpcf7 select': {
 			'background-color': fieldBgColor,

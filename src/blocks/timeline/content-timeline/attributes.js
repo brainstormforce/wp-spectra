@@ -502,6 +502,18 @@ const attributes = {
 		},
 		default: 35,
 	},
+	connectorBgsizeTablet: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'connector-bg-size-tablet'
+		}
+	},
+	connectorBgsizeMobile: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'connector-bg-size-mobile'
+		}
+	},
 	subHeadSpace: {
 		type: 'number',
 		UAGCopyPaste: {
@@ -572,6 +584,18 @@ const attributes = {
 			styleType: 'icon-size'
 		},
 		default: 12,
+	},
+	iconSizeTablet: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'icon-size-tablet'
+		},
+	},
+	iconSizeMobile: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'icon-size-mobile'
+		},
 	},
 	icon: {
 		type: 'string',
