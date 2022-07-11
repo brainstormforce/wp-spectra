@@ -1,10 +1,11 @@
-import { SelectControl, Button, Dashicon, Tooltip } from '@wordpress/components';
+import { SelectControl } from '@wordpress/components';
 import { __ } from '@wordpress/i18n';
 import { useState } from '@wordpress/element';
 import styles from './editor.lazy.scss';
 import React, { useLayoutEffect } from 'react';
 import { select, dispatch } from '@wordpress/data';
 import classnames from 'classnames';
+import UAGReset from '../reset';
 
 const UAGPresets = ( props ) => {
 
@@ -24,7 +25,28 @@ const UAGPresets = ( props ) => {
 		className
     } = props;
 
+	const resetAttributes = [];
+
+	if ( presets ) {
+		presets.map( ( preset ) => {
+			if ( preset?.attributes ) {
+				for ( const attribute of preset?.attributes ) {
+					if ( ! resetAttributes.includes( attribute?.label ) ) {
+						resetAttributes.push( attribute?.label );
+					}
+				}
+			}
+
+			return preset;
+		} );
+	}
+
 	const [ selectedPresetState, setPreset ] = useState( '' );
+
+	const onReset = () => {
+		setPreset( '' );
+		resetChildBlockAttributes();
+	};
 
     const updatePresets = ( selectedPreset ) => {
 
@@ -91,44 +113,7 @@ const UAGPresets = ( props ) => {
         } );
     }
 
-	const resetValues = () => {
-		let defaultAttributes = null;
-		let defaultChildAttributes = null;
-
-		presets.map( ( preset ) => {
-
-			if ( preset.defaultAttributes ) {
-				defaultAttributes = preset.defaultAttributes;
-			}
-
-			if ( preset.defaultChildAttributes ) {
-				defaultChildAttributes = preset.defaultChildAttributes;
-			}
-
-			if ( defaultAttributes && preset.value && selectedPresetState === preset.value ) {
-				if ( preset.attributes ) {
-					preset.attributes.map( ( presetItem ) => {
-						if ( defaultAttributes[presetItem.label] && undefined !== defaultAttributes[presetItem.label].default ) {
-							setAttributes( { [presetItem.label]: defaultAttributes[presetItem.label].default } )
-						}
-						return presetItem;
-					} );
-				}
-
-				if ( preset.childAttributes && defaultChildAttributes ) {
-					resetChildBlockAttributes( preset, defaultChildAttributes );
-				}
-			}
-			if ( selectedPresetState === preset.value ){
-				setPreset( { selectedPreset: '' } );
-			}
-
-			return preset;
-		} );
-
-	};
-
-	const resetChildBlockAttributes = ( preset, defaultChildAttributes ) => {
+	const resetChildBlockAttributes = () => {
 		const { getSelectedBlock } = select( 'core/block-editor' );
 
         let childBlocks = [];
@@ -148,12 +133,17 @@ const UAGPresets = ( props ) => {
 
         const childBlocksAttributes = {};
 
-        preset.childAttributes.map( ( attr ) => {
-			if ( defaultChildAttributes[attr.label] && undefined !== defaultChildAttributes[attr.label].default ) {
-            	childBlocksAttributes[attr.label] = defaultChildAttributes[attr.label].default;
+		presets.map( ( preset ) => {
+			if ( preset?.childAttributes ) {
+				preset?.childAttributes.map( ( attr ) => {
+					if ( presets[1]?.defaultChildAttributes && presets[1]?.defaultChildAttributes[attr.label] && undefined !== presets[1]?.defaultChildAttributes[attr.label].default ) {
+						childBlocksAttributes[attr.label] = presets[1]?.defaultChildAttributes[attr.label].default;
+					}
+					return attr;
+				} );
 			}
-            return attr;
-        } );
+			return preset;
+		} );
 
         childBlocksClientIds.map( ( clientId ) => {
             dispatch( 'core/block-editor' ).updateBlockAttributes( clientId, childBlocksAttributes );
@@ -204,22 +194,11 @@ const UAGPresets = ( props ) => {
 		) }>
 			<div className='uagb-presets-label-reset-wrap'>
 				<label htmlFor="uag-presets-label" className="uag-presets-label">{label}</label>
-				<Tooltip
-					text={ __( 'Reset', 'ultimate-addons-for-gutenberg' )}
-					key={ 'reset' }
-				>
-				<Button
-					className="uagb-reset"
-					isSecondary
-					isSmall
-					onClick={ ( e ) => {
-						e.preventDefault();
-						resetValues();
-					} }
-				>
-					<Dashicon icon="image-rotate" />
-				</Button>
-				</Tooltip>
+				<UAGReset
+					attributeNames = {resetAttributes}
+					setAttributes={ setAttributes }
+					onReset={onReset}
+				/>
 			</div>
             { 'dropdown' === presetInputType && presetDropdown }
             { 'radioImage' === presetInputType && presetRadioImage }
