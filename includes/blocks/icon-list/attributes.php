@@ -77,6 +77,7 @@ return array(
 	'iconPosition'             => 'middle',
 	'iconPositionTablet'       => '',
 	'iconPositionMobile'       => '',
+	'iconPlacement'            => 'before',
 	'iconColor'                => '',
 	'iconHoverColor'           => '',
 	'iconBgColor'              => '',
