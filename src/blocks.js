@@ -85,7 +85,7 @@ import './components/responsive-icons/index.js';
 wp.UAGBSvgIcons = Object.keys( uagb_blocks_info.uagb_svg_icons );
 
 import UAGB_Block_Icons from '@Controls/block-icons';
-import RecoverBlocks from '@Controls/recoverBlocks';
+import {autoAttemptRecovery} from '@Controls/recoverBlocks';
 
 import { updateCategory } from '@wordpress/blocks';
 
@@ -93,4 +93,13 @@ updateCategory( 'uagb', {
 	icon: UAGB_Block_Icons.logo,
 } );
 
-domReady( RecoverBlocks );
+
+export const initAutoAttemptRecovery = () => {
+	if ( window._wpLoadBlockEditor ) {
+		window._wpLoadBlockEditor.then( function() {
+			autoAttemptRecovery()
+		} )
+	}
+}
+
+domReady( initAutoAttemptRecovery )
