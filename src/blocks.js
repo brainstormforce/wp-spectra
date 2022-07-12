@@ -9,6 +9,7 @@
  * Webpack is compiling as the input file.
  */
 
+import domReady from '@wordpress/dom-ready';
 import getUAGEditorStateLocalStorage from '@Controls/getUAGEditorStateLocalStorage';
 
 // Delete the local storage on every refresh.
@@ -79,15 +80,17 @@ import './blocks/image/block.js';
 import './blocks/extensions/block.js';
 
 // Responsive Device Icons on Editor
-import './components/responsive-icons/index.js'
-
+import './components/responsive-icons/index.js';
 
 wp.UAGBSvgIcons = Object.keys( uagb_blocks_info.uagb_svg_icons );
 
 import UAGB_Block_Icons from '@Controls/block-icons';
+import RecoverBlocks from '@Controls/recoverBlocks';
 
 import { updateCategory } from '@wordpress/blocks';
 
 updateCategory( 'uagb', {
 	icon: UAGB_Block_Icons.logo,
 } );
+
+domReady( RecoverBlocks );
