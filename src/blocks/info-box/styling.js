@@ -526,10 +526,10 @@ function styling( props ) {
 			 'margin-right': generateCSSUnit( separatorRightMargin, seperatorSpaceUnit ),
 		 },
 		 // editor css is causing issue  thaat why i used important
-		 '.uagb-infobox__content-wrap  .uagb-ifb-content svg': {
+		 '.uagb-infobox__content-wrap .uagb-ifb-content svg': {
 			 'box-sizing' : `${boxSizingIcon}`,
 		 },
-		 '.uagb-infobox__content-wrap  .uagb-ifb-content img': {
+		 '.uagb-infobox__content-wrap .uagb-ifb-content img': {
 			 'box-sizing' : `${boxSizingImage}`,
 		 },
 	 };
@@ -1088,25 +1088,93 @@ function styling( props ) {
 			 ),
 			 'width': generateCSSUnit( ctaFontSizeMobile, ctaFontSizeType ),
 		 },
-		 '.uagb-infobox__content-wrap  .uagb-ifb-content img': {
+		 '.uagb-infobox__content-wrap .uagb-ifb-content img': {
 			 'box-sizing' : `${boxSizingImageMobile}`,
 		 },
 	 };
 
 	if (
-		iconimgPosition === 'above-title' ||
-		iconimgPosition === 'below-title'
+		iconimgPosition === 'above-title'
 	) {
-		selectors[ '.uagb-infobox__content-wrap' ] = {
+		selectors[ '.uagb-infobox-icon-above-title' ] = {
 			'text-align': headingAlign,
 		};
-		tabletSelectors[ '.uagb-infobox__content-wrap' ] = {
+		tabletSelectors[ '.uagb-infobox-icon-above-title' ] = {
 			'text-align': headingAlignTablet,
 		};
-		mobileSelectors[ '.uagb-infobox__content-wrap' ] = {
+		mobileSelectors[ '.uagb-infobox-icon-above-title' ] = {
 			'text-align': headingAlignMobile,
 		};
 	}
+
+	if (
+		iconimgPosition === 'below-title'
+	) {
+		selectors[ '.uagb-infobox-icon-below-title' ] = {
+			'text-align': headingAlign,
+		};
+		tabletSelectors[ '.uagb-infobox-icon-below-title' ] = {
+			'text-align': headingAlignTablet,
+		};
+		mobileSelectors[ '.uagb-infobox-icon-below-title' ] = {
+			'text-align': headingAlignMobile,
+		};
+	}
+
+	selectors[ '.uagb-infobox__content-wrap' ] = {
+		'padding-top': generateCSSUnit(
+			blockTopMargin,
+			blockMarginUnit
+		),
+		'padding-right': generateCSSUnit(
+			blockRightMargin,
+			blockMarginUnit
+		),
+		'padding-bottom': generateCSSUnit(
+			blockBottomMargin,
+			blockMarginUnit
+		),
+		'padding-left': generateCSSUnit(
+			blockLeftMargin,
+			blockMarginUnit
+		),
+	};
+	tabletSelectors[ '.uagb-infobox__content-wrap' ] = {
+		'padding-top': generateCSSUnit(
+			blockTopMarginTablet,
+			blockMarginUnitTablet
+		),
+		'padding-right': generateCSSUnit(
+			blockRightMarginTablet,
+			blockMarginUnitTablet
+		),
+		'padding-bottom': generateCSSUnit(
+			blockBottomMarginTablet,
+			blockMarginUnitTablet
+		),
+		'padding-left': generateCSSUnit(
+			blockLeftMarginTablet,
+			blockMarginUnitTablet
+		),
+	};
+	mobileSelectors[ '.uagb-infobox__content-wrap' ] = {
+		'padding-top': generateCSSUnit(
+			blockTopMarginMobile,
+			blockMarginUnitMobile
+		),
+		'padding-right': generateCSSUnit(
+			blockRightMarginMobile,
+			blockMarginUnitMobile
+		),
+		'padding-bottom': generateCSSUnit(
+			blockBottomMarginMobile,
+			blockMarginUnitMobile
+		),
+		'padding-left': generateCSSUnit(
+			blockLeftMarginMobile,
+			blockMarginUnitMobile
+		),
+	};
 
 	if ( imageWidthType ) {
 		// Image

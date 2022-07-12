@@ -283,22 +283,22 @@ const Settings = ( props ) => {
 		iconBorderWidth,
 		
 		// margin
-		blockTopMargin,
-		blockRightMargin,
-		blockLeftMargin,
-		blockBottomMargin,
-		blockTopMarginTablet,
-		blockRightMarginTablet,
-		blockLeftMarginTablet,
-		blockBottomMarginTablet,
-		blockTopMarginMobile,
-		blockRightMarginMobile,
-		blockLeftMarginMobile,
-		blockBottomMarginMobile,
-		blockMarginUnit,
-		blockMarginUnitTablet,
-		blockMarginUnitMobile,
-		blockMarginLink,
+		blockTopPadding,
+		blockRightPadding,
+		blockLeftPadding,
+		blockBottomPadding,
+		blockTopPaddingTablet,
+		blockRightPaddingTablet,
+		blockLeftPaddingTablet,
+		blockBottomPaddingTablet,
+		blockTopPaddingMobile,
+		blockRightPaddingMobile,
+		blockLeftPaddingMobile,
+		blockBottomPaddingMobile,
+		blockPaddingUnit,
+		blockPaddingUnitTablet,
+		blockPaddingUnitMobile,
+		blockPaddingLink,
 	} = attributes;
 
 	/*
@@ -2488,75 +2488,75 @@ const Settings = ( props ) => {
 			>
 				<SpacingControl
 					label={ __(
-						'Margin',
+						'Padding',
 						'ultimate-addons-for-gutenberg'
 					) }
 					valueTop={ {
-						value: blockTopMargin,
-						label: 'blockTopMargin',
+						value: blockTopPadding,
+						label: 'blockTopPadding',
 					} }
 					valueRight={ {
-						value: blockRightMargin,
-						label: 'blockRightMargin',
+						value: blockRightPadding,
+						label: 'blockRightPadding',
 					} }
 					valueBottom={ {
-						value: blockBottomMargin,
-						label: 'blockBottomMargin',
+						value: blockBottomPadding,
+						label: 'blockBottomPadding',
 					} }
 					valueLeft={ {
-						value: blockLeftMargin,
-						label: 'blockLeftMargin',
+						value: blockLeftPadding,
+						label: 'blockLeftPadding',
 					} }
 					valueTopTablet={ {
-						value: blockTopMarginTablet,
-						label: 'blockTopMarginTablet',
+						value: blockTopPaddingTablet,
+						label: 'blockTopPaddingTablet',
 					} }
 					valueRightTablet={ {
-						value: blockRightMarginTablet,
-						label: 'blockRightMarginTablet',
+						value: blockRightPaddingTablet,
+						label: 'blockRightPaddingTablet',
 					} }
 					valueBottomTablet={ {
-						value: blockBottomMarginTablet,
-						label: 'blockBottomMarginTablet',
+						value: blockBottomPaddingTablet,
+						label: 'blockBottomPaddingTablet',
 					} }
 					valueLeftTablet={ {
-						value: blockLeftMarginTablet,
-						label: 'blockLeftMarginTablet',
+						value: blockLeftPaddingTablet,
+						label: 'blockLeftPaddingTablet',
 					} }
 					valueTopMobile={ {
-						value: blockTopMarginMobile,
-						label: 'blockTopMarginMobile',
+						value: blockTopPaddingMobile,
+						label: 'blockTopPaddingMobile',
 					} }
 					valueRightMobile={ {
-						value: blockRightMarginMobile,
-						label: 'blockRightMarginMobile',
+						value: blockRightPaddingMobile,
+						label: 'blockRightPaddingMobile',
 					} }
 					valueBottomMobile={ {
-						value: blockBottomMarginMobile,
-						label: 'blockBottomMarginMobile',
+						value: blockBottomPaddingMobile,
+						label: 'blockBottomPaddingMobile',
 					} }
 					valueLeftMobile={ {
-						value: blockLeftMarginMobile,
-						label: 'blockLeftMarginMobile',
+						value: blockLeftPaddingMobile,
+						label: 'blockLeftPaddingMobile',
 					} }
 					unit={ {
-						value: blockMarginUnit,
-						label: 'blockMarginUnit',
+						value: blockPaddingUnit,
+						label: 'blockPaddingUnit',
 					} }
 					mUnit={ {
-						value: blockMarginUnitMobile,
-						label: 'blockMarginUnitMobile',
+						value: blockPaddingUnitMobile,
+						label: 'blockPaddingUnitMobile',
 					} }
 					tUnit={ {
-						value: blockMarginUnitTablet,
-						label: 'blockMarginUnitTablet',
+						value: blockPaddingUnitTablet,
+						label: 'blockPaddingUnitTablet',
 					} }
 					deviceType={ deviceType }
 					attributes={ attributes }
 					setAttributes={ setAttributes }
 					link={ {
-						value: blockMarginLink,
-						label: 'blockMarginLink',
+						value: blockPaddingLink,
+						label: 'blockPaddingLink',
 					} }
 				/>
 			</UAGAdvancedPanelBody>
