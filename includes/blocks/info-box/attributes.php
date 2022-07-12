@@ -230,6 +230,23 @@ return array_merge(
 		'iconBackgroundColor'        => '#6EC1E3',
 		'iconBackgroundHoverColor'   => '',
 		'iconBorderWidth'            => 3,
+		// margin.
+		'blockTopMargin'               => '',
+		'blockRightMargin'             => '',
+		'blockLeftMargin'              => '',
+		'blockBottomMargin'            => '',
+		'blockTopMarginTablet'         => '',
+		'blockRightMarginTablet'       => '',
+		'blockLeftMarginTablet'        => '',
+		'blockBottomMarginTablet'      => '',
+		'blockTopMarginMobile'         => '',
+		'blockRightMarginMobile'       => '',
+		'blockLeftMarginMobile'        => '',
+		'blockBottomMarginMobile'      => '',
+		'blockMarginUnit'              => 'px',
+		'blockMarginUnitTablet'        => 'px',
+		'blockMarginUnitMobile'        => 'px',
+		'blockMarginLink'              => '',
 	),
 	$cta_border_attribute
 );
