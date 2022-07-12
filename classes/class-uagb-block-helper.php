@@ -103,7 +103,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				$selectors[' .wp-block-button__link:hover'] = $btn_hover_bg_css;
 			}
 
-			$selectors[' .uagb-button__wrapper .uagb-buttons-repeater.wp-block-button__link'] = array(
+			$selectors[' .uagb-button__wrapper .uagb-buttons-repeater'] = array(
 				'font-family'     => $attr['fontFamily'],
 				'font-weight'     => $attr['fontWeight'],
 				'font-style'      => $attr['fontStyle'],
