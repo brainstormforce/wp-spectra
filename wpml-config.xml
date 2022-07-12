@@ -1,3 +1,4 @@
+
 <wpml-config>
 	<gutenberg-blocks>
 		<gutenberg-block type="uagb/advanced-heading" translate="1">
@@ -24,14 +25,12 @@
 		<gutenberg-block type="uagb/column" translate="0"/>
 		<gutenberg-block type="uagb/social-share" translate="0"/>
 		<gutenberg-block type="uagb/social-share-child" translate="0"/>
-		<gutenberg-block type="uagb/tabs" translate="0"/>
 		<gutenberg-block type="uagb/google-map" translate="0"/>
 		<gutenberg-block type="uagb/info-box" translate="1">
 			<xpath>//span[@class="uagb-ifb-title-prefix"]</xpath>
 			<xpath>//a/@href</xpath>
 			<xpath>//*[self::h1 or self::h2 or self::h3 or self::h4 or self::h5 or self::h6]</xpath>
 			<xpath>//p[@class="uagb-ifb-desc"]</xpath>
-			<xpath>//span[contains(@class, 'uagb-inline-editing')]</xpath>
 		</gutenberg-block>
 		<gutenberg-block type="uagb/testimonial" translate="1">
 			<xpath>//div[@class="uagb-tm__desc"]</xpath>
@@ -48,8 +47,6 @@
 			<xpath>//div[contains(@class, "wp-block-uagb-icon-list-child")]/a/@href</xpath>
 		</gutenberg-block>
 		<gutenberg-block type="uagb/tabs" translate="1">
-			<xpath>//li[@class="uagb-tab"]/li</xpath>
-			<xpath>//div[(@class="uagb-tabs__body")]/div</xpath>
 		</gutenberg-block>
 		<gutenberg-block type="uagb/restaurant-menu" translate="1">
 			<xpath>//*[self::h1 or self::h2 or self::h3 or self::h4 or self::h5 or self::h6]</xpath>
@@ -65,8 +62,7 @@
 		<gutenberg-block type="uagb/call-to-action" translate="1">
 			<xpath>//*[self::h1 or self::h2 or self::h3 or self::h4 or self::h5 or self::h6]</xpath>
 			<xpath>//p[@class="uagb-cta__desc"]</xpath>
-			<xpath>//a[contains(@class,"uagb-cta__block-link")]/@href</xpath>
-			<xpath>//span[@class="uagb-cta__link-content-inner"]/span</xpath>
+			<xpath>//*[@class="uagb-cta__buttons"]</xpath>
 		</gutenberg-block>
 		<gutenberg-block type="uagb/blockquote" translate="1">
 			<xpath>//div[@class="uagb-blockquote__content"]</xpath>
@@ -87,5 +83,11 @@
 			<xpath>//a[@class="uagb-button__link"]</xpath>
 			<xpath>//a[@class="uagb-button__link"]/@href</xpath>
 		</gutenberg-block>
+		<gutenberg-block type="uagb/image" translate="1">
+			<xpath>//*[self::h1 or self::h2 or self::h3 or self::h4 or self::h5 or self::h6]</xpath>
+			<xpath>//figcaption[@class="uagb-image-caption"]</xpath>
+			<xpath>//figure/figcaption</xpath>
+		</gutenberg-block>
+		<gutenberg-block type="uagb/taxonomy-list" translate="0"/>
 	</gutenberg-blocks>
 </wpml-config>
