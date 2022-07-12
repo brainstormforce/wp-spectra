@@ -1,5 +1,5 @@
 import { useDeviceType } from '@Controls/getPreviewType';
-export const limitMax = ( unitVal, props, isResponsiveMinMax ) => {	
+export const limitMax = ( unitVal, props, isResponsiveMinMax ) => {
 	let max = 0;
 	if( isResponsiveMinMax ){
 		const deviceType = useDeviceType(); // eslint-disable-line react-hooks/rules-of-hooks
@@ -8,11 +8,11 @@ export const limitMax = ( unitVal, props, isResponsiveMinMax ) => {
 	} else {
 		max = ( unitVal && props.limitMax ) ? props.limitMax[unitVal] : props.max;
 	}
-	
+
 	return max;
 };
 
-export const limitMin = ( unitVal, props, isResponsiveMinMax ) => {	
+export const limitMin = ( unitVal, props, isResponsiveMinMax ) => {
 	let min = 0;
 	if( isResponsiveMinMax ){
 		const deviceType = useDeviceType(); // eslint-disable-line react-hooks/rules-of-hooks
