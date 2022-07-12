@@ -1,4 +1,8 @@
 import { __ } from '@wordpress/i18n';
+
+import { getBorderAttributes } from '@Controls/generateAttributes';
+const btnBorderAttributes = getBorderAttributes( 'btn' );
+const paginationMasonryBorderAttributes = getBorderAttributes( 'paginationMasonry' );
 const attributes = {
 	blockName                    : {
 		type    : 'string',
@@ -1250,6 +1254,8 @@ const attributes = {
 			styleType: 'cta-letter-spacing-type'
 		}
 	},
+	...btnBorderAttributes,
+	...paginationMasonryBorderAttributes
 }
 
 export default attributes;
