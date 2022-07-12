@@ -394,6 +394,7 @@ function styling( props ) {
 				 iconimgBorderRadiusFallback,
 				 iconimgBorderRadiusUnit
 			 ),
+			 'box-sizing' : `${boxSizingImage}`,
 		 },
 		 // CTA style
 		 ' div.uagb-ifb-cta a.uagb-infobox-cta-link.uagb-infobox-cta-link': {
@@ -528,9 +529,6 @@ function styling( props ) {
 		 // editor css is causing issue  thaat why i used important
 		 '.uagb-infobox__content-wrap .uagb-ifb-content svg': {
 			 'box-sizing' : `${boxSizingIcon}`,
-		 },
-		 '.uagb-infobox__content-wrap .uagb-ifb-content img': {
-			 'box-sizing' : `${boxSizingImage}`,
 		 },
 	 };
 
