@@ -1,9 +1,12 @@
+import { select, dispatch } from '@wordpress/data';
+import { parse, serialize, createBlock } from '@wordpress/blocks';
+
 // Auto Block Recovery.
 const autoRecoverBlocks = () => {
 
 	// Function to Create the Recovered Block.
 	const generateRecoveredBlock = ( { name, attributes, innerBlocks } ) => (
-		wp.blocks.createBlock( name, attributes, innerBlocks )
+		createBlock( name, attributes, innerBlocks )
 	);
 
 	// Function to Recover Invalid Blocks.
@@ -39,7 +42,7 @@ const autoRecoverBlocks = () => {
 
 			if ( block.name === 'core/block' ) {
 				const { attributes: { ref } } = block;
-				const parsedBlocks = wp.blocks.parse( wp.data.select( 'core' ).getEntityRecords(
+				const parsedBlocks = parse( select( 'core' ).getEntityRecords(
 					'postType',
 					'wp_block',
 					{ include: [ ref ] }
@@ -80,21 +83,21 @@ const autoRecoverBlocks = () => {
 	);
 
 	// Variable to Store Recovered Blocks.
-	const recoveredBlocks = getRecoveredBlocks( wp.data.select( 'core/editor' ).getEditorBlocks() );
+	const recoveredBlocks = getRecoveredBlocks( select( 'core/editor' ).getEditorBlocks() );
 
 	// Loop To Replace Invalid Blocks with Recovered Blocks.
 	recoveredBlocks.forEach( ( block ) => {
 		if ( block.isReusable && block.ref ) {
-			wp.data.dispatch( 'core' ).editEntityRecord(
+			dispatch( 'core' ).editEntityRecord(
 				'postType',
 				'wp_block',
 				block.ref,
-				{ content: wp.blocks.serialize( block.blocks ) }
+				{ content: serialize( block.blocks ) }
 			).then();
 		}
 
 		if ( block.recovered && block.replacedClientId ) {
-			wp.data.dispatch( 'core/block-editor' ).replaceBlock( block.replacedClientId, block );
+			dispatch( 'core/block-editor' ).replaceBlock( block.replacedClientId, block );
 		}
 	} );
 };
