@@ -193,7 +193,6 @@ const Render = ( props ) => {
 				`uagb-block-${ block_id }`,
 				`uagb-editor-preview-mode-${ deviceType.toLowerCase() }`,
 				'uagb-infobox__content-wrap',
-				'uagb-infobox__overall-wrap',
 				ctaType === 'all' ? ' uagb-infobox_cta-type-all' : '',
 				...InfoBoxPositionClasses( attributes )
 			) }
