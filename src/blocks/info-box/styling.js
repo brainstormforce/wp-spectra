@@ -218,17 +218,17 @@ function styling( props ) {
 		 iconBackgroundHoverColor,
 		 iconBorderWidth,
 		 
-		// margin
+		// padding
 		blockTopPadding,
-		blockRightMargin,
+		blockRightPadding,
 		blockLeftPadding,
 		blockBottomPadding,
 		blockTopPaddingTablet,
-		blockRightMarginTablet,
+		blockRightPaddingTablet,
 		blockLeftPaddingTablet,
 		blockBottomPaddingTablet,
 		blockTopPaddingMobile,
-		blockRightMarginMobile,
+		blockRightPaddingMobile,
 		blockLeftPaddingMobile,
 		blockBottomPaddingMobile,
 		blockPaddingUnit,
@@ -1127,7 +1127,7 @@ function styling( props ) {
 			blockPaddingUnit
 		),
 		'padding-right': generateCSSUnit(
-			blockRightMargin,
+			blockRightPadding,
 			blockPaddingUnit
 		),
 		'padding-bottom': generateCSSUnit(
@@ -1145,7 +1145,7 @@ function styling( props ) {
 			blockPaddingUnitTablet
 		),
 		'padding-right': generateCSSUnit(
-			blockRightMarginTablet,
+			blockRightPaddingTablet,
 			blockPaddingUnitTablet
 		),
 		'padding-bottom': generateCSSUnit(
@@ -1163,7 +1163,7 @@ function styling( props ) {
 			blockPaddingUnitMobile
 		),
 		'padding-right': generateCSSUnit(
-			blockRightMarginMobile,
+			blockRightPaddingMobile,
 			blockPaddingUnitMobile
 		),
 		'padding-bottom': generateCSSUnit(

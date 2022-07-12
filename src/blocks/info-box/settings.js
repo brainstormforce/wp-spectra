@@ -282,7 +282,7 @@ const Settings = ( props ) => {
 		iconBackgroundHoverColor,
 		iconBorderWidth,
 		
-		// margin
+		// padding
 		blockTopPadding,
 		blockRightPadding,
 		blockLeftPadding,
