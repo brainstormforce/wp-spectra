@@ -219,21 +219,21 @@ function styling( props ) {
 		 iconBorderWidth,
 		 
 		// margin
-		blockTopMargin,
+		blockTopPadding,
 		blockRightMargin,
-		blockLeftMargin,
-		blockBottomMargin,
-		blockTopMarginTablet,
+		blockLeftPadding,
+		blockBottomPadding,
+		blockTopPaddingTablet,
 		blockRightMarginTablet,
-		blockLeftMarginTablet,
-		blockBottomMarginTablet,
-		blockTopMarginMobile,
+		blockLeftPaddingTablet,
+		blockBottomPaddingTablet,
+		blockTopPaddingMobile,
 		blockRightMarginMobile,
-		blockLeftMarginMobile,
-		blockBottomMarginMobile,
-		blockMarginUnit,
-		blockMarginUnitTablet,
-		blockMarginUnitMobile,
+		blockLeftPaddingMobile,
+		blockBottomPaddingMobile,
+		blockPaddingUnit,
+		blockPaddingUnitTablet,
+		blockPaddingUnitMobile,
 	 } = props.attributes;
 
 	 const blockName = props.name.replace( 'uagb/', '' );
@@ -1123,56 +1123,56 @@ function styling( props ) {
 
 	selectors[ '.uagb-infobox__content-wrap' ] = {
 		'padding-top': generateCSSUnit(
-			blockTopMargin,
-			blockMarginUnit
+			blockTopPadding,
+			blockPaddingUnit
 		),
 		'padding-right': generateCSSUnit(
 			blockRightMargin,
-			blockMarginUnit
+			blockPaddingUnit
 		),
 		'padding-bottom': generateCSSUnit(
-			blockBottomMargin,
-			blockMarginUnit
+			blockBottomPadding,
+			blockPaddingUnit
 		),
 		'padding-left': generateCSSUnit(
-			blockLeftMargin,
-			blockMarginUnit
+			blockLeftPadding,
+			blockPaddingUnit
 		),
 	};
 	tabletSelectors[ '.uagb-infobox__content-wrap' ] = {
 		'padding-top': generateCSSUnit(
-			blockTopMarginTablet,
-			blockMarginUnitTablet
+			blockTopPaddingTablet,
+			blockPaddingUnitTablet
 		),
 		'padding-right': generateCSSUnit(
 			blockRightMarginTablet,
-			blockMarginUnitTablet
+			blockPaddingUnitTablet
 		),
 		'padding-bottom': generateCSSUnit(
-			blockBottomMarginTablet,
-			blockMarginUnitTablet
+			blockBottomPaddingTablet,
+			blockPaddingUnitTablet
 		),
 		'padding-left': generateCSSUnit(
-			blockLeftMarginTablet,
-			blockMarginUnitTablet
+			blockLeftPaddingTablet,
+			blockPaddingUnitTablet
 		),
 	};
 	mobileSelectors[ '.uagb-infobox__content-wrap' ] = {
 		'padding-top': generateCSSUnit(
-			blockTopMarginMobile,
-			blockMarginUnitMobile
+			blockTopPaddingMobile,
+			blockPaddingUnitMobile
 		),
 		'padding-right': generateCSSUnit(
 			blockRightMarginMobile,
-			blockMarginUnitMobile
+			blockPaddingUnitMobile
 		),
 		'padding-bottom': generateCSSUnit(
-			blockBottomMarginMobile,
-			blockMarginUnitMobile
+			blockBottomPaddingMobile,
+			blockPaddingUnitMobile
 		),
 		'padding-left': generateCSSUnit(
-			blockLeftMarginMobile,
-			blockMarginUnitMobile
+			blockLeftPaddingMobile,
+			blockPaddingUnitMobile
 		),
 	};
 
