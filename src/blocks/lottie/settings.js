@@ -356,13 +356,13 @@ const Settings = ( props ) => {
 
 	if ( validJsonPath === 'invalid' ) {
 		const lottie_url = (
-			<span>
+			<span className="uagb-lottie-instructions">
 				{ ' ' }
 				{ __(
 					'Allows you to add fancy animation i.e Lottie to your website. You can see sample Lottie animations',
 					'ultimate-addons-for-gutenberg'
 				) }
-				<a href="https://lottiefiles.com/" target="__blank">
+				<a className="uagb-lottie-instructions__lottie-url" href="https://lottiefiles.com/" target="__blank">
 					{ ' ' }
 					{ __( 'here on this' ) }{ ' ' }
 				</a>
