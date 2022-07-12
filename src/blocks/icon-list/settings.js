@@ -427,6 +427,7 @@ const Settings = ( props ) => {
 							label: 'innerGapMobile',
 						},
 					} }
+					min={ -100 }
 					max={ 100 }
 					unit={ {
 						value: innerGapType,

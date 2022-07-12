@@ -238,6 +238,7 @@ function styling( props ) {
 	 const imageWidthFallbackMobile = isNaN( imageWidthMobile ) ? imageWidthFallbackTablet : imageWidthMobile;
 
 	 const ctaBorderCSS = generateBorderCSS( props.attributes, 'btn' );
+
 	 const ctaBorderCSSTablet = generateBorderCSS( props.attributes, 'btn', 'tablet' );
 	 const ctaBorderCSSMobile = generateBorderCSS( props.attributes, 'btn', 'mobile' );
 
@@ -383,7 +384,6 @@ function styling( props ) {
 			 'font-family': ctaFontFamily,
 			 'font-weight': ctaFontWeight,
 			 'font-style': ctaFontStyle,
-			 'color': ctaLinkColor,
 			 'text-decoration': ctaDecoration,
 			 'text-transform': ctaTransform,
 			 'letter-spacing': generateCSSUnit( ctaLetterSpacing, ctaLetterSpacingType ),

@@ -631,6 +631,7 @@ const Settings = ( props ) => {
 								label: 'iconSpaceMobile',
 							},
 						} }
+						min={ -200 }
 						max={ 200 }
 						displayUnit={ false }
 						setAttributes={ setAttributes }
