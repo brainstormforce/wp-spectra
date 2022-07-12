@@ -227,6 +227,7 @@ const attributes = {
 	},
 	iconHoverColor: {
 		type: 'string',
+		default: '',
 		UAGCopyPaste: {
 			styleType: 'icon-hover-color'
 		}
