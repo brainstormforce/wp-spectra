@@ -181,7 +181,7 @@ export const migrateBorderAttributes = ( prefix, borderWidth, borderRadius, colo
 	}
 
 	if( borderRadius.value ){
-		
+
 		if( undefined === attributes[ prefix + 'BorderTopLeftRadius' ] ) {
 			attributes[ prefix + 'BorderTopLeftRadius' ] = borderRadius.value;
 		}
