@@ -985,6 +985,7 @@ const Settings = ( props ) => {
 									label: 'ctaIconSpaceMobile',
 								},
 							} }
+							min={ -50 }
 							max={ 50 }
 							unit={ {
 								value: ctaIconSpaceType,

@@ -1170,6 +1170,7 @@ const Settings = ( props ) => {
 							label: 'gapBtwIconQUestionMobile',
 						},
 					} }
+					min={ -100 }
 					max={ 100 }
 					displayUnit = { false }
 					setAttributes={ setAttributes }
