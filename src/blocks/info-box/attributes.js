@@ -1247,7 +1247,7 @@
 		default: 'px',
 	},
 	
-	// margin
+	// padding
 	blockTopPadding : {
 		type: 'number',
 		isUAGStyle: true,
