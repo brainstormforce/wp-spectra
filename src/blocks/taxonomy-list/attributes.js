@@ -1,3 +1,18 @@
+import { getBorderAttributes } from '@Controls/generateAttributes';
+const overallDefaults = {
+	borderStyle: 'solid',
+	borderTopWidth: 1,
+	borderRightWidth: 1,
+	borderBottomWidth: 1,
+	borderLeftWidth: 1,
+	borderTopLeftRadius: 3,
+	borderTopRightRadius: 3,
+	borderBottomLeftRadius: 3,
+	borderBottomRightRadius: 3,
+	borderColor                : '#E0E0E0',
+	borderHoverColor           : '#E0E0E0',
+};
+const overallBorderAttributes = getBorderAttributes( 'overall', overallDefaults );
 const attributes = {   // eslint-disable-line no-unused-vars
 	block_id                   : {
 		type : 'string',
@@ -309,42 +324,6 @@ const attributes = {   // eslint-disable-line no-unused-vars
 		},
 	},
 
-	// Grid Border attributes.
-	borderColor                : {
-		type    : 'string',
-		default : '#E0E0E0',
-		UAGCopyPaste: {
-			styleType: 'overall-border-color'
-		},
-	},
-	borderThickness            : {
-		type    : 'number',
-		default : 1,
-		UAGCopyPaste: {
-			styleType: 'overall-border-thickness'
-		},
-	},
-	borderRadius               : {
-		type    : 'number',
-		default : 3,
-		UAGCopyPaste: {
-			styleType: 'overall-border-radius'
-		},
-	},
-	borderStyle                : {
-		type    : 'string',
-		default : 'solid',
-		UAGCopyPaste: {
-			styleType: 'overall-border-style'
-		},
-	},
-	borderHoverColor           : {
-		type    : 'string',
-		default : '#E0E0E0',
-		UAGCopyPaste: {
-			styleType: 'overall-border-hover-color'
-		},
-	},
 	// Typograpghy attributes.
 	titleFontSize              : {
 		type : 'number',
@@ -783,5 +762,6 @@ const attributes = {   // eslint-disable-line no-unused-vars
 			styleType: 'desc-letter-spacing-type'
 		}
 	},
+	...overallBorderAttributes
 }
 export default attributes;
