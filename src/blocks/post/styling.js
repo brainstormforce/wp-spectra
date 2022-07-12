@@ -13,10 +13,8 @@ import generateBorderCSS from '@Controls/generateBorderCSS';
 function styling( props ) {
 	const {
 		blockName,
-
 		btnBorderHColor,
 		align,
-
 		titleColor,
 		titleFontSize,
 		titleFontSizeType,
@@ -206,6 +204,19 @@ function styling( props ) {
 		ctaLetterSpacingTablet,
 		ctaLetterSpacingMobile,
 		ctaLetterSpacingType,
+
+		boxShadowColor,
+		boxShadowHOffset,
+		boxShadowVOffset,
+		boxShadowBlur,
+		boxShadowSpread,
+		boxShadowPosition,
+		boxShadowColorHover,
+		boxShadowHOffsetHover,
+		boxShadowVOffsetHover,
+		boxShadowBlurHover,
+		boxShadowSpreadHover,
+		boxShadowPositionHover,
 	} = props.attributes;
 
 	const overlayOpacityFallback = getFallbackNumber( overlayOpacity, 'overlayOpacity', blockName );
@@ -226,10 +237,14 @@ function styling( props ) {
 
 	const rowGapTabletFallback = isNaN( rowGapTablet ) ? rowGapFallback : rowGapTablet;
 	const rowGapMobileFallback = isNaN( rowGapMobile ) ? rowGapTabletFallback : rowGapMobile;
-	
+
 	const borderCSS = generateBorderCSS( props.attributes, 'btn' );
 	const borderCSSTablet = generateBorderCSS( props.attributes, 'btn', 'tablet' );
 	const borderCSSMobile = generateBorderCSS( props.attributes, 'btn', 'mobile' );
+
+	const overallBorderCSS = generateBorderCSS( props.attributes, 'overall' );
+	const overallBorderCSSTablet = generateBorderCSS( props.attributes, 'overall', 'tablet' );
+	const overallBorderCSSMobile = generateBorderCSS( props.attributes, 'overall', 'mobile' );
 
 	const paginationMasonryBorderCSS = generateBorderCSS( props.attributes, 'paginationMasonry' );
 	const paginationMasonryBorderCSSTablet = generateBorderCSS( props.attributes, 'paginationMasonry', 'tablet' );
@@ -237,6 +252,18 @@ function styling( props ) {
 
 	let mobileSelectors = {};
 	let tabletSelectors = {};
+
+	let boxShadowPositionCSS = boxShadowPosition;
+
+	if ( 'outset' === boxShadowPosition ) {
+		boxShadowPositionCSS = '';
+	}
+
+	let boxShadowPositionCSSHover = boxShadowPositionHover;
+
+	if ( 'outset' === boxShadowPositionHover ) {
+		boxShadowPositionCSSHover = '';
+	}
 
 	const selectors = {
 		'.uagb-post__items': {
@@ -251,6 +278,11 @@ function styling( props ) {
 		' .uagb-post__inner-wrap': {
 			'background': bgColor,
 			'text-align': align,
+			'box-shadow':
+				generateCSSUnit( boxShadowHOffset, 'px' ) + ' ' + generateCSSUnit( boxShadowVOffset, 'px' ) +	' ' +
+				generateCSSUnit( boxShadowBlur, 'px' ) + ' ' +	generateCSSUnit( boxShadowSpread, 'px' ) + ' ' +
+				boxShadowColor + ' ' +	boxShadowPositionCSS,
+			...overallBorderCSS
 		},
 		' .uagb-post__inner-wrap .uagb-post__text:not(.highlighted)': {
 			'margin-left': generateCSSUnit( paddingLeft, contentPaddingUnit ),
@@ -1000,6 +1032,7 @@ function styling( props ) {
 			paddingRightTablet,
 			tabletPaddingUnit
 		),
+		...overallBorderCSSTablet
 	};
 	mobileSelectors[ ' .uagb-post__inner-wrap' ] = {
 		'padding-top': generateCSSUnit( paddingTopMobile, mobilePaddingUnit ),
@@ -1012,6 +1045,7 @@ function styling( props ) {
 			paddingRightMobile,
 			mobilePaddingUnit
 		),
+		...overallBorderCSSMobile
 	};
 	tabletSelectors[ ' .uagb-post__cta .uagb-text-link' ] = borderCSSTablet;
 	mobileSelectors[ ' .uagb-post__cta .uagb-text-link' ] = borderCSSMobile;

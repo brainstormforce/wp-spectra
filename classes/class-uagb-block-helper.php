@@ -338,6 +338,8 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				( isset( $attr['borderHColor'] ) ? $attr['borderHColor'] : '' )
 			);
 
+			$overall_border_css        = self::uag_generate_border_css( $attr, 'overall' );
+
 			$paddingTop    = isset( $attr['paddingTop'] ) ? $attr['paddingTop'] : $attr['contentPadding'];
 			$paddingBottom = isset( $attr['paddingBottom'] ) ? $attr['paddingBottom'] : $attr['contentPadding'];
 			$paddingLeft   = isset( $attr['paddingLeft'] ) ? $attr['paddingLeft'] : $attr['contentPadding'];
@@ -348,6 +350,17 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 			$paddingBtnLeft   = isset( $attr['paddingBtnLeft'] ) ? $attr['paddingBtnLeft'] : $attr['btnHPadding'];
 			$paddingBtnRight  = isset( $attr['paddingBtnRight'] ) ? $attr['paddingBtnRight'] : $attr['btnHPadding'];
 
+			$box_shadow_position_css = $attr['boxShadowPosition'];
+
+			if ( 'outset' === $attr['boxShadowPosition'] ) {
+				$box_shadow_position_css = '';
+			}
+
+			$box_shadow_position_css_hover = $attr['boxShadowPositionHover'];
+
+			if ( 'outset' === $attr['boxShadowPositionHover'] ) {
+				$box_shadow_position_css_hover = '';
+			}
 			$selectors = array(
 				'.uagb-post__items'         => array(
 					'margin-right' => UAGB_Helper::get_css_value( (int) ( -$row_gap_fallback / 2 ), $attr['rowGapUnit'] ),
@@ -358,9 +371,22 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					'padding-left'  => UAGB_Helper::get_css_value( (int) ( $row_gap_fallback / 2 ), $attr['rowGapUnit'] ),
 					'margin-bottom' => UAGB_Helper::get_css_value( ( $column_gap_fallback ), $attr['columnGapUnit'] ),
 				),
-				' .uagb-post__inner-wrap'   => array(
-					'background' => $attr['bgColor'],
-					'text-align' => $attr['align'],
+				' .uagb-post__inner-wrap'   => array_merge( array(
+						'background' => $attr['bgColor'],
+						'text-align' => $attr['align'],
+						'box-shadow'     =>
+							UAGB_Helper::get_css_value( $attr['boxShadowHOffset'], 'px' ) .
+							' ' .
+							UAGB_Helper::get_css_value( $attr['boxShadowVOffset'], 'px' ) .
+							' ' .
+							UAGB_Helper::get_css_value( $attr['boxShadowBlur'], 'px' ) .
+							' ' .
+							UAGB_Helper::get_css_value( $attr['boxShadowSpread'], 'px' ) .
+							' ' .
+							$attr['boxShadowColor'] .
+							' ' .
+							$box_shadow_position_css,
+					), $overall_border_css
 				),
 				' .uagb-post__inner-wrap .uagb-post__text:not(.highlighted)' => array(
 					'margin-left'  => UAGB_Helper::get_css_value( $paddingLeft, $attr['contentPaddingUnit'] ),
@@ -455,6 +481,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 			$row_gap_fallback    = self::get_fallback_number( $attr['rowGap'], 'rowGap', $attr['blockName'] );
 
 			$border_css_mobile = self::uag_generate_border_css( $attr, 'btn', 'mobile' );
+			$overall_border_css_mobile = self::uag_generate_border_css( $attr, 'overall', 'mobile' );
 
 			$paddingTopMobile    = isset( $attr['paddingTopMobile'] ) ? $attr['paddingTopMobile'] : $attr['contentPaddingMobile'];
 			$paddingBottomMobile = isset( $attr['paddingBottomMobile'] ) ? $attr['paddingBottomMobile'] : $attr['contentPaddingMobile'];
@@ -500,11 +527,12 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				' .uagb-post__inner-wrap .uagb-post__excerpt' => array(
 					'margin-bottom' => UAGB_Helper::get_css_value( $excerptBottomSpaceMobile, $attr['excerptBottomSpaceUnit'] ),
 				),
-				' .uagb-post__inner-wrap'   => array(
+				' .uagb-post__inner-wrap'   => array_merge( array(
 					'padding-top'    => UAGB_Helper::get_css_value( $paddingTopMobile, $attr['mobilePaddingUnit'] ),
 					'padding-bottom' => UAGB_Helper::get_css_value( $paddingBottomMobile, $attr['mobilePaddingUnit'] ),
 					'padding-left'   => UAGB_Helper::get_css_value( $paddingLeftMobile, $attr['mobilePaddingUnit'] ),
 					'padding-right'  => UAGB_Helper::get_css_value( $paddingRightMobile, $attr['mobilePaddingUnit'] ),
+				), $overall_border_css_mobile
 				),
 				' .uagb-post__cta a'        => array(
 					'padding-top'    => UAGB_Helper::get_css_value( $paddingBtnTopMobile, $attr['mobilePaddingBtnUnit'] ),
@@ -529,6 +557,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 			$row_gap_fallback    = self::get_fallback_number( $attr['rowGap'], 'rowGap', $attr['blockName'] );
 
 			$border_css_tablet = self::uag_generate_border_css( $attr, 'btn', 'tablet' );
+			$overall_border_css_tablet = self::uag_generate_border_css( $attr, 'overall', 'tablet' );
 
 			$paddingBtnTopTablet    = isset( $attr['paddingBtnTopTablet'] ) ? $attr['paddingBtnTopTablet'] : $attr['btnVPadding'];
 			$paddingBtnBottomTablet = isset( $attr['paddingBtnBottomTablet'] ) ? $attr['paddingBtnBottomTablet'] : $attr['btnVPadding'];
@@ -569,11 +598,12 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				' .uagb-post__inner-wrap .uagb-post__excerpt' => array(
 					'margin-bottom' => UAGB_Helper::get_css_value( $excerptBottomSpaceTablet, $attr['excerptBottomSpaceUnit'] ),
 				),
-				' .uagb-post__inner-wrap'   => array(
-					'padding-top'    => UAGB_Helper::get_css_value( $attr['paddingTopTablet'], $attr['tabletPaddingUnit'] ),
-					'padding-bottom' => UAGB_Helper::get_css_value( $attr['paddingBottomTablet'], $attr['tabletPaddingUnit'] ),
-					'padding-left'   => UAGB_Helper::get_css_value( $attr['paddingLeftTablet'], $attr['tabletPaddingUnit'] ),
-					'padding-right'  => UAGB_Helper::get_css_value( $attr['paddingRightTablet'], $attr['tabletPaddingUnit'] ),
+				' .uagb-post__inner-wrap'   => array_merge( array(
+						'padding-top'    => UAGB_Helper::get_css_value( $attr['paddingTopTablet'], $attr['tabletPaddingUnit'] ),
+						'padding-bottom' => UAGB_Helper::get_css_value( $attr['paddingBottomTablet'], $attr['tabletPaddingUnit'] ),
+						'padding-left'   => UAGB_Helper::get_css_value( $attr['paddingLeftTablet'], $attr['tabletPaddingUnit'] ),
+						'padding-right'  => UAGB_Helper::get_css_value( $attr['paddingRightTablet'], $attr['tabletPaddingUnit'] ),
+					), $overall_border_css_tablet
 				),
 				' .uagb-post__cta a'        => array(
 					'padding-top'    => UAGB_Helper::get_css_value( $paddingBtnTopTablet, $attr['tabletPaddingBtnUnit'] ),
