@@ -178,6 +178,7 @@ export default function save( props ) {
 			className={ classnames(
 				`uagb-block-${ block_id }`,
 				'uagb-infobox__content-wrap',
+				'uagb-infobox__overall-wrap',
 				ctaType === 'all' ? ' uagb-infobox_cta-type-all' : '',
 				...InfoBoxPositionClasses( props.attributes )
 			) }

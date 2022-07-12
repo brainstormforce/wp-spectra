@@ -280,7 +280,25 @@ const Settings = ( props ) => {
 		iconShape,
 		iconBackgroundColor,
 		iconBackgroundHoverColor,
-		iconBorderWidth
+		iconBorderWidth,
+		
+		// margin
+		blockTopMargin,
+		blockRightMargin,
+		blockLeftMargin,
+		blockBottomMargin,
+		blockTopMarginTablet,
+		blockRightMarginTablet,
+		blockLeftMarginTablet,
+		blockBottomMarginTablet,
+		blockTopMarginMobile,
+		blockRightMarginMobile,
+		blockLeftMarginMobile,
+		blockBottomMarginMobile,
+		blockMarginUnit,
+		blockMarginUnitTablet,
+		blockMarginUnitMobile,
+		blockMarginLink,
 	} = attributes;
 
 	/*
@@ -2461,6 +2479,90 @@ const Settings = ( props ) => {
 			</>
 		);
 	};
+
+	const spacingStylePanel = () => {
+		return (
+			<UAGAdvancedPanelBody
+				title={ __( 'Spacing', 'ultimate-addons-for-gutenberg' ) }
+				initialOpen={ false }
+			>
+				<SpacingControl
+					label={ __(
+						'Margin',
+						'ultimate-addons-for-gutenberg'
+					) }
+					valueTop={ {
+						value: blockTopMargin,
+						label: 'blockTopMargin',
+					} }
+					valueRight={ {
+						value: blockRightMargin,
+						label: 'blockRightMargin',
+					} }
+					valueBottom={ {
+						value: blockBottomMargin,
+						label: 'blockBottomMargin',
+					} }
+					valueLeft={ {
+						value: blockLeftMargin,
+						label: 'blockLeftMargin',
+					} }
+					valueTopTablet={ {
+						value: blockTopMarginTablet,
+						label: 'blockTopMarginTablet',
+					} }
+					valueRightTablet={ {
+						value: blockRightMarginTablet,
+						label: 'blockRightMarginTablet',
+					} }
+					valueBottomTablet={ {
+						value: blockBottomMarginTablet,
+						label: 'blockBottomMarginTablet',
+					} }
+					valueLeftTablet={ {
+						value: blockLeftMarginTablet,
+						label: 'blockLeftMarginTablet',
+					} }
+					valueTopMobile={ {
+						value: blockTopMarginMobile,
+						label: 'blockTopMarginMobile',
+					} }
+					valueRightMobile={ {
+						value: blockRightMarginMobile,
+						label: 'blockRightMarginMobile',
+					} }
+					valueBottomMobile={ {
+						value: blockBottomMarginMobile,
+						label: 'blockBottomMarginMobile',
+					} }
+					valueLeftMobile={ {
+						value: blockLeftMarginMobile,
+						label: 'blockLeftMarginMobile',
+					} }
+					unit={ {
+						value: blockMarginUnit,
+						label: 'blockMarginUnit',
+					} }
+					mUnit={ {
+						value: blockMarginUnitMobile,
+						label: 'blockMarginUnitMobile',
+					} }
+					tUnit={ {
+						value: blockMarginUnitTablet,
+						label: 'blockMarginUnitTablet',
+					} }
+					deviceType={ deviceType }
+					attributes={ attributes }
+					setAttributes={ setAttributes }
+					link={ {
+						value: blockMarginLink,
+						label: 'blockMarginLink',
+					} }
+				/>
+			</UAGAdvancedPanelBody>
+		);
+	};
+
 	const presetSettings = () => {
 		return <UAGAdvancedPanelBody
 					title={ __( 'Presets', 'ultimate-addons-for-gutenberg' ) }
@@ -2487,6 +2589,7 @@ const Settings = ( props ) => {
 					</InspectorTab>
 					<InspectorTab { ...UAGTabs.style }>
 						{ styleSettings() }
+						{ spacingStylePanel() }
 					</InspectorTab>
 					<InspectorTab
 						{ ...UAGTabs.advance }

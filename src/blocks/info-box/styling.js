@@ -216,7 +216,24 @@ function styling( props ) {
 		 iconView,
 		 iconBackgroundColor,
 		 iconBackgroundHoverColor,
-		 iconBorderWidth
+		 iconBorderWidth,
+		 
+		// margin
+		blockTopMargin,
+		blockRightMargin,
+		blockLeftMargin,
+		blockBottomMargin,
+		blockTopMarginTablet,
+		blockRightMarginTablet,
+		blockLeftMarginTablet,
+		blockBottomMarginTablet,
+		blockTopMarginMobile,
+		blockRightMarginMobile,
+		blockLeftMarginMobile,
+		blockBottomMarginMobile,
+		blockMarginUnit,
+		blockMarginUnitTablet,
+		blockMarginUnitMobile,
 	 } = props.attributes;
 
 	 const blockName = props.name.replace( 'uagb/', '' );
