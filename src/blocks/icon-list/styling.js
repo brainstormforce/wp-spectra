@@ -381,45 +381,41 @@ function styling( props ) {
 		selectors[ ' .wp-block-uagb-icon-list-child ' ] = {
 			'flex-direction': 'row-reverse',
 		};
-	} else {
-
-		if ( 'before' === iconPlacement && ! hideLabel ) {
-			selectors[
-				' .uagb-icon-list__source-wrap'
-			] = {
-				'margin-right': generateCSSUnit( innerGapFallback, innerGapType ),
-			};
-			mobileSelectors[
-				' .uagb-icon-list__source-wrap'
-			] = {
-				'margin-right': generateCSSUnit( innerGapMobileFallback, innerGapType ),
-			};
-			tabletSelectors[
-				' .uagb-icon-list__source-wrap'
-			] = {
-				'margin-right': generateCSSUnit( innerGapTabletFallback, innerGapType ),
-			};
-		} else if ( 'after' === iconPlacement && ! hideLabel ) {
-			selectors[
-				' .uagb-icon-list__source-wrap'
-			] = {
-				'margin-left': generateCSSUnit( innerGapFallback, innerGapType ),
-			};
-			mobileSelectors[
-				' .uagb-icon-list__source-wrap'
-			] = {
-				'margin-left': generateCSSUnit( innerGapMobileFallback, innerGapType ),
-			};
-			tabletSelectors[
-				' .uagb-icon-list__source-wrap'
-			] = {
-				'margin-left': generateCSSUnit( innerGapTabletFallback, innerGapType ),
-			};
-			selectors[ ' .wp-block-uagb-icon-list-child ' ] = {
-				'flex-direction': 'row-reverse',
-			};
-		}
-		
+	} else if ( 'before' === iconPlacement && ! hideLabel ) {
+		selectors[
+			' .uagb-icon-list__source-wrap'
+		] = {
+			'margin-right': generateCSSUnit( innerGapFallback, innerGapType ),
+		};
+		mobileSelectors[
+			' .uagb-icon-list__source-wrap'
+		] = {
+			'margin-right': generateCSSUnit( innerGapMobileFallback, innerGapType ),
+		};
+		tabletSelectors[
+			' .uagb-icon-list__source-wrap'
+		] = {
+			'margin-right': generateCSSUnit( innerGapTabletFallback, innerGapType ),
+		};
+	} else if ( 'after' === iconPlacement && ! hideLabel ) {
+		selectors[
+			' .uagb-icon-list__source-wrap'
+		] = {
+			'margin-left': generateCSSUnit( innerGapFallback, innerGapType ),
+		};
+		mobileSelectors[
+			' .uagb-icon-list__source-wrap'
+		] = {
+			'margin-left': generateCSSUnit( innerGapMobileFallback, innerGapType ),
+		};
+		tabletSelectors[
+			' .uagb-icon-list__source-wrap'
+		] = {
+			'margin-left': generateCSSUnit( innerGapTabletFallback, innerGapType ),
+		};
+		selectors[ ' .wp-block-uagb-icon-list-child ' ] = {
+			'flex-direction': 'row-reverse',
+		};
 	}
 
 	selectors[ ' .wp-block-uagb-icon-list-child .uagb-icon-list__label' ] = {
