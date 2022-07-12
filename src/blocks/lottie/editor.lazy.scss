@@ -30,3 +30,9 @@
 		width: auto;
 	}
 }
+
+// In the zip, the pointer events were set to 'none' and so the lottie website link is not accessible.
+// Hence to fix the issue which is specific to the final build/zip, we use '!important'.
+.uagb-lottie-instructions__lottie-url {
+	pointer-events: auto !important;
+}
