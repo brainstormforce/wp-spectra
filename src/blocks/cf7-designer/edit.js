@@ -5,8 +5,6 @@ import apiFetch from '@wordpress/api-fetch';
 import { useDeviceType } from '@Controls/getPreviewType';
 import addBlockEditorDynamicStyles from '@Controls/addBlockEditorDynamicStyles';
 
-import {migrateBorderAttributes} from '@Controls/generateAttributes';
-
 const Settings = lazy( () =>
 	import( /* webpackChunkName: "chunks/cf7-styler/settings" */ './settings' )
 );
