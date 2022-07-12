@@ -458,6 +458,7 @@ const Settings = ( props ) => {
 							label: 'secondCtaIconSpaceMobile',
 						},
 					} }
+					min={ -50 }
 					max={ 50 }
 					displayUnit={ false }
 					setAttributes={ setAttributes }
@@ -884,6 +885,7 @@ const Settings = ( props ) => {
 												label: 'ctaIconSpaceMobile',
 											},
 										} }
+										min={ -50 }
 										max={ 50 }
 										displayUnit={ false }
 										setAttributes={ setAttributes }
