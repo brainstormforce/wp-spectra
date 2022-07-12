@@ -30,6 +30,7 @@ const Settings = ( props ) => {
 	props = props.parentProps;
 	const { attributes, setAttributes, deviceType } = props;
 	const {
+		block_id,
 		widthDesktop,
 		widthTablet,
 		widthMobile,
@@ -978,6 +979,7 @@ const Settings = ( props ) => {
 								presetInputType = 'radioImage'
 							/>
 							<BoxShadowControl
+								blockId={ block_id }
 								setAttributes={ setAttributes }
 								label={ __(
 									'Box Shadow',
@@ -1033,6 +1035,7 @@ const Settings = ( props ) => {
 								presetInputType = 'radioImage'
 							/>
 							<BoxShadowControl
+								blockId={ block_id }
 								setAttributes={ setAttributes }
 								label={ __(
 									'Box Shadow',

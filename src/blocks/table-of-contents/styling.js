@@ -253,6 +253,7 @@ function styling( props ) {
 	selectors[ ' .uagb-toc__list-wrap' ] = {
 		'column-count': tColumnsDesktopFallback,
 		'overflow': 'hidden',
+		'text-align': align,
 	};
 
 	if ( customWidth ) {
@@ -340,6 +341,7 @@ function styling( props ) {
 		' .uagb-toc__list-wrap': {
 			'column-count': tColumnsTabletFallback,
 			'overflow': 'hidden',
+			'text-align': align,
 		},
 
 		' .uagb-toc__list-wrap > ol.uagb-toc__list > li:first-child': {
@@ -450,6 +452,7 @@ function styling( props ) {
 		' .uagb-toc__list-wrap': {
 			'column-count': tColumnsMobileFallback,
 			'overflow': 'hidden',
+			'text-align': align,
 		},
 		' .uagb-toc__list-wrap > ol.uagb-toc__list > li:first-child': {
 			'padding-top': generateCSSUnit(
