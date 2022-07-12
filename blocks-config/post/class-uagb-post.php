@@ -1000,6 +1000,25 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 					'excerptLetterSpacingTablet'    => array(
 						'type' => 'number',
 					),
+					'borderWidth'                   => array(
+						'type'    => 'number',
+						'default' => '',
+					),
+					'borderStyle'                   => array(
+						'type'    => 'string',
+						'default' => 'none',
+					),
+					'borderColor'                   => array(
+						'type'    => 'string',
+						'default' => '',
+					),
+					'borderHColor'                  => array(
+						'type' => 'string',
+					),
+					'borderRadius'                  => array(
+						'type'    => 'number',
+						'default' => '',
+					),
 				),
 			);
 		}
