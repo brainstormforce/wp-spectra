@@ -60,7 +60,7 @@ export default function save( props ) {
 				</a>
 			) }
 			{
-				'before' === iconPlacement && imageIconHtml && (
+				imageIconHtml && (
 					<span className="uagb-icon-list__source-wrap">
 						{ imageIconHtml }
 					</span>
@@ -73,13 +73,6 @@ export default function save( props ) {
 					className="uagb-icon-list__label"
 				/>
 			) }
-			{
-				'after' === iconPlacement && imageIconHtml && (
-					<span className="uagb-icon-list__source-wrap">
-						{ imageIconHtml }
-					</span>
-				)
-			}
 		</div>
 	);
 }

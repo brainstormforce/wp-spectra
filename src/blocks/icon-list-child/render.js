@@ -25,8 +25,7 @@ const Render = ( props ) => {
 		link,
 		target,
 		disableLink,
-		hideLabel,
-		iconPlacement
+		hideLabel
 	} = attributes;
 
 	let imageIconHtml = '';
@@ -66,7 +65,7 @@ const Render = ( props ) => {
 				</a>
 			) }
 			{
-				'before' === iconPlacement && imageIconHtml && (
+				imageIconHtml && (
 					<span className="uagb-icon-list__source-wrap">
 						{ imageIconHtml }
 					</span>
@@ -92,13 +91,6 @@ const Render = ( props ) => {
 					] }
 				/>
 			) }
-			{
-				'after' === iconPlacement && imageIconHtml && (
-					<span className="uagb-icon-list__source-wrap">
-						{ imageIconHtml }
-					</span>
-				)
-			}
 		</div>
 	);
 };

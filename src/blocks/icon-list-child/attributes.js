@@ -19,10 +19,6 @@ const attributes = {
 		type: 'boolean',
 		default: false,
 	},
-	iconPlacement: {
-		type: 'string',
-		default: 'before',
-	},
 	icon: {
 		type: 'string',
 		default: 'fab fa-arrow-circle-right',

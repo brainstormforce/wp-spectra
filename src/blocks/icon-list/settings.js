@@ -285,7 +285,7 @@ const Settings = ( props ) => {
 									label: 'After',
 								},
 							] }
-							showIcons={ false }
+							showIcons={ false }					
 						/>
 					</>
 				) }

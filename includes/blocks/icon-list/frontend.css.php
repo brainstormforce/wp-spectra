@@ -367,15 +367,30 @@ if ( 'right' === $attr['align'] && $attr['hideLabel'] ) {
 		'margin-right' => '0px',
 	);
 } else {
-	$selectors[' .uagb-icon-list__source-wrap']   = array(
-		'margin-right' => UAGB_Helper::get_css_value( $inner_gap_fallback, $attr['innerGapType'] ),
-	);
-	$m_selectors[' .uagb-icon-list__source-wrap'] = array(
-		'margin-right' => UAGB_Helper::get_css_value( $inner_gap_mobile_fallback, $attr['innerGapType'] ),
-	);
-	$t_selectors[' .uagb-icon-list__source-wrap'] = array(
-		'margin-right' => UAGB_Helper::get_css_value( $inner_gap_tablet_fallback, $attr['innerGapType'] ),
-	);
+	if ( 'before' === $attr['iconPlacement'] && ! $attr['hideLabel'] ) {
+		$selectors[' .uagb-icon-list__source-wrap']   = array(
+			'margin-right' => UAGB_Helper::get_css_value( $inner_gap_fallback, $attr['innerGapType'] ),
+		);
+		$m_selectors[' .uagb-icon-list__source-wrap'] = array(
+			'margin-right' => UAGB_Helper::get_css_value( $inner_gap_mobile_fallback, $attr['innerGapType'] ),
+		);
+		$t_selectors[' .uagb-icon-list__source-wrap'] = array(
+			'margin-right' => UAGB_Helper::get_css_value( $inner_gap_tablet_fallback, $attr['innerGapType'] ),
+		);
+	} else if ( 'after' === $attr['iconPlacement'] && ! $attr['hideLabel'] ) {
+		$selectors[' .uagb-icon-list__source-wrap']   = array(
+			'margin-left' => UAGB_Helper::get_css_value( $inner_gap_fallback, $attr['innerGapType'] ),
+		);
+		$m_selectors[' .uagb-icon-list__source-wrap'] = array(
+			'margin-left' => UAGB_Helper::get_css_value( $inner_gap_mobile_fallback, $attr['innerGapType'] ),
+		);
+		$t_selectors[' .uagb-icon-list__source-wrap'] = array(
+			'margin-left' => UAGB_Helper::get_css_value( $inner_gap_tablet_fallback, $attr['innerGapType'] ),
+		);
+		$selectors[' .wp-block-uagb-icon-list-child ' ] = array(
+			'flex-direction' => 'row-reverse',
+		);
+	}
 	if ( 'center' === $attr['align'] ) {
 		$selectors[' .wp-block-uagb-icon-list-child'] = array(
 			'text-align' => 'center',
