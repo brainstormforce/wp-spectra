@@ -3,7 +3,10 @@
  */
 import { getBorderAttributes } from '@Controls/generateAttributes';
 
-const borderAttributes = getBorderAttributes( 'btn' );
+const borderAttributes = getBorderAttributes( 'btn', {
+	borderStyle: 'none',
+	borderColor:'#000',
+} );
 
 const attributes = {
 	inheritFromTheme: {
