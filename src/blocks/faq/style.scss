@@ -17,6 +17,14 @@
 	}
 }
 
+// These fixes are specific to the Astra theme.
+body[class*="astra"] {
+
+	.uagb-faq-questions {
+		line-height: normal;
+	}
+}
+
 .uagb-faq-item {
 	overflow: hidden;
 }
