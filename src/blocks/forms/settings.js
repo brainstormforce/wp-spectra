@@ -188,10 +188,10 @@ const Settings = ( props ) => {
 		inputLetterSpacingTablet,
 		inputLetterSpacingMobile,
 		inputLetterSpacingType,
-		submitLetterSpacing,
-		submitLetterSpacingTablet,
-		submitLetterSpacingMobile,
-		submitLetterSpacingType,
+		submitTextLetterSpacing,
+		submitTextLetterSpacingTablet,
+		submitTextLetterSpacingMobile,
+		submitTextLetterSpacingType,
 	} = attributes;
 
 	const presetSettings = () => {
@@ -1137,6 +1137,8 @@ const Settings = ( props ) => {
 				disabledBorderTitle= {false}
 				attributes={ attributes }
 				deviceType={deviceType}
+				borderHoverColorLabel={ __( 'Color', 'ultimate-addons-for-gutenberg' )}
+				hoverTabLabel={ __( 'Active', 'ultimate-addons-for-gutenberg' )}
 				disableBottomSeparator={ true }
 			/>
 		</UAGAdvancedPanelBody>
@@ -1476,20 +1478,20 @@ const Settings = ( props ) => {
 					label: 'submitTextLineHeightTablet',
 				} }
 				letterSpacing={ {
-					value: submitLetterSpacing,
-					label: 'submitLetterSpacing',
+					value: submitTextLetterSpacing,
+					label: 'submitTextLetterSpacing',
 				} }
 				letterSpacingTablet={ {
-					value: submitLetterSpacingTablet,
-					label: 'submitLetterSpacingTablet',
+					value: submitTextLetterSpacingTablet,
+					label: 'submitTextLetterSpacingTablet',
 				} }
 				letterSpacingMobile={ {
-					value: submitLetterSpacingMobile,
-					label: 'submitLetterSpacingMobile',
+					value: submitTextLetterSpacingMobile,
+					label: 'submitTextLetterSpacingMobile',
 				} }
 				letterSpacingType={ {
-					value: submitLetterSpacingType,
-					label: 'submitLetterSpacingType',
+					value: submitTextLetterSpacingType,
+					label: 'submitTextLetterSpacingType',
 				} }
 				transform={ {
 					value: submitTextTransform,

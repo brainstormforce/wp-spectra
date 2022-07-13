@@ -25,7 +25,6 @@ import addBlockEditorDynamicStyles from '@Controls/addBlockEditorDynamicStyles';
 import {buttonsPresets} from './presets';
 import UAGPresets from '@Components/presets';
 import { getFallbackNumber } from '@Controls/getAttributeFallback';
-import { migrateBorderAttributes } from '@Controls/generateAttributes';
 
 const Settings = lazy( () =>
 	import(
@@ -253,31 +252,72 @@ const UAGBPostMasonry = ( props ) => {
 		const {
 			borderStyle,
 			borderWidth,
+			borderRadius,
 			borderColor,
 			borderHColor,
-			borderRadius
+			btnBorderTopWidth,
+			btnBorderLeftWidth,
+			btnBorderRightWidth,
+			btnBorderBottomWidth,
+			btnBorderTopLeftRadius,
+			btnBorderTopRightRadius,
+			btnBorderBottomLeftRadius,
+			btnBorderBottomRightRadius,
+			btnBorderColor,
+			btnBorderHColor,
+			btnBorderStyle,
 		} = props.attributes;
 
-		if( borderWidth || borderRadius || borderColor || borderHColor || borderStyle ){
-			const migrationAttributes = migrateBorderAttributes( 'btn', {
-				label: 'borderWidth',
-				value: borderWidth,
-			}, {
-				label: 'borderRadius',
-				value: borderRadius
-			}, {
-				label: 'borderColor',
-				value: borderColor
-			}, {
-				label: 'borderHColor',
-				value: borderHColor
-			},{
-				label: 'borderStyle',
-				value: borderStyle
+		if( borderWidth ){
+			if( undefined === btnBorderTopWidth ) {
+				props.setAttributes( {
+					btnBorderTopWidth: borderWidth,
+				} );
 			}
-			);
-			props.setAttributes( migrationAttributes )
-		};
+			if( undefined === btnBorderLeftWidth ) {
+				props.setAttributes( { btnBorderLeftWidth : borderWidth} );
+			}
+			if( undefined === btnBorderRightWidth ) {
+				props.setAttributes( { btnBorderRightWidth : borderWidth} );
+			}
+			if( undefined === btnBorderBottomWidth ) {
+				props.setAttributes( { btnBorderBottomWidth : borderWidth} );
+			}
+		}
+
+		if( borderRadius ){
+
+			if( undefined === btnBorderTopLeftRadius ) {
+				props.setAttributes( { btnBorderTopLeftRadius : borderRadius} );
+			}
+			if( undefined === btnBorderTopRightRadius ) {
+				props.setAttributes( { btnBorderTopRightRadius : borderRadius} );
+			}
+			if( undefined === btnBorderBottomLeftRadius ) {
+				props.setAttributes( { btnBorderBottomLeftRadius : borderRadius} );
+			}
+			if( undefined === btnBorderBottomRightRadius ) {
+				props.setAttributes( { btnBorderBottomRightRadius : borderRadius} );
+			}
+		}
+
+		if( borderColor ){
+			if( undefined === btnBorderColor ) {
+				props.setAttributes( { btnBorderColor : borderColor} );
+			}
+		}
+
+		if( borderHColor ){
+			if( undefined === btnBorderHColor ) {
+				props.setAttributes( { btnBorderHColor : borderHColor} );
+			}
+		}
+
+		if( borderStyle ){
+			if( undefined === btnBorderStyle ) {
+				props.setAttributes( { btnBorderStyle : borderStyle} );
+			}
+		}
 
 		// Replacement for componentDidUpdate.
 		const blockStyling = styling( props );

@@ -111,10 +111,10 @@ function styling( props ) {
 		headingLetterSpacingTablet,
 		headingLetterSpacingMobile,
 		headingLetterSpacingType,
-		listLetterSpacing,
-		listLetterSpacingTablet,
-		listLetterSpacingMobile,
-		listLetterSpacingType,
+		letterSpacing,
+		letterSpacingTablet,
+		letterSpacingMobile,
+		letterSpacingType,
 		markerView
 	} = props.attributes;
 
@@ -138,7 +138,7 @@ function styling( props ) {
 		' .uagb-toc__list-wrap ol li': {
 			'font-size': generateCSSUnit( fontSize, fontSizeType ),
 		},
-		' .uagb-toc__list-wrap ol li a': {
+		' .uagb-toc__list-wrap li a': {
 			'font-size': generateCSSUnit( fontSize, fontSizeType ),
 			'line-height': generateCSSUnit( lineHeight, lineHeightType ),
 			'font-family': fontFamily,
@@ -147,7 +147,7 @@ function styling( props ) {
 			'text-transform': fontTransform,
 			'font-weight': fontWeight,
 			'color': linkColor,
-			'letter-spacing': generateCSSUnit( listLetterSpacing, listLetterSpacingType ),
+			'letter-spacing': generateCSSUnit( letterSpacing, letterSpacingType ),
 		},
 		' .uagb-toc__title-wrap': {
 			'justify-content': align,
@@ -253,6 +253,7 @@ function styling( props ) {
 	selectors[ ' .uagb-toc__list-wrap' ] = {
 		'column-count': tColumnsDesktopFallback,
 		'overflow': 'hidden',
+		'text-align': align,
 	};
 
 	if ( customWidth ) {
@@ -288,7 +289,7 @@ function styling( props ) {
 		' .uagb-toc__list-wrap ol li a': {
 			'font-size': generateCSSUnit( fontSizeTablet, fontSizeType ),
 			'line-height': generateCSSUnit( lineHeightTablet, lineHeightType ),
-			'letter-spacing': generateCSSUnit( listLetterSpacingTablet, listLetterSpacingType ),
+			'letter-spacing': generateCSSUnit( letterSpacingTablet, letterSpacingType ),
 		},
 		' .uagb-toc__title': {
 			'font-size': generateCSSUnit(
@@ -340,6 +341,7 @@ function styling( props ) {
 		' .uagb-toc__list-wrap': {
 			'column-count': tColumnsTabletFallback,
 			'overflow': 'hidden',
+			'text-align': align,
 		},
 
 		' .uagb-toc__list-wrap > ol.uagb-toc__list > li:first-child': {
@@ -398,7 +400,7 @@ function styling( props ) {
 		' .uagb-toc__list-wrap ol li a': {
 			'font-size': generateCSSUnit( fontSizeMobile, fontSizeType ),
 			'line-height': generateCSSUnit( lineHeightMobile, lineHeightType ),
-			'letter-spacing': generateCSSUnit( listLetterSpacingMobile, listLetterSpacingType ),
+			'letter-spacing': generateCSSUnit( letterSpacingMobile, letterSpacingType ),
 		},
 		' .uagb-toc__title': {
 			'font-size': generateCSSUnit(
@@ -450,6 +452,7 @@ function styling( props ) {
 		' .uagb-toc__list-wrap': {
 			'column-count': tColumnsMobileFallback,
 			'overflow': 'hidden',
+			'text-align': align,
 		},
 		' .uagb-toc__list-wrap > ol.uagb-toc__list > li:first-child': {
 			'padding-top': generateCSSUnit(

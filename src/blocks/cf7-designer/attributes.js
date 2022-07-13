@@ -158,7 +158,7 @@
 	},
 	buttonBgColor                 : {
 		type    : 'string',
-		default : 'transparent',
+		default : '',
 		UAGCopyPaste: {
 			styleType: 'btn-bg-color'
 		},
@@ -176,7 +176,7 @@
 	},
 	buttonBgHoverColor            : {
 		type    : 'string',
-		default : 'transparent',
+		default : '',
 		UAGCopyPaste: {
 			styleType: 'btn-bg-hover-color'
 		},

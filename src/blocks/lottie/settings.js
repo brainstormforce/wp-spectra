@@ -208,7 +208,8 @@ const Settings = ( props ) => {
 					checked={ loop }
 					onChange={ loopLottie }
 					help={ __(
-						"Enabling this will show the animation in the loop. This setting will only take effect once you are on the live page, and not while you're editing."
+						"Enabling this will show the animation in the loop. This setting will only take effect once you are on the live page, and not while you're editing.",
+						'ultimate-addons-for-gutenberg'
 					) }
 				/>
 				<Range
@@ -222,6 +223,10 @@ const Settings = ( props ) => {
 					min={ 1 }
 					max={ 50 }
 					displayUnit={ false }
+					help={ __(
+						'This setting will only take effect once you refresh the editor page.',
+						'ultimate-addons-for-gutenberg'
+					) }
 				/>
 				{ loop && (
 					<ToggleControl
@@ -351,13 +356,13 @@ const Settings = ( props ) => {
 
 	if ( validJsonPath === 'invalid' ) {
 		const lottie_url = (
-			<span>
+			<span className="uagb-lottie-instructions">
 				{ ' ' }
 				{ __(
 					'Allows you to add fancy animation i.e Lottie to your website. You can see sample Lottie animations',
 					'ultimate-addons-for-gutenberg'
 				) }
-				<a href="https://lottiefiles.com/" target="__blank">
+				<a className="uagb-lottie-instructions__lottie-url" href="https://lottiefiles.com/" target="__blank">
 					{ ' ' }
 					{ __( 'here on this' ) }{ ' ' }
 				</a>

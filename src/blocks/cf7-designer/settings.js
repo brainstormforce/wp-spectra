@@ -28,7 +28,6 @@ import {
 } from '@wordpress/components';
 
 
-
 import UAGAdvancedPanelBody from '@Components/advanced-panel-body';
 
 const Settings = ( props ) => {
@@ -241,6 +240,9 @@ const Settings = ( props ) => {
 		msgLetterSpacingTablet,
 		msgLetterSpacingMobile,
 		msgLetterSpacingType,
+		inputBorderBottomWidth,
+		inputBorderBottomWidthTablet,
+		inputBorderBottomWidthMobile,
 	} = attributes;
 
 	let loadInputGoogleFonts;
@@ -249,7 +251,6 @@ const Settings = ( props ) => {
 	let loadRadioGoogleFonts;
 	let loadValidationGoogleFonts;
 	let loadMsgGoogleFonts;
-
 	if ( labelLoadGoogleFonts === true ) {
 		const labelconfig = {
 			google: {
@@ -878,19 +879,44 @@ const Settings = ( props ) => {
 			title={ __( 'Field', 'ultimate-addons-for-gutenberg' ) }
 			initialOpen={ true }
 		>
-			{ fieldStyle === 'box' && (
-				<ResponsiveBorder
-					disabledBorderTitle= {false}
-					setAttributes={ setAttributes }
-					borderHoverColorLabel={__(
-						'Active Color',
-						'ultimate-addons-for-gutenberg'
-					)}
-					prefix={'input'}
-					attributes={ attributes }
-					deviceType={deviceType}
-				/>
+			{ fieldStyle === 'underline' && (
+				<ResponsiveSlider
+				label={ __(
+					'Border Bottom',
+					'ultimate-addons-for-gutenberg'
+				) }
+				data={ {
+					desktop: {
+						value: inputBorderBottomWidth,
+						label: 'inputBorderBottomWidth',
+					},
+					tablet: {
+						value: inputBorderBottomWidthTablet,
+						label: 'inputBorderBottomWidthTablet',
+					},
+					mobile: {
+						value: inputBorderBottomWidthMobile,
+						label: 'inputBorderBottomWidthMobile',
+					},
+				} }
+				min={ 0 }
+				max={ 20 }
+				displayUnit={ false }
+				setAttributes={ setAttributes }
+			/>
 			)}
+			<ResponsiveBorder
+				disabledBorderTitle= {false}
+				setAttributes={ setAttributes }
+				borderHoverColorLabel={__(
+					'Active Color',
+					'ultimate-addons-for-gutenberg'
+				)}
+				prefix={'input'}
+				attributes={ attributes }
+				deviceType={deviceType}
+				showWidth = {fieldStyle === 'box' ? true : false}
+			/>
 			<ResponsiveSlider
 				label={ __(
 					'Fields Space',
@@ -1213,6 +1239,7 @@ const Settings = ( props ) => {
 			/>
 		</UAGAdvancedPanelBody>
 	);
+
 	const buttonStyling = (
 		<UAGAdvancedPanelBody
 			title={ __( 'Submit Button', 'ultimate-addons-for-gutenberg' ) }

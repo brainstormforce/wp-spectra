@@ -8,6 +8,7 @@ import lazyLoader from '@Controls/lazy-loader';
 import React, { useEffect, useState, lazy, Suspense } from 'react';
 import { useDeviceType } from '@Controls/getPreviewType';
 import addBlockEditorDynamicStyles from '@Controls/addBlockEditorDynamicStyles';
+import { migrateBorderAttributes } from '@Controls/generateAttributes';
 
 const Settings = lazy( () =>
 	import(
@@ -40,6 +41,11 @@ const ButtonsChildComponent = ( props ) => {
 			rightPadding,
 			bottomPadding,
 			leftPadding,
+			borderStyle,
+			borderWidth,
+			borderRadius,
+			borderColor,
+			borderHColor
 		} = attributes;
 
 		if ( vPadding ) {
@@ -60,10 +66,31 @@ const ButtonsChildComponent = ( props ) => {
 			}
 		}
 
+		// border
+		if( borderWidth || borderRadius || borderColor || borderHColor || borderStyle ){
+			const migrationAttributes = migrateBorderAttributes( 'btn', {
+				label: 'borderWidth',
+				value: borderWidth,
+			}, {
+				label: 'borderRadius',
+				value: borderRadius
+			}, {
+				label: 'borderColor',
+				value: borderColor
+			}, {
+				label: 'borderHColor',
+				value: borderHColor
+			},{
+				label: 'borderStyle',
+				value: borderStyle
+			}
+			);
+			props.setAttributes( migrationAttributes );
+		}
 	}, [] );
 
 	useEffect( () => {
-		
+
 		const blockStyling = styling( props );
 
 		addBlockEditorDynamicStyles( 'uagb-style-button-' + props.clientId.substr( 0, 8 ), blockStyling );

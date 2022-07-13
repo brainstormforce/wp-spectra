@@ -655,7 +655,7 @@ html[dir="rtl"] .uagb-gf-styler__btn-align-left .gform_page .gform_page_footer i
 
 }
 
-@media (min-width: 360px) and (max-width: 780px) {
+@media (min-width: 641px) and (max-width: 780px) { // For tablet size small/medium/large.
 
 	.uagb-gf-styler__btn-align-tablet-justify .gform_wrapper .gform_footer input[type="submit"],
 	.uagb-gf-styler__btn-align-tablet-justify .gform_page .gform_page_footer input[type="button"],
@@ -669,7 +669,7 @@ html[dir="rtl"] .uagb-gf-styler__btn-align-left .gform_page .gform_page_footer i
 	}
 }
 
-@media (max-width: 360px) {
+@media (max-width: 641px) { // For mobile size small/medium/large.
 
 	.uagb-gf-styler__btn-align-mobile-center .gform_wrapper .gform_footer input[type="submit"],
 	.uagb-gf-styler__btn-align-mobile-center .gform_page .gform_page_footer input[type="button"],

@@ -114,7 +114,7 @@ return array(
 	'quoteSizeTablet'             => '',
 	'quoteSizeMobile'             => '',
 	'quoteTopMargin'              => '',
-	'quoteBottomMargin'           => '',
+	'quoteBottomMargin'           => 15,
 	'quoteLeftMargin'             => '',
 	'quoteRightMargin'            => 20,
 	'quoteTopMarginTablet'        => '',

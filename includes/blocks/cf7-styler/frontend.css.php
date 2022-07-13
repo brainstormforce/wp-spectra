@@ -202,7 +202,7 @@ $selectors = array(
 	' .uagb-cf7-styler__field-style-underline .wpcf7 input:not([type=submit])' => array(
 		'border-style'               => 'none',
 		'border-bottom-color'        => $attr['inputBorderColor'],
-		'border-bottom-style'        => 'solid',
+		'border-bottom-style'        => $border['border-style'],
 		'border-bottom-width'        => UAGB_Helper::get_css_value( $attr['inputBorderBottomWidth'], 'px' ),
 		'border-top-left-radius'     => UAGB_Helper::get_css_value( $attr['inputBorderTopLeftRadius'], 'px' ),
 		'border-top-right-radius'    => UAGB_Helper::get_css_value( $attr['inputBorderTopRightRadius'], 'px' ),
@@ -212,7 +212,7 @@ $selectors = array(
 	' .uagb-cf7-styler__field-style-underline textarea'   => array(
 		'border-style'               => 'none',
 		'border-bottom-color'        => $attr['inputBorderColor'],
-		'border-bottom-style'        => 'solid',
+		'border-bottom-style'        => $border['border-style'],
 		'border-bottom-width'        => UAGB_Helper::get_css_value( $attr['inputBorderBottomWidth'], 'px' ),
 		'border-top-left-radius'     => UAGB_Helper::get_css_value( $attr['inputBorderTopLeftRadius'], 'px' ),
 		'border-top-right-radius'    => UAGB_Helper::get_css_value( $attr['inputBorderTopRightRadius'], 'px' ),
@@ -222,17 +222,7 @@ $selectors = array(
 	' .uagb-cf7-styler__field-style-underline select'     => array(
 		'border-style'               => 'none',
 		'border-bottom-color'        => $attr['inputBorderColor'],
-		'border-bottom-style'        => 'solid',
-		'border-bottom-width'        => UAGB_Helper::get_css_value( $attr['inputBorderBottomWidth'], 'px' ),
-		'border-top-left-radius'     => UAGB_Helper::get_css_value( $attr['inputBorderTopLeftRadius'], 'px' ),
-		'border-top-right-radius'    => UAGB_Helper::get_css_value( $attr['inputBorderTopRightRadius'], 'px' ),
-		'border-bottom-right-radius' => UAGB_Helper::get_css_value( $attr['inputBorderBottomRightRadius'], 'px' ),
-		'border-bottom-left-radius'  => UAGB_Helper::get_css_value( $attr['inputBorderBottomLeftRadius'], 'px' ),
-	),
-	' .uagb-cf7-styler__field-style-underline textarea'   => array(
-		'border-style'               => 'none',
-		'border-bottom-color'        => $attr['inputBorderColor'],
-		'border-bottom-style'        => 'solid',
+		'border-bottom-style'        => $border['border-style'],
 		'border-bottom-width'        => UAGB_Helper::get_css_value( $attr['inputBorderBottomWidth'], 'px' ),
 		'border-top-left-radius'     => UAGB_Helper::get_css_value( $attr['inputBorderTopLeftRadius'], 'px' ),
 		'border-top-right-radius'    => UAGB_Helper::get_css_value( $attr['inputBorderTopRightRadius'], 'px' ),
@@ -240,13 +230,13 @@ $selectors = array(
 		'border-bottom-left-radius'  => UAGB_Helper::get_css_value( $attr['inputBorderBottomLeftRadius'], 'px' ),
 	),
 	' .uagb-cf7-styler__field-style-underline .wpcf7-checkbox input[type="checkbox"] + span:before' => array(
-		'border-style' => 'solid',
+		'border-style' => $border['border-style'],
 	),
 	' .uagb-cf7-styler__field-style-underline .wpcf7 input[type="radio"] + span:before' => array(
-		'border-style' => 'solid',
+		'border-style' => $border['border-style'],
 	),
 	' .uagb-cf7-styler__field-style-underline .wpcf7-acceptance input[type="checkbox"] + span:before' => array(
-		'border-style' => 'solid',
+		'border-style' => $border['border-style'],
 	),
 	' .uagb-cf7-styler__field-style-box .wpcf7-checkbox input[type="checkbox"]:checked + span:before' => array_merge(
 		array(
@@ -316,7 +306,7 @@ $selectors = array(
 	' .uagb-cf7-styler__highlight-border .wpcf7-form-control.wpcf7-not-valid .wpcf7-list-item-label:before' => array(
 		'border-color' => $attr['highlightBorderColor'] . '!important',
 	),
-	' .uagb-cf7-styler__highlight-style-bottom_right .wpcf7-not-valid-tip' => array(
+	' .uagb-cf7-styler__highlight-style-bottom_right .wpcf7-form-control-wrap .wpcf7-not-valid-tip' => array(
 		'background-color' => $attr['validationMsgBgColor'],
 	),
 	' .wpcf7 form .wpcf7-response-output'                 => array(
@@ -355,6 +345,34 @@ $field_padding_tablet = array(
 );
 
 $t_selectors = array(
+	' .wpcf7 input:not([type=submit])'                  => array_merge(
+		$border_tablet,
+		$field_padding_tablet,
+	),
+	' .wpcf7 select'                                    => array_merge(
+		$border_tablet,
+		$field_padding_tablet,
+	),
+	' .wpcf7 .wpcf7-checkbox input[type="checkbox"] + span:before' => array_merge(
+		$border_tablet,
+		$field_padding_tablet,
+	),
+	' .wpcf7 .wpcf7-acceptance input[type="checkbox"] + span:before' => array_merge(
+		$border_tablet,
+		$field_padding_tablet,
+	),
+	' .uagb-cf7-styler__field-style-box .wpcf7-checkbox input[type="checkbox"]:checked + span:before' => array_merge(
+		$border_tablet,
+		$field_padding_tablet,
+	),
+	' .uagb-cf7-styler__field-style-box .wpcf7-acceptance input[type="checkbox"]:checked + span:before' => array_merge(
+		$border_tablet,
+		$field_padding_tablet,
+	),
+	' .wpcf7 textarea'                                  => array_merge(
+		$border_tablet,
+		$field_padding_tablet,
+	),
 	' .uagb-cf7-styler__check-style-enabled .wpcf7 .wpcf7-checkbox input[type="checkbox"] + span:before' => array(
 		'height'       => UAGB_Helper::get_css_value( $attr['radioCheckSizeTablet'], 'px' ),
 		'width'        => UAGB_Helper::get_css_value( $attr['radioCheckSizeTablet'], 'px' ),
@@ -373,16 +391,16 @@ $t_selectors = array(
 		'font-size'    => 'calc( ' . $attr['radioCheckSizeTablet'] . 'px / 1.2 )',
 		'border-width' => UAGB_Helper::get_css_value( $attr['radioCheckBorderWidthTablet'], 'px' ),
 	),
-	' .wpcf7 form.wpcf7-form:not(input)'            => array(
+	' .wpcf7 form.wpcf7-form:not(input)'                => array(
 		'color' => $attr['fieldLabelColor'],
 	),
-	' .wpcf7-response-output'                       => array(
+	' .wpcf7-response-output'                           => array(
 		'padding-top'    => UAGB_Helper::get_css_value( $attr['messageTopPaddingTablet'], $attr['messagePaddingTypeTablet'] ),
 		'padding-bottom' => UAGB_Helper::get_css_value( $attr['messageBottomPaddingTablet'], $attr['messagePaddingTypeTablet'] ),
 		'padding-left'   => UAGB_Helper::get_css_value( $attr['messageLeftPaddingTablet'], $attr['messagePaddingTypeTablet'] ),
 		'padding-right'  => UAGB_Helper::get_css_value( $attr['messageRightPaddingTablet'], $attr['messagePaddingTypeTablet'] ),
 	),
-	' .wpcf7 input.wpcf7-form-control.wpcf7-submit' => array_merge(
+	' .wpcf7 input.wpcf7-form-control.wpcf7-submit'     => array_merge(
 		array(
 			'padding-top'    => UAGB_Helper::get_css_value( $attr['buttonTopPaddingTablet'], $attr['buttonPaddingTypeTablet'] ),
 			'padding-bottom' => UAGB_Helper::get_css_value( $attr['buttonBottomPaddingTablet'], $attr['buttonPaddingTypeTablet'] ),
@@ -390,6 +408,42 @@ $t_selectors = array(
 			'padding-right'  => UAGB_Helper::get_css_value( $attr['buttonRightPaddingTablet'], $attr['buttonPaddingTypeTablet'] ),
 		),
 		$btn_border_tablet
+	),
+	// underline border.
+	' .uagb-cf7-styler__field-style-underline .wpcf7 input:not([type=submit])' => array(
+		'border-style'        => 'none',
+		'border-bottom-style' => $border['border-style'],
+		'border-bottom-width' => UAGB_Helper::get_css_value( $attr['inputBorderBottomWidthTablet'], 'px' ),
+	),
+	' .uagb-cf7-styler__field-style-underline select'   => array(
+		'border-style'        => 'none',
+		'border-bottom-style' => $border['border-style'],
+		'border-bottom-width' => UAGB_Helper::get_css_value( $attr['inputBorderBottomWidthTablet'], 'px' ),
+	),
+	" .uagb-cf7-styler__field-style-underline .wpcf7-checkbox input[type='checkbox'] + span:before" => array(
+		'border-style'        => 'none',
+		'border-bottom-style' => $border['border-style'],
+		'border-bottom-width' => UAGB_Helper::get_css_value( $attr['inputBorderBottomWidthTablet'], 'px' ),
+	),
+	" .uagb-cf7-styler__field-style-underline .wpcf7 input[type='radio'] + span:before" => array(
+		'border-style'        => 'none',
+		'border-bottom-style' => $border['border-style'],
+		'border-bottom-width' => UAGB_Helper::get_css_value( $attr['inputBorderBottomWidthTablet'], 'px' ),
+	),
+	" .uagb-cf7-styler__field-style-underline .wpcf7-acceptance input[type='checkbox'] + span:before" => array(
+		'border-style'        => 'none',
+		'border-bottom-style' => $border['border-style'],
+		'border-bottom-width' => UAGB_Helper::get_css_value( $attr['inputBorderBottomWidthTablet'], 'px' ),
+	),
+	' .uagb-cf7-styler__field-style-underline textarea' => array(
+		'border-style'               => 'none',
+		'border-bottom-color'        => $attr['inputBorderColor'],
+		'border-bottom-style'        => $border['border-style'],
+		'border-bottom-width'        => UAGB_Helper::get_css_value( $attr['inputBorderBottomWidthTablet'], 'px' ),
+		'border-top-left-radius'     => UAGB_Helper::get_css_value( $attr['inputBorderTopLeftRadiusTablet'], 'px' ),
+		'border-top-right-radius'    => UAGB_Helper::get_css_value( $attr['inputBorderTopRightRadiusTablet'], 'px' ),
+		'border-bottom-right-radius' => UAGB_Helper::get_css_value( $attr['inputBorderBottomRightRadiusTablet'], 'px' ),
+		'border-bottom-left-radius'  => UAGB_Helper::get_css_value( $attr['inputBorderBottomLeftRadiusTablet'], 'px' ),
 	),
 	' .uagb-cf7-styler__check-style-enabled .wpcf7 input:not([type=submit])' => $field_padding_tablet,
 	' .uagb-cf7-styler__check-style-enabled .wpcf7 select.wpcf7-form-control.wpcf7-select:not([multiple="multiple"])' => $field_padding_tablet,
@@ -409,6 +463,34 @@ $field_padding_mobile = array(
 );
 
 $m_selectors = array(
+	' .wpcf7 input:not([type=submit])'                  => array_merge(
+		$border_mobile,
+		$field_padding_mobile,
+	),
+	' .wpcf7 select'                                    => array_merge(
+		$border_mobile,
+		$field_padding_mobile,
+	),
+	' .wpcf7 .wpcf7-checkbox input[type="checkbox"] + span:before' => array_merge(
+		$border_mobile,
+		$field_padding_mobile,
+	),
+	' .wpcf7 .wpcf7-acceptance input[type="checkbox"] + span:before' => array_merge(
+		$border_mobile,
+		$field_padding_mobile,
+	),
+	' .uagb-cf7-styler__field-style-box .wpcf7-checkbox input[type="checkbox"]:checked + span:before' => array_merge(
+		$border_mobile,
+		$field_padding_mobile,
+	),
+	' .uagb-cf7-styler__field-style-box .wpcf7-acceptance input[type="checkbox"]:checked + span:before' => array_merge(
+		$border_mobile,
+		$field_padding_mobile,
+	),
+	' .wpcf7 textarea'                                  => array_merge(
+		$border_mobile,
+		$field_padding_mobile,
+	),
 	' .uagb-cf7-styler__check-style-enabled .wpcf7 .wpcf7-checkbox input[type="checkbox"] + span:before' => array(
 		'height'       => UAGB_Helper::get_css_value( $attr['radioCheckSizeMobile'], 'px' ),
 		'width'        => UAGB_Helper::get_css_value( $attr['radioCheckSizeMobile'], 'px' ),
@@ -427,28 +509,63 @@ $m_selectors = array(
 		'font-size'    => 'calc( ' . $attr['radioCheckSizeMobile'] . 'px / 1.2 )',
 		'border-width' => UAGB_Helper::get_css_value( $attr['radioCheckBorderWidthMobile'], 'px' ),
 	),
-	' .wpcf7-response-output'                       => array(
+	' .wpcf7-response-output'                           => array(
 		'padding-top'    => UAGB_Helper::get_css_value( $attr['messageTopPaddingMobile'], $attr['messagePaddingTypeMobile'] ),
 		'padding-bottom' => UAGB_Helper::get_css_value( $attr['messageBottomPaddingMobile'], $attr['messagePaddingTypeMobile'] ),
 		'padding-left'   => UAGB_Helper::get_css_value( $attr['messageLeftPaddingMobile'], $attr['messagePaddingTypeMobile'] ),
 		'padding-right'  => UAGB_Helper::get_css_value( $attr['messageRightPaddingMobile'], $attr['messagePaddingTypeMobile'] ),
 	),
-	' .wpcf7 input.wpcf7-form-control.wpcf7-submit' => array_merge(
+	' .wpcf7 input.wpcf7-form-control.wpcf7-submit'     => array_merge(
 		array(
 			'padding-top'    => UAGB_Helper::get_css_value( $attr['buttonTopPaddingMobile'], $attr['buttonPaddingTypeMobile'] ),
 			'padding-bottom' => UAGB_Helper::get_css_value( $attr['buttonBottomPaddingMobile'], $attr['buttonPaddingTypeMobile'] ),
 			'padding-left'   => UAGB_Helper::get_css_value( $attr['buttonLeftPaddingMobile'], $attr['buttonPaddingTypeMobile'] ),
 			'padding-right'  => UAGB_Helper::get_css_value( $attr['buttonRightPaddingMobile'], $attr['buttonPaddingTypeMobile'] ),
 		),
-		$btn_border_tablet
+		$btn_border_mobile
 	),
-	' .wpcf7 form.wpcf7-form:not(input)'            => array(
+	' .wpcf7 form.wpcf7-form:not(input)'                => array(
 		'color' => $attr['fieldLabelColor'],
+	),
+	// underline border.
+	' .uagb-cf7-styler__field-style-underline .wpcf7 input:not([type=submit])' => array(
+		'border-style'        => 'none',
+		'border-bottom-style' => $border['border-style'],
+		'border-bottom-width' => UAGB_Helper::get_css_value( $attr['inputBorderBottomWidthMobile'], 'px' ),
+	),
+	' .uagb-cf7-styler__field-style-underline select'   => array(
+		'border-style'        => 'none',
+		'border-bottom-style' => $border['border-style'],
+		'border-bottom-width' => UAGB_Helper::get_css_value( $attr['inputBorderBottomWidthMobile'], 'px' ),
+	),
+	" .uagb-cf7-styler__field-style-underline .wpcf7-checkbox input[type='checkbox'] + span:before" => array(
+		'border-style'        => 'none',
+		'border-bottom-style' => $border['border-style'],
+		'border-bottom-width' => UAGB_Helper::get_css_value( $attr['inputBorderBottomWidthMobile'], 'px' ),
+	),
+	" .uagb-cf7-styler__field-style-underline .wpcf7 input[type='radio'] + span:before" => array(
+		'border-style'        => 'none',
+		'border-bottom-style' => $border['border-style'],
+		'border-bottom-width' => UAGB_Helper::get_css_value( $attr['inputBorderBottomWidthMobile'], 'px' ),
+	),
+	" .uagb-cf7-styler__field-style-underline .wpcf7-acceptance input[type='checkbox'] + span:before" => array(
+		'border-style'        => 'none',
+		'border-bottom-style' => $border['border-style'],
+		'border-bottom-width' => UAGB_Helper::get_css_value( $attr['inputBorderBottomWidthMobile'], 'px' ),
+	),
+	' .uagb-cf7-styler__field-style-underline textarea' => array(
+		'border-style'               => 'none',
+		'border-bottom-color'        => $attr['inputBorderColor'],
+		'border-bottom-style'        => $border['border-style'],
+		'border-bottom-width'        => UAGB_Helper::get_css_value( $attr['inputBorderBottomWidthMobile'], 'px' ),
+		'border-top-left-radius'     => UAGB_Helper::get_css_value( $attr['inputBorderTopLeftRadiusMobile'], 'px' ),
+		'border-top-right-radius'    => UAGB_Helper::get_css_value( $attr['inputBorderTopRightRadiusMobile'], 'px' ),
+		'border-bottom-right-radius' => UAGB_Helper::get_css_value( $attr['inputBorderBottomRightRadiusMobile'], 'px' ),
+		'border-bottom-left-radius'  => UAGB_Helper::get_css_value( $attr['inputBorderBottomLeftRadiusMobile'], 'px' ),
 	),
 	' .uagb-cf7-styler__check-style-enabled .wpcf7 input:not([type=submit])' => $field_padding_mobile,
 	' .wpcf7 select.wpcf7-form-control.wpcf7-select:not([multiple="multiple"])' => $field_padding_mobile,
 	' .wpcf7 select.wpcf7-select[multiple="multiple"] option' => $field_padding_mobile,
-	' .wpcf7 textarea'                              => $field_padding_mobile,
 );
 
 $combined_selectors = array(

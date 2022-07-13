@@ -62,13 +62,13 @@ if ( ! class_exists( 'UAGB_Taxonomy_List' ) ) {
 			}
 
 			$border_attribute = UAGB_Block_Helper::uag_generate_php_border_attribute( 'overall' );
+
 			register_block_type(
 				'uagb/taxonomy-list',
 				array(
 					'attributes'      => array_merge(
 						$border_attribute,
 						array(
-
 							'block_id'                   => array(
 								'type' => 'string',
 							),
@@ -490,6 +490,26 @@ if ( ! class_exists( 'UAGB_Taxonomy_List' ) ) {
 							'listLetterSpacingType'      => array(
 								'type'    => 'string',
 								'default' => 'px',
+							),
+							'borderColor'                => array(
+								'type'    => 'string',
+								'default' => '#E0E0E0',
+							),
+							'borderThickness'            => array(
+								'type'    => 'number',
+								'default' => 1,
+							),
+							'borderRadius'               => array(
+								'type'    => 'number',
+								'default' => 3,
+							),
+							'borderStyle'                => array(
+								'type'    => 'string',
+								'default' => 'solid',
+							),
+							'borderHoverColor'           => array(
+								'type'    => 'string',
+								'default' => '#E0E0E0',
 							),
 						),
 					),

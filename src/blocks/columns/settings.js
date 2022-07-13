@@ -30,6 +30,7 @@ const Settings = ( props ) => {
 	const { attributes, setAttributes, deviceType } = props;
 
 	const {
+		block_id,
 		stack,
 		align,
 		vAlign,
@@ -987,6 +988,7 @@ const Settings = ( props ) => {
 					disabledBorderTitle= {true}
 				/>
 				<BoxShadowControl
+					blockId={ block_id }
 					setAttributes={ setAttributes }
 					label={ __(
 						'Box Shadow',

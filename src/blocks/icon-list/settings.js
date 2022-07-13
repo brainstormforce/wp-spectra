@@ -13,6 +13,7 @@ import InspectorTab, {
 } from '@Components/inspector-tabs/InspectorTab.js';
 import ResponsiveSlider from '@Components/responsive-slider';
 import MultiButtonsControl from '@Components/multi-buttons-control';
+import SpacingControl from '@Components/spacing-control';
 import presets from './presets';
 import UAGPresets from '@Components/presets';
 import renderSVG from '@Controls/renderIcon';
@@ -24,7 +25,7 @@ import AdvancedPopColorControl from '@Components/color-control/advanced-pop-colo
 
 const Settings = ( props ) => {
 	props = props.parentProps;
-	const { attributes, setAttributes, clientId } = props;
+	const { attributes, deviceType, setAttributes, clientId } = props;
 
 	const {
 		align,
@@ -38,7 +39,6 @@ const Settings = ( props ) => {
 		innerGapTablet,
 		innerGapMobile,
 		innerGapType,
-		stack,
 		icon_layout,
 		iconLayoutTablet,
 		iconLayoutMobile,
@@ -88,6 +88,23 @@ const Settings = ( props ) => {
 		iconBgHoverColor,
 		iconBorderColor,
 		iconBorderHoverColor,
+		// margin
+		blockTopMargin,
+		blockRightMargin,
+		blockLeftMargin,
+		blockBottomMargin,
+		blockTopMarginTablet,
+		blockRightMarginTablet,
+		blockLeftMarginTablet,
+		blockBottomMarginTablet,
+		blockTopMarginMobile,
+		blockRightMarginMobile,
+		blockLeftMarginMobile,
+		blockBottomMarginMobile,
+		blockMarginUnit,
+		blockMarginUnitTablet,
+		blockMarginUnitMobile,
+		blockMarginLink,
 	} = attributes;
 
 	let googleFonts;
@@ -117,7 +134,7 @@ const Settings = ( props ) => {
 
 	const generalSetting = () => {
 		return (
-			<UAGAdvancedPanelBody title={ __( 'Content', 'ultimate-addons-for-gutenberg' ) } initialOpen={ true }>
+			<UAGAdvancedPanelBody title={ __( 'Content', 'ultimate-addons-for-gutenberg' ) } initialOpen={ false }>
 				<MultiButtonsControl
 					setAttributes={ setAttributes }
 					label={ __( 'Layout', 'ultimate-addons-for-gutenberg' ) }
@@ -212,56 +229,6 @@ const Settings = ( props ) => {
 					showIcons={ true }
 					responsive={true}
 				/>
-
-
-
-
-
-
-				{ 'horizontal' === icon_layout && (
-					<>
-						<MultiButtonsControl
-							setAttributes={ setAttributes }
-							label={ __(
-								'Stack On',
-								'ultimate-addons-for-gutenberg'
-							) }
-							data={ {
-								value: stack,
-								label: 'stack',
-							} }
-							className="uagb-multi-button-alignment-control"
-							options={ [
-								{
-									value: 'none',
-									label: __(
-										'None',
-										'ultimate-addons-for-gutenberg'
-									),
-								},
-								{
-									value: 'tablet',
-									label: __(
-										'Tablet + Mobile',
-										'ultimate-addons-for-gutenberg'
-									),
-								},
-								{
-									value: 'mobile',
-									label: __(
-										'Mobile',
-										'ultimate-addons-for-gutenberg'
-									),
-								},
-							] }
-							showIcons={ false }
-							help={ __(
-								'Note: Choose on what breakpoint the Icons will stack.',
-								'ultimate-addons-for-gutenberg'
-							) }
-						/>
-					</>
-				) }
 				{ ! hideLabel && (
 					<>
 						<MultiButtonsControl
@@ -360,6 +327,80 @@ const Settings = ( props ) => {
 						'ultimate-addons-for-gutenberg'
 					) }
 				/>
+
+				<SpacingControl
+					label={ __(
+						'Margin',
+						'ultimate-addons-for-gutenberg'
+					) }
+					valueTop={ {
+						value: blockTopMargin,
+						label: 'blockTopMargin',
+					} }
+					valueRight={ {
+						value: blockRightMargin,
+						label: 'blockRightMargin',
+					} }
+					valueBottom={ {
+						value: blockBottomMargin,
+						label: 'blockBottomMargin',
+					} }
+					valueLeft={ {
+						value: blockLeftMargin,
+						label: 'blockLeftMargin',
+					} }
+					valueTopTablet={ {
+						value: blockTopMarginTablet,
+						label: 'blockTopMarginTablet',
+					} }
+					valueRightTablet={ {
+						value: blockRightMarginTablet,
+						label: 'blockRightMarginTablet',
+					} }
+					valueBottomTablet={ {
+						value: blockBottomMarginTablet,
+						label: 'blockBottomMarginTablet',
+					} }
+					valueLeftTablet={ {
+						value: blockLeftMarginTablet,
+						label: 'blockLeftMarginTablet',
+					} }
+					valueTopMobile={ {
+						value: blockTopMarginMobile,
+						label: 'blockTopMarginMobile',
+					} }
+					valueRightMobile={ {
+						value: blockRightMarginMobile,
+						label: 'blockRightMarginMobile',
+					} }
+					valueBottomMobile={ {
+						value: blockBottomMarginMobile,
+						label: 'blockBottomMarginMobile',
+					} }
+					valueLeftMobile={ {
+						value: blockLeftMarginMobile,
+						label: 'blockLeftMarginMobile',
+					} }
+					unit={ {
+						value: blockMarginUnit,
+						label: 'blockMarginUnit',
+					} }
+					mUnit={ {
+						value: blockMarginUnitMobile,
+						label: 'blockMarginUnitMobile',
+					} }
+					tUnit={ {
+						value: blockMarginUnitTablet,
+						label: 'blockMarginUnitTablet',
+					} }
+					deviceType={ deviceType }
+					attributes={ attributes }
+					setAttributes={ setAttributes }
+					link={ {
+						value: blockMarginLink,
+						label: 'blockMarginLink',
+					} }
+				/>
 			</UAGAdvancedPanelBody>
 		);
 	};
@@ -386,7 +427,7 @@ const Settings = ( props ) => {
 							label: 'innerGapMobile',
 						},
 					} }
-					min={ 0 }
+					min={ -100 }
 					max={ 100 }
 					unit={ {
 						value: innerGapType,

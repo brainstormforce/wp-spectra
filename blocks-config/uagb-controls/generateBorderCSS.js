@@ -19,20 +19,24 @@ const generateBorderCSS = ( attributes, prefix, deviceType = 'desktop' ) => {
 	const borderBottomWidthTablet = ! isNaN( attributes[prefix + 'BorderBottomWidthTablet'] ) ? attributes[prefix + 'BorderBottomWidthTablet']+'px' : '' ;
 	const borderLeftWidthTablet = ! isNaN( attributes[prefix + 'BorderLeftWidthTablet'] ) ? attributes[prefix + 'BorderLeftWidthTablet']+'px' : '' ;
 
-	const borderTopLeftRadius = ! isNaN( attributes[prefix + 'BorderTopLeftRadius'] ) ? attributes[prefix + 'BorderTopLeftRadius']+attributes[prefix+ 'BorderRadiusUnit'] : '' ;
-	const borderTopRightRadius = ! isNaN( attributes[prefix + 'BorderTopRightRadius'] ) ? attributes[prefix + 'BorderTopRightRadius']+attributes[prefix+ 'BorderRadiusUnit'] : '' ;
-	const borderBottomRightRadius = ! isNaN( attributes[prefix + 'BorderBottomRightRadius'] ) ? attributes[prefix + 'BorderBottomRightRadius']+attributes[prefix+ 'BorderRadiusUnit'] : '' ;
-	const borderBottomLeftRadius = ! isNaN( attributes[prefix + 'BorderBottomLeftRadius'] ) ? attributes[prefix + 'BorderBottomLeftRadius']+attributes[prefix+ 'BorderRadiusUnit'] : '' ;
+	const borderRadiusUnit = ( attributes[prefix + 'BorderRadiusUnit'] ) ? attributes[prefix + 'BorderRadiusUnit'] : 'px';
+	const borderRadiusUnitTablet = ( attributes[prefix + 'BorderRadiusUnitTablet'] ) ? attributes[prefix + 'BorderRadiusUnitTablet'] : 'px';
+	const borderRadiusUnitMobile = ( attributes[prefix + 'BorderRadiusUnitMobile'] ) ? attributes[prefix + 'BorderRadiusUnitMobile'] : 'px';
 
-	const borderTopLeftRadiusMobile = ! isNaN( attributes[prefix + 'BorderTopLeftRadiusMobile'] ) ? attributes[prefix + 'BorderTopLeftRadiusMobile']+'px' : '' ;
-	const borderTopRightRadiusMobile = ! isNaN( attributes[prefix + 'BorderTopRightRadiusMobile'] ) ? attributes[prefix + 'BorderTopRightRadiusMobile']+'px' : '' ;
-	const borderBottomRightRadiusMobile = ! isNaN( attributes[prefix + 'BorderBottomRightRadiusMobile'] ) ? attributes[prefix + 'BorderBottomRightRadiusMobile']+'px' : '' ;
-	const borderBottomLeftRadiusMobile = ! isNaN( attributes[prefix + 'BorderBottomLeftRadiusMobile'] ) ? attributes[prefix + 'BorderBottomLeftRadiusMobile']+'px' : '' ;
+	const borderTopLeftRadius = ! isNaN( attributes[prefix + 'BorderTopLeftRadius'] ) ? attributes[prefix + 'BorderTopLeftRadius']+borderRadiusUnit : '' ;
+	const borderTopRightRadius = ! isNaN( attributes[prefix + 'BorderTopRightRadius'] ) ? attributes[prefix + 'BorderTopRightRadius']+borderRadiusUnit : '' ;
+	const borderBottomRightRadius = ! isNaN( attributes[prefix + 'BorderBottomRightRadius'] ) ? attributes[prefix + 'BorderBottomRightRadius']+borderRadiusUnit : '' ;
+	const borderBottomLeftRadius = ! isNaN( attributes[prefix + 'BorderBottomLeftRadius'] ) ? attributes[prefix + 'BorderBottomLeftRadius']+borderRadiusUnit : '' ;
 
-	const borderTopLeftRadiusTablet = ! isNaN( attributes[prefix + 'BorderTopLeftRadiusTablet'] ) ? attributes[prefix + 'BorderTopLeftRadiusTablet']+'px' : '' ;
-	const borderTopRightRadiusTablet = ! isNaN( attributes[prefix + 'BorderTopRightRadiusTablet'] ) ? attributes[prefix + 'BorderTopRightRadiusTablet']+'px' : '' ;
-	const borderBottomRightRadiusTablet = ! isNaN( attributes[prefix + 'BorderBottomRightRadiusTablet'] ) ? attributes[prefix + 'BorderBottomRightRadiusTablet']+'px' : '' ;
-	const borderBottomLeftRadiusTablet = ! isNaN( attributes[prefix + 'BorderBottomLeftRadiusTablet'] ) ? attributes[prefix + 'BorderBottomLeftRadiusTablet']+'px' : '' ;
+	const borderTopLeftRadiusMobile = ! isNaN( attributes[prefix + 'BorderTopLeftRadiusMobile'] ) ? attributes[prefix + 'BorderTopLeftRadiusMobile']+borderRadiusUnitMobile : '' ;
+	const borderTopRightRadiusMobile = ! isNaN( attributes[prefix + 'BorderTopRightRadiusMobile'] ) ? attributes[prefix + 'BorderTopRightRadiusMobile']+borderRadiusUnitMobile : '' ;
+	const borderBottomRightRadiusMobile = ! isNaN( attributes[prefix + 'BorderBottomRightRadiusMobile'] ) ? attributes[prefix + 'BorderBottomRightRadiusMobile']+borderRadiusUnitMobile : '' ;
+	const borderBottomLeftRadiusMobile = ! isNaN( attributes[prefix + 'BorderBottomLeftRadiusMobile'] ) ? attributes[prefix + 'BorderBottomLeftRadiusMobile']+borderRadiusUnitMobile : '' ;
+
+	const borderTopLeftRadiusTablet = ! isNaN( attributes[prefix + 'BorderTopLeftRadiusTablet'] ) ? attributes[prefix + 'BorderTopLeftRadiusTablet']+borderRadiusUnitTablet : '' ;
+	const borderTopRightRadiusTablet = ! isNaN( attributes[prefix + 'BorderTopRightRadiusTablet'] ) ? attributes[prefix + 'BorderTopRightRadiusTablet']+borderRadiusUnitTablet : '' ;
+	const borderBottomRightRadiusTablet = ! isNaN( attributes[prefix + 'BorderBottomRightRadiusTablet'] ) ? attributes[prefix + 'BorderBottomRightRadiusTablet']+borderRadiusUnitTablet : '' ;
+	const borderBottomLeftRadiusTablet = ! isNaN( attributes[prefix + 'BorderBottomLeftRadiusTablet'] ) ? attributes[prefix + 'BorderBottomLeftRadiusTablet']+borderRadiusUnitTablet : '' ;
 
 	if( 'tablet' === deviceType ) {
 		if( 'none' !== attributes[prefix + 'BorderStyle'] ){
