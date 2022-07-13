@@ -183,7 +183,7 @@ $selectors = array(
 		'padding-top'    => UAGB_Helper::get_css_value( $field_top_padding, $attr['fieldpaddingUnit'] ),
 		'padding-bottom' => UAGB_Helper::get_css_value( $field_bottom_padding, $attr['fieldpaddingUnit'] ),
 	),
-	' .gform_wrapper .gfield textarea.large' => array(
+	' .gform_wrapper .gfield textarea' => array(
 		'background-color' => $attr['fieldBgColor'],
 		'color'            => $attr['fieldInputColor'],
 		'border-color'     => $attr['fieldBorderColor'],
@@ -354,6 +354,10 @@ $selectors = array(
 			),
 			$attr['fieldBorderRadiusType']
 		),
+	),
+	' .wp-block-uagb-gf-styler .gform_wrapper .ginput_container_select select'                => array(
+		'background-color' => $attr['fieldBgColor'],
+		'color'            => $attr['fieldInputColor'],
 	),
 	' .gfield_radio input[type="radio"] + label:before'    => array(
 		'background-color' => $attr['fieldBgColor'],
