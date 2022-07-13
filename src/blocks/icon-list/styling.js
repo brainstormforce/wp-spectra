@@ -289,8 +289,6 @@ function styling( props ) {
 			'-webkit-box-pack': alignment,
 			'-ms-flex-pack': alignment,
 			'align-items' : 'center',
-		};
-		selectors[' .block-editor-block-list__layout' ] = {
 			'display': 'inline-flex'
 		};
 		selectors[' .block-editor-block-list__layout .wp-block[data-type="uagb/icon-list-child"]' ] = {
@@ -300,7 +298,7 @@ function styling( props ) {
 			'margin-left': generateCSSUnit( gapFallback / 2, gapType ),
 		};
 	} else if( 'vertical' === iconListLayout ) {
-		selectors[ ' .uagb-icon-list__wrap' ] = {
+		selectors[ ' .uagb-icon-list__wrap .block-editor-block-list__layout' ] = {
 			'flex-direction': 'column',
 		};
 		selectors[ ' .wp-block[data-type="uagb/icon-list-child"]' ] = {
@@ -317,8 +315,6 @@ function styling( props ) {
 			'-webkit-box-pack': tabletAlignment,
 			'-ms-flex-pack': tabletAlignment,
 			'align-items' : 'center',
-		};
-		tabletSelectors[' .block-editor-block-list__layout' ] = {
 			'display': 'inline-flex'
 		};
 		tabletSelectors[' .block-editor-block-list__layout .wp-block[data-type="uagb/icon-list-child"]' ] = {
@@ -329,10 +325,12 @@ function styling( props ) {
 		};
 	} else if( 'vertical' === iconListLayoutTablet ) {
 		tabletSelectors[ ' .wp-block[data-type="uagb/icon-list-child"]' ] = {
-			'display': 'block',
 			'margin-left': 0 + ' !important',
 			'margin-right': 0 + ' !important',
 			'margin-bottom': generateCSSUnit( gapTabletFallback, gapType ),
+		};
+		tabletSelectors[ ' .uagb-icon-list__wrap .block-editor-block-list__layout' ] = {
+			'flex-direction': 'column',
 		};
 	}
 
@@ -342,8 +340,6 @@ function styling( props ) {
 			'-webkit-box-pack': mobileAlignment,
 			'-ms-flex-pack': mobileAlignment,
 			'align-items' : 'center',
-		};
-		mobileSelectors[' .block-editor-block-list__layout' ] = {
 			'display': 'inline-flex'
 		};
 		mobileSelectors[' .block-editor-block-list__layout .wp-block[data-type="uagb/icon-list-child"]' ] = {
@@ -358,6 +354,9 @@ function styling( props ) {
 			'margin-left': 0 + ' !important',
 			'margin-right': 0 + ' !important',
 			'margin-bottom': generateCSSUnit( gapMobileFallback, gapType ),
+		};
+		mobileSelectors[ ' .uagb-icon-list__wrap .block-editor-block-list__layout' ] = {
+			'flex-direction': 'column',
 		};
 	}
 
