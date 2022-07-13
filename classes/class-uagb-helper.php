@@ -1598,7 +1598,6 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 		 */
 		public static function backend_load_font_awesome_icons() {
 
-			// $json_file = UAGB_DIR . 'blocks-config/uagb-controls/uagb-icons.php';
 			$json_file = UAGB_DIR . 'blocks-config/uagb-controls/spectra-icons-v6.php';
 
 			if ( ! file_exists( $json_file ) ) {
