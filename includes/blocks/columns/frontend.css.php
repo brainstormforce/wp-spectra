@@ -77,7 +77,7 @@ if ( isset( $attr['backgroundVideoOpacity'] ) && '' !== $attr['backgroundVideoOp
 }
 
 $selectors = array(
-	'.uagb-columns__wrap'              => $style,
+	'.wp-block-uagb-columns.uagb-columns__wrap'              => $style,
 	' .uagb-columns__video-wrap'       => array(
 		'opacity' => $video_opacity,
 	),
@@ -137,7 +137,7 @@ if ( 'video' === $bg_type ) {
 }
 
 $m_selectors = array(
-	'.uagb-columns__wrap'              => array(
+	'.wp-block-uagb-columns.uagb-columns__wrap'              => array(
 		'padding-top'    => UAGB_Helper::get_css_value( $attr['topPaddingMobile'], $attr['mobilePaddingType'] ),
 		'padding-bottom' => UAGB_Helper::get_css_value( $attr['bottomPaddingMobile'], $attr['mobilePaddingType'] ),
 		'padding-left'   => UAGB_Helper::get_css_value( $attr['leftPaddingMobile'], $attr['mobilePaddingType'] ),
@@ -156,7 +156,7 @@ $m_selectors = array(
 );
 
 $t_selectors                        = array(
-	'.uagb-columns__wrap'              => array(
+	'.wp-block-uagb-columns.uagb-columns__wrap'              => array(
 		'padding-top'    => UAGB_Helper::get_css_value( $attr['topPaddingTablet'], $attr['tabletPaddingType'] ),
 		'padding-bottom' => UAGB_Helper::get_css_value( $attr['bottomPaddingTablet'], $attr['tabletPaddingType'] ),
 		'padding-left'   => UAGB_Helper::get_css_value( $attr['leftPaddingTablet'], $attr['tabletPaddingType'] ),
