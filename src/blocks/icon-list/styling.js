@@ -289,7 +289,8 @@ function styling( props ) {
 			'-webkit-box-pack': alignment,
 			'-ms-flex-pack': alignment,
 			'align-items' : 'center',
-			'display': 'inline-flex'
+			'display': 'inline-flex',
+			'flex-direction': 'row',
 		};
 		selectors[' .block-editor-block-list__layout .wp-block[data-type="uagb/icon-list-child"]' ] = {
 			'margin-right': generateCSSUnit( gapFallback / 2, gapType ),
@@ -315,7 +316,8 @@ function styling( props ) {
 			'-webkit-box-pack': tabletAlignment,
 			'-ms-flex-pack': tabletAlignment,
 			'align-items' : 'center',
-			'display': 'inline-flex'
+			'display': 'inline-flex',
+			'flex-direction': 'row',
 		};
 		tabletSelectors[' .block-editor-block-list__layout .wp-block[data-type="uagb/icon-list-child"]' ] = {
 			'margin-right': generateCSSUnit( gapTabletFallback / 2, gapType ),
@@ -340,7 +342,8 @@ function styling( props ) {
 			'-webkit-box-pack': mobileAlignment,
 			'-ms-flex-pack': mobileAlignment,
 			'align-items' : 'center',
-			'display': 'inline-flex'
+			'display': 'inline-flex',
+			'flex-direction': 'row',
 		};
 		mobileSelectors[' .block-editor-block-list__layout .wp-block[data-type="uagb/icon-list-child"]' ] = {
 			'margin-right': generateCSSUnit( gapMobileFallback / 2, gapType ),
