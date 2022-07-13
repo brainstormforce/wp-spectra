@@ -31,6 +31,7 @@ const setInitialState = ( store ) => {
 			comingSoonPage: data.coming_soon_page,
 			blocksEditorSpacing: data.blocks_editor_spacing,
 			enableFontAwesome5: data.load_font_awesome_5,
+			enableAutoBlockRecovery: data.auto_block_recovery,
         };
 
         store.dispatch( {type: 'UPDATE_INITIAL_STATE', payload: initialState} );
