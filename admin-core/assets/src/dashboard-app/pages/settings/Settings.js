@@ -19,6 +19,7 @@ import ComingSoon from '@DashboardApp/pages/settings/ComingSoon';
 import SettingsSkeleton from '@DashboardApp/pages/settings/SettingsSkeleton';
 import BlockSettings from '@DashboardApp/pages/settings/BlockSettings';
 import LoadFontAwesome5 from '@DashboardApp/pages/settings/LoadFontAwesome5';
+import AutoBlockRecovery from '@DashboardApp/pages/settings/AutoBlockRecovery';
 import { Link, useLocation } from 'react-router-dom';
 import{ useEffect } from 'react';
 
@@ -86,6 +87,7 @@ const Settings = () => {
 					{ 'global-settings' === activeSettingsNavigationTab &&
 						<>
                             <LoadFontAwesome5/>
+                            <AutoBlockRecovery/>
 							<ContentWidth/>
 							<BlocksEditorSpacing/>
                             <CollapsePanels/>
