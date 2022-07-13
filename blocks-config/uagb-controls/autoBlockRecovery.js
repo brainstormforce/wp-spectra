@@ -2,8 +2,8 @@ import { select,dispatch, subscribe } from '@wordpress/data';
 import { createBlock, parse, serialize } from '@wordpress/blocks';
 import isInvalid from './isInvalid';
 
-// Flag to Detect if At Least One Block Needs Recovering.
-let recoveryRequired = false;
+// Flag to Detect if At Least One Block was Recovered.
+let recoveryDone = false;
 
 // Create Recovery CSS to Hide All Errornous Blocks.
 const createRecoveryCSS = () => {
@@ -62,7 +62,7 @@ const recoverBlocks = ( allBlocks ) => (
 			const [ recoveredBlocks, isRecovered ] = initBlockRecovery( parsedBlocks );
 
 			if ( isRecovered ) {
-				recoveryRequired = true;
+				recoveryDone = true;
 				return {
 					blocks: recoveredBlocks,
 					isReusable: true,
@@ -73,14 +73,14 @@ const recoverBlocks = ( allBlocks ) => (
 
 		if ( curBlock.innerBlocks && curBlock.innerBlocks.length ) {
 			const newInnerBlocks = recoverBlocks( curBlock.innerBlocks );
-			if ( newInnerBlocks.some( curBlock => curBlock.recovered ) ) {
+			if ( newInnerBlocks.some( ( innerBlock ) => innerBlock.recovered ) ) {
 				curBlock.innerBlocks = newInnerBlocks;
 				curBlock.replacedClientId = curBlock.clientId;
 				curBlock.recovered = true;
 			}
 		}
 		if ( isInvalid( curBlock ) ) {
-			recoveryRequired = true;
+			recoveryDone = true;
 			const newBlock = recoverBlock( curBlock );
 			newBlock.replacedClientId = curBlock.clientId;
 			newBlock.recovered = true;
@@ -115,8 +115,10 @@ const autoBlockRecovery = () => {
 					if ( block.recovered && block.replacedClientId ) {
 						dispatch( 'core/block-editor' ).replaceBlock( block.replacedClientId, block );
 					}
-				} )
-				recoveryRequired && console.log('%cSpectra Auto Recovery Enabled: All Spectra Blocks on this page have been recovered!', 'border-radius: 6px; width: 100%; margin: 16px 0; padding: 16px; background-color: #007CBA; color: #fff; font-weight: bold; text-shadow: 2px 2px 2px #0063A1;');
+				} );
+				if ( recoveryDone ) {
+					console.log( '%cSpectra Auto Recovery Enabled: All Spectra Blocks on this page have been recovered!', 'border-radius: 6px; width: 100%; margin: 16px 0; padding: 16px; background-color: #007CBA; color: #fff; font-weight: bold; text-shadow: 2px 2px 2px #0063A1;' ); //eslint-disable-line no-console
+				}
 				destroyRecoveryCSS();
 			}
 		} );
