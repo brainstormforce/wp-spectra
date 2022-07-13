@@ -376,7 +376,7 @@ $selectors = array(
 	),
 
 	// Underline border.
-	' .uagb-gf-styler__field-style-underline .gform_wrapper.gravity-theme input:not([type=submit])' => array(
+	' .uagb-gf-styler__field-style-underline .gform_wrapper input:not([type=submit])' => array(
 		'border-style'        => 'none',
 		'border-bottom-color' => $attr['fieldBorderColor'],
 		'border-bottom-style' => 'solid',
