@@ -19,7 +19,6 @@ export const isInvalid = ( block, allowedTags = ALLOWED_ERROR_TAGS ) => {
 		return false
 	}
 
-	return true;
 	// Only do this for invalid blocks.
 	if ( isValid ) {
 		return false
@@ -27,6 +26,7 @@ export const isInvalid = ( block, allowedTags = ALLOWED_ERROR_TAGS ) => {
 	if ( ! validationIssues.length ) {
 		return false
 	}
+	return true;
 	// Check whether we're missing a Stackable class.
 	if ( isMissingStackableClass( validationIssues[ 0 ] ) ) {
 		return true
