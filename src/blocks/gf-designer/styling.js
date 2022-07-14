@@ -431,9 +431,11 @@ successMsgLetterSpacingType,
 				fieldpaddingUnit
 			),
 		},
-		' .gform_wrapper.gravity-theme .gfield textarea': {
+		' .gform_wrapper .gfield textarea': {
 			'background-color': fieldBgColor,
 			'color': fieldInputColor,
+		},
+		' .gform_wrapper.gravity-theme .gfield textarea': {
 			'border-color': fieldBorderColor,
 			'border-width': generateCSSUnit(
 				getFallbackNumber( fieldBorderWidth, 'fieldBorderWidth', blockName ),

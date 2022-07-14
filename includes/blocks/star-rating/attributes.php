@@ -41,10 +41,10 @@ return array(
 	'fontTransform'            => '',
 	'fontDecoration'           => '',
 	// letter spacing.
-	'letterSpacing'       => '',
-	'letterSpacingTablet' => '',
-	'letterSpacingMobile' => '',
-	'letterSpacingType'   => 'px',
+	'letterSpacing'            => '',
+	'letterSpacingTablet'      => '',
+	'letterSpacingMobile'      => '',
+	'letterSpacingType'        => 'px',
 	'alignTablet'              => '',
 	'alignMobile'              => '',
 	// padding.

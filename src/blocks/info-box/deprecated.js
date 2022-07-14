@@ -491,6 +491,10 @@ const attributes = {
 		type: "boolean",
 		default: true,
 	},
+	iconView: {
+		type: 'string',
+		default: 'none',
+	},
 }
 
 const deprecated = [
