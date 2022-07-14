@@ -126,11 +126,9 @@ if ( ! class_exists( 'UAGB_Post_Timeline' ) ) {
 						),
 						'horizontalSpaceTablet'      => array(
 							'type'    => 'number',
-							'default' => 10,
 						),
 						'horizontalSpaceMobile'      => array(
 							'type'    => 'number',
-							'default' => 10,
 						),
 						'horizontalSpaceUnit'        => array(
 							'type'    => 'string',
@@ -150,11 +148,9 @@ if ( ! class_exists( 'UAGB_Post_Timeline' ) ) {
 						),
 						'verticalSpaceTablet'        => array(
 							'type'    => 'number',
-							'default' => 15,
 						),
 						'verticalSpaceMobile'        => array(
 							'type'    => 'number',
-							'default' => 15,
 						),
 						'verticalSpaceUnit'          => array(
 							'type'    => 'string',

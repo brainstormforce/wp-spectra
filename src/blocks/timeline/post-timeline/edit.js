@@ -39,7 +39,11 @@ const PostTimelineComponent = ( props ) => {
 			leftPadding,
 			contentPadding,
 			ctaBottomSpacing,
-			headTopSpacing
+			headTopSpacing,
+			timelinAlignment,
+			stack,
+			timelinAlignmentTablet,
+			timelinAlignmentMobile
 		} = props.attributes;
 
 		if ( bgPadding ) {
@@ -73,6 +77,27 @@ const PostTimelineComponent = ( props ) => {
 				props.setAttributes( { leftMargin: horizontalSpace } );
 			}
 		}
+
+		if( timelinAlignment ) {
+            if( 'none' === stack ) { 
+                if( undefined === timelinAlignmentTablet ) {
+                    props.setAttributes( { timelinAlignmentTablet: timelinAlignment } );
+                }
+                if( undefined === timelinAlignmentMobile ) {
+                    props.setAttributes( { timelinAlignmentMobile: timelinAlignment } );
+                }
+            } else {
+                if( undefined === timelinAlignmentTablet && 'tablet' === stack ) {
+                    props.setAttributes( { timelinAlignmentTablet: 'left' } );
+                    props.setAttributes( { timelinAlignmentMobile: 'left' } );
+                }
+
+                if( undefined === timelinAlignmentMobile && 'mobile' === stack ) {
+                    props.setAttributes( { timelinAlignmentMobile: 'left' } );
+                }
+            }
+        }
+
 	}, [] );
 
 	useEffect( () => {

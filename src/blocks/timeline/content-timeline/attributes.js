@@ -151,14 +151,12 @@ const attributes = {
 	},
 	horizontalSpaceTablet         : {
 		type    : 'number',
-		default : 10,
 		UAGCopyPaste: {
 			styleType: 'row-gap-tablet'
 		},
 	},
 	horizontalSpaceMobile         : {
 		type    : 'number',
-		default : 10,
 		UAGCopyPaste: {
 			styleType: 'row-gap-mobile'
 		},
@@ -184,14 +182,12 @@ const attributes = {
 	},
 	verticalSpaceTablet      : {
 		type    : 'number',
-		default : 15,
 		UAGCopyPaste: {
 			styleType: 'column-gap-tablet'
 		},
 	},
 	verticalSpaceMobile     : {
 		type    : 'number',
-		default : 15,
 		UAGCopyPaste: {
 			styleType: 'column-gap-mobile'
 		},

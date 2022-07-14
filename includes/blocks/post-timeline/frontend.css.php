@@ -71,8 +71,6 @@ $selectors = array(
 
 $desktop_selectors = UAGB_Block_Helper::get_timeline_selectors( $attr );
 $selectors         = array_merge( $selectors, $desktop_selectors );
-$is_stack_tablet   = ( ( isset( $atts['timelinAlignmentTablet'] ) && 'center' === $atts['timelinAlignmentTablet'] ) || ( 'tablet' === $attr['stack'] ) ) ? false : true;
-$is_stack_mobile   = ( ( isset( $atts['timelinAlignmentMobile'] ) && 'center' === $atts['timelinAlignmentMobile'] ) || ( 'tablet' === $attr['stack'] || 'mobile' === $attr['stack'] ) ) ? false : true;
 
 $t_selectors = array(
 	' .dashicons-admin-users'                              => array(
