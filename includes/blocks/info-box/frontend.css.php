@@ -484,6 +484,12 @@ $t_selectors = array(
 	),
 );
 
+if ( 'above-title' === $attr['iconimgPosition'] || 'below-title' === $attr['iconimgPosition'] ) { // For backward user.
+	$selectors[' .uagb-infobox__content-wrap'] = array(
+		'text-align' => $attr['headingAlign'],
+	);
+}
+
 if ( 'above-title' === $attr['iconimgPosition'] ) {
 	$selectors['.uagb-infobox-icon-above-title']   = array(
 		'text-align' => $attr['headingAlign'],
