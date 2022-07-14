@@ -258,10 +258,10 @@ $selectors = array(
 		'.uagb-timeline__right'                   => array(
 			'text-align' => $attr['alignMobile'],
 		),
-		' .uagb-timeline__marker svg'       => array(
+		' .uagb-timeline__marker svg'             => array(
 			'width' => UAGB_Helper::get_css_value( $icon_size_mobile_fallback, 'px' ),
 		),
-		' .uagb-timeline__marker'           => array(
+		' .uagb-timeline__marker'                 => array(
 			'background-color' => $attr['separatorBg'],
 			'min-height'       => UAGB_Helper::get_css_value( $connector_bg_size_mobile_fallback, 'px' ),
 			'min-width'        => UAGB_Helper::get_css_value( $connector_bg_size_mobile_fallback, 'px' ),
@@ -286,10 +286,10 @@ $selectors = array(
 	);
 
 	$t_selectors = array(
-		' .uagb-timeline__marker svg'       => array(
+		' .uagb-timeline__marker svg'             => array(
 			'width' => UAGB_Helper::get_css_value( $icon_size_tablet_fallback, 'px' ),
 		),
-		' .uagb-timeline__heading'          => array(
+		' .uagb-timeline__heading'                => array(
 			'text-align'    => $attr['alignTablet'],
 			'margin-bottom' => UAGB_Helper::get_css_value( $attr['headSpaceTablet'], 'px' ),
 		),
@@ -343,10 +343,10 @@ $selectors = array(
 		'.uagb-timeline__right'                   => array(
 			'text-align' => $attr['alignTablet'],
 		),
-		' .uagb-timeline__marker svg'       => array(
+		' .uagb-timeline__marker svg'             => array(
 			'width' => UAGB_Helper::get_css_value( $icon_size_tablet_fallback, 'px' ),
 		),
-		' .uagb-timeline__marker'           => array(
+		' .uagb-timeline__marker'                 => array(
 			'background-color' => $attr['separatorBg'],
 			'min-height'       => UAGB_Helper::get_css_value( $connector_bg_size_tablet_fallback, 'px' ),
 			'min-width'        => UAGB_Helper::get_css_value( $connector_bg_size_tablet_fallback, 'px' ),

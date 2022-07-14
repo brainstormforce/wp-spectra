@@ -33,12 +33,6 @@ const ContentTimelineComponent = ( props ) => {
         setAttributes( { childMigrate: true } );
 
         const {
-            verticalSpace,
-            horizontalSpace,
-            topMargin,
-            rightMargin,
-            bottomMargin,
-            leftMargin,
             bgPadding,
             topPadding,
             rightPadding,
