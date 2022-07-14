@@ -69,36 +69,44 @@ if ( isset( $attr['contentWidth'] ) ) {
 	}
 }
 
-$style['max-width'] = $inner_width;
-
 $video_opacity = 0.5;
 if ( isset( $attr['backgroundVideoOpacity'] ) && '' !== $attr['backgroundVideoOpacity'] ) {
 	$video_opacity = ( 1 < $attr['backgroundVideoOpacity'] ) ? ( ( 100 - $attr['backgroundVideoOpacity'] ) / 100 ) : ( ( 1 - $attr['backgroundVideoOpacity'] ) );
 }
 
 $selectors = array(
-	'.wp-block-uagb-columns.uagb-columns__wrap'              => $style,
-	' .uagb-columns__video-wrap'       => array(
+	'.wp-block-uagb-columns.uagb-columns__wrap' => $style,
+	' .uagb-columns__video-wrap'                => array(
 		'opacity' => $video_opacity,
 	),
-	' .uagb-column__wrap'              => array(
+	' > .uagb-columns__inner-wrap'              => array( // For backward user.
+		'max-width' => $inner_width,
+	),
+	' .uagb-column__inner-wrap'                 => array( // For backward user.
 		'padding' => UAGB_Helper::get_css_value( $attr['columnGap'], 'px' ),
 	),
-	' .uagb-columns__shape-top svg'    => array(
+	' .uagb-column__wrap'                       => array(
+		'padding' => UAGB_Helper::get_css_value( $attr['columnGap'], 'px' ),
+	),
+	' .uagb-columns__shape-top svg'             => array(
 		'height' => UAGB_Helper::get_css_value( $attr['topHeight'], 'px' ),
 	),
 	' .uagb-columns__shape.uagb-columns__shape-top .uagb-columns__shape-fill' => array(
 		'fill' => UAGB_Helper::hex2rgba( $attr['topColor'], ( isset( $attr['topDividerOpacity'] ) && '' !== $attr['topDividerOpacity'] ) ? $attr['topDividerOpacity'] : 100 ),
 	),
-	' .uagb-columns__shape-bottom svg' => array(
+	' .uagb-columns__shape-bottom svg'          => array(
 		'height' => UAGB_Helper::get_css_value( $attr['bottomHeight'], 'px' ),
 	),
 	' .uagb-columns__shape.uagb-columns__shape-bottom .uagb-columns__shape-fill' => array(
 		'fill' => UAGB_Helper::hex2rgba( $attr['bottomColor'], ( isset( $attr['bottomDividerOpacity'] ) && '' !== $attr['bottomDividerOpacity'] ) ? $attr['bottomDividerOpacity'] : 100 ),
 	),
-	'.wp-block-uagb-columns'           => array(
+	'.wp-block-uagb-columns'                    => array(
 		'box-shadow' => UAGB_Helper::get_css_value( $attr['boxShadowHOffset'], 'px' ) . ' ' . UAGB_Helper::get_css_value( $attr['boxShadowVOffset'], 'px' ) . ' ' . UAGB_Helper::get_css_value( $attr['boxShadowBlur'], 'px' ) . ' ' . UAGB_Helper::get_css_value( $attr['boxShadowSpread'], 'px' ) . ' ' . $attr['boxShadowColor'] . ' ' . $boxShadowPositionCSS,
 	),
+);
+
+$selectors[ '.wp-block-uagb-columns.uagb-columns__wrap.uagb-columns__max_width-' . $attr['contentWidth'] ] = array(
+	'max-width' => $inner_width,
 );
 
 if ( '' !== $attr['topWidth'] ) {
@@ -137,7 +145,7 @@ if ( 'video' === $bg_type ) {
 }
 
 $m_selectors = array(
-	'.wp-block-uagb-columns.uagb-columns__wrap'              => array(
+	'.wp-block-uagb-columns.uagb-columns__wrap' => array(
 		'padding-top'    => UAGB_Helper::get_css_value( $attr['topPaddingMobile'], $attr['mobilePaddingType'] ),
 		'padding-bottom' => UAGB_Helper::get_css_value( $attr['bottomPaddingMobile'], $attr['mobilePaddingType'] ),
 		'padding-left'   => UAGB_Helper::get_css_value( $attr['leftPaddingMobile'], $attr['mobilePaddingType'] ),
@@ -147,16 +155,16 @@ $m_selectors = array(
 		'margin-left'    => UAGB_Helper::get_css_value( $mobile_left_margin, $attr['mobileMarginType'] ),
 		'margin-right'   => UAGB_Helper::get_css_value( $mobile_right_margin, $attr['mobileMarginType'] ),
 	),
-	' .uagb-columns__shape-bottom svg' => array(
+	' .uagb-columns__shape-bottom svg'          => array(
 		'height' => UAGB_Helper::get_css_value( $attr['bottomHeightMobile'], 'px' ),
 	),
-	' .uagb-columns__shape-top svg'    => array(
+	' .uagb-columns__shape-top svg'             => array(
 		'height' => UAGB_Helper::get_css_value( $attr['topHeightMobile'], 'px' ),
 	),
 );
 
 $t_selectors                        = array(
-	'.wp-block-uagb-columns.uagb-columns__wrap'              => array(
+	'.wp-block-uagb-columns.uagb-columns__wrap' => array(
 		'padding-top'    => UAGB_Helper::get_css_value( $attr['topPaddingTablet'], $attr['tabletPaddingType'] ),
 		'padding-bottom' => UAGB_Helper::get_css_value( $attr['bottomPaddingTablet'], $attr['tabletPaddingType'] ),
 		'padding-left'   => UAGB_Helper::get_css_value( $attr['leftPaddingTablet'], $attr['tabletPaddingType'] ),
@@ -166,10 +174,10 @@ $t_selectors                        = array(
 		'margin-left'    => UAGB_Helper::get_css_value( $tablet_left_margin, $attr['tabletMarginType'] ),
 		'margin-right'   => UAGB_Helper::get_css_value( $tablet_right_margin, $attr['tabletMarginType'] ),
 	),
-	' .uagb-columns__shape-bottom svg' => array(
+	' .uagb-columns__shape-bottom svg'          => array(
 		'height' => UAGB_Helper::get_css_value( $attr['bottomHeightTablet'], 'px' ),
 	),
-	' .uagb-columns__shape-top svg'    => array(
+	' .uagb-columns__shape-top svg'             => array(
 		'height' => UAGB_Helper::get_css_value( $attr['topHeightTablet'], 'px' ),
 	),
 );
