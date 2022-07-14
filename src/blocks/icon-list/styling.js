@@ -87,6 +87,23 @@ function styling( props ) {
 		blockMarginUnit,
 		blockMarginUnitTablet,
 		blockMarginUnitMobile,
+		// padding
+		blockTopPadding,
+		blockRightPadding,
+		blockLeftPadding,
+		blockBottomPadding,
+		blockTopPaddingTablet,
+		blockRightPaddingTablet,
+		blockLeftPaddingTablet,
+		blockBottomPaddingTablet,
+		blockTopPaddingMobile,
+		blockRightPaddingMobile,
+		blockLeftPaddingMobile,
+		blockBottomPaddingMobile,
+		blockPaddingUnit,
+		blockPaddingUnitTablet,
+		blockPaddingUnitMobile,
+		blockPaddingLink,
 	} = props.attributes;
 
 	const gapFallback = getFallbackNumber( gap, 'gap', blockName );
