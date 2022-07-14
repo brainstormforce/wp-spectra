@@ -1000,6 +1000,25 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 					'excerptLetterSpacingTablet'    => array(
 						'type' => 'number',
 					),
+					'borderWidth'                   => array(
+						'type'    => 'number',
+						'default' => '',
+					),
+					'borderStyle'                   => array(
+						'type'    => 'string',
+						'default' => 'none',
+					),
+					'borderColor'                   => array(
+						'type'    => 'string',
+						'default' => '',
+					),
+					'borderHColor'                  => array(
+						'type' => 'string',
+					),
+					'borderRadius'                  => array(
+						'type'    => 'number',
+						'default' => '',
+					),
 				),
 			);
 		}
@@ -1332,6 +1351,7 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 				'postPagination'     => ( isset( $attributes['postPagination'] ) && true === $attributes['postPagination'] ) ? sanitize_text_field( $attributes['postPagination'] ) : false,
 				'paginationType'     => ( isset( $attributes['paginationType'] ) && 'none' !== $attributes['paginationType'] ) ? sanitize_text_field( $attributes['paginationType'] ) : 'none',
 				'paged'              => ( isset( $attributes['paged'] ) ) ? sanitize_text_field( $attributes['paged'] ) : '',
+				'blockName'          => ( isset( $attributes['blockName'] ) ) ? sanitize_text_field( $attributes['blockName'] ) : '',
 			);
 		}
 

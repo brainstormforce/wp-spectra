@@ -216,7 +216,24 @@ function styling( props ) {
 		 iconView,
 		 iconBackgroundColor,
 		 iconBackgroundHoverColor,
-		 iconBorderWidth
+		 iconBorderWidth,
+		 
+		// padding
+		blockTopPadding,
+		blockRightPadding,
+		blockLeftPadding,
+		blockBottomPadding,
+		blockTopPaddingTablet,
+		blockRightPaddingTablet,
+		blockLeftPaddingTablet,
+		blockBottomPaddingTablet,
+		blockTopPaddingMobile,
+		blockRightPaddingMobile,
+		blockLeftPaddingMobile,
+		blockBottomPaddingMobile,
+		blockPaddingUnit,
+		blockPaddingUnitTablet,
+		blockPaddingUnitMobile,
 	 } = props.attributes;
 
 	 const blockName = props.name.replace( 'uagb/', '' );
@@ -238,6 +255,7 @@ function styling( props ) {
 	 const imageWidthFallbackMobile = isNaN( imageWidthMobile ) ? imageWidthFallbackTablet : imageWidthMobile;
 
 	 const ctaBorderCSS = generateBorderCSS( props.attributes, 'btn' );
+
 	 const ctaBorderCSSTablet = generateBorderCSS( props.attributes, 'btn', 'tablet' );
 	 const ctaBorderCSSMobile = generateBorderCSS( props.attributes, 'btn', 'mobile' );
 
@@ -376,6 +394,7 @@ function styling( props ) {
 				 iconimgBorderRadiusFallback,
 				 iconimgBorderRadiusUnit
 			 ),
+			 'box-sizing' : `${boxSizingImage}`,
 		 },
 		 // CTA style
 		 ' div.uagb-ifb-cta a.uagb-infobox-cta-link.uagb-infobox-cta-link': {
@@ -383,7 +402,6 @@ function styling( props ) {
 			 'font-family': ctaFontFamily,
 			 'font-weight': ctaFontWeight,
 			 'font-style': ctaFontStyle,
-			 'color': ctaLinkColor,
 			 'text-decoration': ctaDecoration,
 			 'text-transform': ctaTransform,
 			 'letter-spacing': generateCSSUnit( ctaLetterSpacing, ctaLetterSpacingType ),
@@ -509,11 +527,8 @@ function styling( props ) {
 			 'margin-right': generateCSSUnit( separatorRightMargin, seperatorSpaceUnit ),
 		 },
 		 // editor css is causing issue  thaat why i used important
-		 '.uagb-infobox__content-wrap  .uagb-ifb-content svg': {
+		 '.uagb-infobox__content-wrap .uagb-ifb-content svg': {
 			 'box-sizing' : `${boxSizingIcon}`,
-		 },
-		 '.uagb-infobox__content-wrap  .uagb-ifb-content img': {
-			 'box-sizing' : `${boxSizingImage}`,
 		 },
 	 };
 
@@ -1071,25 +1086,93 @@ function styling( props ) {
 			 ),
 			 'width': generateCSSUnit( ctaFontSizeMobile, ctaFontSizeType ),
 		 },
-		 '.uagb-infobox__content-wrap  .uagb-ifb-content img': {
+		 '.uagb-infobox__content-wrap .uagb-ifb-content img': {
 			 'box-sizing' : `${boxSizingImageMobile}`,
 		 },
 	 };
 
 	if (
-		iconimgPosition === 'above-title' ||
-		iconimgPosition === 'below-title'
+		iconimgPosition === 'above-title'
 	) {
-		selectors[ '.uagb-infobox__content-wrap' ] = {
+		selectors[ '.uagb-infobox-icon-above-title' ] = {
 			'text-align': headingAlign,
 		};
-		tabletSelectors[ '.uagb-infobox__content-wrap' ] = {
+		tabletSelectors[ '.uagb-infobox-icon-above-title' ] = {
 			'text-align': headingAlignTablet,
 		};
-		mobileSelectors[ '.uagb-infobox__content-wrap' ] = {
+		mobileSelectors[ '.uagb-infobox-icon-above-title' ] = {
 			'text-align': headingAlignMobile,
 		};
 	}
+
+	if (
+		iconimgPosition === 'below-title'
+	) {
+		selectors[ '.uagb-infobox-icon-below-title' ] = {
+			'text-align': headingAlign,
+		};
+		tabletSelectors[ '.uagb-infobox-icon-below-title' ] = {
+			'text-align': headingAlignTablet,
+		};
+		mobileSelectors[ '.uagb-infobox-icon-below-title' ] = {
+			'text-align': headingAlignMobile,
+		};
+	}
+
+	selectors[ '.uagb-infobox__content-wrap' ] = {
+		'padding-top': generateCSSUnit(
+			blockTopPadding,
+			blockPaddingUnit
+		),
+		'padding-right': generateCSSUnit(
+			blockRightPadding,
+			blockPaddingUnit
+		),
+		'padding-bottom': generateCSSUnit(
+			blockBottomPadding,
+			blockPaddingUnit
+		),
+		'padding-left': generateCSSUnit(
+			blockLeftPadding,
+			blockPaddingUnit
+		),
+	};
+	tabletSelectors[ '.uagb-infobox__content-wrap' ] = {
+		'padding-top': generateCSSUnit(
+			blockTopPaddingTablet,
+			blockPaddingUnitTablet
+		),
+		'padding-right': generateCSSUnit(
+			blockRightPaddingTablet,
+			blockPaddingUnitTablet
+		),
+		'padding-bottom': generateCSSUnit(
+			blockBottomPaddingTablet,
+			blockPaddingUnitTablet
+		),
+		'padding-left': generateCSSUnit(
+			blockLeftPaddingTablet,
+			blockPaddingUnitTablet
+		),
+	};
+	mobileSelectors[ '.uagb-infobox__content-wrap' ] = {
+		'padding-top': generateCSSUnit(
+			blockTopPaddingMobile,
+			blockPaddingUnitMobile
+		),
+		'padding-right': generateCSSUnit(
+			blockRightPaddingMobile,
+			blockPaddingUnitMobile
+		),
+		'padding-bottom': generateCSSUnit(
+			blockBottomPaddingMobile,
+			blockPaddingUnitMobile
+		),
+		'padding-left': generateCSSUnit(
+			blockLeftPaddingMobile,
+			blockPaddingUnitMobile
+		),
+	};
 
 	if ( imageWidthType ) {
 		// Image

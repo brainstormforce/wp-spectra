@@ -70,6 +70,22 @@ function styling( props ) {
 		iconBgHoverColor,
 		iconBorderColor,
 		iconBorderHoverColor,
+		// margin
+		blockTopMargin,
+		blockRightMargin,
+		blockLeftMargin,
+		blockBottomMargin,
+		blockTopMarginTablet,
+		blockRightMarginTablet,
+		blockLeftMarginTablet,
+		blockBottomMarginTablet,
+		blockTopMarginMobile,
+		blockRightMarginMobile,
+		blockLeftMarginMobile,
+		blockBottomMarginMobile,
+		blockMarginUnit,
+		blockMarginUnitTablet,
+		blockMarginUnitMobile,
 	} = props.attributes;
 
 	const gapFallback = getFallbackNumber( gap, 'gap', blockName );
@@ -163,6 +179,22 @@ function styling( props ) {
 		},
 		' .uagb-icon-list__wrap .block-editor-inner-blocks': {
 			'text-align': align,
+			'margin-top': generateCSSUnit(
+				blockTopMargin,
+				blockMarginUnit
+			),
+			'margin-right': generateCSSUnit(
+				blockRightMargin,
+				blockMarginUnit
+			),
+			'margin-bottom': generateCSSUnit(
+				blockBottomMargin,
+				blockMarginUnit
+			),
+			'margin-left': generateCSSUnit(
+				blockLeftMargin,
+				blockMarginUnit
+			),
 		},
 		' .wp-block-uagb-icon-list-child .uagb-icon-list__source-wrap svg': {
 			'color': iconColor,
@@ -190,8 +222,23 @@ function styling( props ) {
 		},
 		' .uagb-icon-list__wrap .block-editor-inner-blocks': {
 			'text-align': alignTablet,
+			'margin-top': generateCSSUnit(
+				blockTopMarginTablet,
+				blockMarginUnitTablet
+			),
+			'margin-right': generateCSSUnit(
+				blockRightMarginTablet,
+				blockMarginUnitTablet
+			),
+			'margin-bottom': generateCSSUnit(
+				blockBottomMarginTablet,
+				blockMarginUnitTablet
+			),
+			'margin-left': generateCSSUnit(
+				blockLeftMarginTablet,
+				blockMarginUnitTablet
+			),
 		},
-
 	};
 
 	mobileSelectors = {
@@ -200,6 +247,22 @@ function styling( props ) {
 		},
 		' .uagb-icon-list__wrap .block-editor-inner-blocks': {
 			'text-align': alignMobile,
+			'margin-top': generateCSSUnit(
+				blockTopMarginMobile,
+				blockMarginUnitMobile
+			),
+			'margin-right': generateCSSUnit(
+				blockRightMarginMobile,
+				blockMarginUnitMobile
+			),
+			'margin-bottom': generateCSSUnit(
+				blockBottomMarginMobile,
+				blockMarginUnitMobile
+			),
+			'margin-left': generateCSSUnit(
+				blockLeftMarginMobile,
+				blockMarginUnitMobile
+			),
 		},
 	};
 
@@ -225,12 +288,13 @@ function styling( props ) {
 			'justify-content': alignment,
 			'-webkit-box-pack': alignment,
 			'-ms-flex-pack': alignment,
-			'align-items' : alignment,
+			'align-items' : 'center',
 		};
-
+		selectors[' .block-editor-block-list__layout' ] = {
+			'display': 'inline-flex'
+		};
 		selectors[' .block-editor-block-list__layout .wp-block[data-type="uagb/icon-list-child"]' ] = {
 			'margin-right': generateCSSUnit( gapFallback / 2, gapType ),
-			'display': 'inline-flex'
 		};
 		selectors[' .block-editor-block-list__layout .wp-block[data-type="uagb/icon-list-child"]:not(:first-child)' ] = {
 			'margin-left': generateCSSUnit( gapFallback / 2, gapType ),
@@ -252,11 +316,13 @@ function styling( props ) {
 			'justify-content': tabletAlignment,
 			'-webkit-box-pack': tabletAlignment,
 			'-ms-flex-pack': tabletAlignment,
-			'align-items' : tabletAlignment,
+			'align-items' : 'center',
+		};
+		tabletSelectors[' .block-editor-block-list__layout' ] = {
+			'display': 'inline-flex'
 		};
 		tabletSelectors[' .block-editor-block-list__layout .wp-block[data-type="uagb/icon-list-child"]' ] = {
 			'margin-right': generateCSSUnit( gapTabletFallback / 2, gapType ),
-			'display': 'inline-flex'
 		};
 		tabletSelectors[' .block-editor-block-list__layout .wp-block[data-type="uagb/icon-list-child"]:not(:first-child)' ] = {
 			'margin-left': generateCSSUnit( gapTabletFallback / 2, gapType ),
@@ -275,11 +341,13 @@ function styling( props ) {
 			'justify-content': mobileAlignment,
 			'-webkit-box-pack': mobileAlignment,
 			'-ms-flex-pack': mobileAlignment,
-			'align-items' : mobileAlignment,
+			'align-items' : 'center',
+		};
+		mobileSelectors[' .block-editor-block-list__layout' ] = {
+			'display': 'inline-flex'
 		};
 		mobileSelectors[' .block-editor-block-list__layout .wp-block[data-type="uagb/icon-list-child"]' ] = {
 			'margin-right': generateCSSUnit( gapMobileFallback / 2, gapType ),
-			'display': 'inline-flex'
 		};
 		mobileSelectors[' .block-editor-block-list__layout .wp-block[data-type="uagb/icon-list-child"]:not(:first-child)' ] = {
 			'margin-left': generateCSSUnit( gapMobileFallback / 2, gapType ),

@@ -18,12 +18,11 @@ const BoxShadowControl = ( props ) => {
 
 	useLayoutEffect( () => {
 		window.addEventListener( 'click', function( e ){
-			const typoDiv = document.querySelector( '.uagb-box-shadow-advanced' );
-			const actionsDiv = document.querySelector( '.uag-box-shadow-button' );
-			if ( typoDiv ) {
-				if ( ! typoDiv?.contains( e.target ) && ! actionsDiv?.contains( e.target ) && ! e.target?.classList?.contains( 'uagb-advanced-color-indicate' ) && ! e.target?.parentElement?.closest( '.uagb-popover-color' ) ){
-					toggleAdvancedControls( false )
-				}
+			const popupButton = document.querySelector( `.active.popup-${blockId} .spectra-control-popup__options--action-button` );
+			const popupWrap = document.querySelector( `.active.popup-${blockId} .spectra-control-popup` );
+
+			if ( popupButton && ! popupButton?.contains( e.target ) && popupWrap && ! popupWrap?.contains( e.target ) && ! e.target?.classList?.contains( 'uagb-advanced-color-indicate' ) && ! e.target?.parentElement?.closest( '.uagb-popover-color' ) && ! e.target?.parentElement?.closest( '.uagb-reset' ) ) {
+				toggleAdvancedControls( false )
 			}
 		  } );
 	}, [] );
@@ -38,6 +37,7 @@ const BoxShadowControl = ( props ) => {
 		boxShadowPosition,
 		label = __( 'Box Shadow', 'ultimate-addons-for-gutenberg' ),
 		popup = false,
+		blockId
 	} = props;
 
 	let advancedControls;
@@ -59,7 +59,7 @@ const BoxShadowControl = ( props ) => {
 			<Range
 				label={ boxShadowHOffset.title }
 				value={ boxShadowHOffset.value }
-				min={ 0 }
+				min={ -100 }
 				max={ 100 }
 				displayUnit={ false }
 				setAttributes={setAttributes}
@@ -72,7 +72,7 @@ const BoxShadowControl = ( props ) => {
 			<Range
 				label={ boxShadowVOffset.title }
 				value={ boxShadowVOffset.value }
-				min={ 0 }
+				min={ -100 }
 				max={ 100 }
 				displayUnit={ false }
 				setAttributes={setAttributes}
@@ -94,7 +94,7 @@ const BoxShadowControl = ( props ) => {
 					label: boxShadowBlur.label,
 				} }
 			/>
-			{ /* Blur */ }
+			{ /* Spread */ }
 			<Range
 				label={ boxShadowSpread.title }
 				value={ boxShadowSpread.value }
@@ -161,6 +161,13 @@ const BoxShadowControl = ( props ) => {
 				className={ 'uag-box-shadow-button spectra-control-popup__options--action-button' }
 				aria-pressed={ showAdvancedControls }
 				onClick={ () => {
+						const allPopups = document.querySelectorAll( '.spectra-control-popup__options' );
+						if ( allPopups && 0 < allPopups.length ) {
+							for ( let i = 0; i < allPopups.length; i++ ) {
+								const popupButton = allPopups[i]?.querySelector( '.spectra-control-popup__options.active .spectra-control-popup__options--action-button' );
+								popupButton?.click();
+							}
+						}
 						toggleAdvancedControls( ! showAdvancedControls )
 						if ( ! showAdvancedControls ) {
 							const { getSelectedBlock } = select( 'core/block-editor' );
@@ -189,7 +196,7 @@ const BoxShadowControl = ( props ) => {
 
 	return popup ? (
 		<div
-			className={ `components-base-control uag-box-shadow-options spectra-control-popup__options ${ activeClass }` }
+			className={ `components-base-control uag-box-shadow-options spectra-control-popup__options popup-${blockId} ${ activeClass }` }
 		>
 			{ boxShadowAdvancedControls }
 			{ showAdvancedControls && advancedControls }
