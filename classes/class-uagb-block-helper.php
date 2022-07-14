@@ -388,6 +388,9 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 							$box_shadow_position_css,
 					), $overall_border_css
 				),
+				' .uagb-post__inner-wrap:hover'   => array(
+					'border-color'=> $attr['overallBorderHColor']
+				),
 				' .uagb-post__inner-wrap .uagb-post__text:not(.highlighted)' => array(
 					'margin-left'  => UAGB_Helper::get_css_value( $paddingLeft, $attr['contentPaddingUnit'] ),
 					'margin-right' => UAGB_Helper::get_css_value( $paddingRight, $attr['contentPaddingUnit'] ),
@@ -423,6 +426,22 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				),
 			);
 
+			// If hover blur or hover color are set, show the hover shadow.
+			if ( ( ( '' !== $attr['boxShadowBlurHover'] ) && ( null !== $attr['boxShadowBlurHover'] ) ) || '' !== $attr['boxShadowColorHover'] ) {
+
+				$selectors[ ' .uagb-post__inner-wrap:hover' ]['box-shadow'] = UAGB_Helper::get_css_value( $attr['boxShadowHOffsetHover'], 'px' ) .
+																			' ' .
+																			UAGB_Helper::get_css_value( $attr['boxShadowVOffsetHover'], 'px' ) .
+																			' ' .
+																			UAGB_Helper::get_css_value( $attr['boxShadowBlurHover'], 'px' ) .
+																			' ' .
+																			UAGB_Helper::get_css_value( $attr['boxShadowSpreadHover'], 'px' ) .
+																			' ' .
+																			$attr['boxShadowColorHover'] .
+																			' ' .
+																			$box_shadow_position_css_hover;
+
+			}
 			$selectors[' .uagb-post__text.uagb-post__title']['color']                            = $attr['titleColor'];
 			$selectors[' .uagb-post__text.uagb-post__title a']                                   = array(
 				'color' => $attr['titleColor'],

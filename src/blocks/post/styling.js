@@ -217,6 +217,7 @@ function styling( props ) {
 		boxShadowBlurHover,
 		boxShadowSpreadHover,
 		boxShadowPositionHover,
+		overallBorderHColor
 	} = props.attributes;
 
 	const overlayOpacityFallback = getFallbackNumber( overlayOpacity, 'overlayOpacity', blockName );
@@ -349,7 +350,17 @@ function styling( props ) {
 			),
 			'justify-content': paginationAlignment,
 		},
+		' .uagb-post__inner-wrap:hover': {
+			'border-color': overallBorderHColor
+		},
 	};
+
+
+	const boxShadowBlurHoverCSSUnit = ( '' === boxShadowBlurHover ) ? '' : generateCSSUnit( boxShadowBlurHover, 'px' );
+
+	selectors[' .uagb-post__inner-wrap:hover']['box-shadow'] = generateCSSUnit( boxShadowHOffsetHover, 'px' ) + ' ' + generateCSSUnit( boxShadowVOffsetHover, 'px' ) +	' ' +
+												boxShadowBlurHoverCSSUnit + ' ' +	generateCSSUnit( boxShadowSpreadHover, 'px' ) + ' ' +
+												boxShadowColorHover + ' ' +	boxShadowPositionCSSHover;
 
 	if ( 'left' === paginationAlignment ) {
 		selectors[' .uagb-post-pagination-wrap']['margin-left'] = generateCSSUnit( rowGapFallback / 2, rowGapUnit );

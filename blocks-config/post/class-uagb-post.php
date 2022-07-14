@@ -1050,6 +1050,9 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 						'type' => 'number',
 						'default' => 'outset',
 					),
+					'overallBorderHColor' => array(
+						'type' => 'string'
+					)
 				),
 			);
 		}
