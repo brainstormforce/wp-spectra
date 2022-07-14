@@ -14,6 +14,10 @@ $head_top_spacing_fallback   = UAGB_Block_Helper::get_fallback_number( $attr['he
 $author_space_fallback       = UAGB_Block_Helper::get_fallback_number( $attr['authorSpace'], 'authorSpace', $attr['blockName'] );
 $cta_bottom_spacing_fallback = UAGB_Block_Helper::get_fallback_number( $attr['ctaBottomSpacing'], 'ctaBottomSpacing', $attr['blockName'] );
 
+$horizontal_space = $attr['horizontalSpace'];
+$horizontal_space_tablet = '' !== $atts['horizontalSpaceTablet'] ? $atts['horizontalSpaceTablet'] : $horizontal_space;
+$horizontal_space_mobile = '' !== $atts['horizontalSpaceMobile'] ? $atts['horizontalSpaceMobile'] : $horizontal_space_tablet;
+
 $t_selectors = array();
 
 $left_margin  = isset( $attr['leftMargin'] ) ? $attr['leftMargin'] : $attr['horizontalSpace'];
@@ -64,8 +68,8 @@ $selectors = array(
 		'margin-top' => UAGB_Helper::get_css_value( $author_space_fallback, 'px' ),
 	),
 	'.uagb-timeline__center-block .uagb-timeline__marker' => array(
-		'margin-left'  => UAGB_Helper::get_css_value( $attr['horizontalSpace'], $attr['horizontalSpaceUnit'] ),
-		'margin-right' => UAGB_Helper::get_css_value( $attr['horizontalSpace'], $attr['horizontalSpaceUnit'] ),
+		'margin-left'  => UAGB_Helper::get_css_value( $horizontal_space, $attr['horizontalSpaceUnit'] ),
+		'margin-right' => UAGB_Helper::get_css_value( $horizontal_space, $attr['horizontalSpaceUnit'] ),
 	),
 );
 
@@ -92,8 +96,8 @@ $t_selectors = array(
 		'margin-top' => UAGB_Helper::get_css_value( $attr['authorSpaceTablet'], 'px' ),
 	),
 	'.uagb-timeline__center-block .uagb-timeline__marker'  => array(
-		'margin-left'  => UAGB_Helper::get_css_value( $attr['horizontalSpaceTablet'], $attr['horizontalSpaceUnitTablet'] ),
-		'margin-right' => UAGB_Helper::get_css_value( $attr['horizontalSpaceTablet'], $attr['horizontalSpaceUnitTablet'] ),
+		'margin-left'  => UAGB_Helper::get_css_value( $horizontal_space_tablet, $attr['horizontalSpaceUnitTablet'] ),
+		'margin-right' => UAGB_Helper::get_css_value( $horizontal_space_tablet, $attr['horizontalSpaceUnitTablet'] ),
 	),
 	' .uagb-timeline__day-new .uagb-timeline__inner-date-new' => array(
 		'text-align' => $attr['alignTablet'],
@@ -151,8 +155,8 @@ $m_selectors = array(
 		'margin-top' => UAGB_Helper::get_css_value( $attr['authorSpaceMobile'], 'px' ),
 	),
 	'.uagb-timeline__center-block .uagb-timeline__marker'  => array(
-		'margin-left'  => UAGB_Helper::get_css_value( $attr['horizontalSpaceMobile'], $attr['horizontalSpaceUnitMobile'] ),
-		'margin-right' => UAGB_Helper::get_css_value( $attr['horizontalSpaceMobile'], $attr['horizontalSpaceUnitTablet'] ),
+		'margin-left'  => UAGB_Helper::get_css_value( $horizontal_space_mobile, $attr['horizontalSpaceUnitMobile'] ),
+		'margin-right' => UAGB_Helper::get_css_value( $horizontal_space_mobile, $attr['horizontalSpaceUnitTablet'] ),
 	),
 	' .uagb-timeline__day-new .uagb-timeline__inner-date-new' => array(
 		'text-align' => $attr['alignMobile'],
