@@ -4,8 +4,8 @@
 import { getBorderAttributes } from '@Controls/generateAttributes';
 
 const borderAttributes = getBorderAttributes( 'btn', {
-	borderStyle: 'none',
-	borderColor:'#000',
+	borderStyle: 'solid',
+	borderColor:'#333',
 } );
 
 const attributes = {
