@@ -277,6 +277,8 @@ class Admin_Menu {
 					$exclude_blocks[] = 'wp-search';
 					$exclude_blocks[] = 'columns';
 					$exclude_blocks[] = 'section';
+					$exclude_blocks[] = 'cf7-styler';
+					$exclude_blocks[] = 'gf-styler';
 				}
 
 				if ( array_key_exists( 'extension', $info ) && $info['extension'] ) {
