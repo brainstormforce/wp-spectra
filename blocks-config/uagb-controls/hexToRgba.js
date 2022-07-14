@@ -10,7 +10,7 @@ function hexToRgba( color, opacity ) {
 		return '';
 	}
 
-	if ( ! opacity || '' === opacity ) {
+	if ( 'undefined' === typeof opacity || '' === opacity ) {
 		opacity = 100;
 	}
 
@@ -33,7 +33,7 @@ function hexToRgba( color, opacity ) {
 				b: parseInt( result[ 3 ], 16 ),
 		  }
 		: null;
-	
+
 	if ( parsed_color ) {
 		return (
 			'rgba(' +

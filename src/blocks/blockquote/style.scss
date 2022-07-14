@@ -41,9 +41,15 @@
 			font-style: normal;
 		}
 
+		.uagb-blockquote__icon-wrap {
+			display: inline-flex;
+			float: unset;
+		}
+
 		.uagb-blockquote__icon-wrap .uagb-blockquote__icon {
 			padding: 0;
 			margin-right: 0;
+			margin-bottom: 0;
 		}
 
 		&.uagb-blockquote__style-style_2 {
