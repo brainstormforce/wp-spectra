@@ -87,7 +87,7 @@ return array_merge(
 		'headingBottom'              => '',
 		'headingBottomTablet'        => '',
 		'headingBottomMobile'        => '',
-		'backgroundColor'            => '',
+		'backgroundColor'            => '#fff',
 		'linkHoverColor'             => '',
 		'headingColor'               => '',
 		'loadGoogleFonts'            => false,

@@ -167,6 +167,9 @@ $selectors = array(
 	' .uagb-blockquote__skin-border blockquote.uagb-blockquote:hover' => array(
 		'border-left-color' => $attr['borderHoverColor'],
 	),
+	'.uagb-blockquote__align-center blockquote.uagb-blockquote' => array(
+		'text-align' => $attr['align'],
+	),
 	// End backword.
 );
 

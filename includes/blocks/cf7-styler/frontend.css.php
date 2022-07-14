@@ -45,11 +45,11 @@ $border_mobile = UAGB_Block_Helper::uag_generate_border_css( $attr, 'input', 'mo
 $btn_border        = UAGB_Block_Helper::uag_generate_border_css( $attr, 'btn' );
 $btn_border        = UAGB_Block_Helper::uag_generate_deprecated_border_css(
 	$btn_border,
-	( isset( $attr['submitborderWidth'] ) ? $attr['submitborderWidth'] : '' ),
-	( isset( $attr['submitborderRadius'] ) ? $attr['submitborderRadius'] : '' ),
-	( isset( $attr['submitborderColor'] ) ? $attr['submitborderColor'] : '' ),
-	( isset( $attr['submitborderStyle'] ) ? $attr['submitborderStyle'] : '' ),
-	( isset( $attr['submitborderHColor'] ) ? $attr['submitborderHColor'] : '' )
+	( isset( $attr['buttonBorderWidth'] ) ? $attr['buttonBorderWidth'] : '' ),
+	( isset( $attr['buttonBorderRadius'] ) ? $attr['buttonBorderRadius'] : '' ),
+	( isset( $attr['buttonBorderColor'] ) ? $attr['buttonBorderColor'] : '' ),
+	( isset( $attr['buttonBorderStyle'] ) ? $attr['buttonBorderStyle'] : '' ),
+	( isset( $attr['buttonBorderHColor'] ) ? $attr['buttonBorderHColor'] : '' )
 );
 $btn_border_tablet = UAGB_Block_Helper::uag_generate_border_css( $attr, 'btn', 'tablet' );
 $btn_border_mobile = UAGB_Block_Helper::uag_generate_border_css( $attr, 'btn', 'mobile' );
