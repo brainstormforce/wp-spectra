@@ -24,6 +24,9 @@ ob_start();
 window.addEventListener("DOMContentLoaded", function(){
 	UAGBTimelineClasses( <?php echo wp_json_encode( $js_attr ); ?>, '<?php echo esc_attr( $selector ); ?>' );
 });
+window.addEventListener("resize", function(){
+	UAGBTimelineClasses( <?php echo wp_json_encode( $js_attr ); ?>, '<?php echo esc_attr( $selector ); ?>' );
+});
 <?php
 return ob_get_clean();
 ?>
