@@ -44,6 +44,10 @@ const ContentTimelineComponent = ( props ) => {
             stack
         } = attributes;
 
+        console.log( timelinAlignmentTablet );
+        console.log( stack );
+
+
         if ( bgPadding ) {
             if ( undefined === topPadding ) {
                 setAttributes( { topPadding: bgPadding } );

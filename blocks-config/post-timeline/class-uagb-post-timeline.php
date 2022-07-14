@@ -174,11 +174,9 @@ if ( ! class_exists( 'UAGB_Post_Timeline' ) ) {
 						),
 						'timelinAlignmentTablet'     => array(
 							'type'    => 'string',
-							'default' => 'center',
 						),
 						'timelinAlignmentMobile'     => array(
 							'type'    => 'string',
-							'default' => 'center',
 						),
 						'arrowlinAlignment'          => array(
 							'type'    => 'string',
