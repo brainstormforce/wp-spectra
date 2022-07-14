@@ -69,8 +69,6 @@ if ( isset( $attr['contentWidth'] ) ) {
 	}
 }
 
-$style['max-width'] = $inner_width;
-
 $video_opacity = 0.5;
 if ( isset( $attr['backgroundVideoOpacity'] ) && '' !== $attr['backgroundVideoOpacity'] ) {
 	$video_opacity = ( 1 < $attr['backgroundVideoOpacity'] ) ? ( ( 100 - $attr['backgroundVideoOpacity'] ) / 100 ) : ( ( 1 - $attr['backgroundVideoOpacity'] ) );
@@ -80,6 +78,12 @@ $selectors = array(
 	'.wp-block-uagb-columns.uagb-columns__wrap' => $style,
 	' .uagb-columns__video-wrap'                => array(
 		'opacity' => $video_opacity,
+	),
+	' > .uagb-columns__inner-wrap'              => array( // For backward user.
+		'max-width' => $inner_width,
+	),
+	' .uagb-column__inner-wrap'                 => array( // For backward user.
+		'padding' => UAGB_Helper::get_css_value( $attr['columnGap'], 'px' ),
 	),
 	' .uagb-column__wrap'                       => array(
 		'padding' => UAGB_Helper::get_css_value( $attr['columnGap'], 'px' ),
@@ -99,6 +103,10 @@ $selectors = array(
 	'.wp-block-uagb-columns'                    => array(
 		'box-shadow' => UAGB_Helper::get_css_value( $attr['boxShadowHOffset'], 'px' ) . ' ' . UAGB_Helper::get_css_value( $attr['boxShadowVOffset'], 'px' ) . ' ' . UAGB_Helper::get_css_value( $attr['boxShadowBlur'], 'px' ) . ' ' . UAGB_Helper::get_css_value( $attr['boxShadowSpread'], 'px' ) . ' ' . $attr['boxShadowColor'] . ' ' . $boxShadowPositionCSS,
 	),
+);
+
+$selectors[ '.wp-block-uagb-columns.uagb-columns__wrap.uagb-columns__max_width-' . $attr['contentWidth'] ] = array(
+	'max-width' => $inner_width,
 );
 
 if ( '' !== $attr['topWidth'] ) {

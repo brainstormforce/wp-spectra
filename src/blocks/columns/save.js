@@ -28,6 +28,7 @@ export default function save( props ) {
 		reverseMobile,
 		topContentAboveShape,
 		bottomContentAboveShape,
+		contentWidth
 	} = attributes;
 
 	const CustomTag = `${ tag }`;
@@ -92,7 +93,8 @@ export default function save( props ) {
 				reverseTabletClass,
 				reverseMobileClass,
 				`uagb-block-${ block_id }`,
-				`uagb-columns__columns-${ columns }`
+				`uagb-columns__columns-${ columns }`,
+				`uagb-columns__max_width-${ contentWidth }`,
 			) }
 		>
 			<div className="uagb-columns__overlay"></div>
