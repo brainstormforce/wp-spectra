@@ -213,6 +213,22 @@ function styling( props ) {
 				blockLeftMargin,
 				blockMarginUnit
 			),
+			'padding-top': generateCSSUnit(
+				blockTopPadding,
+				blockPaddingUnit
+			),
+			'padding-right': generateCSSUnit(
+				blockRightPadding,
+				blockPaddingUnit
+			),
+			'padding-bottom': generateCSSUnit(
+				blockBottomPadding,
+				blockPaddingUnit
+			),
+			'padding-left': generateCSSUnit(
+				blockLeftPadding,
+				blockPaddingUnit
+			),
 		},
 		' .wp-block-uagb-icon-list-child .uagb-icon-list__source-wrap svg': {
 			'color': iconColor,
@@ -256,6 +272,22 @@ function styling( props ) {
 				blockLeftMarginTablet,
 				blockMarginUnitTablet
 			),
+			'padding-top': generateCSSUnit(
+				blockTopPaddingTablet,
+				blockPaddingUnitTablet
+			),
+			'padding-right': generateCSSUnit(
+				blockRightPaddingTablet,
+				blockPaddingUnitTablet
+			),
+			'padding-bottom': generateCSSUnit(
+				blockBottomPaddingTablet,
+				blockPaddingUnitTablet
+			),
+			'padding-left': generateCSSUnit(
+				blockLeftPaddingTablet,
+				blockPaddingUnitTablet
+			),
 		},
 	};
 
@@ -280,6 +312,22 @@ function styling( props ) {
 			'margin-left': generateCSSUnit(
 				blockLeftMarginMobile,
 				blockMarginUnitMobile
+			),
+			'padding-top': generateCSSUnit(
+				blockTopPaddingMobile,
+				blockPaddingUnitMobile
+			),
+			'padding-right': generateCSSUnit(
+				blockRightPaddingMobile,
+				blockPaddingUnitMobile
+			),
+			'padding-bottom': generateCSSUnit(
+				blockBottomPaddingMobile,
+				blockPaddingUnitMobile
+			),
+			'padding-left': generateCSSUnit(
+				blockLeftPaddingMobile,
+				blockPaddingUnitMobile
 			),
 		},
 	};
