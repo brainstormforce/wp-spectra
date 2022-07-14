@@ -75,6 +75,7 @@ const ContentTimelineComponent = ( props ) => {
 
                 if( undefined === timelinAlignmentMobile && 'mobile' === stack ) {
                     setAttributes( { timelinAlignmentMobile: 'left' } );
+                    setAttributes( { timelinAlignmentTablet: timelinAlignment } );
                 }
             }
         }
