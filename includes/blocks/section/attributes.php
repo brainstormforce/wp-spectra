@@ -90,7 +90,7 @@ return array_merge(
 		'boxShadowSpread'          => '',
 		'boxShadowPosition'        => 'outset',
 		'gradientValue'            => '',
-		'backgroundOpacity' => 0
+		'backgroundOpacity'        => 0,
 	),
 	$overall_border_attributes
 );
