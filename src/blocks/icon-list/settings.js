@@ -45,6 +45,7 @@ const Settings = ( props ) => {
 		iconPosition,
 		iconPositionTablet,
 		iconPositionMobile,
+		iconPlacement,
 		size,
 		sizeType,
 		sizeMobile,
@@ -279,6 +280,33 @@ const Settings = ( props ) => {
 					checked={ hideLabel }
 					onChange={ ( value ) => changeChildAttr( value ) }
 				/>
+				{ ! hideLabel && (
+					<>
+						<MultiButtonsControl
+							setAttributes={ setAttributes }
+							label={ __(
+								'Icon Position',
+								'ultimate-addons-for-gutenberg'
+							) }
+							data={ {
+								value: iconPlacement,
+								label: 'iconPlacement',
+							} }
+							className="uagb-multi-button-alignment-control"
+							options={ [
+								{
+									value: 'before',
+									label: 'Before',
+								},
+								{
+									value: 'after',
+									label: 'After',
+								},
+							] }
+							showIcons={ false }					
+						/>
+					</>
+				) }
 			</UAGAdvancedPanelBody>
 		);
 	};
