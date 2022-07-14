@@ -494,7 +494,7 @@ if ( 'above-title' === $attr['iconimgPosition'] ) {
 	$m_selectors['.uagb-infobox-icon-above-title'] = array(
 		'text-align' => $attr['headingAlignMobile'],
 	);
-} else if ( 'below-title' === $attr['iconimgPosition'] ) {
+} elseif ( 'below-title' === $attr['iconimgPosition'] ) {
 	$selectors['.uagb-infobox-icon-below-title']   = array(
 		'text-align' => $attr['headingAlign'],
 	);
@@ -507,34 +507,34 @@ if ( 'above-title' === $attr['iconimgPosition'] ) {
 }
 
 $selectors['.uagb-infobox__content-wrap']   = array(
-	'padding-top'     => UAGB_Helper::get_css_value(
+	'padding-top'    => UAGB_Helper::get_css_value(
 		$attr['blockTopPadding'],
 		$attr['blockPaddingUnit']
 	),
-	'padding-right'   => UAGB_Helper::get_css_value(
+	'padding-right'  => UAGB_Helper::get_css_value(
 		$attr['blockRightPadding'],
 		$attr['blockPaddingUnit']
 	),
-	'padding-bottom'  => UAGB_Helper::get_css_value(
+	'padding-bottom' => UAGB_Helper::get_css_value(
 		$attr['blockBottomPadding'],
 		$attr['blockPaddingUnit']
 	),
-	'padding-left'    => UAGB_Helper::get_css_value(
+	'padding-left'   => UAGB_Helper::get_css_value(
 		$attr['blockLeftPadding'],
 		$attr['blockPaddingUnit']
 	),
 );
 $t_selectors['.uagb-infobox__content-wrap'] = array(
-	'padding-top'     => UAGB_Helper::get_css_value( $attr['blockTopPaddingTablet'], $attr['blockPaddingUnitTablet'] ),
-	'padding-right'   => UAGB_Helper::get_css_value( $attr['blockRightPaddingTablet'], $attr['blockPaddingUnitTablet'] ),
-	'padding-bottom'  => UAGB_Helper::get_css_value( $attr['blockBottomPaddingTablet'], $attr['blockPaddingUnitTablet'] ),
-	'padding-left'    => UAGB_Helper::get_css_value( $attr['blockLeftPaddingTablet'], $attr['blockPaddingUnitTablet'] ),
+	'padding-top'    => UAGB_Helper::get_css_value( $attr['blockTopPaddingTablet'], $attr['blockPaddingUnitTablet'] ),
+	'padding-right'  => UAGB_Helper::get_css_value( $attr['blockRightPaddingTablet'], $attr['blockPaddingUnitTablet'] ),
+	'padding-bottom' => UAGB_Helper::get_css_value( $attr['blockBottomPaddingTablet'], $attr['blockPaddingUnitTablet'] ),
+	'padding-left'   => UAGB_Helper::get_css_value( $attr['blockLeftPaddingTablet'], $attr['blockPaddingUnitTablet'] ),
 );
 $m_selectors['.uagb-infobox__content-wrap'] = array(
-	'padding-top'     => UAGB_Helper::get_css_value( $attr['blockTopPaddingMobile'], $attr['blockPaddingUnitMobile'] ),
-	'padding-right'   => UAGB_Helper::get_css_value( $attr['blockRightPaddingMobile'], $attr['blockPaddingUnitMobile'] ),
-	'padding-bottom'  => UAGB_Helper::get_css_value( $attr['blockBottomPaddingMobile'], $attr['blockPaddingUnitMobile'] ),
-	'padding-left'    => UAGB_Helper::get_css_value( $attr['blockLeftPaddingMobile'], $attr['blockPaddingUnitMobile'] ),
+	'padding-top'    => UAGB_Helper::get_css_value( $attr['blockTopPaddingMobile'], $attr['blockPaddingUnitMobile'] ),
+	'padding-right'  => UAGB_Helper::get_css_value( $attr['blockRightPaddingMobile'], $attr['blockPaddingUnitMobile'] ),
+	'padding-bottom' => UAGB_Helper::get_css_value( $attr['blockBottomPaddingMobile'], $attr['blockPaddingUnitMobile'] ),
+	'padding-left'   => UAGB_Helper::get_css_value( $attr['blockLeftPaddingMobile'], $attr['blockPaddingUnitMobile'] ),
 );
 
 if ( 'button' === $attr['ctaType'] ) {
