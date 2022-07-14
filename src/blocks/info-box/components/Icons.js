@@ -1,6 +1,6 @@
 import renderSVG from '@Controls/renderIcon';
 
-const Icon = ( props ) => {
+const Icons = ( props ) => {
 	const { attributes } = props;
 	const { iconView, iconShape } = attributes
 
@@ -25,4 +25,4 @@ const Icon = ( props ) => {
 		</>
 	);
 };
-export default Icon;
+export default Icons;
