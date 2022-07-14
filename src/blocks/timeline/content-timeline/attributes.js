@@ -305,14 +305,12 @@ const attributes = {
 	},
 	timelinAlignmentTablet  : {
 		type    : 'string',
-		default : 'center',
 		UAGCopyPaste: {
 			styleType: 'overall-alignment-tablet'
 		},
 	},
 	timelinAlignmentMobile  : {
 		type    : 'string',
-		default : 'center',
 		UAGCopyPaste: {
 			styleType: 'overall-alignment-mobile'
 		},

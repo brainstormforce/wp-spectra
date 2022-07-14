@@ -8,11 +8,16 @@
  */
 
 $selector = '.uagb-block-' . $id;
+
+$timelineAlignment       = $attr['timelinAlignment'];
+$timelineAlignmentTablet = ! empty( $attr['timelinAlignmentTablet'] ) ? $attr['timelinAlignmentTablet'] : $attr['timelinAlignment'];
+$timelineAlignmentMobile = ! empty( $attr['timelinAlignmentMobile'] ) ? $attr['timelinAlignmentMobile'] : $timelineAlignmentTablet;
+
 $js_attr  = array(
 	'block_id'               => $attr['block_id'],
-	'timelinAlignment'       => $attr['timelinAlignment'],
-	'timelinAlignmentTablet' => $attr['timelinAlignmentTablet'],
-	'timelinAlignmentMobile' => $attr['timelinAlignmentMobile'],
+	'timelinAlignment'       => $timelineAlignment,
+	'timelinAlignmentTablet' => $timelineAlignmentTablet,
+	'timelinAlignmentMobile' => $timelineAlignmentMobile,
 );
 ob_start();
 ?>
