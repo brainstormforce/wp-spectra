@@ -60,9 +60,9 @@ function styling( props ) {
 		boxShadowPosition,
 		gradientValue,
 		overallBorderHColor,
-		backgroundVideoOpacity
+		backgroundVideoOpacity,
+		backgroundOpacity
 	} = props.attributes;
-
 	let inner_width = '100%';
 
 	if ( typeof contentWidth !== 'undefined' ) {
@@ -127,6 +127,7 @@ function styling( props ) {
 		if ( 'color' === overlayType ) {
 			backgroundTypeCSS = {
 				'background-color': backgroundImageColor,
+				'opacity' : backgroundOpacity ? backgroundOpacity / 100 : 0
 			};
 		} else {
 			backgroundTypeCSS[ 'background-color' ] =

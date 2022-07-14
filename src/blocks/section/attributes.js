@@ -373,6 +373,7 @@ const attributes = {
 		UAGCopyPaste: {
 			styleType: 'column-bg-opacity'
 		},
+		default: 0
 	},
 	backgroundVideoOpacity: {
 		type: 'number',
