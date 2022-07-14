@@ -821,43 +821,43 @@ if ( ! class_exists( 'UAGB_CF7_Styler' ) ) {
 							'msgLetterSpacingTablet'       => array(
 								'type' => 'number',
 							),
-							'fieldBorderStyle'              => array(
+							'fieldBorderStyle'             => array(
 								'type'    => 'string',
 								'default' => 'solid',
 							),
-							'fieldBorderWidth'              => array(
+							'fieldBorderWidth'             => array(
 								'type'    => 'number',
 								'default' => 1,
 							),
-							'fieldBorderRadius'             => array(
+							'fieldBorderRadius'            => array(
 								'type'    => 'number',
 								'default' => 0,
 							),
-							'fieldBorderColor'              => array(
+							'fieldBorderColor'             => array(
 								'type'    => 'string',
 								'default' => '#eeeeee',
 							),
-							'fieldBorderFocusColor'         => array(
+							'fieldBorderFocusColor'        => array(
 								'type'    => 'string',
 								'default' => '',
 							),
-							'buttonBorderStyle'             => array(
+							'buttonBorderStyle'            => array(
 								'type'    => 'string',
 								'default' => 'solid',
 							),
-							'buttonBorderWidth'             => array(
+							'buttonBorderWidth'            => array(
 								'type'    => 'number',
 								'default' => 1,
 							),
-							'buttonBorderRadius'            => array(
+							'buttonBorderRadius'           => array(
 								'type'    => 'number',
 								'default' => 0,
 							),
-							'buttonBorderColor'             => array(
+							'buttonBorderColor'            => array(
 								'type'    => 'string',
 								'default' => '#333',
 							),
-							'buttonBorderHoverColor'        => array(
+							'buttonBorderHoverColor'       => array(
 								'type'    => 'string',
 								'default' => '#333',
 							),

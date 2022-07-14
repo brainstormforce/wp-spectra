@@ -37,13 +37,16 @@ $selectors = array(
 	' .gform_wrapper form'                                 => array(
 		'text-align' => $attr['align'],
 	),
+	' .gform_wrapper .gfield_label'                                 => array(
+		'color' => $attr['fieldLabelColor'],
+	),
 	' .wp-block-uagb-gf-styler form:not(input)'            => array(
 		'color' => $attr['fieldLabelColor'],
 	),
 	' .gform_heading'                                      => array(
 		'text-align' => $attr['titleDescAlignment'],
 	),
-	' .gform_wrapper.gravity-theme input:not([type=submit])' => array(
+	' .gform_wrapper input:not([type=submit])' => array(
 		'background-color' => $attr['fieldBgColor'],
 		'color'            => $attr['fieldInputColor'],
 		'border-style'     => $attr['fieldBorderStyle'],
@@ -103,7 +106,7 @@ $selectors = array(
 		'background-color' => $attr['buttonBgHoverColor'],
 		'border-color'     => $attr['buttonBorderHoverColor'],
 	),
-	' .gform_wrapper.gravity-theme select '                => array(
+	' .gform_wrapper select '                => array(
 		'background-color' => $attr['fieldBgColor'],
 		'border-style'     => $attr['fieldBorderStyle'],
 		'border-color'     => $attr['fieldBorderColor'],
@@ -180,7 +183,7 @@ $selectors = array(
 		'padding-top'    => UAGB_Helper::get_css_value( $field_top_padding, $attr['fieldpaddingUnit'] ),
 		'padding-bottom' => UAGB_Helper::get_css_value( $field_bottom_padding, $attr['fieldpaddingUnit'] ),
 	),
-	' .gform_wrapper.gravity-theme .gfield textarea.large' => array(
+	' .gform_wrapper .gfield textarea' => array(
 		'background-color' => $attr['fieldBgColor'],
 		'color'            => $attr['fieldInputColor'],
 		'border-color'     => $attr['fieldBorderColor'],
@@ -352,6 +355,10 @@ $selectors = array(
 			$attr['fieldBorderRadiusType']
 		),
 	),
+	' .wp-block-uagb-gf-styler .gform_wrapper .ginput_container_select select'                => array(
+		'background-color' => $attr['fieldBgColor'],
+		'color'            => $attr['fieldInputColor'],
+	),
 	' .gfield_radio input[type="radio"] + label:before'    => array(
 		'background-color' => $attr['fieldBgColor'],
 		'color'            => $attr['fieldInputColor'],
@@ -369,7 +376,7 @@ $selectors = array(
 	),
 
 	// Underline border.
-	' .uagb-gf-styler__field-style-underline .gform_wrapper.gravity-theme input:not([type=submit])' => array(
+	' .uagb-gf-styler__field-style-underline .gform_wrapper input:not([type=submit])' => array(
 		'border-style'        => 'none',
 		'border-bottom-color' => $attr['fieldBorderColor'],
 		'border-bottom-style' => 'solid',
@@ -386,7 +393,9 @@ $selectors = array(
 			$attr['fieldBorderRadiusType']
 		),
 	),
-	' .uagb-gf-styler__field-style-underline .gform_wrapper.gravity-theme .gfield textarea' => array(
+	' .uagb-gf-styler__field-style-underline .gform_wrapper .gfield textarea' => array(
+		'background-color' => $attr['fieldBgColor'],
+		'color'            => $attr['fieldInputColor'],
 		'border-style'        => 'none',
 		'border-bottom-color' => $attr['fieldBorderColor'],
 		'border-bottom-style' => 'solid',
