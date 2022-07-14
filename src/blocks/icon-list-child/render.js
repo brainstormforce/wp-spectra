@@ -25,7 +25,7 @@ const Render = ( props ) => {
 		link,
 		target,
 		disableLink,
-		hideLabel,
+		hideLabel
 	} = attributes;
 
 	let imageIconHtml = '';
