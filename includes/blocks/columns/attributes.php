@@ -91,7 +91,8 @@ return array_merge(
 		'boxShadowBlur'          => '',
 		'boxShadowSpread'        => '',
 		'boxShadowPosition'      => 'outset',
-		'gradientValue'          => '',
+		'gradientValue'          => 'linear-gradient(90deg, rgb(6, 147, 227, 0.5) 0%, rgb(155, 81, 224, 0.5) 100%)',
+		'overlayType'            => 'color',
 	),
 	$border_attribute,
 );
