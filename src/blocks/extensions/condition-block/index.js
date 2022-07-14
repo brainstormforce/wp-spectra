@@ -1,14 +1,8 @@
 import { ToggleControl, SelectControl } from '@wordpress/components';
 import { __ } from '@wordpress/i18n';
-import { createHigherOrderComponent } from '@wordpress/compose';
 import { addFilter } from '@wordpress/hooks';
-import { InspectorControls } from '@wordpress/block-editor';
 import UAGAdvancedPanelBody from '@Components/advanced-panel-body';
-import { select } from '@wordpress/data';
-import { useEffect  } from '@wordpress/element';
 import classnames from 'classnames';
-import addBlockEditorResponsiveStyles from '@Controls/addBlockEditorResponsiveStyles';
-import { useDeviceType } from '@Controls/getPreviewType';
 const { enableConditions, enableResponsiveConditions } = uagb_blocks_info;
 
 const UserConditionOptions = ( props ) => {
