@@ -125,10 +125,10 @@ if ( ! class_exists( 'UAGB_Post_Timeline' ) ) {
 							'default' => 10,
 						),
 						'horizontalSpaceTablet'      => array(
-							'type'    => 'number',
+							'type' => 'number',
 						),
 						'horizontalSpaceMobile'      => array(
-							'type'    => 'number',
+							'type' => 'number',
 						),
 						'horizontalSpaceUnit'        => array(
 							'type'    => 'string',
@@ -147,10 +147,10 @@ if ( ! class_exists( 'UAGB_Post_Timeline' ) ) {
 							'default' => 15,
 						),
 						'verticalSpaceTablet'        => array(
-							'type'    => 'number',
+							'type' => 'number',
 						),
 						'verticalSpaceMobile'        => array(
-							'type'    => 'number',
+							'type' => 'number',
 						),
 						'verticalSpaceUnit'          => array(
 							'type'    => 'string',
@@ -169,10 +169,10 @@ if ( ! class_exists( 'UAGB_Post_Timeline' ) ) {
 							'default' => 'center',
 						),
 						'timelinAlignmentTablet'     => array(
-							'type'    => 'string',
+							'type' => 'string',
 						),
 						'timelinAlignmentMobile'     => array(
-							'type'    => 'string',
+							'type' => 'string',
 						),
 						'arrowlinAlignment'          => array(
 							'type'    => 'string',

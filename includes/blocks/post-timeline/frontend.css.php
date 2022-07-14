@@ -14,7 +14,7 @@ $head_top_spacing_fallback   = UAGB_Block_Helper::get_fallback_number( $attr['he
 $author_space_fallback       = UAGB_Block_Helper::get_fallback_number( $attr['authorSpace'], 'authorSpace', $attr['blockName'] );
 $cta_bottom_spacing_fallback = UAGB_Block_Helper::get_fallback_number( $attr['ctaBottomSpacing'], 'ctaBottomSpacing', $attr['blockName'] );
 
-$horizontal_space = $attr['horizontalSpace'];
+$horizontal_space        = $attr['horizontalSpace'];
 $horizontal_space_tablet = '' !== $atts['horizontalSpaceTablet'] ? $atts['horizontalSpaceTablet'] : $horizontal_space;
 $horizontal_space_mobile = '' !== $atts['horizontalSpaceMobile'] ? $atts['horizontalSpaceMobile'] : $horizontal_space_tablet;
 

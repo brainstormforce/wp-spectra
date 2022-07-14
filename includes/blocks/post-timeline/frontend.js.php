@@ -7,12 +7,12 @@
  * @package uagb
  */
 
-$selector = '.uagb-block-' . $id;
+$selector                = '.uagb-block-' . $id;
 $timelineAlignment       = $attr['timelinAlignment'];
 $timelineAlignmentTablet = ! empty( $attr['timelinAlignmentTablet'] ) ? $attr['timelinAlignmentTablet'] : $attr['timelinAlignment'];
 $timelineAlignmentMobile = ! empty( $attr['timelinAlignmentMobile'] ) ? $attr['timelinAlignmentMobile'] : $timelineAlignmentTablet;
 
-$js_attr  = array(
+$js_attr = array(
 	'block_id'               => $attr['block_id'],
 	'timelinAlignment'       => $timelineAlignment,
 	'timelinAlignmentTablet' => $timelineAlignmentTablet,
