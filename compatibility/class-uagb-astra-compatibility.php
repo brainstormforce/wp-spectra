@@ -34,7 +34,7 @@ class UAGB_Astra_Compatibility {
 	/**
 	 * Constructor
 	 *
-	 * @since x.x.x
+	 * @since 2.0.0-beta.3
 	 */
 	public function __construct() {
 
@@ -60,7 +60,7 @@ class UAGB_Astra_Compatibility {
 	 *
 	 * @param array $astra_fonts Astra Fonts Object.
 	 *
-	 * @since x.x.x
+	 * @since 2.0.0-beta.3
 	 */
 	public function add_google_fonts_in_astra( $astra_fonts ) {
 
