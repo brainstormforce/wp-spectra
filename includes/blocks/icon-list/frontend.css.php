@@ -316,13 +316,13 @@ if ( 'horizontal' === $icon_layout_mobile ) {
 		'margin-left' => 0,
 	);
 } elseif ( 'vertical' === $icon_layout_mobile ) {
-	$m_selectors[' .uagb-icon-list__wrap']['flex-direction']    = 'column';
-	$t_selectors[' .uagb-icon-list__wrap']['align-items']       = $alignment_mobile;
-	$t_selectors[' .uagb-icon-list__wrap']['-webkit-box-align'] = $alignment_mobile;
-	$t_selectors[' .uagb-icon-list__wrap']['-ms-flex-align']    = $alignment_mobile;
-	$t_selectors[' .uagb-icon-list__wrap']['justify-content']   = 'center';
-	$t_selectors[' .uagb-icon-list__wrap']['-webkit-box-pack']  = 'center';
-	$t_selectors[' .uagb-icon-list__wrap']['-ms-flex-pack']     = 'center';
+	$m_selectors[' .uagb-icon-list__wrap']['flex-direction']                = 'column';
+	$m_selectors[' .uagb-icon-list__wrap']['align-items'] = $alignment_mobile;
+	$m_selectors[' .uagb-icon-list__wrap']['-webkit-box-align'] = $alignment_mobile;
+	$m_selectors[' .uagb-icon-list__wrap']['-ms-flex-align'] = $alignment_mobile;
+	$m_selectors[' .uagb-icon-list__wrap']['justify-content'] = 'center';
+	$m_selectors[' .uagb-icon-list__wrap']['-webkit-box-pack'] = 'center';
+	$m_selectors[' .uagb-icon-list__wrap']['-ms-flex-pack'] = 'center';
 
 	$m_selectors['.wp-block-uagb-icon-list .wp-block-uagb-icon-list-child'] = array(
 		'margin-left'   => 0,
@@ -391,15 +391,30 @@ if ( 'right' === $attr['align'] && $attr['hideLabel'] ) {
 		'margin-right' => '0px',
 	);
 } else {
-	$selectors[' .uagb-icon-list__source-wrap']   = array(
-		'margin-right' => UAGB_Helper::get_css_value( $inner_gap_fallback, $attr['innerGapType'] ),
-	);
-	$m_selectors[' .uagb-icon-list__source-wrap'] = array(
-		'margin-right' => UAGB_Helper::get_css_value( $inner_gap_mobile_fallback, $attr['innerGapType'] ),
-	);
-	$t_selectors[' .uagb-icon-list__source-wrap'] = array(
-		'margin-right' => UAGB_Helper::get_css_value( $inner_gap_tablet_fallback, $attr['innerGapType'] ),
-	);
+	if ( 'before' === $attr['iconPlacement'] && ! $attr['hideLabel'] ) {
+		$selectors[' .uagb-icon-list__source-wrap']   = array(
+			'margin-right' => UAGB_Helper::get_css_value( $inner_gap_fallback, $attr['innerGapType'] ),
+		);
+		$m_selectors[' .uagb-icon-list__source-wrap'] = array(
+			'margin-right' => UAGB_Helper::get_css_value( $inner_gap_mobile_fallback, $attr['innerGapType'] ),
+		);
+		$t_selectors[' .uagb-icon-list__source-wrap'] = array(
+			'margin-right' => UAGB_Helper::get_css_value( $inner_gap_tablet_fallback, $attr['innerGapType'] ),
+		);
+	} elseif ( 'after' === $attr['iconPlacement'] && ! $attr['hideLabel'] ) {
+		$selectors[' .uagb-icon-list__source-wrap']    = array(
+			'margin-left' => UAGB_Helper::get_css_value( $inner_gap_fallback, $attr['innerGapType'] ),
+		);
+		$m_selectors[' .uagb-icon-list__source-wrap']  = array(
+			'margin-left' => UAGB_Helper::get_css_value( $inner_gap_mobile_fallback, $attr['innerGapType'] ),
+		);
+		$t_selectors[' .uagb-icon-list__source-wrap']  = array(
+			'margin-left' => UAGB_Helper::get_css_value( $inner_gap_tablet_fallback, $attr['innerGapType'] ),
+		);
+		$selectors[' .wp-block-uagb-icon-list-child '] = array(
+			'flex-direction' => 'row-reverse',
+		);
+	}
 	if ( 'center' === $attr['align'] ) {
 		$selectors[' .wp-block-uagb-icon-list-child'] = array(
 			'text-align' => 'center',

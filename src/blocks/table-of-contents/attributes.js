@@ -175,6 +175,7 @@ const attributes = {
 		UAGCopyPaste: {
 			styleType: 'bg-color'
 		},
+		default: '#fff'
 	},
 	linkColor: {
 		type: 'string',

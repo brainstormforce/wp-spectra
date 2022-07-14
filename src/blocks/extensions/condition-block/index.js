@@ -1,14 +1,8 @@
 import { ToggleControl, SelectControl } from '@wordpress/components';
 import { __ } from '@wordpress/i18n';
-import { createHigherOrderComponent } from '@wordpress/compose';
 import { addFilter } from '@wordpress/hooks';
-import { InspectorControls } from '@wordpress/block-editor';
 import UAGAdvancedPanelBody from '@Components/advanced-panel-body';
-import { select } from '@wordpress/data';
-import { useEffect  } from '@wordpress/element';
 import classnames from 'classnames';
-import addBlockEditorResponsiveStyles from '@Controls/addBlockEditorResponsiveStyles';
-import { useDeviceType } from '@Controls/getPreviewType';
 const { enableConditions, enableResponsiveConditions } = uagb_blocks_info;
 
 const UserConditionOptions = ( props ) => {
@@ -164,97 +158,6 @@ const ResponsiveConditionOptions = ( props ) => {
 	);
 };
 
-const AdvancedControlsBlock = createHigherOrderComponent( ( BlockEdit ) => {
-	return ( props ) => {
-		const { isSelected } = props;
-
-		const blockName = props.name;
-
-		const excludeBlocks = uagb_blocks_info.uagb_exclude_blocks_from_extension;
-		const customBlocks = uagb_blocks_info.uagb_enable_extensions_for_blocks;
-		const blockPrefix = blockName.substring( 0, blockName.indexOf( '/' ) + 1 );
-		const { getSelectedBlock } = select( 'core/block-editor' );
-		const childBlocks = getSelectedBlock()?.innerBlocks;
-		const deviceType = useDeviceType();
-		const responsiveClass = [];
-		let responsiveClassHideDesktop, responsiveClassHideTab, responsiveClassHideMob;
-
-			const parentClientId = select(
-				'core/block-editor'
-			).getBlockHierarchyRootClientId( props.clientId );
-
-			const parentAttributes = select( 'core/block-editor' ).getBlockAttributes(
-				parentClientId
-			);
-
-			if ( parentAttributes?.UAGHideDesktop ) {
-				responsiveClassHideDesktop = 'uag-hide-desktop';
-			}
-
-			if ( parentAttributes?.UAGHideTab ) {
-				responsiveClassHideTab = 'uag-hide-tab';
-			}
-
-			if ( parentAttributes?.UAGHideMob ) {
-				responsiveClassHideMob = 'uag-hide-mob';
-			}
-
-			responsiveClass.push( responsiveClassHideDesktop, responsiveClassHideTab, responsiveClassHideMob );
-
-			addBlockEditorResponsiveStyles( parentClientId, responsiveClass, `uagb-editor-preview-at-${ deviceType.toLowerCase() }` );
-
-		useEffect( () => {
-
-				addBlockEditorResponsiveStyles( parentClientId, responsiveClass, `uagb-editor-preview-at-${ deviceType.toLowerCase() }` );
-
-				const displayPanel = document.querySelector( '.uag-advance-panel-body-display' );
-				let responsivePanel = document.querySelector( '.uag-advance-panel-body-responsive-conditions' );
-				let masonryPanel = document.querySelector( '.uag-advance-panel-body-masonry' );
-				if( displayPanel ){
-					const tabsParent = displayPanel.parentElement;
-					if( tabsParent ){
-						responsivePanel = responsivePanel ? responsivePanel : '';
-						masonryPanel = masonryPanel ? masonryPanel : '';
-						if( tabsParent.lastChild.className.includes( 'components-panel__body is-opened' ) ){
-							tabsParent.prepend( tabsParent.lastChild, displayPanel, responsivePanel, masonryPanel )
-						}
-
-					}
-				}
-		}, [childBlocks, deviceType] );
-
-		return (
-			<>
-				<BlockEdit {...props} />
-				{isSelected && ! blockName.includes( 'uagb/' ) && ( blockName.includes( 'core/' ) || ( Array.isArray( customBlocks ) && 0 !== customBlocks.length && ( customBlocks.includes( blockName ) || customBlocks.includes( blockPrefix ) ) ) ) && ! excludeBlocks.includes( blockName ) &&
-				<InspectorControls>
-					{ 'enabled' === enableConditions &&
-					<UAGAdvancedPanelBody
-						title={ __( 'Display Conditions', 'ultimate-addons-for-gutenberg' ) }
-						initialOpen={ false }
-						className="block-editor-block-inspector__advanced uagb-extention-tab"
-					>
-						<p className="components-base-control__help">{ __( "Below Spectra settings will only take effect once you are on the live page, and not while you're editing.", 'ultimate-addons-for-gutenberg' ) }</p>
-						{ UserConditionOptions( props ) }
-					</UAGAdvancedPanelBody>
-					}
-					{ 'enabled' === enableResponsiveConditions &&
-					<UAGAdvancedPanelBody
-						title={ __( 'Responsive Conditions', 'ultimate-addons-for-gutenberg' ) }
-						initialOpen={ false }
-						className="block-editor-block-inspector__advanced uagb-extention-tab"
-					>
-						<p className="components-base-control__help">{ __( "Below Spectra settings will only take effect once you are on the live page, and not while you're editing.", 'ultimate-addons-for-gutenberg' ) }</p>
-						{ ResponsiveConditionOptions( props ) }
-					</UAGAdvancedPanelBody>
-					}
-				</InspectorControls>
-				}
-			</>
-		);
-	};
-}, 'AdvancedControlsBlock' );
-
 function ApplyExtraClass( extraProps, blockType, attributes ) {
 	const {
 		UAGHideDesktop,
@@ -334,12 +237,7 @@ function ApplyExtraClass( extraProps, blockType, attributes ) {
 			}
 		}
 	);
-	//For Non-UAG Blocks.
-	addFilter(
-		'editor.BlockEdit',
-		'uagb/advanced-display-condition',
-		AdvancedControlsBlock
-	);
+
 	addFilter(
 		'blocks.getSaveContent.extraProps',
 		'uagb/apply-extra-class',
