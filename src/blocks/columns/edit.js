@@ -92,16 +92,14 @@ const ColumnsComponent = ( props ) => {
 				setAttributes( { bottomMarginDesktop: bottomMargin } );
 			}
 		}
-// console.log(backgroundImageColor)
-// console.log(maybeGetColorForVariable( backgroundImageColor ))
-// console.log(hexToRGBA( maybeGetColorForVariable( backgroundImageColor ), backgroundOpacity ))
-	if ( 'image' === backgroundType ) {
-		if ( 101 !== backgroundOpacity ) {
-			const color = hexToRGBA( maybeGetColorForVariable( backgroundImageColor ), backgroundOpacity );
-			setAttributes( { backgroundImageColor: color } );
-			setAttributes( { backgroundOpacity: 101 } );
+
+		if ( 'image' === backgroundType ) {
+			if ( 101 !== backgroundOpacity ) {
+				const color = hexToRGBA( maybeGetColorForVariable( backgroundImageColor ), backgroundOpacity );
+				setAttributes( { backgroundImageColor: color } );
+				setAttributes( { backgroundOpacity: 101 } );
+			}
 		}
-	}
 		const { borderStyle, borderWidth, borderRadius, borderColor, borderHoverColor } = props.attributes
 		// border migration
 		if( borderWidth || borderRadius || borderColor || borderHoverColor || borderStyle ){
