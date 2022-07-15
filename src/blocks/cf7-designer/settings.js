@@ -1830,7 +1830,7 @@ const Settings = ( props ) => {
 					<InspectorTab { ...UAGTabs.general }>
 						<Notice status="warning" isDismissible={false}>
 							{
-								__('This block has been deprecated.', 'ultimate-addons-for-gutenberg')
+								__( 'This block has been deprecated.', 'ultimate-addons-for-gutenberg' )
 							}
 						</Notice>
 						{ generalSettings }

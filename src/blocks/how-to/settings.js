@@ -19,12 +19,12 @@ import renderSVG from '@Controls/renderIcon';
 import {
 	ToggleControl,
 	ExternalLink,
-	Icon
+	Icon,
+	Notice
 } from '@wordpress/components';
 import MultiButtonsControl from '@Components/multi-buttons-control';
 import ResponsiveSlider from '@Components/responsive-slider';
 import UAGSelectControl from '@Components/select-control';
-import { Notice } from '@wordpress/components';
 let imageSizeOptions = [
 	{
 		value: 'thumbnail',
@@ -1005,7 +1005,7 @@ const Settings = ( props ) => {
 					<InspectorTab { ...UAGTabs.general }>
 						<Notice status="warning" isDismissible={false}>
 							{
-								__('This block has been deprecated.', 'ultimate-addons-for-gutenberg')
+								__( 'This block has been deprecated.', 'ultimate-addons-for-gutenberg' )
 							}
 						</Notice>
 						{ titleSettings() }
