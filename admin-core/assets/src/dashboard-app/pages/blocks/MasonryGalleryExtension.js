@@ -48,20 +48,25 @@ const MasonryGalleryExtension = () => {
     return (
         <div
         key={'masonry-gallery'}
-        className="relative rounded-[0.2rem] border border-gray-300 bg-white px-6 py-5 shadow-sm flex items-center space-x-3"
+        className={ classNames(
+            masonryGallerysStatus
+                ? 'border-white bg-white shadow hover:shadow-2xl hover:z-50'
+                : 'border-slate-200 spectra-disabled-icon',
+            'box-border relative border rounded-md h-20 p-4 flex items-center space-x-4 transition spectra-icon-transition'
+        ) }
         >
             <div className="flex-shrink-0">
                 { UAGB_Block_Icons['masonry-gallery'] }
             </div>
             <div className="flex-1 min-w-0">
                 <p className="text-sm font-medium text-gray-900 mb-[0.1875rem]">{__( 'Masonry Gallery', 'ultimate-addons-for-gutenberg' )}</p>
-                <a className="text-sm text-gray-900 focus:text-wpcolor active:text-wpcolor hover:text-wpcolor truncate underline" href='https://ultimategutenberg.com/docs/masonry-image-gallery/' target="_blank"rel="noreferrer">{__( 'Documentation', 'ultimate-addons-for-gutenberg' )}</a>
+                <a className="text-sm text-gray-900 focus:text-spectra active:text-spectra hover:text-spectra truncate underline" href='https://ultimategutenberg.com/docs/masonry-image-gallery/' target="_blank"rel="noreferrer">{__( 'Documentation', 'ultimate-addons-for-gutenberg' )}</a>
             </div>
             <Switch
                 checked={masonryGallerysStatus}
                 onChange={updateMasonryGallerysStatus}
                 className={classNames(
-                    masonryGallerysStatus ? 'bg-wpcolor' : 'bg-gray-200',
+                    masonryGallerysStatus ? 'bg-spectra' : 'bg-slate-200',
                     'relative inline-flex flex-shrink-0 h-5 w-[2.4rem] items-center border-2 border-transparent rounded-full cursor-pointer transition-colors ease-in-out duration-200 focus:outline-none'
                 )}
                 >

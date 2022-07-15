@@ -4,9 +4,7 @@ import apiFetch from '@wordpress/api-fetch';
 import { useSelector, useDispatch } from 'react-redux';
 import { __ } from '@wordpress/i18n';
 
-function classNames( ...classes ) {
-    return classes.filter( Boolean ).join( ' ' )
-}
+const classNames = ( ...classes ) => ( classes.filter( Boolean ).join( ' ' ) );
 
 const BlockCard = ( props ) => {
 
@@ -59,20 +57,25 @@ const BlockCard = ( props ) => {
     return (
         <div
         key={slug}
-        className="relative rounded-[0.2rem] shadow bg-white px-6 py-5 flex items-center space-x-4"
+        className={ classNames(
+            blockActivationStatus
+                ? 'border-white bg-white shadow hover:shadow-2xl hover:z-50'
+                : 'border-slate-200 spectra-disabled-icon',
+            'box-border relative border rounded-md h-20 p-4 flex items-center space-x-4 transition spectra-icon-transition'
+        ) }
         >
             <div className="flex-shrink-0 opacity-80">
                 { UAGB_Block_Icons[slug] }
             </div>
             <div className="flex-1 min-w-0">
                 <p className="text-sm font-medium text-gray-900 mb-[0.1875rem]">{title}</p>
-                <a className="focus:text-wpcolor active:text-wpcolor hover:text-wpcolor text-sm underline text-gray-900 truncate" href={ `https://ultimategutenberg.com/blocks/${ link }` } target="_blank"rel="noreferrer">{__( 'Live Demo', 'ultimate-addons-for-gutenberg' )}</a>
+                <a className="focus:text-spectra active:text-spectra hover:text-spectra text-sm underline text-gray-900 truncate" href={ `https://ultimategutenberg.com/blocks/${ link }` } target="_blank"rel="noreferrer">{__( 'Live Demo', 'ultimate-addons-for-gutenberg' )}</a>
             </div>
             <Switch
                 checked={blockActivationStatus}
                 onChange={updateBlockStatus}
                 className={classNames(
-                    blockActivationStatus ? 'bg-wpcolor' : 'bg-gray-200',
+                    blockActivationStatus ? 'bg-spectra' : 'bg-slate-200',
                     'relative inline-flex flex-shrink-0 h-5 w-[2.4rem] items-center border-2 border-transparent rounded-full cursor-pointer transition-colors ease-in-out duration-200 focus:outline-none'
                 )}
                 >

@@ -33,17 +33,17 @@ const Welcome = () => {
                 <h2 className="sr-only" id="section-1-title">
                   Section title
                 </h2>
-                <div className="rounded-[0.2rem] bg-white overflow-hidden shadow flex flex-col justify-center h-full">
+                <div className="rounded-md bg-white overflow-hidden shadow flex flex-col justify-center h-full">
                   <div className="p-12 pt-[2.2rem]">
                         <h2 className='text-[1.8rem] leading-[2.4rem] pb-3 font-medium text-left'>{__( 'Welcome to Spectra!', 'ultimate-addons-for-gutenberg' )}</h2>
 						<p className='pb-7'>{__( 'We designed Spectra to be intuitive but we do recommend learning how it works by checking our comprehensive documentation and watching the video below. Enjoy your time with Spectra!', 'ultimate-addons-for-gutenberg' )}</p>
 						<div className="mr-[80px] spectra-video-container">
 							<iframe className="spectra-video" src={`https://www.youtube.com/embed/5Llg8huGs74?showinfo=0&autoplay=${allowAutoPlay}&mute=${allowAutoPlay}`} allow="autoplay" title="YouTube video player" frameBorder="0" allowFullScreen></iframe>
 						</div>
-						<span className="relative z-0 inline-flex rounded-[0.2rem] pt-6 justify-start w-full">
+						<span className="relative z-0 inline-flex pt-6 justify-start w-full">
                           <button
                               type="button"
-                              className="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-[0.2rem] shadow-sm text-white bg-wpcolor focus:bg-wphovercolor hover:bg-wphovercolor focus:outline-none mr-4"
+                              className="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-wpcolor focus:bg-wphovercolor hover:bg-wphovercolor focus:outline-none mr-4"
                               onClick={ onCreateNewPageClick }
                           >
                               {__( 'Create New Page', 'ultimate-addons-for-gutenberg' )}
@@ -51,7 +51,7 @@ const Welcome = () => {
                           </button>
                           <button
                               type="button"
-                              className="inline-flex items-center px-4 py-2 border border-gray-300 shadow-sm text-sm font-medium rounded-[0.2rem] text-gray-700 bg-white focus:bg-gray-50 hover:bg-gray-50 focus:outline-none"
+                              className="inline-flex items-center px-4 py-2 border border-gray-300 shadow-sm text-sm font-medium rounded-md text-gray-700 bg-white focus:bg-gray-50 hover:bg-gray-50 focus:outline-none"
                               onClick={ onReadFullGuideClick }
                           >
                               {__( 'Read Full Guide', 'ultimate-addons-for-gutenberg' )}
@@ -69,7 +69,7 @@ const Welcome = () => {
                 <h2 className="sr-only" id="section-2-title">
                   Section title
                 </h2>
-                <div className="rounded-[0.2rem] bg-white overflow-hidden shadow">
+                <div className="rounded-md bg-white overflow-hidden shadow">
                   <div className="p-7">
                     <h3 className='text-xl leading-[2.47rem] font-medium pb-2'>
                       { __(
@@ -97,7 +97,7 @@ const Welcome = () => {
                 <h2 className="sr-only" id="section-2-title">
                   Section title
                 </h2>
-                <div className="rounded-[0.2rem] bg-white overflow-hidden shadow">
+                <div className="rounded-md bg-white overflow-hidden shadow">
                   <div className="p-7">
                     <h3 className='text-xl leading-[2.47rem] font-medium pb-2'>
                       { __(
@@ -125,7 +125,7 @@ const Welcome = () => {
                 <h2 className="sr-only" id="section-2-title">
                   Section title
                 </h2>
-                <div className="rounded-[0.2rem] bg-white overflow-hidden shadow">
+                <div className="rounded-md bg-white overflow-hidden shadow">
                   <div className="p-7">
                     <h3 className='text-xl leading-[2.47rem] font-medium pb-2'>
                       { __(

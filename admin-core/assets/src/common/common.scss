@@ -160,7 +160,7 @@
 }
 
 #wpwrap {
-	background: var(--background-light-color);
+	background-color: #f8fafc; // Tailwind Slate-50.
 }
 
 .uag-font-select-disabled {
@@ -183,14 +183,6 @@
 	h3 {
 		font-size: 1.125rem;
 	}
-}
-
-.uag-dashboard-app .read-more a {
-	color: #2271b1;
-}
-
-.uag-dashboard-app .read-more a:hover {
-	color: #135e96;
 }
 
 .spectra-content-width-input-wrap {
@@ -240,5 +232,24 @@
 				box-shadow: $spectra-wpcolor 0 0 0 1px !important;
 			}
 		}
+	}
+}
+
+// The Block SVGs when Disabled
+.spectra-icon-transition {
+
+	svg,
+	path {
+		transition-property: fill;
+		transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+		transition-duration: 150ms;
+	}
+}
+
+.spectra-disabled-icon {
+
+	svg,
+	path {
+		fill: #94a3b8; // Tailwind Slate-400.
 	}
 }
