@@ -318,7 +318,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				'border-color' => $attr['icon_border_hover_color'] . ' !important',
 			);
 
-			$selectors[ $wrapper ] = array(
+			$selectors[ $wrapper . '.wp-block-uagb-icon-list-child.wp-block-uagb-icon-list-child' ] = array(
 				'margin-top'     => UAGB_Helper::get_css_value(
 					$attr['childTopMargin'],
 					$attr['childMarginUnit']
@@ -353,7 +353,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				),
 			);
 
-			$t_selectors[ $wrapper ] = array(
+			$t_selectors[ $wrapper . '.wp-block-uagb-icon-list-child.wp-block-uagb-icon-list-child' ] = array(
 				'margin-top'     => UAGB_Helper::get_css_value(
 					$attr['childTopMarginTablet'],
 					$attr['childMarginUnitTablet']
@@ -388,7 +388,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				),
 			);
 
-			$m_selectors[ $wrapper ] = array(
+			$m_selectors[ $wrapper . '.wp-block-uagb-icon-list-child.wp-block-uagb-icon-list-child' ] = array(
 				'margin-top'     => UAGB_Helper::get_css_value(
 					$attr['childTopMarginMobile'],
 					$attr['childMarginUnitMobile']
