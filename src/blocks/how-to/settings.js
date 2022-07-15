@@ -19,8 +19,7 @@ import renderSVG from '@Controls/renderIcon';
 import {
 	ToggleControl,
 	ExternalLink,
-	Icon,
-	Notice
+	Icon
 } from '@wordpress/components';
 import MultiButtonsControl from '@Components/multi-buttons-control';
 import ResponsiveSlider from '@Components/responsive-slider';
@@ -1003,11 +1002,6 @@ const Settings = ( props ) => {
 			<InspectorControls>
 				<InspectorTabs>
 					<InspectorTab { ...UAGTabs.general }>
-						<Notice status="warning" isDismissible={false}>
-							{
-								__( 'This block has been deprecated.', 'ultimate-addons-for-gutenberg' )
-							}
-						</Notice>
 						{ titleSettings() }
 						{ imageSettings() }
 						{ timeSettings() }
