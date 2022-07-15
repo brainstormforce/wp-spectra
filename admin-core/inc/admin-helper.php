@@ -94,7 +94,7 @@ class Admin_Helper {
 	/**
 	 * Get Changelogs from API.
 	 *
-	 * @since x.x.x
+	 * @since 2.0.0-beta.3
 	 * @return array $changelog_data Changelog Data.
 	 */
 	public static function get_changelog_feed_data() {

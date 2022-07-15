@@ -173,6 +173,26 @@ The awesome React FontIconPicker is developed by [Alessandro Benoit](http://code
 
 ## Changelog ##
 
+### 2.0.0-beta.3 - THURSDAY, 14TH JULY 2022 ###
+* New: Block Presets - Introducing Preset for most used block.
+* New: Buttons - Introducing new button block with multiple new feature.
+* New: Container - Introducing container block with advanced flex property feature.
+* New: Copy Paste Styles - Added Copy/Paste styling feature for Core Gutenberg blocks & Spectra blocks.
+* New: Image - Introducing image block with advanced feature.
+* New: Presets - Added Preset for Box-Shadow, CTA button and Inner container.
+* New: Introducing Coming Soon mode feature.
+* New: Introducing Allow only Selected fonts, Load fonts locally & Preload fonts feature.
+* New: Introducing new border control which allow user to set border to Top/Bottom/Left/Right in all direction.
+* Improvement: Heading - Renamed Advanced Heading block to Heading and added multiple new feature.
+* Improvement: Template - Enable Templates Button on admin dashboard.
+* Improvement: Display Condition & Responsive Visibility – Enable/Disable option for Spectra extensions on admin dashboard.
+* Improvement: Typography control - Added letter-spacing options.
+* Improvement: Post block - Added Taxonomy Styling option, show taxonomy above title option and layout normal/highlighted.
+* Improvement: Removed jQuery dependency from Spectra blocks.
+* Improvement: Forms - Global reCAPTCHA setting option on admin dashboard.
+* Fix: Multiple issues in multiple blocks.
+* Deprecated: Advanced Columns, Section, WP-Search, Contact Form 7 Designer and Gravity Form Designer block.
+
 ### 2.0.0-beta.1 - THURSDAY, 30TH SEPTEMBER 2021 ###
 * New: Redesigned UI/UX controls of UAG blocks.
 * New: Introduced new, beautiful & fast UAG admin dashboard powered by React.

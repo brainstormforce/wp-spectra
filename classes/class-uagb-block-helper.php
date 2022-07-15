@@ -121,7 +121,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				'margin-left'     => UAGB_Helper::get_css_value( $attr['leftMargin'], $attr['marginType'] ),
 				'margin-right'    => UAGB_Helper::get_css_value( $attr['rightMargin'], $attr['marginType'] ),
 			);
-			$selectors[ $wrapper . '.wp-block-button__link:hover' ]                           = array(
+			$selectors[ $wrapper . '.wp-block-button__link:hover' ]     = array(
 				'color' => $attr['hColor'],
 			);
 			if ( 0 !== $attr['boxShadowHOffset'] || 0 !== $attr['boxShadowVOffset'] ) {
@@ -147,7 +147,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				'border-color' => isset( $attr['borderHoverColor'] ) && ! empty( $attr['borderHoverColor'] ) ? $attr['borderHoverColor'] : $attr['btnBorderHColor'],
 			);
 			$selectors[ $wrapper . ' .uagb-button__link' ]   = array(
-				'color' => $attr['color'],
+				'color'           => $attr['color'],
 				'font-family'     => $attr['fontFamily'],
 				'font-weight'     => $attr['fontWeight'],
 				'font-style'      => $attr['fontStyle'],
@@ -1160,7 +1160,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 		/**
 		 * Border attribute generation Function.
 		 *
-		 * @since x.x.x
+		 * @since 2.0.0-beta.3
 		 * @param  array $prefix   Attribute Prefix.
 		 * @param array $default_args  default attributes args.
 		 * @return array
@@ -1225,7 +1225,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 		/**
 		 * Border attribute generation Function.
 		 *
-		 * @since x.x.x
+		 * @since 2.0.0-beta.3
 		 * @param  array $prefix   Attribute Prefix.
 		 * @param array $default_args  default attributes args.
 		 * @return array
@@ -1297,7 +1297,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 		/**
 		 * Border CSS generation Function.
 		 *
-		 * @since x.x.x
+		 * @since 2.0.0-beta.3
 		 * @param  array  $attr   Attribute List.
 		 * @param  string $prefix Attribuate prefix .
 		 * @param  string $device Responsive.
@@ -1312,7 +1312,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					$gen_border_css['border-right-width']  = UAGB_Helper::get_css_value( $attr[ $prefix . 'BorderRightWidthTablet' ], 'px' );
 					$gen_border_css['border-bottom-width'] = UAGB_Helper::get_css_value( $attr[ $prefix . 'BorderBottomWidthTablet' ], 'px' );
 				}
-				$gen_border_unit_tablet = isset( $attr[ $prefix . 'BorderRadiusUnitTablet' ] ) ? $attr[ $prefix . 'BorderRadiusUnitTablet' ] : 'px';
+				$gen_border_unit_tablet                       = isset( $attr[ $prefix . 'BorderRadiusUnitTablet' ] ) ? $attr[ $prefix . 'BorderRadiusUnitTablet' ] : 'px';
 				$gen_border_css['border-top-left-radius']     = UAGB_Helper::get_css_value( $attr[ $prefix . 'BorderTopLeftRadiusTablet' ], $gen_border_unit_tablet );
 				$gen_border_css['border-top-right-radius']    = UAGB_Helper::get_css_value( $attr[ $prefix . 'BorderTopRightRadiusTablet' ], $gen_border_unit_tablet );
 				$gen_border_css['border-bottom-left-radius']  = UAGB_Helper::get_css_value( $attr[ $prefix . 'BorderBottomLeftRadiusTablet' ], $gen_border_unit_tablet );
@@ -1324,7 +1324,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					$gen_border_css['border-right-width']  = UAGB_Helper::get_css_value( $attr[ $prefix . 'BorderRightWidthMobile' ], 'px' );
 					$gen_border_css['border-bottom-width'] = UAGB_Helper::get_css_value( $attr[ $prefix . 'BorderBottomWidthMobile' ], 'px' );
 				}
-				$gen_border_unit_mobile = isset( $attr[ $prefix . 'BorderTopLeftRadiusMobile' ] ) ? $attr[ $prefix . 'BorderTopLeftRadiusMobile' ] : 'px';
+				$gen_border_unit_mobile                       = isset( $attr[ $prefix . 'BorderTopLeftRadiusMobile' ] ) ? $attr[ $prefix . 'BorderTopLeftRadiusMobile' ] : 'px';
 				$gen_border_css['border-top-left-radius']     = UAGB_Helper::get_css_value( $attr[ $prefix . 'BorderTopLeftRadiusMobile' ], $gen_border_unit_mobile );
 				$gen_border_css['border-top-right-radius']    = UAGB_Helper::get_css_value( $attr[ $prefix . 'BorderTopRightRadiusMobile' ], $gen_border_unit_mobile );
 				$gen_border_css['border-bottom-left-radius']  = UAGB_Helper::get_css_value( $attr[ $prefix . 'BorderBottomLeftRadiusMobile' ], $gen_border_unit_mobile );
@@ -1336,7 +1336,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					$gen_border_css['border-right-width']  = UAGB_Helper::get_css_value( $attr[ $prefix . 'BorderRightWidth' ], 'px' );
 					$gen_border_css['border-bottom-width'] = UAGB_Helper::get_css_value( $attr[ $prefix . 'BorderBottomWidth' ], 'px' );
 				}
-				$gen_border_unit = isset( $attr[ $prefix . 'BorderRadiusUnit' ] ) ? $attr[ $prefix . 'BorderRadiusUnit' ] : 'px';
+				$gen_border_unit                              = isset( $attr[ $prefix . 'BorderRadiusUnit' ] ) ? $attr[ $prefix . 'BorderRadiusUnit' ] : 'px';
 				$gen_border_css['border-top-left-radius']     = UAGB_Helper::get_css_value( $attr[ $prefix . 'BorderTopLeftRadius' ], $gen_border_unit );
 				$gen_border_css['border-top-right-radius']    = UAGB_Helper::get_css_value( $attr[ $prefix . 'BorderTopRightRadius' ], $gen_border_unit );
 				$gen_border_css['border-bottom-left-radius']  = UAGB_Helper::get_css_value( $attr[ $prefix . 'BorderBottomLeftRadius' ], $gen_border_unit );
@@ -1352,7 +1352,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 		/**
 		 * Deprecated Border CSS generation Function.
 		 *
-		 * @since x.x.x
+		 * @since 2.0.0-beta.3
 		 * @param  array  $current_css   Current style list.
 		 * @param  string $border_width   Border Width.
 		 * @param  string $border_radius Border Radius.
@@ -1361,14 +1361,14 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 		 */
 		public static function uag_generate_deprecated_border_css( $current_css, $border_width, $border_radius, $border_color = '', $border_style = '' ) {
 			$gen_border_css = array();
-			if ( $border_width ) {
+			if ( is_numeric( $border_width ) ) {
 				$gen_border_css['border-top-width']    = UAGB_Helper::get_css_value( $border_width, 'px' );
 				$gen_border_css['border-left-width']   = UAGB_Helper::get_css_value( $border_width, 'px' );
 				$gen_border_css['border-right-width']  = UAGB_Helper::get_css_value( $border_width, 'px' );
 				$gen_border_css['border-bottom-width'] = UAGB_Helper::get_css_value( $border_width, 'px' );
 			}
 
-			if ( $border_radius ) {
+			if ( is_numeric( $border_radius ) ) {
 				$gen_border_css['border-top-left-radius']     = UAGB_Helper::get_css_value( $border_radius, 'px' );
 				$gen_border_css['border-top-right-radius']    = UAGB_Helper::get_css_value( $border_radius, 'px' );
 				$gen_border_css['border-bottom-left-radius']  = UAGB_Helper::get_css_value( $border_radius, 'px' );
@@ -1389,7 +1389,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 		 * Since title text is set to flex, we need this function so that stack alignment doesn't break.
 		 * It converts the normal text-align values to flex-alignment based values.
 		 *
-		 * @since x.x.x
+		 * @since 2.0.0-beta.3
 		 * @param string $text_align Alignment value from text-align property.
 		 */
 		public static function text_alignment_to_flex( $text_align ) {
