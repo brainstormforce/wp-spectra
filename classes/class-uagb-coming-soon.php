@@ -51,7 +51,7 @@ class UAGB_Coming_Soon {
 	/**
 	 * Set Coming Soon Template.
 	 *
-	 * @since x.x.x
+	 * @since 2.0.0-beta.3
 	 */
 	public function set_coming_soon_template() {
 		require_once UAGB_DIR . 'templates/coming-soon-template.php';
@@ -60,7 +60,7 @@ class UAGB_Coming_Soon {
 	/**
 	 * Set Coming Soon Page.
 	 *
-	 * @since x.x.x
+	 * @since 2.0.0-beta.3
 	 */
 	public function set_coming_soon_page() {
 		$coming_soon_page_id = intval( UAGB_Admin_Helper::get_admin_settings_option( 'uag_coming_soon_page', false ) );
@@ -76,7 +76,7 @@ class UAGB_Coming_Soon {
 	/**
 	 * Enqueue asset files.
 	 *
-	 * @since x.x.x
+	 * @since 2.0.0-beta.3
 	 */
 	public function enqueue_asset_files() {
 

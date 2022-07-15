@@ -141,6 +141,13 @@ const attributes = {
 		},
 		default: '',
 	},
+	iconPlacement: {
+		type: 'string',
+		UAGCopyPaste: {
+			styleType: 'icon-placement'
+		},
+		default: 'before',
+	},
 	size: {
 		type: 'number',
 		UAGCopyPaste: {

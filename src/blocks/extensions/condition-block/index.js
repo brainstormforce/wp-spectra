@@ -1,14 +1,8 @@
 import { ToggleControl, SelectControl, TextControl } from '@wordpress/components';
 import { __ } from '@wordpress/i18n';
-import { createHigherOrderComponent } from '@wordpress/compose';
 import { addFilter } from '@wordpress/hooks';
-import { InspectorControls } from '@wordpress/block-editor';
 import UAGAdvancedPanelBody from '@Components/advanced-panel-body';
-import { select } from '@wordpress/data';
-import { useEffect  } from '@wordpress/element';
 import classnames from 'classnames';
-import addBlockEditorResponsiveStyles from '@Controls/addBlockEditorResponsiveStyles';
-import { useDeviceType } from '@Controls/getPreviewType';
 const { enableConditions, enableResponsiveConditions } = uagb_blocks_info;
 
 const UserConditionOptions = ( props ) => {
@@ -186,6 +180,7 @@ const ResponsiveConditionOptions = ( props ) => {
 	);
 };
 
+<<<<<<< HEAD
 const AdvancedControlsBlock = createHigherOrderComponent( ( BlockEdit ) => {
 	return ( props ) => {
 		const { isSelected } = props;
@@ -285,6 +280,8 @@ const AdvancedControlsBlock = createHigherOrderComponent( ( BlockEdit ) => {
 	};
 }, 'AdvancedControlsBlock' );
 
+=======
+>>>>>>> b9533c6e659cc338bc5d3724a519ee353afb80cf
 function ApplyExtraClass( extraProps, blockType, attributes ) {
 	const {
 		UAGHideDesktop,
@@ -369,12 +366,7 @@ function ApplyExtraClass( extraProps, blockType, attributes ) {
 			}
 		}
 	);
-	//For Non-UAG Blocks.
-	addFilter(
-		'editor.BlockEdit',
-		'uagb/advanced-display-condition',
-		AdvancedControlsBlock
-	);
+
 	addFilter(
 		'blocks.getSaveContent.extraProps',
 		'uagb/apply-extra-class',
