@@ -182,9 +182,10 @@ $selectors = array(
 	'.uagb-timeline__left-block .uagb-timeline__date-hide.uagb-timeline__date-inner' => array(
 		'font-size' => UAGB_Helper::get_css_value( $attr['dateFontsize'], $attr['dateFontsizeType'] ),
 	),
-	' .uagb-timeline__events-inner-new'                    => array(
+	' .uagb-timeline__events-inner-new :not(.uagb-timeline__events-inner--content)' => array(
 		'background-color' => $attr['backgroundColor'],
 		'border-radius'    => UAGB_Helper::get_css_value( $border_radius_fallback, 'px' ),
+		'padding'          => UAGB_Helper::get_css_value( $attr['bgPadding'], 'px' ),
 	),
 	' .uagb-timeline__events-inner--content'               => array(
 		'padding-left'   => UAGB_Helper::get_css_value( $top_padding, $attr['paddingUnit'] ),
