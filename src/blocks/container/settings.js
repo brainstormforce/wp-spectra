@@ -683,20 +683,20 @@ const Settings = ( props ) => {
 						htmlTag === 'a' && (
 							<>
 								<TextControl
-									label={__('Link', 'ultimate-addons-for-gutenberg')}
+									label={__( 'Link', 'ultimate-addons-for-gutenberg' )}
 									value={ htmlTagLink }
 									onChange={ ( value ) => setAttributes( {htmlTagLink: value} ) }
-									help={__('Don\'t use for nested links, this will cause semantic issues and unexpected behavior.', 'ultimate-addons-for-gutenberg')}
+									help={__( 'Don\'t use for nested links, this will cause semantic issues and unexpected behavior.', 'ultimate-addons-for-gutenberg' )}
 								/>
 								<ToggleControl
-									label={__('Open in new window', 'ultimate-addons-for-gutenberg')}
+									label={__( 'Open in new window', 'ultimate-addons-for-gutenberg' )}
 									checked={ htmlTagLinkOpenNewTab }
 									onChange={ () => {
 										setAttributes( {htmlTagLinkOpenNewTab: !htmlTagLinkOpenNewTab} )
 									} }
 								/>
 								<ToggleControl
-									label={__('Add nofollow', 'ultimate-addons-for-gutenberg')}
+									label={__( 'Add nofollow', 'ultimate-addons-for-gutenberg' )}
 									checked={ htmlTagLinkNoFollow }
 									onChange={ () => {
 										setAttributes( {htmlTagLinkNoFollow: !htmlTagLinkNoFollow} )

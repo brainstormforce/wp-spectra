@@ -75,15 +75,15 @@ const Render = ( props ) => {
 	const hasChildBlocks = getBlockOrder( clientId ).length > 0;
 
 	const CustomTag = `${htmlTag}`;
-	let customTagLinkAttributes = {};
-	if(htmlTag === 'a'){
-		if(htmlTagLink){
+	const customTagLinkAttributes = {};
+	if( htmlTag === 'a' ){
+		if( htmlTagLink ){
 			customTagLinkAttributes.href = htmlTagLink;
 		}
-		if(htmlTagLinkOpenNewTab){
+		if( htmlTagLinkOpenNewTab ){
 			customTagLinkAttributes.target = '_blank';
 		}
-		if(htmlTagLinkNoFollow){
+		if( htmlTagLinkNoFollow ){
 			customTagLinkAttributes.rel = 'nofollow';
 		}
 	}
