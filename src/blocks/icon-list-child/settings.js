@@ -22,7 +22,7 @@ const Settings = ( props ) => {
 	const hideLabel = props.hideLabel;
 	props = props.parentProps;
 
-	const { attributes, setAttributes } = props;
+	const { attributes, setAttributes, deviceType } = props;
 	const {
 		image_icon,
 		icon,
