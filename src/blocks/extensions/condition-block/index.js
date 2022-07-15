@@ -189,12 +189,12 @@ const AdvancedControlsBlock = createHigherOrderComponent( ( BlockEdit ) => {
 
 		const { InspectorAdvancedControls } = wp.blockEditor;
 		
-		const zindexBlockType = ['uagb/container'];
+		// const zindexBlockType = ['uagb/container']; zindexBlockType.includes(blockName)
 
 		return (
 			<>
 				<BlockEdit {...props} />
-				{ isSelected && zindexBlockType.includes(blockName) &&
+				{ isSelected && blockName.includes( 'uagb/' )  &&
 					<InspectorAdvancedControls>
 						{ zIndexOptions( props ) }
 					</InspectorAdvancedControls>
