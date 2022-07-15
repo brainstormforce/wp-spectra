@@ -25,6 +25,7 @@ import {
 import {
 	ToggleControl,
 	Icon,
+	Notice,
 } from '@wordpress/components';
 
 
@@ -1827,6 +1828,11 @@ const Settings = ( props ) => {
 			<InspectorControls>
 				<InspectorTabs>
 					<InspectorTab { ...UAGTabs.general }>
+						<Notice status="warning" isDismissible={false}>
+							{
+								__('This block has been deprecated.', 'ultimate-addons-for-gutenberg')
+							}
+						</Notice>
 						{ generalSettings }
 						{ fieldSetting }
 						{ radioCheckSetting }
