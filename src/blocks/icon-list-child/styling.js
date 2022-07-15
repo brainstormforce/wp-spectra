@@ -32,7 +32,6 @@ function styling( props ) {
 		childMarginUnit,
 		childMarginUnitTablet,
 		childMarginUnitMobile,
-		childMarginLink,
 		// padding
 		childTopPadding,
 		childRightPadding,
@@ -49,7 +48,6 @@ function styling( props ) {
 		childPaddingUnit,
 		childPaddingUnitTablet,
 		childPaddingUnitMobile,
-		childPaddingLink,
 	} = props.attributes;
 
 	const selectors = {
