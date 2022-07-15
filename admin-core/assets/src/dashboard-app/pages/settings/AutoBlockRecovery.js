@@ -47,7 +47,7 @@ const AutoBlockRecovery = () => {
                     { __( 'Automatic Block Recovery', 'ultimate-addons-for-gutenberg' ) }
                 </h3>
                 <p className="mt-[0.6rem] text-sm ">
-                    { __( 'Enable this to automatically recover any errornous blocks that may occur on your webpages. This will save you time spent on clicking all those \"Attempt Block Recovery\" Buttons.', 'ultimate-addons-for-gutenberg' ) }
+                    { __( 'Enable this to automatically recover any erroneous blocks that may occur on your web pages. This will save you time spent on clicking all those \"Attempt Block Recovery\" Buttons.', 'ultimate-addons-for-gutenberg' ) }
                 </p>
             </div>
             <div>
