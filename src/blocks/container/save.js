@@ -9,6 +9,7 @@ import shapes from './shapes';
 export default function save( props ) {
 	const {
 		block_id,
+		htmlTag,
 		contentWidth,
 		innerContentWidth,
 		isBlockRootParent,
@@ -59,8 +60,10 @@ export default function save( props ) {
 		</div>
 	);
 
+	const CustomTag = `${htmlTag}`;
+
 	return (
-		<div
+		<CustomTag
 			className={ classnames(
 				props.className,
 				`uagb-block-${ block_id }`,
@@ -89,6 +92,6 @@ export default function save( props ) {
 					: <InnerBlocks.Content />
 			}
 			{ bottomDividerHtml }
-		</div>
+		</CustomTag>
 	);
 }

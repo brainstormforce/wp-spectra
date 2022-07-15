@@ -16,6 +16,7 @@ const Render = ( props ) => {
 
 	const {
 		block_id,
+		htmlTag,
 		topType,
 		topFlip,
 		topContentAboveShape,
@@ -70,8 +71,10 @@ const Render = ( props ) => {
 
 	const hasChildBlocks = getBlockOrder( clientId ).length > 0;
 
+	const CustomTag = `${htmlTag}`;
+
 	return (
-		<div
+		<CustomTag
 			className={ classnames(
 				className,
 				`uagb-block-${ block_id }`,
@@ -100,7 +103,7 @@ const Render = ( props ) => {
 				/>
 			</div>
 			{ bottomDividerHtml }
-		</div>
+		</CustomTag>
 	);
 };
 export default React.memo( Render );

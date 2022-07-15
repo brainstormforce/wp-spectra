@@ -6,6 +6,10 @@ const attributes = {
 	block_id: {
 		type: 'string',
 	},
+	htmlTag: {
+		type: 'string',
+		default: 'div',
+	},
 	contentWidth: {
 		type: 'string',
 		default: 'alignfull',

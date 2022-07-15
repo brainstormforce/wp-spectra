@@ -31,6 +31,7 @@ const Settings = ( props ) => {
 	const { attributes, setAttributes, deviceType } = props;
 	const {
 		block_id,
+		htmlTag,
 		widthDesktop,
 		widthTablet,
 		widthMobile,
@@ -598,6 +599,82 @@ const Settings = ( props ) => {
 							},
 						] }
 						setAttributes={ setAttributes }
+					/>
+					<UAGSelectControl
+						label={ __(
+							'HTML Tag',
+							'ultimate-addons-for-gutenberg'
+						) }
+						data={ {
+							value: htmlTag,
+							label: 'htmlTag',
+						} }
+						setAttributes={ setAttributes }
+						options={ [
+							{
+								value: 'div',
+								label: __(
+									'Div',
+									'ultimate-addons-for-gutenberg'
+								),
+							},
+							{
+								value: 'header',
+								label: __(
+									'Header',
+									'ultimate-addons-for-gutenberg'
+								),
+							},
+							{
+								value: 'footer',
+								label: __(
+									'Footer',
+									'ultimate-addons-for-gutenberg'
+								),
+							},
+							{
+								value: 'main',
+								label: __(
+									'Main',
+									'ultimate-addons-for-gutenberg'
+								),
+							},
+							{
+								value: 'article',
+								label: __(
+									'Article',
+									'ultimate-addons-for-gutenberg'
+								),
+							},
+							{
+								value: 'section',
+								label: __(
+									'Section',
+									'ultimate-addons-for-gutenberg'
+								),
+							},
+							{
+								value: 'aside',
+								label: __(
+									'Aside',
+									'ultimate-addons-for-gutenberg'
+								),
+							},
+							{
+								value: 'nav',
+								label: __(
+									'Nav',
+									'ultimate-addons-for-gutenberg'
+								),
+							},
+							{
+								value: 'a',
+								label: __(
+									'a',
+									'ultimate-addons-for-gutenberg'
+								),
+							},
+						] }
 					/>
 				</UAGAdvancedPanelBody>
 				<UAGAdvancedPanelBody
