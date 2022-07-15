@@ -7,9 +7,9 @@
  * @package uagb
  */
 
-$selectors   = UAGB_Block_Helper::get_icon_list_child_selectors( $attr, $id, true )[0];
-$t_selectors = UAGB_Block_Helper::get_icon_list_child_selectors( $attr, $id, true )[1];
-$m_selectors = UAGB_Block_Helper::get_icon_list_child_selectors( $attr, $id, true )[2];
+$selectors   = UAGB_Block_Helper::get_icon_list_child_selectors( $attr, $id, true )['desktop'];
+$t_selectors = UAGB_Block_Helper::get_icon_list_child_selectors( $attr, $id, true )['tablet'];
+$m_selectors = UAGB_Block_Helper::get_icon_list_child_selectors( $attr, $id, true )['mobile'];
 
 $desktop = UAGB_Helper::generate_css( $selectors, '.uagb-block-' . $id );
 $tablet  = UAGB_Helper::generate_css( $t_selectors, '.uagb-block-' . $id );

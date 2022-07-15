@@ -423,7 +423,11 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				),
 			);
 
-			return array( $selectors, $t_selectors, $m_selectors );
+			return array(
+				'desktop' => $selectors,
+				'tablet'  => $t_selectors,
+				'mobile'  => $m_selectors,
+			);
 		}
 
 		/**
