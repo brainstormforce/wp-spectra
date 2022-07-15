@@ -627,7 +627,7 @@ const Settings = ( props ) => {
 						<strong>{__( 'Container', 'ultimate-addons-for-gutenberg' )}</strong>
 						{' '}
 						{
-							__( 'block instead for more flexibility, and better code markup', 'ultimate-addons-for-gutenberg' )
+							__( 'block instead for more flexibility, and better code markup.', 'ultimate-addons-for-gutenberg' )
 						}
 					</Notice>
 					{ getLayoutPanelBody() }
