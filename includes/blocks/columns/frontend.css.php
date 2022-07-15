@@ -134,6 +134,7 @@ if ( 'video' === $bg_type ) {
 	);
 } elseif ( 'gradient' === $bg_type ) {
 	$selectors[' > .uagb-columns__overlay']['background-color'] = 'transparent';
+	$selectors[' > .uagb-columns__overlay']['opacity']          = ( isset( $attr['backgroundOpacity'] ) && '' !== $attr['backgroundOpacity'] ) ? $attr['backgroundOpacity'] / 100 : '';
 	if ( $attr['gradientValue'] ) {
 		$selectors[' > .uagb-columns__overlay']['background-image'] = $attr['gradientValue'];
 	} else {
