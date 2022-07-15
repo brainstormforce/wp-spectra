@@ -91,9 +91,9 @@ const ColumnsComponent = ( props ) => {
 				setAttributes( { bottomMarginDesktop: bottomMargin } );
 			}
 		}
-		console.log(backgroundImageColor)
-console.log(maybeGetColorForVariable( backgroundImageColor ))
-console.log(hexToRGBA( maybeGetColorForVariable( backgroundImageColor ), backgroundOpacity ))
+// console.log(backgroundImageColor)
+// console.log(maybeGetColorForVariable( backgroundImageColor ))
+// console.log(hexToRGBA( maybeGetColorForVariable( backgroundImageColor ), backgroundOpacity ))
 		if ( 101 !== backgroundOpacity ) {
 			const color = hexToRGBA( maybeGetColorForVariable( backgroundImageColor ), backgroundOpacity );
 			setAttributes( { backgroundImageColor: color } );
