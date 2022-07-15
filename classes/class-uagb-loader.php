@@ -226,6 +226,10 @@ if ( ! class_exists( 'UAGB_Loader' ) ) {
 					unset( $attributes['UAGLoggedOut'] );
 				}
 
+				if ( isset( $attributes['zIndexs'] ) ) {
+					unset( $attributes['zIndexs'] );
+				}
+
 					$request['attributes'] = $attributes;
 
 			}

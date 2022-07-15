@@ -1,4 +1,4 @@
-import { ToggleControl, SelectControl } from '@wordpress/components';
+import { ToggleControl, SelectControl, TextControl } from '@wordpress/components';
 import { __ } from '@wordpress/i18n';
 import { createHigherOrderComponent } from '@wordpress/compose';
 import { addFilter } from '@wordpress/hooks';
@@ -121,6 +121,28 @@ const UserConditionOptions = ( props ) => {
 	);
 };
 
+const zIndexOptions = ( props ) => {
+	const { attributes, setAttributes } = props;
+	const { zIndexs } = attributes;
+
+	return (
+		<>
+			<TextControl
+				label={ __(
+					'Z-Index',
+					'ultimate-addons-for-gutenberg'
+				) }
+				value={ zIndexs }
+				onChange={ ( value ) =>
+					setAttributes( {
+						zIndexs: value,
+					} )
+				}
+			/>
+		</>	
+	);
+};
+
 const ResponsiveConditionOptions = ( props ) => {
 	const { attributes, setAttributes } = props;
 	const {
@@ -174,10 +196,13 @@ const AdvancedControlsBlock = createHigherOrderComponent( ( BlockEdit ) => {
 		const customBlocks = uagb_blocks_info.uagb_enable_extensions_for_blocks;
 		const blockPrefix = blockName.substring( 0, blockName.indexOf( '/' ) + 1 );
 		const { getSelectedBlock } = select( 'core/block-editor' );
+		const { InspectorAdvancedControls } = wp.blockEditor;
 		const childBlocks = getSelectedBlock()?.innerBlocks;
 		const deviceType = useDeviceType();
 		const responsiveClass = [];
 		let responsiveClassHideDesktop, responsiveClassHideTab, responsiveClassHideMob;
+		
+		const zindexBlockType = ['uagb/container'];
 
 			const parentClientId = select(
 				'core/block-editor'
@@ -227,28 +252,33 @@ const AdvancedControlsBlock = createHigherOrderComponent( ( BlockEdit ) => {
 			<>
 				<BlockEdit {...props} />
 				{isSelected && ! blockName.includes( 'uagb/' ) && ( blockName.includes( 'core/' ) || ( Array.isArray( customBlocks ) && 0 !== customBlocks.length && ( customBlocks.includes( blockName ) || customBlocks.includes( blockPrefix ) ) ) ) && ! excludeBlocks.includes( blockName ) &&
-				<InspectorControls>
-					{ 'enabled' === enableConditions &&
-					<UAGAdvancedPanelBody
-						title={ __( 'Display Conditions', 'ultimate-addons-for-gutenberg' ) }
-						initialOpen={ false }
-						className="block-editor-block-inspector__advanced uagb-extention-tab"
-					>
-						<p className="components-base-control__help">{ __( "Below Spectra settings will only take effect once you are on the live page, and not while you're editing.", 'ultimate-addons-for-gutenberg' ) }</p>
-						{ UserConditionOptions( props ) }
-					</UAGAdvancedPanelBody>
-					}
-					{ 'enabled' === enableResponsiveConditions &&
-					<UAGAdvancedPanelBody
-						title={ __( 'Responsive Conditions', 'ultimate-addons-for-gutenberg' ) }
-						initialOpen={ false }
-						className="block-editor-block-inspector__advanced uagb-extention-tab"
-					>
-						<p className="components-base-control__help">{ __( "Below Spectra settings will only take effect once you are on the live page, and not while you're editing.", 'ultimate-addons-for-gutenberg' ) }</p>
-						{ ResponsiveConditionOptions( props ) }
-					</UAGAdvancedPanelBody>
-					}
-				</InspectorControls>
+					<InspectorControls>
+						{ 'enabled' === enableConditions &&
+						<UAGAdvancedPanelBody
+							title={ __( 'Display Conditions', 'ultimate-addons-for-gutenberg' ) }
+							initialOpen={ false }
+							className="block-editor-block-inspector__advanced uagb-extention-tab"
+						>
+							<p className="components-base-control__help">{ __( "Below Spectra settings will only take effect once you are on the live page, and not while you're editing.", 'ultimate-addons-for-gutenberg' ) }</p>
+							{ UserConditionOptions( props ) }
+						</UAGAdvancedPanelBody>
+						}
+						{ 'enabled' === enableResponsiveConditions &&
+						<UAGAdvancedPanelBody
+							title={ __( 'Responsive Conditions', 'ultimate-addons-for-gutenberg' ) }
+							initialOpen={ false }
+							className="block-editor-block-inspector__advanced uagb-extention-tab"
+						>
+							<p className="components-base-control__help">{ __( "Below Spectra settings will only take effect once you are on the live page, and not while you're editing.", 'ultimate-addons-for-gutenberg' ) }</p>
+							{ ResponsiveConditionOptions( props ) }
+						</UAGAdvancedPanelBody>
+						}
+					</InspectorControls>
+				}
+				{ isSelected && zindexBlockType.includes(blockName) &&
+					<InspectorAdvancedControls>
+						{ zIndexOptions( props ) }
+					</InspectorAdvancedControls>
 				}
 			</>
 		);
@@ -260,6 +290,7 @@ function ApplyExtraClass( extraProps, blockType, attributes ) {
 		UAGHideDesktop,
 		UAGHideTab,
 		UAGHideMob,
+		zIndexs
 	} = attributes;
 
 		if ( UAGHideDesktop ) {
@@ -272,6 +303,10 @@ function ApplyExtraClass( extraProps, blockType, attributes ) {
 
 		if ( UAGHideMob ) {
 			extraProps.className = classnames( extraProps.className, 'uag-hide-mob' );
+		}
+
+		if ( zIndexs ) {
+			extraProps.style = { zIndex: zIndexs };
 		}
 
 	return extraProps;

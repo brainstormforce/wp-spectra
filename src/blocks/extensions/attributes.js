@@ -40,6 +40,9 @@ function addAttributes( settings ) {
 				UAGDisplayConditions: {
 					type: 'string',
 				},
+				zIndexs: {
+					type: 'string',
+				}
 			} );
 		}
 	}
