@@ -10,6 +10,18 @@ const attributes = {
 		type: 'string',
 		default: 'div',
 	},
+	htmlTagLink: {
+		type: 'string',
+		default: '',
+	},
+	htmlTagLinkNoFollow: {
+		type: 'boolean',
+		default: false,
+	},
+	htmlTagLinkOpenNewTab: {
+		type: 'boolean',
+		default: false,
+	},
 	contentWidth: {
 		type: 'string',
 		default: 'alignfull',

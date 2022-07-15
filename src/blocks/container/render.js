@@ -17,6 +17,9 @@ const Render = ( props ) => {
 	const {
 		block_id,
 		htmlTag,
+		htmlTagLink,
+		htmlTagLinkOpenNewTab,
+		htmlTagLinkNoFollow,
 		topType,
 		topFlip,
 		topContentAboveShape,
@@ -72,6 +75,18 @@ const Render = ( props ) => {
 	const hasChildBlocks = getBlockOrder( clientId ).length > 0;
 
 	const CustomTag = `${htmlTag}`;
+	let customTagLinkAttributes = {};
+	if(htmlTag === 'a'){
+		if(htmlTagLink){
+			customTagLinkAttributes.href = htmlTagLink;
+		}
+		if(htmlTagLinkOpenNewTab){
+			customTagLinkAttributes.target = '_blank';
+		}
+		if(htmlTagLinkNoFollow){
+			customTagLinkAttributes.rel = 'nofollow';
+		}
+	}
 
 	return (
 		<CustomTag
@@ -80,6 +95,7 @@ const Render = ( props ) => {
 				`uagb-block-${ block_id }`,
 			) }
 			key = { block_id }
+			{...customTagLinkAttributes}
 		>
 			{ topDividerHtml }
 			{ 'video' === backgroundType && (

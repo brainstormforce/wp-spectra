@@ -10,6 +10,9 @@ export default function save( props ) {
 	const {
 		block_id,
 		htmlTag,
+		htmlTagLink,
+		htmlTagLinkOpenNewTab,
+		htmlTagLinkNoFollow,
 		contentWidth,
 		innerContentWidth,
 		isBlockRootParent,
@@ -61,6 +64,18 @@ export default function save( props ) {
 	);
 
 	const CustomTag = `${htmlTag}`;
+	let customTagLinkAttributes = {};
+	if(htmlTag === 'a'){
+		if(htmlTagLink){
+			customTagLinkAttributes.href = htmlTagLink;
+		}
+		if(htmlTagLinkOpenNewTab){
+			customTagLinkAttributes.target = '_blank';
+		}
+		if(htmlTagLinkNoFollow){
+			customTagLinkAttributes.rel = 'nofollow';
+		}
+	}
 
 	return (
 		<CustomTag
@@ -69,6 +84,7 @@ export default function save( props ) {
 				`uagb-block-${ block_id }`,
 				isBlockRootParent ?  `${contentWidth} uagb-is-root-container` : '',
 			) }
+			{...customTagLinkAttributes}
 		>
 			{ topDividerHtml }
 			{ 'video' === backgroundType && (

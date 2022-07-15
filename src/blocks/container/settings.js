@@ -17,7 +17,7 @@ import ResponsiveBorder from '@Components/responsive-border';
 import UAGAdvancedPanelBody from '@Components/advanced-panel-body';
 import MultiButtonsControl from '@Components/multi-buttons-control';
 import UAGSelectControl from '@Components/select-control';
-import { Icon, ToggleControl } from '@wordpress/components';
+import { Icon, ToggleControl, TextControl } from '@wordpress/components';
 import renderCustomIcon from '@Controls/renderCustomIcon';
 import UAGTabsControl from '@Components/tabs';
 import AdvancedPopColorControl from '@Components/color-control/advanced-pop-color-control';
@@ -32,6 +32,9 @@ const Settings = ( props ) => {
 	const {
 		block_id,
 		htmlTag,
+		htmlTagLink,
+		htmlTagLinkOpenNewTab,
+		htmlTagLinkNoFollow,
 		widthDesktop,
 		widthTablet,
 		widthMobile,
@@ -614,56 +617,56 @@ const Settings = ( props ) => {
 							{
 								value: 'div',
 								label: __(
-									'Div',
+									'div',
 									'ultimate-addons-for-gutenberg'
 								),
 							},
 							{
 								value: 'header',
 								label: __(
-									'Header',
+									'header',
 									'ultimate-addons-for-gutenberg'
 								),
 							},
 							{
 								value: 'footer',
 								label: __(
-									'Footer',
+									'footer',
 									'ultimate-addons-for-gutenberg'
 								),
 							},
 							{
 								value: 'main',
 								label: __(
-									'Main',
+									'main',
 									'ultimate-addons-for-gutenberg'
 								),
 							},
 							{
 								value: 'article',
 								label: __(
-									'Article',
+									'article',
 									'ultimate-addons-for-gutenberg'
 								),
 							},
 							{
 								value: 'section',
 								label: __(
-									'Section',
+									'section',
 									'ultimate-addons-for-gutenberg'
 								),
 							},
 							{
 								value: 'aside',
 								label: __(
-									'Aside',
+									'aside',
 									'ultimate-addons-for-gutenberg'
 								),
 							},
 							{
 								value: 'nav',
 								label: __(
-									'Nav',
+									'nav',
 									'ultimate-addons-for-gutenberg'
 								),
 							},
@@ -676,6 +679,32 @@ const Settings = ( props ) => {
 							},
 						] }
 					/>
+					{
+						htmlTag === 'a' && (
+							<>
+								<TextControl
+									label={__('Link', 'ultimate-addons-for-gutenberg')}
+									value={ htmlTagLink }
+									onChange={ ( value ) => setAttributes( {htmlTagLink: value} ) }
+									help={__('Don\'t use for nested links, this will cause semantic issues and unexpected behavior.', 'ultimate-addons-for-gutenberg')}
+								/>
+								<ToggleControl
+									label={__('Open in new window', 'ultimate-addons-for-gutenberg')}
+									checked={ htmlTagLinkOpenNewTab }
+									onChange={ () => {
+										setAttributes( {htmlTagLinkOpenNewTab: !htmlTagLinkOpenNewTab} )
+									} }
+								/>
+								<ToggleControl
+									label={__('Add nofollow', 'ultimate-addons-for-gutenberg')}
+									checked={ htmlTagLinkNoFollow }
+									onChange={ () => {
+										setAttributes( {htmlTagLinkNoFollow: !htmlTagLinkNoFollow} )
+									} }
+								/>
+							</>
+						)
+					}
 				</UAGAdvancedPanelBody>
 				<UAGAdvancedPanelBody
 					title={ __( 'Flex Properties', 'ultimate-addons-for-gutenberg' ) }
