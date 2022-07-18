@@ -20,6 +20,7 @@ const Render = lazy( () =>
 );
 
 let hideLabel;
+let parentIcon;
 
 const UAGBIconListChild = ( props ) => {
 
@@ -36,7 +37,6 @@ const UAGBIconListChild = ( props ) => {
 		const blockStyling = styling( props );
 
 		addBlockEditorDynamicStyles( 'uagb-style-icon-list-child' + props.clientId.substr( 0, 8 ), blockStyling );
-		
 	}, [ props ] );
 
 	useEffect( () => {
@@ -44,7 +44,6 @@ const UAGBIconListChild = ( props ) => {
 		const blockStyling = styling( props );
 
 		addBlockEditorDynamicStyles( 'uagb-style-icon-list-child' + props.clientId.substr( 0, 8 ), blockStyling );
-		
 	}, [ deviceType ] );
 
 	const parentBlock = select( 'core/block-editor' ).getBlockParents(
@@ -54,11 +53,12 @@ const UAGBIconListChild = ( props ) => {
 		'core/block-editor'
 	).getBlockAttributes( parentBlock );
 	hideLabel = ( parentBlockAttributes || null !== parentBlockAttributes ) ? parentBlockAttributes.hideLabel : '';
+	parentIcon = ( parentBlockAttributes || null !== parentBlockAttributes ) ? parentBlockAttributes.parentIcon : '';
 
 	return (
 		<Suspense fallback={ lazyLoader() }>
 			<Settings parentProps={ props } hideLabel={ hideLabel } />
-			<Render parentProps={ props } />
+			<Render parentProps={ props } parentIcon={parentIcon}/>
 		</Suspense>
 	);
 };

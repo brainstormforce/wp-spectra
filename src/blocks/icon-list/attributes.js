@@ -64,6 +64,10 @@ const attributes = {
 		type: 'number',
 		default: itemCount,
 	},
+	parentIcon: {
+		type: 'string',
+		default: 'fab fa-arrow-circle-right',
+	},
 	icons: {
 		type: 'array',
 		default: icons,

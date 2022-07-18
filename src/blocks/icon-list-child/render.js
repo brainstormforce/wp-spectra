@@ -25,9 +25,10 @@ const Render = ( props ) => {
 		link,
 		target,
 		disableLink,
-		hideLabel
+		hideLabel,
+		parentIcon
 	} = attributes;
-
+	console.log(parentIcon)
 	let imageIconHtml = '';
 
 	if ( image_icon === 'icon' ) {
