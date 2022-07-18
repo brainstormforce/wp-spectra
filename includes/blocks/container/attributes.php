@@ -151,6 +151,7 @@ return array_merge(
 		'textColor'                      => 'inherit',
 		'linkColor'                      => '',
 		'linkHoverColor'                 => '',
+		'isBlockRootParent'              => false,
 	),
 	$border_attribute
 );
