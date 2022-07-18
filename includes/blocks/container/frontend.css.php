@@ -321,7 +321,7 @@ if ( 'alignwide' === $attr['innerContentWidth'] && 'alignfull' === $attr['conten
 
 	$t_selectors[ '.uagb-is-root-container.alignfull.uagb-block-' . $id . ' > .uagb-container-inner-blocks-wrap' ] = array_merge(
 		array( // phpcs:ignore WordPress.WP.GlobalVariablesOverride.Prohibited
-		'--inner-content-custom-width' => 'min( 100%, ' . $inner_content_custom_width_tablet_fallback . $attr['innerContentCustomWidthType'] . ')',
+		'--inner-content-custom-width' => 'min( 100%, ' . $inner_content_custom_width_tablet_fallback . $attr['innerContentCustomWidthTypeTablet'] . ')',
 		'max-width'                    => 'var(--inner-content-custom-width)',
 		),
 		$inner_container_tablet_css
@@ -329,7 +329,7 @@ if ( 'alignwide' === $attr['innerContentWidth'] && 'alignfull' === $attr['conten
 
 	$m_selectors[ '.uagb-is-root-container.alignfull.uagb-block-' . $id . ' > .uagb-container-inner-blocks-wrap' ] = array_merge(
 		array( // phpcs:ignore WordPress.WP.GlobalVariablesOverride.Prohibited
-		'--inner-content-custom-width' => 'min( 100%, ' . $inner_content_custom_width_mobile_fallback . $attr['innerContentCustomWidthType'] . ')',
+		'--inner-content-custom-width' => 'min( 100%, ' . $inner_content_custom_width_mobile_fallback . $attr['innerContentCustomWidthTypeMobile'] . ')',
 		'max-width'                    => 'var(--inner-content-custom-width)',
 		),
 		$inner_container_mobile_css
