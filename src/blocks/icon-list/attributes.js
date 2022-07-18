@@ -325,7 +325,6 @@ const attributes = {
 		UAGCopyPaste: {
 			styleType: 'main-title-line-height'
 		},
-		default: 1.17
 	},
 	lineHeightTablet: {
 		type: 'number',
