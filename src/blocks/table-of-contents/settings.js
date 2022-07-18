@@ -149,6 +149,17 @@ const Settings = ( props ) => {
 		markerView,
 		// Separator
 		separatorStyle,
+		separatorColor,
+		separatorWidth,
+		separatorWidthTablet,
+		separatorWidthMobile,
+		separatorWidthType,
+		separatorHeight,
+		separatorHeightType,
+		separatorSpace,
+		separatorSpaceTablet,
+		separatorSpaceMobile,
+		separatorSpaceType,
 	} = attributes;
 
 	let loadGFonts;
@@ -939,6 +950,136 @@ const Settings = ( props ) => {
 		);
 	};
 
+	const separatorSettings = () => {
+		return (
+			<UAGAdvancedPanelBody
+				title={ __( 'Separator', 'ultimate-addons-for-gutenberg' ) }
+				initialOpen={ false }
+			>
+				<ResponsiveSlider
+					label={ __(
+						'Width',
+						'ultimate-addons-for-gutenberg'
+					) }
+					data={ {
+						desktop: {
+							value: separatorWidth,
+							label: 'separatorWidth',
+						},
+						tablet: {
+							value: separatorWidthTablet,
+							label: 'separatorWidthTablet',
+						},
+						mobile: {
+							value: separatorWidthMobile,
+							label: 'separatorWidthMobile',
+						},
+					} }
+					min={ 0 }
+					max={ '%' === separatorWidthType ? 100 : 500 }
+					unit={ {
+						value: separatorWidthType,
+						label: 'separatorWidthType',
+					} }
+					units={ [
+						{
+							name: __(
+								'Pixel',
+								'ultimate-addons-for-gutenberg'
+							),
+							unitValue: 'px',
+						},
+						{
+							name: __(
+								'%',
+								'ultimate-addons-for-gutenberg'
+							),
+							unitValue: '%',
+						},
+					] }
+					setAttributes={ setAttributes }
+				/>
+				<Range
+					label={ __(
+						'Thickness',
+						'ultimate-addons-for-gutenberg'
+					) }
+					setAttributes={ setAttributes }
+					value={ separatorHeight }
+					data={ {
+						value: separatorHeight,
+						label: 'separatorHeight',
+					} }
+					min={ 0 }
+					max={ 20 }
+					unit={ {
+						value: separatorHeightType,
+						label: 'separatorHeightType',
+					} }
+					units={ [
+						{
+							name: __(
+								'Pixel',
+								'ultimate-addons-for-gutenberg'
+							),
+							unitValue: 'px',
+						},
+					] }
+				/>
+				<AdvancedPopColorControl
+					label={ __(
+						'Color',
+						'ultimate-addons-for-gutenberg'
+					) }
+					colorValue={
+						separatorColor ? separatorColor : ''
+					}
+					data={ {
+						value: separatorColor,
+						label: 'separatorColor',
+					} }
+					setAttributes={ setAttributes }
+				/>
+				<ResponsiveSlider
+					label={ __(
+						'Bottom Spacing',
+						'ultimate-addons-for-gutenberg'
+					) }
+					data={ {
+						desktop: {
+							value: separatorSpace,
+							label: 'separatorSpace',
+						},
+						tablet: {
+							value: separatorSpaceTablet,
+							label: 'separatorSpaceTablet',
+						},
+						mobile: {
+							value: separatorSpaceMobile,
+							label: 'separatorSpaceMobile',
+						},
+					} }
+					min={ 0 }
+					max={ 200 }
+					unit={ {
+						value: separatorSpaceType,
+						label: 'separatorSpaceType',
+					} }
+					units={ [
+						{
+							name: __(
+								'Pixel',
+								'ultimate-addons-for-gutenberg'
+							),
+							unitValue: 'px',
+						},
+					] }
+					setAttributes={ setAttributes }
+				/>
+			</UAGAdvancedPanelBody>
+		);
+	};
+
 	const getBulletStyle = () => {
 		return (
 			<UAGAdvancedPanelBody
@@ -1226,6 +1367,7 @@ const Settings = ( props ) => {
 						{ getTitle() }
 						{ ! disableBullets && getBulletStyle() }
 						{ scrollToTop && getScrollToTop() }
+						{ separatorSettings() }
 					</InspectorTab>
 					<InspectorTab
 						{ ...UAGTabs.advance }
