@@ -54,78 +54,81 @@ const Settings = () => {
 	}
 
     return (
-        <main className="max-w-[77rem] mx-auto my-[2.43rem] bg-white rounded-[0.2rem] shadow overflow-hidden h-[36rem]">
-            <div className="lg:grid lg:grid-cols-12 lg:gap-x-8 h-full">
-                <aside className="py-6 px-2 ml-8 sm:px-6 lg:py-6 lg:px-0 lg:col-span-3 border-r">
-                    <nav className="space-y-1">
-                        {navigation.map( ( item ) => (
-                        <Link // eslint-disable-line
-							to={ {
-								pathname: 'options-general.php',
-								search: `?page=spectra&path=settings&settings=${item.slug}`,
-							} }
-                            key={item.name}
-                            className={classNames(
-                            activeSettingsNavigationTab === item.slug
-                            ? 'bg-gray-50 text-spectra focus:text-spectra-hover active:text-spectra hover:text-spectra-hover fill-spectra'
-                            : 'text-gray-900 fill-gray-900 focus:text-gray-900 focus:bg-gray-50 hover:text-gray-900 hover:bg-gray-50',
-                            'group cursor-pointer rounded-[0.2rem] p-3 flex items-center text-sm font-medium'
-                            )}
-                            onClick={ () => {
-								dispatch( {type:'UPDATE_SETTINGS_ACTIVE_NAVIGATION_TAB', payload: item.slug} )
-							}}
-                        >
-                            { item.icon }
-                            <span className="truncate">{item.name}</span>
-                        </Link>
-                    ) )}
-                    </nav>
-                </aside>
-                <div className='space-y-8 mt-8 mb-0 mr-8 sm:px-6 lg:px-0 lg:col-span-9'>
-					{ 'global-settings' === activeSettingsNavigationTab &&
-						<>
-							<ContentWidth/>
-							<BlocksEditorSpacing/>
-                            <CollapsePanels/>
-                            <CopyPasteStyles/>
-                        </>
-                    }
-                    { 'asset-generation' === activeSettingsNavigationTab &&
-                        <>
-                            <AssetsGeneration/>
-                            <RegenerateAssets/>
-                        </>
-                    }
-                    { 'templates' === activeSettingsNavigationTab &&
-                        <TemplatesButton/>
-                    }
-                    { 'version-control' === activeSettingsNavigationTab &&
-                        <>
-                            <RollBack/>
-                            <BetaUpdates/>
-                        </>
-                    }
-                    { 'fonts-performance' === activeSettingsNavigationTab &&
-                        <>
-                            <SelectedFontFamilies/>
-                            <LoadFontsLocally/>
-                            <PreloadLocalFonts/>
-                        </>
-                    }
-					{ 'block-settings' === activeSettingsNavigationTab &&
-                        <>
-                            <BlockSettings/>
-                        </>
-                    }
-					{
-						'coming-soon' === activeSettingsNavigationTab &&
-						<>
-							<ComingSoon/>
-						</>
-					}
+        <>
+            <div className="max-w-3xl mx-auto lg:max-w-[77rem] mt-10 mb-8 font-semibold text-2xl">Settings</div>
+            <main className="max-w-[77rem] mx-auto my-[2.43rem] bg-white rounded-md shadow overflow-hidden h-[36rem]">
+                <div className="lg:grid lg:grid-cols-12 h-full">
+                    <aside className="py-6 sm:px-6 lg:py-6 lg:px-0 lg:col-span-3">
+                        <nav className="space-y-1">
+                            {navigation.map( ( item ) => (
+                            <Link // eslint-disable-line
+                                to={ {
+                                    pathname: 'options-general.php',
+                                    search: `?page=spectra&path=settings&settings=${item.slug}`,
+                                } }
+                                key={item.name}
+                                className={classNames(
+                                activeSettingsNavigationTab === item.slug
+                                ? 'border-spectra text-spectra focus:text-spectra-hover active:text-spectra hover:text-spectra-hover fill-spectra focus:fill-spectra hover:fill-spectra'
+                                : 'border-white text-slate-500 fill-slate-500 focus:text-slate-700 focus:border-slate-200 focus:fill-slate-700 hover:text-slate-700 hover:border-slate-200 hover:fill-slate-700',
+                                'border-l-4 group cursor-pointer py-3 pl-5 flex items-center text-sm font-medium'
+                                )}
+                                onClick={ () => {
+                                    dispatch( {type:'UPDATE_SETTINGS_ACTIVE_NAVIGATION_TAB', payload: item.slug} )
+                                }}
+                            >
+                                { item.icon }
+                                <span className="truncate">{item.name}</span>
+                            </Link>
+                        ) )}
+                        </nav>
+                    </aside>
+                    <div className='lg:col-span-9 border-l'>
+                        { 'global-settings' === activeSettingsNavigationTab &&
+                            <>
+                                <ContentWidth/>
+                                <BlocksEditorSpacing/>
+                                <CollapsePanels/>
+                                <CopyPasteStyles/>
+                            </>
+                        }
+                        { 'asset-generation' === activeSettingsNavigationTab &&
+                            <>
+                                <AssetsGeneration/>
+                                <RegenerateAssets/>
+                            </>
+                        }
+                        { 'templates' === activeSettingsNavigationTab &&
+                            <TemplatesButton/>
+                        }
+                        { 'version-control' === activeSettingsNavigationTab &&
+                            <>
+                                <RollBack/>
+                                <BetaUpdates/>
+                            </>
+                        }
+                        { 'fonts-performance' === activeSettingsNavigationTab &&
+                            <>
+                                <SelectedFontFamilies/>
+                                <LoadFontsLocally/>
+                                <PreloadLocalFonts/>
+                            </>
+                        }
+                        { 'block-settings' === activeSettingsNavigationTab &&
+                            <>
+                                <BlockSettings/>
+                            </>
+                        }
+                        {
+                            'coming-soon' === activeSettingsNavigationTab &&
+                            <>
+                                <ComingSoon/>
+                            </>
+                        }
+                    </div>
                 </div>
-            </div>
-        </main>
+            </main>
+        </>
     );
 };
 

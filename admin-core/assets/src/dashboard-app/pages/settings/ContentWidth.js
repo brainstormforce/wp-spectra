@@ -31,8 +31,8 @@ const ContentWidth = () => {
 
     return (
         <>
-            <section className='flex border-b border-solid border-slate-200'>
-                <div className='pr-16 pb-8 w-[78%]'>
+            <section className='flex border-b border-solid border-slate-200 p-8 justify-between'>
+                <div className='pr-16 w-[78%]'>
                     <h3 className="text-lg leading-6 font-medium text-gray-900">
                         {__( 'Default Content Width', 'ultimate-addons-for-gutenberg' )}
                     </h3>

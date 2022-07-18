@@ -41,8 +41,8 @@ const BetaUpdates = () => {
     };
 
     return (
-        <section className='flex'>
-            <div className='pr-16 pb-8 w-[78%]'>
+        <section className='flex p-8 justify-between'>
+            <div className='pr-16 w-[78%]'>
                 <h3 className="text-lg leading-6 font-medium text-gray-900">
                     {__( 'Enable Beta', 'ultimate-addons-for-gutenberg' )}
                 </h3>
