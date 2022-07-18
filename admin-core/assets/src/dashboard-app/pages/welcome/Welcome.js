@@ -43,7 +43,7 @@ const Welcome = () => {
 									<span className="relative z-0 inline-flex pt-6 justify-start w-full">
 										<button
 											type="button"
-											className="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-wpcolor focus:bg-wphovercolor hover:bg-wphovercolor focus:outline-none mr-4"
+											className="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-spectra focus:bg-spectra-hover hover:bg-spectra-hover focus:outline-none mr-4"
 											onClick={ onCreateNewPageClick }
 										>
 											{__( 'Create New Page', 'ultimate-addons-for-gutenberg' )}
@@ -82,13 +82,13 @@ const Welcome = () => {
 											'ultimate-addons-for-gutenberg'
 										) }
 									</p>
-									<a className='text-base text-wpcolor focus:text-wphovercolor active:text-wphovercolor hover:text-wphovercolor underline' href='https://ultimategutenberg.com/docs/' target='_blank' rel="noreferrer">
+									<a className='text-base text-spectra focus:text-spectra-hover active:text-spectra-hover hover:text-spectra-hover underline' href='https://ultimategutenberg.com/docs/' target='_blank' rel="noreferrer">
 										{ __(
 											'Browse Now',
 											'ultimate-addons-for-gutenberg'
 										) }
 									</a>
-									<a className='text-base text-wpcolor focus:text-wphovercolor active:text-wphovercolor hover:text-wphovercolor no-underline' href='https://ultimategutenberg.com/docs/' target='_blank' rel="noreferrer"> → </a>
+									<a className='text-base text-spectra focus:text-spectra-hover active:text-spectra-hover hover:text-spectra-hover no-underline' href='https://ultimategutenberg.com/docs/' target='_blank' rel="noreferrer"> → </a>
 								</div>
 							</div>
 						</section>
@@ -110,13 +110,13 @@ const Welcome = () => {
 											'ultimate-addons-for-gutenberg'
 										) }
 									</p>
-									<a className='text-base text-wpcolor focus:text-wphovercolor active:text-wphovercolor hover:text-wphovercolor underline' href='https://ultimategutenberg.com/support/' target='_blank' rel="noreferrer">
+									<a className='text-base text-spectra focus:text-spectra-hover active:text-spectra-hover hover:text-spectra-hover underline' href='https://ultimategutenberg.com/support/' target='_blank' rel="noreferrer">
 										{ __(
 											'Get Support',
 											'ultimate-addons-for-gutenberg'
 										) }
 									</a>
-									<a className='text-base text-wpcolor focus:text-wphovercolor active:text-wphovercolor hover:text-wphovercolor no-underline' href='https://ultimategutenberg.com/support/' target='_blank' rel="noreferrer"> → </a>
+									<a className='text-base text-spectra focus:text-spectra-hover active:text-spectra-hover hover:text-spectra-hover no-underline' href='https://ultimategutenberg.com/support/' target='_blank' rel="noreferrer"> → </a>
 								</div>
 							</div>
 						</section>
@@ -138,13 +138,13 @@ const Welcome = () => {
 											'ultimate-addons-for-gutenberg'
 										) }
 									</p>
-									<a className='text-base text-wpcolor focus:text-wphovercolor active:text-wphovercolor hover:text-wphovercolor underline' href='https://www.facebook.com/groups/wpastra/' target='_blank' rel="noreferrer">
+									<a className='text-base text-spectra focus:text-spectra-hover active:text-spectra-hover hover:text-spectra-hover underline' href='https://www.facebook.com/groups/wpastra/' target='_blank' rel="noreferrer">
 										{ __(
 											'Join Now',
 											'ultimate-addons-for-gutenberg'
 										) }
 									</a>
-									<a className='text-base text-wpcolor focus:text-wphovercolor active:text-wphovercolor hover:text-wphovercolor no-underline' href='https://www.facebook.com/groups/wpastra/' target='_blank' rel="noreferrer"> → </a>
+									<a className='text-base text-spectra focus:text-spectra-hover active:text-spectra-hover hover:text-spectra-hover no-underline' href='https://www.facebook.com/groups/wpastra/' target='_blank' rel="noreferrer"> → </a>
 								</div>
 							</div>
 						</section>

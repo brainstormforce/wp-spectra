@@ -51,7 +51,7 @@ const AssetsGeneration = () => {
                 </h3>
                 <p className="mt-[0.6rem] text-sm ">
                     { __( 'Spectra loads the CSS and JS inline on the page by default. If you want to generate separate CSS and JS files for Spectra blocks, enable this option. Please read ', 'ultimate-addons-for-gutenberg' ) }
-                    <a className='text-wpcolor focus:text-wphovercolor active:text-wphovercolor hover:text-wphovercolor' href="https://www.ultimategutenberg.com/clean-html-with-uag/?utm_source=uag-dashboard&utm_medium=link&utm_campaign=uag-dashboard"> { __( 'this article', 'ultimate-addons-for-gutenberg' ) } </a>
+                    <a className='text-spectra focus:text-spectra-hover active:text-spectra-hover hover:text-spectra-hover' href="https://www.ultimategutenberg.com/clean-html-with-uag/?utm_source=uag-dashboard&utm_medium=link&utm_campaign=uag-dashboard"> { __( 'this article', 'ultimate-addons-for-gutenberg' ) } </a>
                     {__( ' to learn the difference between generating CSS and JS inline and in a separate file.', 'ultimate-addons-for-gutenberg' )}
                 </p>
             </div>
@@ -60,7 +60,7 @@ const AssetsGeneration = () => {
                     checked={fileGenerationStatus}
                     onChange={updateFileGenerationStatus}
                     className={classNames(
-                        fileGenerationStatus ? 'bg-wpcolor' : 'bg-gray-200',
+                        fileGenerationStatus ? 'bg-spectra' : 'bg-gray-200',
                         'relative inline-flex flex-shrink-0 h-5 w-[2.4rem] items-center border-2 border-transparent rounded-full cursor-pointer transition-colors ease-in-out duration-200 focus:outline-none'
                     )}
                     >
