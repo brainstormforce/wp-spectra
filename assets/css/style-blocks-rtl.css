@@ -87,3 +87,45 @@
 .rtl .uagb-rm__content {
 	text-align: right;
 }
+
+/* Spectra blocks */
+.rtl .wp-block-uagb-team.uagb-team__image-position-above.uagb-team__align-center .uagb-team__content,
+.rtl .wp-block-uagb-team.uagb-team__image-position-above.uagb-team__align-left .uagb-team__content,
+.rtl .wp-block-uagb-team.uagb-team__image-position-above.uagb-team__align-right .uagb-team__content {
+   text-align: right;
+}
+
+.rtl .wp-block-uagb-inline-notice.uagb-inline_notice__align-left,
+.rtl .wp-block-uagb-inline-notice.uagb-inline_notice__align-right,
+.rtl .wp-block-uagb-inline-notice.uagb-inline_notice__align-center {
+    text-align: right;
+}
+
+.rtl .uagb-tm__content {
+    text-align: right;
+}
+
+.rtl .uagb-social-share__outer-wrap, .uagb-social-share__wrap{
+    justify-content: right;
+}
+
+.rtl .uagb-post-grid .uagb-post__inner-wrap {
+    text-align: right;
+}
+
+.rtl .uagb-timeline__left,
+.rtl .uagb-timeline__right,
+.rtl .uagb-timeline__center {
+    text-align: right;
+}
+
+.rtl .wp-block-uagb-marketing-button.uagb-marketing-btn__align-center, .wp-block-uagb-marketing-button.uagb-marketing-btn__align-text-center .uagb-marketing-btn__title-wrap,
+.rtl .wp-block-uagb-marketing-button.uagb-marketing-btn__align-text-center .uagb-marketing-btn__link {
+    text-align: right;
+}
+
+.rtl .wp-block-uagb-marketing-button.uagb-marketing-btn__align-center,
+.rtl .wp-block-uagb-marketing-button.uagb-marketing-btn__align-text-center .uagb-marketing-btn__title-wrap,
+.rtl .wp-block-uagb-marketing-button.uagb-marketing-btn__align-text-center .uagb-marketing-btn__link {
+    justify-content: right;
+}
