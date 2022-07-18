@@ -55,10 +55,14 @@ const UAGBIconListChild = ( props ) => {
 	hideLabel = ( parentBlockAttributes || null !== parentBlockAttributes ) ? parentBlockAttributes.hideLabel : '';
 	parentIcon = ( parentBlockAttributes || null !== parentBlockAttributes ) ? parentBlockAttributes.parentIcon : '';
 
+	useEffect(()=>{
+		props.setAttributes({fromParentIcon:parentIcon})
+	},[parentIcon])
+
 	return (
 		<Suspense fallback={ lazyLoader() }>
 			<Settings parentProps={ props } hideLabel={ hideLabel } />
-			<Render parentProps={ props } parentIcon={parentIcon}/>
+			<Render parentProps={ props } />
 		</Suspense>
 	);
 };

@@ -93,6 +93,10 @@ const attributes = {
 		type: 'boolean',
 		default: true,
 	},
+	fromParentIcon: {
+		type: 'string',
+		default: '',
+	},
 };
 
 export default attributes;

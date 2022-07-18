@@ -9,6 +9,7 @@ import renderSVG from '@Controls/renderIcon';
 import { RichText } from '@wordpress/block-editor';
 
 export default function save( props ) {
+	const parentIcon = props.parentIcon;
 	const { attributes , className } = props;
 
 	const {
@@ -21,13 +22,17 @@ export default function save( props ) {
 		target,
 		disableLink,
 		hideLabel,
+		disableIcon,
+		fromParentIcon
 	} = attributes;
 
 	let imageIconHtml = '';
 
 	if ( image_icon === 'icon' ) {
-		if ( icon ) {
-			imageIconHtml = renderSVG( icon )
+		if ( ! disableIcon ) {
+			if( icon || fromParentIcon ){
+				imageIconHtml = icon ? renderSVG( icon ) : renderSVG( fromParentIcon );
+			}
 		}
 	} else if ( image && image.url ) {
 		imageIconHtml = (
