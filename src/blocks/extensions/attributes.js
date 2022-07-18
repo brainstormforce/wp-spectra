@@ -40,7 +40,7 @@ function addAttributes( settings ) {
 				UAGDisplayConditions: {
 					type: 'string',
 				},
-				zIndexs: {
+				zIndex: {
 					type: 'string',
 				}
 			} );

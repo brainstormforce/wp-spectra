@@ -117,7 +117,7 @@ const UserConditionOptions = ( props ) => {
 
 const zIndexOptions = ( props ) => {
 	const { attributes, setAttributes } = props;
-	const { zIndexs } = attributes;
+	const { zIndex } = attributes;
 
 	return (
 		<>
@@ -126,10 +126,10 @@ const zIndexOptions = ( props ) => {
 					'Z-Index',
 					'ultimate-addons-for-gutenberg'
 				) }
-				value={ zIndexs }
+				value={ zIndex }
 				onChange={ ( value ) =>
 					setAttributes( {
-						zIndexs: value,
+						zIndex: value,
 					} )
 				}
 			/>
@@ -185,7 +185,7 @@ function ApplyExtraClass( extraProps, blockType, attributes ) {
 		UAGHideDesktop,
 		UAGHideTab,
 		UAGHideMob,
-		zIndexs
+		zIndex
 	} = attributes;
 
 		if ( UAGHideDesktop ) {
@@ -200,8 +200,8 @@ function ApplyExtraClass( extraProps, blockType, attributes ) {
 			extraProps.className = classnames( extraProps.className, 'uag-hide-mob' );
 		}
 
-		if ( zIndexs ) {
-			extraProps.style = { zIndex: zIndexs };
+		if ( zIndex ) {
+			extraProps.style = { zIndex: zIndex };
 		}
 
 	return extraProps;
