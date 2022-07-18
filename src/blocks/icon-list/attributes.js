@@ -141,6 +141,13 @@ const attributes = {
 		},
 		default: '',
 	},
+	iconPlacement: {
+		type: 'string',
+		UAGCopyPaste: {
+			styleType: 'icon-placement'
+		},
+		default: 'before',
+	},
 	size: {
 		type: 'number',
 		UAGCopyPaste: {
@@ -432,6 +439,120 @@ const attributes = {
 		UAGCopyPaste: {
 			styleType: 'icon-border-hover-color'
 		},
+	},
+	// margin
+	blockTopMargin : {
+		type: 'number',
+		isUAGStyle: true,
+		UAGCopyPaste: {
+			styleType: 'block-top-margin'
+		}
+	},
+	blockRightMargin : {
+		type: 'number',
+		isUAGStyle: true,
+		UAGCopyPaste: {
+			styleType: 'block-right-margin'
+		}
+	},
+	blockLeftMargin : {
+		type: 'number',
+		isUAGStyle: true,
+		UAGCopyPaste: {
+			styleType: 'block-left-margin'
+		}
+	},
+	blockBottomMargin : {
+		type: 'number',
+		isUAGStyle: true,
+		UAGCopyPaste: {
+			styleType: 'block-bottom-margin'
+		}
+	},
+	blockTopMarginTablet: {
+		type: 'number',
+		isUAGStyle: true,
+		UAGCopyPaste: {
+			styleType: 'block-top-margin-tablet'
+		}
+	},
+	blockRightMarginTablet: {
+		type: 'number',
+		isUAGStyle: true,
+		UAGCopyPaste: {
+			styleType: 'block-right-margin-tablet'
+		}
+	},
+	blockLeftMarginTablet: {
+		type: 'number',
+		isUAGStyle: true,
+		UAGCopyPaste: {
+			styleType: 'block-left-margin-tablet'
+		}
+	},
+	blockBottomMarginTablet: {
+		type: 'number',
+		isUAGStyle: true,
+		UAGCopyPaste: {
+			styleType: 'block-bottom-margin-tablet'
+		}
+	},
+	blockTopMarginMobile: {
+		type: 'number',
+		isUAGStyle: true,
+		UAGCopyPaste: {
+			styleType: 'block-top-margin-mobile'
+		}
+	},
+	blockRightMarginMobile: {
+		type: 'number',
+		isUAGStyle: true,
+		UAGCopyPaste: {
+			styleType: 'block-right-margin-mobile'
+		}
+	},
+	blockLeftMarginMobile: {
+		type: 'number',
+		isUAGStyle: true,
+		UAGCopyPaste: {
+			styleType: 'block-left-margin-mobile'
+		}
+	},
+	blockBottomMarginMobile: {
+		type: 'number',
+		isUAGStyle: true,
+		UAGCopyPaste: {
+			styleType: 'block-bottom-margin-mobile'
+		}
+	},
+	blockMarginUnit : {
+		type: 'string',
+		default: 'px',
+		isUAGStyle: true,
+		UAGCopyPaste: {
+			styleType: 'block-margin-unit'
+		}
+	},
+	blockMarginUnitTablet: {
+		type: 'string',
+		default: 'px',
+		isUAGStyle: true,
+		UAGCopyPaste: {
+			styleType: 'block-margin-unit-tablet'
+		}
+	},
+	blockMarginUnitMobile : {
+		type: 'string',
+		default: 'px',
+		isUAGStyle: true,
+		UAGCopyPaste: {
+			styleType: 'block-margin-unit-mobile'
+		}
+	},
+	blockMarginLink: {
+		type: 'boolean',
+		default: false,
+		isUAGStyle: true,
 	},
 };
 

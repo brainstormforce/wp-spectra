@@ -1336,7 +1336,7 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 		 *
 		 * @param array $attributes plugin.
 		 * @return array of requred query attributes.
-		 * @since x.x.x
+		 * @since 2.0.0-beta.3
 		 */
 		public function required_attribute_for_query( $attributes ) {
 			return array(

@@ -14,6 +14,7 @@ $overall_border_attributes = UAGB_Block_Helper::uag_generate_border_attribute(
 		'borderRightWidth'  => 1,
 		'borderLeftWidth'   => 1,
 		'borderBottomWidth' => 1,
+		'borderStyle'       => 'none',
 	)
 );
 
@@ -90,6 +91,7 @@ return array_merge(
 		'boxShadowSpread'          => '',
 		'boxShadowPosition'        => 'outset',
 		'gradientValue'            => '',
+		'backgroundOpacity'        => 0,
 	),
 	$overall_border_attributes
 );
