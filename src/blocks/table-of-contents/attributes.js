@@ -945,6 +945,81 @@ const attributes = {
 			styleType: 'separator-style'
 		}
 	},
+	separatorHeight: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'separator-thickness'
+		},
+		default: 2
+	},
+	separatorHeightType: {
+		type: 'string',
+		default: 'px',
+		UAGCopyPaste: {
+			styleType: 'separator-height-type'
+		}
+	},
+	separatorWidth: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'separator-width'
+		},
+		default: 12
+	},
+	separatorWidthTablet: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'separator-width'
+		},
+	},
+	separatorWidthMobile: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'separator-width'
+		},
+	},
+	separatorWidthType: {
+		type: 'string',
+		default: '%',
+		UAGCopyPaste: {
+			styleType: 'separator-width-type'
+		}
+	},
+	separatorSpace: {
+		type: 'number',
+		default: 15,
+		UAGCopyPaste: {
+			styleType: 'separator-bottom-margin'
+		}
+	},
+	separatorSpaceTablet: {
+		type: 'number',
+		default: '',
+		UAGCopyPaste: {
+			styleType: 'separator-bottom-margin'
+		}
+	},
+	separatorSpaceMobile: {
+		type: 'number',
+		default: '',
+		UAGCopyPaste: {
+			styleType: 'separator-bottom-margin'
+		}
+	},
+	separatorSpaceType: {
+		type: 'string',
+		default: 'px',
+		UAGCopyPaste: {
+			styleType: 'separator-width-type'
+		}
+	},
+	separatorColor: {
+		type: 'string',
+		default: '#0170b9',
+		UAGCopyPaste: {
+			styleType: 'separator-color'
+		}
+	},
 };
 
 export default attributes;
