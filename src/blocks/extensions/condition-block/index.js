@@ -1,7 +1,6 @@
 import { ToggleControl, SelectControl, TextControl } from '@wordpress/components';
 import { __ } from '@wordpress/i18n';
 import { addFilter } from '@wordpress/hooks';
-import { createHigherOrderComponent } from '@wordpress/compose';
 import UAGAdvancedPanelBody from '@Components/advanced-panel-body';
 import classnames from 'classnames';
 const { enableConditions, enableResponsiveConditions } = uagb_blocks_info;
@@ -181,29 +180,6 @@ const ResponsiveConditionOptions = ( props ) => {
 	);
 };
 
-const AdvancedControlsBlock = createHigherOrderComponent( ( BlockEdit ) => {
-	return ( props ) => {
-		const { isSelected } = props;
-
-		const blockName = props.name;
-
-		const { InspectorAdvancedControls } = wp.blockEditor;
-		
-		// const zindexBlockType = ['uagb/container']; zindexBlockType.includes(blockName)
-
-		return (
-			<>
-				<BlockEdit {...props} />
-				{ isSelected && blockName.includes( 'uagb/' )  &&
-					<InspectorAdvancedControls>
-						{ zIndexOptions( props ) }
-					</InspectorAdvancedControls>
-				}
-			</>
-		);
-	};
-}, 'AdvancedControlsBlock' );
-
 function ApplyExtraClass( extraProps, blockType, attributes ) {
 	const {
 		UAGHideDesktop,
@@ -244,6 +220,8 @@ function ApplyExtraClass( extraProps, blockType, attributes ) {
 
 			const excludeBlocks = ['uagb/buttons-child','uagb/faq-child', 'uagb/icon-list-child', 'uagb/social-share-child', 'uagb/restaurant-menu-child'];
 
+			const excludeNewBlocks = ['uagb/cf7-designer','uagb/wp-search', 'uagb/gf-designer', 'uagb/social-share-child', 'uagb/restaurant-menu-child'];
+
 			if( isSelected && ! excludeBlocks.includes( name ) ) {
 				return (
 					<>
@@ -283,16 +261,20 @@ function ApplyExtraClass( extraProps, blockType, attributes ) {
 							</p>
 						</UAGAdvancedPanelBody>
 					}
+					<UAGAdvancedPanelBody
+						title={ __(
+							'Visibility',
+							'ultimate-addons-for-gutenberg'
+						) }
+						initialOpen={ false }
+						className="block-editor-block-inspector__advanced uagb-extention-tab"
+					>
+						{ zIndexOptions( props ) }
+					</UAGAdvancedPanelBody>
 					</>
 				);
 			}
 		}
-	);
-
-	addFilter(
-		'editor.BlockEdit',
-		'uagb/advanced-properties',
-		AdvancedControlsBlock
 	);
 
 	addFilter(
