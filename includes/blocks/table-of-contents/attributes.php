@@ -127,6 +127,7 @@ return array_merge(
 		'letterSpacingMobile'        => '',
 		'letterSpacingType'          => 'px',
 		'markerView'                 => 'disc',
+		'separatorStyle'             => 'none',
 	),
 	$borderAttributes,
 );
