@@ -26,6 +26,7 @@ import {
 	ToggleControl,
 	Icon
 } from '@wordpress/components';
+import UAGSelectControl from '@Components/select-control';
 
 
 
@@ -146,6 +147,8 @@ const Settings = ( props ) => {
 		letterSpacingMobile,
 		letterSpacingType,
 		markerView,
+		// Separator
+		separatorStyle,
 	} = attributes;
 
 	let loadGFonts;
@@ -884,6 +887,54 @@ const Settings = ( props ) => {
 						/>
 					</>
 				) }
+				<UAGSelectControl
+					label={ __(
+						'Separator Style',
+						'ultimate-addons-for-gutenberg'
+					) }
+					data={ {
+						value: separatorStyle,
+						label: 'separatorStyle',
+					} }
+					setAttributes={ setAttributes }
+					options={ [
+						{
+							value: 'none',
+							label: __(
+								'None',
+								'ultimate-addons-for-gutenberg'
+							),
+						},
+						{
+							value: 'solid',
+							label: __(
+								'Solid',
+								'ultimate-addons-for-gutenberg'
+							),
+						},
+						{
+							value: 'double',
+							label: __(
+								'Double',
+								'ultimate-addons-for-gutenberg'
+							),
+						},
+						{
+							value: 'dashed',
+							label: __(
+								'Dashed',
+								'ultimate-addons-for-gutenberg'
+							),
+						},
+						{
+							value: 'dotted',
+							label: __(
+								'Dotted',
+								'ultimate-addons-for-gutenberg'
+							),
+						},
+					] }
+				/>
 			</UAGAdvancedPanelBody>
 		);
 	};
