@@ -220,7 +220,7 @@ function ApplyExtraClass( extraProps, blockType, attributes ) {
 
 			const excludeBlocks = ['uagb/buttons-child','uagb/faq-child', 'uagb/icon-list-child', 'uagb/social-share-child', 'uagb/restaurant-menu-child'];
 
-			const excludeNewBlocks = ['uagb/cf7-designer','uagb/wp-search', 'uagb/gf-designer', 'uagb/social-share-child', 'uagb/restaurant-menu-child'];
+			const excludeDeprecatedBlocks = ['uagb/cf7-styler','uagb/wp-search', 'uagb/gf-styler', 'uagb/columns', 'uagb/section'];
 
 			if( isSelected && ! excludeBlocks.includes( name ) ) {
 				return (
@@ -261,16 +261,18 @@ function ApplyExtraClass( extraProps, blockType, attributes ) {
 							</p>
 						</UAGAdvancedPanelBody>
 					}
-					<UAGAdvancedPanelBody
-						title={ __(
-							'Visibility',
-							'ultimate-addons-for-gutenberg'
-						) }
-						initialOpen={ false }
-						className="block-editor-block-inspector__advanced uagb-extention-tab"
-					>
-						{ zIndexOptions( props ) }
-					</UAGAdvancedPanelBody>
+					{ ! excludeDeprecatedBlocks.includes( name ) &&
+						<UAGAdvancedPanelBody
+							title={ __(
+								'Visibility',
+								'ultimate-addons-for-gutenberg'
+							) }
+							initialOpen={ false }
+							className="block-editor-block-inspector__advanced uagb-extention-tab"
+						>
+							{ zIndexOptions( props ) }
+						</UAGAdvancedPanelBody>
+					}
 					</>
 				);
 			}
