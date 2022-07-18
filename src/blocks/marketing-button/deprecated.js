@@ -56,6 +56,7 @@ const attributes = {
 	},
 	borderColor : {
 		type: "string",
+		default: "#333"
 	},
 	borderHoverColor : {
 		type: "string"
@@ -104,6 +105,7 @@ const attributes = {
 	},
 	backgroundColor: {
 		type: "string",
+		default: "#eeeeee"
 	},
 	backgroundHoverColor: {
 		type: "string",
@@ -140,18 +142,21 @@ const attributes = {
 	//Colors
 	titleColor: {
 		type: "string",
+		default: "#333"
 	},
 	titleHoverColor: {
 		type: "string"
 	},
 	iconColor: {
 		type: "string",
+		default: "#333"
 	},
 	iconHoverColor: {
 		type: "string"
 	},
 	prefixColor: {
 		type: "string",
+		default: "#333"
 	},
 	prefixHoverColor: {
 		type: "string"
