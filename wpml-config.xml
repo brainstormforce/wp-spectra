@@ -47,6 +47,7 @@
 			<xpath>//div[contains(@class, "wp-block-uagb-icon-list-child")]/a/@href</xpath>
 		</gutenberg-block>
 		<gutenberg-block type="uagb/tabs" translate="1">
+			<xpath>//a@href</xpath>
 		</gutenberg-block>
 		<gutenberg-block type="uagb/restaurant-menu" translate="1">
 			<xpath>//*[self::h1 or self::h2 or self::h3 or self::h4 or self::h5 or self::h6]</xpath>
@@ -68,6 +69,7 @@
 			<xpath>//div[@class="uagb-blockquote__content"]</xpath>
 			<xpath>//cite[@class="uagb-blockquote__author"]</xpath>
 			<xpath>//span[@class="uagb-blockquote__tweet-label"]</xpath>
+
 		</gutenberg-block>
 		<gutenberg-block type="uagb/marketing-button" translate="1">
 			<xpath>//a[@class="uagb-marketing-btn__link"]/@href</xpath>
