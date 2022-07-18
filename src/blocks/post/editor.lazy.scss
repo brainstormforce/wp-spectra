@@ -5,7 +5,6 @@
 .editor-styles-wrapper .uagb-post-grid {
 
 	.uagb-post__inner-wrap {
-		background-clip: content-box !important;
 
 		&.uagb-post__edit-mode {
 			margin: 20px;
@@ -114,12 +113,6 @@
 		}
 	}
 
-	&.uagb-post__items {
-		display: flex;
-		-ms-flex-wrap: wrap;
-		-webkit-flex-wrap: wrap;
-		flex-wrap: wrap;
-	}
 }
 
 .block-editor-page #wpwrap .edit-post-visual-editor .slick-dots {

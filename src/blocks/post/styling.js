@@ -268,13 +268,8 @@ function styling( props ) {
 
 	const selectors = {
 		'.uagb-post__items': {
-			'margin-right': generateCSSUnit( -rowGapFallback / 2, rowGapUnit ),
-			'margin-left': generateCSSUnit( -rowGapFallback / 2, rowGapUnit ),
-		},
-		'.uagb-post__items article': {
-			'padding-right': generateCSSUnit( rowGapFallback / 2, rowGapUnit ),
-			'padding-left': generateCSSUnit( rowGapFallback / 2, rowGapUnit ),
-			'margin-bottom': generateCSSUnit( columnGapFallback, columnGapUnit ),
+			'column-gap': generateCSSUnit( columnGapFallback , columnGapUnit ),
+			'row-gap': generateCSSUnit( rowGapFallback, rowGapUnit ),
 		},
 		' .uagb-post__inner-wrap': {
 			'background': bgColor,
@@ -283,24 +278,11 @@ function styling( props ) {
 				generateCSSUnit( boxShadowHOffset, 'px' ) + ' ' + generateCSSUnit( boxShadowVOffset, 'px' ) +	' ' +
 				generateCSSUnit( boxShadowBlur, 'px' ) + ' ' +	generateCSSUnit( boxShadowSpread, 'px' ) + ' ' +
 				boxShadowColor + ' ' +	boxShadowPositionCSS,
-			...overallBorderCSS
-		},
-		' .uagb-post__inner-wrap .uagb-post__text:not(.highlighted)': {
-			'margin-left': generateCSSUnit( paddingLeft, contentPaddingUnit ),
-			'margin-right': generateCSSUnit(
-				paddingRight,
-				contentPaddingUnit
-			),
-		},
-		' .uagb-post__inner-wrap .uagb-post__text.highlighted:first-child': {
-			'margin-top': generateCSSUnit( paddingTop, contentPaddingUnit ),
-			'margin-left': generateCSSUnit( paddingLeft, contentPaddingUnit ),
-		},
-		' .uagb-post__inner-wrap .uagb-post__text:last-child': {
-			'margin-bottom': generateCSSUnit(
-				paddingBottom,
-				contentPaddingUnit
-			),
+			...overallBorderCSS,
+			'padding-top': generateCSSUnit( paddingTop, contentPaddingUnit ),
+			'padding-left': generateCSSUnit( paddingLeft, contentPaddingUnit ),
+			'padding-bottom': generateCSSUnit( paddingBottom, contentPaddingUnit ),
+			'padding-right': generateCSSUnit( paddingRight, contentPaddingUnit ),
 		},
 		' .uagb-post__inner-wrap .uagb-post__cta': {
 			'margin-bottom': generateCSSUnit(
@@ -321,10 +303,6 @@ function styling( props ) {
 			'margin-bottom': generateCSSUnit(
 				titleBottomSpaceFallback,
 				titleBottomSpaceUnit
-			),
-			'margin-top': generateCSSUnit(
-				paddingTop,
-				contentPaddingUnit
 			),
 		},
 		' .uagb-post__inner-wrap .uagb-post-grid-byline': {
