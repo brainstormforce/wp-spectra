@@ -14,6 +14,7 @@ const Render = ( props ) => {
 		};
 	}, [] );
 
+	const parentIcon = props.parentIcon;
 	props = props.parentProps;
 	const { attributes, setAttributes , className } = props;
 	const {
@@ -26,14 +27,15 @@ const Render = ( props ) => {
 		target,
 		disableLink,
 		hideLabel,
-		parentIcon
+		disableIcon
 	} = attributes;
-	console.log(parentIcon)
 	let imageIconHtml = '';
 
 	if ( image_icon === 'icon' ) {
-		if ( icon ) {
-			imageIconHtml = renderSVG( icon );
+		if ( ! disableIcon ) {
+			if( icon || parentIcon ){
+				imageIconHtml = icon ? renderSVG( icon ) : renderSVG( parentIcon );
+			}
 		}
 	} else if ( image && image.url ) {
 		imageIconHtml = (

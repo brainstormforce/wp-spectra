@@ -10,7 +10,7 @@ for ( let i = 1; i <= itemCount; i++ ) {
 	icons.push( {
 		label: '#Label',
 		image_icon: 'icon',
-		icon: 'fab fa-arrow-circle-right',
+		icon: '',
 		image: '',
 		icon_color: '',
 		label_color: '',

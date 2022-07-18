@@ -37,6 +37,7 @@ const Settings = ( props ) => {
 		link,
 		target,
 		disableLink,
+		disableIcon,
 	} = attributes;
 
 	/*
@@ -272,18 +273,29 @@ const Settings = ( props ) => {
 					] }
 					showIcons={ false }
 				/>
+
 				{ 'icon' === image_icon && (
 					<>
-						<UAGIconPicker
-							label={ __(
-								'Icon',
-								'ultimate-addons-for-gutenberg'
-							) }
-							value={ icon }
-							onChange={ ( value ) =>
-								setAttributes( { icon: value } )
+						<ToggleControl
+							label={ __( 'Disable Icon', 'ultimate-addons-for-gutenberg' ) }
+							checked={ disableIcon }
+							onChange={ () =>
+								setAttributes( { disableIcon: ! disableIcon } )
 							}
 						/>
+						{ disableIcon === false &&
+							<UAGIconPicker
+								label={ __(
+									'Icon',
+									'ultimate-addons-for-gutenberg'
+								) }
+								value={ icon }
+								onChange={ ( value ) =>
+									setAttributes( { icon: value } )
+								}
+							/>
+						}
+
 					</>
 				) }
 				{ 'image' === image_icon && (
