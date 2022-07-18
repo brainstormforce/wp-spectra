@@ -201,7 +201,7 @@ function ApplyExtraClass( extraProps, blockType, attributes ) {
 		}
 
 		if ( zIndex ) {
-			extraProps.style = { zIndex: zIndex };
+			extraProps.style = { zIndex };
 		}
 
 	return extraProps;
