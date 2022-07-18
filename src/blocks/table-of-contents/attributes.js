@@ -938,6 +938,13 @@ const attributes = {
 		type: 'string',
 		default: 'disc'
 	},
+	separatorStyle: {
+		type: 'string',
+		default: 'none',
+		UAGCopyPaste: {
+			styleType: 'separator-style'
+		}
+	},
 };
 
 export default attributes;
