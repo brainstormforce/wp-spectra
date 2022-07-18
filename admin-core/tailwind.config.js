@@ -1,3 +1,5 @@
+const { boxShadow } = require('tailwindcss/defaultTheme');
+
 module.exports = {
 	content: [
 		'./assets/src/dashboard-app/**/*.{html,js}',
@@ -18,7 +20,11 @@ module.exports = {
 			},
 			fontFamily: {
 				inter: ['"Inter"', 'sans-serif'],
-			}
+			},
+			boxShadow: {
+				'overlay-left': '-16px 0px 80px -24px rgba(0, 0, 0, 0.16)',
+				'overlay-right': '16px 0px 80px -24px rgba(0, 0, 0, 0.16)',
+			},
 		},
 	},
 	variants: {
