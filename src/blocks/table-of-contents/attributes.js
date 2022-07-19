@@ -985,6 +985,20 @@ const attributes = {
 			styleType: 'separator-width-type'
 		}
 	},
+	separatorWidthTypeTablet: {
+		type: 'string',
+		default: '%',
+		UAGCopyPaste: {
+			styleType: 'separator-width-type-tablet'
+		}
+	},
+	separatorWidthTypeMobile: {
+		type: 'string',
+		default: '%',
+		UAGCopyPaste: {
+			styleType: 'separator-width-type-mobile'
+		}
+	},
 	separatorSpace: {
 		type: 'number',
 		default: 15,
