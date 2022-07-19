@@ -37,6 +37,7 @@ const Render = ( props ) => {
 		mappingHeaders,
 		headingTitle,
 		isPreview,
+		separatorStyle,
 	} = attributes;
 
 	let iconHtml = '';
@@ -74,6 +75,12 @@ const Render = ( props ) => {
 						/>
 						{ iconHtml }
 						</div>
+						{ separatorStyle !== 'none' && (
+								<div className='uagb-toc__separator-wrap'>
+									<div className='uagb-toc__separator'></div>
+								</div>
+							)
+						}
 					<TableOfContents
 						mappingHeaders={ mappingHeaders }
 						headers={ headers }
