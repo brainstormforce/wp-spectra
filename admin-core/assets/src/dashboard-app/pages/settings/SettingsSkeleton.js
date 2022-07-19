@@ -15,7 +15,7 @@ const SettingsSkeleton = () => {
 						.fill()
 						.map( ( i, index ) => {
 							return (
-								<div className='flex justify-left items-center py-3 space-x-3'>
+								<div key={ `setting${ index }` } className='flex justify-left items-center py-3 space-x-3'>
 									<RectSkeleton key={ `icon${ index }` } width="24px" height="24px" />
 									<TextSkeleton key={ index } width="120px" fontSize="16px" />
 								</div>
