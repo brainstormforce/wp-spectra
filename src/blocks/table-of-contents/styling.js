@@ -122,6 +122,8 @@ function styling( props ) {
 		separatorHeightType,
 		separatorWidth,
 		separatorWidthType,
+		separatorWidthTypeTablet,
+		separatorWidthTypeMobile,
 		separatorSpace,
 		separatorSpaceType,
 		separatorColor,
@@ -536,7 +538,7 @@ function styling( props ) {
 		tablet_selectors[ ' .uagb-toc__separator' ] = {
 			'width': generateCSSUnit(
 				getFallbackNumber( separatorWidthTablet, 'separatorWidthTablet', blockName ),
-				separatorWidthType
+				separatorWidthTypeTablet
 			),
 			'margin-bottom': generateCSSUnit(
 				getFallbackNumber( separatorSpaceTablet, 'separatorSpaceTablet', blockName ),
@@ -547,7 +549,7 @@ function styling( props ) {
 		mobile_selectors[ ' .uagb-toc__separator' ] = {
 			'width': generateCSSUnit(
 				getFallbackNumber( separatorWidthMobile, 'separatorWidthMobile', blockName ),
-				separatorWidthType
+				separatorWidthTypeMobile
 			),
 			'margin-bottom': generateCSSUnit(
 				getFallbackNumber( separatorSpaceMobile, 'separatorSpaceMobile', blockName ),
