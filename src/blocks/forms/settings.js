@@ -1140,6 +1140,10 @@ const Settings = ( props ) => {
 				borderHoverColorLabel={ __( 'Color', 'ultimate-addons-for-gutenberg' )}
 				hoverTabLabel={ __( 'Active', 'ultimate-addons-for-gutenberg' )}
 				disableBottomSeparator={ true }
+				borderRadiusHelp={ __(
+					'Border radius will be applied to Radio & Toggle only when the layout for those blocks is set to Square.',
+					'ultimate-addons-for-gutenberg'
+				) }
 			/>
 		</UAGAdvancedPanelBody>
 	);
