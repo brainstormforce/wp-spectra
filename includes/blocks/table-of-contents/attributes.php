@@ -136,6 +136,8 @@ return array_merge(
 		'separatorWidthTablet'       => '',
 		'separatorWidthMobile'       => '',
 		'separatorWidthType'         => '%',
+		'separatorWidthTypeTablet'   => '%',
+		'separatorWidthTypeMobile'   => '%',
 		'separatorSpace'             => 15,
 		'separatorSpaceTablet'       => '',
 		'separatorSpaceMobile'       => '',
