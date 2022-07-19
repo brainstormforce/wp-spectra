@@ -144,6 +144,8 @@ function styling( props ) {
 		innerContentCustomWidthDesktop,
 		innerContentCustomWidthTablet,
 		innerContentCustomWidthMobile,
+		innerContentCustomWidthTypeMobile,
+		innerContentCustomWidthTypeTablet
 	} = attributes;
 
 	const innerContentCustomWidthDesktopFallback = getFallbackNumber( innerContentCustomWidthDesktop, 'innerContentCustomWidthDesktop', blockName );
@@ -272,8 +274,8 @@ function styling( props ) {
 		'padding-bottom': generateCSSUnit( bottomPaddingDesktop, paddingType ),
 		'padding-left': generateCSSUnit( leftPaddingDesktop, paddingType ),
 		'padding-right': generateCSSUnit( rightPaddingDesktop, paddingType ),
-		'margin-top': generateCSSUnit( topMarginDesktop, marginType ),
-		'margin-bottom': generateCSSUnit( bottomMarginDesktop, marginType ),
+		'margin-top': generateCSSUnit( topMarginDesktop, marginType ) +	' !important',
+		'margin-bottom': generateCSSUnit( bottomMarginDesktop, marginType ) + ' !important',
 		'margin-left': generateCSSUnit( leftMarginDesktop, marginType ),
 		'margin-right': generateCSSUnit( rightMarginDesktop, marginType ),
 		...containerBackgroundCSSDesktop,
@@ -348,20 +350,23 @@ function styling( props ) {
 		widthSelectorsDesktop[`.is-root-container > .block-editor-block-list__block > .wp-block-uagb-container.uagb-block-${ block_id } > .uagb-container-inner-blocks-wrap`] = {
 			'--inner-content-custom-width' : `min(${ containerFullWidth },${ innerContentCustomWidthDesktopFallback }${ innerContentCustomWidthType })`,
 			'max-width' : 'var(--inner-content-custom-width)',
+			'width' : 'var(--inner-content-custom-width)',
 			'margin-left': 'auto',
 			'margin-right': 'auto'
 		};
 
 		widthSelectorsTablet[`.is-root-container > .block-editor-block-list__block.uagb-editor-preview-mode-tablet > .wp-block-uagb-container.uagb-block-${ block_id } > .uagb-container-inner-blocks-wrap`] = {
-			'--inner-content-custom-width' : `min(${ containerFullWidth },${ innerContentCustomWidthTablet || innerContentCustomWidthDesktopFallback }${ innerContentCustomWidthType })`,
+			'--inner-content-custom-width' : `min(${ containerFullWidth },${ innerContentCustomWidthTablet || innerContentCustomWidthDesktopFallback }${ innerContentCustomWidthTypeTablet })`,
 			'max-width' : 'var(--inner-content-custom-width)',
+			'width' : 'var(--inner-content-custom-width)',
 			'margin-left': 'auto',
 			'margin-right': 'auto'
 		};
 
 		widthSelectorsMobile[`.is-root-container > .block-editor-block-list__block.uagb-editor-preview-mode-mobile > .wp-block-uagb-container.uagb-block-${ block_id } > .uagb-container-inner-blocks-wrap`] = {
-			'--inner-content-custom-width' : `min(${ containerFullWidth },${ innerContentCustomWidthMobile || innerContentCustomWidthTablet || innerContentCustomWidthDesktopFallback }${ innerContentCustomWidthType })`,
+			'--inner-content-custom-width' : `min(${ containerFullWidth },${ innerContentCustomWidthMobile || innerContentCustomWidthTablet || innerContentCustomWidthDesktopFallback }${ innerContentCustomWidthTypeMobile })`,
 			'max-width' : 'var(--inner-content-custom-width)',
+			'width' : 'var(--inner-content-custom-width)',
 			'margin-left': 'auto',
 			'margin-right': 'auto'
 		};
@@ -392,8 +397,8 @@ function styling( props ) {
 			'padding-bottom': generateCSSUnit( bottomPaddingTablet, paddingTypeTablet ),
 			'padding-left': generateCSSUnit( leftPaddingTablet, paddingTypeTablet ),
 			'padding-right': generateCSSUnit( rightPaddingTablet, paddingTypeTablet ),
-			'margin-top': generateCSSUnit( topMarginTablet, marginTypeTablet ),
-			'margin-bottom': generateCSSUnit( bottomMarginTablet, marginTypeTablet ),
+			'margin-top': generateCSSUnit( topMarginTablet, marginTypeTablet )  + ' !important',
+			'margin-bottom': generateCSSUnit( bottomMarginTablet, marginTypeTablet )  + ' !important',
 			'margin-left': generateCSSUnit( leftMarginTablet, marginTypeTablet ),
 			'margin-right': generateCSSUnit( rightMarginTablet, marginTypeTablet ),
 			'min-height' : generateCSSUnit( minHeightTablet, minHeightType ),
@@ -451,8 +456,8 @@ function styling( props ) {
 			'padding-bottom': generateCSSUnit( bottomPaddingMobile, paddingTypeMobile ),
 			'padding-left': generateCSSUnit( leftPaddingMobile, paddingTypeMobile ),
 			'padding-right': generateCSSUnit( rightPaddingMobile, paddingTypeMobile ),
-			'margin-top': generateCSSUnit( topMarginMobile, marginTypeMobile ),
-			'margin-bottom': generateCSSUnit( bottomMarginMobile, marginTypeMobile ),
+			'margin-top': generateCSSUnit( topMarginMobile, marginTypeMobile )  + ' !important',
+			'margin-bottom': generateCSSUnit( bottomMarginMobile, marginTypeMobile )  + ' !important',
 			'margin-left': generateCSSUnit( leftMarginMobile, marginTypeMobile ),
 			'margin-right': generateCSSUnit( rightMarginMobile, marginTypeMobile ),
 			'min-height' : generateCSSUnit( minHeightMobile, minHeightType ),

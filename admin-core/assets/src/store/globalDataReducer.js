@@ -129,6 +129,16 @@ const globalDataReducer = ( state = {}, action ) => {
 				...state,
 				blocksEditorSpacing: action.payload,
 				};
+        case 'UPDATE_ENABLE_FONT_AWESOME_5':
+            return {
+                ...state,
+                enableFontAwesome5: action.payload,
+            };
+        case 'UPDATE_ENABLE_AUTO_BLOCK_RECOVERY':
+            return {
+                ...state,
+                enableAutoBlockRecovery: action.payload,
+            };
         default:
             return state;
     }
