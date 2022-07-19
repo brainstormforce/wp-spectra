@@ -1160,7 +1160,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 		/**
 		 * Border attribute generation Function.
 		 *
-		 * @since x.x.x
+		 * @since 2.0.0-beta.3
 		 * @param  array $prefix   Attribute Prefix.
 		 * @param array $default_args  default attributes args.
 		 * @return array
@@ -1225,7 +1225,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 		/**
 		 * Border attribute generation Function.
 		 *
-		 * @since x.x.x
+		 * @since 2.0.0-beta.3
 		 * @param  array $prefix   Attribute Prefix.
 		 * @param array $default_args  default attributes args.
 		 * @return array
@@ -1297,7 +1297,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 		/**
 		 * Border CSS generation Function.
 		 *
-		 * @since x.x.x
+		 * @since 2.0.0-beta.3
 		 * @param  array  $attr   Attribute List.
 		 * @param  string $prefix Attribuate prefix .
 		 * @param  string $device Responsive.
@@ -1352,7 +1352,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 		/**
 		 * Deprecated Border CSS generation Function.
 		 *
-		 * @since x.x.x
+		 * @since 2.0.0-beta.3
 		 * @param  array  $current_css   Current style list.
 		 * @param  string $border_width   Border Width.
 		 * @param  string $border_radius Border Radius.
@@ -1389,7 +1389,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 		 * Since title text is set to flex, we need this function so that stack alignment doesn't break.
 		 * It converts the normal text-align values to flex-alignment based values.
 		 *
-		 * @since x.x.x
+		 * @since 2.0.0-beta.3
 		 * @param string $text_align Alignment value from text-align property.
 		 */
 		public static function text_alignment_to_flex( $text_align ) {

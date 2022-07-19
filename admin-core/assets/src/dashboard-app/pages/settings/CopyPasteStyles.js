@@ -55,7 +55,7 @@ const CopyPasteStyles = () => {
                     checked={enableCopyPasteStylesStatus}
                     onChange={updateEnableCopyPasteStylesStatus}
                     className={classNames(
-                        enableCopyPasteStylesStatus ? 'bg-spectra' : 'bg-gray-200',
+                        enableCopyPasteStylesStatus ? 'bg-spectra' : 'bg-slate-200',
                         'relative inline-flex flex-shrink-0 h-5 w-[2.4rem] items-center border-2 border-transparent rounded-full cursor-pointer transition-colors ease-in-out duration-200 focus:outline-none'
                     )}
                     >

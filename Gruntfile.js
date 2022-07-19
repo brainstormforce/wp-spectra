@@ -238,6 +238,8 @@ module.exports = function ( grunt ) {
 				files: {
 					'blocks-config/uagb-controls/uagb-icons.php':
 						'blocks-config/uagb-controls/UAGBIcon.json',
+					'blocks-config/uagb-controls/spectra-icons-v6.php':
+						'blocks-config/uagb-controls/SpectraIconsV6.json',
 				},
 			},
 		},
@@ -319,6 +321,47 @@ module.exports = function ( grunt ) {
 						function ( err ) {
 							if ( ! err ) {
 								console.log( 'Font-Awesome library updated!' ); // eslint-disable-line
+							}
+						}
+					);
+				}
+			}
+		);
+	} );
+
+	// Update Font Awesome v6 library.
+	grunt.registerTask( 'font-awesome-v6', function () {
+		this.async();
+		const request = require( 'request' );
+		const fs = require( 'fs' );
+
+		request(
+			'https://raw.githubusercontent.com/FortAwesome/Font-Awesome/6.x/metadata/icons.json',
+			function ( error, response, body ) {
+				if ( response && response.statusCode === 200 ) {
+					console.log( 'V6 Fonts successfully fetched!' ); // eslint-disable-line
+
+					const fonts = JSON.parse( body );
+					Object.keys( fonts ).map( ( key ) => {
+
+						delete fonts[key].changes;
+						delete fonts[key].ligatures;
+						delete fonts[key].search;
+						delete fonts[key].styles;
+						delete fonts[key].unicode;
+						delete fonts[key].label;
+						delete fonts[key].voted;
+						delete fonts[key].free;
+						delete fonts[key].aliases;
+						return key;
+					} );
+
+					fs.writeFile(
+						'blocks-config/uagb-controls/SpectraIconsV6.json',
+						JSON.stringify( fonts, null, 4 ),
+						function ( err ) {
+							if ( ! err ) {
+								console.log( 'Font-Awesome v6 library updated!' ); // eslint-disable-line
 							}
 						}
 					);

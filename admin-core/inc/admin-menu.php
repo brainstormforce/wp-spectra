@@ -303,7 +303,7 @@ class Admin_Menu {
 	/**
 	 * Get plugin status
 	 *
-	 * @since x.x.x
+	 * @since 2.0.0-beta.3
 	 *
 	 * @param  string $plugin_init_file Plguin init file.
 	 * @return mixed
