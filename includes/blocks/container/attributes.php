@@ -154,6 +154,8 @@ return array_merge(
 		'linkColor'                         => '',
 		'linkHoverColor'                    => '',
 		'isBlockRootParent'                 => false,
+		'widthTypeTablet'                   => '%',
+		'widthTypeMobile'                   => '%',
 	),
 	$border_attribute
 );
