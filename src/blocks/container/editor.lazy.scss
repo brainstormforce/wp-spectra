@@ -196,7 +196,12 @@
 }
 
 .uag-advance-panel-body-size {
+
 	.components-select-control .components-input-control__container .components-select-control__input {
 		text-transform: inherit;
 	}
+}
+
+.interface-interface-skeleton__sidebar .uagb-tab-content-general .block-editor-link-control {
+	min-width: auto;
 }

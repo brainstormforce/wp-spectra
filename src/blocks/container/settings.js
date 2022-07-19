@@ -9,6 +9,7 @@ import { __ } from '@wordpress/i18n';
 
 import {
 	InspectorControls,
+	__experimentalLinkControl as LinkControl
 } from '@wordpress/block-editor';
 import BoxShadowControl from '@Components/box-shadow';
 import SpacingControl from '@Components/spacing-control';
@@ -17,7 +18,7 @@ import ResponsiveBorder from '@Components/responsive-border';
 import UAGAdvancedPanelBody from '@Components/advanced-panel-body';
 import MultiButtonsControl from '@Components/multi-buttons-control';
 import UAGSelectControl from '@Components/select-control';
-import { Icon, ToggleControl, TextControl } from '@wordpress/components';
+import { Icon, ToggleControl } from '@wordpress/components';
 import renderCustomIcon from '@Controls/renderCustomIcon';
 import UAGTabsControl from '@Components/tabs';
 import AdvancedPopColorControl from '@Components/color-control/advanced-pop-color-control';
@@ -33,8 +34,6 @@ const Settings = ( props ) => {
 		block_id,
 		htmlTag,
 		htmlTagLink,
-		htmlTagLinkOpenNewTab,
-		htmlTagLinkNoFollow,
 		widthDesktop,
 		widthTablet,
 		widthMobile,
@@ -681,28 +680,33 @@ const Settings = ( props ) => {
 					/>
 					{
 						htmlTag === 'a' && (
-							<>
-								<TextControl
-									label={__( 'Link', 'ultimate-addons-for-gutenberg' )}
-									value={ htmlTagLink }
-									onChange={ ( value ) => setAttributes( {htmlTagLink: value} ) }
-									help={__( 'Don\'t use for nested links, this will cause semantic issues and unexpected behavior.', 'ultimate-addons-for-gutenberg' )}
-								/>
-								<ToggleControl
-									label={__( 'Open in new window', 'ultimate-addons-for-gutenberg' )}
-									checked={ htmlTagLinkOpenNewTab }
-									onChange={ () => {
-										setAttributes( {htmlTagLinkOpenNewTab: !htmlTagLinkOpenNewTab} )
-									} }
-								/>
-								<ToggleControl
-									label={__( 'Add nofollow', 'ultimate-addons-for-gutenberg' )}
-									checked={ htmlTagLinkNoFollow }
-									onChange={ () => {
-										setAttributes( {htmlTagLinkNoFollow: !htmlTagLinkNoFollow} )
-									} }
-								/>
-							</>
+							<LinkControl
+								searchInputPlaceholder="Search here..."
+								value={ htmlTagLink }
+								settings={[
+									{
+										id: 'opensInNewTab',
+										title: __( 'Open in new window', 'ultimate-addons-for-gutenberg' ),
+									},
+									{
+										id: 'noFollow',
+										title: __( 'Add nofollow', 'ultimate-addons-for-gutenberg' )
+									}
+								]}
+								help={__( 'Don\'t use for nested links, this will cause semantic issues and unexpected behavior.', 'ultimate-addons-for-gutenberg' )}
+								onChange={ ( link ) => {
+									setAttributes( { htmlTagLink: link } )
+								} }
+								withCreateSuggestion={true}
+								createSuggestion={ ( inputValue ) => setAttributes( { post: {
+									...attributes.post,
+									title: inputValue,
+									type: 'custom-url',
+									id: Date.now(),
+									url: inputValue
+								} } ) }
+								createSuggestionButtonText={ ( newValue ) => `${__( 'New:', 'ultimate-addons-for-gutenberg' )} ${newValue}` }
+							/>
 						)
 					}
 				</UAGAdvancedPanelBody>

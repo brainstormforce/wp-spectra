@@ -18,8 +18,6 @@ const Render = ( props ) => {
 		block_id,
 		htmlTag,
 		htmlTagLink,
-		htmlTagLinkOpenNewTab,
-		htmlTagLinkNoFollow,
 		topType,
 		topFlip,
 		topContentAboveShape,
@@ -77,14 +75,15 @@ const Render = ( props ) => {
 	const CustomTag = `${htmlTag}`;
 	const customTagLinkAttributes = {};
 	if( htmlTag === 'a' ){
-		if( htmlTagLink ){
-			customTagLinkAttributes.href = htmlTagLink;
+		customTagLinkAttributes.rel = 'noopener'
+		if( htmlTagLink?.url ){
+			customTagLinkAttributes.href = htmlTagLink?.url;
 		}
-		if( htmlTagLinkOpenNewTab ){
+		if( htmlTagLink?.opensInNewTab ){
 			customTagLinkAttributes.target = '_blank';
 		}
-		if( htmlTagLinkNoFollow ){
-			customTagLinkAttributes.rel = 'nofollow';
+		if( htmlTagLink?.noFollow ){
+			customTagLinkAttributes.rel = 'nofollow noopener';
 		}
 	}
 

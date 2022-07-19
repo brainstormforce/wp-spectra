@@ -11,16 +11,7 @@ const attributes = {
 		default: 'div',
 	},
 	htmlTagLink: {
-		type: 'string',
-		default: '',
-	},
-	htmlTagLinkNoFollow: {
-		type: 'boolean',
-		default: false,
-	},
-	htmlTagLinkOpenNewTab: {
-		type: 'boolean',
-		default: false,
+		type: 'object',
 	},
 	contentWidth: {
 		type: 'string',
