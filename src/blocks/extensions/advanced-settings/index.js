@@ -219,21 +219,11 @@ function ApplyExtraClass( extraProps, blockType, attributes ) {
 			extraProps.className = classnames( extraProps.className, 'uag-hide-mob' );
 		}
 
-		if ( zIndex ) {
-			console.log(extraProps);
-			extraProps.style = {'--z-index-desktop': zIndex, '--z-index-tablet': zIndex, '--z-index-mobile': zIndex}
-			// extraProps.style = {'--z-index-tablet': zIndex}
-			// extraProps.style = {'--z-index-mobile': zIndex}
-
+		if ( zIndex || zIndexTablet || zIndexMobile ) {
+			//Adding a common selector for blocks where z-index is applied.
+			extraProps.className = classnames( extraProps.className, 'uag-blocks-common-selector' );
+			extraProps.style = {'--z-index-desktop': zIndex, '--z-index-tablet': zIndexTablet, '--z-index-mobile': zIndexMobile}
 		}
-
-		// if( window.matchMedia("(max-width: 1023px)").matches && zIndexTablet ) {
-		// 	extraProps.style = { zIndex: zIndexTablet };
-		// }
-
-		// if( window.matchMedia("(max-width: 767px)").matches && zIndexMobile ) {
-		// 	extraProps.style = { zIndex: zIndexMobile };
-		// }
 
 	return extraProps;
 }
