@@ -115,7 +115,20 @@ function styling( props ) {
 		letterSpacingTablet,
 		letterSpacingMobile,
 		letterSpacingType,
-		markerView
+		markerView,
+		// separator
+		separatorStyle,
+		separatorHeight,
+		separatorHeightType,
+		separatorWidth,
+		separatorWidthType,
+		separatorSpace,
+		separatorSpaceType,
+		separatorColor,
+		separatorWidthTablet,
+		separatorWidthMobile,
+		separatorSpaceTablet,
+		separatorSpaceMobile,
 	} = props.attributes;
 
 	const tColumnsDesktopFallback = getFallbackNumber( tColumnsDesktop, 'tColumnsDesktop', blockName );
@@ -499,6 +512,50 @@ function styling( props ) {
 				' / 2 )',
 		},
 	};
+
+	// separator
+	if ( separatorStyle !== 'none' ) {
+
+		selectors[ ' .uagb-toc__separator' ] = {
+			'border-top-style': separatorStyle,
+			'border-top-width': generateCSSUnit(
+				getFallbackNumber( separatorHeight, 'separatorHeight', blockName ),
+				separatorHeightType
+			),
+			'width': generateCSSUnit(
+				getFallbackNumber( separatorWidth, 'separatorWidth', blockName ),
+				separatorWidthType
+			),
+			'border-color': separatorColor,
+			'margin-bottom': generateCSSUnit(
+				getFallbackNumber( separatorSpace, 'separatorSpace', blockName ),
+				separatorSpaceType
+			),
+		};
+
+		tablet_selectors[ ' .uagb-toc__separator' ] = {
+			'width': generateCSSUnit(
+				getFallbackNumber( separatorWidthTablet, 'separatorWidthTablet', blockName ),
+				separatorWidthType
+			),
+			'margin-bottom': generateCSSUnit(
+				getFallbackNumber( separatorSpaceTablet, 'separatorSpaceTablet', blockName ),
+				separatorSpaceType
+			),
+		};
+
+		mobile_selectors[ ' .uagb-toc__separator' ] = {
+			'width': generateCSSUnit(
+				getFallbackNumber( separatorWidthMobile, 'separatorWidthMobile', blockName ),
+				separatorWidthType
+			),
+			'margin-bottom': generateCSSUnit(
+				getFallbackNumber( separatorSpaceMobile, 'separatorSpaceMobile', blockName ),
+				separatorSpaceType
+			),
+		};
+
+	}
 
 	const id = `.block-editor-block-list__block .uagb-block-${ props.clientId.substr(
 		0,
