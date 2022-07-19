@@ -129,3 +129,24 @@
 .rtl .wp-block-uagb-marketing-button.uagb-marketing-btn__align-text-center .uagb-marketing-btn__link {
     justify-content: right;
 }
+
+.rtl .uagb-infobox-icon-left.uagb-infobox__content-wrap, .uagb-infobox-icon-right.uagb-infobox__content-wrap,
+.rtl .uagb-infobox-icon-left-title .uagb-ifb-left-title-image,
+.rtl .uagb-infobox-icon-right-title .uagb-ifb-right-title-image {
+    flex-direction: row-reverse;
+}
+
+/* .rtl .wp-block-uagb-restaurant-menu .uagb-rest_menu__wrap .uagb-rm__content,
+.rtl .uagb-rest_menu__wrap .uagb-rest_menu__wrap .uagb-rm__content {
+    text-align: right;
+} */
+
+.rtl .wp-block-uagb-restaurant-menu .uagb-rm__image-position-left.uagb-rm__align-left .uagb-rm__price,
+.rtl .wp-block-uagb-restaurant-menu .uagb-rm__image-position-left.uagb-rm__align-right .uagb-rm__price,
+.rtl .wp-block-uagb-restaurant-menu .uagb-rm__image-position-left.uagb-rm__align-center .uagb-rm__price,
+.rtl .uagb-rest_menu__wrap .uagb-rm__image-position-left.uagb-rm__align-left .uagb-rm__price,
+.rtl .uagb-rest_menu__wrap .uagb-rm__image-position-left.uagb-rm__align-right .uagb-rm__price,
+.rtl .uagb-rest_menu__wrap .uagb-rm__image-position-left.uagb-rm__align-center .uagb-rm__price
+{
+    text-align: left;
+}
