@@ -139,7 +139,7 @@ const FilterTabs = () => {
 	};
 
     return (
-        <div className="max-w-3xl mx-auto lg:max-w-[77rem] mb-[2.43rem]">
+        <div className="max-w-3xl mx-auto lg:max-w-[77rem] mb-6">
             <div className="sm:hidden">
             <label htmlFor="tabs" className="sr-only">
                 Select a tab

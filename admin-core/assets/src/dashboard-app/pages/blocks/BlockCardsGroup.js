@@ -21,7 +21,7 @@ const BlockCardsGroup = () => {
     } );
 
     return (
-        <div className="lg:max-w-[80rem] mx-auto grid grid-cols-2 gap-6 sm:grid-cols-3 p-6 pt-0">
+        <div className="lg:max-w-[80rem] mx-auto grid grid-cols-2 gap-6 sm:grid-cols-3 px-6 py-3 h-[520px] overflow-y-scroll scroll-pt-3 snap-y">
             { renderBlockCards }
             {
                 ( 'extensions' === activeBlocksFilterTab || 'all' === activeBlocksFilterTab ) && <Extensions/>
