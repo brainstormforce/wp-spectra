@@ -26,19 +26,16 @@ const Render = ( props ) => {
 		target,
 		disableLink,
 		hideLabel,
-		disableIcon,
 		fromParentIcon
 	} = attributes;
 
 	let imageIconHtml = '';
 
 	if ( image_icon === 'icon' ) {
-		if ( ! disableIcon ) {
-			if( icon || fromParentIcon ){
-				imageIconHtml = icon ? renderSVG( icon ) : renderSVG( fromParentIcon );
-			}
+		if( icon || fromParentIcon ){
+			imageIconHtml = icon ? renderSVG( icon ) : renderSVG( fromParentIcon );
 		}
-	} else if ( image && image.url ) {
+	} else if ( image && image.url && image_icon !== 'none' ) {
 		imageIconHtml = (
 			<img
 				className="uagb-icon-list__source-image"
