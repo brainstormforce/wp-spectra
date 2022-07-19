@@ -50,7 +50,7 @@ const DisplayConditionsExtension = () => {
         key={'display-conditons'}
         className={ classNames(
             displayConditionsStatus
-                ? 'border-white bg-white shadow hover:shadow-2xl hover:z-50'
+                ? 'border-white bg-white shadow hover:shadow-lg hover:z-50'
                 : 'border-slate-200 spectra-disabled-icon',
             'box-border relative border rounded-md h-20 p-4 flex items-center space-x-4 snap-start transition spectra-icon-transition'
         ) }
