@@ -286,6 +286,39 @@ tweetBtnLetterSpacingType,
 				backgroundImage={ authorImage }
 				onRemoveImage={ onRemoveImage }
 			/>
+			{ authorImage &&
+				authorImage.url !== 'null' &&
+				authorImage.url !== '' && (
+					<>
+						<MultiButtonsControl
+							setAttributes={ setAttributes }
+							label={ __(
+								'Author Image Position',
+								'ultimate-addons-for-gutenberg'
+							) }
+							data={ {
+								value: authorImgPosition,
+								label: 'authorImgPosition',
+							} }
+							className="uagb-multi-button-alignment-control"
+							options={ [
+								{
+									value: 'left',
+									label: 'Left',
+								},
+								{
+									value: 'top',
+									label: 'Top',
+								},
+								{
+									value: 'right',
+									label: 'Right',
+								},
+							] }
+							showIcons={ false }
+						/>
+					</>
+			) }
 		</>
 	);
 
@@ -685,33 +718,6 @@ tweetBtnLetterSpacingType,
 				authorImage.url !== 'null' &&
 				authorImage.url !== '' && (
 					<>
-						<MultiButtonsControl
-							setAttributes={ setAttributes }
-							label={ __(
-								'Author Image Position',
-								'ultimate-addons-for-gutenberg'
-							) }
-							data={ {
-								value: authorImgPosition,
-								label: 'authorImgPosition',
-							} }
-							className="uagb-multi-button-alignment-control"
-							options={ [
-								{
-									value: 'left',
-									label: 'Left',
-								},
-								{
-									value: 'top',
-									label: 'Top',
-								},
-								{
-									value: 'right',
-									label: 'Right',
-								},
-							] }
-							showIcons={ false }
-						/>
 						<UAGSelectControl
 							label={ __(
 								'Author Image Size',
