@@ -9,7 +9,6 @@ import renderSVG from '@Controls/renderIcon';
 import { RichText } from '@wordpress/block-editor';
 
 export default function save( props ) {
-	const parentIcon = props.parentIcon;
 	const { attributes , className } = props;
 
 	const {
