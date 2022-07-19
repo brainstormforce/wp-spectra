@@ -154,6 +154,8 @@ const Settings = ( props ) => {
 		separatorWidthTablet,
 		separatorWidthMobile,
 		separatorWidthType,
+		separatorWidthTypeTablet,
+		separatorWidthTypeMobile,
 		separatorHeight,
 		separatorHeightType,
 		separatorSpace,
@@ -965,22 +967,30 @@ const Settings = ( props ) => {
 						desktop: {
 							value: separatorWidth,
 							label: 'separatorWidth',
+							unit: {
+								value: separatorWidthType,
+								label: 'separatorWidthType',
+							}
 						},
 						tablet: {
 							value: separatorWidthTablet,
 							label: 'separatorWidthTablet',
+							unit: {
+								value: separatorWidthTypeTablet,
+								label: 'separatorWidthTypeTablet',
+							}
 						},
 						mobile: {
 							value: separatorWidthMobile,
 							label: 'separatorWidthMobile',
+							unit: {
+								value: separatorWidthTypeMobile,
+								label: 'separatorWidthTypeMobile',
+							}
 						},
 					} }
 					min={ 0 }
-					max={ '%' === separatorWidthType ? 100 : 500 }
-					unit={ {
-						value: separatorWidthType,
-						label: 'separatorWidthType',
-					} }
+					limitMax={ { '%': 100, 'px': 500 } }
 					units={ [
 						{
 							name: __(
