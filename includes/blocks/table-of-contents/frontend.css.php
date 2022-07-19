@@ -283,7 +283,7 @@ if ( 'none' !== $attr['separatorStyle'] ) {
 	$t_selectors[' .uagb-toc__separator'] = array(
 		'width'         => UAGB_Helper::get_css_value(
 			UAGB_Block_Helper::get_fallback_number( $attr['separatorWidthTablet'], 'separatorWidthTablet', $block_name ),
-			$attr['separatorWidthType']
+			$attr['separatorWidthTypeTablet']
 		),
 		'margin-bottom' => UAGB_Helper::get_css_value(
 			UAGB_Block_Helper::get_fallback_number( $attr['separatorSpaceTablet'], 'separatorSpaceTablet', $block_name ),
@@ -294,7 +294,7 @@ if ( 'none' !== $attr['separatorStyle'] ) {
 	$m_selectors[' .uagb-toc__separator'] = array(
 		'width'         => UAGB_Helper::get_css_value(
 			UAGB_Block_Helper::get_fallback_number( $attr['separatorWidthMobile'], 'separatorWidthMobile', $block_name ),
-			$attr['separatorWidthType']
+			$attr['separatorWidthTypeMobile']
 		),
 		'margin-bottom' => UAGB_Helper::get_css_value(
 			UAGB_Block_Helper::get_fallback_number( $attr['separatorSpaceMobile'], 'separatorSpaceMobile', $block_name ),
