@@ -25,7 +25,7 @@ const BlocksSkeleton = () => {
 				</div>
 			</div>
 			<div className="lg:max-w-[80rem] mx-auto grid grid-cols-2 gap-6 sm:grid-cols-3 p-6 pt-0">
-			{ Array( 33 )
+			{ Array( 15 )
 			.fill()
 			.map( ( i ) => {
 				return (

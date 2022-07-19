@@ -253,3 +253,25 @@
 		fill: #94a3b8; // Tailwind Slate-400.
 	}
 }
+
+.spectra-scrollable-settings {
+	// scrollbar-gutter: stable both-edges;
+	scrollbar-width: 8px;
+	scrollbar-color: #CBD5E1 #F1F5F9; // Tailwind Slate-300 and Slate-100.
+
+	&::-webkit-scrollbar {
+		width: 0.5rem;
+		height: 0.5rem;
+	}
+
+	&::-webkit-scrollbar-track  {
+		margin: 1rem 0;
+		border-radius: 4px;
+		background-color: #F1F5F9;
+	}
+	
+	&::-webkit-scrollbar-thumb {
+		border-radius: 4px;
+		background-color: #CBD5E1;
+	}
+}
