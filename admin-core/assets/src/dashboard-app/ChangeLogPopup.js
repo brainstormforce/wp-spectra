@@ -72,9 +72,9 @@ return (
 												target={'_blank'}
 												rel={'noreferrer noopener'}
 											>
-												<p className="text-sm font-medium text-gray-900" dangerouslySetInnerHTML={{__html: title}}></p>
-												<p className="text-sm text-gray-500" dangerouslySetInnerHTML={{__html: pubDate}}></p>
-												<p className="mt-3 text-sm text-gray-500" dangerouslySetInnerHTML={{__html: description}}></p>
+												<p className="text-sm mb-1 font-medium text-slate-800" dangerouslySetInnerHTML={{__html: title}}></p>
+												<p className="text-xs text-slate-500" dangerouslySetInnerHTML={{__html: pubDate}}></p>
+												<p className="mt-3 spectra-changelog-description" dangerouslySetInnerHTML={{__html: description}}></p>
 											</a>
 										);
 									} )}
