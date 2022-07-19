@@ -7,8 +7,7 @@
 	margin: 0 auto;
 	position: relative;
 
-	&.is-carousel.uagb-post__inner-wrap,
-	&.is-masonry.uagb-post__inner-wrap {
+	&:not(.is-grid) .uagb-post__inner-wrap {
 		background-clip: content-box !important;
 	}
 	.uagb-post__inner-wrap {

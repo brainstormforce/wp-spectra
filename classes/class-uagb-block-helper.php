@@ -413,7 +413,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				' .uagb-post__inner-wrap:hover'   => array(
 					'border-color'=> $attr['overallBorderHColor']
 				),
-				' .uagb-post__inner-wrap .uagb-post__text.uagb-post__cta:last-child' => array(
+				' .uagb-post__inner-wrap .uagb-post__cta:last-child' => array(
 					'margin-bottom' => UAGB_Helper::get_css_value( $cta_bottom_space_fallback, $attr['ctaBottomSpaceUnit'] ),
 				),
 				' .uagb-post__image'        => array(
