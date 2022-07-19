@@ -222,7 +222,7 @@ function ApplyExtraClass( extraProps, blockType, attributes ) {
 		if ( zIndex || zIndexTablet || zIndexMobile ) {
 			//Adding a common selector for blocks where z-index is applied.
 			extraProps.className = classnames( extraProps.className, 'uag-blocks-common-selector' );
-			extraProps.style = {'--z-index-desktop': zIndex + ";", '--z-index-tablet': zIndexTablet + ";", '--z-index-mobile': zIndexMobile + ";"}
+			extraProps.style = {'--z-index-desktop': zIndex + ';', '--z-index-tablet': zIndexTablet + ';', '--z-index-mobile': zIndexMobile + ';'}
 		}
 
 	return extraProps;
