@@ -471,6 +471,15 @@ if ( ! class_exists( 'UAGB_Table_Of_Content' ) ) {
 							}
 							?>
 						</div>
+						<?php
+						if ( 'none' !== $attributes['separatorStyle'] ) {
+							?>
+							<div class='uagb-toc__separator-wrap'>
+								<div class='uagb-toc__separator'></div>
+							</div>
+							<?php
+						}
+						?>
 					<?php if ( $uagb_toc_heading_content && count( $uagb_toc_heading_content ) > 0 && count( array_filter( $attributes['mappingHeaders'], $mapping_header_func ) ) > 0 ) { ?>
 					<div class="uagb-toc__list-wrap">
 						<?php
@@ -821,6 +830,55 @@ if ( ! class_exists( 'UAGB_Table_Of_Content' ) ) {
 									'emptyHeadingTeaxt'    => array(
 										'type'    => 'string',
 										'default' => __( 'Add a header to begin generating the table of contents', 'ultimate-addons-for-gutenberg' ),
+									),
+									// Separator.
+									'separatorStyle'       => array(
+										'type'    => 'string',
+										'default' => 'none',
+									),
+									'separatorHeight'      => array(
+										'type'    => 'number',
+										'default' => 2,
+									),
+									'separatorHeightType'  => array(
+										'type'    => 'string',
+										'default' => 'px',
+									),
+									'separatorWidth'       => array(
+										'type'    => 'number',
+										'default' => 12,
+									),
+									'separatorWidthTablet' => array(
+										'type'    => 'number',
+										'default' => '',
+									),
+									'separatorWidthMobile' => array(
+										'type'    => 'number',
+										'default' => '',
+									),
+									'separatorWidthType'   => array(
+										'type'    => 'string',
+										'default' => '%',
+									),
+									'separatorSpace'       => array(
+										'type'    => 'number',
+										'default' => 15,
+									),
+									'separatorSpaceTablet' => array(
+										'type'    => 'number',
+										'default' => '',
+									),
+									'separatorSpaceMobile' => array(
+										'type'    => 'number',
+										'default' => '',
+									),
+									'separatorSpaceType'   => array(
+										'type'    => 'string',
+										'default' => 'px',
+									),
+									'separatorSpaceColor'  => array(
+										'type'    => 'string',
+										'default' => '#0170b9',
 									),
 								)
 							),
