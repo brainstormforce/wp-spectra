@@ -860,6 +860,14 @@ if ( ! class_exists( 'UAGB_Table_Of_Content' ) ) {
 										'type'    => 'string',
 										'default' => '%',
 									),
+									'separatorWidthTypeTablet' => array(
+										'type'    => 'string',
+										'default' => '%',
+									),
+									'separatorWidthTypeMobile' => array(
+										'type'    => 'string',
+										'default' => '%',
+									),
 									'separatorSpace'       => array(
 										'type'    => 'number',
 										'default' => 15,
