@@ -41,7 +41,13 @@ function addAttributes( settings ) {
 					type: 'string',
 				},
 				zIndex: {
-					type: 'string',
+					type: 'number',
+				},
+				zIndexTablet: {
+					type: 'number',
+				},
+				zIndexMobile: {
+					type: 'number',
 				}
 			} );
 		}

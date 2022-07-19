@@ -1,6 +1,7 @@
-import { ToggleControl, SelectControl, TextControl } from '@wordpress/components';
+import { ToggleControl, SelectControl } from '@wordpress/components';
 import { __ } from '@wordpress/i18n';
 import { addFilter } from '@wordpress/hooks';
+import ResponsiveSlider from '@Components/responsive-slider';
 import UAGAdvancedPanelBody from '@Components/advanced-panel-body';
 import classnames from 'classnames';
 const { enableConditions, enableResponsiveConditions } = uagb_blocks_info;
@@ -117,20 +118,39 @@ const UserConditionOptions = ( props ) => {
 
 const zIndexOptions = ( props ) => {
 	const { attributes, setAttributes } = props;
-	const { zIndex } = attributes;
+	const { zIndex, zIndexTablet, zIndexMobile } = attributes;
 
 	return (
 		<>
-			<TextControl
-				type="number"
-				value={ zIndex }
-				onChange={ ( value ) =>
-					setAttributes( {
-						zIndex: value,
-					} )
-				}
+			<ResponsiveSlider
+				label={ __(
+					'Z-Index',
+					'ultimate-addons-for-gutenberg'
+				) }
+				data={ {
+					desktop: {
+						value: zIndex,
+						label: 'zIndex',
+					},
+					tablet: {
+						value: zIndexTablet,
+						label: 'zIndexTablet',
+					},
+					mobile: {
+						value: zIndexMobile,
+						label: 'zIndexMobile',
+					},
+				} }
+				displayUnit={ false }
+				setAttributes={ setAttributes }
 			/>
-		</>	
+			<p className="components-base-control__help">
+				{ __(
+					"Above setting will only take effect once you are on the live page, and not while you're editing.",
+					'ultimate-addons-for-gutenberg'
+				) }
+			</p>
+		</>
 	);
 };
 
@@ -182,7 +202,9 @@ function ApplyExtraClass( extraProps, blockType, attributes ) {
 		UAGHideDesktop,
 		UAGHideTab,
 		UAGHideMob,
-		zIndex
+		zIndex,
+		zIndexTablet,
+		zIndexMobile,
 	} = attributes;
 
 		if ( UAGHideDesktop ) {
@@ -197,8 +219,10 @@ function ApplyExtraClass( extraProps, blockType, attributes ) {
 			extraProps.className = classnames( extraProps.className, 'uag-hide-mob' );
 		}
 
-		if ( zIndex ) {
-			extraProps.style = { zIndex };
+		if ( zIndex || zIndexTablet || zIndexMobile ) {
+			//Adding a common selector for blocks where z-index is applied.
+			extraProps.className = classnames( extraProps.className, 'uag-blocks-common-selector' );
+			extraProps.style = {'--z-index-desktop': zIndex, '--z-index-tablet': zIndexTablet, '--z-index-mobile': zIndexMobile}
 		}
 
 	return extraProps;
