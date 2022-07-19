@@ -913,8 +913,8 @@ const Settings = ( props ) => {
 				<InspectorTabs>
 					<InspectorTab { ...UAGTabs.general }>
 						{ presetSettings() }
-						{ generalSetting() }
 						{ iconSettings() }
+						{ generalSetting() }
 					</InspectorTab>
 					<InspectorTab { ...UAGTabs.style }>
 						{ iconSetting() }
