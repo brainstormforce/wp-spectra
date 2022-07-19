@@ -150,7 +150,7 @@ const zIndexOptions = ( props ) => {
 					'ultimate-addons-for-gutenberg'
 				) }
 			</p>
-		</>	
+		</>
 	);
 };
 
@@ -220,7 +220,11 @@ function ApplyExtraClass( extraProps, blockType, attributes ) {
 		}
 
 		if ( zIndex ) {
-			extraProps.style.setProperty('--z-index-desktop', zIndex);
+			console.log(extraProps);
+			extraProps.style = {'--z-index-desktop': zIndex, '--z-index-tablet': zIndex, '--z-index-mobile': zIndex}
+			// extraProps.style = {'--z-index-tablet': zIndex}
+			// extraProps.style = {'--z-index-mobile': zIndex}
+
 		}
 
 		// if( window.matchMedia("(max-width: 1023px)").matches && zIndexTablet ) {
