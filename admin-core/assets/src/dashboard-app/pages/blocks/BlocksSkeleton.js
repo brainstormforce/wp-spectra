@@ -4,7 +4,7 @@ const BlocksSkeleton = () => {
 	return (
 		<>
 			<div className="max-w-3xl mx-auto lg:max-w-[77rem] mt-10 mb-8 font-semibold text-2xl">
-				<RectSkeleton width="75px" height="35px" />
+				<RectSkeleton width="75px" height="32px" />
 			</div>
 			<div className="max-w-3xl mx-auto lg:max-w-[77rem] mb-[2.43rem]">
 				<div className="hidden justify-between sm:flex">

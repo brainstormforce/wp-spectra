@@ -5,9 +5,9 @@ const SettingsSkeleton = () => {
     return (
 		<>
 			<div className="max-w-3xl mx-auto lg:max-w-[77rem] mt-10 mb-8 font-semibold text-2xl">
-				<RectSkeleton width="100px" height="35px" />
+				<RectSkeleton width="100px" height="32px" />
 			</div>
-			<main className="max-w-[77rem] mx-auto my-[2.43rem] bg-white rounded-[0.2rem] shadow overflow-hidden h-[36rem]">
+			<main className="max-w-[77rem] mx-auto my-[2.43rem] bg-white rounded-md shadow overflow-hidden h-[36rem]">
 				<div className="lg:grid lg:grid-cols-12 h-full">
 					<aside className="py-6 sm:px-6 lg:py-6 lg:px-5 lg:col-span-3">
 						<nav className="space-y-1">
