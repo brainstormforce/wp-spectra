@@ -693,7 +693,6 @@ const Settings = ( props ) => {
 										title: __( 'Add nofollow', 'ultimate-addons-for-gutenberg' )
 									}
 								]}
-								help={__( 'Don\'t use for nested links, this will cause semantic issues and unexpected behavior.', 'ultimate-addons-for-gutenberg' )}
 								onChange={ ( link ) => {
 									setAttributes( { htmlTagLink: link } )
 								} }
