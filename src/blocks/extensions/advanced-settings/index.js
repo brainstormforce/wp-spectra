@@ -122,10 +122,7 @@ const zIndexOptions = ( props ) => {
 	return (
 		<>
 			<TextControl
-				label={ __(
-					'Z-Index',
-					'ultimate-addons-for-gutenberg'
-				) }
+				type="number"
 				value={ zIndex }
 				onChange={ ( value ) =>
 					setAttributes( {
@@ -264,7 +261,7 @@ function ApplyExtraClass( extraProps, blockType, attributes ) {
 					{ ! excludeDeprecatedBlocks.includes( name ) &&
 						<UAGAdvancedPanelBody
 							title={ __(
-								'Visibility',
+								'Z-Index',
 								'ultimate-addons-for-gutenberg'
 							) }
 							initialOpen={ false }
