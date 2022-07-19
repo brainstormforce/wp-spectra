@@ -13,8 +13,10 @@ import generateBorderCSS from '@Controls/generateBorderCSS';
 function styling( props ) {
 	const {
 		blockName,
+
 		btnBorderHColor,
 		align,
+
 		titleColor,
 		titleFontSize,
 		titleFontSizeType,
@@ -204,7 +206,6 @@ function styling( props ) {
 		ctaLetterSpacingTablet,
 		ctaLetterSpacingMobile,
 		ctaLetterSpacingType,
-
 		boxShadowColor,
 		boxShadowHOffset,
 		boxShadowVOffset,
@@ -265,15 +266,25 @@ function styling( props ) {
 	if ( 'outset' === boxShadowPositionHover ) {
 		boxShadowPositionCSSHover = '';
 	}
-
 	const selectors = {
-		'.uagb-post__items': {
+		'.wp-block-uagb-post-grid.uagb-post__items': {
 			'column-gap': generateCSSUnit( columnGapFallback , columnGapUnit ),
 			'row-gap': generateCSSUnit( rowGapFallback, rowGapUnit ),
+		},
+		':not(.wp-block-uagb-post-grid).uagb-post__items': {
+			'margin-right': generateCSSUnit( -rowGapFallback / 2, rowGapUnit ),
+			'margin-left': generateCSSUnit( -rowGapFallback / 2, rowGapUnit ),
+		},
+		':not(.wp-block-uagb-post-grid).uagb-post__items article': {
+			'padding-right': generateCSSUnit( rowGapFallback / 2, rowGapUnit ),
+			'padding-left': generateCSSUnit( rowGapFallback / 2, rowGapUnit ),
+			'margin-bottom': generateCSSUnit( columnGapFallback, columnGapUnit ),
 		},
 		' .uagb-post__inner-wrap': {
 			'background': bgColor,
 			'text-align': align,
+		},
+		'.wp-block-uagb-post-grid .uagb-post__inner-wrap': {
 			'box-shadow':
 				generateCSSUnit( boxShadowHOffset, 'px' ) + ' ' + generateCSSUnit( boxShadowVOffset, 'px' ) +	' ' +
 				generateCSSUnit( boxShadowBlur, 'px' ) + ' ' +	generateCSSUnit( boxShadowSpread, 'px' ) + ' ' +
@@ -283,6 +294,23 @@ function styling( props ) {
 			'padding-left': generateCSSUnit( paddingLeft, contentPaddingUnit ),
 			'padding-bottom': generateCSSUnit( paddingBottom, contentPaddingUnit ),
 			'padding-right': generateCSSUnit( paddingRight, contentPaddingUnit ),
+		},
+		':not(.wp-block-uagb-post-grid) .uagb-post__inner-wrap .uagb-post__text:not(.highlighted)': {
+			'margin-left': generateCSSUnit( paddingLeft, contentPaddingUnit ),
+			'margin-right': generateCSSUnit(
+				paddingRight,
+				contentPaddingUnit
+			),
+		},
+		':not(.wp-block-uagb-post-grid) .uagb-post__inner-wrap .uagb-post__text.highlighted:first-child': {
+			'margin-top': generateCSSUnit( paddingTop, contentPaddingUnit ),
+			'margin-left': generateCSSUnit( paddingLeft, contentPaddingUnit ),
+		},
+		':not(.wp-block-uagb-post-grid) .uagb-post__inner-wrap .uagb-post__text:last-child': {
+			'margin-bottom': generateCSSUnit(
+				paddingBottom,
+				contentPaddingUnit
+			),
 		},
 		' .uagb-post__inner-wrap .uagb-post__cta': {
 			'margin-bottom': generateCSSUnit(
@@ -303,6 +331,10 @@ function styling( props ) {
 			'margin-bottom': generateCSSUnit(
 				titleBottomSpaceFallback,
 				titleBottomSpaceUnit
+			),
+			'margin-top': generateCSSUnit(
+				paddingTop,
+				contentPaddingUnit
 			),
 		},
 		' .uagb-post__inner-wrap .uagb-post-grid-byline': {
@@ -328,17 +360,7 @@ function styling( props ) {
 			),
 			'justify-content': paginationAlignment,
 		},
-		' .uagb-post__inner-wrap:hover': {
-			'border-color': overallBorderHColor
-		},
 	};
-
-
-	const boxShadowBlurHoverCSSUnit = ( '' === boxShadowBlurHover ) ? '' : generateCSSUnit( boxShadowBlurHover, 'px' );
-
-	selectors[' .uagb-post__inner-wrap:hover']['box-shadow'] = generateCSSUnit( boxShadowHOffsetHover, 'px' ) + ' ' + generateCSSUnit( boxShadowVOffsetHover, 'px' ) +	' ' +
-												boxShadowBlurHoverCSSUnit + ' ' +	generateCSSUnit( boxShadowSpreadHover, 'px' ) + ' ' +
-												boxShadowColorHover + ' ' +	boxShadowPositionCSSHover;
 
 	if ( 'left' === paginationAlignment ) {
 		selectors[' .uagb-post-pagination-wrap']['margin-left'] = generateCSSUnit( rowGapFallback / 2, rowGapUnit );
@@ -1021,7 +1043,6 @@ function styling( props ) {
 			paddingRightTablet,
 			tabletPaddingUnit
 		),
-		...overallBorderCSSTablet
 	};
 	mobileSelectors[ ' .uagb-post__inner-wrap' ] = {
 		'padding-top': generateCSSUnit( paddingTopMobile, mobilePaddingUnit ),
@@ -1034,7 +1055,6 @@ function styling( props ) {
 			paddingRightMobile,
 			mobilePaddingUnit
 		),
-		...overallBorderCSSMobile
 	};
 	tabletSelectors[ ' .uagb-post__cta .uagb-text-link' ] = borderCSSTablet;
 	mobileSelectors[ ' .uagb-post__cta .uagb-text-link' ] = borderCSSMobile;
