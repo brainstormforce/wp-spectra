@@ -518,16 +518,26 @@ function styling( props ) {
 	// separator
 	if ( separatorStyle !== 'none' ) {
 
+		// Since we need the separator to ignore the padding and cover the entire width of the parent container,
+		// we use calc and do the following calculations.
+
+		const calcPaddingLeft = generateCSSUnit( leftPadding, paddingTypeDesktop );
+		const calcPaddingRight = generateCSSUnit( rightPadding, paddingTypeDesktop );
+
+		const tCalcPaddingLeft = generateCSSUnit( leftPaddingTablet, paddingTypeTablet );
+		const tCalcPaddingRight = generateCSSUnit( rightPaddingTablet, paddingTypeTablet );
+
+		const mCalcPaddingLeft = generateCSSUnit( leftPaddingMobile, paddingTypeMobile );
+		const mCalcPaddingRight = generateCSSUnit( rightPaddingMobile, paddingTypeMobile );
+
 		selectors[ ' .uagb-toc__separator' ] = {
 			'border-top-style': separatorStyle,
 			'border-top-width': generateCSSUnit(
 				getFallbackNumber( separatorHeight, 'separatorHeight', blockName ),
 				separatorHeightType
 			),
-			'width': generateCSSUnit(
-				getFallbackNumber( separatorWidth, 'separatorWidth', blockName ),
-				separatorWidthType
-			),
+			'width': 'calc( 100% + ' + calcPaddingLeft + ' + ' + calcPaddingRight +')',
+			'margin-left': '-' + calcPaddingLeft,
 			'border-color': separatorColor,
 			'margin-bottom': generateCSSUnit(
 				getFallbackNumber( separatorSpace, 'separatorSpace', blockName ),
@@ -536,10 +546,8 @@ function styling( props ) {
 		};
 
 		tablet_selectors[ ' .uagb-toc__separator' ] = {
-			'width': generateCSSUnit(
-				getFallbackNumber( separatorWidthTablet, 'separatorWidthTablet', blockName ),
-				separatorWidthTypeTablet
-			),
+			'width': 'calc( 100% + ' + tCalcPaddingLeft + ' + ' + tCalcPaddingRight +')',
+			'margin-left': '-' + tCalcPaddingLeft,
 			'margin-bottom': generateCSSUnit(
 				getFallbackNumber( separatorSpaceTablet, 'separatorSpaceTablet', blockName ),
 				separatorSpaceType
@@ -547,10 +555,8 @@ function styling( props ) {
 		};
 
 		mobile_selectors[ ' .uagb-toc__separator' ] = {
-			'width': generateCSSUnit(
-				getFallbackNumber( separatorWidthMobile, 'separatorWidthMobile', blockName ),
-				separatorWidthTypeMobile
-			),
+			'width': 'calc( 100% + ' + mCalcPaddingLeft + ' + ' + mCalcPaddingRight +')',
+			'margin-left': '-' + mCalcPaddingLeft,
 			'margin-bottom': generateCSSUnit(
 				getFallbackNumber( separatorSpaceMobile, 'separatorSpaceMobile', blockName ),
 				separatorSpaceType
