@@ -130,7 +130,7 @@ return array_merge(
 		'separatorStyle'             => 'none',
 		'separatorHeightType'        => 'px',
 		'separatorSpaceType'         => 'px',
-		'separatorColor'             => '#0170b9',
+		'separatorColor'             => '',
 		'separatorHeight'            => 2,
 		'separatorWidth'             => 12,
 		'separatorWidthTablet'       => '',

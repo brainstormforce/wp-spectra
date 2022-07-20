@@ -882,9 +882,9 @@ if ( ! class_exists( 'UAGB_Table_Of_Content' ) ) {
 										'type'    => 'string',
 										'default' => 'px',
 									),
-									'separatorSpaceColor'  => array(
+									'separatorColor'  => array(
 										'type'    => 'string',
-										'default' => '#0170b9',
+										'default' => '',
 									),
 								)
 							),
