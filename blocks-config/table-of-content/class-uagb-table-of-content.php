@@ -474,9 +474,7 @@ if ( ! class_exists( 'UAGB_Table_Of_Content' ) ) {
 						<?php
 						if ( 'none' !== $attributes['separatorStyle'] ) {
 							?>
-							<div class='uagb-toc__separator-wrap'>
 								<div class='uagb-toc__separator'></div>
-							</div>
 							<?php
 						}
 						?>
