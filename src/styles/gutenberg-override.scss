@@ -19,23 +19,51 @@
 	// Link Control
 	.block-editor-link-control {
 		min-width: auto;
+
 		&__tools {
 			padding-left: 0;
 			padding-right: 0;
-			border-color: $spectra-color-border;
+			border: 0;
 		}
-		.block-editor-link-control__field input[type=text] {
+
+		&__search-input {
+			margin-left: 0;
+			margin-right: 0;
+			margin-bottom: 0;
+		}
+
+		&__settings {
+
+			.block-editor-link-control__setting {
+				margin-bottom: 20px;
+			}
+		}
+
+		&__search-actions {
+			right: 10px;
+
+			.block-editor-link-control__search-submit {
+
+				svg {
+					width: 18px;
+				}
+			}
+		}
+
+		.block-editor-link-control__search-results-wrapper {
+			margin-top: 0;
+		}
+
+		.block-editor-link-control__field input[type="text"] {
 			color: $spectra-color-body;
 			border-color: $spectra-color-border;
 			border-radius: $spectra-control-border-radius;
+			padding: $spectra-control-input-padding;
+
 			&:focus {
 				border-color: $spectra-color-border-hover;
 				box-shadow: 0 0 0 1px $spectra-color-border-hover;
 			}
-		}
-		.components-base-control {
-			margin-left: 0;
-			margin-right: 0;
 		}
 	}
 
