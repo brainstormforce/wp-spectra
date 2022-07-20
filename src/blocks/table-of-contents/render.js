@@ -76,9 +76,7 @@ const Render = ( props ) => {
 						{ iconHtml }
 						</div>
 						{ separatorStyle !== 'none' && (
-								<div className='uagb-toc__separator-wrap'>
-									<div className='uagb-toc__separator'></div>
-								</div>
+								<div className='uagb-toc__separator'></div>
 							)
 						}
 					<TableOfContents
