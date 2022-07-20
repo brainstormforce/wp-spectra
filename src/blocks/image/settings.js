@@ -475,6 +475,72 @@ export default function Settings( props ) {
 			<MultiButtonsControl
 				setAttributes={ setAttributes }
 				label={ __(
+					'Alignment',
+					'ultimate-addons-for-gutenberg'
+				) }
+				data={ {
+					desktop: {
+						value: align,
+						label: 'align',
+					},
+					tablet: {
+						value: alignTablet,
+						label: 'alignTablet',
+					},
+					mobile: {
+						value: alignMobile,
+						label: 'alignMobile',
+					},
+				} }
+				className="uagb-multi-button-alignment-control"
+				options={ [
+					{
+						value: 'left',
+						icon: (
+							<Icon
+								icon={ renderSVG( 'fa fa-align-left' ) }
+							/>
+						),
+						tooltip: __(
+							'Left',
+							'ultimate-addons-for-gutenberg'
+						),
+					},
+					{
+						value: 'center',
+						icon: (
+							<Icon
+								icon={ renderSVG(
+									'fa fa-align-center'
+								) }
+							/>
+						),
+						tooltip: __(
+							'Center',
+							'ultimate-addons-for-gutenberg'
+						),
+					},
+					{
+						value: 'right',
+						icon: (
+							<Icon
+								icon={ renderSVG(
+									'fa fa-align-right'
+								) }
+							/>
+						),
+						tooltip: __(
+							'Right',
+							'ultimate-addons-for-gutenberg'
+						),
+					},
+				] }
+				showIcons={ true }
+				responsive={ true }
+			/>
+			<MultiButtonsControl
+				setAttributes={ setAttributes }
+				label={ __(
 					'Layout',
 					'ultimate-addons-for-gutenberg'
 				) }
@@ -1518,72 +1584,6 @@ export default function Settings( props ) {
 			title={ __( 'Image', 'ultimate-addons-for-gutenberg' ) }
 			initialOpen={ true }
 		>
-			<MultiButtonsControl
-				setAttributes={ setAttributes }
-				label={ __(
-					'Alignment',
-					'ultimate-addons-for-gutenberg'
-				) }
-				data={ {
-					desktop: {
-						value: align,
-						label: 'align',
-					},
-					tablet: {
-						value: alignTablet,
-						label: 'alignTablet',
-					},
-					mobile: {
-						value: alignMobile,
-						label: 'alignMobile',
-					},
-				} }
-				className="uagb-multi-button-alignment-control"
-				options={ [
-					{
-						value: 'left',
-						icon: (
-							<Icon
-								icon={ renderSVG( 'fa fa-align-left' ) }
-							/>
-						),
-						tooltip: __(
-							'Left',
-							'ultimate-addons-for-gutenberg'
-						),
-					},
-					{
-						value: 'center',
-						icon: (
-							<Icon
-								icon={ renderSVG(
-									'fa fa-align-center'
-								) }
-							/>
-						),
-						tooltip: __(
-							'Center',
-							'ultimate-addons-for-gutenberg'
-						),
-					},
-					{
-						value: 'right',
-						icon: (
-							<Icon
-								icon={ renderSVG(
-									'fa fa-align-right'
-								) }
-							/>
-						),
-						tooltip: __(
-							'Right',
-							'ultimate-addons-for-gutenberg'
-						),
-					},
-				] }
-				showIcons={ true }
-				responsive={ true }
-			/>
 			{
 				layout === 'default' && (
 					<ResponsiveBorder
