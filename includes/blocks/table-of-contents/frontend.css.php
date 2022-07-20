@@ -263,16 +263,23 @@ if ( '' !== $attr['contentPaddingMobile'] ) {
 
 if ( 'none' !== $attr['separatorStyle'] ) {
 
+	$calcPaddingLeft  = UAGB_Helper::get_css_value( $attr['leftPadding'], $attr['paddingTypeDesktop'] );
+	$calcPaddingRight = UAGB_Helper::get_css_value( $attr['rightPadding'], $attr['paddingTypeDesktop'] );
+
+	$tCalcPaddingLeft  = UAGB_Helper::get_css_value( $attr['leftPaddingTablet'], $attr['paddingTypeTablet'] );
+	$tCalcPaddingRight = UAGB_Helper::get_css_value( $attr['rightPaddingTablet'], $attr['paddingTypeTablet'] );
+
+	$mCalcPaddingLeft  = UAGB_Helper::get_css_value( $attr['leftPaddingMobile'], $attr['paddingTypeMobile'] );
+	$mCalcPaddingRight = UAGB_Helper::get_css_value( $attr['rightPaddingMobile'], $attr['paddingTypeMobile'] );
+
 	$selectors[' .uagb-toc__separator'] = array(
 		'border-top-style' => $attr['separatorStyle'],
 		'border-top-width' => UAGB_Helper::get_css_value(
 			UAGB_Block_Helper::get_fallback_number( $attr['separatorHeight'], 'separatorHeight', $block_name ),
 			$attr['separatorHeightType']
 		),
-		'width'            => UAGB_Helper::get_css_value(
-			UAGB_Block_Helper::get_fallback_number( $attr['separatorWidth'], 'separatorWidth', $block_name ),
-			$attr['separatorWidthType']
-		),
+		'width'            => 'calc( 100% + ' . $calcPaddingLeft . ' + ' . $calcPaddingRight . ')',
+		'margin-left'      => '-' . $calcPaddingLeft,
 		'border-color'     => $attr['separatorColor'],
 		'margin-bottom'    => UAGB_Helper::get_css_value(
 			UAGB_Block_Helper::get_fallback_number( $attr['separatorSpace'], 'separatorSpace', $block_name ),
@@ -281,10 +288,8 @@ if ( 'none' !== $attr['separatorStyle'] ) {
 	);
 
 	$t_selectors[' .uagb-toc__separator'] = array(
-		'width'         => UAGB_Helper::get_css_value(
-			UAGB_Block_Helper::get_fallback_number( $attr['separatorWidthTablet'], 'separatorWidthTablet', $block_name ),
-			$attr['separatorWidthTypeTablet']
-		),
+		'width'         => 'calc( 100% + ' . $tCalcPaddingLeft . ' + ' . $tCalcPaddingRight . ')',
+		'margin-left'   => '-' . $tCalcPaddingLeft,
 		'margin-bottom' => UAGB_Helper::get_css_value(
 			UAGB_Block_Helper::get_fallback_number( $attr['separatorSpaceTablet'], 'separatorSpaceTablet', $block_name ),
 			$attr['separatorSpaceType']
@@ -292,10 +297,8 @@ if ( 'none' !== $attr['separatorStyle'] ) {
 	);
 
 	$m_selectors[' .uagb-toc__separator'] = array(
-		'width'         => UAGB_Helper::get_css_value(
-			UAGB_Block_Helper::get_fallback_number( $attr['separatorWidthMobile'], 'separatorWidthMobile', $block_name ),
-			$attr['separatorWidthTypeMobile']
-		),
+		'width'         => 'calc( 100% + ' . $mCalcPaddingLeft . ' + ' . $mCalcPaddingRight . ')',
+		'margin-left'   => '-' . $mCalcPaddingLeft,
 		'margin-bottom' => UAGB_Helper::get_css_value(
 			UAGB_Block_Helper::get_fallback_number( $attr['separatorSpaceMobile'], 'separatorSpaceMobile', $block_name ),
 			$attr['separatorSpaceType']
