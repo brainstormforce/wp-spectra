@@ -1010,7 +1010,7 @@ const Settings = ( props ) => {
 			>
 				<p className="components-base-control__help">
 					{ __(
-						"Below settings will apply to the heading text to which a link is applied.",
+						'Below settings will apply to the heading text to which a link is applied.',
 						'ultimate-addons-for-gutenberg'
 					) }
 				</p>
@@ -1067,7 +1067,7 @@ const Settings = ( props ) => {
 			>
 				<p className="components-base-control__help">
 					{ __(
-						"Highlight heading text from toolbar to see the below controls working.",
+						'Highlight heading text from toolbar to see the below controls working.',
 						'ultimate-addons-for-gutenberg'
 					) }
 				</p>
