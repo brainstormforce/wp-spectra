@@ -3,7 +3,6 @@
  */
 
 import styling from './styling';
-import jQuery from 'jquery';
 import React, { lazy, useEffect, Suspense } from 'react';
 import lazyLoader from '@Controls/lazy-loader';
 import { useDeviceType } from '@Controls/getPreviewType';
