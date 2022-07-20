@@ -211,14 +211,7 @@ function styling( props ) {
 		boxShadowVOffset,
 		boxShadowBlur,
 		boxShadowSpread,
-		boxShadowPosition,
-		boxShadowColorHover,
-		boxShadowHOffsetHover,
-		boxShadowVOffsetHover,
-		boxShadowBlurHover,
-		boxShadowSpreadHover,
-		boxShadowPositionHover,
-		overallBorderHColor
+		boxShadowPosition
 	} = props.attributes;
 
 	const overlayOpacityFallback = getFallbackNumber( overlayOpacity, 'overlayOpacity', blockName );
@@ -261,11 +254,6 @@ function styling( props ) {
 		boxShadowPositionCSS = '';
 	}
 
-	let boxShadowPositionCSSHover = boxShadowPositionHover;
-
-	if ( 'outset' === boxShadowPositionHover ) {
-		boxShadowPositionCSSHover = '';
-	}
 	const selectors = {
 		'.wp-block-uagb-post-grid.uagb-post__items': {
 			'column-gap': generateCSSUnit( columnGapFallback , columnGapUnit ),
@@ -812,10 +800,14 @@ function styling( props ) {
 			'margin-right': generateCSSUnit( -rowGapMobileFallback / 2, rowGapUnit ),
 			'margin-left': generateCSSUnit( -rowGapMobileFallback / 2, rowGapUnit ),
 		},
-		'.uagb-post__items article': {
+		':not(.wp-block-uagb-post-grid).uagb-post__items article': {
 			'padding-right': generateCSSUnit( rowGapMobileFallback / 2, rowGapUnit ),
 			'padding-left': generateCSSUnit( rowGapMobileFallback / 2, rowGapUnit ),
 			'margin-bottom': generateCSSUnit( columnGapMobile, columnGapUnit ),
+		},
+		'.wp-block-uagb-post-grid.uagb-post__items': {
+			'column-gap': generateCSSUnit( columnGapMobile , columnGapUnit ),
+			'row-gap': generateCSSUnit( rowGapMobile, rowGapUnit ),
 		},
 	};
 
@@ -934,10 +926,14 @@ function styling( props ) {
 			'margin-right': generateCSSUnit( -rowGapTabletFallback / 2, rowGapUnit ),
 			'margin-left': generateCSSUnit( -rowGapTabletFallback / 2, rowGapUnit ),
 		},
-		'.uagb-post__items article': {
+		':not(.wp-block-uagb-post-grid).uagb-post__items article': {
 			'padding-right': generateCSSUnit( rowGapTabletFallback / 2, rowGapUnit ),
 			'padding-left': generateCSSUnit( rowGapTabletFallback / 2, rowGapUnit ),
 			'margin-bottom': generateCSSUnit( columnGapTablet, columnGapUnit ),
+		},
+		'.wp-block-uagb-post-grid.uagb-post__items': {
+			'column-gap': generateCSSUnit( columnGapTablet , columnGapUnit ),
+			'row-gap': generateCSSUnit( rowGapTablet, rowGapUnit ),
 		},
 	};
 

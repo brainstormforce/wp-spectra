@@ -366,7 +366,7 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 		 * @since 0.0.1
 		 */
 		public function get_post_attributes() {
-			$btn_border_attribute = UAGB_Block_Helper::uag_generate_php_border_attribute( 'btn' );
+			$btn_border_attribute     = UAGB_Block_Helper::uag_generate_php_border_attribute( 'btn' );
 			$overall_border_attribute = UAGB_Block_Helper::uag_generate_php_border_attribute( 'overall' );
 
 			return array_merge(
@@ -1002,57 +1002,57 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 					'excerptLetterSpacingTablet'    => array(
 						'type' => 'number',
 					),
-					'boxShadowColor'                 => array(
-						'type' => 'number',
+					'boxShadowColor'                => array(
+						'type'    => 'number',
 						'default' => '#00000070',
 					),
-					'boxShadowHOffset'               => array(
-						'type' => 'number',
+					'boxShadowHOffset'              => array(
+						'type'    => 'number',
 						'default' => 0,
 					),
-					'boxShadowVOffset'               => array(
-						'type' => 'number',
+					'boxShadowVOffset'              => array(
+						'type'    => 'number',
 						'default' => 0,
 					),
-					'boxShadowBlur'                  => array(
-						'type' => 'number',
+					'boxShadowBlur'                 => array(
+						'type'    => 'number',
 						'default' => '',
 					),
-					'boxShadowSpread'                => array(
-						'type' => 'number',
+					'boxShadowSpread'               => array(
+						'type'    => 'number',
 						'default' => '',
 					),
-					'boxShadowPosition'              => array(
-						'type' => 'number',
+					'boxShadowPosition'             => array(
+						'type'    => 'number',
 						'default' => 'outset',
 					),
-					'boxShadowColorHover'            => array(
-						'type' => 'number',
+					'boxShadowColorHover'           => array(
+						'type'    => 'number',
 						'default' => '',
 					),
-					'boxShadowHOffsetHover'          => array(
-						'type' => 'number',
+					'boxShadowHOffsetHover'         => array(
+						'type'    => 'number',
 						'default' => 0,
 					),
-					'boxShadowVOffsetHover'          => array(
-						'type' => 'number',
+					'boxShadowVOffsetHover'         => array(
+						'type'    => 'number',
 						'default' => 0,
 					),
-					'boxShadowBlurHover'             => array(
-						'type' => 'number',
+					'boxShadowBlurHover'            => array(
+						'type'    => 'number',
 						'default' => '',
 					),
-					'boxShadowSpreadHover'           => array(
-						'type' => 'number',
+					'boxShadowSpreadHover'          => array(
+						'type'    => 'number',
 						'default' => '',
 					),
-					'boxShadowPositionHover'         => array(
-						'type' => 'number',
+					'boxShadowPositionHover'        => array(
+						'type'    => 'number',
 						'default' => 'outset',
 					),
-					'overallBorderHColor' => array(
-						'type' => 'string'
-					)
+					'overallBorderHColor'           => array(
+						'type' => 'string',
+					),
 				),
 			);
 		}
