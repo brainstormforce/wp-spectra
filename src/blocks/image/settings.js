@@ -567,6 +567,44 @@ export default function Settings( props ) {
 				] }
 				showIcons={ false }
 			/>
+
+			{layout === 'overlay' && (
+				<>
+					<label htmlFor='overlayContentAlign'>
+						{__( 'Content Position', 'ultimate-addons-for-gutenberg' )}
+					</label>
+					<AlignmentMatrixControl
+						id="overlayContentAlign"
+						value={ overlayContentPosition }
+						onChange={ ( newAlignment ) =>  setAttributes( {overlayContentPosition: newAlignment} ) }
+					/>
+					<ResponsiveBorder
+						setAttributes={ setAttributes }
+						prefix={'overlay'}
+						attributes={ attributes }
+						deviceType={deviceType}
+					/>
+					<Range
+						label={ __(
+							'Border Distance From EDGE',
+							'ultimate-addons-for-gutenberg'
+						) }
+						setAttributes={ setAttributes }
+						value={ overlayPositionFromEdge }
+						data={ {
+							value: overlayPositionFromEdge,
+							label: 'overlayPositionFromEdge',
+						} }
+						min={ -100 }
+						max={ 100 }
+						unit={ {
+							value: overlayPositionFromEdgeUnit,
+							label: 'overlayPositionFromEdgeUnit',
+						} }
+					/>
+				</>
+			)}
+
 			{
 				isSelected && (
 					<>
@@ -1594,43 +1632,6 @@ export default function Settings( props ) {
 					/>
 				)
 			}
-
-			{layout === 'overlay' && (
-				<>
-					<label htmlFor='overlayContentAlign'>
-						{__( 'Content Postion', 'ultimate-addons-for-gutenberg' )}
-					</label>
-					<AlignmentMatrixControl
-						id="overlayContentAlign"
-						value={ overlayContentPosition }
-						onChange={ ( newAlignment ) =>  setAttributes( {overlayContentPosition: newAlignment} ) }
-					/>
-					<ResponsiveBorder
-						setAttributes={ setAttributes }
-						prefix={'overlay'}
-						attributes={ attributes }
-						deviceType={deviceType}
-					/>
-					<Range
-						label={ __(
-							'Border Distance From EDGE',
-							'ultimate-addons-for-gutenberg'
-						) }
-						setAttributes={ setAttributes }
-						value={ overlayPositionFromEdge }
-						data={ {
-							value: overlayPositionFromEdge,
-							label: 'overlayPositionFromEdge',
-						} }
-						min={ -100 }
-						max={ 100 }
-						unit={ {
-							value: overlayPositionFromEdgeUnit,
-							label: 'overlayPositionFromEdgeUnit',
-						} }
-					/>
-				</>
-			)}
 
 			<SpacingControl
 				label={ __(
