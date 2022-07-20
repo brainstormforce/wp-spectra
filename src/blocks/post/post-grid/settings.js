@@ -295,7 +295,7 @@ const Settings = ( props ) => {
 		Object.keys( taxonomyList ).map( ( item ) => {
 			return taxonomyListOptions.push( {
 				value: taxonomyList[ item ].name,
-				label: decodeEntities( taxonomyList[ item ].label),
+				label: decodeEntities( taxonomyList[ item ].label ),
 			} );
 		} );
 	}
