@@ -53,6 +53,7 @@ const ResponsiveBorder = ( props ) => {
 			'Hover',
 			'ultimate-addons-for-gutenberg'
 		),
+		borderRadiusHelp,
 	} = props;
 
 	const tabsToUse = [ {
@@ -319,6 +320,7 @@ const ResponsiveBorder = ( props ) => {
 					value: attributes[prefix + 'BorderRadiusLink'],
 					label: prefix + 'BorderRadiusLink',
 				} }
+				help={ borderRadiusHelp ? borderRadiusHelp : false }
 			/>
 			{ 'none' !== borderStyle && (
 				<UAGTabsControl
