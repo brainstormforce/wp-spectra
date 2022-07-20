@@ -511,8 +511,8 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 		 */
 		public static function get_post_mobile_selectors( $attr ) {
 
-			$column_gap_fallback = self::get_fallback_number( $attr['columnGapMobile'], 'columnGapMobile', $attr['blockName'] );
-			$row_gap_fallback    = self::get_fallback_number( $attr['rowGapMobile'], 'rowGapMobile', $attr['blockName'] );
+			$column_gap_fallback = self::get_fallback_number( $attr['columnGap'], 'columnGap', $attr['blockName'] );
+			$row_gap_fallback    = self::get_fallback_number( $attr['rowGap'], 'rowGap', $attr['blockName'] );
 
 			$border_css_mobile         = self::uag_generate_border_css( $attr, 'btn', 'mobile' );
 			$overall_border_css_mobile = self::uag_generate_border_css( $attr, 'overall', 'mobile' );
@@ -526,6 +526,9 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 			$paddingBtnBottomMobile = isset( $attr['paddingBtnBottomMobile'] ) ? $attr['paddingBtnBottomMobile'] : $attr['btnVPadding'];
 			$paddingBtnLeftMobile   = isset( $attr['paddingBtnLeftMobile'] ) ? $attr['paddingBtnLeftMobile'] : $attr['btnHPadding'];
 			$paddingBtnRightMobile  = isset( $attr['paddingBtnRightMobile'] ) ? $attr['paddingBtnRightMobile'] : $attr['btnHPadding'];
+
+			$rowGapMobile    = is_numeric( $attr['rowGapMobile'] ) ? $attr['rowGapMobile'] : $row_gap_fallback;
+			$columnGapMobile = is_numeric( $attr['columnGapMobile'] ) ? $attr['columnGapMobile'] : $column_gap_fallback;
 
 			$ctaBottomSpaceMobile     = isset( $attr['ctaBottomSpaceMobile'] ) ? $attr['ctaBottomSpaceMobile'] : '';
 			$imageBottomSpaceMobile   = isset( $attr['imageBottomSpaceMobile'] ) ? $attr['imageBottomSpaceMobile'] : '';
@@ -566,8 +569,8 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				),
 				' .uagb-post__text.uagb-post__cta .uagb-text-link' => $border_css_mobile,
 				'.is-grid.uagb-post__items'       => array(
-					'row-gap'    => UAGB_Helper::get_css_value( $row_gap_fallback, $attr['rowGapUnit'] ),
-					'column-gap' => UAGB_Helper::get_css_value( $column_gap_fallback, $attr['columnGapUnit'] ),
+					'row-gap'    => UAGB_Helper::get_css_value( $rowGapMobile, $attr['rowGapUnit'] ),
+					'column-gap' => UAGB_Helper::get_css_value( $columnGapMobile, $attr['columnGapUnit'] ),
 				),
 			);
 
@@ -582,8 +585,8 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 		 */
 		public static function get_post_tablet_selectors( $attr ) {
 
-			$column_gap_fallback = self::get_fallback_number( $attr['columnGapTablet'], 'columnGapTablet', $attr['blockName'] );
-			$row_gap_fallback    = self::get_fallback_number( $attr['rowGapTablet'], 'rowGapTablet', $attr['blockName'] );
+			$column_gap_fallback = self::get_fallback_number( $attr['columnGap'], 'columnGap', $attr['blockName'] );
+			$row_gap_fallback    = self::get_fallback_number( $attr['rowGap'], 'rowGap', $attr['blockName'] );
 
 			$border_css_tablet         = self::uag_generate_border_css( $attr, 'btn', 'tablet' );
 			$overall_border_css_tablet = self::uag_generate_border_css( $attr, 'overall', 'tablet' );
@@ -592,6 +595,9 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 			$paddingBtnBottomTablet = isset( $attr['paddingBtnBottomTablet'] ) ? $attr['paddingBtnBottomTablet'] : $attr['btnVPadding'];
 			$paddingBtnLeftTablet   = isset( $attr['paddingBtnLeftTablet'] ) ? $attr['paddingBtnLeftTablet'] : $attr['btnHPadding'];
 			$paddingBtnRightTablet  = isset( $attr['paddingBtnRightTablet'] ) ? $attr['paddingBtnRightTablet'] : $attr['btnHPadding'];
+
+			$rowGapTablet    = is_numeric( $attr['rowGapTablet'] ) ? $attr['rowGapTablet'] : $row_gap_fallback;
+			$columnGapTablet = is_numeric( $attr['columnGapTablet'] ) ? $attr['columnGapTablet'] : $column_gap_fallback;
 
 			$ctaBottomSpaceTablet     = isset( $attr['ctaBottomSpaceTablet'] ) ? $attr['ctaBottomSpaceTablet'] : '';
 			$imageBottomSpaceTablet   = isset( $attr['imageBottomSpaceTablet'] ) ? $attr['imageBottomSpaceTablet'] : '';
@@ -632,8 +638,8 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				),
 				' .uagb-post__text.uagb-post__cta .uagb-text-link' => $border_css_tablet,
 				'.is-grid.uagb-post__items'       => array(
-					'row-gap'    => UAGB_Helper::get_css_value( $row_gap_fallback, $attr['rowGapUnit'] ),
-					'column-gap' => UAGB_Helper::get_css_value( $column_gap_fallback, $attr['columnGapUnit'] ),
+					'row-gap'    => UAGB_Helper::get_css_value( $rowGapTablet, $attr['rowGapUnit'] ),
+					'column-gap' => UAGB_Helper::get_css_value( $columnGapTablet, $attr['columnGapUnit'] ),
 				),
 			);
 
