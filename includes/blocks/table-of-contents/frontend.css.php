@@ -263,6 +263,9 @@ if ( '' !== $attr['contentPaddingMobile'] ) {
 
 if ( 'none' !== $attr['separatorStyle'] ) {
 
+	// Since we need the separator to ignore the padding and cover the entire width of the parent container,
+	// we use calc and do the following calculations.
+
 	$calcPaddingLeft  = UAGB_Helper::get_css_value( $attr['leftPadding'], $attr['paddingTypeDesktop'] );
 	$calcPaddingRight = UAGB_Helper::get_css_value( $attr['rightPadding'], $attr['paddingTypeDesktop'] );
 
