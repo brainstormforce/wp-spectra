@@ -123,6 +123,7 @@ function styling( props ) {
 		separatorSpace,
 		separatorSpaceType,
 		separatorColor,
+		separatorHColor,
 		separatorSpaceTablet,
 		separatorSpaceMobile,
 	} = props.attributes;
@@ -537,6 +538,10 @@ function styling( props ) {
 				getFallbackNumber( separatorSpace, 'separatorSpace', blockName ),
 				separatorSpaceType
 			),
+		};
+
+		selectors[ ' .uagb-toc__wrap:hover .uagb-toc__separator' ] = {
+			'border-color': separatorHColor,
 		};
 
 		tablet_selectors[ ' .uagb-toc__separator' ] = {

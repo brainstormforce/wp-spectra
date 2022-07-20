@@ -290,6 +290,10 @@ if ( 'none' !== $attr['separatorStyle'] ) {
 		),
 	);
 
+	$selectors[' .uagb-toc__wrap:hover .uagb-toc__separator'] = array(
+		'border-color' => $attr['separatorHColor'],
+	);
+
 	$t_selectors[' .uagb-toc__separator'] = array(
 		'width'         => 'calc( 100% + ' . $tCalcPaddingLeft . ' + ' . $tCalcPaddingRight . ')',
 		'margin-left'   => '-' . $tCalcPaddingLeft,
