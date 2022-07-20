@@ -1,6 +1,6 @@
 import classnames from 'classnames';
 import PositionClasses from '../price-list/classes';
-import React, { Suspense } from 'react';
+import React, { Suspense, useEffect, useState  } from 'react';
 import lazyLoader from '@Controls/lazy-loader';
 import RestMenuImage from './components/RestMenuImage';
 import Title from './components/Title';
@@ -21,7 +21,7 @@ const Render = ( props ) => {
 	const parentAttributes = select( 'core/block-editor' ).getBlockAttributes(
 		parentClientId
 	);
-	
+
 	const position = ( parentAttributes ) ? ( ( parentAttributes.imagePosition ) ?  parentAttributes.imagePosition : imagePosition ) : imagePosition; // eslint-disable-line no-nested-ternary
 	const align = ( parentAttributes ) ? ( ( parentAttributes.headingAlign ) ?  parentAttributes.headingAlign : headingAlign ) : headingAlign; // eslint-disable-line no-nested-ternary
 
