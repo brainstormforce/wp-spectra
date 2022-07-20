@@ -510,72 +510,84 @@ const attributes = {
 
 	topMarginDesktop: {
 		type: 'number',
+		default: '',
 		UAGCopyPaste: {
 			styleType: 'container-top-margin-desktop'
 		},
 	},
 	bottomMarginDesktop: {
 		type: 'number',
+		default: '',
 		UAGCopyPaste: {
 			styleType: 'container-bottom-margin-desktop'
 		},
 	},
 	leftMarginDesktop: {
 		type: 'number',
+		default: '',
 		UAGCopyPaste: {
 			styleType: 'container-left-margin-desktop'
 		},
 	},
 	rightMarginDesktop: {
 		type: 'number',
+		default: '',
 		UAGCopyPaste: {
 			styleType: 'container-right-margin-desktop'
 		},
 	},
 	topMarginTablet: {
 		type: 'number',
+		default: '',
 		UAGCopyPaste: {
 			styleType: 'container-top-margin-tablet'
 		},
 	},
 	bottomMarginTablet: {
 		type: 'number',
+		default: '',
 		UAGCopyPaste: {
 			styleType: 'container-bottom-margin-tablet'
 		},
 	},
 	leftMarginTablet: {
 		type: 'number',
+		default: '',
 		UAGCopyPaste: {
 			styleType: 'container-left-margin-tablet'
 		},
 	},
 	rightMarginTablet: {
 		type: 'number',
+		default: '',
 		UAGCopyPaste: {
 			styleType: 'container-right-margin-tablet'
 		},
 	},
 	topMarginMobile: {
 		type: 'number',
+		default: '',
 		UAGCopyPaste: {
 			styleType: 'container-top-margin-mobile'
 		},
 	},
 	bottomMarginMobile: {
 		type: 'number',
+		default: '',
 		UAGCopyPaste: {
 			styleType: 'container-bottom-margin-mobile'
 		},
 	},
 	leftMarginMobile: {
 		type: 'number',
+		default: '',
 		UAGCopyPaste: {
 			styleType: 'container-left-margin-mobile'
 		},
 	},
 	rightMarginMobile: {
 		type: 'number',
+		default: '',
 		UAGCopyPaste: {
 			styleType: 'container-right-margin-mobile'
 		},
@@ -618,12 +630,14 @@ const attributes = {
 	},
 	rowGapTablet: {
 		type: 'number',
+		default: '',
 		UAGCopyPaste: {
 			styleType: 'container-row-gap-tablet'
 		},
 	},
 	rowGapMobile: {
 		type: 'number',
+		default: '',
 		UAGCopyPaste: {
 			styleType: 'container-row-gap-mobile'
 		},
@@ -658,12 +672,14 @@ const attributes = {
 	},
 	columnGapTablet: {
 		type: 'number',
+		default: '',
 		UAGCopyPaste: {
 			styleType: 'container-column-gap-tablet'
 		},
 	},
 	columnGapMobile: {
 		type: 'number',
+		default: '',
 		UAGCopyPaste: {
 			styleType: 'container-column-gap-mobile'
 		},
