@@ -950,7 +950,7 @@ const attributes = {
 		UAGCopyPaste: {
 			styleType: 'separator-thickness'
 		},
-		default: 2
+		default: 1
 	},
 	separatorHeightType: {
 		type: 'string',

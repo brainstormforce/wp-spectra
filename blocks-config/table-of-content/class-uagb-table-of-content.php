@@ -836,7 +836,7 @@ if ( ! class_exists( 'UAGB_Table_Of_Content' ) ) {
 									),
 									'separatorHeight'      => array(
 										'type'    => 'number',
-										'default' => 2,
+										'default' => 1,
 									),
 									'separatorHeightType'  => array(
 										'type'    => 'string',

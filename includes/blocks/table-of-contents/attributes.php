@@ -131,7 +131,7 @@ return array_merge(
 		'separatorHeightType'        => 'px',
 		'separatorSpaceType'         => 'px',
 		'separatorColor'             => '',
-		'separatorHeight'            => 2,
+		'separatorHeight'            => 1,
 		'separatorWidth'             => 12,
 		'separatorWidthTablet'       => '',
 		'separatorWidthMobile'       => '',
