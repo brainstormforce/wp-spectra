@@ -910,6 +910,10 @@ const Settings = ( props ) => {
 						label: 'separatorStyle',
 					} }
 					setAttributes={ setAttributes }
+					help={ ( 'double' === separatorStyle ) ? __(
+						'Please set the separator thickness to 3px or more to perceive the Double border.',
+						'ultimate-addons-for-gutenberg'
+					) : false }
 					options={ [
 						{
 							value: 'none',
