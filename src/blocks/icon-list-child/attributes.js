@@ -96,6 +96,7 @@ const attributes = {
 	fromParentIcon: {
 		type: 'string',
 		default: '',
+	},
 	// margin
 	childTopMargin : {
 		type: 'number',
