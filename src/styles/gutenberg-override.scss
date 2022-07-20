@@ -16,6 +16,28 @@
 		}
 	}
 
+	// Link Control
+	.block-editor-link-control {
+		min-width: auto;
+		&__tools {
+			padding-left: 0;
+			padding-right: 0;
+		}
+		.block-editor-link-control__field input[type=text] {
+			color: $spectra-color-body;
+			border-color: $spectra-color-border;
+			border-radius: $spectra-control-border-radius;
+			&:focus {
+				border-color: $spectra-color-border-hover;
+				box-shadow: 0 0 0 1px $spectra-color-border-hover;
+			}
+		}
+		.components-base-control {
+			margin-left: 0;
+			margin-right: 0;
+		}
+	}
+
 	// Toggle Control.
 	.components-form-toggle {
 
