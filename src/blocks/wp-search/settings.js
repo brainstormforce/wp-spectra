@@ -12,11 +12,9 @@ import InspectorTab, {
 	UAGTabs,
 } from '@Components/inspector-tabs/InspectorTab.js';
 import AdvancedPopColorControl from '@Components/color-control/advanced-pop-color-control.js';
-import { TextControl } from '@wordpress/components';
+import { TextControl, Notice } from '@wordpress/components';
 import ResponsiveBorder from '@Components/responsive-border';
 import { InspectorControls } from '@wordpress/block-editor';
-
-
 
 import UAGAdvancedPanelBody from '@Components/advanced-panel-body';
 
@@ -780,6 +778,11 @@ const Settings = ( props ) => {
 			<InspectorControls>
 				<InspectorTabs>
 					<InspectorTab { ...UAGTabs.general }>
+						<Notice status="warning" isDismissible={false}>
+							{
+								__( 'This block has been deprecated.', 'ultimate-addons-for-gutenberg' )
+							}
+						</Notice>
 						{ generalSettings() }
 					</InspectorTab>
 					<InspectorTab { ...UAGTabs.style }>
