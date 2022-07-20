@@ -150,6 +150,7 @@ const Settings = ( props ) => {
 		// Separator
 		separatorStyle,
 		separatorColor,
+		separatorHColor,
 		separatorHeight,
 		separatorHeightType,
 		separatorSpace,
@@ -951,6 +952,18 @@ const Settings = ( props ) => {
 	};
 
 	const separatorSettings = () => {
+
+		const tabsToUse = [
+			{
+				name: 'normal',
+				title: __( 'Normal', 'ultimate-addons-for-gutenberg' ),
+			},
+			{
+				name: 'hover',
+				title: __( 'Hover', 'ultimate-addons-for-gutenberg' ),
+			},
+		];
+
 		return (
 			<UAGAdvancedPanelBody
 				title={ __( 'Separator', 'ultimate-addons-for-gutenberg' ) }
@@ -983,19 +996,40 @@ const Settings = ( props ) => {
 						},
 					] }
 				/>
-				<AdvancedPopColorControl
-					label={ __(
-						'Color',
-						'ultimate-addons-for-gutenberg'
-					) }
-					colorValue={
-						separatorColor ? separatorColor : ''
+				<UAGTabsControl
+					tabs={ tabsToUse }
+					normal={
+						<AdvancedPopColorControl
+							label={ __(
+								'Color',
+								'ultimate-addons-for-gutenberg'
+							) }
+							colorValue={
+								separatorColor ? separatorColor : ''
+							}
+							data={ {
+								value: separatorColor,
+								label: 'separatorColor',
+							} }
+							setAttributes={ setAttributes }
+						/>
 					}
-					data={ {
-						value: separatorColor,
-						label: 'separatorColor',
-					} }
-					setAttributes={ setAttributes }
+					hover={
+						<AdvancedPopColorControl
+							label={ __(
+								'Color',
+								'ultimate-addons-for-gutenberg'
+							) }
+							colorValue={ separatorHColor ? separatorHColor : '' }
+							data={ {
+								value: separatorHColor,
+								label: 'separatorHColor',
+							} }
+							setAttributes={ setAttributes }
+						/>
+					}
+					active={ '' }
+					disableBottomSeparator={ false }
 				/>
 				<ResponsiveSlider
 					label={ __(
