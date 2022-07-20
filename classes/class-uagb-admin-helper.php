@@ -410,7 +410,6 @@ if ( ! class_exists( 'UAGB_Admin_Helper' ) ) {
 
 			return $content_width;
 		}
-
 	}
 
 	/**
