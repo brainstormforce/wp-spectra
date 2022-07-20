@@ -842,30 +842,6 @@ if ( ! class_exists( 'UAGB_Table_Of_Content' ) ) {
 										'type'    => 'string',
 										'default' => 'px',
 									),
-									'separatorWidth'       => array(
-										'type'    => 'number',
-										'default' => 12,
-									),
-									'separatorWidthTablet' => array(
-										'type'    => 'number',
-										'default' => '',
-									),
-									'separatorWidthMobile' => array(
-										'type'    => 'number',
-										'default' => '',
-									),
-									'separatorWidthType'   => array(
-										'type'    => 'string',
-										'default' => '%',
-									),
-									'separatorWidthTypeTablet' => array(
-										'type'    => 'string',
-										'default' => '%',
-									),
-									'separatorWidthTypeMobile' => array(
-										'type'    => 'string',
-										'default' => '%',
-									),
 									'separatorSpace'       => array(
 										'type'    => 'number',
 										'default' => 15,

@@ -959,46 +959,6 @@ const attributes = {
 			styleType: 'separator-height-type'
 		}
 	},
-	separatorWidth: {
-		type: 'number',
-		UAGCopyPaste: {
-			styleType: 'separator-width'
-		},
-		default: 12
-	},
-	separatorWidthTablet: {
-		type: 'number',
-		UAGCopyPaste: {
-			styleType: 'separator-width'
-		},
-	},
-	separatorWidthMobile: {
-		type: 'number',
-		UAGCopyPaste: {
-			styleType: 'separator-width'
-		},
-	},
-	separatorWidthType: {
-		type: 'string',
-		default: '%',
-		UAGCopyPaste: {
-			styleType: 'separator-width-type'
-		}
-	},
-	separatorWidthTypeTablet: {
-		type: 'string',
-		default: '%',
-		UAGCopyPaste: {
-			styleType: 'separator-width-type-tablet'
-		}
-	},
-	separatorWidthTypeMobile: {
-		type: 'string',
-		default: '%',
-		UAGCopyPaste: {
-			styleType: 'separator-width-type-mobile'
-		}
-	},
 	separatorSpace: {
 		type: 'number',
 		default: 15,
