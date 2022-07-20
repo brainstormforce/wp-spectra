@@ -69,28 +69,7 @@
 			left: inherit;
 		}
 	}
-	&.is-grid.uagb-post__items{
-		display: grid;
-	}
-	&.is-grid.uagb-post__columns-5 {
-		grid-template-columns: auto auto auto auto auto;
-	}
 
-	&.is-grid.uagb-post__columns-4 {
-		grid-template-columns: auto auto auto auto;
-	}
-
-	&.is-grid.uagb-post__columns-3 {
-		grid-template-columns: auto auto auto;
-	}
-
-	&.is-grid.uagb-post__columns-2 {
-		grid-template-columns: auto auto;
-	}
-
-	&.is-grid.uagb-post__columns-1 {
-		grid-template-columns: auto;
-	}
 	&.uagb-post__items.is-masonry {
 		display: flex;
 		-ms-flex-wrap: wrap;
@@ -285,7 +264,28 @@
 		color: inherit;
 	}
 }
+.is-grid.uagb-post__items{
+	display: grid;
+}
+.is-grid.uagb-post__columns-5 {
+	grid-template-columns: auto auto auto auto auto;
+}
 
+.is-grid.uagb-post__columns-4 {
+	grid-template-columns: auto auto auto auto;
+}
+
+.is-grid.uagb-post__columns-3 {
+	grid-template-columns: auto auto auto;
+}
+
+.is-grid.uagb-post__columns-2 {
+	grid-template-columns: auto auto;
+}
+
+.is-grid.uagb-post__columns-1 {
+	grid-template-columns: auto;
+}
 .uagb-post__image-position-background {
 
 	.uagb-post__link-complete-box {
@@ -439,71 +439,111 @@
 		right: auto;
 	}
 
-	.uagb-post-grid.uagb-post__columns-tablet-1 article {
+	:not(.is-grid).uagb-post-grid.uagb-post__columns-tablet-1 article {
 		width: 100%;
 	}
 
-	.uagb-post-grid.uagb-post__columns-tablet-2 article {
+	:not(.is-grid).uagb-post-grid.uagb-post__columns-tablet-2 article {
 		width: 50%;
 	}
 
-	.uagb-post-grid.uagb-post__columns-tablet-3 article {
+	:not(.is-grid).uagb-post-grid.uagb-post__columns-tablet-3 article {
 		width: 33.33%;
 	}
 
-	.uagb-post-grid.uagb-post__columns-tablet-4 article {
+	:not(.is-grid).uagb-post-grid.uagb-post__columns-tablet-4 article {
 		width: 25%;
 	}
 
-	.uagb-post-grid.uagb-post__columns-tablet-5 article {
+	:not(.is-grid).uagb-post-grid.uagb-post__columns-tablet-5 article {
 		width: 20%;
 	}
 
-	.uagb-post-grid.uagb-post__columns-tablet-6 article {
+	:not(.is-grid).uagb-post-grid.uagb-post__columns-tablet-6 article {
 		width: 16.66%;
 	}
 
-	.uagb-post-grid.uagb-post__columns-tablet-7 article {
+	:not(.is-grid).uagb-post-grid.uagb-post__columns-tablet-7 article {
 		width: 14.28%;
 	}
 
-	.uagb-post-grid.uagb-post__columns-tablet-8 article {
+	:not(.is-grid).uagb-post-grid.uagb-post__columns-tablet-8 article {
 		width: 12.5%;
+	}
+
+	.is-grid.uagb-post__columns-tablet-5 {
+		grid-template-columns: auto auto auto auto auto;
+	}
+
+	.is-grid.uagb-post__columns-tablet-4 {
+		grid-template-columns: auto auto auto auto;
+	}
+
+	.is-grid.uagb-post__columns-tablet-3 {
+		grid-template-columns: auto auto auto;
+	}
+
+	.is-grid.uagb-post__columns-tablet-2 {
+		grid-template-columns: auto auto;
+	}
+
+	.is-grid.uagb-post__columns-tablet-1 {
+		grid-template-columns: auto;
 	}
 }
 
 @media (max-width: 767px) {
 
-	.uagb-post-grid.uagb-post__columns-mobile-1 article {
+	:not(.is-grid).uagb-post-grid.uagb-post__columns-mobile-1 article {
 		width: 100%;
 	}
 
-	.uagb-post-grid.uagb-post__columns-mobile-2 article {
+	:not(.is-grid).uagb-post-grid.uagb-post__columns-mobile-2 article {
 		width: 50%;
 	}
 
-	.uagb-post-grid.uagb-post__columns-mobile-3 article {
+	:not(.is-grid).uagb-post-grid.uagb-post__columns-mobile-3 article {
 		width: 33.33%;
 	}
 
-	.uagb-post-grid.uagb-post__columns-mobile-4 article {
+	:not(.is-grid).uagb-post-grid.uagb-post__columns-mobile-4 article {
 		width: 25%;
 	}
 
-	.uagb-post-grid.uagb-post__columns-mobile-5 article {
+	:not(.is-grid).uagb-post-grid.uagb-post__columns-mobile-5 article {
 		width: 20%;
 	}
 
-	.uagb-post-grid.uagb-post__columns-mobile-6 article {
+	:not(.is-grid).uagb-post-grid.uagb-post__columns-mobile-6 article {
 		width: 16.66%;
 	}
 
-	.uagb-post-grid.uagb-post__columns-mobile-7 article {
+	:not(.is-grid).uagb-post-grid.uagb-post__columns-mobile-7 article {
 		width: 14.28%;
 	}
 
-	.uagb-post-grid.uagb-post__columns-mobile-8 article {
+	:not(.is-grid).uagb-post-grid.uagb-post__columns-mobile-8 article {
 		width: 12.5%;
+	}
+
+	.is-grid.uagb-post__columns-mobile-5 {
+		grid-template-columns: auto auto auto auto auto;
+	}
+
+	.is-grid.uagb-post__columns-mobile-4 {
+		grid-template-columns: auto auto auto auto;
+	}
+
+	.is-grid.uagb-post__columns-mobile-3 {
+		grid-template-columns: auto auto auto;
+	}
+
+	.is-grid.uagb-post__columns-mobile-2 {
+		grid-template-columns: auto auto;
+	}
+
+	.is-grid.uagb-post__columns-mobile-1 {
+		grid-template-columns: auto;
 	}
 }
 
