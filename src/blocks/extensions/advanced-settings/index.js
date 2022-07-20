@@ -141,6 +141,8 @@ const zIndexOptions = ( props ) => {
 						label: 'zIndexMobile',
 					},
 				} }
+				min={ -100 }
+				max={ 1000 }
 				displayUnit={ false }
 				setAttributes={ setAttributes }
 			/>
