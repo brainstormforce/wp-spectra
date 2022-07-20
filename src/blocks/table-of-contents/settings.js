@@ -150,12 +150,6 @@ const Settings = ( props ) => {
 		// Separator
 		separatorStyle,
 		separatorColor,
-		separatorWidth,
-		separatorWidthTablet,
-		separatorWidthMobile,
-		separatorWidthType,
-		separatorWidthTypeTablet,
-		separatorWidthTypeMobile,
 		separatorHeight,
 		separatorHeightType,
 		separatorSpace,
@@ -962,57 +956,6 @@ const Settings = ( props ) => {
 				title={ __( 'Separator', 'ultimate-addons-for-gutenberg' ) }
 				initialOpen={ false }
 			>
-				<ResponsiveSlider
-					label={ __(
-						'Width',
-						'ultimate-addons-for-gutenberg'
-					) }
-					data={ {
-						desktop: {
-							value: separatorWidth,
-							label: 'separatorWidth',
-							unit: {
-								value: separatorWidthType,
-								label: 'separatorWidthType',
-							}
-						},
-						tablet: {
-							value: separatorWidthTablet,
-							label: 'separatorWidthTablet',
-							unit: {
-								value: separatorWidthTypeTablet,
-								label: 'separatorWidthTypeTablet',
-							}
-						},
-						mobile: {
-							value: separatorWidthMobile,
-							label: 'separatorWidthMobile',
-							unit: {
-								value: separatorWidthTypeMobile,
-								label: 'separatorWidthTypeMobile',
-							}
-						},
-					} }
-					min={ 0 }
-					limitMax={ { '%': 100, 'px': 500 } }
-					units={ [
-						{
-							name: __(
-								'Pixel',
-								'ultimate-addons-for-gutenberg'
-							),
-							unitValue: 'px',
-						},
-						{
-							name: __(
-								'%',
-								'ultimate-addons-for-gutenberg'
-							),
-							unitValue: '%',
-						},
-					] }
-					setAttributes={ setAttributes }
-				/>
 				<Range
 					label={ __(
 						'Thickness',
