@@ -628,6 +628,38 @@ if ( ! class_exists( 'UAGB_Table_Of_Content' ) ) {
 									),
 
 									// Padding.
+									'topPaddingTablet'    => array(
+										'type'    => 'number',
+										'default' => '',
+									),
+									'bottomPaddingTablet'   => array(
+										'type'    => 'number',
+										'default' => '',
+									),
+									'leftPaddingTablet'    => array(
+										'type'    => 'number',
+										'default' => '',
+									),
+									'rightPaddingTablet'   => array(
+										'type'    => 'number',
+										'default' => '',
+									),
+									'topPaddingMobile'     => array(
+										'type'    => 'number',
+										'default' => '',
+									),
+									'bottomPaddingMobile'  => array(
+										'type'    => 'number',
+										'default' => '',
+									),
+									'leftPaddingMobile'    => array(
+										'type'    => 'number',
+										'default' => '',
+									),
+									'rightPaddingMobile'   => array(
+										'type'    => 'number',
+										'default' => '',
+									),
 									'vPaddingDesktop'      => array(
 										'type'    => 'number',
 										'default' => 30,
