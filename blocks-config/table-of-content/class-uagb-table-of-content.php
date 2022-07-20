@@ -628,11 +628,11 @@ if ( ! class_exists( 'UAGB_Table_Of_Content' ) ) {
 									),
 
 									// Padding.
-									'topPaddingTablet'    => array(
+									'topPaddingTablet'     => array(
 										'type'    => 'number',
 										'default' => '',
 									),
-									'bottomPaddingTablet'   => array(
+									'bottomPaddingTablet'  => array(
 										'type'    => 'number',
 										'default' => '',
 									),
