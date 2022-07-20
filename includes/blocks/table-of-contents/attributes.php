@@ -135,7 +135,7 @@ return array_merge(
 		'separatorSpace'             => 15,
 		'separatorSpaceTablet'       => '',
 		'separatorSpaceMobile'       => '',
-		'separatorHoverColor'        => '',
+		'separatorHColor'            => '',
 	),
 	$borderAttributes,
 );

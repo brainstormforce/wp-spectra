@@ -993,6 +993,12 @@ const attributes = {
 			styleType: 'separator-color'
 		}
 	},
+	separatorHColor: {
+		type: 'string',
+		UAGCopyPaste: {
+			styleType: 'separator-color-hover'
+		}
+	},
 };
 
 export default attributes;
