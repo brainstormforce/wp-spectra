@@ -184,6 +184,7 @@
 		font-size: 1.125rem;
 	}
 
+	// Pseudo-element to identify extensions.
 	.uagb-admin-block__extension {
 
 		.uagb-admin-block__extension-title::after {
@@ -205,6 +206,7 @@
 // Deprecated blocks.
 #gf-styler, #section, #wp-search, #columns, #cf7-styler {
 
+	// Pseudo-element to identify deprecated blocks.
 	.uagb-admin-block-card__title::after {
 		content: 'deprecated';
 		position: absolute;
