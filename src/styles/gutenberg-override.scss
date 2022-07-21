@@ -1,6 +1,6 @@
 /* --------- Overwriting All Gutenberg Components Inside Spectra Panels --------- */
 
-.uagb-inspector-tab {
+.components-panel .uagb-inspector-tab {
 
 	// Text and Number Controls.
 	.components-text-control__input,
@@ -16,45 +16,53 @@
 		}
 	}
 
-	// Link Control
+	// Link Control.
 	.block-editor-link-control {
 		min-width: auto;
 
 		&__tools {
-			padding-left: 0;
-			padding-right: 0;
+			padding: $spectra-control-vertical-gap 0 0;
 			border: 0;
 		}
 
 		&__search-input {
-			margin-left: 0;
-			margin-right: 0;
-			margin-bottom: 0;
+			margin: 0;
 		}
 
 		&__settings {
 
 			.block-editor-link-control__setting {
-				margin-bottom: 20px;
+				margin-bottom: $spectra-control-vertical-gap;
 			}
 		}
 
 		&__search-actions {
-			right: 10px;
+			right: 0;
 
 			.block-editor-link-control__search-submit {
 
 				svg {
-					width: 18px;
+					width: 16px;
 				}
 			}
 		}
 
-		.block-editor-link-control__search-results-wrapper {
+		&__search-results-wrapper {
 			margin-top: 0;
 		}
 
-		.block-editor-link-control__field input[type="text"] {
+		&__search-results {
+			padding: 0;
+			margin-top: $spectra-control-label-bottom-margin;
+		}
+
+		&__search-item.is-current {
+			border: 1px solid $spectra-color-border;
+			border-radius: $spectra-control-border-radius;
+
+		}
+
+		&__field input[type="text"] {
 			color: $spectra-color-body;
 			border-color: $spectra-color-border;
 			border-radius: $spectra-control-border-radius;
@@ -65,10 +73,15 @@
 				box-shadow: 0 0 0 1px $spectra-color-border-hover;
 			}
 		}
+
+		.components-base-control__field {
+			padding: 0;
+		}
 	}
 
 	// Toggle Control.
 	.components-form-toggle {
+		margin-right: 0;
 
 		.components-form-toggle__track {
 			background-color: $spectra-color-plain-background;
@@ -105,21 +118,21 @@
 		// NOTE: We will have to implement CustomSelectControl in place of SelectControl to style the Selected State.
 		// ----------------------------------------------------------------------------------------------------------
 		.components-select-control__input {
-			color: $spectra-color-body !important;
+			color: $spectra-color-body;
 		}
 
 		.components-input-control__backdrop {
-			border-color: $spectra-color-border !important;
-			border-radius: $spectra-control-border-radius !important;
+			border-color: $spectra-color-border;
+			border-radius: $spectra-control-border-radius;
 		}
 
 		// Angle Picker Input Field.
 		.components-input-control__input {
-			color: $spectra-color-body !important;
+			color: $spectra-color-body;
 		}
 
 		.components-truncate {
-			color: $spectra-color-body !important;
+			color: $spectra-color-body;
 		}
 	}
 
@@ -152,7 +165,7 @@
 	// Angle Picker Clear Button.
 	.components-circular-option-picker__clear {
 		color: $spectra-color-primary;
-		box-shadow: inset 0 0 0 1px $spectra-color-primary !important;
+		box-shadow: inset 0 0 0 1px $spectra-color-primary;
 
 		&:hover:not(:disabled) {
 			color: $spectra-color-primary;
