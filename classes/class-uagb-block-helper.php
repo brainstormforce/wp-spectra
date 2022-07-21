@@ -318,7 +318,116 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				'border-color' => $attr['icon_border_hover_color'] . ' !important',
 			);
 
-			return $selectors;
+			$selectors[ $wrapper . '.wp-block-uagb-icon-list-child.wp-block-uagb-icon-list-child' ] = array(
+				'margin-top'     => UAGB_Helper::get_css_value(
+					$attr['childTopMargin'],
+					$attr['childMarginUnit']
+				),
+				'margin-right'   => UAGB_Helper::get_css_value(
+					$attr['childRightMargin'],
+					$attr['childMarginUnit']
+				),
+				'margin-bottom'  => UAGB_Helper::get_css_value(
+					$attr['childBottomMargin'],
+					$attr['childMarginUnit']
+				),
+				'margin-left'    => UAGB_Helper::get_css_value(
+					$attr['childLeftMargin'],
+					$attr['childMarginUnit']
+				),
+				'padding-top'    => UAGB_Helper::get_css_value(
+					$attr['childTopPadding'],
+					$attr['childPaddingUnit']
+				),
+				'padding-right'  => UAGB_Helper::get_css_value(
+					$attr['childRightPadding'],
+					$attr['childPaddingUnit']
+				),
+				'padding-bottom' => UAGB_Helper::get_css_value(
+					$attr['childBottomPadding'],
+					$attr['childPaddingUnit']
+				),
+				'padding-left'   => UAGB_Helper::get_css_value(
+					$attr['childLeftPadding'],
+					$attr['childPaddingUnit']
+				),
+			);
+
+			$t_selectors[ $wrapper . '.wp-block-uagb-icon-list-child.wp-block-uagb-icon-list-child' ] = array(
+				'margin-top'     => UAGB_Helper::get_css_value(
+					$attr['childTopMarginTablet'],
+					$attr['childMarginUnitTablet']
+				),
+				'margin-right'   => UAGB_Helper::get_css_value(
+					$attr['childRightMarginTablet'],
+					$attr['childMarginUnitTablet']
+				),
+				'margin-bottom'  => UAGB_Helper::get_css_value(
+					$attr['childBottomMarginTablet'],
+					$attr['childMarginUnitTablet']
+				),
+				'margin-left'    => UAGB_Helper::get_css_value(
+					$attr['childLeftMarginTablet'],
+					$attr['childMarginUnitTablet']
+				),
+				'padding-top'    => UAGB_Helper::get_css_value(
+					$attr['childTopPaddingTablet'],
+					$attr['childPaddingUnitTablet']
+				),
+				'padding-right'  => UAGB_Helper::get_css_value(
+					$attr['childRightPaddingTablet'],
+					$attr['childPaddingUnitTablet']
+				),
+				'padding-bottom' => UAGB_Helper::get_css_value(
+					$attr['childBottomPaddingTablet'],
+					$attr['childPaddingUnitTablet']
+				),
+				'padding-left'   => UAGB_Helper::get_css_value(
+					$attr['childLeftPaddingTablet'],
+					$attr['childPaddingUnitTablet']
+				),
+			);
+
+			$m_selectors[ $wrapper . '.wp-block-uagb-icon-list-child.wp-block-uagb-icon-list-child' ] = array(
+				'margin-top'     => UAGB_Helper::get_css_value(
+					$attr['childTopMarginMobile'],
+					$attr['childMarginUnitMobile']
+				),
+				'margin-right'   => UAGB_Helper::get_css_value(
+					$attr['childRightMarginMobile'],
+					$attr['childMarginUnitMobile']
+				),
+				'margin-bottom'  => UAGB_Helper::get_css_value(
+					$attr['childBottomMarginMobile'],
+					$attr['childMarginUnitMobile']
+				),
+				'margin-left'    => UAGB_Helper::get_css_value(
+					$attr['childLeftMarginMobile'],
+					$attr['childMarginUnitMobile']
+				),
+				'padding-top'    => UAGB_Helper::get_css_value(
+					$attr['childTopPaddingMobile'],
+					$attr['childPaddingUnitMobile']
+				),
+				'padding-right'  => UAGB_Helper::get_css_value(
+					$attr['childRightPaddingMobile'],
+					$attr['childPaddingUnitMobile']
+				),
+				'padding-bottom' => UAGB_Helper::get_css_value(
+					$attr['childBottomPaddingMobile'],
+					$attr['childPaddingUnitMobile']
+				),
+				'padding-left'   => UAGB_Helper::get_css_value(
+					$attr['childLeftPaddingMobile'],
+					$attr['childPaddingUnitMobile']
+				),
+			);
+
+			return array(
+				'desktop' => $selectors,
+				'tablet'  => $t_selectors,
+				'mobile'  => $m_selectors,
+			);
 		}
 
 		/**
