@@ -158,6 +158,9 @@ const attributes = {
 	social_layout: {
 		type: 'string',
 		default: 'horizontal',
+		UAGCopyPaste: {
+			styleType: 'social-layout'
+		},
 	},
 	stack: {
 		type: 'string',
