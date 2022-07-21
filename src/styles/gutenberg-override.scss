@@ -78,6 +78,8 @@
 			border-color: $spectra-color-border;
 			border-radius: $spectra-control-border-radius;
 			padding: $spectra-control-input-padding;
+			// Separate Padding Right to avoid Overflow under Reset Button. Right Padding + Button Width.
+			padding-right: calc(12px + 16px);
 
 			&:focus {
 				border-color: $spectra-color-border-hover;
