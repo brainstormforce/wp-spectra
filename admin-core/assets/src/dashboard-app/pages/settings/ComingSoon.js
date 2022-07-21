@@ -25,10 +25,10 @@ const ComingSoon = () => {
 		let assetStatus;
 		if ( enableComingSoonMode === 'disabled' ) {
             assetStatus = 'enabled';
-			setshow(true);
+			setshow( true );
 		} else {
             assetStatus = 'disabled';
-			setshow(false);
+			setshow( false );
 		}
 
         dispatch( {type: 'UPDATE_ENABLE_COMING_SOON', payload: assetStatus } );
@@ -44,10 +44,10 @@ const ComingSoon = () => {
 			method: 'POST',
 			body: formData,
 		} ).then( () => {
-			dispatch( {type: 'UPDATE_SETTINGS_SAVED_NOTIFICATION', payload: true } );
+			dispatch( {type: 'UPDATE_SETTINGS_SAVED_NOTIFICATION', payload:  true  } );
 		} );
     };
-
+ 
 	const updateSelectedPage = ( page ) => {
 
 		dispatch( {type: 'UPDATE_COMING_SOON_PAGE', payload: page.value } );
