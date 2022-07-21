@@ -59,12 +59,13 @@ const BlockCard = ( props ) => {
     return (
         <div
         key={slug}
+        id={slug}
         className="relative rounded-[0.2rem] shadow bg-white px-6 py-5 flex items-center space-x-4"
         >
             <div className="flex-shrink-0 opacity-80">
                 { UAGB_Block_Icons[slug] }
             </div>
-            <div className="flex-1 min-w-0">
+            <div className="uagb-admin-block-card__title flex-1 min-w-0">
                 <p className="text-sm font-medium text-gray-900 mb-[0.1875rem]">{title}</p>
                 <a className="focus:text-wpcolor active:text-wpcolor hover:text-wpcolor text-sm underline text-gray-900 truncate" href={ `https://ultimategutenberg.com/blocks/${ link }` } target="_blank"rel="noreferrer">{__( 'Live Demo', 'ultimate-addons-for-gutenberg' )}</a>
             </div>
