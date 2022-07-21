@@ -145,7 +145,9 @@ function styling( props ) {
 		innerContentCustomWidthTablet,
 		innerContentCustomWidthMobile,
 		innerContentCustomWidthTypeMobile,
-		innerContentCustomWidthTypeTablet
+		innerContentCustomWidthTypeTablet,
+
+		overflow
 	} = attributes;
 
 	const innerContentCustomWidthDesktopFallback = getFallbackNumber( innerContentCustomWidthDesktop, 'innerContentCustomWidthDesktop', blockName );
@@ -284,7 +286,8 @@ function styling( props ) {
 		generateCSSUnit( boxShadowBlur, 'px' ) + ' ' +	generateCSSUnit( boxShadowSpread, 'px' ) + ' ' +
 		boxShadowColor + ' ' +	boxShadowPositionCSS,
 		'min-height' : generateCSSUnit( minHeightDesktop, minHeightType ),
-		...borderCSS
+		...borderCSS,
+		'overflow' : overflow
 	}
 
 	selectors['.wp-block'] = containerCSS;
