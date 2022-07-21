@@ -202,6 +202,24 @@
 	}
 }
 
+// Deprecated blocks.
+#gf-styler, #section, #wp-search, #columns, #cf7-styler {
+
+	.uagb-admin-block-card__title::after {
+		content: 'deprecated';
+		position: absolute;
+		top: 5px;
+		right: 5px;
+		padding: 2px 5px;
+		border-radius: 0.2rem;
+		color: #fff;
+		background-color: $spectra-wpcolor;
+		text-transform: uppercase;
+		font-weight: bold;
+	}
+
+}
+
 .uag-dashboard-app .read-more a {
 	color: #2271b1;
 }
