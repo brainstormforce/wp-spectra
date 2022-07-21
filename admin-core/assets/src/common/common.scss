@@ -183,6 +183,23 @@
 	h3 {
 		font-size: 1.125rem;
 	}
+
+	.uagb-admin-block__extension {
+
+		.uagb-admin-block__extension-title::after {
+			content: 'extension';
+			position: absolute;
+			top: 5px;
+			right: 5px;
+			padding: 2px 5px;
+			border-radius: 0.2rem;
+			color: #fff;
+			background-color: $spectra-wpcolor;
+			text-transform: uppercase;
+			font-weight: bold;
+		}
+
+	}
 }
 
 .uag-dashboard-app .read-more a {
