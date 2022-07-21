@@ -1,6 +1,7 @@
 import { applyFilters } from '@wordpress/hooks';
 import { useRef, useEffect  } from '@wordpress/element';
 import getUAGEditorStateLocalStorage from '@Controls/getUAGEditorStateLocalStorage';
+import { select } from '@wordpress/data';
 
 const InspectorTab = ( props ) => {
 	const { children, isActive, type } = props;
@@ -14,28 +15,50 @@ const InspectorTab = ( props ) => {
 		);
 	};
 
-	const uagLastOpenedState = getUAGEditorStateLocalStorage( 'uagLastOpenedState' );
-	const inspectorTabName = uagLastOpenedState?.inspectorTabName;
-	const panelBodyClass = uagLastOpenedState?.panelBodyClass;
-	const settingsPopup = uagLastOpenedState?.settingsPopup;
-
 	useEffect( () => {
-		// This code is to fix the side-effect of the editor responsive click settings panel refresh issue.
-		if ( inspectorTabName && type === inspectorTabName && panelBodyClass ) {
-			const panelToActivate = tabRef.current.querySelector( `.${uagLastOpenedState.panelBodyClass}` );
 
-			if ( panelToActivate && ! panelToActivate.classList.contains( 'is-opened' ) ) {
-				panelToActivate.querySelector( '.components-button' ).click();
+		const { getSelectedBlock } = select( 'core/block-editor' );
+		const blockName = getSelectedBlock()?.name;
+		const uagSettingState = getUAGEditorStateLocalStorage( 'uagSettingState' );
 
-				if ( settingsPopup ) {
-					// Need a delay to open the popup as the makup load just after the above click function called.
-					setTimeout( function() {
-						const settingsPopupToActivate = panelToActivate.querySelector( '.uag-typography-options' );
+		if ( uagSettingState ) {
+			const inspectorTabName = uagSettingState[blockName]?.selectedTab;
+			const panelBodyClass = uagSettingState[blockName]?.selectedPanel;
+			const settingsPopup = uagSettingState[blockName]?.selectedSetting;
+			const selectedInnerTab = uagSettingState[blockName]?.selectedInnerTab;
 
-						if ( settingsPopupToActivate && ! settingsPopupToActivate.classList.contains( 'active' ) ) {
-							settingsPopupToActivate.querySelector( '.components-button' ).click();
-						}
-					}, 100 );
+			// This code is to fix the side-effect of the editor responsive click settings panel refresh issue AND aldo for preserving state for better block editor experinence.
+			if ( inspectorTabName && type === inspectorTabName ) {
+				let panelToActivate = false
+				if ( panelBodyClass ) {
+					panelToActivate = tabRef.current.querySelector( `.${panelBodyClass}` );
+				} else {
+					panelToActivate = tabRef.current.querySelector( '.is-opened' );
+				}
+
+				if ( panelToActivate ) {
+					if ( ! panelToActivate.classList.contains( 'is-opened' ) ) {
+						panelToActivate.querySelector( '.components-button' ).click();
+					}
+					if ( selectedInnerTab ) {
+						// Need a delay to open the popup as the makup load just after the above click function called.
+						setTimeout( function() {
+							const selectedInnerTabToActivate = panelToActivate.querySelector( selectedInnerTab );
+							if ( selectedInnerTabToActivate && ! selectedInnerTabToActivate.classList.contains( 'active-tab' ) ) {
+								selectedInnerTabToActivate.click();
+							}
+						}, 100 );
+					}
+					if ( settingsPopup ) {
+						// Need a delay to open the popup as the makup load just after the above click function called.
+						setTimeout( function() {
+							const settingsPopupToActivate = panelToActivate.querySelector( settingsPopup );
+
+							if ( settingsPopupToActivate && ! settingsPopupToActivate.classList.contains( 'active' ) ) {
+								settingsPopupToActivate.querySelector( '.components-button' ).click();
+							}
+						}, 100 );
+					}
 				}
 			}
 		}

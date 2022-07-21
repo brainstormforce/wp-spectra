@@ -1,5 +1,5 @@
 /**
- * BLOCK: Multi Buttons
+ * BLOCK: Buttons
  */
 
 import styling from './styling';

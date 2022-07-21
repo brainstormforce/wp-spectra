@@ -7,13 +7,15 @@
  * @package uagb
  */
 
+$block_name    = 'inline-notice';
 $base_selector = '.uagb-block-';
 $selector      = $base_selector . $id;
 $js_attr       = array(
 	'c_id'              => $attr['c_id'],
 	'cookies'           => $attr['cookies'],
-	'close_cookie_days' => $attr['close_cookie_days'],
+	'close_cookie_days' => UAGB_Block_Helper::get_fallback_number( $attr['close_cookie_days'], 'close_cookie_days', $block_name ),
 	'noticeDismiss'     => $attr['noticeDismiss'],
+	'icon'              => $attr['icon'],
 );
 
 ob_start();

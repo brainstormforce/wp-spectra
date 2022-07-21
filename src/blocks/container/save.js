@@ -10,13 +10,18 @@ export default function save( props ) {
 	const {
 		block_id,
 		contentWidth,
+		innerContentWidth,
 		isBlockRootParent,
 		topType,
 		topFlip,
 		topContentAboveShape,
 		bottomType,
 		bottomFlip,
-		bottomContentAboveShape
+		bottomContentAboveShape,
+		backgroundType,
+		backgroundVideo,
+		topInvert,
+		bottomInvert,
 	} = props.attributes;
 
 	const topDividerHtml = 'none' !== topType && (
@@ -28,7 +33,8 @@ export default function save( props ) {
 				{
 					'uagb-container__shape-above-content':
 						topContentAboveShape === true,
-				}
+				},
+				{ 'uagb-container__invert' : topInvert === true }
 			) }
 		>
 			{ shapes[ topType ] }
@@ -44,7 +50,8 @@ export default function save( props ) {
 				{
 					'uagb-container__shape-above-content':
 						bottomContentAboveShape === true,
-				}
+				},
+				{ 'uagb-container__invert' : bottomInvert === true },
 			) }
 			data-negative="false"
 		>
@@ -57,12 +64,30 @@ export default function save( props ) {
 			className={ classnames(
 				props.className,
 				`uagb-block-${ block_id }`,
-				isBlockRootParent ? contentWidth : '',
-				isBlockRootParent ? 'uagb-is-root-container' : ''
+				isBlockRootParent ?  `${contentWidth} uagb-is-root-container` : '',
 			) }
 		>
 			{ topDividerHtml }
-			<InnerBlocks.Content />
+			{ 'video' === backgroundType && (
+				<div className="uagb-container__video-wrap">
+					{ backgroundVideo && (
+						<video autoPlay loop muted playsinline>
+							<source
+								src={ backgroundVideo.url }
+								type="video/mp4"
+							/>
+						</video>
+					) }
+				</div>
+			) }
+			{ isBlockRootParent && 'alignfull' === contentWidth && 'alignwide' === innerContentWidth
+				?  (
+						<div className='uagb-container-inner-blocks-wrap'>
+							<InnerBlocks.Content />
+						</div>
+					)
+					: <InnerBlocks.Content />
+			}
 			{ bottomDividerHtml }
 		</div>
 	);

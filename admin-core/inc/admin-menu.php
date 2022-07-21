@@ -206,6 +206,7 @@ class Admin_Menu {
 		$this->settings_app_scripts( $localize );
 	}
 
+
 	/**
 	 * Create an Array of Blocks info which we need to show in Admin dashboard.
 	 */
@@ -261,6 +262,7 @@ class Admin_Menu {
 					'post-image',
 					'post-button',
 					'post-excerpt',
+					'post-taxonomy',
 					'post-meta',
 					'restaurant-menu-child',
 					'content-timeline-child',
@@ -273,10 +275,11 @@ class Admin_Menu {
 				}
 
 				if ( 'yes' !== get_option( 'uagb-old-user-less-than-2' ) ) {
-					$exclude_blocks[] = 'buttons';
 					$exclude_blocks[] = 'wp-search';
 					$exclude_blocks[] = 'columns';
 					$exclude_blocks[] = 'section';
+					$exclude_blocks[] = 'cf7-styler';
+					$exclude_blocks[] = 'gf-styler';
 				}
 
 				if ( array_key_exists( 'extension', $info ) && $info['extension'] ) {
@@ -301,7 +304,7 @@ class Admin_Menu {
 	/**
 	 * Get plugin status
 	 *
-	 * @since x.x.x
+	 * @since 2.0.0-beta.3
 	 *
 	 * @param  string $plugin_init_file Plguin init file.
 	 * @return mixed
@@ -378,7 +381,7 @@ class Admin_Menu {
 
 		$logs_page_url = '#';
 
-		echo '<span id="footer-thankyou"> Thank you for using <a href="#">Spectra.</a></span>';
+		echo '<span id="footer-thankyou"> Thank you for using <a href="#" class="focus:text-wphovercolor active:text-wphovercolor hover:text-wphovercolor">Spectra.</a></span>';
 	}
 
 }

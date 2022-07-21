@@ -22,6 +22,12 @@ const Render = ( props ) => {
 		label,
 		icon,
 		iconPosition,
+		removeText,
+		noFollow,
+		backgroundType,
+		borderStyle,
+		background,
+		color
 	} = attributes;
 
 	const iconHtml = ( curr_position ) => {
@@ -39,26 +45,9 @@ const Render = ( props ) => {
 		}
 		return null;
 	};
-
-	return (
-		<div
-			className={ classnames(
-				className,
-				'uagb-buttons__outer-wrap',
-				`uagb-editor-preview-mode-${ deviceType.toLowerCase() }`,
-				`uagb-block-${ props.clientId.substr( 0, 8 ) }`,
-				'wp-block-button'
-			) }
-		>
-			<div className="uagb-button__wrapper">
-				<div
-					className={ classnames(
-						'uagb-buttons-repeater',
-						'wp-block-button__link'
-					) }
-				>
-					{ iconHtml( 'before' ) }
-					<RichText
+	const btnText = () => {
+		if( ! removeText ){
+			return <RichText
 						placeholder={ __( 'Add text…' ) }
 						value={ label }
 						tagName="div"
@@ -67,9 +56,37 @@ const Render = ( props ) => {
 						} }
 						allowedFormats={ [ 'bold', 'italic', 'strikethrough' ] }
 						className="uagb-button__link"
-						rel="noopener noreferrer"
+						rel= { noFollow ? 'nofollow noopener' : 'follow noopener' }
 						keepPlaceholderOnFocus
 					/>
+		}
+			return '';
+
+	}
+
+	const hasBackground = background !== '' || backgroundType === 'transparent' || 'gradient' === backgroundType  ? 'has-background' : '';
+	return (
+		<div
+			className={ classnames(
+				className,
+				'uagb-buttons__outer-wrap',
+				`uagb-editor-preview-mode-${ deviceType.toLowerCase() }`,
+				`uagb-block-${ props.clientId.substr( 0, 8 ) }`,
+				'wp-block-button',
+				borderStyle !== 'none' ? 'is-style-outline' : '',
+			) }
+		>
+			<div className="uagb-button__wrapper">
+				<div
+					className={ classnames(
+						'uagb-buttons-repeater',
+						'wp-block-button__link',
+						hasBackground,
+						color !== '' ? 'has-text-color' : '',
+					) }
+				>
+					{ iconHtml( 'before' ) }
+					{ btnText() }
 					{ iconHtml( 'after' ) }
 				</div>
 			</div>

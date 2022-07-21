@@ -37,7 +37,6 @@ class Admin_Helper {
 	 * @return array.
 	 */
 	public static function get_common_settings() {
-
 		$uag_versions   = self::get_rollback_versions_options();
 		$changelog_data = self::get_changelog_feed_data();
 		$content_width  = \UAGB_Admin_Helper::get_global_content_width();
@@ -58,17 +57,45 @@ class Admin_Helper {
 			'copy_paste'                         => \UAGB_Admin_Helper::get_admin_settings_option( 'uag_copy_paste', 'enabled' ),
 			'dynamic_content_mode'               => \UAGB_Admin_Helper::get_admin_settings_option( 'uag_dynamic_content_mode', 'popup' ),
 			'preload_local_fonts'                => \UAGB_Admin_Helper::get_admin_settings_option( 'uag_preload_local_fonts', 'disabled' ),
+			'enable_coming_soon_mode'            => \UAGB_Admin_Helper::get_admin_settings_option( 'uag_enable_coming_soon_mode', 'disabled' ),
+			'coming_soon_page'                   => self::get_coming_soon_page(),
 			'uag_previous_versions'              => $uag_versions,
 			'changelog_data'                     => $changelog_data,
 			'content_width'                      => $content_width,
+			'recaptcha_site_key_v2'              => \UAGB_Admin_Helper::get_admin_settings_option( 'uag_recaptcha_site_key_v2', '' ),
+			'recaptcha_secret_key_v2'            => \UAGB_Admin_Helper::get_admin_settings_option( 'uag_recaptcha_secret_key_v2', '' ),
+			'recaptcha_site_key_v3'              => \UAGB_Admin_Helper::get_admin_settings_option( 'uag_recaptcha_site_key_v3', '' ),
+			'recaptcha_secret_key_v3'            => \UAGB_Admin_Helper::get_admin_settings_option( 'uag_recaptcha_secret_key_v3', '' ),
+			'blocks_editor_spacing'              => \UAGB_Admin_Helper::get_admin_settings_option( 'uag_blocks_editor_spacing', 0 ),
+			'load_font_awesome_5'                => \UAGB_Admin_Helper::get_admin_settings_option( 'uag_load_font_awesome_5', ( 'yes' === get_option( 'uagb-old-user-less-than-2' ) ) ? 'enabled' : 'disabled' ),
+			'auto_block_recovery'                => \UAGB_Admin_Helper::get_admin_settings_option( 'uag_auto_block_recovery', ( 'yes' === get_option( 'uagb-old-user-less-than-2' ) ) ? 'enabled' : 'disabled' ),
+			'uagb_old_user_less_than_2'          => get_option( 'uagb-old-user-less-than-2' ),
 		);
 
 		return $options;
 	}
+
+	/**
+	 * Get Coming Soon Page
+	 *
+	 * @since 2.0.0
+	 * @return boolean|array
+	 */
+	public static function get_coming_soon_page() {
+		$page_id = \UAGB_Admin_Helper::get_admin_settings_option( 'uag_coming_soon_page', '' );
+		if ( $page_id ) {
+			return array(
+				'value' => $page_id,
+				'label' => \get_the_title( $page_id ),
+			);
+		}
+		return false;
+	}
+
 	/**
 	 * Get Changelogs from API.
 	 *
-	 * @since x.x.x
+	 * @since 2.0.0-beta.3
 	 * @return array $changelog_data Changelog Data.
 	 */
 	public static function get_changelog_feed_data() {

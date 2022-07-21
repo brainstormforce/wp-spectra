@@ -9,15 +9,16 @@ import InspectorTab, {
 import SpacingControl from '@Components/spacing-control';
 import Range from '@Components/range/Range.js';
 import Background from '@Components/background';
-import Border from '@Components/border';
+import ResponsiveBorder from '@Components/responsive-border';
 import MultiButtonsControl from '@Components/multi-buttons-control';
+import UAGSelectControl from '@Components/select-control';
 import renderSVG from '@Controls/renderIcon';
 import {
 	BlockControls,
 	AlignmentToolbar,
 	InspectorControls,
 } from '@wordpress/block-editor';
-import { SelectControl, ToggleControl, Icon } from '@wordpress/components';
+import { ToggleControl, Icon, Notice } from '@wordpress/components';
 
 
 
@@ -29,6 +30,7 @@ const Settings = ( props ) => {
 	const { attributes, setAttributes, deviceType } = props;
 
 	const {
+		block_id,
 		align,
 		contentWidth,
 		width,
@@ -72,11 +74,6 @@ const Settings = ( props ) => {
 		backgroundVideoOpacity,
 		backgroundImageColor,
 		overlayType,
-		borderStyle,
-		borderWidth,
-		borderRadius,
-		borderColor,
-		borderHoverColor,
 		mobileMarginType,
 		tabletMarginType,
 		desktopMarginType,
@@ -186,9 +183,10 @@ const Settings = ( props ) => {
 						label={ __( 'Width', 'ultimate-addons-for-gutenberg' ) }
 						setAttributes={ setAttributes }
 						value={ width }
-						onChange={ ( value ) =>
-							setAttributes( { width: value } )
-						}
+						data={ {
+							value: width,
+							label: 'width',
+						} }
 						min={ 0 }
 						max={ 2000 }
 						displayUnit={ false }
@@ -215,9 +213,10 @@ const Settings = ( props ) => {
 						) }
 						setAttributes={ setAttributes }
 						value={ innerWidth }
-						onChange={ ( value ) =>
-							setAttributes( { innerWidth: value } )
-						}
+						data={ {
+							value: innerWidth,
+							label: 'innerWidth',
+						} }
 						min={ 0 }
 						max={ 2000 }
 						unit={ {
@@ -249,10 +248,16 @@ const Settings = ( props ) => {
 						] }
 					/>
 				) }
-				<SelectControl
-					label={ __( 'HTML Tag', 'ultimate-addons-for-gutenberg' ) }
-					value={ tag }
-					onChange={ ( value ) => setAttributes( { tag: value } ) }
+				<UAGSelectControl
+					label={ __(
+						'HTML Tag',
+						'ultimate-addons-for-gutenberg'
+					) }
+					data={ {
+						value: tag,
+						label: 'tag',
+					} }
+					setAttributes={ setAttributes }
 					options={ [
 						{
 							value: 'div',
@@ -463,7 +468,7 @@ const Settings = ( props ) => {
 		return (
 			<UAGAdvancedPanelBody
 				title={ __( 'Background', 'ultimate-addons-for-gutenberg' ) }
-				initialOpen={ false }
+				initialOpen={ true }
 			>
 				<Background
 					setAttributes={ setAttributes }
@@ -479,6 +484,9 @@ const Settings = ( props ) => {
 						value: overlayType,
 						label: 'overlayType',
 					} }
+					gradientOverlay={{
+						value: true,
+					}}
 					backgroundSize={ {
 						value: backgroundSize,
 						label: 'backgroundSize',
@@ -536,53 +544,18 @@ const Settings = ( props ) => {
 					title={ __( 'Border', 'ultimate-addons-for-gutenberg' ) }
 					initialOpen={ false }
 				>
-					<Border
+					<ResponsiveBorder
 						setAttributes={ setAttributes }
-						borderStyle={ {
-							value: borderStyle,
-							label: 'borderStyle',
-							title: __(
-								'Style',
-								'ultimate-addons-for-gutenberg'
-							),
-						} }
-						borderWidth={ {
-							value: borderWidth,
-							label: 'borderWidth',
-							title: __(
-								'Width',
-								'ultimate-addons-for-gutenberg'
-							),
-						} }
-						borderRadius={ {
-							value: borderRadius,
-							label: 'borderRadius',
-							title: __(
-								'Radius',
-								'ultimate-addons-for-gutenberg'
-							),
-						} }
-						borderColor={ {
-							value: borderColor,
-							label: 'borderColor',
-							title: __(
-								'Color',
-								'ultimate-addons-for-gutenberg'
-							),
-						} }
-						borderHoverColor={ {
-							value: borderHoverColor,
-							label: 'borderHoverColor',
-							title: __(
-								'Hover Color',
-								'ultimate-addons-for-gutenberg'
-							),
-						} }
+						prefix={'overall'}
+						attributes={ attributes }
+						deviceType={ deviceType}
 						disableBottomSeparator={ true }
+						disabledBorderTitle= { true }
 					/>
 				</UAGAdvancedPanelBody>
 				<UAGAdvancedPanelBody title="Box Shadow" initialOpen={ false }>
 					<BoxShadowControl
+						blockId={ block_id }
 						setAttributes={ setAttributes }
 						label={ __(
 							'Box Shadow',
@@ -646,6 +619,17 @@ const Settings = ( props ) => {
 		return (
 			<InspectorTabs>
 				<InspectorTab { ...UAGTabs.general }>
+					<Notice status="warning" isDismissible={false}>
+						{
+							__( 'This block has been deprecated. We recommend using the new', 'ultimate-addons-for-gutenberg' )
+						}
+						{' '}
+						<strong>{__( 'Container', 'ultimate-addons-for-gutenberg' )}</strong>
+						{' '}
+						{
+							__( 'block instead for more flexibility, and better code markup.', 'ultimate-addons-for-gutenberg' )
+						}
+					</Notice>
 					{ getLayoutPanelBody() }
 				</InspectorTab>
 				<InspectorTab { ...UAGTabs.style }>

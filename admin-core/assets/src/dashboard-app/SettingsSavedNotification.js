@@ -17,7 +17,7 @@ export default function SettingsSavedNotification() {
 	if ( true === settingsSavedNotification ) {
 		setTimeout( ()=>{
 			dispatch( {type: 'UPDATE_SETTINGS_SAVED_NOTIFICATION', payload: false } );
-		}, 1000 );
+		}, 2000 );
 	}
 }, [settingsSavedNotification] );
 

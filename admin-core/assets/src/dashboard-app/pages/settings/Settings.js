@@ -15,7 +15,12 @@ import CollapsePanels from '@DashboardApp/pages/settings/CollapsePanels';
 import CopyPasteStyles from '@DashboardApp/pages/settings/CopyPasteStyles';
 import DynamicContent from './block-settings/dynamic-content';
 import ContentWidth from '@DashboardApp/pages/settings/ContentWidth';
+import BlocksEditorSpacing from '@DashboardApp/pages/settings/BlocksEditorSpacing';
+import ComingSoon from '@DashboardApp/pages/settings/ComingSoon';
 import SettingsSkeleton from '@DashboardApp/pages/settings/SettingsSkeleton';
+import BlockSettings from '@DashboardApp/pages/settings/BlockSettings';
+import LoadFontAwesome5 from '@DashboardApp/pages/settings/LoadFontAwesome5';
+import AutoBlockRecovery from '@DashboardApp/pages/settings/AutoBlockRecovery';
 import { Link, useLocation } from 'react-router-dom';
 import{ useEffect } from 'react';
 
@@ -35,6 +40,8 @@ const Settings = () => {
         { name: __( 'Templates', 'ultimate-addons-for-gutenberg' ), slug: 'templates', icon: SettingsIcons.templates },
         { name: __( 'Version Control', 'ultimate-addons-for-gutenberg' ), slug: 'version-control', icon: SettingsIcons['version-control'] },
         { name: __( 'Performance', 'ultimate-addons-for-gutenberg' ), slug: 'fonts-performance', icon: SettingsIcons['fonts-performance'] },
+		{ name: __( 'Block Settings', 'ultimate-addons-for-gutenberg' ), slug: 'block-settings', icon: SettingsIcons['block-settings'] },
+		{ name: __( 'Coming Soon', 'ultimate-addons-for-gutenberg' ), slug: 'coming-soon', icon: SettingsIcons['coming-soon'] },
     ];
 
     uag_react.spectra_pro_status && navigation.push(
@@ -54,7 +61,7 @@ const Settings = () => {
 	}
 
     return (
-        <main className="max-w-[77rem] mx-auto my-[2.43rem] bg-white rounded-[0.2rem] shadow overflow-hidden h-[34rem]">
+        <main className="max-w-[77rem] mx-auto my-[2.43rem] bg-white rounded-[0.2rem] shadow overflow-hidden h-[36rem]">
             <div className="lg:grid lg:grid-cols-12 lg:gap-x-8 h-full">
                 <aside className="py-6 px-2 ml-8 sm:px-6 lg:py-6 lg:px-0 lg:col-span-3 border-r">
                     <nav className="space-y-1">
@@ -67,8 +74,8 @@ const Settings = () => {
                             key={item.name}
                             className={classNames(
                             activeSettingsNavigationTab === item.slug
-                            ? 'bg-gray-50 text-wpcolor hover:text-wphovercolor fill-wpcolor'
-                            : 'text-gray-900 fill-gray-900 hover:text-gray-900 hover:bg-gray-50',
+                            ? 'bg-gray-50 text-wpcolor focus:text-wphovercolor active:text-wpcolor hover:text-wphovercolor fill-wpcolor'
+                            : 'text-gray-900 fill-gray-900 focus:text-gray-900 focus:bg-gray-50 hover:text-gray-900 hover:bg-gray-50',
                             'group cursor-pointer rounded-[0.2rem] p-3 flex items-center text-sm font-medium'
                             )}
                             onClick={ () => {
@@ -84,7 +91,10 @@ const Settings = () => {
                 <div className='space-y-8 mt-8 mb-0 mr-8 sm:px-6 lg:px-0 lg:col-span-9'>
 					{ 'global-settings' === activeSettingsNavigationTab &&
 						<>
+                            <LoadFontAwesome5/>
+                            <AutoBlockRecovery/>
 							<ContentWidth/>
+							<BlocksEditorSpacing/>
                             <CollapsePanels/>
                             <CopyPasteStyles/>
                         </>
@@ -111,11 +121,18 @@ const Settings = () => {
                             <PreloadLocalFonts/>
                         </>
                     }
-                    { 'block-settings' === activeSettingsNavigationTab &&
+					{ 'block-settings' === activeSettingsNavigationTab &&
                         <>
                             <DynamicContent />
+                            <BlockSettings/>
                         </>
                     }
+					{
+						'coming-soon' === activeSettingsNavigationTab &&
+						<>
+							<ComingSoon/>
+						</>
+					}
                 </div>
             </div>
         </main>

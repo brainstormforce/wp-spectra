@@ -51,7 +51,7 @@ if ( ! class_exists( 'UAGB_Rest_API' ) ) {
 		/**
 		 * This function updates the __uagb_asset_version when Widgets Editor is Updated.
 		 *
-		 * @since x.x.x
+		 * @since 2.0.0-beta.3
 		 */
 		public function after_widget_save_action() {
 			/* Update the asset version */

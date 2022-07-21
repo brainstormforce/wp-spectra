@@ -410,15 +410,13 @@ const attributes = {
 	},
 	ctaBorderColor: {
 		type: "string",
-		default: "#333",
 	},
 	ctaBorderhoverColor:{
 		type: "string",
-		default: "",
 	},
 	ctaBorderStyle: {
 		type: "string",
-		default: "solid",
+		default: 'solid',
 	},
 	ctaBtnVertPadding :{
 		type: "number",
@@ -430,11 +428,9 @@ const attributes = {
 	},
 	ctaBorderWidth :{
 		type: "number",
-		default: 1,
 	},
 	ctaBorderRadius :{
 		type: "number",
-		default: 0,
 	},
 	prefixSpace :{
 		type: "number",
@@ -479,6 +475,10 @@ const attributes = {
 		type: "string",
 		default: "tablet"
 	},
+	showIcon: {
+		type: 'boolean',
+		default: true,
+	},
 	showPrefix: {
 		type: "boolean",
 		default: true,
@@ -490,6 +490,10 @@ const attributes = {
 	showDesc: {
 		type: "boolean",
 		default: true,
+	},
+	iconView: {
+		type: 'string',
+		default: 'none',
 	},
 }
 

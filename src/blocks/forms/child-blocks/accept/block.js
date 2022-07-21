@@ -21,6 +21,10 @@ registerBlockType( 'uagb/forms-accept', {
 	supports: {
 		anchor: true,
 	},
-	example: {},
+	example: {
+		attributes: {
+			isPreview: true,
+		}
+	},
 	save,
 } );

@@ -14,6 +14,7 @@ import './post-masonry/block.js';
 import './post-carousel/block.js';
 import './post-title/block.js';
 import './post-image/block.js';
+import './post-taxonomy/block.js';
 import './post-button/block.js';
 import './post-excerpt/block.js';
 import './post-meta/block.js';

@@ -4,6 +4,9 @@
 import TestimonialStyle from './inline-styles';
 import React, { lazy, Suspense, useEffect } from 'react';
 import lazyLoader from '@Controls/lazy-loader';
+
+import { migrateBorderAttributes } from '@Controls/generateAttributes';
+
 const Settings = lazy( () =>
 	import( /* webpackChunkName: "chunks/testimonial/settings" */ './settings' )
 );
@@ -79,10 +82,38 @@ const UAGBtestimonial = ( props ) => {
 			setAttributes( { backgroundImageColor: color } );
 			setAttributes( { backgroundOpacity: 101 } );
 		}
-
+		const { borderStyle,borderWidth,borderRadius,borderColor,borderHoverColor } = props.attributes;
+		// Backward Border Migration
+		if( borderWidth || borderRadius || borderColor || borderHoverColor || borderStyle ){
+			const migrationAttributes = migrateBorderAttributes( 'overall', {
+				label: 'borderWidth',
+				value: borderWidth,
+			}, {
+				label: 'borderRadius',
+				value: borderRadius
+			}, {
+				label: 'borderColor',
+				value: borderColor
+			}, {
+				label: 'borderHoverColor',
+				value: borderHoverColor
+			},{
+				label: 'borderStyle',
+				value: borderStyle
+			}
+			);
+			props.setAttributes( migrationAttributes )
+		}
 	}, [] );
 
 	useEffect( () => {
+		const equalHeight = props.attributes.equalHeight;
+		if ( equalHeight ) {
+			uagb_carousel_height( props.clientId.substr( 0, 8 ) ); // eslint-disable-line no-undef
+		} else {
+			uagb_carousel_unset_height( props.clientId.substr( 0, 8 ) ); // eslint-disable-line no-undef
+		}
+		
 		const blockStyling = TestimonialStyle( props );
 
 		addBlockEditorDynamicStyles( 'uagb-testinomial-style-' + props.clientId.substr( 0, 8 ), blockStyling );

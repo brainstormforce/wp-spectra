@@ -21,7 +21,7 @@ const RegenerateAssets = () => {
             if ( data.success ) {
                 setTimeout( function () {
 					setRegenerateAssetsState( false );
-				}, 1000 );
+				}, 2000 );
 				setRegenerateAssetsState( true );
 			}
 		} );
@@ -40,7 +40,7 @@ const RegenerateAssets = () => {
             <div>
                 <button
                     type="button"
-                    className="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-[0.2rem] shadow-sm text-white bg-wpcolor hover:bg-wphovercolor focus:outline-none"
+                    className="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-[0.2rem] shadow-sm text-white bg-wpcolor focus:bg-wphovercolor hover:bg-wphovercolor focus:outline-none"
                     onClick={regenerateAssets}
                 >
                     { 'loading' === regenerateAssetsState &&

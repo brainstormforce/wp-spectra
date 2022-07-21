@@ -1,21 +1,13 @@
 .wp-block-uagb-faq-child {
 
-	&.uagb-faq-child__outer-wrap.uagb-faq-item:focus,
-	&.uagb-faq-child__outer-wrap.uagb-faq-item:active,
-	&.uagb-faq-child__outer-wrap .uagb-faq-item:focus,
-	&.uagb-faq-child__outer-wrap .uagb-faq-item:active {
-		outline: thin dotted;
-	}
-
 	.uagb-faq-questions-button {
 
 		display: flex;
 		align-items: center;
 
 		.uagb-faq-icon-wrap {
-
-			display: inline-block;
-			vertical-align: middle;
+			display: flex;
+			align-items: center;
 		}
 
 		.uagb-question {
@@ -48,7 +40,7 @@
 	&.uagb-faq-child__outer-wrap.uagb-faq-item.uagb-faq-item-active .uagb-icon-active,
 	&.uagb-faq-child__outer-wrap .uagb-faq-item .uagb-icon,
 	&.uagb-faq-child__outer-wrap .uagb-faq-item.uagb-faq-item-active .uagb-icon-active {
-		display: inline-block;
+		display: flex;
 		width: auto;
 		height: auto;
 	}
