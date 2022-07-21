@@ -76,6 +76,7 @@ const Render = ( props ) => {
 	const customTagLinkAttributes = {};
 	if( htmlTag === 'a' ){
 		customTagLinkAttributes.rel = 'noopener'
+		customTagLinkAttributes.onClick = (e) => e.preventDefault()
 		if( htmlTagLink?.url ){
 			customTagLinkAttributes.href = htmlTagLink?.url;
 		}
