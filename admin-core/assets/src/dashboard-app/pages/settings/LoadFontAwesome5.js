@@ -46,7 +46,6 @@ const LoadFontAwesome5 = () => {
 
     return (
         <section className='block border-b border-solid border-slate-200 p-8 justify-between'>  
-            <div className='pr-16 w-full'>
             <Button className='pr-16 inline-flex w-10/12 uag-accordion'
                 onClick={ () => setshow( ! show )}
             >
@@ -77,7 +76,6 @@ const LoadFontAwesome5 = () => {
                     { __( 'Enable this to make sure all previously used Font Awesome 5 icons are displayed correctly while using the Font Awesome 6 library.', 'ultimate-addons-for-gutenberg' ) }
                 </p>
             )}
-            </div>
         </section>
     );
 };

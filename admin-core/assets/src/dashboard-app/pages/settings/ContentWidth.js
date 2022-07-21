@@ -35,7 +35,6 @@ const ContentWidth = () => {
     return (
         <>
             <section className='block border-b border-solid border-slate-200 p-8 justify-between'>
-            	<div className='pr-16 w-full'>
 					<Button className='pr-16 inline-flex w-2/4 uag-accordion'
 							onClick={ () => setshow( ! show )}
 						>
@@ -45,7 +44,7 @@ const ContentWidth = () => {
 							{__( 'Default Content Width', 'ultimate-addons-for-gutenberg' )}
 						</h3>
 					</Button>
-					<div className='flex spectra-content-width-input-wrap'>
+					<div className='flex spectra-content-width-input-wrap w-2/4 '>
 						<input className="appearance-none block w-20 h-8 bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 pr-0 leading-tight focus:outline-none focus:bg-white focus:border-gray-500 spectra-admin__input-field" id="grid-zip" value={contentWidth} onChange={updateContentWidth} type="number" placeholder="1200" min={0} max={1600} />
 						<span className="inline-flex h-8 items-center px-3 rounded-r-md border border-l-0 border-gray-200 bg-white text-gray-500 sm:text-sm spectra-admin__input-field--end-display">
 							{ __( 'px', 'ultimate-addons-for-gutenberg' ) }
@@ -70,7 +69,6 @@ const ContentWidth = () => {
 							}
 						</>
 					)}
-				</div>
             </section>
         </>
     );

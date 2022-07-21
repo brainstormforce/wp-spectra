@@ -45,8 +45,7 @@ const AutoBlockRecovery = () => {
     };
 
     return (
-        <section className='flex border-b border-solid border-slate-200 p-8 justify-between'>
-            <div className='pr-16 w-full'>
+        <section className='block border-b border-solid border-slate-200 p-8 justify-between'>
                 <Button className='pr-16 inline-flex w-10/12 uag-accordion'
                     onClick={ () => setshow( ! show )}
                 >
@@ -60,7 +59,7 @@ const AutoBlockRecovery = () => {
                     checked={ enableAutoBlockRecoveryStatus }
                     onChange={ updateEnableAutoBlockRecoveryStatus }
                     className={ classNames(
-                        enableAutoBlockRecoveryStatus ? 'bg-wpcolor' : 'bg-slate-200',
+                        enableAutoBlockRecoveryStatus ? 'bg-spectra' : 'bg-slate-200',
                         'relative inline-flex flex-shrink-0 h-5 w-[2.4rem] items-center border-2 border-transparent rounded-full cursor-pointer transition-colors ease-in-out duration-200 focus:outline-none'
                     ) }
                     >
@@ -77,7 +76,6 @@ const AutoBlockRecovery = () => {
                         { __( 'Enable this to automatically recover any erroneous blocks that may occur on your web pages. This will save you time spent on clicking all those \"Attempt Block Recovery\" Buttons.', 'ultimate-addons-for-gutenberg' ) }
                     </p>
                 )}
-            </div>
         </section>
     );
 };
