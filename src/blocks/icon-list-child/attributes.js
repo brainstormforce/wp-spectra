@@ -19,9 +19,13 @@ const attributes = {
 		type: 'boolean',
 		default: false,
 	},
+	disableIcon: {
+		type: 'boolean',
+		default: false,
+	},
 	icon: {
 		type: 'string',
-		default: 'fab fa-arrow-circle-right',
+		default: '',
 	},
 	image: {
 		type: 'object',
@@ -88,6 +92,10 @@ const attributes = {
 	disableLink: {
 		type: 'boolean',
 		default: true,
+	},
+	fromParentIcon: {
+		type: 'string',
+		default: '',
 	},
 	// margin
 	childTopMargin : {

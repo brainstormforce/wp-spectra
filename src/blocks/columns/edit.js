@@ -57,7 +57,8 @@ const ColumnsComponent = ( props ) => {
 			backgroundOpacity,
 			align,
 			vAlign,
-			backgroundImageColor
+			backgroundImageColor,
+			backgroundType
 		} = attributes
 
 		if ( 'middle' === vAlign ) {
@@ -92,10 +93,12 @@ const ColumnsComponent = ( props ) => {
 			}
 		}
 
-		if ( 101 !== backgroundOpacity ) {
-			const color = hexToRGBA( maybeGetColorForVariable( backgroundImageColor ), backgroundOpacity );
-			setAttributes( { backgroundImageColor: color } );
-			setAttributes( { backgroundOpacity: 101 } );
+		if ( 'image' === backgroundType ) {
+			if ( 101 !== backgroundOpacity ) {
+				const color = hexToRGBA( maybeGetColorForVariable( backgroundImageColor ), backgroundOpacity );
+				setAttributes( { backgroundImageColor: color } );
+				setAttributes( { backgroundOpacity: 101 } );
+			}
 		}
 		const { borderStyle, borderWidth, borderRadius, borderColor, borderHoverColor } = props.attributes
 		// border migration
@@ -122,7 +125,7 @@ const ColumnsComponent = ( props ) => {
 	}, [] );
 
 	useEffect( () => {
-		
+
 		// Replacement for componentDidUpdate.
 		const blockStyling = styling( props );
 

@@ -23,19 +23,20 @@ const deprecated = [
 				target,
 				disableLink,
 				hideLabel,
+				fromParentIcon
 			} = attributes;
 
 			let imageIconHtml = '';
 
 			if ( image_icon == 'icon' ) {
-				if ( icon ) {
+				if ( icon || fromParentIcon ) {
 					imageIconHtml = (
 						<span className="uagb-icon-list__source-icon">
-							{ renderSVG( icon ) }
+							{ icon ? renderSVG( icon ) : renderSVG( fromParentIcon ) }
 						</span>
 					);
 				}
-			} else if ( image && image.url ) {
+			} else if ( image && image.url && image_icon !== 'none' ) {
 				imageIconHtml = (
 					<img
 						className="uagb-icon-list__source-image"

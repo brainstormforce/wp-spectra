@@ -22,6 +22,7 @@ import renderSVG from '@Controls/renderIcon';
 import UAGTabsControl from '@Components/tabs';
 import {buttonsPresets} from './presets';
 import UAGPresets from '@Components/presets';
+import { decodeEntities } from '@wordpress/html-entities';
 
 const MAX_POSTS_COLUMNS = 8;
 
@@ -294,7 +295,7 @@ const Settings = ( props ) => {
 		Object.keys( taxonomyList ).map( ( item ) => {
 			return taxonomyListOptions.push( {
 				value: taxonomyList[ item ].name,
-				label: taxonomyList[ item ].label,
+				label: decodeEntities( taxonomyList[ item ].label ),
 			} );
 		} );
 	}
@@ -303,7 +304,7 @@ const Settings = ( props ) => {
 		Object.keys( categoriesList ).map( ( item ) => {
 			return categoryListOptions.push( {
 				value: categoriesList[ item ].id,
-				label: categoriesList[ item ].name,
+				label: decodeEntities( categoriesList[ item ].name ),
 			} );
 		} );
 	}
