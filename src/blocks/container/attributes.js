@@ -6,7 +6,7 @@ const attributes = {
 	block_id: {
 		type: 'string',
 	},
-	// Container wrapper tag name.
+	// Container wrapper tag name and link are not required in PHP as it is only used in render and save.
 	htmlTag: {
 		type: 'string',
 		default: 'div',
