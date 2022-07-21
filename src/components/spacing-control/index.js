@@ -84,7 +84,7 @@ const SpacingControl = ( props ) => {
 
 			newValue =
 				event.target.value === ''
-					? ''
+					? 0
 					: Number( event.target.value );
 		}
 
@@ -140,7 +140,7 @@ const SpacingControl = ( props ) => {
 		if ( '' === value && '' !== event ) {
 			newValue =
 				event.target.value === ''
-					? ''
+					? 0
 					: Number( event.target.value );
 		}
 		if ( link.value ) {
@@ -169,7 +169,7 @@ const SpacingControl = ( props ) => {
 		if ( '' === value && '' !== event ) {
 			newValue =
 				event.target.value === ''
-					? ''
+					? 0
 					: Number( event.target.value );
 		}
 		if ( link.value ) {
@@ -198,7 +198,7 @@ const SpacingControl = ( props ) => {
 		if ( '' === value && '' !== event ) {
 			newValue =
 				event.target.value === ''
-					? ''
+					? 0
 					: Number( event.target.value );
 		}
 		if ( link.value ) {
@@ -298,6 +298,7 @@ const SpacingControl = ( props ) => {
 			<span // eslint-disable-line jsx-a11y/click-events-have-key-events, jsx-a11y/no-static-element-interactions
 				className="uagb-spacing-control__link uagb-spacing-control-connected dashicons dashicons-admin-links "
 				onClick={ () => {
+					changedUnLinkedValues( deviceType.toLowerCase() );
 					setAttributes( { [ link.label ]: false } );
 				} }
 			></span>
