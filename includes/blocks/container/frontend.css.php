@@ -113,6 +113,7 @@ $container_css       = array_merge(
 		'margin-bottom'  => UAGB_Helper::get_css_value( $bottom_margin_desktop, $attr['marginType'] ) . ' !important',
 		'margin-left'    => UAGB_Helper::get_css_value( $left_margin_desktop, $attr['marginType'] ),
 		'margin-right'   => UAGB_Helper::get_css_value( $right_margin_desktop, $attr['marginType'] ),
+		'overflow'       => $attr['overflow'],
 	),
 	$border
 );
