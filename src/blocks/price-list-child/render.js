@@ -25,8 +25,6 @@ const Render = ( props ) => {
 	const position = ( parentAttributes ) ? ( ( parentAttributes.imagePosition ) ?  parentAttributes.imagePosition : imagePosition ) : imagePosition; // eslint-disable-line no-nested-ternary
 	const align = ( parentAttributes ) ? ( ( parentAttributes.headingAlign ) ?  parentAttributes.headingAlign : headingAlign ) : headingAlign; // eslint-disable-line no-nested-ternary
 
-	console.log( attributes.columns )
-
 	return (
 		<div
 			className={ classnames(
