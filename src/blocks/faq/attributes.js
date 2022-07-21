@@ -44,6 +44,9 @@ const attributes = {
 	enableSeparator: {
 		type: 'boolean',
 		default: false,
+		UAGCopyPaste: {
+			styleType: 'enable-separator'
+		},
 	},
 	rowsGap: {
 		type: 'number',
