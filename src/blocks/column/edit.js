@@ -25,7 +25,7 @@ const ColumnComponent = ( props ) => {
 
 		const { setAttributes, attributes } = props;
 
-		const { backgroundOpacity, backgroundImageColor } = attributes;
+		const { backgroundOpacity, backgroundImageColor, backgroundType } = attributes;
 
 		// Replacement for componentDidMount.
 
@@ -34,11 +34,12 @@ const ColumnComponent = ( props ) => {
 
 		setAttributes( { classMigrate: true } );
 
-
-		if ( 101 !== backgroundOpacity ) {
-			const color = hexToRGBA( maybeGetColorForVariable( backgroundImageColor ), backgroundOpacity );
-			setAttributes( { backgroundImageColor: color } );
-			setAttributes( { backgroundOpacity: 101 } );
+		if ( 'image' === backgroundType ) {
+			if ( 101 !== backgroundOpacity ) {
+				const color = hexToRGBA( maybeGetColorForVariable( backgroundImageColor ), backgroundOpacity );
+				setAttributes( { backgroundImageColor: color } );
+				setAttributes( { backgroundOpacity: 101 } );
+			}
 		}
 		const { borderStyle, borderWidth, borderRadius, borderColor, borderHoverColor } = props.attributes
 		// border migration
@@ -66,7 +67,7 @@ const ColumnComponent = ( props ) => {
 	}, [] );
 
 	useEffect( () => {
-		
+
 		// Replacement for componentDidUpdate.
 		const blockStyling = styling( props );
 

@@ -27,7 +27,8 @@ const Render = ( props ) => {
 		link,
 		target,
 		disableLink,
-		hideLabel
+		hideLabel,
+		fromParentIcon
 	} = attributes;
 
 	const deviceType = useDeviceType();
@@ -35,10 +36,10 @@ const Render = ( props ) => {
 	let imageIconHtml = '';
 
 	if ( image_icon === 'icon' ) {
-		if ( icon ) {
-			imageIconHtml = renderSVG( icon );
+		if( icon || fromParentIcon ){
+			imageIconHtml = icon ? renderSVG( icon ) : renderSVG( fromParentIcon );
 		}
-	} else if ( image && image.url ) {
+	} else if ( image && image.url && image_icon !== 'none' ) {
 		imageIconHtml = (
 			<img
 				className="uagb-icon-list__source-image"
