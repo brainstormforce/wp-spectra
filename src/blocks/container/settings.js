@@ -616,63 +616,63 @@ const Settings = ( props ) => {
 							{
 								value: 'div',
 								label: __(
-									'div',
+									'<div>',
 									'ultimate-addons-for-gutenberg'
 								),
 							},
 							{
 								value: 'header',
 								label: __(
-									'header',
+									'<header>',
 									'ultimate-addons-for-gutenberg'
 								),
 							},
 							{
 								value: 'footer',
 								label: __(
-									'footer',
+									'<footer>',
 									'ultimate-addons-for-gutenberg'
 								),
 							},
 							{
 								value: 'main',
 								label: __(
-									'main',
+									'<main>',
 									'ultimate-addons-for-gutenberg'
 								),
 							},
 							{
 								value: 'article',
 								label: __(
-									'article',
+									'<article>',
 									'ultimate-addons-for-gutenberg'
 								),
 							},
 							{
 								value: 'section',
 								label: __(
-									'section',
+									'<section>',
 									'ultimate-addons-for-gutenberg'
 								),
 							},
 							{
 								value: 'aside',
 								label: __(
-									'aside',
+									'<aside>',
 									'ultimate-addons-for-gutenberg'
 								),
 							},
 							{
 								value: 'nav',
 								label: __(
-									'nav',
+									'<nav>',
 									'ultimate-addons-for-gutenberg'
 								),
 							},
 							{
 								value: 'a',
 								label: __(
-									'a',
+									'<a>',
 									'ultimate-addons-for-gutenberg'
 								),
 							},

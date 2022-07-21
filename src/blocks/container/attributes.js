@@ -6,6 +6,7 @@ const attributes = {
 	block_id: {
 		type: 'string',
 	},
+	// Container wrapper tag name.
 	htmlTag: {
 		type: 'string',
 		default: 'div',
