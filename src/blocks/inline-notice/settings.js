@@ -187,7 +187,7 @@ const Settings = ( props ) => {
 						},
 						{
 							value: 'simple',
-							label: 'Classic',
+							label: 'Border',
 						},
 					] }
 					showIcons={ false }

@@ -156,6 +156,7 @@ return array_merge(
 		'isBlockRootParent'                 => false,
 		'widthTypeTablet'                   => '%',
 		'widthTypeMobile'                   => '%',
+		'overflow'                          => 'visible',
 	),
 	$border_attribute
 );
