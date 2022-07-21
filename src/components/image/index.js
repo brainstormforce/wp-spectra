@@ -2,6 +2,7 @@ import { __ } from '@wordpress/i18n';
 import { BaseControl } from '@wordpress/components';
 import { MediaUpload } from '@wordpress/block-editor';
 import { select } from '@wordpress/data';
+import UAGB_Block_Icons from '@Controls/block-icons';
 
 
 const UAGImage = ( props ) => {
