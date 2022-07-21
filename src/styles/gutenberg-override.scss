@@ -20,6 +20,16 @@
 	.block-editor-link-control {
 		min-width: auto;
 
+		a {
+			color: $spectra-color-primary;
+
+			&:hover,
+			&:active,
+			&:focus {
+				color: $spectra-color-secondary;
+			}
+		}
+
 		&__tools {
 			padding: $spectra-control-vertical-gap 0 0;
 			border: 0;
@@ -40,6 +50,8 @@
 			right: 0;
 
 			.block-editor-link-control__search-submit {
+				max-height: 24px;
+				padding: 0;
 
 				svg {
 					width: 16px;
@@ -59,7 +71,6 @@
 		&__search-item.is-current {
 			border: 1px solid $spectra-color-border;
 			border-radius: $spectra-control-border-radius;
-
 		}
 
 		&__field input[type="text"] {
