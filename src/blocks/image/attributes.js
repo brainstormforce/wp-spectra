@@ -777,6 +777,9 @@ const attributes = {
 	seperatorShowOn: {
 		type: 'string',
 		default: 'hover',
+		UAGCopyPaste: {
+			styleType: 'seperator-show-on'
+		}
 	},
 	seperatorStyle: {
 		type: 'string',
