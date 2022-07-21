@@ -28,14 +28,15 @@ const UAGBRestaurantMenuChild = ( props ) => {
 	const parentBlockAttributes = select(
 		'core/block-editor'
 	).getBlockAttributes( parentBlock );
-	let columns = ( parentBlockAttributes || null !== parentBlockAttributes ) ? parentBlockAttributes.columns : '';
-	let tcolumns = ( parentBlockAttributes || null !== parentBlockAttributes ) ? parentBlockAttributes.tcolumns : '';
-	let mcolumns = ( parentBlockAttributes || null !== parentBlockAttributes ) ? parentBlockAttributes.mcolumns : '';
 
-	useEffect(()=>{
-		props.setAttributes( { columns: columns, tcolumns: tcolumns, mcolumns:mcolumns } );
-	},[ columns, tcolumns, mcolumns])
-	// console.log(parentBlockAttributes)
+	const columns = ( parentBlockAttributes || null !== parentBlockAttributes ) ? parentBlockAttributes.columns : '';
+	const tcolumns = ( parentBlockAttributes || null !== parentBlockAttributes ) ? parentBlockAttributes.tcolumns : '';
+	const mcolumns = ( parentBlockAttributes || null !== parentBlockAttributes ) ? parentBlockAttributes.mcolumns : '';
+
+	useEffect( () => {
+		props.setAttributes( { columns , tcolumns , mcolumns } );
+	}, [ columns, tcolumns, mcolumns ] )
+
 	return (
 		<>
 			<Suspense fallback={ lazyLoader() }>
