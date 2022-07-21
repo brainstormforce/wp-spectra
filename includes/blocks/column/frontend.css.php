@@ -62,6 +62,7 @@ if ( 'image' === $bg_type ) {
 		);
 	} else {
 		$selectors[' > .uagb-column__overlay']['background-color'] = 'transparent';
+		$selectors[' > .uagb-column__overlay']['opacity']          = ( isset( $attr['backgroundOpacity'] ) && '' !== $attr['backgroundOpacity'] ) ? $attr['backgroundOpacity'] / 100 : '';
 		if ( 'linear' === $attr['gradientOverlayType'] ) {
 
 			$selectors[' > .uagb-column__overlay']['background-image'] = 'linear-gradient(' . $attr['gradientOverlayAngle'] . 'deg, ' . $attr['gradientOverlayColor1'] . ' ' . $attr['gradientOverlayLocation1'] . '%, ' . $attr['gradientOverlayColor2'] . ' ' . $attr['gradientOverlayLocation2'] . '%)';
@@ -73,9 +74,11 @@ if ( 'image' === $bg_type ) {
 } elseif ( 'color' === $bg_type ) {
 	$selectors[' > .uagb-column__overlay'] = array(
 		'background-color' => $attr['backgroundColor'],
+		'opacity'          => ( isset( $attr['backgroundOpacity'] ) && '' !== $attr['backgroundOpacity'] && 101 !== $attr['backgroundOpacity'] ) ? $attr['backgroundOpacity'] / 100 : '',
 	);
 } elseif ( 'gradient' === $bg_type ) {
 	$selectors[' > .uagb-column__overlay']['background-color'] = 'transparent';
+	$selectors[' > .uagb-column__overlay']['opacity']          = ( isset( $attr['backgroundOpacity'] ) && '' !== $attr['backgroundOpacity'] ) ? $attr['backgroundOpacity'] / 100 : '';
 	if ( $attr['gradientValue'] ) {
 		$selectors[' > .uagb-column__overlay']['background-image'] = $attr['gradientValue'];
 	} else {
