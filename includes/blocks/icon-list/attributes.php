@@ -18,7 +18,7 @@ return array(
 		array(
 			'label'                   => __( 'Label #1', 'ultimate-addons-for-gutenberg' ),
 			'image_icon'              => 'icon',
-			'icon'                    => 'fab fa-facebook',
+			'icon'                    => '',
 			'image'                   => '',
 			'icon_color'              => '',
 			'icon_hover_color'        => '',
@@ -107,6 +107,7 @@ return array(
 	'blockMarginUnitTablet'    => 'px',
 	'blockMarginUnitMobile'    => 'px',
 	'blockMarginLink'          => '',
+	'parentIcon'               => 'fab fa-arrow-circle-right',
 	// padding.
 	'blockTopPadding'          => '',
 	'blockRightPadding'        => '',
