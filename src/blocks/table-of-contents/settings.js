@@ -1358,7 +1358,9 @@ const Settings = ( props ) => {
 						{ getTitle() }
 						{ ! disableBullets && getBulletStyle() }
 						{ scrollToTop && getScrollToTop() }
-						{ separatorSettings() }
+						{ 'none' !== separatorStyle &&
+							separatorSettings()
+						}
 					</InspectorTab>
 					<InspectorTab
 						{ ...UAGTabs.advance }
