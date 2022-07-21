@@ -269,10 +269,16 @@
 	}
 
 	.uagb-post__text {
+		color: #ffffff;
 		opacity: 1;
 		position: relative;
 		z-index: 10;
 		overflow: hidden;
+
+		&.uagb-post__title a,
+		a {
+			color: #ffffff;
+		}
 	}
 
 	.uagb-post__inner-wrap {

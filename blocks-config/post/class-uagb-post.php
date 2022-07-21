@@ -459,7 +459,7 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 					),
 					'bgOverlayColor'                => array(
 						'type'    => 'string',
-						'default' => '#ffffff',
+						'default' => '#000000',
 					),
 					'overlayOpacity'                => array(
 						'type'    => 'number',
@@ -593,7 +593,7 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 					// Meta attributes.
 					'metaColor'                     => array(
 						'type'    => 'string',
-						'default' => '#777777',
+						'default' => '',
 					),
 					'highlightedTextColor'          => array(
 						'type'    => 'string',
