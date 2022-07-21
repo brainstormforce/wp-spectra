@@ -1,8 +1,11 @@
 import React, { useState } from 'react';
 import { __ } from '@wordpress/i18n';
 import apiFetch from '@wordpress/api-fetch';
+import { Button } from '@wordpress/components';
 
 const RegenerateAssets = () => {
+
+    const [show, setshow] = useState( false );
 
     const [ regenerateAssetsState, setRegenerateAssetsState ] = useState( false );
 
@@ -28,16 +31,17 @@ const RegenerateAssets = () => {
     };
 
     return (
-        <section className='flex p-8 justify-between'>
-            <div className='pr-16 w-[78%]'>
-                <h3 className="text-lg leading-6 font-medium text-gray-900">
-                    {__( 'Asset Regeneration', 'ultimate-addons-for-gutenberg' )}
-                </h3>
-                <p className="mt-[0.6rem] text-sm ">
-                    { __( 'Facing issues with style, layout, color or another page element? Use this option to regenerate CSS and Javascript assets. It can help with all kinds of asset issues.', 'ultimate-addons-for-gutenberg' ) }
-                </p>
-            </div>
-            <div>
+        <section className='block p-8 justify-between'>
+            <div className='inline-flex w-full'>
+                <Button className='pr-16 inline-flex w-10/12 uag-accordion'
+                    onClick={ () => setshow( ! show )}
+                >
+                    { ! show && ( <svg xmlns="https://www.w3.org/2000/svg" viewBox="0 0 384 512"><path d="M192 384c-8.188 0-16.38-3.125-22.62-9.375l-160-160c-12.5-12.5-12.5-32.75 0-45.25s32.75-12.5 45.25 0L192 306.8l137.4-137.4c12.5-12.5 32.75-12.5 45.25 0s12.5 32.75 0 45.25l-160 160C208.4 380.9 200.2 384 192 384z"></path></svg> )}
+                    { show && ( <svg xmlns="https://www.w3.org/2000/svg" viewBox="0 0 384 512"><path d="M352 352c-8.188 0-16.38-3.125-22.62-9.375L192 205.3l-137.4 137.4c-12.5 12.5-32.75 12.5-45.25 0s-12.5-32.75 0-45.25l160-160c12.5-12.5 32.75-12.5 45.25 0l160 160c12.5 12.5 12.5 32.75 0 45.25C368.4 348.9 360.2 352 352 352z"></path></svg> )}
+                    <h3 className="text-lg leading-6 font-medium text-gray-900">
+                        {__( 'Asset Regeneration', 'ultimate-addons-for-gutenberg' )}
+                    </h3>
+                </Button>
                 <button
                     type="button"
                     className="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-[0.2rem] shadow-sm text-white bg-spectra focus:bg-spectra-hover hover:bg-spectra-hover focus:outline-none"
@@ -56,7 +60,13 @@ const RegenerateAssets = () => {
                         {__( 'Assets Regenerated!', 'ultimate-addons-for-gutenberg' )}
                     </p>
                 }
+                
             </div>
+            { show && (
+                <p className="mt-[0.6rem] text-sm ">
+                    { __( 'Facing issues with style, layout, color or another page element? Use this option to regenerate CSS and Javascript assets. It can help with all kinds of asset issues.', 'ultimate-addons-for-gutenberg' ) }
+                </p>
+            )}
         </section>
     );
 };
