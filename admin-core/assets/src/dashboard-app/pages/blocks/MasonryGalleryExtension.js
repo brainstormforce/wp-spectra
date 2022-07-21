@@ -48,12 +48,12 @@ const MasonryGalleryExtension = () => {
     return (
         <div
         key={'masonry-gallery'}
-        className="relative rounded-[0.2rem] border border-gray-300 bg-white px-6 py-5 shadow-sm flex items-center space-x-3"
+        className="uagb-admin-block__extension relative rounded-[0.2rem] border border-gray-300 bg-white px-6 py-5 shadow-sm flex items-center space-x-3"
         >
             <div className="flex-shrink-0">
                 { UAGB_Block_Icons['masonry-gallery'] }
             </div>
-            <div className="flex-1 min-w-0">
+            <div className="uagb-admin-block__extension-title flex-1 min-w-0">
                 <p className="text-sm font-medium text-gray-900 mb-[0.1875rem]">{__( 'Masonry Gallery', 'ultimate-addons-for-gutenberg' )}</p>
                 <a className="text-sm text-gray-900 focus:text-wpcolor active:text-wpcolor hover:text-wpcolor truncate underline" href='https://ultimategutenberg.com/docs/masonry-image-gallery/' target="_blank"rel="noreferrer">{__( 'Documentation', 'ultimate-addons-for-gutenberg' )}</a>
             </div>
