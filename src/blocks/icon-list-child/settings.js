@@ -304,9 +304,14 @@ const Settings = ( props ) => {
 							value: 'image',
 							label: 'Image',
 						},
+						{
+							value: 'none',
+							label: 'None',
+						},
 					] }
 					showIcons={ false }
 				/>
+
 				{ 'icon' === image_icon && (
 					<>
 						<UAGIconPicker

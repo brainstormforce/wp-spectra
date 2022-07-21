@@ -24,6 +24,7 @@ function inlineStyles( props ) {
 		gradientOverlayLocation2,
 		gradientOverlayAngle,
 		gradientValue,
+		backgroundOpacity
 	} = props.attributes;
 
 	const style = {};
@@ -31,9 +32,11 @@ function inlineStyles( props ) {
 	switch ( backgroundType ) {
 		case 'image':
 			if ( 'color' === overlayType ) {
+				style.opacity = ( typeof backgroundOpacity !== 'undefined' && 101 !== backgroundOpacity ) ? backgroundOpacity/100 : '';
 				style[ 'background-color' ] = backgroundImageColor;
 			} else {
 				style[ 'background-color' ] = 'transparent';
+				style.opacity = ( typeof backgroundOpacity !== 'undefined' && 101 !== backgroundOpacity ) ? backgroundOpacity/100 : '';
 				if ( 'linear' === gradientOverlayType ) {
 					style[
 						'background-image'
@@ -47,6 +50,7 @@ function inlineStyles( props ) {
 			break;
 		case 'gradient':
 			style[ 'background-color' ] = 'transparent';
+			style.opacity = ( typeof backgroundOpacity !== 'undefined' && 101 !== backgroundOpacity ) ? backgroundOpacity/100 : '';
 			if ( gradientValue ) {
 				style[ 'background-image' ] = gradientValue;
 			} else if ( 'linear' === gradientType ) {
@@ -61,6 +65,7 @@ function inlineStyles( props ) {
 			break;
 		case 'color':
 			style[ 'background-color' ] = backgroundColor;
+			style.opacity = ( typeof backgroundOpacity !== 'undefined' && 101 !== backgroundOpacity ) ? backgroundOpacity/100 : '';
 			break;
 	}
 
