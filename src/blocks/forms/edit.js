@@ -1,8 +1,6 @@
 /**
  * BLOCK: Forms - Edit
- */
-
-import React, { useEffect, useCallback, Suspense, lazy } from 'react';
+ */import React, { useEffect, useCallback, Suspense, lazy } from 'react';
 import styling from './styling';
 import UAGB_Block_Icons from '@Controls/block-icons';
 import addBlockEditorDynamicStyles from '@Controls/addBlockEditorDynamicStyles';
@@ -26,6 +24,9 @@ import { withNotices } from '@wordpress/components';
 
 import { __ } from '@wordpress/i18n';
 import lazyLoader from '@Controls/lazy-loader';
+import apiFetch from '@wordpress/api-fetch';
+
+import {migrateBorderAttributes} from '@Controls/generateAttributes';
 
 const UAGBFormsEdit = ( props ) => {
 	const deviceType = useDeviceType();
@@ -47,6 +48,11 @@ const UAGBFormsEdit = ( props ) => {
 			paddingBtnRight,
 			paddingBtnBottom,
 			paddingBtnLeft,
+			reCaptchaSiteKeyV2,
+			reCaptchaSecretKeyV2,
+			reCaptchaSiteKeyV3,
+			reCaptchaSecretKeyV3,
+			reCaptchaEnable
 		} = props.attributes;
 
 		if ( vPaddingSubmit ) {
@@ -85,9 +91,120 @@ const UAGBFormsEdit = ( props ) => {
 		const id = props.clientId;
 
 		window.addEventListener( 'load', renderReadyClasses( id ) );
+
+		if( reCaptchaEnable ) {
+
+			const keys = {};
+			if( '' === uagb_blocks_info.recaptcha_site_key_v2 && '' === uagb_blocks_info.recaptcha_secret_key_v2 && reCaptchaSiteKeyV2 && reCaptchaSecretKeyV2 ) {
+
+				keys.reCaptchaSiteKeyV2 = reCaptchaSiteKeyV2;
+				keys.reCaptchaSecretKeyV2 = reCaptchaSecretKeyV2;
+			}
+			if( '' === uagb_blocks_info.recaptcha_site_key_v3 && '' === uagb_blocks_info.recaptcha_secret_key_v3 && reCaptchaSiteKeyV3 && reCaptchaSecretKeyV3 ) {
+
+				keys.reCaptchaSiteKeyV3 = reCaptchaSiteKeyV3;
+				keys.reCaptchaSecretKeyV3 = reCaptchaSecretKeyV3;
+			}
+
+			const formData = new window.FormData();
+
+			formData.append( 'action', 'uagb_forms_recaptcha' );
+			formData.append( 'nonce', uagb_blocks_info.uagb_ajax_nonce );
+			formData.append( 'value', JSON.stringify( keys ) );
+
+			if ( Object.keys( keys ).length !== 0 ) {
+
+				apiFetch( {
+					url: uagb_blocks_info.ajax_url,
+					method: 'POST',
+					body: formData,
+				} ).then( () => {
+				} );
+			}
+		}
+		const {
+			inputborderStyle,
+			inputborderWidth,
+			inputborderColor,
+			inputborderHColor,
+			inputborderRadius,
+			toggleBorderWidth,
+			toggleBorderRadius,
+			toggleBorderColor,
+			toggleBorderHColor,
+			toggleBorderStyle,
+			submitborderWidth,
+			submitborderRadius,
+			submitborderColor,
+			submitborderHColor,
+			submitborderStyle,
+		} = props.attributes;
+
+		// inputborder
+		if( inputborderWidth || inputborderRadius || inputborderColor || inputborderHColor || inputborderStyle ){
+			const migrationAttributes = migrateBorderAttributes( 'field', {
+				label: 'inputborderWidth',
+				value: inputborderWidth,
+			}, {
+				label: 'inputborderRadius',
+				value: inputborderRadius
+			}, {
+				label: 'inputborderColor',
+				value: inputborderColor
+			}, {
+				label: 'inputborderHColor',
+				value: inputborderHColor
+			},{
+				label: 'inputborderStyle',
+				value: inputborderStyle
+			}
+			);
+			props.setAttributes( migrationAttributes );
+		}
+		if( toggleBorderWidth || toggleBorderRadius || toggleBorderColor || toggleBorderHColor || toggleBorderStyle ){
+			const migrationAttributes = migrateBorderAttributes( 'checkBoxToggle', {
+				label: 'toggleBorderWidth',
+				value: toggleBorderWidth,
+			}, {
+				label: 'toggleBorderRadius',
+				value: toggleBorderRadius
+			}, {
+				label: 'toggleBorderColor',
+				value: toggleBorderColor
+			}, {
+				label: 'toggleBorderHColor',
+				value: toggleBorderHColor
+			},{
+				label: 'toggleBorderStyle',
+				value: toggleBorderStyle
+			}
+			);
+			props.setAttributes( migrationAttributes );
+		}
+		if( submitborderWidth || submitborderRadius || submitborderColor || submitborderHColor || submitborderStyle ){
+			const migrationAttributes = migrateBorderAttributes( 'btn', {
+				label: 'submitborderWidth',
+				value: submitborderWidth,
+			}, {
+				label: 'submitborderRadius',
+				value: submitborderRadius
+			}, {
+				label: 'submitborderColor',
+				value: submitborderColor
+			}, {
+				label: 'submitborderHColor',
+				value: submitborderHColor
+			},{
+				label: 'submitborderStyle',
+				value: submitborderStyle
+			}
+			);
+			props.setAttributes( migrationAttributes );
+		}
 	}, [] );
 
 	useEffect( () => {
+		
 		const blockStyling = styling( props );
 
         addBlockEditorDynamicStyles( 'uagb-style-forms-' + props.clientId.substr( 0, 8 ), blockStyling );

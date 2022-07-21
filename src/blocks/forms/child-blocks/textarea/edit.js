@@ -30,12 +30,16 @@ const UAGBFormsTextareaEdit = ( props ) => {
 		document.head.appendChild( $style );
 	}, [] );
 
+	const previewImageData = `${ uagb_blocks_info.uagb_url }/admin/assets/preview-images/form-textarea.svg`;
+
 	return (
 		<>
-			<Suspense fallback={ lazyLoader() }>
-				<Settings parentProps={ props } />
-				<Render parentProps={ props } />
-			</Suspense>
+			{ props.attributes.isPreview ? <img width='100%' src={ previewImageData } alt=''/> : (
+				<Suspense fallback={ lazyLoader() }>
+					<Settings parentProps={ props } />
+					<Render parentProps={ props } />
+				</Suspense>
+			) }
 		</>
 	);
 };

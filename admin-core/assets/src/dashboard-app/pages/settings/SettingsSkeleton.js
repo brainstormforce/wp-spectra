@@ -3,15 +3,15 @@ import { TextSkeleton, RectSkeleton } from '@Skeleton';
 const SettingsSkeleton = () => {
 
     return (
-        <main className="max-w-[77rem] mx-auto my-[2.43rem] bg-white rounded-[0.2rem] shadow overflow-hidden h-[34rem]">
+        <main className="max-w-[77rem] mx-auto my-[2.43rem] bg-white rounded-[0.2rem] shadow overflow-hidden h-[36rem]">
             <div className="lg:grid lg:grid-cols-12 lg:gap-x-8 h-full">
                 <aside className="py-6 px-2 ml-8 sm:px-6 lg:py-6 lg:px-0 lg:col-span-3 border-r">
                     <nav className="space-y-1">
 					{ Array( 5 )
 					.fill()
-					.map( ( i ) => {
+					.map( ( i, index ) => {
 						return (
-							<RectSkeleton key={i} width="200px" height="45px" />
+							<RectSkeleton key={index} width="200px" height="45px" />
 						);
 					} ) }
                     </nav>

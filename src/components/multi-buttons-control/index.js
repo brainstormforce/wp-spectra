@@ -29,10 +29,12 @@ const MultiButtonsControl = ( props ) => {
 		setAttributes,
 		responsive,
 		onChange,
+		colorVariant = 'primary',
+		layoutVariant = 'full',
 	} = props;
 
 	const { getSelectedBlock } = select( 'core/block-editor' );
-	const selectedBlock = getSelectedBlock().name.replace( 'uagb/', '' ); // eslint-disable-line @wordpress/no-unused-vars-before-return
+	const selectedBlock = getSelectedBlock()?.name.replace( 'uagb/', '' ); // eslint-disable-line @wordpress/no-unused-vars-before-return
 	const [ buttonPrimaryStateDesktop, setbuttonPrimaryStateDesktop ] = useState( true );
 	const [ buttonPrimaryStateTablet, setbuttonPrimaryStateTablet ] = useState( true );
 	const [ buttonPrimaryStateMobile, setbuttonPrimaryStateMobile ] = useState( true );
@@ -159,9 +161,9 @@ const MultiButtonsControl = ( props ) => {
 		);
 		return (
 			<div
-				className={ `components-base-control uagb-multi-buttons-control ${ iconsClass }` }
+				className={ `components-base-control uagb-multi-buttons-control ${ iconsClass } spectra-multi-buttons__color-scheme--${ colorVariant } spectra-multi-buttons__layout--${ layoutVariant }` }
 			>
-				<div className="uagb-control__header uagb-multibuttons-header uagb-size-type-field-tabs">
+				<div className="uagb-control__header uagb-size-type-field-tabs">
 					<ResponsiveToggle
 						label= { label }
 						responsive= { responsive }
@@ -196,11 +198,11 @@ const MultiButtonsControl = ( props ) => {
 	};
 	return (
 		<div
-			className={ `components-base-control uagb-multi-buttons-control ${ iconsClass }` }
+			className={ `components-base-control uagb-multi-buttons-control ${ iconsClass } spectra-multi-buttons__color-scheme--${ colorVariant } spectra-multi-buttons__layout--${ layoutVariant }` }
 		>
-			<span className="uagb-multi-buttons-control__label uag-control-label">
+			<div className="uagb-multi-buttons-control__label uag-control-label">
 				{ label }
-			</span>
+			</div>
 			<ButtonGroup
 				className={ `uagb-multi-button-button-group` }
 				aria-label={ label }

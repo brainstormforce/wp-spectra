@@ -177,7 +177,7 @@
 	}
 
 	h2 {
-		font-size: 2rem;
+		font-size: 1.8rem;
 	}
 
 	h3 {
@@ -196,8 +196,7 @@
 .spectra-content-width-input-wrap {
 
 	> input {
-		border-top-right-radius: 0;
-		border-bottom-right-radius: 0;
+		border-radius: 4px 0 0 4px;
 	}
 
 	> span {
@@ -205,5 +204,41 @@
 		background-color: #fff;
 		color: #2c3338;
 		border-left-width: 0;
+		border-radius: 0 4px 4px 0;
+	}
+}
+
+.spectra-video-container {
+	position: relative;
+	width: 100%;
+	padding-bottom: 56.25%;
+
+	.spectra-video {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		border: 0;
+	}
+}
+
+.spectra-admin {
+
+	&__input-field {
+
+		&:hover {
+			color: #2c3338 !important;
+		}
+
+		&:focus {
+			border-color: $spectra-wpcolor !important;
+			box-shadow: $spectra-wpcolor 0 0 0 1px !important;
+
+			& + .spectra-admin__input-field--end-display {
+				border-color: $spectra-wpcolor !important;
+				box-shadow: $spectra-wpcolor 0 0 0 1px !important;
+			}
+		}
 	}
 }

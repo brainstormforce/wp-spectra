@@ -37,6 +37,7 @@ const Render = ( props ) => {
 		icon,
 		iconPosition,
 		titleTag,
+		showDescription,
 	} = attributes;
 
 	const iconHTML = (
@@ -58,11 +59,6 @@ const Render = ( props ) => {
 				onChange={ ( value ) =>
 					setAttributes( { heading: value } )
 				}
-				allowedFormats={ [
-					'bold',
-					'italic',
-					'strikethrough',
-				] }
 				className="uagb-marketing-btn__title"
 				onRemove={ () => onReplace( [] ) }
 				multiline={ false }
@@ -113,6 +109,7 @@ const Render = ( props ) => {
 							{ iconHTML }
 							</>
 						}
+						{ showDescription && (
 						<RichText
 							placeholder={ __(
 								'Add Button Description…',
@@ -123,11 +120,6 @@ const Render = ( props ) => {
 							onChange={ ( value ) =>
 								setAttributes( { prefix: value } )
 							}
-							allowedFormats={ [
-								'bold',
-								'italic',
-								'strikethrough',
-							] }
 							className="uagb-marketing-btn__prefix"
 							onRemove={ () => onReplace( [] ) }
 							multiline={ false }
@@ -148,6 +140,7 @@ const Render = ( props ) => {
 									: undefined
 							}
 						/>
+						) }
 				</a>
 		</div>
 	);

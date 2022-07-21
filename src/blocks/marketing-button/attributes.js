@@ -1,3 +1,7 @@
+import {getBorderAttributes} from '@Controls/generateAttributes';
+
+const btnBorderAttributes = getBorderAttributes( 'btn' )
+
 const attributes = {
 	block_id: {
 		type: 'string',
@@ -5,6 +9,10 @@ const attributes = {
 	classMigrate: {
 		type: 'boolean',
 		default: false,
+	},
+	showDescription: {
+		type: 'boolean',
+		default: true,
 	},
 	align: {
 		type: 'string',
@@ -35,37 +43,44 @@ const attributes = {
 			styleType: 'main-title-bottom-margin'
 		}
 	},
-
+	titleSpaceTablet: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'main-title-bottom-margin-tablet'
+		}
+	},
+	titleSpaceMobile: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'main-title-bottom-margin-mobile'
+		}
+	},
+	titleSpaceUnit: {
+		type: 'string',
+		default: 'px',
+		UAGCopyPaste: {
+			styleType: 'main-title-bottom-margin'
+		}
+	},
 	// Border
 	borderStyle: {
 		type: 'string',
-		UAGCopyPaste: {
-			styleType: 'btn-border-hover-color'
-		}
+		default: '',
 	},
 	borderWidth: {
 		type: 'number',
-		UAGCopyPaste: {
-			styleType: 'btn-border-width'
-		}
+		default: '',
 	},
 	borderRadius: {
 		type: 'number',
-		UAGCopyPaste: {
-			styleType: 'btn-border-radius'
-		}
+		default: '',
 	},
 	borderColor: {
 		type: 'string',
-		UAGCopyPaste: {
-			styleType: 'btn-border-color'
-		}
+		default: '',
 	},
 	borderHoverColor: {
 		type: 'string',
-		UAGCopyPaste: {
-			styleType: 'btn-border-hover-color'
-		}
 	},
 
 	// Background
@@ -116,12 +131,14 @@ const attributes = {
 	},
 	backgroundType: {
 		type: 'string',
+		default: 'color',
 		UAGCopyPaste: {
 			styleType: 'btn-bg-type'
 		}
 	},
 	backgroundColor: {
 		type: 'string',
+		default: '',
 		UAGCopyPaste: {
 			styleType: 'btn-bg-color'
 		}
@@ -134,14 +151,14 @@ const attributes = {
 	},
 	gradientColor1: {
 		type: 'string',
-		default: '#F2295B',
+		default: '#0170b9',
 		UAGCopyPaste: {
 			styleType: 'btn-gradient-color-1'
 		}
 	},
 	gradientColor2: {
 		type: 'string',
-		default: '#61CE70',
+		default: '#06558a',
 		UAGCopyPaste: {
 			styleType: 'btn-gradient-color-2'
 		}
@@ -190,6 +207,7 @@ const attributes = {
 	//Colors
 	titleColor: {
 		type: 'string',
+		default: '',
 		UAGCopyPaste: {
 			styleType: 'main-title-color'
 		}
@@ -202,27 +220,29 @@ const attributes = {
 	},
 	iconColor: {
 		type: 'string',
-		default: '#fff',
+		default: '',
 		UAGCopyPaste: {
 			styleType: 'icon-color'
 		}
 	},
 	iconHoverColor: {
 		type: 'string',
+		default: '',
 		UAGCopyPaste: {
 			styleType: 'icon-hover-color'
 		}
 	},
 	prefixColor: {
 		type: 'string',
+		default: '',
 		UAGCopyPaste: {
-			styleType: 'prefix-color'
+			styleType: 'desc-color'
 		}
 	},
 	prefixHoverColor: {
 		type: 'string',
 		UAGCopyPaste: {
-			styleType: 'prefix-hover-color'
+			styleType: 'desc-hover-color'
 		}
 	},
 
@@ -254,7 +274,18 @@ const attributes = {
 			styleType: 'btn-icon-space'
 		}
 	},
-
+	iconSpaceTablet: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'btn-icon-space-tablet'
+		}
+	},
+	iconSpaceMobile: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'btn-icon-space-mobile'
+		}
+	},
 	// Typography
 	// Title Font Family
 	titleLoadGoogleFonts: {
@@ -347,54 +378,54 @@ const attributes = {
 		type: 'boolean',
 		default: false,
 		UAGCopyPaste: {
-			styleType: 'prefix-load-google-font'
+			styleType: 'desc-load-google-font'
 		}
 	},
 	prefixFontFamily: {
 		type: 'string',
 		UAGCopyPaste: {
-			styleType: 'prefix-font-family'
+			styleType: 'desc-font-family'
 		},
 		default: 'Default',
 	},
 	prefixFontWeight: {
 		type: 'string',
 		UAGCopyPaste: {
-			styleType: 'prefix-font-weight'
+			styleType: 'desc-font-weight'
 		}
 	},
 	prefixFontStyle: {
 		type: 'string',
 		UAGCopyPaste: {
-			styleType: 'prefix-font-style'
+			styleType: 'desc-font-style'
 		}
 	},
 	// Prefix Font Size
 	prefixFontSize: {
 		type: 'number',
 		UAGCopyPaste: {
-			styleType: 'prefix-font-size'
+			styleType: 'desc-font-size'
 		},
 		default: 14,
 	},
 	prefixFontSizeType: {
 		type: 'string',
 		UAGCopyPaste: {
-			styleType: 'prefix-font-size-unit'
+			styleType: 'desc-font-size-unit'
 		},
 		default: 'px',
 	},
 	prefixFontSizeTablet: {
 		type: 'number',
 		UAGCopyPaste: {
-			styleType: 'prefix-font-size-tablet'
+			styleType: 'desc-font-size-tablet'
 		},
 		default: 14,
 	},
 	prefixFontSizeMobile: {
 		type: 'number',
 		UAGCopyPaste: {
-			styleType: 'prefix-font-size-mobile'
+			styleType: 'desc-font-size-mobile'
 		},
 		default: 14,
 	},
@@ -402,26 +433,27 @@ const attributes = {
 	prefixLineHeightType: {
 		type: 'string',
 		UAGCopyPaste: {
-			styleType: 'prefix-line-height-type'
+			styleType: 'desc-line-height-type'
 		},
 		default: 'em',
 	},
 	prefixLineHeight: {
 		type: 'number',
 		UAGCopyPaste: {
-			styleType: 'prefix-line-height'
-		}
+			styleType: 'desc-line-height'
+		},
+		default: 2,
 	},
 	prefixLineHeightTablet: {
 		type: 'number',
 		UAGCopyPaste: {
-			styleType: 'prefix-line-height-tablet'
+			styleType: 'desc-line-height-tablet'
 		}
 	},
 	prefixLineHeightMobile: {
 		type: 'number',
 		UAGCopyPaste: {
-			styleType: 'prefix-line-height-mobile'
+			styleType: 'desc-line-height-mobile'
 		}
 	},
 	// Icon Font Size
@@ -480,72 +512,84 @@ const attributes = {
 	},
 	paddingBtnTop: {
 		type: 'number',
+		default: '',
 		UAGCopyPaste: {
 			styleType: 'btn-top-padding'
 		}
 	},
 	paddingBtnBottom: {
 		type: 'number',
+		default: '',
 		UAGCopyPaste: {
 			styleType: 'btn-bottom-padding'
 		}
 	},
 	paddingBtnLeft: {
 		type: 'number',
+		default: '',
 		UAGCopyPaste: {
 			styleType: 'btn-left-padding'
 		}
 	},
 	paddingBtnRight: {
 		type: 'number',
+		default: '',
 		UAGCopyPaste: {
 			styleType: 'btn-right-padding'
 		}
 	},
 	paddingBtnTopTablet: {
 		type: 'number',
+		default: '',
 		UAGCopyPaste: {
 			styleType: 'btn-top-padding-tablet'
 		}
 	},
 	paddingBtnRightTablet: {
 		type: 'number',
+		default: '',
 		UAGCopyPaste: {
 			styleType: 'btn-right-padding-tablet'
 		}
 	},
 	paddingBtnBottomTablet: {
 		type: 'number',
+		default: '',
 		UAGCopyPaste: {
 			styleType: 'btn-bottom-padding-tablet'
 		}
 	},
 	paddingBtnLeftTablet: {
 		type: 'number',
+		default: '',
 		UAGCopyPaste: {
 			styleType: 'btn-left-padding-tablet'
 		}
 	},
 	paddingBtnTopMobile: {
 		type: 'number',
+		default: '',
 		UAGCopyPaste: {
 			styleType: 'btn-top-padding-mobile'
 		}
 	},
 	paddingBtnRightMobile: {
 		type: 'number',
+		default: '',
 		UAGCopyPaste: {
 			styleType: 'btn-right-padding-mobile'
 		}
 	},
 	paddingBtnBottomMobile: {
 		type: 'number',
+		default: '',
 		UAGCopyPaste: {
 			styleType: 'btn-bottom-padding-mobile'
 		}
 	},
 	paddingBtnLeftMobile: {
 		type: 'number',
+		default: '',
 		UAGCopyPaste: {
 			styleType: 'btn-left-padding-mobile'
 		}
@@ -565,19 +609,72 @@ const attributes = {
 	prefixTransform: {
 		type: 'string',
 		UAGCopyPaste: {
-			styleType: 'prefix-transform'
+			styleType: 'desc-transform'
 		}
 	},
 	prefixDecoration: {
 		type: 'string',
 		UAGCopyPaste: {
-			styleType: 'prefix-decoration'
+			styleType: 'desc-decoration'
 		}
 	},
 	isPreview: {
 		type: 'boolean',
 		default: false,
-	}
+	},
+	...btnBorderAttributes,
+
+	// letter spacing
+	titleLetterSpacing: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'main-title-letter-spacing'
+		}
+	},
+	titleLetterSpacingTablet: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'main-title-letter-spacing-tablet'
+		}
+	},
+	titleLetterSpacingMobile: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'main-title-letter-spacing-mobile'
+		}
+	},
+	titleLetterSpacingType: {
+		type: 'string',
+		default: 'px',
+		UAGCopyPaste: {
+			styleType: 'main-title-letter-spacing-type'
+		}
+	},
+	prefixLetterSpacing: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'desc-letter-spacing'
+		}
+	},
+	prefixLetterSpacingTablet: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'desc-letter-spacing-tablet'
+		}
+	},
+	prefixLetterSpacingMobile: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'desc-letter-spacing-mobile'
+		}
+	},
+	prefixLetterSpacingType: {
+		type: 'string',
+		default: 'px',
+		UAGCopyPaste: {
+			styleType: 'desc-letter-spacing-type'
+		}
+	},
 };
 
 export default attributes;

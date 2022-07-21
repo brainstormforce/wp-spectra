@@ -74,6 +74,32 @@ const attributes = {
 		type: 'string',
 		default: 'fa fa-window-close',
 	},
+	iconSize: {
+		type: 'number',
+		default: 16,
+		UAGCopyPaste: {
+			styleType: 'btn-size'
+		},
+	},
+	iconSizeTab: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'btn-size-tablet'
+		},
+	},
+	iconSizeMob: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'btn-size-mobile'
+		},
+	},
+	iconSizeUnit: {
+		type: 'string',
+		default: 'px',
+		UAGCopyPaste: {
+			styleType: 'btn-size-unit'
+		},
+	},
 	noticeAlignment: {
 		type: 'string',
 		default: 'left',
@@ -333,24 +359,24 @@ const attributes = {
 	},
 	titlePaddingUnit: {
 		type: 'string',
+		default: 'px',
 		UAGCopyPaste: {
 			styleType: 'main-title-padding-unit'
 		},
-		default: 'px',
 	},
 	mobileTitlePaddingUnit: {
 		type: 'string',
+		default: 'px',
 		UAGCopyPaste: {
 			styleType: 'main-title-padding-unit-mobile'
 		},
-		default: 'px',
 	},
 	tabletTitlePaddingUnit: {
 		type: 'string',
+		default: 'px',
 		UAGCopyPaste: {
 			styleType: 'main-title-padding-unit-tablet'
 		},
-		default: 'px',
 	},
 	titlePaddingLink: {
 		type: 'boolean',
@@ -361,6 +387,20 @@ const attributes = {
 		default: 'modern',
 	},
 	highlightWidth: {
+		type: 'number',
+		default: 10,
+		UAGCopyPaste: {
+			styleType: 'main-title-border-width'
+		},
+	},
+	highlightWidthTablet: {
+		type: 'number',
+		default: 10,
+		UAGCopyPaste: {
+			styleType: 'main-title-border-width'
+		},
+	},
+	highlightWidthMobile: {
 		type: 'number',
 		default: 10,
 		UAGCopyPaste: {
@@ -495,7 +535,58 @@ const attributes = {
 	isPreview: {
 		type: 'boolean',
 		default: false,
-	}
+	},
+	// letter spacing
+	titleLetterSpacing: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'main-title-letter-spacing'
+		}
+	},
+	titleLetterSpacingTablet: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'main-title-letter-spacing-tablet'
+		}
+	},
+	titleLetterSpacingMobile: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'main-title-letter-spacing-mobile'
+		}
+	},
+	titleLetterSpacingType: {
+		type: 'string',
+		default: 'px',
+		UAGCopyPaste: {
+			styleType: 'main-title-letter-spacing-type'
+		}
+	},
+	descLetterSpacing: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'desc-letter-spacing'
+		}
+	},
+	descLetterSpacingTablet: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'desc-letter-spacing-tablet'
+		}
+	},
+	descLetterSpacingMobile: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'desc-letter-spacing-mobile'
+		}
+	},
+	descLetterSpacingType: {
+		type: 'string',
+		default: 'px',
+		UAGCopyPaste: {
+			styleType: 'desc-letter-spacing-type'
+		}
+	},
 };
 
 export default attributes;

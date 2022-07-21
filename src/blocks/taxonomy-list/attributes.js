@@ -1,3 +1,18 @@
+import { getBorderAttributes } from '@Controls/generateAttributes';
+const overallDefaults = {
+	borderStyle: 'solid',
+	borderTopWidth: 1,
+	borderRightWidth: 1,
+	borderBottomWidth: 1,
+	borderLeftWidth: 1,
+	borderTopLeftRadius: 3,
+	borderTopRightRadius: 3,
+	borderBottomLeftRadius: 3,
+	borderBottomRightRadius: 3,
+	borderColor                : '#E0E0E0',
+	borderHoverColor           : '#E0E0E0',
+};
+const overallBorderAttributes = getBorderAttributes( 'overall', overallDefaults );
 const attributes = {   // eslint-disable-line no-unused-vars
 	block_id                   : {
 		type : 'string',
@@ -163,11 +178,39 @@ const attributes = {   // eslint-disable-line no-unused-vars
 		},
 
 	},
+	rowGapTablet                    : {
+		type    : 'number',
+		UAGCopyPaste: {
+			styleType: 'row-gap-tablet'
+		},
+
+	},
+	rowGapMobile                    : {
+		type    : 'number',
+		UAGCopyPaste: {
+			styleType: 'row-gap-mobile'
+		},
+
+	},
 	columnGap                  : {
 		type    : 'number',
 		default : 20,
 		UAGCopyPaste: {
 			styleType: 'column-gap'
+		},
+
+	},
+	columnGapTablet                    : {
+		type    : 'number',
+		UAGCopyPaste: {
+			styleType: 'column-gap-tablet'
+		},
+
+	},
+	columnGapMobile                    : {
+		type    : 'number',
+		UAGCopyPaste: {
+			styleType: 'column-gap-mobile'
 		},
 
 	},
@@ -197,6 +240,18 @@ const attributes = {   // eslint-disable-line no-unused-vars
 		default : 5,
 		UAGCopyPaste: {
 			styleType: 'main-title-bottom-margin'
+		},
+	},
+	titleBottomSpaceMobile           : {
+		type    : 'number',
+		UAGCopyPaste: {
+			styleType: 'main-title-bottom-margin-mobile'
+		},
+	},
+	titleBottomSpaceTablet          : {
+		type    : 'number',
+		UAGCopyPaste: {
+			styleType: 'main-title-bottom-margin-tablet'
 		},
 	},
 	listBottomMargin           : {
@@ -269,42 +324,6 @@ const attributes = {   // eslint-disable-line no-unused-vars
 		},
 	},
 
-	// Grid Border attributes.
-	borderColor                : {
-		type    : 'string',
-		default : '#E0E0E0',
-		UAGCopyPaste: {
-			styleType: 'overall-border-color'
-		},
-	},
-	borderThickness            : {
-		type    : 'number',
-		default : 1,
-		UAGCopyPaste: {
-			styleType: 'overall-border-thickness'
-		},
-	},
-	borderRadius               : {
-		type    : 'number',
-		default : 3,
-		UAGCopyPaste: {
-			styleType: 'overall-border-radius'
-		},
-	},
-	borderStyle                : {
-		type    : 'string',
-		default : 'solid',
-		UAGCopyPaste: {
-			styleType: 'overall-border-style'
-		},
-	},
-	borderHoverColor           : {
-		type    : 'string',
-		default : '#E0E0E0',
-		UAGCopyPaste: {
-			styleType: 'overall-border-hover-color'
-		},
-	},
 	// Typograpghy attributes.
 	titleFontSize              : {
 		type : 'number',
@@ -411,13 +430,13 @@ const attributes = {   // eslint-disable-line no-unused-vars
 		type    : 'string',
 		default : 'Default',
 		UAGCopyPaste: {
-			styleType: 'desc-font-size-family'
+			styleType: 'desc-font-family'
 		},
 	},
 	countFontWeight            : {
 		type : 'string',
 		UAGCopyPaste: {
-			styleType: 'desc-font-size-weight'
+			styleType: 'desc-font-weight'
 		},
 	},
 	countFontStyle             : {
@@ -459,45 +478,45 @@ const attributes = {   // eslint-disable-line no-unused-vars
 	listFontSize               : {
 		type : 'number',
 		UAGCopyPaste: {
-			styleType: 'desc-list-font-size'
+			styleType: 'desc-font-size'
 		},
 	},
 	listFontSizeType           : {
 		type    : 'string',
 		default : 'px',
 		UAGCopyPaste: {
-			styleType: 'desc-list-font-size-type'
+			styleType: 'desc-font-size-type'
 		},
 	},
 	listFontSizeMobile         : {
 		type : 'number',
 		UAGCopyPaste: {
-			styleType: 'desc-list-font-size-mobile'
+			styleType: 'desc-font-size-mobile'
 		},
 	},
 	listFontSizeTablet         : {
 		type : 'number',
 		UAGCopyPaste: {
-			styleType: 'desc-list-font-size-tablet'
+			styleType: 'desc-font-size-tablet'
 		},
 	},
 	listFontFamily             : {
 		type    : 'string',
 		UAGCopyPaste: {
-			styleType: 'desc-list-font-family'
+			styleType: 'desc-font-family'
 		},
 		default : 'Default',
 	},
 	listFontWeight             : {
 		type : 'string',
 		UAGCopyPaste: {
-			styleType: 'desc-list-font-weight'
+			styleType: 'desc-font-weight'
 		},
 	},
 	listFontStyle              : {
 		type : 'string',
 		UAGCopyPaste: {
-			styleType: 'desc-list-font-style'
+			styleType: 'desc-font-style'
 		},
 	},
 	listLineHeightType         : {
@@ -665,6 +684,84 @@ const attributes = {   // eslint-disable-line no-unused-vars
 	isPreview: {
 		type: 'boolean',
 		default: false,
-	}
+	},
+	// letter spacing
+	titleLetterSpacing: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'main-title-letter-spacing'
+		},
+		default:0,
+	},
+	titleLetterSpacingTablet: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'main-title-letter-spacing-tablet'
+		}
+	},
+	titleLetterSpacingMobile: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'main-title-letter-spacing-mobile'
+		}
+	},
+	titleLetterSpacingType: {
+		type: 'string',
+		default: 'px',
+		UAGCopyPaste: {
+			styleType: 'main-title-letter-spacing-type'
+		}
+	},
+	countLetterSpacing: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'desc-letter-spacing'
+		}
+	},
+	countLetterSpacingTablet: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'desc-letter-spacing-tablet'
+		}
+	},
+	countLetterSpacingMobile: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'desc-letter-spacing-mobile'
+		}
+	},
+	countLetterSpacingType: {
+		type: 'string',
+		default: 'px',
+		UAGCopyPaste: {
+			styleType: 'desc-letter-spacing-type'
+		}
+	},
+	listLetterSpacing: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'desc-letter-spacing'
+		}
+	},
+	listLetterSpacingTablet: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'desc-letter-spacing-tablet'
+		}
+	},
+	listLetterSpacingMobile: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'desc-letter-spacing-mobile'
+		}
+	},
+	listLetterSpacingType: {
+		type: 'string',
+		default: 'px',
+		UAGCopyPaste: {
+			styleType: 'desc-letter-spacing-type'
+		}
+	},
+	...overallBorderAttributes
 }
 export default attributes;

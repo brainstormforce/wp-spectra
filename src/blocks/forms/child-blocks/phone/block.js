@@ -21,7 +21,11 @@ registerBlockType( 'uagb/forms-phone', {
 	supports: {
 		anchor: true,
 	},
-	example: {},
+	example: {
+		attributes: {
+			isPreview: true,
+		}
+	},
 	save,
 	deprecated
 } );

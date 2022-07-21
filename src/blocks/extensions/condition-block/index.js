@@ -1,10 +1,8 @@
 import { ToggleControl, SelectControl } from '@wordpress/components';
 import { __ } from '@wordpress/i18n';
-import { createHigherOrderComponent } from '@wordpress/compose';
 import { addFilter } from '@wordpress/hooks';
-import { InspectorControls } from '@wordpress/block-editor';
 import UAGAdvancedPanelBody from '@Components/advanced-panel-body';
-
+import classnames from 'classnames';
 const { enableConditions, enableResponsiveConditions } = uagb_blocks_info;
 
 const UserConditionOptions = ( props ) => {
@@ -160,48 +158,6 @@ const ResponsiveConditionOptions = ( props ) => {
 	);
 };
 
-const AdvancedControlsBlock = createHigherOrderComponent( ( BlockEdit ) => {
-	return ( props ) => {
-		const { isSelected } = props;
-
-		const blockName = props.name;
-
-		const excludeBlocks = uagb_blocks_info.uagb_exclude_blocks_from_extension;
-		const customBlocks = uagb_blocks_info.uagb_enable_extensions_for_blocks;
-		const blockPrefix = blockName.substring( 0, blockName.indexOf( '/' ) + 1 );
-
-		return (
-			<>
-				<BlockEdit {...props} />
-				{isSelected && ! blockName.includes( 'uagb/' ) && ( blockName.includes( 'core/' ) || ( Array.isArray( customBlocks ) && 0 !== customBlocks.length && ( customBlocks.includes( blockName ) || customBlocks.includes( blockPrefix ) ) ) ) && ! excludeBlocks.includes( blockName ) &&
-				<InspectorControls>
-					{ 'enabled' === enableConditions &&
-					<UAGAdvancedPanelBody
-						title={ __( 'Display Conditions', 'ultimate-addons-for-gutenberg' ) }
-						initialOpen={ false }
-						className="block-editor-block-inspector__advanced uagb-extention-tab"
-					>
-						<p className="components-base-control__help">{ __( "Below Spectra settings will only take effect once you are on the live page, and not while you're editing.", 'ultimate-addons-for-gutenberg' ) }</p>
-						{ UserConditionOptions( props ) }
-					</UAGAdvancedPanelBody>
-					}
-					{ 'enabled' === enableResponsiveConditions &&
-					<UAGAdvancedPanelBody
-						title={ __( 'Responsive Conditions', 'ultimate-addons-for-gutenberg' ) }
-						initialOpen={ false }
-						className="block-editor-block-inspector__advanced uagb-extention-tab"
-					>
-						<p className="components-base-control__help">{ __( "Below Spectra settings will only take effect once you are on the live page, and not while you're editing.", 'ultimate-addons-for-gutenberg' ) }</p>
-						{ ResponsiveConditionOptions( props ) }
-					</UAGAdvancedPanelBody>
-					}
-				</InspectorControls>
-				}
-			</>
-		);
-	};
-}, 'AdvancedControlsBlock' );
-
 function ApplyExtraClass( extraProps, blockType, attributes ) {
 	const {
 		UAGHideDesktop,
@@ -210,15 +166,15 @@ function ApplyExtraClass( extraProps, blockType, attributes ) {
 	} = attributes;
 
 		if ( UAGHideDesktop ) {
-			extraProps.className = extraProps.className + ' uag-hide-desktop';
+			extraProps.className = classnames( extraProps.className, 'uag-hide-desktop' );
 		}
 
 		if ( UAGHideTab ) {
-			extraProps.className = extraProps.className + ' uag-hide-tab';
+			extraProps.className = classnames( extraProps.className, 'uag-hide-tab' );
 		}
 
 		if ( UAGHideMob ) {
-			extraProps.className = extraProps.className + ' uag-hide-mob';
+			extraProps.className = classnames( extraProps.className, 'uag-hide-mob' );
 		}
 
 	return extraProps;
@@ -246,7 +202,7 @@ function ApplyExtraClass( extraProps, blockType, attributes ) {
 							'Display Conditions',
 							'ultimate-addons-for-gutenberg'
 						) }
-						initialOpen={ false }
+						initialOpen={ true }
 						className="block-editor-block-inspector__advanced uagb-extention-tab"
 					>
 						{ UserConditionOptions( props ) }
@@ -281,14 +237,10 @@ function ApplyExtraClass( extraProps, blockType, attributes ) {
 			}
 		}
 	);
-	//For Non-UAG Blocks.
-	addFilter(
-		'editor.BlockEdit',
-		'uagb/advanced-display-condition',
-		AdvancedControlsBlock
-	);
+
 	addFilter(
 		'blocks.getSaveContent.extraProps',
 		'uagb/apply-extra-class',
 		ApplyExtraClass
 	);
+

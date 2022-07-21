@@ -1,18 +1,27 @@
 /**
  * External dependencies
  */
-import React from 'react';
+import React, { useLayoutEffect } from 'react';
 import { SelectControl } from '@wordpress/components';
 import { useDeviceType } from '@Controls/getPreviewType';
 import ResponsiveToggle from '../responsive-toggle';
+import styles from './editor.lazy.scss';
 
 const ResponsiveSelectControl = ( props ) => {
+
+	// Add and remove the CSS on the drop and remove of the component.
+	useLayoutEffect( () => {
+		styles.use();
+		return () => {
+			styles.unuse();
+		};
+	}, [] );
+
 	const { label, data, setAttributes, options } = props;
 
 	const responsive = true;
 
 	const deviceType = useDeviceType();
-
 
 	const output = {};
 	output.Desktop = (

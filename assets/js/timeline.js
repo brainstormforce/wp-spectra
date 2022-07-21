@@ -64,11 +64,13 @@ function uagbTimelineInit() {
 
 		const startFlag = timelineStartIcon?.getBoundingClientRect()?.top +  window?.scrollY - ( window?.innerHeight - ( window?.innerHeight / 3 ) );
 
+
 		if ( startFlag <  document?.documentElement?.scrollTop ) {
 			const tscrollPerc = ( ( ( document?.documentElement?.scrollTop - startFlag ) / totalTimelineLineHeight ) * 100 );
 			const percHeight = ( totalTimelineLineHeight / 100 ) * tscrollPerc;
 
 			if ( percHeight < totalTimelineLineHeight + 60 ) {
+
 				lineInner.style.height = percHeight + 'px';
 			}
 		}

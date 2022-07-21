@@ -155,10 +155,10 @@ const ContentTimelineComponent = ( props ) => {
         addBlockEditorDynamicStyles( 'uagb-content-timeline-style-' + props.clientId.substr( 0, 8 ), blockStyling );
 	}, [deviceType] );
 
-    return ( 
+    return (
 		<Suspense fallback = { lazyLoader() }>
-            <Settings parentProps = { props }/> 
-		    <Render parentProps = { props }/> 
+            <Settings parentProps = { props }/>
+		    <Render parentProps = { props }/>
 		</Suspense>
     );
 };

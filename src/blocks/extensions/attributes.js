@@ -37,6 +37,9 @@ function addAttributes( settings ) {
 					type: 'boolean',
 					default: false,
 				},
+				UAGDisplayConditions: {
+					type: 'string',
+				},
 			} );
 		}
 	}

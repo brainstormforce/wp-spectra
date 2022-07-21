@@ -1,3 +1,7 @@
+import { getBorderAttributes } from '@Controls/generateAttributes';
+
+const inputBorderAttributes = getBorderAttributes( 'container' )
+
 const attributes = {
 	block_id: {
 		type: 'string',
@@ -5,12 +9,15 @@ const attributes = {
 	contentWidth: {
 		type: 'string',
 		default: 'alignfull',
+		UAGCopyPaste: {
+			styleType: 'content-width'
+		}
 	},
 	innerContentWidth: {
 		type: 'string',
 		default: 'alignwide',
 		UAGCopyPaste: {
-			styleType: 'content-width'
+			styleType: 'inner-content-width'
 		}
 	},
 	widthDesktop: {
@@ -22,7 +29,6 @@ const attributes = {
 	},
 	widthTablet: {
 		type: 'number',
-		default: 100,
 		UAGCopyPaste: {
 			styleType: 'container-width-tablet'
 		}
@@ -47,11 +53,11 @@ const attributes = {
 	},
 	innerContentCustomWidthTablet: {
 		type: 'number',
-		default: 1200,
+		default: 768
 	},
 	innerContentCustomWidthMobile: {
 		type: 'number',
-		default: 1200,
+		default: 426
 	},
 	innerContentCustomWidthType: {
 		type: 'string',
@@ -62,7 +68,6 @@ const attributes = {
 		UAGCopyPaste: {
 			styleType: 'container-min-height-desktop'
 		},
-		default: 120,
 	},
 	minHeightTablet: {
 		type: 'number',
@@ -94,56 +99,50 @@ const attributes = {
 	},
 	directionTablet: {
 		type: 'string',
-		default: 'column',
 		UAGCopyPaste: {
 			styleType: 'container-direction-tablet'
 		},
 	},
 	directionMobile: {
 		type: 'string',
-		default: 'column',
 		UAGCopyPaste: {
 			styleType: 'container-direction-mobile'
 		},
 	},
 	alignItemsDesktop: {
 		type: 'string',
-		default: 'stretch',
+		default: 'center',
 		UAGCopyPaste: {
 			styleType: 'container-align-items-desktop'
 		},
 	},
 	alignItemsTablet: {
 		type: 'string',
-		default: 'stretch',
 		UAGCopyPaste: {
 			styleType: 'container-align-items-tablet'
 		},
 	},
 	alignItemsMobile: {
 		type: 'string',
-		default: 'stretch',
 		UAGCopyPaste: {
 			styleType: 'container-align-items-mobile'
 		},
 	},
 	justifyContentDesktop: {
 		type: 'string',
-		default: 'flex-start',
+		default: 'center',
 		UAGCopyPaste: {
 			styleType: 'container-justify-content-desktop'
 		},
 	},
 	justifyContentTablet: {
 		type: 'string',
-		default: 'flex-start',
 		UAGCopyPaste: {
 			styleType: 'container-justify-content-tablet'
 		},
 	},
 	justifyContentMobile: {
 		type: 'string',
-		default: 'flex-start',
 		UAGCopyPaste: {
 			styleType: 'container-justify-content-mobile'
 		},
@@ -154,11 +153,10 @@ const attributes = {
 	},
 	wrapTablet: {
 		type: 'string',
-		default: 'nowrap',
 	},
 	wrapMobile: {
 		type: 'string',
-		default: 'nowrap',
+		default: 'wrap',
 	},
 	alignContentDesktop: {
 		type: 'string',
@@ -169,14 +167,12 @@ const attributes = {
 	},
 	alignContentTablet: {
 		type: 'string',
-		default: '',
 		UAGCopyPaste: {
 			styleType: 'container-align-content-tablet'
 		},
 	},
 	alignContentMobile: {
 		type: 'string',
-		default: '',
 		UAGCopyPaste: {
 			styleType: 'container-align-content-mobile'
 		},
@@ -184,42 +180,106 @@ const attributes = {
 
 	backgroundType: {
 		type: 'string',
+		default: 'none',
 		UAGCopyPaste: {
 			styleType: 'container-bg-type'
 		},
 	},
-	backgroundImage: {
+	backgroundImageDesktop: {
 		type: 'object',
 		UAGCopyPaste: {
-			styleType: 'container-bg-image'
+			styleType: 'container-bg-image-desktop'
 		},
 	},
-	backgroundPosition: {
-		type: 'string',
-		default: 'center-center',
+	backgroundImageTablet: {
+		type: 'object',
 		UAGCopyPaste: {
-			styleType: 'container-bg-position'
+			styleType: 'container-bg-image-tablet'
 		},
 	},
-	backgroundSize: {
+	backgroundImageMobile: {
+		type: 'object',
+		UAGCopyPaste: {
+			styleType: 'container-bg-image-mobile'
+		},
+	},
+	backgroundPositionDesktop: {
+		type: 'object',
+		default: {
+			x: 0.5,
+			y: 0.5,
+		},
+		UAGCopyPaste: {
+			styleType: 'container-bg-position-desktop'
+		},
+	},
+	backgroundPositionTablet: {
+		type: 'object',
+		UAGCopyPaste: {
+			styleType: 'container-bg-position-tablet'
+		},
+	},
+	backgroundPositionMobile: {
+		type: 'object',
+		UAGCopyPaste: {
+			styleType: 'container-bg-position-mobile'
+		},
+	},
+	backgroundSizeDesktop: {
 		type: 'string',
 		default: 'cover',
 		UAGCopyPaste: {
-			styleType: 'container-bg-size'
+			styleType: 'container-bg-size-desktop'
 		},
 	},
-	backgroundRepeat: {
+	backgroundSizeTablet: {
+		type: 'string',
+		UAGCopyPaste: {
+			styleType: 'container-bg-size-tablet'
+		},
+	},
+	backgroundSizeMobile: {
+		type: 'string',
+		UAGCopyPaste: {
+			styleType: 'container-bg-size-mobile'
+		},
+	},
+	backgroundRepeatDesktop: {
 		type: 'string',
 		default: 'no-repeat',
 		UAGCopyPaste: {
-			styleType: 'container-bg-repeat'
+			styleType: 'container-bg-repeat-desktop'
 		},
 	},
-	backgroundAttachment: {
+	backgroundRepeatTablet: {
+		type: 'string',
+		UAGCopyPaste: {
+			styleType: 'container-bg-repeat-tablet'
+		},
+	},
+	backgroundRepeatMobile: {
+		type: 'string',
+		UAGCopyPaste: {
+			styleType: 'container-bg-repeat-mobile'
+		},
+	},
+	backgroundAttachmentDesktop: {
 		type: 'string',
 		default: 'scroll',
 		UAGCopyPaste: {
-			styleType: 'container-bg-attachment'
+			styleType: 'container-bg-attachment-desktop'
+		},
+	},
+	backgroundAttachmentTablet: {
+		type: 'string',
+		UAGCopyPaste: {
+			styleType: 'container-bg-attachment-tablet'
+		},
+	},
+	backgroundAttachmentMobile: {
+		type: 'string',
+		UAGCopyPaste: {
+			styleType: 'container-bg-attachment-mobile'
 		},
 	},
 	backgroundColor: {
@@ -239,10 +299,11 @@ const attributes = {
 		UAGCopyPaste: {
 			styleType: 'container-bg-image-color'
 		},
+		default: '#FFFFFF75',
 	},
 	gradientValue: {
 		type: 'string',
-		default: '',
+		default: 'linear-gradient(90deg, rgb(6, 147, 227, 0.5) 0%, rgb(155, 81, 224, 0.5) 100%)',
 		UAGCopyPaste: {
 			styleType: 'container-bg-gradient-value'
 		},
@@ -251,37 +312,22 @@ const attributes = {
 	borderStyle: {
 		type: 'string',
 		default: 'none',
-		UAGCopyPaste: {
-			styleType: 'overall-border-style'
-		},
 	},
 	borderWidth: {
 		type: 'number',
-		default: 1,
-		UAGCopyPaste: {
-			styleType: 'overall-border-width'
-		},
 	},
 	borderRadius: {
 		type: 'number',
-		UAGCopyPaste: {
-			styleType: 'overall-border-radius'
-		},
 	},
 	borderColor: {
 		type: 'string',
-		UAGCopyPaste: {
-			styleType: 'overall-border-color'
-		},
 	},
 	borderHoverColor: {
 		type: 'string',
-		UAGCopyPaste: {
-			styleType: 'overall-border-hover-color'
-		},
 	},
 	boxShadowColor: {
 		type: 'string',
+		default: '#00000070',
 		UAGCopyPaste: {
 			styleType: 'container-box-shadow-color'
 		},
@@ -320,26 +366,70 @@ const attributes = {
 		},
 	},
 
+	boxShadowColorHover: {
+		type: 'string',
+		UAGCopyPaste: {
+			styleType: 'container-box-shadow-color-hover'
+		},
+	},
+	boxShadowHOffsetHover: {
+		type: 'number',
+		default: 0,
+		UAGCopyPaste: {
+			styleType: 'container-box-shadow-hoffset-hover'
+		},
+	},
+	boxShadowVOffsetHover: {
+		type: 'number',
+		default: 0,
+		UAGCopyPaste: {
+			styleType: 'container-box-shadow-voffset-hover'
+		},
+	},
+	boxShadowBlurHover: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'container-box-shadow-blur-hover'
+		},
+	},
+	boxShadowSpreadHover: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'container-box-shadow-spread-hover'
+		},
+	},
+	boxShadowPositionHover: {
+		type: 'string',
+		default: 'outset',
+		UAGCopyPaste: {
+			styleType: 'container-box-shadow-position-hover'
+		},
+	},
+
 	topPaddingDesktop: {
 		type: 'number',
+		default: 20,
 		UAGCopyPaste: {
 			styleType: 'container-top-padding-desktop'
 		},
 	},
 	bottomPaddingDesktop: {
 		type: 'number',
+		default: 20,
 		UAGCopyPaste: {
 			styleType: 'container-bottom-padding-desktop'
 		},
 	},
 	leftPaddingDesktop: {
 		type: 'number',
+		default: 20,
 		UAGCopyPaste: {
 			styleType: 'container-left-padding-desktop'
 		},
 	},
 	rightPaddingDesktop: {
 		type: 'number',
+		default: 20,
 		UAGCopyPaste: {
 			styleType: 'container-right-padding-desktop'
 		},
@@ -397,6 +487,20 @@ const attributes = {
 		default: 'px',
 		UAGCopyPaste: {
 			styleType: 'container-padding-type'
+		},
+	},
+	paddingTypeTablet: {
+		type: 'string',
+		default: 'px',
+		UAGCopyPaste: {
+			styleType: 'container-padding-type-tablet'
+		},
+	},
+	paddingTypeMobile: {
+		type: 'string',
+		default: 'px',
+		UAGCopyPaste: {
+			styleType: 'container-padding-type-mobile'
 		},
 	},
 	paddingLink: {
@@ -483,6 +587,20 @@ const attributes = {
 			styleType: 'container-margin-type'
 		},
 	},
+	marginTypeTablet: {
+		type: 'string',
+		default: 'px',
+		UAGCopyPaste: {
+			styleType: 'container-margin-type-tablet'
+		},
+	},
+	marginTypeMobile: {
+		type: 'string',
+		default: 'px',
+		UAGCopyPaste: {
+			styleType: 'container-margin-type-mobile'
+		},
+	},
 	marginLink: {
 		type: 'boolean',
 		default: true,
@@ -517,6 +635,20 @@ const attributes = {
 			styleType: 'container-row-gap-type'
 		},
 	},
+	rowGapTypeTablet: {
+		type: 'string',
+		default: 'px',
+		UAGCopyPaste: {
+			styleType: 'container-row-gap-type-tablet'
+		},
+	},
+	rowGapTypeMobile: {
+		type: 'string',
+		default: 'px',
+		UAGCopyPaste: {
+			styleType: 'container-row-gap-type-mobile'
+		},
+	},
 	columnGapDesktop: {
 		type: 'number',
 		UAGCopyPaste: {
@@ -541,6 +673,20 @@ const attributes = {
 		default: 'px',
 		UAGCopyPaste: {
 			styleType: 'container-column-gap-type'
+		},
+	},
+	columnGapTypeTablet: {
+		type: 'string',
+		default: 'px',
+		UAGCopyPaste: {
+			styleType: 'container-column-gap-type-tablet'
+		},
+	},
+	columnGapTypeMobile: {
+		type: 'string',
+		default: 'px',
+		UAGCopyPaste: {
+			styleType: 'container-column-gap-type-mobile'
 		},
 	},
 	isPreview: {
@@ -643,6 +789,20 @@ const attributes = {
 			styleType: 'container-bottom-flip'
 		},
 	},
+	topInvert: {
+		type: 'boolean',
+		default: false,
+		UAGCopyPaste: {
+			styleType: 'container-top-invert'
+		},
+	},
+	bottomInvert: {
+		type: 'boolean',
+		default: true,
+		UAGCopyPaste: {
+			styleType: 'container-bottom-invert'
+		},
+	},
 	topContentAboveShape: {
 		type: 'boolean',
 		default: false,
@@ -665,6 +825,130 @@ const attributes = {
 		type: 'boolean',
 		default: false,
 	},
+	backgroundCustomSizeDesktop: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'background-custom-size-desktop'
+		},
+		default: 100,
+	},
+	backgroundCustomSizeTablet: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'background-custom-size-tablet'
+		},
+	},
+	backgroundCustomSizeMobile: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'background-custom-size-mobile'
+		},
+	},
+	backgroundCustomSizeType: {
+		type: 'string',
+		default: '%',
+		UAGCopyPaste: {
+			styleType: 'background-custom-size-type'
+		}
+	},
+	overlayType:{
+		type: 'string',
+		default: 'none',
+		UAGCopyPaste: {
+			styleType: 'background-overlay-type'
+		}
+	},
+	backgroundVideoColor: {
+		type: 'string',
+		UAGCopyPaste: {
+			styleType: 'bg-video-color'
+		},
+		default: '#FFFFFF75',
+	},
+	backgroundVideo: {
+		type: 'object',
+		UAGCopyPaste: {
+			styleType: 'bg-video'
+		},
+	},
+	backgroundVideoOpacity: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'bg-video-opacity'
+		},
+		default: 0.5,
+	},
+	textColor: {
+		type: 'string',
+		UAGCopyPaste: {
+			styleType: 'desc-color'
+		},
+		default: 'inherit',
+	},
+	linkColor: {
+		type: 'string',
+		UAGCopyPaste: {
+			styleType: 'btn-color'
+		},
+	},
+	linkHoverColor: {
+		type: 'string',
+		UAGCopyPaste: {
+			styleType: 'btn-hover-color'
+		},
+	},
+	// responsive code
+	innerContentCustomWidthTypeTablet: {
+		type: 'string',
+		default: 'px',
+	},
+	innerContentCustomWidthTypeMobile: {
+		type: 'string',
+		default: 'px',
+	},
+
+	widthTypeTablet: {
+		type: 'string',
+		default: '%',
+	},
+	widthTypeMobile: {
+		type: 'string',
+		default: '%',
+	},
+	minHeightTypeTablet: {
+		type: 'string',
+		default: 'px',
+	},
+	minHeightTypeMobile: {
+		type: 'string',
+		default: 'px',
+	},
+	// correct formating
+	topHeightType: {
+		type: 'string',
+		default: 'px',
+	},
+	topHeightTypeTablet: {
+		type: 'string',
+		default: 'px',
+	},
+	topHeightTypeMobile: {
+		type: 'string',
+		default: 'px',
+	},
+	bottomHeightType: {
+		type: 'string',
+		default: 'px',
+	},
+	bottomHeightTypeTablet: {
+		type: 'string',
+		default: 'px',
+	},
+	bottomHeightTypeMobile: {
+		type: 'string',
+		default: 'px',
+	},
+	...inputBorderAttributes
 };
 
 export default attributes;

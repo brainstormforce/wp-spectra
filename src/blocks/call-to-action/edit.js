@@ -16,6 +16,7 @@ const Settings = lazy( () =>
 	)
 );
 
+import { migrateBorderAttributes } from '@Controls/generateAttributes';
 const UAGBCallToAction = ( props ) => {
 
 	const deviceType = useDeviceType();
@@ -33,7 +34,27 @@ const UAGBCallToAction = ( props ) => {
 			ctaRightPadding,
 			ctaBottomPadding,
 			ctaLeftPadding,
+			ctaPosition,
+			stack,
+			ctaLeftSpace,
+			overallBlockLeftMargin,
+			textAlign,
+			ctaBorderStyle,
+			ctaBorderWidth,
+			ctaBorderColor,
+			ctaBorderHColor,
+			ctaBorderRadius
 		} = props.attributes;
+
+		if( stack === 'tablet' ) {
+			props.setAttributes( {stack: 'tablet'} );
+		}else if ( stack === 'mobile' ) {
+			props.setAttributes( {stack: 'mobile'} )
+		} else if ( stack === 'none' && ctaPosition === 'right' ) {
+			props.setAttributes( {stack: 'none'} )
+		} else if ( stack === 'none' && 'below-title' === ctaPosition ) {
+			props.setAttributes( { stack: 'desktop' } );
+		}
 
 		if ( ctaBtnVertPadding ) {
 			if ( undefined === ctaTopPadding ) {
@@ -51,9 +72,37 @@ const UAGBCallToAction = ( props ) => {
 				props.setAttributes( { ctaLeftPadding: ctaBtnHrPadding } );
 			}
 		}
+		if ( ctaLeftSpace ) {
+			if ( undefined === overallBlockLeftMargin && 'left' === textAlign && 'right' === ctaPosition ) {
+				props.setAttributes( { overallBlockLeftMargin: ctaLeftSpace } );
+			}
+		}
+
+		// border
+		if( ctaBorderWidth || ctaBorderRadius || ctaBorderColor || ctaBorderHColor || ctaBorderStyle ){
+			const migrationAttributes = migrateBorderAttributes( 'btn', {
+				label: 'ctaBorderWidth',
+				value: ctaBorderWidth,
+			}, {
+				label: 'ctaBorderRadius',
+				value: ctaBorderRadius
+			}, {
+				label: 'ctaBorderColor',
+				value: ctaBorderColor
+			}, {
+				label: 'ctaBorderHColor',
+				value: ctaBorderHColor
+			},{
+				label: 'ctaBorderStyle',
+				value: ctaBorderStyle
+			}
+			);
+			props.setAttributes( migrationAttributes );
+		}
 	}, [] );
 
 	useEffect( () => {
+	
 		// Replacement for componentDidUpdate.
 		const blockStyling = CtaStyle( props );
 

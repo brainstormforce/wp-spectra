@@ -89,11 +89,56 @@ const globalDataReducer = ( state = {}, action ) => {
 				...state,
 				contentWidth: action.payload,
 				};
+		case 'UPDATE_RECAPTCHA_SITE_KEY_V2':
+			return {
+					...state,
+					siteKeyV2: action.payload,
+				};
+		case 'UPDATE_RECAPTCHA_SITE_KEY_V3':
+			return {
+				...state,
+				siteKeyV3: action.payload,
+			};
+		case 'UPDATE_RECAPTCHA_SECRET_KEY_V2':
+			return {
+				...state,
+				secretKeyV2: action.payload,
+			};
+		case 'UPDATE_RECAPTCHA_SECRET_KEY_V3':
+			return {
+				...state,
+				secretKeyV3: action.payload,
+			};
 		case 'UPDATE_SETTINGS_SAVED_NOTIFICATION':
 			return {
 				...state,
 				settingsSavedNotification: action.payload,
+			};
+		case 'UPDATE_ENABLE_COMING_SOON':
+			return {
+				...state,
+				enableComingSoonMode: action.payload,
+			};
+		case 'UPDATE_COMING_SOON_PAGE':
+			return {
+				...state,
+				comingSoonPage: action.payload,
+			};
+		case 'UPDATE_BLOCKS_EDITOR_SPACING':
+			return {
+				...state,
+				blocksEditorSpacing: action.payload,
 				};
+        case 'UPDATE_ENABLE_FONT_AWESOME_5':
+            return {
+                ...state,
+                enableFontAwesome5: action.payload,
+            };
+        case 'UPDATE_ENABLE_AUTO_BLOCK_RECOVERY':
+            return {
+                ...state,
+                enableAutoBlockRecovery: action.payload,
+            };
         default:
             return state;
     }

@@ -4,6 +4,10 @@
 import { __ } from '@wordpress/i18n';
 
 const attributes = {
+	isPreview: {
+		type: 'boolean',
+		default: false,
+	},
 	block_id: {
 		type: 'string',
 	},
@@ -29,6 +33,10 @@ const attributes = {
 				),
 			},
 		],
+	},
+	layout: {
+		type: 'string',
+		default: 'round',
 	},
 };
 export default attributes;

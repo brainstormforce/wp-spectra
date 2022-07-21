@@ -1,4 +1,4 @@
-import React, { Suspense } from 'react';
+import React, { Suspense, useEffect } from 'react';
 import lazyLoader from '@Controls/lazy-loader';
 import InspectorTabs from '@Components/inspector-tabs/InspectorTabs.js';
 import InspectorTab, {
@@ -9,26 +9,28 @@ import { __ } from '@wordpress/i18n';
 
 import {
 	InspectorControls,
-	BlockControls,
-	Inserter
 } from '@wordpress/block-editor';
 import BoxShadowControl from '@Components/box-shadow';
 import SpacingControl from '@Components/spacing-control';
 import Background from '@Components/background';
-import Border from '@Components/border';
+import ResponsiveBorder from '@Components/responsive-border';
 import UAGAdvancedPanelBody from '@Components/advanced-panel-body';
 import MultiButtonsControl from '@Components/multi-buttons-control';
-import { Icon, Toolbar, SelectControl, ToggleControl } from '@wordpress/components';
+import UAGSelectControl from '@Components/select-control';
+import { Icon, ToggleControl } from '@wordpress/components';
 import renderCustomIcon from '@Controls/renderCustomIcon';
 import UAGTabsControl from '@Components/tabs';
 import AdvancedPopColorControl from '@Components/color-control/advanced-pop-color-control';
 import Range from '@Components/range/Range';
+import innerContainerPresets, { boxShadowPresets, boxShadowHoverPresets } from './presets';
+import UAGPresets from '@Components/presets';
 
 const Settings = ( props ) => {
 
 	props = props.parentProps;
 	const { attributes, setAttributes, deviceType } = props;
 	const {
+		block_id,
 		widthDesktop,
 		widthTablet,
 		widthMobile,
@@ -54,25 +56,36 @@ const Settings = ( props ) => {
 		alignContentMobile,
 
 		backgroundType,
-		backgroundImage,
+		backgroundImageDesktop,
+		backgroundImageTablet,
+		backgroundImageMobile,
 		backgroundColor,
-		backgroundPosition,
-		backgroundAttachment,
-		backgroundRepeat,
-		backgroundSize,
+		backgroundPositionDesktop,
+		backgroundPositionTablet,
+		backgroundPositionMobile,
+		backgroundAttachmentDesktop,
+		backgroundAttachmentTablet,
+		backgroundAttachmentMobile,
+		backgroundRepeatDesktop,
+		backgroundRepeatTablet,
+		backgroundRepeatMobile,
+		backgroundSizeDesktop,
+		backgroundSizeTablet,
+		backgroundSizeMobile,
 		backgroundImageColor,
 		gradientValue,
-		borderStyle,
-		borderWidth,
-		borderRadius,
-		borderColor,
-		borderHoverColor,
 		boxShadowColor,
 		boxShadowHOffset,
 		boxShadowVOffset,
 		boxShadowBlur,
 		boxShadowSpread,
 		boxShadowPosition,
+		boxShadowColorHover,
+		boxShadowHOffsetHover,
+		boxShadowVOffsetHover,
+		boxShadowBlurHover,
+		boxShadowSpreadHover,
+		boxShadowPositionHover,
 
 		topPaddingDesktop,
 		bottomPaddingDesktop,
@@ -87,6 +100,8 @@ const Settings = ( props ) => {
 		leftPaddingMobile,
 		rightPaddingMobile,
 		paddingType,
+		paddingTypeTablet,
+		paddingTypeMobile,
 		paddingLink,
 		topMarginDesktop,
 		bottomMarginDesktop,
@@ -101,15 +116,21 @@ const Settings = ( props ) => {
 		leftMarginMobile,
 		rightMarginMobile,
 		marginType,
+		marginTypeTablet,
+		marginTypeMobile,
 		marginLink,
 		rowGapDesktop,
 		rowGapTablet,
 		rowGapMobile,
 		rowGapType,
+		rowGapTypeTablet,
+		rowGapTypeMobile,
 		columnGapDesktop,
 		columnGapTablet,
 		columnGapMobile,
 		columnGapType,
+		columnGapTypeTablet,
+		columnGapTypeMobile,
 		contentWidth,
 		isBlockRootParent,
 		innerContentWidth,
@@ -133,16 +154,55 @@ const Settings = ( props ) => {
 		topFlip,
 		topContentAboveShape,
 		bottomContentAboveShape,
+		backgroundCustomSizeDesktop,
+		backgroundCustomSizeTablet,
+		backgroundCustomSizeMobile,
+		backgroundCustomSizeType,
+		overlayType,
+		backgroundVideoColor,
+		backgroundVideo,
+		topInvert,
+		bottomInvert,
+
+		textColor,
+		linkColor,
+		linkHoverColor,
+
+		// responsive
+		innerContentCustomWidthTypeTablet,
+		innerContentCustomWidthTypeMobile,
+		widthTypeTablet,
+		widthTypeMobile,
+		minHeightTypeTablet,
+		minHeightTypeMobile,
+		topHeightType,
+		topHeightTypeTablet,
+		topHeightTypeMobile,
+		bottomHeightType,
+		bottomHeightTypeTablet,
+		bottomHeightTypeMobile
 	} = attributes;
 
-	let currentDirection = 'row';
+	let currentDirection = directionDesktop;
 
-	if ( attributes[ 'direction' + deviceType ].split( '-' )[0] ) {
+	if ( attributes[ 'direction' + deviceType ] && attributes[ 'direction' + deviceType ].split( '-' )[0] ) {
 
 		currentDirection = attributes[ 'direction' + deviceType ].split( '-' )[0];
 	}
 
 	const currentOppAxisDirection = 'row' === currentDirection ? 'column' : 'row';
+
+	// This useEffect ensures that background size is set to cover, so as to ensure color takes up entire width and height,
+	// in case bg type was set to Image before and given a custom width and height.
+	useEffect( () => {
+		if ( backgroundType === 'color' ) {
+			setAttributes( {
+				backgroundSizeDesktop: 'cover',
+				backgroundSizeTablet: 'cover',
+				backgroundSizeMobile: 'cover',
+			} );
+		}
+	}, [backgroundType] );
 
 	const generalSettings = () => {
 
@@ -314,17 +374,14 @@ const Settings = ( props ) => {
 		const contentWidthOptions = [
 			{
 				value: 'alignfull',
-				tooltip: __( 'Full Width', 'ultimate-addons-for-gutenberg' ),
 				label: __( 'Full Width', 'ultimate-addons-for-gutenberg' ),
 			},
 			{
 				value: 'alignwide',
-				tooltip: __( 'Boxed', 'ultimate-addons-for-gutenberg' ),
 				label: __( 'Boxed', 'ultimate-addons-for-gutenberg' ),
 			},
 			{
 				value: 'default',
-				tooltip: __( 'Custom', 'ultimate-addons-for-gutenberg' ),
 				label: __( 'Custom', 'ultimate-addons-for-gutenberg' ),
 			},
 		];
@@ -332,12 +389,10 @@ const Settings = ( props ) => {
 		const innerContentWidthOptions = [
 			{
 				value: 'alignwide',
-				tooltip: __( 'Boxed', 'ultimate-addons-for-gutenberg' ),
 				label: __( 'Boxed', 'ultimate-addons-for-gutenberg' ),
 			},
 			{
 				value: 'alignfull',
-				tooltip: __( 'Full Width', 'ultimate-addons-for-gutenberg' ),
 				label: __( 'Full Width', 'ultimate-addons-for-gutenberg' ),
 			},
 		];
@@ -350,7 +405,7 @@ const Settings = ( props ) => {
 			<>
 				<UAGAdvancedPanelBody
 					title={ __( 'Size', 'ultimate-addons-for-gutenberg' ) }
-					initialOpen={ true }
+					initialOpen={ false }
 				>
 					{ isBlockRootParent &&
 						<>
@@ -385,22 +440,30 @@ const Settings = ( props ) => {
 												desktop: {
 													value: innerContentCustomWidthDesktop,
 													label: 'innerContentCustomWidthDesktop',
+													unit: {
+														value: innerContentCustomWidthType,
+														label: 'innerContentCustomWidthType',
+													},
 												},
 												tablet: {
 													value: innerContentCustomWidthTablet,
 													label: 'innerContentCustomWidthTablet',
+													unit: {
+														value: innerContentCustomWidthTypeTablet,
+														label: 'innerContentCustomWidthTypeTablet',
+													},
 												},
 												mobile: {
 													value: innerContentCustomWidthMobile,
 													label: 'innerContentCustomWidthMobile',
+													unit: {
+														value: innerContentCustomWidthTypeMobile,
+														label: 'innerContentCustomWidthTypeMobile',
+													},
 												},
 											} }
 											min={ 0 }
-											max={ 1600 }
-											unit={ {
-												value: innerContentCustomWidthType,
-												label: 'innerContentCustomWidthType',
-											} }
+											limitMax={ { 'px': 1600, '%': 100, 'vw': 100 } }
 											units={ [
 												{
 													name: __(
@@ -409,7 +472,19 @@ const Settings = ( props ) => {
 													),
 													unitValue: 'px',
 												},
+												{
+													name: __( '%', 'ultimate-addons-for-gutenberg' ),
+													unitValue: '%',
+												},
+												{
+													name: __( 'VW', 'ultimate-addons-for-gutenberg' ),
+													unitValue: 'vw',
+												},
 											] }
+											unit={ {
+												value: innerContentCustomWidthType,
+												label: 'innerContentCustomWidthType',
+											} }
 											setAttributes={ setAttributes }
 										/>
 									}
@@ -420,27 +495,39 @@ const Settings = ( props ) => {
 					{ ( ( isBlockRootParent && 'default' === contentWidth ) || ( ! isBlockRootParent ) ) &&
 						<>
 							<ResponsiveSlider
-								label={ __( 'Custom Width', 'ultimate	-addons-for-gutenberg' ) }
+								label={ __( 'Custom Width', 'ultimate-addons-for-gutenberg' ) }
 								data={ {
 									desktop: {
 										value: widthDesktop,
 										label: 'widthDesktop',
+										unit: {
+											value: widthType,
+											label: 'widthType',
+										},
 									},
 									tablet: {
 										value: widthTablet,
 										label: 'widthTablet',
+										unit: {
+											value: widthTypeTablet,
+											label: 'widthTypeTablet',
+										},
 									},
 									mobile: {
 										value: widthMobile,
 										label: 'widthMobile',
+										unit: {
+											value: widthTypeMobile,
+											label: 'widthTypeMobile',
+										},
 									},
 								} }
 								min={ 0 }
-								limitMax={ { 'px': 1600, '%': 100 } }
 								unit={ {
 									value: widthType,
 									label: 'widthType',
 								} }
+								limitMax={ { 'px': 1600, '%': 100, 'vw': 100 } }
 								units={ [
 									{
 										name: __(
@@ -463,70 +550,32 @@ const Settings = ( props ) => {
 							/>
 						</>
 					}
-					{ isBlockRootParent && 'default' === contentWidth &&
-						<>
-							<MultiButtonsControl
-								setAttributes={ setAttributes }
-								label={ __( 'Content Width', 'ultimate-addons-for-gutenberg' ) }
-								data={ {
-									value: innerContentWidth,
-									label: 'innerContentWidth',
-								} }
-								options={ innerContentWidthOptions }
-								showIcons={ false }
-								responsive={false}
-							/>
-							{ 'alignwide' === innerContentWidth &&
-								<ResponsiveSlider
-									label={ __( 'Content Box Width', 'ultimate-addons-for-gutenberg' ) }
-									data={ {
-										desktop: {
-											value: innerContentCustomWidthDesktop,
-											label: 'innerContentCustomWidthDesktop',
-										},
-										tablet: {
-											value: innerContentCustomWidthTablet,
-											label: 'innerContentCustomWidthTablet',
-										},
-										mobile: {
-											value: innerContentCustomWidthMobile,
-											label: 'innerContentCustomWidthMobile',
-										},
-									} }
-									min={ 0 }
-									max={ 1600 }
-									unit={ {
-										value: innerContentCustomWidthType,
-										label: 'innerContentCustomWidthType',
-									} }
-									units={ [
-										{
-											name: __(
-												'PX',
-												'ultimate-addons-for-gutenberg'
-											),
-											unitValue: 'px',
-										},
-									] }
-									setAttributes={ setAttributes }
-								/>
-							}
-						</>
-					}
 					<ResponsiveSlider
 						label={ __( 'Minimum Height', 'ultimate-addons-for-gutenberg' ) }
 						data={ {
 							desktop: {
 								value: minHeightDesktop,
 								label: 'minHeightDesktop',
+								unit: {
+									value: minHeightType,
+									label: 'minHeightType',
+								},
 							},
 							tablet: {
 								value: minHeightTablet,
 								label: 'minHeightTablet',
+								unit: {
+									value: minHeightTypeTablet,
+									label: 'minHeightTypeTablet',
+								},
 							},
 							mobile: {
 								value: minHeightMobile,
 								label: 'minHeightMobile',
+								unit: {
+									value: minHeightTypeMobile,
+									label: 'minHeightTypeMobile',
+								},
 							},
 						} }
 						min={ 0 }
@@ -673,7 +722,7 @@ const Settings = ( props ) => {
 		return (
 			<UAGAdvancedPanelBody
 				title={ __( 'Background', 'ultimate-addons-for-gutenberg' ) }
-				initialOpen={ false }
+				initialOpen={ true }
 			>
 				<Background
 					setAttributes={ setAttributes }
@@ -685,26 +734,95 @@ const Settings = ( props ) => {
 						value: backgroundImageColor,
 						label: 'backgroundImageColor',
 					} }
-					backgroundSize={ {
-						value: backgroundSize,
-						label: 'backgroundSize',
-					} }
-					backgroundRepeat={ {
-						value: backgroundRepeat,
-						label: 'backgroundRepeat',
-					} }
-					backgroundAttachment={ {
-						value: backgroundAttachment,
-						label: 'backgroundAttachment',
-					} }
-					backgroundPosition={ {
-						value: backgroundPosition,
-						label: 'backgroundPosition',
-					} }
-					backgroundImage={ {
-						value: backgroundImage,
-						label: 'backgroundImage',
-					} }
+					backgroundSize={{
+						desktop: {
+							value: backgroundSizeDesktop,
+							label: 'backgroundSizeDesktop',
+						},
+						tablet: {
+							value: backgroundSizeTablet,
+							label: 'backgroundSizeTablet',
+						},
+						mobile: {
+							value: backgroundSizeMobile,
+							label: 'backgroundSizeMobile',
+						},
+					}}
+					backgroundCustomSize={{
+						desktop: {
+							value: backgroundCustomSizeDesktop,
+							label: 'backgroundCustomSizeDesktop',
+						},
+						tablet: {
+							value: backgroundCustomSizeTablet,
+							label: 'backgroundCustomSizeTablet',
+						},
+						mobile: {
+							value: backgroundCustomSizeMobile,
+							label: 'backgroundCustomSizeMobile',
+						},
+					}}
+					backgroundCustomSizeType={{
+						value: backgroundCustomSizeType,
+						label: 'backgroundCustomSizeType'
+					}}
+					backgroundRepeat={{
+						desktop: {
+							value: backgroundRepeatDesktop,
+							label: 'backgroundRepeatDesktop',
+						},
+						tablet: {
+							value: backgroundRepeatTablet,
+							label: 'backgroundRepeatTablet',
+						},
+						mobile: {
+							value: backgroundRepeatMobile,
+							label: 'backgroundRepeatMobile',
+						},
+					}}
+					backgroundAttachment={{
+						desktop: {
+							value: backgroundAttachmentDesktop,
+							label: 'backgroundAttachmentDesktop',
+						},
+						tablet: {
+							value: backgroundAttachmentTablet,
+							label: 'backgroundAttachmentTablet',
+						},
+						mobile: {
+							value: backgroundAttachmentMobile,
+							label: 'backgroundAttachmentMobile',
+						},
+					}}
+					backgroundPosition={{
+						desktop: {
+							value: backgroundPositionDesktop,
+							label: 'backgroundPositionDesktop',
+						},
+						tablet: {
+							value: backgroundPositionTablet,
+							label: 'backgroundPositionTablet',
+						},
+						mobile: {
+							value: backgroundPositionMobile,
+							label: 'backgroundPositionMobile',
+						},
+					}}
+					backgroundImage={{
+						desktop: {
+							value: backgroundImageDesktop,
+							label: 'backgroundImageDesktop',
+						},
+						tablet: {
+							value: backgroundImageTablet,
+							label: 'backgroundImageTablet',
+						},
+						mobile: {
+							value: backgroundImageMobile,
+							label: 'backgroundImageMobile',
+						},
+					}}
+					imageResponsive={true}
 					backgroundColor={ {
 						value: backgroundColor,
 						label: 'backgroundColor',
@@ -713,14 +831,103 @@ const Settings = ( props ) => {
 						value: backgroundType,
 						label: 'backgroundType',
 					} }
+					overlayType={{
+						value: overlayType,
+						label: 'overlayType'
+					}}
+					gradientOverlay={{
+						value: true,
+					}}
 					backgroundVideoType={ {
-						value: false,
+						value: true,
 					} }
+					backgroundVideo={ {
+						value: backgroundVideo,
+						label: 'backgroundVideo',
+					} }
+					backgroundVideoColor={ {
+						value: backgroundVideoColor,
+						label: 'backgroundVideoColor',
+					} }
+					onOpacityChange = { ( opacity ) => setAttributes( { backgroundVideoOpacity: opacity } ) }
 					{ ...props }
 				/>
 			</UAGAdvancedPanelBody>
 		);
 	};
+
+	const linkColorMarkup = (
+		<AdvancedPopColorControl
+			label={ __(
+				'Link Color',
+				'ultimate-addons-for-gutenberg'
+			) }
+			colorValue={ linkColor }
+			data={ {
+				value: linkColor,
+				label: 'linkColor',
+			} }
+			setAttributes={ setAttributes }
+		/>
+	);
+
+	const linkHoverColorMarkup = (
+		<AdvancedPopColorControl
+			label={ __(
+				'Link Hover Color',
+				'ultimate-addons-for-gutenberg'
+			) }
+			colorValue={ linkHoverColor }
+			data={ {
+				value: linkHoverColor,
+				label: 'linkHoverColor',
+			} }
+			setAttributes={ setAttributes }
+		/>
+	);
+
+	const colorSettings = () => {
+		return (
+			<UAGAdvancedPanelBody
+				title={ __( 'Color', 'ultimate-addons-for-gutenberg' ) }
+				initialOpen={ false }
+			>
+				<AdvancedPopColorControl
+					label={ __(
+						'Text Color',
+						'ultimate-addons-for-gutenberg'
+					) }
+					colorValue={ textColor }
+					data={ {
+						value: textColor,
+						label: 'textColor',
+					} }
+					setAttributes={ setAttributes }
+				/>
+				<UAGTabsControl
+						tabs={ [
+							{
+								name: 'normal',
+								title: __(
+									'Normal',
+									'ultimate-addons-for-gutenberg'
+								),
+							},
+							{
+								name: 'hover',
+								title: __(
+									'Hover',
+									'ultimate-addons-for-gutenberg'
+								),
+							},
+						] }
+						normal={ linkColorMarkup }
+						hover={ linkHoverColorMarkup }
+						disableBottomSeparator={ true }
+					/>
+			</UAGAdvancedPanelBody>
+		);
+	}
 
 	const borderSettings = () => {
 		return(
@@ -728,37 +935,13 @@ const Settings = ( props ) => {
 				title={ __( 'Border', 'ultimate-addons-for-gutenberg' ) }
 				initialOpen={ false }
 			>
-				<Border
+				<ResponsiveBorder
 					setAttributes={ setAttributes }
-					borderStyle={ {
-						value: borderStyle,
-						label: 'borderStyle',
-						title: __( 'Style', 'ultimate-addons-for-gutenberg' ),
-					} }
-					borderWidth={ {
-						value: borderWidth,
-						label: 'borderWidth',
-						title: __( 'Width', 'ultimate-addons-for-gutenberg' ),
-					} }
-					borderRadius={ {
-						value: borderRadius,
-						label: 'borderRadius',
-						title: __( 'Radius', 'ultimate-addons-for-gutenberg' ),
-					} }
-					borderColor={ {
-						value: borderColor,
-						label: 'borderColor',
-						title: __( 'Color', 'ultimate-addons-for-gutenberg' ),
-					} }
-					borderHoverColor={ {
-						value: borderHoverColor,
-						label: 'borderHoverColor',
-						title: __(
-							'Hover Color',
-							'ultimate-addons-for-gutenberg'
-						),
-					} }
+					prefix={ 'container' }
+					attributes={ attributes }
+					deviceType={ deviceType }
 					disableBottomSeparator={ true }
+					disabledBorderTitle= { true }
 				/>
 			</UAGAdvancedPanelBody>
 		);
@@ -770,51 +953,137 @@ const Settings = ( props ) => {
 				title={ __( 'Box Shadow', 'ultimate-addons-for-gutenberg' ) }
 				initialOpen={ false }
 			>
-				<BoxShadowControl
-					setAttributes={ setAttributes }
-					label={ __(
-						'Box Shadow',
-						'ultimate-addons-for-gutenberg'
-					) }
-					boxShadowColor={ {
-						value: boxShadowColor,
-						label: 'boxShadowColor',
-						title: __( 'Color', 'ultimate-addons-for-gutenberg' ),
-					} }
-					boxShadowHOffset={ {
-						value: boxShadowHOffset,
-						label: 'boxShadowHOffset',
-						title: __(
-							'Horizontal',
-							'ultimate-addons-for-gutenberg'
-						),
-					} }
-					boxShadowVOffset={ {
-						value: boxShadowVOffset,
-						label: 'boxShadowVOffset',
-						title: __(
-							'Vertical',
-							'ultimate-addons-for-gutenberg'
-						),
-					} }
-					boxShadowBlur={ {
-						value: boxShadowBlur,
-						label: 'boxShadowBlur',
-						title: __( 'Blur', 'ultimate-addons-for-gutenberg' ),
-					} }
-					boxShadowSpread={ {
-						value: boxShadowSpread,
-						label: 'boxShadowSpread',
-						title: __( 'Spread', 'ultimate-addons-for-gutenberg' ),
-					} }
-					boxShadowPosition={ {
-						value: boxShadowPosition,
-						label: 'boxShadowPosition',
-						title: __(
-							'Position',
-							'ultimate-addons-for-gutenberg'
-						),
-					} }
+
+				<UAGTabsControl
+					tabs={ [
+						{
+							name: 'normal',
+							title: __(
+								'Normal',
+								'ultimate-addons-for-gutenberg'
+							),
+						},
+						{
+							name: 'hover',
+							title: __(
+								'Hover',
+								'ultimate-addons-for-gutenberg'
+							),
+						},
+					] }
+					normal={
+						<>
+							<UAGPresets
+								setAttributes = { setAttributes }
+								presets = { boxShadowPresets }
+								presetInputType = 'radioImage'
+							/>
+							<BoxShadowControl
+								blockId={ block_id }
+								setAttributes={ setAttributes }
+								label={ __(
+									'Box Shadow',
+									'ultimate-addons-for-gutenberg'
+								) }
+								boxShadowColor={ {
+									value: boxShadowColor,
+									label: 'boxShadowColor',
+									title: __( 'Color', 'ultimate-addons-for-gutenberg' ),
+								} }
+								boxShadowHOffset={ {
+									value: boxShadowHOffset,
+									label: 'boxShadowHOffset',
+									title: __(
+										'Horizontal',
+										'ultimate-addons-for-gutenberg'
+									),
+								} }
+								boxShadowVOffset={ {
+									value: boxShadowVOffset,
+									label: 'boxShadowVOffset',
+									title: __(
+										'Vertical',
+										'ultimate-addons-for-gutenberg'
+									),
+								} }
+								boxShadowBlur={ {
+									value: boxShadowBlur,
+									label: 'boxShadowBlur',
+									title: __( 'Blur', 'ultimate-addons-for-gutenberg' ),
+								} }
+								boxShadowSpread={ {
+									value: boxShadowSpread,
+									label: 'boxShadowSpread',
+									title: __( 'Spread', 'ultimate-addons-for-gutenberg' ),
+								} }
+								boxShadowPosition={ {
+									value: boxShadowPosition,
+									label: 'boxShadowPosition',
+									title: __(
+										'Position',
+										'ultimate-addons-for-gutenberg'
+									),
+								} }
+							/>
+						</>
+					}
+					hover={
+						<>
+							<UAGPresets
+								setAttributes = { setAttributes }
+								presets = { boxShadowHoverPresets }
+								presetInputType = 'radioImage'
+							/>
+							<BoxShadowControl
+								blockId={ block_id }
+								setAttributes={ setAttributes }
+								label={ __(
+									'Box Shadow',
+									'ultimate-addons-for-gutenberg'
+								) }
+								boxShadowColor={ {
+									value: boxShadowColorHover,
+									label: 'boxShadowColorHover',
+									title: __( 'Color', 'ultimate-addons-for-gutenberg' ),
+								} }
+								boxShadowHOffset={ {
+									value: boxShadowHOffsetHover,
+									label: 'boxShadowHOffsetHover',
+									title: __(
+										'Horizontal',
+										'ultimate-addons-for-gutenberg'
+									),
+								} }
+								boxShadowVOffset={ {
+									value: boxShadowVOffsetHover,
+									label: 'boxShadowVOffsetHover',
+									title: __(
+										'Vertical',
+										'ultimate-addons-for-gutenberg'
+									),
+								} }
+								boxShadowBlur={ {
+									value: boxShadowBlurHover,
+									label: 'boxShadowBlurHover',
+									title: __( 'Blur', 'ultimate-addons-for-gutenberg' ),
+								} }
+								boxShadowSpread={ {
+									value: boxShadowSpreadHover,
+									label: 'boxShadowSpreadHover',
+									title: __( 'Spread', 'ultimate-addons-for-gutenberg' ),
+								} }
+								boxShadowPosition={ {
+									value: boxShadowPositionHover,
+									label: 'boxShadowPositionHover',
+									title: __(
+										'Position',
+										'ultimate-addons-for-gutenberg'
+									),
+								} }
+							/>
+						</>
+					}
+					disableBottomSeparator={ true }
 				/>
 			</UAGAdvancedPanelBody>
 		);
@@ -832,22 +1101,30 @@ const Settings = ( props ) => {
 						desktop: {
 							value: rowGapDesktop,
 							label: 'rowGapDesktop',
+							unit:  {
+								value: rowGapType,
+								label: 'rowGapType',
+							}
 						},
 						tablet: {
 							value: rowGapTablet,
 							label: 'rowGapTablet',
+							unit:  {
+								value: rowGapTypeTablet,
+								label: 'rowGapTypeTablet',
+							}
 						},
 						mobile: {
 							value: rowGapMobile,
 							label: 'rowGapMobile',
+							unit: {
+								value: rowGapTypeMobile,
+								label: 'rowGapTypeMobile',
+							},
 						},
 					} }
 					min={ 0 }
 					max={ 200 }
-					unit={ {
-						value: rowGapType,
-						label: 'rowGapType',
-					} }
 					units={ [
 						{
 							name: __(
@@ -873,22 +1150,30 @@ const Settings = ( props ) => {
 						desktop: {
 							value: columnGapDesktop,
 							label: 'columnGapDesktop',
+							unit:  {
+								value: columnGapType,
+								label: 'columnGapType',
+							}
 						},
 						tablet: {
 							value: columnGapTablet,
 							label: 'columnGapTablet',
+							unit:  {
+								value: columnGapTypeTablet,
+								label: 'columnGapTypeTablet',
+							}
 						},
 						mobile: {
 							value: columnGapMobile,
 							label: 'columnGapMobile',
+							unit:  {
+								value: columnGapTypeMobile,
+								label: 'columnGapTypeMobile',
+							}
 						},
 					} }
 					min={ 0 }
 					max={ 200 }
-					unit={ {
-						value: columnGapType,
-						label: 'columnGapType',
-					} }
 					units={ [
 						{
 							name: __(
@@ -964,12 +1249,12 @@ const Settings = ( props ) => {
 						label: 'paddingType',
 					} }
 					mUnit={ {
-						value: paddingType,
-						label: 'paddingType',
+						value: paddingTypeMobile,
+						label: 'paddingTypeMobile',
 					} }
 					tUnit={ {
-						value: paddingType,
-						label: 'paddingType',
+						value: paddingTypeTablet,
+						label: 'paddingTypeTablet',
 					} }
 					attributes={ attributes }
 					setAttributes={ setAttributes }
@@ -1034,12 +1319,12 @@ const Settings = ( props ) => {
 						label: 'marginType',
 					} }
 					mUnit={ {
-						value: marginType,
-						label: 'marginType',
+						value: marginTypeMobile,
+						label: 'marginTypeMobile',
 					} }
 					tUnit={ {
-						value: marginType,
-						label: 'marginType',
+						value: marginTypeTablet,
+						label: 'marginTypeTablet',
 					} }
 					attributes={ attributes }
 					setAttributes={ setAttributes }
@@ -1151,12 +1436,16 @@ const Settings = ( props ) => {
 
 		const topSettings = (
 			<>
-				<SelectControl
-					label={ __( 'Type', 'ultimate-addons-for-gutenberg' ) }
-					value={ topType }
-					onChange={ ( value ) =>
-						setAttributes( { topType: value } )
-					}
+				<UAGSelectControl
+					label={ __(
+						'Type',
+						'ultimate-addons-for-gutenberg'
+					) }
+					data={ {
+						value: topType,
+						label: 'topType',
+					} }
+					setAttributes={ setAttributes }
 					options={ dividers }
 				/>
 				{ topType !== 'none' && (
@@ -1167,9 +1456,11 @@ const Settings = ( props ) => {
 								'ultimate-addons-for-gutenberg'
 							) }
 							colorValue={ topColor }
-							onColorChange={ ( value ) =>
-								setAttributes( { topColor: value } )
-							}
+							data={ {
+								value: topColor,
+								label: 'topColor',
+							} }
+							setAttributes={ setAttributes }
 						/>
 						<Range
 							label={ __(
@@ -1178,9 +1469,10 @@ const Settings = ( props ) => {
 							) }
 							setAttributes={ setAttributes }
 							value={ topWidth }
-							onChange={ ( value ) =>
-								setAttributes( { topWidth: value } )
-							}
+							data={ {
+								value: topWidth,
+								label: 'topWidth',
+							} }
 							min={ 100 }
 							max={ 2000 }
 							displayUnit={ false }
@@ -1194,14 +1486,26 @@ const Settings = ( props ) => {
 								desktop: {
 									value: topHeight,
 									label: 'topHeight',
+									unit:  {
+										value: topHeightType,
+										label: 'topHeightType',
+									}
 								},
 								tablet: {
 									value: topHeightTablet,
 									label: 'topHeightTablet',
+									unit:  {
+										value: topHeightTypeTablet,
+										label: 'topHeightTypeTablet',
+									}
 								},
 								mobile: {
 									value: topHeightMobile,
 									label: 'topHeightMobile',
+									unit:  {
+										value: topHeightTypeMobile,
+										label: 'topHeightTypeMobile',
+									}
 								},
 							} }
 							min={ 0 }
@@ -1217,6 +1521,18 @@ const Settings = ( props ) => {
 							checked={ topFlip }
 							onChange={ () =>
 								setAttributes( { topFlip: ! topFlip } )
+							}
+						/>
+						<ToggleControl
+							label={ __(
+								'Invert',
+								'ultimate-addons-for-gutenberg'
+							) }
+							checked={ topInvert }
+							onChange={ () =>
+								setAttributes( {
+									topInvert: ! topInvert,
+								} )
 							}
 						/>
 						<ToggleControl
@@ -1238,12 +1554,16 @@ const Settings = ( props ) => {
 
 		const bottomSettings = (
 			<>
-				<SelectControl
-					label={ __( 'Type', 'ultimate-addons-for-gutenberg' ) }
-					value={ bottomType }
-					onChange={ ( value ) =>
-						setAttributes( { bottomType: value } )
-					}
+				<UAGSelectControl
+					label={ __(
+						'Type',
+						'ultimate-addons-for-gutenberg'
+					) }
+					data={ {
+						value: bottomType,
+						label: 'bottomType',
+					} }
+					setAttributes={ setAttributes }
 					options={ dividers }
 				/>
 				{ bottomType !== 'none' && (
@@ -1254,9 +1574,11 @@ const Settings = ( props ) => {
 								'ultimate-addons-for-gutenberg'
 							) }
 							colorValue={ bottomColor }
-							onColorChange={ ( value ) =>
-								setAttributes( { bottomColor: value } )
-							}
+							data={ {
+								value: bottomColor,
+								label: 'bottomColor',
+							} }
+							setAttributes={ setAttributes }
 						/>
 						<Range
 							label={ __(
@@ -1265,9 +1587,10 @@ const Settings = ( props ) => {
 							) }
 							setAttributes={ setAttributes }
 							value={ bottomWidth }
-							onChange={ ( value ) =>
-								setAttributes( { bottomWidth: value } )
-							}
+							data={ {
+								value: bottomWidth,
+								label: 'bottomWidth',
+							} }
 							min={ 100 }
 							max={ 2000 }
 							displayUnit={ false }
@@ -1281,14 +1604,26 @@ const Settings = ( props ) => {
 								desktop: {
 									value: bottomHeight,
 									label: 'bottomHeight',
+									unit:  {
+										value: bottomHeightType,
+										label: 'bottomHeightType',
+									}
 								},
 								tablet: {
 									value: bottomHeightTablet,
 									label: 'bottomHeightTablet',
+									unit:  {
+										value: bottomHeightTypeTablet,
+										label: 'bottomHeightTypeTablet',
+									}
 								},
 								mobile: {
 									value: bottomHeightMobile,
 									label: 'bottomHeightMobile',
+									unit:  {
+										value: bottomHeightTypeMobile,
+										label: 'bottomHeightTypeMobile',
+									}
 								},
 							} }
 							min={ 0 }
@@ -1304,6 +1639,18 @@ const Settings = ( props ) => {
 							checked={ bottomFlip }
 							onChange={ () =>
 								setAttributes( { bottomFlip: ! bottomFlip } )
+							}
+						/>
+						<ToggleControl
+							label={ __(
+								'Invert',
+								'ultimate-addons-for-gutenberg'
+							) }
+							checked={ bottomInvert }
+							onChange={ () =>
+								setAttributes( {
+									bottomInvert: ! bottomInvert,
+								} )
 							}
 						/>
 						<ToggleControl
@@ -1350,25 +1697,30 @@ const Settings = ( props ) => {
 		);
 	};
 
+	const presetSettings = () => {
+		return <UAGAdvancedPanelBody
+					title={ __( 'Presets', 'ultimate-addons-for-gutenberg' ) }
+					initialOpen={ true }
+				>
+					<UAGPresets
+						setAttributes = { setAttributes }
+						presets = { innerContainerPresets }
+						presetInputType = 'radioImage'
+					/>
+				</UAGAdvancedPanelBody>
+	};
+
 	return (
 		<Suspense fallback={ lazyLoader() }>
-			<BlockControls>
-				<Toolbar className="uag-container-block-inserter">
-					<Inserter
-						clientId = { props.clientId }
-						rootClientId = { props.clientId }
-						__experimentalIsQuick = {true}
-						position="bottom right"
-					/>
-				</Toolbar>
-			</BlockControls>
 			<InspectorControls>
 				<InspectorTabs>
 					<InspectorTab { ...UAGTabs.general }>
+						{ isBlockRootParent && presetSettings() }
 						{ generalSettings() }
 					</InspectorTab>
 					<InspectorTab { ...UAGTabs.style }>
 						{ backgroundSettings() }
+						{ colorSettings() }
 						{ borderSettings() }
 						{ boxShadowSettings() }
 						{ shapeDividersSettings() }

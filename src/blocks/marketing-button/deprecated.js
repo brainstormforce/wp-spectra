@@ -34,7 +34,14 @@ const attributes = {
 		type: "number",
 		default: 0
 	},
-
+	titleSpaceUnit: {
+		type: 'string',
+		default: 'px',
+	},
+	showDescription: {
+		type: 'boolean',
+		default: true,
+	},
 	// Border
 	borderStyle : {
 		type: "string",

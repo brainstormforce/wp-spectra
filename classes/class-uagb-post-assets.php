@@ -181,7 +181,7 @@ class UAGB_Post_Assets {
 	/**
 	 * Load UAG Fonts Flag.
 	 *
-	 * @since x.x.x
+	 * @since 2.0.0-beta.3
 	 * @var preview
 	 */
 	public $load_uag_fonts = true;
@@ -224,7 +224,7 @@ class UAGB_Post_Assets {
 	 * Generates stylesheet for widget area.
 	 *
 	 * @param object $content Current Post Object.
-	 * @since x.x.x
+	 * @since 2.0.0-beta.3
 	 */
 	public function prepare_widget_area_assets( $content ) {
 
@@ -378,7 +378,7 @@ class UAGB_Post_Assets {
 	/**
 	 * Get saved fonts.
 	 *
-	 * @since x.x.x
+	 * @since 2.0.0-beta.3
 	 *
 	 * @return array
 	 */
@@ -484,6 +484,17 @@ class UAGB_Post_Assets {
 			array(
 				'ajax_url'              => admin_url( 'admin-ajax.php' ),
 				'uagb_forms_ajax_nonce' => $uagb_forms_ajax_nonce,
+				'recaptcha_site_key_v2' => \UAGB_Admin_Helper::get_admin_settings_option( 'uag_recaptcha_site_key_v2', '' ),
+				'recaptcha_site_key_v3' => \UAGB_Admin_Helper::get_admin_settings_option( 'uag_recaptcha_site_key_v3', '' ),
+			)
+		);
+
+		wp_localize_script(
+			'uagb-container-js',
+			'uagb_container_data',
+			array(
+				'tablet_breakpoint' => UAGB_TABLET_BREAKPOINT,
+				'mobile_breakpoint' => UAGB_MOBILE_BREAKPOINT,
 			)
 		);
 	}
@@ -554,7 +565,7 @@ class UAGB_Post_Assets {
 	/**
 	 * Generate google fonts link and font files
 	 *
-	 * @since x.x.x
+	 * @since 2.0.0-beta.3
 	 *
 	 * @return void
 	 */
@@ -863,7 +874,7 @@ class UAGB_Post_Assets {
 	 * Common function to generate stylesheet.
 	 *
 	 * @param array $post_content Current Post Object.
-	 * @since x.x.x
+	 * @since 2.0.0-beta.3
 	 */
 	public function common_function_for_assets_preparation( $post_content ) {
 		$blocks            = $this->parse_blocks( $post_content );

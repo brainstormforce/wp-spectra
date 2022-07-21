@@ -41,9 +41,7 @@ const Render = ( props ) => {
 		formLabel,
 		buttonSize,
 		reCaptchaEnable,
-		reCaptchaType,
-		reCaptchaSecretKeyV2,
-		reCaptchaSiteKeyV2,
+		reCaptchaType
 	} = attributes;
 
 	const onSubmitClick = useCallback( ( e ) => {
@@ -117,20 +115,17 @@ const Render = ( props ) => {
 					</div>
 
 					{ reCaptchaEnable &&
-						'v2' === reCaptchaType &&
-						reCaptchaSiteKeyV2 &&
-						reCaptchaSecretKeyV2 && (
+						'v2' === reCaptchaType && (
 							<>
 								<div
 									className="g-recaptcha uagb-forms-field-set"
-									data-sitekey={ reCaptchaSiteKeyV2 }
-								></div>
-								<div
-									className={ `uagb-form-reacaptcha-error-${ block_id }` }
+									data-sitekey= ''
 								></div>
 							</>
 						) }
-
+						<div
+							className={ `uagb-form-reacaptcha-error-${ block_id }` }
+						></div>
 					<div className="uagb-forms-main-submit-button-wrap wp-block-button">
 						{ renderButtonHtml() }
 					</div>

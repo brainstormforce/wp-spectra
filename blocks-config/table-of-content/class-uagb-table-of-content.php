@@ -429,6 +429,19 @@ if ( ! class_exists( 'UAGB_Table_Of_Content' ) ) {
 				return $value;
 			};
 
+			$desktop_class = '';
+			$tab_class     = '';
+			$mob_class     = '';
+
+			if ( array_key_exists( 'UAGHideDesktop', $attributes ) || array_key_exists( 'UAGHideTab', $attributes ) || array_key_exists( 'UAGHideMob', $attributes ) ) {
+
+				$desktop_class = ( isset( $attributes['UAGHideDesktop'] ) ) ? 'uag-hide-desktop' : '';
+
+				$tab_class = ( isset( $attributes['UAGHideTab'] ) ) ? 'uag-hide-tab' : '';
+
+				$mob_class = ( isset( $attributes['UAGHideMob'] ) ) ? 'uag-hide-mob' : '';
+			}
+
 			$wrap = array(
 				'wp-block-uagb-table-of-contents',
 				'uagb-toc__align-' . $attributes['align'],
@@ -436,14 +449,16 @@ if ( ! class_exists( 'UAGB_Table_Of_Content' ) ) {
 				( ( true === $attributes['initialCollapse'] ) ? 'uagb-toc__collapse' : ' ' ),
 				'uagb-block-' . $attributes['block_id'],
 				( isset( $attributes['className'] ) ) ? $attributes['className'] : '',
+				$desktop_class,
+				$tab_class,
+				$mob_class,
 			);
 
 			ob_start();
 			?>
 				<div class="<?php echo esc_html( implode( ' ', $wrap ) ); ?>"
 					data-scroll= "<?php echo esc_attr( $attributes['smoothScroll'] ); ?>"
-					data-offset= "<?php echo esc_attr( $attributes['smoothScrollOffset'] ); ?>"
-					data-delay= "<?php echo esc_attr( $attributes['smoothScrollDelay'] ); ?>"
+					data-offset= "<?php echo esc_attr( UAGB_Block_Helper::get_fallback_number( $attributes['smoothScrollOffset'], 'smoothScrollOffset', 'table-of-contents' ) ); ?>"
 				>
 				<div class="uagb-toc__wrap">
 						<div class="uagb-toc__title">
@@ -559,10 +574,6 @@ if ( ! class_exists( 'UAGB_Table_Of_Content' ) ) {
 										'type'    => 'boolean',
 										'default' => true,
 									),
-									'smoothScrollDelay'    => array(
-										'type'    => 'number',
-										'default' => 800,
-									),
 									'smoothScrollOffset'   => array(
 										'type'    => 'number',
 										'default' => 30,
@@ -662,6 +673,12 @@ if ( ! class_exists( 'UAGB_Table_Of_Content' ) ) {
 										'default' => 'px',
 									),
 									'headingBottom'        => array(
+										'type' => 'number',
+									),
+									'headingBottomTablet'  => array(
+										'type' => 'number',
+									),
+									'headingBottomMobile'  => array(
 										'type' => 'number',
 									),
 									'paddingTypeDesktop'   => array(

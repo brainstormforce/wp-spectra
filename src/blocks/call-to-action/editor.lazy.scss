@@ -34,9 +34,21 @@
 
 .editor-styles-wrapper {
 
-	.uagb-cta__outer-wrap a.uagb-cta__button-link-wrapper {
+	.uagb-cta__outer-wrap .uagb-cta__buttons {
+		display: inline-flex;
+	}
+
+	.uagb-cta__outer-wrap a.uagb-cta__button-link-wrapper,
+	.uagb-cta__outer-wrap a.uagb-cta-second__button {
 		text-decoration: none;
 		fill: currentColor;
+	}
+
+	// Focus effects for better editing experience.
+	.uagb-cta__title[contenteditable="true"]:focus,
+	.uagb-cta__desc[contenteditable="true"]:focus {
+		border: 2px solid var(--wp-admin-theme-color);
+		border-radius: 8px;
 	}
 
 	.uagb-editor-preview-mode-tablet {
