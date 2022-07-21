@@ -266,14 +266,14 @@ if ( 'none' !== $attr['separatorStyle'] ) {
 	// Since we need the separator to ignore the padding and cover the entire width of the parent container,
 	// we use calc and do the following calculations.
 
-	$calcPaddingLeft  = UAGB_Helper::get_css_value( $attr['leftPadding'], $attr['paddingTypeDesktop'] );
-	$calcPaddingRight = UAGB_Helper::get_css_value( $attr['rightPadding'], $attr['paddingTypeDesktop'] );
+	$calc_padding_left  = UAGB_Helper::get_css_value( $attr['leftPadding'], $attr['paddingTypeDesktop'] );
+	$calc_padding_right = UAGB_Helper::get_css_value( $attr['rightPadding'], $attr['paddingTypeDesktop'] );
 
-	$tCalcPaddingLeft  = UAGB_Helper::get_css_value( $attr['leftPaddingTablet'], $attr['paddingTypeTablet'] );
-	$tCalcPaddingRight = UAGB_Helper::get_css_value( $attr['rightPaddingTablet'], $attr['paddingTypeTablet'] );
+	$t_calc_padding_left  = UAGB_Helper::get_css_value( $attr['leftPaddingTablet'], $attr['paddingTypeTablet'] );
+	$t_calc_padding_right = UAGB_Helper::get_css_value( $attr['rightPaddingTablet'], $attr['paddingTypeTablet'] );
 
-	$mCalcPaddingLeft  = UAGB_Helper::get_css_value( $attr['leftPaddingMobile'], $attr['paddingTypeMobile'] );
-	$mCalcPaddingRight = UAGB_Helper::get_css_value( $attr['rightPaddingMobile'], $attr['paddingTypeMobile'] );
+	$m_calc_padding_left  = UAGB_Helper::get_css_value( $attr['leftPaddingMobile'], $attr['paddingTypeMobile'] );
+	$m_calc_padding_right = UAGB_Helper::get_css_value( $attr['rightPaddingMobile'], $attr['paddingTypeMobile'] );
 
 	$selectors[' .uagb-toc__separator'] = array(
 		'border-top-style' => $attr['separatorStyle'],
@@ -281,8 +281,8 @@ if ( 'none' !== $attr['separatorStyle'] ) {
 			UAGB_Block_Helper::get_fallback_number( $attr['separatorHeight'], 'separatorHeight', $block_name ),
 			$attr['separatorHeightType']
 		),
-		'width'            => 'calc( 100% + ' . $calcPaddingLeft . ' + ' . $calcPaddingRight . ')',
-		'margin-left'      => '-' . $calcPaddingLeft,
+		'width'            => 'calc( 100% + ' . $calc_padding_left . ' + ' . $calc_padding_right . ')',
+		'margin-left'      => '-' . $calc_padding_left,
 		'border-color'     => $attr['separatorColor'],
 		'margin-bottom'    => UAGB_Helper::get_css_value(
 			UAGB_Block_Helper::get_fallback_number( $attr['separatorSpace'], 'separatorSpace', $block_name ),
@@ -295,8 +295,8 @@ if ( 'none' !== $attr['separatorStyle'] ) {
 	);
 
 	$t_selectors[' .uagb-toc__separator'] = array(
-		'width'         => 'calc( 100% + ' . $tCalcPaddingLeft . ' + ' . $tCalcPaddingRight . ')',
-		'margin-left'   => '-' . $tCalcPaddingLeft,
+		'width'         => 'calc( 100% + ' . $t_calc_padding_left . ' + ' . $t_calc_padding_right . ')',
+		'margin-left'   => '-' . $t_calc_padding_left,
 		'margin-bottom' => UAGB_Helper::get_css_value(
 			UAGB_Block_Helper::get_fallback_number( $attr['separatorSpaceTablet'], 'separatorSpaceTablet', $block_name ),
 			$attr['separatorSpaceType']
@@ -304,8 +304,8 @@ if ( 'none' !== $attr['separatorStyle'] ) {
 	);
 
 	$m_selectors[' .uagb-toc__separator'] = array(
-		'width'         => 'calc( 100% + ' . $mCalcPaddingLeft . ' + ' . $mCalcPaddingRight . ')',
-		'margin-left'   => '-' . $mCalcPaddingLeft,
+		'width'         => 'calc( 100% + ' . $m_calc_padding_left . ' + ' . $m_calc_padding_right . ')',
+		'margin-left'   => '-' . $m_calc_padding_left,
 		'margin-bottom' => UAGB_Helper::get_css_value(
 			UAGB_Block_Helper::get_fallback_number( $attr['separatorSpaceMobile'], 'separatorSpaceMobile', $block_name ),
 			$attr['separatorSpaceType']
