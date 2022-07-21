@@ -663,6 +663,27 @@ const Settings = ( props ) => {
 								),
 							},
 							{
+								value: 'figure',
+								label: __(
+									'figure',
+									'ultimate-addons-for-gutenberg'
+								),
+							},
+							{
+								value: 'figcaption',
+								label: __(
+									'figcaption',
+									'ultimate-addons-for-gutenberg'
+								),
+							},
+							{
+								value: 'summary',
+								label: __(
+									'summary',
+									'ultimate-addons-for-gutenberg'
+								),
+							},
+							{
 								value: 'nav',
 								label: __(
 									'nav',
