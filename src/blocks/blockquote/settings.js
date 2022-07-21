@@ -398,7 +398,7 @@ tweetBtnLetterSpacingType,
 				options={ [
 					{
 						value: 'border',
-						label: __( 'Modern', 'ultimate-addons-for-gutenberg' ),
+						label: __( 'Border', 'ultimate-addons-for-gutenberg' ),
 					},
 					{
 						value: 'quotation',
