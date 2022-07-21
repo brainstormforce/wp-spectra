@@ -9,6 +9,7 @@ import { __ } from '@wordpress/i18n';
 import apiFetch from '@wordpress/api-fetch';
 import { useDeviceType } from '@Controls/getPreviewType';
 import addBlockEditorDynamicStyles from '@Controls/addBlockEditorDynamicStyles';
+import { getFallbackNumber } from '@Controls/getAttributeFallback';
 
 const Settings = lazy( () =>
 	import( /* webpackChunkName: "chunks/post-grid/settings" */ './settings' )
@@ -109,10 +110,79 @@ const PostGridComponent = ( props ) => {
 				} );
 			}
 		}
+		const {
+			borderStyle,
+			borderWidth,
+			borderRadius,
+			borderColor,
+			borderHColor,
+			btnBorderTopWidth,
+			btnBorderLeftWidth,
+			btnBorderRightWidth,
+			btnBorderBottomWidth,
+			btnBorderTopLeftRadius,
+			btnBorderTopRightRadius,
+			btnBorderBottomLeftRadius,
+			btnBorderBottomRightRadius,
+			btnBorderColor,
+			btnBorderHColor,
+			btnBorderStyle,
+		} = props.attributes;
 
+		if( borderWidth ){
+			if( undefined === btnBorderTopWidth ) {
+				props.setAttributes( {
+					btnBorderTopWidth: borderWidth,
+				} );
+			}
+			if( undefined === btnBorderLeftWidth ) {
+				props.setAttributes( { btnBorderLeftWidth : borderWidth} );
+			}
+			if( undefined === btnBorderRightWidth ) {
+				props.setAttributes( { btnBorderRightWidth : borderWidth} );
+			}
+			if( undefined === btnBorderBottomWidth ) {
+				props.setAttributes( { btnBorderBottomWidth : borderWidth} );
+			}
+		}
+
+		if( borderRadius ){
+
+			if( undefined === btnBorderTopLeftRadius ) {
+				props.setAttributes( { btnBorderTopLeftRadius : borderRadius} );
+			}
+			if( undefined === btnBorderTopRightRadius ) {
+				props.setAttributes( { btnBorderTopRightRadius : borderRadius} );
+			}
+			if( undefined === btnBorderBottomLeftRadius ) {
+				props.setAttributes( { btnBorderBottomLeftRadius : borderRadius} );
+			}
+			if( undefined === btnBorderBottomRightRadius ) {
+				props.setAttributes( { btnBorderBottomRightRadius : borderRadius} );
+			}
+		}
+
+		if( borderColor ){
+			if( undefined === btnBorderColor ) {
+				props.setAttributes( { btnBorderColor : borderColor} );
+			}
+		}
+
+		if( borderHColor ){
+			if( undefined === btnBorderHColor ) {
+				props.setAttributes( { btnBorderHColor : borderHColor} );
+			}
+		}
+
+		if( borderStyle ){
+			if( undefined === btnBorderStyle ) {
+				props.setAttributes( { btnBorderStyle : borderStyle} );
+			}
+		}
 	}, [] );
 
 	useEffect( () => {
+
 		// Replacement for componentDidUpdate.
 		const blockStyling = styling( props );
 
@@ -188,6 +258,7 @@ const PostGridComponent = ( props ) => {
 export default compose(
 	withSelect( ( select, props ) => {
 		const {
+			blockName,
 			categories,
 			postsToShow,
 			order,
@@ -244,8 +315,8 @@ export default compose(
 		const latestPostsQuery = {
 			order,
 			orderby: orderBy,
-			per_page: postsToShow,
-			offset: postsOffset
+			per_page: getFallbackNumber( postsToShow, 'postsToShow', blockName ),
+			offset: getFallbackNumber( postsOffset, 'postsOffset', blockName ),
 		};
 		if ( excludeCurrentPost ) {
 			latestPostsQuery.exclude = select(

@@ -586,14 +586,12 @@ const attributes = {
 	},
 	verticalPaddingTablet: {
 		type: 'number',
-		default: 0,
 		UAGCopyPaste: {
 			styleType: 'desc-vertical-padding'
 		}
 	},
 	verticalPaddingMobile: {
 		type: 'number',
-		default: 0,
 		UAGCopyPaste: {
 			styleType: 'desc-vertical-padding'
 		}
@@ -949,7 +947,88 @@ const attributes = {
 	isPreview: {
 		type: 'boolean',
 		default: false,
-	}
+	},
+	descLetterSpacing: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'desc-letter-spacing'
+		}
+	},
+	descLetterSpacingTablet: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'desc-letter-spacing-tablet'
+		}
+	},
+	descLetterSpacingMobile: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'desc-letter-spacing-mobile'
+		}
+	},
+	descLetterSpacingType: {
+		type: 'string',
+		default: 'px',
+		UAGCopyPaste: {
+			styleType: 'desc-letter-spacing-type'
+		}
+	},
+	authorLetterSpacing: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'author-letter-spacing'
+		}
+	},
+	authorLetterSpacingTablet: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'author-letter-spacing-tablet'
+		}
+	},
+	authorLetterSpacingMobile: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'author-letter-spacing-mobile'
+		}
+	},
+	authorLetterSpacingType: {
+		type: 'string',
+		default: 'px',
+		UAGCopyPaste: {
+			styleType: 'author-letter-spacing-type'
+		}
+	},
+	tweetBtnLetterSpacing: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'tweetBtn-letter-spacing'
+		}
+	},
+	tweetBtnLetterSpacingTablet: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'tweetBtn-letter-spacing-tablet'
+		}
+	},
+	tweetBtnLetterSpacingMobile: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'tweetBtn-letter-spacing-mobile'
+		}
+	},
+	tweetBtnLetterSpacingType: {
+		type: 'string',
+		default: 'px',
+		UAGCopyPaste: {
+			styleType: 'tweetBtn-letter-spacing-type'
+		}
+	},
+	buttonLetterSpacing: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'button-letter-spacing'
+		}
+	},
 };
 
 export default attributes;

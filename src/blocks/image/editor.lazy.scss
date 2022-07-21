@@ -1,5 +1,15 @@
 .uagb-inspector-tab {
 
+	&.uagb-tab-content-general {
+
+		.uag-advance-panel-body-image {
+
+			.editor-bg-image-control {
+				margin-top: -35px;
+			}
+		}
+	}
+
 	.block-editor-image-size-control .block-editor-image-size-control__row {
 		text-transform: capitalize;
 	}

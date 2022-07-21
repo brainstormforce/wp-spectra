@@ -2,18 +2,25 @@
  * Returns Dynamic Generated CSS
  */
 
+import generateBorderCSS from '@Controls/generateBorderCSS';
 import generateCSS from '@Controls/generateCSS';
 import generateCSSUnit from '@Controls/generateCSSUnit';
-
-
-
+import { getFallbackNumber } from '@Controls/getAttributeFallback';
 
 export default function styling( props ) {
+
+	const blockName = props.name.replace( 'uagb/', '' );
+
 	const {
+		width,
 		widthTablet,
 		widthMobile,
+		height,
 		heightTablet,
 		heightMobile,
+		align,
+		alignTablet,
+		alignMobile,
 		// image
 		imageTopMargin,
 		imageRightMargin,
@@ -93,17 +100,16 @@ export default function styling( props ) {
 		headingMarginUnit,
 		headingMarginUnitTablet,
 		headingMarginUnitMobile,
+		objectFit,
+		objectFitTablet,
+		objectFitMobile,
 		// overlay
 		overlayOpacity,
 		overlayHoverOpacity,
 		overlayPositionFromEdge,
 		overlayPositionFromEdgeUnit,
 		overlayBackground,
-		overlayBorderStyle,
-		overlayBorderWidth,
-		overlayBorderRadius,
-		overlayBorderColor,
-		overlayBorderHoverColor,
+		overlayBorderHColor,
 		// seperator
 		seperatorShowOn,
 		seperatorStyle,
@@ -128,11 +134,7 @@ export default function styling( props ) {
 		seperatorMarginUnitTablet,
 		seperatorMarginUnitMobile,
 		// border
-		imageBorderWidth,
-		imageBorderStyle,
-		imageBorderRadius,
-		imageBorderColor,
-		imageBorderhoverColor,
+		imageBorderHColor,
 		// shadow
 		imageBoxShadowColor,
 		imageBoxShadowHOffset,
@@ -145,11 +147,38 @@ export default function styling( props ) {
 		maskCustomShape,
 		maskSize,
 		maskPosition,
-		maskRepeat
+		maskRepeat,
+		headingLetterSpacing,
+		headingLetterSpacingTablet,
+		headingLetterSpacingMobile,
+		headingLetterSpacingType,
+		captionLetterSpacing,
+		captionLetterSpacingTablet,
+		captionLetterSpacingMobile,
+		captionLetterSpacingType,
 	} = props.attributes;
 
-	const getImageShadowPosition = imageBoxShadowPosition !== 'outset' ? imageBoxShadowPosition : ''
+	const seperatorWidthFallback = getFallbackNumber( seperatorWidth, 'seperatorWidth', blockName );
+	const overlayPositionFromEdgeFallback = getFallbackNumber( overlayPositionFromEdge, 'overlayPositionFromEdge', blockName );
+	const seperatorThicknessFallback = getFallbackNumber( seperatorThickness, 'seperatorThickness', blockName );
 
+	const overlayOpacityFallback = getFallbackNumber( overlayOpacity, 'overlayOpacity', blockName );
+	const overlayHoverOpacityFallback = getFallbackNumber( overlayHoverOpacity, 'overlayHoverOpacity', blockName );
+
+	const overlayBorderCSS = generateBorderCSS( props.attributes, 'overlay' )
+	const overlayBorderCSSTablet = generateBorderCSS( props.attributes, 'overlay', 'tablet' )
+	const overlayBorderCSSMobile = generateBorderCSS( props.attributes, 'overlay', 'mobile' )
+	const imageBorderCSS = generateBorderCSS( props.attributes, 'image' )
+	const imageBorderCSSTablet = generateBorderCSS( props.attributes, 'image', 'tablet' )
+	const imageBorderCSSMobile = generateBorderCSS( props.attributes, 'image', 'mobile' )
+
+	const tabletWidth = '' !== widthTablet ? widthTablet : width;
+	const mobileWidth = '' !== widthMobile ? widthMobile : tabletWidth;
+
+	const tabletHeight = '' !== heightTablet ? heightTablet : height;
+	const mobileHeight = '' !== heightMobile ? heightMobile : tabletHeight;
+
+	const getImageShadowPosition = imageBoxShadowPosition !== 'outset' ? imageBoxShadowPosition : '';
 
 	const selectors = {
 		'.wp-block-uagb-image':{
@@ -169,15 +198,13 @@ export default function styling( props ) {
 				imageLeftMargin,
 				imageMarginUnit
 			),
+			'text-align': align
 		},
 		'.wp-block-uagb-image--layout-default img':{
 			'width': 'inherit',
 			'height': 'inherit',
-			'border-style': imageBorderStyle,
-			'border-color': imageBorderColor,
-			'border-radius': generateCSSUnit( imageBorderRadius, 'px' ),
-			'border-width': generateCSSUnit( imageBorderWidth, 'px' ),
 			'box-shadow': generateCSSUnit( imageBoxShadowHOffset, 'px' ) + ' ' + generateCSSUnit( imageBoxShadowVOffset, 'px' ) +	' ' + generateCSSUnit( imageBoxShadowBlur, 'px' ) + ' ' +	generateCSSUnit( imageBoxShadowSpread, 'px' ) + ' ' + imageBoxShadowColor + ' ' + getImageShadowPosition,
+			...imageBorderCSS
 		},
 		'.wp-block-uagb-image--layout-overlay img':{
 			'width': 'inherit',
@@ -185,7 +212,7 @@ export default function styling( props ) {
 			'box-shadow': generateCSSUnit( imageBoxShadowHOffset, 'px' ) + ' ' + generateCSSUnit( imageBoxShadowVOffset, 'px' ) +	' ' + generateCSSUnit( imageBoxShadowBlur, 'px' ) + ' ' +	generateCSSUnit( imageBoxShadowSpread, 'px' ) + ' ' + imageBoxShadowColor + ' ' + getImageShadowPosition,
 		},
 		'.wp-block-uagb-image .wp-block-uagb-image__figure img:hover':{
-			'border-color': imageBorderhoverColor
+			'border-color': imageBorderHColor
 		},
 		'.wp-block-uagb-image .wp-block-uagb-image__figure figcaption': {
 			'font-family': captionFontFamily,
@@ -201,6 +228,7 @@ export default function styling( props ) {
 				captionLineHeight,
 				captionLineHeightType
 			),
+			'letter-spacing': generateCSSUnit( captionLetterSpacing, captionLetterSpacingType ),
 			'color': captionColor,
 			'margin-top': generateCSSUnit(
 				captionTopMargin,
@@ -226,17 +254,14 @@ export default function styling( props ) {
 		// overlay
 		'.wp-block-uagb-image--layout-overlay .wp-block-uagb-image--layout-overlay__color-wrapper': {
 			'background': overlayBackground,
-			'opacity': overlayOpacity,
+			'opacity': overlayOpacityFallback,
 		},
 		'.wp-block-uagb-image--layout-overlay .wp-block-uagb-image--layout-overlay__inner': {
-			'border-style': overlayBorderStyle,
-			'border-color': overlayBorderColor,
-			'border-radius': generateCSSUnit( overlayBorderRadius, 'px' ),
-			'border-width': generateCSSUnit( overlayBorderWidth, 'px' ),
-			'left': generateCSSUnit( overlayPositionFromEdge, overlayPositionFromEdgeUnit ),
-			'right': generateCSSUnit( overlayPositionFromEdge, overlayPositionFromEdgeUnit ),
-			'top': generateCSSUnit( overlayPositionFromEdge, overlayPositionFromEdgeUnit ),
-			'bottom': generateCSSUnit( overlayPositionFromEdge, overlayPositionFromEdgeUnit ),
+			'left': generateCSSUnit( overlayPositionFromEdgeFallback, overlayPositionFromEdgeUnit ),
+			'right': generateCSSUnit( overlayPositionFromEdgeFallback, overlayPositionFromEdgeUnit ),
+			'top': generateCSSUnit( overlayPositionFromEdgeFallback, overlayPositionFromEdgeUnit ),
+			'bottom': generateCSSUnit( overlayPositionFromEdgeFallback, overlayPositionFromEdgeUnit ),
+			...overlayBorderCSS
 		},
 		'.wp-block-uagb-image--layout-overlay .wp-block-uagb-image--layout-overlay__inner .uagb-image-heading': {
 			'font-family': headingFontFamily,
@@ -252,6 +277,7 @@ export default function styling( props ) {
 				headingLineHeight,
 				headingLineHeightType
 			),
+			'letter-spacing': generateCSSUnit( headingLetterSpacing, headingLetterSpacingType ),
 			'color': headingColor,
 			'margin-top': generateCSSUnit(
 				headingTopMargin,
@@ -278,16 +304,16 @@ export default function styling( props ) {
 			'opacity': captionShowOn === 'always' ? 1 : 0
 		},
 		'.wp-block-uagb-image--layout-overlay .wp-block-uagb-image__figure:hover .wp-block-uagb-image--layout-overlay__inner': {
-			'border-color': overlayBorderHoverColor,
+			'border-color': overlayBorderHColor,
 		},
 		'.wp-block-uagb-image--layout-overlay .wp-block-uagb-image__figure:hover .wp-block-uagb-image--layout-overlay__color-wrapper': {
-			'opacity': overlayHoverOpacity,
+			'opacity': overlayHoverOpacityFallback,
 		},
 		// Seperator
 		'.wp-block-uagb-image .wp-block-uagb-image--layout-overlay__inner .uagb-image-separator': {
-			'width': generateCSSUnit( seperatorWidth, separatorWidthType ),
+			'width': generateCSSUnit( seperatorWidthFallback, separatorWidthType ),
 			'border-top-width': generateCSSUnit(
-				seperatorThickness,
+				seperatorThicknessFallback,
 				seperatorThicknessUnit
 			),
 			'border-top-color': seperatorColor,
@@ -297,7 +323,13 @@ export default function styling( props ) {
 			'margin-left': generateCSSUnit( seperatorLeftMargin, seperatorMarginUnit ),
 			'margin-right': generateCSSUnit( seperatorRightMargin, seperatorMarginUnit ),
 			'opacity': seperatorShowOn === 'always' ? 1 : 0
-		},
+		}
+	}
+
+	selectors['.wp-block-uagb-image .wp-block-uagb-image__figure img'] = {
+		'object-fit': objectFit,
+		'width'     : width + 'px',
+		'height'    : height + 'px'
 	}
 
 	if( headingShowOn === 'hover' ){
@@ -315,7 +347,6 @@ export default function styling( props ) {
 			'opacity': 1
 		}
 	}
-
 
 	if( maskShape !== 'none' ){
 		let imagePath =  `${window?.uagb_blocks_info?.uagb_url}assets/images/masks/${maskShape}.svg`;
@@ -356,6 +387,9 @@ export default function styling( props ) {
 			'px'
 		),
 	}
+
+	tablet_selectors['.wp-block-uagb-image--layout-default img'] = imageBorderCSSTablet
+
 	tablet_selectors['.wp-block-uagb-image'] = {
 		'margin-top': generateCSSUnit(
 			imageTopMarginTablet,
@@ -373,6 +407,7 @@ export default function styling( props ) {
 			imageLeftMarginTablet,
 			imageMarginUnitTablet
 		),
+		'text-align': alignTablet,
 	}
 	tablet_selectors['.wp-block-uagb-image .wp-block-uagb-image__figure figcaption'] = {
         'font-size': generateCSSUnit(
@@ -383,6 +418,7 @@ export default function styling( props ) {
             captionLineHeightTablet,
             captionLineHeightType
         ),
+		'letter-spacing': generateCSSUnit( captionLetterSpacingTablet, captionLetterSpacingType ),
 		'margin-top': generateCSSUnit(
 			captionTopMarginTablet,
 			captionMarginUnitTablet
@@ -401,6 +437,8 @@ export default function styling( props ) {
 		),
     }
 
+	tablet_selectors['.wp-block-uagb-image--layout-overlay .wp-block-uagb-image--layout-overlay__inner'] = overlayBorderCSSTablet
+
 	tablet_selectors['.wp-block-uagb-image .wp-block-uagb-image--layout-overlay__inner .uagb-image-heading'] = {
         'font-size': generateCSSUnit(
             headingFontSizeTablet,
@@ -410,6 +448,7 @@ export default function styling( props ) {
             headingLineHeightTablet,
             headingLineHeightType
         ),
+		'letter-spacing': generateCSSUnit( headingLetterSpacingTablet, headingLetterSpacingType ),
 		'margin-top': generateCSSUnit(
 			headingTopMarginTablet,
 			headingMarginUnitTablet
@@ -435,6 +474,12 @@ export default function styling( props ) {
 		'margin-right': generateCSSUnit( seperatorRightMarginTablet, seperatorMarginUnitTablet ),
 	}
 
+	tablet_selectors['.wp-block-uagb-image .wp-block-uagb-image__figure img'] = {
+		'object-fit': objectFitTablet,
+		'width'     : tabletWidth + 'px',
+		'height'    : tabletHeight + 'px'
+	}
+
 	// Mobile
 	mobile_selectors['.wp-block-uagb-image .components-resizable-box__container'] = {
 		'width': generateCSSUnit(
@@ -446,6 +491,9 @@ export default function styling( props ) {
 			'px'
 		),
 	}
+
+	mobile_selectors['.wp-block-uagb-image--layout-default img'] = imageBorderCSSMobile;
+
 	mobile_selectors['.wp-block-uagb-image'] = {
 		'margin-top': generateCSSUnit(
 			imageTopMarginMobile,
@@ -463,6 +511,7 @@ export default function styling( props ) {
 			imageLeftMarginMobile,
 			imageMarginUnitMobile
 		),
+		'text-align': alignMobile,
 	}
 
 	mobile_selectors['.wp-block-uagb-image .wp-block-uagb-image__figure figcaption'] = {
@@ -474,6 +523,7 @@ export default function styling( props ) {
             captionLineHeightMobile,
             captionLineHeightType
         ),
+		'letter-spacing': generateCSSUnit( captionLetterSpacingMobile, captionLetterSpacingType ),
 		'margin-top': generateCSSUnit(
 			captionTopMarginMobile,
 			captionMarginUnitMobile
@@ -492,6 +542,8 @@ export default function styling( props ) {
 		),
     }
 
+	mobile_selectors['.wp-block-uagb-image--layout-overlay .wp-block-uagb-image--layout-overlay__inner'] = overlayBorderCSSMobile
+
 	mobile_selectors['.wp-block-uagb-image .wp-block-uagb-image--layout-overlay__inner .uagb-image-heading'] = {
         'font-size': generateCSSUnit(
             headingFontSizeMobile,
@@ -501,6 +553,7 @@ export default function styling( props ) {
             headingLineHeightMobile,
             headingLineHeightType
         ),
+		'letter-spacing': generateCSSUnit( headingLetterSpacingMobile, headingLetterSpacingType ),
 		'margin-top': generateCSSUnit(
 			headingTopMarginMobile,
 			headingMarginUnitMobile
@@ -524,6 +577,12 @@ export default function styling( props ) {
 		'margin-top': generateCSSUnit( seperatorTopMarginMobile, seperatorMarginUnitMobile ),
 		'margin-left': generateCSSUnit( seperatorLeftMarginMobile, seperatorMarginUnitMobile ),
 		'margin-right': generateCSSUnit( seperatorRightMarginMobile, seperatorMarginUnitMobile ),
+	}
+
+	mobile_selectors['.wp-block-uagb-image .wp-block-uagb-image__figure img'] = {
+		'object-fit': objectFitMobile,
+		'width'     : mobileWidth + 'px',
+		'height'    : mobileHeight + 'px'
 	}
 
 	let styling_css = generateCSS( selectors, base_selector );

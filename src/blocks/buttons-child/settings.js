@@ -8,7 +8,7 @@ import { __ } from '@wordpress/i18n';
 import lazyLoader from '@Controls/lazy-loader';
 import React, { Suspense } from 'react';
 import AdvancedPopColorControl from '@Components/color-control/advanced-pop-color-control.js';
-import Border from '@Components/border';
+import ResponsiveBorder from '@Components/responsive-border';
 import SpacingControl from '@Components/spacing-control';
 import InspectorTabs from '@Components/inspector-tabs/InspectorTabs.js';
 import InspectorTab, {
@@ -19,7 +19,6 @@ import UAGTabsControl from '@Components/tabs';
 import MultiButtonsControl from '@Components/multi-buttons-control';
 import BoxShadowControl from '@Components/box-shadow';
 import WebfontLoader from '@Components/typography/fontloader';
-
 import ResponsiveSlider from '@Components/responsive-slider';
 import GradientSettings from '@Components/gradient-settings';
 
@@ -34,13 +33,17 @@ import {
 
 import UAGAdvancedPanelBody from '@Components/advanced-panel-body';
 
+import boxShadowPresets from './presets';
+import UAGPresets from '@Components/presets';
+
 const Settings = ( props ) => {
 
 	props = props.parentProps;
 
-	const { attributes, setAttributes } = props;
+	const { attributes, setAttributes, deviceType } = props;
 
 	const {
+		block_id,
 		link,
 		size,
 		topPadding,
@@ -61,11 +64,6 @@ const Settings = ( props ) => {
 		mobilePaddingUnit,
 		tabletPaddingUnit,
 		paddingLink,
-		borderWidth,
-		borderRadius,
-		borderStyle,
-		borderColor,
-		borderHColor,
 		color,
 		background,
 		hColor,
@@ -120,7 +118,13 @@ const Settings = ( props ) => {
 		iconSizeTablet,
 		iconSizeMobile,
 		removeText,
-		noFollow
+		noFollow,
+
+		// letter spacing
+		letterSpacing,
+		letterSpacingTablet,
+		letterSpacingMobile,
+		letterSpacingType,
 
 	} = attributes;
 
@@ -290,6 +294,22 @@ const Settings = ( props ) => {
 						value: lineHeightTablet,
 						label: 'lineHeightTablet',
 					} }
+					letterSpacing={ {
+						value: letterSpacing,
+						label: 'letterSpacing',
+					} }
+					letterSpacingTablet={ {
+						value: letterSpacingTablet,
+						label: 'letterSpacingTablet',
+					} }
+					letterSpacingMobile={ {
+						value: letterSpacingMobile,
+						label: 'letterSpacingMobile',
+					} }
+					letterSpacingType={ {
+						value: letterSpacingType,
+						label: 'letterSpacingType',
+					} }
 				/>
 				<UAGTabsControl
 					tabs={ [
@@ -316,9 +336,11 @@ const Settings = ( props ) => {
 									'ultimate-addons-for-gutenberg'
 								) }
 								colorValue={ color ? color : '' }
-								onColorChange={ ( value ) =>
-									setAttributes( { color: value } )
-								}
+								data={ {
+									value: color,
+									label: 'color',
+								} }
+								setAttributes={ setAttributes }
 							/>
 						</>
 					}
@@ -330,9 +352,11 @@ const Settings = ( props ) => {
 									'ultimate-addons-for-gutenberg'
 								) }
 								colorValue={ hColor ? hColor : '' }
-								onColorChange={ ( value ) =>
-									setAttributes( { hColor: value } )
-								}
+								data={ {
+									value: hColor,
+									label: 'hColor',
+								} }
+								setAttributes={ setAttributes }
 							/>
 						</>
 					}
@@ -412,11 +436,11 @@ const Settings = ( props ) => {
 													? background
 													: ''
 											}
-											onColorChange={ ( value ) =>
-												setAttributes( {
-													background: value,
-												} )
-											}
+											data={ {
+												value: background,
+												label: 'background',
+											} }
+											setAttributes={ setAttributes }
 										/>
 									</>
 								) }
@@ -477,11 +501,11 @@ const Settings = ( props ) => {
 													? hBackground
 													: ''
 											}
-											onColorChange={ ( value ) =>
-												setAttributes( {
-													hBackground: value,
-												} )
-											}
+											data={ {
+												value: hBackground,
+												label: 'hBackground',
+											} }
+											setAttributes={ setAttributes }
 										/>
 									</>
 								) }
@@ -506,7 +530,13 @@ const Settings = ( props ) => {
 					title={__( 'Box Shadow','ultimate-addons-for-gutenberg' )}
 					initialOpen={false}
 				>
+					<UAGPresets
+						setAttributes = { setAttributes }
+						presets = { boxShadowPresets }
+						presetInputType = 'radioImage'
+					/>
 					<BoxShadowControl
+						blockId={ block_id }
 						setAttributes={ setAttributes }
 						boxShadowColor={ {
 							value: boxShadowColor,
@@ -601,7 +631,7 @@ const Settings = ( props ) => {
 								label: 'iconSpaceMobile',
 							},
 						} }
-						min={ 0 }
+						min={ -200 }
 						max={ 200 }
 						displayUnit={ false }
 						setAttributes={ setAttributes }
@@ -631,9 +661,11 @@ const Settings = ( props ) => {
 									'ultimate-addons-for-gutenberg'
 								) }
 								colorValue={ iconColor ? iconColor : '' }
-								onColorChange={ ( value ) =>
-									setAttributes( { iconColor: value } )
-								}
+								data={ {
+									value: iconColor,
+									label: 'iconColor',
+								} }
+								setAttributes={ setAttributes }
 							/>
 					}
 					hover={
@@ -644,9 +676,11 @@ const Settings = ( props ) => {
 									'ultimate-addons-for-gutenberg'
 								) }
 								colorValue={ iconHColor ? iconHColor : '' }
-								onColorChange={ ( value ) =>
-									setAttributes( { iconHColor: value } )
-								}
+								data={ {
+									value: iconHColor,
+									label: 'iconHColor',
+								} }
+								setAttributes={ setAttributes }
 							/>
 						</>
 					}
@@ -663,38 +697,13 @@ const Settings = ( props ) => {
 				title={ __( 'Border', 'ultimate-addons-for-gutenberg' ) }
 				initialOpen={ false }
 			>
-				<Border
-					disabledBorderTitle= {true}
+				<ResponsiveBorder
 					setAttributes={ setAttributes }
-					borderStyle={ {
-						value: borderStyle,
-						label: 'borderStyle',
-						title: __( 'Style', 'ultimate-addons-for-gutenberg' ),
-					} }
-					borderWidth={ {
-						value: borderWidth,
-						label: 'borderWidth',
-						title: __( 'Width', 'ultimate-addons-for-gutenberg' ),
-					} }
-					borderRadius={ {
-						value: borderRadius,
-						label: 'borderRadius',
-						title: __( 'Radius', 'ultimate-addons-for-gutenberg' ),
-					} }
-					borderColor={ {
-						value: borderColor,
-						label: 'borderColor',
-						title: __( 'Color', 'ultimate-addons-for-gutenberg' ),
-					} }
-					borderHoverColor={ {
-						value: borderHColor,
-						label: 'borderHColor',
-						title: __(
-							'Color',
-							'ultimate-addons-for-gutenberg'
-						),
-					} }
+					prefix={'btn'}
+					attributes={ attributes }
+					deviceType={deviceType}
 					disableBottomSeparator={ true }
+					disabledBorderTitle= { true }
 				/>
 			</UAGAdvancedPanelBody>
 		);

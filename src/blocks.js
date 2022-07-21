@@ -9,12 +9,13 @@
  * Webpack is compiling as the input file.
  */
 
+import domReady from '@wordpress/dom-ready';
 import getUAGEditorStateLocalStorage from '@Controls/getUAGEditorStateLocalStorage';
 
 // Delete the local storage on every refresh.
 const uagLocalStorage = getUAGEditorStateLocalStorage();
 if ( uagLocalStorage ) {
-	uagLocalStorage.removeItem( 'uagLastOpenedState' );
+	uagLocalStorage.removeItem( 'uagSettingState' );
 }
 
 import blocksEditorSpacing from './blocks/extensions/blocks-editor-spacing';
@@ -79,15 +80,27 @@ import './blocks/image/block.js';
 import './blocks/extensions/block.js';
 
 // Responsive Device Icons on Editor
-import './components/responsive-icons/index.js'
-
+import './components/responsive-icons/index.js';
 
 wp.UAGBSvgIcons = Object.keys( uagb_blocks_info.uagb_svg_icons );
 
 import UAGB_Block_Icons from '@Controls/block-icons';
+import autoBlockRecovery from '@Controls/autoBlockRecovery';
 
 import { updateCategory } from '@wordpress/blocks';
 
 updateCategory( 'uagb', {
 	icon: UAGB_Block_Icons.logo,
 } );
+
+export const initAutoBlockRecovery = () => {
+	if ( window._wpLoadBlockEditor ) {
+		window._wpLoadBlockEditor.then( () => {
+			autoBlockRecovery();
+		} );
+	}
+};
+
+if ( 'disabled' !== uagb_blocks_info.auto_block_recovery ) {
+	domReady( initAutoBlockRecovery );
+}

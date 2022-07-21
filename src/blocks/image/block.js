@@ -33,17 +33,6 @@ registerBlockType( 'uagb/image', {
 			text: false,
 			background: false
 		},
-		__experimentalBorder: {
-			radius: true,
-			__experimentalDefaultControls: {
-				radius: true
-			}
-		}
-	},
-	getEditWrapperProps( { align } ) {
-		return {
-			'data-align': align,
-		};
 	},
 	category: uagb_blocks_info.category,
 	attributes,

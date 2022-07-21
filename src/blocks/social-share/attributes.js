@@ -41,6 +41,20 @@ const attributes = {
 			styleType: 'overall-alignment'
 		}
 	},
+	alignTablet: {
+		type: 'string',
+		default: 'center',
+		UAGCopyPaste: {
+			styleType: 'overall-alignment'
+		}
+	},
+	alignMobile: {
+		type: 'string',
+		default: 'center',
+		UAGCopyPaste: {
+			styleType: 'overall-alignment'
+		}
+	},
 	social_count: {
 		type: 'number',
 		default: itemCount,
@@ -58,14 +72,12 @@ const attributes = {
 	},
 	gapTablet: {
 		type: 'number',
-		default: 10,
 		UAGCopyPaste: {
 			styleType: 'icon-gap-tablet'
 		}
 	},
 	gapMobile: {
 		type: 'number',
-		default: 10,
 		UAGCopyPaste: {
 			styleType: 'icon-gap-mobile'
 		}
@@ -86,14 +98,12 @@ const attributes = {
 	},
 	sizeMobile: {
 		type: 'number',
-		default: 30,
 		UAGCopyPaste: {
 			styleType: 'icon-size-mobile'
 		}
 	},
 	sizeTablet: {
 		type: 'number',
-		default: 30,
 		UAGCopyPaste: {
 			styleType: 'icon-size-tablet'
 		}
@@ -138,14 +148,12 @@ const attributes = {
 		UAGCopyPaste: {
 			styleType: 'icon-border-radius-tablet'
 		},
-		default: 0,
 	},
 	borderRadiusMobile: {
 		type: 'number',
 		UAGCopyPaste: {
 			styleType: 'icon-border-radius-mobile'
 		},
-		default: 0,
 	},
 	social_layout: {
 		type: 'string',
@@ -158,7 +166,35 @@ const attributes = {
 	isPreview: {
 		type: 'boolean',
 		default: false,
-	}
+	},
+	iconColor: {
+		type: 'string',
+		default: '',
+		UAGCopyPaste: {
+			styleType: 'icon-color'
+		},
+	},
+	iconHoverColor: {
+		type: 'string',
+		UAGCopyPaste: {
+			styleType: 'icon-hover-color'
+		},
+		default: '',
+	},
+	iconBgColor: {
+		type: 'string',
+		UAGCopyPaste: {
+			styleType: 'icon-bg-color'
+		},
+		default: '',
+	},
+	iconBgHoverColor: {
+		type: 'string',
+		UAGCopyPaste: {
+			styleType: 'icon-bg-hover-color'
+		},
+		default: '',
+	},
 };
 
 export default attributes;

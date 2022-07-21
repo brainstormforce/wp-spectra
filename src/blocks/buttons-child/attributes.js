@@ -1,6 +1,12 @@
 /**
  * BLOCK: Buttons Child - Attributes
  */
+import { getBorderAttributes } from '@Controls/generateAttributes';
+
+const borderAttributes = getBorderAttributes( 'btn', {
+	borderStyle: 'solid',
+	borderColor:'#333',
+} );
 
 const attributes = {
 	inheritFromTheme: {
@@ -186,40 +192,6 @@ const attributes = {
 		type: 'boolean',
 		default: true,
 	},
-	borderWidth: {
-		type: 'number',
-		default: '',
-		UAGCopyPaste: {
-			styleType: 'btn-border-width'
-		}
-	},
-	borderRadius: {
-		type: 'number',
-		UAGCopyPaste: {
-			styleType: 'btn-border-radius'
-		}
-	},
-	borderStyle: {
-		type: 'string',
-		default: 'none',
-		UAGCopyPaste: {
-			styleType: 'btn-border-style'
-		}
-	},
-	borderColor: {
-		type: 'string',
-		UAGCopyPaste: {
-			styleType: 'btn-border-color'
-		},
-		default: '#000',
-	},
-	borderHColor: {
-		type: 'string',
-		default: '',
-		UAGCopyPaste: {
-			styleType: 'btn-border-hover-color'
-		}
-	},
 	color: {
 		type: 'string',
 		default: '',
@@ -321,14 +293,12 @@ const attributes = {
 	},
 	iconSpaceTablet: {
 		type: 'number',
-		default: 8,
 		UAGCopyPaste: {
 			styleType: 'btn-icon-space-tablet'
 		}
 	},
 	iconSpaceMobile: {
 		type: 'number',
-		default: 8,
 		UAGCopyPaste: {
 			styleType: 'btn-icon-space-mobile'
 		}
@@ -509,14 +479,12 @@ const attributes = {
 	},
 	iconSizeTablet: {
 		type: 'number',
-		default: 15,
 		UAGCopyPaste: {
 			styleType: 'btn-icon-size-tablet'
 		}
 	},
 	iconSizeMobile: {
 		type: 'number',
-		default: 15,
 		UAGCopyPaste: {
 			styleType: 'btn-icon-size-mobile'
 		}
@@ -524,6 +492,52 @@ const attributes = {
 	removeText:{
 		type:'boolean',
 		default: false
+	},
+	borderWidth: {
+		type: 'number',
+		default: '',
+	},
+	borderRadius: {
+		type: 'number',
+	},
+	borderStyle: {
+		type: 'string',
+		default: 'none',
+	},
+	borderColor: {
+		type: 'string',
+		default: '#000',
+	},
+	borderHColor: {
+		type: 'string',
+		default: '',
+	},
+	...borderAttributes,
+	// letter spacing.
+	letterSpacing: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'main-title-letter-spacing'
+		}
+	},
+	letterSpacingTablet: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'main-title-letter-spacing-tablet'
+		}
+	},
+	letterSpacingMobile: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'main-title-letter-spacing-mobile'
+		}
+	},
+	letterSpacingType: {
+		type: 'string',
+		default: 'px',
+		UAGCopyPaste: {
+			styleType: 'main-title-letter-spacing-type'
+		}
 	},
 };
 

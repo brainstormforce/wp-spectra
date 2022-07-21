@@ -17,7 +17,6 @@ import {
 	MediaPlaceholder,
 	BlockControls,
 	MediaReplaceFlow,
-	AlignmentToolbar
 } from '@wordpress/block-editor';
 
 import {
@@ -117,7 +116,7 @@ const Settings = ( props ) => {
 						allow={ [ 'application/json' ] }
 					/>
 				) }
-				{ lottieSource === 'url' && (					
+				{ lottieSource === 'url' && (
 					<TextControl
 						label={ __(
 							'Lottie Animation URL',
@@ -209,17 +208,25 @@ const Settings = ( props ) => {
 					checked={ loop }
 					onChange={ loopLottie }
 					help={ __(
-						"Enabling this will show the animation in the loop. This setting will only take effect once you are on the live page, and not while you're editing."
+						"Enabling this will show the animation in the loop. This setting will only take effect once you are on the live page, and not while you're editing.",
+						'ultimate-addons-for-gutenberg'
 					) }
 				/>
 				<Range
 					label={ __( 'Speed', 'ultimate-addons-for-gutenberg' ) }
 					setAttributes={ setAttributes }
 					value={ speed }
-					onChange={ ( value ) => setAttributes( { speed: value } ) }
+					data={ {
+						value: speed,
+						label: 'speed',
+					} }
 					min={ 1 }
 					max={ 50 }
 					displayUnit={ false }
+					help={ __(
+						'This setting will only take effect once you refresh the editor page.',
+						'ultimate-addons-for-gutenberg'
+					) }
 				/>
 				{ loop && (
 					<ToggleControl
@@ -298,18 +305,22 @@ const Settings = ( props ) => {
 					<AdvancedPopColorControl
 						label={ __( 'Background Color', 'ultimate-addons-for-gutenberg' ) }
 						colorValue={ backgroundColor ? backgroundColor : '' }
-						onColorChange={ ( value ) =>
-							setAttributes( { backgroundColor: value } )
-						}
+						data={ {
+							value: backgroundColor,
+							label: 'backgroundColor',
+						} }
+						setAttributes={ setAttributes }
 					/>
 				}
 				hover={
 					<AdvancedPopColorControl
 						label={ __( 'Background Color', 'ultimate-addons-for-gutenberg' ) }
 						colorValue={ backgroundHColor ? backgroundHColor : '' }
-						onColorChange={ ( value ) =>
-							setAttributes( { backgroundHColor: value } )
-						}
+						data={ {
+							value: backgroundHColor,
+							label: 'backgroundHColor',
+						} }
+						setAttributes={ setAttributes }
 					/>
 				}
 				disableBottomSeparator={ true }
@@ -345,13 +356,13 @@ const Settings = ( props ) => {
 
 	if ( validJsonPath === 'invalid' ) {
 		const lottie_url = (
-			<span>
+			<span className="uagb-lottie-instructions">
 				{ ' ' }
 				{ __(
 					'Allows you to add fancy animation i.e Lottie to your website. You can see sample Lottie animations',
 					'ultimate-addons-for-gutenberg'
 				) }
-				<a href="https://lottiefiles.com/" target="__blank">
+				<a className="uagb-lottie-instructions__lottie-url" href="https://lottiefiles.com/" target="__blank">
 					{ ' ' }
 					{ __( 'here on this' ) }{ ' ' }
 				</a>
@@ -391,12 +402,6 @@ const Settings = ( props ) => {
 						onSelect={ onSelectLottieJSON }
 					/>
 				</ToolbarGroup>
-				<AlignmentToolbar
-					value={ align }
-					onChange={ ( value ) =>
-						setAttributes( { align: value } )
-					}
-				/>
 			</BlockControls>
 		);
 	};

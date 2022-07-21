@@ -1,3 +1,4 @@
+import { getFallbackNumber } from '@Controls/getAttributeFallback';
 export const PostExcerpt = ( props ) => {
 	const { post, attributes } = props;
 	
@@ -8,13 +9,13 @@ export const PostExcerpt = ( props ) => {
 	const words = post.uagb_excerpt.split( ' ' );
 
 	let excerpt = post.uagb_excerpt;
+	
+	const excerptLengthFallback = getFallbackNumber( attributes.excerptLength, 'excerptLength', attributes.blockName );
 
-	const exLen = attributes.excerptLength ? attributes.excerptLength : 25;
-
-	if ( exLen >= words.length ) {
+	if ( excerptLengthFallback >= words.length ) {
 		excerpt = post.uagb_excerpt;
 	} else {
-		const truncated = words.slice( 0, exLen );
+		const truncated = words.slice( 0, excerptLengthFallback );
 		excerpt = truncated.join( ' ' );
 		excerpt += ' ...';
 	}

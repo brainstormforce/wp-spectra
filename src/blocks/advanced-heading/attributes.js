@@ -1,4 +1,7 @@
+import {getBorderAttributes} from '@Controls/generateAttributes';
 import { __ } from '@wordpress/i18n';
+
+const highLightBorderAttributes = getBorderAttributes( 'highLight' )
 
 const attributes = {
 	block_id: {
@@ -53,6 +56,20 @@ const attributes = {
 		default: 'left',
 		UAGCopyPaste: {
 			styleType: 'overall-alignment'
+		}
+	},
+	headingAlignTablet: {
+		type: 'string',
+		default: '',
+		UAGCopyPaste: {
+			styleType: 'overall-alignment-tablet'
+		}
+	},
+	headingAlignMobile: {
+		type: 'string',
+		default: '',
+		UAGCopyPaste: {
+			styleType: 'overall-alignment-mobile'
 		}
 	},
 	headingColorType: {
@@ -297,7 +314,7 @@ const attributes = {
 	// sub headline.
 	subHeadFontFamily: {
 		type: 'string',
-		default: '',
+		default: 'Default',
 		UAGCopyPaste: {
 			styleType: 'desc-font-family'
 		}
@@ -713,41 +730,6 @@ const attributes = {
 			styleType: 'highlight-background'
 		}
 	},
-	highLightBorderWidth: {
-		type: 'number',
-		default: '',
-		UAGCopyPaste: {
-			styleType: 'highlight-border-width'
-		}
-	},
-	highLightBorderRadius: {
-		type: 'number',
-		default: '',
-		UAGCopyPaste: {
-			styleType: 'highlight-border-radius'
-		}
-	},
-	highLightBorderStyle: {
-		type: 'string',
-		default: 'none',
-		UAGCopyPaste: {
-			styleType: 'highlight-border-style'
-		}
-	},
-	highLightBorderColor: {
-		type: 'string',
-		default: '',
-		UAGCopyPaste: {
-			styleType: 'highlight-border-color'
-		}
-	},
-	highLightBorderHColor: {
-		type: 'string',
-		default: '',
-		UAGCopyPaste: {
-			styleType: 'highlight-border-hover-color'
-		}
-	},
 	highLightLoadGoogleFonts: {
 		type: 'boolean',
 		default: false,
@@ -978,6 +960,7 @@ const attributes = {
 			styleType: 'highlight-padding-link'
 		}
 	},
+	...highLightBorderAttributes
 };
 
 export default attributes;

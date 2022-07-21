@@ -1,3 +1,13 @@
+import { getBorderAttributes } from '@Controls/generateAttributes';
+
+const overallBorderAttributes = getBorderAttributes( 'overall', {
+	borderTopWidth: 1,
+	borderRightWidth: 1,
+	borderBottomWidth: 1,
+	borderLeftWidth: 1,
+	borderStyle: 'none',
+} );
+
 /**
  * BLOCK: UAGB column Attributes
  */
@@ -266,6 +276,7 @@ const attributes = {
 	},
 	backgroundType: {
 		type: 'string',
+		default: 'none',
 		UAGCopyPaste: {
 			styleType: 'column-bg-type'
 		},
@@ -362,6 +373,7 @@ const attributes = {
 		UAGCopyPaste: {
 			styleType: 'column-bg-opacity'
 		},
+		default: 0
 	},
 	backgroundVideoOpacity: {
 		type: 'number',
@@ -384,35 +396,18 @@ const attributes = {
 	},
 	borderStyle: {
 		type: 'string',
-		default: 'none',
-		UAGCopyPaste: {
-			styleType: 'overall-border-style'
-		},
 	},
 	borderWidth: {
 		type: 'number',
-		UAGCopyPaste: {
-			styleType: 'overall-border-width'
-		},
-		default: 1,
 	},
 	borderRadius: {
 		type: 'number',
-		UAGCopyPaste: {
-			styleType: 'overall-border-radius'
-		},
 	},
 	borderColor: {
 		type: 'string',
-		UAGCopyPaste: {
-			styleType: 'overall-border-color'
-		},
 	},
 	borderHoverColor: {
 		type: 'string',
-		UAGCopyPaste: {
-			styleType: 'overall-border-hover-color'
-		},
 	},
 	overlayType: {
 		type: 'string',
@@ -509,10 +504,10 @@ const attributes = {
 	},
 	gradientValue: {
 		type: 'string',
+		default: 'linear-gradient(90deg, rgb(6, 147, 227, 0.5) 0%, rgb(155, 81, 224, 0.5) 100%)',
 		UAGCopyPaste: {
 			styleType: 'column-gradient-value'
 		},
-		default: '',
 	},
 	spacingLink: {
 		type: 'boolean',
@@ -525,7 +520,8 @@ const attributes = {
 	isPreview: {
 		type: 'boolean',
 		default: false,
-	}
+	},
+	...overallBorderAttributes,
 };
 
 export default attributes;

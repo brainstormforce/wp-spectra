@@ -9,6 +9,7 @@ import Company from './components/Company';
 import Description from './components/Description';
 import styles from './editor.lazy.scss';
 import { useDeviceType } from '@Controls/getPreviewType';
+import { getFallbackNumber } from '@Controls/getAttributeFallback';
 
 const Slider = lazy( () =>
 	import(
@@ -26,6 +27,7 @@ const Render = ( props ) => {
 
 	props = props.parentProps;
 	const deviceType = useDeviceType();
+	const blockName = props.name.replace( 'uagb/', '' );
 	const { className, setAttributes, attributes } = props;
 
 	// Setup the attributes.
@@ -63,7 +65,7 @@ const Render = ( props ) => {
 				style={ {
 					borderColor: arrowColor,
 					borderRadius: arrowBorderRadius,
-					borderWidth: arrowBorderSize,
+					borderWidth: getFallbackNumber( arrowBorderSize, 'arrowBorderSize', blockName ),
 				} }
 				onClick = { onClick }
 			>
@@ -83,7 +85,7 @@ const Render = ( props ) => {
 				style={ {
 					borderColor: arrowColor,
 					borderRadius: arrowBorderRadius,
-					borderWidth: arrowBorderSize,
+					borderWidth: getFallbackNumber( arrowBorderSize, 'arrowBorderSize', blockName ),
 				} }
 				onClick= { onClick }
 			>
@@ -103,13 +105,13 @@ const Render = ( props ) => {
 
 	const settings = {
 		accessibility: false,
-		slidesToShow: columns,
+		slidesToShow: ( deviceType === 'Desktop' ? getFallbackNumber( columns, 'columns', blockName ) : deviceType === 'Tablet' ? getFallbackNumber( tcolumns, 'columns', blockName ): getFallbackNumber( mcolumns, 'columns', blockName ) ), // eslint-disable-line no-nested-ternary
 		slidesToScroll: 1,
-		autoplaySpeed,
+		autoplaySpeed: getFallbackNumber( autoplaySpeed, 'autoplaySpeed', blockName ),
 		autoplay,
 		infinite: infiniteLoop,
 		pauseOnHover,
-		speed: transitionSpeed,
+		speed: getFallbackNumber( transitionSpeed, 'transitionSpeed', blockName ),
 		arrows,
 		dots,
 		rtl: false,
@@ -121,22 +123,6 @@ const Render = ( props ) => {
 		draggable: false,
 		nextArrow: <NextArrow arrowSize={ arrowSize } onClick={sliderRef.slickNext} />,
 		prevArrow: <PrevArrow arrowSize={ arrowSize } onClick={sliderRef.slickPrev} />,
-		responsive: [
-			{
-				breakpoint: 1024,
-				settings: {
-					slidesToShow: tcolumns,
-					slidesToScroll: 1,
-				},
-			},
-			{
-				breakpoint: 767,
-				settings: {
-					slidesToShow: mcolumns,
-					slidesToScroll: 1,
-				},
-			},
-		],
 	};
 
 	const previewImageData = `${ uagb_blocks_info.uagb_url }/admin/assets/preview-images/testimonials.png`;
@@ -156,7 +142,7 @@ const Render = ( props ) => {
 				<Slider
 					className={ classnames(
 						'is-carousel',
-						`uagb-tm__columns-${ columns }`,
+						`uagb-tm__columns-${ getFallbackNumber( columns, 'columns', blockName ) }`,
 						'uagb-tm__items'
 					) }
 					{ ...settings }

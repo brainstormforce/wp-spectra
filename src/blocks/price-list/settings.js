@@ -9,6 +9,7 @@ import ResponsiveSlider from '@Components/responsive-slider';
 import AdvancedPopColorControl from '@Components/color-control/advanced-pop-color-control.js';
 import SpacingControl from '@Components/spacing-control';
 import MultiButtonsControl from '@Components/multi-buttons-control';
+import UAGSelectControl from '@Components/select-control';
 import InspectorTabs from '@Components/inspector-tabs/InspectorTabs.js';
 import InspectorTab, {
 	UAGTabs,
@@ -21,7 +22,7 @@ const maxColumns = 3;
 
 import { InspectorControls } from '@wordpress/block-editor';
 
-import { SelectControl, Icon } from '@wordpress/components';
+import { Icon } from '@wordpress/components';
 
 
 
@@ -143,7 +144,19 @@ const Settings = ( props ) => {
 		priceTransform,
 		priceDecoration,
 		headingAlign,
-		imgAlign
+		imgAlign,
+		descLetterSpacing,
+descLetterSpacingTablet,
+descLetterSpacingMobile,
+descLetterSpacingType,
+priceLetterSpacing,
+priceLetterSpacingTablet,
+priceLetterSpacingMobile,
+priceLetterSpacingType,
+titleLetterSpacing,
+titleLetterSpacingTablet,
+titleLetterSpacingMobile,
+titleLetterSpacingType,
 	} = attributes;
 
 	const setimageSize = ( value ) => {
@@ -210,18 +223,6 @@ const Settings = ( props ) => {
 	const marginSettings = () => {
 		return (
 			<UAGAdvancedPanelBody title={ __( 'Spacing' ) } initialOpen={ false }>
-				{/* <Range
-					label={ __( 'Row Gap' ) }
-					setAttributes={ setAttributes }
-					value={ rowGap }
-					onChange={ ( value ) => setAttributes( { rowGap: value } ) }
-					min={ 0 }
-					max={ 50 }
-					unit={ {
-						value: rowGapType,
-						label: 'rowGapType',
-					} }
-				/> */}
 				<ResponsiveSlider
 					label={ __(
 						'Row Gap',
@@ -265,20 +266,6 @@ const Settings = ( props ) => {
 					] }
 					setAttributes={ setAttributes }
 				/>
-				{/* <Range
-					label={ __( 'Column Gap' ) }
-					setAttributes={ setAttributes }
-					value={ columnGap }
-					onChange={ ( value ) =>
-						setAttributes( { columnGap: value } )
-					}
-					min={ 0 }
-					max={ 50 }
-					unit={ {
-						value: columnGapType,
-						label: 'columnGapType',
-					} }
-				/> */}
 				<ResponsiveSlider
 					label={ __(
 						'Column Gap',
@@ -582,11 +569,16 @@ const Settings = ( props ) => {
 						/>
 					</>
 				) }
-				<SelectControl
-					label={ __( 'Size' ) }
-					options={ imageSizeOptions }
-					value={ imageSize }
+				<UAGSelectControl
+					label={ __(
+						'Size',
+						'ultimate-addons-for-gutenberg'
+					) }
+					data={ {
+						value: imageSize,
+					} }
 					onChange={ setimageSize }
+					options={ imageSizeOptions }
 				/>
 				<ResponsiveSlider
 					label={ __(
@@ -720,11 +712,11 @@ const Settings = ( props ) => {
 				<AdvancedPopColorControl
 					label={ __( 'Color', 'ultimate-addons-for-gutenberg' ) }
 					colorValue={ descColor ? descColor : '' }
-					onColorChange={ ( value ) =>
-						setAttributes( {
-							descColor: value,
-						} )
-					}
+					data={ {
+						value: descColor,
+						label: 'descColor',
+					} }
+					setAttributes={ setAttributes }
 				/>
 				<TypographyControl
 					label={ __( 'Typography' ) }
@@ -778,6 +770,22 @@ const Settings = ( props ) => {
 						value: descLineHeightTablet,
 						label: 'descLineHeightTablet',
 					} }
+					letterSpacing={ {
+						value: descLetterSpacing,
+						label: 'descLetterSpacing',
+					} }
+					letterSpacingTablet={ {
+						value: descLetterSpacingTablet,
+						label: 'descLetterSpacingTablet',
+					} }
+					letterSpacingMobile={ {
+						value: descLetterSpacingMobile,
+						label: 'descLetterSpacingMobile',
+					} }
+					letterSpacingType={ {
+						value: descLetterSpacingType,
+						label: 'descLetterSpacingType',
+					} }
 					transform={ {
 						value: descTransform,
 						label: 'descTransform',
@@ -795,12 +803,16 @@ const Settings = ( props ) => {
 	const separatorSettings = () => {
 		return (
 			<UAGAdvancedPanelBody title={ __( 'Separator' ) } initialOpen={ false }>
-				<SelectControl
-					label={ __( 'Style' ) }
-					value={ seperatorStyle }
-					onChange={ ( value ) =>
-						setAttributes( { seperatorStyle: value } )
-					}
+				<UAGSelectControl
+					label={ __(
+						'Style',
+						'ultimate-addons-for-gutenberg'
+					) }
+					data={ {
+						value: seperatorStyle,
+						label: 'seperatorStyle',
+					} }
+					setAttributes={ setAttributes }
 					options={ [
 						{ value: 'none', label: __( 'None' ) },
 						{ value: 'solid', label: __( 'Solid' ) },
@@ -869,9 +881,10 @@ const Settings = ( props ) => {
 							label={ __( 'Thickness' ) }
 							setAttributes={ setAttributes }
 							value={ seperatorThickness }
-							onChange={ ( value ) =>
-								setAttributes( { seperatorThickness: value } )
-							}
+							data={ {
+								value: seperatorThickness,
+								label: 'seperatorThickness',
+							} }
 							min={ 0 }
 							max={ 20 }
 							displayUnit={ false }
@@ -882,11 +895,11 @@ const Settings = ( props ) => {
 								'ultimate-addons-for-gutenberg'
 							) }
 							colorValue={ seperatorColor ? seperatorColor : '' }
-							onColorChange={ ( value ) =>
-								setAttributes( {
-									seperatorColor: value,
-								} )
-							}
+							data={ {
+								value: seperatorColor,
+								label: 'seperatorColor',
+							} }
+							setAttributes={ setAttributes }
 						/>
 					</>
 				) }
@@ -901,11 +914,11 @@ const Settings = ( props ) => {
 				<AdvancedPopColorControl
 					label={ __( 'Color', 'ultimate-addons-for-gutenberg' ) }
 					colorValue={ priceColor ? priceColor : '' }
-					onColorChange={ ( value ) =>
-						setAttributes( {
-							priceColor: value,
-						} )
-					}
+					data={ {
+						value: priceColor,
+						label: 'priceColor',
+					} }
+					setAttributes={ setAttributes }
 				/>
 				<TypographyControl
 					label={ __( 'Typography' ) }
@@ -959,6 +972,22 @@ const Settings = ( props ) => {
 						value: priceLineHeightTablet,
 						label: 'priceLineHeightTablet',
 					} }
+					letterSpacing={ {
+						value: priceLetterSpacing,
+						label: 'priceLetterSpacing',
+					} }
+					letterSpacingTablet={ {
+						value: priceLetterSpacingTablet,
+						label: 'priceLetterSpacingTablet',
+					} }
+					letterSpacingMobile={ {
+						value: priceLetterSpacingMobile,
+						label: 'priceLetterSpacingMobile',
+					} }
+					letterSpacingType={ {
+						value: priceLetterSpacingType,
+						label: 'priceLetterSpacingType',
+					} }
 					transform={ {
 						value: priceTransform,
 						label: 'priceTransform',
@@ -977,11 +1006,11 @@ const Settings = ( props ) => {
 				<AdvancedPopColorControl
 					label={ __( 'Color', 'ultimate-addons-for-gutenberg' ) }
 					colorValue={ titleColor ? titleColor : '' }
-					onColorChange={ ( value ) =>
-						setAttributes( {
-							titleColor: value,
-						} )
-					}
+					data={ {
+						value: titleColor,
+						label: 'titleColor',
+					} }
+					setAttributes={ setAttributes }
 				/>
 				<TypographyControl
 					label={ __( 'Typography' ) }
@@ -1034,6 +1063,22 @@ const Settings = ( props ) => {
 					lineHeightTablet={ {
 						value: titleLineHeightTablet,
 						label: 'titleLineHeightTablet',
+					} }
+					letterSpacing={ {
+						value: titleLetterSpacing,
+						label: 'titleLetterSpacing',
+					} }
+					letterSpacingTablet={ {
+						value: titleLetterSpacingTablet,
+						label: 'titleLetterSpacingTablet',
+					} }
+					letterSpacingMobile={ {
+						value: titleLetterSpacingMobile,
+						label: 'titleLetterSpacingMobile',
+					} }
+					letterSpacingType={ {
+						value: titleLetterSpacingType,
+						label: 'titleLetterSpacingType',
 					} }
 					transform={ {
 						value: titleTransform,

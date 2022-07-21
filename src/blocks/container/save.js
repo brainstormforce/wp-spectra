@@ -10,6 +10,7 @@ export default function save( props ) {
 	const {
 		block_id,
 		contentWidth,
+		innerContentWidth,
 		isBlockRootParent,
 		topType,
 		topFlip,
@@ -20,7 +21,7 @@ export default function save( props ) {
 		backgroundType,
 		backgroundVideo,
 		topInvert,
-		bottomInvert
+		bottomInvert,
 	} = props.attributes;
 
 	const topDividerHtml = 'none' !== topType && (
@@ -79,7 +80,14 @@ export default function save( props ) {
 					) }
 				</div>
 			) }
-			<InnerBlocks.Content />
+			{ isBlockRootParent && 'alignfull' === contentWidth && 'alignwide' === innerContentWidth
+				?  (
+						<div className='uagb-container-inner-blocks-wrap'>
+							<InnerBlocks.Content />
+						</div>
+					)
+					: <InnerBlocks.Content />
+			}
 			{ bottomDividerHtml }
 		</div>
 	);

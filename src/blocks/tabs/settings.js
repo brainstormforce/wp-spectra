@@ -5,7 +5,8 @@ import ResponsiveSelectControl from '@Components/responsive-select';
 import MultiButtonsControl from '@Components/multi-buttons-control';
 import AdvancedPopColorControl from '@Components/color-control/advanced-pop-color-control.js';
 import SpacingControl from '@Components/spacing-control';
-import Border from '@Components/border';
+import ResponsiveBorder from '@Components/responsive-border';
+import UAGSelectControl from '@Components/select-control';
 import InspectorTabs from '@Components/inspector-tabs/InspectorTabs.js';
 import InspectorTab, {
 	UAGTabs,
@@ -14,10 +15,9 @@ import UAGTabsControl from '@Components/tabs';
 import ResponsiveSlider from '@Components/responsive-slider';
 import React from 'react';
 import { __ } from '@wordpress/i18n';
-import { InspectorControls, BlockAlignmentToolbar, AlignmentToolbar, BlockControls } from '@wordpress/block-editor';
+import { InspectorControls } from '@wordpress/block-editor';
 
 import {
-	SelectControl,
 	ToggleControl,
 	Icon,
 } from '@wordpress/components';
@@ -28,7 +28,7 @@ import UAGAdvancedPanelBody from '@Components/advanced-panel-body';
 
 const Settings = ( props ) => {
 	props = props.parentProps;
-	const { attributes, setAttributes } = props;
+	const { attributes, setAttributes , deviceType} = props;
 
 	const {
 		tabsStyleD,
@@ -37,11 +37,6 @@ const Settings = ( props ) => {
 		tabActiveFrontend,
 		tabHeaders,
 		headerBgColor,
-		borderStyle,
-		borderWidth,
-		borderRadius,
-		borderColor,
-		borderHoverColor,
 		headerTextColor,
 		activeTabBgColor,
 		activeTabTextColor,
@@ -122,6 +117,10 @@ const Settings = ( props ) => {
 		titleLineHeight,
 		titleLineHeightMobile,
 		titleLineHeightTablet,
+		titleLetterSpacing,
+		titleLetterSpacingTablet,
+		titleLetterSpacingMobile,
+		titleLetterSpacingType,
 		titleTransform,
 		titleDecoration,
 		titleAlign,
@@ -139,6 +138,12 @@ const Settings = ( props ) => {
 		activeiconColor,
 		titleFontStyle
 	} = attributes;
+
+	const onInitialTabChange = ( value ) => {
+		setAttributes( {
+			tabActiveFrontend: parseInt( value ),
+		} )
+	};
 
 	const tabStyleSettings = () => {
 		const tabsStyleOptions = {
@@ -420,20 +425,18 @@ const Settings = ( props ) => {
 				title={ __( 'Tabs Title', 'ultimate-addons-for-gutenberg' ) }
 				initialOpen={ false }
 			>
-				<SelectControl
+				<UAGSelectControl
 					label={ __(
 						'Initial Open Tab',
 						'ultimate-addons-for-gutenberg'
 					) }
-					value={ tabActiveFrontend }
+					data={ {
+						value: tabActiveFrontend,
+					} }
+					onChange={ onInitialTabChange }
 					options={ tabHeaders.map( ( tab, index ) => {
 						return { value: index, label: tab };
 					} ) }
-					onChange={ ( value ) =>
-						setAttributes( {
-							tabActiveFrontend: parseInt( value ),
-						} )
-					}
 				/>
 				<MultiButtonsControl
 					setAttributes={ setAttributes }
@@ -610,38 +613,13 @@ const Settings = ( props ) => {
 				title={ __( 'Border', 'ultimate-addons-for-gutenberg' ) }
 				initialOpen={ false }
 			>
-				<Border
-					disabledBorderTitle= {true}
+				<ResponsiveBorder
 					setAttributes={ setAttributes }
-					borderStyle={ {
-						value: borderStyle,
-						label: 'borderStyle',
-						title: __( 'Style', 'ultimate-addons-for-gutenberg' ),
-					} }
-					borderWidth={ {
-						value: borderWidth,
-						label: 'borderWidth',
-						title: __( 'Width', 'ultimate-addons-for-gutenberg' ),
-					} }
-					borderRadius={ {
-						value: borderRadius,
-						label: 'borderRadius',
-						title: __( 'Radius', 'ultimate-addons-for-gutenberg' ),
-					} }
-					borderColor={ {
-						value: borderColor,
-						label: 'borderColor',
-						title: __( 'Color', 'ultimate-addons-for-gutenberg' ),
-					} }
-					borderHoverColor={ {
-						value: borderHoverColor,
-						label: 'borderHoverColor',
-						title: __(
-							'Hover Color',
-							'ultimate-addons-for-gutenberg'
-						),
-					} }
+					prefix={'tab'}
+					attributes={ attributes }
+					deviceType={deviceType}
 					disableBottomSeparator={ true }
+					disabledBorderTitle= {true}
 				/>
 			</UAGAdvancedPanelBody>
 		);
@@ -658,9 +636,11 @@ const Settings = ( props ) => {
 						'ultimate-addons-for-gutenberg'
 					) }
 					colorValue={ bodyTextColor }
-					onColorChange={ ( value ) =>
-						setAttributes( { bodyTextColor: value } )
-					}
+					data={ {
+						value: bodyTextColor,
+						label: 'bodyTextColor',
+					} }
+					setAttributes={ setAttributes }
 				/>
 					<AdvancedPopColorControl
 					label={ __(
@@ -668,9 +648,11 @@ const Settings = ( props ) => {
 						'ultimate-addons-for-gutenberg'
 					) }
 					colorValue={ bodyBgColor }
-					onColorChange={ ( value ) =>
-						setAttributes( { bodyBgColor: value } )
-					}
+					data={ {
+						value: bodyBgColor,
+						label: 'bodyBgColor',
+					} }
+					setAttributes={ setAttributes }
 				/>
 				<SpacingControl
 					{ ...props }
@@ -836,9 +818,11 @@ const Settings = ( props ) => {
 						'ultimate-addons-for-gutenberg'
 					) }
 					colorValue={ headerTextColor }
-					onColorChange={ ( value ) =>
-						setAttributes( { headerTextColor: value } )
-					}
+					data={ {
+						value: headerTextColor,
+						label: 'headerTextColor',
+					} }
+					setAttributes={ setAttributes }
 				/>
 				<AdvancedPopColorControl
 					label={ __(
@@ -846,9 +830,11 @@ const Settings = ( props ) => {
 						'ultimate-addons-for-gutenberg'
 					) }
 					colorValue={ headerBgColor }
-					onColorChange={ ( value ) =>
-						setAttributes( { headerBgColor: value } )
-					}
+					data={ {
+						value: headerBgColor,
+						label: 'headerBgColor',
+					} }
+					setAttributes={ setAttributes }
 				/>
 			</>
 		);
@@ -860,9 +846,11 @@ const Settings = ( props ) => {
 						'ultimate-addons-for-gutenberg'
 					) }
 					colorValue={ activeTabTextColor }
-					onColorChange={ ( value ) =>
-						setAttributes( { activeTabTextColor: value } )
-					}
+					data={ {
+						value: activeTabTextColor,
+						label: 'activeTabTextColor',
+					} }
+					setAttributes={ setAttributes }
 				/>
 				<AdvancedPopColorControl
 					label={ __(
@@ -870,9 +858,11 @@ const Settings = ( props ) => {
 						'ultimate-addons-for-gutenberg'
 					) }
 					colorValue={ activeTabBgColor }
-					onColorChange={ ( value ) =>
-						setAttributes( { activeTabBgColor: value } )
-					}
+					data={ {
+						value: activeTabBgColor,
+						label: 'activeTabBgColor',
+					} }
+					setAttributes={ setAttributes }
 				/>
 			</>
 		);
@@ -955,6 +945,22 @@ const Settings = ( props ) => {
 					lineHeightTablet={ {
 						value: titleLineHeightTablet,
 						label: 'titleLineHeightTablet',
+					} }
+					letterSpacing={ {
+						value: titleLetterSpacing,
+						label: 'titleLetterSpacing',
+					} }
+					letterSpacingTablet={ {
+						value: titleLetterSpacingTablet,
+						label: 'titleLetterSpacingTablet',
+					} }
+					letterSpacingMobile={ {
+						value: titleLetterSpacingMobile,
+						label: 'titleLetterSpacingMobile',
+					} }
+					letterSpacingType={ {
+						value: titleLetterSpacingType,
+						label: 'titleLetterSpacingType',
 					} }
 					transform={ {
 						value: titleTransform,
@@ -1117,18 +1123,22 @@ const Settings = ( props ) => {
 			<AdvancedPopColorControl
 				label={ __( 'Color', 'ultimate-addons-for-gutenberg' ) }
 				colorValue={ iconColor }
-				onColorChange={ ( value ) =>
-					setAttributes( { iconColor: value } )
-				}
+				data={ {
+					value: iconColor,
+					label: 'iconColor',
+				} }
+				setAttributes={ setAttributes }
 			/>
 		);
 		const tabOutputActive = (
 			<AdvancedPopColorControl
 				label={ __( 'Color', 'ultimate-addons-for-gutenberg' ) }
 				colorValue={ activeiconColor }
-				onColorChange={ ( value ) =>
-					setAttributes( { activeiconColor: value } )
-				}
+				data={ {
+					value: activeiconColor,
+					label: 'activeiconColor',
+				} }
+				setAttributes={ setAttributes }
 			/>
 		);
 		return (
@@ -1209,22 +1219,6 @@ const Settings = ( props ) => {
 	};
 	return (
 		<InspectorControls>
-			<BlockControls key="controls">
-				<BlockAlignmentToolbar
-					value={ tabAlign }
-					onChange={ ( value ) =>
-						setAttributes( { tabAlign: value } )
-					}
-					controls={ [ 'left', 'center', 'right' ] }
-				/>
-				<AlignmentToolbar
-					value={ titleAlign }
-					onChange={ ( value ) =>
-						setAttributes( { titleAlign: value } )
-					}
-					controls={ [ 'left', 'center', 'right' ] }
-				/>
-			</BlockControls>
 			<InspectorTabs>
 				<InspectorTab { ...UAGTabs.general }>
 					{ presetSettings() }

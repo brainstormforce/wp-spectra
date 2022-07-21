@@ -7,6 +7,7 @@ import {
 import { useDeviceType } from '@Controls/getPreviewType';
 import React, { lazy, Suspense, useRef, useEffect } from 'react';
 import lazyLoader from '@Controls/lazy-loader';
+import { getFallbackNumber } from '@Controls/getAttributeFallback';
 
 const Slider = lazy( () =>
 	import(
@@ -15,6 +16,7 @@ const Slider = lazy( () =>
 );
 
 function Blog( props ) {
+	const blockName = props.name.replace( 'uagb/', '' );
 	const article = useRef();
 	const { attributes, className, latestPosts, block_id } = props;
 	const deviceType = useDeviceType();
@@ -28,6 +30,7 @@ function Blog( props ) {
 		postsToShow,
 		autoplay,
 		pauseOnHover,
+		autoplaySpeed,
 		transitionSpeed,
 		infiniteLoop,
 		arrowSize,
@@ -37,8 +40,18 @@ function Blog( props ) {
 		arrowDots,
 		equalHeight,
 		layoutConfig,
-		rowGap
+		rowGap,
 	} = attributes;
+
+	const postsToShowFallback = getFallbackNumber( postsToShow, 'postsToShow', blockName );
+	const columnsFallback = getFallbackNumber( columns, 'columns', blockName );
+	const tcolumnsFallback = getFallbackNumber( tcolumns, 'tcolumns', blockName );
+	const mcolumnsFallback = getFallbackNumber( mcolumns, 'mcolumns', blockName );
+	const rowGapFallback = getFallbackNumber( rowGap, 'rowGap', blockName );
+	const autoplaySpeedFallback = getFallbackNumber( autoplaySpeed, 'autoplaySpeed', blockName );
+	const transitionSpeedFallback = getFallbackNumber( transitionSpeed, 'transitionSpeed', blockName );
+	const arrowSizeFallback = getFallbackNumber( arrowSize, 'arrowSize', blockName );
+	const arrowBorderSizeFallback = getFallbackNumber( arrowBorderSize, 'arrowBorderSize', blockName );
 
 	const updateImageBgWidth = () => {
 
@@ -46,7 +59,7 @@ function Blog( props ) {
 
 			if( article?.current ){
 				const articleWidth  = article?.current?.offsetWidth;
-				const imageWidth = 100 - ( rowGap / articleWidth ) * 100;
+				const imageWidth = 100 - ( rowGapFallback / articleWidth ) * 100;
 				const parent = article?.current?.closest( '.uagb-post__image-position-background' );
 
 				if ( parent ) {
@@ -54,7 +67,7 @@ function Blog( props ) {
 					for( const image of images ) {
 						if ( image ) {
 							image.style.width = imageWidth + '%';
-							image.style.marginLeft = rowGap / 2 + 'px';
+							image.style.marginLeft = rowGapFallback / 2 + 'px';
 
 						}
 					}
@@ -74,8 +87,8 @@ function Blog( props ) {
 
 	// Removing posts from display should be instant.
 	const displayPosts =
-		latestPosts.length > postsToShow
-			? latestPosts.slice( 0, postsToShow )
+		latestPosts.length > postsToShowFallback
+			? latestPosts.slice( 0, postsToShowFallback )
 			: latestPosts;
 
 	function NextArrow() {
@@ -89,7 +102,7 @@ function Blog( props ) {
 				style={ {
 					borderColor: arrowColor,
 					borderRadius: arrowBorderRadius,
-					borderWidth: arrowBorderSize,
+					borderWidth: arrowBorderSizeFallback,
 				} }
 			>
 				{ UAGB_Block_Icons.carousel_right }
@@ -108,7 +121,7 @@ function Blog( props ) {
 				style={ {
 					borderColor: arrowColor,
 					borderRadius: arrowBorderRadius,
-					borderWidth: arrowBorderSize,
+					borderWidth: arrowBorderSizeFallback,
 				} }
 			>
 				{ UAGB_Block_Icons.carousel_left }
@@ -126,13 +139,13 @@ function Blog( props ) {
 		: '';
 
 	const settings = {
-		slidesToShow: columns,
+		slidesToShow: columnsFallback,
 		slidesToScroll: 1,
-		autoplaySpeed: 2000,
+		autoplaySpeed: autoplaySpeedFallback,
 		autoplay,
 		infinite: infiniteLoop,
 		pauseOnHover,
-		speed: transitionSpeed,
+		speed: transitionSpeedFallback,
 		arrows,
 		dots,
 		rtl: false,
@@ -141,20 +154,20 @@ function Blog( props ) {
 				uagb_carousel_height( block_id ); // eslint-disable-line no-undef
 			}
 		},
-		nextArrow: <NextArrow arrowSize={ arrowSize } />,
-		prevArrow: <PrevArrow arrowSize={ arrowSize } />,
+		nextArrow: <NextArrow arrowSize={ arrowSizeFallback } />,
+		prevArrow: <PrevArrow arrowSize={ arrowSizeFallback } />,
 		responsive: [
 			{
 				breakpoint: 1024,
 				settings: {
-					slidesToShow: tcolumns,
+					slidesToShow: tcolumnsFallback,
 					slidesToScroll: 1,
 				},
 			},
 			{
 				breakpoint: 767,
 				settings: {
-					slidesToShow: mcolumns,
+					slidesToShow: mcolumnsFallback,
 					slidesToScroll: 1,
 				},
 			},
@@ -173,14 +186,14 @@ function Blog( props ) {
 		</article>
 	) );
 
-	if ( columns >= displayPosts.length ) {
+	if ( columnsFallback >= displayPosts.length ) {
 		return (
 			<div
 				className={ classnames(
 					'is-carousel',
-					`uagb-post__columns-${ columns }`,
-					`uagb-post__columns-tablet-${ tcolumns }`,
-					`uagb-post__columns-mobile-${ mcolumns }`,
+					`uagb-post__columns-${ columnsFallback }`,
+					`uagb-post__columns-tablet-${ tcolumnsFallback }`,
+					`uagb-post__columns-mobile-${ mcolumnsFallback }`,
 					'uagb-post__items',
 					className,
 					'uagb-post-grid',
@@ -209,7 +222,7 @@ function Blog( props ) {
 			<Slider
 				className={ classnames(
 					'is-carousel',
-					`uagb-post__columns-${ columns }`,
+					`uagb-post__columns-${ columnsFallback }`,
 					'uagb-post__items',
 					className,
 					'uagb-post-grid',

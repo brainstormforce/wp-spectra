@@ -271,6 +271,24 @@
 
 .uagb-columns-variation-picker {
 
+	// This selector is apprently active for mobile preview.
+	.components-placeholder.is-medium {
+
+		.components-placeholder__fieldset {
+
+			// Since sub heading is hidden on mobile, we un-hide it.
+			.components-placeholder__instructions {
+				display: inline-block;
+			}
+		}
+
+	}
+
+	.components-placeholder__instructions {
+		width: 100%;
+		text-align: center;
+	}
+
 	.components-button,
 	.components-button:hover:not(:disabled) {
 		box-shadow: none;
@@ -300,6 +318,11 @@
 		.components-placeholder__label {
 			font-size: 22px;
 			font-weight: 500;
+
+			// The heading has a dash-icon which is invisible but takes up some space, hence we set the it's display to none.
+			.dashicon {
+				display: none;
+			}
 		}
 	}
 
@@ -320,4 +343,20 @@
 			width: 80px;
 		}
 	}
+}
+
+@media screen and (max-width: 976px) {
+
+	.uagb-columns-variation-picker {
+
+		.components-placeholder__fieldset {
+			max-width: 100%;
+		}
+
+		ul.block-editor-block-variation-picker__variations {
+			justify-content: center;
+			column-gap: 35px;
+		}
+	}
+
 }

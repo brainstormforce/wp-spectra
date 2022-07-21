@@ -5,6 +5,8 @@ import { __ } from '@wordpress/i18n';
 import { RichText } from '@wordpress/block-editor';
 import React, { useLayoutEffect } from 'react';
 import styles from './editor.lazy.scss';
+import { useDeviceType } from '@Controls/getPreviewType';
+
 const Render = ( props ) => {
 	// Add and remove the CSS on the drop and remove of the component.
 	useLayoutEffect( () => {
@@ -25,8 +27,10 @@ const Render = ( props ) => {
 		link,
 		target,
 		disableLink,
-		hideLabel,
+		hideLabel
 	} = attributes;
+
+	const deviceType = useDeviceType();
 
 	let imageIconHtml = '';
 
@@ -51,7 +55,8 @@ const Render = ( props ) => {
 		<div
 			className={ classnames(
 				className,
-				`uagb-block-${ block_id }`
+				`uagb-block-${ block_id }`,
+				`uagb-editor-preview-mode-${ deviceType.toLowerCase() }`,
 			) }
 		>
 			{ disableLink && (

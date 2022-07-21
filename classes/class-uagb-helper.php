@@ -211,7 +211,7 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 
 			$css_val = '';
 
-			if ( ! empty( $value ) ) {
+			if ( isset( $value ) ) {
 				$css_val = esc_attr( $value ) . $unit;
 			}
 
@@ -251,7 +251,7 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 		 */
 		public static function backend_load_font_awesome_icons() {
 
-			$json_file = UAGB_DIR . 'blocks-config/uagb-controls/uagb-icons.php';
+			$json_file = UAGB_DIR . 'blocks-config/uagb-controls/spectra-icons-v6.php';
 
 			if ( ! file_exists( $json_file ) ) {
 				return array();
@@ -282,8 +282,24 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 			$icon = sanitize_text_field( esc_attr( $icon ) );
 
 			$json = self::backend_load_font_awesome_icons();
-			$path = isset( $json[ $icon ]['svg']['brands'] ) ? $json[ $icon ]['svg']['brands']['path'] : $json[ $icon ]['svg']['solid']['path'];
-			$view = isset( $json[ $icon ]['svg']['brands'] ) ? $json[ $icon ]['svg']['brands']['viewBox'] : $json[ $icon ]['svg']['solid']['viewBox'];
+			$path = null;
+			$view = null;
+
+			// Load Polyfiller Array if needed.
+			if ( 'disabled' !== UAGB_Admin_Helper::get_admin_settings_option( 'uag_load_font_awesome_5', 'disabled' ) ) {
+				$font_awesome_5_polyfiller = get_spectra_font_awesome_polyfiller();
+				$path = isset( $json[ $font_awesome_5_polyfiller[ $icon ] ]['svg']['brands'] ) ? $json[ $font_awesome_5_polyfiller[ $icon ] ]['svg']['brands']['path'] : $json[ $font_awesome_5_polyfiller[ $icon ] ]['svg']['solid']['path'];
+				$view = isset( $json[ $font_awesome_5_polyfiller[ $icon ] ]['svg']['brands'] ) ? $json[ $font_awesome_5_polyfiller[ $icon ] ]['svg']['brands']['viewBox'] : $json[ $font_awesome_5_polyfiller[ $icon ] ]['svg']['solid']['viewBox'];
+				if ( ! $path ) {
+					$path = isset( $json[ $icon ]['svg']['brands'] ) ? $json[ $icon ]['svg']['brands']['path'] : $json[ $icon ]['svg']['solid']['path'];
+				}
+				if ( ! $view ) {
+					$view = isset( $json[ $icon ]['svg']['brands'] ) ? $json[ $icon ]['svg']['brands']['viewBox'] : $json[ $icon ]['svg']['solid']['viewBox'];
+				}
+			} else {
+				$path = isset( $json[ $icon ]['svg']['brands'] ) ? $json[ $icon ]['svg']['brands']['path'] : $json[ $icon ]['svg']['solid']['path'];
+				$view = isset( $json[ $icon ]['svg']['brands'] ) ? $json[ $icon ]['svg']['brands']['viewBox'] : $json[ $icon ]['svg']['solid']['viewBox'];
+			}
 			if ( $view ) {
 				$view = implode( ' ', $view );
 			}
@@ -316,8 +332,8 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 
 			// Block type is grid/masonry/carousel/timeline.
 			$query_args = array(
-				'offset'              => ( isset( $attributes['postsOffset'] ) ) ? $attributes['postsOffset'] : 0,
-				'posts_per_page'      => ( isset( $attributes['postsToShow'] ) ) ? $attributes['postsToShow'] : 6,
+				'offset'              => UAGB_Block_Helper::get_fallback_number( $attributes['postsOffset'], 'postsOffset', $attributes['blockName'] ),
+				'posts_per_page'      => UAGB_Block_Helper::get_fallback_number( $attributes['postsToShow'], 'postsToShow', $attributes['blockName'] ),
 				'post_status'         => 'publish',
 				'post_type'           => ( isset( $attributes['postType'] ) ) ? $attributes['postType'] : 'post',
 				'order'               => ( isset( $attributes['order'] ) ) ? $attributes['order'] : 'desc',
@@ -831,6 +847,8 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 			$f_sz_slug      = ( '' === $slug ) ? 'fontSize' : $slug . 'FontSize';
 			$l_ht_type_slug = ( '' === $slug ) ? 'lineHeightType' : $slug . 'LineHeightType';
 			$f_sz_type_slug = ( '' === $slug ) ? 'fontSizeType' : $slug . 'FontSizeType';
+			$l_sp_slug      = ( '' === $slug ) ? 'letterSpacing' : $slug . 'LetterSpacing';
+			$l_sp_type_slug = ( '' === $slug ) ? 'letterSpacingType' : $slug . 'LetterSpacingType';
 
 			$text_transform  = isset( $attr[ $transform_slug ] ) ? $attr[ $transform_slug ] : 'normal';
 			$text_decoration = isset( $attr[ $decoration_slug ] ) ? $attr[ $decoration_slug ] : 'none';
@@ -844,6 +862,7 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 				'font-weight'     => $attr[ $weight_slug ],
 				'font-size'       => ( isset( $attr[ $f_sz_slug ] ) ) ? self::get_css_value( $attr[ $f_sz_slug ], $attr[ $f_sz_type_slug ] ) : '',
 				'line-height'     => ( isset( $attr[ $l_ht_slug ] ) ) ? self::get_css_value( $attr[ $l_ht_slug ], $attr[ $l_ht_type_slug ] ) : '',
+				'letter-spacing'  => ( isset( $attr[ $l_sp_slug ] ) ) ? self::get_css_value( $attr[ $l_sp_slug ], $attr[ $l_sp_type_slug ] ) : '',
 			);
 
 			$typo_css_desktop[ $selector ] = array_merge(
@@ -852,8 +871,9 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 			);
 
 			$typo_css_tablet[ $selector ] = array(
-				'font-size'   => ( isset( $attr[ $f_sz_slug . 'Tablet' ] ) ) ? self::get_css_value( $attr[ $f_sz_slug . 'Tablet' ], $attr[ $f_sz_type_slug ] ) : '',
-				'line-height' => ( isset( $attr[ $l_ht_slug . 'Tablet' ] ) ) ? self::get_css_value( $attr[ $l_ht_slug . 'Tablet' ], $attr[ $l_ht_type_slug ] ) : '',
+				'font-size'      => ( isset( $attr[ $f_sz_slug . 'Tablet' ] ) ) ? self::get_css_value( $attr[ $f_sz_slug . 'Tablet' ], $attr[ $f_sz_type_slug ] ) : '',
+				'line-height'    => ( isset( $attr[ $l_ht_slug . 'Tablet' ] ) ) ? self::get_css_value( $attr[ $l_ht_slug . 'Tablet' ], $attr[ $l_ht_type_slug ] ) : '',
+				'letter-spacing' => ( isset( $attr[ $l_sp_slug . 'Tablet' ] ) ) ? self::get_css_value( $attr[ $l_sp_slug . 'Tablet' ], $attr[ $l_sp_type_slug ] ) : '',
 			);
 
 			$typo_css_tablet[ $selector ] = array_merge(
@@ -862,8 +882,9 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 			);
 
 			$typo_css_mobile[ $selector ] = array(
-				'font-size'   => ( isset( $attr[ $f_sz_slug . 'Mobile' ] ) ) ? self::get_css_value( $attr[ $f_sz_slug . 'Mobile' ], $attr[ $f_sz_type_slug ] ) : '',
-				'line-height' => ( isset( $attr[ $l_ht_slug . 'Mobile' ] ) ) ? self::get_css_value( $attr[ $l_ht_slug . 'Mobile' ], $attr[ $l_ht_type_slug ] ) : '',
+				'font-size'      => ( isset( $attr[ $f_sz_slug . 'Mobile' ] ) ) ? self::get_css_value( $attr[ $f_sz_slug . 'Mobile' ], $attr[ $f_sz_type_slug ] ) : '',
+				'line-height'    => ( isset( $attr[ $l_ht_slug . 'Mobile' ] ) ) ? self::get_css_value( $attr[ $l_ht_slug . 'Mobile' ], $attr[ $l_ht_type_slug ] ) : '',
+				'letter-spacing' => ( isset( $attr[ $l_sp_slug . 'Mobile' ] ) ) ? self::get_css_value( $attr[ $l_sp_slug . 'Mobile' ], $attr[ $l_sp_type_slug ] ) : '',
 			);
 
 			$typo_css_mobile[ $selector ] = array_merge(
@@ -1290,13 +1311,13 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 		/**
 		 * Get the excerpt.
 		 *
-		 * @param int    $post_id for the block.
-		 * @param string $content for post content.
-		 * @param int    $length for excerpt.
+		 * @param int    $post_id          for the block.
+		 * @param string $content          for post content.
+		 * @param int    $length_fallback  for excerpt, after fallback has been done.
 		 *
 		 * @since 2.0.0
 		 */
-		public static function uagb_get_excerpt( $post_id, $content, $length ) {
+		public static function uagb_get_excerpt( $post_id, $content, $length_fallback ) {
 
 			// If there's an excerpt provided from meta, use it.
 			$excerpt = get_post_field( 'post_excerpt', $post_id );
@@ -1310,10 +1331,9 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 			}
 			// Trim the excerpt.
 			if ( ! empty( $excerpt ) ) {
-				$excerpt        = explode( ' ', $excerpt );
-				$trim_to_length = ( isset( $length ) ) ? $length : 15;
-				if ( count( $excerpt ) > $trim_to_length ) {
-					$excerpt = implode( ' ', array_slice( $excerpt, 0, $trim_to_length ) ) . '...';
+				$excerpt = explode( ' ', $excerpt );
+				if ( count( $excerpt ) > $length_fallback ) {
+					$excerpt = implode( ' ', array_slice( $excerpt, 0, $length_fallback ) ) . '...';
 				} else {
 					$excerpt = implode( ' ', $excerpt );
 				}

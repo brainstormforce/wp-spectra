@@ -3,13 +3,13 @@ import lazyLoader from '@Controls/lazy-loader';
 import TypographyControl from '@Components/typography';
 import { useViewportMatch } from '@wordpress/compose';
 import InspectorTabs from '@Components/inspector-tabs/InspectorTabs.js';
+import ResponsiveSelectControl from '@Components/responsive-select';
 import InspectorTab, {
 	UAGTabs,
 } from '@Components/inspector-tabs/InspectorTab.js';
 import AdvancedPopColorControl from '@Components/color-control/advanced-pop-color-control.js';
 import SpacingControl from '@Components/spacing-control';
 import Range from '@Components/range/Range.js';
-import Border from '@Components/border';
 import UAGImage from '@Components/image';
 import BoxShadowControl from '@Components/box-shadow';
 import { useSelect } from '@wordpress/data';
@@ -22,28 +22,35 @@ import {
 	InspectorControls,
 } from '@wordpress/block-editor';
 import {
-	RangeControl,
 	TextControl,
-	SelectControl,
 	__experimentalAlignmentMatrixControl as AlignmentMatrixControl,
 	Icon,
 	ToggleControl
 } from '@wordpress/components';
 import renderSVG from '@Controls/renderIcon';
 import ImageSizeControl from '@Components/image-size-control'
-
+import ResponsiveBorder from '@Components/responsive-border'
 import { store as coreStore } from '@wordpress/core-data';
 // Extend component
 import UAGAdvancedPanelBody from '@Components/advanced-panel-body';
-
+import boxShadowPresets from './presets';
+import UAGPresets from '@Components/presets';
+import {pickRelevantMediaFiles } from './utils'
 
 export default function Settings( props ) {
 	const deviceType = useDeviceType();
 	props = props.parentProps;
 	const { attributes, setAttributes, context, isSelected, clientId } = props;
 	const {
+		block_id,
+		objectFit,
+		objectFitTablet,
+		objectFitMobile,
 		layout,
 		id,
+		url,
+		urlTablet,
+		urlMobile,
 		width,
 		widthTablet,
 		widthMobile,
@@ -51,6 +58,8 @@ export default function Settings( props ) {
 		heightTablet,
 		heightMobile,
 		align,
+		alignTablet,
+		alignMobile,
 		alt,
 		sizeSlug,
 		sizeSlugTablet,
@@ -150,11 +159,6 @@ export default function Settings( props ) {
 		overlayBackground,
 		overlayOpacity,
 		overlayHoverOpacity,
-		overlayBorderStyle,
-		overlayBorderWidth,
-		overlayBorderRadius,
-		overlayBorderColor,
-		overlayBorderHoverColor,
 		// seperator
 		seperatorShowOn,
 		seperatorStyle,
@@ -182,12 +186,6 @@ export default function Settings( props ) {
 		seperatorMarginLink,
 		// effect
 		imageHoverEffect,
-		// border
-		imageBorderWidth,
-		imageBorderStyle,
-		imageBorderRadius,
-		imageBorderColor,
-		imageBorderhoverColor,
 		// shadow
 		imageBoxShadowColor,
 		imageBoxShadowHOffset,
@@ -200,7 +198,15 @@ export default function Settings( props ) {
 		maskCustomShape,
 		maskSize,
 		maskPosition,
-		maskRepeat
+		maskRepeat,
+		headingLetterSpacing,
+		headingLetterSpacingTablet,
+		headingLetterSpacingMobile,
+		headingLetterSpacingType,
+		captionLetterSpacing,
+		captionLetterSpacingTablet,
+		captionLetterSpacingMobile,
+		captionLetterSpacingType,
 	} = attributes;
 
 
@@ -225,6 +231,13 @@ export default function Settings( props ) {
 		[ id, isSelected ]
 	);
 
+	const { imageDefaultSize } = useSelect( ( select ) => {
+		const { getSettings } = select( blockEditorStore );
+		// eslint-disable-next-line no-shadow
+		const {imageDefaultSize} = getSettings();
+		return {imageDefaultSize}
+	}, [] );
+
 	useEffect( () => {
 		if( !sizeSlug ) {
 			return;
@@ -243,14 +256,16 @@ export default function Settings( props ) {
 	const isWideAligned = [ 'wide', 'full' ].includes( align );
 	const isResizable = allowResize && ! ( isWideAligned && isLargeViewport );
 	const imageSizeOptions =  image?.media_details && imageSizes.reduce( ( acc, item ) => {
-		acc.push( { value: item.slug, label: item.name } )
+		if( image?.media_details?.sizes[item.slug] ){
+			acc.push( { value: item.slug, label: item.name } )
+		}
 		return acc;
 	}, [] );
 
 
 	function updateImage( newSizeSlug ) {
 		const newUrl = image?.media_details?.sizes[newSizeSlug]
-		if ( ! newUrl ) {
+		if ( ! newUrl || newUrl?.source_url === url ) {
 			return null;
 		}
 		setAttributes( {
@@ -263,7 +278,7 @@ export default function Settings( props ) {
 
 	function updateTabletImage( newSizeSlug ) {
 		const newUrl = image?.media_details?.sizes[newSizeSlug]
-		if ( ! newUrl ) {
+		if ( ! newUrl || newUrl?.source_url === urlTablet ) {
 			return null;
 		}
 		setAttributes( {
@@ -276,7 +291,7 @@ export default function Settings( props ) {
 
 	function updateMobileImage( newSizeSlug ) {
 		const newUrl = image?.media_details?.sizes[newSizeSlug]
-		if ( ! newUrl ) {
+		if ( ! newUrl || newUrl?.source_url === urlMobile ) {
 			return null;
 		}
 		setAttributes( {
@@ -286,6 +301,50 @@ export default function Settings( props ) {
 			sizeSlugMobile: newSizeSlug,
 		} );
 	}
+
+	/*
+	 * Event to set Image as null while removing.
+	 */
+	const onRemoveImage = () => {
+		setAttributes( {
+			url: undefined,
+			urlTablet: undefined,
+			urlMobile: undefined,
+			alt: undefined,
+			id: undefined,
+			title: undefined,
+			caption: undefined,
+			width: undefined,
+			widthTablet: undefined,
+			widthMobile: undefined,
+			height: undefined,
+			heightTablet: undefined,
+			heightMobile: undefined
+		} );
+	};
+
+	/*
+	 * Event to set Image as while adding.
+	 */
+	const onSelectImage = ( media ) => {
+		if ( ! media || ! media.url ) {
+			setAttributes( {
+				url: undefined,
+				alt: undefined,
+				id: undefined,
+				title: undefined,
+				caption: undefined,
+			} );
+
+			return;
+		}
+
+		const mediaAttributes = pickRelevantMediaFiles( media, imageDefaultSize );
+
+		setAttributes( mediaAttributes );
+	};
+
+
 
 	/*
 	 * Event to set Image as while adding.
@@ -307,13 +366,112 @@ export default function Settings( props ) {
 		setAttributes( { maskCustomShape: null } );
 	};
 
-
+	const objectFitOptions = {
+		desktop: [
+			{
+				value: 'default',
+				label: __(
+					'Default',
+					'ultimate-addons-for-gutenberg'
+				),
+			},
+			{
+				value: 'fill',
+				label: __(
+					'Fill',
+					'ultimate-addons-for-gutenberg'
+				),
+			},
+			{
+				value: 'cover',
+				label: __(
+					'Cover',
+					'ultimate-addons-for-gutenberg'
+				),
+			},
+			{
+				value: 'contain',
+				label: __(
+					'Contain',
+					'ultimate-addons-for-gutenberg'
+				),
+			}
+		],
+		tablet: [
+			{
+				value: 'default',
+				label: __(
+					'Default',
+					'ultimate-addons-for-gutenberg'
+				),
+			},
+			{
+				value: 'fill',
+				label: __(
+					'Fill',
+					'ultimate-addons-for-gutenberg'
+				),
+			},
+			{
+				value: 'cover',
+				label: __(
+					'Cover',
+					'ultimate-addons-for-gutenberg'
+				),
+			},
+			{
+				value: 'contain',
+				label: __(
+					'Contain',
+					'ultimate-addons-for-gutenberg'
+				),
+			}
+		],
+		mobile: [
+			{
+				value: 'default',
+				label: __(
+					'Default',
+					'ultimate-addons-for-gutenberg'
+				),
+			},
+			{
+				value: 'fill',
+				label: __(
+					'Fill',
+					'ultimate-addons-for-gutenberg'
+				),
+			},
+			{
+				value: 'cover',
+				label: __(
+					'Cover',
+					'ultimate-addons-for-gutenberg'
+				),
+			},
+			{
+				value: 'contain',
+				label: __(
+					'Contain',
+					'ultimate-addons-for-gutenberg'
+				),
+			}
+		],
+	};
 
 	const generalPanel = (
 		<UAGAdvancedPanelBody
 			title={ __( 'Image', 'ultimate-addons-for-gutenberg' ) }
 			initialOpen={ true }
 		>
+			<UAGImage
+				label={' '}
+				onSelectImage={onSelectImage}
+				backgroundImage={{
+					url
+				}}
+				onRemoveImage={onRemoveImage}
+			/>
 			<MultiButtonsControl
 				setAttributes={ setAttributes }
 				label={ __(
@@ -372,15 +530,35 @@ export default function Settings( props ) {
 					</>
 				)
 			}
-			<SelectControl
+			<ResponsiveSelectControl
+					label={ __( 'Object Fit', 'ultimate-addons-for-gutenberg' ) }
+					data={ {
+						desktop: {
+							value: objectFit,
+							label: 'objectFit',
+						},
+						tablet: {
+							value: objectFitTablet,
+							label: 'objectFitTablet',
+						},
+						mobile: {
+							value: objectFitMobile,
+							label: 'objectFitMobile',
+						},
+					} }
+					options={ objectFitOptions }
+					setAttributes={ setAttributes }
+			/>
+			<UAGSelectControl
 				label={ __(
 					'On Hover Image',
 					'ultimate-addons-for-gutenberg'
 				) }
-				value={ imageHoverEffect }
-				onChange={ ( value ) =>
-					setAttributes( { imageHoverEffect: value } )
-				}
+				data={ {
+					value: imageHoverEffect,
+					label: 'imageHoverEffect',
+				} }
+				setAttributes={ setAttributes }
 				options={ [
 					{
 						value: 'static',
@@ -734,12 +912,16 @@ export default function Settings( props ) {
 						/>
 					)
 				}
-				<SelectControl
-					label={ __( 'Style' ) }
-					value={ seperatorStyle }
-					onChange={ ( value ) =>
-						setAttributes( { seperatorStyle: value } )
-					}
+				<UAGSelectControl
+					label={ __(
+						'Style',
+						'ultimate-addons-for-gutenberg'
+					) }
+					data={ {
+						value: seperatorStyle,
+						label: 'seperatorStyle',
+					} }
+					setAttributes={ setAttributes }
 					options={ [
 						{
 							value: 'none',
@@ -779,15 +961,16 @@ export default function Settings( props ) {
 					] }
 				/>
 				{ 'none' !== seperatorStyle && (
-					<SelectControl
+					<UAGSelectControl
 						label={ __(
 							'Position',
 							'ultimate-addons-for-gutenberg'
 						) }
-						value={ seperatorPosition }
-						onChange={ ( value ) =>
-							setAttributes( { seperatorPosition: value } )
-						}
+						data={ {
+							value: seperatorPosition,
+							label: 'seperatorPosition',
+						} }
+						setAttributes={ setAttributes }
 						options={ [
 							{
 								value: 'before_title',
@@ -997,14 +1180,32 @@ export default function Settings( props ) {
 						value: headingLineHeightTablet,
 						label: 'headingLineHeightTablet',
 					} }
+					letterSpacing={ {
+						value: headingLetterSpacing,
+						label: 'headingLetterSpacing',
+					} }
+					letterSpacingTablet={ {
+						value: headingLetterSpacingTablet,
+						label: 'headingLetterSpacingTablet',
+					} }
+					letterSpacingMobile={ {
+						value: headingLetterSpacingMobile,
+						label: 'headingLetterSpacingMobile',
+					} }
+					letterSpacingType={ {
+						value: headingLetterSpacingType,
+						label: 'headingLetterSpacingType',
+					} }
 				/>
 			</Suspense>
 			<AdvancedPopColorControl
 				label={ __( 'Color', 'ultimate-addons-for-gutenberg' ) }
 				colorValue={ headingColor ? headingColor : '' }
-				onColorChange={ ( value ) =>
-					setAttributes( { headingColor: value } )
-				}
+				data={ {
+					value: headingColor,
+					label: 'headingColor',
+				} }
+				setAttributes={ setAttributes }
 			/>
 			<SpacingControl
 				label={ __(
@@ -1085,7 +1286,7 @@ export default function Settings( props ) {
 	const captionStylePanel =  (
 		<UAGAdvancedPanelBody
 			title={ layout === 'overlay' ?  __( 'Description', 'ultimate-addons-for-gutenberg' ) : __( 'Caption', 'ultimate-addons-for-gutenberg' ) }
-			initialOpen={ true }
+			initialOpen={ false }
 		>
 			{
 				'default' === layout && (
@@ -1209,14 +1410,32 @@ export default function Settings( props ) {
 						value: captionLineHeightTablet,
 						label: 'captionLineHeightTablet',
 					} }
+					letterSpacing={ {
+						value: captionLetterSpacing,
+						label: 'captionLetterSpacing',
+					} }
+					letterSpacingTablet={ {
+						value: captionLetterSpacingTablet,
+						label: 'captionLetterSpacingTablet',
+					} }
+					letterSpacingMobile={ {
+						value: captionLetterSpacingMobile,
+						label: 'captionLetterSpacingMobile',
+					} }
+					letterSpacingType={ {
+						value: captionLetterSpacingType,
+						label: 'captionLetterSpacingType',
+					} }
 				/>
 			</Suspense>
 			<AdvancedPopColorControl
 				label={ __( 'Color', 'ultimate-addons-for-gutenberg' ) }
 				colorValue={ captionColor ? captionColor : '' }
-				onColorChange={ ( value ) =>
-					setAttributes( { captionColor: value } )
-				}
+				data={ {
+					value: captionColor,
+					label: 'captionColor',
+				} }
+				setAttributes={ setAttributes }
 			/>
 			<SpacingControl
 				label={ __(
@@ -1306,8 +1525,18 @@ export default function Settings( props ) {
 					'ultimate-addons-for-gutenberg'
 				) }
 				data={ {
-					value: align,
-					label: 'align',
+					desktop: {
+						value: align,
+						label: 'align',
+					},
+					tablet: {
+						value: alignTablet,
+						label: 'alignTablet',
+					},
+					mobile: {
+						value: alignMobile,
+						label: 'alignMobile',
+					},
 				} }
 				className="uagb-multi-button-alignment-control"
 				options={ [
@@ -1353,40 +1582,15 @@ export default function Settings( props ) {
 					},
 				] }
 				showIcons={ true }
+				responsive={ true }
 			/>
 			{
 				layout === 'default' && (
-					<Border
+					<ResponsiveBorder
 						setAttributes={ setAttributes }
-						borderStyle={ {
-							value: imageBorderStyle,
-							label: 'imageBorderStyle',
-							title: __( 'Style', 'ultimate-addons-for-gutenberg' ),
-						} }
-						borderWidth={ {
-							value: imageBorderWidth,
-							label: 'imageBorderWidth',
-							title: __( 'Width', 'ultimate-addons-for-gutenberg' ),
-						} }
-						borderRadius={ {
-							value: imageBorderRadius,
-							label: 'imageBorderRadius',
-							title: __( 'Radius', 'ultimate-addons-for-gutenberg' ),
-						} }
-						borderColor={ {
-							value: imageBorderColor,
-							label: 'imageBorderColor',
-							title: __( 'Color', 'ultimate-addons-for-gutenberg' ),
-						} }
-						borderHoverColor={ {
-							value: imageBorderhoverColor,
-							label: 'imageBorderhoverColor',
-							title: __(
-								'Hover Color',
-								'ultimate-addons-for-gutenberg'
-							),
-						} }
-						disableBottomSeparator={ true }
+						prefix={'image'}
+						attributes={ attributes }
+						deviceType={deviceType}
 					/>
 				)
 			}
@@ -1401,37 +1605,11 @@ export default function Settings( props ) {
 						value={ overlayContentPosition }
 						onChange={ ( newAlignment ) =>  setAttributes( {overlayContentPosition: newAlignment} ) }
 					/>
-					<Border
+					<ResponsiveBorder
 						setAttributes={ setAttributes }
-						borderStyle={ {
-							value: overlayBorderStyle,
-							label: 'overlayBorderStyle',
-							title: __( 'Style', 'ultimate-addons-for-gutenberg' ),
-						} }
-						borderWidth={ {
-							value: overlayBorderWidth,
-							label: 'overlayBorderWidth',
-							title: __( 'Width', 'ultimate-addons-for-gutenberg' ),
-						} }
-						borderRadius={ {
-							value: overlayBorderRadius,
-							label: 'overlayBorderRadius',
-							title: __( 'Radius', 'ultimate-addons-for-gutenberg' ),
-						} }
-						borderColor={ {
-							value: overlayBorderColor,
-							label: 'overlayBorderColor',
-							title: __( 'Color', 'ultimate-addons-for-gutenberg' ),
-						} }
-						borderHoverColor={ {
-							value: overlayBorderHoverColor,
-							label: 'overlayBorderHoverColor',
-							title: __(
-								'Hover Color',
-								'ultimate-addons-for-gutenberg'
-							),
-						} }
-						disableBottomSeparator={ false }
+						prefix={'overlay'}
+						attributes={ attributes }
+						deviceType={deviceType}
 					/>
 					<Range
 						label={ __(
@@ -1440,12 +1618,11 @@ export default function Settings( props ) {
 						) }
 						setAttributes={ setAttributes }
 						value={ overlayPositionFromEdge }
-						onChange={ ( value ) =>
-							setAttributes( {
-								overlayPositionFromEdge: value,
-							} )
-						}
-						min={ 0 }
+						data={ {
+							value: overlayPositionFromEdge,
+							label: 'overlayPositionFromEdge',
+						} }
+						min={ -100 }
 						max={ 100 }
 						unit={ {
 							value: overlayPositionFromEdgeUnit,
@@ -1528,56 +1705,67 @@ export default function Settings( props ) {
 					label: 'imageMarginLink',
 				} }
 			/>
-			{
-				'static' === imageHoverEffect && (
-					<BoxShadowControl
-						setAttributes={ setAttributes }
-						label={ __(
-							'Box Shadow',
-							'ultimate-addons-for-gutenberg'
-						) }
-						boxShadowColor={ {
-							value: imageBoxShadowColor,
-							label: 'imageBoxShadowColor',
-							title: __( 'Color', 'ultimate-addons-for-gutenberg' ),
-						} }
-						boxShadowHOffset={ {
-							value: imageBoxShadowHOffset,
-							label: 'imageBoxShadowHOffset',
-							title: __(
-								'Horizontal',
-								'ultimate-addons-for-gutenberg'
-							),
-						} }
-						boxShadowVOffset={ {
-							value: imageBoxShadowVOffset,
-							label: 'imageBoxShadowVOffset',
-							title: __(
-								'Vertical',
-								'ultimate-addons-for-gutenberg'
-							),
-						} }
-						boxShadowBlur={ {
-							value: imageBoxShadowBlur,
-							label: 'imageBoxShadowBlur',
-							title: __( 'Blur', 'ultimate-addons-for-gutenberg' ),
-						} }
-						boxShadowSpread={ {
-							value: imageBoxShadowSpread,
-							label: 'imageBoxShadowSpread',
-							title: __( 'Spread', 'ultimate-addons-for-gutenberg' ),
-						} }
-						boxShadowPosition={ {
-							value: imageBoxShadowPosition,
-							label: 'imageBoxShadowPosition',
-							title: __(
-								'Position',
-								'ultimate-addons-for-gutenberg'
-							),
-						} }
-					/>
-				)
-			}
+		</UAGAdvancedPanelBody>
+	)
+
+	const imageBoxShadowStylePanel = (
+		<UAGAdvancedPanelBody
+			title={ __( 'Box Shadow', 'ultimate-addons-for-gutenberg' ) }
+			initialOpen={ false }
+		>
+			<UAGPresets
+				setAttributes = { setAttributes }
+				presets = { boxShadowPresets }
+				presetInputType = 'radioImage'
+			/>
+			<BoxShadowControl
+				blockId={ block_id }
+				setAttributes={ setAttributes }
+				label={ __(
+					'Box Shadow',
+					'ultimate-addons-for-gutenberg'
+				) }
+				boxShadowColor={ {
+					value: imageBoxShadowColor,
+					label: 'imageBoxShadowColor',
+					title: __( 'Color', 'ultimate-addons-for-gutenberg' ),
+				} }
+				boxShadowHOffset={ {
+					value: imageBoxShadowHOffset,
+					label: 'imageBoxShadowHOffset',
+					title: __(
+						'Horizontal',
+						'ultimate-addons-for-gutenberg'
+					),
+				} }
+				boxShadowVOffset={ {
+					value: imageBoxShadowVOffset,
+					label: 'imageBoxShadowVOffset',
+					title: __(
+						'Vertical',
+						'ultimate-addons-for-gutenberg'
+					),
+				} }
+				boxShadowBlur={ {
+					value: imageBoxShadowBlur,
+					label: 'imageBoxShadowBlur',
+					title: __( 'Blur', 'ultimate-addons-for-gutenberg' ),
+				} }
+				boxShadowSpread={ {
+					value: imageBoxShadowSpread,
+					label: 'imageBoxShadowSpread',
+					title: __( 'Spread', 'ultimate-addons-for-gutenberg' ),
+				} }
+				boxShadowPosition={ {
+					value: imageBoxShadowPosition,
+					label: 'imageBoxShadowPosition',
+					title: __(
+						'Position',
+						'ultimate-addons-for-gutenberg'
+					),
+				} }
+				popup={ false }
+			/>
 		</UAGAdvancedPanelBody>
 	)
 
@@ -1589,39 +1777,43 @@ export default function Settings( props ) {
 			<AdvancedPopColorControl
 				label={ __( 'Background', 'ultimate-addons-for-gutenberg' ) }
 				colorValue={ overlayBackground ? overlayBackground : '' }
-				onColorChange={ ( value ) =>
-					setAttributes( { overlayBackground: value } )
-				}
+				data={ {
+					value: overlayBackground,
+					label: 'overlayBackground',
+				} }
+				setAttributes={ setAttributes }
 			/>
-			<RangeControl
+			<Range
 				label={ __(
 					'Overlay Opacity',
 					'ultimate-addons-for-gutenberg'
 				) }
+				setAttributes={ setAttributes }
 				value={ overlayOpacity }
-				onChange={ ( value ) =>
-					setAttributes( {
-						overlayOpacity: value,
-					} )
-				}
+				data={ {
+					value: overlayOpacity,
+					label: 'overlayOpacity',
+				} }
 				min={ 0 }
 				max={ 1 }
 				step={0.1}
+				displayUnit={ false }
 			/>
-			<RangeControl
+			<Range
 				label={ __(
 					'Overlay Hover Opacity',
 					'ultimate-addons-for-gutenberg'
 				) }
+				setAttributes={ setAttributes }
 				value={ overlayHoverOpacity }
-				onChange={ ( value ) =>
-					setAttributes( {
-						overlayHoverOpacity: value,
-					} )
-				}
+				data={ {
+					value: overlayHoverOpacity,
+					label: 'overlayHoverOpacity',
+				} }
 				min={ 0 }
 				max={ 1 }
 				step={0.1}
+				displayUnit={ false }
 			/>
 		</UAGAdvancedPanelBody>
 	)
@@ -1635,11 +1827,10 @@ export default function Settings( props ) {
 				) }
 				setAttributes={ setAttributes }
 				value={ seperatorWidth }
-				onChange={ ( value ) =>
-					setAttributes( {
-						seperatorWidth: value,
-					} )
-				}
+				data={ {
+					value: seperatorWidth,
+					label: 'seperatorWidth',
+				} }
 				min={ 0 }
 				max={
 					'%' === separatorWidthType
@@ -1681,11 +1872,10 @@ export default function Settings( props ) {
 				) }
 				setAttributes={ setAttributes }
 				value={ seperatorThickness }
-				onChange={ ( value ) =>
-					setAttributes( {
-						seperatorThickness: value,
-					} )
-				}
+				data={ {
+					value: seperatorThickness,
+					label: 'seperatorThickness',
+				} }
 				min={ 0 }
 				max={ 10 }
 				unit={ {
@@ -1701,9 +1891,11 @@ export default function Settings( props ) {
 				colorValue={
 					seperatorColor ? seperatorColor : ''
 				}
-				onColorChange={ ( value ) =>
-					setAttributes( { seperatorColor: value } )
-				}
+				data={ {
+					value: seperatorColor,
+					label: 'seperatorColor',
+				} }
+				setAttributes={ setAttributes }
 			/>
 			<SpacingControl
 				{ ...props }
@@ -1801,16 +1993,17 @@ export default function Settings( props ) {
 					</InspectorTab>
 					<InspectorTab { ...UAGTabs.style }>
 						{ImageStylePanel}
+						{ 'static' === imageHoverEffect && ( imageBoxShadowStylePanel ) }
 						{
 							layout === 'overlay' && (
 								<>
 									{overlayStylePanel}
 									{headingStylePanel}
-
+									{captionStylePanel}
 								</>
 							)
 						}
-						{ captionStylePanel }
+						{ enableCaption && layout !== 'overlay' && captionStylePanel }
 						{ 'none' !== seperatorStyle && layout === 'overlay' && seperatorStylePanel}
 					</InspectorTab>
 					<InspectorTab

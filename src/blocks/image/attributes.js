@@ -1,3 +1,11 @@
+import {getBorderAttributes} from '@Controls/generateAttributes';
+
+const overlayBorderAttributes = getBorderAttributes( 'overlay', {
+	borderStyle: 'solid'
+} );
+const imageBorderAttributes = getBorderAttributes( 'image' );
+
+
 const attributes = {
 	block_id: {
 		type: 'string',
@@ -35,6 +43,14 @@ const attributes = {
 		default: '',
 	},
 	align: {
+		type: 'string',
+		default: '',
+	},
+	alignTablet: {
+		type: 'string',
+		default: '',
+	},
+	alignMobile: {
 		type: 'string',
 		default: '',
 	},
@@ -757,42 +773,6 @@ const attributes = {
 			styleType: 'overlay-hover-opacity'
 		}
 	},
-	overlayBorderWidth: {
-		type: 'number',
-		default: 2,
-		UAGCopyPaste: {
-			styleType: 'overlay-border-width'
-		}
-	},
-	overlayBorderStyle: {
-		type: 'string',
-		default: 'solid',
-		UAGCopyPaste: {
-			styleType: 'overlay-border-style'
-		}
-	},
-	overlayBorderRadius: {
-		type: 'number',
-		isUAGStyle: true,
-		default: '',
-		UAGCopyPaste: {
-			styleType: 'overlay-border-radius'
-		}
-	},
-	overlayBorderColor: {
-		type: 'string',
-		default: '#fff',
-		UAGCopyPaste: {
-			styleType: 'overlay-border-color'
-		}
-	},
-	overlayBorderHoverColor: {
-		type: 'string',
-		isUAGStyle: true,
-		UAGCopyPaste: {
-			styleType: 'overlay-border-hover-color'
-		}
-	},
 	// seperator.
 	seperatorShowOn: {
 		type: 'string',
@@ -962,45 +942,17 @@ const attributes = {
 		type: 'string',
 		default: 'static',
 	},
-	// image border.
-	imageBorderWidth: {
-		type: 'number',
-		isUAGStyle: true,
-		default: '',
-		UAGCopyPaste: {
-			styleType: 'image-border-width'
-		}
-	},
-	imageBorderStyle: {
+	objectFit: {
 		type: 'string',
-		isUAGStyle: true,
-		default: 'none',
-		UAGCopyPaste: {
-			styleType: 'image-border-style'
-		}
+		default: 'default'
 	},
-	imageBorderRadius: {
-		type: 'number',
-		isUAGStyle: true,
-		default: '',
-		UAGCopyPaste: {
-			styleType: 'image-border-radius'
-		}
-	},
-	imageBorderColor: {
+	objectFitTablet: {
 		type: 'string',
-		isUAGStyle: true,
-		UAGCopyPaste: {
-			styleType: 'image-border-color'
-		}
+		default: 'default'
 	},
-	imageBorderhoverColor: {
+	objectFitMobile: {
 		type: 'string',
-		isUAGStyle: true,
-		default: '',
-		UAGCopyPaste: {
-			styleType: 'image-border-hover-color'
-		}
+		default: 'default'
 	},
 	imageBoxShadowColor: {
 		type: 'string',
@@ -1070,7 +1022,59 @@ const attributes = {
 	maskRepeat: {
 		type: 'string',
 		default: 'no-repeat'
-	}
+	},
+	headingLetterSpacing: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'desc-letter-spacing'
+		}
+	},
+	headingLetterSpacingTablet: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'desc-letter-spacing-tablet'
+		}
+	},
+	headingLetterSpacingMobile: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'desc-letter-spacing-mobile'
+		}
+	},
+	headingLetterSpacingType: {
+		type: 'string',
+		default: 'px',
+		UAGCopyPaste: {
+			styleType: 'desc-letter-spacing-type'
+		}
+	},
+	captionLetterSpacing: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'desc-letter-spacing'
+		}
+	},
+	captionLetterSpacingTablet: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'desc-letter-spacing-tablet'
+		}
+	},
+	captionLetterSpacingMobile: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'desc-letter-spacing-mobile'
+		}
+	},
+	captionLetterSpacingType: {
+		type: 'string',
+		default: 'px',
+		UAGCopyPaste: {
+			styleType: 'desc-letter-spacing-type'
+		}
+	},
+	...imageBorderAttributes,
+	...overlayBorderAttributes
 };
 
 export default attributes;

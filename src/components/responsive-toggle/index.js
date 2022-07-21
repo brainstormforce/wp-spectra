@@ -5,7 +5,7 @@ import { ButtonGroup, Button, Tooltip } from '@wordpress/components';
 import { useDeviceType } from '@Controls/getPreviewType';
 import { __, sprintf } from '@wordpress/i18n';
 import { useState, useCallback } from '@wordpress/element'
-import { dispatch } from '@wordpress/data'
+import { dispatch, select } from '@wordpress/data'
 import getUAGEditorStateLocalStorage from '@Controls/getUAGEditorStateLocalStorage';
 
 const ResponsiveToggle = props => {
@@ -14,10 +14,12 @@ const { label, responsive } = props;
 	const [ displayResponsive, toggleResponsive ] = useState( false );
 
 	const customSetPreviewDeviceType = useCallback( device => {
-		const {
-			__experimentalSetPreviewDeviceType: setPreviewDeviceType,
-		} = dispatch( 'core/edit-post' )
-	setPreviewDeviceType( device );
+		if( null !== dispatch( 'core/edit-post' ) ){
+			const {
+				__experimentalSetPreviewDeviceType: setPreviewDeviceType,
+			} = dispatch( 'core/edit-post' )
+			setPreviewDeviceType( device );
+		}
 	toggleResponsive( displayResponsive );
 }, [] )
 
@@ -90,6 +92,13 @@ const devices = [
 
 		settingsPopup = '.uag-typography-options';
 	}
+	if ( eventTriggerElement.closest( '.uag-box-shadow-options.active' ) ) {
+
+		settingsPopup = '.uag-box-shadow-options';
+	}
+	const { getSelectedBlock } = select( 'core/block-editor' );
+	const blockName = getSelectedBlock()?.name;
+	const uagSettingState = getUAGEditorStateLocalStorage( 'uagSettingState' );
 
 	const inspectorTab = eventTriggerElement.closest( '.uagb-inspector-tab' );
 	const panelBody = eventTriggerElement.closest( '.components-panel__body.is-opened' );
@@ -107,15 +116,19 @@ const devices = [
 	if ( inspectorTab.classList.contains( 'uagb-tab-content-general' ) ) {
 		inspectorTabName = 'general';
 	}
+
 	const data = {
-		inspectorTabName,
-		panelBodyClass,
-		settingsPopup
+		...uagSettingState,
+		[blockName] : {
+			selectedTab : inspectorTabName,
+			selectedPanel : panelBodyClass,
+			selectedSetting : settingsPopup
+		}
 	}
 
 	const uagLocalStorage = getUAGEditorStateLocalStorage();
 	if ( uagLocalStorage ) {
-		uagLocalStorage.setItem( 'uagLastOpenedState', JSON.stringify( data ) );
+		uagLocalStorage.setItem( 'uagSettingState', JSON.stringify( data ) );
 	}
 
 	// Above Section Ends.

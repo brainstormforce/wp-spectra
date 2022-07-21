@@ -383,7 +383,7 @@ if ( ! class_exists( 'UAGB_Admin_Helper' ) ) {
 		/**
 		 * Get Global Content Width
 		 *
-		 * @since x.x.x
+		 * @since 2.0.0-beta.3
 		 * @return int
 		 * @access public
 		 */
@@ -410,7 +410,6 @@ if ( ! class_exists( 'UAGB_Admin_Helper' ) ) {
 
 			return $content_width;
 		}
-
 	}
 
 	/**
