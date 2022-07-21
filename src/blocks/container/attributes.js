@@ -150,13 +150,22 @@ const attributes = {
 	wrapDesktop: {
 		type: 'string',
 		default: 'nowrap',
+		UAGCopyPaste: {
+			styleType: 'container-wrap-desktop'
+		},
 	},
 	wrapTablet: {
 		type: 'string',
+		UAGCopyPaste: {
+			styleType: 'container-wrap-tablet'
+		},
 	},
 	wrapMobile: {
 		type: 'string',
 		default: 'wrap',
+		UAGCopyPaste: {
+			styleType: 'container-wrap-mobile'
+		},
 	},
 	alignContentDesktop: {
 		type: 'string',
