@@ -774,6 +774,9 @@ function styling( props ) {
 			'padding-left': generateCSSUnit( rowGapMobileFallback / 2, rowGapUnit ),
 			'margin-bottom': generateCSSUnit( columnGapMobile, columnGapUnit ),
 		},
+		' .is-masonry': {
+			'height': 'initial !important',
+		},
 	};
 
 	tabletSelectors = {
@@ -895,6 +898,9 @@ function styling( props ) {
 			'padding-right': generateCSSUnit( rowGapTabletFallback / 2, rowGapUnit ),
 			'padding-left': generateCSSUnit( rowGapTabletFallback / 2, rowGapUnit ),
 			'margin-bottom': generateCSSUnit( columnGapTablet, columnGapUnit ),
+		},
+		' .is-masonry': {
+			'height': 'initial !important',
 		},
 	};
 

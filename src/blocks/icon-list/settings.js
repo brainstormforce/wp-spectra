@@ -21,6 +21,7 @@ import { ToggleControl, Icon } from '@wordpress/components';
 import UAGAdvancedPanelBody from '@Components/advanced-panel-body';
 import UAGTabsControl from '@Components/tabs';
 import AdvancedPopColorControl from '@Components/color-control/advanced-pop-color-control.js';
+import UAGIconPicker from '@Components/icon-picker';
 
 
 const Settings = ( props ) => {
@@ -106,6 +107,24 @@ const Settings = ( props ) => {
 		blockMarginUnitTablet,
 		blockMarginUnitMobile,
 		blockMarginLink,
+		parentIcon,
+		// padding
+		blockTopPadding,
+		blockRightPadding,
+		blockLeftPadding,
+		blockBottomPadding,
+		blockTopPaddingTablet,
+		blockRightPaddingTablet,
+		blockLeftPaddingTablet,
+		blockBottomPaddingTablet,
+		blockTopPaddingMobile,
+		blockRightPaddingMobile,
+		blockLeftPaddingMobile,
+		blockBottomPaddingMobile,
+		blockPaddingUnit,
+		blockPaddingUnitTablet,
+		blockPaddingUnitMobile,
+		blockPaddingLink,
 	} = attributes;
 
 	let googleFonts;
@@ -303,7 +322,7 @@ const Settings = ( props ) => {
 									label: 'After',
 								},
 							] }
-							showIcons={ false }					
+							showIcons={ false }
 						/>
 					</>
 				) }
@@ -429,6 +448,81 @@ const Settings = ( props ) => {
 						label: 'blockMarginLink',
 					} }
 				/>
+
+				<SpacingControl
+					label={ __(
+						'Padding',
+						'ultimate-addons-for-gutenberg'
+					) }
+					valueTop={ {
+						value: blockTopPadding,
+						label: 'blockTopPadding',
+					} }
+					valueRight={ {
+						value: blockRightPadding,
+						label: 'blockRightPadding',
+					} }
+					valueBottom={ {
+						value: blockBottomPadding,
+						label: 'blockBottomPadding',
+					} }
+					valueLeft={ {
+						value: blockLeftPadding,
+						label: 'blockLeftPadding',
+					} }
+					valueTopTablet={ {
+						value: blockTopPaddingTablet,
+						label: 'blockTopPaddingTablet',
+					} }
+					valueRightTablet={ {
+						value: blockRightPaddingTablet,
+						label: 'blockRightPaddingTablet',
+					} }
+					valueBottomTablet={ {
+						value: blockBottomPaddingTablet,
+						label: 'blockBottomPaddingTablet',
+					} }
+					valueLeftTablet={ {
+						value: blockLeftPaddingTablet,
+						label: 'blockLeftPaddingTablet',
+					} }
+					valueTopMobile={ {
+						value: blockTopPaddingMobile,
+						label: 'blockTopPaddingMobile',
+					} }
+					valueRightMobile={ {
+						value: blockRightPaddingMobile,
+						label: 'blockRightPaddingMobile',
+					} }
+					valueBottomMobile={ {
+						value: blockBottomPaddingMobile,
+						label: 'blockBottomPaddingMobile',
+					} }
+					valueLeftMobile={ {
+						value: blockLeftPaddingMobile,
+						label: 'blockLeftPaddingMobile',
+					} }
+					unit={ {
+						value: blockPaddingUnit,
+						label: 'blockPaddingUnit',
+					} }
+					mUnit={ {
+						value: blockPaddingUnitMobile,
+						label: 'blockPaddingUnitMobile',
+					} }
+					tUnit={ {
+						value: blockPaddingUnitTablet,
+						label: 'blockPaddingUnitTablet',
+					} }
+					deviceType={ deviceType }
+					attributes={ attributes }
+					setAttributes={ setAttributes }
+					link={ {
+						value: blockPaddingLink,
+						label: 'blockPaddingLink',
+					} }
+				/>
+
 			</UAGAdvancedPanelBody>
 		);
 	};
@@ -887,6 +981,23 @@ const Settings = ( props ) => {
 					/>
 				</UAGAdvancedPanelBody>
 	};
+	const iconSettings = () => {
+		return <UAGAdvancedPanelBody
+					title={ __( 'Select Icon', 'ultimate-addons-for-gutenberg' ) }
+					initialOpen={ false }
+				>
+					<UAGIconPicker
+						label={ __(
+							'Icon',
+							'ultimate-addons-for-gutenberg'
+						) }
+						value={ parentIcon }
+						onChange={ ( value ) =>
+							setAttributes( { parentIcon: value } )
+						}
+					/>
+				</UAGAdvancedPanelBody>
+	};
 
 	return (
 		<Suspense fallback={ lazyLoader() }>
@@ -894,6 +1005,7 @@ const Settings = ( props ) => {
 				<InspectorTabs>
 					<InspectorTab { ...UAGTabs.general }>
 						{ presetSettings() }
+						{ iconSettings() }
 						{ generalSetting() }
 					</InspectorTab>
 					<InspectorTab { ...UAGTabs.style }>
