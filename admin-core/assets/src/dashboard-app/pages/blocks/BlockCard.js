@@ -66,7 +66,7 @@ const BlockCard = ( props ) => {
         ) }
         >
             { deprecated && (
-                <div className='uagb-block-card__deprecated-label absolute top-0 right-0 bg-slate-200 text-slate-500 rounded-bl rounded-tr-md px-2 py-1 text-xs leading-3 font-medium'>
+                <div className='uagb-block-card__deprecated-label absolute -top-px -right-px border border-slate-200 bg-slate-200 text-slate-500 rounded-bl rounded-tr-md px-2 py-1 text-xs leading-3 font-medium'>
                     DEPRECATED
                 </div>
             ) }
