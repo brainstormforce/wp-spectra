@@ -180,7 +180,9 @@ const Settings = ( props ) => {
 		topHeightTypeMobile,
 		bottomHeightType,
 		bottomHeightTypeTablet,
-		bottomHeightTypeMobile
+		bottomHeightTypeMobile,
+
+		overflow
 	} = attributes;
 
 	let currentDirection = directionDesktop;
@@ -386,6 +388,21 @@ const Settings = ( props ) => {
 			},
 		];
 
+		const overflowOptions = [
+			{
+				value: 'visible',
+				label: __( 'Visible', 'ultimate-addons-for-gutenberg' ),
+			},
+			{
+				value: 'hidden',
+				label: __( 'Hidden', 'ultimate-addons-for-gutenberg' ),
+			},
+			{
+				value: 'auto',
+				label: __( 'Auto', 'ultimate-addons-for-gutenberg' ),
+			},
+		];
+
 		const innerContentWidthOptions = [
 			{
 				value: 'alignwide',
@@ -404,7 +421,7 @@ const Settings = ( props ) => {
 		return (
 			<>
 				<UAGAdvancedPanelBody
-					title={ __( 'Size', 'ultimate-addons-for-gutenberg' ) }
+					title={ __( 'Container', 'ultimate-addons-for-gutenberg' ) }
 					initialOpen={ false }
 				>
 					{ isBlockRootParent &&
@@ -598,6 +615,17 @@ const Settings = ( props ) => {
 							},
 						] }
 						setAttributes={ setAttributes }
+					/>
+					<MultiButtonsControl
+						setAttributes={ setAttributes }
+						label={ __( 'Overflow', 'ultimate-addons-for-gutenberg' ) }
+						data={ {
+							value: overflow,
+							label: 'overflow',
+						} }
+						options={ overflowOptions }
+						showIcons={ false }
+						responsive={false}
 					/>
 				</UAGAdvancedPanelBody>
 				<UAGAdvancedPanelBody
