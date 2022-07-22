@@ -46,6 +46,7 @@ if ( ! class_exists( 'UAGB_Rest_API' ) ) {
 			// We have added this action here to support both the ways of post updations, Rest API & Normal.
 			add_action( 'save_post', array( $this, 'delete_page_assets' ), 10, 1 );
 			add_action( 'rest_after_save_widget', array( $this, 'after_widget_save_action' ) );
+			add_action( 'customize_partial_render', array( $this, 'after_widget_save_action' ) ); // Customizer style preview for Spectra block inside widget editor.
 		}
 
 		/**
