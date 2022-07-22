@@ -1641,8 +1641,6 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 				return;
 			}
 
-			error_log( $attributes['imgPosition'] );
-
 			if ( ! get_the_post_thumbnail_url() && ( 'background' !== $attributes['imgPosition'] ) ) {
 				return;
 			}
