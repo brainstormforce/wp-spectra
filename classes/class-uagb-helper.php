@@ -288,8 +288,8 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 			// Load Polyfiller Array if needed.
 			if ( 'disabled' !== UAGB_Admin_Helper::get_admin_settings_option( 'uag_load_font_awesome_5', 'disabled' ) ) {
 				$font_awesome_5_polyfiller = get_spectra_font_awesome_polyfiller();
-				$path = isset( $json[ $font_awesome_5_polyfiller[ $icon ] ]['svg']['brands'] ) ? $json[ $font_awesome_5_polyfiller[ $icon ] ]['svg']['brands']['path'] : $json[ $font_awesome_5_polyfiller[ $icon ] ]['svg']['solid']['path'];
-				$view = isset( $json[ $font_awesome_5_polyfiller[ $icon ] ]['svg']['brands'] ) ? $json[ $font_awesome_5_polyfiller[ $icon ] ]['svg']['brands']['viewBox'] : $json[ $font_awesome_5_polyfiller[ $icon ] ]['svg']['solid']['viewBox'];
+				$path                      = isset( $json[ $font_awesome_5_polyfiller[ $icon ] ]['svg']['brands'] ) ? $json[ $font_awesome_5_polyfiller[ $icon ] ]['svg']['brands']['path'] : $json[ $font_awesome_5_polyfiller[ $icon ] ]['svg']['solid']['path'];
+				$view                      = isset( $json[ $font_awesome_5_polyfiller[ $icon ] ]['svg']['brands'] ) ? $json[ $font_awesome_5_polyfiller[ $icon ] ]['svg']['brands']['viewBox'] : $json[ $font_awesome_5_polyfiller[ $icon ] ]['svg']['solid']['viewBox'];
 				if ( ! $path ) {
 					$path = isset( $json[ $icon ]['svg']['brands'] ) ? $json[ $icon ]['svg']['brands']['path'] : $json[ $icon ]['svg']['solid']['path'];
 				}

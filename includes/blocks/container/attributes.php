@@ -120,7 +120,7 @@ return array_merge(
 		'innerContentWidth'                 => 'alignwide',
 		'innerContentCustomWidthDesktop'    => $default_width,
 		'innerContentCustomWidthTablet'     => 768,
-		'innerContentCustomWidthMobile'     => 320,
+		'innerContentCustomWidthMobile'     => 426,
 		'innerContentCustomWidthType'       => 'px',
 		'innerContentCustomWidthTypeTablet' => 'px',
 		'innerContentCustomWidthTypeMobile' => 'px',
@@ -156,6 +156,7 @@ return array_merge(
 		'isBlockRootParent'                 => false,
 		'widthTypeTablet'                   => '%',
 		'widthTypeMobile'                   => '%',
+		'overflow'                          => 'visible',
 	),
 	$border_attribute
 );

@@ -948,6 +948,10 @@ const attributes = {
 		type: 'string',
 		default: 'px',
 	},
+	overflow: {
+		type: 'string',
+		default: 'visible'
+	},
 	...inputBorderAttributes
 };
 
