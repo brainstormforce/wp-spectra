@@ -408,7 +408,7 @@ const Settings = ( props ) => {
 			<>
 				<UAGAdvancedPanelBody
 					title={ __( 'Size', 'ultimate-addons-for-gutenberg' ) }
-					initialOpen={ false }
+					initialOpen={ !isBlockRootParent ? true : false }
 				>
 					{ isBlockRootParent &&
 						<>
