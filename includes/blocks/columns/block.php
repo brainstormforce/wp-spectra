@@ -18,4 +18,5 @@ $block_data = array(
 	'default'          => true,
 	'extension'        => false,
 	'priority'         => 35,
+	'deprecated'       => 'true',
 );
