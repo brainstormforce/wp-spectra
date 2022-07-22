@@ -42,7 +42,7 @@ const SpacingControl = ( props ) => {
 		link,
 		setAttributes,
 	} = props;
-	
+
 	const onChangeUnits = ( value ) => {
 		if ( 'Mobile' === deviceType ) {
 			setAttributes( { [ mUnit.label ]: value.unitValue } );
@@ -84,7 +84,7 @@ const SpacingControl = ( props ) => {
 
 			newValue =
 				event.target.value === ''
-					? ''
+					? 0
 					: Number( event.target.value );
 		}
 
@@ -105,10 +105,10 @@ const SpacingControl = ( props ) => {
 				setAttributes( { [ valueTopMobile.label ]: newValue } );
 				break;
 		}
-		
+
 	};
 	const changedUnLinkedValues = ( device ) => {
-		
+
 		switch ( device ) {
 			case 'desktop':
 				// code block
@@ -126,13 +126,13 @@ const SpacingControl = ( props ) => {
 				break;
 			case 'mobile':
 				// code block
-				setAttributes( { [ valueTopMobile.label ]: ( '' === valueTopTablet.value || undefined === valueTopTablet.value ) ? 0 : valueTopTablet.value } );
-				setAttributes( { [ valueRightMobile.label ]: ( '' === valueRightTablet.value || undefined === valueRightTablet.value ) ? 0 : valueRightTablet.value } );
-				setAttributes( { [ valueBottomMobile.label ]: ( '' === valueBottomTablet.value || undefined === valueBottomTablet.value ) ? 0 : valueBottomTablet.value } );
-				setAttributes( { [ valueLeftMobile.label ]: ( '' === valueLeftTablet.value || undefined === valueLeftTablet.value ) ? 0 : valueLeftTablet.value } );
+				setAttributes( { [ valueTopMobile.label ]: ( '' === valueTopMobile.value || undefined === valueTopMobile.value ) ? 0 : valueTopTablet.value } );
+				setAttributes( { [ valueRightMobile.label ]: ( '' === valueRightMobile.value || undefined === valueRightMobile.value ) ? 0 : valueRightTablet.value } );
+				setAttributes( { [ valueBottomMobile.label ]: ( '' === valueBottomMobile.value || undefined === valueBottomMobile.value ) ? 0 : valueBottomTablet.value } );
+				setAttributes( { [ valueLeftMobile.label ]: ( '' === valueLeftMobile.value || undefined === valueLeftMobile.value ) ? 0 : valueLeftTablet.value } );
 				break;
-		}		
-		
+		}
+
 	};
 	const onChangeRightValue = ( event, device, value = '' ) => {
 		let newValue = value;
@@ -140,7 +140,7 @@ const SpacingControl = ( props ) => {
 		if ( '' === value && '' !== event ) {
 			newValue =
 				event.target.value === ''
-					? ''
+					? 0
 					: Number( event.target.value );
 		}
 		if ( link.value ) {
@@ -148,7 +148,7 @@ const SpacingControl = ( props ) => {
 		}else {
 			changedUnLinkedValues( device );
 		}
-		
+
 
 		switch ( device ) {
 			case 'desktop':
@@ -169,7 +169,7 @@ const SpacingControl = ( props ) => {
 		if ( '' === value && '' !== event ) {
 			newValue =
 				event.target.value === ''
-					? ''
+					? 0
 					: Number( event.target.value );
 		}
 		if ( link.value ) {
@@ -177,7 +177,7 @@ const SpacingControl = ( props ) => {
 		}else {
 			changedUnLinkedValues( deviceType );
 		}
-		
+
 
 		switch ( device ) {
 			case 'desktop':
@@ -198,7 +198,7 @@ const SpacingControl = ( props ) => {
 		if ( '' === value && '' !== event ) {
 			newValue =
 				event.target.value === ''
-					? ''
+					? 0
 					: Number( event.target.value );
 		}
 		if ( link.value ) {
@@ -206,7 +206,7 @@ const SpacingControl = ( props ) => {
 		}else {
 			changedUnLinkedValues( deviceType );
 		}
-		
+
 		switch ( device ) {
 			case 'desktop':
 				setAttributes( { [ valueLeft.label ]: newValue } );
@@ -298,6 +298,7 @@ const SpacingControl = ( props ) => {
 			<span // eslint-disable-line jsx-a11y/click-events-have-key-events, jsx-a11y/no-static-element-interactions
 				className="uagb-spacing-control__link uagb-spacing-control-connected dashicons dashicons-admin-links "
 				onClick={ () => {
+					changedUnLinkedValues( deviceType.toLowerCase() );
 					setAttributes( { [ link.label ]: false } );
 				} }
 			></span>
