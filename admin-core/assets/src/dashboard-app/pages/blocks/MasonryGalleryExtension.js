@@ -55,6 +55,9 @@ const MasonryGalleryExtension = () => {
             'box-border relative border rounded-md h-20 p-4 flex items-center space-x-4 snap-start transition spectra-icon-transition'
         ) }
         >
+            <div className='uagb-block-card__deprecated-label absolute top-0 right-0 bg-violet-50 text-spectra rounded-tr-md rounded-bl px-2 py-1 text-xs leading-3 font-medium'>
+                EXTENSION
+            </div>
             <div className="flex-shrink-0">
                 { UAGB_Block_Icons['masonry-gallery'] }
             </div>
