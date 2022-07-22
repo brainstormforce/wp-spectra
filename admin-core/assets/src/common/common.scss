@@ -183,43 +183,6 @@
 	h3 {
 		font-size: 1.125rem;
 	}
-
-	// Pseudo-element to identify extensions.
-	.uagb-admin-block__extension {
-
-		.uagb-admin-block__extension-title::after {
-			content: 'extension';
-			position: absolute;
-			top: 5px;
-			right: 5px;
-			padding: 2px 5px;
-			border-radius: 0.2rem;
-			color: #fff;
-			background-color: $spectra-wpcolor;
-			text-transform: uppercase;
-			font-weight: bold;
-		}
-
-	}
-}
-
-// Deprecated blocks.
-#gf-styler, #section, #wp-search, #columns, #cf7-styler {
-
-	// Pseudo-element to identify deprecated blocks.
-	.uagb-admin-block-card__title::after {
-		content: 'deprecated';
-		position: absolute;
-		top: 5px;
-		right: 5px;
-		padding: 2px 5px;
-		border-radius: 0.2rem;
-		color: #fff;
-		background-color: $spectra-wpcolor;
-		text-transform: uppercase;
-		font-weight: bold;
-	}
-
 }
 
 .spectra-content-width-input-wrap {
