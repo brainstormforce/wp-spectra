@@ -1166,11 +1166,14 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 				$mob_class = ( isset( $attributes['UAGHideMob'] ) ) ? 'uag-hide-mob' : '';
 			}
 
+			$is_image_enabled = ( true === $attributes['displayPostImage'] ) ? 'uagb-post__image-enabled' : 'uagb-post__image-disabled';
+
 			$outerwrap = array(
 				'wp-block-uagb-post-' . $layout,
 				'uagb-post-grid',
 				( isset( $attributes['className'] ) ) ? $attributes['className'] : '',
 				'uagb-post__image-position-' . $attributes['imgPosition'],
+				$is_image_enabled,
 				$block_id,
 				$desktop_class,
 				$tab_class,
@@ -1638,7 +1641,9 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 				return;
 			}
 
-			if ( ! get_the_post_thumbnail_url() ) {
+			error_log( $attributes['imgPosition'] );
+
+			if ( ! get_the_post_thumbnail_url() && ( 'background' !== $attributes['imgPosition'] ) ) {
 				return;
 			}
 
@@ -1647,8 +1652,10 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 
 			?>
 			<div class='uagb-post__image'>
-				<a href="<?php echo esc_url( apply_filters( "uagb_single_post_link_{$attributes['post_type']}", get_the_permalink(), get_the_ID(), $attributes ) ); ?>" target="<?php echo esc_html( $target ); ?>" rel="bookmark noopener noreferrer"><?php echo wp_get_attachment_image( get_post_thumbnail_id(), $attributes['imgSize'] ); ?>
-				</a>
+				<?php if ( get_the_post_thumbnail_url() ) { ?>
+					<a href="<?php echo esc_url( apply_filters( "uagb_single_post_link_{$attributes['post_type']}", get_the_permalink(), get_the_ID(), $attributes ) ); ?>" target="<?php echo esc_html( $target ); ?>" rel="bookmark noopener noreferrer"><?php echo wp_get_attachment_image( get_post_thumbnail_id(), $attributes['imgSize'] ); ?>
+					</a>
+				<?php } ?>
 			</div>
 			<?php
 			do_action( "uagb_single_post_after_featured_image_{$attributes['post_type']}", get_the_ID(), $attributes );
