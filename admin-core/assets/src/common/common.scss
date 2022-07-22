@@ -297,10 +297,39 @@
 	}
 }
 
+// Changelog Styling.
+.spectra-changelog-description {
+
+	strong {
+		font-weight: 500;
+		font-size: 0.875rem;
+		line-height: 1.25rem;
+		color: #1e293b;
+	}
+
+	ul {
+		margin-top: 0.25rem;
+		margin-bottom: 0.75rem;
+
+		&:last-child {
+			margin-top: 0;
+		}
+	}
+
+	li {
+		font-weight: 400;
+		font-size: 0.75rem;
+		line-height: 1rem;
+		color: #64748b;
+	}
+}
+
+// Custom Scrollbar.
 .spectra__scrollable {
+	scrollbar-width: 0.5rem;
+	scrollbar-color: #cbd5e1 #f1f5f9; // Tailwind Slate-300 and Slate-100.
 
 	&--blocks {
-		// scrollbar-gutter: stable both-edges;
 		scrollbar-width: 0.5rem;
 		scrollbar-color: #CBD5E1 #F1F5F9; // Tailwind Slate-300 and Slate-100.
 	

@@ -1,5 +1,3 @@
-const { boxShadow } = require('tailwindcss/defaultTheme');
-
 module.exports = {
 	content: [
 		'./assets/src/dashboard-app/**/*.{html,js}',
@@ -10,9 +8,9 @@ module.exports = {
 	theme: {
 		extend: {
 			colors: {
-				'spectra': {
+				spectra: {
 					DEFAULT: '#6104FF',
-					'hover': '#5300E0',
+					hover: '#5300E0',
 				},
 			},
 			fontFamily: {
