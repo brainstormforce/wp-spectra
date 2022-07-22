@@ -1008,6 +1008,12 @@ const Settings = ( props ) => {
 				title={ __( 'Link', 'ultimate-addons-for-gutenberg' ) }
 				initialOpen={ false }
 			>
+				<p className="components-base-control__help">
+					{ __(
+						'Below settings will apply to the heading text to which a link is applied.',
+						'ultimate-addons-for-gutenberg'
+					) }
+				</p>
 				<UAGTabsControl
 					tabs={ [
 						{
@@ -1059,6 +1065,12 @@ const Settings = ( props ) => {
 				title={ __( 'Highlight', 'ultimate-addons-for-gutenberg' ) }
 				initialOpen={ false }
 			>
+				<p className="components-base-control__help">
+					{ __(
+						'Highlight heading text from toolbar to see the below controls working.',
+						'ultimate-addons-for-gutenberg'
+					) }
+				</p>
 				<AdvancedPopColorControl
 					label={ __( 'Background', 'ultimate-addons-for-gutenberg' ) }
 					colorValue={ highLightBackground }
