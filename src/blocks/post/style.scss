@@ -271,10 +271,6 @@
 	&.uagb-post__image-enabled {
 		.uagb-post__text {
 			color: #fff;
-			opacity: 1;
-			position: relative;
-			z-index: 10;
-			overflow: hidden;
 	
 			&.uagb-post__title a,
 			a {
