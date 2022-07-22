@@ -85,7 +85,7 @@ const Settings = () => {
                         ) )}
                         </nav>
                     </aside>
-                    <div className='lg:col-span-9 border-l'>
+                    <div className='lg:col-span-9 border-l spectra__scrollable-settings spectra__scrollable--settings'>
                         { 'global-settings' === activeSettingsNavigationTab &&
                             <>
                                 <LoadFontAwesome5/>
