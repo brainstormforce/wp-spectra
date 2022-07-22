@@ -15,14 +15,29 @@
 	outline: none;
 }
 
-.uag-accordion{
-	svg{
-		width: 15px;
-		font-size: 15px;
-		margin-right: 25px;
-		fill: '#475569';
+#uag-menu-page .uag-accordion {
+
+	svg {
+		fill: #E2E8F0; // Tailwind Slate-200.
+	}
+
+	&:hover {
+
+		svg {
+			fill: #475569; // Tailwind Slate-600.
+		}
+	}
+
+	&:focus {
+		outline: none;
+		box-shadow: none;
+
+		svg {
+			fill: #cbd5e1; // Tailwind Slate-300.
+		}
 	}
 }
+
 .settings_page_spectra #wpcontent {
 	padding-left: 0;
 }
@@ -193,18 +208,24 @@
 	}
 }
 
+// This is required since Tailwind CSS is overridden by load-styles
 .spectra-content-width-input-wrap {
 
 	> input {
-		border-radius: 4px 0 0 4px;
+		padding: 0.5rem 0 0.5rem 0.75rem;
+		color: #64748B; // Tailwind Slate-500.
+		background-color: #fff;
+		border-radius: 0.25rem 0 0 0.25rem;
+		border: 1px solid #e2e8f0; // Tailwind Slate-200.
+		border-right-width: 0;
 	}
 
 	> span {
-		border: 1px solid #8c8f94;
+		padding: 0.5rem 0.75rem;
+		color: #64748B; // Tailwind Slate-500.
 		background-color: #fff;
-		color: #2c3338;
-		border-left-width: 0;
-		border-radius: 0 4px 4px 0;
+		border-radius: 0 0.25rem 0.25rem 0;
+		border: 1px solid #e2e8f0; // Tailwind Slate-200.
 	}
 }
 
@@ -232,6 +253,7 @@
 		}
 
 		&:focus {
+			outline: none !important;
 			border-color: $spectra-wpcolor !important;
 			box-shadow: $spectra-wpcolor 0 0 0 1px !important;
 
