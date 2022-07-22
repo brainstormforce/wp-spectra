@@ -98,13 +98,13 @@ const ComingSoon = () => {
 	};
 
 	return (
-        <section className='flex p-8 justify-between'>
-            <div className='pr-16 w-full'>
-				<Button className='pr-16 inline-flex w-10/12 uag-accordion'
-						onClick={ () => setshow( ! show )}
-					>
-                    { ! show && ( <svg xmlns="https://www.w3.org/2000/svg" viewBox="0 0 384 512"><path d="M192 384c-8.188 0-16.38-3.125-22.62-9.375l-160-160c-12.5-12.5-12.5-32.75 0-45.25s32.75-12.5 45.25 0L192 306.8l137.4-137.4c12.5-12.5 32.75-12.5 45.25 0s12.5 32.75 0 45.25l-160 160C208.4 380.9 200.2 384 192 384z"></path></svg> )}
-                    { show && ( <svg xmlns="https://www.w3.org/2000/svg" viewBox="0 0 384 512"><path d="M352 352c-8.188 0-16.38-3.125-22.62-9.375L192 205.3l-137.4 137.4c-12.5 12.5-32.75 12.5-45.25 0s-12.5-32.75 0-45.25l160-160c12.5-12.5 32.75-12.5 45.25 0l160 160c12.5 12.5 12.5 32.75 0 45.25C368.4 348.9 360.2 352 352 352z"></path></svg> )}
+		<section className='block border-b border-solid border-slate-200 p-6 justify-between'>  
+			<div className='mr-16 w-full flex items-center'>
+				<Button className='p-0 flex-1 justify-right inline-flex uag-accordion'
+					onClick={ () => setshow( ! show ) }
+				>
+					{ ! show && ( <svg className="w-4 text-sm mr-4 transition" xmlns="https://www.w3.org/2000/svg" viewBox="0 0 384 512"><path d="M192 384c-8.188 0-16.38-3.125-22.62-9.375l-160-160c-12.5-12.5-12.5-32.75 0-45.25s32.75-12.5 45.25 0L192 306.8l137.4-137.4c12.5-12.5 32.75-12.5 45.25 0s12.5 32.75 0 45.25l-160 160C208.4 380.9 200.2 384 192 384z"></path></svg> ) }
+					{ show && ( <svg className="w-4 text-sm mr-4 transition" xmlns="https://www.w3.org/2000/svg" viewBox="0 0 384 512"><path d="M352 352c-8.188 0-16.38-3.125-22.62-9.375L192 205.3l-137.4 137.4c-12.5 12.5-32.75 12.5-45.25 0s-12.5-32.75 0-45.25l160-160c12.5-12.5 32.75-12.5 45.25 0l160 160c12.5 12.5 12.5 32.75 0 45.25C368.4 348.9 360.2 352 352 352z"></path></svg> ) }
 					<h3 className="text-lg leading-6 font-medium text-gray-900">
 						{__( 'Enable Coming Soon Mode', 'ultimate-addons-for-gutenberg' )}
 					</h3>
@@ -125,42 +125,39 @@ const ComingSoon = () => {
 							)}
 						/>
                 </Switch>
-				{ show && (
-					<>
-						<p className="mt-[0.6rem] text-sm ">
-							{ __( 'Is your website still in the making? Is it not yet ready for other people to see?', 'ultimate-addons-for-gutenberg' ) }
-						</p>
-						<p className="mt-[0.6rem] text-sm ">
-							{ __( 'Enable the coming soon mode. Only the page you select below will be displayed to people who are not logged in.', 'ultimate-addons-for-gutenberg' ) }
-						</p>
-						<Select
-							isMulti={false}
-							placeholder={ __( 'Select the page you want' ) }
-							defaultValue = { comingSoonPage }
-							onChange={ ( value ) => updateSelectedPage( value ) }
-							onInputChange={onChangeHandler}
-							options={ pages }
-							maxMenuHeight={ 140 }
-							minMenuHeight = { 70 }
-							isSearchable={true}
-							className={`mt-4 cursor-pointer focus:ring-spectra`}
-							isLoading={isFetchPages}
-							onMenuOpen={fetchPageHandler}
-							theme={( theme ) => ( {
-								...theme,
-								colors: {
-								...theme.colors,
-								primary: '#6104ff',
-								},
-							} )}
-							styles={customStyles}
-						/>
-					</>
-				)}
-            </div>
-            <div>
-                
-            </div>
+			</div>
+			{ show && (
+				<>
+                	<p className="mt-2 pl-8 w-10/12 text-sm">
+						{ __( 'Is your website still in the making? Is it not yet ready for other people to see?', 'ultimate-addons-for-gutenberg' ) }
+					</p>
+                	<p className="mt-2 pl-8 w-10/12 text-sm">
+						{ __( 'Enable the coming soon mode. Only the page you select below will be displayed to people who are not logged in.', 'ultimate-addons-for-gutenberg' ) }
+					</p>
+					<Select
+						isMulti={false}
+						placeholder={ __( 'Select the page you want' ) }
+						defaultValue = { comingSoonPage }
+						onChange={ ( value ) => updateSelectedPage( value ) }
+						onInputChange={onChangeHandler}
+						options={ pages }
+						maxMenuHeight={ 140 }
+						minMenuHeight = { 70 }
+						isSearchable={true}
+						className={`mt-4 cursor-pointer pl-8 w-10/12 focus:ring-spectra`}
+						isLoading={isFetchPages}
+						onMenuOpen={fetchPageHandler}
+						theme={( theme ) => ( {
+							...theme,
+							colors: {
+							...theme.colors,
+							primary: '#6104ff',
+							},
+						} )}
+						styles={customStyles}
+					/>
+				</>
+			)}
         </section>
     );
 };
