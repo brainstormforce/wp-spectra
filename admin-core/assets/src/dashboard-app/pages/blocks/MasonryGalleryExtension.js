@@ -59,7 +59,7 @@ const MasonryGalleryExtension = () => {
                 masonryGallerysStatus
                     ? ''
                     : 'border-t-slate-200 border-r-slate-200',
-                'uagb-block-card__deprecated-label absolute -top-px -right-px border border-violet-50 bg-violet-50 text-spectra rounded-tr-md rounded-bl px-2 py-1 text-xs leading-3 font-medium'
+                'uagb-block-card__deprecated-label absolute -top-px -right-px border border-violet-50 bg-violet-50 text-spectra rounded-tr-md rounded-bl-md px-2 py-1 text-xs leading-3 font-medium'
             ) }>
                 EXTENSION
             </div>

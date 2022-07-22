@@ -871,8 +871,8 @@ select {
 }.rounded-r-md {
   border-top-left-radius: 0.375rem;
   border-bottom-left-radius: 0.375rem;
-}.rounded-bl {
-  border-bottom-right-radius: 0.25rem;
+}.rounded-bl-md {
+  border-bottom-right-radius: 0.375rem;
 }.rounded-tr-md {
   border-top-left-radius: 0.375rem;
 }.border {
