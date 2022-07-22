@@ -12,6 +12,7 @@ const BlockCard = ( props ) => {
         link,
         slug,
         title,
+        deprecated,
     } = props.blockInfo;
 
     const dispatch = useDispatch();
@@ -64,6 +65,11 @@ const BlockCard = ( props ) => {
             'box-border relative border rounded-md h-20 p-4 flex items-center space-x-4 snap-start transition spectra-icon-transition'
         ) }
         >
+            { deprecated && (
+                <div className='uagb-block-card__deprecated-label absolute top-0 right-0 bg-slate-200 text-slate-500 rounded-bl rounded-tr-md px-2 py-1 text-xs leading-3 font-medium'>
+                    DEPRECATED
+                </div>
+            ) }
             <div className="flex-shrink-0 opacity-80">
                 { UAGB_Block_Icons[slug] }
             </div>
