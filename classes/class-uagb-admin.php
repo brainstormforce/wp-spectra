@@ -192,12 +192,12 @@ if ( ! class_exists( 'UAGB_Admin' ) ) {
 						__( 'Would you please mind sharing your views and give it a 5 star rating on the WordPress repository?', 'ultimate-addons-for-gutenberg' ),
 						'https://wordpress.org/support/plugin/ultimate-addons-for-gutenberg/reviews/?filter=5#new-post',
 						__( 'Ok, you deserve it', 'ultimate-addons-for-gutenberg' ),
-						MONTH_IN_SECONDS,
+						MINUTE_IN_SECONDS, //MONTH_IN_SECONDS,
 						__( 'Nope, maybe later', 'ultimate-addons-for-gutenberg' ),
 						__( 'I already did', 'ultimate-addons-for-gutenberg' )
 					),
-					'repeat-notice-after'        => MONTH_IN_SECONDS,
-					'display-notice-after'       => ( 2 * WEEK_IN_SECONDS ), // Display notice after 2 weeks.
+					'repeat-notice-after'        => MINUTE_IN_SECONDS, //MONTH_IN_SECONDS,
+					'display-notice-after'       => MINUTE_IN_SECONDS, //( 2 * WEEK_IN_SECONDS ), // Display notice after 2 weeks.
 					'priority'                   => 20,
 					'display-with-other-notices' => false,
 					'show_if'                    => true,
