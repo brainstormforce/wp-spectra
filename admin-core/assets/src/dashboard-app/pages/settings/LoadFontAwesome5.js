@@ -74,7 +74,7 @@ const LoadFontAwesome5 = () => {
                 </Switch>
             </div>
             { show && (
-                <p className="mt-2 pl-8 w-10/12 text-sm">
+                <p className="mt-2 pl-8 w-8/12 text-sm">
                     { __( 'Enable this to make sure all previously used Font Awesome 5 icons are displayed correctly while using the Font Awesome 6 library.', 'ultimate-addons-for-gutenberg' ) }
                 </p>
             ) }

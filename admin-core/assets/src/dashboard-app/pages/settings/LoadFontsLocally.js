@@ -77,7 +77,7 @@ const LoadFontsLocally = () => {
                 </Switch>
             </div>
             { show && (
-                <p className="mt-2 pl-8 w-10/12 text-sm">
+                <p className="mt-2 pl-8 w-8/12 text-sm">
                     { __( 'Enable this option to download Google fonts and save them on your server. This can be great for improving speed of your website and to comply with GDPR laws.', 'ultimate-addons-for-gutenberg' ) }
                 </p>
             )}

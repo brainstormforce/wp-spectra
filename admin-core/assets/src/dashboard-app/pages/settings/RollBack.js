@@ -34,7 +34,7 @@ const RollBack = () => {
                         <select
                             id="location"
                             name="location"
-                            className="block w-20 h-9 pl-3 pr-10 py-2 mr-3 text-base border-gray-300 focus:outline-none focus:ring-spectra focus:border-spectra sm:text-sm rounded-[0.2rem] spectra-admin__input-field"
+                            className="block h-9 mr-2 sm:text-sm spectra-admin__input-field spectra-admin__dropdown"
                             onBlur={ ( e ) => { setPreviousVersion( e.target.value ); } }
                         >
                             {
@@ -47,7 +47,7 @@ const RollBack = () => {
                         </select>
                         <button
                             type="button"
-                            className="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-[0.2rem] shadow-sm text-white bg-spectra focus:bg-spectra-hover hover:bg-spectra-hover focus:outline-none h-9"
+                            className="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-spectra transition focus:bg-spectra-hover hover:bg-spectra-hover focus:outline-none h-9"
                             onClick={rollbackButtonClickHandler}
                         >
                             { confirmPopup &&
@@ -61,7 +61,7 @@ const RollBack = () => {
                     </div>
                 </div>
                 { show && (
-                    <p className="mt-2 pl-8 w-10/12 text-sm">
+                    <p className="mt-2 pl-8 w-8/12 text-sm">
                         {
                             // eslint-disable-next-line @wordpress/i18n-no-variables
                             __( `Experiencing an issue with Spectra version ${uag_react.plugin_ver}? Roll back to a previous version to help troubleshoot the issue.`, 'ultimate-addons-for-gutenberg' )

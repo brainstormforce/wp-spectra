@@ -105,7 +105,7 @@ const BlockSettings = () => {
 			</div>
 			{ show && (
 				<>
-					<p className="my-2 pl-8 w-10/12 text-sm">{ __( 'To enable reCAPTCHA feature on your forms blocks Please enable reCAPTCHA option on your blocks setting and select version. Add google reCAPTCHA secret and site key here. reCAPTCHA will be added to your page on front-end.', 'ultimate-addons-for-gutenberg' ) }</p>
+					<p className="my-2 pl-8 w-8/12 text-sm">{ __( 'To enable reCAPTCHA feature on your forms blocks Please enable reCAPTCHA option on your blocks setting and select version. Add google reCAPTCHA secret and site key here. reCAPTCHA will be added to your page on front-end.', 'ultimate-addons-for-gutenberg' ) }</p>
 					<a className='pl-8 text-sm text-spectra focus:text-spectra-hover active:text-spectra-hover hover:text-spectra-hover' href="https://www.google.com/recaptcha/admin/create" target="_blank" rel="noreferrer">
 						{ __( 'Get Keys', 'ultimate-addons-for-gutenberg' ) }
 					</a>
@@ -116,20 +116,20 @@ const BlockSettings = () => {
 							'ultimate-addons-for-gutenberg'
 						) }
 					</a>
-					<section className='flex justify-between mt-8 pl-8 w-10/12'>
-						<div className='spectra-recaptcha-input-field'>
+					<section className='flex justify-between mt-8 pl-8 w-8/12'>
+						<div className='spectra-recaptcha-input-field pr-2'>
 							<h3 className="mb-5 font-medium text-md text-gray-900">
 								{__( 'V2', 'ultimate-addons-for-gutenberg' )}
 							</h3>
-							<input placeholder="Site Key V2" className="mb-5 appearance-none block w-300 h-8 bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 pr-0 leading-tight focus:outline-none focus:bg-white focus:border-gray-500 spectra-admin__input-field" value={siteKeyV2} name='site_key_v2' onChange={updateRecaptchaSiteKeyV2} id="grid-zip"  type="text"  />
-							<input placeholder="Secret Key V2" className="mb-5 appearance-none block w-300 h-8 bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 pr-0 leading-tight focus:outline-none focus:bg-white focus:border-gray-500 spectra-admin__input-field" id="grid-zip"  value={secretKeyV2} name='secret_key_v2' onChange={updateRecaptchaSecretKeyV2}  type="text"  />
+							<input placeholder="Site Key V2" className="mb-4 appearance-none block w-300 h-8 bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 pr-0 leading-tight focus:outline-none focus:bg-white focus:border-gray-500 spectra-admin__input-field" value={siteKeyV2} name='site_key_v2' onChange={updateRecaptchaSiteKeyV2} id="grid-zip"  type="text"  />
+							<input placeholder="Secret Key V2" className="mb-4 appearance-none block w-300 h-8 bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 pr-0 leading-tight focus:outline-none focus:bg-white focus:border-gray-500 spectra-admin__input-field" id="grid-zip"  value={secretKeyV2} name='secret_key_v2' onChange={updateRecaptchaSecretKeyV2}  type="text"  />
 						</div>
-						<div className='spectra-recaptcha-input-field'>
+						<div className='spectra-recaptcha-input-field pl-2'>
 							<h3 className="mb-5 font-medium text-md text-gray-900">
 								{__( 'V3', 'ultimate-addons-for-gutenberg' )}
 							</h3>
-							<input placeholder="Site Key V3" className="mb-5 appearance-none block w-300 h-8 bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 pr-0 leading-tight focus:outline-none focus:bg-white focus:border-gray-500 spectra-admin__input-field" id="grid-zip"  type="text"  value={siteKeyV3} name='site_key_v3' onChange={updateRecaptchaSiteKeyV3}/>
-							<input placeholder="Secret Key V3" className="mb-5 appearance-none block w-300 h-8 bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 pr-0 leading-tight focus:outline-none focus:bg-white focus:border-gray-500 spectra-admin__input-field" id="grid-zip"  type="text"  value={secretKeyV3} name='secret_key_v3' onChange={updateRecaptchaSecretKeyV3}/>
+							<input placeholder="Site Key V3" className="mb-4 appearance-none block w-300 h-8 bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 pr-0 leading-tight focus:outline-none focus:bg-white focus:border-gray-500 spectra-admin__input-field" id="grid-zip"  type="text"  value={siteKeyV3} name='site_key_v3' onChange={updateRecaptchaSiteKeyV3}/>
+							<input placeholder="Secret Key V3" className="mb-4 appearance-none block w-300 h-8 bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 pr-0 leading-tight focus:outline-none focus:bg-white focus:border-gray-500 spectra-admin__input-field" id="grid-zip"  type="text"  value={secretKeyV3} name='secret_key_v3' onChange={updateRecaptchaSecretKeyV3}/>
 						</div>
 					</section>
 				</>

@@ -94,6 +94,8 @@ const ComingSoon = () => {
 		control: ( provided ) => ( {
 			...provided,
 			cursor: 'pointer',
+			fontSize: '0.875rem',
+			borderRadius: '0.375rem',
 		} ),
 	};
 
@@ -128,10 +130,10 @@ const ComingSoon = () => {
 			</div>
 			{ show && (
 				<>
-                	<p className="mt-2 pl-8 w-10/12 text-sm">
+                	<p className="mt-2 pl-8 w-8/12 text-sm">
 						{ __( 'Is your website still in the making? Is it not yet ready for other people to see?', 'ultimate-addons-for-gutenberg' ) }
 					</p>
-                	<p className="mt-2 pl-8 w-10/12 text-sm">
+                	<p className="mt-2 pl-8 w-8/12 text-sm">
 						{ __( 'Enable the coming soon mode. Only the page you select below will be displayed to people who are not logged in.', 'ultimate-addons-for-gutenberg' ) }
 					</p>
 					<Select
@@ -144,7 +146,7 @@ const ComingSoon = () => {
 						maxMenuHeight={ 140 }
 						minMenuHeight = { 70 }
 						isSearchable={true}
-						className={`mt-4 cursor-pointer pl-8 w-10/12 focus:ring-spectra`}
+						className={`mt-4 pl-8 w-8/12 cursor-pointer transition focus:ring-spectra`}
 						isLoading={isFetchPages}
 						onMenuOpen={fetchPageHandler}
 						theme={( theme ) => ( {
@@ -155,6 +157,9 @@ const ComingSoon = () => {
 							},
 						} )}
 						styles={customStyles}
+                        components={ {
+                            IndicatorSeparator: () => null
+                        } }
 					/>
 				</>
 			)}

@@ -44,7 +44,7 @@ const RegenerateAssets = () => {
                 </Button>
                 <button
                     type="button"
-                    className="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-[0.2rem] shadow-sm text-white bg-spectra focus:bg-spectra-hover hover:bg-spectra-hover focus:outline-none"
+                    className="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-spectra transition focus:bg-spectra-hover hover:bg-spectra-hover focus:outline-none"
                     onClick={regenerateAssets}
                 >
                     { 'loading' === regenerateAssetsState &&
@@ -62,7 +62,7 @@ const RegenerateAssets = () => {
                 }
             </div>
             { show && (
-                <p className="mt-2 pl-8 w-10/12 text-sm">
+                <p className="mt-2 pl-8 w-8/12 text-sm">
                     { __( 'Facing issues with style, layout, color or another page element? Use this option to regenerate CSS and Javascript assets. It can help with all kinds of asset issues.', 'ultimate-addons-for-gutenberg' ) }
                 </p>
             )}

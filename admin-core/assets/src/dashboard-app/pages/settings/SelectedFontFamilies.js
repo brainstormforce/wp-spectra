@@ -85,6 +85,8 @@ const SelectedFontFamilies = () => {
 		control: ( provided ) => ( {
 		  ...provided,
 		  cursor: 'pointer',
+          fontSize: '0.875rem',
+          borderRadius: '0.375rem',
 		} ),
 
 	}
@@ -119,7 +121,7 @@ const SelectedFontFamilies = () => {
             </div>
             { show && ( 
                 <>
-                    <p className="mt-2 pl-8 w-10/12 text-sm">
+                    <p className="mt-2 pl-8 w-8/12 text-sm">
                         { __( 'Spectra offers 700+ Google font options. If this is overwhelming for your clients, you can use this option to show only limited number of fonts in the block settings.', 'ultimate-addons-for-gutenberg' ) }
                     </p>
                     <Select
@@ -131,7 +133,7 @@ const SelectedFontFamilies = () => {
                         maxMenuHeight={ 140 }
                         minMenuHeight = { 70 }
                         isSearchable={true}
-                        className={`mt-4 cursor-pointer focus:ring-spectra`}
+                        className={ `mt-4 pl-8 w-8/12 cursor-pointer transition focus:ring-spectra` }
                         theme={( theme ) => ( {
                             ...theme,
                             colors: {
@@ -140,6 +142,9 @@ const SelectedFontFamilies = () => {
                             },
                         } )}
                         styles={customStyles}
+                        components={ {
+                            IndicatorSeparator: () => null
+                        } }
                     />
                 </>
             )}

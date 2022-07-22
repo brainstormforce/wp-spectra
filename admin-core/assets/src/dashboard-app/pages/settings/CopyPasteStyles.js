@@ -74,7 +74,7 @@ const CopyPasteStyles = () => {
                 </Switch>
             </div>
             { show && ( 
-                <p className="mt-2 pl-8 w-10/12 text-sm">
+                <p className="mt-2 pl-8 w-8/12 text-sm">
                     { __( 'Enable the "Copy Paste Styles" option to have the ability to copy & paste Spectra & Core Gutenberg Blocks Styles.', 'ultimate-addons-for-gutenberg' ) }
                 </p>
             )}

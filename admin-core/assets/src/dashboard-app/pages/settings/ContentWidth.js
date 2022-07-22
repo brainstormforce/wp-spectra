@@ -45,22 +45,22 @@ const ContentWidth = () => {
 					</h3>
 				</Button>
 				<div className='flex spectra-content-width-input-wrap'>
-					<input className="appearance-none block w-20 h-8 leading-tight spectra-admin__input-field" id="grid-zip" value={contentWidth} onChange={updateContentWidth} type="number" placeholder="1200" min={0} max={1600} />
-					<span className="inline-flex h-8 items-center sm:text-sm spectra-admin__input-field--end-display">
+					<input className="appearance-none block w-20 h-8 leading-tight transition spectra-admin__input-field" id="grid-zip" value={contentWidth} onChange={updateContentWidth} type="number" placeholder="1200" min={0} max={1600} />
+					<span className="inline-flex h-8 items-center sm:text-sm transition spectra-admin__input-field--end-display">
 						{ __( 'px', 'ultimate-addons-for-gutenberg' ) }
 					</span>
 				</div>
 			</div>
 			{ show && (
 				<>
-               		<p className="mt-2 pl-8 w-10/12 text-sm">
+               		<p className="mt-2 pl-8 w-8/12 text-sm">
 						{
 							// eslint-disable-next-line @wordpress/i18n-no-variables
 							__( `This setting will apply to Container Block's default Content Width.`, 'ultimate-addons-for-gutenberg' )
 						}
 					</p>
 					{ 'Spectra' !== uag_react.uag_content_width_set_by &&
-               			<p className="mt-2 pl-8 w-10/12 text-sm italic">
+               			<p className="mt-2 pl-8 w-8/12 text-sm italic">
 							{
 								// eslint-disable-next-line @wordpress/i18n-no-variables
 								__( `The current Content width is applied from ${uag_react.uag_content_width_set_by}.`, 'ultimate-addons-for-gutenberg' )

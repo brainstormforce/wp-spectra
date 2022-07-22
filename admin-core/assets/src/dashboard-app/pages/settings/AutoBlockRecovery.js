@@ -47,7 +47,7 @@ const AutoBlockRecovery = () => {
     return (
         <section className='block border-b border-solid border-slate-200 p-6 justify-between'>  
             <div className='mr-16 w-full flex items-center'>
-                <Button className='p-0 flex-1 justify-right inline-flex uag-accordion'
+                <Button className='p-0 flex-1 justify-right inline-flex uag-accordion transition '
                     onClick={ () => setshow( ! show ) }
                 >
                     { ! show && ( <svg className="w-4 text-sm mr-4 transition" xmlns="https://www.w3.org/2000/svg" viewBox="0 0 384 512"><path d="M192 384c-8.188 0-16.38-3.125-22.62-9.375l-160-160c-12.5-12.5-12.5-32.75 0-45.25s32.75-12.5 45.25 0L192 306.8l137.4-137.4c12.5-12.5 32.75-12.5 45.25 0s12.5 32.75 0 45.25l-160 160C208.4 380.9 200.2 384 192 384z"></path></svg> ) }
@@ -74,7 +74,7 @@ const AutoBlockRecovery = () => {
                 </Switch>
             </div>
             { show && (
-                <p className="mt-2 pl-8 w-10/12 text-sm">
+                <p className="mt-2 pl-8 w-8/12 text-sm">
                     { __( 'Enable this to automatically recover any erroneous blocks that may occur on your web pages. This will save you time spent on clicking all those \"Attempt Block Recovery\" Buttons.', 'ultimate-addons-for-gutenberg' ) }
                 </p>
             ) }
