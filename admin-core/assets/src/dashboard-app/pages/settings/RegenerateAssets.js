@@ -28,8 +28,8 @@ const RegenerateAssets = () => {
     };
 
     return (
-        <section className='flex'>
-            <div className='pr-16 pb-8 w-[78%]'>
+        <section className='flex p-8 justify-between'>
+            <div className='pr-16 w-[78%]'>
                 <h3 className="text-lg leading-6 font-medium text-gray-900">
                     {__( 'Asset Regeneration', 'ultimate-addons-for-gutenberg' )}
                 </h3>
@@ -40,7 +40,7 @@ const RegenerateAssets = () => {
             <div>
                 <button
                     type="button"
-                    className="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-[0.2rem] shadow-sm text-white bg-wpcolor focus:bg-wphovercolor hover:bg-wphovercolor focus:outline-none"
+                    className="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-[0.2rem] shadow-sm text-white bg-spectra focus:bg-spectra-hover hover:bg-spectra-hover focus:outline-none"
                     onClick={regenerateAssets}
                 >
                     { 'loading' === regenerateAssetsState &&

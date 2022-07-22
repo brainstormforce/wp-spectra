@@ -160,7 +160,7 @@
 }
 
 #wpwrap {
-	background: var(--background-light-color);
+	background-color: #f8fafc; // Tailwind Slate-50.
 }
 
 .uag-font-select-disabled {
@@ -222,14 +222,6 @@
 
 }
 
-.uag-dashboard-app .read-more a {
-	color: #2271b1;
-}
-
-.uag-dashboard-app .read-more a:hover {
-	color: #135e96;
-}
-
 .spectra-content-width-input-wrap {
 
 	> input {
@@ -277,5 +269,74 @@
 				box-shadow: $spectra-wpcolor 0 0 0 1px !important;
 			}
 		}
+	}
+}
+
+// The Block SVGs when Disabled
+.spectra-icon-transition {
+
+	svg,
+	path {
+		transition-property: fill;
+		transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+		transition-duration: 150ms;
+	}
+}
+
+.spectra-disabled-icon {
+
+	svg,
+	path {
+		fill: #94a3b8; // Tailwind Slate-400.
+	}
+}
+
+// Changelog Styling.
+.spectra-changelog-description {
+
+	strong {
+		font-weight: 500;
+		font-size: 0.875rem;
+		line-height: 1.25rem;
+		color: #1e293b;
+	}
+
+	ul {
+		margin-top: 0.25rem;
+		margin-bottom: 0.75rem;
+
+		&:last-child {
+			margin-top: 0;
+		}
+	}
+
+	li {
+		font-weight: 400;
+		font-size: 0.75rem;
+		line-height: 1rem;
+		color: #64748b;
+	}
+}
+
+// Custom Scrollbar.
+.spectra-scrollable-settings {
+	// scrollbar-gutter: stable both-edges;
+	scrollbar-width: 0.5rem;
+	scrollbar-color: #cbd5e1 #f1f5f9; // Tailwind Slate-300 and Slate-100.
+
+	&::-webkit-scrollbar {
+		width: 0.5rem;
+		height: 0.5rem;
+	}
+
+	&::-webkit-scrollbar-track {
+		margin: 1rem 0;
+		border-radius: 4px;
+		background-color: #f1f5f9;
+	}
+
+	&::-webkit-scrollbar-thumb {
+		border-radius: 4px;
+		background-color: #cbd5e1;
 	}
 }

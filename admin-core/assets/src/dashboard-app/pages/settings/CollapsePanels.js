@@ -41,8 +41,8 @@ const CollapsePanels = () => {
     };
 
     return (
-        <section className='flex border-b border-solid border-slate-200'>
-            <div className='pr-16 pb-8 w-[78%]'>
+        <section className='flex border-b border-solid border-slate-200 p-8 justify-between'>
+            <div className='pr-16 w-[78%]'>
                 <h3 className="text-lg leading-6 font-medium text-gray-900">
                     {__( 'Collapse Panels', 'ultimate-addons-for-gutenberg' )}
                 </h3>
@@ -55,7 +55,7 @@ const CollapsePanels = () => {
                     checked={enableCollapsePanelsStatus}
                     onChange={updateEnableCollapsePanelsStatus}
                     className={classNames(
-                        enableCollapsePanelsStatus ? 'bg-wpcolor' : 'bg-gray-200',
+                        enableCollapsePanelsStatus ? 'bg-spectra' : 'bg-slate-200',
                         'relative inline-flex flex-shrink-0 h-5 w-[2.4rem] items-center border-2 border-transparent rounded-full cursor-pointer transition-colors ease-in-out duration-200 focus:outline-none'
                     )}
                     >

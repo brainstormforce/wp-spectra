@@ -46,8 +46,8 @@ const PreloadLocalFonts = () => {
     };
 
     return (
-        <section className={`flex uag-font-select-${enableLoadFontsLocally}`}>
-            <div className='pr-16 pb-8 w-[78%]'>
+        <section className={`flex uag-font-select-${enableLoadFontsLocally} p-8 justify-between`}>
+            <div className='pr-16 w-[78%]'>
                 <h3 className="text-lg leading-6 font-medium text-gray-900">
                     {__( 'Preload Local Fonts', 'ultimate-addons-for-gutenberg' )}
                 </h3>
@@ -60,7 +60,7 @@ const PreloadLocalFonts = () => {
                     checked={enablePreloadLocalFontsStatus}
                     onChange={updatePreloadLocalFontsStatus}
                     className={classNames(
-                        enablePreloadLocalFontsStatus ? 'bg-wpcolor' : 'bg-gray-200',
+                        enablePreloadLocalFontsStatus ? 'bg-spectra' : 'bg-slate-200',
                         'relative inline-flex flex-shrink-0 h-5 w-[2.4rem] items-center border-2 border-transparent rounded-full cursor-pointer transition-colors ease-in-out duration-200 focus:outline-none'
                     )}
                     >

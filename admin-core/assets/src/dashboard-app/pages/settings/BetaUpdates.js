@@ -41,8 +41,8 @@ const BetaUpdates = () => {
     };
 
     return (
-        <section className='flex'>
-            <div className='pr-16 pb-8 w-[78%]'>
+        <section className='flex p-8 justify-between'>
+            <div className='pr-16 w-[78%]'>
                 <h3 className="text-lg leading-6 font-medium text-gray-900">
                     {__( 'Enable Beta', 'ultimate-addons-for-gutenberg' )}
                 </h3>
@@ -55,7 +55,7 @@ const BetaUpdates = () => {
                     checked={enableBetaStatus}
                     onChange={updateEnableBetaStatus}
                     className={classNames(
-                        enableBetaStatus ? 'bg-wpcolor' : 'bg-gray-200',
+                        enableBetaStatus ? 'bg-spectra' : 'bg-slate-200',
                         'relative inline-flex flex-shrink-0 h-5 w-[2.4rem] items-center border-2 border-transparent rounded-full cursor-pointer transition-colors ease-in-out duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500'
                     )}
                     >

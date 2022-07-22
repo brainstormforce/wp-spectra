@@ -16,8 +16,8 @@ const RollBack = () => {
 
     return (
         <>
-            <section className='flex border-b border-solid border-slate-200'>
-                <div className='pr-16 pb-8 w-[78%]'>
+            <section className='flex border-b border-solid border-slate-200 p-8 justify-between'>
+                <div className='pr-16 w-[78%]'>
                     <h3 className="text-lg leading-6 font-medium text-gray-900">
                         {__( 'Rollback to Previous Version', 'ultimate-addons-for-gutenberg' )}
                     </h3>
@@ -28,11 +28,11 @@ const RollBack = () => {
                         }
                     </p>
                 </div>
-                <div className='flex'>
+                <div className='flex justify-right'>
                     <select
                         id="location"
                         name="location"
-                        className="block w-20 h-9 pl-3 pr-10 py-2 mr-3 text-base border-gray-300 focus:outline-none focus:ring-wpcolor focus:border-wpcolor sm:text-sm rounded-[0.2rem] spectra-admin__input-field"
+                        className="block w-20 h-9 pl-3 pr-10 py-2 mr-3 text-base border-gray-300 focus:outline-none focus:ring-spectra focus:border-spectra sm:text-sm rounded-[0.2rem] spectra-admin__input-field"
                         onBlur={ ( e ) => { setPreviousVersion( e.target.value ); } }
                     >
                         {
@@ -45,7 +45,7 @@ const RollBack = () => {
                     </select>
                     <button
                         type="button"
-                        className="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-[0.2rem] shadow-sm text-white bg-wpcolor focus:bg-wphovercolor hover:bg-wphovercolor focus:outline-none h-9"
+                        className="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-[0.2rem] shadow-sm text-white bg-spectra focus:bg-spectra-hover hover:bg-spectra-hover focus:outline-none h-9"
                         onClick={rollbackButtonClickHandler}
                     >
                         { confirmPopup &&
