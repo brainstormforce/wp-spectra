@@ -55,10 +55,18 @@ const ResponsiveConditionsExtention = () => {
             'box-border relative border rounded-md h-20 p-4 flex items-center space-x-4 snap-start transition spectra-icon-transition'
         ) }
         >
+            <div className={ classNames(
+                displayResponsiveStatus
+                    ? ''
+                    : 'border-t-slate-200 border-r-slate-200',
+                'uagb-block-card__deprecated-label absolute -top-px -right-px border border-violet-50 bg-violet-50 text-spectra rounded-tr-md rounded-bl-md px-2 py-1 text-xs leading-3 font-medium'
+            ) }>
+                EXTENSION
+            </div>
             <div className="flex-shrink-0">
                 { UAGB_Block_Icons['responsive-conditions'] }
             </div>
-            <div className="flex-1 min-w-0">
+            <div className="uagb-admin-block__extension-title flex-1 min-w-0">
                 <p className="text-sm font-medium text-gray-900 mb-[0.1875rem]">{__( 'Responsive Conditions', 'ultimate-addons-for-gutenberg' )}</p>
                 <a className="text-sm text-gray-900 focus:text-spectra active:text-spectra hover:text-spectra truncate underline" href='https://ultimategutenberg.com/docs/display-conditions-blocks/' target="_blank"rel="noreferrer">{__( 'Documentation', 'ultimate-addons-for-gutenberg' )}</a>
             </div>

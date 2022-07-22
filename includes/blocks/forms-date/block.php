@@ -15,4 +15,5 @@ $block_data = array(
 	'description' => __( 'This block helps to add Datepicker field.', 'ultimate-addons-for-gutenberg' ),
 	'default'     => true,
 	'is_child'    => true,
+	'deprecated'  => false,
 );
