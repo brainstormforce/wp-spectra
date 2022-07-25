@@ -416,6 +416,12 @@ if ( 'before' === $attr['ctaIconPosition'] ) {
 	);
 }
 
+if ( 'none' === $attr['ctaType'] || 'all' === $attr['ctaType'] ) {
+	$selectors[' .uagb-cta__wrap'] = array(
+		'width' => '100%',
+	);
+}
+
 if ( 'right' === $attr['ctaPosition'] && ( 'text' === $attr['ctaType'] || 'button' === $attr['ctaType'] ) ) {
 	$selectors['.wp-block-uagb-call-to-action '] = array(
 		'display'         => 'flex',
