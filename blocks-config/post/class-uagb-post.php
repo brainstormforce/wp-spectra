@@ -1027,7 +1027,7 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 						'default' => 'outset',
 					),
 					'boxShadowColorHover'           => array(
-						'type'    => 'number',
+						'type'    => 'string',
 						'default' => '',
 					),
 					'boxShadowHOffsetHover'         => array(
@@ -1047,7 +1047,7 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 						'default' => '',
 					),
 					'boxShadowPositionHover'        => array(
-						'type'    => 'number',
+						'type'    => 'string',
 						'default' => 'outset',
 					),
 					'overallBorderHColor'           => array(

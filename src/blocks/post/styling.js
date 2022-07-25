@@ -211,7 +211,13 @@ function styling( props ) {
 		boxShadowVOffset,
 		boxShadowBlur,
 		boxShadowSpread,
-		boxShadowPosition
+		boxShadowPosition,
+		boxShadowColorHover,
+		boxShadowHOffsetHover,
+		boxShadowVOffsetHover,
+		boxShadowBlurHover,
+		boxShadowSpreadHover,
+		boxShadowPositionHover,
 	} = props.attributes;
 
 	const overlayOpacityFallback = getFallbackNumber( overlayOpacity, 'overlayOpacity', blockName );
@@ -254,6 +260,11 @@ function styling( props ) {
 		boxShadowPositionCSS = '';
 	}
 
+	let boxShadowPositionCSSHover = boxShadowPositionHover;
+
+	if ( 'outset' === boxShadowPositionHover ) {
+		boxShadowPositionCSSHover = '';
+	}
 	const selectors = {
 		'.wp-block-uagb-post-grid.uagb-post__items': {
 			'column-gap': generateCSSUnit( columnGapFallback , columnGapUnit ),
@@ -698,6 +709,7 @@ function styling( props ) {
 				titleBottomSpaceUnit
 			),
 		},
+		'.wp-block-uagb-post-grid .uagb-post__inner-wrap': overallBorderCSSMobile,
 		' .uagb-post__title a': {
 			'font-size': generateCSSUnit(
 				titleFontSizeMobile,
@@ -810,6 +822,20 @@ function styling( props ) {
 			'row-gap': generateCSSUnit( rowGapMobile, rowGapUnit ),
 		},
 	};
+
+	const boxShadowBlurHoverValue = isNaN( boxShadowBlurHover ) ? '' : boxShadowBlurHover;
+	const boxShadowColorHoverValue = boxShadowColorHover ? boxShadowColorHover : '';
+
+	if( '' !== boxShadowColorHoverValue || '' !== boxShadowBlurHoverValue ) {
+
+		const boxShadowBlurHoverCSSUnit = ( '' === boxShadowBlurHoverValue ) ? '' : generateCSSUnit( boxShadowBlurHoverValue, 'px' );
+
+		selectors['.wp-block-uagb-post-grid .uagb-post__inner-wrap:hover'] = {
+			'box-shadow' : generateCSSUnit( boxShadowHOffsetHover, 'px' ) + ' ' + generateCSSUnit( boxShadowVOffsetHover, 'px' ) +	' ' +
+													boxShadowBlurHoverCSSUnit + ' ' +	generateCSSUnit( boxShadowSpreadHover, 'px' ) + ' ' +
+													boxShadowColorHoverValue + ' ' +	boxShadowPositionCSSHover
+		}
+	}
 
 	tabletSelectors = {
 		' .uagb-post__inner-wrap .uagb-post__title': {
@@ -935,6 +961,7 @@ function styling( props ) {
 			'column-gap': generateCSSUnit( columnGapTablet , columnGapUnit ),
 			'row-gap': generateCSSUnit( rowGapTablet, rowGapUnit ),
 		},
+		'.wp-block-uagb-post-grid .uagb-post__inner-wrap': overallBorderCSSTablet,
 	};
 
 	if ( 'infinite' === paginationType ) {

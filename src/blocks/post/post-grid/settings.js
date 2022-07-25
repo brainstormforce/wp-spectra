@@ -20,7 +20,7 @@ import MultiButtonsControl from '@Components/multi-buttons-control';
 import UAGSelectControl from '@Components/select-control';
 import renderSVG from '@Controls/renderIcon';
 import UAGTabsControl from '@Components/tabs';
-import { buttonsPresets } from './presets';
+import { buttonsPresets, boxShadowPresets, boxShadowHoverPresets } from './presets';
 import UAGPresets from '@Components/presets';
 import BoxShadowControl from '@Components/box-shadow';
 
@@ -2057,6 +2057,11 @@ const Settings = ( props ) => {
 					] }
 					normal={
 						<>
+						<UAGPresets
+								setAttributes = { setAttributes }
+								presets = { boxShadowPresets }
+								presetInputType = 'radioImage'
+							/>
 							<BoxShadowControl
 								blockId={ block_id }
 								setAttributes={ setAttributes }
@@ -2108,6 +2113,11 @@ const Settings = ( props ) => {
 					}
 					hover={
 						<>
+						<UAGPresets
+								setAttributes = { setAttributes }
+								presets = { boxShadowHoverPresets }
+								presetInputType = 'radioImage'
+							/>
 							<BoxShadowControl
 								blockId={ block_id }
 								setAttributes={ setAttributes }
