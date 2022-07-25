@@ -17,6 +17,9 @@ const attributes = {
 	layout: {
 		type: 'string',
 		default: 'default',
+		UAGCopyPaste: {
+			styleType: 'image-layout'
+		}
 	},
 	url: {
 		type: 'string',
@@ -45,14 +48,23 @@ const attributes = {
 	align: {
 		type: 'string',
 		default: '',
+		UAGCopyPaste: {
+			styleType: 'image-align'
+		}
 	},
 	alignTablet: {
 		type: 'string',
 		default: '',
+		UAGCopyPaste: {
+			styleType: 'image-align-tablet'
+		}
 	},
 	alignMobile: {
 		type: 'string',
 		default: '',
+		UAGCopyPaste: {
+			styleType: 'image-align-mobile'
+		}
 	},
 	id: {
 		type: 'integer',
