@@ -7,15 +7,19 @@
 			<key name="customUrl" />
 		</gutenberg-block>
 		<gutenberg-block type="uagb/post-masonry" translate="1">
+			<key name="headingTitle" />
 			<key name="ctaText" />
 		</gutenberg-block>
 		<gutenberg-block type="uagb/post-grid" translate="1">
+			<key name="headingTitle" />
 			<key name="ctaText" />
 		</gutenberg-block>
 		<gutenberg-block type="uagb/post-timeline" translate="1">
+			<key name="headingTitle" />
 			<key name="readMoreText" />
 		</gutenberg-block>
 		<gutenberg-block type="uagb/post-carousel" translate="1">
+			<key name="headingTitle" />
 			<key name="ctaText" />
 		</gutenberg-block>
 		<gutenberg-block type="uagb/section" translate="0"/>
@@ -47,7 +51,10 @@
 			<xpath>//div[contains(@class, "wp-block-uagb-icon-list-child")]/a/@href</xpath>
 		</gutenberg-block>
 		<gutenberg-block type="uagb/tabs" translate="1">
-			<xpath>//a@href</xpath>
+			<xpath>//div/ul/li/a</xpath>
+		</gutenberg-block>
+		<gutenberg-block type="uagb/tabs-child" translate="1">
+			<key name="tabHeaders" />
 		</gutenberg-block>
 		<gutenberg-block type="uagb/restaurant-menu" translate="1">
 			<xpath>//*[self::h1 or self::h2 or self::h3 or self::h4 or self::h5 or self::h6]</xpath>
@@ -69,7 +76,6 @@
 			<xpath>//div[@class="uagb-blockquote__content"]</xpath>
 			<xpath>//cite[@class="uagb-blockquote__author"]</xpath>
 			<xpath>//span[@class="uagb-blockquote__tweet-label"]</xpath>
-
 		</gutenberg-block>
 		<gutenberg-block type="uagb/marketing-button" translate="1">
 			<xpath>//a[@class="uagb-marketing-btn__link"]/@href</xpath>
@@ -77,9 +83,8 @@
 			<xpath>//p[@class="uagb-marketing-btn__prefix"]</xpath>
 		</gutenberg-block>
 		<gutenberg-block type="uagb/table-of-contents" translate="1">
-			<xpath>//div[@class="uagb-toc__title"]</xpath>
-			<xpath>//ul[@class="uagb-toc__list"]/li/a</xpath>
-			<xpath>//a/@href</xpath>
+			<key name="headingTitle" />
+			<xpath>//div/ul/li/a</xpath>
 		</gutenberg-block>
 		<gutenberg-block type="uagb/buttons-child" translate="1">
 			<xpath>//a[@class="uagb-button__link"]</xpath>
@@ -90,6 +95,8 @@
 			<xpath>//figcaption[@class="uagb-image-caption"]</xpath>
 			<xpath>//figure/figcaption</xpath>
 		</gutenberg-block>
-		<gutenberg-block type="uagb/taxonomy-list" translate="0"/>
+		<gutenberg-block type="uagb/taxonomy-list" translate="1">
+			<key name="headingTitle" />
+		</gutenberg-block>
 	</gutenberg-blocks>
 </wpml-config>
