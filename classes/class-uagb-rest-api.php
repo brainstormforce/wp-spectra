@@ -45,13 +45,21 @@ if ( ! class_exists( 'UAGB_Rest_API' ) ) {
 
 			// We have added this action here to support both the ways of post updations, Rest API & Normal.
 			add_action( 'save_post', array( $this, 'delete_page_assets' ), 10, 1 );
-			add_action( 'rest_after_save_widget', array( $this, 'after_widget_save_action' ) );
+			global $wp_customize;
+			if ( $wp_customize ) { // Check whether the $wp_customize is set.
+				// Show customizer style preview for Spectra block inside customizer widget editor.
+				add_action( 'customize_partial_render', array( $this, 'after_widget_save_action' ) );
+			} else {
+				// Show block style for Spectra block on frontend when used inside widget editor.
+				add_action( 'rest_after_save_widget', array( $this, 'after_widget_save_action' ) );
+			}
+
 		}
 
 		/**
 		 * This function updates the __uagb_asset_version when Widgets Editor is Updated.
 		 *
-		 * @since x.x.x
+		 * @since 2.0.0-beta.3
 		 */
 		public function after_widget_save_action() {
 			/* Update the asset version */

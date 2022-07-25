@@ -36,6 +36,14 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 			$selectors   = array();
 
 			$border_css        = self::uag_generate_border_css( $attr, 'btn' );
+			$border_css        = self::uag_generate_deprecated_border_css(
+				$border_css,
+				( isset( $attr['borderWidth'] ) ? $attr['borderWidth'] : '' ),
+				( isset( $attr['borderRadius'] ) ? $attr['borderRadius'] : '' ),
+				( isset( $attr['borderColor'] ) ? $attr['borderColor'] : '' ),
+				( isset( $attr['borderStyle'] ) ? $attr['borderStyle'] : '' ),
+				( isset( $attr['borderHColor'] ) ? $attr['borderHColor'] : '' )
+			);
 			$border_css_tablet = self::uag_generate_border_css( $attr, 'btn', 'tablet' );
 			$border_css_mobile = self::uag_generate_border_css( $attr, 'btn', 'mobile' );
 
@@ -59,7 +67,8 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 
 			} elseif ( 'color' === $attr['backgroundType'] ) {
 
-				$selectors[' .wp-block-button__link']['background'] = $attr['background'];
+				$selectors['.wp-block-uagb-buttons-child .uagb-buttons-repeater']['background'] = $attr['background'];
+				$selectors[' .wp-block-button__link']['background']                             = $attr['background'];
 
 			} elseif ( 'gradient' === $attr['backgroundType'] ) {
 				$bg_obj = array(
@@ -94,7 +103,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				$selectors[' .wp-block-button__link:hover'] = $btn_hover_bg_css;
 			}
 
-			$selectors[' .uagb-button__wrapper .uagb-buttons-repeater.wp-block-button__link'] = array(
+			$selectors[' .uagb-button__wrapper .uagb-buttons-repeater'] = array(
 				'font-family'     => $attr['fontFamily'],
 				'font-weight'     => $attr['fontWeight'],
 				'font-style'      => $attr['fontStyle'],
@@ -112,7 +121,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				'margin-left'     => UAGB_Helper::get_css_value( $attr['leftMargin'], $attr['marginType'] ),
 				'margin-right'    => UAGB_Helper::get_css_value( $attr['rightMargin'], $attr['marginType'] ),
 			);
-			$selectors[ $wrapper . '.wp-block-button__link:hover' ]                           = array(
+			$selectors[ $wrapper . '.wp-block-button__link:hover' ]     = array(
 				'color' => $attr['hColor'],
 			);
 			if ( 0 !== $attr['boxShadowHOffset'] || 0 !== $attr['boxShadowVOffset'] ) {
@@ -138,6 +147,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				'border-color' => isset( $attr['borderHoverColor'] ) && ! empty( $attr['borderHoverColor'] ) ? $attr['borderHoverColor'] : $attr['btnBorderHColor'],
 			);
 			$selectors[ $wrapper . ' .uagb-button__link' ]   = array(
+				'color'           => $attr['color'],
 				'font-family'     => $attr['fontFamily'],
 				'font-weight'     => $attr['fontWeight'],
 				'font-style'      => $attr['fontStyle'],
@@ -308,7 +318,116 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				'border-color' => $attr['icon_border_hover_color'] . ' !important',
 			);
 
-			return $selectors;
+			$selectors[ $wrapper . '.wp-block-uagb-icon-list-child.wp-block-uagb-icon-list-child' ] = array(
+				'margin-top'     => UAGB_Helper::get_css_value(
+					$attr['childTopMargin'],
+					$attr['childMarginUnit']
+				),
+				'margin-right'   => UAGB_Helper::get_css_value(
+					$attr['childRightMargin'],
+					$attr['childMarginUnit']
+				),
+				'margin-bottom'  => UAGB_Helper::get_css_value(
+					$attr['childBottomMargin'],
+					$attr['childMarginUnit']
+				),
+				'margin-left'    => UAGB_Helper::get_css_value(
+					$attr['childLeftMargin'],
+					$attr['childMarginUnit']
+				),
+				'padding-top'    => UAGB_Helper::get_css_value(
+					$attr['childTopPadding'],
+					$attr['childPaddingUnit']
+				),
+				'padding-right'  => UAGB_Helper::get_css_value(
+					$attr['childRightPadding'],
+					$attr['childPaddingUnit']
+				),
+				'padding-bottom' => UAGB_Helper::get_css_value(
+					$attr['childBottomPadding'],
+					$attr['childPaddingUnit']
+				),
+				'padding-left'   => UAGB_Helper::get_css_value(
+					$attr['childLeftPadding'],
+					$attr['childPaddingUnit']
+				),
+			);
+
+			$t_selectors[ $wrapper . '.wp-block-uagb-icon-list-child.wp-block-uagb-icon-list-child' ] = array(
+				'margin-top'     => UAGB_Helper::get_css_value(
+					$attr['childTopMarginTablet'],
+					$attr['childMarginUnitTablet']
+				),
+				'margin-right'   => UAGB_Helper::get_css_value(
+					$attr['childRightMarginTablet'],
+					$attr['childMarginUnitTablet']
+				),
+				'margin-bottom'  => UAGB_Helper::get_css_value(
+					$attr['childBottomMarginTablet'],
+					$attr['childMarginUnitTablet']
+				),
+				'margin-left'    => UAGB_Helper::get_css_value(
+					$attr['childLeftMarginTablet'],
+					$attr['childMarginUnitTablet']
+				),
+				'padding-top'    => UAGB_Helper::get_css_value(
+					$attr['childTopPaddingTablet'],
+					$attr['childPaddingUnitTablet']
+				),
+				'padding-right'  => UAGB_Helper::get_css_value(
+					$attr['childRightPaddingTablet'],
+					$attr['childPaddingUnitTablet']
+				),
+				'padding-bottom' => UAGB_Helper::get_css_value(
+					$attr['childBottomPaddingTablet'],
+					$attr['childPaddingUnitTablet']
+				),
+				'padding-left'   => UAGB_Helper::get_css_value(
+					$attr['childLeftPaddingTablet'],
+					$attr['childPaddingUnitTablet']
+				),
+			);
+
+			$m_selectors[ $wrapper . '.wp-block-uagb-icon-list-child.wp-block-uagb-icon-list-child' ] = array(
+				'margin-top'     => UAGB_Helper::get_css_value(
+					$attr['childTopMarginMobile'],
+					$attr['childMarginUnitMobile']
+				),
+				'margin-right'   => UAGB_Helper::get_css_value(
+					$attr['childRightMarginMobile'],
+					$attr['childMarginUnitMobile']
+				),
+				'margin-bottom'  => UAGB_Helper::get_css_value(
+					$attr['childBottomMarginMobile'],
+					$attr['childMarginUnitMobile']
+				),
+				'margin-left'    => UAGB_Helper::get_css_value(
+					$attr['childLeftMarginMobile'],
+					$attr['childMarginUnitMobile']
+				),
+				'padding-top'    => UAGB_Helper::get_css_value(
+					$attr['childTopPaddingMobile'],
+					$attr['childPaddingUnitMobile']
+				),
+				'padding-right'  => UAGB_Helper::get_css_value(
+					$attr['childRightPaddingMobile'],
+					$attr['childPaddingUnitMobile']
+				),
+				'padding-bottom' => UAGB_Helper::get_css_value(
+					$attr['childBottomPaddingMobile'],
+					$attr['childPaddingUnitMobile']
+				),
+				'padding-left'   => UAGB_Helper::get_css_value(
+					$attr['childLeftPaddingMobile'],
+					$attr['childPaddingUnitMobile']
+				),
+			);
+
+			return array(
+				'desktop' => $selectors,
+				'tablet'  => $t_selectors,
+				'mobile'  => $m_selectors,
+			);
 		}
 
 		/**
@@ -1209,141 +1328,12 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 		/**
 		 * Border attribute generation Function.
 		 *
-		 * @since x.x.x
+		 * @since 2.0.0-beta.3
 		 * @param  array $prefix   Attribute Prefix.
 		 * @param array $default_args  default attributes args.
 		 * @return array
 		 */
 		public static function uag_generate_php_border_attribute( $prefix, $default_args = array() ) {
-			$defaults = wp_parse_args(
-				$default_args,
-				array(
-					// Width.
-					'borderTopWidth'                => array(
-						'type'    => 'number',
-						'default' => '',
-					),
-					'borderRightWidth'              => array(
-						'type'    => 'number',
-						'default' => '',
-					),
-					'borderBottomWidth'             => array(
-						'type'    => 'number',
-						'default' => '',
-					),
-					'borderLeftWidth'               => array(
-						'type'    => 'number',
-						'default' => '',
-					),
-					'borderTopWidthTablet'          => array(
-						'type'    => 'number',
-						'default' => '',
-					),
-					'borderRightWidthTablet'        => array(
-						'type'    => 'number',
-						'default' => '',
-					),
-					'borderBottomWidthTablet'       => array(
-						'type'    => 'number',
-						'default' => '',
-					),
-					'borderLeftWidthTablet'         => array(
-						'type'    => 'number',
-						'default' => '',
-					),
-					'borderTopWidthMobile'          => array(
-						'type'    => 'number',
-						'default' => '',
-					),
-					'borderRightWidthMobile'        => array(
-						'type'    => 'number',
-						'default' => '',
-					),
-					'borderBottomWidthMobile'       => array(
-						'type'    => 'number',
-						'default' => '',
-					),
-					'borderLeftWidthMobile'         => array(
-						'type'    => 'number',
-						'default' => '',
-					),
-					// Radius.
-					'borderTopLeftRadius'           => array(
-						'type'    => 'number',
-						'default' => '',
-					),
-					'borderTopRightRadius'          => array(
-						'type'    => 'number',
-						'default' => '',
-					),
-					'borderBottomRightRadius'       => array(
-						'type'    => 'number',
-						'default' => '',
-					),
-					'borderBottomLeftRadius'        => array(
-						'type'    => 'number',
-						'default' => '',
-					),
-					'borderTopLeftRadiusTablet'     => array(
-						'type'    => 'number',
-						'default' => '',
-					),
-					'borderTopRightRadiusTablet'    => array(
-						'type'    => 'number',
-						'default' => '',
-					),
-					'borderBottomRightRadiusTablet' => array(
-						'type'    => 'number',
-						'default' => '',
-					),
-					'borderBottomLeftRadiusTablet'  => array(
-						'type'    => 'number',
-						'default' => '',
-					),
-					'borderTopLeftRadiusMobile'     => array(
-						'type'    => 'number',
-						'default' => '',
-					),
-					'borderTopRightRadiusMobile'    => array(
-						'type'    => 'number',
-						'default' => '',
-					),
-					'borderBottomRightRadiusMobile' => array(
-						'type'    => 'number',
-						'default' => '',
-					),
-					'borderBottomLeftRadiusMobile'  => array(
-						'type'    => 'number',
-						'default' => '',
-					),
-					// unit.
-					'borderRadiusUnit'              => array(
-						'type'    => 'string',
-						'default' => 'px',
-					),
-					'borderRadiusUnitTablet'        => array(
-						'type'    => 'string',
-						'default' => 'px',
-					),
-					'borderRadiusUnitMobile'        => array(
-						'type'    => 'string',
-						'default' => 'px',
-					),
-					// common.
-					'borderStyle'                   => array(
-						'type'    => 'string',
-						'default' => 'none',
-					),
-					'borderColor'                   => array(
-						'type'    => 'string',
-						'default' => '',
-					),
-					'borderHColor'                  => array(
-						'type'    => 'string',
-						'default' => '',
-					),
-				)
-			);
 
 			$border_attr = array();
 
@@ -1351,20 +1341,44 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 
 			foreach ( $device as $slug => $data ) {
 
-				$border_attr[ "{$prefix}BorderTopWidth{$data}" ]          = $defaults[ "borderTopWidth{$data}" ];
-				$border_attr[ "{$prefix}BorderLeftWidth{$data}" ]         = $defaults[ "borderLeftWidth{$data}" ];
-				$border_attr[ "{$prefix}BorderRightWidth{$data}" ]        = $defaults[ "borderRightWidth{$data}" ];
-				$border_attr[ "{$prefix}BorderBottomWidth{$data}" ]       = $defaults[ "borderBottomWidth{$data}" ];
-				$border_attr[ "{$prefix}BorderTopLeftRadius{$data}" ]     = $defaults[ "borderTopLeftRadius{$data}" ];
-				$border_attr[ "{$prefix}BorderTopRightRadius{$data}" ]    = $defaults[ "borderTopRightRadius{$data}" ];
-				$border_attr[ "{$prefix}BorderBottomLeftRadius{$data}" ]  = $defaults[ "borderBottomLeftRadius{$data}" ];
-				$border_attr[ "{$prefix}BorderBottomRightRadius{$data}" ] = $defaults[ "borderBottomLeftRadius{$data}" ];
-				$border_attr[ "{$prefix}BorderRadiusUnit{$data}" ]        = $defaults[ "borderRadiusUnit{$data}" ];
+				$border_attr[ "{$prefix}BorderTopWidth{$data}" ]          = array(
+					'type' => 'number',
+				);
+				$border_attr[ "{$prefix}BorderLeftWidth{$data}" ]         = array(
+					'type' => 'number',
+				);
+				$border_attr[ "{$prefix}BorderRightWidth{$data}" ]        = array(
+					'type' => 'number',
+				);
+				$border_attr[ "{$prefix}BorderBottomWidth{$data}" ]       = array(
+					'type' => 'number',
+				);
+				$border_attr[ "{$prefix}BorderTopLeftRadius{$data}" ]     = array(
+					'type' => 'number',
+				);
+				$border_attr[ "{$prefix}BorderTopRightRadius{$data}" ]    = array(
+					'type' => 'number',
+				);
+				$border_attr[ "{$prefix}BorderBottomLeftRadius{$data}" ]  = array(
+					'type' => 'number',
+				);
+				$border_attr[ "{$prefix}BorderBottomRightRadius{$data}" ] = array(
+					'type' => 'number',
+				);
+				$border_attr[ "{$prefix}BorderRadiusUnit{$data}" ]        = array(
+					'type' => 'number',
+				);
 			}
 
-			$border_attr[ "{$prefix}BorderStyle" ]      = $defaults['borderStyle'];
-			$border_attr[ "{$prefix}BorderColor" ]      = $defaults['borderColor'];
-			$border_attr[ "{$prefix}BorderHColor" ]     = $defaults['borderHColor'];
+			$border_attr[ "{$prefix}BorderStyle" ]      = array(
+				'type' => 'string',
+			);
+			$border_attr[ "{$prefix}BorderColor" ]      = array(
+				'type' => 'string',
+			);
+			$border_attr[ "{$prefix}BorderHColor" ]     = array(
+				'type' => 'string',
+			);
 			$border_attr[ "{$prefix}BorderLink" ]       = array(
 				'type'    => 'boolean',
 				'default' => true,
@@ -1379,7 +1393,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 		/**
 		 * Border attribute generation Function.
 		 *
-		 * @since x.x.x
+		 * @since 2.0.0-beta.3
 		 * @param  array $prefix   Attribute Prefix.
 		 * @param array $default_args  default attributes args.
 		 * @return array
@@ -1451,7 +1465,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 		/**
 		 * Border CSS generation Function.
 		 *
-		 * @since x.x.x
+		 * @since 2.0.0-beta.3
 		 * @param  array  $attr   Attribute List.
 		 * @param  string $prefix Attribuate prefix .
 		 * @param  string $device Responsive.
@@ -1506,7 +1520,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 		/**
 		 * Deprecated Border CSS generation Function.
 		 *
-		 * @since x.x.x
+		 * @since 2.0.0-beta.3
 		 * @param  array  $current_css   Current style list.
 		 * @param  string $border_width   Border Width.
 		 * @param  string $border_radius Border Radius.
@@ -1515,14 +1529,14 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 		 */
 		public static function uag_generate_deprecated_border_css( $current_css, $border_width, $border_radius, $border_color = '', $border_style = '' ) {
 			$gen_border_css = array();
-			if ( $border_width ) {
+			if ( is_numeric( $border_width ) ) {
 				$gen_border_css['border-top-width']    = UAGB_Helper::get_css_value( $border_width, 'px' );
 				$gen_border_css['border-left-width']   = UAGB_Helper::get_css_value( $border_width, 'px' );
 				$gen_border_css['border-right-width']  = UAGB_Helper::get_css_value( $border_width, 'px' );
 				$gen_border_css['border-bottom-width'] = UAGB_Helper::get_css_value( $border_width, 'px' );
 			}
 
-			if ( $border_radius ) {
+			if ( is_numeric( $border_radius ) ) {
 				$gen_border_css['border-top-left-radius']     = UAGB_Helper::get_css_value( $border_radius, 'px' );
 				$gen_border_css['border-top-right-radius']    = UAGB_Helper::get_css_value( $border_radius, 'px' );
 				$gen_border_css['border-bottom-left-radius']  = UAGB_Helper::get_css_value( $border_radius, 'px' );
@@ -1543,7 +1557,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 		 * Since title text is set to flex, we need this function so that stack alignment doesn't break.
 		 * It converts the normal text-align values to flex-alignment based values.
 		 *
-		 * @since x.x.x
+		 * @since 2.0.0-beta.3
 		 * @param string $text_align Alignment value from text-align property.
 		 */
 		public static function text_alignment_to_flex( $text_align ) {

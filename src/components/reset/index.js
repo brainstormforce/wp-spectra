@@ -20,10 +20,11 @@ const UAGReset = ( props ) => {
 		const selectedBlockName = getSelectedBlock()?.name.replace( 'uagb/', '' );
 		let defaultValues = false;
 
-		if ( attributeNames ) {
+		if ( attributeNames && 'undefined' !== typeof blocksAttributes[selectedBlockName] ) {
 			attributeNames.map( ( attributeName ) => {
+
 				if ( attributeName ) {
-					const blockDefaultAttributeValue = blocksAttributes[selectedBlockName][attributeName]?.default;
+					const blockDefaultAttributeValue = ( 'undefined' !== typeof blocksAttributes[selectedBlockName][attributeName]?.default ) ? blocksAttributes[selectedBlockName][attributeName]?.default : '';
 					defaultValues = {
 						...defaultValues,
 						[attributeName] : blockDefaultAttributeValue,

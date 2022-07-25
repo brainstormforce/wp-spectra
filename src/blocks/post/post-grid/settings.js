@@ -23,6 +23,7 @@ import UAGTabsControl from '@Components/tabs';
 import { buttonsPresets, boxShadowPresets, boxShadowHoverPresets } from './presets';
 import UAGPresets from '@Components/presets';
 import BoxShadowControl from '@Components/box-shadow';
+import { decodeEntities } from '@wordpress/html-entities';
 
 const MAX_POSTS_COLUMNS = 8;
 
@@ -307,7 +308,7 @@ const Settings = ( props ) => {
 		Object.keys( taxonomyList ).map( ( item ) => {
 			return taxonomyListOptions.push( {
 				value: taxonomyList[ item ].name,
-				label: taxonomyList[ item ].label,
+				label: decodeEntities( taxonomyList[ item ].label ),
 			} );
 		} );
 	}
@@ -316,7 +317,7 @@ const Settings = ( props ) => {
 		Object.keys( categoriesList ).map( ( item ) => {
 			return categoryListOptions.push( {
 				value: categoriesList[ item ].id,
-				label: categoriesList[ item ].name,
+				label: decodeEntities( categoriesList[ item ].name ),
 			} );
 		} );
 	}
@@ -695,6 +696,57 @@ const Settings = ( props ) => {
 				title={ __( 'Pagination', 'ultimate-addons-for-gutenberg' ) }
 				initialOpen={ false }
 			>
+				<MultiButtonsControl
+					setAttributes={ setAttributes }
+					label={ __(
+						'Pagination Alignment',
+						'ultimate-addons-for-gutenberg'
+					) }
+					data={ {
+						value: paginationAlignment,
+						label: 'paginationAlignment',
+					} }
+					className="uagb-multi-button-alignment-control"
+					options={ [
+						{
+							value: 'left',
+							icon: (
+								<Icon
+									icon={ renderSVG( 'fa fa-align-left' ) }
+								/>
+							),
+							tooltip: __(
+								'Left',
+								'ultimate-addons-for-gutenberg'
+							),
+						},
+						{
+							value: 'center',
+							icon: (
+								<Icon
+									icon={ renderSVG( 'fa fa-align-center' ) }
+								/>
+							),
+							tooltip: __(
+								'Center',
+								'ultimate-addons-for-gutenberg'
+							),
+						},
+						{
+							value: 'right',
+							icon: (
+								<Icon
+									icon={ renderSVG( 'fa fa-align-right' ) }
+								/>
+							),
+							tooltip: __(
+								'Right',
+								'ultimate-addons-for-gutenberg'
+							),
+						},
+					] }
+					showIcons={ true }
+				/>
 				<MultiButtonsControl
 					setAttributes={ setAttributes }
 					label={ __(
@@ -2178,57 +2230,6 @@ const Settings = ( props ) => {
 				title={ __( 'Pagination', 'ultimate-addons-for-gutenberg' ) }
 				initialOpen={ false }
 			>
-				<MultiButtonsControl
-					setAttributes={ setAttributes }
-					label={ __(
-						'Pagination Alignment',
-						'ultimate-addons-for-gutenberg'
-					) }
-					data={ {
-						value: paginationAlignment,
-						label: 'paginationAlignment',
-					} }
-					className="uagb-multi-button-alignment-control"
-					options={ [
-						{
-							value: 'left',
-							icon: (
-								<Icon
-									icon={ renderSVG( 'fa fa-align-left' ) }
-								/>
-							),
-							tooltip: __(
-								'Left',
-								'ultimate-addons-for-gutenberg'
-							),
-						},
-						{
-							value: 'center',
-							icon: (
-								<Icon
-									icon={ renderSVG( 'fa fa-align-center' ) }
-								/>
-							),
-							tooltip: __(
-								'Center',
-								'ultimate-addons-for-gutenberg'
-							),
-						},
-						{
-							value: 'right',
-							icon: (
-								<Icon
-									icon={ renderSVG( 'fa fa-align-right' ) }
-								/>
-							),
-							tooltip: __(
-								'Right',
-								'ultimate-addons-for-gutenberg'
-							),
-						},
-					] }
-					showIcons={ true }
-				/>
 				<UAGTabsControl
 					tabs={ [
 						{

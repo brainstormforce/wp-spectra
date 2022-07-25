@@ -821,6 +821,9 @@ function styling( props ) {
 			'column-gap': generateCSSUnit( columnGapMobile , columnGapUnit ),
 			'row-gap': generateCSSUnit( rowGapMobile, rowGapUnit ),
 		},
+		' .is-masonry': {
+			'height': 'initial !important',
+		},
 	};
 
 	const boxShadowBlurHoverValue = isNaN( boxShadowBlurHover ) ? '' : boxShadowBlurHover;
@@ -962,6 +965,9 @@ function styling( props ) {
 			'row-gap': generateCSSUnit( rowGapTablet, rowGapUnit ),
 		},
 		'.wp-block-uagb-post-grid .uagb-post__inner-wrap': overallBorderCSSTablet,
+		' .is-masonry': {
+			'height': 'initial !important',
+		},
 	};
 
 	if ( 'infinite' === paginationType ) {

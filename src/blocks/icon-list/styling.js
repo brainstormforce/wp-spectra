@@ -70,6 +70,39 @@ function styling( props ) {
 		iconBgHoverColor,
 		iconBorderColor,
 		iconBorderHoverColor,
+		iconPlacement,
+		blockTopMargin,
+		// margin
+		blockRightMargin,
+		blockLeftMargin,
+		blockBottomMargin,
+		blockTopMarginTablet,
+		blockRightMarginTablet,
+		blockLeftMarginTablet,
+		blockBottomMarginTablet,
+		blockTopMarginMobile,
+		blockRightMarginMobile,
+		blockLeftMarginMobile,
+		blockBottomMarginMobile,
+		blockMarginUnit,
+		blockMarginUnitTablet,
+		blockMarginUnitMobile,
+		// padding
+		blockTopPadding,
+		blockRightPadding,
+		blockLeftPadding,
+		blockBottomPadding,
+		blockTopPaddingTablet,
+		blockRightPaddingTablet,
+		blockLeftPaddingTablet,
+		blockBottomPaddingTablet,
+		blockTopPaddingMobile,
+		blockRightPaddingMobile,
+		blockLeftPaddingMobile,
+		blockBottomPaddingMobile,
+		blockPaddingUnit,
+		blockPaddingUnitTablet,
+		blockPaddingUnitMobile,
 	} = props.attributes;
 
 	const gapFallback = getFallbackNumber( gap, 'gap', blockName );
@@ -163,6 +196,38 @@ function styling( props ) {
 		},
 		' .uagb-icon-list__wrap .block-editor-inner-blocks': {
 			'text-align': align,
+			'margin-top': generateCSSUnit(
+				blockTopMargin,
+				blockMarginUnit
+			),
+			'margin-right': generateCSSUnit(
+				blockRightMargin,
+				blockMarginUnit
+			),
+			'margin-bottom': generateCSSUnit(
+				blockBottomMargin,
+				blockMarginUnit
+			),
+			'margin-left': generateCSSUnit(
+				blockLeftMargin,
+				blockMarginUnit
+			),
+			'padding-top': generateCSSUnit(
+				blockTopPadding,
+				blockPaddingUnit
+			),
+			'padding-right': generateCSSUnit(
+				blockRightPadding,
+				blockPaddingUnit
+			),
+			'padding-bottom': generateCSSUnit(
+				blockBottomPadding,
+				blockPaddingUnit
+			),
+			'padding-left': generateCSSUnit(
+				blockLeftPadding,
+				blockPaddingUnit
+			),
 		},
 		' .wp-block-uagb-icon-list-child .uagb-icon-list__source-wrap svg': {
 			'color': iconColor,
@@ -190,8 +255,39 @@ function styling( props ) {
 		},
 		' .uagb-icon-list__wrap .block-editor-inner-blocks': {
 			'text-align': alignTablet,
+			'margin-top': generateCSSUnit(
+				blockTopMarginTablet,
+				blockMarginUnitTablet
+			),
+			'margin-right': generateCSSUnit(
+				blockRightMarginTablet,
+				blockMarginUnitTablet
+			),
+			'margin-bottom': generateCSSUnit(
+				blockBottomMarginTablet,
+				blockMarginUnitTablet
+			),
+			'margin-left': generateCSSUnit(
+				blockLeftMarginTablet,
+				blockMarginUnitTablet
+			),
+			'padding-top': generateCSSUnit(
+				blockTopPaddingTablet,
+				blockPaddingUnitTablet
+			),
+			'padding-right': generateCSSUnit(
+				blockRightPaddingTablet,
+				blockPaddingUnitTablet
+			),
+			'padding-bottom': generateCSSUnit(
+				blockBottomPaddingTablet,
+				blockPaddingUnitTablet
+			),
+			'padding-left': generateCSSUnit(
+				blockLeftPaddingTablet,
+				blockPaddingUnitTablet
+			),
 		},
-
 	};
 
 	mobileSelectors = {
@@ -200,6 +296,38 @@ function styling( props ) {
 		},
 		' .uagb-icon-list__wrap .block-editor-inner-blocks': {
 			'text-align': alignMobile,
+			'margin-top': generateCSSUnit(
+				blockTopMarginMobile,
+				blockMarginUnitMobile
+			),
+			'margin-right': generateCSSUnit(
+				blockRightMarginMobile,
+				blockMarginUnitMobile
+			),
+			'margin-bottom': generateCSSUnit(
+				blockBottomMarginMobile,
+				blockMarginUnitMobile
+			),
+			'margin-left': generateCSSUnit(
+				blockLeftMarginMobile,
+				blockMarginUnitMobile
+			),
+			'padding-top': generateCSSUnit(
+				blockTopPaddingMobile,
+				blockPaddingUnitMobile
+			),
+			'padding-right': generateCSSUnit(
+				blockRightPaddingMobile,
+				blockPaddingUnitMobile
+			),
+			'padding-bottom': generateCSSUnit(
+				blockBottomPaddingMobile,
+				blockPaddingUnitMobile
+			),
+			'padding-left': generateCSSUnit(
+				blockLeftPaddingMobile,
+				blockPaddingUnitMobile
+			),
 		},
 	};
 
@@ -226,9 +354,8 @@ function styling( props ) {
 			'-webkit-box-pack': alignment,
 			'-ms-flex-pack': alignment,
 			'align-items' : 'center',
-		};
-		selectors[' .block-editor-block-list__layout' ] = {
-			'display': 'inline-flex'
+			'display': 'inline-flex',
+			'flex-direction': 'row',
 		};
 		selectors[' .block-editor-block-list__layout .wp-block[data-type="uagb/icon-list-child"]' ] = {
 			'margin-right': generateCSSUnit( gapFallback / 2, gapType ),
@@ -237,7 +364,7 @@ function styling( props ) {
 			'margin-left': generateCSSUnit( gapFallback / 2, gapType ),
 		};
 	} else if( 'vertical' === iconListLayout ) {
-		selectors[ ' .uagb-icon-list__wrap' ] = {
+		selectors[ ' .uagb-icon-list__wrap .block-editor-block-list__layout' ] = {
 			'flex-direction': 'column',
 		};
 		selectors[ ' .wp-block[data-type="uagb/icon-list-child"]' ] = {
@@ -254,9 +381,8 @@ function styling( props ) {
 			'-webkit-box-pack': tabletAlignment,
 			'-ms-flex-pack': tabletAlignment,
 			'align-items' : 'center',
-		};
-		tabletSelectors[' .block-editor-block-list__layout' ] = {
-			'display': 'inline-flex'
+			'display': 'inline-flex',
+			'flex-direction': 'row',
 		};
 		tabletSelectors[' .block-editor-block-list__layout .wp-block[data-type="uagb/icon-list-child"]' ] = {
 			'margin-right': generateCSSUnit( gapTabletFallback / 2, gapType ),
@@ -266,10 +392,12 @@ function styling( props ) {
 		};
 	} else if( 'vertical' === iconListLayoutTablet ) {
 		tabletSelectors[ ' .wp-block[data-type="uagb/icon-list-child"]' ] = {
-			'display': 'block',
 			'margin-left': 0 + ' !important',
 			'margin-right': 0 + ' !important',
 			'margin-bottom': generateCSSUnit( gapTabletFallback, gapType ),
+		};
+		tabletSelectors[ ' .uagb-icon-list__wrap .block-editor-block-list__layout' ] = {
+			'flex-direction': 'column',
 		};
 	}
 
@@ -279,9 +407,8 @@ function styling( props ) {
 			'-webkit-box-pack': mobileAlignment,
 			'-ms-flex-pack': mobileAlignment,
 			'align-items' : 'center',
-		};
-		mobileSelectors[' .block-editor-block-list__layout' ] = {
-			'display': 'inline-flex'
+			'display': 'inline-flex',
+			'flex-direction': 'row',
 		};
 		mobileSelectors[' .block-editor-block-list__layout .wp-block[data-type="uagb/icon-list-child"]' ] = {
 			'margin-right': generateCSSUnit( gapMobileFallback / 2, gapType ),
@@ -295,6 +422,9 @@ function styling( props ) {
 			'margin-left': 0 + ' !important',
 			'margin-right': 0 + ' !important',
 			'margin-bottom': generateCSSUnit( gapMobileFallback, gapType ),
+		};
+		mobileSelectors[ ' .uagb-icon-list__wrap .block-editor-block-list__layout' ] = {
+			'flex-direction': 'column',
 		};
 	}
 
@@ -317,7 +447,7 @@ function styling( props ) {
 		selectors[ ' .wp-block-uagb-icon-list-child ' ] = {
 			'flex-direction': 'row-reverse',
 		};
-	} else {
+	} else if ( 'before' === iconPlacement && ! hideLabel ) {
 		selectors[
 			' .uagb-icon-list__source-wrap'
 		] = {
@@ -332,6 +462,25 @@ function styling( props ) {
 			' .uagb-icon-list__source-wrap'
 		] = {
 			'margin-right': generateCSSUnit( innerGapTabletFallback, innerGapType ),
+		};
+	} else if ( 'after' === iconPlacement && ! hideLabel ) {
+		selectors[
+			' .uagb-icon-list__source-wrap'
+		] = {
+			'margin-left': generateCSSUnit( innerGapFallback, innerGapType ),
+		};
+		mobileSelectors[
+			' .uagb-icon-list__source-wrap'
+		] = {
+			'margin-left': generateCSSUnit( innerGapMobileFallback, innerGapType ),
+		};
+		tabletSelectors[
+			' .uagb-icon-list__source-wrap'
+		] = {
+			'margin-left': generateCSSUnit( innerGapTabletFallback, innerGapType ),
+		};
+		selectors[ ' .wp-block-uagb-icon-list-child ' ] = {
+			'flex-direction': 'row-reverse',
 		};
 	}
 

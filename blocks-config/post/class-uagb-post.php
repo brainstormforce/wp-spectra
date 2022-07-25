@@ -1053,6 +1053,25 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 					'overallBorderHColor'           => array(
 						'type' => 'string',
 					),
+					'borderWidth'                   => array(
+						'type'    => 'number',
+						'default' => '',
+					),
+					'borderStyle'                   => array(
+						'type'    => 'string',
+						'default' => 'none',
+					),
+					'borderColor'                   => array(
+						'type'    => 'string',
+						'default' => '',
+					),
+					'borderHColor'                  => array(
+						'type' => 'string',
+					),
+					'borderRadius'                  => array(
+						'type'    => 'number',
+						'default' => '',
+					),
 				),
 			);
 		}
@@ -1311,9 +1330,8 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 			$base                = UAGB_Helper::build_base_url( $permalink_structure, $base );
 			$format              = UAGB_Helper::paged_format( $permalink_structure, $base );
 			$paged               = UAGB_Helper::get_paged( $query );
-			// Why defaulting the min when the range can be set to a higher max? Original commented below.
-			// $page_limit          = min( $attributes['pageLimit'], $query->max_num_pages );.
-			$page_limit = UAGB_Block_Helper::get_fallback_number( $attributes['pageLimit'], 'pageLimit', $attributes['blockName'] );
+			$p_limit = UAGB_Block_Helper::get_fallback_number( $attributes['pageLimit'], 'pageLimit', $attributes['blockName'] );
+			$page_limit          = min( $p_limit, $query->max_num_pages );
 			$page_limit = isset( $page_limit ) ? $page_limit : UAGB_Block_Helper::get_fallback_number( $attributes['postsToShow'], 'postsToShow', $attributes['blockName'] );
 
 			$links = paginate_links(
@@ -1370,7 +1388,7 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 		 *
 		 * @param array $attributes plugin.
 		 * @return array of requred query attributes.
-		 * @since x.x.x
+		 * @since 2.0.0-beta.3
 		 */
 		public function required_attribute_for_query( $attributes ) {
 			return array(

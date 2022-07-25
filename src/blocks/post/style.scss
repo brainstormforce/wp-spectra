@@ -558,6 +558,7 @@
 
 	display: flex;
 	width: 100%;
+	flex-wrap: wrap; // To fix pagination on small devices.
 
 	a.page-numbers,
 	span.page-numbers.current {
@@ -565,6 +566,7 @@
 		margin: 0;
 		display: flex;
 		margin-right: 4px;
+		margin-bottom: 5px;
 	}
 }
 

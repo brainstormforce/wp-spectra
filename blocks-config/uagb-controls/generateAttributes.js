@@ -162,7 +162,7 @@ export const getBorderAttributes = ( prefix, defaultArgs = {} ) => {
 export const migrateBorderAttributes = ( prefix, borderWidth, borderRadius, color = {}, hoverColor = {}, borderStyle = {} ) => {
 	const attributes = {};
 
-	if( borderWidth.value ){
+	if( ! isNaN( borderWidth.value ) ){
 
 		if( undefined === attributes[ prefix + 'BorderTopWidth' ] ) {
 			attributes[ prefix + 'BorderTopWidth' ] = borderWidth.value;
@@ -180,8 +180,8 @@ export const migrateBorderAttributes = ( prefix, borderWidth, borderRadius, colo
 		attributes[borderWidth.label] = '';
 	}
 
-	if( borderRadius.value ){
-		
+	if( ! isNaN ( borderRadius.value ) ){
+
 		if( undefined === attributes[ prefix + 'BorderTopLeftRadius' ] ) {
 			attributes[ prefix + 'BorderTopLeftRadius' ] = borderRadius.value;
 		}
