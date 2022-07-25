@@ -46,7 +46,10 @@ const attributes = {   // eslint-disable-line no-unused-vars
 	},
 	layout                     : {
 		type    : 'string',
-		default : 'grid'
+		default : 'grid',
+		UAGCopyPaste: {
+			styleType: 'layout'
+		},
 	},
 	columns                    : {
 		type    : 'number',

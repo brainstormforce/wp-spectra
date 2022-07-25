@@ -18,6 +18,9 @@ const attributes = {
 	layout: {
 		type: 'string',
 		default: 'input-button',
+		UAGCopyPaste: {
+			styleType: 'input-layout'
+		}
 	},
 	placeholder: {
 		type: 'string',
@@ -279,6 +282,9 @@ const attributes = {
 	buttonType: {
 		type: 'string',
 		default: 'icon',
+		UAGCopyPaste: {
+			styleType: 'button-type'
+		}
 	},
 	buttonText: {
 		type: 'string',
