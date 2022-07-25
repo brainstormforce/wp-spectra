@@ -599,6 +599,12 @@ function CtaStyle( props ) {
 		};
 	}
 
+	if( ctaType === 'none' || ctaType === 'all' ){ // 100% width when ctaType is none or all.
+		selectors[ ' .uagb-cta__wrap' ] = {
+			'width': '100%',
+		};
+	}
+
 	if ( ctaPosition === 'right' && ( ctaType === 'text' || ctaType === 'button' ) ) {
 		selectors[ ' .uagb-cta__wrap' ] = {
 			'width': generateCSSUnit( contentWidthFallback, contentWidthType ),

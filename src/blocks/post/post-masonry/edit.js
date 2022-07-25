@@ -570,6 +570,7 @@ const UAGBPostMasonry = ( props ) => {
 		ctaLetterSpacingTablet,
 		ctaLetterSpacingMobile,
 		ctaLetterSpacingType,
+
 	} = attributes;
 
 	const taxonomyListOptions = [];

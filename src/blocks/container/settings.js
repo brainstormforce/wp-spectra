@@ -9,6 +9,7 @@ import { __ } from '@wordpress/i18n';
 
 import {
 	InspectorControls,
+	__experimentalLinkControl as LinkControl
 } from '@wordpress/block-editor';
 import BoxShadowControl from '@Components/box-shadow';
 import SpacingControl from '@Components/spacing-control';
@@ -31,6 +32,8 @@ const Settings = ( props ) => {
 	const { attributes, setAttributes, deviceType } = props;
 	const {
 		block_id,
+		htmlTag,
+		htmlTagLink,
 		widthDesktop,
 		widthTablet,
 		widthMobile,
@@ -193,6 +196,12 @@ const Settings = ( props ) => {
 	}
 
 	const currentOppAxisDirection = 'row' === currentDirection ? 'column' : 'row';
+
+	const verticalAlignmentHint = __( 'Define the vertical alignment inside this container', 'ultimate-addons-for-gutenberg' );
+	const horizontalAlignmentHint = __( 'Define the horizontal alignment inside this container', 'ultimate-addons-for-gutenberg' );
+	const alignContentHint = ( 'row' === currentDirection )
+	? __( 'Define the vertical alignment of every line of blocks inside this flex container', 'ultimate-addons-for-gutenberg' )
+	: __( 'Define the horizontal alignment of every line of blocks inside this flex container', 'ultimate-addons-for-gutenberg' );
 
 	// This useEffect ensures that background size is set to cover, so as to ensure color takes up entire width and height,
 	// in case bg type was set to Image before and given a custom width and height.
@@ -616,6 +625,133 @@ const Settings = ( props ) => {
 						] }
 						setAttributes={ setAttributes }
 					/>
+					<UAGSelectControl
+						label={ __(
+							'HTML Tag',
+							'ultimate-addons-for-gutenberg'
+						) }
+						data={ {
+							value: htmlTag,
+							label: 'htmlTag',
+						} }
+						setAttributes={ setAttributes }
+						options={ [
+							{
+								value: 'div',
+								label: __(
+									'div',
+									'ultimate-addons-for-gutenberg'
+								),
+							},
+							{
+								value: 'header',
+								label: __(
+									'header',
+									'ultimate-addons-for-gutenberg'
+								),
+							},
+							{
+								value: 'footer',
+								label: __(
+									'footer',
+									'ultimate-addons-for-gutenberg'
+								),
+							},
+							{
+								value: 'main',
+								label: __(
+									'main',
+									'ultimate-addons-for-gutenberg'
+								),
+							},
+							{
+								value: 'article',
+								label: __(
+									'article',
+									'ultimate-addons-for-gutenberg'
+								),
+							},
+							{
+								value: 'section',
+								label: __(
+									'section',
+									'ultimate-addons-for-gutenberg'
+								),
+							},
+							{
+								value: 'aside',
+								label: __(
+									'aside',
+									'ultimate-addons-for-gutenberg'
+								),
+							},
+							{
+								value: 'figure',
+								label: __(
+									'figure',
+									'ultimate-addons-for-gutenberg'
+								),
+							},
+							{
+								value: 'figcaption',
+								label: __(
+									'figcaption',
+									'ultimate-addons-for-gutenberg'
+								),
+							},
+							{
+								value: 'summary',
+								label: __(
+									'summary',
+									'ultimate-addons-for-gutenberg'
+								),
+							},
+							{
+								value: 'nav',
+								label: __(
+									'nav',
+									'ultimate-addons-for-gutenberg'
+								),
+							},
+							{
+								value: 'a',
+								label: __(
+									'link',
+									'ultimate-addons-for-gutenberg'
+								),
+							},
+						] }
+					/>
+					{
+						htmlTag === 'a' && (
+							<LinkControl
+								searchInputPlaceholder="Search here..."
+								value={ htmlTagLink }
+								settings={[
+									{
+										id: 'opensInNewTab',
+										title: __( 'Open in new window', 'ultimate-addons-for-gutenberg' ),
+									},
+									{
+										id: 'noFollow',
+										title: __( 'Add nofollow', 'ultimate-addons-for-gutenberg' )
+									}
+								]}
+								onChange={ ( link ) => {
+									setAttributes( { htmlTagLink: link } )
+								} }
+								withCreateSuggestion={true}
+								createSuggestion={ ( inputValue ) => setAttributes( { post: {
+									...attributes.post,
+									title: inputValue,
+									type: 'custom-url',
+									id: Date.now(),
+									url: inputValue
+								} } ) }
+								createSuggestionButtonText={ ( newValue ) => `${__( 'New:', 'ultimate-addons-for-gutenberg' )} ${newValue}` }
+							/>
+						)
+					}
 					<MultiButtonsControl
 						setAttributes={ setAttributes }
 						label={ __( 'Overflow', 'ultimate-addons-for-gutenberg' ) }
@@ -651,7 +787,8 @@ const Settings = ( props ) => {
 						} }
 						options={ directionOptions }
 						showIcons={ true }
-						responsive={true}
+						responsive={ true }
+						help={ __( 'Define the direction in which blocks inside this container will be placed one after the other.', 'ultimate-addons-for-gutenberg' ) }
 					/>
 
 					<MultiButtonsControl
@@ -673,7 +810,8 @@ const Settings = ( props ) => {
 						} }
 						options={ alignItemsOptions }
 						showIcons={ true }
-						responsive={true}
+						responsive={ true }
+						help={ ( 'row' === currentOppAxisDirection ) ? horizontalAlignmentHint : verticalAlignmentHint }
 					/>
 					<MultiButtonsControl
 						setAttributes={ setAttributes }
@@ -694,7 +832,8 @@ const Settings = ( props ) => {
 						} }
 						options={ justifyContentOptions }
 						showIcons={ true }
-						responsive={true}
+						responsive={ true }
+						help={ ( 'row' === currentDirection ) ? horizontalAlignmentHint : verticalAlignmentHint }
 					/>
 					<MultiButtonsControl
 						setAttributes={ setAttributes }
@@ -715,7 +854,7 @@ const Settings = ( props ) => {
 						} }
 						options={ wrapOptions }
 						showIcons={ true }
-						responsive={true}
+						responsive={ true }
 						help={ __( 'Define whether the items are forced in a single line (No Wrap) or can be flowed into multiple lines (Wrap)', 'ultimate-addons-for-gutenberg' ) }
 					/>
 					{ ( 'wrap' === attributes[ 'wrap' + deviceType ] || 'wrap-reverse' === attributes[ 'wrap' + deviceType ] ) &&
@@ -738,7 +877,8 @@ const Settings = ( props ) => {
 							} }
 							options={ justifyContentOptions }
 							showIcons={ true }
-							responsive={true}
+							responsive={ true }
+							help={ alignContentHint }
 						/>
 					}
 				</UAGAdvancedPanelBody>

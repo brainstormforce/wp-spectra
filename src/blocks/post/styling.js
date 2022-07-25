@@ -206,6 +206,18 @@ function styling( props ) {
 		ctaLetterSpacingTablet,
 		ctaLetterSpacingMobile,
 		ctaLetterSpacingType,
+		boxShadowColor,
+		boxShadowHOffset,
+		boxShadowVOffset,
+		boxShadowBlur,
+		boxShadowSpread,
+		boxShadowPosition,
+		boxShadowColorHover,
+		boxShadowHOffsetHover,
+		boxShadowVOffsetHover,
+		boxShadowBlurHover,
+		boxShadowSpreadHover,
+		boxShadowPositionHover,
 	} = props.attributes;
 
 	const overlayOpacityFallback = getFallbackNumber( overlayOpacity, 'overlayOpacity', blockName );
@@ -226,10 +238,14 @@ function styling( props ) {
 
 	const rowGapTabletFallback = isNaN( rowGapTablet ) ? rowGapFallback : rowGapTablet;
 	const rowGapMobileFallback = isNaN( rowGapMobile ) ? rowGapTabletFallback : rowGapMobile;
-	
+
 	const borderCSS = generateBorderCSS( props.attributes, 'btn' );
 	const borderCSSTablet = generateBorderCSS( props.attributes, 'btn', 'tablet' );
 	const borderCSSMobile = generateBorderCSS( props.attributes, 'btn', 'mobile' );
+
+	const overallBorderCSS = generateBorderCSS( props.attributes, 'overall' );
+	const overallBorderCSSTablet = generateBorderCSS( props.attributes, 'overall', 'tablet' );
+	const overallBorderCSSMobile = generateBorderCSS( props.attributes, 'overall', 'mobile' );
 
 	const paginationMasonryBorderCSS = generateBorderCSS( props.attributes, 'paginationMasonry' );
 	const paginationMasonryBorderCSSTablet = generateBorderCSS( props.attributes, 'paginationMasonry', 'tablet' );
@@ -238,12 +254,27 @@ function styling( props ) {
 	let mobileSelectors = {};
 	let tabletSelectors = {};
 
+	let boxShadowPositionCSS = boxShadowPosition;
+
+	if ( 'outset' === boxShadowPosition ) {
+		boxShadowPositionCSS = '';
+	}
+
+	let boxShadowPositionCSSHover = boxShadowPositionHover;
+
+	if ( 'outset' === boxShadowPositionHover ) {
+		boxShadowPositionCSSHover = '';
+	}
 	const selectors = {
-		'.uagb-post__items': {
+		'.wp-block-uagb-post-grid.uagb-post__items': {
+			'column-gap': generateCSSUnit( columnGapFallback , columnGapUnit ),
+			'row-gap': generateCSSUnit( rowGapFallback, rowGapUnit ),
+		},
+		':not(.wp-block-uagb-post-grid).uagb-post__items': {
 			'margin-right': generateCSSUnit( -rowGapFallback / 2, rowGapUnit ),
 			'margin-left': generateCSSUnit( -rowGapFallback / 2, rowGapUnit ),
 		},
-		'.uagb-post__items article': {
+		':not(.wp-block-uagb-post-grid).uagb-post__items article': {
 			'padding-right': generateCSSUnit( rowGapFallback / 2, rowGapUnit ),
 			'padding-left': generateCSSUnit( rowGapFallback / 2, rowGapUnit ),
 			'margin-bottom': generateCSSUnit( columnGapFallback, columnGapUnit ),
@@ -252,18 +283,29 @@ function styling( props ) {
 			'background': bgColor,
 			'text-align': align,
 		},
-		' .uagb-post__inner-wrap .uagb-post__text:not(.highlighted)': {
+		'.wp-block-uagb-post-grid .uagb-post__inner-wrap': {
+			'box-shadow':
+				generateCSSUnit( boxShadowHOffset, 'px' ) + ' ' + generateCSSUnit( boxShadowVOffset, 'px' ) +	' ' +
+				generateCSSUnit( boxShadowBlur, 'px' ) + ' ' +	generateCSSUnit( boxShadowSpread, 'px' ) + ' ' +
+				boxShadowColor + ' ' +	boxShadowPositionCSS,
+			...overallBorderCSS,
+			'padding-top': generateCSSUnit( paddingTop, contentPaddingUnit ),
+			'padding-left': generateCSSUnit( paddingLeft, contentPaddingUnit ),
+			'padding-bottom': generateCSSUnit( paddingBottom, contentPaddingUnit ),
+			'padding-right': generateCSSUnit( paddingRight, contentPaddingUnit ),
+		},
+		':not(.wp-block-uagb-post-grid) .uagb-post__inner-wrap .uagb-post__text:not(.highlighted)': {
 			'margin-left': generateCSSUnit( paddingLeft, contentPaddingUnit ),
 			'margin-right': generateCSSUnit(
 				paddingRight,
 				contentPaddingUnit
 			),
 		},
-		' .uagb-post__inner-wrap .uagb-post__text.highlighted:first-child': {
+		':not(.wp-block-uagb-post-grid) .uagb-post__inner-wrap .uagb-post__text.highlighted:first-child': {
 			'margin-top': generateCSSUnit( paddingTop, contentPaddingUnit ),
 			'margin-left': generateCSSUnit( paddingLeft, contentPaddingUnit ),
 		},
-		' .uagb-post__inner-wrap .uagb-post__text:last-child': {
+		':not(.wp-block-uagb-post-grid) .uagb-post__inner-wrap .uagb-post__text:last-child': {
 			'margin-bottom': generateCSSUnit(
 				paddingBottom,
 				contentPaddingUnit
@@ -667,6 +709,7 @@ function styling( props ) {
 				titleBottomSpaceUnit
 			),
 		},
+		'.wp-block-uagb-post-grid .uagb-post__inner-wrap': overallBorderCSSMobile,
 		' .uagb-post__title a': {
 			'font-size': generateCSSUnit(
 				titleFontSizeMobile,
@@ -769,15 +812,33 @@ function styling( props ) {
 			'margin-right': generateCSSUnit( -rowGapMobileFallback / 2, rowGapUnit ),
 			'margin-left': generateCSSUnit( -rowGapMobileFallback / 2, rowGapUnit ),
 		},
-		'.uagb-post__items article': {
+		':not(.wp-block-uagb-post-grid).uagb-post__items article': {
 			'padding-right': generateCSSUnit( rowGapMobileFallback / 2, rowGapUnit ),
 			'padding-left': generateCSSUnit( rowGapMobileFallback / 2, rowGapUnit ),
 			'margin-bottom': generateCSSUnit( columnGapMobile, columnGapUnit ),
+		},
+		'.wp-block-uagb-post-grid.uagb-post__items': {
+			'column-gap': generateCSSUnit( columnGapMobile , columnGapUnit ),
+			'row-gap': generateCSSUnit( rowGapMobile, rowGapUnit ),
 		},
 		' .is-masonry': {
 			'height': 'initial !important',
 		},
 	};
+
+	const boxShadowBlurHoverValue = isNaN( boxShadowBlurHover ) ? '' : boxShadowBlurHover;
+	const boxShadowColorHoverValue = boxShadowColorHover ? boxShadowColorHover : '';
+
+	if( '' !== boxShadowColorHoverValue || '' !== boxShadowBlurHoverValue ) {
+
+		const boxShadowBlurHoverCSSUnit = ( '' === boxShadowBlurHoverValue ) ? '' : generateCSSUnit( boxShadowBlurHoverValue, 'px' );
+
+		selectors['.wp-block-uagb-post-grid .uagb-post__inner-wrap:hover'] = {
+			'box-shadow' : generateCSSUnit( boxShadowHOffsetHover, 'px' ) + ' ' + generateCSSUnit( boxShadowVOffsetHover, 'px' ) +	' ' +
+													boxShadowBlurHoverCSSUnit + ' ' +	generateCSSUnit( boxShadowSpreadHover, 'px' ) + ' ' +
+													boxShadowColorHoverValue + ' ' +	boxShadowPositionCSSHover
+		}
+	}
 
 	tabletSelectors = {
 		' .uagb-post__inner-wrap .uagb-post__title': {
@@ -894,11 +955,16 @@ function styling( props ) {
 			'margin-right': generateCSSUnit( -rowGapTabletFallback / 2, rowGapUnit ),
 			'margin-left': generateCSSUnit( -rowGapTabletFallback / 2, rowGapUnit ),
 		},
-		'.uagb-post__items article': {
+		':not(.wp-block-uagb-post-grid).uagb-post__items article': {
 			'padding-right': generateCSSUnit( rowGapTabletFallback / 2, rowGapUnit ),
 			'padding-left': generateCSSUnit( rowGapTabletFallback / 2, rowGapUnit ),
 			'margin-bottom': generateCSSUnit( columnGapTablet, columnGapUnit ),
 		},
+		'.wp-block-uagb-post-grid.uagb-post__items': {
+			'column-gap': generateCSSUnit( columnGapTablet , columnGapUnit ),
+			'row-gap': generateCSSUnit( rowGapTablet, rowGapUnit ),
+		},
+		'.wp-block-uagb-post-grid .uagb-post__inner-wrap': overallBorderCSSTablet,
 		' .is-masonry': {
 			'height': 'initial !important',
 		},

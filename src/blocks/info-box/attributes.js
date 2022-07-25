@@ -76,6 +76,9 @@
 	iconimgPosition: {
 		type: 'string',
 		default: 'above-title',
+		UAGCopyPaste: {
+			styleType: 'icon-img-position'
+		}
 	},
 	iconSize: {
 		type: 'number',

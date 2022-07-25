@@ -4,7 +4,7 @@
 
 .editor-styles-wrapper .uagb-post-grid {
 
-	.uagb-post__inner-wrap {
+	&:not(.wp-block-uagb-post-grid) .uagb-post__inner-wrap {
 		background-clip: content-box !important;
 
 		&.uagb-post__edit-mode {
@@ -46,79 +46,148 @@
 
 	&.uagb-editor-preview-mode-tablet {
 
-		&.uagb-post__columns-tablet-1 article {
+		&:not(.wp-block-uagb-post-grid).uagb-post__columns-tablet-1 article {
 			width: 100%;
 		}
 
-		&.uagb-post__columns-tablet-2 article {
+		&:not(.wp-block-uagb-post-grid).uagb-post__columns-tablet-2 article {
 			width: 50%;
 		}
 
-		&.uagb-post__columns-tablet-3 article {
+		&:not(.wp-block-uagb-post-grid).uagb-post__columns-tablet-3 article {
 			width: 33.2%;
 		}
 
-		&.uagb-post__columns-tablet-4 article {
+		&:not(.wp-block-uagb-post-grid).uagb-post__columns-tablet-4 article {
 			width: 25%;
 		}
 
-		&.uagb-post__columns-tablet-5 article {
+		&:not(.wp-block-uagb-post-grid).uagb-post__columns-tablet-5 article {
 			width: 20%;
 		}
 
-		&.uagb-post__columns-tablet-6 article {
+		&:not(.wp-block-uagb-post-grid).uagb-post__columns-tablet-6 article {
 			width: 16.66%;
 		}
 
-		&.uagb-post__columns-tablet-7 article {
+		&:not(.wp-block-uagb-post-grid).uagb-post__columns-tablet-7 article {
 			width: 14.28%;
 		}
 
-		&.uagb-post__columns-tablet-8 article {
+		&:not(.wp-block-uagb-post-grid).uagb-post__columns-tablet-8 article {
 			width: 12.5%;
+		}
+
+		&.wp-block-uagb-post-grid.uagb-post__columns-tablet-1 {
+			grid-template-columns: auto;
+		}
+
+		&.wp-block-uagb-post-grid.uagb-post__columns-tablet-2 {
+			grid-template-columns: auto auto;
+		}
+
+		&.wp-block-uagb-post-grid.uagb-post__columns-tablet-3 {
+			grid-template-columns: auto auto auto;
+		}
+
+		&.wp-block-uagb-post-grid.uagb-post__columns-tablet-4 {
+			grid-template-columns: auto auto auto auto;
+		}
+
+		&.wp-block-uagb-post-grid.uagb-post__columns-tablet-5 {
+			grid-template-columns: auto auto auto auto auto;
+		}
+
+		&.wp-block-uagb-post-grid.uagb-post__columns-tablet-6 {
+			grid-template-columns: auto auto auto auto auto auto;
+		}
+
+		&.wp-block-uagb-post-grid.uagb-post__columns-tablet-7 {
+			grid-template-columns: auto auto auto auto auto auto auto;
+		}
+
+		&.wp-block-uagb-post-grid.uagb-post__columns-tablet-8 {
+			grid-template-columns: auto auto auto auto auto auto auto auto;
 		}
 	}
 
 	&.uagb-editor-preview-mode-mobile {
 
-		&.uagb-post__columns-mobile-1 article {
+		&:not(.wp-block-uagb-post-grid).uagb-post__columns-mobile-1 article {
 			width: 100%;
 		}
 
-		&.uagb-post__columns-mobile-2 article {
+		&:not(.wp-block-uagb-post-grid).uagb-post__columns-mobile-2 article {
 			width: 50%;
 		}
 
-		&.uagb-post__columns-mobile-3 article {
+		&:not(.wp-block-uagb-post-grid).uagb-post__columns-mobile-3 article {
 			width: 33.2%;
 		}
 
-		&.uagb-post__columns-mobile-4 article {
+		&:not(.wp-block-uagb-post-grid).uagb-post__columns-mobile-4 article {
 			width: 25%;
 		}
 
-		&.uagb-post__columns-mobile-5 article {
+		&:not(.wp-block-uagb-post-grid).uagb-post__columns-mobile-5 article {
 			width: 20%;
 		}
 
-		&.uagb-post__columns-mobile-6 article {
+		&:not(.wp-block-uagb-post-grid).uagb-post__columns-mobile-6 article {
 			width: 16.66%;
 		}
 
-		&.uagb-post__columns-mobile-7 article {
+		&:not(.wp-block-uagb-post-grid).uagb-post__columns-mobile-7 article {
 			width: 14.28%;
 		}
 
-		&.uagb-post__columns-mobile-8 article {
+		&:not(.wp-block-uagb-post-grid).uagb-post__columns-mobile-8 article {
 			width: 12.5%;
+		}
+
+
+		&.wp-block-uagb-post-grid.uagb-post__columns-mobile-1 {
+			grid-template-columns: auto;
+		}
+
+		&.wp-block-uagb-post-grid.uagb-post__columns-mobile-2 {
+			grid-template-columns: auto auto;
+		}
+
+		&.wp-block-uagb-post-grid.uagb-post__columns-mobile-3 {
+			grid-template-columns: auto auto auto;
+		}
+
+		&.wp-block-uagb-post-grid.uagb-post__columns-mobile-4 {
+			grid-template-columns: auto auto auto auto;
+		}
+
+		&.wp-block-uagb-post-grid.uagb-post__columns-mobile-5 {
+			grid-template-columns: auto auto auto auto auto;
+		}
+
+		&.wp-block-uagb-post-grid.uagb-post__columns-mobile-6 {
+			grid-template-columns: auto auto auto auto auto auto;
+		}
+
+		&.wp-block-uagb-post-grid.uagb-post__columns-mobile-7 {
+			grid-template-columns: auto auto auto auto auto auto auto;
+		}
+
+		&.wp-block-uagb-post-grid.uagb-post__columns-mobile-8 {
+			grid-template-columns: auto auto auto auto auto auto auto auto;
 		}
 	}
 
-	&.uagb-post__items {
+	&:not(.is-grid).uagb-post__items {
 		display: flex;
 		-ms-flex-wrap: wrap;
 		-webkit-flex-wrap: wrap;
 		flex-wrap: wrap;
+	}
+
+	&.is_grid {
+		display: grid;
 	}
 }
 
