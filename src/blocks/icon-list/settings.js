@@ -21,6 +21,7 @@ import { ToggleControl, Icon } from '@wordpress/components';
 import UAGAdvancedPanelBody from '@Components/advanced-panel-body';
 import UAGTabsControl from '@Components/tabs';
 import AdvancedPopColorControl from '@Components/color-control/advanced-pop-color-control.js';
+import UAGIconPicker from '@Components/icon-picker';
 
 
 const Settings = ( props ) => {
@@ -106,6 +107,7 @@ const Settings = ( props ) => {
 		blockMarginUnitTablet,
 		blockMarginUnitMobile,
 		blockMarginLink,
+		parentIcon,
 		// padding
 		blockTopPadding,
 		blockRightPadding,
@@ -320,7 +322,7 @@ const Settings = ( props ) => {
 									label: 'After',
 								},
 							] }
-							showIcons={ false }					
+							showIcons={ false }
 						/>
 					</>
 				) }
@@ -979,6 +981,23 @@ const Settings = ( props ) => {
 					/>
 				</UAGAdvancedPanelBody>
 	};
+	const iconSettings = () => {
+		return <UAGAdvancedPanelBody
+					title={ __( 'Select Icon', 'ultimate-addons-for-gutenberg' ) }
+					initialOpen={ false }
+				>
+					<UAGIconPicker
+						label={ __(
+							'Icon',
+							'ultimate-addons-for-gutenberg'
+						) }
+						value={ parentIcon }
+						onChange={ ( value ) =>
+							setAttributes( { parentIcon: value } )
+						}
+					/>
+				</UAGAdvancedPanelBody>
+	};
 
 	return (
 		<Suspense fallback={ lazyLoader() }>
@@ -986,6 +1005,7 @@ const Settings = ( props ) => {
 				<InspectorTabs>
 					<InspectorTab { ...UAGTabs.general }>
 						{ presetSettings() }
+						{ iconSettings() }
 						{ generalSetting() }
 					</InspectorTab>
 					<InspectorTab { ...UAGTabs.style }>

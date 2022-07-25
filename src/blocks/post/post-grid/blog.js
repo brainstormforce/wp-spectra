@@ -82,6 +82,8 @@ const Blog = ( props ) => {
 			? latestPosts.slice( 0, postsToShowFallback )
 			: latestPosts;
 	const previewImageData = `${ uagb_blocks_info.uagb_url }/admin/assets/preview-images/post-grid.png`;
+	const isImageEnabled = ( attributes.displayPostImage === true ) ? 'uagb-post__image-enabled' : 'uagb-post__image-disabled';
+
 	return (
 		isPreview ? <img width='100%' src={previewImageData} alt=''/> :
 		<div
@@ -92,6 +94,7 @@ const Blog = ( props ) => {
 				`uagb-post__columns-mobile-${ mcolumnsFallback }`,
 				'uagb-post__items',
 				`${ equalHeightClass }`,
+				`${ isImageEnabled }`,
 				className,
 				'uagb-post-grid',
 				`uagb-post__image-position-${ imgPosition }`,

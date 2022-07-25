@@ -10,7 +10,7 @@ for ( let i = 1; i <= itemCount; i++ ) {
 	icons.push( {
 		label: '#Label',
 		image_icon: 'icon',
-		icon: 'fab fa-arrow-circle-right',
+		icon: '',
 		image: '',
 		icon_color: '',
 		label_color: '',
@@ -63,6 +63,10 @@ const attributes = {
 	icon_count: {
 		type: 'number',
 		default: itemCount,
+	},
+	parentIcon: {
+		type: 'string',
+		default: 'fab fa-arrow-circle-right',
 	},
 	icons: {
 		type: 'array',
@@ -349,14 +353,23 @@ const attributes = {
 	icon_layout: {
 		type: 'string',
 		default: 'vertical',
+		UAGCopyPaste: {
+			styleType: 'icon-layout'
+		},
 	},
 	iconLayoutTablet: {
 		type: 'string',
 		default: '',
+		UAGCopyPaste: {
+			styleType: 'icon-layout-tablet'
+		},
 	},
 	iconLayoutMobile: {
 		type: 'string',
 		default: '',
+		UAGCopyPaste: {
+			styleType: 'icon-layout-mobile'
+		},
 	},
 	isPreview: {
 		type: 'boolean',

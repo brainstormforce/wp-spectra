@@ -9,6 +9,8 @@ import shapes from './shapes';
 export default function save( props ) {
 	const {
 		block_id,
+		htmlTag,
+		htmlTagLink,
 		contentWidth,
 		innerContentWidth,
 		isBlockRootParent,
@@ -59,13 +61,29 @@ export default function save( props ) {
 		</div>
 	);
 
+	const CustomTag = `${htmlTag}`;
+	const customTagLinkAttributes = {};
+	if( htmlTag === 'a' ){
+		customTagLinkAttributes.rel = 'noopener'
+		if( htmlTagLink?.url ){
+			customTagLinkAttributes.href = htmlTagLink?.url;
+		}
+		if( htmlTagLink?.opensInNewTab ){
+			customTagLinkAttributes.target = '_blank';
+		}
+		if( htmlTagLink?.noFollow ){
+			customTagLinkAttributes.rel = 'nofollow noopener';
+		}
+	}
+
 	return (
-		<div
+		<CustomTag
 			className={ classnames(
 				props.className,
 				`uagb-block-${ block_id }`,
 				isBlockRootParent ?  `${contentWidth} uagb-is-root-container` : '',
 			) }
+			{...customTagLinkAttributes}
 		>
 			{ topDividerHtml }
 			{ 'video' === backgroundType && (
@@ -89,6 +107,6 @@ export default function save( props ) {
 					: <InnerBlocks.Content />
 			}
 			{ bottomDividerHtml }
-		</div>
+		</CustomTag>
 	);
 }

@@ -1,6 +1,7 @@
 import { __ } from '@wordpress/i18n';
 import { getBorderAttributes } from '@Controls/generateAttributes';
 const btnBorderAttributes = getBorderAttributes( 'btn' );
+
 const attributes = {
 	blockName               : {
 		type    : 'string',
