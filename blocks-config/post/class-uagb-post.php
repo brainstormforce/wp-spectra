@@ -1003,7 +1003,7 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 						'type' => 'number',
 					),
 					'boxShadowColor'                => array(
-						'type'    => 'number',
+						'type'    => 'string',
 						'default' => '#00000070',
 					),
 					'boxShadowHOffset'              => array(
@@ -1023,7 +1023,7 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 						'default' => '',
 					),
 					'boxShadowPosition'             => array(
-						'type'    => 'number',
+						'type'    => 'string',
 						'default' => 'outset',
 					),
 					'boxShadowColorHover'           => array(

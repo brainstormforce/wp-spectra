@@ -326,7 +326,6 @@ const UAGBPostMasonry = ( props ) => {
 	} = props;
 
 	const {
-		block_id,
 		align,
 		displayPostTitle,
 		displayPostDate,
@@ -531,18 +530,6 @@ const UAGBPostMasonry = ( props ) => {
 		ctaLetterSpacingMobile,
 		ctaLetterSpacingType,
 
-		boxShadowColor,
-		boxShadowHOffset,
-		boxShadowVOffset,
-		boxShadowBlur,
-		boxShadowSpread,
-		boxShadowPosition,
-		boxShadowColorHover,
-		boxShadowHOffsetHover,
-		boxShadowVOffsetHover,
-		boxShadowBlurHover,
-		boxShadowSpreadHover,
-		boxShadowPositionHover,
 	} = attributes;
 
 	const taxonomyListOptions = [];

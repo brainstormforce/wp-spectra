@@ -246,7 +246,6 @@ const UAGBPostCarousel = ( props ) => {
 	};
 
 	const {
-		block_id,
 		attributes,
 		categoriesList,
 		setAttributes,
@@ -440,19 +439,6 @@ const UAGBPostCarousel = ( props ) => {
 		ctaLetterSpacingTablet,
 		ctaLetterSpacingMobile,
 		ctaLetterSpacingType,
-
-		boxShadowColor,
-		boxShadowHOffset,
-		boxShadowVOffset,
-		boxShadowBlur,
-		boxShadowSpread,
-		boxShadowPosition,
-		boxShadowColorHover,
-		boxShadowHOffsetHover,
-		boxShadowVOffsetHover,
-		boxShadowBlurHover,
-		boxShadowSpreadHover,
-		boxShadowPositionHover,
 	} = attributes;
 
 	const columnsFallback = getFallbackNumber( columns, 'columns', blockName );
