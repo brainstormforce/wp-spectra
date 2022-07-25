@@ -269,15 +269,17 @@
 	}
 
 	&.uagb-post__image-enabled {
+
 		.uagb-post__text {
 			color: #fff;
-	
+
 			&.uagb-post__title a,
 			a {
 				color: #fff;
 			}
 		}
 	}
+
 	.uagb-post__text {
 		opacity: 1;
 		position: relative;
