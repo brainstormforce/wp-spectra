@@ -5,14 +5,23 @@ const attributes = {
 	layout: {
 		type: 'string',
 		default: 'inline',
+		UAGCopyPaste: {
+			styleType: 'layout'
+		},
 	},
 	layoutTablet: {
 		type: 'string',
 		default: 'inline',
+		UAGCopyPaste: {
+			styleType: 'layout-tablet'
+		},
 	},
 	layoutMobile: {
 		type: 'string',
 		default: 'stack',
+		UAGCopyPaste: {
+			styleType: 'layout-mobile'
+		},
 	},
 	rating: {
 		type: 'number',

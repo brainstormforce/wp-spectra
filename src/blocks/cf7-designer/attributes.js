@@ -51,6 +51,9 @@
 	fieldStyle                    : {
 		type    : 'string',
 		default : 'box',
+		UAGCopyPaste: {
+			styleType: 'field-style'
+		},
 	},
 	fieldVrPadding                : {
 		type    : 'number',
@@ -439,6 +442,9 @@
 	enableOveride                 : {
 		type    : 'boolean',
 		default : true,
+		UAGCopyPaste: {
+			styleType: 'enable-overide'
+		},
 	},
 	radioCheckSize                : {
 		type    : 'number',
@@ -598,6 +604,9 @@
 	validationMsgPosition         : {
 		type    : 'string',
 		default : 'default',
+		UAGCopyPaste: {
+			styleType: 'validation-msg-position'
+		},
 	},
 	validationMsgColor            : {
 		type    : 'string',
@@ -616,6 +625,9 @@
 	enableHighlightBorder         : {
 		type    : 'boolean',
 		default : false,
+		UAGCopyPaste: {
+			styleType: 'enable-highlight-border'
+		},
 	},
 	highlightBorderColor          : {
 		type    : 'string',

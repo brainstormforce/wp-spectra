@@ -51,6 +51,9 @@ const attributes = {
 	overallAlignment: {
 		type: 'string',
 		default: 'left',
+		UAGCopyPaste: {
+			styleType: 'overall-align'
+		},
 	},
 	schema: {
 		type: 'string',
