@@ -195,7 +195,7 @@ const attributes = {
 	},
 	bgOverlayColor          : {
 		type    : 'string',
-		default : '#ffffff',
+		default : '#000000',
 		UAGCopyPaste: {
 			styleType: 'post-bg-overlay-color'
 		},
@@ -405,7 +405,7 @@ const attributes = {
 	// Meta attributes.
 	metaColor               : {
 		type    : 'string',
-		default : '#777777',
+		default : '',
 		UAGCopyPaste: {
 			styleType: 'prefix-color'
 		},
