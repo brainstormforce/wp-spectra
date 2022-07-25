@@ -87,8 +87,9 @@
 			<xpath>//div/ul/li/a</xpath>
 		</gutenberg-block>
 		<gutenberg-block type="uagb/buttons-child" translate="1">
-			<xpath>//a[@class="uagb-button__link"]</xpath>
-			<xpath>//a[@class="uagb-button__link"]/@href</xpath>
+			<xpath>//div[@class="uagb-button__link"]</xpath>
+            <xpath>//a[@class="uagb-button__link"]/@href</xpath>
+            <xpath>//*[@class="uagb-button__link"]</xpath>
 		</gutenberg-block>
 		<gutenberg-block type="uagb/image" translate="1">
 			<xpath>//*[self::h1 or self::h2 or self::h3 or self::h4 or self::h5 or self::h6]</xpath>
