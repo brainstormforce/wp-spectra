@@ -174,6 +174,7 @@ if ( ! class_exists( 'UAGB_Loader' ) ) {
 
 			// Active widgets data to analytics.
 			add_filter( 'bsf_core_stats', array( $this, 'spectra_specific_stats' ) );
+
 		}
 
 		/**
@@ -185,7 +186,7 @@ if ( ! class_exists( 'UAGB_Loader' ) ) {
 		 */
 		public function spectra_specific_stats( $default_stats ) {
 
-			error_log( "hieeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee" );
+			// $settings_data = Admin_Helper::get_options();
 
 			$default_stats['spectra_settings'] = array(
 				'spectra_version'  => UAGB_VER,
