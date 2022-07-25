@@ -206,6 +206,72 @@ const Settings = ( props ) => {
 					/>
 				</UAGAdvancedPanelBody>
 	};
+	const submitGeneral = () => (
+		<UAGAdvancedPanelBody
+			title={ __( 'Submit Button', 'ultimate-addons-for-gutenberg' ) }
+			initialOpen={ false }
+			// className="uagb__url-panel-body"
+		>
+			<MultiButtonsControl
+				setAttributes={ setAttributes }
+				label={ __( 'Button Alignment', 'ultimate-addons-for-gutenberg' ) }
+				data={ {
+					desktop: {
+						value: buttonAlign,
+						label: 'buttonAlign',
+					},
+					tablet: {
+						value: buttonAlignTablet,
+						label: 'buttonAlignTablet',
+					},
+					mobile: {
+						value: buttonAlignMobile,
+						label: 'buttonAlignMobile',
+					},
+				} }
+				options={ [
+					{
+						value: 'left',
+						icon: (
+							<Icon
+								icon={ renderSVG( 'fa fa-align-left' ) }
+							/>
+						),
+						tooltip: __(
+							'Left',
+							'ultimate-addons-for-gutenberg'
+						),
+					},
+					{
+						value: 'center',
+						icon: (
+							<Icon
+								icon={ renderSVG( 'fa fa-align-center' ) }
+							/>
+						),
+						tooltip: __(
+							'Center',
+							'ultimate-addons-for-gutenberg'
+						),
+					},
+					{
+						value: 'right',
+						icon: (
+							<Icon
+								icon={ renderSVG( 'fa fa-align-right' ) }
+							/>
+						),
+						tooltip: __(
+							'Right',
+							'ultimate-addons-for-gutenberg'
+						),
+					},
+				] }
+				showIcons={ true }
+				responsive={true}
+			/>
+		</UAGAdvancedPanelBody>
+	);
 	const generalSettings = () => {
 		return (
 			<UAGAdvancedPanelBody
@@ -1207,64 +1273,6 @@ const Settings = ( props ) => {
 					},
 				] }
 			/>
-			<MultiButtonsControl
-				setAttributes={ setAttributes }
-				label={ __( 'Button Alignment', 'ultimate-addons-for-gutenberg' ) }
-				data={ {
-					desktop: {
-						value: buttonAlign,
-						label: 'buttonAlign',
-					},
-					tablet: {
-						value: buttonAlignTablet,
-						label: 'buttonAlignTablet',
-					},
-					mobile: {
-						value: buttonAlignMobile,
-						label: 'buttonAlignMobile',
-					},
-				} }
-				options={ [
-					{
-						value: 'left',
-						icon: (
-							<Icon
-								icon={ renderSVG( 'fa fa-align-left' ) }
-							/>
-						),
-						tooltip: __(
-							'Left',
-							'ultimate-addons-for-gutenberg'
-						),
-					},
-					{
-						value: 'center',
-						icon: (
-							<Icon
-								icon={ renderSVG( 'fa fa-align-center' ) }
-							/>
-						),
-						tooltip: __(
-							'Center',
-							'ultimate-addons-for-gutenberg'
-						),
-					},
-					{
-						value: 'right',
-						icon: (
-							<Icon
-								icon={ renderSVG( 'fa fa-align-right' ) }
-							/>
-						),
-						tooltip: __(
-							'Right',
-							'ultimate-addons-for-gutenberg'
-						),
-					},
-				] }
-				showIcons={ true }
-				responsive={true}
-			/>
 			<SpacingControl
 				{ ...props }
 				label={ __(
@@ -1862,6 +1870,7 @@ const Settings = ( props ) => {
 					<InspectorTab { ...UAGTabs.general }>
 						{ presetSettings() }
 						{ generalSettings() }
+						{ submitGeneral() }
 						{ afterSubmitActions() }
 						{ googleReCaptcha() }
 					</InspectorTab>
