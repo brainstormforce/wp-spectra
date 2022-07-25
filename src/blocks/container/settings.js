@@ -194,6 +194,12 @@ const Settings = ( props ) => {
 
 	const currentOppAxisDirection = 'row' === currentDirection ? 'column' : 'row';
 
+	const verticalAlignmentHint = __( 'Define the vertical alignment inside this container', 'ultimate-addons-for-gutenberg' );
+	const horizontalAlignmentHint = __( 'Define the horizontal alignment inside this container', 'ultimate-addons-for-gutenberg' );
+	const alignContentHint = ( 'row' === currentDirection )
+	? __( 'Define the vertical alignment of every line of blocks inside this flex container', 'ultimate-addons-for-gutenberg' )
+	: __( 'Define the horizontal alignment of every line of blocks inside this flex container', 'ultimate-addons-for-gutenberg' );
+
 	// This useEffect ensures that background size is set to cover, so as to ensure color takes up entire width and height,
 	// in case bg type was set to Image before and given a custom width and height.
 	useEffect( () => {
@@ -675,7 +681,7 @@ const Settings = ( props ) => {
 						options={ alignItemsOptions }
 						showIcons={ true }
 						responsive={ true }
-						help={ __( `Define the ${ 'row' === currentOppAxisDirection ? 'horizontal' : 'vertical' } alignment inside this container`, 'ultimate-addons-for-gutenberg' ) }
+						help={ ( 'row' === currentOppAxisDirection ) ? horizontalAlignmentHint : verticalAlignmentHint }
 					/>
 					<MultiButtonsControl
 						setAttributes={ setAttributes }
@@ -697,7 +703,7 @@ const Settings = ( props ) => {
 						options={ justifyContentOptions }
 						showIcons={ true }
 						responsive={ true }
-						help={ __( `Define the ${ 'row' === currentDirection ? 'horizontal' : 'vertical' } alignment inside this container`, 'ultimate-addons-for-gutenberg' ) }
+						help={ ( 'row' === currentDirection ) ? horizontalAlignmentHint : verticalAlignmentHint }
 					/>
 					<MultiButtonsControl
 						setAttributes={ setAttributes }
@@ -742,7 +748,7 @@ const Settings = ( props ) => {
 							options={ justifyContentOptions }
 							showIcons={ true }
 							responsive={ true }
-							help={ __( `Define the ${ 'row' === currentDirection ? 'horizontal' : 'vertical' } alignment of every line of blocks inside this flex container`, 'ultimate-addons-for-gutenberg' ) }
+							help={ alignContentHint }
 						/>
 					}
 				</UAGAdvancedPanelBody>
