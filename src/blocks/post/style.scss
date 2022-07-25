@@ -10,6 +10,7 @@
 	&:not(.is-grid) .uagb-post__inner-wrap {
 		background-clip: content-box !important;
 	}
+
 	.uagb-post__inner-wrap {
 
 		.uagb-post__taxonomy {
@@ -76,6 +77,7 @@
 		-webkit-flex-wrap: wrap;
 		flex-wrap: wrap;
 	}
+
 	&.uagb-post__items.is-carousel {
 		display: flex;
 		-ms-flex-wrap: wrap;
@@ -111,35 +113,35 @@
 		vertical-align: bottom;
 	}
 
-	&.uagb-post__columns-8:not(.is-grid) article{
+	&.uagb-post__columns-8:not(.is-grid) article {
 		width: 12.5%;
 	}
 
-	&.uagb-post__columns-7:not(.is-grid) article{
+	&.uagb-post__columns-7:not(.is-grid) article {
 		width: 14.28%;
 	}
 
-	&.uagb-post__columns-6:not(.is-grid) article{
+	&.uagb-post__columns-6:not(.is-grid) article {
 		width: 16.66%;
 	}
 
-	&.uagb-post__columns-5:not(.is-grid) article{
+	&.uagb-post__columns-5:not(.is-grid) article {
 		width: 20%;
 	}
 
-	&.uagb-post__columns-4:not(.is-grid) article{
+	&.uagb-post__columns-4:not(.is-grid) article {
 		width: 25%;
 	}
 
-	&.uagb-post__columns-3:not(.is-grid) article{
+	&.uagb-post__columns-3:not(.is-grid) article {
 		width: 33.33%;
 	}
 
-	&.uagb-post__columns-2:not(.is-grid) article{
+	&.uagb-post__columns-2:not(.is-grid) article {
 		width: 50%;
 	}
 
-	&.uagb-post__columns-1:not(.is-grid) article{
+	&.uagb-post__columns-1:not(.is-grid) article {
 		width: 100%;
 	}
 
@@ -264,9 +266,11 @@
 		color: inherit;
 	}
 }
-.is-grid.uagb-post__items{
+
+.is-grid.uagb-post__items {
 	display: grid;
 }
+
 .is-grid.uagb-post__columns-5 {
 	grid-template-columns: auto auto auto auto auto;
 }
@@ -286,6 +290,7 @@
 .is-grid.uagb-post__columns-1 {
 	grid-template-columns: auto;
 }
+
 .uagb-post__image-position-background {
 
 	.uagb-post__link-complete-box {
