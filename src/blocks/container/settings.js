@@ -651,7 +651,8 @@ const Settings = ( props ) => {
 						} }
 						options={ directionOptions }
 						showIcons={ true }
-						responsive={true}
+						responsive={ true }
+						help={ __( 'Define the direction in which blocks inside this container will be placed one after the other.', 'ultimate-addons-for-gutenberg' ) }
 					/>
 
 					<MultiButtonsControl
@@ -673,7 +674,8 @@ const Settings = ( props ) => {
 						} }
 						options={ alignItemsOptions }
 						showIcons={ true }
-						responsive={true}
+						responsive={ true }
+						help={ __( `Define the ${ 'row' === currentOppAxisDirection ? 'horizontal' : 'vertical' } alignment inside this container`, 'ultimate-addons-for-gutenberg' ) }
 					/>
 					<MultiButtonsControl
 						setAttributes={ setAttributes }
@@ -694,7 +696,8 @@ const Settings = ( props ) => {
 						} }
 						options={ justifyContentOptions }
 						showIcons={ true }
-						responsive={true}
+						responsive={ true }
+						help={ __( `Define the ${ 'row' === currentDirection ? 'horizontal' : 'vertical' } alignment inside this container`, 'ultimate-addons-for-gutenberg' ) }
 					/>
 					<MultiButtonsControl
 						setAttributes={ setAttributes }
@@ -715,7 +718,7 @@ const Settings = ( props ) => {
 						} }
 						options={ wrapOptions }
 						showIcons={ true }
-						responsive={true}
+						responsive={ true }
 						help={ __( 'Define whether the items are forced in a single line (No Wrap) or can be flowed into multiple lines (Wrap)', 'ultimate-addons-for-gutenberg' ) }
 					/>
 					{ ( 'wrap' === attributes[ 'wrap' + deviceType ] || 'wrap-reverse' === attributes[ 'wrap' + deviceType ] ) &&
@@ -738,7 +741,8 @@ const Settings = ( props ) => {
 							} }
 							options={ justifyContentOptions }
 							showIcons={ true }
-							responsive={true}
+							responsive={ true }
+							help={ __( `Define the ${ 'row' === currentDirection ? 'horizontal' : 'vertical' } alignment of every line of blocks inside this flex container`, 'ultimate-addons-for-gutenberg' ) }
 						/>
 					}
 				</UAGAdvancedPanelBody>
