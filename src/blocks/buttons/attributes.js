@@ -89,6 +89,9 @@ const attributes = {
 	stack: {
 		type: 'string',
 		default: 'none',
+		UAGCopyPaste: {
+			styleType: 'btn-stack'
+		}
 	},
 	loadGoogleFonts: {
 		type: 'boolean',
