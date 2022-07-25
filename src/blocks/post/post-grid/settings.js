@@ -686,6 +686,57 @@ const Settings = ( props ) => {
 				<MultiButtonsControl
 					setAttributes={ setAttributes }
 					label={ __(
+						'Pagination Alignment',
+						'ultimate-addons-for-gutenberg'
+					) }
+					data={ {
+						value: paginationAlignment,
+						label: 'paginationAlignment',
+					} }
+					className="uagb-multi-button-alignment-control"
+					options={ [
+						{
+							value: 'left',
+							icon: (
+								<Icon
+									icon={ renderSVG( 'fa fa-align-left' ) }
+								/>
+							),
+							tooltip: __(
+								'Left',
+								'ultimate-addons-for-gutenberg'
+							),
+						},
+						{
+							value: 'center',
+							icon: (
+								<Icon
+									icon={ renderSVG( 'fa fa-align-center' ) }
+								/>
+							),
+							tooltip: __(
+								'Center',
+								'ultimate-addons-for-gutenberg'
+							),
+						},
+						{
+							value: 'right',
+							icon: (
+								<Icon
+									icon={ renderSVG( 'fa fa-align-right' ) }
+								/>
+							),
+							tooltip: __(
+								'Right',
+								'ultimate-addons-for-gutenberg'
+							),
+						},
+					] }
+					showIcons={ true }
+				/>
+				<MultiButtonsControl
+					setAttributes={ setAttributes }
+					label={ __(
 						'Pagination Layout',
 						'ultimate-addons-for-gutenberg'
 					) }
@@ -2008,57 +2059,6 @@ const Settings = ( props ) => {
 				title={ __( 'Pagination', 'ultimate-addons-for-gutenberg' ) }
 				initialOpen={ false }
 			>
-				<MultiButtonsControl
-					setAttributes={ setAttributes }
-					label={ __(
-						'Pagination Alignment',
-						'ultimate-addons-for-gutenberg'
-					) }
-					data={ {
-						value: paginationAlignment,
-						label: 'paginationAlignment',
-					} }
-					className="uagb-multi-button-alignment-control"
-					options={ [
-						{
-							value: 'left',
-							icon: (
-								<Icon
-									icon={ renderSVG( 'fa fa-align-left' ) }
-								/>
-							),
-							tooltip: __(
-								'Left',
-								'ultimate-addons-for-gutenberg'
-							),
-						},
-						{
-							value: 'center',
-							icon: (
-								<Icon
-									icon={ renderSVG( 'fa fa-align-center' ) }
-								/>
-							),
-							tooltip: __(
-								'Center',
-								'ultimate-addons-for-gutenberg'
-							),
-						},
-						{
-							value: 'right',
-							icon: (
-								<Icon
-									icon={ renderSVG( 'fa fa-align-right' ) }
-								/>
-							),
-							tooltip: __(
-								'Right',
-								'ultimate-addons-for-gutenberg'
-							),
-						},
-					] }
-					showIcons={ true }
-				/>
 				<UAGTabsControl
 					tabs={ [
 						{
