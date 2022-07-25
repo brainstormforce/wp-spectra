@@ -233,6 +233,9 @@ if ( ! class_exists( 'UAGB_Admin_Helper' ) ) {
 				}
 			}
 
+			// Load common CSS for all the blocks.
+			$combined[] = 'extensions';
+
 			$wp_upload_dir = UAGB_Helper::get_uag_upload_dir_path();
 			$combined_path = $wp_upload_dir . 'custom-style-blocks.css';
 
