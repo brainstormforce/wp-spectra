@@ -475,6 +475,72 @@ export default function Settings( props ) {
 			<MultiButtonsControl
 				setAttributes={ setAttributes }
 				label={ __(
+					'Alignment',
+					'ultimate-addons-for-gutenberg'
+				) }
+				data={ {
+					desktop: {
+						value: align,
+						label: 'align',
+					},
+					tablet: {
+						value: alignTablet,
+						label: 'alignTablet',
+					},
+					mobile: {
+						value: alignMobile,
+						label: 'alignMobile',
+					},
+				} }
+				className="uagb-multi-button-alignment-control"
+				options={ [
+					{
+						value: 'left',
+						icon: (
+							<Icon
+								icon={ renderSVG( 'fa fa-align-left' ) }
+							/>
+						),
+						tooltip: __(
+							'Left',
+							'ultimate-addons-for-gutenberg'
+						),
+					},
+					{
+						value: 'center',
+						icon: (
+							<Icon
+								icon={ renderSVG(
+									'fa fa-align-center'
+								) }
+							/>
+						),
+						tooltip: __(
+							'Center',
+							'ultimate-addons-for-gutenberg'
+						),
+					},
+					{
+						value: 'right',
+						icon: (
+							<Icon
+								icon={ renderSVG(
+									'fa fa-align-right'
+								) }
+							/>
+						),
+						tooltip: __(
+							'Right',
+							'ultimate-addons-for-gutenberg'
+						),
+					},
+				] }
+				showIcons={ true }
+				responsive={ true }
+			/>
+			<MultiButtonsControl
+				setAttributes={ setAttributes }
+				label={ __(
 					'Layout',
 					'ultimate-addons-for-gutenberg'
 				) }
@@ -501,6 +567,44 @@ export default function Settings( props ) {
 				] }
 				showIcons={ false }
 			/>
+
+			{layout === 'overlay' && (
+				<>
+					<label htmlFor='overlayContentAlign'>
+						{__( 'Content Position', 'ultimate-addons-for-gutenberg' )}
+					</label>
+					<AlignmentMatrixControl
+						id="overlayContentAlign"
+						value={ overlayContentPosition }
+						onChange={ ( newAlignment ) =>  setAttributes( {overlayContentPosition: newAlignment} ) }
+					/>
+					<ResponsiveBorder
+						setAttributes={ setAttributes }
+						prefix={'overlay'}
+						attributes={ attributes }
+						deviceType={deviceType}
+					/>
+					<Range
+						label={ __(
+							'Border Distance From EDGE',
+							'ultimate-addons-for-gutenberg'
+						) }
+						setAttributes={ setAttributes }
+						value={ overlayPositionFromEdge }
+						data={ {
+							value: overlayPositionFromEdge,
+							label: 'overlayPositionFromEdge',
+						} }
+						min={ -100 }
+						max={ 100 }
+						unit={ {
+							value: overlayPositionFromEdgeUnit,
+							label: 'overlayPositionFromEdgeUnit',
+						} }
+					/>
+				</>
+			)}
+
 			{
 				isSelected && (
 					<>
@@ -600,13 +704,72 @@ export default function Settings( props ) {
 
 			{
 				layout !== 'overlay' && (
-					<ToggleControl
-						label={ __( 'Enable Caption', 'ultimate-addons-for-gutenberg' ) }
-						checked={ enableCaption }
-						onChange={ () => {
-							setAttributes( {enableCaption: !enableCaption} );
-						} }
-					/>
+					<>
+						<ToggleControl
+							label={ __( 'Enable Caption', 'ultimate-addons-for-gutenberg' ) }
+							checked={ enableCaption }
+							onChange={ () => {
+								setAttributes( {enableCaption: !enableCaption} );
+							} }
+						/>
+						{ enableCaption && (
+							<MultiButtonsControl
+								setAttributes={ setAttributes }
+								label={ __(
+									'Alignment',
+									'ultimate-addons-for-gutenberg'
+								) }
+								data={ {
+									value: captionAlign,
+									label: 'captionAlign',
+								} }
+								className="uagb-multi-button-alignment-control"
+								options={ [
+									{
+										value: 'left',
+										icon: (
+											<Icon
+												icon={ renderSVG( 'fa fa-align-left' ) }
+											/>
+										),
+										tooltip: __(
+											'Left',
+											'ultimate-addons-for-gutenberg'
+										),
+									},
+									{
+										value: 'center',
+										icon: (
+											<Icon
+												icon={ renderSVG(
+													'fa fa-align-center'
+												) }
+											/>
+										),
+										tooltip: __(
+											'Center',
+											'ultimate-addons-for-gutenberg'
+										),
+									},
+									{
+										value: 'right',
+										icon: (
+											<Icon
+												icon={ renderSVG(
+													'fa fa-align-right'
+												) }
+											/>
+										),
+										tooltip: __(
+											'Right',
+											'ultimate-addons-for-gutenberg'
+										),
+									},
+								] }
+								showIcons={ true }
+							/>
+						) }
+					</>
 				)
 			}
 
@@ -1288,65 +1451,6 @@ export default function Settings( props ) {
 			title={ layout === 'overlay' ?  __( 'Description', 'ultimate-addons-for-gutenberg' ) : __( 'Caption', 'ultimate-addons-for-gutenberg' ) }
 			initialOpen={ false }
 		>
-			{
-				'default' === layout && (
-					<MultiButtonsControl
-						setAttributes={ setAttributes }
-						label={ __(
-							'Alignment',
-							'ultimate-addons-for-gutenberg'
-						) }
-						data={ {
-							value: captionAlign,
-							label: 'captionAlign',
-						} }
-						className="uagb-multi-button-alignment-control"
-						options={ [
-							{
-								value: 'left',
-								icon: (
-									<Icon
-										icon={ renderSVG( 'fa fa-align-left' ) }
-									/>
-								),
-								tooltip: __(
-									'Left',
-									'ultimate-addons-for-gutenberg'
-								),
-							},
-							{
-								value: 'center',
-								icon: (
-									<Icon
-										icon={ renderSVG(
-											'fa fa-align-center'
-										) }
-									/>
-								),
-								tooltip: __(
-									'Center',
-									'ultimate-addons-for-gutenberg'
-								),
-							},
-							{
-								value: 'right',
-								icon: (
-									<Icon
-										icon={ renderSVG(
-											'fa fa-align-right'
-										) }
-									/>
-								),
-								tooltip: __(
-									'Right',
-									'ultimate-addons-for-gutenberg'
-								),
-							},
-						] }
-						showIcons={ true }
-					/>
-				)
-			}
 			<Suspense fallback={ lazyLoader() }>
 				<TypographyControl
 					label={ __(
@@ -1518,72 +1622,6 @@ export default function Settings( props ) {
 			title={ __( 'Image', 'ultimate-addons-for-gutenberg' ) }
 			initialOpen={ true }
 		>
-			<MultiButtonsControl
-				setAttributes={ setAttributes }
-				label={ __(
-					'Alignment',
-					'ultimate-addons-for-gutenberg'
-				) }
-				data={ {
-					desktop: {
-						value: align,
-						label: 'align',
-					},
-					tablet: {
-						value: alignTablet,
-						label: 'alignTablet',
-					},
-					mobile: {
-						value: alignMobile,
-						label: 'alignMobile',
-					},
-				} }
-				className="uagb-multi-button-alignment-control"
-				options={ [
-					{
-						value: 'left',
-						icon: (
-							<Icon
-								icon={ renderSVG( 'fa fa-align-left' ) }
-							/>
-						),
-						tooltip: __(
-							'Left',
-							'ultimate-addons-for-gutenberg'
-						),
-					},
-					{
-						value: 'center',
-						icon: (
-							<Icon
-								icon={ renderSVG(
-									'fa fa-align-center'
-								) }
-							/>
-						),
-						tooltip: __(
-							'Center',
-							'ultimate-addons-for-gutenberg'
-						),
-					},
-					{
-						value: 'right',
-						icon: (
-							<Icon
-								icon={ renderSVG(
-									'fa fa-align-right'
-								) }
-							/>
-						),
-						tooltip: __(
-							'Right',
-							'ultimate-addons-for-gutenberg'
-						),
-					},
-				] }
-				showIcons={ true }
-				responsive={ true }
-			/>
 			{
 				layout === 'default' && (
 					<ResponsiveBorder
@@ -1594,43 +1632,6 @@ export default function Settings( props ) {
 					/>
 				)
 			}
-
-			{layout === 'overlay' && (
-				<>
-					<label htmlFor='overlayContentAlign'>
-						{__( 'Content Postion', 'ultimate-addons-for-gutenberg' )}
-					</label>
-					<AlignmentMatrixControl
-						id="overlayContentAlign"
-						value={ overlayContentPosition }
-						onChange={ ( newAlignment ) =>  setAttributes( {overlayContentPosition: newAlignment} ) }
-					/>
-					<ResponsiveBorder
-						setAttributes={ setAttributes }
-						prefix={'overlay'}
-						attributes={ attributes }
-						deviceType={deviceType}
-					/>
-					<Range
-						label={ __(
-							'Border Distance From EDGE',
-							'ultimate-addons-for-gutenberg'
-						) }
-						setAttributes={ setAttributes }
-						value={ overlayPositionFromEdge }
-						data={ {
-							value: overlayPositionFromEdge,
-							label: 'overlayPositionFromEdge',
-						} }
-						min={ -100 }
-						max={ 100 }
-						unit={ {
-							value: overlayPositionFromEdgeUnit,
-							label: 'overlayPositionFromEdgeUnit',
-						} }
-					/>
-				</>
-			)}
 
 			<SpacingControl
 				label={ __(

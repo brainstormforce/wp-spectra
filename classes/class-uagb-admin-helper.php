@@ -141,49 +141,6 @@ if ( ! class_exists( 'UAGB_Admin_Helper' ) ) {
 		}
 
 		/**
-		 * Get flag if more than 5 pages are build using UAG.
-		 *
-		 * @since  1.10.0
-		 * @return boolean true/false Flag if more than 5 pages are build using UAG.
-		 */
-		public static function show_rating_notice() {
-
-			$posts_created_with_uag = get_option( 'posts-created-with-uagb' );
-
-			if ( false === $posts_created_with_uag ) {
-				$query_args = array(
-					'posts_per_page' => 100,
-					'post_status'    => 'publish',
-					'post_type'      => 'any',
-				);
-
-				$query = new WP_Query( $query_args );
-
-				$uag_post_count = 0;
-
-				if ( isset( $query->post_count ) && $query->post_count > 0 ) {
-					foreach ( $query->posts as $key => $post ) {
-						if ( $uag_post_count >= 5 ) {
-							break;
-						}
-
-						if ( false !== strpos( $post->post_content, '<!-- wp:uagb/' ) ) {
-							$uag_post_count++;
-						}
-					}
-				}
-
-				if ( $uag_post_count >= 5 ) {
-					update_option( 'posts-created-with-uagb', $uag_post_count );
-
-					$posts_created_with_uag = $uag_post_count;
-				}
-			}
-
-			return ( $posts_created_with_uag >= 5 );
-		}
-
-		/**
 		 *  Get Specific Stylesheet
 		 *
 		 * @since 1.13.4
@@ -275,6 +232,9 @@ if ( ! class_exists( 'UAGB_Admin_Helper' ) ) {
 						break;
 				}
 			}
+
+			// Load common CSS for all the blocks.
+			$combined[] = 'extensions';
 
 			$wp_upload_dir = UAGB_Helper::get_uag_upload_dir_path();
 			$combined_path = $wp_upload_dir . 'custom-style-blocks.css';
