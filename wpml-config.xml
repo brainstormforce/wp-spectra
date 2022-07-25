@@ -35,6 +35,8 @@
 			<xpath>//a/@href</xpath>
 			<xpath>//*[self::h1 or self::h2 or self::h3 or self::h4 or self::h5 or self::h6]</xpath>
 			<xpath>//p[@class="uagb-ifb-desc"]</xpath>
+			<key name="ctaText" />
+			<key name="ctaType" />
 		</gutenberg-block>
 		<gutenberg-block type="uagb/testimonial" translate="1">
 			<xpath>//div[@class="uagb-tm__desc"]</xpath>
@@ -75,7 +77,8 @@
 		<gutenberg-block type="uagb/blockquote" translate="1">
 			<xpath>//div[@class="uagb-blockquote__content"]</xpath>
 			<xpath>//cite[@class="uagb-blockquote__author"]</xpath>
-			<xpath>//span[@class="uagb-blockquote__tweet-label"]</xpath>
+			<key name="iconView" />
+			<key name="iconLabel" />
 		</gutenberg-block>
 		<gutenberg-block type="uagb/marketing-button" translate="1">
 			<xpath>//a[@class="uagb-marketing-btn__link"]/@href</xpath>
