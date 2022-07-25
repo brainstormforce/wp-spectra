@@ -897,6 +897,8 @@ class Common_Settings extends Ajax_Base {
 				\UAGB_Helper::delete_uag_asset_dir();
 			}
 
+			\UAGB_Admin_Helper::create_specific_stylesheet();
+
 			/* Update the asset version */
 			\UAGB_Admin_Helper::update_admin_settings_option( '__uagb_asset_version', time() );
 
