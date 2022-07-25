@@ -9,6 +9,7 @@ import { __ } from '@wordpress/i18n';
 
 import {
 	InspectorControls,
+	__experimentalLinkControl as LinkControl
 } from '@wordpress/block-editor';
 import BoxShadowControl from '@Components/box-shadow';
 import SpacingControl from '@Components/spacing-control';
@@ -31,6 +32,8 @@ const Settings = ( props ) => {
 	const { attributes, setAttributes, deviceType } = props;
 	const {
 		block_id,
+		htmlTag,
+		htmlTagLink,
 		widthDesktop,
 		widthTablet,
 		widthMobile,
@@ -616,6 +619,133 @@ const Settings = ( props ) => {
 						] }
 						setAttributes={ setAttributes }
 					/>
+					<UAGSelectControl
+						label={ __(
+							'HTML Tag',
+							'ultimate-addons-for-gutenberg'
+						) }
+						data={ {
+							value: htmlTag,
+							label: 'htmlTag',
+						} }
+						setAttributes={ setAttributes }
+						options={ [
+							{
+								value: 'div',
+								label: __(
+									'div',
+									'ultimate-addons-for-gutenberg'
+								),
+							},
+							{
+								value: 'header',
+								label: __(
+									'header',
+									'ultimate-addons-for-gutenberg'
+								),
+							},
+							{
+								value: 'footer',
+								label: __(
+									'footer',
+									'ultimate-addons-for-gutenberg'
+								),
+							},
+							{
+								value: 'main',
+								label: __(
+									'main',
+									'ultimate-addons-for-gutenberg'
+								),
+							},
+							{
+								value: 'article',
+								label: __(
+									'article',
+									'ultimate-addons-for-gutenberg'
+								),
+							},
+							{
+								value: 'section',
+								label: __(
+									'section',
+									'ultimate-addons-for-gutenberg'
+								),
+							},
+							{
+								value: 'aside',
+								label: __(
+									'aside',
+									'ultimate-addons-for-gutenberg'
+								),
+							},
+							{
+								value: 'figure',
+								label: __(
+									'figure',
+									'ultimate-addons-for-gutenberg'
+								),
+							},
+							{
+								value: 'figcaption',
+								label: __(
+									'figcaption',
+									'ultimate-addons-for-gutenberg'
+								),
+							},
+							{
+								value: 'summary',
+								label: __(
+									'summary',
+									'ultimate-addons-for-gutenberg'
+								),
+							},
+							{
+								value: 'nav',
+								label: __(
+									'nav',
+									'ultimate-addons-for-gutenberg'
+								),
+							},
+							{
+								value: 'a',
+								label: __(
+									'link',
+									'ultimate-addons-for-gutenberg'
+								),
+							},
+						] }
+					/>
+					{
+						htmlTag === 'a' && (
+							<LinkControl
+								searchInputPlaceholder="Search here..."
+								value={ htmlTagLink }
+								settings={[
+									{
+										id: 'opensInNewTab',
+										title: __( 'Open in new window', 'ultimate-addons-for-gutenberg' ),
+									},
+									{
+										id: 'noFollow',
+										title: __( 'Add nofollow', 'ultimate-addons-for-gutenberg' )
+									}
+								]}
+								onChange={ ( link ) => {
+									setAttributes( { htmlTagLink: link } )
+								} }
+								withCreateSuggestion={true}
+								createSuggestion={ ( inputValue ) => setAttributes( { post: {
+									...attributes.post,
+									title: inputValue,
+									type: 'custom-url',
+									id: Date.now(),
+									url: inputValue
+								} } ) }
+								createSuggestionButtonText={ ( newValue ) => `${__( 'New:', 'ultimate-addons-for-gutenberg' )} ${newValue}` }
+							/>
+						)
+					}
 					<MultiButtonsControl
 						setAttributes={ setAttributes }
 						label={ __( 'Overflow', 'ultimate-addons-for-gutenberg' ) }
