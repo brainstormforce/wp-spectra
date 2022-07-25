@@ -197,6 +197,12 @@ const Settings = ( props ) => {
 
 	const currentOppAxisDirection = 'row' === currentDirection ? 'column' : 'row';
 
+	const verticalAlignmentHint = __( 'Define the vertical alignment inside this container', 'ultimate-addons-for-gutenberg' );
+	const horizontalAlignmentHint = __( 'Define the horizontal alignment inside this container', 'ultimate-addons-for-gutenberg' );
+	const alignContentHint = ( 'row' === currentDirection )
+	? __( 'Define the vertical alignment of every line of blocks inside this flex container', 'ultimate-addons-for-gutenberg' )
+	: __( 'Define the horizontal alignment of every line of blocks inside this flex container', 'ultimate-addons-for-gutenberg' );
+
 	// This useEffect ensures that background size is set to cover, so as to ensure color takes up entire width and height,
 	// in case bg type was set to Image before and given a custom width and height.
 	useEffect( () => {
@@ -781,7 +787,8 @@ const Settings = ( props ) => {
 						} }
 						options={ directionOptions }
 						showIcons={ true }
-						responsive={true}
+						responsive={ true }
+						help={ __( 'Define the direction in which blocks inside this container will be placed one after the other.', 'ultimate-addons-for-gutenberg' ) }
 					/>
 
 					<MultiButtonsControl
@@ -803,7 +810,8 @@ const Settings = ( props ) => {
 						} }
 						options={ alignItemsOptions }
 						showIcons={ true }
-						responsive={true}
+						responsive={ true }
+						help={ ( 'row' === currentOppAxisDirection ) ? horizontalAlignmentHint : verticalAlignmentHint }
 					/>
 					<MultiButtonsControl
 						setAttributes={ setAttributes }
@@ -824,7 +832,8 @@ const Settings = ( props ) => {
 						} }
 						options={ justifyContentOptions }
 						showIcons={ true }
-						responsive={true}
+						responsive={ true }
+						help={ ( 'row' === currentDirection ) ? horizontalAlignmentHint : verticalAlignmentHint }
 					/>
 					<MultiButtonsControl
 						setAttributes={ setAttributes }
@@ -845,7 +854,7 @@ const Settings = ( props ) => {
 						} }
 						options={ wrapOptions }
 						showIcons={ true }
-						responsive={true}
+						responsive={ true }
 						help={ __( 'Define whether the items are forced in a single line (No Wrap) or can be flowed into multiple lines (Wrap)', 'ultimate-addons-for-gutenberg' ) }
 					/>
 					{ ( 'wrap' === attributes[ 'wrap' + deviceType ] || 'wrap-reverse' === attributes[ 'wrap' + deviceType ] ) &&
@@ -868,7 +877,8 @@ const Settings = ( props ) => {
 							} }
 							options={ justifyContentOptions }
 							showIcons={ true }
-							responsive={true}
+							responsive={ true }
+							help={ alignContentHint }
 						/>
 					}
 				</UAGAdvancedPanelBody>
