@@ -40,6 +40,15 @@ function addAttributes( settings ) {
 				UAGDisplayConditions: {
 					type: 'string',
 				},
+				zIndex: {
+					type: 'number',
+				},
+				zIndexTablet: {
+					type: 'number',
+				},
+				zIndexMobile: {
+					type: 'number',
+				}
 			} );
 		}
 	}

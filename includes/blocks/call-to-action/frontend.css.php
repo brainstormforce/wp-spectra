@@ -442,7 +442,7 @@ if ( 'right' === $attr['ctaPosition'] && ( 'text' === $attr['ctaType'] || 'butto
 	$m_selectors[' .uagb-cta__content-right .uagb-cta__left-right-wrap .uagb-cta__link-wrapper'] = array(
 		'width' => UAGB_Helper::get_css_value( ( 100 - $content_width_mobile_fallback ), $attr['contentWidthType'] ),
 	);
-	
+
 	$selectors['.wp-block-uagb-call-to-action a.uagb-cta__button-link-wrapper '] = array(
 		'align-self'  => 'top' === $attr['buttonAlign'] ? 'flex-start' : 'center',
 		'height'      => 'fit-content',

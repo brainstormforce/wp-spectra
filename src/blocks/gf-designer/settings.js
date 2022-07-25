@@ -1139,6 +1139,76 @@ successMsgLetterSpacingType,
 						showIcons={ true }
 					/>
 				) }
+				<MultiButtonsControl
+					setAttributes={ setAttributes }
+					label={ __( 'Submit Button Alignment', 'ultimate-addons-for-gutenberg' ) }
+					data={ {
+						desktop: {
+							value: buttonAlignment,
+							label: 'buttonAlignment',
+						},
+						tablet: {
+							value: buttonAlignmentTablet,
+							label: 'buttonAlignmentTablet',
+						},
+						mobile: {
+							value: buttonAlignmentMobile,
+							label: 'buttonAlignmentMobile',
+						},
+					} }
+					options={ [
+						{
+							value: 'left',
+							icon: (
+								<Icon
+									icon={ renderSVG( 'fa fa-align-left' ) }
+								/>
+							),
+							tooltip: __(
+								'Left',
+								'ultimate-addons-for-gutenberg'
+							),
+						},
+						{
+							value: 'center',
+							icon: (
+								<Icon
+									icon={ renderSVG( 'fa fa-align-center' ) }
+								/>
+							),
+							tooltip: __(
+								'Center',
+								'ultimate-addons-for-gutenberg'
+							),
+						},
+						{
+							value: 'right',
+							icon: (
+								<Icon
+									icon={ renderSVG( 'fa fa-align-right' ) }
+								/>
+							),
+							tooltip: __(
+								'Right',
+								'ultimate-addons-for-gutenberg'
+							),
+						},
+						{
+							value: 'justify',
+							icon: (
+								<Icon
+									icon={ renderSVG( 'fa fa-align-justify' ) }
+								/>
+							),
+							tooltip: __(
+								'Justified',
+								'ultimate-addons-for-gutenberg'
+							),
+						},
+					] }
+					showIcons={ true }
+					responsive={true}
+				/>
 			</UAGAdvancedPanelBody>
 		);
 	};
@@ -1402,76 +1472,6 @@ successMsgLetterSpacingType,
 				title={ __( 'Submit Button', 'ultimate-addons-for-gutenberg' ) }
 				initialOpen={ false }
 			>
-				<MultiButtonsControl
-					setAttributes={ setAttributes }
-					label={ __( 'Alignment', 'ultimate-addons-for-gutenberg' ) }
-					data={ {
-						desktop: {
-							value: buttonAlignment,
-							label: 'buttonAlignment',
-						},
-						tablet: {
-							value: buttonAlignmentTablet,
-							label: 'buttonAlignmentTablet',
-						},
-						mobile: {
-							value: buttonAlignmentMobile,
-							label: 'buttonAlignmentMobile',
-						},
-					} }
-					options={ [
-						{
-							value: 'left',
-							icon: (
-								<Icon
-									icon={ renderSVG( 'fa fa-align-left' ) }
-								/>
-							),
-							tooltip: __(
-								'Left',
-								'ultimate-addons-for-gutenberg'
-							),
-						},
-						{
-							value: 'center',
-							icon: (
-								<Icon
-									icon={ renderSVG( 'fa fa-align-center' ) }
-								/>
-							),
-							tooltip: __(
-								'Center',
-								'ultimate-addons-for-gutenberg'
-							),
-						},
-						{
-							value: 'right',
-							icon: (
-								<Icon
-									icon={ renderSVG( 'fa fa-align-right' ) }
-								/>
-							),
-							tooltip: __(
-								'Right',
-								'ultimate-addons-for-gutenberg'
-							),
-						},
-						{
-							value: 'justify',
-							icon: (
-								<Icon
-									icon={ renderSVG( 'fa fa-align-justify' ) }
-								/>
-							),
-							tooltip: __(
-								'Justified',
-								'ultimate-addons-for-gutenberg'
-							),
-						},
-					] }
-					showIcons={ true }
-					responsive={true}
-				/>
 				{ btnBorderSetting() }
 				<TypographyControl
 					label={ __(
