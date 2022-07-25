@@ -634,6 +634,8 @@ select {
   margin-bottom: 2rem;
 }.mb-\[2\.43rem\] {
   margin-bottom: 2.43rem;
+}.ml-0 {
+  margin-right: 0px;
 }.mb-6 {
   margin-bottom: 1.5rem;
 }.-ml-px {
@@ -820,6 +822,8 @@ select {
   gap: 1.5rem;
 }.gap-4 {
   gap: 1rem;
+}.gap-x-4 {
+  column-gap: 1rem;
 }.space-y-4 > :not([hidden]) ~ :not([hidden]) {
   --tw-space-y-reverse: 0;
   margin-top: calc(1rem * calc(1 - var(--tw-space-y-reverse)));

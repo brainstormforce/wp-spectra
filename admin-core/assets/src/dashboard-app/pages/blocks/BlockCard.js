@@ -62,7 +62,7 @@ const BlockCard = ( props ) => {
             blockActivationStatus
                 ? 'border-white bg-white shadow hover:shadow-lg hover:z-50'
                 : 'border-slate-200 spectra-disabled-icon',
-            'box-border relative border rounded-md h-20 p-4 flex items-center space-x-4 snap-start transition spectra-icon-transition'
+            'box-border relative border rounded-md h-20 p-4 flex items-center gap-x-4 snap-start transition spectra-icon-transition'
         ) }
         >
             { deprecated && (
@@ -70,7 +70,9 @@ const BlockCard = ( props ) => {
                     DEPRECATED
                 </div>
             ) }
-            <div className="flex-shrink-0 opacity-80">
+            <div className={ classNames(
+                "flex-shrink-0 opacity-80"
+            ) }>
                 { UAGB_Block_Icons[slug] }
             </div>
             <div className="uagb-admin-block-card__title flex-1 min-w-0">
