@@ -76,8 +76,8 @@ const BlockCard = ( props ) => {
                 { UAGB_Block_Icons[slug] }
             </div>
             <div className="uagb-admin-block-card__title flex-1 min-w-0">
-                <p className="text-sm font-medium text-gray-900 mb-[0.1875rem]">{title}</p>
-                <a className="focus:text-spectra active:text-spectra hover:text-spectra text-sm underline text-gray-900 truncate" href={ `https://ultimategutenberg.com/blocks/${ link }` } target="_blank"rel="noreferrer">{__( 'Live Demo', 'ultimate-addons-for-gutenberg' )}</a>
+                <p className="text-base font-medium text-slate-800">{ title }</p>
+                <a className="focus-visible:text-slate-500 active:text-slate-500 hover:text-slate-500 focus:text-slate-400 text-slate-400 text-sm truncate" href={ `https://ultimategutenberg.com/blocks/${ link }` } target="_blank"rel="noreferrer">{__( 'Live Demo', 'ultimate-addons-for-gutenberg' )}</a>
             </div>
             <Switch
                 checked={blockActivationStatus}

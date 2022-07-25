@@ -67,8 +67,8 @@ const DisplayConditionsExtension = () => {
                 { UAGB_Block_Icons['display-conditions'] }
             </div>
             <div className="uagb-admin-block__extension-title flex-1 min-w-0">
-                <p className="text-sm font-medium text-gray-900 mb-[0.1875rem]">{__( 'Display Conditions', 'ultimate-addons-for-gutenberg' )}</p>
-                <a className="text-sm text-gray-900 focus:text-spectra active:text-spectra hover:text-spectra truncate underline" href='https://ultimategutenberg.com/docs/display-conditions-blocks/' target="_blank"rel="noreferrer">{__( 'Documentation', 'ultimate-addons-for-gutenberg' )}</a>
+                <p className="text-base font-medium text-slate-800">{__( 'Display Conditions', 'ultimate-addons-for-gutenberg' )}</p>
+                <a className="focus-visible:text-slate-500 active:text-slate-500 hover:text-slate-500 focus:text-slate-400 text-slate-400 text-sm truncate" href='https://ultimategutenberg.com/docs/display-conditions-blocks/' target="_blank"rel="noreferrer">{__( 'Documentation', 'ultimate-addons-for-gutenberg' )}</a>
             </div>
             <Switch
                 checked={displayConditionsStatus}

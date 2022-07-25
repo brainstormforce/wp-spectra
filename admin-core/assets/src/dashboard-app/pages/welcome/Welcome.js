@@ -35,15 +35,15 @@ const Welcome = () => {
 							</h2>
 							<div className="rounded-md bg-white overflow-hidden shadow flex flex-col justify-center h-full">
 								<div className="p-12 pt-[2.2rem]">
-									<h2 className='text-[1.8rem] leading-[2.4rem] pb-3 font-medium text-left'>{__( 'Welcome to Spectra!', 'ultimate-addons-for-gutenberg' )}</h2>
-									<p className='pb-7'>{__( 'We designed Spectra to be intuitive but we do recommend learning how it works by checking our comprehensive documentation and watching the video below. Enjoy your time with Spectra!', 'ultimate-addons-for-gutenberg' )}</p>
+									<h2 className='text-slate-800 text-[1.8rem] leading-[2.4rem] pb-3 font-medium text-left'>{__( 'Welcome to Spectra!', 'ultimate-addons-for-gutenberg' )}</h2>
+									<p className='text-slate-500 pb-7'>{__( 'We designed Spectra to be intuitive but we do recommend learning how it works by checking our comprehensive documentation and watching the video below. Enjoy your time with Spectra!', 'ultimate-addons-for-gutenberg' )}</p>
 									<div className="mr-[80px] spectra-video-container">
 										<iframe className="spectra-video" src={`https://www.youtube.com/embed/5Llg8huGs74?showinfo=0&autoplay=${allowAutoPlay}&mute=${allowAutoPlay}`} allow="autoplay" title="YouTube video player" frameBorder="0" allowFullScreen></iframe>
 									</div>
 									<span className="relative z-0 inline-flex pt-6 justify-start w-full">
 										<button
 											type="button"
-											className="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-spectra focus:bg-spectra-hover hover:bg-spectra-hover focus:outline-none mr-4"
+											className="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-spectra focus-visible:bg-spectra-hover hover:bg-spectra-hover focus:outline-none mr-4"
 											onClick={ onCreateNewPageClick }
 										>
 											{__( 'Create New Page', 'ultimate-addons-for-gutenberg' )}
@@ -51,7 +51,7 @@ const Welcome = () => {
 										</button>
 										<button
 											type="button"
-											className="inline-flex items-center px-4 py-2 border border-gray-300 shadow-sm text-sm font-medium rounded-md text-gray-700 bg-white focus:bg-gray-50 hover:bg-gray-50 focus:outline-none"
+											className="inline-flex items-center px-4 py-2 border border-slate-300 shadow-sm text-sm font-medium rounded-md text-slate-500 bg-white focus-visible:bg-slate-50 hover:bg-slate-50 focus:outline-none"
 											onClick={ onReadFullGuideClick }
 										>
 											{__( 'Read Full Guide', 'ultimate-addons-for-gutenberg' )}
@@ -69,26 +69,26 @@ const Welcome = () => {
 								Section title
 							</h2>
 							<div className="box-border rounded-md bg-slate-50 border border-slate-200 overflow-hidden transition hover:bg-white hover:border-white hover:shadow-2xl">
-								<div className="p-7">
-									<h3 className='text-xl leading-[2.47rem] font-medium pb-2'>
+								<div className="p-8 pr-10">
+									<h3 className='text-slate-800 text-xl font-medium pb-2'>
 										{ __(
 											'Knowledge Base',
 											'ultimate-addons-for-gutenberg'
 										) }
 									</h3>
-									<p className='text-sm pb-2 pr-2'>
+									<p className='text-slate-500 text-sm pb-2 pr-2'>
 										{ __(
 											'Learn everything you need to know about the Spectra plugin with our comprehensive documentation.',
 											'ultimate-addons-for-gutenberg'
 										) }
 									</p>
-									<a className='text-base text-spectra focus:text-spectra-hover active:text-spectra-hover hover:text-spectra-hover underline' href='https://ultimategutenberg.com/docs/' target='_blank' rel="noreferrer">
+									<a className='text-base text-spectra focus:text-spectra focus-visible:text-spectra-hover active:text-spectra-hover hover:text-spectra-hover underline' href='https://ultimategutenberg.com/docs/' target='_blank' rel="noreferrer">
 										{ __(
 											'Browse Now',
 											'ultimate-addons-for-gutenberg'
 										) }
 									</a>
-									<a className='text-base text-spectra focus:text-spectra-hover active:text-spectra-hover hover:text-spectra-hover no-underline' href='https://ultimategutenberg.com/docs/' target='_blank' rel="noreferrer"> → </a>
+									<a className='text-base text-spectra focus:text-spectra focus-visible:text-spectra-hover active:text-spectra-hover hover:text-spectra-hover no-underline' href='https://ultimategutenberg.com/docs/' target='_blank' rel="noreferrer"> → </a>
 								</div>
 							</div>
 						</section>
@@ -97,26 +97,26 @@ const Welcome = () => {
 								Section title
 							</h2>
 							<div className="box-border rounded-md bg-slate-50 border border-slate-200 overflow-hidden transition hover:bg-white hover:border-white hover:shadow-2xl">
-								<div className="p-7">
-									<h3 className='text-xl leading-[2.47rem] font-medium pb-2'>
+								<div className="p-8 pr-10">
+									<h3 className='text-slate-800 text-xl font-medium pb-2'>
 										{ __(
 											'Get 5-star Support',
 											'ultimate-addons-for-gutenberg'
 										) }
 									</h3>
-									<p className='text-sm pb-2 pr-2'>
+									<p className='text-slate-500 text-sm pb-2 pr-2'>
 										{ __(
 											'Need some help? Our awesome support team is here to help you with any question you have.',
 											'ultimate-addons-for-gutenberg'
 										) }
 									</p>
-									<a className='text-base text-spectra focus:text-spectra-hover active:text-spectra-hover hover:text-spectra-hover underline' href='https://ultimategutenberg.com/support/' target='_blank' rel="noreferrer">
+									<a className='text-base text-spectra focus:text-spectra focus-visible:text-spectra-hover active:text-spectra-hover hover:text-spectra-hover underline' href='https://ultimategutenberg.com/support/' target='_blank' rel="noreferrer">
 										{ __(
 											'Get Support',
 											'ultimate-addons-for-gutenberg'
 										) }
 									</a>
-									<a className='text-base text-spectra focus:text-spectra-hover active:text-spectra-hover hover:text-spectra-hover no-underline' href='https://ultimategutenberg.com/support/' target='_blank' rel="noreferrer"> → </a>
+									<a className='text-base text-spectra focus:text-spectra focus-visible:text-spectra-hover active:text-spectra-hover hover:text-spectra-hover no-underline' href='https://ultimategutenberg.com/support/' target='_blank' rel="noreferrer"> → </a>
 								</div>
 							</div>
 						</section>
@@ -125,26 +125,26 @@ const Welcome = () => {
 								Section title
 							</h2>
 							<div className="box-border rounded-md bg-slate-50 border border-slate-200 overflow-hidden transition hover:bg-white hover:border-white hover:shadow-2xl">
-								<div className="p-7">
-									<h3 className='text-xl leading-[2.47rem] font-medium pb-2'>
+								<div className="p-8 pr-10">
+									<h3 className='text-slate-800 text-xl font-medium pb-2'>
 										{ __(
 											'Join the Community',
 											'ultimate-addons-for-gutenberg'
 										) }
 									</h3>
-									<p className='text-sm pb-2 pr-2'>
+									<p className='text-slate-500 text-sm pb-2 pr-2'>
 										{ __(
 											'Got a question about the plugin, want to share your awesome project or just say hi? Join our wonderful community!',
 											'ultimate-addons-for-gutenberg'
 										) }
 									</p>
-									<a className='text-base text-spectra focus:text-spectra-hover active:text-spectra-hover hover:text-spectra-hover underline' href='https://www.facebook.com/groups/wpastra/' target='_blank' rel="noreferrer">
+									<a className='text-base text-spectra focus:text-spectra focus-visible:text-spectra-hover active:text-spectra-hover hover:text-spectra-hover underline' href='https://www.facebook.com/groups/wpastra/' target='_blank' rel="noreferrer">
 										{ __(
 											'Join Now',
 											'ultimate-addons-for-gutenberg'
 										) }
 									</a>
-									<a className='text-base text-spectra focus:text-spectra-hover active:text-spectra-hover hover:text-spectra-hover no-underline' href='https://www.facebook.com/groups/wpastra/' target='_blank' rel="noreferrer"> → </a>
+									<a className='text-base text-spectra focus:text-spectra focus-visible:text-spectra-hover active:text-spectra-hover hover:text-spectra-hover no-underline' href='https://www.facebook.com/groups/wpastra/' target='_blank' rel="noreferrer"> → </a>
 								</div>
 							</div>
 						</section>

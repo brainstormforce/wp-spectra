@@ -155,7 +155,7 @@ const FilterTabs = () => {
                 ) )}
             </select>
             </div>
-            <div className="hidden justify-between sm:flex">
+            <div className="hidden justify-between items-center sm:flex">
                 <nav className="flex space-x-4" aria-label="Tabs">
                     {tabs.map( ( tab ) => (
                     <Link // eslint-disable-line
@@ -167,7 +167,7 @@ const FilterTabs = () => {
                         className={ classNames(
                             ( tab.slug === activeBlocksFilterTab )
                                 ? 'bg-white text-slate-800 active:text-slate-800 focus:text-slate-800 hover:text-slate-800 shadow shadow-focused'
-                                : 'text-slate-500 focus:text-slate-500 focus:border-slate-200 active:text-slate-500 hover:text-slate-500 hover:border-slate-200',
+                                : 'text-slate-500 focus:text-slate-500 focus-visible:border-slate-200 active:text-slate-500 hover:text-slate-500 hover:border-slate-200',
                             'px-3 py-0.5 font-medium h-6 text-sm rounded-xl cursor-pointer border border-transparent transition'
                         ) }
                         onClick={ () => {
@@ -181,14 +181,14 @@ const FilterTabs = () => {
                 <span className="z-0 flex shadow-sm rounded-[0.2rem] justify-center">
                     <button
                         type="button"
-                        className="focus:bg-indigo-50 focus:text-spectra hover:bg-indigo-50 hover:text-spectra -ml-px relative inline-flex items-center px-4 py-2 border border-slate-200 bg-white text-sm font-medium text-slate-500 focus:z-10 focus:outline-none rounded-l-md transition"
+                        className="focus:bg-indigo-50 focus:text-slate-500 focus-visible:text-spectra hover:bg-indigo-50 hover:text-spectra -ml-px relative inline-flex items-center px-4 py-2 border border-slate-200 bg-white text-sm font-medium text-slate-500 focus:z-10 focus:outline-none rounded-l-md transition"
                         onClick={activateAllBlocks}
                     >
                         Activate all
                     </button>
                     <button
                         type="button"
-                        className="focus:bg-indigo-50 focus:text-spectra hover:bg-indigo-50 hover:text-spectra -ml-px relative inline-flex items-center px-4 py-2 border border-slate-200 bg-white text-sm font-medium text-slate-500 focus:z-10 focus:outline-none rounded-r-md transition"
+                        className="focus:bg-indigo-50 focus:text-slate-500 focus-visible:text-spectra hover:bg-indigo-50 hover:text-spectra -ml-px relative inline-flex items-center px-4 py-2 border border-slate-200 bg-white text-sm font-medium text-slate-500 focus:z-10 focus:outline-none rounded-r-md transition"
                         onClick={deactivateAllBlocks}
                     >
                         Deactivate all

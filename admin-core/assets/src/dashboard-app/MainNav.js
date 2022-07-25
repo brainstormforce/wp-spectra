@@ -54,8 +54,8 @@ export default function MainNav() {
                         } }
                         className={ `${
                             activePage === menu.slug && activePath === menu.path
-                                ? ' border-spectra active:text-spectra focus:text-spectra-hover hover:text-spectra-hover text-spectra inline-flex items-center px-1 border-b-2 text-[0.940rem] font-medium'
-                                : 'border-transparent focus:border-gray-300 focus:text-gray-700 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 border-b-2 text-[0.940rem] font-medium'
+                                ? 'border-spectra text-spectra active:text-spectra focus:text-spectra focus-visible:text-spectra-hover hover:text-spectra-hover inline-flex items-center px-1 border-b-2 text-[0.940rem] font-medium'
+                                : 'border-transparent text-slate-500 focus-visible:border-slate-300 focus-visible:text-slate-800 hover:border-slate-300 hover:text-slate-800 inline-flex items-center px-1 border-b-2 text-[0.940rem] font-medium'
                         }` }
                     >
                         { menu.name }
