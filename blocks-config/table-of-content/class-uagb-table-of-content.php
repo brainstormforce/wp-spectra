@@ -471,6 +471,13 @@ if ( ! class_exists( 'UAGB_Table_Of_Content' ) ) {
 							}
 							?>
 						</div>
+						<?php
+						if ( 'none' !== $attributes['separatorStyle'] ) {
+							?>
+								<div class='uagb-toc__separator'></div>
+							<?php
+						}
+						?>
 					<?php if ( $uagb_toc_heading_content && count( $uagb_toc_heading_content ) > 0 && count( array_filter( $attributes['mappingHeaders'], $mapping_header_func ) ) > 0 ) { ?>
 					<div class="uagb-toc__list-wrap">
 						<?php
@@ -621,6 +628,38 @@ if ( ! class_exists( 'UAGB_Table_Of_Content' ) ) {
 									),
 
 									// Padding.
+									'topPaddingTablet'     => array(
+										'type'    => 'number',
+										'default' => '',
+									),
+									'bottomPaddingTablet'  => array(
+										'type'    => 'number',
+										'default' => '',
+									),
+									'leftPaddingTablet'    => array(
+										'type'    => 'number',
+										'default' => '',
+									),
+									'rightPaddingTablet'   => array(
+										'type'    => 'number',
+										'default' => '',
+									),
+									'topPaddingMobile'     => array(
+										'type'    => 'number',
+										'default' => '',
+									),
+									'bottomPaddingMobile'  => array(
+										'type'    => 'number',
+										'default' => '',
+									),
+									'leftPaddingMobile'    => array(
+										'type'    => 'number',
+										'default' => '',
+									),
+									'rightPaddingMobile'   => array(
+										'type'    => 'number',
+										'default' => '',
+									),
 									'vPaddingDesktop'      => array(
 										'type'    => 'number',
 										'default' => 30,
@@ -821,6 +860,43 @@ if ( ! class_exists( 'UAGB_Table_Of_Content' ) ) {
 									'emptyHeadingTeaxt'    => array(
 										'type'    => 'string',
 										'default' => __( 'Add a header to begin generating the table of contents', 'ultimate-addons-for-gutenberg' ),
+									),
+									// Separator.
+									'separatorStyle'       => array(
+										'type'    => 'string',
+										'default' => 'none',
+									),
+									'separatorHeight'      => array(
+										'type'    => 'number',
+										'default' => 1,
+									),
+									'separatorHeightType'  => array(
+										'type'    => 'string',
+										'default' => 'px',
+									),
+									'separatorSpace'       => array(
+										'type'    => 'number',
+										'default' => 15,
+									),
+									'separatorSpaceTablet' => array(
+										'type'    => 'number',
+										'default' => '',
+									),
+									'separatorSpaceMobile' => array(
+										'type'    => 'number',
+										'default' => '',
+									),
+									'separatorSpaceType'   => array(
+										'type'    => 'string',
+										'default' => 'px',
+									),
+									'separatorColor'       => array(
+										'type'    => 'string',
+										'default' => '',
+									),
+									'separatorHColor'      => array(
+										'type'    => 'string',
+										'default' => '',
 									),
 								)
 							),
