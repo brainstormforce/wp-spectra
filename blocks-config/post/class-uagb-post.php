@@ -245,119 +245,122 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 				)
 			);
 
-			register_block_type(
-				'uagb/post-masonry',
-				array(
-					'attributes'      => array_merge(
-						$common_attributes,
-						array(
-							'blockName'                   => array(
-								'type'    => 'string',
-								'default' => 'post-masonry',
-							),
-							'paginationType'              => array(
-								'type'    => 'string',
-								'default' => 'none',
-							),
-							'paginationEventType'         => array(
-								'type'    => 'string',
-								'default' => 'button',
-							),
-							'buttonText'                  => array(
-								'type'    => 'string',
-								'default' => 'Load More',
-							),
-							'paginationAlign'             => array(
-								'type'    => 'string',
-								'default' => 'center',
-							),
-							'paginationTextColor'         => array(
-								'type'    => 'string',
-								'default' => '',
-							),
-							'paginationMasonryBgColor'    => array(
-								'type'    => 'string',
-								'default' => '',
-							),
-							'paginationBgHoverColor'      => array(
-								'type' => 'string',
-							),
-							'paginationTextHoverColor'    => array(
-								'type' => 'string',
-							),
-							'paginationMasonryBorderHColor' => array(
-								'type'    => 'string',
-								'default' => '',
-							),
-							'paginationFontSize'          => array(
-								'type'    => 'number',
-								'default' => 13,
-							),
-							'loaderColor'                 => array(
-								'type'    => 'string',
-								'default' => '#0085ba',
-							),
-							'loaderSize'                  => array(
-								'type'    => 'number',
-								'default' => 18,
-							),
-							'paginationButtonPaddingType' => array(
-								'type'    => 'string',
-								'default' => 'px',
-							),
-							'vpaginationButtonPaddingMobile' => array(
-								'type'    => 'number',
-								'default' => 8,
-							),
-							'vpaginationButtonPaddingTablet' => array(
-								'type'    => 'number',
-								'default' => 8,
-							),
-							'vpaginationButtonPaddingDesktop' => array(
-								'type'    => 'number',
-								'default' => 8,
-							),
-							'hpaginationButtonPaddingMobile' => array(
-								'type'    => 'number',
-								'default' => 12,
-							),
-							'hpaginationButtonPaddingTablet' => array(
-								'type'    => 'number',
-								'default' => 12,
-							),
-							'hpaginationButtonPaddingDesktop' => array(
-								'type'    => 'number',
-								'default' => 12,
-							),
-							'layoutConfig'                => array(
-								'type'    => 'array',
-								'default' => array(
-									array( 'uagb/post-image' ),
-									array( 'uagb/post-taxonomy' ),
-									array( 'uagb/post-title' ),
-									array( 'uagb/post-meta' ),
-									array( 'uagb/post-excerpt' ),
-									array( 'uagb/post-button' ),
+			if( 'yes' === get_option( 'uagb-old-user-less-than-2' ) ) {
+				register_block_type(
+					'uagb/post-masonry',
+					array(
+						'attributes'      => array_merge(
+							$common_attributes,
+							array(
+								'blockName'                   => array(
+									'type'    => 'string',
+									'default' => 'post-masonry',
+								),
+								'paginationType'              => array(
+									'type'    => 'string',
+									'default' => 'none',
+								),
+								'paginationEventType'         => array(
+									'type'    => 'string',
+									'default' => 'button',
+								),
+								'buttonText'                  => array(
+									'type'    => 'string',
+									'default' => 'Load More',
+								),
+								'paginationAlign'             => array(
+									'type'    => 'string',
+									'default' => 'center',
+								),
+								'paginationTextColor'         => array(
+									'type'    => 'string',
+									'default' => '',
+								),
+								'paginationMasonryBgColor'    => array(
+									'type'    => 'string',
+									'default' => '',
+								),
+								'paginationBgHoverColor'      => array(
+									'type' => 'string',
+								),
+								'paginationTextHoverColor'    => array(
+									'type' => 'string',
+								),
+								'paginationMasonryBorderHColor' => array(
+									'type'    => 'string',
+									'default' => '',
+								),
+								'paginationFontSize'          => array(
+									'type'    => 'number',
+									'default' => 13,
+								),
+								'loaderColor'                 => array(
+									'type'    => 'string',
+									'default' => '#0085ba',
+								),
+								'loaderSize'                  => array(
+									'type'    => 'number',
+									'default' => 18,
+								),
+								'paginationButtonPaddingType' => array(
+									'type'    => 'string',
+									'default' => 'px',
+								),
+								'vpaginationButtonPaddingMobile' => array(
+									'type'    => 'number',
+									'default' => 8,
+								),
+								'vpaginationButtonPaddingTablet' => array(
+									'type'    => 'number',
+									'default' => 8,
+								),
+								'vpaginationButtonPaddingDesktop' => array(
+									'type'    => 'number',
+									'default' => 8,
+								),
+								'hpaginationButtonPaddingMobile' => array(
+									'type'    => 'number',
+									'default' => 12,
+								),
+								'hpaginationButtonPaddingTablet' => array(
+									'type'    => 'number',
+									'default' => 12,
+								),
+								'hpaginationButtonPaddingDesktop' => array(
+									'type'    => 'number',
+									'default' => 12,
+								),
+								'layoutConfig'                => array(
+									'type'    => 'array',
+									'default' => array(
+										array( 'uagb/post-image' ),
+										array( 'uagb/post-taxonomy' ),
+										array( 'uagb/post-title' ),
+										array( 'uagb/post-meta' ),
+										array( 'uagb/post-excerpt' ),
+										array( 'uagb/post-button' ),
+									),
+								),
+								'post_type'                   => array(
+									'type'    => 'string',
+									'default' => 'masonry',
+								),
+								'mobilepaginationButtonPaddingType' => array(
+									'type'    => 'string',
+									'default' => 'px',
+								),
+								'tabletpaginationButtonPaddingType' => array(
+									'type'    => 'string',
+									'default' => 'px',
 								),
 							),
-							'post_type'                   => array(
-								'type'    => 'string',
-								'default' => 'masonry',
-							),
-							'mobilepaginationButtonPaddingType' => array(
-								'type'    => 'string',
-								'default' => 'px',
-							),
-							'tabletpaginationButtonPaddingType' => array(
-								'type'    => 'string',
-								'default' => 'px',
-							),
+							$pagination_masonry_border_attribute,
 						),
-						$pagination_masonry_border_attribute,
-					),
-					'render_callback' => array( $this, 'post_masonry_callback' ),
-				)
-			);
+						'render_callback' => array( $this, 'post_masonry_callback' ),
+					)
+				);
+			}
+
 		}
 
 		/**
