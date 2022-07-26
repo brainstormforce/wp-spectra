@@ -170,6 +170,46 @@ titleLetterSpacingType,
 		setAttributes( { imageSize: value } );
 	};
 
+	const setcolumns = ( value ) => {
+		
+		const getChildBlocks = select( 'core/block-editor' ).getBlocks( props.clientId );
+		
+		getChildBlocks.forEach( ( pricelistChild ) => {
+			pricelistChild.attributes.columns = value
+		} );
+		setAttributes( { columns: value } )
+	}
+	const setheadingTag = ( value ) => {
+		
+		const getChildBlocks = select( 'core/block-editor' ).getBlocks( props.clientId );
+		
+		getChildBlocks.forEach( ( pricelistChild ) => {
+			pricelistChild.attributes.headingTag = value;
+			
+		} );
+		setAttributes( { headingTag: value } )
+	}
+	
+	const setimagePosition = ( value ) => {
+		
+		const getChildBlocks = select( 'core/block-editor' ).getBlocks( props.clientId );
+		
+		getChildBlocks.forEach( ( pricelistChild ) => {
+			pricelistChild.attributes.imagePosition = value
+		} );
+		setAttributes( { imagePosition: value } )
+	}
+	
+	const setimageAlignment = ( value ) => {
+		
+		const getChildBlocks = select( 'core/block-editor' ).getBlocks( props.clientId );
+		
+		getChildBlocks.forEach( ( pricelistChild ) => {
+			pricelistChild.attributes.imageAlignment = value
+		} );
+		setAttributes( { imageAlignment: value } )
+	}
+
 	let loadTitleGoogleFonts;
 	let loadDescGoogleFonts;
 	let loadPriceGoogleFonts;
@@ -459,6 +499,7 @@ titleLetterSpacingType,
 							),
 						},
 					] }
+					onChange = { setimagePosition }
 					showIcons={ true }
 				/>
 				)}
@@ -566,6 +607,7 @@ titleLetterSpacingType,
 								},
 							] }
 							showIcons={ false }
+							onChange = {setimageAlignment }
 						/>
 					</>
 				) }
@@ -1179,7 +1221,8 @@ titleLetterSpacingType,
 								min={ 1 }
 								max={ Math.min( maxColumns, menu_item_count ) }
 								displayUnit={ false }
-								setAttributes={ setAttributes }
+								setAttributes={ setAttributes }		
+								onChange={ setcolumns }
 							/>
 							<MultiButtonsControl
 								setAttributes={ setAttributes }
@@ -1249,6 +1292,8 @@ titleLetterSpacingType,
 										),
 									},
 								] }
+								
+								onChange={ setheadingTag }
 							/>
 						</UAGAdvancedPanelBody>
 						{ imageSettings() }
