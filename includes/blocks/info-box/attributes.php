@@ -59,7 +59,7 @@ return array_merge(
 		'separatorWidthMobile'       => '',
 		'separatorHeight'            => '',
 		'separatorWidthType'         => '%',
-		'icon'                       => '',
+		'icon'                       => 'circle-check',
 		'iconColor'                  => '#333',
 		'iconSize'                   => '30',
 		'iconSizeType'               => 'px',

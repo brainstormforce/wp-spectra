@@ -680,7 +680,7 @@ const attributes = { // eslint-disable-line no-unused-vars
 	},
 	icon                    : {
 		type    : 'string',
-		default : 'fab fa fa-calendar-alt',
+		default : 'calendar-days',
 	},
 	borderRadius            : {
 		type    : 'number',
