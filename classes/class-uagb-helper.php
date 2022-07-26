@@ -251,7 +251,7 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 		 */
 		public static function backend_load_font_awesome_icons() {
 
-			$json_file = UAGB_DIR . 'blocks-config/uagb-controls/uagb-icons.php';
+			$json_file = UAGB_DIR . 'blocks-config/uagb-controls/spectra-icons-v6.php';
 
 			if ( ! file_exists( $json_file ) ) {
 				return array();
@@ -282,8 +282,24 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 			$icon = sanitize_text_field( esc_attr( $icon ) );
 
 			$json = self::backend_load_font_awesome_icons();
-			$path = isset( $json[ $icon ]['svg']['brands'] ) ? $json[ $icon ]['svg']['brands']['path'] : $json[ $icon ]['svg']['solid']['path'];
-			$view = isset( $json[ $icon ]['svg']['brands'] ) ? $json[ $icon ]['svg']['brands']['viewBox'] : $json[ $icon ]['svg']['solid']['viewBox'];
+			$path = null;
+			$view = null;
+
+			// Load Polyfiller Array if needed.
+			if ( 'disabled' !== UAGB_Admin_Helper::get_admin_settings_option( 'uag_load_font_awesome_5', 'disabled' ) ) {
+				$font_awesome_5_polyfiller = get_spectra_font_awesome_polyfiller();
+				$path                      = isset( $json[ $font_awesome_5_polyfiller[ $icon ] ]['svg']['brands'] ) ? $json[ $font_awesome_5_polyfiller[ $icon ] ]['svg']['brands']['path'] : $json[ $font_awesome_5_polyfiller[ $icon ] ]['svg']['solid']['path'];
+				$view                      = isset( $json[ $font_awesome_5_polyfiller[ $icon ] ]['svg']['brands'] ) ? $json[ $font_awesome_5_polyfiller[ $icon ] ]['svg']['brands']['viewBox'] : $json[ $font_awesome_5_polyfiller[ $icon ] ]['svg']['solid']['viewBox'];
+				if ( ! $path ) {
+					$path = isset( $json[ $icon ]['svg']['brands'] ) ? $json[ $icon ]['svg']['brands']['path'] : $json[ $icon ]['svg']['solid']['path'];
+				}
+				if ( ! $view ) {
+					$view = isset( $json[ $icon ]['svg']['brands'] ) ? $json[ $icon ]['svg']['brands']['viewBox'] : $json[ $icon ]['svg']['solid']['viewBox'];
+				}
+			} else {
+				$path = isset( $json[ $icon ]['svg']['brands'] ) ? $json[ $icon ]['svg']['brands']['path'] : $json[ $icon ]['svg']['solid']['path'];
+				$view = isset( $json[ $icon ]['svg']['brands'] ) ? $json[ $icon ]['svg']['brands']['viewBox'] : $json[ $icon ]['svg']['solid']['viewBox'];
+			}
 			if ( $view ) {
 				$view = implode( ' ', $view );
 			}
