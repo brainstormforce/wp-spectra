@@ -1126,4 +1126,3 @@
  }
  
  export default styling;
- 
