@@ -170,15 +170,6 @@ titleLetterSpacingType,
 		setAttributes( { imageSize: value } );
 	};
 
-	const setcolumns = ( value ) => {
-		
-		const getChildBlocks = select( 'core/block-editor' ).getBlocks( props.clientId );
-		
-		getChildBlocks.forEach( ( pricelistChild ) => {
-			pricelistChild.attributes.columns = value
-		} );
-		setAttributes( { columns: value } )
-	}
 	const setheadingTag = ( value ) => {
 		
 		const getChildBlocks = select( 'core/block-editor' ).getBlocks( props.clientId );
@@ -1242,8 +1233,7 @@ titleLetterSpacingType,
 								min={ 1 }
 								max={ Math.min( maxColumns, menu_item_count ) }
 								displayUnit={ false }
-								setAttributes={ setAttributes }		
-								onChange={ setcolumns }
+								setAttributes={ setAttributes }	
 							/>
 							<MultiButtonsControl
 								setAttributes={ setAttributes }
