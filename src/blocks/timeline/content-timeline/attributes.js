@@ -149,12 +149,60 @@ const attributes = {
 		},
 		default: 10,
 	},
+	horizontalSpaceTablet         : {
+		type    : 'number',
+		UAGCopyPaste: {
+			styleType: 'row-gap-tablet'
+		},
+	},
+	horizontalSpaceMobile         : {
+		type    : 'number',
+		UAGCopyPaste: {
+			styleType: 'row-gap-mobile'
+		},
+	},
+	horizontalSpaceUnit      : {
+		type    : 'string',
+		default : 'px',
+	},
+	horizontalSpaceUnitTablet : {
+		type    : 'string',
+		default : 'px',
+	},
+	horizontalSpaceUnitMobile : {
+		type    : 'string',
+		default : 'px',
+	},
 	verticalSpace: {
 		type: 'number',
 		UAGCopyPaste: {
 			styleType: 'column-gap'
 		},
 		default: 15,
+	},
+	verticalSpaceTablet      : {
+		type    : 'number',
+		UAGCopyPaste: {
+			styleType: 'column-gap-tablet'
+		},
+	},
+	verticalSpaceMobile     : {
+		type    : 'number',
+		UAGCopyPaste: {
+			styleType: 'column-gap-mobile'
+		},
+	},
+	verticalSpaceUnit      : {
+		type    : 'string',
+		default : 'px',
+	},
+	verticalSpaceUnitTablet : {
+		type    : 'string',
+		default : 'px',
+	},
+	verticalSpaceUnitMobile : {
+		type    : 'string',
+		default : 'px',
 	},
 	headFontSize: {
 		type: 'number',
@@ -244,12 +292,24 @@ const attributes = {
 		},
 		default: false,
 	},
-	timelinAlignment: {
-		type: 'string',
+	timelinAlignment  : {
+		type    : 'string',
+		default : 'center',
 		UAGCopyPaste: {
 			styleType: 'overall-alignment'
 		},
-		default: 'center',
+	},
+	timelinAlignmentTablet  : {
+		type    : 'string',
+		UAGCopyPaste: {
+			styleType: 'overall-alignment-tablet'
+		},
+	},
+	timelinAlignmentMobile  : {
+		type    : 'string',
+		UAGCopyPaste: {
+			styleType: 'overall-alignment-mobile'
+		},
 	},
 	arrowlinAlignment: {
 		type: 'string',
