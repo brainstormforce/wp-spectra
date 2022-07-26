@@ -115,7 +115,17 @@ function styling( props ) {
 		letterSpacingTablet,
 		letterSpacingMobile,
 		letterSpacingType,
-		markerView
+		markerView,
+		// separator
+		separatorStyle,
+		separatorHeight,
+		separatorHeightType,
+		separatorSpace,
+		separatorSpaceType,
+		separatorColor,
+		separatorHColor,
+		separatorSpaceTablet,
+		separatorSpaceMobile,
 	} = props.attributes;
 
 	const tColumnsDesktopFallback = getFallbackNumber( tColumnsDesktop, 'tColumnsDesktop', blockName );
@@ -499,6 +509,60 @@ function styling( props ) {
 				' / 2 )',
 		},
 	};
+
+	// separator
+	if ( separatorStyle !== 'none' ) {
+
+		// Since we need the separator to ignore the padding and cover the entire width of the parent container,
+		// we use calc and do the following calculations.
+
+		const calcPaddingLeft = generateCSSUnit( leftPadding, paddingTypeDesktop );
+		const calcPaddingRight = generateCSSUnit( rightPadding, paddingTypeDesktop );
+
+		const tCalcPaddingLeft = generateCSSUnit( leftPaddingTablet, paddingTypeTablet );
+		const tCalcPaddingRight = generateCSSUnit( rightPaddingTablet, paddingTypeTablet );
+
+		const mCalcPaddingLeft = generateCSSUnit( leftPaddingMobile, paddingTypeMobile );
+		const mCalcPaddingRight = generateCSSUnit( rightPaddingMobile, paddingTypeMobile );
+
+		selectors[ ' .uagb-toc__separator' ] = {
+			'border-top-style': separatorStyle,
+			'border-top-width': generateCSSUnit(
+				getFallbackNumber( separatorHeight, 'separatorHeight', blockName ),
+				separatorHeightType
+			),
+			'width': 'calc( 100% + ' + calcPaddingLeft + ' + ' + calcPaddingRight +')',
+			'margin-left': '-' + calcPaddingLeft,
+			'border-color': separatorColor,
+			'margin-bottom': generateCSSUnit(
+				getFallbackNumber( separatorSpace, 'separatorSpace', blockName ),
+				separatorSpaceType
+			),
+		};
+
+		selectors[ ' .uagb-toc__wrap:hover .uagb-toc__separator' ] = {
+			'border-color': separatorHColor,
+		};
+
+		tablet_selectors[ ' .uagb-toc__separator' ] = {
+			'width': 'calc( 100% + ' + tCalcPaddingLeft + ' + ' + tCalcPaddingRight +')',
+			'margin-left': '-' + tCalcPaddingLeft,
+			'margin-bottom': generateCSSUnit(
+				getFallbackNumber( separatorSpaceTablet, 'separatorSpaceTablet', blockName ),
+				separatorSpaceType
+			),
+		};
+
+		mobile_selectors[ ' .uagb-toc__separator' ] = {
+			'width': 'calc( 100% + ' + mCalcPaddingLeft + ' + ' + mCalcPaddingRight +')',
+			'margin-left': '-' + mCalcPaddingLeft,
+			'margin-bottom': generateCSSUnit(
+				getFallbackNumber( separatorSpaceMobile, 'separatorSpaceMobile', blockName ),
+				separatorSpaceType
+			),
+		};
+
+	}
 
 	const id = `.block-editor-block-list__block .uagb-block-${ props.clientId.substr(
 		0,

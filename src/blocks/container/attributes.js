@@ -6,6 +6,14 @@ const attributes = {
 	block_id: {
 		type: 'string',
 	},
+	// Container wrapper tag name and link are not required in PHP as it is only used in render and save.
+	htmlTag: {
+		type: 'string',
+		default: 'div',
+	},
+	htmlTagLink: {
+		type: 'object',
+	},
 	contentWidth: {
 		type: 'string',
 		default: 'alignfull',
@@ -150,13 +158,22 @@ const attributes = {
 	wrapDesktop: {
 		type: 'string',
 		default: 'nowrap',
+		UAGCopyPaste: {
+			styleType: 'container-wrap-desktop'
+		},
 	},
 	wrapTablet: {
 		type: 'string',
+		UAGCopyPaste: {
+			styleType: 'container-wrap-tablet'
+		},
 	},
 	wrapMobile: {
 		type: 'string',
 		default: 'wrap',
+		UAGCopyPaste: {
+			styleType: 'container-wrap-mobile'
+		},
 	},
 	alignContentDesktop: {
 		type: 'string',

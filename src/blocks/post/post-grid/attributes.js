@@ -1,6 +1,9 @@
 import { __ } from '@wordpress/i18n';
 import { getBorderAttributes } from '@Controls/generateAttributes';
+
 const btnBorderAttributes = getBorderAttributes( 'btn' );
+const overallBorderAttributes = getBorderAttributes( 'overall' );
+
 const attributes = {
 	blockName                   : {
 		type    : 'string',
@@ -192,7 +195,7 @@ const attributes = {
 	},
 	bgOverlayColor          : {
 		type    : 'string',
-		default : '#ffffff',
+		default : '#000000',
 		UAGCopyPaste: {
 			styleType: 'post-bg-overlay-color'
 		},
@@ -402,7 +405,7 @@ const attributes = {
 	// Meta attributes.
 	metaColor               : {
 		type    : 'string',
-		default : '#777777',
+		default : '',
 		UAGCopyPaste: {
 			styleType: 'prefix-color'
 		},
@@ -1120,7 +1123,88 @@ const attributes = {
 			styleType: 'cta-letter-spacing-type'
 		}
 	},
-	...btnBorderAttributes
+	boxShadowColor: {
+		type: 'string',
+		default: '#00000070',
+		UAGCopyPaste: {
+			styleType: 'container-box-shadow-color'
+		},
+	},
+	boxShadowHOffset: {
+		type: 'number',
+		default: 0,
+		UAGCopyPaste: {
+			styleType: 'container-box-shadow-hoffset'
+		},
+	},
+	boxShadowVOffset: {
+		type: 'number',
+		default: 0,
+		UAGCopyPaste: {
+			styleType: 'container-box-shadow-voffset'
+		},
+	},
+	boxShadowBlur: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'container-box-shadow-blur'
+		},
+	},
+	boxShadowSpread: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'container-box-shadow-spread'
+		},
+	},
+	boxShadowPosition: {
+		type: 'string',
+		default: 'outset',
+		UAGCopyPaste: {
+			styleType: 'container-box-shadow-position'
+		},
+	},
+
+	boxShadowColorHover: {
+		type: 'string',
+		UAGCopyPaste: {
+			styleType: 'container-box-shadow-color-hover'
+		},
+	},
+	boxShadowHOffsetHover: {
+		type: 'number',
+		default: 0,
+		UAGCopyPaste: {
+			styleType: 'container-box-shadow-hoffset-hover'
+		},
+	},
+	boxShadowVOffsetHover: {
+		type: 'number',
+		default: 0,
+		UAGCopyPaste: {
+			styleType: 'container-box-shadow-voffset-hover'
+		},
+	},
+	boxShadowBlurHover: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'container-box-shadow-blur-hover'
+		},
+	},
+	boxShadowSpreadHover: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'container-box-shadow-spread-hover'
+		},
+	},
+	boxShadowPositionHover: {
+		type: 'string',
+		default: 'outset',
+		UAGCopyPaste: {
+			styleType: 'container-box-shadow-position-hover'
+		},
+	},
+	...btnBorderAttributes,
+	...overallBorderAttributes
 }
 
 export default attributes;

@@ -7,7 +7,8 @@
  * @package uagb
  */
 
-$btn_border_attribute = UAGB_Block_Helper::uag_generate_border_attribute( 'btn' );
+$btn_border_attribute     = UAGB_Block_Helper::uag_generate_border_attribute( 'btn' );
+$overall_border_attribute = UAGB_Block_Helper::uag_generate_border_attribute( 'overall' );
 return array_merge(
 	array(
 		'blockName'                  => 'post-carousel',
@@ -178,6 +179,19 @@ return array_merge(
 		'ctaLetterSpacingTablet'     => '',
 		'ctaLetterSpacingMobile'     => '',
 		'ctaLetterSpacingType'       => 'px',
+		'boxShadowColor'             => '#00000070',
+		'boxShadowHOffset'           => 0,
+		'boxShadowVOffset'           => 0,
+		'boxShadowBlur'              => '',
+		'boxShadowSpread'            => '',
+		'boxShadowPosition'          => 'outset',
+		'boxShadowColorHover'        => '',
+		'boxShadowHOffsetHover'      => 0,
+		'boxShadowVOffsetHover'      => 0,
+		'boxShadowBlurHover'         => '',
+		'boxShadowSpreadHover'       => '',
+		'boxShadowPositionHover'     => 'outset',
 	),
 	$btn_border_attribute,
+	$overall_border_attribute
 );

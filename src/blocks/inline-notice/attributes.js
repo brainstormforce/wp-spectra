@@ -385,6 +385,9 @@ const attributes = {
 	layout: {
 		type: 'string',
 		default: 'modern',
+		UAGCopyPaste: {
+			styleType: 'notice-layout'
+		},
 	},
 	highlightWidth: {
 		type: 'number',

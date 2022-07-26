@@ -366,10 +366,12 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 		 * @since 0.0.1
 		 */
 		public function get_post_attributes() {
-			$btn_border_attribute = UAGB_Block_Helper::uag_generate_php_border_attribute( 'btn' );
+			$btn_border_attribute     = UAGB_Block_Helper::uag_generate_php_border_attribute( 'btn' );
+			$overall_border_attribute = UAGB_Block_Helper::uag_generate_php_border_attribute( 'overall' );
 
 			return array_merge(
 				$btn_border_attribute,
+				$overall_border_attribute,
 				array(
 					'inheritFromTheme'              => array(
 						'type'    => 'boolean',
@@ -459,7 +461,7 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 					),
 					'bgOverlayColor'                => array(
 						'type'    => 'string',
-						'default' => '#ffffff',
+						'default' => '#000000',
 					),
 					'overlayOpacity'                => array(
 						'type'    => 'number',
@@ -593,7 +595,7 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 					// Meta attributes.
 					'metaColor'                     => array(
 						'type'    => 'string',
-						'default' => '#777777',
+						'default' => '',
 					),
 					'highlightedTextColor'          => array(
 						'type'    => 'string',
@@ -1000,6 +1002,57 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 					'excerptLetterSpacingTablet'    => array(
 						'type' => 'number',
 					),
+					'boxShadowColor'                => array(
+						'type'    => 'string',
+						'default' => '#00000070',
+					),
+					'boxShadowHOffset'              => array(
+						'type'    => 'number',
+						'default' => 0,
+					),
+					'boxShadowVOffset'              => array(
+						'type'    => 'number',
+						'default' => 0,
+					),
+					'boxShadowBlur'                 => array(
+						'type'    => 'number',
+						'default' => '',
+					),
+					'boxShadowSpread'               => array(
+						'type'    => 'number',
+						'default' => '',
+					),
+					'boxShadowPosition'             => array(
+						'type'    => 'string',
+						'default' => 'outset',
+					),
+					'boxShadowColorHover'           => array(
+						'type'    => 'string',
+						'default' => '',
+					),
+					'boxShadowHOffsetHover'         => array(
+						'type'    => 'number',
+						'default' => 0,
+					),
+					'boxShadowVOffsetHover'         => array(
+						'type'    => 'number',
+						'default' => 0,
+					),
+					'boxShadowBlurHover'            => array(
+						'type'    => 'number',
+						'default' => '',
+					),
+					'boxShadowSpreadHover'          => array(
+						'type'    => 'number',
+						'default' => '',
+					),
+					'boxShadowPositionHover'        => array(
+						'type'    => 'string',
+						'default' => 'outset',
+					),
+					'overallBorderHColor'           => array(
+						'type' => 'string',
+					),
 					'borderWidth'                   => array(
 						'type'    => 'number',
 						'default' => '',
@@ -1166,11 +1219,14 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 				$mob_class = ( isset( $attributes['UAGHideMob'] ) ) ? 'uag-hide-mob' : '';
 			}
 
+			$is_image_enabled = ( true === $attributes['displayPostImage'] ) ? 'uagb-post__image-enabled' : 'uagb-post__image-disabled';
+
 			$outerwrap = array(
 				'wp-block-uagb-post-' . $layout,
 				'uagb-post-grid',
 				( isset( $attributes['className'] ) ) ? $attributes['className'] : '',
 				'uagb-post__image-position-' . $attributes['imgPosition'],
+				$is_image_enabled,
 				$block_id,
 				$desktop_class,
 				$tab_class,
@@ -1277,9 +1333,8 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 			$base                = UAGB_Helper::build_base_url( $permalink_structure, $base );
 			$format              = UAGB_Helper::paged_format( $permalink_structure, $base );
 			$paged               = UAGB_Helper::get_paged( $query );
-			// Why defaulting the min when the range can be set to a higher max? Original commented below.
-			// $page_limit          = min( $attributes['pageLimit'], $query->max_num_pages );.
-			$page_limit = UAGB_Block_Helper::get_fallback_number( $attributes['pageLimit'], 'pageLimit', $attributes['blockName'] );
+			$p_limit = UAGB_Block_Helper::get_fallback_number( $attributes['pageLimit'], 'pageLimit', $attributes['blockName'] );
+			$page_limit          = min( $p_limit, $query->max_num_pages );
 			$page_limit = isset( $page_limit ) ? $page_limit : UAGB_Block_Helper::get_fallback_number( $attributes['postsToShow'], 'postsToShow', $attributes['blockName'] );
 
 			$links = paginate_links(
@@ -1638,7 +1693,7 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 				return;
 			}
 
-			if ( ! get_the_post_thumbnail_url() ) {
+			if ( ! get_the_post_thumbnail_url() && ( 'background' !== $attributes['imgPosition'] ) ) {
 				return;
 			}
 
@@ -1647,8 +1702,10 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 
 			?>
 			<div class='uagb-post__image'>
-				<a href="<?php echo esc_url( apply_filters( "uagb_single_post_link_{$attributes['post_type']}", get_the_permalink(), get_the_ID(), $attributes ) ); ?>" target="<?php echo esc_html( $target ); ?>" rel="bookmark noopener noreferrer"><?php echo wp_get_attachment_image( get_post_thumbnail_id(), $attributes['imgSize'] ); ?>
-				</a>
+				<?php if ( get_the_post_thumbnail_url() ) { ?>
+					<a href="<?php echo esc_url( apply_filters( "uagb_single_post_link_{$attributes['post_type']}", get_the_permalink(), get_the_ID(), $attributes ) ); ?>" target="<?php echo esc_html( $target ); ?>" rel="bookmark noopener noreferrer"><?php echo wp_get_attachment_image( get_post_thumbnail_id(), $attributes['imgSize'] ); ?>
+					</a>
+				<?php } ?>
 			</div>
 			<?php
 			do_action( "uagb_single_post_after_featured_image_{$attributes['post_type']}", get_the_ID(), $attributes );

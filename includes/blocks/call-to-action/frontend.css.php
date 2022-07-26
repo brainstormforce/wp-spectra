@@ -416,6 +416,12 @@ if ( 'before' === $attr['ctaIconPosition'] ) {
 	);
 }
 
+if ( 'none' === $attr['ctaType'] || 'all' === $attr['ctaType'] ) {
+	$selectors[' .uagb-cta__wrap'] = array(
+		'width' => '100%',
+	);
+}
+
 if ( 'right' === $attr['ctaPosition'] && ( 'text' === $attr['ctaType'] || 'button' === $attr['ctaType'] ) ) {
 	$selectors['.wp-block-uagb-call-to-action '] = array(
 		'display'         => 'flex',
@@ -435,27 +441,28 @@ if ( 'right' === $attr['ctaPosition'] && ( 'text' === $attr['ctaType'] || 'butto
 	$t_selectors[' .uagb-cta__content-right .uagb-cta__left-right-wrap .uagb-cta__link-wrapper'] = array(
 		'width' => UAGB_Helper::get_css_value( ( 100 - $content_width_tablet_fallback ), $attr['contentWidthType'] ),
 	);
-	$t_selectors[' .uagb-cta__wrap'] = array(
-		'width'      => UAGB_Helper::get_css_value( $attr['contentWidthTablet'], $attr['contentWidthType'] ),
-		'text-align' => $attr['textAlignTablet'],
-	);
+
 	$m_selectors[' .uagb-cta__content-right .uagb-cta__left-right-wrap .uagb-cta__content']      = array(
 		'width' => UAGB_Helper::get_css_value( $attr['contentWidthMobile'], $attr['contentWidthType'] ),
 	);
 	$m_selectors[' .uagb-cta__content-right .uagb-cta__left-right-wrap .uagb-cta__link-wrapper'] = array(
 		'width' => UAGB_Helper::get_css_value( ( 100 - $content_width_mobile_fallback ), $attr['contentWidthType'] ),
 	);
-	$m_selectors[' .uagb-cta__wrap'] = array(
-		'width'      => UAGB_Helper::get_css_value( $attr['contentWidthMobile'], $attr['contentWidthType'] ),
-		'text-align' => $attr['textAlignMobile'],
-	);
+
 	$selectors['.wp-block-uagb-call-to-action a.uagb-cta__button-link-wrapper '] = array(
 		'align-self'  => 'top' === $attr['buttonAlign'] ? 'flex-start' : 'center',
 		'height'      => 'fit-content',
 		'margin-left' => 'auto',
 	);
 }
-
+$t_selectors[' .uagb-cta__wrap'] = array(
+	'width'      => UAGB_Helper::get_css_value( $attr['contentWidthTablet'], $attr['contentWidthType'] ),
+	'text-align' => $attr['textAlignTablet'],
+);
+$m_selectors[' .uagb-cta__wrap'] = array(
+	'width'      => UAGB_Helper::get_css_value( $attr['contentWidthMobile'], $attr['contentWidthType'] ),
+	'text-align' => $attr['textAlignMobile'],
+);
 if ( 'desktop' === $attr['stack'] ) {
 
 	$selectors['.wp-block-uagb-call-to-action  ']   = array(
