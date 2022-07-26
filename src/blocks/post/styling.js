@@ -16,7 +16,6 @@ function styling( props ) {
 
 		btnBorderHColor,
 		align,
-
 		titleColor,
 		titleFontSize,
 		titleFontSizeType,
@@ -218,6 +217,7 @@ function styling( props ) {
 		boxShadowBlurHover,
 		boxShadowSpreadHover,
 		boxShadowPositionHover,
+		overallBorderHColor
 	} = props.attributes;
 
 	const overlayOpacityFallback = getFallbackNumber( overlayOpacity, 'overlayOpacity', blockName );
@@ -839,7 +839,9 @@ function styling( props ) {
 													boxShadowColorHoverValue + ' ' +	boxShadowPositionCSSHover
 		}
 	}
-
+	selectors['.wp-block-uagb-post-grid article:hover'] = {
+		'border-color' : overallBorderHColor
+	}
 	tabletSelectors = {
 		' .uagb-post__inner-wrap .uagb-post__title': {
 			'font-size': generateCSSUnit(
