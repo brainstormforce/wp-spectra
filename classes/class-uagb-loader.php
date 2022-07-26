@@ -172,27 +172,6 @@ if ( ! class_exists( 'UAGB_Loader' ) ) {
 
 			add_filter( 'rest_pre_dispatch', array( $this, 'rest_pre_dispatch' ), 10, 3 );
 
-			// Active widgets data to analytics.
-			add_filter( 'bsf_core_stats', array( $this, 'spectra_specific_stats' ) );
-
-		}
-
-		/**
-		 * Pass Spectra specific stats to BSF analytics.
-		 *
-		 * @since x.x.x
-		 * @param array $default_stats Default stats array.
-		 * @return array $default_stats Default stats with Spectra specific stats array.
-		 */
-		public function spectra_specific_stats( $default_stats ) {
-
-			// $settings_data = Admin_Helper::get_options();
-
-			$default_stats['spectra_settings'] = array(
-				'spectra_version'  => UAGB_VER,
-			);
-
-			return $default_stats;
 		}
 
 		/**

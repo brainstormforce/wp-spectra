@@ -74,6 +74,33 @@ class Admin_Menu {
 		/* Render admin content view */
 		add_action( 'uag_render_admin_page_content', array( $this, 'render_content' ), 10, 2 );
 
+		// Active widgets data to analytics.
+		add_filter( 'bsf_core_stats', array( $this, 'spectra_specific_stats' ) );
+
+		// error_log( "Hieeeeeeeeeeee Sushma" );
+
+		// $settings_data = Admin_Helper::get_options();
+
+		// error_log( print_r( $settings_data, true ) );
+
+	}
+
+	/**
+	 * Pass Spectra specific stats to BSF analytics.
+	 *
+	 * @since x.x.x
+	 * @param array $default_stats Default stats array.
+	 * @return array $default_stats Default stats with Spectra specific stats array.
+	 */
+	public function spectra_specific_stats( $default_stats ) {
+
+		$settings_data = Admin_Helper::get_options();
+
+		$default_stats['spectra_settings'] = array(
+			'spectra_version'  => UAGB_VER,
+		);
+
+		return $default_stats;
 	}
 
 	/**
