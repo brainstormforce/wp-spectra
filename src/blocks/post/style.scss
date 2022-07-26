@@ -3,7 +3,7 @@
  * Loads on front end and back end
  */
 
-.uagb-post-grid {
+ .uagb-post-grid {
 	margin: 0 auto;
 	position: relative;
 
@@ -153,6 +153,7 @@
 	}
 
 	.uagb-post__image {
+		margin-bottom: 15px;
 
 		img {
 			display: block;
@@ -162,7 +163,7 @@
 
 	.uagb-post__title {
 		margin-top: 0;
-		margin-bottom: 0px;
+		margin-bottom: 15px;
 		word-break: break-word;
 
 		a {
@@ -192,6 +193,7 @@
 		font-weight: 500;
 		line-height: 23px;
 		text-decoration: none;
+		margin-bottom: 15px;
 	}
 
 	.uagb-post-grid-byline a,
@@ -238,10 +240,12 @@
 	}
 
 	.uagb-post__excerpt {
+		margin-bottom: 25px;
 		word-break: break-word;
 	}
 
 	.uagb-post__inner-wrap p {
+		margin: 0 0 15px 0;
 
 		&:last-of-type {
 			margin-bottom: 0;
@@ -252,6 +256,10 @@
 		border: none;
 		display: inline-block;
 		background: none;
+	}
+
+	.uagb-post__excerpt div + p {
+		margin-top: 15px;
 	}
 
 	.uagb-post__excerpt p {

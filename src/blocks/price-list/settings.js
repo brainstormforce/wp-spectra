@@ -210,6 +210,25 @@ titleLetterSpacingType,
 		setAttributes( { imageAlignment: value } )
 	}
 
+	const setStack = ( value ) => {
+		
+		const getChildBlocks = select( 'core/block-editor' ).getBlocks( props.clientId );
+		
+		getChildBlocks.forEach( ( pricelistChild ) => {
+			pricelistChild.attributes.stack = value
+		} );
+		setAttributes( { stack: value } )
+	}
+
+	const setHeadingAlign = ( value ) => {
+		
+		const getChildBlocks = select( 'core/block-editor' ).getBlocks( props.clientId );
+		
+		getChildBlocks.forEach( ( pricelistChild ) => {
+			pricelistChild.attributes.headingAlign = value
+		} );
+		setAttributes( { headingAlign: value } )
+	}
 	let loadTitleGoogleFonts;
 	let loadDescGoogleFonts;
 	let loadPriceGoogleFonts;
@@ -551,6 +570,7 @@ titleLetterSpacingType,
 						},
 					] }
 					showIcons={ true }
+					onChange = { setHeadingAlign }
 				/>
 				)}
 				{ ( imagePosition === 'left' || imagePosition === 'right' ) && (
@@ -583,6 +603,7 @@ titleLetterSpacingType,
 							help={ __(
 								'Note: Choose on what breakpoint the Images will stack.'
 							) }
+							onChange = { setStack }
 							showIcons={ false }
 						/>
 						<MultiButtonsControl
