@@ -64,6 +64,9 @@ if ( ! class_exists( 'UAGB_Loader' ) ) {
 			add_action( 'plugins_loaded', array( $this, 'load_plugin' ) );
 
 			add_action( 'init', array( $this, 'init_actions' ) );
+
+			// Need to add library before the plugin loaded. https://actionscheduler.org/usage/.
+			require_once UAGB_DIR . '/lib/action-scheduler/action-scheduler.php';
 		}
 
 		/**

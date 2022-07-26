@@ -64,7 +64,71 @@ class UAGB_Init_Blocks {
 		if ( ! is_admin() ) {
 			add_action( 'render_block', array( $this, 'render_block' ), 5, 2 );
 		}
+
+		add_action( 'spectra_get_blocks_count_action', array( $this, 'blocks_count_logic' ) );
+
 	}
+
+	/**
+	 * Calculate Spectra blocks action.
+	 *
+	 * @since x.x.x
+	 * @return void
+	 */
+	public function blocks_count_logic() {
+
+		$count      = 0;
+		$batch_size = 100;
+
+		$list_blocks    = UAGB_Helper::$block_list;
+		$spectra_block_count = 0;
+		$blocks_count 	= array();
+
+		// Update block list count.
+		foreach ( $list_blocks as $slug => $value ) {
+			$_slug                    = str_replace( 'uagb/', '', $slug );
+			$blocks_count[ '<!-- wp:' . $slug ] = array(
+				'name' => $_slug,
+				'count' => 0
+			);
+		}
+
+		$posts = get_posts(
+			array(
+				'post_type'   => 'any',
+				'post_status' => 'publish',
+				'numberposts' => $batch_size,
+			)
+		);
+
+		if ( ! empty( $posts ) ) {
+			foreach ( $posts as $key => $post ) {
+				foreach ( $blocks_count as $block_key => $block ) {
+					if ( false !== strpos( $post->post_content, $block_key ) ) {
+						$usage_count = $blocks_count[ $block_key ][ 'count' ];
+						$blocks_count[ $block_key ][ 'count' ] = $usage_count + 1;
+						$spectra_block_count++;
+					}
+				}
+				$count++;
+			}
+		}
+
+		if ( $spectra_block_count > 0 ) {
+			update_option( 'spectra_block_count', $blocks_count );
+			$spectra_blocks_entry = $blocks_count;
+		}
+
+		// If batch size is equal to count means there might be some post remaing to process so schedule the action again.
+		if ( $batch_size === $count ) {
+			if ( function_exists( 'as_enqueue_async_action' ) ) {
+				// as_enqueue_async_action( 'spectra_get_blocks_count_action' );
+			}
+		} else {
+			update_option( 'spectra_blocks_count_status', 'done' );
+		}
+	}
+	
 	/**
 	 * Render block.
 	 *

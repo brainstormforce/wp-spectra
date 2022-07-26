@@ -56,6 +56,7 @@ if ( ! class_exists( 'UAGB_Admin' ) ) {
 			add_action( 'admin_post_uag_rollback', array( $this, 'post_uagb_rollback' ) );
 
 		}
+		
 		/**
 		 * UAG version rollback.
 		 *

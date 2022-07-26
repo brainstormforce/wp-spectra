@@ -74,14 +74,20 @@ class Admin_Menu {
 		/* Render admin content view */
 		add_action( 'uag_render_admin_page_content', array( $this, 'render_content' ), 10, 2 );
 
-		// Active widgets data to analytics.
-		add_filter( 'bsf_core_stats', array( $this, 'spectra_specific_stats' ) );
+		if ( function_exists( 'as_enqueue_async_action' ) ) {
+			as_enqueue_async_action( 'spectra_get_blocks_count_action' );
+			update_option( 'spectra_blocks_count_status', 'processing' );
+		}
+
+		if( 'done' === get_option( 'spectra_blocks_count_status' ) ) {
+			// Active widgets data to analytics.
+			add_filter( 'bsf_core_stats', array( $this, 'spectra_specific_stats' ) );
+		}
+		
 
 		// error_log( "Hieeeeeeeeeeee Sushma" );
-
 		// $settings_data = \UAGB_Admin_Helper::get_blocks_count();
-
-		// // error_log( $settings_data );
+		// error_log( $settings_data );
 		// error_log( print_r( $settings_data, true ) );
 
 	}
@@ -96,7 +102,8 @@ class Admin_Menu {
 	public function spectra_specific_stats( $default_stats ) {
 
 		$settings_data = Admin_Helper::get_options();
-		$blocks_count = \UAGB_Admin_Helper::get_blocks_count();
+		$blocks_count = get_option( 'spectra_block_count' );
+		// $blocks_count = \UAGB_Admin_Helper::get_blocks_count();
 
 		$default_stats['spectra_settings'] = array(
 			'spectra_version'  	=> UAGB_VER,
