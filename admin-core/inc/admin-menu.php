@@ -79,8 +79,9 @@ class Admin_Menu {
 
 		// error_log( "Hieeeeeeeeeeee Sushma" );
 
-		// $settings_data = Admin_Helper::get_options();
+		// $settings_data = \UAGB_Admin_Helper::show_rating_notice();
 
+		// error_log( $settings_data );
 		// error_log( print_r( $settings_data, true ) );
 
 	}
