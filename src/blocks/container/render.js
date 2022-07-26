@@ -27,7 +27,10 @@ const Render = ( props ) => {
 		backgroundType,
 		backgroundVideo,
 		topInvert,
-		bottomInvert
+		bottomInvert,
+		isBlockRootParent,
+		contentWidth,
+		innerContentWidth
 	} = attributes;
 
 	const direction = attributes[ 'direction' + deviceType ];
@@ -110,14 +113,24 @@ const Render = ( props ) => {
 					) }
 				</div>
 			) }
-			<div className='uagb-container-inner-blocks-wrap'>
-				<InnerBlocks
-					__experimentalMoverDirection={ moverDirection }
-					renderAppender = { hasChildBlocks
-					? undefined
-					: InnerBlocks.ButtonBlockAppender }
-				/>
-			</div>
+			{ isBlockRootParent && 'alignfull' === contentWidth && 'alignwide' === innerContentWidth
+				?  (
+						<div className='uagb-container-inner-blocks-wrap'>
+							<InnerBlocks
+								__experimentalMoverDirection={ moverDirection }
+								renderAppender = { hasChildBlocks
+								? undefined
+								: InnerBlocks.ButtonBlockAppender }
+							/>
+						</div>
+					)
+					: <InnerBlocks
+							__experimentalMoverDirection={ moverDirection }
+							renderAppender = { hasChildBlocks
+							? undefined
+							: InnerBlocks.ButtonBlockAppender }
+						/>
+			}
 			{ bottomDividerHtml }
 		</CustomTag>
 	);
