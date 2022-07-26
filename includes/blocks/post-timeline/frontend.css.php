@@ -15,8 +15,8 @@ $author_space_fallback       = UAGB_Block_Helper::get_fallback_number( $attr['au
 $cta_bottom_spacing_fallback = UAGB_Block_Helper::get_fallback_number( $attr['ctaBottomSpacing'], 'ctaBottomSpacing', $attr['blockName'] );
 
 $horizontal_space        = $attr['horizontalSpace'];
-$horizontal_space_tablet = '' !== $atts['horizontalSpaceTablet'] ? $atts['horizontalSpaceTablet'] : $horizontal_space;
-$horizontal_space_mobile = '' !== $atts['horizontalSpaceMobile'] ? $atts['horizontalSpaceMobile'] : $horizontal_space_tablet;
+$horizontal_space_tablet = '' !== $attr['horizontalSpaceTablet'] ? $attr['horizontalSpaceTablet'] : $horizontal_space;
+$horizontal_space_mobile = '' !== $attr['horizontalSpaceMobile'] ? $attr['horizontalSpaceMobile'] : $horizontal_space_tablet;
 
 $t_selectors = array();
 
@@ -70,6 +70,9 @@ $selectors = array(
 	'.uagb-timeline__center-block .uagb-timeline__marker' => array(
 		'margin-left'  => UAGB_Helper::get_css_value( $horizontal_space, $attr['horizontalSpaceUnit'] ),
 		'margin-right' => UAGB_Helper::get_css_value( $horizontal_space, $attr['horizontalSpaceUnit'] ),
+	),
+	' .uagb-timeline__field:not(:last-child)'             => array(
+		'margin-bottom' => UAGB_Helper::get_css_value( $attr['verticalSpace'], $attr['verticalSpaceUnit'] ),
 	),
 );
 
@@ -129,6 +132,9 @@ $t_selectors = array(
 	' .uagb-timeline-desc-content'                         => array(
 		'text-align' => $attr['alignTablet'],
 	),
+	' .uagb-timeline__field:not(:last-child)'              => array(
+		'margin-bottom' => UAGB_Helper::get_css_value( $attr['verticalSpaceTablet'], $attr['verticalSpaceUnitTablet'] ),
+	),
 );
 
 $tablet_selectors = UAGB_Block_Helper::get_timeline_tablet_selectors( $attr );
@@ -187,6 +193,9 @@ $m_selectors = array(
 	),
 	' .uagb-timeline-desc-content'                         => array(
 		'text-align' => $attr['alignMobile'],
+	),
+	' .uagb-timeline__field:not(:last-child)'              => array(
+		'margin-bottom' => UAGB_Helper::get_css_value( $attr['verticalSpaceMobile'], $attr['verticalSpaceUnitMobile'] ),
 	),
 );
 
