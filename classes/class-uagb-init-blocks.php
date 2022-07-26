@@ -78,7 +78,7 @@ class UAGB_Init_Blocks {
 	public function blocks_count_logic() {
 
 		$count      = 0;
-		$batch_size = 100;
+		$batch_size = 10;
 
 		$list_blocks    = UAGB_Helper::$block_list;
 		$spectra_block_count = 0;
@@ -119,10 +119,10 @@ class UAGB_Init_Blocks {
 			$spectra_blocks_entry = $blocks_count;
 		}
 
-		// If batch size is equal to count means there might be some post remaing to process so schedule the action again.
+		// If batch size is equal to count means there might be some post remaining to process so schedule the action again.
 		if ( $batch_size === $count ) {
 			if ( function_exists( 'as_enqueue_async_action' ) ) {
-				// as_enqueue_async_action( 'spectra_get_blocks_count_action' );
+				as_enqueue_async_action( 'spectra_get_blocks_count_action' );
 			}
 		} else {
 			update_option( 'spectra_blocks_count_status', 'done' );

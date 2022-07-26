@@ -82,13 +82,12 @@ class Admin_Menu {
 		if( 'done' === get_option( 'spectra_blocks_count_status' ) ) {
 			// Active widgets data to analytics.
 			add_filter( 'bsf_core_stats', array( $this, 'spectra_specific_stats' ) );
-		}
-		
+		}		
 
 		// error_log( "Hieeeeeeeeeeee Sushma" );
 		// $settings_data = \UAGB_Admin_Helper::get_blocks_count();
-		// error_log( $settings_data );
-		// error_log( print_r( $settings_data, true ) );
+		// error_log(  );
+		// error_log( print_r( get_option( 'spectra_block_count' ), true ) );
 
 	}
 
