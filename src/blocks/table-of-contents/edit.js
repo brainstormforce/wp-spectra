@@ -237,7 +237,7 @@ const UAGBTableOfContentsEdit = ( props ) => {
 	}, [ deviceType ] );
 
 	const { scrollToTop } = props.attributes;
-
+	/* eslint-disable no-undef */
 	scrollElement = document.querySelector( '.uagb-toc__scroll-top' );
 	if ( null !== scrollElement ) {
 
@@ -247,6 +247,7 @@ const UAGBTableOfContentsEdit = ( props ) => {
 			scrollElement.classList.remove( 'uagb-toc__show-scroll' );
 		}
 	}
+	/* eslint-enable no-undef */
 
 	return (
 		<Suspense fallback={ lazyLoader() }>
@@ -298,7 +299,7 @@ export default compose(
 		const headers = [];
 
 		if ( headerArray !== 'undefined' ) {
-			headerArray.forEach(
+			headerArray.forEach( // eslint-disable-next-line
 				function ( index, value ) {
 					const header = index;
 					let excludeHeading;
