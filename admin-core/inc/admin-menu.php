@@ -79,9 +79,9 @@ class Admin_Menu {
 
 		// error_log( "Hieeeeeeeeeeee Sushma" );
 
-		// $settings_data = \UAGB_Admin_Helper::show_rating_notice();
+		// $settings_data = \UAGB_Admin_Helper::get_blocks_count();
 
-		// error_log( $settings_data );
+		// // error_log( $settings_data );
 		// error_log( print_r( $settings_data, true ) );
 
 	}
@@ -96,9 +96,12 @@ class Admin_Menu {
 	public function spectra_specific_stats( $default_stats ) {
 
 		$settings_data = Admin_Helper::get_options();
+		$blocks_count = \UAGB_Admin_Helper::get_blocks_count();
 
 		$default_stats['spectra_settings'] = array(
-			'spectra_version'  => UAGB_VER,
+			'spectra_version'  	=> UAGB_VER,
+			'settings_data'		=> $settings_data,
+			'blocks_count'		=> $blocks_count,
 		);
 
 		return $default_stats;

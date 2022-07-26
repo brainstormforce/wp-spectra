@@ -191,9 +191,22 @@ if ( ! class_exists( 'UAGB_Admin_Helper' ) ) {
 		 */
 		public static function get_blocks_count() {
 
-			$posts_created_with_uag = get_option( 'posts-created-with-uagb' );
+			$spectra_blocks_entry = get_option( 'spectra-block-count' );
 
-			if ( false === $posts_created_with_uag ) {
+			if ( false === $spectra_blocks_entry ) {
+				$list_blocks    = UAGB_Helper::$block_list;
+				$spectra_block_count = 0;
+				$blocks_count 	= array();
+
+				// Update block list count.
+				foreach ( $list_blocks as $slug => $value ) {
+					$_slug                    = str_replace( 'uagb/', '', $slug );
+					$blocks_count[ '<!-- wp:' . $slug ] = array(
+						'name' => $_slug,
+						'count' => 0
+					);
+				}
+				
 				$query_args = array(
 					'posts_per_page' => 100,
 					'post_status'    => 'publish',
@@ -202,28 +215,25 @@ if ( ! class_exists( 'UAGB_Admin_Helper' ) ) {
 
 				$query = new WP_Query( $query_args );
 
-				$uag_post_count = 0;
-
 				if ( isset( $query->post_count ) && $query->post_count > 0 ) {
 					foreach ( $query->posts as $key => $post ) {
-						if ( $uag_post_count >= 5 ) {
-							break;
-						}
-
-						if ( false !== strpos( $post->post_content, '<!-- wp:uagb/' ) ) {
-							$uag_post_count++;
+						foreach ( $blocks_count as $block_key => $block ) {
+							if ( false !== strpos( $post->post_content, $block_key ) ) {
+								$usage_count = $blocks_count[ $block_key ][ 'count' ];
+								$blocks_count[ $block_key ][ 'count' ] = $usage_count + 1;
+								$spectra_block_count++;
+							}
 						}
 					}
 				}
 
-				if ( $uag_post_count >= 5 ) {
-					update_option( 'posts-created-with-uagb', $uag_post_count );
-
-					$posts_created_with_uag = $uag_post_count;
+				if ( $spectra_block_count > 0 ) {
+					update_option( 'spectra-block-count', $blocks_count );
+					$spectra_blocks_entry = $blocks_count;
 				}
 			}
 
-			return ( $posts_created_with_uag >= 5 );
+			return $spectra_blocks_entry;
 		}
 
 		/**
