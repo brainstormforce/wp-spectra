@@ -14,12 +14,6 @@
 	display: unset;
 }
 
-.rtl .uagb-timeline__left-block .uagb-timeline__day-right .uagb-timeline__arrow::after {
-	border-left: 13px solid #eee;
-	border-right: none;
-	right: 470px;
-}
-
 .rtl .uagb-timeline__left-block .uagb-timeline__day-left .uagb-timeline__arrow::after {
 	border-left: 13px solid #eee;
 	border-right: none;
@@ -61,10 +55,6 @@
 .uagb-timeline__center-block .uagb-timeline__day-left .uagb-timeline__arrow::after {
 	border-left: 13px solid #eee;
 	border-right: none;
-}
-
-.rtl .uagb-timeline__center-block .uagb-timeline__day-left .uagb-timeline__arrow::after {
-	right: -470px;
 }
 
 .rtl .uagb-post-grid .uagb-post__text {
@@ -182,4 +172,13 @@
 
 .rtl .uag-star-rating__title {
 	margin-left: 10px;
+}
+
+.rtl .uagb-timeline__center-block .uagb-timeline__day-right .uagb-timeline__arrow::after {
+    border-right: 13px solid #eee;
+    border-left: none;
+    right: 581px;
+}
+.rtl .uagb-timeline__center-block .uagb-timeline__day-left .uagb-timeline__arrow::after {
+    right: -585px;
 }
