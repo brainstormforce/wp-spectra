@@ -392,8 +392,8 @@
 }
 
 [dir="rtl"] .uagb-post__arrow-outside.uagb-post-grid .slick-prev {
-	left: auto;
-	right: -45px;
+	left: -45px;
+	right: auto;
 }
 
 .uagb-post__arrow-outside.uagb-post-grid .slick-next {
@@ -401,8 +401,8 @@
 }
 
 [dir="rtl"] .uagb-post__arrow-outside.uagb-post-grid .slick-next {
-	left: -45px;
-	right: auto;
+	left: auto;
+	right: -45px;
 }
 
 .uagb-post__arrow-inside.uagb-post-grid .slick-prev {
