@@ -77,8 +77,6 @@ class UAGB_Init_Blocks {
 	 */
 	public function send_spectra_specific_stats() {
 
-		error_log( "This is delete function" );
-
 		delete_option( 'spectra-blocks-pages-counted-new' );
 		delete_option( 'spectra_blocks_count_status_new' );
 		delete_option( 'get_spectra_block_count_new' );
