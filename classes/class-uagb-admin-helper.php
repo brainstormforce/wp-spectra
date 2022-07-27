@@ -184,59 +184,6 @@ if ( ! class_exists( 'UAGB_Admin_Helper' ) ) {
 		}
 
 		/**
-		 * Get flag if more than 5 pages are build using UAG.
-		 *
-		 * @since x.x.x
-		 * @return boolean true/false Flag if more than 5 pages are build using UAG.
-		 */
-		public static function get_blocks_count() {
-
-			$spectra_blocks_entry = get_option( 'spectra-block-count' );
-
-			if ( false === $spectra_blocks_entry ) {
-				$list_blocks    = UAGB_Helper::$block_list;
-				$spectra_block_count = 0;
-				$blocks_count 	= array();
-
-				// Update block list count.
-				foreach ( $list_blocks as $slug => $value ) {
-					$_slug                    = str_replace( 'uagb/', '', $slug );
-					$blocks_count[ '<!-- wp:' . $slug ] = array(
-						'name' => $_slug,
-						'count' => 0
-					);
-				}
-				
-				$query_args = array(
-					'posts_per_page' => 100,
-					'post_status'    => 'publish',
-					'post_type'      => 'any',
-				);
-
-				$query = new WP_Query( $query_args );
-
-				if ( isset( $query->post_count ) && $query->post_count > 0 ) {
-					foreach ( $query->posts as $key => $post ) {
-						foreach ( $blocks_count as $block_key => $block ) {
-							if ( false !== strpos( $post->post_content, $block_key ) ) {
-								$usage_count = $blocks_count[ $block_key ][ 'count' ];
-								$blocks_count[ $block_key ][ 'count' ] = $usage_count + 1;
-								$spectra_block_count++;
-							}
-						}
-					}
-				}
-
-				if ( $spectra_block_count > 0 ) {
-					update_option( 'spectra-block-count', $blocks_count );
-					$spectra_blocks_entry = $blocks_count;
-				}
-			}
-
-			return $spectra_blocks_entry;
-		}
-
-		/**
 		 *  Get Specific Stylesheet
 		 *
 		 * @since 1.13.4
