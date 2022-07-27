@@ -191,14 +191,13 @@ const Settings = ( props ) => {
 		setAttributes( { imagePosition: value } )
 	}
 	
-	const setColumns = () => {
+	const setColumns = ( column, tcolumn, mcolumn ) => {
 		
 		const getChildBlocks = select( 'core/block-editor' ).getBlocks( props.clientId );
-		
 		getChildBlocks.forEach( ( pricelistChild ) => {
-			pricelistChild.attributes.columns = columns;
-			pricelistChild.attributes.tcolumns = tcolumns;
-			pricelistChild.attributes.mcolumns = mcolumns;
+			pricelistChild.attributes.columns = column;
+			pricelistChild.attributes.tcolumns = tcolumn;
+			pricelistChild.attributes.mcolumns = mcolumn;
 		} );	
 	}
 
@@ -1245,7 +1244,7 @@ const Settings = ( props ) => {
 								max={ Math.min( maxColumns, menu_item_count ) }
 								displayUnit={ false }
 								setAttributes={ setAttributes }	
-								onChange = { setColumns }
+								onChange = { setColumns(columns, tcolumns, mcolumns) }
 							/>
 							<MultiButtonsControl
 								setAttributes={ setAttributes }
