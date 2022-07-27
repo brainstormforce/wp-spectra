@@ -42,6 +42,7 @@ const InspectorTabs = ( props ) => {
 
 		// Inspector Tabs Priority Rendering Code. (Conflicts with 3rd Party plugin panels in Inspector Panel)
 		const tabsContainer = document.querySelector( '.uagb-inspector-tabs-container' );
+		let dynamicContentContainer = document.querySelector( '.components-panel__body.uagb-dynamic-content-wrap' );
 		let tabsGeneralContainer = document.querySelector( '.uagb-tab-content-general' );
 		let tabsStyleContainer = document.querySelector( '.uagb-tab-content-style' );
 		let tabsAdvanceContainer = document.querySelector( '.uagb-tab-content-advance' );
@@ -50,10 +51,11 @@ const InspectorTabs = ( props ) => {
 			const tabsParent = tabsContainer.parentElement;
 
 			if ( tabsParent ) {
+				dynamicContentContainer = dynamicContentContainer ? dynamicContentContainer : '';
 				tabsGeneralContainer = tabsGeneralContainer ? tabsGeneralContainer : '';
 				tabsStyleContainer = tabsStyleContainer ? tabsStyleContainer : '';
 				tabsAdvanceContainer = tabsAdvanceContainer ? tabsAdvanceContainer : '';
-				tabsParent.prepend( tabsContainer,tabsGeneralContainer,tabsStyleContainer,tabsAdvanceContainer );
+				tabsParent.prepend( dynamicContentContainer, tabsContainer,tabsGeneralContainer,tabsStyleContainer,tabsAdvanceContainer );
 			}
 		}
 	};
