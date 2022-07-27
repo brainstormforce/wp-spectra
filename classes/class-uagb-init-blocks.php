@@ -65,7 +65,7 @@ class UAGB_Init_Blocks {
 			add_action( 'render_block', array( $this, 'render_block' ), 5, 2 );
 		}
 
-		add_action( 'spectra_get_blocks_count_action', array( $this, 'blocks_count_logic' ) );
+		add_action( 'spectra_total_blocks_count_action_new', array( $this, 'blocks_count_logic' ) );
 
 	}
 
@@ -76,33 +76,45 @@ class UAGB_Init_Blocks {
 	 * @return void
 	 */
 	public function blocks_count_logic() {
+		error_log( "Hieeeeeeeee" );
 
-		$count      = 0;
+		// Number of posts to parse at a time.
 		$batch_size = 10;
 
 		$list_blocks    = UAGB_Helper::$block_list;
 		$spectra_block_count = 0;
 		$blocks_count 	= array();
 
-		// Update block list count.
-		foreach ( $list_blocks as $slug => $value ) {
-			$_slug                    = str_replace( 'uagb/', '', $slug );
-			$blocks_count[ '<!-- wp:' . $slug ] = array(
-				'name' => $_slug,
-				'count' => 0
-			);
+		$page = get_option( 'spectra-blocks-pages-counted-new', 1 );
+
+		$saved_block_count = get_option( 'get_spectra_block_count_new', 0 );
+
+		if( ! $saved_block_count ) {
+			// Update block list count.
+			foreach ( $list_blocks as $slug => $value ) {
+				$_slug                    = str_replace( 'uagb/', '', $slug );
+				$blocks_count[ '<!-- wp:' . $slug ] = array(
+					'name' => $_slug,
+					'count' => 0
+				);
+			}
+		} elseif( is_array( $saved_block_count ) && sizeof( $saved_block_count ) !== 0 ) {
+			$blocks_count = $saved_block_count;
 		}
 
-		$posts = get_posts(
-			array(
-				'post_type'   => 'any',
-				'post_status' => 'publish',
-				'numberposts' => $batch_size,
-			)
+		$query_args = array(
+			'post_type'   => 'any',
+			'post_status' => 'publish',
+			'posts_per_page' => $batch_size,
+			'paged'          => $page,
 		);
 
-		if ( ! empty( $posts ) ) {
-			foreach ( $posts as $key => $post ) {
+
+		$query = new WP_Query( $query_args );
+
+		if ( $query->have_posts() && $query->max_num_pages >= $page ) {
+		foreach ( $query->posts as $key => $post ) {
+				error_log( $post->ID );
 				foreach ( $blocks_count as $block_key => $block ) {
 					if ( false !== strpos( $post->post_content, $block_key ) ) {
 						$usage_count = $blocks_count[ $block_key ][ 'count' ];
@@ -110,23 +122,20 @@ class UAGB_Init_Blocks {
 						$spectra_block_count++;
 					}
 				}
-				$count++;
 			}
+			$page++;
+			update_option( 'spectra-blocks-pages-counted-new', $page );
+			if ( function_exists( 'as_enqueue_async_action' ) ) {
+				as_enqueue_async_action( 'spectra_total_blocks_count_action_new' );
+			}
+		} else {
+			update_option( 'spectra_blocks_count_status_new', 'done' );
 		}
 
 		if ( $spectra_block_count > 0 ) {
-			update_option( 'spectra_block_count', $blocks_count );
-			$spectra_blocks_entry = $blocks_count;
+			update_option( 'get_spectra_block_count_new', $blocks_count );
 		}
 
-		// If batch size is equal to count means there might be some post remaining to process so schedule the action again.
-		if ( $batch_size === $count ) {
-			if ( function_exists( 'as_enqueue_async_action' ) ) {
-				as_enqueue_async_action( 'spectra_get_blocks_count_action' );
-			}
-		} else {
-			update_option( 'spectra_blocks_count_status', 'done' );
-		}
 	}
 	
 	/**

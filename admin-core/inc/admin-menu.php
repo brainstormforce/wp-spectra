@@ -74,17 +74,17 @@ class Admin_Menu {
 		/* Render admin content view */
 		add_action( 'uag_render_admin_page_content', array( $this, 'render_content' ), 10, 2 );
 
-		if ( function_exists( 'as_enqueue_async_action' ) ) {
-			as_enqueue_async_action( 'spectra_get_blocks_count_action' );
-			update_option( 'spectra_blocks_count_status', 'processing' );
+		if ( function_exists( 'as_enqueue_async_action' ) && 'done' !== get_option( 'spectra_blocks_count_status_new' ) ) {
+			as_enqueue_async_action( 'spectra_total_blocks_count_action_new' );
+			update_option( 'spectra_blocks_count_status_new', 'processing' );
 		}
 
-		if( 'done' === get_option( 'spectra_blocks_count_status' ) ) {
+		if( 'done' === get_option( 'spectra_blocks_count_status_new' ) ) {
+			error_log( print_r( get_option( 'get_spectra_block_count_new' ), true ) );
 			// Active widgets data to analytics.
 			add_filter( 'bsf_core_stats', array( $this, 'spectra_specific_stats' ) );
 		}		
 
-		// error_log( "Hieeeeeeeeeeee Sushma" );
 		// $settings_data = \UAGB_Admin_Helper::get_blocks_count();
 		// error_log(  );
 		// error_log( print_r( get_option( 'spectra_block_count' ), true ) );
