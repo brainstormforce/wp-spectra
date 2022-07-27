@@ -2182,6 +2182,7 @@ const UAGBPostCarousel = ( props ) => {
 			</UAGAdvancedPanelBody>
 		);
 	};
+
 	const inspectorControls = (
 		<InspectorControls>
 			<InspectorTabs>

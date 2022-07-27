@@ -328,6 +328,9 @@ function CtaStyle( props ) {
 	};
 
 	const tabletSelectors = {
+		' .uagb-cta__wrap': {
+			'text-align': textAlignTablet,
+		},
 		'.uagb-editor-preview-mode-tablet.uagb-cta__outer-wrap ': {
 			'text-align': textAlignTablet,
 			'padding-top': generateCSSUnit( overallBlockTopTabletPadding, overallBlockTabletPaddingUnit ),
@@ -437,6 +440,9 @@ function CtaStyle( props ) {
 	}
 
 	const mobileSelectors = {
+		' .uagb-cta__wrap': {
+			'text-align': textAlignMobile,
+		},
 		'.uagb-editor-preview-mode-mobile.uagb-cta__outer-wrap ': {
 			'text-align': textAlignMobile,
 			'padding-top': generateCSSUnit( overallBlockTopMobilePadding, overallBlockMobilePaddingUnit ),
@@ -590,6 +596,12 @@ function CtaStyle( props ) {
 		};
 		mobileSelectors[ '.uagb-cta__outer-wrap a.uagb-cta__button-link-wrapper > svg' ] = {
 			'margin-left': generateCSSUnit( ctaIconSpaceMobile, 'px' ),
+		};
+	}
+
+	if( ctaType === 'none' || ctaType === 'all' ){ // 100% width when ctaType is none or all.
+		selectors[ ' .uagb-cta__wrap' ] = {
+			'width': '100%',
 		};
 	}
 

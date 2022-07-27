@@ -353,14 +353,23 @@ const attributes = {
 	icon_layout: {
 		type: 'string',
 		default: 'vertical',
+		UAGCopyPaste: {
+			styleType: 'icon-layout'
+		},
 	},
 	iconLayoutTablet: {
 		type: 'string',
 		default: '',
+		UAGCopyPaste: {
+			styleType: 'icon-layout-tablet'
+		},
 	},
 	iconLayoutMobile: {
 		type: 'string',
 		default: '',
+		UAGCopyPaste: {
+			styleType: 'icon-layout-mobile'
+		},
 	},
 	isPreview: {
 		type: 'boolean',
