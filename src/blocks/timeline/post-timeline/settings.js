@@ -27,11 +27,13 @@ import {
 } from '@wordpress/block-editor';
 import ResponsiveSlider from '@Components/responsive-slider';
 import UAGAdvancedPanelBody from '@Components/advanced-panel-body';
+import { useDeviceType } from '@Controls/getPreviewType';
 
 const Settings = ( props ) => {
 	props = props.parentProps;
 
 	const { attributes, categoriesList, setAttributes, taxonomyList } = props;
+	const deviceType = useDeviceType();
 
 	const {
 		headingColor,
@@ -55,7 +57,8 @@ const Settings = ( props ) => {
 		headLineHeightTablet,
 		headLineHeightMobile,
 		headLoadGoogleFonts,
-		timelinAlignment,
+		timelinAlignmentTablet,
+		timelinAlignmentMobile,
 		arrowlinAlignment,
 		subHeadFontSizeType,
 		subHeadFontSize,
@@ -145,28 +148,11 @@ const Settings = ( props ) => {
 		borderRadiusMobile,
 		iconFocus,
 		iconBgFocus,
-		stack,
 		linkTarget,
 		postType,
 		taxonomyType,
 		dateFormat,
 		excludeCurrentPost,
-		topMargin,
-		rightMargin,
-		bottomMargin,
-		leftMargin,
-		topMarginTablet,
-		rightMarginTablet,
-		bottomMarginTablet,
-		leftMarginTablet,
-		topMarginMobile,
-		rightMarginMobile,
-		bottomMarginMobile,
-		leftMarginMobile,
-		marginUnit,
-		mobileMarginUnit,
-		tabletMarginUnit,
-		marginLink,
 		topPadding,
 		rightPadding,
 		bottomPadding,
@@ -220,7 +206,28 @@ const Settings = ( props ) => {
 		authorLetterSpacingTablet,
 		authorLetterSpacingMobile,
 		authorLetterSpacingType,
+		verticalSpace,
+		verticalSpaceTablet,
+		verticalSpaceMobile,
+		verticalSpaceUnit,
+		verticalSpaceUnitTablet,
+		verticalSpaceUnitMobile,
+		horizontalSpace,
+		horizontalSpaceTablet,
+		horizontalSpaceMobile,
+		horizontalSpaceUnit,
+		horizontalSpaceUnitTablet,
+		horizontalSpaceUnitMobile
 	} = attributes;
+
+	let device = deviceType;
+
+	// For desktop, attribute name does not have `desktop` suffix to support backward compatibility. 
+	if( 'Desktop' === deviceType ) {
+		device = '';
+	}
+
+	const timelinAlignment = 'undefined' !== typeof attributes['timelinAlignment' + device ] ? attributes['timelinAlignment' + device ] :  attributes.timelinAlignment;
 
 	const onSelectPostType = ( value ) => {
 		setAttributes( { postType: value } );
@@ -487,8 +494,18 @@ const Settings = ( props ) => {
 						'ultimate-addons-for-gutenberg'
 					) }
 					data={ {
-						value: timelinAlignment,
-						label: 'timelinAlignment',
+						desktop: {
+							value: timelinAlignment,
+							label: 'timelinAlignment',
+						},
+						tablet: {
+							value: timelinAlignmentTablet,
+							label: 'timelinAlignmentTablet',
+						},
+						mobile: {
+							value: timelinAlignmentMobile,
+							label: 'timelinAlignmentMobile',
+						},
 					} }
 					className="uagb-multi-button-alignment-control"
 					options={ [
@@ -530,6 +547,7 @@ const Settings = ( props ) => {
 						},
 					] }
 					showIcons={ true }
+					responsive={true}
 				/>
 				<MultiButtonsControl
 					setAttributes={ setAttributes }
@@ -622,34 +640,6 @@ const Settings = ( props ) => {
 						},
 					] }
 					showIcons={ false }
-				/>
-				<MultiButtonsControl
-					setAttributes={ setAttributes }
-					label={ __( 'Stack On', 'ultimate-addons-for-gutenberg' ) }
-					data={ {
-						value: stack,
-						label: 'stack',
-					} }
-					className="uagb-multi-button-alignment-control"
-					options={ [
-						{
-							value: 'none',
-							label: 'None',
-						},
-						{
-							value: 'tablet',
-							label: 'Tablet',
-						},
-						{
-							value: 'mobile',
-							label: 'Mobile',
-						},
-					] }
-					showIcons={ false }
-					help={ __(
-						'Note: Choose on what breakpoint the Content Timeline will stack. It will be visible on front end only.',
-						'ultimate-addons-for-gutenberg'
-					) }
 				/>
 			</UAGAdvancedPanelBody>
 		);
@@ -1804,7 +1794,7 @@ const Settings = ( props ) => {
 				<SpacingControl
 					{ ...props }
 					label={ __(
-						'Block Padding',
+						'Post Padding',
 						'ultimate-addons-for-gutenberg'
 					) }
 					valueTop={ {
@@ -1874,83 +1864,113 @@ const Settings = ( props ) => {
 						label: 'paddingLink',
 					} }
 				/>
-				<SpacingControl
-					{ ...props }
+				<ResponsiveSlider
 					label={ __(
-						'Block Margin',
+						'Gap Between Posts',
 						'ultimate-addons-for-gutenberg'
 					) }
-					valueTop={ {
-						value: topMargin,
-						label: 'topMargin',
+					data={ {
+						desktop: {
+							value: verticalSpace,
+							label: 'verticalSpace',
+							unit: {
+								value: verticalSpaceUnit,
+								label: 'verticalSpaceUnit',
+							},
+						},
+						tablet: {
+							value: verticalSpaceTablet,
+							label: 'verticalSpaceTablet',
+							unit: {
+								value: verticalSpaceUnitTablet,
+								label: 'verticalSpaceUnitTablet',
+							},
+						},
+						mobile: {
+							value: verticalSpaceMobile,
+							label: 'verticalSpaceMobile',
+							unit: {
+								value: verticalSpaceUnitMobile,
+								label: 'verticalSpaceUnitMobile',
+							},
+						},
 					} }
-					valueRight={ {
-						value: rightMargin,
-						label: 'rightMargin',
-					} }
-					valueBottom={ {
-						value: bottomMargin,
-						label: 'bottomMargin',
-					} }
-					valueLeft={ {
-						value: leftMargin,
-						label: 'leftMargin',
-					} }
-					valueTopTablet={ {
-						value: topMarginTablet,
-						label: 'topMarginTablet',
-					} }
-					valueRightTablet={ {
-						value: rightMarginTablet,
-						label: 'rightMarginTablet',
-					} }
-					valueBottomTablet={ {
-						value: bottomMarginTablet,
-						label: 'bottomMarginTablet',
-					} }
-					valueLeftTablet={ {
-						value: leftMarginTablet,
-						label: 'leftMarginTablet',
-					} }
-					valueTopMobile={ {
-						value: topMarginMobile,
-						label: 'topMarginMobile',
-					} }
-					valueRightMobile={ {
-						value: rightMarginMobile,
-						label: 'rightMarginMobile',
-					} }
-					valueBottomMobile={ {
-						value: bottomMarginMobile,
-						label: 'bottomMarginMobile',
-					} }
-					valueLeftMobile={ {
-						value: leftMarginMobile,
-						label: 'leftMarginMobile',
-					} }
-					unit={ {
-						value: marginUnit,
-						label: 'marginUnit',
-					} }
-					mUnit={ {
-						value: mobileMarginUnit,
-						label: 'mobileMarginUnit',
-					} }
-					tUnit={ {
-						value: tabletMarginUnit,
-						label: 'tabletMarginUnit',
-					} }
-					attributes={ props }
+					min={ 0 }
+					limitMax={ { 'px': 100, '%': 100, 'em': 100 } }
+					units={ [
+						{
+							name: __(
+								'PX',
+								'ultimate-addons-for-gutenberg'
+							),
+							unitValue: 'px',
+						},
+						{
+							name: __( '%', 'ultimate-addons-for-gutenberg' ),
+							unitValue: '%',
+						},
+						{
+							name: __( 'EM', 'ultimate-addons-for-gutenberg' ),
+							unitValue: 'em',
+						},
+					] }
 					setAttributes={ setAttributes }
-					link={ {
-						value: marginLink,
-						label: 'marginLink',
+				/>
+				<ResponsiveSlider
+					label={ __(
+						'Post - Marker Gap',
+						'ultimate-addons-for-gutenberg'
+					) }
+					data={ {
+						desktop: {
+							value: horizontalSpace,
+							label: 'horizontalSpace',
+							unit: {
+								value: horizontalSpaceUnit,
+								label: 'horizontalSpaceUnit',
+							},
+						},
+						tablet: {
+							value: horizontalSpaceTablet,
+							label: 'horizontalSpaceTablet',
+							unit: {
+								value: horizontalSpaceUnitTablet,
+								label: 'horizontalSpaceUnitTablet',
+							},
+						},
+						mobile: {
+							value: horizontalSpaceMobile,
+							label: 'horizontalSpaceMobile',
+							unit: {
+								value: horizontalSpaceUnitMobile,
+								label: 'horizontalSpaceUnitMobile',
+							},
+						},
 					} }
+					min={ 0 }
+					limitMax={ { 'px': 50, '%': 100, 'em': 50 } }
+					units={ [
+						{
+							name: __(
+								'PX',
+								'ultimate-addons-for-gutenberg'
+							),
+							unitValue: 'px',
+						},
+						{
+							name: __( '%', 'ultimate-addons-for-gutenberg' ),
+							unitValue: '%',
+						},
+						{
+							name: __( 'EM', 'ultimate-addons-for-gutenberg' ),
+							unitValue: 'em',
+						},
+					] }
+					setAttributes={ setAttributes }
 				/>
 			</UAGAdvancedPanelBody>
 		);
 	};
-
 	return (
 		<>
 			<InspectorControls>
