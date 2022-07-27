@@ -58,6 +58,20 @@ const attributes = {
 			styleType: 'timeline-alignment'
 		},
 	},
+	timelinAlignmentTablet: {
+		type: 'string',
+		default: 'center',
+		UAGCopyPaste: {
+			styleType: 'timeline-alignment-tablet'
+		},
+	},
+	timelinAlignmentMobile: {
+		type: 'string',
+		default: 'center',
+		UAGCopyPaste: {
+			styleType: 'timeline-alignment-mobile'
+		},
+	},
 	arrowlinAlignment: {
 		type: 'string',
 		default: 'center',
