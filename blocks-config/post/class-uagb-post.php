@@ -245,60 +245,60 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 				)
 			);
 
-			if( 'yes' === get_option( 'uagb-old-user-less-than-2' ) ) {
+			if ( 'yes' === get_option( 'uagb-old-user-less-than-2' ) ) {
 				register_block_type(
 					'uagb/post-masonry',
 					array(
 						'attributes'      => array_merge(
 							$common_attributes,
 							array(
-								'blockName'                   => array(
+								'blockName'                => array(
 									'type'    => 'string',
 									'default' => 'post-masonry',
 								),
-								'paginationType'              => array(
+								'paginationType'           => array(
 									'type'    => 'string',
 									'default' => 'none',
 								),
-								'paginationEventType'         => array(
+								'paginationEventType'      => array(
 									'type'    => 'string',
 									'default' => 'button',
 								),
-								'buttonText'                  => array(
+								'buttonText'               => array(
 									'type'    => 'string',
 									'default' => 'Load More',
 								),
-								'paginationAlign'             => array(
+								'paginationAlign'          => array(
 									'type'    => 'string',
 									'default' => 'center',
 								),
-								'paginationTextColor'         => array(
+								'paginationTextColor'      => array(
 									'type'    => 'string',
 									'default' => '',
 								),
-								'paginationMasonryBgColor'    => array(
+								'paginationMasonryBgColor' => array(
 									'type'    => 'string',
 									'default' => '',
 								),
-								'paginationBgHoverColor'      => array(
+								'paginationBgHoverColor'   => array(
 									'type' => 'string',
 								),
-								'paginationTextHoverColor'    => array(
+								'paginationTextHoverColor' => array(
 									'type' => 'string',
 								),
 								'paginationMasonryBorderHColor' => array(
 									'type'    => 'string',
 									'default' => '',
 								),
-								'paginationFontSize'          => array(
+								'paginationFontSize'       => array(
 									'type'    => 'number',
 									'default' => 13,
 								),
-								'loaderColor'                 => array(
+								'loaderColor'              => array(
 									'type'    => 'string',
 									'default' => '#0085ba',
 								),
-								'loaderSize'                  => array(
+								'loaderSize'               => array(
 									'type'    => 'number',
 									'default' => 18,
 								),
@@ -330,7 +330,7 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 									'type'    => 'number',
 									'default' => 12,
 								),
-								'layoutConfig'                => array(
+								'layoutConfig'             => array(
 									'type'    => 'array',
 									'default' => array(
 										array( 'uagb/post-image' ),
@@ -341,7 +341,7 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 										array( 'uagb/post-button' ),
 									),
 								),
-								'post_type'                   => array(
+								'post_type'                => array(
 									'type'    => 'string',
 									'default' => 'masonry',
 								),
