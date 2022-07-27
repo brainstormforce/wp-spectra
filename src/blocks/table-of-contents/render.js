@@ -74,7 +74,7 @@ const Render = ( props ) => {
 					className,
 					`uagb-toc__align-${ align }`,
 					`uagb-toc__columns-${ getFallbackNumber( tColumnsDesktop, 'tColumnsDesktop', blockName ) }`,
-					( makeCollapsible && initialCollapse ) && 'uagb-toc__collapse',
+					( makeCollapsible && initialCollapse ) ? 'uagb-toc__collapse' : '',
 					`uagb-editor-preview-mode-${ deviceType.toLowerCase() }`,
 					`uagb-block-${ props.clientId.substr( 0, 8 ) }`
 				) }

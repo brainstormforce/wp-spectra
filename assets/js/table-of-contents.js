@@ -45,7 +45,6 @@ UAGBTableOfContents = { // eslint-disable-line no-undef
 	},
 
 	_slideUp( target, duration ) {
-		console.log( duration );
 		target.style.transitionProperty = 'height, margin, padding';
 		target.style.transitionDuration = duration + 'ms';
 		target.style.boxSizing = 'border-box';
