@@ -147,7 +147,8 @@ function styling( props ) {
 		innerContentCustomWidthTypeMobile,
 		innerContentCustomWidthTypeTablet,
 
-		overflow
+		overflow,
+		isBlockRootParent
 	} = attributes;
 
 	const innerContentCustomWidthDesktopFallback = getFallbackNumber( innerContentCustomWidthDesktop, 'innerContentCustomWidthDesktop', blockName );
@@ -308,7 +309,12 @@ function styling( props ) {
 													boxShadowColorHover + ' ' +	boxShadowPositionCSSHover;
 	}
 
-	selectors[' > .wp-block-uagb-container > .uagb-container-inner-blocks-wrap > .block-editor-inner-blocks > .block-editor-block-list__layout'] = {
+	let containerFlexSelector = ' > .wp-block-uagb-container > .uagb-container-inner-blocks-wrap > .block-editor-inner-blocks > .block-editor-block-list__layout';
+	if ( ! isBlockRootParent ) {
+		containerFlexSelector = ' > .wp-block-uagb-container > .block-editor-inner-blocks > .block-editor-block-list__layout';
+	}
+
+	selectors[containerFlexSelector] = {
 		'min-height' : generateCSSUnit( minHeightDesktop, minHeightType ),
 		'flex-direction' : directionDesktop,
 		'align-items' : alignItemsDesktop,
@@ -408,7 +414,7 @@ function styling( props ) {
 			...containerBackgroundCSSTablet,
 			...borderCSSTablet
 		},
-		' > .wp-block-uagb-container > .uagb-container-inner-blocks-wrap > .block-editor-inner-blocks > .block-editor-block-list__layout' : {
+		containerFlexSelector : {
 			'flex-direction' : directionTablet,
 			'align-items' : alignItemsTablet,
 			'justify-content' : justifyContentTablet,
@@ -467,7 +473,7 @@ function styling( props ) {
 			...containerBackgroundCSSMobile,
 			...borderCSSMobile
 		},
-		' > .wp-block-uagb-container > .uagb-container-inner-blocks-wrap > .block-editor-inner-blocks > .block-editor-block-list__layout' : {
+		containerFlexSelector : {
 			'flex-direction' : directionMobile,
 			'align-items' : alignItemsMobile,
 			'justify-content' : justifyContentMobile,
