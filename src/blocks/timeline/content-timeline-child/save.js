@@ -53,30 +53,32 @@ export default function save( props ) {
 				</div>
 
 				<div className={ classnames( dayalignClass, 'uagb-timeline__events-inner-new' ) }>
-								{ displayPostDate !== true && t_date && (
-									<div
-										className={
-											'uagb-timeline__date-hide uagb-timeline__inner-date-new'
-										}
-									>
-										{ ( 'custom' !== dateFormat &&
+					<div className='uagb-timeline__events-inner--content'>
+						{ displayPostDate !== true && t_date && (
+							<div
+								className={
+									'uagb-timeline__date-hide uagb-timeline__inner-date-new'
+								}
+							>
+								{ ( 'custom' !== dateFormat &&
 										format( dateFormat, postDate ) ) ||
 										postDate }
-									</div>
-								) }
-									<RichText.Content
-										tagName={ headingTag }
-										value={ time_heading }
-										className="uagb-timeline__heading"
-									/>
+							</div>
+						) }
+							<RichText.Content
+								tagName={ headingTag }
+								value={ time_heading }
+								className="uagb-timeline__heading"
+							/>
 
-								<RichText.Content
-									tagName="p"
-									value={ time_desc }
-									className="uagb-timeline-desc-content"
-								/>
+						<RichText.Content
+							tagName="p"
+							value={ time_desc }
+							className="uagb-timeline-desc-content"
+						/>
 
-								<div className="uagb-timeline__arrow"></div>
+						<div className="uagb-timeline__arrow"></div>
+					</div>
 				</div>
 				{ displayInnerDate && (
 					<div className="uagb-timeline__date-new">
