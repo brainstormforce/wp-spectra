@@ -79,16 +79,6 @@ class Admin_Menu {
 			update_option( 'spectra_blocks_count_status_new', 'processing' );
 		}
 
-		if( 'done' === get_option( 'spectra_blocks_count_status_new' ) ) {
-			error_log( print_r( get_option( 'get_spectra_block_count_new' ), true ) );
-			// Active widgets data to analytics.
-			add_filter( 'bsf_core_stats', array( $this, 'spectra_specific_stats' ) );
-		}		
-
-		// $settings_data = \UAGB_Admin_Helper::get_blocks_count();
-		// error_log(  );
-		// error_log( print_r( get_option( 'spectra_block_count' ), true ) );
-
 	}
 
 	/**
@@ -101,7 +91,7 @@ class Admin_Menu {
 	public function spectra_specific_stats( $default_stats ) {
 
 		$settings_data = Admin_Helper::get_options();
-		$blocks_count = get_option( 'spectra_block_count' );
+		$blocks_count = get_option( 'get_spectra_block_count_new' );
 		// $blocks_count = \UAGB_Admin_Helper::get_blocks_count();
 
 		$default_stats['spectra_settings'] = array(
@@ -140,6 +130,17 @@ class Admin_Menu {
 			add_action( 'admin_enqueue_scripts', array( $this, 'styles_scripts' ) );
 
 			add_filter( 'admin_footer_text', array( $this, 'add_footer_link' ), 99 );
+		}
+
+		if( 'done' === get_option( 'spectra_blocks_count_status_new' ) ) {
+
+			// Active widgets data to analytics.
+			add_filter( 'bsf_core_stats', array( $this, 'spectra_specific_stats' ) );
+
+			if ( function_exists( 'as_next_scheduled_action' ) && false === \as_next_scheduled_action('spectra_analytics_count_action') ) {
+				// It will automatically reschedule the action once initiated.
+				as_schedule_recurring_action( strtotime("now"), 2 * WEEK_IN_SECONDS, 'spectra_analytics_count_action' );
+			}
 		}
 	}
 

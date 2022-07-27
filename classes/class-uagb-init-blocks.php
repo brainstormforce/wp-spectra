@@ -67,6 +67,21 @@ class UAGB_Init_Blocks {
 
 		add_action( 'spectra_total_blocks_count_action_new', array( $this, 'blocks_count_logic' ) );
 
+		add_action( 'spectra_analytics_count_action', array( $this, 'send_spectra_specific_stats' ) );
+
+	}
+
+	/**
+	 * Reset all the filters for scheduled actionto get post block count.
+	 *
+	 */
+	public function send_spectra_specific_stats() {
+
+		error_log( "This is delete function" );
+
+		delete_option( 'spectra-blocks-pages-counted-new' );
+		delete_option( 'spectra_blocks_count_status_new' );
+		delete_option( 'get_spectra_block_count_new' );
 	}
 
 	/**
@@ -76,7 +91,6 @@ class UAGB_Init_Blocks {
 	 * @return void
 	 */
 	public function blocks_count_logic() {
-		error_log( "Hieeeeeeeee" );
 
 		// Number of posts to parse at a time.
 		$batch_size = 10;
@@ -88,6 +102,7 @@ class UAGB_Init_Blocks {
 		$page = get_option( 'spectra-blocks-pages-counted-new', 1 );
 
 		$saved_block_count = get_option( 'get_spectra_block_count_new', 0 );
+		$count_status = get_option( 'spectra_blocks_count_status_new' );
 
 		if( ! $saved_block_count ) {
 			// Update block list count.
@@ -109,12 +124,10 @@ class UAGB_Init_Blocks {
 			'paged'          => $page,
 		);
 
-
 		$query = new WP_Query( $query_args );
 
 		if ( $query->have_posts() && $query->max_num_pages >= $page ) {
-		foreach ( $query->posts as $key => $post ) {
-				error_log( $post->ID );
+			foreach ( $query->posts as $key => $post ) {
 				foreach ( $blocks_count as $block_key => $block ) {
 					if ( false !== strpos( $post->post_content, $block_key ) ) {
 						$usage_count = $blocks_count[ $block_key ][ 'count' ];
