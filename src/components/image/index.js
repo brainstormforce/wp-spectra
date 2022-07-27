@@ -1,14 +1,14 @@
 import { __ } from '@wordpress/i18n';
 import { BaseControl } from '@wordpress/components';
 import { MediaUpload } from '@wordpress/block-editor';
-import { select } from '@wordpress/data';
+import { useSelect } from '@wordpress/data';
 import UAGB_Block_Icons from '@Controls/block-icons';
 
 
 const UAGImage = ( props ) => {
-	const { getSelectedBlock } = select( 'core/block-editor' );
-	const { name, attributes } = getSelectedBlock();
-	const {dynamicContent} = attributes
+	const selectedBlock = useSelect( ( select ) => {
+		return select( 'core/block-editor' ).getSelectedBlock();
+	}, [] );
 
 	const {
 		onSelectImage,
@@ -52,10 +52,11 @@ const UAGImage = ( props ) => {
 	labelText = label ? label : labelText;
 	labelText = false === label ? label : labelText;
 
-	let registerImageExtender = wp.hooks.applyFilters('uagb.registerImageExtender', '', name, onSelectImage)
+	let registerImageExtender = wp.hooks.applyFilters('uagb.registerImageExtender', '', selectedBlock?.name, onSelectImage)
 
 	const isShowImageUploader = () => {
-		if(dynamicContent && dynamicContent.bgImage && dynamicContent.bgImage.enable === true) {
+		const dynamicContent = selectedBlock?.attributes?.dynamicContent
+		if(dynamicContent && dynamicContent?.bgImage?.enable === true) {
 			return false
 		}
 		return true;
