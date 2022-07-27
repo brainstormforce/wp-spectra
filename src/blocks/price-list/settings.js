@@ -146,17 +146,17 @@ const Settings = ( props ) => {
 		headingAlign,
 		imgAlign,
 		descLetterSpacing,
-descLetterSpacingTablet,
-descLetterSpacingMobile,
-descLetterSpacingType,
-priceLetterSpacing,
-priceLetterSpacingTablet,
-priceLetterSpacingMobile,
-priceLetterSpacingType,
-titleLetterSpacing,
-titleLetterSpacingTablet,
-titleLetterSpacingMobile,
-titleLetterSpacingType,
+		descLetterSpacingTablet,
+		descLetterSpacingMobile,
+		descLetterSpacingType,
+		priceLetterSpacing,
+		priceLetterSpacingTablet,
+		priceLetterSpacingMobile,
+		priceLetterSpacingType,
+		titleLetterSpacing,
+		titleLetterSpacingTablet,
+		titleLetterSpacingMobile,
+		titleLetterSpacingType,
 	} = attributes;
 
 	const setimageSize = ( value ) => {
@@ -191,6 +191,17 @@ titleLetterSpacingType,
 		setAttributes( { imagePosition: value } )
 	}
 	
+	const setColumns = () => {
+		
+		const getChildBlocks = select( 'core/block-editor' ).getBlocks( props.clientId );
+		
+		getChildBlocks.forEach( ( pricelistChild ) => {
+			pricelistChild.attributes.columns = columns;
+			pricelistChild.attributes.tcolumns = tcolumns;
+			pricelistChild.attributes.mcolumns = mcolumns;
+		} );	
+	}
+
 	const setimageAlignment = ( value ) => {
 		
 		const getChildBlocks = select( 'core/block-editor' ).getBlocks( props.clientId );
@@ -1234,6 +1245,7 @@ titleLetterSpacingType,
 								max={ Math.min( maxColumns, menu_item_count ) }
 								displayUnit={ false }
 								setAttributes={ setAttributes }	
+								onChange = { setColumns }
 							/>
 							<MultiButtonsControl
 								setAttributes={ setAttributes }
