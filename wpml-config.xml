@@ -9,10 +9,15 @@
 		<gutenberg-block type="uagb/post-masonry" translate="1">
 			<key name="headingTitle" />
 			<key name="ctaText" />
+			<key name="paginationType" />
+			<key name="buttonText" />
 		</gutenberg-block>
 		<gutenberg-block type="uagb/post-grid" translate="1">
 			<key name="headingTitle" />
 			<key name="ctaText" />
+			<key name="postPagination" />
+			<key name="paginationPrevText" />
+			<key name="paginationNextText" />
 		</gutenberg-block>
 		<gutenberg-block type="uagb/post-timeline" translate="1">
 			<key name="headingTitle" />
