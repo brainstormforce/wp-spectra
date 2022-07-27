@@ -17,12 +17,6 @@ const Render = ( props ) => {
 		};
 	}, [] );
 
-	useEffect( () => {
-		if ( UAGBTableOfContents ) {
-			UAGBTableOfContents.init();
-		}
-	}, [] );
-
 	props = props.parentProps;
 	const blockName = props.name.replace( 'uagb/', '' );
 	const deviceType = useDeviceType();
@@ -38,7 +32,14 @@ const Render = ( props ) => {
 		headingTitle,
 		isPreview,
 		separatorStyle,
+		block_id,
 	} = attributes;
+
+	useEffect( () => {
+		if ( UAGBTableOfContents ) {
+			UAGBTableOfContents.init( `.uagb-block-${ block_id }` );
+		}
+	}, [] );
 
 	let iconHtml = '';
 

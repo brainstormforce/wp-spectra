@@ -6,6 +6,7 @@ let scrollElement = null;
 
 UAGBTableOfContents = { // eslint-disable-line no-undef
 	init( id ) {
+		console.log( id );
 		if( document.querySelector( '.uagb-toc__list' ) !== null ){
 			document.querySelector( '.uagb-toc__list' ).addEventListener( 'click',
 				UAGBTableOfContents._scroll // eslint-disable-line no-undef
