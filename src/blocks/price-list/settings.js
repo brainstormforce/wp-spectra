@@ -1244,7 +1244,7 @@ const Settings = ( props ) => {
 								max={ Math.min( maxColumns, menu_item_count ) }
 								displayUnit={ false }
 								setAttributes={ setAttributes }	
-								onChange = { setColumns(columns, tcolumns, mcolumns) }
+								onChange = { setColumns( columns, tcolumns, mcolumns ) }
 							/>
 							<MultiButtonsControl
 								setAttributes={ setAttributes }
