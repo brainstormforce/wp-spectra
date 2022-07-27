@@ -44,7 +44,8 @@ import {
 	Spinner,
 	ToggleControl,
 	TextControl,
-	Icon
+	Icon,
+	Notice,
 } from '@wordpress/components';
 
 import { InspectorControls } from '@wordpress/block-editor';
@@ -570,6 +571,7 @@ const UAGBPostMasonry = ( props ) => {
 		ctaLetterSpacingTablet,
 		ctaLetterSpacingMobile,
 		ctaLetterSpacingType,
+
 	} = attributes;
 
 	const taxonomyListOptions = [];
@@ -874,6 +876,7 @@ const UAGBPostMasonry = ( props ) => {
 				) }
 				{ 'infinite' === paginationType &&
 					'button' === paginationEventType && (
+						<>
 						<TextControl
 							autoComplete="off"
 							label={ __(
@@ -885,6 +888,64 @@ const UAGBPostMasonry = ( props ) => {
 								setAttributes( { buttonText: value } )
 							}
 						/>
+						<MultiButtonsControl
+							setAttributes={ setAttributes }
+							label={ __(
+								'Pagination Button Alignment',
+								'ultimate-addons-for-gutenberg'
+							) }
+							data={ {
+								value: paginationAlign,
+								label: 'paginationAlign',
+							} }
+							className="uagb-multi-button-alignment-control"
+							options={ [
+								{
+									value: 'left',
+									icon: (
+										<Icon
+											icon={ renderSVG(
+												'fa fa-align-left'
+											) }
+										/>
+									),
+									tooltip: __(
+										'Left',
+										'ultimate-addons-for-gutenberg'
+									),
+								},
+								{
+									value: 'center',
+									icon: (
+										<Icon
+											icon={ renderSVG(
+												'fa fa-align-center'
+											) }
+										/>
+									),
+									tooltip: __(
+										'Center',
+										'ultimate-addons-for-gutenberg'
+									),
+								},
+								{
+									value: 'right',
+									icon: (
+										<Icon
+											icon={ renderSVG(
+												'fa fa-align-right'
+											) }
+										/>
+									),
+									tooltip: __(
+										'Right',
+										'ultimate-addons-for-gutenberg'
+									),
+								},
+							] }
+							showIcons={ true }
+						/>
+						</>
 					) }
 				<h2>
 					{ __(
@@ -919,63 +980,6 @@ const UAGBPostMasonry = ( props ) => {
 				>
 					{ 'button' === paginationEventType && (
 						<>
-							<MultiButtonsControl
-								setAttributes={ setAttributes }
-								label={ __(
-									'Alignment',
-									'ultimate-addons-for-gutenberg'
-								) }
-								data={ {
-									value: paginationAlign,
-									label: 'paginationAlign',
-								} }
-								className="uagb-multi-button-alignment-control"
-								options={ [
-									{
-										value: 'left',
-										icon: (
-											<Icon
-												icon={ renderSVG(
-													'fa fa-align-left'
-												) }
-											/>
-										),
-										tooltip: __(
-											'Left',
-											'ultimate-addons-for-gutenberg'
-										),
-									},
-									{
-										value: 'center',
-										icon: (
-											<Icon
-												icon={ renderSVG(
-													'fa fa-align-center'
-												) }
-											/>
-										),
-										tooltip: __(
-											'Center',
-											'ultimate-addons-for-gutenberg'
-										),
-									},
-									{
-										value: 'right',
-										icon: (
-											<Icon
-												icon={ renderSVG(
-													'fa fa-align-right'
-												) }
-											/>
-										),
-										tooltip: __(
-											'Right',
-											'ultimate-addons-for-gutenberg'
-										),
-									},
-								] }
-								showIcons={ true }
-							/>
 							<Range
 								label={ __(
 									'Font Size',
@@ -2451,6 +2455,11 @@ const UAGBPostMasonry = ( props ) => {
 		<InspectorControls>
 			<InspectorTabs>
 				<InspectorTab { ...UAGTabs.general }>
+					<Notice status="warning" isDismissible={false}>
+						{
+							__( 'This block has been deprecated.', 'ultimate-addons-for-gutenberg' )
+						}
+					</Notice>
 					{ generalSettings() }
 					{ imageSettings() }
 					{ contentSettings() }

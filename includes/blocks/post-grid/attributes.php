@@ -7,7 +7,8 @@
  * @package uagb
  */
 
-$btn_border_attribute = UAGB_Block_Helper::uag_generate_border_attribute( 'btn' );
+$btn_border_attribute     = UAGB_Block_Helper::uag_generate_border_attribute( 'btn' );
+$overall_border_attribute = UAGB_Block_Helper::uag_generate_border_attribute( 'overall' );
 return array_merge(
 	array(
 		'blockName'                   => 'post-grid',
@@ -22,7 +23,7 @@ return array_merge(
 		'columnGapTablet'             => '',
 		'columnGapMobile'             => '',
 		'bgColor'                     => '#f6f6f6',
-		'titleColor'                  => '#3b3b3b',
+		'titleColor'                  => '',
 		'titleTag'                    => 'h4',
 		'titleFontSize'               => '',
 		'titleFontSizeType'           => 'px',
@@ -72,7 +73,7 @@ return array_merge(
 		'ctaLineHeightTablet'         => '',
 		'ctaLineHeightMobile'         => '',
 		'ctaLoadGoogleFonts'          => false,
-		'metaColor'                   => '#777777',
+		'metaColor'                   => '',
 		'highlightedTextColor'        => '#fff',
 		'highlightedTextBgColor'      => '#3182ce',
 		'excerptColor'                => '',
@@ -100,7 +101,7 @@ return array_merge(
 		'excerptBottomSpaceTablet'    => '',
 		'excerptBottomSpaceMobile'    => '',
 		'overlayOpacity'              => '50',
-		'bgOverlayColor'              => '#ffffff',
+		'bgOverlayColor'              => '#000000',
 		'ctaText'                     => __( 'Read More', 'ultimate-addons-for-gutenberg' ),
 		'borderHColor'                => '',
 		'postPagination'              => '',
@@ -184,6 +185,20 @@ return array_merge(
 		'ctaLetterSpacingTablet'      => '',
 		'ctaLetterSpacingMobile'      => '',
 		'ctaLetterSpacingType'        => 'px',
+
+		'boxShadowColor'              => '#00000070',
+		'boxShadowHOffset'            => 0,
+		'boxShadowVOffset'            => 0,
+		'boxShadowBlur'               => '',
+		'boxShadowSpread'             => '',
+		'boxShadowPosition'           => 'outset',
+		'boxShadowColorHover'         => '',
+		'boxShadowHOffsetHover'       => 0,
+		'boxShadowVOffsetHover'       => 0,
+		'boxShadowBlurHover'          => '',
+		'boxShadowSpreadHover'        => '',
+		'boxShadowPositionHover'      => 'outset',
 	),
 	$btn_border_attribute,
+	$overall_border_attribute
 );
