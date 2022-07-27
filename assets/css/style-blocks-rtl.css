@@ -37,12 +37,6 @@
 	border-right: 13px solid #eee;
 }
 
-.rtl .uagb-timeline__center-block .uagb-timeline__day-right .uagb-timeline__arrow::after {
-	border-right: 13px solid #eee;
-	border-left: none;
-	right: 468px;
-}
-
 .uagb-timeline__left-block .uagb-timeline__day-left .uagb-timeline__arrow::after {
 	right: -970px;
 }
@@ -175,10 +169,11 @@
 }
 
 .rtl .uagb-timeline__center-block .uagb-timeline__day-right .uagb-timeline__arrow::after {
-    border-right: 13px solid #eee;
-    border-left: none;
-    right: 581px;
+	border-right: 13px solid #eee;
+	border-left: none;
+	right: 581px;
 }
+
 .rtl .uagb-timeline__center-block .uagb-timeline__day-left .uagb-timeline__arrow::after {
-    right: -585px;
+	right: -585px;
 }
