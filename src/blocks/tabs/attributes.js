@@ -37,14 +37,23 @@ const attributes = {
 	tabsStyleD: {
 		type: 'string',
 		default: 'hstyle1',
+		UAGCopyPaste: {
+			styleType: 'tabs-style'
+		},
 	},
 	tabsStyleT: {
 		type: 'string',
 		default: 'vstyle6',
+		UAGCopyPaste: {
+			styleType: 'tabs-style-tablet'
+		},
 	},
 	tabsStyleM: {
 		type: 'string',
 		default: 'vstyle6',
+		UAGCopyPaste: {
+			styleType: 'tabs-style-mobile'
+		},
 	},
 	headerBgColor: {
 		type: 'string',

@@ -4,6 +4,7 @@
 
 import React, { useEffect, lazy, Suspense } from 'react';
 import lazyLoader from '@Controls/lazy-loader';
+import { useDeviceType } from '@Controls/getPreviewType';
 
 const Settings = lazy( () =>
 	import(
@@ -17,6 +18,8 @@ const Render = lazy( () =>
 );
 
 const ContentTimelineChildComponent = ( props ) => {
+	const deviceType = useDeviceType();
+
 	useEffect( () => {
 		// Replacement for componentDidMount.
 		//Store client id.
@@ -28,7 +31,7 @@ const ContentTimelineChildComponent = ( props ) => {
 			detail: {},
 		} );
 		document.dispatchEvent( loadContentTimelineEditor );
-	}, [ props ] );
+	}, [ props, deviceType ] );
 	
 	return (
 		<Suspense fallback={ lazyLoader() }>

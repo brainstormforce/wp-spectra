@@ -16,6 +16,8 @@ const Render = ( props ) => {
 
 	const {
 		block_id,
+		htmlTag,
+		htmlTagLink,
 		topType,
 		topFlip,
 		topContentAboveShape,
@@ -70,13 +72,30 @@ const Render = ( props ) => {
 
 	const hasChildBlocks = getBlockOrder( clientId ).length > 0;
 
+	const CustomTag = `${htmlTag}`;
+	const customTagLinkAttributes = {};
+	if( htmlTag === 'a' ){
+		customTagLinkAttributes.rel = 'noopener'
+		customTagLinkAttributes.onClick = ( e ) => e.preventDefault()
+		if( htmlTagLink?.url ){
+			customTagLinkAttributes.href = htmlTagLink?.url;
+		}
+		if( htmlTagLink?.opensInNewTab ){
+			customTagLinkAttributes.target = '_blank';
+		}
+		if( htmlTagLink?.noFollow ){
+			customTagLinkAttributes.rel = 'nofollow noopener';
+		}
+	}
+
 	return (
-		<div
+		<CustomTag
 			className={ classnames(
 				className,
 				`uagb-block-${ block_id }`,
 			) }
 			key = { block_id }
+			{...customTagLinkAttributes}
 		>
 			{ topDividerHtml }
 			{ 'video' === backgroundType && (
@@ -100,7 +119,7 @@ const Render = ( props ) => {
 				/>
 			</div>
 			{ bottomDividerHtml }
-		</div>
+		</CustomTag>
 	);
 };
 export default React.memo( Render );
