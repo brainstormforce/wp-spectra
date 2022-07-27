@@ -16,9 +16,12 @@ import styles from './editor.lazy.scss';
 import React, { useLayoutEffect } from 'react';
 import { select } from '@wordpress/data'
 import getUAGEditorStateLocalStorage from '@Controls/getUAGEditorStateLocalStorage';
+import { blocksAttributes } from '@Controls/getBlocksDefaultAttributes';
 
 // Export for ease of importing in individual blocks.
 export { TypographyStyles };
+
+const classNames = ( ...classes ) => ( classes.filter( Boolean ).join( ' ' ) );
 
 const TypographyControl = ( props ) => {
 
@@ -67,6 +70,71 @@ const TypographyControl = ( props ) => {
 	}
 	const lineHeightStepsVal = ( 'em' === props.lineHeightType?.value ? 0.1 : 1 ); // fractional value when unit is em.
 	const letterSpacingStepsVal = ( 'em' === props.letterSpacingType?.value ? 0.1 : 1 ); // fractional value when unit is em.
+
+	// Array of all the current Typography Control's Labels.
+	const attributeNames = [
+		props.fontFamily.label,
+		props.fontWeight.label,
+		props.fontStyle.label,
+		props.transform.label,
+		props.decoration.label,
+		props.fontSizeType.label,
+		props.fontSize.label,
+		props.fontSizeMobile.label,
+		props.fontSizeTablet.label,
+		props.lineHeightType.label,
+		props.lineHeight.label,
+		props.lineHeightMobile.label,
+		props.lineHeightTablet.label,
+		props.letterSpacing.label,
+		props.letterSpacingTablet.label,
+		props.letterSpacingMobile.label,
+		props.letterSpacingType.label,
+	];
+
+	const { getSelectedBlock } = select( 'core/block-editor' );
+
+	// Function to get the Block's default Typography Values.
+	const getBlockTypographyValue = () => {
+		const selectedBlockName = getSelectedBlock()?.name.replace( 'uagb/', '' );
+		let defaultValues = false;
+		if ( 'undefined' !== typeof blocksAttributes[ selectedBlockName ] ) {
+			attributeNames.map( ( attributeName ) => {
+				if ( attributeName ) {
+					const blockDefaultAttributeValue = ( 'undefined' !== typeof blocksAttributes[ selectedBlockName ][ attributeName ]?.default ) ? blocksAttributes[ selectedBlockName ][ attributeName ]?.default : '';
+					defaultValues = {
+						...defaultValues,
+						[ attributeName ] : blockDefaultAttributeValue,
+					}
+				}
+				return attributeName;
+			} );
+		}
+		console.log( defaultValues );
+		return defaultValues;
+	}
+
+	// Function to check if any Typography Setting has changed.
+	const getUpdateState = () => {
+		const defaultValues = getBlockTypographyValue();
+		const selectedBlockAttributes = getSelectedBlock()?.attributes;
+		console.log( selectedBlockAttributes );
+		let isTypographyUpdated = false;
+		attributeNames.map( ( attributeName ) => {
+			if ( selectedBlockAttributes?.[ attributeName ] !== defaultValues?.[ attributeName ] ) {
+				console.log( '-------' );
+				console.log( attributeName );
+				console.log( selectedBlockAttributes?.[ attributeName ] );
+				console.log( defaultValues?.[ attributeName ] );
+				isTypographyUpdated = true;
+			}
+			return attributeName;
+		} );
+		console.log( `%c${ isTypographyUpdated }`, 'font-size: 3em; color: yellowgreen;' );
+		return isTypographyUpdated;
+	};
+
+	const isTypographyUpdated = getUpdateState();
 
 	if ( true !== disableLineHeight ) {
 		lineHeight = (
@@ -228,7 +296,10 @@ const TypographyControl = ( props ) => {
 	if ( true !== disableFontFamily && true !== disableFontSize ) {
 		fontAdvancedControls = (
 			<Button
-				className="uag-typography-button spectra-control-popup__options--action-button"
+				className={ classNames(
+					"uag-typography-button spectra-control-popup__options--action-button",
+					isTypographyUpdated ? 'spectra-control-popup__status--updated' : '',
+				) }
 				aria-pressed={ showAdvancedControls }
 				onClick={ () => {
 
