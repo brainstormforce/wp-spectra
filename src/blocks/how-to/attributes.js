@@ -591,6 +591,15 @@ const attributes = {
 			styleType: 'desc-letter-spacing-type'
 		}
 	},
+	imgTagHeight: {
+		type: 'number',
+		default: 0,
+	},
+	imgTagWidth: {
+		type: 'number',
+		default: 0,
+
+	},
 };
 
 export default attributes;
