@@ -156,42 +156,7 @@ export default function styling( props ) {
 		captionLetterSpacingTablet,
 		captionLetterSpacingMobile,
 		captionLetterSpacingType,
-		// Image Border radius
-		imageBorderTopLeftRadius,
-		imageBorderTopRightRadius,
-		imageBorderBottomRightRadius,
-		imageBorderBottomLeftRadius,
-		imageBorderRadiusUnit,
-		imageBorderTopLeftRadiusTablet,
-		imageBorderTopRightRadiusTablet,
-		imageBorderBottomRightRadiusTablet,
-		imageBorderBottomLeftRadiusTablet,
-		imageBorderRadiusUnitTablet,
-		imageBorderTopLeftRadiusMobile,
-		imageBorderTopRightRadiusMobile,
-		imageBorderBottomRightRadiusMobile,
-		imageBorderBottomLeftRadiusMobile,
-		imageBorderRadiusUnitMobile
 	} = props.attributes;
-
-	const borderRadiusUnit = ( imageBorderRadiusUnit ) ? imageBorderRadiusUnit : 'px';
-	const borderRadiusUnitTablet = ( imageBorderRadiusUnitTablet ) ? imageBorderRadiusUnitTablet : 'px';
-	const borderRadiusUnitMobile = ( imageBorderRadiusUnitMobile ) ? imageBorderRadiusUnitMobile : 'px';
-
-	const borderTopLeftRadius = ! isNaN( imageBorderTopLeftRadius ) ? imageBorderTopLeftRadius + borderRadiusUnit : '' ;
-	const borderTopRightRadius = ! isNaN( imageBorderTopRightRadius ) ? imageBorderTopRightRadius + borderRadiusUnit : '' ;
-	const borderBottomRightRadius = ! isNaN( imageBorderBottomRightRadius ) ? imageBorderBottomRightRadius + borderRadiusUnit : '' ;
-	const borderBottomLeftRadius = ! isNaN( imageBorderBottomLeftRadius ) ? imageBorderBottomLeftRadius + borderRadiusUnit : '' ;
-
-	const borderTopLeftRadiusTablet = ! isNaN( imageBorderTopLeftRadiusTablet ) ? imageBorderTopLeftRadiusTablet+borderRadiusUnitTablet : '' ;
-	const borderTopRightRadiusTablet = ! isNaN( imageBorderTopRightRadiusTablet ) ? imageBorderTopRightRadiusTablet+borderRadiusUnitTablet : '' ;
-	const borderBottomRightRadiusTablet = ! isNaN( imageBorderBottomRightRadiusTablet ) ? imageBorderBottomRightRadiusTablet+borderRadiusUnitTablet : '' ;
-	const borderBottomLeftRadiusTablet = ! isNaN( imageBorderBottomLeftRadiusTablet ) ? imageBorderBottomLeftRadiusTablet+borderRadiusUnitTablet : '' ;
-
-	const borderTopLeftRadiusMobile = ! isNaN( imageBorderTopLeftRadiusMobile ) ? imageBorderTopLeftRadiusMobile+borderRadiusUnitMobile : '' ;
-	const borderTopRightRadiusMobile = ! isNaN( imageBorderTopRightRadiusMobile ) ? imageBorderTopRightRadiusMobile+borderRadiusUnitMobile : '' ;
-	const borderBottomRightRadiusMobile = ! isNaN( imageBorderBottomRightRadiusMobile ) ? imageBorderBottomRightRadiusMobile+borderRadiusUnitMobile : '' ;
-	const borderBottomLeftRadiusMobile = ! isNaN( imageBorderBottomLeftRadiusMobile ) ? imageBorderBottomLeftRadiusMobile+borderRadiusUnitMobile : '' ;
 
 	const seperatorWidthFallback = getFallbackNumber( seperatorWidth, 'seperatorWidth', blockName );
 	const overlayPositionFromEdgeFallback = getFallbackNumber( overlayPositionFromEdge, 'overlayPositionFromEdge', blockName );
@@ -235,13 +200,13 @@ export default function styling( props ) {
 			),
 			'text-align': align
 		},
-		'.wp-block-uagb-image--layout-default img':{
+		'.wp-block-uagb-image--layout-default figure':{
 			'width': 'inherit',
 			'height': 'inherit',
 			'box-shadow': generateCSSUnit( imageBoxShadowHOffset, 'px' ) + ' ' + generateCSSUnit( imageBoxShadowVOffset, 'px' ) +	' ' + generateCSSUnit( imageBoxShadowBlur, 'px' ) + ' ' +	generateCSSUnit( imageBoxShadowSpread, 'px' ) + ' ' + imageBoxShadowColor + ' ' + getImageShadowPosition,
 			...imageBorderCSS
 		},
-		'.wp-block-uagb-image--layout-overlay img':{
+		'.wp-block-uagb-image--layout-overlay figure':{
 			'width': 'inherit',
 			'height': 'inherit',
 			'box-shadow': generateCSSUnit( imageBoxShadowHOffset, 'px' ) + ' ' + generateCSSUnit( imageBoxShadowVOffset, 'px' ) +	' ' + generateCSSUnit( imageBoxShadowBlur, 'px' ) + ' ' +	generateCSSUnit( imageBoxShadowSpread, 'px' ) + ' ' + imageBoxShadowColor + ' ' + getImageShadowPosition,
@@ -291,10 +256,6 @@ export default function styling( props ) {
 		'.wp-block-uagb-image--layout-overlay .wp-block-uagb-image--layout-overlay__color-wrapper': {
 			'background': overlayBackground,
 			'opacity': overlayOpacityFallback,
-			'border-top-left-radius': borderTopLeftRadius,
-			'border-top-right-radius': borderTopRightRadius,
-			'border-bottom-right-radius': borderBottomRightRadius,
-			'border-bottom-left-radius': borderBottomLeftRadius
 		},
 		'.wp-block-uagb-image--layout-overlay .wp-block-uagb-image--layout-overlay__inner': {
 			'left': generateCSSUnit( overlayPositionFromEdgeFallback, overlayPositionFromEdgeUnit ),
@@ -428,7 +389,7 @@ export default function styling( props ) {
 		),
 	}
 
-	tablet_selectors['.wp-block-uagb-image--layout-default img'] = imageBorderCSSTablet
+	tablet_selectors['.wp-block-uagb-image--layout-default figure'] = imageBorderCSSTablet
 
 	tablet_selectors['.wp-block-uagb-image'] = {
 		'margin-top': generateCSSUnit(
@@ -520,13 +481,6 @@ export default function styling( props ) {
 		'height'    : tabletHeight + 'px'
 	}
 
-	tablet_selectors['.wp-block-uagb-image--layout-overlay .wp-block-uagb-image--layout-overlay__color-wrapper'] = {
-		'border-top-left-radius': borderTopLeftRadiusTablet,
-		'border-top-right-radius': borderTopRightRadiusTablet,
-		'border-bottom-right-radius': borderBottomRightRadiusTablet,
-		'border-bottom-left-radius': borderBottomLeftRadiusTablet
-	}
-
 	// Mobile
 	mobile_selectors['.wp-block-uagb-image .components-resizable-box__container'] = {
 		'width': generateCSSUnit(
@@ -539,7 +493,7 @@ export default function styling( props ) {
 		),
 	}
 
-	mobile_selectors['.wp-block-uagb-image--layout-default img'] = imageBorderCSSMobile;
+	mobile_selectors['.wp-block-uagb-image--layout-default figure'] = imageBorderCSSMobile;
 
 	mobile_selectors['.wp-block-uagb-image'] = {
 		'margin-top': generateCSSUnit(
@@ -632,12 +586,6 @@ export default function styling( props ) {
 		'height'    : mobileHeight + 'px'
 	}
 
-	mobile_selectors['.wp-block-uagb-image--layout-overlay .wp-block-uagb-image--layout-overlay__color-wrapper'] = {
-		'border-top-left-radius': borderTopLeftRadiusMobile,
-		'border-top-right-radius': borderTopRightRadiusMobile,
-		'border-bottom-right-radius': borderBottomRightRadiusMobile,
-		'border-bottom-left-radius': borderBottomLeftRadiusMobile
-	}
 	let styling_css = generateCSS( selectors, base_selector );
 
 	styling_css += generateCSS(
