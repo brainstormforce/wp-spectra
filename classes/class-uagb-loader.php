@@ -124,7 +124,11 @@ if ( ! class_exists( 'UAGB_Loader' ) ) {
 			require_once UAGB_DIR . 'classes/class-uagb-scripts-utils.php';
 			require_once UAGB_DIR . 'classes/class-uagb-filesystem.php';
 			require_once UAGB_DIR . 'classes/class-uagb-update.php';
-			require_once UAGB_DIR . 'admin/bsf-analytics/class-bsf-analytics.php';
+
+			// BSF Analytics.
+			if ( ! class_exists( 'BSF_Analytics_Loader' ) ) {
+				require_once UAGB_DIR . 'admin/bsf-analytics/class-bsf-analytics-loader.php';
+			}
 
 			$enable_templates_button = UAGB_Admin_Helper::get_admin_settings_option( 'uag_enable_templates_button', 'yes' );
 
@@ -175,13 +179,13 @@ if ( ! class_exists( 'UAGB_Loader' ) ) {
 
 			add_filter( 'rest_pre_dispatch', array( $this, 'rest_pre_dispatch' ), 10, 3 );
 
-				error_log( get_option( 'spectra_blocks_count_status' ) );
-				if( 'done' === get_option( 'spectra_blocks_count_status' ) ) {
-	
+			// error_log( get_option( 'spectra_blocks_count_status' ) );
+			// if( 'done' === get_option( 'spectra_blocks_count_status' ) ) {
+
 				// Active widgets data to analytics.
 				add_filter( 'bsf_core_stats', array( $this, 'spectra_specific_stats' ) );
 	
-			}
+			// }
 
 		}
 
@@ -192,9 +196,9 @@ if ( ! class_exists( 'UAGB_Loader' ) ) {
 		 * @param array $default_stats Default stats array.
 		 * @return array $default_stats Default stats with Spectra specific stats array.
 		 */
-		public function spectra_specific_stats( $default_stats ) {
+		function spectra_specific_stats( $default_stats ) {
 
-			error_log( "Hello Sush" );
+			error_log( "Hello - BSF analytics function is calling now" );
 
 			// $settings_data = Admin_Helper::get_options();
 			$blocks_count = get_option( 'get_spectra_block_count' );

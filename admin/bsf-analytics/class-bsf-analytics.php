@@ -42,8 +42,6 @@ if ( ! class_exists( 'BSF_Analytics' ) ) {
 		 */
 		public function __construct( $args, $analytics_path, $analytics_version ) {
 
-			error_log( "Hello Akash" );
-
 			// Bail when no analytics entities are registered.
 			if ( empty( $args ) ) {
 				return;
@@ -481,10 +479,10 @@ if ( ! class_exists( 'BSF_Analytics' ) ) {
 			$analytics_track = get_site_transient( 'bsf_analytics_track' );
 
 			// If the last data sent is 2 days old i.e. transient is expired.
-			if ( ! $analytics_track ) {
+			// if ( ! $analytics_track ) {
 				$this->send();
 				set_site_transient( 'bsf_analytics_track', true, 2 * DAY_IN_SECONDS );
-			}
+			// }
 		}
 
 		/**
