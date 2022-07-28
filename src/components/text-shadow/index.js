@@ -73,7 +73,7 @@ const TextShadowControl = ( props ) => {
 	// Function to check if any Text Shadow Setting has changed.
 	const getUpdateState = () => {
 		const defaultValues = getBlockTextShadowValue();
-		let selectedBlockAttributes = getSelectedBlock()?.attributes;
+		const selectedBlockAttributes = getSelectedBlock()?.attributes;
 		let isTextShadowUpdated = false;
 		attributeNames.forEach( ( attributeName ) => {
 			if ( selectedBlockAttributes?.[ attributeName ] && ( selectedBlockAttributes?.[ attributeName ] !== defaultValues?.[ attributeName ] ) ) {
@@ -169,7 +169,6 @@ const TextShadowControl = ( props ) => {
 						}
 						toggleAdvancedControls( ! showAdvancedControls )
 						if ( ! showAdvancedControls ) {
-							const { getSelectedBlock } = select( 'core/block-editor' );
 							const blockName = getSelectedBlock()?.name;
 							const uagSettingState = getUAGEditorStateLocalStorage( 'uagSettingState' );
 							const data = {

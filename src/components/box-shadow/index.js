@@ -79,7 +79,7 @@ const BoxShadowControl = ( props ) => {
 	// Function to check if any Box Shadow Setting has changed.
 	const getUpdateState = () => {
 		const defaultValues = getBlockBoxShadowValue();
-		let selectedBlockAttributes = getSelectedBlock()?.attributes;
+		const selectedBlockAttributes = getSelectedBlock()?.attributes;
 		let isBoxShadowUpdated = false;
 		attributeNames.forEach( ( attributeName ) => {
 			if ( selectedBlockAttributes?.[ attributeName ] && ( selectedBlockAttributes?.[ attributeName ] !== defaultValues?.[ attributeName ] ) ) {
@@ -222,7 +222,6 @@ const BoxShadowControl = ( props ) => {
 						}
 						toggleAdvancedControls( ! showAdvancedControls )
 						if ( ! showAdvancedControls ) {
-							const { getSelectedBlock } = select( 'core/block-editor' );
 							const blockName = getSelectedBlock()?.name;
 							const uagSettingState = getUAGEditorStateLocalStorage( 'uagSettingState' );
 							const data = {

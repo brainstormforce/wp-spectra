@@ -17,7 +17,6 @@ import React, { useLayoutEffect } from 'react';
 import { select } from '@wordpress/data'
 import getUAGEditorStateLocalStorage from '@Controls/getUAGEditorStateLocalStorage';
 import { blocksAttributes } from '@Controls/getBlocksDefaultAttributes';
-import { array } from 'prop-types';
 
 // Export for ease of importing in individual blocks.
 export { TypographyStyles };
@@ -145,7 +144,7 @@ const TypographyControl = ( props ) => {
 	// Function to check if any Typography Setting has changed.
 	const getUpdateState = () => {
 		const defaultValues = getBlockTypographyValue();
-		let selectedBlockAttributes = getSelectedBlock()?.attributes;
+		const selectedBlockAttributes = getSelectedBlock()?.attributes;
 		let isTypographyUpdated = false;
 		attributeNames.forEach( ( attributeName ) => {
 			if ( selectedBlockAttributes?.[ attributeName ] && ( selectedBlockAttributes?.[ attributeName ] !== defaultValues?.[ attributeName ] ) ) {
@@ -342,7 +341,6 @@ const TypographyControl = ( props ) => {
 						toggleAdvancedControls( ! showAdvancedControls )
 
 						if ( ! showAdvancedControls ) {
-							const { getSelectedBlock } = select( 'core/block-editor' );
 							const blockName = getSelectedBlock()?.name;
 							const uagSettingState = getUAGEditorStateLocalStorage( 'uagSettingState' );
 							const data = {
