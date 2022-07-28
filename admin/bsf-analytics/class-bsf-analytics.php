@@ -42,6 +42,8 @@ if ( ! class_exists( 'BSF_Analytics' ) ) {
 		 */
 		public function __construct( $args, $analytics_path, $analytics_version ) {
 
+			error_log( "Hello Akash" );
+
 			// Bail when no analytics entities are registered.
 			if ( empty( $args ) ) {
 				return;

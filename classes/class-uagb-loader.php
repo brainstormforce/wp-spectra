@@ -64,9 +64,6 @@ if ( ! class_exists( 'UAGB_Loader' ) ) {
 			add_action( 'plugins_loaded', array( $this, 'load_plugin' ) );
 
 			add_action( 'init', array( $this, 'init_actions' ) );
-
-			// Need to add library before the plugin loaded. https://actionscheduler.org/usage/.
-			require_once UAGB_DIR . '/lib/action-scheduler/action-scheduler.php';
 		}
 
 		/**
@@ -154,6 +151,9 @@ if ( ! class_exists( 'UAGB_Loader' ) ) {
 
 			$this->load_textdomain();
 
+			// Need to add library before the plugin loaded. https://actionscheduler.org/usage/.
+			require_once UAGB_DIR . '/lib/action-scheduler/action-scheduler.php';
+
 			require_once UAGB_DIR . 'blocks-config/blocks-config.php';
 			require_once UAGB_DIR . 'lib/astra-notices/class-astra-notices.php';
 
@@ -175,6 +175,37 @@ if ( ! class_exists( 'UAGB_Loader' ) ) {
 
 			add_filter( 'rest_pre_dispatch', array( $this, 'rest_pre_dispatch' ), 10, 3 );
 
+				error_log( get_option( 'spectra_blocks_count_status' ) );
+				if( 'done' === get_option( 'spectra_blocks_count_status' ) ) {
+	
+				// Active widgets data to analytics.
+				add_filter( 'bsf_core_stats', array( $this, 'spectra_specific_stats' ) );
+	
+			}
+
+		}
+
+		/**
+		 * Pass Spectra specific stats to BSF analytics.
+		 *
+		 * @since x.x.x
+		 * @param array $default_stats Default stats array.
+		 * @return array $default_stats Default stats with Spectra specific stats array.
+		 */
+		public function spectra_specific_stats( $default_stats ) {
+
+			error_log( "Hello Sush" );
+
+			// $settings_data = Admin_Helper::get_options();
+			$blocks_count = get_option( 'get_spectra_block_count' );
+
+			$default_stats['spectra_settings'] = array(
+				'spectra_version'  	=> UAGB_VER,
+				// 'settings_data'		=> $settings_data,
+				'blocks_count'		=> $blocks_count,
+			);
+
+			return $default_stats;
 		}
 
 		/**

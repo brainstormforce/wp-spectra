@@ -83,27 +83,6 @@ class Admin_Menu {
 	}
 
 	/**
-	 * Pass Spectra specific stats to BSF analytics.
-	 *
-	 * @since x.x.x
-	 * @param array $default_stats Default stats array.
-	 * @return array $default_stats Default stats with Spectra specific stats array.
-	 */
-	public function spectra_specific_stats( $default_stats ) {
-
-		$settings_data = Admin_Helper::get_options();
-		$blocks_count = get_option( 'get_spectra_block_count' );
-
-		$default_stats['spectra_settings'] = array(
-			'spectra_version'  	=> UAGB_VER,
-			'settings_data'		=> $settings_data,
-			'blocks_count'		=> $blocks_count,
-		);
-
-		return $default_stats;
-	}
-
-	/**
 	 * Show action on plugin page.
 	 *
 	 * @param  array $links links.
@@ -134,12 +113,10 @@ class Admin_Menu {
 
 		if( 'done' === get_option( 'spectra_blocks_count_status' ) ) {
 
-			// Active widgets data to analytics.
-			add_filter( 'bsf_core_stats', array( $this, 'spectra_specific_stats' ) );
-
-			if ( function_exists( 'as_next_scheduled_action' ) && false === \as_next_scheduled_action('spectra_analytics_count_action') ) {
+			if ( function_exists( 'as_next_scheduled_action' ) && false === \as_next_scheduled_action('spectra_analytics_count_actions') ) {
 				// It will automatically reschedule the action once initiated.
-				as_schedule_recurring_action( strtotime("now"), 2 * WEEK_IN_SECONDS, 'spectra_analytics_count_action' );
+				// as_schedule_recurring_action( strtotime("now"), 2 * WEEK_IN_SECONDS, 'spectra_analytics_count_actions' );
+				as_schedule_recurring_action( strtotime("now"), MINUTE_IN_SECONDS, 'spectra_analytics_count_actions' );
 			}
 		}
 	}
