@@ -54,7 +54,6 @@ class BSF_Analytics_Loader {
 	 * @return object
 	 */
 	public static function get_instance() {
-
 		if ( null === self::$instance ) {
 			self::$instance = new self();
 		}
@@ -66,7 +65,7 @@ class BSF_Analytics_Loader {
 	 * Constructor
 	 */
 	public function __construct() {
-		
+		error_log( "2Mummy" );
 		add_action( 'init', array( $this, 'load_analytics' ) );
 	}
 
