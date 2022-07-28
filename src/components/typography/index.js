@@ -110,27 +110,31 @@ const TypographyControl = ( props ) => {
 				return attributeName;
 			} );
 		}
-		console.log( defaultValues );
 		return defaultValues;
 	}
 
 	// Function to check if any Typography Setting has changed.
 	const getUpdateState = () => {
 		const defaultValues = getBlockTypographyValue();
-		const selectedBlockAttributes = getSelectedBlock()?.attributes;
-		console.log( selectedBlockAttributes );
+		let selectedBlockAttributes = getSelectedBlock()?.attributes;
 		let isTypographyUpdated = false;
-		attributeNames.map( ( attributeName ) => {
-			if ( selectedBlockAttributes?.[ attributeName ] !== defaultValues?.[ attributeName ] ) {
-				console.log( '-------' );
-				console.log( attributeName );
-				console.log( selectedBlockAttributes?.[ attributeName ] );
-				console.log( defaultValues?.[ attributeName ] );
+		attributeNames.forEach( ( attributeName ) => {
+			if (
+				( undefined !== selectedBlockAttributes?.[ attributeName ] )
+				&& ( selectedBlockAttributes?.[ attributeName ] !== defaultValues?.[ attributeName ] )
+			) {
+				console.log( `%c${ attributeName }`, 'color: YellowGreen;' );
+				console.log( `Current: ${ selectedBlockAttributes?.[ attributeName ] }` );
+				console.log( `Default: ${ defaultValues?.[ attributeName ] }` );
 				isTypographyUpdated = true;
 			}
-			return attributeName;
+			else {
+				console.log( `%c${ attributeName }`, 'color: IndianRed;' );
+				console.log( `Current: ${ selectedBlockAttributes?.[ attributeName ] }` );
+				console.log( `Default: ${ defaultValues?.[ attributeName ] }` );
+			}
 		} );
-		console.log( `%c${ isTypographyUpdated }`, 'font-size: 3em; color: yellowgreen;' );
+		console.log( `%c${ isTypographyUpdated }`, isTypographyUpdated ? 'font-size: 3em; color: YellowGreen;' : 'font-size: 3em; color: IndianRed;' );
 		return isTypographyUpdated;
 	};
 
