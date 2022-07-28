@@ -325,6 +325,10 @@ const attributes = {
 		default: true,
 		isUAGStyle: true,
 	},
+	sizeChild: {
+		type: 'number',
+		default: 16,
+	},
 };
 
 export default attributes;

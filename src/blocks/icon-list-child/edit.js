@@ -21,6 +21,7 @@ const Render = lazy( () =>
 
 let hideLabel;
 let parentIcon;
+let sizeChild;
 
 const UAGBIconListChild = ( props ) => {
 
@@ -54,10 +55,15 @@ const UAGBIconListChild = ( props ) => {
 	).getBlockAttributes( parentBlock );
 	hideLabel = ( parentBlockAttributes || null !== parentBlockAttributes ) ? parentBlockAttributes.hideLabel : '';
 	parentIcon = ( parentBlockAttributes || null !== parentBlockAttributes ) ? parentBlockAttributes.parentIcon : '';
+	sizeChild = ( parentBlockAttributes || null !== parentBlockAttributes ) ? parentBlockAttributes.size : '';
 
 	useEffect( () => {
 		props.setAttributes( { fromParentIcon : parentIcon } )
 	}, [ parentIcon ] )
+
+	useEffect( () => {
+		props.setAttributes( { sizeChild } )
+	}, [ sizeChild ] )
 
 	return (
 		<Suspense fallback={ lazyLoader() }>

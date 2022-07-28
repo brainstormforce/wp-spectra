@@ -21,7 +21,8 @@ export default function save( props ) {
 		target,
 		disableLink,
 		hideLabel,
-		fromParentIcon
+		fromParentIcon,
+		sizeChild
 	} = attributes;
 
 	let imageIconHtml = '';
@@ -36,6 +37,8 @@ export default function save( props ) {
 				className="uagb-icon-list__source-image"
 				src={ image.url }
 				alt={ image.alt }
+				width={sizeChild}
+				loading="lazy"
 			/>
 		);
 	}

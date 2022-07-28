@@ -28,7 +28,8 @@ const Render = ( props ) => {
 		target,
 		disableLink,
 		hideLabel,
-		fromParentIcon
+		fromParentIcon,
+		sizeChild
 	} = attributes;
 
 	const deviceType = useDeviceType();
@@ -45,6 +46,8 @@ const Render = ( props ) => {
 				className="uagb-icon-list__source-image"
 				alt=""
 				src={ image.url }
+				width={sizeChild}
+				loading="lazy"
 			/>
 		);
 	}
