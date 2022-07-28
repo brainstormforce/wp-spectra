@@ -38,9 +38,9 @@ $width_mobile = '' !== $attr['widthMobile'] ? $attr['widthMobile'] . 'px' : $wid
 $height_tablet = '' !== $attr['heightTablet'] ? $attr['heightTablet'] . 'px' : $attr['height'] . 'px';
 $height_mobile = '' !== $attr['heightMobile'] ? $attr['heightMobile'] . 'px' : $height_tablet;
 
-$gen_border_unit  = isset( $attr[ 'imageBorderRadiusUnit' ] ) ? $attr[ 'imageBorderRadiusUnit' ] : 'px';
-$gen_border_unit_tablet  = isset( $attr[ 'imageBorderRadiusUnitTablet' ] ) ? $attr[ 'imageBorderRadiusUnitTablet' ] : 'px';
-$gen_border_unit_mobile  = isset( $attr[ 'imageBorderRadiusUnitMobile' ] ) ? $attr[ 'imageBorderRadiusUnitMobile' ] : 'px';
+$gen_border_unit        = isset( $attr['imageBorderRadiusUnit'] ) ? $attr['imageBorderRadiusUnit'] : 'px';
+$gen_border_unit_tablet = isset( $attr['imageBorderRadiusUnitTablet'] ) ? $attr['imageBorderRadiusUnitTablet'] : 'px';
+$gen_border_unit_mobile = isset( $attr['imageBorderRadiusUnitMobile'] ) ? $attr['imageBorderRadiusUnitMobile'] : 'px';
 
 $selectors = array(
 	'.wp-block-uagb-image'                     => array(
@@ -78,12 +78,12 @@ $selectors = array(
 	),
 	// overlay.
 	'.wp-block-uagb-image--layout-overlay .wp-block-uagb-image--layout-overlay__color-wrapper' => array(
-		'background' => $attr['overlayBackground'],
-		'opacity'    => $overlay_opacity_fallback,
-		'border-top-left-radius'     => UAGB_Helper::get_css_value( $attr[ 'imageBorderTopLeftRadius' ], $gen_border_unit ),
-		'border-top-right-radius'    => UAGB_Helper::get_css_value( $attr[ 'imageBorderTopRightRadius' ], $gen_border_unit ),
-		'border-bottom-left-radius'  => UAGB_Helper::get_css_value( $attr[ 'imageBorderBottomLeftRadius' ], $gen_border_unit ),
-		'border-bottom-right-radius' => UAGB_Helper::get_css_value( $attr[ 'imageBorderBottomRightRadius' ], $gen_border_unit ),
+		'background'                 => $attr['overlayBackground'],
+		'opacity'                    => $overlay_opacity_fallback,
+		'border-top-left-radius'     => UAGB_Helper::get_css_value( $attr['imageBorderTopLeftRadius'], $gen_border_unit ),
+		'border-top-right-radius'    => UAGB_Helper::get_css_value( $attr['imageBorderTopRightRadius'], $gen_border_unit ),
+		'border-bottom-left-radius'  => UAGB_Helper::get_css_value( $attr['imageBorderBottomLeftRadius'], $gen_border_unit ),
+		'border-bottom-right-radius' => UAGB_Helper::get_css_value( $attr['imageBorderBottomRightRadius'], $gen_border_unit ),
 	),
 	'.wp-block-uagb-image--layout-overlay .wp-block-uagb-image--layout-overlay__inner' => array_merge(
 		$overlay_border_css,
@@ -209,10 +209,10 @@ $t_selectors['.wp-block-uagb-image .wp-block-uagb-image__figure img'] = array(
 );
 // overlay.
 $t_selectors['.wp-block-uagb-image--layout-overlay .wp-block-uagb-image--layout-overlay__color-wrapper'] = array(
-	'border-top-left-radius'     => UAGB_Helper::get_css_value( $attr[ 'imageBorderTopLeftRadiusTablet' ], $gen_border_unit_tablet ),
-	'border-top-right-radius'    => UAGB_Helper::get_css_value( $attr[ 'imageBorderTopRightRadiusTablet' ], $gen_border_unit_tablet ),
-	'border-bottom-left-radius'  => UAGB_Helper::get_css_value( $attr[ 'imageBorderBottomLeftRadiusTablet' ], $gen_border_unit_tablet ),
-	'border-bottom-right-radius' => UAGB_Helper::get_css_value( $attr[ 'imageBorderBottomRightRadiusTablet' ], $gen_border_unit_tablet ),
+	'border-top-left-radius'     => UAGB_Helper::get_css_value( $attr['imageBorderTopLeftRadiusTablet'], $gen_border_unit_tablet ),
+	'border-top-right-radius'    => UAGB_Helper::get_css_value( $attr['imageBorderTopRightRadiusTablet'], $gen_border_unit_tablet ),
+	'border-bottom-left-radius'  => UAGB_Helper::get_css_value( $attr['imageBorderBottomLeftRadiusTablet'], $gen_border_unit_tablet ),
+	'border-bottom-right-radius' => UAGB_Helper::get_css_value( $attr['imageBorderBottomRightRadiusTablet'], $gen_border_unit_tablet ),
 );
 
 // mobile.
@@ -255,10 +255,10 @@ $m_selectors['.wp-block-uagb-image .wp-block-uagb-image__figure img'] = array(
 );
 // overlay.
 $m_selectors['.wp-block-uagb-image--layout-overlay .wp-block-uagb-image--layout-overlay__color-wrapper'] = array(
-	'border-top-left-radius'     => UAGB_Helper::get_css_value( $attr[ 'imageBorderTopLeftRadiusMobile' ], $gen_border_unit_mobile ),
-	'border-top-right-radius'    => UAGB_Helper::get_css_value( $attr[ 'imageBorderTopRightRadiusMobile' ], $gen_border_unit_mobile ),
-	'border-bottom-left-radius'  => UAGB_Helper::get_css_value( $attr[ 'imageBorderBottomLeftRadiusMobile' ], $gen_border_unit_mobile ),
-	'border-bottom-right-radius' => UAGB_Helper::get_css_value( $attr[ 'imageBorderBottomRightRadiusMobile' ], $gen_border_unit_mobile ),
+	'border-top-left-radius'     => UAGB_Helper::get_css_value( $attr['imageBorderTopLeftRadiusMobile'], $gen_border_unit_mobile ),
+	'border-top-right-radius'    => UAGB_Helper::get_css_value( $attr['imageBorderTopRightRadiusMobile'], $gen_border_unit_mobile ),
+	'border-bottom-left-radius'  => UAGB_Helper::get_css_value( $attr['imageBorderBottomLeftRadiusMobile'], $gen_border_unit_mobile ),
+	'border-bottom-right-radius' => UAGB_Helper::get_css_value( $attr['imageBorderBottomRightRadiusMobile'], $gen_border_unit_mobile ),
 );
 
 $combined_selectors = array(
