@@ -21,7 +21,7 @@ const Render = ( props ) => {
 	const {
 		className,
 		setAttributes,
-		attributes: { isPreview, rating, range, title, displayTitle },
+		attributes: { isPreview, rating, range, title, displayTitle, StarPosition },
 	} = props;
 
 	const rangeValue = parseInt( range );
@@ -40,9 +40,48 @@ const Render = ( props ) => {
 			className={ classnames(
 				className,
 				`uagb-editor-preview-mode-${ deviceType.toLowerCase() }`,
-				`uagb-block-${ props.clientId.substr( 0, 8 ) }`
+				`uagb-star-position-${ StarPosition }`,
+				`uagb-block-${ props.clientId.substr( 0, 8 ) }`,
 			) }
 		>
+			{/* { 'after' === StarPosition && (
+				<>
+				{ displayTitle && (
+					<RichText
+						tagName="p"
+						placeholder={ __(
+							'Write a title',
+							'ultimate-addons-for-gutenberg'
+						) }
+						value={ title }
+						className="uag-star-rating__title"
+						onChange={ ( value ) => setAttributes( { title: value } ) }
+					/>
+				) }
+				<div className="uag-star-rating" title={ `${ rating }/${ range }` }>
+					{ stars }
+				</div>
+				</>
+			) }
+			{ 'before' === StarPosition && (
+				<>
+				<div className="uag-star-rating" title={ `${ rating }/${ range }` }>
+					{ stars }
+				</div>
+				{ displayTitle && (
+					<RichText
+						tagName="p"
+						placeholder={ __(
+							'Write a title',
+							'ultimate-addons-for-gutenberg'
+						) }
+						value={ title }
+						className="uag-star-rating__title"
+						onChange={ ( value ) => setAttributes( { title: value } ) }
+					/>
+				) }
+				</>
+			) } */}
 			{ displayTitle && (
 				<RichText
 					tagName="p"

@@ -80,6 +80,9 @@ function styling( props ) {
 		blockMarginUnit,
 		blockMarginUnitTablet,
 		blockMarginUnitMobile,
+		StarPosition,
+		StarPositionTablet,
+		StarPositionMobile
 	} = props.attributes;
 
 	const ratingFallback = getFallbackNumber( rating, 'rating', blockName );
@@ -88,19 +91,9 @@ function styling( props ) {
 	const gapFallback = getFallbackNumber( gap, 'gap', blockName );
 
 	let stackAlignment = align;
-	let stackAlignmentTablet = alignTablet;
-	let stackAlignmentMobile = alignMobile;
 
 	if ( 'full' === align ) {
 		stackAlignment = 'left';
-	}
-
-	if ( 'full' === alignTablet ) {
-		stackAlignmentTablet = 'left';
-	}
-
-	if ( 'full' === alignMobile ) {
-		stackAlignmentMobile = 'left';
 	}
 
 	const flexJustifyContent = ( JustifyContent ) => {
@@ -122,18 +115,14 @@ function styling( props ) {
 		return alignment;
 	}
 
-	// Since title text is set to flex, we need this function so that stack alignment doesn't break.
-	// It converts the normal text-align values to flex-alignment based values.
-	function flexAlignment( textAlign ) {
-
-		switch ( textAlign ) {
-
-			case 'left': return 'start';
+	//for flex-direction: row-reverse, justify-content work opposite.
+	function flexAlignmentWhenDirectionIsRowReverse( textAlign ) {
+		switch ( flexJustifyContent( textAlign ) ){
+			case 'flex-end': return 'flex-start';
 			case 'center': return 'center';
-			case 'right': return 'end';
-			default: return 'start';
+			case 'space-between': return 'space-between';
+			default: return 'flex-end'
 		}
-
 	}
 
 	const remainder = ( ratingFallback % 1 ).toFixed( 1 );
@@ -202,24 +191,34 @@ function styling( props ) {
 	};
 	let index = 'margin-right';
 	if ( 'stack' === layout ) {
-		index = 'margin-bottom';
-		selectors[ '.wp-block-uagb-star-rating ' ] = {
-			'display' : 'block',
-			'text-align': stackAlignment,
+		if( 'before' === StarPosition ){
+			index = 'margin-top';
+			selectors[ '.wp-block-uagb-star-rating.uagb-star-position-before' ] = {
+				'flex-direction': 'column-reverse',
+				'align-items': flexJustifyContent( align ), // To align-item in flex-direction column-reverse.
+			}
+		} else if( 'after' === StarPosition ) {
+			index = 'margin-bottom';
+		}
+
+		selectors[ '.wp-block-uagb-star-rating' ] = {
+			'flex-direction' : 'column', // Stack layout using flex.
+			'align-items' : flexJustifyContent( align ), // To align-item in flex-direction column.
 			...wrapperCSS
 		};
+	} else if( 'inline' === layout ) {
+		if( 'before' === StarPosition ){
+			index = 'margin-left';
 
-		// Since title text is set to flex, we need this property that aligns flex objects.
-		selectors[ ' .uag-star-rating__title' ] = {
-			'justify-content': flexAlignment( stackAlignment ),
-		};
-		selectors[ ' div.uag-star-rating ' ] = {
-			'justify-content': flexAlignment( stackAlignment ),
-		};
-	} else {
-		index = 'margin-right';
-		selectors[ '.wp-block-uagb-star-rating ' ] = {
-			'display' : 'flex',
+			selectors[ '.wp-block-uagb-star-rating.uagb-star-position-before' ] = {
+				'flex-direction': 'row-reverse',
+				'justify-content': flexAlignmentWhenDirectionIsRowReverse( align ),
+			}
+		} else if( 'after' === StarPosition ) {
+			index = 'margin-right';
+		}
+		selectors[ '.wp-block-uagb-star-rating' ] = {
+			'flex-direction' : 'row', // inline layout using flex.
 			'justify-content' : flexJustifyContent( align ),
 			...wrapperCSS
 		};
@@ -303,33 +302,36 @@ function styling( props ) {
 
 	let indexTablet = 'margin-right';
 	if ( 'stack' === layoutTablet ) {
-		indexTablet = 'margin-bottom';
+		if( 'before' === StarPositionTablet ){
+			indexTablet = 'margin-top';
+			tabletSelectors[ '.wp-block-uagb-star-rating.uagb-star-position-before ' ] = {
+				'flex-direction': 'column-reverse',
+				'align-items': flexJustifyContent( alignTablet ), // To align-item in flex-direction column-reverse.
+			}
+		} else if( 'after' === StarPositionTablet ) {
+			indexTablet = 'margin-bottom';
+		}
 		tabletSelectors[ '.wp-block-uagb-star-rating ' ] = {
-			'display' : 'block',
-			'text-align': stackAlignmentTablet,
+			'flex-direction': 'column',
+			'align-items': flexJustifyContent( alignTablet ), // To align-item in flex-direction column.
 			...wrapperCSSTablet
 		};
-
-		// Keeping this here, in case responsive alignment is added in the future.
-		// Since title text is set to flex, we need this property that aligns flex objects.
-		tabletSelectors[ ' .uag-star-rating__title' ] = {
-			'justify-content': flexAlignment( stackAlignmentTablet ),
-			'margin-right' : 0,
-		};
-
-		tabletSelectors[ ' div.uag-star-rating' ] = {
-			'justify-content': flexAlignment( stackAlignmentTablet ),
-		};
-	} else {
+	}  else if( 'inline' === layoutTablet ) {
 		indexTablet = 'margin-right';
+		if( 'before' === StarPositionTablet ){
+
+			indexTablet = 'margin-left';
+			tabletSelectors[ '.wp-block-uagb-star-rating.uagb-star-position-before ' ] = {
+				'flex-direction': 'row-reverse',
+				'justify-content': flexAlignmentWhenDirectionIsRowReverse( alignTablet ),
+			}
+		} else if( 'after' === StarPositionTablet ) {
+			indexTablet = 'margin-right';
+		}
 		tabletSelectors[ '.wp-block-uagb-star-rating ' ] = {
-			'display' : 'flex',
+			'flex-direction': 'row',
 			'justify-content' : flexJustifyContent( alignTablet ),
 			...wrapperCSSTablet
-		};
-		tabletSelectors[ ' p.block-editor-rich-text__editable.uag-star-rating__title ' ] = {
-			'justify-content': flexAlignment( stackAlignmentTablet ),
-			'margin-bottom' : 0,
 		};
 	}
 
@@ -387,27 +389,33 @@ function styling( props ) {
 
 	let indexMobile = 'margin-right';
 	if ( 'stack' === layoutMobile ) {
-		indexMobile = 'margin-bottom';
+		if( 'before' === StarPositionMobile ){
+			indexMobile = 'margin-top';
+			mobileSelectors[ '.wp-block-uagb-star-rating.uagb-star-position-before ' ] = {
+				'flex-direction': 'column-reverse',
+				'align-items': flexJustifyContent( alignMobile ), // To align-item in flex-direction column-reverse.
+			}
+		} else if( 'after' === StarPositionMobile ) {
+			indexMobile = 'margin-bottom';
+		}
 		mobileSelectors[ '.wp-block-uagb-star-rating ' ] = {
-			'display' : 'block',
-			'text-align': stackAlignmentMobile,
+			'flex-direction': 'column',
 			...wrapperCSSMobile
 		};
+	}  else if( 'inline' === layoutMobile ) {
+		if( 'before' === StarPositionMobile ){
 
-		// Keeping this here, in case responsive alignment is added in the future.
-		// Since title text is set to flex, we need this property that aligns flex objects.
-		mobileSelectors[ ' .uag-star-rating__title' ] = {
-			'justify-content': flexAlignment( stackAlignmentMobile ),
-			'margin-right' : 0,
-		};
-		mobileSelectors[ ' div.uag-star-rating ' ] = {
-			'justify-content': flexAlignment( stackAlignmentMobile ),
-		};
-	} else {
-		indexMobile = 'margin-right';
+			indexMobile = 'margin-left';
+			mobileSelectors[ '.wp-block-uagb-star-rating.uagb-star-position-before ' ] = {
+				'flex-direction': 'row-reverse',
+				'justify-content': flexAlignmentWhenDirectionIsRowReverse( alignMobile ) ,
+			}
+		} else if( 'after' === StarPositionMobile ) {
+			indexMobile = 'margin-right';
+		}
 		mobileSelectors[ '.wp-block-uagb-star-rating ' ] = {
-			'display' : 'flex',
-			'justify-content' : flexJustifyContent( alignMobile ),
+			'flex-direction': 'row',
+			'justify-content': flexAlignmentWhenDirectionIsRowReverse( alignMobile ),
 			'margin-bottom' : 0,
 			...wrapperCSSMobile
 		};

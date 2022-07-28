@@ -11,14 +11,12 @@ const attributes = {
 	},
 	layoutTablet: {
 		type: 'string',
-		default: 'inline',
 		UAGCopyPaste: {
 			styleType: 'layout-tablet'
 		},
 	},
 	layoutMobile: {
 		type: 'string',
-		default: 'stack',
 		UAGCopyPaste: {
 			styleType: 'layout-mobile'
 		},
@@ -481,6 +479,27 @@ const attributes = {
 		default: false,
 		isUAGStyle: true,
 	},
+	StarPosition: {
+		type: 'string',
+		default: 'after',
+		UAGCopyPaste: {
+			styleType: 'image-position'
+		},
+	},
+	StarPositionTablet: {
+		type: 'string',
+		default: 'after',
+		UAGCopyPaste: {
+			styleType: 'image-position'
+		},
+	},
+	StarPositionMobile: {
+		type: 'string',
+		default: 'after',
+		UAGCopyPaste: {
+			styleType: 'image-position'
+		},
+	}
 };
 
 export default attributes;
