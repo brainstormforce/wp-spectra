@@ -123,16 +123,16 @@ const TypographyControl = ( props ) => {
 				( undefined !== selectedBlockAttributes?.[ attributeName ] )
 				&& ( selectedBlockAttributes?.[ attributeName ] !== defaultValues?.[ attributeName ] )
 			) {
-				console.log( `%c${ attributeName }`, 'color: YellowGreen;' );
-				console.log( `Current: ${ selectedBlockAttributes?.[ attributeName ] }` );
-				console.log( `Default: ${ defaultValues?.[ attributeName ] }` );
+				// console.log( `%c${ attributeName }`, 'color: YellowGreen;' );
+				// console.log( `Current: ${ selectedBlockAttributes?.[ attributeName ] }` );
+				// console.log( `Default: ${ defaultValues?.[ attributeName ] }` );
 				isTypographyUpdated = true;
 			}
-			else {
-				console.log( `%c${ attributeName }`, 'color: IndianRed;' );
-				console.log( `Current: ${ selectedBlockAttributes?.[ attributeName ] }` );
-				console.log( `Default: ${ defaultValues?.[ attributeName ] }` );
-			}
+			// else {
+			// 	console.log( `%c${ attributeName }`, 'color: IndianRed;' );
+			// 	console.log( `Current: ${ selectedBlockAttributes?.[ attributeName ] }` );
+			// 	console.log( `Default: ${ defaultValues?.[ attributeName ] }` );
+			// }
 		} );
 		console.log( `%c${ isTypographyUpdated }`, isTypographyUpdated ? 'font-size: 3em; color: YellowGreen;' : 'font-size: 3em; color: IndianRed;' );
 		return isTypographyUpdated;
@@ -265,9 +265,16 @@ const TypographyControl = ( props ) => {
 					setAttributes={ props.setAttributes }
 					options={ [
 						{
-							value: 'none',
+							value: '',
 							label: __(
 								'Default',
+								'ultimate-addons-for-gutenberg'
+							),
+						},
+						{
+							value: 'none',
+							label: __(
+								'None',
 								'ultimate-addons-for-gutenberg'
 							),
 						},
