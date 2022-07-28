@@ -156,7 +156,6 @@ export default function styling( props ) {
 		captionLetterSpacingTablet,
 		captionLetterSpacingMobile,
 		captionLetterSpacingType,
-
 		// Image Border radius
 		imageBorderTopLeftRadius,
 		imageBorderTopRightRadius,
