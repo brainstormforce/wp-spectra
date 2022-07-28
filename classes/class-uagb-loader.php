@@ -196,7 +196,7 @@ if ( ! class_exists( 'UAGB_Loader' ) ) {
 		 * @param array $default_stats Default stats array.
 		 * @return array $default_stats Default stats with Spectra specific stats array.
 		 */
-		function spectra_specific_stats( $default_stats ) {
+		public function spectra_specific_stats( $default_stats ) {
 
 			error_log( "Hello - BSF analytics function is calling now" );
 
