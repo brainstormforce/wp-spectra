@@ -38,10 +38,6 @@ $width_mobile = '' !== $attr['widthMobile'] ? $attr['widthMobile'] . 'px' : $wid
 $height_tablet = '' !== $attr['heightTablet'] ? $attr['heightTablet'] . 'px' : $attr['height'] . 'px';
 $height_mobile = '' !== $attr['heightMobile'] ? $attr['heightMobile'] . 'px' : $height_tablet;
 
-$gen_border_unit        = isset( $attr['imageBorderRadiusUnit'] ) ? $attr['imageBorderRadiusUnit'] : 'px';
-$gen_border_unit_tablet = isset( $attr['imageBorderRadiusUnitTablet'] ) ? $attr['imageBorderRadiusUnitTablet'] : 'px';
-$gen_border_unit_mobile = isset( $attr['imageBorderRadiusUnitMobile'] ) ? $attr['imageBorderRadiusUnitMobile'] : 'px';
-
 $selectors = array(
 	'.wp-block-uagb-image'                     => array(
 		'margin-top'    => UAGB_Helper::get_css_value( $attr['imageTopMargin'], $attr['imageMarginUnit'] ),
