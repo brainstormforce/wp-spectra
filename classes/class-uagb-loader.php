@@ -196,7 +196,7 @@ if ( ! class_exists( 'UAGB_Loader' ) ) {
 			if( 'done' === get_option( 'spectra_blocks_count_status' ) ) {
 
 				// Active widgets data to analytics.
-				// add_filter( 'bsf_core_stats', array( $this, 'spectra_specific_stats' ) );
+				add_filter( 'bsf_core_stats', array( $this, 'spectra_specific_stats' ) );
 	
 			}
 
