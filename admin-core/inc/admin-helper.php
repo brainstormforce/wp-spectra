@@ -148,6 +148,12 @@ class Admin_Helper {
 
 		$options = apply_filters( 'uag_global_data_options', $options );
 
+		$setting_data = get_option( 'spectra_settings_data' );
+
+		if( ! $setting_data ) {
+			update_option( 'spectra_settings_data', $options );
+		}
+
 		return $options;
 	}
 

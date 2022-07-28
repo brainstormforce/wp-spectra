@@ -65,7 +65,6 @@ class BSF_Analytics_Loader {
 	 * Constructor
 	 */
 	public function __construct() {
-		error_log( "2Mummy" );
 		add_action( 'init', array( $this, 'load_analytics' ) );
 	}
 

@@ -192,7 +192,6 @@ if ( ! class_exists( 'UAGB_Loader' ) ) {
 
 			add_filter( 'rest_pre_dispatch', array( $this, 'rest_pre_dispatch' ), 10, 3 );
 
-			// error_log( get_option( 'spectra_blocks_count_status' ) );
 			if( 'done' === get_option( 'spectra_blocks_count_status' ) ) {
 
 				// Active widgets data to analytics.
@@ -211,12 +210,12 @@ if ( ! class_exists( 'UAGB_Loader' ) ) {
 		 */
 		public function spectra_specific_stats( $default_stats ) {
 
-			// $settings_data = Admin_Helper::get_options();
+			$settings_data = get_option( 'spectra_settings_data' );
 			$blocks_count = get_option( 'get_spectra_block_count' );
 
 			$default_stats['spectra_settings'] = array(
 				'spectra_version'  	=> UAGB_VER,
-				// 'settings_data'		=> $settings_data,
+				'settings_data'		=> $settings_data,
 				'blocks_count'		=> $blocks_count,
 			);
 
