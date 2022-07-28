@@ -17,6 +17,7 @@ import React, { useLayoutEffect } from 'react';
 import { select } from '@wordpress/data'
 import getUAGEditorStateLocalStorage from '@Controls/getUAGEditorStateLocalStorage';
 import { blocksAttributes } from '@Controls/getBlocksDefaultAttributes';
+import { array } from 'prop-types';
 
 // Export for ease of importing in individual blocks.
 export { TypographyStyles };
@@ -72,25 +73,54 @@ const TypographyControl = ( props ) => {
 	const letterSpacingStepsVal = ( 'em' === props.letterSpacingType?.value ? 0.1 : 1 ); // fractional value when unit is em.
 
 	// Array of all the current Typography Control's Labels.
-	const attributeNames = [
-		props.fontFamily.label,
-		props.fontWeight.label,
-		props.fontStyle.label,
-		props.transform.label,
-		props.decoration.label,
-		props.fontSizeType.label,
-		props.fontSize.label,
-		props.fontSizeMobile.label,
-		props.fontSizeTablet.label,
-		props.lineHeightType.label,
-		props.lineHeight.label,
-		props.lineHeightMobile.label,
-		props.lineHeightTablet.label,
-		props.letterSpacing.label,
-		props.letterSpacingTablet.label,
-		props.letterSpacingMobile.label,
-		props.letterSpacingType.label,
-	];
+	const attributeNames = [];
+
+	if ( ! disableFontFamily ) {
+		attributeNames.push(
+			props.fontFamily.label,
+			props.fontWeight.label,
+			props.fontStyle.label,
+		);
+	}
+
+	if ( ! disableFontSize ) {
+		attributeNames.push(
+			props.fontSizeType.label,
+			props.fontSize.label,
+			props.fontSizeMobile.label,
+			props.fontSizeTablet.label,
+		);
+	}
+
+	if ( ! disableLineHeight ) {
+		attributeNames.push(
+			props.lineHeightType.label,
+			props.lineHeight.label,
+			props.lineHeightMobile.label,
+			props.lineHeightTablet.label,
+		);
+	}
+
+	if ( ! disableTransform ) {
+		attributeNames.push(
+			props.transform.label,
+		);
+	}
+
+	if ( ! disableDecoration ) {
+		attributeNames.push(
+			props.decoration.label,
+		);
+	}
+
+	if ( props.letterSpacing ) {
+		attributeNames.push(
+			props.letterSpacing.label,
+			props.letterSpacingTablet.label,
+			props.letterSpacingMobile.label,
+			props.letterSpacingType.label,
+		);
+	}
 
 	const { getSelectedBlock } = select( 'core/block-editor' );
 
@@ -99,7 +129,7 @@ const TypographyControl = ( props ) => {
 		const selectedBlockName = getSelectedBlock()?.name.replace( 'uagb/', '' );
 		let defaultValues = false;
 		if ( 'undefined' !== typeof blocksAttributes[ selectedBlockName ] ) {
-			attributeNames.map( ( attributeName ) => {
+			attributeNames.forEach( ( attributeName ) => {
 				if ( attributeName ) {
 					const blockDefaultAttributeValue = ( 'undefined' !== typeof blocksAttributes[ selectedBlockName ][ attributeName ]?.default ) ? blocksAttributes[ selectedBlockName ][ attributeName ]?.default : '';
 					defaultValues = {
@@ -107,7 +137,6 @@ const TypographyControl = ( props ) => {
 						[ attributeName ] : blockDefaultAttributeValue,
 					}
 				}
-				return attributeName;
 			} );
 		}
 		return defaultValues;
@@ -119,25 +148,14 @@ const TypographyControl = ( props ) => {
 		let selectedBlockAttributes = getSelectedBlock()?.attributes;
 		let isTypographyUpdated = false;
 		attributeNames.forEach( ( attributeName ) => {
-			if (
-				( undefined !== selectedBlockAttributes?.[ attributeName ] )
-				&& ( selectedBlockAttributes?.[ attributeName ] !== defaultValues?.[ attributeName ] )
-			) {
-				// console.log( `%c${ attributeName }`, 'color: YellowGreen;' );
-				// console.log( `Current: ${ selectedBlockAttributes?.[ attributeName ] }` );
-				// console.log( `Default: ${ defaultValues?.[ attributeName ] }` );
+			if ( selectedBlockAttributes?.[ attributeName ] && ( selectedBlockAttributes?.[ attributeName ] !== defaultValues?.[ attributeName ] ) ) {
 				isTypographyUpdated = true;
 			}
-			// else {
-			// 	console.log( `%c${ attributeName }`, 'color: IndianRed;' );
-			// 	console.log( `Current: ${ selectedBlockAttributes?.[ attributeName ] }` );
-			// 	console.log( `Default: ${ defaultValues?.[ attributeName ] }` );
-			// }
 		} );
-		console.log( `%c${ isTypographyUpdated }`, isTypographyUpdated ? 'font-size: 3em; color: YellowGreen;' : 'font-size: 3em; color: IndianRed;' );
 		return isTypographyUpdated;
 	};
 
+	// Flag to check if this control has been updated or not.
 	const isTypographyUpdated = getUpdateState();
 
 	if ( true !== disableLineHeight ) {
@@ -308,7 +326,7 @@ const TypographyControl = ( props ) => {
 		fontAdvancedControls = (
 			<Button
 				className={ classNames(
-					"uag-typography-button spectra-control-popup__options--action-button",
+					'uag-typography-button spectra-control-popup__options--action-button',
 					isTypographyUpdated ? 'spectra-control-popup__status--updated' : '',
 				) }
 				aria-pressed={ showAdvancedControls }

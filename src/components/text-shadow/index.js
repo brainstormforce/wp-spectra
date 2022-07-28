@@ -10,6 +10,9 @@ import { useState } from '@wordpress/element';
 import React, { useLayoutEffect } from 'react';
 import { select } from '@wordpress/data'
 import getUAGEditorStateLocalStorage from '@Controls/getUAGEditorStateLocalStorage';
+import { blocksAttributes } from '@Controls/getBlocksDefaultAttributes';
+
+const classNames = ( ...classes ) => ( classes.filter( Boolean ).join( ' ' ) );
 
 const TextShadowControl = ( props ) => {
 	const [ showAdvancedControls, toggleAdvancedControls ] = useState( false );
@@ -38,6 +41,50 @@ const TextShadowControl = ( props ) => {
 			}
 		  } );
 	}, [] );
+
+	// Array of all the current Typography Control's Labels.
+	const attributeNames = [
+		textShadowColor.label,
+		textShadowHOffset.label,
+		textShadowVOffset.label,
+		textShadowBlur.label,
+	];
+
+	const { getSelectedBlock } = select( 'core/block-editor' );
+
+	// Function to get the Block's default Text Shadow Values.
+	const getBlockTextShadowValue = () => {
+		const selectedBlockName = getSelectedBlock()?.name.replace( 'uagb/', '' );
+		let defaultValues = false;
+		if ( 'undefined' !== typeof blocksAttributes[ selectedBlockName ] ) {
+			attributeNames.forEach( ( attributeName ) => {
+				if ( attributeName ) {
+					const blockDefaultAttributeValue = ( 'undefined' !== typeof blocksAttributes[ selectedBlockName ][ attributeName ]?.default ) ? blocksAttributes[ selectedBlockName ][ attributeName ]?.default : '';
+					defaultValues = {
+						...defaultValues,
+						[ attributeName ] : blockDefaultAttributeValue,
+					}
+				}
+			} );
+		}
+		return defaultValues;
+	}
+
+	// Function to check if any Text Shadow Setting has changed.
+	const getUpdateState = () => {
+		const defaultValues = getBlockTextShadowValue();
+		let selectedBlockAttributes = getSelectedBlock()?.attributes;
+		let isTextShadowUpdated = false;
+		attributeNames.forEach( ( attributeName ) => {
+			if ( selectedBlockAttributes?.[ attributeName ] && ( selectedBlockAttributes?.[ attributeName ] !== defaultValues?.[ attributeName ] ) ) {
+				isTextShadowUpdated = true;
+			}
+		} );
+		return isTextShadowUpdated;
+	};
+
+	// Flag to check if this control has been updated or not.
+	const isTextShadowUpdated = getUpdateState();
 
 	const overallControls = (
 		<>
@@ -107,7 +154,10 @@ const TextShadowControl = ( props ) => {
 				{ label }
 			</span>
 			<Button
-				className={ 'uag-text-shadow-button spectra-control-popup__options--action-button' }
+				className={ classNames(
+					'uag-text-shadow-button spectra-control-popup__options--action-button',
+					isTextShadowUpdated ? 'spectra-control-popup__status--updated' : '',
+				) }
 				aria-pressed={ showAdvancedControls }
 				onClick={ () => {
 						const allPopups = document.querySelectorAll( '.spectra-control-popup__options' );
