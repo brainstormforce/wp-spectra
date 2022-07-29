@@ -61,11 +61,11 @@ const attributes = {
 	},
 	innerContentCustomWidthTablet: {
 		type: 'number',
-		default: 768
+		default: 1024
 	},
 	innerContentCustomWidthMobile: {
 		type: 'number',
-		default: 426
+		default: 767
 	},
 	innerContentCustomWidthType: {
 		type: 'string',
