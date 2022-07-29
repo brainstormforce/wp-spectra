@@ -5,7 +5,7 @@ import { PluginSidebar, PluginSidebarMoreMenuItem } from '@wordpress/edit-post';
 import { compose } from '@wordpress/compose';
 import { withSelect, withDispatch } from '@wordpress/data';
 import { __ } from '@wordpress/i18n';
-import { image } from '@wordpress/icons';
+import SettingsIcons from './icons.js';
 import PageCustomCSS from '../custom-page-css';
 
 const SpectraPageSettingsPopup = props => {
@@ -15,7 +15,7 @@ const SpectraPageSettingsPopup = props => {
 			{/* Page Settings Icon. */}
 			<PluginSidebarMoreMenuItem
 				target="spectra-page-settings-panel"
-				icon={ image }
+				icon={ SettingsIcons.logo }
 			>
 				{ __('Spectra Page Settings') }
 			</PluginSidebarMoreMenuItem>
@@ -23,7 +23,7 @@ const SpectraPageSettingsPopup = props => {
 			{/* Page Settings Area. */}
 			<PluginSidebar
 				isPinnable={ true }
-				icon={ image }
+				icon={ SettingsIcons.logo }
 				name="spectra-page-settings-panel"
 				title={ __('Spectra Page Settings') }
 			>
