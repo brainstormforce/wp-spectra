@@ -14,6 +14,7 @@ const deprecatedAuthorImage = ( { attributes } ) => {
 	if ( urlChk !== '' ) {
 		const size = attributes.authorImage.sizes;
 		const authorImageSize = attributes.authorImageSize;
+		const { authorImageWidth } = attributes;
 
 		url =
 			typeof size !== 'undefined' &&
@@ -27,6 +28,9 @@ const deprecatedAuthorImage = ( { attributes } ) => {
 					className=""
 					src={ url }
 					alt={ attributes.authorImage.alt }
+					width={authorImageWidth}
+					height={authorImageWidth}
+					loading="lazy"
 				/>
 			</div>
 		);
