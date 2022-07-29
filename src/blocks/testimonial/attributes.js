@@ -1071,6 +1071,10 @@ const attributes = {
 			styleType: 'desc-letter-spacing-type'
 		}
 	},
+	responsiveImageWidth:{
+		type:'number',
+		default: 60
+	}
 };
 
 export default attributes;
