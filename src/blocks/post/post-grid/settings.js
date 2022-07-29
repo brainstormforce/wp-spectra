@@ -32,6 +32,7 @@ import {
 	ToolbarGroup,
 	TextControl,
 	Icon,
+	ExternalLink
 } from '@wordpress/components';
 
 import {
@@ -262,6 +263,7 @@ const Settings = ( props ) => {
 		boxShadowBlurHover,
 		boxShadowSpreadHover,
 		boxShadowPositionHover,
+		enableOffset
 	} = attributes;
 
 	const onSelectPostType = ( value ) => {
@@ -276,6 +278,9 @@ const Settings = ( props ) => {
 	const onSelectPagination = ( value ) => {
 		setAttributes( { postPagination: value } );
 		setAttributes( { paginationMarkup: 'empty' } );
+	};
+	const onSelectOffset = ( value ) => {
+		setAttributes( { enableOffset: value } );
 	};
 	const onChangePostsPerPage = ( value ) => {
 		setAttributes( { postsToShow: value } );
@@ -524,6 +529,15 @@ const Settings = ( props ) => {
 					max={ 50 }
 					displayUnit={ false }
 				/>
+				<ToggleControl
+					label={ __(
+						'Enable Offset',
+						'ultimate-addons-for-gutenberg'
+					) }
+					checked={ enableOffset }
+					onChange={ onSelectOffset }
+				/>
+				{ enableOffset && (
 				<Range
 					label={ __(
 						'Offset Starting Post',
@@ -543,6 +557,7 @@ const Settings = ( props ) => {
 						'P.S. Note that We need to add Offset Starting Post to start post loading from specific post order.',
 						'ultimate-addons-for-gutenberg' )}
 				/>
+				) }
 				<MultiButtonsControl
 					setAttributes={ setAttributes }
 					label={ __( 'Order By', 'ultimate-addons-for-gutenberg' ) }
@@ -647,6 +662,20 @@ const Settings = ( props ) => {
 					) }
 					checked={ postPagination }
 					onChange={ onSelectPagination }
+					help= {
+						<>
+						{__(
+							'P.S. Note that pagination will not work if offset is enable. ',
+							'ultimate-addons-for-gutenberg' )}
+						{ <ExternalLink
+							href={ __(
+								'https://developer.wordpress.org/reference/classes/wp_query/#pagination-parameters'
+							) }
+						>
+							{ __( 'Read more' ) }
+						</ExternalLink>}
+						</>
+					}
 				/>
 				{ postPagination === true && (
 					<Range
