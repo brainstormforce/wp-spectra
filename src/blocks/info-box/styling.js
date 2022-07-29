@@ -768,6 +768,7 @@ function styling( props ) {
 			'padding-right': generateCSSUnit( iconMarginRightMobile, iconMobileMarginUnit ),
 			'padding-bottom': generateCSSUnit( iconMarginBottomMobile, iconMobileMarginUnit ),
 			'padding-left': generateCSSUnit( iconMarginLeftMobile, iconMobileMarginUnit ),
+			'box-sizing' : `${ boxSizingImageMobile }`,
 		},
 		 ' .uagb-ifb-button-wrapper .uagb-infobox-cta-link': {
 			 'padding-top': generateCSSUnit(
@@ -806,9 +807,6 @@ function styling( props ) {
 				 ctaFontSizeType
 			 ),
 			 'width': generateCSSUnit( ctaFontSizeMobile, ctaFontSizeType ),
-		 },
-		 '.uagb-infobox__content-wrap .uagb-ifb-content img': {
-			 'box-sizing' : `${boxSizingImageMobile}`,
 		 },
 	 };
 
