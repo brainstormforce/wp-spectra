@@ -21,7 +21,7 @@ export default function save( props ) {
 		<div
 			className={ classnames(
 				props.className,
-				`uagb-star-position-${ starPosition }`,
+				'before' === starPosition ? `uagb-star-position-${ starPosition }` : '',
 				`uagb-block-${ block_id }`
 			) }
 		>
