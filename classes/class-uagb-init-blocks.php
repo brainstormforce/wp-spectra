@@ -593,7 +593,7 @@ class UAGB_Init_Blocks {
 				'load_font_awesome_5'                => UAGB_Admin_Helper::get_admin_settings_option( 'uag_load_font_awesome_5', ( 'yes' === get_option( 'uagb-old-user-less-than-2' ) ) ? 'enabled' : 'disabled' ),
 				'auto_block_recovery'                => UAGB_Admin_Helper::get_admin_settings_option( 'uag_auto_block_recovery', ( 'yes' === get_option( 'uagb-old-user-less-than-2' ) ) ? 'enabled' : 'disabled' ),
 				'font_awesome_5_polyfill'            => get_spectra_font_awesome_polyfiller(),
-				'spectra_custom_fonts'				 => apply_filters( 'spectra_system_fonts', array() )
+				'spectra_custom_fonts'               => apply_filters( 'spectra_system_fonts', array() ),
 			)
 		);
 		// To match the editor with frontend.

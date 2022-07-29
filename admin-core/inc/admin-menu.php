@@ -198,8 +198,8 @@ class Admin_Menu {
 				'blocks_info'              => $blocks_info,
 				'reusable_url'             => esc_url( admin_url( 'edit.php?post_type=wp_block' ) ),
 				'global_data'              => Admin_Helper::get_options(),
-				'uag_content_width_set_by' => \UAGB_Admin_Helper::get_admin_settings_option( 'uag_content_width_set_by', __( 'Spectra', 'ultimate-addons-for-gutenberg' ) ),				
-				'spectra_custom_fonts'	   => apply_filters( 'spectra_system_fonts', array() )
+				'uag_content_width_set_by' => \UAGB_Admin_Helper::get_admin_settings_option( 'uag_content_width_set_by', __( 'Spectra', 'ultimate-addons-for-gutenberg' ) ),
+				'spectra_custom_fonts'     => apply_filters( 'spectra_system_fonts', array() ),
 			)
 		);
 
