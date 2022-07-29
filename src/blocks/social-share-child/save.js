@@ -26,7 +26,7 @@ export default function save( props ) {
 		}
 	} else if ( image && image.url ) {
 		imageIconHtml = (
-			<img className="uagb-ss__source-image" src={ image.url } alt="" />
+			<img className="uagb-ss__source-image" src={ image.url } alt="" width="640" height="360" loading="lazy"/>
 		);
 	}
 
