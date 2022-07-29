@@ -531,16 +531,24 @@ const Settings = ( props ) => {
 				/>
 				<ToggleControl
 					label={ __(
-						'Enable Offset',
+						'Offset Starting Post',
 						'ultimate-addons-for-gutenberg'
 					) }
 					checked={ enableOffset }
 					onChange={ onSelectOffset }
+					help= {
+					<>
+						{ !enableOffset && __(
+						'Note: The offset will skip the number of posts set, and will use the next post as the starting post.',
+						'ultimate-addons-for-gutenberg' )
+						}
+					</>
+					}
 				/>
 				{ enableOffset && (
 				<Range
 					label={ __(
-						'Offset Starting Post',
+						'Offset By',
 						'ultimate-addons-for-gutenberg'
 					) }
 					setAttributes={ setAttributes }
@@ -553,9 +561,13 @@ const Settings = ( props ) => {
 					min={ 0 }
 					max={ 50 }
 					displayUnit={ false }
-					help= {__(
-						'P.S. Note that We need to add Offset Starting Post to start post loading from specific post order.',
+					help= {
+						<>
+						{ enableOffset && __(
+						'Note: The offset will skip the number of posts set, and will use the next post as the starting post.',
 						'ultimate-addons-for-gutenberg' )}
+						</>
+					}
 				/>
 				) }
 				<MultiButtonsControl
@@ -665,7 +677,7 @@ const Settings = ( props ) => {
 					help= {
 						<>
 						{__(
-							'P.S. Note that pagination will not work if offset is enable. ',
+							'Note: Setting the offset parameter overrides/ignores the paged parameter and breaks pagination. ',
 							'ultimate-addons-for-gutenberg' )}
 						{ <ExternalLink
 							href={ __(

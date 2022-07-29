@@ -46,6 +46,7 @@ import {
 	TextControl,
 	Icon,
 	Notice,
+	ExternalLink
 } from '@wordpress/components';
 
 import { InspectorControls } from '@wordpress/block-editor';
@@ -358,6 +359,10 @@ const UAGBPostMasonry = ( props ) => {
 		setAttributes( { categories: '' } );
 	};
 
+	const onSelectOffset = ( value ) => {
+		setAttributes( { enableOffset: value } );
+	};
+
 	const {
 		attributes,
 		categoriesList,
@@ -571,7 +576,7 @@ const UAGBPostMasonry = ( props ) => {
 		ctaLetterSpacingTablet,
 		ctaLetterSpacingMobile,
 		ctaLetterSpacingType,
-
+		enableOffset
 	} = attributes;
 
 	const taxonomyListOptions = [];
@@ -720,9 +725,26 @@ const UAGBPostMasonry = ( props ) => {
 					min={ 1 }
 					max={ 100 }
 				/>
-				<Range
+				<ToggleControl
 					label={ __(
 						'Offset Starting Post',
+						'ultimate-addons-for-gutenberg'
+					) }
+					checked={ enableOffset }
+					onChange={ onSelectOffset }
+					help= {
+					<>
+						{ !enableOffset && __(
+						'Note: The offset will skip the number of posts set, and will use the next post as the starting post.',
+						'ultimate-addons-for-gutenberg' )
+						}
+					</>
+					}
+				/>
+				{ enableOffset && (
+				<Range
+					label={ __(
+						'Offset',
 						'ultimate-addons-for-gutenberg'
 					) }
 					setAttributes={ setAttributes }
@@ -735,10 +757,15 @@ const UAGBPostMasonry = ( props ) => {
 					min={ 0 }
 					max={ 100 }
 					displayUnit={ false }
-				 	help= {__(
-					'P.S. Note that We need to add Offset Starting Post to start post loading from specific post order.',
-					'ultimate-addons-for-gutenberg' )}
+					help= {
+						<>
+						{ enableOffset && __(
+						'Note: The offset will skip the number of posts set, and will use the next post as the starting post.',
+						'ultimate-addons-for-gutenberg' )}
+						</>
+					}
 				/>
+				)}
 				<MultiButtonsControl
 					setAttributes={ setAttributes }
 					label={ __( 'Order By', 'ultimate-addons-for-gutenberg' ) }
@@ -848,6 +875,20 @@ const UAGBPostMasonry = ( props ) => {
 						},
 					] }
 					showIcons={ false }
+					help= {
+						<>
+						{__(
+							'Note: Setting the offset parameter overrides/ignores the paged parameter and breaks pagination. ',
+							'ultimate-addons-for-gutenberg' )}
+						{ <ExternalLink
+							href={ __(
+								'https://developer.wordpress.org/reference/classes/wp_query/#pagination-parameters'
+							) }
+						>
+							{ __( 'Read more' ) }
+						</ExternalLink>}
+						</>
+					}
 				/>
 				{ 'infinite' === paginationType && (
 					<MultiButtonsControl
