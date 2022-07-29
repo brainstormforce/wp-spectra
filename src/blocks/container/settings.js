@@ -185,7 +185,9 @@ const Settings = ( props ) => {
 		bottomHeightTypeTablet,
 		bottomHeightTypeMobile,
 
-		overflow
+		overflow,
+		topDividerType,
+		bottomDividerType
 	} = attributes;
 
 	let currentDirection = directionDesktop;
@@ -1641,9 +1643,21 @@ const Settings = ( props ) => {
 								value: topWidth,
 								label: 'topWidth',
 							} }
-							min={ 100 }
-							max={ 2000 }
-							displayUnit={ false }
+							min={ 0 }
+							max={ 100 }
+							unit={ {
+								value: topDividerType,
+								label: 'topDividerType',
+							} }
+							units={ [
+								{
+									name: __(
+										'%',
+										'ultimate-addons-for-gutenberg'
+									),
+									unitValue: '%',
+								},
+							] }
 						/>
 						<ResponsiveSlider
 							label={ __(
@@ -1759,9 +1773,21 @@ const Settings = ( props ) => {
 								value: bottomWidth,
 								label: 'bottomWidth',
 							} }
-							min={ 100 }
-							max={ 2000 }
-							displayUnit={ false }
+							min={ 0 }
+							max={ 100 }
+							unit={ {
+								value: bottomDividerType,
+								label: 'bottomDividerType',
+							} }
+							units={ [
+								{
+									name: __(
+										'%',
+										'ultimate-addons-for-gutenberg'
+									),
+									unitValue: '%',
+								},
+							] }
 						/>
 						<ResponsiveSlider
 							label={ __(

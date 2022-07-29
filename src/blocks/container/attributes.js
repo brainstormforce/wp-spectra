@@ -969,6 +969,14 @@ const attributes = {
 		type: 'string',
 		default: 'visible'
 	},
+	topDividerType: {
+		type: 'string',
+		default: '%',
+	},
+	bottomDividerType: {
+		type: 'string',
+		default: '%',
+	},
 	...inputBorderAttributes
 };
 
