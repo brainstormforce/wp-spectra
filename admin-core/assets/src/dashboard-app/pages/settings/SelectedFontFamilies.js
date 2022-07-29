@@ -20,7 +20,7 @@ const SelectedFontFamilies = () => {
 
     const fonts = [];
 
-    let customFonts = uag_admin_react.spectra_custom_fonts;
+    const customFonts = uag_admin_react.spectra_custom_fonts;
 
 	Object.keys( googleFonts ).map( ( name ) => {  // eslint-disable-line array-callback-return
 
