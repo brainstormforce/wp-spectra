@@ -32,10 +32,15 @@ const UAGBRestaurantMenuChild = ( props ) => {
 	const columns = ( parentBlockAttributes || null !== parentBlockAttributes ) ? parentBlockAttributes.columns : '';
 	const tcolumns = ( parentBlockAttributes || null !== parentBlockAttributes ) ? parentBlockAttributes.tcolumns : '';
 	const mcolumns = ( parentBlockAttributes || null !== parentBlockAttributes ) ? parentBlockAttributes.mcolumns : '';
+	const imageWidth = ( parentBlockAttributes || null !== parentBlockAttributes ) ? parentBlockAttributes.imageWidth : '';
 
 	useEffect( () => {
 		props.setAttributes( { columns , tcolumns , mcolumns } );
 	}, [ columns, tcolumns, mcolumns ] )
+
+	useEffect( () => {
+		props.setAttributes( { imageWidth } );
+	}, [ imageWidth ] )
 
 	return (
 		<>

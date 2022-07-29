@@ -70,6 +70,10 @@ const attributes = {
 		type: 'string',
 		default: 'tablet',
 	},
+	imageWidth:{
+		type: 'number',
+		default: 100,
+	}
 };
 
 export default attributes;
