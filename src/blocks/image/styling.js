@@ -389,7 +389,8 @@ export default function styling( props ) {
 		),
 	}
 
-	tablet_selectors['.wp-block-uagb-image--layout-default figure'] = imageBorderCSSTablet
+	tablet_selectors['.wp-block-uagb-image--layout-default figure'] = imageBorderCSSTablet;
+	tablet_selectors['.wp-block-uagb-image--layout-overlay figure'] = imageBorderCSSTablet;
 
 	tablet_selectors['.wp-block-uagb-image'] = {
 		'margin-top': generateCSSUnit(
@@ -494,6 +495,7 @@ export default function styling( props ) {
 	}
 
 	mobile_selectors['.wp-block-uagb-image--layout-default figure'] = imageBorderCSSMobile;
+	mobile_selectors['.wp-block-uagb-image--layout-overlay figure'] = imageBorderCSSMobile;
 
 	mobile_selectors['.wp-block-uagb-image'] = {
 		'margin-top': generateCSSUnit(
