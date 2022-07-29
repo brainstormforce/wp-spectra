@@ -343,7 +343,7 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 			);
 
 			if ( $attributes['enableOffset'] ) {
-				array_push( $query_args, array( 'offset' => $fallbackForOffset ) );
+				$query_args['offset'] = $fallbackForOffset;
 			}
 
 			if ( $attributes['excludeCurrentPost'] ) {
