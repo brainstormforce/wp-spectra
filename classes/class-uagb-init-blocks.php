@@ -537,8 +537,8 @@ class UAGB_Init_Blocks {
 
 				$default_selected = array(
 					array(
-						'value' => 'Sushma',
-						'label' => __( 'Sushma', 'ultimate-addons-for-gutenberg' ),
+						'value' => 'Default',
+						'label' => __( 'Default', 'ultimate-addons-for-gutenberg' ),
 					),
 				);
 				$selected_fonts   = array_merge( $default_selected, $selected_fonts );
