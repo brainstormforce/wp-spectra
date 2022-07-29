@@ -5,18 +5,18 @@
  import attributes from "./attributes"
  import classnames from "classnames"
  import { Stars } from "./deprecatedComponent";
- 
+
  const {
      RichText,
  } = wp.blockEditor
- 
+
  const deprecated = [
      {
-         attributes,			
+         attributes,
          save: function save( props ) {
-	
+
             const { attributes, className } = props
-        
+
             const {
                 enableSchema,
                 rTitle,
@@ -40,44 +40,47 @@
                 enableDescription,
                 enableImage,
                 ctaTarget,
-                ctaLink 
+                ctaLink,
+				imgTagHeight,
+				imgTagWidth,
             } = attributes
-        
+
                 const newAverage = parts.map((i) => i.value).reduce((total, v) => total + v) / parts.length;
-            
+
                 let url_chk = ''
                 let title = ''
                 if( "undefined" !== typeof attributes.mainimage  && null !== attributes.mainimage && "" !== attributes.mainimage ){
                     url_chk = attributes.mainimage.url
                     title = attributes.mainimage.title
                 }
-                
+
                 let url = ''
                 if( '' !== url_chk ){
                     let size = attributes.mainimage.sizes
                     let imageSize = attributes.imgSize
-        
+
                     if ( "undefined" !== typeof size && "undefined" !== typeof size[imageSize] ) {
-                      url = size[imageSize].url 
+                      url = size[imageSize].url
                     }else{
-                      url = url_chk 
+                      url = url_chk
                     }
             }
-        
+
             let image_icon_html = ''
-        
+
             if ( mainimage && mainimage.url ) {
-        
-                image_icon_html = <img className="uagb-howto__source-image" src={url} title={title}/>
-        
+
+                image_icon_html = <img className="uagb-howto__source-image" src={url} title={title}
+									width={ imgTagWidth} height={ imgTagHeight} loading="lazy"/>
+
             }
-        
+
                 let rel ="noopener noreferrer"
                 let target =""
                 if( ctaTarget ){
                     target ="_blank"
                 }
-        
+
             return (
                 <div className={ classnames(
                     className,
@@ -113,20 +116,20 @@
                             className='uagb-rating-desc'
                         />
                         }
-                        { showAuthor === true && 
+                        { showAuthor === true &&
                         <RichText.Content
                             tagName="p"
                             value={ rAuthor }
                             className='uagb-rating-author'
                         />
                         }
-                        { enableImage === true && 
+                        { enableImage === true &&
                         <div className="uagb-rating__source-wrap">
                             {image_icon_html}
                         </div>
                         }
                             {parts.map((j, i) => (
-                                showFeature === true && ( 
+                                showFeature === true && (
                             <div className="uagb_review_entry">
                                 <RichText.Content
                                     tagName="div"
@@ -189,5 +192,5 @@
         }
      },
  ]
- 
+
  export default deprecated;
