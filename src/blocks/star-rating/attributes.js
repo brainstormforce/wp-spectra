@@ -479,21 +479,21 @@ const attributes = {
 		default: false,
 		isUAGStyle: true,
 	},
-	StarPosition: {
+	starPosition: {
 		type: 'string',
 		default: 'after',
 		UAGCopyPaste: {
 			styleType: 'image-position'
 		},
 	},
-	StarPositionTablet: {
+	starPositionTablet: {
 		type: 'string',
 		default: 'after',
 		UAGCopyPaste: {
 			styleType: 'image-position'
 		},
 	},
-	StarPositionMobile: {
+	starPositionMobile: {
 		type: 'string',
 		default: 'after',
 		UAGCopyPaste: {

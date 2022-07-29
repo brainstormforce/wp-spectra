@@ -100,9 +100,9 @@ const Settings = ( props ) => {
 			blockMarginUnitTablet,
 			blockMarginUnitMobile,
 			blockMarginLink,
-			StarPosition,
-			StarPositionTablet,
-			StarPositionMobile
+			starPosition,
+			starPositionTablet,
+			starPositionMobile
 		},
 		deviceType,
 	} = props;
@@ -270,16 +270,16 @@ const Settings = ( props ) => {
 				label={ __( 'Star Position', 'ultimate-addons-for-gutenberg' ) }
 				data={ {
 					desktop: {
-						value: StarPosition,
-						label: 'StarPosition',
+						value: starPosition,
+						label: 'starPosition',
 					},
 					tablet: {
-						value: StarPositionTablet,
-						label: 'StarPositionTablet',
+						value: starPositionTablet,
+						label: 'starPositionTablet',
 					},
 					mobile: {
-						value: StarPositionMobile,
-						label: 'StarPositionMobile',
+						value: starPositionMobile,
+						label: 'starPositionMobile',
 					},
 				} }
 				options={ [

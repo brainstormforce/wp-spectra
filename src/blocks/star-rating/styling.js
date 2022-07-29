@@ -80,9 +80,9 @@ function styling( props ) {
 		blockMarginUnit,
 		blockMarginUnitTablet,
 		blockMarginUnitMobile,
-		StarPosition,
-		StarPositionTablet,
-		StarPositionMobile
+		starPosition,
+		starPositionTablet,
+		starPositionMobile
 	} = props.attributes;
 
 	const ratingFallback = getFallbackNumber( rating, 'rating', blockName );
@@ -191,13 +191,13 @@ function styling( props ) {
 	};
 	let index = 'margin-right';
 	if ( 'stack' === layout ) {
-		if( 'before' === StarPosition ){
+		if( 'before' === starPosition ){
 			index = 'margin-top';
 			selectors[ '.wp-block-uagb-star-rating.uagb-star-position-before' ] = {
 				'flex-direction': 'column-reverse',
 				'align-items': flexJustifyContent( align ), // To align-item in flex-direction column-reverse.
 			}
-		} else if( 'after' === StarPosition ) {
+		} else if( 'after' === starPosition ) {
 			index = 'margin-bottom';
 		}
 
@@ -207,14 +207,14 @@ function styling( props ) {
 			...wrapperCSS
 		};
 	} else if( 'inline' === layout ) {
-		if( 'before' === StarPosition ){
+		if( 'before' === starPosition ){
 			index = 'margin-left';
 
 			selectors[ '.wp-block-uagb-star-rating.uagb-star-position-before' ] = {
 				'flex-direction': 'row-reverse',
 				'justify-content': flexAlignmentWhenDirectionIsRowReverse( align ),
 			}
-		} else if( 'after' === StarPosition ) {
+		} else if( 'after' === starPosition ) {
 			index = 'margin-right';
 		}
 		selectors[ '.wp-block-uagb-star-rating' ] = {
@@ -302,13 +302,13 @@ function styling( props ) {
 
 	let indexTablet = 'margin-right';
 	if ( 'stack' === layoutTablet ) {
-		if( 'before' === StarPositionTablet ){
+		if( 'before' === starPositionTablet ){
 			indexTablet = 'margin-top';
 			tabletSelectors[ '.wp-block-uagb-star-rating.uagb-star-position-before ' ] = {
 				'flex-direction': 'column-reverse',
 				'align-items': flexJustifyContent( alignTablet ), // To align-item in flex-direction column-reverse.
 			}
-		} else if( 'after' === StarPositionTablet ) {
+		} else if( 'after' === starPositionTablet ) {
 			indexTablet = 'margin-bottom';
 		}
 		tabletSelectors[ '.wp-block-uagb-star-rating ' ] = {
@@ -318,14 +318,14 @@ function styling( props ) {
 		};
 	}  else if( 'inline' === layoutTablet ) {
 		indexTablet = 'margin-right';
-		if( 'before' === StarPositionTablet ){
+		if( 'before' === starPositionTablet ){
 
 			indexTablet = 'margin-left';
 			tabletSelectors[ '.wp-block-uagb-star-rating.uagb-star-position-before ' ] = {
 				'flex-direction': 'row-reverse',
 				'justify-content': flexAlignmentWhenDirectionIsRowReverse( alignTablet ),
 			}
-		} else if( 'after' === StarPositionTablet ) {
+		} else if( 'after' === starPositionTablet ) {
 			indexTablet = 'margin-right';
 		}
 		tabletSelectors[ '.wp-block-uagb-star-rating ' ] = {
@@ -389,13 +389,13 @@ function styling( props ) {
 
 	let indexMobile = 'margin-right';
 	if ( 'stack' === layoutMobile ) {
-		if( 'before' === StarPositionMobile ){
+		if( 'before' === starPositionMobile ){
 			indexMobile = 'margin-top';
 			mobileSelectors[ '.wp-block-uagb-star-rating.uagb-star-position-before ' ] = {
 				'flex-direction': 'column-reverse',
 				'align-items': flexJustifyContent( alignMobile ), // To align-item in flex-direction column-reverse.
 			}
-		} else if( 'after' === StarPositionMobile ) {
+		} else if( 'after' === starPositionMobile ) {
 			indexMobile = 'margin-bottom';
 		}
 		mobileSelectors[ '.wp-block-uagb-star-rating ' ] = {
@@ -403,14 +403,14 @@ function styling( props ) {
 			...wrapperCSSMobile
 		};
 	}  else if( 'inline' === layoutMobile ) {
-		if( 'before' === StarPositionMobile ){
+		if( 'before' === starPositionMobile ){
 
 			indexMobile = 'margin-left';
 			mobileSelectors[ '.wp-block-uagb-star-rating.uagb-star-position-before ' ] = {
 				'flex-direction': 'row-reverse',
 				'justify-content': flexAlignmentWhenDirectionIsRowReverse( alignMobile ) ,
 			}
-		} else if( 'after' === StarPositionMobile ) {
+		} else if( 'after' === starPositionMobile ) {
 			indexMobile = 'margin-right';
 		}
 		mobileSelectors[ '.wp-block-uagb-star-rating ' ] = {

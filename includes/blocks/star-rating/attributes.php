@@ -81,4 +81,7 @@ return array(
 	'blockMarginUnitTablet'    => 'px',
 	'blockMarginUnitMobile'    => 'px',
 	'blockMarginLink'          => '',
+	'starPosition'             => 'after',
+	'starPositionTablet'       => '',
+	'starPositionMobile'       => '',
 );
