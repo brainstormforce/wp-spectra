@@ -364,6 +364,7 @@ const deprecated = [
 				socialTarget,
 				socialEnable,
 				stack,
+				imgWidth
 			} = props.attributes;
 
 			let size = '';
@@ -392,6 +393,9 @@ const deprecated = [
 							className=""
 							src={ img_url }
 							alt={ image.alt ? image.alt : '' }
+							height={imgWidth}
+							width={imgWidth}
+							loading="lazy"
 						/>
 					</div>
 				);
@@ -498,6 +502,7 @@ const deprecated = [
 				socialTarget,
 				socialEnable,
 				stack,
+				imgWidth
 			} = props.attributes;
 
 			let size = '';
@@ -526,6 +531,9 @@ const deprecated = [
 							className=""
 							src={ img_url }
 							alt={ image.alt ? image.alt : '' }
+							height={imgWidth}
+							width={imgWidth}
+							loading="lazy"
 						/>
 					</div>
 				);
@@ -632,6 +640,7 @@ const deprecated = [
 				socialTarget,
 				socialEnable,
 				stack,
+				imgWidth
 			} = props.attributes;
 
 			let size = '';
@@ -660,6 +669,9 @@ const deprecated = [
 							className=""
 							src={ img_url }
 							alt={ image.alt ? image.alt : '' }
+							height={imgWidth}
+							width={imgWidth}
+							loading="lazy"
 						/>
 					</div>
 				);
@@ -766,7 +778,8 @@ const deprecated = [
 				pinLink,
 				socialTarget,
 				socialEnable,
-				stack
+				stack,
+				imgWidth
 			} = props.attributes
 
 			let size = ""
@@ -794,6 +807,9 @@ const deprecated = [
 							className =""
 							src = { img_url }
 							alt = { ( image.alt ) ? image.alt : "" }
+							height={imgWidth}
+							width={imgWidth}
+							loading="lazy"
 						/>
 					</div>
 				)
