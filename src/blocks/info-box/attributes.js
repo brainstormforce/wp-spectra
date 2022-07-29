@@ -1249,7 +1249,7 @@
 		},
 		default: 'px',
 	},
-	
+
 	// padding
 	blockTopPadding : {
 		type: 'number',
@@ -1572,6 +1572,15 @@
 		UAGCopyPaste: {
 			styleType: 'icon-border-width'
 		},
+	},
+	imgTagHeight: {
+		type: 'number',
+		default: 0,
+	},
+	imgTagWidth: {
+		type: 'number',
+		default: 0,
+
 	},
 	...borderAttributes
 };

@@ -1,6 +1,6 @@
 import classnames from 'classnames';
 import InfoBoxPositionClasses from './style-classes';
-import React, { useLayoutEffect } from 'react';
+import React, { useLayoutEffect, useEffect } from 'react';
 import Title from './components/Title';
 import InfoBoxDesc from './components/InfoBoxDesc';
 import CallToAction from './components/CTA';
@@ -10,6 +10,7 @@ import InfoBoxIconImage from './components/IconImages';
 import Prefix from './components/Prefix';
 import styles from './editor.lazy.scss';
 import { useDeviceType } from '@Controls/getPreviewType';
+import getImageHeightWidth from '@Controls/getImageHeightWidth';
 
 const Render = ( props ) => {
 	// Add and remove the CSS on the drop and remove of the component.
@@ -50,6 +51,10 @@ const Render = ( props ) => {
 	let seperatorPos = seperatorPosition;
 	const seperatorHtml = <InfoBoxSeparator attributes={ attributes } />;
 	let showSeperator = true;
+
+	useEffect( ()=>{
+		getImageHeightWidth( attributes.iconImage.url, setAttributes)
+	},[ attributes.imageSize ])
 
 	if (
 		seperatorPos === 'after_icon' &&

@@ -14,6 +14,7 @@ const InfoBoxIconImage = ( props ) => {
 	if ( urlCheck !== '' ) {
 		const size = attributes.iconImage.sizes;
 		const imageSize = attributes.imageSize;
+		const { imgTagWidth, imageWidth} = attributes
 
 		if (
 			typeof size !== 'undefined' &&
@@ -31,6 +32,8 @@ const InfoBoxIconImage = ( props ) => {
 			<img
 				src={ url }
 				alt={ attributes.iconImage.alt }
+				width={ imageWidth ? imageWidth : imgTagWidth}
+				loading="lazy"
 			/>
 			</div>
 			)}
