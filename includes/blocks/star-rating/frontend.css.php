@@ -187,13 +187,13 @@ if ( 'stack' === $attr['layoutTablet'] ) {
 
 } else {
 	if ( 'before' === $attr['starPositionTablet'] ) {
-		$index = 'margin-left';
+		$index_tablet = 'margin-left';
 		$t_selectors['.wp-block-uagb-star-rating.uagb-star-position-before'] = array(
 			'flex-direction'  => 'row-reverse',
 			'justify-content' => UAGB_Block_Helper::flex_alignment_when_direction_is_row_reverse( $alignment_tablet ), // To align-item in flex-direction column-reverse.
 		);
 	} elseif ( 'after' === $attr['starPositionTablet'] ) {
-		$index = 'margin-right';
+		$index_tablet = 'margin-right';
 	}
 	$t_selectors['.wp-block-uagb-star-rating '] = array_merge(
 		array(
