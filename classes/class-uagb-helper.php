@@ -329,11 +329,11 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 		 * @since 1.8.2
 		 */
 		public static function get_query( $attributes, $block_type ) {
-			$fallbackForpostsToShow = UAGB_Block_Helper::get_fallback_number( $attributes['postsToShow'], 'postsToShow', $attributes['blockName'] );
-			$fallbackForOffset      = UAGB_Block_Helper::get_fallback_number( $attributes['postsOffset'], 'postsOffset', $attributes['blockName'] );
+			$fallback_for_posts_to_show = UAGB_Block_Helper::get_fallback_number( $attributes['postsToShow'], 'postsToShow', $attributes['blockName'] );
+			$fallback_for_offset      = UAGB_Block_Helper::get_fallback_number( $attributes['postsOffset'], 'postsOffset', $attributes['blockName'] );
 			// Block type is grid/masonry/carousel/timeline.
 			$query_args = array(
-				'posts_per_page'      => $fallbackForpostsToShow,
+				'posts_per_page'      => $fallback_for_posts_to_show,
 				'post_status'         => 'publish',
 				'post_type'           => ( isset( $attributes['postType'] ) ) ? $attributes['postType'] : 'post',
 				'order'               => ( isset( $attributes['order'] ) ) ? $attributes['order'] : 'desc',
@@ -343,7 +343,7 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 			);
 
 			if ( $attributes['enableOffset'] ) {
-				$query_args['offset'] = $fallbackForOffset;
+				$query_args['offset'] = $fallback_for_offset;
 			}
 
 			if ( $attributes['excludeCurrentPost'] ) {
