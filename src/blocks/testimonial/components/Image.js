@@ -6,6 +6,8 @@ const TestimonialImage = ( props ) => {
 
 	if ( imageArray && typeof imageArray !== 'undefined' ) {
 		const image = imageArray.image;
+		const { imageWidth } = attributes;
+
 		let url = '';
 
 		if ( typeof image !== 'undefined' && image !== null && image !== '' ) {
@@ -37,6 +39,8 @@ const TestimonialImage = ( props ) => {
 							className="uagb-tm-img-src"
 							src={ url }
 							alt={ image.alt }
+							width={imageWidth}
+							loading="lazy"
 						/>
 					</div>
 				</div>
