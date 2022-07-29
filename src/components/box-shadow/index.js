@@ -90,7 +90,7 @@ const BoxShadowControl = ( props ) => {
 	};
 
 	// Flag to check if this control has been updated or not.
-	const isBoxShadowUpdated = getUpdateState();
+	const isBoxShadowUpdated = popup && getUpdateState();
 
 	const overallControls = (
 		<>

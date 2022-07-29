@@ -84,7 +84,7 @@ const TextShadowControl = ( props ) => {
 	};
 
 	// Flag to check if this control has been updated or not.
-	const isTextShadowUpdated = getUpdateState();
+	const isTextShadowUpdated = popup && getUpdateState();
 
 	const overallControls = (
 		<>
