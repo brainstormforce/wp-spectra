@@ -15,12 +15,22 @@ function FontFamilyControl( props ) {
 
 	let fontWeight = '';
 
+	let customFonts = uagb_blocks_info.spectra_custom_fonts;
+
 	//Push Google Fonts into stytem fonts object
 	Object.keys( googleFonts ).map( ( k ) => {  // eslint-disable-line array-callback-return
 		fonts.push( { value: k, label: k, weight: googleFonts[ k ].weight } );
 
 		if ( k === props.fontFamily.value ) {
 			fontWeight = googleFonts[ k ].weight;
+		}
+	} );
+
+	//Push custom Fonts into stytem fonts object.
+	Object.keys( customFonts ).map( ( k ) => {  // eslint-disable-line array-callback-return
+		fonts.push( { value: k, label: k, weight: customFonts[ k ].weight } );
+		if ( k === props.fontFamily.value ) {
+			fontWeight = customFonts[ k ].weight;
 		}
 	} );
 
